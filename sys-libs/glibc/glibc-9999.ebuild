@@ -15,7 +15,7 @@ EMULTILIB_PKG="true"
 # Configuration variables
 
 if [[ ${PV} == 9999* ]]; then
-	EGIT_REPO_URI="git://sourceware.org/git/glibc.git"
+	EGIT_REPO_URI="https://sourceware.org/git/glibc.git"
 	inherit git-r3
 else
 	# KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
@@ -64,6 +64,10 @@ is_crosscompile() {
 	[[ ${CHOST} != ${CTARGET} ]]
 }
 
+just_headers() {
+	is_crosscompile && use crosscompile_opts_headers-only
+}
+
 SLOT="2.2"
 
 # General: We need a new-enough binutils/gcc to match upstream baseline.
@@ -107,6 +111,8 @@ fi
 #
 # the phases
 #
+
+# pkg_pretend
 
 pkg_pretend() {
 	# Make sure devpts is mounted correctly for use w/out setuid pt_chown
@@ -191,6 +197,10 @@ pkg_pretend() {
 		fi
 	fi
 }
+# todo: shouldn't most of these checks be called also in src_configure again?
+# (since consistency is not guaranteed between pkg_ and src_)
+
+# src_unpack
 
 src_unpack() {
 	use multilib && unpack gcc-${GCC_BOOTSTRAP_VER}-multilib-bootstrap.tar.bz2
@@ -199,6 +209,7 @@ src_unpack() {
 
 	# Check NPTL support _before_ we unpack things to save some time
 	check_nptl_support
+	# todo: 1) move this to pkg_pretend? 2) use proper functions for kv
 
 	if [[ -n ${EGIT_REPO_URI} ]] ; then
 		git-r3_src_unpack
@@ -211,13 +222,6 @@ src_unpack() {
 
 	cd "${WORKDIR}"
 	unpack glibc-${RELEASE_VER}-patches-${PATCH_VER}.tar.bz2
-	# pull out all the addons
-	local d
-	for d in extra/*/configure ; do
-		d=${d%/configure}
-		[[ -d ${S}/${d} ]] && die "${d} already exists in \${S}"
-		mv "${d}" "${S}" || die "moving ${d} failed"
-	done
 }
 
 src_prepare() {
@@ -277,7 +281,7 @@ glibc_do_configure() {
 	# we accumulate crap across abis
 	unset CXX
 
-	einfo "Configuring glibc for $1"
+	einfo "Configuring glibc for nptl"
 
 	local v
 	for v in ABI CBUILD CHOST CTARGET CBUILD_OPT CTARGET_OPT CC CXX LD {AS,C,CPP,CXX,LD}FLAGS ; do
@@ -296,18 +300,6 @@ glibc_do_configure() {
 
 	local myconf=()
 
-	# set addons
-	pushd "${S}" > /dev/null
-	local addons=$(echo */configure | sed \
-		-e 's:/configure::g' \
-		-e 's:\(linuxthreads\|nptl\|rtkaio\|glibc-compat\)\( \|$\)::g' \
-		-e 's: \+$::' \
-		-e 's! !,!g' \
-		-e 's!^!,!' \
-		-e '/^,\*$/d')
-	[[ -d ports ]] && addons+=",ports"
-	popd > /dev/null
-
 	case ${CTARGET} in
 		powerpc-*)
 			# Currently gcc on powerpc32 generates invalid code for
@@ -325,12 +317,7 @@ glibc_do_configure() {
 
 	[[ $(tc-is-softfloat) == "yes" ]] && myconf+=( --without-fp )
 
-	if [[ $1 == "nptl" ]] ; then
-		myconf+=( --enable-kernel=${NPTL_KERN_VER} )
-	else
-		die "invalid pthread option"
-	fi
-	myconf+=( --enable-add-ons="${addons#,}" )
+	myconf+=( --enable-kernel=${NPTL_KERN_VER} )
 
 	# Since SELinux support is only required for nscd, only enable it if:
 	# 1. USE selinux
@@ -399,7 +386,7 @@ glibc_do_configure() {
 	# this overriding check.  #347761
 	export libc_cv_hashstyle=no
 
-	local builddir=$(builddir "$1")
+	local builddir=$(builddir nptl)
 	mkdir -p "${builddir}"
 	cd "${builddir}"
 	set -- "${S}"/configure "${myconf[@]}"
@@ -420,6 +407,10 @@ glibc_do_configure() {
 	# to lie and use a local copy of gcc.  Like if the system
 	# is built with MULTILIB_ABIS="amd64 x86" but we want to
 	# add x32 to it, gcc/glibc don't yet support x32.
+	#
+	# This reqires net-libs/rpcsvc-proto now (which provides
+	# rpcgen) !!! Needs analysis how to best add to deps.
+	#
 	if [[ -n ${GCC_BOOTSTRAP_VER} ]] && use multilib ; then
 		echo 'main(){}' > "${T}"/test.c
 		if ! $(tc-getCC ${CTARGET}) ${CFLAGS} ${LDFLAGS} "${T}"/test.c -Wl,-emain -lgcc 2>/dev/null ; then
@@ -504,10 +495,6 @@ glibc_headers_configure() {
 		${EXTRA_ECONF}
 	)
 
-	local addons
-	[[ -d ${S}/ports ]] && addons+=",ports"
-	myconf+=( --enable-add-ons="${addons#,}" )
-
 	# Nothing is compiled here which would affect the headers for the target.
 	# So forcing CC/CFLAGS is sane.
 	set -- "${S}"/configure "${myconf[@]}"
@@ -544,14 +531,14 @@ src_compile() {
 }
 
 glibc_src_test() {
-	cd "$(builddir $1)"
+	cd "$(builddir nptl)"
 	emake -j1 check
 }
 
 do_src_test() {
 	local ret=0
 
-	glibc_src_test nptl
+	glibc_src_test
 	: $(( ret |= $? ))
 
 	return ${ret}
@@ -719,9 +706,10 @@ glibc_do_src_install() {
 	echo 'LDPATH="include ld.so.conf.d/*.conf"' > "${T}"/00glibc
 	doenvd "${T}"/00glibc
 
-	for d in BUGS ChangeLog* CONFORMANCE FAQ NEWS NOTES PROJECTS README* ; do
+	for d in BUGS ChangeLog CONFORMANCE FAQ NEWS NOTES PROJECTS README* ; do
 		[[ -s ${d} ]] && dodoc ${d}
 	done
+	dodoc -r ChangeLog.old
 
 	# Prevent overwriting of the /etc/localtime symlink.  We'll handle the
 	# creation of the "factory" symlink in pkg_postinst().
