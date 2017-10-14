@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-Carp virtual/perl-Exporter >=dev-perl/Module-Build-Tiny-0.39.0 test? ( virtual/perl-ExtUtils-MakeMaker virtual/perl-File-Spec virtual/perl-Test-Simple virtual/perl-if ) dev-lang/perl:=
+DESCRIPTION=Use shorter versions of class names
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/aliased/
+IUSE=test
+KEYWORDS=~amd64 ~arm ~ppc ~x86 ~x64-macos
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Carp virtual/perl-Exporter dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/E/ET/ETHER/aliased-0.34.tar.gz
+_eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=c727848fc43f596f660713db68a8b77a
