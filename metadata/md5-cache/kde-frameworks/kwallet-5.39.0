@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup test unpack
+DEPEND=>=kde-frameworks/kconfig-5.39:5 >=kde-frameworks/kconfigwidgets-5.39:5 >=kde-frameworks/kcoreaddons-5.39:5 >=kde-frameworks/kdbusaddons-5.39:5 >=kde-frameworks/ki18n-5.39:5 >=kde-frameworks/kiconthemes-5.39:5 >=kde-frameworks/knotifications-5.39:5 >=kde-frameworks/kservice-5.39:5 >=kde-frameworks/kwidgetsaddons-5.39:5 >=kde-frameworks/kwindowsystem-5.39:5 >=dev-qt/qtdbus-5.7.1:5 >=dev-qt/qtgui-5.7.1:5 >=dev-qt/qtwidgets-5.7.1:5 dev-libs/libgcrypt:0= gpg? ( >=app-crypt/gpgme-1.7.1[cxx,qt5] ) man? ( >=kde-frameworks/kdoctools-5.39:5 ) sys-devel/make >=dev-util/cmake-3.7.2 >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info >=kde-frameworks/extra-cmake-modules-5.39:5 doc? ( >=dev-qt/qthelp-5.7.1:5 >=app-doc/doxygen-1.8.13-r1 ) test? ( >=dev-qt/qttest-5.7.1:5 ) >=dev-qt/qtcore-5.7.1:5 doc? ( >=dev-qt/qt-docs-5.7.1:5 ) dev-util/desktop-file-utils app-arch/xz-utils
+DESCRIPTION=Framework providing desktop-wide storage for passwords
+EAPI=6
+HOMEPAGE=https://www.kde.org/
+IUSE=gpg +man debug doc test
+KEYWORDS=~amd64 ~arm ~arm64 ~x86
+LICENSE=LGPL-2+
+RDEPEND=>=kde-frameworks/kconfig-5.39:5 >=kde-frameworks/kconfigwidgets-5.39:5 >=kde-frameworks/kcoreaddons-5.39:5 >=kde-frameworks/kdbusaddons-5.39:5 >=kde-frameworks/ki18n-5.39:5 >=kde-frameworks/kiconthemes-5.39:5 >=kde-frameworks/knotifications-5.39:5 >=kde-frameworks/kservice-5.39:5 >=kde-frameworks/kwidgetsaddons-5.39:5 >=kde-frameworks/kwindowsystem-5.39:5 >=dev-qt/qtdbus-5.7.1:5 >=dev-qt/qtgui-5.7.1:5 >=dev-qt/qtwidgets-5.7.1:5 dev-libs/libgcrypt:0= gpg? ( >=app-crypt/gpgme-1.7.1[cxx,qt5] ) >=kde-frameworks/kf-env-4 !<kde-apps/kde4-l10n-15.12.3-r1 >=dev-qt/qtcore-5.7.1:5 doc? ( >=dev-qt/qt-docs-5.7.1:5 )
+SLOT=5/5.39
+SRC_URI=mirror://kde/stable/frameworks/5.39/kwallet-5.39.0.tar.xz
+_eclasses_=cmake-utils	f9fb12e2dbe2e0c9c17f030bae85eb02	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	gnome2-utils	4d211d7614f303710fca59db6ec12c88	kde5	186c36517327615304bdc71c5f2bf6f7	kde5-functions	48ad3d5429e273ff79fa3fef2572d679	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0	virtualx	171580f737f5aaf18fcb456548588066	xdg	6cd76cc914c1a759dee032778487b57f	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=c1011496155cdc97331719976bd4e438
