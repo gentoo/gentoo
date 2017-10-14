@@ -9562,6 +9562,9 @@ dev-ruby/docile 1.1.5: Turns any Ruby object into a DSL
 dev-ruby/domain_name 0.5.24 0.5.20170223 0.5.20170404: Domain Name manipulation library for Ruby
 dev-ruby/dotenv 2.2.1: Loads environment variables from .env into ENV
 dev-ruby/dust 0.1.7-r2: Descriptive block syntax definition for Test::Unit
+dev-ruby/elasticsearch 5.0.4: Ruby integrations for ES, elasticsearch module
+dev-ruby/elasticsearch-api 5.0.4: Ruby integrations for ES, elasticsearch-api module
+dev-ruby/elasticsearch-transport 5.0.4: Ruby integrations for ES, elasticsearch-transport module
 dev-ruby/equalizer 0.0.11: Module to define equality, equivalence and inspection methods
 dev-ruby/erubi 1.6.0 1.6.1 1.7.0: a ERB template engine for ruby; a simplified fork of Erubis
 dev-ruby/erubis 2.7.0-r2: Erubis is an implementation of eRuby
