@@ -1,0 +1,26 @@
+From f06bb625c7feb44bf9b5c13617522ce57cdad84e Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Sun, 15 Oct 2017 06:16:45 +1300
+Subject: Fix missing import of "catfile"
+
+Bug: https://rt.cpan.org/Ticket/Display.html?id=123283
+---
+ lib/Apache/TestConfigParse.pm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/Apache/TestConfigParse.pm b/lib/Apache/TestConfigParse.pm
+index 88a19af..8fe0fe4 100644
+--- a/lib/Apache/TestConfigParse.pm
++++ b/lib/Apache/TestConfigParse.pm
+@@ -23,7 +23,7 @@ use warnings FATAL => 'all';
+ 
+ use Apache::TestTrace;
+ 
+-use File::Spec::Functions qw(rel2abs splitdir file_name_is_absolute);
++use File::Spec::Functions qw(rel2abs splitdir file_name_is_absolute catfile);
+ use File::Basename qw(dirname basename);
+ 
+ sub strip_quotes {
+-- 
+2.14.2
+

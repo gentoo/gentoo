@@ -1,0 +1,29 @@
+From 2dbb0fcab02ea60c0ca5e6ab4150691ffcfb8d7c Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Sun, 15 Oct 2017 06:47:45 +1300
+Subject: Don't die at load time due to undeclared '$phpclient'
+
+Bug: https://rt.cpan.org/Ticket/Display.html?id=123284
+---
+ lib/Apache/TestHarnessPHP.pm | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/lib/Apache/TestHarnessPHP.pm b/lib/Apache/TestHarnessPHP.pm
+index 90fdedc..806ba6f 100644
+--- a/lib/Apache/TestHarnessPHP.pm
++++ b/lib/Apache/TestHarnessPHP.pm
+@@ -90,11 +90,6 @@ sub get_tests {
+                             'make sure php is in your PATH');
+         @tests = grep { not /\.php$/ } @tests;
+     }
+-    elsif (! $phpclient) {
+-        warning(join ' - ', 'skipping *.php tests',
+-                            'Test::Harness 2.38 not available');
+-        @tests = grep { not /\.php$/ } @tests;
+-    }
+ 
+     return @tests;
+ }
+-- 
+2.14.2
+

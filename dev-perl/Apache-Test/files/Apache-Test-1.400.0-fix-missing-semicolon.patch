@@ -1,0 +1,26 @@
+From b2a2cdc1e9a3121ea8848ab4a2410c5dcc68d620 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Sun, 15 Oct 2017 06:15:47 +1300
+Subject: Fix missing ";"
+
+Bug: https://rt.cpan.org/Ticket/Display.html?id=123282
+---
+ lib/Apache/TestConfigPHP.pm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/Apache/TestConfigPHP.pm b/lib/Apache/TestConfigPHP.pm
+index 0ddea0b..1c79865 100644
+--- a/lib/Apache/TestConfigPHP.pm
++++ b/lib/Apache/TestConfigPHP.pm
+@@ -170,7 +170,7 @@ sub configure_php_ini {
+     my $dir  = catfile $self->{vars}->{serverroot}, 'conf';
+     my $file = catfile $dir, 'php.ini';
+ 
+-    return if -e $file
++    return if -e $file;
+ 
+     my $log  = catfile $self->{vars}->{t_logs}, 'error_log';
+ 
+-- 
+2.14.2
+
