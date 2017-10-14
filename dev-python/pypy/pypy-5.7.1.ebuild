@@ -39,6 +39,7 @@ RDEPEND=">=sys-libs/zlib-1.1.3:0=
 DEPEND="${RDEPEND}
 	doc? ( dev-python/sphinx )
 	${PYTHON_DEPS}
+	dev-python/pycparser
 	test? ( dev-python/pytest )"
 
 S="${WORKDIR}/${MY_P}-src"
