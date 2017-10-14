@@ -39,14 +39,14 @@ src_prepare() {
 	sed -e "/eixf_source=/s:push.sh:cat \"${EROOT}usr/share/push/push.sh\":" \
 		-e "/eixf_source=/s:quoter_pipe.sh:cat \"${EROOT}usr/share/quoter/quoter_pipe.sh\":" \
 		-i src/eix-functions.sh.in || die
-	sed -e "s:'\$(bindir)/eix-functions.sh':cat \\\\\"${EROOT}usr/share/eix/eix-functions.sh\\\\\":" \
+	sed -e "s:'\$(bindir)/eix-functions.sh':cat \\\\\"${EROOT}usr/share/eix/eix-functions\\\\\":" \
 		-i src/Makefile.am || die
 	eautoreconf
 }
 
 src_configure() {
 	local myconf=(
-		$(use_enable debug paranoic-assertsasserts)
+		$(use_enable debug paranoic-asserts)
 		$(use_enable nls)
 		$(use_with doc extra-doc)
 		$(use_with sqlite)
@@ -85,9 +85,7 @@ src_install() {
 	dobashcomp bash/eix
 	systemd_dotmpfilesd tmpfiles.d/eix.conf
 
-	insinto /usr/share/${PN}
-	doins "${ED}"/usr/bin/eix-functions.sh
-	rm -r "${ED}"/usr/bin/eix-functions.sh || die
+	rm -r "${ED%/}"/usr/bin/eix-functions.sh || die
 
 	keepdir /var/cache/eix
 }
