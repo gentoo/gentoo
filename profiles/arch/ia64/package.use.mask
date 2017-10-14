@@ -327,10 +327,6 @@ dev-python/PyQt4 multimedia
 # Keep deps minimal
 x11-wm/fvwm lock
 
-# Raúl Porcel <armin76@gentoo.org> (11 Apr 2009)
-# net-libs/webkit-gtk segfaults but dev-qt/qtwebkit doesn't
-dev-python/PyQt4 -webkit
-
 # Raúl Porcel <armin76@gentoo.org> (07 Jul 2008)
 # Make clisp deps minimal
 dev-lisp/clisp hyperspec pari svm
