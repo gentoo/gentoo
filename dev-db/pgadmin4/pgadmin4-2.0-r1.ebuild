@@ -46,6 +46,7 @@ RDEPEND="${COMMON_DEPEND}
 	>=dev-python/flask-login-0.3.2[${PYTHON_USEDEP}]
 	>=dev-python/flask-mail-0.9.1[${PYTHON_USEDEP}]
 	>=dev-python/flask-migrate-2.0.3[${PYTHON_USEDEP}]
+	>=dev-python/flask-paranoid-0.1.0[${PYTHON_USEDEP}]
 	>=dev-python/flask-principal-0.4.0[${PYTHON_USEDEP}]
 	>=dev-python/flask-security-1.7.5[${PYTHON_USEDEP}]
 	>=dev-python/flask-sqlalchemy-2.1[${PYTHON_USEDEP}]
@@ -80,7 +81,7 @@ src_prepare() {
 }
 
 src_configure() {
-		eqmake5
+	eqmake5
 }
 
 src_compile() {
