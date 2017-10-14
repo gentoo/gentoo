@@ -26,6 +26,7 @@ RDEPEND="
 "
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.17-conf.patch
+	"${FILESDIR}"/${PN}-1.17-drop-root.patch
 	"${FILESDIR}"/${PN}-1.17-run.patch
 )
 
