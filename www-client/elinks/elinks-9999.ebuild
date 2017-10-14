@@ -17,7 +17,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 IUSE="bittorrent bzip2 debug finger ftp gc gopher gpm guile idn ipv6
-	  javascript libressl lua +mouse nls nntp perl ruby samba ssl unicode X xml zlib"
+	  javascript libressl lua +mouse nls nntp perl ruby samba ssl tre unicode X xml zlib"
 RESTRICT="test"
 
 DEPEND="
@@ -38,6 +38,7 @@ DEPEND="
 	perl? ( dev-lang/perl:= )
 	ruby? ( dev-lang/ruby:* dev-ruby/rubygems:* )
 	samba? ( net-fs/samba )
+	tre? ( dev-libs/tre )
 	javascript? ( >=dev-lang/spidermonkey-1.8.5:0= )"
 RDEPEND="${DEPEND}"
 
@@ -103,6 +104,7 @@ src_configure() {
 		$(use_with ruby) \
 		$(use_with idn) \
 		$(use_with javascript spidermonkey) \
+		$(use_with tre) \
 		$(use_enable bittorrent) \
 		$(use_enable nls) \
 		$(use_enable ipv6) \
