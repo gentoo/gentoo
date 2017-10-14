@@ -4277,7 +4277,6 @@ media-libs/spandsp:fixed-point - Enable fixed point support
 media-libs/speex:utils - Enables speex commandline utilities (speexenc, speexdec).
 media-libs/speex:vbr - Enable VBR support.
 media-libs/svgalib:kernel-helper - Build the helper kernel module
-media-libs/taglib:asf - Provide support for Microsoft's 'advanced systems format' media container.
 media-libs/taglib:boost - Use dev-libs/boost instead of GCC built-ins
 media-libs/tremor:low-accuracy - enable 32bit only multiply operations
 media-libs/vigra:valgrind - Enable valgrind in make check
