@@ -29,6 +29,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Kent Fredric <kentnl@gentoo.org> (14 Oct 2017)
+# 12 years without upstream responding to bugs, code almost
+# irredeemably unmaintainable and with no way to demonstrate it
+# actually works. Bug #634244
+# Masked for removal in 30 days.
+dev-perl/Apache-SessionX
+
 # Alexis Ballier <aballier@gentoo.org> (14 Oct 2017)
 # Beta version, breaks revdeps, needs testing
 >=dev-lang/ocaml-4.06.0_beta
