@@ -5,4 +5,8 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="cpan">Audio-CD</remote-id>
+    <remote-id type="cpan-module">Audio::CD</remote-id>
+  </upstream>
 </pkgmetadata>
