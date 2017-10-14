@@ -1,10 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=5
+
 # This appears it should really be entitled Audio-CD
 # There are * QA Notice: errors on building however the HOMEPAGE gives no source repo in which to file
 # prob. not worth the trouble for this little script.
 
-EAPI=5
 inherit perl-module
 
 MY_P=Audio-CD-${PV}
