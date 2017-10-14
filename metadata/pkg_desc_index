@@ -1127,7 +1127,7 @@ app-emacs/doctest-mode 0.4: An Emacs major mode for editing Python source
 app-emacs/doxymacs 1.8.0-r3: Doxygen editing minor mode
 app-emacs/dropdown-list 20120329: Drop-down menu interface
 app-emacs/dts-mode 0.1.0_pre20141014: Emacs major mode for devicetree sources
-app-emacs/ebuild-mode 1.37 1.38: Emacs modes for editing ebuilds and other Gentoo specific files
+app-emacs/ebuild-mode 1.37 1.38 1.39: Emacs modes for editing ebuilds and other Gentoo specific files
 app-emacs/ecb 2.41_pre20140215-r1: Source code browser for Emacs
 app-emacs/edb 1.31 1.32: EDB, The Emacs Database
 app-emacs/edit-list 0.3: Edit a single list
@@ -12735,7 +12735,7 @@ media-gfx/gtkam 1.0: A frontend for gPhoto 2
 media-gfx/gtkimageview 1.6.4: A simple image viewer widget for GTK
 media-gfx/hp2xx 3.4.4 3.4.4-r1: Versatile tool to convert Hewlett-Packard's HP-GL plotter language into other graphics formats
 media-gfx/hugin 2016.2.0 2017.0 9999: GUI for the creation & processing of panoramic images
-media-gfx/icc_examin 0.55-r1 9999: Viewer for ICC and CGATS profiles, argylls gamut vrml visualisations and GPU gamma tables
+media-gfx/icc_examin 0.56_p20171007 9999: Viewer for ICC and CGATS, argyll gamut vrml visualisations and GPU gamma tables
 media-gfx/icon-slicer 0.3: utility for generating icon themes and libXcursor cursor themes
 media-gfx/icoutils 0.31.0 0.31.1 0.31.3: A set of programs for extracting and converting images in icon and cursor files (.ico, .cur)
 media-gfx/igal 2.0-r1: Static HTML image gallery generator
@@ -13204,7 +13204,7 @@ media-libs/openjpeg 1.5.2 1.5.2-r1 2.1.1_p20160922 2.1.2 2.2.0 2.3.0: An open-so
 media-libs/opensubdiv 3.1.0 3.1.1 3.3.0: An Open-Source subdivision surface library
 media-libs/opus 1.1.3-r1 1.2.1: Open codec designed for internet transmission of interactive speech and audio
 media-libs/opusfile 0.6 0.8 0.9: A high-level decoding and seeking API for .opus files
-media-libs/oyranos 0.9.5-r1 0.9.6 9999: Colour management system allowing to share settings across apps and services
+media-libs/oyranos 0.9.6 9999: Colour management system allowing to share settings across apps and services
 media-libs/partio 1.1.0_p20170829: A library for particle IO and manipulation
 media-libs/phat 0.4.1 0.4.1-r1: PHAT is a collection of GTK+ widgets geared toward pro-audio apps
 media-libs/phonon 4.9.1-r1 9999: KDE multimedia API

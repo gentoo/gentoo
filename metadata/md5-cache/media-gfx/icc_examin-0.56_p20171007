@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare test unpack
+DEPEND=app-admin/elektra media-libs/freetype media-libs/ftgl media-libs/libXcm[X] media-libs/oyranos media-libs/tiff:0 virtual/jpeg:0 virtual/opengl x11-libs/fltk[opengl] x11-libs/libX11 x11-libs/libXinerama x11-libs/libXpm x11-libs/libXrandr x11-libs/libXxf86vm sys-devel/gettext virtual/libintl virtual/pkgconfig sys-devel/make >=dev-util/cmake-3.7.2
+DESCRIPTION=Viewer for ICC and CGATS, argyll gamut vrml visualisations and GPU gamma tables
+EAPI=6
+HOMEPAGE=http://www.oyranos.org/icc-examin/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=app-admin/elektra media-libs/freetype media-libs/ftgl media-libs/libXcm[X] media-libs/oyranos media-libs/tiff:0 virtual/jpeg:0 virtual/opengl x11-libs/fltk[opengl] x11-libs/libX11 x11-libs/libXinerama x11-libs/libXpm x11-libs/libXrandr x11-libs/libXxf86vm
+SLOT=0
+SRC_URI=https://github.com/oyranos-cms/icc-examin/tarball/ee9e8cd013766b0df2c5e3b4416f985322b22966 -> icc-examin-0.56_p20171007.tar.gz
+_eclasses_=cmake-utils	f9fb12e2dbe2e0c9c17f030bae85eb02	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	toolchain-funcs	185a06792159ca143528e7010368e8af	vcs-snapshot	03289f51c769cf409d200d2d628cdd6e	versionator	c80ccf29e90adea7c5cae94b42eb76d0	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=908143fc73f58a1cf361e0528e416ec7
