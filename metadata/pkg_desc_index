@@ -5452,9 +5452,9 @@ dev-perl/AnyEvent-HTTPD 0.930.0: A simple lightweight event based web (applicati
 dev-perl/AnyEvent-I3 0.170.0: Communicate with the i3 window manager
 dev-perl/Apache-AuthCookie 3.230.0 3.240.0 3.250.0 3.260.0 3.270.0: Perl Authentication and Authorization via cookies
 dev-perl/Apache-CGI-Builder 1.300.0-r1 1.300.0-r2: CGI::Builder and Apache2/mod_perl2 integration
-dev-perl/Apache-DBI 1.120.0-r1: Apache::DBI module for perl
+dev-perl/Apache-DBI 1.120.0-r1 1.120.0-r2: Authentication and Authorization via Perl's DBI
 dev-perl/Apache-LogFormat-Compiler 0.350.0: Compile an Apache log format string to perl-code
-dev-perl/Apache-Reload 0.130.0: Perl module for Apache::Reload
+dev-perl/Apache-Reload 0.130.0 0.130.0-r1: Automatically reload changed modules without restarting Apache
 dev-perl/Apache-Session 1.930.0: A persistence framework for session data
 dev-perl/Apache-SessionX 2.10.0-r1: An extented persistence framework for session data
 dev-perl/Apache-SizeLimit 0.970.0-r1: Graceful exit for large children
@@ -18959,7 +18959,7 @@ x11-misc/safeeyes 1.2.1 1.2.2: Linux alternative to EyeLeo
 x11-misc/screen-message 0.24 0.25: Display a multi-line message large, fullscreen, black on white
 x11-misc/screengrab 1.2.1-r1: Qt application for getting screenshots
 x11-misc/sct 0.3 0.4: Set color temperature of the screen
-x11-misc/sddm 0.14.0-r2 0.14.0-r4 0.15.0 0.16.0: Simple Desktop Display Manager
+x11-misc/sddm 0.14.0-r2 0.14.0-r4 0.15.0 0.16.0 0.16.0-r1: Simple Desktop Display Manager
 x11-misc/seetxt 0.72-r1: Clever, lightweight GUI text file and manual page viewer for X windows
 x11-misc/sent 0.2 1 9999: Simple plaintext presentation tool
 x11-misc/set_opacity 1.0 9999: Tool for set real compositing for windows through window's id, process' pid etc.
