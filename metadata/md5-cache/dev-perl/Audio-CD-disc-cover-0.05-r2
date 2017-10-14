@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-perl/URI-1.10 >=dev-perl/HTML-Parser-3.15 >=virtual/perl-MIME-Base64-2.12 >=virtual/perl-Digest-MD5-2.12 >=virtual/perl-libnet-1.0703-r1 >=dev-perl/libwww-perl-5.50 >=media-libs/libcdaudio-0.99.6 dev-lang/perl:=
+DESCRIPTION=Perl Module needed for app-cdr/disc-cover
+EAPI=6
+HOMEPAGE=http://www.vanhemert.co.uk/disc-cover.html
+IUSE=examples
+KEYWORDS=~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=dev-perl/URI-1.10 >=dev-perl/HTML-Parser-3.15 >=virtual/perl-MIME-Base64-2.12 >=virtual/perl-Digest-MD5-2.12 >=virtual/perl-libnet-1.0703-r1 >=dev-perl/libwww-perl-5.50 >=media-libs/libcdaudio-0.99.6 dev-lang/perl:=
+SLOT=0
+SRC_URI=http://www.vanhemert.co.uk/files/Audio-CD-0.05.tar.gz
+_eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=c5771daf5bff3bfe793d312b15d5dd69

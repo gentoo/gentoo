@@ -5476,7 +5476,7 @@ dev-perl/Array-RefElem 1.0.0-r1: Set up array elements as aliases
 dev-perl/Array-Window 1.20.0-r1: Array::Window - Calculate windows/subsets/pages of arrays
 dev-perl/Astro-FITS-Header 3.70.0: Interface to FITS headers
 dev-perl/AtExit 2.10.0-r1 2.30.0: atexit() function to register exit-callbacks
-dev-perl/Audio-CD-disc-cover 0.05-r1: Perl Module needed for app-cdr/disc-cover
+dev-perl/Audio-CD-disc-cover 0.05-r1 0.05-r2: Perl Module needed for app-cdr/disc-cover
 dev-perl/Audio-DSP 0.20.0-r1: Perl interface to *NIX digital audio device
 dev-perl/Audio-FLAC-Header 2.400.0-r1: Access to FLAC audio metadata
 dev-perl/Audio-Mixer 0.700.0-r1 0.700.0-r2: Perl extension for Sound Mixer control
@@ -13972,7 +13972,7 @@ media-sound/specimen 0.5.2_rc3-r1 0.5.2_rc3-r2: A Midi Controllable Audio Sample
 media-sound/spek 0.8.3-r1: Analyse your audio files by showing their spectrogram
 media-sound/splay 0.9.5.2-r2: An audio player, primarily for the console
 media-sound/split2flac 122 9999: sh script to split an APE/FLAC/WV/WAV audio image with CUE sheet into tracks
-media-sound/spotify 1.0.49 1.0.64: Spotify is a social music platform
+media-sound/spotify 1.0.64: Spotify is a social music platform
 media-sound/streamripper 1.64.6: Extracts and records individual MP3 file tracks from shoutcast streams
 media-sound/streamtranscoder 1.2.4 3.1.11: Commandline program to transcode shoutcast/icecast streams to different bitrates
 media-sound/subsonic-bin 5.2.1-r1: Subsonic is a complete, personal media streaming solution
