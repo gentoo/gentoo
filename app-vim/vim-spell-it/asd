@@ -1,0 +1,28 @@
+commit 907844c6e02e4696415ee7a47f07d209c15b3570
+Author: Patrice Clement <monsieurp@gentoo.org>
+Date:   Sat Oct 14 11:18:32 2017 +0200
+
+    app-vim/vim-spell-hu: EAPI 6 bump, update HOMEPAGE.
+    
+    Bug: https://bugs.gentoo.org/614654
+    
+    Package-Manager: Portage-2.3.8, Repoman-2.3.1
+
+diff --git a/app-vim/vim-spell-hu/vim-spell-hu-20100312-r1.ebuild b/app-vim/vim-spell-hu/vim-spell-hu-20100312-r1.ebuild
+new file mode 100644
+index 00000000000..bf59cdb4799
+--- /dev/null
++++ b/app-vim/vim-spell-hu/vim-spell-hu-20100312-r1.ebuild
+@@ -0,0 +1,12 @@
++# Copyright 1999-2017 Gentoo Foundation
++# Distributed under the terms of the GNU General Public License v2
++
++EAPI=6
++
++VIM_SPELL_LANGUAGE="Hungarian"
++
++inherit vim-spell
++
++LICENSE="GPL-2"
++KEYWORDS="~amd64 ~x86"
++HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
