@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -25,10 +25,6 @@ RDEPEND=">=sys-apps/portage-2.1
 	sys-apps/gentoo-functions
 	!sys-devel/crossdev-wrappers"
 DEPEND="app-arch/xz-utils"
-
-PATCHES=(
-	"${FILESDIR}"/use-new-path-for-functions.sh.patch
-)
 
 src_install() {
 	default
