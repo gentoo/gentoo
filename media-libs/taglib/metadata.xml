@@ -6,7 +6,6 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
-		<flag name="asf">Provide support for Microsoft's 'advanced systems format' media container.</flag>
 		<flag name="boost">Use <pkg>dev-libs/boost</pkg> instead of GCC built-ins</flag>
 	</use>
 	<upstream>
