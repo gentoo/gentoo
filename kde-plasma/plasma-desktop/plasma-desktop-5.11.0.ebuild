@@ -151,3 +151,12 @@ src_configure() {
 
 	kde5_src_configure
 }
+
+src_test() {
+	# needs D-Bus, bug #634166
+	local myctestargs=(
+		-E "(test_kio_fonts)"
+	)
+
+	kde5_src_test
+}
