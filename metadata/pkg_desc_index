@@ -45,7 +45,7 @@ app-admin/ansible 2.3.2.0-r2 2.4.0.0 9999: Model-driven deployment, config manag
 app-admin/apache-tools 2.2.31 2.2.34 2.4.27 2.4.28: Useful Apache tools - htdigest, htpasswd, ab, htdbm
 app-admin/apachetop 0.12.6-r1 0.12.6-r2: A realtime Apache log analyzer
 app-admin/apg 2.3.0b-r5: Another Password Generator
-app-admin/augeas 1.7.0 1.7.0-r1 1.8.0 1.8.0-r1 1.8.1 1.9.0: A library for changing configuration files
+app-admin/augeas 1.8.1 1.9.0: A library for changing configuration files
 app-admin/authbind 2.1.1: Bind sockets to privileged ports without root
 app-admin/aws-as-tools 1.0.49.1: The API tools serve as the client interface to the Auto Scaling web service
 app-admin/aws-cw-tools 1.0.12.1: The API tools serve as the client interface to the Amazon CloudWatch web service
@@ -5459,7 +5459,7 @@ dev-perl/Apache-Session 1.930.0: A persistence framework for session data
 dev-perl/Apache-SessionX 2.10.0-r1: An extented persistence framework for session data
 dev-perl/Apache-SizeLimit 0.970.0-r1: Graceful exit for large children
 dev-perl/Apache-Test 1.380.0-r1 1.390.0 1.400.0-r1 1.400.0-r2: Test.pm wrapper with helpers for testing Apache
-dev-perl/Apache2-AuthenNTLM 0.20.0-r1: Apache2::AuthenNTLM - Perform Microsoft NTLM and Basic User Authentication
+dev-perl/Apache2-AuthenNTLM 0.20.0-r1 0.20.0-r2: Perform Microsoft NTLM and Basic User Authentication
 dev-perl/App-CLI 0.313.0-r1: Dispatcher module for command line interface programs
 dev-perl/App-Cmd 0.331.0: write command line apps with less suffering
 dev-perl/App-Nopaste 1.4.0-r1 1.8.0 1.9.0 1.11.0: Easy access to any pastebin
@@ -12117,7 +12117,7 @@ kde-frameworks/kcrash 5.37.0 5.38.0 5.39.0: Framework for intercepting and handl
 kde-frameworks/kdbusaddons 5.37.0 5.38.0 5.39.0: Framework for registering services and applications per freedesktop standards
 kde-frameworks/kdeclarative 5.37.0 5.38.0 5.39.0: Framework providing integration of QML and KDE work spaces
 kde-frameworks/kded 5.37.0 5.38.0 5.39.0: Central daemon of KDE workspaces
-kde-frameworks/kdelibs 4.14.34 4.14.36 4.14.37: Libraries needed for programs by KDE
+kde-frameworks/kdelibs 4.14.34 4.14.37: Libraries needed for programs by KDE
 kde-frameworks/kdelibs-env 4.14.3: Environment setting required for all KDELibs4 apps to run
 kde-frameworks/kdelibs4support 5.37.0 5.38.0 5.39.0: Framework easing the development transition from KDELibs 4 to KF 5
 kde-frameworks/kdesignerplugin 5.37.0 5.38.0 5.39.0: Framework providing plugins to use KDE frameworks widgets in QtDesigner
@@ -13141,7 +13141,7 @@ media-libs/libquvi-scripts 0.4.14 0.4.19 0.4.20 0.4.21 0.4.21-r1 0.4.21-r2 0.9.2
 media-libs/libraw 0.18.4 0.18.5: LibRaw is a library for reading RAW files obtained from digital photo cameras
 media-libs/libreplaygain 477-r1: Replay Gain library from Musepack
 media-libs/librosprite 0.1.2-r1: framebuffer abstraction library, written in C
-media-libs/libsamplerate 0.1.9: Secret Rabbit Code (aka libsamplerate) is a Sample Rate Converter for audio
+media-libs/libsamplerate 0.1.9 9999: Secret Rabbit Code (aka libsamplerate) is a Sample Rate Converter for audio
 media-libs/libsbsms 2.0.0 2.0.1 2.0.2: A library for high quality time and pitch scale modification
 media-libs/libsdl 1.2.15-r9: Simple Direct Media Layer
 media-libs/libsdl2 2.0.4 2.0.5 2.0.5-r1 2.0.6: Simple Direct Media Layer
@@ -13151,7 +13151,7 @@ media-libs/libsidplay 1.36.59-r1 1.36.59-r2 2.1.1-r4: C64 SID player library
 media-libs/libsidplayfp 0.3.8 1.1.0 1.8.0 1.8.1: A library for the sidplay2 fork with resid-fp
 media-libs/libsixel 1.7.2 1.7.3: A lightweight, fast implementation of DEC SIXEL graphics codec
 media-libs/libsmf 1.3: Standard MIDI File format library
-media-libs/libsndfile 1.0.26 1.0.27-r1 1.0.28-r1: A C library for reading and writing files containing sampled sound
+media-libs/libsndfile 1.0.26 1.0.27-r1 1.0.28-r1 9999: A C library for reading and writing files containing sampled sound
 media-libs/libsoundio 1.1.0-r1: C library for cross-platform real-time audio input and output
 media-libs/libsoundtouch 1.8.0-r1 1.9.2 2.0.0: Audio processing library for changing tempo, pitch and playback rates
 media-libs/libsub 1.1.13 1.2.4 9999: read and write subtitles in a few different formats
@@ -13958,7 +13958,7 @@ media-sound/sidplayfp 0.3.3 1.1.0 1.4.0: A sidplay2 fork with resid-fp
 media-sound/skype-call-recorder 0.11: Records Skype calls to MP3/Ogg/WAV files
 media-sound/smixer 1.0.4: command-line tool for setting and viewing mixer settings
 media-sound/snd 17.4: Snd is a sound editor
-media-sound/sndfile-tools 1.03 1.03-r1: A small collection of programs that use libsndfile
+media-sound/sndfile-tools 1.03 1.03-r1 9999: A small collection of programs that use libsndfile
 media-sound/sndpeek 1.4: real-time audio visualization
 media-sound/solfege 3.22.2: GNU Solfege is a program written to help you practice ear training
 media-sound/sonata 1.6.2.1-r1: An elegant GTK+ music client for the Music Player Daemon (MPD)
@@ -16673,7 +16673,7 @@ sci-mathematics/pymc3 3.1: Bayesian Modeling and Probabilistic Machine Learning 
 sci-mathematics/qtoctave 0.10.1-r1: Qt4 front-end for Octave
 sci-mathematics/reduce 20110414-r1: A general-purpose computer algebra system
 sci-mathematics/relational 2.5: Educational tool for relational algebra
-sci-mathematics/rkward 0.6.1 0.6.5 0.6.5_p20170420: IDE for the R-project
+sci-mathematics/rkward 0.6.5_p20170420: IDE for the R-project
 sci-mathematics/rngstreams 1.0.1: Multiple independent streams of pseudo-random numbers
 sci-mathematics/rstudio 0.97.336 0.97.551 0.98.490 0.98.490-r1 0.98.932 0.98.953 0.98.1028 0.98.1091 0.99.473-r1 0.99.482 0.99.483 0.99.484 0.99.486-r1 0.99.491 0.99.879 0.99.893 0.99.896 0.99.902 0.99.903 1.0.44 1.0.136 1.0.143 1.0.153: IDE for the R language
 sci-mathematics/rw 0.7-r2: Compute rank-width decompositions of graphs
