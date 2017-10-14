@@ -1,0 +1,29 @@
+Adapted from upstream
+commit 54ebe365b752f8969a67279d0d29552ab638e025
+Author: Witold Filipczyk <witekfl@poczta.onet.pl>
+Date:   Mon Mar 6 17:39:36 2017 +0100
+
+    Compilation fix for OpenSSL-1.1
+
+--- a/src/network/ssl/socket.c
++++ b/src/network/ssl/socket.c
+@@ -67,7 +67,9 @@
+ ssl_set_no_tls(struct socket *socket)
+ {
+ #ifdef CONFIG_OPENSSL
+-	((ssl_t *) socket->ssl)->options |= SSL_OP_NO_TLSv1;
++#ifdef SSL_OP_NO_TLSv1
++	SSL_set_options((ssl_t *)socket->ssl, SSL_OP_NO_TLSv1);
++#endif
+ #elif defined(CONFIG_GNUTLS)
+ 	{
+ 		/* GnuTLS does not support SSLv2 because it is "insecure".
+@@ -145,7 +147,7 @@
+ 		}
+ 
+ 		if (client_cert) {
+-			SSL_CTX *ctx = ((SSL *) socket->ssl)->ctx;
++			SSL_CTX *ctx = SSL_get_SSL_CTX((SSL *) socket->ssl);
+ 
+ 			SSL_CTX_use_certificate_chain_file(ctx, client_cert);
+ 			SSL_CTX_use_PrivateKey_file(ctx, client_cert,
