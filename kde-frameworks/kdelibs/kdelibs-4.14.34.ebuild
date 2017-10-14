@@ -9,7 +9,6 @@ KDE_HANDBOOK="optional"
 OPENGL_REQUIRED="optional"
 QT3SUPPORT_REQUIRED="true"
 SQL_REQUIRED="always"
-WEBKIT_REQUIRED="optional"
 inherit kde4-base fdo-mime multilib toolchain-funcs flag-o-matic
 
 APPS_VERSION="17.04.3" # Don't forget to bump this
@@ -166,7 +165,7 @@ src_configure() {
 		-DWITH_OpenSSL=$(usex ssl)
 		-DWITH_UDev=$(usex udev)
 		-DWITH_SOLID_UDISKS2=$(usex udisks)
-		-DWITH_KDEWEBKIT=$(usex webkit)
+		-DWITH_KDEWEBKIT=OFF
 		-DWITH_Avahi=$(usex zeroconf)
 	)
 

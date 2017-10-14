@@ -7,7 +7,6 @@ CPPUNIT_REQUIRED="optional"
 DECLARATIVE_REQUIRED="always"
 KDE_HANDBOOK="optional"
 OPENGL_REQUIRED="optional"
-WEBKIT_REQUIRED="optional"
 inherit kde4-base toolchain-funcs flag-o-matic xdg-utils
 
 APPS_VERSION="17.08.2" # Don't forget to bump this
@@ -173,7 +172,7 @@ src_configure() {
 		-DWITH_OpenSSL=$(usex ssl)
 		-DWITH_UDev=$(usex udev)
 		-DWITH_SOLID_UDISKS2=$(usex udisks)
-		-DWITH_KDEWEBKIT=$(usex webkit)
+		-DWITH_KDEWEBKIT=OFF
 		-DWITH_Avahi=$(usex zeroconf)
 	)
 
