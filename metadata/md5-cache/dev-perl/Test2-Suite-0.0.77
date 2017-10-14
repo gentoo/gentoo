@@ -4,10 +4,10 @@ DESCRIPTION=A rich set of tools built upon the Test2 framework
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Test2-Suite/
 IUSE=test
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Carp >=dev-perl/Importer-0.24.0 virtual/perl-Scalar-List-Utils >=dev-perl/Sub-Info-0.1.0 >=dev-perl/Term-Table-0.2.0 >=virtual/perl-Test-Simple-1.302.73 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/E/EX/EXODIST/Test2-Suite-0.000077.tar.gz
 _eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
-_md5_=2c9d0fcf3d1859506d3fa5dd6003e631
+_md5_=37fe20a7faeaa1c0c520f0ec0a9f3353
