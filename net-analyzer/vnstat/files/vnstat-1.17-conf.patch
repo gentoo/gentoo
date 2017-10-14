@@ -1,4 +1,4 @@
---- a/cfg/vnstat.conf.JeR
+--- a/cfg/vnstat.conf
 +++ b/cfg/vnstat.conf
 @@ -115,10 +115,10 @@
  UpdateFileOwner 1
