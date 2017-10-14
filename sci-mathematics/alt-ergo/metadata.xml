@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tupone@gentoo.org</email>
+		<name>Tupone Alfredo</name>
+	</maintainer>
+	<longdescription lang="en">
+		Alt-Ergo is an open-source automatic solver of mathematical formulas
+		designed for program verification. It is based on Satisfiability Modulo
+		Theories (SMT). Solvers of this family have made impressive advances
+		and became very popular during the last decade. They are now used is
+		various domains such as hardware design, software verification and
+		formal testing.
+	</longdescription>
+</pkgmetadata>
