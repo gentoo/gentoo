@@ -8,6 +8,8 @@ RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 
 RUBY_FAKEGEM_EXTRAINSTALL="README.rdoc"
 
+RUBY_FAKEGEM_BINWRAP=""
+
 inherit ruby-fakegem
 
 DESCRIPTION="A library for reading and writing arbitrary messages in DJB's maildir format"
