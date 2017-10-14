@@ -22,15 +22,13 @@ RDEPEND="${PYTHON_DEPS}
 	system-snappy? ( >=app-arch/snappy-1.1.1[${MULTILIB_USEDEP}] )
 	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 	>=media-libs/mesa-9.1.6[egl?,${MULTILIB_USEDEP}]
-	egl? ( || (
-		>=media-libs/mesa-8.0[gles1,gles2]
-		<media-libs/mesa-8.0[gles]
-		)
-		media-libs/waffle[egl]
-	)
 	media-libs/libpng:0=
 	sys-process/procps
 	x11-libs/libX11
+	egl? (
+		>=media-libs/mesa-8.0[gles1,gles2]
+		media-libs/waffle[egl]
+	)
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
