@@ -17,6 +17,7 @@ IUSE="cuda doc opencl openmp ptex tbb"
 RDEPEND="media-libs/glew:=
 	media-libs/glfw:=
 	cuda? ( dev-util/nvidia-cuda-toolkit:* )
+	opencl? ( virtual/opencl )
 	ptex? ( media-libs/ptex )"
 
 DEPEND="${RDEPEND}
