@@ -56,6 +56,8 @@ src_prepare() {
 
 	epatch "${FILESDIR}"/${PN}-9999-parallel-make.patch
 	epatch "${FILESDIR}"/${PN}-0.12_pre5-compilation-fix.patch
+	epatch "${FILESDIR}"/${PN}-0.12_pre5-libressl.patch
+	epatch "${FILESDIR}"/${PN}-0.12_pre5-rand-egd.patch
 
 	if use javascript ; then
 		if has_version ">=dev-lang/spidermonkey-1.8"; then
