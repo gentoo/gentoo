@@ -18,7 +18,6 @@
   <use>
     <flag name="designer">Build bindings for the QtDesigner module and enable the designer plugin</flag>
     <flag name="gui">Build bindings for the QtGui module</flag>
-    <flag name="pyqt4">Enable the <pkg>dev-python/PyQt4</pkg> backend</flag>
     <flag name="pyqt5">Enable the <pkg>dev-python/PyQt5</pkg> backend</flag>
     <flag name="pyside">Enable the <pkg>dev-python/pyside</pkg> backend</flag>
     <flag name="svg">Build bindings for the QtSvg module</flag>
