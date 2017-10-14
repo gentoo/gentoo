@@ -41,6 +41,8 @@ DEPEND="${RDEPEND}
 
 DOCS=( README.md doc/ChangeLog doc/cmd.txt )
 
+PATCHES=( "${FILESDIR}/${P}-cmake.patch" )
+
 pkg_setup() {
 	use doc && python-any-r1_pkg_setup
 }
