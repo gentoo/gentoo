@@ -46,7 +46,7 @@ src_prepare() {
 
 src_configure() {
 	local myconf=(
-		$(use_enable debug paranoic-assertsasserts)
+		$(use_enable debug paranoic-asserts)
 		$(use_enable nls)
 		$(use_with doc extra-doc)
 		$(use_with sqlite)
