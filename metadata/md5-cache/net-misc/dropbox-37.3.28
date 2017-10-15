@@ -1,0 +1,15 @@
+DEFINED_PHASES=install postinst postrm preinst prepare setup unpack
+DEPEND=librsync-bundled? ( dev-util/patchelf ) >=sys-apps/sed-4 virtual/pkgconfig
+DESCRIPTION=Dropbox daemon (pretends to be GUI-less)
+EAPI=6
+HOMEPAGE=http://dropbox.com/
+IUSE=+librsync-bundled selinux X python_targets_python2_7
+KEYWORDS=~amd64 ~x86 ~x86-linux
+LICENSE=CC-BY-ND-3.0 FTL MIT LGPL-2 openssl dropbox
+RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] X? ( dev-libs/glib:2 dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtdeclarative:5 dev-qt/qtgui:5[-gles2,xcb] dev-qt/qtopengl:5[-gles2] dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5[-gles2] dev-qt/qtwebkit:5 dev-qt/qtwidgets:5[-gles2] media-libs/fontconfig media-libs/freetype virtual/jpeg x11-libs/libSM x11-libs/libX11 x11-libs/libXinerama x11-libs/libXxf86vm x11-libs/pango[X] x11-misc/wmctrl x11-themes/hicolor-icon-theme ) !librsync-bundled? ( <net-libs/librsync-2 ) selinux? ( sec-policy/selinux-dropbox ) app-arch/bzip2 dev-libs/popt net-misc/wget >=sys-devel/gcc-4.2.0 sys-libs/zlib || ( sys-libs/ncurses:5/5 sys-libs/ncurses:0/5 )
+REQUIRED_USE=python_targets_python2_7
+RESTRICT=mirror strip
+SLOT=0
+SRC_URI=x86? ( https://dl.dropboxusercontent.com/u/17/dropbox-lnx.x86-37.3.28.tar.gz ) amd64? ( https://dl.dropboxusercontent.com/u/17/dropbox-lnx.x86_64-37.3.28.tar.gz )
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	gnome2-utils	4d211d7614f303710fca59db6ec12c88	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	pax-utils	4f95120230a315c8caaabeb2307b7eee	python-single-r1	317a2557b4d7319a7418225f65accf77	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	systemd	34815d3b76e745c5ca33eec9f95074c2	toolchain-funcs	185a06792159ca143528e7010368e8af	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=fc3e4eda31cb5da2410101f823394c52
