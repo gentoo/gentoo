@@ -5,6 +5,7 @@ EAPI=6
 
 DIST_AUTHOR=LDS
 DIST_VERSION=1.17
+DIST_EXAMPLES=("eg/*")
 inherit perl-module
 
 DESCRIPTION="Interface to Distributed Annotation System"
@@ -20,11 +21,27 @@ DEPEND=">=virtual/perl-IO-Compress-1.0
 	>=virtual/perl-MIME-Base64-2.12"
 RDEPEND="${DEPEND}"
 
+optdep_notice() {
+	local i
+	elog "This package has several modules which may require additional dependencies"
+	elog "to use. However, it is up to you to install them separately if you need this"
+	elog "optional functionality:"
+	elog
+	i="$(if has_version 'dev-perl/CGI'; then echo '[I]'; else echo '[ ]'; fi)"
+	elog " $i dev-perl/CGI"
+	elog "     - Running a reference DAS server driven by an AGP File via"
+	elog "       Bio::Das::AGPServer::Daemon"
+
+	if use test; then
+		elog
+		elog "This module will perform additional tests if these dependencies are"
+		elog "pre-installed"
+	fi
+}
 src_test() {
 	local MODULES=(
 		"Bio::Das ${DIST_VERSION}"
 		"Bio::Das::AGPServer::Config 1.0"
-		"Bio::Das::AGPServer::Daemon"
 		"Bio::Das::AGPServer::Parser"
 		"Bio::Das::AGPServer::SQLStorage"
 		"Bio::Das::AGPServer::SQLStorage::CSV::DB"
@@ -48,6 +65,9 @@ src_test() {
 		"Bio::Das::Type"
 		"Bio::Das::TypeHandler"
 		"Bio::Das::Util 0.01"
+	)
+	has_version dev-perl/CGI && MODULES+=(
+		"Bio::Das::AGPServer::Daemon"
 	)
 	local failed=()
 	for dep in "${MODULES[@]}"; do
