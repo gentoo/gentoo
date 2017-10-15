@@ -554,10 +554,6 @@ x11-libs/gtk+:1
 =app-emulation/ganeti-2.16*
 =app-emulation/ganeti-2.17*
 
-# Markos Chandras <hwoarang@gentoo.org> (10 Dec 2016)
-# Reverse dependencies need testing, wrt bug #580760
->=net-libs/libtorrent-rasterbar-1.1.1
-
 # Michał Górny <mgorny@gentoo.org> (17 Nov 2016)
 # New version masked for testing. It supports source-window buffer size
 # over 2G but it 'currently performs 3-5% slower and has 1-2% worse
