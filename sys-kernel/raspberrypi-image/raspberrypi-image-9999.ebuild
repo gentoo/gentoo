@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit git-r3 readme.gentoo
+inherit git-r3 readme.gentoo-r1
 
 DESCRIPTION="Raspberry PI boot loader and firmware"
 HOMEPAGE="https://github.com/raspberrypi/firmware"
@@ -14,42 +14,44 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-DEPEND=""
-RDEPEND="!sys-boot/raspberrypi-loader"
-
 EGIT_REPO_URI="https://github.com/raspberrypi/firmware"
+DOC_CONTENTS="Please configure your ram setup by editing /boot/config.txt"
 
 RESTRICT="binchecks strip"
 
 pkg_preinst() {
 	if [ -z "${REPLACING_VERSIONS}" ] ; then
 		local msg=""
-		if [ -e "${D}"/boot/cmdline.txt -a -e /boot/cmdline.txt ] ; then
+		if [ -e "${D}"/boot/cmdline.txt -a -e "${ROOT}"/boot/cmdline.txt ] ; then
 			msg+="/boot/cmdline.txt "
 		fi
-		if [ -e "${D}"/boot/config.txt -a -e /boot/config.txt ] ; then
+		if [ -e "${D}"/boot/config.txt -a -e "${ROOT}"/boot/config.txt ] ; then
 			msg+="/boot/config.txt "
 		fi
 		if [ -n "${msg}" ] ; then
 			msg="This package installs following files: ${msg}."
-			msg="${msg} Please remove(backup) your copies durning install"
+			msg="${msg} Please remove(backup) your copies during install"
 			msg="${msg} and merge settings afterwards."
 			msg="${msg} Further updates will be CONFIG_PROTECTed."
 			die "${msg}"
 		fi
 	fi
+
+	if ! grep "${ROOT}boot" /proc/mounts >/dev/null 2>&1; then
+		ewarn "${ROOT}boot is not mounted, the files might not be installed at the right place"
+	fi
 }
+
+src_configure() { :; }
+
+src_compile() { :; }
 
 src_install() {
+	insinto /lib/modules
+	doins -r modules/*
 	insinto /boot
-	cd boot
-	doins bootcode.bin COPYING.linux fixup*.dat LICENCE.broadcom start*elf
-	doins *.dtb
-	doins -r overlays
-	newins "${FILESDIR}"/${PN}-0_p20130711-config.txt config.txt
-	newins "${FILESDIR}"/${PN}-0_p20130711-cmdline.txt cmdline.txt
-	newenvd "${FILESDIR}"/${PN}-0_p20130711-envd 90${PN}
+	newins boot/kernel.img kernel.img
+	newins boot/kernel7.img kernel7.img
+
 	readme.gentoo_create_doc
 }
-
-DOC_CONTENTS="Please configure your ram setup by editing /boot/config.txt"
