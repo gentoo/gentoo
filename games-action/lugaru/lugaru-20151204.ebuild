@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -25,8 +25,11 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
+PATCHES=( "${FILESDIR}/${P}-dir.patch" )
+
 src_prepare() {
-	epatch "${FILESDIR}/${P}-dir.patch"
+	cmake-utils_src_prepare
+
 	sed -i \
 		-e "s:@GENTOO_DIR@:${GAMES_DATADIR}/${PN}:" \
 		Source/OpenGL_Windows.cpp || die
