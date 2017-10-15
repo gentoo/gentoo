@@ -5717,7 +5717,7 @@ dev-perl/Data-Buffer 0.40.0-r1: Read/write buffer class
 dev-perl/Data-Compare 1.250.0: Compare perl data structures
 dev-perl/Data-Diver 1.010.1: Simple, ad-hoc access to elements of deeply nested structures
 dev-perl/Data-Dump 1.230.0: Pretty printing of data structures
-dev-perl/Data-Dump-Streamer 2.390.0 2.400.0: Accurately serialize a data structure as Perl code
+dev-perl/Data-Dump-Streamer 2.400.0: Accurately serialize a data structure as Perl code
 dev-perl/Data-DumpXML 1.60.0-r1: Dump arbitrary data structures as XML
 dev-perl/Data-Dumper-Concise 2.23.0: Less indentation and newlines plus sub deparsing
 dev-perl/Data-Float 0.12.0 0.13.0: details of the floating point data type
@@ -5817,7 +5817,7 @@ dev-perl/Digest-Perl-MD5 1.900.0: Pure perl implementation of MD5
 dev-perl/Digest-SHA1 2.130.0-r1: NIST SHA message digest algorithm
 dev-perl/Dist-CheckConflicts 0.20.0-r1 0.110.0: Declare version conflicts for your dist
 dev-perl/Dist-Metadata 0.927.0: Information about a perl module distribution
-dev-perl/Dist-Zilla 6.8.0 6.9.0 6.10.0 6.10.0-r2: distribution builder; installer not included!
+dev-perl/Dist-Zilla 6.10.0-r2: distribution builder; installer not included!
 dev-perl/Dist-Zilla-Plugin-AuthorsFromGit 0.5.0 0.6.0: Add per-file per-year copyright information
 dev-perl/Dist-Zilla-Plugin-Config-Git 0.920.0: Plugin configuration containing settings for a Git repo
 dev-perl/Dist-Zilla-Plugin-Git 2.42.0-r1: Update your git repository after release
