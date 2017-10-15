@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -28,11 +28,15 @@ PATCHES=( "${FILESDIR}"/${P}-nodatalocal.patch
 
 S=${WORKDIR}/${PN}
 
+src_prepare() {
+	cmake-utils_src_prepare
+}
+
 src_configure() {
-	mycmakeargs=(
-	"-DCMAKE_VERBOSE_MAKEFILE=TRUE"
-	"-DBIN_DIR=${GAMES_BINDIR}"
-	$(use net && echo "-DNO_NET=0" || echo "-DNO_NET=1")
+	local mycmakeargs=(
+		"-DCMAKE_VERBOSE_MAKEFILE=TRUE"
+		"-DBIN_DIR=${GAMES_BINDIR}"
+		$(use net && echo "-DNO_NET=0" || echo "-DNO_NET=1")
 	)
 	cmake-utils_src_configure
 }
