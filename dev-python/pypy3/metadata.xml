@@ -10,7 +10,6 @@
 			This makes it possible to build PyPy using ~3.5G of RAM on amd64 and ~half of that on x86,
 			at the cost of lengthened build time.</flag>
 		<flag name="sandbox">Enable sandboxing functionality</flag>
-		<flag name="shadowstack">Use a shadow stack for finding GC roots</flag>
 	</use>
 	<upstream>
 		<remote-id type="bitbucket">pypy/pypy</remote-id>
