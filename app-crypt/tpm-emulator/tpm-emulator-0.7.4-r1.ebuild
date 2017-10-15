@@ -34,14 +34,15 @@ pkg_setup() {
 }
 
 src_prepare() {
-	default
+	cmake-utils_src_prepare
+
 	# do not build and install the kernel module
 	sed -i 's/COMMAND ${tpmd_dev_BUILD_CMD}//' tpmd_dev/CMakeLists.txt || die
 	sed -i 's/install(CODE.*//' tpmd_dev/CMakeLists.txt || die
 }
 
 src_configure() {
-	mycmakeargs=(
+	local mycmakeargs=(
 		-DUSE_OPENSSL=$(usex ssl)
 	)
 	cmake-utils_src_configure
