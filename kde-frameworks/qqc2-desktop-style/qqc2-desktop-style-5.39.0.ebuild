@@ -3,6 +3,7 @@
 
 EAPI=6
 
+KDE_QTHELP="false"
 inherit kde5
 
 DESCRIPTION="Style for QtQuickControls 2 that uses QWidget's QStyle for painting"
