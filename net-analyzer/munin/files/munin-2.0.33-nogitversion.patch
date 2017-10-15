@@ -1,0 +1,11 @@
+--- munin-2.0.33/getversion
++++ munin-2.0.33/getversion
+@@ -54,8 +54,6 @@
+ 
+ if [ -s "RELEASE" ]; then
+     cat RELEASE
+-elif [ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = "true" ]; then
+-    generate_version_string
+ elif [ ! -z "$(generate_version_string_from_dir)" ]; then
+ 	generate_version_string_from_dir
+ else
