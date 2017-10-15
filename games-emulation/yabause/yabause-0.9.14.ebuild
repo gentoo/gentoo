@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -39,9 +39,13 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-RWX.patch
+	"${FILESDIR}"/${P}-cmake.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-RWX.patch \
-		"${FILESDIR}"/${P}-cmake.patch
+	cmake-utils_src_prepare
 }
 
 src_configure() {
