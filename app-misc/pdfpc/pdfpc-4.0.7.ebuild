@@ -29,7 +29,8 @@ DEPEND="${RDEPEND}
 	$(vala_depend)"
 
 src_prepare() {
-	default
+	cmake-utils_src_prepare
+
 	sed -i -e "s/valac-0.20/valac-0.36 valac-0.34 valac-0.32 valac-0.30 valac-0.28 valac-0.26/" cmake/vala/FindVala.cmake || die
 	vala_src_prepare
 }
