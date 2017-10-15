@@ -7,7 +7,7 @@ inherit autotools elisp-common flag-o-matic multilib readme.gentoo-r1
 
 if [[ ${PV##*.} = 9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://git.sv.gnu.org/emacs.git"
+	EGIT_REPO_URI="https://git.savannah.gnu.org/git/emacs.git"
 	EGIT_BRANCH="master"
 	EGIT_CHECKOUT_DIR="${WORKDIR}/emacs"
 	S="${EGIT_CHECKOUT_DIR}"
