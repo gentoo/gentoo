@@ -6,7 +6,7 @@ EAPI=6
 DESCRIPTION="A virtual for PyPy3 Python implementation"
 # pypy3 -c 'import sysconfig; print(sysconfig.get_config_var("SOABI"))'
 SLOT="0/59"
-KEYWORDS="~amd64 ~amd64-linux"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="bzip2 gdbm ncurses sqlite tk"
 
 RDEPEND="

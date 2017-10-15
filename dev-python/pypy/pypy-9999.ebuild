@@ -44,33 +44,35 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${MY_P}-src"
 
-pkg_pretend() {
-	if [[ ${MERGE_TYPE} != binary ]]; then
-		if use low-memory; then
-			if ! python_is_installed pypy; then
-				eerror "USE=low-memory requires a (possibly old) version of dev-python/pypy"
-				eerror "or dev-python/pypy-bin being installed. Please install it using e.g.:"
-				eerror
-				eerror "  $ emerge -1v dev-python/pypy-bin"
-				eerror
-				eerror "before attempting to build dev-python/pypy[low-memory]."
-				die "dev-python/pypy-bin (or dev-python/pypy) needs to be installed for USE=low-memory"
-			fi
-
-			CHECKREQS_MEMORY="1750M"
-			use amd64 && CHECKREQS_MEMORY="3500M"
-		else
-			CHECKREQS_MEMORY="3G"
-			use amd64 && CHECKREQS_MEMORY="6G"
+check_env() {
+	if use low-memory; then
+		if ! python_is_installed pypy; then
+			eerror "USE=low-memory requires a (possibly old) version of dev-python/pypy"
+			eerror "or dev-python/pypy-bin being installed. Please install it using e.g.:"
+			eerror
+			eerror "  $ emerge -1v dev-python/pypy-bin"
+			eerror
+			eerror "before attempting to build dev-python/pypy[low-memory]."
+			die "dev-python/pypy-bin (or dev-python/pypy) needs to be installed for USE=low-memory"
 		fi
 
-		check-reqs_pkg_pretend
+		CHECKREQS_MEMORY="1750M"
+		use amd64 && CHECKREQS_MEMORY="3500M"
+	else
+		CHECKREQS_MEMORY="3G"
+		use amd64 && CHECKREQS_MEMORY="6G"
 	fi
+
+	check-reqs_pkg_pretend
+}
+
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && check_env
 }
 
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
-		pkg_pretend
+		check_env
 
 		if python_is_installed pypy; then
 			if [[ ! ${EPYTHON} || ${EPYTHON} == pypy ]] || use low-memory; then
