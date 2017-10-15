@@ -8251,7 +8251,7 @@ dev-python/pyavm 0.9.4: Python module for Astronomy Visualization Metadata i/o
 dev-python/pybloomfiltermmap 0.3.11-r1 0.3.14 0.3.15: A Bloom filter (bloomfilter) for Python built on mmap
 dev-python/pybluez 0.18-r1 0.22: Python bindings for Bluez Bluetooth Stack
 dev-python/pycadf 2.5.0 2.6.0: python implementation of DMTF Cloud Audit (CADF) data model
-dev-python/pycairo 1.10.0-r4 1.10.0-r5 1.13.1-r1 1.15.0 1.15.1 1.15.2 1.15.3: Python bindings for the cairo library
+dev-python/pycairo 1.10.0-r5 1.15.3: Python bindings for the cairo library
 dev-python/pycallgraph 1.0.1: library and command line tool to visualise the flow of Python applications
 dev-python/pycanberra 0_pre20130515: Basic Python wrapper for libcanberra
 dev-python/pycapnp 0.5.12-r1 0.6.1: Python wrapping of the Cap'n Proto library
@@ -15221,7 +15221,7 @@ net-misc/dleyna-server 0.5.0: library for implementing services that allow clien
 net-misc/dnetstats 1.2.6-r3: Qt4 network monitor utility
 net-misc/drive 0.3.9.1: Google Drive client for the commandline
 net-misc/dropbear 2016.74: small SSH 2 client/server designed for small memory environments
-net-misc/dropbox 26.3.21 34.3.19 37.3.28: Dropbox daemon (pretends to be GUI-less)
+net-misc/dropbox 34.3.19 37.3.28: Dropbox daemon (pretends to be GUI-less)
 net-misc/dropbox-cli 1-r1 1.6.0: Cli interface for dropbox (python), part of nautilus-dropbox
 net-misc/efax 0.9a-r4: A simple fax program for single-user systems
 net-misc/electrum 2.7.15 2.8.0-r1 2.8.2 2.8.3 2.9.3: User friendly Bitcoin client
@@ -19369,7 +19369,7 @@ x11-themes/commonbox-styles 0.6: Common styles for fluxbox, blackbox, and openbo
 x11-themes/commonbox-styles-extra 0.2-r2: Extra styles pack for flux|black|open(box)
 x11-themes/constantine-backgrounds 12.1.1.4 12.1.1.4-r1: Fedora official background artwork
 x11-themes/echo-icon-theme 0.3.89.0_pre20081031: SVG icon theme from the Echo Icon project
-x11-themes/elementary-xfce-icon-theme 0.8 0.8_p20170710: Elementary icons forked from upstream, extended and maintained for Xfce
+x11-themes/elementary-xfce-icon-theme 0.8 0.8_p20170710 0.9: Elementary icons forked from upstream, extended and maintained for Xfce
 x11-themes/emerald-themes 0.5.2: Emerald window decorator themes
 x11-themes/ethemes 0.16.8.0.3 1.0.0 1.0.1: all the official Enlightenment themes
 x11-themes/experience 3.04: GTK+2 themes which copy and improve the look of XP Luna
