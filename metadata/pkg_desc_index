@@ -10482,7 +10482,7 @@ dev-util/jconfig 2.8-r3 2.8.5 2.9: jConfig is an extremely helpful utility, prov
 dev-util/jenkins-bin 2.73.2 2.84: Extensible continuous integration server
 dev-util/kbuild 0.1.9998_pre20131130 0.1.9998_pre20131130-r1 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 33 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
-dev-util/kdbg 2.9.0 2.9.1: Graphical debugger interface
+dev-util/kdbg 2.9.1: Graphical debugger interface
 dev-util/kdevelop 5.1.1 5.1.2: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
 dev-util/kdevelop-pg-qt 2.0.0-r1 2.1.0: LL(1) parser generator used mainly by KDevelop language plugins
 dev-util/kdevelop-php 5.1.1 5.1.2: PHP plugin for KDevelop
@@ -16442,7 +16442,7 @@ sci-libs/galib 2.4.7-r1: Library for genetic algorithms in C++ programs
 sci-libs/gamer 1.5-r2: Geometry-preserving Adaptive MeshER
 sci-libs/gaul-devel 0.1849-r1 0.1849-r2: Genetic Algorithm Utility Library
 sci-libs/gdal 2.0.2-r3 2.0.3: Translator library for raster geospatial data formats (includes OGR support)
-sci-libs/geos 3.5.0 3.5.0-r2 3.6.1 3.6.2: Geometry engine library for Geographic Information Systems
+sci-libs/geos 3.6.1 3.6.2: Geometry engine library for Geographic Information Systems
 sci-libs/gerris 20131206-r1: Gerris Flow Solver
 sci-libs/getdata 0.8.5 0.9.0 0.9.0-r1: Reference implementation of the Dirfile, format for time-ordered binary data
 sci-libs/gpp4 1.3.1: A standalone, drop-in replacement for the CCP4 library
@@ -16677,7 +16677,7 @@ sci-mathematics/reduce 20110414-r1: A general-purpose computer algebra system
 sci-mathematics/relational 2.5: Educational tool for relational algebra
 sci-mathematics/rkward 0.6.5_p20170420: IDE for the R-project
 sci-mathematics/rngstreams 1.0.1: Multiple independent streams of pseudo-random numbers
-sci-mathematics/rstudio 0.97.336 0.97.551 0.98.490 0.98.490-r1 0.98.932 0.98.953 0.98.1028 0.98.1091 0.99.473-r1 0.99.482 0.99.483 0.99.484 0.99.486-r1 0.99.491 0.99.879 0.99.893 0.99.896 0.99.902 0.99.903 1.0.44 1.0.136 1.0.143 1.0.153: IDE for the R language
+sci-mathematics/rstudio 0.99.473-r1 0.99.482 0.99.483 0.99.484 0.99.486-r1 0.99.491 0.99.879 0.99.893 0.99.896 0.99.902 0.99.903 1.0.44 1.0.136 1.0.143 1.0.153: IDE for the R language
 sci-mathematics/rw 0.7-r2: Compute rank-width decompositions of graphs
 sci-mathematics/sha1-polyml 5.5.0 5.6_p1: implementation of SHA1 is taken from the GNU coreutils package
 sci-mathematics/singular 3.1.6 4.0.2 4.0.3: Computer algebra system for polynomial computations
