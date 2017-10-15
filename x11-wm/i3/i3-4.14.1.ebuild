@@ -5,8 +5,6 @@ EAPI=6
 
 AEVER=0.17
 
-VIRTUALX_REQUIRED=always
-
 inherit autotools virtualx
 
 DESCRIPTION="An improved dynamic tiling window manager"
@@ -101,7 +99,7 @@ src_compile() {
 
 src_install() {
 	emake -C "${CBUILD}" DESTDIR="${D}" install
-	doman "${CBUILD}"/man/*.1
+	doman "${S}"/man/*.1
 
 	use doc && einstalldocs
 
