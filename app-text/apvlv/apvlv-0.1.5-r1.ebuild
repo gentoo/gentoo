@@ -23,11 +23,11 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
-src_prepare() {
+PATCHES=(
 	# preserve cflags
-	epatch "${FILESDIR}/${PN}-0.1.5-cflags.patch"
-	epatch "${FILESDIR}/${PN}-0.1.5-gcc6.patch"
-}
+	"${FILESDIR}/${PN}-0.1.5-cflags.patch"
+	"${FILESDIR}/${PN}-0.1.5-gcc6.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(
