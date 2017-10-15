@@ -54,8 +54,7 @@ src_prepare() {
 	rm "${S}/java/${P}.jar" || die
 
 	# prevent triggering doc updates after punycode.c patch
-	touch doc/texi/punycode* || die
-	touch doc/man/punycode* || die
+	touch doc/texi/punycode* doc/man/punycode* doc/libidn.info || die
 
 	elibtoolize  # for Solaris shared objects
 }
