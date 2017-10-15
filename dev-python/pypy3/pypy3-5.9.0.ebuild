@@ -41,23 +41,25 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${MY_P}-src"
 
-pkg_pretend() {
-	if [[ ${MERGE_TYPE} != binary ]]; then
-		if use low-memory; then
-			CHECKREQS_MEMORY="1750M"
-			use amd64 && CHECKREQS_MEMORY="3500M"
-		else
-			CHECKREQS_MEMORY="3G"
-			use amd64 && CHECKREQS_MEMORY="6G"
-		fi
-
-		check-reqs_pkg_pretend
+check_env() {
+	if use low-memory; then
+		CHECKREQS_MEMORY="1750M"
+		use amd64 && CHECKREQS_MEMORY="3500M"
+	else
+		CHECKREQS_MEMORY="3G"
+		use amd64 && CHECKREQS_MEMORY="6G"
 	fi
+
+	check-reqs_pkg_pretend
+}
+
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && check_env
 }
 
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
-		pkg_pretend
+		check_env
 
 		# unset to allow forcing pypy below :)
 		use low-memory && local EPYTHON=
