@@ -33,7 +33,8 @@ PATCHES=(
 )
 
 src_prepare() {
-	default
+	cmake-utils_src_prepare
+
 	sed -e "s:share):share/${P}):" \
 		-i CMakeLists.txt || die "failed to patch CMakeLists.txt"
 	sed -i -e '/SET(WX_VERSION "2.8")/d' CMakeLists.txt || die

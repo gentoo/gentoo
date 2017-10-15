@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -28,6 +28,8 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${MY_PN}-${PV}-Source"
 
 src_prepare() {
+	cmake-utils_src_prepare
+
 	sed -e "s:share):share/${P}):" \
 		-i CMakeLists.txt || die "Couldn't patch CMakeLists.txt"
 	sed -i -e '/SET(WX_VERSION "2.8")/d' CMakeLists.txt || die
