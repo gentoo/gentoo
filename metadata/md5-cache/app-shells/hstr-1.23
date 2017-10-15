@@ -1,0 +1,12 @@
+DEFINED_PHASES=prepare
+DEPEND=sys-libs/ncurses:0= virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Shell history suggest box
+EAPI=6
+HOMEPAGE=https://github.com/dvorka/hstr http://www.mindforger.com
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0
+RDEPEND=sys-libs/ncurses:0=
+SLOT=0
+SRC_URI=https://github.com/dvorka/hstr/archive/1.23.tar.gz -> hstr-1.23.tar.gz
+_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=ee2a73b719f48e4b9acd950822a7a5a3

@@ -95,7 +95,7 @@ app-admin/evtxtools 1.1.1-r1: Read, decode and dump Windows Vista/2008/7 event l
 app-admin/fam 2.7.0-r7: FAM, the File Alteration Monitor
 app-admin/fetchlog 1.0 1.4-r1: Displays the last new messages of a logfile
 app-admin/fifo-cronolog 1.1.1-r1: cronolog wrapper for use with dumb daemons like squid, varnish and so on
-app-admin/filebeat 5.5.2 5.6.2: Lightweight log shipper for Logstash and Elasticsearch
+app-admin/filebeat 5.5.2 5.6.3: Lightweight log shipper for Logstash and Elasticsearch
 app-admin/filewatcher 2.4.6-r1: File control configuration system and IDS
 app-admin/fleet 0.11.5 0.11.8 1.0.0 9999: A Distributed init System
 app-admin/fsvs 1.2.5-r1 1.2.5-r2: Backup/restore for subversion backends
@@ -2167,7 +2167,7 @@ app-shells/fish 2.4.0 2.5.0 2.6.0: fish is the Friendly Interactive SHell
 app-shells/gentoo-bashcomp 20101217-r1 20121024 20140911: Gentoo-specific bash command-line completions (emerge, ebuild, equery, etc)
 app-shells/gentoo-zsh-completions 20141115 20150103 99999999: Gentoo specific zsh completion support (includes emerge and ebuild commands)
 app-shells/heirloom-sh 050706-r1: Heirloom Bourne Shell, derived from OpenSolaris code SVR4/SVID3
-app-shells/hstr 1.22-r1: Shell history suggest box
+app-shells/hstr 1.22-r1 1.23: Shell history suggest box
 app-shells/ksh 93.20140625 93.20160110: The Original Korn Shell, 1993 revision (ksh93)
 app-shells/localshell 1.3.4-r1: Localshell allows per-user/group local control of shell execution
 app-shells/mksh 52 52b 52c 53a 56 56b 9999: MirBSD Korn Shell
@@ -10348,7 +10348,7 @@ dev-util/checkstyle 7.2: Development tool to help write Java code that adheres t
 dev-util/clair 2.0.1: Vulnerability Static Analysis for Containers
 dev-util/clazy 1.2: Compiler plugin which allows clang to understand Qt semantics
 dev-util/cligh 0.1_p20120630 0.2 9999: Command-line interface to GitHub
-dev-util/clion 1.2.4.143.1186 2016.2.1 2017.2.2: A complete toolset for C and C++ development
+dev-util/clion 1.2.4.143.1186 2016.2.1 2017.2.3: A complete toolset for C and C++ development
 dev-util/cloc 1.64 1.66 1.70 1.72: Count Lines of Code
 dev-util/cmake 3.7.2 3.8.2 3.9.4 3.10.0_rc2: Cross platform Make
 dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
@@ -14347,7 +14347,7 @@ net-analyzer/labrea 2.5-r2: 'Sticky' Honeypot and IDS
 net-analyzer/lft 3.77 3.78 3.79: Layer Four Traceroute (LFT) and WhoB
 net-analyzer/libnasl 2.2.9-r1: A remote security scanner for Linux (libnasl)
 net-analyzer/lilac 1.0.3: Web-based configuration tool written to configure Nagios
-net-analyzer/linkchecker 9.3-r2 9999: Check websites for broken links
+net-analyzer/linkchecker 9.3-r2 9.3.1 9999: Check websites for broken links
 net-analyzer/macchanger 1.7.0 1.7.0-r1: Utility for viewing/manipulating the MAC address of network interfaces
 net-analyzer/masscan 1.0.3-r2 1.0.4: Mass IP port scanner
 net-analyzer/mate-netspeed 1.12.0: Applet showing network traffic for MATE
@@ -15176,7 +15176,7 @@ net-misc/bfgminer 3.10.5 3.10.10 4.10.3 4.10.4 5.3.0 5.4.0 5.4.1 5.4.2: Modular 
 net-misc/bgpq3 0.1.22 0.1.33: Generate access-lists for Cisco/Juniper routers, successor of bgpq
 net-misc/bird 1.4.5 1.5.0 1.6.0 1.6.1 1.6.2 1.6.3: A routing daemon implementing OSPF, RIPv2 & BGP for IPv4 or IPv6
 net-misc/blinkperl 20030301-r2: blinkperl is a telnet server, which plays BlinkenLight movies
-net-misc/bopm 3.1.3-r3: Blitzed Open Proxy Monitor
+net-misc/bopm 3.1.3-r4: Blitzed Open Proxy Monitor
 net-misc/bridge-utils 1.5 1.6: Tools for configuring the Linux kernel 802.1d Ethernet Bridge
 net-misc/bsdwhois 1.43.2.1: FreeBSD Whois Client
 net-misc/bti 034: A command line twitter/identi.ca client
@@ -15412,7 +15412,7 @@ net-misc/rclone 1.36 1.37 9999: A program to sync files to and from various clou
 net-misc/rdate 1.4-r3 1.4-r4: use TCP or UDP to retrieve the current time of another machine
 net-misc/rdesktop 1.8.3 1.8.3-r1 1.8.3-r2: A Remote Desktop Protocol Client
 net-misc/redir 2.2.1: Redir is a port redirector
-net-misc/remmina 1.2.0_rc16-r1 1.2.0_rc19 1.2.0_rc20: A GTK+ RDP, VNC, XDMCP and SSH client
+net-misc/remmina 1.2.0_rc16-r1 1.2.0_rc20 1.2.0_rc21: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
 net-misc/ris-linux 0.4-r1: BINL server to doing Windows(r) RIS
 net-misc/rsync 3.1.2: File transfer program to keep remote files into sync
@@ -18343,7 +18343,7 @@ www-apps/jekyll-gist 1.4.0: Liquid tag for displaying GitHub Gists in Jekyll sit
 www-apps/jekyll-sass-converter 1.4.0 1.5.0: A basic Sass converter for Jekyll
 www-apps/jekyll-sitemap 0.11.0: Automatically generate a sitemap.xml for your Jekyll site
 www-apps/jekyll-watch 1.3.1 1.5.0: Rebuild your Jekyll site when a file changes with the --watch switch
-www-apps/kibana-bin 5.5.2 5.6.2: Analytics and search dashboard for Elasticsearch
+www-apps/kibana-bin 5.5.2 5.6.3: Analytics and search dashboard for Elasticsearch
 www-apps/klaus 1.1.0 1.2.1: A simple, easy-to-set-up Git web viewer
 www-apps/liquid_feedback_core 2.2.3 2.2.6 3.0.4: Internet platforms for proposition development and decision making
 www-apps/liquid_feedback_frontend 2.2.2 2.2.7 3.0.6: Internet platforms for proposition development and decision making
