@@ -11,11 +11,6 @@
 # Depends on old ffmpeg-2, which no longer exists in the repo.
 <=media-tv/tvheadend-4.0.9 ffmpeg
 
-# Andreas Sturmlechner <asturm@gentoo.org> (30 Sep 2017)
-# Depends on masked net-libs/libtorrent-rasterbar-1.1
-# bugs #580760, #630364
-net-misc/fatrat bittorrent
-
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (18 Sep 2017)
 # Ian Stakenvicius <axs@gentoo.org> (27 Sep 2017)
 # Depends on >=icu-59, still masked.
