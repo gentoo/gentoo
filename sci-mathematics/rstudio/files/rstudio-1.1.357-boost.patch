@@ -1,0 +1,13 @@
+Index: rstudio-1.1.357/src/cpp/core/Trace.cpp
+===================================================================
+--- rstudio-1.1.357.orig/src/cpp/core/Trace.cpp
++++ rstudio-1.1.357/src/cpp/core/Trace.cpp
+@@ -14,6 +14,8 @@
+  */
+ 
+ 
++#include <iostream>
++
+ #include <core/Trace.hpp>
+ 
+ #include <map>
