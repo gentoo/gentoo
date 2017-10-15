@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile configure install preinst unpack
+DEPEND=>=dev-vcs/git-1.8.2.1
+DESCRIPTION=Raspberry PI boot loader and firmware
+EAPI=5
+HOMEPAGE=https://github.com/raspberrypi/firmware
+LICENSE=GPL-2 raspberrypi-videocore-bin
+RESTRICT=binchecks strip
+SLOT=0
+_eclasses_=git-r3	52a888802d25387c2c74cb845d1219bc	readme.gentoo-r1	6f03e110529650f57fc7d1fb908b8986
+_md5_=5b0a124149e969eab5a32c029eeb1731
