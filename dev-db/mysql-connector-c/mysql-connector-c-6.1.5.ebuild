@@ -35,11 +35,7 @@ RDEPEND="${CDEPEND}
 DEPEND="${CDEPEND}"
 
 DOCS=( README Docs/ChangeLog )
-
-src_prepare() {
-	epatch "${FILESDIR}/openssl-cmake-detection.patch"
-	epatch_user
-}
+PATCHES=( "${FILESDIR}/openssl-cmake-detection.patch" )
 
 multilib_src_configure() {
 	mycmakeargs+=(
