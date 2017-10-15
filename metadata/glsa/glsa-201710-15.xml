@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201710-15">
+  <title>GnuTLS: Denial of Service</title>
+  <synopsis>A null pointer dereference in GnuTLS might allow attackers to cause
+    a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">gnutls</product>
+  <announced>2017-10-15</announced>
+  <revised>2017-10-15: 1</revised>
+  <bug>622038</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/gnutls" auto="yes" arch="*">
+      <unaffected range="ge">3.5.13</unaffected>
+      <vulnerable range="lt">3.5.13</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>GnuTLS is a secure communications library implementing the SSL, TLS and
+      DTLS protocols and technologies around them.
+    </p>
+  </background>
+  <description>
+    <p>A null pointer dereference while decoding a status response TLS
+      extension with valid contents was discovered in GnuTLS.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly cause a Denial of Service condition.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GnuTLS users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/gnutls-3.5.13"
+    </code>
+    
+    <p>Packages which depend on this library may need to be recompiled. Tools
+      such as revdep-rebuild may assist in identifying some of these packages.
+    </p>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7507">CVE-2017-7507</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-09-17T19:52:42Z">chrisadr</metadata>
+  <metadata tag="submitter" timestamp="2017-10-15T04:20:45Z">chrisadr</metadata>
+</glsa>
