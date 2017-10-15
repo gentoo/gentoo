@@ -38,7 +38,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	default
+	cmake-utils_src_prepare
 
 	# Get rid of any bundled stuff we don't want
 	for pkg in libpng lzma zlib ; do
