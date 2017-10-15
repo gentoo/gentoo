@@ -9979,6 +9979,7 @@ dev-ruby/simple_oauth 0.3.1: Simply builds and verifies OAuth headers
 dev-ruby/simplecov 0.13.0 0.14.0 0.14.1: Code coverage with a configuration library and merging across test suites
 dev-ruby/simplecov-html 0.10.1 0.10.2: Generates a HTML report of your SimpleCov ruby code coverage results
 dev-ruby/sinatra 1.4.7 1.4.8: A DSL for quickly creating web applications in Ruby with minimal effort
+dev-ruby/sinatra-partial 1.0.1: Just the partials helper in a gem
 dev-ruby/six 0.2.0: An ultra lite authorization library
 dev-ruby/slim 3.0.7-r1 3.0.8: A template language aiming to reduce the syntax to the essential parts
 dev-ruby/slop 3.6.0 4.4.1 4.4.3 4.5.0 4.6.0: A simple option parser with an easy to remember syntax and friendly API
