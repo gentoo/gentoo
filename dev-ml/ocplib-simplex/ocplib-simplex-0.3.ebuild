@@ -23,6 +23,8 @@ DOCS="CHANGES.md README.md extra/simplex_invariants.txt extra/TODO.txt"
 src_prepare() {
 	default
 	mv configure.{in,ac} || die
+	sed -i -e "s:configure.in:configure.ac:g" \
+		Makefile.in
 	eautoreconf
 }
 
