@@ -97,7 +97,6 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-util/ninja-1.7.2
 	>=net-libs/nodejs-4.6.1
 	sys-apps/hwids[usb(+)]
-	tcmalloc? ( !<sys-apps/sandbox-2.11 )
 	>=sys-devel/bison-2.4.3
 	sys-devel/flex
 	virtual/pkgconfig
@@ -145,7 +144,7 @@ GTK+ icon theme.
 PATCHES=(
 	"${FILESDIR}/${PN}-widevine-r1.patch"
 	"${FILESDIR}/${PN}-FORTIFY_SOURCE-r2.patch"
-	"${FILESDIR}/${PN}-gcc5-r2.patch"
+	"${FILESDIR}/${PN}-gcc5-r3.patch"
 	"${FILESDIR}/${PN}-gn-bootstrap-r17.patch"
 	"${FILESDIR}/${PN}-glibc2.26-r1.patch"
 )
