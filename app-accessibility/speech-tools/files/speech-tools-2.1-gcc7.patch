@@ -1,0 +1,20 @@
+--- a/siod/siod.cc
++++ b/siod/siod.cc
+@@ -459,7 +459,7 @@ char **siod_variable_generator(char *text,int length)
+     matches = walloc(char *,siod_llength(lmatches)+1);
+     for (l=lmatches,i=0; l; l=cdr(l),i++)
+ 	matches[i] = wstrdup(PNAME(car(l)));
+-    matches[i] = '\0';
++    *matches[i] = '\0';
+ 
+     return matches;
+ }
+@@ -498,7 +498,7 @@ char **siod_command_generator (char *text,int length)
+     matches = walloc(char *,siod_llength(lmatches)+1);
+     for (l=lmatches,i=0; l; l=cdr(l),i++)
+ 	matches[i] = wstrdup(PNAME(car(l)));
+-    matches[i] = '\0';
++    *matches[i] = '\0';
+ 
+     return matches;
+ }
