@@ -24,7 +24,7 @@ PATCHES=( "${FILESDIR}"/portage-sandbox-test-fix.patch )
 
 src_prepare() {
 	sed -i 's/\-Werror\ //g' "cmake/cflags.cmake" || die
-	default
+	cmake-utils_src_prepare
 }
 
 src_configure() {
