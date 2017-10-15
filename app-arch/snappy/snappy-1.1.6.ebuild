@@ -37,7 +37,7 @@ src_prepare() {
 	# it off
 	sed -i -e '/run_microbenchmarks/s:true:false:' snappy-test.cc || die
 
-	default
+	cmake-utils_src_prepare
 }
 
 multilib_src_configure() {
