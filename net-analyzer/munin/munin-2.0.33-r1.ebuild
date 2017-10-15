@@ -118,6 +118,7 @@ pkg_setup() {
 src_prepare() {
 	epatch "${WORKDIR}"/patches/*.patch
 	eapply "${FILESDIR}/${P}"-perl526.patch
+	eapply "${FILESDIR}/${P}"-nogitversion.patch
 
 	eapply_user
 
