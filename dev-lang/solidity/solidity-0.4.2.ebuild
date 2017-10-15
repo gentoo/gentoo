@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ DEPEND="dev-libs/jsoncpp:=
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-	default
+	cmake-utils_src_prepare
 
 	# The build won't work without this file but it is missing from
 	# the release tarball.
