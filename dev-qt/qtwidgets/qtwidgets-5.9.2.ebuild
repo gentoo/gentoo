@@ -18,6 +18,7 @@ DEPEND="
 	~dev-qt/qtcore-${PV}
 	~dev-qt/qtgui-${PV}[gles2=,png=,xcb?]
 	gtk? (
+		~dev-qt/qtgui-${PV}[dbus]
 		x11-libs/gtk+:3
 		x11-libs/libX11
 		x11-libs/pango
