@@ -41,7 +41,10 @@ DEPEND="${RDEPEND}
 
 DOCS=( README.md doc/ChangeLog doc/cmd.txt )
 
-PATCHES=( "${FILESDIR}/${P}-cmake.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-cmake.patch"
+	"${FILESDIR}/${P}-ccache.patch" # bug 634302
+)
 
 pkg_setup() {
 	use doc && python-any-r1_pkg_setup
@@ -82,7 +85,8 @@ src_prepare() {
 
 multilib_src_configure() {
 	local mycmakeargs=(
-		-DEXIV2_BUILD_SAMPLES=NO
+		-DBUILD_WITH_CCACHE=OFF
+		-DEXIV2_BUILD_SAMPLES=OFF
 		-DEXIV2_BUILD_PO=$(usex nls)
 		-DEXIV2_ENABLE_NLS=$(usex nls)
 		-DEXIV2_ENABLE_PNG=$(usex png)

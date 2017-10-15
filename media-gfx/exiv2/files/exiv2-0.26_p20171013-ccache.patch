@@ -1,0 +1,62 @@
+From 9686aa8857bcd992ee4f23d20e80dfc31679f67a Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date: Sun, 15 Oct 2017 09:28:09 +0200
+Subject: [PATCH] Add build switch to disable auto ccache
+
+Current usage of ccache leads to sandbox issues.
+Be able to switch it off for package managers that already can
+make use of ccache for build.
+---
+ CMakeLists.txt                |  1 +
+ config/findDependencies.cmake | 12 +++++++-----
+ config/printSummary.cmake     |  1 +
+ 3 files changed, 9 insertions(+), 5 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 80fa907c..a60d4b2e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -41,6 +41,7 @@ option( EXIV2_ENABLE_SSH              "USE Libssh for SshIo"
+ option( EXIV2_BUILD_SAMPLES           "Build sample applications"                             ON  )
+ option( EXIV2_BUILD_PO                "Build translations files"                              OFF )
+ option( EXIV2_BUILD_EXIV2_COMMAND     "Build exiv2 command-line executable"                   ON  )
++option( BUILD_WITH_CCACHE             "Use ccache to speed up compile time"                   ON  )
+ 
+ if ( EXIV2_ENABLE_WEBREADY )
+     set ( EXIV2_ENABLE_CURL ON )
+diff --git a/config/findDependencies.cmake b/config/findDependencies.cmake
+index 16967763..d6af9488 100644
+--- a/config/findDependencies.cmake
++++ b/config/findDependencies.cmake
+@@ -58,9 +58,11 @@ if( EXIV2_ENABLE_BUILD_PO )
+     endif()
+ endif()
+ 
+-find_program(CCACHE_FOUND ccache)
+-if(CCACHE_FOUND)
+-    message(STATUS "Program ccache found")
+-    set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE ccache)
+-    set_property(GLOBAL PROPERTY RULE_LAUNCH_LINK ccache)
++if( BUILD_WITH_CCACHE )
++    find_program(CCACHE_FOUND ccache)
++    if(CCACHE_FOUND)
++        message(STATUS "Program ccache found")
++        set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE ccache)
++        set_property(GLOBAL PROPERTY RULE_LAUNCH_LINK ccache)
++    endif()
+ endif()
+diff --git a/config/printSummary.cmake b/config/printSummary.cmake
+index 21e444a4..62ba4e98 100644
+--- a/config/printSummary.cmake
++++ b/config/printSummary.cmake
+@@ -40,6 +40,7 @@ endif()
+ OptionOutput( "Building exiv2 command:             " EXIV2_BUILD_EXIV2_COMMAND       )
+ OptionOutput( "Building samples:                   " EXIV2_BUILD_SAMPLES             )
+ OptionOutput( "Building PO files:                  " EXIV2_BUILD_PO                  )
++OptionOutput( "Using ccache:                       " BUILD_WITH_CCACHE               )
+ 
+ 
+ message( STATUS "------------------------------------------------------------------" )
+-- 
+2.14.2
+
