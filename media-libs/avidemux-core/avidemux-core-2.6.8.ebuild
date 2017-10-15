@@ -53,7 +53,11 @@ DEPEND="
 S="${WORKDIR}/${MY_P}"
 BUILD_DIR="${S}/buildCore"
 
-PATCHES=( "${FILESDIR}"/${P}-gcc6.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc6.patch
+	"${FILESDIR}"/${P}-fix-libva-abi.patch
+)
+
 DOCS=( AUTHORS README )
 
 src_prepare() {
