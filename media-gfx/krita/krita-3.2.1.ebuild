@@ -40,7 +40,7 @@ COMMON_DEPEND="
 	$(add_qt_dep qtx11extras)
 	$(add_qt_dep qtxml)
 	dev-libs/boost:=
-	media-gfx/exiv2:=
+	>=media-gfx/exiv2-0.26_p20170713:=
 	media-libs/lcms
 	media-libs/libpng:0=
 	sys-libs/zlib
@@ -72,7 +72,10 @@ RDEPEND="${COMMON_DEPEND}
 	!app-office/calligra-l10n:4[calligra_features_krita(+)]
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-3.2.0-tests-optional.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.2.0-tests-optional.patch
+	"${FILESDIR}"/${P}-exiv2-0.26.1.patch
+)
 
 src_configure() {
 	local mycmakeargs=(
