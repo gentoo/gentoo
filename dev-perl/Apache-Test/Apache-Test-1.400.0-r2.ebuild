@@ -12,7 +12,7 @@ DESCRIPTION="Test.pm wrapper with helpers for testing Apache"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
-IUSE=""
+IUSE="test"
 
 DEPEND="virtual/perl-ExtUtils-MakeMaker"
 
@@ -39,7 +39,27 @@ src_install() {
 }
 # Parallel tests seem to be bad.
 DIST_TEST="do"
+
+optdep_notice() {
+	local i
+	elog "This package has several modules which may require additional dependencies"
+	elog "to use. However, it is up to you to install them separately if you need this"
+	elog "optional functionality:"
+	elog
+	i="$(if has_version 'www-apache/mod_perl'; then echo '[I]'; else echo '[ ]'; fi)"
+	elog " $i www-apache/mod_perl"
+	elog "     - Running Perl code natively in Apache via"
+	elog "       Apache::TestHandler, Apache::TestReportPerl, or Apache::TestSmokePerl"
+
+	if use test; then
+		elog
+		elog "This module will perform additional tests if these dependencies are"
+		elog "pre-installed"
+	fi
+}
 src_test() {
+	optdep_notice
+	echo
 	local MODULES=(
 		"Apache::Test ${DIST_VERSION}"
 		"Apache::Test5005compat 0.01"
@@ -53,14 +73,12 @@ src_test() {
 		"Apache::TestConfigParrot"
 		"Apache::TestConfigParse"
 		"Apache::TestConfigPerl"
-		"Apache::TestHandler"
 		"Apache::TestHarness"
 		"Apache::TestHarnessPHP"
 		"Apache::TestMB"
 		"Apache::TestMM"
 		"Apache::TestPerlDB"
 		"Apache::TestReport"
-		"Apache::TestReportPerl"
 		"Apache::TestRequest"
 		"Apache::TestRun"
 		"Apache::TestRunPHP 1.00"
@@ -69,11 +87,15 @@ src_test() {
 		"Apache::TestSSLCA"
 		"Apache::TestServer"
 		"Apache::TestSmoke"
-		"Apache::TestSmokePerl"
 		"Apache::TestSort"
 		"Apache::TestTrace 0.01"
 		"Apache::TestUtil 0.02"
 		"Bundle::ApacheTest ${DISTVERSION}"
+	)
+	has_version "www-apache/mod_perl" && MODULES+=(
+		"Apache::TestHandler"
+		"Apache::TestReportPerl"
+		"Apache::TestSmokePerl"
 	)
 	local failed=()
 	for dep in "${MODULES[@]}"; do
@@ -91,4 +113,7 @@ src_test() {
 	fi
 	perl_rm_files t/more/02testmore.t t/more/04testmore.t
 	perl-module_src_test
+}
+pkg_postinst() {
+	use test || optdep_notice
 }
