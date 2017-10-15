@@ -48,6 +48,7 @@ kde-misc/kover
 
 # Andreas Sturmlechner <asturm@gentoo.org> (15 Oct 2017)
 # Dead upstream, depends on dead kdelibs4/Qt4/Qt3Support.
+# Use media-sound/fmit instead.
 # Masked for removal in 30 days. Bug #633498
 media-sound/k4guitune
 
