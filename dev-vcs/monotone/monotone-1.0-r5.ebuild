@@ -2,23 +2,24 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # QA failiures reported in https://code.monotone.ca/p/monotone/issues/181/
-EAPI="4"
-inherit bash-completion-r1 elisp-common eutils toolchain-funcs user
+EAPI=6
+inherit bash-completion-r1 elisp-common tmpfiles user
 
 DESCRIPTION="Monotone Distributed Version Control System"
 HOMEPAGE="http://monotone.ca"
-SRC_URI="http://monotone.ca/downloads/${PV}/${P}.tar.bz2"
+SRC_URI="http://monotone.ca/downloads/${PV}/${P}.tar.bz2
+	http://dev.gentoo.org/~axs/distfiles/${P}-patches.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="1"
 KEYWORDS="amd64 ~ia64 x86"
 IUSE="doc ipv6 nls test"
 
-RDEPEND="sys-libs/zlib
+RDEPEND="sys-libs/zlib:0=
 	>=dev-libs/libpcre-7.6
 	>=dev-libs/botan-1.8.0:0
 	>=dev-db/sqlite-3.3.8
-	>=dev-lang/lua-5.1
+	>=dev-lang/lua-5.1:=
 	net-dns/libidn"
 DEPEND="${RDEPEND}
 	>=dev-libs/boost-1.33.1
@@ -37,13 +38,14 @@ src_prepare() {
 		( $(gcc-major-version) -eq "3" && $(gcc-minor-version) -le 3 ) ]]; then
 		die 'requires >=gcc-3.4'
 	fi
-	epatch "${FILESDIR}/monotone-1.0-bash-completion-tests.patch"
-	epatch "${FILESDIR}/monotone-1.0-botan-1.10-v2.patch"
-	epatch "${FILESDIR}/monotone-1.0-glibc-2.14-file-handle.patch"
-	epatch "${FILESDIR}/monotone-1.0-boost-1.53.patch"
-	epatch "${FILESDIR}/monotone-1.0-pcre3.patch"
-	epatch "${FILESDIR}/monotone-1.0-texinfo-5.1.patch"
-	epatch "${FILESDIR}/monotone-1.0-gcc6.patch"
+	eapply -p0 "${WORKDIR}/monotone-patches/monotone-1.0-bash-completion-tests.patch"
+	eapply -p0 "${WORKDIR}/monotone-patches/monotone-1.0-botan-1.10-v2.patch"
+	eapply -p0 "${WORKDIR}/monotone-patches/monotone-1.0-glibc-2.14-file-handle.patch"
+	eapply -p0 "${WORKDIR}/monotone-patches/monotone-1.0-boost-1.53.patch"
+	eapply "${WORKDIR}/monotone-patches/monotone-1.0-pcre3.patch"
+	eapply -p0 "${WORKDIR}/monotone-patches/monotone-1.0-texinfo-5.1.patch"
+	eapply "${WORKDIR}/monotone-patches/monotone-1.0-gcc6.patch"
+	eapply_user
 }
 
 src_configure() {
@@ -71,14 +73,12 @@ src_test() {
 src_install() {
 	emake DESTDIR="${D}" install
 
-	mv "${ED}"/usr/share/doc/${PN} "${ED}"/usr/share/doc/${PF} || die
-
 	rm "${ED}"/etc/bash_completion.d/monotone.bash_completion || die
 	newbashcomp extra/shell/monotone.bash_completion ${PN}
 
 	if use doc; then
-		dohtml -r doc/html/*
-		dohtml -r doc/figures
+		dodoc -r doc/html/*
+		dodoc -r doc/figures
 	fi
 
 	dodoc AUTHORS NEWS README* UPGRADE
@@ -93,8 +93,14 @@ src_install() {
 	newins "${FILESDIR}"/read-permissions read-permissions
 	newins "${FILESDIR}"/write-permissions write-permissions
 
-	keepdir /var/lib/monotone/keys/ /var/{log,run}/monotone
+	dodir /var/run/monotone
+	keepdir /var/lib/monotone/keys /var/log/monotone
 	fowners monotone:monotone /var/lib/monotone{,/keys} /var/{log,run}/monotone
+
+	cat <<EOF >"${T}"/monotone.conf
+d /run/monotone 0755 monotone monotone
+EOF
+	dotmpfiles "${T}"/monotone.conf
 }
 
 pkg_postinst() {
