@@ -1,5 +1,5 @@
---- elinks-0.10.4.conf	2005-04-08 15:29:49.000000000 -0700
-+++ elinks-0.10.4-syscharset.conf	2006-11-04 00:26:26.000000000 -0800
+--- a/elinks-0.10.4.conf	2005-04-08 15:29:49.000000000 -0700
++++ b/elinks-0.10.4-syscharset.conf	2006-11-04 00:26:26.000000000 -0800
 @@ -12,8 +12,6 @@
    # obsolete config.saving_style. You shouldn't touch it.
    set config.saving_style_w = 1
