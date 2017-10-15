@@ -1,0 +1,14 @@
+Bug: https://bugs.gentoo.org/599564
+
+--- a/Utilities/UnitIO.h
++++ b/Utilities/UnitIO.h
+@@ -25,6 +25,9 @@
+ 
+ namespace ThePEG {
+ 
++using std::isnan;
++using std::isinf;
++
+ /**
+  * The OUnit< class is used to
+  * facilitate output of unitful numbers to a
