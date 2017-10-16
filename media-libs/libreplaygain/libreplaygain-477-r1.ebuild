@@ -19,6 +19,8 @@ RDEPEND="abi_x86_32? ( !<=app-emulation/emul-linux-x86-medialibs-20130224-r2
 		!app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)] )"
 
 src_prepare() {
+	cmake-utils_src_prepare
+
 	sed -i -e '/CMAKE_C_FLAGS/d' CMakeLists.txt || die
 }
 
