@@ -9642,7 +9642,7 @@ dev-ruby/http_parser_rb 0.6.0-r1: Simple callback-based HTTP request/response pa
 dev-ruby/httparty 0.14.0-r1 0.15.5 0.15.6: Makes http fun! Also, makes consuming restful web services dead easy
 dev-ruby/httpauth 0.2.1: Library implementing the full HTTP Authentication protocol (RFC 2617)
 dev-ruby/httpclient 2.8.2.4 2.8.3: 'httpclient' gives something like the functionality of libwww-perl (LWP) in Ruby
-dev-ruby/i18n 0.6.11-r1 0.7.0-r2 0.8.1 0.8.4 0.8.5 0.8.6: Add Internationalization support to your Ruby application
+dev-ruby/i18n 0.6.11-r1 0.7.0-r2 0.8.6 0.9.0: Add Internationalization support to your Ruby application
 dev-ruby/ice_nine 0.11.2: Deep Freeze Ruby Objects
 dev-ruby/imagesize 0.1.1_p20100902-r1: Measure image size (GIF, PNG, JPEG, etc)
 dev-ruby/inflecto 0.0.2: Inflector for ruby
@@ -9834,7 +9834,7 @@ dev-ruby/rbpdf 1.19.2 1.19.3: Ruby on Rails RBPDF plugin
 dev-ruby/rbpdf-font 1.19.0-r1 1.19.1: Font files for the Ruby on Rails RBPDF plugin
 dev-ruby/rbst 0.5.1: A simple Ruby wrapper for processing rST via docutils
 dev-ruby/rbtree 0.4.2-r1: Ruby/RBTree module
-dev-ruby/rcairo 1.14.3 1.15.9-r1: Ruby bindings for cairo
+dev-ruby/rcairo 1.14.3 1.15.9-r1 1.15.10: Ruby bindings for cairo
 dev-ruby/rdiscount 2.1.8 2.2.0.1: Implementation of John Gruber's Markdown
 dev-ruby/rdoc 4.2.0 4.3.0 5.0.0-r3 5.1.0: An extended version of the RDoc library from Ruby 1.8
 dev-ruby/rdtool 0.6.38-r2: A multipurpose documentation format for Ruby
@@ -15560,7 +15560,7 @@ net-news/yydecode 0.2.10-r1: A decoder for yENC format, popular on Usenet
 net-nntp/brag 1.4.3: Brag collects and assembles multipart binary attachments from newsgroups
 net-nntp/inn 2.5.3-r1 2.5.3-r3 2.5.4-r1 2.5.5-r1: The Internet News daemon, fully featured NNTP server
 net-nntp/kwooty 1.1.0_p20150623: Friendly nzb linux usenet binary client
-net-nntp/leafnode 1.11.10 1.11.11: A USENET software package designed for small sites
+net-nntp/leafnode 1.11.11: A USENET software package designed for small sites
 net-nntp/newspost 2.1.1-r3: A usenet binary autoposter for unix
 net-nntp/nzbget 14.1 19.1 20.0_pre2075 20.0_pre2108-r1: A command-line based binary newsgrabber supporting .nzb files
 net-nntp/pan 0.140 0.141 0.142: A newsreader for GNOME
