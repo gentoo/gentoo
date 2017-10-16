@@ -10651,7 +10651,7 @@ dev-util/wxglade 0.6.3-r3: Glade-like GUI designer which can generate Python, Pe
 dev-util/xdelta 1.1.4-r1 3.0.11 3.1.0: a binary diff and differential compression tools. VCDIFF (RFC 3284) delta compression
 dev-util/xesam-tools 0.7.0-r1: Development tools and examples for the Xesam desktop search API
 dev-util/xfce4-dev-tools 4.12.0: A set of scripts and m4/autoconf macros that ease build system maintenance
-dev-util/xmlindent 0.2.17-r1 0.2.17-r2: XML stream reformatter written in ANSI C
+dev-util/xmlindent 0.2.17-r2: XML stream reformatter for ASCII text, but not UTF-8, written in ANSI C
 dev-util/xxdi 1.0.0: Simple alternative to vim's 'xxd -i' mode
 dev-util/xxdiff 4.0_beta1_p20110426-r1 4.0.1 4.0.1-r1: A graphical file and directories comparator and merge tool
 dev-util/yacc 1.9.1-r6: Yacc: Yet Another Compiler-Compiler
