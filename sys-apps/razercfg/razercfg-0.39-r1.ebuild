@@ -33,7 +33,7 @@ DEPEND="${PYTHON_DEPS}
 PATCHES=( "${FILESDIR}/${P}-unit-variables.patch" )
 
 src_prepare() {
-	default
+	cmake-utils_src_prepare
 
 	sed -i CMakeLists.txt \
 		-e '/udevadm control/{N;d}' \
