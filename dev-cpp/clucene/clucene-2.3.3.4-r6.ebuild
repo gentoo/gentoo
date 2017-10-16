@@ -36,7 +36,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	default
+	cmake-utils_src_prepare
 
 	# patch out installing bundled boost headers, we build against system one
 	sed -i \
