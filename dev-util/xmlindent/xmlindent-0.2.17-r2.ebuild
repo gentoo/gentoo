@@ -5,7 +5,7 @@ EAPI=6
 
 inherit toolchain-funcs
 
-DESCRIPTION="XML stream reformatter written in ANSI C"
+DESCRIPTION="XML stream reformatter for ASCII text, but not UTF-8, written in ANSI C"
 HOMEPAGE="http://xmlindent.sourceforge.net/"
 SRC_URI="mirror://sourceforge/xmlindent/${P}.tar.gz"
 LICENSE="GPL-2"
