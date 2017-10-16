@@ -22,6 +22,8 @@ DEPEND="${RDEPEND}
 DOCS="AUTHORS README*" # CHANGELOG is obsolete in favour of git history
 
 src_prepare() {
+	cmake-utils_src_prepare
+
 	sed -i \
 		-e '/GCC_ONLY_OPT.*-s/d' \
 		-e '/FLAGS/s:-Os::' \
