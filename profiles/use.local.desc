@@ -992,7 +992,14 @@ app-misc/worker:magic - Add magic file support from sys-apps/file to automatical
 app-misc/workrave:mate - Add support for MATE panel
 app-misc/workrave:xfce - Add support for XFCE panel
 app-misc/zygrib:maps - Installs additional GSHHS maps for high resolution coastline data and cities
+app-mobilephone/gammu:bluetooth - Enables bluetooth support
+app-mobilephone/gammu:curl - Enables curl support
 app-mobilephone/gammu:irda - Enables infrared support
+app-mobilephone/gammu:mysql - Use mysql for data storage
+app-mobilephone/gammu:nls - Enable native language support
+app-mobilephone/gammu:odbc - Use ODBC as DB connector
+app-mobilephone/gammu:postgres - Use PostgreSQL for data storage
+app-mobilephone/gammu:usb - Enable USB suport
 app-mobilephone/gnokii:ical - Enable support for dev-libs/libical
 app-mobilephone/gnokii:irda - Enable infrared support
 app-mobilephone/gnokii:pcsc-lite - Enable smartcard support with sys-apps/pcsc-lite

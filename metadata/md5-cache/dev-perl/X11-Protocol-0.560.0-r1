@@ -3,10 +3,10 @@ DEPEND=x11-libs/libXrender x11-libs/libXext dev-lang/perl:=[-build(-)]
 DESCRIPTION=Client-side interface to the X11 Protocol
 EAPI=5
 HOMEPAGE=http://search.cpan.org/dist/X11-Protocol/
-KEYWORDS=alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris
+KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ ) MIT
 RDEPEND=x11-libs/libXrender x11-libs/libXext dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/S/SM/SMCCAM/X11-Protocol-0.56.tar.gz
 _eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011	toolchain-funcs	185a06792159ca143528e7010368e8af	unpacker	f40f7b4bd5aa88c2a4ba7b0d1e0ded70
-_md5_=6d1c04ad445207aa935a92eba5db5df6
+_md5_=b066e8cf480caa1160803f5afcbfeae1
