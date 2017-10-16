@@ -71,6 +71,7 @@ REQUIRED_USE="
 	^^ ( qemu system-qemu )"
 
 COMMON_DEPEND="
+	sys-apps/pciutils
 	dev-libs/lzo:2
 	dev-libs/glib:2
 	dev-libs/yajl
