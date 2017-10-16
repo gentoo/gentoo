@@ -7,6 +7,12 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Ian Stakenvicius <axs@gentoo.org> (11 Oct 2017)
+# In preparation for the removal of virtual/gudev,
+# mask USE=gudev on sys-fs/eudev so that dev-libs/libgudev
+# will be used instead
+sys-fs/eudev gudev
+
 # Mike Gilbert <floppym@gentoo.org> (10 Oct 2017)
 # Depends on old ffmpeg-2, which no longer exists in the repo.
 <=media-tv/tvheadend-4.0.9 ffmpeg
