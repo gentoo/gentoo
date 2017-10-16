@@ -25,6 +25,7 @@ DOCS=( AUTHORS CHANGES NEWS README THANKS )
 RESTRICT="test" #409263
 
 src_prepare() {
+	cmake-utils_src_prepare
 	# Stop installing LICENSE file, and install CHANGES from DOCS instead:
 	sed -i -e '/INSTALL.*FILES.*DESTINATION.*OPENJPEG_INSTALL_DOC_DIR/d' CMakeLists.txt || die
 }
