@@ -2,13 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="person">
-  <email>gentoo@necoro.eu</email>
-  <name>René 'Necoro' Neumann</name>
-  <description>Proxy maintainer, assign bugs</description>
-</maintainer>
-<maintainer type="person">
   <email>dlan@gentoo.org</email>
-  <description>Co maintainer, CC bugs</description>
+    <name>Yixun Lan</name>
 </maintainer>
 <maintainer type="project">
   <email>proxy-maint@gentoo.org</email>
