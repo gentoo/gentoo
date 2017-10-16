@@ -73,6 +73,11 @@ all_ruby_prepare() {
 
 	# Fix hard-coded use of AR
 	sed -i -e "s/ar cru/"$(tc-getAR)" cru/" build/support/cplusplus.rb || die
+
+	# Make sure apache support is not attempted with -apache2
+	if ! use apache2 ; then
+		sed -i -e '/fakeroot/ s/:apache2, //' build/packaging.rb || die
+	fi
 }
 
 all_ruby_compile() {
