@@ -10,7 +10,7 @@ ARCHIVE_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
 
 DESCRIPTION="A tool to scrape a Prometheus client and dump the result as JSON"
-HOMEPAGE="https://github.com/prometheus/node_exporter"
+HOMEPAGE="https://github.com/prometheus/prom2json"
 SRC_URI="${ARCHIVE_URI}"
 LICENSE="Apache-2.0"
 SLOT="0"
