@@ -15823,7 +15823,7 @@ net-wireless/wepdecrypt 0.8-r2: Enhanced version of WepAttack a tool for breakin
 net-wireless/wifi-radar 2.0.8-r2: WiFi Radar is a Python/PyGTK2 utility for managing WiFi profiles
 net-wireless/wireless-regdb 20160502 20160610 20170307: Binary regulatory database for CRDA
 net-wireless/wireless-tools 30_pre9: A collection of tools to configure IEEE 802.11 wireless LAN cards
-net-wireless/wpa_supplicant 2.6 2.6-r2: IEEE 802.1X/WPA supplicant for secure wireless transfers
+net-wireless/wpa_supplicant 2.6 2.6-r2 2.6-r3: IEEE 802.1X/WPA supplicant for secure wireless transfers
 net-wireless/yatebts 4.0.0-r3 5.0.0 9999: The Yate GSM base station
 perl-core/CPAN-Meta 2.150.1: The distribution metadata for a CPAN dist
 perl-core/CPAN-Meta-Requirements 2.125.0-r1: A set of version requirements for a CPAN dist
