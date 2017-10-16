@@ -65,7 +65,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	default
+	cmake-utils_src_prepare
 
 	use python && python_fix_shebang .
 }
