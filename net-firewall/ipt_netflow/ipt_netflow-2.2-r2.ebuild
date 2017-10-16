@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${MY_PN}/${MY_P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE="debug natevents snmp"
 
