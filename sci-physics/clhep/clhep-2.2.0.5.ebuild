@@ -20,6 +20,8 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${PV}/CLHEP"
 
 src_prepare() {
+	cmake-utils_src_prepare
+
 	# respect flags
 	sed -i -e 's:-O::g' cmake/Modules/ClhepVariables.cmake || die
 	# no batch mode to allow parallel building (bug #437482)
