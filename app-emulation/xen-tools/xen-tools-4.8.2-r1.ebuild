@@ -324,6 +324,10 @@ src_prepare() {
 	sed -e 's:\$QEMU_XEN -xen-domid:test -e "\$QEMU_XEN" \&\& &:' \
 		-i tools/hotplug/Linux/init.d/xencommons.in || die
 
+	# fix bashishm
+	sed -e '/Usage/s/\$//g' \
+		-i tools/hotplug/Linux/init.d/xendriverdomain.in || die
+
 	# respect multilib, usr/lib/libcacard.so.0.0.0
 	sed -e "/^libdir=/s/\/lib/\/$(get_libdir)/" \
 		-i tools/qemu-xen/configure || die
