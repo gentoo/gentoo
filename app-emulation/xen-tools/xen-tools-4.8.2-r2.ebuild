@@ -256,6 +256,11 @@ src_prepare() {
 
 	mv tools/qemu-xen/qemu-bridge-helper.c tools/qemu-xen/xen-bridge-helper.c || die
 
+	# Fix building with gcc 7, Bug #634338
+	# https://xenbits.xen.org/gitweb/?p=xen.git;a=commit;h=f49fa658b53580cf2ad354d2bf1796766cc11222
+	sed -e 's/name\[60\]/name\[100\]/g' \
+		-i tools/misc/xenlockprof.c || die
+
 	# Fix texi2html build error with new texi2html, qemu.doc.html
 	sed -i -e "/texi2html -monolithic/s/-number//" tools/qemu-xen-traditional/Makefile || die
 
