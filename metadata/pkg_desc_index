@@ -11590,7 +11590,7 @@ games-strategy/endless-sky 0.9.1 0.9.6: Space exploration, trading & combat in t
 games-strategy/freeciv 2.5.6 2.5.7 2.5.9: multiplayer strategy game (Civilization Clone)
 games-strategy/freecol 0.11.5 0.11.6: An open source clone of the game Colonization
 games-strategy/freeorion 0.4.7.1 9999: A free turn-based space empire and galactic conquest game
-games-strategy/freesynd 0.7.1: A cross-platform reimplementation of engine for the classic Bullfrog game, Syndicate
+games-strategy/freesynd 0.7.1: A portable reimplementation of engine for the classic Bullfrog game, Syndicate
 games-strategy/galaxyhack 1.74: Multiplayer AI script based strategy game
 games-strategy/glob2 0.9.4.4-r1: Real Time Strategy (RTS) game involving a brave army of globs
 games-strategy/gorky17-demo 1.0.1.0.1-r1: Horror conspiracy game mixing elements of strategy and role-playing
