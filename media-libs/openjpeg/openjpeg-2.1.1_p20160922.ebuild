@@ -36,7 +36,7 @@ src_prepare() {
 		mv "${WORKDIR}"/openjpeg-data-${MY_TESTDATA_COMMIT} "${WORKDIR}"/data || die "Failed to rename test data"
 	fi
 
-	default
+	cmake-utils_src_prepare
 
 	# Stop installing LICENSE file, and install CHANGES from DOCS instead:
 	sed -i -e '/install.*FILES.*DESTINATION.*OPENJPEG_INSTALL_DOC_DIR/d' CMakeLists.txt || die
