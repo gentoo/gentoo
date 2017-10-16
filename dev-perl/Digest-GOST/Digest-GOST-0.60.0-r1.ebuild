@@ -23,3 +23,4 @@ DEPEND="${RDEPEND}
 		>=virtual/perl-Test-Simple-0.820.0
 	)
 "
+PATCHES=( "${FILESDIR}/${P}-bigendian-link.patch" )
