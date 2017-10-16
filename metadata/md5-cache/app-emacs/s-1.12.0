@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DEPEND=>=virtual/emacs-23
+DESCRIPTION=The long lost Emacs string manipulation library
+EAPI=6
+HOMEPAGE=https://github.com/magnars/s.el
+KEYWORDS=~amd64
+LICENSE=GPL-3+
+RDEPEND=>=virtual/emacs-23
+SLOT=0
+SRC_URI=https://github.com/magnars/s.el/archive/1.12.0.tar.gz -> s-1.12.0.tar.gz
+_eclasses_=elisp	571fd9c6c9d8b71c8461bb9f33e135ab	elisp-common	23f47b2e1de7abf387105eddd1318738
+_md5_=54d87a75642a2220b8a305fb0b1ed56b

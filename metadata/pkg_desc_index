@@ -84,6 +84,7 @@ app-admin/diradm 2.9.7.1: A nearly complete nss/shadow suite for managing POSIX 
 app-admin/doas 6.0: Run commands as super user or another user, alternative to sudo from OpenBSD
 app-admin/drush 6.7.0 6.7.0-r1: Command line shell and scripting interface for Drupal
 app-admin/durep 0.9-r4: A perl script designed for monitoring disk usage in a more visual way than du
+app-admin/dxf 6.0.0: Docker registry v2 client in Python
 app-admin/ec2-ami-tools 1.5.7: Command-line tools that serve as client interface to the Amazon EC2 web service
 app-admin/eclean-kernel 0.4 0.4.1 0.4.2 1.99.3 9999: Clean up old and stale kernel files
 app-admin/elektra 0.8.15 0.8.16 9999: Framework to store config parameters in hierarchical key-value pairs
@@ -1157,7 +1158,7 @@ app-emacs/folding 2012.0226.1623 2013.0613.1821: A folding-editor-like Emacs min
 app-emacs/ghc-mod 5.4.0.0 5.5.0.0-r1 5.7.0.0: Happy Haskell Programming
 app-emacs/gnuplot-mode 0.7.0: Gnuplot mode for Emacs
 app-emacs/gnuserv 3.12.8-r2: Attach to an already running Emacs
-app-emacs/go-mode 1.4.0: An improved Go mode for emacs
+app-emacs/go-mode 1.4.0 1.5.0: An improved Go mode for emacs
 app-emacs/google-c-style 20091009-r1: Provides the google C/C++ coding style
 app-emacs/graphviz-dot-mode 0.3.7: Emacs mode for editing and previewing Graphviz dot graphs
 app-emacs/h4x0r 0.13-r1: Aid in writing like a script kiddie does
@@ -1234,7 +1235,7 @@ app-emacs/rpm-spec-mode 0.15: Emacs mode to ease editing of RPM spec files
 app-emacs/ruby-mode 2.0.0_p247 2.2.2 2.3.0 2.4.1: Emacs major mode for editing Ruby code
 app-emacs/rudel 0.3_pre20110721-r1: Collaborative editing environment for GNU Emacs
 app-emacs/rust-mode 1_beta20150411: A major emacs mode for editing Rust source code
-app-emacs/s 1.11.0: The long lost Emacs string manipulation library
+app-emacs/s 1.11.0 1.12.0: The long lost Emacs string manipulation library
 app-emacs/scala-mode 2.10.3: Scala mode for Emacs
 app-emacs/scheme-complete 0.8.10 0.8.11: Scheme tab-completion and word-completion for Emacs
 app-emacs/scim-bridge-el 0.8.2: a SCIM-Bridge client for Emacs
@@ -10572,7 +10573,7 @@ dev-util/qfsm 0.54.0: A graphical tool for designing finite state machines
 dev-util/qmtest 2.4.1-r1: CodeSourcery's test harness system
 dev-util/qstlink2 1.0.3: GUI and CLI ST-Link V2(Debugger/Programmer) client
 dev-util/quilt 0.50 0.63 0.65 9999: quilt patch manager
-dev-util/radare2 1.1.0 1.2.0 1.3.0 1.4.0 1.4.0-r1 1.6.0 2.0.0 2.0.1 9999: unix-like reverse engineering framework and commandline tools
+dev-util/radare2 2.0.1 9999: unix-like reverse engineering framework and commandline tools
 dev-util/ragel 6.7-r1 6.8 6.9 6.10 7.0.0.9 7.0.0.10: Compiles finite state machines from regular languages into executable code
 dev-util/rats 2.1-r2 2.4: RATS - Rough Auditing Tool for Security
 dev-util/rbtools 0.7.10: Command line tools for use with Review Board
@@ -18458,7 +18459,7 @@ www-misc/visitors 0.7-r1: Fast web log analyzer
 www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.30.0 1.30.2 1.30.2-r1: Capture, analyse, record and monitor any cameras attached to your system
-www-plugins/adobe-flash 27.0.0.159: Adobe Flash Player
+www-plugins/adobe-flash 27.0.0.170: Adobe Flash Player
 www-plugins/chrome-binary-plugins 61.0.3163.100 62.0.3202.52_beta 63.0.3236.0_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3 0.3.7: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
