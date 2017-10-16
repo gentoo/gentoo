@@ -1,8 +1,17 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index e2e91f3fe..7feb7a9e5 100644
+index 883297269..63f956dd7 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -142,27 +142,13 @@ if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU")
+@@ -104,7 +104,7 @@ option(BUILD_PULSEAUDIO "Build with support for PulseAudio audio backend." ON)
+ option(BUILD_ALSA "Build with support for ALSA audio backend." ON)
+ option(BUILD_PORTAUDIO "Build with support for PortAudio audio backend." ON)
+ option(BUILD_PORTMIDI "Build with support for PortAudio's MIDI features." ${BUILD_PORTAUDIO}) # PortAudio required
+-option(BUILD_PCH "Build using precompiled headers." ON)
++option(BUILD_PCH "Build using precompiled headers." OFF)
+ option(BUILD_FOR_WINSTORE "Build for the Windows Store." OFF)
+ 
+ if (APPLE)
+@@ -144,27 +144,13 @@ if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU")
        endif()
  endif ("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU")
  
@@ -35,7 +44,7 @@ index e2e91f3fe..7feb7a9e5 100644
  set(CMAKE_SKIP_RULE_DEPENDENCY TRUE)
  
  # The MuseScore version number.
-@@ -415,7 +401,6 @@ if (NOT MINGW AND NOT APPLE)
+@@ -440,7 +426,6 @@ if (NOT MINGW AND NOT APPLE)
      #     set library search path for runtime linker to load the same
      #     qt libraries as we used at compile time
      #
@@ -43,16 +52,6 @@ index e2e91f3fe..7feb7a9e5 100644
      string(TOUPPER "mscore${MSCORE_INSTALL_SUFFIX}" MAN_MSCORE_UPPER) # Command name shown in uppercase in man pages by convention
      if (${MSCORE_INSTALL_SUFFIX} MATCHES "portable") # Note: "-portable-anything" would match
        # Build portable AppImage as per https://github.com/probonopd/AppImageKit
-@@ -519,9 +504,6 @@ add_custom_command(
-     DEPENDS ${PROJECT_SOURCE_DIR}/all.h
-     WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
-     )
--if (NOT MINGW)
--  set(BUILD_PCH true)
--endif(NOT MINGW)
- 
- precompiled_header(QT_INCLUDES all ${BUILD_PCH})
- 
 diff --git a/aeolus/CMakeLists.txt b/aeolus/CMakeLists.txt
 index 7962e8781..bdcb08dae 100644
 --- a/aeolus/CMakeLists.txt
@@ -93,7 +92,7 @@ index bcf5427b7..fec81d8b3 100644
  
  xcode_pch(awl all)
 diff --git a/build/CreatePrecompiledHeader.cmake b/build/CreatePrecompiledHeader.cmake
-index 72faba0de..8f9d2636c 100644
+index e303526ce..7740bea9c 100644
 --- a/build/CreatePrecompiledHeader.cmake
 +++ b/build/CreatePrecompiledHeader.cmake
 @@ -36,7 +36,7 @@ macro( precompiled_header includes header_name build_pch)
@@ -156,10 +155,10 @@ index 74a525ba3..2cc008495 100644
 +set_target_properties(genft PROPERTIES COMPILE_FLAGS "-I/usr/include/freetype2 -fPIC -Wall -Wextra -Winvalid-pch")
  
 diff --git a/libmscore/CMakeLists.txt b/libmscore/CMakeLists.txt
-index 6c7e07a3a..000c9c929 100644
+index 24399cb89..f09095d18 100644
 --- a/libmscore/CMakeLists.txt
 +++ b/libmscore/CMakeLists.txt
-@@ -73,7 +73,7 @@ add_library (
+@@ -77,7 +77,7 @@ add_library (
  set_target_properties (
        libmscore
        PROPERTIES
@@ -224,26 +223,35 @@ index 6df79c41b..e3bdb90b8 100644
  target_link_libraries(xml2smf
        ${QT_LIBRARIES}
 diff --git a/mscore/CMakeLists.txt b/mscore/CMakeLists.txt
-index cd1045aa9..1b2c3a0eb 100644
+index 797cbb92f..364f59f69 100644
 --- a/mscore/CMakeLists.txt
 +++ b/mscore/CMakeLists.txt
-@@ -381,13 +381,13 @@ if (MINGW)
+@@ -433,13 +433,13 @@ if (MINGW)
     if(CMAKE_BUILD_TYPE MATCHES "DEBUG")
       set_target_properties( mscore
          PROPERTIES
 -           COMPILE_FLAGS "${PCH_INCLUDE} -g -Wall -Wextra -Winvalid-pch ${QT_DEFINITIONS} -DQT_SVG_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_CORE_LIB"
 +           COMPILE_FLAGS "${PCH_INCLUDE} -fPIC -Wall -Wextra -Winvalid-pch ${QT_DEFINITIONS} -DQT_SVG_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_CORE_LIB"
-            LINK_FLAGS "${PROJECT_BINARY_DIR}/resfile.o -mwindows -mconsole -L ${CROSSQT}/lib"
+            LINK_FLAGS "-mwindows -mconsole -L ${CROSSQT}/lib"
          )
     else(CMAKE_BUILD_TYPE MATCHES "DEBUG")
       set_target_properties( mscore
            PROPERTIES
 -             COMPILE_FLAGS "${PCH_INCLUDE} -Wall -Wextra -Winvalid-pch ${QT_DEFINITIONS} -DQT_SVG_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_CORE_LIB"
 +             COMPILE_FLAGS "${PCH_INCLUDE} -fPIC -Wall -Wextra -Winvalid-pch ${QT_DEFINITIONS} -DQT_SVG_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_CORE_LIB"
-              LINK_FLAGS "-Wl,-S ${PROJECT_BINARY_DIR}/resfile.o -mwindows -L ${CROSSQT}/lib"
+              LINK_FLAGS "-Wl,-S -mwindows -L ${CROSSQT}/lib"
            )
     endif(CMAKE_BUILD_TYPE MATCHES "DEBUG")
-@@ -507,7 +507,7 @@ else (MINGW)
+@@ -553,7 +553,7 @@ else (MINGW)
+         if (APPLE)
+             set(PORTMIDI_LIB portmidi)
+         else (APPLE)
+-            set(PORTMIDI_LIB -lportmidi -lporttime) # Remove -lporttime on RPM-based systems where PortTime is part of PortMidi.
++            set(PORTMIDI_LIB -lportmidi) # Remove -lporttime on RPM-based systems where PortTime is part of PortMidi.
+         endif (APPLE)
+         target_link_libraries(mscore ${PORTMIDI_LIB})
+     endif (USE_PORTMIDI)
+@@ -565,7 +565,7 @@ else (MINGW)
     set_target_properties (
        mscore
        PROPERTIES
@@ -252,24 +260,11 @@ index cd1045aa9..1b2c3a0eb 100644
        )
  
     if (OMR)
-diff --git a/mstyle/CMakeLists.txt b/mstyle/CMakeLists.txt
-index 2bc43c4bd..3fb96fcfa 100644
---- a/mstyle/CMakeLists.txt
-+++ b/mstyle/CMakeLists.txt
-@@ -49,7 +49,7 @@ add_library (
- set_target_properties (
-       mstyle
-       PROPERTIES
--         COMPILE_FLAGS "${PCH_INCLUDE} -g -Wall -Wextra -Winvalid-pch -Wno-overloaded-virtual"
-+         COMPILE_FLAGS "${PCH_INCLUDE} -fPIC -Wall -Wextra -Winvalid-pch -Wno-overloaded-virtual"
-       )
- 
- xcode_pch(mstyle all)
 diff --git a/mtest/CMakeLists.txt b/mtest/CMakeLists.txt
-index c0486679a..42f14301d 100644
+index a992a25f4..6a1fd5cc5 100644
 --- a/mtest/CMakeLists.txt
 +++ b/mtest/CMakeLists.txt
-@@ -113,20 +113,10 @@ target_link_libraries(
+@@ -112,20 +112,10 @@ target_link_libraries(
  
  set(CMAKE_CXX_FLAGS         "${CMAKE_CXX_FLAGS} ${Qt5Widgets_EXECUTABLE_COMPILE_FLAGS}")
  
@@ -294,7 +289,7 @@ index c0486679a..42f14301d 100644
  
  string(REPLACE ";" ";-I" INC "${QT_INCLUDES}")
  
-@@ -134,17 +124,17 @@ if (APPLE AND (CMAKE_VERSION VERSION_LESS "3.5.0"))
+@@ -133,17 +123,17 @@ if (APPLE AND (CMAKE_VERSION VERSION_LESS "3.5.0"))
  set_target_properties (
        testutils
        PROPERTIES
