@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -24,6 +24,8 @@ DEPEND="${RDEPEND}
 	test? ( dev-util/cppunit )"
 
 src_prepare() {
+	cmake-utils_src_prepare
+
 	sed -e 's:/lib:/${CMAKE_INSTALL_LIBDIR}:' \
 		-i "${S}/"{,src/,src/bindings/rtt/}CMakeLists.txt || die
 }
