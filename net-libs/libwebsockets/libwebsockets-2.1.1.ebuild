@@ -36,10 +36,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-lang/perl
 "
-src_prepare() {
-	epatch "${FILESDIR}/${P}-x86-build.patch"
-	default
-}
+PATCHES=( "${FILESDIR}/${P}-x86-build.patch" )
 
 src_configure() {
 	local mycmakeargs=(
