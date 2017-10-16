@@ -29,7 +29,7 @@ DEPEND="
 "
 RDEPEND="
 	${CDEPEND}
-	|| ( media-video/smplayer[streaming] media-video/mpv media-video/mplayer media-video/vlc media-video/totem media-video/gnome-mplayer )
+	|| ( media-video/smplayer media-video/mpv media-video/mplayer media-video/vlc media-video/totem media-video/gnome-mplayer )
 "
 
 gen_translation() {
