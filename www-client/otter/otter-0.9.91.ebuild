@@ -37,7 +37,8 @@ S=${WORKDIR}/${PN}-browser-${PV/_p/-dev}
 DOCS=( CHANGELOG CONTRIBUTING.md TODO )
 
 src_prepare() {
-	default
+	cmake-utils_src_prepare
+
 	if [[ -n ${LINGUAS} ]]; then
 		local lingua
 		for lingua in resources/translations/*.qm; do
