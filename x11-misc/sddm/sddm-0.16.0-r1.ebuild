@@ -39,7 +39,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.12.0-respect-user-flags.patch" # fix for flags handling and bug 563108
-	"${FILESDIR}/${P}-ck2-revert.patch" #bug 633920
+	use consolekit && "${FILESDIR}/${P}-ck2-revert.patch" #bug 633920
 )
 
 src_prepare() {
