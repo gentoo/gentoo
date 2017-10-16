@@ -33,6 +33,8 @@ DEPEND="${RDEPEND}"
 DOCS=( README.md )
 
 src_prepare() {
+	cmake-utils_src_prepare
+
 	for x in ${LANGSLONG}; do
 		if use !linguas_${x%_*}; then
 			rm -f "loc/${PN}_${x}."* || die
