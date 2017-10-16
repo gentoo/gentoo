@@ -32,7 +32,7 @@ DEPEND="
 "
 
 src_prepare() {
-	default
+	cmake-utils_src_prepare
 
 	# implicit 'isspace'
 	sed -i parse.c -e "/<stdio.h>/ a#include <ctype.h>" || die
