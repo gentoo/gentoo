@@ -2462,7 +2462,6 @@ dev-python/PyQt5:xmlpatterns - Build bindings for the QtXmlPatterns module
 dev-python/PythonQt:extensions - Install extensions
 dev-python/QtPy:designer - Build bindings for the QtDesigner module and enable the designer plugin
 dev-python/QtPy:gui - Build bindings for the QtGui module
-dev-python/QtPy:pyqt4 - Enable the dev-python/PyQt4 backend
 dev-python/QtPy:pyqt5 - Enable the dev-python/PyQt5 backend
 dev-python/QtPy:pyside - Enable the dev-python/pyside backend
 dev-python/QtPy:svg - Build bindings for the QtSvg module
