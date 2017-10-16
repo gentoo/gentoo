@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Jonas Stein <jstein@gentoo.org> (17 Oct 2017)
+# dev-tex/texmfind was superseded by app-portage/pfl 
+# See also bug #634494. Masked for removal on 2017-11-30
+dev-tex/texmfind
+
 # Andreas Sturmlechner <asturm@gentoo.org> (16 Oct 2017)
 # Qt4WebKit is ancient and is likely to have more holes
 # in it than swiss cheese. Bug #620684
