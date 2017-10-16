@@ -10,4 +10,4 @@ RDEPEND=virtual/perl-Digest virtual/perl-XSLoader virtual/perl-parent dev-lang/p
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/G/GR/GRAY/Digest-GOST-0.06.tar.gz
 _eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
-_md5_=fa51d83e21ea51825af8cd8a7b7c3244
+_md5_=8d4e0b317198cce006254c1350cc6b19
