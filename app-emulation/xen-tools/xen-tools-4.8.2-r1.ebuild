@@ -421,6 +421,7 @@ src_install() {
 	newconfd "${FILESDIR}"/xencommons.confd xencommons
 	newinitd "${FILESDIR}"/xenqemudev.initd xenqemudev
 	newconfd "${FILESDIR}"/xenqemudev.confd xenqemudev
+	newinitd "${FILESDIR}"/xen-watchdog.initd xen-watchdog
 
 	if use screen; then
 		cat "${FILESDIR}"/xendomains-screen.confd >> "${D}"/etc/conf.d/xendomains || die
