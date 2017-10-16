@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="A rich set of tools built upon the Test2 framework"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64 ~x86"
 IUSE="test"
 
 RDEPEND="
