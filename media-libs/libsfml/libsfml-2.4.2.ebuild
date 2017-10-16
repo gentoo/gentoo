@@ -48,7 +48,7 @@ src_prepare() {
 	sed -i "s:DESTINATION .*:DESTINATION /usr/share/doc/${PF}:" \
 		doc/CMakeLists.txt || die
 
-	default
+	cmake-utils_src_prepare
 }
 
 src_configure() {
