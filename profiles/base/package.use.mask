@@ -7,6 +7,25 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (16 Oct 2017)
+# Depends on masked dev-qt/qtwebkit:4, bug #620692
+<app-i18n/fcitx-libpinyin-0.5.0 dictionary-manager
+
+# Andreas Sturmlechner <asturm@gentoo.org> (16 Oct 2017)
+# USE=qt4 depends on masked dev-qt/qtwebkit:4, bug #620754
+# USE=geocad depends on masked <sci-libs/opencascade-6.8.0
+sci-physics/root geocad qt4
+
+# Andreas Sturmlechner <asturm@gentoo.org> (16 Oct 2017)
+# Depends on masked dev-qt/qtwebkit:4, bug #620684
+dev-qt/assistant:4 webkit
+dev-qt/designer:4 webkit
+dev-qt/qt-meta:4 webkit
+dev-qt/qtdeclarative:4 webkit
+dev-qt/qtdemo:4 webkit
+dev-python/PyQt4 webkit
+dev-python/pyside:0 webkit
+
 # Mike Gilbert <floppym@gentoo.org> (10 Oct 2017)
 # Depends on old ffmpeg-2, which no longer exists in the repo.
 <=media-tv/tvheadend-4.0.9 ffmpeg

@@ -29,6 +29,23 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (16 Oct 2017)
+# Qt4WebKit is ancient and is likely to have more holes
+# in it than swiss cheese. Bug #620684
+dev-qt/qtwebkit:4
+
+# Andreas Sturmlechner <asturm@gentoo.org> (16 Oct 2017)
+# Reverse-deps on dead Qt4WebKit. Bug #620684
+<app-misc/anki-2.1
+<app-misc/sleepyhead-1.0.0_beta2
+<media-gfx/freecad-0.17_pre
+media-sound/google-musicmanager
+net-im/qutim
+net-misc/teamviewer
+net-voip/vidyodesktop
+<sci-libs/opencascade-7.0
+<sci-libs/vtk-6.1.0-r4
+
 # Andreas Sturmlechner <asturm@gentoo.org> (15 Oct 2017)
 # Dead upstream, depends on dead kdelibs4/Qt4/Qt3Support.
 # Possible alternatives are net-mail/gnubiff, kde-misc/gmailfeed.
@@ -647,11 +664,6 @@ sys-fs/bedup
 # Sebastian Pipping <sping@gentoo.org> (8 Aug 2015)
 # Upcoming, too young to go into testing unmasked
 dev-libs/iniparser:4
-
-# Davide Pesavento <pesa@gentoo.org> (23 Jul 2015)
-# Standalone version of qtwebkit from the 2.3 upstream branch.
-# Needs revdep testing. Bug #388207.
-=dev-qt/qtwebkit-4.10*
 
 # Justin Lecher <jlec@gentoo.org> (28 Feb 2015)
 # Unfixed security problems
