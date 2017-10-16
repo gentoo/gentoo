@@ -4,10 +4,10 @@ DESCRIPTION=Build an optimized subroutine parameter validator once, use it forev
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Params-ValidationCompiler/
 IUSE=test examples
-KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+KEYWORDS=~amd64 ~ia64 ~ppc ~ppc64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Carp dev-perl/Eval-Closure dev-perl/Exception-Class virtual/perl-Exporter >=virtual/perl-Scalar-List-Utils-1.400.0 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DR/DROLSKY/Params-ValidationCompiler-0.24.tar.gz
 _eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
-_md5_=bde9391c3bd864dc79f18f5e8b140311
+_md5_=cbeab3173d0b3f9c3dc19ab1f326f71d
