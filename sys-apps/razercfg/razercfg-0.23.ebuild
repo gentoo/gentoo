@@ -23,6 +23,8 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}"
 
 src_prepare() {
+	cmake-utils_src_prepare
+
 	sed -i \
 		-e '/ldconfig/{N;d}' \
 		-e '/udevadm control/{N;d}' \
