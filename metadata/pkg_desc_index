@@ -5524,7 +5524,7 @@ dev-perl/Business-Tax-VAT-Validation 1.20.0 1.100.0 1.110.0: A class for europea
 dev-perl/Business-UPS 2.10.0-r1: A UPS Interface Module
 dev-perl/CBOR-XS 1.600.0 1.700.0: Concise Binary Object Representation (CBOR, RFC7049)
 dev-perl/CDB_File 0.980.0 0.990.0: Tie to CDB (Bernstein's constant DB) files
-dev-perl/CDDB 1.222.0-r1: high-level interface to cddb/freedb protocol
+dev-perl/CDDB 1.222.0-r1 1.222.0-r2: high-level interface to cddb/freedb protocol
 dev-perl/CDDB-File 1.50.0-r1: Parse a CDDB/freedb data file
 dev-perl/CDDB_get 2.280.0-r1: Read the CDDB entry for an audio CD in your drive
 dev-perl/CGI 4.220.0 4.250.0 4.310.0 4.330.0 4.360.0: Simple Common Gateway Interface Class
