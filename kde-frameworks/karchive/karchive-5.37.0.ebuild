@@ -7,7 +7,7 @@ inherit kde5
 
 DESCRIPTION="Framework for reading, creation, and manipulation of various archive formats"
 LICENSE="GPL-2 LGPL-2.1"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="+bzip2 +lzma"
 
 RDEPEND="

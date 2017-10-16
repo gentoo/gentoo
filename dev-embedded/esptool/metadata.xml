@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-	  <email>mrueg@gentoo.org</email>
-	  <name>Manuel Rüger</name>
-  </maintainer>
-  <upstream>
-    <remote-id type="github">espressif/esptool</remote-id>
-  </upstream>
+	<maintainer type="person">
+		<email>mrueg@gentoo.org</email>
+		<name>Manuel Rüger</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">espressif/esptool</remote-id>
+	</upstream>
 </pkgmetadata>

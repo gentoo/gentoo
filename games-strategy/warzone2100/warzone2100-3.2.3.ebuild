@@ -16,7 +16,7 @@ SRC_URI+=" https://github.com/Warzone2100/warzone2100/commit/ef37bca38289f4f79c6
 
 LICENSE="GPL-2+ CC-BY-SA-3.0 public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 # upstream requested debug support
 IUSE="debug nls sdl videos"
 

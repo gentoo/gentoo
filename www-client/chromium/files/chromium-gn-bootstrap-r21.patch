@@ -1,0 +1,28 @@
+diff --git a/tools/gn/bootstrap/bootstrap.py b/tools/gn/bootstrap/bootstrap.py
+index 601d5331698e..f154ed2ef3e6 100755
+--- a/tools/gn/bootstrap/bootstrap.py
++++ b/tools/gn/bootstrap/bootstrap.py
+@@ -536,7 +536,6 @@ def write_gn_ninja(path, root_gen_dir, options):
+       'base/threading/thread_local_storage.cc',
+       'base/threading/thread_restrictions.cc',
+       'base/threading/thread_task_runner_handle.cc',
+-      'base/threading/worker_pool.cc',
+       'base/time/clock.cc',
+       'base/time/default_clock.cc',
+       'base/time/default_tick_clock.cc',
+@@ -546,7 +545,6 @@ def write_gn_ninja(path, root_gen_dir, options):
+       'base/timer/timer.cc',
+       'base/trace_event/category_registry.cc',
+       'base/trace_event/event_name_filter.cc',
+-      'base/trace_event/freed_object_tracker.cc',
+       'base/trace_event/heap_profiler_allocation_context.cc',
+       'base/trace_event/heap_profiler_allocation_context_tracker.cc',
+       'base/trace_event/heap_profiler_allocation_register.cc',
+@@ -611,7 +609,6 @@ def write_gn_ninja(path, root_gen_dir, options):
+         'base/threading/platform_thread_internal_posix.cc',
+         'base/threading/platform_thread_posix.cc',
+         'base/threading/thread_local_storage_posix.cc',
+-        'base/threading/worker_pool_posix.cc',
+         'base/time/time_conversion_posix.cc',
+         'base/trace_event/heap_profiler_allocation_register_posix.cc',
+     ])

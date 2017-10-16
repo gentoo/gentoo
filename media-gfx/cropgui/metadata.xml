@@ -5,10 +5,6 @@
 		<email>zlogene@gentoo.org</email>
 		<name>Mikle Kolyada</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>pinkbyte@gentoo.org</email>
-		<name>Sergey Popov</name>
-	</maintainer>
 	<upstream>
 		<remote-id type="github">jepler/cropgui</remote-id>
 	</upstream>

@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAUTORECONF=yes
 inherit multilib xfconf eutils
 
 DESCRIPTION="A plugin that listens DBus messages and displays received messages"
-HOMEPAGE="http://packages.qa.debian.org/x/xfce4-messenger-plugin.html"
+HOMEPAGE="https://packages.qa.debian.org/x/xfce4-messenger-plugin.html"
 SRC_URI="mirror://debian/pool/main/x/${PN}/${PN}_${PV}.orig.tar.gz
 	mirror://debian/pool/main/x/${PN}/${PN}_${PV}-5.debian.tar.gz"
 

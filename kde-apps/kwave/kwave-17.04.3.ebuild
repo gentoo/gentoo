@@ -13,7 +13,7 @@ LICENSE="
 	handbook? ( FDL-1.2 )
 	opus? ( BSD-2 )
 "
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="alsa flac mp3 opus oss pulseaudio +qtmedia vorbis"
 
 RDEPEND="

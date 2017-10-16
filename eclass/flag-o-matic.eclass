@@ -433,10 +433,21 @@ test-flag-PROG() {
 		# Use -c so we can test the assembler as well.
 		-c -o /dev/null
 	)
-	if "${cmdline[@]}" -x${lang} - </dev/null >/dev/null 2>&1 ; then
-		"${cmdline[@]}" "${flag}" -x${lang} - </dev/null >/dev/null 2>&1
+	if "${cmdline[@]}" -x${lang} - </dev/null &>/dev/null ; then
+		cmdline+=( "${flag}" -x${lang} - )
 	else
-		"${cmdline[@]}" "${flag}" -c -o /dev/null /dev/null >/dev/null 2>&1
+		# XXX: what's the purpose of this? does it even work with
+		# any compiler?
+		cmdline+=( "${flag}" -c -o /dev/null /dev/null )
+	fi
+
+	if ! "${cmdline[@]}" </dev/null &>/dev/null; then
+		# -Werror makes clang bail out on unused arguments as well;
+		# try to add -Qunused-arguments to work-around that
+		# other compilers don't support it but then, it's failure like
+		# any other
+		cmdline+=( -Qunused-arguments )
+		"${cmdline[@]}" </dev/null &>/dev/null
 	fi
 }
 
@@ -535,6 +546,9 @@ strip-unsupported-flags() {
 	export CXXFLAGS=$(test-flags-CXX ${CXXFLAGS})
 	export FFLAGS=$(test-flags-F77 ${FFLAGS})
 	export FCFLAGS=$(test-flags-FC ${FCFLAGS})
+	# note: this does not verify the linker flags but it is enough
+	# to strip invalid C flags which are much more likely, #621274
+	export LDFLAGS=$(test-flags-CC ${LDFLAGS})
 }
 
 # @FUNCTION: get-flag

@@ -4,6 +4,10 @@
 <maintainer type="project">
 <email>netmon@gentoo.org</email>
 </maintainer>
+<maintainer type="person">
+	<email>mgorny@gentoo.org</email>
+	<name>Michał Górny</name>
+</maintainer>
 <use>
 	<flag name="gcrypt">Use <pkg>dev-libs/libgcrypt</pkg> instead of <pkg>dev-libs/openssl</pkg></flag>
 </use>

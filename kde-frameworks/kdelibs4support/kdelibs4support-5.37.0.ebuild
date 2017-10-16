@@ -9,7 +9,7 @@ inherit kde5
 
 DESCRIPTION="Framework easing the development transition from KDELibs 4 to KF 5"
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="libressl X"
 
 COMMON_DEPEND="

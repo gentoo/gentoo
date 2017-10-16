@@ -14,7 +14,7 @@ if [ "x$BZRTGZ" != x1 ]; then
 else
 	# Launchpad does not provide consistent checksums https://bugs.launchpad.net/launchpad/+bug/1576338
 	# SRC_URI="http://bazaar.launchpad.net/~${PN}-dev/${PN}/trunk/tarball/${PV/*_p} -> ${P}.tar.gz"
-	SRC_URI="mirror://gentoo/${P}.tar.gz http://dev.gentoo.org/~robbat2/distfiles/${P}.tar.gz"
+	SRC_URI="mirror://gentoo/${P}.tar.gz https://dev.gentoo.org/~robbat2/distfiles/${P}.tar.gz"
 	S="${WORKDIR}/~cloud-init-dev/cloud-init/trunk/"
 fi
 

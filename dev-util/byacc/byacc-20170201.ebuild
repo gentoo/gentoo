@@ -4,7 +4,7 @@
 EAPI=6
 
 DESCRIPTION="the best variant of the Yacc parser generator"
-HOMEPAGE="http://invisible-island.net/byacc/byacc.html"
+HOMEPAGE="https://invisible-island.net/byacc/byacc.html"
 SRC_URI="ftp://invisible-island.net/byacc/${P}.tgz"
 
 LICENSE="public-domain"

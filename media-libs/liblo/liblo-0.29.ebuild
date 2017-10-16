@@ -10,12 +10,16 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~ppc-macos"
+KEYWORDS="amd64 ppc ppc64 x86 ~ppc-macos"
 IUSE="doc ipv6 static-libs"
 
 RESTRICT="test"
 
 DEPEND="doc? ( app-doc/doxygen )"
+
+PATCHES=(
+	"${FILESDIR}/${P}-ipv6_build_fix.patch" #627832
+)
 
 src_prepare() {
 	default

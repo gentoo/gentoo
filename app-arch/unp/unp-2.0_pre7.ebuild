@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=2
@@ -6,7 +6,7 @@ EAPI=2
 inherit eutils bash-completion-r1
 
 DESCRIPTION="Script for unpacking various file formats"
-HOMEPAGE="http://packages.qa.debian.org/u/unp.html"
+HOMEPAGE="https://packages.qa.debian.org/u/unp.html"
 SRC_URI="mirror://debian/pool/main/u/unp/${PN}_${PV/_/$'\x7e'}.tar.bz2"
 S="${WORKDIR}/${PN}-${PV/_/$'\x7e'}"
 
@@ -29,7 +29,7 @@ src_compile() {
 
 src_install() {
 	dobin unp || die "dobin failed"
-	dosym /usr/bin/unp /usr/bin/ucat
+	dosym unp /usr/bin/ucat
 	doman debian/unp.1 || die "doman failed"
 	dodoc debian/changelog debian/README.Debian
 	dobashcomp bash_completion.d/unp

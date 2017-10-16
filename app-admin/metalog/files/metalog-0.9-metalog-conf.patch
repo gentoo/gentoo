@@ -1,5 +1,5 @@
---- metalog.conf
-+++ metalog.conf
+--- a/metalog.conf
++++ b/metalog.conf
 @@ -21,6 +21,8 @@
  # merely write $@ to some device (your console for messages):
  # echo "$@" > /dev/tty10

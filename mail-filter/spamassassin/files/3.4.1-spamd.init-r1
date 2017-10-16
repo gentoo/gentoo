@@ -1,0 +1,34 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/sbin/spamd"
+pidfile="/run/spamd.pid"
+command_args="--username=spamd
+              --groupname=spamd
+              --pidfile=${pidfile}
+              ${SPAMD_OPTS}"
+command_args_background="--daemonize"
+
+: ${SPAMD_NICELEVEL:=0}
+start_stop_daemon_args="--nicelevel ${SPAMD_NICELEVEL}"
+
+# Retry after SPAMD_TIMEOUT seconds because spamd can take a
+# while to kill off all of its children. This was bug 322025.
+: ${SPAMD_TIMEOUT:=15}
+retry="${SPAMD_TIMEOUT}"
+
+extra_started_commands="reload"
+
+depend() {
+    before mta
+    use logger mysql postgres
+}
+
+reload() {
+	ebegin "Reloading configuration"
+	# Warning: reload causes the PID of the spamd process to
+	# change, but spamd does update its PID file afterwards.
+	start-stop-daemon --signal HUP --pidfile "${pidfile}"
+	eend $?
+}

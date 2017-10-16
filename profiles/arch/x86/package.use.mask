@@ -3,6 +3,15 @@
 
 # This file requires >=portage-2.1.1
 
+# Tim Harder <radhermit@gentoo.org> (11 Sep 2017)
+# Pulls in dev-ruby/asciidoctor which has too large of a ruby testing
+# dep tree that is unkeyworded at this time.
+>=net-irc/weechat-1.7 doc
+
+# Johannes Huber <johu@gentoo.org> (07 Aug 2017)
+# Requires media-libs/qtav, which is not keyworded on x86.
+media-gfx/digikam mediaplayer
+
 # Michał Górny <mgorny@gentoo.org> (07 Aug 2017)
 # Requires USE=cuda that is masked in this profile.
 media-gfx/blender opensubdiv
@@ -144,14 +153,6 @@ app-editors/gvim -luajit -racket
 # Works on x86
 sys-apps/hwloc -gl
 
-# Pacho Ramos <pacho@gentoo.org> (20 Jul 2013)
-# Keywords missing, bug #478104
->=app-editors/gedit-plugins-3.8.3 git
-
-# Alexandre Rostovtsev <tetromino@gentoo.org> (30 Dec 2012)
-# chromium, mono work on this arch (masked in base)
-gnome-extra/zeitgeist-datasources -chromium
-
 # Christoph Junghans <junghans@gentoo.org> (26 Dec 2012)
 # mkl works on x86/amd64 (masked in base)
 sci-chemistry/gromacs -mkl
@@ -160,18 +161,9 @@ sci-chemistry/gromacs -mkl
 # Unmask here, as it's masked in base.
 net-libs/gnutls -dane
 
-# Johannes Huber <johu@gentoo.org> (15 Sep 2012)
-# Masked for stabilization as the use flag pulls a dep tree of hell.
-media-libs/phonon zeitgeist
-
 # Ben de Groot <yngwin@gentoo.org> (30 Jul 2012)
 # dependency keyworded here, masked in base
 media-libs/freetype -infinality
-
-# Alexandre Rostovtsev <tetromino@gentoo.org> (12 Apr 2012)
-# Temporary mask-in-base, unmask-in-arch for dev-python/mako keywording for
-# gobject-introspection[doctool], bug #411761
-dev-libs/gobject-introspection -doctool
 
 # Michał Górny <mgorny@gentoo.org> (11 Apr 2012)
 # JIT compilation in zpaq generates code for x86/amd64.
@@ -215,15 +207,6 @@ dev-qt/qtwebkit -jit
 # see base/package.use.mask
 www-client/links -suid
 
-# Samuli Suominen <ssuominen@gentoo.org> (16 Oct 2011)
-# Masked in base, unmask per arch
-gnome-base/gvfs -bluray
-
-# Nirbheek Chauhan <nirbheek@gentoo.org> (17 Sep 2011)
-# Systemtap is masked in base/package.use.mask
-# Temporarily unmask in amd64/x86, bug 384647
-dev-libs/glib -systemtap
-
 # Robin H. Johnson <robbat2@gentoo.org> (10 Jul 2011)
 # PPS should work on all arches, but only keyworded on amd64/x86
 >=net-misc/ntp-4.2.6_p3-r1 -parse-clocks
@@ -248,10 +231,6 @@ sys-power/pm-utils -video_cards_intel -video_cards_radeon
 # Jean-Noël Rivasseau <elvanor@gentoo.org> (23 Sep 2009)
 # X use flag only for amd64/x86, bug 285951.
 media-gfx/iscan -X
-
-# Robert Buchholz <rbu@gentoo.org> (16 Aug 2008)
-# masked in base, unmask for x86/amd64
-dev-python/kaa-base -tls
 
 # Serkan Kaba <serkan@gentoo.org> (20 Jul 2008)
 app-text/enchant -zemberek

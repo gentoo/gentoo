@@ -267,7 +267,5 @@ pkg_postinst() {
 
 	elog
 	elog "For more information on eudev on Gentoo, writing udev rules, and"
-	elog "fixing known issues visit:"
-	elog "         https://www.gentoo.org/doc/en/udev-guide.xml"
-	elog
+	elog "fixing known issues visit: https://wiki.gentoo.org/wiki/Eudev"
 }

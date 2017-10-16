@@ -8,8 +8,8 @@
   <use>
     <flag name="pastebin">pastebin.com support</flag>
     <flag name="clipboard">copying of URLs with -x/--copy</flag>
-	<flag name="github">Github authentication</flag>
-	<flag name="browser">Spawn browser with pasted page</flag>
+    <flag name="github">Github authentication</flag>
+    <flag name="browser">Spawn browser with pasted page</flag>
   </use>
   <upstream>
     <remote-id type="cpan">App-Nopaste</remote-id>

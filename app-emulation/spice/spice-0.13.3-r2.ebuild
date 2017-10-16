@@ -7,12 +7,12 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 inherit autotools ltprune python-any-r1 readme.gentoo-r1 xdg-utils
 
 DESCRIPTION="SPICE server"
-HOMEPAGE="http://spice-space.org/"
-SRC_URI="http://spice-space.org/download/releases/${P}.tar.bz2"
+HOMEPAGE="https://www.spice-space.org/"
+SRC_URI="https://www.spice-space.org/download/releases/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="libressl lz4 sasl smartcard static-libs gstreamer"
 
 # the libspice-server only uses the headers of libcacard

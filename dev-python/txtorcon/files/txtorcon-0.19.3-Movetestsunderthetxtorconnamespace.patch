@@ -1,0 +1,147 @@
+From d9f0e2ea76cb54e3647fd16f3be0a8f0224505fd Mon Sep 17 00:00:00 2001
+From: Brian Dolbec <dolsen@gentoo.org>
+Date: Tue, 19 Sep 2017 11:59:08 -0700
+Subject: [PATCH] test: Move tests under the txtorcon namespace
+
+---
+ MANIFEST.in                                        | 1 -
+ {test => txtorcon/test}/__init__.py                | 0
+ {test => txtorcon/test}/py3_torstate.py            | 0
+ {test => txtorcon/test}/test_addrmap.py            | 0
+ {test => txtorcon/test}/test_attacher.py           | 0
+ {test => txtorcon/test}/test_circuit.py            | 0
+ {test => txtorcon/test}/test_controller.py         | 0
+ {test => txtorcon/test}/test_endpoints.py          | 0
+ {test => txtorcon/test}/test_fsm.py                | 0
+ {test => txtorcon/test}/test_log.py                | 0
+ {test => txtorcon/test}/test_microdesc.py          | 0
+ {test => txtorcon/test}/test_router.py             | 0
+ {test => txtorcon/test}/test_socks.py              | 0
+ {test => txtorcon/test}/test_stream.py             | 0
+ {test => txtorcon/test}/test_torconfig.py          | 0
+ {test => txtorcon/test}/test_torcontrolprotocol.py | 0
+ {test => txtorcon/test}/test_torinfo.py            | 0
+ {test => txtorcon/test}/test_torstate.py           | 0
+ {test => txtorcon/test}/test_util.py               | 0
+ {test => txtorcon/test}/test_util_imports.py       | 0
+ {test => txtorcon/test}/test_web.py                | 0
+ {test => txtorcon/test}/util.py                    | 0
+ 22 files changed, 1 deletion(-)
+ rename {test => txtorcon/test}/__init__.py (100%)
+ rename {test => txtorcon/test}/py3_torstate.py (100%)
+ rename {test => txtorcon/test}/test_addrmap.py (100%)
+ rename {test => txtorcon/test}/test_attacher.py (100%)
+ rename {test => txtorcon/test}/test_circuit.py (100%)
+ rename {test => txtorcon/test}/test_controller.py (100%)
+ rename {test => txtorcon/test}/test_endpoints.py (100%)
+ rename {test => txtorcon/test}/test_fsm.py (100%)
+ rename {test => txtorcon/test}/test_log.py (100%)
+ rename {test => txtorcon/test}/test_microdesc.py (100%)
+ rename {test => txtorcon/test}/test_router.py (100%)
+ rename {test => txtorcon/test}/test_socks.py (100%)
+ rename {test => txtorcon/test}/test_stream.py (100%)
+ rename {test => txtorcon/test}/test_torconfig.py (100%)
+ rename {test => txtorcon/test}/test_torcontrolprotocol.py (100%)
+ rename {test => txtorcon/test}/test_torinfo.py (100%)
+ rename {test => txtorcon/test}/test_torstate.py (100%)
+ rename {test => txtorcon/test}/test_util.py (100%)
+ rename {test => txtorcon/test}/test_util_imports.py (100%)
+ rename {test => txtorcon/test}/test_web.py (100%)
+ rename {test => txtorcon/test}/util.py (100%)
+
+diff --git a/MANIFEST.in b/MANIFEST.in
+index 13dc4e2..7b8184a 100644
+--- a/MANIFEST.in
++++ b/MANIFEST.in
+@@ -22,4 +22,3 @@ include examples/*
+ exclude examples/*~
+ include requirements.txt
+ include dev-requirements.txt
+-include test/*.py
+diff --git a/test/__init__.py b/txtorcon/test/__init__.py
+similarity index 100%
+rename from test/__init__.py
+rename to txtorcon/test/__init__.py
+diff --git a/test/py3_torstate.py b/txtorcon/test/py3_torstate.py
+similarity index 100%
+rename from test/py3_torstate.py
+rename to txtorcon/test/py3_torstate.py
+diff --git a/test/test_addrmap.py b/txtorcon/test/test_addrmap.py
+similarity index 100%
+rename from test/test_addrmap.py
+rename to txtorcon/test/test_addrmap.py
+diff --git a/test/test_attacher.py b/txtorcon/test/test_attacher.py
+similarity index 100%
+rename from test/test_attacher.py
+rename to txtorcon/test/test_attacher.py
+diff --git a/test/test_circuit.py b/txtorcon/test/test_circuit.py
+similarity index 100%
+rename from test/test_circuit.py
+rename to txtorcon/test/test_circuit.py
+diff --git a/test/test_controller.py b/txtorcon/test/test_controller.py
+similarity index 100%
+rename from test/test_controller.py
+rename to txtorcon/test/test_controller.py
+diff --git a/test/test_endpoints.py b/txtorcon/test/test_endpoints.py
+similarity index 100%
+rename from test/test_endpoints.py
+rename to txtorcon/test/test_endpoints.py
+diff --git a/test/test_fsm.py b/txtorcon/test/test_fsm.py
+similarity index 100%
+rename from test/test_fsm.py
+rename to txtorcon/test/test_fsm.py
+diff --git a/test/test_log.py b/txtorcon/test/test_log.py
+similarity index 100%
+rename from test/test_log.py
+rename to txtorcon/test/test_log.py
+diff --git a/test/test_microdesc.py b/txtorcon/test/test_microdesc.py
+similarity index 100%
+rename from test/test_microdesc.py
+rename to txtorcon/test/test_microdesc.py
+diff --git a/test/test_router.py b/txtorcon/test/test_router.py
+similarity index 100%
+rename from test/test_router.py
+rename to txtorcon/test/test_router.py
+diff --git a/test/test_socks.py b/txtorcon/test/test_socks.py
+similarity index 100%
+rename from test/test_socks.py
+rename to txtorcon/test/test_socks.py
+diff --git a/test/test_stream.py b/txtorcon/test/test_stream.py
+similarity index 100%
+rename from test/test_stream.py
+rename to txtorcon/test/test_stream.py
+diff --git a/test/test_torconfig.py b/txtorcon/test/test_torconfig.py
+similarity index 100%
+rename from test/test_torconfig.py
+rename to txtorcon/test/test_torconfig.py
+diff --git a/test/test_torcontrolprotocol.py b/txtorcon/test/test_torcontrolprotocol.py
+similarity index 100%
+rename from test/test_torcontrolprotocol.py
+rename to txtorcon/test/test_torcontrolprotocol.py
+diff --git a/test/test_torinfo.py b/txtorcon/test/test_torinfo.py
+similarity index 100%
+rename from test/test_torinfo.py
+rename to txtorcon/test/test_torinfo.py
+diff --git a/test/test_torstate.py b/txtorcon/test/test_torstate.py
+similarity index 100%
+rename from test/test_torstate.py
+rename to txtorcon/test/test_torstate.py
+diff --git a/test/test_util.py b/txtorcon/test/test_util.py
+similarity index 100%
+rename from test/test_util.py
+rename to txtorcon/test/test_util.py
+diff --git a/test/test_util_imports.py b/txtorcon/test/test_util_imports.py
+similarity index 100%
+rename from test/test_util_imports.py
+rename to txtorcon/test/test_util_imports.py
+diff --git a/test/test_web.py b/txtorcon/test/test_web.py
+similarity index 100%
+rename from test/test_web.py
+rename to txtorcon/test/test_web.py
+diff --git a/test/util.py b/txtorcon/test/util.py
+similarity index 100%
+rename from test/util.py
+rename to txtorcon/test/util.py
+-- 
+2.14.1
+

@@ -5,6 +5,7 @@ EAPI=6
 
 KDE_HANDBOOK="optional"
 KMNAME="kdepim"
+QT3SUPPORT_REQUIRED="true"
 inherit kde4-meta
 
 DESCRIPTION="Tracks time spent on various tasks (noakonadi branch)"
@@ -28,6 +29,8 @@ KMEXTRACTONLY="
 "
 
 KMLOADLIBS="libkdepim"
+
+PATCHES=( "${FILESDIR}/${P}-gcc-6.3.patch" )
 
 src_unpack() {
 	if use kontact; then

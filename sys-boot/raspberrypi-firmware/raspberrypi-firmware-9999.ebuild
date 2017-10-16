@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -44,6 +44,8 @@ src_install() {
 	insinto /boot
 	cd boot
 	doins bootcode.bin COPYING.linux fixup*.dat LICENCE.broadcom start*elf
+	doins *.dtb
+	doins -r overlays
 	newins "${FILESDIR}"/${PN}-0_p20130711-config.txt config.txt
 	newins "${FILESDIR}"/${PN}-0_p20130711-cmdline.txt cmdline.txt
 	newenvd "${FILESDIR}"/${PN}-0_p20130711-envd 90${PN}

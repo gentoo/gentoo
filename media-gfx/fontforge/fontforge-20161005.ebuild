@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
-inherit eutils fdo-mime python-single-r1
+inherit python-single-r1 xdg-utils
 
 DESCRIPTION="postscript font editor and converter"
 HOMEPAGE="http://fontforge.github.io/"
@@ -14,11 +14,14 @@ SRC_URI="https://github.com/fontforge/fontforge/releases/download/${PV}/${P}.tar
 LICENSE="BSD GPL-3+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
-IUSE="cairo truetype-debugger gif gtk jpeg png +python readline tiff svg unicode X"
+IUSE="cairo truetype-debugger gif gtk jpeg png +python readline test tiff svg unicode X"
+
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	cairo? ( png )
 	python? ( ${PYTHON_REQUIRED_USE} )
+	test? ( python )
 "
 
 RDEPEND="
@@ -93,15 +96,15 @@ src_compile() {
 
 src_install() {
 	default
-	prune_libtool_files --modules
+	find "${D}" -name '*.la' -delete || die
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }

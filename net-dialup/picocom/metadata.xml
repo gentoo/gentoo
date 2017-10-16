@@ -6,7 +6,6 @@
 		<name>Embedded Gentoo</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="google-code">picocom</remote-id>
 		<remote-id type="github">npat-efault/picocom</remote-id>
 	</upstream>
 </pkgmetadata>

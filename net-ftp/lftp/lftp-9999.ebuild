@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit autotools eutils git-r3 libtool
 
 DESCRIPTION="A sophisticated ftp/sftp/http/https/torrent client and file transfer program"
-HOMEPAGE="http://lftp.tech/"
+HOMEPAGE="https://lftp.tech/"
 EGIT_REPO_URI="https://github.com/lavv17/lftp"
 
 LICENSE="GPL-3"

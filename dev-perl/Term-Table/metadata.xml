@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Term-Table</remote-id>
+    <remote-id type="cpan-module">Term::Table</remote-id>
+    <remote-id type="cpan-module">Term::Table::Cell</remote-id>
+    <remote-id type="cpan-module">Term::Table::CellStack</remote-id>
+    <remote-id type="cpan-module">Term::Table::HashBase</remote-id>
+    <remote-id type="cpan-module">Term::Table::LineBreak</remote-id>
+    <remote-id type="cpan-module">Term::Table::Spacer</remote-id>
+    <remote-id type="cpan-module">Term::Table::Util</remote-id>
+  </upstream>
+</pkgmetadata>

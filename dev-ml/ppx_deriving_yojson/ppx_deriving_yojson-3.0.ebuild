@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit eutils
+inherit eutils opam
 
 DESCRIPTION="A Yojson codec generator for OCaml"
 HOMEPAGE="https://github.com/whitequark/ppx_deriving_yojson/"
@@ -41,13 +41,4 @@ src_compile() {
 
 src_test() {
 	ocamlbuild -j 0 -use-ocamlfind -classic-display src_test/test_ppx_yojson.byte -- || die
-}
-
-src_install() {
-	opam-installer -i \
-		--prefix="${ED}/usr" \
-		--libdir="${D}/$(ocamlc -where)" \
-		--docdir="${T}/dontinstallit" \
-		${PN}.install || die
-	dodoc CHANGELOG.md README.md
 }

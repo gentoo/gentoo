@@ -6,10 +6,10 @@ EAPI=6
 inherit autotools eutils qmake-utils
 
 DESCRIPTION="GPS waypoints, tracks and routes converter"
-HOMEPAGE="http://www.gpsbabel.org/ https://github.com/gpsbabel/gpsbabel"
+HOMEPAGE="https://www.gpsbabel.org/ https://github.com/gpsbabel/gpsbabel"
 SRC_URI="
 	https://dev.gentoo.org/~asturm/${P}.tar.gz
-	doc? ( http://www.gpsbabel.org/style3.css -> gpsbabel.org-style3.css )"
+	doc? ( https://www.gpsbabel.org/style3.css -> gpsbabel.org-style3.css )"
 LICENSE="GPL-2"
 
 SLOT="0"
@@ -37,19 +37,20 @@ DEPEND="${RDEPEND}
 		dev-lang/perl
 		dev-libs/libxslt
 	)
-	gui? ( dev-qt/linguist:5 )
+	gui? ( dev-qt/linguist-tools:5 )
 "
 
 DOCS=( AUTHORS README.{contrib,igc,mapconverter,md,xmapwpt} )
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.4.3-fix_binary_name.patch"
-	"${FILESDIR}/${P}-disable_statistic_uploading.patch"
-	"${FILESDIR}/${P}-disable_update_check.patch"
-	"${FILESDIR}/${P}-disable_version_check.patch"
-	"${FILESDIR}/${P}-use_system_shapelib.patch"
-	"${FILESDIR}/${P}-use_system_zlib.patch"
-	"${FILESDIR}/${P}-xmldoc.patch"
+	"${FILESDIR}"/${PN}-1.4.3-fix_binary_name.patch
+	"${FILESDIR}"/${P}-disable_statistic_uploading.patch
+	"${FILESDIR}"/${P}-disable_update_check.patch
+	"${FILESDIR}"/${P}-disable_version_check.patch
+	"${FILESDIR}"/${P}-use_system_shapelib.patch
+	"${FILESDIR}"/${P}-use_system_zlib.patch
+	"${FILESDIR}"/${P}-xmldoc.patch
+	"${FILESDIR}"/${P}-qt-5.9-{1,2}.patch
 )
 
 RESTRICT="test" # bug 421699

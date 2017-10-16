@@ -1,0 +1,15 @@
+--- libsub-9999/test/wscript
++++ libsub-9999/test/wscript
+@@ -6,10 +6,11 @@
+     conf.check_cxx(fragment="""
+                             #define BOOST_TEST_MODULE Config test\n
+     			    #include <boost/test/unit_test.hpp>\n
++    			    #include <boost/filesystem.hpp>\n
+                             int main() {}
+                             """,
+                             msg='Checking for boost unit testing library',
+-                            lib='boost_unit_test_framework%s' % boost_lib_suffix,
++                            lib='boost_unit_test_framework%s boost_filesystem%s' % (boost_lib_suffix, boost_lib_suffix),
+                             uselib_store='BOOST_TEST')
+ 
+     conf.env.prepend_value('LINKFLAGS', '-Lsrc')

@@ -9,7 +9,7 @@ DESCRIPTION="KDE Telepathy krunner plugin"
 HOMEPAGE="https://community.kde.org/Real-Time_Communication_and_Collaboration"
 
 LICENSE="LGPL-2.1"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="
@@ -20,7 +20,7 @@ RDEPEND="
 	$(add_qt_dep qtdbus)
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
-	net-libs/telepathy-qt[qt5]
+	net-libs/telepathy-qt[qt5(+)]
 "
 DEPEND="${RDEPEND}
 	$(add_frameworks_dep kservice)

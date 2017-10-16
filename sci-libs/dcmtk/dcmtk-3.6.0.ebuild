@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -26,17 +26,19 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 	media-gfx/graphviz"
 
-src_prepare() {
+PATCHES=(
+	"${FILESDIR}"/01_fix_perl_script_path.patch
+	"${FILESDIR}"/02_dcmtk_3.6.0-1.patch
+	"${FILESDIR}"/04_nostrip.patch
+	"${FILESDIR}"/dcmtk_version_number.patch
+	"${FILESDIR}"/png_tiff.patch
+	"${FILESDIR}"/regression_stacksequenceisodd.patch
+	"${FILESDIR}"/${PN}-asneeded.patch
+	"${FILESDIR}"/${PN}-gcc472-error.patch
+)
 
-	epatch \
-		"${FILESDIR}"/01_fix_perl_script_path.patch \
-		"${FILESDIR}"/02_dcmtk_3.6.0-1.patch \
-		"${FILESDIR}"/04_nostrip.patch \
-		"${FILESDIR}"/dcmtk_version_number.patch \
-		"${FILESDIR}"/png_tiff.patch \
-		"${FILESDIR}"/regression_stacksequenceisodd.patch \
-		"${FILESDIR}"/${PN}-asneeded.patch \
-		"${FILESDIR}"/${PN}-gcc472-error.patch
+src_prepare() {
+	cmake-utils_src_prepare
 
 	sed -e "s:share/doc/dcmtk:&-${PV}:" \
 		-e "s:DIR \"/:DIR \"/usr/:" \
@@ -56,7 +58,7 @@ src_prepare() {
 }
 
 src_configure() {
-	mycmakeargs="${mycmakeargs}
+	local mycmakeargs="${mycmakeargs}
 		-DBUILD_SHARED_LIBS=ON
 		-DCMAKE_INSTALL_PREFIX=/
 		$(cmake-utils_use tiff DCMTK_WITH_TIFF)

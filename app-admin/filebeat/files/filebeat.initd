@@ -12,11 +12,12 @@ FILEBEAT_OPTS="${FILEBEAT_OPTS:-}"
 command="/usr/bin/filebeat"
 command_args="-c ${FILEBEAT_CONFIG} ${FILEBEAT_OPTS} -path.config $(dirname $FILEBEAT_CONFIG) \
 	-path.data ${FILEBEAT_DATADIR} -path.home ${FILEBEAT_DATADIR} -path.logs ${FILEBEAT_LOGDIR}"
-extra_commands="checkconfig"
 command_background="true"
-start_stop_daemon_args="--user ${FILEBEAT_USER}:${FILEBEAT_GROUP} \
-	--chdir ${FILEBEAT_DATADIR}"
-pidfile="/run/filebeat/filebeat.pid"
+command_user="${FILEBEAT_USER}:${FILEBEAT_GROUP}"
+extra_commands="checkconfig"
+pidfile="/run/filebeat.pid"
+retry="TERM/5/KILL/5"
+start_stop_daemon_args="--chdir ${FILEBEAT_DATADIR}"
 
 depend() {
 	use net
@@ -37,14 +38,6 @@ checkconfig() {
 start_pre() {
 	checkconfig || return 1
 
-	checkpath -d -o "${FILEBEAT_USER}":"${FILEBEAT_GROUP}" -m750 "$(dirname "${pidfile}")"
 	checkpath -d -o "${FILEBEAT_USER}":"${FILEBEAT_GROUP}" -m750 "${FILEBEAT_DATADIR}"
 	checkpath -d -o "${FILEBEAT_USER}":"${FILEBEAT_GROUP}" -m750 "${FILEBEAT_LOGDIR}"
-}
-
-stop() {
-	ebegin "Stopping filebeat"
-	start-stop-daemon --stop \
-		--pidfile=${pidfile} \
-		--retry=TERM/5/KILL/5
 }

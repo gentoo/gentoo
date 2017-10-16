@@ -21,3 +21,22 @@
  
                          end if;
                       end if;
+--- gprbuild-gpl-2016-src/gpr/src/gpr-conf.adb.old	2017-09-12 21:29:25.945747949 +0200
++++ gprbuild-gpl-2016-src/gpr/src/gpr-conf.adb	2017-09-12 21:35:16.299101715 +0200
+@@ -1839,6 +1839,16 @@
+                end;
+             end if;
+ 
++            Compiler_Root := First_Compiler_Root;
++            while Compiler_Root.Next /= null loop
++               Compiler_Root := Compiler_Root.Next;
++            end loop;
++            Compiler_Root.Next :=
++              new Compiler_Root_Data'
++                (Root => new String'("/usr"),
++                 Runtimes => null,
++                 Next => null);
++
+             --  Now that the compiler roots are in a correct order, add the
+             --  directories corresponding to these compiler roots in the
+             --  project path.

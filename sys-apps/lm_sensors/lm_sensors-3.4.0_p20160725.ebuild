@@ -6,7 +6,7 @@ EAPI="6"
 inherit linux-info systemd toolchain-funcs multilib-minimal
 
 DESCRIPTION="Hardware Monitoring user-space utilities"
-HOMEPAGE="http://www.lm-sensors.org/ https://github.com/groeck/lm-sensors"
+HOMEPAGE="https://hwmon.wiki.kernel.org/ https://github.com/groeck/lm-sensors"
 
 COMMIT="45ffa15cf02e63f70ff3b85c23e22dfbab7e8f9c"
 MY_PN="${PN/_/-}"

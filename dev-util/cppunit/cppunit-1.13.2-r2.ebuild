@@ -3,13 +3,13 @@
 
 EAPI=5
 
-EGIT_REPO_URI="git://anongit.freedesktop.org/libreoffice/cppunit"
+EGIT_REPO_URI="https://anongit.freedesktop.org/git/libreoffice/cppunit.git"
 [[ ${PV} = 9999 ]] && inherit git-r3 autotools
 inherit eutils flag-o-matic multilib-minimal
 
 DESCRIPTION="C++ port of the famous JUnit framework for unit testing"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/cppunit"
-[[ ${PV} = 9999 ]] || SRC_URI="http://dev-www.libreoffice.org/src/${P}.tar.gz"
+[[ ${PV} = 9999 ]] || SRC_URI="https://dev-www.libreoffice.org/src/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

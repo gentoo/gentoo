@@ -1,0 +1,47 @@
+From e4cb8500810a310a10a6cb359e1b53fac03ed597 Mon Sep 17 00:00:00 2001
+From: "Daniel P. Berrange" <berrange@redhat.com>
+Date: Fri, 11 Aug 2017 17:19:53 +0100
+Subject: [PATCH] rpc: avoid ssh interpreting malicious hostname as arguments
+
+Inspired by the recent GIT / Mercurial security flaws
+(http://blog.recurity-labs.com/2017-08-10/scm-vulns),
+consider someone/something manages to feed libvirt a bogus
+URI such as:
+
+  virsh -c qemu+ssh://-oProxyCommand=gnome-calculator/system
+
+In this case, the hosname "-oProxyCommand=gnome-calculator"
+will get interpreted as an argument to ssh, not a hostname.
+Fortunately, due to the set of args we have following the
+hostname, SSH will then interpret our bit of shell script
+that runs 'nc' on the remote host as a cipher name, which is
+clearly invalid. This makes ssh exit during argv parsing and
+so it never tries to run gnome-calculator.
+
+We are lucky this time, but lets be more paranoid, by using
+'--' to explicitly tell SSH when it has finished seeing
+command line options. This forces it to interpret
+"-oProxyCommand=gnome-calculator" as a hostname, and thus
+see a fail from hostname lookup.
+
+Signed-off-by: Daniel P. Berrange <berrange@redhat.com>
+---
+ src/rpc/virnetsocket.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/rpc/virnetsocket.c b/src/rpc/virnetsocket.c
+index d228c8a8c..23089afef 100644
+--- a/src/rpc/virnetsocket.c
++++ b/src/rpc/virnetsocket.c
+@@ -868,7 +868,7 @@ int virNetSocketNewConnectSSH(const char *nodename,
+     if (!netcat)
+         netcat = "nc";
+ 
+-    virCommandAddArgList(cmd, nodename, "sh", "-c", NULL);
++    virCommandAddArgList(cmd, "--", nodename, "sh", "-c", NULL);
+ 
+     virBufferEscapeShell(&buf, netcat);
+     if (virBufferCheckError(&buf) < 0) {
+-- 
+2.13.5
+

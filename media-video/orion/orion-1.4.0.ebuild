@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit qmake-utils
+inherit qmake-utils eutils
 
 DESCRIPTION="Cross-platform Twitch client"
 HOMEPAGE="https://alamminsalo.github.io/orion/"
@@ -20,6 +20,14 @@ DEPEND="dev-qt/qtquickcontrols:5
 	!mpv? ( dev-qt/qtmultimedia:5 )"
 RDEPEND="${DEPEND}
 	!mpv? ( media-plugins/gst-plugins-hls )"
+
+src_prepare() {
+	sed -i \
+		-e 's:^Icon=/usr/local/share/icons/orion.svg$:Icon=/usr/share/icons/hicolor/scalable/apps/orion.svg:' \
+		-e 's:^Categories=Games$:Categories=Game;:' \
+		distfiles/*.desktop
+	eapply_user
+}
 
 src_configure() {
 	# TODO: also supports qtav, not yet in portage

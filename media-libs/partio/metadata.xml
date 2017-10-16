@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>j.scruggs@gmail.com</email>
+		<name>Jonathan Scruggs</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>agrigo2001@yahoo.com.au</email>
+		<name>Adrian Grigo</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		A library for particle IO and manipulation
+	</longdescription>
+	<upstream>
+		<remote-id type="github">wdas/partio</remote-id>
+	</upstream>
+</pkgmetadata>

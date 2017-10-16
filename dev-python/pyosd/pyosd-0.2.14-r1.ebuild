@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Python module for displaying text on your X display, like the 'On Screen Displays' used on TVs"
-HOMEPAGE="http://ichi2.net/pyosd/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="http://ichi2.net/pyosd/${P}.tar.gz"
 
 LICENSE="GPL-2"

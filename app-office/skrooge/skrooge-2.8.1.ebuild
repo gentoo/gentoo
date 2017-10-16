@@ -11,7 +11,7 @@ VIRTUALX_REQUIRED="test"
 inherit kde5
 
 DESCRIPTION="Personal finances manager, aiming at being simple and intuitive"
-HOMEPAGE="http://www.skrooge.org/"
+HOMEPAGE="https://skrooge.org/"
 [[ ${PV} == 9999 ]] || SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"

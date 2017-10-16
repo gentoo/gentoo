@@ -63,8 +63,8 @@ src_install() {
 	# bash should always be there, if we can find it in capitals, we're
 	# on a case-INsensitive filesystem.
 	if [[ ! -f ${EROOT}/BIN/BASH ]] ; then
-		dosym /usr/bin/lwp-request /usr/bin/GET
-		dosym /usr/bin/lwp-request /usr/bin/POST
-		dosym /usr/bin/lwp-request /usr/bin/HEAD
+		dosym lwp-request /usr/bin/GET
+		dosym lwp-request /usr/bin/POST
+		dosym lwp-request /usr/bin/HEAD
 	fi
 }

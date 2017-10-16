@@ -6,10 +6,10 @@
     <name>Python</name>
   </maintainer>
   <maintainer type="person">
-	  <email>monsieurp@gentoo.org</email>
-	  <name>Patrice Clement</name>
+    <email>monsieurp@gentoo.org</email>
+    <name>Patrice Clement</name>
   </maintainer>
   <longdescription lang="en">
-	  Dive Into Python is a free Python book for experienced programmers.
+    Dive Into Python is a free Python book for experienced programmers.
   </longdescription>
 </pkgmetadata>

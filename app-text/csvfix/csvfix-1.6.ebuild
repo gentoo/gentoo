@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit eutils toolchain-funcs versionator vcs-snapshot
+inherit toolchain-funcs versionator vcs-snapshot
 
 MY_PV="$(delete_all_version_separators)"
 DESCRIPTION="A stream editor for manipulating CSV files"
@@ -20,10 +20,13 @@ RDEPEND="dev-libs/expat"
 DEPEND="${RDEPEND}
 	doc? ( app-arch/unzip )"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-makefile.patch
-	epatch "${FILESDIR}"/${PN}-1.10a-tests.patch
+PATCHES=(
+	"${FILESDIR}"/${P}-makefile.patch
+	"${FILESDIR}"/${PN}-1.10a-tests.patch
+)
 
+src_prepare() {
+	default
 	edos2unix $(find csvfix/tests -type f)
 }
 
@@ -39,5 +42,8 @@ src_test() {
 
 src_install() {
 	dobin csvfix/bin/csvfix
-	use doc && dohtml -r "${WORKDIR}"/${PN}${MY_PV}/*
+	if use doc; then
+		docinto html
+		dodoc -r "${WORKDIR}"/${PN}${MY_PV}/*
+	fi
 }

@@ -12,7 +12,7 @@ inherit java-utils-2 virtualx
 DESCRIPTION="Java application for Mind Mapping, Knowledge and Project Management"
 HOMEPAGE="https://www.freeplane.org/"
 SRC_URI="mirror://sourceforge/${PN}/${PN}%20stable/${PN}_src-${PV}.tar.gz
-	http://dev.gentoo.org/~xmw/distfiles/freeplane-1.5.18-gradle-cache.tar.xz"
+	https://dev.gentoo.org/~xmw/distfiles/freeplane-1.5.18-gradle-cache.tar.xz"
 #generate cache file by disabling --offline, ebuild clean test and
 #tar cvJf /var/cache/distfiles/freeplane-1.5.18-gradle-cache.tar.xz -C /var/tmp/portage/app-misc/freeplane-1.5.18/work .gradle/caches/modules-2
 

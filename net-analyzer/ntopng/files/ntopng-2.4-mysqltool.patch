@@ -1,5 +1,5 @@
---- configure.ac.orig	2016-11-19 19:16:20.167724203 +0100
-+++ configure.ac	2016-11-19 19:16:32.684391101 +0100
+--- a/configure.ac
++++ b/configure.ac
 @@ -302,13 +302,7 @@
  if test "x$ac_cv_prog_ac_ct_MARIADB" = "xmariadb_config"; then
     MYSQLTOOL="mariadb_config"

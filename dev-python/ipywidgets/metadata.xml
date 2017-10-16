@@ -6,11 +6,10 @@
     <name>Gentoo Science Project</name>
   </maintainer>
   <longdescription>
-  	Interactive HTML widgets for Jupyter notebooks and the IPython
-  	kernel.
+    Interactive HTML widgets for Jupyter notebooks and the IPython kernel.
   </longdescription>
   <upstream>
     <remote-id type="pypi">ipywidgets</remote-id>
-    <remote-id type="github">ipython/ipywidgets</remote-id>
+    <remote-id type="github">jupyter-widgets/ipywidgets</remote-id>
   </upstream>
 </pkgmetadata>

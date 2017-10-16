@@ -13,12 +13,10 @@ SRC_URI="https://github.com/PixarAnimationStudios/OpenSubdiv/archive/v${MY_PV}.t
 
 LICENSE="ZLIB"
 SLOT="0"
-IUSE="cuda doc examples opencl openmp ptex tbb test tutorials"
+IUSE="cuda doc opencl openmp ptex tbb test"
 
-# OpenCL does not work with Open Source drivers.
 RDEPEND="media-libs/glew:=
 	media-libs/glfw:=
-	opencl? ( x11-drivers/ati-drivers:* )
 	cuda? ( dev-util/nvidia-cuda-toolkit:* )
 	ptex? ( media-libs/ptex )"
 
@@ -51,8 +49,8 @@ src_configure() {
 		-DNO_OPENCL=$(usex !opencl)
 		-DNO_CUDA=$(usex !cuda)
 		-DNO_REGRESSION=$(usex !test)
-		-DNO_EXAMPLES=$(usex !examples)
-		-DNO_TUTORIALS=$(usex !tutorials)
+		-DNO_EXAMPLES=1 # broken
+		-DNO_TUTORIALS=1 # broken
 		-DGLEW_LOCATION="${EPREFIX}/usr/$(get_libdir)"
 		-DGLFW_LOCATION="${EPREFIX}/usr/$(get_libdir)"
 	)

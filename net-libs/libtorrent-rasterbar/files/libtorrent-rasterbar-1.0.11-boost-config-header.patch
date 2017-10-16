@@ -1,0 +1,31 @@
+commit 7eb3cf6bc6dbada3fa7bb7ff4d5981182813a0e2
+Author: arvidn <arvid@cs.umu.se>
+Date:   Tue Jul 11 23:16:50 2017 -0700
+
+    use the official boost.config header
+
+diff --git a/include/libtorrent/export.hpp b/include/libtorrent/export.hpp
+index 87536af2a..503afe27a 100644
+--- a/include/libtorrent/export.hpp
++++ b/include/libtorrent/export.hpp
+@@ -33,19 +33,7 @@ POSSIBILITY OF SUCH DAMAGE.
+ #ifndef TORRENT_EXPORT_HPP_INCLUDED
+ #define TORRENT_EXPORT_HPP_INCLUDED
+ 
+-#if !defined(BOOST_COMPILER_CONFIG) && !defined(BOOST_NO_COMPILER_CONFIG)
+-#  include <boost/config/select_compiler_config.hpp>
+-#endif
+-#ifdef BOOST_COMPILER_CONFIG
+-#  include BOOST_COMPILER_CONFIG
+-#endif
+-
+-#if !defined(BOOST_PLATFORM_CONFIG) && !defined(BOOST_NO_PLATFORM_CONFIG)
+-#  include <boost/config/select_platform_config.hpp>
+-#endif
+-#ifdef BOOST_PLATFORM_CONFIG
+-#  include BOOST_PLATFORM_CONFIG
+-#endif
++#include <boost/config.hpp>
+ 
+ // backwards compatibility with older versions of boost
+ #if !defined BOOST_SYMBOL_EXPORT && !defined BOOST_SYMBOL_IMPORT

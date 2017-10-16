@@ -1,0 +1,21 @@
+commit 597b6eb65b4ea68f0fe8015db38ce68b71c280d7
+Author: Florian Lamprecht <florian_lamprecht@gmx.de>
+Date:   Sun Mar 19 13:37:27 2017 +0100
+
+    Fix a compiler warning on linux
+    
+    include a systemmacro explictly to avoid warning, which is handled as error.
+
+diff --git a/libs/asiotap/src/posix/posix_tap_adapter.cpp b/libs/asiotap/src/posix/posix_tap_adapter.cpp
+index 74e9eb2a..71377cee 100644
+--- a/libs/asiotap/src/posix/posix_tap_adapter.cpp
++++ b/libs/asiotap/src/posix/posix_tap_adapter.cpp
+@@ -56,7 +56,7 @@
+ #ifdef LINUX
+ 
+ #include <linux/if_tun.h>
+-
++#include <sys/sysmacros.h>
+ /**
+  * \struct in6_ifreq
+  * \brief Replacement structure since the include of linux/ipv6.h introduces conflicts.

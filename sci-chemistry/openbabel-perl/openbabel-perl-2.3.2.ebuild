@@ -9,7 +9,7 @@ DESCRIPTION="Perl bindings for OpenBabel"
 HOMEPAGE="http://openbabel.sourceforge.net/"
 SRC_URI="mirror://sourceforge/openbabel/openbabel-${PV}.tar.gz"
 
-KEYWORDS="amd64 ~arm ppc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 SLOT="0"
 LICENSE="GPL-2"
 IUSE=""
@@ -33,7 +33,7 @@ src_prepare() {
 	sed \
 		-e '/__GNUC__/s:== 4:>= 4:g' \
 		-i include/openbabel/shared_ptr.h || die
-	epatch "${PATCHES[@]}"
+	cmake-utils_src_prepare
 	perl_set_version
 }
 

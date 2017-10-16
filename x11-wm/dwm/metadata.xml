@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-	<email>hm.stahl@web.de</email>
-	<name>Michael Stahn</name>
-</maintainer>
 <maintainer type="project">
 	<email>desktop-misc@gentoo.org</email>
-</maintainer>
-<maintainer type="project">
-	<email>proxy-maint@gentoo.org</email>
-	<name>Proxy Maintainers</name>
 </maintainer>
 <longdescription>
 dwm is a dynamic window manager for X. It manages windows in tiling and

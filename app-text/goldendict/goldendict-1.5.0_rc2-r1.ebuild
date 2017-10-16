@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug ffmpeg libav"
 
 RDEPEND="
@@ -55,6 +55,11 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 src_prepare() {
 	default
 
+	# disable git
+	sed -i \
+		-e '/git describe/s/^/#/' \
+		${PN}.pro || die
+
 	# fix installation path
 	sed -i \
 		-e '/PREFIX = /s:/usr/local:/usr:' \
@@ -67,7 +72,7 @@ src_prepare() {
 src_configure() {
 	local myconf=()
 
-	if ! use ffmpeg && ! use libav ; then
+	if ! use ffmpeg ; then
 		myconf+=( DISABLE_INTERNAL_PLAYER=1 )
 	fi
 

@@ -19,5 +19,6 @@ RDEPEND="
 	dev-ros/dynamic_reconfigure[${PYTHON_USEDEP}]
 	dev-ros/image_transport
 	media-libs/opencv:=
+	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}"

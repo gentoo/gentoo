@@ -15,7 +15,7 @@ SRC_URI="
 	http://znc.in/releases/archive/${PN}-${MY_PV}.tar.gz
 	test? ( ${GTEST_URL} )
 "
-KEYWORDS="amd64 arm ~x86"
+KEYWORDS="amd64 arm x86"
 
 HOMEPAGE="http://znc.in"
 LICENSE="Apache-2.0"

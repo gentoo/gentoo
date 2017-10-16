@@ -10,7 +10,6 @@
 	</longdescription>
 	<use>
 		<flag name="bittorrent">Use the bittorrent protocol via <pkg>net-libs/libtorrent-rasterbar</pkg>.</flag>
-		<flag name="webinterface">Enable builtin webinterface.</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">LubosD/fatrat</remote-id>

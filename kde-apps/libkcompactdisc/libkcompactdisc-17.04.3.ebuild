@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="Library for playing & ripping CDs"
 LICENSE="GPL-2+ LGPL-2+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="alsa"
 
 DEPEND="
@@ -16,7 +16,7 @@ DEPEND="
 	$(add_frameworks_dep ki18n)
 	$(add_frameworks_dep solid)
 	$(add_qt_dep qtdbus)
-	media-libs/phonon[qt5]
+	media-libs/phonon[qt5(+)]
 	alsa? ( media-libs/alsa-lib )
 "
 RDEPEND="${DEPEND}"

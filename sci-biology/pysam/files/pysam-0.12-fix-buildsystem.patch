@@ -1,0 +1,63 @@
+The build system is not designed with partial out-of-source
+builds in mind. This is evident by using relative includes
+such as '-Isamtools' instead of proper relative or absolute
+paths.
+
+Bug: https://bugs.gentoo.org/show_bug.cgi?id=629670
+
+--- a/setup.py
++++ b/setup.py
+@@ -359,6 +359,8 @@
+ 
+ define_macros = []
+ 
++samtools_include_dirs = [os.path.abspath("samtools")]
++
+ chtslib = Extension(
+     "pysam.libchtslib",
+     [source_pattern % "htslib",
+@@ -385,7 +387,7 @@
+     htslib_sources +
+     os_c_files,
+     library_dirs=htslib_library_dirs,
+-    include_dirs=["pysam", "samtools", "."] + include_os + htslib_include_dirs,
++    include_dirs=["pysam", "."] + samtools_include_dirs + include_os + htslib_include_dirs,
+     libraries=external_htslib_libraries + internal_htslib_libraries,
+     language="c",
+     extra_compile_args=extra_compile_args,
+@@ -404,7 +406,7 @@
+     htslib_sources +
+     os_c_files,
+     library_dirs=htslib_library_dirs,
+-    include_dirs=["pysam", "samtools"] + include_os + htslib_include_dirs,
++    include_dirs=["pysam"] + samtools_include_dirs + include_os + htslib_include_dirs,
+     libraries=external_htslib_libraries + internal_htslib_libraries,
+     language="c",
+     extra_compile_args=extra_compile_args,
+@@ -423,7 +425,7 @@
+     htslib_sources +
+     os_c_files,
+     library_dirs=htslib_library_dirs,
+-    include_dirs=["pysam", "samtools", "."] + include_os + htslib_include_dirs,
++    include_dirs=["pysam", "."] + samtools_include_dirs + include_os + htslib_include_dirs,
+     libraries=external_htslib_libraries + internal_htslib_libraries,
+     language="c",
+     extra_compile_args=extra_compile_args,
+@@ -467,7 +469,7 @@
+     htslib_sources +
+     os_c_files,
+     library_dirs=["pysam"] + htslib_library_dirs,
+-    include_dirs=["samtools", "pysam", "."] +
++    include_dirs=["pysam", "."] + samtools_include_dirs +
+     include_os + htslib_include_dirs,
+     libraries=external_htslib_libraries + internal_htslib_libraries,
+     language="c",
+@@ -482,7 +484,7 @@
+     htslib_sources +
+     os_c_files,
+     library_dirs=["pysam"] + htslib_library_dirs,
+-    include_dirs=["bcftools", "pysam", "."] +
++    include_dirs=["bcftools", "pysam", "."] + samtools_include_dirs +
+     include_os + htslib_include_dirs,
+     libraries=external_htslib_libraries + internal_htslib_libraries,
+     language="c",

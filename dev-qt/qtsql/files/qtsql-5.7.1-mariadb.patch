@@ -1,0 +1,56 @@
+From d25346417238b7dc0fb37359a9b56eff2908a5dc Mon Sep 17 00:00:00 2001
+From: =?utf8?q?Daniel=20Vr=C3=A1til?= <daniel.vratil@kdab.com>
+Date: Mon, 18 Sep 2017 22:33:55 +0200
+Subject: [PATCH] Only call mysql_library_end() once when using MariaDB
+
+MariaDB allows only a single call to mysql_library_end(), all subsequent calls
+to mysql_library_init() or any other API call will fail. Since QMYSQLDriver
+calls mysql_library_end() function whenever the refcount drops to 0, this
+breaks applications that close and reopen database connections.
+
+This change registers call to mysql_library_init() via qAddPostRoutine()
+when compiled against MariaDB, so that we only call it once.
+
+Task-number: QTBUG-63108
+Change-Id: I22c1f0c5b081216f12596a32748dca25cae919e9
+Reviewed-by: Andy Shaw <andy.shaw@qt.io>
+---
+ src/plugins/sqldrivers/mysql/qsql_mysql.cpp | 18 ++++++++++++------
+ 1 file changed, 12 insertions(+), 6 deletions(-)
+
+diff --git a/src/plugins/sqldrivers/mysql/qsql_mysql.cpp b/src/plugins/sqldrivers/mysql/qsql_mysql.cpp
+index ee439fa..6e428fb 100644
+--- a/src/sql/drivers/mysql/qsql_mysql.cpp
++++ b/src/sql/drivers/mysql/qsql_mysql.cpp
+@@ -1158,16 +1158,22 @@ static void qLibraryInit()
+     }
+ # endif // MYSQL_VERSION_ID
+ #endif // Q_NO_MYSQL_EMBEDDED
++
++#ifdef MARIADB_BASE_VERSION
++    qAddPostRoutine(mysql_server_end);
++#endif
+ }
+ 
+ static void qLibraryEnd()
+ {
+-#ifndef Q_NO_MYSQL_EMBEDDED
+-# if MYSQL_VERSION_ID > 40000
+-#  if (MYSQL_VERSION_ID >= 40110 && MYSQL_VERSION_ID < 50000) || MYSQL_VERSION_ID >= 50003
+-    mysql_library_end();
+-#  else
+-    mysql_server_end();
++#if !defined(MARIADB_BASE_VERSION)
++# if !defined(Q_NO_MYSQL_EMBEDDED)
++#  if MYSQL_VERSION_ID > 40000
++#   if (MYSQL_VERSION_ID >= 40110 && MYSQL_VERSION_ID < 50000) || MYSQL_VERSION_ID >= 50003
++     mysql_library_end();
++#   else
++     mysql_server_end();
++#   endif
+ #  endif
+ # endif
+ #endif
+-- 
+2.7.4
+

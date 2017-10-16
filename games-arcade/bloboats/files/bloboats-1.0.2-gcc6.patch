@@ -1,0 +1,12 @@
+diff -ruN --strip-trailing-cr bloboats-1.0.2.orig/src/menu.cpp bloboats-1.0.2/src/menu.cpp
+--- bloboats-1.0.2.orig/src/menu.cpp	2010-08-25 23:55:26.000000000 +0200
++++ bloboats-1.0.2/src/menu.cpp	2017-10-02 16:09:23.398499565 +0200
+@@ -917,7 +917,7 @@
+ 				exit(1);
+ 			}
+ 
+-			ghostfile=false;
++			ghostfile=NULL;
+ 			ghost=false;
+ 		} else {
+ 			Uint32 ghostlevel = 0;

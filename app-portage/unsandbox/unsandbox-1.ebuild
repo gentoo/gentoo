@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,8 +6,8 @@ EAPI=6
 inherit toolchain-funcs
 
 DESCRIPTION="The Sandbox escapist tool"
-HOMEPAGE="http://dev.gentoo.org/~mgorny/dist/unsandbox.c"
-SRC_URI="http://dev.gentoo.org/~mgorny/dist/unsandbox.c"
+HOMEPAGE="https://dev.gentoo.org/~mgorny/dist/unsandbox.c"
+SRC_URI="https://dev.gentoo.org/~mgorny/dist/unsandbox.c"
 
 LICENSE="BSD-2"
 SLOT="0"

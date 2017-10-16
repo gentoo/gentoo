@@ -15,7 +15,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="doc examples matplotlib notebook nbconvert qt4 qt5 +smp test"
+IUSE="doc examples matplotlib notebook nbconvert qt4 qt5 smp test"
 
 CDEPEND="
 	dev-python/decorator[${PYTHON_USEDEP}]
@@ -31,10 +31,6 @@ CDEPEND="
 "
 
 RDEPEND="${CDEPEND}
-	notebook? (
-		dev-python/notebook[${PYTHON_USEDEP}]
-		dev-python/ipywidgets[${PYTHON_USEDEP}]
-	)
 	nbconvert? ( dev-python/nbconvert[${PYTHON_USEDEP}] )
 "
 
@@ -56,6 +52,10 @@ DEPEND="${CDEPEND}
 "
 
 PDEPEND="
+	notebook? (
+		dev-python/notebook[${PYTHON_USEDEP}]
+		dev-python/ipywidgets[${PYTHON_USEDEP}]
+	)
 	qt4? ( dev-python/qtconsole[${PYTHON_USEDEP}] )
 	qt5? ( dev-python/qtconsole[${PYTHON_USEDEP}] )
 	smp? ( dev-python/ipyparallel[${PYTHON_USEDEP}] )
@@ -89,6 +89,18 @@ python_test() {
 	pushd "${TEST_DIR}" >/dev/null || die
 	"${TEST_DIR}"/scripts/iptest || die
 	popd >/dev/null || die
+}
+
+python_install() {
+	distutils-r1_python_install
+
+	# Create ipythonX.Y symlinks.
+	# TODO:
+	# 1. do we want them for pypy? No.  pypy has no numpy
+	# 2. handle it in the eclass instead (use _python_ln_rel).
+	# With pypy not an option the dosym becomes unconditional
+	dosym ../lib/python-exec/${EPYTHON}/ipython \
+		/usr/bin/ipython${EPYTHON#python}
 }
 
 python_install_all() {

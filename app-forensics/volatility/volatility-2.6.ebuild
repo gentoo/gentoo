@@ -31,5 +31,5 @@ src_install() {
 	mv "${D}/usr/contrib/plugins" "${D}/usr/share/${PN}/"
 	rmdir "${D}/usr/contrib"
 	mv "${D}/usr/tools" "${D}/usr/share/${PN}/"
-	dosym /usr/bin/vol.py /usr/bin/volatility
+	dosym vol.py /usr/bin/volatility
 }

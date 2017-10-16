@@ -5,8 +5,6 @@
     <email>alunduil@gentoo.org</email>
     <name>Alex Brandt</name>
   </maintainer>
-  <longdescription lang="en">
-	</longdescription>
   <upstream>
     <remote-id type="github">rackerhacker/supernova</remote-id>
     <remote-id type="pypi">supernova</remote-id>

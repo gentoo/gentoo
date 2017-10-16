@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="Language learning application that helps improving pronunciation skills"
 HOMEPAGE="https://edu.kde.org/applications/language/artikulate"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+gstreamer qtmedia"
 
 DEPEND="
@@ -26,7 +26,7 @@ DEPEND="
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
 	$(add_qt_dep qtxmlpatterns)
-	gstreamer? ( >=media-libs/qt-gstreamer-1.2.0[qt5] )
+	gstreamer? ( >=media-libs/qt-gstreamer-1.2.0[qt5(+)] )
 	qtmedia? ( $(add_qt_dep qtmultimedia) )
 "
 RDEPEND="${DEPEND}"

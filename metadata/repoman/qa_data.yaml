@@ -1,5 +1,5 @@
 ---
-# This yaml syntax file holds various configuration data for 
+# This yaml syntax file holds various configuration data for
 # the Quality-Assurance checks performed.
 
 # no random drive-by commits please
@@ -8,6 +8,11 @@
 # Overlay maintainers override/add/negate checks at your discression
 # but support for third party module will be limited to the plugin API
 #
+
+# Repoman API version (do not edit)
+version: 1
+# minimum
+repoman_version: 2.3.3
 
 
 allowed_filename_chars: "a-zA-Z0-9._-+:"
@@ -155,7 +160,7 @@ qahelp:
     wxwidgets:
         eclassnotused: "Ebuild DEPENDs on x11-libs/wxGTK without inheriting wxwidgets.eclass"
 
-# qawarnings: Non-fatal warnings, 
+# qawarnings: Non-fatal warnings,
 #             all values in here MUST have a corresponding qahelp entry
 # list
 qawarnings:
@@ -210,10 +215,10 @@ ruby_deprecated:
     - ruby_targets_ruby19
     - ruby_targets_ruby20
 
-# suspect_rdepend: Common build only Dependencies 
+# suspect_rdepend: Common build only Dependencies
 #                  not usually run time dependencies
 # list
-suspect_rdepend: 
+suspect_rdepend:
   - app-arch/cabextract
   - app-arch/rpm2targz
   - app-doc/doxygen
@@ -256,8 +261,8 @@ suspect_rdepend:
 
 # suspect_virtual: Dependencies that should usually be made to the virtual
 #                  Not to the final target library
-# dictionary  
-suspect_virtual: 
+# dictionary
+suspect_virtual:
   dev-libs/libusb: virtual/libusb
   dev-libs/libusb-compat: virtual/libusb
   dev-libs/libusbx: virtual/libusb

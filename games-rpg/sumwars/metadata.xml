@@ -14,8 +14,6 @@
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
-	<longdescription lang="en">
-	</longdescription>
 	<upstream>
 		<changelog>http://sumwars.org/mantis/changelog_page.php</changelog>
 		<bugs-to>https://sumwars.org/mantis/index.php</bugs-to>

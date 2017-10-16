@@ -1,0 +1,108 @@
+From 2f2028a19fd12477fcd9050ea354174f33b68b46 Mon Sep 17 00:00:00 2001
+From: Elvis Pranskevichus <elvis@magic.io>
+Date: Mon, 21 Aug 2017 10:16:44 -0400
+Subject: [PATCH] LTO fixes
+
+---
+ build/config/compiler/BUILD.gn    | 35 +++++++++++++++++++++++++----------
+ build/config/posix/BUILD.gn       |  2 +-
+ build/toolchain/gcc_ar_wrapper.py | 12 +++++++++++-
+ 3 files changed, 37 insertions(+), 12 deletions(-)
+
+diff --git a/build/config/compiler/BUILD.gn b/build/config/compiler/BUILD.gn
+index d0510b8..583f186 100644
+--- a/build/config/compiler/BUILD.gn
++++ b/build/config/compiler/BUILD.gn
+@@ -448,20 +448,35 @@ config("compiler") {
+     } else {
+       # Note: ThinLTO does not currently have this feature implemented
+       # For Full LTO, it provides a measurable runtime speedup of Chrome.
+-      cflags += [
+-        "-flto",
+-        "-fwhole-program-vtables",
+-      ]
+-      ldflags += [
+-        "-flto",
+-        "-fwhole-program-vtables",
+-      ]
++      if (is_clang) {
++        cflags += [
++          "-flto",
++          "-fwhole-program-vtables"
++        ]
++        ldflags += [
++          "-flto",
++          "-fwhole-program-vtables"
++        ]
++      } else {
++        cflags += [
++          "-flto=4",
++          "-fno-fat-lto-objects",
++          "-fuse-linker-plugin",
++          "--param=lto-partitions=1",
++        ]
++        ldflags += [
++          "-flto=4",
++          "-fno-fat-lto-objects",
++          "-fuse-linker-plugin",
++          "--param=lto-partitions=1",
++        ]
++      }
+ 
+       # Apply a lower LTO optimization level as the default is too slow.
+       if (is_linux) {
+         if (use_lld) {
+           ldflags += [ "-Wl,--lto-O1" ]
+-        } else {
++        } else if (is_clang) {
+           ldflags += [ "-Wl,-plugin-opt,O1" ]
+         }
+       } else if (is_mac) {
+@@ -478,7 +493,7 @@ config("compiler") {
+     # targeting ARM, without this flag, LTO produces a .text section that is
+     # larger than the maximum call displacement, preventing the linker from
+     # relocating calls (http://llvm.org/PR22999).
+-    if (is_linux) {
++    if (is_linux && is_clang) {
+       ldflags += [ "-Wl,-plugin-opt,-function-sections" ]
+     }
+   }
+diff --git a/build/config/posix/BUILD.gn b/build/config/posix/BUILD.gn
+index d7e917a..fc68864 100644
+--- a/build/config/posix/BUILD.gn
++++ b/build/config/posix/BUILD.gn
+@@ -21,7 +21,7 @@ config("compiler") {
+   if ((allow_posix_link_time_opt || is_cfi) && !is_nacl) {
+     arflags = [
+       "--plugin",
+-      rebase_path("$clang_base_path/lib/LLVMgold.so", root_build_dir),
++      "auto"
+     ]
+   }
+ }
+diff --git a/build/toolchain/gcc_ar_wrapper.py b/build/toolchain/gcc_ar_wrapper.py
+index de53df0..39c7b56 100755
+--- a/build/toolchain/gcc_ar_wrapper.py
++++ b/build/toolchain/gcc_ar_wrapper.py
+@@ -47,7 +47,17 @@ def main():
+ 
+   command = [args.ar, args.operation]
+   if args.plugin is not None:
+-    command += ['--plugin', args.plugin]
++    if args.plugin == 'auto':
++      gcc = os.environ.get('CC', '/usr/bin/cc')
++      gcc_ver = subprocess.check_output([gcc, '-dumpversion'],
++                                        universal_newlines=True)
++      gcc_ver = gcc_ver.strip(' \n')
++      plugin = '/usr/libexec/gcc/x86_64-pc-linux-gnu/{}/liblto_plugin.so'. \
++        format(gcc_ver)
++    else:
++      plugin = args.plugin
++
++    command += ['--plugin', plugin]
+   command.append(args.output)
+   command += args.inputs
+ 
+-- 
+2.14.1
+

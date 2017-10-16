@@ -28,7 +28,10 @@ DEPEND="${RDEPEND}
 	app-text/xmlto"
 RDEPEND="${RDEPEND}
 	python? (
-		dev-libs/protobuf[python,${PYTHON_USEDEP}]
+		|| (
+			dev-python/protobuf-python[${PYTHON_USEDEP}]
+			dev-libs/protobuf[python,${PYTHON_USEDEP}]
+		)
 		dev-python/ipaddr[${PYTHON_USEDEP}]
 	)"
 
@@ -43,6 +46,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.8-automagic-libbsd.patch
 	"${FILESDIR}"/2.0/${PN}-2.0-sysroot.patch
 	"${FILESDIR}"/2.3/${PN}-2.3-aarch64.patch
+	"${FILESDIR}"/${PN}-2.12.1-glibc-2.26.patch
 )
 
 criu_arch() {

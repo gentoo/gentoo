@@ -44,7 +44,7 @@ COMMON_DEPEND="
 	>=net-libs/telepathy-glib-0.23.2
 	>=net-im/telepathy-logger-0.8.0:=
 
-	app-crypt/gcr
+	app-crypt/gcr[gtk]
 	dev-libs/libxml2:2
 	gnome-base/gsettings-desktop-schemas
 	media-sound/pulseaudio[glib]

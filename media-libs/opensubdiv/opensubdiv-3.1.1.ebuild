@@ -13,12 +13,10 @@ SRC_URI="https://github.com/PixarAnimationStudios/OpenSubdiv/archive/v${MY_PV}.t
 
 LICENSE="ZLIB"
 SLOT="0"
-IUSE="cuda doc examples opencl openmp ptex tbb tutorials"
+IUSE="cuda doc opencl openmp ptex tbb"
 
-# OpenCL does not work with Open Source drivers or nVidia binaries.
 RDEPEND="media-libs/glew:=
 	media-libs/glfw:=
-	opencl? ( x11-drivers/ati-drivers:* )
 	cuda? ( dev-util/nvidia-cuda-toolkit:* )
 	ptex? ( media-libs/ptex )"
 
@@ -38,6 +36,13 @@ pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
+src_prepare() {
+	cmake-utils_src_prepare
+
+	sed -e 's|"${OSD_SONAME}"|${OSD_SONAME}|' \
+	    -i CMakeLists.txt || die
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DNO_MAYA=1
@@ -49,8 +54,8 @@ src_configure() {
 		-DNO_OPENCL=$(usex !opencl)
 		-DNO_CUDA=$(usex !cuda)
 		-DNO_REGRESSION=1 # The don't work with certain settings
-		-DNO_EXAMPLES=$(usex !examples)
-		-DNO_TUTORIALS=$(usex !tutorials)
+		-DNO_EXAMPLES=1 # Broken
+		-DNO_TUTORIALS=1 # Broken
 		-DGLEW_LOCATION="${EPREFIX}/usr/$(get_libdir)"
 		-DGLFW_LOCATION="${EPREFIX}/usr/$(get_libdir)"
 	)

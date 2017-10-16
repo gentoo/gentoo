@@ -15,12 +15,9 @@ SRC_URI="http://openmesh.org/media/Releases/${MY_PV/-RC/RC}/${MY_PN}-${MY_PV}.ta
 LICENSE="BSD"
 SLOT="4"
 KEYWORDS="~amd64 ~ia64 ~x86"
-IUSE="qt4 qt5 static-libs test"
+IUSE="qt5 static-libs test"
 
 RDEPEND="
-	qt4? ( dev-qt/qtgui:4
-		dev-qt/qtopengl:4
-		media-libs/freeglut )
 	qt5? ( dev-qt/qtgui:5
 		dev-qt/qtopengl:5
 		media-libs/freeglut )"
@@ -28,6 +25,8 @@ DEPEND="${RDEPEND}
 	test? ( dev-cpp/gtest )"
 
 src_prepare() {
+	cmake-utils_src_prepare
+
 	# Fix libdir and remove rpath.
 	sed -i \
 		-e "s|\(set (ACG_PROJECT_LIBDIR \"\).*|\1$(get_libdir)/\")|" \
@@ -53,12 +52,8 @@ src_configure() {
 	mycmakeargs="${mycmakeargs} -DOPENMESH_BUILD_PYTHON_BINDINGS=FALSE"
 	mycmakeargs="${mycmakeargs} -DOPENMESH_BUILD_PYTHON_UNIT_TESTS=FALSE"
 
-	if ! use qt4 && ! use qt5; then
+	if ! use qt5; then
 		mycmakeargs="${mycmakeargs} -DBUILD_APPS=OFF"
-	fi
-
-	if use qt4 && ! use qt5; then
-		mycmakeargs="${mycmakeargs} -DFORCE_QT4=ON"
 	fi
 
 	cmake-utils_src_configure

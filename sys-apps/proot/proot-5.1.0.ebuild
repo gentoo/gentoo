@@ -7,8 +7,8 @@ MY_PN="PRoot"
 inherit eutils toolchain-funcs
 
 DESCRIPTION="User-space implementation of chroot, mount --bind, and binfmt_misc"
-HOMEPAGE="http://proot.me"
-SRC_URI="https://github.com/cedric-vincent/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://proot-me.github.io/"
+SRC_URI="https://github.com/proot-me/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

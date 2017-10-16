@@ -22,6 +22,9 @@
         <flag name="sqlite">
             Use the system SQLite instead of the bundled one
         </flag>
+        <flag name="system-sqlite">
+            Use the system SQLite instead of the bundled one
+        </flag>
         <flag name="th1-docs">
 	        Enable TH1 for embedded documentation pages
         </flag>

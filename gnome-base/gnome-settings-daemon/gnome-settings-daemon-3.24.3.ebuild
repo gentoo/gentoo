@@ -18,12 +18,13 @@ IUSE="+colord +cups debug input_devices_wacom -openrc-force networkmanager polic
 REQUIRED_USE="
 	input_devices_wacom? ( udev )
 	smartcard? ( udev )
+	wayland? ( udev )
 "
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.44.0:2[dbus]
-	>=x11-libs/gtk+-3.15.3:3[X]
+	>=x11-libs/gtk+-3.15.3:3[X,wayland?]
 	>=gnome-base/gnome-desktop-3.11.1:3=
 	>=gnome-base/gsettings-desktop-schemas-3.23.3
 	>=gnome-base/librsvg-2.36.2:2
@@ -107,6 +108,8 @@ PATCHES=(
 	"${FILESDIR}"/3.24.2-remove-unneeded-gtk-init.patch
 	# Reduce memory usage by using a fake CSS theme instead of full Adwaita for GTK+ needing plugins; requires eautoreconf
 	"${FILESDIR}"/3.24.2-reduce-memory-usage.patch
+	# Fix build issue when gudev is present but not wayland, bug #627966
+	"${FILESDIR}"/3.24.3-fix-wayland-build.patch
 )
 
 python_check_deps() {

@@ -7,4 +7,7 @@
 	<use>
 		<flag name="cg">Add support for nvidia's cg shaders</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">openexr/openexr</remote-id>
+	</upstream>
 </pkgmetadata>

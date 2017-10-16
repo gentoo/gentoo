@@ -130,11 +130,11 @@ sh              default/linux/sh/13.0/desktop/gnome             exp
 sh              default/linux/sh/13.0/developer                 exp
 
 # SPARC Profiles
-sparc           default/linux/sparc/13.0                        stable
-sparc           default/linux/sparc/13.0/desktop                stable
-sparc           default/linux/sparc/13.0/desktop/gnome          stable
-sparc           default/linux/sparc/13.0/desktop/gnome/systemd  stable
-sparc           default/linux/sparc/13.0/developer              stable
+sparc           default/linux/sparc/13.0                        exp
+sparc           default/linux/sparc/13.0/desktop                exp
+sparc           default/linux/sparc/13.0/desktop/gnome          exp
+sparc           default/linux/sparc/13.0/desktop/gnome/systemd  exp
+sparc           default/linux/sparc/13.0/developer              exp
 
 # x86 Profiles
 x86             default/linux/x86/13.0                          stable
@@ -151,13 +151,16 @@ x86		default/linux/x86/13.0/systemd			stable
 amd64-fbsd	default/bsd/fbsd/amd64/9.1			dev
 amd64-fbsd	default/bsd/fbsd/amd64/10.3			dev
 amd64-fbsd	default/bsd/fbsd/amd64/11.0			dev
+amd64-fbsd	default/bsd/fbsd/amd64/11.1			dev
 amd64-fbsd	default/bsd/fbsd/amd64/9.1/clang		exp
 amd64-fbsd	default/bsd/fbsd/amd64/10.3/clang		exp
 amd64-fbsd	default/bsd/fbsd/amd64/11.0/clang		exp
+amd64-fbsd	default/bsd/fbsd/amd64/11.1/clang		exp
 sparc-fbsd      default/bsd/fbsd/sparc/8.2                      exp
 x86-fbsd	default/bsd/fbsd/x86/9.1			dev
 x86-fbsd	default/bsd/fbsd/x86/10.3			dev
 x86-fbsd	default/bsd/fbsd/x86/11.0			dev
+x86-fbsd	default/bsd/fbsd/x86/11.1			dev
 
 # Hardened Profiles
 amd64		hardened/linux/amd64					stable
@@ -261,6 +264,8 @@ x86-macos		prefix/darwin/macos/10.11/x86			exp
 x64-macos		prefix/darwin/macos/10.11/x64			exp
 x86-macos		prefix/darwin/macos/10.12/x86			exp
 x64-macos		prefix/darwin/macos/10.12/x64			exp
+x86-macos		prefix/darwin/macos/10.13/x86			exp
+x64-macos		prefix/darwin/macos/10.13/x64			exp
 
 # Solaris Profiles
 sparc-solaris		prefix/sunos/solaris/5.9/sparc			exp
@@ -278,6 +283,7 @@ ppc-aix			prefix/aix/5.2.0.0/ppc				exp
 ppc-aix			prefix/aix/5.3.0.0/ppc				exp
 ppc-aix			prefix/aix/6.1.0.0/ppc				exp
 ppc-aix			prefix/aix/7.1.0.0/ppc				exp
+ppc-aix			prefix/aix/7.2.0.0/ppc				exp
 
 # Windows Profiles
 x86-winnt		prefix/windows/winnt/3.5/x86			exp

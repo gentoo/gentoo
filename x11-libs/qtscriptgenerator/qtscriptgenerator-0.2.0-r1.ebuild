@@ -14,7 +14,7 @@ SRC_URI="https://dev.gentoo.org/~johu/distfiles/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86"
-IUSE="debug kde"
+IUSE="debug"
 
 DEPEND="
 	dev-qt/designer:4
@@ -25,11 +25,7 @@ DEPEND="
 	dev-qt/qtsql:4
 	dev-qt/qtsvg:4[accessibility]
 	dev-qt/qtxmlpatterns:4
-	!kde? ( || (
-		dev-qt/qtphonon:4
-		media-libs/phonon[qt4]
-	) )
-	kde? ( media-libs/phonon[qt4] )
+	media-libs/phonon[qt4]
 "
 RDEPEND="${DEPEND}"
 

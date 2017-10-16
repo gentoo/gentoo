@@ -6,7 +6,7 @@ EAPI=6
 SRC_URI="https://dev.gentoo.org/~aidecoe/distfiles/${CATEGORY}/${PN}/gentoo-logo.png"
 
 if [[ ${PV} == 9999 ]]; then
-	EGIT_REPO_URI="git://anongit.freedesktop.org/plymouth"
+	EGIT_REPO_URI="https://anongit.freedesktop.org/git/plymouth"
 	inherit git-r3
 else
 	SRC_URI="${SRC_URI} https://www.freedesktop.org/software/plymouth/releases/${P}.tar.xz"
@@ -47,6 +47,7 @@ DOC_CONTENTS="
 "
 
 PATCHES=(
+	"${FILESDIR}"/0.9.3-glibc-sysmacros.patch
 )
 
 src_configure() {

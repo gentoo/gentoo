@@ -8,5 +8,5 @@ inherit kde4-base
 
 DESCRIPTION="KDE web development - image map editor"
 HOMEPAGE="https://www.kde.org/applications/development/kimagemapeditor/"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug"

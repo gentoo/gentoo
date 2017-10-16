@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_4 python3_5 python3_6 )
 inherit meson python-single-r1 xdg-utils
 
 DESCRIPTION="Aims to make updating firmware on Linux automatic, safe and reliable"
-HOMEPAGE="http://www.fwupd.org"
+HOMEPAGE="https://fwupd.org"
 SRC_URI="https://github.com/hughsie/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"

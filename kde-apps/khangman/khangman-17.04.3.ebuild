@@ -9,7 +9,7 @@ inherit kde5
 DESCRIPTION="Classical hangman game by KDE"
 HOMEPAGE="https://www.kde.org/applications/education/khangman
 https://edu.kde.org/khangman"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="
@@ -30,7 +30,7 @@ DEPEND="
 	$(add_qt_dep qtsvg)
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
-	media-libs/phonon[qt5]
+	media-libs/phonon[qt5(+)]
 "
 RDEPEND="${DEPEND}
 	$(add_kdeapps_dep kdeedu-data)

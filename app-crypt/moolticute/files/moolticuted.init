@@ -1,0 +1,12 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+command=/usr/bin/moolticuted
+command_args=""
+pidfile=/var/run/moolticuted.pid
+start_stop_daemon_args="--make-pidfile --background --user nobody --group usb"
+
+depend() {
+	need udev
+}

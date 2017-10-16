@@ -81,7 +81,7 @@ src_install() {
 
 	# we have to keep this because otherwise it'll break upgrading
 	mv "${ED}/usr/bin/SciTE" "${ED}/usr/bin/scite" || die
-	dosym /usr/bin/scite /usr/bin/SciTE
+	dosym scite /usr/bin/SciTE
 
 	doman ../doc/scite.1
 	dodoc ../README

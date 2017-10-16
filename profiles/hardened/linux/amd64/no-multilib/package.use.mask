@@ -15,9 +15,5 @@ sys-apps/memtest86+ floppy
 # Disable 32-bit parts of wine, bug #351436
 app-emulation/wine mono
 
-# Apr 28, 2008 Sébastien Fabbro <bicatali@gentoo.org>
-# ifc masked
-sci-libs/acml ifc
-
 # Intel Integrated Primitive (sci-libs/ipp) support
 media-libs/opencv ipp

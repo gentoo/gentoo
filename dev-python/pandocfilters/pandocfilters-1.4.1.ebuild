@@ -15,6 +15,3 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
-
-RDEPEND=">=app-text/pandoc-1.16"
-DEPEND="${RDEPEND}"

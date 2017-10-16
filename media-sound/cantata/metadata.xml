@@ -9,6 +9,7 @@
 		<flag name="cdio">Use <pkg>dev-libs/libcdio-paranoia</pkg> for CD support (instead of cdparanoia)</flag>
 		<flag name="http-server">Enable internal HTTP server to play non-MPD files</flag>
 		<flag name="replaygain">Enable ReplayGain support, for relative volume adjustments</flag>
+		<flag name="streaming">Enable playback of MPD HTTP streams using LibVLC (<pkg>media-video/vlc</pkg>)</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">cdrummond/cantata</remote-id>

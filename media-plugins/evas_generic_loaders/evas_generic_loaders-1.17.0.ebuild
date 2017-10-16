@@ -13,7 +13,7 @@ else
 	EKEY_STATE="release"
 fi
 
-inherit enlightenment
+inherit enlightenment flag-o-matic
 
 DESCRIPTION="Provides external applications as generic loaders for Evas"
 HOMEPAGE="https://www.enlightenment.org/"
@@ -37,6 +37,12 @@ RDEPEND=">=dev-libs/efl-${PV}
 DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${MY_P}
+
+src_prepare() {
+	# bug 627402, poppler headers require C++11
+	use pdf && append-cxxflags -std=c++11
+	default
+}
 
 src_configure() {
 	E_ECONF=(

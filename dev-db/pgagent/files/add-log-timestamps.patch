@@ -1,0 +1,535 @@
+From 2eef6cc4928c611cecdca3c1daecb60568deca4e Mon Sep 17 00:00:00 2001
+From: Sanket Mehta <sanket.mehta@enterprisedb.com>
+Date: Fri, 17 Jul 2015 09:07:09 +0100
+Subject: [PATCH] Add log timestamps and a --version option per Josh Berkus.
+ Update copyright notices while passing.
+
+---
+ CMakeLists.txt                   |  8 ++++----
+ LICENSE                          |  2 +-
+ cmake/MakeExt.cmake              |  2 +-
+ connection.cpp                   |  2 +-
+ include/connection.h             |  2 +-
+ include/job.h                    |  2 +-
+ include/misc.h                   |  3 ++-
+ include/pgAgent.h                |  2 +-
+ job.cpp                          |  2 +-
+ misc.cpp                         | 14 +++++++++++++-
+ pgAgent.cpp                      |  2 +-
+ pgAgent.rc                       | 14 +++++++-------
+ pgaevent/CMakeLists.txt          |  2 +-
+ pgaevent/pgaevent.c              |  2 +-
+ pgaevent/pgaevent.def            |  2 +-
+ pgaevent/pgamsgevent.h           |  2 +-
+ pgaevent/pgamsgevent.rc          | 14 +++++++-------
+ precomp.cpp                      |  2 +-
+ sql/pgagent--unpackaged--3.4.sql |  2 +-
+ sql/pgagent.sql                  |  2 +-
+ sql/pgagent_upgrade.sql          |  2 +-
+ unix.cpp                         | 16 +++++++++++-----
+ win32.cpp                        |  5 ++++-
+ 23 files changed, 64 insertions(+), 42 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ab02fea..c8bfa4a 100755
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ #######################################################################
+ #
+ # pgAgent - PostgreSQL tools
+-# Copyright (C) 2002 - 2014, The pgAdmin Development Team
++# Copyright (C) 2002 - 2015, The pgAdmin Development Team
+ # This software is released under the PostgreSQL Licence
+ #
+ # CMakeLists.txt - CMake build configuration
+@@ -27,7 +27,6 @@ SET(CMAKE_FIND_LIBRARY_PREFIXES "")
+ SET(CMAKE_FIND_LIBRARY_SUFFIXES ".lib")
+ 
+ SET(STATIC_BUILD YES CACHE BOOL "Statically link the executable?")
+-
+ ################################################################################
+ # Apple stuff
+ ################################################################################
+@@ -61,12 +60,12 @@ PROJECT(pgagent)
+ # in pgagent.sql and upgrade_pgagent.sql if the major version number is
+ # changed. The full version number also needs to be included in pgAgent.rc and
+ # pgaevent/pgamsgevent.rc at present.
+-SET(VERSION 3.4.0)
++SET(VERSION "3.4.1")
+ 
+ # CPack stuff
+ SET(CPACK_PACKAGE_VERSION_MAJOR 3)
+ SET(CPACK_PACKAGE_VERSION_MINOR 4)
+-SET(CPACK_PACKAGE_VERSION_PATCH 0)
++SET(CPACK_PACKAGE_VERSION_PATCH 1)
+ SET(CPACK_PACKAGE_NAME "pgAgent")
+ SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "pgAgent is a job scheduling engine for PostgreSQL")
+ SET(CPACK_PACKAGE_VENDOR "the pgAdmin Development Team")
+@@ -79,6 +78,7 @@ SET(CPACK_SOURCE_GENERATOR TGZ)
+ SET(CPACK_SOURCE_IGNORE_FILES "\\\\.DS_Store;/CVS/;/\\\\.svn/;\\\\.swp$;\\\\.#;/#;.*~;cscope.*")
+ 
+ ADD_DEFINITIONS(-DPGAGENT_VERSION_MAJOR=${CPACK_PACKAGE_VERSION_MAJOR})
++ADD_DEFINITIONS(-DPGAGENT_VERSION="${VERSION}")
+ 
+ # This must come after we set the CPACK variables!!
+ INCLUDE(CPack)
+diff --git a/LICENSE b/LICENSE
+index 3b2638a..c460d6f 100644
+--- a/LICENSE
++++ b/LICENSE
+@@ -1,6 +1,6 @@
+ pgAgent
+ 
+-Copyright (c) 2002 - 2014, The pgAdmin Development Team
++Copyright (c) 2002 - 2015, The pgAdmin Development Team
+ 
+ Permission to use, copy, modify, and distribute this software and its
+ documentation for any purpose, without fee, and without a written agreement is
+diff --git a/cmake/MakeExt.cmake b/cmake/MakeExt.cmake
+index 5777c97..ae30e30 100644
+--- a/cmake/MakeExt.cmake
++++ b/cmake/MakeExt.cmake
+@@ -1,7 +1,7 @@
+ #######################################################################
+ #
+ # pgAgent - PostgreSQL tools
+-# Copyright (C) 2002 - 2014, The pgAdmin Development Team
++# Copyright (C) 2002 - 2015, The pgAdmin Development Team
+ # This software is released under the PostgreSQL Licence
+ #
+ # MakeExt,cmake - Create the PG Extension
+diff --git a/connection.cpp b/connection.cpp
+index f2213bd..25432bb 100644
+--- a/connection.cpp
++++ b/connection.cpp
+@@ -2,7 +2,7 @@
+ //
+ // pgAgent - PostgreSQL Tools
+ //
+-// Copyright (C) 2002 - 2014, The pgAdmin Development Team
++// Copyright (C) 2002 - 2015, The pgAdmin Development Team
+ // This software is released under the PostgreSQL Licence
+ //
+ // connection.cpp - database connection
+diff --git a/include/connection.h b/include/connection.h
+index a201450..064067c 100644
+--- a/include/connection.h
++++ b/include/connection.h
+@@ -2,7 +2,7 @@
+ //
+ // pgAgent - PostgreSQL Tools
+ //
+-// Copyright (C) 2002 - 2014, The pgAdmin Development Team
++// Copyright (C) 2002 - 2015, The pgAdmin Development Team
+ // This software is released under the PostgreSQL Licence
+ //
+ // connection.h - database connection
+diff --git a/include/job.h b/include/job.h
+index e511852..abc33d4 100644
+--- a/include/job.h
++++ b/include/job.h
+@@ -2,7 +2,7 @@
+ //
+ // pgAgent - PostgreSQL Tools
+ //
+-// Copyright (C) 2002 - 2014, The pgAdmin Development Team
++// Copyright (C) 2002 - 2015, The pgAdmin Development Team
+ // This software is released under the PostgreSQL Licence
+ //
+ // job.h - agent job
+diff --git a/include/misc.h b/include/misc.h
+index 14b4edc..59847d1 100644
+--- a/include/misc.h
++++ b/include/misc.h
+@@ -2,7 +2,7 @@
+ //
+ // pgAgent - PostgreSQL Tools
+ //
+-// Copyright (C) 2002 - 2014, The pgAdmin Development Team
++// Copyright (C) 2002 - 2015, The pgAdmin Development Team
+ // This software is released under the PostgreSQL Licence
+ //
+ // misc.h - misc functions
+@@ -18,6 +18,7 @@ void WaitAWhile(const bool waitLong = false);
+ void setOptions(int argc, char **argv, const wxString &executable);
+ wxString getArg(int &argc, char **&argv);
+ wxString NumToStr(const long l);
++void printVersion();
+ 
+ #endif // MISC_H
+ 
+diff --git a/include/pgAgent.h b/include/pgAgent.h
+index 6ef4944..059e0ca 100644
+--- a/include/pgAgent.h
++++ b/include/pgAgent.h
+@@ -2,7 +2,7 @@
+ //
+ // pgAgent - PostgreSQL Tools
+ //
+-// Copyright (C) 2002 - 2014, The pgAdmin Development Team
++// Copyright (C) 2002 - 2015, The pgAdmin Development Team
+ // This software is released under the PostgreSQL Licence
+ //
+ // pgAgent.h - main include
+diff --git a/job.cpp b/job.cpp
+index c4b39ce..f3eaa03 100644
+--- a/job.cpp
++++ b/job.cpp
+@@ -2,7 +2,7 @@
+ //
+ // pgAgent - PostgreSQL Tools
+ //
+-// Copyright (C) 2002 - 2014 The pgAdmin Development Team
++// Copyright (C) 2002 - 2015 The pgAdmin Development Team
+ // This software is released under the PostgreSQL Licence
+ //
+ // job.cpp - pgAgent job
+diff --git a/misc.cpp b/misc.cpp
+index dfd56a0..2252d83 100644
+--- a/misc.cpp
++++ b/misc.cpp
+@@ -2,7 +2,7 @@
+ //
+ // pgAgent - PostgreSQL Tools
+ //
+-// Copyright (C) 2002 - 2014 The pgAdmin Development Team
++// Copyright (C) 2002 - 2015 The pgAdmin Development Team
+ // This software is released under the PostgreSQL Licence
+ //
+ // misc.cpp - misc functions
+@@ -16,6 +16,8 @@
+ #include <unistd.h>
+ #endif
+ 
++#define APPVERSION_STR wxT(PGAGENT_VERSION)
++
+ // In unix.c or win32.c
+ void usage(const wxString &executable);
+ 
+@@ -42,6 +44,11 @@ wxString getArg(int &argc, char **&argv)
+ 	return s;
+ }
+ 
++void printVersion()
++{
++	wxPrintf(_("PostgreSQL Scheduling Agent\n"));
++	wxPrintf(_("Version: %s\n"), APPVERSION_STR);
++}
+ 
+ void setOptions(int argc, char **argv, const wxString &executable)
+ {
+@@ -72,6 +79,11 @@ void setOptions(int argc, char **argv, const wxString &executable)
+ 						minLogLevel = val;
+ 					break;
+ 				}
++				case 'v':
++				{
++					printVersion();
++					exit (0);
++				}
+ #ifndef __WXMSW__
+ 				case 'f':
+ 				{
+diff --git a/pgAgent.cpp b/pgAgent.cpp
+index 5ed43fb..9238fa1 100644
+--- a/pgAgent.cpp
++++ b/pgAgent.cpp
+@@ -2,7 +2,7 @@
+ //
+ // pgAgent - PostgreSQL Tools
+ //
+-// Copyright (C) 2002 - 2014, The pgAdmin Development Team
++// Copyright (C) 2002 - 2015, The pgAdmin Development Team
+ // This software is released under the PostgreSQL Licence
+ //
+ // pgAgent.cpp - pgAgent main entry
+diff --git a/pgAgent.rc b/pgAgent.rc
+index 3c51bfa..c4169e1 100644
+--- a/pgAgent.rc
++++ b/pgAgent.rc
+@@ -2,7 +2,7 @@
+ //
+ // pgAgent - PostgreSQL Tools
+ // 
+-// Copyright (C) 2002 - 2014, The pgAdmin Development Team
++// Copyright (C) 2002 - 2015, The pgAdmin Development Team
+ // This software is released under the PostgreSQL Licence
+ //
+ // pgAgent.rc - win32 Resources
+@@ -16,8 +16,8 @@ aaaPGAGENT      ICON    DISCARDABLE     "include/pgAgent.ico"
+ 
+ 
+ VS_VERSION_INFO VERSIONINFO
+-FILEVERSION    3,4,0,0
+-PRODUCTVERSION 3,4,0,0
++FILEVERSION    3,4,1,0
++PRODUCTVERSION 3,4,1,0
+ FILEOS         VOS__WINDOWS32
+ FILETYPE       VFT_APP
+ BEGIN
+@@ -25,15 +25,15 @@ BEGIN
+     BEGIN
+         BLOCK "040904E4"
+         BEGIN
+-            VALUE "FileVersion",     "3.4.0", "\0"
+-            VALUE "File Version",    "3.4.0", "\0"
++            VALUE "FileVersion",     "3.4.1", "\0"
++            VALUE "File Version",    "3.4.1", "\0"
+             VALUE "FileDescription", "pgAgent - PostgreSQL Scheduling Agent", "\0"
+-            VALUE "LegalCopyright",  "\251 2002 - 2012, The pgAdmin Development Team", "\0"
++            VALUE "LegalCopyright",  "\251 2002 - 2015, The pgAdmin Development Team", "\0"
+             VALUE "LegalTrademarks", "This software is released under the PostgreSQL Licence.", "\0"
+             VALUE "InternalName",    "pgAgent", "\0"
+             VALUE "OriginalFilename","pgagent.exe", "\0"
+             VALUE "ProductName",     "pgAgent", "\0"
+-            VALUE "ProductVersion",  "3.4.0", "\0"
++            VALUE "ProductVersion",  "3.4.1", "\0"
+         END
+     END
+     BLOCK "VarFileInfo"
+diff --git a/pgaevent/CMakeLists.txt b/pgaevent/CMakeLists.txt
+index 10478c3..2fd6192 100644
+--- a/pgaevent/CMakeLists.txt
++++ b/pgaevent/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ #######################################################################
+ #
+ # pgAgent - PostgreSQL tools
+-# Copyright (C) 2002 - 2014, The pgAdmin Development Team
++# Copyright (C) 2002 - 2015, The pgAdmin Development Team
+ # This software is released under the PostgreSQL Licence
+ #
+ # pgaevent/CMakeLists.txt - CMake build configuration
+diff --git a/pgaevent/pgaevent.c b/pgaevent/pgaevent.c
+index a66ed42..c9fac75 100644
+--- a/pgaevent/pgaevent.c
++++ b/pgaevent/pgaevent.c
+@@ -2,7 +2,7 @@
+ //
+ // pgAgent - PostgreSQL Tools
+ // 
+-// Copyright (C) 2002 - 2014, The pgAdmin Development Team
++// Copyright (C) 2002 - 2015, The pgAdmin Development Team
+ // This software is released under the PostgreSQL Licence
+ //
+ // pgaevent.c - win32 message format dll
+diff --git a/pgaevent/pgaevent.def b/pgaevent/pgaevent.def
+index c9e222d..34e03c1 100644
+--- a/pgaevent/pgaevent.def
++++ b/pgaevent/pgaevent.def
+@@ -2,7 +2,7 @@
+ ; //
+ ; // pgAgent - PostgreSQL Tools
+ ; // 
+-; // Copyright (C) 2002 - 2014 The pgAdmin Development Team
++; // Copyright (C) 2002 - 2015 The pgAdmin Development Team
+ ; // This software is released under the PostgreSQL Licence
+ ; //
+ ; // pgaeventdef - pgaevent.dll exports
+diff --git a/pgaevent/pgamsgevent.h b/pgaevent/pgamsgevent.h
+index b8e11a5..f589d60 100644
+--- a/pgaevent/pgamsgevent.h
++++ b/pgaevent/pgamsgevent.h
+@@ -2,7 +2,7 @@
+ //
+ // pgAgent - PostgreSQL Tools
+ //
+-// Copyright (C) 2002 - 2014, The pgAdmin Development Team
++// Copyright (C) 2002 - 2015, The pgAdmin Development Team
+ // This software is released under the PostgreSQL Licence
+ //
+ // pgamsgevent.h - Message id declarations
+diff --git a/pgaevent/pgamsgevent.rc b/pgaevent/pgamsgevent.rc
+index 79e77aa..510ab65 100644
+--- a/pgaevent/pgamsgevent.rc
++++ b/pgaevent/pgamsgevent.rc
+@@ -2,7 +2,7 @@
+ //
+ // pgAgent - PostgreSQL Tools
+ // 
+-// Copyright (C) 2002 - 2014, The pgAdmin Development Team
++// Copyright (C) 2002 - 2015, The pgAdmin Development Team
+ // This software is released under the PostgreSQL Licence
+ //
+ // pgaevent.rc - win32 Resources
+@@ -19,8 +19,8 @@ aaaPGAEVENT      ICON    DISCARDABLE     "../include/pgagent.ico"
+ 
+ 
+ VS_VERSION_INFO VERSIONINFO 
+-FILEVERSION    3,4,0,0
+-PRODUCTVERSION 3,4,0,0
++FILEVERSION    3,4,1,0
++PRODUCTVERSION 3,4,1,0
+ FILEOS         VOS__WINDOWS32
+ FILETYPE       VFT_APP
+ BEGIN
+@@ -28,15 +28,15 @@ BEGIN
+     BEGIN
+         BLOCK "040904E4"
+         BEGIN 
+-            VALUE "FileVersion",     "3.4.0", "\0"
+-            VALUE "File Version",    "3.4.0", "\0"
++            VALUE "FileVersion",     "3.4.1", "\0"
++            VALUE "File Version",    "3.4.1", "\0"
+             VALUE "FileDescription", "pgaevent - pgAgent Event Log Message DLL", "\0"
+-            VALUE "LegalCopyright",  "\251 2002 - 2014, The pgAdmin Development Team", "\0"
++            VALUE "LegalCopyright",  "\251 2002 - 2015, The pgAdmin Development Team", "\0"
+             VALUE "LegalTrademarks", "This software is released under the PostgreSQL Licence.", "\0"
+             VALUE "InternalName",    "pgaevent", "\0"
+             VALUE "OriginalFilename","pgaevent.dll", "\0"
+             VALUE "ProductName",     "pgAgent", "\0"
+-            VALUE "ProductVersion",  "3.4.0", "\0"
++            VALUE "ProductVersion",  "3.4.1", "\0"
+         END
+     END
+     BLOCK "VarFileInfo" 
+diff --git a/precomp.cpp b/precomp.cpp
+index 02c969f..56766bb 100644
+--- a/precomp.cpp
++++ b/precomp.cpp
+@@ -2,7 +2,7 @@
+ //
+ // pgAgent - PostgreSQL Tools
+ //
+-// Copyright (C) 2002 - 2014, The pgAdmin Development Team
++// Copyright (C) 2002 - 2015, The pgAdmin Development Team
+ // This software is released under the PostgreSQL Licence
+ //
+ // precomp.cpp - pgAgent precompiled headers
+diff --git a/sql/pgagent--unpackaged--3.4.sql b/sql/pgagent--unpackaged--3.4.sql
+index 536640e..f5ffc63 100644
+--- a/sql/pgagent--unpackaged--3.4.sql
++++ b/sql/pgagent--unpackaged--3.4.sql
+@@ -1,7 +1,7 @@
+ /*
+ // pgAgent - PostgreSQL Tools
+ // 
+-// Copyright (C) 2002 - 2014 The pgAdmin Development Team
++// Copyright (C) 2002 - 2015 The pgAdmin Development Team
+ // This software is released under the PostgreSQL Licence
+ //
+ // pgagent--unpackaged--3.4.sql - Convert pgAgent existing tables and functions to an extension
+diff --git a/sql/pgagent.sql b/sql/pgagent.sql
+index 3708adf..1118833 100644
+--- a/sql/pgagent.sql
++++ b/sql/pgagent.sql
+@@ -1,7 +1,7 @@
+ /*
+ // pgAgent - PostgreSQL Tools
+ // 
+-// Copyright (C) 2002 - 2014 The pgAdmin Development Team
++// Copyright (C) 2002 - 2015 The pgAdmin Development Team
+ // This software is released under the PostgreSQL Licence
+ //
+ // pgagent.sql - pgAgent tables and functions
+diff --git a/sql/pgagent_upgrade.sql b/sql/pgagent_upgrade.sql
+index ae0d995..c256c93 100644
+--- a/sql/pgagent_upgrade.sql
++++ b/sql/pgagent_upgrade.sql
+@@ -1,7 +1,7 @@
+ /*
+ // pgAgent - PostgreSQL Tools
+ // 
+-// Copyright (C) 2002 - 2014 The pgAdmin Development Team
++// Copyright (C) 2002 - 2015 The pgAdmin Development Team
+ // This software is released under the PostgreSQL Licence
+ //
+ // pgagent_upgrade.sql - Upgrade pgAgent tables and functions
+diff --git a/unix.cpp b/unix.cpp
+index 34ad0f6..e206408 100644
+--- a/unix.cpp
++++ b/unix.cpp
+@@ -2,7 +2,7 @@
+ //
+ // pgAgent - PostgreSQL Tools
+ //
+-// Copyright (C) 2002 - 2014, The pgAdmin Development Team
++// Copyright (C) 2002 - 2015, The pgAdmin Development Team
+ // This software is released under the PostgreSQL Licence
+ //
+ // unix.cpp - pgAgent unix specific functions
+@@ -17,14 +17,17 @@
+ #include <wx/filename.h>
+ #include <wx/ffile.h>
+ #include <fcntl.h>
++void printVersion();
+ 
+ void usage(const wxString &executable)
+ {
+ 	wxFileName *fn = new wxFileName(executable);
++	printVersion();
+ 
+ 	wxPrintf(_("Usage:\n"));
+ 	wxPrintf(fn->GetName() + _(" [options] <connect-string>\n"));
+ 	wxPrintf(_("options:\n"));
++	wxPrintf(_("-v (display version info and then exit)\n"));
+ 	wxPrintf(_("-f run in the foreground (do not detach from the terminal)\n"));
+ 	wxPrintf(_("-t <poll time interval in seconds (default 10)>\n"));
+ 	wxPrintf(_("-r <retry period after connection abort in seconds (>=10, default 30)>\n"));
+@@ -50,22 +53,25 @@ void LogMessage(wxString msg, int level)
+ 		return;
+ 	}
+ 
++	wxDateTime logTime = wxDateTime::Now();
++	wxString logTimeString = logTime.Format() + wxT(" : ");
++
+ 	switch (level)
+ 	{
+ 		case LOG_DEBUG:
+ 			if (minLogLevel >= LOG_DEBUG)
+-				file.Write(_("DEBUG: ") + msg + wxT("\n"));
++				file.Write(logTimeString + _("DEBUG: ") + msg + wxT("\n"));
+ 			break;
+ 		case LOG_WARNING:
+ 			if (minLogLevel >= LOG_WARNING)
+-				file.Write(_("WARNING: ") + msg + wxT("\n"));
++				file.Write(logTimeString + _("WARNING: ") + msg + wxT("\n"));
+ 			break;
+ 		case LOG_ERROR:
+-			file.Write(_("ERROR: ") + msg + wxT("\n"));
++			file.Write(logTimeString + _("ERROR: ") + msg + wxT("\n"));
+ 			exit(1);
+ 			break;
+ 		case LOG_STARTUP:
+-			file.Write(_("WARNING: ") + msg + wxT("\n"));
++			file.Write(logTimeString + _("WARNING: ") + msg + wxT("\n"));
+ 			break;
+ 	}
+ 
+diff --git a/win32.cpp b/win32.cpp
+index aa5d5d7..624ae77 100644
+--- a/win32.cpp
++++ b/win32.cpp
+@@ -2,7 +2,7 @@
+ //
+ // pgAgent - PostgreSQL Tools
+ //
+-// Copyright (C) 2002 - 2014 The pgAdmin Development Team
++// Copyright (C) 2002 - 2015 The pgAdmin Development Team
+ // This software is released under the PostgreSQL Licence
+ //
+ // win32.cpp - pgAgent win32 specific functions
+@@ -36,6 +36,7 @@ static HANDLE serviceSync;
+ static HANDLE eventHandle;
+ 
+ bool stopService();
++void printVersion();
+ 
+ // This will be called from MainLoop, if pgagent is initialized properly
+ void Initialized()
+@@ -435,12 +436,14 @@ bool removeService(const wxString &serviceName)
+ void usage(const wxString &executable)
+ {
+ 	wxFileName *fn = new wxFileName(executable);
++	printVersion();
+ 
+ 	wxPrintf(_("Usage:\n"));
+ 	wxPrintf(fn->GetName() + _(" REMOVE <serviceName>\n"));
+ 	wxPrintf(fn->GetName() + _(" INSTALL <serviceName> [options] <connect-string>\n"));
+ 	wxPrintf(fn->GetName() + _(" DEBUG [options] <connect-string>\n"));
+ 	wxPrintf(_("options:\n"));
++	wxPrintf(_("-v (display version info and then exit)\n"));
+ 	wxPrintf(_("-u <user or DOMAIN\\user>\n"));
+ 	wxPrintf(_("-p <password>\n"));
+ 	wxPrintf(_("-d <displayname>\n"));

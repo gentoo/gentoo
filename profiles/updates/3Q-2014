@@ -2,15 +2,11 @@ move perl-core/Class-ISA dev-perl/Class-ISA
 move perl-core/Filter dev-perl/Filter
 slotmove =net-misc/iperf-2* 0 2
 slotmove =net-misc/iperf-3* 0 3
-move perl-core/PodParser perl-core/Pod-Parser
 move virtual/perl-PodParser virtual/perl-Pod-Parser
 move perl-core/digest-base perl-core/Digest
 move virtual/perl-digest-base virtual/perl-Digest
-move perl-core/i18n-langtags perl-core/I18N-LangTags
 move virtual/perl-i18n-langtags virtual/perl-I18N-LangTags
-move perl-core/locale-maketext perl-core/Locale-Maketext
 move virtual/perl-locale-maketext virtual/perl-Locale-Maketext
-move perl-core/net-ping perl-core/Net-Ping
 move virtual/perl-net-ping virtual/perl-Net-Ping
 move perl-core/Switch dev-perl/Switch
 move dev-qt/qcustomplot dev-libs/qcustomplot

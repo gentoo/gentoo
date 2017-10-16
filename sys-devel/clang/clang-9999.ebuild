@@ -8,8 +8,8 @@ EAPI=6
 CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils flag-o-matic git-r3 llvm multilib-minimal \
-	python-single-r1 toolchain-funcs pax-utils versionator
+inherit cmake-utils eapi7-ver flag-o-matic git-r3 llvm \
+	multilib-minimal pax-utils python-single-r1 toolchain-funcs
 
 DESCRIPTION="C language family frontend for LLVM"
 HOMEPAGE="https://llvm.org/"
@@ -29,7 +29,7 @@ LICENSE="UoI-NCSA"
 SLOT="6"
 KEYWORDS=""
 IUSE="debug default-compiler-rt default-libcxx +doc +static-analyzer
-	test xml z3 elibc_musl kernel_FreeBSD ${ALL_LLVM_TARGETS[*]}"
+	test xml z3 kernel_FreeBSD ${ALL_LLVM_TARGETS[*]}"
 
 RDEPEND="
 	~sys-devel/llvm-${PV}:${SLOT}=[debug=,${LLVM_TARGET_USEDEPS// /,},${MULTILIB_USEDEP}]
@@ -102,20 +102,9 @@ src_unpack() {
 	git-r3_checkout "${EGIT_REPO_URI}" "${S}"
 }
 
-src_prepare() {
-	# fix finding compiler-rt libs
-	eapply "${FILESDIR}"/9999/0001-Driver-Use-arch-type-to-find-compiler-rt-libraries-o.patch
-
-	# fix stand-alone doc build
-	eapply "${FILESDIR}"/9999/0007-cmake-Support-stand-alone-Sphinx-doxygen-doc-build.patch
-
-	# User patches
-	eapply_user
-}
-
 multilib_src_configure() {
 	local llvm_version=$(llvm-config --version) || die
-	local clang_version=$(get_version_component_range 1-3 "${llvm_version}")
+	local clang_version=$(ver_cut 1-3 "${llvm_version}")
 
 	local mycmakeargs=(
 		# ensure that the correct llvm-config is used
@@ -125,10 +114,7 @@ multilib_src_configure() {
 		-DCLANG_RESOURCE_DIR="../../../../lib/clang/${clang_version}"
 
 		-DBUILD_SHARED_LIBS=ON
-		# cheap hack: LLVM combines both anyway, and the only difference
-		# is that the former list is explicitly verified at cmake time
-		-DLLVM_TARGETS_TO_BUILD=""
-		-DLLVM_EXPERIMENTAL_TARGETS_TO_BUILD="${LLVM_TARGETS// /;}"
+		-DLLVM_TARGETS_TO_BUILD="${LLVM_TARGETS// /;}"
 		-DLLVM_BUILD_TESTS=$(usex test)
 
 		# these are not propagated reliably, so redefine them
@@ -148,23 +134,29 @@ multilib_src_configure() {
 		-DCLANG_ENABLE_STATIC_ANALYZER=$(usex static-analyzer)
 		# z3 is not multilib-friendly
 		-DCLANG_ANALYZER_BUILD_Z3=$(multilib_native_usex z3)
-		-DZ3_INCLUDE_DIR="${EPREFIX}/usr/include/z3"
 	)
 	use test && mycmakeargs+=(
 		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
-		-DLIT_COMMAND="${EPREFIX}/usr/bin/lit"
+		-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
+		-DLLVM_LIT_ARGS="-vv"
 	)
 
 	if multilib_is_native_abi; then
 		mycmakeargs+=(
-			-DLLVM_BUILD_DOCS=$(usex doc)
-			-DLLVM_ENABLE_SPHINX=$(usex doc)
-			-DLLVM_ENABLE_DOXYGEN=OFF
+			# normally copied from LLVM_INCLUDE_DOCS but the latter
+			# is lacking value in stand-alone builds
+			-DCLANG_INCLUDE_DOCS=$(usex doc)
+			-DCLANG_TOOLS_EXTRA_INCLUDE_DOCS=$(usex doc)
 		)
 		use doc && mycmakeargs+=(
+			-DLLVM_BUILD_DOCS=ON
+			-DLLVM_ENABLE_SPHINX=ON
 			-DCLANG_INSTALL_SPHINX_HTML_DIR="${EPREFIX}/usr/share/doc/${PF}/html"
 			-DCLANG-TOOLS_INSTALL_SPHINX_HTML_DIR="${EPREFIX}/usr/share/doc/${PF}/tools-extra"
 			-DSPHINX_WARNINGS_AS_ERRORS=OFF
+		)
+		use z3 && mycmakeargs+=(
+			-DZ3_INCLUDE_DIR="${EPREFIX}/usr/include/z3"
 		)
 	else
 		mycmakeargs+=(
@@ -218,8 +210,8 @@ src_install() {
 	# Apply CHOST and version suffix to clang tools
 	# note: we use two version components here (vs 3 in runtime path)
 	local llvm_version=$(llvm-config --version) || die
-	local clang_version=$(get_version_component_range 1-2 "${llvm_version}")
-	local clang_full_version=$(get_version_component_range 1-3 "${llvm_version}")
+	local clang_version=$(ver_cut 1-2 "${llvm_version}")
+	local clang_full_version=$(ver_cut 1-3 "${llvm_version}")
 	local clang_tools=( clang clang++ clang-cl clang-cpp )
 	local abi i
 
@@ -276,4 +268,16 @@ multilib_src_install_all() {
 	use doc && docompress -x "/usr/share/doc/${PF}/tools-extra"
 	# +x for some reason; TODO: investigate
 	use static-analyzer && fperms a-x "/usr/lib/llvm/${SLOT}/share/man/man1/scan-build.1"
+}
+
+pkg_postinst() {
+	if [[ ${ROOT} == / && -f ${EPREFIX}/usr/share/eselect/modules/compiler-shadow.eselect ]] ; then
+		eselect compiler-shadow update all
+	fi
+}
+
+pkg_postrm() {
+	if [[ ${ROOT} == / && -f ${EPREFIX}/usr/share/eselect/modules/compiler-shadow.eselect ]] ; then
+		eselect compiler-shadow clean all
+	fi
 }

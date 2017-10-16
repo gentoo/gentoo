@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ levels_V=20141220
 themes_V=20141220
 
 DESCRIPTION="Breakout clone written with the SDL library"
-HOMEPAGE="http://lgames.sourceforge.net/index.php?project=LBreakout2"
+HOMEPAGE="http://lgames.sourceforge.net/LBreakout2/"
 SRC_URI=" mirror://sourceforge/lgames/${P}.tar.gz
 	mirror://sourceforge/lgames/add-ons/lbreakout2/${PN}-levelsets-${levels_V}.tar.gz
 	themes? ( mirror://sourceforge/lgames/add-ons/lbreakout2/${PN}-themes-${levels_V}.tar.gz )"

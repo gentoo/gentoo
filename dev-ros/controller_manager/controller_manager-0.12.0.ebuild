@@ -24,6 +24,7 @@ RDEPEND="
 	dev-ros/roslib[${PYTHON_USEDEP}]
 	dev-ros/rosparam[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
+	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}
 	test? ( dev-ros/rostest[${PYTHON_USEDEP}] )"

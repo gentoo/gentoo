@@ -110,7 +110,7 @@ RDEPEND=""
 # @ECLASS-VARIABLE: AUTOTOOLS_AUTO_DEPEND
 # @DESCRIPTION:
 # Set to 'no' to disable automatically adding to DEPEND.  This lets
-# ebuilds former conditional depends by using ${AUTOTOOLS_DEPEND} in
+# ebuilds form conditional depends by using ${AUTOTOOLS_DEPEND} in
 # their own DEPEND string.
 : ${AUTOTOOLS_AUTO_DEPEND:=yes}
 if [[ ${AUTOTOOLS_AUTO_DEPEND} != "no" ]] ; then

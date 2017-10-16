@@ -27,6 +27,7 @@
     <flag name="objc++">Build support for the Objective C++ language</flag>
     <flag name="objc-gc">Build support for the Objective C code language Garbage
       Collector</flag>
+    <flag name="pgo">Build GCC using Profile Guided Optimization (PGO)</flag>
     <flag name="regression-test">Run the testsuite and install the results (requires FEATURES=test)</flag>
     <flag name="sanitize">Build support for various sanitizer functions (ASAN/TSAN/etc...)</flag>
     <flag name="ssp">Build packages with stack smashing protector on by default</flag>

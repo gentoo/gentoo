@@ -71,14 +71,14 @@ DESCRIPTION="Isabelle is a generic proof assistant"
 HOMEPAGE="http://www.cl.cam.ac.uk/research/hvg/Isabelle/index.html"
 SRC_URI="http://isabelle.in.tum.de/website-${MY_P}/dist/${MY_P}.tar.gz
 		http://isabelle.in.tum.de/dist/contrib/${BP_P}.tar.gz -> ${BP_IC_P}.tar.gz
-		http://dev.gentoo.org/~gienah/snapshots/${CSDP_IC_P}.tar.gz
+		https://dev.gentoo.org/~gienah/snapshots/${CSDP_IC_P}.tar.gz
 		http://isabelle.in.tum.de/dist/contrib/${ISABELLE_FONTS_P}.tar.gz -> ${ISABELLE_FONTS_IC_P}.tar.gz
 		http://isabelle.in.tum.de/components/${JORTHO_P}.tar.gz -> ${JORTHO_IC_P}.tar.gz
 		http://isabelle.in.tum.de/components/${JEDIT_P}.tar.gz -> ${JEDIT_IC_P}.tar.gz
 		http://isabelle.in.tum.de/dist/contrib/${JFREECHART_P}.tar.gz -> ${JFREECHART_IC_P}.tar.gz
-		http://dev.gentoo.org/~gienah/snapshots/${POLYML_IC_P}.tar.gz
+		https://dev.gentoo.org/~gienah/snapshots/${POLYML_IC_P}.tar.gz
 		http://isabelle.in.tum.de/dist/contrib/${SSH_JAVA_P}.tar.gz -> ${SSH_JAVA_IC_P}.tar.gz
-		http://dev.gentoo.org/~gienah/snapshots/${XZ_JAVA_IC_P}.tar.gz"
+		https://dev.gentoo.org/~gienah/snapshots/${XZ_JAVA_IC_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"

@@ -50,6 +50,6 @@ src_install() {
 	insinto /usr/share/analog/images ; doins images/*
 	insinto /usr/share/analog/lang ; doins lang/*
 	dodir /var/log/analog
-	dosym /usr/share/analog/images /var/log/analog/images
+	dosym ../../../usr/share/analog/images /var/log/analog/images
 	insinto /etc/analog ; doins "${FILESDIR}/analog.cfg"
 }

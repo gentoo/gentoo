@@ -4,7 +4,10 @@
 	<maintainer type="person">
 		<email>slyfox@gentoo.org</email>
 		<name>Sergei Trofimovich</name>
-		<description>Primary Maintainer</description>
+	</maintainer>
+	<maintainer type="person">
+		<email>davidroman96@gmail.com</email>
+		<name>David Roman</name>
 	</maintainer>
 	<use>
 		<flag name='system-capstone'>Use <pkg>dev-libs/capstone</pkg> instead of bundled copy.</flag>

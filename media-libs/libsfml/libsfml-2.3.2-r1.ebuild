@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ inherit cmake-utils eutils
 MY_P=SFML-${PV}
 
 DESCRIPTION="Simple and Fast Multimedia Library (SFML)"
-HOMEPAGE="http://www.sfml-dev.org/ https://github.com/SFML/SFML"
+HOMEPAGE="https://www.sfml-dev.org/ https://github.com/SFML/SFML"
 SRC_URI="https://github.com/SFML/SFML/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ZLIB"
@@ -38,8 +38,10 @@ DOCS="changelog.txt readme.txt"
 
 S=${WORKDIR}/${MY_P}
 
+PATCHES=( "${FILESDIR}"/${PN}-2.2-no-docs.patch )
+
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-2.2-no-docs.patch
+	cmake-utils_src_prepare
 
 	sed -i "s:DESTINATION .*:DESTINATION /usr/share/doc/${PF}:" \
 		doc/CMakeLists.txt || die

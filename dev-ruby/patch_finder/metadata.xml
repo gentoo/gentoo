@@ -5,8 +5,6 @@
     <email>zerochaos@gentoo.org</email>
     <name>Rick Farina</name>
   </maintainer>
-  <longdescription lang="en">
-  </longdescription>
   <upstream>
     <remote-id type="github">wchen-r7/patch-finder</remote-id>
     <remote-id type="rubygems">patch_finder</remote-id>

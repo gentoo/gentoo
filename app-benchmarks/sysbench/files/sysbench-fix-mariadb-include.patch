@@ -1,0 +1,21 @@
+--- a/src/drivers/mysql/drv_mysql.c.orig	2017-10-06 06:24:37.930414458 +0000
++++ b/src/drivers/mysql/drv_mysql.c	2017-10-06 06:25:19.647414458 +0000
+@@ -35,7 +35,6 @@
+ #include <stdio.h>
+ 
+ #include <mysql.h>
+-#include <mysql_version.h>
+ #include <mysqld_error.h>
+ #include <errmsg.h>
+ 
+@@ -50,8 +49,8 @@
+ 
+ #define SAFESTR(s) ((s != NULL) ? (s) : "(null)")
+ 
+-#if !defined(MARIADB_BASE_VERSION) && MYSQL_VERSION_ID >= 80001 && \
+-  MYSQL_VERSION_ID != 80002 /* see https://bugs.mysql.com/?id=87337 */
++#if !defined(MARIADB_BASE_VERSION) && !defined(MARIADB_VERSION_ID) && \
++  MYSQL_VERSION_ID >= 80001 && MYSQL_VERSION_ID != 80002 /* see https://bugs.mysql.com/?id=87337 */
+ typedef bool my_bool;
+ #endif
+ 

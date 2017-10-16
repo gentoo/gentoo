@@ -1,0 +1,16 @@
+'context' is no more after:
+https://sourceware.org/git/?p=glibc.git;a=commitdiff;h=251287734e89a52da3db682a8241eb6bccc050c9
+
+'ucontext_t' is the new name.
+diff --git a/src/libmain/stack.cc b/src/libmain/stack.cc
+index 41b617d..695aaad 100644
+--- a/src/libmain/stack.cc
++++ b/src/libmain/stack.cc
+@@ -22,5 +22,5 @@ static void sigsegvHandler(int signo, siginfo_t * info, void * ctx)
+ #if defined(__x86_64__) && defined(REG_RSP)
+-    sp = (char *) ((ucontext *) ctx)->uc_mcontext.gregs[REG_RSP];
++    sp = (char *) ((ucontext_t *) ctx)->uc_mcontext.gregs[REG_RSP];
+ #elif defined(REG_ESP)
+-    sp = (char *) ((ucontext *) ctx)->uc_mcontext.gregs[REG_ESP];
++    sp = (char *) ((ucontext_t *) ctx)->uc_mcontext.gregs[REG_ESP];
+ #else

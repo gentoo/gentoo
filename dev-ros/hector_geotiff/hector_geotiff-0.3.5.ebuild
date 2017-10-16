@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -22,6 +22,7 @@ RDEPEND="
 	dev-ros/std_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-qt/qtcore:4
 	dev-qt/qtgui:4
+	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}
 	dev-cpp/eigen:3"

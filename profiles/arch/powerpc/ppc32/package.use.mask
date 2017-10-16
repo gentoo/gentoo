@@ -1,7 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# This file requires >=portage-2.1.1
+# Sergei Trofimovich <slyfox@gentoo.org> (3 Oct 2017)
+# Incomplete support, bug #605878.
+net-vpn/tor seccomp
 
 # Michał Górny <mgorny@gentoo.org> (23 Mar 2017)
 # Most of clang runtimes are not supported here
@@ -65,7 +67,6 @@ app-text/texlive pdfannotextractor
 dev-lang/logtalk fop
 gnome-extra/libgda reports
 net-analyzer/wireshark doc-pdf
-sci-misc/nco ncap2
 
 # Michael Weber <xmw@gentoo.org> (09 Jan 2016)
 # no ppc support in media-libs/glfw

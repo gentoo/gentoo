@@ -1,7 +1,0 @@
-#!/bin/bash
-
-gibbs /usr/share/gibbs/examples/porins.b185 11 100 -R2000 -s230
-gibbs /usr/share/gibbs/examples/iomps.b58 11 125 -s1
-gibbs /usr/share/gibbs/examples/Igfold.b60x 12,12,12 90,90,90 -s1
-gibbs /usr/share/gibbs/examples/hth90seqs 12 150 -s1
-gibbs /usr/share/gibbs/examples/hth90seqs 18,18,18 20,20,20 -s1

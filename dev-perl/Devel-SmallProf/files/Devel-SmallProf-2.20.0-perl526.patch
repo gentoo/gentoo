@@ -1,0 +1,67 @@
+From 70d450555b1792530c4230cecf84a044b2c3f9ce Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Sun, 8 Oct 2017 11:45:25 +1300
+Subject: Fix Perl 5.26 support without '.' in @INC
+
+1. Tests rely on "do $LOCALFILE" syntax
+2. Runtime conditionally can load a local file ('./.smallprof')
+
+Bug: https://bugs.gentoo.org/615590
+Bug: https://rt.cpan.org/Ticket/Display.html?id=121134
+---
+ lib/Devel/SmallProf.pm | 4 ++--
+ t/part1.t              | 2 +-
+ t/part2.t              | 2 +-
+ t/part3.t              | 2 +-
+ 4 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/lib/Devel/SmallProf.pm b/lib/Devel/SmallProf.pm
+index 2b5d091..4fdd66a 100644
+--- a/lib/Devel/SmallProf.pm
++++ b/lib/Devel/SmallProf.pm
+@@ -55,8 +55,8 @@ BEGIN {
+   $drop_zeros = 0;
+   $profile = 1;
+   $grep_format = 0;
+-  if (-e '.smallprof') {
+-    do '.smallprof';
++  if (-e './.smallprof') {
++    do './.smallprof';
+   }
+   my $env=$ENV{SMALLPROF_CONFIG}||'';
+   $drop_zeros = 1 if $env=~/z/;
+diff --git a/t/part1.t b/t/part1.t
+index 805ebe4..483f203 100644
+--- a/t/part1.t
++++ b/t/part1.t
+@@ -6,4 +6,4 @@
+ # doesn't have it's contents put into the symbol table.  Thus this shim which
+ # invokes the real part1 so that its contents are visible.
+ 
+-do 't/part1.b' or die "$!";
++do './t/part1.b' or die "$!";
+diff --git a/t/part2.t b/t/part2.t
+index c808010..335d032 100644
+--- a/t/part2.t
++++ b/t/part2.t
+@@ -9,7 +9,7 @@ unless (open(OUT,'smallprof.out')) {
+ undef $/;
+ $_ = <OUT>;
+ close OUT;
+-print +(/Profile of \(eval/ && m!Profile of t.part1\.b!) 
++print +(/Profile of \(eval/ && m!Profile of \./t.part1\.b!)
+                                            ? "ok  1\n" : "not ok  1\n";
+ my (@matches) = /Profile of/g;
+ print +(@matches == 3)                     ? "ok  2\n" : "not ok  2\n";
+diff --git a/t/part3.t b/t/part3.t
+index 652b306..135d4ca 100644
+--- a/t/part3.t
++++ b/t/part3.t
+@@ -1,3 +1,3 @@
+ #!perl -d:SmallProf
+ 
+-do 't/part3.b' or die "$!";
++do './t/part3.b' or die "$!";
+-- 
+2.14.1
+

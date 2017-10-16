@@ -20,4 +20,4 @@ SLOT="0"
 KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
-ruby_add_rdepend ">=dev-ruby/rspec-3.1:3 dev-ruby/fuubar:2"
+ruby_add_rdepend ">=dev-ruby/rspec-3.1:3 dev-ruby/fuubar:2 dev-ruby/shoulda-matchers:3"

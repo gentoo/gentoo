@@ -117,7 +117,7 @@ python_install_all() {
 	distutils-r1_python_install_all
 
 	for svc in api glare registry scrubber; do
-		newinitd "${FILESDIR}/glance.initd" glance-${svc}
+		newinitd "${FILESDIR}/glance.initd-r2" glance-${svc}
 	done
 
 	diropts -m 0750 -o glance -g glance

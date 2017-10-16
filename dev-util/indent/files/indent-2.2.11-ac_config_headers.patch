@@ -1,0 +1,11 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -3,7 +3,7 @@
+ AC_CONFIG_SRCDIR(src/indent.c)
+ AC_CONFIG_AUX_DIR(config)
+ AM_INIT_AUTOMAKE(indent, 2.2.11)
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(config.h)
+ 
+ AM_MAINTAINER_MODE
+ 

@@ -10,7 +10,7 @@ inherit kde5
 
 DESCRIPTION="Common mail library"
 LICENSE="GPL-2+ LGPL-2.1+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 COMMON_DEPEND="
@@ -45,7 +45,7 @@ COMMON_DEPEND="
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
-	media-libs/phonon[qt5]
+	media-libs/phonon[qt5(+)]
 "
 DEPEND="${COMMON_DEPEND}
 	dev-libs/libxslt

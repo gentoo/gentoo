@@ -24,5 +24,6 @@ RDEPEND="
 	dev-ros/roscpp
 	dev-ros/tf2
 	dev-ros/tf2_geometry_msgs
+	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}"

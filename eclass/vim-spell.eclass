@@ -1,12 +1,13 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-#
-# Original Author: Ciaran McCreesh <ciaranm@gentoo.org>
-# Maintainers:     Vim Herd <vim@gentoo.org>
-# Purpose:         Simplify installing spell files for vim7
-#
-
+# @ECLASS: vim-spell.eclass
+# @MAINTAINER:
+# Vim Maintainers <vim@gentoo.org>
+# @AUTHOR:
+# Ciaran McCreesh <ciaranm@gentoo.org>
+# @BLURB: Eclass for managing Vim spell files.
+# @DESCRIPTION:
 # How to make a vim spell file package using prebuilt spell lists
 # from upstream (${CODE} is the language's two letter code):
 #
@@ -21,26 +22,31 @@
 #
 # * Upload the tarball to the Gentoo mirrors.
 #
-# * (for now) Add your spell file to package.mask next to the other vim7
-#   things. The vim herd will handle unmasking your spell packages when vim7
-#   comes out of package.mask.
+# * Add your spell file to package.mask next to the other vim things. Vim
+#   Project members will handle unmasking your spell packages when vim comes out
+#   of package.mask.
 #
 # * Create the app-vim/vim-spell-${CODE} package. You should base your ebuild
 #   upon app-vim/vim-spell-en. You will need to change VIM_SPELL_LANGUAGE,
 #   KEYWORDS and LICENSE. Check the license carefully! The README will tell
 #   you what it is.
 #
-# * Don't forget metadata.xml. You should list vim as the herd, and yourself
-#   as the maintainer (there is no need to join the vim herd just for spell
-#   files):
+# * Don't forget metadata.xml. You should list the Vim project and yourself
+#   as maintainers. There is no need to join the Vim project just for spell
+#   files. Here's an example of a metadata.xml file:
 #
 #     <?xml version="1.0" encoding="UTF-8"?>
 #     <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 #     <pkgmetadata>
-#     	<herd>vim</herd>
-#     	<maintainer>
-#     		<email>your-name@gentoo.org</email>
-#     	</maintainer>
+#        <maintainer type="person">
+#                <email>your@email.tld</email>
+#                <name>Your Name</name>
+#        </maintainer>
+#        <maintainer type="project">
+#                <email>vim@gentoo.org</email>
+#                <name>Vim Maintainers</name>
+#        </maintainer>
+#
 #     	<longdescription lang="en">
 #     		Vim spell files for French (fr). Supported character sets are
 #     		UTF-8 and latin1.
@@ -52,7 +58,7 @@
 # Don't forget to update your package as necessary.
 #
 # If there isn't an upstream-provided pregenerated spell file for your language
-# yet, read :help spell.txt from inside vim7 for instructions on how to create
+# yet, read :help spell.txt from inside vim for instructions on how to create
 # spell files. It's best to let upstream know if you've generated spell files
 # for another language rather than keeping them Gentoo-specific.
 
@@ -60,60 +66,82 @@ inherit eutils
 
 EXPORT_FUNCTIONS src_install pkg_postinst
 
-IUSE=""
-DEPEND="|| ( >=app-editors/vim-7_alpha
-	>=app-editors/gvim-7_alpha )"
-RDEPEND="${DEPEND}"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 SLOT="0"
 
-if [[ -z "${VIM_SPELL_CODE}" ]] ; then
-	VIM_SPELL_CODE="${PN/vim-spell-/}"
-fi
+# @ECLASS-VARIABLE: VIM_SPELL_LANGUAGE
+# @DESCRIPTION:
+# This variable defines the language for the spell package being
+# installed.
+# The default value is "English".
+: ${VIM_SPELL_LANGUAGE:="English"}
 
-DESCRIPTION="vim spell files: ${VIM_SPELL_LANGUAGE} (${VIM_SPELL_CODE})"
+# @ECLASS-VARIABLE: VIM_SPELL_LOCALE
+# @INTERNAL
+# @DESCRIPTION:
+# This variable defines the locale for the current ebuild.
+# The default value is ${PN} stripped of the "vim-spell-" string.
+: ${VIM_SPELL_LOCALE:="${PN/vim-spell-/}"}
 
-if [[ -z "${HOMEPAGE}" ]] ; then
-	HOMEPAGE="http://www.vim.org/"
-fi
+# @ECLASS-VARIABLE: VIM_SPELL_DIRECTORY
+# @INTERNAL
+# @DESCRIPTION:
+# This variable defines the path to Vim spell files.
+: ${VIM_SPELL_DIRECTORY:="${EPREFIX}/usr/share/vim/vimfiles/spell/"}
 
+# @ECLASS-VARIABLE: DESCRIPTION
+# @DESCRIPTION:
+# This variable defines the DESCRIPTION for Vim spell ebuilds.
+: ${DESCRIPTION:="vim spell files: ${VIM_SPELL_LANGUAGE} (${VIM_SPELL_LOCALE})"}
+
+# @ECLASS-VARIABLE: HOMEPAGE
+# @DESCRIPTION:
+# This variable defines the HOMEPAGE for Vim spell ebuilds.
+: ${HOMEPAGE:="https://www.vim.org"}
+
+# @FUNCTION: vim-spell_src_install
+# @DESCRIPTION:
+# This function installs Vim spell files.
 vim-spell_src_install() {
-	target="/usr/share/vim/vimfiles/spell/"
-	dodir "${target}"
-	insinto "${target}"
+	dodir "${VIM_SPELL_DIRECTORY}"
+	insinto "${VIM_SPELL_DIRECTORY}"
 
-	had_spell_file=
-	for f in *.spl ; do
+	local had_spell_file=
+	local f
+	for f in *.spl; do
 		if [[ -f "${f}" ]]; then
 			doins "${f}"
 			had_spell_file="yes"
 		fi
 	done
 
-	for f in *.sug ; do
+	for f in *.sug; do
 		if [[ -f "${f}" ]]; then
 			doins "${f}"
 		fi
 	done
 
-	for f in README* ; do
+	for f in README*; do
 		dodoc "${f}"
 	done
 
 	[[ -z "${had_spell_file}" ]] && die "Didn't install any spell files?"
 }
 
+# @FUNCTION: vim-spell_pkg_postinst
+# @DESCRIPTION:
+# This function displays installed Vim spell files.
 vim-spell_pkg_postinst() {
 	has "${EAPI:-0}" 0 1 2 && ! use prefix && EROOT="${ROOT}"
-	target="/usr/share/vim/vimfiles/spell/"
 	echo
 	elog "To enable ${VIM_SPELL_LANGUAGE} spell checking, use"
-	elog "    :setlocal spell spelllang=${VIM_SPELL_CODE}"
+	elog "    :setlocal spell spelllang=${VIM_SPELL_LOCALE}"
 	echo
 	elog "The following (Vim internal, not file) encodings are supported for"
 	elog "this language:"
-	for f in "${EROOT}/${target}/${VIM_SPELL_CODE}".*.spl ; do
-		enc="${f##*/${VIM_SPELL_CODE}.}"
+	local f enc
+	for f in "${EROOT}${VIM_SPELL_DIRECTORY}/${VIM_SPELL_LOCALE}".*.spl; do
+		enc="${f##*/${VIM_SPELL_LOCALE}.}"
 		enc="${enc%.spl}"
 		[[ -z "${enc}" ]] && continue
 		elog "    ${enc}"

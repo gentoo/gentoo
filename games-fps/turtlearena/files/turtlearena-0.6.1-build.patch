@@ -7,8 +7,8 @@ Date: Sat Apr 27 20:53:37 UTC 2013
 * unbundle the unzip.c properly and fix headers
 * make -m* flags depend on CROSS_COMPILING var
 
---- engine/Makefile
-+++ engine/Makefile
+--- a/engine/Makefile
++++ b/engine/Makefile
 @@ -346,27 +346,31 @@
  
  bin_path=$(shell which $(1) 2> /dev/null)
@@ -177,8 +177,8 @@ Date: Sat Apr 27 20:53:37 UTC 2013
    $(B)/ded/vm.o \
    $(B)/ded/vm_interpreted.o \
    \
---- engine/code/qcommon/files.c
-+++ engine/code/qcommon/files.c
+--- a/engine/code/qcommon/files.c
++++ b/engine/code/qcommon/files.c
 @@ -31,7 +31,7 @@ Foundation, Inc., 51 Franklin St, Fifth
  
  #include "q_shared.h"
@@ -188,8 +188,8 @@ Date: Sat Apr 27 20:53:37 UTC 2013
  
  /*
  =============================================================================
---- engine/code/renderer/tr_public.h
-+++ engine/code/renderer/tr_public.h
+--- a/engine/code/renderer/tr_public.h
++++ b/engine/code/renderer/tr_public.h
 @@ -25,7 +25,7 @@
  #include "tr_types.h"
  

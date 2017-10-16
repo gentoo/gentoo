@@ -1,0 +1,87 @@
+From f3b230f7f3bf39dc46b97a216aa7c28595d20a7a Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Thu, 3 Aug 2017 09:50:30 +0200
+Subject: Check for a graphical session
+
+Summary:
+Avoid running if it detects a text session. This can be overridden by adding
+"force_run" as argument.
+
+Test Plan:
+Put pam_kwallet5.so as optional in a global common-session pam file
+that is included by all other services. It is not invoked when logging in from
+a tty with getty, sudo or su and still works when using SDDM. When adding
+force_run it runs in all cases.
+
+Reviewers: #plasma
+
+Subscribers: plasma-devel
+
+Tags: #plasma
+
+Differential Revision: https://phabricator.kde.org/D7125
+---
+ pam_kwallet.c | 26 ++++++++++++++++++++++++++
+ 1 file changed, 26 insertions(+)
+
+diff --git a/pam_kwallet.c b/pam_kwallet.c
+index cba57e7..46720a5 100644
+--- a/pam_kwallet.c
++++ b/pam_kwallet.c
+@@ -72,6 +72,7 @@ const static char *kwalletd = NULL;
+ const static char *socketPath = NULL;
+ const static char *kwalletPamDataKey = NULL;
+ const static char *logPrefix = NULL;
++static int force_run = 0;
+ 
+ #ifdef KWALLET5
+ const static char *envVar = "PAM_KWALLET5_LOGIN";
+@@ -98,6 +99,8 @@ static void parseArguments(int argc, const char **argv)
+             kwalletd = argv[x] + 9;
+         } else if (strstr(argv[x], "socketPath=") != NULL) {
+             socketPath= argv[x] + 11;
++        } else if (strcmp(argv[x], "force_run") == 0) {
++            force_run = 1;
+         }
+     }
+ #ifdef KWALLET5
+@@ -246,6 +249,24 @@ static void cleanup_free(pam_handle_t *pamh, void *ptr, int error_status)
+     free(ptr);
+ }
+ 
++static int is_graphical_session(pam_handle_t *pamh)
++{
++    //Detect a graphical session
++    const char *pam_tty = NULL, *pam_xdisplay = NULL,
++               *xdg_session_type = NULL, *display = NULL;
++
++    pam_get_item(pamh, PAM_TTY, (const void**) &pam_tty);
++#ifdef PAM_XDISPLAY
++    pam_get_item(pamh, PAM_XDISPLAY, (const void**) &pam_xdisplay);
++#endif
++    xdg_session_type = get_env(pamh, "XDG_SESSION_TYPE");
++
++    return (pam_xdisplay && strlen(pam_xdisplay) != 0)
++           || (pam_tty && pam_tty[0] == ':')
++           || (xdg_session_type && strcmp(xdg_session_type, "x11") == 0)
++           || (xdg_session_type && strcmp(xdg_session_type, "wayland") == 0);
++}
++
+ PAM_EXTERN int pam_sm_authenticate(pam_handle_t *pamh, int flags, int argc, const char **argv)
+ {
+     pam_syslog(pamh, LOG_INFO, "%s: pam_sm_authenticate\n", logPrefix);
+@@ -537,6 +558,11 @@ PAM_EXTERN int pam_sm_open_session(pam_handle_t *pamh, int flags, int argc, cons
+ 
+     parseArguments(argc, argv);
+ 
++    if (!force_run && !is_graphical_session(pamh)) {
++        pam_syslog(pamh, LOG_INFO, "%s: not a graphical session, skipping. Use force_run parameter to ignore this.", logPrefix);
++        return PAM_IGNORE;
++    }
++
+     int result;
+     result = pam_set_data(pamh, "sm_open_session", "1", NULL);
+     if (result != PAM_SUCCESS) {
+-- 
+cgit v0.11.2
+

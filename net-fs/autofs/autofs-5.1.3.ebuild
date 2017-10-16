@@ -38,8 +38,9 @@ RDEPEND=">=sys-apps/util-linux-2.20
 			virtual/krb5
 		)
 	)
-	libtirpc? ( net-libs/libtirpc )"
-
+	libtirpc? ( net-libs/libtirpc )
+	!libtirpc? ( sys-libs/glibc[rpc(-)] )
+"
 DEPEND="${RDEPEND}
 	sys-devel/flex
 	virtual/yacc"

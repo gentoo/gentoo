@@ -32,7 +32,7 @@ REQUIRED_USE="
 # It is disable in configure in 1.12; revisit for 1.14/2 (configure flag)
 RDEPEND="
 	>=app-i18n/enca-1.9
-	>dev-db/sqlite-3.20:=
+	>=dev-db/sqlite-3.20:=
 	>=dev-libs/glib-2.44:2
 	>=dev-libs/gobject-introspection-0.9.5:=
 	>=dev-libs/icu-4.8.1.1:=
@@ -219,12 +219,12 @@ src_install() {
 
 	# Manually symlink extensions for {firefox,thunderbird}-bin
 	if use firefox-bookmarks; then
-		dosym /usr/share/xul-ext/trackerfox \
+		dosym ../../../share/xul-ext/trackerfox \
 			/usr/$(get_libdir)/firefox-bin/extensions/trackerfox@bustany.org
 	fi
 
 	if use thunderbird; then
-		dosym /usr/share/xul-ext/trackerbird \
+		dosym ../../../share/xul-ext/trackerbird \
 			/usr/$(get_libdir)/thunderbird-bin/extensions/trackerbird@bustany.org
 	fi
 }

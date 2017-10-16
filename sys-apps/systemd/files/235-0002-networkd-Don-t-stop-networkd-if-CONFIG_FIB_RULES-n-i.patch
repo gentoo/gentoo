@@ -1,0 +1,47 @@
+From 3bd3ac67477ea319cc169dbd1c377912cf8ff198 Mon Sep 17 00:00:00 2001
+From: Susant Sahani <susant@redhat.com>
+Date: Sun, 8 Oct 2017 21:51:35 +0530
+Subject: [PATCH] networkd: Don't stop networkd if CONFIG_FIB_RULES=n in
+ kernel.
+
+if FIB Rules in not supported by the kernel then networkd fails to
+start as it retuns error=-EOPNOTSUPP.
+In this case just ignore and let start networkd.
+
+````
+sendto(5, {{len=28, type=RTM_GETRULE, flags=NLM_F_REQUEST|NLM_F_ACK|NLM_F_DUMP, seq=8, pid=0}, {family=AF_UNSPEC, dst_len=0, src_len=0, tos=0, table=RT_TABLE_UNSPEC, action=FR_ACT_TO_TBL, flags=0}}, 28, 0, {sa_family=AF_NETLINK, nl_pid=0, nl_groups=00000000}, 16) = 28
+recvmsg(5, {msg_name={sa_family=AF_NETLINK, nl_pid=0, nl_groups=00000000}, msg_namelen=128->12, msg_iov=[{iov_base=NULL, iov_len=0}], msg_iovlen=1, msg_control=[{cmsg_len=20, cmsg_level=SOL_NETLINK, cmsg_type=0x3}], msg_controllen=24, msg_flags=MSG_TRUNC}, MSG_PEEK|MSG_TRUNC) = 48
+recvmsg(5, {msg_name={sa_family=AF_NETLINK, nl_pid=0, nl_groups=00000000}, msg_namelen=128->12, msg_iov=[{iov_base={{len=48, type=NLMSG_ERROR, flags=0, seq=8, pid=8856}, {error=-EOPNOTSUPP, msg={{len=28, type=RTM_GETRULE, flags=NLM_F_REQUEST|NLM_F_ACK|NLM_F_DUMP, seq=8, pid=0}, {family=AF_UNSPEC, dst_len=0, src_len=0, tos=0, table=RT_TABLE_UNSPEC, action=FR_ACT_TO_TBL, flags=0}}}}, iov_len=7416}], msg_iovlen=1, msg_control=[{cmsg_len=20, cmsg_level=SOL_NETLINK, cmsg_type=0x3}], msg_controllen=24, msg_flags=0}, MSG_TRUNC) = 48
+```
+
+```
+Oct 08 10:22:24 naomi systemd[1]: Starting Network Service...
+Oct 08 10:22:24 naomi systemd-networkd[983]: Could not enumerate rules: Operation not supported
+Oct 08 10:22:24 naomi systemd[1]: systemd-networkd.service: Main process exited, code=exited, status=1/FAILURE
+```
+
+Fixes #7027
+---
+ src/network/networkd.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/src/network/networkd.c b/src/network/networkd.c
+index d5ba6893e..7f7223c0c 100644
+--- a/src/network/networkd.c
++++ b/src/network/networkd.c
+@@ -133,10 +133,8 @@ int main(int argc, char *argv[]) {
+         }
+ 
+         r = manager_rtnl_enumerate_rules(m);
+-        if (r < 0) {
+-                log_error_errno(r, "Could not enumerate rules: %m");
+-                goto out;
+-        }
++        if (r < 0)
++                log_warning_errno(r, "Could not enumerate rules: %m");
+ 
+         r = manager_start(m);
+         if (r < 0) {
+-- 
+2.14.2
+

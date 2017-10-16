@@ -9,19 +9,15 @@ DESCRIPTION="Library for Chinese Phonetic input method"
 HOMEPAGE="http://chewing.csie.net/"
 SRC_URI="https://github.com/${PN/lib}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-SLOT="0"
-LICENSE="GPL-2"
-KEYWORDS="amd64 ~ppc ppc64 ~x86"
+SLOT="0/3"
+LICENSE="LGPL-2.1"
+KEYWORDS="amd64 ~arm64 ~ppc ppc64 ~x86"
 IUSE="static-libs test"
 REQUIRED_USE="test? ( static-libs )"
 
 RDEPEND="dev-db/sqlite:3"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	test? (
-		dev-libs/check
-		sys-libs/ncurses[unicode]
-	)"
+	test? ( sys-libs/ncurses[unicode] )"
 
 src_prepare() {
 	default

@@ -54,7 +54,7 @@ LICENSE="
 	samba? ( GPL-3 )
 "
 if [ "${PV#9999}" = "${PV}" ] ; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 fi
 
 # Options to use as use_enable in the foo[:bar] form.
@@ -96,7 +96,7 @@ FFMPEG_ENCODER_FLAG_MAP=(
 )
 
 IUSE="
-	alsa doc +encode jack oss pic static-libs test v4l
+	alsa chromium doc +encode jack oss pic static-libs test v4l
 	${FFMPEG_FLAG_MAP[@]%:*}
 	${FFMPEG_ENCODER_FLAG_MAP[@]%:*}
 "
@@ -255,7 +255,7 @@ DEPEND="${RDEPEND}
 	doc? ( sys-apps/texinfo )
 	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
 	ladspa? ( >=media-libs/ladspa-sdk-1.13-r2[${MULTILIB_USEDEP}] )
-	cpu_flags_x86_mmx? ( >=dev-lang/yasm-1.2 )
+	cpu_flags_x86_mmx? ( || ( >=dev-lang/nasm-2.13 >=dev-lang/yasm-1.3 ) )
 	test? ( net-misc/wget sys-devel/bc )
 	v4l? ( sys-kernel/linux-headers )
 "
@@ -289,6 +289,10 @@ RESTRICT="
 
 S=${WORKDIR}/${P/_/-}
 
+PATCHES=(
+	"${FILESDIR}"/chromium.patch
+)
+
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/libavutil/avconfig.h
 )
@@ -298,6 +302,7 @@ src_prepare() {
 		export revision=git-N-${FFMPEG_REVISION}
 	fi
 	default
+	echo 'include $(SRC_PATH)/ffbuild/libffmpeg.mak' >> Makefile || die
 }
 
 multilib_src_configure() {
@@ -419,6 +424,20 @@ multilib_src_configure() {
 		"${myconf[@]}"
 	echo "${@}"
 	"${@}" || die
+
+	if multilib_is_native_abi && use chromium; then
+		einfo "Configuring for Chromium"
+		mkdir -p ../chromium || die
+		pushd ../chromium >/dev/null || die
+		set -- "${@}" \
+			--disable-shared \
+			--enable-static \
+			--enable-pic \
+			--extra-cflags="-DFF_API_CONVERGENCE_DURATION=0"
+		echo "${@}"
+		"${@}" || die
+		popd >/dev/null || die
+	fi
 }
 
 multilib_src_compile() {
@@ -430,6 +449,13 @@ multilib_src_compile() {
 				emake V=1 tools/${i}
 			fi
 		done
+
+		if use chromium; then
+			einfo "Compiling for Chromium"
+			pushd ../chromium >/dev/null || die
+			emake V=1 libffmpeg
+			popd >/dev/null || die
+		fi
 	fi
 }
 
@@ -442,6 +468,13 @@ multilib_src_install() {
 				dobin tools/${i}
 			fi
 		done
+
+		if use chromium; then
+			einfo "Installing for Chromium"
+			pushd ../chromium >/dev/null || die
+			emake V=1 DESTDIR="${D}" install-libffmpeg
+			popd >/dev/null || die
+		fi
 	fi
 }
 

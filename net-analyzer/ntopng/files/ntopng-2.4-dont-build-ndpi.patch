@@ -1,5 +1,5 @@
---- configure.ac.old	2016-04-25 21:29:36.452888380 +0200
-+++ configure.ac	2016-04-25 21:30:04.679554971 +0200
+--- a/configure.ac.old
++++ b/configure.ac
 @@ -62,13 +62,6 @@
  fi
  

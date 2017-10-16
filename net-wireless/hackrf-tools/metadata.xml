@@ -9,8 +9,6 @@
 		<email>radio@gentoo.org</email>
 		<name>Radio</name>
 	</maintainer>
-	<longdescription lang="en">
-</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">hackrf</remote-id>
 		<remote-id type="github">mossmann/hackrf</remote-id>

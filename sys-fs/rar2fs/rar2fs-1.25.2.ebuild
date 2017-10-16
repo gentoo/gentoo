@@ -4,7 +4,7 @@
 EAPI=6
 
 DESCRIPTION="A FUSE based filesystem that can mount one or multiple RAR archive(s)"
-HOMEPAGE="http://hasse69.github.io/rar2fs/ https://github.com/hasse69/rar2fs"
+HOMEPAGE="https://hasse69.github.io/rar2fs/ https://github.com/hasse69/rar2fs"
 SRC_URI="https://github.com/hasse69/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="GPL-3"

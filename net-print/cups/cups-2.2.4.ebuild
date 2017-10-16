@@ -26,7 +26,7 @@ else
 fi
 
 DESCRIPTION="The Common Unix Printing System"
-HOMEPAGE="http://www.cups.org/"
+HOMEPAGE="https://www.cups.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -164,7 +164,7 @@ multilib_src_configure() {
 	# explicitly specify compiler wrt bug 524340
 	#
 	# need to override KRB5CONFIG for proper flags
-	# https://www.cups.org/str.php?L4423
+	# https://github.com/apple/cups/issues/4423
 	myeconfargs+=(
 		CC="$(tc-getCC)"
 		CXX="$(tc-getCXX)"

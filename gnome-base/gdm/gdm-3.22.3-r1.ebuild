@@ -10,7 +10,7 @@ DESCRIPTION="GNOME Display Manager for managing graphical display servers and us
 HOMEPAGE="https://wiki.gnome.org/Projects/GDM"
 
 SRC_URI="${SRC_URI}
-	branding? ( http://www.mail-archive.com/tango-artists@lists.freedesktop.org/msg00043/tango-gentoo-v1.1.tar.gz )
+	branding? ( https://www.mail-archive.com/tango-artists@lists.freedesktop.org/msg00043/tango-gentoo-v1.1.tar.gz )
 "
 
 LICENSE="
@@ -211,6 +211,8 @@ pkg_postinst() {
 		[[ ! -e "${d}" ]] || chown -R gdm:gdm "${d}" || ret=1
 	done
 	eend ${ret}
+
+	systemd_reenable gdm.service
 
 	readme.gentoo_print_elog
 }

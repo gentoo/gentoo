@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cmake-utils
+inherit cmake-utils eutils
 
 DESCRIPTION="CuteCom is a serial terminal, like minicom, written in qt"
 HOMEPAGE="https://github.com/neundorf/CuteCom"
@@ -11,7 +11,7 @@ SRC_URI="https://codeload.github.com/neundorf/${PN}/tar.gz/v${PV} -> ${P}.tar.gz
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="dev-qt/qtcore:5

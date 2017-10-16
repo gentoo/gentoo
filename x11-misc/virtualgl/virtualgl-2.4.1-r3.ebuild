@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -44,7 +44,7 @@ src_prepare() {
 	sed -e "s#/etc/opt#/var/lib#g" -i doc/unixconfig.txt doc/index.html doc/advancedopengl.txt \
 		server/vglrun.in server/vglgenkey server/vglserver_config || die
 
-	default
+	cmake-utils_src_prepare
 }
 
 src_configure() {

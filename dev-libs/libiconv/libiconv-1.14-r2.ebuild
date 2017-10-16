@@ -19,7 +19,7 @@ DEPEND="!sys-libs/glibc
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-no-gets.patch
+	eapply "${FILESDIR}"/${P}-no-gets.patch
 	eapply_user
 	elibtoolize
 }

@@ -12,12 +12,12 @@ SRC_URI="mirror://nongnu/dianara/${MY_P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="
 	>=app-crypt/qca-2.1.0.3:2[qt5,ssl]
-	dev-libs/qoauth:5
+	>=dev-libs/qoauth-2.0.1_pre20160315-r2:5
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5

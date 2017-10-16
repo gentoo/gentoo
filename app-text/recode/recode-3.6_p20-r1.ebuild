@@ -60,6 +60,5 @@ multilib_src_configure() {
 
 multilib_src_install_all() {
 	einstalldocs
-	find "${ED}" -name '*.la' -exec rm -f {} + || die
-	rm -f "${ED}"/usr/lib/charset.alias || die
+	find "${ED}" -name '*.la' -exec rm -v {} + || die
 }

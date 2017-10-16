@@ -381,11 +381,6 @@ gnome2_schemas_update() {
 		return
 	fi
 
-	if [[ -z ${GNOME2_ECLASS_GLIB_SCHEMAS} ]]; then
-		debug-print "No GSettings schemas to update"
-		return
-	fi
-
 	ebegin "Updating GSettings schemas"
 	${updater} --allow-any-name "$@" "${EROOT%/}/usr/share/glib-2.0/schemas" &>/dev/null
 	eend $?

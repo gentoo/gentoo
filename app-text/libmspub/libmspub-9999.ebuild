@@ -1,14 +1,14 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-EGIT_REPO_URI="git://anongit.freedesktop.org/git/libreoffice/${PN}/"
+EGIT_REPO_URI="https://anongit.freedesktop.org/git/libreoffice/libmspub.git"
 [[ ${PV} == 9999 ]] && inherit autotools git-r3
 
 DESCRIPTION="Library parsing Microsoft Publisher documents"
 HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/libmspub"
-[[ ${PV} == 9999 ]] || SRC_URI="http://dev-www.libreoffice.org/src/${PN}/${P}.tar.xz"
+[[ ${PV} == 9999 ]] || SRC_URI="https://dev-www.libreoffice.org/src/libmspub/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

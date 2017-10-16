@@ -7,7 +7,7 @@ inherit kde5
 
 DESCRIPTION="Framework for providing spell-checking through abstraction of popular backends"
 LICENSE="LGPL-2+ LGPL-2.1+"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="aspell +hunspell nls"
 
 RDEPEND="

@@ -11,7 +11,7 @@ inherit kde5
 DESCRIPTION="Organizational assistant, providing calendars and other similar functionality"
 HOMEPAGE="https://www.kde.org/applications/office/korganizer/"
 LICENSE="GPL-2+ handbook? ( FDL-1.2+ )"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="X"
 
 COMMON_DEPEND="
@@ -61,7 +61,7 @@ COMMON_DEPEND="
 	$(add_qt_dep qtdbus)
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
-	media-libs/phonon[qt5]
+	media-libs/phonon[qt5(+)]
 	X? (
 		$(add_qt_dep qtx11extras)
 		x11-libs/libX11

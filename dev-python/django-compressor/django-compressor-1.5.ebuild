@@ -12,7 +12,7 @@ MY_PN="${PN/-/_}"
 DESCRIPTION="Compresses linked and inline javascript or CSS into a single cached file"
 HOMEPAGE="https://github.com/django-compressor/django-compressor"
 SRC_URI="https://github.com/jezdez/django_compressor/archive/${PV}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc test"
 
 LICENSE="MIT"

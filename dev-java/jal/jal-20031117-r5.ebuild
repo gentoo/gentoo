@@ -9,7 +9,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Partial port of the C++ Standard Template Library"
 HOMEPAGE="http://vigna.dsi.unimi.it/jal"
-SRC_URI="http://dev.gentoo.org/~monsieurp/packages/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~monsieurp/packages/${P}.tar.gz"
 
 LICENSE="HPND"
 SLOT="0"

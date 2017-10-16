@@ -70,7 +70,7 @@ RDEPEND="
 	dbus? ( sys-apps/dbus )
 	elibc_glibc? ( sys-libs/glibc[rpc(+)] )
 	firewalld? ( net-firewall/firewalld )
-	fuse? ( >=sys-fs/fuse-2.8.6 )
+	fuse? ( >=sys-fs/fuse-2.8.6:= )
 	glusterfs? ( >=sys-cluster/glusterfs-3.4.1 )
 	iscsi? ( sys-block/open-iscsi )
 	libssh? ( net-libs/libssh )
@@ -80,7 +80,6 @@ RDEPEND="
 		>sys-process/numactl-2.0.2
 		sys-process/numad
 	)
-	openvz? ( sys-kernel/openvz-sources:* )
 	parted? (
 		>=sys-block/parted-1.8[device-mapper]
 		sys-fs/lvm2[-device-mapper-only(-)]

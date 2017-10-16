@@ -15,12 +15,12 @@
  install_static:	static install_common
 -		install -d -m 755 -g root -p $(libdir)
 -		install -m 644 liblockfile.a $(libdir)
-+		install -d -m 755 -g root -p $(DESTDIR)$(libdir)
++		install -d -m 755 -p $(DESTDIR)$(libdir)
 +		install -m 644 liblockfile.a $(DESTDIR)$(libdir)
  
  install_shared:	shared install_static install_common
 -		install -d -m 755 -g root -p $(libdir)
-+		install -d -m 755 -g root -p $(DESTDIR)$(libdir)
++		install -d -m 755 -p $(DESTDIR)$(libdir)
  		install -m 755 liblockfile.so \
 -			$(libdir)/liblockfile.so.$(SOVER)
 -		ln -s liblockfile.so.$(SOVER) $(libdir)/liblockfile.so.$(MAJOR)
@@ -36,17 +36,17 @@
 -		install -d -m 755 -g root -p $(mandir)/man1
 -		install -d -m 755 -g root -p $(mandir)/man3
 -		install -m 644 lockfile.h maillock.h $(includedir)
-+		install -d -m 755 -g root -p $(DESTDIR)$(includedir)
-+		install -d -m 755 -g root -p $(DESTDIR)$(bindir)
-+		install -d -m 755 -g root -p $(DESTDIR)$(mandir)/man1
-+		install -d -m 755 -g root -p $(DESTDIR)$(mandir)/man3
++		install -d -m 755 -p $(DESTDIR)$(includedir)
++		install -d -m 755 -p $(DESTDIR)$(bindir)
++		install -d -m 755 -p $(DESTDIR)$(mandir)/man1
++		install -d -m 755 -p $(DESTDIR)$(mandir)/man3
 +		install -m 644 lockfile.h maillock.h $(DESTDIR)$(includedir)
  		if [ "$(MAILGROUP)" != "" ]; then\
 -		  install -g $(MAILGROUP) -m 2755 dotlockfile $(bindir);\
 +		  install -g $(MAILGROUP) -m 2755 dotlockfile $(DESTDIR)$(bindir);\
  		else \
 -		  install -g root -m 755 dotlockfile $(bindir); \
-+		  install -g root -m 755 dotlockfile $(DESTDIR)$(bindir); \
++		  install -m 755 dotlockfile $(DESTDIR)$(bindir); \
  		fi
 -		install -m 644 *.1 $(mandir)/man1
 -		install -m 644 *.3 $(mandir)/man3
@@ -56,7 +56,7 @@
  install_nfslib:	nfslib
 -		install -d -m 755 -g root -p $(nfslockdir)
 -		install -m 755 nfslock.so.$(NFSVER) $(nfslockdir)
-+		install -d -m 755 -g root -p $(DESTDIR)$(nfslockdir)
++		install -d -m 755 -p $(DESTDIR)$(nfslockdir)
 +		install -m 755 nfslock.so.$(NFSVER) $(DESTDIR)$(nfslockdir)
  		if test "$(DESTDIR)" = ""; then @LDCONFIG@; fi
  

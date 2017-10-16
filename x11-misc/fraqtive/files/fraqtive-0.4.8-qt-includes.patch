@@ -1,0 +1,24 @@
+Add missing Qt includes.
+
+Bug: https://bugs.gentoo.org/563574
+
+--- a/src/configurationdata.cpp
++++ b/src/configurationdata.cpp
+@@ -25,6 +25,7 @@
+ #include <shlobj.h>
+ #endif
+ 
++#include <QDataStream>
+ #include <QDir>
+ #include <cstdlib>
+ 
+--- a/src/fractalgenerator.h
++++ b/src/fractalgenerator.h
+@@ -21,6 +21,7 @@
+ 
+ #include <QEvent>
+ #include <QMutex>
++#include <QObject>
+ #include <QWaitCondition>
+ 
+ #include "abstractjobprovider.h"

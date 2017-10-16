@@ -18,7 +18,7 @@ IUSE="doc examples"
 
 DEPEND="dev-python/pyparsing[${PYTHON_USEDEP}]"
 RDEPEND="
-	media-gfx/pydot[${PYTHON_USEDEP}]
+	dev-python/pydot[${PYTHON_USEDEP}]
 	media-gfx/graphviz"
 DEPEND="${DEPEND}
 	doc? ( dev-python/sphinx )"

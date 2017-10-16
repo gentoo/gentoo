@@ -1,0 +1,16 @@
+Bug: https://bugs.gentoo.org/596112
+
+--- a/Sources/Core/IOData/Generic/datafile_inputprovider.h
++++ b/Sources/Core/IOData/Generic/datafile_inputprovider.h
+@@ -142,9 +142,9 @@
+ 		void insert(const std::string &resource_id, int data_pos, int data_size)
+ 		{
+ 			cache.insert(
+-				std::make_pair<std::string const, std::pair<int, int> >(
++				std::pair<std::string const, std::pair<int, int> >(
+ 				resource_id,
+-				std::make_pair<int,int>(data_pos, data_size)));
++				std::pair<int,int>(data_pos, data_size)));
+ 		}
+ 
+ 	private:

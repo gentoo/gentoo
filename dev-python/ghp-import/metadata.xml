@@ -5,8 +5,6 @@
 		<email>alunduil@gentoo.org</email>
 		<name>Alex Brandt</name>
 	</maintainer>
-	<longdescription lang="en">
-	</longdescription>
 	<upstream>
 		<remote-id type="pypi">ghp-import</remote-id>
 		<remote-id type="github">davisp/ghp-import</remote-id>

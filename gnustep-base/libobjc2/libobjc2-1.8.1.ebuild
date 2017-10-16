@@ -18,8 +18,10 @@ RDEPEND="boehm-gc? ( dev-libs/boehm-gc )
 DEPEND="${DEPEND}
 	>=sys-devel/clang-2.9"
 
+PATCHES=( "${FILESDIR}"/${PN}-1.7-fix_soname.patch )
+
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.7-fix_soname.patch
+	cmake-utils_src_prepare
 
 	if ! use cxx;
 	then

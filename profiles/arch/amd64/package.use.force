@@ -7,6 +7,7 @@ app-emulation/wine-vanilla -abi_x86_64
 app-emulation/wine-staging -abi_x86_64
 app-emulation/wine-d3d9 -abi_x86_64
 app-emulation/wine-any -abi_x86_64
+virtual/wine -abi_x86_64
 
 # Michał Górny <mgorny@gentoo.org> (08 Apr 2017)
 # Require sandbox to be multilib-capable to avoid failures when building

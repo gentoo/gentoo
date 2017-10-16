@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy{,3} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1
+inherit distutils-r1 flag-o-matic
 
 DESCRIPTION="Library providing cryptographic recipes and primitives"
 HOMEPAGE="https://github.com/pyca/cryptography/ https://pypi.python.org/pypi/cryptography/"
@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="|| ( Apache-2.0 BSD )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~x86 ~x64-solaris"
 IUSE="libressl test"
 
 RDEPEND="
@@ -41,6 +41,10 @@ DEPEND="${RDEPEND}
 	)"
 
 DOCS=( AUTHORS.rst CONTRIBUTING.rst README.rst )
+
+python_configure_all() {
+	append-cflags $(test-flags-CC -pthread)
+}
 
 python_test() {
 	py.test -v -v -x || die "Tests fail with ${EPYTHON}"

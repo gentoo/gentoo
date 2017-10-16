@@ -5,7 +5,7 @@ EAPI=6
 
 MY_P="${PN/x/}-${PV}"
 DESCRIPTION="VI Like Emacs -- yet another full-featured vi clone"
-HOMEPAGE="http://invisible-island.net/vile/"
+HOMEPAGE="https://invisible-island.net/vile/"
 SRC_URI="ftp://invisible-island.net/vile/current/${MY_P}.tgz"
 
 LICENSE="GPL-2"

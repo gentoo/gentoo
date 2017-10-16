@@ -57,13 +57,14 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${P}/src
+PATCHES=( "${FILESDIR}"/${P}-openexr-2.x.patch )
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-openexr-2.x.patch
+	cmake-utils_src_prepare
 
 	# remove bundled code to make it build
 	# https://github.com/OpenImageIO/oiio/issues/403

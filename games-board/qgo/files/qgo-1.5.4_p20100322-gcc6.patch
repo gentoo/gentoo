@@ -1,0 +1,12 @@
+diff -ruN qgo-1.5.4_p20100322.orig/src/network/cyberoroconnection.cpp qgo-1.5.4_p20100322/src/network/cyberoroconnection.cpp
+--- qgo-1.5.4_p20100322.orig/src/network/cyberoroconnection.cpp	2010-02-26 19:43:41.000000000 +0100
++++ qgo-1.5.4_p20100322/src/network/cyberoroconnection.cpp	2017-10-02 20:33:32.661506058 +0200
+@@ -534,7 +534,7 @@
+ 	}
+ 	
+ 	// this is the initial packet
+-	char packet[8] = { 0x0a, 0xfa, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00 };
++	unsigned char packet[8] = { 0x0a, 0xfa, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00 };
+ 	if(write((const char *)packet, 8) < 0)
+ 		qWarning("*** failed sending init packet to reconnected host");
+ 	return 0;

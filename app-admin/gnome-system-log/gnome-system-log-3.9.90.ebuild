@@ -7,7 +7,7 @@ GCONF_DEBUG="no"
 inherit gnome2
 
 DESCRIPTION="System log viewer for GNOME"
-HOMEPAGE="https://live.gnome.org/GnomeUtils"
+HOMEPAGE="https://wiki.gnome.org/Apps/Attic/GnomeUtils"
 
 LICENSE="GPL-2+ CC-BY-SA-3.0"
 SLOT="0"

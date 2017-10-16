@@ -13,7 +13,7 @@ SLOT="0" # Note: Slotting Lazarus needs slotting fpc, see DEPEND.
 LICENSE="GPL-2 LGPL-2.1-with-linking-exception"
 KEYWORDS="amd64 ppc x86"
 DESCRIPTION="Lazarus IDE is a feature rich visual programming environment emulating Delphi"
-HOMEPAGE="https://www.lazarus.freepascal.org/"
+HOMEPAGE="https://www.lazarus-ide.org/"
 IUSE="minimal"
 SRC_URI="https://downloads.sourceforge.net/project/${PN}/Lazarus%20Zip%20_%20GZip/Lazarus%20${PV}/${PN}-${PV}-0.tar.gz"
 

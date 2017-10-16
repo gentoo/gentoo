@@ -5,8 +5,6 @@
     <email>lxqt@gentoo.org</email>
     <name>LXQt</name>
   </maintainer>
-  <longdescription lang="en">
-  </longdescription>
   <upstream>
     <remote-id type="sourceforge">pcmanfm</remote-id>
     <remote-id type="github">lxde/pcmanfm-qt</remote-id>

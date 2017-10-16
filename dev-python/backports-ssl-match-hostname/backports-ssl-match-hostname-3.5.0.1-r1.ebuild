@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
+# This is a backport from python3.5+
+# Do not add python3.5 or later support here, there's no need for it.
 PYTHON_COMPAT=( python{2_7,3_4} pypy )
 
 inherit distutils-r1

@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=2
@@ -7,7 +7,7 @@ inherit eutils toolchain-funcs
 PATCH_LEVEL=4
 
 DESCRIPTION="USB Video Class grabber"
-HOMEPAGE="http://packages.qa.debian.org/l/luvcview.html"
+HOMEPAGE="https://packages.qa.debian.org/l/luvcview.html"
 SRC_URI="mirror://debian/pool/main/l/${PN}/${PN}_${PV}.orig.tar.gz
 	mirror://debian/pool/main/l/${PN}/${PN}_${PV}-${PATCH_LEVEL}.diff.gz"
 

@@ -10,12 +10,12 @@
 		are not binary-redistributable according to upstream.</flag>
 	<flag name="custom-optimization">Build with user-specified compiler optimizations
 		(-Os, -O0, -O1, -O2, -O3) from CFLAGS (unsupported)</flag>
+	<flag name="eme-free">Disable EME (DRM plugin) cabability at build time</flag>
+	<flag name="gtk2">Use the cairo-gtk2 rendering engine</flag>
 	<flag name="gmp-autoupdate">Allow Gecko Media Plugins (binary blobs) to be automatically
 		downloaded and kept up-to-date in user profiles</flag>
-	<flag name="gtk2">Use the cairo-gtk2 rendering engine</flag>
 	<flag name="hwaccel">Force-enable hardware-accelerated rendering (Mozilla bug 594876)</flag>
 	<flag name="jemalloc">Enable or disable jemalloc</flag>
-	<flag name="nsplugin">Enable support for NPAPI plugins other than flash</flag>
 	<flag name="pgo">Add support for profile-guided optimization using gcc-4.5,
 		for faster binaries. This option will double the compile time.</flag>
 	<flag name="rust">Enable support for using rust compiler  (experimental)</flag>

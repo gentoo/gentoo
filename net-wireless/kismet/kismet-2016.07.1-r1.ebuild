@@ -9,15 +9,8 @@ MY_P=${P/\./-}
 MY_P=${MY_P/./-R}
 S=${WORKDIR}/${MY_P}
 
-if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="https://www.kismetwireless.net/${PN}.git"
-	SRC_URI=""
-	inherit git-2
-	KEYWORDS=""
-else
-	SRC_URI="http://www.kismetwireless.net/code/${MY_P}.tar.xz"
-	KEYWORDS="amd64 arm arm64 ~ppc x86"
-fi
+SRC_URI="http://www.kismetwireless.net/code/${MY_P}.tar.xz"
+KEYWORDS="amd64 arm arm64 ~ppc x86"
 
 DESCRIPTION="IEEE 802.11 wireless LAN sniffer"
 HOMEPAGE="http://www.kismetwireless.net/"

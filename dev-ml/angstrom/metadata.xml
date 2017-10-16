@@ -5,10 +5,6 @@
 	<email>ml@gentoo.org</email>
 	<name>Gentoo ML Project</name>
 </maintainer>
-  <use>
-	  <flag name="async">Enable <pkg>dev-ml/async</pkg> bindings for asynchronous API.</flag>
-	  <flag name="lwt">Enable <pkg>dev-ml/lwt</pkg> bindings for asynchronous API.</flag>
-  </use>
   <upstream>
 	  <remote-id type="github">inhabitedtype/angstrom</remote-id>
   </upstream>

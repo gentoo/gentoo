@@ -9,7 +9,8 @@ MY_PN="mozjs"
 MY_P="${MY_PN}-${PV/_/.}"
 DESCRIPTION="Stand-alone JavaScript C library"
 HOMEPAGE="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey"
-SRC_URI="https://people.mozilla.org/~sfink/${MY_P}.tar.bz2"
+SRC_URI="https://people.mozilla.org/~sfink/${MY_P}.tar.bz2
+	https://dev.gentoo.org/~axs/distfiles/${PN}-slot45-patches-01.tar.xz"
 
 LICENSE="NPL-1.1"
 SLOT="45"
@@ -35,14 +36,14 @@ pkg_setup(){
 }
 
 src_prepare() {
-	eapply "${FILESDIR}"/${PN}-38-jsapi-tests.patch \
-		"${FILESDIR}"/mozjs45-1266366.patch \
-		"${FILESDIR}"/mozjs38-pkg-config-version.patch \
-		"${FILESDIR}"/mozilla_configure_regexp_esr.patch \
-		"${FILESDIR}"/${PN}-${SLOT}-dont-symlink-non-objfiles.patch
+	eapply "${WORKDIR}"/sm45/${PN}-38-jsapi-tests.patch \
+		"${WORKDIR}"/sm45/mozjs45-1266366.patch \
+		"${WORKDIR}"/sm45/mozjs38-pkg-config-version.patch \
+		"${WORKDIR}"/sm45/mozilla_configure_regexp_esr.patch \
+		"${WORKDIR}"/sm45/${PN}-${SLOT}-dont-symlink-non-objfiles.patch
 
 	# apply relevant (modified) patches from gentoo's firefox-45 patchset
-	eapply "${FILESDIR}"/ff45
+	eapply "${WORKDIR}"/sm45/ff45
 
 	eapply_user
 

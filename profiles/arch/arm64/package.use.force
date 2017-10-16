@@ -1,11 +1,6 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Alexis Ballier <aballier@gentoo.org> (27 Jun 2017)
-# qtphonon requires gstreamer:0.10 which we would want to avoid
-# Forcing kde useflag on designer just switched the dep to media-libs/phonon
-dev-qt/designer:4 kde
-
 # Michał Górny <mgorny@gentoo.org> (24 Sep 2016)
 # Force the host target to avoid dependency hell
 sys-devel/clang llvm_targets_AArch64

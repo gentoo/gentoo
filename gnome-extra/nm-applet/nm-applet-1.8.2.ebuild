@@ -16,7 +16,7 @@ IUSE="+introspection gcr +modemmanager selinux teamd"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86"
 
 RDEPEND="
-	app-crypt/libsecret
+	>=app-crypt/libsecret-0.18
 	>=dev-libs/glib-2.32:2[dbus]
 	>=dev-libs/dbus-glib-0.88
 	>=sys-apps/dbus-1.4.1
@@ -31,7 +31,7 @@ RDEPEND="
 	introspection? ( >=dev-libs/gobject-introspection-0.9.6:= )
 	virtual/freedesktop-icon-theme
 	virtual/libgudev:=
-	gcr? ( >=app-crypt/gcr-3.14:= )
+	gcr? ( >=app-crypt/gcr-3.14:=[gtk] )
 	modemmanager? ( net-misc/modemmanager )
 	selinux? ( sys-libs/libselinux )
 	teamd? ( >=dev-libs/jansson-2.3 )

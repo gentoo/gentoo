@@ -5,7 +5,7 @@ EAPI=2
 
 inherit eutils multilib
 
-PATCHSET_VER="0"
+PATCHSET_VER="3"
 MY_P=mercury-srcdist-${PV}
 
 DESCRIPTION="Additional libraries and tools that are not part of the Mercury standard library"
@@ -25,12 +25,17 @@ RDEPEND="~dev-lang/mercury-${PV}
 	odbc? ( dev-db/unixODBC )
 	iodbc? ( !odbc? ( dev-db/libiodbc ) )
 	ncurses? ( sys-libs/ncurses )
-	opengl? ( virtual/opengl )
+	opengl? (
+		virtual/opengl
+		virtual/glu
+	)
 	tcl? ( tk? (
 			dev-lang/tcl:0
 			dev-lang/tk:0
 			x11-libs/libX11
-			x11-libs/libXmu ) )"
+			x11-libs/libXmu
+		)
+	)"
 
 DEPEND="${RDEPEND}"
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # uses webapp.eclass to create directories with right permissions
@@ -41,7 +41,7 @@ pkg_setup() {
 
 	# USE=nls has no real meaning if LINGUAS isn't set
 	if use nls && [[ -z "${LINGUAS}" ]]; then
-		ewarn "you must set LINGUAS in /etc/make.conf"
+		ewarn "you must set LINGUAS in /etc/portage/make.conf"
 		ewarn "if you want to USE=nls"
 		die "please either set LINGUAS or do not use nls"
 	fi
@@ -114,7 +114,7 @@ pkg_postinst() {
 		ewarn "Due to the limitations of this package, it was built"
 		ewarn "only with ${LINGUAS:0:2} support. If this is not what"
 		ewarn "you intended, please place the language you desire"
-		ewarn "_first_ in the list of LINGUAS in /etc/make.conf"
+		ewarn "_first_ in the list of LINGUAS in /etc/portage/make.conf"
 		ewarn
 	fi
 

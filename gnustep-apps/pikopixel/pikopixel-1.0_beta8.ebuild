@@ -9,7 +9,7 @@ DESCRIPTION="a free application for drawing & editing pixel-art images"
 HOMEPAGE="http://twilightedge.com/mac/pikopixel/"
 # Web hosting wants a proper User-Agent
 #SRC_URI="http://twilightedge.com/downloads/${MY_P}.tar.gz"
-SRC_URI="http://dev.gentoo.org/~voyageur/distfiles/${MY_P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~voyageur/distfiles/${MY_P}.tar.gz"
 
 LICENSE="AGPL-3+"
 SLOT="0"

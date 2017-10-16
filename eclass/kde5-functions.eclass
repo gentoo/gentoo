@@ -33,18 +33,11 @@ export KDE_BUILD_TYPE
 case ${CATEGORY} in
 	kde-frameworks)
 		[[ ${KDE_BUILD_TYPE} = live ]] && : ${FRAMEWORKS_MINIMAL:=9999}
-		[[ ${KDE_BUILD_TYPE} = live || $(get_version_component_range 2) -ge 37 ]] \
-			&& : ${QT_MINIMAL:=5.7.1}
 		;;
 	kde-plasma)
-		: ${QT_MINIMAL:=5.7.1}
+		[[ ${PV} = 5.11* ]] && : ${FRAMEWORKS_MINIMAL:=5.38.0}
 		if [[ ${KDE_BUILD_TYPE} = live ]]; then
 			: ${FRAMEWORKS_MINIMAL:=9999}
-		fi
-		;;
-	kde-apps)
-		if [[ ${KDE_BUILD_TYPE} = live ]]; then
-			: ${QT_MINIMAL:=5.7.1}
 		fi
 		;;
 esac
@@ -52,17 +45,17 @@ esac
 # @ECLASS-VARIABLE: QT_MINIMAL
 # @DESCRIPTION:
 # Minimal Qt version to require for the package.
-: ${QT_MINIMAL:=5.6.1}
+: ${QT_MINIMAL:=5.7.1}
 
 # @ECLASS-VARIABLE: FRAMEWORKS_MINIMAL
 # @DESCRIPTION:
 # Minimal Frameworks version to require for the package.
-: ${FRAMEWORKS_MINIMAL:=5.34.0}
+: ${FRAMEWORKS_MINIMAL:=5.37.0}
 
 # @ECLASS-VARIABLE: PLASMA_MINIMAL
 # @DESCRIPTION:
 # Minimal Plasma version to require for the package.
-: ${PLASMA_MINIMAL:=5.9.5}
+: ${PLASMA_MINIMAL:=5.10.5}
 
 # @ECLASS-VARIABLE: KDE_APPS_MINIMAL
 # @DESCRIPTION:
@@ -80,8 +73,6 @@ esac
 # kdevelop ebuild.
 if [[ ${KMNAME-${PN}} = kdevelop ]]; then
 	KDEBASE=kdevelop
-elif [[ ${KMNAME} = kde-l10n || ${PN} = kde-l10n ]]; then
-	KDEBASE=kdel10n
 fi
 
 debug-print "${ECLASS}: ${KDEBASE} ebuild recognized"

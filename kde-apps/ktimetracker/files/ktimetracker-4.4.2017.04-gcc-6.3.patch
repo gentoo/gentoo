@@ -1,0 +1,11 @@
+--- a/ktimetracker/taskview.cpp
++++ b/ktimetracker/taskview.cpp
+@@ -840,7 +840,7 @@
+ 
+ void TaskView::newTask( const QString &caption, Task *parent )
+ {
+-    EditTaskDialog *dialog = new EditTaskDialog( this, caption, false );
++    EditTaskDialog *dialog = new EditTaskDialog( this, caption, NULL );
+     long total, totalDiff, session, sessionDiff;
+     DesktopList desktopList;
+ 

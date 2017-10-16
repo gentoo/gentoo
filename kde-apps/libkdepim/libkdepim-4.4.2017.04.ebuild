@@ -4,6 +4,7 @@
 EAPI=6
 
 KMNAME="kdepim"
+QT3SUPPORT_REQUIRED="true"
 inherit kde4-meta
 
 DESCRIPTION="Common library for KDE PIM apps (noakonadi branch)"

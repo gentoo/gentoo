@@ -1,5 +1,5 @@
---- configure.ac
-+++ configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -30,6 +30,7 @@
  
  # Checks for libraries.
@@ -8,8 +8,8 @@
  
  # Checks for header files.
  AC_HEADER_STDC
---- gamexml.cc
-+++ gamexml.cc
+--- a/gamexml.cc
++++ b/gamexml.cc
 @@ -22,7 +22,7 @@
  
  #include "game.h"
@@ -19,8 +19,8 @@
  
  #include <string>
  #include <iostream>
---- Makefile.am
-+++ Makefile.am
+--- a/Makefile.am
++++ b/Makefile.am
 @@ -18,10 +18,7 @@
  	siglock.cc \
  	getopt.c \

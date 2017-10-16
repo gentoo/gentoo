@@ -25,7 +25,10 @@ RDEPEND="
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	>=dev-python/pycairo-1.4[${PYTHON_USEDEP}]
-	dev-libs/protobuf[python,${PYTHON_USEDEP}]
+	|| (
+		dev-python/protobuf-python[${PYTHON_USEDEP}]
+		dev-libs/protobuf[python,${PYTHON_USEDEP}]
+	)
 	>=dev-libs/json-c-0.11:=
 	media-libs/lcms:2
 	>=media-libs/libmypaint-1.3.0

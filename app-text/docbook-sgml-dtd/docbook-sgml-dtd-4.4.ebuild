@@ -5,7 +5,7 @@ inherit sgml-catalog eutils
 
 MY_P="docbook-${PV}"
 DESCRIPTION="Docbook SGML DTD 4.4"
-HOMEPAGE="http://www.docbook.org/sgml/"
+HOMEPAGE="http://docbook.org/sgml/"
 SRC_URI="http://www.docbook.org/sgml/${PV}/${MY_P}.zip"
 
 LICENSE="docbook"

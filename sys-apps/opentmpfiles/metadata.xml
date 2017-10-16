@@ -9,8 +9,6 @@
 		<email>openrc@gentoo.org</email>
 		<name>Gentoo OpenRC Team</name>
 	</maintainer>
-	<longdescription lang="en">
-	</longdescription>
 	<upstream>
 		<remote-id type="github">openrc/opentmpfiles</remote-id>
 	</upstream>

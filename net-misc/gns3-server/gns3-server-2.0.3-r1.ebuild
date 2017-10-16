@@ -13,7 +13,7 @@ SRC_URI="https://github.com/GNS3/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 RESTRICT="test"
 
 RDEPEND=">=app-emulation/dynamips-0.2.12

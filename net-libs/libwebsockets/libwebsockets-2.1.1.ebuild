@@ -11,7 +11,7 @@ SRC_URI="https://github.com/warmcat/libwebsockets/archive/v${PV}.tar.gz -> ${P}.
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 arm x86"
 IUSE="+http2 +ssl access-log cgi client generic-sessions http-proxy ipv6 lejp libev libressl libuv server-status smtp sqlite3 static-libs"
 
 REQUIRED_USE="
@@ -36,10 +36,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-lang/perl
 "
-src_prepare() {
-	epatch "${FILESDIR}/${P}-x86-build.patch"
-	default
-}
+PATCHES=( "${FILESDIR}/${P}-x86-build.patch" )
 
 src_configure() {
 	local mycmakeargs=(

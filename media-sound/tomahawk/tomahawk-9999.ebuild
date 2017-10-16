@@ -34,7 +34,7 @@ CDEPEND="
 	dev-cpp/lucene++
 	dev-cpp/sparsehash
 	dev-libs/boost:=
-	dev-libs/qtkeychain:=[qt5]
+	dev-libs/qtkeychain:=[qt5(+)]
 	>=dev-libs/quazip-0.7.2[qt5]
 	media-libs/liblastfm[qt5]
 	>=media-libs/taglib-1.8.0
@@ -42,7 +42,7 @@ CDEPEND="
 	>=net-libs/gnutls-3.2:=
 	x11-libs/libX11
 	hatchet? ( dev-cpp/websocketpp )
-	telepathy? ( net-libs/telepathy-qt[qt5] )
+	telepathy? ( net-libs/telepathy-qt[qt5(+)] )
 	xmpp? ( net-libs/jreen[qt5] )
 "
 DEPEND="${CDEPEND}

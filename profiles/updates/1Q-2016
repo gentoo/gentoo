@@ -6,7 +6,6 @@ move media-video/nvenc media-video/nvidia_video_sdk
 move x11-apps/ccsm x11-misc/ccsm
 move x11-apps/simple-ccsm x11-misc/simple-ccsm
 move dev-python/socksipy dev-python/PySocks
-move x11-apps/ardesia x11-misc/ardesia
 slotmove <sci-libs/libint-2 0 1
 slotmove >=sci-libs/libint-2 0 2
 move dev-ml/pa_test dev-ml/ppx_assert
@@ -30,7 +29,7 @@ move dev-perl/net-ssh-perl dev-perl/Net-SSH-Perl
 move dev-perl/DateManip dev-perl/Date-Manip
 move dev-perl/wxperl dev-perl/Wx
 slotmove sys-devel/binutils 0 2.25.1
-move sys-fs/sshfs-fuse sys-fs/sshfs
+move sys-fs/sshfs-fuse net-fs/sshfs
 move dev-perl/perl-tk dev-perl/Tk
 move dev-perl/mogilefs-server dev-perl/MogileFS-Server
 move dev-perl/ogg-vorbis-header dev-perl/Ogg-Vorbis-Header

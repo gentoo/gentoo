@@ -7,8 +7,8 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Widgets for graphing data in real-time using PyGTK, and UI components for controlling the graphs"
-HOMEPAGE="http://navi.cx/svn/misc/trunk/rtgraph/web/index.html"
-SRC_URI="http://navi.picogui.org/releases/${P}.tar.gz"
+HOMEPAGE="http://rtgraph.sourceforge.net/"
+SRC_URI="mirror://sourceforge/rtgraph/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

@@ -1,0 +1,60 @@
+https://github.com/fcitx/fcitx/issues/342
+https://github.com/fcitx/fcitx/commit/de4bd3d535736afe061d9ac63fcc897e3ab3237e
+
+--- /cmake/fcitx-cmake-helper.sh
++++ /cmake/fcitx-cmake-helper.sh
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/usr/bin/env bash
+ #   Copyright (C) 2012~2013 by Yichao Yu
+ #   yyc1992@gmail.com
+ #
+--- /cmake/fcitx-merge-config.sh
++++ /cmake/fcitx-merge-config.sh
+@@ -1,4 +1,4 @@
+-#!/bin/sh
++#!/usr/bin/env bash
+ #   Copyright (C) 2012~2012 by Yichao Yu
+ #   yyc1992@gmail.com
+ #
+--- /data/icon/data/gen.sh
++++ /data/icon/data/gen.sh
+@@ -1,4 +1,4 @@
+-#!/bin/sh
++#!/usr/bin/env bash
+ 
+ a="$(find scabable/status/ -type f -name \*.svg)"
+ echo $a
+--- /data/script/fcitx-configtool.sh
++++ /data/script/fcitx-configtool.sh
+@@ -28,7 +28,7 @@
+     }
+ fi
+ 
+-if type gettext > /dev/null 2>&1; then
++if which gettext > /dev/null 2>&1; then
+     _() {
+         gettext "$@"
+     }
+--- /src/lib/fcitx-utils/gen-hotkey.sh
++++ /src/lib/fcitx-utils/gen-hotkey.sh
+@@ -1,7 +1,6 @@
+ #!/bin/sh
+ 
+-function download_file()
+-{
++download_file() {
+     if [ "x$3" != "xf" ]; then
+         if [ -f $1 ]; then
+             return
+--- /src/ui/classic/fcitx-skin-installer.sh
++++ /src/ui/classic/fcitx-skin-installer.sh
+@@ -25,7 +25,7 @@
+     }
+ fi
+ 
+-if type gettext > /dev/null 2>&1; then
++if which gettext > /dev/null 2>&1; then
+     _() {
+         gettext "$@"
+     }

@@ -1,0 +1,21 @@
+From: Dominik Kriegner <dominik.kriegner@gmail.com>
+Date: Tue, 29 Nov 2016 09:56:00 +0000
+Subject: [PATCH] fix build issue
+Patch's original author is Askhat Bakarov on arch
+https://aur.archlinux.org/cgit/aur.git/commit/?h=referencer&id=961f2b5e4b286f27f610e5267465c63021b8a50f
+
+Project-Bug-URL: https://bugs.launchpad.net/referencer/+bug/1645639
+Gentoo-Bug-URL: https://bugs.gentoo.org/show_bug.cgi?id=601174
+merged upstream: http://bazaar.launchpad.net/~referencer-devs/referencer/trunk/revision/939
+
+--- a/src/Document.C	2014-01-27 03:43:00.000000000 +0700
++++ b/src/Document.C	2016-11-03 16:25:00.698676538 +0700
+@@ -297,7 +297,7 @@
+ 
+ 			lib_path = lib_path->get_parent();
+ 			up_dir_level += "../";
+-			if (lib_path == 0) {
++			if (!lib_path) {
+ 				doc_is_relative_to_library = false;
+ 				break;
+ 			}

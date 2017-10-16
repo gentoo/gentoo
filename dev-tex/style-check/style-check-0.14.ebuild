@@ -1,10 +1,10 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
 
-DESCRIPTION="Parses latex-formatted text in search of forbidden phrases"
-HOMEPAGE="http://www.cs.umd.edu/~nspring/software/style-check-readme.html"
+DESCRIPTION="Parses LaTeX-formatted text in search of forbidden phrases"
+HOMEPAGE="http://www.cs.umd.edu/~nspring/software/style-check-readme.html https://github.com/nspring/style-check"
 SRC_URI="http://www.cs.umd.edu/~nspring/software/${P}.tar.gz"
 
 LICENSE="GPL-2"

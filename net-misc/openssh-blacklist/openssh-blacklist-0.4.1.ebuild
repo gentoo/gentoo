@@ -1,10 +1,10 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit toolchain-funcs
 
 DESCRIPTION="Source files of vuln Debian keys"
-HOMEPAGE="http://packages.qa.debian.org/o/openssh-blacklist.html"
+HOMEPAGE="https://packages.qa.debian.org/o/openssh-blacklist.html"
 SRC_URI="mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${PV}.tar.gz"
 
 LICENSE="GPL-3"

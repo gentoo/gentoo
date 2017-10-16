@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,6 +17,7 @@ IUSE=""
 # It is ancient and upstream is dead. Consider using ocaml-dns instead.
 RDEPEND="
 	>=dev-lang/ocaml-3.10.2:=[ocamlopt]
+	!dev-ml/dns
 	!dev-ml/ocaml-dns
 "
 DEPEND="${RDEPEND}"

@@ -1,10 +1,10 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit eutils libtool autotools multilib
 
 DESCRIPTION="Libtabe provides bimsphone support for xcin-2.5+"
-HOMEPAGE="http://packages.qa.debian.org/libt/libtabe.html"
+HOMEPAGE="https://packages.qa.debian.org/libt/libtabe.html"
 SRC_URI="mirror://debian/pool/main/libt/libtabe/${P/-/_}.orig.tar.gz
 	mirror://debian/pool/main/libt/libtabe/${P/-/_}-1.1.diff.gz"
 

@@ -61,5 +61,5 @@ src_install() {
 	echo "LDPATH=/usr/$(get_libdir)/opencollada" > "${T}"/99${PN} || die "echo failed"
 	doenvd "${T}"/99${PN}
 
-	dobin ${BUILD_DIR}/bin/OpenCOLLADAValidator
+	dobin "${BUILD_DIR}/bin/OpenCOLLADAValidator"
 }

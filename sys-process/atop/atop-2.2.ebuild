@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -9,8 +9,8 @@ MY_PV=${PV//_p/-}
 MY_P=${PN}-${MY_PV}-3
 
 DESCRIPTION="Resource-specific view of processes"
-HOMEPAGE="http://www.atoptool.nl/"
-SRC_URI="http://www.atoptool.nl/download/${MY_P}.tar.gz"
+HOMEPAGE="https://www.atoptool.nl/"
+SRC_URI="https://www.atoptool.nl/download/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -1,0 +1,33 @@
+https://sqlite.org/src/info/42f0777555675875
+
+--- ext/misc/csv.c
++++ ext/misc/csv.c
+@@ -78,7 +78,7 @@
+   int nAlloc;            /* Space allocated for z[] */
+   int nLine;             /* Current line number */
+   int bNotFirst;         /* True if prior text has been seen */
+-  char cTerm;            /* Character that terminated the most recent field */
++  int cTerm;             /* Character that terminated the most recent field */
+   size_t iIn;            /* Next unread character in the input buffer */
+   size_t nIn;            /* Number of characters in the input buffer */
+   char *zIn;             /* The input buffer */
+@@ -166,7 +166,7 @@
+     if( p->in!=0 ) return csv_getc_refill(p);
+     return EOF;
+   }
+-  return p->zIn[p->iIn++];
++  return ((unsigned char*)p->zIn)[p->iIn++];
+ }
+ 
+ /* Increase the size of p->z and append character c to the end. 
+--- test/releasetest.tcl
++++ test/releasetest.tcl
+@@ -114,7 +114,7 @@
+   }
+   "Debug-One" {
+     --disable-shared
+-    -O2
++    -O2 -funsigned-char
+     -DSQLITE_DEBUG=1
+     -DSQLITE_MEMDEBUG=1
+     -DSQLITE_MUTEX_NOOP=1

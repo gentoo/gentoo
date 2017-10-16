@@ -11,7 +11,7 @@ DESCRIPTION="Visual database applications creator"
 HOMEPAGE="https://www.kde.org/applications/office/kexi/ http://www.kexi-project.org/"
 [[ ${KDE_BUILD_TYPE} != live ]] && SRC_URI="mirror://kde/stable/${PN}/src/${P}.tar.xz"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="marble mdb mysql postgres sqlite webkit"
 
 COMMON_DEPEND="
@@ -37,7 +37,7 @@ COMMON_DEPEND="
 	$(add_qt_dep qtprintsupport)
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
-	dev-db/kdb[mysql?,postgres?,sqlite?]
+	>=dev-db/kdb-3.0.2[mysql?,postgres?,sqlite?]
 	dev-libs/kproperty
 	dev-libs/kreport
 	marble? ( $(add_kdeapps_dep marble) )

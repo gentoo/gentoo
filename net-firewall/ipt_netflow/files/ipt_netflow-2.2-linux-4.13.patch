@@ -1,0 +1,63 @@
+commit 53a556cb4a705f4eae2bcb49552b6427b231378a
+Author: ABC <abc@telekom.ru>
+Date:   Mon Aug 14 22:55:25 2017 +0300
+
+    Compatibility with kernel 4.13.
+    
+    Offset patch torvalds/linux@14afee4b6092fde451ee17604e5f5c89da33e71e
+
+diff --git a/compat.h b/compat.h
+index 061eb57..275ff58 100644
+--- a/compat.h
++++ b/compat.h
+@@ -636,4 +636,10 @@ static inline unsigned int xt_hooknum(const struct xt_action_param *par)
+ # define SK_CAN_REUSE   1
+ #endif
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,13,0)
++# define compat_refcount_read atomic_read
++#else
++# define compat_refcount_read refcount_read
++#endif
++
+ #endif /* COMPAT_NETFLOW_H */
+diff --git a/ipt_NETFLOW.c b/ipt_NETFLOW.c
+index 494ea74..9365325 100644
+--- a/ipt_NETFLOW.c
++++ b/ipt_NETFLOW.c
+@@ -622,7 +622,7 @@ static int snmp_seq_show(struct seq_file *seq, void *v)
+ 
+ 			seq_printf(seq, " %u %u %u\n",
+ 			    sk->sk_sndbuf,
+-			    atomic_read(&sk->sk_wmem_alloc),
++			    compat_refcount_read(&sk->sk_wmem_alloc),
+ 			    wmem_peak);
+ 		} else
+ 			seq_printf(seq, " 0 0 %u\n", wmem_peak);
+@@ -864,7 +864,7 @@ static int nf_seq_show(struct seq_file *seq, void *v)
+ 			seq_printf(seq, ", sndbuf %u, filled %u, peak %u;"
+ 			    " err: sndbuf reached %u, connect %u, cberr %u, other %u\n",
+ 			    sk->sk_sndbuf,
+-			    atomic_read(&sk->sk_wmem_alloc),
++			    compat_refcount_read(&sk->sk_wmem_alloc),
+ 			    atomic_read(&usock->wmem_peak),
+ 			    usock->err_full,
+ 			    usock->err_connect,
+@@ -2031,7 +2031,7 @@ static void netflow_sendmsg(void *buffer, const int len)
+ 			printk(KERN_INFO "netflow_sendmsg: sendmsg(%d, %d) [%u %u]\n",
+ 			       snum,
+ 			       len,
+-			       atomic_read(&usock->sock->sk->sk_wmem_alloc),
++			       compat_refcount_read(&usock->sock->sk->sk_wmem_alloc),
+ 			       usock->sock->sk->sk_sndbuf);
+ 		ret = kernel_sendmsg(usock->sock, &msg, &iov, 1, (size_t)len);
+ 		if (ret < 0) {
+@@ -2054,7 +2054,7 @@ static void netflow_sendmsg(void *buffer, const int len)
+ 			printk(KERN_ERR "ipt_NETFLOW: sendmsg[%d] error %d: data loss %llu pkt, %llu bytes%s\n",
+ 			       snum, ret, pdu_packets, pdu_traf, suggestion);
+ 		} else {
+-			unsigned int wmem = atomic_read(&usock->sock->sk->sk_wmem_alloc);
++			unsigned int wmem = compat_refcount_read(&usock->sock->sk->sk_wmem_alloc);
+ 			if (wmem > atomic_read(&usock->wmem_peak))
+ 				atomic_set(&usock->wmem_peak, wmem);
+ 			NETFLOW_STAT_INC(exported_pkt);

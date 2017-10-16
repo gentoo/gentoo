@@ -6,14 +6,6 @@
 # NOTE: The minimum value allowed is 49152
 GERBERA_PORT=49152
 
-# Run Gerbera as this user.
-# NOTE: For security reasons do not run Gerbera as root.
-GERBERA_USER="gerbera"
-
-# Run Gerbera as this group.
-# NOTE: For security reasons do not run Gerbera as root.
-GERBERA_GROUP="gerbera"
-
 # Path to Gerbera config file.
 GERBERA_CONFIG="/etc/gerbera/config.xml"
 
@@ -21,5 +13,8 @@ GERBERA_CONFIG="/etc/gerbera/config.xml"
 GERBERA_LOGFILE="/var/log/gerbera.log"
 
 # Other options you want to pass to Gerbera.
-# Add "--interface ${GERBERA_INTERFACE}" to bind to a named interface.
+# Add "--interface eth0" to bind to a named interface.
 GERBERA_OPTIONS=""
+
+# Uncomment if you are running Gerbera against a local MySQL
+# rc_need="mysql"

@@ -53,8 +53,8 @@ src_configure() {
 src_install() {
 	emake DESTDIR="${D}" install
 
-	mv "${D}usr/share/doc/xapian-core" "${D}usr/share/doc/${PF}" || die
-	use doc || rm -rf "${D}usr/share/doc/${PF}"
+	mv "${ED}usr/share/doc/xapian-core" "${ED}usr/share/doc/${PF}" || die
+	use doc || rm -rf "${ED}usr/share/doc/${PF}"
 
 	dodoc AUTHORS HACKING PLATFORMS README NEWS
 

@@ -23,5 +23,6 @@ RDEPEND="
 	dev-ros/diagnostic_updater
 	dev-ros/laser_proc
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}"

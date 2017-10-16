@@ -51,6 +51,9 @@ DEPEND="${RDEPEND}
 	)
 "
 
+# Tests don't work in 2.0.5. Recheck in later versions. See Gentoo bug 630114.
+RESTRICT=test
+
 PATCHES=( "${FILESDIR}/${P}-add-missing-comma.patch" )
 
 S="${WORKDIR}/${PF}"

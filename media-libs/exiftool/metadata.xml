@@ -9,15 +9,16 @@
 		<email>perl@gentoo.org</email>
 		<name>Gentoo Perl Project</name>
 	</maintainer>
-	<longdescription>ExifTool is a platform-independent Perl library plus a
-      command-line application for reading, writing and editing meta
-      information in image, audio and video files. ExifTool supports
-      many different types of metadata including EXIF, GPS, IPTC, XMP,
-      JFIF, GeoTIFF, ICC Profile, Photoshop IRB, FlashPix, AFCP and
-      ID3, as well as the maker notes of many digital cameras by
-      Canon, Casio, FujiFilm, HP, JVC/Victor, Kodak, Leaf,
-      Minolta/Konica- Minolta, Nikon, Olympus/Epson, Panasonic/Leica,
-      Pentax/Asahi, Ricoh, Sanyo, Sigma/Foveon and Sony.</longdescription>
+	<longdescription>
+		ExifTool is a platform-independent Perl library plus a command-line
+		application for reading, writing and editing meta information in image,
+		audio and video files. ExifTool supports many different types of
+		metadata including EXIF, GPS, IPTC, XMP, JFIF, GeoTIFF, ICC Profile,
+		Photoshop IRB, FlashPix, AFCP and ID3, as well as the maker notes of
+		many digital cameras by Canon, Casio, FujiFilm, HP, JVC/Victor, Kodak,
+		Leaf, Minolta/Konica- Minolta, Nikon, Olympus/Epson, Panasonic/Leica,
+		Pentax/Asahi, Ricoh, Sanyo, Sigma/Foveon and Sony.
+	</longdescription>
 	<upstream>
 		<remote-id type="cpan">Image-ExifTool</remote-id>
 		<remote-id type="cpan-module">File::RandomAccess</remote-id>

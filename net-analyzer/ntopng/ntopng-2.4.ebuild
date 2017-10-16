@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -24,7 +24,8 @@ DEPEND="dev-db/sqlite:3
 	net-analyzer/rrdtool
 	net-libs/libpcap
 	net-misc/curl
-	virtual/libmysqlclient"
+	virtual/libmysqlclient
+	!net-libs/nDPI"
 RDEPEND="${DEPEND}
 	dev-db/redis"
 

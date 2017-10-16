@@ -17,6 +17,19 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (30 Sep 2017)
+# Required dependeny is not stable
+sci-libs/gdal oracle
+
+# NP-Hardass <NP-Hardass@gentoo.org> (27 Sep 2017)
+# patchset variants are not stable
+virtual/wine d3d9 staging
+
+# Tim Harder <radhermit@gentoo.org> (11 Sep 2017)
+# Pulls in dev-ruby/asciidoctor which has too large of a ruby testing
+# dep tree to be stabilized at this time.
+>=net-irc/weechat-1.7 doc
+
 # Andreas Sturmlechner <asturm@gentoo.org> (01 Mar 2017)
 # Requires not yet stabilised dev-db/oracle-instantclient.
 sci-geosciences/qgis oracle

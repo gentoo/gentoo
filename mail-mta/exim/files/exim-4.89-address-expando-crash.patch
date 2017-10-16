@@ -1,0 +1,85 @@
+ignoring parts which don't match due to repo reorg post release
+
+From 1b7cf216d933b395dee691f05becca4dd44b26f7 Mon Sep 17 00:00:00 2001
+From: "Heiko Schlittermann (HS12-RIPE)" <hs@schlittermann.de>
+Date: Wed, 4 Oct 2017 22:25:45 +0200
+Subject: [PATCH] Check for proper output separator in expanding
+ ${addresses:STRING}    (Closes 2171)
+
+Better yet would be to force setting the output separator literally,
+and not after expansion of the STRING. But this would be an incompatible
+change.
+---
+ doc/doc-docbook/spec.xfpt    | 10 +++++++++-
+ src/src/expand.c             |  8 +++++++-
+ test/scripts/0000-Basic/0002 |  1 +
+ test/stdout/0002             |  1 +
+ 4 files changed, 18 insertions(+), 2 deletions(-)
+
+ignored - diff --git a/doc/doc-docbook/spec.xfpt b/doc/doc-docbook/spec.xfpt
+ignored - index 4a8e1d0..c140945 100644
+ignored - --- a/doc/doc-docbook/spec.xfpt
+ignored - +++ b/doc/doc-docbook/spec.xfpt
+ignored - @@ -10118,7 +10118,15 @@ character. For example:
+ignored -  .code
+ignored -  ${addresses:>& Chief <ceo@up.stairs>, sec@base.ment (dogsbody)}
+ignored -  .endd
+ignored - -expands to &`ceo@up.stairs&&sec@base.ment`&. Compare the &*address*& (singular)
+ignored - +expands to &`ceo@up.stairs&&sec@base.ment`&. The string is expanded
+ignored - +first, so if the expanded string starts with >, it may change the output
+ignored - +separator unintentionally. This can be avoided by setting the output
+ignored - +separator explicitly:
+ignored - +.code
+ignored - +${addresses:>:$h_from:}
+ignored - +.endd
+ignored - +
+ignored - +Compare the &*address*& (singular)
+ignored -  expansion item, which extracts the working address from a single RFC2822
+ignored -  address. See the &*filter*&, &*map*&, and &*reduce*& items for ways of
+ignored -  processing lists.
+diff --git a/src/src/expand.c b/src/src/expand.c
+index 353b8ea..67b3d65 100644
+--- a/src/src/expand.c
++++ b/src/src/expand.c
+@@ -6797,7 +6797,13 @@ while (*s != 0)
+         int start, end, domain;  /* Not really used */
+ 
+         while (isspace(*sub)) sub++;
+-        if (*sub == '>') { *outsep = *++sub; ++sub; }
++        if (*sub == '>')
++          if (*outsep = *++sub) ++sub;
++          else {
++            expand_string_message = string_sprintf("output separator "
++              "missing in expanding ${addresses:%s}", --sub);
++            goto EXPAND_FAILED;
++          }
+         parse_allow_group = TRUE;
+ 
+         for (;;)
+ignored - diff --git a/test/scripts/0000-Basic/0002 b/test/scripts/0000-Basic/0002
+ignored - index cb0bb18..dd9cea2 100644
+ignored - --- a/test/scripts/0000-Basic/0002
+ignored - +++ b/test/scripts/0000-Basic/0002
+ignored - @@ -133,6 +133,7 @@ addresses: ${addresses:>+ Exim Person <local-part@dom.ain> (that's me),\
+ignored -  addresses: ${addresses:Exim Person <local-part@dom.ain> (that's me), \
+ignored -             xyz@abc, nullgroupname:;, group: p@q, r@s; }
+ignored -  addresses: ${addresses:local-part@dom.ain <local-part@dom.ain>}
+ignored - +addresses: ${addresses:>}
+ignored -  
+ignored -  escape:     ${escape:B7·F2ò}
+ignored -  excape8bit: ${escape8bit:undisturbed text\ttab\nnewline\ttab\\backslash \176tilde\177DEL\200\x81.}
+ignored - diff --git a/test/stdout/0002 b/test/stdout/0002
+ignored - index 5593f06..1422289 100644
+ignored - --- a/test/stdout/0002
+ignored - +++ b/test/stdout/0002
+ignored - @@ -123,6 +123,7 @@
+ignored -  > addresses: local-part@dom.ain+xyz@abc
+ignored -  > addresses: local-part@dom.ain:xyz@abc:p@q:r@s
+ignored -  > addresses: 
+ignored - +> Failed: output separator missing in expanding ${addresses:>}
+ignored -  > 
+ignored -  > escape:     B7\267F2\362
+ignored -  > excape8bit: undisturbed text	tab
+-- 
+1.9.1
+

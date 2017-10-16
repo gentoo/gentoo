@@ -1,0 +1,436 @@
+From bb4a3d41530619970d5c3c30be7e9424dd169de5 Mon Sep 17 00:00:00 2001
+From: Nicolas Bock <nicolasbock@gmail.com>
+Date: Tue, 8 Aug 2017 13:36:20 +0200
+Subject: [PATCH] Rename mutt to neomutt
+
+---
+ Makefile.am         | 30 ++++++++++++++++--------------
+ configure.ac        |  8 ++++----
+ contrib/gpg.rc      |  8 ++++----
+ contrib/pgp2.rc     |  4 ++--
+ contrib/pgp5.rc     |  8 ++++----
+ contrib/pgp6.rc     |  4 ++--
+ doc/Makefile.am     | 24 +++++++++++-------------
+ doc/PGP-Notes.txt   |  8 ++++----
+ doc/mutt.man        |  2 +-
+ doc/pgpewrap.1      | 12 ++++++------
+ doc/pgpring.1       | 10 +++++-----
+ hcache/hcachever.sh |  2 +-
+ 12 files changed, 60 insertions(+), 60 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 5b6494e8..d34d3e4c 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -3,7 +3,7 @@
+ include $(top_srcdir)/flymake.am
+ 
+ AUTOMAKE_OPTIONS = 1.6 foreign
+-EXTRA_PROGRAMS = mutt_md5 pgpewrap pgpring
++EXTRA_PROGRAMS = neomutt_md5 neomutt_pgpewrap neomutt_pgpring
+ 
+ # Test the .tar file by building everything
+ AM_DISTCHECK_CONFIGURE_FLAGS = \
+@@ -42,9 +42,9 @@ distdir = neo$(PACKAGE)-$(VERSION)
+ 
+ BUILT_SOURCES = conststrings.c git_ver.h keymap_alldefs.h keymap_defs.h
+ 
+-bin_PROGRAMS = mutt $(PGPAUX_TARGET)
++bin_PROGRAMS = neomutt $(PGPAUX_TARGET)
+ 
+-mutt_SOURCES = account.c addrbook.c address.h alias.c alias.h ascii.c attach.c \
++neomutt_SOURCES = account.c addrbook.c address.h alias.c alias.h ascii.c attach.c \
+ 	base64.c bcache.c body.h browser.c buffer.c buffy.c charset.c color.c \
+ 	commands.c complete.c compose.c compress.c content.h context.h copy.c \
+ 	curs_lib.c curs_main.c date.c edit.c editmsg.c enter.c enter_state.h \
+@@ -59,15 +59,15 @@ mutt_SOURCES = account.c addrbook.c address.h alias.c alias.h ascii.c attach.c \
+ 	smtp.c sort.c state.h status.c system.c thread.c thread.h url.c \
+ 	version.c where.h
+ 
+-nodist_mutt_SOURCES = $(BUILT_SOURCES)
++nodist_neomutt_SOURCES = $(BUILT_SOURCES)
+ 
+ LIBIMAP = -Limap -limap
+ LIBIMAPDEPS = $(top_srcdir)/imap/imap.h imap/libimap.a
+ 
+-mutt_LDADD = $(MUTT_LIB_OBJECTS) $(LIBOBJS) $(HCACHE_LIBS) $(NCRYPT_LIBS) \
++neomutt_LDADD = $(MUTT_LIB_OBJECTS) $(LIBOBJS) $(HCACHE_LIBS) $(NCRYPT_LIBS) \
+ 	$(LIBIMAP) $(LIBICONV) $(GPGME_LIBS) $(INTLLIBS)
+ 
+-mutt_DEPENDENCIES = $(MUTT_LIB_OBJECTS) $(LIBOBJS) $(LIBIMAPDEPS) \
++neomutt_DEPENDENCIES = $(MUTT_LIB_OBJECTS) $(LIBOBJS) $(LIBIMAPDEPS) \
+ 	$(HCACHE_DEPS) $(NCRYPT_DEPS) $(INTLDEPS)
+ 
+ DEFS=-DPKGDATADIR=\"$(pkgdatadir)\" -DSYSCONFDIR=\"$(sysconfdir)\" \
+@@ -75,7 +75,7 @@ DEFS=-DPKGDATADIR=\"$(pkgdatadir)\" -DSYSCONFDIR=\"$(sysconfdir)\" \
+ 
+ AM_CPPFLAGS=-I. -I$(top_srcdir) $(GPGME_CFLAGS)
+ 
+-EXTRA_mutt_SOURCES = browser.h mbyte.h mutt_idna.c mutt_idna.h \
++EXTRA_neomutt_SOURCES = browser.h mbyte.h mutt_idna.c mutt_idna.h \
+ 	mutt_lua.c mutt_sasl.c mutt_notmuch.c mutt_ssl.c mutt_ssl_gnutls.c \
+ 	remailer.c remailer.h resize.c sha1.c url.h utf8.c wcwidth.c
+ 
+@@ -95,13 +95,15 @@ EXTRA_DIST = account.h ascii.h attach.h bcache.h browser.h buffer.h buffy.h \
+ 
+ EXTRA_SCRIPTS =
+ 
+-pgpring_SOURCES = ascii.c extlib.c lib.c md5.c pgppubring.c sha1.c
+-pgpring_LDADD = $(LIBOBJS) $(NCRYPT_LIBS) $(INTLLIBS)
+-pgpring_DEPENDENCIES = $(LIBOBJS) $(NCRYPT_DEPS) $(INTLDEPS)
++neomutt_pgpewrap_SOURCES = pgpewrap.c
+ 
+-mutt_md5_SOURCES = md5.c
+-mutt_md5_CFLAGS = -DMD5UTIL
+-mutt_md5_LDADD =
++neomutt_pgpring_SOURCES = ascii.c extlib.c lib.c md5.c pgppubring.c sha1.c
++neomutt_pgpring_LDADD = $(LIBOBJS) $(NCRYPT_LIBS) $(INTLLIBS)
++neomutt_pgpring_DEPENDENCIES = $(LIBOBJS) $(NCRYPT_DEPS) $(INTLDEPS)
++
++neomutt_md5_SOURCES = md5.c
++neomutt_md5_CFLAGS = -DMD5UTIL
++neomutt_md5_LDADD =
+ 
+ txt2c_SOURCES = txt2c.c
+ txt2c_LDADD =
+@@ -141,7 +143,7 @@ keymap_alldefs.h: $(srcdir)/OPS $(srcdir)/OPS.SIDEBAR $(srcdir)/OPS.NOTMUCH $(sr
+ 		$(srcdir)/OPS.MIX $(srcdir)/OPS.PGP $(srcdir)/OPS.SMIME $(srcdir)/OPS.CRYPT \
+ 		> $@
+ 
+-git_ver.h: $(mutt_SOURCES) $(SUBDIRS)
++git_ver.h: $(neomutt_SOURCES) $(SUBDIRS)
+ 	version=`git describe --dirty --abbrev=6 --match "neomutt-*" 2> /dev/null | sed -e 's/^neomutt-[0-9]\{8\}//' -e 's/g//'`; \
+ 	echo 'const char *GitVer = "'$$version'";' > git_ver.h.tmp; \
+ 	cmp -s git_ver.h.tmp git_ver.h || mv git_ver.h.tmp git_ver.h; \
+diff --git a/configure.ac b/configure.ac
+index bc88adc7..17796620 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -4,7 +4,7 @@ dnl     autoreconf -i
+ CFLAGS=$CFLAGS
+ LDFLAGS=$LDFLAGS
+ 
+-AC_INIT([NeoMutt], [20170714], [neomutt-devel@neomutt.org], [mutt], [https://www.neomutt.org])
++AC_INIT([NeoMutt], [20170714], [neomutt-devel@neomutt.org], [neomutt], [https://www.neomutt.org])
+ AC_CONFIG_SRCDIR(mutt.h)
+ AC_CONFIG_AUX_DIR([.build-aux])
+ AM_INIT_AUTOMAKE
+@@ -192,7 +192,7 @@ AS_IF([test x$use_gpgme = xyes && test x$gpgme_found = xno], [
+ dnl --enable-pgp
+ AS_IF([test x$use_pgp != "xno"], [
+ 	AC_DEFINE(CRYPT_BACKEND_CLASSIC_PGP, 1, [Define if you want classic PGP Support.])
+-	PGPAUX_TARGET="pgpring\$(EXEEXT) pgpewrap\$(EXEEXT)"
++	PGPAUX_TARGET="neomutt_pgpring\$(EXEEXT) neomutt_pgpewrap\$(EXEEXT)"
+ 	build_ncrypt_pgp="yes"
+ ])
+ 
+@@ -449,7 +449,7 @@ AC_SUBST([datarootdir])
+ AC_MSG_CHECKING(where to put the documentation)
+ AC_ARG_WITH(docdir, AS_HELP_STRING([--with-docdir=PATH],[Specify where to put the documentation]),
+ 	[mutt_cv_docdir=$withval],
+-	[mutt_cv_docdir='${datarootdir}/doc/mutt'])
++	[mutt_cv_docdir='${datarootdir}/doc/neomutt'])
+ AC_MSG_RESULT($mutt_cv_docdir)
+ if test -z "$docdir" -o -n "$with_docdir"; then
+ 	docdir=$mutt_cv_docdir
+@@ -825,7 +825,7 @@ AM_CONDITIONAL(BUILD_HC_QDBM, test "x$build_hc_qdbm" = "xyes")
+ AM_CONDITIONAL(BUILD_HC_TC,   test "x$build_hc_tc"   = "xyes")
+ dnl -- end cache --
+ 
+-MUTT_MD5="mutt_md5$EXEEXT"
++MUTT_MD5="neomutt_md5$EXEEXT"
+ 
+ AC_SUBST(MUTT_MD5)
+ AC_SUBST(MUTT_LIB_OBJECTS)
+diff --git a/contrib/gpg.rc b/contrib/gpg.rc
+index 3392038b..86dc23c7 100644
+--- a/contrib/gpg.rc
++++ b/contrib/gpg.rc
+@@ -46,12 +46,12 @@ set pgp_sign_command="gpg --no-verbose --batch --quiet --output - %?p?--passphra
+ set pgp_clearsign_command="gpg --no-verbose --batch --quiet --output - %?p?--passphrase-fd 0? --armor --textmode --clearsign %?a?-u %a? %f"
+ 
+ # create a pgp/mime encrypted attachment
+-# set pgp_encrypt_only_command="pgpewrap gpg-2comp -v --batch --output - --encrypt --textmode --armor --always-trust -- -r %r -- %f"
+-set pgp_encrypt_only_command="pgpewrap gpg --batch --quiet --no-verbose --output - --encrypt --textmode --armor --always-trust -- -r %r -- %f"
++# set pgp_encrypt_only_command="neomutt_pgpewrap gpg-2comp -v --batch --output - --encrypt --textmode --armor --always-trust -- -r %r -- %f"
++set pgp_encrypt_only_command="neomutt_pgpewrap gpg --batch --quiet --no-verbose --output - --encrypt --textmode --armor --always-trust -- -r %r -- %f"
+ 
+ # create a pgp/mime encrypted and signed attachment
+-# set pgp_encrypt_sign_command="pgpewrap gpg-2comp %?p?--passphrase-fd 0? -v --batch --output - --encrypt --sign %?a?-u %a? --armor --always-trust -- -r %r -- %f"
+-set pgp_encrypt_sign_command="pgpewrap gpg %?p?--passphrase-fd 0? --batch --quiet --no-verbose --textmode --output - --encrypt --sign %?a?-u %a? --armor --always-trust -- -r %r -- %f"
++# set pgp_encrypt_sign_command="neomutt_pgpewrap gpg-2comp %?p?--passphrase-fd 0? -v --batch --output - --encrypt --sign %?a?-u %a? --armor --always-trust -- -r %r -- %f"
++set pgp_encrypt_sign_command="neomutt_pgpewrap gpg %?p?--passphrase-fd 0? --batch --quiet --no-verbose --textmode --output - --encrypt --sign %?a?-u %a? --armor --always-trust -- -r %r -- %f"
+ 
+ # import a key into the public key ring
+ set pgp_import_command="gpg --no-verbose --import %f"
+diff --git a/contrib/pgp2.rc b/contrib/pgp2.rc
+index bd01e2d2..08b592dd 100644
+--- a/contrib/pgp2.rc
++++ b/contrib/pgp2.rc
+@@ -37,10 +37,10 @@ set pgp_export_command="pgp -kxaf +language=mutt %r"
+ set pgp_verify_key_command="pgp -kcc +language=mutt %r"
+ 
+ # read in the public key ring
+-set pgp_list_pubring_command="pgpring -2 %r"
++set pgp_list_pubring_command="neomutt_pgpring -2 %r"
+ 
+ # read in the secret key ring
+-set pgp_list_secring_command="pgpring -s -2 %r"
++set pgp_list_secring_command="neomutt_pgpring -s -2 %r"
+ 
+ # pattern for good signature
+ set pgp_good_sign="Good signature"
+diff --git a/contrib/pgp5.rc b/contrib/pgp5.rc
+index 4440d6b7..aea3ae54 100644
+--- a/contrib/pgp5.rc
++++ b/contrib/pgp5.rc
+@@ -19,10 +19,10 @@ set pgp_decrypt_command="PGPPASSFD=0; export PGPPASSFD; cat - %f | pgpv +languag
+ set pgp_sign_command="PGPPASSFD=0; export PGPPASSFD; cat - %f | pgps +language=mutt +verbose=0 +batchmode -abft %?a? -u %a?"
+ 
+ # create a pgp/mime encrypted attachment
+-set pgp_encrypt_only_command="pgpewrap pgpe +language=mutt +verbose=0 +batchmode +nobatchinvalidkeys=off -aft -- -r %r < %f"
++set pgp_encrypt_only_command="neomutt_pgpewrap pgpe +language=mutt +verbose=0 +batchmode +nobatchinvalidkeys=off -aft -- -r %r < %f"
+ 
+ # create a pgp/mime encrypted and signed attachment
+-set pgp_encrypt_sign_command="PGPPASSFD=0; export PGPPASSFD; cat - %f | pgpewrap pgpe +language=mutt +verbose=0 +batchmode +nobatchinvalidkeys=off -afts %?a? -u %a? -- -r %r"
++set pgp_encrypt_sign_command="PGPPASSFD=0; export PGPPASSFD; cat - %f | neomutt_pgpewrap pgpe +language=mutt +verbose=0 +batchmode +nobatchinvalidkeys=off -afts %?a? -u %a? -- -r %r"
+ 
+ # import a key into the public key ring
+ set pgp_import_command="pgpk -a +language=mutt --OutputInformationFD=1 %f"
+@@ -34,9 +34,9 @@ set pgp_export_command="pgpk -xa +language=mutt --OutputInformationFD=1 %r"
+ set pgp_verify_key_command="pgpk -c +batchmode +language=mutt --OutputInformationFD=1 %r"
+ 
+ # read in the public key ring
+-set pgp_list_pubring_command="pgpring -5 %r"
++set pgp_list_pubring_command="neomutt_pgpring -5 %r"
+ 
+ # read in the secret key ring
+-set pgp_list_secring_command="pgpring -5 -s %r"
++set pgp_list_secring_command="neomutt_pgpring -5 -s %r"
+ 
+ 
+diff --git a/contrib/pgp6.rc b/contrib/pgp6.rc
+index a8708042..6b1ef985 100644
+--- a/contrib/pgp6.rc
++++ b/contrib/pgp6.rc
+@@ -31,10 +31,10 @@ set pgp_export_command="pgp6 +compatible  -kxaf  %r"
+ set pgp_verify_key_command="pgp6 +compatible  -kcc  %r"
+ 
+ # read in the public key ring
+-set pgp_list_pubring_command="pgpring -5 %r"
++set pgp_list_pubring_command="neomutt_pgpring -5 %r"
+ 
+ # read in the secret key ring
+-set pgp_list_secring_command="pgpring -s -5 %r"
++set pgp_list_secring_command="neomutt_pgpring -s -5 %r"
+ 
+ # create a clearsigned message
+ set pgp_clearsign_command="PGPPASSFD=0; export PGPPASSFD; cat - %f | pgp6 +compatible   +verbose=0 +batchmode +clearsig -afst %?a? -u %a?"
+diff --git a/doc/Makefile.am b/doc/Makefile.am
+index 6a6c711b..770dc16c 100644
+--- a/doc/Makefile.am
++++ b/doc/Makefile.am
+@@ -33,20 +33,18 @@ topsrcdir_DOCFILES = ChangeLog.md CODE_OF_CONDUCT.md COPYRIGHT INSTALL \
+ 
+ all: makedoc-all
+ 
+-makedoc-all: $(CHUNKED_DOCFILES) index.html manual.html manual.txt mutt.1 \
+-	Muttrc muttrc.man neomutt-syntax.vim
++makedoc-all: $(CHUNKED_DOCFILES) index.html manual.html manual.txt neomutt.1 \
++	Muttrc neomuttrc.man neomutt-syntax.vim
+ 
+ install-data-local: makedoc-all
+ 	$(MKDIR_P) $(DESTDIR)$(mandir)/man1
+ 	$(MKDIR_P) $(DESTDIR)$(mandir)/man5
+ 	$(MKDIR_P) $(DESTDIR)$(sysconfdir)
+-	$(INSTALL) -m 644 mutt.1 $(DESTDIR)$(mandir)/man1/mutt.1
+-	$(INSTALL) -m 644 muttrc.man $(DESTDIR)$(mandir)/man5/muttrc.5
++	$(INSTALL) -m 644 neomutt.1 $(DESTDIR)$(mandir)/man1/neomutt.1
++	$(INSTALL) -m 644 neomuttrc.man $(DESTDIR)$(mandir)/man5/neomuttrc.5
+ 	$(INSTALL) -m 644 $(srcdir)/smime_keys.1 $(DESTDIR)$(mandir)/man1/smime_keys.1
+-	$(INSTALL) -m 644 $(srcdir)/pgpewrap.1 $(DESTDIR)$(mandir)/man1/pgpewrap.1
+-	$(INSTALL) -m 644 $(srcdir)/pgpring.1 $(DESTDIR)$(mandir)/man1/pgpring.1
+-	$(INSTALL) -m 644 $(srcdir)/mbox.5 $(DESTDIR)$(mandir)/man5/mbox.5
+-	$(INSTALL) -m 644 $(srcdir)/mmdf.5 $(DESTDIR)$(mandir)/man5/mmdf.5
++	$(INSTALL) -m 644 $(srcdir)/pgpewrap.1 $(DESTDIR)$(mandir)/man1/neomutt_pgpewrap.1
++	$(INSTALL) -m 644 $(srcdir)/pgpring.1 $(DESTDIR)$(mandir)/man1/neomutt_pgpring.1
+ 	$(MKDIR_P) $(DESTDIR)$(docdir)
+ 	for f in $(topsrcdir_DOCFILES); do \
+ 		$(INSTALL) -m 644 $(top_srcdir)/$$f $(DESTDIR)$(docdir); \
+@@ -69,10 +67,10 @@ install-data-local: makedoc-all
+ 	-$(INSTALL) -m 644 $(srcdir)/neomutt-syntax.vim $(DESTDIR)$(docdir)
+ 
+ uninstall-local:
+-	for f in mutt.1 smime_keys.1 pgpewrap.1 pgpring.1; do \
++	for f in neomutt.1 smime_keys.1 neomutt_pgpewrap.1 neomutt_pgpring.1; do \
+ 		rm -f $(DESTDIR)$(mandir)/man1/$$f; \
+ 	done
+-	for f in muttrc.5 mbox.5 mmdf.5; do \
++	for f in neomuttrc.5; do \
+ 		rm -f $(DESTDIR)$(mandir)/man5/$$f; \
+ 	done
+ 	for f in $(srcdir_DOCFILES) $(topsrcdir_DOCFILES) $(HTML_DOCFILES); do \
+@@ -120,11 +118,11 @@ sortcheck: manual.xml
+ 	rm -rf vars.tmp.1 vars.tmp.2
+ 
+ clean-local:
+-	rm -f *.html mutt.1 muttrc.man
++	rm -f *.html neomutt.1 neomuttrc.man
+ 
+ DISTCLEANFILES = manual.txt manual.html manual.xml Muttrc
+ 
+-muttrc.man: makedoc$(EXEEXT) $(top_srcdir)/init.h muttrc.man.head muttrc.man.tail
++neomuttrc.man: makedoc$(EXEEXT) $(top_srcdir)/init.h muttrc.man.head muttrc.man.tail
+ 	$(MAKEDOC_CPP) $(top_srcdir)/init.h | \
+ 		./makedoc$(EXEEXT) -m | \
+ 		cat $(srcdir)/muttrc.man.head - $(srcdir)/muttrc.man.tail > $@
+@@ -133,7 +131,7 @@ EDIT = sed -e 's,@sysconfdir\@,$(sysconfdir),g' \
+ 	-e 's,@bindir\@,$(bindir),g' \
+ 	-e 's,@docdir\@,$(docdir),g'
+ 
+-mutt.1: $(srcdir)/mutt.man
++neomutt.1: $(srcdir)/mutt.man
+ 	$(EDIT) $(srcdir)/mutt.man > $@
+ 
+ manual.xml: makedoc$(EXEEXT) ../config.h $(top_srcdir)/init.h \
+diff --git a/doc/PGP-Notes.txt b/doc/PGP-Notes.txt
+index 2215c410..a358f818 100644
+--- a/doc/PGP-Notes.txt
++++ b/doc/PGP-Notes.txt
+@@ -157,7 +157,7 @@ or exim.
+ Auxiliary Programs
+ ------------------
+ 
+-Mutt needs two auxiliary programs for its PGP support: pgpewrap and
++Mutt needs two auxiliary programs for its PGP support: neomutt_pgpewrap and
+ pgpring.
+ 
+ 
+@@ -186,17 +186,17 @@ Command line options:
+ 
+ 
+ 
+-2. pgpewrap
++2. neomutt_pgpewrap
+ 
+ This is a little C program which does some command line munging: The
+-first argument is a command to be executed.  When pgpewrap
++first argument is a command to be executed.  When neomutt_pgpewrap
+ encounters a "--" (dash-dash) argument, it will interpret the next
+ argument as a prefix which is put in front of all following
+ arguments.
+ 
+ Example:
+ 
+-        pgpewrap pgpe file -- -r a b c
++        neomutt_pgpewrap pgpe file -- -r a b c
+ 
+ will execute:
+ 
+diff --git a/doc/mutt.man b/doc/mutt.man
+index 8edee96e..9bc49a90 100644
+--- a/doc/mutt.man
++++ b/doc/mutt.man
+@@ -171,7 +171,7 @@ If this variable is set, mailcap are always used without prompting first.
+ .IP "PGPPATH"
+ Directory in which the user's PGP public keyring can be found.  When used with
+ the original PGP program, mutt and
+-.B pgpring (1)
++.B neomutt_pgpring (1)
+ rely on this being set.
+ .IP "TMPDIR"
+ Directory in which temporary files are created.
+diff --git a/doc/pgpewrap.1 b/doc/pgpewrap.1
+index 20327349..9ad7bff7 100644
+--- a/doc/pgpewrap.1
++++ b/doc/pgpewrap.1
+@@ -1,6 +1,6 @@
+ .\" -*-nroff-*-
+ .\"
+-.\"     pgpewrap, a command line munging tool
++.\"     neomutt_pgpewrap, a command line munging tool
+ .\"     Manpage Copyright (c) 2013 Honza Horak
+ .\"
+ .\"     This program is free software; you can redistribute it and/or modify
+@@ -17,25 +17,25 @@
+ .\"     along with this program; if not, write to the Free Software
+ .\"     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ .\"
+-.TH pgpewrap 1 "May 2013" Unix "User Manuals"
++.TH neomutt_pgpewrap 1 "May 2013" Unix "User Manuals"
+ .SH NAME
+-pgpewrap \- Mutt command line munging tool
++neomutt_pgpewrap \- Mutt command line munging tool
+ 
+ .SH SYNTAX
+ .PP
+-\fBpgpewrap\fP [ \fBflags\fP ] \-\- \fBprefix\fP [ \fBrecipients\fP ]
++\fBneomutt_pgpewrap\fP [ \fBflags\fP ] \-\- \fBprefix\fP [ \fBrecipients\fP ]
+ 
+ .SH DESCRIPTION
+ .PP
+ This is a little C program which does some command line munging: The
+-first argument is a command to be executed.  When \fBpgpewrap\fP
++first argument is a command to be executed.  When \fBneomutt_pgpewrap\fP
+ encounters a "\-\-" (dash\-dash) argument, it will interpret the next
+ argument as a prefix which is put in front of all following
+ arguments.
+ 
+ .SH EXAMPLE
+ 
+-        pgpewrap pgpe file \-\- \-r a b c
++        neomutt_pgpewrap pgpe file \-\- \-r a b c
+ 
+ will execute:
+ 
+diff --git a/doc/pgpring.1 b/doc/pgpring.1
+index 0009ad92..d23ebf55 100644
+--- a/doc/pgpring.1
++++ b/doc/pgpring.1
+@@ -1,6 +1,6 @@
+ .\" -*-nroff-*-
+ .\"
+-.\"     pgpring, a key ring dumper
++.\"     neomutt_pgpring, a key ring dumper
+ .\"     Manpage Copyright (c) 2004-2013 Matthew Wilcox, Honza Horak
+ .\"
+ .\"     This program is free software; you can redistribute it and/or modify
+@@ -17,18 +17,18 @@
+ .\"     along with this program; if not, write to the Free Software
+ .\"     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ .\"
+-.TH pgpring 1 "May 2013" Unix "User Manuals"
++.TH neomutt_pgpring 1 "May 2013" Unix "User Manuals"
+ .SH NAME
+-pgpring \- Mutt key ring dumper
++neomutt_pgpring \- Mutt key ring dumper
+ 
+ .SH SYNTAX
+ .PP
+-\fBpgpring\fP [ \fB\-k\fP \fIkeyring\fP ] [ \fB\-2\fP | \fB\-5\fP ]
++\fBneomutt_pgpring\fP [ \fB\-k\fP \fIkeyring\fP ] [ \fB\-2\fP | \fB\-5\fP ]
+ [ \fB\-s\fP ] [ \fB\-S\fP ] [ \fB\-f\fP ]
+ 
+ .SH DESCRIPTION
+ .PP
+-pgpring is a key ring dumper.  It extracts information from PGP's
++neomutt_pgpring is a key ring dumper.  It extracts information from PGP's
+ binary key ring and emits it in an (almost) readable output format
+ understood by mutt's key selection routines.  This output format
+ mimics the one used by the GNU Privacy Guard (GPG).
+diff --git a/hcache/hcachever.sh b/hcache/hcachever.sh
+index 733e6ca1..c35425d1 100755
+--- a/hcache/hcachever.sh
++++ b/hcache/hcachever.sh
+@@ -77,7 +77,7 @@ do
+ done
+ echo " */" >> $TMPD
+ 
+-MD5TEXT=`echo "$TEXT" | ../mutt_md5`
++MD5TEXT=`echo "$TEXT" | ../neomutt_md5`
+ echo "#define HCACHEVER 0x"`echo $MD5TEXT | cut -c-8` >> $TMPD
+ 
+ # TODO: validate we have all structs
+-- 
+2.13.5
+

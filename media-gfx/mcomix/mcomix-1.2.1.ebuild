@@ -11,7 +11,7 @@ PLOCALES="ca cs de el es fa fr gl he hr hu id it ja ko nl pl pt_BR ru sv uk zh_C
 inherit distutils-r1 fdo-mime l10n
 
 DESCRIPTION="A fork of comix, a GTK image viewer for comic book archives"
-HOMEPAGE="http://mcomix.sourceforge.net"
+HOMEPAGE="https://sourceforge.net/p/mcomix/wiki/Home/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"

@@ -10,7 +10,7 @@ SRC_URI="http://download.savannah.gnu.org/releases/${PN}/${P}.tar.lzma"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="

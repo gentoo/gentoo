@@ -6,13 +6,13 @@ EAPI=6
 PLOCALES="ar bg ca cs da de el en en_US eo es fa fi fr he hi hr hu it ja ko lt ml nb_NO nl or pa pl pt_BR pt_PT rm ro ru sk sl sr_RS@cyrillic sr_RS@latin sv te th tr uk wa zh_CN zh_TW"
 PLOCALE_BACKUP="en"
 
-inherit autotools eutils fdo-mime flag-o-matic gnome2-utils l10n multilib multilib-minimal pax-utils toolchain-funcs virtualx versionator
+inherit autotools eutils flag-o-matic gnome2-utils l10n multilib multilib-minimal pax-utils toolchain-funcs virtualx versionator xdg-utils
 
 MY_PN="${PN%%-*}"
 MY_P="${MY_PN}-${PV}"
 
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="git://source.winehq.org/git/wine.git http://source.winehq.org/git/wine.git"
+	EGIT_REPO_URI="https://source.winehq.org/git/wine.git"
 	EGIT_BRANCH="master"
 	inherit git-r3
 	SRC_URI=""
@@ -20,17 +20,17 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	MAJOR_V=$(get_version_component_range 1)
 	SRC_URI="https://dl.winehq.org/wine/source/${MAJOR_V}.0/${MY_P}.tar.xz"
-	KEYWORDS="-* ~amd64 ~x86 ~x86-fbsd"
+	KEYWORDS="-* amd64 x86 ~x86-fbsd"
 fi
 S="${WORKDIR}/${MY_P}"
 
-WDC_V="20150204"
-WINE_DESKTOP_COMMON_P="wine-desktop-common-${WDC_V}"
+GWP_V="20170830"
+PATCHDIR="${WORKDIR}/gentoo-wine-patches"
 
 DESCRIPTION="Free implementation of Windows(tm) on Unix, without external patchsets"
-HOMEPAGE="http://www.winehq.org/"
+HOMEPAGE="https://www.winehq.org/"
 SRC_URI="${SRC_URI}
-	https://github.com/NP-Hardass/wine-desktop-common/archive/${WDC_V}.tar.gz -> ${WINE_DESKTOP_COMMON_P}.tar.gz
+	https://dev.gentoo.org/~np-hardass/distfiles/wine/gentoo-wine-patches-${GWP_V}.tar.xz
 "
 
 LICENSE="LGPL-2.1"
@@ -158,7 +158,7 @@ wine_compiler_check() {
 		# bug #549768
 		if use abi_x86_64 && [[ $(gcc-major-version) = 5 && $(gcc-minor-version) -le 2 ]]; then
 			ebegin "Checking for gcc-5 ms_abi compiler bug"
-			$(tc-getCC) -O2 "${FILESDIR}"/pr66838.c -o "${T}"/pr66838 || die
+			$(tc-getCC) -O2 "${PATCHDIR}/files/pr66838.c" -o "${T}"/pr66838 || die
 			# Run in subshell to prevent "Aborted" message
 			( "${T}"/pr66838 || false ) >/dev/null 2>&1
 			if ! eend $?; then
@@ -174,7 +174,7 @@ wine_compiler_check() {
 		if use abi_x86_64 && [[ $(gcc-major-version) = 5 && $(gcc-minor-version) = 3 ]]; then
 			ebegin "Checking for gcc-5-3 stack realignment compiler bug"
 			# Compile in subshell to prevent "Aborted" message
-			( $(tc-getCC) -O2 -mincoming-stack-boundary=3 "${FILESDIR}"/pr69140.c -o "${T}"/pr69140 ) >/dev/null 2>&1
+			( $(tc-getCC) -O2 -mincoming-stack-boundary=3 "${PATCHDIR}/files/pr69140.c" -o "${T}"/pr69140 ) >/dev/null 2>&1
 			if ! eend $?; then
 				eerror "Wine cannot be built with this version of gcc-5.3"
 				eerror "due to compiler bugs; please re-emerge the latest gcc-5.3.x ebuild,"
@@ -190,7 +190,7 @@ wine_compiler_check() {
 	if use abi_x86_64; then
 		ebegin "Checking for 64-bit compiler with builtin_ms_va_list support"
 		# Compile in subshell to prevent "Aborted" message
-		( $(tc-getCC) -O2 "${FILESDIR}"/builtin_ms_va_list.c -o "${T}"/builtin_ms_va_list >/dev/null 2>&1)
+		( $(tc-getCC) -O2 "${PATCHDIR}/files/builtin_ms_va_list.c" -o "${T}"/builtin_ms_va_list >/dev/null 2>&1)
 		if ! eend $?; then
 			eerror "This version of $(tc-getCC) does not support builtin_ms_va_list, can't enable 64-bit wine"
 			eerror
@@ -289,15 +289,26 @@ src_unpack() {
 }
 
 src_prepare() {
+
+	eapply_bin(){
+		local patch
+		for patch in ${PATCHES_BIN[@]}; do
+			patchbin --nogit < "${patch}" || die
+		done
+	}
+
 	local md5="$(md5sum server/protocol.def)"
 	local PATCHES=(
-		"${FILESDIR}"/${MY_PN}-1.5.26-winegcc.patch #260726
-		"${FILESDIR}"/${MY_PN}-1.9.5-multilib-portage.patch #395615
-		"${FILESDIR}"/${MY_PN}-1.6-memset-O3.patch #480508
-		"${FILESDIR}"/${MY_PN}-2.0-multislot-apploader.patch
+		"${PATCHDIR}/patches/${MY_PN}-1.5.26-winegcc.patch" #260726
+		"${PATCHDIR}/patches/${MY_PN}-1.9.5-multilib-portage.patch" #395615
+		"${PATCHDIR}/patches/${MY_PN}-1.6-memset-O3.patch" #480508
+		"${PATCHDIR}/patches/${MY_PN}-2.0-multislot-apploader.patch"
+	)
+	local PATCHES_BIN=(
 	)
 
 	default
+	eapply_bin
 	eautoreconf
 
 	# Modification of the server protocol requires regenerating the server requests
@@ -313,8 +324,8 @@ src_prepare() {
 	# Edit wine.desktop to work for specific variant
 	sed -e "/^Exec=/s/wine /wine-${WINE_VARIANT} /" -i loader/wine.desktop || die
 
-	# hi-res default icon, #472990, http://bugs.winehq.org/show_bug.cgi?id=24652
-	cp "${WORKDIR}/${WINE_DESKTOP_COMMON_P}/icons/oic_winlogo.ico" dlls/user32/resources/ || die
+	# hi-res default icon, #472990, https://bugs.winehq.org/show_bug.cgi?id=24652
+	cp "${PATCHDIR}/files/oic_winlogo.ico" dlls/user32/resources/ || die
 
 	l10n_get_locales > po/LINGUAS || die # otherwise wine doesn't respect LINGUAS
 }
@@ -445,8 +456,8 @@ multilib_src_install_all() {
 	use abi_x86_64 && pax-mark psmr "${D%/}${MY_PREFIX}"/bin/wine64{,-preloader}
 
 	if use abi_x86_64 && ! use abi_x86_32; then
-		dosym "${MY_PREFIX}"/bin/wine{64,} # 404331
-		dosym "${MY_PREFIX}"/bin/wine{64,}-preloader
+		dosym wine64 "${MY_PREFIX}"/bin/wine # 404331
+		dosym wine64-preloader "${MY_PREFIX}"/bin/wine-preloader
 	fi
 
 	# Failglob for bin and man loops
@@ -477,7 +488,7 @@ pkg_postinst() {
 
 	eselect wine update --all --if-unset || die
 
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 
 	if ! use gecko; then
 		ewarn "Without Wine Gecko, wine prefixes will not have a default"
@@ -503,5 +514,5 @@ pkg_prerm() {
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }

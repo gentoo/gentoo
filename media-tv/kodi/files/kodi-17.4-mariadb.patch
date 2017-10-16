@@ -1,0 +1,23 @@
+From ff848b104182467e5048351fdf27a07dd55a34a6 Mon Sep 17 00:00:00 2001
+From: Wolfgang Schupp <w.schupp@a1.net>
+Date: Tue, 29 Aug 2017 09:08:05 +0200
+Subject: [PATCH] Merge pull request #12727 from candrews/patch-6
+
+[cmake] FindMySqlClient: Compatibility with MariaDB
+---
+ project/cmake/modules/FindMySqlClient.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/project/cmake/modules/FindMySqlClient.cmake b/project/cmake/modules/FindMySqlClient.cmake
+index ceccea39b1e3..7b485778e4fc 100644
+--- a/project/cmake/modules/FindMySqlClient.cmake
++++ b/project/cmake/modules/FindMySqlClient.cmake
+@@ -21,7 +21,7 @@ else()
+   set(EXTRA_FIND_ARGS)
+ endif()
+ 
+-find_path(MYSQLCLIENT_INCLUDE_DIR mysql/mysql_time.h)
++find_path(MYSQLCLIENT_INCLUDE_DIR NAMES mysql/mysql.h mysql/server/mysql.h)
+ find_library(MYSQLCLIENT_LIBRARY_RELEASE NAMES mysqlclient libmysql
+                                          PATH_SUFFIXES mysql
+                                          ${EXTRA_FIND_ARGS})

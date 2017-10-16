@@ -1,0 +1,18 @@
+--- a/src/common/cmdparse.c	2017-09-20 18:47:31.662856695 -0400
++++ b/src/common/cmdparse.c	2017-09-20 18:48:54.008852141 -0400
+@@ -284,13 +284,13 @@
+ 								int i;
+ 								for (i=0;i<argc;i++) {
+ 									if (i) fprintf(mf," ");
+-									fprintf(mf,argv[i]);
++									fprintf(mf,"%s",argv[i]);
+ 								}
+ 							} else {
+ 								int num=atoi(t);
+ 								while (*t >='0' && *t <= '9') t++;
+ 								if (num < argc) 
+-									fprintf(mf,argv[num]);
++									fprintf(mf,"%s",argv[num]);
+ 							}
+ 						} else
+ 							fprintf(mf,"%c",*t);

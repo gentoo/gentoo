@@ -4,8 +4,8 @@ Subject: build system
 
 make libdir modifiable
 
---- simon-0.4.1/cmake/SimonDirs.cmake
-+++ simon-0.4.1/cmake/SimonDirs.cmake
+--- a/cmake/SimonDirs.cmake
++++ b/cmake/SimonDirs.cmake
 @@ -29,6 +29,6 @@
    #IF(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86_64")
      #set(SIMON_LIB_INSTALL_DIR lib64)

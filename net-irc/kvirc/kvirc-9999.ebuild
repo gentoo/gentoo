@@ -4,7 +4,7 @@
 EAPI="5"
 PYTHON_COMPAT=(python2_7)
 
-inherit cmake-utils flag-o-matic multilib python-single-r1
+inherit cmake-utils flag-o-matic gnome2-utils multilib python-single-r1 xdg-utils
 
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
@@ -58,9 +58,9 @@ RDEPEND="dev-qt/qtcore:5
 		kde-frameworks/kxmlgui:5
 	)
 	perl? ( dev-lang/perl:0= )
-	phonon? ( media-libs/phonon:0[qt5] )
+	phonon? ( media-libs/phonon[qt5(+)] )
 	python? ( ${PYTHON_DEPS} )
-	spell? ( app-text/enchant )
+	spell? ( app-text/enchant:0= )
 	ssl? ( dev-libs/openssl:0= )
 	theora? (
 		media-libs/libogg
@@ -135,4 +135,14 @@ src_configure() {
 	)
 
 	cmake-utils_src_configure
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }

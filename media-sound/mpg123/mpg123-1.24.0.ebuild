@@ -5,8 +5,8 @@ EAPI=6
 inherit flag-o-matic toolchain-funcs libtool multilib-minimal
 
 DESCRIPTION="a realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3"
-HOMEPAGE="http://www.mpg123.org/"
-SRC_URI="http://www.mpg123.org/download/${P}.tar.bz2"
+HOMEPAGE="https://www.mpg123.org/"
+SRC_URI="https://www.mpg123.org/download/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"

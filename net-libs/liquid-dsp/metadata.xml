@@ -9,8 +9,6 @@
 <email>radio@gentoo.org</email>
 <name>Radio</name>
 </maintainer>
-<longdescription lang="en">
-</longdescription>
 <upstream>
 	<remote-id type="github">jgaeddert/liquid-dsp</remote-id>
 </upstream>

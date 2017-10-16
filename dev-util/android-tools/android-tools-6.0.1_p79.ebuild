@@ -29,7 +29,7 @@ RDEPEND="sys-libs/zlib:=
 	dev-libs/libpcre"
 # dev-lang/ruby is necessary for build script generation.
 DEPEND="${RDEPEND}
-	dev-lang/ruby:*"
+	virtual/rubygems"
 
 S=${WORKDIR}
 
@@ -61,8 +61,16 @@ src_prepare() {
 }
 
 src_compile() {
-	chmod +x ./generate_build.rb || die
-	./generate_build.rb > build.sh || die
+	# Dynamically detect rubygems interpreter (bug 631398).
+	local ruby_bin=$(type -P ruby) ruby_error_log=${T}/generate_build.rb.log success=
+	for ruby_bin in "${ruby_bin}" "${ruby_bin}"[[:digit:]][[:digit:]]; do
+		"${ruby_bin}" ./generate_build.rb 1> build.sh 2> "${ruby_error_log}" && \
+			{ success=1; break; }
+	done
+	if [[ -z ${success} ]]; then
+		cat "${ruby_error_log}" >&2
+		die "${ruby_bin} ./generate_build.rb failed"
+	fi
 	sed -e 's:^gcc:${CC}:' -e 's:^g++:${CXX}:' -i build.sh || die
 	chmod +x build.sh || die
 	tc-export CC CXX

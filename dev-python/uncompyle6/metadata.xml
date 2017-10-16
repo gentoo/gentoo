@@ -17,5 +17,4 @@
 		<remote-id type="pypi">uncompyle6</remote-id>
 		<remote-id type="github">rocky/python-uncompyle6</remote-id>
 	</upstream>
-	<longdescription/>
 </pkgmetadata>

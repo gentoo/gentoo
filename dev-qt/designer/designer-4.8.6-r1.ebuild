@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,25 +8,24 @@ inherit eutils qt4-build-multilib
 DESCRIPTION="WYSIWYG tool for designing and building Qt-based GUIs"
 
 if [[ ${QT4_BUILD_TYPE} == live ]]; then
-	KEYWORDS="alpha arm hppa ia64 ppc ppc64 sparc"
+	KEYWORDS="alpha arm ia64 ppc ppc64 sparc"
 else
-	KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd"
+	KEYWORDS="alpha amd64 arm ~arm64 ia64 ~mips ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd"
 fi
 
 DESIGNER_PLUGINS="declarative phonon qt3support webkit"
-IUSE="${DESIGNER_PLUGINS} kde"
+IUSE="${DESIGNER_PLUGINS}"
 
 DEPEND="
 	~dev-qt/qtcore-${PV}[aqua=,debug=,${MULTILIB_USEDEP}]
 	~dev-qt/qtgui-${PV}[aqua=,debug=,${MULTILIB_USEDEP}]
 	~dev-qt/qtscript-${PV}[aqua=,debug=,${MULTILIB_USEDEP}]
 	declarative? ( ~dev-qt/qtdeclarative-${PV}[aqua=,debug=,${MULTILIB_USEDEP}] )
-	phonon? ( !kde? ( ~dev-qt/qtphonon-${PV}[aqua=,debug=,${MULTILIB_USEDEP}] ) )
 	qt3support? ( ~dev-qt/qt3support-${PV}[aqua=,debug=,${MULTILIB_USEDEP}] )
 	webkit? ( ~dev-qt/qtwebkit-${PV}[aqua=,debug=,${MULTILIB_USEDEP}] )
 "
 RDEPEND="${DEPEND}"
-PDEPEND="phonon? ( kde? ( media-libs/phonon[designer,qt4] ) )"
+PDEPEND="phonon? ( media-libs/phonon[designer,qt4] )"
 
 QT4_TARGET_DIRECTORIES="tools/designer"
 
@@ -35,7 +34,7 @@ src_prepare() {
 
 	local plugin
 	for plugin in ${DESIGNER_PLUGINS}; do
-		if ! use ${plugin} || ( [[ ${plugin} == phonon ]] && use kde ); then
+		if ! use ${plugin} || [[ ${plugin} == phonon ]]; then
 			sed -i -e "/\<${plugin}\>/d" \
 				tools/designer/src/plugins/plugins.pro || die
 		fi

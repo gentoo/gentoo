@@ -18,6 +18,8 @@ IUSE="debug +threads"
 
 RDEPEND=">=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
+# Bug 629680: need to disable testing since network-sandbox creates false negatives
+RESTRICT="test"
 
 SPARENT="${WORKDIR}/${MY_P}"
 S="${SPARENT}"/unix

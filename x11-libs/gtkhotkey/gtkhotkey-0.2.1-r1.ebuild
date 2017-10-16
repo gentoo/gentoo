@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit versionator eutils
+inherit versionator
 
 MY_CRV=$(get_version_component_range 1-2)
 
@@ -17,7 +17,7 @@ SRC_URI="https://launchpad.net/${PN}/${MY_CRV}/${PV}/+download/${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 COMMON_DEPEND=">=dev-libs/glib-2.16

@@ -1,0 +1,94 @@
+--- a/Cargo.lock	2017-09-09 15:08:09.213744707 +0200
++++ b/Cargo.lock	2017-09-09 15:11:16.736666262 +0200
+@@ -27,7 +27,7 @@
+  "log 0.3.8 (registry+https://github.com/rust-lang/crates.io-index)",
+  "miow 0.2.1 (registry+https://github.com/rust-lang/crates.io-index)",
+  "num_cpus 1.6.2 (registry+https://github.com/rust-lang/crates.io-index)",
+- "openssl 0.9.14 (registry+https://github.com/rust-lang/crates.io-index)",
++ "openssl 0.9.15 (registry+https://github.com/rust-lang/crates.io-index)",
+  "psapi-sys 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
+  "scoped-tls 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
+  "semver 0.7.0 (registry+https://github.com/rust-lang/crates.io-index)",
+@@ -172,7 +172,7 @@
+  "curl-sys 0.3.14 (registry+https://github.com/rust-lang/crates.io-index)",
+  "libc 0.2.25 (registry+https://github.com/rust-lang/crates.io-index)",
+  "openssl-probe 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
+- "openssl-sys 0.9.14 (registry+https://github.com/rust-lang/crates.io-index)",
++ "openssl-sys 0.9.15 (registry+https://github.com/rust-lang/crates.io-index)",
+  "socket2 0.2.1 (registry+https://github.com/rust-lang/crates.io-index)",
+  "winapi 0.2.8 (registry+https://github.com/rust-lang/crates.io-index)",
+ ]
+@@ -185,7 +185,7 @@
+  "gcc 0.3.51 (registry+https://github.com/rust-lang/crates.io-index)",
+  "libc 0.2.25 (registry+https://github.com/rust-lang/crates.io-index)",
+  "libz-sys 1.0.16 (registry+https://github.com/rust-lang/crates.io-index)",
+- "openssl-sys 0.9.14 (registry+https://github.com/rust-lang/crates.io-index)",
++ "openssl-sys 0.9.15 (registry+https://github.com/rust-lang/crates.io-index)",
+  "pkg-config 0.3.9 (registry+https://github.com/rust-lang/crates.io-index)",
+  "vcpkg 0.2.2 (registry+https://github.com/rust-lang/crates.io-index)",
+  "winapi 0.2.8 (registry+https://github.com/rust-lang/crates.io-index)",
+@@ -280,7 +280,7 @@
+  "libc 0.2.25 (registry+https://github.com/rust-lang/crates.io-index)",
+  "libgit2-sys 0.6.12 (registry+https://github.com/rust-lang/crates.io-index)",
+  "openssl-probe 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
+- "openssl-sys 0.9.14 (registry+https://github.com/rust-lang/crates.io-index)",
++ "openssl-sys 0.9.15 (registry+https://github.com/rust-lang/crates.io-index)",
+  "url 1.5.1 (registry+https://github.com/rust-lang/crates.io-index)",
+ ]
+ 
+@@ -368,7 +368,7 @@
+  "libc 0.2.25 (registry+https://github.com/rust-lang/crates.io-index)",
+  "libssh2-sys 0.2.6 (registry+https://github.com/rust-lang/crates.io-index)",
+  "libz-sys 1.0.16 (registry+https://github.com/rust-lang/crates.io-index)",
+- "openssl-sys 0.9.14 (registry+https://github.com/rust-lang/crates.io-index)",
++ "openssl-sys 0.9.15 (registry+https://github.com/rust-lang/crates.io-index)",
+  "pkg-config 0.3.9 (registry+https://github.com/rust-lang/crates.io-index)",
+ ]
+ 
+@@ -380,7 +380,7 @@
+  "cmake 0.1.24 (registry+https://github.com/rust-lang/crates.io-index)",
+  "libc 0.2.25 (registry+https://github.com/rust-lang/crates.io-index)",
+  "libz-sys 1.0.16 (registry+https://github.com/rust-lang/crates.io-index)",
+- "openssl-sys 0.9.14 (registry+https://github.com/rust-lang/crates.io-index)",
++ "openssl-sys 0.9.15 (registry+https://github.com/rust-lang/crates.io-index)",
+  "pkg-config 0.3.9 (registry+https://github.com/rust-lang/crates.io-index)",
+ ]
+ 
+@@ -529,14 +529,14 @@
+ 
+ [[package]]
+ name = "openssl"
+-version = "0.9.14"
++version = "0.9.15"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ dependencies = [
+  "bitflags 0.9.1 (registry+https://github.com/rust-lang/crates.io-index)",
+  "foreign-types 0.2.0 (registry+https://github.com/rust-lang/crates.io-index)",
+  "lazy_static 0.2.8 (registry+https://github.com/rust-lang/crates.io-index)",
+  "libc 0.2.25 (registry+https://github.com/rust-lang/crates.io-index)",
+- "openssl-sys 0.9.14 (registry+https://github.com/rust-lang/crates.io-index)",
++ "openssl-sys 0.9.15 (registry+https://github.com/rust-lang/crates.io-index)",
+ ]
+ 
+ [[package]]
+@@ -546,7 +546,7 @@
+ 
+ [[package]]
+ name = "openssl-sys"
+-version = "0.9.14"
++version = "0.9.15"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ dependencies = [
+  "gcc 0.3.51 (registry+https://github.com/rust-lang/crates.io-index)",
+@@ -928,9 +928,9 @@
+ "checksum num-rational 0.1.38 (registry+https://github.com/rust-lang/crates.io-index)" = "33c881e104a26e1accc09449374c095ff2312c8e0c27fab7bbefe16eac7c776d"
+ "checksum num-traits 0.1.39 (registry+https://github.com/rust-lang/crates.io-index)" = "1708c0628602a98b52fad936cf3edb9a107af06e52e49fdf0707e884456a6af6"
+ "checksum num_cpus 1.6.2 (registry+https://github.com/rust-lang/crates.io-index)" = "aec53c34f2d0247c5ca5d32cca1478762f301740468ee9ee6dcb7a0dd7a0c584"
+-"checksum openssl 0.9.14 (registry+https://github.com/rust-lang/crates.io-index)" = "11ba043cb65fc9af71a431b8a36ffe8686cd4751cdf70a473ec1d01066ac7e41"
++"checksum openssl 0.9.15 (registry+https://github.com/rust-lang/crates.io-index)" = "f776f1d8af832fd2c637ee182c801e8f7ea8895718a2be9914cca001f6e2c40a"
+ "checksum openssl-probe 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)" = "d98df0270d404ccd3c050a41d579c52d1db15375168bb3471e04ec0f5f378daf"
+-"checksum openssl-sys 0.9.14 (registry+https://github.com/rust-lang/crates.io-index)" = "236c718c2e2c2b58a546d86ffea5194400bb15dbe01ca85325ffd357b03cf66c"
++"checksum openssl-sys 0.9.15 (registry+https://github.com/rust-lang/crates.io-index)" = "ad95f8160d1c150c4f44d4c4959732e048ac046c37f597fe362f8bf57561ffb4"
+ "checksum percent-encoding 1.0.0 (registry+https://github.com/rust-lang/crates.io-index)" = "de154f638187706bde41d9b4738748933d64e6b37bdbffc0b47a97d16a6ae356"
+ "checksum pkg-config 0.3.9 (registry+https://github.com/rust-lang/crates.io-index)" = "3a8b4c6b8165cd1a1cd4b9b120978131389f64bdaf456435caa41e630edba903"
+ "checksum psapi-sys 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)" = "abcd5d1a07d360e29727f757a9decb3ce8bc6e0efa8969cfaad669a8317a2478"

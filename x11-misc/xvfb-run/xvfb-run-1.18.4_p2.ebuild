@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -7,7 +7,7 @@ MY_PN=xorg-server
 MY_PV=${PV/_p/-}
 DESCRIPTION="Run a command in a virtual X server environment"
 HOMEPAGE="https://packages.debian.org/sid/xvfb"
-SRC_URI="mirror://debian/pool/main/${MY_PN:0:1}/${MY_PN}/${MY_PN}_${MY_PV}.diff.gz"
+SRC_URI="http://snapshot.debian.org/archive/debian/20160906T162237Z/pool/main/${MY_PN:0:1}/${MY_PN}/${MY_PN}_${MY_PV}.diff.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

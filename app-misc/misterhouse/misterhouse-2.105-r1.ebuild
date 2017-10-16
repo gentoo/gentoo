@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -36,7 +36,7 @@ src_install() {
 	for a in "${S}"/docs/*; do
 		dodoc ${a} || die
 	done
-	dosym /usr/share/doc/${PF} /opt/misterhouse/docs
+	dosym ../../usr/share/doc/${PF} /opt/misterhouse/docs
 	cp -r "${S}/lib" "${D}/opt/misterhouse" || die
 	cp -r "${S}/sounds" "${D}/opt/misterhouse" || die
 	cp -r "${S}/web" "${D}/opt/misterhouse" || die

@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit eutils versionator
@@ -15,7 +15,7 @@ IUSE=""
 DESCRIPTION="applet which displays the date and time in a dockable tile"
 SRC_URI="http://ftp.debian.org/debian/pool/main/w/wmtime/wmtime_${MY_PV}.orig.tar.gz
 	http://ftp.debian.org/debian/pool/main/w/wmtime/wmtime_${MY_PV}-${MY_PL}.diff.gz"
-HOMEPAGE="http://packages.qa.debian.org/w/wmtime.html"
+HOMEPAGE="https://packages.qa.debian.org/w/wmtime.html"
 
 SLOT="0"
 KEYWORDS="~amd64 x86"

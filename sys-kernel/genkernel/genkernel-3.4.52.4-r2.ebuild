@@ -149,7 +149,7 @@ pkg_postinst() {
 	elog 'Documentation is available in the genkernel manual page'
 	elog 'as well as the following URL:'
 	echo
-	elog 'https://www.gentoo.org/doc/en/genkernel.xml'
+	elog 'https://wiki.gentoo.org/wiki/Genkernel'
 	echo
 	ewarn "This package is known to not work with reiser4.  If you are running"
 	ewarn "reiser4 and have a problem, do not file a bug.  We know it does not"

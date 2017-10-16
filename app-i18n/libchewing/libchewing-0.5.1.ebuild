@@ -3,30 +3,42 @@
 
 EAPI="6"
 
-inherit ltprune
+if [[ "${PV}" == "9999" ]]; then
+	inherit autotools git-r3
 
-DESCRIPTION="Library for Chinese Phonetic input method"
-HOMEPAGE="http://chewing.csie.net/"
-SRC_URI="https://github.com/${PN/lib}/${PN}/releases/download/v${PV}/${P}.tar.bz2"
+	EGIT_REPO_URI="https://github.com/chewing/libchewing"
+fi
 
-SLOT="0"
-LICENSE="GPL-2"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+DESCRIPTION="Intelligent phonetic (Zhuyin/Bopomofo) input method library"
+HOMEPAGE="http://chewing.im/ https://github.com/chewing/libchewing"
+if [[ "${PV}" == "9999" ]]; then
+	SRC_URI=""
+else
+	SRC_URI="https://github.com/chewing/${PN}/releases/download/v${PV}/${P}.tar.bz2"
+fi
+
+LICENSE="LGPL-2.1"
+SLOT="0/3"
+KEYWORDS="amd64 ~arm64 ppc ppc64 x86"
 IUSE="static-libs test"
-REQUIRED_USE="test? ( static-libs )"
 
 RDEPEND="dev-db/sqlite:3"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	test? (
-		dev-libs/check
-		sys-libs/ncurses[unicode]
-	)"
+	test? ( sys-libs/ncurses[unicode] )"
+
+src_prepare() {
+	default
+
+	if [[ "${PV}" == "9999" ]]; then
+		eautoreconf
+	fi
+}
 
 src_configure() {
+	# libchewing.a is required for building of tests.
 	econf \
-		$(use_enable static-libs static) \
-		--with-sqlite3
+		--with-sqlite3 \
+		$(if use static-libs || use test; then echo --enable-static; else echo --disable-static; fi)
 }
 
 src_test() {
@@ -35,5 +47,6 @@ src_test() {
 
 src_install() {
 	default
-	prune_libtool_files
+	find "${D}" -name "*.la" -delete || die
+	use static-libs || find "${D}" -name "*.a" -delete || die
 }

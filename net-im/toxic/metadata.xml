@@ -8,7 +8,7 @@
 	<upstream>
 		<maintainer>
 			<email>jfreegman@tox.chat</email>
-			<name>JFreegman</name>
+			<name>Jakob Kreuze</name>
 		</maintainer>
 		<remote-id type="github">jfreegman/toxic</remote-id>
 	</upstream>
@@ -18,5 +18,6 @@
 	<use>
 		<flag name="notifications">Enables desktop notifications with libnotify</flag>
 		<flag name="av">Enables audio calling and/or audio notifications</flag>
+		<flag name="qrcode">Enables QR code support</flag>
 	</use>
 </pkgmetadata>

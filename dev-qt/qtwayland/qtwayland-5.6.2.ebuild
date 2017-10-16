@@ -10,13 +10,13 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="amd64 arm hppa ~ppc ppc64 x86"
 fi
 
-IUSE="egl qml wayland-compositor xcomposite"
+IUSE="qml wayland-compositor xcomposite"
 
 DEPEND="
 	>=dev-libs/wayland-1.4.0
 	~dev-qt/qtcore-${PV}
-	~dev-qt/qtgui-${PV}[egl=]
-	media-libs/mesa[egl?]
+	~dev-qt/qtgui-${PV}[egl]
+	media-libs/mesa[egl]
 	>=x11-libs/libxkbcommon-0.2.0
 	wayland-compositor? (
 		qml? ( ~dev-qt/qtdeclarative-${PV} )

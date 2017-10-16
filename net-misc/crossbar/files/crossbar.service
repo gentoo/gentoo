@@ -1,0 +1,12 @@
+[Unit]
+Description=crossbar wamp router instances
+After=local-fs.target network.target
+
+[Service]
+Type=forking
+User=crossbar
+ExecStart=/usr/bin/crossbar start /var/lib/crossbar
+ExecStop=/usr/bin/crossbar stop /var/lib/crossbar
+
+[Install]
+WantedBy=multi-user.target

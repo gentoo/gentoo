@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -21,6 +21,8 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_prepare() {
+	cmake-utils_src_prepare
+
 	use static-libs && mkdir "${WORKDIR}/${PN}_static"
 	# mpi does not have a pc file
 	sed -i -e 's/mpi//' scalapack.pc.in || die

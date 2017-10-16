@@ -1,0 +1,17 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+name="sniproxy daemon"
+description="Proxies incoming HTTP and TLS connections based on the hostname contained in the initial request."
+
+SNIPROXY_CONFFILE=${SNIPROXY_CONFFILE:-/etc/sniproxy/${SVCNAME}.conf}
+
+command="/usr/sbin/sniproxy"
+command_args="-c \"${SNIPROXY_CONFFILE}\""
+pidfile=${SNIPROXY_PIDFILE:-/var/run/sniproxy.pid}
+
+depend() {
+	need net
+	use logger
+}

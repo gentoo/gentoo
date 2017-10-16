@@ -12,7 +12,7 @@
 			<email>jgeboski@gmail.com</email>
 			<name>James Geboski</name>
 		</maintainer>
-		<bugs-to>https://github.com/jgeboski/bitlbee-steam/issues</bugs-to>
-		<remote-id type="github">jgeboski/bitlbee-steam</remote-id>
+		<bugs-to>https://github.com/bitlbee/bitlbee-steam/issues</bugs-to>
+		<remote-id type="github">bitlbee/bitlbee-steam</remote-id>
 	</upstream>
 </pkgmetadata>

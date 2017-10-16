@@ -1,0 +1,117 @@
+From 5cf2d1acf87fa0ab18375534ca210f1cabf212b3 Mon Sep 17 00:00:00 2001
+From: Pierre-Olivier Mercier <nemunaire@nemunai.re>
+Date: Wed, 2 Aug 2017 23:16:43 +0200
+Subject: [PATCH] Link with libatomic on architectures that requires it
+
+---
+ configure.ac    | 10 +++++++++-
+ src/Makefile.am |  2 +-
+ 2 files changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 2a28214..5bd1798 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -504,8 +504,16 @@ AC_LINK_IFELSE([AC_LANG_PROGRAM([[#include <sched.h>]], [[cpuset_t* set = cpuset
+ AC_COMPILE_IFELSE(
+   [AC_LANG_PROGRAM([[#include <stdint.h>]],
+                    [[uint64_t val = 0; __atomic_add_fetch(&val, 1, __ATOMIC_RELAXED);]])],
+-  [AC_DEFINE(HAVE_ATOMIC, 1, [Define to 1 if you have '__atomic' functions.])]
++  [AC_DEFINE(HAVE_ATOMIC, 1, [Define to 1 if you have '__atomic' functions.])
++    AC_LINK_IFELSE(
++     [AC_LANG_PROGRAM([[#include <stdint.h>]],
++                      [[uint64_t val = 0; __atomic_add_fetch(&val, 1, __ATOMIC_RELAXED);]])],
++     [atomic_LIBS=""],
++     [atomic_LIBS="-latomic"]
++  )],
++  [atomic_LIBS=""]
+ )
++AC_SUBST([atomic_LIBS])
+ 
+ # Prepare CFLAG_VISIBILITY to be used where needed
+ gl_VISIBILITY()
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 948912e..bf28013 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -399,7 +399,7 @@ libknotd_la_CPPFLAGS = $(AM_CPPFLAGS) $(CFLAG_VISIBILITY) $(systemd_CFLAGS) \
+                        $(liburcu_CFLAGS) -DKNOTD_MOD_STATIC
+ libknotd_la_LDFLAGS  = $(AM_LDFLAGS) -export-symbols-regex '^knotd_'
+ libknotd_la_LIBADD   = libknot.la zscanner/libzscanner.la $(systemd_LIBS) \
+-                       $(liburcu_LIBS)
++                       $(liburcu_LIBS) $(atomic_LIBS)
+ 
+ ###################
+ # Knot DNS Daemon #
+--- a/src/Makefile.in	2017-08-05 18:09:14.029882010 +0200
++++ b/src/Makefile.in	2017-08-05 18:12:43.541190937 +0200
+@@ -379,7 +379,7 @@
+ @STATIC_MODULE_dnstap_TRUE@	contrib/dnstap/libdnstap.la
+ libknotd_la_DEPENDENCIES = libknot.la zscanner/libzscanner.la \
+ 	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
+-	$(am__DEPENDENCIES_2)
++	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_2)
+ am__libknotd_la_SOURCES_DIST = knot/conf/base.c knot/conf/base.h \
+ 	knot/conf/conf.c knot/conf/conf.h knot/conf/confdb.c \
+ 	knot/conf/confdb.h knot/conf/confio.c knot/conf/confio.h \
+@@ -937,6 +937,7 @@
+ am__quote = @am__quote@
+ am__tar = @am__tar@
+ am__untar = @am__untar@
++atomic_LIBS = @atomic_LIBS@
+ bindir = @bindir@
+ build = @build@
+ build_alias = @build_alias@
+@@ -1275,7 +1276,8 @@
+ 	$(am__append_11)
+ libknotd_la_LDFLAGS = $(AM_LDFLAGS) -export-symbols-regex '^knotd_'
+ libknotd_la_LIBADD = libknot.la zscanner/libzscanner.la \
+-	$(systemd_LIBS) $(liburcu_LIBS) $(am__append_12)
++	$(systemd_LIBS) $(liburcu_LIBS) $(atomic_LIBS) \
++	$(am__append_12)
+ @HAVE_DAEMON_TRUE@sbin_SCRIPTS = utils/pykeymgr/pykeymgr
+ @HAVE_DAEMON_TRUE@CLEAN_FILES = $(sbin_SCRIPTS)
+ @HAVE_DAEMON_TRUE@knotddir = $(includedir)/knot
+--- a/configure	2017-08-05 18:09:14.039882551 +0200
++++ b/configure	2017-08-05 18:12:18.779857706 +0200
+@@ -655,6 +655,7 @@
+ CODE_COVERAGE_ENABLED_TRUE
+ HAVE_VISIBILITY
+ CFLAG_VISIBILITY
++atomic_LIBS
+ libidn_LIBS
+ libidn_CFLAGS
+ libidn2_LIBS
+@@ -16347,10 +16358,32 @@
+ 
+ $as_echo "#define HAVE_ATOMIC 1" >>confdefs.h
+ 
++    cat confdefs.h - <<_ACEOF >conftest.$ac_ext
++/* end confdefs.h.  */
++#include <stdint.h>
++int
++main ()
++{
++uint64_t val = 0; __atomic_add_fetch(&val, 1, __ATOMIC_RELAXED);
++  ;
++  return 0;
++}
++_ACEOF
++if ac_fn_c_try_link "$LINENO"; then :
++  atomic_LIBS=""
++else
++  atomic_LIBS="-latomic"
++
++fi
++rm -f core conftest.err conftest.$ac_objext \
++    conftest$ac_exeext conftest.$ac_ext
++else
++  atomic_LIBS=""
+ 
+ fi
+ rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+ 
++
+ # Prepare CFLAG_VISIBILITY to be used where needed
+ 
+ 

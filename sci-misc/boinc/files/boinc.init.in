@@ -15,13 +15,13 @@ create_work_directory() {
 	if [ ! -d "${RUNTIMEDIR}" ]; then
 		einfo "Directory ${RUNTIMEDIR} does not exist, creating now."
 		if ! mkdir -p "${RUNTIMEDIR}"; then
-			eeror "Directory ${RUNTIMEDIR} could not be created!"
+			eerror "Directory ${RUNTIMEDIR} could not be created!"
 			return 1
 		fi
 
 		# ensure proper ownership
 		if ! chown "${USER}:${GROUP}" "${RUNTIMEDIR}"; then
-			eeror "Changing ownership of '${RUNTIMEDIR}' to '${USER}:${GROUP}' failed!"
+			eerror "Changing ownership of '${RUNTIMEDIR}' to '${USER}:${GROUP}' failed!"
 			return 1
 		fi
 	fi
@@ -33,7 +33,7 @@ create_work_directory() {
 		fi
 
 		if ! ln -s "${sslcrt}" "${RUNTIMEDIR}"/ca-bundle.crt; then
-			eeror "Symlinking '${sslcrt}' failed!"
+			eerror "Symlinking '${sslcrt}' failed!"
 			return 1
 		fi
 	fi
@@ -58,14 +58,14 @@ fix_lib_symlinks() {
 
 		# Remove broken symlink
 		if ! rm -f "${tgt}"; then
-			eeror "Removing '${tgt}' failed!"
+			eerror "Removing '${tgt}' failed!"
 			return 1
 		fi
 	fi
 
 	# symlink the correct path
 	if ! ln -snf "${src}" "${tgt}"; then
-		eeror "Symlinking '${src}' to '${tgt}' failed!"
+		eerror "Symlinking '${src}' to '${tgt}' failed!"
 		return 1
 	fi
 

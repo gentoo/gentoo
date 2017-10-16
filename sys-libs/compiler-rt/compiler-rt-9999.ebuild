@@ -74,13 +74,16 @@ src_configure() {
 		-DCOMPILER_RT_INSTALL_PATH="${EPREFIX}/usr/lib/clang/${SLOT}"
 
 		-DCOMPILER_RT_INCLUDE_TESTS=$(usex test)
+		-DCOMPILER_RT_BUILD_LIBFUZZER=OFF
+		-DCOMPILER_RT_BUILD_PROFILE=OFF
 		-DCOMPILER_RT_BUILD_SANITIZERS=OFF
 		-DCOMPILER_RT_BUILD_XRAY=OFF
 	)
 
 	if use test; then
 		mycmakeargs+=(
-			-DLIT_COMMAND="${EPREFIX}/usr/bin/lit"
+			-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
+			-DLLVM_LIT_ARGS="-vv"
 
 			-DCOMPILER_RT_TEST_COMPILER="${EPREFIX}/usr/lib/llvm/${LLVM_SLOT}/bin/clang"
 			-DCOMPILER_RT_TEST_CXX_COMPILER="${EPREFIX}/usr/lib/llvm/${LLVM_SLOT}/bin/clang++"

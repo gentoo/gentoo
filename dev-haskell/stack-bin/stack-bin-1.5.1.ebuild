@@ -19,13 +19,14 @@ SRC_URI="
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~arm"
-IUSE=""
+IUSE="symlink"
 
 DEPEND=""
 RDEPEND="${DEPEND}
 	sys-libs/zlib
 	dev-libs/gmp:0
 "
+RDEPEND+=" symlink? ( !dev-haskell/stack )"
 
 S=${WORKDIR}
 
@@ -42,4 +43,5 @@ src_prepare() {
 src_install() {
 	dodoc doc/*
 	dobin stack-bin
+	use symlink && dosym stack-bin /usr/bin/stack
 }

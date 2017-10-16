@@ -1,0 +1,18 @@
+diff -urN logtalk-3.11.2.orig/scripts/logtalk_user_setup.sh logtalk-3.11.2/scripts/logtalk_user_setup.sh
+--- logtalk-3.11.2.orig/scripts/logtalk_user_setup.sh	2017-08-28 10:13:52.000000000 +0200
++++ logtalk-3.11.2/scripts/logtalk_user_setup.sh	2017-09-24 14:47:36.815968990 +0200
+@@ -130,14 +130,6 @@
+ rm -f "$LOGTALKUSER"/tools/lgtdoc/xml/lgt2*
+ rm -f "$LOGTALKUSER"/tools/lgtdoc/xml/logtalk.dtd
+ rm -f "$LOGTALKUSER"/tools/lgtdoc/xml/logtalk.xsd
+-ln -sf "$LOGTALKHOME"/BIBLIOGRAPHY.bib "$LOGTALKUSER"/BIBLIOGRAPHY.bib
+-ln -sf "$LOGTALKHOME"/CUSTOMIZE.md "$LOGTALKUSER"/CUSTOMIZE.md
+-ln -sf "$LOGTALKHOME"/INSTALL.md "$LOGTALKUSER"/INSTALL.md
+-ln -sf "$LOGTALKHOME"/LICENSE.txt "$LOGTALKUSER"/LICENSE.txt
+-ln -sf "$LOGTALKHOME"/QUICK_START.md "$LOGTALKUSER"/QUICK_START.md
+-ln -sf "$LOGTALKHOME"/README.md "$LOGTALKUSER"/README.md
+-ln -sf "$LOGTALKHOME"/RELEASE_NOTES.md "$LOGTALKUSER"/RELEASE_NOTES.md
+-ln -sf "$LOGTALKHOME"/UPGRADING.md "$LOGTALKUSER"/UPGRADING.md
+ ln -sf "$LOGTALKHOME"/adapters "$LOGTALKUSER"/adapters
+ ln -sf "$LOGTALKHOME"/manuals "$LOGTALKUSER"/manuals
+ ln -sf "$LOGTALKHOME"/paths "$LOGTALKUSER"/paths

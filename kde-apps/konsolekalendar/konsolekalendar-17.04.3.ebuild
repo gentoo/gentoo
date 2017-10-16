@@ -10,7 +10,7 @@ inherit kde5
 DESCRIPTION="Command line interface to KDE calendars"
 HOMEPAGE+=" https://userbase.kde.org/KonsoleKalendar"
 LICENSE="GPL-2+ handbook? ( FDL-1.2+ )"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE=""
 

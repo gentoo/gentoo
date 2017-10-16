@@ -2,9 +2,9 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>fgtham+genbugs@gmail.com</email>
+		<email>fgtham@gmail.com</email>
 		<name>Florian Tham</name>
-		<description>Proxy maintainer - set to assignee on bugs</description>
+		<description>Proxied maintainer - assign bugs to him</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>

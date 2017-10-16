@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
-<pkgmetadata>
-	<!-- maintainer-needed -->
-	<longdescription lang="en">Spotlighter is a tool that show a movable and resizable spotlight
-		on the desktop screen.
-		You can use this to hide and show objects on the desktop.
-		This program has been implemented for educational purposes.</longdescription>
-</pkgmetadata>

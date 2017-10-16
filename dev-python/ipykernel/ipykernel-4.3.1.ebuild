@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,6 +19,7 @@ IUSE="test"
 
 RDEPEND="
 	>=dev-python/ipython-4.0.0[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '<dev-python/ipython-6[${PYTHON_USEDEP}]' 'python2*')
 	dev-python/jupyter_client[${PYTHON_USEDEP}]
 	>=www-servers/tornado-4.0[${PYTHON_USEDEP}]
 	dev-python/traitlets[${PYTHON_USEDEP}]

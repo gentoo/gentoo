@@ -12,5 +12,8 @@
   <flag name="ipp_autosetup">
      Let cups-browsed automatically set up IPP network printers by default.
   </flag>
+  <flag name="pclm">
+     Enable PCLm support
+  </flag>
   </use>
 </pkgmetadata>

@@ -24,7 +24,6 @@ DEPEND="${RDEPEND}
 			dev-lang/ruby:2.4
 			dev-lang/ruby:2.3
 			dev-lang/ruby:2.2
-			dev-lang/ruby:2.1
 		)
 	)"
 
@@ -38,7 +37,7 @@ src_prepare() {
 	sed -i 's/-O2 -g ${CC_WARNING_FLAGS} //g' ./CMakeLists.txt \
 		|| die "sed fix failed!"
 
-	default
+	cmake-utils_src_prepare
 }
 
 src_configure() {

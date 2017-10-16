@@ -17,5 +17,6 @@ RDEPEND="
 	>=dev-ros/hardware_interface-0.11
 	dev-ros/pluginlib
 	dev-ros/roscpp
+	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}"

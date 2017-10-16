@@ -34,7 +34,7 @@ RDEPEND="
 
 	introspection? ( >=dev-libs/gobject-introspection-0.6.2:= )
 	kerberos? (
-		app-crypt/gcr:0=
+		app-crypt/gcr:0=[gtk]
 		app-crypt/mit-krb5 )
 "
 #	telepathy? ( net-libs/telepathy-glib )

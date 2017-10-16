@@ -14,7 +14,7 @@ SRC_URI="http://www.iana.org/time-zones/repository/releases/tzdata${data_ver}.ta
 
 LICENSE="BSD public-domain"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris"
 IUSE="nls leaps_timezone elibc_FreeBSD"
 
 DEPEND="nls? ( virtual/libintl )"
@@ -115,7 +115,7 @@ pkg_preinst() {
 	fi
 }
 
-pkg_config() {
+configure_tz_data() {
 	# make sure the /etc/localtime file does not get stale #127899
 	local tz src="${EROOT}etc/timezone" etc_lt="${EROOT}etc/localtime"
 
@@ -151,6 +151,10 @@ pkg_config() {
 	cp -f "${EROOT}"/usr/share/zoneinfo/"${tz}" "${etc_lt}"
 }
 
+pkg_config() {
+	configure_tz_data
+}
+
 pkg_postinst() {
-	pkg_config
+	configure_tz_data
 }

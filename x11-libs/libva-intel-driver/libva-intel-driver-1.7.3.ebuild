@@ -20,6 +20,7 @@ if [ "${PV%9999}" != "${PV}" ] ; then # Live ebuild
 	S="${WORKDIR}/${PN}"
 else
 	SRC_URI="https://github.com/01org/intel-vaapi-driver/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/intel-vaapi-driver-${PV}"
 fi
 
 LICENSE="MIT"

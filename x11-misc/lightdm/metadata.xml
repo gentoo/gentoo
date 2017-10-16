@@ -8,8 +8,6 @@
 	<use>
 		<flag name="gtk">Pull in the gtk+ greeter</flag>
 	</use>
-	<longdescription lang="en">
-</longdescription>
 	<upstream>
 		<remote-id type="launchpad">lightdm</remote-id>
 	</upstream>

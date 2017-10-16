@@ -7,7 +7,7 @@ inherit kde5
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="amd64 ~arm x86"
 fi
 
 DESCRIPTION="Library for managing partitions"
@@ -16,7 +16,7 @@ LICENSE="GPL-3"
 SLOT="5/5"
 IUSE=""
 
-CDEPEND="
+RDEPEND="
 	$(add_frameworks_dep kcoreaddons)
 	$(add_frameworks_dep ki18n)
 	$(add_frameworks_dep kiconthemes)
@@ -30,9 +30,6 @@ CDEPEND="
 	sys-apps/util-linux
 	>=sys-block/parted-3
 "
-DEPEND="${CDEPEND}
+DEPEND="${RDEPEND}
 	virtual/pkgconfig
-"
-RDEPEND="${CDEPEND}
-	!<sys-block/partitionmanager-2.0.0
 "

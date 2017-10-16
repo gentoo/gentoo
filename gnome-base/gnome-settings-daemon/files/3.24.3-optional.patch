@@ -1,14 +1,17 @@
-From 7b7bbbeeb9fa422d5a291574910e0881fa13f171 Mon Sep 17 00:00:00 2001
+From 9116667b39f7a3ef622b0fd4e09ffa77718fa5c2 Mon Sep 17 00:00:00 2001
 From: Ole Reifschneider <mail@ole-reifschneider.de>
 Date: Tue, 15 Aug 2017 18:51:42 +0200
-Subject: [PATCH] Make colord and wacom support optional
+Subject: [PATCH 1/6] Make colord and wacom support optional
 
 Signed-off-by: Gilles Dartiguelongue <eva@gentoo.org>
+Signed-off-by: Timo Tambet <ttambet@gmail.com>
+Signed-off-by: Yuh-Horng Chen <yhchens@gmail.com>
 ---
- configure.ac              | 54 +++++++++++++++++++++++++++++++----------------
- plugins/Makefile.am       |  9 ++++++--
- plugins/dummy/Makefile.am |  5 ++++-
- 3 files changed, 47 insertions(+), 21 deletions(-)
+ configure.ac               | 54 ++++++++++++++++++++++++++++++----------------
+ plugins/Makefile.am        |  9 ++++++--
+ plugins/common/Makefile.am |  7 ++++--
+ plugins/dummy/Makefile.am  |  5 ++++-
+ 4 files changed, 52 insertions(+), 23 deletions(-)
 
 diff --git a/configure.ac b/configure.ac
 index 73fe91e6..d8778c93 100644
@@ -121,6 +124,30 @@ index 9324b406..ee78d6d0 100644
  enabled_plugins += wacom
  else
  disabled_plugins += wacom
+diff --git a/plugins/common/Makefile.am b/plugins/common/Makefile.am
+index 239c6015..65de4007 100644
+--- a/plugins/common/Makefile.am
++++ b/plugins/common/Makefile.am
+@@ -49,14 +49,17 @@ libcommon_la_CPPFLAGS = \
+ 	-I$(top_builddir)/gnome-settings-daemon	\
+ 	-I$(top_srcdir)/data/
+ 
+-libcommon_la_CFLAGS = $(COMMON_CFLAGS)
++libcommon_la_CFLAGS = \
++	$(COMMON_CFLAGS) \
++	$(LIBWACOM_CFLAGS)
+ 
+ libcommon_la_LDFLAGS = \
+ 	$(GSD_PLUGIN_LDFLAGS)
+ 
+ libcommon_la_LIBADD  = \
+ 	$(top_builddir)/gnome-settings-daemon/libgsd.la \
+-	$(COMMON_LIBS)
++	$(COMMON_LIBS) \
++	$(LIBWACOM_LIBS)
+ 
+ libexec_PROGRAMS = gsd-test-input-helper
+ 
 diff --git a/plugins/dummy/Makefile.am b/plugins/dummy/Makefile.am
 index cb5856cf..d8e8bc4e 100644
 --- a/plugins/dummy/Makefile.am
@@ -138,5 +165,5 @@ index cb5856cf..d8e8bc4e 100644
  endif
  if !BUILD_PRINT_NOTIFICATIONS
 -- 
-2.14.0
+2.14.1
 

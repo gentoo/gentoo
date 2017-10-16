@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ inherit cmake-utils versionator
 MY_P=SFML-${PV}
 
 DESCRIPTION="Simple and Fast Multimedia Library (SFML)"
-HOMEPAGE="http://www.sfml-dev.org/ https://github.com/SFML/SFML"
+HOMEPAGE="https://www.sfml-dev.org/ https://github.com/SFML/SFML"
 SRC_URI="https://github.com/SFML/SFML/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ZLIB"
@@ -44,7 +44,7 @@ src_prepare() {
 	sed -i "s:DESTINATION .*:DESTINATION /usr/share/doc/${PF}:" \
 		doc/CMakeLists.txt || die
 
-	default
+	cmake-utils_src_prepare
 }
 
 src_configure() {

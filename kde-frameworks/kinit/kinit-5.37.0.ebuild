@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="Helper library to speed up start of applications on KDE work spaces"
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="+caps +man"
 
 RDEPEND="

@@ -107,9 +107,11 @@ src_prepare() {
 
 	eapply_user
 
-	# bug #526194
-	sed -e "s@CFLAGS =.*\$@CFLAGS = ${CFLAGS} -g -Wall -Wsign-compare@" \
-		-e "s@LINKFLAGS =.*\$@LINKFLAGS = ${LDFLAGS} -g@" \
+	# bugs #526194 and #620532
+	sed -e "s@CFLAGS +=.*\$@CFLAGS = ${CFLAGS} -Wall -Wsign-compare -Wpointer-arith@" \
+		-e "s@LINKFLAGS += -g\$@LINKFLAGS = ${LDFLAGS}@" \
+		-e "s@LINKFLAGS += -no-pie\$@LINKFLAGS = ${LDFLAGS} -no-pie@" \
+		-e "s@LINKFLAGS += -nopie\$@LINKFLAGS = ${LDFLAGS} -nopie@" \
 		-i src/runtime/GNUmakefile || die
 
 	sed -e "s@SBCL_PREFIX=\"/usr/local\"@SBCL_PREFIX=\"${EPREFIX}/usr\"@" \

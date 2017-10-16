@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 
+# Andreas Sturmlechner <asturm@gentoo.org> (03 Sep 2017)
+# Required media-libs/phonon no longer provides USE=aqua
+dev-qt/qtdemo phonon
+
 # Fabian Groffen <grobian@gentoo.org> (06 Apr 2016)
 # dev-libs/re2 needs love, bug #563932
 app-misc/sphinx re2

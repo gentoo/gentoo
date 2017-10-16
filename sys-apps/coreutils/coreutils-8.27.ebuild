@@ -43,6 +43,7 @@ RDEPEND+="
 	)
 	!app-misc/realpath
 	!<sys-apps/util-linux-2.13
+	!<sys-apps/sandbox-2.10-r4
 	!sys-apps/stat
 	!net-mail/base64
 	!sys-apps/mktemp
@@ -156,7 +157,7 @@ src_install() {
 		# create a symlink for uname in /usr/bin/ since autotools require it
 		local x
 		for x in ${com} uname ; do
-			dosym /bin/${x} /usr/bin/${x}
+			dosym ../../bin/${x} /usr/bin/${x}
 		done
 	else
 		# For now, drop the man pages, collides with the ones of the system.

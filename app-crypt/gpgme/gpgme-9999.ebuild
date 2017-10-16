@@ -98,7 +98,7 @@ src_test() {
 	default
 	if use python; then
 		test_python() {
-			emake -j1 -C lang/python/tests check \
+			emake -C lang/python/tests check \
 				PYTHON=${EPYTHON} \
 				PYTHONS=${EPYTHON} \
 				TESTFLAGS="--python-libdir=${BUILD_DIR}/lib"

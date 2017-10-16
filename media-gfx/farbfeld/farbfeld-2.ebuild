@@ -1,12 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit toolchain-funcs
 
 DESCRIPTION="farbfeld simple image format tools"
-HOMEPAGE="http://tools.suckless.org/farbfeld/"
-SRC_URI="http://dl.suckless.org/${PN}/${P}.tar.gz"
+HOMEPAGE="https://tools.suckless.org/farbfeld/"
+SRC_URI="https://dl.suckless.org/${PN}/${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"

@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit libtool eutils texlive-common
+inherit libtool eutils flag-o-matic texlive-common
 
 MY_P=${PN}-beta-${PV}
 DESCRIPTION="An extended version of pdfTeX using Lua as an embedded scripting language"
@@ -31,6 +31,7 @@ S="${WORKDIR}/${MY_P}/source"
 
 src_prepare() {
 	has_version '>=app-text/poppler-0.26.0:0' && epatch "${FILESDIR}/poppler026.patch"
+	has_version '>=app-text/poppler-0.57.0:0' && append-cxxflags -std=c++11 # bug 627538
 	epatch "${FILESDIR}/remove-zlib-version-check.patch" \
 		"${FILESDIR}/includes.patch"
 	S="${S}/build-aux" elibtoolize --shallow

@@ -14,7 +14,7 @@ HOMEPAGE="http://basket.kde.org/ https://github.com/basket-notepads/basket"
 SRC_URI="https://github.com/${PN}-notepads/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="crypt git"
 
 RDEPEND="
@@ -45,7 +45,7 @@ RDEPEND="
 	$(add_qt_dep qtnetwork)
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
-	media-libs/phonon[qt5]
+	media-libs/phonon[qt5(+)]
 	x11-libs/libX11
 	crypt? ( app-crypt/gpgme )
 	git? ( dev-libs/libgit2 )

@@ -7,7 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="oniguruma">Use dev-libs/oniguruma for regular expression support</flag>
-		<flag name="valgrind">Depend on dev-util/vagrind for test suite</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">stedolan/jq</remote-id>

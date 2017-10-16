@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -32,6 +32,7 @@ src_install() {
 	cp -r adapters coding contributions core examples integration \
 		library paths scratch tests tools VERSION.txt \
 		loader-sample.lgt settings-sample.lgt tester-sample.lgt \
+		tests-sample.lgt \
 		"${D}/usr/share/${P}" \
 		|| die "Failed to install files"
 
@@ -101,9 +102,6 @@ src_install() {
 pkg_postinst() {
 	fdo-mime_desktop_database_update
 
-	ewarn "Before running logtalk, users should execute"
-	ewarn "logtalk_user_setup *once*"
-	ewarn ""
 	ewarn "The following integration scripts are installed"
 	ewarn "for running logtalk with selected Prolog compilers:"
 	ewarn "B-Prolog: /usr/bin/bplgt"

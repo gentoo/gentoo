@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,11 +9,11 @@ PYTHON_REQ_USE="threads"
 inherit bash-completion-r1 elisp-common eutils distutils-r1 mercurial flag-o-matic
 
 DESCRIPTION="Scalable distributed SCM"
-HOMEPAGE="http://mercurial.selenic.com/"
+HOMEPAGE="https://www.mercurial-scm.org/"
 EHG_REPO_URI="http://selenic.com/repo/hg"
 EHG_REVISION="@"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS=""
 IUSE="bugzilla emacs gpg test tk zsh-completion"

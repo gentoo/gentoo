@@ -24,6 +24,20 @@ S="${WORKDIR}"
 MODULE_NAMES="wl(net/wireless)"
 MODULESD_WL_ALIASES=("wlan0 wl")
 
+pkg_pretend() {
+	ewarn
+	ewarn "If you are stuck using this unmaintained driver (likely in a MacBook),"
+	ewarn "you may be interested to know that a newer compatible wireless card"
+	ewarn "is supported by the in-tree brcmfmac driver. It has a model number "
+	ewarn "BCM943602CS and is for sale on the second hand market for less than "
+	ewarn "20 USD."
+	ewarn
+	ewarn "See https://wikidevi.com/wiki/Broadcom_Wireless_Adapters and"
+	ewarn "    https://wikidevi.com/wiki/Broadcom_BCM943602CS"
+	ewarn "for more information."
+	ewarn
+}
+
 pkg_setup() {
 	# bug #300570
 	# NOTE<lxnay>: module builds correctly anyway with b43 and SSB enabled

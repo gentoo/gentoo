@@ -21,5 +21,6 @@ RDEPEND="
 	dev-ros/image_transport
 	dev-ros/nodelet
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}"

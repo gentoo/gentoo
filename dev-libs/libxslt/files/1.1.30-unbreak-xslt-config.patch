@@ -1,0 +1,37 @@
+From 9608d20739b36087f0e6865cc924769d3b286188 Mon Sep 17 00:00:00 2001
+From: Gilles Dartiguelongue <eva@gentoo.org>
+Date: Tue, 12 Sep 2017 23:44:35 +0200
+Subject: [PATCH] Move XML_CONFIG assignment to unbreak xslt-config
+
+Bug: https://bugs.gentoo.org/630784
+---
+ configure.in | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/configure.in b/configure.in
+index e6f649cd..49e6b6cf 100644
+--- a/configure.in
++++ b/configure.in
+@@ -518,9 +518,6 @@ else
+ 	LIBXML_MANUAL_SEARCH=yes
+ fi
+ 
+-if test "x$LIBXML_MANUAL_SEARCH" != "xno"
+-then
+-
+ dnl
+ dnl where is xml2-config
+ dnl
+@@ -534,6 +531,9 @@ else
+ 	AC_PATH_TOOL([XML_CONFIG], [xml2-config], [false])
+ fi
+ 
++if test "x$LIBXML_MANUAL_SEARCH" != "xno"
++then
++
+ dnl
+ dnl imported from libxml2, c.f. #77827 
+ dnl
+-- 
+2.14.1
+

@@ -5,15 +5,15 @@
 # Set a home directory
 #LS_HOME=/var/lib/logstash
 
+# Set data directory
+#LS_DATA_DIR=${LS_HOME}/data
+
 # Arguments to pass to logstash agent
 #LS_OPTS=""
 
 # Arguments to pass to java
 #LS_HEAP_SIZE="500m"
 #LS_JAVA_OPTS="-Djava.io.tmpdir=$HOME"
-
-# pidfiles location
-#LS_PIDFILE=/run/logstash/logstash.pid
 
 # user id to be invoked as
 #LS_USER=logstash

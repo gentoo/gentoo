@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ inherit latex-package
 DESCRIPTION="The vc (version control) bundle"
 HOMEPAGE="https://www.ctan.org/pkg/vc"
 # Taken from http://mirrors.ctan.org/support/vc.zip
-SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.zip"
+SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.zip"
 
 LICENSE="public-domain"
 SLOT="0"

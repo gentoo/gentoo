@@ -6,7 +6,7 @@
     <name>Gentoo Science Project</name>
   </maintainer>
   <longdescription>
-  	Interactive Parallel Computing with IPython.
+    Interactive Parallel Computing with IPython.
     ipyparallel is the new home of IPython.parallel.
   </longdescription>
   <upstream>

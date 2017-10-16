@@ -72,9 +72,6 @@ multilib_src_configure() {
 		# upstream is omitting standard search path for this
 		# probably because gcc & clang are bundling their own unwind.h
 		-DLIBCXXABI_LIBUNWIND_INCLUDES="${EPREFIX}"/usr/include
-		# this only needs to exist, it does not have to make sense
-		# FIXME: remove this once https://reviews.llvm.org/D25314 is merged
-		-DLIBCXXABI_LIBUNWIND_SOURCES="${T}"
 	)
 	if use test; then
 		mycmakeargs+=(

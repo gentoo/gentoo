@@ -20,7 +20,7 @@ else
 fi
 
 DESCRIPTION="A sound design and signal processing system for composition and performance"
-HOMEPAGE="http://csound.github.io/"
+HOMEPAGE="https://csound.github.io/"
 
 LICENSE="LGPL-2.1 doc? ( FDL-1.2+ )"
 SLOT="0"

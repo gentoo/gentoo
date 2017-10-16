@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="Library for Grantlee plugins"
 LICENSE="GPL-2+ LGPL-2.1+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 COMMON_DEPEND="

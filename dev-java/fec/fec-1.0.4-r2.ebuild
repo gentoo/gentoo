@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ inherit flag-o-matic toolchain-funcs java-pkg-2 java-ant-2
 
 DESCRIPTION="Forward Error Correction library in Java"
 HOMEPAGE="https://bitbucket.org/onionnetworks/"
-SRC_URI="http://dev.gentoo.org/~monsieurp/packages/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~monsieurp/packages/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"

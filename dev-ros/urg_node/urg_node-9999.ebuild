@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -23,5 +23,6 @@ RDEPEND="
 	dev-ros/diagnostic_updater
 	dev-ros/laser_proc
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}"

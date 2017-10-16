@@ -7,7 +7,7 @@ GIT_TAG="3a0b7b74982f44c735f4cfc2dccf538c3c4ef9e2"
 
 DESCRIPTION="Gnulib is a library of common routines intended to be shared at the source level"
 HOMEPAGE="https://www.gnu.org/software/gnulib"
-SRC_URI="http://git.savannah.gnu.org/cgit/${PN}.git/snapshot/${PN}-${GIT_TAG}.tar.gz"
+SRC_URI="https://git.savannah.gnu.org/cgit/${PN}.git/snapshot/${PN}-${GIT_TAG}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

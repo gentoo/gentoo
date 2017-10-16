@@ -24,7 +24,7 @@ HOMEPAGE="http://www.exim.org/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="alpha amd64 ~arm ~hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~x86-solaris"
+KEYWORDS="alpha amd64 ~arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~x86-solaris"
 
 COMMON_DEPEND=">=sys-apps/sed-4.0.5
 	>=sys-libs/db-3.2:=
@@ -329,6 +329,13 @@ src_configure() {
 		EOC
 	fi
 
+	# Proxy Protocol
+	if use proxy; then
+		cat >> Makefile <<- EOC
+			SUPPORT_PROXY=yes
+		EOC
+	fi
+
 	#
 	# experimental features
 
@@ -372,13 +379,6 @@ src_configure() {
 	if use tpda; then
 		cat >> Makefile <<- EOC
 			EXPERIMENTAL_EVENT=yes
-		EOC
-	fi
-
-	# Proxy Protocol
-	if use proxy; then
-		cat >> Makefile <<- EOC
-			EXPERIMENTAL_PROXY=yes
 		EOC
 	fi
 
@@ -522,7 +522,6 @@ pkg_postinst() {
 		einfo "experimental-spec.txt."
 	fi
 	use tpda && einfo "TPDA/EVENT support is experimental"
-	use proxy && einfo "proxy support is experimental"
 	use dsn && einfo "DSN support is experimental"
 	elog "The obsolete acl condition 'demime' is removed, the replacements"
 	elog "are the ACLs acl_smtp_mime and acl_not_smtp_mime"

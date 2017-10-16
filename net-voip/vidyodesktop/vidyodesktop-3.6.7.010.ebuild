@@ -64,10 +64,10 @@ RDEPEND="
 "
 
 src_install() {
-	cp -a opt "${D}"
+	cp -a opt "${ED}"
 	doicon usr/share/pixmaps/vidyo_icon.png
 	dodoc opt/vidyo/VidyoDesktop/license.txt
-	rm "${D}opt/vidyo/VidyoDesktop/license.txt"
+	rm "${ED}opt/vidyo/VidyoDesktop/license.txt"
 	exeinto /opt/bin
 	doexe usr/bin/VidyoDesktop
 	make_desktop_entry VidyoDesktop VidyoDesktop vidyo_icon 'AudioVideo;Network;'

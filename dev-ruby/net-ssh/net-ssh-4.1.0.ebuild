@@ -28,6 +28,9 @@ ruby_add_bdepend "test? ( dev-ruby/test-unit:2 >=dev-ruby/mocha-0.13 )"
 all_ruby_prepare() {
 	# Don't use a ruby-bundled version of libsodium
 	sed -i -e '/rbnacl\/libsodium/ s:^:#:' lib/net/ssh/authentication/ed25519.rb || die
+
+	# Avoid bundler dependency
+	sed -i -e '/\(bundler\|:release\)/ s:^:#:' Rakefile || die
 }
 
 each_ruby_test() {

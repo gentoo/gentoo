@@ -18,7 +18,7 @@ SRC_URI="ftp://ftp.lyx.org/pub/lyx/stable/2.2.x/${MY_P}.tar.xz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x64-macos ~x86-macos"
+KEYWORDS="~alpha ~amd64 ~hppa ia64 ~ppc ~ppc64 ~sparc ~x86 ~x64-macos ~x86-macos"
 IUSE="aspell cups debug docbook dia dot enchant gnumeric html +hunspell +latex monolithic-build nls +qt5 rcs rtf subversion svg"
 
 LANGS="ar ca cs da de el en es eu fi fr gl he hu ia id it ja nb nn pl pt_BR pt_PT ro ru sk sr sv tr uk zh_CN zh_TW"
@@ -153,8 +153,8 @@ src_install() {
 	python_fix_shebang "${ED}"/usr/share/${PN}
 
 	if use hunspell ; then
-		dosym /usr/share/myspell /usr/share/lyx/dicts
-		dosym /usr/share/myspell /usr/share/lyx/thes
+		dosym ../myspell /usr/share/lyx/dicts
+		dosym ../myspell /usr/share/lyx/thes
 	fi
 }
 

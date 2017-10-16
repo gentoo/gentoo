@@ -1,0 +1,6 @@
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# Tom Wijsman <TomWij@gentoo.org (16 Mar 2014)
+# Mask unstable USE flags on media-video/vlc, see security bug #499806.
+media-video/vlc chromaprint gnutls opus

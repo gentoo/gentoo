@@ -126,8 +126,8 @@ src_install() {
 	# Create symlinks to authorization files in the server home dir
 	# (required by the hqldb init script)
 	insinto "${HSQLDB_HOME}"
-	dosym /etc/hsqldb/server.properties "${HSQLDB_HOME}/server.properties"
-	dosym /etc/hsqldb/sqltool.rc "${HSQLDB_HOME}/sqltool.rc"
+	dosym ../../../etc/hsqldb/server.properties "${HSQLDB_HOME}/server.properties"
+	dosym ../../../etc/hsqldb/sqltool.rc "${HSQLDB_HOME}/sqltool.rc"
 }
 
 pkg_postinst() {

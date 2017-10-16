@@ -35,7 +35,8 @@ DEPEND="
 	"
 
 src_compile() {
-	sed -i '/^\t@/s/@//' Makefile || die #make all slient commands ("@") verbose
+	#make all slient commands ("@") verbose and remove -Werror (ispc/ispc#1295)
+	sed -e '/^\t@/s/@//' -e 's/-Werror//' -i Makefile || die
 	emake LDFLAGS="${LDFLAGS}" OPT="${CXXFLAGS}" CXX="$(tc-getCXX)" CPP="$(tc-getCPP)"
 }
 

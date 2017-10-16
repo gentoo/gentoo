@@ -31,6 +31,7 @@ RDEPEND="
 	sci-libs/vtk:=[qt5(-)?]
 	sys-libs/zlib
 	sci-libs/octomap:=
+	dev-libs/boost:=
 	ieee1394? ( media-libs/libdc1394 )
 	openni2? ( dev-libs/OpenNI2 )
 	qt5? (

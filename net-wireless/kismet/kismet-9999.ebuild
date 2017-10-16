@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit autotools eutils multilib user
 
@@ -12,7 +12,7 @@ S=${WORKDIR}/${MY_P}
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://www.kismetwireless.net/${PN}.git"
 	SRC_URI=""
-	inherit git-2
+	inherit git-r3
 	KEYWORDS=""
 else
 	SRC_URI="http://www.kismetwireless.net/code/${MY_P}.tar.xz"
@@ -24,11 +24,15 @@ HOMEPAGE="http://www.kismetwireless.net/"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
-#IUSE="+client +pcre speech +plugin-autowep +plugin-btscan plugin-dot15d4 +plugin-ptw +plugin-spectools +plugin-syslog +ruby selinux +suid"
-IUSE="+client +pcre speech +ruby selinux +suid"
+#IUSE="+client +pcre speech +plugin-autowep +plugin-btscan plugin-dot15d4 +plugin-ptw +plugin-spectools +plugin-syslog selinux +suid"
+IUSE="+client +pcre speech selinux +suid"
 
-CDEPEND="net-wireless/wireless-tools
-	dev-libs/msgpack
+CDEPEND="
+	net-misc/networkmanager:=
+	dev-libs/glib:=
+	dev-libs/elfutils:=
+	sys-libs/zlib:=
+	dev-db/sqlite:=
 	net-libs/libmicrohttpd
 	kernel_linux? ( sys-libs/libcap
 			dev-libs/libnl:3
@@ -48,7 +52,6 @@ DEPEND="${CDEPEND}
 "
 
 RDEPEND="${CDEPEND}
-	ruby? ( dev-lang/ruby:* )
 	selinux? ( sec-policy/selinux-kismet )
 "
 
@@ -60,7 +63,7 @@ src_prepare() {
 	sed -i -e 's| -s||g' \
 		-e 's|@mangrp@|root|g' Makefile.in
 
-	epatch_user
+	eapply_user
 	eautoreconf
 }
 
@@ -124,13 +127,14 @@ src_install() {
 	#	cd "${S}"/plugin-syslog
 	#	KIS_SRC_DIR="${S}" emake DESTDIR="${ED}" LIBDIR="$(get_libdir)" install
 	#fi
-	if use ruby; then
-		cd "${S}"/ruby
-		dobin *.rb
-	fi
+	#if use ruby; then
+	#	cd "${S}"/ruby
+	#	dobin *.rb
+	#fi
 
 	cd "${S}"
 	emake DESTDIR="${D}" commoninstall
+	emake DESTDIR="${D}" forceconfigs
 
 	##dragorn would prefer I set fire to my head than do this, but it works
 	##all external kismet plugins (read: kismet-ubertooth) must be rebuilt when kismet is
@@ -146,21 +150,22 @@ src_install() {
 	newinitd "${FILESDIR}"/${PN}.initd kismet
 	newconfd "${FILESDIR}"/${PN}.confd kismet
 
-	insinto /etc
-	doins conf/kismet{,_drone}.conf
-
-	if use suid; then
-	dobin kismet_capture
-	fi
+	#if use suid; then
+	#	dobin kismet_capture
+	#fi
 }
 
 pkg_preinst() {
 	if use suid; then
 		enewgroup kismet
-		fowners root:kismet /usr/bin/kismet_capture
+		fowners root:kismet /usr/bin/kismet_capture_tools/kismet_cap_linux_bluetooth
+		fowners root:kismet /usr/bin/kismet_capture_tools/kismet_cap_linux_wifi
+		fowners root:kismet /usr/bin/kismet_capture_tools/kismet_cap_pcapfile
 		# Need to set the permissions after chowning.
 		# See chown(2)
-		fperms 4550 /usr/bin/kismet_capture
+		fperms 4550 /usr/bin/kismet_capture_tools/kismet_cap_linux_bluetooth
+		fperms 4550 /usr/bin/kismet_capture_tools/kismet_cap_linux_wifi
+		fperms 4550 /usr/bin/kismet_capture_tools/kismet_cap_pcapfile
 		elog "Kismet has been installed with a setuid-root helper binary"
 		elog "to enable minimal-root operation.  Users need to be part of"
 		elog "the 'kismet' group to perform captures from physical devices."

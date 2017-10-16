@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -26,9 +26,11 @@ RDEPEND="
 	dev-libs/libxml2
 	net-im/telepathy-logger
 	net-libs/telepathy-glib
-	net-libs/telepathy-qt[qt5]
+	net-libs/telepathy-qt[qt5(+)]
 	sys-apps/dbus
 "
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 "
+
+PATCHES=( "${FILESDIR}/${P}-cmake-3.9.patch" )

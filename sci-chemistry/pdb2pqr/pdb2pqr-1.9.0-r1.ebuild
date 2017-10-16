@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/Electrostatics/apbs-${PN}/releases/download/${P}/${P
 SLOT="0"
 LICENSE="BSD"
 IUSE="doc examples opal +pdb2pka"
-KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

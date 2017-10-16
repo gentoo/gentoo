@@ -9,7 +9,13 @@
 	<email>base-system@gentoo.org</email>
 	<name>Gentoo Base System</name>
 </maintainer>
+<use>
+	<flag name="nistbeacon">
+		Enable NIST beacon entropy support
+	</flag>
+</use>
 <upstream>
+	<remote-id type="github">nhorman/rng-tools</remote-id>
 	<remote-id type="sourceforge">gkernel</remote-id>
 </upstream>
 </pkgmetadata>

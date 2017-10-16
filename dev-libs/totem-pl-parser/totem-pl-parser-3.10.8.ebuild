@@ -55,9 +55,13 @@ src_prepare() {
 }
 
 src_configure() {
+	# uninstalled-tests is abused to switch from loading live FS helper
+	# to in-build-tree helper, check on upgrades this is not having other
+	# consequences, bug #630242
 	gnome2_src_configure \
 		--disable-static \
 		--enable-gmime=2.6 \
+		--enable-uninstalled-tests \
 		$(use_enable archive libarchive) \
 		$(use_enable crypt libgcrypt) \
 		$(use_enable quvi) \

@@ -47,13 +47,19 @@ pkg_setup() {
 }
 
 src_prepare() {
-	# Fix Perl destination directory
-	perl_set_version
-	sed -i "s|\${LIB_INSTALL_DIR}/perl\${PERL_VERSION}/|${VENDOR_ARCH}|" perl/CMakeLists.txt || die
-	sed -i "s|\${LIB_INSTALL_DIR}/python\${PYTHON_VERSION}/dist-packages/|$(python_get_sitedir)|" python/CMakeLists.txt || die
-	# Disable Perl/Python from USE flags
-	use perl || sed -i 's|ADD_SUBDIRECTORY(perl)||' CMakeLists.txt || die
-	use python || sed -i 's|ADD_SUBDIRECTORY(python)||' CMakeLists.txt || die
+	if use perl; then
+		# Fix Perl destination directory
+		perl_set_version
+		sed -i "s|\${LIB_INSTALL_DIR}/perl\${PERL_VERSION}/|${VENDOR_ARCH}|" perl/CMakeLists.txt || die
+	else
+		sed -i 's|ADD_SUBDIRECTORY(perl)||' CMakeLists.txt || die
+	fi
+
+	if use python; then
+		sed -i "s|\${LIB_INSTALL_DIR}/python\${PYTHON_VERSION}/dist-packages/|$(python_get_sitedir)|" python/CMakeLists.txt || die
+	else
+		sed -i 's|ADD_SUBDIRECTORY(python)||' CMakeLists.txt || die
+	fi
 }
 
 src_install() {

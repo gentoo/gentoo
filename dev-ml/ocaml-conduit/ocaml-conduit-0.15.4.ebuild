@@ -26,7 +26,7 @@ DEPEND="
 	>=dev-ml/lwt-3:=
 	dev-ml/lwt_ssl:=
 	dev-ml/async:=
-	dev-ml/ocaml-dns:=
+	dev-ml/dns:=
 	dev-ml/ocaml-ssl:=
 "
 RDEPEND="${DEPEND}"

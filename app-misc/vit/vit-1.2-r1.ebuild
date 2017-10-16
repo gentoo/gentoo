@@ -20,6 +20,8 @@ DEPEND="
 	dev-perl/Curses"
 RDEPEND="${DEPEND}"
 
+RESTRICT="test" # missing the extra .makefile for extra targets (like test)
+
 S="${WORKDIR}/${PN}"
 
 src_prepare() {
