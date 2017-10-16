@@ -101,18 +101,10 @@ DEPEND="${COMMON_DEPEND}
 	dev-lang/perl
 	app-misc/pax-utils
 	doc? (
-		app-doc/doxygen
+		app-text/pandoc
 		dev-python/markdown[${PYTHON_USEDEP}]
-		dev-tex/latex2html[png,gif]
-		media-gfx/graphviz
-		dev-tex/xcolor
-		media-gfx/transfig
 		dev-texlive/texlive-latexextra
-		virtual/latex-base
-		dev-tex/latexmk
-		dev-texlive/texlive-latex
-		dev-texlive/texlive-pictures
-		dev-texlive/texlive-latexrecommended
+		media-gfx/transfig
 	)
 	hvm? ( x11-proto/xproto
 		!net-libs/libiscsi )
@@ -383,8 +375,11 @@ src_compile() {
 
 	emake V=1 CC="$(tc-getCC)" LD="$(tc-getLD)" AR="$(tc-getAR)" RANLIB="$(tc-getRANLIB)" -C tools ${myopt}
 
-	use doc && emake -C docs txt html
-	emake -C docs man-pages
+	if use doc; then
+		emake -C docs build
+	else
+		emake -C docs man-pages
+	fi
 }
 
 src_install() {
@@ -408,17 +403,9 @@ src_install() {
 	# Remove RedHat-specific stuff
 	rm -rf "${D}"tmp || die
 
-	if use doc; then
-		emake DESTDIR="${D}" DOCDIR="/usr/share/doc/${PF}" install-docs
-
-		dohtml -r docs/
-		docinto pdf
-		dodoc ${DOCS[@]}
-		[ -d "${D}"/usr/share/doc/xen ] && mv "${D}"/usr/share/doc/xen/* "${D}"/usr/share/doc/${PF}/html
-	fi
-
-	rm -rf "${D}"/usr/share/doc/xen/
-	doman docs/man?/*
+	emake DESTDIR="${D}" DOCDIR="/usr/share/doc/${PF}" install-docs
+	use doc && dodoc -r docs/{pdf,txt}
+	dodoc ${DOCS[@]}
 
 	newconfd "${FILESDIR}"/xendomains.confd xendomains
 	newconfd "${FILESDIR}"/xenstored.confd xenstored
