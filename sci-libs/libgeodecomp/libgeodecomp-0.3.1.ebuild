@@ -20,9 +20,11 @@ DEPEND="${RDEPEND}
 	examples? ( !sys-cluster/mpich2 )"
 
 S="${WORKDIR}/${P}/src"
+PATCHES=( "${FILESDIR}/libflatarray.patch" )
 
 src_prepare() {
-	epatch "${FILESDIR}/libflatarray.patch"
+	cmake-utils_src_prepare
+
 	sed -i 's/libdir=${CMAKE_INSTALL_PREFIX}\/lib/libdir=\/usr\/'$(get_libdir)'/' "${S}/CMakeLists.txt"
 	sed -i 's/install(TARGETS geodecomp DESTINATION lib)/install(TARGETS geodecomp DESTINATION '$(get_libdir)')/' "${S}/CMakeLists.txt"
 
