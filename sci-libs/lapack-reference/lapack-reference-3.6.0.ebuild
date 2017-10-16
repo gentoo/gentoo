@@ -23,9 +23,7 @@ S="${WORKDIR}/lapack-${PV}"
 PATCHES=( "${FILESDIR}/${P}-fix-build-system.patch" )
 
 src_prepare() {
-	epatch "${PATCHES[@]}"
-
-	eapply_user
+	cmake-utils_src_prepare
 
 	ESELECT_PROF=reference
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -22,6 +22,8 @@ DEPEND="${RDEPEND}
 DOCS="AUTHORS README*" # CHANGELOG is obsolete in favour of git history
 
 src_prepare() {
+	cmake-utils_src_prepare
+
 	sed -i \
 		-e '/GCC_ONLY_OPT.*-s/d' \
 		-e '/FLAGS/s:-Os::' \

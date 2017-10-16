@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -24,6 +24,8 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen media-gfx/graphviz )
 	test? ( dev-lang/perl )"
 
+PATCHES=( "${FILESDIR}"/${PN}-1.3.9-respect-cflags.patch )
+
 enable_polarssl_option() {
 	local myopt="$@"
 	# check that config.h syntax is the same at version bump
@@ -39,7 +41,7 @@ src_prepare() {
 	use threads && enable_polarssl_option POLARSSL_THREADING_C
 	use threads && enable_polarssl_option POLARSSL_THREADING_PTHREAD
 
-	epatch "${FILESDIR}"/${PN}-1.3.9-respect-cflags.patch
+	cmake-utils_src_prepare
 }
 
 multilib_src_configure() {

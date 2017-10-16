@@ -33,11 +33,11 @@ PATCHES=(
 )
 
 src_prepare() {
+	cmake-utils_src_prepare
+
 	sed -e 's:jpeg_mem_src:freepv_jpeg_mem_src:g' \
 		-i src/libfreepv/JpegReader.cpp || die
 
 	sed -e 's:^INSTALL(.*)::' \
 		-i src/libfreepv/CMakeLists.txt || die
-
-	default
 }

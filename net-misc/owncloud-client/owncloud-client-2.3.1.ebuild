@@ -62,7 +62,7 @@ src_prepare() {
 		cmake_comment_add_subdirectory nautilus
 		popd > /dev/null || die
 	fi
-	default
+	cmake-utils_src_prepare
 }
 
 src_configure() {
