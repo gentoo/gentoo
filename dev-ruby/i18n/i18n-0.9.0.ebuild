@@ -3,7 +3,7 @@
 
 EAPI=6
 
-USE_RUBY="ruby21 ruby22 ruby23 ruby24"
+USE_RUBY="ruby22 ruby23 ruby24"
 
 RUBY_FAKEGEM_RECIPE_TEST="test"
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
@@ -22,6 +22,8 @@ SLOT="$(get_version_component_range 1-2)"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
+ruby_add_rdepend "dev-ruby/concurrent-ruby:1"
+
 ruby_add_bdepend "test? (
 	>=dev-ruby/activesupport-4.2
 	dev-ruby/bundler
@@ -35,7 +37,7 @@ all_ruby_prepare() {
 each_ruby_test() {
 	case ${RUBY} in
 		*ruby22|*ruby23|*ruby24)
-			versions="4.2 5.0"
+			versions="4.2 5.0 5.1"
 			;;
 		*)
 			versions="4.2"
