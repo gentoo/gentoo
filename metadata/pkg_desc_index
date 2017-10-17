@@ -5534,7 +5534,7 @@ dev-perl/CGI-Builder 1.360.0-r1 1.360.0-r2: Framework to build simple or complex
 dev-perl/CGI-Compile 0.210.0 0.220.0: Compile .cgi scripts to a code reference like ModPerl::Registry
 dev-perl/CGI-Emulate-PSGI 0.210.0 0.220.0 0.230.0: PSGI adapter for CGI
 dev-perl/CGI-Fast 2.100.0 2.110.0 2.120.0: CGI Interface for Fast CGI
-dev-perl/CGI-FastTemplate 1.90.0-r1: The Perl CGI::FastTemplate Module
+dev-perl/CGI-FastTemplate 1.90.0-r1 1.90.0-r2: High Performance Templates and Variable Interpolation
 dev-perl/CGI-FormBuilder 3.90.0 3.100.0: Extremely fast, reliable form generation and processing module
 dev-perl/CGI-PSGI 0.150.0-r1: Adapt CGI.pm to the PSGI protocol
 dev-perl/CGI-Session 4.480.0-r1: persistent session data in CGI applications
@@ -5571,7 +5571,7 @@ dev-perl/Carp-Clan 6.60.0: Report errors from perspective of caller of a clan of
 dev-perl/Chart 2.4.10: The Perl Chart Module
 dev-perl/Chart-Math-Axis 1.60.0-r2: Implements an algorithm to find good values for chart axis
 dev-perl/Chatbot-Eliza 1.60.0 1.70.0 1.80.0: A clone of the classic Eliza program
-dev-perl/Cisco-IPPhone 0.50.0-r1: Cisco IP Phone interface using XML Objects
+dev-perl/Cisco-IPPhone 0.50.0-r1 0.50.0-r2: Cisco IP Phone interface using XML Objects
 dev-perl/Cisco-Reconfig 0.911.0 0.912.0: Parse and generate Cisco configuration files
 dev-perl/Class-Accessor 0.340.0-r1: Automated accessor generation
 dev-perl/Class-Accessor-Chained 0.10.0-r1: Perl module to make chained class accessors
@@ -12990,7 +12990,7 @@ media-libs/gstreamer-editing-services 1.10.3 1.10.4 1.12.3: SDK for making video
 media-libs/guilib 1.2.1: a simple widget set for SDL
 media-libs/gupnp-dlna 0.10.4 0.10.5: Library providing DLNA-related functionality for MediaServers
 media-libs/hamlib 3.1: Ham radio backend rig control libraries
-media-libs/harfbuzz 1.4.5 1.4.6-r2 1.4.8 1.5.0 1.5.1 9999: An OpenType text shaping engine
+media-libs/harfbuzz 1.4.5 1.4.6-r2 1.4.8 1.5.1 1.6.0 9999: An OpenType text shaping engine
 media-libs/herqq 1.0.0-r2: A software library for building UPnP devices
 media-libs/hupnp-ng 9999: A software library for building UPnP devices, fork of herqq
 media-libs/icc-profiles-basiccolor-printing2009 1.2.0: ICC profiles for printing/offset
@@ -17733,7 +17733,7 @@ sys-fs/bashmount 3.2.0: Bash script that uses udisks to mount removable devices 
 sys-fs/bcache-tools 1.0.5 1.0.8 1.0.8_p20140220-r1 9999: Tools for bcachefs
 sys-fs/bedup 0.10.1 9999: Btrfs file de-duplication tool
 sys-fs/bindfs 1.13.6 1.13.7: FUSE filesystem for bind mounting with altered permissions
-sys-fs/btrfs-progs 3.14.2 3.16.2 3.17.3 3.18.2 3.19.1 4.0.1 4.1.2 4.2.2 4.3.1 4.4.1 4.5.3 4.6.1 4.7.3 4.8.1-r1 4.8.3 4.8.4 4.8.5 4.9 4.9.1 4.10.2 4.11 4.12 4.13.1 4.13.2 9999: Btrfs filesystem utilities
+sys-fs/btrfs-progs 3.14.2 3.16.2 3.17.3 3.18.2 3.19.1 4.0.1 4.1.2 4.2.2 4.3.1 4.4.1 4.5.3 4.6.1 4.7.3 4.8.5 4.9.1 4.10.2 4.11 4.12 4.13.2 4.13.3 9999: Btrfs filesystem utilities
 sys-fs/btrfsmaintenance 0.3.1: Scripts for btrfs maintenance tasks like periodic scrub, balance, trim or defrag
 sys-fs/cachefilesd 0.10.5-r4 0.10.9: Provides a caching directory on an already mounted filesystem
 sys-fs/clamfs 1.0.1-r2: A FUSE-based user-space file system with on-access anti-virus file scanning
@@ -17755,7 +17755,7 @@ sys-fs/dmg2img 1.6.5 1.6.6 1.6.7: Converts Apple DMG files to standard HFS+ imag
 sys-fs/dmraid 1.0.0_rc16-r3: Device-mapper RAID tool and library
 sys-fs/dosfstools 4.0-r1 4.1: DOS filesystem tools - provides mkdosfs, mkfs.msdos, mkfs.vfat
 sys-fs/duperemove 0.09.1 0.09.2 0.09.3 0.09.4 0.09.5 0.10 0.11_beta4: Btrfs deduplication utility
-sys-fs/e2fsprogs 1.43.3-r1 1.43.5 1.43.6: Standard EXT2/EXT3/EXT4 filesystem utilities
+sys-fs/e2fsprogs 1.43.3-r1 1.43.6 1.43.7: Standard EXT2/EXT3/EXT4 filesystem utilities
 sys-fs/e2tools 0.0.16: utilities to read, write, and manipulate files in an ext2/ext3 filesystem
 sys-fs/e4rat 0.2.4_pre20141201 0.2.4_pre20141201-r1: Toolset to accelerate the boot process and application startup
 sys-fs/ecryptfs-utils 108-r1: eCryptfs userspace utilities
@@ -17884,7 +17884,7 @@ sys-libs/cracklib 2.9.6-r1: Password Checking Library
 sys-libs/csu 79 85: Darwin Csu (crt1.o) - Mac OS X 10.10 version
 sys-libs/cygwin-crypt 1.4: Cygwin Encryption/Decryption utility and library
 sys-libs/db 1.85-r3 3.2.9_p2 4.2.52_p5-r1 4.3.29_p1-r1 4.4.20_p4-r1 4.5.20_p2-r1 4.6.21_p4 4.7.25_p4 4.8.30-r2 5.1.29-r1 5.3.28-r2 5.3.28-r3 6.0.35 6.0.35-r1 6.1.29 6.1.29-r1 6.2.23 6.2.23-r1 6.2.32 6.2.32-r1: Oracle Berkeley DB
-sys-libs/e2fsprogs-libs 1.43.3 1.43.5 1.43.6: e2fsprogs libraries (common error and subsystem)
+sys-libs/e2fsprogs-libs 1.43.3 1.43.6 1.43.7: e2fsprogs libraries (common error and subsystem)
 sys-libs/efivar 30 31: Tools and library to manipulate EFI variables
 sys-libs/fortify-headers 0.6 0.7 9999: A standalone implementation of fortify source.
 sys-libs/freeipmi 1.2.2 1.4.3 1.4.8 1.5.6 1.5.7: Provides Remote-Console and System Management Software as per IPMI v1.5/2.0
