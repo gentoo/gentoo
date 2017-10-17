@@ -4,12 +4,12 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
-inherit eutils linux-mod multilib python-single-r1 versionator toolchain-funcs
+inherit eutils multilib python-single-r1 versionator toolchain-funcs
 
 MY_PV="${PV/beta/BETA}"
 MY_PV="${MY_PV/rc/RC}"
 MY_P=VirtualBox-${MY_PV}
-DESCRIPTION="VirtualBox video driver"
+DESCRIPTION="VirtualBox X11 video driver for Gentoo guest"
 HOMEPAGE="http://www.virtualbox.org/"
 SRC_URI="http://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2"
 
@@ -20,13 +20,12 @@ IUSE="dri"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
-	<x11-base/xorg-server-1.19:=[-minimal]
+	>=x11-base/xorg-server-1.7:=[-minimal]
 	x11-libs/libXcomposite
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
-	>=dev-util/kbuild-0.1.9998_pre20131130
 	>=dev-lang/yasm-0.6.2
-	>=sys-devel/gcc-4.9.0
+	>=dev-util/kbuild-0.1.9998_pre20131130
 	sys-power/iasl
 	x11-proto/fontsproto
 	x11-proto/randrproto
@@ -43,10 +42,12 @@ DEPEND="${RDEPEND}
 	x11-libs/libXext
 	dri? (  x11-proto/xf86driproto
 		>=x11-libs/libdrm-2.4.5 )"
+PDEPEND="dri? ( ~app-emulation/virtualbox-guest-additions-${PV} )"
 
 BUILD_TARGETS="all"
 BUILD_TARGET_ARCH="${ARCH}"
-MODULE_NAMES="vboxvideo(misc:${WORKDIR}/vboxvideo_drm:${WORKDIR}/vboxvideo_drm)"
+S="${WORKDIR}/${MY_P}"
+MODULES_SRC_DIR="${S}/src/VBox/Additions/linux/drm"
 
 PATCHES=(
 	# Ugly hack to build the opengl part of the video driver
@@ -54,9 +55,13 @@ PATCHES=(
 
 	# unset useless/problematic checks in configure
 	"${FILESDIR}/${PN}-5.0.0_beta3-configure_checks.patch"
-)
 
-S="${WORKDIR}/${MY_P}"
+	# xorg-1.19 patch from opensuse (bug #602784)
+	"${FILESDIR}/${PN}-5.1.10-xorg119.patch"
+
+	# fix bug #579946
+	"${FILESDIR}/${PN}-5.1.30-sysmacros.patch"
+)
 
 QA_TEXTRELS_x86="usr/lib/VBoxOGL.so"
 
@@ -65,25 +70,12 @@ pkg_setup() {
 		version_is_at_least 4.9 $(gcc-version) || die "Please set gcc 4.9 or higher as active in gcc-config to build ${PN}"
 	fi
 
-	linux-mod_pkg_setup
-	BUILD_PARAMS="KERN_DIR=${KV_OUT_DIR} KERNOUT=${KV_OUT_DIR}"
-
 	python-single-r1_pkg_setup
 }
 
 src_prepare() {
-	# Prepare the vboxvideo_drm sources and Makefile in ${WORKDIR}
-	cp -a "${S}"/src/VBox/Additions/linux/drm "${WORKDIR}/vboxvideo_drm" \
-		|| die "cannot copy vboxvideo_drm directory"
-	cp "${FILESDIR}/${PN}-3-vboxvideo_drm.makefile" \
-		"${WORKDIR}/vboxvideo_drm/Makefile" \
-			|| die "cannot copy vboxvideo_drm Makefile"
-
-	# stupid new header references...
-	for vboxheader in {product,version}-generated.h ; do
-		ln -sf "${S}"/out/linux.${ARCH}/release/${vboxheader} \
-			"${WORKDIR}/vboxvideo_drm/${vboxheader}"
-	done
+	# Prepare the vboxvideo_drm Makefiles and build dir
+	eapply "${FILESDIR}"/${PN}-5.1.24-Makefile.module.kms.patch
 
 	# Remove shipped binaries (kBuild,yasm), see bug #232775
 	rm -r kBuild/bin tools || die
@@ -123,31 +115,64 @@ src_configure() {
 }
 
 src_compile() {
-	for each in /src/VBox/{Runtime,Additions/common/VBoxGuestLib} \
-		/src/VBox/{GuestHost/OpenGL,Additions/x11/x11stubs,Additions/common/crOpenGL} \
-		/src/VBox/Additions/x11/vboxvideo ; do
-			cd "${S}"${each} || die
-			MAKE="kmk" \
-			emake TOOL_YASM_AS=yasm \
-			VBOX_USE_SYSTEM_XORG_HEADERS=1 \
-			KBUILD_PATH="${S}/kBuild" \
-			KBUILD_VERBOSE=2
+	local each targets=(
+		Runtime
+		Additions/common/VBoxGuestLib
+		GuestHost/OpenGL
+		Additions/x11/x11stubs
+		Additions/common/crOpenGL
+		Additions/x11/vboxvideo
+	)
+
+	# need to use the upstream build system to create necessary objects properly
+	use dri && targets+=( Additions/linux/drm )
+
+	for each in ${targets[@]} ; do
+		pushd "${S}"/src/VBox/${each} &>/dev/null || die
+		MAKE="kmk" \
+		emake TOOL_YASM_AS=yasm \
+		VBOX_USE_SYSTEM_XORG_HEADERS=1 \
+		KBUILD_PATH="${S}/kBuild" \
+		KBUILD_VERBOSE=2
+		popd &>/dev/null || die
 	done
 
-	if use dri ; then
-		# Now creating the kernel modules. We must do this _after_
-		# we compiled the user-space tools as we need two of the
-		# automatically generated header files. (>=3.2.0)
-		linux-mod_src_compile
+	if use dri; then
+		local objdir="out/linux.${ARCH}/release/obj/vboxvideo_drm"
+		# We need a Makefile, so use Makefile.module.kms
+		ln -s Makefile.module.kms "${MODULES_SRC_DIR}"/Makefile || die
+		# All of these are expected to be in $(KBUILD_EXTMOD)/ so symlink them into place
+		targets=(
+			include
+			src/VBox/Runtime/r0drv
+			src/VBox/Installer/linux/Makefile.include.{head,foot}er
+			out/linux.${ARCH}/release/{product,version,revision}-generated.h
+		)
+		for each in ${targets[@]} ; do
+			ln -s "${S}"/${each} \
+				"${MODULES_SRC_DIR}"/${each##*/} || die
+		done
+		# see the vboxvideo_drm_SOURCES list in Makefile.kmk for the below,
+		# and replace '..' with 'dt'
+		targets=(
+			dt/dt/common/VBoxVideo/HGSMIBase.o
+			dt/dt/common/VBoxVideo/Modesetting.o
+			dt/dt/common/VBoxVideo/VBVABase.o
+			dt/dt/dt/GuestHost/HGSMI/HGSMICommon.o
+			dt/dt/dt/GuestHost/HGSMI/HGSMIMemAlloc.o
+			dt/dt/dt/Runtime/common/alloc/heapoffset.o
+		)
+		for each in ${targets[@]} ; do
+			ln -s "${S}"/${objdir}/${each} \
+				"${MODULES_SRC_DIR}" || die
+			ln -s "${S}"/${objdir}/${each}.dep \
+				"${MODULES_SRC_DIR}" || die
+		done
 	fi
 }
 
 src_install() {
-	if use dri; then
-		linux-mod_src_install
-	fi
-
-	cd "${S}/out/linux.${ARCH}/release/bin/additions"
+	cd "${S}/out/linux.${ARCH}/release/bin/additions" || die
 	insinto /usr/$(get_libdir)/xorg/modules/drivers
 	newins vboxvideo_drv_system.so vboxvideo_drv.so
 
@@ -167,15 +192,4 @@ pkg_postinst() {
 	elog "  Driver  \"vboxvideo\""
 	elog ""
 	elog "in the Graphics device section (Section \"Device\")"
-	elog ""
-	if use dri; then
-		elog "To use the kernel drm video driver, please add:"
-		elog "\"vboxvideo\" to:"
-		if has_version sys-apps/openrc ; then
-			elog "/etc/conf.d/modules"
-		else
-			elog "/etc/modules.autoload.d/kernel-${KV_MAJOR}.${KV_MINOR}"
-		fi
-		elog ""
-	fi
 }

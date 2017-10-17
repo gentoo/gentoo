@@ -34,7 +34,7 @@ SRC_URI="amd64? ( http://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}_amd
 
 LICENSE="GPL-2 PUEL"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="+additions +chm headless python vboxwebsrv rdesktop-vrdp"
 RESTRICT="mirror"
 
@@ -51,19 +51,19 @@ RDEPEND="!!app-emulation/virtualbox
 	!app-emulation/virtualbox-additions
 	~app-emulation/virtualbox-modules-${MAIN_PV}
 	!headless? (
-		x11-libs/libXcursor
-		media-libs/libsdl[X]
-		x11-libs/libXrender
-		x11-libs/libXfixes
-		media-libs/libpng
-		x11-libs/libXi
-		x11-libs/libXrandr
-		x11-libs/libXinerama
-		x11-libs/libXft
-		media-libs/freetype
-		media-libs/fontconfig
-		x11-libs/libXext
 		dev-libs/glib
+		media-libs/fontconfig
+		media-libs/freetype
+		media-libs/libpng
+		media-libs/libsdl[X]
+		x11-libs/libXcursor
+		x11-libs/libXext
+		x11-libs/libXfixes
+		x11-libs/libXft
+		x11-libs/libXi
+		x11-libs/libXinerama
+		x11-libs/libXrandr
+		x11-libs/libXrender
 		chm? ( dev-libs/expat )
 	)
 	dev-libs/libxml2
