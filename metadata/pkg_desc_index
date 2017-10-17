@@ -30,7 +30,7 @@ app-accessibility/powiedz 1.0-r2: Polish speech synthesizer based on rsynth
 app-accessibility/simon 0.4.1 0.4.90: Open-source speech recognition program for replacing mouse and keyboard
 app-accessibility/sound-icons 0.1: a collection of Sound Icons for speech-dispatcher
 app-accessibility/speech-dispatcher 0.8.1 0.8.3 0.8.7: Speech synthesis interface
-app-accessibility/speech-tools 2.1-r2 2.1-r3: Speech tools for Festival Text to Speech engine
+app-accessibility/speech-tools 2.1-r2 2.1-r3 2.1-r4: Speech tools for Festival Text to Speech engine
 app-accessibility/speechd-el 2.5: Emacs speech support
 app-accessibility/sphinx2 0.6: CMU Speech Recognition-engine
 app-accessibility/sphinx3 0.8-r1: CMU Speech Recognition engine
@@ -9488,7 +9488,7 @@ dev-ruby/bsearch 1.5.0-r2: A binary search library for Ruby
 dev-ruby/bson 3.2.6 4.1.1 4.2.0 4.2.1 4.2.2: A Ruby BSON implementation for MongoDB. (Includes binary C-based extension.)
 dev-ruby/buftok 0.2.0-r1: Statefully split input data by a specifiable token
 dev-ruby/builder 3.2.2-r1 3.2.3: A builder to facilitate programatic generation of XML markup
-dev-ruby/bundler 1.12.5 1.12.6 1.13.7 1.14.6: An easy way to vendor gem dependencies
+dev-ruby/bundler 1.12.5 1.12.6 1.13.7 1.14.6 1.15.4: An easy way to vendor gem dependencies
 dev-ruby/bundler-audit 0.5.0 0.6.0: Provides patch-level verification for Bundled apps
 dev-ruby/bunny 2.6.5 2.7.0 2.7.1: Another synchronous Ruby AMQP client
 dev-ruby/calendar_date_select 2.1.2: A popular and flexible JavaScript DatePicker for RubyOnRails
