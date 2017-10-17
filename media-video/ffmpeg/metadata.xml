@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>media-video@gentoo.org</email>
-  </maintainer>
-  <use>
+<maintainer type="project">
+	<email>media-video@gentoo.org</email>
+</maintainer>
+<use>
 	<flag name="amr">Enables Adaptive Multi-Rate Audio support</flag>
 	<flag name="amrenc">Enables Adaptive Multi-Rate Audio encoding support with <pkg>media-libs/vo-amrwbenc</pkg>.</flag>
 	<flag name="armv5te">Enables optimizations for armv5te processors.</flag>
@@ -56,10 +56,10 @@
 	<flag name="zeromq">Enables <pkg>net-libs/zeromq</pkg> support with the zmq/azmq filters.</flag>
 	<flag name="zimg">Enables <pkg>media-libs/zimg</pkg> based scale filter.</flag>
 	<flag name="zvbi">Enables <pkg>media-libs/zvbi</pkg> based teletext decoder.</flag>
-  </use>
-  <slots>
-    <slot name="0">For building against. This is the only slot that provides
-     headers and command line tools. Binary compatibility slots come and go
-     as required, so always pin dependencies to this slot when appropriate.</slot>
-  </slots>
+</use>
+<slots>
+	<slot name="0">For building against. This is the only slot that provides
+	headers and command line tools. Binary compatibility slots come and go
+	as required, so always pin dependencies to this slot when appropriate.</slot>
+</slots>
 </pkgmetadata>
