@@ -11,7 +11,7 @@ SRC_URI="http://matchbox-project.org/sources/${PN}/${PV}/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
 IUSE="debug doc"
 
 RDEPEND="x11-libs/libXtst"
