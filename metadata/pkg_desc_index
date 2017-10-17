@@ -12876,7 +12876,7 @@ media-gfx/tgif 4.2.5 4.2.5-r1: Xlib base 2-D drawing facility under X11
 media-gfx/tic98 1.01-r3: compressor for black-and-white images, in particular scanned documents
 media-gfx/tif22pnm 0.14: tif22pnm and png22pnm command-line converters
 media-gfx/tintii 2.10.0: A photo editor for selective color, saturation, and hue shift adjustments
-media-gfx/transfig 3.2.5d-r1 3.2.5e: A set of tools for creating TeX documents with graphics
+media-gfx/transfig 3.2.5e: A set of tools for creating TeX documents with graphics
 media-gfx/tuxpaint 0.9.21-r2: Drawing program designed for young children
 media-gfx/tuxpaint-stamps 20090628: Set of 'Rubber Stamp' images which can be used within Tux Paint
 media-gfx/ufraw 0.22 0.22-r1: RAW Image format viewer and GIMP plugin
@@ -15158,7 +15158,7 @@ net-misc/aget 0.4.1-r1: multithreaded HTTP download accelerator
 net-misc/aggregate 1.6: Take a list of prefixes and perform two optimisations to reduce the length of the prefix list
 net-misc/aggregate-flim 1.0.2: aggregate is a tool for aggregating CIDR networks
 net-misc/apt-cacher-ng 3: Yet another caching HTTP proxy for Debian/Ubuntu software packages
-net-misc/aria2 1.30.0 1.31.0 1.32.0: A download utility with segmented downloading with BitTorrent support
+net-misc/aria2 1.30.0 1.31.0 1.32.0 1.33.0: A download utility with segmented downloading with BitTorrent support
 net-misc/arm 1.4.5.0-r2 1.4.5.0_p20140714-r2: A ncurses-based status monitor for Tor relays
 net-misc/arpd 0.2-r1: ARP server which claims all unassigned addresses (for network monitoring or simulation)
 net-misc/arpsponge 3.12.2: Sweeps up stray ARP queries from a peering LAN
