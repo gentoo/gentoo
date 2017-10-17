@@ -110,7 +110,6 @@ COMMON_DEPEND="
 	media-libs/libpng:=
 	media-libs/libvpx:=[svc]
 	media-libs/speex:=
-	net-libs/nodejs:=
 	pulseaudio? ( media-sound/pulseaudio:= )
 	system-ffmpeg? ( >=media-video/ffmpeg-3:= )
 	sys-apps/dbus:=
@@ -163,6 +162,7 @@ DEPEND="${COMMON_DEPEND}
 	dev-perl/JSON
 	>=dev-util/gperf-3.0.3
 	dev-util/ninja
+	net-libs/nodejs
 	sys-apps/hwids[usb(+)]
 	>=sys-devel/bison-2.4.3
 	sys-devel/flex
