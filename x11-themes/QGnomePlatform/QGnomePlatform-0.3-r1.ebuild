@@ -14,7 +14,7 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	dev-qt/qtwidgets:5
+	dev-qt/qtwidgets:5=
 	x11-libs/gtk+:3[X]
 "
 RDEPEND="${DEPEND}"
