@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst prepare setup
+DEPEND=>=x11-base/xorg-server-1.7:=[-minimal] x11-libs/libXcomposite python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] >=dev-lang/yasm-0.6.2 >=dev-util/kbuild-0.1.9998_pre20131130 sys-power/iasl x11-proto/fontsproto x11-proto/randrproto x11-proto/renderproto x11-proto/resourceproto x11-proto/scrnsaverproto x11-proto/xextproto x11-proto/xineramaproto x11-proto/xproto x11-libs/libXdmcp x11-libs/libXau x11-libs/libX11 x11-libs/libXfixes x11-libs/libXext dri? ( x11-proto/xf86driproto >=x11-libs/libdrm-2.4.5 )
+DESCRIPTION=VirtualBox X11 video driver for Gentoo guest
+EAPI=6
+HOMEPAGE=http://www.virtualbox.org/
+IUSE=dri python_targets_python2_7
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+PDEPEND=dri? ( ~app-emulation/virtualbox-guest-additions-5.1.30 )
+RDEPEND=>=x11-base/xorg-server-1.7:=[-minimal] x11-libs/libXcomposite python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)]
+REQUIRED_USE=python_targets_python2_7
+SLOT=0
+SRC_URI=http://download.virtualbox.org/virtualbox/5.1.30/VirtualBox-5.1.30.tar.bz2
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	317a2557b4d7319a7418225f65accf77	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=47065ab82bbbcbcd8d6cac0ddfe193de
