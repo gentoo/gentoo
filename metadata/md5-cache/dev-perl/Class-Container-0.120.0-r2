@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-perl/Params-Validate-0.24-r1 >=virtual/perl-Scalar-List-Utils-1.08 >=dev-perl/Module-Build-0.28 dev-lang/perl:=
+DESCRIPTION=Glue object frameworks together transparently
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Class-Container/
+KEYWORDS=~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=dev-perl/Params-Validate-0.24-r1 >=virtual/perl-Scalar-List-Utils-1.08 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/K/KW/KWILLIAMS/Class-Container-0.12.tar.gz
+_eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=8d6175a84e7b2f68c473d27c967cfb82
