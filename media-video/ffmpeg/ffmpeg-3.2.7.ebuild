@@ -433,7 +433,7 @@ multilib_src_compile() {
 	if multilib_is_native_abi; then
 		for i in "${FFTOOLS[@]}" ; do
 			if use fftools_${i} ; then
-				emake V=1 tools/${i}
+				emake V=1 tools/${i}$(get_exeext)
 			fi
 		done
 	fi
@@ -445,7 +445,7 @@ multilib_src_install() {
 	if multilib_is_native_abi; then
 		for i in "${FFTOOLS[@]}" ; do
 			if use fftools_${i} ; then
-				dobin tools/${i}
+				dobin tools/${i}$(get_exeext)
 			fi
 		done
 	fi
