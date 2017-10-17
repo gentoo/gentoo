@@ -39,6 +39,8 @@ RDEPEND="${COMMON_DEPEND}
 	!<kde-plasma/plasma-workspace-5.10.95:5
 "
 
+PATCHES=( "${FILESDIR}/${P}-x11.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package X Qt5X11Extras)

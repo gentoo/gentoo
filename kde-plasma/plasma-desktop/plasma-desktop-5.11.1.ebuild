@@ -102,7 +102,7 @@ DEPEND="${COMMON_DEPEND}
 	mouse? ( x11-drivers/xf86-input-evdev )
 "
 RDEPEND="${COMMON_DEPEND}
-	$(add_frameworks_dep qqc2-desktop-style '' '5.10.95')
+	$(add_frameworks_dep qqc2-desktop-style)
 	$(add_plasma_dep breeze)
 	$(add_plasma_dep kde-cli-tools)
 	$(add_plasma_dep oxygen)
