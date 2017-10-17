@@ -110,6 +110,7 @@ COMMON_DEPEND="
 	media-libs/libpng:=
 	media-libs/libvpx:=[svc]
 	media-libs/speex:=
+	net-libs/nodejs:=
 	pulseaudio? ( media-sound/pulseaudio:= )
 	system-ffmpeg? ( >=media-video/ffmpeg-3:= )
 	sys-apps/dbus:=
