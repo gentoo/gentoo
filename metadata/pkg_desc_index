@@ -5256,7 +5256,7 @@ dev-ml/gen 0.4.0.1: Simple, efficient iterators for OCaml
 dev-ml/gen_js_api 1.0.3 1.0.4: Easy OCaml bindings for Javascript libraries
 dev-ml/gsl-ocaml 1.19.1: OCaml bindings for the GSL library (successor of dev-ml/ocamlgsl)
 dev-ml/herelib 112.35.00: Syntax extension for inserting the current location
-dev-ml/iTeML 2.5 2.6: Inline (Unit) Tests for OCaml
+dev-ml/iTeML 2.5 2.6 2.7: Inline (Unit) Tests for OCaml
 dev-ml/incremental 0.9.0: Library for incremental computations
 dev-ml/incremental_kernel 0.9.0: Library for incremental computations depending only on Core_kernel
 dev-ml/integers 0.2.2: Various signed and unsigned integer types for OCaml
@@ -5280,7 +5280,7 @@ dev-ml/lwt_ssl 1.0.1 1.1.1: GLib integration for Lwt
 dev-ml/macaque 0.7.4: DSL for SQL Queries in Caml
 dev-ml/markup 0.7.5: Error-recovering streaming HTML5 and XML parsers
 dev-ml/mccs 1.1.2c: Multi Criteria CUDF Solver
-dev-ml/menhir 20170712: LR(1) parser generator for the OCaml language
+dev-ml/menhir 20170712 20171013: LR(1) parser generator for the OCaml language
 dev-ml/merlin 2.5.3 2.5.4 2.5.5 3.0.0 3.0.1 3.0.2 3.0.3: Context sensitive completion for OCaml in Vim and Emacs
 dev-ml/merlin-extend 0.3: SDK to extend Merlin
 dev-ml/mirage-profile 0.7.0-r1: Collect profiling information
@@ -5320,9 +5320,9 @@ dev-ml/ocaml-redis-sync 0.3.5: Synchronous redis bindings for OCaml
 dev-ml/ocaml-safepass 2.0: A library offering facilities for the safe storage of user passwords
 dev-ml/ocaml-sha 1.9: A binding for SHA interface code in OCaml
 dev-ml/ocaml-snappy 0.1.0: OCaml bindings to snappy fast compression/decompression library
-dev-ml/ocaml-sqlite3 4.1.2 4.1.3 4.2.0: A package for ocaml that provides access to SQLite databases
+dev-ml/ocaml-sqlite3 4.1.2 4.1.3 4.2.0 4.3.0: A package for ocaml that provides access to SQLite databases
 dev-ml/ocaml-ssl 0.5.3 0.5.4 0.5.5: OCaml bindings for OpenSSL
-dev-ml/ocaml-stdint 0.3.0 0.4.1 0.4.2: Various signed and unsigned integers for OCaml
+dev-ml/ocaml-stdint 0.4.2 0.5.0: Various signed and unsigned integers for OCaml
 dev-ml/ocaml-text 0.8: Library for dealing with 'text'
 dev-ml/ocaml-uint 1.2.0: Unsigned ints for OCaml
 dev-ml/ocaml-uri 1.9.4: RFC3986 URI parsing library for OCaml
@@ -5358,11 +5358,11 @@ dev-ml/pa_sexp_conv 113.00.01: Deprecated camlp4 syntax extension for sexplib.
 dev-ml/pa_structural_sexp 113.00.00: Quotation expanders to simplify building s-expressions from ocaml values
 dev-ml/parmap 1.0_rc7-r1 1.0_rc8: Library to exploit multicore architectures for OCaml programs
 dev-ml/patience_diff 0.9.0: Tool and library implementing patience diff
-dev-ml/pcre-ocaml 7.2.3 7.3.0: Perl Compatibility Regular Expressions for O'Caml
+dev-ml/pcre-ocaml 7.2.3 7.3.0 7.3.2: Perl Compatibility Regular Expressions for O'Caml
 dev-ml/pgocaml 2.3: PG'OCaml is a set of OCaml bindings for the PostgreSQL database
 dev-ml/pipebang 113.00.00: Syntax extension to transform x |! f into f x
 dev-ml/pomap 3.0.6 3.0.7 4.0.0: Partially Ordered Map ADT for O'Caml
-dev-ml/postgresql-ocaml 4.0.1 4.1.0: A package for ocaml that provides access to PostgreSQL databases
+dev-ml/postgresql-ocaml 4.0.1 4.1.0 4.2.0: A package for ocaml that provides access to PostgreSQL databases
 dev-ml/ppx_assert 0.9.0: Assert-like extension nodes that raise useful errors on failure
 dev-ml/ppx_ast 0.9.1: AST used in Jane Street ppx rewriters
 dev-ml/ppx_base 0.9.0: Base set of ppx rewriters
@@ -5417,7 +5417,7 @@ dev-ml/spawn 0.9.0: Spawning sub-processes
 dev-ml/stdio 0.9.0: Standard IO Library for OCaml
 dev-ml/stringext 1.4.3 1.5.0: Extra string functions for OCaml
 dev-ml/textutils 0.9.0: Text output utilities
-dev-ml/topkg 0.9.0: The transitory OCaml software packager
+dev-ml/topkg 0.9.0 0.9.1: The transitory OCaml software packager
 dev-ml/type-conv 113.00.02: Mini library required for some other preprocessing libraries
 dev-ml/typerep 0.9.0: Library for creating runtime representation of OCaml types
 dev-ml/typerep_extended 0.9.0: Runtime types for OCaml (Extended)
@@ -5432,7 +5432,7 @@ dev-ml/xml-light 2.2-r3: Minimal Xml parser and printer for OCaml
 dev-ml/xmlm 1.3.0: Ocaml XML manipulation module
 dev-ml/xstr 0.2.1: Thread-safe implementation of string searching/matching/splitting
 dev-ml/yojson 1.4.0: JSON parsing and pretty-printing library for OCaml
-dev-ml/zarith 1.4.1 1.5 1.6: Arithmetic and logic operations over arbitrary-precision integers
+dev-ml/zarith 1.4.1 1.5 1.6 1.7: Arithmetic and logic operations over arbitrary-precision integers
 dev-ml/zed 1.5: Zed is an abstract engine for text edition
 dev-perl/Ace 1.920.0-r1 1.920.0-r2: Object-Oriented Access to ACEDB Databases
 dev-perl/Acme-Damn 0.60.0 0.80.0: Module, that 'unblesses' Perl objects
@@ -9885,7 +9885,7 @@ dev-ruby/rr 1.1.2-r1 1.2.0 1.2.1: A double framework featuring a selection of do
 dev-ruby/rrdtool-bindings 1.4.8 1.5.5 1.6.0 1.7.0: Ruby bindings for rrdtool
 dev-ruby/rspec 2.14.1-r1 2.99.0 3.3.0 3.5.0 3.6.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-collection_matchers 1.1.3 1.1.3-r1: A Behaviour Driven Development (BDD) framework for Ruby
-dev-ruby/rspec-core 2.14.8-r4 2.99.2-r1 2.99.2-r2 3.3.2 3.3.2-r1 3.5.3 3.5.4 3.6.0: A Behaviour Driven Development (BDD) framework for Ruby
+dev-ruby/rspec-core 2.14.8-r4 2.99.2-r2 3.3.2 3.3.2-r1 3.5.3 3.5.4 3.6.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-expectations 2.14.5-r1 2.99.2 3.3.1 3.5.0 3.6.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-its 1.2.0-r1: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-json_expectations 2.1.0: Set of matchers and helpers to allow you test your APIs responses.

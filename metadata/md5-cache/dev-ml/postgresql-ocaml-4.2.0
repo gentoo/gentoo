@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=dev-db/postgresql:=[server] dev-ml/jbuilder >=dev-ml/findlib-1.5 >=dev-lang/ocaml-4:= dev-ml/opam
+DESCRIPTION=A package for ocaml that provides access to PostgreSQL databases
+EAPI=5
+HOMEPAGE=http://mmottl.github.io/postgresql-ocaml/
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=LGPL-2
+RDEPEND=dev-db/postgresql:=[server] >=dev-lang/ocaml-4:=
+SLOT=0/4.2.0
+SRC_URI=https://github.com/mmottl/postgresql-ocaml/releases/download/4.2.0/postgresql-4.2.0.tbz
+_eclasses_=opam	24b4a2529c1fd12f1304856d6c5a690d
+_md5_=bd7a74b3869e52518fe7887b756f99e7
