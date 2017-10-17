@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install
+DEPEND=>=dev-lang/perl-5.10:= >=app-arch/dpkg-1.17 dev-perl/TimeDate virtual/perl-Getopt-Long linguas_de? ( >=app-text/po4a-0.24 ) linguas_es? ( >=app-text/po4a-0.24 ) linguas_fr? ( >=app-text/po4a-0.24 ) test? ( dev-perl/Test-Pod sys-apps/fakeroot )
+DESCRIPTION=Collection of programs that can be used to automate common tasks in debian/rules
+EAPI=6
+HOMEPAGE=https://packages.qa.debian.org/d/debhelper.html
+IUSE=test linguas_de linguas_es linguas_fr
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux
+LICENSE=GPL-2
+RDEPEND=>=dev-lang/perl-5.10:= >=app-arch/dpkg-1.17 dev-perl/TimeDate virtual/perl-Getopt-Long
+SLOT=0
+SRC_URI=mirror://debian/pool/main/d/debhelper/debhelper_10.9.2.tar.xz
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=292e7c0dc7ca3e29dc0c34c7da0b7090
