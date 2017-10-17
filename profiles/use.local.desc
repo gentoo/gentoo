@@ -923,7 +923,6 @@ app-misc/lcdproc:lcd_devices_sdeclcd - Enable support for VLSYS M428 display
 app-misc/lcdproc:lcd_devices_vlsys_m428 - Enable support for VLSYS M428 display
 app-misc/lcdproc:nfs - Adds support for NFS file system
 app-misc/lcdproc:seamless-hbars - Try to avoid gaps in horizontal bars
-app-misc/linux-logo:nls - Add Native Language Support (using gettext - GNU locale utilities)
 app-misc/lirc:audio - Support using an audio device connected to an IR receiver
 app-misc/lirc:devinput - Support the devinput input device
 app-misc/lirc:ftdi - Support FTDI devices
