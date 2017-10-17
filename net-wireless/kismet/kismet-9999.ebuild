@@ -14,6 +14,7 @@ if [[ ${PV} == "9999" ]] ; then
 	SRC_URI=""
 	inherit git-r3
 	KEYWORDS=""
+	RESTRICT="strip"
 else
 	SRC_URI="http://www.kismetwireless.net/code/${MY_P}.tar.xz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
