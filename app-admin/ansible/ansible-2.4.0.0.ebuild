@@ -13,7 +13,7 @@ SRC_URI="http://releases.ansible.com/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x64-macos"
+KEYWORDS="amd64 x86 ~x64-macos"
 IUSE="test"
 
 RDEPEND="
