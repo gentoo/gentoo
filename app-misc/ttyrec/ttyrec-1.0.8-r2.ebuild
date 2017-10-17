@@ -5,7 +5,7 @@ EAPI=6
 
 inherit flag-o-matic toolchain-funcs
 
-DESCRIPTION="The tty recorder provides tools to record and replay a terminal session."
+DESCRIPTION="ttyrec provides tools to record and replay a terminal session"
 HOMEPAGE="http://0xcc.net/ttyrec/"
 SRC_URI="http://0xcc.net/ttyrec/${P}.tar.gz"
 
@@ -21,7 +21,7 @@ src_compile() {
 }
 
 src_install() {
-	dobin ttyrec ttyplay ttytime
-	dodoc README
+	dobin tty{rec,play,time}
 	doman *.1
+	einstalldocs
 }
