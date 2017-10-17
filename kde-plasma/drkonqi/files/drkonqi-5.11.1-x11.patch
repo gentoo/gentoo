@@ -1,0 +1,46 @@
+From c5047038751052c3feb588496cd14bdb233a18f8 Mon Sep 17 00:00:00 2001
+From: Kevin Funk <kfunk@kde.org>
+Date: Sun, 15 Oct 2017 18:52:53 +0200
+Subject: Make Qt5::X11Extras really optional
+
+Summary:
+Otherwise may fail.
+
+Reviewers: rjvbb, sitter, davidedmundson
+
+Reviewed By: sitter, davidedmundson
+
+Subscribers: apol, plasma-devel
+
+Tags: #plasma
+
+Differential Revision: https://phabricator.kde.org/D8307
+---
+ CMakeLists.txt     | 2 +-
+ config-X11.h.cmake | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 43eeea5..8c8f9b2 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -30,7 +30,7 @@ find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Core Widgets Test
+ 
+ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS I18n CoreAddons Service ConfigWidgets JobWidgets KIO Crash Completion XmlRpcClient WidgetsAddons Wallet Notifications IdleTime)
+ 
+-find_package(Qt5 ${QT_MIN_VERSION} CONFIG COMPONENTS X11Extras)
++find_package(Qt5X11Extras ${QT_MIN_VERSION} CONFIG)
+ 
+ include_directories("${CMAKE_CURRENT_BINARY_DIR}")
+ configure_file(config-X11.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-X11.h)
+diff --git a/config-X11.h.cmake b/config-X11.h.cmake
+index 26064aa..2f779a2 100644
+--- a/config-X11.h.cmake
++++ b/config-X11.h.cmake
+@@ -1,2 +1,2 @@
+-#cmakedefine Qt5X11Extras_FOUND 1
++#cmakedefine01 Qt5X11Extras_FOUND
+ #define HAVE_X11 Qt5X11Extras_FOUND
+-- 
+cgit v0.11.2
+
