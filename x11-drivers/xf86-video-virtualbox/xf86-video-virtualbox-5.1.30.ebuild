@@ -60,7 +60,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.1.10-xorg119.patch"
 
 	# fix bug #579946
-	"${FILESDIR}/${PN}-5.1.22-sysmacros.patch"
+	"${FILESDIR}/${PN}-5.1.30-sysmacros.patch"
 )
 
 QA_TEXTRELS_x86="usr/lib/VBoxOGL.so"
