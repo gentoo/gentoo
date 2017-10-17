@@ -1,0 +1,51 @@
+--- a/vboxdrv/r0drv/linux/memobj-r0drv-linux.c	2017-03-08 07:08:13.000000000 -0500
++++ b/vboxdrv/r0drv/linux/memobj-r0drv-linux.c	2017-08-18 23:33:00.984836616 -0400
+@@ -901,6 +901,9 @@
+     union
+     {
+         pgd_t       Global;
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 12, 0)
++        p4d_t       Four;
++#endif
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 11)
+         pud_t       Upper;
+ #endif
+@@ -918,7 +921,23 @@
+         return NULL;
+ 
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 11)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 12, 0)
++    u.Four  = *p4d_offset(&u.Global, ulAddr);
++    if (RT_UNLIKELY(p4d_none(u.Four)))
++        return NULL;
++    if (p4d_large(u.Four))
++    {
++        pPage = p4d_page(u.Four);
++        AssertReturn(pPage, NULL);
++        pfn   = page_to_pfn(pPage);      /* doing the safe way... */
++        AssertCompile(P4D_SHIFT - PAGE_SHIFT < 31);
++        pfn  += (ulAddr >> PAGE_SHIFT) & ((UINT32_C(1) << (P4D_SHIFT - PAGE_SHIFT)) - 1);
++        return pfn_to_page(pfn);
++    }
++    u.Upper = *pud_offset(&u.Four, ulAddr);
++#else /* < 4.12 */
+     u.Upper = *pud_offset(&u.Global, ulAddr);
++#endif /* < 4.12 */
+     if (RT_UNLIKELY(pud_none(u.Upper)))
+         return NULL;
+ # if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 25)
+
+--- a/vboxdrv//r0drv/linux/the-linux-kernel.h	2017-08-18 23:23:26.275868285 -0400
++++ b/vboxdrv/r0drv/linux/the-linux-kernel.h	2017-08-18 23:36:59.188823490 -0400
+@@ -149,6 +149,11 @@
+ # include <asm/tlbflush.h>
+ #endif
+ 
++/* for set_pages_x() */
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 12, 0)
++# include <asm/set_memory.h>
++#endif
++
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 7, 0)
+ # include <asm/smap.h>
+ #else

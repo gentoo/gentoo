@@ -47,6 +47,11 @@ src_prepare() {
 		epatch "${FILESDIR}"/${PN}-4.1.4-pax-const.patch
 	fi
 
+	if kernel_is -ge 4 12 0 ; then
+		# patch for 5-level page table introduced in 4.12
+		epatch "${FILESDIR}"/${PN}-5.0.40-page-table.patch
+	fi
+
 	default
 }
 
