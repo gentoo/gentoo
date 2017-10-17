@@ -11,7 +11,4 @@
 <longdescription lang="es">
     Una utlidad que muestra un logotipo ANSI/ASCII e información del sistema
 </longdescription>
-<use>
-	<flag name="nls">Add Native Language Support (using gettext - GNU locale utilities)</flag>
-</use>
 </pkgmetadata>
