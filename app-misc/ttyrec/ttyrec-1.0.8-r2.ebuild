@@ -17,7 +17,7 @@ PATCHES=( "${FILESDIR}/${P}-flags.patch" )
 src_compile() {
 	# Bug 106530
 	[[ ${CHOST} != *-darwin* ]] && append-cppflags -DSVR4 -D_XOPEN_SOURCE=500
-	default
+	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}"
 }
 
 src_install() {
