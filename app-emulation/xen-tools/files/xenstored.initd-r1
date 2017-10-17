@@ -24,7 +24,7 @@ start() {
 		$XENSTORED_OPTS
 	until xenstore-exists / || $((15 < ++i))
 	do
-		echo -n .
+		printf "."
 		sleep 1
 	done
 	einfo "Setting domain0 name record"
