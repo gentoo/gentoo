@@ -193,7 +193,7 @@ app-admin/recursos 2.0-r1: Script to create html and text report about your syst
 app-admin/reportmagic 2.21: Makes usable statistics from your web site log file analysis
 app-admin/restart_services 0.13.0-r1 0.13.1: Tool to manage OpenRC services that need to be restarted
 app-admin/rex 1.3.3 1.4.0-r1 1.4.1 1.5.0 9999: (R)?ex is a small script to ease the execution of remote commands
-app-admin/rsyslog 8.19.0 8.24.0-r2 8.25.0-r2 8.26.0-r1 8.27.0-r1 8.28.0 8.29.0: An enhanced multi-threaded syslogd with database support and more
+app-admin/rsyslog 8.19.0 8.24.0-r2 8.25.0-r2 8.26.0-r1 8.27.0-r1 8.28.0 8.29.0 8.30.0: An enhanced multi-threaded syslogd with database support and more
 app-admin/sagan 0.2.3 1.0.0_rc3: Sagan is a multi-threaded, real time system and event log monitoring system
 app-admin/sagan-rules 20130430 20140617 99999999: Rules for Sagan log analyzer
 app-admin/salt 2015.5.10 2015.8.13 2015.8.13-r1 2016.3.8 2016.11.8 2017.7.2: Salt is a remote execution and configuration manager
@@ -4827,7 +4827,7 @@ dev-libs/libexecinfo 1.1: A library for inspecting program's backtrace
 dev-libs/libexplain 1.4 1.4-r1: Library which may be used to explain Unix and Linux system call errors
 dev-libs/libezV24 0.1.1: library that provides an easy API to Linux serial ports
 dev-libs/libf2c 20110801-r4 20130927: Library that converts FORTRAN to C source
-dev-libs/libfastjson 0.99.2 0.99.4 0.99.6: Fork of the json-c library, which is optimized for liblognorm processing
+dev-libs/libfastjson 0.99.2 0.99.4 0.99.6 0.99.7: Fork of the json-c library, which is optimized for liblognorm processing
 dev-libs/libffi 3.2.1: a portable, high level programming interface to various calling conventions
 dev-libs/libfilezilla 0.9.1 0.9.2 0.10.0 0.11.0: C++ library offering some basic functionality for platform-independent programs
 dev-libs/libflatarray 0.1.1 0.3.0: Struct of arrays library with object oriented interface for C++
@@ -18483,7 +18483,7 @@ www-servers/lighttpd 1.4.42 1.4.43 1.4.44 1.4.45 9999: Lightweight high-performa
 www-servers/mongoose 5.6: easy to use web server
 www-servers/mongrel2 1.11.0 1.11.0-r1: A language agnostic web server focused on web applications
 www-servers/monkeyd 1.6.9-r1 9999: A small, fast, and scalable web server
-www-servers/nginx 1.12.1 1.13.3 1.13.4 1.13.5 1.13.6: Robust, small and high performance http and reverse proxy server
+www-servers/nginx 1.12.1 1.12.2 1.13.3 1.13.4 1.13.5 1.13.6: Robust, small and high performance http and reverse proxy server
 www-servers/ocsigenserver 2.8 9999: Ocaml-powered webserver and framework for dynamic web programming
 www-servers/pathod 0.10 0.11.1 0.12.0: A collection of pathological tools for testing and torturing HTTP clients and servers
 www-servers/pound 2.6 2.7d 2.7f 2.7f-r1: A http/https reverse-proxy and load-balancer
