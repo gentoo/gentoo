@@ -50,5 +50,4 @@ PATCHES=(
 	"${FILESDIR}/${P}-qicon.patch"
 	"${FILESDIR}/${P}-qt-5.9-wayland.patch"
 	"${FILESDIR}/${P}-qdbus-crash.patch"
-	"${FILESDIR}/${P}-wayland.patch"
 )
