@@ -14,7 +14,7 @@ SRC_URI="http://www.thomas-krenn.com/en/oss/ipmi-plugin/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~x86"
+KEYWORDS="amd64 hppa ~x86"
 IUSE=""
 
 DEPEND=""
