@@ -1,0 +1,13 @@
+diff --git a/lib/Makefile b/lib/Makefile
+index e3a2247..c137b53 100644
+--- a/lib/Makefile
++++ b/lib/Makefile
+@@ -13,6 +13,6 @@ libaboot.a: vsprintf.o memcpy.o memset.o string.o _setjmp.o \
+ 	__remlu.o
+-	ar cru $@ $?
++	$(AR) cru $@ $?
+ else
+ libaboot.a: isolib.o
+-	ar cru $@ $?
++	$(AR) cru $@ $?
+ endif
