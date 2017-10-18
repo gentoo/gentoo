@@ -10191,7 +10191,7 @@ dev-tex/latexdiff 1.1.0 1.1.1 1.2.0-r1 9999: Compare two latex files and mark up
 dev-tex/latexmk 435 441 443a 444 445 448 452c 453a: Perl script for automatically building LaTeX documents
 dev-tex/lazylist 1.0a: Lists in TeX's mouth - lambda-calculus and list-handling macros
 dev-tex/leaflet 20041222: LaTeX package used to create leaflet-type brochures
-dev-tex/lgrind 3.67-r3: A source pretty printer for LaTeX - styles to stylise your source and code examples
+dev-tex/lgrind 3.67-r3: A pretty printer for various programming languages with tex output.
 dev-tex/luatex 0.70.1-r2 0.76.0: An extended version of pdfTeX using Lua as an embedded scripting language
 dev-tex/metapost 1.780 1.803 1.902: System for producing graphics
 dev-tex/minted 2.0 2.1 2.4.1: LaTeX package for source code syntax highlighting
