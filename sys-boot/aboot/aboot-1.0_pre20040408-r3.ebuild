@@ -37,6 +37,8 @@ src_unpack() {
 
 	# Modified patch from Debian to add netboot support
 	epatch "${WORKDIR}"/aboot_gentoo.diff
+
+	epatch_user
 }
 
 src_compile() {
