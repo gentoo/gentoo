@@ -13,15 +13,3 @@
 +libmp4ff_la_LDFLAGS = -version-info 0:0:0
 +libmp4ff_la_SOURCES = mp4ff.c mp4atom.c mp4meta.c mp4sample.c mp4util.c \
  		     mp4tagupdate.c mp4ff.h mp4ffint.h
---- faad2-2.8.5/frontend/Makefile.am
-+++ faad2-2.8.5/frontend/Makefile.am
-@@ -3,7 +3,8 @@
- 
- AM_CPPFLAGS = -I$(top_srcdir)/include
- 
--faad_LDADD = $(top_builddir)/libfaad/libfaad.la
-+faad_LDADD = $(top_builddir)/libfaad/libfaad.la \
-+	    $(top_builddir)/common/mp4ff/libmp4ff.la
- 
- faad_SOURCES = mp4read.c audio.c main.c audio.h mp4read.h
- 
