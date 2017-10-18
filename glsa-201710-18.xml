@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201710-18">
+  <title>Ruby: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Ruby, the worst of
+    which could lead to the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">ruby</product>
+  <announced>2017-10-18</announced>
+  <revised>2017-10-18: 1</revised>
+  <bug>605536</bug>
+  <bug>629484</bug>
+  <bug>631034</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/ruby" auto="yes" arch="*">
+      <unaffected range="ge">2.2.8</unaffected>
+      <vulnerable range="lt">2.2.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Ruby is an interpreted object-oriented programming language. The
+      elaborate standard library includes an HTTP server (“WEBRick”) and a
+      class for XML parsing (“REXML”).
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Ruby. Please review the
+      referenced CVE identifiers for details.
+    </p>
+    
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could execute arbitrary code, cause a Denial of
+      Service condition, or obtain sensitive information.
+    </p>
+    
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Ruby users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/ruby-2.2.8"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2337">
+      CVE-2016-2337
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-0898">
+      CVE-2017-0898
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10784">
+      CVE-2017-10784
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-14033">
+      CVE-2017-14033
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-14064">
+      CVE-2017-14064
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-10-17T23:47:57Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-10-18T00:53:55Z">chrisadr</metadata>
+</glsa>
