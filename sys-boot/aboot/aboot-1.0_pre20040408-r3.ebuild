@@ -34,6 +34,7 @@ src_unpack() {
 	# Bug 364697
 	epatch "${FILESDIR}/aboot-define_stat_only_in_userspace.patch"
 	epatch "${FILESDIR}"/aboot-respect-AR.patch
+	epatch "${FILESDIR}"/aboot-gnu90.patch
 
 	# Modified patch from Debian to add netboot support
 	epatch "${WORKDIR}"/aboot_gentoo.diff
