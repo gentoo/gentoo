@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install prepare setup
+DESCRIPTION=A daemon to serve the gopher protocol
+EAPI=6
+HOMEPAGE=http://git.r-36.net/geomyidae/
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=MIT
+SLOT=0
+SRC_URI=http://git.r-36.net/geomyidae/snapshot/geomyidae-0.29.tar.bz2
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=fd9a83288ffd4dc24315169f16e38a67

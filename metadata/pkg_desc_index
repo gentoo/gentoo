@@ -5585,10 +5585,10 @@ dev-perl/Class-C3-Componentised 1.1.0-r1: Load mix-ins or components to your C3-
 dev-perl/Class-C3-XS 0.140.0: XS speedups for Class::C3
 dev-perl/Class-Container 0.120.0-r1 0.120.0-r2: Glue object frameworks together transparently
 dev-perl/Class-DBI 3.0.17-r1 3.0.17-r2: Simple Database Abstraction
-dev-perl/Class-DBI-AbstractSearch 0.70.0: Abstract Class::DBI's SQL with SQL::Abstract::Limit
+dev-perl/Class-DBI-AbstractSearch 0.70.0 0.70.0-r1: Abstract Class::DBI's SQL with SQL::Abstract::Limit
 dev-perl/Class-DBI-Plugin 0.30.0: Abstract base class for Class::DBI plugins
 dev-perl/Class-DBI-Plugin-DeepAbstractSearch 0.80.0: deep_search_where() method for Class::DBI
-dev-perl/Class-DBI-mysql 1.0.0-r1: Extensions to Class::DBI for MySQL
+dev-perl/Class-DBI-mysql 1.0.0-r1 1.0.0-r2: Extensions to Class::DBI for MySQL
 dev-perl/Class-Data-Accessor 0.40.40-r1: Inheritable, overridable class and instance data accessor creation
 dev-perl/Class-Data-Inheritable 0.80.0-r1: Inheritable, overridable class data
 dev-perl/Class-Default 1.510.0-r1: Static calls apply to a default instantiation
@@ -15238,7 +15238,7 @@ net-misc/fmirror 0.8.4-r2: FTP mirror utility
 net-misc/freerdp 1.2.1_pre20150326-r1 2.0.0_pre20160722 2.0.0_pre20161219 2.0.0_rc0 9999: Free implementation of the Remote Desktop Protocol
 net-misc/gcap 0.1.1-r1: Command line tool for downloading Youtube closed captions
 net-misc/geoipupdate 2.3.1 2.4.0: performs automatic updates of GeoIP2 and GeoIP Legacy binary databases
-net-misc/geomyidae 0.26.2 0.26.3: A daemon to serve the gopher protocol
+net-misc/geomyidae 0.29: A daemon to serve the gopher protocol
 net-misc/gerbera 1.1.0-r1 9999: UPnP Media Server (Based on MediaTomb)
 net-misc/getdate 1.2-r1: Network Date/Time Query and Set Local Date/Time Utility
 net-misc/gnome-online-miners 3.22.0 3.24.0: Crawls through your online content
