@@ -1,0 +1,68 @@
+From a41c53d35b594a7fd8d5b92501b4fe52d7252909 Mon Sep 17 00:00:00 2001
+From: Milan Broz <gmazyland@gmail.com>
+Date: Tue, 17 Oct 2017 13:44:24 +0200
+Subject: [PATCH] volume_key: Switch to libcryptsetup error callback.
+
+This change should be compatible with new libcryptsetup as well.
+
+Note that now is error set even for retry, so the code must
+clear it after successfull (but retried) password query.
+
+Signed-off-by: Milan Broz <gmazyland@gmail.com>
+---
+ lib/volume_luks.c | 21 ++++++++++++++-------
+ 1 file changed, 14 insertions(+), 7 deletions(-)
+
+diff --git a/lib/volume_luks.c b/lib/volume_luks.c
+index 14794d7..4034cc3 100644
+--- a/lib/volume_luks.c
++++ b/lib/volume_luks.c
+@@ -65,13 +65,8 @@ my_strerror (int err_no)
+ static void
+ error_from_cryptsetup (GError **error, LIBVKError code, int res)
+ {
+-  /* It's not possible to get the error message length from libcryptsetup, just
+-     guess. */
+-  char crypt_msg[4096];
+-
+-  crypt_get_error (crypt_msg, sizeof (crypt_msg));
+-  if (crypt_msg[0] != '\0')
+-    g_set_error (error, LIBVK_ERROR, code, "%s", crypt_msg);
++  if (error && *error && (*error)->message)
++    (*error)->code = code;
+   else
+     {
+       char *s;
+@@ -82,6 +77,16 @@ error_from_cryptsetup (GError **error, LIBVKError code, int res)
+     }
+ }
+ 
++void cryptsetup_log (int level, const char *msg, void *usrptr)
++{
++  GError **error = usrptr;
++
++  if (level != CRYPT_LOG_ERROR)
++    return;
++  g_clear_error(error);
++  g_set_error (error, LIBVK_ERROR, -1, "%s", msg);
++}
++
+ /* Open volume PATH and load its header.
+    Return the volume, or NULL on error. */
+ static struct crypt_device *
+@@ -93,6 +98,7 @@ open_crypt_device (const char *path, GError **error)
+   r = crypt_init (&cd, path);
+   if (r < 0)
+     goto err;
++  crypt_set_log_callback(cd, cryptsetup_log, error);
+   r = crypt_load (cd, CRYPT_LUKS1, NULL);
+   if (r < 0)
+     goto err_cd;
+@@ -307,6 +313,7 @@ luks_get_secret (struct libvk_volume *vol, enum libvk_secret secret_type,
+ 	  g_prefix_error (error, _("Error getting LUKS data encryption key: "));
+ 	  goto err_prompt;
+ 	}
++      g_clear_error(error);
+     }
+   g_set_error (error, LIBVK_ERROR, LIBVK_ERROR_FAILED,
+ 	       _("Too many attempts to get a valid passphrase"));
