@@ -22,8 +22,8 @@ RDEPEND=">=dev-libs/glib-2.16
 	bluetooth? ( net-wireless/bluez )
 	l2tp? ( net-dialup/xl2tpd )
 	nftables? (
-		>=net-libs/libnftnl-1.0.4
-		>=net-libs/libmnl-1.0.0 )
+		>=net-libs/libnftnl-1.0.4:0=
+		>=net-libs/libmnl-1.0.0:0= )
 	ofono? ( net-misc/ofono )
 	openconnect? ( net-vpn/openconnect )
 	openvpn? ( net-vpn/openvpn )
