@@ -34,6 +34,7 @@
 		<flag name="apache2_modules_proxy_wstunnel">Provides support for the tunnelling of web socket connections to a backend websockets server.</flag>
 		<flag name="apache2_modules_ratelimit">Ratelimit module for transfer rate management</flag>
 		<flag name="apache2_modules_remoteip">Remotip module for logging</flag>
+		<flag name="apache2_modules_watchdog">Provides infrastructure for other modules to periodically run tasks</flag>
 		<flag name="apache2_modules_xml2enc">Enable xml2 encoding module</flag>
 	</use>
 </pkgmetadata>
