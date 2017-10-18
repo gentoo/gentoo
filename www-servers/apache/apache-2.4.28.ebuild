@@ -40,7 +40,7 @@ lbmethod_heartbeat log_config log_forensic logio macro mime mime_magic negotiati
 proxy proxy_ajp proxy_balancer proxy_connect proxy_ftp proxy_html proxy_http proxy_scgi
 proxy_fcgi  proxy_wstunnel rewrite ratelimit remoteip reqtimeout setenvif
 slotmem_shm speling socache_shmcb status substitute unique_id userdir usertrack
-unixd version vhost_alias xml2enc"
+unixd version vhost_alias watchdog xml2enc"
 # The following are also in the source as of this version, but are not available
 # for user selection:
 # bucketeer case_filter case_filter_in echo http isapi optional_fn_export
