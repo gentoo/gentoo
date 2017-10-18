@@ -4,10 +4,10 @@ DESCRIPTION=Domain and host name validation
 EAPI=5
 HOMEPAGE=http://search.cpan.org/dist/Data-Validate-Domain/
 IUSE=test
-KEYWORDS=amd64 hppa x86
+KEYWORDS=amd64 hppa sparc x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Exporter dev-perl/Net-Domain-TLD dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DR/DROLSKY/Data-Validate-Domain-0.11.tar.gz
 _eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011	toolchain-funcs	185a06792159ca143528e7010368e8af	unpacker	f40f7b4bd5aa88c2a4ba7b0d1e0ded70
-_md5_=72d46d880e81dd90499e20cd8b631f4a
+_md5_=99dc546ca828560541ad70138f2f8e2e
