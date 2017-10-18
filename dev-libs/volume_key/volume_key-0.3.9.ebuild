@@ -37,6 +37,9 @@ RESTRICT="test" # possible gpgme issue
 PATCHES=(
 	"${FILESDIR}"/${P}-config.h.diff
 	"${FILESDIR}"/${PN}-0.3.9-find_python.patch
+
+	# Patches from upstream (can usually be removed with next version bump)
+	"${FILESDIR}/${P}-cryptsetup2.patch"
 )
 
 pkg_setup() {
