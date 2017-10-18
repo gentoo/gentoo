@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201710-20">
+  <title>Nagios: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Nagios, the worst of
+    which could lead to the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">nagios</product>
+  <announced>2017-10-18</announced>
+  <revised>2017-10-18: 1</revised>
+  <bug>602216</bug>
+  <bug>628086</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="net-analyzer/nagios-core" auto="yes" arch="*">
+      <unaffected range="ge">4.3.3</unaffected>
+      <vulnerable range="lt">4.3.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Nagios is an open source host, service and network monitoring program.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Nagios. Please review
+      the referenced CVE identifiers for details.
+    </p>
+    
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly escalate privileges to root, thus
+      allowing the execution of arbitrary code, by leveraging CVE-2016-9565. 
+      Additionally, a local attacker could cause a Denial of Service condition
+      against arbitrary processes due to the improper dropping of privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Nagios users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-analyzer/nagios-core-4.3.3"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9565">
+      CVE-2016-9565
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9566">
+      CVE-2016-9566
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12847">
+      CVE-2017-12847
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-10-02T06:35:45Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-10-18T01:17:41Z">chrisadr</metadata>
+</glsa>
