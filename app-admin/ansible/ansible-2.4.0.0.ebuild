@@ -45,9 +45,6 @@ DEPEND="
 # not included in release tarball
 RESTRICT="test"
 
-PATCHES=(
-	)
-
 python_test() {
 	nosetests -d -w test/units -v --with-coverage --cover-package=ansible --cover-branches || die
 }
