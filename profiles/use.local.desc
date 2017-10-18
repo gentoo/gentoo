@@ -8397,6 +8397,7 @@ www-servers/apache:apache2_modules_remoteip - Remotip module for logging
 www-servers/apache:apache2_modules_slotmem_shm - Slot-based shared memory provider.
 www-servers/apache:apache2_modules_socache_shmcb - A shared object cache provider using a high-performance cyclic buffer inside a shared memory segment.
 www-servers/apache:apache2_modules_unixd - Basic (required) security for Unix-family platforms.
+www-servers/apache:apache2_modules_watchdog - Provides infrastructure for other modules to periodically run tasks
 www-servers/apache:apache2_modules_xml2enc - Enable xml2 encoding module
 www-servers/apache:static - Link in apache2 modules statically rather then plugins
 www-servers/apache:suexec - Install suexec with apache
