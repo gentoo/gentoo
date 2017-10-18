@@ -3,18 +3,24 @@
 
 EAPI=6
 
-COMMIT=269370863ecd61dd038eed3b96ecd65898d3bb6e
 LINGUAS="bs de es fi fr gl ms pl pt ru sk sv ug uk vi"
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+if [[ ${PV} = *9999 ]]; then
+	EGIT_REPO_URI="https://github.com/Exiv2/exiv2.git"
+	EGIT_BRANCH="0.26"
+	GIT_ECLASS=git-r3
+else
+	COMMIT=0a9962f5879335e4eb539ce419fce45a41de2770
+	SRC_URI="https://github.com/a17r/${PN}/tarball/${COMMIT} -> ${P}.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris"
+fi
 inherit cmake-multilib python-any-r1 vcs-snapshot
 
 DESCRIPTION="EXIF, IPTC and XMP metadata C++ library and command line utility"
 HOMEPAGE="http://www.exiv2.org/"
-SRC_URI="https://github.com/Exiv2/${PN}/tarball/${COMMIT} -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/26"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris"
 IUSE="doc examples nls png webready xmp $(printf 'linguas_%s ' ${LINGUAS})"
 
 RDEPEND="
@@ -27,7 +33,6 @@ RDEPEND="
 	)
 	xmp? ( >=dev-libs/expat-2.1.0-r3[${MULTILIB_USEDEP}] )
 "
-
 DEPEND="${RDEPEND}
 	doc? (
 		${PYTHON_DEPS}
@@ -39,11 +44,12 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
 "
 
-DOCS=( README.md doc/ChangeLog doc/cmd.txt )
+DOCS=( README doc/ChangeLog doc/cmd.txt )
 
 PATCHES=(
-	"${FILESDIR}/${P}-cmake.patch"
-	"${FILESDIR}/${P}-ccache.patch" # bug 634302
+	# TODO: Take to upstream
+	"${FILESDIR}"/${PN}-0.26-fix-docs.patch
+	"${FILESDIR}"/${PN}-0.26-tools-optional.patch
 )
 
 pkg_setup() {
@@ -85,16 +91,16 @@ src_prepare() {
 
 multilib_src_configure() {
 	local mycmakeargs=(
-		-DBUILD_WITH_CCACHE=OFF
-		-DEXIV2_BUILD_SAMPLES=OFF
-		-DEXIV2_BUILD_PO=$(usex nls)
+		-DEXIV2_ENABLE_BUILD_SAMPLES=NO
+		-DEXIV2_ENABLE_BUILD_PO=$(usex nls)
 		-DEXIV2_ENABLE_NLS=$(usex nls)
 		-DEXIV2_ENABLE_PNG=$(usex png)
 		-DEXIV2_ENABLE_CURL=$(usex webready)
 		-DEXIV2_ENABLE_SSH=$(usex webready)
 		-DEXIV2_ENABLE_WEBREADY=$(usex webready)
 		-DEXIV2_ENABLE_XMP=$(usex xmp)
-		$(multilib_is_native_abi || echo -DEXIV2_BUILD_EXIV2_COMMAND=NO)
+		-DEXIV2_ENABLE_LIBXMP=NO
+		$(multilib_is_native_abi || echo -DEXIV2_ENABLE_TOOLS=NO)
 	)
 
 	cmake-utils_src_configure
