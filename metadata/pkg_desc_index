@@ -2208,7 +2208,7 @@ app-text/antiword 0.37-r1: free MS Word reader
 app-text/antixls 0.3b: Print out an XLS file with minimal formatting, or extract the data into CSV
 app-text/apvlv 0.1.5-r1: Alf's PDF Viewer Like Vim
 app-text/asa 1.1-r1: ASA Carriage control conversion for ouput by Fortran programs
-app-text/asciidoc 8.6.9-r2 8.6.9-r3 8.6.9-r5 9999: AsciiDoc is a plain text human readable/writable document format
+app-text/asciidoc 8.6.9-r2 8.6.9-r3 8.6.9-r6 9999: AsciiDoc is a plain text human readable/writable document format
 app-text/aspell 0.60.6.1-r3 0.60.6.1-r4 0.60.7_rc1: A spell checker replacement for ispell
 app-text/atril 1.12.2-r3 1.12.2-r4 1.14.2 1.14.2-r1 1.16.1 1.16.1-r1 1.18.0: Atril document viewer for MATE
 app-text/bact 0.13-r1: Boosting Algorithm for Classification of Trees
@@ -7354,7 +7354,7 @@ dev-python/audioread 1.0.1-r1: Module for decoding audio files using whichever b
 dev-python/authres 0.701 0.800: Authentication Results Header Module
 dev-python/autobahn 0.9.4.2 0.16.0-r1 17.5.1-r2 17.7.1 17.9.1 17.9.2: WebSocket and WAMP for Twisted and Asyncio
 dev-python/automat 0.5.0 0.6.0: Self-service finite-state machines for the programmer on the go
-dev-python/automaton 0.8.0: Friendly state machines for python.
+dev-python/automaton 0.8.0 1.12.1: Friendly state machines for python.
 dev-python/autopep8 1.3.2 9999: Automatically formats Python code to conform to the PEP 8 style guide
 dev-python/awscli 1.10.51 1.10.53 1.10.59 1.11.0 1.11.81 1.11.154 1.11.158: Universal Command Line Environment for AWS
 dev-python/axiom 0.7.2 0.7.5: Object database implemented on top of SQLite
@@ -7503,7 +7503,7 @@ dev-python/dbus-python 1.2.0-r1 1.2.4: Python bindings for the D-Bus messagebus
 dev-python/dbusmock 0.16.7 0.16.9: Easily create mock objects on D-Bus for software testing
 dev-python/dbutils 1.1-r1: Database connections for multi-threaded environments
 dev-python/ddt 1.1.0 1.1.1: A library to multiply test cases
-dev-python/debtcollector 1.3.0 1.11.0 1.17.0: Python deprecation patterns and strategies that collect technical debt
+dev-python/debtcollector 1.3.0 1.11.0 1.17.0 1.17.1: Python deprecation patterns and strategies that collect technical debt
 dev-python/decorator 4.0.2 4.0.10 4.0.11 4.1.2: Simplifies the usage of decorators for the average programmer
 dev-python/decoratortools 1.8-r1: Class, function, and metaclass decorators
 dev-python/deform 0.9.9: Another form generation library
@@ -8090,7 +8090,7 @@ dev-python/openstackdocstheme 1.16.1: Theme and extension support for Sphinx doc
 dev-python/openstacksdk 0.8.2 0.9.5 0.9.13 0.9.17: A collection of libraries for building applications to work with OpenStack.
 dev-python/optcomplete 1.2-r1: Shell completion self-generator for Python
 dev-python/ordereddict 1.1: A drop-in substitute for Py2.7's new collections.OrderedDict that works in Python 2.4-2.6.
-dev-python/os-brick 1.2.0 1.6.2 1.11.0 1.15.2: OpenStack Cinder brick library for managing local volume attaches
+dev-python/os-brick 1.2.0 1.6.2 1.11.0 1.15.2 1.15.3: OpenStack Cinder brick library for managing local volume attaches
 dev-python/os-client-config 1.16.0 1.21.1 1.26.0 1.28.0: OpenStack Client Configuation Library
 dev-python/os-diskconfig-python-novaclient-ext 0.1.3 9999: Disk Config extension for python-novaclient
 dev-python/os-networksv2-python-novaclient-ext 0.25 0.26: Adds network extension support to python-novaclient
