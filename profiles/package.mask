@@ -29,6 +29,17 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (18 Oct 2017)
+# sys-devel/automake versions 1.4, 1.5, 1.6, 1.7, 1.8
+# have known security vulnerabilities, are broken with
+# recent Perl (>=5.26.0), and are not used by anything in
+# the Gentoo repository. Please uninstall.
+sys-devel/automake:1.4
+sys-devel/automake:1.5
+sys-devel/automake:1.6
+sys-devel/automake:1.7
+sys-devel/automake:1.8
+
 # Jonas Stein <jstein@gentoo.org> (17 Oct 2017)
 # dev-tex/texmfind was superseded by app-portage/pfl 
 # See also bug #634494. Masked for removal on 2017-11-30
