@@ -1,0 +1,57 @@
+From 855c090f1330aedc97b9a486dcd0d0b4c7ff4f4e Mon Sep 17 00:00:00 2001
+From: dgod <dgod.osa@gmail.com>
+Date: Sun, 16 Oct 2016 12:49:40 +0800
+Subject: [PATCH] Compile with the musl c library (no execinfo.h)
+
+---
+ configure.ac | 2 +-
+ src/lxdm.c   | 4 ++++
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 52f2ac9..a9fca61 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -32,7 +32,7 @@ AM_CONDITIONAL(HAVE_PAM, [test -n "$USE_PAM" -a "x$USE_PAM" != xno ])
+ 
+ # Checks for header files.
+ AC_PATH_X
+-AC_CHECK_HEADERS([shadow.h stdlib.h string.h unistd.h utmpx.h])
++AC_CHECK_HEADERS([execinfo.h shadow.h stdlib.h string.h unistd.h utmpx.h])
+ 
+ # Checks for typedefs, structures, and compiler characteristics.
+ AC_TYPE_PID_T
+diff --git a/src/lxdm.c b/src/lxdm.c
+index e00d219..53d2176 100644
+--- a/src/lxdm.c
++++ b/src/lxdm.c
+@@ -49,7 +49,9 @@
+ #include <sys/ioctl.h>
+ #include <sys/stat.h>
+ 
++#ifdef HAVE_EXECINFO_H
+ #include <execinfo.h>
++#endif
+ 
+ #ifdef HAVE_UTMPX_H
+ #include <utmpx.h>
+@@ -1552,6 +1554,7 @@ int lxdm_do_auto_login(void)
+ 
+ static void log_sigsegv(void)
+ {
++#ifdef HAVE_EXECINFO_H
+ 	void *array[40];
+ 	size_t size;
+ 	char **bt_strs;
+@@ -1564,6 +1567,7 @@ static void log_sigsegv(void)
+ 	    fprintf(stderr, "%s\n", bt_strs[i]);
+ 
+ 	free(bt_strs);
++#endif
+ }
+ 
+ static void sigsegv_handler(int sig)
+-- 
+2.1.4
+
+
