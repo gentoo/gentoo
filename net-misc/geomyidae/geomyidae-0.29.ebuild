@@ -1,13 +1,13 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit eutils toolchain-funcs user
+inherit toolchain-funcs user
 
 DESCRIPTION="A daemon to serve the gopher protocol"
-HOMEPAGE="http://r-36.net/src/geomyidae/"
-SRC_URI="http://r-36.net/src/${PN}/${P}.tar.gz"
+HOMEPAGE="http://git.r-36.net/geomyidae/"
+SRC_URI="http://git.r-36.net/geomyidae/snapshot/${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
@@ -25,8 +25,15 @@ src_prepare() {
 		-e 's/@${CC}/${CC}/g' \
 		-e '/CFLAGS/s/-O. //' \
 		Makefile || die 'sed on Makefile failed'
+	# fix for correctly start/stop daemon
+	# fix path for pid file
+	sed -i \
+		-e 's:start-stop-daemon -Sb:start-stop-daemon -Sbm:' \
+		-e 's:start-stop-daemon -S -p:start-stop-daemon -K -p:' \
+		-e 's:/var/run:/run:g' \
+		rc.d/Gentoo.init.d || die
 
-	epatch_user
+	eapply_user
 }
 
 src_compile() {
