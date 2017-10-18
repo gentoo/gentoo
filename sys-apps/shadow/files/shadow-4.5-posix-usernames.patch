@@ -1,0 +1,48 @@
+From 56d9c2b77893f54c78279943cb3125e122e55588 Mon Sep 17 00:00:00 2001
+From: Daniel Wang <wonderfly@google.com>
+Date: Wed, 18 Oct 2017 10:46:45 -0700
+Subject: [PATCH] Allow POSIX user names
+
+While preserving the allowance for the dollar sign as the last
+character, as that's what upstream does.
+---
+ libmisc/chkname.c | 15 +++++++++++----
+ 1 file changed, 11 insertions(+), 4 deletions(-)
+
+diff --git a/libmisc/chkname.c b/libmisc/chkname.c
+index 64f5580..88e13b7 100644
+--- a/libmisc/chkname.c
++++ b/libmisc/chkname.c
+@@ -49,18 +49,25 @@
+ static bool is_valid_name (const char *name)
+ {
+ 	/*
+-	 * User/group names must match [a-z_][a-z0-9_-]*[$]
++	 * POSIX indicate that usernames are composed of characters from the
++	 * portable filename character set [A-Za-z0-9._-], and that the hyphen
++	 * should not be used as the first character of a portable user name.
++	 *
++	 * Allow everything in POSIX, plus the dollar sign if it is the last
++	 * character, as is done at upstream.
+ 	 */
+-	if (('\0' == *name) ||
+-	    !((('a' <= *name) && ('z' >= *name)) || ('_' == *name))) {
+-		return false;
++
++	if (('\0' == *name) || ('-' == *name)) {
++	  return false;
+ 	}
+ 
+ 	while ('\0' != *++name) {
+ 		if (!(( ('a' <= *name) && ('z' >= *name) ) ||
++		      ( ('A' <= *name) && ('Z' >= *name) ) ||
+ 		      ( ('0' <= *name) && ('9' >= *name) ) ||
+ 		      ('_' == *name) ||
+ 		      ('-' == *name) ||
++		      ('.' == *name) ||
+ 		      ( ('$' == *name) && ('\0' == *(name + 1)) )
+ 		     )) {
+ 			return false;
+-- 
+2.15.0.rc1.287.g2b38de12cc-goog
+
