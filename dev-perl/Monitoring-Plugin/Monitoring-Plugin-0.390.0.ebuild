@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Modules to streamline Nagios, Icinga, Shinken, etc. plugins"
 
 SLOT="0"
-KEYWORDS="amd64 hppa x86"
+KEYWORDS="amd64 hppa sparc x86"
 IUSE="test"
 
 RDEPEND="
