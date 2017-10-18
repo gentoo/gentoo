@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201710-19">
+  <title>libarchive: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in libarchive, the worst
+    of which could lead to a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">libarchive</product>
+  <announced>2017-10-18</announced>
+  <revised>2017-10-18: 1</revised>
+  <bug>618026</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-arch/libarchive" auto="yes" arch="*">
+      <unaffected range="ge">3.3.0</unaffected>
+      <vulnerable range="lt">3.3.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libarchive is a library for manipulating different streaming archive
+      formats, including certain tar variants, several cpio formats, and both
+      BSD and GNU ar variants.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in libarchive. Please
+      review the referenced CVE identifiers for details.
+    </p>
+    
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, via a specially crafted file, could possibly cause a
+      Denial of Service condition.
+    </p>
+    
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libarchive users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-arch/libarchive-3.3.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10349">
+      CVE-2016-10349
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10350">
+      CVE-2016-10350
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-10-15T13:35:50Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-10-18T00:58:52Z">chrisadr</metadata>
+</glsa>
