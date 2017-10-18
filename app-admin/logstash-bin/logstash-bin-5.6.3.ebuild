@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit user
+inherit java-pkg-2 user
 
 MY_PN="${PN%-bin}"
 MY_P="${MY_PN}-${PV}"
@@ -37,7 +37,7 @@ src_install() {
 	insinto "/usr/share/${MY_PN}"
 	newins "${FILESDIR}/agent.conf.sample" agent.conf
 
-	rm -v config/startup.options
+	rm -v config/startup.options || die
 	insinto /etc/${MY_PN}
 	doins config/*
 	rm -rv config data || die
