@@ -14,7 +14,7 @@ SRC_URI="http://git.thomas-krenn.com/?p=check_ipmi_sensor_v3.git;a=snapshot;h=${
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~hppa x86"
+KEYWORDS="amd64 hppa x86"
 IUSE=""
 
 DEPEND=""
