@@ -19,7 +19,7 @@ HOMEPAGE="https://wiki.linuxfoundation.org/openprinting/cups-filters"
 
 LICENSE="MIT GPL-2"
 SLOT="0"
-IUSE="dbus +foomatic jpeg ldap pdf perl png +postscript static-libs tiff zeroconf"
+IUSE="dbus +foomatic jpeg ldap pdf perl png +postscript static-libs test tiff zeroconf"
 
 RDEPEND="
 	postscript? ( >=app-text/ghostscript-gpl-9.09[cups] )
@@ -45,6 +45,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-util/gdbus-codegen
+	test? ( media-fonts/dejavu )
 "
 
 src_prepare() {
