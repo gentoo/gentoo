@@ -12,7 +12,7 @@ SRC_URI="https://git.netfilter.org/nftables/snapshot/v${PV}.tar.gz -> ${P}.tar.g
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="debug doc gmp +readline"
+IUSE="debug doc +gmp +readline"
 
 RDEPEND=">=net-libs/libmnl-1.0.3
 	gmp? ( dev-libs/gmp:0= )
