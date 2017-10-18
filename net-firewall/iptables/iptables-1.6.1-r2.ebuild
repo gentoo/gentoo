@@ -23,8 +23,8 @@ RDEPEND="
 	conntrack? ( >=net-libs/libnetfilter_conntrack-1.0.6 )
 	netlink? ( net-libs/libnfnetlink )
 	nftables? (
-		>=net-libs/libmnl-1.0
-		>=net-libs/libnftnl-1.0.5
+		>=net-libs/libmnl-1.0:0=
+		>=net-libs/libnftnl-1.0.5:0=
 	)
 	pcap? ( net-libs/libpcap )
 "
