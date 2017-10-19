@@ -14,14 +14,12 @@ SLOT="0/1"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="static-libs test"
 
-RDEPEND=">app-i18n/opencc-1.0.2:=
-	dev-cpp/glog
-	>=dev-cpp/yaml-cpp-0.5.0
-	dev-db/kyotocabinet
-	dev-libs/leveldb
-	dev-libs/marisa
-	>=dev-libs/boost-1.46.0[threads(+)]
-	sys-libs/zlib"
+RDEPEND="app-i18n/opencc:=
+	dev-cpp/glog:=
+	>=dev-cpp/yaml-cpp-0.5.0:=
+	>=dev-libs/boost-1.46.0:=[threads]
+	dev-libs/leveldb:=
+	dev-libs/marisa:="
 DEPEND="${RDEPEND}
 	x11-proto/xproto
 	test? ( dev-cpp/gtest )"
