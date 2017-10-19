@@ -26,7 +26,7 @@ DEPEND="${RDEPEND}
 
 python_prepare_all() {
 	# Prevent un-needed d'loading
-	sed -e "s/,^ *'sphinx.ext.intersphinx'//" -i docs/conf.py || die
+	sed -e "s/^ *'sphinx.ext.intersphinx'//" -i docs/conf.py || die
 	distutils-r1_python_prepare_all
 }
 
