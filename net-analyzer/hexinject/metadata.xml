@@ -1,7 +1,14 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>holgersson@posteo.de</email>
+		<name>Nils Freydank</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<longdescription lang="en">
 		HexInject is a very versatile packet injector and sniffer, that provide
 		a command-line framework for raw network access. It's designed to work
@@ -14,6 +21,6 @@
 		<flag name="experimental">Install experimental packets.tcl</flag>
 	</use>
 	<upstream>
-		<remote-id type="sourceforge">downloads</remote-id>
+		<remote-id type="sourceforge">hexinject</remote-id>
 	</upstream>
 </pkgmetadata>
