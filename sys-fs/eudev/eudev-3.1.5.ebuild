@@ -9,7 +9,7 @@ inherit autotools eutils linux-info multilib multilib-minimal user
 
 if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/gentoo/eudev.git"
-	inherit git-2
+	inherit git-r3
 else
 	SRC_URI="https://dev.gentoo.org/~blueness/${PN}/${P}.tar.gz"
 	KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 sparc x86"
