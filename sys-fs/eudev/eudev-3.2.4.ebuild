@@ -89,6 +89,8 @@ src_prepare() {
 	sed -e 's/GROUP="dialout"/GROUP="uucp"/' -i rules/*.rules \
 	|| die "failed to change group dialout to uucp"
 
+	eapply "${FILESDIR}"/${PN}-include-sysmacros-header.patch
+
 	eapply_user
 	eautoreconf
 }
