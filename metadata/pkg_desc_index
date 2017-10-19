@@ -2919,7 +2919,7 @@ dev-db/bucardo 5.1.1-r1 5.2.0 5.3.1 5.4.1: An asynchronous PostgreSQL replicatio
 dev-db/cdb 0.75-r4: Fast, reliable, simple package for creating and reading constant databases
 dev-db/cockroach 1.0_rc1 1.0 1.0-r1 1.0.1 1.0.3: open source database for building cloud services
 dev-db/couchdb 1.6.1-r2 1.6.1-r3: Distributed, fault-tolerant and schema-free document-oriented database
-dev-db/cpp-driver 2.4.3: DataStax C/C++ Driver for Cassandra
+dev-db/cpp-driver 2.7.1: DataStax C/C++ Driver for Cassandra
 dev-db/cppdb 0.3.1-r1: An SQL connectivity library for platform and database independent connectivity
 dev-db/datadraw 3.1.1: feature rich database generator for high performance C applications
 dev-db/db-je 3.3.75: A high performance, transactional storage engine written entirely in Java
