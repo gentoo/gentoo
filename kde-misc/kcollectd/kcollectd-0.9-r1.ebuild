@@ -14,7 +14,8 @@ SLOT="4"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug"
 
-DEPEND="dev-libs/boost
+DEPEND="
+	dev-libs/boost:=
 	net-analyzer/rrdtool"
 RDEPEND="${DEPEND}
 	|| ( app-admin/collectd[collectd_plugins_rrdtool] app-admin/collectd[collectd_plugins_rrdcached] )"
