@@ -7321,6 +7321,11 @@ sci-mathematics/singular:boost - Compile against external boost headers (dev-lib
 sci-mathematics/spass:isabelle - Add integration support for the Isabelle/HOL theorem prover.
 sci-mathematics/unuran:prng - Use sci-mathematics/prng library
 sci-mathematics/unuran:rngstreams - Use sci-mathematics/rngstreams library
+sci-mathematics/why3-for-spark:coq - Add sci-mathematics/coq support
+sci-mathematics/why3-for-spark:html - Build HTML documentation
+sci-mathematics/why3-for-spark:hypothesis-selection - Enable hypothesis selection
+sci-mathematics/why3-for-spark:profiling - Enable profiling
+sci-mathematics/why3-for-spark:zarith - Use dev-ml/zarith
 sci-mathematics/yacas:doc - Generate HTML documentation
 sci-mathematics/yacas:gui - Build graphical interface for the native yacas engine. Requires Qt5
 sci-mathematics/yacas:java - Build the Java yacas engine and text console for it

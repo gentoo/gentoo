@@ -16690,6 +16690,7 @@ sci-mathematics/spin 6.2.1 6.2.3 6.2.5 6.4.5: Tool for formal verification of di
 sci-mathematics/topcom 0.17.7: Computing Triangulations Of Point Configurations and Oriented Matroids
 sci-mathematics/twelf 1.7.1: Implementation of the logical framework LF
 sci-mathematics/unuran 1.8.1: Universal Non-Uniform Random number generator
+sci-mathematics/why3-for-spark 2017: Platform for deductive program verification
 sci-mathematics/wxmaxima 15.08.2 16.04.2 16.12.0 16.12.2: Graphical frontend to Maxima, using the wxWidgets toolkit
 sci-mathematics/xmds 2.2.2: XMDS - The eXtensible Multi-Dimensional Simulator
 sci-mathematics/yacas 1.6.1-r1: General purpose computer algebra system
