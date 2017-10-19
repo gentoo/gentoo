@@ -1959,7 +1959,7 @@ app-misc/tkpasman 2.2b: A useful and reliable personal password manager, written
 app-misc/tmate 2.2.0-r1 2.2.1: Instant terminal sharing
 app-misc/tmux 2.2 2.3-r1 2.5 2.5-r2 2.6 9999: Terminal multiplexer
 app-misc/tmux-mem-cpu-load 2.2.1-r1 9999: CPU, RAM memory, and load monitor for use with tmux
-app-misc/todo 2.10 2.10-r1: A CLI-based TODO list manager
+app-misc/todo 2.10-r2: A CLI-based TODO list manager
 app-misc/toilet 0.3: The Other Implementations letters. Figlet replacement
 app-misc/towitoko 2.0.7-r2: Provides a driver for using Towitoko smartcard readers under UNIX environment
 app-misc/tpconfig 3.1.3-r1 3.1.3-r2: Touchpad config for ALPS and Synaptics TPs. Controls tap/click behaviour
@@ -5766,22 +5766,22 @@ dev-perl/DateTime-Format-ISO8601 0.80.0-r1: Parses ISO8601 formats
 dev-perl/DateTime-Format-Mail 0.402.0 0.403.0: Convert between DateTime and RFC2822/822 formats
 dev-perl/DateTime-Format-Natural 1.10.0-r1 1.40.0 1.50.0: Parse informal natural language date/time strings
 dev-perl/DateTime-Format-SQLite 0.110.0: Parse and format SQLite dates and times
-dev-perl/DateTime-Format-Strptime 1.700.0 1.730.0: Parse and Format DateTimes using Strptime
+dev-perl/DateTime-Format-Strptime 1.700.0 1.730.0 1.740.0: Parse and Format DateTimes using Strptime
 dev-perl/DateTime-Format-W3CDTF 0.70.0: Parse and format W3CDTF datetime strings
 dev-perl/DateTime-HiRes 0.10.0: Create DateTime objects with sub-second current time resolution
 dev-perl/DateTime-Locale 0.460.0 1.20.0 1.30.0 1.50.0 1.160.0: Localization support for DateTime
 dev-perl/DateTime-Set 0.340.0 0.360.0 0.390.0: Datetime sets and set math
-dev-perl/DateTime-TimeZone 1.930.0 1.940.0 2.10.0 2.110.0: Time zone object base class and factory
+dev-perl/DateTime-TimeZone 1.930.0 1.940.0 2.10.0 2.110.0 2.130.0: Time zone object base class and factory
 dev-perl/DateTime-Tiny 1.40.0 1.60.0: A date object, with as little code as possible
 dev-perl/DateTimeX-Easy 0.89.0: Parse a date/time string using the best method available
-dev-perl/Debug-Client 0.300.0: Client side code for perl debugger
+dev-perl/Debug-Client 0.300.0 0.310.0: Client side code for perl debugger
 dev-perl/DelimMatch 1.06-r1: A Perl 5 module for locating delimited substrings with proper nesting
 dev-perl/Devel-ArgNames 0.30.0-r1: Figure out the names of variables passed into subroutines
 dev-perl/Devel-Caller 2.60.0: Meatier versions of caller
 dev-perl/Devel-CheckBin 0.40.0: check that a command is available
 dev-perl/Devel-CheckCompiler 0.50.0 0.60.0 0.70.0: Check the compiler's availability
 dev-perl/Devel-CheckLib 1.60.0 1.70.0 1.90.0 1.100.0 1.110.0: check that a library is available
-dev-perl/Devel-Cover 1.250.0: Code coverage metrics for Perl
+dev-perl/Devel-Cover 1.250.0 1.290.0: Code coverage metrics for Perl
 dev-perl/Devel-Cycle 1.120.0: Find memory cycles in objects
 dev-perl/Devel-Declare 0.6.19: Adding keywords to perl, in perl
 dev-perl/Devel-Dumpvar 1.60.0-r1: Pure-OO reimplementation of dumpvar.pl
@@ -5793,10 +5793,10 @@ dev-perl/Devel-LexAlias 0.50.0: Alias lexical variables
 dev-perl/Devel-NYTProf 6.40.0: Powerful feature-rich perl source code profiler
 dev-perl/Devel-OverloadInfo 0.4.0: Introspect overloaded operators
 dev-perl/Devel-PatchPerl 1.380.0 1.400.0 1.440.0 1.460.0 1.480.0: Patch perl source a la Devel::PPPort's buildperl.pl
-dev-perl/Devel-REPL 1.3.27: A modern perl interactive shell
+dev-perl/Devel-REPL 1.3.27 1.3.28: A modern perl interactive shell
 dev-perl/Devel-Refactor 0.50.0-r1: Perl extension for refactoring Perl code
 dev-perl/Devel-SimpleTrace 0.80.0: See where you code warns and dies using stack traces
-dev-perl/Devel-Size 0.800.0: Perl extension for finding the memory usage of Perl variables
+dev-perl/Devel-Size 0.800.0 0.810.0: Perl extension for finding the memory usage of Perl variables
 dev-perl/Devel-SmallProf 2.20.0-r2 2.20.0-r3: Per-line Perl profiler
 dev-perl/Devel-StackTrace 2.0.0 2.10.0: An object representing a stack trace
 dev-perl/Devel-StackTrace-AsHTML 0.150.0: Displays stack trace in HTML
@@ -12158,7 +12158,7 @@ kde-frameworks/kpty 5.37.0 5.39.0: Framework for pseudo terminal devices and run
 kde-frameworks/kross 5.37.0 5.39.0: Framework for embedding scripting into applications
 kde-frameworks/krunner 5.37.0 5.39.0: Framework for providing different actions given a string query
 kde-frameworks/kservice 5.37.0 5.39.0: Advanced plugin and service introspection
-kde-frameworks/ktexteditor 5.37.0 5.39.0: Framework providing a full text editor component
+kde-frameworks/ktexteditor 5.37.0 5.39.0 5.39.0-r1: Framework providing a full text editor component
 kde-frameworks/ktextwidgets 5.37.0 5.39.0: Framework providing an assortment of widgets for displaying and editing text
 kde-frameworks/kunitconversion 5.37.0 5.39.0: Framework for converting units
 kde-frameworks/kwallet 5.37.0 5.39.0: Framework providing desktop-wide storage for passwords
@@ -12261,7 +12261,7 @@ kde-plasma/polkit-kde-agent 5.10.5 5.11.1: PolKit agent module for KDE Plasma
 kde-plasma/powerdevil 5.10.5 5.11.1: Power management for KDE Plasma Shell
 kde-plasma/qguiplatformplugin_kde 4.11.22: Helps integration of pure Qt applications with KDE Plasma
 kde-plasma/sddm-kcm 5.10.5 5.11.1: KDE Plasma control module for SDDM
-kde-plasma/systemsettings 5.10.5 5.11.1: System settings utility
+kde-plasma/systemsettings 5.10.5 5.11.1-r1: System settings utility
 kde-plasma/user-manager 5.10.5 5.11.1: Simple system settings module to manage the users of your system
 lxde-base/lxappearance 0.5.5 0.6.2 0.6.3: LXDE GTK+ theme switcher
 lxde-base/lxappearance-obconf 0.2.1 0.2.3: LXAppearance plugin for configuring OpenBox
@@ -14534,7 +14534,7 @@ net-analyzer/vnstat 1.17 1.17-r3 9999: Console-based network traffic monitor tha
 net-analyzer/w3af 1.1-r1 1.5: Web Application Attack and Audit Framework
 net-analyzer/wapiti 2.3.0 9999: Web-application vulnerability scanner
 net-analyzer/webfuzzer 0.2.0-r1: Poor man's web vulnerability scanner
-net-analyzer/wireshark 2.2.7 2.4.1-r3 2.4.2 99999999: A network protocol analyzer formerly known as ethereal
+net-analyzer/wireshark 2.2.7 2.4.2 99999999: A network protocol analyzer formerly known as ethereal
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.7.3 0.8.2: A framework for layer 2 attacks
@@ -15355,7 +15355,7 @@ net-misc/networkmanager-openvpn 1.2.6 1.2.8 1.2.10: NetworkManager OpenVPN plugi
 net-misc/networkmanager-pptp 1.2.4: NetworkManager PPTP plugin
 net-misc/networkmanager-sstp 1.2.0: Client for the proprietary Microsoft Secure Socket Tunneling Protocol(SSTP)
 net-misc/networkmanager-vpnc 1.2.4: NetworkManager VPNC plugin
-net-misc/nextcloud-client 2.3.1-r2 2.3.2: Nextcloud themed desktop client
+net-misc/nextcloud-client 2.3.2-r1: Nextcloud themed desktop client
 net-misc/ng-utils 0.6: A collection of small tools for accessing netgroup contents
 net-misc/nicstat 1.95: Network traffic statics utility for Solaris and Linux
 net-misc/npapi-sdk 0.27 0.27.2 9999: NPAPI headers bundle
@@ -15375,7 +15375,7 @@ net-misc/openssh 7.5_p1-r1 7.5_p1-r2 7.6_p1: Port of OpenBSD's free SSH release
 net-misc/openssh-blacklist 0.4.1: Source files of vuln Debian keys
 net-misc/openvpn-auth-ldap 2.0.4_pre20131110: LDAP authentication and authorization plugin for OpenVPN 2.x
 net-misc/openvswitch 2.6.1 2.7.2 2.7.2-r1 2.8.1: Production quality, multilayer virtual switch
-net-misc/owncloud-client 2.3.1 2.3.2-r1 2.3.3: Synchronize files from ownCloud Server with your computer
+net-misc/owncloud-client 2.3.2-r2 2.3.3-r1: Synchronize files from ownCloud Server with your computer
 net-misc/packETH 1.7.3 1.8 1.8.1: Packet generator tool for ethernet
 net-misc/pavuk 0.9.36_pre20120215-r2: Web spider and website mirroring tool
 net-misc/pcapfix 0.7: Repair and fix broken pcap files

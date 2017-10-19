@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=>=dev-db/sqlite-3.4:3 dev-libs/qtkeychain[qt5(+)] dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtsql:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 sys-fs/inotify-tools virtual/libiconv dolphin? ( kde-frameworks/kcoreaddons:5 kde-frameworks/kio:5 ) nautilus? ( dev-python/nautilus-python ) samba? ( >=net-fs/samba-3.5 ) sftp? ( >=net-libs/libssh-0.5 ) shibboleth? ( dev-qt/qtwebkit:5 ) dev-qt/linguist-tools:5 doc? ( dev-python/sphinx dev-tex/latexmk dev-texlive/texlive-latexextra virtual/latex-base ) dolphin? ( kde-frameworks/extra-cmake-modules ) test? ( dev-util/cmocka dev-qt/qttest:5 ) sys-devel/make >=dev-util/cmake-3.7.2
+DESCRIPTION=Synchronize files from ownCloud Server with your computer
+EAPI=6
+HOMEPAGE=http://owncloud.org/
+IUSE=doc dolphin nautilus samba +sftp shibboleth test
+KEYWORDS=~amd64 ~x86
+LICENSE=CC-BY-3.0 GPL-2
+RDEPEND=>=dev-db/sqlite-3.4:3 dev-libs/qtkeychain[qt5(+)] dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtsql:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 sys-fs/inotify-tools virtual/libiconv dolphin? ( kde-frameworks/kcoreaddons:5 kde-frameworks/kio:5 ) nautilus? ( dev-python/nautilus-python ) samba? ( >=net-fs/samba-3.5 ) sftp? ( >=net-libs/libssh-0.5 ) shibboleth? ( dev-qt/qtwebkit:5 ) !net-misc/ocsync !net-misc/nextcloud-client
+SLOT=0
+SRC_URI=http://download.owncloud.com/desktop/stable/owncloudclient-2.3.3.tar.xz
+_eclasses_=cmake-utils	f9fb12e2dbe2e0c9c17f030bae85eb02	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=17ee1e39fcfcea977f67665bb5ef6653
