@@ -9,7 +9,7 @@ DISTUTILS_OPTIONAL=1
 inherit distutils-r1 eutils
 
 DESCRIPTION="Matching Algorithm with Recursively Implemented StorAge"
-HOMEPAGE="https://code.google.com/p/marisa-trie/"
+HOMEPAGE="https://github.com/s-yata/marisa-trie https://code.google.com/archive/p/marisa-trie/"
 SRC_URI="https://marisa-trie.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="BSD"
