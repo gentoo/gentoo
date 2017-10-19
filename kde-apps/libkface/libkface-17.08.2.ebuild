@@ -19,7 +19,9 @@ DEPEND="
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
 	media-libs/opencv:=
-	|| ( <media-libs/opencv-3.0.0 >=media-libs/opencv-3.1.0-r6[contrib] )
+	|| ( <media-libs/opencv-3.0.0
+		( >=media-libs/opencv-3.1.0-r6[contrib] <media-libs/opencv-3.3 )
+	)
 "
 RDEPEND="${DEPEND}"
 
