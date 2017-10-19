@@ -38,7 +38,7 @@ src_compile() {
 
 src_install() {
 	pushd src/${EGO_PN} || die
-	dobin blackbox_exporter/blackbox_exporter
+	dobin blackbox_exporter
 	dodoc {README,CONFIGURATION}.md blackbox.yml
 	insinto /etc/blackbox_exporter
 	newins example.yml blackbox.yml.example
