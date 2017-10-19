@@ -23,6 +23,7 @@ COMMON_DEPEND=">=dev-db/sqlite-3.4:3
 	dev-qt/qtnetwork:5
 	dev-qt/qtsql:5
 	dev-qt/qtwidgets:5
+	dev-qt/qtxml:5
 	sys-fs/inotify-tools
 	virtual/libiconv
 	dolphin? (
@@ -42,7 +43,6 @@ DEPEND="${COMMON_DEPEND}
 	dev-qt/linguist-tools:5
 	doc? (
 		dev-python/sphinx
-		dev-tex/latexmk
 		dev-texlive/texlive-latexextra
 		virtual/latex-base
 	)
