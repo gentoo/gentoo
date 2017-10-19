@@ -7,7 +7,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python ctypes wrapper for libsodium"
 HOMEPAGE="https://libnacl.readthedocs.org/"
-SRC_URI="https://github.com/saltstack/libnacl/archive/v${PV}.tar.gz"
+SRC_URI="https://github.com/saltstack/libnacl/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
