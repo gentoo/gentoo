@@ -12,6 +12,9 @@ https://utils.kde.org/projects/kremotecontrol"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug"
 
-RDEPEND="
+DEPEND="
+	kde-frameworks/kdelibs:4[plasma(+)]
+"
+RDEPEND="${DEPEND}
 	app-misc/lirc
 "
