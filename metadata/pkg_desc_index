@@ -11888,7 +11888,7 @@ kde-apps/kalarmcal 17.04.3 17.08.2: Client library to access and handling of KAl
 kde-apps/kalgebra 17.04.3 17.08.2: MathML-based graph calculator by KDE
 kde-apps/kalzium 17.04.3 17.08.2: Periodic table of the elements
 kde-apps/kamera 17.04.3 17.08.2: Plasma integration for gphoto2 cameras
-kde-apps/kanagram 17.04.3 17.08.2: Game based on anagrams of words
+kde-apps/kanagram 17.04.3 17.08.2-r1: Game based on anagrams of words
 kde-apps/kapman 17.04.3 17.08.2: Pac-Man clone by KDE
 kde-apps/kapptemplate 17.04.3 17.08.2: A shell script to create the necessary framework to develop KDE applications
 kde-apps/kate 17.04.3 17.08.2: Kate is an advanced text editor
@@ -11935,7 +11935,7 @@ kde-apps/kdepim-apps-libs 17.04.3 17.08.2: Libraries for KDE PIM applications
 kde-apps/kdepim-kresources 4.4.2017.04: KDE PIM groupware plugin collection (noakonadi branch)
 kde-apps/kdepim-l10n 4.4.11.1-r2: KDE PIM internationalization package
 kde-apps/kdepim-meta 4.4.2017.04 17.04.3 17.08.2: KDE PIM - merge this to pull in all kdepim-derived packages
-kde-apps/kdepim-runtime 17.04.3 17.08.2: Runtime plugin collection to extend the functionality of KDE PIM
+kde-apps/kdepim-runtime 17.04.3 17.08.2-r1: Runtime plugin collection to extend the functionality of KDE PIM
 kde-apps/kdepim-wizards 4.4.2017.04: KDE PIM wizards (noakonadi branch)
 kde-apps/kdepimlibs 4.14.10_p20160611: Common library for KDE PIM apps
 kde-apps/kdesdk-kioslaves 17.04.3 17.08.2: kioslaves from kdesdk package
@@ -18422,8 +18422,8 @@ www-client/lynx 2.8.9_pre11 2.8.9_pre16: An excellent console-based web browser 
 www-client/midori 0.5.11-r2: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.6: a free, open source web browser
-www-client/opera 12.16_p1860-r1 48.0.2685.35 48.0.2685.39: A fast and secure web browser
-www-client/opera-beta 49.0.2725.12 49.0.2725.18: A fast and secure web browser
+www-client/opera 12.16_p1860-r1 48.0.2685.39 48.0.2685.50: A fast and secure web browser
+www-client/opera-beta 49.0.2725.18 49.0.2725.23: A fast and secure web browser
 www-client/opera-developer 50.0.2739.0 50.0.2743.0: A fast and secure web browser
 www-client/otter 0.9.12 0.9.91 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0-r1 2.1.1: A headless WebKit scriptable with a JavaScript API
