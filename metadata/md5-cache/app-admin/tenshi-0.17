@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst prepare setup
+DESCRIPTION=Log parsing and notification program
+EAPI=6
+HOMEPAGE=http://dev.inversepath.com/trac/tenshi
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=ISC
+RDEPEND=dev-lang/perl dev-perl/IO-BufferedSelect sys-apps/coreutils
+SLOT=0
+SRC_URI=https://github.com/inversepath/tenshi/archive/0.17.tar.gz -> tenshi-0.17.tar.gz
+_eclasses_=user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=77aae6977666b904b738f0582bbba53e
