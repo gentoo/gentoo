@@ -12,7 +12,8 @@ SLOT="0/1"
 KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="nls static-libs test"
 
-RDEPEND="nls? ( virtual/libintl )"
+RDEPEND="virtual/libiconv
+	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
