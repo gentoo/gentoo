@@ -27,7 +27,6 @@ DEPEND="${COMMON_DEPEND}
 	dev-util/intltool
 "
 RDEPEND="${COMMON_DEPEND}
-	net-im/telepathy-connection-managers[xmpp]
 	net-libs/signon-ui
 	net-libs/signon-oauth2
 "
