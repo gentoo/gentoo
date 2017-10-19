@@ -1,0 +1,32 @@
+From aeebeadb5f5955995c17de56cf83ba7166a132dd Mon Sep 17 00:00:00 2001
+From: Sven Brauch <mail@svenbrauch.de>
+Date: Mon, 16 Oct 2017 18:35:50 +0200
+Subject: fix some indenters from indenting on random characters
+
+If triggerCharacters was not set, toString() would return "undefined",
+making indenters trigger on u, n, d, e, f, i and n.
+
+Differential Revision: https://phabricator.kde.org/D8333
+---
+ src/script/kateindentscript.cpp | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/script/kateindentscript.cpp b/src/script/kateindentscript.cpp
+index 15ce387..380bd45 100644
+--- a/src/script/kateindentscript.cpp
++++ b/src/script/kateindentscript.cpp
+@@ -46,7 +46,10 @@ const QString &KateIndentScript::triggerCharacters()
+ 
+     m_triggerCharactersSet = true;
+ 
+-    m_triggerCharacters = global(QStringLiteral("triggerCharacters")).toString();
++    auto triggerCharacters = global(QStringLiteral("triggerCharacters"));
++    if ( !triggerCharacters.isUndefined() ) {
++        m_triggerCharacters = triggerCharacters.toString();
++    }
+ 
+     //qCDebug(LOG_KTE) << "trigger chars: '" << m_triggerCharacters << "'";
+ 
+-- 
+cgit v0.11.2
+
