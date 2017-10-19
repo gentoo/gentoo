@@ -5752,7 +5752,7 @@ dev-perl/Date-Leapyear 1.720.0-r1: Simple Perl module that tracks Gregorian leap
 dev-perl/Date-Manip 6.510.0 6.520.0 6.560.0 6.570.0 6.580.0 6.590.0 6.600.0: Perl date manipulation routines
 dev-perl/Date-Pcalc 6.100.0-r1: Gregorian calendar date calculations
 dev-perl/Date-Simple 3.30.0-r1: A simple date object
-dev-perl/DateTime 1.200.0 1.210.0 1.280.0 1.360.0 1.420.0: A date and time object
+dev-perl/DateTime 1.200.0 1.210.0 1.280.0 1.360.0 1.420.0 1.440.0: A date and time object
 dev-perl/DateTime-Calendar-Julian 0.40.0: Dates in the Julian calendar
 dev-perl/DateTime-Event-ICal 0.120.0 0.130.0: Perl DateTime extension for computing rfc2445 recurrences
 dev-perl/DateTime-Event-Recurrence 0.160.0 0.180.0 0.190.0: DateTime::Set extension for create basic recurrence sets
