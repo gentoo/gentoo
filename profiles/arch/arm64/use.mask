@@ -136,7 +136,6 @@ scanner
 zvbi
 ldap
 mysql
-dvd
 fluidsynth
 sid
 mms
