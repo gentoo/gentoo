@@ -33,6 +33,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}/${DIST_VERSION}-no-dot-inc.patch"
 	"${FILESDIR}/${DIST_VERSION}-amvis-type-conversions.patch"
+	"${FILESDIR}/${DIST_VERSION}-mariadb-10.2.patch"
 )
 src_configure() {
 	if use test; then
