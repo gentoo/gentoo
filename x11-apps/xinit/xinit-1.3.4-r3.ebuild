@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,7 +12,6 @@ KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-f
 IUSE="+minimal systemd"
 
 RDEPEND="
-	!systemd? ( sys-apps/gentoo-functions )
 	!<x11-base/xorg-server-1.8.0
 	x11-apps/xauth
 	x11-libs/libX11
