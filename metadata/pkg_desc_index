@@ -2193,7 +2193,7 @@ app-shells/smrsh 8.15.2: Sendmail restricted shell, for use with MTAs other than
 app-shells/soapbox 0.3.1-r2: A preload (sandbox) library to restrict filesystem writes
 app-shells/squirrelsh 1.2.7: Cross-platform object-oriented scripting shell using the squirrel language
 app-shells/tcsh 6.20.00: Enhanced version of the Berkeley C shell (csh)
-app-shells/thefuck 3.23: Magnificent app which corrects your previous console command
+app-shells/thefuck 3.23 3.24: Magnificent app which corrects your previous console command
 app-shells/tmux-bash-completion 9999: bash-completion scripts for tmux
 app-shells/zsh 5.0.5 5.2 5.2-r1 5.3.1 5.4.1 5.4.2 5.4.2-r1 9999: UNIX Shell similar to the Korn shell
 app-shells/zsh-completions 0.26.0 9999: Additional completion definitions for Zsh
