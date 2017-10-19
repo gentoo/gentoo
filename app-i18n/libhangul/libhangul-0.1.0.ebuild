@@ -26,6 +26,10 @@ src_configure() {
 		$(use_enable static-libs static)
 }
 
+src_test() {
+	emake -C test check
+}
+
 src_install() {
 	default
 	rm -f "${ED}"/usr/lib*/libhangul.la
