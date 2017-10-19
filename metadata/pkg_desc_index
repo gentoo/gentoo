@@ -7306,7 +7306,7 @@ dev-python/alembic 0.8.10 0.9.3 0.9.5: database migrations tool, written by the 
 dev-python/algopy 0.5.3: Taylor Arithmetic Computation and Algorithmic Differentiation
 dev-python/amodem 1.12.0 1.13: Transmit data between two computers using audio
 dev-python/amqplib 1.0.2-r1: Python client for the Advanced Message Queuing Procotol (AMQP)
-dev-python/aniso8601 1.2.0 1.2.1: A library for parsing ISO 8601 strings
+dev-python/aniso8601 1.2.0 1.2.1 1.3.0: A library for parsing ISO 8601 strings
 dev-python/ansi2html 1.1.1 1.2.0: Convert text with ANSI color codes to HTML
 dev-python/ansicolor 0.2.1 0.2.4: Produce ansi color output and colored highlighting and diffing
 dev-python/anyjson 0.3.3-r1: Wraps the best available JSON implementation available in a common interface
@@ -7373,7 +7373,7 @@ dev-python/bashate 0.3.1: A pep8 equivalent for bash scripts
 dev-python/basho-erlastic 2.1.1: Erlang binary term codec and port interface.
 dev-python/batinfo 0.3: A simple Python lib to retreive battery information
 dev-python/bcolz 1.1.0 1.1.2: Provides columnar and compressed data containers
-dev-python/bcrypt 3.1.1 3.1.2 3.1.3: Modern password hashing for software and servers
+dev-python/bcrypt 3.1.1 3.1.2 3.1.3 3.1.4: Modern password hashing for software and servers
 dev-python/beaker 1.6.4-r1 1.8.0-r1 1.8.1: A Session and Caching library with WSGI Middleware
 dev-python/beanstalkc 0.4.0 0.4.0-r1: A simple beanstalkd client library
 dev-python/beautifulsoup 3.2.1-r1 4.5.1 4.5.3 4.6.0: Pythonic idioms for iterating, searching, and modifying an HTML/XML parse tree
@@ -7388,7 +7388,7 @@ dev-python/bitarray 0.8.1: efficient arrays of booleans -- C extension
 dev-python/bitstring 3.1.5: A pure Python module for creation and analysis of binary data
 dev-python/bjoern 1.3.2 1.4.3: A screamingly fast Python WSGI server written in C
 dev-python/blaze 0.10.2 0.11.2 0.11.3: Next generation Python numpy
-dev-python/bleach 1.5.0 2.0.0: an easy whitelist-based HTML-sanitizing tool
+dev-python/bleach 1.5.0 2.0.0 2.1.1: an easy whitelist-based HTML-sanitizing tool
 dev-python/blessings 1.6 1.6-r1: A thin, practical wrapper around terminal coloring, styling, and positioning
 dev-python/blinker 1.4: Fast, simple object-to-object and broadcast signaling
 dev-python/blockcanvas 4.0.3-r1: Enthought Tool Suite: Numerical modeling
@@ -7425,7 +7425,7 @@ dev-python/celementtree 1.0.5-r2: The cElementTree module is a C implementation 
 dev-python/celery 3.1.24-r1 4.0.2 4.1.0: Asynchronous task queue/job queue based on distributed message passing
 dev-python/cement 2.0.2 2.10.0: CLI Application Framework for Python
 dev-python/certifi 2016.9.26 2017.1.23 2017.4.17 2017.7.27.1: Python package for providing Mozilla's CA Bundle
-dev-python/cffi 1.5.2 1.9.1 1.10.0: Foreign Function Interface for Python calling C code
+dev-python/cffi 1.5.2 1.9.1 1.10.0 1.11.2: Foreign Function Interface for Python calling C code
 dev-python/cfgio 0.1.2: Python library for reading and writing configuration file formats
 dev-python/cfgparse 1.3-r1: Config File parser for Python
 dev-python/cgkit 2.0.0-r1: Python library for creating 3D images
@@ -7705,7 +7705,7 @@ dev-python/flexx 0.3.1 0.4.1: Pure Python toolkit for creating GUI's using web t
 dev-python/flipflop 1.0: A FastCGI/WSGI gateway
 dev-python/flower 0.9.1-r1: Real-time monitor and web admin for Celery distributed task queue
 dev-python/flup 1.0.2-r1: Random assortment of WSGI servers
-dev-python/fonttools 3.0 3.10.0 3.15.1: Library for manipulating TrueType, OpenType, AFM and Type1 fonts
+dev-python/fonttools 3.0 3.10.0 3.15.1 3.17.0: Library for manipulating TrueType, OpenType, AFM and Type1 fonts
 dev-python/foolscap 0.7.0 0.11.0: RPC protocol for Twisted
 dev-python/formencode 1.3.0-r2: HTML form validation, generation, and conversion package
 dev-python/fpconst 0.7.3-r1: Python Module for handling IEEE 754 floating point special values
@@ -7851,7 +7851,7 @@ dev-python/irman-python 0.1-r1: A minimal set of Python bindings for libirman
 dev-python/iso3166 0.8: Self-contained ISO 3166-1 country definitions.
 dev-python/iso8601 0.1.10 0.1.11 0.1.12: Simple module to parse ISO 8601 dates
 dev-python/iso_639 0.4.5: Python library for ISO 639 standard
-dev-python/isodate 0.5.4: ISO 8601 date/time/duration parser and formatter
+dev-python/isodate 0.5.4 0.6.0: ISO 8601 date/time/duration parser and formatter
 dev-python/isort 4.2.5: A python utility/library to sort imports
 dev-python/itsdangerous 0.24: Various helpers to pass trusted data to untrusted environments and back
 dev-python/jaraco-classes 1.3 1.4: Classes used by other projects by developer jaraco
@@ -8242,7 +8242,7 @@ dev-python/pyamazon 0.65-r1: A Python wrapper for the Amazon web API
 dev-python/pyamf 0.8.0: Action Message Format (AMF) support for Python
 dev-python/pyamg 2.1.0 2.2.1 3.0.2 3.2.1: Algebraic multigrid solvers in Python
 dev-python/pyao 0.82-r3: Python bindings for the libao library
-dev-python/pyasn1 0.1.8 0.2.3 0.3.6: ASN.1 library for Python
+dev-python/pyasn1 0.1.8 0.2.3 0.3.6 0.3.7: ASN.1 library for Python
 dev-python/pyasn1-modules 0.0.5-r1 0.0.8 0.0.10 0.1.4: pyasn1 modules
 dev-python/pyatspi 2.20.3 2.24.0: Python binding to at-spi library
 dev-python/pyaudio 0.2.8 0.2.11: Python bindings for PortAudio
@@ -8269,7 +8269,7 @@ dev-python/pycmd 1.2: pycmd: tools for managing/searching Python related files
 dev-python/pycobertura 0.10.0: Cobertura coverage parser that can diff reports and show coverage progress
 dev-python/pycodestyle 2.0.0 2.1.0 2.2.0 2.3.1: Python style guide checker (fka pep8)
 dev-python/pycollada 0.4 9999: python library for reading and writing collada documents
-dev-python/pycountry 16.11.8 17.5.14: Database of countries, subdivisions, languages, currencies and script
+dev-python/pycountry 16.11.8 17.5.14 17.9.23: Database of countries, subdivisions, languages, currencies and script
 dev-python/pycparser 2.14 2.17 2.18-r1: C parser and AST generator written in Python
 dev-python/pycrypto 2.6.1-r2: Python Cryptography Toolkit
 dev-python/pycryptodome 3.4.5 3.4.6 3.4.7: A self-contained cryptographic library for Python
@@ -8421,7 +8421,7 @@ dev-python/pyscaffold 2.4.4: Tool for easily putting up the scaffold of a Python
 dev-python/pyscard 1.9.5: Smart cards support in python
 dev-python/pysctp 0.6: PySCTP gives access to the SCTP transport protocol from Python
 dev-python/pysendfile 2.0.1: A python interface to sendfile(2) system call
-dev-python/pyserial 2.7-r1 3.2.1 3.3: Python Serial Port extension
+dev-python/pyserial 2.7-r1 3.2.1 3.3 3.4: Python Serial Port extension
 dev-python/pyshark 0.3.7.2: A Python wrapper for tshark output parsing
 dev-python/pyside 1.2.2-r1: Python bindings for the Qt framework
 dev-python/pyside-tools 0.2.15-r1: PySide development tools (lupdate, rcc, uic)
@@ -8972,7 +8972,7 @@ dev-python/webtest 2.0.16 2.0.21: Helper to test WSGI applications
 dev-python/webut 0.1.0.2-r1: Miscellaneous utilities for nevow and twisted.web programming
 dev-python/wehjit 0.2.2-r1: A Python web-widget library
 dev-python/werkzeug 0.11.11 0.11.15 0.12.2: Collection of various utilities for WSGI applications
-dev-python/wheel 0.29.0: A built-package format for Python
+dev-python/wheel 0.29.0 0.30.0: A built-package format for Python
 dev-python/whelk 2.7.1: Pretending python is a shell
 dev-python/whichcraft 0.4.0 0.4.1: This package provides cross-platform cross-python shutil.which functionality
 dev-python/whirlpool 0.3-r1: Bindings for whirlpool hash reference implementation
@@ -13651,7 +13651,7 @@ media-sound/aacgain 1.9 1.9-r1: AACGain normalizes the volume of music files usi
 media-sound/aacplusenc 0.17.5: High-Efficiency AAC (AAC+) Encoder
 media-sound/abcde 2.5.4-r1 2.8.1: A command line CD encoder
 media-sound/abcm2ps 8.12.9 8.13.9 8.13.10 8.13.11 8.13.12: A program to convert abc files to Postscript files
-media-sound/abcmidi 2017.09.12 2017.09.19 2017.10.11: Programs for processing ABC music notation files
+media-sound/abcmidi 2017.10.11 2017.10.18: Programs for processing ABC music notation files
 media-sound/adplay 1.7: A console player for AdLib music
 media-sound/aeolus 0.9.0 0.9.5: A synthesised pipe organ emulator
 media-sound/alac_decoder 0.2.0-r1: Basic decoder for Apple Lossless Audio Codec files (ALAC)
@@ -15087,7 +15087,7 @@ net-mail/mailgraph 1.14-r2: A mail statistics RRDtool frontend for Postfix
 net-mail/mailman 2.1.23 2.1.24: A python-based mailing list server with an extensive web interface
 net-mail/mailshears 0.0.3: Mangle your mail garden
 net-mail/mailsync 5.2.1: A mailbox synchronizer
-net-mail/mailutils 2.99.98-r1 3.1.1 3.2 3.3: A useful collection of mail servers, clients, and filters
+net-mail/mailutils 3.1.1 3.2 3.3: A useful collection of mail servers, clients, and filters
 net-mail/mairix 0.23: Indexes and searches Maildir/MH folders
 net-mail/mboxgrep 0.7.9-r1: Grep for mbox files
 net-mail/mess822 0.58-r2: Collection of utilities for parsing Internet mail messages
@@ -18031,7 +18031,7 @@ sys-process/parallel 20170422 20170822: A shell tool for executing jobs in paral
 sys-process/pidof-bsd 20050501-r4: pidof(1) utility for *BSD
 sys-process/pkill-darwin 1.0: pgrep(1) and pkill(1) for Darwin
 sys-process/prll 0.6.2: A utility for parallelizing execution of shell functions
-sys-process/procenv 0.49: command-line utility to show process environment
+sys-process/procenv 0.49 0.50: command-line utility to show process environment
 sys-process/procps 3.3.12 3.3.12-r1: standard informational utilities and process-handling tools
 sys-process/psinfo 0.12: Process information and statistics using the kernel /proc interface
 sys-process/psmisc 22.21-r3 23.0 23.1: A set of tools that use the proc filesystem
