@@ -1,14 +1,14 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI="6"
 
 DESCRIPTION="libhangul is a generalized and portable library for processing hangul"
 HOMEPAGE="https://code.google.com/p/libhangul/"
 SRC_URI="https://libhangul.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
-SLOT="0"
+SLOT="0/1"
 KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="nls static-libs test"
 
