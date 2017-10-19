@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare pretend test
+DEPEND=dev-db/sqlite:3 >=dev-games/openscenegraph-3.2.0[png] ~dev-games/simgear-2017.3.1[gdal=] media-libs/openal >=media-libs/speex-1.2.0:0 media-libs/speexdsp:0 media-sound/gsm sys-libs/zlib virtual/glu x11-libs/libX11 dbus? ( >=sys-apps/dbus-1.6.18-r1 ) gdal? ( >=sci-libs/gdal-2.0.0:0 ) qt5? ( >=dev-qt/qtcore-5.4.1:5 >=dev-qt/qtdeclarative-5.4.1:5 >=dev-qt/qtgui-5.4.1:5 >=dev-qt/qtnetwork-5.4.1:5 >=dev-qt/qtwidgets-5.4.1:5 ) udev? ( virtual/udev ) utils? ( media-libs/freeglut media-libs/freetype:2 media-libs/glew:0 media-libs/libpng:0 virtual/opengl qt5? ( >=dev-qt/qtwebsockets-5.4.1:5 ) ) >=dev-libs/boost-1.44 >=media-libs/plib-1.8.5 utils? ( x11-libs/libXi x11-libs/libXmu ) sys-devel/make >=dev-util/cmake-3.7.2
+DESCRIPTION=Open Source Flight Simulator
+EAPI=6
+HOMEPAGE=http://www.flightgear.org/
+IUSE=dbus debug examples gdal openmp qt5 test +udev +utils vim-syntax
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-db/sqlite:3 >=dev-games/openscenegraph-3.2.0[png] ~dev-games/simgear-2017.3.1[gdal=] media-libs/openal >=media-libs/speex-1.2.0:0 media-libs/speexdsp:0 media-sound/gsm sys-libs/zlib virtual/glu x11-libs/libX11 dbus? ( >=sys-apps/dbus-1.6.18-r1 ) gdal? ( >=sci-libs/gdal-2.0.0:0 ) qt5? ( >=dev-qt/qtcore-5.4.1:5 >=dev-qt/qtdeclarative-5.4.1:5 >=dev-qt/qtgui-5.4.1:5 >=dev-qt/qtnetwork-5.4.1:5 >=dev-qt/qtwidgets-5.4.1:5 ) udev? ( virtual/udev ) utils? ( media-libs/freeglut media-libs/freetype:2 media-libs/glew:0 media-libs/libpng:0 virtual/opengl qt5? ( >=dev-qt/qtwebsockets-5.4.1:5 ) ) ~games-simulation/flightgear-data-2017.3.1
+SLOT=0
+SRC_URI=mirror://sourceforge/flightgear/flightgear-2017.3.1.tar.bz2
+_eclasses_=bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	cmake-utils	f9fb12e2dbe2e0c9c17f030bae85eb02	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=d4f7a13210c0ee23483f1ee6d5b4fc69
