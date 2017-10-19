@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-DESCRIPTION="libhangul is a generalized and portable library for processing hangul"
+DESCRIPTION="Library for hangul input method logic, hanja dictionary"
 HOMEPAGE="https://github.com/choehwanjin/libhangul"
 SRC_URI="https://libhangul.googlecode.com/files/${P}.tar.gz"
 
@@ -19,7 +19,7 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
 	test? ( dev-libs/check )"
 
-DOCS="AUTHORS ChangeLog NEWS README"
+DOCS=(AUTHORS ChangeLog NEWS)
 
 src_configure() {
 	econf \
@@ -33,5 +33,5 @@ src_test() {
 
 src_install() {
 	default
-	rm -f "${ED}"/usr/lib*/libhangul.la
+	find "${D}" -name "*.la" -delete || die
 }
