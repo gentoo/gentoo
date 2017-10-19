@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile configure install test
+DESCRIPTION=A library for Microsoft compression formats
+EAPI=6
+HOMEPAGE=https://www.cabextract.org.uk/libmspack/
+IUSE=debug doc static-libs abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+SLOT=0
+SRC_URI=https://www.cabextract.org.uk/libmspack/libmspack-0.6alpha.tar.gz
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	ltprune	2770eed66a9b8ef944714cd0e968182e	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	eed53a6313267c9fbcd35fc384bd0087	multilib-minimal	9139c3a57e077cb8e0d0f73ceb080b89	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=29f6d13e8432286839a4d52bf97435e6
