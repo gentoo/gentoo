@@ -11,9 +11,9 @@ inherit kde5
 DESCRIPTION="Runtime plugin collection to extend the functionality of KDE PIM"
 LICENSE="GPL-2+ LGPL-2.1+"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="speech"
 
-# TODO kolab, Qt5TextToSpeech
+# TODO kolab
 CDEPEND="
 	$(add_frameworks_dep kcodecs)
 	$(add_frameworks_dep kcompletion)
@@ -59,6 +59,7 @@ CDEPEND="
 	$(add_qt_dep qtxml)
 	dev-libs/cyrus-sasl:2
 	dev-libs/libical:=
+	speech? ( $(add_qt_dep qtspeech) )
 "
 DEPEND="${CDEPEND}
 	$(add_qt_dep qtxmlpatterns)
@@ -70,3 +71,11 @@ RDEPEND="${CDEPEND}
 "
 
 RESTRICT+=" test"
+
+src_configure() {
+	local mycmakeargs=(
+		$(cmake-utils_use_find_package speech Qt5TextToSpeech)
+	)
+
+	kde5_src_configure
+}
