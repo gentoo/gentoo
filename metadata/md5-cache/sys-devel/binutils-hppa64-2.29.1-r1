@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare test unpack
+DEPEND=>=sys-devel/patch-2.6.1 >=app-portage/elt-patches-20170422 sys-devel/gnuconfig >=sys-devel/binutils-config-3 sys-libs/zlib test? ( dev-util/dejagnu ) nls? ( sys-devel/gettext ) sys-devel/flex virtual/yacc >=sys-libs/binutils-libs-2.29.1
+DESCRIPTION=binutils package for building 64bit kernels on HPPA
+EAPI=5
+HOMEPAGE=https://sourceware.org/binutils/
+IUSE=cxx multitarget nls static-libs test vanilla
+KEYWORDS=-* ~hppa
+LICENSE=|| ( GPL-3 LGPL-3 )
+RDEPEND=>=sys-devel/binutils-config-3 sys-libs/zlib
+SLOT=2.29.1
+SRC_URI=mirror://gnu/binutils/binutils-2.29.1.tar.bz2 mirror://gentoo/binutils-2.29.1-patches-2.tar.xz https://dev.gentoo.org/~vapier/dist/binutils-2.29.1-patches-2.tar.xz https://dev.gentoo.org/~tamiko/distfiles/binutils-2.29.1-patches-2.tar.xz https://dev.gentoo.org/~dilfridge/distfiles/binutils-2.29.1-patches-2.tar.xz
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	gnuconfig	b8ec1c34be4ff9dac7ad4034d277936b	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-binutils	836af54604b9fef015d2bfd165d4ca32	toolchain-funcs	185a06792159ca143528e7010368e8af	unpacker	f40f7b4bd5aa88c2a4ba7b0d1e0ded70	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=23a5cb9a8ff451c290a7c5995158d323
