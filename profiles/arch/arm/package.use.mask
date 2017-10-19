@@ -293,7 +293,8 @@ dev-qt/qt-mobility messaging
 
 # Yixun Lan <dlan@gentoo.org> (12 Apr 2014)
 # app-emulation/qemu is not keyworded on arm arch.
-app-emulation/xen-tools system-qemu
+# app-text/pandoc is not keyworded on arm arch.
+app-emulation/xen-tools system-qemu doc
 
 # Markus Meier <maekke@gentoo.org> (23 Feb 2014)
 # Needs sci-physics/bullet tested #499974
