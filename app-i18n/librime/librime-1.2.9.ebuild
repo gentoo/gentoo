@@ -1,9 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI="6"
 
-inherit cmake-utils multilib versionator vcs-snapshot toolchain-funcs
+inherit cmake-utils vcs-snapshot
 
 DESCRIPTION="Rime Input Method Engine library"
 HOMEPAGE="http://rime.im/ https://github.com/rime/librime"
@@ -28,11 +28,13 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_build static-libs STATIC)
+		-DBOOST_USE_CXX11=ON
 		-DBUILD_DATA=OFF
 		-DBUILD_SEPARATE_LIBS=OFF
-		$(cmake-utils_use_build test TEST)
-		-DLIB_INSTALL_DIR=/usr/$(get_libdir)
+		-DLIB_INSTALL_DIR="${EPREFIX}/usr/$(get_libdir)"
+		-DBUILD_STATIC=$(usex static-libs)
+		-DBUILD_TEST=$(usex test)
 	)
+
 	cmake-utils_src_configure
 }
