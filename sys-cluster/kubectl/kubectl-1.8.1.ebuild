@@ -40,7 +40,7 @@ src_install() {
 
 	newbashcomp ${PN}.bash ${PN}
 	insinto /usr/share/zsh/site-functions
-	newins ${PN}.zsh ${PN}
+	newins ${PN}.zsh _${PN}
 
 	popd || die
 }
