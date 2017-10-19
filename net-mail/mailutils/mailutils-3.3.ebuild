@@ -104,7 +104,8 @@ src_install() {
 	emake DESTDIR="${D}" install
 
 	insinto /etc
-	doins "${FILESDIR}/mailutils.rc"
+	# bug 613112
+	newins "${FILESDIR}/mailutils.rc" mailutils.conf
 	keepdir /etc/mailutils.d/
 	insinto /etc/mailutils.d
 	doins "${FILESDIR}/mail"
