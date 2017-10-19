@@ -14,6 +14,8 @@
 # settings for openrc supervisor for various ceph daemons
 #
 # defaults (can be overidden for each daemon)
+# stderr and stdout values get .${id}-std{out,err}.log appended to the provided value
+#
 #respawn_delay=20
 #respawn_max=5
 #respawn_period=1800
