@@ -14460,6 +14460,7 @@ net-analyzer/prelude-lml 3.0.0 3.1.0 4.0.0: The prelude log analyzer
 net-analyzer/prelude-lml-rules 3.0.1 3.1.0 4.0.0: Prelude LML community ruleset
 net-analyzer/prelude-nessus 20021107: Nessus Correlation support for Prelude-IDS
 net-analyzer/prometheus 1.8.0 2.0.0_rc1: Prometheus monitoring system and time series database
+net-analyzer/prometheus-alertmanager 0.9.1: Alertmanager for alerts sent by client applications such as Prometheus
 net-analyzer/prometheus-blackbox_exporter 0.10.0: Prometheus exporter for blackbox probing via HTTP, HTTPS, DNS, TCP and ICMP
 net-analyzer/prometheus-node_exporter 0.14.0-r1 0.15.0: Prometheus exporter for machine metrics
 net-analyzer/prometheus-snmp_exporter 0.7.0: Prometheus exporter for snmp metrics
