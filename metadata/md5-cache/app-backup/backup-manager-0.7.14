@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=dev-lang/perl:= sys-devel/gettext
+DESCRIPTION=Backup Manager is a command line backup tool for GNU/Linux
+EAPI=6
+HOMEPAGE=https://github.com/sukria/Backup-Manager
+IUSE=s3
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl:= sys-devel/gettext s3? ( dev-perl/Net-Amazon-S3 dev-perl/File-Slurp )
+SLOT=0
+SRC_URI=https://github.com/sukria/Backup-Manager/archive/0.7.14.tar.gz -> backup-manager-0.7.14.tar.gz
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=62e7833e3a1d1cac99e33757df573409
