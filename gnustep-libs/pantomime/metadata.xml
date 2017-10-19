@@ -5,10 +5,6 @@
 	<email>gnustep@gentoo.org</email>
 	<name>Gentoo GNUstep Project</name>
 </maintainer>
-<maintainer type="project">
-	<email>proxy-maint@gentoo.org</email>
-	<name>Proxy Maintainers</name>
-</maintainer>
 <longdescription>
 A set of Objective-C classes that model a mail system.
 Author Ludovic Marcotte ludovic@Sophos.ca
