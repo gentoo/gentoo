@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/sunpinyin/sunpinyin"
 SRC_URI="https://dev.gentoo.org/~yngwin/distfiles/${P}.tar.xz"
 
 LICENSE="LGPL-2.1 CDDL"
-SLOT="0/1"
+SLOT="0/3"
 KEYWORDS="amd64 ~ppc ppc64 ~x86"
 IUSE=""
 
