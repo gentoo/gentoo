@@ -52,7 +52,6 @@ python_test() {
 
 python_install_all() {
 	doman doc/${PN}.1
-
 	domenu misc/${PN}.desktop
 	doicon -s scalable icons/${PN}.svg
 
@@ -71,6 +70,7 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	gnome2_icon_cache_update
 }
