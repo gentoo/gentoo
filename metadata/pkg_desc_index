@@ -7154,7 +7154,7 @@ dev-php/pecl-apcu_bc 1.0.3-r1: Provides APC backwards compatibility functions vi
 dev-php/pecl-bbcode 1.0.3_beta1-r2: A quick and efficient BBCode Parsing Library
 dev-php/pecl-cairo 0.3.2-r1: Cairo bindings for PHP
 dev-php/pecl-cassandra 1.2.2: DataStax PHP Driver for Apache Cassandra
-dev-php/pecl-crack 0.4-r4 0.4-r5 0.4-r6: PHP interface to the cracklib libraries
+dev-php/pecl-crack 0.4-r6: PHP interface to the cracklib libraries
 dev-php/pecl-dbase 5.1.1 7.0.0_beta1: dBase database file access functions
 dev-php/pecl-dbx 1.1.2-r2: The dbx module is a database abstraction layer
 dev-php/pecl-dio 0.0.9 0.1.0: Direct I/O functions for PHP
@@ -14808,7 +14808,7 @@ net-irc/irker 2.9 2.11 2.12 2.13 2.15 2.16 2.17 2.18: Submission tools for IRC n
 net-irc/iroffer-dinoex 3.29: IRC fileserver using DCC
 net-irc/irssi 1.0.4 9999: A modular textUI IRC client with IPv6 support
 net-irc/irssi-otr 1.0.0-r1 1.0.2: Off-The-Record messaging (OTR) for irssi
-net-irc/irssi-xmpp 0.52 0.53: An irssi plugin providing Jabber/XMPP support
+net-irc/irssi-xmpp 0.53: An irssi plugin providing Jabber/XMPP support
 net-irc/irssistats 0.75: Generates HTML IRC stats based on irssi logs
 net-irc/jircii 41: jIRCii - IRC client written in Java
 net-irc/konversation 1.7.2 1.7.2-r1: A user friendly IRC Client
@@ -14826,7 +14826,7 @@ net-irc/psybnc 2.3.2.9-r2: psyBNC is a multi-user and multi-server gateway to IR
 net-irc/ptlink-ircd 6.19.6-r3: Secure IRC daemon with many advanced features
 net-irc/ptlink-opm 1.3.1-r1: PTlink Open Proxy Monitor
 net-irc/quassel 0.12.4 9999: Qt/KDE IRC client supporting a remote daemon for 24/7 connectivity
-net-irc/quassel-irssi 0_p20170107 0_p20170107-r1: Irssi module to connect to Quassel cores.
+net-irc/quassel-irssi 0_p20170107-r1: Irssi module to connect to Quassel cores.
 net-irc/quasselgrep 0_p20170411 9999: Tool for searching quassel logs from the commandline
 net-irc/rbot 0.9.15_p20160325 0.9.15_p20160325-r1: A ruby IRC bot
 net-irc/redirbot 0.0.5-r1: IRCBot, telling people they should contact you on different nickname
@@ -17872,7 +17872,7 @@ sys-kernel/raspberrypi-sources 4.4.9999 4.9.9999 4.10.9999 4.11.9999 4.12.9999 4
 sys-kernel/rt-sources 3.18.59_p65 3.18.69_p75 4.1.42_p49 4.1.42_p50 4.4.79_p92 4.4.86_p99 4.9.40_p30 4.9.47_p37 4.11.12_p9 4.11.12_p13 4.11.12_p14: Full Linux 4.11 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.6.0_rc13-r2 0.6.0_rc14-r3 0.6.1-r3 0.6.2-r5 0.6.3-r1 0.6.4.2 0.6.5.2 0.6.5.3 0.6.5.3-r1 0.6.5.4 0.6.5.4-r1 0.6.5.6 0.6.5.7 0.6.5.8 0.6.5.9 0.6.5.10 0.6.5.11 0.7.0 0.7.1 0.7.2 9999: The Solaris Porting Layer is a Linux kernel module which provides many of the Solaris kernel APIs
 sys-kernel/tuxonice-sources 3.4.110 3.4.111 3.4.112 3.10.100 3.10.101 3.12.56 3.12.58 3.12.60 3.14.64 3.14.67 3.14.70 3.18.28 3.18.31 3.18.34 4.1.19 4.1.22 4.1.24 4.2.8 4.3.6 4.4.5 4.4.8 4.4.11 4.5.2 4.5.4: TuxOnIce + Gentoo patchset sources
-sys-kernel/vanilla-sources 3.2.94 3.10.107 3.16.49 4.1.44 4.4.92 4.9.56 4.12.14 4.13.7: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 3.2.94 3.10.107 3.16.49 4.1.45 4.4.93 4.9.57 4.12.14 4.13.8: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/zen-sources 3.8.9999 3.9.9999 3.10.9999 3.11.9999 3.12.9999 3.13.9999: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
