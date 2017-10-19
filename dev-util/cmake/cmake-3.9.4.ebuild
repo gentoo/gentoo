@@ -5,7 +5,7 @@ EAPI=6
 
 CMAKE_MAKEFILE_GENERATOR="emake"
 CMAKE_REMOVE_MODULES="no"
-inherit bash-completion-r1 elisp-common eutils flag-o-matic gnome2-utils toolchain-funcs versionator xdg-utils cmake-utils
+inherit bash-completion-r1 elisp-common eutils flag-o-matic gnome2-utils toolchain-funcs versionator virtualx xdg-utils cmake-utils
 
 MY_P="${P/_/-}"
 
@@ -167,6 +167,10 @@ src_configure() {
 src_compile() {
 	cmake-utils_src_compile
 	use emacs && elisp-compile Auxiliary/cmake-mode.el
+}
+
+src_test() {
+	virtx cmake_src_test
 }
 
 src_install() {
