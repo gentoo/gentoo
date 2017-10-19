@@ -14,7 +14,7 @@ SLOT="0/1"
 KEYWORDS="~amd64"
 IUSE=""
 
-RDEPEND="dev-libs/openssl:0=
+RDEPEND="dev-libs/openssl:0=[-bindist]
 	sys-apps/pcsc-lite"
 DEPEND="dev-util/gengetopt
 	sys-apps/help2man
