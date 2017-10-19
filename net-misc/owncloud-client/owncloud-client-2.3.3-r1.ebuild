@@ -5,10 +5,9 @@ EAPI=6
 
 inherit cmake-utils
 
-DESCRIPTION="Nextcloud themed desktop client"
-HOMEPAGE="https://github.com/nextcloud/client_theming"
-SRC_URI="http://download.owncloud.com/desktop/stable/owncloudclient-${PV}.tar.xz
-	https://github.com/nextcloud/client_theming/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+DESCRIPTION="Synchronize files from ownCloud Server with your computer"
+HOMEPAGE="http://owncloud.org/"
+SRC_URI="http://download.owncloud.com/desktop/stable/${P/-}.tar.xz"
 
 LICENSE="CC-BY-3.0 GPL-2"
 SLOT="0"
@@ -21,9 +20,10 @@ COMMON_DEPEND=">=dev-db/sqlite-3.4:3
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
-	dev-qt/qtnetwork:5[ssl]
+	dev-qt/qtnetwork:5
 	dev-qt/qtsql:5
 	dev-qt/qtwidgets:5
+	dev-qt/qtxml:5
 	sys-fs/inotify-tools
 	virtual/libiconv
 	dolphin? (
@@ -37,12 +37,13 @@ COMMON_DEPEND=">=dev-db/sqlite-3.4:3
 "
 RDEPEND="${COMMON_DEPEND}
 	!net-misc/ocsync
-	!net-misc/owncloud-client
+	!net-misc/nextcloud-client
 "
 DEPEND="${COMMON_DEPEND}
 	dev-qt/linguist-tools:5
 	doc? (
 		dev-python/sphinx
+		dev-tex/latexmk
 		dev-texlive/texlive-latexextra
 		virtual/latex-base
 	)
@@ -53,31 +54,18 @@ DEPEND="${COMMON_DEPEND}
 	)
 "
 
-S=${WORKDIR}/client_theming-${PV}
-
-src_unpack() {
-	default
-
-	rmdir "${S}"/client || die
-	mv "${WORKDIR}"/owncloudclient-${PV} "${S}"/client \
-		|| die
-}
+S=${WORKDIR}/${P/-}
 
 src_prepare() {
-	CMAKE_USE_DIR="${S}"/client
 	# Keep tests in ${T}
-	sed -i -e "s#\"/tmp#\"${T}#g" client/test/test*.cpp || die
-	# Fix icon name
-	sed -e "/^Icon.*=/s/@APPLICATION_EXECUTABLE@/Nextcloud/" \
-		-i client/mirall.desktop.in || die
+	sed -i -e "s#\"/tmp#\"${T}#g" test/test*.cpp || die "sed failed"
 
 	if ! use nautilus; then
-		pushd client/shell_integration > /dev/null || die
+		pushd shell_integration > /dev/null || die
 		cmake_comment_add_subdirectory nautilus
 		popd > /dev/null || die
 	fi
-
-	default
+	cmake-utils_src_prepare
 }
 
 src_configure() {
@@ -92,7 +80,6 @@ src_configure() {
 		-DCMAKE_DISABLE_FIND_PACKAGE_LibSSH=$(usex !sftp)
 		-DNO_SHIBBOLETH=$(usex !shibboleth)
 		-DUNIT_TESTING=$(usex test)
-		-DOEM_THEME_DIR="${S}"/nextcloudtheme
 	)
 
 	cmake-utils_src_configure
