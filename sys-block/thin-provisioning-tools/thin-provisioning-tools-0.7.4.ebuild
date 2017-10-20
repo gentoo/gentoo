@@ -29,7 +29,10 @@ DEPEND="${RDEPEND}
 	)
 	dev-libs/boost"
 
-PATCHES=( "${FILESDIR}"/${PN}-0.7.0-build-fixes.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.7.0-build-fixes.patch
+	"${FILESDIR}/${P}-disabled-tests_build_fix.patch" #634868
+)
 
 src_prepare() {
 	default
