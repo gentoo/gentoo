@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=app-arch/bzip2 dev-libs/expat dev-libs/liblinebreak dev-libs/fribidi dev-db/sqlite net-misc/curl sys-libs/zlib dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtnetwork:5[ssl] virtual/pkgconfig
+DESCRIPTION=E-Book Reader. Supports many e-book formats
+EAPI=6
+HOMEPAGE=http://www.fbreader.org/
+IUSE=debug
+KEYWORDS=~amd64 ~arm ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=app-arch/bzip2 dev-libs/expat dev-libs/liblinebreak dev-libs/fribidi dev-db/sqlite net-misc/curl sys-libs/zlib dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtnetwork:5[ssl]
+SLOT=0
+SRC_URI=http://www.fbreader.org/files/desktop/fbreader-sources-0.99.4.tgz
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=02f878991d6c230b83b715bf7722c6dd
