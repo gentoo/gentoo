@@ -25,12 +25,14 @@ IUSE="autotype debug http test"
 RDEPEND="
 	dev-libs/libgcrypt:=
 	dev-qt/qtcore:5
+	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtwidgets:5
 	sys-libs/zlib
 	autotype? (
 		dev-qt/qtx11extras:5
+		x11-libs/libX11
 		x11-libs/libXi
 		x11-libs/libXtst
 	)
