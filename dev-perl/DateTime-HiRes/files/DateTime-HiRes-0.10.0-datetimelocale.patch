@@ -1,0 +1,39 @@
+From 39dca8357ffbc562d1a4138586795a32e2a0c8ea Mon Sep 17 00:00:00 2001
+From: Roy Ivy III <rivy.dev@gmail.com>
+Date: Mon, 6 Jun 2016 14:03:59 -0500
+Subject: fix locale testing bug, accepting both old and new canonical locale
+ forms
+
+* fixes #1
+* fixes [rt-bug#109088]
+
+.# Discussion
+
+In v1.00, DateTime::Locale changed the canonical form of locale to use dashes instead of
+underscrores (see [1]). This causes a failure within the "t/02_now.t" test, blocking
+unforced installs.
+
+refs
+[1] https://github.com/autarch/DateTime-Locale/blob/v1.00/Changes#L44
+[rt-bug#109088] https://rt.cpan.org/Public/Bug/Display.html?id=109088 @@ https://archive.is/3RccB
+
+Bug: https://rt.cpan.org/Public/Bug/Display.html?id=109088
+Bug: https://github.com/jhoblitt/DateTime-HiRes/pull/2
+---
+ t/02_now.t | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/t/02_now.t b/t/02_now.t
+index 4eb1f74..fc55184 100644
+--- a/t/02_now.t
++++ b/t/02_now.t
+@@ -32,5 +32,5 @@ use DateTime::HiRes;
+             );
+ 
+     is( $dt->time_zone_long_name, 'Africa/Cairo', "accepted time_zone parameter" );
+-    is( $dt->locale->id, 'ar_EG', "accepted locale parameter" );
++    like( $dt->locale->id, qr'ar[_-]EG', "accepted locale parameter" );
+ }
+-- 
+2.14.2
+
