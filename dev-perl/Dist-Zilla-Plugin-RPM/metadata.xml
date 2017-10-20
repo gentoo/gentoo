@@ -5,4 +5,9 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="cpan">Dist-Zilla-Plugin-RPM</remote-id>
+    <remote-id type="cpan-module">Dist::Zilla::App::Command::mkrpmspec</remote-id>
+    <remote-id type="cpan-module">Dist::Zilla::Plugin::RPM</remote-id>
+  </upstream>
 </pkgmetadata>
