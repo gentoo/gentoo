@@ -18,6 +18,7 @@ HOMEPAGE="http://darkk.net.ru/redsocks/"
 LICENSE="Apache-2.0 LGPL-2.1+ ZLIB"
 SLOT="0"
 IUSE="doc"
+RESTRICT="test"
 
 DEPEND="dev-libs/libevent:0="
 RDEPEND="${DEPEND}
