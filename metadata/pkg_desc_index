@@ -5698,13 +5698,13 @@ dev-perl/DBICx-TestDatabase 0.40.0 0.50.0: create a temporary database from a DB
 dev-perl/DBIx-Class 0.82.840: Extensible and flexible object <-> relational mapper
 dev-perl/DBIx-Class-DynamicDefault 0.40.0: Automatically set and update fields
 dev-perl/DBIx-Class-InflateColumn-Boolean 0.3.0: Auto-create boolean objects from columns
-dev-perl/DBIx-Class-InflateColumn-IP 0.20.30: Auto-create NetAddr::IP objects from columns
+dev-perl/DBIx-Class-InflateColumn-IP 0.20.30 0.20.30-r1: Auto-create NetAddr::IP objects from columns
 dev-perl/DBIx-Class-InflateColumn-Object-Enum 0.60.0: Allows a DBIx::Class user to define a Object::Enum column
-dev-perl/DBIx-Class-UserStamp 0.110.0: Automatically set update and create user id fields
+dev-perl/DBIx-Class-UserStamp 0.110.0 0.110.0-r1: Automatically set update and create user id fields
 dev-perl/DBIx-ContextualFetch 1.30.0-r1: Add contextual fetches to DBI
 dev-perl/DBIx-DBSchema 0.400.0-r1 0.440.0 0.450.0: Database-independent schema objects
 dev-perl/DBIx-Migration 0.70.0: Seamless DB schema up- and downgrades
-dev-perl/DBIx-Safe 1.2.5: Safer access to your database through a DBI database handle
+dev-perl/DBIx-Safe 1.2.5 1.2.5-r1: Safer access to your database through a DBI database handle
 dev-perl/DBIx-SearchBuilder 1.660.0-r1 1.670.0: Encapsulate SQL queries and rows in simple Perl objects
 dev-perl/DBIx-Simple 1.350.0-r1: Very complete easy-to-use OO interface to DBI
 dev-perl/DB_File-Lock 0.50.0-r1: Locking with flock wrapper for DB_File
@@ -5729,10 +5729,10 @@ dev-perl/Data-ObjectDriver 0.150.0: Simple, transparent data interface, with cac
 dev-perl/Data-OptList 0.109.0 0.110.0: parse and validate simple name/value option pairs
 dev-perl/Data-Page 2.20.0-r1: help when paging through sets of results
 dev-perl/Data-Page-Pageset 1.20.0-r1: change long page list to be shorter and well navigate
-dev-perl/Data-Perl 0.2.9: Base classes wrapping fundamental Perl data types
+dev-perl/Data-Perl 0.2.9 0.2.9-r1: Base classes wrapping fundamental Perl data types
 dev-perl/Data-Random 0.80.0 0.120.0: A module used to generate random data
 dev-perl/Data-Section 0.200.6 0.200.7: read multiple hunks of data out of your DATA section
-dev-perl/Data-Serializer 0.600.0: Modules that serialize data structures
+dev-perl/Data-Serializer 0.600.0 0.600.0-r1: Modules that serialize data structures
 dev-perl/Data-ShowTable 4.600.0: routines to display tabular data in several formats
 dev-perl/Data-Stag 0.140.0-r1: Structured Tags datastructures
 dev-perl/Data-Stream-Bulk 0.110.0-r1: N at a time iteration API
@@ -5768,7 +5768,7 @@ dev-perl/DateTime-Format-Natural 1.10.0-r1 1.40.0 1.50.0: Parse informal natural
 dev-perl/DateTime-Format-SQLite 0.110.0: Parse and format SQLite dates and times
 dev-perl/DateTime-Format-Strptime 1.700.0 1.730.0 1.740.0: Parse and Format DateTimes using Strptime
 dev-perl/DateTime-Format-W3CDTF 0.70.0: Parse and format W3CDTF datetime strings
-dev-perl/DateTime-HiRes 0.10.0: Create DateTime objects with sub-second current time resolution
+dev-perl/DateTime-HiRes 0.10.0 0.10.0-r1: Create DateTime objects with sub-second current time resolution
 dev-perl/DateTime-Locale 0.460.0 1.20.0 1.30.0 1.50.0 1.160.0: Localization support for DateTime
 dev-perl/DateTime-Set 0.340.0 0.360.0 0.390.0: Datetime sets and set math
 dev-perl/DateTime-TimeZone 1.930.0 1.940.0 2.10.0 2.110.0 2.130.0: Time zone object base class and factory
@@ -5801,7 +5801,7 @@ dev-perl/Devel-SmallProf 2.20.0-r2 2.20.0-r3: Per-line Perl profiler
 dev-perl/Devel-StackTrace 2.0.0 2.10.0 2.20.0: An object representing a stack trace
 dev-perl/Devel-StackTrace-AsHTML 0.150.0: Displays stack trace in HTML
 dev-perl/Devel-Symdump 2.180.0: Dump symbol names or the symbol table
-dev-perl/Device-SerialPort 1.40.0-r1: A Serial port Perl Module
+dev-perl/Device-SerialPort 1.40.0-r1 1.40.0-r2: A Serial port Perl Module
 dev-perl/Digest-BubbleBabble 0.20.0-r1: Create bubble-babble fingerprints
 dev-perl/Digest-CRC 0.210.0 0.220.0_p2: Generic CRC function
 dev-perl/Digest-GOST 0.60.0-r1: Perl interface to the GOST R 34.11-94 digest algorithm
@@ -5810,7 +5810,7 @@ dev-perl/Digest-JHash 0.70.0-r1 0.90.0 0.100.0: Perl extension for 32 bit Jenkin
 dev-perl/Digest-MD2 2.30.0-r1 2.40.0: Perl interface to the MD2 Algorithm
 dev-perl/Digest-MD4 1.900.0-r1: MD4 message digest algorithm
 dev-perl/Digest-MD5-File 0.80.0-r1: Perl extension for getting MD5 sums for files and urls
-dev-perl/Digest-Nilsimsa 0.60.0-r1: Digest::Nilsimsa - Perl version of Nilsimsa code
+dev-perl/Digest-Nilsimsa 0.60.0-r1 0.60.0-r2: Perl version of Nilsimsa code
 dev-perl/Digest-Perl-MD5 1.900.0: Pure perl implementation of MD5
 dev-perl/Digest-SHA1 2.130.0-r1: NIST SHA message digest algorithm
 dev-perl/Dist-CheckConflicts 0.20.0-r1 0.110.0: Declare version conflicts for your dist
@@ -17123,7 +17123,7 @@ sys-apps/fwts 15.12.00 17.02.00: Firmware Test Suite
 sys-apps/fwupd 0.9.5-r1 0.9.6 1.0.0: Aims to make updating firmware on Linux automatic, safe and reliable
 sys-apps/fwupdate 8 9: Tools for using the ESRT and UpdateCapsule() to apply firmware updates
 sys-apps/fxload 20081013-r1: USB firmware uploader
-sys-apps/gawk 3.1.8 4.0.2 4.1.3 4.1.4: GNU awk pattern-matching language
+sys-apps/gawk 3.1.8 4.0.2 4.1.3 4.1.4 4.2.0: GNU awk pattern-matching language
 sys-apps/gcp 0.1.3: File copying utility with progress and I/O indicator
 sys-apps/gentoo-functions 0.12 9999: base functions required by all Gentoo systems
 sys-apps/gentoo-systemd-integration 7 9999: systemd integration files for Gentoo
