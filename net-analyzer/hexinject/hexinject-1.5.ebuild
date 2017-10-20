@@ -1,13 +1,13 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI="6"
 
 inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Network packet sniffer and injector"
 HOMEPAGE="http://hexinject.sourceforge.net/"
-SRC_URI="http://downloads.sourceforge.net/project/${PN}/${P}/${P}.tar.gz"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
