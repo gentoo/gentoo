@@ -5,4 +5,8 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="cpan">DBIx-Safe</remote-id>
+    <remote-id type="cpan-module">DBIx::Safe</remote-id>
+  </upstream>
 </pkgmetadata>
