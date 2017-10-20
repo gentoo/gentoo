@@ -29,6 +29,28 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (21 Oct 2017)
+# Dead upstream, depends on dead kdelibs4/Qt4.
+# Masked for removal in 30 days. Bug #629018
+sci-calculators/keurocalc
+
+# Andreas Sturmlechner <asturm@gentoo.org> (21 Oct 2017)
+# Dead upstream, depends on dead kdelibs4/Qt4.
+# Masked for removal in 30 days. Bug #629018
+net-misc/knutclient
+
+# Andreas Sturmlechner <asturm@gentoo.org> (21 Oct 2017)
+# Dead upstream, depends on dead kdelibs4/Qt4.
+# Possible KF5-based alternative is media-sound/soundkonverter.
+# Masked for removal in 30 days. Bug #634386
+media-sound/konvertible
+
+# Andreas Sturmlechner <asturm@gentoo.org> (21 Oct 2017)
+# Dead upstream, depends on dead kdelibs4/Qt4, security liability.
+# If at all necessary we use kde-plasma/kde-cli-tools[kdesu]
+# for that purpose. Masked for removal in 30 days. Bug #634382
+kde-misc/kdesudo
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (20 Oct 2017)
 # Doesn't build with glibc-2.25, doesn't build, needs a
 # version bump, needs a maintainer. Bugs 604364, 599004,
