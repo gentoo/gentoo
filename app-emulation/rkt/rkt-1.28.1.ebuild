@@ -23,6 +23,7 @@ SRC_URI="https://github.com/coreos/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 rkt_stage1_coreos? ( $PXE_URI -> $PXE_FILE )
 rkt_stage1_kvm_lkvm? (
 	https://kernel.googlesource.com/pub/scm/linux/kernel/git/will/kvmtool/+archive/${KVMTOOL_VERSION}.tar.gz -> kvmtool-${KVMTOOL_VERSION}.tar.gz
+	https://git.kernel.org/pub/scm/linux/kernel/git/will/kvmtool.git/patch/?id=c0a985531f49c06fd05069024f4664740e6a0baf -> kvmtool-include-sysmacros-c0a985531f49c06fd05069024f4664740e6a0baf.patch
 	${SRC_URI_KVM}
 )
 rkt_stage1_kvm_qemu? (
@@ -72,10 +73,15 @@ pkg_setup() {
 }
 
 src_unpack() {
-	local x
+	local dest x
 	for x in ${A}; do
 		case ${x} in
 			*.img|linux-*) continue ;;
+			kvmtool-include-sysmacros-*) #627564
+				dest=${S}/stage1/usr_from_kvm/lkvm/patches
+				mkdir -p "${dest}" || die
+				cp "${DISTDIR}/${x}" "${dest}" || die
+				;;
 			kvmtool-*)
 				mkdir kvmtool || die
 				pushd kvmtool >/dev/null || die
@@ -148,6 +154,10 @@ src_prepare() {
 		# Make systemdUnitsPath consistent with host
 		sed -e 's|\(systemdUnitsPath := \).*|\1"'$(systemd_get_systemunitdir)'"|' \
 			-i stage1/init/init.go || die
+	fi
+
+	if use rkt_stage1_kvm_qemu; then
+		sed '1i#include <sys/sysmacros.h>' -i "${WORKDIR}/qemu-${QEMU_VERSION#v}/hw/9pfs/9p.c" || die
 	fi
 
 	eautoreconf
