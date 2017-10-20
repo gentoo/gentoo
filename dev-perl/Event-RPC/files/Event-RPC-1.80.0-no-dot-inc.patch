@@ -1,0 +1,203 @@
+From d0ac39cd738065a8f157dade0da743fd2c80960b Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Sat, 21 Oct 2017 10:17:48 +1300
+Subject: Fix test failures without '.' in @INC on Perl 5.26
+
+Bug: https://rt.cpan.org/Ticket/Display.html?id=121204
+Bug: https://bugs.gentoo.org/615834
+---
+ MANIFEST                                | 6 +++---
+ t/02.cnct.t                             | 3 ++-
+ t/03.cnct-auth.t                        | 3 ++-
+ t/04.cnct-auth-ssl-verifypeer-noca.t    | 3 ++-
+ t/04.cnct-auth-ssl-verifypeer-wrongca.t | 3 ++-
+ t/04.cnct-auth-ssl-verifypeer.t         | 3 ++-
+ t/04.cnct-auth-ssl.t                    | 4 ++--
+ t/05.func.t                             | 3 ++-
+ t/06.object2.t                          | 4 ++--
+ t/07.maxpacket.t                        | 4 ++--
+ t/08.msg_formats.t                      | 4 ++--
+ t/{ => lib}/Event_RPC_Test.pm           | 0
+ t/{ => lib}/Event_RPC_Test2.pm          | 0
+ t/{ => lib}/Event_RPC_Test_Server.pm    | 0
+ 14 files changed, 23 insertions(+), 17 deletions(-)
+ rename t/{ => lib}/Event_RPC_Test.pm (100%)
+ rename t/{ => lib}/Event_RPC_Test2.pm (100%)
+ rename t/{ => lib}/Event_RPC_Test_Server.pm (100%)
+
+diff --git a/MANIFEST b/MANIFEST
+index fa86a36..4c5f709 100644
+--- a/MANIFEST
++++ b/MANIFEST
+@@ -32,9 +32,9 @@ t/05.func.t
+ t/06.object2.t
+ t/07.maxpacket.t
+ t/08.msg_formats.t
+-t/Event_RPC_Test.pm
+-t/Event_RPC_Test2.pm
+-t/Event_RPC_Test_Server.pm
++t/lib/Event_RPC_Test.pm
++t/lib/Event_RPC_Test2.pm
++t/lib/Event_RPC_Test_Server.pm
+ t/ssl/ca.crt
+ t/ssl/ca.key
+ t/ssl/ca-wrong.crt
+diff --git a/t/02.cnct.t b/t/02.cnct.t
+index 3ed842c..c23aa06 100644
+--- a/t/02.cnct.t
++++ b/t/02.cnct.t
+@@ -16,7 +16,8 @@ if ( not $depend_modules ) {
+ 
+ plan tests => 5;
+ 
+-require "t/Event_RPC_Test_Server.pm";
++use lib 't/lib';
++require Event_RPC_Test_Server;
+ my $PORT = Event_RPC_Test_Server->port;
+ 
+ # load client class
+diff --git a/t/03.cnct-auth.t b/t/03.cnct-auth.t
+index 6f782f9..06cf939 100644
+--- a/t/03.cnct-auth.t
++++ b/t/03.cnct-auth.t
+@@ -15,7 +15,8 @@ if ( not $depend_modules ) {
+ 
+ plan tests => 6;
+ 
+-require "t/Event_RPC_Test_Server.pm";
++use lib 't/lib';
++require Event_RPC_Test_Server;
+ my $PORT = Event_RPC_Test_Server->port;
+ 
+ my $AUTH_USER = "foo";
+diff --git a/t/04.cnct-auth-ssl-verifypeer-noca.t b/t/04.cnct-auth-ssl-verifypeer-noca.t
+index 0a2502e..bafafff 100644
+--- a/t/04.cnct-auth-ssl-verifypeer-noca.t
++++ b/t/04.cnct-auth-ssl-verifypeer-noca.t
+@@ -20,7 +20,8 @@ if ( $@ ) {
+ 
+ plan tests => 4;
+ 
+-require "t/Event_RPC_Test_Server.pm";
++use lib "t/lib";
++require Event_RPC_Test_Server;
+ my $PORT = Event_RPC_Test_Server->port;
+ 
+ my $AUTH_USER = "foo";
+diff --git a/t/04.cnct-auth-ssl-verifypeer-wrongca.t b/t/04.cnct-auth-ssl-verifypeer-wrongca.t
+index 48d7bdf..e34265d 100644
+--- a/t/04.cnct-auth-ssl-verifypeer-wrongca.t
++++ b/t/04.cnct-auth-ssl-verifypeer-wrongca.t
+@@ -20,7 +20,8 @@ if ( $@ ) {
+ 
+ plan tests => 5;
+ 
+-require "t/Event_RPC_Test_Server.pm";
++use lib 't/lib';
++require Event_RPC_Test_Server;
+ my $PORT = Event_RPC_Test_Server->port;
+ 
+ my $AUTH_USER = "foo";
+diff --git a/t/04.cnct-auth-ssl-verifypeer.t b/t/04.cnct-auth-ssl-verifypeer.t
+index 6dc7816..93bc077 100644
+--- a/t/04.cnct-auth-ssl-verifypeer.t
++++ b/t/04.cnct-auth-ssl-verifypeer.t
+@@ -20,7 +20,8 @@ if ( $@ ) {
+ 
+ plan tests => 6;
+ 
+-require "t/Event_RPC_Test_Server.pm";
++use lib 't/lib';
++require Event_RPC_Test_Server;
+ my $PORT = Event_RPC_Test_Server->port;
+ 
+ my $AUTH_USER = "foo";
+diff --git a/t/04.cnct-auth-ssl.t b/t/04.cnct-auth-ssl.t
+index 2b1eda4..0d9528e 100644
+--- a/t/04.cnct-auth-ssl.t
++++ b/t/04.cnct-auth-ssl.t
+@@ -19,8 +19,8 @@ if ( $@ ) {
+ }
+ 
+ plan tests => 6;
+-
+-require "t/Event_RPC_Test_Server.pm";
++use lib 't/lib';
++require Event_RPC_Test_Server;
+ my $PORT = Event_RPC_Test_Server->port;
+ 
+ my $AUTH_USER = "foo";
+diff --git a/t/05.func.t b/t/05.func.t
+index 88fbe28..bd095b1 100644
+--- a/t/05.func.t
++++ b/t/05.func.t
+@@ -14,7 +14,8 @@ if ( not $depend_modules ) {
+ 
+ plan tests => 18;
+ 
+-require "t/Event_RPC_Test_Server.pm";
++use lib 't/lib';
++require Event_RPC_Test_Server;
+ my $PORT = Event_RPC_Test_Server->port;
+ 
+ # load client class
+diff --git a/t/06.object2.t b/t/06.object2.t
+index 62fcaca..7475a9d 100644
+--- a/t/06.object2.t
++++ b/t/06.object2.t
+@@ -16,8 +16,8 @@ if ( not $depend_modules ) {
+ }
+ 
+ plan tests => 10;
+-
+-require "t/Event_RPC_Test_Server.pm";
++use lib 't/lib';
++require Event_RPC_Test_Server;
+ my $PORT = Event_RPC_Test_Server->port;
+ 
+ # load client class
+diff --git a/t/07.maxpacket.t b/t/07.maxpacket.t
+index 88f8893..4b4e5e4 100644
+--- a/t/07.maxpacket.t
++++ b/t/07.maxpacket.t
+@@ -14,8 +14,8 @@ if ( not $depend_modules ) {
+ }
+ 
+ plan tests => 9;
+-
+-require "t/Event_RPC_Test_Server.pm";
++use lib 't/lib';
++require Event_RPC_Test_Server;
+ my $PORT = Event_RPC_Test_Server->port;
+ 
+ # load client class
+diff --git a/t/08.msg_formats.t b/t/08.msg_formats.t
+index f4a93c9..a875d8e 100644
+--- a/t/08.msg_formats.t
++++ b/t/08.msg_formats.t
+@@ -15,8 +15,8 @@ eval { require Glib     } && ++$depend_modules;
+ if ( not $depend_modules ) {
+     plan skip_all => "Neither AnyEvent, Event nor Glib installed";
+ }
+-
+-require "t/Event_RPC_Test_Server.pm";
++use lib 't/lib';
++require Event_RPC_Test_Server;
+ my $PORT = Event_RPC_Test_Server->port;
+ 
+ # determine available message formats (including the insecure)
+diff --git a/t/Event_RPC_Test.pm b/t/lib/Event_RPC_Test.pm
+similarity index 100%
+rename from t/Event_RPC_Test.pm
+rename to t/lib/Event_RPC_Test.pm
+diff --git a/t/Event_RPC_Test2.pm b/t/lib/Event_RPC_Test2.pm
+similarity index 100%
+rename from t/Event_RPC_Test2.pm
+rename to t/lib/Event_RPC_Test2.pm
+diff --git a/t/Event_RPC_Test_Server.pm b/t/lib/Event_RPC_Test_Server.pm
+similarity index 100%
+rename from t/Event_RPC_Test_Server.pm
+rename to t/lib/Event_RPC_Test_Server.pm
+-- 
+2.14.2
+
