@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -33,3 +33,4 @@ DEPEND="${RDEPEND}
 # Before disabling test here again, please file a bug and help kentnl
 # track it down, so we can at least run some tests where its sensible.
 #SRC_TEST=skip
+PATCHES=("${FILESDIR}/${P}-no-dot-inc.patch")
