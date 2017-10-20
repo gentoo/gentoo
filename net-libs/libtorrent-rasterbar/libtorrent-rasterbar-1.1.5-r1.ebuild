@@ -8,7 +8,7 @@ PYTHON_REQ_USE="threads"
 DISTUTILS_OPTIONAL=true
 DISTUTILS_IN_SOURCE_BUILD=true
 
-inherit distutils-r1 eutils versionator
+inherit distutils-r1 flag-o-matic versionator
 
 MY_PV=$(replace_all_version_separators _)
 
@@ -54,6 +54,8 @@ src_prepare() {
 }
 
 src_configure() {
+	append-cxxflags -std=c++11 # bug 634506
+
 	local myeconfargs=(
 		$(use_enable debug)
 		$(use_enable debug logging)
@@ -98,5 +100,5 @@ src_install() {
 	}
 	use python && distutils-r1_src_install
 
-	prune_libtool_files
+	find "${D}" -name '*.la' -delete || die
 }
