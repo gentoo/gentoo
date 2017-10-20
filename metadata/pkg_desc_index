@@ -7482,7 +7482,7 @@ dev-python/coverage 3.7.1 4.2: Code coverage measurement for Python
 dev-python/crcmod 1.7-r2: Python CRC Generator module
 dev-python/croniter 0.3.11 0.3.15 0.3.17: Python module to provide iteration for datetime object
 dev-python/crumbs 2.1.0: Generalized all-in-one parameters module
-dev-python/cryptography 1.7.1 1.7.2 1.8.1 1.9 2.0.2 2.0.3: Library providing cryptographic recipes and primitives
+dev-python/cryptography 1.7.1 1.7.2 1.8.1 1.9 2.0.2 2.0.2-r1 2.0.3: Library providing cryptographic recipes and primitives
 dev-python/cryptography-vectors 1.7.1 1.7.2 1.8.1 1.9 2.0.2 2.0.3: Test vectors for the cryptography package
 dev-python/cssselect 0.9.1 1.0.1: parses CSS3 Selectors and translates them to XPath 1.0
 dev-python/cssselect2 0.2.0: parses CSS3 Selectors and translates them to XPath 1.0
@@ -10686,7 +10686,7 @@ dev-vcs/darcs 2.8.4-r6 2.10.1 2.10.3-r1 2.12.0 2.12.4 2.12.5: a distributed, int
 dev-vcs/easygit 1.6.5.5: Easy GIT is a wrapper for git, designed to make git easy to learn and use
 dev-vcs/fossil 1.34 1.35 2.2 2.3: Simple, high-reliability, source control management, and more
 dev-vcs/giggle 0.7-r2: GTK+ Frontend for GIT
-dev-vcs/git 2.13.5 2.13.6 2.14.2 2.15.0_rc1 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
+dev-vcs/git 2.13.5 2.13.6 2.14.2 2.15.0_rc2 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
 dev-vcs/git-annex 6.20170818: manage files with git, without checking their contents into git
 dev-vcs/git-bz 0.2015.09.08 9999: Bugzilla subcommand for git
 dev-vcs/git-bzr-ng 0_pre20120822-r2: Git subcommand providing a bidirectional bridge to Bazaar repositories
