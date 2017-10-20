@@ -5691,7 +5691,7 @@ dev-perl/CursesWidgets 1.997.0-r1 1.997.0-r2: Provide high level APIs for rapid 
 dev-perl/Cwd-Guard 0.40.0 0.50.0: Temporary changing working directory (chdir)
 dev-perl/DBD-Pg 3.5.3 3.6.2 3.7.0: PostgreSQL database driver for the DBI module
 dev-perl/DBD-SQLite 1.500.0 1.540.0: Self Contained RDBMS in a DBI Driver
-dev-perl/DBD-mysql 4.32.0-r2 4.37.0 4.41.0 4.41.0-r1 4.42.0: MySQL driver for the Perl5 Database Interface (DBI)
+dev-perl/DBD-mysql 4.32.0-r2 4.37.0 4.41.0 4.41.0-r2 4.42.0: MySQL driver for the Perl5 Database Interface (DBI)
 dev-perl/DBI 1.634.0 1.636.0 1.637.0: Database independent interface for Perl
 dev-perl/DBI-Shell 11.950.0-r1 11.950.0-r2: Interactive command shell for the DBI
 dev-perl/DBICx-TestDatabase 0.40.0 0.50.0: create a temporary database from a DBIx::Class::Schema
@@ -5798,7 +5798,7 @@ dev-perl/Devel-Refactor 0.50.0-r1: Perl extension for refactoring Perl code
 dev-perl/Devel-SimpleTrace 0.80.0: See where you code warns and dies using stack traces
 dev-perl/Devel-Size 0.800.0 0.810.0: Perl extension for finding the memory usage of Perl variables
 dev-perl/Devel-SmallProf 2.20.0-r2 2.20.0-r3: Per-line Perl profiler
-dev-perl/Devel-StackTrace 2.0.0 2.10.0: An object representing a stack trace
+dev-perl/Devel-StackTrace 2.0.0 2.10.0 2.20.0: An object representing a stack trace
 dev-perl/Devel-StackTrace-AsHTML 0.150.0: Displays stack trace in HTML
 dev-perl/Devel-Symdump 2.180.0: Dump symbol names or the symbol table
 dev-perl/Device-SerialPort 1.40.0-r1: A Serial port Perl Module
@@ -5807,7 +5807,7 @@ dev-perl/Digest-CRC 0.210.0 0.220.0_p2: Generic CRC function
 dev-perl/Digest-GOST 0.60.0-r1: Perl interface to the GOST R 34.11-94 digest algorithm
 dev-perl/Digest-HMAC 1.30.0-r1: Keyed Hashing for Message Authentication
 dev-perl/Digest-JHash 0.70.0-r1 0.90.0 0.100.0: Perl extension for 32 bit Jenkins Hashing Algorithm
-dev-perl/Digest-MD2 2.30.0-r1: Perl interface to the MD2 Algorithm
+dev-perl/Digest-MD2 2.30.0-r1 2.40.0: Perl interface to the MD2 Algorithm
 dev-perl/Digest-MD4 1.900.0-r1: MD4 message digest algorithm
 dev-perl/Digest-MD5-File 0.80.0-r1: Perl extension for getting MD5 sums for files and urls
 dev-perl/Digest-Nilsimsa 0.60.0-r1: Digest::Nilsimsa - Perl version of Nilsimsa code
@@ -5819,11 +5819,11 @@ dev-perl/Dist-Zilla 6.10.0-r2: distribution builder; installer not included!
 dev-perl/Dist-Zilla-Plugin-AuthorsFromGit 0.5.0 0.6.0: Add per-file per-year copyright information
 dev-perl/Dist-Zilla-Plugin-Config-Git 0.920.0: Plugin configuration containing settings for a Git repo
 dev-perl/Dist-Zilla-Plugin-Git 2.42.0-r1: Update your git repository after release
-dev-perl/Dist-Zilla-Plugin-MakeMaker-Awesome 0.380.0: A more awesome MakeMaker plugin for Dist::Zilla
+dev-perl/Dist-Zilla-Plugin-MakeMaker-Awesome 0.380.0 0.390.0: A more awesome MakeMaker plugin for Dist::Zilla
 dev-perl/Dist-Zilla-Plugin-MetaProvides 2.2.4: Generating and Populating 'provides' in your META.yml
 dev-perl/Dist-Zilla-Plugin-MetaProvides-Package 2.4.3: Extract namespaces/version from traditional packages for provides
 dev-perl/Dist-Zilla-Plugin-OSPrereqs 0.8.0: List prereqs conditional on operating system
-dev-perl/Dist-Zilla-Plugin-OurPkgVersion 0.100.0: No line insertion and does Package version with our
+dev-perl/Dist-Zilla-Plugin-OurPkgVersion 0.100.0 0.120.0: No line insertion and does Package version with our
 dev-perl/Dist-Zilla-Plugin-PodWeaver 4.8.0: Weave your Pod together from configuration and Dist::Zilla
 dev-perl/Dist-Zilla-Plugin-RPM 0.15.0: Build an RPM from your Dist::Zilla release
 dev-perl/Dist-Zilla-Plugin-SurgicalPodWeaver 0.2.300: Surgically apply PodWeaver
