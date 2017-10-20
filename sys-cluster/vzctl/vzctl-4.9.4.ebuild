@@ -41,11 +41,14 @@ DEPEND="${RDEPEND}
 	"
 
 src_prepare() {
-
 	# Set default OSTEMPLATE on gentoo
 	sed -i -e 's:=redhat-:=gentoo-:' etc/dists/default || die 'sed on etc/dists/default failed'
 	# Set proper udev directory
 	sed -i -e "s:/lib/udev:$(get_udevdir):" src/lib/dev.c || die 'sed on src/lib/dev.c failed'
+
+	epatch "${FILESDIR}/${P}-glibc225.patch"
+	epatch "${FILESDIR}/${P}-glibc225-2.patch"
+	epatch_user
 }
 
 src_configure() {
