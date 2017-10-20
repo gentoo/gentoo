@@ -30,6 +30,12 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (21 Oct 2017)
+# Dead upstream, depends on dead kdelibs4/Qt4.
+# Possible KF5-based alternative is media-sound/soundkonverter.
+# Masked for removal in 30 days. Bug #634386
+media-sound/konvertible
+
+# Andreas Sturmlechner <asturm@gentoo.org> (21 Oct 2017)
 # Dead upstream, depends on dead kdelibs4/Qt4, security liability.
 # If at all necessary we use kde-plasma/kde-cli-tools[kdesu]
 # for that purpose. Masked for removal in 30 days. Bug #634382
