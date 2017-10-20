@@ -1,12 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation.
+# Copyright 1999-2017 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
 
 ELIBC="musl"
 
 FEATURES="sandbox sfperms strict"
 
-USE="hardened nptl pax_kernel pic unicode -berkdb -jit -orc"
-BOOTSTRAP_USE="${BOOTSTRAP_USE} hardened nptl pax_kernel pic -berkdb -jit -nls -orc"
+USE="hardened nptl pic unicode -berkdb -jit -orc"
+BOOTSTRAP_USE="${BOOTSTRAP_USE} hardened nptl pic -berkdb -jit -nls -orc"
 
 SYMLINK_LIB="no"
 
