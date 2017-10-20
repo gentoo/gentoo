@@ -11,12 +11,14 @@ DESCRIPTION="Automatically set update and create user id fields"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="test"
 
-DEPEND="dev-perl/Class-Accessor-Grouped
+RDEPEND="dev-perl/Class-Accessor-Grouped
 	dev-perl/DBIx-Class-DynamicDefault
 	dev-perl/DBIx-Class"
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	test? ( dev-perl/DBD-SQLite )
+"
 
 src_prepare() {
 	sed -i -e 's/use inc::Module::Install;/use lib q[.];\nuse inc::Module::Install;/' Makefile.PL ||
