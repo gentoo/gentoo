@@ -15,6 +15,17 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
+python_prepare_all() {
+	local impl=REGS
+	# note: SSE2 is 2.5x slower than pure REGS...
+	# TODO: test other variants on some capable hardware
+
+	# uncomment the implementation of choice
+	sed -i -e "/BLAKE2_COMPRESS_${impl}/s:^#::" setup.py || die
+
+	distutils-r1_python_prepare_all
+}
+
 python_test() {
 	"${EPYTHON}" test/test.py || die "Tests fail with ${EPYTHON}"
 }
