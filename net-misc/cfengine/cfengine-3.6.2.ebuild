@@ -40,6 +40,7 @@ S="${WORKDIR}/${MY_P}"
 src_prepare() {
 	default
 	epatch "${FILESDIR}/${P}-ifconfig.patch"
+	epatch "${FILESDIR}/${P}-sysmacros.patch"
 	eautoreconf
 }
 
