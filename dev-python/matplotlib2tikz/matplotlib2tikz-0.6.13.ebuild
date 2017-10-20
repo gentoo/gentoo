@@ -16,8 +16,6 @@ LICENSE="MIT"
 SLOT="0"
 IUSE="test"
 
-PATCHES=( "${FILESDIR}/${P}-pipdated.patch" )
-
 RDEPEND="
 	dev-python/matplotlib[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
