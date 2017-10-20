@@ -11,13 +11,15 @@ DESCRIPTION="Auto-create NetAddr::IP objects from columns"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="test"
 
 RDEPEND="
 	dev-perl/NetAddr-IP
 	>=dev-perl/DBIx-Class-0.81.70
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	test? ( dev-perl/DBD-SQLite )
+"
 
 src_prepare() {
 	sed -i -e 's/use inc::Module::Install /use lib q[.];\nuse inc::Module::Install /' Makefile.PL ||
