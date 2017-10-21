@@ -38,7 +38,7 @@ DEMOS_amd64="jdk-${MY_PV}-linux-x64-demos.tar.gz"
 DEMOS_arm="jdk-${MY_PV}-linux-arm32-vfp-hflt-demos.tar.gz"
 DEMOS_arm64="jdk-${MY_PV}-linux-arm64-vfp-hflt-demos.tar.gz"
 DEMOS_x86="jdk-${MY_PV}-linux-i586-demos.tar.gz"
-DEMOS_x64_solaris="jdk-${MY_PV}-solaris-amd64-demos.tar.gz"
+DEMOS_x64_solaris="jdk-${MY_PV}-solaris-x64-demos.tar.gz"
 DEMOS_sparc64_solaris="jdk-${MY_PV}-solaris-sparcv9-demos.tar.gz"
 DEMOS_x64_macos="jdk-${MY_PV}-macosx-x86_64-demos.zip"
 
