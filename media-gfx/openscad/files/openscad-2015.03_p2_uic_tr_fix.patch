@@ -1,0 +1,14 @@
+--- a/src/qtgettext.h	2017-03-22 00:17:29.808058905 -0400
++++ b/src/qtgettext.h	2017-03-22 00:18:55.251184835 -0400
+@@ -22,5 +22,10 @@
+ 	return QString::fromUtf8( _( msgid ) );
+ }
+ 
+-#endif
++inline QString _( const char *msgid, const char *disambiguation )
++{
++	Q_UNUSED( disambiguation );
++	return QString::fromUtf8( _( msgid ) );
++}
+ 
++#endif
