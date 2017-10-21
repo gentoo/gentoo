@@ -38,6 +38,8 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 "
 
+PATCHES=( "${FILESDIR}/${P}-missing-header.patch" )
+
 pkg_setup() {
 	if use oracle && [[ -z "$ORACLE_HOME" ]]; then
 		eerror "ORACLE_HOME variable is not set."
