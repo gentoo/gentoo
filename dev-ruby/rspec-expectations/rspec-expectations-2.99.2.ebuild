@@ -25,7 +25,7 @@ IUSE=""
 ruby_add_rdepend ">=dev-ruby/diff-lcs-1.1.3"
 
 ruby_add_bdepend "test? (
-		>=dev-ruby/rspec-core-2.11.0:2
+		>=dev-ruby/rspec-core-2.99.0:2
 		>=dev-ruby/rspec-mocks-2.14.0:2
 	)"
 
