@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-File-Spec dev-lang/perl:=
+DESCRIPTION=Copy file, file Copy file[s] | dir[s], dir
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/File-NCopy/
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-File-Spec dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/C/CH/CHORNY/File-NCopy-0.36.tar.gz
+_eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=21e080e8ae2eaf9790b51fbb389aac61

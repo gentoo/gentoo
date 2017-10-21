@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-lang/perl:=
+DESCRIPTION=Find matches to a pattern in a series of files and related functions
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/File-Grep/
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/M/MN/MNEYLON/File-Grep-0.02.tar.gz
+_eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=de85affb9fb0aee149833cf6c8646adb
