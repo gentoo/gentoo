@@ -15496,7 +15496,7 @@ net-misc/uftp 3.7 3.7.1: Encrypted UDP based FTP with multicast
 net-misc/unison 2.48.3 2.48.4: Two-way cross-platform file synchronizer
 net-misc/unix2tcp 0.8.2-r1: a connection forwarder that converts Unix sockets into TCP sockets
 net-misc/urlview 0.9: extracts urls from text and will send them to another app
-net-misc/usbip 3.19: Userspace utilities for a general USB device sharing system over IP networks
+net-misc/usbip 3.19 4.13: Userspace utilities for a general USB device sharing system over IP networks
 net-misc/utelnetd 0.1.11-r1: A small Telnet daemon, derived from the Axis tools
 net-misc/valve 1.0 1.0-r1: Copy data while enforcing a specified maximum transfer rate
 net-misc/vconfig 1.9: 802.1Q vlan control utility
