@@ -29,6 +29,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (21 Oct 2017)
+# The 1.12 and 1.15 branches are no longer supported and remain vulnerable to
+# various CVEs (CVE-2013-6424, bug #493294 and CVE-2017-2624 bug #611350 just
+# to name a few). They remain in tree only for old nvidia-drivers 96 and 173.
+<x11-base/xorg-server-1.19.2
+<x11-base/xorg-drivers-1.19
+
 # Andreas Sturmlechner <asturm@gentoo.org> (21 Oct 2017)
 # Dead upstream, depends on dead kdelibs4/Qt4.
 # Masked for removal in 30 days. Bug #629018
