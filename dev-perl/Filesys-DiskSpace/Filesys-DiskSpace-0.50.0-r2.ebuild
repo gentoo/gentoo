@@ -15,6 +15,6 @@ IUSE=""
 
 src_test() {
 	#https://rt.cpan.org/Ticket/Display.html?id=108971
-	perl_rm_files t/linux-ext2.t
+	perl_rm_files t/linux-ext2.t t/linux-vfat.t
 	perl-module_src_test
 }
