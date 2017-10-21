@@ -19008,7 +19008,7 @@ x11-misc/trayer 1.0-r2 1.0-r3: Lightweight GTK+ based systray for UNIX desktop
 x11-misc/trayer-srg 1.1.6-r1 1.1.7: trayer fork with multi monitor support and cleaned up codebase
 x11-misc/treeline 1.4.1-r1 2.0.2 2.1.1 2.1.2: TreeLine is a structured information storage program
 x11-misc/unclutter 8-r4: Hides mouse pointer while not in use
-x11-misc/urxvt-font-size 1.1 9999: Perl extension for rxvt-unicode to change the font size on the fly
+x11-misc/urxvt-font-size 1.1 1.3 9999: Perl extension for rxvt-unicode to change the font size on the fly
 x11-misc/urxvt-perls 2.2: Perl extensions for rxvt-unicode
 x11-misc/urxvtconfig 1.0: GUI configuration tool for the rxvt-unicode terminal emulator
 x11-misc/util-macros 1.19.1: X.Org autotools utility macros
