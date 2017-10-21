@@ -1051,7 +1051,7 @@ app-editors/nano 2.7.5 2.8.6 2.8.7 9999: GNU GPL'd Pico clone with more function
 app-editors/ne 3.0.1 3.0.1-r1: the nice editor, easy to use for the beginner and powerful for the wizard
 app-editors/nedit 5.6-r1: Multi-purpose text editor for the X Window System
 app-editors/neovim 0.1.0 0.1.1-r1 0.1.2 0.1.3 0.1.4 0.1.5 0.1.5-r1 0.1.6 0.1.7 0.2.0 9999: Vim-fork focused on extensibility and agility.
-app-editors/ng 1.5_beta1 1.5_beta1-r1 1.5_beta1-r2: Emacs like micro editor Ng -- based on mg2a
+app-editors/ng 1.5_beta1-r2: Emacs like micro editor Ng -- based on mg2a
 app-editors/notepadqq 1.0.1: Notepad++-like editor for Linux
 app-editors/nvi 1.81.6-r7: Vi clone
 app-editors/padre 1.0.0 1.0.0-r1: Perl Application Development and Refactoring Environment
@@ -1755,7 +1755,7 @@ app-misc/conmux 0.15.1-r3: A console multiplexor
 app-misc/countrycodes 1.0.5-r1 1.0.5-r2 1.0.5-r3: An ISO 3166 country code finder
 app-misc/cpipe 3.0.3: Counting pipe, measures data transfered over pipe
 app-misc/crunch 3.6: A wordlist generator
-app-misc/cstream 3.0.0 3.1.1: general-purpose stream-handling tool like UNIX dd
+app-misc/cstream 3.1.1: general-purpose stream-handling tool like UNIX dd
 app-misc/cw 1.0.16-r3: A non-intrusive real-time ANSI color wrapper for common unix-based commands
 app-misc/cwiid 20110107-r2: Library, input driver, and utilities for the Nintendo Wiimote
 app-misc/dailystrips 1.0.28-r2 1.0.28-r3: dailystrips automatically downloads your favorite online comics from the web
@@ -1857,7 +1857,7 @@ app-misc/klavaro 3.0.1: Another free touch typing tutor program
 app-misc/ktoblzcheck 1.48: Library to check account numbers and bank codes of German banks
 app-misc/lcd4linux 0.10.1_rc2-r4: Shows system and ISDN information on an external display or in a X11 window
 app-misc/lcdproc 0.5.2-r1 0.5.5 0.5.6-r1: Client/Server suite to drive all kinds of LCD (-like) devices
-app-misc/leave 20100918: Command-line tool from FreeBSD that reminds you when its time to leave
+app-misc/leave 20100918 20100918-r1: FreeBSD command-line tool that reminds you when its time to leave
 app-misc/ledit 2.03: A line editor to be used with interactive commands
 app-misc/lfm 2.3-r1: Last File Manager is a powerful file manager for the console
 app-misc/linux-logo 5.11-r3: A utility that displays an ANSI/ASCII logo and some system information
@@ -1943,7 +1943,7 @@ app-misc/specto 0.4.1-r1: watch configurable events and trigger notifications
 app-misc/sphinx 0.9.9 2.0.10 2.1.9 2.2.11: Full-text search engine with support for MySQL and PostgreSQL
 app-misc/splitvt 1.6.6-r2: Splitting terminals into two shells
 app-misc/srm 1.2.11-r2 1.2.15: A command-line compatible rm which destroys file contents before unlinking
-app-misc/supercat 0.5.5-r1: A text file colorizer using powerful regular expressions
+app-misc/supercat 0.5.5-r1 0.5.5-r2: A text file colorizer using powerful regular expressions
 app-misc/symlinks 1.4 1.4-r2 1.4-r3: Scans for and fixes broken or messy symlinks
 app-misc/tails-installer 4.4.8 4.4.11: A graphical tool to install or upgrade Tails on a USB stick from an ISO image
 app-misc/task 2.5.1-r1: Taskwarrior is a command-line todo list manager
@@ -2162,7 +2162,7 @@ app-shells/bashish 2.2.4: Text console theme engine
 app-shells/ccsh 0.0.4-r4: UNIX Shell for people already familiar with the C language
 app-shells/ctypes-sh 1.1: Foreign function interface for bash
 app-shells/dash 0.5.8.2 0.5.9.1-r1 0.5.9.1-r2 0.5.9.1-r3: Debian Almquist Shell
-app-shells/dsh 0.25.10: Distributed Shell
+app-shells/dsh 0.25.10 0.25.10-r1: Distributed Shell
 app-shells/esh 0.8.5-r2: A UNIX Shell with a simplified Scheme syntax
 app-shells/fish 2.4.0 2.5.0 2.6.0: fish is the Friendly Interactive SHell
 app-shells/gentoo-bashcomp 20101217-r1 20121024 20140911: Gentoo-specific bash command-line completions (emerge, ebuild, equery, etc)
@@ -2186,7 +2186,7 @@ app-shells/rrs 1.70-r1 1.70-r2: Reverse Remote Shell
 app-shells/rssh 2.3.4 2.3.4_p3: Restricted shell for SSHd
 app-shells/rust-zshcomp 1_beta20150411: Rust zsh completions
 app-shells/sash 3.8: A small (static) UNIX Shell
-app-shells/scsh 0.6.7 0.6.7-r1 0.6.7-r2: Unix shell embedded in Scheme
+app-shells/scsh 0.6.7-r2: Unix shell embedded in Scheme
 app-shells/scsh-install-lib 1.3.0 1.3.0-r1: Installation tool for the Scheme Untergrund Library
 app-shells/shish 0.7_pre3-r1: The diet shell
 app-shells/smrsh 8.15.2: Sendmail restricted shell, for use with MTAs other than Sendmail
@@ -7720,7 +7720,7 @@ dev-python/functest 0.8.8-r1: Functest is a test tool/framework for testing in P
 dev-python/functools32 3.2.3: Backport of the functools module from Python 3
 dev-python/fuse-python 0.2.1-r1: Python FUSE bindings
 dev-python/fusepy 2.0.4-r1: Python FUSE bindings using ctypes
-dev-python/fusil 1.5: Fusil the fuzzer is a Python library used to write fuzzing programs
+dev-python/fusil 1.5 1.5-r1: Python library to write fuzzing programs
 dev-python/future 0.15.2 0.16.0: Easy, clean, reliable Python 2/3 compatibility
 dev-python/futures 2.2.0 3.0.3 3.1.1: Backport of the concurrent.futures package from Python 3.2
 dev-python/futurist 0.13.0 1.3.0: Useful additions to futures, from the future
@@ -7944,7 +7944,7 @@ dev-python/llfuse 1.2 1.3: Python bindings for the low-level FUSE API
 dev-python/llvmlite 0.12.1 0.15.0 0.16.0 0.19.0 0.20.0: Python wrapper around the llvm C++ library
 dev-python/lmdb 0.92: Python bindings for the Lightning Database
 dev-python/locket 0.2.0: File-based locks for Python
-dev-python/lockfile 0.11.0-r1 0.12.2: Platform-independent file locking module
+dev-python/lockfile 0.11.0-r1 0.12.2 0.12.2-r1: Platform-independent file locking module
 dev-python/locustio 0.7.3: A python utility for doing easy, distributed load testing of a web site
 dev-python/log4py 1.3-r1: A python logging module similar to log4j
 dev-python/logbook 0.9.1 1.0.0 1.1.0: A logging replacement for Python
