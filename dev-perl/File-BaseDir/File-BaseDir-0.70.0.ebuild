@@ -30,5 +30,7 @@ DEPEND="${RDEPEND}
 DIST_TEST="do" # https://rt.cpan.org/Ticket/Display.html?id=119256
 src_test() {
 	perl_rm_files t/05_pod_cover.t t/04_pod_ok.t
+	# https://bugs.gentoo.org/624028
+	unset XDG_CONFIG_HOME
 	perl-module_src_test
 }
