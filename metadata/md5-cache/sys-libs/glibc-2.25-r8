@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare pretend setup test unpack
+DEPEND=nscd? ( selinux? ( audit? ( sys-process/audit ) caps? ( sys-libs/libcap ) ) ) suid? ( caps? ( sys-libs/libcap ) ) selinux? ( sys-libs/libselinux ) systemtap? ( dev-util/systemtap ) >=app-misc/pax-utils-0.1.10 !<sys-apps/sandbox-1.6 !<sys-apps/portage-2.1.2 >=sys-devel/binutils-2.24 >=sys-devel/gcc-4.7 virtual/os-headers sys-devel/gnuconfig virtual/pkgconfig
+DESCRIPTION=GNU libc6 (also called glibc2) C library
+EAPI=5
+HOMEPAGE=https://www.gnu.org/software/libc/libc.html
+IUSE=audit caps debug gd hardened multilib nscd +rpc selinux systemtap profile suid vanilla crosscompile_opts_headers-only
+LICENSE=LGPL-2.1+ BSD HPND ISC inner-net rc PCRE
+PDEPEND=!vanilla? ( sys-libs/timezone-data )
+RDEPEND=nscd? ( selinux? ( audit? ( sys-process/audit ) caps? ( sys-libs/libcap ) ) ) suid? ( caps? ( sys-libs/libcap ) ) selinux? ( sys-libs/libselinux ) systemtap? ( dev-util/systemtap ) !sys-kernel/ps3-sources sys-apps/gentoo-functions !sys-libs/nss-db vanilla? ( !sys-libs/timezone-data )
+RESTRICT=strip
+SLOT=2.2
+SRC_URI=mirror://gnu/glibc/glibc-2.25.tar.xz ftp://sourceware.org/pub/glibc/releases/glibc-2.25.tar.xz ftp://sourceware.org/pub/glibc/snapshots/glibc-2.25.tar.xz mirror://gentoo/glibc-2.25.tar.xz mirror://gentoo/glibc-2.25-patches-11.tar.bz2 https://dev.gentoo.org/~vapier/dist/glibc-2.25-patches-11.tar.bz2 https://dev.gentoo.org/~dilfridge/distfiles/glibc-2.25-patches-11.tar.bz2 https://dev.gentoo.org/~tamiko/distfiles/glibc-2.25-patches-11.tar.bz2 https://dev.gentoo.org/~slyfox/distfiles/glibc-2.25-patches-11.tar.bz2 multilib? ( mirror://gentoo/gcc-4.7.3-r1-multilib-bootstrap.tar.bz2 https://dev.gentoo.org/~vapier/dist/gcc-4.7.3-r1-multilib-bootstrap.tar.bz2 https://dev.gentoo.org/~dilfridge/distfiles/gcc-4.7.3-r1-multilib-bootstrap.tar.bz2 https://dev.gentoo.org/~tamiko/distfiles/gcc-4.7.3-r1-multilib-bootstrap.tar.bz2 https://dev.gentoo.org/~slyfox/distfiles/gcc-4.7.3-r1-multilib-bootstrap.tar.bz2 )
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	gnuconfig	b8ec1c34be4ff9dac7ad4034d277936b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	prefix	7b6fb2fc216b101b5d97d171925a847c	systemd	34815d3b76e745c5ca33eec9f95074c2	toolchain-funcs	185a06792159ca143528e7010368e8af	toolchain-glibc	f5c5d253dc6b28e3711b690fb3486f57	unpacker	f40f7b4bd5aa88c2a4ba7b0d1e0ded70	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=41ca664ce6e52283c0d884de64d8815e
