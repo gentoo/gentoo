@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=dev-libs/librevenge dev-libs/icu:= dev-libs/boost virtual/pkgconfig doc? ( app-doc/doxygen )
+DESCRIPTION=Library parsing QuarkXpress documents
+EAPI=6
+HOMEPAGE=https://wiki.documentfoundation.org/DLP/Libraries/libqxp
+IUSE=debug doc test tools
+KEYWORDS=~amd64 ~x86
+LICENSE=MPL-2.0
+RDEPEND=dev-libs/librevenge dev-libs/icu:=
+SLOT=0
+SRC_URI=https://dev-www.libreoffice.org/src/libqxp/libqxp-0.0.0.tar.xz
+_md5_=901bb01f449d5d8cf04d4b76d7e0a46d

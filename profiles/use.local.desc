@@ -1158,6 +1158,7 @@ app-text/jmupdf:system-mupdf - Link against system version of app-text/mupdf
 app-text/lcdf-typetools:kpathsea - Enable integration with kpathsea search library (TeX related)
 app-text/libebook:tools - Build file conversion tools
 app-text/libmwaw:tools - Build file conversion tools
+app-text/libqxp:tools - Build file conversion tools
 app-text/libstaroffice:tools - Build conversion tools
 app-text/libstaroffice:zlib - Enable support for compressed data
 app-text/libwpd:tools - Build file conversion tools
