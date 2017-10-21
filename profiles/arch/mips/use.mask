@@ -101,6 +101,10 @@ fuse
 # Modular X: mask for architectures lacking direct rendering
 dri
 
+# James Le Cuirot <chewi@gentoo.org>
+# Unmask as Vivante is available for mips.
+-video_cards_vivante
+
 # Stephen P. Becker <geoman@gentoo.org>
 -video_cards_newport
 
