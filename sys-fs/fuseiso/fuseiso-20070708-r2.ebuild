@@ -1,9 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-inherit eutils
+EAPI=6
 
 DESCRIPTION="Fuse module to mount ISO9660"
 HOMEPAGE="https://sourceforge.net/projects/fuseiso"
@@ -13,16 +11,11 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-RDEPEND="sys-fs/fuse
+RDEPEND="sys-fs/fuse:=
 	sys-libs/zlib
 	dev-libs/glib:2"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 DOCS=( AUTHORS ChangeLog NEWS README )
-
-src_prepare() {
-	epatch "${FILESDIR}/${P}-largeiso.patch"
-	epatch "${FILESDIR}/${P}-fix-typo.patch" # bug #482078
-	epatch_user
-}
+PATCHES=( ${FILESDIR}/${P}-largeiso.patch ${FILESDIR}/${P}-fix-typo.patch )
