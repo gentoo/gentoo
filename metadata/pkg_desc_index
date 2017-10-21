@@ -5922,7 +5922,7 @@ dev-perl/File-RsyncP 0.740.0: An rsync perl module
 dev-perl/File-Scan-ClamAV 1.910.0-r1 1.930.0 1.950.0: Connect to a local Clam Anti-Virus clamd service and send commands
 dev-perl/File-SearchPath 0.60.0-r1: Search for a file in an environment variable path
 dev-perl/File-Share 0.250.0: Extend File::ShareDir to local libraries
-dev-perl/File-ShareDir 1.102.0: Locate per-dist and per-module shared files
+dev-perl/File-ShareDir 1.102.0 1.104.0: Locate per-dist and per-module shared files
 dev-perl/File-ShareDir-Install 0.90.0 0.110.0: Install shared files
 dev-perl/File-ShareDir-ProjectDistDir 1.0.9: Simple set-and-forget using of a '/share' directory in your projects root
 dev-perl/File-Slurp 9999.190.0-r1: Efficient Reading/Writing of Complete Files
