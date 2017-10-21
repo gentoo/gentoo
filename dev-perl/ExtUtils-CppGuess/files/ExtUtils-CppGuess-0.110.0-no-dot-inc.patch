@@ -1,0 +1,56 @@
+From 2c89bb54f233776fb8760a264286f9e0932f62c6 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Sat, 21 Oct 2017 13:15:43 +1300
+Subject: Fix tests on 5.26 without '.' in @INC
+
+Bug: https://rt.cpan.org/Ticket/Display.html?id=120848
+Bug: https://bugs.gentoo.org/615842
+Bug: https://github.com/tsee/extutils-cppguess/pull/15
+---
+ t/010_module_build.t | 3 ++-
+ t/011_makemaker.t    | 3 ++-
+ t/lib/TestUtils.pm   | 3 ++-
+ 3 files changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/t/010_module_build.t b/t/010_module_build.t
+index 93b5f44..ef004d3 100644
+--- a/t/010_module_build.t
++++ b/t/010_module_build.t
+@@ -2,7 +2,8 @@
+ 
+ use strict;
+ use Test::More tests => 1;
+-use t::lib::TestUtils;
++use lib 't/lib';
++use TestUtils;
+ 
+ my $separator = ( '=' x 40 . "\n" );
+ 
+diff --git a/t/011_makemaker.t b/t/011_makemaker.t
+index 237636a..5986395 100644
+--- a/t/011_makemaker.t
++++ b/t/011_makemaker.t
+@@ -2,7 +2,8 @@
+ 
+ use strict;
+ use Test::More tests => 1;
+-use t::lib::TestUtils;
++use lib 't/lib';
++use TestUtils;
+ 
+ my $separator = ( '=' x 40 . "\n" );
+ 
+diff --git a/t/lib/TestUtils.pm b/t/lib/TestUtils.pm
+index c71572b..b3480c4 100644
+--- a/t/lib/TestUtils.pm
++++ b/t/lib/TestUtils.pm
+@@ -1,4 +1,5 @@
+-package t::lib::TestUtils;
++package # hide
++  TestUtils;
+ 
+ use strict;
+ 
+-- 
+2.14.2
+
