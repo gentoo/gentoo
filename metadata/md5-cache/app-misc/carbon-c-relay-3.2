@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install preinst
+DEPEND=lz4? ( app-arch/lz4 ) ssl? ( dev-libs/openssl:0 ) zlib? ( app-arch/gzip )
+DESCRIPTION=Enhanced C version of Carbon relay, aggregator and rewriter
+EAPI=6
+HOMEPAGE=https://github.com/grobian/carbon-c-relay
+IUSE=lz4 ssl zlib
+KEYWORDS=~amd64 ~arm ~ppc64 ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris
+LICENSE=Apache-2.0
+RDEPEND=lz4? ( app-arch/lz4 ) ssl? ( dev-libs/openssl:0 ) zlib? ( app-arch/gzip )
+SLOT=0
+SRC_URI=https://github.com/grobian/carbon-c-relay/releases/download/v3.2/carbon-c-relay-3.2.tar.gz
+_eclasses_=user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=c28260e9f07619f4f696c2390bafdd30
