@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="X Steps Recorder"
 HOMEPAGE="https://github.com/nonnymoose/xsr"
-SRC_URI="https://github.com/nonnymoose/${PN}/archive/v${PV}.tar.gz"
+SRC_URI="https://github.com/nonnymoose/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
