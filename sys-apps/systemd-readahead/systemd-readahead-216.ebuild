@@ -1,7 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 inherit systemd toolchain-funcs udev
 
 DESCRIPTION="Split of readahead systemd implementation"
@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
 IUSE=""
 
-S=${WORKDIR}/systemd-${PV}
+S="${WORKDIR}/systemd-${PV}"
 
 RDEPEND=">=sys-apps/systemd-217:="
 DEPEND="${RDEPEND}
@@ -26,7 +26,14 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	# https://github.com/systemd/systemd/pull/2838 , bug #604614
+	"${FILESDIR}/${P}-sysmacros.patch"
+)
+
 src_prepare() {
+	default
+
 	# systemd-notify no longer supports readahead playing
 	sed -i -e 's:ExecStart=@SYSTEMD_NOTIFY@ --readahead=done:ExecStart=/bin/touch /run/systemd/readahead/done:' \
 		units/systemd-readahead-done.service.in || die
