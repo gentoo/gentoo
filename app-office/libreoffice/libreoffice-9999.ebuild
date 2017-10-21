@@ -49,7 +49,6 @@ unset DEV_URI
 # These are bundles that can't be removed for now due to huge patchsets.
 # If you want them gone, patches are welcome.
 ADDONS_SRC=(
-	"${ADDONS_URI}/libepubgen-0.0.1.tar.bz2"
 	"collada? ( ${ADDONS_URI}/4b87018f7fff1d054939d19920b751a0-collada2gltf-master-cb1d97788a.tar.bz2 )"
 	"java? ( ${ADDONS_URI}/17410483b5b5f267aa18b7e00b65e6e0-hsqldb_1_8_0.zip )"
 	# no release for 8 years, should we package it?
@@ -85,12 +84,14 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	app-text/hunspell:=
 	>=app-text/libabw-0.1.0
 	>=app-text/libebook-0.1
+	app-text/libepubgen
 	>=app-text/libetonyek-0.1
 	app-text/libexttextcat
 	app-text/liblangtag
 	>=app-text/libmspub-0.1.0
 	>=app-text/libmwaw-0.3.1
 	>=app-text/libodfgen-0.1.0
+	app-text/libqxp
 	app-text/libstaroffice
 	app-text/libwpd:0.10[tools]
 	app-text/libwpg:0.3
@@ -454,7 +455,6 @@ src_configure() {
 		--without-help \
 		--with-helppack-integration \
 		--with-system-gpgmepp \
-		--without-system-libepubgen \
 		--without-system-sane \
 		$(use_enable bluetooth sdremote-bluetooth) \
 		$(use_enable coinmp) \
