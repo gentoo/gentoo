@@ -3,17 +3,18 @@
 
 EAPI=6
 
-inherit elisp-common git-r3 qmake-utils xdg-utils
+inherit elisp-common qmake-utils xdg-utils
 
+MY_PV="2015.03-2"
 SITEFILE="50${PN}-gentoo.el"
 
 DESCRIPTION="The Programmers Solid 3D CAD Modeller"
 HOMEPAGE="http://www.openscad.org/"
-EGIT_REPO_URI="https://github.com/openscad/openscad.git"
+SRC_URI="http://files.openscad.org/${PN}-${MY_PV}.src.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="emacs"
 
 DEPEND="
@@ -36,9 +37,15 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}/${P}_uic_tr_fix.patch" )
+
+S="${WORKDIR}/${PN}-${MY_PV}"
+
 src_prepare() {
 	default
 
+	#Use our CFLAGS (specifically don't force x86)
+	sed -i "s/QMAKE_CXXFLAGS_RELEASE = .*//g" ${PN}.pro  || die
 	sed -i "s/\/usr\/local/\/usr/g" ${PN}.pro || die
 }
 
