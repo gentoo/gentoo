@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-perl/Module-Build virtual/emacs dev-lang/perl:=
+DESCRIPTION=Perl Develop Environment in Emacs
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Emacs-PDE/
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=|| ( Artistic GPL-1 GPL-2 GPL-3 )
+RDEPEND=virtual/emacs dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/Y/YE/YEWENBIN/Emacs-PDE-0.2.16.tar.gz
+_eclasses_=elisp-common	23f47b2e1de7abf387105eddd1318738	multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=8681f849057dd9216412464253a3af2d
