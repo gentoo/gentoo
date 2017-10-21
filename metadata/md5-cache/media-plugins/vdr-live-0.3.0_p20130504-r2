@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DEFINED_PHASES=compile install postinst postrm prepare setup unpack
 DEPEND=media-video/vdr >=dev-libs/tntnet-2.2.1[ssl=] >=dev-libs/cxxtools-2.2.1 pcre? ( >=dev-libs/libpcre-8.12[cxx] ) >=media-tv/gentoo-vdr-scripts-0.4.2 virtual/linuxtv-dvb-headers ssl? ( || ( dev-libs/openssl:0 dev-libs/libressl:0 ) )
 DESCRIPTION=VDR Plugin: Web Access To Settings
 EAPI=5
@@ -10,4 +10,4 @@ RDEPEND=media-video/vdr >=dev-libs/tntnet-2.2.1[ssl=] >=dev-libs/cxxtools-2.2.1 
 SLOT=0
 SRC_URI=mirror://gentoo/vdr-live-0.3.0_p20130504.tar.bz2 https://dev.gentoo.org/~hd_brummy/distfiles/vdr-live-0.3.0_p20130504.tar.bz2
 _eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	ssl-cert	b5e85f9a834c71d8bd532de477fe4ce2	toolchain-funcs	185a06792159ca143528e7010368e8af	unpacker	f40f7b4bd5aa88c2a4ba7b0d1e0ded70	vdr-plugin-2	786b4f5aa9f17e2d5cec5e628f462c01
-_md5_=4863630d99c983a5981380d9b5a30744
+_md5_=960c325b7a93f328e41fe39a19713736
