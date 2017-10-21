@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit elisp-common eutils git-r3 qmake-utils
+inherit elisp-common git-r3 qmake-utils xdg-utils
 
 SITEFILE="50${PN}-gentoo.el"
 
@@ -16,32 +16,34 @@ SLOT="0"
 KEYWORDS=""
 IUSE="emacs"
 
-DEPEND="media-gfx/opencsg
-	sci-mathematics/cgal
-	dev-qt/qtcore:4
-	dev-qt/qtgui:4[-egl]
-	dev-qt/qtopengl:4[-egl]
+DEPEND="
 	dev-cpp/eigen:3
+	dev-libs/boost:=
 	dev-libs/glib:2
 	dev-libs/gmp:0=
 	dev-libs/mpfr:0=
-	dev-libs/boost:=
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtopengl:5
+	media-gfx/opencsg
 	media-libs/fontconfig:1.0
 	media-libs/freetype:2
 	media-libs/glew:*
 	media-libs/harfbuzz
-	x11-libs/qscintilla:=[qt4(-)]
-	emacs? ( virtual/emacs )"
+	sci-mathematics/cgal
+	>=x11-libs/qscintilla-2.9.4:=[qt5(+)]
+	emacs? ( virtual/emacs )
+"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-	sed -i "s/\/usr\/local/\/usr/g" ${PN}.pro || die
-
 	default
+
+	sed -i "s/\/usr\/local/\/usr/g" ${PN}.pro || die
 }
 
 src_configure() {
-	eqmake4 "${PN}.pro"
+	eqmake5 "${PN}.pro"
 }
 
 src_compile() {
@@ -61,4 +63,14 @@ src_install() {
 	fi
 
 	einstalldocs
+}
+
+pkg_postinst() {
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
 }
