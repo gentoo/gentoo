@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PLUGINS_HASH="bcca6aad60aa784cf61b8730e7865b399f163cc2"
+PLUGINS_HASH="16b4f9c39b91ef0435dc8a0eeb714800b7b99d4b"
 inherit cmake-utils gnome2-utils
 
 DESCRIPTION="Desktop agnostic launcher"
@@ -38,17 +38,16 @@ src_prepare() {
 
 	sed -e "s/DESTINATION lib/DESTINATION $(get_libdir)/" \
 		-i plugins/*/CMakeLists.txt \
-		-i src/lib/*/CMakeLists.txt || die
-
-	# plugin needs virtualbox installed to build, untested
-	sed -i -e "/add_subdirectory(virtualbox)/s/^/#/" plugins/CMakeLists.txt || die
+		-i lib/*/CMakeLists.txt || die
 
 	cmake-utils_src_prepare
 }
 
 src_configure() {
 	local mycmakeargs=(
-		-DBUILD_DEBUG_EXTENSIONS=$(usex debug)
+		-DBUILD_DEBUG=$(usex debug)
+		-DBUILD_PYTHON=OFF #plugin directory is empty causing build failure
+		-DBUILD_VIRTUALBOX=OFF #plugin needs virtualbox installed to build, untested
 	)
 
 	cmake-utils_src_configure
