@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_IN_SOURCE_BUILD=1
 inherit distutils-r1
@@ -13,20 +13,13 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc ncurses +qt4"
-REQUIRED_USE="|| ( ncurses qt4 )"
+IUSE="doc"
 
-RDEPEND="dev-vcs/mercurial[${PYTHON_USEDEP}]
-	ncurses? (
-		>=dev-python/urwid-1.0.0[${PYTHON_USEDEP}]
-		dev-python/pyinotify[${PYTHON_USEDEP}]
-		dev-python/pygments[${PYTHON_USEDEP}]
-	)
-	qt4? (
-		dev-python/docutils[${PYTHON_USEDEP}]
-		dev-python/PyQt4[X,${PYTHON_USEDEP}]
-		dev-python/qscintilla-python[qt4(+),${PYTHON_USEDEP}]
-	)"
+RDEPEND="
+	dev-python/pyinotify[${PYTHON_USEDEP}]
+	dev-python/pygments[${PYTHON_USEDEP}]
+	>=dev-python/urwid-1.0.0[${PYTHON_USEDEP}]
+	dev-vcs/mercurial[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	doc? (
 		app-text/asciidoc
@@ -36,8 +29,7 @@ DEPEND="${RDEPEND}
 python_configure_all() {
 	mydistutilsargs=(
 		build $(use doc || echo --no-doc)
-		build $(use ncurses || echo --no-curses)
-		build $(use qt4 || echo --no-qt)
+		build --no-qt
 	)
 }
 

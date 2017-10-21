@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit elisp-common eutils qmake-utils
+inherit elisp-common qmake-utils xdg-utils
 
 MY_PV="2015.03-2"
 SITEFILE="50${PN}-gentoo.el"
@@ -17,36 +17,40 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="emacs"
 
-DEPEND="media-gfx/opencsg
-	sci-mathematics/cgal
-	dev-qt/qtcore:4
-	dev-qt/qtgui:4[-egl]
-	dev-qt/qtopengl:4[-egl]
+DEPEND="
 	dev-cpp/eigen:3
+	dev-libs/boost:=
 	dev-libs/glib:2
 	dev-libs/gmp:0=
 	dev-libs/mpfr:0=
-	dev-libs/boost:=
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtopengl:5
+	media-gfx/opencsg
 	media-libs/fontconfig:1.0
 	media-libs/freetype:2
 	media-libs/glew:*
 	media-libs/harfbuzz
-	x11-libs/qscintilla:=[qt4(-)]
-	emacs? ( virtual/emacs )"
+	sci-mathematics/cgal
+	>=x11-libs/qscintilla-2.9.4:=[qt5(+)]
+	emacs? ( virtual/emacs )
+"
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}/${P}_uic_tr_fix.patch" )
 
 S="${WORKDIR}/${PN}-${MY_PV}"
 
 src_prepare() {
+	default
+
 	#Use our CFLAGS (specifically don't force x86)
 	sed -i "s/QMAKE_CXXFLAGS_RELEASE = .*//g" ${PN}.pro  || die
 	sed -i "s/\/usr\/local/\/usr/g" ${PN}.pro || die
-
-	eapply_user
 }
 
 src_configure() {
-	eqmake4 "${PN}.pro"
+	eqmake5 "${PN}.pro"
 }
 
 src_compile() {
@@ -66,4 +70,14 @@ src_install() {
 	fi
 
 	einstalldocs
+}
+
+pkg_postinst() {
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
 }
