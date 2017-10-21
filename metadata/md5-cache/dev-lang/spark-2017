@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=dev-lang/gnat-gpl:6.3.0 >=dev-ada/gnatcoll-2017[gnat_2017,projects] sci-mathematics/alt-ergo sci-mathematics/why3-for-spark dev-ada/gprbuild[gnat_2017]
+DESCRIPTION=Software development for high-reliability applications.
+EAPI=6
+HOMEPAGE=http://libre.adacore.com
+KEYWORDS=~amd64
+LICENSE=GPL-3
+RDEPEND=dev-lang/gnat-gpl:6.3.0 >=dev-ada/gnatcoll-2017[gnat_2017,projects] sci-mathematics/alt-ergo sci-mathematics/why3-for-spark
+SLOT=0
+SRC_URI=http://mirrors.cdn.adacore.com/art/591c4777c7a447af2deed05e -> spark-gpl-2017-src.tar.gz http://mirrors.cdn.adacore.com/art/591adbb4c7a4473fcc4532a3 -> gnat-gpl-2017-src.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=b8ada39bf960525e59a7ee4ac53b2ea9
