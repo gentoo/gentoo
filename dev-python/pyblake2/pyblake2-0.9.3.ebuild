@@ -12,7 +12,7 @@ SRC_URI="mirror://pypi/${PN::1}/${PN}/${P}.tar.gz"
 
 LICENSE="CC0-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ia64 ~x86"
 IUSE="cpu_flags_x86_ssse3 cpu_flags_x86_avx cpu_flags_x86_xop"
 
 python_prepare_all() {
