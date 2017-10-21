@@ -1,13 +1,13 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-USE_RUBY="ruby20 ruby21 ruby22"
+EAPI=6
+USE_RUBY="ruby22 ruby23 ruby24"
 
 # Documentation task depends on sdoc which we currently don't have.
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_TASK_TEST="none"
-RUBY_FAKEGEM_EXTRADOC="History.md README.md"
+RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
 
 RUBY_FAKEGEM_GEMSPEC="cucumber.gemspec"
 
@@ -17,7 +17,7 @@ DESCRIPTION="Executable feature scenarios"
 HOMEPAGE="https://github.com/aslakhellesoy/cucumber/wikis"
 LICENSE="Ruby"
 
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64"
 SLOT="0"
 IUSE="examples test"
 
@@ -28,16 +28,17 @@ ruby_add_bdepend "
 		>=dev-ruby/syntax-1.0.0
 		>=dev-util/aruba-0.6.1 =dev-util/aruba-0.6*
 		>=dev-ruby/json-1.7
-		>=dev-util/cucumber-2
+		>=dev-util/cucumber-3
 		>=dev-ruby/mime-types-2.99:2
 	)"
 
 ruby_add_rdepend "
 	>=dev-ruby/builder-2.1.2:*
-	>=dev-util/cucumber-core-1.5.0:0
+	dev-util/cucumber-core:3.0
+	dev-util/cucumber-expressions:4.0
 	>=dev-util/cucumber-wire-0.0.1:0
 	>=dev-ruby/diff-lcs-1.1.3
-	>=dev-ruby/gherkin-4.0:4
+	dev-ruby/gherkin:4
 	>=dev-ruby/multi_json-1.7.5
 	>=dev-ruby/multi_test-0.1.2
 "
@@ -45,7 +46,7 @@ ruby_add_rdepend "
 all_ruby_prepare() {
 	# Remove development dependencies from the gemspec that we don't
 	# need or can't satisfy.
-	sed -i -e '/\(coveralls\|spork\|simplecov\|bcat\|kramdown\|yard\|capybara\|rack-test\|ramaze\|sinatra\|webrat\|mime-types\|rubyzip\)/d' ${RUBY_FAKEGEM_GEMSPEC} || die
+	sed -i -e '/\(coveralls\|spork\|simplecov\|bcat\|kramdown\|yard\|capybara\|octokit\|rack-test\|ramaze\|rubocop\|sinatra\|webrat\|mime-types\|rubyzip\)/d' ${RUBY_FAKEGEM_GEMSPEC} || die
 
 	# Avoid dependency on unpackaged cucumber-pro
 	sed -i -e '/cucumber-pro/ s:^:#:' Gemfile || die
@@ -54,8 +55,15 @@ all_ruby_prepare() {
 	sed -i -e '/converts the snapshot path to a relative path/,/end/ s:^:#:' \
 		spec/cucumber/formatter/html_spec.rb || die
 
+	# Avoid failing features on new delegate and forwardable behavior in ruby
+	rm -f features/docs/defining_steps/ambiguous_steps.feature features/docs/defining_steps/nested_steps.feature || die
+
 	# Avoid dependency on git
-	sed -i -e '/git ls-files/d' cucumber.gemspec || die
+	sed -i -e '/executables/ s/=.*/= ["cucumber"]/' \
+		-e '/git ls-files/d' cucumber.gemspec || die
+
+	sed -i -e '/pry/ s:^:#:' spec/spec_helper.rb || die
+
 }
 
 each_ruby_prepare() {
