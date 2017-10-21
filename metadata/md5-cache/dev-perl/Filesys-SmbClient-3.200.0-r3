@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=net-fs/samba-4.2[client] virtual/perl-ExtUtils-MakeMaker virtual/pkgconfig dev-lang/perl:= >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Provide Perl API for libsmbclient.so
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Filesys-SmbClient/
+KEYWORDS=~amd64
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=net-fs/samba-4.2[client] dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/A/AL/ALIAN/Filesys-SmbClient-3.2.tar.gz
+_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=c53ab9acac92da4b76ca9211160731eb
