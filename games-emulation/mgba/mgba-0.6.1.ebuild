@@ -35,7 +35,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 src_prepare() {
-	default
+	cmake-utils_src_prepare
 
 	# Get rid of any bundled stuff we don't want
 	for pkg in libpng lzma sqlite3 zlib ; do

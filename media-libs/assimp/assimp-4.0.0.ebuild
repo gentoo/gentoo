@@ -23,13 +23,10 @@ DEPEND="${RDEPEND}
 	test? ( dev-cpp/gtest )
 "
 
-src_prepare() {
-	eapply "${FILESDIR}/findassimp-${PV}.patch"
-	eapply_user
-}
+PATCHES=( "${FILESDIR}/findassimp-${PV}.patch" )
 
 src_configure() {
-	mycmakeargs=(
+	local mycmakeargs=(
 		-DASSIMP_BUILD_SAMPLES=$(usex samples) \
 		-DASSIMP_BUILD_ASSIMP_TOOLS=$(usex tools) \
 		-DASSIMP_BUILD_STATIC_LIB=$(usex static) \

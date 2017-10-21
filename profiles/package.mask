@@ -29,6 +29,79 @@
 
 #--- END OF EXAMPLES ---
 
+# Kent Fredric <kentnl@gentoo.org> (21 Oct 2017)
+# Has not been usable since we cleaned the last Moose it worked on back
+# in 2012. Removal in 30 days. Bug #634938
+dev-perl/File-Stat-Moose
+
+# Matt Turner <mattst88@gentoo.org> (21 Oct 2017)
+# The 1.12 and 1.15 branches are no longer supported and remain vulnerable to
+# various CVEs (CVE-2013-6424, bug #493294 and CVE-2017-2624 bug #611350 just
+# to name a few). They remain in tree only for old nvidia-drivers 96 and 173.
+<x11-base/xorg-server-1.19.2
+<x11-base/xorg-drivers-1.19
+
+# Andreas Sturmlechner <asturm@gentoo.org> (21 Oct 2017)
+# Dead upstream, depends on dead kdelibs4/Qt4.
+# Masked for removal in 30 days. Bug #629018
+sci-calculators/keurocalc
+
+# Andreas Sturmlechner <asturm@gentoo.org> (21 Oct 2017)
+# Dead upstream, depends on dead kdelibs4/Qt4.
+# Masked for removal in 30 days. Bug #629018
+net-misc/knutclient
+
+# Andreas Sturmlechner <asturm@gentoo.org> (21 Oct 2017)
+# Dead upstream, depends on dead kdelibs4/Qt4.
+# Possible KF5-based alternative is media-sound/soundkonverter.
+# Masked for removal in 30 days. Bug #634386
+media-sound/konvertible
+
+# Andreas Sturmlechner <asturm@gentoo.org> (21 Oct 2017)
+# Dead upstream, depends on dead kdelibs4/Qt4, security liability.
+# If at all necessary we use kde-plasma/kde-cli-tools[kdesu]
+# for that purpose. Masked for removal in 30 days. Bug #634382
+kde-misc/kdesudo
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (20 Oct 2017)
+# Doesn't build with glibc-2.25, doesn't build, needs a
+# version bump, needs a maintainer. Bugs 604364, 599004,
+# 627064. Removal in 30 days.
+app-crypt/zuluCrypt
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (18 Oct 2017)
+# sys-devel/automake versions 1.4, 1.5, 1.6, 1.7, 1.8
+# have known security vulnerabilities, are broken with
+# recent Perl (>=5.26.0), and are not used by anything in
+# the Gentoo repository. Please uninstall.
+sys-devel/automake:1.4
+sys-devel/automake:1.5
+sys-devel/automake:1.6
+sys-devel/automake:1.7
+sys-devel/automake:1.8
+
+# Jonas Stein <jstein@gentoo.org> (17 Oct 2017)
+# dev-tex/texmfind was superseded by app-portage/pfl 
+# See also bug #634494. Masked for removal on 2017-11-30
+dev-tex/texmfind
+
+# Andreas Sturmlechner <asturm@gentoo.org> (16 Oct 2017)
+# Qt4WebKit is ancient and is likely to have more holes
+# in it than swiss cheese. Bug #620684
+dev-qt/qtwebkit:4
+
+# Andreas Sturmlechner <asturm@gentoo.org> (16 Oct 2017)
+# Reverse-deps on dead Qt4WebKit. Bug #620684
+<app-misc/anki-2.1
+<app-misc/sleepyhead-1.0.0_beta2
+<media-gfx/freecad-0.17_pre
+media-sound/google-musicmanager
+net-im/qutim
+net-misc/teamviewer
+net-voip/vidyodesktop
+<sci-libs/opencascade-7.0
+<sci-libs/vtk-6.1.0-r4
+
 # Andreas Sturmlechner <asturm@gentoo.org> (15 Oct 2017)
 # Dead upstream, depends on dead kdelibs4/Qt4/Qt3Support.
 # Possible alternatives are net-mail/gnubiff, kde-misc/gmailfeed.
@@ -48,6 +121,7 @@ kde-misc/kover
 
 # Andreas Sturmlechner <asturm@gentoo.org> (15 Oct 2017)
 # Dead upstream, depends on dead kdelibs4/Qt4/Qt3Support.
+# Use media-sound/fmit instead.
 # Masked for removal in 30 days. Bug #633498
 media-sound/k4guitune
 
@@ -65,6 +139,16 @@ media-sound/kmidimon
 # Dead upstream, depends on dead kdelibs4/Qt4/Qt3Support.
 # Masked for removal in 30 days. Bug #629018
 media-sound/kradio
+
+# Andreas Sturmlechner <asturm@gentoo.org> (15 Oct 2017)
+# Dead upstream, depends on dead kdelibs4/Qt4.
+# Masked for removal in 30 days. Bug #629018
+media-sound/waheela
+
+# Andreas Sturmlechner <asturm@gentoo.org> (15 Oct 2017)
+# Dead upstream, depends on dead kdelibs4/Qt4.
+# Masked for removal in 30 days. Bug #629018
+media-video/loopy
 
 # Andreas Sturmlechner <asturm@gentoo.org> (15 Oct 2017)
 # Dead upstream, depends on dead kdelibs4/Qt4/Qt3Support.
@@ -169,11 +253,6 @@ app-office/qcharselect
 # Masked for removal in 30 days. Bug #624244.
 sci-chemistry/mongochem
 
-# Michael Palimaka <kensington@gentoo.org> (29 Sep 2017)
-# Various regressions compared to previous release.
-# Masked pending more information from upstream.
->=x11-misc/albert-0.13.0
-
 # Michael Palimaka <kensington@gentoo.org> (26 Sep 2017)
 # Requires dead Qt 4. Dead upstream.
 # Masked for removal in 30 days.
@@ -205,13 +284,6 @@ dev-ruby/xpath:0
 # Requires dead Qt 4. Dead upstream.
 # Masked for removal in 30 days.
 media-libs/herqq
-
-# Patrice Clement <monsieurp@gentoo.org> (20 Sep 2017)
-# Upstream has been dead for years.
-# Masked for removal in 30 days.
-dev-java/db4o-jdk5
-dev-java/db4o-jdk11
-dev-java/db4o-jdk12
 
 # Andrey Grozin <grozin@gentoo.org> (19 Sep 2017)
 # This package was a stopgap to bump dev-python/spyder to 3.*
@@ -315,18 +387,6 @@ app-xemacs/xetla
 app-xemacs/cogre
 app-xemacs/ecb
 app-xemacs/xemacs-packages-all
-
-# Lars Wendler <polynomial-c@gentoo.org> (06 Aug 2017)
-# Masked for security reasons:
-# https://bugs.gentoo.org/600214
-<app-emulation/virtualbox-5.0.40
-<app-emulation/virtualbox-additions-5.0.40
-<app-emulation/virtualbox-bin-5.0.40
-<app-emulation/virtualbox-extpack-oracle-5.0.40
-<app-emulation/virtualbox-guest-additions-5.0.40
-<app-emulation/virtualbox-modules-5.0.40
-<x11-drivers/xf86-video-virtualbox-5.0.40
-
 
 # Bernard Cafarelli <voyageur@gentoo.org> (04 Aug 2017)
 # Temporary mask as current net-ftp/filezilla does not compile
@@ -544,10 +604,6 @@ x11-libs/gtk+:1
 =app-emulation/ganeti-2.16*
 =app-emulation/ganeti-2.17*
 
-# Markos Chandras <hwoarang@gentoo.org> (10 Dec 2016)
-# Reverse dependencies need testing, wrt bug #580760
->=net-libs/libtorrent-rasterbar-1.1.1
-
 # Michał Górny <mgorny@gentoo.org> (17 Nov 2016)
 # New version masked for testing. It supports source-window buffer size
 # over 2G but it 'currently performs 3-5% slower and has 1-2% worse
@@ -640,11 +696,6 @@ sys-fs/bedup
 # Sebastian Pipping <sping@gentoo.org> (8 Aug 2015)
 # Upcoming, too young to go into testing unmasked
 dev-libs/iniparser:4
-
-# Davide Pesavento <pesa@gentoo.org> (23 Jul 2015)
-# Standalone version of qtwebkit from the 2.3 upstream branch.
-# Needs revdep testing. Bug #388207.
-=dev-qt/qtwebkit-4.10*
 
 # Justin Lecher <jlec@gentoo.org> (28 Feb 2015)
 # Unfixed security problems

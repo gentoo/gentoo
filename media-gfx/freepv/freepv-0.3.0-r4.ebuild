@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -23,12 +23,16 @@ DEPEND="dev-libs/libxml2
 	x11-libs/libXxf86vm"
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc44.patch
+	"${FILESDIR}"/${P}-gcc46.patch
+	"${FILESDIR}"/${P}-noplugin.patch
+	"${FILESDIR}"/${P}-libpng14.patch
+	"${FILESDIR}"/${P}-stringh.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-gcc44.patch \
-		"${FILESDIR}"/${P}-gcc46.patch \
-		"${FILESDIR}"/${P}-noplugin.patch \
-		"${FILESDIR}"/${P}-libpng14.patch \
-		"${FILESDIR}"/${P}-stringh.patch
+	cmake-utils_src_prepare
 
 	sed -i \
 		-e 's:jpeg_mem_src:freepv_jpeg_mem_src:g' \

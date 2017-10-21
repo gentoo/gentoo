@@ -22,7 +22,7 @@ IUSE="gnome sqlite X"
 
 RDEPEND="
 	virtual/python-dnspython[${PYTHON_USEDEP}]
-	>=dev-python/requests-2.2.1[${PYTHON_USEDEP}]
+	<dev-python/requests-2.15[${PYTHON_USEDEP}]
 	gnome? ( dev-python/pygtk:2[${PYTHON_USEDEP}] )
 	X? (
 		dev-python/PyQt4[X,help,${PYTHON_USEDEP}]

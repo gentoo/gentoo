@@ -82,9 +82,6 @@ RDEPEND="
 "
 QA_PREBUILT="opt/* usr/lib*"
 S=${WORKDIR}/
-PATCHES=(
-	"${FILESDIR}"/${P}-linker.patch
-)
 
 nvidia_drivers_versions_check() {
 	if use amd64 && has_multilib_profile && \
@@ -191,7 +188,8 @@ src_prepare() {
 		gunzip $man_file || die
 	done
 
-	# Allow user patches so they can support RC kernels and whatever else
+	use tools && eapply "${FILESDIR}"/${P}-linker.patch
+
 	default
 
 	if ! [ -f nvidia_icd.json ]; then

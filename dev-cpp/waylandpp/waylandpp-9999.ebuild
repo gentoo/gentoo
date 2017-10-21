@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit scons-utils toolchain-funcs versionator
+inherit cmake-utils versionator
 
 DESCRIPTION="Wayland C++ bindings"
 HOMEPAGE="https://github.com/NilsBrause/waylandpp"
@@ -31,19 +31,11 @@ DEPEND="${RDEPEND}
 	)
 	"
 
-src_compile() {
-	CC="$(tc-getCXX)" PKG_CONFIG="$(tc-getPKG_CONFIG)" ROOT="${D%/}/" PREFIX="/usr" LIBDIR="$(get_libdir)" escons
-	if use doc; then
-		doxygen || die "error making docs"
-	fi
-}
+src_configure() {
+	local mycmakeargs=(
+		-DBUILD_DOCUMENTATION=$(usex doc)
+		-DINSTALL_DOC_DIR="${EPREFIX}/usr/share/doc/${PF}"
+	)
 
-src_install() {
-	CC="$(tc-getCXX)" PKG_CONFIG="$(tc-getPKG_CONFIG)" ROOT="${D%/}/" PREFIX="/usr" LIBDIR="$(get_libdir)" escons install
-	# fix multilib-strict QA failures
-	if use doc; then
-		doman doc/man/man3/*.3
-		local HTML_DOCS=( doc/html )
-		einstalldocs
-	fi
+	cmake-utils_src_configure
 }

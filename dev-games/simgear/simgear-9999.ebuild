@@ -33,12 +33,12 @@ RDEPEND="${COMMON_DEPEND}
 	subversion? ( dev-vcs/subversion )
 "
 
-PATCHES=( "${FILESDIR}/simgear-2017.2.1-gdal-underlinking.patch" )
-
-DOCS=(AUTHORS ChangeLog NEWS README Thanks)
-
 pkg_pretend() {
-	use openmp && tc-check-openmp
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
 src_configure() {

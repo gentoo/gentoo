@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~arm ~x86"
 IUSE="+args +static"
 
 src_prepare() {
-	default
+	cmake-utils_src_prepare
 	# Do not strip binary
 	sed -i -e 's/-Wl,-s")$/")/' CMakeLists.txt || die
 }

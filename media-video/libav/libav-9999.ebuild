@@ -220,10 +220,7 @@ multilib_src_configure() {
 		use ${i} || myconf+=( --disable-indev=${i} )
 	done
 	use X && myconf+=( --enable-libxcb )
-	# Outdevs
-	for i in alsa oss ; do
-		use ${i} || myconf+=( --disable-outdev=${i} )
-	done
+
 	# libavfilter options
 	use bs2b && myconf+=( --enable-libbs2b )
 	multilib_is_native_abi && use frei0r && myconf+=( --enable-frei0r )

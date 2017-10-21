@@ -35,6 +35,6 @@
 		<flag name="tray">Enable support for StatusNotifierItem tray specification.</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">SirCmpwn/sway</remote-id>
+		<remote-id type="github">swaywm/sway</remote-id>
 	</upstream>
 </pkgmetadata>
