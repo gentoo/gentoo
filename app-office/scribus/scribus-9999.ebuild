@@ -36,6 +36,7 @@ COMMON_DEPEND="
 	app-text/libmspub
 	app-text/poppler:=
 	dev-libs/hyphen
+	>=dev-libs/icu-58.2:0=
 	dev-libs/librevenge
 	dev-libs/libxml2
 	dev-qt/qtcore:5
@@ -48,6 +49,7 @@ COMMON_DEPEND="
 	dev-qt/qtxml:5
 	media-libs/fontconfig
 	media-libs/freetype:2
+	>=media-libs/harfbuzz-0.9.42:0=[icu]
 	media-libs/lcms:2
 	media-libs/libcdr
 	media-libs/libpagemaker
