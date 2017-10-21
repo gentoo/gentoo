@@ -10,4 +10,4 @@ RDEPEND=virtual/perl-Carp virtual/perl-Exporter virtual/perl-File-Spec dev-perl/
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/K/KI/KIMRYAN/File-BaseDir-0.07.tar.gz
 _eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
-_md5_=7cdd74402dbf8e5ef0c12cdaab6155c1
+_md5_=7ddb763dce3bc9ad11ff78c39d100227
