@@ -1,19 +1,24 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 inherit eutils
 
+COMMIT="45e6b32de708759a4e15181a8e2ad5de55cc78ef"
+S=${WORKDIR}/${P}-${COMMIT}
+
 DESCRIPTION="Download manga from buka.cn"
-HOMEPAGE="https://gitgud.io/drylemon/buka"
-SRC_URI="http://lick.moe/buka/${P}.tar.gz"
+HOMEPAGE="https://gitlab.com/drylemon/buka"
+SRC_URI="https://gitlab.com/drylemon/buka/repository/${PV}/archive.tar.gz?ref=${PV} -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="sys-process/parallel
+RDEPEND="dev-python/beautifulsoup
+	dev-python/requests
+	sys-process/parallel
 	net-misc/curl
 	dev-util/dialog"
 
@@ -22,6 +27,8 @@ src_install()
 	default
 	doman ${PN}.1
 	dobin ${PN}
+	exeinto /usr/share
+	doexe ${PN}-parse
 }
 
 pkg_postinst()
