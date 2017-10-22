@@ -277,12 +277,6 @@ media-sound/qtmpc
 # Removal in 30 days.
 dev-perl/rpm-build-perl
 
-# Hans de Graaff <graaff@gentoo.org> (23 Sep 2017) Mask old
-# unmaintained slots for removal in 30 days. Upgrade to the newer
-# slots.
-dev-ruby/capybara:0
-dev-ruby/xpath:0
-
 # Michael Palimaka <kensington@gentoo.org> (21 Sep 2017)
 # Requires dead Qt 4. Dead upstream.
 # Masked for removal in 30 days.
