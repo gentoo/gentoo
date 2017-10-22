@@ -5359,7 +5359,7 @@ net-analyzer/wireshark:sshdump - Install sshdump, an extcap interface to capture
 net-analyzer/wireshark:text2pcap - Install text2pcap, to generate a capture file from an ASCII hexdump of packets
 net-analyzer/wireshark:tfshark - Install tfshark, a terminal-based version of the FileShark capability
 net-analyzer/wireshark:tshark - Install tshark, to dump and analyzer network traffic from the command line
-net-analyzer/wireshark:udpdump - Install udpdumpi, to get packets exported from a source (like a network device or a GSMTAP producer) that are dumped to a pcap file
+net-analyzer/wireshark:udpdump - Install udpdump, to get packets exported from a source (like a network device or a GSMTAP producer) that are dumped to a pcap file
 net-analyzer/zabbix:agent - Enable zabbix agent (for to-be-monitored machines)
 net-analyzer/zabbix:frontend - Enable zabbix web frontend
 net-analyzer/zabbix:ipv6 - Turn on support of IPv6
