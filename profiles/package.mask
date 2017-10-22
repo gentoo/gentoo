@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Robin H. Johnson <robbat2@gentoo.org> (22 Oct 2017)
+# Masking for testing, contains Fedora Hobbled-EC for USE=bindist
+=dev-libs/openssl-1.0.2l-r1
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (22 Oct 2017)
 # Broken with recent Perl (5.26) and not used by anything
 # in the Gentoo repository. Please uninstall.
