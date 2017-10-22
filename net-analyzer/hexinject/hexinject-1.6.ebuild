@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit flag-o-matic toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Network packet sniffer and injector"
 HOMEPAGE="http://hexinject.sourceforge.net/"
@@ -20,12 +20,12 @@ RDEPEND="${DEPEND}
 
 S="${WORKDIR}/${PN}"
 
-PATCHES=( "${FILESDIR}"/${PN}-1.5-fix-build-system.patch )
+PATCHES=( "${FILESDIR}"/${P}-fix-build-system.patch )
 
-src_prepare() {
-	default
-	append-cflags -std=gnu89
+src_configure() {
 	tc-export CC
+
+	default
 }
 
 src_install() {

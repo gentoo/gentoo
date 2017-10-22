@@ -1,0 +1,30 @@
+Author: Nils Freydank <holgersson@posteo.de>
+Date:   Fri Oct 20 20:30:00 2017 +0200
+
+Don’t call gcc directly, and respect CFLAGS. As this project
+is plain C I don’t care fore CXXFLAGS here.
+
+Libs as -lpcap should be used in LDLIBS instead of LDFLAGS:
+https://www.gnu.org/software/make/manual/make.html#index-LDLIBS
+
+--- a/Makefile	2017-10-20 18:15:11.743805540 +0200
++++ b/Makefile	2017-10-20 20:15:57.816327910 +0200
+@@ -1,11 +1,12 @@
+-CC = gcc
+-CFLAGS = -Wall
+-LDFLAGS = -lpcap
++CC ?= gcc
++CFLAGS += -Wall
++LDLIBS = -lpcap
++LDFLAGS +=
+
+ all:
+-	$(CC) $(CFLAGS) $(LDFLAGS) -o hexinject hexinject.c
+-	$(CC) $(CFLAGS) $(LDFLAGS) -o prettypacket prettypacket.c
+-	$(CC) $(CFLAGS) $(LDFLAGS) -o hex2raw hex2raw.c
++	$(CC) $(CFLAGS) $(LDLIBS) $(LDFLAGS) -o hexinject hexinject.c
++	$(CC) $(CFLAGS) $(LDLIBS) $(LDFLAGS) -o prettypacket prettypacket.c
++	$(CC) $(CFLAGS) $(LDLIBS) $(LDFLAGS) -o hex2raw hex2raw.c
+
+ clean:
+ 	rm -f hexinject prettypacket hex2raw *~
