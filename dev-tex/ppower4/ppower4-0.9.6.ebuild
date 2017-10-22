@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit latex-package eutils
 
-DESCRIPTION="Post-process presentations in PDF format which were prepared using (La)TeX to add dynamic effects"
+DESCRIPTION="The Java tool PPower4 adds effects to slides using LaTeX"
 
 # Taken from:
 #SRC_URI="http://www.tex.ac.uk/tex-archive/support/ppower4/pp4sty.zip
@@ -12,7 +12,7 @@ DESCRIPTION="Post-process presentations in PDF format which were prepared using 
 #	http://www.tex.ac.uk/tex-archive/support/ppower4/manual.pdf"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
-HOMEPAGE="http://www.tex.ac.uk/tex-archive/support/ppower4/index.html"
+HOMEPAGE="http://tug.ctan.org/support/ppower4/index.html"
 
 SLOT="0"
 LICENSE="GPL-2"
