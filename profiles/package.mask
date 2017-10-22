@@ -35,6 +35,16 @@
 
 # Andreas Sturmlechner <asturm@gentoo.org> (22 Oct 2017)
 # Dead upstream, depends on dead kdelibs4/Qt4.
+# Masked for removal in 30 days. Bug #634388
+media-sound/kstreamripper
+
+# Andreas Sturmlechner <asturm@gentoo.org> (22 Oct 2017)
+# Dead upstream, depends on dead kdelibs4/Qt4.
+# Masked for removal in 30 days. Bug #634384
+kde-misc/kcollectd
+
+# Andreas Sturmlechner <asturm@gentoo.org> (22 Oct 2017)
+# Dead upstream, depends on dead kdelibs4/Qt4.
 # Masked for removal in 30 days. Bug #579518
 media-sound/kmid
 

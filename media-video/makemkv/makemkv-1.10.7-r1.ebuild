@@ -16,7 +16,7 @@ SRC_URI="http://www.makemkv.com/download/${MY_P}.tar.gz
 LICENSE="LGPL-2.1 MPL-1.1 MakeMKV-EULA openssl"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE="libav multilib qt4 qt5"
+IUSE="+gui libav multilib"
 
 QA_PREBUILT="usr/bin/makemkvcon usr/bin/mmdtsdec"
 
@@ -25,17 +25,12 @@ DEPEND="
 	dev-libs/expat
 	dev-libs/openssl:0[-bindist(-)]
 	sys-libs/zlib
-	qt5? (
+	gui? (
 		dev-qt/qtcore:5
 		dev-qt/qtdbus:5
 		dev-qt/qtgui:5
 		dev-qt/qtwidgets:5
 	)
-	!qt5? ( qt4? (
-		dev-qt/qtcore:4
-		dev-qt/qtdbus:4
-		dev-qt/qtgui:4
-	) )
 	!libav? ( >=media-video/ffmpeg-1.0.0:0= )
 	libav? ( >=media-video/libav-0.8.9:0= )
 "
@@ -49,20 +44,12 @@ src_configure() {
 	# See bug #439380.
 	replace-flags -O* -Os
 
-	local econf_args=()
-
-	if use qt5 || use qt4; then
-		econf_args+=( --enable-gui )
-	else
-		econf_args+=( --disable-gui )
-	fi
-
 	econf \
 		--enable-debug \
 		--disable-noec \
-		$(use_enable qt5) \
-		$(use_enable qt4) \
-		"${econf_args[@]}"
+		--disable-qt4 \
+		$(use_enable gui) \
+		$(use_enable gui qt5)
 }
 
 src_install() {
