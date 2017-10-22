@@ -10208,7 +10208,7 @@ dev-tex/oesch 20080712: Metafont font used in Austrian schools for hand writing
 dev-tex/pdfannotextractor 0.1l-r1: Extract annotations from pdf files
 dev-tex/pgf 3.0.1 3.0.1-r1: pgf -- The TeX Portable Graphic Format
 dev-tex/polytable 0.8.2: tabular-like environments with named columns
-dev-tex/ppower4 0.9.6: Post-process presentations in PDF format which were prepared using (La)TeX to add dynamic effects
+dev-tex/ppower4 0.9.6: The Java tool PPower4 adds effects to slides using LaTeX
 dev-tex/prosper 1.5-r1: Prosper is a LaTeX class for writing transparencies
 dev-tex/pscyr 0.4d_beta9: Type1 cyrillic fonts collection
 dev-tex/pstplus 1.6: A PSTricks GUI
