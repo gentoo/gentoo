@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=!dev-libs/boost:0/1.57.0 >=media-libs/libmpdclient-2.1 dev-libs/boost:=[nls,threads] net-misc/curl sys-libs/ncurses:= sys-libs/readline:* taglib? ( media-libs/taglib ) visualizer? ( sci-libs/fftw:3.0= ) virtual/pkgconfig
+DESCRIPTION=featureful ncurses based MPD client inspired by ncmpc
+EAPI=6
+HOMEPAGE=https://rybczak.net/ncmpcpp/
+IUSE=clock outputs taglib visualizer
+KEYWORDS=~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=!dev-libs/boost:0/1.57.0 >=media-libs/libmpdclient-2.1 dev-libs/boost:=[nls,threads] net-misc/curl sys-libs/ncurses:= sys-libs/readline:* taglib? ( media-libs/taglib ) visualizer? ( sci-libs/fftw:3.0= )
+SLOT=0
+SRC_URI=https://rybczak.net/ncmpcpp/stable/ncmpcpp-0.8.1.tar.bz2
+_md5_=dac259eb97b030753266e30e39282711

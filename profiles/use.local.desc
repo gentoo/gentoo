@@ -5264,13 +5264,15 @@ net-analyzer/pchar:pcap - Use the net-libs/libpcap library
 net-analyzer/pinger:gtk2 - Install the gtkpinger GUI utility based on x11-libs/gtk+:2
 net-analyzer/pinger:gtk3 - Install the gtkpinger GUI utility based on x11-libs/gtk+:3
 net-analyzer/pmacct:64bit - Use 64bit counters instead of 32bit ones
-net-analyzer/pmacct:geoipv2 - Add support for GeoIP2 through dev-libs/libmaxminddb
-net-analyzer/pmacct:jansson - Add support for JSON through dev-libs/jansson
-net-analyzer/pmacct:kafka - Add support for Apache Kafka through dev-libs/librdkafka
-net-analyzer/pmacct:mongodb - Add support for mongodb backend
-net-analyzer/pmacct:nflog - Add support for NFLOG through uacctd
-net-analyzer/pmacct:rabbitmq - Add support for RabbitMQ through net-libs/rabbitmq-c
+net-analyzer/pmacct:geoipv2 - Enable support for GeoIP2 through dev-libs/libmaxminddb
+net-analyzer/pmacct:jansson - Enable support for JSON through dev-libs/jansson
+net-analyzer/pmacct:kafka - Enable support for Apache Kafka through dev-libs/librdkafka
+net-analyzer/pmacct:mongodb - Enable support for MongoDB through dev-libs/mongo-c-driver
+net-analyzer/pmacct:ndpi - Enable support for nDPI through net-libs/nDPI
+net-analyzer/pmacct:nflog - Enable support for NFLOG through uacctd
+net-analyzer/pmacct:rabbitmq - Enable support for RabbitMQ through net-libs/rabbitmq-c
 net-analyzer/pmacct:ulog - Enable support for ULOG in older kernels (deprecated)
+net-analyzer/pmacct:zmq - Enable support for ZeroMQ through net-libs/zeromq
 net-analyzer/prelude-lml:tls - Enables Prelude LML support Syslog through TLS using net-libs/gnutls.
 net-analyzer/rrdcollect:exec - Enable exec:/// support
 net-analyzer/rrdcollect:librrd - Use the librrd library from net-analyzer/rrdtool
