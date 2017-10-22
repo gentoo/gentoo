@@ -10,7 +10,7 @@ SRC_URI="http://www.pmacct.net/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="64bit debug geoip geoipv2 ipv6 jansson kafka mongodb mysql nflog postgres rabbitmq sqlite threads"
 REQUIRED_USE="
 	?? ( geoip geoipv2 )
