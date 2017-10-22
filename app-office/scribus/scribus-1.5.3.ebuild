@@ -8,7 +8,7 @@ PYTHON_REQ_USE="tk?"
 CMAKE_MAKEFILE_GENERATOR=ninja
 CMAKE_MIN_VERSION=3.2.0
 
-inherit cmake-utils eutils fdo-mime flag-o-matic gnome2 multilib python-single-r1
+inherit cmake-utils eutils flag-o-matic gnome2 multilib python-single-r1 xdg-utils
 
 DESCRIPTION="Desktop publishing (DTP) and layout program"
 HOMEPAGE="http://www.scribus.net/"
@@ -34,6 +34,7 @@ COMMON_DEPEND="
 	app-text/libmspub
 	app-text/poppler:=
 	dev-libs/hyphen
+	>=dev-libs/icu-58.2:0=
 	dev-libs/librevenge
 	dev-libs/libxml2
 	dev-qt/qtcore:5
@@ -46,6 +47,7 @@ COMMON_DEPEND="
 	dev-qt/qtxml:5
 	media-libs/fontconfig
 	media-libs/freetype:2
+	>=media-libs/harfbuzz-0.9.42:0=[icu]
 	media-libs/lcms:2
 	media-libs/libcdr
 	media-libs/libpagemaker
@@ -197,14 +199,14 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	fdo-xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	fdo-xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	gnome2_icon_cache_update
 }
 

@@ -29,6 +29,42 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrick Lauer <patrick@gentoo.org> (22 Oct 2017)
+# 9.2 is EOL upstream, will be removed soon. #634028
+<dev-db/postgresql-9.3
+
+# Andreas Sturmlechner <asturm@gentoo.org> (22 Oct 2017)
+# Dead upstream, depends on dead kdelibs4/Qt4.
+# Masked for removal in 30 days. Bug #634388
+media-sound/kstreamripper
+
+# Andreas Sturmlechner <asturm@gentoo.org> (22 Oct 2017)
+# Dead upstream, depends on dead kdelibs4/Qt4.
+# Masked for removal in 30 days. Bug #634384
+kde-misc/kcollectd
+
+# Andreas Sturmlechner <asturm@gentoo.org> (22 Oct 2017)
+# Dead upstream, depends on dead kdelibs4/Qt4.
+# Masked for removal in 30 days. Bug #579518
+media-sound/kmid
+
+# Andreas Sturmlechner <asturm@gentoo.org> (22 Oct 2017)
+# Reverse-deps on dead, masked Qt4WebKit.
+# Masked for removal in 30 days. Bug #623928
+net-im/qutim
+
+# Kent Fredric <kentnl@gentoo.org> (21 Oct 2017)
+# Has not been usable since we cleaned the last Moose it worked on back
+# in 2012. Removal in 30 days. Bug #634938
+dev-perl/File-Stat-Moose
+
+# Matt Turner <mattst88@gentoo.org> (21 Oct 2017)
+# The 1.12 and 1.15 branches are no longer supported and remain vulnerable to
+# various CVEs (CVE-2013-6424, bug #493294 and CVE-2017-2624 bug #611350 just
+# to name a few). They remain in tree only for old nvidia-drivers 96 and 173.
+<x11-base/xorg-server-1.19.2
+<x11-base/xorg-drivers-1.19
+
 # Andreas Sturmlechner <asturm@gentoo.org> (21 Oct 2017)
 # Dead upstream, depends on dead kdelibs4/Qt4.
 # Masked for removal in 30 days. Bug #629018
@@ -84,7 +120,6 @@ dev-qt/qtwebkit:4
 <app-misc/sleepyhead-1.0.0_beta2
 <media-gfx/freecad-0.17_pre
 media-sound/google-musicmanager
-net-im/qutim
 net-misc/teamviewer
 net-voip/vidyodesktop
 <sci-libs/opencascade-7.0
@@ -241,11 +276,6 @@ app-office/qcharselect
 # Masked for removal in 30 days. Bug #624244.
 sci-chemistry/mongochem
 
-# Michael Palimaka <kensington@gentoo.org> (29 Sep 2017)
-# Various regressions compared to previous release.
-# Masked pending more information from upstream.
->=x11-misc/albert-0.13.0
-
 # Michael Palimaka <kensington@gentoo.org> (26 Sep 2017)
 # Requires dead Qt 4. Dead upstream.
 # Masked for removal in 30 days.
@@ -266,12 +296,6 @@ media-sound/qtmpc
 # Broken on Perl 5.26 (bug 623096), no fix in sight. No consumers.
 # Removal in 30 days.
 dev-perl/rpm-build-perl
-
-# Hans de Graaff <graaff@gentoo.org> (23 Sep 2017) Mask old
-# unmaintained slots for removal in 30 days. Upgrade to the newer
-# slots.
-dev-ruby/capybara:0
-dev-ruby/xpath:0
 
 # Michael Palimaka <kensington@gentoo.org> (21 Sep 2017)
 # Requires dead Qt 4. Dead upstream.

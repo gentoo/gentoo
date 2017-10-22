@@ -4,6 +4,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Patrick Lauer <patrick@gentoo.org> (22 Oct 2017)
+# postgres-9.2 is EOL and masked
+postgres_targets_postgres9_2
+
 # Brian Evans <grknight@gentoo.org> (14 Aug 2017)
 # php 7.2 beta is masked for initial testing
 php_targets_php7-2

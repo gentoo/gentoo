@@ -4,6 +4,11 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Andreas Sturmlechner <asturm@gentoo.org> (22 Oct 2017)
+# Requires unmaintained unstable dependency net-libs/gloox.
+# The go flag requires stable masked dev-lang/go[gccgo].
+www-servers/uwsgi go pypy uwsgi_plugins_alarm_xmpp
+
 # Andreas Sturmlechner <asturm@gentoo.org> (11 Oct 2017)
 # Requires unstable dependency dev-qt/qtspeech.
 kde-apps/konqueror speech
@@ -20,15 +25,6 @@ sci-libs/gdal mdb
 # Tim Harder <radhermit@gentoo.org> (11 Sep 2017)
 # Requires guile-2 which is still unstable.
 >=net-irc/weechat-1.7 guile
-
-# James Le Cuirot <chewi@gentoo.org> (27 Aug 2017)
-# Masked for testing.
-media-video/ffmpeg chromium
-www-client/opera system-ffmpeg
-www-client/opera-beta system-ffmpeg
-www-client/opera-developer system-ffmpeg
-www-client/vivaldi system-ffmpeg
-www-client/vivaldi-snapshot system-ffmpeg
 
 # Andreas Sturmlechner <asturm@gentoo.org> (17 Aug 2017)
 # Unstable dependencies.
@@ -106,12 +102,6 @@ dev-lang/rust system-llvm
 # Alon Bar-Lev <alonbl@gentoo.org> (01 Jan 2017)
 # Will always require unstable packages.
 net-libs/gnutls test-full
-
-# Zac Medico <zmedico@gentoo.org> (19 Dec 2016)
-# The go flag requires dev-lang/go[gccgo], and gccgo
-# is stable masked since it requires gcc-5 which is
-# currently unstable.
-www-servers/uwsgi go pypy
 
 # Lars Wendler <polynomial-c@gentoo.org> (15 Dev 2016)
 # Requires php:7.0 and ruby:2.2 being stable
