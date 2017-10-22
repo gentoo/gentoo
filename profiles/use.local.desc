@@ -893,7 +893,6 @@ app-misc/freemind:pdf - Build plugin for exporting mindmaps to SVG and PDF
 app-misc/freemind:svg - Build plugin for exporting mindmaps to SVG and PDF
 app-misc/gcstar:stats - Enable statistics reporting
 app-misc/gcstar:tellico - Enable support for kde-misc/tellico files
-app-misc/geneweb:ocamlopt - Enable ocamlopt support (dev-lang/ocaml native code compiler)
 app-misc/geoclue:geonames - Install geonames.org provider
 app-misc/geoclue:gsmloc - Install GSM location provider
 app-misc/geoclue:gtk - Install gtk-based geoclue-test-gui
