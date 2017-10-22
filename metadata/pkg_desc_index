@@ -7486,8 +7486,8 @@ dev-python/coverage 3.7.1 4.2: Code coverage measurement for Python
 dev-python/crcmod 1.7-r2: Python CRC Generator module
 dev-python/croniter 0.3.11 0.3.15 0.3.17: Python module to provide iteration for datetime object
 dev-python/crumbs 2.1.0: Generalized all-in-one parameters module
-dev-python/cryptography 1.7.1 1.7.2 1.8.1 1.9 2.0.2 2.0.2-r1 2.0.3: Library providing cryptographic recipes and primitives
-dev-python/cryptography-vectors 1.7.1 1.7.2 1.8.1 1.9 2.0.2 2.0.3: Test vectors for the cryptography package
+dev-python/cryptography 1.7.1 1.7.2 1.8.1 1.9 2.0.2 2.0.2-r1 2.0.3 2.1.1: Library providing cryptographic recipes and primitives
+dev-python/cryptography-vectors 1.7.1 1.7.2 1.8.1 1.9 2.0.2 2.0.3 2.1.1: Test vectors for the cryptography package
 dev-python/cssselect 0.9.1 1.0.1: parses CSS3 Selectors and translates them to XPath 1.0
 dev-python/cssselect2 0.2.0: parses CSS3 Selectors and translates them to XPath 1.0
 dev-python/cssutils 1.0.1 1.0.2: A CSS Cascading Style Sheets library
@@ -14814,7 +14814,7 @@ net-irc/ircservices 5.1.24: ChanServ, NickServ, and MemoServ with support for se
 net-irc/ircstats 1.1-r1: IRCStats tries to be a log analyzer for Linux similar to mIRCStats
 net-irc/irker 2.9 2.11 2.12 2.13 2.15 2.16 2.17 2.18: Submission tools for IRC notifications
 net-irc/iroffer-dinoex 3.29: IRC fileserver using DCC
-net-irc/irssi 1.0.4 9999: A modular textUI IRC client with IPv6 support
+net-irc/irssi 1.0.4 1.0.5 9999: A modular textUI IRC client with IPv6 support
 net-irc/irssi-otr 1.0.0-r1 1.0.2: Off-The-Record messaging (OTR) for irssi
 net-irc/irssi-xmpp 0.53: An irssi plugin providing Jabber/XMPP support
 net-irc/irssistats 0.75: Generates HTML IRC stats based on irssi logs
