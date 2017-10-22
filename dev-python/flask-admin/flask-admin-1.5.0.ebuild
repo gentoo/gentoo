@@ -36,7 +36,7 @@ DEPEND="${RDEPEND}
 		dev-python/flask-babelex[${PYTHON_USEDEP}]
 		sci-libs/Shapely[${PYTHON_USEDEP}]
 		dev-python/geoalchemy2[${PYTHON_USEDEP}]
-		>=dev-python/pillow-2.9[${PYTHON_USEDEP},jpeg]
+		>=dev-python/pillow-2.9[${PYTHON_USEDEP},jpeg(+)]
 	)"
 
 S="${WORKDIR}/${MY_P}"

@@ -18,17 +18,17 @@ SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 LICENSE="HPND"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="doc examples imagequant jpeg jpeg2k lcms test tiff tk truetype webp zlib"
+IUSE="doc examples imagequant jpeg2k lcms test tiff tk truetype webp zlib"
 
-REQUIRED_USE="test? ( jpeg tiff )"
+REQUIRED_USE="test? ( tiff )"
 
 RDEPEND="
 	dev-python/olefile[${PYTHON_USEDEP}]
 	imagequant? ( media-gfx/libimagequant:0 )
-	jpeg? ( virtual/jpeg:0 )
+	virtual/jpeg:0
 	jpeg2k? ( media-libs/openjpeg:2= )
 	lcms? ( media-libs/lcms:2= )
-	tiff? ( media-libs/tiff:0=[jpeg?] )
+	tiff? ( media-libs/tiff:0=[jpeg] )
 	truetype? ( media-libs/freetype:2= )
 	webp? ( media-libs/libwebp:0= )
 	zlib? ( sys-libs/zlib:0= )"
@@ -48,7 +48,6 @@ src_compile() {
 	distutils-r1_src_compile \
 		--disable-raqm \
 		$(use_enable truetype freetype) \
-		$(use_enable jpeg) \
 		$(use_enable jpeg2k jpeg2000) \
 		$(use_enable lcms) \
 		$(use_enable tiff) \

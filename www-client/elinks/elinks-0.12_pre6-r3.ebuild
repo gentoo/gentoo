@@ -1,29 +1,26 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python2_7 )
-PYTHON_REQ_USE="threads"
-inherit autotools git-r3 python-any-r1
-
-EGIT_REPO_URI="git://repo.or.cz/elinks.git"
+EAPI="6"
+inherit eutils autotools flag-o-matic
 
 MY_P="${P/_/}"
 DESCRIPTION="Advanced and well-established text-mode web browser"
 HOMEPAGE="http://elinks.or.cz/"
-SRC_URI="https://dev.gentoo.org/~spock/portage/distfiles/elinks-0.10.4.conf.bz2"
+SRC_URI="http://elinks.or.cz/download/${MY_P}.tar.bz2
+	https://dev.gentoo.org/~spock/portage/distfiles/elinks-0.10.4.conf.bz2
+	https://dev.gentoo.org/~axs/distfiles/${PN}-0.12_pre5-js185-patches.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
-IUSE="bittorrent brotli bzip2 debug finger ftp gopher gpm guile idn ipv6
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+IUSE="bittorrent bzip2 debug finger ftp gc gopher gpm guile idn ipv6
 	  javascript libressl lua +mouse nls nntp perl ruby samba ssl tre unicode X xml zlib"
 RESTRICT="test"
 
 DEPEND="
-	${PYTHON_DEPS}
-	brotli? ( app-arch/brotli )
 	bzip2? ( >=app-arch/bzip2-1.0.2 )
+	gc? ( dev-libs/boehm-gc )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
@@ -42,14 +39,19 @@ DEPEND="
 	javascript? ( >=dev-lang/spidermonkey-1.8.5:0= )"
 RDEPEND="${DEPEND}"
 
+S="${WORKDIR}/${MY_P}"
 PATCHES=(
-	"${FILESDIR}"/${P}-parallel-make.patch
+	"${FILESDIR}"/${PN}-9999-parallel-make.patch
+	"${FILESDIR}"/${PN}-0.12_pre5-compilation-fix.patch
+	"${FILESDIR}"/${PN}-0.12_pre5-libressl.patch
+	"${FILESDIR}"/${PN}-0.12_pre5-rand-egd.patch
+	"${FILESDIR}"/${PN}-0.11.2-lua-5.1.patch
+	"${FILESDIR}"/${PN}-0.12_pre5-ruby-1.9.patch
+	"${WORKDIR}"/patches/${PN}-0.12_pre5-js185-1-heartbeat.patch
+	"${WORKDIR}"/patches/${PN}-0.12_pre5-js185-2-up.patch
+	"${WORKDIR}"/patches/${PN}-0.12_pre5-js185-3-histback.patch
+	"${FILESDIR}"/${PN}-0.12_pre5-sm185-jsval-fixes.patch
 	)
-
-src_unpack() {
-	default
-	git-r3_src_unpack
-}
 
 src_prepare() {
 	default
@@ -63,6 +65,10 @@ src_prepare() {
 	sed -i -e 's/\(.*set protocol.ftp.use_epsv.*\)/# \1/' ${PN}.conf || die
 	cd "${S}" || die
 
+	# fix lib order in configure check
+	# (these seds are necessary so that @preserved-libs copies are not used)
+	sed -i -e 's:for spidermonkeylib in js .*$:for spidermonkeylib in mozjs185 mozjs js smjs; do:' \
+		configure.in || die
 	# Regenerate acinclude.m4 - based on autogen.sh.
 	cat > acinclude.m4 <<- _EOF || die
 		dnl Automatically generated from config/m4/ files.
@@ -101,8 +107,8 @@ src_configure() {
 		--enable-html-highlight \
 		$(use_with gpm) \
 		$(use_with zlib) \
-		$(use_with brotli) \
 		$(use_with bzip2 bzlib) \
+		$(use_with gc) \
 		$(use_with X x) \
 		$(use_with lua) \
 		$(use_with guile) \
