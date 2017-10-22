@@ -6957,8 +6957,8 @@ dev-perl/common-sense 3.740.0 3.740.0-r1: Save a tree AND a kitten, use common::
 dev-perl/constant-boolean 0.20.0-r1: Define TRUE and FALSE constants
 dev-perl/constant-defer 6.0.0: constant subs with deferred value calculation
 dev-perl/enum 1.16.0-r1 1.110.0: C style enumerated types and bitmask flags in Perl
-dev-perl/forks 0.360.0: Emulate threads with fork
-dev-perl/frontier-rpc 0.07_beta4-r1: Perform remote procedure calls using extensible markup language
+dev-perl/forks 0.360.0 0.360.0-r1: Emulate threads with fork
+dev-perl/frontier-rpc 0.07_beta4-r1 0.07_beta4-r2: Perform remote procedure calls using extensible markup language
 dev-perl/glib-perl 1.325.0: Glib - Perl wrappers for the GLib utility and Object libraries
 dev-perl/gnome2-canvas 1.2.0-r1: Perl interface to the Gnome Canvas
 dev-perl/gnome2-perl 1.45.0: Perl interface to the 2.x series of the Gnome libraries
