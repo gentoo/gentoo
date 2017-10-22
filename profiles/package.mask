@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Robin H. Johnson <robbat2@gentoo.org> (22 Oct 2017)
+# Masking for testing, contains Fedora Hobbled-EC for USE=bindist
+=dev-libs/openssl-1.0.2l-r1
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (22 Oct 2017)
 # Broken with recent Perl (5.26) and not used by anything
 # in the Gentoo repository. Please uninstall.
@@ -40,10 +44,6 @@ sys-devel/autoconf:2.64
 sys-devel/autoconf:2.65
 sys-devel/autoconf:2.67
 sys-devel/autoconf:2.68
-
-# Patrick Lauer <patrick@gentoo.org> (22 Oct 2017)
-# 9.2 is EOL upstream, will be removed soon. #634028
-<dev-db/postgresql-9.3
 
 # Andreas Sturmlechner <asturm@gentoo.org> (22 Oct 2017)
 # Dead upstream, depends on dead kdelibs4/Qt4.
