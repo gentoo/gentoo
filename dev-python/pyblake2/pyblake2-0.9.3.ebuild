@@ -18,10 +18,17 @@ IUSE="cpu_flags_x86_ssse3 cpu_flags_x86_avx cpu_flags_x86_xop"
 python_prepare_all() {
 	local impl=REGS
 	# note: SSE2 is 2.5x slower than pure REGS, so we ignore it
-	use cpu_flags_x86_ssse3 && impl=SSSE3
-	# this does not actually do anything but implicitly enabled SSE4.1...
-	use cpu_flags_x86_avx && impl=AVX
-	use cpu_flags_x86_xop && impl=XOP
+	if use cpu_flags_x86_xop; then
+		impl=XOP
+		append-cflags $(test-flags-CC -mxop)
+	elif use cpu_flags_x86_avx; then
+		# this does not actually do anything but implicitly enabled SSE4.1...
+		impl=AVX
+		append-cflags $(test-flags-CC -mavx)
+	elif use cpu_flags_x86_ssse3; then
+		impl=SSSE3
+		append-cflags $(test-flags-CC -mssse3)
+	fi
 
 	# uncomment the implementation of choice
 	sed -i -e "/BLAKE2_COMPRESS_${impl}/s:^#::" setup.py || die
