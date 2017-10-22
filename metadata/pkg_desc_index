@@ -2064,7 +2064,7 @@ app-office/pybliographer 1.2.15-r1: Pybliographer is a tool for working with bib
 app-office/qcharselect 0.3: A Qt4 port of KCharSelect from KDE 3.5
 app-office/qchartdiary 0.6.4.1-r2: Free Qt4 diary/agenda application
 app-office/sc 7.16-r1 7.16-r2: Spreadsheet Calculator
-app-office/scribus 1.4.6 1.5.0-r1 1.5.2-r2 1.5.2-r3 1.5.3 9999: Desktop publishing (DTP) and layout program
+app-office/scribus 1.4.6 1.5.3 9999: Desktop publishing (DTP) and layout program
 app-office/skrooge 2.8.1 2.9.0: Personal finances manager, aiming at being simple and intuitive
 app-office/taskcoach 1.4.3-r1: Simple personal tasks and todo lists manager
 app-office/tedia2sql 1.2.12: Convert database ERD designed in Dia into SQL DDL scripts
@@ -17591,7 +17591,7 @@ sys-cluster/resource-agents 3.9.6 4.0.1: Resources pack for Heartbeat / Pacemake
 sys-cluster/rgmanager 2.03.09 2.03.09-r1 3.1.5: Clustered resource group manager
 sys-cluster/rgmanager-agents 3.9.2: Resource Manager Agents
 sys-cluster/sanlock 3.4.0-r1: shared storage lock manager
-sys-cluster/singularity 2.2.1 2.3.1 2.4: Application containers for Linux
+sys-cluster/singularity 2.3.1 2.4: Application containers for Linux
 sys-cluster/slurm 16.05.2 17.02.6: A Highly Scalable Resource Manager
 sys-cluster/swift 2.13.1-r1 2.15.1-r1 2017.1.9999 2017.2.9999: A highly available, distributed, and eventually consistent object/blob store
 sys-cluster/teleport 2.2.0 2.2.1 2.2.4 9999: Modern SSH server for teams managing distributed infrastructure
