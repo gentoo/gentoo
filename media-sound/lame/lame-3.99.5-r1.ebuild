@@ -28,7 +28,7 @@ DEPEND="${RDEPEND}
 	cpu_flags_x86_mmx? ( dev-lang/nasm )"
 
 src_prepare() {
-	epatch \
+	epatch -p1 \
 		"${FILESDIR}"/${PN}-3.96-ccc.patch \
 		"${FILESDIR}"/${PN}-3.98-gtk-path.patch \
 		"${FILESDIR}"/${PN}-3.99.5-tinfo.patch \
