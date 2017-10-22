@@ -6,7 +6,7 @@ EAPI="5"
 inherit eutils flag-o-matic multilib versionator
 
 DESCRIPTION="GTK+ version of wxWidgets, a cross-platform C++ GUI toolkit"
-HOMEPAGE="http://wxwidgets.org/"
+HOMEPAGE="https://wxwidgets.org/"
 
 BASE_PV="$(get_version_component_range 1-3)"
 BASE_P="${PN}-${BASE_PV}"
