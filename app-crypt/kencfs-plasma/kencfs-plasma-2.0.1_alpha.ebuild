@@ -30,6 +30,8 @@ RDEPEND="${DEPEND}
 
 S=${WORKDIR}/${MY_P}
 
+PATCHES=( "${FILESDIR}/${P}-include.patch" )
+
 src_prepare() {
 	default
 
