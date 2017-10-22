@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201710-21">
+  <title>Kodi: Arbitrary code execution </title>
+  <synopsis>An integer overflow vulnerability in Kodi could result in remote
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">kodi</product>
+  <announced>2017-10-22</announced>
+  <revised>2017-10-22: 1</revised>
+  <bug>622384</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-tv/kodi" auto="yes" arch="*">
+      <unaffected range="ge">17.3-r1</unaffected>
+      <vulnerable range="lt">17.3-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Kodi is a free and open source media-center and entertainment hub
+      previously known as XBMC.
+    </p>
+  </background>
+  <description>
+    <p>Kodi is vulnerable due to shipping with an embedded version of UnRAR.
+      Please review the referenced CVE identifier for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by enticing a user to process a specifically crafted
+      RAR file, could execute arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Kodi users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-tv/kodi-17.3-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2012-6706">CVE-2012-6706</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-10-18T03:54:48Z">jmbailey</metadata>
+  <metadata tag="submitter" timestamp="2017-10-22T00:24:12Z">jmbailey</metadata>
+</glsa>
