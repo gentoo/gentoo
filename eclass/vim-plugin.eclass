@@ -25,6 +25,12 @@ if [[ ${PV} != 9999* ]] ; then
 fi
 SLOT="0"
 
+# @FUNCTION: vim-plugin_src_install
+# @DESCRIPTION:
+# Overrides the default src_install phase. In order, this function:
+# * fixes file permission across all files in ${S}.
+# * installs help and documentation files.
+# * installs all files in "${ED}"/usr/share/vim/vimfiles.
 vim-plugin_src_install() {
 	has "${EAPI:-0}" 0 1 2 && ! use prefix && ED="${D}"
 	local f
@@ -66,12 +72,24 @@ vim-plugin_src_install() {
 	chmod -R -x+X "${ED}"/usr/share/vim/vimfiles/ || die "chmod failed"
 }
 
+# @FUNCTION: vim-plugin_pkg_postinst
+# @DESCRIPTION:
+# Overrides the pkg_postinst phase for this eclass.
+# The following functions are called:
+# * update_vim_helptags
+# * update_vim_afterscripts
+# * display_vim_plugin_help
 vim-plugin_pkg_postinst() {
 	update_vim_helptags		# from vim-doc
 	update_vim_afterscripts	# see below
 	display_vim_plugin_help	# see below
 }
 
+# @FUNCTION: vim-plugin_pkg_postrm
+# @DESCRIPTION:
+# Overrides the pkg_postrm phase for this eclass.
+# This function calls the update_vim_helptags and update_vim_afterscripts
+# functions and enventually removes a bunch of empty directories.
 vim-plugin_pkg_postrm() {
 	has "${EAPI:-0}" 0 1 2 && ! use prefix && EPREFIX=
 	update_vim_helptags		# from vim-doc
@@ -82,9 +100,10 @@ vim-plugin_pkg_postrm() {
 	find "${EPREFIX}/usr/share/vim/vimfiles" -depth -type d -exec rmdir {} \; 2>/dev/null
 }
 
-# update_vim_afterscripts: create scripts in
-# /usr/share/vim/vimfiles/after/* comprised of the snippets in
-# /usr/share/vim/vimfiles/after/*/*.d
+# @FUNCTION: update_vim_afterscripts
+# @DESCRIPTION:
+# Creates scripts in /usr/share/vim/vimfiles/after/*
+# comprised of the snippets in /usr/share/vim/vimfiles/after/*/*.d
 update_vim_afterscripts() {
 	has "${EAPI:-0}" 0 1 2 && ! use prefix && EROOT="${ROOT}"
 	has "${EAPI:-0}" 0 1 2 && ! use prefix && EPREFIX=
@@ -115,13 +134,15 @@ update_vim_afterscripts() {
 	done
 }
 
-# Display a message with the plugin's help file if one is available. Uses the
+# @FUNCTION: display_vim_plugin_help
+# @DESCRIPTION:
+# Displays a message with the plugin's help file if one is available. Uses the
 # VIM_PLUGIN_HELPFILES env var. If multiple help files are available, they
 # should be separated by spaces. If no help files are available, but the env
 # var VIM_PLUGIN_HELPTEXT is set, that is displayed instead. Finally, if we
-# have nothing else, display a link to VIM_PLUGIN_HELPURI. An extra message
-# regarding enabling filetype plugins is displayed if VIM_PLUGIN_MESSAGES
-# includes the word "filetype".
+# have nothing else, this functions displays a link to VIM_PLUGIN_HELPURI. An
+# extra message regarding enabling filetype plugins is displayed if
+# VIM_PLUGIN_MESSAGES includes the word "filetype".
 display_vim_plugin_help() {
 	local h
 
