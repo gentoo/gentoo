@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (22 Oct 2017)
+# Reverse-deps on dead, masked Qt4WebKit. Bug #623928
+net-im/qutim
+
 # Kent Fredric <kentnl@gentoo.org> (21 Oct 2017)
 # Has not been usable since we cleaned the last Moose it worked on back
 # in 2012. Removal in 30 days. Bug #634938
@@ -96,7 +100,6 @@ dev-qt/qtwebkit:4
 <app-misc/sleepyhead-1.0.0_beta2
 <media-gfx/freecad-0.17_pre
 media-sound/google-musicmanager
-net-im/qutim
 net-misc/teamviewer
 net-voip/vidyodesktop
 <sci-libs/opencascade-7.0
