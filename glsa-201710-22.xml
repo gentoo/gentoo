@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201710-22">
+  <title>Adobe Flash Player: Remote execution of arbitrary code</title>
+  <synopsis>A vulnerability in Adobe Flash Player might allow remote attackers
+    to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">adobeflash</product>
+  <announced>2017-10-22</announced>
+  <revised>2017-10-22: 1</revised>
+  <bug>634456</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-plugins/adobe-flash" auto="yes" arch="*">
+      <unaffected range="ge">27.0.0.170</unaffected>
+      <vulnerable range="lt">27.0.0.170</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The Adobe Flash Player is a renderer for the SWF file format, which is
+      commonly used to provide interactive websites.
+    </p>
+  </background>
+  <description>
+    <p>A  critical type confusion vulnerability was discovered in Adobe Flash
+      Player.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could execute arbitrary code.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Adobe Flash Player users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-plugins/adobe-flash-27.0.0.170"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-11292">
+      CVE-2017-11292
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-10-16T21:42:03Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-10-22T00:27:40Z">b-man</metadata>
+</glsa>
