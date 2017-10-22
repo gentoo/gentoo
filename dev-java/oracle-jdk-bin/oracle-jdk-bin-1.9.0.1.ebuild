@@ -48,7 +48,7 @@ SRC_URI+=""
 
 LICENSE="Oracle-BCLA-JavaSE examples? ( BSD )"
 SLOT="1.9"
-KEYWORDS="~amd64 ~x64-macos ~sparc64-solaris"
+KEYWORDS="~amd64 ~amd64-linux ~x64-macos ~sparc64-solaris"
 IUSE="alsa commercial cups derby doc examples +fontconfig headless-awt javafx nsplugin selinux source visualvm"
 REQUIRED_USE="javafx? ( alsa fontconfig )"
 
