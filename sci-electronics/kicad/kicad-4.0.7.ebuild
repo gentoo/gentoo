@@ -8,11 +8,10 @@ WX_GTK_VER="3.0"
 
 inherit check-reqs cmake-utils eutils flag-o-matic gnome2-utils python-single-r1 wxwidgets vcs-snapshot versionator xdg
 
-DESCRIPTION="Electronic Schematic and PCB design tools."
-HOMEPAGE="http://www.kicad-pcb.org"
-
 SERIES=$(get_version_component_range 1-2)
 
+DESCRIPTION="Electronic Schematic and PCB design tools."
+HOMEPAGE="http://www.kicad-pcb.org"
 SRC_URI="https://launchpad.net/${PN}/${SERIES}/${PV}/+download/${P}.tar.xz
 	!minimal? (
 		http://downloads.kicad-pcb.org/libraries/${PN}-footprints-${PV}.tar.gz
@@ -25,7 +24,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug doc examples github i18n libressl minimal +python"
 LANGS="bg ca cs de el es fi fr hu it ja ko nl pl pt ru sk sl sv zh-CN"
-local lang
 for lang in ${LANGS} ; do
 	IUSE="${IUSE} l10n_${lang}"
 done
@@ -70,18 +68,13 @@ pkg_setup() {
 
 src_prepare() {
 	xdg_src_prepare
+	cmake-utils_src_prepare
 
 	# Patch to work with >=boost 1.61
 	eapply "${FILESDIR}/${PN}-boost-1.61.patch"
 
 	# Remove cvpcb desktop file as it does nothing
 	rm "resources/linux/mime/applications/cvpcb.desktop" || die
-
-	# remove all the non unix file endings and fix application categories in desktop files
-	while IFS="" read -d $'\0' -r f; do
-		edos2unix "${f}"
-		sed -i '/Categories/s/Development;//' "${f}"
-	done < <(find "${S}" -type f -name "*.desktop" -print0)
 
 	# Handle optional minimal install.
 	if use minimal; then
