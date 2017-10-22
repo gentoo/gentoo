@@ -33,7 +33,7 @@ RDEPEND="
 	>=dev-python/numpy-1.10[${PYTHON_USEDEP}]
 	dev-python/objgraph[${PYTHON_USEDEP}]
 	dev-python/pandas[${PYTHON_USEDEP}]
-	dev-python/pillow[${PYTHON_USEDEP},jpeg]
+	dev-python/pillow[${PYTHON_USEDEP},jpeg(+)]
 	dev-python/pytz[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
