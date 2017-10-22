@@ -3,6 +3,8 @@
 
 EAPI=6
 
+inherit toolchain-funcs
+
 DESCRIPTION="A Markdown-to HTML translator written in C"
 HOMEPAGE="http://www.pell.portland.or.us/~orc/Code/discount/"
 SRC_URI="http://www.pell.portland.or.us/~orc/Code/${PN}/${P}.tar.bz2"
@@ -46,6 +48,7 @@ src_configure() {
 		--debian-glitch
 	)
 	einfo "Running ${configure_call[@]}"
+	CC="$(tc-getCC)" \
 	"${configure_call[@]}" || die
 }
 
