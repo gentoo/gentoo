@@ -24,10 +24,8 @@ RDEPEND="dev-python/beautifulsoup
 
 src_install() {
 	default
-	doman ${PN}.1
-	dobin ${PN}
-	exeinto /usr/share
-	doexe ${PN}-parse
+	doman "${PN}.1"
+	dobin "${PN}" "${PN}-parse"
 }
 
 pkg_postinst() {
