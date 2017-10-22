@@ -18336,7 +18336,7 @@ www-apps/drupal 7.56 8.3.7: PHP-based open-source platform and content managemen
 www-apps/dspam-web 3.10.1: Web based administration and user controls for dspam
 www-apps/eyeos 2.5: AJAX web-based desktop environment
 www-apps/freeradius-dialupadmin 1.70.3 1.80: Web administration interface of freeradius server
-www-apps/gitea 1.0.2 1.1.3 1.1.4: A painless self-hosted Git service, written in Go
+www-apps/gitea 1.1.4 1.2.1: A painless self-hosted Git service, written in Go
 www-apps/gitit 0.12.1.1 0.12.1.1-r2 0.12.2 0.12.2.1: Wiki using happstack, git or darcs, and pandoc
 www-apps/gnopaste 0.5.5: gnopaste is a nopaste script based on PHP with MySQL
 www-apps/grafana-bin 4.4.3 4.5.1 4.5.2: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
