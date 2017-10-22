@@ -9,7 +9,7 @@ SRC_URI="ftp://ftp.samba.org/pub/tridge/dbench/${P}.tar.gz"
 HOMEPAGE="http://samba.org/ftp/tridge/dbench/"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~arm64 hppa ppc ppc64 sparc x86"
+KEYWORDS="amd64 ~arm ~arm64 hppa ppc ppc64 sparc x86"
 IUSE=""
 
 DEPEND="dev-libs/popt"
