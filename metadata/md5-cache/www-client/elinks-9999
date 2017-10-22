@@ -10,4 +10,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~spock/portage/distfiles/elinks-0.10.4.conf.bz2
 _eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	git-r3	52a888802d25387c2c74cb845d1219bc	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	python-any-r1	27d7f9da7187d283b7f3eae8390b7b09	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=e330b0184ac62735171c82266cea54a5
+_md5_=2df37a2ed50f64eda42b47a42f776883
