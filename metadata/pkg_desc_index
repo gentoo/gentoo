@@ -19188,6 +19188,7 @@ x11-plugins/pidgintex 1.1.2_p20170107: Pidgin plugin to render LaTeX expressions
 x11-plugins/purple-facebook 20170608 20170831: Facebook protocol plugin for libpurple
 x11-plugins/purple-hangouts 0_p20170209 0_p20170714: Hangouts Plugin for libpurple
 x11-plugins/purple-libnotify-plus 1.99.2 2.99.1: Provide libnotify interface to Pidgin and Finch
+x11-plugins/purple-mattermost 1.2: A libpurple/Pidgin plugin for Mattermost
 x11-plugins/purple-plugin_pack 2.7.0-r1: A package with many different plugins for pidgin and libpurple
 x11-plugins/qled 0.6.2: Custom Led widget plugin for Qt-Designer
 x11-plugins/thinkhdaps 0.2.1-r1: A PyGTK based HDAPS monitor
