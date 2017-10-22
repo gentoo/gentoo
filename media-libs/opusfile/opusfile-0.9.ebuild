@@ -28,7 +28,7 @@ src_configure() {
 	local myeconfargs=(
 		--docdir=/usr/share/doc/${PF}
 		$(use_enable doc)
-		$(use_enable fixed-point)\
+		$(use_enable fixed-point)
 		$(use_enable float)
 		$(use_enable http)
 		$(use_enable static-libs static)
