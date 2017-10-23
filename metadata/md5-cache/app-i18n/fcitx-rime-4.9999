@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare test unpack
+DEPEND=>=app-i18n/fcitx-4.2.9:4 >=app-i18n/librime-1.0.0:= app-i18n/rime-data virtual/libintl virtual/pkgconfig sys-devel/make >=dev-util/cmake-3.7.2 >=sys-apps/sed-4 >=dev-vcs/git-1.8.2.1
+DESCRIPTION=Chinese RIME input method for Fcitx
+EAPI=6
+HOMEPAGE=https://fcitx-im.org/ https://github.com/fcitx/fcitx-rime
+LICENSE=GPL-2
+RDEPEND=>=app-i18n/fcitx-4.2.9:4 >=app-i18n/librime-1.0.0:= app-i18n/rime-data virtual/libintl
+SLOT=4
+_eclasses_=cmake-utils	f9fb12e2dbe2e0c9c17f030bae85eb02	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	git-r3	52a888802d25387c2c74cb845d1219bc	gnome2-utils	4d211d7614f303710fca59db6ec12c88	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=f9e6cbae59b5c267c9f876339b640358

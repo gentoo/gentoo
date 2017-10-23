@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=app-text/poppler dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 dev-qt/qtxmlpatterns:5 app-arch/unzip >=sys-apps/sed-4
+DESCRIPTION=Cloth patternmaking software
+EAPI=6
+HOMEPAGE=https://valentina-project.org/
+IUSE=gnome linguas_cs_CZ linguas_de_DE linguas_el_GR linguas_en_CA linguas_en_US linguas_es_ES linguas_fi_FI linguas_fr_FR linguas_he_IL linguas_id_ID linguas_it_IT linguas_nl_NL linguas_pt_BR linguas_ro_RO linguas_ru_RU linguas_uk_UA linguas_zh_CN
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=app-text/poppler dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 dev-qt/qtxmlpatterns:5
+SLOT=0
+SRC_URI=https://github.com/valentina-project/vpo2/archive/v0.5.0.zip -> valentina-0.5.0.zip
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	gnome2-utils	4d211d7614f303710fca59db6ec12c88	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	185a06792159ca143528e7010368e8af	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=116731e73abc87d4a65d8c66de963799
