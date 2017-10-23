@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<use>
+		<flag name="gtk3">Build with GTK+3 instead of GTK+2</flag>
+	</use>
+	<maintainer type="person">
+		<email>elliot@futuramerlin.com</email>
+		<name>Elliot Chandler</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">compiz-reloaded/emerald</remote-id>
+		<bugs-to>https://github.com/compiz-reloaded/emerald/issues</bugs-to>
+	</upstream>
+	<longdescription lang="en">Emerald is a 3D window decorator for compositing window managers such as compiz.</longdescription>
+</pkgmetadata>
