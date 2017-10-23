@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201710-23">
+  <title>Go: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Go, the worst of which
+    may result in the execution of arbitrary commands.
+  </synopsis>
+  <product type="ebuild">go</product>
+  <announced>2017-10-23</announced>
+  <revised>2017-10-23: 1</revised>
+  <bug>632408</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/go" auto="yes" arch="*">
+      <unaffected range="ge">1.9.1</unaffected>
+      <vulnerable range="lt">1.9.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Go is an open source programming language that makes it easy to build
+      simple, reliable, and efficient software.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Go. Please review the
+      references below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers could execute arbitrary Go commands or conduct a man in
+      the middle attack.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Go users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/go-1.9.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-15041">
+      CVE-2017-15041
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-15042">
+      CVE-2017-15042
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-10-16T22:06:50Z">chrisadr</metadata>
+  <metadata tag="submitter" timestamp="2017-10-23T01:03:41Z">b-man</metadata>
+</glsa>
