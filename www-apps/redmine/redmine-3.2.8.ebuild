@@ -1,8 +1,8 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-USE_RUBY="ruby21 ruby22 ruby23"
+EAPI=6
+USE_RUBY="ruby22 ruby23"
 inherit eutils depend.apache ruby-ng user
 
 DESCRIPTION="Flexible project management web application using the Ruby on Rails framework"
@@ -61,12 +61,10 @@ pkg_setup() {
 }
 
 all_ruby_prepare() {
-	rm -r log files/delete.me || die
+	rm -r log files/delete.me Gemfile || die
 
 	# bug #406605
-	rm .gitignore .hgignore || die
-
-	rm Gemfile || die
+	rm .{git,hg}ignore || die
 
 	echo "CONFIG_PROTECT=\"${EPREFIX}${REDMINE_DIR}/config\"" > "${T}/50${PN}"
 	echo "CONFIG_PROTECT_MASK=\"${EPREFIX}${REDMINE_DIR}/config/locales ${EPREFIX}${REDMINE_DIR}/config/settings.yml\"" >> "${T}/50${PN}"
@@ -130,7 +128,6 @@ all_ruby_install() {
 }
 
 pkg_postinst() {
-	einfo
 	if [ -e "${EPREFIX}${REDMINE_DIR}/config/initializers/session_store.rb" -o -e "${EPREFIX}${REDMINE_DIR}/config/initializers/secret_token.rb" ]; then
 		elog "Execute the following command to upgrade environment:"
 		elog
@@ -150,7 +147,6 @@ pkg_postinst() {
 		elog "Installation notes are at official site"
 		elog "http://www.redmine.org/wiki/redmine/RedmineInstall"
 	fi
-	einfo
 }
 
 pkg_config() {
