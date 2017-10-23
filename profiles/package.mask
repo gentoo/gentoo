@@ -304,11 +304,6 @@ kde-misc/kookie
 # much more advanced. Masked for removal in 30 days.
 media-sound/qtmpc
 
-# Andreas K. Huettel <dilfridge@gentoo.org> (23 Sep 2017)
-# Broken on Perl 5.26 (bug 623096), no fix in sight. No consumers.
-# Removal in 30 days.
-dev-perl/rpm-build-perl
-
 # Michael Palimaka <kensington@gentoo.org> (21 Sep 2017)
 # Requires dead Qt 4. Dead upstream.
 # Masked for removal in 30 days.
