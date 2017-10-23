@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cmake-utils toolchain-funcs flag-o-matic
+inherit gnome2-utils xdg-utils cmake-utils toolchain-funcs flag-o-matic
 
 DESCRIPTION="A powerful cross-platform raw image processing program"
 HOMEPAGE="http://www.rawtherapee.com/"
@@ -62,4 +62,14 @@ src_configure() {
 		-DWITH_SYSTEM_KLT="off"
 	)
 	cmake-utils_src_configure
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }
