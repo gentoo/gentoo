@@ -185,6 +185,8 @@ REQUIRED_USE="
 	xvmc? ( xv )"
 RESTRICT="faac? ( bindist )"
 
+PATCHES=( "${FILESDIR}/${PN}-1.3-vdpau-x11.patch" )
+
 pkg_setup() {
 	if [[ ${PV} == *9999* ]]; then
 		elog
