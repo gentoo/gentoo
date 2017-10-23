@@ -17,7 +17,7 @@ KEYWORDS="amd64 ~arm ~arm64"
 
 LICENSE="LGPL-3"
 SLOT="0"
-IUSE="cgmanager doc examples lua python seccomp"
+IUSE="cgmanager examples lua man python seccomp"
 
 RDEPEND="net-libs/gnutls
 	sys-libs/libcap
@@ -27,7 +27,7 @@ RDEPEND="net-libs/gnutls
 	seccomp? ( sys-libs/libseccomp )"
 
 DEPEND="${RDEPEND}
-	doc? ( app-text/docbook-sgml-utils )
+	man? ( app-text/docbook-sgml-utils )
 	>=sys-kernel/linux-headers-3.2"
 
 RDEPEND="${RDEPEND}
@@ -134,7 +134,7 @@ src_configure() {
 		--disable-apparmor \
 		--disable-werror \
 		$(use_enable cgmanager) \
-		$(use_enable doc) \
+		$(use_enable man doc) \
 		$(use_enable examples) \
 		$(use_enable lua) \
 		$(use_enable python) \

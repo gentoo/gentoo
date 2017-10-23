@@ -17,7 +17,7 @@ KEYWORDS="amd64 ~arm ~arm64 ppc64 x86"
 
 LICENSE="LGPL-3"
 SLOT="0"
-IUSE="doc examples lua python seccomp"
+IUSE="examples lua man python seccomp"
 
 RDEPEND="net-libs/gnutls
 	sys-libs/libcap
@@ -26,7 +26,7 @@ RDEPEND="net-libs/gnutls
 	seccomp? ( sys-libs/libseccomp )"
 
 DEPEND="${RDEPEND}
-	doc? ( app-text/docbook-sgml-utils )
+	man? ( app-text/docbook-sgml-utils )
 	>=sys-kernel/linux-headers-3.2"
 
 RDEPEND="${RDEPEND}
@@ -106,7 +106,7 @@ src_configure() {
 		--with-config-path=/etc/lxc	\
 		--with-rootfs-path=/usr/lib/lxc/rootfs \
 		--with-distro=gentoo \
-		$(use_enable doc) \
+		$(use_enable man doc) \
 		--disable-apparmor \
 		$(use_enable examples) \
 		$(use_enable lua) \
