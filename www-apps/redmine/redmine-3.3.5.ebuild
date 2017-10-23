@@ -122,7 +122,6 @@ all_ruby_install() {
 }
 
 pkg_postinst() {
-	einfo
 	if [[ -e "${EROOT%/}${REDMINE_DIR}/config/initializers/session_store.rb" \
 	|| -e "${EROOT%/}${REDMINE_DIR}/config/initializers/secret_token.rb" ]]
 	then
@@ -144,7 +143,6 @@ pkg_postinst() {
 		elog "Installation notes are at official site"
 		elog "http://www.redmine.org/wiki/redmine/RedmineInstall"
 	fi
-	einfo
 }
 
 pkg_config() {
