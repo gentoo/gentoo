@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201710-26">
+  <title>OpenJPEG: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in OpenJPEG, the worst of
+    which may allow remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">openjpeg</product>
+  <announced>2017-10-23</announced>
+  <revised>2017-10-23: 1</revised>
+  <bug>602180</bug>
+  <bug>606618</bug>
+  <bug>628504</bug>
+  <bug>629372</bug>
+  <bug>629668</bug>
+  <bug>630120</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/openjpeg" auto="yes" arch="*">
+      <unaffected range="ge" slot="2">2.3.0</unaffected>
+      <vulnerable range="lt" slot="2">2.3.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenJPEG is an open-source JPEG 2000 library.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in OpenJPEG. Please review
+      the references below for details.
+    </p>
+    
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, via a crafted BMP, PDF, or j2k document, could
+      execute arbitrary code, cause a Denial of Service condition, or have
+      other unspecified impacts.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OpenJPEG users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/openjpeg-2.3.0:2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10504">
+      CVE-2016-10504
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10505">
+      CVE-2016-10505
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10506">
+      CVE-2016-10506
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10507">
+      CVE-2016-10507
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1626">
+      CVE-2016-1626
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1628">
+      CVE-2016-1628
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9112">
+      CVE-2016-9112
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9113">
+      CVE-2016-9113
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9114">
+      CVE-2016-9114
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9115">
+      CVE-2016-9115
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9116">
+      CVE-2016-9116
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9117">
+      CVE-2016-9117
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9118">
+      CVE-2016-9118
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9572">
+      CVE-2016-9572
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9573">
+      CVE-2016-9573
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9580">
+      CVE-2016-9580
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9581">
+      CVE-2016-9581
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12982">
+      CVE-2017-12982
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-14039">
+      CVE-2017-14039
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-14164">
+      CVE-2017-14164
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-10-22T00:00:11Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-10-23T01:39:09Z">chrisadr</metadata>
+</glsa>
