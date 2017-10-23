@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201710-27">
+  <title>Dnsmasq: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Dnsmasq, the worst of
+    which may allow remote attackers to execute arbitrary code.
+    
+  </synopsis>
+  <product type="ebuild">dnsmasq</product>
+  <announced>2017-10-23</announced>
+  <revised>2017-10-23: 1</revised>
+  <bug>632692</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-dns/dnsmasq" auto="yes" arch="*">
+      <unaffected range="ge">2.78</unaffected>
+      <vulnerable range="lt">2.78</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Dnsmasq is a lightweight and easily-configurable DNS forwarder and DHCP
+      server.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Dnsmasq. Please review
+      the references below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could execute arbitrary code or cause a Denial of
+      Service condition via crafted DNS, IPv6, or DHCPv6 packets.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Dnsmasq users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-dns/dnsmasq-2.78"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-14491">
+      CVE-2017-14491
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-14492">
+      CVE-2017-14492
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-14493">
+      CVE-2017-14493
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-14494">
+      CVE-2017-14494
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-14495">
+      CVE-2017-14495
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-14496">
+      CVE-2017-14496
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-10-22T23:49:34Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-10-23T01:46:04Z">chrisadr</metadata>
+</glsa>
