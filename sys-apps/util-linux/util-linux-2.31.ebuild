@@ -107,7 +107,6 @@ multilib_src_configure() {
 		--disable-chfn-chsh
 		--disable-login
 		--disable-nologin
-		--disable-reset
 		--disable-su
 		--docdir='${datarootdir}'/doc/${PF}
 		--enable-agetty
