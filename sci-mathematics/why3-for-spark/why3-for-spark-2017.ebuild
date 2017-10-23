@@ -9,7 +9,7 @@ MYP=${PN}-gpl-${PV}-src
 
 DESCRIPTION="Platform for deductive program verification"
 HOMEPAGE="http://why3.lri.fr/"
-SRC_URI="https//mirrors.cdn.adacore.com/art/591c45e2c7a447af2deed055
+SRC_URI="http://mirrors.cdn.adacore.com/art/591c45e2c7a447af2deed055
 	-> ${MYP}.tar.gz"
 
 LICENSE="GPL-3"
