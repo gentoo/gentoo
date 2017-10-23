@@ -42,7 +42,7 @@ app-admin/aerospike-amc-community 3.6.8 3.6.8.2 3.6.9 3.6.10.1 3.6.11 3.6.12 3.6
 app-admin/amazon-ec2-init 20101127-r1: Init script to setup Amazon EC2 instance parameters
 app-admin/analog 6.0-r4: A webserver log analyzer
 app-admin/ansible 2.3.2.0-r2 2.4.0.0 9999: Model-driven deployment, config management, and command execution framework
-app-admin/apache-tools 2.2.31 2.2.34 2.4.27 2.4.28: Useful Apache tools - htdigest, htpasswd, ab, htdbm
+app-admin/apache-tools 2.2.34 2.4.27 2.4.28 2.4.29: Useful Apache tools - htdigest, htpasswd, ab, htdbm
 app-admin/apachetop 0.12.6-r1 0.12.6-r2: A realtime Apache log analyzer
 app-admin/apg 2.3.0b-r5: Another Password Generator
 app-admin/augeas 1.8.1 1.9.0: A library for changing configuration files
@@ -13490,7 +13490,7 @@ media-plugins/mediastreamer-silk 0.0.1: SILK (skype codec) implementation for Li
 media-plugins/mediastreamer-x264 1.4.1 1.4.2 1.4.2-r1: mediastreamer plugin: add H264 support
 media-plugins/mythplugins 0.28.1: Official MythTV plugins
 media-plugins/npapi-vlc 2.0.0 9999: Mozilla plugin based on VLC
-media-plugins/qmmp-plugin-pack 1.1.3-r1 1.1.4: A set of extra plugins for Qmmp
+media-plugins/qmmp-plugin-pack 1.1.3-r1 1.1.4 1.1.5: A set of extra plugins for Qmmp
 media-plugins/rev-plugins 0.3.1-r1 0.3.1-r2 0.7.1: REV LADSPA plugins package. A stereo reverb plugin based on the well-known greverb
 media-plugins/swh-lv2 1.0.15 1.0.16: Large collection of LV2 audio plugins/effects
 media-plugins/swh-plugins 0.4.15-r3: Large collection of LADSPA audio plugins/effects
@@ -13927,7 +13927,7 @@ media-sound/qastools 0.21.0: Qt5 GUI ALSA tools: mixer, configuration browser
 media-sound/qjackctl 0.4.5: Qt GUI to control the JACK Audio Connection Kit and ALSA sequencer connections
 media-sound/qmidiarp 0.6.3-r1 0.6.4-r1: An arpeggiator, sequencer and MIDI LFO for ALSA
 media-sound/qmidiroute 0.3.0 0.4.0: QMidiRoute is a filter/router for MIDI events
-media-sound/qmmp 1.1.7-r1 1.1.9 1.1.10 9999: Qt5-based audio player with winamp/xmms skins support
+media-sound/qmmp 1.1.7-r1 1.1.10 1.1.12 9999: Qt5-based audio player with winamp/xmms skins support
 media-sound/qmpdclient 1.2.2-r3: QMPDClient with NBL additions, such as lyrics' display
 media-sound/qpitch 1.0.1-r1: A program to tune musical instruments using Qt4
 media-sound/qsampler 0.4.0-r1 0.4.1 0.4.2 0.4.3: A graphical frontend to the LinuxSampler engine
@@ -17864,7 +17864,7 @@ sys-kernel/dracut 044-r1 044-r3 045-r2: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.49.2 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.5.0.8 3.5.1.0 3.5.1.1 3.5.2.0-r1 3.5.2.1 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 65 66 68: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-sources 3.10.107-r1 4.1.43-r1 4.4.87-r1 4.4.88 4.4.89 4.4.90 4.4.91 4.4.92 4.4.93 4.4.94 4.9.49-r1 4.9.50 4.9.51 4.9.52 4.9.53 4.9.56 4.9.57 4.9.58 4.12.12 4.12.13 4.12.14 4.13.1-r1 4.13.2 4.13.3 4.13.4 4.13.5 4.13.6 4.13.7 4.13.8 4.13.9: Full sources including the Gentoo patchset for the 4.13 kernel tree
-sys-kernel/git-sources 4.14_rc1 4.14_rc2 4.14_rc3 4.14_rc4 4.14_rc5: The very latest -git version of the Linux kernel
+sys-kernel/git-sources 4.14_rc1 4.14_rc2 4.14_rc3 4.14_rc4 4.14_rc5 4.14_rc6: The very latest -git version of the Linux kernel
 sys-kernel/hardened-sources 4.4.8-r1 4.7.6 4.7.10 4.8.17-r2 4.9.21 4.9.22 4.9.23 4.9.24: Hardened kernel sources (kernel series 4.9)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
 sys-kernel/kergen 0.1.3 0.1.4: Kernel config generator
@@ -18475,7 +18475,7 @@ www-plugins/lightspark 0.7.2_p20160107 0.8.0 9999: High performance flash player
 www-plugins/mozplugger 2.1.6: Streaming media plugin for Mozilla, based on netscape-plugger
 www-plugins/pdfjs 1.9.426: A PDF reader in JavaScript
 www-servers/adsf 1.2.1: A Dead Simple Fileserver is a static file server that can launch in a directory
-www-servers/apache 2.2.31-r1 2.2.34 2.4.27 2.4.27-r1 2.4.28: The Apache Web Server
+www-servers/apache 2.2.34 2.4.27 2.4.27-r1 2.4.28 2.4.29: The Apache Web Server
 www-servers/boa 0.94.14_rc21-r1 0.94.14_rc21-r2: A very small and very fast http daemon
 www-servers/bozohttpd 20170201: bozohttpd is a small and secure http server
 www-servers/caddy 0.10.9 0.10.10: Fast, cross-platform HTTP/2 web server with automatic HTTPS
