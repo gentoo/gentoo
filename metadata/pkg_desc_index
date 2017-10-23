@@ -1502,7 +1502,7 @@ app-i18n/fcitx-qt5 1.0.5 1.0.6 1.1.0 1.1.1 4.9999: Fcitx input method module for
 app-i18n/fcitx-rime 0.2.0 0.3.1 0.3.2 4.9999: Chinese RIME input method for Fcitx
 app-i18n/fcitx-sayura 0.1.1 0.1.2 4.9999: Sinhala Sayura input method for Fcitx
 app-i18n/fcitx-sunpinyin 0.4.0 0.4.1 0.4.2 4.9999: Chinese SunPinyin input method for Fcitx
-app-i18n/fcitx-table-extra 0.3.3 0.3.6 0.3.7: Extra tables for Fcitx, including Boshiamy, Zhengma, Cangjie and Quick
+app-i18n/fcitx-table-extra 0.3.3 0.3.6 0.3.7 0.3.8 4.9999: Extra Chinese table input methods for Fcitx
 app-i18n/fcitx-unikey 0.2.0 0.2.4 0.2.5 0.2.6 4.9999: Vietnamese Unikey input methods for Fcitx
 app-i18n/freewnn 1.1.1_alpha22 1.1.1_alpha23: Network-Extensible Kana-to-Kanji Conversion System
 app-i18n/ibus 1.5.12 1.5.15 1.5.16: Intelligent Input Bus for Linux / Unix OS
@@ -1927,7 +1927,7 @@ app-misc/rq 0.10.4: record query - a tool for doing record analysis and transfor
 app-misc/rundeck-bin 2.6.8: Job Scheduler and Runbook Automation
 app-misc/rundeck-cli-bin 0.1.8 0.1.11: Command line tool for rundeck
 app-misc/scope 0.04-r1: Serial Line Analyser
-app-misc/screen 4.4.0 4.5.1 4.6.0 4.6.1 9999: screen manager with VT100/ANSI terminal emulation
+app-misc/screen 4.4.0 4.5.1 4.6.0 4.6.1 4.6.2 9999: screen manager with VT100/ANSI terminal emulation
 app-misc/screenfetch 2.7.7 3.2.2 3.6.5 3.7.0 3.8.0 9999: Bash Screenshot Information Tool
 app-misc/screenie 1.30.0-r1: screen(1) frontend that is designed to be a session handler
 app-misc/scrub 2.5.2 2.6.1: Overwrite files with iterative patterns.
@@ -17272,7 +17272,7 @@ sys-apps/renameutils 0.12.0: Use your favorite text editor to rename files
 sys-apps/rescan-scsi-bus 1.29 1.56 1.57 1.57-r1: Script to rescan the SCSI bus without rebooting
 sys-apps/restartd 0.2.2: A daemon for checking your running and not running processes
 sys-apps/restorecond 2.7 9999: Daemon to watch for creation and set default SELinux fcontexts
-sys-apps/ripgrep 0.6.0-r1: a search tool that combines the usability of ag with the raw speed of grep
+sys-apps/ripgrep 0.6.0-r1 0.7.1: a search tool that combines the usability of ag with the raw speed of grep
 sys-apps/rkflashtool 5.1 6.1: Tool for flashing Rockchip devices
 sys-apps/rng-tools 5-r2 6 6.1: Daemon to use hardware random number generators
 sys-apps/roccat-tools 5.1.1 5.7.0: Utility for advanced configuration of Roccat devices
