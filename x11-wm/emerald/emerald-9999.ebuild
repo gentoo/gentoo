@@ -13,6 +13,8 @@ LICENSE="GPL-2+"
 SLOT="0"
 IUSE="gtk3"
 
+PDEPEND=">=x11-themes/emerald-themes-${PV}"
+
 RDEPEND="
 	>=x11-wm/compiz-${PV}
 	gtk3? (

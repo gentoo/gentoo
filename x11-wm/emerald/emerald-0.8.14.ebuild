@@ -14,6 +14,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="gtk3"
 
+PDEPEND="
+	>=x11-themes/emerald-themes-0.8.12
+	<x11-themes/emerald-themes-0.9
+"
+
 RDEPEND="
 	>=x11-wm/compiz-0.8.12
 	<=x11-wm/compiz-0.9
