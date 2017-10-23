@@ -3,8 +3,9 @@ DEPEND=>=dev-lang/go-1.6:0 >=app-crypt/keybase-1.0.17 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=Keybase Filesystem (KBFS)
 EAPI=6
 HOMEPAGE=https://keybase.io/docs/kbfs
+IUSE=git
 LICENSE=BSD
 RDEPEND=app-crypt/gnupg sys-fs/fuse
 SLOT=0
 _eclasses_=git-r3	52a888802d25387c2c74cb845d1219bc
-_md5_=ccdaa5ab4ce7a729ba0460afaa42e51c
+_md5_=465509b95cf119787ad44f6b2385706a
