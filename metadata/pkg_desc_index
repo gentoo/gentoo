@@ -15515,7 +15515,7 @@ net-misc/wget 1.19.1-r1: Network utility to retrieve files from the WWW
 net-misc/whatmask 1.2-r1: little C program to compute different subnet mask notations
 net-misc/whatportis 0.6: A command to search port names and numbers
 net-misc/whois 5.2.12 5.2.17 5.2.18: improved Whois Client
-net-misc/wicd 1.7.4-r2: A lightweight wired and wireless network manager for Linux
+net-misc/wicd 1.7.4-r3: A lightweight wired and wireless network manager for Linux
 net-misc/wol 0.7.1-r1: Wake up hardware that is Magic Packet compliant
 net-misc/wput 0.6.1 0.6.1-r1: Tiny program like wget, to upload files/whole directories via FTP
 net-misc/x11-ssh-askpass 1.2.4.1-r1: X11-based passphrase dialog for use with OpenSSH
@@ -15760,7 +15760,7 @@ net-wireless/bcm43xx-fwcutter 006: Firmware Tool for Broadcom 43xx based wireles
 net-wireless/bladerf 2015.02 2015.07 2016.01_rc1 2016.06 9999: Libraries for supporing the BladeRF hardware from Nuand
 net-wireless/bladerf-firmware 1.7.1 1.8.0 1.9.0 2.0.0: bladeRF FX3 firmware images
 net-wireless/bladerf-fpga 0.0.6 0.1.1-r1 0.1.2 0.3.4 0.5.0 0.6.0: bladeRF FPGA bitstreams
-net-wireless/blueberry 1.1.8 1.1.13: A Bluetooth configuration tool
+net-wireless/blueberry 1.1.8-r1 1.1.13-r1: A Bluetooth configuration tool
 net-wireless/blueman 2.0.3 2.0.4 2.1_alpha1 9999: Simple and intuitive GTK+ Bluetooth Manager
 net-wireless/bluez 5.47-r1: Bluetooth Tools and System Daemons for Linux
 net-wireless/bluez-hcidump 2.5: Bluetooth HCI packet analyzer
@@ -15816,7 +15816,7 @@ net-wireless/pyrit 0.4.0-r1 0.5.0: GPU-accelerated attack against WPA-PSK authen
 net-wireless/python-wifi 0.5.0-r3: Provides r/w access to a wireless network card's capabilities using the Linux Wireless Extensions
 net-wireless/reaver 1.4-r3: Brute force attack against Wifi Protected Setup
 net-wireless/rfcat 0.0.170508 9999: The swiss army knife of subGHz
-net-wireless/rfkill 0.5 0.5-r1: Tool to read and control rfkill status through /dev/rfkill
+net-wireless/rfkill 0.5-r2 0.5-r3: Tool to read and control rfkill status through /dev/rfkill
 net-wireless/rtl-sdr 0.5.0 0.5.3 0.5.3-r1 0.5.3_p20150730 9999: turns your Realtek RTL2832 based DVB dongle into a SDR receiver
 net-wireless/rtl_433 9999: Decode OOK modulated signals
 net-wireless/spectools 2011.08.1-r2 2011.08.1_p20140618-r1 2016.01.1 9999: Spectrum Analyzer for Meta-Geek Wi-Spy and GSG Ubertooth hardware
