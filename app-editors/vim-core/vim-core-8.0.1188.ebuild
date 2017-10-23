@@ -48,6 +48,9 @@ src_prepare() {
 		-e '1s|.*|#!'"${EPREFIX}"'/usr/bin/awk -f|' \
 		"${S}"/runtime/tools/mve.awk || die "sed failed"
 
+	# See #77841. We remove this file after the tarball extraction.
+	rm -v "${S}"/runtime/tools/vimspell.sh || die "rm failed"
+
 	# Read vimrc and gvimrc from /etc/vim
 	echo '#define SYS_VIMRC_FILE "'${EPREFIX}'/etc/vim/vimrc"' >> "${S}"/src/feature.h
 	echo '#define SYS_GVIMRC_FILE "'${EPREFIX}'/etc/vim/gvimrc"' >> "${S}"/src/feature.h
@@ -200,11 +203,6 @@ src_install() {
 
 		eshopts_pop
 	fi
-
-	# These files might have slight security issues, so we won't
-	# install them. See bug #77841. We don't mind if these don't
-	# exist.
-	rm -v "${ED}${vimfiles}"/tools/vimspell.sh || die "rm failed"
 
 	newbashcomp "${FILESDIR}"/xxd-completion xxd
 }
