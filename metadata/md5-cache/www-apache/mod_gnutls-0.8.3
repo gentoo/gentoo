@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare setup
+DEPEND=>=net-libs/gnutls-3.3.0:= test? ( app-crypt/monkeysphere ) =www-servers/apache-2.4* >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=mod_gnutls uses GnuTLS to provide SSL/TLS encryption for Apache2, similarly to mod_ssl
+EAPI=6
+HOMEPAGE=https://mod.gnutls.org/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0
+RDEPEND=>=net-libs/gnutls-3.3.0:= =www-servers/apache-2.4*
+RESTRICT=test
+SLOT=0
+SRC_URI=https://mod.gnutls.org/downloads/mod_gnutls-0.8.3.tar.bz2
+_eclasses_=apache-module	bd30ba4d834196e81cf2b76c52d26b93	autotools	dc412f38566b91012efd58b9c203e6c3	depend.apache	0917334d570e07f9743a04ff85b3bf1b	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=2babe9ec807116a83bf7dd8545999165
