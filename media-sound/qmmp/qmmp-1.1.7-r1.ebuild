@@ -24,11 +24,11 @@ jack ladspa libav lyrics +mad midi mms modplug mplayer musepack notifier opus os
 pulseaudio qsui qtmedia scrobbler sid sndfile soxr stereo tray udisks +vorbis wavpack"
 
 RDEPEND="
-	dev-qt/qtcore:5
-	dev-qt/qtgui:5
-	dev-qt/qtnetwork:5
-	dev-qt/qtwidgets:5
-	dev-qt/qtx11extras:5
+	<dev-qt/qtcore-5.9:5
+	<dev-qt/qtgui-5.9:5
+	<dev-qt/qtnetwork-5.9:5
+	<dev-qt/qtwidgets-5.9:5
+	<dev-qt/qtx11extras-5.9:5
 	media-libs/taglib
 	x11-libs/libX11
 	aac? ( media-libs/faad2 )
@@ -40,7 +40,7 @@ RDEPEND="
 	)
 	cue? ( media-libs/libcue )
 	curl? ( net-misc/curl )
-	dbus? ( dev-qt/qtdbus:5 )
+	dbus? ( <dev-qt/qtdbus-5.9:5 )
 	enca? ( app-i18n/enca )
 	ffmpeg? (
 		!libav? ( media-video/ffmpeg:= )
@@ -61,12 +61,12 @@ RDEPEND="
 	musepack? ( >=media-sound/musepack-tools-444 )
 	opus? ( media-libs/opusfile )
 	projectm? (
-		dev-qt/qtgui:5[-gles2]
-		dev-qt/qtopengl:5
+		<dev-qt/qtgui-5.9:5[-gles2]
+		<dev-qt/qtopengl-5.9:5
 		media-libs/libprojectm
 	)
 	pulseaudio? ( >=media-sound/pulseaudio-0.9.9 )
-	qtmedia? ( dev-qt/qtmultimedia:5 )
+	qtmedia? ( <dev-qt/qtmultimedia-5.9:5 )
 	scrobbler? ( net-misc/curl )
 	sndfile? ( media-libs/libsndfile )
 	sid? ( >=media-libs/libsidplayfp-1.1.0 )
@@ -79,7 +79,7 @@ RDEPEND="
 	wavpack? ( media-sound/wavpack )
 "
 DEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5
+	<dev-qt/linguist-tools-5.9:5
 "
 
 DOCS=( AUTHORS ChangeLog README )
