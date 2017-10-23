@@ -6487,7 +6487,6 @@ dev-perl/PerlIO-gzip 0.190.0: PerlIO layer to gzip/gunzip
 dev-perl/PerlIO-utf8_strict 0.7.0: Fast and correct UTF-8 IO
 dev-perl/PerlIO-via-Timeout 0.320.0: PerlIO layer that adds read & write timeout to a handle
 dev-perl/PerlIO-via-dynamic 0.140.0-r1: Dynamic PerlIO layers
-dev-perl/PerlIO-via-symlink 0.50.0-r1: PerlIO::via::symlink - PerlIO layer for symlinks
 dev-perl/Perlbal 1.800.0-r1: Reverse-proxy load balancer and webserver
 dev-perl/Perlbal-XS-HTTPHeaders 0.200.0-r1: XS acceleration for Perlbal header processing
 dev-perl/PlRPC 0.202.0-r2: The Perl RPC Module
@@ -6988,7 +6987,6 @@ dev-perl/perl-ldap 0.650.0: Perl modules which provide an object-oriented interf
 dev-perl/perl-mozldap 1.5.3: Mozilla PerLDAP
 dev-perl/prefork 1.40.0-r2: Optimized module loading for forking or non-forking processes
 dev-perl/rename 1.900.0: A filename renaming utility based on perl regular expression
-dev-perl/rpm-build-perl 0.820.0 0.820.0-r1: Automatically extract Perl dependencies
 dev-perl/self 0.350.0: provides '$self' in OO code
 dev-perl/strictures 2.0.1 2.0.2 2.0.3: Turn on strict and make most warnings fatal
 dev-perl/syntax 0.4.0: Activate syntax extensions
@@ -18487,7 +18485,7 @@ www-servers/gatling 0.12-r2 0.13 0.13-r1 0.15: High performance web server
 www-servers/gunicorn 19.1.1 19.3.0 19.4.5 19.6.0: A WSGI HTTP Server for UNIX
 www-servers/h2o 2.2.2 9999: An optimized HTTP server with support for HTTP/1.x and HTTP/2
 www-servers/hiawatha 9.15: Advanced and secure webserver
-www-servers/lighttpd 1.4.42 1.4.43 1.4.44 1.4.45 9999: Lightweight high-performance web server
+www-servers/lighttpd 1.4.42 1.4.43 1.4.44 1.4.45 1.4.47 9999: Lightweight high-performance web server
 www-servers/mongoose 5.6: easy to use web server
 www-servers/mongrel2 1.11.0 1.11.0-r1: A language agnostic web server focused on web applications
 www-servers/monkeyd 1.6.9-r1 9999: A small, fast, and scalable web server
