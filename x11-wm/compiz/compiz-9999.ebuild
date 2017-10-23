@@ -11,8 +11,10 @@ EGIT_REPO_URI="https://github.com/compiz-reloaded/compiz.git"
 
 LICENSE="GPL-2+ LGPL-2.1 MIT"
 SLOT="0"
-IUSE="+cairo dbus fuse gsettings +gtk gtk3 inotify marco mate +svg"
-REQUIRED_USE="marco? ( gsettings )
+
+IUSE="+cairo compizconfig dbus fuse gsettings +gtk gtk3 inotify marco mate +svg"
+REQUIRED_USE="compizconfig? ( gtk )
+	marco? ( gsettings )
 	gsettings? ( gtk )"
 
 COMMONDEPEND="
@@ -35,6 +37,7 @@ COMMONDEPEND="
 	virtual/glu
 	x11-libs/pango
 	cairo? ( >=x11-libs/cairo-1.4[X] )
+	compizconfig? ( >=x11-libs/libcompizconfig-${PV} )
 	dbus? (
 		sys-apps/dbus
 		dev-libs/dbus-glib
@@ -82,6 +85,7 @@ src_configure() {
 		--enable-fast-install
 		--disable-static
 		$(use_enable cairo annotate)
+		$(use_enable compizconfig)
 		$(use_enable dbus)
 		$(use_enable dbus dbus-glib)
 		$(use_enable fuse)
