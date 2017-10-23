@@ -620,7 +620,7 @@ kde5_src_configure() {
 
 	local cmakeargs
 
-	if ! use_if_iuse test ; then
+	if in_iuse test && ! use test ; then
 		cmakeargs+=( -DBUILD_TESTING=OFF )
 
 		if [[ ${KDE_TEST} = optional ]] ; then
