@@ -5,9 +5,8 @@ EAPI=6
 
 inherit eutils java-vm-2 prefix versionator
 
-# This URIs need updating when bumping!
+# This URI needs to be updated when bumping!
 JRE_URI="http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html"
-JCE_URI="http://www.oracle.com/technetwork/java/javase/downloads/jce8-download-2133166.html"
 
 if [[ "$(get_version_component_range 4)" == 0 ]] ; then
 	S_PV="$(get_version_component_range 1-3)"
@@ -21,15 +20,11 @@ MY_PV="$(get_version_component_range 2)${MY_PV_EXT}"
 AT_amd64="jre-${MY_PV}-linux-x64.tar.gz"
 AT_x86="jre-${MY_PV}-linux-i586.tar.gz"
 
-JCE_DIR="UnlimitedJCEPolicyJDK8"
-JCE_FILE="jce_policy-8.zip"
-
 DESCRIPTION="Oracle's Java SE Runtime Environment"
 HOMEPAGE="http://www.oracle.com/technetwork/java/javase/"
 SRC_URI="
 	amd64? ( ${AT_amd64} )
-	x86? ( ${AT_x86} )
-	jce? ( ${JCE_FILE} )"
+	x86? ( ${AT_x86} )"
 
 LICENSE="Oracle-BCLA-JavaSE"
 SLOT="1.8"
@@ -78,8 +73,7 @@ RDEPEND="!x64-macos? (
 	!prefix? ( sys-libs/glibc:* )
 	selinux? ( sec-policy/selinux-java )"
 
-DEPEND="app-arch/zip
-	jce? ( app-arch/unzip )"
+DEPEND="app-arch/zip"
 
 S="${WORKDIR}/jre"
 
@@ -90,12 +84,6 @@ pkg_nofetch() {
 	einfo "Please download '${AT}' from:"
 	einfo "'${JRE_URI}'"
 	einfo "and move it to '${DISTDIR}'"
-
-	if use jce; then
-		einfo "Also download '${JCE_FILE}' from:"
-		einfo "'${JCE_URI}'"
-		einfo "and move it to '${DISTDIR}'"
-	fi
 
 	einfo
 	einfo "If the above mentioned urls do not point to the correct version anymore,"
@@ -116,10 +104,6 @@ src_unpack() {
 }
 
 src_prepare() {
-	if use jce ; then
-		mv "${WORKDIR}"/${JCE_DIR} lib/security/ || die
-	fi
-
 	default
 
 	# Remove the hook that calls Oracle's evil usage tracker. Not just
@@ -170,17 +154,8 @@ src_install() {
 	dodir "${dest}"
 	cp -pPR	bin lib man "${ddest}" || die
 
-	if use jce ; then
-		dodir ${dest}/lib/security/strong-jce
-		mv "${ddest}"/lib/security/US_export_policy.jar \
-			"${ddest}"/lib/security/strong-jce || die
-		mv "${ddest}"/lib/security/local_policy.jar \
-			"${ddest}"/lib/security/strong-jce || die
-		dosym "${dest}"/lib/security/${JCE_DIR}/US_export_policy.jar \
-			"${dest}"/lib/security/US_export_policy.jar
-		dosym "${dest}"/lib/security/${JCE_DIR}/local_policy.jar \
-			"${dest}"/lib/security/local_policy.jar
-	fi
+	ln -s policy/$(usex jce unlimited limited)/{US_export,local}_policy.jar \
+		"${ddest}"/lib/security/ || die
 
 	if use nsplugin ; then
 		local nsplugin_link=${nsplugin##*/}
