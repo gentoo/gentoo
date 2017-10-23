@@ -8,7 +8,7 @@ inherit eutils
 IUSE="nls dbus ssl +gtk"
 
 DESCRIPTION="A GTK+ Gnutella client"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
 HOMEPAGE="http://gtk-gnutella.sourceforge.net/"
 
 SLOT="0"
