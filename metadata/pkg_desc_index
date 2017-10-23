@@ -5973,14 +5973,14 @@ dev-perl/Geo-IP 1.450.0 1.500.0-r1 1.510.0: Look up country by IP Address
 dev-perl/Geography-Countries 2009041301.0.0-r1: 2-letter, 3-letter, and numerical codes for countries
 dev-perl/Getopt-ArgvFile 1.110.0-r1: This module is a simple supplement to other option handling modules
 dev-perl/Getopt-GUI-Long 0.930.0-r1: Auto-GUI extending Getopt::Long
-dev-perl/Getopt-Long-Descriptive 0.97.0 0.99.0: Getopt::Long with usage text
+dev-perl/Getopt-Long-Descriptive 0.97.0 0.99.0 0.100.0: Getopt::Long with usage text
 dev-perl/Getopt-Mixed 1.120.0: Getopt::Mixed is used for parsing mixed options
 dev-perl/Getopt-Tabular 0.3: Table-driven argument parsing with help text
 dev-perl/Git-Wrapper 0.47.0-r1: Wrap git(7) command-line interface
 dev-perl/Glib-Object-Introspection 0.40.0 0.42.0 0.43.0: Dynamically create Perl language bindings
 dev-perl/GnuPG-Interface 0.520.0-r1 0.520.0-r2: Perl module interface to interacting with GnuPG
 dev-perl/Goo-Canvas 0.60.0-r1: Perl interface to the GooCanvas
-dev-perl/Google-Ads-AdWords-Client 4.14.0: Google AdWords API Perl Client Library
+dev-perl/Google-Ads-AdWords-Client 4.14.0 4.18.0: Google AdWords API Perl Client Library
 dev-perl/Graph 0.970.400: Data structure and ops for directed graphs
 dev-perl/GraphViz 2.240.0: Interface to AT&T's GraphViz
 dev-perl/Graphics-ColorNames 2.110.0-r1: Defines RGB values for common color names
@@ -6958,7 +6958,7 @@ dev-perl/constant-defer 6.0.0: constant subs with deferred value calculation
 dev-perl/enum 1.16.0-r1 1.110.0: C style enumerated types and bitmask flags in Perl
 dev-perl/forks 0.360.0 0.360.0-r1: Emulate threads with fork
 dev-perl/frontier-rpc 0.07_beta4-r1 0.07_beta4-r2: Perform remote procedure calls using extensible markup language
-dev-perl/glib-perl 1.325.0: Glib - Perl wrappers for the GLib utility and Object libraries
+dev-perl/glib-perl 1.325.0 1.326.0: Glib - Perl wrappers for the GLib utility and Object libraries
 dev-perl/gnome2-canvas 1.2.0-r1: Perl interface to the Gnome Canvas
 dev-perl/gnome2-perl 1.45.0 1.46.0: Perl interface to the 2.x series of the Gnome libraries
 dev-perl/gnome2-vfs-perl 1.81.0-r1 1.83.0: Perl interface to the 2.x series of the Gnome Virtual File System libraries
