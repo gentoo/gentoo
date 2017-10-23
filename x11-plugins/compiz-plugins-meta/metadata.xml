@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>elliot@futuramerlin.com</email>
+		<name>Elliot Chandler</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="community">Install community plugins</flag>
+		<flag name="compicc">Install CompICC plugin</flag>
+		<flag name="experimental">Install experimental plugins</flag>
+		<flag name="extra">Install extra plugins</flag>
+		<flag name="extra-snowflake-textures">Install extra snowflake textures</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">ethus3h/compiz-reloaded-overlay</remote-id>
+		<bugs-to>https://github.com/ethus3h/compiz-reloaded-overlay/issues</bugs-to>
+	</upstream>
+	<longdescription lang="en">Metapackage for Compiz window manager plugins</longdescription>
+</pkgmetadata>
