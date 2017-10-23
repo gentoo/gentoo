@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>elliot@futuramerlin.com</email>
+		<name>Elliot Chandler</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="gtk2">Build with GTK+2</flag>
+		<flag name="gtk3">Build with GTK+3</flag>
+		<flag name="qt4">Build with QT4</flag>
+		<flag name="qt5">Build with QT5</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">compiz-reloaded/fusion-icon</remote-id>
+		<bugs-to>https://github.com/compiz-reloaded/fusion-icon/issues</bugs-to>
+	</upstream>
+	<longdescription lang="en">Compiz Fusion Tray Icon and Manager.</longdescription>
+</pkgmetadata>
