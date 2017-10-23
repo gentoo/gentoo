@@ -5,9 +5,8 @@ EAPI=6
 
 inherit eutils java-vm-2 prefix versionator
 
-# This URIs need to be updated when bumping!
+# This URI needs to be updated when bumping!
 JDK_URI="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html"
-JCE_URI="http://www.oracle.com/technetwork/java/javase/downloads/jce8-download-2133166.html"
 
 # This is a list of archs supported by this update.
 # Currently arm comes and goes.
@@ -42,9 +41,6 @@ DEMOS_x64_solaris="jdk-${MY_PV}-solaris-x64-demos.tar.gz"
 DEMOS_sparc64_solaris="jdk-${MY_PV}-solaris-sparcv9-demos.tar.gz"
 DEMOS_x64_macos="jdk-${MY_PV}-macosx-x86_64-demos.zip"
 
-JCE_DIR="UnlimitedJCEPolicyJDK8"
-JCE_FILE="jce_policy-8.zip"
-
 DESCRIPTION="Oracle's Java SE Development Kit"
 HOMEPAGE="http://www.oracle.com/technetwork/java/javase/"
 for d in "${AT_AVAILABLE[@]}"; do
@@ -55,7 +51,6 @@ for d in "${AT_AVAILABLE[@]}"; do
 	SRC_URI+=" )"
 done
 unset d
-SRC_URI+=" jce? ( ${JCE_FILE} )"
 
 LICENSE="Oracle-BCLA-JavaSE examples? ( BSD )"
 SLOT="1.8"
@@ -107,7 +102,6 @@ RDEPEND="!x64-macos? (
 	selinux? ( sec-policy/selinux-java )"
 
 DEPEND="app-arch/zip
-	jce? ( app-arch/unzip )
 	examples? ( x64-macos? ( app-arch/unzip ) )"
 
 S="${WORKDIR}/jdk"
@@ -148,7 +142,6 @@ pkg_nofetch() {
 		distfiles+=( $(eval "echo \${$(echo DEMOS_${ARCH/-/_})}") )
 	fi
 	check_tarballs_available "${JDK_URI}" "${distfiles[@]}"
-	use jce && check_tarballs_available "${JCE_URI}" "${JCE_FILE}"
 }
 
 src_unpack() {
@@ -163,7 +156,6 @@ src_unpack() {
 		zcat jdk1${MY_PV%u*}0${update}.pkg/Payload | cpio -idv || die
 		mv Contents/Home "${WORKDIR}"/jdk${MY_PV} || die
 		popd > /dev/null || die
-		use jce && unpack "${JCE_FILE}"
 	else
 		default
 	fi
@@ -175,10 +167,6 @@ src_unpack() {
 }
 
 src_prepare() {
-	if use jce ; then
-		mv "${WORKDIR}"/${JCE_DIR} jre/lib/security/ || die
-	fi
-
 	default
 
 	if [[ -n ${JAVA_PKG_STRICT} ]] ; then
@@ -251,17 +239,8 @@ src_install() {
 		cp -pPR demo sample "${ddest}" || die
 	fi
 
-	if use jce ; then
-		dodir "${dest}"/jre/lib/security/strong-jce
-		mv "${ddest}"/jre/lib/security/US_export_policy.jar \
-			"${ddest}"/jre/lib/security/strong-jce || die
-		mv "${ddest}"/jre/lib/security/local_policy.jar \
-			"${ddest}"/jre/lib/security/strong-jce || die
-		dosym "${dest}"/jre/lib/security/${JCE_DIR}/US_export_policy.jar \
-			"${dest}"/jre/lib/security/US_export_policy.jar
-		dosym "${dest}"/jre/lib/security/${JCE_DIR}/local_policy.jar \
-			"${dest}"/jre/lib/security/local_policy.jar
-	fi
+	ln -s policy/$(usex jce unlimited limited)/{US_export,local}_policy.jar \
+		"${ddest}"/jre/lib/security/ || die
 
 	if use nsplugin ; then
 		local nsplugin_link=${nsplugin##*/}
