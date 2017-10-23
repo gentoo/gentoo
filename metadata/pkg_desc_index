@@ -4536,7 +4536,7 @@ dev-lang/ghc 7.8.4 7.10.3 8.0.2 8.2.1: The Glasgow Haskell Compiler
 dev-lang/gnat-gpl 2016 2017: GNAT Ada Compiler - GPL version
 dev-lang/gnu-smalltalk 3.2.5: GNU Smalltalk
 dev-lang/gnuprologjava 0.2.6: GNU Prolog for Java is an implementation of ISO Prolog as a Java library
-dev-lang/go 1.8.3 1.9 1.9.1 9999: A concurrent garbage collected and typesafe programming language
+dev-lang/go 1.9.1 9999: A concurrent garbage collected and typesafe programming language
 dev-lang/gprolog 1.4.4: A native Prolog compiler with constraint solving over finite domains (FD)
 dev-lang/gwydion-dylan-bin 2.4.0-r1: The Dylan Programming Language Compiler
 dev-lang/helium 1.6 1.8.1: The Helium Compiler
@@ -14621,7 +14621,7 @@ net-dns/idnkit 1.0-r2: Toolkit for Internationalized Domain Names (IDN)
 net-dns/knot 2.4.5 2.5.5 2.6.0: High-performance authoritative-only DNS server
 net-dns/ldns-utils 1.6.12 1.6.17 1.7.0: Set of utilities to simplify various dns(sec) tasks
 net-dns/libidn 1.33 1.33-r1: Internationalized Domain Names (IDN) implementation
-net-dns/libidn2 0.16-r1 2.0.2 2.0.4: An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
+net-dns/libidn2 2.0.4: An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
 net-dns/maradns 2.0.09-r2: A security-aware DNS server
 net-dns/mdns-repeater 20110921: Multicast DNS repeater
 net-dns/mydns 1.2.8.31-r1: A DNS-Server which gets its data from a MySQL-/PostgreSQL-database
@@ -15603,7 +15603,7 @@ net-p2p/freenet 0.7.5_p1475-r2 0.7.5_p1478 0.7.5_p1478-r1: An encrypted network 
 net-p2p/gnut 0.4.28-r1: Text-mode gnutella client
 net-p2p/go-ethereum 1.5.5: Official golang implementation of the Ethereum protocol
 net-p2p/go-ipfs-bin 0.4.1 0.4.2 0.4.10 0.4.11: go-ipfs is the main implementation of IPFS.
-net-p2p/gtk-gnutella 1.1.11 1.1.11-r1 1.1.12: A GTK+ Gnutella client
+net-p2p/gtk-gnutella 1.1.11 1.1.11-r1 1.1.13: A GTK+ Gnutella client
 net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta files
 net-p2p/kmldonkey 2.0.7: Provides integration for the MLDonkey P2P software
 net-p2p/ktorrent 5.1.0: Powerful BitTorrent client based on KDE Frameworks
