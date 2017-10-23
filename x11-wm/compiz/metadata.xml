@@ -10,6 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
+		<flag name="compizconfig">Enable compizconfig support in gtk-window-decorator</flag>
 		<flag name="fuse">Enables support for the filesystem in userspace plugin through <pkg>sys-fs/fuse</pkg>.</flag>
 		<flag name="gsettings">Enable gsettings gwd support</flag>
 		<flag name="gtk">Build the gtk window decorator</flag>
