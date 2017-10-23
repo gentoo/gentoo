@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-USE_PHP="php7-0 php5-6"
+USE_PHP="php5-6 php7-0 php7-1"
 
 inherit php-ext-pecl-r3
 
@@ -15,5 +15,5 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE=""
 
-DEPEND=">=dev-db/cpp-driver-2.4.3"
+DEPEND=">=dev-db/cpp-driver-2.7.0"
 RDEPEND="${DEPEND}"
