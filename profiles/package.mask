@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Agostino Sarubbo <ago@gentoo.org> (23 Oct 2017)
+# It was a fresmee RDEPENDS. Freesmee has been removed since a while
+# so it is not a depend of any package. No upstream releases
+# Masked for removal in 30 days. Reference in bug #634536
+dev-util/ticpp
+
 # Lars Wendler <polynomial-c@gentoo.org> (23 Oct 2017)
 # Breaks a couple of reverse dependencies during runtime:
 # https://github.com/behdad/harfbuzz/issues/578
