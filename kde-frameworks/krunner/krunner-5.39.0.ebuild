@@ -27,3 +27,11 @@ DEPEND="
 RDEPEND="${DEPEND}
 	!<kde-apps/kapptemplate-15.12.3-r1:5
 "
+
+src_test() {
+	# requires virtual dbus #630672
+	local myctestargs=(
+		-E "(dbusrunnertest)"
+	)
+	kde5_src_test
+}

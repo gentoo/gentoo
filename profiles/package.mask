@@ -29,6 +29,54 @@
 
 #--- END OF EXAMPLES ---
 
+# Agostino Sarubbo <ago@gentoo.org> (23 Oct 2017)
+# It was a fresmee RDEPENDS. Freesmee has been removed since a while
+# so it is not a depend of any package. No upstream releases
+# Masked for removal in 30 days. Reference in bug #634536
+dev-util/ticpp
+
+# Lars Wendler <polynomial-c@gentoo.org> (23 Oct 2017)
+# Breaks a couple of reverse dependencies during runtime:
+# https://github.com/behdad/harfbuzz/issues/578
+# https://bugs.gentoo.org/635182
+=media-libs/harfbuzz-1.6.1
+
+# Robin H. Johnson <robbat2@gentoo.org> (22 Oct 2017)
+# Masking for testing, contains Fedora Hobbled-EC for USE=bindist
+=dev-libs/openssl-1.0.2l-r1
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (22 Oct 2017)
+# Broken with recent Perl (5.26) and not used by anything
+# in the Gentoo repository. Please uninstall.
+sys-devel/autoconf:2.59
+sys-devel/autoconf:2.61
+sys-devel/autoconf:2.62
+sys-devel/autoconf:2.63
+sys-devel/autoconf:2.64
+sys-devel/autoconf:2.65
+sys-devel/autoconf:2.67
+sys-devel/autoconf:2.68
+
+# Andreas Sturmlechner <asturm@gentoo.org> (22 Oct 2017)
+# Dead upstream, depends on dead kdelibs4/Qt4.
+# Masked for removal in 30 days. Bug #634388
+media-sound/kstreamripper
+
+# Andreas Sturmlechner <asturm@gentoo.org> (22 Oct 2017)
+# Dead upstream, depends on dead kdelibs4/Qt4.
+# Masked for removal in 30 days. Bug #634384
+kde-misc/kcollectd
+
+# Andreas Sturmlechner <asturm@gentoo.org> (22 Oct 2017)
+# Dead upstream, depends on dead kdelibs4/Qt4.
+# Masked for removal in 30 days. Bug #579518
+media-sound/kmid
+
+# Andreas Sturmlechner <asturm@gentoo.org> (22 Oct 2017)
+# Reverse-deps on dead, masked Qt4WebKit.
+# Masked for removal in 30 days. Bug #623928
+net-im/qutim
+
 # Kent Fredric <kentnl@gentoo.org> (21 Oct 2017)
 # Has not been usable since we cleaned the last Moose it worked on back
 # in 2012. Removal in 30 days. Bug #634938
@@ -96,7 +144,6 @@ dev-qt/qtwebkit:4
 <app-misc/sleepyhead-1.0.0_beta2
 <media-gfx/freecad-0.17_pre
 media-sound/google-musicmanager
-net-im/qutim
 net-misc/teamviewer
 net-voip/vidyodesktop
 <sci-libs/opencascade-7.0
@@ -269,17 +316,6 @@ kde-misc/kookie
 # much more advanced. Masked for removal in 30 days.
 media-sound/qtmpc
 
-# Andreas K. Huettel <dilfridge@gentoo.org> (23 Sep 2017)
-# Broken on Perl 5.26 (bug 623096), no fix in sight. No consumers.
-# Removal in 30 days.
-dev-perl/rpm-build-perl
-
-# Hans de Graaff <graaff@gentoo.org> (23 Sep 2017) Mask old
-# unmaintained slots for removal in 30 days. Upgrade to the newer
-# slots.
-dev-ruby/capybara:0
-dev-ruby/xpath:0
-
 # Michael Palimaka <kensington@gentoo.org> (21 Sep 2017)
 # Requires dead Qt 4. Dead upstream.
 # Masked for removal in 30 days.
@@ -295,12 +331,6 @@ dev-python/rope_py3k
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
 >=www-client/chromium-63
-
-# Kent Fredric <kentnl@gentoo.org> (18 Sep 2017)
-# Dead upstream, requires Module::Install. May be kept
-# if somebody can make an argument for it. Bug #631334
-# Masked for removal in 30 days.
-dev-perl/PerlIO-via-symlink
 
 # Andreas Sturmlechner <asturm@gentoo.org> (16 Sep 2017)
 # Unfortunately broken esp. with USE=python. Bugs #623780, #631064
