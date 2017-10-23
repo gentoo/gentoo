@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ EGIT_REPO_URI="https://github.com/keybase/kbfs.git"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
+IUSE="git"
 
 DEPEND="
 	>=dev-lang/go-1.6:0
@@ -37,8 +37,16 @@ src_compile() {
 		-tags production \
 		-o "${T}/kbfsfuse" \
 		github.com/keybase/kbfs/kbfsfuse
+	use git && \
+		GOPATH="${WORKDIR}" \
+			  go build -v -x \
+			  -tags production \
+			  -o "${T}/git-remote-keybase" \
+			  github.com/keybase/kbfs/kbfsgit/git-remote-keybase
 }
 
 src_install() {
 	dobin "${T}/kbfsfuse"
+	use git && \
+		dobin "${T}/git-remote-keybase"
 }
