@@ -8,4 +8,7 @@
 		The official Keybase implementation of the client-side code for the
 		Keybase filesystem (KBFS).
 	</longdescription>
+	<use>
+		<flag name="git">Build the Git remote helper for storing repositories in Keybase</flag>
+	</use>
 </pkgmetadata>
