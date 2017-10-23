@@ -48,7 +48,7 @@ DOCS=(
 
 src_configure() {
 	tc-export CC AR RANLIB
-	append-cflags -DMYSQL_SERVER_VERSION=99999999
+	append-cppflags -DMYSQL_SERVER_VERSION=99999999
 
 	econf \
 		$(use_enable 64bit) \
