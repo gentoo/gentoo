@@ -3,11 +3,11 @@
 
 EAPI=6
 
-inherit epatch qmake-utils gnome2-utils fdo-mime
+inherit epatch qmake-utils gnome2-utils xdg-utils
 
 DESCRIPTION="Cloth patternmaking software"
-HOMEPAGE="http://valentinaproject.bitbucket.org/"
-SRC_URI="https://bitbucket.org/dismine/valentina/get/v0.4.2.zip -> ${P}.zip"
+HOMEPAGE="https://valentina-project.org/"
+SRC_URI="https://github.com/valentina-project/vpo2/archive/v${PV}.zip -> ${P}.zip"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="gnome"
 
 # en_IN not supported in Gentoo so not added here
-LANGS="cs_CZ de_DE en_CA en_US es_ES fi_FI fr_FR he_IL id_ID it_IT nl_NL ro_RO ru_RU uk_UA"
+LANGS="cs_CZ de_DE el_GR en_CA en_US es_ES fi_FI fr_FR he_IL id_ID it_IT nl_NL pt_BR ro_RO ru_RU uk_UA zh_CN"
 
 for LANG in ${LANGS}; do
 	IUSE="${IUSE} linguas_${LANG}"
@@ -38,9 +38,9 @@ DEPEND="${CDEPEND}
 S=${WORKDIR}/dismine-${PN}-44d43351cb59
 
 src_prepare() {
-	epatch "${FILESDIR}/locales.patch" \
-		"${FILESDIR}/fix-insecure-runpaths.patch" \
-		"${FILESDIR}/disable-tests-compilation.patch"
+	epatch "${FILESDIR}/${PV}-locales.patch" \
+		"${FILESDIR}/${PV}-fix-insecure-runpaths.patch" \
+		"${FILESDIR}/${PV}-disable-tests-compilation.patch"
 
 	default
 }
@@ -60,7 +60,7 @@ src_configure() {
 src_install() {
 	emake install INSTALL_ROOT="${D}"
 
-	dodoc LICENSE_GPL.txt ChangeLog.txt README.txt
+	dodoc AUTHORS.txt ChangeLog.txt README.md
 
 	doman dist/debian/${PN}.1
 	doman dist/debian/tape.1
@@ -71,7 +71,8 @@ src_install() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 
 	if use gnome ; then
 		gnome2_icon_cache_update

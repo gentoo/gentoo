@@ -10,7 +10,7 @@ HOMEPAGE="http://rime.im/"
 SRC_URI="http://dl.bintray.com/lotem/rime/${P}.tar.gz"
 
 LICENSE="GPL-3"
-SLOT="0"
+SLOT="0/1"
 KEYWORDS="amd64 ~ppc ppc64 ~x86"
 IUSE="static-libs test"
 
