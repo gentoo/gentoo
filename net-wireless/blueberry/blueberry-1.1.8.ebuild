@@ -20,7 +20,10 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="${PYTHON_DEPS}
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	>=net-wireless/gnome-bluetooth-3.14[introspection]
-	net-wireless/rfkill
+	|| (
+		>=sys-apps/util-linux-2.31_rc1
+		net-wireless/rfkill
+	)
 	x11-misc/wmctrl"
 DEPEND="${RDEPEND}"
 
