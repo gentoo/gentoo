@@ -24,7 +24,10 @@ RDEPEND="${PYTHON_DEPS}
 	>=net-wireless/gnome-bluetooth-3.14[introspection]
 	net-wireless/bluez[obex]
 	net-wireless/bluez-tools
-	net-wireless/rfkill
+	|| (
+		>=sys-apps/util-linux-2.31_rc1
+		net-wireless/rfkill
+	)
 	x11-libs/libnotify[introspection]
 	x11-misc/wmctrl"
 DEPEND="${RDEPEND}"
