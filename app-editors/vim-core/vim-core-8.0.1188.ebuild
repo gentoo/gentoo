@@ -85,16 +85,12 @@ src_prepare() {
 			"${S}"/src/po/Makefile || die "sed failed"
 	fi
 
-	if version_is_at_least 7.3.122; then
-		cp -v "${S}"/src/config.mk.dist "${S}"/src/auto/config.mk || die "cp failed"
-	fi
+	cp -v "${S}"/src/config.mk.dist "${S}"/src/auto/config.mk || die "cp failed"
 
 	# Bug #378107 - Build properly with >=perl-core/ExtUtils-ParseXS-3.20.0
-	if version_is_at_least 7.3 ; then
-		sed -i -e \
-			"s:\\\$(PERLLIB)/ExtUtils/xsubpp:${EPREFIX}/usr/bin/xsubpp:" \
-			"${S}"/src/Makefile || die 'sed for ExtUtils-ParseXS failed'
-	fi
+	sed -i -e \
+		"s:\\\$(PERLLIB)/ExtUtils/xsubpp:${EPREFIX}/usr/bin/xsubpp:" \
+		"${S}"/src/Makefile || die 'sed for ExtUtils-ParseXS failed'
 
 	eapply_user
 }
