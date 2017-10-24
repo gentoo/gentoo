@@ -40,12 +40,6 @@
 # Masked for removal in 30 days. Reference in bug #634536
 dev-util/ticpp
 
-# Lars Wendler <polynomial-c@gentoo.org> (23 Oct 2017)
-# Breaks a couple of reverse dependencies during runtime:
-# https://github.com/behdad/harfbuzz/issues/578
-# https://bugs.gentoo.org/635182
-=media-libs/harfbuzz-1.6.1
-
 # Robin H. Johnson <robbat2@gentoo.org> (22 Oct 2017)
 # Masking for testing, contains Fedora Hobbled-EC for USE=bindist
 =dev-libs/openssl-1.0.2l-r1
