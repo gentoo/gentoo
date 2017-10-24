@@ -14,7 +14,7 @@ IUSE=""
 DEPEND="
 	=dev-python/twisted-core-${TWISTED_RELEASE}*[${PYTHON_USEDEP}]
 	dev-python/pyasn1[${PYTHON_USEDEP}]
-	dev-python/pycrypto[${PYTHON_USEDEP}]"
+	dev-python/pycryptodome[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}
 	!dev-python/twisted
 "
