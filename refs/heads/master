@@ -1,12 +1,17 @@
 certificate version 0.1
-pusher 0xA792A613 1508850958 +0200
-pushee git+ssh://git.gentoo.org/repo/gentoo
-nonce 1508850958-04c35b86a5f8e65eb69c
+pusher 0x74D9F74EEAC6A3B1 1508851021 +0200
+pushee git+ssh://git.gentoo.org/repo/gentoo.git
+nonce 1508851024-4db7c48ad84127cf354e
 
-7d20e25d23bbd09ad08f014f0c29e8a1ece6ed8f cba707ea3f9ccb11c68eb14f1e43b1bc3a3798ea refs/heads/master
+cba707ea3f9ccb11c68eb14f1e43b1bc3a3798ea 9922fc71d6d164a2cffb1697d56902b6b3ac1624 refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iF0EABECAB0WIQTGNWQvsnjji9bvHBhVaZGyp5KmEwUCWe89DgAKCRBVaZGyp5Km
-E10hAKCBZgpbxzgyokorqjwe2mDGFIPkmQCfZaQJr6WvO2jq/Svt2RVLM+Luroo=
-=quYH
+iQEzBAABCAAdFiEE9NJH0U9HSNCjLMHwdNn3TurGo7EFAlnvPU0ACgkQdNn3TurG
+o7GlFwgAhvM5Ai2Q2qDXs+SjPNh+xZyK5YQSNUnLmW2VoynJmRiIS2bN9eH5ssyb
+avcpLlmL+Dr0ozFqKWUyFIvVsvnTTerbEQN1gJyHwjv7PihpjgMGeNWsis5EZ/dX
+XWlAkrz/bessW1+vYTmDmt1P93WDSZDhlwYRzI+TFnWdcxwZ9x2ycaNdBVcbDeSh
+t8SdopxLelIZGLL8FdPvjIAsMInYkLlncyCJKe2y5Fb/rNVJL9Y36Umw4CGc4sCo
+qV2pXHhj2raNZA1I5iuYD9929ygwllXbPw7fB1ovlbnuwjKDziPMdd3cAUNo6J1S
+fy+ACWQSPh3QJBKDvaNaj9rSK1csyQ==
+=UNRX
 -----END PGP SIGNATURE-----
