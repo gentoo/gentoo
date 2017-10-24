@@ -7,6 +7,7 @@
   </maintainer>
   <upstream>
     <remote-id type="cpan">HTML-Formatter</remote-id>
+    <remote-id type="cpan-module">HTML::FormatMarkdown</remote-id>
     <remote-id type="cpan-module">HTML::FormatPS</remote-id>
     <remote-id type="cpan-module">HTML::FormatRTF</remote-id>
     <remote-id type="cpan-module">HTML::FormatText</remote-id>
