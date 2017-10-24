@@ -1,0 +1,28 @@
+From 07ed4ceef9d501d2ee455e589ae9075a9898ebdd Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Tue, 24 Oct 2017 17:40:13 +1300
+Subject: Fix t/13-errors.t failing w/o '.' in @INC
+
+Bug: https://bugs.gentoo.org/616966
+Bug: https://rt.cpan.org/Public/Bug/Display.html?id=121443
+Bug: https://github.com/houseabsolute/HTML-Mason/pull/6
+---
+ t/13-errors.t | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/t/13-errors.t b/t/13-errors.t
+index 716f2f02..78cfc6b0 100644
+--- a/t/13-errors.t
++++ b/t/13-errors.t
+@@ -417,7 +417,7 @@ EOF
+                       description => 'Require a module with an error in a once block',
+                       component => <<'EOF',
+ <%once>
+-require "t/lib/BadModule.pm";
++require "./t/lib/BadModule.pm";
+ </%once>
+ hi!
+ EOF
+-- 
+2.14.2
+
