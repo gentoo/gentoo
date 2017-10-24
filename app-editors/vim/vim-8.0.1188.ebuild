@@ -61,7 +61,7 @@ pkg_setup() {
 	export LC_COLLATE="C"
 
 	# Gnome sandbox silliness. bug #114475.
-	mkdir -p "${T}"/home
+	mkdir -p "${T}"/home || die "mkdir failed"
 	export HOME="${T}"/home
 
 	use python && python-single-r1_pkg_setup
@@ -74,17 +74,21 @@ src_prepare() {
 	fi
 
 	# Fixup a script to use awk instead of nawk
-	sed -i '1s|.*|#!'"${EPREFIX}"'/usr/bin/awk -f|' "${S}"/runtime/tools/mve.awk \
-		|| die "mve.awk sed failed"
+	sed -i -e \
+		'1s|.*|#!'"${EPREFIX}"'/usr/bin/awk -f|' \
+		"${S}"/runtime/tools/mve.awk || die "mve.awk sed failed"
 
 	# Read vimrc and gvimrc from /etc/vim
-	echo '#define SYS_VIMRC_FILE "'${EPREFIX}'/etc/vim/vimrc"' >> "${S}"/src/feature.h
-	echo '#define SYS_GVIMRC_FILE "'${EPREFIX}'/etc/vim/gvimrc"' >> "${S}"/src/feature.h
+	echo '#define SYS_VIMRC_FILE "'${EPREFIX}'/etc/vim/vimrc"' \
+		>> "${S}"/src/feature.h || die "echo failed"
+	echo '#define SYS_GVIMRC_FILE "'${EPREFIX}'/etc/vim/gvimrc"' \
+		>> "${S}"/src/feature.h || die "echo failed"
 
 	# Use exuberant ctags which installs as /usr/bin/exuberant-ctags.
 	# Hopefully this pattern won't break for a while at least.
 	# This fixes bug 29398 (27 Sep 2003 agriffis)
-	sed -i 's/\<ctags\("\| [-*.]\)/exuberant-&/g' \
+	sed -i -e \
+		's/\<ctags\("\| [-*.]\)/exuberant-&/g' \
 		"${S}"/runtime/doc/syntax.txt \
 		"${S}"/runtime/doc/tagsrch.txt \
 		"${S}"/runtime/doc/usr_29.txt \
@@ -94,17 +98,21 @@ src_prepare() {
 	# Don't be fooled by /usr/include/libc.h.  When found, vim thinks
 	# this is NeXT, but it's actually just a file in dev-libs/9libs
 	# This fixes bug 43885 (20 Mar 2004 agriffis)
-	sed -i 's/ libc\.h / /' "${S}"/src/configure.ac || die 'sed failed'
+	sed -i -e \
+		's/ libc\.h / /' \
+		"${S}"/src/configure.ac || die 'sed failed'
 
 	# gcc on sparc32 has this, uhm, interesting problem with detecting EOF
 	# correctly. To avoid some really entertaining error messages about stuff
 	# which isn't even in the source file being invalid, we'll do some trickery
 	# to make the error never occur. bug 66162 (02 October 2004 ciaranm)
-	find "${S}" -name '*.c' | while read c ; do echo >> "$c" ; done
+	find "${S}" -name '*.c' | while read c; do
+	    echo >> "$c" || die "echo failed"
+	done
 
 	# conditionally make the manpager.sh script
-	if use vim-pager ; then
-		cat <<-END > "${S}"/runtime/macros/manpager.sh
+	if use vim-pager; then
+		cat > "${S}"/runtime/macros/manpager.sh <<-_EOF_ || die "cat EOF failed"
 			#!/bin/sh
 			sed -e 's/\x1B\[[[:digit:]]\+m//g' | col -b | \\
 					vim \\
@@ -112,24 +120,21 @@ src_prepare() {
 						-c 'set nolist nomod ft=man ts=8' \\
 						-c 'let g:showmarks_enable=0' \\
 						-c 'runtime! macros/less.vim' -
-			END
+			_EOF_
 	fi
 
 	# Try to avoid sandbox problems. Bug #114475.
-	if [[ -d "${S}"/src/po ]] ; then
-		sed -i '/-S check.vim/s,..VIM.,ln -s $(VIM) testvim \; ./testvim -X,' \
-			"${S}"/src/po/Makefile
+	if [[ -d "${S}"/src/po ]]; then
+		sed -i -e \
+			'/-S check.vim/s,..VIM.,ln -s $(VIM) testvim \; ./testvim -X,' \
+			"${S}"/src/po/Makefile || die "sed failed"
 	fi
 
-	if version_is_at_least 7.3.122 ; then
-		cp "${S}"/src/config.mk.dist "${S}"/src/auto/config.mk
-	fi
+	cp -v "${S}"/src/config.mk.dist "${S}"/src/auto/config.mk || die "cp failed"
 
-	# Bug #378107 - Build properly with >=perl-core/ExtUtils-ParseXS-3.20.0
-	if version_is_at_least 7.3 ; then
-		sed -i "s:\\\$(PERLLIB)/ExtUtils/xsubpp:${EPREFIX}/usr/bin/xsubpp:"	\
-			"${S}"/src/Makefile || die 'sed for ExtUtils-ParseXS failed'
-	fi
+	sed -i -e \
+		"s:\\\$(PERLLIB)/ExtUtils/xsubpp:${EPREFIX}/usr/bin/xsubpp:" \
+		"${S}"/src/Makefile || die 'sed for ExtUtils-ParseXS failed'
 
 	eapply_user
 }
@@ -152,16 +157,18 @@ src_configure() {
 	# (3) Notice auto/configure is newer than auto/config.mk
 	# (4) Run ./configure (with wrong args) to remake auto/config.mk
 	sed -i 's# auto/config\.mk:#:#' src/Makefile || die "Makefile sed failed"
-	rm -f src/auto/configure
+	rm src/auto/configure || die "rm failed"
 	emake -j1 -C src autoconf
 
 	# This should fix a sandbox violation (see bug 24447). The hvc
 	# things are for ppc64, see bug 86433.
-	for file in /dev/pty/s* /dev/console /dev/hvc/* /dev/hvc* ; do
-		[[ -e ${file} ]] && addwrite $file
+	for file in /dev/pty/s* /dev/console /dev/hvc/* /dev/hvc*; do
+		if [[ -e "${file}" ]]; then
+			addwrite $file
+		fi
 	done
 
-	if use minimal ; then
+	if use minimal; then
 		myconf=(
 			--with-features=tiny
 			--disable-nls
@@ -204,9 +211,9 @@ src_configure() {
 
 		# --with-features=huge forces on cscope even if we --disable it. We need
 		# to sed this out to avoid screwiness. (1 Sep 2004 ciaranm)
-		if ! use cscope ; then
-			sed -i '/# define FEAT_CSCOPE/d' src/feature.h || \
-				die "couldn't disable cscope"
+		if ! use cscope; then
+			sed -i -e \
+				'/# define FEAT_CSCOPE/d' src/feature.h || die "sed failed"
 		fi
 
 		# don't test USE=X here ... see bug #19115
@@ -237,14 +244,14 @@ src_compile() {
 }
 
 src_test() {
-	echo
+	einfo
 	einfo "Starting vim tests. Several error messages will be shown"
 	einfo "while the tests run. This is normal behaviour and does not"
 	einfo "indicate a fault."
-	echo
+	einfo
 	ewarn "If the tests fail, your terminal may be left in a strange"
 	ewarn "state. Usually, running 'reset' will fix this."
-	echo
+	einfo
 
 	# Don't let vim talk to X
 	unset DISPLAY
@@ -264,20 +271,20 @@ update_vim_symlinks() {
 
 	# Make or remove convenience symlink, vim -> gvim
 	if [[ -f "${EROOT}"/usr/bin/gvim ]]; then
-		ln -s gvim "${EROOT}"/usr/bin/vim 2>/dev/null
+		ln -s gvim "${EROOT}"/usr/bin/vim 2>/dev/null || die "ln failed"
 	elif [[ -L "${EROOT}"/usr/bin/vim && ! -f "${EROOT}"/usr/bin/vim ]]; then
-		rm "${EROOT}"/usr/bin/vim
+		rm "${EROOT}"/usr/bin/vim || die "rm vim failed"
 	fi
 
 	# Make or remove convenience symlinks to vim
 	if [[ -f "${EROOT}"/usr/bin/vim ]]; then
 		for f in ${syms}; do
-			ln -s vim "${EROOT}"/usr/bin/${f} 2>/dev/null
+			ln -s vim "${EROOT}"/usr/bin/${f} 2>/dev/null || die
 		done
 	else
 		for f in ${syms}; do
 			if [[ -L "${EROOT}"/usr/bin/${f} && ! -f "${EROOT}"/usr/bin/${f} ]]; then
-				rm -f "${EROOT}"/usr/bin/${f}
+				rm "${EROOT}"/usr/bin/${f} || die
 			fi
 		done
 	fi
@@ -310,7 +317,7 @@ src_install() {
 
 	# We shouldn't be installing the ex or view man page symlinks, as they
 	# are managed by eselect-vi
-	rm -f "${ED}"/usr/share/man/man1/{ex,view}.1
+	rm "${ED}"/usr/share/man/man1/{ex,view}.1 || die
 }
 
 pkg_postinst() {
