@@ -1,0 +1,9 @@
+--- a/Tribler/Main/Build/Ubuntu/tribler.desktop	2017-09-20 14:07:54.513826849 -0400
++++ b/Tribler/Main/Build/Ubuntu/tribler.desktop	2017-09-20 14:09:04.462821710 -0400
+@@ -5,5 +5,5 @@
+ Icon=tribler
+ Terminal=false
+ Type=Application
+-Categories=Application;Network;P2P
++Categories=Network;P2P
+ MimeType=x-scheme-handler/ppsp;x-scheme-handler/tswift;x-scheme-handler/magnet;application/x-bittorrent

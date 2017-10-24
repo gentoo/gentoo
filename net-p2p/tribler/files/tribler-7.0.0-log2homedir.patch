@@ -1,0 +1,14 @@
+--- a/debian/bin/tribler	2017-09-20 14:04:08.150843481 -0400
++++ b/debian/bin/tribler	2017-09-20 14:03:57.958844230 -0400
+@@ -1,7 +1,9 @@
+ #!/bin/sh
+-# Startup script for Ubuntu Linux
++# Startup script for Gentoo
+ 
+ echo "Starting Tribler..."
+ 
+ cd "/usr/share/tribler"
+-exec /usr/bin/python2.7 run_tribler.py "$@" > `mktemp /tmp/$USER-tribler-XXXXXXXX.log` 2>&1
++STATEDIR="$HOME/.Tribler"
++[ ! -d $STATEDIR ] && mkdir -p $STATEDIR
++exec /usr/bin/python2.7 run_tribler.py "$@" > $STATEDIR/tribler.log 2>&1
