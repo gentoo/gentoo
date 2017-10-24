@@ -20,8 +20,9 @@ IUSE="cpu_flags_x86_sse2 debug doc icu +npm +snapshot +ssl systemtap test"
 
 RDEPEND="icu? ( >=dev-libs/icu-56:= )
 	npm? ( ${PYTHON_DEPS} )
-	>=net-libs/http-parser-2.6.2:=
-	>=dev-libs/libuv-1.11.0:=
+	>=net-libs/http-parser-2.7.0:=
+	>=dev-libs/libuv-1.15.0:=
+	>=net-libs/nghttp2-1.25.0
 	>=dev-libs/openssl-1.0.2g:0=[-bindist]
 	sys-libs/zlib"
 DEPEND="${RDEPEND}
@@ -34,6 +35,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 PATCHES=(
 	"${FILESDIR}"/gentoo-global-npm-config.patch
+	"${FILESDIR}"/nodejs-8.7.0-shared-nghttp2.patch
 )
 
 pkg_pretend() {
@@ -87,7 +89,7 @@ src_prepare() {
 
 src_configure() {
 	local myarch=""
-	local myconf=( --shared-openssl --shared-libuv --shared-http-parser --shared-zlib )
+	local myconf=( --shared-http-parser --shared-libuv --shared-nghttp2 --shared-openssl --shared-zlib )
 	use npm || myconf+=( --without-npm )
 	use icu && myconf+=( --with-intl=system-icu )
 	use snapshot && myconf+=( --with-snapshot )
