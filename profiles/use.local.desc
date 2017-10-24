@@ -7357,6 +7357,7 @@ sci-mathematics/why3-for-spark:html - Build HTML documentation
 sci-mathematics/why3-for-spark:hypothesis-selection - Enable hypothesis selection
 sci-mathematics/why3-for-spark:profiling - Enable profiling
 sci-mathematics/why3-for-spark:zarith - Use dev-ml/zarith
+sci-mathematics/why3-for-spark:zip - Enable compression of session files
 sci-mathematics/yacas:doc - Generate HTML documentation
 sci-mathematics/yacas:gui - Build graphical interface for the native yacas engine. Requires Qt5
 sci-mathematics/yacas:java - Build the Java yacas engine and text console for it
