@@ -51,7 +51,6 @@ DEPEND="
 	>=virtual/perl-Getopt-Long-2.24
 	>=virtual/perl-Locale-Maketext-1.06
 	>=virtual/perl-Storable-2.08
-	dev-perl/Business-Hours
 	dev-perl/CGI-Emulate-PSGI
 	dev-perl/CGI-PSGI
 	dev-perl/Cache-Simple-TimedExpiry
@@ -60,8 +59,6 @@ DEPEND="
 	dev-perl/Crypt-Eksblowfish
 	dev-perl/Crypt-SSLeay
 	dev-perl/Crypt-X509
-	dev-perl/CSS-Minifier-XS
-	dev-perl/Data-Page-Pageset
 	dev-perl/DBD-SQLite
 	dev-perl/Data-GUID
 	dev-perl/Data-ICal
@@ -76,7 +73,7 @@ DEPEND="
 	dev-perl/GD[png,gif]
 	dev-perl/GnuPG-Interface
 	dev-perl/GraphViz
-	dev-perl/HTML-Format
+	dev-perl/HTML-Formatter
 	dev-perl/HTML-FormatText-WithLinks-AndTables
 	dev-perl/HTML-Mason-PSGIHandler
 	dev-perl/HTML-Parser
@@ -85,7 +82,7 @@ DEPEND="
 	dev-perl/HTML-Tree
 	dev-perl/IPC-Run3
 	dev-perl/JSON
-	dev-perl/JavaScript-Minifier-XS
+	dev-perl/JavaScript-Minifier
 	dev-perl/MIME-Types
 	dev-perl/Module-Refresh
 	dev-perl/Mozilla-CA
@@ -94,7 +91,6 @@ DEPEND="
 	dev-perl/Plack
 	dev-perl/Regexp-Common-net-CIDR
 	dev-perl/Regexp-IPv6
-	dev-perl/Scope-Upper
 	dev-perl/Starlet
 	dev-perl/String-ShellQuote
 	dev-perl/TermReadKey
@@ -105,7 +101,6 @@ DEPEND="
 	dev-perl/UNIVERSAL-require
 	dev-perl/libwww-perl
 	dev-perl/Locale-Maketext-Fuzzy
-	dev-perl/Net-IP
 	dev-perl/Net-Server
 	dev-perl/Regexp-Common
 	dev-perl/Text-Template
