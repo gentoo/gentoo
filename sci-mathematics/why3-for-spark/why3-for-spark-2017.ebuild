@@ -67,6 +67,8 @@ src_compile() {
 src_install() {
 	default
 	emake DESTDIR="${D}" install_spark2014_dev
+	docompress -x /usr/share/doc/${PF}/examples
+	dodoc -r examples
 	if use doc; then
 		dodoc doc/manual.pdf
 		use html && dodoc -r doc/html
