@@ -38,7 +38,7 @@ src_prepare() {
 	cmake-utils_src_prepare
 
 	# remove bad CFLAGS that upstream is trying to add
-	sed -i -e '/FLAGS.*-Werror/d' CMakeLists.txt || die
+	sed -i -e '/add_compile_options/s/-Werror//' CMakeLists.txt || die
 }
 
 src_configure() {
