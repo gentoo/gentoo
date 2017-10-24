@@ -3,12 +3,12 @@
 
 EAPI=6
 
-inherit git-r3 qmake-utils gnome2-utils xdg-utils
+inherit mercurial qmake-utils gnome2-utils xdg-utils
 
 DESCRIPTION="Cloth patternmaking software"
-HOMEPAGE="https://valentina-project.org/"
-EGIT_REPO_URI="https://github.com/valentina-project/vpo2.git"
-EGIT_BRANCH="develop"
+HOMEPAGE="https://valentinaproject.bitbucket.io/"
+EHG_REPO_URI="https://bitbucket.org/dismine/valentina"
+EHG_REVISION="develop"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -50,7 +50,7 @@ src_configure() {
 src_install() {
 	emake install INSTALL_ROOT="${D}"
 
-	dodoc AUTHORS.txt ChangeLog.txt README.md
+	dodoc AUTHORS.txt ChangeLog.txt README.txt
 
 	doman dist/debian/${PN}.1
 	doman dist/debian/tape.1
