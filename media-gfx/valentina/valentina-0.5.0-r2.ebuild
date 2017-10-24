@@ -3,11 +3,13 @@
 
 EAPI=6
 
-inherit epatch qmake-utils gnome2-utils xdg-utils
+inherit qmake-utils gnome2-utils xdg-utils epatch
 
 DESCRIPTION="Cloth patternmaking software"
-HOMEPAGE="https://valentina-project.org/"
-SRC_URI="https://github.com/valentina-project/vpo2/archive/v${PV}.zip -> ${P}.zip"
+HOMEPAGE="https://valentinaproject.bitbucket.io/"
+SRC_URI="https://bitbucket.org/dismine/${PN}/get/v${PV}.zip -> ${P}.zip
+	https://bitbucket.org/dismine/${PN}/commits/d78ca13c4891ccf3542b0704a7d66af0f9b02938/raw -> valentina-4798.patch
+	https://bitbucket.org/dismine/${PN}/commits/98e869c4146204ef31822087fa826cfa1cd7e0f4/raw -> valentina-4802.patch"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -35,12 +37,11 @@ RDEPEND="${CDEPEND}"
 DEPEND="${CDEPEND}
 	app-arch/unzip"
 
-S=${WORKDIR}/dismine-${PN}-44d43351cb59
+S=${WORKDIR}/dismine-${PN}-31c95eadca8b
 
 src_prepare() {
-	epatch "${FILESDIR}/${PV}-locales.patch" \
-		"${FILESDIR}/${PV}-fix-insecure-runpaths.patch" \
-		"${FILESDIR}/${PV}-disable-tests-compilation.patch"
+	epatch "${DISTDIR}/${PN}-4798.patch" \
+		"${DISTDIR}/${PN}-4802.patch"
 
 	default
 }
@@ -60,7 +61,7 @@ src_configure() {
 src_install() {
 	emake install INSTALL_ROOT="${D}"
 
-	dodoc AUTHORS.txt ChangeLog.txt README.md
+	dodoc AUTHORS.txt ChangeLog.txt README.txt
 
 	doman dist/debian/${PN}.1
 	doman dist/debian/tape.1
