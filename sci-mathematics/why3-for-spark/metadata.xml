@@ -23,5 +23,6 @@
 		<flag name="hypothesis-selection">Enable hypothesis selection</flag>
 		<flag name="profiling">Enable profiling</flag>
 		<flag name="zarith">Use <pkg>dev-ml/zarith</pkg></flag>
+		<flag name="zip">Enable compression of session files</flag>
 	</use>
 </pkgmetadata>
