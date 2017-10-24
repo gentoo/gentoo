@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-perl/Gtk2 >=media-gfx/gtkimageview-1.6.3 dev-perl/glib-perl >=dev-perl/ExtUtils-Depends-0.300 >=dev-perl/ExtUtils-PkgConfig-1.030 dev-lang/perl:= test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DESCRIPTION=Perl binding for the GtkImageView image viewer widget
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Gtk2-ImageView/
+IUSE=examples test
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-3
+RDEPEND=dev-perl/Gtk2 >=media-gfx/gtkimageview-1.6.3 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/R/RA/RATCLIFFE/Gtk2-ImageView-0.05.tar.gz
+_eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011	virtualx	171580f737f5aaf18fcb456548588066
+_md5_=c6d6e4137f052ee79a69ef2f4aaae38e

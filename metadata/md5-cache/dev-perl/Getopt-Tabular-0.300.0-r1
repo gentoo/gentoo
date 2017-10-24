@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-lang/perl:=
+DESCRIPTION=Table-driven argument parsing with help text
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Getopt-Tabular/
+IUSE=examples
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/G/GW/GWARD/Getopt-Tabular-0.3.tar.gz
+_eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=a198f4730e6d5bd12877b714cd9e4765
