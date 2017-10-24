@@ -14,6 +14,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
+RESTRICT="test"
 
 CDEPEND="
 	dev-python/jinja[${PYTHON_USEDEP}]
@@ -26,8 +27,6 @@ CDEPEND="
 	dev-python/jsonschema[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 "
-#	dev-python/prettytable[${PYTHON_USEDEP}]
-#	dev-python/cheetah[$(python_gen_usedep 'python2_7')]
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
@@ -40,9 +39,6 @@ DEPEND="
 		dev-python/contextlib2[${PYTHON_USEDEP}]
 	)
 "
-#		dev-python/pep8[${PYTHON_USEDEP}]
-#		dev-python/flake8[${PYTHON_USEDEP}]
-#		dev-python/hacking[${PYTHON_USEDEP}]
 RDEPEND="
 	${CDEPEND}
 	net-analyzer/macchanger
