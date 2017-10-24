@@ -1,0 +1,11 @@
+DEFINED_PHASES=-
+DESCRIPTION=Merge this to pull in all Plasma 5 packages
+EAPI=6
+HOMEPAGE=https://www.kde.org/workspaces/plasmadesktop/
+IUSE=bluetooth crypt +display-manager grub gtk +handbook networkmanager pam plymouth pulseaudio +sddm sdk +wallpapers
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=metapackage
+RDEPEND=>=kde-plasma/breeze-5.11.2:5 >=kde-plasma/drkonqi-5.11.2:5 >=kde-plasma/kactivitymanagerd-5.11.2:5 >=kde-plasma/kde-cli-tools-5.11.2:5 >=kde-plasma/kdecoration-5.11.2:5 >=kde-plasma/kdeplasma-addons-5.11.2:5 >=kde-plasma/kgamma-5.11.2:5 >=kde-plasma/khotkeys-5.11.2:5 >=kde-plasma/kinfocenter-5.11.2:5 >=kde-plasma/kmenuedit-5.11.2:5 >=kde-plasma/kscreen-5.11.2:5 >=kde-plasma/kscreenlocker-5.11.2:5 >=kde-plasma/ksshaskpass-5.11.2:5 >=kde-plasma/ksysguard-5.11.2:5 >=kde-plasma/kwayland-integration-5.11.2:5 >=kde-plasma/kwin-5.11.2:5 >=kde-plasma/kwrited-5.11.2:5 >=kde-plasma/libkscreen-5.11.2:5 >=kde-plasma/libksysguard-5.11.2:5 >=kde-plasma/milou-5.11.2:5 >=kde-plasma/oxygen-5.11.2:5 >=kde-plasma/plasma-desktop-5.11.2:5 >=kde-plasma/plasma-integration-5.11.2:5 >=kde-plasma/plasma-workspace-5.11.2:5 >=kde-plasma/polkit-kde-agent-5.11.2:5 >=kde-plasma/powerdevil-5.11.2:5 >=kde-plasma/systemsettings-5.11.2:5 >=kde-plasma/user-manager-5.11.2:5 bluetooth? ( >=kde-plasma/bluedevil-5.11.2:5 ) crypt? ( >=kde-plasma/plasma-vault-5.11.2:5 ) display-manager? ( sddm? ( >=kde-plasma/sddm-kcm-5.11.2:5 x11-misc/sddm ) !sddm? ( x11-misc/lightdm ) ) grub? ( >=kde-plasma/breeze-grub-5.11.2:5 ) gtk? ( >=kde-plasma/breeze-gtk-5.11.2:5 >=kde-plasma/kde-gtk-config-5.11.2:5 ) handbook? ( >=kde-apps/khelpcenter-14.12.0:5 ) networkmanager? ( >=kde-plasma/plasma-nm-5.11.2:5 ) pam? ( >=kde-plasma/kwallet-pam-5.11.2:5 ) plymouth? ( >=kde-plasma/breeze-plymouth-5.11.2:5 >=kde-plasma/plymouth-kcm-5.11.2:5 ) pulseaudio? ( >=kde-plasma/plasma-pa-5.11.2:5 ) sdk? ( >=kde-plasma/plasma-sdk-5.11.2:5 ) wallpapers? ( >=kde-plasma/plasma-workspace-wallpapers-5.11.2:5 )
+SLOT=5
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	kde5-functions	48ad3d5429e273ff79fa3fef2572d679	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=d988fd5a2f2b88b49c0a0de4f1c1a763
