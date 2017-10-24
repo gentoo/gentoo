@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit webapp
@@ -45,7 +45,7 @@ RDEPEND="
 	dev-perl/Date-Manip
 	dev-perl/Text-CSV_XS
 	dev-perl/HTML-Tree
-	dev-perl/HTML-Format
+	dev-perl/HTML-Formatter
 	dev-perl/Data-ShowTable
 "
 
