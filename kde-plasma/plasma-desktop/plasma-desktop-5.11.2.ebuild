@@ -130,10 +130,9 @@ RDEPEND="${COMMON_DEPEND}
 REQUIRED_USE="legacy-systray? ( || ( gtk2 gtk3 qt4 ) ) gtk2? ( legacy-systray ) gtk3? ( legacy-systray )"
 
 pkg_setup() {
+	kde5_pkg_setup
 	if has_version net-im/skype && use legacy-systray && use amd64; then
-		einfo
 		elog "You need to install dev-libs/sni-qt[abi_x86_32] as skype is a 32-bit binary."
-		einfo
 	fi
 }
 

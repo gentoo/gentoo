@@ -39,7 +39,7 @@ RDEPEND="${COMMON_DEPEND}
 	!<kde-plasma/plasma-workspace-5.10.95:5
 "
 
-PATCHES=( "${FILESDIR}/${P}-x11.patch" )
+PATCHES=( "${FILESDIR}/${PN}-5.11.1-x11.patch" )
 
 src_configure() {
 	local mycmakeargs=(
