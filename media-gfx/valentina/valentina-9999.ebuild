@@ -3,11 +3,10 @@
 
 EAPI=6
 
-inherit mercurial qmake-utils gnome2-utils fdo-mime
+inherit mercurial qmake-utils gnome2-utils xdg-utils
 
 DESCRIPTION="Cloth patternmaking software"
-HOMEPAGE="http://valentinaproject.bitbucket.org/"
-SRC_URI=""
+HOMEPAGE="https://valentinaproject.bitbucket.io/"
 EHG_REPO_URI="https://bitbucket.org/dismine/valentina"
 EHG_REVISION="develop"
 
@@ -51,7 +50,7 @@ src_configure() {
 src_install() {
 	emake install INSTALL_ROOT="${D}"
 
-	dodoc LICENSE_GPL.txt ChangeLog.txt README.txt
+	dodoc AUTHORS.txt ChangeLog.txt README.txt
 
 	doman dist/debian/${PN}.1
 	doman dist/debian/tape.1
@@ -62,7 +61,8 @@ src_install() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 
 	if use gnome ; then
 		gnome2_icon_cache_update

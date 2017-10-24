@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils user cmake-utils gnome2-utils pam versionator fdo-mime java-pkg-2 pax-utils qmake-utils
+inherit eutils user cmake-utils gnome2-utils pam versionator xdg-utils java-pkg-2 pax-utils qmake-utils
 
 # TODO
 # * package gin and gwt
@@ -217,7 +217,7 @@ src_install() {
 	dodir /etc/rstudio
 	insinto /etc/rstudio
 	doins "${FILESDIR}"/rsession.conf
-	dosym /etc/conf.d/rstudio-server.conf /etc/rstudio/rserver.conf
+	dosym ../conf.d/rstudio-server.conf /etc/rstudio/rserver.conf
 	if use dedicated || use server; then
 		dopamd src/cpp/server/extras/pam/rstudio
 		newinitd "${FILESDIR}"/rstudio-server.initd rstudio-server
@@ -230,8 +230,8 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	use dedicated || { fdo-mime_desktop_database_update
-		fdo-mime_mime_database_update
+	use dedicated || { xdg-util_desktop_database_update
+		xdg-util_mime_database_update
 		gnome2_icon_cache_update ;}
 
 	if use dedicated || use server; then
@@ -241,7 +241,7 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	use dedicated || { fdo-mime_desktop_database_update
-		fdo-mime_mime_database_update
+	use dedicated || { xdg-util_desktop_database_update
+		xdg-util_mime_database_update
 		gnome2_icon_cache_update ;}
 }
