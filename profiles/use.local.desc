@@ -2843,6 +2843,31 @@ dev-util/cwdiff:a2ps - install app-text/a2ps for postscript output
 dev-util/cwdiff:mercurial - install hg wdiff alias for dev-vcs/mercurial
 dev-util/devhelp:gedit - Install plugin for app-editors/gedit
 dev-util/dialog:minimal - Disable library, install command-line program only
+dev-util/diffoscope:R - Use dev-lang/R
+dev-util/diffoscope:binutils - Use sys-devel/binutils
+dev-util/diffoscope:colord - Use x11-misc/colord
+dev-util/diffoscope:cpio - Use app-arch/cpio
+dev-util/diffoscope:diff - Use sys-apps/diffutils
+dev-util/diffoscope:docx - Use app-text/docx2txt
+dev-util/diffoscope:dtc - Use sys-apps/dtc
+dev-util/diffoscope:e2fsprogs - Use sys-fs/e2fsprogs
+dev-util/diffoscope:file - Use sys-apps/file
+dev-util/diffoscope:find - Use sys-apps/findutils
+dev-util/diffoscope:gettext - Use sys-devel/gettext
+dev-util/diffoscope:gpg - Use app-crypt/gnupg
+dev-util/diffoscope:haskell - Use dev-lang/ghc
+dev-util/diffoscope:hex - Use app-editors/vim-core
+dev-util/diffoscope:iso - Use virtual/cdrtools
+dev-util/diffoscope:llvm - Use sys-devel/llvm
+dev-util/diffoscope:opendocument - Use app-text/odt2txt
+dev-util/diffoscope:pascal - Use dev-lang/fpc
+dev-util/diffoscope:rpm - Use app-arch/rpm
+dev-util/diffoscope:squashfs - Use sys-fs/squashfs-tools
+dev-util/diffoscope:ssh - Use net-misc/openssh
+dev-util/diffoscope:tar - Use app-arch/tar
+dev-util/diffoscope:tcpdump - Use net-analyzer/tcpdump
+dev-util/diffoscope:xz - Use app-arch/xz-utils
+dev-util/diffoscope:zip - Use app-arch/unzip
 dev-util/edb-debugger:graphviz - Add support for the Graphviz library
 dev-util/edb-debugger:legacy-mem-write - Probe if writes to /proc/PID/mem are broken.
 dev-util/edb-debugger:pax_kernel - Enable building under a PaX enabled kernel

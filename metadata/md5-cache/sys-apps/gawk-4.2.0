@@ -10,4 +10,4 @@ RDEPEND=dev-libs/gmp:0= mpfr? ( dev-libs/mpfr:0= ) readline? ( sys-libs/readline
 SLOT=0
 SRC_URI=mirror://gnu/gawk/gawk-4.2.0.tar.xz
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=3fb18e884c759742386bbe388754eb82
+_md5_=7a78e0fdca8d85e9891a7084bd7ac218

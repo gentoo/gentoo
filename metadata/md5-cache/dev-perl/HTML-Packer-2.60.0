@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-perl/CSS-Packer-2.10.0 >=dev-perl/JavaScript-Packer-2.10.0 >=dev-perl/Regexp-RegGrp-1.1.1_rc virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-Test-Simple ) dev-lang/perl:=
+DESCRIPTION=Another HTML code cleaner
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/HTML-Packer/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=dev-perl/CSS-Packer-2.10.0 >=dev-perl/JavaScript-Packer-2.10.0 >=dev-perl/Regexp-RegGrp-1.1.1_rc dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/L/LE/LEEJO/HTML-Packer-2.06.tar.gz
+_eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=c5a2505e6c84a13da0b79ee74a71e967

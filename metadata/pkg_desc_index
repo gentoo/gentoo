@@ -122,7 +122,7 @@ app-admin/integrit 4.0 4.1-r1: file integrity verification program
 app-admin/jinit 0.1.12-r1: An alternative to sysvinit which supports the need(8) concept
 app-admin/keepass 2.36 2.37: A free, open source, light-weight and easy-to-use password manager
 app-admin/keepassx 0.4.4 2.0.2-r1 2.0.3: Qt password manager compatible with its Win32 and Pocket PC versions
-app-admin/keepassxc 2.1.4-r1 2.2.1-r1 9999: KeePassXC - KeePass Cross-platform Community Edition
+app-admin/keepassxc 2.1.4-r1 2.2.1-r1 2.2.2 9999: KeePassXC - KeePass Cross-platform Community Edition
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/kpcli 3.0 3.1: A command line interface to KeePass database files
 app-admin/lastpass-binary-component 4.1.44: Binary component required by the LastPass Password Manager browser extension
@@ -258,7 +258,7 @@ app-arch/createrepo 0.10.4: Creates a common rpm-metadata repository
 app-arch/deb2targz 1-r2: Convert a .deb file to a .tar.gz archive
 app-arch/defluff 0.3.2: deflate huffman optimizer
 app-arch/deltarpm 3.6: tools to create and apply deltarpms
-app-arch/dpkg 1.17.26 1.18.18 1.18.23 1.18.24: Package maintenance system for Debian
+app-arch/dpkg 1.17.26 1.18.18 1.18.24 1.19.0.4: Package maintenance system for Debian
 app-arch/duff 0.5.2: Command-line utility for quickly finding duplicates in a given set of files
 app-arch/dump 0.4.46: Dump/restore ext2fs backup utilities
 app-arch/engrampa 1.12.0-r1 1.12.0-r2 1.14.1-r1 1.16.0-r2 1.18.1: Engrampa archive manager for MATE
@@ -1052,7 +1052,7 @@ app-editors/ne 3.0.1 3.0.1-r1: the nice editor, easy to use for the beginner and
 app-editors/nedit 5.6-r1: Multi-purpose text editor for the X Window System
 app-editors/neovim 0.1.0 0.1.1-r1 0.1.2 0.1.3 0.1.4 0.1.5 0.1.5-r1 0.1.6 0.1.7 0.2.0 9999: Vim-fork focused on extensibility and agility.
 app-editors/ng 1.5_beta1-r2: Emacs like micro editor Ng -- based on mg2a
-app-editors/notepadqq 1.0.1: Notepad++-like editor for Linux
+app-editors/notepadqq 1.0.1 1.2.0: Notepad++-like editor for Linux
 app-editors/nvi 1.81.6-r7: Vi clone
 app-editors/padre 1.0.0 1.0.0-r1: Perl Application Development and Refactoring Environment
 app-editors/pluma 1.12.2-r1 1.14.1 1.16.0-r1 1.18.2: Pluma text editor for the MATE desktop
@@ -6011,18 +6011,18 @@ dev-perl/HTML-LinkExtractor 0.130.0-r1: A bare-bone HTML parser, similar to HTML
 dev-perl/HTML-Mason 1.560.0: A HTML development and delivery Perl Module
 dev-perl/HTML-Mason-PSGIHandler 0.530.0: PSGI handler for HTML::Mason
 dev-perl/HTML-Object 2.29-r2: A HTML development and delivery Perl Module
-dev-perl/HTML-Packer 2.50.0: Another HTML code cleaner
+dev-perl/HTML-Packer 2.50.0 2.60.0: Another HTML code cleaner
 dev-perl/HTML-Parser 3.710.0-r1 3.720.0: Parse <HEAD> section of HTML documents
 dev-perl/HTML-Quoted 0.40.0: Extract structure of quoted HTML mail message
 dev-perl/HTML-RewriteAttributes 0.50.0-r1: Perl module for concise attribute rewriting
-dev-perl/HTML-Scrubber 0.150.0: Perl extension for scrubbing/sanitizing html
+dev-perl/HTML-Scrubber 0.150.0 0.170.0: Perl extension for scrubbing/sanitizing html
 dev-perl/HTML-SimpleParse 0.120.0-r1: A bare-bones HTML parser, similar to HTML::Parser
-dev-perl/HTML-Strip 2.90.0: Extension for stripping HTML markup from text
+dev-perl/HTML-Strip 2.90.0 2.100.0: Extension for stripping HTML markup from text
 dev-perl/HTML-StripScripts 1.60.0: Strip scripting constructs out of HTML
 dev-perl/HTML-StripScripts-Parser 1.30.0: XSS filter using HTML::Parser
 dev-perl/HTML-Table 2.08a-r1: produces HTML tables
 dev-perl/HTML-TableContentParser 0.130.0: Parse the content of tables in HTML
-dev-perl/HTML-TableExtract 2.130.0: The Perl Table-Extract Module
+dev-perl/HTML-TableExtract 2.130.0 2.150.0: The Perl Table-Extract Module
 dev-perl/HTML-TableParser 0.420.0: Extract data from an HTML table
 dev-perl/HTML-TagFilter 1.30.0: A fine-grained html-filter, xss-blocker and mailto-obfuscator
 dev-perl/HTML-Tagset 3.200.0-r1: Data tables useful in parsing HTML
@@ -6031,18 +6031,18 @@ dev-perl/HTML-Template-Expr 0.70.0-r1: HTML::Template extension adding expressio
 dev-perl/HTML-Template-JIT 0.50.0-r1: a just-in-time compiler for HTML::Template
 dev-perl/HTML-Template-Pro 0.951.0: Perl/XS module to use HTML Templates from CGI scripts
 dev-perl/HTML-TokeParser-Simple 3.160.0-r1: Easy to use HTML::TokeParser interface
-dev-perl/HTML-Tree 5.60.0: A library to manage HTML-Tree in PERL
+dev-perl/HTML-Tree 5.60.0 5.70.0: A library to manage HTML-Tree in PERL
 dev-perl/HTTP-Body 1.220.0: HTTP Body Parser
-dev-perl/HTTP-BrowserDetect 1.500.0 1.770.0 2.40.0 2.80.0: Determine Web browser, version, and platform from an HTTP user agent string
+dev-perl/HTTP-BrowserDetect 1.500.0 1.770.0 2.40.0 2.80.0 3.140.0: Determine Web browser, version, and platform from an HTTP user agent string
 dev-perl/HTTP-Cache-Transparent 1.100.0-r1 1.400.0: Cache the result of http get-requests persistently
 dev-perl/HTTP-CookieJar 0.8.0: A minimalist HTTP user agent cookie jar
-dev-perl/HTTP-Cookies 6.10.0 6.30.0: Storage of cookies
+dev-perl/HTTP-Cookies 6.10.0 6.30.0 6.40.0: Storage of cookies
 dev-perl/HTTP-DAV 0.480.0: A WebDAV client library for Perl5
 dev-perl/HTTP-Daemon 6.10.0-r1: Base class for simple HTTP servers
 dev-perl/HTTP-Date 6.20.0-r1: Date conversion for HTTP date formats
-dev-perl/HTTP-Entity-Parser 0.190.0: PSGI compliant HTTP Entity Parser
+dev-perl/HTTP-Entity-Parser 0.190.0 0.200.0: PSGI compliant HTTP Entity Parser
 dev-perl/HTTP-Headers-Fast 0.200.0 0.210.0: Faster implementation of HTTP::Headers
-dev-perl/HTTP-Message 6.110.0: Base class for Request/Response
+dev-perl/HTTP-Message 6.110.0 6.130.0: Base class for Request/Response
 dev-perl/HTTP-MultiPartParser 0.20.0: Low Level MultiPart MIME HTTP parser
 dev-perl/HTTP-Negotiate 6.10.0: HTTP content negotiation
 dev-perl/HTTP-Request-AsCGI 1.200.0: Set up a CGI environment from an HTTP::Request
@@ -6058,7 +6058,7 @@ dev-perl/Hash-MoreUtils 0.20.0-r1 0.50.0: Provide the stuff missing in Hash::Uti
 dev-perl/Hash-MultiValue 0.160.0: Store multiple values per key
 dev-perl/Hash-NoRef 0.30.0-r1: Hash to store values without increasing reference count (weak references)
 dev-perl/Heap 0.800.0-r1: Heap - Perl extensions for keeping data partially sorted
-dev-perl/Hook-LexWrap 0.250.0: Lexically scoped subroutine wrappers
+dev-perl/Hook-LexWrap 0.250.0 0.260.0: Lexically scoped subroutine wrappers
 dev-perl/IMAP-Admin 1.6.7-r1: Perl module for basic IMAP server administration
 dev-perl/IMAP-BodyStructure 1.30.0: IMAP4-compatible BODYSTRUCTURE and ENVELOPE parser
 dev-perl/IO-AIO 4.330.0: Asynchronous Input/Output
@@ -10398,7 +10398,7 @@ dev-util/cyclo 2.1.0: Computes cyclomatic complexity metrics on C source code.
 dev-util/d-feet 0.3.10 0.3.11 0.3.12: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 12.10.1 15.04.0_p100: Run executables under a new DBus session for testing
 dev-util/ddd 3.3.12-r3 3.3.12-r4: Graphical front-end for command-line debuggers
-dev-util/debhelper 9.20160814 10.9 10.9.1 10.9.2: Collection of programs that can be used to automate common tasks in debian/rules
+dev-util/debhelper 9.20160814 10.9.2 10.10.3: Collection of programs that can be used to automate common tasks in debian/rules
 dev-util/debootstrap 1.0.87 1.0.89 1.0.91: Debian/Ubuntu bootstrap scripts
 dev-util/debugedit 5.3.5-r1: standalone debugedit taken from rpm
 dev-util/dejagnu 1.4.4-r3 1.5 1.6: Framework for testing other programs
@@ -10408,7 +10408,7 @@ dev-util/devhelp 3.22.0 3.24.0: An API documentation browser for GNOME
 dev-util/dialog 1.3.20160828 1.3.20170131 1.3.20170509: tool to display dialog boxes from a shell
 dev-util/diffball 1.0.1: Delta compression suite for using/generating binary patches
 dev-util/difffilter 0.3.3: Filter files out of unified diffs using POSIX extended regular expressions
-dev-util/diffoscope 78: Will try to get to the bottom of what makes files or directories different
+dev-util/diffoscope 78 87: Will try to get to the bottom of what makes files or directories different
 dev-util/diffstat 1.60 1.61: Display a histogram of diff changes
 dev-util/diffuse 0.4.8: A graphical tool to compare and merge text files
 dev-util/dirdiff 2.1-r2 2.1-r3: A tool for differing and merging directories
@@ -10590,7 +10590,7 @@ dev-util/rosdep 0.11.5 0.11.6 0.11.8 9999: Command-line tool for installing ROS 
 dev-util/rosinstall 0.7.8 9999: Command-line tools for maintaining a workspace of projects for ROS
 dev-util/rosinstall_generator 0.1.11 0.1.12 0.1.13 9999: Generates rosinstall files containing information about repositories with ROS packages/stacks
 dev-util/rpmdevtools 8.10: Collection of rpm packaging related utilities
-dev-util/rr 4.5.0: Record and Replay Framework
+dev-util/rr 4.5.0 5.0.0: Record and Replay Framework
 dev-util/rustfmt 0.5.0 0.6.3: Tool to find and fix Rust formatting issues
 dev-util/sasm 2.2 9999: Simple crossplatform IDE for NASM assembly language
 dev-util/scala-ide 4.1.0 4.3.0: The Scala IDE
@@ -12860,7 +12860,7 @@ media-gfx/scantailor 0.9.12.2: A interactive post-processing tool for scanned pa
 media-gfx/scour 0.35-r1 0.36: Take an SVG file and produce a cleaner and more concise file
 media-gfx/scrot 0.8-r1 0.8_p13 0.8_p13-r1: Screen capture utility using imlib2 library
 media-gfx/sfftobmp 3.1.2-r1: sff to bmp converter
-media-gfx/shotwell 0.24.6 0.25.0.1 0.26.0 0.26.1 0.26.2 0.26.3 0.27.0: Open source photo manager for GNOME
+media-gfx/shotwell 0.24.6 0.25.0.1 0.26.0 0.26.1 0.26.2 0.26.3 0.27.0 0.27.1: Open source photo manager for GNOME
 media-gfx/simple-scan 3.22.0.1 3.24.1: Simple document scanning utility
 media-gfx/slic3r 1.1.7 1.2.9-r2 9999: A mesh slicer to generate G-code for fused-filament-fabrication (3D printers)
 media-gfx/splash-themes-gentoo 20101212-r1 20101212-r2: A collection of Gentoo themes for splashutils
@@ -12884,7 +12884,7 @@ media-gfx/tuxpaint 0.9.21-r2: Drawing program designed for young children
 media-gfx/tuxpaint-stamps 20090628: Set of 'Rubber Stamp' images which can be used within Tux Paint
 media-gfx/ufraw 0.22 0.22-r1: RAW Image format viewer and GIMP plugin
 media-gfx/uniconvertor 2.0_pre379-r1 2.0_pre379-r2: Commandline tool for popular vector formats convertion
-media-gfx/valentina 0.5.0-r1 9999: Cloth patternmaking software
+media-gfx/valentina 0.5.0-r2 9999: Cloth patternmaking software
 media-gfx/videorbits 2.201 2.205: a collection of programs for creating high dynamic range images
 media-gfx/viewer 0.8.0-r1: A stereo pair image viewer (supports ppm's only)
 media-gfx/viewnior 1.6: Fast and simple image viewer
@@ -13152,7 +13152,7 @@ media-libs/librosprite 0.1.2-r1: framebuffer abstraction library, written in C
 media-libs/libsamplerate 0.1.9 9999: Secret Rabbit Code (aka libsamplerate) is a Sample Rate Converter for audio
 media-libs/libsbsms 2.0.0 2.0.1 2.0.2: A library for high quality time and pitch scale modification
 media-libs/libsdl 1.2.15-r9: Simple Direct Media Layer
-media-libs/libsdl2 2.0.4 2.0.5 2.0.5-r1 2.0.6: Simple Direct Media Layer
+media-libs/libsdl2 2.0.4 2.0.5 2.0.5-r1 2.0.6 2.0.7: Simple Direct Media Layer
 media-libs/libsfml 2.3.2-r1 2.4.1 2.4.2: Simple and Fast Multimedia Library (SFML)
 media-libs/libshout 2.3.1 2.3.1-r1 2.4.1: library for connecting and sending data to icecast servers
 media-libs/libsidplay 1.36.59-r1 1.36.59-r2 2.1.1-r4: C64 SID player library
@@ -14464,7 +14464,7 @@ net-analyzer/prelude-correlator 3.0.1-r1 3.1.0 4.0.0: Real time correlator of ev
 net-analyzer/prelude-lml 3.0.0 3.1.0 4.0.0: The prelude log analyzer
 net-analyzer/prelude-lml-rules 3.0.1 3.1.0 4.0.0: Prelude LML community ruleset
 net-analyzer/prelude-nessus 20021107: Nessus Correlation support for Prelude-IDS
-net-analyzer/prometheus 1.8.0 2.0.0_rc1: Prometheus monitoring system and time series database
+net-analyzer/prometheus 1.8.0 1.8.1 2.0.0_rc1: Prometheus monitoring system and time series database
 net-analyzer/prometheus-alertmanager 0.9.1: Alertmanager for alerts sent by client applications such as Prometheus
 net-analyzer/prometheus-blackbox_exporter 0.10.0: Prometheus exporter for blackbox probing via HTTP, HTTPS, DNS, TCP and ICMP
 net-analyzer/prometheus-node_exporter 0.14.0-r1 0.15.0: Prometheus exporter for machine metrics
@@ -16131,7 +16131,7 @@ sci-calculators/speedcrunch 0.11-r2: Fast and usable calculator for power users
 sci-calculators/tiemu 3.03-r1: Texas Instruments hand-helds emulator
 sci-calculators/tilp2 1.18: Communication program for Texas Instruments calculators
 sci-calculators/transcalc 0.14-r2: Microwave and RF transmission line calculator
-sci-calculators/units 2.14-r1: Unit conversion program
+sci-calculators/units 2.14-r1 2.15: Unit conversion program
 sci-calculators/wcalc 2.5: A flexible command-line scientific calculator
 sci-chemistry/GromacsWrapper 0.3.1 0.3.2 0.5.1: Python framework for Gromacs
 sci-chemistry/ParmEd 2.7.3: Parameter/topology editor and molecular simulator
@@ -18779,7 +18779,7 @@ x11-libs/libyui-ncurses 2.46.4 2.47.6: UI abstraction library - ncurses plugin
 x11-libs/libyui-qt 2.46.21: UI abstraction library - Qt plugin
 x11-libs/motif 2.2.3-r12 2.3.6-r1 2.3.7: The Motif user interface component toolkit
 x11-libs/mx 1.4.7-r2: A widget toolkit using Clutter
-x11-libs/neXtaw 0.15.1-r1: Athena Widgets with N*XTSTEP appearance
+x11-libs/neXtaw 0.15.1-r1 0.15.1-r2: Athena Widgets with N*XTSTEP appearance
 x11-libs/pango 1.40.3 1.40.5 1.40.6 1.40.7 1.40.9 1.40.11 1.40.12: Internationalized text layout and rendering library
 x11-libs/pangox-compat 0.0.2 0.0.2-r1: PangoX compatibility library
 x11-libs/pixman 0.34.0 9999: Low-level pixel manipulation routines
