@@ -1,20 +1,21 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-MODULE_AUTHOR=DALEEVANS
-MODULE_VERSION=0.06
+DIST_AUTHOR=DALEEVANS
+DIST_VERSION=0.07
 inherit perl-module
 
 DESCRIPTION="Converts HTML to text with tables intact"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="test"
 
+PATCHES=( "${FILESDIR}/README-INC.patch" )
 RDEPEND="
-	dev-perl/HTML-Format
+	dev-perl/HTML-Formatter
 	dev-perl/HTML-FormatText-WithLinks
 	dev-perl/HTML-Tree
 "
@@ -23,4 +24,7 @@ DEPEND="${RDEPEND}
 	test? ( virtual/perl-Test-Simple )
 "
 
-SRC_TEST="do parallel"
+src_test() {
+	perl_rm_files t/author-*.t t/pod.t t/boilerplate.t
+	perl-module_src_test
+}
