@@ -24,7 +24,7 @@ RDEPEND="dev-libs/libxml2
 			net-libs/gnutls:=
 			dev-libs/nettle:=
 		)
-		!gnutls? ( dev-libs/openssl:0= )
+		!gnutls? ( dev-libs/openssl:0=[-bindist] )
 	)
 	zlib? ( sys-libs/zlib )"
 DEPEND="${RDEPEND}
