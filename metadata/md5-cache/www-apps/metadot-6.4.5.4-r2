@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst prerm setup
+DEPEND=>=app-admin/webapp-config-1.50.15
+DESCRIPTION=Metadot is a CMS with file, page and link management, and collaboration features
+EAPI=0
+HOMEPAGE=http://www.metadot.com
+IUSE=vhosts
+KEYWORDS=ppc ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-lang/perl-5.6 =www-apache/mod_perl-2* dev-perl/DBI >=dev-perl/DBD-mysql-2.1027 dev-perl/Apache-DBI >=dev-perl/AppConfig-1.55 >=dev-perl/XML-RSS-1.02 dev-perl/perl-ldap >=dev-perl/Log-Agent-0.304 dev-perl/Mail-POP3Client >=dev-perl/IO-stringy-2.108 dev-perl/MailTools dev-perl/MIME-tools >=dev-perl/Unicode-String-2.07 >=dev-perl/Spreadsheet-WriteExcel-0.41 >=dev-perl/Date-Calc-5.3 >=dev-perl/Image-Size-2.991.0 >=dev-perl/Template-Toolkit-2.09 >=virtual/perl-Time-HiRes-1.48 >=virtual/perl-Test-Harness-2.28 >=dev-perl/Test-Manifest-0.91 >=virtual/perl-Test-Simple-0.47 >=dev-perl/Lingua-EN-NameParse-1.18 >=dev-perl/Number-Format-1.45 >=dev-perl/XML-Simple-2.08 dev-perl/XML-Dumper dev-perl/Archive-Zip dev-perl/Date-Manip dev-perl/Text-CSV_XS dev-perl/HTML-Tree dev-perl/HTML-Formatter dev-perl/Data-ShowTable >=app-admin/webapp-config-1.50.15
+SLOT=6.4.5.4-r2
+SRC_URI=http://download.metadot.com/Metadot6.4.5.4.tar.gz
+_eclasses_=webapp	a76ebd3cb5649737496e8238992dd7ca
+_md5_=86f4002e620689efc169133d6897ff09

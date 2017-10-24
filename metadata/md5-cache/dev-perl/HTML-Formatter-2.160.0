@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-Carp virtual/perl-Data-Dumper virtual/perl-Encode dev-perl/Font-AFM dev-perl/HTML-Tree virtual/perl-IO virtual/perl-parent virtual/perl-ExtUtils-MakeMaker test? ( dev-perl/File-Slurper virtual/perl-File-Spec >=virtual/perl-Test-Simple-0.960.0 dev-perl/Test-Warnings ) dev-lang/perl:=
+DESCRIPTION=Base class for HTML Formatters
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/HTML-Formatter/
+IUSE=test
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Carp virtual/perl-Data-Dumper virtual/perl-Encode dev-perl/Font-AFM dev-perl/HTML-Tree virtual/perl-IO virtual/perl-parent dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/N/NI/NIGELM/HTML-Formatter-2.16.tar.gz
+_eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=427f765eeaf2feae6c61ea749b7b4b29

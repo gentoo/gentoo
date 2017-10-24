@@ -6001,9 +6001,9 @@ dev-perl/HTML-Clean 0.800.0-r1: Cleans up HTML code for web browsers, not humans
 dev-perl/HTML-Element-Extended 1.180.0-r1: Extension for manipulating a table composed of HTML::Element style components
 dev-perl/HTML-FillInForm 2.210.0: Populates HTML Forms with data
 dev-perl/HTML-Form 6.30.0-r1: Class that represents an HTML form element
-dev-perl/HTML-Format 2.140.0: HTML Formatter
-dev-perl/HTML-FormatText-WithLinks 0.150.0: HTML to text conversion with links as footnotes
-dev-perl/HTML-FormatText-WithLinks-AndTables 0.60.0 0.70.0: Converts HTML to text with tables intact
+dev-perl/HTML-FormatText-WithLinks 0.150.0-r1: HTML to text conversion with links as footnotes
+dev-perl/HTML-FormatText-WithLinks-AndTables 0.60.0-r1 0.70.0-r1: Converts HTML to text with tables intact
+dev-perl/HTML-Formatter 2.140.0 2.160.0: Base class for HTML Formatters
 dev-perl/HTML-FromText 2.50.0-r1 2.70.0: Convert plain text to HTML
 dev-perl/HTML-HTMLDoc 0.100.0-r1: Perl interface to the htmldoc program for producing PDF-Files from HTML-Content
 dev-perl/HTML-Highlight 0.200.0: A module to highlight words or patterns in HTML documents
@@ -18358,7 +18358,7 @@ www-apps/liquid_feedback_core 2.2.3 2.2.6 3.0.4: Internet platforms for proposit
 www-apps/liquid_feedback_frontend 2.2.2 2.2.7 3.0.6: Internet platforms for proposition development and decision making
 www-apps/lxr 0.9.8-r1: general purpose source code indexer and cross-referener with a web-based frontend
 www-apps/mediawiki 1.27.3: The MediaWiki wiki web application (as used on wikipedia.org)
-www-apps/metadot 6.1.6-r1 6.4.5.4-r1: Metadot is a CMS with file, page and link management, and collaboration features
+www-apps/metadot 6.1.6-r1 6.4.5.4-r2: Metadot is a CMS with file, page and link management, and collaboration features
 www-apps/mirmon 1.38-r4 2.10: Simple webapp to monitor the status of mirrors
 www-apps/mod_survey 3.2.5: XML-defined web questionnaires as a plug-in module using Apache
 www-apps/moinmoin 1.9.7-r1: Python WikiClone
@@ -18388,7 +18388,7 @@ www-apps/radicale 1.1.1: A simple CalDAV calendar server
 www-apps/redmine 3.2.7 3.2.7-r1 3.3.4 3.3.4-r1 3.4.2 3.4.2-r1: Flexible project management web application using the Ruby on Rails framework
 www-apps/rocketwiki-lqfb 0.4: Small parser which translates a wiki dialect to HTML
 www-apps/roundup 1.5.1: Issue-tracking system with command-line, web, and e-mail interfaces
-www-apps/rt 4.2.12-r1 4.4.1: RT is an enterprise-grade ticketing system
+www-apps/rt 4.2.12-r2 4.4.1-r1: RT is an enterprise-grade ticketing system
 www-apps/rutorrent 3.4-r1: ruTorrent is a front-end for the popular Bittorrent client rTorrent
 www-apps/scgi 1.14-r1: A Python package for implementing SCGI servers
 www-apps/sitebar 3.3.9-r1 3.3.9-r2: The Bookmark Server for Personal and Team Use
