@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge/logreporters/${P}.tgz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="dev-lang/perl"
 
