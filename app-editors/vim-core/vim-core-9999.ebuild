@@ -33,7 +33,7 @@ pkg_setup() {
 	export LC_COLLATE="C"
 
 	# Gnome sandbox silliness. bug #114475.
-	mkdir -p "${T}"/home
+	mkdir -p "${T}"/home || die "mkdir -p failed"
 	export HOME="${T}"/home
 }
 
@@ -44,8 +44,12 @@ src_prepare() {
 	fi
 
 	# Fixup a script to use awk instead of nawk
-	sed -i '1s|.*|#!'"${EPREFIX}"'/usr/bin/awk -f|' "${S}"/runtime/tools/mve.awk \
-		|| die "mve.awk sed failed"
+	sed -i \
+		-e '1s|.*|#!'"${EPREFIX}"'/usr/bin/awk -f|' \
+		"${S}"/runtime/tools/mve.awk || die "sed failed"
+
+	# See #77841. We remove this file after the tarball extraction.
+	rm -v "${S}"/runtime/tools/vimspell.sh || die "rm failed"
 
 	# Read vimrc and gvimrc from /etc/vim
 	echo '#define SYS_VIMRC_FILE "'${EPREFIX}'/etc/vim/vimrc"' >> "${S}"/src/feature.h
@@ -70,24 +74,23 @@ src_prepare() {
 	# correctly. To avoid some really entertaining error messages about stuff
 	# which isn't even in the source file being invalid, we'll do some trickery
 	# to make the error never occur. bug 66162 (02 October 2004 ciaranm)
-	find "${S}" -name '*.c' | while read c ; do echo >> "$c" ; done
+	find "${S}" -name '*.c' | while read c; do
+	    echo >> "$c" || die "echo failed"
+	done
 
 	# Try to avoid sandbox problems. Bug #114475.
-	if [[ -d "${S}"/src/po ]] ; then
+	if [[ -d "${S}"/src/po ]]; then
 		sed -i -e \
 			'/-S check.vim/s,..VIM.,ln -s $(VIM) testvim \; ./testvim -X,' \
-			"${S}"/src/po/Makefile
+			"${S}"/src/po/Makefile || die "sed failed"
 	fi
 
-	if version_is_at_least 7.3.122 ; then
-		cp "${S}"/src/config.mk.dist "${S}"/src/auto/config.mk
-	fi
+	cp -v "${S}"/src/config.mk.dist "${S}"/src/auto/config.mk || die "cp failed"
 
 	# Bug #378107 - Build properly with >=perl-core/ExtUtils-ParseXS-3.20.0
-	if version_is_at_least 7.3 ; then
-		sed -i "s:\\\$(PERLLIB)/ExtUtils/xsubpp:${EPREFIX}/usr/bin/xsubpp:"	\
-			"${S}"/src/Makefile || die 'sed for ExtUtils-ParseXS failed'
-	fi
+	sed -i -e \
+		"s:\\\$(PERLLIB)/ExtUtils/xsubpp:${EPREFIX}/usr/bin/xsubpp:" \
+		"${S}"/src/Makefile || die 'sed for ExtUtils-ParseXS failed'
 
 	eapply_user
 }
@@ -110,13 +113,18 @@ src_configure() {
 	# (3) Notice auto/configure is newer than auto/config.mk
 	# (4) Run ./configure (with wrong args) to remake auto/config.mk
 	sed -i 's# auto/config\.mk:#:#' src/Makefile || die "Makefile sed failed"
-	rm -f src/auto/configure
+
+	# Remove src/auto/configure file.
+	rm -v src/auto/configure || die "rm configure failed"
+
 	emake -j1 -C src autoconf
 
 	# This should fix a sandbox violation (see bug 24447). The hvc
 	# things are for ppc64, see bug 86433.
-	for file in /dev/pty/s* /dev/console /dev/hvc/* /dev/hvc* ; do
-		[[ -e ${file} ]] && addwrite $file
+	for file in /dev/pty/s* /dev/console /dev/hvc/* /dev/hvc*; do
+		if [[ -e "${file}" ]]; then
+			addwrite $file
+		fi
 	done
 
 	# Let Portage do the stripping. Some people like that.
@@ -141,9 +149,7 @@ src_configure() {
 }
 
 src_compile() {
-	# The following allows emake to be used
 	emake -j1 -C src auto/osdef.h objects
-
 	emake tools
 }
 
@@ -174,14 +180,14 @@ src_install() {
 	newins "${FILESDIR}"/vimrc-r5 vimrc
 	eprefixify "${ED}"/etc/vim/vimrc
 
-	if use minimal ; then
+	if use minimal; then
 		# To save space, install only a subset of the files.
 		# Helps minimalize the livecd, bug 65144.
 		eshopts_push -s extglob
 
-		rm -fr "${ED}${vimfiles}"/{compiler,doc,ftplugin,indent}
-		rm -fr "${ED}${vimfiles}"/{macros,print,tools,tutor}
-		rm "${ED}"/usr/bin/vimtutor
+		rm -rv "${ED}${vimfiles}"/{compiler,doc,ftplugin,indent} || die "rm failed"
+		rm -rv "${ED}${vimfiles}"/{macros,print,tools,tutor} || die "rm failed"
+		rm -v "${ED}"/usr/bin/vimtutor || die "rm failed"
 
 		local keep_colors="default"
 		ignore=$(rm -fr "${ED}${vimfiles}"/colors/!(${keep_colors}).vim )
@@ -194,16 +200,7 @@ src_install() {
 		eshopts_pop
 	fi
 
-	# These files might have slight security issues, so we won't
-	# install them. See bug #77841. We don't mind if these don't
-	# exist.
-	rm "${ED}${vimfiles}"/tools/{vimspell.sh,tcltags} 2>/dev/null
-
 	newbashcomp "${FILESDIR}"/xxd-completion xxd
-
-	# We shouldn't be installing the ex or view man page symlinks, as they
-	# are managed by eselect-vi
-	rm -f "${ED}"/usr/share/man/man1/{ex,view}.1
 }
 
 pkg_postinst() {
