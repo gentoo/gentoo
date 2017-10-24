@@ -38,7 +38,8 @@ src_prepare() {
 	# fix standards conflict on Solaris
 	if [[ ${CHOST} == *-solaris* ]] ; then
 		sed -i \
-			-e '/\<_XOPEN_SOURCE\>/s/$/600/' \
+			-e '/\<_XOPEN_SOURCE\>/s/1$/600/' \
+			-e '/\<_XOPEN_SOURCE_EXTENDED\>/s/1//' \
 			extension/inplace.c || die
 	fi
 }
