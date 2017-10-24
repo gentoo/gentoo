@@ -69,7 +69,7 @@ RDEPEND="
 	gstreamer? (
 		>=media-libs/gstreamer-1.2.3:1.0
 		>=media-libs/gst-plugins-base-1.2.3:1.0
-		>=media-libs/gst-plugins-bad-1.10:1.0[opengl?] )
+		>=media-libs/gst-plugins-bad-1.10:1.0[opengl?,egl?] )
 
 	X? (
 		x11-libs/cairo[X]
