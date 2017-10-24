@@ -14,7 +14,7 @@ KEYWORDS="amd64"
 IUSE="test"
 
 RDEPEND="
-	>=dev-perl/HTML-Format-2
+	>=dev-perl/HTML-Formatter-2
 	dev-perl/HTML-Tree
 	dev-perl/URI
 "

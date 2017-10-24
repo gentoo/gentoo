@@ -1,9 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-DIST_NAME=HTML-Formatter
 DIST_AUTHOR=NIGELM
 DIST_VERSION=2.14
 inherit perl-module
