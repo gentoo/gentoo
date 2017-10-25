@@ -1,6 +1,5 @@
-diff -Naur mysql++-3.2.2-ORIG/lib/dbdriver.cpp mysql++-3.2.2/lib/dbdriver.cpp
---- mysql++-3.2.2-ORIG/lib/dbdriver.cpp	2017-07-14 14:56:06.206629443 +0200
-+++ mysql++-3.2.2/lib/dbdriver.cpp	2017-07-14 15:28:34.690826959 +0200
+--- a/lib/dbdriver.cpp
++++ b/lib/dbdriver.cpp
 @@ -257,7 +257,11 @@
  	}
  	
@@ -13,9 +12,8 @@ diff -Naur mysql++-3.2.2-ORIG/lib/dbdriver.cpp mysql++-3.2.2/lib/dbdriver.cpp
  #if MYSQL_VERSION_ID > 40000	// highest flag value varies by version
  			(o <= CLIENT_MULTI_RESULTS)
  #else
-diff -aurN a/lib/common.h b/lib/common.h
---- a/lib/common.h	2016-12-30 18:44:44.000000000 -0500
-+++ b/lib/common.h	2017-09-01 09:12:12.270089396 -0400
+--- a/lib/common.h
++++ b/lib/common.h
 @@ -130,12 +130,6 @@
  	#define MYSQLPP_PATH_SEPARATOR '/'
  #endif
