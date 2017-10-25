@@ -6,14 +6,16 @@
 
 EAPI=6
 VIRTUALX_REQUIRED="manual"
-inherit eutils gnome2-utils toolchain-funcs
+inherit eutils gnome2-utils toolchain-funcs versionator
 
 MY_P="stone_soup-${PV}"
 DESCRIPTION="Role-playing roguelike game of exploration and treasure-hunting in dungeons"
 HOMEPAGE="http://crawl.develz.org/wordpress/"
-SRC_URI="https://crawl.develz.org/release/stone_soup-${PV}.tar.xz
+SRC_URI="
+	https://crawl.develz.org/release/$(get_version_component_range 1-2)/${PN/-/_}-${PV}.tar.xz
 	https://dev.gentoo.org/~hasufell/distfiles/${PN}.png
-	https://dev.gentoo.org/~hasufell/distfiles/${PN}.svg"
+	https://dev.gentoo.org/~hasufell/distfiles/${PN}.svg
+"
 
 # 3-clause BSD: mt19937ar.cc, MSVC/stdint.h
 # 2-clause BSD: all contributions by Steve Noonan and Jesse Luehrs
@@ -53,11 +55,8 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${MY_P}/source
 S_TEST=${WORKDIR}/${MY_P}_test/source
-
 PATCHES=(
-	"${FILESDIR}"/${P}-respect-flags-and-compiler.patch
-	"${FILESDIR}"/${P}-Use-pkg-config-for-linking-to-ncurses.patch
-	"${FILESDIR}"/${P}-perl526.patch
+	"${FILESDIR}"/${PN}-0.20.1-rltiles-ldflags-libs.patch
 )
 
 pkg_setup() {
@@ -79,22 +78,23 @@ src_compile() {
 
 	# leave DATADIR at the top
 	myemakeargs=(
-		$(usex luajit "" "BUILD_LUA=yes") # luajit is not bundled
-		USE_LUAJIT=$(usex luajit "yes" "")
-		DATADIR="/usr/share/${PN}"
-		V=1
-		prefix="/usr"
-		SAVEDIR="~/.crawl"
 		$(usex debug "FULLDEBUG=y DEBUG=y" "")
-		CFOPTIMIZE="${CXXFLAGS}"
+		$(usex luajit "" "BUILD_LUA=yes") # luajit is not bundled
+		AR="$(tc-getAR)"
+		CFOPTIMIZE=''
+		CFOTHERS="${CXXFLAGS}"
+		DATADIR="/usr/share/${PN}"
+		GCC="$(tc-getCC)"
+		GXX="$(tc-getCXX)"
 		LDFLAGS="${LDFLAGS}"
 		MAKEOPTS="${MAKEOPTS}"
-		AR="$(tc-getAR)"
-		RANLIB="$(tc-getRANLIB)"
-		CC="$(tc-getCC)"
-		CXX="$(tc-getCXX)"
 		PKGCONFIG="$(tc-getPKG_CONFIG)"
+		RANLIB="$(tc-getRANLIB)"
+		SAVEDIR="~/.crawl"
 		STRIP=touch
+		USE_LUAJIT=$(usex luajit "yes" "")
+		V=1
+		prefix="/usr"
 	)
 
 	if use ncurses || (use !ncurses && use !tiles) ; then
@@ -115,7 +115,6 @@ src_install() {
 
 	# don't relocate docs, needed at runtime
 	rm -rf "${D}/usr/share/${PN}"/docs/license
-	dodoc "${WORKDIR}"/${MY_P}/README.{txt,pdf}
 
 	# icons and menu for graphical build
 	if use tiles ; then
