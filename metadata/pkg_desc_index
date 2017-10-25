@@ -2965,7 +2965,7 @@ dev-db/metakit 2.4.9.7-r2: Embedded database library
 dev-db/mongodb 2.6.12 3.0.14 3.0.15 3.2.12 3.2.13 3.2.16 3.4.3 3.4.4 3.4.6 3.4.7 3.4.9: A high-performance, open source, schema-free document-oriented database
 dev-db/mtop 0.6.6-r3: Mysql top monitors a MySQL server
 dev-db/mycli 1.7.1 1.10.0 9999: CLI for MySQL Database with auto-completion and syntax highlighting
-dev-db/mydumper 0.6.2 0.9.3: A high-performance multi-threaded backup (and restore) toolset for MySQL
+dev-db/mydumper 0.6.2 0.9.3-r1: A high-performance multi-threaded backup (and restore) toolset for MySQL
 dev-db/myodbc 5.2.7-r1 5.2.7-r2 5.3.8 5.3.8-r1: ODBC driver for MySQL
 dev-db/mysql 5.5.58 5.6.36 5.6.37 5.6.38: A fast, multi-threaded, multi-user SQL database server
 dev-db/mysql++ 2.3.2 3.1.0 3.2.1 3.2.2 3.2.3: C++ API interface to the MySQL database
@@ -5997,17 +5997,17 @@ dev-perl/Gtk2-Notify 0.50.0: A perl interface to the notification library
 dev-perl/Gtk2-SourceView2 0.100.0 0.100.0-r1: Perl binding for the C library gtksourceview
 dev-perl/Gtk2-Unique 0.50.0-r1 0.50.0-r2: Perl binding for C libunique library
 dev-perl/Guard 1.23.0: Safe cleanup blocks
-dev-perl/HTML-Clean 0.800.0-r1: Cleans up HTML code for web browsers, not humans
+dev-perl/HTML-Clean 0.800.0-r1 0.800.0-r2: Cleans up HTML code for web browsers, not humans
 dev-perl/HTML-Element-Extended 1.180.0-r1: Extension for manipulating a table composed of HTML::Element style components
 dev-perl/HTML-FillInForm 2.210.0: Populates HTML Forms with data
-dev-perl/HTML-Form 6.30.0-r1: Class that represents an HTML form element
+dev-perl/HTML-Form 6.30.0-r1 6.30.0-r2: Class that represents an HTML form element
 dev-perl/HTML-FormatText-WithLinks 0.150.0-r1: HTML to text conversion with links as footnotes
 dev-perl/HTML-FormatText-WithLinks-AndTables 0.60.0-r1 0.70.0-r1: Converts HTML to text with tables intact
 dev-perl/HTML-Formatter 2.140.0 2.160.0: Base class for HTML Formatters
 dev-perl/HTML-FromText 2.50.0-r1 2.70.0: Convert plain text to HTML
 dev-perl/HTML-HTMLDoc 0.100.0-r1: Perl interface to the htmldoc program for producing PDF-Files from HTML-Content
 dev-perl/HTML-Highlight 0.200.0: A module to highlight words or patterns in HTML documents
-dev-perl/HTML-LinkExtractor 0.130.0-r1: A bare-bone HTML parser, similar to HTML::Parser
+dev-perl/HTML-LinkExtractor 0.130.0-r1 0.130.0-r2: A bare-bone HTML parser, similar to HTML::Parser
 dev-perl/HTML-Mason 1.560.0: A HTML development and delivery Perl Module
 dev-perl/HTML-Mason-PSGIHandler 0.530.0: PSGI handler for HTML::Mason
 dev-perl/HTML-Object 2.29-r2: A HTML development and delivery Perl Module
@@ -6016,7 +6016,7 @@ dev-perl/HTML-Parser 3.710.0-r1 3.720.0: Parse <HEAD> section of HTML documents
 dev-perl/HTML-Quoted 0.40.0: Extract structure of quoted HTML mail message
 dev-perl/HTML-RewriteAttributes 0.50.0-r1: Perl module for concise attribute rewriting
 dev-perl/HTML-Scrubber 0.150.0 0.170.0: Perl extension for scrubbing/sanitizing html
-dev-perl/HTML-SimpleParse 0.120.0-r1: A bare-bones HTML parser, similar to HTML::Parser
+dev-perl/HTML-SimpleParse 0.120.0-r1 0.120.0-r2: A bare-bones HTML parser, similar to HTML::Parser
 dev-perl/HTML-Strip 2.90.0 2.100.0: Extension for stripping HTML markup from text
 dev-perl/HTML-StripScripts 1.60.0: Strip scripting constructs out of HTML
 dev-perl/HTML-StripScripts-Parser 1.30.0: XSS filter using HTML::Parser
@@ -6636,6 +6636,7 @@ dev-perl/Syntax-Highlight-Engine-Simple 0.90.0 0.100.0: Simple Syntax Highlight 
 dev-perl/Syntax-Highlight-Engine-Simple-Perl 0.20.0: Experimental Perl code highlighting class
 dev-perl/Syntax-Keyword-Junction 0.3.8: Perl6 style Junction operators in Perl5
 dev-perl/Sys-CPU 0.610.0: Access CPU info. number, etc on Win and UNIX
+dev-perl/Sys-CpuLoad 0.30.0: A module to retrieve system load averages
 dev-perl/Sys-Hostname-Long 1.500.0: Try every conceivable way to get full hostname
 dev-perl/Sys-MemInfo 0.980.0: Memory informations
 dev-perl/Sys-Mmap 0.170.0 0.190.0: Uses mmap to map in a file as a Perl variable
