@@ -1,0 +1,28 @@
+--- a/mydumper.c	2017-09-07 14:53:02.000000000 +0000
++++ b/mydumper.c	2017-10-25 14:53:46.614729185 +0000
+@@ -22,6 +22,11 @@
+ #define _FILE_OFFSET_BITS 64
+ 
+ #include <mysql.h>
++
++#if defined MARIADB_CLIENT_VERSION_STR && !defined MYSQL_SERVER_VERSION
++  #define MYSQL_SERVER_VERSION MARIADB_CLIENT_VERSION_STR
++#endif
++
+ #include <unistd.h>
+ #include <stdio.h>
+ #include <string.h>
+--- a/myloader.c	2017-09-07 14:53:02.000000000 +0000
++++ b/myloader.c	2017-10-25 14:55:34.677729185 +0000
+@@ -19,6 +19,11 @@
+ #define _FILE_OFFSET_BITS 64
+ 
+ #include <mysql.h>
++
++#if defined MARIADB_CLIENT_VERSION_STR && !defined MYSQL_SERVER_VERSION
++  #define MYSQL_SERVER_VERSION MARIADB_CLIENT_VERSION_STR
++#endif
++
+ #include <unistd.h>
+ #include <stdio.h>
+ #include <string.h>
