@@ -49,7 +49,6 @@ src_configure() {
 		--disable-coq-tactic \
 		--disable-pvs-libs \
 		--disable-isabelle-libs \
-		--disable-zip \
 		$(use_enable coq coq-libs) \
 		$(use_enable doc) \
 		$(use_enable emacs emacs-compilation) \
