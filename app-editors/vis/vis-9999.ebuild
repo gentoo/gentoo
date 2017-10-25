@@ -10,7 +10,7 @@ EGIT_REPO_URI="https://github.com/martanne/vis.git"
 LICENSE="ISC"
 SLOT="0"
 KEYWORDS=""
-IUSE="+ncurses selinux tre"
+IUSE="+ncurses selinux test tre"
 
 #Note: vis is reported to also work with NetBSD curses
 #TODO: >=dev-lang/lua-5.2 (needed for syntax highlighting and settings)
@@ -18,6 +18,12 @@ DEPEND=" dev-libs/libtermkey
 	ncurses? ( sys-libs/ncurses:0= )
 	tre? ( dev-libs/tre:= )"
 RDEPEND="${DEPEND}"
+
+src_prepare() {
+	if use test && ! type -P vim &>/dev/null; then
+		sed -i 's/.*vim.*//' "${S}/test/Makefile" || die
+	fi
+}
 
 src_configure() {
 	econf \
