@@ -125,6 +125,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.0-fix_paths_for_apparmor.patch
 	"${FILESDIR}"/${PN}-1.3.4-glibc-2.23.patch
 	"${FILESDIR}"/${PN}-3.1.0-musl-fix-includes.patch          # bug #609488
+	"${FILESDIR}"/${PN}-3.8.0-CVE-2017-1000256.patch           # bug #635174
 )
 
 pkg_setup() {
