@@ -587,7 +587,7 @@ app-crypt/ophcrack 3.4.0 3.6.0: A time-memory-trade-off-cracker
 app-crypt/ophcrack-tables 1.0-r2: Tables available for ophcrack
 app-crypt/osslsigncode 1.4: Platform-independent tool for Authenticode signing of EXE/CAB files
 app-crypt/p11-kit 0.23.2 0.23.2-r1 0.23.5 0.23.7: Provides a standard configuration setup for installing PKCS#11
-app-crypt/paperkey 1.4: OpenPGP key archiver
+app-crypt/paperkey 1.4 1.5: OpenPGP key archiver
 app-crypt/pdfcrack 0.15 0.16: Tool for recovering passwords and content from PDF-files
 app-crypt/pesign 0.108 0.112: Tools for manipulating signed PE-COFF binaries
 app-crypt/pgpdump 0.30 0.31 0.32: A PGP packet visualizer
