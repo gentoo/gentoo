@@ -72,13 +72,13 @@ pkg_postinst() {
 	local save_file
 	save_file="${EROOT%/}/var/lib/nftables/rules-save"
 
-	elog "In order for the nftables-restore systemd service to start, "
-	elog "the file, ${save_file}, must exist.  To create this "
-	elog "file run the following command: "
-	elog ""
-	elog "	touch '${save_file}'"
-	elog ""
-	elog "Afterwards, the nftables-restore service should be manually started "
-	elog "to ensure firewall changes are stored on system shutdown.  The "
-	elog "systemd service will function normally thereafter."
+	# In order for the nftables-restore systemd service to start
+	# the save_file must exist.
+	if [[ ! -f ${save_file} ]]; then
+		touch ${save_file}
+	fi
+
+	elog "If you are creating firewall rules before the next system restart "
+	elog "the nftables-restore service must be manually started in order to "
+	elog "save those rules on shutdown."
 }
