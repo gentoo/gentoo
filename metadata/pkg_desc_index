@@ -6062,7 +6062,7 @@ dev-perl/Hook-LexWrap 0.250.0 0.260.0: Lexically scoped subroutine wrappers
 dev-perl/IMAP-Admin 1.6.7-r1: Perl module for basic IMAP server administration
 dev-perl/IMAP-BodyStructure 1.30.0: IMAP4-compatible BODYSTRUCTURE and ENVELOPE parser
 dev-perl/IO-AIO 4.330.0: Asynchronous Input/Output
-dev-perl/IO-All 0.860.0: unified IO operations
+dev-perl/IO-All 0.860.0 0.870.0: unified IO operations
 dev-perl/IO-BufferedSelect 1.0.0-r1: Perl module that implements a line-buffered select interface
 dev-perl/IO-Capture 0.50.0-r1: Abstract Base Class to build modules to capture output
 dev-perl/IO-CaptureOutput 1.110.400: Capture STDOUT and STDERR from Perl code, subprocesses or XS
