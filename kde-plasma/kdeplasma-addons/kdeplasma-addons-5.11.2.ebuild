@@ -47,6 +47,8 @@ RDEPEND="${DEPEND}
 	!kde-plasma/kdeplasma-addons:4
 "
 
+PATCHES=( "${FILESDIR}/${P}-qt-5.7.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package share KDEExperimentalPurpose)
