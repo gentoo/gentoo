@@ -29,8 +29,8 @@ src_prepare() {
 src_compile() {
 	LDFLAGS="" GOPATH="${WORKDIR}/${P}" emake -j1 -C src/${EGO_PN} WHAT=cmd/${PN}
 	pushd src/${EGO_PN} || die
-	_output/bin/${PN} completion bash > ${PN}.bash
-	_output/bin/${PN} completion zsh > ${PN}.zsh
+	_output/bin/${PN} completion bash > ${PN}.bash || die
+	_output/bin/${PN} completion zsh > ${PN}.zsh || die
 	popd || die
 }
 
@@ -40,7 +40,7 @@ src_install() {
 
 	newbashcomp ${PN}.bash ${PN}
 	insinto /usr/share/zsh/site-functions
-	newins ${PN}.zsh ${PN}
+	newins ${PN}.zsh _${PN}
 
 	popd || die
 }
