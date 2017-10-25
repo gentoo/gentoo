@@ -6038,13 +6038,13 @@ dev-perl/HTTP-Cache-Transparent 1.100.0-r1 1.400.0: Cache the result of http get
 dev-perl/HTTP-CookieJar 0.8.0: A minimalist HTTP user agent cookie jar
 dev-perl/HTTP-Cookies 6.10.0 6.30.0 6.40.0: Storage of cookies
 dev-perl/HTTP-DAV 0.480.0: A WebDAV client library for Perl5
-dev-perl/HTTP-Daemon 6.10.0-r1: Base class for simple HTTP servers
+dev-perl/HTTP-Daemon 6.10.0-r1 6.10.0-r2: Base class for simple HTTP servers
 dev-perl/HTTP-Date 6.20.0-r1: Date conversion for HTTP date formats
 dev-perl/HTTP-Entity-Parser 0.190.0 0.200.0: PSGI compliant HTTP Entity Parser
 dev-perl/HTTP-Headers-Fast 0.200.0 0.210.0: Faster implementation of HTTP::Headers
 dev-perl/HTTP-Message 6.110.0 6.130.0: Base class for Request/Response
 dev-perl/HTTP-MultiPartParser 0.20.0: Low Level MultiPart MIME HTTP parser
-dev-perl/HTTP-Negotiate 6.10.0: HTTP content negotiation
+dev-perl/HTTP-Negotiate 6.10.0 6.10.0-r1: HTTP content negotiation
 dev-perl/HTTP-Request-AsCGI 1.200.0: Set up a CGI environment from an HTTP::Request
 dev-perl/HTTP-Response-Encoding 0.60.0-r1: Adds encoding() to HTTP::Response
 dev-perl/HTTP-Server-Simple 0.520.0: Lightweight HTTP Server
@@ -6056,8 +6056,8 @@ dev-perl/Hash-Merge 0.200.0: Merges arbitrarily deep hashes into a single hash
 dev-perl/Hash-Merge-Simple 0.51.0: Recursively merge two or more hashes, simply
 dev-perl/Hash-MoreUtils 0.20.0-r1 0.50.0: Provide the stuff missing in Hash::Util
 dev-perl/Hash-MultiValue 0.160.0: Store multiple values per key
-dev-perl/Hash-NoRef 0.30.0-r1: Hash to store values without increasing reference count (weak references)
-dev-perl/Heap 0.800.0-r1: Heap - Perl extensions for keeping data partially sorted
+dev-perl/Hash-NoRef 0.30.0-r1 0.30.0-r2: Hash to store values without increasing reference count (weak references)
+dev-perl/Heap 0.800.0-r1 0.800.0-r2: Perl extensions for keeping data partially sorted
 dev-perl/Hook-LexWrap 0.250.0 0.260.0: Lexically scoped subroutine wrappers
 dev-perl/IMAP-Admin 1.6.7-r1: Perl module for basic IMAP server administration
 dev-perl/IMAP-BodyStructure 1.30.0: IMAP4-compatible BODYSTRUCTURE and ENVELOPE parser
@@ -17235,7 +17235,7 @@ sys-apps/newrelic-sysmond 1.1.2.124-r1: NewRelic System Monitor
 sys-apps/nix 1.11.14 1.11.15: A purely functional package manager
 sys-apps/noexec 1.1.0-r1: a package for preventing processes from using exec system calls
 sys-apps/nvme-cli 1.1 1.2 1.3 1.4: NVM-Express user space tooling for Linux
-sys-apps/openrc 0.27.2 0.28 0.29 0.30 0.31 0.31.1 0.31.2 0.32 0.32.1 0.33 0.33.1 0.34 0.34.1 9999: OpenRC manages the services, startup and shutdown of a host
+sys-apps/openrc 0.27.2 0.28 0.29 0.30 0.31 0.31.1 0.31.2 0.32 0.32.1 0.33 0.33.1 0.34 0.34.1 0.34.2 9999: OpenRC manages the services, startup and shutdown of a host
 sys-apps/opentmpfiles 0.1.1 0.1.2 0.1.3 9999: A standalone utility to process systemd-style tmpfiles.d files
 sys-apps/osinfo-db 20170326 20170423 20170813: osinfo database files
 sys-apps/osinfo-db-tools 1.1.0: Tools for managing the osinfo database
