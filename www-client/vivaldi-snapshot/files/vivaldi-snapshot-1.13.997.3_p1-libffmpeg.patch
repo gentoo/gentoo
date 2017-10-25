@@ -17,6 +17,7 @@
        fi
      fi
    fi
+@@ -54,6 +54,7 @@
  # Check for libs in preferred order.
  # Where possible, use other files/directories to confirm it's the correct variant.
  VIVALDI_FFMPEG_FOUND=NO
