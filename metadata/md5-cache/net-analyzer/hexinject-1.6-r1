@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install
+DEPEND=net-libs/libpcap
+DESCRIPTION=Network packet sniffer and injector
+EAPI=6
+HOMEPAGE=http://hexinject.sourceforge.net/
+IUSE=+tools experimental
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=net-libs/libpcap experimental? ( dev-lang/tcl )
+SLOT=0
+SRC_URI=mirror://sourceforge/hexinject/hexinject-1.6.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=ecb5cbe9733f4273e13be40281db732f
