@@ -1,0 +1,27 @@
+From a8628cb9690900f6bbf44b8cd509ab53d1c16c15 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Thu, 26 Oct 2017 11:27:10 +1300
+Subject: Fix tests failing without '.' in @INC
+
+Bug: https://rt.cpan.org/Ticket/Display.html?id=121450
+Bug: https://bugs.gentoo.org/616994
+---
+ t/11-redirect-oo.pl | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/t/11-redirect-oo.pl b/t/11-redirect-oo.pl
+index 385d6d4..9203500 100644
+--- a/t/11-redirect-oo.pl
++++ b/t/11-redirect-oo.pl
+@@ -1,7 +1,7 @@
+ use blib;
+ use IO::Pager;
+ 
+-our $txt; require 't/08-redirect.pl';
++our $txt; require './t/08-redirect.pl';
+ 
+ my $FH = new IO::Pager;
+ $FH->print($txt);
+-- 
+2.14.3
+
