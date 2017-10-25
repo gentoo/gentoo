@@ -17876,7 +17876,7 @@ sys-kernel/mips-sources 4.4.91 4.9.54 4.11.12 4.12.14: Linux-Mips GIT sources fo
 sys-kernel/pf-sources 4.4_p8 4.5_p4 4.8_p8 4.10_p3 4.11_p3 4.11_p4 4.13_p4: Linux kernel fork with new features (-ck patchset (BFS), BFQ, TuxOnIce and UKSM)
 sys-kernel/raspberrypi-image 4.1.17_p20160209 4.1.19_p20160309 9999: Raspberry PI boot loader and firmware
 sys-kernel/raspberrypi-sources 4.4.9999 4.9.9999 4.10.9999 4.11.9999 4.12.9999 4.13.9999 4.14.9999: Raspberry PI kernel sources
-sys-kernel/rt-sources 3.18.59_p65 3.18.69_p75 4.1.42_p49 4.1.42_p50 4.4.79_p92 4.4.86_p99 4.9.40_p30 4.9.47_p37 4.11.12_p9 4.11.12_p13 4.11.12_p14: Full Linux 4.11 kernel sources with the CONFIG_PREEMPT_RT patch
+sys-kernel/rt-sources 3.18.69_p75 4.1.42_p50 4.4.86_p99 4.9.47_p37 4.11.12_p13 4.11.12_p14 4.11.12_p16 4.13.7_p1: Full Linux 4.13 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.6.0_rc13-r2 0.6.0_rc14-r3 0.6.1-r3 0.6.2-r5 0.6.3-r1 0.6.4.2 0.6.5.2 0.6.5.3 0.6.5.3-r1 0.6.5.4 0.6.5.4-r1 0.6.5.6 0.6.5.7 0.6.5.8 0.6.5.9 0.6.5.10 0.6.5.11 0.7.0 0.7.1 0.7.2 9999: The Solaris Porting Layer is a Linux kernel module which provides many of the Solaris kernel APIs
 sys-kernel/tuxonice-sources 3.4.110 3.4.111 3.4.112 3.10.100 3.10.101 3.12.56 3.12.58 3.12.60 3.14.64 3.14.67 3.14.70 3.18.28 3.18.31 3.18.34 4.1.19 4.1.22 4.1.24 4.2.8 4.3.6 4.4.5 4.4.8 4.4.11 4.5.2 4.5.4: TuxOnIce + Gentoo patchset sources
 sys-kernel/vanilla-sources 3.2.94 3.10.107 3.16.49 4.1.45 4.4.94 4.9.58 4.12.14 4.13.9: Full sources for the Linux kernel
