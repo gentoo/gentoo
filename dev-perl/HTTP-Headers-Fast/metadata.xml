@@ -5,4 +5,8 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="cpan">HTTP-Headers-Fast</remote-id>
+    <remote-id type="cpan-module">HTTP::Headers::Fast</remote-id>
+  </upstream>
 </pkgmetadata>
