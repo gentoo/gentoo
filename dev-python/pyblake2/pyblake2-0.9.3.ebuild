@@ -43,27 +43,6 @@ python_prepare_all() {
 	# uncomment the implementation of choice
 	sed -i -e "/BLAKE2_COMPRESS_$(blake2_impl)/s:^#::" setup.py || die
 
-	# avoid segfault due to over(?) optimisation
-	if [[ ${CHOST} == *86*-darwin* ]] ; then
-		local march=$(get-flag march)
-		# expand "native" into the used cpu optmisation
-		if [[ ${march} == native ]] ; then
-			# we're always on Clang here	
-			march=$(llc --version | grep "Host CPU:")
-			march=${march##*: }
-		fi
-		# compiling for haswell cpu results in a segfault when used
-		# with optimisation >O1, since optimisation here benefits more
-		# than cpu specific instructions, reduce to ivybridge level
-		case ${march} in
-			haswell|broadwell|skylake*)
-				local opt=$(get-flag -O)
-				[[ ${opt#-O} -gt 1 ]] && \
-					replace-flags -march=* -march=ivybridge
-				;;
-		esac
-	fi
-
 	distutils-r1_python_prepare_all
 }
 
