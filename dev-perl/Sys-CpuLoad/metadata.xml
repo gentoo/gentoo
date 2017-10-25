@@ -6,7 +6,7 @@
     <name>Gentoo Perl Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="cpan">HTML-StripScripts-Parser</remote-id>
-    <remote-id type="cpan-module">HTML::StripScripts::Parser</remote-id>
+    <remote-id type="cpan">Sys-CpuLoad</remote-id>
+    <remote-id type="cpan-module">Sys::CpuLoad</remote-id>
   </upstream>
 </pkgmetadata>

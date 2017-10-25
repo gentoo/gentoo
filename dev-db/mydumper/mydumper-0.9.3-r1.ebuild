@@ -23,7 +23,7 @@ DEPEND="${CDEPEND}
 	doc? ( dev-python/sphinx )"
 RDEPEND="${CDEPEND}"
 
-PATCHES=( "${FILESDIR}/${PN}-mariadb-include-fix.patch" )
+PATCHES=( "${FILESDIR}/${PN}-mariadb-define.patch" )
 
 src_prepare() {
 	# respect user cflags; do not expand ${CMAKE_C_FLAGS} (!)
