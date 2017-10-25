@@ -13379,7 +13379,7 @@ media-plugins/gst-plugins-libnice 0.1.13 0.1.13-r100: GStreamer plugin for ICE (
 media-plugins/gst-plugins-libpng 0.10.31-r1 1.10.3 1.10.5 1.12.3: PNG image encoder/decoder plugin for GStreamer
 media-plugins/gst-plugins-libvisual 0.10.36-r1 1.10.3 1.10.5 1.12.3: Visualization elements for GStreamer
 media-plugins/gst-plugins-mad 0.10.19-r1 1.10.3 1.10.5: MP3 decoder plugin for GStreamer
-media-plugins/gst-plugins-meta 0.10-r11 1.8.3 1.10.3 1.10.5: Meta ebuild to pull in gst plugins for apps
+media-plugins/gst-plugins-meta 0.10-r11 1.8.3 1.10.3 1.10.5 1.12.3: Meta ebuild to pull in gst plugins for apps
 media-plugins/gst-plugins-modplug 0.10.23-r1 1.10.3 1.10.5 1.12.3: MOD audio decoder plugin for GStreamer
 media-plugins/gst-plugins-mpeg2dec 0.10.19-r1 1.10.3 1.10.5 1.12.3: MPEG2 decoder plugin for GStreamer
 media-plugins/gst-plugins-mpeg2enc 0.10.23-r1 1.10.3 1.10.5 1.12.3: MPEG-1/2 video encoding plugin for GStreamer
