@@ -29,7 +29,7 @@ IUSE="
 	apparmor audit +caps +dbus firewalld fuse glusterfs iscsi +libvirtd lvm
 	libssh lxc +macvtap nfs nls numa openvz parted pcap phyp policykit
 	+qemu rbd sasl selinux +udev uml +vepa virtualbox virt-network
-	wireshark-plugins xen zeroconf zfs elibc_glibc
+	wireshark-plugins xen zeroconf zfs
 "
 
 REQUIRED_USE="
@@ -68,7 +68,6 @@ RDEPEND="
 	audit? ( sys-process/audit )
 	caps? ( sys-libs/libcap-ng )
 	dbus? ( sys-apps/dbus )
-	elibc_glibc? ( sys-libs/glibc[rpc(+)] )
 	firewalld? ( net-firewall/firewalld )
 	fuse? ( >=sys-fs/fuse-2.8.6:= )
 	glusterfs? ( >=sys-cluster/glusterfs-3.4.1 )
@@ -126,6 +125,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.0-fix_paths_for_apparmor.patch
 	"${FILESDIR}"/${PN}-1.3.4-glibc-2.23.patch
 	"${FILESDIR}"/${PN}-3.1.0-musl-fix-includes.patch          # bug #609488
+	"${FILESDIR}"/${PN}-3.8.0-CVE-2017-1000256.patch           # bug #635174
 )
 
 pkg_setup() {
