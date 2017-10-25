@@ -50,7 +50,9 @@ RDEPEND="
 	tcl? ( dev-lang/tcl:0= )
 	X? ( x11-libs/libXt )
 "
-DEPEND="${RDEPEND}
+
+DEPEND="
+	${RDEPEND}
 	sys-devel/autoconf
 	nls? ( sys-devel/gettext )
 "
@@ -312,12 +314,9 @@ src_install() {
 	fi
 
 	newbashcomp "${FILESDIR}"/${PN}-completion ${PN}
+
 	# keep in sync with 'complete ... -F' list
 	bashcomp_alias vim ex vi view rvim rview vimdiff
-
-	# We shouldn't be installing the ex or view man page symlinks, as they
-	# are managed by eselect-vi
-	rm "${ED}"/usr/share/man/man1/{ex,view}.1 || die
 }
 
 pkg_postinst() {
