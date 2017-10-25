@@ -23,7 +23,6 @@ COMMON_DEPEND="
 	>=x11-libs/gdk-pixbuf-2.36.5:2
 	>=gnome-base/gnome-desktop-2.91.2:3=
 	dev-libs/icu:=
-	>=dev-libs/json-glib-1.2.0
 	>=x11-libs/libnotify-0.5.1:=
 	>=app-crypt/libsecret-0.14
 	>=net-libs/libsoup-2.48:2.4
