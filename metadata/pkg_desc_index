@@ -6074,7 +6074,7 @@ dev-perl/IO-Interactive 1.21.0: Utilities for interactive I/O
 dev-perl/IO-Interface 1.90.0: Perl extension for access to network card configuration information
 dev-perl/IO-LockedFile 0.230.0-r1: Supply object methods for locking files
 dev-perl/IO-Multiplex 1.160.0: Manage IO on many file handles
-dev-perl/IO-Pager 0.350.0: Select a pager, optionally pipe it output if destination is a TTY
+dev-perl/IO-Pager 0.350.0 0.390.0: Select a pager, optionally pipe it output if destination is a TTY
 dev-perl/IO-Pipely 0.005.0: Portably create pipe() or pipe-like handles, one way or another
 dev-perl/IO-Prompt 0.997.4: Interactively prompt for user input
 dev-perl/IO-SessionData 1.30.0: Session data support module for SOAP::Lite
@@ -11680,7 +11680,7 @@ games-util/xgame 1.7.1 1.7.1-r1: Run games in a separate X session
 games-util/xgame-gtk2 2.0.2 2.0.2-r1: Run games in a separate X session
 games-util/xgamer 0.6.2: A launcher for starting games in a second X session
 games-util/xqf 1.0.6.2: A server browser for many FPS games (frontend for qstat)
-gnome-base/dconf 0.26.0-r1: Simple low-level configuration system
+gnome-base/dconf 0.26.0-r1 0.26.1: Simple low-level configuration system
 gnome-base/dconf-editor 3.22.3: Graphical tool for editing the dconf configuration database
 gnome-base/gconf 3.2.6-r4: GNOME configuration system and daemon
 gnome-base/gdm 3.22.3-r1 3.24.2 3.24.3: GNOME Display Manager for managing graphical display servers and user logins
