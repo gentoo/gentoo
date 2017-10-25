@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=sys-libs/ncurses:0=[unicode?] sys-libs/readline:0=
+DESCRIPTION=A text mode interface for git
+EAPI=6
+HOMEPAGE=https://jonas.github.io/tig/
+IUSE=unicode
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+LICENSE=GPL-2
+RDEPEND=sys-libs/ncurses:0=[unicode?] sys-libs/readline:0= dev-vcs/git
+SLOT=0
+SRC_URI=https://github.com/jonas/tig/releases/download/tig-2.3.0/tig-2.3.0.tar.gz
+_eclasses_=bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=bd52e7a9aadb9dbe68b6b85707052982
