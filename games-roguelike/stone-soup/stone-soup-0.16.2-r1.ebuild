@@ -37,7 +37,7 @@ RDEPEND="
 		media-fonts/dejavu
 		media-libs/freetype:2
 		media-libs/libpng:0
-		media-libs/libsdl2[opengl,video]
+		media-libs/libsdl2[X,opengl,video]
 		media-libs/sdl2-image[png]
 		virtual/glu
 		virtual/opengl

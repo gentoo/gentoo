@@ -7,7 +7,7 @@ inherit autotools libtool flag-o-matic
 
 DESCRIPTION="C++ API interface to the MySQL database"
 HOMEPAGE="http://tangentsoft.net/mysql++/"
-SRC_URI="http://www.tangentsoft.net/mysql++/releases/${P}.tar.gz"
+SRC_URI="http://www.tangentsoft.net/mysqlpp/releases/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0/3"
@@ -17,15 +17,20 @@ IUSE="doc"
 RDEPEND="virtual/libmysqlclient:="
 DEPEND="${RDEPEND}"
 DOCS=( CREDITS.txt HACKERS.txt Wishlist doc/ssqls-pretty )
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.2.1-gold.patch
+	"${FILESDIR}"/${PN}-3.2.3-mariadb-10.2.patch
+	"${FILESDIR}"/${PN}-3.2.3-as-needed.patch
+)
 
 src_prepare() {
 	# Bug filed upstream about deprecated std::auto_ptr
 	append-cxxflags $(test-flags-CXX -Wno-deprecated-declarations)
 	# Bad symlink for libtool in the archive
 	rm "${S}/ltmain.sh" || die
-	eapply "${FILESDIR}/${PN}-3.2.1-gold.patch"
-	eapply "${FILESDIR}/${PN}-3.2.3-mariadb-10.2.patch"
-	eapply_user
+
+	default
+
 	_elibtoolize --auto-ltdl --install --copy --force
 	elibtoolize
 	# Current MySQL libraries are always with threads and slowly being removed
