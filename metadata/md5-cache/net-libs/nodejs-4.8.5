@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare pretend setup test
+DEPEND=icu? ( >=dev-libs/icu-55:= ) npm? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[threads] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] ) >=net-libs/http-parser-2.5.2:= >=dev-libs/libuv-1.8.0:= >=dev-libs/openssl-1.0.2g:0=[-bindist] sys-libs/zlib python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[threads] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] test? ( net-misc/curl )
+DESCRIPTION=A JavaScript runtime built on Chrome's V8 JavaScript engine
+EAPI=5
+HOMEPAGE=https://nodejs.org/
+IUSE=cpu_flags_x86_sse2 debug icu +npm snapshot +ssl test python_targets_python2_7
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc64 ~x86 ~x64-macos
+LICENSE=Apache-1.1 Apache-2.0 BSD BSD-2 MIT
+RDEPEND=icu? ( >=dev-libs/icu-55:= ) npm? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[threads] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] ) >=net-libs/http-parser-2.5.2:= >=dev-libs/libuv-1.8.0:= >=dev-libs/openssl-1.0.2g:0=[-bindist] sys-libs/zlib
+REQUIRED_USE=python_targets_python2_7
+SLOT=0
+SRC_URI=https://nodejs.org/dist/v4.8.5/node-v4.8.5.tar.xz
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	pax-utils	4f95120230a315c8caaabeb2307b7eee	python-single-r1	317a2557b4d7319a7418225f65accf77	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=549b3a85a4be0f00c8601a8607f6b883
