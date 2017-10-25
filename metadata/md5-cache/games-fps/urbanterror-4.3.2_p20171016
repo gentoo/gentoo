@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst postrm preinst pretend
+DEPEND=client? ( media-libs/libsdl2[X,sound,joystick,opengl,video] mumble? ( media-sound/mumble ) openal? ( media-libs/openal ) opus? ( media-libs/opusfile ) vorbis? ( media-libs/libogg media-libs/libvorbis ) ) curl? ( net-misc/curl ) ~games-fps/urbanterror-data-4.3.2 sys-libs/zlib[minizip] virtual/jpeg:0 >=sys-apps/sed-4
+DESCRIPTION=Hollywood tactical shooter based on the ioquake3 engine
+EAPI=6
+HOMEPAGE=http://urbanterror.info https://github.com/mickael9/ioq3
+IUSE=+altgamma +client +curl debug mumble openal +opus server voip vorbis
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=client? ( media-libs/libsdl2[X,sound,joystick,opengl,video] mumble? ( media-sound/mumble ) openal? ( media-libs/openal ) opus? ( media-libs/opusfile ) vorbis? ( media-libs/libogg media-libs/libvorbis ) ) curl? ( net-misc/curl ) ~games-fps/urbanterror-data-4.3.2 sys-libs/zlib[minizip] virtual/jpeg:0
+REQUIRED_USE=|| ( client server )
+SLOT=0
+SRC_URI=https://github.com/mickael9/ioq3/archive/3e555ab1405c38556cbfcdd42eac23a4af49e633.tar.gz -> urbanterror-4.3.2_p20171016.tar.gz
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	gnome2-utils	4d211d7614f303710fca59db6ec12c88	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=804396ec7e858d289e0bd5fafcb6235d
