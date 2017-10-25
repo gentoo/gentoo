@@ -5,5 +5,5 @@
      exec xmessage -center -buttons OK:0 -default OK "Sorry, $DESKTOP_SESSION is no valid session."
  else
 -    exec $@
-+    exec ck-launch-session $@
++    exec ck-launch-session dbus-launch --sh-syntax --exit-with-session $@
  fi
