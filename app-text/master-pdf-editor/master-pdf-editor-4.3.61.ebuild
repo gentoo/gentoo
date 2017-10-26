@@ -13,7 +13,6 @@ SRC_URI="http://get.code-industry.net/public/${P}_qt5.amd64.tar.gz"
 LICENSE="master-pdf-editor"
 SLOT="0"
 KEYWORDS="~amd64"
-#IUSE="qt5"
 
 BIN_COMMON_DEPEND="
 	app-arch/bzip2
