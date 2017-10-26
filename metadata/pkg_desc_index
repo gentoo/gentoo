@@ -2525,7 +2525,7 @@ app-text/zathura-pdf-poppler 0.2.5 0.2.7 9999: PDF plug-in for zathura
 app-text/zathura-ps 0.2.2 0.2.4 9999: PostScript plug-in for zathura
 app-text/zemberek-server 0.7.1 0.7.1-r1: A Turkish spell checker server based on Zemberek NLP library
 app-text/zpspell 0.4.3-r1: Zemberek-Pardus spell checker interface
-app-vim/ackvim 1.0.9 1.0.9-r1: vim plugin: run ack from vim
+app-vim/ackvim 1.0.9-r1: vim plugin: run ack from vim
 app-vim/airline 0.8 9999: vim plugin: lean & mean statusline for vim that's light as air
 app-vim/airline-themes 9999: vim plugin: a collection of themes for vim-airline
 app-vim/align 43: vim plugin: commands and maps to help produce aligned text
@@ -17304,7 +17304,7 @@ sys-apps/superiotool 6637 99999999: util to detect Super I/O chips and functiona
 sys-apps/sydbox 1.0.7: ptrace-based sandbox
 sys-apps/syscriptor 1.5.15: display misc information about your hardware
 sys-apps/syslog-notify 0.2: Notifications for syslog entries via libnotify
-sys-apps/systemd 233-r4 234-r4 235 9999: System and service manager for Linux
+sys-apps/systemd 233-r4 233-r5 234-r4 235-r1 9999: System and service manager for Linux
 sys-apps/systemd-readahead 216: Split of readahead systemd implementation
 sys-apps/sysvinit 2.88-r9: /sbin/init - parent of all processes
 sys-apps/tcp-wrappers 7.6.22-r1: TCP Wrappers
