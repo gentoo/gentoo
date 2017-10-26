@@ -6061,7 +6061,7 @@ dev-perl/Heap 0.800.0-r1 0.800.0-r2: Perl extensions for keeping data partially 
 dev-perl/Hook-LexWrap 0.250.0 0.260.0: Lexically scoped subroutine wrappers
 dev-perl/IMAP-Admin 1.6.7-r1 1.6.8: Perl module for basic IMAP server administration
 dev-perl/IMAP-BodyStructure 1.30.0: IMAP4-compatible BODYSTRUCTURE and ENVELOPE parser
-dev-perl/IO-AIO 4.330.0: Asynchronous Input/Output
+dev-perl/IO-AIO 4.330.0 4.340.0: Asynchronous Input/Output
 dev-perl/IO-All 0.860.0 0.870.0: unified IO operations
 dev-perl/IO-BufferedSelect 1.0.0-r1: Perl module that implements a line-buffered select interface
 dev-perl/IO-Capture 0.50.0-r1: Abstract Base Class to build modules to capture output
@@ -6070,7 +6070,7 @@ dev-perl/IO-Digest 0.110.0-r2: IO::Digest - Calculate digests while reading or w
 dev-perl/IO-Event 0.813.0: Tied Filehandles for Nonblocking IO with Object Callbacks
 dev-perl/IO-HTML 1.1.0: Open an HTML file with automatic charset detection
 dev-perl/IO-Handle-Util 0.10.0: Functions for working with IO::Handle like objects
-dev-perl/IO-Interactive 1.21.0: Utilities for interactive I/O
+dev-perl/IO-Interactive 1.21.0 1.22.0: Utilities for interactive I/O
 dev-perl/IO-Interface 1.90.0: Perl extension for access to network card configuration information
 dev-perl/IO-LockedFile 0.230.0-r1: Supply object methods for locking files
 dev-perl/IO-Multiplex 1.160.0: Manage IO on many file handles
@@ -6081,7 +6081,7 @@ dev-perl/IO-SessionData 1.30.0: Session data support module for SOAP::Lite
 dev-perl/IO-Socket-INET6 2.720.0: Work with IO sockets in ipv6
 dev-perl/IO-Socket-Multicast 1.120.0: Send and receive multicast messages
 dev-perl/IO-Socket-PortState 0.30.0: Perl extension for checking the open or closed status of a port
-dev-perl/IO-Socket-SSL 2.24.0 2.39.0 2.40.0 2.43.0 2.45.0 2.47.0 2.48.0: Nearly transparent SSL encapsulation for IO::Socket::INET
+dev-perl/IO-Socket-SSL 2.24.0 2.39.0 2.40.0 2.43.0 2.45.0 2.47.0 2.48.0 2.52.0: Nearly transparent SSL encapsulation for IO::Socket::INET
 dev-perl/IO-Socket-Timeout 0.320.0: IO::Socket with read/write timeout
 dev-perl/IO-String 1.80.0-r1: IO::File interface for in-core strings
 dev-perl/IO-Stty 0.30.0: Change and print terminal line settings
