@@ -6028,7 +6028,7 @@ dev-perl/HTML-TagFilter 1.30.0: A fine-grained html-filter, xss-blocker and mail
 dev-perl/HTML-Tagset 3.200.0-r1: Data tables useful in parsing HTML
 dev-perl/HTML-Template 2.950.0 2.970.0: A Perl module to use HTML Templates
 dev-perl/HTML-Template-Expr 0.70.0-r1: HTML::Template extension adding expression support
-dev-perl/HTML-Template-JIT 0.50.0-r1 0.50.0-r2: a just-in-time compiler for HTML::Template
+dev-perl/HTML-Template-JIT 0.50.0-r1 0.50.0-r3: a just-in-time compiler for HTML::Template
 dev-perl/HTML-Template-Pro 0.951.0: Perl/XS module to use HTML Templates from CGI scripts
 dev-perl/HTML-TokeParser-Simple 3.160.0-r1: Easy to use HTML::TokeParser interface
 dev-perl/HTML-Tree 5.60.0 5.70.0: A library to manage HTML-Tree in PERL
@@ -6059,7 +6059,7 @@ dev-perl/Hash-MultiValue 0.160.0: Store multiple values per key
 dev-perl/Hash-NoRef 0.30.0-r1 0.30.0-r2: Hash to store values without increasing reference count (weak references)
 dev-perl/Heap 0.800.0-r1 0.800.0-r2: Perl extensions for keeping data partially sorted
 dev-perl/Hook-LexWrap 0.250.0 0.260.0: Lexically scoped subroutine wrappers
-dev-perl/IMAP-Admin 1.6.7-r1: Perl module for basic IMAP server administration
+dev-perl/IMAP-Admin 1.6.7-r1 1.6.8: Perl module for basic IMAP server administration
 dev-perl/IMAP-BodyStructure 1.30.0: IMAP4-compatible BODYSTRUCTURE and ENVELOPE parser
 dev-perl/IO-AIO 4.330.0: Asynchronous Input/Output
 dev-perl/IO-All 0.860.0 0.870.0: unified IO operations
