@@ -22,5 +22,3 @@ DEPEND="${RDEPEND}
 	virtual/perl-Socket
 	test? ( virtual/perl-Test-Simple )
 "
-
-SRC_TEST="do parallel"
