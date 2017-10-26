@@ -5,4 +5,10 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="cpan">IO-Socket-Timeout</remote-id>
+    <remote-id type="cpan-module">IO::Socket::Timeout</remote-id>
+    <remote-id type="cpan-module">IO::Socket::Timeout::Role::PerlIO</remote-id>
+    <remote-id type="cpan-module">IO::Socket::Timeout::Role::SetSockOpt</remote-id>
+  </upstream>
 </pkgmetadata>
