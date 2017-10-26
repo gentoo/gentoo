@@ -1,4 +1,4 @@
-/var/log/kube-scheduler/* {
+/var/log/kube-scheduler/*.log {
 	missingok
 	size 5M
 	rotate 3
