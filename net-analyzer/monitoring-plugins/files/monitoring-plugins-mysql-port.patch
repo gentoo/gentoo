@@ -1,0 +1,44 @@
+diff --git a/plugins/check_mysql.c b/plugins/check_mysql.c
+index 5773afd..94b13a5 100644
+--- a/plugins/check_mysql.c
++++ b/plugins/check_mysql.c
+@@ -58,7 +58,7 @@ char *ciphers = NULL;
+ bool ssl = false;
+ char *opt_file = NULL;
+ char *opt_group = NULL;
+-unsigned int db_port = MYSQL_PORT;
++unsigned int db_port = 3306;
+ int check_slave = 0, warn_sec = 0, crit_sec = 0;
+ int ignore_auth = 0;
+ int verbose = 0;
+@@ -505,7 +505,7 @@ void
+ print_help (void)
+ {
+ 	char *myport;
+-	xasprintf (&myport, "%d", MYSQL_PORT);
++	xasprintf (&myport, "%d", db_port);
+ 
+ 	print_revision (progname, NP_VERSION);
+ 
+diff --git a/plugins/check_mysql_query.c b/plugins/check_mysql_query.c
+index 49a14dd..857a2cb 100644
+--- a/plugins/check_mysql_query.c
++++ b/plugins/check_mysql_query.c
+@@ -48,7 +48,7 @@ char *db_pass = NULL;
+ char *db = NULL;
+ char *opt_file = NULL;
+ char *opt_group = NULL;
+-unsigned int db_port = MYSQL_PORT;
++unsigned int db_port = 3306;
+ 
+ int process_arguments (int, char **);
+ int validate_arguments (void);
+@@ -299,7 +299,7 @@ void
+ print_help (void)
+ {
+ 	char *myport;
+-	xasprintf (&myport, "%d", MYSQL_PORT);
++	xasprintf (&myport, "%d", db_port);
+ 
+ 	print_revision (progname, NP_VERSION);
+ 
