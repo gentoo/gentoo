@@ -302,39 +302,12 @@ src_test() {
 	emake -j1 VIMPROG=../testvim -C src/testdir nongui
 }
 
-# Make convenience symlinks, hopefully without stepping on toes.  Some
-# of these links are "owned" by the vim ebuild when it is installed,
-# but they might be good for gvim as well (see bug 45828)
-update_vim_symlinks() {
-	local f syms
-	syms="vimdiff rvim rview"
+# Call eselect vi update with --if-unset
+# to respect user's choice (bug 187449)
+eselect_vi_update() {
 	einfo "Calling eselect vi update..."
-	# Call this with --if-unset to respect user's choice (bug 187449)
 	eselect vi update --if-unset
-
-	# Make or remove convenience symlink, vim -> gvim
-	if [[ -f "${EROOT}"/usr/bin/gvim ]]; then
-		ln -s gvim "${EROOT}"/usr/bin/vim 2>/dev/null || die
-	elif [[ -L "${EROOT}"/usr/bin/vim && ! -f "${EROOT}"/usr/bin/vim ]]; then
-		rm "${EROOT}"/usr/bin/vim || die
-	fi
-
-	# Make or remove convenience symlinks to vim
-	if [[ -f "${EROOT}"/usr/bin/vim ]]; then
-		for f in ${syms}; do
-			ln -s vim "${EROOT}"/usr/bin/${f} 2>/dev/null || die
-		done
-	else
-		for f in ${syms}; do
-			if [[ -L "${EROOT}"/usr/bin/${f} && ! -f "${EROOT}"/usr/bin/${f} ]]; then
-				rm -v "${EROOT}"/usr/bin/${f} || die
-			fi
-		done
-	fi
-
-	# This will still break if you merge then remove the vi package,
-	# but there's only so much you can do, eh?  Unfortunately we don't
-	# have triggers like are done in rpm-land.
+	eend $?
 }
 
 src_install() {
@@ -379,8 +352,8 @@ pkg_postinst() {
 	# Update icon cache
 	gnome2_icon_cache_update
 
-	# Make convenience symlinks
-	update_vim_symlinks
+	# Call eselect vi update
+	eselect_vi_update
 }
 
 pkg_postrm() {
@@ -393,6 +366,6 @@ pkg_postrm() {
 	# Update icon cache
 	gnome2_icon_cache_update
 
-	# Make convenience symlinks
-	update_vim_symlinks
+	# Call eselect vi update
+	eselect_vi_update
 }
