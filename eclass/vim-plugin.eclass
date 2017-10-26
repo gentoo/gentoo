@@ -93,7 +93,7 @@ vim-plugin_pkg_postinst() {
 # @DESCRIPTION:
 # Overrides the pkg_postrm phase for this eclass.
 # This function calls the update_vim_helptags and update_vim_afterscripts
-# functions and enventually removes a bunch of empty directories.
+# functions and eventually removes a bunch of empty directories.
 vim-plugin_pkg_postrm() {
 	has "${EAPI:-0}" 0 1 2 && ! use prefix && EPREFIX=
 	update_vim_helptags		# from vim-doc
