@@ -51,7 +51,6 @@ sys-devel/autoconf:2.59
 sys-devel/autoconf:2.61
 sys-devel/autoconf:2.62
 sys-devel/autoconf:2.63
-sys-devel/autoconf:2.64
 sys-devel/autoconf:2.65
 sys-devel/autoconf:2.67
 sys-devel/autoconf:2.68
