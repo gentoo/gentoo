@@ -11765,7 +11765,7 @@ gnome-extra/gnome-user-share 3.18.3: Personal file sharing for the GNOME desktop
 gnome-extra/gnome-utils 3.8.0: Meta package for utilities for the GNOME desktop
 gnome-extra/gnome-weather 3.20.2 3.24.0: A weather application for GNOME
 gnome-extra/gpointing-device-settings 1.5.1-r3: A GTK+ based configuration utility for the synaptics driver
-gnome-extra/gtkhtml 4.8.5 4.10.0: Lightweight HTML rendering/printing/editing engine
+gnome-extra/gtkhtml 4.10.0: Lightweight HTML rendering/printing/editing engine
 gnome-extra/gucharmap 3.0.1-r200 9.0.2 9.0.4 10.0.0: Unicode character map viewer and library
 gnome-extra/libgda 5.2.4-r2: GNOME database access library
 gnome-extra/libgsf 1.14.41-r1: The GNOME Structured File Library
@@ -18437,7 +18437,7 @@ www-client/otter 0.9.12 0.9.91 9999: Project aiming to recreate classic Opera (1
 www-client/phantomjs 1.9.8 2.0.0-r1 2.1.1: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.12.1 0.13 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qupzilla 2.1.2 2.2.0: A cross-platform web browser using QtWebEngine
-www-client/qutebrowser 0.8.4 0.9.1 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebKit / QtWebEngine
+www-client/qutebrowser 0.9.1 1.0.2 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine
 www-client/ripe-atlas-cousteau 1.0.6 1.0.7 1.2: A Python wrapper around the RIPE Atlas API
 www-client/seamonkey 2.46-r1 2.48 2.48-r1 2.49.4.0_p0: Seamonkey Web Browser
 www-client/seamonkey-bin 2.48 2.49.1_rc2: Mozilla Application Suite - web browser, email, HTML editor, IRC
