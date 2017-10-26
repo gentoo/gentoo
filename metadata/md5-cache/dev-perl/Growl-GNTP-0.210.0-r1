@@ -4,10 +4,10 @@ DESCRIPTION=Perl implementation of GNTP Protocol (Client Part)
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Growl-GNTP/
 IUSE=examples examples
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=examples? ( virtual/perl-Encode ) >=dev-perl/Crypt-CBC-2.290.0 >=dev-perl/Data-UUID-0.149.0 >=virtual/perl-Digest-MD5-2.360.0 >=virtual/perl-Digest-SHA-5.450.0 virtual/perl-IO dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/M/MA/MATTN/Growl-GNTP-0.21.tar.gz
 _eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
-_md5_=06ed5760998c8551c17dc6cef45144dc
+_md5_=51ad59bf6f0e8ecd14cbb4547c5f5735
