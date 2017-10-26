@@ -13,6 +13,9 @@
 # Keep it simple, we do not really care about the date or who masked it, we want
 # to be easily able to determine what we need to keyword.
 
+# net-dns/libidn2
+net-misc/wget idn
+
 # net-libs/gnome-online-accounts
 gnome-base/gvfs gnome-online-accounts
 
