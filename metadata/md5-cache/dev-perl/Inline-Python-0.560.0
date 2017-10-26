@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=virtual/perl-Data-Dumper >=virtual/perl-Digest-MD5-2.500.0 >=dev-perl/Inline-0.460.0 python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_single_target_python3_4? ( dev-lang/python:3.4 ) python_single_target_python3_5? ( dev-lang/python:3.5 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)?,python_single_target_python3_4(+)?,python_single_target_python3_5(+)?] virtual/perl-ExtUtils-MakeMaker test? ( >=dev-perl/Proc-ProcessTable-0.530.0 virtual/perl-Test-Simple dev-perl/Test-Deep dev-perl/Test-Number-Delta virtual/perl-Test ) dev-lang/perl:=
+DESCRIPTION=Easy implementation of Python extensions
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Inline-Python/
+IUSE=test python_targets_python2_7 python_targets_python3_4 python_targets_python3_5 python_single_target_python2_7 python_single_target_python3_4 python_single_target_python3_5
+KEYWORDS=~amd64 ~sparc ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Data-Dumper >=virtual/perl-Digest-MD5-2.500.0 >=dev-perl/Inline-0.460.0 python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_single_target_python3_4? ( dev-lang/python:3.4 ) python_single_target_python3_5? ( dev-lang/python:3.5 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)?,python_single_target_python3_4(+)?,python_single_target_python3_5(+)?] dev-lang/perl:=
+REQUIRED_USE=^^ ( python_single_target_python2_7 python_single_target_python3_4 python_single_target_python3_5 ) python_single_target_python2_7? ( python_targets_python2_7 ) python_single_target_python3_4? ( python_targets_python3_4 ) python_single_target_python3_5? ( python_targets_python3_5 )
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/N/NI/NINE/Inline-Python-0.56.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011	python-single-r1	317a2557b4d7319a7418225f65accf77	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=75141b8d362b549de7f396f3c8a91b33
