@@ -6063,11 +6063,11 @@ dev-perl/IMAP-Admin 1.6.7-r1 1.6.8: Perl module for basic IMAP server administra
 dev-perl/IMAP-BodyStructure 1.30.0: IMAP4-compatible BODYSTRUCTURE and ENVELOPE parser
 dev-perl/IO-AIO 4.330.0 4.340.0: Asynchronous Input/Output
 dev-perl/IO-All 0.860.0 0.870.0: unified IO operations
-dev-perl/IO-BufferedSelect 1.0.0-r1: Perl module that implements a line-buffered select interface
-dev-perl/IO-Capture 0.50.0-r1: Abstract Base Class to build modules to capture output
-dev-perl/IO-CaptureOutput 1.110.400: Capture STDOUT and STDERR from Perl code, subprocesses or XS
+dev-perl/IO-BufferedSelect 1.0.0-r1 1.0.0-r2: Perl module that implements a line-buffered select interface
+dev-perl/IO-Capture 0.50.0-r1 0.50.0-r2: Abstract Base Class to build modules to capture output
+dev-perl/IO-CaptureOutput 1.110.400 1.110.400-r1: Capture STDOUT and STDERR from Perl code, subprocesses or XS
 dev-perl/IO-Digest 0.110.0-r2: IO::Digest - Calculate digests while reading or writing
-dev-perl/IO-Event 0.813.0: Tied Filehandles for Nonblocking IO with Object Callbacks
+dev-perl/IO-Event 0.813.0 0.813.0-r1: Tied Filehandles for Nonblocking IO with Object Callbacks
 dev-perl/IO-HTML 1.1.0: Open an HTML file with automatic charset detection
 dev-perl/IO-Handle-Util 0.10.0: Functions for working with IO::Handle like objects
 dev-perl/IO-Interactive 1.21.0 1.22.0: Utilities for interactive I/O
@@ -6075,10 +6075,10 @@ dev-perl/IO-Interface 1.90.0: Perl extension for access to network card configur
 dev-perl/IO-LockedFile 0.230.0-r1: Supply object methods for locking files
 dev-perl/IO-Multiplex 1.160.0: Manage IO on many file handles
 dev-perl/IO-Pager 0.350.0 0.390.0: Select a pager, optionally pipe it output if destination is a TTY
-dev-perl/IO-Pipely 0.005.0: Portably create pipe() or pipe-like handles, one way or another
+dev-perl/IO-Pipely 0.005.0 0.5.0-r1: Portably create pipe() or pipe-like handles, one way or another
 dev-perl/IO-Prompt 0.997.4: Interactively prompt for user input
-dev-perl/IO-SessionData 1.30.0: Session data support module for SOAP::Lite
-dev-perl/IO-Socket-INET6 2.720.0: Work with IO sockets in ipv6
+dev-perl/IO-SessionData 1.30.0 1.30.0-r1: Session data support module for SOAP::Lite
+dev-perl/IO-Socket-INET6 2.720.0 2.720.0-r1: Work with IO sockets in ipv6
 dev-perl/IO-Socket-Multicast 1.120.0: Send and receive multicast messages
 dev-perl/IO-Socket-PortState 0.30.0: Perl extension for checking the open or closed status of a port
 dev-perl/IO-Socket-SSL 2.24.0 2.39.0 2.40.0 2.43.0 2.45.0 2.47.0 2.48.0 2.52.0: Nearly transparent SSL encapsulation for IO::Socket::INET
@@ -6088,14 +6088,14 @@ dev-perl/IO-Stty 0.30.0: Change and print terminal line settings
 dev-perl/IO-Tee 0.640.0-r1 0.650.0: Multiplex output to multiple output handles
 dev-perl/IO-TieCombine 1.5.0: produce tied (and other) separate but combined variables
 dev-perl/IO-Tty 1.120.0: IO::Tty and IO::Pty modules for Perl
-dev-perl/IO-Util 1.500.0-r1: A selection of general-utility IO function
+dev-perl/IO-Util 1.500.0-r1 1.500.0-r2: A selection of general-utility IO function
 dev-perl/IO-stringy 2.111.0: A Perl module for I/O on in-core objects like strings and arrays
 dev-perl/IP-Anonymous 0.40.0-r1: Perl port of Crypto-PAn to provide anonymous IP addresses
 dev-perl/IPC-Run 0.940.0 0.960.0: system() and background procs w/ piping, redirs, ptys
 dev-perl/IPC-Run3 0.48.0: Run a subprocess in batch mode (a la system)
 dev-perl/IPC-ShareLite 0.170.0-r1: IPC::ShareLite module for perl
 dev-perl/IPC-Shareable 0.610.0-r1: Share Perl variables between processes
-dev-perl/IPC-Signal 1.0.0-r1: Translate signal names to/from numbers
+dev-perl/IPC-Signal 1.0.0-r1 1.0.0-r2: Translate signal names to/from numbers
 dev-perl/IPC-System-Simple 1.250.0: Run commands simply, with detailed diagnostics
 dev-perl/Ima-DBI 0.350.0-r1: Add contextual fetches to DBI
 dev-perl/Image-Imlib2 2.30.0-r1: Interface to the Imlib2 image library

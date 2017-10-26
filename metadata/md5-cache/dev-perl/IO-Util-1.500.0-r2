@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-lang/perl:=
+DESCRIPTION=A selection of general-utility IO function
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/IO-Util/
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/D/DO/DOMIZIO/IO-Util-1.5.tar.gz
+_eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=630a7f0f1665f9c777228914e4ae2322
