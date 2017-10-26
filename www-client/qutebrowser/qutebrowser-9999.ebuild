@@ -34,14 +34,6 @@ RDEPEND="${COMMON_DEPEND}
 	>=dev-python/pyyaml-3.12[${PYTHON_USEDEP}]
 "
 
-if [[ ${PV} == "9999" ]] ; then
-	# Highlighting needed to create help files.  Alternatively,
-	# scripts/asciidoc2html.py could be patched to optionally set
-	# '--attribute pygments' when calling asciidoc
-	DEPEND="${DEPEND}
-		dev-util/source-highlight"
-fi
-
 # Tests restricted as the deplist (misc/requirements/requirements-tests.txt)
 # isn't complete and X11 is required in order to start up qutebrowser.
 RESTRICT="test"
