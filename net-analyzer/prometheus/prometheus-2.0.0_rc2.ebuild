@@ -7,7 +7,7 @@ inherit user golang-build golang-vcs-snapshot
 EGO_PN="github.com/prometheus/prometheus"
 MY_PV=${PV/_rc/-rc.}
 EGIT_COMMIT="v${MY_PV}"
-PROMETHEUS_COMMIT="5ab8834"
+PROMETHEUS_COMMIT="ce63a5a"
 ARCHIVE_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
 
