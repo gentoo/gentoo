@@ -7,5 +7,7 @@
   </maintainer>
   <upstream>
     <remote-id type="cpan">IMAP-BodyStructure</remote-id>
+    <remote-id type="cpan-module">IMAP::BodyStructure</remote-id>
+    <remote-id type="cpan-module">IMAP::BodyStructure::Envelope</remote-id>
   </upstream>
 </pkgmetadata>
