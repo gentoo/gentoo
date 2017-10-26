@@ -9052,7 +9052,7 @@ dev-qt/qtbluetooth 5.6.2 5.7.1 5.9.2: Bluetooth support library for the Qt5 fram
 dev-qt/qtcharts 5.7.1 5.9.2: Chart component library for the Qt5 framework
 dev-qt/qtchooser 0_p20151008 0_p20170803: Qt4/Qt5 version chooser
 dev-qt/qtconcurrent 5.6.2 5.7.1 5.9.2: Multi-threading concurrence support library for the Qt5 framework
-dev-qt/qtcore 4.8.6-r2 4.8.7-r2 5.6.2-r1 5.7.1-r3 5.9.2: Cross-platform application development framework
+dev-qt/qtcore 4.8.6-r2 4.8.7-r2 4.8.7-r3 5.6.2-r1 5.7.1-r3 5.9.2: Cross-platform application development framework
 dev-qt/qtdatavis3d 5.7.1 5.9.2: 3D data visualization library for the Qt5 framework
 dev-qt/qtdbus 4.8.6-r1 4.8.7 5.6.2 5.7.1 5.9.2: Qt5 module for inter-process communication over the D-Bus protocol
 dev-qt/qtdeclarative 4.8.6-r1 4.8.7 5.6.2 5.7.1 5.7.1-r1 5.9.2: The QML and Quick modules for the Qt5 framework
