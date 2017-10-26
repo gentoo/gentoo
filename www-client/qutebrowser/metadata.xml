@@ -9,10 +9,6 @@
 		<email>jsbronder@gentoo.org</email>
 		<name>Justin Bronder</name>
 	</maintainer>
-	<use>
-		<flag name="webengine">Install packages required for
-		experimental rendering support with webengine.</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">qutebrowser/qutebrowser</remote-id>
 	</upstream>
