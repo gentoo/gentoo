@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Perl SAX 2 XS extension to Expat parser"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE="test"
 
 RDEPEND="dev-libs/expat
