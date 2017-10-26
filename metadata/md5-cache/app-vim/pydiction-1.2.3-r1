@@ -10,5 +10,5 @@ RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targ
 REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_4 python_targets_python3_5 python_targets_python3_6 )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~monsieurp/packages/pydiction-1.2.3.zip
-_eclasses_=multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	python-r1	e9350ec46bb5c9f3504b4fbe8b8d8987	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	185a06792159ca143528e7010368e8af	vim-doc	af2c81a1feeb0a99e91bee3e20769edb	vim-plugin	573d7d5bb2611785411d2e993f727454
+_eclasses_=multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	python-r1	e9350ec46bb5c9f3504b4fbe8b8d8987	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	185a06792159ca143528e7010368e8af	vim-doc	af2c81a1feeb0a99e91bee3e20769edb	vim-plugin	91272006cc17319e95a5165d616ad8d1
 _md5_=5d8f563ed642592cc2de0c2843383fc4

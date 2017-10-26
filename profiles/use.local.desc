@@ -5581,6 +5581,7 @@ net-fs/samba:addc - Enable Active Directory Domain Controller support
 net-fs/samba:addns - Enable AD DNS integration
 net-fs/samba:ads - Enable Active Directory support
 net-fs/samba:aio - Enable asynchronous IO support
+net-fs/samba:ceph - Enable support for Ceph distributed filesystem via sys-cluster/ceph
 net-fs/samba:client - Enables the client part
 net-fs/samba:cluster - Enable support for clustering
 net-fs/samba:dmapi - Enable support for DMAPI. This currently works only in combination with XFS.
