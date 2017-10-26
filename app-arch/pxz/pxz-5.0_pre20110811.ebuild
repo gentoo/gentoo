@@ -11,7 +11,7 @@ SRC_URI="mirror://gentoo/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86 ~amd64-linux"
+KEYWORDS="amd64 ~ppc64 x86 ~amd64-linux"
 IUSE=""
 
 RDEPEND="app-arch/xz-utils"
