@@ -1,0 +1,12 @@
+DEFINED_PHASES=prepare unpack
+DEPEND=app-arch/xz-utils sys-devel/gcc:*[openmp]
+DESCRIPTION=Parallel implementation of the XZ compression utility
+EAPI=6
+HOMEPAGE=http://jnovy.fedorapeople.org/pxz/
+KEYWORDS=~amd64 ~ppc64 ~x86 ~amd64-linux
+LICENSE=GPL-2
+RDEPEND=app-arch/xz-utils sys-devel/gcc:*[openmp]
+SLOT=0
+SRC_URI=https://github.com/jnovy/pxz/archive/fcfea93957d96b7661d1439cf4b767ecfd341eed.tar.gz -> pxz-5.0_pre20151029.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	vcs-snapshot	03289f51c769cf409d200d2d628cdd6e
+_md5_=77a51ec7cc41a601c0b6406f33762f0a
