@@ -6085,7 +6085,7 @@ dev-perl/IO-Socket-SSL 2.24.0 2.39.0 2.40.0 2.43.0 2.45.0 2.47.0 2.48.0 2.52.0: 
 dev-perl/IO-Socket-Timeout 0.320.0: IO::Socket with read/write timeout
 dev-perl/IO-String 1.80.0-r1: IO::File interface for in-core strings
 dev-perl/IO-Stty 0.30.0: Change and print terminal line settings
-dev-perl/IO-Tee 0.640.0-r1: Multiplex output to multiple output handles
+dev-perl/IO-Tee 0.640.0-r1 0.650.0: Multiplex output to multiple output handles
 dev-perl/IO-TieCombine 1.5.0: produce tied (and other) separate but combined variables
 dev-perl/IO-Tty 1.120.0: IO::Tty and IO::Pty modules for Perl
 dev-perl/IO-Util 1.500.0-r1: A selection of general-utility IO function
