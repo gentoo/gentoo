@@ -1,4 +1,4 @@
-/var/log/kube-controller-manager/* {
+/var/log/kube-controller-manager/*.log {
 	missingok
 	size 5M
 	rotate 3
