@@ -15,6 +15,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND=">=dev-perl/HTML-Template-2.8
-	dev-perl/Inline"
+	dev-perl/Inline
+	dev-perl/Inline-C
+"
 DEPEND="${RDEPEND}"
 PATCHES=("${FILESDIR}/${P}-no-dot-inc.patch")
