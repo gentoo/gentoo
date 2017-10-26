@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-perl/Types-Serialiser dev-perl/common-sense !<dev-perl/JSON-2.900.0 !<dev-perl/JSON-Any-1.310.0 dev-perl/Canary-Stability >=virtual/perl-ExtUtils-MakeMaker-6.520.0 test? ( virtual/perl-Test-Harness ) dev-lang/perl:=
+DESCRIPTION=JSON::XS - JSON serialising/deserialising, done correctly and fast
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/JSON-XS/
+IUSE=test examples
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x64-macos ~x86-solaris
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/Types-Serialiser dev-perl/common-sense !<dev-perl/JSON-2.900.0 !<dev-perl/JSON-Any-1.310.0 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/M/ML/MLEHMANN/JSON-XS-3.04.tar.gz
+_eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=2f67c00f2d09e81139758111215c595e
