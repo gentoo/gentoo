@@ -27,7 +27,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
-		app-text/texlive
+		app-text/texlive-core
 		dev-texlive/texlive-latexextra
 	)
 "
