@@ -17240,7 +17240,7 @@ sys-apps/openrc 0.27.2 0.28 0.29 0.30 0.31 0.31.1 0.31.2 0.32 0.32.1 0.33 0.33.1
 sys-apps/opentmpfiles 0.1.1 0.1.2 0.1.3 9999: A standalone utility to process systemd-style tmpfiles.d files
 sys-apps/osinfo-db 20170326 20170423 20170813: osinfo database files
 sys-apps/osinfo-db-tools 1.1.0: Tools for managing the osinfo database
-sys-apps/pacman 5.0.2: Archlinux's binary package manager
+sys-apps/pacman 5.0.2-r1: Archlinux's binary package manager
 sys-apps/paludis 2.6.0 3.0.0_pre20170219 9999: paludis, the other package mangler
 sys-apps/paxctl 0.7-r2 0.8 0.9: Manages various PaX related program header flags for Elf32, Elf64, binaries
 sys-apps/paxctld 1.1 1.2 1.2.1: PaX flags maintenance daemon
