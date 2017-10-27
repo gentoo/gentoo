@@ -52,6 +52,8 @@ RDEPEND="${DEPEND}
 # At least one test is interactive.
 RESTRICT="test"
 
+PATCHES=( "${FILESDIR}/define-own-mysql-port-constant.patch" )
+
 src_configure() {
 	append-flags -fno-strict-aliasing
 
