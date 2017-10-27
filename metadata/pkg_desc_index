@@ -222,7 +222,7 @@ app-admin/systemrescuecd-x86 4.4.1 4.5.0 4.5.1 4.5.2 4.5.3 4.5.4 4.6.0 4.6.1 4.7
 app-admin/tenshi 0.12 0.14 0.15 0.16-r1 0.17: Log parsing and notification program
 app-admin/testdisk 7.0-r3: Checks and undeletes partitions + PhotoRec, signature based recovery tool
 app-admin/tmpreaper 1.6.13-r1: A utility for removing files based on when they were last accessed
-app-admin/tmpwatch 2.11 2.11-r2: Files which haven't been accessed are removed from specified directories
+app-admin/tmpwatch 2.11-r2: Files which haven't been accessed are removed from specified directories
 app-admin/tripwire 2.4.3.5 2.4.3.6: Open Source File Integrity Checker and IDS
 app-admin/ulogd 2.0.5_p20161017: A userspace logging daemon for netfilter/iptables related logging
 app-admin/usbview 2.0: Display the topology of devices on the USB bus
@@ -530,7 +530,7 @@ app-crypt/envchain 1.0.0: Save environment variables in a secret vault
 app-crypt/etcd-ca 0_p20140903 0_p20150423 0_p20150423-r1: A simple certificate manager written in Go. Easy to use with limited capability
 app-crypt/fcrackzip 1.0: a zip password cracker
 app-crypt/gcr 3.20.0: Libraries for cryptographic UIs and accessing PKCS#11 modules
-app-crypt/gentoo-keys 201607021514: A Openpgp/gpg keyring of official Gentoo release media gpg keys
+app-crypt/gentoo-keys 201607021514 201607021514-r1: A Openpgp/gpg keyring of official Gentoo release media gpg keys
 app-crypt/gifshuffle 2.0-r1: GIF colourmap steganography
 app-crypt/gkeys 0.2 9999: An OpenPGP/GPG key management tool and python libs
 app-crypt/gkeys-gen 0.2 9999: Tool for generating OpenPGP/GPG keys using a specifications file
