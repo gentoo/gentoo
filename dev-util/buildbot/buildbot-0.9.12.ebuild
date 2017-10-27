@@ -1,12 +1,13 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 PYTHON_REQ_USE="sqlite"
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python2_7 python3_5 )
 
 EGIT_REPO_URI="https://github.com/buildbot/${PN}.git"
 
+[[ ${PV} == *9999 ]] && inherit git-r3
 inherit readme.gentoo-r1 user systemd distutils-r1
 
 MY_PV="${PV/_p/p}"
@@ -14,51 +15,40 @@ MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="BuildBot build automation system"
 HOMEPAGE="https://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.python.org/pypi/buildbot"
-SRC_URI="
-	mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz
-	https://dev.gentoo.org/~dolsen/distfiles/buildbot-0.9.4.docs.tar.xz
-"
+[[ ${PV} == *9999 ]] || SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+if [[ ${PV} == *9999 ]]; then
+	KEYWORDS=""
+else
+	KEYWORDS="~amd64"
+fi
 
-IUSE="crypt doc examples irc mail manhole test"
+IUSE="crypt doc examples irc test"
 
-RDEPEND=">=dev-python/jinja-2.1[${PYTHON_USEDEP}]
-	|| (
-		>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
-		>=dev-python/twisted-web-14.0.1[${PYTHON_USEDEP}]
-	)
+RDEPEND="
+	>=dev-python/jinja-2.1[${PYTHON_USEDEP}]
+	>=dev-python/twisted-17.9.0[${PYTHON_USEDEP}]
 	>=dev-python/autobahn-0.16.0[${PYTHON_USEDEP}]
 	>=dev-python/sqlalchemy-0.8[${PYTHON_USEDEP}]
 	>=dev-python/sqlalchemy-migrate-0.9[${PYTHON_USEDEP}]
+	dev-python/future[${PYTHON_USEDEP}]
+	>=dev-python/python-dateutil-1.5[${PYTHON_USEDEP}]
+	>=dev-python/txaio-2.2.2[${PYTHON_USEDEP}]
+	dev-python/pyjwt[${PYTHON_USEDEP}]
+	>=dev-python/zope-interface-4.1.1[${PYTHON_USEDEP}]
+	~dev-util/buildbot-worker-${PV}[${PYTHON_USEDEP}]
 	crypt? (
-		>=dev-python/pyopenssl-0.13[${PYTHON_USEDEP}]
+		>=dev-python/twisted-17.9.0[${PYTHON_USEDEP},crypt]
+		>=dev-python/pyopenssl-16.0.0[${PYTHON_USEDEP}]
 		dev-python/idna[${PYTHON_USEDEP}]
 		dev-python/service_identity[${PYTHON_USEDEP}]
 	)
 	irc? (
 		dev-python/txrequests[${PYTHON_USEDEP}]
-		|| ( >=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
-			>=dev-python/twisted-words-14.0.1[${PYTHON_USEDEP}]
-		)
 	)
-	mail? (
-		|| ( >=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
-			>=dev-python/twisted-mail-14.0.1[${PYTHON_USEDEP}]
-		)
-	)
-	manhole? (
-		|| ( >=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
-			>=dev-python/twisted-conch-14.0.1[${PYTHON_USEDEP}]
-		)
-	)
-	dev-python/future[${PYTHON_USEDEP}]
-	>=dev-python/python-dateutil-1.5[${PYTHON_USEDEP}]
-	>=dev-python/txaio-2.2.2[${PYTHON_USEDEP}]
-	dev-python/pyjwt[${PYTHON_USEDEP}]
-	"
+"
 DEPEND="${RDEPEND}
 	>=dev-python/setuptools-21.2.1[${PYTHON_USEDEP}]
 	doc? (
@@ -67,35 +57,31 @@ DEPEND="${RDEPEND}
 		dev-python/sphinxcontrib-spelling[${PYTHON_USEDEP}]
 		dev-python/pyenchant[${PYTHON_USEDEP}]
 		>=dev-python/docutils-0.8[${PYTHON_USEDEP}]
+		<dev-python/docutils-0.13.0[${PYTHON_USEDEP}]
 		dev-python/sphinx-jinja[${PYTHON_USEDEP}]
 		dev-python/ramlfications[${PYTHON_USEDEP}]
 	)
 	test? (
 		>=dev-python/python-dateutil-1.5[${PYTHON_USEDEP}]
 		>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
-		|| (
-			>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
-			(
-				>=dev-python/twisted-mail-14.0.1[${PYTHON_USEDEP}]
-				>=dev-python/twisted-web-14.0.1[${PYTHON_USEDEP}]
-				>=dev-python/twisted-words-14.0.1[${PYTHON_USEDEP}]
-			)
-		)
 		dev-python/moto[${PYTHON_USEDEP}]
 		dev-python/boto3[${PYTHON_USEDEP}]
 		dev-python/ramlfications[${PYTHON_USEDEP}]
 		dev-python/pyjade[${PYTHON_USEDEP}]
 		dev-python/txgithub[${PYTHON_USEDEP}]
 		dev-python/txrequests[${PYTHON_USEDEP}]
+		dev-python/lz4[${PYTHON_USEDEP}]
+		dev-python/treq[${PYTHON_USEDEP}]
+		dev-python/setuptools_trial[${PYTHON_USEDEP}]
+		~dev-util/buildbot-worker-${PV}[${PYTHON_USEDEP}]
 	)"
 
 S=${WORKDIR}/${MY_P}
+[[ ${PV} == *9999 ]] && S=${S}/master
 
-src_unpack() {
-	unpack ${MY_P}.tar.gz
-	cd ${MY_P}
-	unpack buildbot-0.9.4.docs.tar.xz
-}
+PATCHES=(
+	"${FILESDIR}/Remove-distro-version-test.patch"
+)
 
 pkg_setup() {
 	enewuser buildbot
@@ -106,20 +92,14 @@ pkg_setup() {
 		The scripts can	run as a different user if desired."
 }
 
-python_prepare_all() {
-	if use doc; then
-		epatch "${FILESDIR}/buildbot-0.9.4.docs.patch"
-	fi
-	distutils-r1_python_prepare_all
-}
-
 src_compile() {
 	distutils-r1_src_compile
 
 	if use doc; then
 		einfo "Generation of documentation"
 		pushd docs > /dev/null
-		EPYTHON="python2.7" emake html
+		#'man' target is currently broken
+		emake html
 		popd > /dev/null
 	fi
 }
@@ -136,7 +116,7 @@ src_install() {
 
 	if use examples; then
 		insinto /usr/share/doc/${PF}
-		doins -r contrib docs/examples
+		doins -r docs/examples
 	fi
 
 	newconfd "${FILESDIR}/buildmaster.confd" buildmaster
@@ -186,6 +166,8 @@ pkg_postinst() {
 
 pkg_config() {
 	local buildmaster_path="/var/lib/buildmaster"
+	local log_path="/var/log/buildmaster"
+
 	einfo "This will prepare a new buildmaster instance in ${buildmaster_path}."
 	einfo "Press Control-C to abort."
 
@@ -194,6 +176,8 @@ pkg_config() {
 	[[ -z "${instance_name}" ]] && die "Invalid instance name"
 
 	local instance_path="${buildmaster_path}/${instance_name}"
+	local instance_log_path="${log_path}/${instance_name}"
+
 	if [[ -e "${instance_path}" ]]; then
 		eerror "The instance with the specified name already exists:"
 		eerror "${instance_path}"
@@ -210,6 +194,12 @@ pkg_config() {
 		|| die "Moving sample configuration failed"
 	ln --symbolic --relative "/etc/init.d/buildmaster" "/etc/init.d/buildmaster.${instance_name}" \
 		|| die "Unable to create link to init file"
+
+	if [[ ! -d "${instance_log_path}" ]]; then
+		mkdir --parents "${instance_log_path}" || die "Unable to create directory ${instance_log_path}"
+	fi
+	ln --symbolic --relative "${instance_log_path}/twistd.log" "${instance_path}/twistd.log" \
+		|| die "Unable to create link to log file"
 
 	einfo "Successfully created a buildmaster instance at ${instance_path}."
 	einfo "To change the default settings edit the master.cfg file in this directory."
