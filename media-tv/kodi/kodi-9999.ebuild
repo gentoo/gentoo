@@ -74,7 +74,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=media-libs/taglib-1.11.1
 	system-ffmpeg? ( >=media-video/ffmpeg-${FFMPEG_VERSION}:=[encode,openssl,postproc] )
 	mysql? ( virtual/mysql )
-	>=net-misc/curl-7.51.0
+	>=net-misc/curl-7.56.1
 	nfs? ( net-fs/libnfs:= )
 	opengl? ( media-libs/glu )
 	!libressl? ( >=dev-libs/openssl-1.0.2l:0= )
