@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=>=dev-lang/go-1.8
+DESCRIPTION=A DNS server that chains middleware
+EAPI=6
+HOMEPAGE=https://github.com/coredns/coredns
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/coredns/coredns/archive/v0.9.9.tar.gz -> coredns-0.9.9.tar.gz https://github.com/mholt/caddy/archive/c4dfbb9956095c92d0586a52723748c070c7b459.tar.gz -> github.com-mholt-caddy-c4dfbb9956095c92d0586a52723748c070c7b459.tar.gz https://github.com/miekg/dns/archive/822ae18e7187e1bbde923a37081f6c1b8e9ba68a.tar.gz -> github.com-miekg-dns-822ae18e7187e1bbde923a37081f6c1b8e9ba68a.tar.gz https://github.com/golang/net/archive/c73622c77280266305273cb545f54516ced95b93.tar.gz -> github.com-golang-net-c73622c77280266305273cb545f54516ced95b93.tar.gz https://github.com/golang/text/archive/6eab0e8f74e86c598ec3b6fad4888e0c11482d48.tar.gz -> github.com-golang-text-6eab0e8f74e86c598ec3b6fad4888e0c11482d48.tar.gz
+_eclasses_=golang-base	51a1f13e065f1cff4507685d9cc268c7	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	913580335becddd3ebecefe852e47536
+_md5_=375ca0f8446c341b09208246c80ca976
