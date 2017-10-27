@@ -5,7 +5,7 @@ EAPI=6
 
 inherit cmake-utils gnome2-utils
 
-if [[ ${PV} == *9999 ]]; then
+if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/jp9000/obs-studio.git"
 	EGIT_SUBMODULES=()
@@ -61,8 +61,6 @@ DEPEND="${COMMON_DEPEND}
 	)
 "
 RDEPEND="${COMMON_DEPEND}"
-
-PATCHES="${FILESDIR}/${PN}-ImageMagick-header-path.patch"
 
 CMAKE_REMOVE_MODULES_LIST=( FindFreetype )
 
