@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-# ruby24 don't have required deps
 USE_RUBY="ruby22 ruby23"
 inherit eutils depend.apache ruby-ng user
 
@@ -16,41 +15,42 @@ SLOT="0"
 # All db-related USEs are ineffective since we depend on rails
 # which depends on activerecord which depends on all ruby's db bindings
 #IUSE="ldap openid imagemagick postgres sqlite mysql fastcgi passenger"
-IUSE="imagemagick fastcgi ldap markdown passenger"
+IUSE="ldap fastcgi passenger imagemagick"
 
 ruby_add_rdepend "
-	dev-ruby/actionpack-action_caching
-	dev-ruby/actionpack-xml_parser:*
-	>=dev-ruby/builder-3.2.2:3.2
-	>=dev-ruby/coderay-1.1.0
-	dev-ruby/i18n:0.7
-	>=dev-ruby/jquery-rails-3.1.4:3
-	dev-ruby/loofah
-	dev-ruby/mime-types:*
-	dev-ruby/mimemagic
-	>=dev-ruby/nokogiri-1.6.8
-	dev-ruby/protected_attributes
-	>=dev-ruby/rack-openid-0.2.1
-	>=dev-ruby/rails-4.2.5.2:4.2
-	>=dev-ruby/rails-html-sanitizer-1.0.3
-	dev-ruby/request_store:1.0.5
-	>=dev-ruby/roadie-rails-1.1.0
-	>=dev-ruby/rbpdf-1.19.2
-	>=dev-ruby/ruby-openid-2.3.0
 	dev-ruby/rubygems
-	fastcgi? ( dev-ruby/fcgi )
-	imagemagick? ( >=dev-ruby/rmagick-2.14.0 )
+	>=dev-ruby/rails-4.2.5.2:4.2
+	>=dev-ruby/jquery-rails-3.1.4:3
+	>=dev-ruby/coderay-1.1.0
+	>=dev-ruby/builder-3.0.4:*
+	>=dev-ruby/roadie-rails-1.1.0
+	dev-ruby/mime-types:*
+	=dev-ruby/request_store-1.0.5
+	>=dev-ruby/rbpdf-1.19.0
+	dev-ruby/actionpack-action_caching
+	dev-ruby/actionpack-xml_parser:0
+	dev-ruby/protected_attributes
+	>=dev-ruby/redcarpet-3.3.2
+	>=dev-ruby/nokogiri-1.6.7.2
 	ldap? ( >=dev-ruby/ruby-net-ldap-0.12.0 )
-	markdown? ( >=dev-ruby/redcarpet-3.3.2 )
+	>=dev-ruby/ruby-openid-2.3.0
+	>=dev-ruby/rack-openid-0.2.1
+	fastcgi? ( dev-ruby/fcgi )
 	passenger? ( www-apache/passenger )
-	"
-# TODO add USE doc and test
+	imagemagick? ( >=dev-ruby/rmagick-2.14.0 )"
+	#	ruby_targets_ruby19? (
+#		postgres? ( >=dev-ruby/pg-0.11 )
+#		sqlite3? ( dev-ruby/sqlite3 )
+#		mysql? ( dev-ruby/mysql2:0.3 )
+#	)
+
 #ruby_add_bdepend ">=dev-ruby/rdoc-2.4.2
 #	dev-ruby/yard
 #	test? (
 #		>=dev-ruby/shoulda-3.3.2
 #		>=dev-ruby/mocha-0.13.3
 #		>=dev-ruby/capybara-2.0.0
+#		<dev-ruby/nokogiri-1.6.0
 #	)"
 
 REDMINE_DIR="/var/lib/${PN}"
@@ -66,20 +66,26 @@ all_ruby_prepare() {
 	# bug #406605
 	rm .{git,hg}ignore || die
 
-	cat > "${T}/50${PN}" <<-EOF || die
-		CONFIG_PROTECT="${EROOT%/}${REDMINE_DIR}/config"
-		CONFIG_PROTECT_MASK="${EROOT%/}${REDMINE_DIR}/config/locales ${EROOT%/}${REDMINE_DIR}/config/settings.yml"
-	EOF
+	echo "CONFIG_PROTECT=\"${EPREFIX}${REDMINE_DIR}/config\"" > "${T}/50${PN}"
+	echo "CONFIG_PROTECT_MASK=\"${EPREFIX}${REDMINE_DIR}/config/locales ${EPREFIX}${REDMINE_DIR}/config/settings.yml\"" >> "${T}/50${PN}"
 
 	# remove ldap staff module if disabled to avoid #413779
 	use ldap || rm app/models/auth_source_ldap.rb || die
 
-	eapply "${FILESDIR}/${PN}-3.3.4_requires.patch"
+	# Make it work
+	sed -i -e "1irequire 'request_store'" app/controllers/application_controller.rb || die
+	sed -i -e "18irequire 'action_controller'" -e "19irequire 'action_controller/action_caching'"\
+		app/controllers/welcome_controller.rb || die
+	sed -i -e "4irequire 'action_dispatch/xml_params_parser'" -e "/Bundler/d" config/application.rb || die
+	sed -i -e "18irequire 'protected_attributes'" app/models/custom_field.rb || die
+	sed -i -e "19irequire 'roadie-rails'" app/models/mailer.rb || die
 }
 
 all_ruby_install() {
-	dodoc doc/* README.rdoc
-	rm -r doc appveyor.yml CONTRIBUTING.md README.rdoc || die
+	dodoc doc/{CHANGELOG,INSTALL,README_FOR_APP,RUNNING_TESTS,UPGRADING}
+	rm -r doc || die
+	dodoc README.rdoc
+	rm README.rdoc || die
 
 	keepdir /var/log/${PN}
 
@@ -122,10 +128,7 @@ all_ruby_install() {
 }
 
 pkg_postinst() {
-	einfo
-	if [[ -e "${EROOT%/}${REDMINE_DIR}/config/initializers/session_store.rb" \
-	|| -e "${EROOT%/}${REDMINE_DIR}/config/initializers/secret_token.rb" ]]
-	then
+	if [ -e "${EPREFIX}${REDMINE_DIR}/config/initializers/session_store.rb" -o -e "${EPREFIX}${REDMINE_DIR}/config/initializers/secret_token.rb" ]; then
 		elog "Execute the following command to upgrade environment:"
 		elog
 		elog "# emerge --config \"=${CATEGORY}/${PF}\""
@@ -135,7 +138,7 @@ pkg_postinst() {
 	else
 		elog "Execute the following command to initialize environment:"
 		elog
-		elog "# cd ${EROOT%/}${REDMINE_DIR}"
+		elog "# cd ${EPREFIX}${REDMINE_DIR}"
 		elog "# cp config/database.yml.example config/database.yml"
 		elog "# \${EDITOR} config/database.yml"
 		elog "# chown redmine:redmine config/database.yml"
@@ -144,52 +147,40 @@ pkg_postinst() {
 		elog "Installation notes are at official site"
 		elog "http://www.redmine.org/wiki/redmine/RedmineInstall"
 	fi
-	einfo
 }
 
 pkg_config() {
-	if [[ ! -e "${EROOT%/}${REDMINE_DIR}/config/database.yml" ]]; then
-		eerror "Copy ${EROOT%/}${REDMINE_DIR}/config/database.yml.example to"
-		eerror "${EROOT%/}${REDMINE_DIR}/config/database.yml then edit this"
-		eerror "file in order to configure your database settings for"
-		eerror "\"production\" environment."
+	if [ ! -e "${EPREFIX}${REDMINE_DIR}/config/database.yml" ]; then
+		eerror "Copy ${EPREFIX}${REDMINE_DIR}/config/database.yml.example to ${EPREFIX}${REDMINE_DIR}/config/database.yml"
+		eerror "then edit this file in order to configure your database settings for \"production\" environment."
 		die
 	fi
 
 	local RAILS_ENV=${RAILS_ENV:-production}
-	if [[ ! -L /usr/bin/ruby ]]; then
+	if [ ! -L /usr/bin/ruby ]; then
 		eerror "/usr/bin/ruby is not a valid symlink to any ruby implementation."
 		eerror "Please update it via `eselect ruby`"
 		die
 	fi
-	if [[ $RUBY_TARGETS != *$( eselect ruby show | awk 'NR==2' | tr  -d ' '  )* ]]
-	then
-		eerror "/usr/bin/ruby is currently not included in redmine's ruby targets:"
-		eerror "${RUBY_TARGETS}."
+	if [[ $RUBY_TARGETS != *$( eselect ruby show | awk 'NR==2' | tr  -d ' '  )* ]]; then
+		eerror "/usr/bin/ruby is currently not included in redmine's ruby targets: ${RUBY_TARGETS}."
 		eerror "Please update it via `eselect ruby`"
 		die
 	fi
 	local RUBY=${RUBY:-ruby}
 
-	cd "${EROOT%/}${REDMINE_DIR}" || die
-	if [[ -e "${EROOT%/}${REDMINE_DIR}/config/initializers/session_store.rb" ]]
-	then
+	cd "${EPREFIX}${REDMINE_DIR}" || die
+	if [ -e "${EPREFIX}${REDMINE_DIR}/config/initializers/session_store.rb" ]; then
 		einfo
 		einfo "Generating secret token."
 		einfo
 		rm config/initializers/session_store.rb || die
 		RAILS_ENV="${RAILS_ENV}" ${RUBY} -S rake generate_secret_token || die
 	fi
-	if [[ -e "${EROOT%/}${REDMINE_DIR}/config/initializers/secret_token.rb" ]]
-	then
+	if [ -e "${EPREFIX}${REDMINE_DIR}/config/initializers/secret_token.rb" ]; then
 		einfo
 		einfo "Upgrading database."
 		einfo
-
-		einfo "Generating secret token."
-		# Migration from Redmine 2.x
-		rm config/initializers/secret_token.rb || die
-		RAILS_ENV="${RAILS_ENV}" ${RUBY} -S rake generate_secret_token || die
 
 		einfo "Migrating database."
 		RAILS_ENV="${RAILS_ENV}" ${RUBY} -S rake db:migrate || die
@@ -209,12 +200,11 @@ pkg_config() {
 		RAILS_ENV="${RAILS_ENV}" ${RUBY} -S rake db:migrate || die
 		einfo "Populating database with default configuration data."
 		RAILS_ENV="${RAILS_ENV}" ${RUBY} -S rake redmine:load_default_data || die
-		chown redmine:redmine "${EROOT%/}var/log/redmine/*.log" || die
+		chown redmine:redmine "${EPREFIX}${REDMINE_DIR}"/log/production.log
 		einfo
-		einfo "If you use sqlite3, please do not forget to change the ownership"
-		einfo "of the sqlite files."
+		einfo "If you use sqlite3, please do not forget to change the ownership of the sqlite files."
 		einfo
-		einfo "# cd \"${EROOT%/}${REDMINE_DIR}\""
+		einfo "# cd \"${EPREFIX}${REDMINE_DIR}\""
 		einfo "# chown redmine:redmine db/ db/*.sqlite3"
 		einfo
 	fi
