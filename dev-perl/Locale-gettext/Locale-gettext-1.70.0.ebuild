@@ -18,5 +18,5 @@ RDEPEND="sys-devel/gettext"
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 "
-
+PATCHES=("${FILESDIR}/${P}-no-dot-inc.patch")
 S="${WORKDIR}/${PN}-${DIST_VERSION}"
