@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # TODO: if 'doc' use flag is used then should build also extra docs ('docs' ant target), currently it cannot
@@ -12,18 +12,18 @@ JAVA_PKG_IUSE="doc examples source test"
 inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="Formatting Objects Processor is a print formatter driven by XSL"
-HOMEPAGE="http://xmlgraphics.apache.org/fop/"
+HOMEPAGE="https://xmlgraphics.apache.org/fop/"
 SRC_URI="mirror://apache/xmlgraphics/${PN}/source/${P}-src.zip"
 
-KEYWORDS="amd64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="~amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE=""
 
 # Tests are broken even in 2.0
 RESTRICT="test"
 
-CDEPEND="dev-java/batik:1.8
+CDEPEND="
+	dev-java/batik:1.9
 	dev-java/ant-core:0
 	dev-java/fontbox:1.7
 	dev-java/commons-io:1
@@ -53,7 +53,7 @@ JAVA_ANT_REWRITE_CLASSPATH="true"
 
 EANT_GENTOO_CLASSPATH="
 	ant-core
-	batik-1.8
+	batik-1.9
 	fontbox-1.7
 	commons-io-1
 	commons-logging

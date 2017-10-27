@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/${PN}/${PN}-src-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="groovy latex pdf svg"
 
 CDEPEND="
@@ -25,11 +25,11 @@ CDEPEND="
 	groovy? ( dev-java/groovy )
 	latex? ( dev-java/hoteqn:0 )
 	pdf? (
-		dev-java/batik:1.8
+		dev-java/batik:1.9
 		dev-java/fop:0
 	)
 	svg? (
-		dev-java/batik:1.8
+		dev-java/batik:1.9
 		dev-java/fop:0
 	)"
 DEPEND="${CDEPEND}
@@ -71,7 +71,7 @@ src_configure() {
 src_compile() {
 	local svg_deps svg_build_deps
 	if use pdf || use svg; then
-		svg_deps="batik-1.8,fop"
+		svg_deps="batik-1.9,fop"
 		svg_build_deps=":$(java-pkg_getjars --build-only avalon-framework-4.2)"
 	fi
 	EANT_GENTOO_CLASSPATH="
