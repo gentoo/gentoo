@@ -12,7 +12,7 @@ JAVA_PKG_IUSE="doc examples source test"
 inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="Formatting Objects Processor is a print formatter driven by XSL"
-HOMEPAGE="http://xmlgraphics.apache.org/fop/"
+HOMEPAGE="https://xmlgraphics.apache.org/fop/"
 SRC_URI="mirror://apache/xmlgraphics/${PN}/source/${P}-src.zip"
 
 KEYWORDS="~amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
