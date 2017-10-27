@@ -11,4 +11,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=http://nagios-plugins.org/download/nagios-plugins-2.2.1.tar.gz
 _eclasses_=user	e4b567c44272a719fabf53f0f885d3f7
-_md5_=46ff024155de7e8bf72da72284150446
+_md5_=5ba26a4da11de286c8f155ad4f482c11
