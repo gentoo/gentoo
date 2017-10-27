@@ -15514,7 +15514,7 @@ net-misc/vncrec 0.2-r1: VNC session recorder and player
 net-misc/vncsnapshot 1.2a: A command-line tool for taking JPEG snapshots of VNC servers
 net-misc/vrrpd 1.0 1.9: Virtual Router Redundancy Protocol Daemon
 net-misc/wakeonlan 0.41-r2: Client for Wake-On-LAN
-net-misc/wget 1.19.1-r1 1.19.1-r2: Network utility to retrieve files from the WWW
+net-misc/wget 1.19.1-r1 1.19.1-r2 1.19.2: Network utility to retrieve files from the WWW
 net-misc/whatmask 1.2-r1: little C program to compute different subnet mask notations
 net-misc/whatportis 0.6: A command to search port names and numbers
 net-misc/whois 5.2.12 5.2.17 5.2.18: improved Whois Client
