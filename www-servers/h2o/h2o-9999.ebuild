@@ -30,14 +30,6 @@ pkg_setup() {
 	enewuser h2o -1 -1 -1 h2o
 }
 
-src_prepare() {
-	# Leave optimization level to user CFLAGS
-	sed -i 's/-O2 -g ${CC_WARNING_FLAGS} //g' ./CMakeLists.txt \
-		|| die "sed fix failed!"
-
-	cmake-utils_src_prepare
-}
-
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_SYSCONFDIR="${EPREFIX}"/etc/h2o
