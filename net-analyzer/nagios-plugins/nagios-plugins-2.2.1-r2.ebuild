@@ -63,6 +63,8 @@ DOCS=(
 	THANKS
 )
 
+PATCHES=( "${FILESDIR}/define-own-mysql-port-constant.patch" )
+
 src_prepare() {
 	default
 
