@@ -14,6 +14,9 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<slots>
+		<subslots>Reflect major ABI of libalpm.so.</subslots>
+	</slots>
 	<use>
 		<flag name="doc">Install extended documentation using <pkg>app-doc/doxygen</pkg>. (Man pages are included by default.)</flag>
 		<flag name="gpg">Enable GPG signature verification using <pkg>app-crypt/gpgme</pkg></flag>
