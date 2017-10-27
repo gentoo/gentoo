@@ -51,6 +51,7 @@ src_install() {
 			-e "/^outfile/s|'.*'|'/usr/share/units/currency.units'|g" \
 			-e 's|^#!|&/usr/bin/python|g' \
 			units_cur_inst > units_cur || die
+		python_fix_shebang units_cur
 		python_doscript units_cur
 	fi
 }
