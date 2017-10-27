@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 PYTHON_REQ_USE="sqlite"
 PYTHON_COMPAT=( python2_7 python3_5 )
 
@@ -10,8 +10,8 @@ EGIT_REPO_URI="https://github.com/buildbot/buildbot.git"
 [[ ${PV} == *9999 ]] && inherit git-r3
 inherit distutils-r1
 
-MY_V="${PV/_p/p}"
-MY_P="${PN}-${MY_V}"
+MY_PV="${PV/_p/.post}"
+MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="BuildBot common www build tools for packaging releases"
 HOMEPAGE="https://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.python.org/pypi/buildbot-pkg"
