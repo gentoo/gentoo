@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) mruby? ( sys-devel/bison || ( dev-lang/ruby:2.2 dev-lang/ruby:2.3 dev-lang/ruby:2.4 ) virtual/rubygems ) sys-devel/make >=dev-util/cmake-3.7.2 virtual/pkgconfig
+DESCRIPTION=An optimized HTTP server with support for HTTP/1.x and HTTP/2
+EAPI=6
+HOMEPAGE=https://h2o.examp1e.net
+IUSE=libressl +mruby
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= )
+SLOT=0
+SRC_URI=https://github.com/h2o/h2o/archive/v2.2.3.tar.gz -> h2o-2.2.3.tar.gz
+_eclasses_=cmake-utils	f9fb12e2dbe2e0c9c17f030bae85eb02	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	ruby-single	af6ea0a8fe4c4faf733f4dbafae9e233	ruby-utils	453e0fe0dd06baac93b584c91528cc62	systemd	34815d3b76e745c5ca33eec9f95074c2	toolchain-funcs	185a06792159ca143528e7010368e8af	user	e4b567c44272a719fabf53f0f885d3f7	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=b6d1db4644a909040a42e96581acaa5f

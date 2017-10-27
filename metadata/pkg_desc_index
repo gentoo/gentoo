@@ -54,7 +54,7 @@ app-admin/aws-iam-tools 1.3.0: The Command Line Interface for the AWS Identity a
 app-admin/aws-rds-tools 1.6.001: The Command Line Toolkit for the Amazon Relational Database Service
 app-admin/bastille 3.0.9-r1 3.0.9-r2: Bastille-Linux is a security hardening tool
 app-admin/bcfg2 1.2.4-r1: Configuration management tool
-app-admin/calamares 3.1.5 3.1.6: Distribution-independent installer framework
+app-admin/calamares 3.1.6 3.1.7: Distribution-independent installer framework
 app-admin/cancd 0.1.0-r3: the CA NetConsole Daemon receives output from the Linux netconsole driver
 app-admin/ccze 0.2.1-r3 0.2.1-r4: A flexible and fast logfile colorizer
 app-admin/cdist 4.6.1: A usable configuration management system
@@ -14179,7 +14179,7 @@ media-video/noad 0.7.3-r1 0.8.6-r1 0.8.6-r2: Mark commercial breaks in VDR recor
 media-video/nvidia-settings 340.58 340.58-r1 355.11 358.16: NVIDIA Linux X11 Settings Utility
 media-video/nvidia-video-codec 7.0.1 7.1.9 8.0.14: Redistributable headers to build cuvid and nvenc
 media-video/nvidia_video_sdk 6.0.1: NVIDIA Video Codec SDK
-media-video/obs-studio 18.0.2 19.0.2 20.0.1 20.0.1-r1 9999: Software for Recording and Streaming Live Video Content
+media-video/obs-studio 19.0.2 20.0.1 20.0.1-r1 20.1.0 9999: Software for Recording and Streaming Live Video Content
 media-video/ogmrip 1.0.1: Graphical frontend and libraries for ripping DVDs and encoding to AVI/OGM/MKV/MP4
 media-video/openshot 1.4.3-r1 2.2.0 2.3.4 2.4.0: Free, open-source, non-linear video editor to create and edit videos and movies
 media-video/orion 1.3.5 1.4.0 1.6.1: Cross-platform Twitch client
@@ -15423,7 +15423,7 @@ net-misc/rclone 1.36 1.37 9999: A program to sync files to and from various clou
 net-misc/rdate 1.4-r3 1.4-r4: use TCP or UDP to retrieve the current time of another machine
 net-misc/rdesktop 1.8.3 1.8.3-r1 1.8.3-r2: A Remote Desktop Protocol Client
 net-misc/redir 2.2.1: Redir is a port redirector
-net-misc/remmina 1.2.0_rc16-r1 1.2.0_rc20 1.2.0_rc21: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
+net-misc/remmina 1.2.0_rc16-r1 1.2.0_rc20 1.2.0_rc21 1.2.0_rc24: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
 net-misc/ris-linux 0.4-r1: BINL server to doing Windows(r) RIS
 net-misc/rsync 3.1.2: File transfer program to keep remote files into sync
@@ -18389,7 +18389,7 @@ www-apps/polarblog 1.11.1: PolarBlog is an open source embedded weblog solution
 www-apps/postfixadmin 2.3.8 3.0.2 3.1: Web Based Management tool for Postfix style virtual domains and users
 www-apps/prewikka 3.1.0 4.0.0: Graphical front-end analysis console for the Prelude Framework
 www-apps/radicale 1.1.1: A simple CalDAV calendar server
-www-apps/redmine 3.2.7 3.2.7-r1 3.3.4 3.3.4-r1 3.4.2 3.4.2-r1: Flexible project management web application using the Ruby on Rails framework
+www-apps/redmine 3.2.8 3.3.5 3.4.3: Flexible project management web application using the Ruby on Rails framework
 www-apps/rocketwiki-lqfb 0.4: Small parser which translates a wiki dialect to HTML
 www-apps/roundup 1.5.1: Issue-tracking system with command-line, web, and e-mail interfaces
 www-apps/rt 4.2.12-r2 4.4.1-r1: RT is an enterprise-grade ticketing system
@@ -18487,7 +18487,7 @@ www-servers/cherokee 1.2.104: An extremely fast and tiny web server
 www-servers/fnord 1.10-r2 1.11: Yet another small httpd
 www-servers/gatling 0.12-r2 0.13 0.13-r1 0.15: High performance web server
 www-servers/gunicorn 19.1.1 19.3.0 19.4.5 19.6.0: A WSGI HTTP Server for UNIX
-www-servers/h2o 2.2.2 9999: An optimized HTTP server with support for HTTP/1.x and HTTP/2
+www-servers/h2o 2.2.3 9999: An optimized HTTP server with support for HTTP/1.x and HTTP/2
 www-servers/hiawatha 9.15: Advanced and secure webserver
 www-servers/lighttpd 1.4.42 1.4.43 1.4.44 1.4.45 1.4.47 9999: Lightweight high-performance web server
 www-servers/mongoose 5.6: easy to use web server

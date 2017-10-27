@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare test
+DEPEND=dev-libs/glib:2 x11-libs/gdk-pixbuf x11-libs/gtk+:3 x11-libs/libX11 x11-libs/libxkbfile ayatana? ( dev-libs/libappindicator:3 ) crypt? ( dev-libs/libgcrypt:0= ) rdp? ( >=net-misc/freerdp-2.0.0_rc0 ) gnome-keyring? ( app-crypt/libsecret ) spice? ( net-misc/spice-gtk[gtk3] ) ssh? ( net-libs/libssh[sftp] x11-libs/vte:2.91 ) telepathy? ( net-libs/telepathy-glib ) vnc? ( net-libs/libvncserver ) zeroconf? ( net-dns/avahi[gtk3] ) dev-util/intltool virtual/pkgconfig nls? ( sys-devel/gettext ) sys-devel/make >=dev-util/cmake-3.7.2 >=sys-apps/sed-4
+DESCRIPTION=A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
+EAPI=6
+HOMEPAGE=https://remmina.org/
+IUSE=ayatana crypt rdp gnome-keyring nls spice ssh telepathy vnc zeroconf
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=dev-libs/glib:2 x11-libs/gdk-pixbuf x11-libs/gtk+:3 x11-libs/libX11 x11-libs/libxkbfile ayatana? ( dev-libs/libappindicator:3 ) crypt? ( dev-libs/libgcrypt:0= ) rdp? ( >=net-misc/freerdp-2.0.0_rc0 ) gnome-keyring? ( app-crypt/libsecret ) spice? ( net-misc/spice-gtk[gtk3] ) ssh? ( net-libs/libssh[sftp] x11-libs/vte:2.91 ) telepathy? ( net-libs/telepathy-glib ) vnc? ( net-libs/libvncserver ) zeroconf? ( net-dns/avahi[gtk3] ) virtual/freedesktop-icon-theme
+SLOT=0
+SRC_URI=https://github.com/FreeRDP/Remmina/archive/v1.2.0-rcgit.24.tar.gz -> remmina-1.2.0_rc24.tar.gz
+_eclasses_=cmake-utils	f9fb12e2dbe2e0c9c17f030bae85eb02	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	gnome2-utils	4d211d7614f303710fca59db6ec12c88	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=5a687667732b94bc4c1cb7dbe00570c7
