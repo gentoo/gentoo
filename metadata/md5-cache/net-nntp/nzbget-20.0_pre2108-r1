@@ -1,13 +1,13 @@
 DEFINED_PHASES=configure install postinst preinst prepare pretend setup test
-DEPEND=dev-libs/libxml2 ncurses? ( sys-libs/ncurses:0= ) ssl? ( gnutls? ( net-libs/gnutls:= dev-libs/nettle:= ) !gnutls? ( dev-libs/openssl:0= ) ) zlib? ( sys-libs/zlib ) virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=dev-libs/libxml2 ncurses? ( sys-libs/ncurses:0= ) ssl? ( gnutls? ( net-libs/gnutls:= dev-libs/nettle:= ) !gnutls? ( dev-libs/openssl:0=[-bindist] ) ) zlib? ( sys-libs/zlib ) virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A command-line based binary newsgrabber supporting .nzb files
 EAPI=6
 HOMEPAGE=https://nzbget.net/
 IUSE=debug gnutls ncurses parcheck ssl test zlib
 KEYWORDS=~amd64 ~arm ~ppc ~x86
 LICENSE=GPL-2+
-RDEPEND=dev-libs/libxml2 ncurses? ( sys-libs/ncurses:0= ) ssl? ( gnutls? ( net-libs/gnutls:= dev-libs/nettle:= ) !gnutls? ( dev-libs/openssl:0= ) ) zlib? ( sys-libs/zlib )
+RDEPEND=dev-libs/libxml2 ncurses? ( sys-libs/ncurses:0= ) ssl? ( gnutls? ( net-libs/gnutls:= dev-libs/nettle:= ) !gnutls? ( dev-libs/openssl:0=[-bindist] ) ) zlib? ( sys-libs/zlib )
 SLOT=0
 SRC_URI=https://github.com/nzbget/nzbget/releases/download/v20.0-r2108/nzbget-20.0-testing-r2108-src.tar.gz -> nzbget-20.0_pre2108.tar.gz
 _eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	user	e4b567c44272a719fabf53f0f885d3f7
-_md5_=4c7d7285f688dde9b060e5f64baecf94
+_md5_=b244a4a60730073314a90140067e48a7
