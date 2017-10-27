@@ -348,7 +348,7 @@ app-backup/attic 0.16 9999: Attic is a deduplicating backup program written in P
 app-backup/backintime 1.1.8-r1 1.1.12: Backup system inspired by TimeVault and FlyBack, with a GUI for GNOME and KDE4
 app-backup/backup-manager 0.7.5 0.7.13 0.7.13-r1 0.7.14: Backup Manager is a command line backup tool for GNU/Linux
 app-backup/backupninja 1.0.1: lightweight, extensible meta-backup system
-app-backup/backuppc 3.3.1-r4 3.3.1-r5: High-performance backups to a server's disk
+app-backup/backuppc 3.3.1-r5: High-performance backups to a server's disk
 app-backup/bacula 5.2.13-r5 7.0.5-r1 7.0.5-r2 7.4.4-r2 7.4.6 7.4.7 9.0.3: Featureful client/server network backup suite
 app-backup/bareos 13.2.4-r1 14.2.2 14.2.5 15.2.2 16.2.4: Featureful client/server network backup suite
 app-backup/borgbackup 1.0.9 1.0.10 1.0.11 1.1.0 1.1.1 9999: Deduplicating backup program with compression and authenticated encryption
@@ -17900,7 +17900,7 @@ sys-libs/fortify-headers 0.6 0.7 9999: A standalone implementation of fortify so
 sys-libs/freeipmi 1.2.2 1.4.3 1.4.8 1.5.6 1.5.7: Provides Remote-Console and System Management Software as per IPMI v1.5/2.0
 sys-libs/fts-standalone 0.2-r1 1.2.7: Standalone fts library for use with musl
 sys-libs/gdbm 1.11 1.12 1.13 1.13-r1: Standard GNU database libraries
-sys-libs/glibc 2.17 2.18-r1 2.19-r1 2.20-r2 2.21-r2 2.22-r4 2.23-r3 2.23-r4 2.24-r4 2.25-r8 2.26-r2 9999: GNU libc C library
+sys-libs/glibc 2.17 2.18-r1 2.19-r1 2.20-r2 2.21-r2 2.22-r4 2.23-r3 2.23-r4 2.24-r4 2.25-r8 2.25-r9 2.26-r2 9999: GNU libc C library
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 4.3.3 4.12.0_beta 4.13.1 4.15.3 4.15.3-r1: A multi-platform helper library for other libraries
 sys-libs/kpmcore 3.1.2 3.2.0: Library for managing partitions
