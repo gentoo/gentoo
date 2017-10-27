@@ -4582,7 +4582,7 @@ dev-lang/parrot 7.1.0 7.5.0 7.11.0 8.1.0: Virtual machine designed to compile an
 dev-lang/pasm 1.7: A portable assembler for processors of the PowerPC family
 dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.24.1-r2 5.24.2 5.24.3 5.26.0 5.26.1 5.26.9999 5.28.9999: Larry Wall's Practical Extraction and Report Language
-dev-lang/php 5.6.31 7.0.23 7.0.24 7.0.25 7.1.9 7.1.10 7.2.0_rc2 7.2.0_rc3: The PHP language runtime engine
+dev-lang/php 5.6.31 5.6.32 7.0.23 7.0.24 7.0.25 7.1.9 7.1.10 7.2.0_rc2 7.2.0_rc3 7.2.0_rc5: The PHP language runtime engine
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2 5.6: Poly/ML is a full implementation of Standard ML
 dev-lang/python 2.7.12 2.7.13 2.7.14 3.4.5 3.4.6 3.5.3 3.5.4 3.6.1-r1 3.6.3: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.4 2.4.5 9999: Python script wrapper
@@ -12324,7 +12324,7 @@ mail-client/mailx 8.1.2.20050715-r6 8.1.2.20050715-r7: The /bin/mail program, wh
 mail-client/mailx-support 20060102-r1 20060102-r2: Provides lockspool utility
 mail-client/mutt 1.7.2 1.9.0-r2 1.9.1-r1: A small but very powerful text-based mail client
 mail-client/nail 12.4 12.4-r2 12.4-r3: an enhanced mailx-compatible mail client
-mail-client/neomutt 9999 20170714 20170912 20171006 20171013: A small but very powerful text-based mail client
+mail-client/neomutt 9999 20170714 20170912 20171006 20171013 20171027: A small but very powerful text-based mail client
 mail-client/nmh 1.3-r4 1.6: New MH mail reader
 mail-client/novell-groupwise-client 8.0.2.96933: Novell Groupwise Client for Linux
 mail-client/pinepgp 0.18.0-r1: Use GPG/PGP with Pine
