@@ -6,8 +6,8 @@ EAPI=6
 inherit flag-o-matic versionator systemd
 
 DESCRIPTION="The PHP language runtime engine"
-HOMEPAGE="http://php.net/"
-SRC_URI="http://php.net/distributions/${P}.tar.xz"
+HOMEPAGE="https://secure.php.net/"
+SRC_URI="https://secure.php.net/distributions/${P}.tar.xz"
 
 LICENSE="PHP-3.01
 	BSD
