@@ -14,7 +14,7 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~ppc"
 IUSE=""
 
-RDEPEND="dev-ml/base:="
+RDEPEND="dev-ml/base:= dev-ml/sexplib:="
 DEPEND="${RDEPEND} dev-ml/jbuilder"
 
 src_test() {
