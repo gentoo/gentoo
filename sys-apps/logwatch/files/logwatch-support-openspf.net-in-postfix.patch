@@ -1,0 +1,21 @@
+From: Willi Mann <willi@debian.org>
+Date: Wed, 2 Sep 2015 19:13:55 +0200
+Subject: postfix: Support also openspf.net in pattern, not only openspf.org
+
+---
+ scripts/services/postfix | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/scripts/services/postfix b/scripts/services/postfix
+index f2e3273..9514b39 100755
+--- a/scripts/services/postfix
++++ b/scripts/services/postfix
+@@ -1961,7 +1961,7 @@ sub postfix_policy_spf($) {
+          return;
+       }
+ 
+-      if ($line =~ /^550 Please see http:\/\/www\.openspf\.org\/Why\?(.*)$/) {
++      if ($line =~ /^550 Please see http:\/\/www\.openspf\.(?:org|net)\/Why\?(.*)$/) {
+          # Policy action=550 Please see http://www.openspf.org/Why?s=mfrom&id=from%40example.com&ip=10.0.0.1&r=example.net
+          # Policy action=550 Please see http://www.openspf.org/Why?s=helo;id=mailout03.example.com;ip=192.168.0.1;r=mx1.example.net 
+          # Policy action=550 Please see http://www.openspf.org/Why?id=someone%40example.com&ip=10.0.0.1&receiver=vps.example.net

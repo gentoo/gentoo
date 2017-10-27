@@ -1,0 +1,28 @@
+From: Willi Mann <willi@debian.org>
+Date: Thu, 28 Jul 2016 16:48:35 +0200
+Subject: s/s/amavis: Fix perl warning "redundant argument in sprintf"
+
+Bug-Debian: https://bugs.debian.org/819572
+---
+ scripts/services/amavis | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/scripts/services/amavis b/scripts/services/amavis
+index 560454f..ac5e8f4 100755
+--- a/scripts/services/amavis
++++ b/scripts/services/amavis
+@@ -1334,8 +1334,12 @@ sub print_summary_report (\@) {
+                      $$divisor == $Totals{$keyname} ? 100.00 : $Totals{$keyname} * 100 / $$divisor;
+             }
+             else {
+-               push @{$lines[$cur_level]}, 
+-                  sprintf "$fmt  %-23s $extra\n", $total, $desc, commify ($Totals{$keyname});
++               my $out = sprintf "$fmt  %-23s", $total, $desc;
++               if ($extra) {
++                  $out .= sprintf " $extra", commify ($Totals{$keyname});
++               }
++               $out .= "\n";
++               push @{$lines[$cur_level]}, $out;
+             }
+          }
+       }

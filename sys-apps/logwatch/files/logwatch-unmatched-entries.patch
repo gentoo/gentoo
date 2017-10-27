@@ -1,0 +1,10 @@
+--- /usr/share/logwatch/scripts/services/dovecot        2016-04-30 14:00:53.000000000 +0100
++++ dovecot     2016-10-16 13:14:26.286454035 +0100
+@@ -142,6 +142,7 @@
+           ($ThisLine =~ /auth-worker/) or
+           ($ThisLine =~ /auth:.*: Connected to/) or
+           ($ThisLine =~ /Connection closed/) or
++          ($ThisLine =~ /Logged out/) or
+           ($ThisLine =~ /IMAP.*: Connection closed bytes/) or
+           ($ThisLine =~ /IMAP.* failed with mbox file/) or
+          ($ThisLine =~ /discarded duplicate forward to/) or 
