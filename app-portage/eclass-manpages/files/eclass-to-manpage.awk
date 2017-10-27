@@ -27,6 +27,7 @@
 # The format of functions:
 # @FUNCTION: foo
 # @USAGE: <required arguments to foo> [optional arguments to foo]
+# @OUTPUT: <values emitted to STDOUT>
 # @RETURN: <whatever foo returns>
 # @MAINTAINER:
 # <optional; list of contacts, one per line>
@@ -39,6 +40,8 @@
 # [@DEFAULT_UNSET]
 # [@INTERNAL]
 # [@REQUIRED]
+# @DEFAULT-ASSUMED: <interpreted value when not set>
+# @DEFAULT-VALUE: <initial value>
 # @DESCRIPTION:
 # <required; blurb about this variable>
 # foo="<default value>"
@@ -48,6 +51,8 @@
 # [@DEFAULT_UNSET]
 # [@INTERNAL]
 # [@REQUIRED]
+# @DEFAULT-ASSUMED: <interpreted value when not set>
+# @DEFAULT-VALUE: <initial value>
 # @DESCRIPTION:
 # <required; blurb about this variable>
 # foo="<default value>"
@@ -217,6 +222,7 @@ function show_function_header() {
 function handle_function() {
 	func_name = $3
 	usage = ""
+	funcout = ""
 	funcret = ""
 	maintainer = ""
 	internal = 0
@@ -231,6 +237,8 @@ function handle_function() {
 	getline
 	if ($2 == "@USAGE:")
 		usage = eat_line()
+	if ($2 == "@OUTPUT:")
+		funcout = eat_line()
 	if ($2 == "@RETURN:")
 		funcret = eat_line()
 	if ($2 == "@MAINTAINER:")
@@ -257,6 +265,11 @@ function handle_function() {
 			print ""
 		print "Return value: " funcret
 	}
+	if (funcout != "") {
+		if (desc !="")
+			print ""
+		print "Outputs: " funcout
+	}
 
 	if (blurb == "")
 		fail(func_name ": no @BLURB found")
@@ -274,6 +287,8 @@ function _handle_variable() {
 	default_unset = 0
 	internal = 0
 	required = 0
+	default_assumed = ""
+	default_value = ""
 
 	# make sure people haven't specified this before (copy & paste error)
 	if (all_vars[var_name])
@@ -290,6 +305,14 @@ function _handle_variable() {
 			internal = 1
 		else if ($2 == "@REQUIRED")
 			required = 1
+		else if ($2 == "@DEFAULT-ASSUMED:") {
+			sub(/^# @[A-Z-]*:[[:space:]]*/,"")
+			default_assumed = $0
+		}
+		else if ($2 == "@DEFAULT-VALUE:") {
+			sub(/^# @[A-Z-]*:[[:space:]]*/,"")
+			default_value = $0
+		}
 		else
 			opts = 0
 	}
@@ -306,20 +329,30 @@ function _handle_variable() {
 		op = "?="
 		regex = "^[[:space:]]*:[[:space:]]*[$]{" var_name ":?=(.*)}"
 		val = gensub(regex, "\\1", 1, $0)
-		if (val == $0) {
-			if (default_unset + required + internal == 0)
+	}
+	if (default_value != "") {
+		if ( val != $0 && default_value != val )
+			warn( var_name ": extracted different from DEFAULT-VALUE: " default_value " <=> " val )
+		op  = "="
+		val = default_value
+	}
+	if ( val == $0 ) {
+		if (default_unset + required + internal == 0)
 				warn(var_name ": unable to extract default variable content: " $0)
 			val = ""
-		} else if (val !~ /^["']/ && val ~ / /) {
+	} else if (val !~ /^["']/ && val ~ / /) {
 			if (default_unset == 1)
 				warn(var_name ": marked as unset, but has value: " val)
 			val = "\"" val "\""
-		}
 	}
 	if (length(val))
 		val = " " op " \\fI" val "\\fR"
 	if (required == 1)
 		val = val " (REQUIRED)"
+
+	if ( default_assumed != "" ) {
+		val = val " (UNSET -> \\fI" default_assumed "\\fR)"
+	}
 
 	if (internal == 1)
 		return ""
