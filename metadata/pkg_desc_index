@@ -3961,7 +3961,7 @@ dev-java/avalon-framework 4.1.5-r1 4.1.5-r2 4.2.0-r1 4.2.0-r2: Avalon Framework
 dev-java/avalon-logkit 2.1-r8: Easy-to-use Java logging toolkit
 dev-java/backport-util-concurrent 3.1 3.1-r1: A portability wrapper for java.util.concurrent API (jsr166) 6.0
 dev-java/balloontip 1.2.1: A balloon tip component to spice up your Java Swing applications
-dev-java/batik 1.8-r3 1.9: Java based SVG toolkit
+dev-java/batik 1.9: Java based SVG toolkit
 dev-java/bcel 6.0_rc3: The Byte Code Engineering Library: analyze, create, manipulate Java class files
 dev-java/bcmail 1.38-r6 1.45-r5 1.50-r3 1.52-r3: Java cryptography APIs
 dev-java/bcpg 1.50-r1 1.52-r1: Java cryptography APIs
@@ -4280,7 +4280,7 @@ dev-java/jutils 1.0.0-r1: Common utilities for the Java Game Technology Group
 dev-java/jvmstat 3.0: Monitoring APIs and tools for monitoring the performance of the JVM
 dev-java/jvyaml 0.2.1-r2: Java YAML parser and emitter
 dev-java/jvyamlb 0.2.5: JvYAMLb, YAML processor extracted from JRuby
-dev-java/jython 2.7.0 2.7.0-r2: An implementation of Python written in Java
+dev-java/jython 2.7.0-r2: An implementation of Python written in Java
 dev-java/jzlib 1.0.7-r2 1.1.1 1.1.3: JZlib is a re-implementation of zlib in pure Java
 dev-java/kryo 2.24.0: Fast, efficient Java serialization and cloning
 dev-java/kunststoff 2.0.2-r2: Kunststoff look'n'feel Java library
@@ -4582,7 +4582,7 @@ dev-lang/parrot 7.1.0 7.5.0 7.11.0 8.1.0: Virtual machine designed to compile an
 dev-lang/pasm 1.7: A portable assembler for processors of the PowerPC family
 dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.24.1-r2 5.24.2 5.24.3 5.26.0 5.26.1 5.26.9999 5.28.9999: Larry Wall's Practical Extraction and Report Language
-dev-lang/php 5.6.31 5.6.32 7.0.23 7.0.24 7.0.25 7.1.9 7.1.10 7.2.0_rc2 7.2.0_rc3 7.2.0_rc5: The PHP language runtime engine
+dev-lang/php 5.6.31 5.6.32 7.0.23 7.0.25 7.1.11 7.2.0_rc5: The PHP language runtime engine
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2 5.6: Poly/ML is a full implementation of Standard ML
 dev-lang/python 2.7.12 2.7.13 2.7.14 3.4.5 3.4.6 3.5.3 3.5.4 3.6.1-r1 3.6.3: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.4 2.4.5 9999: Python script wrapper
