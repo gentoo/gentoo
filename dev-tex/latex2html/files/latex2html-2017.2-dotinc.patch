@@ -1,0 +1,33 @@
+diff -ruN latex2html-2017.2.orig/config/build.pl latex2html-2017.2/config/build.pl
+--- latex2html-2017.2.orig/config/build.pl	2017-01-23 17:14:25.000000000 -0000
++++ latex2html-2017.2/config/build.pl	2017-08-04 09:13:26.040867263 -0000
+@@ -145,6 +145,7 @@
+ # Read in the system's configuration
+ use FindBin;
+ use lib "$FindBin::Bin/..";
++use lib "$FindBin::Bin";
+ use cfgcache;
+ 
+ my $dd = $cfg{'dd'};
+diff -ruN latex2html-2017.2.orig/config/config.pl latex2html-2017.2/config/config.pl
+--- latex2html-2017.2.orig/config/config.pl	2017-01-23 17:14:25.000000000 -0000
++++ latex2html-2017.2/config/config.pl	2017-08-04 09:13:45.500980317 -0000
+@@ -435,6 +435,7 @@
+ 
+ use FindBin;
+ use lib "$FindBin::Bin/..";
++use lib "$FindBin::Bin";
+ use L2hos;
+ 
+ #use diagnostics;
+diff -ruN latex2html-2017.2.orig/config/install.pl latex2html-2017.2/config/install.pl
+--- latex2html-2017.2.orig/config/install.pl	2017-08-04 09:08:53.608284554 -0000
++++ latex2html-2017.2/config/install.pl	2017-08-04 09:13:57.116047796 -0000
+@@ -183,6 +183,7 @@
+ 
+ use FindBin;
+ use lib "$FindBin::Bin/..";
++use lib "$FindBin::Bin";
+ use cfgcache;
+ use L2hos;
+ 

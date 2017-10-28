@@ -1,0 +1,27 @@
+--- /src/net/json_util_test.cc
++++ /src/net/json_util_test.cc
+@@ -784,13 +784,13 @@
+   for (size_t i = 0; i <  arraysize(kNumS32ValueKeys); ++i) {
+     {
+       Json::Value json_value;
+-      json_value[kNumS32ValueKeys[i]] = -2147483649ll;
++      json_value[kNumS32ValueKeys[i]] = static_cast<Json::Value::Int64>(-2147483649ll);
+       TestMsg msg;
+       EXPECT_FALSE(JsonUtil::JsonValueToProtobufMessage(json_value, &msg));
+     }
+     {
+       Json::Value json_value;
+-      json_value[kNumS32ValueKeys[i]] = 2147483648ull;
++      json_value[kNumS32ValueKeys[i]] = static_cast<Json::Value::UInt64>(2147483648ull);
+       TestMsg msg;
+       EXPECT_FALSE(JsonUtil::JsonValueToProtobufMessage(json_value, &msg));
+     }
+@@ -805,7 +805,7 @@
+     }
+     {
+       Json::Value json_value;
+-      json_value[kNumU32ValueKeys[i]] = 4294967296ull;
++      json_value[kNumU32ValueKeys[i]] = static_cast<Json::Value::UInt64>(4294967296ull);
+       TestMsg msg;
+       EXPECT_FALSE(JsonUtil::JsonValueToProtobufMessage(json_value, &msg));
+     }

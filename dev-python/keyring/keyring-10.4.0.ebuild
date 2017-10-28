@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/k/${PN}/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="PSF-2"
-KEYWORDS="amd64 ~arm64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~arm amd64 ~arm64 x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 
 DEPEND="
@@ -25,6 +25,12 @@ DEPEND="
 		>=dev-python/pytest-2.8[${PYTHON_USEDEP}]
 	)"
 RDEPEND=""
+
+src_unpack() {
+	unpack $A
+	# This is an interactive test.
+	rm -f "${S}"/keyring/tests/backends/test_kwallet.py
+}
 
 python_test() {
 	py.test -v -v || die "testsuite failed under ${EPYTHON}"

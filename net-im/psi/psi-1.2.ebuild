@@ -6,7 +6,7 @@ EAPI=6
 PLOCALES="be bg ca cs de en eo es et fa fi fr he hu it ja kk mk nl pl pt pt_BR ru sk sl sr@latin sv sw uk ur_PK vi zh_CN zh_TW"
 PLOCALE_BACKUP="en"
 
-inherit l10n qmake-utils
+inherit l10n qmake-utils xdg-utils
 
 DESCRIPTION="Qt XMPP client"
 HOMEPAGE="http://psi-im.org/"
@@ -112,4 +112,15 @@ src_install() {
 		doins "translations/${PN}_${1}.qm"
 	}
 	l10n_for_each_locale_do install_locale
+}
+
+pkg_postinst()
+{
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }

@@ -4,6 +4,43 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (4 Oct 2017)
+# -fstack-protector is not supported for hppa, bug 630702
+>=sys-devel/gcc-6.0 ssp
+
+# Michael Palimaka <kensington@gentoo.org> (30 Sep 2017)
+# Required dependencies are not keyworded.
+x11-themes/qtcurve plasma
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (11 Sep 2017)
+# Systemtap has no hppa keywords
+sys-libs/glibc systemtap
+
+# Göktürk Yüksek <gokturk@gentoo.org> (15 Aug 2017)
+# Requires java
+app-forensics/sleuthkit java
+
+# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
+media-libs/mesa vulkan
+
+# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Requires USE=redis that is masked in this profile.
+dev-python/pyzor test
+
+# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Requires USE=systemd that is masked in this profile.
+net-wireless/bluez user-session
+
+# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Requires USE=seccomp that is masked in this profile.
+net-libs/gnutls test-full
+
+# Robin H. Johnson <robbat2@gentoo.org> (05 Aug 2017)
+# Upstream Git is switching to PCRE2 w/ JIT.
+# This is not available on some arches, where a fallback to PCRE1 without JIT is used.
+dev-vcs/git pcre-jit
+
 # Michał Górny <mgorny@gentoo.org> (28 Jun 2017)
 # app-misc/dtach is not keyworded, and tests are restricted anyway, so
 # no point in pursuing it right now.

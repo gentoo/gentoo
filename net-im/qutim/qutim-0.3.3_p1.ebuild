@@ -9,8 +9,8 @@ inherit qt4-r2 cmake-utils
 
 MY_PV="${PV/_p/.p_}"
 DESCRIPTION="Qt4-based multi-protocol instant messenger"
-HOMEPAGE="http://www.qutim.org"
-SRC_URI="http://www.qutim.org/dwnl/80/${PN}-${MY_PV}.tar.xz"
+HOMEPAGE="https://www.qutim.org"
+SRC_URI="https://www.qutim.org/dwnl/80/${PN}-${MY_PV}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -19,14 +19,13 @@ KEYWORDS="amd64 x86"
 # general USE
 IUSE="doc +sound tools"
 # protocol uses
-IUSE="$IUSE telepathy irc xmpp jingle mrim oscar purple vkontakte"
+IUSE="$IUSE telepathy irc xmpp mrim oscar purple vkontakte"
 # plugins
 IUSE="$IUSE antiboss aspell ayatana awn crypt dbus debug -espionage histman hunspell
-	kde mobility otr plugman phonon purple qml sdl +ssl +xscreensaver webkit"
+	otr plugman phonon purple qml sdl +ssl +xscreensaver webkit"
 
 REQUIRED_USE="
 	oscar? ( ssl )
-	jingle? ( xmpp )
 	qml? ( webkit )
 "
 
@@ -45,7 +44,6 @@ CDEPEND="
 		app-crypt/qca:2[qt4(+)]
 		>=net-libs/jreen-1.2.0[qt4]
 	)
-	jingle? ( dev-qt/qt-mobility[multimedia] )
 	oscar? ( app-crypt/qca:2[qt4(+)] )
 	purple? ( net-im/pidgin )
 	vkontakte? ( >=dev-qt/qtwebkit-${QT_PV} )
@@ -58,16 +56,8 @@ CDEPEND="
 	histman? ( >=dev-qt/qtsql-${QT_PV} )
 	ayatana? ( >=dev-libs/libindicate-qt-0.2.2 )
 	hunspell? ( app-text/hunspell )
-	kde? ( kde-frameworks/kdelibs:4 )
-	mobility? (
-		dev-qt/qt-mobility[multimedia,feedback]
-		>=dev-qt/qtbearer-${QT_PV}
-	)
 	otr? ( >=net-libs/libotr-4.0.0 )
-	phonon? (
-		kde? ( media-libs/phonon[qt4] )
-		!kde? ( || ( >=dev-qt/qtphonon-${QT_PV} media-libs/phonon[qt4] ) )
-	)
+	phonon? ( media-libs/phonon[qt4] )
 	plugman? (
 		dev-libs/libattica
 		app-arch/libarchive
@@ -82,7 +72,6 @@ CDEPEND="
 DEPEND="${CDEPEND}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
-	kde? ( dev-util/automoc )
 "
 RDEPEND="${CDEPEND}
 	xmpp? ( app-crypt/qca:2[gpg] )
@@ -90,9 +79,11 @@ RDEPEND="${CDEPEND}
 	kde-frameworks/oxygen-icons
 "
 
-DOCS=( AUTHORS INSTALL ChangeLog )
+DOCS=( AUTHORS ChangeLog )
+
 PATCHES=(
 	"${FILESDIR}/${PN}-0.3.2-astral-migrate-qt-telepaphy.patch"
+	"${FILESDIR}/${PN}-0.3.3-fix-build-with-gcc-6.1.0-and-above.patch"
 )
 
 S="${WORKDIR}/${PN}-${MY_PV}"
@@ -102,12 +93,6 @@ src_prepare() {
 	if ! use xscreensaver; then
 		sed -i -e '/XSS xscrnsaver/d' \
 			core/src/corelayers/idledetector/CMakeLists.txt || die
-	fi
-
-	# fix automagic dep on qt-mobility for jingle
-	if ! use jingle; then
-		sed -i -e '/find_package(QtMobility)/d' \
-			protocols/jabber/CMakeLists.txt || die
 	fi
 
 	# remove unwanted translations
@@ -148,12 +133,10 @@ src_configure() {
 		$(cmake-utils_use  histman     HISTMAN           )
 		$(cmake-utils_use  hunspell    HUNSPELLER        )
 		$(cmake-utils_use  ayatana     INDICATOR         )
-		$(cmake-utils_use  kde         KDEINTEGRATION    )
 		$(cmake-utils_use  qml         KINETICPOPUPS     )
 		$(cmake-utils_use  phonon      PHONONSOUND       )
 		$(cmake-utils_use  plugman     PLUGMAN           )
 		$(cmake-utils_use  debug       LOGGER            )
-		$(cmake-utils_use  mobility    MOBILITY          )
 		$(cmake-utils_use  dbus        NOWPLAYING        )
 		$(cmake-utils_use  otr         OFFTHERECORD      )
 		$(cmake-utils_use  qml         QMLCHAT           )
@@ -163,6 +146,8 @@ src_configure() {
 		-DDOCKTILE=OFF	# QtDockTile currenly supports only unity;
 						# consider to make it optional if it also support kde or whatever
 		-DUPDATER=OFF
+		-DCMAKE_DISABLE_FIND_PACKAGE_QtMobility=ON # required dependency last-rited
+		-DKDEINTEGRATION=OFF # bug 631122
 	)
 	# NOTE: Integration plugins are autodisabled:
 	# symbianintegration macintegration maemo5integration haikunotifications meegointegration winintegration

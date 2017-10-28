@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="Digital camera raw image library wrapper"
 LICENSE="GPL-2+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="

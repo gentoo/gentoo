@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils flag-o-matic git-r3 toolchain-funcs user
+inherit flag-o-matic toolchain-funcs user
 
 DESCRIPTION="A Tool for network monitoring and data acquisition"
 EGIT_REPO_URI="https://github.com/the-tcpdump-group/tcpdump"
@@ -14,7 +14,13 @@ HOMEPAGE="
 LICENSE="BSD"
 SLOT="0"
 IUSE="+drop-root libressl smi ssl samba suid test"
-KEYWORDS=""
+if [[ ${PV} == "9999" ]] ; then
+	inherit git-r3
+	KEYWORDS=""
+else
+	SRC_URI="https://github.com/the-${PN}-group/${PN}/archive/${P}.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux"
+fi
 
 RDEPEND="
 	drop-root? ( sys-libs/libcap-ng )
@@ -41,14 +47,16 @@ pkg_setup() {
 	fi
 }
 
+src_prepare() {
+	default
+
+	sed -i -e '/^eapon1/d;' tests/TESTLIST || die
+
+	# bug 630394
+	sed -i -e '/^nbns-valgrind/d' tests/TESTLIST || die
+}
+
 src_configure() {
-	# tcpdump needs some optimization. see bug #108391
-	# but do not replace -Os
-	filter-flags -O[0-9]
-	has -O? ${CFLAGS} || append-cflags -O2
-
-	filter-flags -finline-functions
-
 	if use drop-root; then
 		append-cppflags -DHAVE_CAP_NG_H
 		export LIBS=$( $(tc-getPKG_CONFIG) --libs libcap-ng )
@@ -64,7 +72,6 @@ src_configure() {
 
 src_test() {
 	if [[ ${EUID} -ne 0 ]] || ! use drop-root; then
-		sed -i -e '/^\(espudp1\|eapon1\)/d;' tests/TESTLIST || die
 		emake check
 	else
 		ewarn "If you want to run the test suite, make sure you either"

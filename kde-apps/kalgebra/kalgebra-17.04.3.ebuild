@@ -9,7 +9,7 @@ inherit kde5
 DESCRIPTION="MathML-based graph calculator by KDE"
 HOMEPAGE="https://www.kde.org/applications/education/kalgebra
 https://edu.kde.org/kalgebra"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="readline"
 
 DEPEND="
@@ -30,7 +30,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	$(add_qt_dep qtquickcontrols)
-	dev-libs/kirigami:2
+	$(add_frameworks_dep kirigami '' 2.2.0)
 	!kde-apps/analitza:4
 "
 

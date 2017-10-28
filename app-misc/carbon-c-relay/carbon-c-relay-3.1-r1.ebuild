@@ -11,7 +11,7 @@ SRC_URI="https://github.com/grobian/carbon-c-relay/releases/download/v${PV}/${P}
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="~amd64 ~arm ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 IUSE=""
 
 RDEPEND=""

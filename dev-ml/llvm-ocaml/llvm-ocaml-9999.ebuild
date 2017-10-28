@@ -17,8 +17,10 @@ EGIT_REPO_URI="https://git.llvm.org/git/llvm.git
 	https://github.com/llvm-mirror/llvm.git"
 
 # Keep in sync with sys-devel/llvm
+ALL_LLVM_EXPERIMENTAL_TARGETS=( AVR Nios2 RISCV WebAssembly )
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
-	NVPTX PowerPC RISCV Sparc SystemZ X86 XCore )
+	NVPTX PowerPC Sparc SystemZ X86 XCore
+	"${ALL_LLVM_EXPERIMENTAL_TARGETS[@]}" )
 ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
 LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/?}
 
@@ -72,7 +74,10 @@ src_configure() {
 
 		-DBUILD_SHARED_LIBS=ON
 		-DLLVM_OCAML_OUT_OF_TREE=ON
-		-DLLVM_TARGETS_TO_BUILD="${LLVM_TARGETS// /;}"
+		# cheap hack: LLVM combines both anyway, and the only difference
+		# is that the former list is explicitly verified at cmake time
+		-DLLVM_TARGETS_TO_BUILD=""
+		-DLLVM_EXPERIMENTAL_TARGETS_TO_BUILD="${LLVM_TARGETS// /;}"
 		-DLLVM_BUILD_TESTS=$(usex test)
 
 		# disable various irrelevant deps and settings
@@ -93,7 +98,8 @@ src_configure() {
 	)
 
 	use test && mycmakeargs+=(
-		-DLIT_COMMAND="${EPREFIX}/usr/bin/lit"
+		-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
+		-DLLVM_LIT_ARGS="-vv"
 	)
 
 	# LLVM_ENABLE_ASSERTIONS=NO does not guarantee this for us, #614844
@@ -110,7 +116,7 @@ src_configure() {
 		local llvm_bindir=$(llvm-config --bindir)
 		# Force using system-installed tools.
 		sed -i -e "/llvm_tools_dir/s@\".*\"@\"${llvm_bindir}\"@" \
-			"${BUILD_DIR}"/test/lit.site.cfg || die
+			"${BUILD_DIR}"/test/lit.site.cfg.py || die
 	fi
 }
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -24,6 +24,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-gcc45.patch
 	"${FILESDIR}"/${P}-qt47.patch
 	"${FILESDIR}"/${P}-buffer.patch
+	"${FILESDIR}"/${P}-gcc6.patch
 )
 
 src_prepare() {

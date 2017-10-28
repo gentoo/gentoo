@@ -87,8 +87,8 @@ src_prepare() {
 	# disable use of SDK on OSX, bug #568758
 	sed -i -e 's/xcrun/false/' utils/lit/lit/util.py || die
 
-	# User patches
-	eapply_user
+	# User patches + QA
+	cmake-utils_src_prepare
 }
 
 multilib_src_configure() {

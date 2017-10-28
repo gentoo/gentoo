@@ -19,6 +19,7 @@
     <flag name="lammps-memalign">Enables the use of the posix_memalign()
 			call instead of malloc() when large chunks or memory are allocated
 			by LAMMPS. Aliengnment is on 16 byte boundaries.</flag>
+    <flag name="cuda">Enable cuda non-bonded kernels</flag>
   </use>
   <maintainer type="person">
     <email>nicolasbock@gentoo.org</email>

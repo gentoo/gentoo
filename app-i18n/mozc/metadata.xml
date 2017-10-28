@@ -14,8 +14,12 @@ Mozc is a Japanese Input Method Editor (IME) designed for multi-platform such as
 </longdescription>
 	<use>
 		<flag name="fcitx">Enable support for <pkg>app-i18n/fcitx</pkg></flag>
+		<flag name="fcitx4">Enable support for <pkg>app-i18n/fcitx</pkg> 4</flag>
+		<flag name="gui">Install graphical user interface tool (mozc_tool)</flag>
+		<flag name="handwriting-tegaki">Use handwriting recognition model from <pkg>app-i18n/tegaki-zinnia-japanese</pkg></flag>
+		<flag name="handwriting-tomoe">Use handwriting recognition model from <pkg>app-i18n/zinnia-tomoe</pkg></flag>
 		<flag name="ibus">Enable support for <pkg>app-i18n/ibus</pkg></flag>
-		<flag name="renderer">Enable native candidate window.</flag>
+		<flag name="renderer">Enable native candidate window</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">jsoncpp</remote-id>

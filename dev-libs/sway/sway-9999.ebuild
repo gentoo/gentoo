@@ -8,7 +8,7 @@ inherit git-r3 eutils cmake-utils
 DESCRIPTION="i3-compatible Wayland window manager"
 HOMEPAGE="http://swaywm.org/"
 
-EGIT_REPO_URI="https://github.com/SirCmpwn/sway.git"
+EGIT_REPO_URI="https://github.com/swaywm/sway.git"
 
 LICENSE="MIT"
 SLOT="0"

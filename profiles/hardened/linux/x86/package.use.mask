@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # Magnus Granberg <zorry@gentoo.org> (30 sep 2016)
@@ -13,7 +13,8 @@ dev-libs/cyrus-sasl berkdb
 # else hell will rule. (RWX in the libs)
 # Propogating changes from amd64.
 # Bug 433121
-x11-drivers/nvidia-drivers X tools
+# (static-libs require tools)
+x11-drivers/nvidia-drivers X tools static-libs
 
 # Magnus Granberg <zorry@gentoo.org> (29 Nov 2012)
 # Bug #444786 disable nvidia on app-admin/conky 

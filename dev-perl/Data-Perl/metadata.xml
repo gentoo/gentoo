@@ -5,4 +5,22 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="cpan">Data-Perl</remote-id>
+    <remote-id type="cpan-module">Data::Perl</remote-id>
+    <remote-id type="cpan-module">Data::Perl::Bool</remote-id>
+    <remote-id type="cpan-module">Data::Perl::Code</remote-id>
+    <remote-id type="cpan-module">Data::Perl::Collection::Array</remote-id>
+    <remote-id type="cpan-module">Data::Perl::Collection::Hash</remote-id>
+    <remote-id type="cpan-module">Data::Perl::Counter</remote-id>
+    <remote-id type="cpan-module">Data::Perl::Number</remote-id>
+    <remote-id type="cpan-module">Data::Perl::Role::Bool</remote-id>
+    <remote-id type="cpan-module">Data::Perl::Role::Code</remote-id>
+    <remote-id type="cpan-module">Data::Perl::Role::Collection::Array</remote-id>
+    <remote-id type="cpan-module">Data::Perl::Role::Collection::Hash</remote-id>
+    <remote-id type="cpan-module">Data::Perl::Role::Counter</remote-id>
+    <remote-id type="cpan-module">Data::Perl::Role::Number</remote-id>
+    <remote-id type="cpan-module">Data::Perl::Role::String</remote-id>
+    <remote-id type="cpan-module">Data::Perl::String</remote-id>
+  </upstream>
 </pkgmetadata>

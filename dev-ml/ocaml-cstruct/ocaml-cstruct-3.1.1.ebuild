@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit findlib
+inherit findlib opam
 
 DESCRIPTION="Map OCaml arrays onto C-like structs"
 HOMEPAGE="https://github.com/mirage/ocaml-cstruct https://mirage.io"
@@ -26,14 +26,12 @@ RDEPEND="
 		dev-ml/ocaml-migrate-parsetree:=
 		>=dev-ml/ppx_tools_versioned-5.0.1:=
 	)
-	>=dev-lang/ocaml-4.01:=
 	dev-ml/ocplib-endian:=
 	dev-ml/sexplib:=
 	dev-ml/type-conv:=
 "
 DEPEND="
 	dev-ml/jbuilder
-	dev-ml/opam
 	test? (
 		dev-ml/ounit
 		ppx? ( dev-ml/ppx_driver dev-ml/ppx_sexp_conv )
@@ -57,18 +55,10 @@ src_test() {
 	jbuilder runtest -p $(get_targets) || die
 }
 
-oinstall() {
-	opam-installer -i \
-		--prefix="${ED}/usr" \
-		--libdir="${D}/$(ocamlc -where)" \
-		--docdir="${ED}/usr/share/doc/${PF}" \
-		${1}.install || die
-}
-
 src_install() {
-	oinstall cstruct
-	oinstall cstruct-unix
-	use lwt && oinstall cstruct-lwt
-	use async && oinstall cstruct-async
-	use ppx && oinstall ppx_cstruct
+	opam-install cstruct
+	opam-install cstruct-unix
+	use lwt && opam-install cstruct-lwt
+	use async && opam-install cstruct-async
+	use ppx && opam-install ppx_cstruct
 }

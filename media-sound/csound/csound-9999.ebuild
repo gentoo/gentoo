@@ -20,7 +20,7 @@ else
 fi
 
 DESCRIPTION="A sound design and signal processing system for composition and performance"
-HOMEPAGE="http://csound.github.io/"
+HOMEPAGE="https://csound.github.io/"
 
 LICENSE="LGPL-2.1 doc? ( FDL-1.2+ )"
 SLOT="0"
@@ -91,12 +91,7 @@ DEPEND="${RDEPEND}
 "
 
 if [[ ${PV} != "9999" ]]; then
-	DEPEND+="
-		doc? (
-			app-arch/unzip
-			!app-doc/csound-manual
-		)
-	"
+	DEPEND+="doc? ( app-arch/unzip )"
 fi
 
 # requires specific alsa settings

@@ -26,6 +26,7 @@ RDEPEND="
 	dev-ros/pluginlib
 	media-libs/libogg
 	media-libs/libtheora[encode]
+	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"

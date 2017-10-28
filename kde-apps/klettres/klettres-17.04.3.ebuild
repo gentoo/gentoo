@@ -9,7 +9,7 @@ inherit kde5
 DESCRIPTION="Alphabet learning application"
 HOMEPAGE="https://www.kde.org/applications/education/klettres
 https://edu.kde.org/klettres"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="
@@ -26,6 +26,6 @@ DEPEND="
 	$(add_qt_dep qtsvg)
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
-	media-libs/phonon[qt5]
+	media-libs/phonon[qt5(+)]
 "
 RDEPEND="${DEPEND}"

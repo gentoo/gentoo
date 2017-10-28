@@ -6,8 +6,8 @@ EAPI=6
 inherit flag-o-matic scons-utils toolchain-funcs
 
 DESCRIPTION="Advanced Digital DJ tool based on Qt"
-HOMEPAGE="http://www.mixxx.org/"
-SRC_URI="http://downloads.${PN}.org/${P}/${P}-src.tar.gz"
+HOMEPAGE="https://www.mixxx.org/"
+SRC_URI="https://downloads.${PN}.org/${P}/${P}-src.tar.gz"
 
 # Upstream patches
 SRC_URI+=" https://github.com/mixxxdj/mixxx/commit/51d95ba58d99309f439cb7e2d1285cfb33aa0f63.patch -> ${PN}-2.0.0-ffmpeg30.patch"
@@ -76,6 +76,8 @@ PATCHES=(
 
 	"${FILESDIR}"/${P}-chromaprint-1.4.patch #604528
 	"${FILESDIR}"/${P}-gcc62.patch #595090
+
+	"${FILESDIR}"/${PN}-2.0.0-sqlite3.patch #622776
 
 	# The following patches were taken from sunny-overlay (bug #608430)
 	"${FILESDIR}"/${P}-fix-formatting-of-time-durations.patch

@@ -5,6 +5,7 @@ EAPI=6
 
 KDE_MINIMAL="4.6"
 KMNAME="kdepim"
+QT3SUPPORT_REQUIRED="true"
 inherit kde4-meta
 
 DESCRIPTION="KDE pgp abstraction library"

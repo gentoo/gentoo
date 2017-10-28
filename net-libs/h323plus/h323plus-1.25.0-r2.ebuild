@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ inherit eutils flag-o-matic multilib toolchain-funcs
 
 MY_P="${PN}-v${PV//./_}"
 
-DESCRIPTION="Open Source implementation of the ITU H.323 teleconferencing protocol, successor to OpenH323"
+DESCRIPTION="Open Source implementation of the ITU H.323 protocol, successor of OpenH323"
 HOMEPAGE="http://www.h323plus.org/"
 SRC_URI="mirror://sourceforge/${PN}/${PN}-v${PV//./_}.tar.gz"
 

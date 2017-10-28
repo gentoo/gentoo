@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,8 +18,10 @@ S=${WORKDIR}/${PN}
 DOCS="AUTHORS README* TODO"
 
 src_prepare() {
+	cmake-utils_src_prepare
+
 	echo 'INSTALL(TARGETS min-cscope RUNTIME DESTINATION bin)' \
-		>> src/CMakeLists.txt
+		>> src/CMakeLists.txt || die
 }
 
 src_configure() {

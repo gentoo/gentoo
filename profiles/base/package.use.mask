@@ -7,6 +7,55 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (16 Oct 2017)
+# Depends on masked dev-qt/qtwebkit:4, bug #620692
+<app-i18n/fcitx-libpinyin-0.5.0 dictionary-manager
+
+# Andreas Sturmlechner <asturm@gentoo.org> (16 Oct 2017)
+# USE=qt4 depends on masked dev-qt/qtwebkit:4, bug #620754
+# USE=geocad depends on masked <sci-libs/opencascade-6.8.0
+sci-physics/root geocad qt4
+
+# Andreas Sturmlechner <asturm@gentoo.org> (16 Oct 2017)
+# Depends on masked dev-qt/qtwebkit:4, bug #620684
+dev-qt/assistant:4 webkit
+dev-qt/designer:4 webkit
+dev-qt/qt-meta:4 webkit
+dev-qt/qtdeclarative:4 webkit
+dev-qt/qtdemo:4 webkit
+dev-python/PyQt4 webkit
+dev-python/pyside:0 webkit
+
+# Mike Gilbert <floppym@gentoo.org> (10 Oct 2017)
+# Depends on old ffmpeg-2, which no longer exists in the repo.
+<=media-tv/tvheadend-4.0.9 ffmpeg
+
+# Pawel Hajdan jr <phajdan.jr@gentoo.org> (18 Sep 2017)
+# Ian Stakenvicius <axs@gentoo.org> (27 Sep 2017)
+# Depends on >=icu-59, still masked.
+>=www-client/chromium-62.0.3202.9 system-icu
+>=www-client/firefox-56.0 system-icu
+
+# Andreas K. Huettel <dilfridge@gentoo.org> (9 Sep 2017)
+# Potentially destructive. Use it only if you know what you're doing.
+sys-libs/glibc vanilla
+
+# Andreas K. Huettel <dilfridge@gentoo.org> (6 Sep 2017)
+# This should really go away now.
+>=sys-libs/glibc-2.26 rpc
+
+# Michael Orlitzky <mjo@gentoo.org> (24 Aug 2017)
+# This is a security risk if not used carefully, bug 628596.
+net-analyzer/nrpe command-args
+
+# Michał Górny <mgorny@gentoo.org> (05 Aug 2017)
+# media-libs/silgraphite is being treecleaned wrt #594314.
+<app-text/texlive-core-2013 xetex
+
+# Michał Górny <mgorny@gentoo.org> (04 Aug 2017)
+# sys-kernel/openvz-sources is being treecleaned wrt #580516.
+app-emulation/libvirt openvz
+
 # Michał Górny <mgorny@gentoo.org> (30 Jul 2017)
 # The Z3 backend is unstable and causes assertion failures. Mask it
 # until upstream fixes it properly.
@@ -20,10 +69,6 @@ app-editors/emacs-vcs hesiod
 # Brian Evans <grknight@gentoo.org> (21 Jul 2017)
 # Mask USE flag which has limited keywords for app-crypt/argon2
 dev-lang/php argon2
-
-# Ilya Tumaykin <itumaykin+gentoo@gmail.com> (18 Jul 2017)
-# Requires unavailable >=dev-lang/mujs-1.0.0, see Gentoo bug 621820.
-media-video/mpv javascript
 
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (16 Jul 2017)
 # Causes build to fail with ffmpeg-3, #602786
@@ -184,15 +229,6 @@ mate-base/mate bluetooth
 # and causes problems with updating the X window, bug #592238
 app-editors/emacs cairo
 app-editors/emacs-vcs cairo
-
-# Michael Palimaka <kensington@gentoo.org> (15 Sep 2016)
-# Requires unreleased dependency dev-qt/qtspeech.
-kde-apps/konqueror speech
-kde-apps/kpimtextedit speech
-kde-apps/ktp-text-ui speech
-kde-apps/okular speech
-kde-frameworks/knotifications speech
-kde-frameworks/ktextwidgets speech
 
 # Michał Górny <mgorny@gentoo.org> (28 Aug 2016)
 # lldb fails to build in the current RC, and needs a lot of minor fixes.
@@ -471,10 +507,6 @@ sci-physics/reduze berkdb
 # re-implemented or dropped. For more details, bug #429372.
 dev-python/pypy sandbox
 dev-python/pypy3 sandbox
-
-# Julian Ospald <hasufell@gentoo.org> (27 Oct 2013)
-# luajit is in ~arch, prepare for minetest stabilization
-games-action/minetest luajit
 
 # Julian Ospald <hasufell@gentoo.org> (31 Aug 2013)
 # Randomly breaks consumers at runtime. Do not report

@@ -6,14 +6,14 @@ EAPI=5
 inherit flag-o-matic multilib toolchain-funcs eutils multilib-minimal
 
 DESCRIPTION="A free library for encoding X264/AVC streams"
-HOMEPAGE="http://www.videolan.org/developers/x264.html"
+HOMEPAGE="https://www.videolan.org/developers/x264.html"
 if [[ ${PV} == 9999 ]]; then
 	inherit git-2
 	EGIT_REPO_URI="git://git.videolan.org/x264.git"
 else
 	inherit versionator
 	MY_P="x264-snapshot-$(get_version_component_range 3)-2245"
-	SRC_URI="http://download.videolan.org/pub/videolan/x264/snapshots/${MY_P}.tar.bz2"
+	SRC_URI="https://download.videolan.org/pub/videolan/x264/snapshots/${MY_P}.tar.bz2"
 	KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 	S="${WORKDIR}/${MY_P}"
 fi

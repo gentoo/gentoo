@@ -33,6 +33,8 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext"
 
 src_prepare() {
+	cmake-utils_src_prepare
+
 	if use dedicated || use server ; then
 		sed \
 			-e "s:GAMES_BINDIR:${GAMES_BINDIR}:" \

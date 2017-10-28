@@ -1,9 +1,0 @@
-diff -Naurp ltrace-0.5-orig/testsuite/ltrace.minor/demangle-lib.cpp ltrace-0.5/testsuite/ltrace.minor/demangle-lib.cpp
---- ltrace-0.5-orig/testsuite/ltrace.minor/demangle-lib.cpp	2006-03-13 17:12:01.000000000 -0600
-+++ ltrace-0.5/testsuite/ltrace.minor/demangle-lib.cpp	2009-07-27 13:47:43.876929485 -0600
-@@ -1,4 +1,5 @@
- #include<stddef.h>
-+#include<stdlib.h>
- #include<iostream>
- 
- #include"demangle.h"

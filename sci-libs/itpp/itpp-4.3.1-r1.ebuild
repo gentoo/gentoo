@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -22,9 +22,11 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen virtual/latex-base )"
 
-DOCS=(ChangeLog NEWS AUTHORS README)
+DOCS=( ChangeLog NEWS AUTHORS README )
 
 src_prepare() {
+	cmake-utils_src_prepare
+
 	# gentoo redefines the CMAKE_BUILD_TYPE
 	sed -i \
 		-e 's/CMAKE_BUILD_TYPE STREQUAL Release/NOT CMAKE_BUILD_TYPE STREQUAL Debug/' \

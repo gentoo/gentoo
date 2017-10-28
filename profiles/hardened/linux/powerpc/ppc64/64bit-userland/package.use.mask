@@ -1,5 +1,10 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+# Thomas Deutschmann <whissi@gentoo.org> (17 Oct 2017)
+# No lua keyworded for this arch yet
+# libpcre jit is not (yet?) support on this arch
+www-servers/nginx nginx_modules_http_lua pcre-jit
 
 # Kacper Kowalik <xarthisius@gentoo.org> (25 Apr 2012)
 # Masking wrt bug 274847 and other unsolved 

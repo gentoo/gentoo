@@ -11,7 +11,7 @@ inherit flag-o-matic multiprocessing python-single-r1 toolchain-funcs versionato
 MY_V="${PN^^}$(get_version_component_range 1)"
 
 DESCRIPTION="Tianocore UEFI Development kit"
-HOMEPAGE="http://www.tianocore.org/edk2/"
+HOMEPAGE=" https://github.com/tianocore/tianocore.github.io/wiki/EDK-II"
 SRC_URI="https://github.com/tianocore/${PN}/releases/download/${MY_V}/${MY_V}.Complete.MyWorkSpace.zip"
 
 LICENSE="BSD"

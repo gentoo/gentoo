@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -37,7 +37,10 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=( "${FILESDIR}"/${PN}-1.8.3-java.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.8.3-java.patch
+	"${FILESDIR}"/${PN}-2.0.4-gcc6.patch
+)
 
 src_prepare() {
 	find -name 'Makefile.am' -exec \

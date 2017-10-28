@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,11 +10,11 @@ HOMEPAGE="http://rime.im/"
 SRC_URI="http://dl.bintray.com/lotem/rime/${P}.tar.gz"
 
 LICENSE="GPL-3"
-SLOT="0"
+SLOT="0/1"
 KEYWORDS="amd64 ~ppc ppc64 ~x86"
 IUSE="static-libs test"
 
-RDEPEND="app-i18n/opencc
+RDEPEND="app-i18n/opencc:=
 	dev-cpp/glog
 	>=dev-cpp/yaml-cpp-0.5.0
 	dev-db/kyotocabinet

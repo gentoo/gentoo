@@ -12,7 +12,7 @@ SRC_URI="https://github.com/CDrummond/cantata/releases/download/v${PV}/${P}.tar.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="cdda cddb cdio http-server mtp musicbrainz replaygain taglib udisks"
 REQUIRED_USE="
 	?? ( cdda cdio )
@@ -59,6 +59,8 @@ DEPEND="${RDEPEND}
 
 # cantata has no tests
 RESTRICT="test"
+
+PATCHES=( "${FILESDIR}/${P}-headers.patch" )
 
 src_prepare() {
 	remove_locale() {

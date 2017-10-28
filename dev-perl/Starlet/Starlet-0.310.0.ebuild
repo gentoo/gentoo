@@ -27,3 +27,8 @@ DEPEND="${RDEPEND}
 		>=virtual/perl-Test-Simple-0.880.0
 	)
 "
+src_prepare() {
+	sed -i -e 's/use inc::Module::Install/use lib q[.];\n use inc::Module::Install/' Makefile.PL ||
+		die "Can't patch Makefile.PL for 5.26 dot-in-inc"
+	perl-module_src_prepare
+}

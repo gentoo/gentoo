@@ -59,6 +59,7 @@ DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	>=dev-lang/perl-5.0
 	clang? ( sys-devel/clang )
+	>=dev-util/cmake-3.4.3
 "
 
 PDEPEND=">=app-eselect/eselect-rust-0.3_pre20150425

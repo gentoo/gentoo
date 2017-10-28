@@ -1,0 +1,82 @@
+--- a/src/dssp.cpp
++++ b/src/dssp.cpp
+@@ -73,7 +73,7 @@
+ 
+ 	double alpha;
+ 	char chirality;
+-	tr1::tie(alpha,chirality) = residue.Alpha();
++	boost::tie(alpha,chirality) = residue.Alpha();
+ 	
+ 	uint32 bp[2] = {};
+ 	char bridgelabel[2] = { ' ', ' ' };
+--- a/src/primitives-3d.cpp
++++ b/src/primitives-3d.cpp
+@@ -153,7 +153,7 @@
+ 
+ // --------------------------------------------------------------------
+ 
+-tr1::tuple<double,MPoint> QuaternionToAngleAxis(MQuaternion q)
++boost::tuple<double,MPoint> QuaternionToAngleAxis(MQuaternion q)
+ {
+ 	if (q.R_component_1() > 1)
+ 		q = Normalize(q);
+@@ -169,7 +169,7 @@
+ 	
+ 	MPoint axis(q.R_component_2() / s, q.R_component_3() / s, q.R_component_4() / s);
+ 
+-	return tr1::make_tuple(angle, axis);
++	return boost::make_tuple(angle, axis);
+ }
+ 
+ MPoint CenterPoints(vector<MPoint>& points)
+--- a/src/primitives-3d.h
++++ b/src/primitives-3d.h
+@@ -9,7 +9,7 @@
+ 
+ #include <vector>
+ 
+-#include <boost/tr1/tuple.hpp>
++#include <boost/tuple/tuple.hpp>
+ #include <boost/math/quaternion.hpp>
+ 
+ typedef boost::math::quaternion<double> MQuaternion;
+@@ -64,7 +64,7 @@
+ 
+ MQuaternion Normalize(MQuaternion q);
+ 
+-std::tr1::tuple<double,MPoint> QuaternionToAngleAxis(MQuaternion q);
++boost::tuple<double,MPoint> QuaternionToAngleAxis(MQuaternion q);
+ MPoint Centroid(std::vector<MPoint>& points);
+ MPoint CenterPoints(std::vector<MPoint>& points);
+ MQuaternion AlignPoints(const std::vector<MPoint>& a, const std::vector<MPoint>& b);
+--- a/src/structure.cpp
++++ b/src/structure.cpp
+@@ -544,7 +544,7 @@
+ 	return result;
+ }
+ 
+-tr1::tuple<double,char> MResidue::Alpha() const
++boost::tuple<double,char> MResidue::Alpha() const
+ {
+ 	double alhpa = 360;
+ 	char chirality = ' ';
+@@ -558,7 +558,7 @@
+ 		else
+ 			chirality = '+';
+ 	}
+-	return tr1::make_tuple(alhpa, chirality);
++	return boost::make_tuple(alhpa, chirality);
+ }
+ 
+ double MResidue::Kappa() const
+--- a/src/structure.h
++++ b/src/structure.h
+@@ -168,7 +168,7 @@
+ 
+ 	double				Phi() const;
+ 	double				Psi() const;
+-	std::tr1::tuple<double,char>
++	boost::tuple<double,char>
+ 						Alpha() const;
+ 	double				Kappa() const;
+ 	double				TCO() const;

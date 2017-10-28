@@ -54,7 +54,7 @@ LICENSE="
 	samba? ( GPL-3 )
 "
 if [ "${PV#9999}" = "${PV}" ] ; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 fi
 
 # Options to use as use_enable in the foo[:bar] form.
@@ -96,7 +96,7 @@ FFMPEG_ENCODER_FLAG_MAP=(
 )
 
 IUSE="
-	alsa doc +encode jack oss pic static-libs test v4l
+	alsa chromium doc +encode jack oss pic static-libs test v4l
 	${FFMPEG_FLAG_MAP[@]%:*}
 	${FFMPEG_ENCODER_FLAG_MAP[@]%:*}
 "
@@ -181,7 +181,7 @@ RDEPEND="
 		)
 		twolame? ( >=media-sound/twolame-0.3.13-r1[${MULTILIB_USEDEP}] )
 		wavpack? ( >=media-sound/wavpack-4.60.1-r1[${MULTILIB_USEDEP}] )
-		webp? ( >=media-libs/libwebp-0.3.0[${MULTILIB_USEDEP}] )
+		webp? ( >=media-libs/libwebp-0.3.0:=[${MULTILIB_USEDEP}] )
 		x264? ( >=media-libs/x264-0.0.20130506:=[${MULTILIB_USEDEP}] )
 		x265? ( >=media-libs/x265-1.6:=[${MULTILIB_USEDEP}] )
 		xvid? ( >=media-libs/xvid-1.3.2-r1[${MULTILIB_USEDEP}] )
@@ -255,7 +255,7 @@ DEPEND="${RDEPEND}
 	doc? ( sys-apps/texinfo )
 	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
 	ladspa? ( >=media-libs/ladspa-sdk-1.13-r2[${MULTILIB_USEDEP}] )
-	cpu_flags_x86_mmx? ( >=dev-lang/yasm-1.2 )
+	cpu_flags_x86_mmx? ( || ( >=dev-lang/nasm-2.13 >=dev-lang/yasm-1.3 ) )
 	test? ( net-misc/wget sys-devel/bc )
 	v4l? ( sys-kernel/linux-headers )
 "
@@ -289,6 +289,10 @@ RESTRICT="
 
 S=${WORKDIR}/${P/_/-}
 
+PATCHES=(
+	"${FILESDIR}"/chromium.patch
+)
+
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/libavutil/avconfig.h
 )
@@ -298,6 +302,7 @@ src_prepare() {
 		export revision=git-N-${FFMPEG_REVISION}
 	fi
 	default
+	echo 'include $(SRC_PATH)/ffbuild/libffmpeg.mak' >> Makefile || die
 }
 
 multilib_src_configure() {
@@ -419,6 +424,20 @@ multilib_src_configure() {
 		"${myconf[@]}"
 	echo "${@}"
 	"${@}" || die
+
+	if multilib_is_native_abi && use chromium; then
+		einfo "Configuring for Chromium"
+		mkdir -p ../chromium || die
+		pushd ../chromium >/dev/null || die
+		set -- "${@}" \
+			--disable-shared \
+			--enable-static \
+			--enable-pic \
+			--extra-cflags="-DFF_API_CONVERGENCE_DURATION=0"
+		echo "${@}"
+		"${@}" || die
+		popd >/dev/null || die
+	fi
 }
 
 multilib_src_compile() {
@@ -427,9 +446,16 @@ multilib_src_compile() {
 	if multilib_is_native_abi; then
 		for i in "${FFTOOLS[@]}" ; do
 			if use fftools_${i} ; then
-				emake V=1 tools/${i}
+				emake V=1 tools/${i}$(get_exeext)
 			fi
 		done
+
+		if use chromium; then
+			einfo "Compiling for Chromium"
+			pushd ../chromium >/dev/null || die
+			emake V=1 libffmpeg
+			popd >/dev/null || die
+		fi
 	fi
 }
 
@@ -439,9 +465,16 @@ multilib_src_install() {
 	if multilib_is_native_abi; then
 		for i in "${FFTOOLS[@]}" ; do
 			if use fftools_${i} ; then
-				dobin tools/${i}
+				dobin tools/${i}$(get_exeext)
 			fi
 		done
+
+		if use chromium; then
+			einfo "Installing for Chromium"
+			pushd ../chromium >/dev/null || die
+			emake V=1 DESTDIR="${D}" install-libffmpeg
+			popd >/dev/null || die
+		fi
 	fi
 }
 

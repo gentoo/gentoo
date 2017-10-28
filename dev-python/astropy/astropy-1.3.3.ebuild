@@ -40,7 +40,7 @@ DEPEND="${RDEPEND}
 		dev-python/h5py[${PYTHON_USEDEP}]
 		dev-python/jplephem[${PYTHON_USEDEP}]
 		dev-python/matplotlib[${PYTHON_USEDEP}]
-		dev-python/pillow[${PYTHON_USEDEP},jpeg]
+		dev-python/pillow[${PYTHON_USEDEP},jpeg(+)]
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/sphinx-gallery[${PYTHON_USEDEP}]

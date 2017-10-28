@@ -55,7 +55,7 @@ done <<<"
 
 tbegin "strip-unsupported-flags"
 strip-unsupported-flags
-[[ ${CFLAGS} == "" ]] && [[ ${CXXFLAGS} == "-z=2" ]]
+[[ ${CFLAGS} == "" ]] && [[ ${CXXFLAGS} == "-z=2" ]] && [[ ${LDFLAGS} == "" ]]
 ftend
 
 for var in $(all-flag-vars) ; do
@@ -142,6 +142,11 @@ ftend
 tbegin "test-flags-CC (gcc-valid but clang-invalid flags)"
 out=$(CC=clang test-flags-CC -finline-limit=1200)
 [[ $? -ne 0 && -z ${out} ]]
+ftend
+
+tbegin "test-flags-CC (unused flags w/clang)"
+out=$(CC=clang test-flags-CC -Wl,-O1)
+[[ $? -eq 0 && ${out} == "-Wl,-O1" ]]
 ftend
 fi
 

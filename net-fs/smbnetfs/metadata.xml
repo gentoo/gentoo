@@ -6,10 +6,6 @@
 		<name>Sergei Trofimovich</name>
 		<description>Primary Maintainer</description>
 	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
 	<longdescription>
 		SMBNetFS is a Linux/FreeBSD FUSE filesystem that allow you to use samba/microsoft network.
 

@@ -1,11 +1,11 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
 
 inherit autotools-utils multilib
 
-DESCRIPTION="This package provides generic linked-list manipulation routines, plus queues and stacks"
+DESCRIPTION="Generic linked-list manipulation routines, plus queues and stacks"
 HOMEPAGE="http://ohnopub.net/liblist"
 SRC_URI="ftp://ohnopublishing.net/mirror/${P}.tar.bz2"
 

@@ -3,37 +3,52 @@
 
 EAPI=6
 
-inherit autotools flag-o-matic toolchain-funcs
+PYTHON_COMPAT=( python2_7 )
+
+inherit autotools flag-o-matic python-single-r1 toolchain-funcs
 
 DESCRIPTION="Transcript assembly and differential expression/regulation for RNA-Seq"
 HOMEPAGE="http://cufflinks.cbcb.umd.edu/"
 SRC_URI="http://cufflinks.cbcb.umd.edu/downloads/${P}.tar.gz"
 
-SLOT="0"
 LICENSE="Artistic"
-IUSE="debug"
+SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="debug"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-DEPEND="sci-biology/samtools:0.1-legacy
-	>=dev-libs/boost-1.59.0:=
-	dev-cpp/eigen:3"
-RDEPEND="${DEPEND}"
+RDEPEND="
+	sci-biology/samtools:0.1-legacy
+	>=dev-libs/boost-1.62.0:=
+	${PYTHON_DEPS}"
+DEPEND="
+	${RDEPEND}
+	dev-cpp/eigen:3
+	virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-samtools-legacy.patch
 	"${FILESDIR}"/${P}-flags.patch
 	"${FILESDIR}"/${P}-gcc6.patch
+	"${FILESDIR}"/${P}-boost-1.65-tr1-removal.patch
 )
 
 src_prepare() {
 	default
+	python_fix_shebang src/cuffmerge
+
 	eautoreconf
-	append-cppflags $($(tc-getPKG_CONFIG) --cflags eigen3)
 }
 
 src_configure() {
-	econf --disable-optim \
+	# keep in sync with Boost
+	append-cxxflags -std=c++14
+	append-cppflags $($(tc-getPKG_CONFIG) --cflags eigen3)
+
+	econf \
+		--disable-optim \
 		--with-boost-libdir="${EPREFIX}/usr/$(get_libdir)/" \
 		--with-bam="${EPREFIX}/usr/" \
-		$(use_enable debug)
+		$(use_enable debug) \
+		PYTHON="${PYTHON}"
 }

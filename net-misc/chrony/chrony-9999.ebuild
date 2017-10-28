@@ -6,7 +6,7 @@ inherit eutils git-r3 systemd toolchain-funcs
 
 DESCRIPTION="NTP client and server programs"
 HOMEPAGE="https://chrony.tuxfamily.org/"
-EGIT_REPO_URI="git://git.tuxfamily.org/gitroot/chrony/chrony.git"
+EGIT_REPO_URI="https://git.tuxfamily.org/chrony/chrony.git/"
 LICENSE="GPL-2"
 SLOT="0"
 
@@ -15,7 +15,6 @@ IUSE="caps +cmdmon ipv6 libedit +ntp +phc pps readline +refclock +rtc seccomp se
 REQUIRED_USE="
 	?? ( libedit readline )
 "
-
 CDEPEND="
 	caps? ( sys-libs/libcap )
 	libedit? ( dev-libs/libedit )
@@ -31,9 +30,7 @@ RDEPEND="
 	${CDEPEND}
 	selinux? ( sec-policy/selinux-chronyd )
 "
-
 RESTRICT=test
-
 S="${WORKDIR}/${P/_/-}"
 
 src_prepare() {

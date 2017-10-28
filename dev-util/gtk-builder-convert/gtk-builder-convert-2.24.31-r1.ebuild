@@ -9,7 +9,7 @@ PYTHON_REQ_USE="xml"
 inherit gnome.org python-single-r1
 
 DESCRIPTION="Converts Glade files to GtkBuilder XML format"
-HOMEPAGE="http://www.gtk.org/"
+HOMEPAGE="https://www.gtk.org/"
 
 LICENSE="LGPL-2+"
 SLOT="0"

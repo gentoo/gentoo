@@ -5,4 +5,8 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="cpan">Dist-Zilla-Plugin-SurgicalPodWeaver</remote-id>
+    <remote-id type="cpan-module">Dist::Zilla::Plugin::SurgicalPodWeaver</remote-id>
+  </upstream>
 </pkgmetadata>

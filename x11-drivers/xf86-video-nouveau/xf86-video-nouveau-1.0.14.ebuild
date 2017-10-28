@@ -6,12 +6,12 @@ XORG_DRI="always"
 inherit xorg-2
 
 if [[ ${PV} == 9999* ]]; then
-	EGIT_REPO_URI="git://anongit.freedesktop.org/git/nouveau/${PN}"
+	EGIT_REPO_URI="https://anongit.freedesktop.org/git/nouveau/xf86-video-nouveau.git"
 	SRC_URI=""
 fi
 
 DESCRIPTION="Accelerated Open Source driver for nVidia cards"
-HOMEPAGE="https://nouveau.freedesktop.org/"
+HOMEPAGE="https://nouveau.freedesktop.org/wiki/"
 
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE=""

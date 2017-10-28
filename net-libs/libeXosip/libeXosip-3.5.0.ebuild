@@ -8,7 +8,7 @@ inherit eutils
 MY_PV=${PV%.?}-${PV##*.}
 MY_PV=${PV}
 MY_P=${PN}2-${MY_PV}
-DESCRIPTION="library that hides the complexity of using the SIP protocol for multimedia session establishement"
+DESCRIPTION="library to use the SIP protocol for multimedia session establishement"
 HOMEPAGE="https://savannah.nongnu.org/projects/exosip/"
 SRC_URI="mirror://nongnu/exosip/${MY_P}.tar.gz"
 

@@ -1,0 +1,33 @@
+diff -ruN vzctl-4.9.4.orig/src/lib/dev.c vzctl-4.9.4/src/lib/dev.c
+--- vzctl-4.9.4.orig/src/lib/dev.c	2017-10-20 23:22:14.689240049 +0200
++++ vzctl-4.9.4/src/lib/dev.c	2017-10-20 23:24:28.972830730 +0200
+@@ -19,6 +19,7 @@
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <sys/types.h>
++#include <sys/sysmacros.h>
+ #include <sys/stat.h>
+ #include <unistd.h>
+ #include <errno.h>
+diff -ruN vzctl-4.9.4.orig/src/lib/hooks_ct.c vzctl-4.9.4/src/lib/hooks_ct.c
+--- vzctl-4.9.4.orig/src/lib/hooks_ct.c	2015-08-27 01:41:24.000000000 +0200
++++ vzctl-4.9.4/src/lib/hooks_ct.c	2017-10-20 23:24:14.508659254 +0200
+@@ -5,6 +5,7 @@
+ #include <string.h>
+ #include <sys/stat.h>
+ #include <sys/types.h>
++#include <sys/sysmacros.h>
+ #include <sys/wait.h>
+ #include <sys/mount.h>
+ #include <fcntl.h>
+diff -ruN vzctl-4.9.4.orig/src/lib/vps_configure.c vzctl-4.9.4/src/lib/vps_configure.c
+--- vzctl-4.9.4.orig/src/lib/vps_configure.c	2015-08-27 01:41:24.000000000 +0200
++++ vzctl-4.9.4/src/lib/vps_configure.c	2017-10-20 23:26:01.848931798 +0200
+@@ -24,6 +24,7 @@
+ #include <sys/stat.h>
+ #include <netinet/in.h>
+ #include <linux/vzcalluser.h>
++#include <sys/sysmacros.h>
+ 
+ #include "vzerror.h"
+ #include "logger.h"

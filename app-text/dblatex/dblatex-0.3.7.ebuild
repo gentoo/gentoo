@@ -30,7 +30,9 @@ DEPEND="${RDEPEND}"
 
 python_prepare_all() {
 	distutils-r1_python_prepare_all
-	EPATCH_SOURCE="${FILESDIR}" EPATCH_SUFFIX="patch" EPATCH_FORCE="yes" epatch
+	epatch "${FILESDIR}/${P}-no-inkscape-dependency.patch"
+	epatch "${FILESDIR}/${PN}-path-logging.patch"
+	epatch "${FILESDIR}/${PN}-setup.patch"
 }
 
 python_install_all() {

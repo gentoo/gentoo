@@ -23,7 +23,7 @@ RDEPEND="gnat_2016? ( dev-lang/gnat-gpl:4.9.4 )
 	${PYTHON_DEPS}
 	gmp? ( dev-libs/gmp:* )
 	gtk? (
-		dev-ada/gtkada[gnat_2016=,gnat_2017=]
+		dev-ada/gtkada[gnat_2016=,gnat_2017=,shared?,static?]
 		dev-libs/atk
 		dev-libs/glib
 		x11-libs/cairo
@@ -35,7 +35,7 @@ RDEPEND="gnat_2016? ( dev-lang/gnat-gpl:4.9.4 )
 	postgresql? ( dev-db/postgresql:* )
 	sqlite? ( dev-db/sqlite )
 	projects? (
-		=dev-ada/gprbuild-2016[gnat_2016=,gnat_2017=,static?,shared?]
+		=dev-ada/gprbuild-2016[gnat_2016=,gnat_2017=,shared?,static?]
 	)"
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[gnat_2016=,gnat_2017=]"

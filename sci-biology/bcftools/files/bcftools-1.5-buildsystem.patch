@@ -1,0 +1,10 @@
+--- a/Makefile
++++ b/Makefile
+@@ -275,7 +275,6 @@
+ 	$(INSTALL_PROGRAM) $(PROGRAMS) $(DESTDIR)$(bindir)
+ 	$(INSTALL_SCRIPT) $(MISC_SCRIPTS) $(DESTDIR)$(misc_bindir)
+ 	$(INSTALL_MAN) doc/bcftools.1 $(DESTDIR)$(man1dir)
+-	$(INSTALL_PROGRAM) plugins/*.so $(DESTDIR)$(plugindir)
+ 
+ clean: testclean clean-plugins
+ 	-rm -f gmon.out *.o *~ $(PROG) version.h plugins/*.so plugins/*.P

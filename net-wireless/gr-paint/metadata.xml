@@ -10,8 +10,6 @@
 		<email>radio@gentoo.org</email>
 		<name>Radio</name>
 	</maintainer>
-	<longdescription lang="en">
-</longdescription>
 	<upstream>
 		<remote-id type="github">drmpeg/gr-paint</remote-id>
 	</upstream>

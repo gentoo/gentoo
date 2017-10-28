@@ -9,7 +9,7 @@ inherit python-r1 toolchain-funcs
 
 MY_P="${P//_/-}"
 
-MY_RELEASEDATE="20170718"
+MY_RELEASEDATE="20170804"
 SEPOL_VER="${PV}"
 SELNX_VER="${PV}"
 SEMNG_VER="${PV}"
@@ -36,7 +36,7 @@ SLOT="0"
 DEPEND=">=sys-libs/libselinux-${SELNX_VER}:=[python]
 	>=sys-libs/libsemanage-${SEMNG_VER}:=[python]
 	>=sys-libs/libsepol-${SEPOL_VER}:=
-	>=app-admin/setools-4.0
+	>=app-admin/setools-4.1.1[${PYTHON_USEDEP}]
 	dev-python/ipy[${PYTHON_USEDEP}]
 	!dev-python/sepolgen
 	${PYTHON_DEPS}"

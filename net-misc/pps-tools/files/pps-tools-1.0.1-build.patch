@@ -1,0 +1,51 @@
+From 60a8a9d3195829cc0c2953fd02bdf0a155e0c158 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Sat, 18 Aug 2012 17:04:43 -0400
+Subject: [PATCH] fix up makefile
+
+Make sure we respect CFLAGS/CPPFLAGS properly.
+
+Also fix up the depend include so we get reproducible behavior --
+the depend file is generated & included first, and we don't get
+weird behavior when we run:
+        git clean -x -d
+        make
+        make
+
+---
+ Makefile | 11 +++++------
+ 1 file changed, 5 insertions(+), 6 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index c70f073..ec437e2 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,8 +1,9 @@
+ TARGETS = ppstest ppsctl ppswatch ppsldisc
+ 
+-CFLAGS += -Wall -O2 -D_GNU_SOURCE
+-CFLAGS += -ggdb
++CFLAGS ?= -O2 -ggdb
++CFLAGS += -Wall
+ CFLAGS += -fPIC
++CPPFLAGS += -D_GNU_SOURCE
+ LDFLAGS += -lm
+ 
+ # -- Actions section --
+@@ -12,11 +13,9 @@ LDFLAGS += -lm
+ all : .depend $(TARGETS)
+ 
+ .depend depend dep :
+-	$(CC) $(CFLAGS) -M $(TARGETS:=.c) > .depend
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -M $(TARGETS:=.c) > .depend
+ 
+-ifeq (.depend,$(wildcard .depend))
+-include .depend
+-endif
++-include .depend
+ 
+ install : all
+ 	install -m 755 -t $(DESTDIR)/usr/bin ppsfind $(TARGETS)
+-- 
+2.14.2
+

@@ -1,0 +1,497 @@
+From fe3f15ea4afba52a5508ef6ad17c4207db79c9e4 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Sat, 7 Oct 2017 01:38:06 +1300
+Subject: Defend Decode_Date_EU/US against year being warped due to window move
+
+These functions are defined to be floating relative to the current year
+based on the result of the moving window function where the full year
+is itself, unclear.
+
+This prevents the tests failing spuriously due to the calendar rolling
+over.
+
+Bug: https://rt.cpan.org/Ticket/Display.html?id=114375
+---
+ t/f016.t | 34 +++++++++++++++++-----------------
+ t/f027.t | 52 ++++++++++++++++++++++++++--------------------------
+ t/f028.t | 52 ++++++++++++++++++++++++++--------------------------
+ 3 files changed, 69 insertions(+), 69 deletions(-)
+
+diff --git a/t/f016.t b/t/f016.t
+index 98069a4..3228dea 100644
+--- a/t/f016.t
++++ b/t/f016.t
+@@ -4,7 +4,7 @@ BEGIN { eval { require bytes; }; }
+ use strict;
+ no strict "vars";
+ 
+-use Date::Pcalc qw( Decode_Date_EU Decode_Date_US );
++use Date::Pcalc qw( Decode_Date_EU Decode_Date_US Moving_Window);
+ 
+ # ======================================================================
+ #   ($year,$mm,$dd) = Decode_Date_EU($buffer);
+@@ -15,19 +15,19 @@ print "1..25\n";
+ 
+ $n = 1;
+ if ((($year,$mm,$dd) = Decode_Date_EU("3.1.64")) &&
+-($year==1964)&&($mm==1)&&($dd==3))
++($year==Moving_Window(64))&&($mm==1)&&($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ if ((($year,$mm,$dd) = Decode_Date_EU("3 1 64")) &&
+-($year==1964)&&($mm==1)&&($dd==3))
++($year==Moving_Window(64))&&($mm==1)&&($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ if ((($year,$mm,$dd) = Decode_Date_EU("03.01.64")) &&
+-($year==1964)&&($mm==1)&&($dd==3))
++($year==Moving_Window(64))&&($mm==1)&&($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ if ((($year,$mm,$dd) = Decode_Date_EU("03/01/64")) &&
+-($year==1964)&&($mm==1)&&($dd==3))
++($year==Moving_Window(64))&&($mm==1)&&($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ if ((($year,$mm,$dd) = Decode_Date_EU("3. Ene 1964",4)) &&
+@@ -35,11 +35,11 @@ if ((($year,$mm,$dd) = Decode_Date_EU("3. Ene 1964",4)) &&
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ if ((($year,$mm,$dd) = Decode_Date_EU("Geburtstag: 3. Januar '64 in Backnang/Württemberg",3)) &&
+-($year==1964)&&($mm==1)&&($dd==3))
++($year==Moving_Window(64))&&($mm==1)&&($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ if ((($year,$mm,$dd) = Decode_Date_EU("03-Jan-64")) &&
+-($year==1964)&&($mm==1)&&($dd==3))
++($year==Moving_Window(64))&&($mm==1)&&($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ if ((($year,$mm,$dd) = Decode_Date_EU("3.Jan1964",6)) &&
+@@ -47,19 +47,19 @@ if ((($year,$mm,$dd) = Decode_Date_EU("3.Jan1964",6)) &&
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ if ((($year,$mm,$dd) = Decode_Date_EU("3Jan64",0)) &&
+-($year==1964)&&($mm==1)&&($dd==3))
++($year==Moving_Window(64))&&($mm==1)&&($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ if ((($year,$mm,$dd) = Decode_Date_EU("030164")) &&
+-($year==1964)&&($mm==1)&&($dd==3))
++($year==Moving_Window(64))&&($mm==1)&&($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ if ((($year,$mm,$dd) = Decode_Date_EU("3ja64")) &&
+-($year==1964)&&($mm==1)&&($dd==3))
++($year==Moving_Window(64))&&($mm==1)&&($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ if ((($year,$mm,$dd) = Decode_Date_EU("3164")) &&
+-($year==1964)&&($mm==1)&&($dd==3))
++($year==Moving_Window(64))&&($mm==1)&&($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+@@ -72,15 +72,15 @@ unless (($year,$mm,$dd) = Decode_Date_EU("29.2.1995"))
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_US("1 3 64")) &&
+-($year==1964)&&($mm==1)&&($dd==3))
++($year==Moving_Window(64))&&($mm==1)&&($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ if ((($year,$mm,$dd) = Decode_Date_US("01/03/64")) &&
+-($year==1964)&&($mm==1)&&($dd==3))
++($year==Moving_Window(64))&&($mm==1)&&($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ if ((($year,$mm,$dd) = Decode_Date_US("Jan 3 '64")) &&
+-($year==1964)&&($mm==1)&&($dd==3))
++($year==Moving_Window(64))&&($mm==1)&&($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ if ((($year,$mm,$dd) = Decode_Date_US("Jan 3 1964")) &&
+@@ -96,15 +96,15 @@ if ((($year,$mm,$dd) = Decode_Date_US("Jan31964")) &&
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ if ((($year,$mm,$dd) = Decode_Date_US("Jan364")) &&
+-($year==1964)&&($mm==1)&&($dd==3))
++($year==Moving_Window(64))&&($mm==1)&&($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ if ((($year,$mm,$dd) = Decode_Date_US("ja364")) &&
+-($year==1964)&&($mm==1)&&($dd==3))
++($year==Moving_Window(64))&&($mm==1)&&($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ if ((($year,$mm,$dd) = Decode_Date_US("1364")) &&
+-($year==1964)&&($mm==1)&&($dd==3))
++($year==Moving_Window(64))&&($mm==1)&&($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+diff --git a/t/f027.t b/t/f027.t
+index 3070fd7..719e87d 100644
+--- a/t/f027.t
++++ b/t/f027.t
+@@ -4,7 +4,7 @@ BEGIN { eval { require bytes; }; }
+ use strict;
+ no strict "vars";
+ 
+-use Date::Pcalc qw( Decode_Date_US2 Language Decode_Language );
++use Date::Pcalc qw( Decode_Date_US2 Language Decode_Language Moving_Window );
+ 
+ # ======================================================================
+ #   ($year,$mm,$dd) = Decode_Date_US2($date);
+@@ -26,62 +26,62 @@ unless (($year,$mm,$dd) = Decode_Date_US2("_13_"))
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_US2("_134_")) &&
+-($year==2004) && ($mm==1) && ($dd==3))
++($year==Moving_Window(4)) && ($mm==1) && ($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_US2("_0134_")) &&
+-($year==2004) && ($mm==1) && ($dd==3))
++($year==Moving_Window(4)) && ($mm==1) && ($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_US2("_00134_")) &&
+-($year==2004) && ($mm==1) && ($dd==3))
++($year==Moving_Window(4)) && ($mm==1) && ($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_US2("_1364_")) &&
+-($year==1964) && ($mm==1) && ($dd==3))
++($year==Moving_Window(64)) && ($mm==1) && ($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_US2("_01364_")) &&
+-($year==1964) && ($mm==1) && ($dd==3))
++($year==Moving_Window(64)) && ($mm==1) && ($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_US2("_001364_")) &&
+-($year==1964) && ($mm==1) && ($dd==3))
++($year==Moving_Window(64)) && ($mm==1) && ($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_US2("_10364_")) &&
+-($year==1964) && ($mm==1) && ($dd==3))
++($year==Moving_Window(64)) && ($mm==1) && ($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_US2("_010364_")) &&
+-($year==1964) && ($mm==1) && ($dd==3))
++($year==Moving_Window(64)) && ($mm==1) && ($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_US2("_0010364_")) &&
+-($year==1964) && ($mm==1) && ($dd==3))
++($year==Moving_Window(64)) && ($mm==1) && ($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_US2("_110364_")) &&
+-($year==1964) && ($mm==11) && ($dd==3))
++($year==Moving_Window(64)) && ($mm==11) && ($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_US2("_0110364_")) &&
+-($year==1964) && ($mm==11) && ($dd==3))
++($year==Moving_Window(64)) && ($mm==11) && ($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_US2("_00110364_")) &&
+-($year==1964) && ($mm==11) && ($dd==3))
++($year==Moving_Window(64)) && ($mm==11) && ($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+@@ -116,7 +116,7 @@ if ((($year,$mm,$dd) = Decode_Date_US2("_0011031964_")) &&
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_US2("_1_3_64_")) &&
+-($year==1964) && ($mm==1) && ($dd==3))
++($year==Moving_Window(64)) && ($mm==1) && ($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+@@ -126,22 +126,22 @@ if ((($year,$mm,$dd) = Decode_Date_US2("_1_3_1964_")) &&
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_US2("_jan_3_64_")) &&
+-($year==1964) && ($mm==1) && ($dd==3))
++($year==Moving_Window(64)) && ($mm==1) && ($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_US2("_Jan_3_64_")) &&
+-($year==1964) && ($mm==1) && ($dd==3))
++($year==Moving_Window(64)) && ($mm==1) && ($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_US2("_jAN_3_64_")) &&
+-($year==1964) && ($mm==1) && ($dd==3))
++($year==Moving_Window(64)) && ($mm==1) && ($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_US2("_January_3_64_")) &&
+-($year==1964) && ($mm==1) && ($dd==3))
++($year==Moving_Window(64)) && ($mm==1) && ($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+@@ -155,32 +155,32 @@ if ((($year,$mm,$dd) = Decode_Date_US2(" January 3rd, 1964 ")) &&
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_US2("_Jan364_")) &&
+-($year==1964) && ($mm==1) && ($dd==3))
++($year==Moving_Window(64)) && ($mm==1) && ($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_US2("_Jan0364_")) &&
+-($year==1964) && ($mm==1) && ($dd==3))
++($year==Moving_Window(64)) && ($mm==1) && ($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_US2("_Jan00364_")) &&
+-($year==1964) && ($mm==1) && ($dd==3))
++($year==Moving_Window(64)) && ($mm==1) && ($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_US2("_Jan2264_")) &&
+-($year==1964) && ($mm==1) && ($dd==22))
++($year==Moving_Window(64)) && ($mm==1) && ($dd==22))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_US2("_Jan02264_",0)) &&
+-($year==1964) && ($mm==1) && ($dd==22))
++($year==Moving_Window(64)) && ($mm==1) && ($dd==22))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_US2("_Jan002264_",'')) &&
+-($year==1964) && ($mm==1) && ($dd==22))
++($year==Moving_Window(64)) && ($mm==1) && ($dd==22))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+@@ -223,12 +223,12 @@ unless (($year,$mm,$dd) = Decode_Date_US2("_ja331964_"))
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_US2("x000001x000003x000064x")) &&
+-($year==1964) && ($mm==1) && ($dd==3))
++($year==Moving_Window(64)) && ($mm==1) && ($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_US2("_ja_000003x000064x")) &&
+-($year==1964) && ($mm==1) && ($dd==3))
++($year==Moving_Window(64)) && ($mm==1) && ($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+diff --git a/t/f028.t b/t/f028.t
+index 8c98c51..6c8f396 100644
+--- a/t/f028.t
++++ b/t/f028.t
+@@ -4,7 +4,7 @@ BEGIN { eval { require bytes; }; }
+ use strict;
+ no strict "vars";
+ 
+-use Date::Pcalc qw( Decode_Date_EU2 Language Decode_Language );
++use Date::Pcalc qw( Decode_Date_EU2 Language Decode_Language Moving_Window );
+ 
+ # ======================================================================
+ #   ($year,$mm,$dd) = Decode_Date_EU2($date);
+@@ -26,62 +26,62 @@ unless (($year,$mm,$dd) = Decode_Date_EU2("_31_"))
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_EU2("_314_")) &&
+-($year==2004) && ($mm==1) && ($dd==3))
++($year==Moving_Window(4)) && ($mm==1) && ($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_EU2("_0314_")) &&
+-($year==2004) && ($mm==1) && ($dd==3))
++($year==Moving_Window(4)) && ($mm==1) && ($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_EU2("_00314_")) &&
+-($year==2004) && ($mm==1) && ($dd==3))
++($year==Moving_Window(4)) && ($mm==1) && ($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_EU2("_3164_")) &&
+-($year==1964) && ($mm==1) && ($dd==3))
++($year==Moving_Window(64)) && ($mm==1) && ($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_EU2("_03164_")) &&
+-($year==1964) && ($mm==1) && ($dd==3))
++($year==Moving_Window(64)) && ($mm==1) && ($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_EU2("_003164_")) &&
+-($year==1964) && ($mm==1) && ($dd==3))
++($year==Moving_Window(64)) && ($mm==1) && ($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_EU2("_30164_")) &&
+-($year==1964) && ($mm==1) && ($dd==3))
++($year==Moving_Window(64)) && ($mm==1) && ($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_EU2("_030164_")) &&
+-($year==1964) && ($mm==1) && ($dd==3))
++($year==Moving_Window(64)) && ($mm==1) && ($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_EU2("_0030164_")) &&
+-($year==1964) && ($mm==1) && ($dd==3))
++($year==Moving_Window(64)) && ($mm==1) && ($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_EU2("_110364_")) &&
+-($year==1964) && ($mm==3) && ($dd==11))
++($year==Moving_Window(64)) && ($mm==3) && ($dd==11))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_EU2("_0110364_")) &&
+-($year==1964) && ($mm==3) && ($dd==11))
++($year==Moving_Window(64)) && ($mm==3) && ($dd==11))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_EU2("_00110364_")) &&
+-($year==1964) && ($mm==3) && ($dd==11))
++($year==Moving_Window(64)) && ($mm==3) && ($dd==11))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+@@ -116,7 +116,7 @@ if ((($year,$mm,$dd) = Decode_Date_EU2("_0011031964_")) &&
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_EU2("_3_1_64_")) &&
+-($year==1964) && ($mm==1) && ($dd==3))
++($year==Moving_Window(64)) && ($mm==1) && ($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+@@ -126,22 +126,22 @@ if ((($year,$mm,$dd) = Decode_Date_EU2("_3_1_1964_")) &&
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_EU2("_3_jan_64_")) &&
+-($year==1964) && ($mm==1) && ($dd==3))
++($year==Moving_Window(64)) && ($mm==1) && ($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_EU2("_3_Jan_64_",0)) &&
+-($year==1964) && ($mm==1) && ($dd==3))
++($year==Moving_Window(64)) && ($mm==1) && ($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_EU2("_3_jAN_64_",1)) &&
+-($year==1964) && ($mm==1) && ($dd==3))
++($year==Moving_Window(64)) && ($mm==1) && ($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_EU2("_3-JAN-64_",2)) &&
+-($year==1964) && ($mm==1) && ($dd==3))
++($year==Moving_Window(64)) && ($mm==1) && ($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+@@ -156,7 +156,7 @@ if ((($year,$mm,$dd) = Decode_Date_EU2("_3-January-1964_",'')) &&
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_EU2("_000003-Jan-000064_",undef)) &&
+-($year==1964) && ($mm==1) && ($dd==3))
++($year==Moving_Window(64)) && ($mm==1) && ($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+@@ -166,7 +166,7 @@ if ((($year,$mm,$dd) = Decode_Date_EU2("_000003-Jan-001964_")) &&
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_EU2("_3_ja_64_")) &&
+-($year==1964) && ($mm==1) && ($dd==3))
++($year==Moving_Window(64)) && ($mm==1) && ($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+@@ -175,22 +175,22 @@ unless (($year,$mm,$dd) = Decode_Date_EU2("_3_j_64_"))
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_EU2("_3ja64_")) &&
+-($year==1964) && ($mm==1) && ($dd==3))
++($year==Moving_Window(64)) && ($mm==1) && ($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_EU2("_03ja64_")) &&
+-($year==1964) && ($mm==1) && ($dd==3))
++($year==Moving_Window(64)) && ($mm==1) && ($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_EU2("_003ja64_")) &&
+-($year==1964) && ($mm==1) && ($dd==3))
++($year==Moving_Window(64)) && ($mm==1) && ($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_EU2("_000003ja000064_")) &&
+-($year==1964) && ($mm==1) && ($dd==3))
++($year==Moving_Window(64)) && ($mm==1) && ($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+@@ -223,12 +223,12 @@ unless (($year,$mm,$dd) = Decode_Date_EU2("_33ja1964_"))
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_EU2("x000003x000001x000064x")) &&
+-($year==1964) && ($mm==1) && ($dd==3))
++($year==Moving_Window(64)) && ($mm==1) && ($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+ if ((($year,$mm,$dd) = Decode_Date_EU2("x000003_ja_000064x")) &&
+-($year==1964) && ($mm==1) && ($dd==3))
++($year==Moving_Window(64)) && ($mm==1) && ($dd==3))
+ {print "ok $n\n";} else {print "not ok $n\n";}
+ $n++;
+ 
+-- 
+2.14.1
+

@@ -26,6 +26,10 @@ LIB_DEPEND="aio? ( dev-libs/libaio[static-libs(+)] )
 	gtk? ( dev-libs/glib:2[static-libs(+)] )
 	numa? ( sys-process/numactl[static-libs(+)] )
 	rbd? ( sys-cluster/ceph[static-libs(+)] )
+	rdma? (
+		sys-fabric/libibverbs[static-libs(+)]
+		sys-fabric/librdmacm[static-libs(+)]
+	)
 	zlib? ( sys-libs/zlib[static-libs(+)] )"
 RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )
 	gtk? ( x11-libs/gtk+:2 )"

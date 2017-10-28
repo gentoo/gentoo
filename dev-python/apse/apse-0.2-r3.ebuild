@@ -9,7 +9,7 @@ inherit distutils-r1
 MY_P="Apse-${PV}"
 
 DESCRIPTION="Approximate String Matching in Python"
-HOMEPAGE="http://www.personal.psu.edu/staff/i/u/iua1/python/apse/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="http://www.personal.psu.edu/staff/i/u/iua1/python/${PN}/dist/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"

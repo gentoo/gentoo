@@ -9,9 +9,9 @@ inherit xorg-2
 DESCRIPTION="X.Org libdrm library"
 HOMEPAGE="https://dri.freedesktop.org/"
 if [[ ${PV} = 9999* ]]; then
-	EGIT_REPO_URI="git://anongit.freedesktop.org/git/mesa/drm"
+	EGIT_REPO_URI="https://anongit.freedesktop.org/git/mesa/drm.git"
 else
-	SRC_URI="https://dri.freedesktop.org/${PN}/${P}.tar.bz2"
+	SRC_URI="https://dri.freedesktop.org/libdrm/${P}.tar.bz2"
 fi
 
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux"

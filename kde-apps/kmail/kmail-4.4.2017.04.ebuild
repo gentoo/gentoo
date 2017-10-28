@@ -5,6 +5,7 @@ EAPI=6
 
 KDE_HANDBOOK="optional"
 KMNAME="kdepim"
+QT3SUPPORT_REQUIRED="true"
 VIRTUALX_REQUIRED="test"
 inherit flag-o-matic kde4-meta
 

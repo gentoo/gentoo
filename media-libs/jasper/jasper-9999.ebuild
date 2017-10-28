@@ -6,7 +6,7 @@ EAPI=6
 inherit cmake-multilib
 
 DESCRIPTION="Implementation of the codec specified in the JPEG-2000 Part-1 standard"
-HOMEPAGE="http://www.ece.uvic.ca/~mdadams/jasper/"
+HOMEPAGE="https://www.ece.uvic.ca/~mdadams/jasper/"
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3

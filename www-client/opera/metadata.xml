@@ -12,6 +12,5 @@ Windows are also available.
 </longdescription>
 <use>
 <flag name="gtk">Install support libraries and runtime dependencies to support GTK+/GNOME desktop integration</flag>
-<flag name="kde">Install support libraries and runtime dependencies to support KDE desktop integration</flag>
 </use>
 </pkgmetadata>

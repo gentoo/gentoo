@@ -6,7 +6,7 @@ EAPI=6
 inherit kde5
 
 DESCRIPTION="kioslaves from kdesdk package"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="

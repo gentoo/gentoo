@@ -18,11 +18,11 @@ media-libs/sdl-mixer fluidsynth
 # Alexis Ballier <aballier@gentoo.org> (29 May 2017)
 # frei0r-plugins is not stable yet, mask it on stable versions
 <media-video/libav-12 frei0r
-<media-video/ffmpeg-3.3 frei0r
+<=media-video/ffmpeg-3.3.4 frei0r sofalizer
 
 # Alexis Ballier <aballier@gentoo.org> (26 May 2017)
 # toolame not stable yet
-=media-video/mplayer-1.2.1 toolame
+~media-video/mplayer-1.2.1 toolame
 
 # Alexis Ballier <aballier@gentoo.org> (26 May 2017)
 # No musepack-tools stable yet
@@ -109,8 +109,8 @@ media-libs/gegl umfpack
 net-misc/connman l2tp pptp
 
 # Michael Palimaka <kensington@gentoo.org> (11 May 2015)
-# KDE is not stable on arm
-www-client/qupzilla kde
+# kde-frameworks/kwallet is not stable on arm
+www-client/qupzilla kwallet
 
 # Pacho Ramos <pacho@gentoo.org> (02 Jul 2014)
 # Mask due Gnome3 not going to be stabilized on this arch

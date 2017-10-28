@@ -5,12 +5,12 @@ EAPI=6
 inherit flag-o-matic gnome2-utils
 
 DESCRIPTION="Hard disk drive health inspection tool"
-HOMEPAGE="http://gsmartcontrol.sourceforge.net/home/"
+HOMEPAGE="https://gsmartcontrol.sourceforge.io/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="|| ( GPL-2 GPL-3 ) Boost-1.0 BSD Unlicense ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE="test"
 
 COMMON_DEPEND="

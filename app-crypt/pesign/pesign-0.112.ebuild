@@ -16,6 +16,8 @@ IUSE="libressl"
 
 RDEPEND="
 	dev-libs/nspr
+	dev-libs/nss
+	dev-libs/popt
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
 	sys-apps/util-linux

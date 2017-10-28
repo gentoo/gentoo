@@ -6,22 +6,22 @@ EAPI=6
 inherit cmake-utils eutils linux-info systemd tmpfiles user
 
 if [[ ${PV} == 9999 ]]; then
-	EGIT_REPO_URI="https://github.com/v00d00/${PN}.git"
+	EGIT_REPO_URI="https://github.com/gerbera/${PN}.git"
 	KEYWORDS=""
 	SRC_URI=""
 	inherit git-r3
 else
-	SRC_URI="https://github.com/v00d00/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/gerbera/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 	S="${WORKDIR}/${P}"
 fi
 
 DESCRIPTION="UPnP Media Server (Based on MediaTomb)"
-HOMEPAGE="https://github.com/v00d00/gerbera"
+HOMEPAGE="https://github.com/gerbera/gerbera"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="curl debug +exif +ffmpeg +javascript lastfm libav +magic mysql +taglib"
+IUSE="curl debug +exif +ffmpeg ffmpegthumbnailer +javascript lastfm libav +magic mysql protocol-extensions systemd +taglib"
 
 DEPEND="
 	!!net-misc/mediatomb
@@ -37,6 +37,7 @@ DEPEND="
 		libav? ( >=media-video/libav-10:0= )
 		!libav? ( >=media-video/ffmpeg-2.2:0= )
 	)
+	ffmpegthumbnailer? ( media-video/ffmpegthumbnailer )
 	curl? ( net-misc/curl net-misc/youtube-dl )
 	magic? ( sys-apps/file )
 	sys-apps/util-linux
@@ -61,11 +62,15 @@ src_configure() {
 		-DWITH_DEBUG_LOGGING="$(usex debug)" \
 		-DWITH_EXIF="$(usex exif)" \
 		-DWITH_AVCODEC="$(usex ffmpeg)" \
+		-DWITH_FFMPEGTHUMBNAILER="$(usex ffmpegthumbnailer)" \
 		-DWITH_JS="$(usex javascript)" \
 		-DWITH_LASTFM="$(usex lastfm)" \
 		-DWITH_MAGIC="$(usex magic)" \
 		-DWITH_MYSQL="$(usex mysql)"
-		-DWITH_TAGLIB="$(usex taglib)"
+		-DWITH_PROTOCOL_EXTENSIONS="$(usex protocol-extensions)" \
+		-DWITH_SYSTEMD="$(usex systemd)" \
+		-DWITH_TAGLIB="$(usex taglib)" \
+		-DWITH_INOTIFY=1
 	)
 
 	cmake-utils_src_configure
@@ -74,22 +79,16 @@ src_configure() {
 src_install() {
 	cmake-utils_src_install
 
-	systemd_dounit "${S}/scripts/systemd/${PN}.service"
-	use mysql && systemd_dounit "${S}/scripts/systemd/${PN}-mysql.service"
-
 	newinitd "${FILESDIR}/${PN}-1.0.0.initd" "${PN}"
-	use mysql || sed -i -e "/use mysql/d" "${ED}/etc/init.d/${PN}"
 	newconfd "${FILESDIR}/${PN}-1.0.0.confd" "${PN}"
 
 	insinto /etc/${PN}
 	newins "${FILESDIR}/${PN}-1.0.0.config" config.xml
-	fperms 0600 /etc/${PN}/config.xml
-	fowners gerbera:gerbera /etc/${PN}/config.xml
+	fperms 0640 /etc/${PN}/config.xml
+	fowners root:gerbera /etc/${PN}/config.xml
 
 	keepdir /var/lib/${PN}
 	fowners ${PN}:${PN} /var/lib/${PN}
-
-	newtmpfiles "${FILESDIR}"/${PN}.tmpfiles ${PN}.conf
 }
 
 pkg_postinst() {

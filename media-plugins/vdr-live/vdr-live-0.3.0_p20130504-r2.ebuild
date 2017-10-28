@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -28,6 +28,11 @@ VDR_RCADDON_FILE="${FILESDIR}/rc-addon-0.3.sh"
 
 KEEP_I18NOBJECT="yes"
 
+PATCHES=(
+	"${FILESDIR}"/${P}_vdr-2.1.2.diff
+	"${FILESDIR}"/${P}-c++11.patch
+)
+
 make_live_cert() {
 	# TODO: still true?
 	# ssl-cert eclass creates a "invalid" cert, create our own one
@@ -51,12 +56,9 @@ make_live_cert() {
 	chown vdr:vdr "${ROOT}"/etc/vdr/plugins/live/live{,-key}.pem
 }
 
-src_configure() {
-	# tmp. disabled gcc -std=c++11, due massiv compile errors
-	filter-flags -std=c++11
-}
-
 src_prepare() {
+	default
+
 	# new Makefile handling ToDp
 #	cp "${FILESDIR}/live.mk" "${S}/Makefile"
 
@@ -64,8 +66,6 @@ src_prepare() {
 	rm "${S}"/po/{ca_ES,da_DK,el_GR,et_EE,hr_HR,hu_HU,nl_NL,nn_NO,pt_PT,ro_RO,ru_RU,sl_SI,sv_SE,tr_TR}.po
 
 	vdr-plugin-2_src_prepare
-
-	epatch "${FILESDIR}/${P}_vdr-2.1.2.diff"
 
 	if ! use pcre; then
 		sed -i "s:^HAVE_LIBPCRECPP:#HAVE_LIBPCRECPP:" Makefile || die

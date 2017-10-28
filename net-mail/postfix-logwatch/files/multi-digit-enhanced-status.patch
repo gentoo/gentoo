@@ -1,0 +1,38 @@
+From ced6e6fcbf1a025419e8ee9f940e5022ed440532 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Tue, 5 Sep 2017 09:19:44 -0400
+Subject: [PATCH 1/1] Allow multi-digit numbers in enhanced SMTP status codes.
+
+The re_DSN regular expression is intended to match a response like
+"550 1.2.3", where "1.2.3" is an enhanced status code. However, the
+regular expression was only expecting single-digit numbers between the
+dots; thus it was missing codes like "550 5.7.23". The expression has
+been updated to accept any number of digits between the dots.
+
+This fixes unmatched rejection lines that begin with,
+
+  550 5.7.23 <user@example.com>: Recipient address rejected...
+
+Such lines appear with newer versions of the python SPF policy daemon.
+---
+ postfix-logwatch | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/postfix-logwatch b/postfix-logwatch
+index 92ed621..827dfe0 100644
+--- a/postfix-logwatch
++++ b/postfix-logwatch
+@@ -66,7 +66,9 @@ my $re_QID_s   = qr/[A-Z\d]+/;
+ my $re_QID_l   = qr/(?:NOQUEUE|[bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ\d]+)/;
+ our $re_QID;
+ 
+-our $re_DSN     = qr/(?:(?:\d{3})?(?: ?\d\.\d\.\d)?)/;
++# The enhanced status codes can contain two-digit (or more) numbers;
++# for example, "550 5.7.23".
++our $re_DSN     = qr/(?:(?:\d{3})?(?: ?\d+\.\d+\.\d+)?)/;
+ our $re_DDD     = qr/(?:(?:conn_use=\d+ )?delay=-?[\d.]+(?:, delays=[\d\/.]+)?(?:, dsn=[\d.]+)?)/;
+ 
+ #MODULE: ../Logreporters/Utils.pm
+-- 
+2.13.0
+

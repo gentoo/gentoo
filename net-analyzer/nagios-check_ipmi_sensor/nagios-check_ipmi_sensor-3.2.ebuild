@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,7 +14,7 @@ SRC_URI="http://git.thomas-krenn.com/?p=check_ipmi_sensor_v3.git;a=snapshot;h=${
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 hppa x86"
 IUSE=""
 
 DEPEND=""

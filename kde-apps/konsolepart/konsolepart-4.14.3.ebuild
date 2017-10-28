@@ -15,20 +15,16 @@ KEYWORDS="amd64 x86"
 IUSE="debug"
 
 COMMONDEPEND="
-	!aqua? (
-		x11-libs/libX11
-		x11-libs/libXext
-		>=x11-libs/libxklavier-3.2
-		x11-libs/libXrender
-		x11-libs/libXtst
-	)
+	x11-libs/libX11
+	x11-libs/libXext
+	>=x11-libs/libxklavier-3.2
+	x11-libs/libXrender
+	x11-libs/libXtst
 "
 DEPEND="${COMMONDEPEND}
-	!aqua? (
-		x11-apps/bdftopcf
-		x11-proto/kbproto
-		x11-proto/renderproto
-	)
+	x11-apps/bdftopcf
+	x11-proto/kbproto
+	x11-proto/renderproto
 "
 RDEPEND="${COMMONDEPEND}
 	!<kde-apps/konsole-4.14.3-r2

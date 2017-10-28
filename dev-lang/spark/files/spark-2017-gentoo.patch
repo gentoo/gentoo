@@ -1,0 +1,10 @@
+--- spark-gpl-2017-src/gnat2why/gnat2why_c.gpr.old	2017-10-04 21:41:41.613376056 +0200
++++ spark-gpl-2017-src/gnat2why/gnat2why_c.gpr	2017-10-04 21:42:30.582572536 +0200
+@@ -1,4 +1,7 @@
+ project Gnat2Why_C is
+    for Languages use ("C");
+    for Object_Dir use "obj";
++   package Compiler is
++      for Driver ("C") use External ("CC", "gcc");
++   end Compiler;
+ end Gnat2Why_C;

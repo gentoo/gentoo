@@ -15,7 +15,7 @@ KEYWORDS="~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solar
 IUSE=""
 
 DEPEND=""
-RDEPEND=""
+RDEPEND="sys-apps/portage[prefix-chaining]"
 
 S="${WORKDIR}"
 

@@ -6,13 +6,13 @@ inherit systemd user
 
 MY_P="${P/_/-}"
 DESCRIPTION="High-performance interface between the MTA and content checkers"
-HOMEPAGE="http://www.ijs.si/software/amavisd/"
-SRC_URI="http://www.ijs.si/software/amavisd/${MY_P}.tar.xz"
+HOMEPAGE="https://www.ijs.si/software/amavisd/"
+SRC_URI="https://www.ijs.si/software/amavisd/${MY_P}.tar.xz"
 PORTAGE_DOHTML_WARN_ON_SKIPPED_FILES=yes
 
 LICENSE="GPL-2 BSD-2"
 SLOT="0"
-KEYWORDS="amd64 hppa ppc64 x86"
+KEYWORDS="amd64 hppa ~ppc ppc64 x86"
 IUSE="clamav courier dkim ldap mysql postgres qmail razor snmp spamassassin zmq"
 
 DEPEND=">=sys-apps/sed-4

@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=2
@@ -61,5 +61,5 @@ pkg_postinst() {
 	elog "vkeybdmap-\$LANG is searched in prior. For example, /etc/vkeybdmap-de"
 	elog "can be used for the german locale. See the localization guide:"
 	elog
-	elog "https://www.gentoo.org/doc/en/guide-localization.xml"
+	elog "https://wiki.gentoo.org/wiki/Localization/Guide"
 }

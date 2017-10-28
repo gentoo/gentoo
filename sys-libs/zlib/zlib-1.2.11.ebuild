@@ -7,13 +7,13 @@ AUTOTOOLS_AUTO_DEPEND="no"
 inherit autotools toolchain-funcs multilib multilib-minimal
 
 DESCRIPTION="Standard (de)compression library"
-HOMEPAGE="http://www.zlib.net/"
-SRC_URI="http://zlib.net/${P}.tar.gz
+HOMEPAGE="https://zlib.net/"
+SRC_URI="https://zlib.net/${P}.tar.gz
 	http://www.gzip.org/zlib/${P}.tar.gz
 	http://www.zlib.net/current/beta/${P}.tar.gz"
 
 LICENSE="ZLIB"
-SLOT="0"
+SLOT="0/1" # subslot = SONAME
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 IUSE="minizip static-libs"
 

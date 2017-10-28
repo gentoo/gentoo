@@ -17,5 +17,4 @@
 		<remote-id type="pypi">sphinx-py3doc-enhanced-theme</remote-id>
 		<remote-id type="github">ionelmc/sphinx-py3doc-enhanced-theme</remote-id>
 	</upstream>
-	<longdescription/>
 </pkgmetadata>

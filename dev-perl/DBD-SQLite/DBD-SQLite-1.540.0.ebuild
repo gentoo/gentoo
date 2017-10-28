@@ -7,8 +7,14 @@ DIST_AUTHOR=ISHIGAKI
 DIST_VERSION=1.54
 inherit perl-module
 
-DESCRIPTION="Self Contained RDBMS in a DBI Driver"
+PATCH_TAG="${DIST_VERSION}-patches-1"
 
+DESCRIPTION="Self Contained RDBMS in a DBI Driver"
+SRC_URI="${SRC_URI}
+	https://github.com/kentnl-gentoo/DBD-SQLite/releases/download/${PATCH_TAG}/${PN}-${PATCH_TAG}.tar.xz
+	mirror://gentoo/${PN}-${PATCH_TAG}.tar.xz
+	https://dev.gentoo.org/~kentnl/distfiles/${PN}-${PATCH_TAG}.tar.xz
+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 IUSE="test system-sqlite"
@@ -31,6 +37,7 @@ DEPEND="${RDEPEND}
 "
 
 src_prepare() {
+	eapply "${WORKDIR}/patches/"
 	perl-module_src_prepare
 	if use system-sqlite; then
 		einfo "Removing bundled SQLite"

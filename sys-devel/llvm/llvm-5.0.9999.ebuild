@@ -8,8 +8,8 @@ EAPI=6
 CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils flag-o-matic git-r3 multilib-minimal pax-utils \
-	python-any-r1 toolchain-funcs versionator
+inherit cmake-utils eapi7-ver flag-o-matic git-r3 multilib-minimal \
+	pax-utils python-any-r1 toolchain-funcs
 
 DESCRIPTION="Low Level Virtual Machine"
 HOMEPAGE="https://llvm.org/"
@@ -20,7 +20,7 @@ EGIT_BRANCH="release_50"
 
 # Keep in sync with CMakeLists.txt
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
-	NVPTX PowerPC RISCV Sparc SystemZ X86 XCore )
+	NVPTX PowerPC Sparc SystemZ X86 XCore )
 ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
 
 # Additional licenses:
@@ -33,10 +33,10 @@ ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
 
 LICENSE="UoI-NCSA rc BSD public-domain
 	llvm_targets_ARM? ( LLVM-Grant )"
-SLOT="$(get_major_version)"
+SLOT="$(ver_cut 1)"
 KEYWORDS=""
 IUSE="debug +doc gold libedit +libffi ncurses test
-	elibc_musl kernel_Darwin ${ALL_LLVM_TARGETS[*]}"
+	kernel_Darwin ${ALL_LLVM_TARGETS[*]}"
 
 RDEPEND="
 	sys-libs/zlib:0=
@@ -51,7 +51,7 @@ DEPEND="${RDEPEND}
 		( >=sys-freebsd/freebsd-lib-9.1-r10 sys-libs/libcxx )
 	)
 	|| ( >=sys-devel/binutils-2.18 >=sys-devel/binutils-apple-5.1 )
-	kernel_Darwin? ( <sys-libs/libcxx-$(get_version_component_range 1-3).9999 )
+	kernel_Darwin? ( <sys-libs/libcxx-$(ver_cut 1-3).9999 )
 	doc? ( dev-python/sphinx )
 	gold? ( sys-libs/binutils-libs )
 	libffi? ( virtual/pkgconfig )
@@ -81,14 +81,11 @@ src_prepare() {
 	# https://bugs.gentoo.org/show_bug.cgi?id=565358
 	eapply "${FILESDIR}"/9999/0007-llvm-config-Clean-up-exported-values-update-for-shar.patch
 
-	# support building llvm against musl-libc
-	use elibc_musl && eapply "${FILESDIR}"/9999/musl-fixes.patch
-
 	# disable use of SDK on OSX, bug #568758
 	sed -i -e 's/xcrun/false/' utils/lit/lit/util.py || die
 
-	# User patches
-	eapply_user
+	# User patches + QA
+	cmake-utils_src_prepare
 }
 
 multilib_src_configure() {

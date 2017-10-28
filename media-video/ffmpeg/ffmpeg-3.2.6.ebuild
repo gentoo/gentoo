@@ -54,7 +54,7 @@ LICENSE="
 	samba? ( GPL-3 )
 "
 if [ "${PV#9999}" = "${PV}" ] ; then
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ia64 ~mips ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+	KEYWORDS="alpha amd64 arm ~hppa ia64 ~mips ~ppc ~ppc64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 fi
 
 # Options to use as use_enable in the foo[:bar] form.
@@ -287,6 +287,8 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/libavutil/avconfig.h
 )
 
+PATCHES=( "${FILESDIR}/ffmpeg32-openjpeg22.patch" )
+
 src_prepare() {
 	if [[ "${PV%_p*}" != "${PV}" ]] ; then # Snapshot
 		export revision=git-N-${FFMPEG_REVISION}
@@ -431,7 +433,7 @@ multilib_src_compile() {
 	if multilib_is_native_abi; then
 		for i in "${FFTOOLS[@]}" ; do
 			if use fftools_${i} ; then
-				emake V=1 tools/${i}
+				emake V=1 tools/${i}$(get_exeext)
 			fi
 		done
 	fi
@@ -443,7 +445,7 @@ multilib_src_install() {
 	if multilib_is_native_abi; then
 		for i in "${FFTOOLS[@]}" ; do
 			if use fftools_${i} ; then
-				dobin tools/${i}
+				dobin tools/${i}$(get_exeext)
 			fi
 		done
 	fi

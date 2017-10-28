@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=2
 
 inherit eutils multilib
 
-DESCRIPTION="NagTrap is an integrated snmptt visualization addon for the Nagios monitoring system"
+DESCRIPTION="Integrated snmptt visualization addon for the Nagios monitoring system"
 HOMEPAGE="http://www.nagtrap.org/"
 SRC_URI="http://www.nagiosforge.org/gf/download/frsrelease/126/252/${P}.tar.gz"
 

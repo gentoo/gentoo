@@ -90,7 +90,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	default
+	cmake-utils_src_prepare
 
 	sed -i -e "s|find_program(APP_MAN man)|set(APP_MAN $(which man) CACHE FILEPATH MAN_BINARY)|" \
 		cmake/ConkyPlatformChecks.cmake || die

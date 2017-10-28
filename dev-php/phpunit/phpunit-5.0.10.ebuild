@@ -32,7 +32,7 @@ src_install() {
 	insinto /usr/share/php/phpunit
 	insopts -m755
 	newins "${DISTDIR}"/${PHPUNIT_PHAR} phpunit.phar
-	dosym /usr/share/php/phpunit/phpunit.phar /usr/bin/phpunit
+	dosym ../share/php/phpunit/phpunit.phar /usr/bin/phpunit
 }
 
 pkg_postinst() {

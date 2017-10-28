@@ -1,2 +1,2 @@
-# arguments for docker-registry
-command_args="-config.file=/etc/prometheus/prometheus.yml -storage.local.path=/var/lib/prometheus/data"
+# arguments for Prometheus
+command_args=""

@@ -29,7 +29,7 @@ DEPEND="${PYTHON_DEPS}
 	virtual/libusb:1"
 
 src_prepare() {
-	default
+	cmake-utils_src_prepare
 
 	sed -i CMakeLists.txt \
 		-e '/udevadm control/{N;d}' \

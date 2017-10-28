@@ -1,0 +1,314 @@
+From 890c6563bca6c297500ed7ad6be7147e0222c797 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Sat, 21 Oct 2017 11:04:37 +1300
+Subject: Fix test failures without '.' in @INC on 5.26+
+
+This fixes test failures when perl is running with PERL_USE_UNSAFE_INC=0
+set in the environment.
+
+Bug: https://rt.cpan.org/Ticket/Display.html?id=121070
+Bug: https://bugs.gentoo.org/615240
+Bug: https://github.com/mbarbon/extutils-xspp/pull/3
+---
+ t/010_base.t            | 3 ++-
+ t/011_multiple_files.t  | 3 ++-
+ t/012_preprocessor.t    | 3 ++-
+ t/015_reference.t       | 3 ++-
+ t/020_rename.t          | 3 ++-
+ t/022_static.t          | 3 ++-
+ t/022_virtual.t         | 3 ++-
+ t/023_base_classes.t    | 3 ++-
+ t/024_enum.t            | 3 ++-
+ t/030_code_blocks.t     | 3 ++-
+ t/031_verbatim_blocks.t | 3 ++-
+ t/035_include.t         | 3 ++-
+ t/040_plugin.t          | 7 ++++---
+ t/043_parser_plugins.t  | 3 ++-
+ t/075_types.t           | 3 ++-
+ t/080_complex_typemap.t | 3 ++-
+ t/090_exceptions.t      | 3 ++-
+ t/lib/XSP/Plugin.pm     | 2 +-
+ t/lib/XSP/Test.pm       | 4 ++--
+ 19 files changed, 39 insertions(+), 22 deletions(-)
+
+diff --git a/t/010_base.t b/t/010_base.t
+index 3d8b3c9..58cfd30 100644
+--- a/t/010_base.t
++++ b/t/010_base.t
+@@ -2,7 +2,8 @@
+ 
+ use strict;
+ use warnings;
+-use t::lib::XSP::Test tests => 14;
++use lib 't/lib';
++use XSP::Test tests => 14;
+ 
+ run_diff xsp_stdout => 'expected';
+ 
+diff --git a/t/011_multiple_files.t b/t/011_multiple_files.t
+index d52f930..d37d36b 100644
+--- a/t/011_multiple_files.t
++++ b/t/011_multiple_files.t
+@@ -2,7 +2,8 @@
+ 
+ use strict;
+ use warnings;
+-use t::lib::XSP::Test tests => 3;
++use lib 't/lib';
++use XSP::Test tests => 3;
+ 
+ run_diff process => 'expected';
+ 
+diff --git a/t/012_preprocessor.t b/t/012_preprocessor.t
+index 953bd73..7bf64f9 100644
+--- a/t/012_preprocessor.t
++++ b/t/012_preprocessor.t
+@@ -2,7 +2,8 @@
+ 
+ use strict;
+ use warnings;
+-use t::lib::XSP::Test tests => 6;
++use lib 't/lib';
++use XSP::Test tests => 6;
+ 
+ # monkeypatch print methods to test conditionals are parsed correctly
+ no warnings 'redefine';
+diff --git a/t/015_reference.t b/t/015_reference.t
+index e060a25..4b33887 100644
+--- a/t/015_reference.t
++++ b/t/015_reference.t
+@@ -2,7 +2,8 @@
+ 
+ use strict;
+ use warnings;
+-use t::lib::XSP::Test tests => 2;
++use lib 't/lib';
++use XSP::Test tests => 2;
+ 
+ run_diff xsp_stdout => 'expected';
+ 
+diff --git a/t/020_rename.t b/t/020_rename.t
+index df6abc3..ec1a0fd 100644
+--- a/t/020_rename.t
++++ b/t/020_rename.t
+@@ -2,7 +2,8 @@
+ 
+ use strict;
+ use warnings;
+-use t::lib::XSP::Test tests => 9;
++use lib 't/lib';
++use XSP::Test tests => 9;
+ 
+ run_diff xsp_stdout => 'expected';
+ 
+diff --git a/t/022_static.t b/t/022_static.t
+index de77672..138f02a 100644
+--- a/t/022_static.t
++++ b/t/022_static.t
+@@ -2,7 +2,8 @@
+ 
+ use strict;
+ use warnings;
+-use t::lib::XSP::Test tests => 1;
++use lib 't/lib';
++use XSP::Test tests => 1;
+ 
+ run_diff xsp_stdout => 'expected';
+ 
+diff --git a/t/022_virtual.t b/t/022_virtual.t
+index 2186690..7434d53 100644
+--- a/t/022_virtual.t
++++ b/t/022_virtual.t
+@@ -2,7 +2,8 @@
+ 
+ use strict;
+ use warnings;
+-use t::lib::XSP::Test tests => 3;
++use lib 't/lib';
++use XSP::Test tests => 3;
+ 
+ run_diff xsp_stdout => 'expected';
+ 
+diff --git a/t/023_base_classes.t b/t/023_base_classes.t
+index a53d5f8..00b2c06 100644
+--- a/t/023_base_classes.t
++++ b/t/023_base_classes.t
+@@ -2,7 +2,8 @@
+ 
+ use strict;
+ use warnings;
+-use t::lib::XSP::Test tests => 2;
++use lib 't/lib';
++use XSP::Test tests => 2;
+ 
+ run_diff xsp_stdout => 'expected';
+ 
+diff --git a/t/024_enum.t b/t/024_enum.t
+index 30a88e0..6ca1edf 100644
+--- a/t/024_enum.t
++++ b/t/024_enum.t
+@@ -2,7 +2,8 @@
+ 
+ use strict;
+ use warnings;
+-use t::lib::XSP::Test tests => 2;
++use lib 't/lib';
++use XSP::Test tests => 2;
+ 
+ # monkeypatch Enum/EnumValue just to test that they were parsed correctly
+ no warnings 'redefine';
+diff --git a/t/030_code_blocks.t b/t/030_code_blocks.t
+index dc6df69..aca157e 100644
+--- a/t/030_code_blocks.t
++++ b/t/030_code_blocks.t
+@@ -2,7 +2,8 @@
+ 
+ use strict;
+ use warnings;
+-use t::lib::XSP::Test tests => 6;
++use lib 't/lib';
++use XSP::Test tests => 6;
+ 
+ run_diff xsp_stdout => 'expected';
+ 
+diff --git a/t/031_verbatim_blocks.t b/t/031_verbatim_blocks.t
+index d123f66..5c2d373 100644
+--- a/t/031_verbatim_blocks.t
++++ b/t/031_verbatim_blocks.t
+@@ -2,7 +2,8 @@
+ 
+ use strict;
+ use warnings;
+-use t::lib::XSP::Test tests => 2;
++use lib 't/lib';
++use XSP::Test tests => 2;
+ 
+ run_diff xsp_stdout => 'expected';
+ 
+diff --git a/t/035_include.t b/t/035_include.t
+index 4d5f4e5..306e183 100644
+--- a/t/035_include.t
++++ b/t/035_include.t
+@@ -2,7 +2,8 @@
+ 
+ use strict;
+ use warnings;
+-use t::lib::XSP::Test tests => 1;
++use lib 't/lib';
++use XSP::Test tests => 1;
+ 
+ run_diff xsp_stdout => 'expected';
+ 
+diff --git a/t/040_plugin.t b/t/040_plugin.t
+index 798ba62..f8f1ea8 100644
+--- a/t/040_plugin.t
++++ b/t/040_plugin.t
+@@ -2,7 +2,8 @@
+ 
+ use strict;
+ use warnings;
+-use t::lib::XSP::Test tests => 2;
++use lib 't/lib';
++use XSP::Test tests => 2;
+ 
+ run_diff xsp_stdout => 'expected';
+ 
+@@ -12,8 +13,8 @@ __DATA__
+ --- xsp_stdout
+ %module{Foo};
+ %package{Foo};
+-%loadplugin{t::lib::XSP::Plugin};
+-%loadplugin{t::lib::XSP::Plugin};
++%loadplugin{XSP::Plugin};
++%loadplugin{XSP::Plugin};
+ 
+ int foo(int y);
+ 
+diff --git a/t/043_parser_plugins.t b/t/043_parser_plugins.t
+index e89c5cb..a84342b 100644
+--- a/t/043_parser_plugins.t
++++ b/t/043_parser_plugins.t
+@@ -2,7 +2,8 @@
+ 
+ use strict;
+ use warnings;
+-use t::lib::XSP::Test tests => 2;
++use lib 't/lib';
++use XSP::Test tests => 2;
+ 
+ run_diff xsp_stdout => 'expected';
+ 
+diff --git a/t/075_types.t b/t/075_types.t
+index 441d66b..a4db077 100644
+--- a/t/075_types.t
++++ b/t/075_types.t
+@@ -2,7 +2,8 @@
+ 
+ use strict;
+ use warnings;
+-use t::lib::XSP::Test tests => 5;
++use lib 't/lib';
++use XSP::Test tests => 5;
+ 
+ run_diff xsp_stdout => 'expected';
+ 
+diff --git a/t/080_complex_typemap.t b/t/080_complex_typemap.t
+index f86df61..44314b2 100644
+--- a/t/080_complex_typemap.t
++++ b/t/080_complex_typemap.t
+@@ -2,7 +2,8 @@
+ 
+ use strict;
+ use warnings;
+-use t::lib::XSP::Test tests => 6;
++use lib 't/lib';
++use XSP::Test tests => 6;
+ 
+ run_diff xsp_stdout => 'expected';
+ 
+diff --git a/t/090_exceptions.t b/t/090_exceptions.t
+index 0bb30fd..0e8071d 100644
+--- a/t/090_exceptions.t
++++ b/t/090_exceptions.t
+@@ -2,7 +2,8 @@
+ 
+ use strict;
+ use warnings;
+-use t::lib::XSP::Test tests => 9;
++use lib 't/lib';
++use XSP::Test tests => 9;
+ 
+ run_diff xsp_stdout => 'expected';
+ 
+diff --git a/t/lib/XSP/Plugin.pm b/t/lib/XSP/Plugin.pm
+index 8f0cd2a..e4b2212 100644
+--- a/t/lib/XSP/Plugin.pm
++++ b/t/lib/XSP/Plugin.pm
+@@ -1,4 +1,4 @@
+-package t::lib::XSP::Plugin;
++package XSP::Plugin;
+ 
+ use strict;
+ use warnings;
+diff --git a/t/lib/XSP/Test.pm b/t/lib/XSP/Test.pm
+index 719b829..081938f 100644
+--- a/t/lib/XSP/Test.pm
++++ b/t/lib/XSP/Test.pm
+@@ -1,4 +1,4 @@
+-package t::lib::XSP::Test;
++package XSP::Test;
+ 
+ use strict;
+ use warnings;
+@@ -37,7 +37,7 @@ sub run_diff(@) {
+ 
+ use ExtUtils::XSpp;
+ 
+-package t::lib::XSP::Test::Filter;
++package XSP::Test::Filter;
+ 
+ use Test::Base::Filter -base;
+ 
+-- 
+2.14.2
+

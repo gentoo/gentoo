@@ -12,8 +12,6 @@
 		<email>klausman@gentoo.org</email>
 		<name>Tobias Klausmann</name>
 	</maintainer>
-	<longdescription lang="en">
-	</longdescription>
 	<upstream>
 		<remote-id type="github">boto/s3transfer</remote-id>
 		<remote-id type="pypi">s3transfer</remote-id>

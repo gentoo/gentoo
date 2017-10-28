@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ OASIS_BUILD_DOCS=1
 inherit oasis
 
 MY_P=${P/_/\~}
-DESCRIPTION="OASIS is a tool to integrate a configure, build and install system in OCaml project"
+DESCRIPTION="Tool to integrate a configure, build and install system in OCaml project"
 HOMEPAGE="http://oasis.forge.ocamlcore.org/index.php"
 SRC_URI="http://forge.ocamlcore.org/frs/download.php/1669/${MY_P}.tar.gz"
 

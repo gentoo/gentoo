@@ -9,7 +9,7 @@ XORG_DOC=doc
 XORG_MULTILIB=yes
 inherit xorg-2
 
-EGIT_REPO_URI="git://anongit.freedesktop.org/git/xcb/util-wm"
+EGIT_REPO_URI="https://anongit.freedesktop.org/git/xcb/util-wm.git"
 EGIT_HAS_SUBMODULES=yes
 
 DESCRIPTION="X C-language Bindings sample implementations"

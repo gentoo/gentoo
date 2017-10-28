@@ -1,0 +1,29 @@
+From 447d0ca4cc757f79ad02ca52ab5e086b78dfdfb1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jos=C3=A9=20Manuel=20Santamar=C3=ADa=20Lema?=
+ <panfaust@gmail.com>
+Date: Thu, 3 Aug 2017 18:10:53 +0200
+Subject: Fix build with ocaml 4.04
+
+BUG: 372671
+FIXED-IN: 17.08
+
+Differential Revision: https://phabricator.kde.org/D6752
+---
+ src/CMakeOCamlInstructions.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/CMakeOCamlInstructions.cmake b/src/CMakeOCamlInstructions.cmake
+index 483d003..da703b1 100644
+--- a/src/CMakeOCamlInstructions.cmake
++++ b/src/CMakeOCamlInstructions.cmake
+@@ -58,7 +58,7 @@ ocaml_ml_to_cmx(${CMAKE_CURRENT_BINARY_DIR}/lexer.cmx ${CMAKE_CURRENT_SOURCE_DIR
+ # object files
+ 
+ add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/modwrap.o
+-                   COMMAND ${OCAML_OCAMLOPT_EXECUTABLE} -I ${LIBFACILE_INCLUDE_DIR} -c ${CMAKE_CURRENT_SOURCE_DIR}/solver/modwrap.c -o ${CMAKE_CURRENT_BINARY_DIR}/modwrap.o
++                   COMMAND ${OCAML_OCAMLOPT_EXECUTABLE} -I ${LIBFACILE_INCLUDE_DIR} -c ${CMAKE_CURRENT_SOURCE_DIR}/solver/modwrap.c
+                    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/solver/modwrap.c ${CMAKE_CURRENT_BINARY_DIR}/solver.o
+                    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
+ set_directory_properties(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES ${CMAKE_CURRENT_BINARY_DIR}/modwrap.o)
+-- 
+cgit v0.11.2

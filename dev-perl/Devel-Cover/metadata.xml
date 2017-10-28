@@ -7,5 +7,55 @@
   </maintainer>
   <upstream>
     <remote-id type="cpan">Devel-Cover</remote-id>
+    <remote-id type="cpan-module">Devel::Cover</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::Annotation::Git</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::Annotation::Random</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::Annotation::Svk</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::Branch</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::Collection</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::Collection::Template::Provider</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::Condition</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::Condition_and_2</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::Condition_and_3</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::Condition_or_2</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::Condition_or_3</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::Condition_xor_4</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::Criterion</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::DB</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::DB::Criterion</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::DB::Digests</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::DB::File</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::DB::IO</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::DB::IO::Base</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::DB::IO::JSON</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::DB::IO::Sereal</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::DB::IO::Storable</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::DB::Run</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::DB::Structure</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::Html_Common</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::Inc</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::Op</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::Pod</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::Report::Compilation</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::Report::Html</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::Report::Html_basic</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::Report::Html_basic::Template::Provider</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::Report::Html_minimal</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::Report::Html_subtle</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::Report::Html_subtle::Template::Provider</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::Report::Json</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::Report::Sort</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::Report::Text</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::Report::Text2</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::Report::Vim</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::Report::Vim::Template::Provider</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::Statement</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::Subroutine</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::Test</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::Time</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::Truth_Table</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::Truth_Table::Row</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::Util</remote-id>
+    <remote-id type="cpan-module">Devel::Cover::Web</remote-id>
   </upstream>
 </pkgmetadata>

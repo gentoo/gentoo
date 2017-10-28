@@ -45,6 +45,12 @@ src_compile() {
 	use doc && emake -C "${BUILD_DIR}" doc
 }
 
+src_test() {
+	# Tests fail randomly when run in parallel
+	local MAKEOPTS=-j1
+	cmake-utils_src_test
+}
+
 src_install() {
 	cmake-utils_src_install
 

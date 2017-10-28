@@ -20,7 +20,7 @@ RUBY_S="${PN}-gem-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm"
 IUSE=""
 
 ruby_add_rdepend "

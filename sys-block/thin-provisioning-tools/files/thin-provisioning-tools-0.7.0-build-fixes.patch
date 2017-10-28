@@ -1,0 +1,34 @@
+--- thin-provisioning-tools-0.7.0/Makefile.in
++++ thin-provisioning-tools-0.7.0/Makefile.in
+@@ -142,9 +142,9 @@
+ 
+ TOP_DIR:=@top_srcdir@
+ TOP_BUILDDIR:=@top_builddir@
+-CFLAGS+=-g -Wall -O3 -fPIC
++CFLAGS+=-fPIC
+ CFLAGS+=@LFS_FLAGS@
+-CXXFLAGS+=-g -Wall -fPIC -fno-strict-aliasing -std=c++11
++CXXFLAGS+=-fPIC -fno-strict-aliasing -std=c++11
+ 
+ ifeq ("@DEVTOOLS@", "yes")
+ CXXFLAGS+=-DDEV_TOOLS
+--- thin-provisioning-tools-0.7.0/unit-tests/Makefile.in
++++ thin-provisioning-tools-0.7.0/unit-tests/Makefile.in
+@@ -25,7 +25,7 @@
+ 	-Wno-unused-local-typedefs
+ 
+ GMOCK_LIBS=\
+-	-Llib -lpdata -lgmock -lpthread -laio
++	-Llib -lpdata -lgmock -lpthread -laio -lgtest
+ 
+ GMOCK_DEPS=\
+ 	$(wildcard $(GMOCK_DIR)/googlemock/include/*.h) \
+@@ -83,7 +83,7 @@
+ 	sed 's,\([^ :]*\)\.o[ :]*,\1.o \1.gmo $* : Makefile ,g' < $*.$$$$ > $*.d; \
+ 	$(RM) $*.$$$$
+ 
+-unit-tests/unit_tests: $(TEST_OBJECTS) lib/libgmock.a lib/libpdata.a
++unit-tests/unit_tests: $(TEST_OBJECTS) lib/libpdata.a
+ 	@echo "    [LD]  $<"
+ 	$(V)g++ $(CXXFLAGS) $(LDFLAGS) -o $@ $(TEST_OBJECTS) $(LIBS) $(GMOCK_LIBS) $(LIBEXPAT)
+ 

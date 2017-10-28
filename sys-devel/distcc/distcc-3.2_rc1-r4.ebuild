@@ -114,7 +114,7 @@ src_install() {
 		DISTCCD_OPTS="\${DISTCCD_OPTS} --zeroconf"
 		EOF
 
-		sed -i '/ExecStart/ s|$| --zeroconf|' "${ED}"/usr/lib/systemd/system/distccd.service || die
+		sed -i '/ExecStart/ s|$| --zeroconf|' "${D}$(systemd_get_systemunitdir)"/distccd.service || die
 	fi
 	doconfd "${T}/distccd" || die
 

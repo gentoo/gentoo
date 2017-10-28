@@ -1,0 +1,13 @@
+diff --git a/components/test_runner/BUILD.gn~ b/components/test_runner/BUILD.gn
+index 3ac8955..6a968cb 100644
+--- a/components/test_runner/BUILD.gn~
++++ b/components/test_runner/BUILD.gn
+@@ -155,8 +155,6 @@ if (use_x11) {
+   copy("copy_x11_fonts") {
+     visibility = [ ":*" ]
+     sources = [
+-      "//third_party/gardiner_mod/GardinerModBug.ttf",
+-      "//third_party/gardiner_mod/GardinerModCat.ttf",
+       "resources/fonts/fonts.conf",
+     ]
+     outputs = [

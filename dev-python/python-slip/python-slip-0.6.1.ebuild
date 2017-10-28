@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 inherit distutils-r1 eutils
 
 DESCRIPTION="Miscellaneous convenience, extension and workaround code for Python"
-HOMEPAGE="https://fedorahosted.org/python-slip/"
+HOMEPAGE="https://github.com/nphilipp/python-slip"
 SRC_URI="https://fedorahosted.org/released/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2+"

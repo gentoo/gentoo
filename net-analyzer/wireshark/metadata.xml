@@ -56,6 +56,6 @@
 		<flag name="text2pcap">Install text2pcap, to generate a capture file from an ASCII hexdump of packets</flag>
 		<flag name="tfshark">Install tfshark, a terminal-based version of the FileShark capability</flag>
 		<flag name="tshark">Install tshark, to dump and analyzer network traffic from the command line</flag>
-		<flag name="udpdump">Install udpdumpi, to get packets exported from a source (like a network device or a GSMTAP producer) that are dumped to a pcap file</flag>
+		<flag name="udpdump">Install udpdump, to get packets exported from a source (like a network device or a GSMTAP producer) that are dumped to a pcap file</flag>
 	</use>
 </pkgmetadata>

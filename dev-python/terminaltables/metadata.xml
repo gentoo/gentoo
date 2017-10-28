@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<use>
-	</use>
 	<maintainer type="person">
 		<email>grknight@gentoo.org</email>
 		<name>Brian Evans</name>

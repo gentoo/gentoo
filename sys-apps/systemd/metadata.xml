@@ -21,7 +21,6 @@
 		<flag name="gcrypt">Enable sealing of journal files using gcrypt; required to build systemd-import/systemd-pull</flag>
 		<flag name="http">Enable embedded HTTP server in journald</flag>
 		<flag name="importd">Enable import daemon</flag>
-		<flag name="kdbus">Connect to kernel dbus (KDBUS) instead of userspace dbus if available</flag>
 		<flag name="kmod">Enable kernel module loading via <pkg>sys-apps/kmod</pkg></flag>
 		<flag name="libidn2">If IDN support is enabled, use <pkg>net-dns/libidn2</pkg> instead of <pkg>net-dns/libidn</pkg></flag>
 		<flag name="lz4">Enable lz4 compression for the journal</flag>

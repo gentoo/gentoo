@@ -1,34 +1,35 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-inherit eutils
+EAPI="6"
 
-DESCRIPTION="Vietnamese Input Method Engine for IBUS using Unikey IME"
-HOMEPAGE="https://code.google.com/p/ibus-unikey/"
-SRC_URI="https://ibus-unikey.googlecode.com/files/${P}.tar.gz
+DESCRIPTION="Vietnamese UniKey engine for IBus"
+HOMEPAGE="https://github.com/mrlequoctuan/ibus-unikey"
+SRC_URI="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${PN}/${P}.tar.gz
 	https://dev.gentoo.org/~dlan/distfiles/${P}-gcc6.patch"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="gtk3"
+IUSE="+gtk gtk2 nls"
+REQUIRED_USE="gtk2? ( gtk )"
 
-RDEPEND="gtk3? ( >app-i18n/ibus-1.4.0[gtk]
-		x11-libs/gtk+:3 )
-	!gtk3? ( >=app-i18n/ibus-1.4.0[gtk2]
-		>=x11-libs/gtk+-2.12:2 )
-	x11-libs/libX11"
+RDEPEND="app-i18n/ibus
+	x11-libs/libX11
+	gtk? (
+		gtk2? ( x11-libs/gtk+:2 )
+		!gtk2? ( x11-libs/gtk+:3 )
+	)
+	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	dev-util/intltool
-	>=sys-devel/gettext-0.17"
+	nls? ( sys-devel/gettext )"
 
-src_prepare() {
-	epatch "${DISTDIR}"/${P}-gcc6.patch
-}
+PATCHES=( "${DISTDIR}"/${P}-gcc6.patch )
 
 src_configure() {
-	use gtk3 && myconf="--with-gtk-version=3" || myconf=""
-	econf ${myconf}
+	econf \
+		$(use_enable nls) \
+		--with-gtk-version=$(usex gtk2 3 2)
 }

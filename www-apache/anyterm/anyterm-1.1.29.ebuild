@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
@@ -6,8 +6,8 @@ EAPI="2"
 inherit eutils flag-o-matic
 
 DESCRIPTION="A terminal anywhere"
-HOMEPAGE="http://anyterm.org/"
-SRC_URI="http://anyterm.org/download/${P}.tbz2"
+HOMEPAGE="https://anyterm.org/"
+SRC_URI="https://anyterm.org/download/${P}.tbz2"
 
 LICENSE="GPL-2 Boost-1.0"
 SLOT="0"
@@ -41,5 +41,5 @@ src_install() {
 
 pkg_postinst() {
 	elog "To proceed installation, read following:"
-	elog "http://anyterm.org/1.1/install.html"
+	elog "https://anyterm.org/install.html"
 }

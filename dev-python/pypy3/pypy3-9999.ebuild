@@ -15,8 +15,8 @@ HOMEPAGE="http://pypy.org/"
 SRC_URI=""
 
 LICENSE="MIT"
-# XX from pypy3-XX.so module suffix
-SLOT="0/57"
+# pypy3 -c 'import sysconfig; print(sysconfig.get_config_var("SOABI"))'
+SLOT="0/59"
 KEYWORDS=""
 IUSE="bzip2 gdbm +jit libressl low-memory ncurses sandbox sqlite cpu_flags_x86_sse2 tk"
 
@@ -43,23 +43,25 @@ DEPEND="${RDEPEND}
 # Who would care about predictable directory names?
 S="${WORKDIR}/pypy3-v${PV%_*}-src"
 
-pkg_pretend() {
-	if [[ ${MERGE_TYPE} != binary ]]; then
-		if use low-memory; then
-			CHECKREQS_MEMORY="1750M"
-			use amd64 && CHECKREQS_MEMORY="3500M"
-		else
-			CHECKREQS_MEMORY="3G"
-			use amd64 && CHECKREQS_MEMORY="6G"
-		fi
-
-		check-reqs_pkg_pretend
+check_env() {
+	if use low-memory; then
+		CHECKREQS_MEMORY="1750M"
+		use amd64 && CHECKREQS_MEMORY="3500M"
+	else
+		CHECKREQS_MEMORY="3G"
+		use amd64 && CHECKREQS_MEMORY="6G"
 	fi
+
+	check-reqs_pkg_pretend
+}
+
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && check_env
 }
 
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
-		pkg_pretend
+		check_env
 
 		# unset to allow forcing pypy below :)
 		use low-memory && local EPYTHON=
@@ -84,7 +86,7 @@ src_unpack() {
 src_prepare() {
 	eapply "${FILESDIR}/4.0.0-gentoo-path.patch"
 	eapply "${FILESDIR}/1.9-distutils.unixccompiler.UnixCCompiler.runtime_library_dir_option.patch"
-	eapply "${FILESDIR}"/2.5.0-shared-lib.patch	# 517002
+	eapply "${FILESDIR}"/5.9.0-shared-lib.patch	# 517002
 
 	sed -e "s^@EPREFIX@^${EPREFIX}^" \
 		-e "s^@libdir@^$(get_libdir)^" \

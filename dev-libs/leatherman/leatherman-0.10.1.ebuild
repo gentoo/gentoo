@@ -22,6 +22,7 @@ DEPEND=">=dev-libs/boost-1.54[nls]
 
 src_prepare() {
 	sed -i 's/\-Werror\ //g' "cmake/cflags.cmake" || die
+	cmake-utils_src_prepare
 }
 
 src_configure() {

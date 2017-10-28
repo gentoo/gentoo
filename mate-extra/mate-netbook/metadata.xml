@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-    <maintainer type="project">
-        <email>mate@gentoo.org</email>
-        <name>Gentoo MATE Desktop</name>
-    </maintainer>
-    <longdescription>
-        MATE utilities for netbooks are an applet and a daemon to
-        maximize windows and move their titles on the panel.
-    </longdescription>
+	<maintainer type="project">
+		<email>mate@gentoo.org</email>
+		<name>Gentoo MATE Desktop</name>
+	</maintainer>
+	<longdescription>
+		MATE utilities for netbooks are an applet and a daemon to
+		maximize windows and move their titles on the panel.
+	</longdescription>
 	<use>
 		<flag name="gtk3">Build with GTK+3 instead of GTK+2</flag>
 	</use>
-    <upstream>
-        <remote-id type="github">mate-desktop/mate-netbook</remote-id>
-    </upstream>
+	<upstream>
+		<remote-id type="github">mate-desktop/mate-netbook</remote-id>
+	</upstream>
 </pkgmetadata>

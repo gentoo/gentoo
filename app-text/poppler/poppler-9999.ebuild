@@ -7,21 +7,19 @@ inherit cmake-utils toolchain-funcs xdg-utils
 
 if [[ "${PV}" == "9999" ]] ; then
 	inherit git-r3
-	EGIT_REPO_URI="git://git.freedesktop.org/git/${PN}/${PN}"
+	EGIT_REPO_URI="https://anongit.freedesktop.org/git/poppler/poppler.git"
 	SLOT="0/9999"
 else
 	SRC_URI="https://poppler.freedesktop.org/${P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-	SLOT="0/67"   # CHECK THIS WHEN BUMPING!!! SUBSLOT IS libpoppler.so SOVERSION
+	SLOT="0/71"   # CHECK THIS WHEN BUMPING!!! SUBSLOT IS libpoppler.so SOVERSION
 fi
 
 DESCRIPTION="PDF rendering library based on the xpdf-3.0 code base"
 HOMEPAGE="https://poppler.freedesktop.org/"
 
 LICENSE="GPL-2"
-IUSE="cairo cairo-qt cjk curl cxx debug doc +introspection +jpeg +jpeg2k +lcms nss png qt4 qt5 tiff +utils"
-
-REQUIRED_USE="cairo-qt? ( qt4 )"
+IUSE="cairo cjk curl cxx debug doc +introspection +jpeg +jpeg2k +lcms nss png qt4 qt5 tiff +utils"
 
 # No test data provided
 RESTRICT="test"
@@ -59,12 +57,12 @@ RDEPEND="${COMMON_DEPEND}
 	cjk? ( >=app-text/poppler-data-0.4.7 )
 "
 
-DOCS=(AUTHORS NEWS README README-XPDF TODO)
+DOCS=(AUTHORS NEWS README README-XPDF)
 
 PATCHES=(
-	"${FILESDIR}/${PN}-0.26.0-qt5-dependencies.patch"
+	"${FILESDIR}/${PN}-0.60.1-qt5-dependencies.patch"
 	"${FILESDIR}/${PN}-0.28.1-fix-multilib-configuration.patch"
-	"${FILESDIR}/${PN}-0.53.0-respect-cflags.patch"
+	"${FILESDIR}/${PN}-0.60.1-respect-cflags.patch"
 	"${FILESDIR}/${PN}-0.33.0-openjpeg2.patch"
 	"${FILESDIR}/${PN}-0.40-FindQt4.patch"
 )
@@ -83,6 +81,11 @@ src_prepare() {
 			-i CMakeLists.txt || die
 	else
 		einfo "policy(SET CMP0002 OLD) - workaround can be removed"
+	fi
+
+	if tc-is-clang && [[ ${CHOST} == *-darwin* ]] ; then
+		# we need to up the C++ version, bug #622526
+		export CXX="$(tc-getCXX) -std=c++11"
 	fi
 }
 
@@ -112,10 +115,15 @@ src_configure() {
 		$(cmake-utils_use_find_package qt5 Qt5Core)
 		-DWITH_TIFF="$(usex tiff)"
 	)
+	if use jpeg; then
+		mycmakeargs+=(-DENABLE_DCTDECODER=libjpeg)
+	else
+		mycmakeargs+=(-DENABLE_DCTDECODER=none)
+	fi
 	if use jpeg2k; then
 		mycmakeargs+=(-DENABLE_LIBOPENJPEG=openjpeg2)
 	else
-		mycmakeargs+=(-DENABLE_LIBOPENJPEG=)
+		mycmakeargs+=(-DENABLE_LIBOPENJPEG=none)
 	fi
 	if use lcms; then
 		mycmakeargs+=(-DENABLE_CMS=lcms2)

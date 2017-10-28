@@ -4,9 +4,8 @@
 EAPI=6
 
 if [[ ${PV} == "9999" ]] ; then
-	inherit git-r3
-	EGIT_REPO_URI="git://git.kernel.org/pub/scm/utils/kernel/kexec/kexec-tools.git"
-	AUTOTOOLS_AUTORECONF=true
+	inherit git-r3 autotools
+	EGIT_REPO_URI="https://git.kernel.org/pub/scm/utils/kernel/kexec/kexec-tools.git"
 else
 	SRC_URI="mirror://kernel/linux/utils/kernel/kexec/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm64 ~x86"
@@ -42,7 +41,11 @@ pkg_setup() {
 
 src_prepare() {
 	default
-	elibtoolize
+	if [[ ${PV} == "9999" ]] ; then
+		eautoreconf
+	else
+		elibtoolize
+	fi
 }
 
 src_configure() {

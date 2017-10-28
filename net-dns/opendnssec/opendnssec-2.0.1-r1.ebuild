@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -96,7 +96,7 @@ check_pkcs11_setup() {
 			ewarn "  for AEP Keyper, set: PKCS11_AEPKEYPER=<path>"
 			ewarn "Example:"
 			ewarn "  PKCS11_ETOKEN=\"/opt/etoken/lib/libeTPkcs11.so\" emerge -pv opendnssec"
-			ewarn "or store the variable into /etc/make.conf"
+			ewarn "or store the variable into /etc/portage/make.conf"
 			die "USE flag 'external-hsm' set but no PKCS#11 library path specified."
 		fi
 		elog "Building with external PKCS#11 library support ($PKCS11_LIB): ${PKCS11_PATH}"

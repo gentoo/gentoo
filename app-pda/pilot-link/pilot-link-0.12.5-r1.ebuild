@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,8 @@ inherit autotools distutils-r1 eutils perl-module java-pkg-opt-2
 
 DESCRIPTION="suite of tools for moving data between a Palm device and a desktop"
 HOMEPAGE="http://www.pilot-link.org/"
-SRC_URI="http://pilot-link.org/source/${P}.tar.bz2"
+SRC_URI="http://pilot-link.org/source/${P}.tar.bz2
+	https://dev.gentoo.org/~mgorny/dist/${P}-gentoo-patchset.tar.bz2"
 
 LICENSE="|| ( GPL-2 LGPL-2 )"
 SLOT="0"
@@ -31,14 +32,14 @@ RDEPEND="${COMMON_DEPEND}
 
 src_prepare() {
 	epatch \
-		"${FILESDIR}"/${PN}-0.12.3-java-install.patch \
-		"${FILESDIR}"/${PN}-0.12.3-respect-javacflags.patch \
-		"${FILESDIR}"/${PN}-0.12.2-werror_194921.patch \
-		"${FILESDIR}"/${PN}-0.12.2-threads.patch \
-		"${FILESDIR}"/${PN}-0.12.3-{libpng14,png}.patch \
-		"${FILESDIR}"/${PN}-0.12.3-distutils.patch \
-		"${FILESDIR}"/${PN}-0.12.3-libusb-compat-usb_open.patch \
-		"${FILESDIR}"/${PN}-0.12.5-perl514.patch
+		"${WORKDIR}/${P}-gentoo-patchset"/${PN}-0.12.3-java-install.patch \
+		"${WORKDIR}/${P}-gentoo-patchset"/${PN}-0.12.3-respect-javacflags.patch \
+		"${WORKDIR}/${P}-gentoo-patchset"/${PN}-0.12.2-werror_194921.patch \
+		"${WORKDIR}/${P}-gentoo-patchset"/${PN}-0.12.2-threads.patch \
+		"${WORKDIR}/${P}-gentoo-patchset"/${PN}-0.12.3-{libpng14,png}.patch \
+		"${WORKDIR}/${P}-gentoo-patchset"/${PN}-0.12.3-distutils.patch \
+		"${WORKDIR}/${P}-gentoo-patchset"/${PN}-0.12.3-libusb-compat-usb_open.patch \
+		"${WORKDIR}/${P}-gentoo-patchset"/${PN}-0.12.5-perl514.patch
 
 	sed -i -e 's:AM_CONFIG_HEADER:AC_CONFIG_HEADERS:' configure.ac || die #467600
 

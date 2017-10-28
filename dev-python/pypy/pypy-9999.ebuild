@@ -8,7 +8,7 @@ EHG_REPO_URI="https://bitbucket.org/pypy/pypy"
 inherit check-reqs mercurial pax-utils python-any-r1 toolchain-funcs versionator
 
 # note: remember to update this to newest dev-lang/python:2.7 on bump
-CPY_PATCHSET_VERSION="2.7.13-0"
+CPY_PATCHSET_VERSION="2.7.14-0"
 MY_P=pypy2-v${PV}
 
 DESCRIPTION="A fast, compliant alternative implementation of the Python language"
@@ -44,33 +44,35 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${MY_P}-src"
 
-pkg_pretend() {
-	if [[ ${MERGE_TYPE} != binary ]]; then
-		if use low-memory; then
-			if ! python_is_installed pypy; then
-				eerror "USE=low-memory requires a (possibly old) version of dev-python/pypy"
-				eerror "or dev-python/pypy-bin being installed. Please install it using e.g.:"
-				eerror
-				eerror "  $ emerge -1v dev-python/pypy-bin"
-				eerror
-				eerror "before attempting to build dev-python/pypy[low-memory]."
-				die "dev-python/pypy-bin (or dev-python/pypy) needs to be installed for USE=low-memory"
-			fi
-
-			CHECKREQS_MEMORY="1750M"
-			use amd64 && CHECKREQS_MEMORY="3500M"
-		else
-			CHECKREQS_MEMORY="3G"
-			use amd64 && CHECKREQS_MEMORY="6G"
+check_env() {
+	if use low-memory; then
+		if ! python_is_installed pypy; then
+			eerror "USE=low-memory requires a (possibly old) version of dev-python/pypy"
+			eerror "or dev-python/pypy-bin being installed. Please install it using e.g.:"
+			eerror
+			eerror "  $ emerge -1v dev-python/pypy-bin"
+			eerror
+			eerror "before attempting to build dev-python/pypy[low-memory]."
+			die "dev-python/pypy-bin (or dev-python/pypy) needs to be installed for USE=low-memory"
 		fi
 
-		check-reqs_pkg_pretend
+		CHECKREQS_MEMORY="1750M"
+		use amd64 && CHECKREQS_MEMORY="3500M"
+	else
+		CHECKREQS_MEMORY="3G"
+		use amd64 && CHECKREQS_MEMORY="6G"
 	fi
+
+	check-reqs_pkg_pretend
+}
+
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && check_env
 }
 
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
-		pkg_pretend
+		check_env
 
 		if python_is_installed pypy; then
 			if [[ ! ${EPYTHON} || ${EPYTHON} == pypy ]] || use low-memory; then
@@ -95,7 +97,7 @@ src_unpack() {
 src_prepare() {
 	eapply "${FILESDIR}/4.0.0-gentoo-path.patch"
 	eapply "${FILESDIR}/1.9-distutils.unixccompiler.UnixCCompiler.runtime_library_dir_option.patch"
-	eapply "${FILESDIR}"/2.5.0-shared-lib.patch	# 517002
+	eapply "${FILESDIR}"/5.9.0-shared-lib.patch	# 517002
 
 	sed -e "s^@EPREFIX@^${EPREFIX}^" \
 		-e "s^@libdir@^$(get_libdir)^" \

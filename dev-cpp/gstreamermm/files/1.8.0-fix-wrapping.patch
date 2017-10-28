@@ -1,0 +1,23 @@
+From 3440f119a7d03d50688f303b3456695c4d8e5187 Mon Sep 17 00:00:00 2001
+From: Marcin Kolny <marcin.kolny@gmail.com>
+Date: Sun, 16 Oct 2016 22:20:42 +0200
+Subject: [PATCH] Gst::Pad: fix method wrapper
+
+    * gstreamer/src/pad.hg: fix method proxy_query_accept_caps()
+---
+ gstreamer/src/pad.hg | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gstreamer/src/pad.hg b/gstreamer/src/pad.hg
+index cf0d78e..f2ff258 100644
+--- a/gstreamer/src/pad.hg
++++ b/gstreamer/src/pad.hg
+@@ -236,7 +236,7 @@ public:
+ 
+   _WRAP_METHOD(bool query_accept_caps(const Glib::RefPtr<const Gst::Caps>& caps) const, gst_pad_query_accept_caps)
+   _WRAP_METHOD(bool proxy_query_caps(const Glib::RefPtr<Gst::Query>& query) const, gst_pad_proxy_query_caps)
+-  _WRAP_METHOD(bool proxy_query_accept_caps(const Glib::RefPtr<Gst::Query>& query) const, gst_pad_proxy_accept_caps)
++  _WRAP_METHOD(bool proxy_query_accept_caps(const Glib::RefPtr<Gst::Query>& query) const, gst_pad_proxy_query_accept_caps)
+   _WRAP_METHOD(bool peer_query_accept_caps(const Glib::RefPtr<const Gst::Caps>& caps) const, gst_pad_peer_query_accept_caps)
+   _WRAP_METHOD(bool peer_query_position(Gst::Format format, gint64& cur) const, gst_pad_peer_query_position)
+   _WRAP_METHOD(bool peer_query_duration(Gst::Format format, gint64& duration) const, gst_pad_peer_query_duration)

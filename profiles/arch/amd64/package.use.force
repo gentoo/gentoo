@@ -7,6 +7,7 @@ app-emulation/wine-vanilla -abi_x86_64
 app-emulation/wine-staging -abi_x86_64
 app-emulation/wine-d3d9 -abi_x86_64
 app-emulation/wine-any -abi_x86_64
+virtual/wine -abi_x86_64
 
 # Michał Górny <mgorny@gentoo.org> (08 Apr 2017)
 # Require sandbox to be multilib-capable to avoid failures when building
@@ -31,7 +32,3 @@ media-gfx/iscan-plugin-gt-f500 minimal
 # <blubb@gentoo.org> (23 Oct 2006)
 # upstream forces sse2 on regardless of what the use flag is
 dev-libs/openssl cpu_flags_x86_sse2
-
-# Santiago M. Mola <coldwind@gentoo.org> (17 Sep 2008)
-# x86emu is the only backend available for amd64 (bug #224987)
-sys-apps/v86d x86emu

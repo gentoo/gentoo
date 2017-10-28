@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cmake-utils eutils git-r3
+inherit cmake-utils eutils git-r3 gnome2-utils xdg-utils
 
 DESCRIPTION="Most feature-rich GUI for net-libs/tox using Qt5"
 HOMEPAGE="https://github.com/qTox/qTox"
@@ -13,7 +13,7 @@ EGIT_REPO_URI="https://github.com/qTox/qTox.git"
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS=""
-IUSE="gtk X"
+IUSE="gtk test X"
 
 RDEPEND="
 	dev-db/sqlcipher
@@ -43,24 +43,34 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5
 	virtual/pkgconfig
+	test? ( dev-qt/qttest:5 )
 "
 
-pkg_pretend() {
-	if [[ ${MERGE_TYPE} != binary ]]; then
-		if tc-is-gcc ; then
-			if [[ $(gcc-major-version) == 4 && $(gcc-minor-version) -lt 8 || $(gcc-major-version) -lt 4 ]] ; then
-				eerror "You need at least sys-devel/gcc-4.8.3"
-				die "You need at least sys-devel/gcc-4.8.3"
-			fi
-		fi
+src_prepare() {
+	cmake-utils_src_prepare
+
+	# bug 628574
+	if ! use test; then
+		sed -i CMakeLists.txt -e "/include(Testing)/s/^/#/" || die
+		sed -i cmake/Dependencies.cmake -e "/find_package(Qt5Test/s/^/#/" || die
 	fi
 }
 
 src_configure() {
 	local mycmakeargs=(
-		-DENABLE_STATUSNOTIFIER=$(usex gtk True False)
-		-DENABLE_GTK_SYSTRAY=$(usex gtk True False)
+		-DENABLE_STATUSNOTIFIER=$(usex gtk)
+		-DENABLE_GTK_SYSTRAY=$(usex gtk)
 	)
 
 	cmake-utils_src_configure
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }

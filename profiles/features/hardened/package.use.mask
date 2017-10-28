@@ -1,0 +1,11 @@
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+sys-apps/hwloc gl
+
+sys-devel/gcc -hardened
+sys-libs/glibc -hardened
+
+# net-fs/openafs-kernel module can't be used on hardened,
+# see bug 540196.
+net-fs/openafs modules

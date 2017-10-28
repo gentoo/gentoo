@@ -1,0 +1,167 @@
+From c89a871ead0a961f8a0125d875cbe28974e23f29 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Thu, 26 Oct 2017 18:50:34 +1300
+Subject: Fix test failures without '.' in @INC
+
+Bug: https://bugs.gentoo.org/617006
+Bug: https://rt.cpan.org/Ticket/Display.html?id=121452
+---
+ t/00array.t     | 2 +-
+ t/01doc-href.t  | 2 +-
+ t/02nav-appv.t  | 2 +-
+ t/03doc-write.t | 2 +-
+ t/04loop.t      | 2 +-
+ t/05form.t      | 2 +-
+ t/06form2.t     | 2 +-
+ t/07func.t      | 2 +-
+ t/08func2.t     | 2 +-
+ t/09meth.t      | 2 +-
+ t/10elobj.t     | 2 +-
+ 11 files changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/t/00array.t b/t/00array.t
+index 3bd85a6..ba36807 100755
+--- a/t/00array.t
++++ b/t/00array.t
+@@ -5,7 +5,7 @@
+ print "1..1\n";
+ 
+ $init = "";
+-require "t/init.pl";
++require "./t/init.pl";
+ 
+ $js->array_by_path("document.form");
+ 
+diff --git a/t/01doc-href.t b/t/01doc-href.t
+index 7f79c95..c545ca7 100755
+--- a/t/01doc-href.t
++++ b/t/01doc-href.t
+@@ -6,7 +6,7 @@ print "1..1\n";
+ 
+ $init = "";
+ 
+-require "t/init.pl";
++require "./t/init.pl";
+ 
+ my $source = <<EOT;
+ $init
+diff --git a/t/02nav-appv.t b/t/02nav-appv.t
+index d038f3e..2e0d7f6 100755
+--- a/t/02nav-appv.t
++++ b/t/02nav-appv.t
+@@ -5,7 +5,7 @@
+ print "1..1\n";
+ 
+ $init = "";
+-require "t/init.pl";
++require "./t/init.pl";
+ 
+ my $source = <<EOT;
+ $init
+diff --git a/t/03doc-write.t b/t/03doc-write.t
+index 9b38e21..f757592 100755
+--- a/t/03doc-write.t
++++ b/t/03doc-write.t
+@@ -5,7 +5,7 @@
+ print "1..1\n";
+ 
+ $init = "";
+-require "t/init.pl";
++require "./t/init.pl";
+ 
+ my $source = <<EOT;
+ $init
+diff --git a/t/04loop.t b/t/04loop.t
+index 3757c1d..768067a 100755
+--- a/t/04loop.t
++++ b/t/04loop.t
+@@ -5,7 +5,7 @@
+ print "1..1\n";
+ 
+ $init = "";
+-require "t/init.pl";
++require "./t/init.pl";
+ 
+ my $source = <<EOT;
+ $init
+diff --git a/t/05form.t b/t/05form.t
+index 0dc763a..3212d05 100755
+--- a/t/05form.t
++++ b/t/05form.t
+@@ -5,7 +5,7 @@
+ print "1..1\n";
+ 
+ $init = "";
+-require "t/init.pl";
++require "./t/init.pl";
+ 
+ my $source = <<EOT;
+ $init
+diff --git a/t/06form2.t b/t/06form2.t
+index 9aacb7a..fdf1bd2 100755
+--- a/t/06form2.t
++++ b/t/06form2.t
+@@ -5,7 +5,7 @@
+ print "1..1\n";
+ 
+ $init = "";
+-require "t/init.pl";
++require "./t/init.pl";
+ 
+ my $a = $js->array_by_path("document.array");
+ my $e = $js->array_set_element($a, 0, "gurkenhobel"); 
+diff --git a/t/07func.t b/t/07func.t
+index c0f95cc..9b12633 100644
+--- a/t/07func.t
++++ b/t/07func.t
+@@ -6,7 +6,7 @@ print "1..1\n";
+ 
+ $init   = "";
+ $buffer = "";
+-require "t/init.pl";
++require "./t/init.pl";
+ 
+ my $source = <<EOT;
+ $init
+diff --git a/t/08func2.t b/t/08func2.t
+index 6b49ef7..95c7749 100644
+--- a/t/08func2.t
++++ b/t/08func2.t
+@@ -5,7 +5,7 @@
+ print "1..1\n";
+ 
+ $init = "";
+-require "t/init.pl";
++require "./t/init.pl";
+ 
+ $args = "";
+ 
+diff --git a/t/09meth.t b/t/09meth.t
+index 4b5da81..2b86a9c 100644
+--- a/t/09meth.t
++++ b/t/09meth.t
+@@ -5,7 +5,7 @@
+ print "1..1\n";
+ 
+ $init = "";
+-require "t/init.pl";
++require "./t/init.pl";
+ 
+ $args = "";
+ 
+diff --git a/t/10elobj.t b/t/10elobj.t
+index d4eca5c..2c097b9 100644
+--- a/t/10elobj.t
++++ b/t/10elobj.t
+@@ -5,7 +5,7 @@
+ print "1..1\n";
+ 
+ $init = "";
+-require "t/init.pl";
++require "./t/init.pl";
+ 
+ $submitted = "0";
+ 
+-- 
+2.14.3
+

@@ -1,0 +1,106 @@
+commit 078322f33ced4b2db6ac3e5002f98233d6fbf643
+Author: Reino17 <rwijnsma@xs4all.nl>
+Date:   Fri Jun 23 23:49:31 2017 +0200
+
+    Add support for LibOpenJPEG v2.2/git
+    
+    Signed-off-by: Michael Bradshaw <mjbshaw@google.com>
+
+Index: ffmpeg-3.2.7/configure
+===================================================================
+--- ffmpeg-3.2.7.orig/configure
++++ ffmpeg-3.2.7/configure
+@@ -1831,6 +1831,7 @@ HEADERS_LIST="
+     machine_ioctl_meteor_h
+     malloc_h
+     opencv2_core_core_c_h
++    openjpeg_2_2_openjpeg_h
+     openjpeg_2_1_openjpeg_h
+     openjpeg_2_0_openjpeg_h
+     openjpeg_1_5_openjpeg_h
+@@ -5721,7 +5722,9 @@ enabled libopencv         && { check_hea
+                                  require opencv opencv2/core/core_c.h cvCreateImageHeader -lopencv_core -lopencv_imgproc; } ||
+                                require_pkg_config opencv opencv/cxcore.h cvCreateImageHeader; }
+ enabled libopenh264       && require_pkg_config openh264 wels/codec_api.h WelsGetCodecVersion
+-enabled libopenjpeg       && { { check_lib2 openjpeg-2.1/openjpeg.h opj_version -lopenjp2 -DOPJ_STATIC && add_cppflags -DOPJ_STATIC; } ||
++enabled libopenjpeg       && { { check_lib2 openjpeg-2.2/openjpeg.h opj_version -lopenjp2 -DOPJ_STATIC && add_cppflags -DOPJ_STATIC; } ||
++                               check_lib2 openjpeg-2.2/openjpeg.h opj_version -lopenjp2 ||
++                               { check_lib2 openjpeg-2.1/openjpeg.h opj_version -lopenjp2 -DOPJ_STATIC && add_cppflags -DOPJ_STATIC; } ||
+                                check_lib2 openjpeg-2.1/openjpeg.h opj_version -lopenjp2 ||
+                                { check_lib2 openjpeg-2.0/openjpeg.h opj_version -lopenjp2 -DOPJ_STATIC && add_cppflags -DOPJ_STATIC; } ||
+                                { check_lib2 openjpeg-1.5/openjpeg.h opj_version -lopenjpeg -DOPJ_STATIC && add_cppflags -DOPJ_STATIC; } ||
+Index: ffmpeg-3.2.7/libavcodec/libopenjpegdec.c
+===================================================================
+--- ffmpeg-3.2.7.orig/libavcodec/libopenjpegdec.c
++++ ffmpeg-3.2.7/libavcodec/libopenjpegdec.c
+@@ -34,7 +34,9 @@
+ #include "internal.h"
+ #include "thread.h"
+ 
+-#if HAVE_OPENJPEG_2_1_OPENJPEG_H
++#if HAVE_OPENJPEG_2_2_OPENJPEG_H
++#  include <openjpeg-2.2/openjpeg.h>
++#elif HAVE_OPENJPEG_2_1_OPENJPEG_H
+ #  include <openjpeg-2.1/openjpeg.h>
+ #elif HAVE_OPENJPEG_2_0_OPENJPEG_H
+ #  include <openjpeg-2.0/openjpeg.h>
+@@ -44,7 +46,7 @@
+ #  include <openjpeg.h>
+ #endif
+ 
+-#if HAVE_OPENJPEG_2_1_OPENJPEG_H || HAVE_OPENJPEG_2_0_OPENJPEG_H
++#if HAVE_OPENJPEG_2_2_OPENJPEG_H || HAVE_OPENJPEG_2_1_OPENJPEG_H || HAVE_OPENJPEG_2_0_OPENJPEG_H
+ #  define OPENJPEG_MAJOR_VERSION 2
+ #  define OPJ(x) OPJ_##x
+ #else
+@@ -429,7 +431,7 @@ static int libopenjpeg_decode_frame(AVCo
+     opj_stream_set_read_function(stream, stream_read);
+     opj_stream_set_skip_function(stream, stream_skip);
+     opj_stream_set_seek_function(stream, stream_seek);
+-#if HAVE_OPENJPEG_2_1_OPENJPEG_H
++#if HAVE_OPENJPEG_2_2_OPENJPEG_H || HAVE_OPENJPEG_2_1_OPENJPEG_H
+     opj_stream_set_user_data(stream, &reader, NULL);
+ #elif HAVE_OPENJPEG_2_0_OPENJPEG_H
+     opj_stream_set_user_data(stream, &reader);
+Index: ffmpeg-3.2.7/libavcodec/libopenjpegenc.c
+===================================================================
+--- ffmpeg-3.2.7.orig/libavcodec/libopenjpegenc.c
++++ ffmpeg-3.2.7/libavcodec/libopenjpegenc.c
+@@ -32,7 +32,9 @@
+ #include "avcodec.h"
+ #include "internal.h"
+ 
+-#if HAVE_OPENJPEG_2_1_OPENJPEG_H
++#if HAVE_OPENJPEG_2_2_OPENJPEG_H
++#  include <openjpeg-2.2/openjpeg.h>
++#elif HAVE_OPENJPEG_2_1_OPENJPEG_H
+ #  include <openjpeg-2.1/openjpeg.h>
+ #elif HAVE_OPENJPEG_2_0_OPENJPEG_H
+ #  include <openjpeg-2.0/openjpeg.h>
+@@ -42,7 +44,7 @@
+ #  include <openjpeg.h>
+ #endif
+ 
+-#if HAVE_OPENJPEG_2_1_OPENJPEG_H || HAVE_OPENJPEG_2_0_OPENJPEG_H
++#if HAVE_OPENJPEG_2_2_OPENJPEG_H || HAVE_OPENJPEG_2_1_OPENJPEG_H || HAVE_OPENJPEG_2_0_OPENJPEG_H
+ #  define OPENJPEG_MAJOR_VERSION 2
+ #  define OPJ(x) OPJ_##x
+ #else
+@@ -306,7 +308,7 @@ static av_cold int libopenjpeg_encode_in
+ 
+     opj_set_default_encoder_parameters(&ctx->enc_params);
+ 
+-#if HAVE_OPENJPEG_2_1_OPENJPEG_H
++#if HAVE_OPENJPEG_2_2_OPENJPEG_H || HAVE_OPENJPEG_2_1_OPENJPEG_H
+     switch (ctx->cinema_mode) {
+     case OPJ_CINEMA2K_24:
+         ctx->enc_params.rsiz = OPJ_PROFILE_CINEMA_2K;
+@@ -771,7 +773,7 @@ static int libopenjpeg_encode_frame(AVCo
+     opj_stream_set_write_function(stream, stream_write);
+     opj_stream_set_skip_function(stream, stream_skip);
+     opj_stream_set_seek_function(stream, stream_seek);
+-#if HAVE_OPENJPEG_2_1_OPENJPEG_H
++#if HAVE_OPENJPEG_2_2_OPENJPEG_H || HAVE_OPENJPEG_2_1_OPENJPEG_H
+     opj_stream_set_user_data(stream, &writer, NULL);
+ #elif HAVE_OPENJPEG_2_0_OPENJPEG_H
+     opj_stream_set_user_data(stream, &writer);

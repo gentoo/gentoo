@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 CONNTRACKD_BIN="/usr/sbin/conntrackd"
@@ -17,7 +17,7 @@ checkconfig() {
 	for k in net.netfilter.nf_conntrack_max \
 		net.ipv4.netfilter.ip_conntrack_max \
 		net.nf_conntrack_max; do
-		if sysctl -e -n ${k} 2>&1 > /dev/null; then
+		if sysctl ${k} >/dev/null 2>&1; then
 			nf_ct_available=1 # sysctl key found
 			break
 		fi

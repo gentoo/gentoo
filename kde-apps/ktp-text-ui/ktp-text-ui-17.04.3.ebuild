@@ -10,7 +10,7 @@ DESCRIPTION="KDE Telepathy text chat window"
 HOMEPAGE="https://community.kde.org/Real-Time_Communication_and_Collaboration"
 
 LICENSE="Apache-2.0 || ( AFL-2.1 BSD ) GPL-2+ LGPL-2.1+ MIT"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="speech"
 
 DEPEND="
@@ -41,7 +41,7 @@ DEPEND="
 	$(add_qt_dep qtwebengine 'widgets')
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
-	net-libs/telepathy-qt[qt5]
+	net-libs/telepathy-qt[qt5(+)]
 	speech? ( $(add_qt_dep qtspeech) )
 "
 RDEPEND="${DEPEND}

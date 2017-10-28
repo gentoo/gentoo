@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -33,16 +33,14 @@ DEPEND="acl? ( virtual/acl )
 RDEPEND="${DEPEND}"
 PDEPEND="vim-syntax? ( app-vim/cfengine-syntax )"
 
-REQUIRED_USE="qdbm? ( !tokyocabinet )
-	tokyocabinet? ( !qdbm )
-	!tokyocabinet? ( qdbm )
-	!qdbm? ( tokyocabinet )"
+REQUIRED_USE="^^ ( qdbm tokyocabinet )"
 
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	default
 	epatch "${FILESDIR}/${P}-ifconfig.patch"
+	epatch "${FILESDIR}/${P}-sysmacros.patch"
 	eautoreconf
 }
 

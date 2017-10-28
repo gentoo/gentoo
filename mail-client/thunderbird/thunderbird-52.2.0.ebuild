@@ -30,7 +30,7 @@ MOZ_P="${PN}-${MOZ_PV}"
 MOZCONFIG_OPTIONAL_GTK2ONLY=1
 MOZCONFIG_OPTIONAL_WIFI=1
 
-inherit flag-o-matic toolchain-funcs mozconfig-v6.52 makeedit autotools pax-utils check-reqs nsplugins mozlinguas-v2 fdo-mime gnome2-utils
+inherit flag-o-matic toolchain-funcs mozconfig-v6.52 makeedit autotools pax-utils check-reqs nsplugins mozlinguas-v2 xdg-utils gnome2-utils
 
 DESCRIPTION="Thunderbird Mail Client"
 HOMEPAGE="http://www.mozilla.com/en-US/thunderbird/"
@@ -339,7 +339,7 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 	gnome2_icon_cache_update
 
 	elog
@@ -357,6 +357,6 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 	gnome2_icon_cache_update
 }

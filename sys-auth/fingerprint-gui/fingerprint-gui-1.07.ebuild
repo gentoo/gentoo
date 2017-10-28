@@ -17,7 +17,7 @@ IUSE="+upekbsapi"
 
 DEPEND="app-crypt/qca:2[qt4(+),ssl]
 	sys-auth/libfprint
-	sys-auth/polkit-qt[qt4(+)]
+	sys-auth/polkit-qt[qt4]
 	sys-libs/pam
 	x11-libs/libfakekey
 	dev-qt/qtcore:4

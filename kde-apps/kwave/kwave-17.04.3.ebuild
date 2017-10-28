@@ -13,7 +13,7 @@ LICENSE="
 	handbook? ( FDL-1.2 )
 	opus? ( BSD-2 )
 "
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="alsa flac mp3 opus oss pulseaudio +qtmedia vorbis"
 
 RDEPEND="
@@ -56,7 +56,10 @@ DEPEND="${RDEPEND}
 	$(add_kdeapps_dep poxml)
 	$(add_qt_dep qtconcurrent)
 	sys-devel/gettext
-	virtual/imagemagick-tools[png,svg]
+	handbook? ( || (
+		gnome-base/librsvg
+		virtual/imagemagick-tools[png,svg]
+	) )
 "
 
 DOCS=( AUTHORS CHANGES LICENSES README TODO )

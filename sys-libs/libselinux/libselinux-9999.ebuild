@@ -3,14 +3,14 @@
 
 EAPI="6"
 PYTHON_COMPAT=( python2_7 python3_4 python3_5 python3_6 )
-USE_RUBY="ruby21 ruby22 ruby23"
+USE_RUBY="ruby22 ruby23"
 
 # No, I am not calling ruby-ng
 inherit multilib python-r1 toolchain-funcs multilib-minimal
 
 MY_P="${P//_/-}"
 SEPOL_VER="${PV}"
-MY_RELEASEDATE="20170718"
+MY_RELEASEDATE="20170804"
 
 DESCRIPTION="SELinux userland library"
 HOMEPAGE="https://github.com/SELinuxProject/selinux/wiki"
@@ -35,7 +35,6 @@ RDEPEND=">=sys-libs/libsepol-${SEPOL_VER}:=[${MULTILIB_USEDEP}]
 	pcre2? ( dev-libs/libpcre2:=[static-libs?,${MULTILIB_USEDEP}] )
 	python? ( ${PYTHON_DEPS} )
 	ruby? (
-		ruby_targets_ruby21? ( dev-lang/ruby:2.1 )
 		ruby_targets_ruby22? ( dev-lang/ruby:2.2 )
 		ruby_targets_ruby23? ( dev-lang/ruby:2.3 )
 	)"

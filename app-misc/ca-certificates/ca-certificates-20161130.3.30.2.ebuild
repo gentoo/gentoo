@@ -58,7 +58,7 @@ fi
 
 LICENSE="MPL-1.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
 IUSE="insecure_certs"
 ${PRECOMPILED} || IUSE+=" cacert"
 
@@ -138,9 +138,15 @@ src_compile() {
 	fi
 
 	if ! use insecure_certs ; then
+		elog "To prevent applications relying on system's trusted root certificate store"
+		elog "from using CAs where at least one major browser vendor Gentoo is following"
+		elog "has decided to apply trust level restrictions, the following"
+		elog "certificate(s) were removed:"
 		# Remove untrusted certs from StartCom and WoSign (bug #598072)
-		rm "${c}"/mozilla/StartCom* || die
-		rm "${c}"/mozilla/WoSign* || die
+		elog "$(find "${c}" -type f \( \
+			-iname '*startcom*' \
+			-o -iname '*wosign*' \
+			\) -printf '%P removed; see https://bugs.gentoo.org/598072 for details\n' -delete)"
 	fi
 
 	(

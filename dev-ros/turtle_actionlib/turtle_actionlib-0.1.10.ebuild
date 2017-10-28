@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -23,5 +23,6 @@ RDEPEND="
 	dev-ros/rosconsole
 	dev-ros/roscpp
 	dev-ros/turtlesim
+	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}"

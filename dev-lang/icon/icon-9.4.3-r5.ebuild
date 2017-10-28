@@ -75,10 +75,10 @@ src_install() {
 	dodir /usr/$(get_libdir)
 
 	make Install dest="${D}/usr/$(get_libdir)/icon" || die "Make install failed"
-	dosym /usr/$(get_libdir)/icon/bin/icont /usr/bin/icont
-	dosym /usr/$(get_libdir)/icon/bin/iconx /usr/bin/iconx
-	dosym /usr/$(get_libdir)/icon/bin/icon  /usr/bin/icon
-	dosym /usr/$(get_libdir)/icon/bin/vib   /usr/bin/vib
+	dosym ../$(get_libdir)/icon/bin/icont /usr/bin/icont
+	dosym ../$(get_libdir)/icon/bin/iconx /usr/bin/iconx
+	dosym ../$(get_libdir)/icon/bin/icon  /usr/bin/icon
+	dosym ../$(get_libdir)/icon/bin/vib   /usr/bin/vib
 
 	cd "${S}/man/man1"
 	doman icont.1
