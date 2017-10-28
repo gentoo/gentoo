@@ -73,6 +73,9 @@ src_prepare() {
 		|| die "Failed to update info file name in file contents"
 
 	mv doc/ledger{3,}.texi || die "Failed to rename info file name"
+
+	# https://bugs.gentoo.org/show_bug.cgi?id=609108
+	epatch "${FILESDIR}/${P}-boost.patch"
 }
 
 src_configure() {
