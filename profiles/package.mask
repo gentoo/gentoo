@@ -298,27 +298,6 @@ app-office/qcharselect
 # Masked for removal in 30 days. Bug #624244.
 sci-chemistry/mongochem
 
-# Michael Palimaka <kensington@gentoo.org> (26 Sep 2017)
-# Requires dead Qt 4. Dead upstream.
-# Masked for removal in 30 days.
-kde-misc/konstruktor
-
-# Michael Palimaka <kensington@gentoo.org> (26 Sep 2017)
-# Requires dead Qt 4. Dead upstream.
-# Masked for removal in 30 days.
-kde-misc/kookie
-
-# Andreas Sturmlechner <asturm@gentoo.org> (26 Sep 2017)
-# Requires dead Qt 4. Dead upstream. Use media-sound/cantata
-# instead, which originally started as a QtMPC fork but is
-# much more advanced. Masked for removal in 30 days.
-media-sound/qtmpc
-
-# Michael Palimaka <kensington@gentoo.org> (21 Sep 2017)
-# Requires dead Qt 4. Dead upstream.
-# Masked for removal in 30 days.
-media-libs/herqq
-
 # Andrey Grozin <grozin@gentoo.org> (19 Sep 2017)
 # This package was a stopgap to bump dev-python/spyder to 3.*
 # Now >=dev-python/rope-0.10.7 supports python3, use it instead
