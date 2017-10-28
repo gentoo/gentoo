@@ -16,7 +16,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 IUSE="doc nls static-libs test"
 
 RDEPEND="
-	|| ( net-libs/libnsl <sys-libs/glibc-2.26 )
+	net-libs/libnsl:0=
 "
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
