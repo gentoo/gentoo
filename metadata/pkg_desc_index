@@ -1128,7 +1128,7 @@ app-emacs/doctest-mode 0.4: An Emacs major mode for editing Python source
 app-emacs/doxymacs 1.8.0-r3: Doxygen editing minor mode
 app-emacs/dropdown-list 20120329: Drop-down menu interface
 app-emacs/dts-mode 0.1.0_pre20141014: Emacs major mode for devicetree sources
-app-emacs/ebuild-mode 1.37 1.38 1.39: Emacs modes for editing ebuilds and other Gentoo specific files
+app-emacs/ebuild-mode 1.37 1.38 1.40: Emacs modes for editing ebuilds and other Gentoo specific files
 app-emacs/ecb 2.41_pre20140215-r1: Source code browser for Emacs
 app-emacs/edb 1.31 1.32: EDB, The Emacs Database
 app-emacs/edit-list 0.3: Edit a single list
@@ -19092,6 +19092,7 @@ x11-misc/xsensors 0.70-r1: A hardware health information viewer, interface to lm
 x11-misc/xsetleds 0.1.3-r1 0.1.3-r2: small tool to report and change the keyboard LED states of an X display
 x11-misc/xsnap 1.5.15-r1: Program to interactively take a 'snapshot' of a region of the screen
 x11-misc/xsnow 1.42-r2: let it snow on your desktop and windows
+x11-misc/xsr 1.0.0: X Steps Recorder
 x11-misc/xsri 2.1.0-r3: The xsri wallpaper setter from RedHat
 x11-misc/xss-lock 0.3.0_p20140302-r1: Use external locker as X screen saver
 x11-misc/xssstate 1.1: A simple tool to retrieve the X screensaver state
