@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrice Clement <monsieurp@gentoo.org> (28 Oct 2017)
+# Missing dependencies.
+>=dev-python/scrapy-1.4.0
+
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (23 Oct 2017)
 # Dropping suid breaks some use cases, bug #635102
 # Mask until they are fixed or properly documented, bug #450364
