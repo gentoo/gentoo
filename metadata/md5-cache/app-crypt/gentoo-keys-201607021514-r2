@@ -1,9 +1,9 @@
 DEFINED_PHASES=install
-DESCRIPTION=A Openpgp/gpg keyring of official Gentoo release media gpg keys
+DESCRIPTION=A OpenPGP/GPG keyring of official Gentoo release media GPG keys
 EAPI=6
 HOMEPAGE=https://wiki.gentoo.org/wiki/Project:Gentoo-keys
 KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc64 ~ppc ~sparc ~x86 ~arm64 ~x86-fbsd ~amd64-fbsd ~m68k ~mips ~s390 ~sh
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~dolsen/releases/keyrings/gentoo-keys-201607021514.tar.xz
-_md5_=0ac779f8a22a5d645841258f9e91736a
+_md5_=70213fded3c6d3bcf7b9b72a1c528b13

@@ -530,7 +530,7 @@ app-crypt/envchain 1.0.0: Save environment variables in a secret vault
 app-crypt/etcd-ca 0_p20140903 0_p20150423 0_p20150423-r1: A simple certificate manager written in Go. Easy to use with limited capability
 app-crypt/fcrackzip 1.0: a zip password cracker
 app-crypt/gcr 3.20.0: Libraries for cryptographic UIs and accessing PKCS#11 modules
-app-crypt/gentoo-keys 201607021514 201607021514-r1: A Openpgp/gpg keyring of official Gentoo release media gpg keys
+app-crypt/gentoo-keys 201607021514 201607021514-r2: A OpenPGP/GPG keyring of official Gentoo release media GPG keys
 app-crypt/gifshuffle 2.0-r1: GIF colourmap steganography
 app-crypt/gkeys 0.2 9999: An OpenPGP/GPG key management tool and python libs
 app-crypt/gkeys-gen 0.2 9999: Tool for generating OpenPGP/GPG keys using a specifications file
@@ -12203,8 +12203,6 @@ kde-misc/kio-locate 0.5.3-r1: Locate KIO slave
 kde-misc/kio-stash 1.0: KIO Slave and daemon to stash discontinuous file selections
 kde-misc/kmarkdownwebview 0.2.0: KPart for rendering Markdown content
 kde-misc/kolor-manager 1.1.0: KControl module for Oyranos CMS cross desktop settings
-kde-misc/konstruktor 0.9_beta1: LEGO CAD
-kde-misc/kookie 0.1.1: Manage recipes and shopping lists
 kde-misc/kopete-antispam 0.5: Antispam filter for Kopete instant messenger
 kde-misc/kopete-thinklight 0.50: A ThinkPad's light flash on every incoming message
 kde-misc/kover 6: An easy to use WYSIWYG CD cover printer with CDDB support
@@ -12997,7 +12995,6 @@ media-libs/guilib 1.2.1: a simple widget set for SDL
 media-libs/gupnp-dlna 0.10.4 0.10.5: Library providing DLNA-related functionality for MediaServers
 media-libs/hamlib 3.1: Ham radio backend rig control libraries
 media-libs/harfbuzz 1.4.5 1.4.6-r2 1.4.8 1.5.1 1.6.0 1.6.2 9999: An OpenType text shaping engine
-media-libs/herqq 1.0.0-r2: A software library for building UPnP devices
 media-libs/hupnp-ng 9999: A software library for building UPnP devices, fork of herqq
 media-libs/icc-profiles-basiccolor-printing2009 1.2.0: ICC profiles for printing/offset
 media-libs/icc-profiles-openicc 1.3.0 1.3.1: ICC color profiles by OpenICC
@@ -13938,7 +13935,6 @@ media-sound/qsynth 0.3.9 0.4.2-r1 0.4.3 0.4.4: A Qt application to control Fluid
 media-sound/qtagconvert 2.0.0-r2: Qt4 tag editor for mp3 files
 media-sound/qtagger 1.0.1-r2: Simple Qt4 ID3v2 tag editor
 media-sound/qtgain 1.0.0: A simple frontend to mp3gain, vorbisgain and metaflac
-media-sound/qtmpc 0.6.1: Qt MPD client with a tree view music library interface
 media-sound/qtractor 0.8.4: Audio/MIDI multi-track sequencer written in C++ with the Qt framework
 media-sound/qtscrobbler 0.10: Updates a last.fm profile using information from a supported portable music player
 media-sound/quark 3.24: Quark is the Anti-GUI Music Player with a cool Docklet!
@@ -16353,7 +16349,7 @@ sci-geosciences/opencpn-plugin-wmm 1.0-r1: World Magnetic Model Plugin for OpenC
 sci-geosciences/opencpn-plugins-meta 4.0.0 4.2.0-r1: Meta ebuild to pull in opencpn plugins
 sci-geosciences/osm-gps-map 1.1.0: A GTK+ widget for displaying OpenStreetMap tiles
 sci-geosciences/osm2pgsql 0.94.0 99999999: Converts OSM planet.osm data to a PostgreSQL/PostGIS database
-sci-geosciences/qgis 2.18.12 2.18.12-r100: User friendly Geographic Information System
+sci-geosciences/qgis 2.18.12 2.18.12-r100 2.18.14: User friendly Geographic Information System
 sci-geosciences/qmapshack 1.6.3 1.7.1 1.8.0-r1 1.9.0: GPS mapping utility
 sci-geosciences/readosm 1.0.0e-r1: Library to extract valid data from an Open Street Map input file
 sci-geosciences/routino 3.1.1 3.2: Routing application based on openstreetmap data
