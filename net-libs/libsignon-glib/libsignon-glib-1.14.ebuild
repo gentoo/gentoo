@@ -8,11 +8,11 @@ inherit autotools python-r1 vcs-snapshot xdg-utils
 
 DESCRIPTION="GLib binding for the D-Bus API provided by signond"
 HOMEPAGE="https://01.org/gsso/"
-SRC_URI="https://gitlab.com/accounts-sso/libsignon-glib/repository/archive.tar.gz?ref=VERSION_1.13 -> ${P}.tar.gz"
+SRC_URI="https://gitlab.com/accounts-sso/libsignon-glib/repository/archive.tar.gz?ref=VERSION_${PV} -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="LGPL-2.1"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="debug doc +introspection python test"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} introspection )"
@@ -31,10 +31,12 @@ DEPEND="${RDEPEND}
 	doc? ( dev-util/gtk-doc )
 "
 
-DOCS=( AUTHORS NEWS README )
+DOCS=( AUTHORS NEWS README.md )
 
 # needs more love
 RESTRICT="test"
+
+PATCHES=( "${FILESDIR}/${P}-default-opts.patch" )
 
 src_prepare() {
 	default
