@@ -36,7 +36,7 @@ RDEPEND="
 		sys-fs/e2fsprogs:0=
 		sys-libs/e2fsprogs-libs:0=
 		reiserfs? (
-			sys-fs/reiserfsprogs
+			>=sys-fs/reiserfsprogs-3.6.27
 		)
 	)
 "
@@ -53,7 +53,7 @@ DEPEND="${RDEPEND}
 			sys-fs/e2fsprogs:0[static-libs(+)]
 			sys-libs/e2fsprogs-libs:0[static-libs(+)]
 			reiserfs? (
-				sys-fs/reiserfsprogs[static-libs(+)]
+				>=sys-fs/reiserfsprogs-3.6.27[static-libs(+)]
 			)
 		)
 	)
