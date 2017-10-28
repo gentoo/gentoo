@@ -8718,7 +8718,7 @@ dev-python/scimath 4.1.2-r1: Enthought Tool Suite: Scientific and mathematical t
 dev-python/sclapp 0.5.3-r1: Framework for writing simple command-line applications
 dev-python/scoop 0.7.0-r1: Distributed Evolutionary Algorithms in Python
 dev-python/scp 0.10.2: scp module for paramiko
-dev-python/scrapy 1.0.3: A high-level Python Screen Scraping framework
+dev-python/scrapy 1.0.3 1.4.0: A high-level Python Screen Scraping framework
 dev-python/scripttest 1.2-r1 1.3.0: A very small text templating language
 dev-python/scrypt 0.8.0: Bindings for the scrypt key derivation function library
 dev-python/sdnotify 0.3.1 0.3.2: Python implementation of systemd's service notification protocol (sd_notify)
