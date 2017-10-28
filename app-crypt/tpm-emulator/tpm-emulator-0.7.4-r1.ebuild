@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+MODULES_OPTIONAL_USE="modules"
 inherit user linux-mod cmake-utils udev
 
 MY_P=${P/-/_}
@@ -13,7 +14,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="libressl ssl modules"
+IUSE="libressl ssl"
 RDEPEND="ssl? (
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
