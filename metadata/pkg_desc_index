@@ -15282,7 +15282,7 @@ net-misc/iprange 1.0.3 1.0.4: iprange utility
 net-misc/ipsc 0.4.3.2-r2: IP Subnet Calculator
 net-misc/ipsorcery 2.0.9-r1 2.0.9-r2: Ipsorcery allows you to generate IP, TCP, UDP, ICMP, and IGMP packets
 net-misc/ipsvd 1.0.0-r1: ipsvd is a set of internet protocol service daemons for Unix
-net-misc/iputils 20121221-r1 20121221-r2 20151218 20160308 20161105 99999999: Network monitoring tools including ping and ping6
+net-misc/iputils 20121221-r1 20121221-r2 20151218 20160308 20161105 20171016_pre 99999999: Network monitoring tools including ping and ping6
 net-misc/ipv6calc 0.97.4 0.99.2 1.0.0: IPv6 address calculator
 net-misc/ipx-utils 1.1-r4: The IPX Utilities
 net-misc/java-wakeonlan 1.0.0-r2: A wakeonlan commandline tool and Java library
@@ -19543,7 +19543,7 @@ x11-wm/sawfish 1.9.1-r2 1.11.90: Extensible window manager using a Lisp-based sc
 x11-wm/selectwm 0.4.1: window manager selector tool
 x11-wm/sithwm 1.2.3: Minimalist Window Manager for X
 x11-wm/spectrwm 2.7.2-r1 3.0.1 3.0.2: Small dynamic tiling window manager for X11
-x11-wm/stumpwm 1.0.0: Stumpwm is a Window Manager written entirely in Common Lisp.
+x11-wm/stumpwm 1.0.0 1.0.1_rc: Stumpwm is a Window Manager written entirely in Common Lisp.
 x11-wm/stumpwm-contrib 20170921 99999999: Extension Modules for StumpWM
 x11-wm/subtle 0.11.3244 9999: A manual tiling window manager
 x11-wm/treewm 0.4.5 0.4.5-r1: WindowManager that arranges the windows in a tree (not in a list)
