@@ -1,0 +1,167 @@
+Bug: https://bugs.gentoo.org/597162
+Commits: https://github.com/mean00/avidemux2/commit/ad2ff647f25c87c6ac2eb0ebcbf1b128c2da6b31
+         https://github.com/mean00/avidemux2/commit/0e24a2d1a5db68db1d52d4d4a4b3f621451364b3
+
+--- a/avidemux/common/ADM_videoCodec/include/ADM_ffmpeg_libva_internal.h
++++ b/avidemux/common/ADM_videoCodec/include/ADM_ffmpeg_libva_internal.h
+@@ -13,43 +13,22 @@
+  *   (at your option) any later version.                                   *
+  *                                                                         *
+  ***************************************************************************/
+-#ifndef ADM_ffmpeg_libva_internal_H
+-#define ADM_ffmpeg_libva_internal_H
++#pragma once
+ #include <vector>
+ 
+ 
+ #define NB_SURFACE 25
+-typedef struct 
+-{
+-        //VdpDecoder            vdpDecoder;
+-        //vdpau_render_state *renders[NB_SURFACE];
+-        //std::vector <vdpau_render_state *>freeQueue;
+ 
+-}xvbaContext;
++#define WRAP_Open_TemplateLibVAByName(argz,codecid) \
++    WRAP_Open_Template(avcodec_find_decoder_by_name,argz,,codecid,{\
++            _context->opaque          = this; \
++            _context->thread_count    = 1; \
++            _context->get_buffer      = ADM_LIBVAgetBuffer; \
++            _context->release_buffer  = ADM_LIBVAreleaseBuffer ;    \
++            _context->draw_horiz_band = NULL; \
++            _context->get_format      = ADM_LIBVA_getFormat; \
++            _context->slice_flags     = SLICE_FLAG_CODED_ORDER|SLICE_FLAG_ALLOW_FIELD; \
++            _context->pix_fmt         = AV_PIX_FMT_VAAPI_VLD; \
++            _context->hwaccel_context = va_context;})
+ 
+-#define XVBAX ((xvbaContext *)xvba)
+ 
+-
+-#define WRAP_Open_Template(funcz,argz,display,codecid) \
+-{\
+-AVCodec *codec=funcz(argz);\
+-if(!codec) {GUI_Error_HIG("Codec",QT_TR_NOOP("Internal error finding codec :"display));ADM_assert(0);} \
+-  codecId=codecid; \
+-  _context->workaround_bugs=1*FF_BUG_AUTODETECT +0*FF_BUG_NO_PADDING; \
+-  _context->error_concealment=3; \
+-  if (avcodec_open2(_context, codec,NULL) < 0)  \
+-                      { \
+-                                        printf("[lavc] Decoder init: "display" video decoder failed!\n"); \
+-                                        GUI_Error_HIG("Codec","Internal error opening "display); \
+-                                        ADM_assert(0); \
+-                                } \
+-                                else \
+-                                { \
+-                                        printf("[lavc] Decoder init: "display" video decoder initialized! (%s)\n",codec->long_name); \
+-                                } \
+-}
+-
+-#define WRAP_Open(x)            {WRAP_Open_Template(avcodec_find_decoder,x,#x,x);}
+-#define WRAP_OpenByName(x,y)    {WRAP_Open_Template(avcodec_find_decoder_by_name,#x,#x,y);}
+-
+-#endif
+\ No newline at end of file
+--- a/avidemux/common/ADM_videoCodec/src/ADM_ffmpeg_libva.cpp
++++ b/avidemux/common/ADM_videoCodec/src/ADM_ffmpeg_libva.cpp
+@@ -190,6 +190,7 @@
+         uint8_t *extraData,uint32_t bpp)
+ :decoderFF (w,h,fcc,extraDataLen,extraData,bpp)
+ {
++    
+     VASurfaceID sid[ADM_MAX_SURFACE+1];
+     
+     alive=false;
+@@ -232,15 +233,7 @@
+     }
+     va_context->context_id=libva;
+     
+-    _context->opaque          = this;
+-    _context->thread_count    = 1;
+-    _context->get_buffer      = ADM_LIBVAgetBuffer;
+-    _context->release_buffer  = ADM_LIBVAreleaseBuffer ;   
+-    _context->draw_horiz_band = NULL;
+-    _context->get_format      = ADM_LIBVA_getFormat;
+-    _context->slice_flags     = SLICE_FLAG_CODED_ORDER|SLICE_FLAG_ALLOW_FIELD;
+-    _context->pix_fmt         = AV_PIX_FMT_VAAPI_VLD;
+-    _context->hwaccel_context = va_context;
++  WRAP_Open_TemplateLibVAByName("h264_vaapi",CODEC_ID_H264);
+     nbSurface=0;
+     
+     
+@@ -250,11 +243,6 @@
+             _context->extradata_size  = (int) extraDataLen;
+     } 
+     
+-     WRAP_Open(CODEC_ID_H264);
+-    //
+-
+-     
+-     
+    
+       b_age = ip_age[0] = ip_age[1] = 256*256*256*64;
+      alive=true;
+--- a/avidemux_core/ADM_coreVideoCodec/ADM_hwAccel/ADM_coreLibVA/src/ADM_coreLibVA.cpp
++++ b/avidemux_core/ADM_coreVideoCodec/ADM_hwAccel/ADM_coreLibVA/src/ADM_coreLibVA.cpp
+@@ -545,7 +545,7 @@
+        
+        aprintf("Creating surface %d x %d\n",w,h);
+        VASurfaceID s;
+-        CHECK_ERROR(vaCreateSurfaces(ADM_coreLibVA::display,w,h,VA_RT_FORMAT_YUV420,1,&s));
++        CHECK_ERROR(vaCreateSurfaces(ADM_coreLibVA::display,VA_RT_FORMAT_YUV420,w,h,&s,1,NULL,0));
+         if(!xError)
+         {
+             return s;
+--- a/avidemux_core/ADM_coreVideoCodec/ADM_hwAccel/ADM_coreLibVA/src/ADM_coreLibVA_encoder.cpp
++++ b/avidemux_core/ADM_coreVideoCodec/ADM_hwAccel/ADM_coreLibVA/src/ADM_coreLibVA_encoder.cpp
+@@ -116,7 +116,7 @@
+ {
+         int xError;
+         CHECK_WORKING(false);
+-
++#if 0
+         
+         VAEncSequenceParameterBufferH264 seq_h264 = {0};
+         VABufferID seq_param_buf;
+@@ -138,7 +138,8 @@
+             CHECK_ERROR (vaRenderPicture(ADM_coreLibVA::display, contextId, &seq_param_buf, 1));
+             if(xError) return false;
+             return true;
+-
++#endif
++            return false;
+ 
+ }
+ /**
+@@ -151,6 +152,7 @@
+ bool        ADM_vaEncodingContext::encode(ADM_vaSurface *src, ADMBitstream *out,ADM_vaEncodingBuffer *encodingBuffer)
+ {
+         int xError;
++#if 0
+         CHECK_WORKING(false);
+ 
+         CHECK_ERROR(vaBeginPicture(ADM_coreLibVA::display, contextId, src->surface));
+@@ -218,6 +220,8 @@
+         out->pts=ADM_NO_PTS;
+         out->flags=AVI_KEY_FRAME;
+         return true;   
++#endif
++        return false;
+ }
+ 
+ 
+--- a/cmake_compile_check/libva.cpp
++++ b/cmake_compile_check/libva.cpp
+@@ -7,7 +7,11 @@
+         unsigned int       num_attribs;
+         VADisplay dpy;
+         int w,h,format,num_surface;
+-        VASurfaceID id;
+-        vaCreateSurfaces(dpy,w,h,format,1,&id);
++        VASurfaceID surface;
++        VASurfaceAttrib attr;
++        vaCreateSurfaces(dpy,format,
++                                w,h,
++                                &surface, 1,
++                                &attr,1);
+         return 0;
+ }
