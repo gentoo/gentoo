@@ -11,13 +11,15 @@ EAPI="6"
 
 inherit flag-o-matic toolchain-funcs fcaps
 
+MY_COMMIT="67e7d0daf1f231cc708217e6aec2f8d5ce7aeacf"
+
 PATCHES=( "${FILESDIR}"/${PN}-99999999-tracepath46.patch )
 
 if [[ ${PV} == "99999999" ]] ; then
 	EGIT_REPO_URI="https://github.com/iputils/iputils.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/iputils/iputils/archive/s${PV}.tar.gz -> ${P}.tar.gz
+	SRC_URI="https://github.com/iputils/iputils/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz
 		https://dev.gentoo.org/~whissi/dist/iputils/${PN}-manpages-${PV}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-linux ~x86-linux"
 fi
@@ -58,6 +60,8 @@ fi
 REQUIRED_USE="ipv6? ( ssl? ( ^^ ( gcrypt nettle openssl ) ) )"
 
 [ "${PV}" = "99999999" ] || S="${WORKDIR}/${PN}-s${PV}"
+
+S="${WORKDIR}/${PN}-${MY_COMMIT}"
 
 src_prepare() {
 	use SECURITY_HAZARD && PATCHES+=( "${FILESDIR}"/${PN}-20150815-nonroot-floodping.patch )
