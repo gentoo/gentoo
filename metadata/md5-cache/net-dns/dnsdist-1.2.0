@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst preinst prepare
+DEPEND=>=dev-libs/boost-1.35:= dev-libs/libedit:= luajit? ( dev-lang/luajit:= ) !luajit? ( >=dev-lang/lua-5.1:= ) remote-logging? ( dev-libs/protobuf:= ) regex? ( dev-libs/re2:= ) snmp? ( net-analyzer/net-snmp:= ) ssl? ( dev-libs/libsodium:= )
+DESCRIPTION=A highly DNS-, DoS- and abuse-aware loadbalancer
+EAPI=6
+HOMEPAGE=http://dnsdist.org
+IUSE=dnscrypt luajit regex remote-logging snmp +ssl test
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/boost-1.35:= dev-libs/libedit:= luajit? ( dev-lang/luajit:= ) !luajit? ( >=dev-lang/lua-5.1:= ) remote-logging? ( dev-libs/protobuf:= ) regex? ( dev-libs/re2:= ) snmp? ( net-analyzer/net-snmp:= ) ssl? ( dev-libs/libsodium:= )
+REQUIRED_USE=dnscrypt? ( ssl )
+SLOT=0
+SRC_URI=https://downloads.powerdns.com/releases/dnsdist-1.2.0.tar.bz2
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=f2ad8c20aeab343f0eb3199ab71322ae
