@@ -1300,7 +1300,7 @@ app-emulation/docker-proxy 0.8.0_p20161111 0.8.0_p20170917 9999: Docker containe
 app-emulation/docker-registry 2.6.2-r1: Docker Registry 2.0
 app-emulation/docker-runc 1.0.0_rc2_p20170308 1.0.0_rc3_p20170706 1.0.0_rc4_p20170917: runc container cli tools (docker fork)
 app-emulation/docker-swarm 1.2.0 1.2.5: A Docker-native clustering system
-app-emulation/dosemu 1.4.1_pre20130107-r3 1.4.1_pre20130107-r4: DOS Emulator
+app-emulation/dosemu 1.4.1_pre20130107-r4: DOS Emulator
 app-emulation/dynamips 0.2.12 0.2.14-r1: Cisco 7200/3600 Simulator
 app-emulation/e-uae 0.8.29_rc4-r2 0.8.29_rc4-r3: The Ubiquitous Amiga Emulator with an emulation core largely based on WinUAE
 app-emulation/edumips64 1.1 1.2: A visual and cross-platform MIPS64 CPU Simulator
@@ -4975,7 +4975,7 @@ dev-libs/libxdg-basedir 1.2.0-r1: Small library to access XDG Base Directories S
 dev-libs/libxdiff 0.23-r1 0.23-r2: Library for creating diff files
 dev-libs/libxls 1.4.0-r1: A library which can read Excel (xls) files
 dev-libs/libxml2 2.9.4-r1 2.9.4-r2 2.9.4-r3 2.9.5 2.9.6: Version 2 of the library to manipulate XML files
-dev-libs/libxslt 1.1.29-r1 1.1.30 1.1.30-r1: XSLT libraries and tools
+dev-libs/libxslt 1.1.29-r1 1.1.30 1.1.30-r1 1.1.30-r2: XSLT libraries and tools
 dev-libs/libyaml 0.1.7: YAML 1.1 parser and emitter written in C
 dev-libs/libzeitgeist 0.3.18: Client library to interact with zeitgeist
 dev-libs/libzia 4.11: platform abstraction code for tucnak package
@@ -13192,7 +13192,7 @@ media-libs/mediastreamer 2.7.3-r3 2.8.2 2.9.0 2.9.0-r1: Mediastreaming library f
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
 media-libs/mesa 13.0.5 13.0.6 17.0.6 17.1.8 17.1.9 17.1.10 17.2.0 17.2.1 17.2.2 17.2.3 9999: OpenGL-like graphic library for Linux
 media-libs/ming 0.4.7 0.4.8-r1: An Open Source library for Flash movie generation
-media-libs/mlt 6.4.1-r2 6.4.1-r3: Open source multimedia framework for television broadcasting
+media-libs/mlt 6.4.1-r2 6.4.1-r3 6.4.1-r4: Open source multimedia framework for television broadcasting
 media-libs/musicbrainz 3.0.3 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
 media-libs/mutagen 1.35.1 1.37 1.38: Audio metadata tag reader and writer implemented in pure Python
 media-libs/nas 1.9.4 1.9.4-r1 1.9.4-r2: Network Audio System
