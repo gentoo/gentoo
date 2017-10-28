@@ -1,0 +1,40 @@
+From 2125e3955a0d0be61571cf43b674f74b4b93c6f8 Mon Sep 17 00:00:00 2001
+From: Dan Dennedy <dan@dennedy.org>
+Date: Sat, 26 Aug 2017 18:31:47 -0700
+Subject: [PATCH] Fix #248 xlocale.h was removed in glibc 2.26.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Reported by schnitzeltony on Andreas Müller.
+Patch by Dave Plater.
+---
+ src/framework/mlt_property.h | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/src/framework/mlt_property.h b/src/framework/mlt_property.h
+index 404d513f..043f530b 100644
+--- a/src/framework/mlt_property.h
++++ b/src/framework/mlt_property.h
+@@ -3,7 +3,7 @@
+  * \brief Property class declaration
+  * \see mlt_property_s
+  *
+- * Copyright (C) 2003-2014 Meltytech, LLC
++ * Copyright (C) 2003-2017 Meltytech, LLC
+  *
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+@@ -31,7 +31,11 @@
+ #endif
+ 
+ #if defined(__GLIBC__) || defined(__APPLE__) || (__FreeBSD_version >= 900506)
+-#include <xlocale.h>
++#  if GLIBC_MINOR >= 26 && !defined(APPLE)
++#    include <locale.h>
++#  else
++#    include <xlocale.h>
++#  endif
+ #else
+ typedef char* locale_t;
+ #endif
