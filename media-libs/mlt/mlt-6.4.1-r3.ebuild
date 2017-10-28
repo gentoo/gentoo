@@ -86,6 +86,7 @@ RDEPEND="${COMMON_DEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.2.0-ruby-link.patch
 	"${FILESDIR}"/${P}-libebur128-unbundle.patch
+	"${FILESDIR}"/${P}-opencv-3.3.patch
 )
 
 pkg_setup() {
