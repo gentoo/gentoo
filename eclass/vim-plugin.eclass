@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: vim-plugin.eclass
@@ -11,7 +11,7 @@
 # which is read automatically by vim.  The only exception is
 # documentation, for which we make a special case via vim-doc.eclass.
 
-inherit vim-doc
+inherit estack vim-doc
 EXPORT_FUNCTIONS src_install pkg_postinst pkg_postrm
 
 VIM_PLUGIN_VIM_VERSION="${VIM_PLUGIN_VIM_VERSION:-7.3}"
@@ -48,10 +48,23 @@ vim-plugin_src_install() {
 		eend $?
 	fi
 
-	# Remove unwanted files that may exist
-	ebegin "Clean up unwanted files"
-	rm -f .[^.] .??* Makefile* || die "unwanted files cleanup failed"
+	# When globbing, if nothing exists, the shell literally returns the glob
+	# pattern. So turn on nullglob and extglob options to avoid this.
+	eshopts_push -s extglob
+	eshopts_push -s nullglob
+
+	ebegin "Cleaning up unwanted files and directories"
+	# We're looking for dotfiles, dotdirectories and Makefiles here.
+	local obj
+	eval "local matches=(@(.[^.]|.??*|Makefile*))"
+	for obj in "${matches[@]}"; do
+		rm -rv "${obj}" || die "cannot remove ${obj}"
+	done
 	eend $?
+
+	# Turn those options back off.
+	eshopts_pop
+	eshopts_pop
 
 	# Install non-vim-help-docs
 	cd "${S}" || die "couldn't cd in ${S}"
