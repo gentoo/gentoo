@@ -24,7 +24,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="dnscrypt luajit regex remote-logging +ssl test"
+IUSE="dnscrypt luajit regex remote-logging snmp +ssl test"
 REQUIRED_USE="dnscrypt? ( ssl )"
 
 DEPEND="
@@ -34,6 +34,7 @@ DEPEND="
 	!luajit? ( >=dev-lang/lua-5.1:= )
 	remote-logging? ( dev-libs/protobuf:= )
 	regex? ( dev-libs/re2:= )
+	snmp? ( net-analyzer/net-snmp:= )
 	ssl? ( dev-libs/libsodium:= )
 "
 
@@ -57,7 +58,8 @@ src_configure() {
 		$(use_enable regex re2) \
 		$(use_enable dnscrypt) \
 		$(use_with luajit) \
-		$(use_enable test unit-tests)
+		$(use_enable test unit-tests) \
+		$(use_with snmp net-snmp)
 }
 
 src_install() {
