@@ -1,0 +1,78 @@
+From 903ed372cad330e86ef767eb98a4d29d04781e5e Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Sat, 28 Oct 2017 14:53:23 +1300
+Subject: Use configuration instead of pure discovery for XS Support
+
+Given in Gentoo that ::XS is either going to be available, or not,
+based on user configuration, *before* configure runs, trying to turn
+it on/off in configure is nonsense.
+
+Subsequently, this test logic just determines if we should be running
+the XS tests or not.
+
+If ::XS is installed already, then XS tests should be run despite user
+not opting in to XS, as the opt-in only regulates dependencies, but
+LMU can still trigger ::XS at runtime.
+
+If the user opts in to XS, then the tests should be run regardless of
+perl detecting XS being installed, because XS *NOT* being available
+is then an error.
+---
+ Makefile.PL | 41 ++---------------------------------------
+ 1 file changed, 2 insertions(+), 39 deletions(-)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index 89680b1..5083b86 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -8,45 +8,8 @@ use 5.008_001;
+ use Config;
+ use ExtUtils::MakeMaker;
+ 
+-BEGIN
+-{
+-    unless (grep { $_ eq "." } @INC)
+-    {
+-        use lib ".";
+-    }
+-}
+-
+-use inc::latest 'Capture::Tiny';
+-use inc::latest 'Config::AutoConf';
+-
+-if (inc::latest->can("write"))
+-{
+-    inc::latest->write("inc");
+-    for my $mod (inc::latest->loaded_modules)
+-    {
+-        inc::latest->bundle_module($mod, "inc");
+-    }
+-}
+-
+-use inc::Config::AutoConf::LMU ();
+-
+-inc::Config::AutoConf::LMU->_set_argv(@ARGV);    # XXX hack because we cannot construct for global use
+-my $loadable_xs = inc::Config::AutoConf::LMU->check_produce_loadable_xs_build();
+-
+-if (-d "Sandbox")
+-{
+-    unless (grep { $_ eq "." } @INC)
+-    {
+-        use lib ".";
+-    }
+-    eval "use Sandbox::Tumble ();";
+-    $@ and die $@;
+-    eval "use File::Path ();";
+-    File::Path->import;
+-    -d 't/xs'       and rmtree('t/xs');
+-    -d 't/pureperl' and rmtree('t/pureperl');
+-    Sandbox::Tumble->tumble(qw(t));
+-}
++my $loadable_xs = $ENV{LMU_USE_XS} ||
++ eval { require List::MoreUtils::XS; List::MoreUtils::XS->VERSION(0.426) };
+ 
+ my $conflictMsg = <<EOCM;
+ ***
+-- 
+2.14.3
+
