@@ -18440,8 +18440,8 @@ www-client/seamonkey-bin 2.48 2.49.1_rc2: Mozilla Application Suite - web browse
 www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ and libcurl
-www-client/vivaldi 1.12.955.38_p1 1.12.955.42_p1: A new browser for our friends
-www-client/vivaldi-snapshot 1.13.971.8_p1 1.13.997.3_p1-r1 1.13.998.3_p1: A new browser for our friends
+www-client/vivaldi 1.12.955.38_p1 1.12.955.42_p1-r1: A new browser for our friends
+www-client/vivaldi-snapshot 1.13.971.8_p1 1.13.997.3_p1-r1 1.13.998.3_p1-r1: A new browser for our friends
 www-client/w3m 0.5.3-r9: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r7 0.3.2_p24-r9: A variant of w3m with support for multiple character encodings
 www-client/weboob 0g 0h 9998 9999: Weboob (Web Outside of Browsers) provides several applications to interact with a lot of websites
@@ -18465,7 +18465,7 @@ www-misc/visitors 0.7-r1: Fast web log analyzer
 www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.30.0 1.30.2 1.30.2-r1: Capture, analyse, record and monitor any cameras attached to your system
-www-plugins/adobe-flash 27.0.0.170 27.0.0.183: Adobe Flash Player
+www-plugins/adobe-flash 27.0.0.183: Adobe Flash Player
 www-plugins/chrome-binary-plugins 62.0.3202.75 63.0.3239.18_alpha 63.0.3239.18_beta: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3 0.3.7: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
