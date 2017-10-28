@@ -101,6 +101,7 @@ DEPEND="${COMMON_DEPEND}
 	dev-lang/perl
 	app-misc/pax-utils
 	doc? (
+		app-text/ghostscript-gpl
 		app-text/pandoc
 		dev-python/markdown[${PYTHON_USEDEP}]
 		dev-texlive/texlive-latexextra
