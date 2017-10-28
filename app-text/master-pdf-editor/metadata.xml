@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+<<<<<<< HEAD
 	<maintainer type="person">
 		<email>joaompssantos@gmail.com</email>
 		<name>Joao Santos</name>
@@ -9,4 +10,10 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+=======
+    <maintainer type="person">
+        <email>joaompssantos@gmail.com</email>
+        <name>Joao Santos</name>
+    </maintainer>
+>>>>>>> 3bbffb2c987bf5b15ee1e7e8e41154bbda98f6c4
 </pkgmetadata>
