@@ -15,10 +15,11 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 IUSE=""
 
 DEPEND="
-	!<sys-libs/glibc-2.26
 	net-libs/libtirpc[${MULTILIB_USEDEP}]
 "
-RDEPEND=${DEPEND}
+RDEPEND="${DEPEND}
+	!<sys-libs/glibc-2.26
+"
 
 S=${WORKDIR}/${PN}-${P}
 
