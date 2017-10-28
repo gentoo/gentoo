@@ -3,11 +3,12 @@
 
 EAPI=6
 
+MY_PN="${PN/-plasma/}"
 inherit qmake-utils
 
 DESCRIPTION="GUI frontend for encfs"
 HOMEPAGE="https://www.linux-apps.com/content/show.php?content=134003"
-SRC_URI="https://dl.opendesktop.org/api/files/download/id/1486311191/${P}.tar.gz"
+SRC_URI="https://dl.opendesktop.org/api/files/download/id/1486311191/${MY_PN}-${PV}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
@@ -20,19 +21,21 @@ DEPEND="
 	kde-frameworks/kdelibs:4
 "
 RDEPEND="${DEPEND}
-	|| ( kde-frameworks/kwallet:5 kde-apps/kwalletd:4 )
+	kde-frameworks/kwallet:5
 	sys-fs/encfs
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.4.0-encfs5.patch"
-	"${FILESDIR}/${PN}-1.6.2-desktop.patch"
+	"${FILESDIR}/${MY_PN}-1.4.0-encfs5.patch"
+	"${FILESDIR}/${MY_PN}-1.6.2-desktop.patch"
 )
+
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 src_prepare() {
 	default
 
-	sed -i ${PN}.pro -e "/^doc.path =/s/${PN}/${PF}/" \
+	sed -i ${MY_PN}.pro -e "/^doc.path =/s/${MY_PN}/${MY_PN}-${PVR}/" \
 		|| die "sed docdir failed"
 }
 
