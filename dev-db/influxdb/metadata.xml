@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>gaetan@nexylan.com</email>
+    <name>Gaetan Allart</name>
+  </maintainer>
+  <longdescription>
+    InfluxDB is a modern Open-Source times-series database platform
+    built for metrics and events. 
+  </longdescription>
+  <use>
+  </use>
+  <upstream>
+    <remote-id type="github">influxdata/influxdb</remote-id>
+  </upstream>
+</pkgmetadata>
