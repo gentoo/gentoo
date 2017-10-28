@@ -10488,7 +10488,7 @@ dev-util/itstool 2.0.2: Translation tool for XML documents that uses gettext fil
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jay 1.1.1-r2: A LALR(1) parser generator: Berkeley yacc retargeted to C# and Java
 dev-util/jconfig 2.8-r3 2.8.5 2.9: jConfig is an extremely helpful utility, providing a simple API for the management of properties
-dev-util/jenkins-bin 2.73.2 2.84: Extensible continuous integration server
+dev-util/jenkins-bin 2.73.2 2.84 2.86: Extensible continuous integration server
 dev-util/kbuild 0.1.9998_pre20131130-r1 0.1.9998_pre20171020 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 33 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
 dev-util/kdbg 2.9.1: Graphical debugger interface
@@ -18053,7 +18053,7 @@ sys-process/supervise-scripts 4.0: Starting and stopping daemontools managed ser
 sys-process/systemd-cron 1.5.3 1.5.4 1.5.10: systemd units to create timers for cron directories and crontab
 sys-process/time 1.7-r1 1.7-r3 1.7.2: Displays info about resources used by a program
 sys-process/tini 0.13.2 0.15.0 0.16.1: A tiny but valid init for containers
-sys-process/tiptop 2.2 2.3: top for performance counters
+sys-process/tiptop 2.2 2.3 2.3.1: top for performance counters
 sys-process/top-apple 73: Apple's top from Mac OS X Lion 10.7
 sys-process/unixtop 3.8_beta1-r3: top for UNIX systems
 sys-process/vixie-cron 4.1-r14 4.1-r15: Paul Vixie's cron daemon, a fully featured crond implementation
