@@ -48,6 +48,9 @@ java_prepare() {
 		java-ant_xml-rewrite -f ${file} -c -e javadoc -a failonerror -v no -a maxmemory -v 512m
 	done
 
+	# See bug 628812.
+	use tcl && epatch "${FILESDIR}/${P}-ImportInfo.patch"
+
 	cd lib || die
 	rm -v *.jar build/*.jar || die
 	use python && java-pkg_jar-from jython-2.7
