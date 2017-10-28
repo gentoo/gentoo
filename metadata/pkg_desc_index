@@ -8957,7 +8957,7 @@ dev-python/visual 5.74-r1: Real-time 3D graphics library for Python
 dev-python/vobject 0.9.3: Python package for parsing and generating vCard and vCalendar files
 dev-python/voluptuous 0.9.3 0.10.5: A Python data validation library.
 dev-python/vulture 0.10: find unused classes, functions and variables in your code
-dev-python/w3lib 1.13.0 1.17.0: Python library of web-related functions
+dev-python/w3lib 1.13.0 1.17.0 1.18.0: Python library of web-related functions
 dev-python/waitress 1.0.1 1.0.2: A pure-Python WSGI server
 dev-python/warlock 1.1.0 1.2.0: Python object model built on JSON schema and JSON patch
 dev-python/watchdog 0.8.3-r1 0.8.3-r2: Python API and shell utilities to monitor file system events
@@ -14778,7 +14778,7 @@ net-im/silc-toolkit 1.1.10: SDK for the SILC protocol
 net-im/skype 4.3.0.37-r5 4.3.0.37-r6: P2P Internet Telephony (VoiceIP) client
 net-im/skypeforlinux 5.4.0.1 5.5.0.1: Instant messaging client, with support for audio and video
 net-im/skypetab-ng 0.5.2 0.5.2_p20150201 9999: An LD_PRELOAD wrapper that adds tabs to Skype for Linux
-net-im/slack-bin 2.1.2 2.5.2 2.6.3 2.8.0: Team collaboration tool
+net-im/slack-bin 2.1.2 2.5.2 2.6.3 2.8.0 2.8.2: Team collaboration tool
 net-im/telegram-desktop-bin 1.1.19 1.1.23-r1: Official desktop client for Telegram (binary package)
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers
 net-im/telepathy-logger 0.8.1 0.8.2: Telepathy Logger is a session daemon that should be activated whenever telepathy is being used
