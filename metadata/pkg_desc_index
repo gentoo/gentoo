@@ -72,7 +72,7 @@ app-admin/conky 1.10.4 1.10.6-r2: An advanced, highly configurable system monito
 app-admin/conkyforecast 2.24-r1: Conky weather forecast script with support for language files
 app-admin/conserver 8.1.18 8.1.18-r1: Serial Console Manager
 app-admin/consolehm 1.31: Console based hardware monitor for FreeBSD
-app-admin/consul 0.8.4-r1 0.9.3 1.0.0: A tool for service discovery, monitoring and configuration
+app-admin/consul 0.9.3 1.0.0: A tool for service discovery, monitoring and configuration
 app-admin/consul-replicate 0.2.0: Consul cross-DC KV replication daemon
 app-admin/consul-template 0.18.5-r1: Generic template rendering and notifications with Consul
 app-admin/cpulimit 1.8 2.2 2.4: Limits the CPU usage of a process
@@ -10579,7 +10579,7 @@ dev-util/qfsm 0.54.0: A graphical tool for designing finite state machines
 dev-util/qmtest 2.4.1-r1: CodeSourcery's test harness system
 dev-util/qstlink2 1.0.3: GUI and CLI ST-Link V2(Debugger/Programmer) client
 dev-util/quilt 0.50 0.63 0.65 9999: quilt patch manager
-dev-util/radare2 2.0.1 2.0.1-r1 9999: unix-like reverse engineering framework and commandline tools
+dev-util/radare2 2.0.1-r1 9999: unix-like reverse engineering framework and commandline tools
 dev-util/ragel 6.7-r1 6.8 6.9 6.10 7.0.0.9 7.0.0.10: Compiles finite state machines from regular languages into executable code
 dev-util/rats 2.1-r2 2.4: RATS - Rough Auditing Tool for Security
 dev-util/rbtools 0.7.10: Command line tools for use with Review Board
@@ -14980,7 +14980,7 @@ net-libs/libssh2 1.7.0 1.8.0 1.8.0-r1 9999: Library implementing the SSH2 protoc
 net-libs/libtelnet 0.21 9999: Simple RFC-complient TELNET implementation as a C library
 net-libs/libtirpc 0.2.4-r1 0.2.4-r2 0.2.5 0.3.1 1.0.1 1.0.1-r1 1.0.1-r2 1.0.1-r3 1.0.2 1.0.2-r1: Transport Independent RPC library (SunRPC replacement)
 net-libs/libtorrent 0.13.6 0.13.6-r1: BitTorrent library written in C++ for *nix
-net-libs/libtorrent-rasterbar 1.0.10 1.0.11-r1 1.1.5-r1: C++ BitTorrent implementation focusing on efficiency and scalability
+net-libs/libtorrent-rasterbar 1.0.11-r1 1.1.5-r1: C++ BitTorrent implementation focusing on efficiency and scalability
 net-libs/libtrace 3.0.22 4.0.0 4.0.1: A library and tools for trace processing
 net-libs/libupnp 1.6.21 1.6.22 1.8.1 1.8.2: An Portable Open Source UPnP Development Kit
 net-libs/libvncserver 0.9.11-r1: library for creating vnc servers
