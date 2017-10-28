@@ -12,7 +12,7 @@ DESCRIPTION="User friendly Geographic Information System"
 HOMEPAGE="https://www.qgis.org/"
 SRC_URI="
 	https://qgis.org/downloads/qgis-${PV}.tar.bz2
-	examples? ( https://download.osgeo.org/qgis/data/qgis_sample_data.tar.gz )"
+	examples? ( https://qgis.org/downloads/data/qgis_sample_data.tar.gz -> qgis_sample_data-2.8.14.tar.gz )"
 
 LICENSE="GPL-2+ GPL-3+"
 SLOT="0"
