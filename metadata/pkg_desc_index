@@ -7513,7 +7513,7 @@ dev-python/decoratortools 1.8-r1: Class, function, and metaclass decorators
 dev-python/deform 0.9.9: Another form generation library
 dev-python/defusedxml 0.4.1-r1 0.5.0: XML bomb protection for Python stdlib modules, an xml serialiser
 dev-python/demjson 2.2.4: encoder, decoder, and lint/validator for JSON (JavaScript Object Notation) compliant with RFC 4627
-dev-python/denonavr 0.5.3: Automation Library for Denon AVR receivers
+dev-python/denonavr 0.5.3 0.5.4: Automation Library for Denon AVR receivers
 dev-python/deprecation 1.0.1: A library to handle automated deprecations
 dev-python/dexml 0.5.1: Dead-simple Object-XML mapper for Python
 dev-python/dib-utils 0.0.8 0.0.10: Standalone tools related to diskimage-builder.
@@ -8522,7 +8522,7 @@ dev-python/python-fchksum 1.7.1-r1: Python module to find the checksum of files
 dev-python/python-gammu 2.5: Python bindings for Gammu
 dev-python/python-gflags 3.1.1: Google's Python argument parsing library
 dev-python/python-glanceclient 2.0.1 2.5.0 2.6.0 2.8.0: A client for the OpenStack Glance API
-dev-python/python-gnupg 0.3.8-r1: Python wrapper for GNU Privacy Guard
+dev-python/python-gnupg 0.3.8-r1 0.4.0: Python wrapper for GNU Privacy Guard
 dev-python/python-gnutls 3.1.1: High level object oriented wrapper around libgnutls
 dev-python/python-gtkmvc 1.99.1: model-view-controller (MVC) implementation for pygtk
 dev-python/python-gudev 147.2-r1: Python binding to the GUDev udev helper library
