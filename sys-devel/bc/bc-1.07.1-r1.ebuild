@@ -1,14 +1,13 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
-inherit eutils flag-o-matic toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Handy console-based calculator utility"
 HOMEPAGE="https://www.gnu.org/software/bc/bc.html"
-SRC_URI="mirror://gnu-alpha/bc/${P}.tar.gz
-	mirror://gnu/bc/${P}.tar.gz"
+SRC_URI="mirror://gnu/bc/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
