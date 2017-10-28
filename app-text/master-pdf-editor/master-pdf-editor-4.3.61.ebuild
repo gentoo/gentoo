@@ -10,18 +10,14 @@ HOMEPAGE="https://code-industry.net/free-pdf-editor/"
 
 SRC_URI="http://get.code-industry.net/public/${P}_qt5.amd64.tar.gz"
 
-<<<<<<< HEAD
 LICENSE="master-pdf-editor"
 SLOT="0"
 KEYWORDS="~amd64"
-RESTRICT="mirror"
-=======
 RESTRICT="mirror"
 
 LICENSE="master-pdf-editor"
 SLOT="0"
 KEYWORDS="~amd64"
->>>>>>> 3bbffb2c987bf5b15ee1e7e8e41154bbda98f6c4
 
 BIN_COMMON_DEPEND="
 	app-arch/bzip2
@@ -71,11 +67,7 @@ src_install() {
 }
 
 pkg_postinst() {
-<<<<<<< HEAD
 	sed -e '/^Exec=/s/masterpdfeditor4/masterpdfeditor4 %f/' -i /usr/share/applications/masterpdfeditor4-${PN}.desktop || die
-=======
-	sed -e '/^Exec=/s/masterpdfeditor4/masterpdfeditor4 %f/' -i /usr/share/applications/masterpdfeditor4-${PN}.desktop
->>>>>>> 3bbffb2c987bf5b15ee1e7e8e41154bbda98f6c4
 	xdg_desktop_database_update
 }
 
