@@ -10,6 +10,8 @@ HOMEPAGE="https://code-industry.net/free-pdf-editor/"
 
 SRC_URI="http://get.code-industry.net/public/${P}_qt5.amd64.tar.gz"
 
+RESTRICT="mirror"
+
 LICENSE="master-pdf-editor"
 SLOT="0"
 KEYWORDS="~amd64"
