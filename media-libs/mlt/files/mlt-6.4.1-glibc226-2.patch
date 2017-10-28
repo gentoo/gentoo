@@ -1,0 +1,22 @@
+From fbf6a5187776f2f392cf258935ff49e4c0e87024 Mon Sep 17 00:00:00 2001
+From: Dan Dennedy <dan@dennedy.org>
+Date: Wed, 30 Aug 2017 09:08:16 -0700
+Subject: [PATCH] Fix glib test macros to include locale.h.
+
+---
+ src/framework/mlt_property.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/framework/mlt_property.h b/src/framework/mlt_property.h
+index 043f530b..3ecebd67 100644
+--- a/src/framework/mlt_property.h
++++ b/src/framework/mlt_property.h
+@@ -31,7 +31,7 @@
+ #endif
+ 
+ #if defined(__GLIBC__) || defined(__APPLE__) || (__FreeBSD_version >= 900506)
+-#  if GLIBC_MINOR >= 26 && !defined(APPLE)
++#  if __GLIBC_MINOR__ >= 26 && !defined(__APPLE__)
+ #    include <locale.h>
+ #  else
+ #    include <xlocale.h>
