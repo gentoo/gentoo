@@ -9,7 +9,7 @@ DESCRIPTION="Emacs modes for editing ebuilds and other Gentoo specific files"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Emacs"
 SRC_URI="https://dev.gentoo.org/~ulm/emacs/${P}.tar.xz"
 
-LICENSE="GPL-2+ GPL-3"  # GPL-3 (only) for glep-mode.el
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 
