@@ -10,6 +10,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">pyusb</remote-id>
-		<remote-id type="sourceforge">pyusb</remote-id>
+		<remote-id type="github">walac/pyusb</remote-id>
 	</upstream>
 </pkgmetadata>
