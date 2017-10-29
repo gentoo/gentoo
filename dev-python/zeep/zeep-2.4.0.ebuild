@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="async"
+IUSE="async -tornado"
 
 DEPEND="dev-python/setuptools"
 RDEPEND="${DEPEND}
@@ -26,6 +26,7 @@ RDEPEND="${DEPEND}
 	>=dev-python/requests-toolbelt-0.7.1
 	>=dev-python/six-1.9.0
 	dev-python/pytz
-	async? ( >=dev-python/aiohttp-1.0 )"
+	async? ( >=dev-python/aiohttp-1.0 )
+	tornado? ( >=www-servers/tornado-4.0.2 )"
 
 DOCS=( README.rst CHANGES )
