@@ -21,6 +21,7 @@ IUSE=""
 
 RDEPEND="dev-lang/gnat-gpl:6.3.0
 	>=dev-ada/gnatcoll-2017[gnat_2017,projects]
+	|| ( dev-ada/gnatcoll[shared] dev-ada/gnatcoll[static] )
 	sci-mathematics/alt-ergo
 	sci-mathematics/why3-for-spark"
 DEPEND="${RDEPEND}
