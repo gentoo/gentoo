@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure
+DEPEND=>=app-arch/unrar-5:= sys-fs/fuse:0
+DESCRIPTION=A FUSE based filesystem that can mount one or multiple RAR archive(s)
+EAPI=6
+HOMEPAGE=https://hasse69.github.io/rar2fs/ https://github.com/hasse69/rar2fs
+IUSE=debug
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=>=app-arch/unrar-5:= sys-fs/fuse:0
+SLOT=0
+SRC_URI=https://github.com/hasse69/rar2fs/releases/download/v1.26.0/rar2fs-1.26.0.tar.gz
+_md5_=e27ecd8976d7e09e38e13045e8757185
