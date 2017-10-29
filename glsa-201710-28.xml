@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201710-28">
+  <title>Jython: Arbitrary code execution</title>
+  <synopsis>A vulnerability in Jython may lead to arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">Jython</product>
+  <announced>2017-10-29</announced>
+  <revised>2017-10-29: 1</revised>
+  <bug>621876</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-java/jython" auto="yes" arch="*">
+      <unaffected range="ge">2.7.0-r2</unaffected>
+      <vulnerable range="lt">2.7.0-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>An implementation of Python written in Java.</p>
+  </background>
+  <description>
+    <p>It was found that Jython is vulnerable to arbitrary code execution by
+      sending a serialized function to the deserializer.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote execution of arbitrary code by enticing a user to execute
+      malicious code.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Jython users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-java/jython-2.7.0-r2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-4000">
+      CVE-2016-4000
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-10-26T13:31:13Z">jmbailey</metadata>
+  <metadata tag="submitter" timestamp="2017-10-29T17:17:48Z">jmbailey</metadata>
+</glsa>
