@@ -551,7 +551,8 @@ app-crypt/jetring 0.25: GPG keyring maintenance using changesets
 app-crypt/johntheripper 1.7.9-r6 1.7.9-r10 1.7.9-r11: fast password cracker
 app-crypt/kali-archive-keyring 2015.2: GnuPG archive keys of the Kali archive
 app-crypt/kbfs 9999: Keybase Filesystem (KBFS)
-app-crypt/kencfs-plasma 1.6.4 2.0.1_alpha: GUI frontend for encfs
+app-crypt/kencfs 1.6.4: GUI frontend for encfs
+app-crypt/kencfs-plasma 2.0.1_alpha: GUI frontend for encfs
 app-crypt/keybase 0.8.25 1.0.15 1.0.16 1.0.17 1.0.17-r1 1.0.18 1.0.20 1.0.21 9999: Client for keybase.io
 app-crypt/keylookup 2.2 2.2-r9999: A tool to fetch PGP keys from keyservers
 app-crypt/keynote 2.3-r3: The KeyNote Trust-Management System
@@ -8822,7 +8823,7 @@ dev-python/stomper 0.3.0: Transport neutral client implementation of the STOMP p
 dev-python/storm 0.20-r1: An object-relational mapper for Python developed at Canonical
 dev-python/stormpath 2.4.2 2.4.4 2.4.5: Official Stormpath SDK, used to interact with the Stormpath REST API.
 dev-python/strict-rfc3339 0.6 0.7: Strict, simple, lightweight RFC3339 functions
-dev-python/stripe 1.66.0: Stripe python bindings
+dev-python/stripe 1.71.1: Stripe python bindings
 dev-python/stripogram 1.5-r1: Strip-o-Gram HTML Conversion Library
 dev-python/structlog 16.1.0: Structured Logging for Python
 dev-python/stsci-distutils 0.3.7: Utilities used to package some of STScI's Python projects
@@ -12260,7 +12261,7 @@ kde-plasma/plasma-meta 5.10.5 5.11.2: Merge this to pull in all Plasma 5 package
 kde-plasma/plasma-nm 5.10.5 5.11.2: KDE Plasma applet for NetworkManager
 kde-plasma/plasma-pa 5.10.5 5.11.2: Plasma applet for audio volume management using PulseAudio
 kde-plasma/plasma-sdk 5.10.5 5.11.2: Useful applications for Plasma development
-kde-plasma/plasma-vault 5.9.96 5.11.2: Plasma applet and services for creating encrypted vaults
+kde-plasma/plasma-vault 5.11.2: Plasma applet and services for creating encrypted vaults
 kde-plasma/plasma-workspace 5.10.5-r1 5.11.2: KDE Plasma workspace
 kde-plasma/plasma-workspace-wallpapers 5.10.5 5.11.2: Additional wallpapers for the Plasma workspace
 kde-plasma/plymouth-kcm 5.10.5 5.11.2: KDE Plasma control module for Plymouth
@@ -13800,7 +13801,7 @@ media-sound/jack-rack 1.4.7-r1 1.4.8_rc1: JACK Rack is an effects rack for the J
 media-sound/jack-smf-utils 1.0: Utilities for MIDI streams and files using Jack MIDI
 media-sound/jack2 1.9.10 1.9.11_rc1: Jackdmp jack implemention for multi-processor machine
 media-sound/jackbeat 0.7.6: An audio sequencer for Linux
-media-sound/jalv 1.6.0-r1: Simple but fully featured LV2 host for Jack
+media-sound/jalv 1.6.0-r1 1.6.0-r2: Simple but fully featured LV2 host for Jack
 media-sound/jamin 0.95.0-r2 0.95.0-r3: JAMin is the JACK Audio Connection Kit (JACK) Audio Mastering interface
 media-sound/jtagger 1.0-r1: Powerful MP3 tag and filename editor
 media-sound/justeport 0.2: Stream audio to your AirPort Express
@@ -17857,7 +17858,7 @@ sys-fs/yaffs2utils 0.2.9: tools for generating YAFFS images
 sys-fs/zerofree 1.0.1 1.0.3 1.0.4: Zero's out all free space on a filesystem
 sys-fs/zfs 0.6.0_rc13-r2 0.6.0_rc14-r1 0.6.1-r4 0.6.2-r5 0.6.3-r2 0.6.4.2 0.6.5.2-r1 0.6.5.3 0.6.5.3-r1 0.6.5.3-r3 0.6.5.3-r4 0.6.5.3-r5 0.6.5.4 0.6.5.4-r1 0.6.5.4-r2 0.6.5.6 0.6.5.7 0.6.5.8 0.6.5.8-r1 0.6.5.9 0.6.5.10 0.6.5.11 0.7.0-r2 0.7.1-r1 0.7.2 9999: Userland utilities for ZFS Linux kernel module
 sys-fs/zfs-kmod 0.6.0_rc13-r4 0.6.0_rc14-r5 0.6.1-r2 0.6.2-r3 0.6.3-r1 0.6.4.2 0.6.5-r1 0.6.5.2 0.6.5.3 0.6.5.3-r4 0.6.5.4 0.6.5.4-r1 0.6.5.6 0.6.5.7 0.6.5.8 0.6.5.9 0.6.5.10 0.6.5.11 0.7.0 0.7.1 0.7.2 9999: Linux ZFS kernel module for sys-fs/zfs
-sys-kernel/aufs-sources 4.4.87-r1 4.4.88 4.4.89 4.4.90 4.4.91 4.4.92 4.4.93 4.9.49-r1 4.9.50 4.9.51 4.9.52 4.9.53 4.9.56 4.9.57 4.12.12 4.12.13 4.12.14 4.13.1-r1 4.13.2 4.13.3 4.13.4 4.13.5 4.13.6 4.13.7 4.13.8: Full sources including the Gentoo patchset for the linux kernel tree and aufs4 support
+sys-kernel/aufs-sources 4.4.87-r1 4.4.88 4.4.89 4.4.90 4.4.91 4.4.92 4.4.93 4.4.94 4.4.95 4.9.49-r1 4.9.50 4.9.51 4.9.52 4.9.53 4.9.56 4.9.57 4.9.58 4.9.59 4.12.12 4.12.13 4.12.14 4.13.1-r1 4.13.2 4.13.3 4.13.4 4.13.5 4.13.6 4.13.7 4.13.8 4.13.9 4.13.10: Full sources including the Gentoo patchset for the linux kernel tree and aufs4 support
 sys-kernel/bliss-initramfs 6.8.3-r2 7.1.0: Boot your system's rootfs from ZFS, LVM, RAID, or a variety of other configs.
 sys-kernel/ck-sources 4.9.52 4.9.53 4.9.54 4.9.55 4.9.56 4.9.57 4.9.58 4.9.59 4.12.14 4.13.8 4.13.9 4.13.10: Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 4.13
 sys-kernel/cryptodev 1.7 1.9 9999: device that allows access to Linux kernel cryptographic drivers
