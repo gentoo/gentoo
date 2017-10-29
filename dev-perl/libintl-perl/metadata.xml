@@ -152,10 +152,10 @@
     <remote-id type="cpan-module">Locale::RecodeData::_Encode</remote-id>
     <remote-id type="cpan-module">Locale::TextDomain</remote-id>
     <remote-id type="cpan-module">Locale::Util</remote-id>
+    <remote-id type="cpan-module">Locale::gettext_dumb</remote-id>
     <remote-id type="cpan-module">Locale::gettext_pp</remote-id>
     <remote-id type="cpan-module">Locale::gettext_xs</remote-id>
     <remote-id type="cpan-module">MyInstall</remote-id>
     <remote-id type="cpan-module">SimpleCal</remote-id>
-    <remote-id type="cpan-module">__TiedTextDomain</remote-id>
   </upstream>
 </pkgmetadata>
