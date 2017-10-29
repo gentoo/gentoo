@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (29 Oct 2017)
+# Dead upstream, depends on dead kdelibs4/Qt4.
+# Use kde-plasma/plasma-vault or app-crypt/kencfs-plasma instead.
+# Masked for removal in 30 days.
+app-crypt/kencfs
+
 # Mike Gilbert <floppym@gentoo.org> (28 Oct 2017)
 # Tests segfault, bug 635732.
 # No updates upstream since 2013.
