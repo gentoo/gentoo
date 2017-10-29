@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-perl/List-MoreUtils sci-libs/profphd-utils dev-perl/Module-Build dev-lang/perl:=
+DESCRIPTION=Parsers and format conversion utilities used by (e.g.) profphd
+EAPI=6
+HOMEPAGE=http://rostlab.org/
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=dev-perl/List-MoreUtils dev-lang/perl:=
+SLOT=0
+SRC_URI=ftp://rostlab.org/librg-utils-perl/librg-utils-perl-1.0.43.tar.gz
+_eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=6afbdd455f1357fea559a12a7cd19428
