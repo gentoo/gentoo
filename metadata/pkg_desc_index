@@ -8435,7 +8435,7 @@ dev-python/pyshark 0.3.7.2: A Python wrapper for tshark output parsing
 dev-python/pyside 1.2.2-r1: Python bindings for the Qt framework
 dev-python/pyside-tools 0.2.15-r1: PySide development tools (lupdate, rcc, uic)
 dev-python/pysmi 0.1.3: Python Lex & Yacc
-dev-python/pysnmp 4.3.3 4.3.9 4.3.10: Python SNMP library
+dev-python/pysnmp 4.3.3 4.3.10 4.4.1: Python SNMP library
 dev-python/pysnmp-apps 0.4.1 0.4.2: PySNMP applications
 dev-python/pysnmp-mibs 0.1.6: SNMP framework in Python - MIBs
 dev-python/pysolr 3.3.2 3.5.0 3.6.0: Lightweight python wrapper for Apache Solr
@@ -10403,7 +10403,7 @@ dev-util/cyclo 2.1.0: Computes cyclomatic complexity metrics on C source code.
 dev-util/d-feet 0.3.10 0.3.11 0.3.12: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 12.10.1 15.04.0_p100: Run executables under a new DBus session for testing
 dev-util/ddd 3.3.12-r3 3.3.12-r4: Graphical front-end for command-line debuggers
-dev-util/debhelper 9.20160814 10.9.2 10.10.3: Collection of programs that can be used to automate common tasks in debian/rules
+dev-util/debhelper 9.20160814 10.10.3 10.10.5: Collection of programs that can be used to automate common tasks in debian/rules
 dev-util/debootstrap 1.0.87 1.0.89 1.0.91: Debian/Ubuntu bootstrap scripts
 dev-util/debugedit 5.3.5-r1: standalone debugedit taken from rpm
 dev-util/dejagnu 1.4.4-r3 1.5 1.6: Framework for testing other programs
@@ -17503,7 +17503,7 @@ sys-boot/systemd-boot 233: UEFI boot manager from systemd (formerly gummiboot)
 sys-boot/systemrescuecd-x86-grub 0.1: Grub menu entries for the .iso image of systemrescuecd-x86
 sys-boot/tboot 1.9.5-r1 1.9.6: Performs a measured and verified boot using Intel Trusted Execution Technology
 sys-boot/udk 2015: Tianocore UEFI Development kit
-sys-boot/unetbootin 625 647 655: UNetbootin installs Linux/BSD distributions to a partition or USB drive
+sys-boot/unetbootin 625 647 655 657: UNetbootin installs Linux/BSD distributions to a partition or USB drive
 sys-boot/vboot-utils 1.0_p20130222 42_p20150219 51_p20160427 59_p20170413: Chrome OS verified boot tools
 sys-boot/winusb 1.0.11: Creates windows installer on usb media from an iso image
 sys-boot/yaboot 1.3.14-r2 1.3.16 1.3.17-r2: PPC Bootloader
@@ -18904,7 +18904,7 @@ x11-misc/idesk-extras 1.37-r2: Graphical configuration for iDesk plus icons
 x11-misc/imake 1.0.7: C preprocessor interface to the make utility
 x11-misc/imwheel 1.0.0_pre12 1.0.0_pre13_p20100827: mouse tool for advanced features such as wheels and 3+ buttons
 x11-misc/ipager 1.1.0-r1: A themable desktop pager for fluxbox and other window managers
-x11-misc/kapow 1.5.2 1.5.3: A punch clock program designed to easily keep track of your hours
+x11-misc/kapow 1.5.3 1.5.4: A punch clock program designed to easily keep track of your hours
 x11-misc/kaqaz 1.2.0-r2: Modern note manager
 x11-misc/kbdd 0.7.1: Very simple layout switcher
 x11-misc/kdocker 4.8-r2: Helper to dock any application into the system tray
