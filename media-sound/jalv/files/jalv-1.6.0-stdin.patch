@@ -1,0 +1,67 @@
+From 3a46e861b5b8dbbacb8dd1cec9fa2c69a10b26e0 Mon Sep 17 00:00:00 2001
+From: David Robillard <d@drobilla.net>
+Date: Sat, 18 Feb 2017 18:00:03 +0100
+Subject: Add jalv -i option to ignore stdin for background use
+
+
+diff --git a/doc/jalv.1 b/doc/jalv.1
+index 6d93a72..000ed5a 100644
+--- a/doc/jalv.1
++++ b/doc/jalv.1
+@@ -17,6 +17,10 @@ Print the command line options.
+ Print control output changes to stdout.
+ 
+ .TP
++\fB\-i\fR
++Ignore input on stdin (for background use).
++
++.TP
+ \fB\-c SYM=VAL\fR
+ Set control value (e.g. "vol=1.4").
+ 
+diff --git a/src/jalv_console.c b/src/jalv_console.c
+index c0f369c..e0e114b 100644
+--- a/src/jalv_console.c
++++ b/src/jalv_console.c
+@@ -106,6 +106,8 @@ jalv_init(int* argc, char*** argv, JalvOptions* opts)
+ 				opts->controls, (++n_controls + 1) * sizeof(char*));
+ 			opts->controls[n_controls - 1] = (*argv)[a];
+ 			opts->controls[n_controls]     = NULL;
++		} else if ((*argv)[a][1] == 'i') {
++			opts->non_interactive = true;
+ 		} else if ((*argv)[a][1] == 'd') {
+ 			opts->dump = true;
+ 		} else if ((*argv)[a][1] == 't') {
+@@ -191,7 +193,7 @@ jalv_open_ui(Jalv* jalv)
+ 
+ 		show_iface->hide(suil_instance_get_handle(jalv->ui_instance));
+ 
+-	} else {
++	} else if (!jalv->opts.non_interactive) {
+ 		// Primitive command prompt for setting control values
+ 		while (!zix_sem_try_wait(jalv->done)) {
+ 			char line[128];
+@@ -202,6 +204,8 @@ jalv_open_ui(Jalv* jalv)
+ 				break;
+ 			}
+ 		}
++	} else {
++		zix_sem_wait(jalv->done);
+ 	}
+ 
+ 	// Caller waits on the done sem, so increment it again to exit
+diff --git a/src/jalv_internal.h b/src/jalv_internal.h
+index 3a565ec..06f116a 100644
+--- a/src/jalv_internal.h
++++ b/src/jalv_internal.h
+@@ -172,6 +172,7 @@ typedef struct {
+ 	int      no_menu;           ///< Hide menu iff true
+ 	int      show_ui;           ///< Show non-embedded UI
+ 	int      print_controls;    ///< Print control changes to stdout
++	int      non_interactive;   ///< Do not listen for commands on stdin
+ } JalvOptions;
+ 
+ typedef struct {
+-- 
+cgit v0.10.2
+
