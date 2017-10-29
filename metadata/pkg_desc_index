@@ -8468,7 +8468,7 @@ dev-python/pytest-httpbin 0.2.3: Easily test your HTTP library against a local c
 dev-python/pytest-isort 0.1.0: py.test plugin for isort
 dev-python/pytest-localserver 0.3.7: Py.test plugin to test server connections locally
 dev-python/pytest-metadata 1.3.0: A plugin for pytest that provides access to test session metadata
-dev-python/pytest-mock 1.2 1.5.0 1.6.0 1.6.3: Thin-wrapper around the mock package for easier use with py.test
+dev-python/pytest-mock 1.6.0 1.6.3: Thin-wrapper around the mock package for easier use with py.test
 dev-python/pytest-mpl 0.5 0.7 0.8: pytest plugin to faciliate image comparison for matplotlib figures
 dev-python/pytest-pep8 1.0.6: pytest plugin to check PEP8 requirements
 dev-python/pytest-pylint 0.7.1: pytest plugin to check source code with pylint
@@ -15047,7 +15047,7 @@ net-libs/uhttpmock 0.4.0 0.5.0 0.5.1: HTTP web service mocking library
 net-libs/vanessa-mcast 1.0.0: Multicast Helper Library
 net-libs/vanessa-socket 0.0.12 0.0.13: Simplifies TCP/IP socket operations
 net-libs/wandio 1.0.3 1.0.4: Library for transparent file I/O with compression
-net-libs/webkit-gtk 2.4.11-r1 2.4.11-r200 2.16.6 2.18.1 2.18.2: Open source web browser engine
+net-libs/webkit-gtk 2.4.11-r1 2.4.11-r200 2.18.2: Open source web browser engine
 net-libs/wvstreams 4.6.1-r3 4.6.1-r4 4.6.1-r5: A network programming library in C++
 net-libs/xrootd 4.4.0 4.5.0: Extended ROOT remote file server
 net-libs/zeromq 2.2.0 3.2.3 3.2.5 4.1.1 4.1.6 4.2.0-r1 4.2.1 4.2.2 4.2.2-r1 4.2.2-r2: A brokerless kernel
@@ -15526,7 +15526,7 @@ net-misc/x2goserver 4.0.1.19 4.0.1.19-r2 4.0.1.19-r3 4.0.1.20: The X2Go server
 net-misc/yandex-disk 0.1.5.940_p1 0.1.5.978_p1: CLI to access Yandex Disk file storage service
 net-misc/yangcli-pro 16.10_p8: Network manager client that lets you test and manage NETCONF servers
 net-misc/you-get 0.4.536: utility to download media contents from the web
-net-misc/youtube-dl 2017.03.16 2017.10.15.1 2017.10.20 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2017.03.16 2017.10.20 2017.10.29 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.9 3.2.0 3.2.4 3.2.5 3.2.8 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0 3.3.0-r1: Multi-user replacement for UNIX talk
 net-misc/zerotier 1.2.4: A software-based managed Ethernet switch for planet Earth
