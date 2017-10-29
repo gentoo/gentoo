@@ -1,10 +1,10 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
 inherit autotools eutils flag-o-matic
 
-DESCRIPTION="A set of programs for extracting and converting images in icon and cursor files (.ico, .cur)"
+DESCRIPTION="Tools to extract and convert images in icon and cursor files (.ico, .cur)"
 HOMEPAGE="http://www.nongnu.org/icoutils/"
 SRC_URI="mirror://nongnu/${PN}/${P}.tar.bz2"
 
