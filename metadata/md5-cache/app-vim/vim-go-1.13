@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm
+DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+DESCRIPTION=vim plugin: Go development plugin for Vim
+EAPI=6
+HOMEPAGE=https://github.com/fatih/vim-go
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/fatih/vim-go/archive/v1.13.zip -> vim-go-1.13.zip
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	vim-doc	af2c81a1feeb0a99e91bee3e20769edb	vim-plugin	b5b3de0c186fed2d7255bd4ac8b5ac80
+_md5_=e09b6f539cf4eefeb174037344c58ebc
