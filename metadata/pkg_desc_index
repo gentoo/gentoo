@@ -6159,8 +6159,8 @@ dev-perl/Lirc-Client 2.20.0: A client library for the Linux Infrared Remote Cont
 dev-perl/List-AllUtils 0.90.0 0.140.0: Combines many List::* utility modules in one bite-sized package
 dev-perl/List-MoreUtils 0.418.0 0.419.0 0.426.0: Provide the missing functionality from List::Util
 dev-perl/List-MoreUtils-XS 0.418.0 0.426.0: Compiled List::MoreUtils functions
-dev-perl/List-SomeUtils 0.530.0: A colletion of List utilities missing from List::Util
-dev-perl/List-SomeUtils-XS 0.520.0: XS implementation for List::SomeUtils
+dev-perl/List-SomeUtils 0.530.0 0.560.0: A colletion of List utilities missing from List::Util
+dev-perl/List-SomeUtils-XS 0.520.0 0.550.0: XS implementation for List::SomeUtils
 dev-perl/List-UtilsBy 0.100.0: Higher-order list utility functions
 dev-perl/Locale-Maketext-Fuzzy 0.110.0-r1: Maketext from already interpolated strings
 dev-perl/Locale-Maketext-Lexicon 1.0.0: Use other catalog formats in Maketext
@@ -6169,15 +6169,15 @@ dev-perl/Locale-PO 0.270.0: Perl module for manipulating .po entries from GNU ge
 dev-perl/Locale-gettext 1.50.0-r1 1.70.0: A Perl module for accessing the GNU locale utilities
 dev-perl/LockFile-Simple 0.208.0-r1: File locking module for Perl
 dev-perl/Log-Agent 1.1.0: A general logging framework
-dev-perl/Log-Any 1.38.0 1.49.0: Bringing loggers and listeners together
-dev-perl/Log-Dispatch 2.540.0 2.580.0 2.630.0: Dispatches messages to one or more outputs
+dev-perl/Log-Any 1.38.0 1.49.0 1.701.0: Bringing loggers and listeners together
+dev-perl/Log-Dispatch 2.540.0 2.580.0 2.630.0 2.670.0: Dispatches messages to one or more outputs
 dev-perl/Log-Dispatch-Array 1.3.0: log events to an array (reference)
 dev-perl/Log-Dispatchouli 2.15.0: a simple wrapper around Log::Dispatch
 dev-perl/Log-Log4perl 1.460.0 1.480.0 1.490.0: Log4j implementation for Perl
 dev-perl/Log-Message 0.80.0: Powerful and flexible message logging mechanism
 dev-perl/Log-Message-Simple 0.100.0: Simplified interface to Log::Message
-dev-perl/Log-Report 1.180.0 1.190.0: A pluggable, multilingual handler driven problem reporting system
-dev-perl/Log-Report-Optional 1.20.0: Lightweight implementation logger for Log::Report
+dev-perl/Log-Report 1.180.0 1.190.0 1.220.0: A pluggable, multilingual handler driven problem reporting system
+dev-perl/Log-Report-Optional 1.20.0 1.30.0: Lightweight implementation logger for Log::Report
 dev-perl/Log-TraceMessages 1.400.0-r1: Logging/debugging aid
 dev-perl/MARC-Charset 1.350.0-r1: convert MARC-8 encoded strings to UTF-8
 dev-perl/MARC-Record 2.0.6 2.0.7: Perl extension for handling MARC records
@@ -6613,7 +6613,7 @@ dev-perl/String-Escape 2010.002: Backslash escapes, quoted phrase, word elision,
 dev-perl/String-Flogger 1.101.245: string munging for loggers
 dev-perl/String-Format 1.170.0-r1: sprintf-like string formatting capabilities with arbitrary format definitions
 dev-perl/String-Formatter 0.102.84: build sprintf-like functions of your own
-dev-perl/String-Print 0.150.0: Extensions to printf
+dev-perl/String-Print 0.150.0 0.920.0: Extensions to printf
 dev-perl/String-RewritePrefix 0.7.0: Rewrite strings based on a set of known prefixes
 dev-perl/String-ShellQuote 1.40.0-r1: Quote strings for passing through the shell
 dev-perl/String-Tokenizer 0.60.0: A simple string tokenizer
