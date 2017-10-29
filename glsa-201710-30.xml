@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201710-30">
+  <title>X.Org Server: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in X.Org Server the worst
+    of which could allow a local attacker to replace shared memory segments.
+  </synopsis>
+  <product type="ebuild">X.Org Server</product>
+  <announced>2017-10-29</announced>
+  <revised>2017-10-29: 1</revised>
+  <bug>493294</bug>
+  <bug>611350</bug>
+  <bug>633910</bug>
+  <access>local</access>
+  <affected>
+    <package name="x11-base/xorg-server" auto="yes" arch="*">
+      <unaffected range="ge">1.19.4</unaffected>
+      <vulnerable range="lt">1.19.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The X.Org project provides an open source implementation of the X Window
+      System.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in X.Org Server. Please
+      review the referenced CVE identifiers for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could cause a global buffer overflow or a Denial of
+      Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time</p>
+  </workaround>
+  <resolution>
+    <p>All X.Org Server users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-base/xorg-server-1.19.4"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6424">
+      CVE-2013-6424
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13721">
+      CVE-2017-13721
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13723">
+      CVE-2017-13723
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-2624">
+      CVE-2017-2624
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-10-25T07:28:16Z">jmbailey</metadata>
+  <metadata tag="submitter" timestamp="2017-10-29T19:44:06Z">jmbailey</metadata>
+</glsa>
