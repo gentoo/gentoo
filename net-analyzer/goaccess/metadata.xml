@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -17,6 +17,7 @@
 	</longdescription>
 	<use>
 		<flag name="btree">Enable Tokyo Cabinet's on-disk B+ Tree database backend</flag>
+		<flag name="geoipv2">Enable support for GeoIP2 through <pkg>dev-libs/libmaxminddb</pkg></flag>
 		<flag name="getline">Use GNU getline() to parse full line requests</flag>
 		<flag name="memhash">Enable Tokyo Cabinet's on-memory hash database backend</flag>
 		<flag name="tokyocabinet">Enable Tokyo Cabinet's on-memory hash database backend</flag>
@@ -25,6 +26,5 @@
 		<doc>http://goaccess.io/faq</doc>
 		<bugs-to>mailto:goaccess@prosoftcorp.com</bugs-to>
 		<remote-id type="github">allinurl/goaccess</remote-id>
-		<remote-id type="sourceforge">goaccess</remote-id>
 	</upstream>
 </pkgmetadata>
