@@ -17,18 +17,20 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="test"
 
-RDEPEND=">=dev-python/binaryornot-0.2.0[${PYTHON_USEDEP}]
-	>=dev-python/future-0.15.2[${PYTHON_USEDEP}]
+RDEPEND=">=dev-python/future-0.15.2[${PYTHON_USEDEP}]
+	>=dev-python/binaryornot-0.2.0[${PYTHON_USEDEP}]
 	>=dev-python/jinja-2.7[${PYTHON_USEDEP}]
 	>=dev-python/click-5.0[${PYTHON_USEDEP}]
 	>=dev-python/whichcraft-0.1.1[${PYTHON_USEDEP}]
 	>=dev-python/poyo-0.4.0[${PYTHON_USEDEP}]
 	>=dev-python/jinja2-time-0.1.0[${PYTHON_USEDEP}]
+	>=dev-python/requests-2.18.0[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
 DEPEND="${RDEPEND}
 	test? (
 		dev-python/pytest[${PYTHON_USEDEP}]
+		dev-python/pytest-cov[${PYTHON_USEDEP}]
 		>=dev-python/pytest-mock-1.1[${PYTHON_USEDEP}]
 		dev-python/pytest-catchlog[${PYTHON_USEDEP}]
 		dev-python/freezegun[${PYTHON_USEDEP}] )"
