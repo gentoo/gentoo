@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201710-29">
+  <title>Asterisk: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Asterisk, the worst of
+    which allows remote execution of arbitrary shell commands.
+  </synopsis>
+  <product type="ebuild">asterisk</product>
+  <announced>2017-10-29</announced>
+  <revised>2017-10-29: 1</revised>
+  <bug>629682</bug>
+  <bug>629692</bug>
+  <bug>633856</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/asterisk" auto="yes" arch="*">
+      <unaffected range="ge">11.25.3</unaffected>
+      <vulnerable range="lt">11.25.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A Modular Open Source PBX System.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Asterisk. Please review
+      the referenced CVE identifiers for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could execute arbitrary code, cause a denial of
+      service condition, or cause an unauthorized data disclosure by enticing a
+      user to run malicious code.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Asterisk users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/asterisk-13.17.2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-14098">CVE-2017-14098</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-14099">
+      CVE-2017-14099
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-14100">
+      CVE-2017-14100
+    </uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-14603">CVE-2017-14603</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-10-26T14:19:30Z">jmbailey</metadata>
+  <metadata tag="submitter" timestamp="2017-10-29T19:14:13Z">jmbailey</metadata>
+</glsa>
