@@ -9024,7 +9024,7 @@ dev-python/yubiotp 0.2.1: Library for verifying YubiKey OTP tokens, both locally
 dev-python/zake 0.2.1: Set of testing utilities for the kazoo library
 dev-python/zbase32 1.1.5: base32 encoder/decoder (not RFC 3548 compliant)
 dev-python/zc-buildout 2.5.3 2.5.3-r1: System for managing development buildouts
-dev-python/zeep 1.6.0 2.2.0: A modern/fast Python SOAP client based on lxml / requests
+dev-python/zeep 1.6.0 2.4.0: A modern/fast Python SOAP client based on lxml / requests
 dev-python/zeroconf 0.17.5: Pure Python Multicast DNS Service Discovery Library (Bonjour/Avahi compatible)
 dev-python/zfec 1.4.24: Fast erasure codec for the command-line, C, Python, or Haskell
 dev-python/zict 0.1.2: Mutable mapping tools
@@ -10376,7 +10376,7 @@ dev-util/complexity 1.10: a tool designed for analyzing the complexity of C prog
 dev-util/conan 0.24.0-r1 0.25.1: Distributed C/C++ package manager
 dev-util/confix 2.3.5-r2 2.3.5-r3 9999: Confix: A Build Tool on Top of GNU Automake
 dev-util/confix-wrapper 0: Wrapper to select either confix1.py or confix2.py
-dev-util/cookiecutter 1.5.1: Command-line utility to create projects from cookiecutters (project templates)
+dev-util/cookiecutter 1.6.0: Command-line utility to create projects from cookiecutters (project templates)
 dev-util/cppcheck 1.77 1.78 1.79 9999: static analyzer of C/C++ code
 dev-util/cppi 1.18: a cpp directive indenter
 dev-util/cpptest 1.1.2: Simple but powerful unit testing framework for C++
