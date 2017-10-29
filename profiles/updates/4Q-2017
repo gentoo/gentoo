@@ -1,3 +1,2 @@
 move dev-ml/ocaml-dns dev-ml/dns
 move dev-perl/HTML-Format dev-perl/HTML-Formatter
-move app-crypt/kencfs app-crypt/kencfs-plasma
