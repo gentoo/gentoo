@@ -7,13 +7,13 @@ MY_PN="percona-${PN/-bin}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="MySQL hot backup software. non-blocking backups for InnoDB/XtraDB databases"
-HOMEPAGE="http://www.percona.com/software/percona-xtrabackup"
+HOMEPAGE="https://www.percona.com/software/percona-xtrabackup"
 SRC_URI="
 	amd64? (
-		http://www.percona.com/downloads/XtraBackup/Percona-XtraBackup-${PV}/binary/tarball/${MY_P}-Linux-x86_64.tar.gz
+		https://www.percona.com/downloads/XtraBackup/Percona-XtraBackup-${PV}/binary/tarball/${MY_P}-Linux-x86_64.tar.gz
 	)
 	x86? (
-		http://www.percona.com/downloads/XtraBackup/Percona-XtraBackup-${PV}/binary/tarball/${MY_P}-Linux-i686.tar.gz
+		https://www.percona.com/downloads/XtraBackup/Percona-XtraBackup-${PV}/binary/tarball/${MY_P}-Linux-i686.tar.gz
 	)"
 
 LICENSE="GPL-2"
