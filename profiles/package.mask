@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (30 Oct 2017)
+# Requires dead and vulnerable qtwebkit4.
+# Masked for removal in 30 days. Bug #620742
+net-voip/vidyodesktop
+
 # Andreas Sturmlechner <asturm@gentoo.org> (29 Oct 2017)
 # Dead upstream, depends on dead kdelibs4/Qt4.
 # Use kde-plasma/plasma-vault or app-crypt/kencfs-plasma instead.
@@ -159,7 +164,6 @@ dev-qt/qtwebkit:4
 <media-gfx/freecad-0.17_pre
 media-sound/google-musicmanager
 >=net-misc/teamviewer-10
-net-voip/vidyodesktop
 <sci-libs/opencascade-7.0
 <sci-libs/vtk-6.1.0-r4
 
