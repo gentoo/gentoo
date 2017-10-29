@@ -1388,7 +1388,7 @@ app-emulation/wine-desktop-common 20150204: Various desktop menu items and icons
 app-emulation/wine-gecko 2.47-r1: A Mozilla Gecko based version of Internet Explorer for Wine
 app-emulation/wine-mono 4.6.4 4.7.0 4.7.1: Wine Mono is a replacement for the .NET runtime and class libraries in Wine
 app-emulation/wine-staging 2.0-r1 2.1-r1 2.2-r1 2.3-r1 2.4-r1 2.5-r1 2.6-r1 2.7-r1 2.8-r1 2.9-r1 2.10-r1 2.11-r1 2.12-r1 2.13-r1 2.14-r1 2.15-r1 2.16-r1 2.17-r1 2.18 9999: Free implementation of Windows(tm) on Unix, with Wine-Staging patchset
-app-emulation/wine-vanilla 2.0 2.0-r1 2.0.1 2.0.1-r1 2.0.2 2.0.2-r1 2.1-r1 2.2-r1 2.3-r1 2.4-r1 2.5-r1 2.6-r1 2.7-r1 2.8-r1 2.9-r1 2.10-r1 2.11-r1 2.12-r1 2.13-r1 2.14-r1 2.15-r1 2.16-r1 2.17-r1 2.18-r1 9999: Free implementation of Windows(tm) on Unix, without external patchsets
+app-emulation/wine-vanilla 2.0 2.0-r1 2.0.1 2.0.1-r1 2.0.2 2.0.2-r1 2.1-r1 2.2-r1 2.3-r1 2.4-r1 2.5-r1 2.6-r1 2.7-r1 2.8-r1 2.9-r1 2.10-r1 2.11-r1 2.12-r1 2.13-r1 2.14-r1 2.15-r1 2.16-r1 2.17-r1 2.18-r1 2.19 9999: Free implementation of Windows(tm) on Unix, without external patchsets
 app-emulation/winetricks 20170823 99999999: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4: HP48 Calculator Emulator
 app-emulation/xcpc 20070122: XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C.
@@ -2736,7 +2736,7 @@ app-xemacs/dictionary 1.16: Interface to RFC2229 dictionary servers
 app-xemacs/dired 1.17 1.19 1.20: Manage file systems
 app-xemacs/docbookide 0.08: DocBook editing support
 app-xemacs/easypg 1.02 1.03-r1: GnuPG interface for Emacs
-app-xemacs/ebuild-mode 1.37 1.38: Emacs modes for editing ebuilds and other Gentoo specific files
+app-xemacs/ebuild-mode 1.37 1.38 1.40: Emacs modes for editing ebuilds and other Gentoo specific files
 app-xemacs/ecb 1.22: Emacs source code browser
 app-xemacs/ecrypto 0.20 0.21: Crypto functionality in Emacs Lisp
 app-xemacs/ede 1.03-r1: Emacs Development Environment
