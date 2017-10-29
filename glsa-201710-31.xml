@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201710-31">
+  <title>Oracle JDK/JRE: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Oracle's JDK and JRE
+    software suites, the worst of which can be remotely exploited without
+    authentication.
+  </synopsis>
+  <product type="ebuild">oracle,jdk,jre</product>
+  <announced>2017-10-29</announced>
+  <revised>2017-10-29: 1</revised>
+  <bug>635030</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-java/oracle-jdk-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.8.0.152-r1</unaffected>
+      <vulnerable range="lt">1.8.0.152-r1</vulnerable>
+    </package>
+    <package name="dev-java/oracle-jre-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.8.0.152-r1</unaffected>
+      <vulnerable range="lt">1.8.0.152-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Java Platform, Standard Edition (Java SE) lets you develop and deploy
+      Java applications on desktops and servers, as well as in today’s
+      demanding embedded environments. Java offers the rich user interface,
+      performance, versatility, portability, and security that today’s
+      applications require.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Oracle’s Java  SE.
+      Please review the referenced CVE identifiers for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could cause a Denial of Service condition, modify
+      arbitrary data, or have numerous other impacts.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Oracle JDK users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=dev-java/oracle-jdk-bin-1.8.0.152-r1"
+    </code>
+    
+    <p>All Oracle JRE users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=dev-java/oracle-jre-bin-1.8.0.152-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10274">
+      CVE-2017-10274
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10281">
+      CVE-2017-10281
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10285">
+      CVE-2017-10285
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10293">
+      CVE-2017-10293
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10295">
+      CVE-2017-10295
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10309">
+      CVE-2017-10309
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10345">
+      CVE-2017-10345
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10346">
+      CVE-2017-10346
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10347">
+      CVE-2017-10347
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10348">
+      CVE-2017-10348
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10349">
+      CVE-2017-10349
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10350">
+      CVE-2017-10350
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10355">
+      CVE-2017-10355
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10356">
+      CVE-2017-10356
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10357">
+      CVE-2017-10357
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-10388">
+      CVE-2017-10388
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-10-24T17:32:20Z">jmbailey</metadata>
+  <metadata tag="submitter" timestamp="2017-10-29T22:47:00Z">jmbailey</metadata>
+</glsa>
