@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit autotools eutils
 
 DESCRIPTION="A tool for monitoring, capturing and storing TCP connections flows"
-HOMEPAGE="https://github.com/simsong/tcpflow http://packages.qa.debian.org/t/tcpflow.html"
+HOMEPAGE="https://github.com/simsong/tcpflow https://packages.qa.debian.org/t/tcpflow.html"
 SRC_URI="
 	mirror://debian/pool/main/t/${PN}/${PN}_${PV/_p*}+repack1.orig.tar.gz
 	mirror://debian/pool/main/t/${PN}/${PN}_${PV/_p*}+repack1-${PV/*_p}.debian.tar.xz

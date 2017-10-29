@@ -159,6 +159,7 @@ src_prepare() {
 
 	echo "setting.extra -= -ldconfig" >> "${S}"/programs/mythfrontend/mythfrontend.pro
 
+	epatch "${FILESDIR}/${P}-glibc225.patch"
 	epatch_user
 }
 

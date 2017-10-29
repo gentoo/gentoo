@@ -193,6 +193,17 @@ endif " has("autocmd")
 " instead:
 let g:skip_defaults_vim = 1
 
+" Enable Omni completion when opening a file only if a specific plugin does
+" not already exist for that filetype. This allows Omni completion
+" (Ctrl-x/Ctrl-o) to work with any programming language if and only if a syntax
+" file exists for the said language.
+if exists("+omnifunc")
+   autocmd Filetype *
+	      \	if &omnifunc == "" |
+	      \		setlocal omnifunc=syntaxcomplete#Complete |
+	      \	endif
+endif
+
 " {{{ vimrc.local
 if filereadable("@GENTOO_PORTAGE_EPREFIX@/etc/vim/vimrc.local")
   source @GENTOO_PORTAGE_EPREFIX@/etc/vim/vimrc.local

@@ -5,4 +5,27 @@
 		<email>perl@gentoo.org</email>
 		<name>Gentoo Perl Project</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="cpan">Data-Serializer</remote-id>
+		<remote-id type="cpan-module">Data::Serializer</remote-id>
+		<remote-id type="cpan-module">Data::Serializer::Bencode</remote-id>
+		<remote-id type="cpan-module">Data::Serializer::Config::General</remote-id>
+		<remote-id type="cpan-module">Data::Serializer::Convert::Bencode</remote-id>
+		<remote-id type="cpan-module">Data::Serializer::Convert::Bencode_XS</remote-id>
+		<remote-id type="cpan-module">Data::Serializer::Cookbook</remote-id>
+		<remote-id type="cpan-module">Data::Serializer::Data::Denter</remote-id>
+		<remote-id type="cpan-module">Data::Serializer::Data::Dumper</remote-id>
+		<remote-id type="cpan-module">Data::Serializer::Data::Taxi</remote-id>
+		<remote-id type="cpan-module">Data::Serializer::FreezeThaw</remote-id>
+		<remote-id type="cpan-module">Data::Serializer::JSON</remote-id>
+		<remote-id type="cpan-module">Data::Serializer::JSON::Syck</remote-id>
+		<remote-id type="cpan-module">Data::Serializer::PHP::Serialization</remote-id>
+		<remote-id type="cpan-module">Data::Serializer::Persistent</remote-id>
+		<remote-id type="cpan-module">Data::Serializer::Raw</remote-id>
+		<remote-id type="cpan-module">Data::Serializer::Storable</remote-id>
+		<remote-id type="cpan-module">Data::Serializer::XML::Dumper</remote-id>
+		<remote-id type="cpan-module">Data::Serializer::XML::Simple</remote-id>
+		<remote-id type="cpan-module">Data::Serializer::YAML</remote-id>
+		<remote-id type="cpan-module">Data::Serializer::YAML::Syck</remote-id>
+	</upstream>
 </pkgmetadata>

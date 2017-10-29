@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -45,6 +45,10 @@ src_prepare() {
 	sed -e '/CFLAGS="$CFLAGS -g/d' \
 		-e '/CFLAGS="$CFLAGS -O0/d' \
 		-i configure.ac configure || die "sed 1 failed"
+
+	# Accept GnuPG 2.2.0
+	sed -e 's/GNUPG_ACCEPTED="2.0.12 2.1.4"/GNUPG_ACCEPTED="2.0.12 2.1.4 2.2.0"/g' \
+		-i configure.ac configure || die "sed failed"
 
 	gnome2_src_prepare
 }

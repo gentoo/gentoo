@@ -1,0 +1,236 @@
+From 9a7d82a8994505ad4c6552540d26c7586073e459 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Sat, 7 Oct 2017 19:08:53 +1300
+Subject: Fix test failures on Perl 5.26
+
+This also replaces "do" with a stricter 'require' as that will properly
+fail on nested errors instead of silently failing
+
+Bug: https://rt.cpan.org/Ticket/Display.html?id=121132
+Bug: https://bugs.gentoo.org/615582
+---
+ t/box-calls.t        | 2 +-
+ t/box-scaling.t      | 2 +-
+ t/box-showtable.t    | 2 +-
+ t/box-widths.t       | 2 +-
+ t/box-wrap.t         | 2 +-
+ t/html-calls.t       | 2 +-
+ t/html-scaling.t     | 2 +-
+ t/html-showtable.t   | 2 +-
+ t/html-widths.t      | 2 +-
+ t/html-wrap.t        | 2 +-
+ t/list-calls.t       | 2 +-
+ t/list-scaling.t     | 2 +-
+ t/list-showtable.t   | 2 +-
+ t/list-widths.t      | 2 +-
+ t/list-wrap.t        | 2 +-
+ t/simple-calls.t     | 2 +-
+ t/simple-scaling.t   | 2 +-
+ t/simple-showtable.t | 2 +-
+ t/simple-widths.t    | 2 +-
+ t/simple-wrap.t      | 2 +-
+ 20 files changed, 20 insertions(+), 20 deletions(-)
+
+diff --git a/t/box-calls.t b/t/box-calls.t
+index 74a1ad9..ee6e26d 100755
+--- a/t/box-calls.t
++++ b/t/box-calls.t
+@@ -25,4 +25,4 @@ $what = "t/$what" if -d "t" && !-r "$what.pl";
+ unshift(@INC,'../blib/lib') if -d '../blib/lib';
+ unshift(@INC,'t') if -d 't';
+ 
+-do "$what.pl";
++require "./$what.pl";
+diff --git a/t/box-scaling.t b/t/box-scaling.t
+index 74a1ad9..c95e2fd 100755
+--- a/t/box-scaling.t
++++ b/t/box-scaling.t
+@@ -25,4 +25,4 @@ $what = "t/$what" if -d "t" && !-r "$what.pl";
+ unshift(@INC,'../blib/lib') if -d '../blib/lib';
+ unshift(@INC,'t') if -d 't';
+ 
+-do "$what.pl";
++require "./$what.pl"
+diff --git a/t/box-showtable.t b/t/box-showtable.t
+index 74a1ad9..ee6e26d 100755
+--- a/t/box-showtable.t
++++ b/t/box-showtable.t
+@@ -25,4 +25,4 @@ $what = "t/$what" if -d "t" && !-r "$what.pl";
+ unshift(@INC,'../blib/lib') if -d '../blib/lib';
+ unshift(@INC,'t') if -d 't';
+ 
+-do "$what.pl";
++require "./$what.pl";
+diff --git a/t/box-widths.t b/t/box-widths.t
+index 74a1ad9..ee6e26d 100755
+--- a/t/box-widths.t
++++ b/t/box-widths.t
+@@ -25,4 +25,4 @@ $what = "t/$what" if -d "t" && !-r "$what.pl";
+ unshift(@INC,'../blib/lib') if -d '../blib/lib';
+ unshift(@INC,'t') if -d 't';
+ 
+-do "$what.pl";
++require "./$what.pl";
+diff --git a/t/box-wrap.t b/t/box-wrap.t
+index 74a1ad9..ee6e26d 100755
+--- a/t/box-wrap.t
++++ b/t/box-wrap.t
+@@ -25,4 +25,4 @@ $what = "t/$what" if -d "t" && !-r "$what.pl";
+ unshift(@INC,'../blib/lib') if -d '../blib/lib';
+ unshift(@INC,'t') if -d 't';
+ 
+-do "$what.pl";
++require "./$what.pl";
+diff --git a/t/html-calls.t b/t/html-calls.t
+index 74a1ad9..ee6e26d 100755
+--- a/t/html-calls.t
++++ b/t/html-calls.t
+@@ -25,4 +25,4 @@ $what = "t/$what" if -d "t" && !-r "$what.pl";
+ unshift(@INC,'../blib/lib') if -d '../blib/lib';
+ unshift(@INC,'t') if -d 't';
+ 
+-do "$what.pl";
++require "./$what.pl";
+diff --git a/t/html-scaling.t b/t/html-scaling.t
+index 74a1ad9..ee6e26d 100755
+--- a/t/html-scaling.t
++++ b/t/html-scaling.t
+@@ -25,4 +25,4 @@ $what = "t/$what" if -d "t" && !-r "$what.pl";
+ unshift(@INC,'../blib/lib') if -d '../blib/lib';
+ unshift(@INC,'t') if -d 't';
+ 
+-do "$what.pl";
++require "./$what.pl";
+diff --git a/t/html-showtable.t b/t/html-showtable.t
+index 74a1ad9..ee6e26d 100755
+--- a/t/html-showtable.t
++++ b/t/html-showtable.t
+@@ -25,4 +25,4 @@ $what = "t/$what" if -d "t" && !-r "$what.pl";
+ unshift(@INC,'../blib/lib') if -d '../blib/lib';
+ unshift(@INC,'t') if -d 't';
+ 
+-do "$what.pl";
++require "./$what.pl";
+diff --git a/t/html-widths.t b/t/html-widths.t
+index 74a1ad9..ee6e26d 100755
+--- a/t/html-widths.t
++++ b/t/html-widths.t
+@@ -25,4 +25,4 @@ $what = "t/$what" if -d "t" && !-r "$what.pl";
+ unshift(@INC,'../blib/lib') if -d '../blib/lib';
+ unshift(@INC,'t') if -d 't';
+ 
+-do "$what.pl";
++require "./$what.pl";
+diff --git a/t/html-wrap.t b/t/html-wrap.t
+index 74a1ad9..ee6e26d 100755
+--- a/t/html-wrap.t
++++ b/t/html-wrap.t
+@@ -25,4 +25,4 @@ $what = "t/$what" if -d "t" && !-r "$what.pl";
+ unshift(@INC,'../blib/lib') if -d '../blib/lib';
+ unshift(@INC,'t') if -d 't';
+ 
+-do "$what.pl";
++require "./$what.pl";
+diff --git a/t/list-calls.t b/t/list-calls.t
+index 74a1ad9..ee6e26d 100755
+--- a/t/list-calls.t
++++ b/t/list-calls.t
+@@ -25,4 +25,4 @@ $what = "t/$what" if -d "t" && !-r "$what.pl";
+ unshift(@INC,'../blib/lib') if -d '../blib/lib';
+ unshift(@INC,'t') if -d 't';
+ 
+-do "$what.pl";
++require "./$what.pl";
+diff --git a/t/list-scaling.t b/t/list-scaling.t
+index 74a1ad9..ee6e26d 100755
+--- a/t/list-scaling.t
++++ b/t/list-scaling.t
+@@ -25,4 +25,4 @@ $what = "t/$what" if -d "t" && !-r "$what.pl";
+ unshift(@INC,'../blib/lib') if -d '../blib/lib';
+ unshift(@INC,'t') if -d 't';
+ 
+-do "$what.pl";
++require "./$what.pl";
+diff --git a/t/list-showtable.t b/t/list-showtable.t
+index 74a1ad9..ee6e26d 100755
+--- a/t/list-showtable.t
++++ b/t/list-showtable.t
+@@ -25,4 +25,4 @@ $what = "t/$what" if -d "t" && !-r "$what.pl";
+ unshift(@INC,'../blib/lib') if -d '../blib/lib';
+ unshift(@INC,'t') if -d 't';
+ 
+-do "$what.pl";
++require "./$what.pl";
+diff --git a/t/list-widths.t b/t/list-widths.t
+index 74a1ad9..ee6e26d 100755
+--- a/t/list-widths.t
++++ b/t/list-widths.t
+@@ -25,4 +25,4 @@ $what = "t/$what" if -d "t" && !-r "$what.pl";
+ unshift(@INC,'../blib/lib') if -d '../blib/lib';
+ unshift(@INC,'t') if -d 't';
+ 
+-do "$what.pl";
++require "./$what.pl";
+diff --git a/t/list-wrap.t b/t/list-wrap.t
+index 74a1ad9..ee6e26d 100755
+--- a/t/list-wrap.t
++++ b/t/list-wrap.t
+@@ -25,4 +25,4 @@ $what = "t/$what" if -d "t" && !-r "$what.pl";
+ unshift(@INC,'../blib/lib') if -d '../blib/lib';
+ unshift(@INC,'t') if -d 't';
+ 
+-do "$what.pl";
++require "./$what.pl";
+diff --git a/t/simple-calls.t b/t/simple-calls.t
+index 74a1ad9..ee6e26d 100755
+--- a/t/simple-calls.t
++++ b/t/simple-calls.t
+@@ -25,4 +25,4 @@ $what = "t/$what" if -d "t" && !-r "$what.pl";
+ unshift(@INC,'../blib/lib') if -d '../blib/lib';
+ unshift(@INC,'t') if -d 't';
+ 
+-do "$what.pl";
++require "./$what.pl";
+diff --git a/t/simple-scaling.t b/t/simple-scaling.t
+index 74a1ad9..ee6e26d 100755
+--- a/t/simple-scaling.t
++++ b/t/simple-scaling.t
+@@ -25,4 +25,4 @@ $what = "t/$what" if -d "t" && !-r "$what.pl";
+ unshift(@INC,'../blib/lib') if -d '../blib/lib';
+ unshift(@INC,'t') if -d 't';
+ 
+-do "$what.pl";
++require "./$what.pl";
+diff --git a/t/simple-showtable.t b/t/simple-showtable.t
+index 74a1ad9..ee6e26d 100755
+--- a/t/simple-showtable.t
++++ b/t/simple-showtable.t
+@@ -25,4 +25,4 @@ $what = "t/$what" if -d "t" && !-r "$what.pl";
+ unshift(@INC,'../blib/lib') if -d '../blib/lib';
+ unshift(@INC,'t') if -d 't';
+ 
+-do "$what.pl";
++require "./$what.pl";
+diff --git a/t/simple-widths.t b/t/simple-widths.t
+index 74a1ad9..ee6e26d 100755
+--- a/t/simple-widths.t
++++ b/t/simple-widths.t
+@@ -25,4 +25,4 @@ $what = "t/$what" if -d "t" && !-r "$what.pl";
+ unshift(@INC,'../blib/lib') if -d '../blib/lib';
+ unshift(@INC,'t') if -d 't';
+ 
+-do "$what.pl";
++require "./$what.pl";
+diff --git a/t/simple-wrap.t b/t/simple-wrap.t
+index 74a1ad9..ee6e26d 100755
+--- a/t/simple-wrap.t
++++ b/t/simple-wrap.t
+@@ -25,4 +25,4 @@ $what = "t/$what" if -d "t" && !-r "$what.pl";
+ unshift(@INC,'../blib/lib') if -d '../blib/lib';
+ unshift(@INC,'t') if -d 't';
+ 
+-do "$what.pl";
++require "./$what.pl";
+-- 
+2.14.1
+

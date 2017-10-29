@@ -287,6 +287,8 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/libavutil/avconfig.h
 )
 
+PATCHES=( "${FILESDIR}/ffmpeg32-openjpeg22.patch" )
+
 src_prepare() {
 	if [[ "${PV%_p*}" != "${PV}" ]] ; then # Snapshot
 		export revision=git-N-${FFMPEG_REVISION}
@@ -431,7 +433,7 @@ multilib_src_compile() {
 	if multilib_is_native_abi; then
 		for i in "${FFTOOLS[@]}" ; do
 			if use fftools_${i} ; then
-				emake V=1 tools/${i}
+				emake V=1 tools/${i}$(get_exeext)
 			fi
 		done
 	fi
@@ -443,7 +445,7 @@ multilib_src_install() {
 	if multilib_is_native_abi; then
 		for i in "${FFTOOLS[@]}" ; do
 			if use fftools_${i} ; then
-				dobin tools/${i}
+				dobin tools/${i}$(get_exeext)
 			fi
 		done
 	fi

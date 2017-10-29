@@ -1,0 +1,53 @@
+From c2ddddde8570793f646c96038afc97fef4a809c0 Mon Sep 17 00:00:00 2001
+From: Brian Dolbec <dolsen@gentoo.org>
+Date: Tue, 19 Sep 2017 15:12:43 -0700
+Subject: [PATCH] setup.py: Remove remaining docs from data_files install
+
+These are better handled by distro package managers, don't belong on production installs.
+Please make these conditionally installed instead.  Preferrably optionally add a build_docs
+extension to install the built sphinx docs if that option was passed to setup.py.
+---
+ setup.py | 22 ----------------------
+ 1 file changed, 22 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 3020112..a9f3993 100644
+--- a/setup.py
++++ b/setup.py
+@@ -26,10 +26,6 @@ description = '''
+     https://github.com/meejah/txtorcon
+ '''
+ 
+-sphinx_rst_files = [x for x in listdir('docs') if x[-3:] == 'rst']
+-sphinx_docs = [join('docs', x) for x in sphinx_rst_files]
+-sphinx_docs += [join('docs/_static', x) for x in listdir('docs/_static')]
+-
+ setup(
+     name='txtorcon',
+     version=__version__,
+@@ -66,22 +62,4 @@ setup(
+         "txtorcon",
+         "twisted.plugins",
+     ],
+-
+-    # I'm a little unclear if I'm doing this "properly", especially
+-    # the documentation etc. Do we really want "share/txtorcon" for
+-    # the first member of the tuple? Why does it seem I need to
+-    # duplicate this in MANIFEST.in?
+-
+-    data_files=[
+-        ('share/txtorcon', ['INSTALL', 'README.rst', 'TODO', 'meejah.asc']),
+-
+-        # this includes the Sphinx source for the
+-        # docs. The "map+filter" construct grabs all .rst
+-        # files and re-maps the path
+-        ('share/txtorcon', [
+-            'docs/apilinks_sphinxext.py',
+-            'docs/conf.py',
+-            'docs/Makefile',
+-        ] + sphinx_docs),
+-    ],
+ )
+-- 
+2.14.1
+

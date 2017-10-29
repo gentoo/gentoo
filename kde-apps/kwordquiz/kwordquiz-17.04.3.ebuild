@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="A powerful flashcard and vocabulary learning program"
 HOMEPAGE="https://www.kde.org/applications/education/kwordquiz https://edu.kde.org/kwordquiz"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="
@@ -32,6 +32,6 @@ DEPEND="
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtprintsupport)
 	$(add_qt_dep qtwidgets)
-	media-libs/phonon[qt5]
+	media-libs/phonon[qt5(+)]
 "
 RDEPEND=${DEPEND}

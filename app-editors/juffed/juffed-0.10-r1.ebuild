@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 inherit cmake-utils
 
 DESCRIPTION="QScintilla-based tabbed text editor with syntax highlighting"
-HOMEPAGE="http://juffed.com/"
+HOMEPAGE="http://juffed.com/en/"
 SRC_URI="mirror://sourceforge/${PN}/${P}-1054.tar.bz2"
 
 LICENSE="GPL-2"

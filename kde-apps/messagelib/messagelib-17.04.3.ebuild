@@ -10,7 +10,7 @@ inherit kde5
 
 DESCRIPTION="Libraries for messaging functions"
 LICENSE="GPL-2+ LGPL-2.1+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 # drop qtgui subslot operator when QT_MINIMAL >= 5.8.0

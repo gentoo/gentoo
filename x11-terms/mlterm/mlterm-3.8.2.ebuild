@@ -12,13 +12,13 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-IUSE="bidi cairo canna debug fbcon fcitx freewnn gtk gtk2 ibus libssh2 m17n-lib nls regis scim skk static-libs uim utempter xft"
+IUSE="bidi cairo canna debug fbcon fcitx freewnn gtk gtk2 harfbuzz ibus libssh2 m17n-lib nls regis scim skk static-libs uim utempter xft"
 
 RDEPEND="x11-libs/libICE
 	x11-libs/libSM
 	x11-libs/libX11
 	bidi? ( dev-libs/fribidi )
-	cairo? ( x11-libs/cairo[X] )
+	cairo? ( x11-libs/cairo[X(+)] )
 	canna? ( app-i18n/canna )
 	fbcon? ( media-fonts/unifont )
 	fcitx? ( app-i18n/fcitx )
@@ -27,6 +27,7 @@ RDEPEND="x11-libs/libICE
 		gtk2? ( x11-libs/gtk+:2 )
 		!gtk2? ( x11-libs/gtk+:3 )
 	)
+	harfbuzz? ( media-libs/harfbuzz[truetype(+)] )
 	ibus? ( app-i18n/ibus )
 	libssh2? ( net-libs/libssh2 )
 	m17n-lib? ( dev-libs/m17n-lib )
@@ -72,6 +73,7 @@ src_configure() {
 		$(use_enable debug)
 		$(use_enable fcitx)
 		$(use_enable freewnn wnn)
+		$(use_enable harfbuzz otl)
 		$(use_enable ibus)
 		$(use_enable libssh2 ssh2)
 		$(use_enable m17n-lib m17nlib)

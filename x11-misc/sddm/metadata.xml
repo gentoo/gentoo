@@ -5,6 +5,10 @@
     <email>lxqt@gentoo.org</email>
     <name>LXQt</name>
   </maintainer>
+  <maintainer type="project">
+    <email>kde@gentoo.org</email>
+    <name>Gentoo KDE Project</name>
+  </maintainer>
   <use>
     <flag name="consolekit">Use ck-launch-session from sys-auth/consolekit by default in Xsession (no native support)</flag>
     <flag name="elogind">Use <pkg>sys-auth/elogind</pkg> for session tracking.</flag>

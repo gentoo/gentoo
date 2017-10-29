@@ -1,9 +1,9 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
 
-inherit multilib toolchain-funcs
+inherit multilib toolchain-funcs flag-o-matic
 
 SNAPSHOTDATE="${P##*.}"
 MY_PV="${PN}-${SNAPSHOTDATE:0:4}-${SNAPSHOTDATE:4:2}-${SNAPSHOTDATE:6:2}"
@@ -51,6 +51,7 @@ src_prepare() {
 		{src,modelgen}/ap_match.cc || die "sed failed"
 
 	tc-export CC CXX
+	append-cxxflags -std=gnu++98
 }
 
 src_compile () {

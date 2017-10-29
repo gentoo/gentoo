@@ -3,7 +3,7 @@
 
 EAPI=5
 
-USE_RUBY="ruby21 ruby22 ruby23 ruby24"
+USE_RUBY="ruby22 ruby23 ruby24"
 
 RUBY_FAKEGEM_TASK_TEST="-Ilib test"
 RUBY_FAKEGEM_TASK_DOC="doc"
@@ -54,6 +54,12 @@ all_ruby_prepare() {
 	# Skip tests using rack-ntlm which is not packaged. Weirdly these
 	# only fail on jruby.
 	rm test/test_auth.rb || die
+
+	# Skip test failing due to hard-coded expired certificate
+	sed -i -e '/test_verification_without_httpclient/,/^  end/ s:^:#:' test/test_ssl.rb || die
+
+	# Skip test depending on obsolete and vulnerable SSLv3
+	sed -i -e '/test_no_sslv3/,/^  end/ s:^:#:' test/test_ssl.rb || die
 }
 
 each_ruby_test() {

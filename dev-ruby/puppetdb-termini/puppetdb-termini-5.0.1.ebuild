@@ -3,7 +3,7 @@
 
 EAPI=5
 
-USE_RUBY="ruby21 ruby22"
+USE_RUBY="ruby22 ruby23 ruby24"
 
 inherit unpacker
 
@@ -15,7 +15,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE=""
 # will need the same keywords as puppet
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 
 RDEPEND+=""
 DEPEND+=""

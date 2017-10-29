@@ -1,0 +1,19 @@
+Build fails under pypy(3) when enabling these flags.
+
+--- llfuse-1.3/setup.py
++++ llfuse-1.3/setup.py
+@@ -84,12 +84,12 @@
+     compile_args.append('-Wno-unused-parameter')
+ 
+     # Value-changing conversions should always be explicit.
+-    compile_args.append('-Werror=conversion')
++    # compile_args.append('-Werror=conversion')
+ 
+     # Note that (i > -1) is false if i is unsigned (-1 will be converted to
+     # a large positive value). We certainly don't want to do this by
+     # accident.
+-    compile_args.append('-Werror=sign-compare')
++    # compile_args.append('-Werror=sign-compare')
+ 
+     # Enable all fatal warnings only when compiling from Mercurial tip.
+     # (otherwise we break forward compatibility because compilation with newer

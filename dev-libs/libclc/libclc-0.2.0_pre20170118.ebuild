@@ -15,7 +15,7 @@ else
 	GIT_ECLASS="vcs-snapshot"
 fi
 
-inherit python-any-r1 toolchain-funcs ${GIT_ECLASS}
+inherit llvm python-any-r1 toolchain-funcs ${GIT_ECLASS}
 
 DESCRIPTION="OpenCL C library"
 HOMEPAGE="http://libclc.llvm.org/"
@@ -38,14 +38,19 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}"
 
-src_configure() {
-	# we need to find llvm with matching clang version, so look for
-	# clang first, and then use llvm-config from the same location
-	local clang_path=$(type -P clang) || die
+llvm_check_deps() {
+	has_version "sys-devel/clang:${LLVM_SLOT}"
+}
 
+pkg_setup() {
+	# we do not need llvm_pkg_setup
+	python-any-r1_pkg_setup
+}
+
+src_configure() {
 	./configure.py \
 		--with-cxx-compiler="$(tc-getCXX)" \
-		--with-llvm-config="${clang_path%/*}/llvm-config" \
+		--with-llvm-config="$(get_llvm_prefix)/bin/llvm-config" \
 		--prefix="${EPREFIX}/usr" || die
 }
 

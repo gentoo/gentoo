@@ -1,0 +1,42 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	before xendomains xend sshd ntp-client ntpd nfs nfsmount rsyncd portmap dhcp
+	need xencommons
+}
+
+xenstored_dir_check() {
+	# create dir dynamically
+	local i
+	for i in /var/lock/subsys /run/xen /run/xend/boot /run/xenstored; do
+		[ -x $i ] || mkdir -p $i
+	done
+}
+
+start() {
+	ebegin "Starting xenstored daemon"
+	xenstored_dir_check
+	start-stop-daemon --start --exec /usr/sbin/xenstored \
+		--pidfile /run/xenstored.pid \
+		-- --pid-file=/run/xenstored.pid \
+		$XENSTORED_OPTS
+	until xenstore-exists / || $((15 < ++i))
+	do
+		printf "."
+		sleep 1
+	done
+	einfo "Setting domain0 name record"
+	/usr/libexec/xen/bin/xen-init-dom0
+
+	eend $*
+}
+
+stop() {
+	ebegin "Stopping xenstored daemon"
+	start-stop-daemon --stop --exec /usr/sbin/xenstored \
+		--pidfile /run/xenstored.pid
+	eend $?
+}
+

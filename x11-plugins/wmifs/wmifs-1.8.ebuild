@@ -4,7 +4,7 @@
 EAPI=6
 
 DESCRIPTION="Network monitoring dockapp"
-HOMEPAGE="http://www.dockapps.net/wmtime"
+HOMEPAGE="http://www.dockapps.net/wmifs"
 SRC_URI="https://dev.gentoo.org/~voyageur/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -21,6 +21,8 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 src_prepare() {
+	cmake-utils_src_prepare
+
 	sed -e 's/DESTINATION lib/DESTINATION ${CMAKE_INSTALL_LIBDIR}/' \
 		-i CMakeLists.txt \
 		|| die

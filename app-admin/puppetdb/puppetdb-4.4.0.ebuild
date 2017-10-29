@@ -74,7 +74,7 @@ src_install() {
 	dosym ../apps/puppetdb/bin/puppetdb /opt/puppetlabs/server/bin/puppetdb
 	dodir /opt/puppetlabs/bin
 	dosym ../server/apps/puppetdb/bin/puppetdb /opt/puppetlabs/bin/puppetdb
-	dosym /opt/puppetlabs/server/apps/puppetdb/bin/puppetdb /usr/bin/puppetdb
+	dosym ../../opt/puppetlabs/server/apps/puppetdb/bin/puppetdb /usr/bin/puppetdb
 	# init type tasks
 	newconfd ext/default puppetdb
 	systemd_dounit ext/redhat/puppetdb.service

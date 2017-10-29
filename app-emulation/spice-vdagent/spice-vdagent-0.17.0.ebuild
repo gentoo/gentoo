@@ -6,8 +6,8 @@ EAPI=6
 inherit linux-info
 
 DESCRIPTION="SPICE VD Linux Guest Agent"
-HOMEPAGE="http://spice-space.org/"
-SRC_URI="http://spice-space.org/download/releases/${P}.tar.bz2"
+HOMEPAGE="https://www.spice-space.org/"
+SRC_URI="https://www.spice-space.org/download/releases/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

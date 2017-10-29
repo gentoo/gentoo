@@ -8,12 +8,12 @@ VIRTUALX_REQUIRED="test"
 inherit kde5
 
 DESCRIPTION="KDE library for mathematical features"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="eigen nls"
 
 RDEPEND="
 	$(add_qt_dep qtdeclarative)
-	$(add_qt_dep qtgui)
+	$(add_qt_dep qtgui '-gles2')
 	$(add_qt_dep qtsvg)
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>cjk@gentoo.org</email>
+    <name>Cjk</name>
+  </maintainer>
+  <longdescription lang="en">
+    ibus-table-others provides the following tables for IBus-Table:
+
+    * CNS11643
+    * Compose
+    * Emoji
+    * IPA-X-SAMPA
+    * LaTex
+    * Mathwriter
+    * RussianTraditional
+    * Thai
+    * Translit
+    * Ua-Translit
+    * Viqr
+    * Yawerty
+  </longdescription>
+  <upstream>
+    <remote-id type="github">moebiuscurve/ibus-table-others</remote-id>
+  </upstream>
+</pkgmetadata>

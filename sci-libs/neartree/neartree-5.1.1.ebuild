@@ -22,7 +22,7 @@ DEPEND="${RDEPEND}"
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
-	default
+	cmake-utils_src_prepare
 	cp "${FILESDIR}"/CMakeLists.txt . || die
 }
 

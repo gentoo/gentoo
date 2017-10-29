@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -51,7 +51,7 @@ src_install() {
 	newins razertool.rules.example 90-razertool.rules
 
 	# Icon and desktop entry
-	dosym /usr/share/${PN}/pixmaps/${PN}-icon.png /usr/share/pixmaps/${PN}-icon.png
+	dosym ../razertool/pixmaps/razertool-icon.png /usr/share/pixmaps/razertool-icon.png
 	make_desktop_entry "razertool-gtk" "RazerTool" ${PN}-icon "GTK;Settings;HardwareSettings"
 }
 

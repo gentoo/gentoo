@@ -3,11 +3,11 @@
 
 EAPI=6
 
-inherit eutils
+inherit autotools libtool flag-o-matic
 
 DESCRIPTION="C++ API interface to the MySQL database"
 HOMEPAGE="http://tangentsoft.net/mysql++/"
-SRC_URI="http://www.tangentsoft.net/mysql++/releases/${P}.tar.gz"
+SRC_URI="http://www.tangentsoft.net/mysqlpp/releases/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0/3"
@@ -17,18 +17,35 @@ IUSE="doc"
 RDEPEND="virtual/libmysqlclient:="
 DEPEND="${RDEPEND}"
 DOCS=( CREDITS.txt HACKERS.txt Wishlist doc/ssqls-pretty )
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.2.1-gold.patch
+	"${FILESDIR}"/${PN}-3.2.3-mariadb-10.2.patch
+	"${FILESDIR}"/${PN}-3.2.3-as-needed.patch
+)
 
 src_prepare() {
-	eapply "${FILESDIR}/${PN}-3.2.1-gold.patch"
-	eapply_user
+	# Bug filed upstream about deprecated std::auto_ptr
+	append-cxxflags $(test-flags-CXX -Wno-deprecated-declarations)
+	# Bad symlink for libtool in the archive
+	rm "${S}/ltmain.sh" || die
+
+	default
+
+	_elibtoolize --auto-ltdl --install --copy --force
+	elibtoolize
 	# Current MySQL libraries are always with threads and slowly being removed
 	sed -i -e "s/mysqlclient_r/mysqlclient/" "${S}/configure" || die
 	rm "${S}/doc/"README-*-RPM.txt || die
 }
 
 src_configure() {
-	local myconf="--enable-thread-check --with-mysql=${EPREFIX}/usr"
-	econf ${myconf}
+	local myconf=(
+		--enable-thread-check
+		--with-mysql="${EPREFIX}/usr"
+		--with-mysql-lib="${EPREFIX}$(mysql_config --variable=pkglibdir)"
+		--with-mysql-include="${EPREFIX}$(mysql_config --variable=pkgincludedir)"
+	)
+	econf "${myconf[@]}"
 }
 
 src_install() {

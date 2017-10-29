@@ -42,11 +42,15 @@ DEPEND="${RDEPEND}
 		x11-proto/xproto
 	)"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-shared.patch
+	"${FILESDIR}"/${P}-underlink.patch
+	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${P}-rpath.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-shared.patch \
-		"${FILESDIR}"/${P}-underlink.patch \
-		"${FILESDIR}"/${P}-gentoo.patch \
-		"${FILESDIR}"/${P}-rpath.patch
+	cmake-utils_src_prepare
 
 	sed -i \
 		-e "s:allegro-\${ALLEGRO_VERSION}:${PF}:" \

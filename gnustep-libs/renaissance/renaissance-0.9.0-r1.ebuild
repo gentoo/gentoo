@@ -8,7 +8,7 @@ DESCRIPTION="GNUstep Renaissance allows to describe user interfaces XML files"
 HOMEPAGE="http://www.gnustep.it/Renaissance/index.html"
 SRC_URI="http://www.gnustep.it/Renaissance/Download/${P/r/R}.tar.gz"
 
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 LICENSE="LGPL-2.1"
 SLOT="0"
 IUSE=""

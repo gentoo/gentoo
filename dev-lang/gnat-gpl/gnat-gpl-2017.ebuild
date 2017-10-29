@@ -4,10 +4,8 @@
 EAPI="5"
 
 PATCH_VER="1.0"
-#UCLIBC_VER="1.0"
 
 TOOLCHAIN_GCC_PV=6.3.0
-GCC_FILESDIR=${PORTDIR}/sys-devel/gcc/files
 
 inherit eutils toolchain-funcs toolchain
 

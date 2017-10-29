@@ -10,7 +10,7 @@ if [[ ${PV} != 9999 ]]; then
 	MY_P="FreeRDP-${MY_PV}"
 	S="${WORKDIR}/${MY_P}"
 	SRC_URI="https://github.com/FreeRDP/FreeRDP/archive/${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~x86"
+	KEYWORDS="~alpha amd64 ~arm ~ppc ~ppc64 ~x86"
 else
 	inherit git-r3
 	SRC_URI=""
@@ -89,11 +89,17 @@ DEPEND="${RDEPEND}
 "
 
 DOCS=( README )
-PATCHES=( "${FILESDIR}"/freerdp-Fix-gstreamer-1.0-detection.patch )
+PATCHES=(
+	"${FILESDIR}"/2.0.0-rc0-libressl.patch
+	"${FILESDIR}"/freerdp-Fix-gstreamer-1.0-detection.patch
+)
 
 src_configure() {
 	local mycmakeargs=(
+		-DBUILD_TESTING=$(usex test)
+		-DCHANNEL_URBDRC=$(usex usb)
 		-DWITH_ALSA=$(usex alsa)
+		-DWITH_CCACHE=OFF
 		-DWITH_CLIENT=$(usex client)
 		-DWITH_CUPS=$(usex cups)
 		-DWITH_DEBUG_ALL=$(usex debug)
@@ -108,11 +114,9 @@ src_configure() {
 		-DWITH_PCSC=$(usex smartcard)
 		-DWITH_LIBSYSTEMD=$(usex systemd)
 		-DWITH_SSE2=$(usex cpu_flags_x86_sse2)
-		-DCHANNEL_URBDRC=$(usex usb)
 		-DWITH_X11=$(usex X)
 		-DWITH_XINERAMA=$(usex xinerama)
 		-DWITH_XV=$(usex xv)
-		-DBUILD_TESTING=$(usex test)
 		-DWITH_WAYLAND=$(usex wayland)
 	)
 	cmake-utils_src_configure

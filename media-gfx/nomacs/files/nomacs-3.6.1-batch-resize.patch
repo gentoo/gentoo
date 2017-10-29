@@ -1,0 +1,23 @@
+From 11cbd66ca66ea9d97d72546a92fe2b487e62481b Mon Sep 17 00:00:00 2001
+From: diemmarkus <diemmarkus@gmail.com>
+Date: Wed, 17 May 2017 10:08:05 +0200
+Subject: [PATCH] fixes #118 batch resizing - used to only work if rotate was
+ active
+
+---
+ ImageLounge/src/DkCore/DkProcess.cpp | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/ImageLounge/src/DkCore/DkProcess.cpp b/ImageLounge/src/DkCore/DkProcess.cpp
+index a47b4194..d0dfd97f 100644
+--- a/src/DkCore/DkProcess.cpp
++++ b/src/DkCore/DkProcess.cpp
+@@ -255,8 +255,6 @@ bool DkBatchTransform::compute(QSharedPointer<DkImageContainer> container, QStri
+ 		rotationMatrix.rotate((double)mAngle);
+ 		tmpImg = tmpImg.transformed(rotationMatrix);
+ 	}
+-	else
+-		tmpImg = img;
+ 
+ 	// logs
+ 	if (!tmpImg.isNull()) {

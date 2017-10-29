@@ -13,7 +13,6 @@
 		* runstat: Export statistics about a process's execution.
 	</longdescription>
 	<upstream>
-		<remote-id type="google-code">cronutils</remote-id>
 		<remote-id type="github">google/cronutils</remote-id>
 	</upstream>
 </pkgmetadata>

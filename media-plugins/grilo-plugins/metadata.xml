@@ -11,7 +11,6 @@
 	<flag name="flickr">Enable Flickr support</flag>
 	<flag name="freebox">Build support for viewing TV channels using Freebox</flag>
 	<flag name="gnome-online-accounts">Enable <pkg>net-libs/gnome-online-accounts</pkg> support</flag>
-	<flag name="pocket">Support for showing content from Pocket</flag>
 	<flag name="subtitles">Enables support for subtitle from OpenSubtitles</flag>
 	<flag name="thetvdb">Build support for thetvdb.com</flag>
 	<flag name="tracker">Build support for content discovery using the <pkg>app-misc/tracker</pkg> indexer</flag>

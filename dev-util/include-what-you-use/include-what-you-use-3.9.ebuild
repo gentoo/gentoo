@@ -28,8 +28,8 @@ REQUIRED_USE=${PYTHON_REQUIRED_USE}
 S=${WORKDIR}/llvm/tools/clang/tools/${PN}
 
 src_prepare() {
+	cmake-utils_src_prepare
 	python_fix_shebang .
-	default
 }
 
 src_configure() {

@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_5 )
+PYTHON_COMPAT=( python2_7 python3_5 python3_6 )
 
 inherit distutils-r1 git-r3
 
@@ -25,6 +25,7 @@ RDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/httplib2[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
+	dev-python/netaddr[${PYTHON_USEDEP}]
 	app-text/asciidoc
 	net-misc/sshpass
 	virtual/ssh

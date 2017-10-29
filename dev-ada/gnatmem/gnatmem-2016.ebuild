@@ -14,25 +14,14 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/573995c8c7a447658e0affa2 -> ${MYP}.t
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
+IUSE="gnat_2016 gnat_2017"
 
 RDEPEND=""
-DEPEND="dev-ada/gprbuild"
+DEPEND="dev-ada/gprbuild[gnat_2016=,gnat_2017=]"
 
 S="${WORKDIR}"/${MYP}
 
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
-
-pkg_setup() {
-	GCC=${ADA:-$(tc-getCC)}
-	export GNATBIND="${GCC/gcc/gnatbind}"
-	if [[ -z "$(type ${GNATBIND} 2>/dev/null)" ]] ; then
-		eerror "You need a gcc compiler that provides the Ada Compiler:"
-		eerror "1) use gcc-config to select the right compiler or"
-		eerror "2) set ADA=gcc-4.9.4 in make.conf"
-		die "ada compiler not available"
-	fi
-}
 
 src_prepare() {
 	default

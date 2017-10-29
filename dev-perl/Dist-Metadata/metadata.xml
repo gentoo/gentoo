@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Dist-Metadata</remote-id>
+    <remote-id type="cpan-module">Dist::Metadata</remote-id>
+    <remote-id type="cpan-module">Dist::Metadata::Archive</remote-id>
+    <remote-id type="cpan-module">Dist::Metadata::Dir</remote-id>
+    <remote-id type="cpan-module">Dist::Metadata::Dist</remote-id>
+    <remote-id type="cpan-module">Dist::Metadata::Struct</remote-id>
+    <remote-id type="cpan-module">Dist::Metadata::Tar</remote-id>
+    <remote-id type="cpan-module">Dist::Metadata::Zip</remote-id>
+  </upstream>
+</pkgmetadata>

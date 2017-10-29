@@ -9,7 +9,7 @@ inherit kde5 flag-o-matic
 DESCRIPTION="Periodic table of the elements"
 HOMEPAGE="https://www.kde.org/applications/education/kalzium
 https://edu.kde.org/kalzium"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="editor solver"
 
 DEPEND="
@@ -42,6 +42,8 @@ DEPEND="
 RDEPEND="${DEPEND}
 	sci-chemistry/chemical-mime-data
 "
+
+PATCHES=( "${FILESDIR}/${P}-ocaml404.patch" ) # bug 603050
 
 src_configure(){
 	# Fix missing finite()

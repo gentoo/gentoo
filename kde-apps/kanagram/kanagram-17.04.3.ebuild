@@ -9,7 +9,7 @@ inherit kde5
 DESCRIPTION="Game based on anagrams of words"
 HOMEPAGE="https://www.kde.org/applications/education/kanagram
 https://edu.kde.org/kanagram"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="
@@ -27,7 +27,7 @@ DEPEND="
 	$(add_qt_dep qtdeclarative)
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
-	media-libs/phonon[qt5]
+	media-libs/phonon[qt5(+)]
 "
 RDEPEND="${DEPEND}
 	$(add_kdeapps_dep kdeedu-data)

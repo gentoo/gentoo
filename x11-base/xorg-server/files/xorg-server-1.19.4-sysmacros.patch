@@ -1,0 +1,36 @@
+From 7d097c0c38ab82115a1e56489bfe09f9f01b24de Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <leio@gentoo.org>
+Date: Wed, 11 Oct 2017 16:11:49 +0300
+Subject: [PATCH] config/udev: Add sys/sysmacros.h include for major/minor
+ functions for new glibc
+
+Commits d732c36597fa and 84e3b96b5313 added the include to some files, but
+missed config/udev.c, where the major and minor functions are used as well.
+This should be Linux-only, so we don't need the sys/mkdev.h case here for
+Solaris.
+
+Signed-off-by: Mart Raudsepp <leio@gentoo.org>
+---
+https://bugs.gentoo.org/633530
+https://patchwork.freedesktop.org/patch/181800/
+
+ config/udev.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/config/udev.c b/config/udev.c
+index 932f230..b3b8d0f 100644
+--- a/config/udev.c
++++ b/config/udev.c
+@@ -30,6 +30,9 @@
+ #include <libudev.h>
+ #include <ctype.h>
+ #include <unistd.h>
++#ifdef HAVE_SYS_SYSMACROS_H
++#include <sys/sysmacros.h>
++#endif
+ 
+ #include "input.h"
+ #include "inputstr.h"
+-- 
+2.10.2
+

@@ -19,7 +19,7 @@ LICENSE="LGPL-2.1+"
 SLOT="0"
 
 RDEPEND="
-	dev-libs/libdbusmenu-qt[qt5]
+	dev-libs/libdbusmenu-qt[qt5(+)]
 	>=dev-libs/libqtxdg-2.0.0
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5

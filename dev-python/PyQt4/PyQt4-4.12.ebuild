@@ -20,7 +20,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="alpha amd64 arm ~arm64 ia64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
 
-IUSE="X compat dbus debug declarative designer doc examples help kde multimedia
+IUSE="X compat dbus debug declarative designer doc examples help multimedia
 	opengl phonon script scripttools sql svg testlib webkit xmlpatterns"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -45,10 +45,7 @@ RDEPEND="
 	help? ( >=dev-qt/qthelp-${QT_PV} )
 	multimedia? ( >=dev-qt/qtmultimedia-${QT_PV} )
 	opengl? ( >=dev-qt/qtopengl-${QT_PV} )
-	phonon? (
-		kde? ( >=media-libs/phonon-4.7[qt4] )
-		!kde? ( || ( >=dev-qt/qtphonon-${QT_PV} >=media-libs/phonon-4.7[qt4] ) )
-	)
+	phonon? ( >=media-libs/phonon-4.7[qt4] )
 	script? ( >=dev-qt/qtscript-${QT_PV} )
 	scripttools? ( >=dev-qt/qtgui-${QT_PV} )
 	sql? ( >=dev-qt/qtsql-${QT_PV} )

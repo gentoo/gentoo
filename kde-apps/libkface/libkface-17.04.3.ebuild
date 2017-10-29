@@ -10,7 +10,7 @@ DESCRIPTION="Qt/C++ wrapper around LibFace to perform face recognition and detec
 HOMEPAGE="https://projects.kde.org/projects/kde/kdegraphics/libs/libkface"
 
 LICENSE="BSD GPL-2+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="
@@ -19,7 +19,9 @@ DEPEND="
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
 	media-libs/opencv:=
-	|| ( <media-libs/opencv-3.0.0 >=media-libs/opencv-3.1.0-r6[contrib] )
+	|| ( <media-libs/opencv-3.0.0
+		( >=media-libs/opencv-3.1.0-r6[contrib] <media-libs/opencv-3.3 )
+	)
 "
 RDEPEND="${DEPEND}"
 

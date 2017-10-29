@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -27,7 +27,7 @@ src_prepare() {
 }
 
 src_configure() {
-	mycmakeargs=(
+	local mycmakeargs=(
 		$(cmake-utils_use_build samples ASSIMP_SAMPLES) \
 		$(cmake-utils_use_build tools ASSIMP_TOOLS) \
 		$(cmake-utils_use_build static STATIC_LIB) \

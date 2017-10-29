@@ -4,10 +4,6 @@
   <maintainer type="person">
     <email>ikelos@gentoo.org</email>
   </maintainer>
-  <maintainer type="project">
-    <email>forensics@gentoo.org</email>
-    <name>Gentoo Forensics Project</name>
-  </maintainer>
   <upstream>
     <remote-id type="sourceforge">foremost</remote-id>
   </upstream>

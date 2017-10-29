@@ -1,0 +1,33 @@
+From 695556cfe22cdcec13f2dc206abcc425f7168519 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Fri, 13 Oct 2017 08:41:59 +1300
+Subject: Prevent volume.pl being installed to @INC
+
+$DISTROOT/*.pl get installed as Audio/*.pl, due to the historical use
+use of ".pl" to indicate "perl library" in Perl 4 and older.
+
+Bug: https://rt.cpan.org/Ticket/Display.html?id=123258
+---
+ MANIFEST                  | 2 +-
+ volume.pl => eg/volume.pl | 0
+ 2 files changed, 1 insertion(+), 1 deletion(-)
+ rename volume.pl => eg/volume.pl (100%)
+
+diff --git a/MANIFEST b/MANIFEST
+index 627c3fe..d15c4ab 100644
+--- a/MANIFEST
++++ b/MANIFEST
+@@ -6,5 +6,5 @@ Mix.h
+ Mixer.pm
+ Mixer.xs
+ test.pl
+-volume.pl
++eg/volume.pl
+ README
+diff --git a/volume.pl b/eg/volume.pl
+similarity index 100%
+rename from volume.pl
+rename to eg/volume.pl
+-- 
+2.14.2
+

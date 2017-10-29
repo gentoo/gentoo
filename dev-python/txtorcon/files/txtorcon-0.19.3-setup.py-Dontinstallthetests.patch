@@ -1,0 +1,26 @@
+From f407d11f3d4951c301fd47df211f0d93d107b8d1 Mon Sep 17 00:00:00 2001
+From: Brian Dolbec <dolsen@gentoo.org>
+Date: Tue, 19 Sep 2017 11:49:14 -0700
+Subject: [PATCH] setup.py: Don't install the tests
+
+This was installing the tests to its own namespace, not under the txtorcon namespace.
+If you want the tests installed, then move them under the txtorcon namespace.
+---
+ setup.py | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 38c6421..d5f8016 100644
+--- a/setup.py
++++ b/setup.py
+@@ -64,7 +64,6 @@ setup(
+     url=__url__,
+     license=__license__,
+     packages=[
+-        "test",
+         "txtorcon",
+         "twisted.plugins",
+     ],
+-- 
+2.14.1
+

@@ -5,7 +5,7 @@ EAPI=5
 inherit autotools eutils multilib versionator
 
 MY_PV=796b552e8a32cc8e63d40dfb94b8a6209731060b
-DESCRIPTION="High Quality Reverb and Impulse Response Convolution library including XMMS/Audacious Effect plugins"
+DESCRIPTION="Reverb and Impulse Response Convolution plug-ins (Audacious/JACK)"
 HOMEPAGE="https://savannah.nongnu.org/projects/freeverb3"
 SRC_URI="https://www.hartwork.org/public/${P}.tar.gz"
 

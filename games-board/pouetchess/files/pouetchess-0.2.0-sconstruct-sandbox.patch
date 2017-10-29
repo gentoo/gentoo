@@ -8,7 +8,7 @@
 +import os,glob,SCons.Util
  
  
-+# http://dev.gentoo.org/~vapier/scons-blows.txt
++# https://dev.gentoo.org/~vapier/scons-blows.txt
  
  # create build environment
  

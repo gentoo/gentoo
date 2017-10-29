@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 SCONS_MIN_VERSION="2.3.0"
 CHECKREQS_DISK_BUILD="2400M"
 CHECKREQS_DISK_USR="512M"
@@ -43,6 +43,14 @@ DEPEND="${RDEPEND}
 		dev-python/pyyaml
 	)"
 PDEPEND="tools? ( >=app-admin/mongo-tools-${PV} )"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-3.2.0-fix-scons.patch"
+	"${FILESDIR}/${PN}-3.2.4-boost-1.60.patch"
+	"${FILESDIR}/${PN}-3.2.10-boost-1.62.patch"
+	"${FILESDIR}/${PN}-3.2.16-Replace-string-with-explicit-std-string.patch"
+	"${FILESDIR}/${PN}-3.4.6-sysmacros-include.patch"
+)
 
 S=${WORKDIR}/${MY_P}
 
@@ -99,16 +107,6 @@ pkg_setup() {
 	fi
 }
 
-src_prepare() {
-	epatch \
-		"${FILESDIR}/${PN}-3.2.0-fix-scons.patch" \
-		"${FILESDIR}/${PN}-3.2.4-boost-1.60.patch"
-	if has_version ">=dev-libs/boost-1.62"; then
-		epatch "${FILESDIR}/${PN}-3.2.10-boost-1.62.patch"
-	fi
-	epatch_user
-}
-
 src_compile() {
 	# respect mongoDB upstream's basic recommendations
 	# see bug #536688 and #526114
@@ -122,6 +120,7 @@ src_compile() {
 src_install() {
 	escons "${scons_opts[@]}" --nostrip install --prefix="${ED}"/usr
 
+	local x
 	for x in /var/{lib,log}/${PN}; do
 		keepdir "${x}"
 		fowners mongodb:mongodb "${x}"
@@ -130,10 +129,10 @@ src_install() {
 	doman debian/mongo*.1
 	dodoc README docs/building.md
 
-	newinitd "${FILESDIR}/${PN}.initd-r2" ${PN}
-	newconfd "${FILESDIR}/${PN}.confd-r2" ${PN}
-	newinitd "${FILESDIR}/${PN/db/s}.initd-r2" ${PN/db/s}
-	newconfd "${FILESDIR}/${PN/db/s}.confd-r2" ${PN/db/s}
+	newinitd "${FILESDIR}/${PN}.initd-r3" ${PN}
+	newconfd "${FILESDIR}/${PN}.confd-r3" ${PN}
+	newinitd "${FILESDIR}/${PN/db/s}.initd-r3" ${PN/db/s}
+	newconfd "${FILESDIR}/${PN/db/s}.confd-r3" ${PN/db/s}
 
 	insinto /etc
 	newins "${FILESDIR}/${PN}.conf-r3" ${PN}.conf
@@ -157,7 +156,7 @@ pkg_preinst() {
 
 src_test() {
 	# this one test fails
-	rm jstests/core/repl_write_threads_start_param.js
+	rm jstests/core/repl_write_threads_start_param.js || die
 
 	./buildscripts/resmoke.py --dbpathPrefix=test --suites core || die "Tests failed"
 }

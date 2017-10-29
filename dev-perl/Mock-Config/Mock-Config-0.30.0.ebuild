@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Temporarily set Config or XSConfig values"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc64 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~x86"
 LICENSE="Artistic-2"
 IUSE="test"
 

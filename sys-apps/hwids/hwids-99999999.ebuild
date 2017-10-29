@@ -8,7 +8,8 @@ inherit udev
 DESCRIPTION="Hardware (PCI, USB, OUI, IAB) IDs databases"
 HOMEPAGE="https://github.com/gentoo/hwids"
 if [[ ${PV} == "99999999" ]]; then
-	inherit git-r3
+	PYTHON_COMPAT=( python3_6 )
+	inherit git-r3 python-any-r1
 	EGIT_REPO_URI="${HOMEPAGE}.git"
 else
 	SRC_URI="${HOMEPAGE}/archive/${P}.tar.gz"
@@ -19,17 +20,30 @@ LICENSE="|| ( GPL-2 BSD ) public-domain"
 SLOT="0"
 IUSE="+net +pci +udev +usb"
 
-DEPEND="udev? (
-	dev-lang/perl
-	>=virtual/udev-206
-)"
-[[ ${PV} == "99999999" ]] && DEPEND+=" udev? ( net-misc/curl )"
-RDEPEND="!<sys-apps/pciutils-3.1.9-r2
-	!<sys-apps/usbutils-005-r1"
+DEPEND=""
+RDEPEND="
+	udev? ( virtual/udev )
+	!<sys-apps/pciutils-3.1.9-r2
+	!<sys-apps/usbutils-005-r1
+"
 
-if [[ ${PV} != 99999999 ]]; then
+if [[ ${PV} == 99999999 ]]; then
+	DEPEND+="
+		net-misc/curl
+		udev? ( $(python_gen_any_dep 'dev-python/pyparsing[${PYTHON_USEDEP}]') )
+	"
+	python_check_deps() {
+		if use udev; then
+			has_version --host-root "dev-python/pyparsing[${PYTHON_USEDEP}]"
+		fi
+	}
+else
 	S=${WORKDIR}/hwids-${P}
 fi
+
+pkg_setup() {
+	:
+}
 
 src_unpack() {
 	if [[ ${PV} == 99999999 ]]; then
@@ -56,6 +70,10 @@ _emake() {
 }
 
 src_compile() {
+	if [[ ${PV} == 99999999 ]] && use udev; then
+		python_setup
+		_emake udev-hwdb
+	fi
 	_emake
 }
 

@@ -5,7 +5,7 @@
 description="serf agent"
 extra_started_commands="reload"
 group=${group:-${RC_SVCNAME}}
-pidfile=${pidfile:-"/run/${RC_SVCNAME}/${RC_SVCNAME}.pid"}
+pidfile=${pidfile:-"/run/${RC_SVCNAME}.pid"}
 user=${user:-${RC_SVCNAME}}
 
 command="/usr/bin/${RC_SVCNAME}"
@@ -14,25 +14,14 @@ command_background="true"
 start_stop_daemon_args="--user ${user} --group ${group} \
 	--stdout /var/log/${RC_SVCNAME}/${RC_SVCNAME}.log \
 	--stderr /var/log/${RC_SVCNAME}/${RC_SVCNAME}.log"
+stopsig="SIGINT"
 
 depend() {
 	need net
-	after net
 }
 
 reload() {
 	ebegin "Reloading ${RC_SVCNAME}"
 	${command} reload
-	eend $?
-}
-
-start_pre() {
-	checkpath -d -m 0755 -o "${user}":"${group}" "${pidfile%/*}"
-}
-
-stop() {
-	# SIGINT is required for graceful shutdown of serf agent
-	ebegin "Stopping ${RC_SVCNAME}"
-	start-stop-daemon --stop --signal SIGINT --pidfile "${pidfile}"
 	eend $?
 }

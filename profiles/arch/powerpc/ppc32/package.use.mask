@@ -1,7 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# This file requires >=portage-2.1.1
+# Sergei Trofimovich <slyfox@gentoo.org> (3 Oct 2017)
+# Incomplete support, bug #605878.
+net-vpn/tor seccomp
 
 # Michał Górny <mgorny@gentoo.org> (23 Mar 2017)
 # Most of clang runtimes are not supported here
@@ -26,7 +28,7 @@ sci-libs/gdal armadillo
 
 ## Thomas Deutschmann <whissi@gentoo.org> (2016-12-04)
 # sci-libs/gdal[mdb] requires dev-java/jackcess which is not keyworded
->=sci-libs/gdal-2.0.3 mdb
+sci-libs/gdal mdb
 
 # Michał Górny <mgorny@gentoo.org> (18 Nov 2016)
 # libomp does not support 32-bit PPC, #600148.
@@ -65,7 +67,6 @@ app-text/texlive pdfannotextractor
 dev-lang/logtalk fop
 gnome-extra/libgda reports
 net-analyzer/wireshark doc-pdf
-sci-misc/nco ncap2
 
 # Michael Weber <xmw@gentoo.org> (09 Jan 2016)
 # no ppc support in media-libs/glfw
@@ -83,7 +84,7 @@ media-video/vlc x265
 
 # Ben de Groot <yngwin@gentoo.org> (20 Jul 2015)
 # missing keyword
-media-sound/audacity midi
+media-sound/audacity midi soundtouch
 
 # Pacho Ramos <pacho@gentoo.org> (02 Jun 2015)
 # Missing keywords (02 Jun 2015)

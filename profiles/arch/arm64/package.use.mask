@@ -1,6 +1,18 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# NeddySeagoon <neddysegoon@gentoo.org> 24 Aug 2017
+# Support for g15daemon  still needs -9999 packages on all arches 
+media-sound/mumble g15
+
+# NeddySeagoon <neddysegoon@gentoo.org> (21 Aug 2107)
+# Pulls in sci-libs/coinor-mp which wants immintrin.h not on arm64
+app-office/libreoffice coinmp
+
+# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
+media-libs/mesa vulkan
+
 # Alexis Ballier <aballier@gentoo.org> (31 Jul 2017)
 # Passes -mfpu=neon with neon enabled
 mail-client/thunderbird neon
@@ -56,10 +68,6 @@ www-servers/nginx luajit
 app-emulation/libvirt virtualbox
 
 # Alexis Ballier <aballier@gentoo.org> (7 Jul 2017)
-# gst:0.10: Thanks but no thanks.
-dev-qt/qtmultimedia gstreamer010
-
-# Alexis Ballier <aballier@gentoo.org> (7 Jul 2017)
 # nautilus pulls in gnome-extra/sushi -> dev-libs/gjs -> dev-lang/spidermonkey:24
 # Older spidermonkey does not work on arm64.
 # This should be revised when gjs is updated.
@@ -78,10 +86,6 @@ dev-qt/designer:4 webkit
 dev-qt/qtdeclarative:4 webkit
 dev-python/pyside webkit
 kde-frameworks/kdelibs:4 webkit
-
-# Alexis Ballier <aballier@gentoo.org> (26 Jun 2017)
-# Needs gstreamer:0.10
-<dev-qt/qtwebkit-4.9 gstreamer
 
 # Alexis Ballier <aballier@gentoo.org> (23 Jun 2017)
 # No need for old drivers
@@ -218,10 +222,6 @@ media-sound/rhythmbox visualizer
 # Unkeyworded deps, bug #481462
 dev-python/ipython nbconvert
 
-# Johannes Huber <johu@gentoo.org> (15 Sep 2013)
-# Depends on kde-misc/networkmanagement, not keyworded yet.
-kde-apps/solid-runtime networkmanager
-
 # Sergey Popov <pinkbyte@gentoo.org> (06 Sep 2013)
 # sci-libs/hdf does not build properly on arm
 dev-perl/PDL	hdf
@@ -242,10 +242,6 @@ media-libs/devil allegro nvtt
 # requires net-misc/freerdp which is not keyworded on arm
 dev-libs/weston rdp
 
-# Patrick Lauer <patrick@gentoo.org> (17 June 2013)
-# Fix per-arch mask of phonon[zeitgeist] #460140
-media-libs/phonon zeitgeist
-
 # Andreas K. Huettel <dilfridge@gentoo.org> (27 May 2013)
 # Firmware loader not keyworded yet
 sci-libs/linux-gpib firmware
@@ -253,10 +249,6 @@ sci-libs/linux-gpib firmware
 # Markus Meier <maekke@gentoo.org> (10 May 2013)
 # unkeyworded deps for dev-python/ipython
 dev-python/ipython mongodb
-
-# Markus Meier <maekke@gentoo.org> (09 May 2013)
-# unkeyworded deps for x11-misc/lightdm
-x11-misc/lightdm kde
 
 # Agostino Sarubbo <ago@gentoo.org> (05 May 2013)
 # dev-util/google-perftools is not keyworded for arm
@@ -317,7 +309,7 @@ app-accessibility/speech-dispatcher flite
 # mask kde-apps/* flags due to unkeyworded dependencies
 kde-apps/kalzium editor solver
 kde-apps/kopete jingle
-kde-apps/okular ebook chm
+kde-apps/okular chm
 kde-apps/kstars indi
 kde-apps/kdeutils-meta floppy
 kde-apps/kdenetwork-meta ppp
@@ -382,8 +374,8 @@ net-libs/libproxy kde
 net-misc/mediatomb lastfm
 
 # Raúl Porcel <armin76@gentoo.org> (28 Mar 2010)
-# Needs kde-4 stable
-dev-vcs/subversion kde
+# Needs kde-frameworks/kwallet and kde-frameworks/kdelibs stable
+dev-vcs/subversion kwallet
 
 # Markus Meier <maekke@gentoo.org> (27 Sep 2009)
 # mask media-gfx/imagemagick[autotrace] as autotrace is not keyworded
@@ -406,3 +398,7 @@ media-video/vlc projectm chromaprint opencv
 # Ultrabug <ultrabug@gentoo.org> (05 Sept 2011)
 # missing keyword for net-libs/zeromq
 app-admin/rsyslog zeromq
+
+# Ian Whyman <thev00d00@gentoo.org> (05 Sept 2017)
+# missing keywords dev-lang/duktape media-libs/lastfmlib
+net-misc/gerbera javascript lastfm

@@ -81,7 +81,7 @@ src_install() {
 	cd include
 	insinto /usr/include/speech-tools
 	doins -r *
-	dosym /usr/include/speech-tools /usr/share/speech-tools/include
+	dosym ../../include/speech-tools /usr/share/speech-tools/include
 
 	cd ../bin
 	for file in *; do

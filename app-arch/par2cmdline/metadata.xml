@@ -10,6 +10,6 @@
     <name>Tim Harder</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">BlackIkeEagle/par2cmdline</remote-id>
+    <remote-id type="github">Parchive/par2cmdline</remote-id>
   </upstream>
 </pkgmetadata>

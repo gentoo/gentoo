@@ -12,7 +12,7 @@ MY_PN="Pyndex"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Simple and fast Python full-text indexer (aka search engine) using Metakit as its back-end"
-HOMEPAGE="http://www.divmod.org/Pyndex/index.html"
+HOMEPAGE="https://sourceforge.net/projects/pyndex/"
 SRC_URI="mirror://sourceforge/pyndex/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"

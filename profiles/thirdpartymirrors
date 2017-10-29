@@ -14,7 +14,7 @@ gnome		https://download.gnome.org/
 gnu		http://ftpmirror.gnu.org/ http://ftp.gnu.org/gnu/
 gnu-alpha	ftp://alpha.gnu.org/gnu/ http://alpha.gnu.org/gnu/ ftp://ftp.funet.fi/pub/gnu/alpha/gnu/ http://www.nic.funet.fi/pub/gnu/alpha/gnu/ ftp://gnualpha.uib.no/pub/gnualpha/ http://gnualpha.uib.no/ ftp://mirrors.fe.up.pt/pub/gnu-alpha/ http://mirrors.fe.up.pt/pub/gnu-alpha/ http://mirror.lihnidos.org/GNU/alpha/gnu/ http://mirrors.ibiblio.org/gnu/alpha/gnu/
 gnupg		ftp://ftp.gnupg.org/gcrypt/ http://mirrors.dotsrc.org/gcrypt/ http://artfiles.org/gnupg.org/ http://ftp.heanet.ie/mirrors/ftp.gnupg.org/gcrypt/ ftp://sunsite.icm.edu.pl/pub/security/gnupg/ http://gd.tuwien.ac.at/privacy/gnupg/ http://www.ring.gr.jp/pub/net/gnupg/ ftp://ftp.ring.gr.jp/pub/net/gnupg/
-hackage		http://hackage.haskell.org/ http://dev.gentoo.org/~qnikst/hdiff.luite.com/
+hackage		http://hackage.haskell.org/ https://dev.gentoo.org/~qnikst/hdiff.luite.com/
 idsoftware	ftp://ftp.idsoftware.com/idstuff ftp://ftp.fu-berlin.de/pc/games/idgames/idstuff ftp://ftp.gamers.org/pub/idgames/idstuff
 imagemagick	http://mirror.checkdomain.de/imagemagick/ ftp://mirror.checkdomain.de/imagemagick/ ftp://ftp.kddlabs.co.jp/graphics/ImageMagick/ ftp://ftp.u-aizu.ac.jp/pub/graphics/image/ImageMagick/imagemagick.org ftp://ftp.nluug.nl/pub/ImageMagick http://ftp.nluug.nl/ImageMagick/ ftp://sunsite.icm.edu.pl/packages/ImageMagick/ http://ftp.acc.umu.se/mirror/imagemagick.org/ftp/ https://www.imagemagick.org/download http://transloadit.imagemagick.org/download ftp://transloadit.imagemagick.org/ImageMagick ftp://ftp.fifi.org/pub/ImageMagick
 kde		https://download.kde.org http://mirror.csclub.uwaterloo.ca/kde ftp://mirrors.dotsrc.org/kde ftp://kde.mirror.anlx.net
@@ -26,7 +26,7 @@ nongnu		http://download.savannah.nongnu.org/releases/ http://ftp.cc.uoc.gr/mirro
 openbsd		https://mirrors.evowise.com/pub/OpenBSD/
 openssl		ftp://ftp.openssl.org ftp://ftp.linux.hr/pub/openssl/ http://artfiles.org/openssl.org/ ftp://ftp.pca.dfn.de/pub/tools/net/openssl/ ftp://guest.kuria.katowice.pl/pub/openssl/ ftp://ftp.fi.muni.cz/pub/openssl/ http://openssl.skazkaforyou.com/
 opera		ftp://ftp.opera.com/pub/opera ftp://ftp.tu-cottbus.de/pub/net/opera ftp://ftp.task.gda.pl/pub/opera ftp://ftp.ntua.gr/pub/www/Opera ftp://ftp.rediris.es/mirror/opera ftp://ftp.heanet.ie/pub/opera
-postgresql	http://ftp.postgresql.org/pub/ ftp://ftp.postgresql.org/pub/
+postgresql	https://ftp.postgresql.org/pub/
 pypi		https://pypi.python.org/packages/source https://files.pythonhosted.org/packages/source
 qmail		http://www.qmail.org/ http://qmail.geto.net/ http://qmail-mirror.jms1.net/ http://qmail.pandakc.com/ http://qmail.mirrors.auchnet.org/ http://qmail.glasswings.com.au/ http://qmail.ii.net/ http://infobase.ibase.com.hk/qmail/ http://qmail.morva.net/ http://qmail.teraren.com/ http://qmail.mirror.cdnetworks.com/ http://qmail.yongbok.net/ http://qmail.mirror.choon.net/ http://qmail.cbox.biz/ http://qmail.cbox.biz/ http://qmail.mirrors.ovh.net/ftp.qmail.org/ http://qmail.rasjonell.net/ http://qmail.europnews.de/ http://qmail.kendzorra.org/ http://qmail.mirror.gsnw.org/ http://mirrors.ntua.gr/qmail/ http://qmail.cti.gr/ http://qmail.dnsbeans.com/ http://qmail.hypergrid.it/ http://qmail.omnis.ch/ http://qmail.linorg.usp.br/ http://qmail.cavsystems.net/ http://qmail.mivzakim.net/ http://qmail.mirror.rise.ph/
 quakeunity	http://www.mirrorservice.org/sites/quakeunity.com

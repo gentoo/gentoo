@@ -31,7 +31,6 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.6.1-prefix-solaris.patch
-	"${FILESDIR}"/${PN}-9999-cross-linux.patch
 	"${FILESDIR}"/${PN}-9999-libnl.patch
 	"${FILESDIR}"/${PN}-9999-prefix-darwin.patch
 )

@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-USE_RUBY="ruby20 ruby21"
+USE_RUBY="ruby21 ruby22"
 
 RUBY_FAKEGEM_NAME="${PN/ruby-/}"
 RUBY_FAKEGEM_VERSION="${PV%_*}"
@@ -20,7 +20,7 @@ inherit ruby-fakegem
 DESCRIPTION="Native Language Support Library and Tools modeled after GNU gettext package"
 HOMEPAGE="http://www.yotabanana.com/hiki/ruby-gettext.html"
 
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 ~sparc"
 IUSE="doc test"
 SLOT="0"
 LICENSE="Ruby"

@@ -6,7 +6,7 @@ EAPI="6"
 EGIT_REPO_URI="https://github.com/csmith-project/${PN}"
 
 : ${CMAKE_MAKEFILE_GENERATOR=ninja}
-inherit cmake-utils git-r3
+inherit cmake-utils git-r3 llvm
 
 DESCRIPTION="C-Reduce - a plugin-based C program reducer"
 HOMEPAGE="https://embed.cs.utah.edu/creduce/"
@@ -30,3 +30,7 @@ RDEPEND="${COMMON_DEPEND}
 	dev-util/astyle
 	dev-util/indent"
 DEPEND="${COMMON_DEPEND}"
+
+llvm_check_deps() {
+	has_version "sys-devel/clang:${LLVM_SLOT}"
+}

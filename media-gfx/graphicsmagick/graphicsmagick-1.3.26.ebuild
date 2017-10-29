@@ -8,11 +8,17 @@ MY_P=${P/graphicsm/GraphicsM}
 
 DESCRIPTION="Collection of tools and libraries for many image formats"
 HOMEPAGE="http://www.graphicsmagick.org/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.xz"
-
 LICENSE="MIT"
 SLOT="0/${PV%.*}"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos"
+
+if [[ ${PV} == "9999" ]] ; then
+	inherit mercurial
+	EHG_REPO_URI="http://hg.code.sf.net/p/${PN}/code"
+else
+	SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.xz"
+	KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos"
+fi
+
 IUSE="bzip2 cxx debug fpx imagemagick jbig jpeg jpeg2k lcms lzma modules openmp
 	perl png postscript q16 q32 static-libs svg test threads tiff truetype
 	webp wmf X zlib"

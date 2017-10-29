@@ -1,10 +1,10 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit toolchain-funcs eutils
 
 DESCRIPTION="Linux boot loader for EFI-based systems such as IA-64"
-HOMEPAGE="http://elilo.sourceforge.net/"
+HOMEPAGE="https://sourceforge.net/projects/elilo/"
 SRC_URI="mirror://sourceforge/elilo/${P}.tar.gz"
 SRC_URI="${SRC_URI} mirror://debian/pool/main/e/elilo/elilo_3.10-1.diff.gz"
 

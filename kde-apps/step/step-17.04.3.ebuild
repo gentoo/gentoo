@@ -9,7 +9,7 @@ inherit kde5
 
 DESCRIPTION="Interactive physics simulator"
 HOMEPAGE="https://edu.kde.org/step"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+gsl nls +qalculate"
 
 RDEPEND="
@@ -48,6 +48,10 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	kde5_src_prepare
+
+	# FIXME: Should be upstream in 17.08.2
+	sed -e 's/add_subdirectory( *po *)/ecm_optional_add_subdirectory(po)/' \
+		-i CMakeLists.txt || die
 
 	# FIXME: Drop duplicate upstream
 	sed -e '/find_package.*Xml Test/ s/^/#/' \

@@ -8,7 +8,7 @@ GNOME2_LA_PUNT="yes"
 inherit gnome2
 
 DESCRIPTION="Search tool for GNOME 3"
-HOMEPAGE="https://live.gnome.org/GnomeUtils"
+HOMEPAGE="https://wiki.gnome.org/Apps/Attic/GnomeUtils"
 
 LICENSE="GPL-2 FDL-1.1"
 SLOT="0"
@@ -20,7 +20,7 @@ COMMON_DEPEND="
 	>=dev-libs/glib-2.30:2
 	sys-apps/grep
 	x11-libs/gdk-pixbuf
-	>=x11-libs/gtk+-3:3
+	>=x11-libs/gtk+-3:3[X]
 	x11-libs/libICE
 	x11-libs/libSM
 "

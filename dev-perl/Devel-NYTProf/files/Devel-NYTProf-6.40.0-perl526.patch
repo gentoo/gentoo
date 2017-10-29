@@ -1,0 +1,41 @@
+From 461055d041e0e08f5fe851461db42ea7121fa39f Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Sun, 8 Oct 2017 07:44:14 +1300
+Subject: Fix test failures on Perl 5.26 w/ PERL_USE_UNSAFE_INC=0
+
+Perl 5.26+ removes '.' from the default @INC, and this breaks the
+mechanism internally where @INC-prefixes are stripped from fid_fileinfo
+names ( in ::FileInfo.pm ).
+
+This breaks tests due to the sample 'rdt' files expecting single-token
+comparators relative to 't/', instead getting a fully qualified path in
+the "got" side of the test.
+
+This remedies this by ensuring a fully-qualified path to "t/" is in
+@INC for the aforementioned prefix-stripper to pick-up on.
+
+Bug: https://github.com/timbunce/devel-nytprof/issues/108
+Bug: https://bugs.gentoo.org/615734
+Bug: https://github.com/timbunce/devel-nytprof/pull/112
+---
+ t/lib/NYTProfTest.pm | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/t/lib/NYTProfTest.pm b/t/lib/NYTProfTest.pm
+index 9c29627..7fb5381 100644
+--- a/t/lib/NYTProfTest.pm
++++ b/t/lib/NYTProfTest.pm
+@@ -69,6 +69,10 @@ my $text_extn_info = {
+     pf    => { order => 50, tests => 2, },
+ };
+ 
++# having t/* in @INC is necessary for prefix-stripping
++# to reduce test-file names down to the single tokens
++# that are used in the comparison-output files.
++unshift @INC, File::Spec->rel2abs('./t') if -d 't';
+ chdir('t') if -d 't';
+ 
+ if (-d '../blib') {
+-- 
+2.14.1
+

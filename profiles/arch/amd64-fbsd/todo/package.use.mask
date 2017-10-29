@@ -13,6 +13,9 @@
 # Keep it simple, we do not really care about the date or who masked it, we want
 # to be easily able to determine what we need to keyword.
 
+# net-dns/libidn2
+net-misc/wget idn
+
 # net-libs/gnome-online-accounts
 gnome-base/gvfs gnome-online-accounts
 
@@ -163,7 +166,7 @@ sys-cluster/openmpi openmpi_fabrics_knem
 sys-cluster/openmpi openmpi_fabrics_dapl
 
 # sys-fabric/ofed
-sys-cluster/openmpi openmpi_fabrics_ofed
+sys-cluster/openmpi openmpi_fabrics_ofed openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
 
 # sys-fabric/infinipath-psm
 sys-cluster/openmpi openmpi_fabrics_psm
@@ -196,4 +199,4 @@ net-misc/wget uuid
 media-video/vlc rdp
 
 # net-wireless/bluez
-media-sound/pulseaudio bluetooth
+media-sound/pulseaudio bluetooth native-headset ofono-headset

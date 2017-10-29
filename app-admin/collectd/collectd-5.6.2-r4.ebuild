@@ -15,7 +15,7 @@ SRC_URI="${HOMEPAGE%/}/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="amd64 arm x86"
 IUSE="contrib debug java kernel_Darwin kernel_FreeBSD kernel_linux perl selinux static-libs udev xfs"
 
 # The plugin lists have to follow here since they extend IUSE
@@ -87,7 +87,7 @@ COMMON_DEPEND="
 	collectd_plugins_dbi?			( dev-db/libdbi )
 	collectd_plugins_dns?			( net-libs/libpcap )
 	collectd_plugins_gmond?			( sys-cluster/ganglia )
-	collectd_plugins_gps?			( sci-geosciences/gpsd )
+	collectd_plugins_gps?			( sci-geosciences/gpsd:= )
 	collectd_plugins_ipmi?			( >=sys-libs/openipmi-2.0.16-r1 )
 	collectd_plugins_iptables?		( >=net-firewall/iptables-1.4.13:0= )
 	collectd_plugins_log_logstash?		( dev-libs/yajl:= )

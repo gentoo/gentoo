@@ -9,7 +9,7 @@ inherit kde5
 DESCRIPTION="Application to manage alarms and other timer based alerts for the desktop"
 HOMEPAGE+=" https://userbase.kde.org/KAlarm"
 LICENSE="GPL-2+ handbook? ( FDL-1.2+ )"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="X"
 
 DEPEND="
@@ -56,7 +56,7 @@ DEPEND="
 	$(add_qt_dep qtnetwork)
 	$(add_qt_dep qtwidgets)
 	dev-libs/libxslt
-	media-libs/phonon[qt5]
+	media-libs/phonon[qt5(+)]
 	X? (
 		$(add_qt_dep qtx11extras)
 		x11-libs/libX11

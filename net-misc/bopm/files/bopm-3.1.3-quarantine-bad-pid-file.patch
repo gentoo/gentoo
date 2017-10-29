@@ -1,0 +1,16 @@
+Bopm writes its own pid file, but this is handled by the init script via
+openrc-run.
+---
+diff --git a/bopm.conf.sample b/bopm.conf.sample
+index e26dc17..fa5ce1d 100644
+--- a/bopm.conf.sample
++++ b/bopm.conf.sample
+@@ -9,7 +9,7 @@ options {
+ 	 * Full path and filename for storing the process ID of the running
+ 	 * BOPM.
+ 	 */
+-	pidfile = "/run/bopm/bopm.pid";
++	pidfile = "/run/bopm/junk/bopm.pid";
+ 
+ 	/*
+ 	 * How many seconds to store the IP address of hosts which are

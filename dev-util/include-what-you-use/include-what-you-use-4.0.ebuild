@@ -26,8 +26,8 @@ REQUIRED_USE=${PYTHON_REQUIRED_USE}
 S=${WORKDIR}/${PN}-clang_${PV}
 
 src_prepare() {
+	cmake-utils_src_prepare
 	python_fix_shebang .
-	default
 }
 
 src_configure() {

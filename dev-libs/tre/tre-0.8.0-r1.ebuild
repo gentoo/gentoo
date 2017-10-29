@@ -15,16 +15,19 @@ KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-
 IUSE="nls static-libs"
 
 RDEPEND="
-	!app-misc/glimpse
-	!app-text/agrep"
-DEPEND="${RDEPEND}
+	!app-text/agrep
+	!dev-ruby/amatch
+	!app-misc/glimpse"
+
+DEPEND="
+	${RDEPEND}
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
+PATCHES=( "${FILESDIR}/${PV}-pkgcfg.patch" )
+
 src_prepare() {
-	eapply \
-		"${FILESDIR}"/${PV}-pkgcfg.patch
-	eapply_user
+	default
 }
 
 src_configure() {
@@ -47,8 +50,10 @@ src_test() {
 
 src_install() {
 	local HTML_DOCS=( doc/*.{css,html} )
+
 	default
 
+	# 626480
 	mv "${ED%/}"/usr/bin/agrep{,-tre}$(get_exeext) || die
 }
 

@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit eutils python-any-r1 readme.gentoo-r1
 
 DESCRIPTION="UEFI firmware for 64-bit x86 virtual machines"
-HOMEPAGE="http://www.tianocore.org/edk2 https://github.com/tianocore/edk2"
+HOMEPAGE="https://github.com/tianocore/edk2"
 
 # inherit git-r3
 # EGIT_REPO_URI="https://github.com/tianocore/edk2"
@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="BSD-2 MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 x86 ~x86-fbsd"
 IUSE="+binary"
 
 REQUIRED_USE="

@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}-1-src.tgz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="
@@ -27,6 +27,8 @@ DEPEND="
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
 	dev-qt/qtxmlpatterns:5
+	media-libs/glu
+	virtual/opengl
 "
 RDEPEND="${DEPEND}"
 
@@ -40,6 +42,10 @@ src_prepare() {
 	# bug 568746
 	sed -i -e '/QMAKE_CXXFLAGS/s:-Werror::' \
 		src/{QXmlEdit,QXmlEditWidget,sessions/QXmlEditSessions}.pro || die
+
+	# bug 629624
+	sed -i -e 's/LIBS += -lGL -lGLU -lglut/LIBS += -lGL -lGLU/' \
+		src/QXmlEdit.pro || die
 }
 
 src_configure() {
@@ -49,6 +55,9 @@ src_configure() {
 		QXMLEDIT_INST_INCLUDE_DIR="${EPREFIX}/usr/include/${PN}" \
 		QXMLEDIT_INST_DATA_DIR="${EPREFIX}/usr/share/${PN}" \
 		QXMLEDIT_INST_DOC_DIR="${EPREFIX}/usr/share/doc/${PF}"
+
+	# avoid internal compiler errors
+	use x86 && export QXMLEDIT_INST_AVOID_PRECOMP_HEADERS=Y
 
 	eqmake5
 }

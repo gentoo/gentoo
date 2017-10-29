@@ -10,7 +10,7 @@ DESCRIPTION="KDE Telepathy common library"
 HOMEPAGE="https://community.kde.org/Real-Time_Communication_and_Collaboration"
 
 LICENSE="LGPL-2.1"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="otr +sso"
 
 RDEPEND="
@@ -36,7 +36,7 @@ RDEPEND="
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
 	net-libs/telepathy-logger-qt:5
-	>=net-libs/telepathy-qt-0.9.5[qt5]
+	>=net-libs/telepathy-qt-0.9.5[qt5(+)]
 	otr? (
 		dev-libs/libgcrypt:0=
 		>=net-libs/libotr-4.0.0

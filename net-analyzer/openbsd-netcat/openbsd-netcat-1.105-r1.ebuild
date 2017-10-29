@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ LICENSE="BSD"
 SLOT="0"
 IUSE="elibc_Darwin"
 
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x64-macos"
+KEYWORDS="~amd64 ~ppc64 ~x86 ~amd64-linux ~x64-macos"
 
 DEPEND="virtual/pkgconfig"
 RDEPEND="!elibc_Darwin? ( dev-libs/libbsd )

@@ -1,15 +1,15 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 DESCRIPTION="A command line CD encoder"
-HOMEPAGE="http://abcde.einval.com/"
-SRC_URI="http://abcde.einval.com/download/${P}.tar.gz"
+HOMEPAGE="https://abcde.einval.com/"
+SRC_URI="https://abcde.einval.com/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 # Enable MP3 related flags by default
 IUSE="aac cdparanoia cdr flac +id3tag +lame mac musepack musicbrainz normalize opus replaygain speex vorbis wavpack"
 
@@ -55,6 +55,7 @@ RDEPEND="media-sound/cd-discid
 "
 
 src_prepare() {
+	default
 	sed -i 's:etc/abcde.co:etc/abcde/abcde.co:g' abcde || die
 	sed -i -e '/^prefix/s/=/?=/' -e '/^sysconfdir/s/=/?=/' Makefile || die
 }

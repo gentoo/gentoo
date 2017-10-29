@@ -14,6 +14,6 @@
 		<flag name="extras">Pull in extra applications from <pkg>sci-chemistry/votca-csgapps</pkg></flag>
 	</use>
 	<upstream>
-		<remote-id type="github">votca/csg-tutorials</remote-id>
+		<remote-id type="github">votca/csg</remote-id>
 	</upstream>
 </pkgmetadata>

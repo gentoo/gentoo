@@ -14,8 +14,8 @@ AUTOTOOLS_PRUNE_LIBTOOL_FILES=all
 inherit python-single-r1 multilib pam linux-info autotools-utils systemd
 
 DESCRIPTION="System Security Services Daemon provides access to identity and authentication"
-HOMEPAGE="http://fedorahosted.org/sssd/"
-SRC_URI="http://fedorahosted.org/released/${PN}/${P}.tar.gz"
+HOMEPAGE="https://pagure.io/sssd/sssd"
+SRC_URI="https://releases.pagure.org/SSSD/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -131,10 +131,4 @@ src_install(){
 
 src_test() {
 	autotools-utils_src_test
-}
-
-pkg_postinst(){
-	elog "You must set up sssd.conf (default installed into /etc/sssd)"
-	elog "and (optionally) configuration in /etc/pam.d in order to use SSSD"
-	elog "features. Please see howto in	http://fedorahosted.org/sssd/wiki/HOWTO_Configure_1_0_2"
 }

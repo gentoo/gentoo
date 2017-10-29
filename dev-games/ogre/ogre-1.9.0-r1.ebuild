@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -23,7 +23,7 @@ REQUIRED_USE="threads? ( ^^ ( boost poco tbb ) )
 	examples? ( ois )
 	poco? ( threads )
 	tbb? ( threads )
-	?? ( gl3plus ( || ( gles2 gles3 ) ) )
+	gl3plus? ( !gles2 !gles3 )
 	gles3? ( gles2 )
 	gl3plus? ( opengl )"
 
@@ -55,6 +55,13 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
 
+PATCHES=(
+	"${FILESDIR}/${P}-remove_resource_path_to_bindir.patch"
+	"${FILESDIR}/${P}-remove_media_path_to_bindir.patch"
+	"${FILESDIR}/${P}-gcc52.patch"
+	"${FILESDIR}/${P}-samples.patch"
+)
+
 src_prepare() {
 	sed -i \
 		-e "s:share/OGRE/docs:share/doc/${PF}:" \
@@ -68,11 +75,7 @@ src_prepare() {
 	rm -f Tools/XMLConverter/{include,src}/tiny*.*
 
 	# Fix some path issues
-	epatch \
-		"${FILESDIR}/${P}-remove_resource_path_to_bindir.patch" \
-		"${FILESDIR}/${P}-remove_media_path_to_bindir.patch" \
-		"${FILESDIR}/${P}-gcc52.patch" \
-		"${FILESDIR}/${P}-samples.patch"
+	cmake-utils_src_prepare
 }
 
 src_configure() {

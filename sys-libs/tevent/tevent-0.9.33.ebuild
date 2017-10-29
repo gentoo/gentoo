@@ -26,6 +26,10 @@ DEPEND="${RDEPEND}
 # build system does not work with python3
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
+PATCHES=(
+	"${FILESDIR}"/talloc-disable-python.patch
+)
+
 WAF_BINARY="${S}/buildtools/bin/waf"
 
 pkg_setup() {
@@ -39,6 +43,8 @@ src_prepare() {
 
 multilib_src_configure() {
 	waf-utils_src_configure \
+		--bundled-libraries=NONE \
+		--builtin-libraries=NONE \
 		$(multilib_native_usex python '' '--disable-python')
 }
 

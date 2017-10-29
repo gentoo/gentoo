@@ -5,8 +5,6 @@
     <email>sound@gentoo.org</email>
     <name>Gentoo Sound project</name>
   </maintainer>
-  <longdescription lang="en">
-  </longdescription>
   <use>
     <flag name="bittorrent">Enable support for bittorrent downloads</flag>
   </use>

@@ -3,6 +3,8 @@
 
 EAPI=6
 
+inherit opam
+
 DESCRIPTION="Library for automated conversion of OCaml-values to and from S-expressions"
 HOMEPAGE="https://github.com/janestreet/sexplib"
 SRC_URI="https://github.com/janestreet/sexplib/archive/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -12,18 +14,9 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~ppc"
 IUSE=""
 
-RDEPEND="dev-lang/ocaml:="
-DEPEND="${RDEPEND} dev-ml/opam dev-ml/jbuilder"
+RDEPEND=""
+DEPEND="${RDEPEND} dev-ml/jbuilder"
 
 src_test() {
 	jbuilder runtest || die
-}
-
-src_install() {
-	opam-installer -i \
-		--prefix="${ED}/usr" \
-		--libdir="${D}/$(ocamlc -where)" \
-		--docdir="${ED}/usr/share/doc/${PF}" \
-		${PN}.install || die
-	dodoc CHANGES.md README.org
 }

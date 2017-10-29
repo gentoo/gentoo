@@ -2,20 +2,20 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools multilib-minimal
+inherit multilib-minimal
 
 if [[ ${PV} == *9999 ]] ; then
-	inherit git-2
-	EGIT_REPO_URI="git://git.opus-codec.org/opus.git"
+	inherit git-r3
+	EGIT_REPO_URI="https://git.xiph.org/opus.git"
 else
-	SRC_URI="https://github.com/xiph/opus/archive/v${PV/_/-}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://archive.mozilla.org/pub/opus/${P}.tar.gz"
 	if [[ "${PV}" != *_alpha* ]] &&  [[ "${PV}" != *_beta* ]] ; then
 		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd"
 	fi
 fi
 
 DESCRIPTION="Open codec designed for internet transmission of interactive speech and audio"
-HOMEPAGE="http://opus-codec.org/"
+HOMEPAGE="https://opus-codec.org/"
 
 LICENSE="BSD-2"
 SLOT="0"
@@ -23,18 +23,6 @@ INTRINSIC_FLAGS="cpu_flags_x86_sse cpu_flags_arm_neon"
 IUSE="ambisonics custom-modes doc static-libs ${INTRINSIC_FLAGS}"
 
 DEPEND="doc? ( app-doc/doxygen media-gfx/graphviz )"
-
-S="${WORKDIR}/${P/_/-}"
-
-src_prepare() {
-	default
-
-	if [[ ! -f package_version ]] ; then
-		echo "PACKAGE_VERSION=\"${PV/_/-}\"" > package_version
-	fi
-
-	eautoreconf
-}
 
 multilib_src_configure() {
 	local myeconfargs=(

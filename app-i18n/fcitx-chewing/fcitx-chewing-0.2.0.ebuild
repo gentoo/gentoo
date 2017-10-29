@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,11 +9,11 @@ HOMEPAGE="http://fcitx-im.org/"
 SRC_URI="https://fcitx.googlecode.com/files/${P}.tar.xz"
 
 LICENSE="GPL-2"
-SLOT="0"
+SLOT="4"
 KEYWORDS="amd64 ppc ~ppc64 x86"
 IUSE=""
 
 RDEPEND=">=app-i18n/fcitx-4.2.7
-	dev-libs/libchewing"
+	app-i18n/libchewing"
 DEPEND="${RDEPEND}
 	virtual/libintl"

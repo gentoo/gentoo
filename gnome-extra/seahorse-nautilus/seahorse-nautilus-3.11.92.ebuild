@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -17,7 +17,7 @@ IUSE=""
 
 COMMON_DEPEND="
 	>=app-crypt/gpgme-1.0.0
-	>=app-crypt/gcr-3.4
+	>=app-crypt/gcr-3.4[gtk]
 	>=dev-libs/dbus-glib-0.35
 	>=dev-libs/glib-2.28:2
 	gnome-base/gnome-keyring

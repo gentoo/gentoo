@@ -11,7 +11,7 @@ inherit kde5
 
 DESCRIPTION="Virtual Globe and World Atlas to learn more about Earth"
 HOMEPAGE="https://marble.kde.org/"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE="aprs +dbus designer gps +kde nls phonon +positioning shapefile +webkit"
 
@@ -43,7 +43,7 @@ RDEPEND="
 		$(add_frameworks_dep kservice)
 		$(add_frameworks_dep kwallet)
 	)
-	phonon? ( media-libs/phonon[qt5] )
+	phonon? ( media-libs/phonon[qt5(+)] )
 	positioning? ( $(add_qt_dep qtpositioning) )
 	shapefile? ( sci-libs/shapelib:= )
 	webkit? ( $(add_qt_dep qtwebkit) )

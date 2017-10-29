@@ -38,10 +38,11 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${MY_P}
 
 PATCHES=(
-	"${FILESDIR}/${P}-qt5.patch"
-	"${FILESDIR}/${P}-boost-1.60.patch"
-	"${FILESDIR}/${P}-qmake-gcc-6.patch"
-	"${FILESDIR}/${P}-boost-noexcept.patch"
+	"${FILESDIR}"/${PN}-1.1.1-qt5.patch
+	"${FILESDIR}"/${PN}-1.1.1-boost-1.60.patch
+	"${FILESDIR}"/${PN}-1.1.1-qmake-gcc-6.patch
+	"${FILESDIR}"/${PN}-1.1.1-boost-noexcept.patch
+	"${FILESDIR}"/${PN}-1.1.1-boost-1.65-ambiguous-advance.patch
 )
 
 src_prepare() {

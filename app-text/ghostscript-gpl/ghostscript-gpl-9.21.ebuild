@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="AGPL-3 CPL-1.0"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 IUSE="cups dbus gtk l10n_de static-libs tiff unicode X"
 
 COMMON_DEPEND="
@@ -196,7 +196,7 @@ src_install() {
 	done
 
 	# install the CMaps from poppler-data properly, bug #409361
-	dosym "${EPREFIX}/usr/share/poppler/cMaps" "/usr/share/ghostscript/${PVM}/Resource/CMap"
+	dosym ../../../poppler/cMaps "/usr/share/ghostscript/${PVM}/Resource/CMap"
 
 	use static-libs || find "${ED}" -name '*.la' -delete
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ VALA_USE_DEPEND="vapigen"
 
 inherit autotools eutils flag-o-matic vala xdg-utils
 
-DESCRIPTION="A library to raise flags on DBus for other components of the desktop to pick up and visualize"
+DESCRIPTION="A library to raise flags on DBus for other components of the desktop"
 HOMEPAGE="https://launchpad.net/libindicate"
 SRC_URI="https://launchpad.net/${PN}/${PV%.*}/${PV}/+download/${P}.tar.gz"
 

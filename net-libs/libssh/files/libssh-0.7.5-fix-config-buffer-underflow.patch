@@ -1,0 +1,25 @@
+From 0cffb88b80b1e8b7e292646b955e9b9ca02315c4 Mon Sep 17 00:00:00 2001
+From: Aris Adamantiadis <aris@0xbadc0de.be>
+Date: Thu, 8 Jun 2017 00:22:02 +0200
+Subject: config: fix buffer underflow with unrecognized opcodes
+
+---
+ src/config.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/config.c b/src/config.c
+index 519926e7..6187c90f 100644
+--- a/src/config.c
++++ b/src/config.c
+@@ -218,7 +218,7 @@ static int ssh_config_parse_line(ssh_session session, const char *line,
+   }
+ 
+   opcode = ssh_config_get_opcode(keyword);
+-  if (*parsing == 1 && opcode != SOC_HOST) {
++  if (*parsing == 1 && opcode != SOC_HOST && opcode != SOC_UNSUPPORTED) {
+       if (seen[opcode] != 0) {
+           return 0;
+       }
+-- 
+cgit v1.1
+
