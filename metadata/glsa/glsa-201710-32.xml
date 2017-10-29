@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201710-32">
+  <title>Apache: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Apache, the worst of
+    which may result in the loss of secrets.
+  </synopsis>
+  <product type="ebuild">Apache</product>
+  <announced>2017-10-29</announced>
+  <revised>2017-10-29: 1</revised>
+  <bug>622240</bug>
+  <bug>624868</bug>
+  <bug>631308</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-servers/apache" auto="yes" arch="*">
+      <unaffected range="ge">2.4.27-r1</unaffected>
+      <vulnerable range="lt">2.4.27-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The Apache HTTP server is one of the most popular web servers on the
+      Internet.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Apache. Please review
+      the referenced CVE identifiers for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>The Optionsbleed vulnerability can leak arbitrary memory from the server
+      process that may contain secrets.  Additionally attackers may cause a
+      Denial of Service condition, bypass authentication, or cause information
+      loss.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Apache users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-servers/apache-2.4.27-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3167">
+      CVE-2017-3167
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3169">
+      CVE-2017-3169
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7659">
+      CVE-2017-7659
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7668">
+      CVE-2017-7668
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7679">
+      CVE-2017-7679
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-9788">
+      CVE-2017-9788
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-9789">
+      CVE-2017-9789
+    </uri>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-9798">
+      CVE-2017-9798
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-10-23T01:26:58Z">jmbailey</metadata>
+  <metadata tag="submitter" timestamp="2017-10-29T23:04:17Z">jmbailey</metadata>
+</glsa>
