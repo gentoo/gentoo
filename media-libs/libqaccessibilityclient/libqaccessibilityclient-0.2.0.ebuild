@@ -21,10 +21,14 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+src_prepare() {
+	kde5_src_prepare
+	cmake_comment_add_subdirectory tests
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DQT5_BUILD=ON
 	)
-
 	kde5_src_configure
 }
