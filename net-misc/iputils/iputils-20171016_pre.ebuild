@@ -13,7 +13,10 @@ inherit flag-o-matic toolchain-funcs fcaps
 
 MY_COMMIT="67e7d0daf1f231cc708217e6aec2f8d5ce7aeacf"
 
-PATCHES=( "${FILESDIR}"/${PN}-99999999-tracepath46.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-99999999-tracepath46.patch
+	"${FILESDIR}"/${PN}-99999999-musl.patch
+)
 
 if [[ ${PV} == "99999999" ]] ; then
 	EGIT_REPO_URI="https://github.com/iputils/iputils.git"
