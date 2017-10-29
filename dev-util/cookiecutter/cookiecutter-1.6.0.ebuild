@@ -33,7 +33,8 @@ DEPEND="${RDEPEND}
 		dev-python/pytest-cov[${PYTHON_USEDEP}]
 		>=dev-python/pytest-mock-1.1[${PYTHON_USEDEP}]
 		dev-python/pytest-catchlog[${PYTHON_USEDEP}]
-		dev-python/freezegun[${PYTHON_USEDEP}] )"
+		dev-python/freezegun[${PYTHON_USEDEP}]
+		dev-vcs/git )"
 
 DOCS=( README.rst HISTORY.rst CONTRIBUTING.rst )
 
