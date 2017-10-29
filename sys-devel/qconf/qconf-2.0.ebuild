@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="http://delta.affinix.com/download/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm hppa ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="amd64 ~arm ~hppa ppc ppc64 sparc x86 ~x86-fbsd"
 IUSE="+qt4 qt5"
 
 RDEPEND="
