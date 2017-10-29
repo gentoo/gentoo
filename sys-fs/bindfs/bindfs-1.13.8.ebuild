@@ -12,7 +12,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug"
 
-RDEPEND=">=sys-fs/fuse-2.9"
+RDEPEND=">=sys-fs/fuse-2.9:0"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
