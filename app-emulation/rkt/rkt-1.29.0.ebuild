@@ -24,6 +24,7 @@ rkt_stage1_coreos? ( $PXE_URI -> $PXE_FILE )
 rkt_stage1_kvm_lkvm? (
 	https://kernel.googlesource.com/pub/scm/linux/kernel/git/will/kvmtool/+archive/${KVMTOOL_VERSION}.tar.gz -> kvmtool-${KVMTOOL_VERSION}.tar.gz
 	https://git.kernel.org/pub/scm/linux/kernel/git/will/kvmtool.git/patch/?id=c0a985531f49c06fd05069024f4664740e6a0baf -> kvmtool-include-sysmacros-c0a985531f49c06fd05069024f4664740e6a0baf.patch
+	https://git.kernel.org/pub/scm/linux/kernel/git/will/kvmtool.git/patch/?id=1cc05b24bfe0211bb408f3264af8e0c42dcdde9c -> kvmtool-include-asm-msr-index-1cc05b24bfe0211bb408f3264af8e0c42dcdde9c.patch
 	${SRC_URI_KVM}
 )
 rkt_stage1_kvm_qemu? (
@@ -77,7 +78,7 @@ src_unpack() {
 	for x in ${A}; do
 		case ${x} in
 			*.img|linux-*) continue ;;
-			kvmtool-include-sysmacros-*) #627564
+			kvmtool-include-*) #627564 #635274
 				dest=${S}/stage1/usr_from_kvm/lkvm/patches
 				mkdir -p "${dest}" || die
 				cp "${DISTDIR}/${x}" "${dest}" || die
