@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=audit? ( sys-process/audit ) launcher? ( >=dev-libs/expat-2.2 >=dev-libs/glib-2.50:2 >=sys-apps/systemd-230 ) selinux? ( sys-libs/libselinux ) virtual/pkgconfig test? ( >=sys-apps/dbus-1.10 ) >=dev-util/meson-0.40.0 >=dev-util/ninja-1.7.2 >=dev-vcs/git-1.8.2.1
+DEPEND=audit? ( sys-process/audit ) launcher? ( >=dev-libs/expat-2.2 >=dev-libs/glib-2.50:2 >=sys-apps/systemd-230 ) selinux? ( sys-libs/libselinux ) dev-python/docutils virtual/pkgconfig test? ( >=sys-apps/dbus-1.10 ) >=dev-util/meson-0.40.0 >=dev-util/ninja-1.7.2 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=Linux D-Bus Message Broker
 EAPI=6
 HOMEPAGE=https://github.com/bus1/dbus-broker/wiki
@@ -9,4 +9,4 @@ RDEPEND=audit? ( sys-process/audit ) launcher? ( >=dev-libs/expat-2.2 >=dev-libs
 RESTRICT=!test? ( test )
 SLOT=0
 _eclasses_=git-r3	52a888802d25387c2c74cb845d1219bc	meson	38757afcd8d9f0d1d44ba4cefc33b99d	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=a2da0f3ffff387ad3de11d58f22d3835
+_md5_=b38cdcba411134bb23d85248d10e73d5
