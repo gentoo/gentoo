@@ -18,7 +18,9 @@ IUSE="contrib doc emacs"
 
 RESTRICT="strip mirror"
 
-RDEPEND="dev-lisp/cl-ppcre
+RDEPEND="dev-lisp/alexandria
+		dev-lisp/cl-ppcre
+		dev-lisp/clx
 		>=dev-lisp/sbcl-1.3.0
 		emacs? ( virtual/emacs app-emacs/slime )"
 DEPEND="${RDEPEND}
