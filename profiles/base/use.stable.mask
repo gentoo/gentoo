@@ -8,11 +8,6 @@
 # Needs dev-lang/php:7.2 stable
 php_targets_php7-2
 
-# Michał Górny <mgorny@gentoo.org> (25 Jan 2017)
-# Early pre-stabilization mask for dev-lang/python:3.6
-python_targets_python3_6
-python_single_target_python3_6
-
 # Brian Evans <grknight@gentoo.org> (06 Dec 2016)
 # Needs dev-lang/php:7.1 stable
 php_targets_php7-1
@@ -23,11 +18,6 @@ python_targets_pypy
 python_single_target_pypy
 python_targets_pypy3
 python_single_target_pypy3
-
-# Mike Gilbert <floppym@gentoo.org> (02 Oct 2015)
-# Needs dev-lang/python:3.5 stable
-python_targets_python3_5
-python_single_target_python3_5
 
 # Justin Lecher <jlec@gentoo.org> (30 Sep 2015)
 # No stable libressl yet
