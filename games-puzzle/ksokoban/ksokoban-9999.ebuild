@@ -1,39 +1,29 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-if [[ ${PV} == "9999" ]]; then
-	inherit mercurial
-	EHG_REPO_URI="http://hg.code.sf.net/p/ksokoban/code"
-else
-	SRC_URI="https://dev.gentoo.org/~bircoph/distfiles/${P}.tar.xz"
-	KEYWORDS="~amd64 ~x86"
-fi
+EGIT_BRANCH="port-to-kf5"
+KDE_HANDBOOK="optional"
+inherit kde5
 
-inherit cmake-utils
 DESCRIPTION="The japanese warehouse keeper game"
-HOMEPAGE="https://sourceforge.net/projects/ksokoban/"
+HOMEPAGE="https://cgit.kde.org/ksokoban.git"
+
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS=""
 
-DEPEND="kde-frameworks/kdelibs:4"
+DEPEND="
+	$(add_frameworks_dep kactivities)
+	$(add_frameworks_dep kconfig)
+	$(add_frameworks_dep kcoreaddons)
+	$(add_frameworks_dep ki18n)
+	$(add_frameworks_dep kiconthemes)
+	$(add_frameworks_dep kio)
+	$(add_frameworks_dep kwidgetsaddons)
+	$(add_frameworks_dep kxmlgui)
+	$(add_qt_dep qtgui)
+	$(add_qt_dep qtwidgets)
+"
 RDEPEND="${DEPEND}"
-
-S="${WORKDIR}/${PN}"
-
-CMAKE_IN_SOURCE_BUILD="yes"
-
-src_prepare() {
-	sed -i 's/%m//' "data/${PN}.desktop" || die "sed for desktop file failed"
-}
-
-# source lacks install target
-src_install() {
-	dobin ksokoban
-	dodoc AUTHORS NEWS TODO
-	domenu "data/${PN}.desktop"
-	for i in 16 22 32 48 64 128; do
-		doicon -s "${i}" "data/hi${i}-app-${PN}.png"
-	done
-}
