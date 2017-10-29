@@ -11,7 +11,10 @@ EAPI="6"
 
 inherit flag-o-matic toolchain-funcs fcaps
 
-PATCHES=( "${FILESDIR}"/${PN}-99999999-tracepath46.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-99999999-tracepath46.patch
+	"${FILESDIR}"/${PN}-99999999-musl.patch
+)
 
 if [[ ${PV} == "99999999" ]] ; then
 	EGIT_REPO_URI="https://github.com/iputils/iputils.git"
