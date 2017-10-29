@@ -6973,12 +6973,12 @@ dev-perl/gtk2-spell 1.40.0-r1 1.40.0-r2: Bindings for GtkSpell with Gtk2.x
 dev-perl/gtk2-trayicon 0.60.0-r1 0.60.0-r2: Perl wrappers for the egg cup Gtk2::TrayIcon utilities
 dev-perl/gtk2-traymanager 0.50.0-r1 0.50.0-r2: Perl bindings for EggTrayManager
 dev-perl/indirect 0.360.0 0.370.0: Lexically warn about using the indirect method call syntax
-dev-perl/libintl-perl 1.200.0-r1 1.240.0 1.240.0-r2: High-Level Interface to Uniforum Message Translation
+dev-perl/libintl-perl 1.200.0-r1 1.240.0 1.240.0-r2 1.280.0: High-Level Interface to Uniforum Message Translation
 dev-perl/librg-utils-perl 1.0.43: Parsers and format conversion utilities used by (e.g.) profphd
 dev-perl/libvorbis-perl 0.50.0-r1: Ogg::Vorbis - Perl extension for Ogg Vorbis streams
-dev-perl/libwww-perl 6.150.0 6.160.0 6.240.0 6.250.0 6.260.0: A collection of Perl Modules for the WWW
+dev-perl/libwww-perl 6.150.0 6.160.0 6.240.0 6.250.0 6.260.0 6.270.0: A collection of Perl Modules for the WWW
 dev-perl/libxml-perl 0.80.0-r1: Collection of Perl modules for working with XML
-dev-perl/local-lib 2.0.19: create and use a local lib/ for perl modules with PERL5LIB
+dev-perl/local-lib 2.0.19 2.0.24: create and use a local lib/ for perl modules with PERL5LIB
 dev-perl/maybe 0.20.200-r1: Use a Perl module and ignore error if can't be loaded
 dev-perl/mecab-perl 0.996: Perl binding for MeCab
 dev-perl/mime-construct 1.900.0-r1 1.1100.0-r1: construct and optionally mail MIME messages
@@ -11012,7 +11012,7 @@ games-board/hexxagon 1.0.2 1.0.2-r1: Clone of the original DOS game
 games-board/holdingnuts 0.0.5-r1 0.0.5-r2: An open source poker client and server
 games-board/iagno 3.22.0: Dominate the board in a classic version of Reversi
 games-board/kcheckers 0.8.1 0.8.1-r1: Qt version of the classic boardgame checkers
-games-board/knights 2.5.0-r1: Simple chess board for KDE
+games-board/knights 2.5.0-r1 2.6.0_pre20171003: Simple chess board based on KDE Frameworks
 games-board/mah-jong 1.14 1.14-r1: A networked Mah Jong program, together with a computer player
 games-board/maitretarot 0.1.98 0.1.98-r1: server for the french tarot game maitretarot
 games-board/megamek 0.34.10 0.34.10-r1: an unofficial, online version of the Classic BattleTech board game
