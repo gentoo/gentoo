@@ -158,7 +158,7 @@ dev-qt/qtwebkit:4
 <app-misc/sleepyhead-1.0.0_beta2
 <media-gfx/freecad-0.17_pre
 media-sound/google-musicmanager
-net-misc/teamviewer
+>=net-misc/teamviewer-10
 net-voip/vidyodesktop
 <sci-libs/opencascade-7.0
 <sci-libs/vtk-6.1.0-r4
