@@ -13,6 +13,8 @@ KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~x86-macos"
 VIM_PLUGIN_HELPFILES="perlsupport.txt"
 
 RDEPEND="
+	!ppc? ( dev-perl/Devel-NYTProf )
+	dev-perl/Perl-Tidy
 	dev-perl/Perl-Tags
 	dev-perl/Perl-Critic"
 
@@ -28,4 +30,17 @@ src_install() {
 	rm -r ${PN}/doc/ || die
 
 	vim-plugin_src_install
+}
+
+pkg_postinst() {
+	elog "${PN} can utilize the following modules on top of the ones installed as"
+	elog "dependencies:"
+	elog
+	elog "Devel::SmallProf     - per-line Perl profiler"
+	elog "Devel::FastProf      - per-line Perl profiler"
+	elog "Devel::ptkdb         - Perl debugger using a Tk GUI"
+	elog "Pod::Pdf             - A POD to PDF translator"
+	elog "YAPE::Regex::Explain - regular expression analyzer"
+	elog
+	elog "You may need to install them separately if you would like to use them."
 }
