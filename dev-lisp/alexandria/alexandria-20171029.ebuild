@@ -5,7 +5,7 @@ EAPI=6
 
 inherit common-lisp-3 eutils
 
-DESCRIPTION="A collection of public domain utilities."
+DESCRIPTION="A collection of portable utilities for Common Lisp"
 HOMEPAGE="http://common-lisp.net/project/alexandria/"
 if [[ ${PV} == 9999* ]] ; then
 	inherit git-r3
