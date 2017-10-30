@@ -1,0 +1,46 @@
+From 188752158701e3a406e7fd5850b3eaf9c4798cd7 Mon Sep 17 00:00:00 2001
+From: Ray Strode <rstrode@redhat.com>
+Date: Fri, 13 Nov 2015 13:35:05 -0500
+Subject: winsys-egl-kms: bypass initial output setup if kms fd passed in
+
+if mutter is handling the output setup, then we shouldn't do it,
+too.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=758073
+---
+ cogl/winsys/cogl-winsys-egl-kms.c | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
+
+diff --git a/cogl/winsys/cogl-winsys-egl-kms.c b/cogl/winsys/cogl-winsys-egl-kms.c
+index b460907..6d7049d 100644
+--- a/cogl/winsys/cogl-winsys-egl-kms.c
++++ b/cogl/winsys/cogl-winsys-egl-kms.c
+@@ -663,6 +663,14 @@ _cogl_winsys_egl_display_setup (CoglDisplay *display,
+       return FALSE;
+     }
+ 
++  /* Force a full modeset / drmModeSetCrtc on
++   * the first swap buffers call.
++   */
++  kms_display->pending_set_crtc = TRUE;
++
++  if (kms_renderer->opened_fd < 0)
++    return TRUE;
++
+   output0 = find_output (0,
+                          kms_renderer->fd,
+                          resources,
+@@ -736,10 +744,6 @@ _cogl_winsys_egl_display_setup (CoglDisplay *display,
+   kms_display->width = output0->mode.hdisplay;
+   kms_display->height = output0->mode.vdisplay;
+ 
+-  /* We defer setting the crtc modes until the first swap_buffers request of a
+-   * CoglOnscreen framebuffer. */
+-  kms_display->pending_set_crtc = TRUE;
+-
+   return TRUE;
+ }
+ 
+-- 
+cgit v0.11.2
+
