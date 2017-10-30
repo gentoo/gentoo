@@ -14592,7 +14592,7 @@ net-dns/avahi 0.6.31-r10 0.6.31-r11 0.6.32 0.6.32-r1 0.6.32-r2 0.7: System which
 net-dns/bind 9.11.1_p1 9.11.1_p3 9.11.2: BIND - Berkeley Internet Name Domain - Name Server
 net-dns/bind-dns-keygen 9.3.2.39-r1: A simple BIND key generator
 net-dns/bind-tools 9.11.1_p1 9.11.1_p3 9.11.2: bind tools: dig, nslookup, host, nsupdate, dnssec-keygen
-net-dns/c-ares 1.12.0 1.13.0: C library that resolves names asynchronously
+net-dns/c-ares 1.13.0: C library that resolves names asynchronously
 net-dns/cagibi 0.2.0: Cache/proxy system for the SSDP part of UPnP
 net-dns/coredns 0.9.9: A DNS server that chains middleware
 net-dns/ddclient 3.8.1-r5 3.8.2 3.8.3: Perl updater client for dynamic DNS services
