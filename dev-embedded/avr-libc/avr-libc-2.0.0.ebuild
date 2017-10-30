@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -16,7 +16,10 @@ SRC_URI="https://savannah.nongnu.org/download/avr-libc/${P}.tar.bz2
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+# 'amd64' is a blessed placeholder for crossdev. It could
+# be any other arch. See bug #620316#c5
+# Don't add more arches to KEYWORDS.
+KEYWORDS="~amd64"
 IUSE="doc crosscompile_opts_headers-only"
 
 DEPEND=">=sys-devel/crossdev-0.9.1"
