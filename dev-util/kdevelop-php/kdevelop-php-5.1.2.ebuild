@@ -15,7 +15,7 @@ inherit kde5
 DESCRIPTION="PHP plugin for KDevelop"
 LICENSE="GPL-2 LGPL-2"
 IUSE=""
-[[ ${KDE_BUILD_TYPE} = release ]] && KEYWORDS="~amd64 ~x86"
+[[ ${KDE_BUILD_TYPE} = release ]] && KEYWORDS="~amd64 x86"
 
 COMMON_DEPEND="
 	$(add_frameworks_dep karchive)
@@ -43,3 +43,5 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	test? ( >=dev-util/kdevplatform-${PV}:${SLOT}[test] )
 "
+
+RESTRICT+=" test"

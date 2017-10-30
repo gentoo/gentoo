@@ -17,5 +17,6 @@ RDEPEND="dev-perl/HTML-Parser"
 DEPEND="${REPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
+		dev-perl/Test-Differences
 		dev-perl/Test-Memory-Cycle
 	)"

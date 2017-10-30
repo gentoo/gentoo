@@ -33,7 +33,7 @@ PATCH_VER="3"
 SRC_URI+=" https://dev.gentoo.org/~dilfridge/distfiles/${P}-patches-${PATCH_VER}.tar.bz2"
 SRC_URI+=" multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-${GCC_BOOTSTRAP_VER}-multilib-bootstrap.tar.bz2 )"
 
-IUSE="audit caps debug gd hardened multilib nscd selinux systemtap profile suid vanilla crosscompile_opts_headers-only"
+IUSE="audit caps compile-locales debug gd hardened multilib nscd selinux systemtap profile suid vanilla crosscompile_opts_headers-only"
 
 # Min kernel version nptl requires
 : ${NPTL_KERN_VER:="2.6.32"}
@@ -551,6 +551,19 @@ src_test() {
 	foreach_abi do_src_test || die "tests failed"
 }
 
+run_locale_gen() {
+	# if the host locales.gen contains no entries, we'll install everything
+	local root="$1"
+	local locale_list="${root}/etc/locale.gen"
+	if [[ -z $(locale-gen --list --config "${locale_list}") ]] ; then
+		ewarn "Generating all locales; edit /etc/locale.gen to save time/space"
+		locale_list="${root}/usr/share/i18n/SUPPORTED"
+	fi
+
+	locale-gen --jobs $(makeopts_jobs) --config "${locale_list}" \
+		--destdir "${root}"
+}
+
 glibc_do_src_install() {
 	local builddir=$(builddir nptl)
 	cd "${builddir}"
@@ -714,6 +727,11 @@ glibc_do_src_install() {
 	# Prevent overwriting of the /etc/localtime symlink.  We'll handle the
 	# creation of the "factory" symlink in pkg_postinst().
 	rm -f "${ED}"/etc/localtime
+
+	# Generate all locales if this is a native build as locale generation
+	if use compile-locales && ! is_crosscompile ; then
+		run_locale_gen "${ED}"
+	fi
 }
 
 glibc_headers_install() {
@@ -773,12 +791,6 @@ pkg_postinst() {
 		# errors from this step #253697
 		/sbin/telinit U 2>/dev/null
 
-		# if the host locales.gen contains no entries, we'll install everything
-		local locale_list="${EROOT}etc/locale.gen"
-		if [[ -z $(locale-gen --list --config "${locale_list}") ]] ; then
-			ewarn "Generating all locales; edit /etc/locale.gen to save time/space"
-			locale_list="${EROOT}usr/share/i18n/SUPPORTED"
-		fi
-		locale-gen -j $(makeopts_jobs) --config "${locale_list}"
+		use compile-locales || run_locale_gen "${EROOT}"
 	fi
 }

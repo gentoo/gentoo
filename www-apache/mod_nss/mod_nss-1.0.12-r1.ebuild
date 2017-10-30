@@ -1,12 +1,12 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit autotools apache-module eutils
 
 DESCRIPTION="SSL/TLS module for the Apache HTTP server"
-HOMEPAGE="https://fedorahosted.org/mod_nss/"
-SRC_URI="https://fedorahosted.org/released/mod_nss/${P}.tar.gz"
+HOMEPAGE="https://pagure.io/mod_nss"
+SRC_URI="https://releases.pagure.org/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

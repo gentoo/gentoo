@@ -23,7 +23,7 @@ LICENSE="GPL-3"
 
 SLOT="0"
 
-IUSE="acl addc addns ads client cluster cups debug dmapi fam gnutls gpg iprint ldap pam python
+IUSE="acl addc addns ads ceph client cluster cups debug dmapi fam gnutls gpg iprint ldap pam python
 quota selinux syslog system-heimdal +system-mitkrb5 systemd test winbind zeroconf"
 
 MULTILIB_WRAPPED_HEADERS=(
@@ -63,6 +63,7 @@ CDEPEND="
 		net-dns/bind-tools[gssapi]
 		dev-python/dnspython:=[${PYTHON_USEDEP}]
 	)
+	ceph? ( sys-cluster/ceph )
 	cluster? ( !dev-db/ctdb )
 	cups? ( net-print/cups )
 	debug? ( dev-util/lttng-ust )
@@ -183,6 +184,7 @@ multilib_src_configure() {
 			$(usex addc '' '--without-ad-dc')
 			$(use_with addns dnsupdate)
 			$(use_with ads)
+			$(use_enable ceph cephfs)
 			$(use_with cluster cluster-support)
 			$(use_enable cups)
 			$(use_with debug lttng)
@@ -211,6 +213,7 @@ multilib_src_configure() {
 			--without-dnsupdate
 			--without-ads
 			--disable-avahi
+			--disable-cephfs
 			--without-cluster-support
 			--disable-cups
 			--without-dmapi

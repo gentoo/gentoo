@@ -30,6 +30,11 @@ SRC_URI="https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}
 		https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}-manual.html )"
 S="${WORKDIR}"/src
 
+src_prepare() {
+	epatch "${FILESDIR}"/${PN}-2.48.4-Makefile-dep.patch
+	default
+}
+
 src_compile() {
 	local myconf
 

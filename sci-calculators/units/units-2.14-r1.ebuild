@@ -45,7 +45,6 @@ src_install() {
 		python_is_python3 && pyver=3 || pyver=2
 		sed -e "/^outfile/s|'.*'|'/usr/share/units/currency.units'|g" \
 			"units_cur${pyver}" > units_cur || die
-		python_fix_shebang
 		python_doscript units_cur
 	fi
 }

@@ -16,8 +16,8 @@ SRC_URI="https://github.com/mltframework/${PN}/archive/v${PV}.tar.gz -> ${P}.tar
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
-IUSE="compressed-lumas debug ffmpeg fftw frei0r gtk jack kdenlive libav libsamplerate melt opencv opengl
-cpu_flags_x86_mmx qt5 rtaudio sdl cpu_flags_x86_sse cpu_flags_x86_sse2 xine xml lua python ruby vdpau"
+IUSE="compressed-lumas cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 debug ffmpeg fftw frei0r
+gtk jack kdenlive libav libsamplerate lua melt opencv opengl python qt5 rtaudio ruby sdl vdpau xine xml"
 # java perl php tcl vidstab
 IUSE="${IUSE} kernel_linux"
 
@@ -30,25 +30,23 @@ COMMON_DEPEND="
 		libav? ( media-video/libav:0=[vdpau?] )
 		!libav? ( media-video/ffmpeg:0=[vdpau?] )
 	)
-	xml? ( >=dev-libs/libxml2-2.5 )
-	sdl? ( >=media-libs/libsdl-1.2.10[X,opengl,video]
-		 >=media-libs/sdl-image-1.2.4 )
-	libsamplerate? ( >=media-libs/libsamplerate-0.1.2 )
-	jack? ( >=media-sound/jack-audio-connection-kit-0.121.3
-		media-libs/ladspa-sdk
-		>=dev-libs/libxml2-2.5 )
 	fftw? ( sci-libs/fftw:3.0= )
 	frei0r? ( media-plugins/frei0r-plugins )
-	gtk? ( x11-libs/gtk+:2
+	gtk? (
 		media-libs/libexif
-		x11-libs/pango )
+		x11-libs/gtk+:2
+		x11-libs/pango
+	)
+	jack? (
+		>=dev-libs/libxml2-2.5
+		media-libs/ladspa-sdk
+		>=media-sound/jack-audio-connection-kit-0.121.3
+	)
+	libsamplerate? ( >=media-libs/libsamplerate-0.1.2 )
+	lua? ( >=dev-lang/lua-5.1.4-r4:= )
 	opencv? ( >=media-libs/opencv-3.1.0:= )
 	opengl? ( media-video/movit )
-	rtaudio? (
-		media-libs/rtaudio
-		kernel_linux? ( media-libs/alsa-lib )
-	)
-	xine? ( >=media-libs/xine-lib-1.1.2_pre20060328-r7 )
+	python? ( ${PYTHON_DEPS} )
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
@@ -59,13 +57,21 @@ COMMON_DEPEND="
 		x11-libs/libX11
 		opengl? ( dev-qt/qtopengl:5 )
 	)
-	lua? ( >=dev-lang/lua-5.1.4-r4:= )
-	python? ( ${PYTHON_DEPS} )
-	ruby? ( ${RUBY_DEPS} )"
-#	sox? ( media-sound/sox )
+	rtaudio? (
+		media-libs/rtaudio
+		kernel_linux? ( media-libs/alsa-lib )
+	)
+	ruby? ( ${RUBY_DEPS} )
+	sdl? (
+		>=media-libs/libsdl-1.2.10[X,opengl,video]
+		>=media-libs/sdl-image-1.2.4
+	)
+	xine? ( >=media-libs/xine-lib-1.1.2_pre20060328-r7 )
+	xml? ( >=dev-libs/libxml2-2.5 )"
 #	java? ( >=virtual/jre-1.5 )
 #	perl? ( dev-lang/perl )
 #	php? ( dev-lang/php )
+#	sox? ( media-sound/sox )
 #	tcl? ( dev-lang/tcl:0= )
 #	vidstab? ( media-libs/libvidstab )
 SWIG_DEPEND=">=dev-lang/swig-2.0"
@@ -86,6 +92,7 @@ RDEPEND="${COMMON_DEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.2.0-ruby-link.patch
 	"${FILESDIR}"/${P}-libebur128-unbundle.patch
+	"${FILESDIR}"/${P}-opencv-3.3.patch
 )
 
 pkg_setup() {

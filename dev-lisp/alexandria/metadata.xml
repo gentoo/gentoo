@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>common-lisp@gentoo.org</email>
+    <name>Gentoo Common Lisp Project</name>
+  </maintainer>
+    <longdescription lang="en">
+    Alexandria is a project and a library.
+
+    As a project Alexandria's goal is to reduce duplication of effort and
+    improve portability of Common Lisp code according to its own
+    idiosyncratic and rather conservative aesthetic. What this actually
+    means is open to debate, but each project member has a veto on all
+    project activities, so a degree of conservativism is inevitable.
+
+    As a library Alexandria is one of the means by which the project
+    strives for its goals. Alexandria is a collection of portable public
+    domain utilities that meet the following constraints:
+
+    * Utilities, not extensions: Alexandria will not contain conceptual
+      extensions to Common Lisp, instead limiting itself to tools and
+      utilities that fit well within the framework of standard ANSI Common
+      Lisp. Test-frameworks, system definitions, logging facilities,
+      serialization layers, etc. are all outside the scope of Alexandria
+      as a library, though well within the scope of Alexandria as a project.
+    * Conservative: Alexandria limits itself to what project members
+      consider conservative utilities. Alexandria does not and will not
+      include anaphoric constructs, loop-like binding macros, etc.
+    * Portable: Alexandria limits itself to portable parts of Common
+      Lisp. Even apparently conservative and usefull functions remain
+      outside the scope of Alexandria if they cannot be implemented
+      portably. Portability is here defined as portable within a
+      conforming implementation: implementation bugs are not considered
+      portability issues.
+    * Team player: Alexandria will not (initially, at least) subsume
+      or provide functionality for which good-quality special-purpose
+      packages exist, like split-sequence. Instead, third party packages
+      such as that may be "blessed".
+    </longdescription>
+    <upstream>
+        <remote-id type="gitlab">alexandria/alexandria</remote-id>
+    </upstream>
+</pkgmetadata>
