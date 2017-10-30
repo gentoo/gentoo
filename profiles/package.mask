@@ -31,6 +31,11 @@
 
 # Andreas Sturmlechner <asturm@gentoo.org> (30 Oct 2017)
 # Requires dead and vulnerable qtwebkit4.
+# Masked for removal in 30 days. Bug #620708
+media-sound/google-musicmanager
+
+# Andreas Sturmlechner <asturm@gentoo.org> (30 Oct 2017)
+# Requires dead and vulnerable qtwebkit4.
 # Masked for removal in 30 days. Bug #620742
 net-voip/vidyodesktop
 
@@ -162,7 +167,6 @@ dev-qt/qtwebkit:4
 <app-misc/anki-2.1
 <app-misc/sleepyhead-1.0.0_beta2
 <media-gfx/freecad-0.17_pre
-media-sound/google-musicmanager
 >=net-misc/teamviewer-10
 <sci-libs/opencascade-7.0
 <sci-libs/vtk-6.1.0-r4
@@ -301,22 +305,6 @@ app-editors/atom:beta
 # Fails to build (bug #622632). Requires dead and vulnerable qtwebkit4
 # (bug #620710). Masked for removal in 30 days.
 media-sound/lastfm-desktop
-
-# Michael Palimaka <kensington@gentoo.org> (30 Sep 2017)
-# Depends on dead qt4. Dead upstream.
-# Masked for removal in 30 days.
-net-misc/dnetstats
-
-# Michael Palimaka <kensington@gentoo.org> (30 Sep 2017)
-# Depends on dead qt4. Dead upstream.
-# Masked for removal in 30 days.
-app-office/qcharselect
-
-# Michael Palimaka <kensington@gentoo.org> (30 Sep 2017)
-# Blocks cleanup of dead and vulnerable qtwebkit4.
-# Depends on dead qt4. Dead upstream.
-# Masked for removal in 30 days. Bug #624244.
-sci-chemistry/mongochem
 
 # Andrey Grozin <grozin@gentoo.org> (19 Sep 2017)
 # This package was a stopgap to bump dev-python/spyder to 3.*
