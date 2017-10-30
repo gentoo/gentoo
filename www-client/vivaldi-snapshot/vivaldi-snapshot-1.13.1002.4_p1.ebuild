@@ -7,7 +7,7 @@ CHROMIUM_LANGS="
 	hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro ru sk sl sr sv
 	sw ta te th tr uk vi zh-CN zh-TW
 "
-inherit chromium-2 eutils multilib unpacker toolchain-funcs
+inherit chromium-2 eutils gnome2-utils multilib unpacker toolchain-funcs xdg-utils
 
 VIVALDI_HOME="opt/${PN}"
 DESCRIPTION="A new browser for our friends"
@@ -92,7 +92,7 @@ src_prepare() {
 	chromium_remove_language_paks
 	popd > /dev/null || die
 
-	epatch "${FILESDIR}"/${PN}-1.12.955.3_p1-libffmpeg.patch
+	epatch "${FILESDIR}"/vivaldi-snapshot-1.13.997.3_p1-libffmpeg.patch
 
 	epatch_user
 }
@@ -102,4 +102,17 @@ src_install() {
 	dosym /${VIVALDI_HOME}/${PN} /usr/bin/${PN}
 
 	fperms 4711 /${VIVALDI_HOME}/vivaldi-sandbox
+}
+pkg_preinst() {
+	gnome2_icon_savelist
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }

@@ -21,7 +21,6 @@ DEPEND="!dev-lisp/cl-${PN}
 		!dev-lisp/gentoo-init
 		!<dev-lisp/asdf-2.33-r3
 		doc? ( virtual/texi2dvi )"
-RDEPEND="virtual/commonlisp"
 PDEPEND="~dev-lisp/uiop-${PV}"
 
 install_docs() {
