@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=Golang IDE by JetBrains
+EAPI=6
+HOMEPAGE=http://www.jetbrains.com/go
+KEYWORDS=~amd64
+LICENSE=IDEA || ( IDEA_Academic IDEA_Classroom IDEA_OpenSource IDEA_Personal )
+RDEPEND=dev-lang/go
+SLOT=0
+SRC_URI=http://download.jetbrains.com/go/gogland-173.3415.23.tar.gz
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=03ae06b9f0ad5cc1138034963bde155c
