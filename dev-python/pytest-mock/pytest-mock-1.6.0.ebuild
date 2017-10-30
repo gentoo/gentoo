@@ -17,10 +17,10 @@ IUSE=""
 
 RDEPEND="dev-python/pytest[${PYTHON_USEDEP}]
 	python_targets_python2_7? (
-		dev-python/mock[python_targets_python2_7]
+		>=dev-python/mock-2[python_targets_python2_7]
 	)
 	python_targets_pypy? (
-		dev-python/mock[python_targets_pypy]
+		>=dev-python/mock-2[python_targets_pypy]
 	)"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
