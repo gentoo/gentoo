@@ -15,7 +15,7 @@ else
 	KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 fi
 
-LICENSE="MIT"
+LICENSE="public-domain"
 SLOT="0"
 IUSE="doc"
 
