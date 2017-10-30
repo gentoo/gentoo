@@ -16787,7 +16787,7 @@ sci-visualization/xgraph 12.1-r4: X11 Plotting Utility
 sci-visualization/xyscan 3.3.1-r1: Tool for extracting data points from graphs
 sci-visualization/yt 3.3.5 3.4.0: Astrophysical Simulation Analysis and Vizualization package
 sci-visualization/zhu3d 4.2.4 4.2.6: Interactive 3D mathematical function viewer
-sec-policy/apparmor-profiles 2.11.0: A collection of profiles for the AppArmor application security system
+sec-policy/apparmor-profiles 2.11.0 2.11.1: A collection of profiles for the AppArmor application security system
 sec-policy/selinux-abrt 2.20170204-r1 2.20170204-r2 2.20170204-r3 2.20170204-r4 2.20170805-r2 9999: SELinux policy for abrt
 sec-policy/selinux-accountsd 2.20170204-r1 2.20170204-r2 2.20170204-r3 2.20170204-r4 2.20170805-r2 9999: SELinux policy for accountsd
 sec-policy/selinux-acct 2.20170204-r1 2.20170204-r2 2.20170204-r3 2.20170204-r4 2.20170805-r2 9999: SELinux policy for acct
@@ -17051,8 +17051,8 @@ sys-apps/adjtime 0.4-r2: A perl script to adjust the clock tick of the hardware 
 sys-apps/agedu 20151213 20160906 20160920 20170831: A utility for tracking down wasted disk space
 sys-apps/aix-miscutils 0.1.1671: Miscellaneous helpers for AIX (currently just ldd)
 sys-apps/apmd 3.2.2_p14-r1: Advanced Power Management Daemon
-sys-apps/apparmor 2.11.0: Userspace utils and init scripts for the AppArmor application security system
-sys-apps/apparmor-utils 2.11.0-r1: Additional userspace utils to assist with AppArmor profile management
+sys-apps/apparmor 2.11.0 2.11.1: Userspace utils and init scripts for the AppArmor application security system
+sys-apps/apparmor-utils 2.11.0-r1 2.11.1: Additional userspace utils to assist with AppArmor profile management
 sys-apps/apply-default-acl 0.0.6: Apply default POSIX ACLs to files and directories
 sys-apps/arrayprobe 2.0-r2: CLI utility that reports the status of a HP (Compaq) array controller (both IDA & CCISS supported)
 sys-apps/attr 2.4.47-r2: Extended attributes tools
@@ -17904,7 +17904,7 @@ sys-libs/ldb 1.1.26 1.1.29-r1 1.1.31 1.2.2 1.3.0: An LDAP-like embedded database
 sys-libs/lib-compat 1.4.2-r1 1.5: Compatibility C++ library for very old programs
 sys-libs/lib-compat-loki 0.2-r1: Compatibility libc6 libraries for Loki games
 sys-libs/libaal 1.0.5 1.0.5-r1 1.0.6: library required by reiser4progs
-sys-libs/libapparmor 2.11.0-r1: Library to support AppArmor userspace utilities
+sys-libs/libapparmor 2.11.0-r1 2.11.1: Library to support AppArmor userspace utilities
 sys-libs/libavc1394 0.5.3 0.5.4 0.5.4-r1: library for the 1394 Trade Association AV/C (Audio/Video Control) Digital Interface Command Set
 sys-libs/libblockdev 2.12 2.13: A library for manipulating block devices
 sys-libs/libcap 2.24-r2 2.25: POSIX 1003.1e capabilities
