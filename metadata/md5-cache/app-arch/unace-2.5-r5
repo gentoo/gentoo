@@ -1,0 +1,10 @@
+DEFINED_PHASES=configure install
+DESCRIPTION=ACE unarchiver
+EAPI=6
+HOMEPAGE=http://www.winace.com/
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~s390 ~x86 ~amd64-linux ~x86-linux ~sparc-solaris
+LICENSE=freedist
+SLOT=1
+SRC_URI=mirror://debian/pool/non-free/u/unace-nonfree/unace-nonfree_2.5.orig.tar.gz mirror://debian/pool/non-free/u/unace-nonfree/unace-nonfree_2.5-9.debian.tar.xz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=90d4350f01042ad69f98b7a830abd78e
