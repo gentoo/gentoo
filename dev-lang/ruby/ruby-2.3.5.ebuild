@@ -233,7 +233,7 @@ pkg_postinst() {
 
 	elog
 	elog "To switch between available Ruby profiles, execute as root:"
-	elog "\teselect ruby set ruby(19|20|...)"
+	elog "\teselect ruby set ruby(22|23|...)"
 	elog
 }
 
