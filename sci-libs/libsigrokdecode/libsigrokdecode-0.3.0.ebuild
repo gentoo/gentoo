@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -18,7 +18,7 @@ DESCRIPTION="provide (streaming) protocol decoding functionality"
 HOMEPAGE="http://sigrok.org/wiki/Libsigrokdecode"
 
 LICENSE="GPL-3"
-SLOT="0"
+SLOT="0/2"
 IUSE="static-libs"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
