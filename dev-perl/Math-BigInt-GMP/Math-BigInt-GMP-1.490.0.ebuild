@@ -22,3 +22,4 @@ DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? ( >=virtual/perl-Test-Simple-0.470.0 )
 "
+PATCHES=("${FILESDIR}/${P}-no-dot-inc.patch")
