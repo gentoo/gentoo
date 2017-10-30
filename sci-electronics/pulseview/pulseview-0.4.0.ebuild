@@ -27,13 +27,13 @@ RDEPEND="
 	>=dev-libs/boost-1.55:=
 	>=dev-libs/glib-2.28.0:2
 	>=dev-cpp/glibmm-2.28.0:2
-	>=sci-libs/libsigrok-0.5.0[cxx]
+	>=sci-libs/libsigrok-0.5.0:=[cxx]
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtsvg:5
 	decode? (
-		>=sci-libs/libsigrokdecode-0.5.0[${PYTHON_USEDEP}]
+		>=sci-libs/libsigrokdecode-0.5.0:=[${PYTHON_USEDEP}]
 		${PYTHON_DEPS}
 	)"
 DEPEND="${RDEPEND}
