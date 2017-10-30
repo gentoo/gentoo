@@ -5,7 +5,7 @@ EAPI="6"
 
 PYTHON_COMPAT=( python3_{4,5,6} )
 
-inherit cmake-utils python-single-r1
+inherit cmake-utils gnome2-utils python-single-r1 xdg-utils
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="git://sigrok.org/${PN}"
@@ -48,4 +48,14 @@ src_configure() {
 		-DSTATIC_PKGDEPS_LIBS=$(usex static)
 	)
 	cmake-utils_src_configure
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }
