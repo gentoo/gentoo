@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst prepare setup
+DEPEND=>=dev-libs/libpcre-3.4 dev-lang/perl berkdb? ( >=sys-libs/db-3.2:* ) cdb? ( || ( >=dev-db/tinycdb-0.76 >=dev-db/cdb-0.75-r4 ) ) eai? ( dev-libs/icu:= ) ldap? ( net-nds/openldap ) ldap-bind? ( net-nds/openldap[sasl] ) lmdb? ( >=dev-db/lmdb-0.9.11 ) mysql? ( virtual/mysql ) pam? ( virtual/pam ) postgres? ( dev-db/postgresql:* ) sasl? ( >=dev-libs/cyrus-sasl-2 ) sqlite? ( dev-db/sqlite:3 ) ssl? ( !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) ) virtual/pkgconfig
+DESCRIPTION=A fast and secure drop-in replacement for sendmail
+EAPI=6
+HOMEPAGE=http://www.postfix.org/
+IUSE=+berkdb cdb doc dovecot-sasl +eai hardened ldap ldap-bind libressl lmdb memcached mbox mysql nis pam postgres sasl selinux sqlite ssl
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd
+LICENSE=IBM
+RDEPEND=>=dev-libs/libpcre-3.4 dev-lang/perl berkdb? ( >=sys-libs/db-3.2:* ) cdb? ( || ( >=dev-db/tinycdb-0.76 >=dev-db/cdb-0.75-r4 ) ) eai? ( dev-libs/icu:= ) ldap? ( net-nds/openldap ) ldap-bind? ( net-nds/openldap[sasl] ) lmdb? ( >=dev-db/lmdb-0.9.11 ) mysql? ( virtual/mysql ) pam? ( virtual/pam ) postgres? ( dev-db/postgresql:* ) sasl? ( >=dev-libs/cyrus-sasl-2 ) sqlite? ( dev-db/sqlite:3 ) ssl? ( !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) ) dovecot-sasl? ( net-mail/dovecot ) memcached? ( net-misc/memcached ) net-mail/mailbase !mail-mta/courier !mail-mta/esmtp !mail-mta/exim !mail-mta/mini-qmail !mail-mta/msmtp[mta] !mail-mta/netqmail !mail-mta/nullmailer !mail-mta/qmail-ldap !mail-mta/sendmail !mail-mta/opensmtpd !<mail-mta/ssmtp-2.64-r2 !>=mail-mta/ssmtp-2.64-r2[mta] !net-mail/fastforward selinux? ( sec-policy/selinux-postfix )
+REQUIRED_USE=ldap-bind? ( ldap sasl )
+SLOT=0
+SRC_URI=ftp://ftp.porcupine.org/mirrors/postfix-release/experimental/postfix-3.3-20171028.tar.gz
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	pam	3e788d86170dfcd5b06824d898315e18	systemd	34815d3b76e745c5ca33eec9f95074c2	toolchain-funcs	185a06792159ca143528e7010368e8af	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=35c6073b51e20186792b5b290c65ee02
