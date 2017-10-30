@@ -12,7 +12,7 @@ COMMIT="77924398bd594e238766153cec97ace62650f082"
 
 DESCRIPTION="vim plugin: binding to the autocompletion library jedi"
 HOMEPAGE="https://github.com/davidhalter/jedi-vim"
-SRC_URI="https://github.com/davidhalter/jedi-vim/archive/${COMMIT}.zip"
+SRC_URI="https://github.com/davidhalter/jedi-vim/archive/${COMMIT}.zip -> ${P}.zip"
 
 LICENSE="MIT"
 KEYWORDS="~amd64 ~x86"
