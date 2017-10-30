@@ -6430,7 +6430,6 @@ net-misc/miniupnpd:portinuse - Check if a port is in use before allowing a NAT-P
 net-misc/miniupnpd:strict - Be more strict regarding compliance with UPnP specifications.
 net-misc/modemmanager:mbim - Enable MBIM modem protocol
 net-misc/modemmanager:qmi - Enable support for the QMI modem protocol used by devices with Qualcomm chipsets
-net-misc/modemmanager:qmi-newest - Avoid deprecated QMI commands. Warning: may cause incompatibility with older devices.
 net-misc/mosh:client - Build network client
 net-misc/mosh:examples - Include example scripts
 net-misc/mosh:mosh-hardening - Enable compiler and linker options to frustrate memory corruption exploits

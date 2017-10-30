@@ -4909,7 +4909,7 @@ dev-libs/libotf 0.9.13: Library for handling OpenType fonts (OTF)
 dev-libs/libowfat 0.29 0.30 0.31: reimplement libdjb - excellent libraries from Dan Bernstein
 dev-libs/libp11 0.4.4: Abstraction layer to simplify PKCS#11 API
 dev-libs/libparserutils 0.2.3: library for building efficient parsers, written in C
-dev-libs/libpcre 8.40-r1 8.41: Perl-compatible regular expression library
+dev-libs/libpcre 8.40-r1 8.41 8.41-r1: Perl-compatible regular expression library
 dev-libs/libpcre-debian 8-r1: libpcre(posix).so.3 symlinks for compatibility with Debian
 dev-libs/libpcre2 10.22 10.23 10.30: Perl-compatible regular expression library
 dev-libs/libpeas 1.20.0 1.20.0-r1: A GObject plugins library
@@ -4981,7 +4981,7 @@ dev-libs/libyaml 0.1.7: YAML 1.1 parser and emitter written in C
 dev-libs/libzeitgeist 0.3.18: Client library to interact with zeitgeist
 dev-libs/libzia 4.11: platform abstraction code for tucnak package
 dev-libs/libzip 1.3.0: Library for manipulating zip archives
-dev-libs/link-grammar 5.3.10 5.3.11: A Syntactic English parser
+dev-libs/link-grammar 5.3.11: A Syntactic English parser
 dev-libs/lockdev 1.0.3.1.2-r2 1.0.3.1.2-r3: Library for locking devices
 dev-libs/locked_sstream 0.0.5: tiny C++ library which wraps std::stringstream in a mutex
 dev-libs/log4cplus 1.1.3_rc7 1.2.0: C++ port of the Log for Java (log4j) logging library
@@ -11689,7 +11689,7 @@ gnome-base/dconf-editor 3.22.3: Graphical tool for editing the dconf configurati
 gnome-base/gconf 3.2.6-r4: GNOME configuration system and daemon
 gnome-base/gdm 3.22.3-r1 3.24.2 3.24.3: GNOME Display Manager for managing graphical display servers and user logins
 gnome-base/gnome 3.20.0 3.22.0 3.22.2 3.24.0: Meta package for GNOME 3, merge this package to install
-gnome-base/gnome-common 3.18.0 3.18.0-r1: Common files for development of Gnome packages
+gnome-base/gnome-common 3.18.0-r1: Common files for development of Gnome packages
 gnome-base/gnome-control-center 3.22.2-r1 3.24.2 3.24.3: GNOME's main interface to configure various aspects of the desktop
 gnome-base/gnome-core-apps 3.20.0 3.22.0 3.22.2 3.24.0: Sub-meta package for the core applications integrated with GNOME 3
 gnome-base/gnome-core-libs 3.22.2 3.24.0: Sub-meta package for the core libraries of GNOME 3
@@ -12732,7 +12732,7 @@ media-gfx/gnome-screenshot 3.22.0: Screenshot utility for GNOME
 media-gfx/gnome-specimen 0.4-r1: Font preview application
 media-gfx/gnuclad 0.2.4: Cladogram tree generator mainly used by the GNU/Linux distro timeline project
 media-gfx/gozer 0.7-r2 0.7-r3: tool for rendering arbitrary text as graphics, using ttfs and styles
-media-gfx/gphoto2 2.5.10 2.5.11 2.5.14: Free, redistributable digital camera software application
+media-gfx/gphoto2 2.5.11 2.5.14: Free, redistributable digital camera software application
 media-gfx/gphotofs 0.5: FUSE file system for interfacing with digital cameras using gphoto2
 media-gfx/gpicview 0.2.4 0.2.5: A Simple and Fast Image Viewer for X
 media-gfx/gqview 2.1.5-r1: A GTK-based image browser
@@ -13079,7 +13079,7 @@ media-libs/libggiwmh 0.3.2: Library for General Graphics Interface
 media-libs/libgig 3.3.0 4.0.0-r1: a C++ library for loading Gigasampler files and DLS (Downloadable Sounds) Level 1/2 files
 media-libs/libgii 1.0.2-r1: Fast and safe graphics and drivers for about any graphics card to the Linux kernel (sometimes)
 media-libs/libgltf 0.0.2 0.1.0 9999: C++ Library for rendering OpenGL models stored in glTF format
-media-libs/libgphoto2 2.5.10 2.5.12 2.5.14: Library that implements support for numerous digital cameras
+media-libs/libgphoto2 2.5.12 2.5.14: Library that implements support for numerous digital cameras
 media-libs/libgpod 0.8.3-r2: Shared library to access the contents of an iPod
 media-libs/libgroove 4.3.0-r1: Streaming audio processing library.
 media-libs/libharu 2.3.0-r1: C/C++ library for PDF generation
@@ -15323,7 +15323,7 @@ net-misc/minidlna 1.1.5-r1 1.2.1: DLNA/UPnP-AV compliant media server
 net-misc/minissdpd 1.5.20160301 1.5.20161216: MiniSSDP Daemon
 net-misc/miniupnpd 2.0 2.0.20161216: MiniUPnP IGD Daemon
 net-misc/mobile-broadband-provider-info 20170310: Database of mobile broadband service providers
-net-misc/modemmanager 1.4.14 1.6.4: Modem and mobile broadband management libraries
+net-misc/modemmanager 1.6.4: Modem and mobile broadband management libraries
 net-misc/monmotha 2.3.8-r1: MonMotha IPTables-based firewall script
 net-misc/mosh 1.2.6 1.3.0 1.3.2 9999: Mobile shell that supports roaming and intelligent local echo
 net-misc/mrouted 3.9.5-r1: IP multicast routing daemon
@@ -15572,7 +15572,7 @@ net-nntp/kwooty 1.1.0_p20150623: Friendly nzb linux usenet binary client
 net-nntp/leafnode 1.11.11: A USENET software package designed for small sites
 net-nntp/newspost 2.1.1-r3: A usenet binary autoposter for unix
 net-nntp/nzbget 14.1 19.1 20.0_pre2075 20.0_pre2108-r1: A command-line based binary newsgrabber supporting .nzb files
-net-nntp/pan 0.140 0.141 0.142: A newsreader for GNOME
+net-nntp/pan 0.141 0.142: A newsreader for GNOME
 net-nntp/sabnzbd 2.3.0: Binary newsgrabber with web-interface
 net-nntp/slrn 1.0.2: A s-lang based newsreader
 net-nntp/slrnconf 0.8.4: slrnconf is a graphical configuration utility for the newsreader slrn
@@ -16337,6 +16337,7 @@ sci-geosciences/opencpn-plugin-logbookkonni 1.2018-r1 1.3002 9999: Logbook Plugi
 sci-geosciences/opencpn-plugin-objsearch 0.5.1-r1 0.7 9999: Chart Object Search Plugin for OpenCPN
 sci-geosciences/opencpn-plugin-ocpn_draw 1.0.12 1.3.14 9999: Draw Plugin for OpenCPN
 sci-geosciences/opencpn-plugin-ocpndebugger 1.0-r1 1.2 1.3 9999: NMEA-data and plugin-API Debugger Plugin for OpenCPN
+sci-geosciences/opencpn-plugin-oesenc 1.6.0 9999: oeSENC Charts Plugin for OpenCPN
 sci-geosciences/opencpn-plugin-otcurrent 1.2 9999: OTCurrent Plugin for OpenCPN
 sci-geosciences/opencpn-plugin-polar 1.1007 9999: Polar Diagram Plugin for OpenCPN
 sci-geosciences/opencpn-plugin-radar 0.98 9999: AIS Radar View Plugin for OpenCPN
@@ -16347,7 +16348,7 @@ sci-geosciences/opencpn-plugin-watchdog 1.9.051 9999: Watchdog Plugin for OpenCP
 sci-geosciences/opencpn-plugin-weather_routing 1.10.1 9999: Weather Routing Plugin for OpenCPN
 sci-geosciences/opencpn-plugin-weatherfax 1.3-r1 9999: Weatherfax Plugin for OpenCPN
 sci-geosciences/opencpn-plugin-wmm 1.0-r1: World Magnetic Model Plugin for OpenCPN
-sci-geosciences/opencpn-plugins-meta 4.0.0 4.2.0-r1: Meta ebuild to pull in opencpn plugins
+sci-geosciences/opencpn-plugins-meta 4.0.0 4.2.0-r2: Meta ebuild to pull in opencpn plugins
 sci-geosciences/osm-gps-map 1.1.0: A GTK+ widget for displaying OpenStreetMap tiles
 sci-geosciences/osm2pgsql 0.94.0 99999999: Converts OSM planet.osm data to a PostgreSQL/PostGIS database
 sci-geosciences/qgis 2.18.12 2.18.12-r100 2.18.14: User friendly Geographic Information System
@@ -18693,7 +18694,7 @@ x11-libs/gtk+extra 3.3.3: Useful Additional GTK+ widgets
 x11-libs/gtk-mac-integration 2.0.5: Menubar, doc and app bundle integration for GTK+
 x11-libs/gtkdatabox 0.9.2.0 0.9.3.0: Gtk+ Widgets for live display of large amounts of fluctuating numerical data
 x11-libs/gtkglarea 2.0.1-r1 2.1.0: OpenGL canvas and context provider for GTK+
-x11-libs/gtkglext 1.2.0-r3 1.2.0-r4: GL extensions for Gtk+ 2.0
+x11-libs/gtkglext 1.2.0-r4: GL extensions for Gtk+ 2.0
 x11-libs/gtkhotkey 0.2.1-r1: Cross platform library for using desktop wide hotkeys
 x11-libs/gtkmathview 0.8.0-r2 0.8.0-r3: Rendering engine for MathML documents
 x11-libs/gtksourceview 2.10.5-r3 3.22.2 3.24.3 3.24.4: A text widget implementing syntax highlighting and other features
@@ -18844,7 +18845,7 @@ x11-misc/cbatticon 1.6.5 1.6.6 1.6.7: A lightweight and fast battery icon that s
 x11-misc/ccsm 0.8.4-r5: Compizconfig Settings Manager
 x11-misc/cdm 0.6.1_pre20130419: The Console Display Manager
 x11-misc/chgres 0.1-r2: A very simple command line utility for changing X resolutions
-x11-misc/colord 1.2.12 1.3.3 1.3.4: System service to accurately color manage input and output devices
+x11-misc/colord 1.3.4: System service to accurately color manage input and output devices
 x11-misc/compton 0.1_beta2 9999: A compositor for X, and a fork of xcompmgr-dana
 x11-misc/dclock 2.2.2_p9: Digital clock for the X window system
 x11-misc/devilspie 0.23 0.23-r1: A Window Matching utility similar to Sawfish's Matched Windows feature
