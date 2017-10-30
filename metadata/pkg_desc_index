@@ -6270,7 +6270,7 @@ dev-perl/Module-Manifest 1.80.0-r1: Parse and examine a Perl distribution MANIFE
 dev-perl/Module-Path 0.190.0: get the full path to a locally installed module
 dev-perl/Module-Pluggable 5.200.0: Automatically give your module the ability to have plugins
 dev-perl/Module-Refresh 0.170.0-r1: Refresh %INC files when updated on disk
-dev-perl/Module-Runtime 0.14.0: Runtime module handling
+dev-perl/Module-Runtime 0.14.0 0.16.0: Runtime module handling
 dev-perl/Module-Runtime-Conflicts 0.2.0: Provide information on conflicts for Module::Runtime
 dev-perl/Module-ScanDeps 1.230.0: Recursively scan Perl code for dependencies
 dev-perl/Module-Signature 0.790.0: Module signature file manipulation
