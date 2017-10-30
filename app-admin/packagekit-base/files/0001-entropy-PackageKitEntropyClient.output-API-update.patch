@@ -1,0 +1,26 @@
+From ee2dfacb275e8145c7ae1ba8da86779054adf902 Mon Sep 17 00:00:00 2001
+From: Fabio Erculiani <lxnay@sabayon.org>
+Date: Fri, 6 Dec 2013 07:40:15 +0100
+Subject: [PATCH] entropy: PackageKitEntropyClient.output API update
+
+---
+ backends/entropy/entropyBackend.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/backends/entropy/entropyBackend.py b/backends/entropy/entropyBackend.py
+index 57b6c59..bec8ef6 100755
+--- a/backends/entropy/entropyBackend.py
++++ b/backends/entropy/entropyBackend.py
+@@ -776,7 +776,8 @@ class PackageKitEntropyClient(Client):
+     def init_singleton(self):
+         Client.init_singleton(self, url_fetcher = PkUrlFetcher)
+ 
+-    def output(self, text, header = "", footer = "", back = False,
++    @classmethod
++    def output(cls, text, header = "", footer = "", back = False,
+         importance = 0, level = "info", count = None, percent = False):
+         """
+         Reimplemented from entropy.output.TextInterface.
+-- 
+1.8.4.4
+
