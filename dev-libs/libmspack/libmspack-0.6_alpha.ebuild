@@ -20,6 +20,10 @@ IUSE="debug doc static-libs"
 DEPEND=""
 RDEPEND=""
 
+PATCHES=(
+	"${FILESDIR}/${P}-fix-tests.patch"
+)
+
 S="${WORKDIR}/${MY_P}"
 
 multilib_src_configure() {
