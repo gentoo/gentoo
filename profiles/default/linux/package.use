@@ -1,6 +1,10 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Mike Gilbert <floppym@gentoo.org> (29 Oct 2017)
+# Override default from make.defaults, bug 635822.
+net-libs/mbedtls -zlib
+
 # Mike Frysinger <vapier@gentoo.org> (12 Nov 2015)
 # We want busybox statically linked by default as it is the system rescue shell.
 # But we cannot statically link pam, so turn that off by default. #468580
