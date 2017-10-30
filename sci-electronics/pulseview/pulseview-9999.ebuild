@@ -5,7 +5,7 @@ EAPI="6"
 
 PYTHON_COMPAT=( python3_{4,5,6} )
 
-inherit cmake-utils python-single-r1
+inherit cmake-utils gnome2-utils python-single-r1 xdg-utils
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="git://sigrok.org/${PN}"
@@ -27,13 +27,13 @@ RDEPEND="
 	>=dev-libs/boost-1.55:=
 	>=dev-libs/glib-2.28.0:2
 	>=dev-cpp/glibmm-2.28.0:2
-	>=sci-libs/libsigrok-0.5.0[cxx]
+	>=sci-libs/libsigrok-0.6.0[cxx]
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtsvg:5
 	decode? (
-		>=sci-libs/libsigrokdecode-0.5.0[${PYTHON_USEDEP}]
+		>=sci-libs/libsigrokdecode-0.6.0[${PYTHON_USEDEP}]
 		${PYTHON_DEPS}
 	)"
 DEPEND="${RDEPEND}
@@ -48,4 +48,14 @@ src_configure() {
 		-DSTATIC_PKGDEPS_LIBS=$(usex static)
 	)
 	cmake-utils_src_configure
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }
