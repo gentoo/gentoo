@@ -11,10 +11,7 @@ EAPI="6"
 
 inherit flag-o-matic toolchain-funcs fcaps
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-99999999-tracepath46.patch
-	"${FILESDIR}"/${PN}-99999999-musl.patch
-)
+PATCHES=()
 
 if [[ ${PV} == "99999999" ]] ; then
 	EGIT_REPO_URI="https://github.com/iputils/iputils.git"
@@ -33,7 +30,7 @@ SLOT="0"
 IUSE="+arping caps clockdiff doc gcrypt idn ipv6 libressl nettle +openssl rarpd rdisc SECURITY_HAZARD ssl static tftpd tracepath traceroute"
 
 LIB_DEPEND="caps? ( sys-libs/libcap[static-libs(+)] )
-	idn? ( net-dns/libidn[static-libs(+)] )
+	idn? ( net-dns/libidn2[static-libs(+)] )
 	ipv6? ( ssl? (
 		gcrypt? ( dev-libs/libgcrypt:0=[static-libs(+)] )
 		nettle? ( dev-libs/nettle[static-libs(+)] )
