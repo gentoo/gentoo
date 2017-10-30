@@ -1048,7 +1048,7 @@ app-editors/mg 20161005 20170401 20170828: MicroGnuEmacs, a port from the BSDs
 app-editors/moe 1.6 1.7: A powerful and user-friendly console text editor
 app-editors/mousepad 0.4.0: GTK+-based editor for the Xfce Desktop Environment
 app-editors/nano 2.7.5 2.8.6 2.8.7 9999: GNU GPL'd Pico clone with more functionality
-app-editors/ne 3.0.1 3.0.1-r1: the nice editor, easy to use for the beginner and powerful for the wizard
+app-editors/ne 3.0.1 3.0.1-r1 3.1.1: the nice editor, easy to use for the beginner and powerful for the wizard
 app-editors/nedit 5.6-r1: Multi-purpose text editor for the X Window System
 app-editors/neovim 0.1.0 0.1.1-r1 0.1.2 0.1.3 0.1.4 0.1.5 0.1.5-r1 0.1.6 0.1.7 0.2.0 9999: Vim-fork focused on extensibility and agility.
 app-editors/ng 1.5_beta1-r2: Emacs like micro editor Ng -- based on mg2a
@@ -14631,9 +14631,9 @@ net-dns/nsd 4.1.16 4.1.17: An authoritative only, high performance, open source 
 net-dns/odsclient 1.03-r1: Client for the Open Domain Server's dynamic dns
 net-dns/opendnssec 1.3.18-r1 1.4.8.2 1.4.12-r1 2.0.1-r1 2.0.3: An open-source turn-key solution for DNSSEC
 net-dns/openresolv 3.8.1 3.9.0: A framework for managing DNS information
-net-dns/pdns 4.0.2 4.0.3 4.0.3-r3 4.0.4 4.1.0_rc1: The PowerDNS Daemon
+net-dns/pdns 4.0.4 4.1.0_rc1: The PowerDNS Daemon
 net-dns/pdns-ldap-backend 0.2: Fork of the official but unmaintained LDAP backend
-net-dns/pdns-recursor 4.0.4 4.0.4-r1 4.0.5 4.0.6 4.1.0_rc1: The PowerDNS Recursor
+net-dns/pdns-recursor 4.0.6 4.1.0_rc1: The PowerDNS Recursor
 net-dns/pdnsd 1.2.9a-r1: Proxy DNS server with permanent caching
 net-dns/rbldnsd 0.998 0.998-r2: DNS server designed to serve blacklist zones
 net-dns/resolv_wrapper 1.1.4 1.1.5: A wrapper for DNS name resolving or DNS faking
@@ -16281,11 +16281,11 @@ sci-electronics/pcb 20140316-r1: GPL Electronic Design Automation: Printed Circu
 sci-electronics/petrify 4.2-r1: Synthesize Petri nets into asynchronous circuits
 sci-electronics/plcedit 2.2.1: Qt4 notepad for PLC programming
 sci-electronics/puff 20100127: microwave CAD software
-sci-electronics/pulseview 0.2.0-r1 0.3.0 0.4.0 9999: Qt based logic analyzer GUI for sigrok
+sci-electronics/pulseview 0.4.0 9999: Qt based logic analyzer GUI for sigrok
 sci-electronics/qelectrotech 0.50 9999: Qt5 application to design electric diagrams
 sci-electronics/quartus-prime-lite 15.1.0.185 15.1.0.185-r1: Full-featured EDA product for altera devices
 sci-electronics/qucs 0.0.17.130503 0.0.18: Quite Universal Circuit Simulator in Qt4
-sci-electronics/sigrok-cli 0.5.0 0.6.0 0.7.0 9999: Command-line client for the sigrok logic analyzer software
+sci-electronics/sigrok-cli 0.7.0 9999: Command-line client for the sigrok logic analyzer software
 sci-electronics/spice 3.5.5-r1 3.5.5-r2: general-purpose circuit simulation program
 sci-electronics/splat 1.4.2: RF Signal Propagation, Loss, And Terrain analysis tool
 sci-electronics/systemc 2.3.0-r1 2.3.1-r1: A C++ based modeling platform for VLSI and system-level co-design
