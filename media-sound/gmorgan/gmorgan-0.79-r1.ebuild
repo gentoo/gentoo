@@ -29,6 +29,7 @@ PATCHES=(
 
 src_prepare() {
 	default
+	sed -i -e "s#/usr/local/share/#/usr/share/#" src/gmorgan.chord.cpp || die
 	eautoreconf
 }
 
