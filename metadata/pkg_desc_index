@@ -9553,7 +9553,7 @@ dev-ruby/d3_rails 3.5.16 3.5.17 4.1.1: Ruby on Rails integration for the Javascr
 dev-ruby/daemon_controller 1.2.0-r1: Library to start and stop specific daemons programmatically in a robust manner
 dev-ruby/daemons 1.2.3 1.2.4 1.2.5: Wrap existing ruby scripts to be run as a daemon
 dev-ruby/dalli 2.7.6: A high performance pure Ruby client for accessing memcached servers
-dev-ruby/database_cleaner 1.5.3 1.6.0 1.6.1: Strategies for cleaning databases
+dev-ruby/database_cleaner 1.5.3 1.6.0 1.6.1 1.6.2: Strategies for cleaning databases
 dev-ruby/date_validator 0.9.0: Simple, ORM agnostic, Ruby 1.9 compatible date validator for Rails 3
 dev-ruby/dbf 2.0.13 3.1.0 3.1.1: a small fast library for reading dBase, xBase, Clipper and FoxPro database files
 dev-ruby/ddplugin 1.0.1: Provides plugin management for Ruby projects
@@ -9774,7 +9774,7 @@ dev-ruby/openvas-omp 0.0.4: Communicate with OpenVAS manager through OMP
 dev-ruby/optionable 0.2.0: Robust options validation for Ruby methods
 dev-ruby/org-ruby 0.9.12: Ruby routines for parsing org-mode files
 dev-ruby/origin 2.2.2 2.3.0 2.3.1: Origin is a simple DSL for generating MongoDB selectors and options
-dev-ruby/ox 2.5.0 2.6.0 2.7.0 2.8.0: A fast XML parser and Object marshaller
+dev-ruby/ox 2.5.0 2.6.0 2.7.0 2.8.0 2.8.1: A fast XML parser and Object marshaller
 dev-ruby/packetfu 1.1.13: A mid-level packet manipulation library
 dev-ruby/paint 2.0.0: Terminal painter
 dev-ruby/parallel 1.11.2 1.12.0: Run any code in parallel Processes or Threads
