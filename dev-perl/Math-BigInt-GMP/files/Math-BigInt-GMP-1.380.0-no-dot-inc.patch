@@ -1,0 +1,37 @@
+From 4a57ce8560c39b71ba6b8220a63efcbf5aac82ea Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Mon, 30 Oct 2017 21:42:48 +1300
+Subject: Fix test failures without '.' in @INC
+
+Under PERL_USE_UNSAFE_INC=0
+
+Bug: https://bugs.gentoo.org/613642
+Bug: https://rt.cpan.org/Ticket/Display.html?id=120718
+---
+ t/bigfltpm.t | 2 +-
+ t/bigintpm.t | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/t/bigfltpm.t b/t/bigfltpm.t
+index de3c80e..89dea16 100644
+--- a/t/bigfltpm.t
++++ b/t/bigfltpm.t
+@@ -26,4 +26,4 @@ my $e = $c->bdiv(Math::BigFloat->new(3),$d);
+ is ($e,'0.00267'); # '0.008 / 3 => 0.0027');
+ is (ref($e->{_e}->[0]), ''); # 'Not a BigInt');
+ 
+-require 't/bigfltpm.inc';	# all tests here for sharing
++require './t/bigfltpm.inc';	# all tests here for sharing
+diff --git a/t/bigintpm.t b/t/bigintpm.t
+index 8f009ec..c05f135 100644
+--- a/t/bigintpm.t
++++ b/t/bigintpm.t
+@@ -33,4 +33,4 @@ is ($x, "9903520314281112085086151826", 'from_oct() works with big numbers');
+ #############################################################################
+ # all the other tests
+  
+-require 't/bigintpm.inc';	# all tests here for sharing
++require './t/bigintpm.inc';       # all tests here for sharing
+-- 
+2.14.3
+
