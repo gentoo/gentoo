@@ -31,6 +31,11 @@
 
 # Andreas Sturmlechner <asturm@gentoo.org> (30 Oct 2017)
 # Requires dead and vulnerable qtwebkit4.
+# Masked for removal in 30 days. Bug #620708
+media-sound/google-musicmanager
+
+# Andreas Sturmlechner <asturm@gentoo.org> (30 Oct 2017)
+# Requires dead and vulnerable qtwebkit4.
 # Masked for removal in 30 days. Bug #620742
 net-voip/vidyodesktop
 
@@ -162,7 +167,6 @@ dev-qt/qtwebkit:4
 <app-misc/anki-2.1
 <app-misc/sleepyhead-1.0.0_beta2
 <media-gfx/freecad-0.17_pre
-media-sound/google-musicmanager
 >=net-misc/teamviewer-10
 <sci-libs/opencascade-7.0
 <sci-libs/vtk-6.1.0-r4
