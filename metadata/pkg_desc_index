@@ -2061,7 +2061,6 @@ app-office/plan 1.10: Motif based schedule planner
 app-office/planner 0.14.6_p20130520: Project manager for Gnome
 app-office/projectlibre-bin 1.6.2: An open source desktop alternative to Microsoft Project
 app-office/pybliographer 1.2.15-r1: Pybliographer is a tool for working with bibliographic databases
-app-office/qcharselect 0.3: A Qt4 port of KCharSelect from KDE 3.5
 app-office/qchartdiary 0.6.4.1-r2: Free Qt4 diary/agenda application
 app-office/sc 7.16-r1 7.16-r2: Spreadsheet Calculator
 app-office/scribus 1.4.6 1.5.3 9999: Desktop publishing (DTP) and layout program
@@ -15228,7 +15227,6 @@ net-misc/dhcpd-pools 2.21: ISC dhcpd lease analysis and reporting
 net-misc/dhcping 1.2: Utility for sending a dhcp request to a dhcp server to see if it is responding
 net-misc/dibbler 1.0.1: Portable DHCPv6 implementation (server, client and relay)
 net-misc/dleyna-server 0.5.0: library for implementing services that allow clients to discover, browse and manipulate DLNA Servers
-net-misc/dnetstats 1.2.6-r3: Qt4 network monitor utility
 net-misc/drive 0.3.9.1: Google Drive client for the commandline
 net-misc/dropbear 2016.74: small SSH 2 client/server designed for small memory environments
 net-misc/dropbox 34.3.19 37.3.28: Dropbox daemon (pretends to be GUI-less)
@@ -16183,7 +16181,6 @@ sci-chemistry/molequeue 0.8.0: Abstract, manage and coordinate execution of task
 sci-chemistry/molmol 2k_p2-r2 2k_p2-r3 2k_p2-r4 2k_p2-r5: Publication-quality molecular visualization package
 sci-chemistry/molscript 2.1.2-r2: Display molecular 3D structures, such as proteins, in both schematic and detailed representations
 sci-chemistry/molsketch 0.3.0 0.4.1-r1: A drawing tool for 2D molecular structures
-sci-chemistry/mongochem 0.7.0-r1: Application for managing large collections of chemical data
 sci-chemistry/mopac7 1.15 1.15-r1: Autotooled, updated version of a powerful, fast semi-empirical package
 sci-chemistry/mpqc 2.3.1-r1 2.3.1-r2 2.3.1-r3 2.3.1-r4: The Massively Parallel Quantum Chemistry Program
 sci-chemistry/msms-bin 2.6.1-r1: MSMS allows to compute very efficiently triangulations of Solvent Excluded Surfaces
