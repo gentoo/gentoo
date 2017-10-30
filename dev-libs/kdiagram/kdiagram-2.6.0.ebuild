@@ -12,6 +12,7 @@ HOMEPAGE="https://www.kde.org/"
 IUSE=""
 
 REQUIRED_USE="test? ( examples )"
+VIRTUALX_REQUIRED="test"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	KEYWORDS="amd64 x86"
