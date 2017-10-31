@@ -11,7 +11,7 @@ SRC_URI="http://www.saunalahti.fi/~rahrenbe/vdr/rssreader/files/${P}.tgz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND=">=media-video/vdr-2.2.0
