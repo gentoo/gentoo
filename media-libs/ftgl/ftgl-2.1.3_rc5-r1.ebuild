@@ -22,7 +22,7 @@ DEPEND=">=media-libs/freetype-2.0.9
 	virtual/opengl
 	virtual/glu
 	media-libs/freeglut
-	<dev-util/cppunit-1.14"
+  dev-util/cppunit"
 RDEPEND=${DEPEND}
 
 S=${WORKDIR}/${MY_P2}
@@ -37,6 +37,7 @@ src_prepare() {
 
 src_configure() {
 	strip-flags # ftgl is sensitive - bug #112820
+  append-cxxflags -std=c++11 # Fix build with latest cppunit
 	econf $(use_enable static-libs static)
 }
 
