@@ -1,13 +1,13 @@
 certificate version 0.1
-pusher 0xA6CC832E4E670EB9 1509469747 +0100
-pushee git+ssh://git.gentoo.org/repo/gentoo.git
-nonce 1509469751-f32b4dd93b9ac1c87f95
+pusher 0BBEEA1FEA4843A4 1509470101 -0400
+pushee ssh://git.gentoo.org/repo/gentoo.git
+nonce 1509470101-d8b5ece9dd7c8373e448
 
-f426b91b05aca75dcbc09c1f9647a1a08c9a47e5 6d1936a3ab5020aff5327928067b67e0dd31026d refs/heads/master
+6d1936a3ab5020aff5327928067b67e0dd31026d 16b0d7b614894af50c9f990e51db6cb681e2f6c6 refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYIAB0WIQRmBnVdxmm4V4Ve5NumzIMuTmcOuQUCWfiuMwAKCRCmzIMuTmcO
-uTniAP9He7uPotqT1JXjwm6A+8xg0Re5sZr/daXD1s+2FdbCfAD+NvUQXMWB+nMg
-ouyMT+VxHqRMIj0hReKmYA/gws77aQA=
-=3FDV
+iHUEABEIAB0WIQSC6+o3VgHHi7vNKkVHG+cz7ykaPwUCWfivlQAKCRBHG+cz7yka
+P1g4AQCpkXEuKnLfYi27w9OfGwKysmufsUgYdAxnlJdoC7MQUQD8DcSBMD0RIU9W
+g0XUGRRy3+7DseeVkxwMlYpGtUcPyec=
+=FPrC
 -----END PGP SIGNATURE-----
