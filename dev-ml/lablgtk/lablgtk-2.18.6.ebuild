@@ -13,7 +13,7 @@ SRC_URI="https://forge.ocamlcore.org/frs/download.php/1726/${P}.tar.gz"
 LICENSE="LGPL-2.1-with-linking-exception examples? ( lablgtk-examples )"
 
 RDEPEND=">=x11-libs/gtk+-2.10:2
-	>=dev-lang/ocaml-4.06:=[ocamlopt?]
+	>=dev-lang/ocaml-4.06_beta:=[ocamlopt?]
 	svg? ( >=gnome-base/librsvg-2.2:2 )
 	glade? ( >=gnome-base/libglade-2.0.1 )
 	gnomecanvas? ( >=gnome-base/libgnomecanvas-2.2 )
