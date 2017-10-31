@@ -11,3 +11,4 @@ netware - Install VMware Tools for Netware guests
 solaris - Install VMware Tools for Solaris guests
 windows - Install VMware Tools for Windows 2000+ guests
 winPre2k - Install VMware Tools for Windows 95/98/ME guests
+winPreVista - Install VMware Tools for Windows guests before Vista

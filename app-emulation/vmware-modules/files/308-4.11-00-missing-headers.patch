@@ -1,0 +1,40 @@
+--- vmblock-only/linux/inode.c	2017-05-06 16:54:57.000000000 +0200
++++ vmblock-only/linux/inode.c.new	2017-05-06 16:55:32.000000000 +0200
+@@ -28,6 +28,7 @@
+ #include <linux/fs.h>
+ #include <linux/time.h>
+ #include <linux/namei.h>
++#include <linux/cred.h>
+ 
+ #include "vmblockInt.h"
+ #include "filesystem.h"
+--- vmci-only/linux/driver.c	2017-05-06 16:59:06.000000000 +0200
++++ vmci-only/linux/driver.c.new	2017-05-06 17:00:03.000000000 +0200
+@@ -38,6 +38,7 @@
+ #include <linux/poll.h>
+ #include <linux/smp.h>
+ #include <linux/vmalloc.h>
++#include <linux/cred.h>
+ 
+ #include "compat_highmem.h"
+ #include "compat_interrupt.h"
+--- vmci-only/linux/vmciKernelIf.c	2017-05-06 17:00:42.000000000 +0200
++++ vmci-only/linux/vmciKernelIf.c.new	2017-05-06 17:01:24.000000000 +0200
+@@ -41,6 +41,7 @@
+ #include <linux/vmalloc.h>
+ #include <linux/wait.h>
+ #include <linux/skbuff.h>
++#include <linux/sched/signal.h>
+ 
+ #include "compat_highmem.h"
+ #include "compat_interrupt.h"
+--- vsock-only/linux/af_vsock.c	2017-05-06 17:02:05.000000000 +0200
++++ vsock-only/linux/af_vsock.c.new	2017-05-06 17:02:49.000000000 +0200
+@@ -106,6 +106,7 @@
+ #include <linux/list.h>
+ #include <linux/wait.h>
+ #include <linux/init.h>
++#include <linux/sched/signal.h>
+ #include <asm/io.h>
+ #if defined(__x86_64__) && LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 12)
+ #   include <linux/ioctl32.h>

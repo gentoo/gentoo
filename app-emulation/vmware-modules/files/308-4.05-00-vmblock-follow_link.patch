@@ -1,12 +1,12 @@
---- vmblock-only/linux/inode.c	2016-01-30 19:13:04.019947435 +0100
-+++ vmblock-only/linux/inode.c.new	2016-01-30 19:13:56.226950354 +0100
+--- vmblock-only/linux/inode.c.old	2016-05-27 15:12:49.315632906 +0200
++++ vmblock-only/linux/inode.c	2016-05-27 22:57:39.550192422 +0200
 @@ -44,7 +44,9 @@
  static int InodeOpReadlink(struct dentry *, char __user *, int);
  #endif
-
+ 
 -#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 1, 99)
 +#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 4, 99)
-+static const char *InodeOpFollowlink(struct dentry *dentry, struct inode *inode, void **cookie);
++static const char *InodeOpFollowlink(struct dentry *dentry, struct inode *inode, struct delayed_call *done);
 +#elif LINUX_VERSION_CODE >= KERNEL_VERSION(4, 1, 99)
  static const char *InodeOpFollowlink(struct dentry *dentry, void **cookie);
  #elif LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 13)
@@ -21,21 +21,23 @@
     .follow_link = InodeOpFollowlink,
 +#endif
  };
-
+ 
  /*
-@@ -231,6 +237,9 @@
+@@ -231,7 +237,10 @@
  static int
  #endif
  InodeOpFollowlink(struct dentry *dentry,  // IN : dentry of symlink
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 1, 99)
 +#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 4, 99)
 +                  struct inode *inode,
-+#endif
- #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 1, 99)
++                  struct delayed_call *done)
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(4, 1, 99)
                    void **cookie)          // OUT: stores opaque pointer
  #else
-@@ -241,12 +250,20 @@
+                   struct nameidata *nd)   // OUT: stores result
+@@ -241,18 +250,28 @@
     VMBlockInodeInfo *iinfo;
-
+ 
     if (!dentry) {
 +#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 4, 99)
 +      ret = -ECHILD;
@@ -45,7 +47,7 @@
 +#endif
        goto out;
     }
-
+ 
 +#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 4, 99)
 +   iinfo = INODE_TO_IINFO(inode);
 +#else
@@ -54,3 +56,12 @@
     if (!iinfo) {
        ret = -EINVAL;
        goto out;
+    }
+ 
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 1, 99)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 4, 99)
++   return iinfo->name;
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(4, 1, 99)
+    return *cookie = iinfo->name;
+ #else
+    nd_set_link(nd, iinfo->name);

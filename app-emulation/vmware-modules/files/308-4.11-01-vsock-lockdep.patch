@@ -1,0 +1,21 @@
+--- vsock-only/linux/af_vsock.c	2017-05-21 00:58:02.900776185 +0200
++++ vsock-only/linux/af_vsock.c.new	2017-05-21 00:57:18.932773727 +0200
+@@ -213,7 +213,7 @@
+                                  struct sockaddr *addr, int addrLen, int flags);
+ static int VSockVmciStreamConnect(struct socket *sock,
+                                   struct sockaddr *addr, int addrLen, int flags);
+-static int VSockVmciAccept(struct socket *sock, struct socket *newsock, int flags);
++static int VSockVmciAccept(struct socket *sock, struct socket *newsock, int flags, bool kern);
+ static int VSockVmciGetname(struct socket *sock,
+                             struct sockaddr *addr, int *addrLen, int peer);
+ static unsigned int VSockVmciPoll(struct file *file,
+@@ -3772,7 +3772,8 @@
+ static int
+ VSockVmciAccept(struct socket *sock,     // IN
+                 struct socket *newsock,  // IN/OUT
+-                int flags)               // IN
++                int flags,               // IN
++                bool kern)               // IN
+ {
+    struct sock *listener;
+    int err;

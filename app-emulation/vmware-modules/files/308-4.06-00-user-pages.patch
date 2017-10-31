@@ -1,0 +1,28 @@
+--- ./vmci-only/linux/vmciKernelIf.c.old	2016-05-19 18:57:04.344658673 +0200
++++ ./vmci-only/linux/vmciKernelIf.c	2016-05-19 19:03:28.600680159 +0200
+@@ -1835,7 +1835,11 @@
+       if (dirty) {
+          set_page_dirty(pages[i]);
+       }
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 5, 99)
++      put_page(pages[i]);
++#else
+       page_cache_release(pages[i]);
++#endif
+       pages[i] = NULL;
+    }
+ }
+@@ -2063,9 +2067,13 @@
+       goto out;
+    }
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 5, 99)
++   retval = get_user_pages((VA)consumeUVA,
++#else
+    retval = get_user_pages(current,
+                            current->mm,
+                            (VA)consumeUVA,
++#endif
+                            consumeQ->kernelIf->numPages,
+                            1, 0,
+                            consumeQ->kernelIf->u.h.headerPage,

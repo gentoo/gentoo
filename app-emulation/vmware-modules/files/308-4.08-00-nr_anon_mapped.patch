@@ -1,0 +1,14 @@
+diff -uprNb a/vmmon-only/linux/hostif.c b/vmmon-only/linux/hostif.c
+--- a/vmmon-only/linux/hostif.c	2016-08-13 16:54:18.935207507 +0300
++++ b/vmmon-only/linux/hostif.c	2016-08-13 16:53:52.981424256 +0300
+@@ -140,6 +140,10 @@ static DECLARE_TASKLET(timerTasklet, Hos
+  */
+ #define LOCKED_PAGE_SLACK 10000
+ 
++#if LINUX_VERSION_CODE > KERNEL_VERSION(4, 7, 99)
++#define NR_ANON_PAGES NR_ANON_MAPPED
++#endif
++
+ static struct {
+    Atomic_uint64     uptimeBase;
+    VersionedAtomic   version;
