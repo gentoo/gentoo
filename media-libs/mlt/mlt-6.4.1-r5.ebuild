@@ -118,7 +118,8 @@ src_configure() {
 	# bug 589848
 	append-cxxflags -std=c++11
 
-	local myconf="--enable-gpl
+	local myconf=(
+		--enable-gpl
 		--enable-gpl3
 		--enable-motion-est
 		--target-arch=$(tc-arch)
@@ -144,21 +145,24 @@ src_configure() {
 		$(use_enable xml)
 		$(use_enable xine)
 		$(use_enable kdenlive)
-		--disable-sox"
+		--disable-sox
+	)
 		#$(use_enable sox) FIXME
 
 	if use qt5 ; then
-		myconf+=" --enable-qt
+		myconf+=(
+			--enable-qt
 			--qt-includedir=$(pkg-config Qt5Core --variable=includedir)
-			--qt-libdir=$(pkg-config Qt5Core --variable=libdir)"
+			--qt-libdir=$(pkg-config Qt5Core --variable=libdir)
+		)
 	else
-		myconf+=" --disable-qt"
+		myconf+=( --disable-qt )
 	fi
 
 	if use x86 || use amd64 ; then
-		myconf+=" $(use_enable cpu_flags_x86_mmx mmx)"
+		myconf+=( $(use_enable cpu_flags_x86_mmx mmx) )
 	else
-		myconf+=" --disable-mmx"
+		myconf+=( --disable-mmx )
 	fi
 
 	if ! use melt; then
@@ -168,14 +172,14 @@ src_configure() {
 	# TODO: add swig language bindings
 	# see also https://www.mltframework.org/twiki/bin/view/MLT/ExtremeMakeover
 
-	local swig_lang
+	local swig_lang=()
 	# TODO: java perl php tcl
 	for i in lua python ruby ; do
-		use $i && swig_lang="${swig_lang} $i"
+		use $i && swig_lang+=( $i )
 	done
-	[ -z "${swig_lang}" ] && swig_lang="none"
+	[[ -z ${swig_lang} ]] && swig_lang=( none )
 
-	econf ${myconf} --swig-languages="${swig_lang}"
+	econf ${myconf[@]} --swig-languages="${swig_lang[@]}"
 
 	sed -i -e s/^OPT/#OPT/ "${S}/config.mak" || die
 }
