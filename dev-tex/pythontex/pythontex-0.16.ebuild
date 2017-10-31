@@ -19,9 +19,9 @@ IUSE="highlighting"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="${PYTHON_DEPS}
-	>=dev-texlive/texlive-latex-2016"
+	>=dev-texlive/texlive-latexextra-2016
+	dev-tex/pgf"
 RDEPEND="${DEPEND}
-	>=dev-texlive/texlive-latex-2016
 	highlighting? ( dev-python/pygments[${PYTHON_USEDEP}] )"
 
 TEXMF=/usr/share/texmf-site
