@@ -1,6 +1,16 @@
 --- configure.ac.old    2008-11-21 14:41:15.000000000 +0100
 +++ configure.ac        2008-11-21 14:44:19.000000000 +0100
-@@ -64,19 +64,11 @@
+@@ -50,8 +50,7 @@
+ FTGL_CHECK_GLUT
+ FTGL_CHECK_FONT
+
+-PKG_CHECK_MODULES(CPPUNIT, cppunit, [CPPUNIT="yes"], [CPPUNIT="no"])
+-AC_MSG_RESULT($CPPUNIT)
++CPPUNIT="no"
+ AM_CONDITIONAL(HAVE_CPPUNIT, test "x$CPPUNIT" != "xno")
+
+ dnl search the include directory (required for non-srcdir builds).
+@@ -64,19 +63,11 @@
  CFLAGS="${CFLAGS} -Waggregate-return -Wstrict-prototypes -Wmissing-prototypes -Wnested-externs"
  
  # Build HTML documentatin?
