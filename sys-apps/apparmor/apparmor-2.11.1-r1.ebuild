@@ -49,12 +49,11 @@ src_test() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" USE_SYSTEM=1 install
+	emake DESTDIR="${D}" DISTRO="unknown" USE_SYSTEM=1 install
 
 	dodir /etc/apparmor.d/disable
 
 	newinitd "${FILESDIR}"/${PN}-init ${PN}
-	rm "${D}"/etc/init.d/boot.apparmor || die
 
 	use doc && dodoc techdoc.pdf
 }
