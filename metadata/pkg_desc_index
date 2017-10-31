@@ -6295,7 +6295,7 @@ dev-perl/MooX-late 0.15.0: Easily translate Moose code to Moo
 dev-perl/Moose 2.60.400-r1 2.160.400 2.160.500 2.180.600 2.180.700 2.200.400 2.200.500: A postmodern object system for Perl 5
 dev-perl/Moose-Autobox 0.160.0: Autoboxed wrappers for Native Perl datatypes
 dev-perl/MooseX-Aliases 0.110.0-r1: Easy aliasing of methods and attributes in Moose
-dev-perl/MooseX-ClassAttribute 0.270.0: Declare class attributes Moose-style
+dev-perl/MooseX-ClassAttribute 0.270.0-r1: Declare class attributes Moose-style
 dev-perl/MooseX-ConfigFromFile 0.140.0: An abstract Moose role for setting attributes from a configfile
 dev-perl/MooseX-FollowPBP 0.50.0: Name your accessors get_foo() and set_foo(), whatever that may mean
 dev-perl/MooseX-Getopt 0.680.0: A Moose role for processing command line options
