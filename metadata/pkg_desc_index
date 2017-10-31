@@ -440,7 +440,7 @@ app-benchmarks/volanomark 2.5.0.9: Java server benchmark utility
 app-benchmarks/wrk 3.1.2 4.0.2: A modern HTTP benchmarking tool
 app-cdr/b5i2iso 0.2 0.2-r1: Convert CD images from b5i (BlindWrite) to iso
 app-cdr/bashburn 3.1.0: A shell script for burning optical media
-app-cdr/bchunk 1.2.0-r2: Convert CD images from bin/cue to iso+wav/cdr
+app-cdr/bchunk 1.2.0-r3 1.2.0-r4: Convert CD images from bin/cue to iso+wav/cdr
 app-cdr/bin2iso 19b-r2: converts RAW format (.bin/.cue) files to ISO/WAV format
 app-cdr/brasero 3.12.1 3.12.1-r1 3.12.2: CD/DVD burning application for the GNOME desktop
 app-cdr/burn-cd 1.7.4 1.8.0-r1 1.8.1: Smart console frontend for the cdrkit/cdrtools & dvd+rw-tools
@@ -5131,7 +5131,7 @@ dev-libs/yajl 2.0.4-r3 2.1.0: Small event-driven (SAX-style) JSON parser
 dev-libs/yaz 3.0.53: C/C++ toolkit for Z39.50v3 clients and servers
 dev-libs/zlog 1.2.12: A reliable, thread safe, clear-model, pure C logging library.
 dev-libs/zookeeper-c 3.4.8 3.4.9 3.4.10: C client interface to Zookeeper server
-dev-libs/zthread 2.3.2-r1 2.3.2-r2 2.3.2-r3 2.3.2-r4: platform-independent multi-threading and synchronization library for C++
+dev-libs/zthread 2.3.2-r3 2.3.2-r4: platform-independent multi-threading and synchronization library for C++
 dev-libs/zziplib 0.13.62-r2: Lightweight library for extracting data from files archived in a single zip file
 dev-lisp/abcl 0.0.9-r1 0.20.0 0.20.0-r1: Common Lisp implementation for the JVM
 dev-lisp/alexandria 20171029: A collection of portable utilities for Common Lisp
