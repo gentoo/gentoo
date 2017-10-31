@@ -44,6 +44,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-user-conf.patch
 	"${FILESDIR}"/${P}-automagic.patch
 	"${WORKDIR}"/${P}_p20160914-fix-c++14.patch
+	"${FILESDIR}"/${P}-gcc6-openexr.patch
 )
 
 src_prepare() {
