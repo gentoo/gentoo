@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=>=dev-lisp/asdf-3.1:= doc? ( sys-apps/texinfo >=media-gfx/graphviz-2.26.0 ) pax_kernel? ( sys-apps/elfix )
+DESCRIPTION=Steel Bank Common Lisp (SBCL) is an implementation of ANSI Common Lisp
+EAPI=6
+HOMEPAGE=http://sbcl.sourceforge.net/
+IUSE=debug doc source +threads +unicode pax_kernel zlib
+KEYWORDS=~amd64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x86-solaris
+LICENSE=MIT
+RDEPEND=>=dev-lisp/asdf-3.1:= !prefix? ( elibc_glibc? ( >=sys-libs/glibc-2.6 ) )
+SLOT=0/1.4.1
+SRC_URI=mirror://sourceforge/sbcl/sbcl-1.4.1-source.tar.bz2 x86? ( mirror://sourceforge/sbcl/sbcl-1.2.7-x86-linux-binary.tar.bz2 ) amd64? ( mirror://sourceforge/sbcl/sbcl-1.4.1-x86-64-linux-binary.tar.bz2 ) ppc? ( mirror://sourceforge/sbcl/sbcl-1.2.7-powerpc-linux-binary.tar.bz2 ) sparc? ( mirror://sourceforge/sbcl/sbcl-1.0.28-sparc-linux-binary.tar.bz2 ) alpha? ( mirror://sourceforge/sbcl/sbcl-1.0.28-alpha-linux-binary.tar.bz2 ) arm? ( mirror://sourceforge/sbcl/sbcl-1.3.12-armhf-linux-binary.tar.bz2 ) arm64? ( mirror://sourceforge/sbcl/sbcl-1.3.16-arm64-linux-binary.tar.bz2 ) ppc-macos? ( mirror://sourceforge/sbcl/sbcl-1.0.47-powerpc-darwin-binary.tar.bz2 ) x86-macos? ( mirror://sourceforge/sbcl/sbcl-1.1.6-x86-darwin-binary.tar.bz2 ) x64-macos? ( mirror://sourceforge/sbcl/sbcl-1.2.11-x86-64-darwin-binary.tar.bz2 ) sparc-solaris? ( mirror://sourceforge/sbcl/sbcl-1.0.23-sparc-solaris-binary.tar.bz2 ) x86-solaris? ( mirror://sourceforge/sbcl/sbcl-1.2.7-x86-solaris-binary.tar.bz2 ) x64-solaris? ( mirror://sourceforge/sbcl/sbcl-1.2.7-x86-64-solaris-binary.tar.bz2 )
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	pax-utils	4f95120230a315c8caaabeb2307b7eee	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=6b0ed3686b08307b743fbe0c97939841
