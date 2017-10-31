@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 
+# Fabian Groffen <grobian@gentoo.org> (31 Oct 2017)
+# glibc-2.26 patch breaks for us
+=dev-libs/libxslt-1.1.30-r2
+
 # Fabian Groffen <grobian@gentoo.org> (18 Dec 2016)
 # has multiple compilation issue, resolved for 1.1.8, bug #602990
 =app-misc/pax-utils-1.1.7
