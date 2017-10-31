@@ -17054,7 +17054,7 @@ sys-apps/adjtime 0.4-r2: A perl script to adjust the clock tick of the hardware 
 sys-apps/agedu 20151213 20160906 20160920 20170831: A utility for tracking down wasted disk space
 sys-apps/aix-miscutils 0.1.1671: Miscellaneous helpers for AIX (currently just ldd)
 sys-apps/apmd 3.2.2_p14-r1: Advanced Power Management Daemon
-sys-apps/apparmor 2.11.0 2.11.1: Userspace utils and init scripts for the AppArmor application security system
+sys-apps/apparmor 2.11.0 2.11.1-r1: Userspace utils and init scripts for the AppArmor application security system
 sys-apps/apparmor-utils 2.11.0-r1 2.11.1: Additional userspace utils to assist with AppArmor profile management
 sys-apps/apply-default-acl 0.0.6: Apply default POSIX ACLs to files and directories
 sys-apps/arrayprobe 2.0-r2: CLI utility that reports the status of a HP (Compaq) array controller (both IDA & CCISS supported)
@@ -18430,8 +18430,8 @@ www-client/midori 0.5.11-r2: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.6: a free, open source web browser
 www-client/opera 12.16_p1860-r1 48.0.2685.50 48.0.2685.52-r1: A fast and secure web browser
-www-client/opera-beta 49.0.2725.23 49.0.2725.27-r1: A fast and secure web browser
-www-client/opera-developer 50.0.2743.0 50.0.2753.0-r1: A fast and secure web browser
+www-client/opera-beta 49.0.2725.23 49.0.2725.27-r1 49.0.2725.31: A fast and secure web browser
+www-client/opera-developer 50.0.2753.0-r1 50.0.2759.0: A fast and secure web browser
 www-client/otter 0.9.12 0.9.91 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0-r1 2.1.1: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.12.1 0.13 9999: Command line interface to (Gentoo) Bugzilla
