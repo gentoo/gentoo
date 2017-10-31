@@ -6326,7 +6326,7 @@ dev-perl/MouseX-NativeTraits 1.90.0-r2: Extend your attribute interfaces for Mou
 dev-perl/MouseX-Types 0.60.0: Organize your Mouse types in libraries
 dev-perl/Mozilla-CA 20999999: Mozilla's CA cert bundle in PEM format (Gentoo stub)
 dev-perl/Mozilla-PublicSuffix 1.0.0: Get a domain name's public suffix via the Mozilla Public Suffix List
-dev-perl/MusicBrainz-DiscID 0.30.0-r1: Perl interface for the MusicBrainz libdiscid library
+dev-perl/MusicBrainz-DiscID 0.30.0-r1 0.40.0: Perl interface for the MusicBrainz libdiscid library
 dev-perl/Net-ARP 1.0.9: Perl extension for creating ARP packets
 dev-perl/Net-Amazon 0.620.0: Framework for accessing amazon.com via SOAP and XML/HTTP
 dev-perl/Net-Amazon-S3 0.800.0: Framework for accessing the Amazon S3 Simple Storage Service
