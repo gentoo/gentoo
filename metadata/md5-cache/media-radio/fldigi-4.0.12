@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure prepare
+DEPEND=x11-libs/fltk:1[threads,xft] media-libs/libsamplerate media-libs/libpng:0 x11-misc/xdg-utils dev-perl/RPC-XML dev-perl/Term-ReadLine-Perl >=media-libs/portaudio-19_pre20071207 hamlib? ( media-libs/hamlib ) pulseaudio? ( media-sound/pulseaudio ) >=media-libs/libsndfile-1.0.10 nls? ( sys-devel/gettext ) virtual/pkgconfig
+DESCRIPTION=Sound card based multimode software modem for Amateur Radio use
+EAPI=5
+HOMEPAGE=http://www.w1hkj.com
+IUSE=hamlib nls pulseaudio
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=x11-libs/fltk:1[threads,xft] media-libs/libsamplerate media-libs/libpng:0 x11-misc/xdg-utils dev-perl/RPC-XML dev-perl/Term-ReadLine-Perl >=media-libs/portaudio-19_pre20071207 hamlib? ( media-libs/hamlib ) pulseaudio? ( media-sound/pulseaudio ) >=media-libs/libsndfile-1.0.10
+SLOT=0
+SRC_URI=mirror://sourceforge/fldigi/fldigi-4.0.12.tar.gz
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=2a58ee45a04091df7f788c74e563a784
