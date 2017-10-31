@@ -14525,7 +14525,7 @@ net-analyzer/tcpstat 1.5 1.5-r1 1.5-r2: Reports network interface statistics
 net-analyzer/tcptrace 6.6.7-r2 6.6.7_p4_p1: A Tool for analyzing network packet dumps
 net-analyzer/tcptraceroute 1.5_beta7-r2: tcptraceroute is a traceroute implementation using TCP packets
 net-analyzer/tcptrack 1.4.2: Passive per-connection tcp bandwidth monitor
-net-analyzer/testssl 2.8 2.9.5: Tool to check TLS/SSL cipher support
+net-analyzer/testssl 2.9.5: Tool to check TLS/SSL cipher support
 net-analyzer/thc-ipv6 2.3 2.5 2.7 3.0 9999: complete tool set to attack the inherent protocol weaknesses of IPV6 and ICMP6
 net-analyzer/thcrut 1.2.5-r1: Network discovery and fingerprinting tool
 net-analyzer/thrulay 0.9-r1: Measure the capacity of a network by sending a bulk TCP stream over it
@@ -18820,7 +18820,7 @@ x11-misc/Xorgautoconfig 0.2.4-r1: Xorgautconfig generates xorg.conf files for PP
 x11-misc/accessx 0951-r2: Interface to the XKEYBOARD extension in X11
 x11-misc/afbinit 1.0.1-r7: loads the microcode for Elite3D framebuffers to use X
 x11-misc/alacarte 3.11.91: Simple GNOME menu editor
-x11-misc/albert 0.12.0 0.14.2 0.14.3 0.14.4: Desktop agnostic launcher
+x11-misc/albert 0.12.0 0.14.2 0.14.3 0.14.4 0.14.6: Desktop agnostic launcher
 x11-misc/alock 1.0.0: locks the local X display until a password is entered
 x11-misc/appmenu-qt 0.2.6: Application menu module for Qt
 x11-misc/apwal 0.4.5-r2: A simple application launcher and combined editor
