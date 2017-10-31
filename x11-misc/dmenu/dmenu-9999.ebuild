@@ -37,7 +37,7 @@ src_prepare() {
 		-e '/^	echo/d' \
 		Makefile || die
 
-	restore_config config.def.h
+	restore_config config.h
 }
 
 src_compile() {
@@ -57,5 +57,5 @@ src_compile() {
 src_install() {
 	emake DESTDIR="${D}" PREFIX="/usr" install
 
-	save_config config.def.h
+	save_config config.h
 }
