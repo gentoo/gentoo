@@ -1,0 +1,39 @@
+diff -ruN povray-3.7.0.0.orig/source/base/image/openexr.cpp povray-3.7.0.0/source/base/image/openexr.cpp
+--- povray-3.7.0.0.orig/source/base/image/openexr.cpp	2013-11-06 21:28:15.000000000 +0100
++++ povray-3.7.0.0/source/base/image/openexr.cpp	2017-10-31 20:11:28.244218318 +0100
+@@ -101,7 +101,7 @@
+ 
+ 		void write(const char *c, int n)
+ 		{
+-			if(os.write(c, n) == false)
++			if(! os.write(c, n))
+ 				throw POV_EXCEPTION(kFileDataErr, "Error while writing EXR output");
+ 		}
+ 
+@@ -115,7 +115,7 @@
+ 
+ 		void seekp(Int64 pos)
+ 		{
+-			if(os.seekg((unsigned long)pos) == false)
++			if(! os.seekg((unsigned long)pos))
+ 				throw POV_EXCEPTION(kFileDataErr, "Error when writing EXR output");
+ 		}
+ 	private:
+@@ -142,7 +142,7 @@
+ 
+ 		bool read(char *c, int n)
+ 		{
+-			if(is.read(c, n) == false)
++			if(! is.read(c, n))
+ 				throw POV_EXCEPTION(kFileDataErr, "Error while reading EXR file");
+ 			return (is.tellg() < fsize);
+ 		}
+@@ -157,7 +157,7 @@
+ 
+ 		void seekg(Int64 pos)
+ 		{
+-			if(is.seekg((unsigned long)pos) == false)
++			if(! is.seekg((unsigned long)pos))
+ 				throw POV_EXCEPTION(kFileDataErr, "Error while reading EXR file");
+ 		}
+ 	private:

@@ -1,17 +1,18 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
 inherit multilib eutils flag-o-matic pax-utils
 
 #same order as http://www.sbcl.org/platform-table.html
 BV_X86=1.2.7
-BV_AMD64=1.3.0
+BV_AMD64=1.4.1
 BV_PPC=1.2.7
 BV_SPARC=1.0.28
 BV_ALPHA=1.0.28
-BV_ARM=1.2.7
-BV_ARM64=1.3.0
+BV_ARM=1.3.12
+BV_ARM64=1.3.16
 BV_PPC_MACOS=1.0.47
 BV_X86_MACOS=1.1.6
 BV_X64_MACOS=1.2.11
@@ -28,6 +29,7 @@ SRC_URI="mirror://sourceforge/sbcl/${P}-source.tar.bz2
 	sparc? ( mirror://sourceforge/sbcl/${PN}-${BV_SPARC}-sparc-linux-binary.tar.bz2 )
 	alpha? ( mirror://sourceforge/sbcl/${PN}-${BV_ALPHA}-alpha-linux-binary.tar.bz2 )
 	arm? ( mirror://sourceforge/sbcl/${PN}-${BV_ARM}-armhf-linux-binary.tar.bz2 )
+	arm64? ( mirror://sourceforge/sbcl/${PN}-${BV_ARM64}-arm64-linux-binary.tar.bz2 )
 	ppc-macos? ( mirror://sourceforge/sbcl/${PN}-${BV_PPC_MACOS}-powerpc-darwin-binary.tar.bz2 )
 	x86-macos? ( mirror://sourceforge/sbcl/${PN}-${BV_X86_MACOS}-x86-darwin-binary.tar.bz2 )
 	x64-macos? ( mirror://sourceforge/sbcl/${PN}-${BV_X64_MACOS}-x86-64-darwin-binary.tar.bz2 )
@@ -93,34 +95,32 @@ src_unpack() {
 }
 
 src_prepare() {
-	eapply "${FILESDIR}"/gentoo-fix_install_man.patch
 	# bug #468482
-	eapply "${FILESDIR}"/concurrency-test-1.2.6.patch
+	eapply "${FILESDIR}"/concurrency-test-1.3.15.patch
 	# bugs #486552, #527666, #517004
-	eapply "${FILESDIR}"/bsd-sockets-test-1.2.11.patch
+	eapply "${FILESDIR}"/${PN}-1.4.0-bsd-sockets-test.patch
 	# bugs #560276, #561018
 	eapply "${FILESDIR}"/sb-posix-test-1.2.15.patch
 
 	eapply "${FILESDIR}"/${PN}-1.2.11-solaris.patch
-	eapply "${FILESDIR}"/${PN}-1.2.13-verbose-build.patch
-
-	# To make the hardened compiler NOT compile with -fPIE -pie
-	if gcc-specs-pie ; then
-		einfo "Disabling PIE..."
-		eapply "${FILESDIR}"/${PN}-1.1.17-gentoo-fix_nopie_for_hardened_toolchain.patch
-	fi
+	eapply "${FILESDIR}"/${PN}-1.4.0-verbose-build.patch
 
 	eapply_user
 
-	# bug #526194
-	sed -e "s@CFLAGS =.*\$@CFLAGS = ${CFLAGS} -g -Wall -Wsign-compare@" \
-		-e "s@LINKFLAGS =.*\$@LINKFLAGS = ${LDFLAGS} -g@" \
+	# bugs #526194, #620532
+	sed -e "s@CFLAGS +=.*\$@CFLAGS = ${CFLAGS} -Wall -Wsign-compare -Wpointer-arith@" \
+		-e "s@LINKFLAGS += -g\$@LINKFLAGS = ${LDFLAGS}@" \
+		-e "s@LINKFLAGS += -no-pie\$@LINKFLAGS = ${LDFLAGS} -no-pie@" \
+		-e "s@LINKFLAGS += -nopie\$@LINKFLAGS = ${LDFLAGS} -nopie@" \
 		-i src/runtime/GNUmakefile || die
 
 	sed -e "s@SBCL_PREFIX=\"/usr/local\"@SBCL_PREFIX=\"${EPREFIX}/usr\"@" \
 		-i make-config.sh || die
 
+	# Use installed ASDF version
 	cp "${EPREFIX}"/usr/share/common-lisp/source/asdf/build/asdf.lisp contrib/asdf/ || die
+	# Avoid installation of ASDF info page. See bug #605752
+	sed '/INFOFILES/s/asdf.info//' -i doc/manual/Makefile || die
 
 	use source && sed 's%"$(BUILD_ROOT)%$(MODULE).lisp "$(BUILD_ROOT)%' -i contrib/vanilla-module.mk
 
@@ -159,7 +159,7 @@ src_compile() {
 			"${S}"/make-target-2.sh || die "Cannot disable PaX on second GENESIS runtime"
 	fi
 
-	# clear the environment to get rid of non-ASCII strings, see bug 174702
+	# clear the environment to get rid of non-ASCII strings, see bug #174702
 	# set HOME for paludis
 	env - HOME="${T}" PATH="${PATH}" \
 		CC="$(tc-getCC)" AS="$(tc-getAS)" LD="$(tc-getLD)" \
@@ -216,8 +216,6 @@ src_install() {
 	find "${ED}" -empty -type d -exec rmdir -v {} +
 
 	if use doc; then
-		docinto html
-		dodoc -r doc/manual/
 		dodoc -r doc/internals/sbcl-internals
 
 		doinfo doc/manual/*.info*
@@ -228,8 +226,6 @@ src_install() {
 	else
 		rm -Rv "${ED}/usr/share/doc/${PF}" || die
 	fi
-
-	dodoc BUGS CREDITS INSTALL NEWS OPTIMIZATIONS PRINCIPLES README TLA TODO
 
 	# install the SBCL source
 	if use source; then
