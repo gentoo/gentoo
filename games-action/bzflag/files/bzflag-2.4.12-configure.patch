@@ -1,0 +1,37 @@
+diff -ru bzflag-2.4.4.orig/configure.ac bzflag-2.4.4/configure.ac
+--- bzflag-2.4.4.orig/configure.ac	2016-02-14 19:09:51.000000000 -0500
++++ bzflag-2.4.4/configure.ac	2016-05-05 16:35:35.475935345 -0400
+@@ -215,7 +215,7 @@
+ AC_SUBST(AR)
+ AC_SUBST(AR_FLAGS)
+ 
+-AC_PATH_PROG(CCACHE, ccache)
++AC_PATH_PROG(CCACHE, ccachex)
+ if test "$CCACHE" ; then
+     CC="ccache $CC"
+     CXX="ccache $CXX"
+@@ -747,13 +747,13 @@
+ #
+ # the GCC version is known to be at least 4.3 because it has C++0x support
+ # possible future warnings: -Wconversion (1894) -Wfloat-equal (317)
+-FLAGS="-Wall -Wextra -Wcast-qual -Wredundant-decls -Wshadow -Wundef -pedantic"
++FLAGSx="-Wall -Wextra -Wcast-qual -Wredundant-decls -Wshadow -Wundef -pedantic"
+ case $host_os in
+      linux*)
+ 	AC_DEFINE(HALF_RATE_AUDIO, 1, [Half rate Audio])
+ 	CONF_CFLAGS="$CONF_CFLAGS $FLAGS"
+ 	CONF_CXXFLAGS="$CONF_CXXFLAGS $FLAGS"
+-	case $host_vendor in
++	case $host_vendorx in
+ 	     pc)
+ 	       if expr `$CC -dumpversion` \>= "3.4" > /dev/null ; then
+ 		 FLAGS=-mtune
+@@ -836,7 +836,7 @@
+     CXXFLAGS="$user_CXXFLAGS"
+     AC_DEFINE(DEBUG, 1, [Debugging enabled])
+ else
+-    if test "$GCC" = yes ; then
++    if test "$GCC" = yesx ; then
+ 	case "`$CC --version 2>&1`" in
+ 	    *LLVM*)
+ 		# Apple LLVM falsely claims to be GCC
