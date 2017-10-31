@@ -255,6 +255,7 @@ dev-perl/Apache-SessionX
 >=dev-ml/camlp4-4.06
 >=dev-ml/lablgtk-2.18.6
 >=dev-ml/labltk-8.06.4
+>=dev-ml/ppx_tools-5.1.4.06.0
 
 # Lars Wendler <polynomial-c@gentoo.org> (12 Oct 2017)
 # Dead upstream. No qt5 release. Use app-admin/keepassxc as drop-in
