@@ -451,6 +451,12 @@ dev-lang/spidermonkey:52
 # Keep shotwell development series masked.
 >=media-gfx/shotwell-0.27
 
+# Nicolas Bock <nicolasbock@gentoo.org> (31 Oct 2017)
+# There are multiple unresolved upstream issues with jabref-bin-4.0 (#636036).
+# If you still would like to use this version, please report any issues to
+# upstream.
+=app-text/jabref-bin-4.0
+
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Doesn't work with >=openvpn-2.3, bug 470696
 # Fix is work in progress, see above bug. dilfridge@g.o
