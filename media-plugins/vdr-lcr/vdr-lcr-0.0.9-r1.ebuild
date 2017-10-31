@@ -11,7 +11,7 @@ SRC_URI="http://lcr.vdr-developer.org/downloads/${P}.tar.bz2"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND=">=media-video/vdr-1.5.7"
