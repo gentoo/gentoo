@@ -63,6 +63,9 @@ PATCHES=(
 
 	# Bug #322473
 	"${FILESDIR}/${P}-info.patch"
+
+	# Bug #635984 - perl-5.26 no longer has . in @INC
+	"${FILESDIR}/${P}-perl-5.26.patch"
 )
 
 pkg_setup() {
