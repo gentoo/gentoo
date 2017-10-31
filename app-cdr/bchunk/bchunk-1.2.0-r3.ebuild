@@ -12,6 +12,7 @@ SLOT="0"
 KEYWORDS="amd64 ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-macos ~sparc-solaris ~x86-solaris"
 
 DOCS=( "${P}.lsm" "${PN}.spec" README ChangeLog )
+PATCHES=( "${FILESDIR}/CVE-2017-15953.patch" "${FILESDIR}/CVE-2017-15955.patch" )
 
 src_install() {
 	dobin "${PN}"
