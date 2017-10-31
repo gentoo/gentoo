@@ -3,6 +3,8 @@
 
 EAPI=6
 
+JAVA_PKG_WANT_TARGET=1.8
+
 inherit eutils java-pkg-2
 
 MY_PV_1="${PV/_beta/b}"
