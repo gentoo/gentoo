@@ -46,10 +46,10 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--disable-coq-tactic \
 		--disable-pvs-libs \
 		--disable-isabelle-libs \
 		$(use_enable coq coq-libs) \
+		$(use_enable coq coq-tactic) \
 		$(use_enable doc) \
 		$(use_enable emacs emacs-compilation) \
 		$(use_enable gtk ide) \
