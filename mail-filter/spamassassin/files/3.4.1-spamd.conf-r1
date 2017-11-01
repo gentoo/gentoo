@@ -1,0 +1,30 @@
+# ***WARNING***
+#
+# The spamd daemon must not run on an untrusted network.
+#
+# ***WARNING***
+
+# Additional options to pass to the spamd daemon. The spamd(1) man
+# page explains the available options. If you choose to listen on a
+# non-default interface, you will need to use OpenRC's "rc_need"
+# mechanism to ensure that your interface comes up before spamd
+# starts. The openrc-run(8) man page describes rc_need.
+SPAMD_OPTS="--max-children=5 --create-prefs --helper-home-dir"
+
+# Sets the 'nice' level of the spamd process.
+SPAMD_NICELEVEL=0
+
+# How long (in seconds) should we wait for spamd to stop after we've
+# asked it to? After this amount of time, if spamd is still running,
+# we will assume that it has failed to stop.
+SPAMD_TIMEOUT=15
+
+# Do you want to run spamd as root? If you have local users storing their
+# personal configurations (or bayes databases) in ~/.spamassassin, then you
+# may want to run spamd as root so that it can setuid to each user while
+# processing his spam. (That way, you don't have to grant the "spamd" user
+# individual permissions to everyone's ~/.spamassassin directory.)
+#
+# On the other hand, if you don't store any per-user configuration on
+# the filesystem, then you should leave this alone.
+SPAMD_RUN_AS_ROOT=false
