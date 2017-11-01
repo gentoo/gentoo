@@ -7,16 +7,16 @@ inherit eutils alternatives flag-o-matic toolchain-funcs multilib multiprocessin
 
 PATCH_VER=1
 CROSS_VER=1.1.7
-PATCH_BASE="perl-5.27.1-patches-${PATCH_VER}"
+PATCH_BASE="perl-5.25.11-patches-${PATCH_VER}"
 
 DIST_AUTHOR=SHAY
 
 # Greatest first, don't include yourself
 # Devel point-releases are not ABI-intercompatible, but stable point releases are
 # BIN_OLDVERSEN is contains only C-ABI-intercompatible versions
-PERL_BIN_OLDVERSEN=""
+PERL_BIN_OLDVERSEN="5.26.0"
 if [[ "${PV##*.}" == "9999" ]]; then
-	DIST_VERSION=5.27.5
+	DIST_VERSION=5.26.1-RC1
 else
 	DIST_VERSION="${PV/_rc/-RC}"
 fi
@@ -75,18 +75,18 @@ PDEPEND="
 S="${WORKDIR}/${MY_P}"
 
 dual_scripts() {
-	src_remove_dual      perl-core/Archive-Tar        2.260.0       ptar ptardiff ptargrep
+	src_remove_dual      perl-core/Archive-Tar        2.240.0       ptar ptardiff ptargrep
 	src_remove_dual      perl-core/CPAN               2.180.0       cpan
 	src_remove_dual      perl-core/Digest-SHA         5.960.0       shasum
-	src_remove_dual      perl-core/Encode             2.930.0       enc2xs piconv
-	src_remove_dual      perl-core/ExtUtils-MakeMaker 7.300.0       instmodsh
-	src_remove_dual      perl-core/ExtUtils-ParseXS   3.350.0       xsubpp
+	src_remove_dual      perl-core/Encode             2.880.0       enc2xs piconv
+	src_remove_dual      perl-core/ExtUtils-MakeMaker 7.240.0       instmodsh
+	src_remove_dual      perl-core/ExtUtils-ParseXS   3.340.0       xsubpp
 	src_remove_dual      perl-core/IO-Compress        2.74.0        zipdetails
-	src_remove_dual      perl-core/JSON-PP            2.940.0       json_pp
-	src_remove_dual      perl-core/Module-CoreList    5.201.710.200 corelist
+	src_remove_dual      perl-core/JSON-PP            2.274.0.200_rc   json_pp
+	src_remove_dual      perl-core/Module-CoreList    5.201.709.222.600_rc corelist
 	src_remove_dual      perl-core/Pod-Parser         1.630.0       pod2usage podchecker podselect
-	src_remove_dual      perl-core/Pod-Perldoc        3.280.100     perldoc
-	src_remove_dual      perl-core/Test-Harness       3.390.0       prove
+	src_remove_dual      perl-core/Pod-Perldoc        3.280.0       perldoc
+	src_remove_dual      perl-core/Test-Harness       3.380.0       prove
 	src_remove_dual      perl-core/podlators          4.90.0        pod2man pod2text
 	src_remove_dual_man  perl-core/podlators          4.90.0        /usr/share/man/man1/perlpodstyle.1
 }
