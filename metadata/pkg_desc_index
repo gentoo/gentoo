@@ -6202,9 +6202,9 @@ dev-perl/MP4-Info 1.130.0: Fetch info from MPEG-4 files (.mp4, .m4a, .m4p, .3gp)
 dev-perl/MRO-Compat 0.130.0: Lets you build groups of accessors
 dev-perl/Mac-Pasteboard 0.3.0: Manipulate Mac OS X clipboards/pasteboards
 dev-perl/Mail-Audit 2.228.0-r1: Mail sorting/delivery module for Perl
-dev-perl/Mail-Box 2.118.0 3.1.0 3.2.0: Mail folder manager and MUA backend
-dev-perl/Mail-Box-IMAP4 3.1.0: Mail::Box connector via IMAP4
-dev-perl/Mail-Box-POP3 3.1.0: Mail::Box connector via POP3
+dev-perl/Mail-Box 2.118.0 3.1.0 3.2.0 3.3.0: Mail folder manager and MUA backend
+dev-perl/Mail-Box-IMAP4 3.1.0 3.2.0: Mail::Box connector via IMAP4
+dev-perl/Mail-Box-POP3 3.1.0 3.3.0: Mail::Box connector via POP3
 dev-perl/Mail-Builder 2.90.0 2.130.0: Easily create plaintext/html e-mail messages with attachments and inline images
 dev-perl/Mail-Builder-Simple 0.160.0-r1: Send UTF-8 HTML and text email using templates
 dev-perl/Mail-DKIM 0.400.0 0.410.0: Signs/verifies Internet mail using DKIM message signatures
