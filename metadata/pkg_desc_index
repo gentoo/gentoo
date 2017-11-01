@@ -1844,7 +1844,7 @@ app-misc/inputlircd 0.0.1_pre11 0.0.1_pre11-r2 0.0.1_pre15-r1 0.0.1_pre15-r2: In
 app-misc/interceptty 0.6 0.6-r1: a program that can sit between a serial port and an application
 app-misc/irtrans-irclient 6.01.05: IRTrans Server
 app-misc/irtrans-irserver 6.09.04: IRTrans Server
-app-misc/jail 2.0: Builds a chroot and configures all the required files, directories and libraries
+app-misc/jail 2.0 2.0-r1: Builds a chroot and configures all the required files, directories and libraries
 app-misc/jira-cli 2.1.5: Simple command line utility to interact with your jira instance
 app-misc/jitac 0.3.0: An image to ASCII converter written in Java
 app-misc/jot 9.0-r1: Print out increasing, decreasing, random, or redundant data
