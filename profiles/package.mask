@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Marc Schiffbauer <mschiff@gentoo.org> (01 Nov 2017)
+# Upstream abandoned obnam as of the end of the year
+# Masked for removal in 30 days.
+app-backup/obnam
+
 # Andreas Sturmlechner <asturm@gentoo.org> (30 Oct 2017)
 # Requires dead and vulnerable qtwebkit4.
 # Masked for removal in 30 days. Bug #620708
