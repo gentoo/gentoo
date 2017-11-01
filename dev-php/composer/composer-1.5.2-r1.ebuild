@@ -17,7 +17,7 @@ RDEPEND="
 	>=dev-php/cli-prompt-1.0.0
 	>=dev-php/psr-log-1.0.2
 	dev-php/fedora-autoloader
-	>=dev-php/json-schema-2.0.0
+	>=dev-php/json-schema-3.0.0
 	>=dev-php/jsonlint-1.4.0
 	>=dev-php/phar-utils-1.0.0
 	>=dev-php/semver-1.0.0
