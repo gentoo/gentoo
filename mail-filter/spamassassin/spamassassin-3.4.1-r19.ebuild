@@ -159,8 +159,8 @@ src_install () {
 	newinitd "${FILESDIR}/3.4.1-spamd.init-r2" spamd
 	newconfd "${FILESDIR}/3.4.1-spamd.conf-r1" spamd
 
-	systemd_newunit "${FILESDIR}/${PN}.service-r3" "${PN}.service"
-	systemd_install_serviced "${FILESDIR}/${PN}.service.conf-r1" \
+	systemd_newunit "${FILESDIR}/${PN}.service-r4" "${PN}.service"
+	systemd_install_serviced "${FILESDIR}/${PN}.service.conf-r2" \
 							 "${PN}.service"
 
 	use postgres && dodoc sql/*_pg.sql
@@ -243,7 +243,9 @@ pkg_postinst() {
 	elog
 
 	ewarn 'If this version of SpamAssassin causes permissions issues'
-	ewarn 'with your user configurations or bayes databases, you may'
-	ewarn 'need to set SPAMD_RUN_AS_ROOT=true in your OpenRC service'
+	ewarn 'with your user configurations or bayes databases, then you'
+	ewarn 'may need to set SPAMD_RUN_AS_ROOT=true in your OpenRC service'
+	ewarn 'configuration file, or remove the --username and --groupname'
+	ewarn 'flags from the SPAMD_OPTS variable in your systemd service'
 	ewarn 'configuration file.'
 }

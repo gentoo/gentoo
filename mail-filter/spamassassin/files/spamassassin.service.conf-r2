@@ -1,0 +1,2 @@
+[Service]
+Environment="SPAMD_OPTS=--username=spamd --groupname=spamd --max-children=5 --create-prefs --helper-home-dir"
