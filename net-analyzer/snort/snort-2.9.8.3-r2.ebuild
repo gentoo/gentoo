@@ -20,10 +20,10 @@ DEPEND=">=net-libs/libpcap-1.3.0
 	>=net-libs/daq-2.0.2
 	>=dev-libs/libpcre-8.33
 	dev-libs/libdnet
+	net-libs/libnsl:0=
 	sys-libs/zlib
 	!libtirpc? ( sys-libs/glibc[rpc(-)] )
 	libtirpc? ( net-libs/libtirpc )
-	|| ( net-libs/libnsl <sys-libs/glibc-2.26 )
 "
 
 RDEPEND="${DEPEND}
