@@ -16131,7 +16131,7 @@ sci-calculators/speedcrunch 0.11-r2: Fast and usable calculator for power users
 sci-calculators/tiemu 3.03-r1: Texas Instruments hand-helds emulator
 sci-calculators/tilp2 1.18: Communication program for Texas Instruments calculators
 sci-calculators/transcalc 0.14-r2: Microwave and RF transmission line calculator
-sci-calculators/units 2.14-r1 2.15: Unit conversion program
+sci-calculators/units 2.14-r1 2.15 2.16: Unit conversion program
 sci-calculators/wcalc 2.5: A flexible command-line scientific calculator
 sci-chemistry/GromacsWrapper 0.3.1 0.3.2 0.5.1: Python framework for Gromacs
 sci-chemistry/ParmEd 2.7.3: Parameter/topology editor and molecular simulator
