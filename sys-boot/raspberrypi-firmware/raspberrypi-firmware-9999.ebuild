@@ -18,6 +18,7 @@ DEPEND=""
 RDEPEND="!sys-boot/raspberrypi-loader"
 
 EGIT_REPO_URI="https://github.com/raspberrypi/firmware"
+EGIT_CLONE_TYPE=shallow
 
 RESTRICT="binchecks strip"
 
