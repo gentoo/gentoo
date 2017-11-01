@@ -10516,7 +10516,7 @@ dev-util/makeheaders 0_p4: simple utility that will automatically generate heade
 dev-util/makepp 1.18 1.40.1a 1.50_pre110621 2.0-r1 2.0.98.4 2.0.98.5 2.0.98.5-r1 2.0.99.1: GNU make replacement
 dev-util/massif-visualizer 0.7.0: Tool visualising massif data
 dev-util/mdds 1.2.2 1.2.3 9999: A collection of multi-dimensional data structure and indexing algorithm
-dev-util/meld 3.16.4 3.17.4: A graphical diff and merge tool
+dev-util/meld 3.16.4 3.18.0: A graphical diff and merge tool
 dev-util/memprof 0.6.2-r1: Profiling and leak detection tool
 dev-util/meson 0.41.2 0.42.0 0.42.1 0.43.0 9999: Open source build system
 dev-util/min-cscope 16.1.0: Interactively examine a C program
