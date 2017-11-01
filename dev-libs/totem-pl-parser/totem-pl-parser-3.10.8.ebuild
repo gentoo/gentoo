@@ -14,7 +14,7 @@ IUSE="archive crypt +introspection +quvi test"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 
 RDEPEND="
-	>=dev-libs/glib-2.31:2
+	>=dev-libs/glib-2.36:2
 	dev-libs/gmime:2.6
 	>=net-libs/libsoup-2.43:2.4
 	archive? ( >=app-arch/libarchive-3 )
