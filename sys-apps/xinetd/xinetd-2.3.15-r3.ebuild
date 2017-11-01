@@ -30,11 +30,13 @@ src_prepare() {
 }
 
 src_configure() {
-	if ! use rpc ; then
+	tc-export AR PKG_CONFIG
+	if use rpc ; then
+		append-cflags $(${PKG_CONFIG} --cflags libtirpc)
+	else
 		append-cppflags -DNO_RPC
 		export ac_cv_header_{rpc_{rpc,rpcent,pmap_clnt},netdb}_h=no
 	fi
-	tc-export AR PKG_CONFIG
 	LIBS=$(${PKG_CONFIG} --libs libtirpc) \
 	econf \
 		$(use_with tcpd libwrap) \
