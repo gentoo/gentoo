@@ -14,7 +14,7 @@ SRC_URI="http://git.liw.fi/cgi-bin/cgit/cgit.cgi/obnam/snapshot/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE=""
 
 DEPEND="${PYTHON_DEPS}
