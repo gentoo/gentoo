@@ -22,7 +22,7 @@ RDEPEND="
 	>=dev-cpp/cairomm-1.12
 	>=dev-cpp/glibmm-2.46:2
 	>=dev-cpp/gtkmm-3.18:3.0
-	>=dev-cpp/gstreamermm-1.0:1.0
+	>=dev-cpp/gstreamermm-1.0:1.0=
 	>=dev-cpp/libxmlpp-2.40:2.6
 	dev-libs/glib:2
 	>=dev-libs/libsigc++-2.6:2
