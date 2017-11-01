@@ -1,0 +1,13 @@
+DEFINED_PHASES=prepare setup
+DEPEND=|| ( dev-lang/python:3.6 dev-lang/python:3.5 dev-lang/python:3.4 ) app-arch/xz-utils sys-devel/gettext
+DESCRIPTION=ISO language, territory, currency, script codes and their translations
+EAPI=6
+HOMEPAGE=http://pkg-isocodes.alioth.debian.org/
+IUSE=linguas_af linguas_am linguas_ar linguas_as linguas_ast linguas_az linguas_be linguas_bg linguas_bn linguas_bn_IN linguas_br linguas_bs linguas_byn linguas_ca linguas_crh linguas_cs linguas_cy linguas_da linguas_de linguas_dz linguas_el linguas_en linguas_eo linguas_es linguas_et linguas_eu linguas_fa linguas_fi linguas_fo linguas_fr linguas_ga linguas_gez linguas_gl linguas_gu linguas_haw linguas_he linguas_hi linguas_hr linguas_hu linguas_hy linguas_ia linguas_id linguas_is linguas_it linguas_ja linguas_ka linguas_kk linguas_km linguas_kn linguas_ko linguas_kok linguas_ku linguas_lt linguas_lv linguas_mi linguas_mk linguas_ml linguas_mn linguas_mr linguas_ms linguas_mt linguas_nb linguas_ne linguas_nl linguas_nn linguas_nso linguas_oc linguas_or linguas_pa linguas_pl linguas_ps linguas_pt linguas_pt_BR linguas_ro linguas_ru linguas_rw linguas_si linguas_sk linguas_sl linguas_so linguas_sq linguas_sr linguas_sr@latin linguas_sv linguas_sw linguas_ta linguas_te linguas_th linguas_ti linguas_tig linguas_tk linguas_tl linguas_tr linguas_tt linguas_tt@iqtelif linguas_ug linguas_uk linguas_ve linguas_vi linguas_wa linguas_wal linguas_wo linguas_xh linguas_zh_CN linguas_zh_HK linguas_zh_TW linguas_zu
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris
+LICENSE=LGPL-2.1+
+RESTRICT=binchecks strip
+SLOT=0
+SRC_URI=http://pkg-isocodes.alioth.debian.org/downloads/iso-codes-3.76.tar.xz
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	l10n	2c2e15383ba891d642f51896a7f0ecfe	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	python-any-r1	27d7f9da7187d283b7f3eae8390b7b09	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=6650dc6740c124b3835bca3d2e0962e3
