@@ -1,0 +1,10 @@
+[Unit]
+Description=Spamassassin daemon
+After=network.target
+
+[Service]
+ExecStart=/usr/sbin/spamd $SPAMD_OPTS
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target
