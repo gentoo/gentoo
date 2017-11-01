@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=virtual/perl-Math-BigInt-1.999.801 >=virtual/perl-ExtUtils-MakeMaker-6.420.0 test? ( >=virtual/perl-Test-Simple-0.520.0 virtual/perl-Math-BigRat ) dev-lang/perl:=
+DESCRIPTION=What BigInts are before they become big
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Math-BigInt-Lite/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=virtual/perl-Math-BigInt-1.999.801 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/P/PJ/PJACKLAM/Math-BigInt-Lite-0.17.tar.gz
+_eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=c5c90f5bc9446851cae6452c083e589d

@@ -6213,21 +6213,21 @@ dev-perl/Mail-DomainKeys 1.0.0-r1: A perl implementation of DomainKeys
 dev-perl/Mail-IMAPClient 3.370.0 3.380.0 3.390.0: IMAP client module for Perl
 dev-perl/Mail-ListDetector 1.40.0-r1: Perl extension for detecting mailing list messages
 dev-perl/Mail-Mbox-MessageParser 1.510.500: A fast and simple mbox folder reader
-dev-perl/Mail-Message 3.0.0: General Message Object for MIME Messsage Handling
+dev-perl/Mail-Message 3.0.0 3.2.0: General Message Object for MIME Messsage Handling
 dev-perl/Mail-POP3Client 2.190.0: POP3 client module for Perl
 dev-perl/Mail-Procmail 1.80.0-r1: Mail sorting/delivery module for Perl
 dev-perl/Mail-SPF 2.9.0-r1: An object-oriented implementation of Sender Policy Framework
 dev-perl/Mail-SPF-Query 1.999.1-r1: query Sender Policy Framework for an IP,email,helo
 dev-perl/Mail-SRS 0.310.0-r2: Interface to Sender Rewriting Scheme
 dev-perl/Mail-Sender 0.8.23 0.903.0: Module for sending mails with attachments through an SMTP server
-dev-perl/Mail-Sendmail 0.790.0-r1: Simple platform independent mailer
+dev-perl/Mail-Sendmail 0.790.0-r1 0.800.0: Simple platform independent mailer
 dev-perl/Mail-Transport 3.0.0: Base class for Email Message Exchange
-dev-perl/MailTools 2.140.0 2.180.0: Manipulation of electronic mail addresses
+dev-perl/MailTools 2.140.0 2.180.0 2.190.0: Manipulation of electronic mail addresses
 dev-perl/Math-Base-Convert 0.110.0: Very fast base to base conversion
 dev-perl/Math-Base36 0.140.0: Encoding and decoding of base36 strings
 dev-perl/Math-Bezier 0.10.0-r1: Solution of Bezier Curves
 dev-perl/Math-BigInt-GMP 1.380.0 1.490.0 1.600.200: Use the GMP library for Math::BigInt routines
-dev-perl/Math-BigInt-Lite 0.140.0: What BigInts are before they become big
+dev-perl/Math-BigInt-Lite 0.140.0 0.170.0: What BigInts are before they become big
 dev-perl/Math-CDF 0.100.0: Generate probabilities and quantiles from statistical functions
 dev-perl/Math-Calc-Units 1.70.0-r1: Human-readable unit-aware calculator
 dev-perl/Math-Derivative 0.40.0: 1st and 2nd order differentiation of data
