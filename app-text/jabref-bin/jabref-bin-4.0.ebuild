@@ -24,9 +24,10 @@ DEPEND="app-arch/unzip"
 
 RDEPEND="
 	|| (
-		dev-java/oracle-jre-bin:1.8[javafx]
-		dev-java/oracle-jdk-bin:1.8[javafx]
+	dev-java/oracle-jre-bin:1.8[javafx]
+	dev-java/oracle-jdk-bin:1.8[javafx]
 	)
+	>=virtual/jre-1.8
 "
 
 S="${WORKDIR}"
