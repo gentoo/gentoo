@@ -1,3 +1,4 @@
 move dev-ml/ocaml-dns dev-ml/dns
 move dev-perl/HTML-Format dev-perl/HTML-Formatter
 move dev-perl/MARC-XML dev-perl/MARC-file-XML
+move dev-perl/MARC-file-XML dev-perl/MARC-File-XML
