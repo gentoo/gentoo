@@ -1,0 +1,34 @@
+From 5cb03904937102876d331e04cd36f3520fc5a5f6 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Wed, 1 Nov 2017 20:50:35 +1300
+Subject: Fix tests without '.' in @INC
+
+Bug: https://rt.cpan.org/Ticket/Display.html?id=120893
+---
+ t/bigintpm.t | 2 +-
+ t/mbi_ali.t  | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/t/bigintpm.t b/t/bigintpm.t
+index 49efbad..a714bd0 100644
+--- a/t/bigintpm.t
++++ b/t/bigintpm.t
+@@ -14,4 +14,4 @@ $CALC  = "Math::BigInt::Calc";
+ #############################################################################
+ # all the other tests
+ 
+-require 't/bigintpm.inc';               # all tests here for sharing
++require './t/bigintpm.inc';               # all tests here for sharing
+diff --git a/t/mbi_ali.t b/t/mbi_ali.t
+index cacf83e..b2da6f9 100644
+--- a/t/mbi_ali.t
++++ b/t/mbi_ali.t
+@@ -12,4 +12,4 @@ use Math::BigInt::Lite;
+ our $CLASS;
+ $CLASS = 'Math::BigInt::Lite';
+ 
+-require 't/alias.inc';
++require './t/alias.inc';
+-- 
+2.14.3
+
