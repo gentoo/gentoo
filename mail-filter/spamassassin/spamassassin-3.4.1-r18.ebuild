@@ -156,8 +156,8 @@ src_install () {
 		|| die "failed to disable plugins by default"
 
 	# Add the init and config scripts.
-	newinitd "${FILESDIR}/3.4.1-spamd.init-r1" spamd
-	newconfd "${FILESDIR}/3.4.1-spamd.conf" spamd
+	newinitd "${FILESDIR}/3.4.1-spamd.init-r2" spamd
+	newconfd "${FILESDIR}/3.4.1-spamd.conf-r1" spamd
 
 	systemd_newunit "${FILESDIR}/${PN}.service-r3" "${PN}.service"
 	systemd_install_serviced "${FILESDIR}/${PN}.service.conf-r1" \
@@ -241,4 +241,9 @@ pkg_postinst() {
 	elog
 	elog '  https://wiki.gentoo.org/wiki/SpamAssassin'
 	elog
+
+	ewarn 'If this version of SpamAssassin causes permissions issues'
+	ewarn 'with your user configurations or bayes databases, you may'
+	ewarn 'need to set SPAMD_RUN_AS_ROOT=true in your OpenRC service'
+	ewarn 'configuration file.'
 }
