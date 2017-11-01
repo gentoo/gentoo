@@ -4696,7 +4696,7 @@ dev-libs/efl 1.17.0-r1 1.18.4 9999: Enlightenment Foundation Libraries all-in-on
 dev-libs/elfio 1.0.3-r1: ELF reader and producer implemented as a C++ library
 dev-libs/elfutils 0.169-r1 0.170 0.170-r1: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
 dev-libs/eventlog 0.2.12: Support library for syslog-ng
-dev-libs/expat 2.2.1 2.2.4: Stream-oriented XML parser library
+dev-libs/expat 2.2.1 2.2.4 2.2.5: Stream-oriented XML parser library
 dev-libs/fampp2 7.0.1-r3: C++ wrapper for fam
 dev-libs/faxpp 0.4: Small, fast and conformant XML pull parser written in C
 dev-libs/fcgi 2.4.1_pre0910052249-r2: FastCGI Developer's Kit
@@ -6226,24 +6226,25 @@ dev-perl/Math-BigInt-GMP 1.380.0 1.490.0 1.600.200: Use the GMP library for Math
 dev-perl/Math-BigInt-Lite 0.140.0 0.170.0: What BigInts are before they become big
 dev-perl/Math-CDF 0.100.0: Generate probabilities and quantiles from statistical functions
 dev-perl/Math-Calc-Units 1.70.0-r1: Human-readable unit-aware calculator
-dev-perl/Math-Derivative 0.40.0: 1st and 2nd order differentiation of data
+dev-perl/Math-Derivative 0.40.0 1.10.0: 1st and 2nd order differentiation of data
 dev-perl/Math-FFT 1.340.0: Perl module to calculate Fast Fourier Transforms
 dev-perl/Math-Factor-XS 0.400.0: Factorize numbers and calculate matching multiplications
-dev-perl/Math-GMP 2.60.0-r1 2.110.0: High speed arbitrary size integer math
+dev-perl/Math-GMP 2.60.0-r1 2.110.0 2.150.0: High speed arbitrary size integer math
 dev-perl/Math-Libm 1.0.0: wrapper to libm functions
 dev-perl/Math-ModInt 0.11.0: modular integer arithmetic
-dev-perl/Math-NumSeq 71.0.0: number sequences (for example from OEIS)
+dev-perl/Math-NumSeq 71.0.0 72.0.0: number sequences (for example from OEIS)
 dev-perl/Math-NumberCruncher 5.0.0: Collection of useful math-related functions
 dev-perl/Math-Pari 2.10.806.50-r1 2.10.808 2.10.809.0: Perl interface to PARI
 dev-perl/Math-PlanePath 123.0.0 124.0.0: Mathematical paths through the 2-D plane
-dev-perl/Math-Prime-XS 0.260.0: Detect and calculate prime numbers with deterministic tests
+dev-perl/Math-Prime-XS 0.260.0 0.270.0: Detect and calculate prime numbers with deterministic tests
 dev-perl/Math-Random 0.720.0: Random Number Generators
 dev-perl/Math-Random-ISAAC 1.4.0-r1: Perl interface to the ISAAC PRNG algorithm
 dev-perl/Math-Random-ISAAC-XS 1.4.0-r1: C implementation of the ISAAC PRNG algorithm
 dev-perl/Math-Random-MT 1.170.0: The Mersenne Twister PRNG
-dev-perl/Math-Random-Secure 0.60.0-r1: Cryptographically-secure, cross-platform replacement for rand()
+dev-perl/Math-Random-Secure 0.60.0-r1 0.80.1: Cryptographically-secure, cross-platform replacement for rand()
 dev-perl/Math-Round 0.70.0: Perl extension for rounding numbers
 dev-perl/Math-Spline 0.20.0: Cubic Spline Interpolation of data
+dev-perl/Math-Utils 1.110.0: Useful mathematical functions not in Perl
 dev-perl/Math-Vec 1.10.0-r1: Vectors for perl
 dev-perl/Math-VecStat 0.80.0-r1: Some basic numeric stats on vectors
 dev-perl/MediaWiki-API 0.410.0: A OO interface to the Mediawiki API
@@ -6268,8 +6269,8 @@ dev-perl/Module-Path 0.190.0: get the full path to a locally installed module
 dev-perl/Module-Pluggable 5.200.0: Automatically give your module the ability to have plugins
 dev-perl/Module-Refresh 0.170.0-r1: Refresh %INC files when updated on disk
 dev-perl/Module-Runtime 0.14.0 0.16.0: Runtime module handling
-dev-perl/Module-Runtime-Conflicts 0.2.0: Provide information on conflicts for Module::Runtime
-dev-perl/Module-ScanDeps 1.230.0: Recursively scan Perl code for dependencies
+dev-perl/Module-Runtime-Conflicts 0.2.0 0.3.0: Provide information on conflicts for Module::Runtime
+dev-perl/Module-ScanDeps 1.230.0 1.240.0: Recursively scan Perl code for dependencies
 dev-perl/Module-Signature 0.790.0: Module signature file manipulation
 dev-perl/Module-Starter 1.710.0 1.720.0: A simple starter kit for any module
 dev-perl/Module-Util 1.90.0: Module name tools and transformations
@@ -7667,7 +7668,7 @@ dev-python/figleaf 0.6.1-r1: Code coverage tool
 dev-python/filemagic 1.6: A Python API for libmagic, the library behind the Unix file command
 dev-python/fitsio 0.9.11: Python library to read from and write to FITS files
 dev-python/fixtures 1.4.0 3.0.0: Fixtures, reusable state for writing clean tests and more
-dev-python/flake8 2.0-r1 2.1.0 2.2.5 2.5.4 3.3.0 3.4.1: A wrapper around PyFlakes, pep8 & mccabe
+dev-python/flake8 2.0-r1 2.1.0 2.2.5 2.5.4 3.3.0 3.4.1 3.5.0: A wrapper around PyFlakes, pep8 & mccabe
 dev-python/flake8-polyfill 1.0.1: Polyfill package for Flake8 plugins
 dev-python/flaky 3.1.1 3.4.0: Plugin for nose or py.test that automatically reruns flaky tests
 dev-python/flask 0.10.1-r1 0.12 0.12.1 0.12.2 9999: A microframework based on Werkzeug, Jinja2 and good intentions

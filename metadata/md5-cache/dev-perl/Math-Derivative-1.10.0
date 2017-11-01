@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-perl/Module-Build test? ( >=dev-perl/Math-Utils-1.10.0 virtual/perl-Test-Simple ) dev-lang/perl:=
+DESCRIPTION=1st and 2nd order differentiation of data
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Math-Derivative/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/J/JG/JGAMBLE/Math-Derivative-1.01.tar.gz
+_eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=9ac853b1c623dc4c50eab8c39a6275b6
