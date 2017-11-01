@@ -72,6 +72,7 @@ src_prepare() {
 	EPATCH_SUFFIX="patch" epatch "${WORKDIR}/patches"
 	epatch "${FILESDIR}/${PN}-3.4.3-ncurses-pkg-config.patch"
 	epatch "${FILESDIR}/${PN}-3.4.5-cross.patch"
+	epatch "${FILESDIR}/3.4-getentropy-linux.patch"
 
 	epatch_user
 
