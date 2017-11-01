@@ -23,6 +23,7 @@ RDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${P}-format-security.patch
 	"${FILESDIR}"/${P}-umask.patch
+	"${FILESDIR}"/${P}-waitpid.patch
 )
 
 DOCS=( AUTHORS COPYING NEWS README example.conf )
