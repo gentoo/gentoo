@@ -12,22 +12,28 @@ COMMIT="77924398bd594e238766153cec97ace62650f082"
 
 DESCRIPTION="vim plugin: binding to the autocompletion library jedi"
 HOMEPAGE="https://github.com/davidhalter/jedi-vim"
-SRC_URI="https://github.com/davidhalter/jedi-vim/archive/${COMMIT}.zip -> ${P}.zip"
+SRC_URI="https://github.com/davidhalter/jedi-vim/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 KEYWORDS="~amd64 ~x86"
+IUSE="test"
 
 RDEPEND="dev-python/jedi[${PYTHON_USEDEP}]"
 DEPEND="app-editors/vim[python]"
 
 S="${WORKDIR}/jedi-vim-${COMMIT}"
 
-# Tests are broken.
-RESTRICT="test"
-
-# Makefile tries hard to call tests so let's silence this phase.
-src_compile() { :; }
+# Makefile tries hard to call tests so let's silence this phase, unless we are testing.
+src_compile() {
+	if use test; then
+		default
+	else
+		:;
+	fi
+}
 
 src_install() {
 	vim-plugin_src_install
 }
+
+src_test() { :; }
