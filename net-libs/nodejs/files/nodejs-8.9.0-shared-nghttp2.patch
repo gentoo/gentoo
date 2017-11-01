@@ -28,7 +28,7 @@
  shared_optgroup.add_option('--shared-libuv',
      action='store_true',
      dest='shared_libuv',
-@@ -1381,6 +1381,7 @@
+@@ -1360,6 +1381,7 @@
  configure_node(output)
  configure_library('zlib', output)
  configure_library('http_parser', output)
@@ -46,48 +46,35 @@
      'node_shared_cares%': 'false',
      'node_shared_libuv%': 'false',
      'node_use_openssl%': 'true',
-@@ -149,10 +150,17 @@
+@@ -151,8 +152,15 @@
        'type': '<(node_target_type)',
-
+ 
        'dependencies': [
 -        'node_js2c#host',
 -        'deps/nghttp2/nghttp2.gyp:nghttp2'
 +        'node_js2c#host'
-       ],
-
++      ],
++
 +      'conditions': [
 +        [ 'node_shared_nghttp2=="false"', {
 +          'dependencies': [
 +            'deps/nghttp2/nghttp2.gyp:nghttp2'
 +          ]
 +        }]
-+      ],
-+
-       'includes': [
-         'node.gypi'
        ],
-@@ -161,8 +161,7 @@
+ 
+       'includes': [
+@@ -180,8 +180,7 @@
+       'include_dirs': [
          'src',
          'tools/msvs/genfiles',
-         'deps/uv/src/ares',
 -        '<(SHARED_INTERMEDIATE_DIR)', # for node_natives.h
 -        'deps/nghttp2/lib/includes'
 +        '<(SHARED_INTERMEDIATE_DIR)' # for node_natives.h
        ],
  
        'sources': [
-@@ -275,9 +274,7 @@
-         'NODE_PLATFORM="<(OS)"',
-         'NODE_WANT_INTERNALS=1',
-         # Warn when using deprecated V8 APIs.
--        'V8_DEPRECATION_WARNINGS=1',
--        # We're using the nghttp2 static lib
--        'NGHTTP2_STATICLIB'
-+        'V8_DEPRECATION_WARNINGS=1'
-       ],
-     },
-     {
-@@ -687,6 +684,15 @@
+@@ -691,6 +696,15 @@
                  'deps/http_parser/http_parser.gyp:http_parser'
                ]
              }],
@@ -103,3 +90,16 @@
              [ 'node_shared_libuv=="false"', {
                'dependencies': [
                  'deps/uv/uv.gyp:libuv'
+--- a/node.gypi
++++ b/node.gypi
+@@ -251,6 +251,10 @@
+       'dependencies': [ 'deps/http_parser/http_parser.gyp:http_parser' ],
+     }],
+ 
++    [ 'node_shared_nghttp2=="false"', {
++      'dependencies': [ 'deps/nghttp2/nghttp2.gyp:nghttp2' ],
++    }],
++
+     [ 'node_shared_cares=="false"', {
+       'dependencies': [ 'deps/cares/cares.gyp:cares' ],
+     }],
