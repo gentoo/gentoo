@@ -9698,7 +9698,7 @@ dev-ruby/loquacious 1.9.1-r2: Descriptive configuration files for Ruby written i
 dev-ruby/lumberjack 1.0.10 1.0.11 1.0.12: A simple, powerful, and very fast logging utility
 dev-ruby/mab 0.0.3: Markup as Ruby
 dev-ruby/magic 0.2.9: Ruby FFI bindings to libmagic
-dev-ruby/mail 2.6.4 2.6.5 2.6.6: An email handling library
+dev-ruby/mail 2.6.6 2.7.0: An email handling library
 dev-ruby/maildir 2.2.1-r1: A library for reading and writing arbitrary messages in DJB's maildir format
 dev-ruby/maruku 0.7.2-r1 0.7.3: A Markdown-superset interpreter written in Ruby
 dev-ruby/mash 0.1.1-r2: Mash is an extended Hash that gives simple pseudo-object functionality
@@ -9724,7 +9724,7 @@ dev-ruby/mime-types 1.25.1 2.6.2 2.99.2 3.0 3.0-r1 3.1: Provides a mailcap-like 
 dev-ruby/mime-types-data 3.2016.0521: Registry for information about MIME media type definitions
 dev-ruby/mimemagic 0.3.1 0.3.2: Fast mime detection by extension or content
 dev-ruby/mini_magick 4.5.1-r1 4.8.0: Manipulate images with minimal use of memory
-dev-ruby/mini_mime 0.1.3 0.1.4: A lightweight mime type lookup toy
+dev-ruby/mini_mime 0.1.4: A lightweight mime type lookup toy
 dev-ruby/minitest 4.7.5-r1 4.7.5-r2 5.3.3-r1 5.8.4 5.9.1 5.10.2 5.10.3: minitest/unit is a small and fast replacement for ruby's huge and slow test/unit
 dev-ruby/minitest-bonus-assertions 2.0 3.0: Bonus assertions for minitest
 dev-ruby/minitest-hooks 1.4.0 1.4.1 1.4.2: Adds around and before_all/after_all/around_all hooks for Minitest
@@ -9930,7 +9930,7 @@ dev-ruby/ruby-gtksourceview3 3.0.8 3.1.1: Ruby Gtk3 bindings
 dev-ruby/ruby-hmac 0.4.0-r1: A common interface to HMAC functionality as documented in RFC2104
 dev-ruby/ruby-ldap 0.9.17 0.9.19: A Ruby interface to some LDAP libraries
 dev-ruby/ruby-mp3info 0.8.9 0.8.10: A pure Ruby library for access to mp3 files (internal infos and tags)
-dev-ruby/ruby-net-ldap 0.16.0: Pure ruby LDAP client implementation
+dev-ruby/ruby-net-ldap 0.16.0 0.16.1: Pure ruby LDAP client implementation
 dev-ruby/ruby-oci8 2.1.8 2.2.3 2.2.4.1: A Ruby library for Oracle OCI8
 dev-ruby/ruby-odbc 0.99997-r1 0.99998: RubyODBC - For accessing ODBC data sources from the Ruby language
 dev-ruby/ruby-oembed 0.12.0: An oEmbed consumer library written in Ruby.
