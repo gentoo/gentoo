@@ -15,6 +15,7 @@ IUSE="X"
 
 RDEPEND="
 	dev-libs/libmix
+	net-libs/libnsl:0=
 	net-libs/libpcap
 	X? (
 		dev-lang/tk:*
@@ -22,7 +23,6 @@ RDEPEND="
 	)
 	|| (	<sys-libs/glibc-2.26
 		(
-			net-libs/libnsl
 			net-libs/libtirpc
 			net-libs/rpcsvc-proto
 		)
