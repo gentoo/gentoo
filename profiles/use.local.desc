@@ -601,17 +601,6 @@ app-emulation/virtualbox-bin:rdesktop-vrdp - Install the rdesktop client integra
 app-emulation/virtualbox-bin:sdk - Enable building of SDK
 app-emulation/virtualbox-bin:vboxwebsrv - Install the VirtualBox webservice
 app-emulation/virtualbox-modules:pax_kernel - Apply patch needed for pax enabled kernels
-app-emulation/vmware-modules:pax_kernel - Apply patch needed for pax enabled kernels
-app-emulation/vmware-modules:vmci - Build the Virtual Machine Communication Interface module; disable this if you want to use the module from the mainline kernel
-app-emulation/vmware-modules:vsock - Build the VMware VMCI transport for Virtual Sockets; disable this if you want to use the module from the mainline kernel
-app-emulation/vmware-player:bundled-libs - Use precompiled bundled libraries instead of the system installation
-app-emulation/vmware-player:ovftool - Install OVF tool for importing and exporting appliance files
-app-emulation/vmware-player:vmware-tools - Install VMware Tools images
-app-emulation/vmware-workstation:bundled-libs - Use precompiled bundled libraries instead of the system installation
-app-emulation/vmware-workstation:ovftool - Install OVF tool.
-app-emulation/vmware-workstation:server - Install VMware Workstation Server component.
-app-emulation/vmware-workstation:vix - Install VIX. The VIX API allows you to write programs and scripts that automate virtual machine operations, and run programs or manipulate files within guest operating systems.
-app-emulation/vmware-workstation:vmware-tools - Install VMware Tools images
 app-emulation/vov:gprof - build with profiling support
 app-emulation/wine:capi - Enable ISDN support via CAPI
 app-emulation/wine:custom-cflags - Bypass strip-flags; use at your own peril
