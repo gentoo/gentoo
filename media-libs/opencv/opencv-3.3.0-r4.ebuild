@@ -28,7 +28,7 @@ REQUIRED_USE="
 	contrib_cvv? ( contrib qt5 )
 	contrib_hdf? ( contrib )
 	contrib_sfm? ( contrib eigen gflags glog )
-	contrib_xfeatures2d? ( contrib )
+	contrib_xfeatures2d? ( contrib cuda )
 	java? ( python )
 	opengl? ( || ( gtk qt5 ) )
 	python? ( ${PYTHON_REQUIRED_USE} )
