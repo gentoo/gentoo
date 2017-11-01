@@ -5,7 +5,7 @@ EAPI=6
 
 DIST_AUTHOR=MBRADSHAW
 DIST_VERSION=0.44
-DIST_EXAMPLES=("examples/*" "scripts/*")
+DIST_EXAMPLES=("scripts/*")
 inherit perl-module
 
 DESCRIPTION="Signs/verifies Internet mail using DKIM message signatures"
