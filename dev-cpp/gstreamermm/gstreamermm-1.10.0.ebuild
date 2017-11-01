@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-GNOME2_EAUTORECONF="yes"
 
 inherit gnome2 virtualx
 
@@ -14,8 +13,6 @@ SLOT="1.0/1"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="doc examples test"
 
-# module is experimental:
-# >=media-libs/gst-plugins-bad-${PV}:1.0[opengl?]
 RDEPEND="
 	>=media-libs/gstreamer-${PV}:1.0
 	>=media-libs/gst-plugins-base-${PV}:1.0
@@ -42,13 +39,6 @@ DEPEND="${RDEPEND}
 # Installs reference docs into /usr/share/doc/gstreamermm-1.0/
 # but that's okay, because the rest of dev-cpp/*mm stuff does the same
 
-PATCHES=(
-	# Upstream patches
-	"${FILESDIR}"/1.8.0-add-missing-header.patch
-	"${FILESDIR}"/1.8.0-gst-bad-pkgconfig-cflags.patch
-	"${FILESDIR}"/1.8.0-fix-wrapping.patch
-)
-
 src_prepare() {
 	if ! use examples; then
 		# don't waste time building examples
@@ -63,7 +53,6 @@ src_prepare() {
 
 src_configure() {
 	gnome2_src_configure \
-		 --disable-plugins-bad \
 		$(use_enable doc documentation) \
 		$(use_enable test unittests)
 }
