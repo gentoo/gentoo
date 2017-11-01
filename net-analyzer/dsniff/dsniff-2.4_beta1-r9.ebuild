@@ -19,6 +19,7 @@ IUSE="libressl X"
 DEPEND="net-libs/libpcap
 	>=net-libs/libnet-1.1.2.1-r1
 	>=net-libs/libnids-1.21
+	net-libs/libnsl:0=
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
 	>=sys-libs/db-4:*
@@ -27,7 +28,6 @@ DEPEND="net-libs/libpcap
 			>=sys-libs/glibc-2.26
 			net-libs/rpcsvc-proto
 			net-libs/libtirpc
-			net-libs/libnsl
 		)
 	)
 	X? ( x11-libs/libXmu )"
