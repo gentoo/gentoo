@@ -1,7 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=5
 
 inherit eutils toolchain-funcs flag-o-matic
 
@@ -17,6 +17,7 @@ RESTRICT="test" #122603
 
 # Note: NIS could probably be made conditional if anyone cared ...
 RDEPEND="selinux? ( sys-libs/libselinux )
+	net-libs/libnsl:0=
 	net-libs/libtirpc"
 DEPEND="${RDEPEND}"
 
