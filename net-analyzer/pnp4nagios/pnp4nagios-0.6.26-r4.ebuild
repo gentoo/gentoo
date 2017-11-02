@@ -80,7 +80,7 @@ src_install() {
 	fperms o-rwx /etc/pnp/process_perfdata.cfg
 
 	if use apache2 ; then
-		insinto "${APACHE_MODULES_CONFDIR}"
+		insinto /etc/apache2/modules.d
 		newins "${FILESDIR}"/98_pnp4nagios-2.4.conf 98_pnp4nagios.conf
 
 		# This one file isn't world-readable, but it should be group-
