@@ -54,8 +54,3 @@ src_prepare() {
 		die "Can't patch Makefile.PL for 5.26 dot-in-inc"
 	perl-module_src_prepare
 }
-
-src_test() {
-	export TEST_SIGNATURE="1"
-	perl-module_src_test
-}
