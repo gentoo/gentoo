@@ -9544,7 +9544,7 @@ dev-ruby/countdownlatch 1.0.0-r1: Synchronization aid to allow threads to wait f
 dev-ruby/crack 0.4.2-r1 0.4.3-r1: Really simple JSON and XML parsing, ripped from Merb and Rails
 dev-ruby/crass 1.0.2: Ruby CSS parser that's fully compliant with the CSS Syntax Level 3 specification
 dev-ruby/creole 0.5.0: Creole-to-HTML converter for Creole, the lightweight markup language
-dev-ruby/cri 2.7.1 2.8.0 2.9.1 2.10.0: Cri is a library for building easy-to-use commandline tools
+dev-ruby/cri 2.7.1 2.8.0 2.9.1 2.10.0 2.10.1: Cri is a library for building easy-to-use commandline tools
 dev-ruby/css_parser 1.4.10 1.5.0 1.6.0: Sass-based Stylesheet Framework
 dev-ruby/curb 0.9.3 0.9.4: Ruby-language bindings for libcurl
 dev-ruby/curses 1.2.3 1.2.4: Ruby binding for curses, ncurses, and PDCurses
@@ -9775,7 +9775,7 @@ dev-ruby/org-ruby 0.9.12: Ruby routines for parsing org-mode files
 dev-ruby/origin 2.2.2 2.3.0 2.3.1: Origin is a simple DSL for generating MongoDB selectors and options
 dev-ruby/ox 2.5.0 2.6.0 2.7.0 2.8.0 2.8.1: A fast XML parser and Object marshaller
 dev-ruby/packetfu 1.1.13: A mid-level packet manipulation library
-dev-ruby/paint 2.0.0: Terminal painter
+dev-ruby/paint 2.0.0 2.0.1: Terminal painter
 dev-ruby/parallel 1.11.2 1.12.0: Run any code in parallel Processes or Threads
 dev-ruby/paramesan 0.1.1: Parameterized tests in Ruby
 dev-ruby/parser 2.3.3.0 2.3.3.1 2.4.0.0: A production-ready Ruby parser written in pure Ruby
