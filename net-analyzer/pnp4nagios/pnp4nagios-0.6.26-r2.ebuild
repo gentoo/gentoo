@@ -74,25 +74,18 @@ src_install() {
 	rm "${ED%/}/usr/share/pnp/install.php" || \
 		die "unable to remove ${ED%/}/usr/share/pnp/install.php"
 
+	# Fix CVE-2012-3457 (Gentoo bug 430358)
+	fperms o-rwx /etc/pnp/process_perfdata.cfg
+
 	if use apache2 ; then
 		insinto "${APACHE_MODULES_CONFDIR}"
 		newins "${FILESDIR}"/98_pnp4nagios-2.4.conf 98_pnp4nagios.conf
 
-		# Allow the apache user to read our config files. This same
-		# approach is used in net-analyzer/nagios-core.
-		chgrp -R apache "${ED%/}/etc/pnp" \
-			|| die "failed to change group of ${ED%/}/etc/pnp"
+		# This one file isn't world-readable, but it should be group-
+		# readable. Give it to the "apache" group to let the web
+		# server read it.
+		fowners :apache /etc/pnp/process_perfdata.cfg
 	fi
-
-	# Bug 430358 - CVE-2012-3457
-	local f
-	while IFS="" read -d $'\0' -r f ; do
-		chmod 0640 "${f}" || die
-	done < <(find "${ED%/}/etc/pnp" -type f)
-
-	while IFS="" read -d $'\0' -r f ; do
-		chmod 0750 "${f}" || die
-	done < <(find "${ED%/}/etc/pnp" -type d)
 }
 
 pkg_postinst() {
