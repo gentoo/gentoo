@@ -21,7 +21,7 @@ SRC_URI="https://github.com/${GITHUB_USER}/mail/archive/${PV}.tar.gz -> ${P}-git
 
 LICENSE="MIT"
 SLOT="$(get_version_component_range 1-2)"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~ppc"
 IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/mini_mime-0.1.1"
