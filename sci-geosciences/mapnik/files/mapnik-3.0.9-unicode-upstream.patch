@@ -1,0 +1,11 @@
+--- a/include/mapnik/unicode.hpp	2017-10-31 17:53:23.507237672 +0100
++++ b/include/mapnik/unicode.hpp	2017-10-31 17:53:47.096237053 +0100
+@@ -31,6 +31,8 @@
+ // std
+ #include <cstdint>
+ #include <string>
++// icu
++#include <unicode/unistr.h>
+ 
+ struct UConverter;
+ 
