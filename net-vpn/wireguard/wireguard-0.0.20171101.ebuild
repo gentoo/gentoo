@@ -30,6 +30,8 @@ MODULE_NAMES="wireguard(kernel/drivers/net:src)"
 BUILD_TARGETS="module"
 CONFIG_CHECK="NET INET NET_UDP_TUNNEL CRYPTO_BLKCIPHER"
 
+PATCHES=( "${FILESDIR}/${P}-funcfix.patch" )
+
 pkg_setup() {
 	if use module; then
 		linux-mod_pkg_setup
