@@ -16,6 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc"
 
+RDEPEND="!dev-python/rope_py3k"
 # Dependency for docbuild documentation which is not noted in
 # setup.py, using standard docutils builds docs successfully.
 DEPEND="doc? ( dev-python/docutils[${PYTHON_USEDEP}] )"
