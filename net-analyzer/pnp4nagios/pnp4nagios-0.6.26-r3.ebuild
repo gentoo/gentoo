@@ -92,7 +92,7 @@ src_install() {
 
 pkg_postinst() {
 	elog "To enable the pnp4nagios web front-end, please visit"
-	elog "${EROOT%/}/etc/conf.d/apache2 and add \"-D PNP -D PHP5\""
+	elog "${EROOT%/}/etc/conf.d/apache2 and add \"-D PNP -D PHP\""
 	elog "to APACHE2_OPTS. Then pnp4nagios will be available at,"
 	elog
 	elog "  http://localhost/pnp4nagios"
