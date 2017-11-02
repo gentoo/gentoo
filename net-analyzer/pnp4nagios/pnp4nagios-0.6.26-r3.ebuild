@@ -68,7 +68,9 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install install-config
+	# Don't use INSTALL_OPTS because they set insecure permissions on
+	# all of /etc/pnp (https://github.com/lingej/pnp4nagios/issues/140).
+	emake INSTALL_OPTS="" DESTDIR="${D}" install install-config
 	einstalldocs
 	newinitd "${FILESDIR}"/npcd.initd npcd
 	rm "${ED%/}/usr/share/pnp/install.php" || \
