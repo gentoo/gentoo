@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst setup unpack
+DEPEND=>=dev-db/sqlite-3.7.9:3 device-mapper? ( >=sys-fs/lvm2-2.02.89[thin] ) seccomp? ( >=sys-libs/libseccomp-2.2.1 ) apparmor? ( sys-libs/libapparmor ) dev-go/go-md2man btrfs? ( >=sys-fs/btrfs-progs-3.16.1 ) >=dev-lang/go-1.8 virtual/pkgconfig virtual/pkgconfig
+DESCRIPTION=The core functions you need to create Docker images and run Docker containers
+EAPI=6
+HOMEPAGE=https://dockerproject.org
+IUSE=apparmor aufs btrfs +container-init +device-mapper hardened overlay pkcs11 seccomp
+KEYWORDS=~amd64 ~arm
+LICENSE=Apache-2.0
+RDEPEND=>=dev-db/sqlite-3.7.9:3 device-mapper? ( >=sys-fs/lvm2-2.02.89[thin] ) seccomp? ( >=sys-libs/libseccomp-2.2.1 ) apparmor? ( sys-libs/libapparmor ) >=net-firewall/iptables-1.4 sys-process/procps >=dev-vcs/git-1.7 >=app-arch/xz-utils-4.9 ~app-emulation/containerd-0.2.9_p20170917 ~app-emulation/docker-runc-1.0.0_rc4_p20170917[apparmor?,seccomp?] >=app-emulation/docker-proxy-0.8.0_p20170917 container-init? ( >=sys-process/tini-0.16.1[static] )
+RESTRICT=installsources strip
+SLOT=0
+SRC_URI=https://github.com/docker/docker-ce/archive/v17.10.0-ce.tar.gz -> docker-17.10.0.tar.gz
+_eclasses_=bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	golang-base	51a1f13e065f1cff4507685d9cc268c7	golang-vcs-snapshot	913580335becddd3ebecefe852e47536	linux-info	ca370deef9d44125d829f2eb6ebc83e0	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	34815d3b76e745c5ca33eec9f95074c2	toolchain-funcs	185a06792159ca143528e7010368e8af	udev	d91cac2c73b94629cad2daea66e0d182	user	e4b567c44272a719fabf53f0f885d3f7	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=92c9bbf3bd201a8e883a34bbddc7808b
