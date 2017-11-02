@@ -306,11 +306,6 @@ x11-libs/compizconfig-backend-kconfig4
 # Mask Atom betas for testing.
 app-editors/atom:beta
 
-# Michael Palimaka <kensington@gentoo.org> (01 Oct 2017)
-# Fails to build (bug #622632). Requires dead and vulnerable qtwebkit4
-# (bug #620710). Masked for removal in 30 days.
-media-sound/lastfm-desktop
-
 # Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (18 Sep 2017)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
