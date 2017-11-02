@@ -311,12 +311,6 @@ app-editors/atom:beta
 # (bug #620710). Masked for removal in 30 days.
 media-sound/lastfm-desktop
 
-# Andrey Grozin <grozin@gentoo.org> (19 Sep 2017)
-# This package was a stopgap to bump dev-python/spyder to 3.*
-# Now >=dev-python/rope-0.10.7 supports python3, use it instead
-# Masked for removal in 30 days.
-dev-python/rope_py3k
-
 # Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (18 Sep 2017)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
