@@ -38,27 +38,16 @@ RDEPEND="${DEPEND}
 PATCHES=( "${FILESDIR}/${PN}-0.6.14-makefile.patch" )
 
 src_configure() {
-	local var_dir user_group
-
-	if use icinga; then
-		var_dir=/var/lib/icinga
-		user_group=icinga
-	elif use icinga2; then
-		var_dir=/var/lib/icinga2
-		user_group=icinga
-	else
-		# Thanks to REQUIRED_USE, "use nagios" is the only other case.
-		var_dir=/var/nagios
-		user_group=nagios
-	fi
+	local user_group=nagios
+	( use icinga || use icinga2 ) && user_group=icinga
 
 	econf \
 		--sysconfdir="${EPREFIX}"/etc/pnp \
 		--datarootdir="${EPREFIX}"/usr/share/pnp \
-		--with-perfdata-dir="${EPREFIX}"${var_dir}/perfdata \
-		--with-nagios-user=${user_group} \
-		--with-nagios-group=${user_group} \
-		--with-perfdata-logfile="${EPREFIX}"${var_dir}/perfdata.log \
+		--with-nagios-user="${user_group}" \
+		--with-nagios-group="${user_group}" \
+		--with-perfdata-dir="${EPREFIX}"/var/lib/pnp/perfdata \
+		--with-perfdata-logfile="${EPREFIX}"/var/log/pnp/process_perfdata.log \
 		--with-perfdata-spool-dir="${EPREFIX}"/var/spool/pnp
 }
 
@@ -88,6 +77,15 @@ src_install() {
 		# server read it.
 		fowners :apache /etc/pnp/process_perfdata.cfg
 	fi
+
+	# The nagios or icinga user will also need to be able to write
+	# performance data to the perfdata-dir and perfdata-spool-dir
+	# directories.
+	local user_group=nagios
+	( use icinga || use icinga2 ) && user_group=icinga
+	dodir /var/lib/pnp/{,perfdata} /var/log/pnp
+	fowners "${user_group}:${user_group}" /var/lib/pnp/{,perfdata}
+	fowners "${user_group}:${user_group}" /var/log/pnp
 }
 
 pkg_postinst() {
