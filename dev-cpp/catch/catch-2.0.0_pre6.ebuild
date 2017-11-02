@@ -10,7 +10,7 @@ MY_P=${PN^}-${MY_PV}
 
 DESCRIPTION="Modern C++ header-only framework for unit-tests"
 HOMEPAGE="https://github.com/philsquared/Catch"
-SRC_URI="https://github.com/philsquared/Catch/archive/v${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/philsquared/Catch/archive/V${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="Boost-1.0"
 SLOT="0"
