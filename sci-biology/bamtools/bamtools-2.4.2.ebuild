@@ -22,6 +22,14 @@ SLOT="0/${PV}" # no stable ABI yet
 RDEPEND="
 	>=dev-libs/jsoncpp-1.8.0:=
 	sys-libs/zlib:="
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	virtual/pkgconfig"
 
 mycmakeargs=( -DBUILD_SHARED_LIBS=ON )
+
+src_prepare() {
+	# delete bundled libs, just to be safe
+	rm -r src/third_party/{gtest-1.6.0,jsoncpp} || die
+
+	cmake-utils_src_prepare
+}
