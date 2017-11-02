@@ -9,14 +9,20 @@ SRC_URI="mirror://sourceforge/${PN}/PNP-0.6/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="apache2"
+IUSE="apache2 icinga icinga2 +nagios"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
 
-# A lot of things (sync mode, for one) are broken with nagios-4.x.
+REQUIRED_USE="^^ ( icinga icinga2 nagios )"
+
+# Some things (sync mode, for one) are broken with nagios-4.x, but since
+# nagios-3.x has been end-of-life'd, we don't have much choice here but
+# to accept it.
 DEPEND="
 	dev-lang/php:*[filter,gd,json,simplexml,xml,zlib]
 	>=net-analyzer/rrdtool-1.2[graph,perl]
-	|| ( <net-analyzer/nagios-core-4 net-analyzer/icinga net-analyzer/icinga2 )"
+	icinga? ( net-analyzer/icinga )
+	icinga2? ( net-analyzer/icinga2 )
+	nagios? ( net-analyzer/nagios-core )"
 
 # A list of modules used in our Apache config file.
 APACHE_MODS="apache2_modules_alias,"       # "Alias" directive
@@ -34,15 +40,16 @@ PATCHES=( "${FILESDIR}/${PN}-0.6.14-makefile.patch" )
 src_configure() {
 	local var_dir user_group
 
-	if has_version net-analyzer/nagios-core; then
-		var_dir=/var/nagios
-		user_group=nagios
-	elif has_version net-analyzer/icinga2; then
+	if use icinga; then
+		var_dir=/var/lib/icinga
+		user_group=icinga
+	elif use icinga2; then
 		var_dir=/var/lib/icinga2
 		user_group=icinga
 	else
-		var_dir=/var/lib/icinga
-		user_group=icinga
+		# Thanks to REQUIRED_USE, "use nagios" is the only other case.
+		var_dir=/var/nagios
+		user_group=nagios
 	fi
 
 	econf \
