@@ -15977,7 +15977,7 @@ sci-biology/amos 3.1.0-r3: A Modular, Open-Source whole genome assembler
 sci-biology/arb 5.1-r1 5.2 5.3: Tools for DNA/RNA sequence database handling and phylogenetic analysis
 sci-biology/ariadne 1.3-r3: Protein sequences and profiles comparison
 sci-biology/augustus 2.5.5: Eukaryotic gene predictor
-sci-biology/bamtools 2.4.1: A programmer's API and an end-user's toolkit for handling BAM files
+sci-biology/bamtools 2.4.2 9999: A programmer's API and an end-user's toolkit for handling BAM files
 sci-biology/bcftools 1.5: Utilities for variant calling and manipulating VCF and BCF files
 sci-biology/beast-mcmc 1.7.5-r1 9999: Bayesian MCMC of Evolution & Phylogenetics using Molecular Sequences
 sci-biology/bedtools 2.26.0: Tools for manipulation and analysis of BED, GFF/GTF, VCF, SAM/BAM file formats
