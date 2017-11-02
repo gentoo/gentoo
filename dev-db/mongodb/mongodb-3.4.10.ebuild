@@ -129,6 +129,7 @@ src_install() {
 	for x in /var/{lib,log}/${PN}; do
 		keepdir "${x}"
 		fowners mongodb:mongodb "${x}"
+		fperms 0750 "${x}"
 	done
 
 	doman debian/mongo*.1
