@@ -61,7 +61,6 @@ PATCHES=(
 	"${MY_PATCH_DIR}"/20018_all_mariadb-10.2.8-without-clientlibs-tools.patch
 	"${MY_PATCH_DIR}"/20024_all_mariadb-10.2.6-mysql_st-regression.patch
 	"${MY_PATCH_DIR}"/20025_all_mariadb-10.2.6-gssapi-detect.patch
-	"${MY_PATCH_DIR}"/20026_all_mariadb-add-pkgdatadir.patch
 )
 
 # Be warned, *DEPEND are version-dependant
@@ -106,7 +105,7 @@ COMMON_DEPEND="
 		systemd? ( sys-apps/systemd:= )
 		tokudb? ( app-arch/snappy )
 	)
-	>=dev-libs/libpcre-8.35:3=
+	>=dev-libs/libpcre-8.41-r1:3=
 "
 DEPEND="virtual/yacc
 	static? ( sys-libs/ncurses[static-libs] )
@@ -601,46 +600,11 @@ multilib_src_test() {
 	fi
 
 	_disable_test() {
-
-		local rawtestname testname testsuite reason mysql_disabled_file mysql_disabled_dir
+		local rawtestname reason
 		rawtestname="${1}" ; shift
 		reason="${@}"
 		ewarn "test '${rawtestname}' disabled: '${reason}'"
-
-		testsuite="${rawtestname/.*}"
-		testname="${rawtestname/*.}"
-		for mysql_disabled_file in \
-			"${S}/mysql-test/disabled.def" \
-			"${S}/mysql-test/t/disabled.def" ; do
-			[[ -f ${mysql_disabled_file} ]] && break
-		done
-		#mysql_disabled_file="${S}/mysql-test/t/disabled.def"
-		#einfo "rawtestname=${rawtestname} testname=${testname} testsuite=${testsuite}"
-		echo ${testname} : ${reason} >> "${mysql_disabled_file}"
-
-		if [[ ( -n ${testsuite} ) && ( ${testsuite} != "main" ) ]]; then
-			for mysql_disabled_file in \
-				"${S}/mysql-test/suite/${testsuite}/disabled.def" \
-				"${S}/mysql-test/suite/${testsuite}/t/disabled.def" \
-				FAILED ; do
-				[[ -f ${mysql_disabled_file} ]] && break
-			done
-			if [[ ${mysql_disabled_file} != "FAILED" ]]; then
-				echo "${testname} : ${reason}" >> "${mysql_disabled_file}"
-			else
-				for mysql_disabled_dir in \
-					"${S}/mysql-test/suite/${testsuite}" \
-					"${S}/mysql-test/suite/${testsuite}/t" \
-					FAILED ; do
-					[[ -d ${mysql_disabled_dir} ]] && break
-				done
-				if [[ ${mysql_disabled_dir} != "FAILED" ]]; then
-					echo "${testname} : ${reason}" >> "${mysql_disabled_dir}/disabled.def"
-				else
-					ewarn "Could not find testsuite disabled.def location for ${rawtestname}"
-				fi
-			fi
-		fi
+		echo ${rawtestname} : ${reason} >> "${T}/disabled.def"
 	}
 
 	local TESTDIR="${BUILD_DIR}/mysql-test"
@@ -680,6 +644,7 @@ multilib_src_test() {
 	# Run mysql tests
 	pushd "${TESTDIR}" > /dev/null || die
 
+	touch "${T}/disabled.def"
 	# These are failing in MariaDB 10.0 for now and are believed to be
 	# false positives:
 	#
@@ -698,7 +663,7 @@ multilib_src_test() {
 	done
 
 	# run mysql-test tests
-	perl mysql-test-run.pl --force --vardir="${T}/var-tests" --reorder
+	perl mysql-test-run.pl --force --vardir="${T}/var-tests" --reorder --skip-test=tokudb --skip-test-list="${T}/disabled.def"
 	retstatus_tests=$?
 
 	popd > /dev/null || die
