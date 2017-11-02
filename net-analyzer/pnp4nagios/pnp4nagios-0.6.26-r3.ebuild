@@ -19,7 +19,7 @@ REQUIRED_USE="^^ ( icinga icinga2 nagios )"
 # to accept it.
 DEPEND="
 	dev-lang/php:*[filter,gd,json,simplexml,xml,zlib]
-	>=net-analyzer/rrdtool-1.2[graph,perl]
+	net-analyzer/rrdtool[graph,perl]
 	icinga? ( net-analyzer/icinga )
 	icinga2? ( net-analyzer/icinga2 )
 	nagios? ( net-analyzer/nagios-core )"
