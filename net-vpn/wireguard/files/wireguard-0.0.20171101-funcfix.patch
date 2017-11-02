@@ -1,0 +1,40 @@
+From cc310a5dd1899417971e993d61d1230b14fe4f87 Mon Sep 17 00:00:00 2001
+From: "Jason A. Donenfeld" <Jason@zx2c4.com>
+Date: Thu, 2 Nov 2017 16:07:26 +0100
+Subject: global: revert checkpatch.pl changes
+
+These changes were suggested by checkpatch.pl, but actually cause big
+problems depending on the options. Revert.
+---
+ src/noise.c | 2 +-
+ src/peer.c  | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/noise.c b/src/noise.c
+index a0bea29..6ce9b78 100644
+--- a/src/noise.c
++++ b/src/noise.c
+@@ -118,7 +118,7 @@ void noise_keypair_put(struct noise_keypair *keypair)
+ 
+ struct noise_keypair *noise_keypair_get(struct noise_keypair *keypair)
+ {
+-	RCU_LOCKDEP_WARN(!rcu_read_lock_bh_held(), "Calling " __func__ " without holding the RCU BH read lock");
++	RCU_LOCKDEP_WARN(!rcu_read_lock_bh_held(), "Taking noise keypair reference without holding the RCU BH read lock");
+ 	if (unlikely(!keypair || !kref_get_unless_zero(&keypair->refcount)))
+ 		return NULL;
+ 	return keypair;
+diff --git a/src/peer.c b/src/peer.c
+index 1580262..81b71d4 100644
+--- a/src/peer.c
++++ b/src/peer.c
+@@ -58,7 +58,7 @@ struct wireguard_peer *peer_create(struct wireguard_device *wg, const u8 public_
+ 
+ struct wireguard_peer *peer_get(struct wireguard_peer *peer)
+ {
+-	RCU_LOCKDEP_WARN(!rcu_read_lock_bh_held(), "Calling " __func__ " without holding the RCU read lock");
++	RCU_LOCKDEP_WARN(!rcu_read_lock_bh_held(), "Taking peer reference without holding the RCU read lock");
+ 	if (unlikely(!peer || !kref_get_unless_zero(&peer->refcount)))
+ 		return NULL;
+ 	return peer;
+-- 
+cgit v1.1-33-gc3c0
