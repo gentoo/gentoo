@@ -17,7 +17,7 @@ else
 	https://dev.gentoo.org/~blueness/musl-misc/getconf.c
 	https://dev.gentoo.org/~blueness/musl-misc/getent.c
 	https://dev.gentoo.org/~blueness/musl-misc/iconv.c"
-	KEYWORDS="-* amd64 ~arm ~mips ~ppc x86"
+	KEYWORDS="-* ~amd64 ~arm ~mips ~ppc ~x86"
 fi
 
 export CBUILD=${CBUILD:-${CHOST}}
@@ -72,9 +72,11 @@ src_compile() {
 	just_headers && return 0
 
 	emake
-	$(tc-getCC) ${CFLAGS} "${DISTDIR}"/getconf.c -o "${T}"/getconf || die
-	$(tc-getCC) ${CFLAGS} "${DISTDIR}"/getent.c -o "${T}"/getent || die
-	$(tc-getCC) ${CFLAGS} "${DISTDIR}"/iconv.c -o "${T}"/iconv || die
+	if [[ ${CATEGORY} != cross-* ]] ; then
+		$(tc-getCC) ${CFLAGS} "${DISTDIR}"/getconf.c -o "${T}"/getconf || die
+		$(tc-getCC) ${CFLAGS} "${DISTDIR}"/getent.c -o "${T}"/getent || die
+		$(tc-getCC) ${CFLAGS} "${DISTDIR}"/iconv.c -o "${T}"/iconv || die
+	fi
 }
 
 src_install() {
