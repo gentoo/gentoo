@@ -14716,7 +14716,7 @@ net-ftp/gftp 2.0.19-r3: Gnome based FTP Client
 net-ftp/gproftpd 8.3.2-r1: GTK frontend to proftpd
 net-ftp/lftp 4.7.5 4.8.2 4.8.3 9999: A sophisticated ftp/sftp/http/https/torrent client and file transfer program
 net-ftp/linksys-tftp 1.2.1-r3: TFTP client suitable for uploading to the Linksys WRT54G Wireless Router
-net-ftp/ncftp 3.2.5-r3 3.2.6: An extremely configurable ftp client
+net-ftp/ncftp 3.2.6: An extremely configurable ftp client
 net-ftp/netkit-ftpd 0.17-r9: The netkit FTP server with optional SSL support
 net-ftp/oftpd 0.3.7-r7 0.3.7-r8 0.3.7-r9 0.3.7-r10: Secure, small, anonymous only ftpd
 net-ftp/oneclickftp 0.5.1: The somehow different FTP client
