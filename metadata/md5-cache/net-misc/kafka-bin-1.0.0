@@ -1,0 +1,14 @@
+DEFINED_PHASES=install prepare setup
+DEPEND=|| ( virtual/jre:1.8 virtual/jre:1.7 )
+DESCRIPTION=A high-throughput distributed messaging system
+EAPI=5
+HOMEPAGE=http://kafka.apache.org/
+IUSE=internal-zookeeper
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0
+RDEPEND=|| ( virtual/jre:1.8 virtual/jre:1.7 )
+RESTRICT=mirror
+SLOT=0
+SRC_URI=mirror://apache/kafka/1.0.0/kafka_2.12-1.0.0.tgz
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=03b980a0991fcee27f54157eaa7cb4ac
