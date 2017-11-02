@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
 inherit vim-plugin
 
 if [[ ${PV} == 9999 ]]; then
@@ -9,7 +10,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/gregsexton/gitv.git"
 else
 	SRC_URI="https://github.com/gregsexton/gitv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86 ~ppc-macos"
+	KEYWORDS="amd64 x86 ~ppc-macos"
 fi
 
 DESCRIPTION="vim plugin: gitk for vim"
@@ -18,7 +19,8 @@ LICENSE="vim"
 
 VIM_PLUGIN_HELPFILES="gitv"
 
-RDEPEND="dev-vcs/git
+RDEPEND="
+	dev-vcs/git
 	app-vim/fugitive"
 
 src_prepare() {
