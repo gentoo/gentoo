@@ -473,15 +473,6 @@ dev-util/mutrace
 # to create unbootable kernel/initramfs images. Bug #622716
 =sys-kernel/genkernel-3.5.1.0
 
-# Thomas Deutschmann <whissi@gentoo.org> (17 Jun 2017)
-# Unmaintained in Gentoo repository; Multiple vulnerabilities
-# People using VMware in Gentoo should switch to Gentoo's VMware overlay
-# Bugs 619398, 621910, 616958, 536364, 614666, 612804 ...
-app-emulation/vmware-workstation
-app-emulation/vmware-player
-app-emulation/vmware-modules
-app-emulation/vmware-tools
-
 # Hans de Graaff <graaff@gentoo.org> (05 Jun 2017)
 # Bundles obsolete and vulnerable webkit version.
 # Upstream has stopped development and recommends using
