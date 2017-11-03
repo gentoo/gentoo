@@ -21,6 +21,7 @@ IUSE="debug emacs erlang examples java mono profile readline threads trail"
 
 DEPEND="!dev-libs/mpatrol
 	!dev-util/mono-debugger
+	net-libs/libnsl:0=
 	readline? ( sys-libs/readline:= )
 	erlang? ( dev-lang/erlang )
 	java? ( >=virtual/jdk-1.6:= )
