@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,7 +14,8 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-RDEPEND=">=sys-libs/pam-0.78-r3
+RDEPEND="net-libs/libnsl:0=
+	>=sys-libs/pam-0.78-r3
 	>=sys-auth/skey-1.1.5-r4"
 DEPEND="${RDEPEND}
 	app-arch/xz-utils"
