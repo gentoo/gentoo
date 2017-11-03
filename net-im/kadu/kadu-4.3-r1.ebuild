@@ -102,6 +102,7 @@ word_fix
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.3-do-not-force-ccache.patch"
+	"${FILESDIR}/${PN}-4.3-fix-plugins-rpath.patch"
 )
 
 src_configure() {
