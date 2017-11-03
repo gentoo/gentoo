@@ -19,7 +19,7 @@ if [[ $PV == *9999 ]]; then
 	S="${WORKDIR}/${REPO}"
 else
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-	UPSTREAM_VER=1
+	UPSTREAM_VER=2
 	SECURITY_VER=
 	# xen-tools's gentoo patches tarball
 	GENTOO_VER=10
