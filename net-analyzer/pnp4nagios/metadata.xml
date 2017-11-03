@@ -11,11 +11,8 @@
       Build against <pkg>net-analyzer/nagios-core</pkg> (the default)
     </flag>
     <flag name="icinga">
-      Build against <pkg>net-analyzer/icinga</pkg> instead of
-      <pkg>net-analyzer/nagios-core</pkg>
-    </flag>
-    <flag name="icinga2">
-      Build against <pkg>net-analyzer/icinga2</pkg> instead of
+      Build against <pkg>net-analyzer/icinga2</pkg> or
+      <pkg>net-analyzer/icinga</pkg> instead of
       <pkg>net-analyzer/nagios-core</pkg>
     </flag>
   </use>
