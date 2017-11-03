@@ -9,10 +9,10 @@ SRC_URI="mirror://sourceforge/${PN}/PNP-0.6/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="apache2 icinga icinga2 +nagios"
+IUSE="apache2 icinga +nagios"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
 
-REQUIRED_USE="^^ ( icinga icinga2 nagios )"
+REQUIRED_USE="^^ ( icinga nagios )"
 
 # Some things (sync mode, for one) are broken with nagios-4.x, but since
 # nagios-3.x has been end-of-life'd, we don't have much choice here but
@@ -20,8 +20,7 @@ REQUIRED_USE="^^ ( icinga icinga2 nagios )"
 DEPEND="
 	dev-lang/php:*[filter,gd,json,simplexml,xml,zlib]
 	net-analyzer/rrdtool[graph,perl]
-	icinga? ( net-analyzer/icinga )
-	icinga2? ( net-analyzer/icinga2 )
+	icinga? ( || ( net-analyzer/icinga2 net-analyzer/icinga ) )
 	nagios? ( net-analyzer/nagios-core )"
 
 # A list of modules used in our Apache config file.
@@ -39,7 +38,7 @@ PATCHES=( "${FILESDIR}/${PN}-0.6.14-makefile.patch" )
 
 src_configure() {
 	local user_group=nagios
-	( use icinga || use icinga2 ) && user_group=icinga
+	use icinga && user_group=icinga
 
 	econf \
 		--sysconfdir="${EPREFIX}"/etc/pnp \
@@ -75,7 +74,7 @@ src_install() {
 	# The nagios or icinga user needs to write performance data to the
 	# perfdata-dir...
 	local user_group=nagios
-	( use icinga || use icinga2 ) && user_group=icinga
+	use icinga && user_group=icinga
 	fowners "${user_group}:${user_group}" /var/lib/pnp/{,perfdata,spool}
 
 	# and likewise for its logs...
