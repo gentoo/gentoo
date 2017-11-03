@@ -15,10 +15,12 @@ SRC_URI="https://www.cabextract.org.uk/libmspack/libmspack-${MY_PV}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug doc static-libs"
+IUSE="debug doc static-libs utils"
 
 DEPEND=""
-RDEPEND=""
+RDEPEND="
+	utils? ( !app-arch/mscompress )
+"
 
 PATCHES=(
 	"${FILESDIR}/${P}-fix-tests.patch"
@@ -46,5 +48,8 @@ multilib_src_install_all() {
 	default_src_install
 	if use doc; then
 		rm "${ED}"/usr/share/doc/"${PF}"/html/{Makefile*,Doxyfile*} || die
+	fi
+	if ! use utils; then
+		rm "${ED}"/usr/bin/* || die
 	fi
 }
