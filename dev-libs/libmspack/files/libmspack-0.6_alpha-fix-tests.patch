@@ -1,36 +1,7 @@
-From deb65056f436a4ce06946c4dde270f533e3cab4d Mon Sep 17 00:00:00 2001
-From: Stuart Caie <kyzer@cabextract.org.uk>
-Date: Mon, 16 Oct 2017 13:59:05 +0100
-Subject: [PATCH] Fix cabd_test.c test and msdecompile_md5 script
-
----
- libmspack/ChangeLog            | 10 +++++++++
- libmspack/test/cabd_test.c     |  3 ++-
- libmspack/test/msdecompile_md5 | 47 +++++++++++++++++++++---------------------
- 3 files changed, 36 insertions(+), 24 deletions(-)
-
-diff --git a/libmspack/ChangeLog b/libmspack/ChangeLog
-index 6861b19..4aef85f 100644
---- a/libmspack/ChangeLog
-+++ b/libmspack/ChangeLog
-@@ -1,3 +1,13 @@
-+2017-10-16  Stuart Caie <kyzer@cabextract.org.uk>
-+
-+	* test/cabd_test.c: update the short string tests to expect not only
-+	MSPACK_ERR_DATAFORMAT but also MSPACK_ERR_READ, because of the recent
-+	change to cabd_read_string(). Thanks to maitreyee43 for spotting this.
-+
-+	* test/msdecompile_md5: update the setup instructions for this script,
-+	and also change the script so it works with current Wine. Again, thanks
-+	to maitreyee43 for trying to use it and finding it not working.
-+
- 2017-08-13  Stuart Caie <kyzer@cabextract.org.uk>
- 
- 	* src/chmextract.c: support MinGW one-arg mkdir(). Thanks to AntumDeluge
 diff --git a/libmspack/test/cabd_test.c b/libmspack/test/cabd_test.c
 index 5e8851c..abed65c 100644
---- a/libmspack/test/cabd_test.c
-+++ b/libmspack/test/cabd_test.c
+--- a/test/cabd_test.c
++++ b/test/cabd_test.c
 @@ -186,7 +186,8 @@ void cabd_open_test_05() {
    for (i = 0; i < (sizeof(str_files)/sizeof(char *)); i++) {
      cab = cabd->open(cabd, str_files[i]);
@@ -41,56 +12,3 @@ index 5e8851c..abed65c 100644
    }
  
    /* lack of data blocks should NOT be a problem for merely reading */
-diff --git a/libmspack/test/msdecompile_md5 b/libmspack/test/msdecompile_md5
-index a1d3b4b..9efbfac 100755
---- a/libmspack/test/msdecompile_md5
-+++ b/libmspack/test/msdecompile_md5
-@@ -1,24 +1,25 @@
--#!/usr/bin/perl -w
--# put hh.exe, hhctrl.ocx and itss.dll into this directory
--# for this script to work. You can get them by downloading
--# the HTML Help Workshop from Microsoft and then doing:
--#   $ cabextract -F 'hh*' htmlhelp.exe
--#   $ cabextract -F itircl.dll hhupd.exe
--#   $ cabextract -F itss.dll hhupd.exe
--#   $ cp -a itircl.dll ~/.wine/drive_c/windows/system32/
--#   $ cp -a itss.dll ~/.wine/drive_c/windows/system32/
--#   $ wine regsvr32 /s 'C:\WINDOWS\SYSTEM32\itircl.dll'
--#   $ wine regsvr32 /s 'C:\WINDOWS\SYSTEM32\itss.dll'
-+#!/bin/sh
-+# This script needs the following setup to work:
-+# - hh.exe and hhctrl.ocx copied to Wine's system32
-+# - itss.dll and itircl.dll installed as Wine DLLs
-+#
-+# Download the HTML Help Workshop (htmlhelp.exe) from Microsoft:
-+#
-+#   https://msdn.microsoft.com/en-us/library/windows/desktop/ms669985(v=vs.85).aspx
-+#
-+# and then run these commands:
-+#
-+#   cabextract htmlhelp.exe -F hhupd.exe
-+#   cabextract hhupd.exe -F hh.exe
-+#   cabextract hhupd.exe -F hhctrl.ocx
-+#   cabextract hhupd.exe -F itircl.dll
-+#   cabextract hhupd.exe -F itss.dll
-+#   mv hh.exe hhctrl.ocx itircl.dll itss.dll ~/.wine/drive_c/windows/system32/
-+#   wine regsvr32 /s 'c:\windows\system32\itircl.dll'
-+#   wine regsvr32 /s 'c:\windows\system32\itss.dll'
- 
--use strict;
--use File::Temp qw(tempdir);
--
--die "Usage: $0 <file.chm>\n" unless @ARGV == 1;
--my $hh = $0; $hh =~ s{[^/]+$}{hh.exe};
--my $dir = tempdir("./.tempXXXX", CLEANUP => 1);
--
--$ENV{LANG} = 'C';
--$ENV{WINEDLLOVERRIDES}='hhctrl.ocx,itss=n';
--print "*** $ARGV[0]\n";
--system("wine $hh -decompile $dir $ARGV[0] 1>&2 && " .
--       "cd $dir && find * -type f -print0 | xargs -0 md5sum");
-+dir=`mktemp -d`
-+echo "*** $1"
-+LANG=C WINEDLLOVERRIDES='hhctrl.ocx=n' wine hh -decompile $dir "$1"
-+cd $dir && find * -type f -exec md5sum {} +
-+rm -rf $dir
