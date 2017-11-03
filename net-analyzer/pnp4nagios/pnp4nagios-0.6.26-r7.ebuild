@@ -70,11 +70,6 @@ src_install() {
 	if use apache2 ; then
 		insinto /etc/apache2/modules.d
 		newins "${FILESDIR}"/98_pnp4nagios-2.4.conf 98_pnp4nagios.conf
-
-		# This one file isn't world-readable, but it should be group-
-		# readable. Give it to the "apache" group to let the web
-		# server read it.
-		fowners :apache /etc/pnp/process_perfdata.cfg
 	fi
 
 	# The nagios or icinga user needs to write performance data to the
