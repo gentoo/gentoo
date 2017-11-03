@@ -61,6 +61,7 @@ games-emulation/dosbox glide
 
 # Thomas Deutschmann <whissi@gentoo.org> (26 Aug 2016)
 # Enable numa support on supported architectures
+dev-db/mysql -numa
 dev-db/percona-server -numa
 
 # Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
