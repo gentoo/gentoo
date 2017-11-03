@@ -42,4 +42,7 @@ src_install() {
 	java-pkg_dolauncher "${PN}" --jar "${PN}.jar"
 	newicon images/external/JabRef-icon-128.png JabRef-bin-icon.png
 	make_desktop_entry "${PN}" JabRef-bin JabRef-bin-icon Office
+	ewarn "Jabref 4.x will convert old 3.x format .bib databases to a new format."
+	ewarn "The conversion is irreversible, backup .bib files before starting Jabref."
+	ewarn "Jabref 4.x is under heavy development and very unstable."
 }
