@@ -2585,7 +2585,7 @@ app-vim/git-patch-tags 0.2: vim plugin: add git patch tags as used in linux kern
 app-vim/gitgutter 20170222 99999999: vim plugin: shows a git diff in the sign column and stages/reverts hunks
 app-vim/gitlog 5.1.0 6.0.0 9999: vim plugin: git log and diff plugin for vim
 app-vim/gitolite-syntax 20111225 20130306: vim plugin: gitolite syntax highlighting
-app-vim/gitv 1.3 1.3.1 9999: vim plugin: gitk for vim
+app-vim/gitv 1.3.1 9999: vim plugin: gitk for vim
 app-vim/gnupg 2.6: transparent editing of gpg encrypted files
 app-vim/greputils 2.8-r1: vim plugin: interface with grep, find and id-utils
 app-vim/gtk-syntax 20130716: vim plugin: Syntax highlighting for GLib, Gtk+, Xlib, Gimp, Gnome, and more
@@ -18408,7 +18408,7 @@ www-apps/webmcp 1.2.5 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-apps/wiliki 0.6.1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 4.7.5 4.8 4.8.1 4.8.2 4.8.3: Wordpress PHP and MySQL based content management system (CMS)
-www-client/chromium 62.0.3202.62 62.0.3202.75 63.0.3223.8 63.0.3230.0: Open-source version of Google Chrome web browser
+www-client/chromium 62.0.3202.75 63.0.3223.8 63.0.3230.0: Open-source version of Google Chrome web browser
 www-client/ck4up 1.2: Check for Updates on HTTP pages
 www-client/conkeror 1.0_pre20140212 1.0_pre20150519 1.0.3: A Mozilla-based web browser whose design is inspired by GNU Emacs
 www-client/dillo 3.0.5 3.0.5-r1: Lean FLTK based web browser
