@@ -16,12 +16,14 @@ LICENSE="MIT"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 
-RDEPEND=">=dev-python/py-1.1.1[${PYTHON_USEDEP}]"
+COMMON_DEPEND=">=dev-python/py-1.1.1[${PYTHON_USEDEP}]"
 DEPEND="
 	test? (
-		${RDEPEND}
+		${COMMON_DEPEND}
 		>=dev-python/pytest-2.7.1[${PYTHON_USEDEP}]
 	)"
+RDEPEND="${COMMON_DEPEND}
+	!dev-python/pytest-capturelog"
 
 python_test() {
 	PYTEST_PLUGINS=${PN/-/_} py.test -v -v test_pytest_catchlog.py || die
