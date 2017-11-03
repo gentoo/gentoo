@@ -57,6 +57,7 @@ app-admin/collectd -collectd_plugins_mqtt
 
 # Thomas Deutschmann <whissi@gentoo.org> (26 Aug 2016)
 # Enable numa support on supported architectures
+dev-db/mysql -numa
 dev-db/percona-server -numa
 
 # Brian Evans <grknight@gentoo.org> (18 Aug 2016)
