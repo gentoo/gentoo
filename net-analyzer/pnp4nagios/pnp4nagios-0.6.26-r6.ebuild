@@ -44,11 +44,10 @@ src_configure() {
 	econf \
 		--sysconfdir="${EPREFIX}"/etc/pnp \
 		--datarootdir="${EPREFIX}"/usr/share/pnp \
+		--localstatedir="${EPREFIX}"/var/lib/pnp \
 		--with-nagios-user="${user_group}" \
 		--with-nagios-group="${user_group}" \
-		--with-perfdata-dir="${EPREFIX}"/var/lib/pnp/perfdata \
-		--with-perfdata-logfile="${EPREFIX}"/var/log/pnp/process_perfdata.log \
-		--with-perfdata-spool-dir="${EPREFIX}"/var/spool/pnp
+		--with-perfdata-logfile="${EPREFIX}"/var/log/pnp/process_perfdata.log
 }
 
 src_compile() {
@@ -78,14 +77,20 @@ src_install() {
 		fowners :apache /etc/pnp/process_perfdata.cfg
 	fi
 
-	# The nagios or icinga user will also need to be able to write
-	# performance data to the perfdata-dir and perfdata-spool-dir
-	# directories.
+	# The nagios or icinga user needs to write performance data to the
+	# perfdata-dir...
 	local user_group=nagios
 	( use icinga || use icinga2 ) && user_group=icinga
-	dodir /var/lib/pnp/{,perfdata} /var/log/pnp
-	fowners "${user_group}:${user_group}" /var/lib/pnp/{,perfdata}
+	fowners "${user_group}:${user_group}" /var/lib/pnp/{,perfdata,spool}
+
+	# and likewise for its logs...
+	dodir /var/log/pnp
 	fowners "${user_group}:${user_group}" /var/log/pnp
+
+	# and its statistics. This one is arguably the responsibility of the
+	# build system, since process_perfdata.cfg refers to this location.
+	dodir /var/lib/pnp/stats
+	fowners "${user_group}:${user_group}" /var/lib/pnp/stats
 }
 
 pkg_postinst() {
