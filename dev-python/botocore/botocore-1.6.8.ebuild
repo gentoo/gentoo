@@ -28,7 +28,7 @@ DEPEND="
 		>=dev-python/guzzle_sphinx_theme-0.7.10[${PYTHON_USEDEP}]
 		<dev-python/guzzle_sphinx_theme-0.8[${PYTHON_USEDEP}]
 		>=dev-python/sphinx-1.1.3[${PYTHON_USEDEP}]
-		<dev-python/sphinx-1.3[${PYTHON_USEDEP}]
+		<dev-python/sphinx-1.7[${PYTHON_USEDEP}]
 	)
 	test? (
 		${CDEPEND}
