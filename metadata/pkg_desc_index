@@ -1891,7 +1891,7 @@ app-misc/ondir 0.2.2-r1: Automatically execute scripts as you traverse directori
 app-misc/oneko 1.2-r2: A cat, dog and others which chase the mouse or windows around the screen
 app-misc/openastro 1.1.48 1.1.49 1.1.50: A fully-featured Open Source Astrology Program
 app-misc/openastro-data 1.6 1.7: OpenAstro data files, ephemeris, famous people database, geo database
-app-misc/pal 0.4.3-r1 0.4.3-r2: Command-line calendar program
+app-misc/pal 0.4.3-r2: Command-line calendar program
 app-misc/pax-utils 1.1.6 1.1.6-r1 1.1.7 1.2.2 1.2.2-r1 1.2.2-r2: ELF utils that can check files for security relevant properties
 app-misc/pdfpc 3.1.1 4.0.7 4.0.8: Presenter console with multi-monitor support for PDF files
 app-misc/perltrash 0.3-r1: Command-line trash can emulation
@@ -4660,7 +4660,7 @@ dev-libs/cdk 5.0.20131107 5.0.20141106 5.0.20150928 5.0.20160131: A library of c
 dev-libs/cereal 1.2.1 1.2.2: header-only C++11 serialization library
 dev-libs/cgicc 3.2.9 3.2.16: A C++ class library for writing CGI applications
 dev-libs/cgilib 0.7: A simple and lightweight interface to the CGI for C and C++ programs
-dev-libs/check 0.9.11 0.10.0-r1 0.10.0-r2 0.11.0 0.12.0: A unit test framework for C
+dev-libs/check 0.10.0-r1 0.12.0: A unit test framework for C
 dev-libs/chmlib 0.40-r1: Library for MS CHM (compressed html) file format
 dev-libs/cityhash 1.0.3 1.1.0 1.1.1: Google's CityHash family of hash functions
 dev-libs/cl 1.2.3 9999: OpenCL bindings for Erlang
@@ -18333,7 +18333,7 @@ www-apps/drupal 7.56 8.3.7: PHP-based open-source platform and content managemen
 www-apps/dspam-web 3.10.1: Web based administration and user controls for dspam
 www-apps/eyeos 2.5: AJAX web-based desktop environment
 www-apps/freeradius-dialupadmin 1.70.3 1.80: Web administration interface of freeradius server
-www-apps/gitea 1.1.4 1.2.1: A painless self-hosted Git service, written in Go
+www-apps/gitea 1.1.4 1.2.2: A painless self-hosted Git service, written in Go
 www-apps/gitit 0.12.1.1 0.12.1.1-r2 0.12.2 0.12.2.1: Wiki using happstack, git or darcs, and pandoc
 www-apps/gnopaste 0.5.5: gnopaste is a nopaste script based on PHP with MySQL
 www-apps/grafana-bin 4.5.2 4.6.0 4.6.1: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
