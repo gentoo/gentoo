@@ -26,7 +26,7 @@ RDEPEND="
 	libressl? ( dev-libs/libressl:= )
 	!libressl? ( dev-libs/openssl:= )
 	>=dev-libs/boost-1.35:=
-	botan? ( =dev-libs/botan-1.10*[threads] )
+	botan? ( dev-libs/botan:2= )
 	lua? ( dev-lang/lua:= )
 	luajit? ( dev-lang/luajit:= )
 	mysql? ( virtual/mysql )
@@ -67,7 +67,7 @@ src_configure() {
 		--with-modules= \
 		--with-dynmodules="${dynmodules}" \
 		--with-mysql-lib=/usr/$(get_libdir) \
-		$(use_enable botan botan1.10) \
+		$(use_enable botan) \
 		$(use_enable debug verbose-logging) \
 		$(use_enable test unit-tests) \
 		$(use_enable tools) \
