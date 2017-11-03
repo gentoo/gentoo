@@ -1773,7 +1773,7 @@ app-misc/dvorak7min 1.6.1: Simple ncurses-based typing tutor for learning the Dv
 app-misc/dvorakng 0.6.0: Dvorak typing tutor
 app-misc/dvtm 0.14 0.15 9999: Dynamic virtual terminal manager
 app-misc/editor-wrapper 4: Wrapper scripts that will execute EDITOR or PAGER
-app-misc/egads 0.9.5: Entropy Gathering And Distribution System
+app-misc/egads 0.9.5 0.9.5-r1: Entropy Gathering And Distribution System
 app-misc/eid-viewer-bin 4.0.7_p184 4.1.9: Graphical interface to the Belgian Electronic Identity Card
 app-misc/elasticsearch 5.5.2 5.6.3: Open Source, Distributed, RESTful, Search Engine
 app-misc/email2trac 2.6.2-r1 2.8.4 2.8.8: Utilities to convert emails to trac tickets
@@ -1940,7 +1940,7 @@ app-misc/sphinx 2.0.10 2.1.9 2.2.11: Full-text search engine with support for My
 app-misc/splitvt 1.6.6-r2: Splitting terminals into two shells
 app-misc/srm 1.2.11-r2 1.2.15: A command-line compatible rm which destroys file contents before unlinking
 app-misc/supercat 0.5.5-r1 0.5.5-r2: A text file colorizer using powerful regular expressions
-app-misc/symlinks 1.4 1.4-r2 1.4-r3: Scans for and fixes broken or messy symlinks
+app-misc/symlinks 1.4-r3: Scans for and fixes broken or messy symlinks
 app-misc/tails-installer 4.4.8 4.4.11: A graphical tool to install or upgrade Tails on a USB stick from an ISO image
 app-misc/task 2.5.1-r1: Taskwarrior is a command-line todo list manager
 app-misc/taskd 1.1.0-r1: the server part of Taskwarrior, a command-line todo list manager
