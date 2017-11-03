@@ -13,12 +13,12 @@ CMAKE_MAKEFILE_GENERATOR=emake
 
 inherit mysql-multilib-r1
 # only to make repoman happy. it is really set in the eclass
-IUSE="$IUSE"
+IUSE="$IUSE numa"
 
 # REMEMBER: also update eclass/mysql*.eclass before committing!
 KEYWORDS="~alpha amd64 ~arm ~hppa ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 
-DEPEND="|| ( >=sys-devel/gcc-3.4.6 >=sys-devel/gcc-apple-4.0 )"
+DEPEND="|| ( >=sys-devel/gcc-3.4.6 >=sys-devel/gcc-apple-4.0 ) numa? ( sys-process/numactl )"
 RDEPEND="${RDEPEND}"
 
 MY_PATCH_DIR="${WORKDIR}/mysql-extras-${MY_EXTRAS_VER}"
@@ -38,16 +38,19 @@ PATCHES=(
 # If you want to add a single patch, copy the ebuild to an overlay
 # and create your own mysql-extras tarball, looking at 000_index.txt
 
-# validate_password plugin uses exceptions when it shouldn't yet (until 5.7)
-# disable until we see what happens with it
-MYSQL_CMAKE_NATIVE_DEFINES=( -DWITHOUT_VALIDATE_PASSWORD=1 )
-
 src_prepare() {
 	mysql-multilib-r1_src_prepare
 	if use libressl ; then
 		sed -i 's/OPENSSL_MAJOR_VERSION STREQUAL "1"/OPENSSL_MAJOR_VERSION STREQUAL "2"/' \
 			"${S}/cmake/ssl.cmake" || die
 	fi
+}
+
+src_configure() {
+	# validate_password plugin uses exceptions when it shouldn't yet (until 5.7)
+	# disable until we see what happens with it
+	local MYSQL_CMAKE_NATIVE_DEFINES=( -DWITHOUT_VALIDATE_PASSWORD=1 -DWITH_NUMA=$(usex numa ON OFF) )
+	mysql-multilib-r1_src_configure
 }
 
 # Official test instructions:
