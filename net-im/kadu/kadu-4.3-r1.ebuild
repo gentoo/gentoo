@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit cmake-utils flag-o-matic
+inherit cmake-utils flag-o-matic gnome2-utils
 
 MY_P="${P/_/-}"
 
@@ -100,6 +100,10 @@ tabs
 word_fix
 '
 
+PATCHES=(
+	"${FILESDIR}/${PN}-4.3-do-not-force-ccache.patch"
+)
+
 src_configure() {
 	# Filter out dangerous flags
 	filter-flags -fno-rtti
@@ -127,4 +131,8 @@ src_configure() {
 	unset PLUGINS
 
 	cmake-utils_src_configure
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
 }

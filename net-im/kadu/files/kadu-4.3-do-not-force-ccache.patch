@@ -1,0 +1,17 @@
+diff -ruN kadu-4.3/CMakeLists.txt my/CMakeLists.txt
+--- kadu-4.3/CMakeLists.txt	2017-01-24 22:36:21.000000000 +0100
++++ my/CMakeLists.txt	2017-11-03 03:00:07.005162047 +0100
+@@ -75,13 +75,6 @@
+ 	endif ()
+ endif ()
+ 
+-## CCache is cool stuff to improve compilation time
+-find_program (CCACHE_FOUND ccache)
+-if (CCACHE_FOUND)
+-	set_property (GLOBAL PROPERTY RULE_LAUNCH_COMPILE ccache)
+-	set_property (GLOBAL PROPERTY RULE_LAUNCH_LINK ccache)
+-endif (CCACHE_FOUND)
+-
+ # Look above, DEBUG_ENABLED is always enabled in Debug configuration.
+ # Enable it in all configurations when ENABLE_DEVELOPER_BUILD is on.
+ if (ENABLE_DEVELOPER_BUILD)
