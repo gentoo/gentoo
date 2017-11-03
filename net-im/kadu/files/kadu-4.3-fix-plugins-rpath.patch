@@ -1,0 +1,12 @@
+diff -ruN kadu-4.3/cmake/KaduMacros.cmake my/cmake/KaduMacros.cmake
+--- kadu-4.3/cmake/KaduMacros.cmake	2017-01-24 22:36:21.000000000 +0100
++++ my/cmake/KaduMacros.cmake	2017-11-03 03:24:17.827054622 +0100
+@@ -221,7 +221,7 @@
+ 
+ 	if (NOT WIN32)
+ 		set_target_properties (${KADU_PLUGIN_NAME} PROPERTIES
+-			INSTALL_RPATH "${KADU_INSTALL_LIB_DIR}/kadu"
++			INSTALL_RPATH "${KADU_INSTALL_PREFIX}/${KADU_INSTALL_LIB_DIR}/kadu"
+ 			BUILD_WITH_INSTALL_RPATH TRUE
+ 		)
+ 	endif ()
