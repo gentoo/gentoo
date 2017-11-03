@@ -2110,6 +2110,7 @@ dev-libs/libmateweather:gtk3 - Build with GTK+3 instead of GTK+2
 dev-libs/libmemcached:hsieh - Use Hsieh hash algorithm.
 dev-libs/libmemcached:libevent - Use the libevent event loop interface.
 dev-libs/libmemcached:sasl - Use sasl auth for communications.
+dev-libs/libmspack:utils - Enables building cabrip, chmextract, msexpand and oabextract
 dev-libs/libnfc:pcsc-lite - Enable NFC drivers that require pcsc-lite
 dev-libs/libnl:doc - Install development documentation
 dev-libs/libnl:python - Install experimental dev-lang/python bindings
