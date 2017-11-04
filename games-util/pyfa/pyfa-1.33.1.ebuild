@@ -43,9 +43,6 @@ src_prepare() {
 	# load gameDB and images from separate staticdata directory
 	eapply "${FILESDIR}/${PN}-1.33.1-staticdata.patch"
 
-	# do not try to save exported html to python sitedir
-	eapply "${FILESDIR}/${PN}-1.33.1-html-export-path.patch"
-
 	# fix import path in the main script for systemwide installation
 	eapply "${FILESDIR}/${PN}-1.33.1-import-pyfa.patch"
 
