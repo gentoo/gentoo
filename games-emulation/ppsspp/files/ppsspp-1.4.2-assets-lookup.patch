@@ -1,0 +1,13 @@
+diff --git a/UI/NativeApp.cpp b/UI/NativeApp.cpp
+index 717177ef81ff..22239782210d 100644
+--- a/UI/NativeApp.cpp
++++ b/UI/NativeApp.cpp
+@@ -317,7 +317,7 @@ void NativeInit(int argc, const char *argv[], const char *savegame_dir, const ch
+ 
+ 	// We want this to be FIRST.
+ #ifdef USING_QT_UI
+-	VFSRegister("", new AssetsAssetReader());
++	VFSRegister("", new DirectoryAssetReader("/usr/share/ppsspp/assets/"));
+ #elif defined(IOS)
+ 	// Packed assets are included in app
+ 	VFSRegister("", new DirectoryAssetReader(external_dir));
