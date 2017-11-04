@@ -5387,7 +5387,7 @@ dev-ml/ppx_jane 0.9.0: Standard Jane Street ppx rewriters
 dev-ml/ppx_js_style 0.9.0: Code style checker for Jane Street Packages
 dev-ml/ppx_let 0.9.0: Monadic let-bindings
 dev-ml/ppx_metaquot 0.9.0: Write OCaml AST fragment using OCaml syntax
-dev-ml/ppx_optcomp 0.9.0-r2: Optional compilation for OCaml
+dev-ml/ppx_optcomp 0.9.0-r3: Optional compilation for OCaml
 dev-ml/ppx_optional 0.9.0: Pattern matching on flat options
 dev-ml/ppx_pipebang 0.9.0: A ppx rewriter that inlines reverse application operators |> and |!
 dev-ml/ppx_sexp_conv 0.9.0-r1: Support Library for type-driven code generators
