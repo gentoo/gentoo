@@ -26,7 +26,7 @@ COMMON_DEPEND="
 	dev-libs/expat:=
 	dev-libs/glib:2
 	system-icu? ( >=dev-libs/icu-59:= )
-	>=dev-libs/libxml2-2.9.5:=[icu]
+	>=dev-libs/libxml2-2.9.4-r3:=[icu]
 	dev-libs/libxslt:=
 	dev-libs/nspr:=
 	>=dev-libs/nss-3.14.3:=
@@ -35,7 +35,7 @@ COMMON_DEPEND="
 	>=media-libs/alsa-lib-1.0.19:=
 	media-libs/fontconfig:=
 	media-libs/freetype:=
-	>=media-libs/harfbuzz-1.4.2:=[icu(-)]
+	>=media-libs/harfbuzz-1.5.0:=[icu(-)]
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
 	system-libvpx? ( media-libs/libvpx:=[postproc,svc] )
@@ -145,7 +145,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-widevine-r1.patch"
 	"${FILESDIR}/${PN}-FORTIFY_SOURCE-r2.patch"
 	"${FILESDIR}/${PN}-gcc5-r4.patch"
-	"${FILESDIR}/${PN}-gn-bootstrap-r20.patch"
+	"${FILESDIR}/${PN}-clang-r1.patch"
+	"${FILESDIR}/${PN}-webrtc-r0.patch"
 )
 
 pre_build_checks() {
@@ -204,7 +205,6 @@ src_prepare() {
 		base/third_party/valgrind
 		base/third_party/xdg_mime
 		base/third_party/xdg_user_dirs
-		breakpad/src/third_party/curl
 		chrome/third_party/mozilla_security_manager
 		courgette/third_party
 		net/third_party/mozilla_security_manager
@@ -213,24 +213,26 @@ src_prepare() {
 		third_party/analytics
 		third_party/angle
 		third_party/angle/src/common/third_party/base
-		third_party/angle/src/common/third_party/murmurhash
+		third_party/angle/src/common/third_party/smhasher
 		third_party/angle/src/third_party/compiler
 		third_party/angle/src/third_party/libXNVCtrl
 		third_party/angle/src/third_party/trace_event
 		third_party/blink
 		third_party/boringssl
+		third_party/breakpad
+		third_party/breakpad/breakpad/src/third_party/curl
 		third_party/brotli
 		third_party/cacheinvalidation
 		third_party/catapult
+		third_party/catapult/common/py_vulcanize/third_party/rcssmin
+		third_party/catapult/common/py_vulcanize/third_party/rjsmin
 		third_party/catapult/third_party/polymer
-		third_party/catapult/third_party/py_vulcanize
-		third_party/catapult/third_party/py_vulcanize/third_party/rcssmin
-		third_party/catapult/third_party/py_vulcanize/third_party/rjsmin
 		third_party/catapult/tracing/third_party/d3
 		third_party/catapult/tracing/third_party/gl-matrix
 		third_party/catapult/tracing/third_party/jszip
 		third_party/catapult/tracing/third_party/mannwhitneyu
 		third_party/catapult/tracing/third_party/oboe
+		third_party/catapult/tracing/third_party/pako
 		third_party/ced
 		third_party/cld_2
 		third_party/cld_3
@@ -381,7 +383,8 @@ src_configure() {
 	# libevent: https://bugs.gentoo.org/593458
 	local gn_system_libraries=(
 		flac
-		harfbuzz-ng
+		# Need harfbuzz_from_pkgconfig target
+		#harfbuzz-ng
 		libdrm
 		libjpeg
 		libpng
@@ -404,6 +407,9 @@ src_configure() {
 		gn_system_libraries+=( libvpx )
 	fi
 	build/linux/unbundle/replace_gn_files.py --system-libraries "${gn_system_libraries[@]}" || die
+
+	# See dependency logic in third_party/BUILD.gn
+	myconf_gn+=" use_system_harfbuzz=true"
 
 	# Optional dependencies.
 	myconf_gn+=" enable_hangout_services_extension=$(usex hangouts true false)"
@@ -603,9 +609,6 @@ src_install() {
 
 	insinto "${CHROMIUM_HOME}/swiftshader"
 	doins out/Release/swiftshader/*.so
-
-	newman out/Release/chrome.1 chromium.1
-	newman out/Release/chrome.1 chromium-browser.1
 
 	# Install icons and desktop entry.
 	local branding size
