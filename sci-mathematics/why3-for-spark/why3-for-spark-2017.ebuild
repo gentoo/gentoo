@@ -67,6 +67,7 @@ src_compile() {
 
 src_install() {
 	default
+	emake DESTDIR="${D}" install-lib
 	emake DESTDIR="${D}" install_spark2014_dev
 	docompress -x /usr/share/doc/${PF}/examples
 	dodoc -r examples
