@@ -5017,7 +5017,6 @@ media-video/parole:clutter - Compile in Clutter GTK+ support
 media-video/qgifer:imagemagick - Use imagemagick for image operations
 media-video/qgifer:opencv3 - Use media-libs/opencv:0/3.0 for video operations instead media-libs/opencv:0/2.4
 media-video/rtmpdump:gnutls - Use GnuTLS library instead of the default OpenSSL
-media-video/rtmpdump:polarssl - Use PolarSSL library instead of the default OpenSSL
 media-video/simplescreenrecorder:asm - Enable x86 assembly optimisation.
 media-video/simplescreenrecorder:vpx - Enable VP8 codec support via media-libs/libvpx.
 media-video/smplayer:autoshutdown - Enable the option to shutdown your computer after finishing the playlist. This requires dev-qt/qtdbus as dependency.
