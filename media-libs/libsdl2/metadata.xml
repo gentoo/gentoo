@@ -29,7 +29,7 @@
 		<flag name="haptic">Enable the haptic (force feedback) subsystem
 		</flag>
 		<flag name="joystick">Control joystick support
-			  (disable at your own risk)</flag>
+			(disable at your own risk)</flag>
 		<flag name="sound">Control audio support (disable at your own risk)
 		</flag>
 		<flag name="tslib">Build with tslib support for touchscreen devices
