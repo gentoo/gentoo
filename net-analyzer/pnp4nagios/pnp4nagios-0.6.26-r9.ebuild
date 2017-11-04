@@ -75,16 +75,19 @@ src_install() {
 	# perfdata-dir...
 	local user_group=nagios
 	use icinga && user_group=icinga
-	fowners "${user_group}:${user_group}" /var/lib/pnp/{,perfdata,spool}
+	fowners ":${user_group}" /var/lib/pnp/{,perfdata,spool}
+	fperms g+rwx /var/lib/pnp/{,perfdata,spool}
 
 	# and likewise for its logs...
 	dodir /var/log/pnp
-	fowners "${user_group}:${user_group}" /var/log/pnp
+	fowners ":${user_group}" /var/log/pnp
+	fperms g+rwx /var/log/pnp
 
 	# and its statistics. This one is arguably the responsibility of the
 	# build system, since process_perfdata.cfg refers to this location.
 	dodir /var/lib/pnp/stats
-	fowners "${user_group}:${user_group}" /var/lib/pnp/stats
+	fowners ":${user_group}" /var/lib/pnp/stats
+	fperms g+rwx /var/lib/pnp/stats
 }
 
 pkg_postinst() {
