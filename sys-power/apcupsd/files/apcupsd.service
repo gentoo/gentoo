@@ -1,5 +1,7 @@
 [Unit]
 Description=APC UPS Monitor
+Wants=network-online.target
+After=network-online.target
 
 [Service]
 ExecStart=/sbin/apcupsd -b
