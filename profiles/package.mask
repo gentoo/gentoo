@@ -32,7 +32,7 @@
 # Andreas K. Hüttel <dilfridge@gentoo.org> (04 Nov 2017)
 # Many, many, many open bugs, some of them quite ugly.
 # Blocks gcc-6 stabilization, and noone answers the phone.
-# Removal in 30 days, unless fixed by then.
+# Removal in 30 days, unless fixed by then. Bug 632513
 # https://bugs.gentoo.org/buglist.cgi?quicksearch=media-plugins%2Faudacious-plugins
 # https://bugs.gentoo.org/buglist.cgi?quicksearch=media-sound%2Faudacious
 media-sound/audacious
