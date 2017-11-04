@@ -12206,7 +12206,7 @@ kde-misc/kio-gdrive 1.2.0.1 1.2.1-r1: KIO Slave for Google Drive service
 kde-misc/kio-gopher 0.1.99: Gopher Kioslave for Konqueror
 kde-misc/kio-locate 0.5.3-r1: Locate KIO slave
 kde-misc/kio-stash 1.0: KIO Slave and daemon to stash discontinuous file selections
-kde-misc/kmarkdownwebview 0.2.0: KPart for rendering Markdown content
+kde-misc/kmarkdownwebview 0.2.0 0.3.0: KPart for rendering Markdown content
 kde-misc/kolor-manager 1.1.0: KControl module for Oyranos CMS cross desktop settings
 kde-misc/kopete-antispam 0.5: Antispam filter for Kopete instant messenger
 kde-misc/kopete-thinklight 0.50: A ThinkPad's light flash on every incoming message
