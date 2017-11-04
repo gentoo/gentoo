@@ -1841,6 +1841,7 @@ dev-lang/ekopath:openmpi - Include pre-built OpenMPI 1.x libraries
 dev-lang/ekopath:openmpi2 - Include pre-built OpenMPI 2.x libraries
 dev-lang/erlang:compat-ethread - Enable compatibility with pre-pentium 4 CPUs in the ethread library.
 dev-lang/erlang:dirty-schedulers - Enable dirty schedulers
+dev-lang/erlang:halfword - Enable halfword emulator
 dev-lang/erlang:hipe - HIgh Performance Erlang extension
 dev-lang/erlang:kpoll - Enable kernel polling support
 dev-lang/fpc:ide - Build and install the Free Pascal Compiler IDE
