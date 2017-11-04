@@ -14,7 +14,7 @@ HOMEPAGE="https://github.com/rhinstaller/libblockdev"
 SRC_URI="https://github.com/rhinstaller/${PN}/archive/${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
 LICENSE="LGPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="bcache +crypt dmraid doc lvm kbd test"
 
 CDEPEND="
