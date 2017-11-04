@@ -20,6 +20,8 @@ DEPEND="
 RDEPEND=${DEPEND}
 # uses always libtirpc if present
 
+RESTRICT=test # do not compile
+
 src_configure () {
 	econf \
 		--disable-static \
