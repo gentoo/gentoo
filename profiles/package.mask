@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Gilbert <floppym@gentoo.org> (04 Nov 2017)
+# Dev channel releases are only for people who are developers or want more
+# experimental features and accept a more unstable release.
+>=www-client/chromium-64
+
 # Marc Schiffbauer <mschiff@gentoo.org> (01 Nov 2017)
 # Upstream abandoned obnam as of the end of the year
 # Masked for removal in 30 days.
@@ -308,11 +313,6 @@ x11-libs/compizconfig-backend-kconfig4
 # Patrice Clement <monsieurp@gentoo.org> (01 Oct 2017)
 # Mask Atom betas for testing.
 app-editors/atom:beta
-
-# Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (18 Sep 2017)
-# Dev channel releases are only for people who are developers or want more
-# experimental features and accept a more unstable release.
->=www-client/chromium-63
 
 # Andreas Sturmlechner <asturm@gentoo.org> (16 Sep 2017)
 # Unfortunately broken esp. with USE=python. Bugs #623780, #631064
