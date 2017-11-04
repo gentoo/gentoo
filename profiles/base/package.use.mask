@@ -7,6 +7,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (04 Nov 2017)
+# Requires audacious, which is masked. Bug 632513
+=media-libs/freeverb3-3.1.2_pre20151102-r1 jack
+
 # Andreas Sturmlechner <asturm@gentoo.org> (29 Oct 2017)
 # Depends on deprecated x11-libs/qscintilla[qt4]/qt4, bug #634976
 net-analyzer/linkchecker X
