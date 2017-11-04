@@ -135,6 +135,9 @@ src_prepare() {
 	# fix hash to be the same on LE/BE platforms
 	eapply "${FILESDIR}/${P}"-be-hash.patch
 
+	# handle mac-3 -> -4 API change
+	eapply "${FILESDIR}/${P}"-mac-4.patch
+
 	eapply_user
 }
 
