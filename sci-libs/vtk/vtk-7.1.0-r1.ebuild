@@ -71,7 +71,11 @@ RDEPEND="
 	postgres? ( dev-db/postgresql:= )
 	python? (
 		${PYTHON_DEPS}
+		dev-python/autobahn[${PYTHON_USEDEP}]
 		dev-python/sip[${PYTHON_USEDEP}]
+		dev-python/six[${PYTHON_USEDEP}]
+		dev-python/twisted-core[${PYTHON_USEDEP}]
+		dev-python/zope-interface[${PYTHON_USEDEP}]
 	)
 	qt5? (
 		dev-qt/designer:5
@@ -95,9 +99,6 @@ RDEPEND="
 	virtual/opengl
 	web? (
 		${WEBAPP_DEPEND}
-		dev-python/autobahn[${PYTHON_USEDEP}]
-		dev-python/twisted-core[${PYTHON_USEDEP}]
-		dev-python/zope-interface[${PYTHON_USEDEP}]
 	)
 	xdmf2? ( sci-libs/xdmf2 )
 	x11-libs/libX11
@@ -154,7 +155,6 @@ src_configure() {
 		-DVTK_DATA_ROOT="${EPREFIX}/usr/share/${PN}/data"
 		-DVTK_CUSTOM_LIBRARY_SUFFIX=""
 		-DBUILD_SHARED_LIBS=ON
-		-DVTK_USE_SYSTEM_AUTOBAHN=ON
 		-DVTK_USE_SYSTEM_EXPAT=ON
 		-DVTK_USE_SYSTEM_FREETYPE=ON
 		-DVTK_USE_SYSTEM_FreeType=ON
@@ -169,11 +169,9 @@ src_configure() {
 		-DVTK_USE_SYSTEM_OGGTHEORA=ON
 		-DVTK_USE_SYSTEM_PNG=ON
 		-DVTK_USE_SYSTEM_TIFF=ON
-		-DVTK_USE_SYSTEM_TWISTED=ON
 		-DVTK_USE_SYSTEM_XDMF2=OFF
 		-DVTK_USE_SYSTEM_XDMF3=OFF
 		-DVTK_USE_SYSTEM_ZLIB=ON
-		-DVTK_USE_SYSTEM_ZOPE=ON
 		-DVTK_USE_SYSTEM_LIBRARIES=ON
 		# Use bundled diy2 (no gentoo package / upstream does not provide a Finddiy2.cmake or diy2Config.cmake / diy2-config.cmake)
 		-DVTK_USE_SYSTEM_DIY2=OFF
@@ -246,6 +244,10 @@ src_configure() {
 			-DVTK_PYTHON_INCLUDE_DIR="$(python_get_includedir)"
 			-DVTK_PYTHON_LIBRARY="$(python_get_library_path)"
 			-DVTK_PYTHON_SETUP_ARGS:STRING="--prefix=${EPREFIX} --root=${D}"
+			-DVTK_USE_SYSTEM_AUTOBAHN=ON
+			-DVTK_USE_SYSTEM_SIX=ON
+			-DVTK_USE_SYSTEM_TWISTED=ON
+			-DVTK_USE_SYSTEM_ZOPE=ON
 		)
 	fi
 
