@@ -4571,7 +4571,7 @@ dev-lang/nasm 2.11.08 2.12.01 2.13.01: groovy little assembler
 dev-lang/nim 0.16.0 0.17.0 0.17.2 0.17.2-r1: compiled, garbage-collected systems programming language
 dev-lang/nqp 2017.07 2017.08 2017.09 2017.10 9999: Not Quite Perl, a Perl 6 bootstrapping compiler
 dev-lang/nwcc 0.8.2 0.8.3: Nils Weller's C Compiler
-dev-lang/ocaml 4.04.2 4.05.0 4.06.0_beta2: Type-inferring functional programming language descended from the ML family
+dev-lang/ocaml 4.04.2 4.05.0 4.06.0: Type-inferring functional programming language descended from the ML family
 dev-lang/open-cobol 1.1: an open-source COBOL compiler
 dev-lang/opendylan 2013.1-r1 2013.2 2014.1 9999: OpenDylan language runtime environment
 dev-lang/opendylan-bin 2011.1 2012.1 2013.1 2013.2 2014.1: OpenDylan language runtime environment (prebuilt)
@@ -5218,7 +5218,7 @@ dev-ml/camldbm 1.0: OCaml binding to the NDBM/GDBM Unix databases
 dev-ml/camlidl 1.05-r1: CamlIDL is a stub code generator for using C/C++ libraries from O'Caml
 dev-ml/camlimages 4.2.2 4.2.3 4.2.4: An image manipulation library for ocaml
 dev-ml/camlp4 4.04_p1 4.05_p1 4.06_p1: System for writing extensible parsers for programming languages
-dev-ml/camlp5 6.17 7.00 7.01: A preprocessor-pretty-printer of ocaml
+dev-ml/camlp5 6.17 7.00 7.01 7.03: A preprocessor-pretty-printer of ocaml
 dev-ml/camlpdf 2.1.1: OCaml library for reading, writing, and modifying PDF files
 dev-ml/camlzip 1.06 1.07: Compressed file access ML library (ZIP, GZIP and JAR)
 dev-ml/camomile 0.8.5-r1: Camomile is a comprehensive Unicode library for ocaml
@@ -5268,8 +5268,8 @@ dev-ml/js_of_ocaml 2.8.4-r2 3.0.0 9999: A compiler from OCaml bytecode to javasc
 dev-ml/jsonm 1.0.1: Non-blocking streaming JSON codec for OCaml
 dev-ml/kaputt 1.2: Unit testing tool for the Objective Caml language
 dev-ml/lablgl 1.05-r1: Objective CAML interface for OpenGL
-dev-ml/lablgtk 2.18.5: Objective CAML interface for Gtk+2
-dev-ml/labltk 8.06.2 8.06.3: OCaml interface to the Tcl/Tk GUI framework
+dev-ml/lablgtk 2.18.5 2.18.6: Objective CAML interface for Gtk+2
+dev-ml/labltk 8.06.2 8.06.3 8.06.4: OCaml interface to the Tcl/Tk GUI framework
 dev-ml/lambda-term 1.11: A cross-platform library for manipulating the terminal
 dev-ml/llvm-ocaml 4.0.1 5.0.0 5.0.9999 9999: OCaml bindings for LLVM
 dev-ml/logs 0.6.2: Logging infrastructure for OCaml
@@ -5351,14 +5351,14 @@ dev-ml/onanomsg 1.0-r1: nanomsg bindings for OCaml
 dev-ml/opam 1.3.1-r1: A source-based package manager for OCaml
 dev-ml/opam-file-format 2.0.0_beta3: Parser and printer for the opam file syntax
 dev-ml/optcomp 1.6-r1: Optional compilation for OCaml with cpp-like directives
-dev-ml/ounit 2.0.0 2.0.5: Unit testing framework for OCaml
+dev-ml/ounit 2.0.0 2.0.5 2.0.6: Unit testing framework for OCaml
 dev-ml/pa_bench 112.06.00: Syntax extension writing inline benchmarks
 dev-ml/pa_ounit 113.00.00: Syntax extension that helps writing in-line test in ocaml
 dev-ml/pa_sexp_conv 113.00.01: Deprecated camlp4 syntax extension for sexplib.
 dev-ml/pa_structural_sexp 113.00.00: Quotation expanders to simplify building s-expressions from ocaml values
 dev-ml/parmap 1.0_rc7-r1 1.0_rc8: Library to exploit multicore architectures for OCaml programs
 dev-ml/patience_diff 0.9.0: Tool and library implementing patience diff
-dev-ml/pcre-ocaml 7.2.3 7.3.0 7.3.2: Perl Compatibility Regular Expressions for O'Caml
+dev-ml/pcre-ocaml 7.2.3 7.3.0 7.3.2 7.3.3: Perl Compatibility Regular Expressions for O'Caml
 dev-ml/pgocaml 2.3: PG'OCaml is a set of OCaml bindings for the PostgreSQL database
 dev-ml/pipebang 113.00.00: Syntax extension to transform x |! f into f x
 dev-ml/pomap 3.0.6 3.0.7 4.0.0: Partially Ordered Map ADT for O'Caml
@@ -5393,7 +5393,7 @@ dev-ml/ppx_pipebang 0.9.0: A ppx rewriter that inlines reverse application opera
 dev-ml/ppx_sexp_conv 0.9.0-r1: Support Library for type-driven code generators
 dev-ml/ppx_sexp_message 0.9.0: A ppx rewriter for easy construction of s-expressions
 dev-ml/ppx_sexp_value 0.9.0: Standard library for ppx rewriters
-dev-ml/ppx_tools 5.0.4.03.0 5.0.4.05.0: Tools for authors of ppx rewriters
+dev-ml/ppx_tools 5.0.4.03.0 5.0.4.05.0 5.1.4.06.0: Tools for authors of ppx rewriters
 dev-ml/ppx_tools_versioned 5.0.1: Tools for authors of ppx rewriters
 dev-ml/ppx_traverse 0.9.0: Automatic generation of open recursion classes
 dev-ml/ppx_traverse_builtins 0.9.0: Builtins for ppx_traverse
@@ -5412,9 +5412,9 @@ dev-ml/result 1.2: Compat result type
 dev-ml/rresult 0.5.0: Result value combinators for OCaml
 dev-ml/sedlex 1.99.3 1.99.4: An OCaml lexer generator for Unicode
 dev-ml/sequence 0.10: Simple sequence (iterator) datatype and combinators
-dev-ml/sexplib 0.9.2: Library for automated conversion of OCaml-values to and from S-expressions
+dev-ml/sexplib 0.9.2 0.9.3: Library for automated conversion of OCaml-values to and from S-expressions
 dev-ml/spawn 0.9.0: Spawning sub-processes
-dev-ml/stdio 0.9.0: Standard IO Library for OCaml
+dev-ml/stdio 0.9.0-r1: Standard IO Library for OCaml
 dev-ml/stringext 1.4.3 1.5.0: Extra string functions for OCaml
 dev-ml/textutils 0.9.0: Text output utilities
 dev-ml/topkg 0.9.0 0.9.1: The transitory OCaml software packager
@@ -14119,7 +14119,7 @@ media-video/emovix 0.9.0: Micro Linux distro to boot from a CD and play every vi
 media-video/episoder 0.4.7: episoder is a tool to tell you when new episodes of your favourite TV shows are airing
 media-video/ffcast 2.4.8: Record screencasts using ffmpeg
 media-video/ffdiaporama 2.1 2.1-r1: Movie creator from photos and video clips
-media-video/ffmpeg 3.2.6 3.2.7 3.3.3 3.3.4 3.4 9999: Complete solution to record, convert and stream audio and video. Includes libavcodec
+media-video/ffmpeg 3.2.6 3.2.7 3.3.3 3.3.4 3.3.5 3.4 9999: Complete solution to record, convert and stream audio and video. Includes libavcodec
 media-video/ffmpeg2theora 0.30: A simple converter to create Ogg Theora files
 media-video/ffmpegthumbnailer 2.2.0: Lightweight video thumbnailer that can be used by file managers
 media-video/flvstreamer 2.1c: Open source command-line RTMP client intended to stream audio or video flash content
