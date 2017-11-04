@@ -4,10 +4,10 @@ DESCRIPTION=cPanel fork of JSON::XS, fast and correct serializing
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Cpanel-JSON-XS/
 IUSE=test examples
-KEYWORDS=amd64 ~arm ia64 ~ppc ~ppc64 x86
+KEYWORDS=amd64 ~arm ia64 ~ppc ~ppc64 sparc x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RU/RURBAN/Cpanel-JSON-XS-3.0233.tar.gz
 _eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
-_md5_=e44ed1b1811a527585a57632b27c4773
+_md5_=c865a34d78e801f069903a9e6d54e96b
