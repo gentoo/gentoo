@@ -347,6 +347,12 @@ src_configure() {
 	# Perl has problems compiling with -Os in your flags with glibc
 	use elibc_uclibc || replace-flags "-Os" "-O2"
 
+	# xlocale.h is going away in glibc-2.26, so it's counterproductive
+	# if we use it and include it in CORE/perl.h ... Perl builds just
+	# fine with glibc and locale.h only.
+	# However, the darwin prefix people have no locale.h ...
+	use elibc_glibc && myconf -Ui_xlocale
+
 	# This flag makes compiling crash in interesting ways
 	filter-flags "-malign-double"
 
@@ -511,7 +517,6 @@ src_configure() {
 		-Dsh="${EPREFIX}"/bin/sh \
 		-Dtargetsh="${EPREFIX}"/bin/sh \
 		-Uusenm \
-		-Ui_xlocale \
 		"${myconf[@]}" \
 		"${EXTRA_ECONF[@]}"
 
