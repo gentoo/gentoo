@@ -1,0 +1,10 @@
+DEFINED_PHASES=install postinst unpack
+DEPEND=>=dev-vcs/git-1.8.2.1
+DESCRIPTION=Analyzes and Reports on system logs
+EAPI=6
+HOMEPAGE=http://www.logwatch.org/
+LICENSE=MIT
+RDEPEND=virtual/cron virtual/mta virtual/mailx dev-lang/perl dev-perl/Date-Calc dev-perl/Date-Manip dev-perl/Tie-IxHash dev-perl/Sys-CPU dev-perl/Sys-MemInfo kernel_linux? ( virtual/tmpfiles )
+SLOT=0
+_eclasses_=git-r3	52a888802d25387c2c74cb845d1219bc	tmpfiles	1e504fdcf4f24aeded1ce42600307f76
+_md5_=af91a6161fa761dc338c3edc311a3461
