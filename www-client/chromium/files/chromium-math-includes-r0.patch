@@ -1,0 +1,31 @@
+From c6cb5c835e12ffa75e26eaefeef631d125c4e04d Mon Sep 17 00:00:00 2001
+From: Philippe Hamel <hamelphi@chromium.org>
+Date: Wed, 1 Nov 2017 18:41:59 +0000
+Subject: [PATCH] Fix GenericLogisticRegressionInference includes.
+
+Bug: 759161
+Change-Id: I199c7604eb38fc5a1b8107710eeaa27f8e71b299
+Reviewed-on: https://chromium-review.googlesource.com/743690
+Commit-Queue: Philippe Hamel <hamelphi@chromium.org>
+Reviewed-by: Roger McFarlane <rogerm@chromium.org>
+Cr-Commit-Position: refs/heads/master@{#513195}
+---
+ .../machine_intelligence/generic_logistic_regression_inference.cc       | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/components/machine_intelligence/generic_logistic_regression_inference.cc b/components/machine_intelligence/generic_logistic_regression_inference.cc
+index cf6420b85113..d085f6d1f537 100644
+--- a/components/machine_intelligence/generic_logistic_regression_inference.cc
++++ b/components/machine_intelligence/generic_logistic_regression_inference.cc
+@@ -4,6 +4,8 @@
+ 
+ #include "components/machine_intelligence/generic_logistic_regression_inference.h"
+ 
++#include <cmath>
++
+ #include "base/logging.h"
+ #include "components/machine_intelligence/ranker_example_util.h"
+ 
+-- 
+2.15.0
+
