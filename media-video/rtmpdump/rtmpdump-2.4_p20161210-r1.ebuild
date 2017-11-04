@@ -13,19 +13,18 @@ SRC_URI="https://dev.gentoo.org/~hwoarang/distfiles/${P}.tar.gz"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
-IUSE="gnutls polarssl ssl libressl"
+IUSE="gnutls ssl libressl"
 
 DEPEND="ssl? (
 		gnutls? ( >=net-libs/gnutls-2.12.23-r6[${MULTILIB_USEDEP},nettle(+)] )
-		polarssl? ( !gnutls? ( >=net-libs/polarssl-1.3.4[${MULTILIB_USEDEP}] ) )
-		!gnutls? ( !polarssl? ( !libressl? ( >=dev-libs/openssl-1.0.1h-r2[${MULTILIB_USEDEP}] ) libressl? ( dev-libs/libressl ) ) )
+		!gnutls? ( !libressl? ( >=dev-libs/openssl-1.0.1h-r2[${MULTILIB_USEDEP}] ) libressl? ( dev-libs/libressl ) )
 		>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 	)"
 RDEPEND="${DEPEND}"
 
 pkg_setup() {
-	if ! use ssl && { use gnutls || use polarssl; }; then
-		ewarn "USE='gnutls polarssl' are ignored without USE='ssl'."
+	if ! use ssl && use gnutls ; then
+		ewarn "USE='gnutls' is ignored without USE='ssl'."
 		ewarn "Please review the local USE flags for this package."
 	fi
 }
@@ -54,8 +53,6 @@ multilib_src_compile() {
 	if use ssl ; then
 		if use gnutls ;	then
 			crypto="GNUTLS"
-		elif use polarssl ; then
-			crypto="POLARSSL"
 		else
 			crypto="OPENSSL"
 		fi
