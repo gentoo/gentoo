@@ -1,25 +1,22 @@
 certificate version 0.1
-pusher Michael Palimaka <kensington@gentoo.org> 1509756394 +1100
-pushee git+ssh://148.251.78.52/repo/gentoo.git
-nonce 1509756394-4a5b81061747821df419
+pusher 0xDF7610B521F17122 1509765800 +0900
+pushee git+ssh://git.gentoo.org/repo/gentoo.git
+nonce 1509765800-38d510901b5b9bc35744
 
-b0af7b2ae386501831921a5843f57a6845a0b300 bb847b349cc736b445987f0d639a944869bace16 refs/heads/master
+bb847b349cc736b445987f0d639a944869bace16 c637e13950edb0ab3a7545fe1f7ecb1753ea4535 refs/heads/master
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
 
-iQKQBAABCgB6FiEEl5FpbX03bafptvFQBrHzjcpFoewFAln9DepFFIAAAAAAFAAo
-aXNzdWVyLWZwckBub3RhdGlvbnM5NzkxNjk2RDdEMzc2REE3RTlCNkYxNTAwNkIx
-RjM4RENBNDVBMUVDFhxrZW5zaW5ndG9uQGdlbnRvby5vcmcACgkQBrHzjcpFoezw
-+w//ekOJoYVqz+Xeq4KXUqRGhkczVwsUgwHz3MH4Q2idG/9LwgPamLwTV/s0yXvo
-IIn+Jmdh2Ef+efW/ClXOZwW9chWYVVsOpbO2P8Qpu3zsPD82n0gQEC6060n1878M
-tvNqr60Kv0qjnTMs6/9ywZGcTKmTj5eTTKVL1rwlMRSTeHG+y4NxWnDI/7ezJXEu
-M9BnBtTWho4j0Oq4TJIFE6G+HD/C9aITvG4xf59+fe0SO56JLjTgDgK/WS4wP9Rl
-E+J1a9xcm/iEeyIQGvhvxnN5vjx5hxk1L69LH74YDrM3/qnSX9mrUew71VJX+eVs
-7kCKZ4Txq1IcJYvb+Rab1sZSYK6Kv1csOtAu2BTMF7VrM/koARgFe8P61WhC+uhs
-Xuhfbt3tToD/n4RkGNpVZEvn+ziuP8xft/f7OfSAprBbH2MA92MAdS3J1JhpXs0J
-5pg1QFQSXZssNC/WSnMUuAH9fejU/KJnq3GXpFmh3FeCSDj1Z77ZYBkF+YFcHkSv
-JMlxktS2YzqT1FEPzbn8hPHFBNm9E6GAwQnHwNqDsPZC0l6ycTfFOiKr8lQib8wF
-MqRHakqzcFO/+RwZ1hZS3vMMLlnMZNhhSk8VuIZGYLzyG8oHJOhkJi+5SMUx01WC
-qX/pxinF2RsMb/DBfYUEh3rVnHOwGVyavXZ266lNVrL9xHg=
-=gZ2x
+iQIcBAABCgAGBQJZ/TKpAAoJEN92ELUh8XEiOwYP/2ADHdiCKTZb9HOoFLIJ/Yo+
+RfsjM28BdJrJfFk8RxG7rIq1eOAN2v0ObZh2B/ASgZapPBjFGWGvefN4lOoeuLuZ
+mLu9YHHaK2/q+La7tnlTHLXb+H2+AuyRz1ctwetHjaUr4mXasK2nxv07YzchmBji
+VgdwTO1MO6xGfrpzZAAxWzmtHq4Otb2of+O0//NNvAx4svu9cfD/AiZS/zKC6vQP
+iNA6lF56gPPqFPc71+7drP/Pae6Yna+aC9BXEl02OijL34cgCj1PLQxsj5GXIiG5
+Y2x5w72eCknj6Dtuz/Pm3Li0MI2cswXuJOWnJtzbvpKHmotNpQhGthuoeKq9qBIa
+Gc4qPl/9N+o/tSddaXilt4d3LNw8gIvZb5YQ9ROcn9swo3iIkxvEjGxPYEJFkr/U
+h1hlkhbv9Ljcunb33zKyttco4rkKTLKmq34NOC+10w2yYeAIBvVGaLy9Ugp2SC3a
+gpk1fvwxITJRNtHMc77CiltDNfrz9KvgPcG5TgZrqxbT/LtpOVodf4WFPjL0/uCs
+zXB4bsSpz0AHlCe4D8WigcrQs8nYswfn6KVJmSVRawxnchcDqSEROJX8EBhWqeR8
+ksWCrXqrXU3avuvQFd+fVarRthi2f8azydaUyv2TfmgbUoK5WEOT/wRackdEXkjm
+dvTL9iu/PcIcenh+hpuZ
+=+Nn7
 -----END PGP SIGNATURE-----
