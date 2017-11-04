@@ -1,0 +1,12 @@
+[Unit]
+Description=Update man-db cache
+RequiresMountsFor=/var/cache/man
+
+[Service]
+Type=oneshot
+ExecStart=/bin/mkdir -p /var/cache/man
+ExecStart=/usr/bin/mandb
+CPUSchedulingPolicy=batch
+Nice=19
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7

@@ -1,9 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit eutils user versionator
+inherit eutils user versionator systemd
 
 DESCRIPTION="a man replacement that utilizes berkdb instead of flat files"
 HOMEPAGE="http://www.nongnu.org/man-db/"
@@ -12,7 +12,7 @@ SRC_URI="mirror://nongnu/${PN}/${P}.tar.xz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~arm-linux ~x86-linux"
-IUSE="berkdb +gdbm +manpager nls selinux static-libs zlib"
+IUSE="berkdb +cron +gdbm +manpager nls selinux static-libs systemd zlib"
 
 CDEPEND=">=dev-libs/libpipeline-1.4.0
 	berkdb? ( sys-libs/db:= )
@@ -30,6 +30,7 @@ DEPEND="${CDEPEND}
 	)"
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-mandb )
+	cron? ( virtual/cron )
 "
 PDEPEND="manpager? ( app-text/manpager )"
 
@@ -66,8 +67,15 @@ src_install() {
 	dodoc docs/{HACKING,TODO}
 	prune_libtool_files
 
-	exeinto /etc/cron.daily
-	newexe "${FILESDIR}"/man-db.cron man-db #289884
+	if use cron; then
+		exeinto /etc/cron.daily
+		newexe "${FILESDIR}"/man-db.cron man-db #289884
+	fi
+
+	if use systemd; then
+		systemd_dounit "${FILESDIR}"/man-db.timer
+		systemd_dounit "${FILESDIR}"/man-db.service
+	fi
 }
 
 pkg_preinst() {
@@ -104,5 +112,10 @@ pkg_postinst() {
 	if [[ $(get_version_component_range 2 ${REPLACING_VERSIONS}) -lt 7 ]] ; then
 		einfo "Rebuilding man-db from scratch with new database format!"
 		mandb --quiet --create
+	fi
+
+	if use systemd; then
+		elog "The systemd timer unit man-db.timer has been installed,"
+		elog "please activate it with 'systemd enable man-db.timer'"
 	fi
 }
