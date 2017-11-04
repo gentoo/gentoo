@@ -1,0 +1,32 @@
+From: Willi Mann <willi@debian.org>
+Date: Mon, 3 Nov 2014 19:45:20 +0100
+Subject: Revert upstream change on fail2ban service config
+
+Upstream started to use OnlyService and RemoveHeaders in fail2ban conf.
+Unfortunately, this does not work with fail2ban because it uses a different
+"header" format in log entries as compared to syslog.
+---
+ conf/services/fail2ban.conf | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/conf/services/fail2ban.conf b/conf/services/fail2ban.conf
+index ae4e6c5..52ad110 100644
+--- a/conf/services/fail2ban.conf
++++ b/conf/services/fail2ban.conf
+@@ -1,3 +1,6 @@
++###########################################################################
++# $Id: fail2ban.conf 149 2013-06-18 22:18:12Z mtremaine $
++###########################################################################
+ # $Log: fail2ban.conf,v $
+ # Revision 1.1  2006/05/30 19:04:26  bjorn
+ # Added fail2ban service, written by Yaroslav Halchenko.
+@@ -27,8 +30,4 @@ LogFile = messages
+ # so we reject fail2ban-
+ *OnlyContains = fail2ban([^-]|).*\[[0-9]+\]
+ 
+-# Cannot use *OnlyService or *RemoveHeaders in cases where fail2ban logs
+-# to fail2ban.log due to different date/header format.  You can if fail2ban
+-# is logging to syslog.
+-# *OnlyService = fail2ban(|\..+)
+-# *RemoveHeaders
++

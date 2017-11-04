@@ -1,0 +1,30 @@
+From: Willi Mann <willi@wm1.at>
+Date: Sat, 13 Aug 2011 14:26:39 +0200
+Subject: 02-bug536472-treat-compressed-logfiles-always-as-archive.diff
+
+---
+ scripts/logwatch.pl | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/scripts/logwatch.pl b/scripts/logwatch.pl
+index 0167755..969e46b 100755
+--- a/scripts/logwatch.pl
++++ b/scripts/logwatch.pl
+@@ -726,7 +726,16 @@ foreach $LogFile (@LogFileList) {
+ 	}
+ 
+    @FileList = $TempDir . $LogFile . "-archive";
+-   push @FileList, @{$LogFileData{$LogFile}{'logfiles'}};
++   #quick and dirty fix for debian bug #536472:
++   #move logfiles ending with *.gz or *.bz2 to archive list, 
++   #so they are unpacked before being processed
++   foreach my $lf (@{$LogFileData{$LogFile}{'logfiles'}}) {
++      if($lf =~ /\.gz$|\.bz2$/) {
++         push @{$LogFileData{$LogFile}{'archives'}}, $lf;
++      } else {
++         push @FileList, $lf;
++      }
++   }
+    my $DestFile =  $TempDir . $LogFile . "-archive";
+    my $Archive;
+    foreach $Archive (@{$LogFileData{$LogFile}{'archives'}}) {

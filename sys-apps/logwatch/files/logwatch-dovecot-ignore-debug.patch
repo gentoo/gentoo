@@ -1,0 +1,17 @@
+From: Graham Cobb <g+debian@cobb.uk.net>
+Date: Wed, 2 Nov 2016 19:24:41 +0100
+Subject: dovecot: Ignore Debug output
+
+Bug: https://bugs.debian.org/840956
+--- a/scripts/services/dovecot	2017-10-27 12:43:46.558198032 -0400
++++ b/scripts/services/dovecot	2017-10-27 12:43:40.399198484 -0400
+@@ -145,7 +145,8 @@
+           ($ThisLine =~ /IMAP.* failed with mbox file/) or
+ 	  ($ThisLine =~ /discarded duplicate forward to/) or 
+ 	  ($ThisLine =~ /discarding vacation response/) or
+-	  ($ThisLine =~ /discarded vacation reply to/) 
++      ($ThisLine =~ /discarded vacation reply to/) or
++      ($ThisLine =~ /Debug:/)
+ 	  )
+          { 
+          # We don't care about these

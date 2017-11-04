@@ -1,0 +1,23 @@
+From: Willi Mann <willi@wm1.at>
+Date: Sat, 26 Jul 2014 19:23:44 +0200
+Subject: logfiles/vsftpd.conf: Use custom pattern for applystddate
+
+This fixes a problem where old logfiles from one year ago where included in
+the report again.
+
+Closes: #682036
+---
+ conf/logfiles/vsftpd.conf | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/conf/logfiles/vsftpd.conf b/conf/logfiles/vsftpd.conf
+index 56cde60..f32f373 100644
+--- a/conf/logfiles/vsftpd.conf
++++ b/conf/logfiles/vsftpd.conf
+@@ -22,5 +22,5 @@ Archive = archiv/vsftpd.log.*
+ Archive = vsftpd.log-*
+ Archive = archiv/vsftpd.log-*
+ 
+-*ApplyStdDate =
++*ApplyStdDate = "... %b %d %H:%M:%S %Y"
+ # vi: shiftwidth=3 tabstop=3 et
