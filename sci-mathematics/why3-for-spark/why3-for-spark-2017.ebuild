@@ -15,9 +15,9 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/591c45e2c7a447af2deed055
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="coq doc emacs gtk html hypothesis-selection profiling zarith zip"
+IUSE="coq doc emacs gtk html hypothesis-selection +ocamlopt profiling zarith zip"
 
-DEPEND=">=dev-lang/ocaml-4.02.3
+DEPEND=">=dev-lang/ocaml-4.02.3[ocamlopt?]
 	dev-ml/menhir
 	coq? ( sci-mathematics/coq )
 	doc? ( dev-tex/rubber )
@@ -55,6 +55,7 @@ src_configure() {
 		$(use_enable gtk ide) \
 		$(use_enable html html-doc) \
 		$(use_enable hypothesis-selection) \
+		$(use_enable ocamlopt native-code) \
 		$(use_enable profiling) \
 		$(use_enable zarith) \
 		$(use_enable zip)
@@ -62,6 +63,13 @@ src_configure() {
 
 src_compile() {
 	default
+	if use ocamlopt; then
+		emake byte
+	else
+		# If using bytecode we dont want to strip the binary as it would remove
+		# the bytecode and only leave ocamlrun...
+		export STRIP_MASK="*/bin/*"
+	fi
 	use doc && emake doc
 }
 
