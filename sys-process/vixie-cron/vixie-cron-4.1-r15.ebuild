@@ -14,7 +14,7 @@ SRC_URI="mirror://gentoo/${P}.tar.bz2
 	mirror://gentoo/${P}-gentoo-${GENTOO_PATCH_REV}.patch.bz2"
 
 LICENSE="ISC BSD-2 BSD"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 IUSE="selinux pam debug"
 
 DEPEND="selinux? ( sys-libs/libselinux )
