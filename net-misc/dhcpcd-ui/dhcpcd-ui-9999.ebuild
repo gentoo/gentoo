@@ -53,6 +53,12 @@ RDEPEND="${DEPEND}
 
 src_prepare() {
 	default
+
+	# force qt5 compilation
+	if use qt5; then
+		export QT_SELECT=qt5
+	fi
+
 	# patch for ncurses[tinfo] see #457530
 	if use ncurses ; then
 		sed -i 's/LIB_CURSES=-lcurses/LIB_CURSES=`pkg-config --libs ncurses`/' "${S}/configure" || die "sed failed"
@@ -67,7 +73,7 @@ src_configure() {
 		$(usex ncurses '--with-curses' '--without-curses')
 		$(usex qt5 '--with-qt --with-icons' '--without-qt')
 		$(use_enable libnotify notification)
-		$(use gtk || use gtk3 || echo '--without-icons --without-gtk')
+		$(use gtk || use gtk3 || echo '--without-gtk')
 		$(use gtk || use gtk3 || use qt5 || echo '--without-icons')
 	)
 	econf "${myeconfargs[@]}"
