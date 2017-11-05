@@ -1775,7 +1775,7 @@ app-misc/dvtm 0.14 0.15 9999: Dynamic virtual terminal manager
 app-misc/editor-wrapper 4: Wrapper scripts that will execute EDITOR or PAGER
 app-misc/egads 0.9.5 0.9.5-r1: Entropy Gathering And Distribution System
 app-misc/eid-viewer-bin 4.0.7_p184 4.1.9: Graphical interface to the Belgian Electronic Identity Card
-app-misc/elasticsearch 5.5.2 5.6.3: Open Source, Distributed, RESTful, Search Engine
+app-misc/elasticsearch 5.5.2 5.6.3 5.6.3-r1: Open Source, Distributed, RESTful, Search Engine
 app-misc/email2trac 2.6.2-r1 2.8.4 2.8.8: Utilities to convert emails to trac tickets
 app-misc/emelfm2 0.9.1-r1 0.9.1-r2: A file manager that implements the popular two-pane design
 app-misc/empty 0.6.20b: Small shell utility, similar to expect(1)
@@ -14319,7 +14319,7 @@ net-analyzer/fwlogwatch 1.4 1.5: A packet filter and firewall log analyzer
 net-analyzer/gensink 4.1-r2: A simple TCP benchmark suite
 net-analyzer/gnome-nettool 3.8.1: Graphical front-ends to various networking command-line
 net-analyzer/gnu-netcat 0.7.1-r3: the GNU network swiss army knife
-net-analyzer/goaccess 0.5-r1 0.6.1 0.8.5 0.9 1.1.1: A real-time web log analyzer and interactive viewer that runs in a terminal
+net-analyzer/goaccess 0.5-r1 0.6.1 0.8.5 0.9 1.1.1 1.2: A real-time web log analyzer and interactive viewer that runs in a terminal
 net-analyzer/gr-fosphor 9999: gnuradio fosphor block (GPU spectrum display)
 net-analyzer/graphite-web 0.9.13-r3: Enterprise scalable realtime graphing
 net-analyzer/greenbone-security-assistant 6.0.9: Greenbone Security Assistant for openvas
@@ -15474,7 +15474,7 @@ net-misc/sstp-client 1.0.10-r1: A client implementation of Secure Socket Tunneli
 net-misc/ssvnc 1.0.28 1.0.29: VNC viewer that adds encryption security to VNC connections
 net-misc/stargazer 2.408: Billing system for small home and office networks
 net-misc/stone 2.3e-r1: A simple TCP/IP packet repeater
-net-misc/streamlink 0.1.0 0.4.0 0.6.0 0.7.0 9999: CLI for extracting streams from websites to a video player of your choice
+net-misc/streamlink 0.1.0 0.4.0 0.6.0 0.7.0 0.8.1 9999: CLI for extracting streams from websites to a video player of your choice
 net-misc/streamtuner 0.99.99-r5: Stream directory browser for browsing internet radio streams
 net-misc/stunnel 5.36 5.37 5.38 5.39 5.40: TLS/SSL - Port Wrapper
 net-misc/stuntman 1.2.7 1.2.9: STUNTMAN is an open source implementation of the STUN protocol
@@ -15493,7 +15493,7 @@ net-misc/tipcutils 2.0.0 2.0.3: Utilities for TIPC (Transparent Inter-Process Co
 net-misc/tlsdate 0.0.13: Update local time over HTTPS
 net-misc/tn5250 0.17.4-r1 0.17.4-r2: IBM AS/400 telnet client which emulates 5250 terminals/printers
 net-misc/tokyotyrant 1.1.41-r1: A network interface to Tokyo Cabinet
-net-misc/trackma 0.7.3 9999: Open multi-site list manager for media tracking sites
+net-misc/trackma 0.7.3 0.7.4 9999: Open multi-site list manager for media tracking sites
 net-misc/ttytter 2.1.00: A multi-functional, console-based Twitter client
 net-misc/ucarp 1.5.2-r3 1.5.2-r4 1.5.2-r5: Portable userland implementation of Common Address Redundancy Protocol (CARP)
 net-misc/udpcast 20120424 20120424-r1: Multicast file transfer tool
