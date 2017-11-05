@@ -23,7 +23,6 @@ SLOT="0"
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-#sci-libs/orocos_kdl waiting for Bug 604130 (keyword ~x86)
 #dev-qt/qtgui:4[-egl] and dev-qt/qtopengl:4[-egl] : Bug 564978
 #dev-python/pyside[svg] : Bug 591012
 COMMON_DEPEND="
@@ -43,6 +42,7 @@ COMMON_DEPEND="
 	media-libs/coin
 	media-libs/freetype
 	|| ( sci-libs/opencascade:6.9.1[vtk] sci-libs/opencascade:6.9.0[vtk] sci-libs/opencascade:6.8.0 sci-libs/opencascade:6.7.1 )
+	sci-libs/orocos_kdl
 	sys-libs/zlib
 	virtual/glu"
 RDEPEND="${COMMON_DEPEND}
@@ -77,14 +77,13 @@ src_configure() {
 	#-DOCC_* defined with cMake/FindOpenCasCade.cmake
 	#-DCOIN3D_* defined with cMake/FindCoin3D.cmake
 	#-DSOQT_ not used
-	#-DFREECAD_USE_EXTERNAL_KDL="ON" waiting for Bug 604130 (keyword ~x86)
 	local mycmakeargs=(
 		-DOCC_INCLUDE_DIR="${CASROOT}"/inc
 		-DOCC_LIBRARY_DIR="${CASROOT}"/$(get_libdir)
 		-DCMAKE_INSTALL_DATADIR=share/${P}
 		-DCMAKE_INSTALL_DOCDIR=share/doc/${PF}
 		-DCMAKE_INSTALL_INCLUDEDIR=include/${P}
-		-DFREECAD_USE_EXTERNAL_KDL="OFF"
+		-DFREECAD_USE_EXTERNAL_KDL="ON"
 	)
 
 	# TODO to remove embedded dependencies:
