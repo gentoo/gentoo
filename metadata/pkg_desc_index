@@ -18678,7 +18678,6 @@ x11-libs/cairo 1.14.8 1.14.10 9999: A vector graphics library with cross-device 
 x11-libs/colord-gtk 0.1.25 0.1.26: GTK support library for colord
 x11-libs/compiz-bcop 0.8.8: Compiz Option code Generator
 x11-libs/compizconfig-backend-gconf 0.8.8: Compizconfig Gconf Backend
-x11-libs/compizconfig-backend-kconfig4 0.8.8: Compizconfig Kconfig Backend
 x11-libs/dnd 1.1-r1 1.1-r2: OffiX' Drag'n'drop library
 x11-libs/flowcanvas 0.7.1-r1 0.7.1-r2: Gtkmm/Gnomecanvasmm widget for boxes and lines environments
 x11-libs/fltk 1.3.3-r3 1.3.3-r5 1.3.4 1.3.9999 1.4.9999: C++ user interface toolkit for X and OpenGL
