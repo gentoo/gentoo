@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<email>tobias.leupold@gmx.de</email>
+	<name>Tobias Leupold</name>
+</maintainer>
+<maintainer type="project">
+	<email>proxy-maint@gentoo.org</email>
+	<name>Proxy Maintainers</name>
+</maintainer>
+<longdescription lang="en">
+	Vcontrold can be used for communication with Viessmann Vito heatings
+	through	their Optolink interface using an optical communication device
+	(which can be built quite cheap and easily, cf. the homepage of the
+	"OpenV" project).
+</longdescription>
+<use>
+	<flag name="man">Build the manpages</flag>
+	<flag name="vclient">
+		Build the vclient helper program to talk to vcontrold
+	</flag>
+	<flag name="vsim">
+		Build the vsim helper program (simulates the heating's answers, for
+		development and debugging)
+	</flag>
+</use>
+</pkgmetadata>
