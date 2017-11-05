@@ -35,7 +35,7 @@ SRC_URI="${SRC_URI}
 
 LICENSE="LGPL-2.1"
 SLOT="${PV}"
-IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags dos elibc_glibc +fontconfig +gecko gphoto2 gsm gstreamer +jpeg kernel_FreeBSD +lcms ldap +mono mp3 ncurses netapi nls odbc openal opencl +opengl osmesa oss +perl pcap +png prelink pulseaudio +realtime +run-exes samba scanner selinux +ssl test +threads +truetype udev +udisks v4l +X +xcomposite xinerama +xml"
+IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags dos elibc_glibc +fontconfig +gecko gphoto2 gsm gstreamer +jpeg kerberos kernel_FreeBSD +lcms ldap +mono mp3 ncurses netapi nls odbc openal opencl +opengl osmesa oss +perl pcap +png prelink pulseaudio +realtime +run-exes samba scanner selinux +ssl test +threads +truetype udev +udisks v4l +X +xcomposite xinerama +xml"
 REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )
 	X? ( truetype )
 	elibc_glibc? ( threads )
@@ -66,6 +66,7 @@ COMMON_DEPEND="
 		media-plugins/gst-plugins-meta:1.0[${MULTILIB_USEDEP}]
 	)
 	jpeg? ( virtual/jpeg:0=[${MULTILIB_USEDEP}] )
+	kerberos? ( virtual/krb5[${MULTILIB_USEDEP}] )
 	lcms? ( media-libs/lcms:2=[${MULTILIB_USEDEP}] )
 	ldap? ( net-nds/openldap:=[${MULTILIB_USEDEP}] )
 	mp3? ( >=media-sound/mpg123-1.5.0[${MULTILIB_USEDEP}] )
@@ -151,6 +152,19 @@ QA_DESKTOP_FILE="usr/share/applications/wine-browsedrive.desktop
 usr/share/applications/wine-notepad.desktop
 usr/share/applications/wine-uninstaller.desktop
 usr/share/applications/wine-winecfg.desktop"
+
+PATCHES=(
+	"${PATCHDIR}/patches/${MY_PN}-1.5.26-winegcc.patch" #260726
+	"${PATCHDIR}/patches/${MY_PN}-1.9.5-multilib-portage.patch" #395615
+	"${PATCHDIR}/patches/${MY_PN}-1.6-memset-O3.patch" #480508
+	"${PATCHDIR}/patches/${MY_PN}-2.0-multislot-apploader.patch"
+)
+PATCHES_BIN=()
+
+# https://bugs.gentoo.org/show_bug.cgi?id=635222
+if [[ ${#PATCHES_BIN[@]} -ge 1 ]] || [[ ${PV} == 9999 ]]; then
+	DEPEND+=" dev-util/patchbin"
+fi
 
 wine_compiler_check() {
 	[[ ${MERGE_TYPE} = "binary" ]] && return 0
@@ -300,14 +314,6 @@ src_prepare() {
 	}
 
 	local md5="$(md5sum server/protocol.def)"
-	local PATCHES=(
-		"${PATCHDIR}/patches/${MY_PN}-1.5.26-winegcc.patch" #260726
-		"${PATCHDIR}/patches/${MY_PN}-1.9.5-multilib-portage.patch" #395615
-		"${PATCHDIR}/patches/${MY_PN}-1.6-memset-O3.patch" #480508
-		"${PATCHDIR}/patches/${MY_PN}-2.0-multislot-apploader.patch"
-	)
-	local PATCHES_BIN=(
-	)
 
 	default
 	eapply_bin
@@ -367,6 +373,7 @@ multilib_src_configure() {
 		$(use_with gstreamer)
 		--without-hal
 		$(use_with jpeg)
+		$(use_with kerberos krb5)
 		$(use_with ldap)
 		$(use_enable mono mscoree)
 		$(use_with mp3 mpg123)

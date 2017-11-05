@@ -19,7 +19,7 @@ if [[ ${PV} == "9999" ]] ; then
 	#KEYWORDS=""
 else
 	MAJOR_V=$(get_version_component_range 1)
-	SRC_URI="https://dl.winehq.org/wine/source/${MAJOR_V}.x/${MY_P}.tar.xz"
+	SRC_URI="https://dl.winehq.org/wine/source/${MAJOR_V}.0/${MY_P}.tar.xz"
 	KEYWORDS="-* ~amd64 ~x86 ~x86-fbsd"
 fi
 S="${WORKDIR}/${MY_P}"
@@ -50,7 +50,6 @@ COMMON_DEPEND="
 	X? (
 		x11-libs/libXcursor[${MULTILIB_USEDEP}]
 		x11-libs/libXext[${MULTILIB_USEDEP}]
-		x11-libs/libXfixes[${MULTILIB_USEDEP}]
 		x11-libs/libXrandr[${MULTILIB_USEDEP}]
 		x11-libs/libXi[${MULTILIB_USEDEP}]
 		x11-libs/libXxf86vm[${MULTILIB_USEDEP}]
@@ -118,7 +117,7 @@ RDEPEND="${COMMON_DEPEND}
 	!app-emulation/wine:0
 	dos? ( >=games-emulation/dosbox-0.74_p20160629 )
 	gecko? ( app-emulation/wine-gecko:2.47[abi_x86_32?,abi_x86_64?] )
-	mono? ( app-emulation/wine-mono:4.7.1 )
+	mono? ( app-emulation/wine-mono:4.6.4 )
 	perl? (
 		dev-lang/perl
 		dev-perl/XML-Simple
@@ -151,6 +150,19 @@ QA_DESKTOP_FILE="usr/share/applications/wine-browsedrive.desktop
 usr/share/applications/wine-notepad.desktop
 usr/share/applications/wine-uninstaller.desktop
 usr/share/applications/wine-winecfg.desktop"
+
+PATCHES=(
+	"${PATCHDIR}/patches/${MY_PN}-1.5.26-winegcc.patch" #260726
+	"${PATCHDIR}/patches/${MY_PN}-1.9.5-multilib-portage.patch" #395615
+	"${PATCHDIR}/patches/${MY_PN}-1.6-memset-O3.patch" #480508
+	"${PATCHDIR}/patches/${MY_PN}-2.0-multislot-apploader.patch"
+)
+PATCHES_BIN=()
+
+# https://bugs.gentoo.org/show_bug.cgi?id=635222
+if [[ ${#PATCHES_BIN[@]} -ge 1 ]] || [[ ${PV} == 9999 ]]; then
+	DEPEND+=" dev-util/patchbin"
+fi
 
 wine_compiler_check() {
 	[[ ${MERGE_TYPE} = "binary" ]] && return 0
@@ -300,14 +312,6 @@ src_prepare() {
 	}
 
 	local md5="$(md5sum server/protocol.def)"
-	local PATCHES=(
-		"${PATCHDIR}/patches/${MY_PN}-1.5.26-winegcc.patch" #260726
-		"${PATCHDIR}/patches/${MY_PN}-1.9.5-multilib-portage.patch" #395615
-		"${PATCHDIR}/patches/${MY_PN}-1.6-memset-O3.patch" #480508
-		"${PATCHDIR}/patches/${MY_PN}-2.0-multislot-apploader.patch"
-	)
-	local PATCHES_BIN=(
-	)
 
 	default
 	eapply_bin
@@ -387,7 +391,6 @@ multilib_src_configure() {
 		$(use_with udev)
 		$(use_with v4l)
 		$(use_with X x)
-		$(use_with X xfixes)
 		$(use_with xcomposite)
 		$(use_with xinerama)
 		$(use_with xml)

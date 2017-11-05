@@ -63,6 +63,7 @@ COMMON_DEPEND="
 	X? (
 		x11-libs/libXcursor[${MULTILIB_USEDEP}]
 		x11-libs/libXext[${MULTILIB_USEDEP}]
+		x11-libs/libXfixes[${MULTILIB_USEDEP}]
 		x11-libs/libXrandr[${MULTILIB_USEDEP}]
 		x11-libs/libXi[${MULTILIB_USEDEP}]
 		x11-libs/libXxf86vm[${MULTILIB_USEDEP}]
@@ -152,7 +153,6 @@ RDEPEND="${COMMON_DEPEND}
 
 # tools/make_requests requires perl
 DEPEND="${COMMON_DEPEND}
-	dev-util/patchbin
 	sys-devel/flex
 	>=sys-kernel/linux-headers-2.6
 	virtual/pkgconfig
@@ -175,6 +175,19 @@ QA_DESKTOP_FILE="usr/share/applications/wine-browsedrive.desktop
 usr/share/applications/wine-notepad.desktop
 usr/share/applications/wine-uninstaller.desktop
 usr/share/applications/wine-winecfg.desktop"
+
+PATCHES=(
+	"${PATCHDIR}/patches/${MY_PN}-1.5.26-winegcc.patch" #260726
+	"${PATCHDIR}/patches/${MY_PN}-1.9.5-multilib-portage.patch" #395615
+	"${PATCHDIR}/patches/${MY_PN}-1.6-memset-O3.patch" #480508
+	"${PATCHDIR}/patches/${MY_PN}-2.0-multislot-apploader.patch"
+)
+PATCHES_BIN=()
+
+# https://bugs.gentoo.org/show_bug.cgi?id=635222
+if [[ ${#PATCHES_BIN[@]} -ge 1 ]] || [[ ${PV} == 9999 ]]; then
+	DEPEND+=" dev-util/patchbin"
+fi
 
 wine_compiler_check() {
 	[[ ${MERGE_TYPE} = "binary" ]] && return 0
@@ -347,14 +360,7 @@ src_prepare() {
 	}
 
 	local md5="$(md5sum server/protocol.def)"
-	local PATCHES=(
-		"${PATCHDIR}/patches/${MY_PN}-1.5.26-winegcc.patch" #260726
-		"${PATCHDIR}/patches/${MY_PN}-1.9.5-multilib-portage.patch" #395615
-		"${PATCHDIR}/patches/${MY_PN}-1.6-memset-O3.patch" #480508
-		"${PATCHDIR}/patches/${MY_PN}-2.0-multislot-apploader.patch"
-	)
-	local PATCHES_BIN=(
-	)
+
 	if use staging; then
 		ewarn "Applying the Wine-Staging patchset. Any bug reports to the"
 		ewarn "Wine bugzilla should explicitly state that staging was used."
@@ -451,6 +457,7 @@ multilib_src_configure() {
 		$(use_with udev)
 		$(use_with v4l)
 		$(use_with X x)
+		$(use_with X xfixes)
 		$(use_with xcomposite)
 		$(use_with xinerama)
 		$(use_with xml)
