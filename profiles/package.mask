@@ -35,9 +35,8 @@
 # Removal in 30 days, unless fixed by then. Bug 632513
 # https://bugs.gentoo.org/buglist.cgi?quicksearch=media-plugins%2Faudacious-plugins
 # https://bugs.gentoo.org/buglist.cgi?quicksearch=media-sound%2Faudacious
-media-sound/audacious
-media-plugins/audacious-plugins
-x11-themes/audacious-themes
+<media-sound/audacious-3.9
+<media-plugins/audacious-plugins-3.9
 
 # Mike Gilbert <floppym@gentoo.org> (04 Nov 2017)
 # Dev channel releases are only for people who are developers or want more
