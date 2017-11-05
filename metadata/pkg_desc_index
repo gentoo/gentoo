@@ -405,7 +405,7 @@ app-backup/snapper 0.2.8-r1 0.3.3 0.4.1 0.5.0 9999: Command-line program for btr
 app-backup/spideroak-bin 6.3.0-r1: Secure free online backup, storage, and sharing system
 app-backup/tarsnap 1.0.35 1.0.37: Online backups for the truly paranoid
 app-backup/tob 0.26-r2: A general driver for making and maintaining backups
-app-backup/tsm 7.1.0.0-r1 7.1.0.3 7.1.1.4 7.1.2.0 7.1.2.3 7.1.3.1 7.1.3.1-r1 7.1.3.2 7.1.4.4 7.1.4.4-r1: Tivoli Storage Manager (TSM) Backup/Archive (B/A) Client and API
+app-backup/tsm 7.1.4.4-r2: Tivoli Storage Manager (TSM) Backup/Archive (B/A) Client and API
 app-backup/untangle-https-backup 0.0.7: Back up Untangle configurations via the web admin UI
 app-backup/vzdump 1.2: A utility to make consistent snapshots of running OpenVZ containers
 app-backup/zbackup 1.4.4 9999: A versatile deduplicating backup tool
@@ -4086,7 +4086,7 @@ dev-java/gnu-regexp 1.1.4-r3: GNU regular expression package for Java
 dev-java/gradle-bin 3.3 3.4.1: A project automation and build tool with a Groovy based DSL
 dev-java/groovy 2.4.5: A multi-faceted language for the Java platform
 dev-java/gson 2.3.1 2.6.2 2.7: Java library to convert JSON to Java objects and vice-versa
-dev-java/guava 13.0.1 13.0.1-r3 14.0.1 18.0 20.0: A collection of Google's core Java libraries
+dev-java/guava 20.0: A collection of Google's core Java libraries
 dev-java/guice 4.1: A lightweight dependency injection framework for Java 5 and above
 dev-java/hamcrest-core 1.1-r1 1.3: Core library of matchers for building test expressions
 dev-java/hamcrest-generator 1.1 1.3-r1: Code generator for Hamcrest's library of matchers for building test expressions
@@ -4322,26 +4322,26 @@ dev-java/nachocalendar 0.23-r1: Flexible Calendar component to the Java Platform
 dev-java/nailgun 0.7.1-r1: A client, protocol and server for running without incurring JVM startup overhead
 dev-java/nanoxml 2.2.3-r3: NanoXML is a small non-validating parser for Java
 dev-java/nekohtml 1.9.18-r1: A simple HTML scanner and tag balancer using standard XML interfaces
-dev-java/netbeans-apisupport 8.0.2 8.1 8.2: Netbeans API Support Cluster
-dev-java/netbeans-cnd 8.0.2 8.1 8.2: Netbeans CND Cluster
-dev-java/netbeans-dlight 8.0.2 8.1 8.2: Netbeans D-Light Cluster
-dev-java/netbeans-enterprise 8.0.2-r1 8.1-r1 8.2 8.2-r1: Netbeans Enterprise cluster
-dev-java/netbeans-ergonomics 8.0.2 8.1 8.2: Netbeans Ergonomics Cluster
-dev-java/netbeans-extide 8.0.2 8.1 8.2: Netbeans ExtIDE Cluster
-dev-java/netbeans-groovy 8.0.2 8.1 8.2: Netbeans Groovy Cluster
-dev-java/netbeans-harness 8.0.2 8.1 8.2: Netbeans Harness
-dev-java/netbeans-ide 8.0.2-r2 8.0.2-r3 8.1-r2 8.1-r3 8.2 8.2-r1: Netbeans IDE Cluster
-dev-java/netbeans-java 8.0.2-r5 8.0.2-r6 8.1-r2 8.1-r3 8.2 8.2-r1: Netbeans Java Cluster
-dev-java/netbeans-javacard 8.0.2 8.1 8.2: Netbeans JavaCard Cluster
-dev-java/netbeans-javadoc 8.0.2 8.1 8.2: Netbeans JavaDocs
-dev-java/netbeans-javafx 8.0.2 8.1 8.2: Netbeans JavaFX Cluster
-dev-java/netbeans-mobility 8.0.2 8.1 8.2: Netbeans Mobility Cluster
-dev-java/netbeans-nb 8.0.2 8.1 8.2: Netbeans IDE Branding
-dev-java/netbeans-php 8.0.2 8.1 8.2: Netbeans PHP Cluster
-dev-java/netbeans-platform 8.0.2 8.1 8.2: Netbeans Platform
-dev-java/netbeans-profiler 8.0.2 8.1 8.2: Netbeans Profiler Cluster
-dev-java/netbeans-webcommon 8.0.2 8.1 8.2: Netbeans Web Services Cluster
-dev-java/netbeans-websvccommon 8.0.2 8.1 8.2: Netbeans Web Services Common Cluster
+dev-java/netbeans-apisupport 8.2: Netbeans API Support Cluster
+dev-java/netbeans-cnd 8.2: Netbeans CND Cluster
+dev-java/netbeans-dlight 8.2: Netbeans D-Light Cluster
+dev-java/netbeans-enterprise 8.2-r1: Netbeans Enterprise cluster
+dev-java/netbeans-ergonomics 8.2: Netbeans Ergonomics Cluster
+dev-java/netbeans-extide 8.2: Netbeans ExtIDE Cluster
+dev-java/netbeans-groovy 8.2: Netbeans Groovy Cluster
+dev-java/netbeans-harness 8.2: Netbeans Harness
+dev-java/netbeans-ide 8.2 8.2-r1: Netbeans IDE Cluster
+dev-java/netbeans-java 8.2 8.2-r1: Netbeans Java Cluster
+dev-java/netbeans-javacard 8.2: Netbeans JavaCard Cluster
+dev-java/netbeans-javadoc 8.2: Netbeans JavaDocs
+dev-java/netbeans-javafx 8.2: Netbeans JavaFX Cluster
+dev-java/netbeans-mobility 8.2: Netbeans Mobility Cluster
+dev-java/netbeans-nb 8.2: Netbeans IDE Branding
+dev-java/netbeans-php 8.2: Netbeans PHP Cluster
+dev-java/netbeans-platform 8.2: Netbeans Platform
+dev-java/netbeans-profiler 8.2: Netbeans Profiler Cluster
+dev-java/netbeans-webcommon 8.2: Netbeans Web Services Cluster
+dev-java/netbeans-websvccommon 8.2: Netbeans Web Services Common Cluster
 dev-java/netty-buffer 4.0.21 4.0.36: Async event-driven framework for high performance network applications
 dev-java/netty-codec 4.0.36: Async event-driven framework for high performance network applications
 dev-java/netty-codec-http 4.0.36: Async event-driven framework for high performance network applications
@@ -4398,7 +4398,7 @@ dev-java/sax 2.2.1-r3 2.2.1-r4: SAX: Simple API for XML in Java
 dev-java/saxon 6.5.5-r2 9.2.0.6 9.2.0.6-r1: A XSLT and XQuery Processor
 dev-java/saxpath 1.0-r3: Java XPath API
 dev-java/sblim-cim-client 2.2.1 2.2.1-r1: A WBEM services client that includes an SLP client for CIM service discovery
-dev-java/sbt 0.13.8-r1 0.13.10_rc2 0.13.11 0.13.13: sbt is a build tool for Scala and Java projects that aims to do the basics well
+dev-java/sbt 0.13.13: sbt is a build tool for Scala and Java projects that aims to do the basics well
 dev-java/sbt-bin 0.12.4 0.13.6 0.13.7 0.13.8 0.13.9 0.13.15: sbt, a build tool for Scala
 dev-java/servletapi 2.2-r3 2.3-r3 2.4-r5: Servlet API 2.4 from jakarta.apache.org
 dev-java/shared-objects 1.4-r4: Core factory for maximal sharing of arbitrary objects
@@ -4594,7 +4594,7 @@ dev-lang/rubinius 3.43: A re-implementation of the Ruby VM designed for speed
 dev-lang/ruby 2.2.8 2.3.5 2.4.2: An object-oriented scripting language
 dev-lang/rust 1.15.1 1.16.0 1.19.0: Systems programming language from Mozilla
 dev-lang/rust-bin 1.12.1 1.13.0 1.14.0 1.15.0 1.15.1 1.16.0 1.19.0: Systems programming language from Mozilla
-dev-lang/scala 2.9.3 2.10.2-r3 2.10.3-r2 2.10.4-r2 2.10.6 2.11.1-r2 2.11.2-r2 2.11.4-r1 2.11.4-r2 2.11.6-r1 2.11.7-r1 2.11.8 2.11.11 2.12.1 2.12.2: The Scala Programming Language
+dev-lang/scala 2.11.1-r2 2.11.2-r2 2.11.4-r1 2.11.4-r2 2.11.6-r1 2.11.7-r1 2.11.8 2.11.11 2.12.1 2.12.2: The Scala Programming Language
 dev-lang/scala-bin 2.11.8: The Scala Programming Language
 dev-lang/smlnj 110.75: Standard ML of New Jersey compiler and libraries
 dev-lang/snobol 0.99.4 0.99.44 1.1 1.4.1: Phil Budne's port of Macro SNOBOL4 in C, for modern machines
@@ -10534,7 +10534,7 @@ dev-util/molecule-plugins 1.0.2-r1: A set of base plugins for Molecule
 dev-util/mpatch 0.8-r1: Patch-like tool for applying diffs which can resolve common causes of patch rejects
 dev-util/mutrace 0.2-r1: A mutex tracer/profiler
 dev-util/nemiver 0.9.6: A gtkmm front end to the GNU Debugger (gdb)
-dev-util/netbeans 8.0.2 8.1 8.2: Netbeans IDE
+dev-util/netbeans 8.2: Netbeans IDE
 dev-util/ninja 1.7.2 1.8.2 9999: A small build system similar to make
 dev-util/numdiff 5.9.0: File comparision, ignoring small numeric differences and formats
 dev-util/nvidia-cuda-sdk 6.5.19 7.5.18 8.0.44-r1 8.0.61: NVIDIA CUDA Software Development Kit
@@ -10653,7 +10653,7 @@ dev-util/valkyrie 2.0.0: Graphical front-end to the Valgrind suite of tools
 dev-util/vbindiff 3.0_beta4-r1 3.0_beta5: Visual binary diff utility
 dev-util/vint 0.3.13-r1 0.3.14: Lint tool for Vim script language
 dev-util/visual-regexp 3.0-r1 3.1: Type the regexp and visualize it on a sample of your choice
-dev-util/visualvm 1.3.8-r1 1.3.9: Integrates commandline JDK tools and profiling capabilities
+dev-util/visualvm 1.3.9: Integrates commandline JDK tools and profiling capabilities
 dev-util/vmtouch 1.0.2 1.2.0 1.3.0: Virtual Memory Toucher, portable file system cache diagnostics and control
 dev-util/vtable-dumper 1.2: A tool to list content of virtual tables in a shared library
 dev-util/w32api 3.17.2 4.0.3.1: Free Win32 runtime and import library definitions
@@ -17904,7 +17904,7 @@ sys-libs/gdbm 1.11 1.12 1.13 1.13-r1: Standard GNU database libraries
 sys-libs/glibc 2.17 2.18-r1 2.19-r1 2.20-r2 2.21-r2 2.22-r4 2.23-r3 2.23-r4 2.24-r4 2.25-r8 2.25-r9 2.26-r2 9999: GNU libc C library
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 4.3.3 4.12.0_beta 4.13.1 4.15.3 4.15.3-r1: A multi-platform helper library for other libraries
-sys-libs/kpmcore 3.1.2 3.2.0: Library for managing partitions
+sys-libs/kpmcore 3.1.2 3.2.0 3.2.1: Library for managing partitions
 sys-libs/ldb 1.1.26 1.1.29-r1 1.1.31 1.2.2 1.3.0: An LDAP-like embedded database
 sys-libs/lib-compat 1.4.2-r1 1.5: Compatibility C++ library for very old programs
 sys-libs/lib-compat-loki 0.2-r1: Compatibility libc6 libraries for Loki games
