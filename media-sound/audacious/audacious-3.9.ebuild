@@ -13,11 +13,11 @@ if [[ ${PV} == *9999 ]]; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="https://github.com/audacious-media-player/audacious.git"
 else
-	SRC_URI="mirror://gentoo/gentoo_ice-xmms-0.2.tar.bz2"
+	SRC_URI="http://distfiles.audacious-media-player.org/${MY_P}.tar.bz2"
 	KEYWORDS="~amd64 ~x86"
 fi
 
-SRC_URI+="mirror://gentoo/gentoo_ice-xmms-0.2.tar.bz2"
+SRC_URI+=" mirror://gentoo/gentoo_ice-xmms-0.2.tar.bz2"
 
 LICENSE="BSD-2"
 SLOT="0"
