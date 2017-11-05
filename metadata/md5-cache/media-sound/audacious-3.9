@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare unpack
+DEPEND=>=dev-libs/dbus-glib-0.60 >=dev-libs/glib-2.28 >=x11-libs/cairo-1.2.6 >=x11-libs/pango-1.8.0 virtual/freedesktop-icon-theme gtk? ( x11-libs/gtk+:2 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 ) virtual/pkgconfig nls? ( dev-util/intltool )
+DESCRIPTION=Audacious Player - Your music, your way, no exceptions
+EAPI=6
+HOMEPAGE=http://audacious-media-player.org/
+IUSE=gtk nls qt5
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD-2
+PDEPEND=~media-plugins/audacious-plugins-3.9
+RDEPEND=>=dev-libs/dbus-glib-0.60 >=dev-libs/glib-2.28 >=x11-libs/cairo-1.2.6 >=x11-libs/pango-1.8.0 virtual/freedesktop-icon-theme gtk? ( x11-libs/gtk+:2 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 )
+REQUIRED_USE=^^ ( gtk qt5 )
+SLOT=0
+SRC_URI=mirror://gentoo/gentoo_ice-xmms-0.2.tar.bz2mirror://gentoo/gentoo_ice-xmms-0.2.tar.bz2
+_md5_=7f1ea9dfda976a002d3e15026645de6a
