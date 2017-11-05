@@ -8373,7 +8373,7 @@ dev-python/pympler 0.4.1 0.4.2 0.4.3 0.5: Memory profiling for Python applicatio
 dev-python/pymssql 1.0.2-r1: Simple MSSQL python extension module
 dev-python/pymtp 0.0.6: LibMTP bindings for Python
 dev-python/pymysql 0.7.6 0.7.9 0.7.11: Pure-Python MySQL Driver
-dev-python/pynacl 1.1.1 1.1.2: Python binding to the Networking and Cryptography (NaCl) library
+dev-python/pynacl 1.1.1 1.1.2 1.2.0: Python binding to the Networking and Cryptography (NaCl) library
 dev-python/pynag 0.9.1: Python modules for Nagios plugins and configuration
 dev-python/pyndex 0.3.2a-r1: Simple and fast Python full-text indexer (aka search engine) using Metakit as its back-end
 dev-python/pynotifier 0.7.0-r3: pyNotifier provides an implementation of a notifier/event scheduler
