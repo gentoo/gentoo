@@ -148,7 +148,7 @@ app-admin/mei-amt-check 0_p20170515: AMT status checker
 app-admin/metalog 3-r1 3-r2: A highly configurable replacement for syslogd/klogd
 app-admin/mktwpol 0.2.6 1.0.0: Bash scripts to install tripwire and generate tripwire policy files
 app-admin/mms-agent 3.7.0.212_p1 6.0.0.381_p1: MongoDB MMS agents
-app-admin/mongo-tools 3.0.14 3.0.15 3.2.12 3.2.13 3.2.16 3.4.3 3.4.4 3.4.6 3.4.7 3.4.9 3.4.10: A high-performance, open source, schema-free document-oriented database
+app-admin/mongo-tools 3.0.14 3.0.15 3.2.12 3.2.13 3.2.16 3.4.10: A high-performance, open source, schema-free document-oriented database
 app-admin/monit 5.20.0 5.23.0 5.24.0: Monitoring and managing daemons or similar programs running on a Unix system
 app-admin/mtail 0_pre20161108 3.0.0_rc2 3.0.0_rc4: A tool for extracting metrics from application logs
 app-admin/multilog-watch 1.12-r1: Watches a multilog file for irregularities
@@ -2961,7 +2961,7 @@ dev-db/mariadb 5.5.58 10.0.30-r1 10.0.32-r1 10.0.33 10.1.24-r1 10.1.26-r1 10.1.2
 dev-db/mariadb-galera 10.0.32: An enhanced, drop-in replacement for MySQL with Galera Replication
 dev-db/maxscale 1.2.0: A content aware, plug-able MySQL proxy server
 dev-db/metakit 2.4.9.7-r2: Embedded database library
-dev-db/mongodb 2.6.12 3.0.14 3.0.15 3.2.12 3.2.13 3.2.16 3.4.3 3.4.4 3.4.6 3.4.7 3.4.9 3.4.10: A high-performance, open source, schema-free document-oriented database
+dev-db/mongodb 2.6.12 3.0.14 3.0.15 3.2.12 3.2.13 3.2.16 3.4.10: A high-performance, open source, schema-free document-oriented database
 dev-db/mtop 0.6.6-r3: Mysql top monitors a MySQL server
 dev-db/mycli 1.7.1 1.10.0 9999: CLI for MySQL Database with auto-completion and syntax highlighting
 dev-db/mydumper 0.6.2 0.9.3-r1: A high-performance multi-threaded backup (and restore) toolset for MySQL
@@ -5225,7 +5225,7 @@ dev-ml/camlzip 1.06 1.07: Compressed file access ML library (ZIP, GZIP and JAR)
 dev-ml/camomile 0.8.5-r1: Camomile is a comprehensive Unicode library for ocaml
 dev-ml/capnp-ocaml 3.0.0 3.1.0: OCaml code generator plugin for the Cap'n Proto serialization framework
 dev-ml/cmdliner 1.0.0 1.0.1 1.0.2: Declarative definition of command line interfaces for OCaml
-dev-ml/configurator 0.9.0 0.9.1: Helper library for gathering system configuration
+dev-ml/configurator 0.9.1: Helper library for gathering system configuration
 dev-ml/core 0.9.1-r1: Jane Street's alternative to the standard library
 dev-ml/core_bench 0.9.0: Micro-benchmarking library for OCaml
 dev-ml/core_extended 0.9.0: Jane Street's alternative to the standard library
@@ -10557,7 +10557,7 @@ dev-util/obs-service-source_validator 0.3: Open Build Service client module - so
 dev-util/obs-service-tar_scm 0.3.1: Open Build Service client module - tar_scm service
 dev-util/obs-service-update_source 20130802: Open Build Service client module - update_source service
 dev-util/obs-service-verify_file 20130403: Open Build Service client module - verify_file service
-dev-util/omake 0.9.8.6.0_rc1 0.10.2: Make replacement
+dev-util/omake 0.9.8.6.0_rc1 0.10.2 0.10.3: Make replacement
 dev-util/open-vcdiff 0.8.4-r1: An encoder/decoder for the VCDIFF (RFC3284) format
 dev-util/oprofile 0.9.9-r2 1.1.0-r1 1.2.0-r1: A transparent low-overhead system-wide profiler
 dev-util/osc 0.148.2 0.152.0 0.154.0 9999: Command line tool for Open Build Service
