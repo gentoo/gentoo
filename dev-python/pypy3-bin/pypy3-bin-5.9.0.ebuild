@@ -90,57 +90,11 @@ src_compile() {
 	mv pypy/module/cpyext/parse/*.h include/ || die
 
 	#use doc && emake -C pypy/doc/ html
-	#needed even without jit :( also needed in both compile and install phases
 	pax-mark m pypy3-c libpypy3-c.so
-}
 
-src_test() {
-	# (unset)
-	local -x PYTHONDONTWRITEBYTECODE
+	#use doc && emake -C pypy/doc html
 
-	# Test runner requires Python 2 too. However, it spawns PyPy3
-	# internally so that we end up testing the correct interpreter.
-	"${PYTHON}" ./pypy/test_all.py --pypy=./pypy3-c lib-python || die
-}
-
-src_install() {
-	local dest=/usr/$(get_libdir)/pypy3
-	einfo "Installing PyPy ..."
-	insinto "${dest}"
-	doins -r include lib_pypy lib-python pypy3-c libpypy3-c.so
-	fperms a+x ${dest}/pypy3-c ${dest}/libpypy3-c.so
-	pax-mark m "${ED%/}${dest}/pypy3-c" "${ED%/}${dest}/libpypy3-c.so"
-	dosym ../$(get_libdir)/pypy3/pypy3-c /usr/bin/pypy3
-	dodoc README.rst
-
-	if ! use gdbm; then
-		rm -r "${ED%/}${dest}"/lib_pypy/_gdbm* || die
-	fi
-	if ! use sqlite; then
-		rm -r "${ED%/}${dest}"/lib-python/*3/sqlite3 \
-			"${ED%/}${dest}"/lib_pypy/_sqlite3* \
-			"${ED%/}${dest}"/lib-python/*3/test/test_sqlite.py || die
-	fi
-	if ! use tk; then
-		rm -r "${ED%/}${dest}"/lib-python/*3/{idlelib,tkinter} \
-			"${ED%/}${dest}"/lib_pypy/_tkinter \
-			"${ED%/}${dest}"/lib-python/*3/test/test_{tcl,tk,ttk*}.py || die
-	fi
-
-	# Install docs
-	#use doc && dodoc -r pypy/doc/_build/html
-
-	einfo "Generating caches and byte-compiling ..."
-
-	local -x PYTHON=${ED%/}${dest}/pypy3-c
-	local -x LD_LIBRARY_PATH="${ED%/}${dest}"
-	# we can't use eclass function since PyPy is dumb and always gives
-	# paths relative to the interpreter
-	local PYTHON_SITEDIR=${EPREFIX}/usr/$(get_libdir)/pypy3/site-packages
-	python_export pypy3 EPYTHON
-
-	echo "EPYTHON='${EPYTHON}'" > epython.py || die
-	python_domodule epython.py
+	einfo "Generating caches and CFFI modules ..."
 
 	# Generate Grammar and PatternGrammar pickles.
 	"${PYTHON}" -c "import lib2to3.pygram, lib2to3.patcomp; lib2to3.patcomp.PatternCompiler()" \
@@ -168,15 +122,66 @@ src_install() {
 	local t
 	# all modules except tkinter output to .
 	# tkinter outputs to the correct dir ...
-	cd "${ED%/}${dest}"/lib_pypy || die
+	cd lib_pypy || die
 	for t in "${cffi_targets[@]}"; do
 		# tkinter doesn't work via -m
-		"${PYTHON}" "_${t}_build.py" || die "Failed to build CFFI bindings for ${t}"
+		../pypy3-c "_${t}_build.py" || die "Failed to build CFFI bindings for ${t}"
 	done
 
 	# Cleanup temporary objects
-	find "${ED%/}${dest}" -name "_cffi_*.[co]" -delete || die
-	find "${ED%/}${dest}" -type d -empty -delete || die
+	find -name "_cffi_*.[co]" -delete || die
+	find -type d -empty -delete || die
+}
+
+src_test() {
+	# (unset)
+	local -x PYTHONDONTWRITEBYTECODE
+
+	# Test runner requires Python 2 too. However, it spawns PyPy3
+	# internally so that we end up testing the correct interpreter.
+	"${PYTHON}" ./pypy/test_all.py --pypy=./pypy3-c lib-python || die
+}
+
+src_install() {
+	local dest=/usr/$(get_libdir)/pypy3
+	einfo "Installing PyPy ..."
+	exeinto "${dest}"
+	doexe pypy3-c libpypy3-c.so
+	pax-mark m "${ED%/}${dest}/pypy3-c" "${ED%/}${dest}/libpypy3-c.so"
+	insinto "${dest}"
+	doins -r include lib_pypy lib-python
+	dosym ../$(get_libdir)/pypy3/pypy3-c /usr/bin/pypy3
+	dodoc README.rst
+
+	if ! use gdbm; then
+		rm -r "${ED%/}${dest}"/lib_pypy/_gdbm* || die
+	fi
+	if ! use sqlite; then
+		rm -r "${ED%/}${dest}"/lib-python/*3/sqlite3 \
+			"${ED%/}${dest}"/lib_pypy/_sqlite3* \
+			"${ED%/}${dest}"/lib-python/*3/test/test_sqlite.py || die
+	fi
+	if ! use tk; then
+		rm -r "${ED%/}${dest}"/lib-python/*3/{idlelib,tkinter} \
+			"${ED%/}${dest}"/lib_pypy/_tkinter \
+			"${ED%/}${dest}"/lib-python/*3/test/test_{tcl,tk,ttk*}.py || die
+	fi
+
+	# Install docs
+	#use doc && dodoc -r pypy/doc/_build/html
+
+	einfo "Generating caches and byte-compiling ..."
+
+	local -x PYTHON=${ED%/}${dest}/pypy3-c
+	# we can't use eclass function since PyPy is dumb and always gives
+	# paths relative to the interpreter
+	local PYTHON_SITEDIR=${EPREFIX}/usr/$(get_libdir)/pypy3/site-packages
+	python_export pypy3 EPYTHON
+
+	echo "EPYTHON='${EPYTHON}'" > epython.py || die
+	python_domodule epython.py
+
+	einfo "Byte-compiling Python standard library..."
 
 	# compile the installed modules
 	python_optimize "${ED%/}${dest}"
