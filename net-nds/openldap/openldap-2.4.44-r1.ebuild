@@ -680,7 +680,6 @@ multilib_src_test() {
 multilib_src_install() {
 	local lt="${BUILD_DIR}/libtool"
 	emake DESTDIR="${D}" SHELL="${EPREFIX}"/bin/bash install
-	use static-libs || prune_libtool_files --all
 
 	if ! use minimal && multilib_is_native_abi; then
 		# openldap modules go here
@@ -793,6 +792,8 @@ multilib_src_install() {
 		dosbin "${S}"/contrib/slapd-tools/statslog
 		newdoc "${S}"/contrib/slapd-tools/README README.statslog
 	fi
+
+	use static-libs || prune_libtool_files --all
 }
 
 multilib_src_install_all() {
