@@ -172,6 +172,45 @@ src_compile() {
 	pax-mark m pypy3-c libpypy3-c.so
 
 	#use doc && emake -C pypy/doc html
+
+	einfo "Generating caches and CFFI modules ..."
+
+	# Generate Grammar and PatternGrammar pickles.
+	"${PYTHON}" -c "import lib2to3.pygram, lib2to3.patcomp; lib2to3.patcomp.PatternCompiler()" \
+		|| die "Generation of Grammar and PatternGrammar pickles failed"
+
+	# Generate cffi modules
+	# Please keep in sync with pypy/tool/build_cffi_imports.py!
+#cffi_build_scripts = {
+#    "sqlite3": "_sqlite3_build.py",
+#    "audioop": "_audioop_build.py",
+#    "tk": "_tkinter/tklib_build.py",
+#    "curses": "_curses_build.py" if sys.platform != "win32" else None,
+#    "syslog": "_syslog_build.py" if sys.platform != "win32" else None,
+#    "_gdbm": "_gdbm_build.py"  if sys.platform != "win32" else None,
+#    "pwdgrp": "_pwdgrp_build.py" if sys.platform != "win32" else None,
+#    "resource": "_resource_build.py" if sys.platform != "win32" else None,
+#    "lzma": "_lzma_build.py",
+#    "_decimal": "_decimal_build.py",
+#    "ssl": "_ssl_build.py",
+	cffi_targets=( audioop syslog pwdgrp resource lzma decimal ssl )
+	use gdbm && cffi_targets+=( gdbm )
+	use ncurses && cffi_targets+=( curses )
+	use sqlite && cffi_targets+=( sqlite3 )
+	use tk && cffi_targets+=( tkinter/tklib )
+
+	local t
+	# all modules except tkinter output to .
+	# tkinter outputs to the correct dir ...
+	cd lib_pypy || die
+	for t in "${cffi_targets[@]}"; do
+		# tkinter doesn't work via -m
+		../pypy3-c "_${t}_build.py" || die "Failed to build CFFI bindings for ${t}"
+	done
+
+	# Cleanup temporary objects
+	find -name "_cffi_*.[co]" -delete || die
+	find -type d -empty -delete || die
 }
 
 src_test() {
@@ -223,42 +262,7 @@ src_install() {
 	echo "EPYTHON='${EPYTHON}'" > epython.py || die
 	python_domodule epython.py
 
-	# Generate Grammar and PatternGrammar pickles.
-	"${PYTHON}" -c "import lib2to3.pygram, lib2to3.patcomp; lib2to3.patcomp.PatternCompiler()" \
-		|| die "Generation of Grammar and PatternGrammar pickles failed"
-
-	# Generate cffi modules
-	# Please keep in sync with pypy/tool/build_cffi_imports.py!
-#cffi_build_scripts = {
-#    "sqlite3": "_sqlite3_build.py",
-#    "audioop": "_audioop_build.py",
-#    "tk": "_tkinter/tklib_build.py",
-#    "curses": "_curses_build.py" if sys.platform != "win32" else None,
-#    "syslog": "_syslog_build.py" if sys.platform != "win32" else None,
-#    "_gdbm": "_gdbm_build.py"  if sys.platform != "win32" else None,
-#    "pwdgrp": "_pwdgrp_build.py" if sys.platform != "win32" else None,
-#    "resource": "_resource_build.py" if sys.platform != "win32" else None,
-#    "lzma": "_lzma_build.py",
-#    "_decimal": "_decimal_build.py",
-#    "ssl": "_ssl_build.py",
-	cffi_targets=( audioop syslog pwdgrp resource lzma decimal ssl )
-	use gdbm && cffi_targets+=( gdbm )
-	use ncurses && cffi_targets+=( curses )
-	use sqlite && cffi_targets+=( sqlite3 )
-	use tk && cffi_targets+=( tkinter/tklib )
-
-	local t
-	# all modules except tkinter output to .
-	# tkinter outputs to the correct dir ...
-	cd "${ED%/}${dest}"/lib_pypy || die
-	for t in "${cffi_targets[@]}"; do
-		# tkinter doesn't work via -m
-		"${PYTHON}" "_${t}_build.py" || die "Failed to build CFFI bindings for ${t}"
-	done
-
-	# Cleanup temporary objects
-	find "${ED%/}${dest}" -name "_cffi_*.[co]" -delete || die
-	find "${ED%/}${dest}" -type d -empty -delete || die
+	einfo "Byte-compiling Python standard library..."
 
 	# compile the installed modules
 	python_optimize "${ED%/}${dest}"
