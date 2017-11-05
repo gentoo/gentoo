@@ -2860,7 +2860,7 @@ dev-cpp/antlr-cpp 2.7.7 2.7.7-r1 3.5.2 3.5.2-r1: The ANTLR 3 C++ Runtime
 dev-cpp/asio 1.10.8: Asynchronous Network Library
 dev-cpp/atkmm 2.24.2: C++ interface for the ATK library
 dev-cpp/cairomm 1.12.0-r1: C++ bindings for the Cairo vector graphics library
-dev-cpp/catch 1.10.0 1.11.0 1.9999 2.0.0_pre6 9999: Modern C++ header-only framework for unit-tests
+dev-cpp/catch 1.10.0 1.11.0 1.9999 2.0.0_pre6 2.0.1 9999: Modern C++ header-only framework for unit-tests
 dev-cpp/clucene 2.3.3.4-r6: High-performance, full-featured text search engine based off of lucene in C++
 dev-cpp/commoncpp2 1.8.1-r2 1.8.1-r3: C++ library offering portable support for system-related services
 dev-cpp/cpp-hocon 0.1.4: Provides C++ support for the HOCON configuration file format
@@ -7998,7 +7998,7 @@ dev-python/mimeparse 0.1.4-r1 1.6.0: Basic functions for handling mime-types in 
 dev-python/mimerender 0.5.5 0.6.0: RESTful HTTP Content Negotiation for Flask, Bottle, web.py and webapp2
 dev-python/minidb 2.0.1-r1 2.0.2: Simple SQLite-based object store
 dev-python/minimock 1.2.8-r1: The simplest possible mock library
-dev-python/miniupnpc 1.8 1.9.20151008 2.0.20161216 2.0.20170509: Python bindings for UPnP client library
+dev-python/miniupnpc 2.0.20170509 2.0.20171102: Python bindings for UPnP client library
 dev-python/misaka 1.0.2: The Python binding for Sundown, a markdown parsing library
 dev-python/mistune 0.7.2 0.7.4: The fastest markdown parser in pure Python
 dev-python/mkdocs 0.12.2 0.14.0 0.15.3: Project documentation with Markdown.
@@ -14998,7 +14998,7 @@ net-libs/liquid-dsp 1.3.0 1.3.1 9999: digital signal processing library for soft
 net-libs/loudmouth 1.4.3-r2 1.5.2-r1 1.5.3: Lightweight C Jabber library
 net-libs/mbedtls 2.6.0 2.6.1: Cryptographic library for embedded systems
 net-libs/meanwhile 1.0.2-r1: Meanwhile (Sametime protocol) library
-net-libs/miniupnpc 1.8 1.9.20151008 2.0.20161216 2.0.20170509: UPnP client library and a simple UPnP client
+net-libs/miniupnpc 2.0.20170509 2.0.20171102: UPnP client library and a simple UPnP client
 net-libs/nDPI 2.0: Open Source Deep Packet Inspection Software Toolkit
 net-libs/nacl 0_p20110221: high-speed software library for network communication, encryption, decryption, signatures
 net-libs/nativebiginteger 0.6.4 0.6.4-r3 0.8.7: jbigi JNI library for net.i2p.util.NativeBigInteger java-class from I2P
