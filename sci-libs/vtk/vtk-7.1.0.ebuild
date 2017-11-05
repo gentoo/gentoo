@@ -13,13 +13,13 @@ inherit flag-o-matic java-pkg-opt-2 python-single-r1 qmake-utils versionator too
 SPV="$(get_version_component_range 1-2)"
 
 DESCRIPTION="The Visualization Toolkit"
-HOMEPAGE="http://www.vtk.org/"
+HOMEPAGE="https://www.vtk.org/"
 SRC_URI="
-	http://www.vtk.org/files/release/${SPV}/VTK-${PV}.tar.gz
-	doc? ( http://www.vtk.org/files/release/${SPV}/vtkDocHtml-${PV}.tar.gz )
+	https://www.vtk.org/files/release/${SPV}/VTK-${PV}.tar.gz
+	doc? ( https://www.vtk.org/files/release/${SPV}/vtkDocHtml-${PV}.tar.gz )
 	test? (
-		http://www.vtk.org/files/release/${SPV}/VTKData-${PV}.tar.gz
-		http://www.vtk.org/files/release/${SPV}/VTKLargeData-${PV}.tar.gz
+		https://www.vtk.org/files/release/${SPV}/VTKData-${PV}.tar.gz
+		https://www.vtk.org/files/release/${SPV}/VTKLargeData-${PV}.tar.gz
 		)
 	"
 
