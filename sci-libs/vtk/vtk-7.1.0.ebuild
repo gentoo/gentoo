@@ -43,10 +43,24 @@ REQUIRED_USE="
 	"
 
 RDEPEND="
-	boost? ( dev-libs/boost:=[mpi?] )
 	dev-libs/expat
 	dev-libs/jsoncpp:=
 	dev-libs/libxml2:2
+	>=media-libs/freetype-2.5.4
+	media-libs/libpng:0=
+	media-libs/libtheora
+	media-libs/mesa
+	media-libs/tiff:0
+	sci-libs/exodusii
+	sci-libs/hdf5:=
+	sci-libs/netcdf-cxx:3
+	sys-libs/zlib
+	virtual/jpeg:0
+	virtual/opengl
+	x11-libs/libX11
+	x11-libs/libXmu
+	x11-libs/libXt
+	boost? ( dev-libs/boost:=[mpi?] )
 	examples? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
@@ -56,11 +70,6 @@ RDEPEND="
 	gdal? ( sci-libs/gdal )
 	java? ( >=virtual/jdk-1.7:* )
 	kaapi? ( <sci-libs/xkaapi-3 )
-	>=media-libs/freetype-2.5.4
-	media-libs/libpng:0=
-	media-libs/mesa
-	media-libs/libtheora
-	media-libs/tiff:0
 	mpi? (
 		virtual/mpi[cxx,romio]
 		python? ( dev-python/mpi4py[${PYTHON_USEDEP}] )
@@ -83,16 +92,10 @@ RDEPEND="
 		python? ( dev-python/PyQt5[${PYTHON_USEDEP}] )
 	)
 	R? ( dev-lang/R )
-	sci-libs/exodusii
-	sci-libs/hdf5:=
-	sci-libs/netcdf-cxx:3
-	sys-libs/zlib
 	tbb? ( dev-cpp/tbb )
 	tcl? ( dev-lang/tcl:0= )
 	tk? ( dev-lang/tk:0= )
 	video_cards_nvidia? ( || ( x11-drivers/nvidia-drivers[tools,static-libs] media-video/nvidia-settings ) )
-	virtual/jpeg:0
-	virtual/opengl
 	web? (
 		${WEBAPP_DEPEND}
 		dev-python/autobahn[${PYTHON_USEDEP}]
@@ -100,21 +103,19 @@ RDEPEND="
 		dev-python/zope-interface[${PYTHON_USEDEP}]
 	)
 	xdmf2? ( sci-libs/xdmf2 )
-	x11-libs/libX11
-	x11-libs/libXmu
-	x11-libs/libXt"
-
+"
 DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen )"
+	doc? ( app-doc/doxygen )
+"
 
 S="${WORKDIR}"/VTK-${PV}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-7.0.0-glext.patch
 	"${FILESDIR}"/${PN}-6.1.0-memset.patch
-	)
+)
 
-RESTRICT=test
+RESTRICT="test"
 
 pkg_setup() {
 	use java && java-pkg-opt-2_pkg_setup
