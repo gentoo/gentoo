@@ -10,8 +10,8 @@ if [[ ${PV} = *9999 ]]; then
 	EGIT_BRANCH="0.26"
 	GIT_ECLASS=git-r3
 else
-	COMMIT=0a9962f5879335e4eb539ce419fce45a41de2770
-	SRC_URI="https://github.com/a17r/${PN}/tarball/${COMMIT} -> ${P}.tar.gz"
+	COMMIT=900d2417dbeb46e14cbf65fc2798ed1d043ab76d
+	SRC_URI="https://github.com/Exiv2/${PN}/tarball/${COMMIT} -> ${P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris"
 fi
 inherit cmake-multilib python-any-r1 vcs-snapshot
