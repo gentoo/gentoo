@@ -103,12 +103,13 @@ _meson_create_cross_file() {
 	# system roughly corresponds to uname -s (lowercase)
 	local system=unknown
 	case ${CHOST} in
-		*-aix*)     system=aix ;;
-		*-cygwin*)  system=cygwin ;;
-		*-darwin*)  system=darwin ;;
-		*-freebsd*) system=freebsd ;;
-		*-linux*)   system=linux ;;
-		*-solaris*) system=sunos ;;
+		*-aix*)          system=aix ;;
+		*-cygwin*)       system=cygwin ;;
+		*-darwin*)       system=darwin ;;
+		*-freebsd*)      system=freebsd ;;
+		*-linux*)        system=linux ;;
+		mingw*|*-mingw*) system=windows ;;
+		*-solaris*)      system=sunos ;;
 	esac
 
 	local cpu_family=$(tc-arch)
