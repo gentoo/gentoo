@@ -30,6 +30,17 @@
 #--- END OF EXAMPLES ---
 
 # James Le Cuirot <chewi@gentoo.org> (05 Nov 2017)
+# Java 7 is old and we are no longer able to support it. The ability
+# to build against Java 7 may return when we update the eclasses for
+# Java 9 but the runtime will not return. If you need it then source
+# ebuilds will continue to be maintained by gnu_andrew in java-overlay
+# for a few years. Removal in 30 days.
+<=dev-java/icedtea-7.2.6.11:7
+dev-java/icedtea-bin:7
+virtual/jdk:1.7
+virtual/jre:1.7
+
+# James Le Cuirot <chewi@gentoo.org> (05 Nov 2017)
 # Upstream dead, bundles a vulnerable mupdf, nothing depends on it,
 # and blocks the removal of Java 7. Removal in 30 days. Bug #472832.
 app-text/jmupdf
