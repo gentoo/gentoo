@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils eutils fdo-mime fortran-2 python-single-r1
+inherit cmake-utils eutils xdg-utils fortran-2 python-single-r1
 
 DESCRIPTION="Qt based Computer Aided Design application"
 HOMEPAGE="https://www.freecadweb.org/"
@@ -121,9 +121,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	fdo-mime_mime_database_update
+	xdg_mimeinfo_database_update
 }
 
 pkg_postrm() {
-	fdo-mime_mime_database_update
+	xdg_mimeinfo_database_update
 }
