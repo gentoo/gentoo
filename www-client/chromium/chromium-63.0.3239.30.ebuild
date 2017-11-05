@@ -95,7 +95,7 @@ DEPEND="${COMMON_DEPEND}
 	dev-lang/perl
 	>=dev-util/gperf-3.0.3
 	>=dev-util/ninja-1.7.2
-	>=net-libs/nodejs-4.6.1
+	>=net-libs/nodejs-6.9.4
 	sys-apps/hwids[usb(+)]
 	>=sys-devel/bison-2.4.3
 	sys-devel/flex
