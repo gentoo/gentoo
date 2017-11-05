@@ -187,7 +187,6 @@ src_install() {
 	einfo "Generating caches and byte-compiling ..."
 
 	local -x PYTHON=${ED%/}${dest}/pypy3-c
-	local -x LD_LIBRARY_PATH="${ED%/}${dest}"
 	# we can't use eclass function since PyPy is dumb and always gives
 	# paths relative to the interpreter
 	local PYTHON_SITEDIR=${EPREFIX}/usr/$(get_libdir)/pypy3/site-packages
