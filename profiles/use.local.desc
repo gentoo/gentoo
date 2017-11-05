@@ -5291,6 +5291,8 @@ net-analyzer/pmacct:nflog - Enable support for NFLOG through uacctd
 net-analyzer/pmacct:rabbitmq - Enable support for RabbitMQ through net-libs/rabbitmq-c
 net-analyzer/pmacct:ulog - Enable support for ULOG in older kernels (deprecated)
 net-analyzer/pmacct:zmq - Enable support for ZeroMQ through net-libs/zeromq
+net-analyzer/pnp4nagios:icinga - Build against net-analyzer/icinga2 or net-analyzer/icinga instead of net-analyzer/nagios-core
+net-analyzer/pnp4nagios:nagios - Build against net-analyzer/nagios-core (the default)
 net-analyzer/prelude-lml:tls - Enables Prelude LML support Syslog through TLS using net-libs/gnutls.
 net-analyzer/rrdcollect:exec - Enable exec:/// support
 net-analyzer/rrdcollect:librrd - Use the librrd library from net-analyzer/rrdtool
