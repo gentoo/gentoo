@@ -18027,7 +18027,7 @@ sys-process/dumb-init 1.2.0: A minimal init system for Linux containers
 sys-process/fcron 3.2.1-r1 3.2.1-r2 3.3.0_beta-r1: A command scheduler with extended capabilities over cron and anacron
 sys-process/ftop 1.0: Monitor open files and filesystems
 sys-process/fuser-bsd 1142334561: fuser(1) utility for *BSD
-sys-process/glances 2.7.1 2.8.1 2.9.1 2.10 2.10-r1 2.11: CLI curses based monitoring tool
+sys-process/glances 2.7.1 2.8.1 2.9.1 2.10 2.10-r1 2.11 2.11.1: CLI curses based monitoring tool
 sys-process/htop 1.0.3 1.0.3-r1 2.0.1 2.0.2: interactive process viewer
 sys-process/incron 0.5.10-r1: inotify based cron daemon
 sys-process/iotop 0.6: Top-like UI used to show which process is using the I/O
