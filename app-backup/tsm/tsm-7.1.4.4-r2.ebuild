@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit versionator multilib eutils readme.gentoo rpm systemd user
+inherit versionator multilib eutils readme.gentoo rpm systemd user pax-utils
 
 DESCRIPTION="Tivoli Storage Manager (TSM) Backup/Archive (B/A) Client and API"
 HOMEPAGE="http://www.tivoli.com/"
@@ -38,8 +38,9 @@ KEYWORDS="~amd64 -*"
 IUSE="acl java +tsm_cit +tsm_hw"
 QA_PREBUILT="*"
 
-MY_LANGS="cs:CS_CZ de:DE_DE es:ES_ES fr:FR_FR hu:HU_HU it:IT_IT ja:JA_JP
-	ko:KO_KR pl:PL_PL pt-BR:PT_BR ru:RU_RU zh-CN:ZH_CN zh-TW:ZH_TW"
+# not available (yet?)
+#MY_LANGS="cs:CS_CZ de:DE_DE es:ES_ES fr:FR_FR hu:HU_HU it:IT_IT ja:JA_JP
+#	ko:KO_KR pl:PL_PL pt-BR:PT_BR ru:RU_RU zh-CN:ZH_CN zh-TW:ZH_TW"
 MY_LANG_PV="${MY_PVR_ALLDOTS}-"
 for lang in ${MY_LANGS}; do
 	IUSE="${IUSE} l10n_${lang%:*}"
@@ -55,10 +56,10 @@ RDEPEND="
 	dev-libs/libxml2
 	=sys-fs/fuse-2*
 	acl? ( sys-apps/acl )
-	java? ( virtual/jre:1.7 )
+	java? ( >=virtual/jre-1.7 )
 "
 
-S="${WORKDIR}"
+S="${WORKDIR}/bacli"
 
 pkg_setup() {
 	enewgroup tsm
@@ -71,6 +72,7 @@ src_unpack() {
 	local rpm rpms lang
 	unpack ${SRC_TAR}
 
+	cd "${S}"
 	for rpm in *.rpm; do
 		case ${rpm} in
 			TIVsm-APIcit.*|TIVsm-BAcit.*)
@@ -104,13 +106,7 @@ src_unpack() {
 	chmod -R u+w "${S}" || die
 }
 
-src_prepare() {
-	# Avoid unnecessary dependency on ksh
-	sed -i 's:^#!/usr/bin/ksh:#!/bin/bash:' \
-		opt/tivoli/tsm/client/ba/bin/dsmj || die
-}
-
-src_install() {
+src_install(){
 	cp -a opt "${D}" || die
 	cp -a usr "${D}" || die
 
@@ -122,17 +118,11 @@ src_install() {
 	RPM_INSTALL_PREFIX=/opt
 	CLIENTDIR=$RPM_INSTALL_PREFIX/tivoli/tsm/client
 
-	# We don't bother setting timestamps to build dates.
-	# But we should delete the corresponding files.
-	rm -f "${D}"$CLIENTDIR/api/bin*/.buildDate || die
-	rm -f "${D}"$CLIENTDIR/ba/bin*/.buildDate || die
-	rm -f "${D}"$CLIENTDIR/lang/.buildDate || die
-
 	# Create links for messages; this is spread over several postin scripts.
-	for i in $(cd "${D}"${CLIENTDIR}/lang; ls -1d ??_??); do
-		dosym ../../lang/${i} $CLIENTDIR/ba/bin/${i}
-		dosym ../../lang/${i} $CLIENTDIR/api/bin64/${i}
-	done
+	#for i in $(cd "${D}"${CLIENTDIR}/lang; ls -1d ??_??); do
+	#	dosym ../../lang/${i} $CLIENTDIR/ba/bin/${i}
+	#	dosym ../../lang/${i} $CLIENTDIR/api/bin64/${i}
+	#done
 
 	# Mimic TIVsm-API64 postinstall script
 	for i in libgpfs.so libdmapi.so; do
@@ -170,11 +160,6 @@ src_install() {
 		dosym "../..${target}" "${i#${D}}"
 	done
 
-	# Install symlinks for sonames of libraries, bug #416503
-	dosym libvixMntapi.so.1.1.0 $CLIENTDIR/ba/bin/libvixMntapi.so.1
-	dosym libvixDiskLibVim.so.6.0.0 $CLIENTDIR/ba/bin/libvixDiskLibVim.so.6
-	dosym libvixDiskLib.so.6.0.0 $CLIENTDIR/ba/bin/libvixDiskLib.so.6
-
 	fowners :tsm /opt/tivoli/tsm/client/ba/bin/dsmtca
 	fperms 4710 /opt/tivoli/tsm/client/ba/bin/dsmtca
 
@@ -205,9 +190,16 @@ src_install() {
 	echo 'DSM_LOG="/var/log/tsm"' >> ${ENV_FILE}
 	echo 'ROOTPATH="/opt/tivoli/tsm/client/ba/bin"' >> ${ENV_FILE}
 
+	echo 'SEARCH_DIRS_MASK="/opt/tivoli/tsm/client/ba/bin"' > "${T}/80${PN}" || die
+	insinto "/etc/revdep-rebuild"
+	doins "${T}/80${PN}"
+
 	newconfd "${FILESDIR}/dsmc.conf.d" dsmc
 	newinitd "${FILESDIR}/dsmc.init.d" dsmc
 	newinitd "${FILESDIR}/dsmcad.init.d-r1" dsmcad
+
+	# Need this for hardened, otherwise a cryptic "connection to server lost" message appears
+	pax-mark -m "${D}/opt/tivoli/tsm/client/ba/bin/dsmc"
 
 	systemd_dounit "${FILESDIR}/dsmc.service"
 	systemd_dounit "${FILESDIR}/dsmcad.service"
