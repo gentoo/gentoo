@@ -1378,13 +1378,13 @@ app-emulation/vmware-vix 1.11.4.744019: VMware VIX API for Linux
 app-emulation/vov 2.0.0: A tool that emulates the behavior of a Von-Neumann machine
 app-emulation/vpcs 0.6: Simulate up to 9 PCs in place of VMware boxes in a Dynamips network
 app-emulation/wine 2.0 2.1 2.2 2.3 9999: Free implementation of Windows(tm) on Unix
-app-emulation/wine-any 2.0-r1 2.1-r1 2.2-r1 2.3-r1 2.4-r1 2.5-r1 2.6-r1 2.7-r1 2.8-r1 2.9-r1 2.10-r1 2.11-r1 2.12-r1 2.13-r1 2.14-r1 2.15-r1 2.16-r1 2.17-r1 9999: Free implementation of Windows(tm) on Unix, with optional external patchsets
-app-emulation/wine-d3d9 2.0-r1 2.1-r1 2.2-r1 2.3-r1 2.4-r1 2.5-r1 2.6-r1 2.7-r1 2.8-r1 2.9-r1 2.10-r1 2.11-r1 2.12-r1 2.13-r1 2.14-r1 2.15-r1 2.16-r1 2.17-r1 9999: Free implementation of Windows(tm) on Unix, with Gallium Nine patchset
+app-emulation/wine-any 2.0-r1 2.1-r1 2.2-r1 2.3-r1 2.4-r1 2.5-r1 2.6-r1 2.7-r1 2.8-r1 2.9-r1 2.10-r1 2.11-r1 2.12-r1 2.13-r1 2.14-r1 2.15-r1 2.16-r1 2.17-r1 2.18 2.19 9999: Free implementation of Windows(tm) on Unix, with optional external patchsets
+app-emulation/wine-d3d9 2.0-r1 2.1-r1 2.2-r1 2.3-r1 2.4-r1 2.5-r1 2.6-r1 2.7-r1 2.8-r1 2.9-r1 2.10-r1 2.11-r1 2.12-r1 2.13-r1 2.14-r1 2.15-r1 2.16-r1 2.17-r1 2.18 2.19 9999: Free implementation of Windows(tm) on Unix, with Gallium Nine patchset
 app-emulation/wine-desktop-common 20150204: Various desktop menu items and icons for wine
 app-emulation/wine-gecko 2.47-r1: A Mozilla Gecko based version of Internet Explorer for Wine
 app-emulation/wine-mono 4.6.4 4.7.0 4.7.1: Wine Mono is a replacement for the .NET runtime and class libraries in Wine
-app-emulation/wine-staging 2.0-r1 2.1-r1 2.2-r1 2.3-r1 2.4-r1 2.5-r1 2.6-r1 2.7-r1 2.8-r1 2.9-r1 2.10-r1 2.11-r1 2.12-r1 2.13-r1 2.14-r1 2.15-r1 2.16-r1 2.17-r1 2.18 9999: Free implementation of Windows(tm) on Unix, with Wine-Staging patchset
-app-emulation/wine-vanilla 2.0 2.0-r1 2.0.1 2.0.1-r1 2.0.2 2.0.2-r1 2.1-r1 2.2-r1 2.3-r1 2.4-r1 2.5-r1 2.6-r1 2.7-r1 2.8-r1 2.9-r1 2.10-r1 2.11-r1 2.12-r1 2.13-r1 2.14-r1 2.15-r1 2.16-r1 2.17-r1 2.18-r1 2.19 9999: Free implementation of Windows(tm) on Unix, without external patchsets
+app-emulation/wine-staging 2.0-r1 2.1-r1 2.2-r1 2.3-r1 2.4-r1 2.5-r1 2.6-r1 2.7-r1 2.8-r1 2.9-r1 2.10-r1 2.11-r1 2.12-r1 2.13-r1 2.14-r1 2.15-r1 2.16-r1 2.17-r1 2.18 2.19 9999: Free implementation of Windows(tm) on Unix, with Wine-Staging patchset
+app-emulation/wine-vanilla 2.0 2.0-r1 2.0.1 2.0.1-r1 2.0.2 2.0.2-r1 2.0.3 2.1-r1 2.2-r1 2.3-r1 2.4-r1 2.5-r1 2.6-r1 2.7-r1 2.8-r1 2.9-r1 2.10-r1 2.11-r1 2.12-r1 2.13-r1 2.14-r1 2.15-r1 2.16-r1 2.17-r1 2.18-r2 2.19-r1 2.20 9999: Free implementation of Windows(tm) on Unix, without external patchsets
 app-emulation/winetricks 20170823 99999999: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4: HP48 Calculator Emulator
 app-emulation/xcpc 20070122: XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C.
@@ -9995,6 +9995,7 @@ dev-ruby/sinatra-partial 1.0.1: Just the partials helper in a gem
 dev-ruby/six 0.2.0: An ultra lite authorization library
 dev-ruby/slim 3.0.7-r1 3.0.8: A template language aiming to reduce the syntax to the essential parts
 dev-ruby/slop 3.6.0 4.4.1 4.4.3 4.5.0 4.6.0: A simple option parser with an easy to remember syntax and friendly API
+dev-ruby/slow_enumerator_tools 1.0.0: Transform Ruby enumerators that produce data slowly and unpredictably
 dev-ruby/snmplib 1.2.0-r1: SNMP library implemented in pure Ruby
 dev-ruby/source_map 3.0.1: Provides an API for parsing, and an API for generating source maps in ruby
 dev-ruby/sourcemap 0.1.1: Ruby source maps
@@ -18370,7 +18371,7 @@ www-apps/moodle 3.1.8 3.2.5 3.3.2: The Moodle Course Management System
 www-apps/mypictures 20040202 20040202-r1: Simple photo-gallery for websites
 www-apps/mythweb 0.28.1: PHP scripts intended to manage MythTV from a web browser
 www-apps/nanoblogger 3.2.3 3.3 3.5_rc1 3.5_rc1-r1: Small and simple weblog engine written in Bash for the command-line
-www-apps/nanoc 4.6.4 4.7.14 4.8.1 4.8.5 4.8.9 4.8.10: nanoc is a simple but very flexible static site generator written in Ruby
+www-apps/nanoc 4.6.4 4.7.14 4.8.10: nanoc is a simple but very flexible static site generator written in Ruby
 www-apps/nextcloud 11.0.4 11.0.5 12.0.2 12.0.3: Personal cloud that runs on your own server
 www-apps/nikola 7.8.8: A static website and blog generator
 www-apps/novnc 0.6.2 9999: noVNC is a VNC client implemented using HTML5 technologies
