@@ -37,6 +37,7 @@
 # https://bugs.gentoo.org/buglist.cgi?quicksearch=media-sound%2Faudacious
 <media-sound/audacious-3.9
 <media-plugins/audacious-plugins-3.9
+<x11-themes/audacious-themes-0.0.4-r1
 
 # Mike Gilbert <floppym@gentoo.org> (04 Nov 2017)
 # Dev channel releases are only for people who are developers or want more
