@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Gilbert <floppym@gentoo.org> (05 Nov 2017)
+# Breaks several reverse dependencies.
+# https://bugs.gentoo.org/635934
+>=dev-util/scons-3.0.0
+
 # James Le Cuirot <chewi@gentoo.org> (05 Nov 2017)
 # Java 7 is old and we are no longer able to support it. The ability
 # to build against Java 7 may return when we update the eclasses for
