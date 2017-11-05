@@ -3,18 +3,20 @@
 
 EAPI=6
 
-EGIT_REPO_URI="https://github.com/philsquared/Catch.git"
-EGIT_BRANCH=Catch1.x
-inherit cmake-utils git-r3
+inherit cmake-utils
+
+MY_P=${PN^}2-${PV}
 
 DESCRIPTION="Modern C++ header-only framework for unit-tests"
 HOMEPAGE="https://github.com/philsquared/Catch"
-SRC_URI=""
+SRC_URI="https://github.com/philsquared/Catch/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="Boost-1.0"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
+
+S=${WORKDIR}/${MY_P}
 
 src_configure() {
 	local mycmakeargs=(
