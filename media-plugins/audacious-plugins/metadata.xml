@@ -20,7 +20,6 @@
 		<flag name="gtk3">Link against version 3 of the GIMP Toolkit instead of version 2 (x11-libs/gtk+)</flag>
 		<flag name="hotkeys">Enable support for controlling via hotkeys</flag>
 		<flag name="http">Support HTTP streams through neon</flag>
-		<flag name="midi">Build with amidi-plug (MIDI synth) support</flag>
 		<flag name="scrobbler">Build with scrobbler/LastFM submission support</flag>
 		<flag name="sid">Build with SID (Commodore 64 Audio) support</flag>
 		<flag name="soxr">Build with SoX Resampler support</flag>
