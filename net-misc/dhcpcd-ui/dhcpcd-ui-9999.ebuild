@@ -19,9 +19,10 @@ fi
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="debug gtk gtk3 libnotify qt5"
+IUSE="debug gtk gtk3 libnotify ncurses qt5"
 
 REQUIRED_USE="
+	|| ( gtk gtk3 ncurses qt5 )
 	?? ( gtk gtk3 qt5 )
 	libnotify? ( || ( gtk gtk3 ) )"
 
@@ -37,6 +38,9 @@ DEPEND="
 		x11-libs/gdk-pixbuf:2
 		x11-libs/gtk+:3
 	)
+	ncurses? (
+		sys-libs/ncurses:0
+	)
 	qt5? (
 		dev-qt/qtgui:5
 		dev-qt/qtcore:5
@@ -47,11 +51,20 @@ DEPEND="
 RDEPEND="${DEPEND}
 	>=net-misc/dhcpcd-6.4.4"
 
+src_prepare() {
+	default
+	# patch for ncurses[tinfo] see #457530
+	if use ncurses ; then
+		sed -i 's/LIB_CURSES=-lcurses/LIB_CURSES=`pkg-config --libs ncurses`/' "${S}/configure" || die "sed failed"
+	fi
+}
+
 src_configure() {
 	local myeconfargs=(
 		$(use_enable debug)
 		$(usex gtk  '--with-gtk=gtk+-2.0 --with-icons' '')
 		$(usex gtk3 '--with-gtk=gtk+-3.0 --with-icons' '')
+		$(usex ncurses '--with-curses' '--without-curses')
 		$(usex qt5 '--with-qt --with-icons' '--without-qt')
 		$(use_enable libnotify notification)
 		$(use gtk || use gtk3 || echo '--without-icons --without-gtk')
