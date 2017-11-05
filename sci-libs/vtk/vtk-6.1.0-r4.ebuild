@@ -77,6 +77,7 @@ RDEPEND="
 	mpi? (
 		virtual/mpi[cxx,romio]
 		python? ( dev-python/mpi4py[${PYTHON_USEDEP}] )
+	)
 	mysql? ( virtual/mysql )
 	odbc? ( dev-db/unixODBC )
 	offscreen? ( media-libs/mesa[osmesa] )
@@ -84,7 +85,6 @@ RDEPEND="
 	python? (
 		${PYTHON_DEPS}
 		dev-python/sip[${PYTHON_USEDEP}]
-		)
 	)
 	qt5? (
 		dev-qt/designer:5
@@ -94,7 +94,8 @@ RDEPEND="
 		dev-qt/qtsql:5
 		dev-qt/qtwebkit:5
 		python? ( dev-python/PyQt5[${PYTHON_USEDEP}] )
-		)
+	)
+	R? ( dev-lang/R )
 	tbb? ( dev-cpp/tbb )
 	tcl? ( dev-lang/tcl:0= )
 	tk? ( dev-lang/tk:0= )
@@ -108,10 +109,11 @@ RDEPEND="
 			)
 		)
 	xdmf2? ( sci-libs/xdmf2 )
-	R? ( dev-lang/R )"
+"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
-	java? ( >=virtual/jdk-1.5 )"
+	java? ( >=virtual/jdk-1.5 )
+"
 
 S="${WORKDIR}"/VTK-${PV}
 
@@ -125,9 +127,9 @@ PATCHES=(
 	"${FILESDIR}"/${P}-memset.patch
 	"${FILESDIR}"/${P}-gdal2.patch
 	"${FILESDIR}"/${P}-gcc67.patch
-	)
+)
 
-RESTRICT=test
+RESTRICT="test"
 
 pkg_setup() {
 	use java && java-pkg-opt-2_pkg_setup
