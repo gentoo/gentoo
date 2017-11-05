@@ -57,6 +57,8 @@ src_prepare() {
 	# force qt5 compilation
 	if use qt5; then
 		export QT_SELECT=qt5
+		sed -e '/^desktop\.path/s:\$\$SYSCONFDIR/xdg/autostart:\$\$PREFIX/share/applications:' \
+		-i "${S}"/src/dhcpcd-qt/dhcpcd-qt.pro || die
 	fi
 
 	# patch for ncurses[tinfo] see #457530
