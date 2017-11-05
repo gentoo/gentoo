@@ -211,6 +211,7 @@ src_configure() {
 		${myconf} \
 		${drv_build} \
 		${minimal_build} \
+		--enable-hpps-install \
 		$(use_enable doc doc-build) \
 		$(use_enable fax fax-build) \
 		$(use_enable !minimal gui-build) \
