@@ -13,21 +13,16 @@ SRC_URI=""
 LICENSE="Boost-1.0"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
+IUSE="test"
 
-# CMake is only used to build & run tests, so override phases
-src_configure() { :; }
-src_compile() { :; }
-
-src_test() {
+src_configure() {
+	local mycmakeargs=(
+		-DNO_SELFTEST=$(usex !test)
+	)
 	cmake-utils_src_configure
-	cmake-utils_src_compile
-	cmake-utils_src_test
 }
 
 src_install() {
-	# same location as used in fedora
-	insinto /usr/include/catch
-	doins -r include/.
+	cmake-utils_src_install
 	dodoc -r docs/.
 }
