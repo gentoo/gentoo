@@ -7,8 +7,8 @@ PYTHON_COMPAT=( python2_7 )
 
 inherit cmake-utils eutils fdo-mime fortran-2 python-single-r1
 
-DESCRIPTION="QT based Computer Aided Design application"
-HOMEPAGE="http://www.freecadweb.org/"
+DESCRIPTION="Qt based Computer Aided Design application"
+HOMEPAGE="https://www.freecadweb.org/"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
