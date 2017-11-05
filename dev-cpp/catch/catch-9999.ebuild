@@ -4,7 +4,6 @@
 EAPI=6
 
 EGIT_REPO_URI="https://github.com/philsquared/Catch.git"
-EGIT_BRANCH=catch2
 inherit cmake-utils git-r3
 
 DESCRIPTION="Modern C++ header-only framework for unit-tests"
