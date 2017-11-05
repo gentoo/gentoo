@@ -9,7 +9,7 @@ inherit kde5
 
 DESCRIPTION="Free digital painting application. Digital Painting, Creative Freedom!"
 HOMEPAGE="https://www.kde.org/applications/graphics/krita/ https://krita.org/"
-SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="mirror://kde/stable/${PN}/${PV%.1}/${P}.tar.xz"
 
 LICENSE="GPL-3"
 KEYWORDS="~amd64 ~x86"

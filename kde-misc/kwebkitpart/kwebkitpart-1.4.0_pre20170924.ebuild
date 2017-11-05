@@ -3,11 +3,12 @@
 
 EAPI=6
 
-inherit kde5
+COMMIT=6179caa457e0a6c5d17904e877e18171bd6ac795
+inherit kde5 vcs-snapshot
 
 DESCRIPTION="WebKit KPart for Konqueror"
 HOMEPAGE="https://quickgit.kde.org/?p=kwebkitpart.git"
-SRC_URI="https://dev.gentoo.org/~asturm/${P}.tar.xz"
+SRC_URI="https://github.com/KDE/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2"
 KEYWORDS="~amd64 ~x86"
