@@ -205,7 +205,6 @@ dev-qt/qtwebkit:4
 # Andreas Sturmlechner <asturm@gentoo.org> (16 Oct 2017)
 # Reverse-deps on dead Qt4WebKit. Bug #620684
 <app-misc/anki-2.1
-<app-misc/sleepyhead-1.0.0_beta2
 <media-gfx/freecad-0.17_pre
 >=net-misc/teamviewer-10
 <sci-libs/opencascade-7.0
