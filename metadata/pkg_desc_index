@@ -15316,7 +15316,7 @@ net-misc/lksctp-tools 1.0.13 1.0.16 1.0.17: Tools for Linux Kernel Stream Contro
 net-misc/lldpd 0.9.3-r1 0.9.7 0.9.8: Implementation of IEEE 802.1ab (LLDP)
 net-misc/mediatomb 0.12.1-r8 0.12.2_pre20160522: MediaTomb is an open source UPnP MediaServer
 net-misc/megatools 1.9.97 1.9.98: Command line tools and C library for accessing Mega cloud storage
-net-misc/memcached 1.4.33 1.4.39 1.5.1 1.5.2: High-performance, distributed memory object caching system
+net-misc/memcached 1.4.33 1.4.39 1.5.1 1.5.2 1.5.3: High-performance, distributed memory object caching system
 net-misc/mico 2.3.13-r8 2.3.13-r9 2.3.13-r10 9999: A freely available and fully compliant implementation of the CORBA standard
 net-misc/midentd 2.3.1-r2: ident daemon with masquerading and fake replies support
 net-misc/mikutter 3.4.2-r1 3.5.4-r1 9999: Simple, powerful and moeful twitter client
@@ -17516,7 +17516,7 @@ sys-cluster/ccs 2.03.09: cluster configuration system to manage the cluster conf
 sys-cluster/ceph 10.2.3-r2 10.2.7-r1 10.2.9 10.2.9-r1 10.2.9-r2 10.2.9-r3 10.2.10 12.2.1: Ceph distributed filesystem
 sys-cluster/charm 6.5.1-r1 6.5.1-r2 6.5.1-r3 6.6.0 6.6.0-r1 6.6.1 6.7.1: Message-passing parallel language and runtime system
 sys-cluster/charmdebug 6.2.0-r1: A debugger for Charm++ applications
-sys-cluster/cinder 9.1.4 10.0.6 11.0.0 2016.2.9999 2017.1.9999 2017.2.9999: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
+sys-cluster/cinder 9.1.4 10.0.6 11.0.0 11.0.1 2016.2.9999 2017.1.9999 2017.2.9999: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
 sys-cluster/classads 1.0.10: Condor's classified advertisement language
 sys-cluster/cluster-glue 1.0.11 1.0.12: Library pack for Heartbeat / Pacemaker
 sys-cluster/cman 3.1.5 3.1.5-r1 3.2.0: Cluster Manager
