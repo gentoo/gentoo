@@ -35,19 +35,6 @@ vim-plugin_src_install() {
 	has "${EAPI:-0}" 0 1 2 && ! use prefix && ED="${D}"
 	local f
 
-	if use !prefix && [[ ${EUID} -eq 0 ]] ; then
-		ebegin "Fixing file permissions"
-		# Make sure perms are good
-		chmod -R a+rX "${S}" || die "chmod failed"
-		find "${S}" -user  'portage' -exec chown root '{}' \; || die "chown failed"
-		if use userland_BSD || [[ ${CHOST} == *-darwin* ]] ; then
-			find "${S}" -group 'portage' -exec chgrp wheel '{}' \; || die "chgrp failed"
-		else
-			find "${S}" -group 'portage' -exec chgrp root '{}' \; || die "chgrp failed"
-		fi
-		eend $?
-	fi
-
 	# When globbing, if nothing exists, the shell literally returns the glob
 	# pattern. So turn on nullglob and extglob options to avoid this.
 	eshopts_push -s extglob
@@ -85,8 +72,8 @@ vim-plugin_src_install() {
 	mv "${S}" "${ED}"/usr/share/vim/vimfiles || die \
 		"couldn't move ${S} to ${ED}/usr/share/vim/vimfiles"
 
-	# Fix remaining bad permissions
-	chmod -R -x+X "${ED}"/usr/share/vim/vimfiles/ || die "chmod failed"
+	# Set permissions
+	fperms -R a+rX /usr/share/vim/vimfiles
 }
 
 # @FUNCTION: vim-plugin_pkg_postinst
