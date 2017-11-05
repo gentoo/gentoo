@@ -96,7 +96,7 @@ multilib_src_configure() {
 		$(use_enable threads) \
 		--enable-timers \
 		--enable-file \
-		--disable-loadso \
+		$(use_enable kernel_Winnt loadso) \
 		--enable-cpuinfo \
 		--enable-assembly \
 		$(use_enable cpu_flags_x86_sse ssemath) \
