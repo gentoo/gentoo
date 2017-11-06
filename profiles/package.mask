@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Brian Evans <grknight@gentoo.org (06 Nov 2017)
+# Broken with new PHP, dead upstream, broken tests
+# Masked for removal in 30 days.
+dev-php/PEAR-HTTP_Download
+
 # Mike Gilbert <floppym@gentoo.org> (05 Nov 2017)
 # Breaks several reverse dependencies.
 # https://bugs.gentoo.org/635934
