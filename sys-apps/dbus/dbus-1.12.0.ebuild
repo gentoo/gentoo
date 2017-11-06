@@ -23,7 +23,7 @@ REQUIRED_USE="
 "
 
 CDEPEND="
-	>=dev-libs/expat-2
+	>=dev-libs/expat-2.1.0
 	selinux? ( sys-libs/libselinux )
 	elogind? ( sys-auth/elogind )
 	systemd? ( sys-apps/systemd:0= )
@@ -38,7 +38,7 @@ DEPEND="${CDEPEND}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 	test? (
-		>=dev-libs/glib-2.36:2
+		>=dev-libs/glib-2.40:2
 		${PYTHON_DEPS}
 		)
 "
@@ -53,6 +53,10 @@ DOC_CONTENTS="
 
 # out of sources build dir for make check
 TBD="${WORKDIR}/${P}-tests-build"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-enable-elogind.patch"
+)
 
 pkg_setup() {
 	enewgroup messagebus
@@ -73,9 +77,7 @@ src_prepare() {
 		-e '/"dispatch"/d' \
 		bus/test-main.c || die
 
-	eapply "${FILESDIR}/${PN}-enable-elogind.patch"
-
-	eapply_user
+	default
 
 	# required for bug 263909, cross-compile so don't remove eautoreconf
 	eautoreconf
@@ -121,7 +123,7 @@ multilib_src_configure() {
 		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
 		--with-dbus-user=messagebus
 		$(use_with X x)
-		)
+	)
 
 	if [[ ${CHOST} == *-darwin* ]]; then
 		myconf+=(
