@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Brian Evans <grknight@gentoo.org (6 Nov 2017)
+# Requires stable phpunit
+dev-php/PEAR-Text_Password test
+
 # Andreas Sturmlechner <asturm@gentoo.org> (22 Oct 2017)
 # Requires unmaintained unstable dependency net-libs/gloox.
 # The go flag requires stable masked dev-lang/go[gccgo].
