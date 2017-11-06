@@ -11,7 +11,7 @@ HOMEPAGE="http://pear.php.net/package/${MY_PN}"
 SRC_URI="http://download.pear.php.net/package/${MY_P}.tgz"
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm ~hppa ~ia64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86"
 IUSE="examples test"
 
 # Only needs PEAR_Exception (not yet packaged) -- not all of PEAR-PEAR.
