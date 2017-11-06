@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/amanda/${P}.tar.gz"
 
 LICENSE="HPND BSD BSD-2 GPL-2+ GPL-3+"
 SLOT="0"
-IUSE="curl gnuplot ipv6 kerberos minimal nls readline s3 samba systemd xfs"
+IUSE="curl gnuplot ipv6 kerberos minimal ndmp nls readline s3 samba systemd xfs"
 
 KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
 RDEPEND="sys-libs/readline:=
@@ -287,6 +287,9 @@ src_configure() {
 
 	# build manpages
 	myconf="${myconf} --enable-manpage-build"
+
+	# Bug #636262
+	myconf="${myconf} $(use_with ndmp ndmp)"
 
 	# bug #483120
 	tc-export AR
