@@ -30,6 +30,7 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	xdg_environment_reset
 	tc-export CXX
+	epatch "${FILESDIR}/${P}-exiv-0.26.patch"
 }
 
 src_configure() {
