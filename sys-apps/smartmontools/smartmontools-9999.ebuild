@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
 inherit autotools flag-o-matic systemd
 if [[ ${PV} == "9999" ]] ; then
@@ -35,6 +35,7 @@ RDEPEND="${DEPEND}
 	daemon? ( virtual/mailx )
 	selinux? ( sec-policy/selinux-smartmon )
 	update_drivedb? (
+		app-crypt/gnupg
 		|| (
 			net-misc/curl
 			net-misc/wget
@@ -63,6 +64,7 @@ src_configure() {
 		$(use_with caps libcap-ng)
 		$(use_with selinux)
 		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
+		$(use_with update_drivedb gnupg)
 		$(use_with update_drivedb update-smart-drivedb)
 	)
 	econf "${myeconfargs[@]}"
