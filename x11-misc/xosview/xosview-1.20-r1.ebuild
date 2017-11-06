@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils toolchain-funcs
+inherit eutils toolchain-funcs xdg-utils
 
 DESCRIPTION="X11 operating system viewer"
 HOMEPAGE="http://www.pogo.org.uk/~mark/xosview/"
@@ -22,6 +22,8 @@ RDEPEND="${COMMON_DEPS}
 DEPEND="${COMMON_DEPS}
 	x11-proto/xproto"
 
+DOCS=( CHANGES README.linux TODO )
+
 src_prepare() {
 	default
 
@@ -35,17 +37,21 @@ src_compile() {
 }
 
 src_install() {
-	dobin ${PN}
+	emake PREFIX="${D%/}/usr" install
 	use suid && fperms 4755 /usr/bin/${PN}
 	insinto /usr/share/X11/app-defaults
 	newins Xdefaults XOsview
-	doman *.1
-	dodoc CHANGES README.linux TODO
 }
 
 pkg_postinst() {
+	xdg_desktop_database_update
+
 	if ! use suid ; then
 		ewarn "If you want to use serial meters ${PN} needs to be executed as root."
 		ewarn "Please see ${EPREFIX}/usr/share/doc/${PF}/README.linux for details."
 	fi
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }
