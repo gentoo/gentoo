@@ -1,9 +1,9 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI="6"
 
-inherit php-pear-r1
+inherit php-pear-r2
 
 DESCRIPTION="Provides traces, timings, executed queries, watched variables etc. "
 
@@ -14,3 +14,9 @@ IUSE="minimal"
 
 RDEPEND="!minimal? ( dev-php/PEAR-Text_Highlighter
 		    dev-php/PEAR-Services_W3C_HTMLValidator )"
+DOCS=( docs/README docs/INSTALL docs/CHANGELOG docs/FAQ docs/TODO docs/CONTACT )
+src_install() {
+	php-pear-r2_src_install
+	docinto html
+	dodoc -r css images js
+}

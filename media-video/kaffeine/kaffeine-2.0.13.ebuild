@@ -47,7 +47,7 @@ RDEPEND="${CDEPEND}
 DOCS=( Changelog NOTES README.md )
 
 src_prepare() {
-	default
+	kde5_src_prepare
 
 	if ! use handbook ; then
 		sed -i CMakeLists.txt \
