@@ -12,7 +12,7 @@ SRC_URI="https://releases.pagure.org/libosinfo/${P}.tar.gz"
 LICENSE="GPL-2+"
 SLOT="0"
 
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 
 # Blocker on old libosinfo as osinfo-db-validate was part of it before
 RDEPEND="
