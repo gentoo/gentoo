@@ -9,7 +9,7 @@ RUBY_FAKEGEM_GEMSPEC="vagrant.gemspec"
 RUBY_FAKEGEM_EXTRAINSTALL="keys plugins templates version.txt"
 RUBY_FAKEGEM_TASK_DOC=""
 
-inherit bash-completion-r1 ruby-fakegem eutils
+inherit bash-completion-r1 ruby-fakegem
 
 DESCRIPTION="A tool for building and distributing development environments"
 HOMEPAGE="http://vagrantup.com/"
@@ -41,7 +41,7 @@ ruby_add_rdepend "
 "
 
 ruby_add_bdepend "
-	>=dev-ruby/rake-11.3.0
+	>=dev-ruby/rake-12.0.0
 "
 
 all_ruby_prepare() {
@@ -62,13 +62,7 @@ all_ruby_prepare() {
 	sed -e '/rb-kqueue/d' \
 		-i ${PN}.gemspec || die
 
-	# disable embedded CA certs and use system ones
-	epatch "${FILESDIR}"/${PN}-1.8.1-disable-embedded-cacert.patch
-
-	# fix rvm issue (bug #474476)
-	epatch "${FILESDIR}"/${PN}-1.8.1-rvm.patch
-
-	sed -e "s/@VAGRANT_VERSION@/${PV}/g" "${FILESDIR}/${PN}.in" > "${PN}" || die
+	sed -e "s/@VAGRANT_VERSION@/${PV}/g" "${FILESDIR}/${PN}.in-r1" > "${PN}" || die
 }
 
 all_ruby_install() {
