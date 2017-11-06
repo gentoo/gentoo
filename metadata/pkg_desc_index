@@ -10359,7 +10359,7 @@ dev-util/cdiff 0.9.8 9999: Term based view of colored, incremental diff in a Git
 dev-util/cflow 1.4: C function call hierarchy analyzer
 dev-util/cgdb 0.6.6 0.6.7 0.6.8 0.7.0 9999: A curses front-end for GDB, the GNU debugger
 dev-util/cgvg 1.6.2: A tiny version of cscope that is much more useful in certian instances
-dev-util/checkbashisms 2.17.8 2.17.9 2.17.10: Perl script to check for commonly used bash features not defined by POSIX
+dev-util/checkbashisms 2.17.10 2.17.11: Perl script to check for commonly used bash features not defined by POSIX
 dev-util/checkstyle 7.2: Development tool to help write Java code that adheres to a coding standard
 dev-util/clair 2.0.1: Vulnerability Static Analysis for Containers
 dev-util/clazy 1.2: Compiler plugin which allows clang to understand Qt semantics
@@ -10367,7 +10367,7 @@ dev-util/cligh 0.1_p20120630 0.2 9999: Command-line interface to GitHub
 dev-util/clinfo 2.2.17.10.25 9999: A tool to display info about the system's OpenCL capabilities
 dev-util/clion 1.2.4.143.1186 2016.2.1 2017.2.3: A complete toolset for C and C++ development
 dev-util/cloc 1.64 1.66 1.70 1.72: Count Lines of Code
-dev-util/cmake 3.7.2 3.8.2 3.9.4 3.9.5 3.10.0_rc3: Cross platform Make
+dev-util/cmake 3.7.2 3.8.2 3.9.4 3.9.5 3.10.0_rc4: Cross platform Make
 dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
 dev-util/cmdtest 0.16 0.18 0.27 0.30: black box tests Unix command line tools
 dev-util/cmocka 1.0.1 1.1.1: A unit testing framework for C
@@ -10702,7 +10702,7 @@ dev-vcs/darcs 2.8.4-r6 2.10.1 2.10.3-r1 2.12.0 2.12.4 2.12.5: a distributed, int
 dev-vcs/easygit 1.6.5.5: Easy GIT is a wrapper for git, designed to make git easy to learn and use
 dev-vcs/fossil 1.34 1.35 2.2 2.3: Simple, high-reliability, source control management, and more
 dev-vcs/giggle 0.7-r2: GTK+ Frontend for GIT
-dev-vcs/git 2.13.5 2.13.6 2.14.2 2.14.3 2.15.0_rc2 2.15.0 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
+dev-vcs/git 2.13.6 2.14.3 2.15.0 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
 dev-vcs/git-annex 6.20170818: manage files with git, without checking their contents into git
 dev-vcs/git-bz 0.2015.09.08 9999: Bugzilla subcommand for git
 dev-vcs/git-bzr-ng 0_pre20120822-r2: Git subcommand providing a bidirectional bridge to Bazaar repositories
@@ -13003,7 +13003,7 @@ media-libs/gstreamer-editing-services 1.10.3 1.10.4 1.12.3: SDK for making video
 media-libs/guilib 1.2.1: a simple widget set for SDL
 media-libs/gupnp-dlna 0.10.4 0.10.5: Library providing DLNA-related functionality for MediaServers
 media-libs/hamlib 3.1: Ham radio backend rig control libraries
-media-libs/harfbuzz 1.4.5 1.4.6-r2 1.4.8 1.5.1 1.6.0 1.6.2 9999: An OpenType text shaping engine
+media-libs/harfbuzz 1.4.5 1.4.6-r2 1.4.8 1.5.1 1.6.2 1.6.3 9999: An OpenType text shaping engine
 media-libs/hupnp-ng 9999: A software library for building UPnP devices, fork of herqq
 media-libs/icc-profiles-basiccolor-printing2009 1.2.0: ICC profiles for printing/offset
 media-libs/icc-profiles-openicc 1.3.0 1.3.1: ICC color profiles by OpenICC
@@ -14730,7 +14730,7 @@ net-ftp/oftpd 0.3.7-r7 0.3.7-r8 0.3.7-r9 0.3.7-r10: Secure, small, anonymous onl
 net-ftp/oneclickftp 0.5.1: The somehow different FTP client
 net-ftp/proftpd 1.3.5e 1.3.6: An advanced and very configurable FTP server
 net-ftp/profxp 3_pre2-r2: FXP (server-to-server FTP) commandline client written in Perl
-net-ftp/pure-ftpd 1.0.45-r1 1.0.46: Fast, production-quality, standard-conformant FTP server
+net-ftp/pure-ftpd 1.0.45-r1 1.0.46 1.0.47: Fast, production-quality, standard-conformant FTP server
 net-ftp/pureadmin 0.4-r1: GUI tool used to make the management of Pure-FTPd a little easier
 net-ftp/pybootd 1.5.0_pre20110524131526: Simplified BOOTP/DHCP/PXE/TFTP server
 net-ftp/qshare 2.1.5-r1: FTP server with a service discovery feature
@@ -14885,7 +14885,7 @@ net-libs/gnet 2.0.8-r2: A simple network library
 net-libs/gnome-online-accounts 3.22.5 3.22.7 3.24.4: GNOME framework for accessing online accounts
 net-libs/gnutls 3.5.13 3.5.15 3.5.16 3.6.0 3.6.1: A TLS 1.2 and SSL 3.0 implementation for the GNU project
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
-net-libs/gsoap 2.8.40 2.8.51 2.8.52 2.8.54: A cross-platform open source C and C++ SDK for SOAP/XML Web services
+net-libs/gsoap 2.8.51 2.8.54 2.8.55: A cross-platform open source C and C++ SDK for SOAP/XML Web services
 net-libs/gssdp 1.0.2: A GObject-based API for handling resource discovery and announcement over SSDP
 net-libs/gtk-vnc 0.7.1: VNC viewer widget for GTK
 net-libs/gupnp 1.0.2: An object-oriented framework for creating UPnP devs and control points
@@ -15100,7 +15100,7 @@ net-mail/mailgraph 1.14-r2: A mail statistics RRDtool frontend for Postfix
 net-mail/mailman 2.1.23 2.1.24: A python-based mailing list server with an extensive web interface
 net-mail/mailshears 0.0.3: Mangle your mail garden
 net-mail/mailsync 5.2.1: A mailbox synchronizer
-net-mail/mailutils 3.1.1 3.2 3.3: A useful collection of mail servers, clients, and filters
+net-mail/mailutils 3.1.1 3.2 3.3 3.4: A useful collection of mail servers, clients, and filters
 net-mail/mairix 0.23: Indexes and searches Maildir/MH folders
 net-mail/mboxgrep 0.7.9-r1: Grep for mbox files
 net-mail/mess822 0.58-r2: Collection of utilities for parsing Internet mail messages
@@ -15299,7 +15299,7 @@ net-misc/jrdesktop 0.3.1.0: Java Remote Desktop (jrdesktop) software for viewing
 net-misc/jwhois 3.2.3-r1 4.0 4.0-r1: Advanced Internet Whois client capable of recursive queries
 net-misc/kafka-bin 0.10.0.1 0.10.1.0 0.10.1.0-r1 0.10.1.1 0.10.2.0 0.10.2.1 0.10.2.1-r1 0.11.0.0 0.11.0.0-r1 0.11.0.1 1.0.0: A high-throughput distributed messaging system
 net-misc/kafkacat 1.3.1: Generic command line non-JVM Apache Kafka producer and consumer
-net-misc/kea 1.1.0 1.2.0-r1: High-performance production grade DHCPv4 & DHCPv6 server
+net-misc/kea 1.2.0-r1 1.3.0: High-performance production grade DHCPv4 & DHCPv6 server
 net-misc/keychain 2.8.1 2.8.2 2.8.3: Agent manager for OpenSSH, ssh.com, Sun SSH, and GnuPG
 net-misc/knemo 0.8.0_pre20161211: Plasma Network Monitor
 net-misc/knock 0.6 0.7: A simple port-knocking daemon
@@ -17914,7 +17914,7 @@ sys-libs/lib-compat-loki 0.2-r1: Compatibility libc6 libraries for Loki games
 sys-libs/libaal 1.0.5 1.0.5-r1 1.0.6: library required by reiser4progs
 sys-libs/libapparmor 2.11.1: Library to support AppArmor userspace utilities
 sys-libs/libavc1394 0.5.3 0.5.4 0.5.4-r1: library for the 1394 Trade Association AV/C (Audio/Video Control) Digital Interface Command Set
-sys-libs/libblockdev 2.12 2.13: A library for manipulating block devices
+sys-libs/libblockdev 2.13 2.14: A library for manipulating block devices
 sys-libs/libcap 2.24-r2 2.25: POSIX 1003.1e capabilities
 sys-libs/libcap-ng 0.7.8: POSIX 1003.1e capabilities
 sys-libs/libchipcard 5.0.2: Libchipcard is a library for easy access to chip cards via chip card readers (terminals)
