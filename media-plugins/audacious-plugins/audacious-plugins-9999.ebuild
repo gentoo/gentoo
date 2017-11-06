@@ -12,16 +12,18 @@ if [[ ${PV} == *9999 ]]; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="https://github.com/audacious-media-player/audacious-plugins.git"
 else
-	SRC_URI="http://distfiles.audacious-media-player.org/${MY_P}.tar.bz2"
+	SRC_URI="
+		!gtk3? ( http://distfiles.audacious-media-player.org/${MY_P}.tar.bz2 )
+		gtk3? ( http://distfiles.audacious-media-player.org/${MY_P}-gtk3.tar.bz2 )"
 	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="aac +adplug alsa ampache aosd bs2b cdda cue ffmpeg flac fluidsynth gnome hotkeys http gme gtk jack lame libav
+IUSE="aac +adplug alsa ampache aosd bs2b cdda cue ffmpeg flac fluidsynth gnome hotkeys http gme gtk gtk3 jack lame libav
 	libnotify libsamplerate lirc mms modplug mp3 nls pulseaudio qt5 scrobbler sdl sid sndfile soxr vorbis wavpack"
 REQUIRED_USE="
-	^^ ( gtk qt5 )
+	^^ ( gtk gtk3 qt5 )
 	qt5? ( !libnotify )
 	|| ( alsa jack pulseaudio sdl )"
 
@@ -47,7 +49,7 @@ RDEPEND="
 	dev-libs/dbus-glib
 	dev-libs/glib[utils]
 	dev-libs/libxml2:2
-	~media-sound/audacious-${PV}[gtk?,qt5?]
+	~media-sound/audacious-${PV}[gtk?,gtk3?,qt5?]
 	aac? ( >=media-libs/faad2-2.7 )
 	alsa? ( >=media-libs/alsa-lib-1.0.16 )
 	ampache? ( www-apps/ampache )
@@ -68,9 +70,8 @@ RDEPEND="
 	)
 	fluidsynth? ( media-sound/fluidsynth )
 	http? ( >=net-libs/neon-0.26.4 )
-	gtk? (
-		x11-libs/gtk+:2
-	)
+	gtk? ( x11-libs/gtk+:2 )
+	gtk3? ( x11-libs/gtk+:3 )
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
@@ -108,6 +109,18 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
+src_unpack() {
+	if [[ ${PV} == *9999 ]]; then
+		git-r3_src_unpack
+	else
+		default
+
+		if use gtk3; then
+			mv "${MY_P}"{-gtk3,} || die
+		fi
+	fi
+}
+
 src_prepare() {
 	default
 	[[ ${PV} == *9999 ]] && eautoreconf
@@ -138,7 +151,7 @@ src_configure() {
 		$(use_enable fluidsynth amidiplug) \
 		$(use_enable flac filewriter) \
 		$(use_enable gme console) \
-		$(use_enable gtk) \
+		$(use_enable $(usex gtk gtk gtk3) gtk) \
 		$(use_enable hotkeys hotkey) \
 		$(use_enable http neon) \
 		$(use_enable jack) \
