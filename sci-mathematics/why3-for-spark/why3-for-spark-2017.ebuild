@@ -26,7 +26,7 @@ DEPEND=">=dev-lang/ocaml-4.02.3[ocamlopt?]
 	html? ( dev-tex/hevea )
 	hypothesis-selection? ( dev-ml/ocamlgraph )
 	zarith? ( dev-ml/zarith )
-	zip? ( dev-ml/camlzip )"
+	zip? ( >=dev-ml/camlzip-1.07 )"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}"/${MYP}
