@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm
+DESCRIPTION=Provides traces, timings, executed queries, watched variables etc.
+EAPI=6
+HOMEPAGE=https://pear.php.net/package/PHP_Debug
+IUSE=minimal
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=!minimal? ( dev-php/PEAR-Text_Highlighter dev-php/PEAR-Services_W3C_HTMLValidator ) >=dev-php/pear-1.8.1
+SLOT=0
+SRC_URI=https://pear.php.net/get/PHP_Debug-1.0.3.tgz
+_eclasses_=php-pear-r2	b2a1a4ee3c7dbd9ef3b77f199aa75f84
+_md5_=57acb2316e8ff088ebc6aa2e48691db6
