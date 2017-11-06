@@ -19084,7 +19084,7 @@ x11-misc/xmountains 2.9-r1: Fractal terrains of snow-capped mountains near water
 x11-misc/xnee 3.19-r1: Program suite to record, replay and distribute user actions
 x11-misc/xnots 0.2.1-r1 0.2.1-r2 9999: A desktop sticky note program for the unix geek
 x11-misc/xorg-cf-files 1.0.6: Old Imake-related build files
-x11-misc/xosview 1.19: X11 operating system viewer
+x11-misc/xosview 1.19 1.20: X11 operating system viewer
 x11-misc/xowl 9999: X11 Obstinate Window Lister
 x11-misc/xpad 4.2 4.9.0 5.0.0: a sticky note application for jotting down things to remember
 x11-misc/xplanet 1.3.1-r1: Render images of the earth into the X root window
