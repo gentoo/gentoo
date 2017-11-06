@@ -37,6 +37,7 @@ RDEPEND=">=app-arch/snappy-1.1.3
 	)"
 DEPEND="${RDEPEND}
 	=dev-lang/python-2*
+	<dev-util/scons-3
 	>=sys-devel/gcc-5.3.0:*
 	sys-libs/ncurses
 	sys-libs/readline
