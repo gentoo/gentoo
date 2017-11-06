@@ -1,9 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
-inherit eutils toolchain-funcs user
+inherit toolchain-funcs user
 
 MY_PV="${PV//_alpha/a}"
 MY_PV="${MY_PV//_beta/b}"
@@ -18,13 +18,14 @@ SRC_URI="ftp://ftp.isc.org/isc/kea/${MY_P}.tar.gz
 LICENSE="ISC BSD SSLeay GPL-2" # GPL-2 only for init script
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
+IUSE="openssl samples"
 
 DEPEND="
-	dev-cpp/gtest
 	dev-libs/boost
-	dev-libs/botan:0
+	dev-cpp/gtest
 	dev-libs/log4cplus
+	!openssl? ( dev-libs/botan:0= )
+	openssl? ( dev-libs/openssl:= )
 "
 RDEPEND="${DEPEND}"
 
@@ -35,18 +36,24 @@ src_prepare() {
 	sed -i \
 		-e "/VERSION=/s:'$: Gentoo-${PR}':" \
 		configure || die
+	default
 }
 
 src_configure() {
-	econf \
-		--disable-install-configurations \
-		--disable-static \
+	local myeconfargs=(
+		$(use_with openssl)
+		$(use_enable samples install-configurations)
+		--disable-static
 		--without-werror
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
 	default
-	prune_libtool_files --all
+	newconfd "${FILESDIR}"/${PN}-confd ${PN}
+	newinitd "${FILESDIR}"/${PN}-initd ${PN}
+	find "${ED}" \( -name "*.a" -o -name "*.la" \) -delete || die
 }
 
 pkg_preinst() {
