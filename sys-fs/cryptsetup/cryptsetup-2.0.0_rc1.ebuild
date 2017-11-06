@@ -19,14 +19,16 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~spa
 CRYPTO_BACKENDS="+gcrypt kernel nettle openssl"
 # we don't support nss since it doesn't allow cryptsetup to be built statically
 # and it's missing ripemd160 support so it can't provide full backward compatibility
-IUSE="${CRYPTO_BACKENDS} libressl nls pwquality python reencrypt static static-libs udev urandom"
+IUSE="${CRYPTO_BACKENDS} argon2 libressl nls pwquality python reencrypt static static-libs udev urandom"
 REQUIRED_USE="^^ ( ${CRYPTO_BACKENDS//+/} )
 	python? ( ${PYTHON_REQUIRED_USE} )
 	static? ( !gcrypt )" #496612
 
-LIB_DEPEND="dev-libs/libgpg-error[static-libs(+)]
+LIB_DEPEND="
+	dev-libs/libgpg-error[static-libs(+)]
 	dev-libs/popt[static-libs(+)]
 	sys-apps/util-linux[static-libs(+)]
+	argon2? ( app-crypt/argon2[static-libs(+)] )
 	gcrypt? ( dev-libs/libgcrypt:0=[static-libs(+)] )
 	nettle? ( >=dev-libs/nettle-2.4[static-libs(+)] )
 	openssl? (
@@ -82,17 +84,19 @@ src_configure() {
 	# We disable autotool python integration so we can use eclasses
 	# for proper integration with multiple python versions.
 	local myeconfargs=(
-		--sbindir=/sbin
-		--enable-shared
 		--disable-python
-		$(use_enable static static-cryptsetup)
-		$(use_enable static-libs static)
+		--disable-internal-argon2
+		--enable-shared
+		--sbindir=/sbin
+		--with-crypto_backend=$(for x in ${CRYPTO_BACKENDS//+/} ; do usev ${x} ; done)
+		$(use_enable argon2 libargon2)
 		$(use_enable nls)
 		$(use_enable pwquality)
 		$(use_enable reencrypt cryptsetup-reencrypt)
+		$(use_enable static static-cryptsetup)
+		$(use_enable static-libs static)
 		$(use_enable udev)
 		$(use_enable !urandom dev-random)
-		--with-crypto_backend=$(for x in ${CRYPTO_BACKENDS//+/} ; do usev ${x} ; done)
 	)
 	econf "${myeconfargs[@]}"
 
@@ -131,7 +135,7 @@ src_install() {
 	newinitd "${FILESDIR}"/1.6.7-dmcrypt.rc dmcrypt
 
 	insinto /etc/tmpfiles.d
-	doins scripts/${PN}_tmpfiles.conf
+	doins scripts/${PN}.conf
 
 	use python && cd python && distutils-r1_src_install
 }
