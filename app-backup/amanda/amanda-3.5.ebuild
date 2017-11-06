@@ -289,7 +289,7 @@ src_configure() {
 	myconf="${myconf} --enable-manpage-build"
 	
 	# Bug #636262
-	myconf="${myconf} $(use_enable ndmp)"
+	myconf="${myconf} $(use_with ndmp ndmp)"
 
 	# bug #483120
 	tc-export AR
