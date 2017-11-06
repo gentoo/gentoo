@@ -41,7 +41,7 @@ app-admin/abrt 2.0.12-r2: Automatic bug detection and reporting tool
 app-admin/aerospike-amc-community 3.6.8 3.6.8.2 3.6.9 3.6.10.1 3.6.11 3.6.12 3.6.13 3.6.13-r1: Web UI based monitoring tool for Aerospike Community Edition Server
 app-admin/amazon-ec2-init 20101127-r1: Init script to setup Amazon EC2 instance parameters
 app-admin/analog 6.0-r4: A webserver log analyzer
-app-admin/ansible 2.3.2.0-r2 2.4.0.0 2.4.1.0 9999: Model-driven deployment, config management, and command execution framework
+app-admin/ansible 2.3.2.0-r2 2.4.0.0 2.4.1.0 2.4.1.0-r1 9999: Model-driven deployment, config management, and command execution framework
 app-admin/apache-tools 2.2.34 2.4.27 2.4.28 2.4.29: Useful Apache tools - htdigest, htpasswd, ab, htdbm
 app-admin/apachetop 0.12.6-r1 0.12.6-r2: A realtime Apache log analyzer
 app-admin/apg 2.3.0b-r5: Another Password Generator
@@ -9902,7 +9902,7 @@ dev-ruby/rspec-its 1.2.0-r1: A Behaviour Driven Development (BDD) framework for 
 dev-ruby/rspec-json_expectations 2.1.0: Set of matchers and helpers to allow you test your APIs responses.
 dev-ruby/rspec-mocks 2.14.6-r1 2.99.2 3.3.2 3.5.0 3.6.0 3.7.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-rails 2.14.2 2.99.0 3.3.3 3.5.2 3.5.2-r1 3.6.0 3.6.1 3.7.1: RSpec's official Ruby on Rails plugin
-dev-ruby/rspec-retry 0.5.4 0.5.5: Retry intermittently failing rspec examples
+dev-ruby/rspec-retry 0.5.4 0.5.5 0.5.6: Retry intermittently failing rspec examples
 dev-ruby/rspec-support 3.3.0 3.5.0 3.6.0 3.7.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspectacular 0.70.7: RSpec support and matchers
 dev-ruby/ruby-atk 3.0.8 3.1.1: Ruby Atk bindings
@@ -9970,6 +9970,7 @@ dev-ruby/rubyzip 1.2.1: A ruby library for reading and writing zip files
 dev-ruby/safe_yaml 1.0.4-r3: Parse YAML safely, alternative implementation of YAML.load
 dev-ruby/sanitize 2.1.0 4.4.0 4.5.0: Sanitize is a whitelist-based HTML sanitizer
 dev-ruby/sass 3.2.19-r2 3.4.24 3.4.25: An extension of CSS3, adding nested rules, variables, mixins, and more
+dev-ruby/sass-listen 4.0.0: Fork of guard/listen provides a stable API for users of the ruby Sass CLI
 dev-ruby/sass-rails 4.0.5 5.0.6 5.0.6-r1: Official Ruby-on-Rails Integration with Sass
 dev-ruby/sawyer 0.8.1: Secret User Agent of HTTP
 dev-ruby/sdoc 0.4.1 0.4.2: rdoc generator html with javascript search index
