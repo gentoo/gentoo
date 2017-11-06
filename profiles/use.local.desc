@@ -7457,6 +7457,7 @@ sys-apps/busybox:mdev - Create the appropriate symlink in /sbin and install mdev
 sys-apps/busybox:sep-usr - Support a separate /usr without needing an initramfs by booting with init=/ginit
 sys-apps/busybox:static - Make the system rescue shell (/bin/bb) static so you can recover even when glibc is broken
 sys-apps/busybox:systemd - Support systemd
+sys-apps/coreutils:caps - Add Linux capabilities support in output of file utilities (ls, dir, ...) via sys-libs/libcap
 sys-apps/coreutils:hostname - Build the hostname program
 sys-apps/coreutils:kill - Build the kill program
 sys-apps/coreutils:multicall - Build all tools into a single `coreutils` program akin to busybox to save space
