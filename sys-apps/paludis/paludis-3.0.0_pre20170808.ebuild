@@ -81,7 +81,7 @@ src_prepare() {
 	# https://bugs.gentoo.org/show_bug.cgi?id=439372#c2
 	sed -i -e "1s/ruby/&${RUBY_VER/./}/" ruby/demos/*.rb || die
 
-	eapply_user
+	cmake-utils_src_prepare
 }
 
 src_configure() {
