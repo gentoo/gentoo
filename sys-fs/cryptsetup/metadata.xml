@@ -6,6 +6,7 @@
 	<name>Gentoo Base System</name>
 </maintainer>
 <use>
+	<flag name="argon2">Enable password hashing algorithm from <pkg>app-crypt/argon2</pkg></flag>
 	<flag name="gcrypt">Use <pkg>dev-libs/libgcrypt</pkg> crypto backend</flag>
 	<flag name="kernel">Use kernel crypto backend (mainly for embedded systems)</flag>
 	<flag name="nettle">Use <pkg>dev-libs/nettle</pkg> crypto backend</flag>
