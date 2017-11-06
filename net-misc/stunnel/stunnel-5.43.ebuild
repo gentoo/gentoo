@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
-inherit ssl-cert eutils multilib systemd user
+inherit ssl-cert multilib systemd user
 
 DESCRIPTION="TLS/SSL - Port Wrapper"
 HOMEPAGE="http://www.stunnel.org/index.html"
@@ -40,9 +40,11 @@ src_prepare() {
 		tools/Makefile.in || die "sed failed"
 
 	# libressl compat
-	epatch "${FILESDIR}"/stunnel-compat-libressl.patch
+	eapply "${FILESDIR}"/${PN}-5.43-compat-libressl.patch
 
 	echo "CONFIG_PROTECT=\"/etc/stunnel/stunnel.conf\"" > "${T}"/20stunnel
+
+	eapply_user
 }
 
 src_configure() {
@@ -66,7 +68,8 @@ src_install() {
 	dosym ../bin/stunnel /usr/sbin/stunnel
 
 	dodoc AUTHORS BUGS CREDITS PORTS README TODO ChangeLog
-	dohtml doc/stunnel.html doc/en/VNC_StunnelHOWTO.html tools/ca.html \
+	docinto html
+	dodoc doc/stunnel.html doc/en/VNC_StunnelHOWTO.html tools/ca.html \
 		tools/importCA.html
 
 	insinto /etc/stunnel
