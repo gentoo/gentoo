@@ -10,7 +10,7 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/ManaPlus/ManaPlus.git"
 else
 	SRC_URI="http://download.evolonline.org/manaplus/download/${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="GPL-2+"
