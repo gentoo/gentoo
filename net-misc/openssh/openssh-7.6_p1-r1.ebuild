@@ -9,7 +9,7 @@ inherit user flag-o-matic multilib autotools pam systemd versionator
 # and _p? releases.
 PARCH=${P/_}
 
-HPN_PATCH="${PARCH}-hpnssh14v12.tar.xz"
+#HPN_PATCH="${PARCH}-hpnssh14v12.tar.xz"
 SCTP_PATCH="${PN}-7.6_p1-sctp.patch.xz"
 LDAP_PATCH="${PN}-lpk-7.6p1-0.3.14.patch.xz"
 X509_VER="11.0" X509_PATCH="${PN}-${PV/_}+x509-${X509_VER}.diff.gz"
