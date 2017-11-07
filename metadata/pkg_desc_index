@@ -4595,6 +4595,7 @@ dev-lang/rubinius 3.43: A re-implementation of the Ruby VM designed for speed
 dev-lang/ruby 2.2.8 2.3.5 2.4.2: An object-oriented scripting language
 dev-lang/rust 1.15.1 1.16.0 1.19.0: Systems programming language from Mozilla
 dev-lang/rust-bin 1.12.1 1.13.0 1.14.0 1.15.0 1.15.1 1.16.0 1.19.0: Systems programming language from Mozilla
+dev-lang/sassc 3.4.5 9999: A libsass command line driver
 dev-lang/scala 2.11.1-r2 2.11.2-r2 2.11.4-r1 2.11.4-r2 2.11.6-r1 2.11.7-r1 2.11.8 2.11.11 2.12.1 2.12.2: The Scala Programming Language
 dev-lang/scala-bin 2.11.8: The Scala Programming Language
 dev-lang/smlnj 110.75: Standard ML of New Jersey compiler and libraries
@@ -4930,6 +4931,7 @@ dev-libs/librep 0.92.6: Shared library implementing a Lisp dialect
 dev-libs/libreport 2.0.13-r1: Generic library for reporting software bugs
 dev-libs/libressl 2.3.10 2.4.5 2.5.0 2.5.4 2.5.5 2.6.0 2.6.1 2.6.2 2.6.3: Free version of the SSL/TLS protocol forked from OpenSSL
 dev-libs/librevenge 0.0.4-r1 9999: A helper library for REVerse ENGineered formats filters
+dev-libs/libsass 3.4.5 9999: A C/C++ implementation of a Sass CSS compiler
 dev-libs/libsecp256k1 0.0.0_pre20151118 0.0.0_pre20161213 9999: Optimized C library for EC operations on curve secp256k1
 dev-libs/libserialport 0.1.0 0.1.1 9999: Cross platform serial port access library
 dev-libs/libsigc++ 1.2.7 2.10.0: Typesafe callback system for standard C++
