@@ -203,7 +203,7 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-util/cppunit-1.14.0
 	>=dev-util/gperf-3
 	dev-util/intltool
-	>=dev-util/mdds-1.2.2:1=
+	>=dev-util/mdds-1.2.3:1=
 	media-libs/glm
 	sys-devel/bison
 	sys-devel/flex
