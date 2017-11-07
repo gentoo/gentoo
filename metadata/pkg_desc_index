@@ -18766,7 +18766,7 @@ x11-libs/libgxim 0.5.0: GObject-based XIM protocol library
 x11-libs/libiterm-mbt 0.5: Hacked version of libiterm -- Internationalized Terminal Emulator Library
 x11-libs/libnotify 0.7.6-r3 0.7.7: A library for sending desktop notifications
 x11-libs/liboglappth 1.0.0: Libary for OpenGL applications with easy-to-code scene setup and selection
-x11-libs/libpciaccess 0.13.3 0.13.4 0.13.5: Library providing generic access to the PCI bus and devices
+x11-libs/libpciaccess 0.13.4 0.13.5 0.14: Library providing generic access to the PCI bus and devices
 x11-libs/libproplist 0.10.1-r4: An library to mimic property list functionality from the GNUstep environment
 x11-libs/libqxt 0.6.2-r2: Extension library providing cross-platform utility classes for the Qt toolkit
 x11-libs/librfm 5.3.16.3-r1: The basic library used by some rfm applications, such as Rodent filemanager
