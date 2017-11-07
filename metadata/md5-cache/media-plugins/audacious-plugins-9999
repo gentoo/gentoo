@@ -9,4 +9,4 @@ RDEPEND=app-arch/unzip dev-libs/dbus-glib dev-libs/glib[utils] dev-libs/libxml2:
 REQUIRED_USE=^^ ( gtk gtk3 qt5 ) qt5? ( !libnotify ) || ( alsa jack pulseaudio sdl )
 SLOT=0
 _eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	git-r3	52a888802d25387c2c74cb845d1219bc	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=e7dd96fe3bd04550e336091d0fc6c69e
+_md5_=b55c7494ad7b9cdec5a277f7f7a58b61
