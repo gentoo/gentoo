@@ -17434,7 +17434,7 @@ sys-block/hpssacli 2.40.13.0-r1: HPE Smart Storage Administrator (HPE SSA) CLI (
 sys-block/iscsitarget 0.4.17 1.4.19 1.4.20.2 1.4.20.2_p20130103 1.4.20.2_p20130821 9999: Open Source iSCSI target with professional features
 sys-block/kvpm 0.9.10: KDE frontend for Linux LVM2 and GNU parted
 sys-block/lsiutil 1.62-r1 1.62-r2: LSI Logic Fusion MPT Command Line Interface management tool
-sys-block/mbuffer 20150412 20160228 20170515 20170921: M(easuring)buffer is a replacement for buffer with additional functionality
+sys-block/mbuffer 20150412 20160228 20170515 20170921 20171011: M(easuring)buffer is a replacement for buffer with additional functionality
 sys-block/megacli 8.07.10 8.07.14 8.07.14-r1: LSI Logic MegaRAID Command Line Interface management tool
 sys-block/megactl 0.4.1-r1 0.4.1-r2: LSI MegaRAID control utility
 sys-block/megamgr 5.20-r2: LSI Logic MegaRAID Text User Interface management tool
