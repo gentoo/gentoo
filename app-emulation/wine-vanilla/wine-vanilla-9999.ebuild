@@ -133,7 +133,6 @@ RDEPEND="${COMMON_DEPEND}
 
 # tools/make_requests requires perl
 DEPEND="${COMMON_DEPEND}
-	dev-util/patchbin
 	sys-devel/flex
 	>=sys-kernel/linux-headers-2.6
 	virtual/pkgconfig
