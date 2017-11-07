@@ -17853,7 +17853,7 @@ sys-fs/udev 216 225-r1 233 234-r1 235 9999: Linux dynamic and persistent device 
 sys-fs/udev-init-scripts 27 30 31 32 9999: udev startup scripts for openrc
 sys-fs/udftools 1.0.0b-r9 1.0.0b-r10 1.1 1.2 1.3: Ben Fennema's tools for packet writing and the UDF filesystem
 sys-fs/udiskie 0.6.2 0.6.4 1.1.1: An automatic disk mounting service using udisks
-sys-fs/udisks 1.0.5-r1 2.1.8 2.6.4 2.6.5 2.7.2 2.7.3: Daemon providing interfaces to work with storage devices
+sys-fs/udisks 1.0.5-r1 2.1.8 2.6.5 2.7.3 2.7.4: Daemon providing interfaces to work with storage devices
 sys-fs/ufsutils 8.2_p3: FFS/UFS/UFS2 filesystem utilities from FreeBSD
 sys-fs/unionfs-fuse 1.0 2.0 9999: Self-syncing tree-merging file system based on FUSE
 sys-fs/vhba 20170610: Virtual (SCSI) Host Bus Adapter kernel module for the CDEmu suite
