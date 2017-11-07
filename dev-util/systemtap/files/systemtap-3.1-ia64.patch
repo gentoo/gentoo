@@ -1,0 +1,33 @@
+Workaround build failure on ia64
+
+Avoid 'o' constraint to allow gcc to select register operand.
+That way instruction selector can satisfy all constraints
+for PROBE2 macro.
+
+Reported-by: Émeric Maschino
+Bug: https://bugs.gentoo.org/510134
+--- a/cache.cxx
++++ b/cache.cxx
+@@ -8,2 +8,10 @@
+ 
++#ifdef __ia64__
++// Default is: nor
++// We disable 'o' because gcc fails to select register
++// constraint for second instruction in 'add_script_to_cache'
++//     https://bugs.gentoo.org/510134
++#    define STAP_SDT_ARG_CONSTRAINT nr
++#endif
++
+ #include "config.h"
+--- a/staprun/mainloop.c
++++ b/staprun/mainloop.c
+@@ -1 +1,9 @@
++#ifdef __ia64__
++// Default is: nor
++// We disable 'o' because gcc fails to select register
++// constraint for second instruction in 'add_script_to_cache'
++//     https://bugs.gentoo.org/510134
++#    define STAP_SDT_ARG_CONSTRAINT nr
++#endif
++
+ /* -*- linux-c -*-
