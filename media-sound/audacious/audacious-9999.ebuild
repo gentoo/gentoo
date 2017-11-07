@@ -46,11 +46,9 @@ PDEPEND="~media-plugins/audacious-plugins-${PV}"
 
 src_unpack() {
 	default
-
 	if use gtk3; then
 		mv "${MY_P}"{-gtk3,} || die
 	fi
-
 	[[ ${PV} == *9999 ]] && git-r3_src_unpack
 }
 
