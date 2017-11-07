@@ -13,7 +13,7 @@ HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/libetonyek"
 LICENSE="|| ( GPL-2+ LGPL-2.1 MPL-1.1 )"
 SLOT="0"
 [[ ${PV} == 9999 ]] || \
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="doc static-libs test"
 
 RDEPEND="
@@ -31,15 +31,6 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 	test? ( dev-util/cppunit )
 "
-
-pkg_pretend() {
-	if [[ $(gcc-major-version) -lt 4 ]] || {
-		[[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt 8 ]]; }
-	then
-		eerror "Compilation with gcc older than 4.8 is not supported"
-		die "Too old gcc found."
-	fi
-}
 
 src_prepare() {
 	default
