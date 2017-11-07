@@ -3,12 +3,16 @@
 
 EAPI=6
 
+MY_PV="${PV/_beta/b}"
+MY_P="${PN}-${MY_PV}"
+
 DESCRIPTION="fish is the Friendly Interactive SHell"
 HOMEPAGE="http://fishshell.com/"
-SRC_URI="http://fishshell.com/files/${PV}/${P}.tar.gz"
+SRC_URI="https://github.com/${PN}-shell/${PN}-shell/releases/download/${MY_PV}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
+[[ "${PV}" = *_* ]] || \
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
 IUSE="nls"
 
@@ -22,7 +26,7 @@ DEPEND="
 	nls? ( sys-devel/gettext )
 "
 
-PATCHES=( "${FILESDIR}/${P}-honor-linguas.patch" )
+S="${WORKDIR}/${MY_P}"
 
 src_configure() {
 	# Set things up for fish to be a default shell.
@@ -33,6 +37,14 @@ src_configure() {
 		--bindir="${EPREFIX}"/bin \
 		--without-included-pcre2 \
 		$(use_with nls gettext)
+}
+
+src_compile() {
+	emake V=1
+}
+
+src_install() {
+	emake DESTDIR="${D}" V=1 install
 }
 
 src_test() {
