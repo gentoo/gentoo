@@ -17459,7 +17459,7 @@ sys-block/sas3ircu 5 14: LSI MPT-SAS3 controller management tool
 sys-block/scsiadd 1.97: Add and remove SCSI devices from your Linux system during runtime
 sys-block/scsiping 0.0.1: SCSIPing pings a host on the SCSI-chain
 sys-block/scsirastools 1.5.7 1.6.4: Serviceability for SCSI Disks and Arrays
-sys-block/sedutil 1.12 1.15: The Drive Trust Alliance Self Encrypting Drive Utility
+sys-block/sedutil 1.15 1.15.1: The Drive Trust Alliance Self Encrypting Drive Utility
 sys-block/seekwatcher 0.12_p20091015-r1: generates graphs from blktrace to help visualize IO patterns and performance
 sys-block/smp_utils 0.97 0.98 0.99_beta4_p151: Utilities for SAS management protocol (SMP)
 sys-block/spindown 0.4.0-r5: Spindown is a daemon that can spin down idle disks
