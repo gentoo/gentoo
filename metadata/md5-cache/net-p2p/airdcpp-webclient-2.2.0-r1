@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare setup test
+DEPEND=virtual/pkgconfig || ( dev-lang/python:3.6 dev-lang/python:3.5 dev-lang/python:3.4 >=dev-lang/python-2.7.5-r2:2.7 >=virtual/pypy3-5:0 >=virtual/pypy-5:0 ) app-arch/bzip2 dev-cpp/websocketpp dev-libs/boost:= dev-libs/geoip dev-libs/leveldb:= dev-libs/openssl:0=[-bindist] net-libs/miniupnpc:= sys-libs/zlib:= virtual/libiconv nat-pmp? ( net-libs/libnatpmp:= ) tbb? ( dev-cpp/tbb:= ) sys-devel/make >=dev-util/cmake-3.7.2
+DESCRIPTION=Cross-platform Direct Connect client
+EAPI=6
+HOMEPAGE=https://airdcpp-web.github.io/
+IUSE=nat-pmp +tbb +webui
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+PDEPEND=webui? ( www-apps/airdcpp-webui )
+RDEPEND=app-arch/bzip2 dev-cpp/websocketpp dev-libs/boost:= dev-libs/geoip dev-libs/leveldb:= dev-libs/openssl:0=[-bindist] net-libs/miniupnpc:= sys-libs/zlib:= virtual/libiconv nat-pmp? ( net-libs/libnatpmp:= ) tbb? ( dev-cpp/tbb:= )
+SLOT=0
+SRC_URI=https://github.com/airdcpp-web/airdcpp-webclient/archive/2.2.0.tar.gz -> airdcpp-webclient-2.2.0.tar.gz
+_eclasses_=cmake-utils	f9fb12e2dbe2e0c9c17f030bae85eb02	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	python-any-r1	27d7f9da7187d283b7f3eae8390b7b09	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	185a06792159ca143528e7010368e8af	user	e4b567c44272a719fabf53f0f885d3f7	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=e3817172222d8b37ae2a9f9b4aade13b
