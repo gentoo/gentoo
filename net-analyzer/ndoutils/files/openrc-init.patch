@@ -1,0 +1,100 @@
+From 61c6e9295bae755713b403626f702b5ac90f2448 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Sat, 22 Jul 2017 17:25:29 -0400
+Subject: [PATCH 1/1] startup: simplify the OpenRC init scripts and conf file.
+
+This commit largely rewrites the OpenRC init script with the goal of
+simplifying it. The end result should be functionally the same, but is
+much shorter. The changes are as follows:
+
+ 1. Replace the deprecated /sbin/runscript shebang with /sbin/openrc-run.
+
+ 2. Replace the existing dependencies with "need mysql nagios". The
+    ndo2db daemon needs Nagios to create the TCP or Unix socket over
+    which it will communicate, and obviously it needs mysql to be
+    up and running in order to save any data. The dependencies
+    of mysql and nagios themselves will bring up whatever else is
+    required; nothing else needs to be listed as a dependency of
+    ndo2db.
+
+ 3. Use the "command", "command_args", and "pidfile" OpenRC
+    variables. OpenRC is smart enough to start and stop a well-behaved
+    daemon on its own without a custom start/stop function. By
+    specifying those three variables, we are able to eliminate much of
+    the custom start/stop code in the init script.
+
+Finally, the default value of NDO2DB_CFG in the associated conf file has
+been updated to use @sysconfdir@ instead of @pkgsysconfdir@, which wasn't
+having any effect.
+---
+ startup/openrc-conf.in |  6 ++----
+ startup/openrc-init.in | 42 +++++++++---------------------------------
+ 2 files changed, 11 insertions(+), 37 deletions(-)
+
+diff --git a/startup/openrc-conf.in b/startup/openrc-conf.in
+index d7b5474..69b15b5 100644
+--- a/startup/openrc-conf.in
++++ b/startup/openrc-conf.in
+@@ -1,4 +1,2 @@
+-# /etc/conf.d/ndo2db : config file for /etc/init.d/ndo2db
+-
+-# Configuration file - default is @sysconfdir@/ndo2db.cfg
+-NDO2DB_CFG="@pkgsysconfdir@/ndo2db.cfg"
++# The configuration file to use for ndo2db.
++NDO2DB_CFG="@sysconfdir@/ndo2db.cfg"
+diff --git a/startup/openrc-init.in b/startup/openrc-init.in
+index 119e074..7b3fb40 100644
+--- a/startup/openrc-init.in
++++ b/startup/openrc-init.in
+@@ -1,39 +1,15 @@
+-#!/sbin/runscript
++#!/sbin/openrc-run
+ #
+-# Copyright (c) 2016 Nagios(R) Core(TM) Development Team
++# Copyright (c) 2017 Nagios(R) Core(TM) Development Team
+ #
+-# Start/stop the Nagios Data Out Daemon.
+-#
+-# Goes in /etc/init.d - Config is in /etc/conf.d/ndo2db
+ 
+-NDO2DB_BIN="@sbindir@/ndo2db"
+-NDO2DB_PID="@piddir@/ndo2db.pid"
++command="@sbindir@/ndo2db"
++command_args="-c ${NDO2DB_CFG}"
++description="Nagios Data Out daemon"
++pidfile="@piddir@/ndo2db.pid"
+ 
+ depend() {
+-	use logger dns net localmount netmount nfsmount
+-}
+-
+-checkconfig() {
+-	# Make sure the config file exists
+-	if [ ! -f $NDO2DB_CFG ]; then
+-		eerror "You need to setup $NDO2DB_CFG.
+-		return 1
+-	fi
+-	return 0
+-}
+-
+-start() {
+-	checkconfig || return 1
+-	ebegin "Starting ndo2db"
+-	# Make sure we have a sane current directory
+-	cd /
+-	start-stop-daemon --start --exec $NDO2DB_BIN --pidfile $PID_FILE \
+-		-- -c $NDO2DB_CFG -f
+-	eend $?
+-}
+-
+-stop() {
+-	ebegin "Stopping ndo2db"
+-	start-stop-daemon --stop --exec $NDO2DB_BIN --pidfile $PID_FILE
+-	eend $?
++    # The Nagios core daemon creates the socket that ndo2db tries to
++    # connect to upon starting.
++    need mysql nagios
+ }
+-- 
+2.13.0
+
