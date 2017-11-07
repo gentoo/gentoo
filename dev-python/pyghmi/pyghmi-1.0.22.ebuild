@@ -17,7 +17,9 @@ IUSE="test"
 
 RDEPEND="dev-python/pbr[${PYTHON_USEDEP}]
 	>=dev-python/pycrypto-2.6[${PYTHON_USEDEP}]"
+#636824 older versions of cli_helpers break the build
 DEPEND="${RDEPEND}
+	!<dev-python/cli_helpers-1.0.0
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		>=dev-python/coverage-3.6[${PYTHON_USEDEP}]
