@@ -3,10 +3,6 @@
 
 EAPI=6
 
-KDE_REQUIRED="optional"
-KDE_SCM="git"
-CMAKE_REQUIRED="never"
-
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 PYTHON_REQ_USE="threads,xml"
 
@@ -24,7 +20,7 @@ BRANDING="${PN}-branding-gentoo-0.8.tar.xz"
 # PATCHSET="${P}-patchset-01.tar.xz"
 
 [[ ${PV} == *9999* ]] && SCM_ECLASS="git-r3"
-inherit multiprocessing autotools bash-completion-r1 check-reqs eutils java-pkg-opt-2 kde4-base pax-utils python-single-r1 toolchain-funcs flag-o-matic versionator xdg-utils qmake-utils ${SCM_ECLASS}
+inherit multiprocessing autotools bash-completion-r1 check-reqs gnome2-utils java-pkg-opt-2 pax-utils python-single-r1 toolchain-funcs flag-o-matic versionator xdg-utils qmake-utils ${SCM_ECLASS}
 unset SCM_ECLASS
 
 DESCRIPTION="A full office productivity suite"
@@ -161,6 +157,11 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		x11-libs/gtk+:3
 	)
 	jemalloc? ( dev-libs/jemalloc )
+	kde? (
+		dev-qt/qtcore:4
+		dev-qt/qtgui:4
+		kde-frameworks/kdelibs
+	)
 	libreoffice_extensions_scripting-beanshell? ( dev-java/bsh )
 	libreoffice_extensions_scripting-javascript? ( dev-java/rhino:1.6 )
 	mysql? ( dev-db/mysql-connector-c++ )
@@ -177,6 +178,7 @@ RDEPEND="${COMMON_DEPEND}
 	media-fonts/libertine
 	|| ( x11-misc/xdg-utils kde-plasma/kde-cli-tools )
 	java? ( >=virtual/jre-1.6 )
+	kde? ( kde-frameworks/oxygen-icons:* )
 	vlc? ( media-video/vlc )
 "
 
@@ -268,7 +270,6 @@ pkg_pretend() {
 
 pkg_setup() {
 	java-pkg-opt-2_pkg_setup
-	kde4-base_pkg_setup
 	python-single-r1_pkg_setup
 	xdg_environment_reset
 
@@ -306,8 +307,7 @@ src_unpack() {
 
 src_prepare() {
 	[[ -n ${PATCHSET} ]] && eapply "${WORKDIR}/${PATCHSET/.tar.xz/}"
-	eapply "${PATCHES[@]}"
-	eapply_user
+	default
 
 	AT_M4DIR="m4" eautoreconf
 	# hack in the autogen.sh
@@ -545,14 +545,17 @@ src_install() {
 }
 
 pkg_preinst() {
-	# Cache updates - all handled by kde eclass for all environments
-	kde4-base_pkg_preinst
+	gnome2_icon_savelist
 }
 
 pkg_postinst() {
-	kde4-base_pkg_postinst
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }
 
 pkg_postrm() {
-	kde4-base_pkg_postrm
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }
