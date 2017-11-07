@@ -138,7 +138,7 @@ app-admin/logstalgia 1.0.7: Replays or streams an access_log as a retro arcade g
 app-admin/logstash-bin 5.5.3 5.6.3: Tool for managing events and logs
 app-admin/logsurfer+ 1.8-r3: Real Time Log Monitoring and Alerting
 app-admin/longrun 0.9-r4: A utility to control Transmeta's Crusoe and Efficeon processors
-app-admin/lsat 0.9.7.1-r1 0.9.7.1-r2: The Linux Security Auditing Tool
+app-admin/lsat 0.9.7.1-r2: The Linux Security Auditing Tool
 app-admin/lsyncd 2.2.0 2.2.1 2.2.2: Live Syncing (Mirror) Daemon
 app-admin/makepasswd 1.10: Random password generator
 app-admin/matter 302: Automated Packages Builder for Portage and Entropy
@@ -7942,7 +7942,7 @@ dev-python/libgnome-python 2.28.1-r1: Python bindings for essential GNOME librar
 dev-python/libgnomecanvas-python 2.28.1-r1: Python bindings for the Gnome Canvas library
 dev-python/libiscsi-python 0_pre160211 9999: Python bindings for libiscsi
 dev-python/liblarch 2.1.0: Library to handle directed acyclic graphs
-dev-python/libnacl 1.4.4 1.5.0 1.5.1 1.5.2 1.6.0: Python ctypes wrapper for libsodium
+dev-python/libnacl 1.4.4 1.5.0 1.5.1 1.5.2 1.6.0 1.6.1: Python ctypes wrapper for libsodium
 dev-python/libnatpmp 20130911 20140401-r1 20150609: Python module for libnatpmp, an alternative protocol to UPnP IGD
 dev-python/libpillowfight 0.2.1 0.2.2: Small library containing various image processing algorithms
 dev-python/librharris 0.1.14-r1: Python Internet Programming Library
@@ -15015,7 +15015,7 @@ net-libs/netembryo 0.1.1: a network abstraction library
 net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP protocols
 net-libs/nfqueue-bindings 0.5 0.6: High-level language bindings for libnetfilter_queue
 net-libs/nghttp2 1.10.0 1.19.0 1.26.0 1.27.0 9999: HTTP/2 C Library
-net-libs/nodejs 0.12.17 4.6.1 4.8.5 6.9.4 6.11.5 8.9.0 9.0.0: A JavaScript runtime built on Chrome's V8 JavaScript engine
+net-libs/nodejs 0.12.17 4.8.5 6.9.4 6.11.5 8.9.0 9.0.0: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-libs/ntirpc 1.4.1 1.5.2 1.5.3: Transport Independent RPC library for nfs-ganesha
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
