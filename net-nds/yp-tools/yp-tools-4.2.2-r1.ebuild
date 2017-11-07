@@ -10,7 +10,7 @@ SRC_URI="http://www.linux-nis.org/download/yp-tools/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ia64 ~mips ~ppc ~ppc64 ~sparc x86"
 IUSE="nls"
 
 DEPEND="
