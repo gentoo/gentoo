@@ -11,7 +11,7 @@ SRC_URI="http://zakalwe.fi/~shd/foss/xdms/${P}.tar.bz2"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ppc x86"
+KEYWORDS="amd64 ~hppa ppc x86"
 IUSE=""
 
 pkg_setup() {
