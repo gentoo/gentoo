@@ -114,7 +114,6 @@ src_unpack() {
 		git-r3_src_unpack
 	else
 		default
-
 		if use gtk3; then
 			mv "${MY_P}"{-gtk3,} || die
 		fi
