@@ -28,30 +28,30 @@ RESTRICT="test" #315573
 # files, and nfs-utils doesn't build against heimdal either,
 # so don't depend on virtual/krb.
 # (04 Feb 2005 agriffis)
-DEPEND_COMMON="tcpd? ( sys-apps/tcp-wrappers )
-	caps? ( sys-libs/libcap )
-	sys-libs/e2fsprogs-libs
-	>=net-nds/rpcbind-0.2.4
+DEPEND_COMMON="
 	net-libs/libtirpc:=
+	>=net-nds/rpcbind-0.2.4
+	sys-libs/e2fsprogs-libs
+	caps? ( sys-libs/libcap )
 	libmount? ( sys-apps/util-linux )
 	nfsdcld? ( >=dev-db/sqlite-3.3 )
 	nfsv4? (
 		dev-libs/libevent:=
-		>=net-libs/libnfsidmap-0.21-r1
 		kerberos? (
 			>=net-libs/libtirpc-0.2.4-r1[kerberos]
 			app-crypt/mit-krb5
 		)
 		nfsidmap? (
-			>=net-libs/libnfsidmap-0.24
 			>=sys-apps/keyutils-1.5.9
 		)
 	)
 	nfsv41? (
 		sys-fs/lvm2
 	)
+	tcpd? ( sys-apps/tcp-wrappers )
 	uuid? ( sys-apps/util-linux )"
 RDEPEND="${DEPEND_COMMON}
+	!net-libs/libnfsidmap
 	!net-nds/portmap
 	!<sys-apps/openrc-0.13.9
 	selinux? (
