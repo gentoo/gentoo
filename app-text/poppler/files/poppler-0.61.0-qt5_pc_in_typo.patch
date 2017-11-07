@@ -1,0 +1,24 @@
+From 950d19a00a454098831ca42ffbe0b61d323f0f89 Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Tue, 7 Nov 2017 15:41:30 +0100
+Subject: [PATCH] poppler-qt5.pc.cmake: Fixed typo in libdir entry.
+
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+---
+ poppler-qt5.pc.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/poppler-qt5.pc.cmake b/poppler-qt5.pc.cmake
+index aaa1aa77..7e8c5c8f 100644
+--- a/poppler-qt5.pc.cmake
++++ b/poppler-qt5.pc.cmake
+@@ -1,5 +1,5 @@
+ prefix=@CMAKE_INSTALL_PREFIX@
+-libdir=CMAKE_INSTALL_LIBDIR@
++libdir=@CMAKE_INSTALL_LIBDIR@
+ includedir=@CMAKE_INSTALL_INCLUDEDIR@
+ 
+ Name: poppler-qt5
+-- 
+2.15.0
+
