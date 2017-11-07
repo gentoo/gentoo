@@ -65,6 +65,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.61.0-respect-cflags.patch"
 	"${FILESDIR}/${PN}-0.33.0-openjpeg2.patch"
 	"${FILESDIR}/${PN}-0.40-FindQt4.patch"
+	"${FILESDIR}/${PN}-0.61.0-qt5_pc_in_typo.patch"
 )
 
 src_prepare() {
@@ -96,6 +97,10 @@ src_configure() {
 		-DBUILD_QT4_TESTS=OFF
 		-DBUILD_QT5_TESTS=OFF
 		-DBUILD_CPP_TESTS=OFF
+		-DCMAKE_INSTALL_DATADIR="/usr/share"
+		-DCMAKE_INSTALL_INCLUDEDIR="/usr/include"
+		-DCMAKE_INSTALL_LIBDIR="/usr/$(get_libdir)"
+		-DCMAKE_INSTALL_MANDIR="/usr/share/man"
 		-DENABLE_SPLASH=ON
 		-DENABLE_ZLIB=ON
 		-DENABLE_ZLIB_UNCOMPRESS=OFF
