@@ -64,7 +64,7 @@ unset ADDONS_SRC
 LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
 
 IUSE="bluetooth +branding coinmp +cups dbus debug eds firebird gnome googledrive
-gstreamer +gtk gtk3 jemalloc kde libressl mysql odk pdfimport postgres test vlc
+gstreamer +gtk gtk3 jemalloc kde libressl mysql odk pdfimport postgres qt4 qt5 test vlc
 $(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 
 LICENSE="|| ( LGPL-3 MPL-1.1 )"
@@ -157,16 +157,21 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		x11-libs/gtk+:3
 	)
 	jemalloc? ( dev-libs/jemalloc )
-	kde? (
-		dev-qt/qtcore:4
-		dev-qt/qtgui:4
-		kde-frameworks/kdelibs
-	)
 	libreoffice_extensions_scripting-beanshell? ( dev-java/bsh )
 	libreoffice_extensions_scripting-javascript? ( dev-java/rhino:1.6 )
 	mysql? ( dev-db/mysql-connector-c++ )
 	pdfimport? ( app-text/poppler:=[cxx] )
 	postgres? ( >=dev-db/postgresql-9.0:*[kerberos] )
+	qt4? (
+		dev-qt/qtcore:4
+		dev-qt/qtgui:4
+		kde-frameworks/kdelibs
+	)
+	qt5? (
+		dev-qt/qtcore:5
+		dev-qt/qtwidgets:5
+		kde-frameworks/kcoreaddons:5
+	)
 "
 
 RDEPEND="${COMMON_DEPEND}
@@ -231,10 +236,12 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	bluetooth? ( dbus )
 	eds? ( gnome )
 	gnome? ( gtk )
+	kde? ( || ( qt4 qt5 ) )
 	libreoffice_extensions_nlpsolver? ( java )
 	libreoffice_extensions_scripting-beanshell? ( java )
 	libreoffice_extensions_scripting-javascript? ( java )
 	libreoffice_extensions_wiki-publisher? ( java )
+	qt4? ( kde )
 "
 
 PATCHES=(
@@ -389,10 +396,15 @@ src_configure() {
 			java_opts+=" --with-rhino-jar=$(java-pkg_getjar rhino-1.6 js.jar)"
 	fi
 
-	if use kde; then
+	if use qt4; then
 		# bug 544108, bug 599076
-		export QMAKEQT4="$(qt4_get_bindir)/qmake"
+		export QMAKE4="$(qt4_get_bindir)/qmake"
 		export MOCQT4="$(qt4_get_bindir)/moc"
+	fi
+
+	if use qt5; then
+		export QT5DIR="$(qt5_get_bindir)/../"
+		export MOC5="$(qt5_get_bindir)/moc"
 	fi
 
 	# system headers/libs/...: enforce using system packages
@@ -459,11 +471,12 @@ src_configure() {
 		$(use_enable gstreamer gstreamer-1-0) \
 		$(use_enable gtk) \
 		$(use_enable gtk3) \
-		$(use_enable kde kde4) \
 		$(use_enable mysql ext-mariadb-connector) \
 		$(use_enable odk) \
 		$(use_enable pdfimport) \
 		$(use_enable postgres postgresql-sdbc) \
+		$(use_enable qt4 kde4) \
+		$(use_enable qt5) \
 		$(use_enable vlc) \
 		$(use_with coinmp system-coinmp) \
 		$(use_with googledrive gdrive-client-id ${google_default_client_id}) \
