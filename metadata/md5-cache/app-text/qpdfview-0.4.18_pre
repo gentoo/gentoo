@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst postrm prepare
+DEPEND=cups? ( net-print/cups ) djvu? ( app-text/djvu ) fitz? ( >=app-text/mupdf-1.7:= ) postscript? ( app-text/libspectre ) dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtprintsupport:5 dev-qt/qtwidgets:5 dbus? ( dev-qt/qtdbus:5 ) pdf? ( >=app-text/poppler-0.35[qt5] dev-qt/qtxml:5 ) sqlite? ( dev-qt/qtsql:5[sqlite] ) svg? ( dev-qt/qtsvg:5 ) !svg? ( virtual/freedesktop-icon-theme ) synctex? ( app-text/texlive-core ) dev-qt/linguist-tools:5 virtual/pkgconfig >=sys-apps/sed-4
+DESCRIPTION=A tabbed document viewer
+EAPI=6
+HOMEPAGE=https://launchpad.net/qpdfview
+IUSE=cups +dbus djvu fitz +pdf postscript +sqlite +svg synctex linguas_ast linguas_az linguas_be linguas_bg linguas_bs linguas_ca linguas_cs linguas_da linguas_de linguas_el linguas_en_GB linguas_eo linguas_es linguas_eu linguas_fi linguas_fr linguas_gl linguas_he linguas_hr linguas_hu linguas_id linguas_it linguas_ja linguas_kk linguas_ko linguas_ky linguas_lt linguas_ms linguas_my linguas_pl linguas_pt linguas_pt_BR linguas_ro linguas_ru linguas_sk linguas_sv linguas_th linguas_tr linguas_ug linguas_uk linguas_vi linguas_zh_CN
+KEYWORDS=~amd64 ~arm ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2+
+RDEPEND=cups? ( net-print/cups ) djvu? ( app-text/djvu ) fitz? ( >=app-text/mupdf-1.7:= ) postscript? ( app-text/libspectre ) dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtprintsupport:5 dev-qt/qtwidgets:5 dbus? ( dev-qt/qtdbus:5 ) pdf? ( >=app-text/poppler-0.35[qt5] dev-qt/qtxml:5 ) sqlite? ( dev-qt/qtsql:5[sqlite] ) svg? ( dev-qt/qtsvg:5 ) !svg? ( virtual/freedesktop-icon-theme ) synctex? ( app-text/texlive-core )
+REQUIRED_USE=?? ( fitz pdf )
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~grozin/qpdfview-0.4.18_pre.tar.gz
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	gnome2-utils	4d211d7614f303710fca59db6ec12c88	l10n	2c2e15383ba891d642f51896a7f0ecfe	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	185a06792159ca143528e7010368e8af	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=2bebf23a8f9606ec9e07418e53d417fd
