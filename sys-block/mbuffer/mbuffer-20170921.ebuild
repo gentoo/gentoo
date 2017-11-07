@@ -45,6 +45,8 @@ src_test() {
 		ewarn "test suite would hang forever in such environments!"
 		return 0;
 	fi
+
+	default
 }
 
 pkg_postinst() {
