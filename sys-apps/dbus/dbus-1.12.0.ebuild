@@ -35,6 +35,7 @@ CDEPEND="
 DEPEND="${CDEPEND}
 	app-text/xmlto
 	app-text/docbook-xml-dtd:4.4
+	sys-devel/autoconf-archive
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 	test? (
