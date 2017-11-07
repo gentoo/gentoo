@@ -12,8 +12,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="minimal"
 
-RDEPEND="!minimal? ( dev-php/PEAR-Text_Highlighter
-		    dev-php/PEAR-Services_W3C_HTMLValidator )"
+RDEPEND="!minimal? ( dev-php/PEAR-Text_Highlighter )"
 DOCS=( docs/README docs/INSTALL docs/CHANGELOG docs/FAQ docs/TODO docs/CONTACT )
 src_install() {
 	php-pear-r2_src_install
