@@ -13,7 +13,7 @@ SRC_URI="http://thomasokken.com/free42/upstream/${MY_PV}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="alsa"
 
 DEPEND="dev-libs/atk

@@ -11,7 +11,7 @@ SRC_URI="http://usat.sourceforge.net/code/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ppc x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="minimal"
 
 DEPEND="dev-lang/perl" # pod2man
