@@ -1,0 +1,31 @@
+Backport upstream fixes for Gentoo bug #636650
+
+Original upstream commit message:
+
+Author: nicorac <claudio.nicora@gmail.com>
+Date:   Wed Oct 25 16:48:24 2017 +0200
+
+    [core] fix build --disable-ipv6 (fixes #2832)
+    
+    x-ref:
+      "Build error on systems without IPV6 support (regression from 1.4.46)"
+      https://redmine.lighttpd.net/issues/2832
+    
+    github: closes #87
+
+--- a/src/network.c
++++ b/src/network.c
+@@ -77,9 +77,13 @@ static void network_host_normalize_addr_str(buffer *host, sock_addr *addr) {
+     if (addr->plain.sa_family == AF_INET6)
+         buffer_append_string_len(host, CONST_STR_LEN("]"));
+     if (addr->plain.sa_family != AF_UNIX) {
++      #ifdef HAVE_IPV6
+         unsigned short port = (addr->plain.sa_family == AF_INET)
+           ? ntohs(addr->ipv4.sin_port)
+           : ntohs(addr->ipv6.sin6_port);
++      #else
++        unsigned short port = ntohs(addr->ipv4.sin_port);
++      #endif
+         buffer_append_string_len(host, CONST_STR_LEN(":"));
+         buffer_append_int(host, (int)port);
+     }
