@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="wxWinLL-3"
 SLOT="0/3" # based on SONAME of libwxsvg.so
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE="static-libs libav"
 
 RDEPEND=">=dev-libs/expat-2:=
