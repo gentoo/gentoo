@@ -49,7 +49,6 @@ unset DEV_URI
 # These are bundles that can't be removed for now due to huge patchsets.
 # If you want them gone, patches are welcome.
 ADDONS_SRC=(
-	"collada? ( ${ADDONS_URI}/4b87018f7fff1d054939d19920b751a0-collada2gltf-master-cb1d97788a.tar.bz2 )"
 	"java? ( ${ADDONS_URI}/17410483b5b5f267aa18b7e00b65e6e0-hsqldb_1_8_0.zip )"
 	# no release for 8 years, should we package it?
 	"libreoffice_extensions_wiki-publisher? ( ${ADDONS_URI}/a7983f859eafb2677d7ff386a023bc40-xsltml_2.1.2.zip )"
@@ -68,7 +67,7 @@ unset ADDONS_SRC
 # Extensions that need extra work:
 LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
 
-IUSE="bluetooth +branding coinmp collada +cups dbus debug eds firebird gltf gnome googledrive
+IUSE="bluetooth +branding coinmp +cups dbus debug eds firebird gnome googledrive
 gstreamer +gtk gtk3 jemalloc kde libressl mysql odk pdfimport postgres test vlc
 $(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 
@@ -140,7 +139,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	virtual/opengl
 	bluetooth? ( net-wireless/bluez )
 	coinmp? ( sci-libs/coinor-mp )
-	collada? ( media-libs/opencollada )
 	cups? ( net-print/cups )
 	dbus? ( dev-libs/dbus-glib )
 	eds? (
@@ -148,7 +146,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		gnome-extra/evolution-data-server
 	)
 	firebird? ( >=dev-db/firebird-3.0.2.32703.0-r1 )
-	gltf? ( >=media-libs/libgltf-0.1.0 )
 	gnome? ( gnome-base/dconf )
 	gstreamer? (
 		media-libs/gstreamer:1.0
@@ -230,7 +227,6 @@ DEPEND="${COMMON_DEPEND}
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	bluetooth? ( dbus )
-	collada? ( gltf )
 	eds? ( gnome )
 	gnome? ( gtk )
 	libreoffice_extensions_nlpsolver? ( java )
@@ -367,11 +363,6 @@ src_configure() {
 	export PYTHON_CFLAGS=$(python_get_CFLAGS)
 	export PYTHON_LIBS=$(python_get_LIBS)
 
-	if use collada; then
-		export OPENCOLLADA_CFLAGS="-I/usr/include/opencollada/COLLADABaseUtils -I/usr/include/opencollada/COLLADAFramework -I/usr/include/opencollada/COLLADASaxFrameworkLoader -I/usr/include/opencollada/GeneratedSaxParser"
-		export OPENCOLLADA_LIBS="-L /usr/$(get_libdir)/opencollada -lOpenCOLLADABaseUtils -lOpenCOLLADAFramework -lOpenCOLLADASaxFrameworkLoader -lGeneratedSaxParser"
-	fi
-
 	# libreoffice extensions handling
 	for lo_xt in ${LO_EXTS}; do
 		if [[ "${lo_xt}" == "scripting-beanshell" || "${lo_xt}" == "scripting-javascript" ]]; then
@@ -458,13 +449,11 @@ src_configure() {
 		--without-system-sane \
 		$(use_enable bluetooth sdremote-bluetooth) \
 		$(use_enable coinmp) \
-		$(use_enable collada) \
 		$(use_enable cups) \
 		$(use_enable debug) \
 		$(use_enable dbus) \
 		$(use_enable eds evolution2) \
 		$(use_enable firebird firebird-sdbc) \
-		$(use_enable gltf) \
 		$(use_enable gnome gio) \
 		$(use_enable gnome dconf) \
 		$(use_enable gstreamer gstreamer-1-0) \
@@ -477,8 +466,6 @@ src_configure() {
 		$(use_enable postgres postgresql-sdbc) \
 		$(use_enable vlc) \
 		$(use_with coinmp system-coinmp) \
-		$(use_with collada system-opencollada) \
-		$(use_with gltf system-libgltf) \
 		$(use_with googledrive gdrive-client-id ${google_default_client_id}) \
 		$(use_with googledrive gdrive-client-secret ${google_default_client_secret}) \
 		$(use_with java) \
