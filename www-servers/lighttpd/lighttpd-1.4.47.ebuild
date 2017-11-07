@@ -51,6 +51,10 @@ RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-apache )
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-3d257ec3-respect-HAVE_IPV6.patch"
+)
+
 # update certain parts of lighttpd.conf based on conditionals
 update_config() {
 	local config="${D}/etc/lighttpd/lighttpd.conf"
