@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/zthread/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~mips ~ppc ~sparc x86"
+KEYWORDS="alpha amd64 ~hppa ~mips ~ppc ~sparc x86"
 IUSE="debug doc kernel_linux static-libs"
 
 DEPEND="doc? ( app-doc/doxygen )"
