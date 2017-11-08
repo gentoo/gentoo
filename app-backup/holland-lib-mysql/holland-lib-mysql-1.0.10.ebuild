@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,9 +19,12 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+# MariaDB 10.1 blocked due to
+# https://github.com/holland-backup/holland/issues/125
 RDEPEND="
 	~app-backup/holland-lib-common-${PV}[${PYTHON_USEDEP}]
 	<dev-python/mysql-python-1.2.5[${PYTHON_USEDEP}]
+	!>=dev-db/mariadb-10.1
 "
 PDEPEND="~app-backup/holland-${PV}[${PYTHON_USEDEP}]"
 
