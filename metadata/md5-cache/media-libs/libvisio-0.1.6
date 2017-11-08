@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=dev-libs/icu:= dev-libs/librevenge dev-libs/libxml2 dev-lang/perl dev-libs/boost dev-util/gperf sys-devel/libtool virtual/pkgconfig doc? ( app-doc/doxygen ) test? ( dev-util/cppunit )
+DESCRIPTION=Library parsing the visio documents
+EAPI=6
+HOMEPAGE=https://wiki.documentfoundation.org/DLP/Libraries/libvisio
+IUSE=doc static-libs test tools
+KEYWORDS=~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86
+LICENSE=|| ( GPL-2+ LGPL-2.1 MPL-1.1 )
+RDEPEND=dev-libs/icu:= dev-libs/librevenge dev-libs/libxml2
+SLOT=0
+SRC_URI=https://dev-www.libreoffice.org/src/libvisio/libvisio-0.1.6.tar.xz
+_md5_=bf75cd385f141a1109be8d9af7e365cf
