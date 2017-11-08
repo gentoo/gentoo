@@ -6,7 +6,7 @@ inherit user golang-build golang-vcs-snapshot
 
 EGO_PN="github.com/prometheus/node_exporter"
 EGIT_COMMIT="v${PV/_rc/-rc.}"
-NODE_EXPORTER_COMMIT="6e2053c"
+NODE_EXPORTER_COMMIT="ba5da2c"
 ARCHIVE_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
 

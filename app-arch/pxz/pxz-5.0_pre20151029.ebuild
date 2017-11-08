@@ -23,5 +23,7 @@ DEPEND="${RDEPEND}"
 src_prepare() {
 	tc-check-openmp
 	tc-export CC
+	export BINDIR="${EPREFIX}"/usr/bin
+	export MANDIR="${EPREFIX}"/usr/share/man
 	default_src_prepare
 }

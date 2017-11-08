@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit multilib systemd toolchain-funcs user
+inherit multilib systemd toolchain-funcs user xdg-utils
 
 DESCRIPTION="The X2Go server"
 HOMEPAGE="http://www.x2go.org"
@@ -34,8 +34,6 @@ RDEPEND="dev-perl/Capture-Tiny
 	sqlite? ( dev-perl/DBD-SQLite )"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-use_bash_in_Xsession.patch
-	"${FILESDIR}"/${P}-remove_sshfs_cipher.patch
 	)
 
 pkg_setup() {
@@ -70,7 +68,7 @@ src_install() {
 	fperms 2755 /usr/bin/x2goprint
 	fperms 0750 /etc/sudoers.d
 	fperms 0440 /etc/sudoers.d/x2goserver
-	dosym /usr/share/applications /etc/x2go/applications
+	dosym ../../usr/share/applications /etc/x2go/applications
 
 	newinitd "${FILESDIR}"/${PN}.init x2gocleansessions
 	systemd_dounit "${FILESDIR}"/x2gocleansessions.service
@@ -89,4 +87,12 @@ pkg_postinst() {
 	elog "For password authentication, you need to enable PasswordAuthentication"
 	elog "in /etc/ssh/sshd_config (disabled by default in Gentoo)"
 	elog "An init script was installed for x2gocleansessions"
+
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
 }
