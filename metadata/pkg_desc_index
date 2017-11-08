@@ -16891,6 +16891,7 @@ sec-policy/selinux-gorg 2.20170204-r1 2.20170204-r2 2.20170204-r3 2.20170204-r4 
 sec-policy/selinux-gpg 2.20170204-r1 2.20170204-r2 2.20170204-r3 2.20170204-r4 2.20170805-r2 2.20170805-r3 9999: SELinux policy for gpg
 sec-policy/selinux-gpm 2.20170204-r1 2.20170204-r2 2.20170204-r3 2.20170204-r4 2.20170805-r2 2.20170805-r3 9999: SELinux policy for gpm
 sec-policy/selinux-gpsd 2.20170204-r1 2.20170204-r2 2.20170204-r3 2.20170204-r4 2.20170805-r2 2.20170805-r3 9999: SELinux policy for gpsd
+sec-policy/selinux-gssproxy 2.20170805-r3 9999: SELinux policy for gssproxy
 sec-policy/selinux-hddtemp 2.20170204-r1 2.20170204-r2 2.20170204-r3 2.20170204-r4 2.20170805-r2 2.20170805-r3 9999: SELinux policy for hddtemp
 sec-policy/selinux-howl 2.20170204-r1 2.20170204-r2 2.20170204-r3 2.20170204-r4 2.20170805-r2 2.20170805-r3 9999: SELinux policy for howl
 sec-policy/selinux-icecast 2.20170204-r1 2.20170204-r2 2.20170204-r3 2.20170204-r4 2.20170805-r2 2.20170805-r3 9999: SELinux policy for icecast
