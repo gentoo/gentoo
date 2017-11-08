@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (08 Nov 2017)
+# Vulnerable to CVE-2017-13720, CVE-2017-13722 (bug #634044). Only in tree for
+# masked xorg-server-1.12.
+<x11-libs/libXfont-1.5.0
+
 # Brian Evans <grknight@gentoo.org> (07 Nov 2017)
 # Remote service removed this method, dead upstream
 # Masked for removal in 30 days.
