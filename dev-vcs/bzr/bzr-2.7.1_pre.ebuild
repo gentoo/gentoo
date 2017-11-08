@@ -21,12 +21,11 @@ SRC_URI="https://dev.gentoo.org/~grozin/${P}.tar.gz"
 RDEPEND="curl? ( dev-python/pycurl[${PYTHON_USEDEP}] )
 	sftp? ( dev-python/paramiko[${PYTHON_USEDEP}] )"
 
-DEPEND="test? (
-		${RDEPEND}
+DEPEND="|| ( dev-python/cython dev-python/pyrex )
+	test? ( ${RDEPEND}
 		>=dev-python/pyftpdlib-0.7.0[${PYTHON_USEDEP}]
 		dev-python/subunit
-		>=dev-python/testtools-0.9.5[${PYTHON_USEDEP}]
-	)"
+		>=dev-python/testtools-0.9.5[${PYTHON_USEDEP}] )"
 
 # Fails tests bug#487216
 # Upstream is not exactly keen on fixing it
