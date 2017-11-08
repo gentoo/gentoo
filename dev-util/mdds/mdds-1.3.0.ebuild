@@ -13,11 +13,12 @@ HOMEPAGE="https://gitlab.com/mdds/mdds"
 [[ ${PV} == 9999 ]] || SRC_URI="https://kohei.us/files/${PN}/src/${P}.tar.bz2"
 
 LICENSE="MIT"
-SLOT="1/${PV%.*}"
+SLOT="1/1.2"
 IUSE="doc valgrind"
 
 [[ ${PV} == 9999 ]] || \
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS=""
+# KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="dev-libs/boost:="
 DEPEND="${RDEPEND}
