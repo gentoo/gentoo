@@ -25,6 +25,7 @@ RDEPEND="
 	dev-cpp/eigen:3
 	dev-cpp/yaml-cpp
 	dev-libs/urdfdom:=
+	dev-libs/tinyxml:=
 
 	dev-ros/angles
 	dev-ros/image_geometry
