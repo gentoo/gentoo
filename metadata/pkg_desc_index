@@ -214,7 +214,7 @@ app-admin/syslog-ng 3.4.8 3.6.2 3.6.4 3.7.2 3.7.3: syslog replacement with advan
 app-admin/syslog-summary 1.14-r1: Summarizes the contents of a syslog log file
 app-admin/syslogread 0.92-r1: Syslog message handling tools
 app-admin/sysrqd 14: daemon providing access to the kernel sysrq functions via network
-app-admin/sysstat 11.4.0 11.4.5 11.4.6 11.6.0: System performance tools for Linux
+app-admin/sysstat 11.4.0 11.6.0 11.6.1: System performance tools for Linux
 app-admin/system-config-printer 1.4.8: GNOME frontend for a Red Hat's printer administration tool
 app-admin/system-tools-backends 2.10.2: Tools aimed to make easy the administration of UNIX systems
 app-admin/systemdgenie 0.99.0: systemd managment utility
@@ -7663,7 +7663,7 @@ dev-python/expects 0.4.2 0.8.0: Expressive and extensible TDD/BDD assertion libr
 dev-python/extras 0.0.3 1.0.0: Useful extra bits for Python that should be in the standard library
 dev-python/extremes 1.1.1: Production-quality 'Min' and 'Max' objects
 dev-python/eyeD3 0.7.5: Module for manipulating ID3 (v1 + v2) tags in Python
-dev-python/fabric 1.10.0-r1 1.12.0: A simple pythonic tool for remote execution and deployment
+dev-python/fabric 1.10.0-r1 1.12.0 1.14.0: A simple pythonic tool for remote execution and deployment
 dev-python/falcon 0.1.6 0.1.7 0.1.8 0.1.9: A supersonic micro-framework for building cloud APIs
 dev-python/fasteners 0.13.0 0.14.1: Python package that provides useful locks
 dev-python/fastparquet 0.1.0 0.1.1: Python implementation of the parquet columnar file format
@@ -15015,7 +15015,7 @@ net-libs/netembryo 0.1.1: a network abstraction library
 net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP protocols
 net-libs/nfqueue-bindings 0.5 0.6: High-level language bindings for libnetfilter_queue
 net-libs/nghttp2 1.10.0 1.19.0 1.26.0 1.27.0 9999: HTTP/2 C Library
-net-libs/nodejs 0.12.17 4.8.5 6.9.4 6.11.5 8.9.0 9.0.0: A JavaScript runtime built on Chrome's V8 JavaScript engine
+net-libs/nodejs 0.12.17 4.8.5 6.9.4 6.11.5 8.9.1 9.1.0: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-libs/ntirpc 1.4.1 1.5.2 1.5.3: Transport Independent RPC library for nfs-ganesha
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
@@ -15174,7 +15174,7 @@ net-misc/adjtimex 1.29-r1: display or set the kernel time variables
 net-misc/aget 0.4.1-r1: multithreaded HTTP download accelerator
 net-misc/aggregate 1.6: Take a list of prefixes and perform two optimisations to reduce the length of the prefix list
 net-misc/aggregate-flim 1.0.2: aggregate is a tool for aggregating CIDR networks
-net-misc/apt-cacher-ng 3: Yet another caching HTTP proxy for Debian/Ubuntu software packages
+net-misc/apt-cacher-ng 3 3.1: Yet another caching HTTP proxy for Debian/Ubuntu software packages
 net-misc/aria2 1.30.0 1.31.0 1.32.0 1.33.0: A download utility with segmented downloading with BitTorrent support
 net-misc/arm 1.4.5.0-r2 1.4.5.0_p20140714-r2: A ncurses-based status monitor for Tor relays
 net-misc/arpd 0.2-r1: ARP server which claims all unassigned addresses (for network monitoring or simulation)
@@ -15290,7 +15290,7 @@ net-misc/ifenslave 1.1.0-r6: Attach and detach slave interfaces to a bonding dev
 net-misc/igmpproxy 0.1-r2: Multicast Routing Daemon using only IGMP signalling
 net-misc/ip-sentinel 0.12: Prevent unauthorized usage of IPs in the local ethernet broadcastdomain by answering ARP-requests
 net-misc/ipcalc 0.41: IP Calculator prints broadcast/network/etc for an IP address and netmask
-net-misc/iperf 2.0.9 2.0.10 3.1.3 3.1.7 3.2: A TCP, UDP, and SCTP network bandwidth measurement tool
+net-misc/iperf 2.0.9 2.0.10 3.1.3 3.2 3.3: A TCP, UDP, and SCTP network bandwidth measurement tool
 net-misc/iprange 1.0.3 1.0.4: iprange utility
 net-misc/ipsc 0.4.3.2-r2: IP Subnet Calculator
 net-misc/ipsorcery 2.0.9-r1 2.0.9-r2: Ipsorcery allows you to generate IP, TCP, UDP, ICMP, and IGMP packets
@@ -17877,7 +17877,7 @@ sys-kernel/cryptodev 1.7 1.9 9999: device that allows access to Linux kernel cry
 sys-kernel/dracut 044-r1 044-r3 045-r2: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.49.2 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.5.0.8 3.5.1.0 3.5.1.1 3.5.2.0-r1 3.5.2.1 3.5.2.2 3.5.2.3 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 65 66 68: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 3.10.107-r1 4.1.43-r1 4.4.87-r1 4.4.95 4.4.96 4.4.97 4.9.49-r1 4.9.59 4.9.60 4.12.12 4.12.13 4.12.14 4.13.10 4.13.11: Full sources including the Gentoo patchset for the 4.13 kernel tree
+sys-kernel/gentoo-sources 3.10.107-r1 4.1.43-r1 4.4.87-r1 4.4.95 4.4.96 4.4.97 4.9.49-r1 4.9.59 4.9.60 4.9.61 4.12.12 4.12.13 4.12.14 4.13.10 4.13.11 4.13.12: Full sources including the Gentoo patchset for the 4.13 kernel tree
 sys-kernel/git-sources 4.14_rc1 4.14_rc2 4.14_rc3 4.14_rc4 4.14_rc5 4.14_rc6 4.14_rc7 4.14_rc8: The very latest -git version of the Linux kernel
 sys-kernel/hardened-sources 4.4.8-r1 4.7.6 4.7.10 4.8.17-r2 4.9.21 4.9.22 4.9.23 4.9.24: Hardened kernel sources (kernel series 4.9)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
@@ -18455,7 +18455,7 @@ www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ and libcurl
 www-client/vivaldi 1.12.955.48_p1: A new browser for our friends
-www-client/vivaldi-snapshot 1.13.1002.4_p1 1.13.1008.3_p1: A new browser for our friends
+www-client/vivaldi-snapshot 1.13.1008.3_p1 1.13.1008.11_p1: A new browser for our friends
 www-client/w3m 0.5.3-r9: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r7 0.3.2_p24-r9: A variant of w3m with support for multiple character encodings
 www-client/weboob 0g 0h 9998 9999: Weboob (Web Outside of Browsers) provides several applications to interact with a lot of websites
