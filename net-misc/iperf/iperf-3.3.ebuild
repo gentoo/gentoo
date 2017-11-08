@@ -2,12 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
 inherit autotools eutils
 
 DESCRIPTION="A TCP, UDP, and SCTP network bandwidth measurement tool"
 HOMEPAGE="https://github.com/esnet/iperf/"
-SRC_URI="https://codeload.github.com/esnet/${PN}/tar.gz/${PV/_beta/b} -> ${P}.tar.gz"
+SRC_URI="${HOMEPAGE}archive/${PV/_/}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="3"
@@ -17,7 +16,7 @@ IUSE="sctp static-libs"
 DEPEND="sctp? ( net-misc/lksctp-tools )"
 RDEPEND="${DEPEND}"
 
-S=${WORKDIR}/${P/_beta/b}
+S=${WORKDIR}/${P/_/}
 
 PATCHES=( "${FILESDIR}"/${PN}-3.0.5-flags.patch )
 
