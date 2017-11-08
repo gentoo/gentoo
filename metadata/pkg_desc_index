@@ -7970,7 +7970,7 @@ dev-python/lp_solve 5.5.2.0-r1: Python wrappers for lpsolve linear programming l
 dev-python/lupy 0.2.1-r2: Lupy is a is a full-text indexer and search engine written in Python
 dev-python/lxml 3.8.0 4.0.0 4.1.0 4.1.1: A Pythonic binding for the libxml2 and libxslt libraries
 dev-python/lz4 0.8.2 0.9.0 0.10.0 0.10.1: LZ4 Bindings for Python
-dev-python/m2crypto 0.24.0 0.25.1-r2 0.26.0 0.26.4: M2Crypto: A Python crypto and SSL toolkit
+dev-python/m2crypto 0.24.0 0.25.1-r2 0.26.0 0.26.4 0.27.0: M2Crypto: A Python crypto and SSL toolkit
 dev-python/m2r 0.1.5 0.1.6 0.1.12: Markdown to reStructuredText converter
 dev-python/m2secret 0.1.1-r1: Encryption and decryption module and CLI utility
 dev-python/maintboot 0.1.0: Run maintenance tasks outside the OS
@@ -8169,7 +8169,7 @@ dev-python/paver 1.2.4: Python-based software project scripting tool along the l
 dev-python/pbkdf2 1.3: Implementation of the password-based key derivation function, PBKDF2, specified in RSA PKCS#5 v2.0
 dev-python/pbr 0.8.2-r1 1.10.0-r1 3.1.1: Inject some useful and sensible default behaviors into setuptools
 dev-python/pcapy 0.11.1: Python pcap extension
-dev-python/pdfrw 0.2 0.3: PDF file reader/writer library
+dev-python/pdfrw 0.2 0.3 0.4: PDF file reader/writer library
 dev-python/pdoc 0.3.2: Simple program and library to auto generate API documentation for Python modules
 dev-python/peak-rules 0.5: Generic functions and business rules support systems
 dev-python/pecan 1.0.4 1.1.2 1.2.1: A WSGI object-dispatching web framework, lean, fast, with few dependencies.
@@ -8976,7 +8976,7 @@ dev-python/watchdog 0.8.3-r1 0.8.3-r2: Python API and shell utilities to monitor
 dev-python/wcsaxes 0.8 0.9: Framework for plotting astronomical and geospatial data
 dev-python/wcwidth 0.1.7 0.1.7-r1: Measures number of Terminal column cells of wide-character codes
 dev-python/weakrefmethod 1.0.3: Backport of WeakMethod from Python 3.4 to Python 2.6+
-dev-python/weasyprint 0.29 0.39 0.40: Visual rendering engine for HTML and CSS that can export to PDF
+dev-python/weasyprint 0.29 0.39 0.40 0.41: Visual rendering engine for HTML and CSS that can export to PDF
 dev-python/webassets 0.12: Asset management for Python web development
 dev-python/webcolors 1.5: Color names and value formats defined by the HTML and CSS specifications
 dev-python/webencodings 0.5 0.5.1: Character encoding aliases for legacy web content
