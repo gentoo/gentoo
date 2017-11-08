@@ -2,10 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-MY_EXTRAS_VER="20151117-2040Z"
-SUBSLOT="18"
+MY_EXTRAS_VER="20171108-2050Z"
+BUILD="cmake"
+#fails to build with ninja
+CMAKE_MAKEFILE_GENERATOR=emake
 
-inherit toolchain-funcs java-pkg-opt-2 mysql-multilib
+inherit toolchain-funcs java-pkg-opt-2 mysql-v2
 # only to make repoman happy. it is really set in the eclass
 IUSE="$IUSE"
 
@@ -14,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 
 # When MY_EXTRAS is bumped, the index should be revised to exclude these.
 # This is often broken still
-#EPATCH_EXCLUDE=''
+EPATCH_EXCLUDE='20006_all_cmake_elib-mysql-cluster-5.5.37.patch 20008_all_mysql-tzinfo-symlink.patch 20019_all_mysql-5.5-mtr-perl-deprecation.patch 20020_all_mysql-5.6-events_1-bug-78899.patch'
 
 DEPEND="|| ( >=sys-devel/gcc-3.4.6 >=sys-devel/gcc-apple-4.0 )"
 RDEPEND="!media-sound/amarok[embedded]"
@@ -23,25 +25,12 @@ RDEPEND="!media-sound/amarok[embedded]"
 # If you want to add a single patch, copy the ebuild to an overlay
 # and create your own mysql-extras tarball, looking at 000_index.txt
 
-src_prepare() {
-	mysql-multilib_src_prepare
-	if use libressl ; then
-		sed -i 's/OPENSSL_MAJOR_VERSION STREQUAL "1"/OPENSSL_MAJOR_VERSION STREQUAL "2"/' \
-			"${S}/cmake/ssl.cmake" || die
-	fi
-}
-
 # Official test instructions:
-# USE='extraengine perl openssl' \
+# USE='cluster extraengine perl ssl community' \
 # FEATURES='test userpriv -usersandbox' \
 # ebuild mysql-cluster-X.X.XX.ebuild \
 # digest clean package
-multilib_src_test() {
-
-	if ! multilib_is_native_abi ; then
-		einfo "Server tests not available on non-native abi".
-		return 0;
-	fi
+src_test() {
 
 	local TESTDIR="${CMAKE_BUILD_DIR}/mysql-test"
 	local retstatus_unit
@@ -68,56 +57,50 @@ multilib_src_test() {
 
 		# Ensure that parallel runs don't die
 		export MTR_BUILD_THREAD="$((${RANDOM} % 100))"
-		# Enable parallel testing, auto will try to detect number of cores
-		# You may set this by hand.
-		# The default maximum is 8 unless MTR_MAX_PARALLEL is increased
-		export MTR_PARALLEL="${MTR_PARALLEL:-auto}"
 
 		# create directories because mysqladmin might right out of order
 		mkdir -p "${T}"/var-tests{,/log}
 
-		# These are failing in MySQL 5.5/5.6 for now and are believed to be
+		# These are failing in MySQL 5.5 for now and are believed to be
 		# false positives:
 		#
 		# main.information_schema, binlog.binlog_statement_insert_delayed,
-		# main.mysqld--help-notwin, funcs_1.is_triggers funcs_1.is_tables_mysql,
-		# funcs_1.is_columns_mysql, binlog.binlog_mysqlbinlog_filter,
-		# perfschema.binlog_edge_mix, perfschema.binlog_edge_stmt,
-		# mysqld--help-notwin, funcs_1.is_triggers, funcs_1.is_tables_mysql, funcs_1.is_columns_mysql
-		# perfschema.binlog_edge_stmt, perfschema.binlog_edge_mix, binlog.binlog_mysqlbinlog_filter
+		# main.mysqld--help-notwin, ndb.ndbinfo, ndb_binlog.ndb_binlog_index
 		# fails due to USE=-latin1 / utf8 default
 		#
 		# main.mysql_client_test:
 		# segfaults at random under Portage only, suspect resource limits.
 		#
-		for t in \
-			binlog.binlog_mysqlbinlog_filter \
-			binlog.binlog_statement_insert_delayed \
-			funcs_1.is_columns_mysql \
-			funcs_1.is_tables_mysql \
-			funcs_1.is_triggers \
-			main.information_schema \
-			main.mysqld--help-notwinfuncs_1.is_triggers \
-			main.mysql_client_test \
-			mysqld--help-notwin \
+		# sys_vars.plugin_dir_basic
+		# fails because PLUGIN_DIR is set to MYSQL_LIBDIR64/plugin
+		# instead of MYSQL_LIBDIR/plugin
+		#
+		# main.flush_read_lock_kill
+		# fails because of unknown system variable 'DEBUG_SYNC'
+		#
+		# main.openssl_1
+		# error message changing
+		# -mysqltest: Could not open connection 'default': 2026 SSL connection
+		#  error: ASN: bad other signature confirmation
+		# +mysqltest: Could not open connection 'default': 2026 SSL connection
+		#  error: error:00000001:lib(0):func(0):reason(1)
+		#
+
+		for t in main.mysql_client_test \
+			binlog.binlog_statement_insert_delayed main.information_schema \
+			main.mysqld--help-notwin main.flush_read_lock_kill \
+			sys_vars.plugin_dir_basic main.openssl_1 \
 			main.mysqlhotcopy_archive main.mysqlhotcopy_myisam \
-			perfschema.binlog_edge_mix \
-			perfschema.binlog_edge_stmt \
-		; do
-				mysql-multilib_disable_test  "$t" "False positives in Gentoo"
-		done
-		# ndb.ndbinfo, ndb_binlog.ndb_binlog_index: latin1/utf8
-		for t in \
-			ndb.ndbinfo \
-			ndb_binlog.ndb_binlog_index ; do
-				mysql-multilib_disable_test  "$t" "False positives in Gentoo (NDB)"
+			ndb.ndbinfo ndb_binlog.ndb_binlog_index ; do
+				mysql-v2_disable_test  "$t" "False positives in Gentoo"
 		done
 
 		# Run mysql tests
 		pushd "${TESTDIR}"
 
 		# run mysql-test tests
-		perl mysql-test-run.pl --force --vardir="${T}/var-tests"
+		perl mysql-test-run.pl --force --vardir="${T}/var-tests" \
+			--parallel=auto
 		retstatus_tests=$?
 		[[ $retstatus_tests -eq 0 ]] || eerror "tests failed"
 		has usersandbox $FEATURES && eerror "Some tests may fail with FEATURES=usersandbox"
