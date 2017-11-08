@@ -18,10 +18,10 @@ DEPEND="!luajit? ( >=dev-lang/lua-5.1:= )
 	luajit? ( dev-lang/luajit:= )
 	protobuf? (
 		dev-libs/protobuf
-		>=dev-libs/boost-1.42
+		>=dev-libs/boost-1.42:=
 	)
 	systemd? ( sys-apps/systemd:0= )
-	>=dev-libs/boost-1.35"
+	>=dev-libs/boost-1.35:="
 RDEPEND="${DEPEND}
 	!<net-dns/pdns-2.9.20-r1"
 DEPEND="${DEPEND}
