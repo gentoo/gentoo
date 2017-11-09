@@ -14,18 +14,13 @@ HOMEPAGE="https://gitlab.com/mdds/mdds"
 
 LICENSE="MIT"
 SLOT="1/1.2"
-IUSE="doc valgrind"
+IUSE="valgrind"
 
 [[ ${PV} == 9999 ]] || \
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="dev-libs/boost:="
-DEPEND="${RDEPEND}
-	doc? (
-		app-doc/doxygen
-		dev-python/sphinx
-	)
-"
+DEPEND="${RDEPEND}"
 
 PATCHES=( "${FILESDIR}/${PN}-1.2.3-buildsystem.patch" )
 
@@ -35,8 +30,9 @@ src_prepare(){
 }
 
 src_configure() {
+	# docs require dev-python/breathe etc., bug #602026
 	econf \
-		$(use_enable doc docs) \
+		--disable-docs \
 		$(use_enable valgrind memory_tests)
 }
 
