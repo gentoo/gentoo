@@ -25,6 +25,9 @@ DOCS=(
 	examples/sshguard.service
 	examples/whitelistfile.example
 )
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.1.0-conf.patch
+)
 
 src_install() {
 	default
