@@ -8,4 +8,4 @@ LICENSE=BSD
 RDEPEND=virtual/logger
 SLOT=0
 SRC_URI=mirror://sourceforge/sshguard/sshguard-2.1.0.tar.gz
-_md5_=9cca15d27ebda6d9c26c4106134b562c
+_md5_=1fca035edf5e023da61f260d6a3bf08f
