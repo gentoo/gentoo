@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 IUSE=""
 
-DESCRIPTION="A tool that enables developers to work comfortably offline with CVS by queuing the commits"
+DESCRIPTION="A tool to work offline with CVS by queuing the commits"
 SRC_URI="http://metawire.org/~vslavik/sw/cvsq/download/${P}.tar.gz"
 HOMEPAGE="http://metawire.org/~vslavik/sw/cvsq/"
 
