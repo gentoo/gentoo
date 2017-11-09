@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Sergei Trofimovich <slyfox@gentoo.org> (09 Nov 2017)
+# pulls in many dev-ruby/asciidoctor dependencies (bug #599048)
+net-misc/chrony html
+
 # Mart Raudsepp <leio@gentoo.org> (02 Sep 2017)
 # Failure to re-keyword ffmpeg/gst-plugins-libav in a timely
 # fashion; bugs #574786, #608868, #610810
