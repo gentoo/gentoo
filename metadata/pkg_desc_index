@@ -15175,7 +15175,7 @@ net-misc/aget 0.4.1-r1: multithreaded HTTP download accelerator
 net-misc/aggregate 1.6: Take a list of prefixes and perform two optimisations to reduce the length of the prefix list
 net-misc/aggregate-flim 1.0.2: aggregate is a tool for aggregating CIDR networks
 net-misc/apt-cacher-ng 3 3.1: Yet another caching HTTP proxy for Debian/Ubuntu software packages
-net-misc/aria2 1.30.0 1.31.0 1.32.0 1.33.0: A download utility with segmented downloading with BitTorrent support
+net-misc/aria2 1.30.0 1.31.0 1.32.0 1.33.0 1.33.1: A download utility with segmented downloading with BitTorrent support
 net-misc/arm 1.4.5.0-r2 1.4.5.0_p20140714-r2: A ncurses-based status monitor for Tor relays
 net-misc/arpd 0.2-r1: ARP server which claims all unassigned addresses (for network monitoring or simulation)
 net-misc/arpsponge 3.12.2: Sweeps up stray ARP queries from a peering LAN
