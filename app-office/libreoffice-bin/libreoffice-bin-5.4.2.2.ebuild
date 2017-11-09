@@ -155,8 +155,7 @@ COMMON_DEPEND="
 "
 
 RDEPEND="${COMMON_DEPEND}
-	!app-office/libreoffice-bin
-	!app-office/libreoffice-bin-debug
+	!app-office/libreoffice
 	!app-office/openoffice
 	media-fonts/dejavu
 	media-fonts/liberation-fonts
