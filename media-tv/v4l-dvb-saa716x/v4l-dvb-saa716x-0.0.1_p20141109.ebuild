@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 inherit linux-info linux-mod
 
-DESCRIPTION="driver for saa716x based dvb cards like Technotrend S2-6400 or Technisat Skystar 2 eXpress HD"
+DESCRIPTION="driver for saa716x based dvb cards like TT S2-6400 or Skystar 2 eXpress HD"
 HOMEPAGE="https://bitbucket.org/powARman/v4l-dvb-saa716x/overview"
 
 HG_REVISION="d7e98fc59230"
