@@ -9816,7 +9816,7 @@ dev-ruby/priorityqueue 0.1.2: A fibonacci-heap priority-queue implementation
 dev-ruby/protected_attributes 1.1.4: Protect attributes from mass-assignment in ActiveRecord models
 dev-ruby/pry 0.10.4 0.11.0 0.11.1 0.11.2: Pry is a powerful alternative to the standard IRB shell for Ruby
 dev-ruby/psych 2.2.4: A libyaml wrapper for Ruby
-dev-ruby/public_suffix 2.0.5 3.0.0-r1: Parse and decompose a domain name into top level domain, domain and subdomains
+dev-ruby/public_suffix 2.0.5 3.0.0-r1 3.0.1: Parse and decompose a domain name into top level domain, domain and subdomains
 dev-ruby/pundit 1.1.0: Object oriented authorization for Rails applications
 dev-ruby/puppetdb-termini 4.3.0 5.0.1: Library needed to connect puppet to puppetdb
 dev-ruby/pusher-client 0.6.2: Client for consuming WebSockets from http://pusher.com
@@ -10003,7 +10003,7 @@ dev-ruby/sinatra-partial 1.0.1: Just the partials helper in a gem
 dev-ruby/six 0.2.0: An ultra lite authorization library
 dev-ruby/slim 3.0.7-r1 3.0.8: A template language aiming to reduce the syntax to the essential parts
 dev-ruby/slop 3.6.0 4.4.1 4.4.3 4.5.0 4.6.0: A simple option parser with an easy to remember syntax and friendly API
-dev-ruby/slow_enumerator_tools 1.0.0: Transform Ruby enumerators that produce data slowly and unpredictably
+dev-ruby/slow_enumerator_tools 1.0.0 1.1.0: Transform Ruby enumerators that produce data slowly and unpredictably
 dev-ruby/snmplib 1.2.0-r1: SNMP library implemented in pure Ruby
 dev-ruby/source_map 3.0.1: Provides an API for parsing, and an API for generating source maps in ruby
 dev-ruby/sourcemap 0.1.1: Ruby source maps
@@ -10053,7 +10053,7 @@ dev-ruby/treetop 1.6.8: Treetop is a language for describing languages
 dev-ruby/trollop 1.16.2-r4 2.1.2: Trollop is a commandline option parser for Ruby
 dev-ruby/ttfunk 1.2.1 1.4.0 1.5.0 1.5.1: A TrueType font parser written in pure ruby
 dev-ruby/turbolinks 2.5.3: Makes following links in your web application faster
-dev-ruby/twitter 5.17.0-r1 6.1.0: Ruby wrapper around the Twitter API
+dev-ruby/twitter 5.17.0-r1 6.1.0 6.2.0: Ruby wrapper around the Twitter API
 dev-ruby/twitter-text 1.14.2 1.14.5 1.14.6 1.14.7: Text handling for Twitter
 dev-ruby/typed-array 0.1.2-r1: Gem provides enforced-type functionality to Arrays
 dev-ruby/typhoeus 0.6.9 1.1.2 1.3.0: Runs HTTP requests in parallel while cleanly encapsulating handling logic
