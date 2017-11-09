@@ -235,7 +235,7 @@ kde-misc/kbiff
 # Dead upstream, depends on dead kdelibs4/Qt4/Qt3Support.
 # Use any image viewer instead, like gwenview.
 # Masked for removal in 30 days. Bug #629018
-kde-misc/kfax
+media-gfx/kfax
 
 # Andreas Sturmlechner <asturm@gentoo.org> (15 Oct 2017)
 # Dead upstream, depends on dead kdelibs4/Qt4/Qt3Support.
