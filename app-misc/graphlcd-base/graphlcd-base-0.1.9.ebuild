@@ -11,7 +11,7 @@ DESCRIPTION="Graphical LCD Driver"
 HOMEPAGE="https://projects.vdr-developer.org/projects/graphlcd-base"
 SRC_URI="mirror://vdr-developerorg/${VERSION}/${P}.tgz"
 
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="amd64 ~ppc x86"
 SLOT="0"
 LICENSE="GPL-2"
 IUSE="g15"
