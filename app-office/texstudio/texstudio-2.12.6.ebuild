@@ -7,11 +7,11 @@ inherit gnome2-utils prefix qmake-utils xdg-utils
 
 DESCRIPTION="Free cross-platform LaTeX editor (fork from texmakerX)"
 HOMEPAGE="http://texstudio.sourceforge.net/"
-#SRC_URI="mirror://sourceforge/${PN}/${PN}/TeXstudio%20${PV}/${P}.tar.gz" 
-# ^^ temporary disabled 
-# * upstream could not solve gentoo bug #627062 for 2 months. 
+#SRC_URI="mirror://sourceforge/${PN}/${PN}/TeXstudio%20${PV}/${P}.tar.gz"
+# ^^ temporary disabled
+# * upstream could not solve gentoo bug #627062 for 2 months.
 #   Our tar ball does not include the questioned file.
-# * a released tar ball was silently for the second time. We can not rely on the 
+# * a released tar ball was silently for the second time. We can not rely on the
 SRC_URI="https://dev.gentoo.org/~jstein/dist/${P}.tar.gz"
 
 LICENSE="GPL-2"
