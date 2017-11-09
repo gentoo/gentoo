@@ -1445,7 +1445,7 @@ app-eselect/eselect-wine 1.2.2: Manage active wine version
 app-eselect/eselect-wxwidgets 20140423: Eselect module and wrappers for wxWidgets
 app-eselect/eselect-xvmc 0.4: Manages XvMC implementations
 app-forensics/afflib 3.7.4 3.7.7 3.7.8: Library that implements the AFF image standard
-app-forensics/afl 2.35b 2.39b 2.46b 2.51b: american fuzzy lop - compile-time instrumentation fuzzer
+app-forensics/afl 2.35b 2.39b 2.46b 2.51b 2.52b: american fuzzy lop - compile-time instrumentation fuzzer
 app-forensics/aide 0.16: AIDE (Advanced Intrusion Detection Environment) is a file integrity checker
 app-forensics/air 2.0.0-r1: A GUI front-end to dd/dc3dd
 app-forensics/autopsy 2.24-r1: A graphical interface to the digital forensic analysis tools in The Sleuth Kit
@@ -14686,7 +14686,7 @@ net-firewall/quicktables 2.3: a quick iptables script generator
 net-firewall/rtsp-conntrack 3.7: RTSP conntrack module for Netfilter
 net-firewall/sanewall 1.1.6-r2: iptables firewall generator (fork of firehol)
 net-firewall/shapecfg 36: configuration tool for setting traffic bandwidth parameters
-net-firewall/shorewall 5.1.5.2 5.1.6.1 5.1.7 5.1.7.1 5.1.7.2: A high-level tool for configuring Netfilter
+net-firewall/shorewall 5.1.7.2 5.1.8.1: A high-level tool for configuring Netfilter
 net-firewall/ufw 0.34_pre805-r2 0.35-r1: A program used to manage a netfilter firewall
 net-firewall/ufw-frontends 0.3.2-r5: Provides graphical frontend to ufw
 net-firewall/xtables-addons 2.13: iptables extensions not yet accepted in the main kernel
