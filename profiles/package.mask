@@ -35,6 +35,39 @@
 dev-util/qfsm
 
 # Andreas Sturmlechner <asturm@gentoo.org> (30 Nov 2017)
+# Declared dead upstream. Masked for removal in 30 days. Bug #620708
+kde-apps/blogilo
+kde-apps/jovie
+kde-apps/kabcclient
+kde-apps/kaccessible
+kde-apps/kdepim-kresources
+kde-apps/kdepim-l10n
+kde-apps/kdepim-wizards
+kde-apps/kdepimlibs
+kde-apps/kdewebdev-meta
+kde-apps/kfilereplace
+kde-apps/kioclient
+kde-apps/klinkstatus
+kde-apps/knode
+kde-apps/knotify
+kde-apps/kppp
+kde-apps/kremotecontrol
+kde-apps/ktimetracker
+kde-apps/ktimezoned
+kde-apps/libkface
+kde-apps/libkpgp
+
+# Andreas Sturmlechner <asturm@gentoo.org> (30 Nov 2017)
+# Depends on dead kdepimlibs:4. KF5-based snapshot available.
+app-office/kraft:4
+
+# Andreas Sturmlechner <asturm@gentoo.org> (30 Nov 2017)
+# Depends on dead kdepimlibs:4. KF5-based snapshot available.
+kde-apps/kopete:4
+kde-misc/kopete-antispam
+kde-misc/kopete-thinklight
+
+# Andreas Sturmlechner <asturm@gentoo.org> (30 Nov 2017)
 # Still depends on dead kdelibs4/Qt3Support/Qt4, no KF5-based release.
 # Masked for removal in 30 days. Bug #629018
 <=dev-util/kdbg-2.9.1
