@@ -12,7 +12,7 @@ HOMEPAGE="https://www.sleuthkit.org/sleuthkit/"
 SRC_URI="https://github.com/${PN}/${PN}/releases/download/${P}/${P}.tar.gz
 	java? ( http://repo1.maven.org/maven2/org/xerial/sqlite-jdbc/3.8.11/sqlite-jdbc-3.8.11.jar )"
 
-LICENSE="CPL-1.0 GPL-2+ IBM java? ( Apache-2.0 )"
+LICENSE="BSD CPL-1.0 GPL-2+ IBM java? ( Apache-2.0 )"
 SLOT="0/13" # subslot = major soname version
 KEYWORDS="~amd64 ~hppa ~ppc ~x86"
 IUSE="aff doc ewf java static-libs test +threads zlib"
@@ -39,7 +39,6 @@ DEPEND="${DEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.1.0-tools-shared-libs.patch
-	"${FILESDIR}"/${PN}-4.4.2-c89-fix.patch
 )
 
 TSK_JAR_DIR="${S}/bindings/java/lib"
@@ -74,12 +73,6 @@ src_prepare() {
 		sed -e '/name="compile"/ s/, retrieve-deps//' \
 			-e '/name="dist-/ s/, init-ivy//g' \
 			-i build.xml || die
-
-		# Even if static libs are disabled, the build system looks for
-		# the static library and fails if not present
-		# Disable that check
-		use static-libs || sed -e '/<fail unless="present" message="JNI/ d;' \
-							   -i build-unix.xml || die
 
 		java-pkg-opt-2_src_prepare
 
