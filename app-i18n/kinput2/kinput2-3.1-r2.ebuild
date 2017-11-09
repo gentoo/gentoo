@@ -13,7 +13,7 @@ SRC_URI="ftp://ftp.sra.co.jp/pub/x11/${PN}/${MY_P}.tar.gz"
 
 LICENSE="HPND"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 ~sparc x86"
+KEYWORDS="amd64 ppc ppc64 sparc x86"
 IUSE="freewnn"
 
 RDEPEND="x11-libs/libICE
