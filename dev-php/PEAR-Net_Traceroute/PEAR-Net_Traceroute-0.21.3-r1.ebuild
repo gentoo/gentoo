@@ -5,7 +5,7 @@ EAPI=6
 
 inherit php-pear-r2
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DESCRIPTION="OS independet wrapper class for executing traceroute calls"
 LICENSE="PHP-3.01"

@@ -1,0 +1,80 @@
+From fc6ba3a74ffa88b22435531d6522d934a52187e5 Mon Sep 17 00:00:00 2001
+From: Elvis Pranskevichus <elvis@magic.io>
+Date: Wed, 10 Feb 2016 14:45:13 -0500
+Subject: [PATCH] Build fixes
+
+---
+ lib/internal/bootstrap_node.js | 2 ++
+ node.gyp                       | 9 +++++++++
+ src/node_main.cc               | 2 ++
+ 3 files changed, 13 insertions(+)
+
+diff --git a/lib/internal/bootstrap_node.js b/lib/internal/bootstrap_node.js
+index 085ea00fd0..cb49fc87a7 100644
+--- a/lib/internal/bootstrap_node.js
++++ b/lib/internal/bootstrap_node.js
+@@ -40,7 +40,9 @@
+       setupGlobalConsole();
+     }
+ 
++    if (!process.env.ELECTRON_NODE_DISABLE_ASAR_SUPPORT) {
+     setupAsarSupport();
++    }
+ 
+     const _process = NativeModule.require('internal/process');
+ 
+diff --git a/node.gyp b/node.gyp
+index 95f24933fc..1434904324 100644
+--- a/node.gyp
++++ b/node.gyp
+@@ -17,6 +17,7 @@
+     'node_shared_libuv%': 'false',
+     'node_use_openssl%': 'true',
+     'node_shared_openssl%': 'false',
++    'node_v8_path%': 'deps/v8',
+     'node_v8_options%': '',
+     'node_enable_v8_vtunejit%': 'false',
+     'node_core_target_name%': 'node',
+@@ -133,6 +134,7 @@
+       ],
+ 
+       'include_dirs': [
++        '<(node_v8_path)/include',
+         'src',
+         'tools/msvs/genfiles',
+         'deps/uv/src/ares',
+@@ -238,6 +240,13 @@
+         'V8_DEPRECATION_WARNINGS=1',
+       ],
+ 
++      'link_settings': {
++        'ldflags': [
++          '-Wl,-rpath=\$$ORIGIN/',
++          # Make native module dynamic loading work.
++          '-rdynamic',
++        ],
++      },
+ 
+       'conditions': [
+         [ 'node_shared=="false"', {
+diff --git a/src/node_main.cc b/src/node_main.cc
+index 16bda81ae6..fd559ef1c3 100644
+--- a/src/node_main.cc
++++ b/src/node_main.cc
+@@ -50,11 +50,13 @@ int wmain(int argc, wchar_t *wargv[]) {
+ }
+ #else
+ // UNIX
++#include <stdlib.h>
+ int main(int argc, char *argv[]) {
+   // Disable stdio buffering, it interacts poorly with printf()
+   // calls elsewhere in the program (e.g., any logging from V8.)
+   setvbuf(stdout, nullptr, _IONBF, 0);
+   setvbuf(stderr, nullptr, _IONBF, 0);
++  putenv("ELECTRON_NODE_DISABLE_ASAR_SUPPORT=1");
+   return node::Start(argc, argv);
+ }
+ #endif
+-- 
+2.13.3
+

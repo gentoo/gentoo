@@ -1,0 +1,40 @@
+From 430b1922a9eade34d61e7d962e34b68a167528c2 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Wed, 18 Oct 2017 09:37:56 +1300
+Subject: Fix tests failing on Perl 5.26 w/o '.' in @INC
+
+Bug: https://rt.cpan.org/Ticket/Display.html?id=123312
+---
+ t/01-basic.t     | 2 +-
+ t/02-decorator.t | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/t/01-basic.t b/t/01-basic.t
+index 931073b..a458303 100644
+--- a/t/01-basic.t
++++ b/t/01-basic.t
+@@ -12,7 +12,7 @@ use Test;
+ use Class::Container;
+ use Params::Validate qw(:types);
+ use File::Spec;
+-require File::Spec->catfile('t', 'classes.pl');
++require File::Spec->rel2abs(File::Spec->catfile('t', 'classes.pl'));
+ 
+ my $HAVE_WEAKEN = 0 + exists $INC{'Scalar/Util.pm'};
+ 
+diff --git a/t/02-decorator.t b/t/02-decorator.t
+index ea75057..0e2ca83 100644
+--- a/t/02-decorator.t
++++ b/t/02-decorator.t
+@@ -6,7 +6,7 @@ BEGIN { plan tests => 24 }
+ use Class::Container;
+ use Params::Validate qw(:types);
+ use File::Spec;
+-require File::Spec->catfile('t', 'classes.pl');
++require File::Spec->rel2abs(File::Spec->catfile('t', 'classes.pl'));
+ 
+ 
+ 
+-- 
+2.14.2
+

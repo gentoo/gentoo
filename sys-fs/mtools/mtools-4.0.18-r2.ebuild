@@ -36,7 +36,7 @@ src_prepare() {
 
 src_configure() {
 	# 447688
-	use elibc_glibc || append-libs iconv
+	use !elibc_glibc && use !elibc_musl && append-libs "-liconv"
 	econf \
 		--sysconfdir="${EPREFIX}"/etc/mtools \
 		$(use_with X x)

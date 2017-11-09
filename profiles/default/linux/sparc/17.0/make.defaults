@@ -1,0 +1,7 @@
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# LIBDIR_* moved from features/multilib, #609178.
+# TODO: figure out whether this can be moved to arch/sparc
+LIBDIR_sparc32="lib"
+LIBDIR_sparc64="lib64"

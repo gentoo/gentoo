@@ -18,7 +18,7 @@ RDEPEND="
 	>=dev-perl/Probe-Perl-0.10.0
 	>=dev-perl/IPC-Run3-0.34.0
 	>=virtual/perl-Test-Simple-0.960.0"
-# NB: Needs Test::Builder::Tester 1.02 => 
+# NB: Needs Test::Builder::Tester 1.02 =>
 #     which is <= Test-Simple-0.96
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker

@@ -367,8 +367,8 @@ videos - Install optional video files (used in some games)
 vim-syntax - Pulls in related vim syntax scripts
 vnc - Enable VNC (remote desktop viewer) support
 vorbis - Add support for the OggVorbis audio codec
-wayland - Enable dev-libs/wayland backend
 wavpack - Add support for wavpack audio compression tools
+wayland - Enable dev-libs/wayland backend
 wddx - Add support for Web Distributed Data eXchange
 webkit - Add support for the WebKit HTML rendering/layout engine
 webp - Add support for the WebP image format

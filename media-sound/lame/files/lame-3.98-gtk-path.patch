@@ -1,5 +1,5 @@
---- gtk.m4
-+++ gtk.m4
+--- a/gtk.m4
++++ b/gtk.m4
 @@ -0,0 +1,194 @@
 +# Configure paths for GTK+
 +# Owen Taylor     97-11-3

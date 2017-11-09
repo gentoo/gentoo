@@ -7,8 +7,8 @@ PYTHON_COMPAT=( python2_7 )
 
 inherit cmake-utils eutils xdg-utils fortran-2 python-single-r1
 
-DESCRIPTION="QT based Computer Aided Design application"
-HOMEPAGE="http://www.freecadweb.org/"
+DESCRIPTION="Qt based Computer Aided Design application"
+HOMEPAGE="https://www.freecadweb.org/"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -39,7 +39,7 @@ COMMON_DEPEND="
 	dev-qt/qtwebkit:4
 	media-libs/coin
 	media-libs/freetype
-	|| ( sci-libs/opencascade:6.9.1[vtk] sci-libs/opencascade:6.9.0[vtk] sci-libs/opencascade:6.8.0 sci-libs/opencascade:6.7.1 )
+	sci-libs/opencascade:*[vtk(+)]
 	sci-libs/orocos_kdl
 	sys-libs/zlib
 	virtual/glu"

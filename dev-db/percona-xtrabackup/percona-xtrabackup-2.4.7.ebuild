@@ -17,7 +17,7 @@ IUSE=""
 DEPEND="
 	app-arch/lz4:0=
 	app-editors/vim-core
-	>=dev-libs/boost-1.59.0:=
+	<dev-libs/boost-1.65.0:=
 	dev-libs/libaio
 	<dev-libs/libedit-20170329.3.1
 	dev-libs/libev

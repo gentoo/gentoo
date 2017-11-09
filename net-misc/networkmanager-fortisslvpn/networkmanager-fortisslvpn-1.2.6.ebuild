@@ -36,6 +36,8 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	# Upstream patch e5d476076e068f58ef4fa938f09945159fce36a6
 	"${FILESDIR}"/${P}-location-fix.diff
+	# Upstream patch 4195187fbe5be348222c9a8472f7c9cf0e51d346
+	"${FILESDIR}"/${P}-nm-utils-dependency-fix.diff
 )
 
 src_configure() {

@@ -40,6 +40,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-3.2.1-o-tmpfile-eacces.patch #529044
 	epatch "${FILESDIR}"/${PN}-3.2.1-complex_alpha.patch
 	epatch "${FILESDIR}"/${PN}-3.1-darwin-x32.patch
+	epatch "${FILESDIR}"/${PN}-3.2.1-complex-ia64.patch
 	epatch_user
 	elibtoolize
 }

@@ -3,7 +3,6 @@
 
 EAPI=6
 
-EGIT_BRANCH="0.12"
 KDE_HANDBOOK="true"
 inherit kde5
 
@@ -55,13 +54,15 @@ RDEPEND="${CDEPEND}
 	!media-video/kmplayer:4
 "
 
+PATCHES=( "${FILESDIR}/${P}-qt-5.9.patch" )
+
 src_prepare() {
+	kde5_src_prepare
+
 	if use npp; then
 		sed -i src/kmplayer_part.desktop \
 		-e ":^MimeType: s:=:=application/x-shockwave-flash;:" || die
 	fi
-
-	kde5_src_prepare
 }
 
 src_configure() {

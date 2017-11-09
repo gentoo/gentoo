@@ -5,9 +5,6 @@
     <email>java@gentoo.org</email>
     <name>Java</name>
   </maintainer>
-  <use>
-    <flag name="readline">Use GNU readline instead of jline</flag>
-  </use>
   <upstream>
     <remote-id type="sourceforge">jython</remote-id>
   </upstream>

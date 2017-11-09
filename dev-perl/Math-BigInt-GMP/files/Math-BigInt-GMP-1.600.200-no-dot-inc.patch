@@ -1,0 +1,51 @@
+From 74cf47cac322f4399cea78bf7cdb75769578c035 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Mon, 30 Oct 2017 21:42:48 +1300
+Subject: Fix test failures without '.' in @INC
+
+Under PERL_USE_UNSAFE_INC=0
+
+Bug: https://bugs.gentoo.org/613642
+Bug: https://rt.cpan.org/Ticket/Display.html?id=120718
+---
+ t/bigfltpm.t | 2 +-
+ t/bigintpm.t | 2 +-
+ t/mbimbf.t   | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/t/bigfltpm.t b/t/bigfltpm.t
+index 49c3744..30f2d84 100644
+--- a/t/bigfltpm.t
++++ b/t/bigfltpm.t
+@@ -72,4 +72,4 @@ SKIP: {
+     is(ref($e->{_e}->[0]), '', '$e->{_e}->[0] is a scalar');
+ }
+ 
+-require 't/bigfltpm.inc';	# all tests here for sharing
++require './t/bigfltpm.inc';	# all tests here for sharing
+diff --git a/t/bigintpm.t b/t/bigintpm.t
+index 8351bc6..a82476f 100644
+--- a/t/bigintpm.t
++++ b/t/bigintpm.t
+@@ -78,4 +78,4 @@ is($x, "9903520314281112085086151826",
+ #############################################################################
+ # all the other tests
+ 
+-require 't/bigintpm.inc';       # all tests here for sharing
++require './t/bigintpm.inc';       # all tests here for sharing
+diff --git a/t/mbimbf.t b/t/mbimbf.t
+index 668508e..6b4194e 100644
+--- a/t/mbimbf.t
++++ b/t/mbimbf.t
+@@ -15,7 +15,7 @@ use Math::BigFloat;
+ our $mbi = 'Math::BigInt';
+ our $mbf = 'Math::BigFloat';
+ 
+-require 't/mbimbf.inc';
++require './t/mbimbf.inc';
+ 
+ # some tests that won't work with subclasses, since the things are only
+ # guaranteed in the Math::Big(Int|Float) (unless subclass chooses to support
+-- 
+2.14.3
+

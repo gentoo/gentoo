@@ -5,8 +5,8 @@ EAPI=5
 inherit eutils
 
 DESCRIPTION="script for converting XML and DocBook documents to a variety of output formats"
-HOMEPAGE="https://fedorahosted.org/xmlto/"
-SRC_URI="https://fedorahosted.org/releases/${PN:0:1}/${PN:1:1}/${PN}/${P}.tar.bz2"
+HOMEPAGE="https://pagure.io/xmlto"
+SRC_URI="https://releases.pagure.org/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -12,7 +12,7 @@ SRC_URI="https://tarballs.openstack.org/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="doc mysql postgres +sqlite +swift"
 REQUIRED_USE="|| ( mysql postgres sqlite )"
 
@@ -125,9 +125,7 @@ python_compile_all() {
 python_install_all() {
 	distutils-r1_python_install_all
 
-	for svc in api glare registry scrubber; do
-		newinitd "${FILESDIR}/glance.initd-r2" glance-${svc}
-	done
+	newinitd "${FILESDIR}/glance.initd-2" glance-api
 
 	diropts -m 0750 -o glance -g glance
 	dodir /var/log/glance /var/lib/glance/images /var/lib/glance/scrubber

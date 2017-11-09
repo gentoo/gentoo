@@ -5,4 +5,8 @@
 		<email>perl@gentoo.org</email>
 		<name>Gentoo Perl Project</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="cpan">Browser-Open</remote-id>
+		<remote-id type="cpan-module">Browser::Open</remote-id>
+	</upstream>
 </pkgmetadata>

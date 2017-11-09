@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -86,7 +86,7 @@ src_install() {
 
 	# Non PAM users will need this suid to read the password hashes.
 	# OpenPAM users will probably need this too when
-	# http://bugzilla.gnome.org/show_bug.cgi?id=370847
+	# https://bugzilla.gnome.org/show_bug.cgi?id=370847
 	# is fixed.
 	if ! use pam ; then
 		fperms u+s /usr/libexec/mate-screensaver-dialog

@@ -6,17 +6,17 @@ EAPI=6
 inherit eutils alternatives flag-o-matic toolchain-funcs multilib multiprocessing
 
 PATCH_VER=1
-CROSS_VER=1.1.6
+CROSS_VER=1.1.7
 PATCH_BASE="perl-5.27.1-patches-${PATCH_VER}"
 
-DIST_AUTHOR=WOLFSAGE
+DIST_AUTHOR=SHAY
 
 # Greatest first, don't include yourself
 # Devel point-releases are not ABI-intercompatible, but stable point releases are
 # BIN_OLDVERSEN is contains only C-ABI-intercompatible versions
 PERL_BIN_OLDVERSEN=""
 if [[ "${PV##*.}" == "9999" ]]; then
-	DIST_VERSION=5.27.3
+	DIST_VERSION=5.27.5
 else
 	DIST_VERSION="${PV/_rc/-RC}"
 fi
@@ -43,7 +43,7 @@ SRC_URI="
 	https://dev.gentoo.org/~kentnl/distfiles/${PATCH_BASE}.tar.xz
 	https://github.com/arsv/perl-cross/releases/download/${CROSS_VER}/perl-cross-${CROSS_VER}.tar.gz
 "
-HOMEPAGE="http://www.perl.org/"
+HOMEPAGE="https://www.perl.org/"
 
 LICENSE="|| ( Artistic GPL-1+ )"
 SLOT="0/${SUBSLOT}"
@@ -78,14 +78,14 @@ dual_scripts() {
 	src_remove_dual      perl-core/Archive-Tar        2.260.0       ptar ptardiff ptargrep
 	src_remove_dual      perl-core/CPAN               2.180.0       cpan
 	src_remove_dual      perl-core/Digest-SHA         5.960.0       shasum
-	src_remove_dual      perl-core/Encode             2.920.0       enc2xs piconv
+	src_remove_dual      perl-core/Encode             2.930.0       enc2xs piconv
 	src_remove_dual      perl-core/ExtUtils-MakeMaker 7.300.0       instmodsh
 	src_remove_dual      perl-core/ExtUtils-ParseXS   3.350.0       xsubpp
 	src_remove_dual      perl-core/IO-Compress        2.74.0        zipdetails
 	src_remove_dual      perl-core/JSON-PP            2.940.0       json_pp
-	src_remove_dual      perl-core/Module-CoreList    5.201.708.210 corelist
+	src_remove_dual      perl-core/Module-CoreList    5.201.710.200 corelist
 	src_remove_dual      perl-core/Pod-Parser         1.630.0       pod2usage podchecker podselect
-	src_remove_dual      perl-core/Pod-Perldoc        3.280.0       perldoc
+	src_remove_dual      perl-core/Pod-Perldoc        3.280.100     perldoc
 	src_remove_dual      perl-core/Test-Harness       3.390.0       prove
 	src_remove_dual      perl-core/podlators          4.90.0        pod2man pod2text
 	src_remove_dual_man  perl-core/podlators          4.90.0        /usr/share/man/man1/perlpodstyle.1
@@ -118,9 +118,9 @@ check_rebuild() {
 
 	# Reinstall w/ USE Change
 	elif (   use ithreads && ! has_version dev-lang/perl[ithreads] ) || \
-	     ( ! use ithreads &&   has_version dev-lang/perl[ithreads] ) || \
-	     (   use debug    && ! has_version dev-lang/perl[debug]    ) || \
-	     ( ! use debug    &&   has_version dev-lang/perl[debug]    ) ; then
+		 ( ! use ithreads &&   has_version dev-lang/perl[ithreads] ) || \
+		 (   use debug    && ! has_version dev-lang/perl[debug]    ) || \
+		 ( ! use debug    &&   has_version dev-lang/perl[debug]    ) ; then
 		echo ""
 		ewarn "TOGGLED USE-FLAGS WARNING:"
 		ewarn "You changed one of the use-flags ithreads or debug."
@@ -346,6 +346,12 @@ src_configure() {
 
 	# Perl has problems compiling with -Os in your flags with glibc
 	use elibc_uclibc || replace-flags "-Os" "-O2"
+
+	# xlocale.h is going away in glibc-2.26, so it's counterproductive
+	# if we use it and include it in CORE/perl.h ... Perl builds just
+	# fine with glibc and locale.h only.
+	# However, the darwin prefix people have no locale.h ...
+	use elibc_glibc && myconf -Ui_xlocale
 
 	# This flag makes compiling crash in interesting ways
 	filter-flags "-malign-double"

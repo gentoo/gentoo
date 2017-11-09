@@ -5,8 +5,6 @@
 		<email>alunduil@gentoo.org</email>
 		<name>Alex Brandt</name>
 	</maintainer>
-	<longdescription lang="en">
-	</longdescription>
 	<upstream>
 		<remote-id type="pypi">parse</remote-id>
 		<remote-id type="github">r1chardj0n3s/parse</remote-id>

@@ -91,7 +91,7 @@ src_prepare() {
 		cp -r "${WORKDIR}"/xorg-server-${XSERVER_VERSION}/. unix/xserver || die
 	fi
 
-	default
+	cmake-utils_src_prepare
 
 	if use server; then
 		eapply "${FILESDIR}/${PN}-1.7.1-xserver119-compat.patch"

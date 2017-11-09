@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # XXX: we need to review menu.lst vs grub.conf handling.  We've been converting
@@ -66,6 +66,13 @@ src_prepare() {
 		-e "/^#define.*EXTENDED_MEMSIZE/s,3,${GRUB_MAX_KERNEL_SIZE},g" \
 		"${S}"/grub/asmstub.c \
 		|| die
+
+	# gcc-6 and above doesnt have a '-nopie' option patched in, use upstream's -no-pie
+	if (( $(gcc-major-version) > 5 )); then
+		sed -i 's/-nopie/-no-pie/' \
+			"${WORKDIR}"/patch/860_all_grub-0.97-pie.patch \
+			|| die
+	fi
 
 	EPATCH_SUFFIX="patch" epatch "${WORKDIR}"/patch
 	# bug 564890, 566638

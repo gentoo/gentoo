@@ -6,6 +6,7 @@ EAPI=6
 KDE_HANDBOOK="optional"
 KDE_TEST="true"
 KMNAME="${PN}-kde"
+KDE_SELINUX_MODULE="${PN}"
 inherit kde5
 
 DESCRIPTION="Adds communication between KDE Plasma and your smartphone"
@@ -14,7 +15,7 @@ SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${KMNAME}-${PV}.tar.xz"
 
 LICENSE="GPL-2+"
 KEYWORDS="amd64 x86"
-IUSE="app selinux wayland"
+IUSE="app wayland"
 
 DEPEND="
 	$(add_frameworks_dep kcmutils)
@@ -44,7 +45,6 @@ DEPEND="
 RDEPEND="${DEPEND}
 	$(add_plasma_dep plasma-workspace)
 	app? ( kde-frameworks/kirigami:1 )
-	selinux? ( sec-policy/selinux-kdeconnect )
 	wayland? ( $(add_plasma_dep kwin) )
 	!kde-misc/kdeconnect:4
 "

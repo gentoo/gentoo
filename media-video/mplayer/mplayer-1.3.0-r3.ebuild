@@ -12,7 +12,7 @@ inherit toolchain-funcs eutils flag-o-matic multilib base ${SVN_ECLASS}
 IUSE="cpu_flags_x86_3dnow cpu_flags_x86_3dnowext a52 aalib +alsa altivec aqua bidi bl bluray
 bs2b cddb +cdio cdparanoia cpudetection debug dga
 directfb doc dts dv dvb +dvd +dvdnav +enca +encode faac faad fbcon
-ftp gif ggi gsm +iconv ipv6 jack joystick jpeg jpeg2k kernel_linux ladspa
+ftp gif ggi gsm +iconv ipv6 jack joystick jpeg kernel_linux ladspa
 +libass libcaca libmpeg2 lirc live lzo mad md5sum +cpu_flags_x86_mmx cpu_flags_x86_mmxext mng mp3 nas
 +network nut openal opengl +osdmenu oss png pnm pulseaudio pvr
 radio rar rtc rtmp samba selinux +shm sdl speex cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_ssse3
@@ -91,7 +91,6 @@ RDEPEND+="
 	iconv? ( virtual/libiconv )
 	jack? ( virtual/jack )
 	jpeg? ( virtual/jpeg:0 )
-	jpeg2k? ( media-libs/openjpeg:0 )
 	ladspa? ( media-libs/ladspa-sdk )
 	libass? ( >=media-libs/libass-0.9.10:= )
 	libcaca? ( media-libs/libcaca )
@@ -157,9 +156,9 @@ RDEPEND+="
 SLOT="0"
 LICENSE="GPL-2"
 if [[ ${PV} != *9999* ]]; then
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+	KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 else
-	KEYWORDS="~alpha ~arm ~hppa ~ia64 ~ppc ~ppc64"
+	KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 x86"
 fi
 
 # faac codecs are nonfree
@@ -185,6 +184,8 @@ REQUIRED_USE="
 	xv? ( X )
 	xvmc? ( xv )"
 RESTRICT="faac? ( bindist )"
+
+PATCHES=( "${FILESDIR}/${PN}-1.3-vdpau-x11.patch" )
 
 pkg_setup() {
 	if [[ ${PV} == *9999* ]]; then
@@ -392,7 +393,8 @@ src_configure() {
 	for i in ${uses}; do
 		use ${i} || myconf+=" --disable-${i}"
 	done
-	use jpeg2k || myconf+=" --disable-libopenjpeg"
+	# Pulls an outdated libopenjpeg, ffmpeg provides better support for it
+	myconf+=" --disable-libopenjpeg"
 
 	# Encoding
 	uses="faac x264 xvid toolame twolame"

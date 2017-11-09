@@ -1,0 +1,13 @@
+--- a/src/tcpflow.cpp
++++ b/src/tcpflow.cpp
+@@ -30,6 +30,10 @@
+ #include <grp.h>
+ #endif
+ 
++#ifdef HAVE_CAP_NG_H
++#include <cap-ng.h>
++#endif
++
+ /* bring in inet_ntop if it is not present */
+ #define ETH_ALEN 6
+ #ifndef HAVE_INET_NTOP

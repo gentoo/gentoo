@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit latex-package toolchain-funcs eutils
 
-DESCRIPTION="A source pretty printer for LaTeX - styles to stylise your source and code examples"
+DESCRIPTION="A pretty printer for various programming languages with tex output."
 SRC_URI="mirror://gentoo/${PN}.tar.gz"
 
 LICENSE="BSD LGrind-Jacobson"

@@ -1,10 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Alon Bar-Lev <alonbl@gentoo.org> (01 Sep 2017)
-# dev-python/tlslite is keyworded only for x86/amd64
-# waiting for ppc, bug#629506
-dev-python/kaa-base tls
+# Amy Liffey <amynka@gentoo.org> (19 Sep 2017)
+# Requires [cuda] which is masked in most of the profiles.
+media-libs/opencv contrib_xfeatures2d
 
 # Rick Farina <zerochaos@gentoo.org> (11 May 2017)
 # the needed deps are amd64/x86 only
@@ -41,6 +40,7 @@ app-admin/collectd collectd_plugins_mqtt
 
 # Thomas Deutschmann <whissi@gentoo.org> (26 Aug 2016)
 # It's only supported on amd64, ia64, powerpc and x86
+dev-db/mysql numa
 dev-db/percona-server numa
 
 # Brian Evans <grknight@gentoo.org> (23 Aug 2016)

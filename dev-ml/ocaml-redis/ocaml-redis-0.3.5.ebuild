@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit findlib
+inherit findlib opam
 
 DESCRIPTION="Redis bindings for OCaml"
 HOMEPAGE="http://0xffea.github.io/ocaml-redis/ https://github.com/0xffea/ocaml-redis/"
@@ -21,7 +21,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-ml/jbuilder
-	dev-ml/opam
 	test? ( dev-ml/ounit dev-db/redis dev-ml/lwt )"
 
 src_compile() {
@@ -40,9 +39,5 @@ src_test() {
 }
 
 src_install() {
-	opam-installer -i \
-		--prefix="${ED}/usr" \
-		--libdir="${D}/$(ocamlc -where)" \
-		--docdir="${ED}/usr/share/doc/${PF}" \
-		redis.install || die
+	opam_src_install redis
 }

@@ -35,12 +35,14 @@
     <remote-id type="cpan-module">Test2::Compare::String</remote-id>
     <remote-id type="cpan-module">Test2::Compare::Undef</remote-id>
     <remote-id type="cpan-module">Test2::Compare::Wildcard</remote-id>
+    <remote-id type="cpan-module">Test2::Event::Times</remote-id>
     <remote-id type="cpan-module">Test2::Mock</remote-id>
     <remote-id type="cpan-module">Test2::Plugin</remote-id>
     <remote-id type="cpan-module">Test2::Plugin::BailOnFail</remote-id>
     <remote-id type="cpan-module">Test2::Plugin::DieOnFail</remote-id>
     <remote-id type="cpan-module">Test2::Plugin::ExitSummary</remote-id>
     <remote-id type="cpan-module">Test2::Plugin::SRand</remote-id>
+    <remote-id type="cpan-module">Test2::Plugin::Times</remote-id>
     <remote-id type="cpan-module">Test2::Plugin::UTF8</remote-id>
     <remote-id type="cpan-module">Test2::Require</remote-id>
     <remote-id type="cpan-module">Test2::Require::AuthorTesting</remote-id>
@@ -62,6 +64,7 @@
     <remote-id type="cpan-module">Test2::Tools::Event</remote-id>
     <remote-id type="cpan-module">Test2::Tools::Exception</remote-id>
     <remote-id type="cpan-module">Test2::Tools::Exports</remote-id>
+    <remote-id type="cpan-module">Test2::Tools::GenTemp</remote-id>
     <remote-id type="cpan-module">Test2::Tools::Grab</remote-id>
     <remote-id type="cpan-module">Test2::Tools::Mock</remote-id>
     <remote-id type="cpan-module">Test2::Tools::Ref</remote-id>
@@ -73,6 +76,10 @@
     <remote-id type="cpan-module">Test2::Util::Stash</remote-id>
     <remote-id type="cpan-module">Test2::Util::Sub</remote-id>
     <remote-id type="cpan-module">Test2::Util::Table</remote-id>
+    <remote-id type="cpan-module">Test2::Util::Table::Cell</remote-id>
     <remote-id type="cpan-module">Test2::Util::Table::LineBreak</remote-id>
+    <remote-id type="cpan-module">Test2::Util::Term</remote-id>
+    <remote-id type="cpan-module">Test2::Util::Times</remote-id>
+    <remote-id type="cpan-module">Test2::V0</remote-id>
   </upstream>
 </pkgmetadata>

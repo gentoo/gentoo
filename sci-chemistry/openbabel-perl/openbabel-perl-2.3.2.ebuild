@@ -33,7 +33,7 @@ src_prepare() {
 	sed \
 		-e '/__GNUC__/s:== 4:>= 4:g' \
 		-i include/openbabel/shared_ptr.h || die
-	epatch "${PATCHES[@]}"
+	cmake-utils_src_prepare
 	perl_set_version
 }
 

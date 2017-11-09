@@ -23,6 +23,7 @@ CDEPEND="
 		libressl? ( dev-libs/libressl:0= )
 	)
 	>=net-libs/courier-authlib-0.61
+	<=net-libs/courier-unicode-2
 	>=net-libs/courier-unicode-1.3
 	>=net-mail/mailbase-0.00-r8
 	berkdb? ( sys-libs/db:= )

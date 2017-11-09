@@ -6,7 +6,7 @@
     <name>Gentoo Perl Project</name>
   </maintainer>
   <use><flag name="modperl">Enable <pkg>www-apache/mod_perl</pkg>
-			support</flag>
+        support</flag>
   </use>
   <upstream>
     <remote-id type="cpan">HTML-Mason</remote-id>

@@ -1,5 +1,5 @@
---- LubosD-fatrat-b5be2b1/CMakeLists.txt
-+++ LubosD-fatrat-b5be2b1/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
 @@ -127,10 +127,6 @@
  	ADD_DEFINITIONS(-DDEBUG_BUILD)
  	ADD_DEFINITIONS(-DNDEBUG)

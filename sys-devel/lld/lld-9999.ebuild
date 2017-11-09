@@ -63,7 +63,8 @@ src_configure() {
 	use test && mycmakeargs+=(
 		-DLLVM_BUILD_TESTS=ON
 		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
-		-DLIT_COMMAND="${EPREFIX}/usr/bin/lit"
+		-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
+		-DLLVM_LIT_ARGS="-vv"
 	)
 
 	cmake-utils_src_configure

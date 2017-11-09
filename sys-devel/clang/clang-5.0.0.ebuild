@@ -101,7 +101,7 @@ src_prepare() {
 	cd - >/dev/null || die
 
 	# User patches
-	eapply_user
+	cmake-utils_src_prepare
 }
 
 multilib_src_configure() {

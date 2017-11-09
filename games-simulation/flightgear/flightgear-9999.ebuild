@@ -113,17 +113,6 @@ src_configure() {
 src_install() {
 	cmake-utils_src_install
 
-	# Install icons and menu entry
-	local s
-	for s in 16 22 24 32 48 64 128; do
-		doicon -s ${s} icons/${s}x${s}/apps/${PN}.png
-		use utils && doicon -s ${s} icons/${s}x${s}/apps/fgcom.png
-	done
-	doicon -s scalable icons/scalable/${PN}.svg
-	use utils && doicon -s scalable icons/scalable/fgcom.svg
-
-	domenu package/org.flightgear.FlightGear.desktop
-
 	# Install bash completion (TODO zsh)
 	# Uncomment below when scripts stops writing files...
 #	sed -e "s|/usr/local/share/FlightGear|${GAMES_DATADIR}/${PN}|" \

@@ -15,7 +15,7 @@ SRC_URI="http://www.klayout.org/downloads/source/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 RDEPEND="
@@ -41,9 +41,9 @@ each_ruby_configure() {
 		-platform linux-gentoo \
 		-bin bin \
 		-ruby ${RUBY} \
-		-qtbin /usr/lib64/qt4/bin \
+		-qtbin "/usr/$(get_libdir)/qt4/bin" \
 		-qtinc /usr/include/qt4 \
-		-qtlib /usr/$(get_libdir)/qt4 || die "Configuration failed"
+		-qtlib "/usr/$(get_libdir)/qt4" || die "Configuration failed"
 }
 
 each_ruby_compile() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -32,7 +32,7 @@ src_prepare() {
 
 src_configure() {
 	# 447688
-	use elibc_glibc || append-libs iconv
+	use !elibc_glibc && use !elibc_musl && append-libs "-liconv"
 	econf \
 		--sysconfdir="${EPREFIX}"/etc/mtools \
 		$(use_with X x)

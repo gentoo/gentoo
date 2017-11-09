@@ -1,0 +1,14 @@
+diff -Nuar a/config.c b/config.c
+--- a/config.c	2017-10-12 16:05:41.000000000 +0200
++++ b/config.c	2017-10-14 18:52:56.829467653 +0200
+@@ -432,7 +432,9 @@
+ 	int i;
+ 
+ 	/* Check if fname is '.' or '..'; if so, return false */
+-	if (fname[0] == '.' && (!fname[1] || (fname[1] == '.' && !fname[2])))
++  /* Don't include 'hidden' files either; this breaks Gentoo
++     portage config file management http://bugs.gentoo.org/87683 */
++  if (fname[0] == '.')
+ 		return 0;
+ 
+ 	/* Check if fname is ending in a taboo-extension; if so, return false */

@@ -1,0 +1,34 @@
+From f0afbb4d0d21cee2ef0497ca8205e375bf7eb19d Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Tue, 10 Oct 2017 03:23:55 +1300
+Subject: Prevent installing README.pod to final install
+
+This fixes the final "make install" so that matching regexed files do
+not get copied from blib/ to the OS
+
+Previously, a cruft file could be found in @INC by performing:
+
+  perldoc Data::README
+
+Which would give you the README.pod of Data::FormValidator
+
+This is a left-over artifact from the old days where this mechanism
+was The Way to install .pod/.pm files, and is still heavily used this
+way for .xs files.
+
+Bug: https://github.com/dnmfarrell/Data-FormValidator/pull/7
+---
+ INSTALL.SKIP | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 INSTALL.SKIP
+
+diff --git a/INSTALL.SKIP b/INSTALL.SKIP
+new file mode 100644
+index 0000000..85828ef
+--- /dev/null
++++ b/INSTALL.SKIP
+@@ -0,0 +1 @@
++\bREADME\.pod$
+-- 
+2.14.1
+

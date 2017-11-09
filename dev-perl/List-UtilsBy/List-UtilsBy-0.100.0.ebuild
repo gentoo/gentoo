@@ -17,7 +17,7 @@ DEPEND="
 	>=dev-perl/Module-Build-0.380.0
 	test? ( virtual/perl-Test-Simple )
 "
-
+PATCHES=("${FILESDIR}/${P}-no-dot-inc.patch")
 SRC_TEST=do
 
 src_test() {

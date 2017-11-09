@@ -8,7 +8,7 @@ EHG_REPO_URI="https://bitbucket.org/pypy/pypy"
 inherit check-reqs mercurial pax-utils python-any-r1 toolchain-funcs versionator
 
 # note: remember to update this to newest dev-lang/python:2.7 on bump
-CPY_PATCHSET_VERSION="2.7.13-0"
+CPY_PATCHSET_VERSION="2.7.14-0"
 MY_P=pypy2-v${PV}
 
 DESCRIPTION="A fast, compliant alternative implementation of the Python language"
@@ -39,38 +39,39 @@ RDEPEND=">=sys-libs/zlib-1.1.3:0=
 	!dev-python/pypy-bin:0"
 DEPEND="${RDEPEND}
 	doc? ( dev-python/sphinx )
-	${PYTHON_DEPS}
-	test? ( dev-python/pytest )"
+	${PYTHON_DEPS}"
 
 S="${WORKDIR}/${MY_P}-src"
 
-pkg_pretend() {
-	if [[ ${MERGE_TYPE} != binary ]]; then
-		if use low-memory; then
-			if ! python_is_installed pypy; then
-				eerror "USE=low-memory requires a (possibly old) version of dev-python/pypy"
-				eerror "or dev-python/pypy-bin being installed. Please install it using e.g.:"
-				eerror
-				eerror "  $ emerge -1v dev-python/pypy-bin"
-				eerror
-				eerror "before attempting to build dev-python/pypy[low-memory]."
-				die "dev-python/pypy-bin (or dev-python/pypy) needs to be installed for USE=low-memory"
-			fi
-
-			CHECKREQS_MEMORY="1750M"
-			use amd64 && CHECKREQS_MEMORY="3500M"
-		else
-			CHECKREQS_MEMORY="3G"
-			use amd64 && CHECKREQS_MEMORY="6G"
+check_env() {
+	if use low-memory; then
+		if ! python_is_installed pypy; then
+			eerror "USE=low-memory requires a (possibly old) version of dev-python/pypy"
+			eerror "or dev-python/pypy-bin being installed. Please install it using e.g.:"
+			eerror
+			eerror "  $ emerge -1v dev-python/pypy-bin"
+			eerror
+			eerror "before attempting to build dev-python/pypy[low-memory]."
+			die "dev-python/pypy-bin (or dev-python/pypy) needs to be installed for USE=low-memory"
 		fi
 
-		check-reqs_pkg_pretend
+		CHECKREQS_MEMORY="1750M"
+		use amd64 && CHECKREQS_MEMORY="3500M"
+	else
+		CHECKREQS_MEMORY="3G"
+		use amd64 && CHECKREQS_MEMORY="6G"
 	fi
+
+	check-reqs_pkg_pretend
+}
+
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && check_env
 }
 
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
-		pkg_pretend
+		check_env
 
 		if python_is_installed pypy; then
 			if [[ ! ${EPYTHON} || ${EPYTHON} == pypy ]] || use low-memory; then
@@ -95,7 +96,7 @@ src_unpack() {
 src_prepare() {
 	eapply "${FILESDIR}/4.0.0-gentoo-path.patch"
 	eapply "${FILESDIR}/1.9-distutils.unixccompiler.UnixCCompiler.runtime_library_dir_option.patch"
-	eapply "${FILESDIR}"/2.5.0-shared-lib.patch	# 517002
+	eapply "${FILESDIR}"/5.9.0-shared-lib.patch	# 517002
 
 	sed -e "s^@EPREFIX@^${EPREFIX}^" \
 		-e "s^@libdir@^$(get_libdir)^" \
@@ -183,6 +184,42 @@ src_compile() {
 	pax-mark m pypy-c libpypy-c.so
 
 	use doc && emake -C pypy/doc html
+
+	einfo "Generating caches and CFFI modules ..."
+
+	# Generate Grammar and PatternGrammar pickles.
+	./pypy-c -c "import lib2to3.pygram, lib2to3.patcomp; lib2to3.patcomp.PatternCompiler()" \
+		|| die "Generation of Grammar and PatternGrammar pickles failed"
+
+	# Generate cffi modules
+	# Please keep in sync with pypy/tool/build_cffi_imports.py!
+#cffi_build_scripts = {
+#    "sqlite3": "_sqlite3_build.py",
+#    "audioop": "_audioop_build.py",
+#    "tk": "_tkinter/tklib_build.py",
+#    "curses": "_curses_build.py" if sys.platform != "win32" else None,
+#    "syslog": "_syslog_build.py" if sys.platform != "win32" else None,
+#    "gdbm": "_gdbm_build.py"  if sys.platform != "win32" else None,
+#    "pwdgrp": "_pwdgrp_build.py" if sys.platform != "win32" else None,
+#    "resource": "_resource_build.py" if sys.platform != "win32" else None,
+	cffi_targets=( audioop syslog pwdgrp resource )
+	use gdbm && cffi_targets+=( gdbm )
+	use ncurses && cffi_targets+=( curses )
+	use sqlite && cffi_targets+=( sqlite3 )
+	use tk && cffi_targets+=( tkinter/tklib )
+
+	local t
+	# all modules except tkinter output to .
+	# tkinter outputs to the correct dir ...
+	cd lib_pypy || die
+	for t in "${cffi_targets[@]}"; do
+		# tkinter doesn't work via -m
+		../pypy-c "_${t}_build.py" || die "Failed to build CFFI bindings for ${t}"
+	done
+
+	# Cleanup temporary objects
+	find -name "_cffi_*.[co]" -delete || die
+	find -type d -empty -delete || die
 }
 
 src_test() {
@@ -221,10 +258,7 @@ src_install() {
 	# Install docs
 	use doc && dodoc -r pypy/doc/_build/html
 
-	einfo "Generating caches and byte-compiling ..."
-
 	local -x PYTHON=${ED%/}${dest}/pypy-c
-	local -x LD_LIBRARY_PATH="${ED%/}${dest}"
 	# we can't use eclass function since PyPy is dumb and always gives
 	# paths relative to the interpreter
 	local PYTHON_SITEDIR=${EPREFIX}/usr/$(get_libdir)/pypy/site-packages
@@ -233,39 +267,7 @@ src_install() {
 	echo "EPYTHON='${EPYTHON}'" > epython.py || die
 	python_domodule epython.py
 
-	# Generate Grammar and PatternGrammar pickles.
-	"${PYTHON}" -c "import lib2to3.pygram, lib2to3.patcomp; lib2to3.patcomp.PatternCompiler()" \
-		|| die "Generation of Grammar and PatternGrammar pickles failed"
-
-	# Generate cffi modules
-	# Please keep in sync with pypy/tool/build_cffi_imports.py!
-#cffi_build_scripts = {
-#    "sqlite3": "_sqlite3_build.py",
-#    "audioop": "_audioop_build.py",
-#    "tk": "_tkinter/tklib_build.py",
-#    "curses": "_curses_build.py" if sys.platform != "win32" else None,
-#    "syslog": "_syslog_build.py" if sys.platform != "win32" else None,
-#    "gdbm": "_gdbm_build.py"  if sys.platform != "win32" else None,
-#    "pwdgrp": "_pwdgrp_build.py" if sys.platform != "win32" else None,
-#    "resource": "_resource_build.py" if sys.platform != "win32" else None,
-	cffi_targets=( audioop syslog pwdgrp resource )
-	use gdbm && cffi_targets+=( gdbm )
-	use ncurses && cffi_targets+=( curses )
-	use sqlite && cffi_targets+=( sqlite3 )
-	use tk && cffi_targets+=( tkinter/tklib )
-
-	local t
-	# all modules except tkinter output to .
-	# tkinter outputs to the correct dir ...
-	cd "${ED%/}${dest}"/lib_pypy || die
-	for t in "${cffi_targets[@]}"; do
-		# tkinter doesn't work via -m
-		"${PYTHON}" "_${t}_build.py" || die "Failed to build CFFI bindings for ${t}"
-	done
-
-	# Cleanup temporary objects
-	find "${ED%/}${dest}" -name "_cffi_*.[co]" -delete || die
-	find "${ED%/}${dest}" -type d -empty -delete || die
+	einfo "Byte-compiling Python standard library..."
 
 	# compile the installed modules
 	python_optimize "${ED%/}${dest}"

@@ -1,0 +1,22 @@
+--- a/nvidia-settings-387.22/utils.mk
++++ b/nvidia-settings-387.22/utils.mk
+@@ -475,7 +475,7 @@
+ define READ_ONLY_OBJECT_FROM_FILE_RULE
+   $$(OUTPUTDIR)/$$(notdir $(1)).o: $(1)
+ 	$(at_if_quiet)cd $$(dir $(1)); \
+-	$$(call quiet_cmd_no_at,LD) -r -z noexecstack --format=binary \
++	$$(call quiet_cmd_no_at,NVLD) -r -z noexecstack --format=binary \
+ 	    $$(notdir $(1)) -o $$(OUTPUTDIR_ABSOLUTE)/$$(notdir $$@)
+ 	$$(call quiet_cmd,OBJCOPY) \
+ 	    --rename-section .data=.rodata,contents,alloc,load,data,readonly \
+--- a/nvidia-settings-387.22/src/libXNVCtrl/utils.mk
++++ b/nvidia-settings-387.22/src/libXNVCtrl/utils.mk
+@@ -475,7 +475,7 @@
+ define READ_ONLY_OBJECT_FROM_FILE_RULE
+   $$(OUTPUTDIR)/$$(notdir $(1)).o: $(1)
+ 	$(at_if_quiet)cd $$(dir $(1)); \
+-	$$(call quiet_cmd_no_at,LD) -r -z noexecstack --format=binary \
++	$$(call quiet_cmd_no_at,NVLD) -r -z noexecstack --format=binary \
+ 	    $$(notdir $(1)) -o $$(OUTPUTDIR_ABSOLUTE)/$$(notdir $$@)
+ 	$$(call quiet_cmd,OBJCOPY) \
+ 	    --rename-section .data=.rodata,contents,alloc,load,data,readonly \

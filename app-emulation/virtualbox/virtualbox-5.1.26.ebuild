@@ -18,7 +18,7 @@ HOMEPAGE="http://www.virtualbox.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="alsa debug doc headless java libressl lvm pam pax_kernel pulseaudio +opengl python +qt5 +sdk +udev vboxwebsrv vnc"
 
 RDEPEND="!app-emulation/virtualbox-bin
@@ -188,7 +188,7 @@ src_prepare() {
 
 	# Only add paxmark patch when we're on pax_kernel
 	if use pax_kernel ; then
-		epatch "${FILESDIR}"/virtualbox-5.1.4-paxmark-bldprogs.patch || die
+		eapply "${FILESDIR}"/virtualbox-5.1.4-paxmark-bldprogs.patch
 	fi
 
 	eapply "${WORKDIR}/patches"

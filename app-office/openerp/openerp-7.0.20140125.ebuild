@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -50,7 +50,7 @@ CDEPEND="!app-office/openerp-web
 	dev-python/unittest2[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]
 	dev-python/matplotlib[${PYTHON_USEDEP}]
-	dev-python/pillow[jpeg,${PYTHON_USEDEP}]
+	dev-python/pillow[jpeg(+),${PYTHON_USEDEP}]
 	${PYTHON_DEPS}
 	"
 

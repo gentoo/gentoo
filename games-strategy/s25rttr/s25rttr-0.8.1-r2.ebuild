@@ -26,14 +26,18 @@ RDEPEND="app-arch/bzip2
 DEPEND="${RDEPEND}
 	sys-devel/gettext"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-cmake.patch
+	"${FILESDIR}"/${P}-soundconverter.patch
+	"${FILESDIR}"/${P}-fpic.patch
+	"${FILESDIR}"/${P}-format.patch
+	"${FILESDIR}"/${P}-miniupnpc-api-14.patch
+	"${FILESDIR}"/${P}-cmake-3.patch
+	"${FILESDIR}"/${P}-gcc6.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-cmake.patch \
-		"${FILESDIR}"/${P}-soundconverter.patch \
-		"${FILESDIR}"/${P}-fpic.patch \
-		"${FILESDIR}"/${P}-format.patch \
-		"${FILESDIR}"/${P}-miniupnpc-api-14.patch \
-		"${FILESDIR}"/${P}-cmake-3.patch \
-		"${FILESDIR}"/${P}-gcc6.patch
+	cmake-utils_src_prepare
 }
 
 src_configure() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation.
+# Copyright 1999-2017 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License, v2
 
 # Make sure we don't get wrong versions
@@ -45,3 +45,6 @@ sys-process/fuser-bsd
 # via libulog.
 # this package does not build anymore as it requires utmp
 sys-libs/libutempter
+
+# A serious problem is caused by >=binutils-2.28. #629128
+>=sys-devel/binutils-2.28

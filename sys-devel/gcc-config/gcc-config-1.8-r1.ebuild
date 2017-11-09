@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,7 +12,7 @@ SRC_URI="mirror://gentoo/${P}.tar.xz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 IUSE=""
 
 RDEPEND=">=sys-apps/gentoo-functions-0.10"
@@ -36,9 +36,6 @@ src_install() {
 pkg_postinst() {
 	# Scrub eselect-compiler remains
 	rm -f "${ROOT}"/etc/env.d/05compiler &
-
-	# Make sure old versions dont exist #79062
-	rm -f "${ROOT}"/usr/sbin/gcc-config &
 
 	# We not longer use the /usr/include/g++-v3 hacks, as
 	# it is not needed ...

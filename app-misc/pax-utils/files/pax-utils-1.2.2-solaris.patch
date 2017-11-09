@@ -1,0 +1,181 @@
+This is the diff for generated sources after applying:
+https://github.com/gentoo/pax-utils/pull/1
+
+diff -ruN pax-utils-1.2.2.orig/autotools/gnulib/Makefile.in pax-utils-1.2.2/autotools/gnulib/Makefile.in
+--- pax-utils-1.2.2.orig/autotools/gnulib/Makefile.in	2017-01-24 21:30:06.000000000 +0100
++++ pax-utils-1.2.2/autotools/gnulib/Makefile.in	2017-03-15 10:59:05.616490166 +0100
+@@ -1483,7 +1484,7 @@
+ 	$(top_srcdir)/autotools/snippet/c++defs.h \
+ 	$(top_srcdir)/autotools/snippet/warn-on-use.h stat.c \
+ 	stat-time.h stdbool.in.h stddef.in.h stdint.in.h stdio.in.h \
+-	stdlib.in.h strcasecmp.c strncasecmp.c str-two-way.h \
++	stdlib.in.h stpcpy.c strcasecmp.c strncasecmp.c str-two-way.h \
+ 	strcasestr.c strdup.c strerror.c strerror-override.c \
+ 	strerror-override.h string.in.h strings.in.h strncat.c \
+ 	symlink.c at-func.c symlinkat.c sys_stat.in.h sys_time.in.h \
+@@ -1546,7 +1547,7 @@
+ 	msvc-nothrow.c open.c openat.c opendir.c printf-frexp.c \
+ 	readlink.c at-func.c readlinkat.c realloc.c rename.c \
+ 	at-func2.c renameat.c rmdir.c signbitd.c signbitf.c signbitl.c \
+-	stat.c strcasecmp.c strncasecmp.c strcasestr.c strdup.c \
++	stat.c stpcpy.c strcasecmp.c strncasecmp.c strcasestr.c strdup.c \
+ 	strerror.c strerror-override.c strncat.c symlink.c at-func.c \
+ 	symlinkat.c unlink.c at-func.c unlinkat.c at-func.c \
+ 	utimensat.c asnprintf.c printf-args.c printf-parse.c \
+@@ -1708,6 +1709,7 @@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/stat-time.Po@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/stat.Po@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/statat.Po@am__quote@
++@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/stpcpy.Po@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/strcasecmp.Po@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/strcasestr.Po@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/strdup.Po@am__quote@
+diff -ruN pax-utils-1.2.2.orig/autotools/gnulib/stpcpy.c pax-utils-1.2.2/autotools/gnulib/stpcpy.c
+--- pax-utils-1.2.2.orig/autotools/gnulib/stpcpy.c	1970-01-01 01:00:00.000000000 +0100
++++ pax-utils-1.2.2/autotools/gnulib/stpcpy.c	2017-03-15 10:59:24.159820259 +0100
+@@ -0,0 +1,49 @@
++/* stpcpy.c -- copy a string and return pointer to end of new string
++   Copyright (C) 1992, 1995, 1997-1998, 2006, 2009-2017 Free Software
++   Foundation, Inc.
++
++   NOTE: The canonical source of this file is maintained with the GNU C Library.
++   Bugs can be reported to bug-glibc@prep.ai.mit.edu.
++
++   This program is free software: you can redistribute it and/or modify it
++   under the terms of the GNU General Public License as published by the
++   Free Software Foundation; either version 3 of the License, or any
++   later version.
++
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++   GNU General Public License for more details.
++
++   You should have received a copy of the GNU General Public License
++   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
++
++#include <config.h>
++
++#include <string.h>
++
++#undef __stpcpy
++#ifdef _LIBC
++# undef stpcpy
++#endif
++
++#ifndef weak_alias
++# define __stpcpy stpcpy
++#endif
++
++/* Copy SRC to DEST, returning the address of the terminating '\0' in DEST.  */
++char *
++__stpcpy (char *dest, const char *src)
++{
++  register char *d = dest;
++  register const char *s = src;
++
++  do
++    *d++ = *s;
++  while (*s++ != '\0');
++
++  return d - 1;
++}
++#ifdef weak_alias
++weak_alias (__stpcpy, stpcpy)
++#endif
+diff -ruN pax-utils-1.2.2.orig/config.h.in pax-utils-1.2.2/config.h.in
+--- pax-utils-1.2.2.orig/config.h.in	2017-01-24 21:30:04.000000000 +0100
++++ pax-utils-1.2.2/config.h.in	2017-03-15 11:01:30.156464381 +0100
+@@ -264,6 +264,9 @@
+ /* Define to 1 when the gnulib module stat should be tested. */
+ #undef GNULIB_TEST_STAT
+ 
++/* Define to 1 when the gnulib module stpcpy should be tested. */
++#undef GNULIB_TEST_STPCPY
++
+ /* Define to 1 when the gnulib module strcasestr should be tested. */
+ #undef GNULIB_TEST_STRCASESTR
+ 
+@@ -1415,6 +1418,9 @@
+ /* Define to 1 if you have the <stdlib.h> header file. */
+ #undef HAVE_STDLIB_H
+ 
++/* Define to 1 if you have the `stpcpy' function. */
++#undef HAVE_STPCPY
++
+ /* Define to 1 if you have the `strcasecmp' function. */
+ #undef HAVE_STRCASECMP
+ 
+diff -ruN pax-utils-1.2.2.orig/configure pax-utils-1.2.2/configure
+--- pax-utils-1.2.2.orig/configure	2017-01-24 21:30:03.000000000 +0100
++++ pax-utils-1.2.2/configure	2017-03-15 11:02:09.889790417 +0100
+@@ -31596,6 +31597,57 @@
+ 
+ 
+ 
++
++
++
++
++
++  for ac_func in stpcpy
++do :
++  ac_fn_c_check_func "$LINENO" "stpcpy" "ac_cv_func_stpcpy"
++if test "x$ac_cv_func_stpcpy" = xyes; then :
++  cat >>confdefs.h <<_ACEOF
++#define HAVE_STPCPY 1
++_ACEOF
++
++fi
++done
++
++  if test $ac_cv_func_stpcpy = no; then
++    HAVE_STPCPY=0
++  fi
++
++  if test $HAVE_STPCPY = 0; then
++
++
++
++
++
++
++
++
++  gl_LIBOBJS="$gl_LIBOBJS stpcpy.$ac_objext"
++
++
++  :
++
++  fi
++
++
++
++
++
++          GNULIB_STPCPY=1
++
++
++
++
++
++$as_echo "#define GNULIB_TEST_STPCPY 1" >>confdefs.h
++
++
++
++
+ 
+ 
+   for ac_func in strcasecmp
+diff -ruN pax-utils-1.2.2.orig/Makefile.in pax-utils-1.2.2/Makefile.in
+--- pax-utils-1.2.2.orig/Makefile.in	2017-01-24 21:30:06.000000000 +0100
++++ pax-utils-1.2.2/Makefile.in	2017-03-15 11:03:01.856447406 +0100
+@@ -1522,7 +1523,7 @@
+ 	security.c \
+ 	xfuncs.c
+ 
+-LDADD = libpaxutils.la $(top_builddir)/autotools/gnulib/libgnu.a
++LDADD = libpaxutils.la $(top_builddir)/autotools/gnulib/libgnu.a $(LIB_EACCESS)
+ bin_SCRIPTS = lddtree symtree
+ CLEANFILES = $(bin_SCRIPTS)
+ TMAKE = \

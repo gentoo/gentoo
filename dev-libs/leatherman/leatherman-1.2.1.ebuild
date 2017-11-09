@@ -13,7 +13,7 @@ SRC_URI="https://github.com/puppetlabs/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="debug test"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~hppa ppc ppc64 ~sparc x86"
 
 RDEPEND="net-misc/curl"
 DEPEND=">=dev-libs/boost-1.54[nls]
@@ -24,7 +24,7 @@ PATCHES=( "${FILESDIR}"/portage-sandbox-test-fix.patch )
 
 src_prepare() {
 	sed -i 's/\-Werror\ //g' "cmake/cflags.cmake" || die
-	default
+	cmake-utils_src_prepare
 }
 
 src_configure() {

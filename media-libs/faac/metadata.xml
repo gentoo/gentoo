@@ -5,9 +5,6 @@
 		<email>sound@gentoo.org</email>
 		<name>Gentoo Sound project</name>
 	</maintainer>
-	<use>
-		<flag name="digitalradio">Digital Radio Mondiale (warning: disables other decoders)</flag>
-	</use>
 	<upstream>
 		<remote-id type="sourceforge">faac</remote-id>
 	</upstream>

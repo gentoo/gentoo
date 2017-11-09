@@ -32,6 +32,7 @@ DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( ${RDEPEND}
 		>=dev-python/case-1.3.1[${PYTHON_USEDEP}]
+		dev-python/eventlet[${PYTHON_USEDEP}]
 		dev-python/gevent[$(python_gen_usedep python2_7)]
 		>=dev-python/pymongo-2.6.2[${PYTHON_USEDEP}]
 		dev-python/pyopenssl[${PYTHON_USEDEP}]
@@ -43,6 +44,7 @@ DEPEND="
 		>=dev-python/boto-2.13.3[${PYTHON_USEDEP}]
 		>=dev-python/pyzmq-13.1.0[${PYTHON_USEDEP}]
 		>=dev-python/pyyaml-3.10[${PYTHON_USEDEP}]
+		>=dev-python/unittest2-0.5.1[${PYTHON_USEDEP}]
 	)
 	doc? (
 		dev-python/docutils[${PYTHON_USEDEP}]

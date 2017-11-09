@@ -8,6 +8,7 @@
   <upstream>
     <remote-id type="cpan">Inline-Python</remote-id>
     <remote-id type="cpan-module">Inline::Python</remote-id>
+    <remote-id type="cpan-module">Inline::Python::Boolean</remote-id>
     <remote-id type="cpan-module">Inline::Python::Function</remote-id>
     <remote-id type="cpan-module">Inline::Python::Object</remote-id>
     <remote-id type="cpan-module">Inline::Python::Object::Data</remote-id>

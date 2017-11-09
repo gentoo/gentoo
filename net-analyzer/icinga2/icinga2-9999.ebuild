@@ -7,7 +7,7 @@ if [[ ${PV} != 9999 ]]; then
 	SRC_URI="https://github.com/Icinga/icinga2/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 else
-	inherit cmake-utils depend.apache eutils git-2 systemd toolchain-funcs user wxwidgets
+	inherit cmake-utils depend.apache eutils git-r3 systemd toolchain-funcs user wxwidgets
 	EGIT_REPO_URI="https://github.com/Icinga/icinga2.git"
 	EGIT_BRANCH="master"
 	KEYWORDS=""

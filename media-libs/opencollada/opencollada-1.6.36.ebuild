@@ -12,7 +12,7 @@ SRC_URI="https://github.com/KhronosGroup/OpenCOLLADA/archive/v${PV}.tar.gz -> ${
 LICENSE="MIT"
 SLOT="0"
 
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 
 IUSE="static-libs"
 
@@ -61,5 +61,5 @@ src_install() {
 	echo "LDPATH=/usr/$(get_libdir)/opencollada" > "${T}"/99${PN} || die "echo failed"
 	doenvd "${T}"/99${PN}
 
-	dobin ${BUILD_DIR}/bin/OpenCOLLADAValidator
+	dobin "${BUILD_DIR}/bin/OpenCOLLADAValidator"
 }

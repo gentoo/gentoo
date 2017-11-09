@@ -16,13 +16,16 @@ fi
 
 LICENSE="ZLIB"
 SLOT="0"
-IUSE="doc grp hog mvl qpak static-libs wad +zip"
+IUSE="grp hog mvl qpak static-libs wad +zip"
 
 RDEPEND=""
-DEPEND="doc? ( app-doc/doxygen )"
+DEPEND=""
+
+DOCS=( docs/CHANGELOG.txt docs/CREDITS.txt docs/TODO.txt )
 
 src_prepare() {
-	default
+	cmake-utils_src_prepare
+
 	sed -i -e 's:-Werror::' CMakeLists.txt || die
 	# make sure these libs aren't used
 	rm -rf lzma zlib*
@@ -45,19 +48,4 @@ src_configure() {
 	)
 
 	cmake-multilib_src_configure
-}
-
-src_compile() {
-	cmake-multilib_src_compile
-
-	if multilib_is_native_abi && use doc ; then
-		doxygen || die "doxygen failed"
-	fi
-}
-
-src_install() {
-	local DOCS=( docs/CHANGELOG.txt docs/CREDITS.txt docs/TODO.txt )
-	local HTML_DOCS=$(usex doc 'docs/html/*' '')
-
-	cmake-multilib_src_install
 }

@@ -13,21 +13,12 @@ SRC_URI="https://github.com/edicl/${PN}/archive/${MY_P}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~ppc ~sparc x86"
 IUSE=""
 
 DEPEND="virtual/commonlisp
 		dev-lisp/flexi-streams"
 RDEPEND="dev-lisp/cl-ppcre"
-
-COMMONLISPS="sbcl clisp clozurecl cmucl ecls"
-
-find-lisp-impl() {
-	for lisp in ${COMMONLISPS} ; do
-		[[ "$(best_version dev-lisp/${lisp})" ]] && echo "${lisp}" && return
-	done
-	die "No CommonLisp implementation found"
-}
 
 src_configure() {
 	xdg_environment_reset
@@ -38,7 +29,7 @@ src_compile() {
 	# is compiled, so we compile it here.
 	local initclunicode="(progn (push \"${S}/\" asdf:*central-registry*) (require :${PN}))"
 
-	common-lisp-export-impl-args "$(find-lisp-impl)"
+	common-lisp-export-impl-args "$(common-lisp-find-lisp-impl)"
 	${CL_BINARY} ${CL_EVAL} "${initclunicode}"
 }
 

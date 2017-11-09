@@ -257,8 +257,8 @@ src_prepare() {
 		eapply "${WORKDIR}/${P}-patchset"/lldb/tinfo.patch
 	fi
 
-	# User patches
-	eapply_user
+	# User patches + QA
+	cmake-utils_src_prepare
 
 	# Native libdir is used to hold LLVMgold.so
 	NATIVE_LIBDIR=$(get_libdir)

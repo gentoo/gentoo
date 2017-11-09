@@ -39,13 +39,11 @@ RDEPEND="${CDEPEND}
 DEPEND="${CDEPEND}"
 
 DOCS=( README Docs/ChangeLog )
-
-src_prepare() {
-	epatch "${FILESDIR}/openssl-cmake-detection.patch" \
-		"${FILESDIR}/conn-c-includes.patch" \
-		"${FILESDIR}/mysql_com.patch"
-	epatch_user
-}
+PATCHES=(
+	"${FILESDIR}/openssl-cmake-detection.patch"
+	"${FILESDIR}/conn-c-includes.patch"
+	"${FILESDIR}/mysql_com.patch"
+)
 
 multilib_src_configure() {
 	mycmakeargs+=(

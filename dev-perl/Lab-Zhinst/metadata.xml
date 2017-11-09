@@ -5,7 +5,13 @@
 		<email>dilfridge@gentoo.org</email>
 		<name>Andreas K. Huettel</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>perl@gentoo.org</email>
+		<name>Gentoo Perl Project</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="github">amba/Lab-Zhinst</remote-id>
+		<remote-id type="cpan">Lab-Zhinst</remote-id>
+		<remote-id type="cpan-module">Lab::Zhinst</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -14,8 +14,6 @@
 		mostly optimized for 2D or 3D point clouds. This library is a fork
 		(and a subset) of the <pkg>sci-libs/flann</pkg> library.
 	</longdescription>
-	<use>
-	</use>
 	<upstream>
 		<remote-id type="github">jlblancoc/nanoflann</remote-id>
 	</upstream>

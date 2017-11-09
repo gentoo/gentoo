@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,8 +7,8 @@ LANGSLONG="es_CL"
 inherit eutils gnome2-utils qmake-utils games
 
 DESCRIPTION="A single player word finding game based on Boggle"
-HOMEPAGE="http://gottcode.org/tanglet/"
-SRC_URI="http://gottcode.org/${PN}/${P}-src.tar.bz2"
+HOMEPAGE="https://gottcode.org/tanglet/"
+SRC_URI="https://gottcode.org/${PN}/${P}-src.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"

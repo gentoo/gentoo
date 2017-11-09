@@ -1,6 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# @DEAD
 # @ECLASS: php-ext-pecl-r2.eclass
 # @MAINTAINER:
 # Gentoo PHP team <php-bugs@gentoo.org>
@@ -60,6 +61,7 @@ fi
 SRC_URI="http://pecl.php.net/get/${FILENAME}"
 HOMEPAGE="http://pecl.php.net/${PECL_PKG}"
 
+die "Please upgrade to php-ext-pecl-r3.  This eclass is due to be removed."
 
 # @FUNCTION: php-ext-pecl-r2_src_compile
 # @DESCRIPTION:

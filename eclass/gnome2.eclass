@@ -340,7 +340,7 @@ gnome2_pkg_postinst() {
 	if [[ -n ${GNOME2_ECLASS_ICONS} ]]; then
 		gnome2_icon_cache_update
 	fi
-	if [[ -z ${GNOME2_ECLASS_GLIB_SCHEMAS} ]]; then
+	if [[ -n ${GNOME2_ECLASS_GLIB_SCHEMAS} ]]; then
 		gnome2_schemas_update
 	fi
 	gnome2_scrollkeeper_update
@@ -364,7 +364,7 @@ gnome2_pkg_postrm() {
 	if [[ -n ${GNOME2_ECLASS_ICONS} ]]; then
 		gnome2_icon_cache_update
 	fi
-	if [[ -z ${GNOME2_ECLASS_GLIB_SCHEMAS} ]]; then
+	if [[ -n ${GNOME2_ECLASS_GLIB_SCHEMAS} ]]; then
 		gnome2_schemas_update
 	fi
 	gnome2_scrollkeeper_update

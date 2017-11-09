@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,8 +8,8 @@ PYTHON_COMPAT=( python2_7 )
 inherit linux-info autotools eutils python-single-r1
 
 DESCRIPTION="A linux trace/probe tool"
-HOMEPAGE="http://www.sourceware.org/systemtap/"
-SRC_URI="http://www.sourceware.org/${PN}/ftp/releases/${P}.tar.gz"
+HOMEPAGE="https://www.sourceware.org/systemtap/"
+SRC_URI="https://www.sourceware.org/${PN}/ftp/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

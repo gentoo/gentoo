@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Use the Freedesktop.org base directory specification"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos ~sparc-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos ~sparc-solaris"
 IUSE="test"
 
 RDEPEND="
@@ -30,5 +30,7 @@ DEPEND="${RDEPEND}
 DIST_TEST="do" # https://rt.cpan.org/Ticket/Display.html?id=119256
 src_test() {
 	perl_rm_files t/05_pod_cover.t t/04_pod_ok.t
+	# https://bugs.gentoo.org/624028
+	unset XDG_CONFIG_HOME
 	perl-module_src_test
 }

@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>c.affolter@purplehaze.ch</email>
-		<name>Christian Affolter</name>
-	</maintainer>
-	<maintainer type="person">
-		<email>dev-zero@gentoo.org</email>
-		<name>Tiziano Müller</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
-	<longdescription>Get a locale specific string describing the span of a given
-	duration.</longdescription>
+  <maintainer type="person">
+    <email>c.affolter@purplehaze.ch</email>
+    <name>Christian Affolter</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>dev-zero@gentoo.org</email>
+    <name>Tiziano Müller</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription>Get a locale specific string describing the span of a given
+  duration.</longdescription>
   <upstream>
     <remote-id type="cpan">DateTime-Format-Human-Duration</remote-id>
     <remote-id type="cpan-module">DateTime::Format::Human::Duration</remote-id>

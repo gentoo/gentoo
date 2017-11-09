@@ -13,7 +13,7 @@ EGIT_REPO_URI="https://github.com/qTox/qTox.git"
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS=""
-IUSE="gtk X"
+IUSE="gtk test X"
 
 RDEPEND="
 	dev-db/sqlcipher
@@ -43,7 +43,18 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5
 	virtual/pkgconfig
+	test? ( dev-qt/qttest:5 )
 "
+
+src_prepare() {
+	cmake-utils_src_prepare
+
+	# bug 628574
+	if ! use test; then
+		sed -i CMakeLists.txt -e "/include(Testing)/s/^/#/" || die
+		sed -i cmake/Dependencies.cmake -e "/find_package(Qt5Test/s/^/#/" || die
+	fi
+}
 
 src_configure() {
 	local mycmakeargs=(

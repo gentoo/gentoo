@@ -32,6 +32,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.10.5-stdexcept.patch
+	"${FILESDIR}"/${PN}-0.10.3-exiv-0.26.patch
 )
 
 src_prepare() {

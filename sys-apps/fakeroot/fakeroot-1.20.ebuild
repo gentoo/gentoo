@@ -1,11 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
 inherit eutils flag-o-matic
 
 DESCRIPTION="A fake root environment by means of LD_PRELOAD and SysV IPC (or TCP) trickery"
-HOMEPAGE="http://packages.qa.debian.org/f/fakeroot.html"
+HOMEPAGE="https://packages.qa.debian.org/f/fakeroot.html"
 SRC_URI="mirror://debian/pool/main/${PN:0:1}/${PN}/${P/-/_}.orig.tar.bz2"
 
 LICENSE="GPL-3"

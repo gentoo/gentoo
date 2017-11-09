@@ -1,8 +1,11 @@
-From 239c1bdefee7ce82d9ea6b26931e8b64a5b3d322 Mon Sep 17 00:00:00 2001
+From 859d5403887df584af7e88e7bea7899ea6549fd0 Mon Sep 17 00:00:00 2001
 From: Kent Fredric <kentfredric@gmail.com>
 Date: Sun, 25 Jun 2017 19:16:42 +1200
-Subject: [PATCH] Fix for '.' removal from @INC in Perl 5.26
+Subject: Fix for '.' removal from @INC in Perl 5.26
 
+Bug: https://rt.cpan.org/Ticket/Display.html?id=121140
+Bug: https://bugs.gentoo.org/615602
+Bug: https://github.com/bestpractical/dbix-searchbuilder/pull/5
 ---
  Makefile.PL               | 1 +
  t/01basics.t              | 2 +-
@@ -334,5 +337,5 @@ index 943f76a..d22b1ee 100644
  
  use constant TESTS_PER_DRIVER => 20;
 -- 
-2.13.1
+2.14.1
 

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 inherit flag-o-matic eutils python-single-r1
 
@@ -164,7 +164,7 @@ src_configure() {
 			$(use_with python python "${EPYTHON}")
 		)
 	fi
-	if use sparc-solaris || x86-solaris ; then
+	if use sparc-solaris || use x86-solaris ; then
 		# disable largefile support
 		# https://sourceware.org/ml/gdb-patches/2014-12/msg00058.html
 		myconf+=( --disable-largefile )

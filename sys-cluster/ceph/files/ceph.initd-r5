@@ -73,7 +73,7 @@ start_pre() {
 		fi
 
 		if [ "${arg_name}" = "stderr" ] || [ "${arg_name}" = "stdout" ]; then
-			supervise_daemon_args="${supervise_daemon_args} --${arg_name//_/-}=${arg_val}"
+			supervise_daemon_args="${supervise_daemon_args} --${arg_name//_/-}=${arg_val}.${daemon_id}-${arg_name}.log"
 		fi
 	done
 }

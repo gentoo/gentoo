@@ -1,0 +1,11 @@
+# Path to the wamp router basedir.
+BASEDIR="/var/lib/crossbar"
+
+# User account for the crossbar router.
+# The basedir should be owned by this user.
+USERNAME="crossbar"
+
+#  loglevel {none,error,warn,info,debug,trace}
+#  How much Crossbar.io should log to the terminal, in
+#  order of verbosity.
+LOGLEVEL="info"

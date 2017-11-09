@@ -90,7 +90,7 @@ COMMON_DEPEND="
 	collectd_plugins_dbi?			( dev-db/libdbi )
 	collectd_plugins_dns?			( net-libs/libpcap )
 	collectd_plugins_gmond?			( sys-cluster/ganglia )
-	collectd_plugins_gps?			( sci-geosciences/gpsd )
+	collectd_plugins_gps?			( sci-geosciences/gpsd:= )
 	collectd_plugins_ipmi?			( >=sys-libs/openipmi-2.0.16-r1 )
 	collectd_plugins_iptables?		( >=net-firewall/iptables-1.4.13:0= )
 	collectd_plugins_log_logstash?		( dev-libs/yajl:= )
@@ -117,7 +117,7 @@ COMMON_DEPEND="
 	collectd_plugins_rrdcached?		( net-analyzer/rrdtool:= )
 	collectd_plugins_rrdtool?		( net-analyzer/rrdtool:= )
 	collectd_plugins_sensors?		( sys-apps/lm_sensors )
-	collectd_plugins_sigrok?		( <sci-libs/libsigrok-0.4 dev-libs/glib:2 )
+	collectd_plugins_sigrok?		( <sci-libs/libsigrok-0.4:= dev-libs/glib:2 )
 	collectd_plugins_smart?			( dev-libs/libatasmart )
 	collectd_plugins_snmp?			( net-analyzer/net-snmp )
 	collectd_plugins_tokyotyrant?		( net-misc/tokyotyrant )
@@ -156,6 +156,7 @@ REQUIRED_USE="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.6.0-gentoo.patch
+	"${FILESDIR}"/${PN}-5.7.2-issue-2443.patch
 )
 
 # @FUNCTION: collectd_plugin_kernel_linux

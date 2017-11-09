@@ -22,7 +22,8 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-	default
+	cmake-utils_src_prepare
+
 	# make it support multilib
 	sed -i "s/\ lib)/\ $(get_libdir))/g" lib/CMakeLists.txt || die
 	sed -i "s/lib\")/$(get_libdir)\")/g" CMakeLists.txt || die

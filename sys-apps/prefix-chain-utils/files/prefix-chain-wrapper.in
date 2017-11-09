@@ -15,7 +15,7 @@ if [[ ${CHOST} == *"-winnt"* ]]; then
     # in this case, PATH elements get the "/dev/fs/C/WINDOWS/SUA" prefix
     absprefix=$(winpath2unix "$(unixpath2win "${absprefix}")")
 fi
-mode=link
+[[ $0 == *windres* ]] && mode=compile || mode=link
 orig_args=("$@")
 
 for opt in "$@"; do

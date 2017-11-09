@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -71,7 +71,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	default
+	cmake-utils_src_prepare
 
 	# fix for location of hdf headers
 	sed -i -e 's:hdf/::g' src/data_io.cpp || die

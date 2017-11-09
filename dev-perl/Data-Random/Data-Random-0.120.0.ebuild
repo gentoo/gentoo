@@ -26,9 +26,9 @@ DEPEND="
 "
 
 src_prepare() {
-	sed -i -e '/jsonmeta;/d'        \
-                -e '/githubmeta;/d'     \
-                Makefile.PL || die
+	sed -i -e '/jsonmeta;/d'	\
+			-e '/githubmeta;/d'	\
+				Makefile.PL || die
 
 	sed -i -e 's/use inc::Module::Install;/use lib q[.];\nuse inc::Module::Install;/' Makefile.PL ||
 		die "Can't patch Makefile.PL for 5.26 dot-in-inc"

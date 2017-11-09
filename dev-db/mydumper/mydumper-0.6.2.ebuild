@@ -22,6 +22,8 @@ DEPEND="${RDEPEND}
 DOCS=( README )
 
 src_prepare() {
+	cmake-utils_src_prepare
+
 	# respect user cflags; do not expand ${CMAKE_C_FLAGS} (!)
 	sed -i -e 's:-Werror -O3 -g:${CMAKE_C_FLAGS}:' CMakeLists.txt
 	# fix doc install path

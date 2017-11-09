@@ -90,8 +90,12 @@ src_configure() {
 src_install() {
 	default
 
+	rm -rf "${D}/var/cache/netdata" || die
+
+	# Remove unneeded .keep files
+	find "${ED}" -name ".keep" -delete || die
+
 	fowners -Rc ${NETDATA_USER}:${NETDATA_GROUP} /var/log/netdata
-	fowners -Rc ${NETDATA_USER}:${NETDATA_GROUP} /var/cache/netdata
 	fowners -Rc ${NETDATA_USER}:${NETDATA_GROUP} /var/lib/netdata
 
 	fowners -Rc root:${NETDATA_GROUP} /usr/share/${PN}

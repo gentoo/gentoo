@@ -1,21 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>alicef@gentoo.org</email>
-		<name>Alice Ferrazzi</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>python@gentoo.org</email>
 		<name>Python</name>
 	</maintainer>
 	<use>
-		<flag name="low-memory">Build using PyPy with the engine configured towards low memory footprint. \
+		<flag name="low-memory">Build using PyPy with the engine configured towards low memory footprint.
 			This makes it possible to build PyPy using ~3.5G of RAM on amd64 and ~half of that on x86,
-			at the cost of lengthened build time. Please note that you will need an extra ~1G of extra RAM or \
-			swap since the translation memory (unused at the time) is not freed when the C compiler is spawned.</flag>
+			at the cost of lengthened build time.</flag>
 		<flag name="sandbox">Enable sandboxing functionality</flag>
-		<flag name="shadowstack">Use a shadow stack for finding GC roots</flag>
 	</use>
 	<upstream>
 		<remote-id type="bitbucket">pypy/pypy</remote-id>

@@ -33,8 +33,6 @@
 			Enable OpenCL support through
 			<pkg>virtual/opencl</pkg>.
 		</flag>
-		<flag name="tutorials">
-		</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">PixarAnimationStudios/OpenSubdiv</remote-id>

@@ -31,6 +31,7 @@ MULTILIB_CHOST_TOOLS=(
 
 PATCHES=(
 	"${FILESDIR}/${PN}-58.1-remove-bashisms.patch"
+	"${FILESDIR}/${PN}-58.2-glibc226.patch"
 )
 
 pkg_pretend() {

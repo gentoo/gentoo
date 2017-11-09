@@ -1,0 +1,150 @@
+diff -purN a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2017-07-19 21:38:48.000000000 +0100
++++ b/CMakeLists.txt	2017-08-15 14:14:02.223744929 +0100
+@@ -59,6 +59,7 @@ endif()
+ include(ParseArguments)
+ include(OCIOMacros)
+ include(ExternalProject)
++include(GNUInstallDirs)
+ 
+ enable_language(CXX)
+ 
+@@ -519,7 +520,7 @@ endif()
+ configure_file(${CMAKE_SOURCE_DIR}/share/ocio/setup_ocio.sh.in
+     ${CMAKE_CURRENT_BINARY_DIR}/share/ocio/setup_ocio.sh @ONLY)
+ 
+-INSTALL(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/share/ocio/setup_ocio.sh DESTINATION share/ocio/)
++INSTALL(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/share/ocio/setup_ocio.sh DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/ocio/)
+ 
+ ###############################################################################
+ ### CPACK ###
+@@ -634,4 +635,4 @@ file(WRITE "${CMAKE_BINARY_DIR}/OpenColo
+     message(STATUS OPENCOLORIO_FOUND=\${OPENCOLORIO_FOUND})
+     "
+ )
+-install(FILES "${CMAKE_BINARY_DIR}/OpenColorIOConfig.cmake" DESTINATION .)
++install(FILES "${CMAKE_BINARY_DIR}/OpenColorIOConfig.cmake" DESTINATION ${CMAKE_INSTALL_LIBDIR}/CMake)
+diff -purN a/docs/CMakeLists.txt b/docs/CMakeLists.txt
+--- a/docs/CMakeLists.txt	2017-07-19 21:38:48.000000000 +0100
++++ b/docs/CMakeLists.txt	2017-08-15 14:10:29.645282585 +0100
+@@ -1,68 +1,5 @@
+ 
+ ###############################################################################
+-### External Doc Apps ###
+-
+-# setuptools
+-# https://pypi.python.org/pypi/setuptools
+-set(SETUPTOOLS_VERSION 1.1.6)
+-ExternalProject_Add(setuptools
+-    URL ${CMAKE_SOURCE_DIR}/ext/setuptools-${SETUPTOOLS_VERSION}.tar.gz
+-    BUILD_IN_SOURCE 1
+-    CONFIGURE_COMMAND ${CMAKE_COMMAND} -E make_directory ${EXTDIST_PYTHONPATH}
+-    BUILD_COMMAND PYTHONPATH=${PYTHONPATH} ${PYTHON} setup.py build
+-    INSTALL_COMMAND PYTHONPATH=${PYTHONPATH} ${PYTHON} setup.py install --prefix=${EXTDIST_ROOT}
+-)
+-
+-# docutils
+-# https://pypi.python.org/pypi/docutils
+-set(DOCUTILS_VERSION 0.11)
+-ExternalProject_Add(docutils
+-    DEPENDS setuptools
+-    URL ${CMAKE_SOURCE_DIR}/ext/docutils-${DOCUTILS_VERSION}.tar.gz
+-    BUILD_IN_SOURCE 1
+-    CONFIGURE_COMMAND ${CMAKE_COMMAND} -E make_directory ${EXTDIST_PYTHONPATH}
+-    BUILD_COMMAND PYTHONPATH=${PYTHONPATH} ${PYTHON} setup.py build
+-    INSTALL_COMMAND PYTHONPATH=${PYTHONPATH} ${PYTHON} setup.py install --prefix=${EXTDIST_ROOT}
+-)
+-
+-# jinja2
+-# https://pypi.python.org/pypi/Jinja2
+-set(JINJA2_VERSION 2.7.1)
+-ExternalProject_Add(Jinja2
+-    DEPENDS setuptools
+-    URL ${CMAKE_SOURCE_DIR}/ext/Jinja2-${JINJA2_VERSION}.tar.gz
+-    BUILD_IN_SOURCE 1
+-    CONFIGURE_COMMAND ${CMAKE_COMMAND} -E make_directory ${EXTDIST_PYTHONPATH}
+-    BUILD_COMMAND PYTHONPATH=${PYTHONPATH} ${PYTHON} setup.py build
+-    INSTALL_COMMAND PYTHONPATH=${PYTHONPATH} ${PYTHON} setup.py install --prefix=${EXTDIST_ROOT}
+-)
+-
+-# Pygments
+-# https://pypi.python.org/pypi/Pygments
+-set(PYGMENTS_VERSION 1.6)
+-ExternalProject_Add(Pygments
+-    DEPENDS setuptools
+-    URL ${CMAKE_SOURCE_DIR}/ext/Pygments-${PYGMENTS_VERSION}.tar.gz
+-    BUILD_IN_SOURCE 1
+-    CONFIGURE_COMMAND ${CMAKE_COMMAND} -E make_directory ${EXTDIST_PYTHONPATH}
+-    BUILD_COMMAND PYTHONPATH=${PYTHONPATH} ${PYTHON} setup.py build
+-    INSTALL_COMMAND PYTHONPATH=${PYTHONPATH} ${PYTHON} setup.py install --prefix=${EXTDIST_ROOT}
+-)
+-
+-# sphinx
+-# https://pypi.python.org/pypi/Sphinx
+-set(SPHINX_VERSION 1.2b3)
+-ExternalProject_Add(Sphinx
+-    DEPENDS setuptools docutils Jinja2 Pygments
+-    URL ${CMAKE_SOURCE_DIR}/ext/Sphinx-${SPHINX_VERSION}.tar.gz
+-    PATCH_COMMAND patch -p1 < ${CMAKE_SOURCE_DIR}/ext/Sphinx-${SPHINX_VERSION}.patch
+-    BUILD_IN_SOURCE 1
+-    CONFIGURE_COMMAND ${CMAKE_COMMAND} -E make_directory ${EXTDIST_PYTHONPATH}
+-    BUILD_COMMAND PYTHONPATH=${PYTHONPATH} ${PYTHON} setup.py build
+-    INSTALL_COMMAND PYTHONPATH=${PYTHONPATH} ${PYTHON} setup.py install --prefix=${EXTDIST_ROOT} --install-scripts=${EXTDIST_ROOT}/bin
+-)
+-
+-###############################################################################
+ ### Create Doc Targets ###
+ 
+ message(STATUS "Create sphinx conf.py from conf.py.in")
+@@ -99,7 +36,7 @@ else()
+ endif()
+ 
+ add_custom_target(doc ALL
+-    COMMAND PYTHONPATH=${PYTHONPATH} ${EXTDIST_BINPATH}/sphinx-build -b html . ${CMAKE_CURRENT_BINARY_DIR}/build-html
++    COMMAND sphinx-build -b html . ${CMAKE_CURRENT_BINARY_DIR}/build-html
+     DEPENDS
+         ${DEPLIBS}
+         ${CMAKE_BINARY_DIR}/docs/conf.py
+@@ -110,20 +47,18 @@ add_custom_target(doc ALL
+     COMMENT "Building html docs"
+     SOURCES ${DOCFILES})
+ 
+-# note: ExternalProject will not build when added to a add_custom_target this
+-# works around this problem. This seems to be fixed in the cmake ^HEAD
+-add_dependencies(doc Sphinx) 
+-
+ install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/build-html/
+-        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/doc/OpenColorIO/html
++        DESTINATION ${CMAKE_INSTALL_DOCDIR}/html
+         PATTERN .* EXCLUDE
+ )
+ 
++if(OCIO_BUILD_PDF_DOCS)
++
+ find_package(LATEX)
+ if(PDFLATEX_COMPILER)
+     
+     add_custom_target(latex
+-        COMMAND PYTHONPATH=${PYTHONPATH} ${EXTDIST_BINPATH}/sphinx-build -b latex . ${CMAKE_CURRENT_BINARY_DIR}/build-latex
++        COMMAND sphinx-build -b latex . ${CMAKE_CURRENT_BINARY_DIR}/build-latex
+         DEPENDS
+             OpenColorIO
+             ${CMAKE_BINARY_DIR}/docs/conf.py
+@@ -133,7 +68,6 @@ if(PDFLATEX_COMPILER)
+             ${RSTDOC_OUTPUT}
+         COMMENT "Building latex doc"
+         SOURCES ${DOCFILES})
+-    add_dependencies(latex Sphinx)
+     
+     add_custom_target(pdf ALL
+         COMMAND ${PDFLATEX_COMPILER} OpenColorIO.tex
+@@ -143,6 +77,8 @@ if(PDFLATEX_COMPILER)
+     add_dependencies(pdf latex)
+     
+     install(FILES ${CMAKE_CURRENT_BINARY_DIR}/build-latex/OpenColorIO.pdf
+-            DESTINATION ${CMAKE_INSTALL_PREFIX}/share/doc/OpenColorIO/)
++            DESTINATION ${CMAKE_INSTALL_DOCDIR})
+     
+ endif()
++
++endif()

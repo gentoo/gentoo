@@ -13,7 +13,7 @@ https://tarballs.openstack.org/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="+api +scheduler +volume infiniband iscsi lvm mysql +memcached postgres rdma sqlite +tcp test +tgt"
 REQUIRED_USE="|| ( mysql postgres sqlite ) iscsi? ( tgt ) infiniband? ( rdma )"
 
@@ -177,7 +177,7 @@ python_install_all() {
 	dodir /etc/cinder/rootwrap.d
 
 	for svc in api scheduler volume; do
-		newinitd "${FILESDIR}/cinder.initd" cinder-${svc}
+		newinitd "${FILESDIR}/cinder.initd-2" cinder-${svc}
 	done
 
 	insinto /etc/cinder

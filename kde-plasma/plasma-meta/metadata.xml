@@ -6,6 +6,7 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
+		<flag name="crypt">Pull in <pkg>kde-plasma/plasma-vault</pkg> for encrypted vaults integration</flag>
 		<flag name="display-manager">Pull in a graphical display manager</flag>
 		<flag name="grub">Pull in Breeze theme for <pkg>sys-boot/grub</pkg></flag>
 		<flag name="gtk">Enable Breeze widget style and KCM for GTK2 and GTK3</flag>

@@ -13,7 +13,7 @@ SRC_URI="https://dev.gentoo.org/~prometheanfire/dist/openstack/heat/heat.conf.sa
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="+mysql +memcached postgres sqlite"
 REQUIRED_USE="|| ( mysql postgres sqlite )"
 
@@ -144,7 +144,7 @@ python_install_all() {
 	dodir /etc/heat/templates
 
 	for svc in api api-cfn engine; do
-		newinitd "${FILESDIR}/heat.initd" heat-${svc}
+		newinitd "${FILESDIR}/heat.initd-2" heat-${svc}
 	done
 
 	insinto /etc/heat

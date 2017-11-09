@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -38,6 +38,10 @@ REQUIRED_USE="theora? ( vorbis )"
 PATCHES=( "${FILESDIR}"/${P}-{debug,doc}.patch )
 
 S=${WORKDIR}/${PN}_${PV}.orig
+
+src_prepare() {
+	cmake-utils_src_prepare
+}
 
 src_configure() {
 	# there are in-source switches

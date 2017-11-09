@@ -25,7 +25,7 @@ SRC_URI="
 	https://dev.gentoo.org/~kentnl/distfiles/${MY_P}-patches-${PATCH_VER}.tar.xz
 	https://github.com/arsv/perl-cross/releases/download/${CROSS_VER}/perl-cross-${CROSS_VER}.tar.gz
 "
-HOMEPAGE="http://www.perl.org/"
+HOMEPAGE="https://www.perl.org/"
 
 LICENSE="|| ( Artistic GPL-1+ )"
 SLOT="0/${SHORT_PV}"
@@ -97,9 +97,9 @@ check_rebuild() {
 
 	# Reinstall w/ USE Change
 	elif (   use ithreads && ! has_version dev-lang/perl[ithreads] ) || \
-	     ( ! use ithreads &&   has_version dev-lang/perl[ithreads] ) || \
-	     (   use debug    && ! has_version dev-lang/perl[debug]    ) || \
-	     ( ! use debug    &&   has_version dev-lang/perl[debug]    ) ; then
+		 ( ! use ithreads &&   has_version dev-lang/perl[ithreads] ) || \
+		 (   use debug    && ! has_version dev-lang/perl[debug]    ) || \
+		 ( ! use debug    &&   has_version dev-lang/perl[debug]    ) ; then
 		echo ""
 		ewarn "TOGGLED USE-FLAGS WARNING:"
 		ewarn "You changed one of the use-flags ithreads or debug."

@@ -1,0 +1,21 @@
+From b7201f706f9238d642dfe96da89006b437e3760d Mon Sep 17 00:00:00 2001
+From: Brian Dolbec <bdolbec@gaikai.com>
+Date: Thu, 26 Oct 2017 12:00:37 -0700
+Subject: [PATCH] Remove distro version test
+
+---
+ buildbot/test/unit/test_buildbot_net_usage_data.py | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/buildbot/test/unit/test_buildbot_net_usage_data.py b/master/buildbot/test/unit/test_buildbot_net_usage_data.py
+index 709c804..7885d1b 100644
+--- a/buildbot/test/unit/test_buildbot_net_usage_data.py
++++ b/buildbot/test/unit/test_buildbot_net_usage_data.py
+@@ -153,4 +153,3 @@ class Tests(unittest.TestCase):
+         distro = linux_distribution()
+         self.assertEqual(len(distro), 2)
+         self.assertNotIn("unknown", distro[0])
+-        self.assertNotIn("unknown", distro[1])
+--
+libgit2 0.26.0
+

@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -23,9 +23,15 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	>=dev-util/cmake-2.6.3"
 
+PATCHES=(
+	# upstream patch (bug #307901)
+	"${FILESDIR}"/${P}-wheel.patch
+)
+
 src_prepare() {
+	cmake-utils_src_prepare
+
 	sed -i -e '/^Path/d' holdingnuts.desktop || die
-	epatch "${FILESDIR}"/${P}-wheel.patch # upstream patch (bug #307901)
 }
 
 src_configure() {

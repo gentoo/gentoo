@@ -1,0 +1,44 @@
+From 09abe657c65ba482ce9253e54467d33276f88bc9 Mon Sep 17 00:00:00 2001
+From: Vangelis Tasoulas <cyberang3l@gmail.com>
+Date: Sat, 16 Sep 2017 16:42:44 +0500
+Subject: Fixes a yakuake "index out of range" crash produced by QDBus exposed
+ function TabBar::sessionAtTab(int)
+
+Summary:
+The function `TabBar::sessionAtTab(int index)` is exposed through QDBus and if a user/script passes a negative number, yakuake crashes with `index out of range`.
+
+This patch fixes that behaviour with a sanity check. If the user passes a negative number, return -1.
+
+Test Plan:
+Run the command `qdbus org.kde.yakuake /yakuake/tabs org.kde.yakuake.sessionAtTab -1`
+Yakuake will crash.
+
+Apply the patch and re-run the above `qdbus` command. It shouldn't be crashing now.
+
+Reviewers: #kde_applications, hein, alexeymin
+
+Reviewed By: #kde_applications, hein, alexeymin
+
+Subscribers: alexeymin
+
+Differential Revision: https://phabricator.kde.org/D7812
+---
+ app/tabbar.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/app/tabbar.cpp b/app/tabbar.cpp
+index b76cdee..1bc6fdd 100644
+--- a/app/tabbar.cpp
++++ b/app/tabbar.cpp
+@@ -914,7 +914,7 @@ void TabBar::setTabTitleInteractive(int sessionId, const QString& newTitle)
+ 
+ int TabBar::sessionAtTab(int index)
+ {
+-    if (index > m_tabs.count() - 1)
++    if (index < 0 || index > m_tabs.count() - 1)
+         return -1;
+     else
+         return m_tabs.at(index);
+-- 
+cgit v0.11.2
+

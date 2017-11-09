@@ -19,6 +19,9 @@ RDEPEND="${DEPEND}
 	boost? ( dev-libs/boost )
 "
 
+# bug 630450
+RESTRICT="test"
+
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_CPP11="$(usex !boost)"

@@ -15,3 +15,4 @@
 # still overrides.
 ->=dev-libs/icu-59
 ->=dev-libs/icu-layoutex-59
+->=net-libs/nodejs-9.0.0

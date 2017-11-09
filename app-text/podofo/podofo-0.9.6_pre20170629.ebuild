@@ -30,8 +30,12 @@ DEPEND="${RDEPEND}
 	test? ( dev-util/cppunit )"
 
 DOCS="AUTHORS ChangeLog TODO"
+PATCHES=(
+	"${FILESDIR}/${P}-openssl-1.1.patch"
+)
 
 src_prepare() {
+	cmake-utils_src_prepare
 	local x sed_args
 
 	# The 0.9.6 ABI is not necessarily stable, so make PODOFO_SOVERSION
@@ -113,7 +117,6 @@ src_prepare() {
 			tools/podofocolor/luaconverter.cpp \
 			tools/podofoimpose/planreader_lua.cpp || die
 	fi
-	eapply_user
 }
 
 src_configure() {

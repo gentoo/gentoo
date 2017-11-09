@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,5 +16,5 @@ IUSE=""
 RDEPEND=">=virtual/perl-Math-BigInt-1.999.300
 	 >=dev-libs/gmp-4.0.0:0"
 DEPEND="${RDEPEND}"
-
+PATCHES=("${FILESDIR}/${P}-no-dot-inc.patch")
 SRC_TEST="do"

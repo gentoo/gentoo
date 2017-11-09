@@ -42,7 +42,7 @@ PATCHES=(
 S="${WORKDIR}/${MY_PN}_${PV}"
 
 src_prepare() {
-	default
+	cmake-utils_src_prepare
 	# respect user's CFLAGS
 	sed -i -e 's/O3//' CMakeLists.txt || die
 }

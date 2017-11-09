@@ -14,7 +14,6 @@
 		<name>Cjk</name>
 	</maintainer>
 	<upstream>
-		<bugs-to>https://code.google.com/p/rimeime/issues/list</bugs-to>
-		<remote-id type="google-code">rimeime</remote-id>
+		<remote-id type="github">fcitx/fcitx-rime</remote-id>
 	</upstream>
 </pkgmetadata>

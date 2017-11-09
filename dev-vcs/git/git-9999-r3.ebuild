@@ -7,17 +7,24 @@ GENTOO_DEPEND_ON_PERL=no
 
 # bug #329479: git-remote-testgit is not multiple-version aware
 PYTHON_COMPAT=( python2_7 )
-[[ ${PV} == *9999 ]] && SCM="git-r3"
-# Please ensure that all _four_ 9999 ebuilds get updated; they track the 4 upstream branches.
-# See https://git-scm.com/docs/gitworkflows#_graduation
-# In order of stability:
-# 9999-r0: maint
-# 9999-r1: master
-# 9999-r2: next
-# 9999-r3: pu
-EGIT_REPO_URI="git://git.kernel.org/pub/scm/git/git.git"
-EGIT_BRANCH=pu
 PLOCALES="bg ca de fr is it ko pt_PT ru sv vi zh_CN"
+if [[ ${PV} == *9999 ]]; then
+	SCM="git-r3"
+	EGIT_REPO_URI="git://git.kernel.org/pub/scm/git/git.git"
+	# Please ensure that all _four_ 9999 ebuilds get updated; they track the 4 upstream branches.
+	# See https://git-scm.com/docs/gitworkflows#_graduation
+	# In order of stability:
+	# 9999-r0: maint
+	# 9999-r1: master
+	# 9999-r2: next
+	# 9999-r3: pu
+	case "${PVR}" in
+		9999) EGIT_BRANCH=maint ;;
+		9999-r1) EGIT_BRANCH=master ;;
+		9999-r2) EGIT_BRANCH=next;;
+		9999-r3) EGIT_BRANCH=pu ;;
+	esac
+fi
 
 inherit toolchain-funcs eutils elisp-common l10n perl-module bash-completion-r1 python-single-r1 systemd ${SCM}
 

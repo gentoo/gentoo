@@ -40,10 +40,6 @@ media-sound/rhythmbox visualizer
 # Unkeyworded deps, bug #481462
 dev-python/ipython nbconvert
 
-# Johannes Huber <johu@gentoo.org> (15 Sep 2013)
-# Depends on kde-misc/networkmanagement, not keyworded yet.
-kde-apps/solid-runtime networkmanager
-
 # Sergey Popov <pinkbyte@gentoo.org> (06 Sep 2013)
 # sci-libs/hdf does not build properly on arm
 dev-perl/PDL	hdf
@@ -71,10 +67,6 @@ sci-libs/linux-gpib firmware
 # Markus Meier <maekke@gentoo.org> (10 May 2013)
 # unkeyworded deps for dev-python/ipython
 dev-python/ipython mongodb
-
-# Markus Meier <maekke@gentoo.org> (09 May 2013)
-# unkeyworded deps for x11-misc/lightdm
-x11-misc/lightdm kde
 
 # Agostino Sarubbo <ago@gentoo.org> (05 May 2013)
 # dev-util/google-perftools is not keyworded for arm
@@ -135,7 +127,7 @@ app-accessibility/speech-dispatcher flite
 # mask kde-apps/* flags due to unkeyworded dependencies
 kde-apps/kalzium editor solver
 kde-apps/kopete jingle
-kde-apps/okular ebook chm
+kde-apps/okular chm
 kde-apps/kstars indi
 kde-apps/kdeutils-meta floppy
 kde-apps/kdenetwork-meta ppp
@@ -200,8 +192,8 @@ net-libs/libproxy kde
 net-misc/mediatomb lastfm
 
 # Raúl Porcel <armin76@gentoo.org> (28 Mar 2010)
-# Needs kde-4 stable
-dev-vcs/subversion kde
+# Needs kde-frameworks/kwallet and kde-frameworks/kdelibs stable
+dev-vcs/subversion kwallet
 
 # Markus Meier <maekke@gentoo.org> (27 Sep 2009)
 # mask media-gfx/imagemagick[autotrace] as autotrace is not keyworded

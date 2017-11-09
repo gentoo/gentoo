@@ -12,7 +12,7 @@ HOMEPAGE="https://www.kde.org/applications/internet/ktorrent/"
 SRC_URI="mirror://kde/stable/ktorrent/5.1/${P}.tar.xz"
 
 LICENSE="GPL-2+"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE=""
 
 COMMON_DEPEND="
@@ -46,4 +46,13 @@ src_prepare() {
 		CMakeLists.txt || die
 	sed -i -e "/^find_dependency/ s/ \"@LibGMP_MIN_VERSION@\"//" \
 		KF5TorrentConfig.cmake.in || die
+}
+
+src_test() {
+	# failing network tests
+	local myctestargs=(
+		-E "(fin|packetloss|send|transmit)"
+	)
+
+	kde5_src_test
 }

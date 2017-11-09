@@ -33,7 +33,7 @@ DEPEND="dev-libs/libevent
 RDEPEND="${DEPEND}
 	php_targets_php5-6? ( dev-php/pecl-http:2[php_targets_php5-6] )"
 
-PHP_EXT_ECONF_ARGS=( --with-http --without-http-shared-deps )
+PHP_EXT_ECONF_ARGS=( --with-http --without-http-shared-deps --without-http-libidn2-dir )
 
 PATCHES=( "${FILESDIR}/pecl-http-gnutls.patch" )
 

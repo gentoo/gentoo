@@ -21,7 +21,7 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="+alsa fdk imagemagick jack pulseaudio truetype v4l"
 
-DEPEND="
+COMMON_DEPEND="
 	>=dev-libs/jansson-2.5
 	dev-qt/qtcore:5
 	dev-qt/qtdeclarative:5
@@ -49,7 +49,20 @@ DEPEND="
 	)
 	v4l? ( media-libs/libv4l )
 "
-RDEPEND="${DEPEND}"
+DEPEND="${COMMON_DEPEND}
+	imagemagick? (
+		|| (
+			<media-gfx/imagemagick-7
+			(
+				>=media-gfx/imagemagick-7
+				>=dev-util/cmake-3.9
+			)
+		)
+	)
+"
+RDEPEND="${COMMON_DEPEND}"
+
+PATCHES="${FILESDIR}/${PN}-ImageMagick-header-path.patch"
 
 CMAKE_REMOVE_MODULES_LIST=( FindFreetype )
 

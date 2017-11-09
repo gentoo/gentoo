@@ -1,0 +1,33 @@
+From 622ff3acf6256739bd547ade1ceca0e6df5022e6 Mon Sep 17 00:00:00 2001
+From: BoboopTeam <BoboopTeam@users.noreply.github.com>
+Date: Thu, 7 Sep 2017 22:14:48 +0200
+Subject: [PATCH] module: opencv: Remove deleted cv::Tracker::create()
+
+This static method is no longer present in OpenCV API, this workaround should fix compilation against OpenCV 3.3.0 and newer
+---
+ src/modules/opencv/filter_opencv_tracker.cpp | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/src/modules/opencv/filter_opencv_tracker.cpp b/src/modules/opencv/filter_opencv_tracker.cpp
+index 48ffb56b..3cfc07d2 100644
+--- a/src/modules/opencv/filter_opencv_tracker.cpp
++++ b/src/modules/opencv/filter_opencv_tracker.cpp
+@@ -111,11 +111,15 @@ static void analyze( mlt_filter filter, cv::Mat cvFrame, private_data* data, int
+ 		data->algo = mlt_properties_get( filter_properties, "algo" );
+                 if ( data->algo == NULL || !strcmp(data->algo, "" ) )
+                 {
+-			data->tracker = cv::Tracker::create( "KCF" );
++			data->tracker = cv::TrackerKCF::create();
++		}
++		else if (!strcmp(data->algo, "MIL" ))
++		{
++			data->tracker = cv::TrackerMIL::create();
+ 		}
+ 		else
+-                {
+-			data->tracker = cv::Tracker::create( data->algo );
++		{
++			data->tracker = cv::TrackerBoosting::create();
+ 		}
+ 
+ 		// Discard previous results

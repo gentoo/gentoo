@@ -6,18 +6,9 @@
 		<name>Patrick Lauer</name>
 		<description>Maintainer</description>
 	</maintainer>
-	<maintainer type="person">
-		<email>jason.r.wallace@gmail.com</email>
-		<name>Jason Wallace</name>
-		<description>Proxy maintainer. CC him on bugs</description>
-	</maintainer>
 	<maintainer type="project">
 		<email>netmon@gentoo.org</email>
 		<name>Gentoo network monitoring and analysis project</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription>
 		Snort is an open source network intrusion prevention and detection
@@ -137,6 +128,9 @@
 		<flag name="large-pcap-64bit">
 			Allows Snort to read pcap files that are larger than 2 GB. ONLY
 			VALID FOR 64bit SYSTEMS!
+		</flag>
+		<flag name="libtirpc">
+			Build against <pkg>net-libs/libtirpc</pkg> for RPC support
 		</flag>
 	</use>
 </pkgmetadata>

@@ -11,7 +11,7 @@ SRC_URI="https://gitweb.gentoo.org/proj/baselayout.git/snapshot/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 IUSE="build kernel_linux"
 
 pkg_setup() {
@@ -224,10 +224,12 @@ pkg_postinst() {
 	if use kernel_linux; then
 		mkdir -p "${EROOT}"run
 
-		if ! grep -qs "^tmpfs.*/run " "${ROOT}"proc/mounts ; then
-			echo
-			ewarn "You should reboot the system now to get /run mounted with tmpfs!"
-		fi
+		local found fstype mountpoint
+		while read -r _ mountpoint fstype _; do
+		[[ ${mountpoint} = /run ]] && [[ ${fstype} = tmpfs ]] && found=1
+		done < "${ROOT}"proc/mounts
+		[[ -z ${found} ]] &&
+			ewarn "You should reboot now to get /run mounted with tmpfs!"
 	fi
 
 	for x in ${REPLACING_VERSIONS}; do

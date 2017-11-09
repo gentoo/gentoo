@@ -8,7 +8,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/systemd/systemd/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86"
 fi
 
 PYTHON_COMPAT=( python{3_4,3_5,3_6} )
@@ -28,7 +28,7 @@ REQUIRED_USE="importd? ( curl gcrypt lzma )"
 
 MINKV="3.11"
 
-COMMON_DEPEND=">=sys-apps/util-linux-2.27.1:0=[${MULTILIB_USEDEP}]
+COMMON_DEPEND=">=sys-apps/util-linux-2.30:0=[${MULTILIB_USEDEP}]
 	sys-libs/libcap:0=[${MULTILIB_USEDEP}]
 	!<sys-libs/glibc-2.16
 	acl? ( sys-apps/acl:0= )
@@ -156,6 +156,7 @@ src_prepare() {
 			"${FILESDIR}/228-noclean-tmp.patch"
 			"${FILESDIR}/233-systemd-user-pam.patch"
 			"${FILESDIR}/234-uucp-group.patch"
+			"${FILESDIR}/generator-path.patch"
 		)
 	fi
 
@@ -319,11 +320,13 @@ multilib_src_install_all() {
 
 	# If we install these symlinks, there is no way for the sysadmin to remove them
 	# permanently.
-	rm "${ED%/}"/etc/systemd/system/multi-user.target.wants/systemd-networkd.service || die
+	rm -f "${ED%/}"/etc/systemd/system/multi-user.target.wants/systemd-networkd.service || die
+	rm -f "${ED%/}"/etc/systemd/system/dbus-org.freedesktop.network1.service || die
 	rm -f "${ED%/}"/etc/systemd/system/multi-user.target.wants/systemd-resolved.service || die
-	rm -r "${ED%/}"/etc/systemd/system/network-online.target.wants || die
-	rm -r "${ED%/}"/etc/systemd/system/sockets.target.wants || die
-	rm -r "${ED%/}"/etc/systemd/system/sysinit.target.wants || die
+	rm -f "${ED%/}"/etc/systemd/system/dbus-org.freedesktop.resolve1.service || die
+	rm -fr "${ED%/}"/etc/systemd/system/network-online.target.wants || die
+	rm -fr "${ED%/}"/etc/systemd/system/sockets.target.wants || die
+	rm -fr "${ED%/}"/etc/systemd/system/sysinit.target.wants || die
 
 	rm -r "${ED%/}${ROOTPREFIX%/}/lib/udev/hwdb.d" || die
 

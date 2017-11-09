@@ -10,7 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">unittest-cpp/issues</remote-id>
+		<remote-id type="github">unittest-cpp/unittest-cpp</remote-id>
 		<bugs-to>https://github.com/unittest-cpp/unittest-cpp/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

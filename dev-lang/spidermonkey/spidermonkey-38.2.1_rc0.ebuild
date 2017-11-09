@@ -9,7 +9,8 @@ MY_PN="mozjs"
 MY_P="${MY_PN}-${PV/_/.}"
 DESCRIPTION="Stand-alone JavaScript C library"
 HOMEPAGE="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey"
-SRC_URI="https://people.mozilla.org/~sstangl/${MY_P}.tar.bz2"
+SRC_URI="https://people.mozilla.org/~sstangl/${MY_P}.tar.bz2
+	https://dev.gentoo.org/~axs/distfiles/${PN}-slot38-patches-01.tar.xz"
 
 LICENSE="NPL-1.1"
 SLOT="38"
@@ -36,12 +37,12 @@ pkg_setup(){
 }
 
 src_prepare() {
-	eapply "${FILESDIR}"/${PN}-38-jsapi-tests.patch \
-		"${FILESDIR}"/mozjs38-1269317.patch \
-		"${FILESDIR}"/mozjs38-fix-tracelogger.patch \
-		"${FILESDIR}"/mozjs38-copy-headers.patch \
-		"${FILESDIR}"/mozjs38-pkg-config-version.patch \
-		"${FILESDIR}"/mozilla_configure_regexp_esr38.patch
+	eapply "${WORKDIR}"/sm38/${PN}-38-jsapi-tests.patch \
+		"${WORKDIR}"/sm38/mozjs38-1269317.patch \
+		"${WORKDIR}"/sm38/mozjs38-fix-tracelogger.patch \
+		"${WORKDIR}"/sm38/mozjs38-copy-headers.patch \
+		"${WORKDIR}"/sm38/mozjs38-pkg-config-version.patch \
+		"${WORKDIR}"/sm38/mozilla_configure_regexp_esr38.patch
 
 	eapply_user
 

@@ -4,9 +4,22 @@
 # @ECLASS: kde5.eclass
 # @MAINTAINER:
 # kde@gentoo.org
-# @BLURB: Support eclass for KDE 5-related packages.
+# @BLURB: Support eclass for packages that follow KDE packaging conventions.
 # @DESCRIPTION:
-# The kde5.eclass provides support for building KDE 5-related packages.
+# This eclass is intended to streamline the creation of ebuilds for packages
+# that follow KDE upstream packaging conventions. It's primarily intended for
+# the three upstream release groups (Frameworks, Plasma, Applications) but
+# is also for any package that follows similar conventions.
+#
+# This eclass unconditionally inherits kde5-functions.eclass and all its public
+# functions and variables may be considered as part of this eclass's API.
+#
+# This eclass unconditionally inherits cmake-utils.eclass and all its public
+# variables and helper functions (not phase functions) may be considered as part
+# of this eclass's API.
+#
+# This eclass's phase functions are not intended to be mixed and matched, so if
+# any phase functions are overriden the version here should also be called.
 
 if [[ -z ${_KDE5_ECLASS} ]]; then
 _KDE5_ECLASS=1
@@ -35,19 +48,22 @@ EXPORT_FUNCTIONS pkg_setup pkg_nofetch src_unpack src_prepare src_configure src_
 # @ECLASS-VARIABLE: KDE_AUTODEPS
 # @DESCRIPTION:
 # If set to "false", do nothing.
-# For any other value, add a dependency on dev-qt/qtcore:5 and kde-frameworks/extra-cmake-modules:5.
+# For any other value, add dependencies on dev-qt/qtcore:5, kde-frameworks/kf-env
+# and kde-frameworks/extra-cmake-modules:5. Additionally, required blockers may
+# be set depending on the value of CATEGORY.
 : ${KDE_AUTODEPS:=true}
 
 # @ECLASS-VARIABLE: KDE_BLOCK_SLOT4
 # @DESCRIPTION:
-# This variable is used when KDE_AUTODEPS is set.
-# If set to "true", add RDEPEND block on kde-apps/${PN}:4
+# This variable only has any effect when when CATEGORY = "kde-apps" and
+# KDE_AUTODEPS is also set. If set to "true", add RDEPEND block on kde-apps/${PN}:4
 : ${KDE_BLOCK_SLOT4:=true}
 
 # @ECLASS-VARIABLE: KDE_DEBUG
 # @DESCRIPTION:
-# If set to "false", unconditionally build with -DNDEBUG.
-# Otherwise, add debug to IUSE to control building with that flag.
+# If set to "false", add -DNDEBUG (via cmake-utils_src_configure) and -DQT_NO_DEBUG
+# to CPPFLAGS.
+# Otherwise, add debug to IUSE.
 : ${KDE_DEBUG:=true}
 
 # @ECLASS-VARIABLE: KDE_DESIGNERPLUGIN
@@ -76,7 +92,7 @@ EXPORT_FUNCTIONS pkg_setup pkg_nofetch src_unpack src_prepare src_configure src_
 
 # @ECLASS-VARIABLE: KDE_DOC_DIR
 # @DESCRIPTION:
-# Defaults to "doc". Otherwise, use alternative KDE handbook path.
+# Specifies the location of the KDE handbook if not the default.
 : ${KDE_DOC_DIR:=doc}
 
 # @ECLASS-VARIABLE: KDE_QTHELP
@@ -84,7 +100,7 @@ EXPORT_FUNCTIONS pkg_setup pkg_nofetch src_unpack src_prepare src_configure src_
 # If set to "false", do nothing.
 # Otherwise, add "doc" to IUSE, add the appropriate dependency, generate
 # and install Qt compressed help files with -DBUILD_QCH=ON when USE=doc.
-if [[ ${CATEGORY} = kde-frameworks && ( $(get_version_component_range 2) -ge 36 || ${KDE_BUILD_TYPE} = live ) ]]; then
+if [[ ${CATEGORY} = kde-frameworks ]]; then
 	: ${KDE_QTHELP:=true}
 else
 	: ${KDE_QTHELP:=false}
@@ -115,16 +131,6 @@ else
 	: ${KDE_TEST:=false}
 fi
 
-# @ECLASS-VARIABLE: KDE_L10N
-# @DESCRIPTION:
-# This is an array of translations this ebuild supports. These translations
-# are automatically added to IUSE.
-if [[ ${KDEBASE} = kdel10n ]]; then
-	if [[ -n ${KDE_L10N} ]]; then
-		IUSE="${IUSE} $(printf 'l10n_%s ' ${KDE_L10N[@]})"
-	fi
-fi
-
 # @ECLASS-VARIABLE: KDE_SELINUX_MODULE
 # @DESCRIPTION:
 # If set to "none", do nothing.
@@ -150,8 +156,6 @@ KDE_UNRELEASED=( )
 
 if [[ ${KDEBASE} = kdevelop ]]; then
 	HOMEPAGE="https://www.kdevelop.org/"
-elif [[ ${KDEBASE} = kdel10n ]]; then
-	HOMEPAGE="https://l10n.kde.org"
 elif [[ ${KMNAME} = kdepim ]]; then
 	HOMEPAGE="https://www.kde.org/applications/office/kontact/"
 else
@@ -326,8 +330,6 @@ _calculate_src_uri() {
 	case ${CATEGORY} in
 		kde-apps)
 			case ${PV} in
-				16.12.3)
-					SRC_URI="mirror://kde/Attic/applications/16.12.3/src/${_kmname}-${PV}.tar.xz" ;;
 				??.?.[6-9]? | ??.??.[6-9]? )
 					SRC_URI="mirror://kde/unstable/applications/${PV}/src/${_kmname}-${PV}.tar.xz"
 					RESTRICT+=" mirror"
@@ -342,7 +344,7 @@ _calculate_src_uri() {
 			local plasmapv=$(get_version_component_range 1-3)
 
 			case ${PV} in
-				5.?.[6-9]? )
+				5.?.[6-9]? | 5.??.[6-9]? )
 					# Plasma 5 beta releases
 					SRC_URI="mirror://kde/unstable/plasma/${plasmapv}/${_kmname}-${PV}.tar.xz"
 					RESTRICT+=" mirror"
@@ -371,21 +373,6 @@ _calculate_src_uri() {
 				SRC_URI="mirror://kde/stable/${_kdebase}/${PV}/src/${_kmname}-${PV}.tar.xz" ;;
 		esac
 		unset _kdebase
-	fi
-
-	if [[ ${KDEBASE} = kdel10n ]] ; then
-		local uri_base="${SRC_URI/${_kmname}-${PV}.tar.xz/}kde-l10n/kde-l10n"
-		SRC_URI=""
-		for my_l10n in ${KDE_L10N[@]} ; do
-			case ${my_l10n} in
-				sr | sr-ijekavsk | sr-Latn-ijekavsk | sr-Latn)
-					SRC_URI="${SRC_URI} l10n_${my_l10n}? ( ${uri_base}-sr-${PV}.tar.xz )"
-					;;
-				*)
-					SRC_URI="${SRC_URI} l10n_${my_l10n}? ( ${uri_base}-$(kde_l10n2lingua ${my_l10n})-${PV}.tar.xz )"
-					;;
-			esac
-		done
 	fi
 
 	if _kde_is_unreleased ; then
@@ -444,7 +431,8 @@ debug-print "${LINENO} ${ECLASS} ${FUNCNAME}: SRC_URI is ${SRC_URI}"
 
 # @FUNCTION: kde5_pkg_pretend
 # @DESCRIPTION:
-# Do some basic settings
+# Checks if the active compiler meets the minimum version requirements.
+# phase function is only exported if KDE_GCC_MINIMAL is defined.
 kde5_pkg_pretend() {
 	debug-print-function ${FUNCNAME} "$@"
 	_check_gcc_version
@@ -452,7 +440,7 @@ kde5_pkg_pretend() {
 
 # @FUNCTION: kde5_pkg_setup
 # @DESCRIPTION:
-# Do some basic settings
+# Checks if the active compiler meets the minimum version requirements.
 kde5_pkg_setup() {
 	debug-print-function ${FUNCNAME} "$@"
 	_check_gcc_version
@@ -460,7 +448,9 @@ kde5_pkg_setup() {
 
 # @FUNCTION: kde5_pkg_nofetch
 # @DESCRIPTION:
-# Display package publication status
+# Intended for use in the KDE overlay. If this package matches something in
+# KDE_UNRELEASED, display a giant warning that the package has not yet been
+# released upstream and should not be used.
 kde5_pkg_nofetch() {
 	if ! _kde_is_unreleased ; then
 		return
@@ -490,7 +480,7 @@ kde5_pkg_nofetch() {
 
 # @FUNCTION: kde5_src_unpack
 # @DESCRIPTION:
-# Function for unpacking KDE 5.
+# Unpack the sources, automatically handling both release and live ebuilds.
 kde5_src_unpack() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -500,16 +490,6 @@ kde5_src_unpack() {
 				git-r3_src_unpack
 				;;
 		esac
-	elif [[ ${KDEBASE} = kdel10n ]]; then
-		local l10npart=5
-		[[ ${PN} = kde4-l10n ]] && l10npart=4
-		mkdir -p "${S}" || die "Failed to create source dir ${S}"
-		cd "${S}"
-		for my_tar in ${A}; do
-			tar -xpf "${DISTDIR}/${my_tar}" --xz \
-				"${my_tar/.tar.xz/}/CMakeLists.txt" "${my_tar/.tar.xz/}/${l10npart}" 2> /dev/null ||
-				elog "${my_tar}: tar extract command failed at least partially - continuing"
-		done
 	else
 		default
 	fi
@@ -517,45 +497,10 @@ kde5_src_unpack() {
 
 # @FUNCTION: kde5_src_prepare
 # @DESCRIPTION:
-# Function for preparing the KDE 5 sources.
+# Wrapper for cmake-utils_src_prepare with lots of extra logic for magic
+# handling of linguas, tests, handbook etc.
 kde5_src_prepare() {
 	debug-print-function ${FUNCNAME} "$@"
-
-	if [[ ${KDEBASE} = kdel10n ]]; then
-		local l10npart=5
-		[[ ${PN} = kde4-l10n ]] && l10npart=4
-		# move known variant subdirs to root dir, currently sr@*
-		use_if_iuse l10n_sr-ijekavsk && _l10n_variant_subdir2root sr-ijekavsk sr
-		use_if_iuse l10n_sr-Latn-ijekavsk && _l10n_variant_subdir2root sr-Latn-ijekavsk sr
-		use_if_iuse l10n_sr-Latn && _l10n_variant_subdir2root sr-Latn sr
-		if use_if_iuse l10n_sr; then
-			rm -rf kde-l10n-sr-${PV}/${l10npart}/sr/sr@* || die "Failed to cleanup L10N=sr"
-			_l10n_variant_subdir_buster sr
-		elif [[ -d kde-l10n-sr-${PV} ]]; then
-			# having any variant selected means parent lingua will be unpacked as well
-			rm -r kde-l10n-sr-${PV} || die "Failed to remove sr parent lingua"
-		fi
-
-		cat <<-EOF > CMakeLists.txt || die
-		project(${PN})
-		cmake_minimum_required(VERSION 2.8.12)
-		EOF
-		# add all l10n directories to cmake
-		if [[ -n ${A} ]]; then
-			cat <<-EOF >> CMakeLists.txt || die
-			$(printf "add_subdirectory( %s )\n" \
-				`find . -mindepth 1 -maxdepth 1 -type d | sed -e "s:^\./::"`)
-			EOF
-		fi
-
-		# for KF5: drop KDE4-based part; for KDE4: drop KF5-based part
-		case ${l10npart} in
-			5) find -maxdepth 2 -type f -name CMakeLists.txt -exec \
-				sed -i -e "/add_subdirectory(4)/ s/^/#DONT/" {} + || die ;;
-			4) find -maxdepth 2 -type f -name CMakeLists.txt -exec \
-				sed -i -e "/add_subdirectory(5)/ s/^/#DONT/" {} + || die ;;
-		esac
-	fi
 
 	cmake-utils_src_prepare
 
@@ -663,7 +608,8 @@ kde5_src_prepare() {
 
 # @FUNCTION: kde5_src_configure
 # @DESCRIPTION:
-# Function for configuring the build of KDE 5.
+# Wrapper for cmake-utils_src_configure with extra logic for magic handling of
+# handbook, tests etc.
 kde5_src_configure() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -674,7 +620,7 @@ kde5_src_configure() {
 
 	local cmakeargs
 
-	if ! use_if_iuse test ; then
+	if in_iuse test && ! use test ; then
 		cmakeargs+=( -DBUILD_TESTING=OFF )
 
 		if [[ ${KDE_TEST} = optional ]] ; then
@@ -705,7 +651,8 @@ kde5_src_configure() {
 
 # @FUNCTION: kde5_src_compile
 # @DESCRIPTION:
-# Function for compiling KDE 5.
+# Wrapper for cmake-utils_src_compile. Currently doesn't do anything extra, but
+# is included as part of the API just in case it's needed in the future.
 kde5_src_compile() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -714,7 +661,8 @@ kde5_src_compile() {
 
 # @FUNCTION: kde5_src_test
 # @DESCRIPTION:
-# Function for testing KDE 5.
+# Wrapper for cmake-utils_src_test with extra logic for magic handling of dbus
+# and virtualx.
 kde5_src_test() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -745,7 +693,9 @@ kde5_src_test() {
 
 # @FUNCTION: kde5_src_install
 # @DESCRIPTION:
-# Function for installing KDE 5.
+# Wrapper for cmake-utils_src_install with extra logic to avoid compressing
+# certain types of files. For example, khelpcenter is not able to read
+# compressed handbooks.
 kde5_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -768,7 +718,7 @@ kde5_src_install() {
 
 # @FUNCTION: kde5_pkg_preinst
 # @DESCRIPTION:
-# Function storing icon caches
+# Sets up environment variables required in kde5_pkg_postinst.
 kde5_pkg_preinst() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -778,7 +728,7 @@ kde5_pkg_preinst() {
 
 # @FUNCTION: kde5_pkg_postinst
 # @DESCRIPTION:
-# Function to rebuild the KDE System Configuration Cache after an application has been installed.
+# Updates the various XDG caches (icon, desktop, mime) if necessary.
 kde5_pkg_postinst() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -799,7 +749,7 @@ kde5_pkg_postinst() {
 
 # @FUNCTION: kde5_pkg_postrm
 # @DESCRIPTION:
-# Function to rebuild the KDE System Configuration Cache after an application has been removed.
+# Updates the various XDG caches (icon, desktop, mime) if necessary.
 kde5_pkg_postrm() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -807,44 +757,6 @@ kde5_pkg_postrm() {
 		gnome2_icon_cache_update
 	fi
 	xdg_pkg_postrm
-}
-
-_l10n_variant_subdir2root() {
-	local l10npart=5
-	[[ ${PN} = kde4-l10n ]] && l10npart=4
-	local lingua=$(kde_l10n2lingua ${1})
-	local src=kde-l10n-${2}-${PV}
-	local dest=kde-l10n-${lingua}-${PV}/${l10npart}
-
-	# create variant rootdir structure from parent lingua and adapt it
-	mkdir -p ${dest} || die "Failed to create ${dest}"
-	mv ${src}/${l10npart}/${2}/${lingua} ${dest}/${lingua} || die "Failed to create ${dest}/${lingua}"
-	cp -f ${src}/CMakeLists.txt kde-l10n-${lingua}-${PV} || die "Failed to prepare L10N=${1} subdir"
-	echo "add_subdirectory(${lingua})" > ${dest}/CMakeLists.txt ||
-		die "Failed to prepare ${dest}/CMakeLists.txt"
-	cp -f ${src}/${l10npart}/${2}/CMakeLists.txt ${dest}/${lingua} ||
-		die "Failed to create ${dest}/${lingua}/CMakeLists.txt"
-	sed -e "s/${2}/${lingua}/" -i ${dest}/${lingua}/CMakeLists.txt ||
-		die "Failed to prepare ${dest}/${lingua}/CMakeLists.txt"
-
-	_l10n_variant_subdir_buster ${1}
-}
-
-_l10n_variant_subdir_buster() {
-	local l10npart=5
-	[[ ${PN} = kde4-l10n ]] && l10npart=4
-	local dir=kde-l10n-$(kde_l10n2lingua ${1})-${PV}/${l10npart}/$(kde_l10n2lingua ${1})
-
-	case ${l10npart} in
-		5) sed -e "/^add_subdirectory(/d" -i ${dir}/CMakeLists.txt || die "Failed to cleanup ${dir} subdir" ;;
-		4) sed -e "/^macro.*subdirectory(/d" -i ${dir}/CMakeLists.txt || die "Failed to cleanup ${dir} subdir" ;;
-	esac
-
-	for subdir in $(find ${dir} -mindepth 1 -maxdepth 1 -type d | sed -e "s:^\./::"); do
-		if [[ ${subdir##*/} != "cmake_modules" ]] ; then
-			echo "add_subdirectory(${subdir##*/})" >> ${dir}/CMakeLists.txt || die
-		fi
-	done
 }
 
 fi

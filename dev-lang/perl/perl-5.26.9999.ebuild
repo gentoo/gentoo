@@ -6,7 +6,7 @@ EAPI=6
 inherit eutils alternatives flag-o-matic toolchain-funcs multilib multiprocessing
 
 PATCH_VER=1
-CROSS_VER=1.1.6
+CROSS_VER=1.1.7
 PATCH_BASE="perl-5.25.11-patches-${PATCH_VER}"
 
 DIST_AUTHOR=SHAY
@@ -43,7 +43,7 @@ SRC_URI="
 	https://dev.gentoo.org/~kentnl/distfiles/${PATCH_BASE}.tar.xz
 	https://github.com/arsv/perl-cross/releases/download/${CROSS_VER}/perl-cross-${CROSS_VER}.tar.gz
 "
-HOMEPAGE="http://www.perl.org/"
+HOMEPAGE="https://www.perl.org/"
 
 LICENSE="|| ( Artistic GPL-1+ )"
 SLOT="0/${SUBSLOT}"
@@ -118,9 +118,9 @@ check_rebuild() {
 
 	# Reinstall w/ USE Change
 	elif (   use ithreads && ! has_version dev-lang/perl[ithreads] ) || \
-	     ( ! use ithreads &&   has_version dev-lang/perl[ithreads] ) || \
-	     (   use debug    && ! has_version dev-lang/perl[debug]    ) || \
-	     ( ! use debug    &&   has_version dev-lang/perl[debug]    ) ; then
+		 ( ! use ithreads &&   has_version dev-lang/perl[ithreads] ) || \
+		 (   use debug    && ! has_version dev-lang/perl[debug]    ) || \
+		 ( ! use debug    &&   has_version dev-lang/perl[debug]    ) ; then
 		echo ""
 		ewarn "TOGGLED USE-FLAGS WARNING:"
 		ewarn "You changed one of the use-flags ithreads or debug."
@@ -346,6 +346,12 @@ src_configure() {
 
 	# Perl has problems compiling with -Os in your flags with glibc
 	use elibc_uclibc || replace-flags "-Os" "-O2"
+
+	# xlocale.h is going away in glibc-2.26, so it's counterproductive
+	# if we use it and include it in CORE/perl.h ... Perl builds just
+	# fine with glibc and locale.h only.
+	# However, the darwin prefix people have no locale.h ...
+	use elibc_glibc && myconf -Ui_xlocale
 
 	# This flag makes compiling crash in interesting ways
 	filter-flags "-malign-double"

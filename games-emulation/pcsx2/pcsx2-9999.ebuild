@@ -21,7 +21,7 @@ RDEPEND="
 	dev-libs/libaio[abi_x86_32(-)]
 	media-libs/alsa-lib[abi_x86_32(-)]
 	media-libs/libpng:=[abi_x86_32(-)]
-	media-libs/libsdl2[abi_x86_32(-),joystick,sound]
+	media-libs/libsdl2[abi_x86_32(-),haptic,joystick,sound]
 	media-libs/libsoundtouch[abi_x86_32(-)]
 	media-libs/portaudio[abi_x86_32(-)]
 	>=sys-libs/zlib-1.2.4[abi_x86_32(-)]

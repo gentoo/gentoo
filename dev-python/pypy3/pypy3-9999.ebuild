@@ -15,8 +15,8 @@ HOMEPAGE="http://pypy.org/"
 SRC_URI=""
 
 LICENSE="MIT"
-# XX from pypy3-XX.so module suffix
-SLOT="0/57"
+# pypy3 -c 'import sysconfig; print(sysconfig.get_config_var("SOABI"))'
+SLOT="0/59"
 KEYWORDS=""
 IUSE="bzip2 gdbm +jit libressl low-memory ncurses sandbox sqlite cpu_flags_x86_sse2 tk"
 
@@ -43,23 +43,25 @@ DEPEND="${RDEPEND}
 # Who would care about predictable directory names?
 S="${WORKDIR}/pypy3-v${PV%_*}-src"
 
-pkg_pretend() {
-	if [[ ${MERGE_TYPE} != binary ]]; then
-		if use low-memory; then
-			CHECKREQS_MEMORY="1750M"
-			use amd64 && CHECKREQS_MEMORY="3500M"
-		else
-			CHECKREQS_MEMORY="3G"
-			use amd64 && CHECKREQS_MEMORY="6G"
-		fi
-
-		check-reqs_pkg_pretend
+check_env() {
+	if use low-memory; then
+		CHECKREQS_MEMORY="1750M"
+		use amd64 && CHECKREQS_MEMORY="3500M"
+	else
+		CHECKREQS_MEMORY="3G"
+		use amd64 && CHECKREQS_MEMORY="6G"
 	fi
+
+	check-reqs_pkg_pretend
+}
+
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && check_env
 }
 
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
-		pkg_pretend
+		check_env
 
 		# unset to allow forcing pypy below :)
 		use low-memory && local EPYTHON=
@@ -84,7 +86,7 @@ src_unpack() {
 src_prepare() {
 	eapply "${FILESDIR}/4.0.0-gentoo-path.patch"
 	eapply "${FILESDIR}/1.9-distutils.unixccompiler.UnixCCompiler.runtime_library_dir_option.patch"
-	eapply "${FILESDIR}"/2.5.0-shared-lib.patch	# 517002
+	eapply "${FILESDIR}"/5.9.0-shared-lib.patch	# 517002
 
 	sed -e "s^@EPREFIX@^${EPREFIX}^" \
 		-e "s^@libdir@^$(get_libdir)^" \
@@ -170,6 +172,45 @@ src_compile() {
 	pax-mark m pypy3-c libpypy3-c.so
 
 	#use doc && emake -C pypy/doc html
+
+	einfo "Generating caches and CFFI modules ..."
+
+	# Generate Grammar and PatternGrammar pickles.
+	"${PYTHON}" -c "import lib2to3.pygram, lib2to3.patcomp; lib2to3.patcomp.PatternCompiler()" \
+		|| die "Generation of Grammar and PatternGrammar pickles failed"
+
+	# Generate cffi modules
+	# Please keep in sync with pypy/tool/build_cffi_imports.py!
+#cffi_build_scripts = {
+#    "sqlite3": "_sqlite3_build.py",
+#    "audioop": "_audioop_build.py",
+#    "tk": "_tkinter/tklib_build.py",
+#    "curses": "_curses_build.py" if sys.platform != "win32" else None,
+#    "syslog": "_syslog_build.py" if sys.platform != "win32" else None,
+#    "_gdbm": "_gdbm_build.py"  if sys.platform != "win32" else None,
+#    "pwdgrp": "_pwdgrp_build.py" if sys.platform != "win32" else None,
+#    "resource": "_resource_build.py" if sys.platform != "win32" else None,
+#    "lzma": "_lzma_build.py",
+#    "_decimal": "_decimal_build.py",
+#    "ssl": "_ssl_build.py",
+	cffi_targets=( audioop syslog pwdgrp resource lzma decimal ssl )
+	use gdbm && cffi_targets+=( gdbm )
+	use ncurses && cffi_targets+=( curses )
+	use sqlite && cffi_targets+=( sqlite3 )
+	use tk && cffi_targets+=( tkinter/tklib )
+
+	local t
+	# all modules except tkinter output to .
+	# tkinter outputs to the correct dir ...
+	cd lib_pypy || die
+	for t in "${cffi_targets[@]}"; do
+		# tkinter doesn't work via -m
+		../pypy3-c "_${t}_build.py" || die "Failed to build CFFI bindings for ${t}"
+	done
+
+	# Cleanup temporary objects
+	find -name "_cffi_*.[co]" -delete || die
+	find -type d -empty -delete || die
 }
 
 src_test() {
@@ -213,7 +254,6 @@ src_install() {
 	einfo "Generating caches and byte-compiling ..."
 
 	local -x PYTHON=${ED%/}${dest}/pypy3-c
-	local -x LD_LIBRARY_PATH="${ED%/}${dest}"
 	# we can't use eclass function since PyPy is dumb and always gives
 	# paths relative to the interpreter
 	local PYTHON_SITEDIR=${EPREFIX}/usr/$(get_libdir)/pypy3/site-packages
@@ -222,42 +262,7 @@ src_install() {
 	echo "EPYTHON='${EPYTHON}'" > epython.py || die
 	python_domodule epython.py
 
-	# Generate Grammar and PatternGrammar pickles.
-	"${PYTHON}" -c "import lib2to3.pygram, lib2to3.patcomp; lib2to3.patcomp.PatternCompiler()" \
-		|| die "Generation of Grammar and PatternGrammar pickles failed"
-
-	# Generate cffi modules
-	# Please keep in sync with pypy/tool/build_cffi_imports.py!
-#cffi_build_scripts = {
-#    "sqlite3": "_sqlite3_build.py",
-#    "audioop": "_audioop_build.py",
-#    "tk": "_tkinter/tklib_build.py",
-#    "curses": "_curses_build.py" if sys.platform != "win32" else None,
-#    "syslog": "_syslog_build.py" if sys.platform != "win32" else None,
-#    "_gdbm": "_gdbm_build.py"  if sys.platform != "win32" else None,
-#    "pwdgrp": "_pwdgrp_build.py" if sys.platform != "win32" else None,
-#    "resource": "_resource_build.py" if sys.platform != "win32" else None,
-#    "lzma": "_lzma_build.py",
-#    "_decimal": "_decimal_build.py",
-#    "ssl": "_ssl_build.py",
-	cffi_targets=( audioop syslog pwdgrp resource lzma decimal ssl )
-	use gdbm && cffi_targets+=( gdbm )
-	use ncurses && cffi_targets+=( curses )
-	use sqlite && cffi_targets+=( sqlite3 )
-	use tk && cffi_targets+=( tkinter/tklib )
-
-	local t
-	# all modules except tkinter output to .
-	# tkinter outputs to the correct dir ...
-	cd "${ED%/}${dest}"/lib_pypy || die
-	for t in "${cffi_targets[@]}"; do
-		# tkinter doesn't work via -m
-		"${PYTHON}" "_${t}_build.py" || die "Failed to build CFFI bindings for ${t}"
-	done
-
-	# Cleanup temporary objects
-	find "${ED%/}${dest}" -name "_cffi_*.[co]" -delete || die
-	find "${ED%/}${dest}" -type d -empty -delete || die
+	einfo "Byte-compiling Python standard library..."
 
 	# compile the installed modules
 	python_optimize "${ED%/}${dest}"

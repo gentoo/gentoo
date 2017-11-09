@@ -45,6 +45,9 @@ STRIP_COMPLETIONS=(
 
 	# Installed by sys-apps/util-linux-2.28
 	mount umount mount.linux umount.linux
+
+	# Deprecated in favor of sys-apps/util-linux-2.31
+	_rfkill
 )
 
 src_unpack() {

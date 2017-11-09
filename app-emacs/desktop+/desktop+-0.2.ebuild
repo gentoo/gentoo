@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,6 +12,7 @@ SRC_URI="https://github.com/ffevotte/desktop-plus/archive/v${PV}.tar.gz -> ${P}.
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64"
+RESTRICT="test"
 
 RDEPEND="app-emacs/dash app-emacs/f"
 DEPEND="${RDEPEND}"

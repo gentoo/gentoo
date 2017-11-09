@@ -1,0 +1,34 @@
+From 3e7f764b18b1f630a23e71db9ca8f7c2e6e8210b Mon Sep 17 00:00:00 2001
+From: Brian Dolbec <dolsen@gentoo.org>
+Date: Tue, 19 Sep 2017 15:06:28 -0700
+Subject: [PATCH] setup.py: Remove unconditional examples from data files
+ install
+
+---
+ setup.py | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index d5f8016..3020112 100644
+--- a/setup.py
++++ b/setup.py
+@@ -29,7 +29,6 @@ description = '''
+ sphinx_rst_files = [x for x in listdir('docs') if x[-3:] == 'rst']
+ sphinx_docs = [join('docs', x) for x in sphinx_rst_files]
+ sphinx_docs += [join('docs/_static', x) for x in listdir('docs/_static')]
+-examples = [x for x in listdir('examples') if x[-3:] == '.py']
+ 
+ setup(
+     name='txtorcon',
+@@ -84,8 +83,5 @@ setup(
+             'docs/conf.py',
+             'docs/Makefile',
+         ] + sphinx_docs),
+-
+-        # include all the examples
+-        ('share/txtorcon/examples', [join('examples', x) for x in examples])
+     ],
+ )
+-- 
+2.14.1
+

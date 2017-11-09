@@ -13,7 +13,7 @@ LICENSE="BSD"
 
 SLOT="0/${PV}"
 
-KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="debug doc examples static-libs"
 
 DEPEND="
@@ -33,6 +33,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-58.1-remove-bashisms.patch"
 	"${FILESDIR}/${PN}-58.1-iterator.patch"
 	"${FILESDIR}/${PN}-58.2-CVE-2017-7867.patch"
+	"${FILESDIR}/${PN}-58.2-glibc226.patch"
 )
 
 pkg_pretend() {

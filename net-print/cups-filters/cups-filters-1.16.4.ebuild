@@ -12,14 +12,14 @@ if [[ "${PV}" == "9999" ]] ; then
 	EBZR_REPO_URI="http://bzr.linuxfoundation.org/openprinting/cups-filters"
 else
 	SRC_URI="http://www.openprinting.org/download/${PN}/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-fbsd ~m68k-mint"
+	KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-fbsd ~m68k-mint"
 fi
-DESCRIPTION="Cups PDF filters"
-HOMEPAGE="https://wiki.linuxfoundation.org/openprinting/pdf_as_standard_print_job_format"
+DESCRIPTION="Cups filters"
+HOMEPAGE="https://wiki.linuxfoundation.org/openprinting/cups-filters"
 
 LICENSE="MIT GPL-2"
 SLOT="0"
-IUSE="dbus +foomatic ipp_autosetup jpeg ldap pdf perl png +postscript static-libs tiff zeroconf"
+IUSE="dbus +foomatic ipp_autosetup jpeg ldap pdf perl png +postscript static-libs test tiff zeroconf"
 
 RDEPEND="
 	>=app-text/poppler-0.32:=[cxx,jpeg?,lcms,tiff?,utils]
@@ -45,6 +45,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-util/gdbus-codegen
+	test? ( media-fonts/dejavu )
 "
 
 src_prepare() {

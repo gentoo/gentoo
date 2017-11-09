@@ -20,7 +20,7 @@ else
 fi
 
 LICENSE="GPL-2+"
-SLOT="5"
+SLOT="4-plasma5"
 KEYWORDS="amd64 x86"
 IUSE=""
 

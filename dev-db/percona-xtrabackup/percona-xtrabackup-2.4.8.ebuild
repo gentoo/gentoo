@@ -11,12 +11,12 @@ SRC_URI="https://www.percona.com/downloads/XtraBackup/Percona-XtraBackup-${PV}/s
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 
 DEPEND="
 	app-arch/lz4:0=
 	app-editors/vim-core
-	>=dev-libs/boost-1.59.0:=
+	<dev-libs/boost-1.65.0:=
 	dev-libs/libaio
 	<dev-libs/libedit-20170329.3.1
 	dev-libs/libev

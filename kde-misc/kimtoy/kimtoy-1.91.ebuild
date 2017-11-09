@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,9 +6,9 @@ EAPI=6
 inherit kde5
 
 DESCRIPTION="An input method frontend for Plasma"
-HOMEPAGE="http://kde-apps.org/content/show.php?content=140967"
+HOMEPAGE="https://www.linux-apps.com/content/show.php?content=140967"
 if [[ ${KDE_BUILD_TYPE} != live ]]; then
-	SRC_URI="http://kde-apps.org/CONTENT/content-files/140967-${P}.tar.bz2"
+	SRC_URI="https://dl.opendesktop.org/api/files/download/id/1466629206/140967-${P}.tar.bz2"
 fi
 
 KEYWORDS="~amd64 ~x86"

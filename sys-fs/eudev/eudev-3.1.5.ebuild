@@ -9,7 +9,7 @@ inherit autotools eutils linux-info multilib multilib-minimal user
 
 if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/gentoo/eudev.git"
-	inherit git-2
+	inherit git-r3
 else
 	SRC_URI="https://dev.gentoo.org/~blueness/${PN}/${P}.tar.gz"
 	KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 sparc x86"
@@ -88,6 +88,8 @@ src_prepare() {
 	# change rules back to group uucp instead of dialout for now
 	sed -e 's/GROUP="dialout"/GROUP="uucp"/' -i rules/*.rules \
 	|| die "failed to change group dialout to uucp"
+
+	epatch "${FILESDIR}"/${PN}-include-sysmacros-header.patch
 
 	epatch_user
 	eautoreconf

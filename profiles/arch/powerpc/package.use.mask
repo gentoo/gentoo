@@ -1,9 +1,17 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michael Palimaka <kensington@gentoo.org> (30 Sep 2017)
+# Required dependencies are not keyworded.
+x11-themes/qtcurve plasma
+
+# Jonathan Scruggs <j.scruggs@gmail.com> (23 Sep 2017)
+# dependencies not keyworded yet
+media-libs/openimageio field3d ptex
+
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (22 Aug 2017)
 # Dictionary Manager requires unkeyworded dev-qt/qtwebengine.
-app-i18n/fcitx-libpinyin dictmanager
+app-i18n/fcitx-libpinyin dictionary-manager
 
 # Göktürk Yüksek <gokturk@gentoo.org> (15 Aug 2017)
 # Requires java
@@ -53,6 +61,7 @@ games-emulation/dosbox glide
 
 # Thomas Deutschmann <whissi@gentoo.org> (26 Aug 2016)
 # Enable numa support on supported architectures
+dev-db/mysql -numa
 dev-db/percona-server -numa
 
 # Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
@@ -72,11 +81,9 @@ games-arcade/jumpnbump kde
 kde-apps/katepart handbook
 kde-frameworks/kdelibs handbook policykit
 net-libs/libproxy kde
-net-voip/ekiga kde
 sys-auth/polkit kde
 sys-block/gparted kde
 virtual/notification-daemon kde
-x11-misc/lightdm kde
 
 # Davide Pesavento <pesa@gentoo.org> (06 Jun 2016)
 # Requires unkeyworded dev-python/PyQt5
@@ -216,10 +223,6 @@ gnome-base/gnome classic extras
 # template-haskell not yet available
 dev-haskell/dataenc test
 
-# Johannes Huber <johu@gentoo.org> (15 Sep 2013)
-# # Depends on kde-misc/networkmanagement, not keyworded yet.
-kde-apps/solid-runtime networkmanager
-
 # Agostino Sarubbo <ago@gentoo.org> (24 Aug 2013)
 # Klibc does not work anymore on ppc
 app-shells/mksh static
@@ -246,7 +249,6 @@ x11-misc/colord argyllcms extra-print-profiles
 
 # Anthony G. Basile <blueness@gentoo.org> (15 Nove 2012)
 # Mask telepathy, no stable net-libs/telepathy-qt, bug #441456
-kde-apps/krfb telepathy
 net-im/choqok telepathy
 
 # Robin H Johnson <robbat2@gentoo.org> (01 Nov 2012)

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>dolsen@gentoo.org</email>
+		<description>maintainer</description>
+	</maintainer>
+	<upstream>
+		<maintainer>
+			<email>meejah@meejah.ca</email>
+			<name>meejah</name>
+		</maintainer>
+		<remote-id type="pypi">txtorcon</remote-id>
+		<remote-id type="github">meejah/txtorcon</remote-id>
+	</upstream>
+	<longdescription>
+		txtorcon is an implementation of the control-spec for Tor using the
+		Twisted networking library for Python.
+	</longdescription>
+</pkgmetadata>

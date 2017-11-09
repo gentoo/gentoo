@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>NP-Hardass@gentoo.org</email>
+		<name>NP-Hardass</name>
+	</maintainer>
+	<longdescription lang="en">
+		Apply binary patches without git
+	</longdescription>
+	<upstream>
+		<remote-id type="github">wine-compholio/wine-staging</remote-id>
+		<maintainer>
+			<name>Sebastian Lackner</name>
+			<email>sebastian@fds-team.de</email>
+		</maintainer>
+	</upstream>
+</pkgmetadata>

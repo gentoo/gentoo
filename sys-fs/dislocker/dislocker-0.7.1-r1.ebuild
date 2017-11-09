@@ -27,6 +27,8 @@ DEPEND="sys-fs/fuse:*
 RDEPEND="${DEPEND}"
 
 src_prepare() {
+	cmake-utils_src_prepare
+
 # We either need to change Werror to Wno-error or remove the multiple declarations of FORTIFY_SOURCE
 #    sed 's:Werror:Wno-error:g' -i "${S}/src/CMakeLists.txt" || die
 	sed 's:-D_FORTIFY_SOURCE=2::g' -i "${S}/src/CMakeLists.txt" || die

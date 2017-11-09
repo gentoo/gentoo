@@ -1,0 +1,49 @@
+From d9ddaa210a1b91deb6ea6fcea4cb274f634e482d Mon Sep 17 00:00:00 2001
+From: Mark Wright <gienah@gentoo.org>
+Date: Tue, 17 Oct 2017 16:50:01 +1100
+Subject: Fix building with OpenSSL 1.1.0
+
+Bug: https://bugs.gentoo.org/592532
+Bug: https://rt.cpan.org/Ticket/Display.html?id=117482
+Bug: https://github.com/kmx/perl-Crypt-OpenSSL-Bignum/pull/7
+---
+ Bignum.xs | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/Bignum.xs b/Bignum.xs
+index d39dcff..149fa52 100755
+--- a/Bignum.xs
++++ b/Bignum.xs
+@@ -29,7 +29,11 @@ BIGNUM* sv2bn( SV* sv )
+ MODULE = Crypt::OpenSSL::Bignum      PACKAGE = Crypt::OpenSSL::Bignum   PREFIX = BN_
+ 
+ BOOT:
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
++    OPENSSL_init_crypto(0, NULL);
++#else
+     ERR_load_crypto_strings();
++#endif
+ 
+ void
+ DESTROY(Crypt::OpenSSL::Bignum self)
+@@ -92,7 +96,7 @@ BN_new(CLASS)
+     BIGNUM* bn;
+   CODE:
+     checkOpenSslCall( bn = BN_new() );
+-    checkOpenSslCall( BN_zero( bn ) );
++    checkOpenSslCall( BN_set_word( bn, 0 ) );
+     RETVAL = bn;
+   OUTPUT:
+     RETVAL
+@@ -103,7 +107,7 @@ BN_zero(CLASS)
+     BIGNUM *bn;
+   CODE:
+     checkOpenSslCall( bn = BN_new() );
+-    checkOpenSslCall( BN_zero( bn ) );
++    checkOpenSslCall( BN_set_word( bn, 0 ) );
+     RETVAL = bn;
+   OUTPUT:
+     RETVAL
+-- 
+2.14.2
+

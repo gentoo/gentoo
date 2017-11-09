@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -20,6 +20,10 @@ DEPEND="media-libs/libsdl:0[sound,opengl,video,X]
 RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/MemonixSourceCode
+
+src_prepare() {
+	cmake-utils_src_prepare
+}
 
 src_configure() {
 	cmake-utils_src_configure

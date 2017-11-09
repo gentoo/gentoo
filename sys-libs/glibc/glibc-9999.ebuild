@@ -15,7 +15,7 @@ EMULTILIB_PKG="true"
 # Configuration variables
 
 if [[ ${PV} == 9999* ]]; then
-	EGIT_REPO_URI="git://sourceware.org/git/glibc.git"
+	EGIT_REPO_URI="https://sourceware.org/git/glibc.git"
 	inherit git-r3
 else
 	# KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
@@ -33,7 +33,7 @@ PATCH_VER="3"
 SRC_URI+=" https://dev.gentoo.org/~dilfridge/distfiles/${P}-patches-${PATCH_VER}.tar.bz2"
 SRC_URI+=" multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-${GCC_BOOTSTRAP_VER}-multilib-bootstrap.tar.bz2 )"
 
-IUSE="audit caps debug gd hardened multilib nscd selinux systemtap profile suid vanilla crosscompile_opts_headers-only"
+IUSE="audit caps compile-locales debug gd hardened multilib nscd selinux systemtap profile suid vanilla crosscompile_opts_headers-only"
 
 # Min kernel version nptl requires
 : ${NPTL_KERN_VER:="2.6.32"}
@@ -62,6 +62,10 @@ fi
 
 is_crosscompile() {
 	[[ ${CHOST} != ${CTARGET} ]]
+}
+
+just_headers() {
+	is_crosscompile && use crosscompile_opts_headers-only
 }
 
 SLOT="2.2"
@@ -107,6 +111,8 @@ fi
 #
 # the phases
 #
+
+# pkg_pretend
 
 pkg_pretend() {
 	# Make sure devpts is mounted correctly for use w/out setuid pt_chown
@@ -191,6 +197,10 @@ pkg_pretend() {
 		fi
 	fi
 }
+# todo: shouldn't most of these checks be called also in src_configure again?
+# (since consistency is not guaranteed between pkg_ and src_)
+
+# src_unpack
 
 src_unpack() {
 	use multilib && unpack gcc-${GCC_BOOTSTRAP_VER}-multilib-bootstrap.tar.bz2
@@ -199,6 +209,7 @@ src_unpack() {
 
 	# Check NPTL support _before_ we unpack things to save some time
 	check_nptl_support
+	# todo: 1) move this to pkg_pretend? 2) use proper functions for kv
 
 	if [[ -n ${EGIT_REPO_URI} ]] ; then
 		git-r3_src_unpack
@@ -211,19 +222,13 @@ src_unpack() {
 
 	cd "${WORKDIR}"
 	unpack glibc-${RELEASE_VER}-patches-${PATCH_VER}.tar.bz2
-	# pull out all the addons
-	local d
-	for d in extra/*/configure ; do
-		d=${d%/configure}
-		[[ -d ${S}/${d} ]] && die "${d} already exists in \${S}"
-		mv "${d}" "${S}" || die "moving ${d} failed"
-	done
 }
 
 src_prepare() {
 	if ! use vanilla ; then
 		elog "Applying Gentoo Glibc Patchset ${RELEASE_VER}-${PATCH_VER} ..."
-		eapply "${WORKDIR}"/patches/*.patch
+		eapply "${WORKDIR}"/patches
+		elog "Done."
 	fi
 
 	if just_headers ; then
@@ -276,7 +281,7 @@ glibc_do_configure() {
 	# we accumulate crap across abis
 	unset CXX
 
-	einfo "Configuring glibc for $1"
+	einfo "Configuring glibc for nptl"
 
 	local v
 	for v in ABI CBUILD CHOST CTARGET CBUILD_OPT CTARGET_OPT CC CXX LD {AS,C,CPP,CXX,LD}FLAGS ; do
@@ -295,18 +300,6 @@ glibc_do_configure() {
 
 	local myconf=()
 
-	# set addons
-	pushd "${S}" > /dev/null
-	local addons=$(echo */configure | sed \
-		-e 's:/configure::g' \
-		-e 's:\(linuxthreads\|nptl\|rtkaio\|glibc-compat\)\( \|$\)::g' \
-		-e 's: \+$::' \
-		-e 's! !,!g' \
-		-e 's!^!,!' \
-		-e '/^,\*$/d')
-	[[ -d ports ]] && addons+=",ports"
-	popd > /dev/null
-
 	case ${CTARGET} in
 		powerpc-*)
 			# Currently gcc on powerpc32 generates invalid code for
@@ -324,12 +317,7 @@ glibc_do_configure() {
 
 	[[ $(tc-is-softfloat) == "yes" ]] && myconf+=( --without-fp )
 
-	if [[ $1 == "nptl" ]] ; then
-		myconf+=( --enable-kernel=${NPTL_KERN_VER} )
-	else
-		die "invalid pthread option"
-	fi
-	myconf+=( --enable-add-ons="${addons#,}" )
+	myconf+=( --enable-kernel=${NPTL_KERN_VER} )
 
 	# Since SELinux support is only required for nscd, only enable it if:
 	# 1. USE selinux
@@ -398,7 +386,7 @@ glibc_do_configure() {
 	# this overriding check.  #347761
 	export libc_cv_hashstyle=no
 
-	local builddir=$(builddir "$1")
+	local builddir=$(builddir nptl)
 	mkdir -p "${builddir}"
 	cd "${builddir}"
 	set -- "${S}"/configure "${myconf[@]}"
@@ -419,6 +407,10 @@ glibc_do_configure() {
 	# to lie and use a local copy of gcc.  Like if the system
 	# is built with MULTILIB_ABIS="amd64 x86" but we want to
 	# add x32 to it, gcc/glibc don't yet support x32.
+	#
+	# This reqires net-libs/rpcsvc-proto now (which provides
+	# rpcgen) !!! Needs analysis how to best add to deps.
+	#
 	if [[ -n ${GCC_BOOTSTRAP_VER} ]] && use multilib ; then
 		echo 'main(){}' > "${T}"/test.c
 		if ! $(tc-getCC ${CTARGET}) ${CFLAGS} ${LDFLAGS} "${T}"/test.c -Wl,-emain -lgcc 2>/dev/null ; then
@@ -503,10 +495,6 @@ glibc_headers_configure() {
 		${EXTRA_ECONF}
 	)
 
-	local addons
-	[[ -d ${S}/ports ]] && addons+=",ports"
-	myconf+=( --enable-add-ons="${addons#,}" )
-
 	# Nothing is compiled here which would affect the headers for the target.
 	# So forcing CC/CFLAGS is sane.
 	set -- "${S}"/configure "${myconf[@]}"
@@ -543,14 +531,14 @@ src_compile() {
 }
 
 glibc_src_test() {
-	cd "$(builddir $1)"
+	cd "$(builddir nptl)"
 	emake -j1 check
 }
 
 do_src_test() {
 	local ret=0
 
-	glibc_src_test nptl
+	glibc_src_test
 	: $(( ret |= $? ))
 
 	return ${ret}
@@ -563,11 +551,30 @@ src_test() {
 	foreach_abi do_src_test || die "tests failed"
 }
 
+run_locale_gen() {
+	# if the host locales.gen contains no entries, we'll install everything
+	local root="$1"
+	local locale_list="${root}/etc/locale.gen"
+	if [[ -z $(locale-gen --list --config "${locale_list}") ]] ; then
+		ewarn "Generating all locales; edit /etc/locale.gen to save time/space"
+		locale_list="${root}/usr/share/i18n/SUPPORTED"
+	fi
+
+	locale-gen --jobs $(makeopts_jobs) --config "${locale_list}" \
+		--destdir "${root}"
+}
+
 glibc_do_src_install() {
 	local builddir=$(builddir nptl)
 	cd "${builddir}"
 
 	emake install_root="${D}$(alt_prefix)" install || die
+
+	# This version (2.26) provides some compatibility libraries for the NIS/NIS+ support
+	# which come without headers etc. Only needed for binary packages since the
+	# external net-libs/libnsl has increased soversion. Keep only versioned libraries.
+	find "${D}" -name "libnsl.a" -delete
+	find "${D}" -name "libnsl.so" -delete
 
 	# Normally real_pv is ${PV}. Live ebuilds are exception, there we need
 	# to infer upstream version:
@@ -682,7 +689,7 @@ glibc_do_src_install() {
 	keepdir /usr/$(get_libdir)/locale
 	for a in $(get_install_abis) ; do
 		if [[ ! -e ${ED}/usr/$(get_abi_LIBDIR ${a})/locale ]] ; then
-			dosym /usr/$(get_libdir)/locale /usr/$(get_abi_LIBDIR ${a})/locale
+			dosym ../$(get_libdir)/locale /usr/$(get_abi_LIBDIR ${a})/locale
 		fi
 	done
 
@@ -712,13 +719,19 @@ glibc_do_src_install() {
 	echo 'LDPATH="include ld.so.conf.d/*.conf"' > "${T}"/00glibc
 	doenvd "${T}"/00glibc
 
-	for d in BUGS ChangeLog* CONFORMANCE FAQ NEWS NOTES PROJECTS README* ; do
+	for d in BUGS ChangeLog CONFORMANCE FAQ NEWS NOTES PROJECTS README* ; do
 		[[ -s ${d} ]] && dodoc ${d}
 	done
+	dodoc -r ChangeLog.old
 
 	# Prevent overwriting of the /etc/localtime symlink.  We'll handle the
 	# creation of the "factory" symlink in pkg_postinst().
 	rm -f "${ED}"/etc/localtime
+
+	# Generate all locales if this is a native build as locale generation
+	if use compile-locales && ! is_crosscompile ; then
+		run_locale_gen "${ED}"
+	fi
 }
 
 glibc_headers_install() {
@@ -778,12 +791,6 @@ pkg_postinst() {
 		# errors from this step #253697
 		/sbin/telinit U 2>/dev/null
 
-		# if the host locales.gen contains no entries, we'll install everything
-		local locale_list="${EROOT}etc/locale.gen"
-		if [[ -z $(locale-gen --list --config "${locale_list}") ]] ; then
-			ewarn "Generating all locales; edit /etc/locale.gen to save time/space"
-			locale_list="${EROOT}usr/share/i18n/SUPPORTED"
-		fi
-		locale-gen -j $(makeopts_jobs) --config "${locale_list}"
+		use compile-locales || run_locale_gen "${EROOT}"
 	fi
 }

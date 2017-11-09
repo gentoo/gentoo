@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit cmake-utils xdg
+inherit cmake-utils
 
 if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	inherit git-r3
@@ -21,11 +21,11 @@ else
 fi
 
 LICENSE="GPL-2+"
-SLOT="4"
+SLOT="4-plasma4"
 KEYWORDS="amd64 ~ppc ~ppc64 x86"
 IUSE="minimal"
 
-RDEPEND=">=app-i18n/fcitx-4.2.8[qt4]
+RDEPEND=">=app-i18n/fcitx-4.2.9:4[qt4]
 	dev-qt/qtcore:4
 	dev-qt/qtdbus:4
 	dev-qt/qtgui:4

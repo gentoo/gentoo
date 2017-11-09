@@ -30,12 +30,10 @@
     <remote-id type="cpan-module">Devel::REPL::Plugin::Interrupt</remote-id>
     <remote-id type="cpan-module">Devel::REPL::Plugin::LexEnv</remote-id>
     <remote-id type="cpan-module">Devel::REPL::Plugin::MultiLine::PPI</remote-id>
-    <remote-id type="cpan-module">Devel::REPL::Plugin::NewlineHack</remote-id>
     <remote-id type="cpan-module">Devel::REPL::Plugin::Nopaste</remote-id>
     <remote-id type="cpan-module">Devel::REPL::Plugin::OutputCache</remote-id>
     <remote-id type="cpan-module">Devel::REPL::Plugin::PPI</remote-id>
     <remote-id type="cpan-module">Devel::REPL::Plugin::Packages</remote-id>
-    <remote-id type="cpan-module">Devel::REPL::Plugin::Packages::DefaultScratchpad</remote-id>
     <remote-id type="cpan-module">Devel::REPL::Plugin::Peek</remote-id>
     <remote-id type="cpan-module">Devel::REPL::Plugin::ReadLineHistory</remote-id>
     <remote-id type="cpan-module">Devel::REPL::Plugin::Refresh</remote-id>
@@ -44,6 +42,8 @@
     <remote-id type="cpan-module">Devel::REPL::Plugin::Turtles</remote-id>
     <remote-id type="cpan-module">Devel::REPL::Profile</remote-id>
     <remote-id type="cpan-module">Devel::REPL::Profile::Default</remote-id>
+    <remote-id type="cpan-module">Devel::REPL::Profile::Minimal</remote-id>
+    <remote-id type="cpan-module">Devel::REPL::Profile::Standard</remote-id>
     <remote-id type="cpan-module">Devel::REPL::Script</remote-id>
   </upstream>
 </pkgmetadata>

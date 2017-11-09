@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools linux-info udev user
+inherit autotools flag-o-matic linux-info udev user
 
 DESCRIPTION="Program for querying and changing monitor settings"
 HOMEPAGE="http://www.ddcutil.com/"
@@ -19,7 +19,7 @@ IUSE="usb-monitor user-permissions video_cards_nvidia"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 
 RDEPEND="x11-libs/libXrandr
 	 x11-libs/libX11
@@ -53,6 +53,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# Bug 607818.
+	replace-flags -O3 -O2
+
 	# Python API is still very experimental.
 	local myeconfargs=(
 		$(use_enable usb-monitor usb)

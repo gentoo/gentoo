@@ -6,8 +6,8 @@
 		<name>Gentoo Science Project</name>
 	</maintainer>
 	<longdescription lang="en">
-  GAlib contains a set of C++ genetic algorithm objects. The library
-  includes tools for using genetic algorithms to do optimization in
-  any C++ program using any representation and genetic operators.
-</longdescription>
+		GAlib contains a set of C++ genetic algorithm objects. The library
+		includes tools for using genetic algorithms to do optimization in
+		any C++ program using any representation and genetic operators.
+	</longdescription>
 </pkgmetadata>
