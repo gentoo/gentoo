@@ -1,20 +1,20 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-WANT_AUTOMAKE="1.9"
+WANT_AUTOMAKE="1.13"
 
 inherit user eutils multilib flag-o-matic autotools
 
 DESCRIPTION="389 Directory Server (core librares and daemons )"
-HOMEPAGE="http://port389.org/"
+HOMEPAGE="http://www.port389.org/"
 SRC_URI="http://www.port389.org/sources/${P}.tar.bz2"
 
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="autobind auto-dn-suffix debug doc +pam-passthru +dna +ldapi +bitwise +presence kerberos selinux"
+IUSE="autobind auto-dn-suffix debug doc +pam-passthru +dna +ldapi +bitwise presence kerberos selinux"
 
 # Pinned to db:4.8 as it is the current stable, can change to a later db version < 6 when they stabilize.
 # The --with-db-inc line in econf will need to be updated as well when changing db version.
@@ -23,9 +23,9 @@ COMMON_DEPEND="
 	>=dev-libs/cyrus-sasl-2.1.19
 	>=net-analyzer/net-snmp-5.1.2
 	>=dev-libs/icu-3.4:=
-	dev-libs/nss[utils]
+	>=dev-libs/nss-3.22[utils]
 	dev-libs/nspr
-	dev-libs/svrcore
+	>=dev-libs/svrcore-4.1.2
 	dev-libs/openssl:0=
 	dev-libs/libpcre:3
 	>=dev-perl/perl-mozldap-1.5.3
@@ -50,23 +50,15 @@ pkg_setup() {
 }
 
 src_prepare() {
-	#0001-Ticket-47840-add-configure-option-to-disable-instanc.patch
-	epatch "${FILESDIR}/389-ds-base-1.3.4-no-instance-script.patch"
-
 	# as per 389 documentation, when 64bit, export USE_64
 	use amd64 && export USE_64=1
 
-	# This will be changed in 1.3.5.X
-	sed -i -e 's/nobody/dirsrv/g' configure.ac || die "sed failed on configure.ac"
 	eautoreconf
 
 	append-lfs-flags
 }
 
 src_configure() {
-	# for 1.3.5.X, will add --enable-gcc-security.
-	# auto-dn-suffix currently throws warning in configure script,
-	# see https://fedorahosted.org/389/ticket/48710
 	econf \
 		$(use_enable debug) \
 		$(use_enable pam-passthru) \
@@ -77,6 +69,7 @@ src_configure() {
 		$(use_enable presence) \
 		$(use_with kerberos) \
 		$(use_enable auto-dn-suffix) \
+		--with-initddir=no \
 		--enable-maintainer-mode \
 		--with-fhs \
 		--with-openldap \
@@ -94,14 +87,10 @@ src_compile() {
 }
 
 src_install () {
-	emake DESTDIR="${D}" install
+	# -j1 is a temporary workaround for bug #605432
+	emake -j1 DESTDIR="${D}" install
 
-	# remove redhat style init script
-	rm -rf "${D}"/etc/rc.d || die
-	# Needs a config option to remove this.
-	rm -rf "${D}"/etc/default || die
-
-	# and install gentoo style init script
+	# Install gentoo style init script
 	# Get these merged upstream
 	newinitd "${FILESDIR}"/389-ds.initd-r1 389-ds
 	newinitd "${FILESDIR}"/389-ds-snmp.initd 389-ds-snmp
@@ -131,8 +120,5 @@ pkg_postinst() {
 	elog
 	elog "    rc-update add 389-ds default"
 	elog
-	elog "If you are upgrading from previous 1.2.6 release candidates"
-	elog "please see:"
-	elog "http://directory.fedoraproject.org/wiki/Subtree_Rename#warning:_upgrade_from_389_v1.2.6_.28a.3F.2C_rc1_.7E_rc6.29_to_v1.2.6_rc6_or_newer"
 	echo
 }
