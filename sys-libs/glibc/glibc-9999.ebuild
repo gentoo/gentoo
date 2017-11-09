@@ -614,15 +614,18 @@ glibc_do_src_install() {
 	find "${D}" -name "libnsl.a" -delete
 	find "${D}" -name "libnsl.so" -delete
 
-	# Normally real_pv is ${PV}. Live ebuilds are exception, there we need
+	# Normally upstream_pv is ${PV}. Live ebuilds are exception, there we need
 	# to infer upstream version:
 	# '#define VERSION "2.26.90"' -> '2.26.90'
 	local upstream_pv=$(sed -n -r 's/#define VERSION "(.*)"/\1/p' "${S}"/version.h)
 
-	# Newer versions get fancy with libm linkage to include vectorized support.
-	# While we don't really need a ldscript here, portage QA checks get upset.
 	if [[ -e ${ED}$(alt_usrlibdir)/libm-${upstream_pv}.a ]] ; then
-		dosym ../../$(get_libdir)/libm-${upstream_pv}.so $(alt_usrlibdir)/libm-${upstream_pv}.so
+		# Move versioned .a file out of libdir to evade portage QA checks
+		# instead of using gen_usr_ldscript(). We fix ldscript as:
+		# "GROUP ( /usr/lib64/libm-<pv>.a ..." -> "GROUP ( /usr/lib64/glibc-<pv>/libm-<pv>.a ..."
+		sed -i "s@\(libm-${upstream_pv}.a\)@${P}/\1@" "${ED}"$(alt_usrlibdir)/libm.a || die
+		dodir $(alt_usrlibdir)/${P}
+		mv "${ED}"$(alt_usrlibdir)/libm-${upstream_pv}.a "${ED}"$(alt_usrlibdir)/${P}/libm-${upstream_pv}.a || die
 	fi
 
 	# We'll take care of the cache ourselves
