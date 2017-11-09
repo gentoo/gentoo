@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Charset Informations for MIME"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 x86"
 IUSE="l10n_ja l10n_zh"
 PATCHES=(
 	"${FILESDIR}/1.012-makefilepl.patch"
