@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,22 +10,17 @@ inherit toolchain-funcs ${GITECLASS}
 
 DESCRIPTION="A collection of multi-dimensional data structure and indexing algorithm"
 HOMEPAGE="https://gitlab.com/mdds/mdds"
-[[ ${PV} == 9999 ]] || SRC_URI="http://kohei.us/files/${PN}/src/${P}.tar.bz2"
+[[ ${PV} == 9999 ]] || SRC_URI="https://kohei.us/files/${PN}/src/${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="1/${PV%.*}"
-IUSE="doc valgrind"
+IUSE="valgrind"
 
 [[ ${PV} == 9999 ]] || \
 KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="dev-libs/boost:="
-DEPEND="${RDEPEND}
-	doc? (
-		app-doc/doxygen
-		dev-python/sphinx
-	)
-"
+DEPEND="${RDEPEND}"
 
 DOCS=() # buildsystem installs docs
 
@@ -35,8 +30,9 @@ src_prepare(){
 }
 
 src_configure() {
+	# docs require dev-python/breathe etc., bug #602026
 	econf \
-		$(use_enable doc docs) \
+		--disable-docs \
 		$(use_enable valgrind memory_tests)
 }
 
