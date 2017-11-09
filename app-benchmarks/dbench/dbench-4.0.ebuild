@@ -1,12 +1,13 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
 EAPI=5
 
 inherit eutils autotools
 
 DESCRIPTION="Popular filesystem benchmark"
-SRC_URI="ftp://ftp.samba.org/pub/tridge/dbench/${P}.tar.gz"
-HOMEPAGE="http://samba.org/ftp/tridge/dbench/"
+SRC_URI="https://www.samba.org/ftp/pub/tridge/dbench/${P}.tar.gz"
+HOMEPAGE="https://www.samba.org/ftp/tridge/dbench/"
 SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="amd64 ~arm ~arm64 hppa ppc ppc64 sparc x86"
