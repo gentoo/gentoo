@@ -1386,8 +1386,10 @@ dev-db/mysql-cluster:latin1 - Use LATIN1 encoding instead of UTF8
 dev-db/mysql-cluster:libressl - Enable SSL connections and crypto functions using dev-libs/libressl
 dev-db/mysql-cluster:max-idx-128 - Raise the max index per table limit from 64 to 128
 dev-db/mysql-cluster:minimal - Install client programs only, no server
+dev-db/mysql-cluster:numa - Enable NUMA support using sys-process/numactl (NUMA kernel support is also required)
 dev-db/mysql-cluster:openssl - Enable SSL connections and crypto functions using dev-libs/openssl
 dev-db/mysql-cluster:profiling - Add support for statement profiling (requires USE=community).
+dev-db/mysql-cluster:server - Build the server program
 dev-db/mysql-cluster:systemtap - Build support for profiling and tracing using dev-util/systemtap
 dev-db/mysql-cluster:test - Install upstream testsuites for end use.
 dev-db/mysql-cluster:yassl - Enable SSL connections and crypto functions using the bundled yaSSL
