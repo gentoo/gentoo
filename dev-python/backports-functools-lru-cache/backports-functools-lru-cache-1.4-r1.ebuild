@@ -15,7 +15,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 x86 ~amd64-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 x86 ~amd64-linux"
 IUSE="doc test"
 
 RDEPEND="dev-python/backports[${PYTHON_USEDEP}]"
