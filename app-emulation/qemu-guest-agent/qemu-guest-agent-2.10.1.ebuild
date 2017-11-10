@@ -14,7 +14,7 @@ SRC_URI="http://wiki.qemu.org/download/${MY_P}.tar.bz2"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
 
 DESCRIPTION="QEMU Guest Agent (qemu-ga) for use when running inside a VM"
-HOMEPAGE="http://wiki.qemu.org/Features/QAPI/GuestAgent"
+HOMEPAGE="https://wiki.qemu.org/Features/GuestAgent"
 
 LICENSE="GPL-2 BSD-2"
 SLOT="0"
