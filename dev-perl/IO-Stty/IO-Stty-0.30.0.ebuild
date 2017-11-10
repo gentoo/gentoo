@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Change and print terminal line settings"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ia64 ppc ~ppc64 sparc x86"
+KEYWORDS="amd64 ~arm ~ia64 ~mips ppc ~ppc64 sparc x86"
 IUSE="test"
 
 RDEPEND=""
