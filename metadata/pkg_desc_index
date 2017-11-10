@@ -2353,7 +2353,7 @@ app-text/libodfgen 0.1.6 9999: Library to generate ODF documents from libwpd and
 app-text/libpaper 1.1.24-r2 1.1.24_p5: Library for handling paper characteristics
 app-text/libqxp 0.0.0: Library parsing QuarkXpress documents
 app-text/libspectre 0.2.7 0.2.8: A library for rendering Postscript documents
-app-text/libstaroffice 0.0.3 0.0.4 0.0.5 9999: Import filter for old StarOffice documents
+app-text/libstaroffice 0.0.4 0.0.5 9999: Import filter for old StarOffice documents
 app-text/libwpd 0.10.1-r1 0.10.2: WordPerfect Document import/export library
 app-text/libwpg 0.3.1 0.3.2: C++ library to read and parse graphics in WPG
 app-text/libwps 0.4.6 0.4.7: Microsoft Works file word processor format import filter library
@@ -13199,7 +13199,7 @@ media-libs/libxspf 1.2.0: Playlist handling library
 media-libs/libxtract 0.6.6: A simple, portable, lightweight library of audio feature extraction functions
 media-libs/libyami 1.0.1 1.1.0 1.2.0 9999: Yet Another Media Infrastructure: Media codec with hardware acceleration
 media-libs/libzen 0.4.37: Shared library for libmediainfo and mediainfo
-media-libs/libzmf 0.0.1 0.0.2 9999: Library for parsing Zoner Callisto/Draw documents
+media-libs/libzmf 0.0.2 9999: Library for parsing Zoner Callisto/Draw documents
 media-libs/lilv 0.20.0 0.24.0 0.24.2: Library to make the use of LV2 plugins as simple as possible for applications
 media-libs/lv2 1.10.0-r1 1.12.0 1.14.0: A simple but extensible successor of LADSPA
 media-libs/lvtk 1.2.0: A set of C++ wrappers around the LV2 C API
