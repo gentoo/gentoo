@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201711-05">
+  <title>X.Org Server: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in X.Org Server, the worst
+    of which could allow an attacker to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">xorg-server</product>
+  <announced>2017-11-10</announced>
+  <revised>2017-11-10: 1</revised>
+  <bug>635974</bug>
+  <access>remote</access>
+  <affected>
+    <package name="x11-base/xorg-server" auto="yes" arch="*">
+      <unaffected range="ge">1.19.5</unaffected>
+      <vulnerable range="lt">1.19.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The X.Org project provides an open source implementation of the X Window
+      System.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in X.Org Server. Please
+      review the referenced CVE identifiers for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Attackers could execute arbitrary code or cause a Denial of Service
+      condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is now know workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All X.Org Server users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-base/xorg-server-1.19.5"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12176">
+      CVE-2017-12176
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12177">
+      CVE-2017-12177
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12178">
+      CVE-2017-12178
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12179">
+      CVE-2017-12179
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12180">
+      CVE-2017-12180
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12181">
+      CVE-2017-12181
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12182">
+      CVE-2017-12182
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12183">
+      CVE-2017-12183
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-11-10T01:36:08Z">jmbailey</metadata>
+  <metadata tag="submitter" timestamp="2017-11-10T23:06:09Z">jmbailey</metadata>
+</glsa>
