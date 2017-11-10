@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools fdo-mime gnome2-utils flag-o-matic linux-info \
+inherit autotools gnome2-utils flag-o-matic linux-info xdg-utils \
 	multilib multilib-minimal pam python-single-r1 user versionator \
 	java-pkg-opt-2 systemd toolchain-funcs
 
@@ -54,7 +54,7 @@ CDEPEND="
 	pam? ( virtual/pam )
 	python? ( ${PYTHON_DEPS} )
 	ssl? (
-		>=net-libs/gnutls-2.12.23-r6[${MULTILIB_USEDEP}]
+		>=net-libs/gnutls-2.12.23-r6:0=[${MULTILIB_USEDEP}]
 	)
 	systemd? ( sys-apps/systemd )
 	usb? ( virtual/libusb:1 )
@@ -88,7 +88,7 @@ RESTRICT="test"
 # systemd-socket.patch from Fedora
 PATCHES=(
 	"${FILESDIR}/${PN}-2.2.0-dont-compress-manpages.patch"
-	"${FILESDIR}/${PN}-2.2.4-fix-install-perms.patch"
+	"${FILESDIR}/${PN}-2.2.6-fix-install-perms.patch"
 	"${FILESDIR}/${PN}-1.4.4-nostrip.patch"
 	"${FILESDIR}/${PN}-2.0.2-rename-systemd-service-files.patch"
 	"${FILESDIR}/${PN}-2.0.1-xinetd-installation-fix.patch"
@@ -159,51 +159,54 @@ multilib_src_configure() {
 	einfo LANGS=\"${LANGS}\"
 	einfo LINGUAS=\"${LINGUAS}\"
 
-	local myconf=()
-
-	if tc-is-static-only; then
-		myconf+=(
-			--disable-shared
-		)
-	fi
+	local myeconfargs=()
 
 	# explicitly specify compiler wrt bug 524340
 	#
 	# need to override KRB5CONFIG for proper flags
 	# https://github.com/apple/cups/issues/4423
-	econf \
-		CC="$(tc-getCC)" \
-		CXX="$(tc-getCXX)" \
-		KRB5CONFIG="${EPREFIX}"/usr/bin/${CHOST}-krb5-config \
-		--libdir="${EPREFIX}"/usr/$(get_libdir) \
-		--localstatedir="${EPREFIX}"/var \
-		--with-rundir="${EPREFIX}"/run/cups \
-		--with-cups-user=lp \
-		--with-cups-group=lp \
-		--with-docdir="${EPREFIX}"/usr/share/cups/html \
-		--with-languages="${LINGUAS}" \
-		--with-system-groups=lpadmin \
-		--with-xinetd="${EPREFIX}"/etc/xinetd.d \
-		$(multilib_native_use_enable acl) \
-		$(use_enable dbus) \
-		$(use_enable debug) \
-		$(use_enable debug debug-guards) \
-		$(use_enable debug debug-printfs) \
-		$(multilib_native_use_with java) \
-		$(use_enable kerberos gssapi) \
-		$(multilib_native_use_enable pam) \
-		$(multilib_native_use_with python python "${PYTHON}") \
-		$(use_enable static-libs static) \
-		$(use_enable threads) \
-		$(use_enable ssl gnutls) \
-		$(use_enable systemd) \
-		$(multilib_native_use_enable usb libusb) \
-		$(use_enable zeroconf avahi) \
-		--disable-dnssd \
-		--without-perl \
-		--without-php \
-		$(multilib_is_native_abi && echo --enable-libpaper || echo --disable-libpaper) \
-		"${myconf[@]}"
+	myeconfargs+=(
+		CC="$(tc-getCC)"
+		CXX="$(tc-getCXX)"
+		KRB5CONFIG="${EPREFIX}"/usr/bin/${CHOST}-krb5-config
+		--libdir="${EPREFIX}"/usr/$(get_libdir)
+		--localstatedir="${EPREFIX}"/var
+		--with-exe-file-perm=755
+		--with-rundir="${EPREFIX}"/run/cups
+		--with-cups-user=lp
+		--with-cups-group=lp
+		--with-docdir="${EPREFIX}"/usr/share/cups/html
+		--with-languages="${LINGUAS}"
+		--with-system-groups=lpadmin
+		--with-xinetd="${EPREFIX}"/etc/xinetd.d
+		$(multilib_native_use_enable acl)
+		$(use_enable dbus)
+		$(use_enable debug)
+		$(use_enable debug debug-guards)
+		$(use_enable debug debug-printfs)
+		$(multilib_native_use_with java)
+		$(use_enable kerberos gssapi)
+		$(multilib_native_use_enable pam)
+		$(multilib_native_use_with python python "${PYTHON}")
+		$(use_enable static-libs static)
+		$(use_enable threads)
+		$(use_enable ssl gnutls)
+		$(use_enable systemd)
+		$(multilib_native_use_enable usb libusb)
+		$(use_enable zeroconf avahi)
+		--disable-dnssd
+		--without-perl
+		--without-php
+		$(multilib_is_native_abi && echo --enable-libpaper || echo --disable-libpaper)
+	)
+
+	if tc-is-static-only; then
+		myeconfargs+=(
+			--disable-shared
+		)
+	fi
+
+	econf "${myeconfargs[@]}"
 
 	# install in /usr/libexec always, instead of using /usr/lib/cups, as that
 	# makes more sense when facing multilib support.
@@ -240,7 +243,7 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	dodoc {CHANGES,CREDITS,README}.txt
+	dodoc {CHANGES,CREDITS,README}.md
 
 	# move the default config file to docs
 	dodoc "${ED}"/etc/cups/cupsd.conf.default
@@ -315,7 +318,7 @@ pkg_preinst() {
 pkg_postinst() {
 	# Update desktop file database and gtk icon cache (bug 370059)
 	gnome2_icon_cache_update
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 
 	local v
 
@@ -342,5 +345,5 @@ pkg_postinst() {
 pkg_postrm() {
 	# Update desktop file database and gtk icon cache (bug 370059)
 	gnome2_icon_cache_update
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }
