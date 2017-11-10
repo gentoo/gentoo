@@ -19,7 +19,7 @@ if [[ ${PV} == "9999" ]] ; then
 	#KEYWORDS=""
 else
 	MAJOR_V=$(get_version_component_range 1)
-	SRC_URI="https://dl.winehq.org/wine/source/${MAJOR_V}.x/${MY_P}.tar.bz2"
+	SRC_URI="https://dl.winehq.org/wine/source/${MAJOR_V}.0/${MY_P}.tar.bz2"
 	KEYWORDS="-* amd64 x86 ~x86-fbsd"
 fi
 S="${WORKDIR}/${MY_P}"
