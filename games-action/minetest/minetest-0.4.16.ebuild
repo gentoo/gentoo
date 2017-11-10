@@ -76,6 +76,7 @@ src_configure() {
 		-DENABLE_GLES=0
 		-DENABLE_LEVELDB=$(usex leveldb)
 		-DENABLE_REDIS=$(usex redis)
+		-DENABLE_POSTGRESQL=0
 		-DENABLE_SPATIAL=$(usex spatial)
 		-DENABLE_SOUND=$(usex sound)
 		-DENABLE_LUAJIT=$(usex luajit)
