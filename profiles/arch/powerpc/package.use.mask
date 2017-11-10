@@ -1,6 +1,13 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Robin H. Johnson <robbat2@gentoo.org> (10 Nov 2017)
+# Masked for dependencies:
+# - bug #438780: sys-firmware/ipxe not buildable on PPC without cross-compiler
+app-emulation/qemu qemu_softmmu_targets_i386 qemu_softmmu_targets_x86_64
+# - media-libs/virglrenderer: pending keywording
+app-emulation/qemu virgl
+
 # Michael Palimaka <kensington@gentoo.org> (30 Sep 2017)
 # Required dependencies are not keyworded.
 x11-themes/qtcurve plasma
