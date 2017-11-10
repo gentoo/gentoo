@@ -6,7 +6,7 @@ EAPI=6
 inherit cmake-utils eutils gnome2-utils
 
 DESCRIPTION="A kart racing game starring Tux, the linux penguin (TuxKart fork)"
-HOMEPAGE="https://supertuxkart.net/"
+HOMEPAGE="https://supertuxkart.net/Main_Page"
 SRC_URI="mirror://sourceforge/${PN}/SuperTuxKart/${PV}/${P}-src.tar.xz
 	mirror://gentoo/${PN}.png"
 
