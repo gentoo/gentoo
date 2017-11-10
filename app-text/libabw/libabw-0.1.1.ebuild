@@ -6,8 +6,8 @@ EAPI=6
 inherit autotools
 
 DESCRIPTION="Library parsing abiword documents"
-HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/${PN}"
-SRC_URI="http://dev-www.libreoffice.org/src/${PN}/${P}.tar.xz"
+HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/libabw"
+SRC_URI="https://dev-www.libreoffice.org/src/${PN}/${P}.tar.xz"
 
 LICENSE="MPL-2.0"
 SLOT="0"
