@@ -2060,7 +2060,7 @@ app-office/pybliographer 1.2.15-r1: Pybliographer is a tool for working with bib
 app-office/qchartdiary 0.6.4.1-r2: Free Qt4 diary/agenda application
 app-office/sc 7.16-r1 7.16-r2: Spreadsheet Calculator
 app-office/scribus 1.4.6 1.5.3 9999: Desktop publishing (DTP) and layout program
-app-office/skrooge 2.8.1 2.9.0 2.10.3 2.10.5: Personal finances manager, aiming at being simple and intuitive
+app-office/skrooge 2.8.1 2.9.0 2.10.5: Personal finances manager, aiming at being simple and intuitive
 app-office/taskcoach 1.4.3-r1: Simple personal tasks and todo lists manager
 app-office/tedia2sql 1.2.12: Convert database ERD designed in Dia into SQL DDL scripts
 app-office/texmacs 1.99.2-r1 1.99.5: Wysiwyg text processor with high-quality maths
@@ -4932,7 +4932,7 @@ dev-libs/librdkafka 0.9.2-r1 0.9.3 0.9.4 0.9.5 0.11.0: Apache Kafka C/C++ client
 dev-libs/librelp 1.2.12 1.2.13 1.2.14: An easy to use library for the RELP protocol
 dev-libs/librep 0.92.6: Shared library implementing a Lisp dialect
 dev-libs/libreport 2.0.13-r1: Generic library for reporting software bugs
-dev-libs/libressl 2.3.10 2.4.5 2.5.0 2.5.4 2.5.5 2.6.0 2.6.1 2.6.2 2.6.3-r1: Free version of the SSL/TLS protocol forked from OpenSSL
+dev-libs/libressl 2.3.10 2.4.5 2.5.0 2.5.4 2.5.5 2.6.0 2.6.1 2.6.2 2.6.3-r2: Free version of the SSL/TLS protocol forked from OpenSSL
 dev-libs/librevenge 0.0.4-r1 9999: A helper library for REVerse ENGineered formats filters
 dev-libs/libsass 3.4.5 9999: A C/C++ implementation of a Sass CSS compiler
 dev-libs/libsecp256k1 0.0.0_pre20151118 0.0.0_pre20161213 9999: Optimized C library for EC operations on curve secp256k1
@@ -14830,7 +14830,7 @@ net-irc/irssi-otr 1.0.0-r1 1.0.2: Off-The-Record messaging (OTR) for irssi
 net-irc/irssi-xmpp 0.53: An irssi plugin providing Jabber/XMPP support
 net-irc/irssistats 0.75: Generates HTML IRC stats based on irssi logs
 net-irc/jircii 41: jIRCii - IRC client written in Java
-net-irc/konversation 1.7.2 1.7.2-r1: A user friendly IRC Client
+net-irc/konversation 1.7.2 1.7.2-r1 1.7.3: A user friendly IRC Client
 net-irc/kvirc 5.0_pre20170801214745 5.0_pre20171001143427 9999: Advanced IRC Client
 net-irc/limnoria 20150523 20150829 99999999: Python based extensible IRC infobot and channel bot
 net-irc/miau 0.6.6: Persistent IRC bouncer with multi-client support - a fork of muh
