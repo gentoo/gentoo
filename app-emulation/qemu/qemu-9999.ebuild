@@ -164,6 +164,14 @@ X86_FIRMWARE_DEPEND="
 		>=sys-firmware/seabios-1.10.2[seavgabios]
 		sys-firmware/sgabios
 	)"
+PPC64_FIRMWARE_DEPEND="
+	pin-upstream-blobs? (
+		~sys-firmware/seabios-1.10.2[binary,seavgabios]
+	)
+	!pin-upstream-blobs? (
+		>=sys-firmware/seabios-1.10.2[seavgabios]
+	)
+"
 
 CDEPEND="
 	!static? (
@@ -171,7 +179,9 @@ CDEPEND="
 		${SOFTMMU_TOOLS_DEPEND//\[static-libs(+)]}
 	)
 	qemu_softmmu_targets_i386? ( ${X86_FIRMWARE_DEPEND} )
-	qemu_softmmu_targets_x86_64? ( ${X86_FIRMWARE_DEPEND} )"
+	qemu_softmmu_targets_x86_64? ( ${X86_FIRMWARE_DEPEND} )
+	qemu_softmmu_targets_ppc64? ( ${PPC64_FIRMWARE_DEPEND} )
+"
 DEPEND="${CDEPEND}
 	dev-lang/perl
 	=dev-lang/python-2*
@@ -695,7 +705,8 @@ src_install() {
 		rm "${ED}/usr/share/qemu/vgabios-stdvga.bin"
 		rm "${ED}/usr/share/qemu/vgabios-virtio.bin"
 		rm "${ED}/usr/share/qemu/vgabios-vmware.bin"
-		if use qemu_softmmu_targets_x86_64 || use qemu_softmmu_targets_i386; then
+		# PPC64 loads vgabios-stdvga
+		if use qemu_softmmu_targets_x86_64 || use qemu_softmmu_targets_i386 || use qemu_softmmu_targets_ppc64; then
 			dosym ../seavgabios/vgabios-isavga.bin /usr/share/qemu/vgabios.bin
 			dosym ../seavgabios/vgabios-cirrus.bin /usr/share/qemu/vgabios-cirrus.bin
 			dosym ../seavgabios/vgabios-qxl.bin /usr/share/qemu/vgabios-qxl.bin
