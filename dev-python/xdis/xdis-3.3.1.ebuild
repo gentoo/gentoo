@@ -25,9 +25,9 @@ DEPEND="
 	)
 "
 
-#PATCHES=( "${FILESDIR}/xdis-test_magic_bytes_error.patch"
-#	"${FILESDIR}/xdis-3.3.0-remove-pytest-runner-dep.patch"
-#)
+PATCHES=(
+	"${FILESDIR}/xdis-3.3.0-remove-pytest-runner-dep.patch"
+)
 
 python_test() {
 	# Need to rm any pyc files to prevent test failures.
