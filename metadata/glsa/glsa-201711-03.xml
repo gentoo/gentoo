@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201711-03">
+  <title>hostapd and wpa_supplicant: Key Reinstallation (KRACK) attacks</title>
+  <synopsis>A flaw was discovered in the 4-way handshake in hostapd and
+    wpa_supplicant that allows attackers to conduct a Man in the Middle attack.
+  </synopsis>
+  <product type="ebuild">hostapd,wpa_supplicant</product>
+  <announced>2017-11-10</announced>
+  <revised>2017-11-10: 1</revised>
+  <bug>634436</bug>
+  <bug>634438</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="net-wireless/hostapd" auto="yes" arch="*">
+      <unaffected range="ge">2.6-r1</unaffected>
+      <vulnerable range="lt">2.6-r1</vulnerable>
+    </package>
+    <package name="net-wireless/wpa_supplicant" auto="yes" arch="*">
+      <unaffected range="ge">2.6-r3</unaffected>
+      <vulnerable range="lt">2.6-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>wpa_supplicant is a WPA Supplicant with support for WPA and WPA2 (IEEE
+      802.11i / RSN). hostapd is a user space daemon for access point and
+      authentication servers.
+    </p>
+  </background>
+  <description>
+    <p>WiFi Protected Access (WPA and WPA2) and it’s associated technologies
+      are all vulnerable to the KRACK attacks. Please review the referenced CVE
+      identifiers for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker can carry out the KRACK attacks on a wireless network in
+      order to gain access to network clients. Once achieved, the attacker can
+      potentially harvest confidential information (e.g. HTTP/HTTPS), inject
+      malware, or perform a myriad of other attacks.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All hostapd users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-wireless/hostapd-2.6-r1"
+    </code>
+    
+    <p>All wpa_supplicant users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=net-wireless/wpa_supplicant-2.6-r3"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13077">
+      CVE-2017-13077
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13078">
+      CVE-2017-13078
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13079">
+      CVE-2017-13079
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13080">
+      CVE-2017-13080
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13081">
+      CVE-2017-13081
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13082">
+      CVE-2017-13082
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13084">
+      CVE-2017-13084
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13086">
+      CVE-2017-13086
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13087">
+      CVE-2017-13087
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13088">
+      CVE-2017-13088
+    </uri>
+    <uri link="https://www.krackattacks.com/">KRACK Attacks Website</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-10-26T21:01:58Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-11-10T22:39:05Z">b-man</metadata>
+</glsa>
