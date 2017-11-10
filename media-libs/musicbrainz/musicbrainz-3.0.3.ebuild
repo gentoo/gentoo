@@ -6,7 +6,7 @@ EAPI=5
 inherit cmake-utils
 
 DESCRIPTION="Client library to access metadata of mp3/vorbis/CD media"
-HOMEPAGE="http://musicbrainz.org/"
+HOMEPAGE="https://musicbrainz.org/"
 SRC_URI="http://ftp.musicbrainz.org/pub/musicbrainz/lib${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
