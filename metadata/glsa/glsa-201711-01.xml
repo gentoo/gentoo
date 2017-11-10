@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201711-01">
+  <title>libxml2: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in libxml2, the worst of
+    which could result in the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">libxml2</product>
+  <announced>2017-11-10</announced>
+  <revised>2017-11-10: 2</revised>
+  <bug>599192</bug>
+  <bug>605208</bug>
+  <bug>618604</bug>
+  <bug>622914</bug>
+  <bug>623206</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/libxml2" auto="yes" arch="*">
+      <unaffected range="ge">2.9.4-r3</unaffected>
+      <vulnerable range="lt">2.9.4-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libxml2 is the XML (eXtended Markup Language) C parser and toolkit
+      initially developed for the Gnome project.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in libxml2. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by enticing a user to process a specially crafted XML
+      document, could remotely execute arbitrary code, conduct XML External
+      Entity (XXE) attacks, or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libxml2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/libxml2-2.9.4-r3"
+    </code>
+    
+    <p>Packages which depend on this library may need to be recompiled. Tools
+      such as revdep-rebuild may assist in identifying some of these packages.
+    </p>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9318">
+      CVE-2016-9318
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-0663">
+      CVE-2017-0663
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5969">
+      CVE-2017-5969
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7375">
+      CVE-2017-7375
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-9047">
+      CVE-2017-9047
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-9048">
+      CVE-2017-9048
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-9049">
+      CVE-2017-9049
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-9050">
+      CVE-2017-9050
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-10-15T04:17:50Z">chrisadr</metadata>
+  <metadata tag="submitter" timestamp="2017-11-10T02:24:16Z">b-man</metadata>
+</glsa>
