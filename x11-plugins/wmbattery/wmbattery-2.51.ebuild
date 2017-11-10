@@ -1,12 +1,12 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 inherit autotools
 
 DESCRIPTION="A dockable app to report APM, ACPI, or SPIC battery status"
 HOMEPAGE="http://www.dockapps.net/wmbattery"
-SRC_URI="https://dev.gentoo.org/~voyageur/distfiles/${P}.tar.gz"
+SRC_URI="http://www.dockapps.net/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -21,11 +21,11 @@ RDEPEND="apm? ( sys-apps/apmd )
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-S=${WORKDIR}/dockapps
-
 DOCS=( ChangeLog README TODO )
 
 src_prepare() {
+	default
+
 	sed -i \
 		-e '/^icondir/s:icons:pixmaps:' \
 		autoconf/makeinfo.in || die
