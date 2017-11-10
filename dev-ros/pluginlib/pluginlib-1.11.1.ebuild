@@ -24,4 +24,4 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	test? ( dev-cpp/gtest )"
-PATCHES=( "${FILESDIR}/gentoo2.patch" )
+PATCHES=( "${FILESDIR}/catkin_prefix_path.patch" )
