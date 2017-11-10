@@ -19,6 +19,7 @@ RDEPEND="
 	dev-lang/ocaml:=[ocamlopt?]
 	dev-ml/ocaml-ctypes:=
 	dev-ml/ocaml-ipaddr:=[ocamlopt?]
+		dev-ml/sexplib:=
 	dev-ml/ppx_deriving:=[ocamlopt?]
 	dev-ml/ocaml-containers:=[ocamlopt?]
 	dev-ml/ocaml-bigstring:=
