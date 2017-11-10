@@ -64,6 +64,8 @@ RDEPEND="${DEPEND}
 # bug 603116
 RESTRICT+=" test"
 
+PATCHES=( "${FILESDIR}/${P}-cmake-3.10.patch" )
+
 src_prepare() {
 	kde5_src_prepare
 	use mobile || cmake_comment_add_subdirectory mobile
