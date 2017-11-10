@@ -19,7 +19,7 @@ SRC_URI="https://github.com/discourse/mini_mime/archive/v${PV}.tar.gz -> ${P}.ta
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc"
+KEYWORDS="~amd64 ~ppc ~ppc64"
 IUSE="test"
 
 all_ruby_prepare() {
