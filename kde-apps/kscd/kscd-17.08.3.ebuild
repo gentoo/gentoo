@@ -11,6 +11,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="debug"
 
 DEPEND="
+	media-libs/libdiscid
 	media-libs/musicbrainz:5
 	media-libs/phonon[qt4]
 "
