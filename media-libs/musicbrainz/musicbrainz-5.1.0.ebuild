@@ -24,6 +24,11 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/lib${P}"
 
+src_prepare() {
+	use test || cmake_comment_add_subdirectory tests
+	cmake-utils_src_prepare
+}
+
 src_install() {
 	cmake-utils_src_install
 
