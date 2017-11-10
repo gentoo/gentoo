@@ -8,7 +8,7 @@ WANT_AUTOMAKE="1.13"
 inherit user eutils multilib flag-o-matic autotools git-r3
 
 DESCRIPTION="389 Directory Server (core librares and daemons )"
-HOMEPAGE="http://port389.org/"
+HOMEPAGE="http://www.port389.org/"
 SRC_URI=""
 EGIT_REPO_URI="https://pagure.io/389-ds-base.git"
 
@@ -24,7 +24,7 @@ COMMON_DEPEND="
 	>=dev-libs/cyrus-sasl-2.1.19
 	>=net-analyzer/net-snmp-5.1.2
 	>=dev-libs/icu-3.4:=
-	dev-libs/nss[utils]
+	>=dev-libs/nss-3.22[utils]
 	dev-libs/nspr
 	>=dev-libs/svrcore-4.1.2
 	dev-libs/openssl:0=
