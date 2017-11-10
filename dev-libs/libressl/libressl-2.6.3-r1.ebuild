@@ -47,6 +47,7 @@ multilib_src_install_all() {
 
 	# Delete cert.pem
 	rm "${ED}"/etc/ssl/cert.pem || die
+	scanelf -Xe "${ED}"/usr/lib64/libcrypto.so.42.0.0
 
 	if ! use static-libs ; then
 		find "${D}" -name '*.a' -exec rm -f {} + || die
