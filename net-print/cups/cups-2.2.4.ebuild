@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools fdo-mime gnome2-utils flag-o-matic linux-info \
+inherit autotools gnome2-utils flag-o-matic linux-info xdg-utils \
 	multilib multilib-minimal pam python-single-r1 user versionator \
 	java-pkg-opt-2 systemd toolchain-funcs
 
@@ -88,7 +88,7 @@ RESTRICT="test"
 # systemd-socket.patch from Fedora
 PATCHES=(
 	"${FILESDIR}/${PN}-2.2.0-dont-compress-manpages.patch"
-	"${FILESDIR}/${PN}-2.2.4-fix-install-perms.patch"
+	"${FILESDIR}/${PN}-2.2.6-fix-install-perms.patch"
 	"${FILESDIR}/${PN}-1.4.4-nostrip.patch"
 	"${FILESDIR}/${PN}-2.0.2-rename-systemd-service-files.patch"
 	"${FILESDIR}/${PN}-2.0.1-xinetd-installation-fix.patch"
@@ -318,7 +318,7 @@ pkg_preinst() {
 pkg_postinst() {
 	# Update desktop file database and gtk icon cache (bug 370059)
 	gnome2_icon_cache_update
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 
 	local v
 
@@ -345,5 +345,5 @@ pkg_postinst() {
 pkg_postrm() {
 	# Update desktop file database and gtk icon cache (bug 370059)
 	gnome2_icon_cache_update
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }
