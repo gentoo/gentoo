@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201711-04">
+  <title>MariaDB, MySQL: Root privilege escalation</title>
+  <synopsis>A vulnerability was discovered in MariaDB and MySQL which may allow
+    local users to gain root privileges.
+  </synopsis>
+  <product type="ebuild">mariadb,mysql</product>
+  <announced>2017-11-10</announced>
+  <revised>2017-11-10: 1</revised>
+  <bug>635704</bug>
+  <bug>635706</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/mariadb" auto="yes" arch="*">
+      <unaffected range="ge">10.0.30-r1</unaffected>
+      <vulnerable range="lt">10.0.30-r1</vulnerable>
+    </package>
+    <package name="dev-db/mysql" auto="yes" arch="*">
+      <unaffected range="ge">5.6.36-r1</unaffected>
+      <vulnerable range="lt">5.6.36-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>MySQL is a popular multi-threaded, multi-user SQL server. MariaDB is an
+      enhanced, drop-in replacement for MySQL.
+    </p>
+  </background>
+  <description>
+    <p>The Gentoo installation scripts before 2017-09-29 have chown calls for
+      user-writable directory trees, which allows local users to gain
+      privileges by leveraging access to the mysql account for creation of a
+      link.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could escalate privileges to root.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All MariaDB users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/mariadb-10.0.30-r1"
+    </code>
+    
+    <p>All MySQL users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/mysql-5.6.36-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-15945">
+      CVE-2017-15945
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-10-28T18:23:53Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-11-10T22:46:58Z">b-man</metadata>
+</glsa>
