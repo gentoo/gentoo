@@ -1,0 +1,21 @@
+--- a/setup.py
++++ b/setup.py
+@@ -1332,17 +1332,7 @@ class PyBuildExt(build_ext):
+             # Jeremy Hylton's rlimit interface
+             exts.append( Extension('resource', ['resource.c']) )
+ 
+-            # Sun yellow pages. Some systems have the functions in libc.
+-            if (host_platform not in ['cygwin', 'qnx6'] and
+-                find_file('rpcsvc/yp_prot.h', inc_dirs, []) is not None):
+-                if (self.compiler.find_library_file(lib_dirs, 'nsl')):
+-                    libs = ['nsl']
+-                else:
+-                    libs = []
+-                exts.append( Extension('nis', ['nismodule.c'],
+-                                       libraries = libs) )
+-            else:
+-                missing.append('nis')
++            missing.append('nis')
+         else:
+             missing.extend(['nis', 'resource', 'termios'])
+ 
