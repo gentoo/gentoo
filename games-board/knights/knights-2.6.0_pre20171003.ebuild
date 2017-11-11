@@ -9,7 +9,7 @@ KDE_SELINUX_MODULE="games"
 inherit kde5 vcs-snapshot
 
 DESCRIPTION="Simple chess board based on KDE Frameworks"
-HOMEPAGE="http://kde-apps.org/content/show.php/Knights?content=122046"
+HOMEPAGE="https://www.linux-apps.com/content/show.php/Knights?content=122046"
 SRC_URI="https://github.com/KDE/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
