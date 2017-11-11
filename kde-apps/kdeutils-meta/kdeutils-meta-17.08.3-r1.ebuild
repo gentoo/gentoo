@@ -26,6 +26,7 @@ RDEPEND="
 	cups? ( $(add_kdeapps_dep print-manager) )
 	floppy? ( $(add_kdeapps_dep kfloppy) )
 	qt4? (
+		$(add_kdeapps_dep kimagemapeditor)
 		$(add_kdeapps_dep sweeper)
 		nls? ( $(add_kdeapps_dep kde4-l10n '' ${L10N_MINIMAL}) )
 	)
