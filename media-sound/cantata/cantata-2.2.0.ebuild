@@ -37,8 +37,8 @@ RDEPEND="
 	sys-libs/zlib
 	virtual/libudev:=
 	cdda? ( media-sound/cdparanoia )
-	cdio? ( dev-libs/libcdio-paranoia )
 	cddb? ( media-libs/libcddb )
+	cdio? ( dev-libs/libcdio-paranoia )
 	mtp? ( media-libs/libmtp )
 	musicbrainz? ( media-libs/musicbrainz:5= )
 	replaygain? (
@@ -81,8 +81,8 @@ src_configure() {
 	local mycmakeargs=(
 		-DCANTATA_HELPERS_LIB_DIR="$(get_libdir)"
 		-DENABLE_CDPARANOIA=$(usex cdda)
-		-DENABLE_CDIOPARANOIA=$(usex cdio)
 		-DENABLE_CDDB=$(usex cddb)
+		-DENABLE_CDIOPARANOIA=$(usex cdio)
 		-DENABLE_HTTP_SERVER=$(usex http-server)
 		-DENABLE_MTP=$(usex mtp)
 		-DENABLE_MUSICBRAINZ=$(usex musicbrainz)
@@ -108,6 +108,9 @@ pkg_preinst() {
 pkg_postinst() {
 	gnome2_icon_cache_update
 	xdg_pkg_postinst
+
+	has_version media-sound/mpd || \
+		elog "An instance of media-sound/mpd, local or remote, is required to set up Cantata."
 }
 
 pkg_postrm() {
