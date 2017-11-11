@@ -14,7 +14,7 @@ SRC_URI="https://github.com/draios/sysdig/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+modules"
+IUSE="libressl +modules"
 
 RDEPEND="
 	app-misc/jq:0=
@@ -23,7 +23,8 @@ RDEPEND="
 	dev-libs/libb64:0=
 	sys-libs/ncurses:0=
 	sys-libs/zlib:0=
-	dev-libs/openssl:0=
+	libressl? ( dev-libs/libressl:0= )
+	!libressl? ( dev-libs/openssl:0= )
 	net-misc/curl:0="
 DEPEND="${RDEPEND}
 	app-arch/xz-utils
