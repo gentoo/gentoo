@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201711-10">
+  <title>Cacti: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Cacti, the worst of
+    which could lead to the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">cacti</product>
+  <announced>2017-11-11</announced>
+  <revised>2017-11-11: 1</revised>
+  <bug>607732</bug>
+  <bug>626828</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/cacti" auto="yes" arch="*">
+      <unaffected range="ge" slot="1.1.20">1.1.20</unaffected>
+      <vulnerable range="lt" slot="1.1.20">1.1.20</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Cacti is a complete frontend to rrdtool.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Cacti. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers could execute arbitrary code or bypass intended access
+      restrictions.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Cacti users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=net-analyzer/cacti-1.1.20:1.1.20"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4000">
+      CVE-2014-4000
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2313">
+      CVE-2016-2313
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12065">
+      CVE-2017-12065
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-11-05T17:08:33Z">jmbailey</metadata>
+  <metadata tag="submitter" timestamp="2017-11-11T19:58:06Z">jmbailey</metadata>
+</glsa>
