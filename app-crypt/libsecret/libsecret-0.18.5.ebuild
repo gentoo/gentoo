@@ -27,6 +27,7 @@ RDEPEND="
 PDEPEND=">=gnome-base/gnome-keyring-3
 "
 # PDEPEND to avoid circular dep (bug #547456)
+# gnome-keyring needed at runtime as explained at https://bugs.gentoo.org/475182#c2
 # Add ksecrets to PDEPEND when it's added to portage
 DEPEND="${RDEPEND}
 	dev-libs/libxslt
