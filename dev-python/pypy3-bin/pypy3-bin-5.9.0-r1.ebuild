@@ -34,18 +34,19 @@ LICENSE="MIT"
 # pypy -c 'import sysconfig; print sysconfig.get_config_var("SOABI")'
 SLOT="0/59"
 KEYWORDS="~amd64 ~x86"
-IUSE="gdbm +jit sqlite cpu_flags_x86_sse2 test tk"
+IUSE="gdbm +jit libressl sqlite cpu_flags_x86_sse2 test tk"
 
 RDEPEND="
 	app-arch/bzip2:0/1
 	dev-libs/expat:0/0
 	dev-libs/libffi:0/0
-	dev-libs/openssl:0/0[-bindist]
 	sys-devel/gcc:*
 	sys-libs/glibc
 	sys-libs/ncurses:0/6
 	sys-libs/zlib:0/1
 	gdbm? ( sys-libs/gdbm:0= )
+	!libressl? ( dev-libs/openssl:0=[-bindist] )
+	libressl? ( dev-libs/libressl:0= )
 	sqlite? ( dev-db/sqlite:3= )
 	tk? (
 		dev-lang/tk:0=
