@@ -35,8 +35,16 @@ RDEPEND=">=sys-libs/zlib-1.1.3:0=
 	)
 	!dev-python/pypy3-bin:0"
 DEPEND="${RDEPEND}
-	low-memory? ( virtual/pypy:0 )
-	!low-memory? ( ${PYTHON_DEPS} )"
+	low-memory? ( virtual/pypy )
+	!low-memory? (
+		|| (
+			virtual/pypy
+			(
+				dev-lang/python:2.7
+				dev-python/pycparser[python_targets_python2_7(-),python_single_target_python2_7(+)]
+			)
+		)
+	)"
 #	doc? ( dev-python/sphinx )
 
 S="${WORKDIR}/${MY_P}-src"
