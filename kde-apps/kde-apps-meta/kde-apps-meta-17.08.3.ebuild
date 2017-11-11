@@ -7,7 +7,7 @@ inherit kde5-meta-pkg
 
 DESCRIPTION="Meta package for the KDE Applications collection"
 KEYWORDS="~amd64 ~x86"
-IUSE="accessibility pim +qt4 sdk"
+IUSE="accessibility pim sdk"
 
 RDEPEND="
 	$(add_kdeapps_dep kate)
@@ -21,8 +21,5 @@ RDEPEND="
 	$(add_kdeapps_dep kdeutils-meta)
 	accessibility? ( $(add_kdeapps_dep kdeaccessibility-meta) )
 	pim? ( $(add_kdeapps_dep kdepim-meta) )
-	sdk? (
-		$(add_kdeapps_dep kdesdk-meta)
-		qt4? ( $(add_kdeapps_dep kdewebdev-meta) )
-	)
+	sdk? ( $(add_kdeapps_dep kdesdk-meta) )
 "
