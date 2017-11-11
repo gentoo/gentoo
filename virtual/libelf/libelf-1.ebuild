@@ -13,4 +13,5 @@ RDEPEND="
 	|| (
 		>=dev-libs/elfutils-0.155-r1:0/0[${MULTILIB_USEDEP}]
 		>=sys-freebsd/freebsd-lib-9.2_rc1[${MULTILIB_USEDEP}]
+		>=dev-libs/libelf-0.8.13-r2:0/0[${MULTILIB_USEDEP}]
 	)"
