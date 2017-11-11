@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201711-09">
+  <title>LXC: Remote security bypass</title>
+  <synopsis>A vulnerability in LXC may lead to an unauthorized security bypass.</synopsis>
+  <product type="ebuild">lxc</product>
+  <announced>2017-11-11</announced>
+  <revised>2017-11-11: 1</revised>
+  <bug>636386</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-emulation/lxc" auto="yes" arch="*">
+      <unaffected range="ge">2.0.7</unaffected>
+      <vulnerable range="lt">2.0.7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>LinuX Containers userspace utilities</p>
+  </background>
+  <description>
+    <p>Previous versions of lxc-attach ran a shell or the specified command
+      without allocating a pseudo terminal making it vulnerable to input faking
+      via a TIOCSTI ioctl call.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers can escape the container and perform unauthorized
+      modifications.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no know workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All LXC users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/lxc-2.0.7"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10124">
+      CVE-2016-10124
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-11-08T15:29:35Z">jmbailey</metadata>
+  <metadata tag="submitter" timestamp="2017-11-11T15:11:34Z">jmbailey</metadata>
+</glsa>
