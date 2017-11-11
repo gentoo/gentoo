@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201711-07">
+  <title>ImageMagick: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in ImageMagick, the worst
+    of which may allow remote attackers to cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">imagemagick</product>
+  <announced>2017-11-11</announced>
+  <revised>2017-11-11: 1</revised>
+  <bug>626454</bug>
+  <bug>626906</bug>
+  <bug>627036</bug>
+  <bug>628192</bug>
+  <bug>628490</bug>
+  <bug>628646</bug>
+  <bug>628650</bug>
+  <bug>628700</bug>
+  <bug>628702</bug>
+  <bug>629354</bug>
+  <bug>629482</bug>
+  <bug>629576</bug>
+  <bug>629932</bug>
+  <bug>630256</bug>
+  <bug>630458</bug>
+  <bug>630674</bug>
+  <bug>635200</bug>
+  <bug>635664</bug>
+  <bug>635666</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/imagemagick" auto="yes" arch="*">
+      <unaffected range="ge">6.9.9.20</unaffected>
+      <vulnerable range="lt">6.9.9.20</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A collection of tools and libraries for many image formats.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in ImageMagick. Please
+      review the referenced CVE identifiers for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers, by enticing a user to process a specially crafted
+      file, could obtain sensitive information, cause a Denial of Service
+      condition, or have other unspecified impacts.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All ImageMagick users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-gfx/imagemagick-6.9.9.20"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-11640">
+      CVE-2017-11640
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-11724">
+      CVE-2017-11724
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12140">
+      CVE-2017-12140
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12418">
+      CVE-2017-12418
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12427">
+      CVE-2017-12427
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12691">
+      CVE-2017-12691
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12692">
+      CVE-2017-12692
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12693">
+      CVE-2017-12693
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12876">
+      CVE-2017-12876
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12877">
+      CVE-2017-12877
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12983">
+      CVE-2017-12983
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13058">
+      CVE-2017-13058
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13059">
+      CVE-2017-13059
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13060">
+      CVE-2017-13060
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13061">
+      CVE-2017-13061
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13062">
+      CVE-2017-13062
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13131">
+      CVE-2017-13131
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13132">
+      CVE-2017-13132
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13133">
+      CVE-2017-13133
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13134">
+      CVE-2017-13134
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13139">
+      CVE-2017-13139
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13140">
+      CVE-2017-13140
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13141">
+      CVE-2017-13141
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13142">
+      CVE-2017-13142
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13143">
+      CVE-2017-13143
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13144">
+      CVE-2017-13144
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13145">
+      CVE-2017-13145
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13146">
+      CVE-2017-13146
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13758">
+      CVE-2017-13758
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13768">
+      CVE-2017-13768
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13769">
+      CVE-2017-13769
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-14060">
+      CVE-2017-14060
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-14137">
+      CVE-2017-14137
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-14138">
+      CVE-2017-14138
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-14139">
+      CVE-2017-14139
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-14172">
+      CVE-2017-14172
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-14173">
+      CVE-2017-14173
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-14174">
+      CVE-2017-14174
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-14175">
+      CVE-2017-14175
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-14224">
+      CVE-2017-14224
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-14248">
+      CVE-2017-14248
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-14249">
+      CVE-2017-14249
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-15281">
+      CVE-2017-15281
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-10-28T18:03:58Z">jmbailey</metadata>
+  <metadata tag="submitter" timestamp="2017-11-11T14:15:36Z">jmbailey</metadata>
+</glsa>
