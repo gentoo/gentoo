@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201711-06">
+  <title>GNU Wget: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Wget, the worst of
+    which could allow remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">wget</product>
+  <announced>2017-11-11</announced>
+  <revised>2017-11-11: 1</revised>
+  <bug>635496</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/wget" auto="yes" arch="*">
+      <unaffected range="ge">1.19.1-r2</unaffected>
+      <vulnerable range="lt">1.19.1-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>GNU Wget is a free software package for retrieving files using HTTP,
+      HTTPS and FTP, the most widely-used Internet protocols.
+    </p>
+    
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Wget. Please review the
+      referenced CVE identifiers for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by enticing a user to connect to a malicious server,
+      could remotely execute arbitrary code or cause a Denial of Service
+      condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Wget users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/wget-1.19.1-r2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13089">
+      CVE-2017-13089
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13090">
+      CVE-2017-13090
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-11-10T01:10:29Z">jmbailey</metadata>
+  <metadata tag="submitter" timestamp="2017-11-11T13:50:38Z">jmbailey</metadata>
+</glsa>
