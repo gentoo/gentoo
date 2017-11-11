@@ -3,6 +3,7 @@
 
 EAPI=6
 
+VIRTUALX_REQUIRED="test"
 inherit kde5
 
 DESCRIPTION="Libraries and daemons to implement searching in Akonadi"
@@ -36,3 +37,5 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	!kde-apps/kdepim-l10n
 "
+
+RESTRICT+=" test"
