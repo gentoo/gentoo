@@ -36,9 +36,20 @@ RDEPEND=">=sys-libs/zlib-1.1.3:0=
 		dev-tcltk/tix:0=
 	)
 	!dev-python/pypy-bin:0"
+# don't enforce the dep on pypy with USE=low-memory since it's going
+# to cause either collisions or circular dep on itself
 DEPEND="${RDEPEND}
 	doc? ( dev-python/sphinx )
-	${PYTHON_DEPS}"
+	!low-memory? (
+		|| (
+			dev-python/pypy
+			dev-python/pypy-bin
+			(
+				dev-lang/python:2.7
+				dev-python/pycparser[python_targets_python2_7(-),python_single_target_python2_7(+)]
+			)
+		)
+	)"
 
 S="${WORKDIR}/${MY_P}-src"
 
