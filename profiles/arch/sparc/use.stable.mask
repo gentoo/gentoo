@@ -8,8 +8,6 @@
 # Mask python targets until dev-lang/python is stable.
 python_single_target_python3_6
 python_targets_python3_6
-python_single_target_python3_5
-python_targets_python3_5
 
 # Hans de Graaff <graaff@gentoo.org> (13 Aug 2017)
 # Drop stable ruby on sparc
