@@ -2,8 +2,8 @@ DEFINED_PHASES=install
 DESCRIPTION=Environment setting required for all KDE Frameworks apps to run
 EAPI=6
 HOMEPAGE=https://community.kde.org/Frameworks
-KEYWORDS=amd64 ~arm ~arm64 x86
+KEYWORDS=amd64 ~arm ~arm64 ~ppc ~ppc64 x86
 LICENSE=GPL-2
 RDEPEND=>=x11-misc/xdg-utils-1.1.1-r1
 SLOT=5
-_md5_=4d9e48a82de5ce2241df65391a47b824
+_md5_=a47ca77453ea797172b223539ff30c3c

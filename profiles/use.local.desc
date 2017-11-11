@@ -4593,6 +4593,7 @@ media-sound/mpd:signalfd - Use the signalfd function in MPD's event loop
 media-sound/mpd:soundcloud - Build plugin to access soundcloud
 media-sound/mpd:systemd - Enable support for systemd socket activation
 media-sound/mpd:twolame - Support twolame MPEG-2 encoding
+media-sound/mpd:webdav - Enable using music from a WebDAV share
 media-sound/mpd:wildmidi - Enable MIDI support via wildmidi
 media-sound/mpd:zip - Support for ZIP files
 media-sound/mpfc:wav - Enable wav audio codec support
