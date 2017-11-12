@@ -8,8 +8,6 @@
 # Mask python targets until dev-lang/python is stable.
 python_single_target_python3_6
 python_targets_python3_6
-python_single_target_python3_5
-python_targets_python3_5
 
 # Michael Palimaka <kensington@gentoo.org> (03 Jun 2017)
 # Not yet stable.
