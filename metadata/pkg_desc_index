@@ -2406,7 +2406,7 @@ app-text/pelican 3.6.0 3.6.3 3.7.0 3.7.1 9999: A tool to generate a static blog,
 app-text/pep 2.8-r1: General purpose filter and file cleaning program
 app-text/pinfo 0.6.10-r5 0.6.10-r6: Hypertext info and man viewer based on (n)curses
 app-text/po4a 0.45-r3 0.47-r1: Tools for helping translation of documentation
-app-text/podofo 0.9.6_pre20170508-r1 0.9.6_pre20170629: PoDoFo is a C++ library to work with the PDF file format
+app-text/podofo 0.9.6_pre20170508-r1 0.9.6_pre20170629 0.9.6_pre20171027: PoDoFo is a C++ library to work with the PDF file format
 app-text/poppler 0.45.0 0.57.0 0.58.0 0.59.0 0.60.1 0.61.0-r1 9999: PDF rendering library based on the xpdf-3.0 code base
 app-text/poppler-data 0.4.7 0.4.8: Data files for poppler to support uncommon encodings without xpdfrc
 app-text/ps2eps 1.68: Generate Encapsulated Postscript Format files from one-page Postscript documents
@@ -7289,7 +7289,7 @@ dev-python/PyFoam 0.5.4-r2: Tool to analyze and plot the residual files of OpenF
 dev-python/PyGithub 1.28 1.35: Python library to access the Github API v3
 dev-python/PyPDF2 1.24 1.26.0: Python library to work with pdf files
 dev-python/PyQt4 4.12 4.12.1: Python bindings for the Qt framework
-dev-python/PyQt5 5.7.1 5.8.2 5.9: Python bindings for the Qt framework
+dev-python/PyQt5 5.7.1 5.9 5.9.1: Python bindings for the Qt framework
 dev-python/PyRSS2Gen 1.0.0-r1 1.1: RSS feed generator written in Python
 dev-python/PySensors 0.0.3: Python bindings to libsensors (via ctypes)
 dev-python/PySocks 1.5.6 1.6.7: SOCKS client module
