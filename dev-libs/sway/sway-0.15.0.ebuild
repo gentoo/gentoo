@@ -13,10 +13,12 @@ SRC_URI="https://github.com/swaywm/sway/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+swaybg +swaybar +swaymsg swaygrab swaylock +gdk-pixbuf zsh-completion wallpapers systemd"
+IUSE="+swaybg +swaybar +swaymsg swaygrab swaylock +gdk-pixbuf zsh-completion wallpapers systemd +tray"
+
+REQUIRED_USE="tray? ( swaybar )"
 
 RDEPEND=">=dev-libs/wlc-0.0.8[systemd=]
-	dev-libs/json-c
+	>=dev-libs/json-c-0.12.1
 	dev-libs/libpcre
 	dev-libs/libinput
 	x11-libs/libxkbcommon
@@ -25,6 +27,7 @@ RDEPEND=">=dev-libs/wlc-0.0.8[systemd=]
 	x11-libs/pango
 	x11-libs/cairo
 	swaylock? ( virtual/pam )
+	tray? ( sys-apps/dbus )
 	gdk-pixbuf? ( x11-libs/gdk-pixbuf[jpeg] )"
 
 DEPEND="${RDEPEND}
@@ -35,7 +38,7 @@ src_prepare() {
 	cmake-utils_src_prepare
 
 	# remove bad CFLAGS that upstream is trying to add
-	sed -i -e '/FLAGS.*-Werror/d' CMakeLists.txt || die
+	sed -i -e '/add_compile_options/s/-Werror//' CMakeLists.txt || die
 }
 
 src_configure() {
@@ -45,6 +48,7 @@ src_configure() {
 		-Denable-swaygrab=$(usex swaygrab)
 		-Denable-swaylock=$(usex swaylock)
 		-Denable-swaymsg=$(usex swaymsg)
+		-Denable-tray=$(usex tray)
 
 		-Ddefault-wallpaper=$(usex wallpapers)
 
@@ -70,5 +74,11 @@ pkg_postinst() {
 		optfeature "swaygrab screenshot support" media-gfx/imagemagick[png]
 		optfeature "swaygrab video capture support" virtual/ffmpeg
 	fi
+	if use tray
+	then
+		optfeature "experimental xembed tray icons support" \
+			x11-misc/xembedsniproxy
+	fi
+
 	optfeature "X11 applications support" dev-libs/wlc[xwayland] x11-base/xorg-server[wayland]
 }
