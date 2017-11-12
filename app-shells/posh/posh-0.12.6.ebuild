@@ -4,7 +4,7 @@
 EAPI=6
 
 DESCRIPTION="Reimplementation of Bourne shell based on pdksh"
-HOMEPAGE="http://packages.debian.org/posh"
+HOMEPAGE="https://packages.debian.org/posh"
 SRC_URI="mirror://debian/pool/main/p/posh/${P/-/_}.tar.xz"
 
 LICENSE="GPL-2"
