@@ -20,7 +20,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="caps ipv6 kerberos +libmount nfsdcld +nfsidmap +nfsv4 nfsv41 selinux tcpd +uuid"
+IUSE="caps ipv6 kerberos ldap +libmount nfsdcld +nfsidmap +nfsv4 nfsv41 selinux tcpd +uuid"
 REQUIRED_USE="kerberos? ( nfsv4 )"
 RESTRICT="test" #315573
 
@@ -33,6 +33,7 @@ DEPEND_COMMON="
 	>=net-nds/rpcbind-0.2.4
 	sys-libs/e2fsprogs-libs
 	caps? ( sys-libs/libcap )
+	ldap? ( net-nds/openldap )
 	libmount? ( sys-apps/util-linux )
 	nfsdcld? ( >=dev-db/sqlite-3.3 )
 	nfsv4? (
@@ -82,6 +83,7 @@ src_configure() {
 		--with-statedir="${EPREFIX}"/var/lib/nfs
 		--enable-tirpc
 		--with-tirpcinclude="${EPREFIX}"/usr/include/tirpc/
+		$(use_enable ldap)
 		$(use_enable libmount libmount-mount)
 		$(use_with tcpd tcp-wrappers)
 		$(use_enable nfsdcld nfsdcltrack)
