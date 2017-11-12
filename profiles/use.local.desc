@@ -5764,9 +5764,11 @@ net-im/telepathy-connection-managers:xmpp - Enable XMPP protocol handler (this i
 net-im/telepathy-connection-managers:yahoo - Enable Yahoo! messaging support.
 net-im/telepathy-connection-managers:zeroconf - Enable Link-Local Messaging via the zeroconf or Bonjour protocol.
 net-im/tkabber:plugins - Enables installation the extra plugins
-net-im/toxic:av - Enables audio calling and/or audio notifications
-net-im/toxic:notifications - Enables desktop notifications with libnotify
+net-im/toxic:audio - Enables audio calling
+net-im/toxic:av - Enables audio/video functionality (deprecated)
+net-im/toxic:notifications - Enables desktop notifications with libnotify, with sound support.
 net-im/toxic:qrcode - Enables QR code support
+net-im/toxic:video - Enables video calling
 net-im/vacuum:adiummessagestyle - Use UI styles created for Adium
 net-im/vacuum:annotations - Enable adding comments to the contacts in the roster
 net-im/vacuum:aspell - Select app-text/aspell spell checker backend
