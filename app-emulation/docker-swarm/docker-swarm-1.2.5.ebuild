@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -69,7 +69,7 @@ src_unpack() {
 }
 
 src_compile() {
-	GOPATH="${S}" \
+	GOPATH="${S}" GOBIN="${S}/bin" \
 		go install -v -work -x ${EGO_BUILD_FLAGS} "${EGO_PN}"
 	[[ -x ${S}/bin/${PN#docker-} ]] || die
 }
