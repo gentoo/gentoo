@@ -14832,7 +14832,7 @@ net-irc/irssistats 0.75: Generates HTML IRC stats based on irssi logs
 net-irc/jircii 41: jIRCii - IRC client written in Java
 net-irc/konversation 1.7.2 1.7.2-r1 1.7.3: A user friendly IRC Client
 net-irc/kvirc 5.0_pre20170801214745 5.0_pre20171001143427 9999: Advanced IRC Client
-net-irc/limnoria 20150523 20150829 99999999: Python based extensible IRC infobot and channel bot
+net-irc/limnoria 20150523 20150829 20171025 99999999: Python based extensible IRC infobot and channel bot
 net-irc/miau 0.6.6: Persistent IRC bouncer with multi-client support - a fork of muh
 net-irc/muh 2.2a 2.2a-r1: Persistent IRC bouncer
 net-irc/nebula 0.5: An IRC client for X11 and Motif
