@@ -78,7 +78,6 @@ ALL_DEPEND="
 # Dependencies required for qemu tools (qemu-nbd, qemu-img, qemu-io, ...)
 # softmmu targets (qemu-system-*).
 SOFTMMU_TOOLS_DEPEND="
-	>=x11-libs/pixman-0.28.0[static-libs(+)]
 	accessibility? (
 		app-accessibility/brltty[api]
 		app-accessibility/brltty[static-libs(+)]
@@ -89,7 +88,7 @@ SOFTMMU_TOOLS_DEPEND="
 	bzip2? ( app-arch/bzip2[static-libs(+)] )
 	caps? ( sys-libs/libcap-ng[static-libs(+)] )
 	curl? ( >=net-misc/curl-7.15.4[static-libs(+)] )
-	fdt? ( >=sys-apps/dtc-1.4.0[static-libs(+)] )
+	fdt? ( >=sys-apps/dtc-1.4.2[static-libs(+)] )
 	glusterfs? ( >=sys-cluster/glusterfs-3.4.0[static-libs(+)] )
 	gnutls? (
 		dev-libs/nettle:=[static-libs(+)]
@@ -370,6 +369,9 @@ src_prepare() {
 
 	# Run after we've applied all patches.
 	handle_locales
+
+	# Remove bundled copy of libfdt
+	rm -r dtc || die
 }
 
 ##
@@ -489,7 +491,6 @@ qemu_src_configure() {
 			--disable-linux-user
 			--enable-system
 			--disable-tools
-			--with-system-pixman
 		)
 		local static_flag="static"
 		;;
@@ -687,7 +688,6 @@ src_install() {
 	cd "${S}"
 	dodoc Changelog MAINTAINERS docs/specs/pci-ids.txt
 	newdoc pc-bios/README README.pc-bios
-	dodoc docs/qmp-*.txt
 
 	if [[ -n ${softmmu_targets} ]]; then
 		# Remove SeaBIOS since we're using the SeaBIOS packaged one
@@ -775,6 +775,12 @@ pkg_postinst() {
 pkg_info() {
 	echo "Using:"
 	echo "  $(best_version app-emulation/spice-protocol)"
+	echo "  $(best_version sys-firmware/edk2-ovmf)"
+	if has_version 'sys-firmware/edk2-ovmf[binary]'; then
+		echo "    USE=binary"
+	else
+		echo "    USE=''"
+	fi
 	echo "  $(best_version sys-firmware/ipxe)"
 	echo "  $(best_version sys-firmware/seabios)"
 	if has_version 'sys-firmware/seabios[binary]'; then
@@ -782,10 +788,5 @@ pkg_info() {
 	else
 		echo "    USE=''"
 	fi
-	echo "  $(best_version sys-firmware/edk2-ovmf)"
-	if has_version 'sys-firmware/edk2-ovmf[binary]'; then
-		echo "    USE=binary"
-	else
-		echo "    USE=''"
-	fi
+	echo "  $(best_version sys-firmware/sgabios)"
 }
