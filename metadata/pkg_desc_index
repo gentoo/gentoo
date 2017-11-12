@@ -17365,7 +17365,7 @@ sys-auth/libnss-cache 0.10.2: libnss-cache is a library that serves nss lookups
 sys-auth/libnss-mysql 1.5_p20060915-r2 1.5_p20060915-r3: NSS MySQL Library
 sys-auth/libnss-pgsql 1.4.0 1.5.0_beta: Name Service Switch module for use with PostgreSQL
 sys-auth/libyubikey 1.12 1.13: Yubico C low-level library
-sys-auth/munge 0.5.10-r2 0.5.11-r1 0.5.12: An authentication service for creating and validating credentials
+sys-auth/munge 0.5.10-r2 0.5.11-r1 0.5.12 0.5.13: An authentication service for creating and validating credentials
 sys-auth/nss-mdns 0.10-r3 9999: Name Service Switch module for Multicast DNS
 sys-auth/nss-myhostname 0.3: Name Service Switch module for resolving the local hostname
 sys-auth/nss-pam-ldapd 0.8.14-r2 0.9.7 0.9.8 0.9.8-r2: NSS module for name lookups using LDAP
@@ -17747,7 +17747,7 @@ sys-fs/atari-fdisk 0.7.1.5.4: create and edit the partition table of a disk part
 sys-fs/aufs-headers 3.19_p20150323 3.19_p20150420 4.0_p20150420 4.0_p20151116 4.1_p20161010 4.1_p20170130: User space headers for aufs3
 sys-fs/aufs-util 3.19_p20150323 3.19_p20150420 4.0_p20150420 4.0_p20151116 4.1_p20161010 4.1_p20170130: Utilities are always necessary for aufs
 sys-fs/aufs3 3_p20160219 3_p20160223 3_p20160627 3_p20160815 3_p20160822: An entirely re-designed and re-implemented Unionfs
-sys-fs/aufs4 0_pre20160219 0_pre20160223 0_pre20160627 0_pre20160815 0_pre20161010 0_pre20161219 0_pre20170130 0_pre20170220 0_pre20170313 0_pre20170612 0_pre20171002: An entirely re-designed and re-implemented Unionfs
+sys-fs/aufs4 0_pre20160219 0_pre20160223 0_pre20160627 0_pre20160815 0_pre20161010 0_pre20161219 0_pre20170130 0_pre20170220 0_pre20170313 0_pre20170612 0_pre20171002 0_pre20171106: An entirely re-designed and re-implemented Unionfs
 sys-fs/autorun 3.17: auto cdrom mounter for the lazy user
 sys-fs/avfs 1.0.4 1.0.5: AVFS is a virtual filesystem that allows browsing of compressed files
 sys-fs/bashmount 3.2.0: Bash script that uses udisks to mount removable devices without GUI
@@ -18027,7 +18027,7 @@ sys-process/at 3.1.18-r1 3.1.20: Queues jobs for later execution
 sys-process/atop 1.27_p3 2.2 2.3.0 2.3.0-r1: Resource-specific view of processes
 sys-process/audit 2.6.4 2.7.1: Userspace utilities for storing and processing auditing records
 sys-process/bcron 0.10: A new cron system designed with secure operations in mind by Bruce Guenter
-sys-process/criu 2.5 2.10 2.11 2.11.1 2.12 2.12.1 3.4: utility to checkpoint/restore a process tree
+sys-process/criu 2.5 2.10 2.11 2.11.1 2.12 2.12.1 3.4 3.6: utility to checkpoint/restore a process tree
 sys-process/cronbase 0.3.7-r6: base for all cron ebuilds
 sys-process/cronie 1.5.0-r1 1.5.1: Cronie is a standard UNIX daemon cron based on the original vixie-cron
 sys-process/cronutils 1.9: Utilities to assist running batch processing jobs
@@ -18421,7 +18421,7 @@ www-apps/webmcp 1.2.5 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-apps/wiliki 0.6.1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 4.7.5 4.8 4.8.1 4.8.2 4.8.3: Wordpress PHP and MySQL based content management system (CMS)
-www-client/chromium 62.0.3202.89 63.0.3230.0 63.0.3239.30 64.0.3253.3: Open-source version of Google Chrome web browser
+www-client/chromium 62.0.3202.89 63.0.3239.30 63.0.3239.40 64.0.3253.3: Open-source version of Google Chrome web browser
 www-client/ck4up 1.2: Check for Updates on HTTP pages
 www-client/conkeror 1.0_pre20140212 1.0_pre20150519 1.0.3: A Mozilla-based web browser whose design is inspired by GNU Emacs
 www-client/dillo 3.0.5 3.0.5-r1: Lean FLTK based web browser

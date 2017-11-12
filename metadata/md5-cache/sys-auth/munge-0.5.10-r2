@@ -10,4 +10,4 @@ RDEPEND=app-arch/bzip2 sys-libs/zlib gcrypt? ( dev-libs/libgcrypt:0 ) !gcrypt? (
 SLOT=0
 SRC_URI=https://munge.googlecode.com/files/munge-0.5.10.tar.bz2
 _eclasses_=user	e4b567c44272a719fabf53f0f885d3f7
-_md5_=27ef2a1a4235a7d2dde8fe34995d6b5e
+_md5_=b4a8c288926e9f5bded891786c6c547e
