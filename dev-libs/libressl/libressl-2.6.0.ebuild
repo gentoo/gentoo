@@ -21,6 +21,8 @@ RDEPEND="!dev-libs/openssl:0"
 DEPEND="${RDEPEND}"
 PDEPEND="app-misc/ca-certificates"
 
+RESTRICT="test" # bug #625266
+
 src_prepare() {
 	touch crypto/Makefile.in
 
