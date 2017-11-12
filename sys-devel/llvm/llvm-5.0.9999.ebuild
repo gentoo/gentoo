@@ -212,6 +212,11 @@ multilib_src_install() {
 	rm -rf "${ED%/}"/usr/include || die
 	mv "${ED%/}"/usr/lib/llvm/${SLOT}/include "${ED%/}"/usr/include || die
 
+	# install fuzzer libraries for clang (cmake rules were added in 6)
+	# https://bugs.gentoo.org/636840
+	into "/usr/lib/llvm/${SLOT}"
+	dolib.a "$(get_libdir)"/libLLVMFuzzer*.a
+
 	LLVM_LDPATHS+=( "${EPREFIX}/usr/lib/llvm/${SLOT}/$(get_libdir)" )
 }
 
