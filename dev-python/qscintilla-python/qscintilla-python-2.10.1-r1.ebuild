@@ -43,17 +43,15 @@ RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${MY_P}/Python
 
-src_prepare() {
-	default
-
-	# Fix out-of-source build
-	sed -i -e 's|sip/qscimod[45]\.sip|../Python/&|g' "${S}"/configure.py || die
-
+pkg_setup() {
 	MULTIBUILD_VARIANTS=( $(usev qt4) $(usev qt5) )
 }
 
 src_configure() {
 	configuration() {
+		# Fix out-of-source build and installation of .sip files
+		ln -s "${S}"/sip || die
+
 		local my_qt_ver=4
 		if [[ ${MULTIBUILD_ID} == *qt5* ]]; then
 			my_qt_ver=5
