@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201711-12">
+  <title>eGroupWare: Remote code execution</title>
+  <synopsis>Multiple vulnerabilities have been found in eGroupWare, the worst
+    of which allows remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">egroupware</product>
+  <announced>2017-11-12</announced>
+  <revised>2017-11-12: 1</revised>
+  <bug>501908</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/egroupware" auto="yes" arch="*">
+      <unaffected range="ge"></unaffected>
+      <vulnerable range="lt">1.8.004.20120613</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>eGroupWare is a suite of web-based group applications including
+      calendar, address book, messenger and email.
+    </p>
+  </background>
+  <description>
+    <p>It was found that eGroupWare contains multiple code injection
+      vulnerabilities in multiple parameters and routes because of improper
+      input sanitization.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could execute arbitrary code, delete arbitrary files
+      or inject arbitrary PHP objects via multiple routes.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>Gentoo has discontinued support for SquirrelMail and recommends that
+      users unmerge the package:
+    </p>
+    
+    <code>
+      # emerge --unmerge "www-apps/egroupware"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2027">
+      CVE-2014-2027
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-10-19T01:11:22Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-11-12T22:36:33Z">chrisadr</metadata>
+</glsa>
