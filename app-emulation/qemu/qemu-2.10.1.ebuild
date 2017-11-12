@@ -204,7 +204,8 @@ RDEPEND="${CDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.5.0-cflags.patch
 	"${FILESDIR}"/${PN}-2.5.0-sysmacros.patch
-	"${FILESDIR}"/${PN}-2.10.0-CVE-2017-13711.patch   # bug 629350
+	"${FILESDIR}"/${PN}-2.10.1-CVE-2017-15268.patch
+	"${FILESDIR}"/${PN}-2.10.1-CVE-2017-15289.patch
 )
 
 STRIP_MASK="/usr/share/qemu/palcode-clipper"

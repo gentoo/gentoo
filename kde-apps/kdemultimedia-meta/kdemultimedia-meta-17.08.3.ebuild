@@ -29,7 +29,6 @@ RDEPEND="
 	ffmpeg? ( $(add_kdeapps_dep ffmpegthumbs) )
 	qt4? (
 		$(add_kdeapps_dep juk)
-		cdrom? ( $(add_kdeapps_dep kscd) )
 		nls? ( $(add_kdeapps_dep kde4-l10n '' ${L10N_MINIMAL}) )
 	)
 "
