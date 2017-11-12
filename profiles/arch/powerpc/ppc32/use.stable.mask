@@ -2,8 +2,6 @@
 # Mask python targets until dev-lang/python is stable.
 python_single_target_python3_6
 python_targets_python3_6
-python_single_target_python3_5
-python_targets_python3_5
 
 # Andrey Grozin <grozin@gentoo.org> (25 Jun 2014)
 # no stable versions on ppc
