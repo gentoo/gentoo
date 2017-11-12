@@ -22,7 +22,7 @@ else
 	S="${WORKDIR}/${MY_P}"
 fi
 
-inherit autotools eutils pam perl-module user prefix ${INHERIT_GIT}
+inherit autotools eutils pam perl-module user ${INHERIT_GIT}
 
 DESCRIPTION="SLURM: A Highly Scalable Resource Manager"
 HOMEPAGE="https://www.schedmd.com"
