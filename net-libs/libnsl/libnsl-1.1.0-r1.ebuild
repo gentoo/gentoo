@@ -12,8 +12,8 @@ SRC_URI="https://github.com/thkukuk/${PN}/archive/${P}.tar.gz"
 SLOT="0/2"
 LICENSE="LGPL-2.1+"
 
-# Restore keywords and stabilize together with glibc-2.26!
-KEYWORDS=""
+# Stabilize together with glibc-2.26!
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 
 IUSE=""
 
