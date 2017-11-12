@@ -284,7 +284,7 @@ src_install() {
 
 pkg_postinst() {
 	elog "This version is built on experimental development code"
-	elog "If you encounter any errors report them at http://bugs.xmms2.org"
+	elog "If you encounter any errors report them at https://bugs.xmms2.org"
 	elog "and visit #xmms2 at irc://irc.freenode.net"
 	if use phonehome ; then
 		einfo ""
