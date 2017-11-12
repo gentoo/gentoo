@@ -21,7 +21,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
 # TODO: QtNfc
-IUSE="bluetooth dbus debug declarative designer doc examples gles2 gui help location
+IUSE="bluetooth dbus debug declarative designer examples gles2 gui help location
 	multimedia network opengl positioning printsupport sensors serialport sql svg
 	testlib webchannel webengine webkit websockets widgets x11extras xmlpatterns"
 
@@ -42,9 +42,9 @@ REQUIRED_USE="
 	serialport? ( gui )
 	sql? ( widgets )
 	svg? ( gui widgets )
-	testlib? ( gui widgets )
+	testlib? ( widgets )
 	webchannel? ( network )
-	webengine? ( network widgets? ( webchannel ) )
+	webengine? ( network widgets? ( printsupport webchannel ) )
 	webkit? ( gui network printsupport widgets )
 	websockets? ( network )
 	widgets? ( gui )
@@ -56,7 +56,7 @@ QT_PV="5.6.0:5"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	>=dev-python/sip-4.19.1:=[${PYTHON_USEDEP}]
+	>=dev-python/sip-4.19.6_pre:=[${PYTHON_USEDEP}]
 	>=dev-qt/qtcore-${QT_PV}
 	>=dev-qt/qtxml-${QT_PV}
 	bluetooth? ( >=dev-qt/qtbluetooth-${QT_PV} )
@@ -108,6 +108,9 @@ pyqt_use_enable() {
 
 src_configure() {
 	configuration() {
+		# Fix out-of-source build
+		ln -s "${S}"/config-tests || die
+
 		local myconf=(
 			"${PYTHON}"
 			"${S}"/configure.py
@@ -143,7 +146,7 @@ src_configure() {
 			$(pyqt_use_enable svg)
 			$(pyqt_use_enable testlib QtTest)
 			$(pyqt_use_enable webchannel QtWebChannel)
-			$(pyqt_use_enable webengine QtWebEngineCore $(usex widgets QtWebEngineWidgets ''))
+			$(pyqt_use_enable webengine QtWebEngine QtWebEngineCore $(usex widgets QtWebEngineWidgets ''))
 			$(pyqt_use_enable webkit QtWebKit QtWebKitWidgets)
 			$(pyqt_use_enable websockets QtWebSockets)
 			$(pyqt_use_enable widgets)
@@ -187,7 +190,6 @@ src_install() {
 	python_foreach_impl run_in_build_dir installation
 
 	einstalldocs
-	use doc && dodoc -r doc/html
 
 	if use examples; then
 		insinto /usr/share/doc/${PF}
