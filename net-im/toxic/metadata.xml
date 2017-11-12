@@ -13,11 +13,13 @@
 		<remote-id type="github">jfreegman/toxic</remote-id>
 	</upstream>
 	<longdescription lang="en">
-		An ncurses-based Tox client written in C. Supports audio calling, file sharing, and desktop notifications.
+		An ncurses-based Tox client written in C. Supports audio and video calling, file sharing, and desktop notifications.
 	</longdescription>
 	<use>
-		<flag name="notifications">Enables desktop notifications with libnotify</flag>
-		<flag name="av">Enables audio calling and/or audio notifications</flag>
+		<flag name="audio">Enables audio calling</flag>
+		<flag name="av">Enables audio/video functionality (deprecated)</flag>
+		<flag name="notifications">Enables desktop notifications with libnotify, with sound support.</flag>
 		<flag name="qrcode">Enables QR code support</flag>
+		<flag name="video">Enables video calling</flag>
 	</use>
 </pkgmetadata>
