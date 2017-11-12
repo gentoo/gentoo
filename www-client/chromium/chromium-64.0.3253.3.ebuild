@@ -147,6 +147,7 @@ PATCHES=(
 	"${FILESDIR}/chromium-webrtc-r0.patch"
 	"${FILESDIR}/chromium-math-includes-r0.patch"
 	"${FILESDIR}/chromium-${PV}-gpu_lists_version.h.patch"
+	"${FILESDIR}/chromium-gcc5-r5.patch"
 )
 
 pre_build_checks() {
