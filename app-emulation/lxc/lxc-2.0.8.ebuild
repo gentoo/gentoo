@@ -1,9 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
-PYTHON_COMPAT=( python{3_4,3_5} )
+PYTHON_COMPAT=( python3_{4,5,6} )
 DISTUTILS_OPTIONAL=1
 
 inherit autotools bash-completion-r1 distutils-r1 linux-info versionator flag-o-matic systemd
@@ -16,21 +16,23 @@ KEYWORDS="~amd64 ~arm ~arm64"
 
 LICENSE="LGPL-3"
 SLOT="0"
-IUSE="cgmanager doc examples lua python seccomp"
+IUSE="cgmanager doc examples lua python seccomp selinux"
 
-RDEPEND="net-libs/gnutls
+RDEPEND="
+	net-libs/gnutls
 	sys-libs/libcap
 	cgmanager? ( app-admin/cgmanager )
 	lua? ( >=dev-lang/lua-5.1:= )
 	python? ( ${PYTHON_DEPS} )
-	seccomp? ( sys-libs/libseccomp )"
+	seccomp? ( sys-libs/libseccomp )
+	selinux? ( sys-libs/libselinux )"
 
 DEPEND="${RDEPEND}
 	doc? ( app-text/docbook-sgml-utils )
 	>=sys-kernel/linux-headers-3.2"
 
 RDEPEND="${RDEPEND}
-	sys-process/criu
+	sys-process/criu[selinux=]
 	sys-apps/util-linux
 	app-misc/pax-utils
 	virtual/awk"
@@ -136,7 +138,8 @@ src_configure() {
 		$(use_enable examples) \
 		$(use_enable lua) \
 		$(use_enable python) \
-		$(use_enable seccomp)
+		$(use_enable seccomp) \
+		$(use_enable selinux)
 }
 
 python_compile() {
