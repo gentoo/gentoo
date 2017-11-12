@@ -147,6 +147,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-gcc5-r4.patch"
 	"${FILESDIR}/${PN}-clang-r1.patch"
 	"${FILESDIR}/${PN}-webrtc-r0.patch"
+	"${FILESDIR}/${PN}-gcc5-r5.patch"
 )
 
 pre_build_checks() {
