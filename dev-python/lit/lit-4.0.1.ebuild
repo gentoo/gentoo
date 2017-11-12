@@ -25,6 +25,9 @@ DEPEND="
 		dev-python/psutil[${PYTHON_USEDEP}]
 		sys-devel/llvm )"
 
+# Tests are broken in this version, fixed in 5.0+.
+RESTRICT="test"
+
 # TODO: move the manpage generation here (from sys-devel/llvm)
 
 python_test() {
