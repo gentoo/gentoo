@@ -5085,7 +5085,7 @@ dev-libs/starpu 1.1.5 1.1.5-r1: Unified runtime system for heterogeneous multico
 dev-libs/stfl 0.24: A library which implements a curses-based widget set for text terminals
 dev-libs/stlsoft 1.9.111: Robust, Lightweight, Cross-platform, Template Software
 dev-libs/svrcore 4.0.4-r1 4.1.2: Mozilla LDAP C SDK
-dev-libs/sway 0.13.0 0.14.0 9999: i3-compatible Wayland window manager
+dev-libs/sway 0.14.0 0.15.0 9999: i3-compatible Wayland window manager
 dev-libs/syncdir 1.0-r1: Provides an alternate implementation for open, link, rename, and unlink
 dev-libs/tinyxml 2.6.2-r2: Simple and small C++ XML parser
 dev-libs/tinyxml2 2.2.0 3.0.0 4.0.1 5.0.1: A simple, small, efficient, C++ XML parser
@@ -5117,7 +5117,7 @@ dev-libs/volume_key 0.3.9: Library for manipulating and storing storage volume e
 dev-libs/wayland 1.12.0 1.13.0 1.14.0 9999: Wayland protocol libraries
 dev-libs/wayland-protocols 1.7 1.8 1.9 1.10 1.11 9999: Wayland protocol files
 dev-libs/weston 1.9.0 1.11.0 3.0.0 9999: Wayland reference compositor
-dev-libs/wlc 0.0.9 0.0.10 9999: A helper library for Wayland compositors
+dev-libs/wlc 0.0.10 0.0.11 9999: A helper library for Wayland compositors
 dev-libs/wnn7sdk 20011017 20011017-r1: Library and headers for Wnn7 client
 dev-libs/xalan-c 1.11.0_pre1153059: XSLT processor for transforming XML into HTML, text, or other XML types
 dev-libs/xapian 1.2.22 1.2.24 1.2.25 1.4.4 1.4.5: Xapian Probabilistic Information Retrieval library
