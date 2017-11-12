@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools user
+inherit autotools user prefix
 
 DESCRIPTION="An authentication service for creating and validating credentials"
 HOMEPAGE="https://github.com/dun/munge"
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/dun/munge/releases/download/munge-${PV}/munge-${PV}.
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
-IUSE="gcrypt"
+IUSE="debug gcrypt static-libs"
 
 DEPEND="
 	app-arch/bzip2
@@ -37,7 +37,9 @@ src_prepare() {
 src_configure() {
 	econf \
 		--localstatedir="${EPREFIX}"/var \
-		--with-crypto-lib=$(usex gcrypt libgcrypt openssl)
+		--with-crypto-lib=$(usex gcrypt libgcrypt openssl) \
+		$(use_enable debug) \
+		$(use_enable static-libs static)
 }
 
 src_install() {
@@ -60,4 +62,8 @@ src_install() {
 
 	newconfd "$(prefixify_ro "${FILESDIR}"/${PN}d.confd)" ${PN}d
 	newinitd "$(prefixify_ro "${FILESDIR}"/${PN}d.initd)" ${PN}d
+
+	if ! use static-libs; then
+		find "${D}" -name '*.la' -delete || die
+	fi
 }
