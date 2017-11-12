@@ -5,6 +5,7 @@ EAPI=6
 
 KDE_AUTODEPS="false"
 KDE_DEBUG="false"
+KDE_QTHELP="false"
 KDE_TEST="true"
 KMNAME="oxygen-icons5"
 inherit kde5
