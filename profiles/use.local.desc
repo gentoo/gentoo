@@ -3042,6 +3042,7 @@ games-action/hotline-miami:bundled-libs - Use bundled libraries.
 games-action/hotline-miami:launcher - Install qt launcher
 games-action/minetest:leveldb - Enable LevelDB backend
 games-action/minetest:luajit - Use dev-lang/luajit instead of dev-lang/lua
+games-action/minetest:postgres - Optionally use PostgreSQL as map backend
 games-action/minetest:redis - Enable redis backend via dev-libs/hiredis
 games-action/minetest:server - Build minetest server
 games-action/minetest:spatial - Enable SpatialIndex AreaStore backend
