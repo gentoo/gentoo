@@ -157,7 +157,7 @@ src_compile() {
 	einfo "Generating caches and CFFI modules ..."
 
 	# Generate Grammar and PatternGrammar pickles.
-	"${PYTHON}" -c "import lib2to3.pygram, lib2to3.patcomp; lib2to3.patcomp.PatternCompiler()" \
+	./pypy3-c -c "import lib2to3.pygram, lib2to3.patcomp; lib2to3.patcomp.PatternCompiler()" \
 		|| die "Generation of Grammar and PatternGrammar pickles failed"
 
 	# Generate cffi modules
