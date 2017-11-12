@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201711-11">
+  <title>VDE: Privilege escalation</title>
+  <synopsis>A vulnerability was discovered in VDE which may allow local users
+    to gain root privileges.
+  </synopsis>
+  <product type="ebuild">vde</product>
+  <announced>2017-11-12</announced>
+  <revised>2017-11-12: 1</revised>
+  <bug>603382</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-misc/vde" auto="yes" arch="*">
+      <unaffected range="ge">2.3.2-r4</unaffected>
+      <vulnerable range="lt">2.3.2-r4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>VDE is an ethernet compliant virtual network that can be spawned over a
+      set of physical computer over the Internet.
+    </p>
+  </background>
+  <description>
+    <p>It was discovered that Gentoo’s default VDE installation suffered from
+      a privilege escalation vulnerability in the init script. This script
+      calls an unsafe ‘chown’ command which gives members from “qemu”
+      group root privileges.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could escalate privileges to root.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All VDE users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/vde-2.3.2-r4"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-16638">
+      CVE-2017-16638
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-11-07T14:12:38Z">chrisadr</metadata>
+  <metadata tag="submitter" timestamp="2017-11-12T22:28:58Z">chrisadr</metadata>
+</glsa>
