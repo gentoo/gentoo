@@ -326,6 +326,10 @@ src_install() {
 	einfo "Installing environment config file"
 	doenvd "${MYFILESDIR}/${ENVDFILE}"
 
+	einfo "Installing systemd service and socket files for Amanda"
+	systemd_dounit "${FILESDIR}"/amanda.socket
+	systemd_newunit "${FILESDIR}"/amanda.service 'amanda@.service'
+
 	# Lock down next section (up until docs).
 	insopts -m0640
 	# Installing Amanda Xinetd Services Definition
@@ -342,10 +346,6 @@ src_install() {
 		insinto /etc/cron.daily
 		newins "${MYFILESDIR}/amanda-cron" amanda
 	fi
-
-	einfo "Installing systemd service and socket files for Amanda"
-	systemd_dounit "${FILESDIR}"/amanda.socket
-	systemd_newunit "${FILESDIR}"/amanda.service 'amanda@.service'
 
 	insinto /etc/amanda
 	einfo "Installing .amandahosts File for ${AMANDA_USER_NAME} user"
@@ -477,7 +477,22 @@ amanda_permissions_fix() {
 	for i in /usr/sbin/amcheck "${le}"/calcsize "${le}"/killpgrp \
 		"${le}"/rundump "${le}"/runtar "${le}"/dumper \
 		"${le}"/planner ; do
+	    [ -e "${root}"/${i} ] || continue
 		chown root:${AMANDA_GROUP_NAME} "${root}"/${i} || die
 		chmod u=srwx,g=rx,o= "${root}"/${i} || die
 	done
+
+	# amanda-security.conf is a config file with similar requirements:
+	# writable only by root
+	# world-readable
+	# 3.3.9: introduced in /etc/amanda-security.conf
+	# 3.4.2: moved to /etc/amanda/amanda-security.conf
+	f=/etc/amanda/amanda-security.conf
+	chown root:root "${root}""${f}" || die
+	chmod u=rw,go=r "${root}""${f}" || die
+}
+
+# We do not want the perl-module tests.
+src_test() {
+	default_src_test
 }
