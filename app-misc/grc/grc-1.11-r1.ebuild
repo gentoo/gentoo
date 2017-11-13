@@ -35,13 +35,27 @@ src_install() {
 	insinto /usr/share/grc
 	doins \
 		contrib/mrsmith/conf.* \
-		colourfiles/conf.*
-	insinto /etc/profile.d
-	newins grc.bashrc grc.sh
+		colourfiles/conf.* \
+		grc.bashrc \
+		grc.fish \
+		grc.zsh
 
 	insinto /etc
 	doins grc.conf
 
 	dodoc README.markdown INSTALL TODO debian/changelog CREDITS Regexp.txt
 	doman *.1
+}
+
+pkg_postinst() {
+	elog
+	elog "Shell specific configurations can be found in ${ROOT}usr/share/grc"
+	elog "Be sure to symlink one to use grc globally:"
+	elog
+	elog "    ln -s ${ROOT}usr/share/grc.SHELL ${ROOT}etc/profile.d/grc.sh"
+	elog
+	elog "Replace 'SHELL' in the above command with one of: bashrc, fish, zsh."
+	elog "Afterwards, use '. ${ROOT}etc/profile' to activate grc in existing"
+	elog "shell sessions."
+	elog
 }
