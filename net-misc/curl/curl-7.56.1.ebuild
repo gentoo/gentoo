@@ -113,6 +113,12 @@ src_prepare() {
 	eapply_user
 	eprefixify curl-config.in
 	eautoreconf
+
+	if [[ ${CHOST} == *-darwin17 ]] ; then
+		# https://bugs.gentoo.org/show_bug.cgi?id=637252
+		sed -i -e '/-Werror=partial-availability/s/Werror/Wno-error/g' \
+			configure || die
+	fi
 }
 
 multilib_src_configure() {
