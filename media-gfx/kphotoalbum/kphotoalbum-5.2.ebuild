@@ -12,7 +12,7 @@ SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2+ FDL-1.2"
 KEYWORDS="amd64 x86"
-IUSE="face +kipi +map +raw"
+IUSE="+kipi +map +raw"
 
 COMMON_DEPEND="
 	$(add_frameworks_dep karchive)
@@ -37,7 +37,6 @@ COMMON_DEPEND="
 	media-gfx/exiv2:=
 	media-libs/phonon[qt5(+)]
 	virtual/jpeg:0
-	face? ( $(add_kdeapps_dep libkface) )
 	kipi? ( $(add_kdeapps_dep libkipi) )
 	map? ( $(add_kdeapps_dep libkgeomap) )
 	raw? ( $(add_kdeapps_dep libkdcraw) )
@@ -56,7 +55,7 @@ DOCS=( ChangeLog README )
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_PLAYGROUND=ON
-		$(cmake-utils_use_find_package face KF5KFace)
+		-DCMAKE_DISABLE_FIND_PACKAGE_KF5KFace=ON
 		$(cmake-utils_use_find_package kipi KF5Kipi)
 		$(cmake-utils_use_find_package map KF5KGeoMap)
 		$(cmake-utils_use_find_package raw KF5KDcraw)
