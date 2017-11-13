@@ -7,13 +7,12 @@
   </synopsis>
   <product type="ebuild">egroupware</product>
   <announced>2017-11-12</announced>
-  <revised>2017-11-12: 1</revised>
+  <revised>2017-11-13: 2</revised>
   <bug>501908</bug>
   <access>remote</access>
   <affected>
     <package name="www-apps/egroupware" auto="yes" arch="*">
-      <unaffected range="ge"></unaffected>
-      <vulnerable range="lt">1.8.004.20120613</vulnerable>
+      <vulnerable range="le">1.8.004.20120613</vulnerable>
     </package>
   </affected>
   <background>
@@ -36,8 +35,8 @@
     <p>There is no known workaround at this time.</p>
   </workaround>
   <resolution>
-    <p>Gentoo has discontinued support for SquirrelMail and recommends that
-      users unmerge the package:
+    <p>Gentoo has discontinued support for eGroupWare and recommends that users
+      unmerge the package:
     </p>
     
     <code>
@@ -50,5 +49,5 @@
     </uri>
   </references>
   <metadata tag="requester" timestamp="2017-10-19T01:11:22Z">b-man</metadata>
-  <metadata tag="submitter" timestamp="2017-11-12T22:36:33Z">chrisadr</metadata>
+  <metadata tag="submitter" timestamp="2017-11-13T02:24:20Z">chrisadr</metadata>
 </glsa>
