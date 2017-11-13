@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Anthony G. Basile <blueness@gentoo.org> (13 Nov 2017)
+# Masked for removal in 30 days. Deprecated in favor of net-misc/nyx.
+net-misc/arm
+
 # Mike Gilbert <floppym@gentoo.org> (13 Nov 2017)
 # python-updater is obsolete. Utilize PYTHON_TARGETS and
 # emerge --changed-use to rebuild packages instead.
