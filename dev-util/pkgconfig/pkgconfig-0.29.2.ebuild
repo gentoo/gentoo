@@ -83,7 +83,7 @@ multilib_src_configure() {
 			fi
 		fi
 	else
-		if ! has_version dev-util/pkgconfig; then
+		if ! has_version --host-root dev-util/pkgconfig; then
 			export GLIB_CFLAGS="-I${EPREFIX}/usr/include/glib-2.0 -I${EPREFIX}/usr/$(get_libdir)/glib-2.0/include"
 			export GLIB_LIBS="-lglib-2.0"
 		fi
