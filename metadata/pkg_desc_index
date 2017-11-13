@@ -18498,6 +18498,7 @@ www-servers/boa 0.94.14_rc21-r1 0.94.14_rc21-r2: A very small and very fast http
 www-servers/bozohttpd 20170201: bozohttpd is a small and secure http server
 www-servers/caddy 0.10.9 0.10.10: Fast, cross-platform HTTP/2 web server with automatic HTTPS
 www-servers/cherokee 1.2.104: An extremely fast and tiny web server
+www-servers/civetweb 1.10: Embedded C/C++ web server
 www-servers/fnord 1.10-r2 1.11: Yet another small httpd
 www-servers/gatling 0.12-r2 0.13 0.13-r1 0.15: High performance web server
 www-servers/gunicorn 19.1.1 19.3.0 19.4.5 19.6.0: A WSGI HTTP Server for UNIX
