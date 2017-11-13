@@ -15383,6 +15383,7 @@ net-misc/ntp 4.2.8_p10-r1: Network Time Protocol suite/programs
 net-misc/ntpclient 2010.365 2015.365 2017.217 2017.246: A NTP (RFC-1305) client for unix-alike computers
 net-misc/nx 3.5.0.30 3.5.0.32 3.5.0.33: NX compression technology core libraries
 net-misc/nxplayer 5.0.63.3 5.1.7.6 5.1.24.1: Client for NoMachine remote servers
+net-misc/nyx 2.0.4: Utility to monitor real time Tor status information
 net-misc/ocsync 0.90.4: A file synchronizer especially designed for you, the normal user
 net-misc/ofono 1.16 1.17 1.18 1.19 1.20: Open Source mobile telephony (GSM/UMTS) daemon
 net-misc/oidentd 2.0.8-r5 2.0.8-r6: Another (RFC1413 compliant) ident daemon
