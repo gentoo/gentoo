@@ -1,0 +1,10 @@
+--- a/tools/gn/bootstrap/bootstrap.py
++++ b/tools/gn/bootstrap/bootstrap.py
+@@ -481,6 +481,7 @@
+       'base/metrics/sample_vector.cc',
+       'base/metrics/sparse_histogram.cc',
+       'base/metrics/statistics_recorder.cc',
++      'base/observer_list_threadsafe.cc',
+       'base/path_service.cc',
+       'base/pending_task.cc',
+       'base/pickle.cc',
