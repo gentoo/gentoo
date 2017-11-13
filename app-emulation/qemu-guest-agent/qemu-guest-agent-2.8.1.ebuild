@@ -10,13 +10,8 @@ inherit eutils systemd udev python-any-r1
 MY_PN="qemu"
 MY_P="${MY_PN}-${PV}"
 
-if [[ ${PV} == *9999* ]]; then
-	EGIT_REPO_URI="git://git.qemu.org/qemu.git"
-	inherit git-2
-else
-	SRC_URI="http://wiki.qemu.org/download/${MY_P}.tar.bz2"
-	KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
-fi
+SRC_URI="http://wiki.qemu.org/download/${MY_P}.tar.bz2"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
 
 DESCRIPTION="QEMU Guest Agent (qemu-ga) for use when running inside a VM"
 HOMEPAGE="http://wiki.qemu.org/Features/QAPI/GuestAgent"
