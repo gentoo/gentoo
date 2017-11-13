@@ -22,6 +22,7 @@ RDEPEND="dev-qt/qtcore:5
 	dev-qt/qtwidgets
 	dev-qt/qtconcurrent
 	dev-qt/qtserialport
+	dev-qt/qtprintsupport
 	virtual/libusb:1
 	media-libs/portaudio
 	sci-libs/fftw:3.0[threads]
