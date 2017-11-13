@@ -491,3 +491,8 @@ amanda_permissions_fix() {
 	chown root:root "${root}""${f}" || die
 	chmod u=rw,go=r "${root}""${f}" || die
 }
+
+# We do not want the perl-module tests.
+src_test() {
+	default_src_test
+}
