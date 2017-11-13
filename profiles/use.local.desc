@@ -4046,6 +4046,7 @@ media-gfx/pstoedit:flash - Enable media-libs/ming SWF support
 media-gfx/pstoedit:pptx - Enable support for generating PowerPoint pptx files
 media-gfx/qiv:magic - Use libmagic to determine mimetypes
 media-gfx/qiviewer:webp - Build support for WEBP image format
+media-gfx/sigal:s3 - Enables support for the Amazon S3 service.
 media-gfx/simple-scan:colord - Support color management using x11-misc/colord
 media-gfx/slic3r:gui - Enable GUI
 media-gfx/splashutils:fbcondecor - Support for the fbcondecor kernel patch.
