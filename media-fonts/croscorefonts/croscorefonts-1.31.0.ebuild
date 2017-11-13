@@ -1,24 +1,21 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-
+EAPI=6
 inherit font
 
 DESCRIPTION="Open licensed fonts metrically compatible with MS corefonts"
 HOMEPAGE="https://www.google.com/webfonts/specimen/Arimo
 	https://www.google.com/webfonts/specimen/Cousine
 	https://www.google.com/webfonts/specimen/Tinos"
-SRC_URI="http://gsdview.appspot.com/chromeos-localmirror/distfiles/${P}.tar.gz"
+SRC_URI="http://commondatastorage.googleapis.com/chromeos-localmirror/distfiles/${P}.tar.bz2"
 
-LICENSE="OFL-1.1"
+LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE=""
 
-DEPEND=""
-RDEPEND=""
-RESTRICT="test binchecks"
+RESTRICT="binchecks strip test"
 
 FONT_SUFFIX="ttf"
 FONT_CONF=(
