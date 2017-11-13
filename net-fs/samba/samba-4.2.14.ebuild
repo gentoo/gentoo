@@ -91,6 +91,7 @@ S="${WORKDIR}/${MY_P}"
 PATCHES=(
 	"${FILESDIR}/${PN}-4.2.3-heimdal_compilefix.patch"
 	"${FILESDIR}/${PN}-4.2.7-pam.patch"
+	"${FILESDIR}/${PN}-glibc-2.26-no_rpc.patch" #637320
 )
 
 CONFDIR="${FILESDIR}/$(get_version_component_range 1-2)"
