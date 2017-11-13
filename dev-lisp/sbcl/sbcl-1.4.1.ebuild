@@ -107,11 +107,19 @@ src_prepare() {
 
 	eapply_user
 
-	# bugs #526194, #620532
-	sed -e "s@CFLAGS +=.*\$@CFLAGS = ${CFLAGS} -Wall -Wsign-compare -Wpointer-arith@" \
-		-e "s@LINKFLAGS += -g\$@LINKFLAGS = ${LDFLAGS}@" \
-		-e "s@LINKFLAGS += -no-pie\$@LINKFLAGS = ${LDFLAGS} -no-pie@" \
-		-e "s@LINKFLAGS += -nopie\$@LINKFLAGS = ${LDFLAGS} -nopie@" \
+	# Make sure the *FLAGS variables are sane.
+	# sbcl needs symbols in resulting binaries, so building with the -s linker flag will fail.
+	strip-unsupported-flags
+	filter-flags -fomit-frame-pointer -Wl,-s
+	filter-ldflags -s
+
+	# original bugs #526194, #620532
+	# this broke no-pie default builds, c.f. bug #632670
+	# Pass CFLAGS down by appending our value, to let users override
+	# the default values.
+	# Keep passing LDFLAGS down via the LINKFLAGS variable.
+	sed -e "s@\(CFLAGS += -g .*\)\$@\1 ${CFLAGS}@" \
+		-e "s@LINKFLAGS += -g\$@LINKFLAGS += ${LDFLAGS}@" \
 		-i src/runtime/GNUmakefile || die
 
 	sed -e "s@SBCL_PREFIX=\"/usr/local\"@SBCL_PREFIX=\"${EPREFIX}/usr\"@" \
@@ -147,8 +155,6 @@ src_configure() {
 
 src_compile() {
 	local bindir="${WORKDIR}"/sbcl-binary
-
-	strip-unsupported-flags ; filter-flags -fomit-frame-pointer
 
 	if use pax_kernel ; then
 		# To disable PaX on hardened systems
