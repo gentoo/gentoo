@@ -9,7 +9,7 @@ inherit perl-module eutils
 
 DESCRIPTION="Format a header and rows into a table"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~mips ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="test"
 
 RDEPEND="
