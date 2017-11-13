@@ -7473,6 +7473,7 @@ dev-python/cloudpickle 0.2.1 0.2.2 0.3.1: Extended pickling support for Python o
 dev-python/cmd2 0.6.7 0.7.0 0.7.5: Extra features for standard library's cmd module
 dev-python/codetools 4.2.0: Enthought Tool Suite: Code analysis and execution tools
 dev-python/colander 1.3.1: A simple schema-based serialization and deserialization library
+dev-python/collective-checkdocs 0.2: Distutils command to view/validate packages's rst text long_descriptions.
 dev-python/colorama 0.3.3 0.3.8 0.3.9: ANSI escape character sequences for colored terminal text & cursor positioning
 dev-python/coloredlogs 6.1: Colored stream handler for the logging module
 dev-python/colorlog 2.7.0: Log formatting with colors
@@ -7919,7 +7920,7 @@ dev-python/kafka-python 1.1.1 1.2.0 1.2.1 1.3.3: Kafka protocol support in Pytho
 dev-python/kazoo 2.2.1: A high-level Python library that makes it easier to use Apache Zookeeper
 dev-python/keepassx 0.1.0-r1: Python API and CLI for KeePassX
 dev-python/keyczar 0.715: Toolkit for safe and simple cryptography
-dev-python/keyring 10.3.3 10.4.0: Provides access to the system keyring service
+dev-python/keyring 10.3.3 10.4.0 10.5.0: Provides access to the system keyring service
 dev-python/keyrings_alt 2.2 2.3: Alternate keyring implementations
 dev-python/keystoneauth 2.4.1 2.4.2 2.12.3 2.18.0 2.20.0 3.1.0: This package contains tools for authenticating to an OpenStack-based cloud.
 dev-python/keystonemiddleware 4.4.1 4.9.1 4.14.0 4.17.0: A middleware for the OpenStack Keystone API
