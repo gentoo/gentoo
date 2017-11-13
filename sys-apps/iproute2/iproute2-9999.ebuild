@@ -113,8 +113,6 @@ src_install() {
 		ARPDDIR="${EPREFIX%/}"/var/lib/arpd \
 		install
 
-	rm "${ED%/}"/usr/share/doc/${PF}/*.{sgml,tex} || die #455988
-
 	dodir /bin
 	mv "${ED%/}"/{s,}bin/ip || die #330115
 
