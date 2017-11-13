@@ -18378,7 +18378,7 @@ www-apps/metadot 6.1.6-r1 6.4.5.4-r2: Metadot is a CMS with file, page and link 
 www-apps/mirmon 1.38-r4 2.10: Simple webapp to monitor the status of mirrors
 www-apps/mod_survey 3.2.5: XML-defined web questionnaires as a plug-in module using Apache
 www-apps/moinmoin 1.9.7-r1: Python WikiClone
-www-apps/moodle 3.1.8 3.2.5 3.3.2: The Moodle Course Management System
+www-apps/moodle 3.1.9 3.2.6 3.3.3 3.4: The Moodle Course Management System
 www-apps/mypictures 20040202 20040202-r1: Simple photo-gallery for websites
 www-apps/mythweb 0.28.1: PHP scripts intended to manage MythTV from a web browser
 www-apps/nanoblogger 3.2.3 3.3 3.5_rc1 3.5_rc1-r1: Small and simple weblog engine written in Bash for the command-line
