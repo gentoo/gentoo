@@ -4934,7 +4934,7 @@ dev-libs/librep 0.92.6: Shared library implementing a Lisp dialect
 dev-libs/libreport 2.0.13-r1: Generic library for reporting software bugs
 dev-libs/libressl 2.3.10 2.4.5 2.5.0 2.5.4 2.5.5 2.6.0 2.6.1 2.6.2 2.6.3-r2: Free version of the SSL/TLS protocol forked from OpenSSL
 dev-libs/librevenge 0.0.4-r1 9999: A helper library for REVerse ENGineered formats filters
-dev-libs/libsass 3.4.5 9999: A C/C++ implementation of a Sass CSS compiler
+dev-libs/libsass 3.4.5 3.4.6 9999: A C/C++ implementation of a Sass CSS compiler
 dev-libs/libsecp256k1 0.0.0_pre20151118 0.0.0_pre20161213 9999: Optimized C library for EC operations on curve secp256k1
 dev-libs/libserialport 0.1.0 0.1.1 9999: Cross platform serial port access library
 dev-libs/libsigc++ 1.2.7 2.10.0: Typesafe callback system for standard C++
@@ -8514,7 +8514,7 @@ dev-python/python-daap 0.7.1-r1: PyDaap is a DAAP client implemented in Python, 
 dev-python/python-daemon 1.6-r1 2.1.1: Library to implement a well-behaved Unix daemon process
 dev-python/python-dateutil 2.6.1: Extensions to the standard Python datetime module
 dev-python/python-ddp 0.1.5: An event driven ddp client
-dev-python/python-debian 0.1.28: Python modules to work with Debian-related data formats
+dev-python/python-debian 0.1.28 0.1.31: Python modules to work with Debian-related data formats
 dev-python/python-designateclient 2.0.0 2.3.0 2.6.0 2.7.0: Python bindings to the Designate API.
 dev-python/python-digest 1.7-r1: A Python library to aid in implementing HTTP Digest Authentication
 dev-python/python-discid 1.1.0 1.1.1: Python bindings for libdiscid
@@ -18434,7 +18434,7 @@ www-client/epiphany 3.22.7 3.24.5: GNOME webbrowser based on Webkit
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 52.2.0 52.4.0 56.0: Firefox Web Browser
 www-client/firefox-bin 52.4.1 56.0: Firefox Web Browser
-www-client/google-chrome 62.0.3202.89: The web browser from Google
+www-client/google-chrome 62.0.3202.94: The web browser from Google
 www-client/google-chrome-beta 63.0.3239.40: The web browser from Google
 www-client/google-chrome-unstable 64.0.3260.2: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2 3.49.1 3.49.2-r1: HTTrack Website Copier, Open Source Offline Browser
@@ -18485,7 +18485,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.30.0 1.30.2 1.30.2-r1: Capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 27.0.0.183: Adobe Flash Player
-www-plugins/chrome-binary-plugins 62.0.3202.89 63.0.3239.40_beta 64.0.3260.2_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 62.0.3202.94 63.0.3239.40_beta 64.0.3260.2_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3 0.3.7: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20160329-r1: GNU Flash movie player that supports many SWF v7,8,9 features
