@@ -19,11 +19,6 @@ physfs
 # kwallet integration split from kde to distinct flag
 kwallet
 
-# Julian Ospald <hasufell@gentoo.org> (20 Sep 2015)
-# no LibreSSL support yet
-curl_ssl_libressl
-libressl
-
 # Andrey Grozin <grozin@gentoo.org> (25 Jun 2014)
 # keyworded on sparc
 -ecls
