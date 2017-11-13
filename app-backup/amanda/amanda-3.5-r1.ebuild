@@ -481,4 +481,13 @@ amanda_permissions_fix() {
 		chown root:${AMANDA_GROUP_NAME} "${root}"/${i} || die
 		chmod u=srwx,g=rx,o= "${root}"/${i} || die
 	done
+
+	# amanda-security.conf is a config file with similar requirements:
+	# writable only by root
+	# world-readable
+	# 3.3.9: introduced in /etc/amanda-security.conf
+	# 3.4.2: moved to /etc/amanda/amanda-security.conf
+	f=/etc/amanda/amanda-security.conf
+	chown root:root "${root}""${f}" || die
+	chmod u=rw,go=r "${root}""${f}" || die
 }
