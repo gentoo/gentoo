@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Gilbert <floppym@gentoo.org> (13 Nov 2017)
+# python-updater is obsolete. Utilize PYTHON_TARGETS and
+# emerge --changed-use to rebuild packages instead.
+# Removal in 30 days.
+app-admin/python-updater
+
 # Zac Medico <zmedico@gentoo.org> (13 Nov 2017)
 # Masked for removal in 30 days. Current versions do not include a
 # standalone web server command, and there is an open security issue
