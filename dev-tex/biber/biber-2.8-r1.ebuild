@@ -53,7 +53,7 @@ RDEPEND=">=dev-lang/perl-5.26
 	dev-perl/XML-Writer
 	~dev-tex/biblatex-3.8
 	virtual/perl-IPC-Cmd
-	>=virtual/perl-Unicode-Collate-1.190.0"
+	>=virtual/perl-Unicode-Collate-1.210.0"
 DEPEND="${RDEPEND}
 	dev-perl/Config-AutoConf
 	dev-perl/Module-Build
