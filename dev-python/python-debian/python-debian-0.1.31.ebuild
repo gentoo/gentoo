@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-PYTHON_COMPAT=( python2_7 python3_{4,5} pypy )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
 
 inherit distutils-r1
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://debian/pool/main/${P:0:1}/${PN}/${PN}_${PV}.tar.xz"
 
 LICENSE="GPL-2 GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 RDEPEND="
@@ -25,14 +25,17 @@ DEPEND="${RDEPEND}
 
 RESTRICT="test"
 
+python_prepare_all() {
+	sed -i -e '/import apt_pkg/d' \
+		-e 's/test_iter_paragraphs_comments_use_apt_pkg/_&/' \
+		lib/debian/tests/test_deb822.py || die
+	distutils-r1_python_prepare_all
+}
+
 python_compile_all() {
 	"${PYTHON}" lib/debian/doc-debtags > README.debtags || die
 }
 
 python_test() {
-	# Tests currently fail with >=app-crypt/gnupg-2.1
-	# https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=782904
-	pushd tests > /dev/null || die
-	"${PYTHON}" -m unittest discover || die "Testing failed with ${EPYTHON}"
-	popd > /dev/null || die
+	"${PYTHON}" -m unittest discover lib || die "Testing failed with ${EPYTHON}"
 }
