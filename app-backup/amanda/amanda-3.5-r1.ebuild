@@ -326,6 +326,10 @@ src_install() {
 	einfo "Installing environment config file"
 	doenvd "${MYFILESDIR}/${ENVDFILE}"
 
+	einfo "Installing systemd service and socket files for Amanda"
+	systemd_dounit "${FILESDIR}"/amanda.socket
+	systemd_newunit "${FILESDIR}"/amanda.service 'amanda@.service'
+
 	# Lock down next section (up until docs).
 	insopts -m0640
 	# Installing Amanda Xinetd Services Definition
@@ -342,10 +346,6 @@ src_install() {
 		insinto /etc/cron.daily
 		newins "${MYFILESDIR}/amanda-cron" amanda
 	fi
-
-	einfo "Installing systemd service and socket files for Amanda"
-	systemd_dounit "${FILESDIR}"/amanda.socket
-	systemd_newunit "${FILESDIR}"/amanda.service 'amanda@.service'
 
 	insinto /etc/amanda
 	einfo "Installing .amandahosts File for ${AMANDA_USER_NAME} user"
