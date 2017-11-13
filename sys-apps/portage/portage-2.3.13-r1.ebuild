@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=5
 
 PYTHON_COMPAT=(
 	pypy
@@ -10,13 +10,13 @@ PYTHON_COMPAT=(
 )
 PYTHON_REQ_USE='bzip2(+),threads(+)'
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="Portage is the package management and distribution system for Gentoo"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage"
 
 LICENSE="GPL-2"
-KEYWORDS=""
+KEYWORDS="~amd64 ~ia64 ~mips ~ppc ~ppc64 ~x86"
 SLOT="0"
 IUSE="build doc epydoc +ipc linguas_ru +native-extensions selinux xattr"
 
@@ -65,7 +65,7 @@ PDEPEND="
 
 REQUIRED_USE="epydoc? ( $(python_gen_useflags 'python2*') )"
 
-SRC_ARCHIVES="https://dev.gentoo.org/~dolsen/releases/portage"
+SRC_ARCHIVES="https://dev.gentoo.org/~zmedico/portage/archives"
 
 prefix_src_archives() {
 	local x y
@@ -76,8 +76,9 @@ prefix_src_archives() {
 	done
 }
 
-EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/portage.git
-	https://github.com/gentoo/portage.git"
+TARBALL_PV=${PV}
+SRC_URI="mirror://gentoo/${PN}-${TARBALL_PV}.tar.bz2
+	$(prefix_src_archives ${PN}-${TARBALL_PV}.tar.bz2)"
 
 pkg_setup() {
 	use epydoc && DISTUTILS_ALL_SUBPHASE_IMPLS=( python2.7 )
@@ -132,7 +133,7 @@ python_prepare_all() {
 		einfo "Adjusting repos.conf ..."
 		sed -e "s|^\(location = \)\(/usr/portage\)|\\1${EPREFIX}\\2|" \
 			-i cnf/repos.conf || die "sed failed"
-		if prefix-guest ; then
+		if use prefix-guest ; then
 			sed -e "s|^\(main-repo = \).*|\\1gentoo_prefix|" \
 				-e "s|^\\[gentoo\\]|[gentoo_prefix]|" \
 				-e "s|^\(sync-uri = \).*|\\1rsync://rsync.prefix.bitzolder.nl/gentoo-portage-prefix|" \
@@ -197,7 +198,7 @@ python_install_all() {
 	fi
 
 	# Due to distutils/python-exec limitations
-	# they must be installed to /usr/bin.
+	# these must be installed to /usr/bin.
 	local sbin_relocations='archive-conf dispatch-conf emaint env-update etc-update fixpackages regenworld'
 	einfo "Moving admin scripts to the correct directory"
 	dodir /usr/sbin
@@ -227,12 +228,24 @@ pkg_preinst() {
 	if chown portage:portage "${ED}"var/log/portage{,/elog} 2>/dev/null ; then
 		chmod g+s,ug+rwx "${ED}"var/log/portage{,/elog}
 	fi
+
+	if has_version ">=${CATEGORY}/${PN}-2.3.1" && \
+		has_version "<${CATEGORY}/${PN}-2.3.3"; then
+		SYNC_DEPTH_UPGRADE=true
+	else
+		SYNC_DEPTH_UPGRADE=false
+	fi
 }
 
 pkg_postinst() {
+	if ${SYNC_DEPTH_UPGRADE}; then
+		ewarn "Please note that this release no longer respects sync-depth for"
+		ewarn "git repositories.  There have been too many problems and"
+		ewarn "performance issues.  See bugs 552814, 559008"
+	fi
 	einfo ""
 	einfo "This release of portage NO LONGER contains the repoman code base."
-	einfo "Repoman now has it's own ebuild and release package."
+	einfo "Repoman has its own ebuild and release package."
 	einfo "For repoman functionality please emerge app-portage/repoman"
 	einfo "Please report any bugs you may encounter."
 	einfo ""
