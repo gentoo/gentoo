@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{4,5,6} )
 inherit distutils-r1 gnome2-utils virtualx xdg-utils
 
 DESCRIPTION="A subtitle editor for text-based subtitles"
-HOMEPAGE="http://otsaloma.io/gaupol/"
+HOMEPAGE="https://otsaloma.io/gaupol/"
 SRC_URI="https://github.com/otsaloma/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
