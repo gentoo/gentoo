@@ -8330,6 +8330,7 @@ www-client/firefox:hwaccel - Force-enable hardware-accelerated rendering (Mozill
 www-client/firefox:jemalloc - Enable or disable jemalloc
 www-client/firefox:pgo - Add support for profile-guided optimization using gcc-4.5, for faster binaries. This option will double the compile time.
 www-client/firefox:rust - Enable support for using rust compiler (experimental)
+www-client/firefox:screenshot - Allow to disable screenshot extension in global profile
 www-client/firefox:system-cairo - Use the system-wide x11-libs/cairo instead of bundled.
 www-client/firefox:system-harfbuzz - Use the system-wide media-libs/harfbuzz and media-gfx/graphite2 instead of bundled.
 www-client/firefox:system-icu - Use the system-wide dev-libs/icu instead of bundled.
