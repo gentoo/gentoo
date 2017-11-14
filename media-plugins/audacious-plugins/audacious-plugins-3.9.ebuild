@@ -48,7 +48,7 @@ REQUIRED_USE="
 RDEPEND="
 	app-arch/unzip
 	dev-libs/dbus-glib
-	dev-libs/glib[utils]
+	dev-libs/glib
 	dev-libs/libxml2:2
 	~media-sound/audacious-${PV}[gtk?,gtk3?,qt5?]
 	aac? ( >=media-libs/faad2-2.7 )
