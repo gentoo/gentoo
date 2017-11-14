@@ -8,7 +8,7 @@ PYTHON_REQ_USE="sqlite,xml"
 
 AUTOTOOLS_AUTORECONF=true
 
-inherit autotools-utils python-r1 versionator xdg-utils
+inherit autotools-utils gnome2-utils python-r1 versionator xdg-utils
 
 MY_PV=${PV/_/-}
 MY_P="${PN}-${MY_PV}"
@@ -115,9 +115,11 @@ src_install() {
 }
 
 pkg_postinst() {
+	gnome2_icon_cache_update
 	xdg_desktop_database_update
 }
 
 pkg_postrm() {
+	gnome2_icon_cache_update
 	xdg_desktop_database_update
 }
