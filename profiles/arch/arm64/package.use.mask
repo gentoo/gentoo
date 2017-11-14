@@ -85,7 +85,6 @@ dev-python/PyQt4 webkit
 dev-qt/designer:4 webkit
 dev-qt/qtdeclarative:4 webkit
 dev-python/pyside webkit
-kde-frameworks/kdelibs:4 webkit
 
 # Alexis Ballier <aballier@gentoo.org> (21 Jun 2017)
 # Appends -mfpu=neon that doesnt work on arm64
@@ -264,7 +263,7 @@ net-misc/unison gtk
 
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (20 Feb 2013)
 # Mask flags of calligra and dependencies due to lack of keywords
-app-office/calligra color-management openexr postgres spacenav vc
+app-office/calligra openexr spacenav
 media-gfx/pstoedit emf
 
 # Michał Górny <mgorny@gentoo.org> (01 Feb 2013)
@@ -304,11 +303,9 @@ app-accessibility/speech-dispatcher flite
 # Markus Meier <maekke@gentoo.org> (23 Dec 2012)
 # mask kde-apps/* flags due to unkeyworded dependencies
 kde-apps/kalzium editor solver
-kde-apps/kopete jingle
 kde-apps/okular chm
 kde-apps/kstars indi
 kde-apps/kdeutils-meta floppy
-kde-apps/kdenetwork-meta ppp
 
 # Markus Meier <maekke@gentoo.org> (08 Dec 2012)
 # mask app-office/libreoffice java extensions

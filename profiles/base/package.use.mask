@@ -313,10 +313,6 @@ dev-cpp/eigen:2 doc
 # you're doing. This has upstream's approval.
 dev-java/icedtea cacao jamvm
 
-# Maciej Mrozowski <reavertm@gmail.com> (23 Mar 2016)
-# Experimental cairo-qt backend (see bug #568000).
-app-text/poppler cairo-qt
-
 # Lars Wendler <polynomial-c@gentoo.org> (20 Mar 2016)
 # Need vulnerable libotr version (see bug #576914).
 net-im/centerim otr
@@ -361,10 +357,6 @@ sys-auth/consolekit cgroups
 sci-libs/gdal ruby
 # See bug #547834
 <sys-apps/paludis-2.4.0 ruby
-
-# Andreas K. Huettel <dilfridge@gentoo.org> (1 Sep 2015)
-# Currently broken upstream. We still hope it will get fixed.
-app-office/libreoffice telepathy
 
 # James Le Cuirot <chewi@gentoo.org> (18 Aug 2015)
 # gcc[awt] is only used by gcj-jdk[awt] and that isn't needed by
@@ -545,11 +537,6 @@ gnustep-apps/cynthiune flac
 # Dependency is masked for buffer overflows for now
 app-text/yagf cuneiform
 dev-python/pyocr cuneiform
-
-# Christoph Junghans <junghans@gentoo.org> (10 Mar 2013)
-# log4cxx has known memory leaking issues wrt bug #287697,
-# unmask when log4cxx is fixed and stable.
-media-sound/google-musicmanager log
 
 # Tom Wijsman <TomWij@gentoo.org> (10 Mar 2013)
 # Experimental, masked until it compiles and works.

@@ -24,7 +24,6 @@ dev-lang/icc
 dev-lang/idb
 dev-lang/ifc
 dev-perl/Archive-Rar
-dev-python/skype4py
 dev-util/android-sdk-update-manager
 dev-util/android-ndk
 dev-util/biew
@@ -109,8 +108,6 @@ media-fonts/acroread-asianfonts
 media-sound/ventrilo-server-bin
 media-video/binkplayer
 media-video/tsmuxer
-net-im/skype
-net-im/skypetab-ng
 net-print/cndrvcups-common-lb
 net-print/cndrvcups-lb
 net-misc/icaclient

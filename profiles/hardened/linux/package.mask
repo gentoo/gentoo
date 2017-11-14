@@ -6,13 +6,6 @@
 =sys-devel/gcc-4.1*
 =sys-devel/gcc-4.2*
 
-# Can't be used on hardened. See upstream,
-# http://developer.skype.com/jira/browse/SCL-616
-media-sound/skype-call-recorder
-net-im/skype
-net-im/skypetab-ng
-dev-python/skype4py
-
 # broken on hardened, use sys-apps/elfix to fix gnustack
 sys-devel/prelink
 # depends on prelink
