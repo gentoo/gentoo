@@ -12186,7 +12186,7 @@ kde-frameworks/kxmlgui 5.37.0 5.39.0 5.40.0: Framework for managing menu and too
 kde-frameworks/kxmlrpcclient 5.37.0 5.39.0 5.40.0: Framework providing client-side support for the XML-RPC protocol
 kde-frameworks/modemmanager-qt 5.37.0 5.39.0 5.40.0: ModemManager bindings for Qt
 kde-frameworks/networkmanager-qt 5.37.0 5.39.0 5.40.0: NetworkManager bindings for Qt
-kde-frameworks/oxygen-icons 4.14.3 5.37.0 5.39.0 5.40.0: Oxygen SVG icon theme
+kde-frameworks/oxygen-icons 5.37.0 5.39.0 5.40.0: Oxygen SVG icon theme
 kde-frameworks/plasma 5.37.0 5.39.0 5.40.0: Plasma framework
 kde-frameworks/prison 5.37.0 5.39.0 5.40.0: QRCode and data matrix barcode library
 kde-frameworks/qqc2-desktop-style 5.39.0 5.40.0: Style for QtQuickControls 2 that uses QWidget's QStyle for painting
