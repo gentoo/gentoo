@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ LANGS="it"
 inherit bash-completion-r1 qt4-r2
 
 DESCRIPTION="Helper to dock any application into the system tray"
-HOMEPAGE="https://launchpad.net/kdocker/"
+HOMEPAGE="https://github.com/user-none/KDocker"
 SRC_URI="https://launchpad.net/${PN}/trunk/${PV:0:3}/+download/${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -26,7 +26,6 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 DOCS=( AUTHORS BUGS ChangeLog CREDITS README TODO )
-
 PATCHES=( "${FILESDIR}/${P}-unbundle-qtsingleapplication.patch" )
 
 src_prepare() {
