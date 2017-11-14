@@ -54,8 +54,7 @@ RDEPEND="
 		$(python_gen_cond_dep 'dev-python/pyxattr[${PYTHON_USEDEP}]' \
 			python2_7 pypy)
 	) )
-	!<app-admin/logrotate-3.8.0
-	!<app-portage/repoman-2.3.5"
+	!<app-admin/logrotate-3.8.0"
 PDEPEND="
 	!build? (
 		>=net-misc/rsync-2.6.4
