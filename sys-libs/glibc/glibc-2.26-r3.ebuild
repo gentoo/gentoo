@@ -194,7 +194,7 @@ pkg_pretend() {
 	if [[ -e ${EROOT}/etc/nsswitch.conf ]] ; then
 		local entry
 		for entry in passwd group shadow; do
-			if ! egrep -q "[ \t]*${entry}:.*files" "${EROOT}"/etc/nsswitch.conf; then
+			if ! egrep -q "^[ \t]*${entry}:.*files" "${EROOT}"/etc/nsswitch.conf; then
 				eerror "Your ${EROOT}/etc/nsswitch.conf is out of date."
 				eerror "Please make sure you have 'files' entries for"
 				eerror "'passwd:', 'group:' and 'shadow:' databases."
