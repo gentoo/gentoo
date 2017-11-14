@@ -5,13 +5,14 @@ EAPI=6
 
 KDE_AUTODEPS="false"
 KDE_DEBUG="false"
+KDE_QTHELP="false"
 KDE_TEST="true"
 KMNAME="oxygen-icons5"
 inherit kde5
 
 DESCRIPTION="Oxygen SVG icon theme"
 LICENSE="LGPL-3"
-KEYWORDS="amd64 ~arm ~arm64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
 IUSE=""
 
 DEPEND="

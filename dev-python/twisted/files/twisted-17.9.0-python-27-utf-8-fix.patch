@@ -1,0 +1,47 @@
+From c7db4c055e92509e5c19a051cbebea53034994ba Mon Sep 17 00:00:00 2001
+From: Brian Dolbec <bdolbec@gaikai.com>
+Date: Wed, 25 Oct 2017 14:39:57 -0700
+Subject: [PATCH] python-2.7 utf-8 fixes
+
+---
+ src/twisted/test/test_twistd.py | 14 ++++++++++++--
+ 1 file changed, 12 insertions(+), 2 deletions(-)
+
+diff --git a/src/twisted/test/test_twistd.py b/src/twisted/test/test_twistd.py
+index 3a9d337..4b0cf28 100644
+--- a/src/twisted/test/test_twistd.py
++++ b/src/twisted/test/test_twistd.py
+@@ -1902,8 +1902,12 @@ class DaemonizeTests(unittest.TestCase):
+         message is Unicode, the child encodes the message as ascii
+         with backslash Unicode code points.
+         """
++        if sys.hexversion >= 0x3000000:
++            reported_str = b'\u2022'
++        else:
++            reported_str = b'\xe2\x80\xa2'
+         self.assertErrorWritten(raised=u"\u2022",
+-                                reported=b'1 RuntimeError: \\u2022')
++                                reported=b'1 RuntimeError: ' + reported_str)
+ 
+ 
+ 
+@@ -2003,9 +2007,15 @@ class DaemonizeTests(unittest.TestCase):
+         unicode and too long, it's truncated by the child, even if
+         this splits a unicode escape sequence.
+         """
++        if sys.hexversion >= 0x3000000:
++            reported_str = b'\\u2022'
++            length = 14
++        else:
++            reported_str = b'\xe2\x80\xa2'
++            length = 28
+         self.assertErrorWritten(
+             raised=u"\u2022" * 30,
+-            reported=b'1 RuntimeError: ' + b'\\u2022' * 14,
++            reported=b'1 RuntimeError: ' + reported_str * length,
+         )
+ 
+ 
+--
+libgit2 0.26.0
+

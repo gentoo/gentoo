@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="A network tool to gather IP traffic information"
 HOMEPAGE="http://www.pmacct.net/"
@@ -48,6 +48,7 @@ DOCS=(
 
 src_configure() {
 	tc-export CC AR RANLIB
+	append-cppflags -DMYSQL_SERVER_VERSION=99999999
 
 	econf \
 		$(use_enable 64bit) \

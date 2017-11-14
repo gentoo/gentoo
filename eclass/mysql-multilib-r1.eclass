@@ -887,7 +887,7 @@ mysql-multilib-r1_pkg_config() {
 	${EROOT}/usr/sbin/mysqld --verbose --help >"${helpfile}" 2>/dev/null
 	for opt in grant-tables host-cache name-resolve networking slave-start \
 		federated ssl log-bin relay-log slow-query-log external-locking \
-		ndbcluster log-slave-updates \
+		ndbcluster log-slave-updates wsrep-on \
 		; do
 		optexp="--(skip-)?${opt}" optfull="--loose-skip-${opt}"
 		egrep -sq -- "${optexp}" "${helpfile}" && options="${options} ${optfull}"

@@ -33,6 +33,7 @@ src_prepare() {
 	# using test/rtpw.c guaratees the file exists in any case
 	sed -i -e "s:/usr/share/dict/words:rtpw.c:" test/rtpw.c || die
 
+	mv configure.in configure.ac || die
 	eautoreconf
 
 	# sadly, tests are too broken to even consider using work-arounds

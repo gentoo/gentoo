@@ -19,6 +19,7 @@ IUSE="opengl nls doc examples gdbm +gmp ssl +unicode pcre"
 
 RDEPEND="sys-libs/readline
 	dev-libs/libffi
+	net-libs/libnsl:0=
 	opengl? ( media-libs/freeglut )
 	nls? ( sys-devel/gettext )
 	unicode? ( >=dev-libs/icu-2.6:= )

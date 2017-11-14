@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Access SANE-compatible scanners from Perl"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE="test"
 
 RDEPEND="
@@ -21,6 +21,10 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-perl/ExtUtils-Depends
 	dev-perl/ExtUtils-PkgConfig
-	test? ( dev-perl/Test-Requires )"
-
-PERL_RM_FILES=( t/{90_MANIFEST,91_critic,pod}.t )
+	test? (
+		dev-perl/Test-Requires
+		dev-perl/Try-Tiny
+	)
+"
+# https://rt.cpan.org/Ticket/Display.html?id=122380
+PERL_RM_FILES=( t/{90_MANIFEST,91_critic,pod,81_scanimage-perl}.t )

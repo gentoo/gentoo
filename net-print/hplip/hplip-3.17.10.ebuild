@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/hplip/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~ppc ppc64 ~x86"
 
 IUSE="doc fax +hpcups hpijs kde libressl -libusb0 minimal parport policykit qt5 scanner +snmp static-ppds X"
 
@@ -211,6 +211,7 @@ src_configure() {
 		${myconf} \
 		${drv_build} \
 		${minimal_build} \
+		--enable-hpps-install \
 		$(use_enable doc doc-build) \
 		$(use_enable fax fax-build) \
 		$(use_enable !minimal gui-build) \

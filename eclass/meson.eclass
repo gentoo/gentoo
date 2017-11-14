@@ -103,12 +103,13 @@ _meson_create_cross_file() {
 	# system roughly corresponds to uname -s (lowercase)
 	local system=unknown
 	case ${CHOST} in
-		*-aix*)     system=aix ;;
-		*-cygwin*)  system=cygwin ;;
-		*-darwin*)  system=darwin ;;
-		*-freebsd*) system=freebsd ;;
-		*-linux*)   system=linux ;;
-		*-solaris*) system=sunos ;;
+		*-aix*)          system=aix ;;
+		*-cygwin*)       system=cygwin ;;
+		*-darwin*)       system=darwin ;;
+		*-freebsd*)      system=freebsd ;;
+		*-linux*)        system=linux ;;
+		mingw*|*-mingw*) system=windows ;;
+		*-solaris*)      system=sunos ;;
 	esac
 
 	local cpu_family=$(tc-arch)
@@ -125,6 +126,7 @@ _meson_create_cross_file() {
 	ar = '${AR}'
 	c = '${CC}'
 	cpp = '${CXX}'
+	pkgconfig = '${PKG_CONFIG}'
 	strip = '${STRIP}'
 
 	[host_machine]
@@ -155,6 +157,7 @@ meson_src_configure() {
 	local -x AR=$(tc-getAR)
 	local -x CC=$(tc-getCC)
 	local -x CXX=$(tc-getCXX)
+	local -x PKG_CONFIG=$(tc-getPKG_CONFIG)
 	local -x STRIP=$(tc-getSTRIP)
 
 	if tc-is-cross-compiler; then
@@ -166,6 +169,7 @@ meson_src_configure() {
 		AR=$(tc-getBUILD_AR)
 		CC=$(tc-getBUILD_CC)
 		CXX=$(tc-getBUILD_CXX)
+		PKG_CONFIG=$(tc-getBUILD_PKG_CONFIG)
 		STRIP=$(tc-getBUILD_STRIP)
 	fi
 

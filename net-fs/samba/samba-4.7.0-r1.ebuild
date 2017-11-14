@@ -18,12 +18,12 @@ SRC_URI="mirror://samba/${SRC_PATH}/${MY_P}.tar.gz"
 KEYWORDS="~amd64 ~arm64 ~x86"
 
 DESCRIPTION="Samba Suite Version 4"
-HOMEPAGE="http://www.samba.org/"
+HOMEPAGE="https://www.samba.org/"
 LICENSE="GPL-3"
 
 SLOT="0"
 
-IUSE="acl addc addns ads client cluster cups debug dmapi fam gnutls gpg iprint ldap pam python
+IUSE="acl addc addns ads ceph client cluster cups debug dmapi fam gnutls gpg iprint ldap pam python
 quota selinux syslog system-heimdal +system-mitkrb5 systemd test winbind zeroconf"
 
 MULTILIB_WRAPPED_HEADERS=(
@@ -63,6 +63,7 @@ CDEPEND="
 		net-dns/bind-tools[gssapi]
 		dev-python/dnspython:=[${PYTHON_USEDEP}]
 	)
+	ceph? ( sys-cluster/ceph )
 	cluster? ( !dev-db/ctdb )
 	cups? ( net-print/cups )
 	debug? ( dev-util/lttng-ust )
@@ -156,7 +157,7 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	# when specifying libs for samba build you must append NONE to the end to 
+	# when specifying libs for samba build you must append NONE to the end to
 	# stop it automatically including things
 	local bundled_libs="NONE"
 	if ! use system-heimdal && ! use system-mitkrb5 ; then
@@ -183,6 +184,7 @@ multilib_src_configure() {
 			$(usex addc '' '--without-ad-dc')
 			$(use_with addns dnsupdate)
 			$(use_with ads)
+			$(use_enable ceph cephfs)
 			$(use_with cluster cluster-support)
 			$(use_enable cups)
 			$(use_with debug lttng)
@@ -211,6 +213,7 @@ multilib_src_configure() {
 			--without-dnsupdate
 			--without-ads
 			--disable-avahi
+			--disable-cephfs
 			--without-cluster-support
 			--disable-cups
 			--without-dmapi
@@ -295,7 +298,7 @@ pkg_postinst() {
 	ewarn "controller work previously known as 'samba4'."
 
 	elog "For further information and migration steps make sure to read "
-	elog "http://samba.org/samba/history/${P}.html "
-	elog "http://samba.org/samba/history/${PN}-4.5.0.html and"
-	elog "http://wiki.samba.org/index.php/Samba4/HOWTO "
+	elog "https://www.samba.org/samba/history/${P}.html "
+	elog "https://www.samba.org/samba/history/${PN}-4.5.0.html and"
+	elog "https://wiki.samba.org/index.php/Samba4/HOWTO "
 }

@@ -147,7 +147,6 @@ RDEPEND="${COMMON_DEPEND}
 
 # tools/make_requests requires perl
 DEPEND="${COMMON_DEPEND}
-	dev-util/patchbin
 	sys-devel/flex
 	>=sys-kernel/linux-headers-2.6
 	virtual/pkgconfig
@@ -166,6 +165,23 @@ QA_DESKTOP_FILE="usr/share/applications/wine-browsedrive.desktop
 usr/share/applications/wine-notepad.desktop
 usr/share/applications/wine-uninstaller.desktop
 usr/share/applications/wine-winecfg.desktop"
+
+PATCHES=(
+	"${PATCHDIR}/patches/${MY_PN}-1.5.26-winegcc.patch" #260726
+	"${PATCHDIR}/patches/${MY_PN}-1.9.5-multilib-portage.patch" #395615
+	"${PATCHDIR}/patches/${MY_PN}-1.6-memset-O3.patch" #480508
+	"${PATCHDIR}/patches/${MY_PN}-2.0-multislot-apploader.patch"
+	"${PATCHDIR}/patches/freetype-2.8.1-segfault.patch" #631676
+	"${PATCHDIR}/patches/freetype-2.8.1-drop-glyphs.patch" #631376
+)
+PATCHES_BIN=(
+	"${PATCHDIR}/patches/freetype-2.8.1-patch-fonts.patch" #631376
+)
+
+# https://bugs.gentoo.org/show_bug.cgi?id=635222
+if [[ ${#PATCHES_BIN[@]} -ge 1 ]] || [[ ${PV} == 9999 ]]; then
+	DEPEND+=" dev-util/patchbin"
+fi
 
 wine_compiler_check() {
 	[[ ${MERGE_TYPE} = "binary" ]] && return 0
@@ -328,17 +344,7 @@ src_prepare() {
 	}
 
 	local md5="$(md5sum server/protocol.def)"
-	local PATCHES=(
-		"${PATCHDIR}/patches/${MY_PN}-1.5.26-winegcc.patch" #260726
-		"${PATCHDIR}/patches/${MY_PN}-1.9.5-multilib-portage.patch" #395615
-		"${PATCHDIR}/patches/${MY_PN}-1.6-memset-O3.patch" #480508
-		"${PATCHDIR}/patches/${MY_PN}-2.0-multislot-apploader.patch"
-		"${PATCHDIR}/patches/freetype-2.8.1-segfault.patch" #631676
-		"${PATCHDIR}/patches/freetype-2.8.1-drop-glyphs.patch" #631376
-	)
-	local PATCHES_BIN=(
-		"${PATCHDIR}/patches/freetype-2.8.1-patch-fonts.patch" #631376
-	)
+
 	if use d3d9; then
 		PATCHES+=( "${D3D9_DIR}/d3d9-helper.patch" )
 		PATCHES+=( "${D3D9_DIR}/wine-d3d9.patch" )

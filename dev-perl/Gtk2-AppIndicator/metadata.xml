@@ -5,4 +5,8 @@
         <email>perl@gentoo.org</email>
         <name>Gentoo Perl Project</name>
     </maintainer>
+    <upstream>
+        <remote-id type="cpan">Gtk2-AppIndicator</remote-id>
+        <remote-id type="cpan-module">Gtk2::AppIndicator</remote-id>
+    </upstream>
 </pkgmetadata>

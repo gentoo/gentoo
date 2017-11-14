@@ -147,6 +147,10 @@ src_install() {
 	docinto contrib/lua ; dodoc contrib/lua/{*.lua,elinks-remote}
 	docinto contrib/conv ; dodoc contrib/conv/*.*
 	docinto contrib/guile ; dodoc contrib/guile/*.scm
+
+	# elinks uses an internal copy of gettext which ships files that may
+	# colliding with the system's gettext (https://bugs.gentoo.org/635090)
+	rm -f "${ED}"/usr/{share/locale/locale,lib/charset}.alias || die
 }
 
 pkg_postinst() {

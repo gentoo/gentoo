@@ -16,6 +16,10 @@ LICENSE="cctbx-2.0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="examples static-libs +suid"
 
+RDEPEND="
+	sys-fs/squashfs-tools:0
+"
+
 src_prepare() {
 	default
 	# automake version hardcoding

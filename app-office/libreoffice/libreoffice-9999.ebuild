@@ -3,10 +3,6 @@
 
 EAPI=6
 
-KDE_REQUIRED="optional"
-KDE_SCM="git"
-CMAKE_REQUIRED="never"
-
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 PYTHON_REQ_USE="threads,xml"
 
@@ -24,7 +20,7 @@ BRANDING="${PN}-branding-gentoo-0.8.tar.xz"
 # PATCHSET="${P}-patchset-01.tar.xz"
 
 [[ ${PV} == *9999* ]] && SCM_ECLASS="git-r3"
-inherit multiprocessing autotools bash-completion-r1 check-reqs eutils java-pkg-opt-2 kde4-base pax-utils python-single-r1 toolchain-funcs flag-o-matic versionator xdg-utils qmake-utils ${SCM_ECLASS}
+inherit multiprocessing autotools bash-completion-r1 check-reqs gnome2-utils java-pkg-opt-2 pax-utils python-single-r1 toolchain-funcs flag-o-matic versionator xdg-utils qmake-utils ${SCM_ECLASS}
 unset SCM_ECLASS
 
 DESCRIPTION="A full office productivity suite"
@@ -49,7 +45,6 @@ unset DEV_URI
 # These are bundles that can't be removed for now due to huge patchsets.
 # If you want them gone, patches are welcome.
 ADDONS_SRC=(
-	"collada? ( ${ADDONS_URI}/4b87018f7fff1d054939d19920b751a0-collada2gltf-master-cb1d97788a.tar.bz2 )"
 	"java? ( ${ADDONS_URI}/17410483b5b5f267aa18b7e00b65e6e0-hsqldb_1_8_0.zip )"
 	# no release for 8 years, should we package it?
 	"libreoffice_extensions_wiki-publisher? ( ${ADDONS_URI}/a7983f859eafb2677d7ff386a023bc40-xsltml_2.1.2.zip )"
@@ -68,14 +63,14 @@ unset ADDONS_SRC
 # Extensions that need extra work:
 LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
 
-IUSE="bluetooth +branding coinmp collada +cups dbus debug eds firebird gltf gnome googledrive
+IUSE="bluetooth +branding coinmp +cups dbus debug eds firebird gnome googledrive
 gstreamer +gtk gtk3 jemalloc kde libressl mysql odk pdfimport postgres test vlc
 $(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 
 LICENSE="|| ( LGPL-3 MPL-1.1 )"
 SLOT="0"
 [[ ${PV} == *9999* ]] || \
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
 
 COMMON_DEPEND="${PYTHON_DEPS}
 	app-arch/unzip
@@ -140,7 +135,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	virtual/opengl
 	bluetooth? ( net-wireless/bluez )
 	coinmp? ( sci-libs/coinor-mp )
-	collada? ( media-libs/opencollada )
 	cups? ( net-print/cups )
 	dbus? ( dev-libs/dbus-glib )
 	eds? (
@@ -148,7 +142,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		gnome-extra/evolution-data-server
 	)
 	firebird? ( >=dev-db/firebird-3.0.2.32703.0-r1 )
-	gltf? ( >=media-libs/libgltf-0.1.0 )
 	gnome? ( gnome-base/dconf )
 	gstreamer? (
 		media-libs/gstreamer:1.0
@@ -164,6 +157,11 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		x11-libs/gtk+:3
 	)
 	jemalloc? ( dev-libs/jemalloc )
+	kde? (
+		dev-qt/qtcore:4
+		dev-qt/qtgui:4
+		kde-frameworks/kdelibs
+	)
 	libreoffice_extensions_scripting-beanshell? ( dev-java/bsh )
 	libreoffice_extensions_scripting-javascript? ( dev-java/rhino:1.6 )
 	mysql? ( dev-db/mysql-connector-c++ )
@@ -180,6 +178,7 @@ RDEPEND="${COMMON_DEPEND}
 	media-fonts/libertine
 	|| ( x11-misc/xdg-utils kde-plasma/kde-cli-tools )
 	java? ( >=virtual/jre-1.6 )
+	kde? ( kde-frameworks/oxygen-icons:* )
 	vlc? ( media-video/vlc )
 "
 
@@ -203,7 +202,7 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-util/cppunit-1.14.0
 	>=dev-util/gperf-3
 	dev-util/intltool
-	>=dev-util/mdds-1.2.2:1=
+	>=dev-util/mdds-1.2.3:1=
 	media-libs/glm
 	sys-devel/bison
 	sys-devel/flex
@@ -230,7 +229,6 @@ DEPEND="${COMMON_DEPEND}
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	bluetooth? ( dbus )
-	collada? ( gltf )
 	eds? ( gnome )
 	gnome? ( gtk )
 	libreoffice_extensions_nlpsolver? ( java )
@@ -272,7 +270,6 @@ pkg_pretend() {
 
 pkg_setup() {
 	java-pkg-opt-2_pkg_setup
-	kde4-base_pkg_setup
 	python-single-r1_pkg_setup
 	xdg_environment_reset
 
@@ -310,8 +307,7 @@ src_unpack() {
 
 src_prepare() {
 	[[ -n ${PATCHSET} ]] && eapply "${WORKDIR}/${PATCHSET/.tar.xz/}"
-	eapply "${PATCHES[@]}"
-	eapply_user
+	default
 
 	AT_M4DIR="m4" eautoreconf
 	# hack in the autogen.sh
@@ -366,11 +362,6 @@ src_configure() {
 	# System python enablement:
 	export PYTHON_CFLAGS=$(python_get_CFLAGS)
 	export PYTHON_LIBS=$(python_get_LIBS)
-
-	if use collada; then
-		export OPENCOLLADA_CFLAGS="-I/usr/include/opencollada/COLLADABaseUtils -I/usr/include/opencollada/COLLADAFramework -I/usr/include/opencollada/COLLADASaxFrameworkLoader -I/usr/include/opencollada/GeneratedSaxParser"
-		export OPENCOLLADA_LIBS="-L /usr/$(get_libdir)/opencollada -lOpenCOLLADABaseUtils -lOpenCOLLADAFramework -lOpenCOLLADASaxFrameworkLoader -lGeneratedSaxParser"
-	fi
 
 	# libreoffice extensions handling
 	for lo_xt in ${LO_EXTS}; do
@@ -458,13 +449,11 @@ src_configure() {
 		--without-system-sane \
 		$(use_enable bluetooth sdremote-bluetooth) \
 		$(use_enable coinmp) \
-		$(use_enable collada) \
 		$(use_enable cups) \
 		$(use_enable debug) \
 		$(use_enable dbus) \
 		$(use_enable eds evolution2) \
 		$(use_enable firebird firebird-sdbc) \
-		$(use_enable gltf) \
 		$(use_enable gnome gio) \
 		$(use_enable gnome dconf) \
 		$(use_enable gstreamer gstreamer-1-0) \
@@ -477,8 +466,6 @@ src_configure() {
 		$(use_enable postgres postgresql-sdbc) \
 		$(use_enable vlc) \
 		$(use_with coinmp system-coinmp) \
-		$(use_with collada system-opencollada) \
-		$(use_with gltf system-libgltf) \
 		$(use_with googledrive gdrive-client-id ${google_default_client_id}) \
 		$(use_with googledrive gdrive-client-secret ${google_default_client_secret}) \
 		$(use_with java) \
@@ -558,14 +545,17 @@ src_install() {
 }
 
 pkg_preinst() {
-	# Cache updates - all handled by kde eclass for all environments
-	kde4-base_pkg_preinst
+	gnome2_icon_savelist
 }
 
 pkg_postinst() {
-	kde4-base_pkg_postinst
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }
 
 pkg_postrm() {
-	kde4-base_pkg_postrm
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }

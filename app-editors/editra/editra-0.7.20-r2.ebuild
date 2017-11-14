@@ -14,7 +14,7 @@ SRC_URI="http://editra.org/uploads/src/${MY_PN}-${PV}.tar.gz"
 
 LICENSE="wxWinLL-3.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="spell"
 
 DEPEND="

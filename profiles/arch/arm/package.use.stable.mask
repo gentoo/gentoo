@@ -12,7 +12,7 @@ dev-db/mariadb galera
 # Alexis Ballier <aballier@gentoo.org> (30 May 2017)
 # No stable fluidsynth yet
 media-libs/sdl-mixer fluidsynth
-<media-sound/mpd-0.20 fluidsynth
+media-sound/mpd fluidsynth
 <media-video/vlc-2.3 fluidsynth
 
 # Alexis Ballier <aballier@gentoo.org> (29 May 2017)

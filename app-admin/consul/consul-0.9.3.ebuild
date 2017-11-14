@@ -42,7 +42,7 @@ src_compile() {
 	# The dev target sets causes build.sh to set appropriate XC_OS
 	# and XC_ARCH, and skips generation of an unused zip file,
 	# avoiding a dependency on app-arch/zip.
-	GOPATH="${S}" \
+	GOPATH="${S}" GOBIN="${S}/bin" \
 		emake -C "${S}/src/${EGO_PN}" dev
 }
 

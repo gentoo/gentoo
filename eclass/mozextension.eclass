@@ -22,7 +22,7 @@ DEPEND="app-arch/unzip"
 
 mozversion_extension_location() {
 	case ${PN} in
-		firefox|firefox-bin)
+		firefox|firefox-bin|palemoon)
 			if [[ $(get_version_component_range 1) -ge 21 ]] ; then
 				return 0
 			fi

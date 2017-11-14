@@ -11,7 +11,7 @@ SRC_URI="https://github.com/drwetter/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="GPL-2 bundled-openssl? ( openssl )"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="bundled-openssl"
 
 RDEPEND="

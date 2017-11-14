@@ -5,4 +5,8 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="cpan">IO-Socket-Multicast</remote-id>
+    <remote-id type="cpan-module">IO::Socket::Multicast</remote-id>
+  </upstream>
 </pkgmetadata>

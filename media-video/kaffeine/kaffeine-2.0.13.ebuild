@@ -11,7 +11,7 @@ HOMEPAGE="https://kaffeine.kde.org/"
 SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2+ handbook? ( FDL-1.3 )"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 CDEPEND="
@@ -47,7 +47,7 @@ RDEPEND="${CDEPEND}
 DOCS=( Changelog NOTES README.md )
 
 src_prepare() {
-	default
+	kde5_src_prepare
 
 	if ! use handbook ; then
 		sed -i CMakeLists.txt \

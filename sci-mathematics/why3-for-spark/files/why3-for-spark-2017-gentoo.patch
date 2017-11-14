@@ -12,3 +12,29 @@
  
  let rec file_concat l =
    match l with
+--- why3-for-spark-gpl-2017-src/src/coq-tactic/why3tac.ml4.old	2017-10-26 22:25:55.289094778 +0200
++++ why3-for-spark-gpl-2017-src/src/coq-tactic/why3tac.ml4	2017-10-26 22:26:10.719807270 +0200
+@@ -1352,7 +1352,7 @@
+     let limit =
+     { Call_provers.empty_limit with Call_provers.limit_time = timelimit } in
+     let call = Driver.prove_task ~command ~limit drv !task in
+-    wait_on_call call
++    wait_on_call (ServerCall call)
+   with
+     | NotFO ->
+         if debug then Printexc.print_backtrace stderr; flush stderr;
+@@ -1399,14 +1399,8 @@
+   | StepLimitExceeded -> error "Step Limit Exceeded"
+   | HighFailure -> error ("Prover failure\n" ^ res.pr_output ^ "\n")
+ 
+-IFDEF COQ84 THEN
+-
+-ELSE
+-
+ let why3tac ?timelimit s = Proofview.V82.tactic (why3tac ?timelimit s)
+ 
+-END
+-
+ end
+ 
+ TACTIC EXTEND Why3

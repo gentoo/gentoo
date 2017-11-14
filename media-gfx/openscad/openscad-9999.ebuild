@@ -30,7 +30,7 @@ DEPEND="
 	media-libs/freetype:2
 	media-libs/glew:*
 	media-libs/harfbuzz
-	sci-mathematics/cgal
+	sci-mathematics/cgal:=
 	>=x11-libs/qscintilla-2.9.4:=[qt5(+)]
 	emacs? ( virtual/emacs )
 "

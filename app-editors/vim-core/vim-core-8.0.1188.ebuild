@@ -48,6 +48,9 @@ src_prepare() {
 		-e '1s|.*|#!'"${EPREFIX}"'/usr/bin/awk -f|' \
 		"${S}"/runtime/tools/mve.awk || die "sed failed"
 
+	# See #77841. We remove this file after the tarball extraction.
+	rm -v "${S}"/runtime/tools/vimspell.sh || die "rm failed"
+
 	# Read vimrc and gvimrc from /etc/vim
 	echo '#define SYS_VIMRC_FILE "'${EPREFIX}'/etc/vim/vimrc"' >> "${S}"/src/feature.h
 	echo '#define SYS_GVIMRC_FILE "'${EPREFIX}'/etc/vim/gvimrc"' >> "${S}"/src/feature.h
@@ -82,16 +85,12 @@ src_prepare() {
 			"${S}"/src/po/Makefile || die "sed failed"
 	fi
 
-	if version_is_at_least 7.3.122; then
-		cp -v "${S}"/src/config.mk.dist "${S}"/src/auto/config.mk || die "cp failed"
-	fi
+	cp -v "${S}"/src/config.mk.dist "${S}"/src/auto/config.mk || die "cp failed"
 
 	# Bug #378107 - Build properly with >=perl-core/ExtUtils-ParseXS-3.20.0
-	if version_is_at_least 7.3 ; then
-		sed -i -e \
-			"s:\\\$(PERLLIB)/ExtUtils/xsubpp:${EPREFIX}/usr/bin/xsubpp:" \
-			"${S}"/src/Makefile || die 'sed for ExtUtils-ParseXS failed'
-	fi
+	sed -i -e \
+		"s:\\\$(PERLLIB)/ExtUtils/xsubpp:${EPREFIX}/usr/bin/xsubpp:" \
+		"${S}"/src/Makefile || die 'sed for ExtUtils-ParseXS failed'
 
 	eapply_user
 }
@@ -200,11 +199,6 @@ src_install() {
 
 		eshopts_pop
 	fi
-
-	# These files might have slight security issues, so we won't
-	# install them. See bug #77841. We don't mind if these don't
-	# exist.
-	rm -v "${ED}${vimfiles}"/tools/vimspell.sh || die "rm failed"
 
 	newbashcomp "${FILESDIR}"/xxd-completion xxd
 }

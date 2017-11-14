@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ inherit eutils
 
 DESCRIPTION="C++ API interface to the MySQL database"
 HOMEPAGE="http://tangentsoft.net/mysql++/"
-SRC_URI="http://www.tangentsoft.net/mysql++/releases/${P}.tar.gz"
+SRC_URI="http://www.tangentsoft.net/mysqlpp/releases/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"

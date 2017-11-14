@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @DEAD
@@ -34,6 +34,7 @@
 # Unlike PHP_EXT_PECL_PKG, setting this variable does not affect
 # HOMEPAGE, PHP_EXT_NAME or ${S}.
 
+die "Please upgrade to php-ext-pecl-r3 (see https://wiki.gentoo.org/wiki/Project:PHP/Php-ext-source-r3_migration_guide).  This eclass is due to be removed."
 
 [[ -z "${PHP_EXT_PECL_PKG}" ]] && PHP_EXT_PECL_PKG="${PN/pecl-/}"
 
@@ -60,7 +61,6 @@ fi
 
 SRC_URI="http://pecl.php.net/get/${FILENAME}"
 HOMEPAGE="http://pecl.php.net/${PECL_PKG}"
-
 
 # @FUNCTION: php-ext-pecl-r2_src_compile
 # @DESCRIPTION:

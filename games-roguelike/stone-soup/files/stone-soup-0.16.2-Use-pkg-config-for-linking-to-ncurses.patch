@@ -18,12 +18,12 @@ index df51e70..2db2781 100644
  ifdef LIBNCURSES_IS_UNICODE
 -NC_LIB = ncurses
 -NC_INCLUDE = $(NC_PREFIX)/include/ncurses
-+NC_LIBS = $(shell $(PKGCONFIG) --lib ncurses 2>/dev/null || echo "-L$(NC_PREFIX)/lib -lncurses")
++NC_LIBS = $(shell $(PKGCONFIG) --libs ncurses 2>/dev/null || echo "-L$(NC_PREFIX)/lib -lncurses")
 +NC_CFLAGS = $(shell $(PKGCONFIG) --cflags ncurses 2>/dev/null || echo "-isystem $(NC_PREFIX)/include/ncurses")
  else
 -NC_LIB = ncursesw
 -NC_INCLUDE = $(NC_PREFIX)/include/ncursesw
-+NC_LIBS = $(shell $(PKGCONFIG) --lib ncursesw || echo "-L$(NC_PREFIX)/lib -lncursesw")
++NC_LIBS = $(shell $(PKGCONFIG) --libs ncursesw || echo "-L$(NC_PREFIX)/lib -lncursesw")
 +NC_CFLAGS = $(shell $(PKGCONFIG) --cflags ncursesw 2>/dev/null || echo "-isystem $(NC_PREFIX)/include/ncursesw")
  endif
  

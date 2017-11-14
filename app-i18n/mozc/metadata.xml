@@ -10,10 +10,9 @@
 		<name>Cjk</name>
 	</maintainer>
 	<longdescription lang="en">
-Mozc is a Japanese Input Method Editor (IME) designed for multi-platform such as Chromium OS, Windows, Mac and Linux. This open-source project originates from Google Japanese Input.
-</longdescription>
+		Mozc is a subset of Google Japanese Input (Google 日本語入力) released in open-source form.
+	</longdescription>
 	<use>
-		<flag name="fcitx">Enable support for <pkg>app-i18n/fcitx</pkg></flag>
 		<flag name="fcitx4">Enable support for <pkg>app-i18n/fcitx</pkg> 4</flag>
 		<flag name="gui">Install graphical user interface tool (mozc_tool)</flag>
 		<flag name="handwriting-tegaki">Use handwriting recognition model from <pkg>app-i18n/tegaki-zinnia-japanese</pkg></flag>
@@ -22,7 +21,6 @@ Mozc is a Japanese Input Method Editor (IME) designed for multi-platform such as
 		<flag name="renderer">Enable native candidate window</flag>
 	</use>
 	<upstream>
-		<remote-id type="sourceforge">jsoncpp</remote-id>
 		<remote-id type="github">google/mozc</remote-id>
 	</upstream>
 </pkgmetadata>

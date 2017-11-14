@@ -54,7 +54,7 @@ src_prepare() {
 	replace-flags -Os -O2
 
 	# regenerate aclocal.m4 to support earlier automake versions
-	rm aclocal.m4 || die
+	rm -f aclocal.m4 || die
 
 	default
 	eautoreconf

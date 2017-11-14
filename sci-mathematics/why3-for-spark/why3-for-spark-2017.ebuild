@@ -9,15 +9,15 @@ MYP=${PN}-gpl-${PV}-src
 
 DESCRIPTION="Platform for deductive program verification"
 HOMEPAGE="http://why3.lri.fr/"
-SRC_URI="https//mirrors.cdn.adacore.com/art/591c45e2c7a447af2deed055
+SRC_URI="http://mirrors.cdn.adacore.com/art/591c45e2c7a447af2deed055
 	-> ${MYP}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="coq doc emacs gtk html hypothesis-selection profiling zarith"
+IUSE="coq doc emacs gtk html hypothesis-selection +ocamlopt profiling zarith zip"
 
-DEPEND=">=dev-lang/ocaml-4.02.3
+DEPEND=">=dev-lang/ocaml-4.02.3[ocamlopt?]
 	dev-ml/menhir
 	coq? ( sci-mathematics/coq )
 	doc? ( dev-tex/rubber )
@@ -25,7 +25,8 @@ DEPEND=">=dev-lang/ocaml-4.02.3
 	emacs? ( app-editors/emacs:* )
 	html? ( dev-tex/hevea )
 	hypothesis-selection? ( dev-ml/ocamlgraph )
-	zarith? ( dev-ml/zarith )"
+	zarith? ( dev-ml/zarith )
+	zip? ( >=dev-ml/camlzip-1.07 )"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}"/${MYP}
@@ -45,28 +46,39 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--disable-coq-tactic \
 		--disable-pvs-libs \
 		--disable-isabelle-libs \
-		--disable-zip \
 		$(use_enable coq coq-libs) \
+		$(use_enable coq coq-tactic) \
 		$(use_enable doc) \
 		$(use_enable emacs emacs-compilation) \
 		$(use_enable gtk ide) \
 		$(use_enable html html-doc) \
 		$(use_enable hypothesis-selection) \
+		$(use_enable ocamlopt native-code) \
 		$(use_enable profiling) \
-		$(use_enable zarith)
+		$(use_enable zarith) \
+		$(use_enable zip)
 }
 
 src_compile() {
 	default
+	if use ocamlopt; then
+		emake byte
+	else
+		# If using bytecode we dont want to strip the binary as it would remove
+		# the bytecode and only leave ocamlrun...
+		export STRIP_MASK="*/bin/*"
+	fi
 	use doc && emake doc
 }
 
 src_install() {
 	default
+	emake DESTDIR="${D}" install-lib
 	emake DESTDIR="${D}" install_spark2014_dev
+	docompress -x /usr/share/doc/${PF}/examples
+	dodoc -r examples
 	if use doc; then
 		dodoc doc/manual.pdf
 		use html && dodoc -r doc/html

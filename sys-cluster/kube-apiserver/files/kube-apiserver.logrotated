@@ -1,4 +1,4 @@
-/var/log/kube-apiserver/* {
+/var/log/kube-apiserver/*.log {
 	missingok
 	size 5M
 	rotate 3

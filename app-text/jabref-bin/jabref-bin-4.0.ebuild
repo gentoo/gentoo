@@ -3,6 +3,8 @@
 
 EAPI=6
 
+JAVA_PKG_WANT_TARGET=1.8
+
 inherit eutils java-pkg-2
 
 MY_PV_1="${PV/_beta/b}"
@@ -22,9 +24,10 @@ DEPEND="app-arch/unzip"
 
 RDEPEND="
 	|| (
-		dev-java/oracle-jre-bin:1.8[javafx]
-		dev-java/oracle-jdk-bin:1.8[javafx]
+	dev-java/oracle-jre-bin:1.8[javafx]
+	dev-java/oracle-jdk-bin:1.8[javafx]
 	)
+	>=virtual/jre-1.8
 "
 
 S="${WORKDIR}"
@@ -39,4 +42,7 @@ src_install() {
 	java-pkg_dolauncher "${PN}" --jar "${PN}.jar"
 	newicon images/external/JabRef-icon-128.png JabRef-bin-icon.png
 	make_desktop_entry "${PN}" JabRef-bin JabRef-bin-icon Office
+	ewarn "Jabref 4.x will convert old 3.x format .bib databases to a new format."
+	ewarn "The conversion is irreversible, backup .bib files before starting Jabref."
+	ewarn "Jabref 4.x is under heavy development and very unstable."
 }

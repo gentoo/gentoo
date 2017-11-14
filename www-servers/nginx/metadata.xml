@@ -9,11 +9,6 @@
     <email>dev-zero@gentoo.org</email>
     <name>Tiziano Müller</name>
   </maintainer>
-  <maintainer type="person">
-    <email>bugs@bergstroem.nu</email>
-    <name>Johan Bergström</name>
-    <description>Co-maintainer, CC on bugs.</description>
-  </maintainer>
   <use>
     <flag name="aio">Enables file AIO support</flag>
     <flag name="http">Enable HTTP core support</flag>

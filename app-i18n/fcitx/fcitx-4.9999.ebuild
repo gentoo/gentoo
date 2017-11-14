@@ -31,6 +31,7 @@ REQUIRED_USE="cairo? ( X ) pango? ( cairo ) qt4? ( X )"
 
 RDEPEND="dev-libs/glib:2
 	sys-apps/dbus
+	sys-apps/util-linux
 	virtual/libiconv
 	virtual/libintl
 	x11-libs/libxkbcommon

@@ -19,7 +19,7 @@ DESCRIPTION="basic hardware drivers for logic analyzers and input/output file fo
 HOMEPAGE="http://sigrok.org/wiki/Libsigrok"
 
 LICENSE="GPL-3"
-SLOT="0"
+SLOT="0/9999"
 IUSE="cxx ftdi java parport python serial static-libs test usb"
 REQUIRED_USE="java? ( cxx ) python? ( cxx ${PYTHON_REQUIRED_USE} )"
 

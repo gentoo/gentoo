@@ -36,10 +36,20 @@ RDEPEND=">=sys-libs/zlib-1.1.3:0=
 		dev-tcltk/tix:0=
 	)
 	!dev-python/pypy-bin:0"
+# don't enforce the dep on pypy with USE=low-memory since it's going
+# to cause either collisions or circular dep on itself
 DEPEND="${RDEPEND}
 	doc? ( dev-python/sphinx )
-	${PYTHON_DEPS}
-	test? ( dev-python/pytest )"
+	!low-memory? (
+		|| (
+			dev-python/pypy
+			dev-python/pypy-bin
+			(
+				dev-lang/python:2.7
+				dev-python/pycparser[python_targets_python2_7(-),python_single_target_python2_7(+)]
+			)
+		)
+	)"
 
 S="${WORKDIR}/${MY_P}-src"
 
@@ -179,6 +189,42 @@ src_compile() {
 	pax-mark m pypy-c libpypy-c.so
 
 	use doc && emake -C pypy/doc html
+
+	einfo "Generating caches and CFFI modules ..."
+
+	# Generate Grammar and PatternGrammar pickles.
+	./pypy-c -c "import lib2to3.pygram, lib2to3.patcomp; lib2to3.patcomp.PatternCompiler()" \
+		|| die "Generation of Grammar and PatternGrammar pickles failed"
+
+	# Generate cffi modules
+	# Please keep in sync with pypy/tool/build_cffi_imports.py!
+#cffi_build_scripts = {
+#    "sqlite3": "_sqlite3_build.py",
+#    "audioop": "_audioop_build.py",
+#    "tk": "_tkinter/tklib_build.py",
+#    "curses": "_curses_build.py" if sys.platform != "win32" else None,
+#    "syslog": "_syslog_build.py" if sys.platform != "win32" else None,
+#    "gdbm": "_gdbm_build.py"  if sys.platform != "win32" else None,
+#    "pwdgrp": "_pwdgrp_build.py" if sys.platform != "win32" else None,
+#    "resource": "_resource_build.py" if sys.platform != "win32" else None,
+	cffi_targets=( audioop syslog pwdgrp resource )
+	use gdbm && cffi_targets+=( gdbm )
+	use ncurses && cffi_targets+=( curses )
+	use sqlite && cffi_targets+=( sqlite3 )
+	use tk && cffi_targets+=( tkinter/tklib )
+
+	local t
+	# all modules except tkinter output to .
+	# tkinter outputs to the correct dir ...
+	cd lib_pypy || die
+	for t in "${cffi_targets[@]}"; do
+		# tkinter doesn't work via -m
+		../pypy-c "_${t}_build.py" || die "Failed to build CFFI bindings for ${t}"
+	done
+
+	# Cleanup temporary objects
+	find -name "_cffi_*.[co]" -delete || die
+	find -type d -empty -delete || die
 }
 
 src_test() {
@@ -217,10 +263,7 @@ src_install() {
 	# Install docs
 	use doc && dodoc -r pypy/doc/_build/html
 
-	einfo "Generating caches and byte-compiling ..."
-
 	local -x PYTHON=${ED%/}${dest}/pypy-c
-	local -x LD_LIBRARY_PATH="${ED%/}${dest}"
 	# we can't use eclass function since PyPy is dumb and always gives
 	# paths relative to the interpreter
 	local PYTHON_SITEDIR=${EPREFIX}/usr/$(get_libdir)/pypy/site-packages
@@ -229,39 +272,7 @@ src_install() {
 	echo "EPYTHON='${EPYTHON}'" > epython.py || die
 	python_domodule epython.py
 
-	# Generate Grammar and PatternGrammar pickles.
-	"${PYTHON}" -c "import lib2to3.pygram, lib2to3.patcomp; lib2to3.patcomp.PatternCompiler()" \
-		|| die "Generation of Grammar and PatternGrammar pickles failed"
-
-	# Generate cffi modules
-	# Please keep in sync with pypy/tool/build_cffi_imports.py!
-#cffi_build_scripts = {
-#    "sqlite3": "_sqlite3_build.py",
-#    "audioop": "_audioop_build.py",
-#    "tk": "_tkinter/tklib_build.py",
-#    "curses": "_curses_build.py" if sys.platform != "win32" else None,
-#    "syslog": "_syslog_build.py" if sys.platform != "win32" else None,
-#    "gdbm": "_gdbm_build.py"  if sys.platform != "win32" else None,
-#    "pwdgrp": "_pwdgrp_build.py" if sys.platform != "win32" else None,
-#    "resource": "_resource_build.py" if sys.platform != "win32" else None,
-	cffi_targets=( audioop syslog pwdgrp resource )
-	use gdbm && cffi_targets+=( gdbm )
-	use ncurses && cffi_targets+=( curses )
-	use sqlite && cffi_targets+=( sqlite3 )
-	use tk && cffi_targets+=( tkinter/tklib )
-
-	local t
-	# all modules except tkinter output to .
-	# tkinter outputs to the correct dir ...
-	cd "${ED%/}${dest}"/lib_pypy || die
-	for t in "${cffi_targets[@]}"; do
-		# tkinter doesn't work via -m
-		"${PYTHON}" "_${t}_build.py" || die "Failed to build CFFI bindings for ${t}"
-	done
-
-	# Cleanup temporary objects
-	find "${ED%/}${dest}" -name "_cffi_*.[co]" -delete || die
-	find "${ED%/}${dest}" -type d -empty -delete || die
+	einfo "Byte-compiling Python standard library..."
 
 	# compile the installed modules
 	python_optimize "${ED%/}${dest}"
