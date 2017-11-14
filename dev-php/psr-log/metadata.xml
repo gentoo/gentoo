@@ -13,9 +13,10 @@
     <email>php-bugs@gentoo.org</email>
   </maintainer>
   <longdescription>
-  	PSR-3 logger, provide a common interface for logging libraries.
-	The main goal is to allow libraries to receive a Psr\Log\LoggerInterface object
-	and write logs to it in a simple and universal way.
+    PSR-3 logger, provide a common interface for logging libraries.
+    The main goal is to allow libraries to receive a
+    Psr\Log\LoggerInterface object and write logs to it in a simple
+    and universal way.
   </longdescription>
   <upstream>
     <remote-id type="github">php-fig/log</remote-id>
