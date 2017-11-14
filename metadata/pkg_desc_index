@@ -18233,7 +18233,7 @@ virtual/perl-version 0.991.600-r1 0.991.700: Virtual for version
 virtual/perl6 0: Convenience virtual for perl6
 virtual/pkgconfig 0-r1: Virtual for the pkg-config implementation
 virtual/pmake 1: Virtual for BSD-like make (to be used with get_bmake)
-virtual/podofo-build 0.9.6_pre20170508-r1 0.9.6_pre20170629: Virtual package for building against PoDoFo
+virtual/podofo-build 0.9.6_pre20170508-r1 0.9.6_pre20170629 0.9.6_pre20171027: Virtual package for building against PoDoFo
 virtual/pypy 5.8.0 5.9.0: A virtual for PyPy Python implementation
 virtual/pypy3 5.8.0-r1 5.9.0: A virtual for PyPy3 Python implementation
 virtual/python-backports_abc 0: A virtual for the Python 3.3+ collections.abc module
@@ -18416,7 +18416,7 @@ www-apps/webmcp 1.2.5 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-apps/wiliki 0.6.1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 4.7.5 4.8 4.8.1 4.8.2 4.8.3: Wordpress PHP and MySQL based content management system (CMS)
-www-client/chromium 62.0.3202.89 63.0.3239.30 63.0.3239.40 64.0.3253.3 64.0.3260.2: Open-source version of Google Chrome web browser
+www-client/chromium 62.0.3202.89 62.0.3202.94 63.0.3239.30 63.0.3239.40 64.0.3253.3 64.0.3260.2: Open-source version of Google Chrome web browser
 www-client/ck4up 1.2: Check for Updates on HTTP pages
 www-client/conkeror 1.0_pre20140212 1.0_pre20150519 1.0.3: A Mozilla-based web browser whose design is inspired by GNU Emacs
 www-client/dillo 3.0.5 3.0.5-r1: Lean FLTK based web browser
