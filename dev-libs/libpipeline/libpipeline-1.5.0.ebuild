@@ -1,9 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
-inherit autotools-utils
+inherit ltprune
 
 DESCRIPTION="a pipeline manipulation library"
 HOMEPAGE="http://libpipeline.nongnu.org/"
@@ -18,6 +18,15 @@ DEPEND="virtual/pkgconfig
 	test? ( dev-libs/check )"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-gnulib-cygwin-sys_select.patch
-	"${FILESDIR}"/${P}-gnulib-darwin-program_name.patch
+	"${FILESDIR}"/${PN}-1.4.1-gnulib-cygwin-sys_select.patch
+	"${FILESDIR}"/${PN}-1.4.1-gnulib-darwin-program_name.patch
 )
+
+src_configure() {
+	econf $(use_enable static-libs static)
+}
+
+src_install() {
+	default
+	prune_libtool_files
+}
