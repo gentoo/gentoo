@@ -13,10 +13,10 @@
     <email>php-bugs@gentoo.org</email>
   </maintainer>
   <longdescription>
-	Small utility library that lets you find a path to the system CA bundle,
-	and includes a fallback to the Mozilla CA bundle.
-	Originally written as part of dev-php/composer,
-	now extracted and made available as a stand-alone library.
+    Small utility library that lets you find a path to the system CA
+    bundle, and includes a fallback to the Mozilla CA bundle.
+    Originally written as part of dev-php/composer, now extracted and
+    made available as a stand-alone library.
   </longdescription>
   <upstream>
     <remote-id type="github">composer/ca-bundle</remote-id>
