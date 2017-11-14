@@ -12,7 +12,7 @@ HOMEPAGE="
 	https://www.kde.org/applications/games/kspaceduel/
 	https://games.kde.org/game.php?game=kspaceduel
 "
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="

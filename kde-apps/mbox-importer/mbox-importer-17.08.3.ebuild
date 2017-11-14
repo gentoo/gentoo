@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="Import mbox email archives from various sources into Akonadi"
 LICENSE="GPL-2+ handbook? ( FDL-1.2+ )"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="

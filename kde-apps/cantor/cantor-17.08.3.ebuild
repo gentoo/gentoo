@@ -11,7 +11,7 @@ inherit kde5 python-r1
 
 DESCRIPTION="Interface for doing mathematics and scientific computing"
 HOMEPAGE="https://www.kde.org/applications/education/cantor https://edu.kde.org/cantor/"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+analitza julia lua postscript python qalculate R"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"

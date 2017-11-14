@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="Library for accessing MBox format mail storages"
 LICENSE="GPL-2+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="$(add_kdeapps_dep kmime)"
