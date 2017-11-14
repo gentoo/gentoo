@@ -8,7 +8,7 @@ PYTHON_REQ_USE="sqlite,xml"
 
 AUTOTOOLS_AUTORECONF=true
 
-inherit autotools-utils python-r1 versionator
+inherit autotools-utils python-r1 versionator xdg-utils
 
 MY_PV=${PV/_/-}
 MY_P="${PN}-${MY_PV}"
@@ -112,4 +112,12 @@ src_install() {
 		python_optimize
 	}
 	python_foreach_impl installation
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }
