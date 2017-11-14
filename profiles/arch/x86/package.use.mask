@@ -106,10 +106,6 @@ net-im/telepathy-connection-managers -steam
 # >x11-drivers/nvidia-drivers-346 on x86 has no UVM support (bug #534156)
 >x11-drivers/nvidia-drivers-346 uvm
 
-# Tim Harder <radhermit@gentoo.org> (11 Oct 2014)
-# Unmask skype support for unstable keywords
-net-im/bitlbee -skype
-
 # Mike Frysinger <vapier@gentoo.org> (04 Aug 2014)
 # Unmask flashrom drivers that only work on x86 due to in/out asm insns #454024
 sys-apps/flashrom -atahpt -nic3com -nicnatsemi -nicrealtek -rayer_spi -satamv

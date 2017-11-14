@@ -56,10 +56,6 @@ sys-cluster/ceph zfs
 # mayavi is broken, bug #500104
 dev-python/apptools test
 
-# Tim Harder <radhermit@gentoo.org> (11 Oct 2014)
-# Masked since skype isn't stable
-net-im/bitlbee skype
-
 # Michał Górny <mgorny@gentoo.org> (30 Mar 2014)
 # Don't apply stable masks to python-exec since we're forcing every
 # impl there anyway. Please keep this in sync with use.stable.mask.
