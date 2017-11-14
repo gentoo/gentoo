@@ -15,7 +15,7 @@ IUSE="$IUSE numa"
 # REMEMBER: also update eclass/mysql*.eclass before committing!
 KEYWORDS="~amd64 ~x86"
 COMMON_DEPEND="numa? ( sys-process/numactl ) dev-libs/libevent:0= ${JAVA_PKG_E_DEPEND}"
-DEPEND="${COMMON_DEPEND} || ( >=sys-devel/gcc-3.4.6 >=sys-devel/gcc-apple-4.0 ) >=virtual/jdk-1.6"
+DEPEND="${COMMON_DEPEND} || ( >=sys-devel/gcc-3.4.6 >=sys-devel/gcc-apple-4.0 ) >=virtual/jdk-1.6 test? ( dev-perl/JSON )"
 RDEPEND="${COMMON_DEPEND} !media-sound/amarok[embedded] >=virtual/jre-1.6"
 
 MY_PATCH_DIR="${WORKDIR}/mysql-extras-${MY_EXTRAS_VER}"
