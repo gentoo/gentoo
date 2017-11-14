@@ -558,7 +558,7 @@ app-crypt/keylookup 2.2 2.2-r9999: A tool to fetch PGP keys from keyservers
 app-crypt/keynote 2.3-r3: The KeyNote Trust-Management System
 app-crypt/kstart 4.1 4.2: Modified versions of kinit for refreshing kerberos tickets automatically
 app-crypt/libmd 0.0.0: Message Digest functions from BSD systems
-app-crypt/libscrypt 1.20 1.21: Shared library to impliment the scrypt algorithm
+app-crypt/libscrypt 1.21: Shared library to impliment the scrypt algorithm
 app-crypt/libsecret 0.18.5: GObject library for accessing the freedesktop.org Secret Service API
 app-crypt/libu2f-host 1.1.1 1.1.3: Yubico Universal 2nd Factor (U2F) Host C Library
 app-crypt/libu2f-server 1.0.1: Yubico Universal 2nd Factor (U2F) server C Library
@@ -586,7 +586,7 @@ app-crypt/openvpn-blacklist 0.4-r1 0.5: Detection of weak openvpn keys produced 
 app-crypt/ophcrack 3.4.0 3.6.0: A time-memory-trade-off-cracker
 app-crypt/ophcrack-tables 1.0-r2: Tables available for ophcrack
 app-crypt/osslsigncode 1.4: Platform-independent tool for Authenticode signing of EXE/CAB files
-app-crypt/p11-kit 0.23.2 0.23.2-r1 0.23.5 0.23.7: Provides a standard configuration setup for installing PKCS#11
+app-crypt/p11-kit 0.23.2 0.23.2-r1 0.23.5 0.23.7 0.23.9: Provides a standard configuration setup for installing PKCS#11
 app-crypt/paperkey 1.4 1.5: OpenPGP key archiver
 app-crypt/pdfcrack 0.15 0.16: Tool for recovering passwords and content from PDF-files
 app-crypt/pesign 0.108 0.112: Tools for manipulating signed PE-COFF binaries
