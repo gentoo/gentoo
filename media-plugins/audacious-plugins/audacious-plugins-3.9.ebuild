@@ -25,7 +25,8 @@ IUSE="aac +adplug alsa ampache aosd bs2b cdda cue ffmpeg flac fluidsynth gnome h
 REQUIRED_USE="
 	^^ ( gtk gtk3 qt5 )
 	qt5? ( !libnotify )
-	|| ( alsa jack pulseaudio sdl )"
+	|| ( alsa jack pulseaudio sdl )
+	ampache? ( qt5 http )"
 
 # The following plugins REQUIRE a GUI build of audacious, because non-GUI
 # builds do NOT install the libaudgui library & headers.
@@ -52,7 +53,7 @@ RDEPEND="
 	~media-sound/audacious-${PV}[gtk?,gtk3?,qt5?]
 	aac? ( >=media-libs/faad2-2.7 )
 	alsa? ( >=media-libs/alsa-lib-1.0.16 )
-	ampache? ( www-apps/ampache )
+	ampache? ( =media-libs/ampache_browser-1* )
 	aosd? (
 		x11-libs/libXrender
 		x11-libs/libXcomposite
