@@ -4543,7 +4543,7 @@ dev-lang/go 1.9.1 1.9.2 9999: A concurrent garbage collected and typesafe progra
 dev-lang/gprolog 1.4.4: A native Prolog compiler with constraint solving over finite domains (FD)
 dev-lang/gwydion-dylan-bin 2.4.0-r1: The Dylan Programming Language Compiler
 dev-lang/helium 1.6 1.8.1: The Helium Compiler
-dev-lang/hy 0.10.0 0.10.1 0.11.1 0.12.0 0.12.1 0.13.0: A LISP dialect running in python
+dev-lang/hy 0.10.0 0.10.1 0.11.1 0.12.0 0.12.1 0.13.0 0.13.1: A LISP dialect running in python
 dev-lang/icc 13.1.5.192 14.0.3.174 15.0.6.233: Intel C/C++ Compiler
 dev-lang/icon 9.4.3-r5 9.5.0 9.5.0-r1 9.5.1: very high level language
 dev-lang/idb 13.0.5.192 14.0.3.174: Intel C/C++/FORTRAN debugger
