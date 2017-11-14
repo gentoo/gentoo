@@ -214,19 +214,14 @@ diff -Naur gprbuild-gpl-2016-src.old/src/gprinstall-sigint_intercepted.ads gprbu
  
     package Binder is
  	make BUILDER="$(BUILDER)" BUILD="$(BUILD)"
---- gprbuild-gpl-2016-src/gpr/src/gpr-conf.adb.old	2017-09-12 21:29:25.945747949 +0200
-+++ gprbuild-gpl-2016-src/gpr/src/gpr-conf.adb	2017-09-12 21:35:16.299101715 +0200
-@@ -1932,6 +1932,13 @@
-                end if;
-             end if;
+--- gprbuild-gpl-2016-src/gpr/src/gpr-env.adb.old	2017-11-13 22:16:53.349083426 +0100
++++ gprbuild-gpl-2016-src/gpr/src/gpr-env.adb	2017-11-13 22:17:22.692590351 +0100
+@@ -1948,6 +1948,8 @@
  
-+            Compiler_Root := First_Compiler_Root;
-+            First_Compiler_Root :=
-+              new Compiler_Root_Data'
-+                (Root => new String'("/usr"),
-+                 Runtimes => null,
-+                 Next => Compiler_Root);
+       end if;
+ 
++      Add_Directories (Self, "/usr/share/gpr");
 +
-             --  Reorder the compiler roots in the PATH order
- 
-             if First_Compiler_Root /= null
+       if Gpr_Prj_Path.all /= "" then
+          Add_Directories (Self, Gpr_Prj_Path.all);
+       end if;
