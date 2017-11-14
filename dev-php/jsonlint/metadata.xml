@@ -13,7 +13,7 @@
     <email>php-bugs@gentoo.org</email>
   </maintainer>
   <longdescription>
-  	Json linter, port of the JavaScript jsonlint library.
+    Json linter, port of the JavaScript jsonlint library.
   </longdescription>
   <upstream>
     <remote-id type="github">Seldaek/jsonlint</remote-id>
