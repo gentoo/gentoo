@@ -8107,7 +8107,7 @@ dev-python/openstackdocstheme 1.16.1: Theme and extension support for Sphinx doc
 dev-python/openstacksdk 0.8.2 0.9.5 0.9.13 0.9.17: A collection of libraries for building applications to work with OpenStack.
 dev-python/optcomplete 1.2-r1: Shell completion self-generator for Python
 dev-python/ordereddict 1.1: A drop-in substitute for Py2.7's new collections.OrderedDict that works in Python 2.4-2.6.
-dev-python/os-brick 1.2.0 1.6.2 1.11.0 1.15.2 1.15.3: OpenStack Cinder brick library for managing local volume attaches
+dev-python/os-brick 1.2.0 1.6.2 1.11.0 1.15.2 1.15.3 1.15.4: OpenStack Cinder brick library for managing local volume attaches
 dev-python/os-client-config 1.16.0 1.21.1 1.26.0 1.28.0: OpenStack Client Configuation Library
 dev-python/os-diskconfig-python-novaclient-ext 0.1.3 9999: Disk Config extension for python-novaclient
 dev-python/os-networksv2-python-novaclient-ext 0.25 0.26: Adds network extension support to python-novaclient
@@ -17600,7 +17600,7 @@ sys-cluster/rgmanager-agents 3.9.2: Resource Manager Agents
 sys-cluster/sanlock 3.4.0-r1: shared storage lock manager
 sys-cluster/singularity 2.3.1 2.4: Application containers for Linux
 sys-cluster/slurm 16.05.11 17.02.9: A Highly Scalable Resource Manager
-sys-cluster/swift 2.13.1-r1 2.15.1-r1 2017.1.9999 2017.2.9999: A highly available, distributed, and eventually consistent object/blob store
+sys-cluster/swift 2.13.1-r1 2.15.1-r1 2.16.0 2017.1.9999 2017.2.9999: A highly available, distributed, and eventually consistent object/blob store
 sys-cluster/teleport 2.2.0 2.2.1 2.2.4 9999: Modern SSH server for teams managing distributed infrastructure
 sys-cluster/torque 2.5.13-r1 4.1.7-r1 4.2.9-r5 4.2.10 6.0.3: Resource manager and queuing system based on OpenPBS
 sys-cluster/util-vserver 0.30.216_pre3120 0.30.216_pre3120-r1: Linux-VServer admin utilities
