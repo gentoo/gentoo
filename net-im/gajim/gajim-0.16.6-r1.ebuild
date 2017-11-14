@@ -14,9 +14,9 @@ MY_PV=${PV/_/-}
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="Jabber client written in PyGTK"
-HOMEPAGE="http://www.gajim.org/"
+HOMEPAGE="https://www.gajim.org/"
 SRC_URI="
-	http://www.gajim.org/downloads/$(get_version_component_range 1-2)/${MY_P}.tar.bz2"
+	https://www.gajim.org/downloads/$(get_version_component_range 1-2)/${MY_P}.tar.bz2"
 #	test? ( https://dev.gentoo.org/~jlec/distfiles/${PN}-tests-${PV}.tar.xz )"
 
 LICENSE="GPL-3"
