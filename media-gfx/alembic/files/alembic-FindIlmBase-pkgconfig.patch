@@ -1,0 +1,28 @@
+diff --git a/cmake/Modules/FindIlmBase.cmake b/cmake/Modules/FindIlmBase.cmake
+index dac8659..e7beb59 100644
+--- a/cmake/Modules/FindIlmBase.cmake
++++ b/cmake/Modules/FindIlmBase.cmake
+@@ -52,7 +52,7 @@ IF(NOT DEFINED ILMBASE_ROOT)
+           SET( ALEMBIC_ILMBASE_ROOT NOTFOUND )
+         ELSE()
+           # TODO: set to default install path when shipping out
+-          SET( ALEMBIC_ILMBASE_ROOT "/usr/local/ilmbase-1.0.1/" )
++          SET( ALEMBIC_ILMBASE_ROOT "/usr" )
+         ENDIF()
+     ELSE()
+         IF ( ${WINDOWS} )
+@@ -97,6 +97,14 @@ FIND_PATH(ILMBASE_INCLUDE_DIR
+     include/OpenEXR
+ )
+ 
++FIND_PACKAGE(PkgConfig)
++IF (PKG_CONFIG_FOUND)
++	PKG_CHECK_MODULES(PC_ILMBASE QUIET IlmBase)
++	IF (PC_ILMBASE_FOUND)
++		SET(_ilmbase_libs_ver_init ${PC_ILMBASE_VERSION})
++	ENDIF()
++ENDIF()
++
+ # If the headers were found, get the version from config file, if not already set.
+ IF(ILMBASE_INCLUDE_DIR)
+   SET(ALEMBIC_ILMBASE_INCLUDE_DIRECTORY ${ILMBASE_INCLUDE_DIR})
