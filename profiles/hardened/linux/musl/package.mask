@@ -89,7 +89,6 @@ games-roguelike/adom
 games-rpg/dear-esther
 games-rpg/dungeon-defenders
 games-rpg/eschalon-book-1-demo
-games-rpg/nwmouse
 games-rpg/penumbra-collection
 games-rpg/wasteland2
 games-server/etqw-ded

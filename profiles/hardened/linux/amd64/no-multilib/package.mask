@@ -115,14 +115,6 @@ games-roguelike/adom
 games-rpg/baldurs-gate-ee
 games-rpg/dear-esther
 games-rpg/eschalon-book-1-demo
-games-rpg/nwmouse
-games-rpg/nwmovies
-games-rpg/nwn
-games-rpg/nwn-cep
-games-rpg/nwn-data
-games-rpg/nwn-penultima
-games-rpg/nwn-penultimarerolled
-games-rpg/nwn-shadowlordsdreamcatcherdemon
 games-server/etqw-ded
 games-server/nwn-ded
 games-server/ut2003-ded

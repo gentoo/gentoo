@@ -91,14 +91,6 @@ games-fps/ut2004-demo
 games-puzzle/hoh-bin
 games-roguelike/adom
 games-rpg/eschalon-book-1-demo
-games-rpg/nwmouse
-games-rpg/nwmovies
-games-rpg/nwn
-games-rpg/nwn-cep
-games-rpg/nwn-data
-games-rpg/nwn-penultima
-games-rpg/nwn-penultimarerolled
-games-rpg/nwn-shadowlordsdreamcatcherdemon
 games-rpg/penumbra-collection
 games-server/etqw-ded
 games-server/nwn-ded

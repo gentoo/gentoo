@@ -394,19 +394,6 @@ app-editors/atom:beta
 # time being.
 >=dev-java/javatoolkit-0.6.0
 
-# Austin English <wizardedit@gentoo.org> (05 Sep 2017)
-# Download has been broken for nearly a year, no alternative found
-# Bug: https://bugs.gentoo.org/599390
-# Removal in 30 days
-games-rpg/nwmouse
-games-rpg/nwmovies
-games-rpg/nwn
-games-rpg/nwn-cep
-games-rpg/nwn-data
-games-rpg/nwn-penultima
-games-rpg/nwn-penultimarerolled
-games-rpg/nwn-shadowlordsdreamcatcherdemon
-
 # Gilles Dartiguelongue <eva@gentoo.org> (04 Sep 2017)
 # Incompatible changes in API in Enchant 2. Bug #629838.
 >=app-text/enchant-2
