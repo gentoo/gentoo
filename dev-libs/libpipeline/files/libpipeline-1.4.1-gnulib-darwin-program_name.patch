@@ -8,8 +8,8 @@ From: Margaret Lewicka <address@hidden>
 
 diff --git a/lib/error.c b/lib/error.c
 index 6683197..36a3db7 100644
---- gnulib/lib/error.c
-+++ gnulib/lib/error.c
+--- a/gnulib/lib/error.c
++++ a/gnulib/lib/error.c
 @@ -113,9 +113,13 @@ int strerror_r ();
  #  endif
  # endif
