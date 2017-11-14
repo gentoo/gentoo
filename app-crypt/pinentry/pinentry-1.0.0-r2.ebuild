@@ -39,10 +39,8 @@ RDEPEND="${CDEPEND}
 "
 
 REQUIRED_USE="
-	|| ( ncurses gtk qt5 )
 	gtk? ( !static )
 	qt5? ( !static )
-	static? ( ncurses )
 "
 
 DOCS=( AUTHORS ChangeLog NEWS README THANKS TODO )
