@@ -21,7 +21,7 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="aac +adplug alsa ampache aosd bs2b cdda cue ffmpeg flac fluidsynth gnome hotkeys http gme gtk gtk3 jack lame libav
-	libnotify libsamplerate lirc mms modplug mp3 nls pulseaudio qt5 scrobbler sdl sid sndfile soxr vorbis wavpack"
+	libnotify libsamplerate lirc mms modplug mp3 nls pulseaudio qt5 scrobbler sdl sid sndfile soxr speedpitch vorbis wavpack"
 REQUIRED_USE="
 	^^ ( gtk gtk3 qt5 )
 	qt5? ( !libnotify )
@@ -86,7 +86,7 @@ RDEPEND="
 	)
 	lame? ( media-sound/lame )
 	libnotify? ( x11-libs/libnotify )
-	libsamplerate? ( media-libs/libsamplerate )
+	libsamplerate? ( media-libs/libsamplerate:= )
 	lirc? ( app-misc/lirc )
 	mms? ( >=media-libs/libmms-0.3 )
 	modplug? ( media-libs/libmodplug )
@@ -97,6 +97,7 @@ RDEPEND="
 	sid? ( >=media-libs/libsidplayfp-1.0.0 )
 	sndfile? ( >=media-libs/libsndfile-1.0.17-r1 )
 	soxr? ( media-libs/soxr )
+	speedpitch? ( media-libs/libsamplerate:= )
 	vorbis? (
 		>=media-libs/libvorbis-1.2.0
 		>=media-libs/libogg-1.1.3
