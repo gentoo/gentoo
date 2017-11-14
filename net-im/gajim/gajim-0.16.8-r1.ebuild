@@ -42,10 +42,7 @@ RDEPEND="${COMMON_DEPEND}
 	dev-python/pyasn1[${PYTHON_USEDEP}]
 	>=dev-python/pyopenssl-0.14[${PYTHON_USEDEP}]
 	>=dev-python/python-nbxmpp-0.5.6[${PYTHON_USEDEP}]
-	crypt? (
-		>=dev-python/python-gnupg-0.4.0[${PYTHON_USEDEP}]
-		dev-python/pycrypto[${PYTHON_USEDEP}]
-		)
+	crypt? ( >=dev-python/python-gnupg-0.4.0[${PYTHON_USEDEP}] )
 	dbus? (
 		dev-python/dbus-python[${PYTHON_USEDEP}]
 		dev-libs/dbus-glib
