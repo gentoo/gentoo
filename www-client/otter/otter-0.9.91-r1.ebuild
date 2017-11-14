@@ -24,6 +24,7 @@ DEPEND="
 	dev-qt/qtprintsupport:5
 	dev-qt/qtscript:5
 	dev-qt/qtsql:5
+	dev-qt/qtsvg:5
 	dev-qt/qtwebkit:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxmlpatterns:5
