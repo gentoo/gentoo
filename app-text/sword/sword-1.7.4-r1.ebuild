@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 inherit eutils flag-o-matic
 
 DESCRIPTION="Library for Bible reading software"
@@ -11,11 +11,12 @@ SRC_URI="http://www.crosswire.org/ftpmirror/pub/${PN}/source/v${PV%.*}/${P}.tar.
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86 ~x86-fbsd ~ppc-macos"
-IUSE="curl debug doc icu static-libs"
+IUSE="clucene curl debug doc icu static-libs"
 
 RDEPEND="sys-libs/zlib
 	curl? ( net-misc/curl )
 	icu? ( dev-libs/icu:= )
+	clucene? ( dev-cpp/clucene )
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
@@ -39,19 +40,21 @@ src_prepare() {
 	DataPath=${EPREFIX}/usr/share/${PN}/
 	EOF
 	epatch "${FILESDIR}/${PN}-1.7.4-gcc6.patch"
+	epatch "${FILESDIR}/${PN}-1.7.4-configure.patch"
+	eapply_user
 }
 
 src_configure() {
 	# TODO: Why is this here and can we remove it?
 	strip-flags
-
 	econf \
 		$(use_enable static-libs static) \
 		$(use_enable debug) \
 		--with-zlib \
 		$(use_with icu) \
 		--with-conf \
-		$(use_with curl)
+		$(use_with curl) \
+		$(use_with clucene)
 }
 
 src_install() {
