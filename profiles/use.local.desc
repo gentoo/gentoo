@@ -1195,6 +1195,7 @@ app-text/stardict:wikiparse - Enable plugin to parse dictionaries in wikimedia f
 app-text/stardict:wordnet - Enable wordnet plugin to find similar English words using lexical database
 app-text/stardict:xdxfparse - Enable plugin to parse dictionaries in xdxf (XML Dictionary eXchange Format)
 app-text/stardict:youdaodict - Enable youdao.com network plugin (for Chinese language)
+app-text/sword:clucene - Use dev-cpp/clucene for lucene search support
 app-text/tesseract:math - Enable support for recognition of equations.
 app-text/tesseract:opencl - Enable opencl support for speedup using GPU computation.
 app-text/tesseract:osd - Enable support orientation and script detection.

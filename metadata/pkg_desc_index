@@ -2451,7 +2451,7 @@ app-text/silvercity 0.9.7-r1: A lexical analyser for many languages
 app-text/sloccount 2.26-r3: Tools for counting Source Lines of Code (SLOC) for a large number of languages
 app-text/spellutils 0.7: spellutils includes 'newsbody' (useful for spellchecking in mails, etc.)
 app-text/stardict 3.0.6-r3 4.0.0_pre20160518-r1: A international dictionary supporting fuzzy and glob style matching
-app-text/sword 1.7.4: Library for Bible reading software
+app-text/sword 1.7.4-r1: Library for Bible reading software
 app-text/sword-modules 1: A collection of modules for the SWORD project
 app-text/t1utils 1.39 1.40 1.41-r1: Type 1 Font utilities
 app-text/tabler 2 2-r1: A utility to create text art tables from delimited input
