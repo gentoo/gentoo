@@ -8771,7 +8771,6 @@ dev-python/simpy 3.0.8: Object-oriented, process-based discrete-event simulation
 dev-python/singledispatch 3.4.0.3: A library to bring functools.singledispatch from Python 3.4 to Python 2.6-3.3
 dev-python/sip 4.19.1 4.19.3 4.19.6_pre1711101252 4.9999: Python extension module generator for C and C++ libraries
 dev-python/six 1.10.0 1.11.0: Python 2 and 3 compatibility library
-dev-python/skype4py 1.0.35-r1: Python wrapper for the Skype API
 dev-python/sleekxmpp 1.3.1-r1: Python library for XMPP
 dev-python/slowaes 0.1-r2: AES implementation in pure Python
 dev-python/smmap 0.9.0: A pure git implementation of a sliding window memory map manager
@@ -12199,7 +12198,6 @@ kde-misc/basket 2.49a_p20170225: A DropDrawers clone. Multiple information organ
 kde-misc/colord-kde 0.5.0: Provides interfaces and session daemon to colord
 kde-misc/gmailfeed 1.1: Plasma 5 applet providing a list of unread emails from your Gmail inbox
 kde-misc/kanyremote 6.4: KDE frontend to Anyremote
-kde-misc/kbiff 4.0: New mail notification utility
 kde-misc/kcollectd 0.9-r1: Simple kdelibs4-based live data viewer for collectd
 kde-misc/kdeconnect 1.0.3 1.2: Adds communication between KDE Plasma and your smartphone
 kde-misc/kdesudo 3.4.2.4-r1: A frontend for sudo. Unlike kdesu, it uses directly sudo as backend
@@ -12214,7 +12212,6 @@ kde-misc/kmarkdownwebview 0.2.0 0.3.0: KPart for rendering Markdown content
 kde-misc/kolor-manager 1.1.0: KControl module for Oyranos CMS cross desktop settings
 kde-misc/kopete-antispam 0.5: Antispam filter for Kopete instant messenger
 kde-misc/kopete-thinklight 0.50: A ThinkPad's light flash on every incoming message
-kde-misc/kover 6: An easy to use WYSIWYG CD cover printer with CDDB support
 kde-misc/krcstat 0.7.6-r1: A Gentoo system management tool
 kde-misc/krename 4.0.9_p20170610: Powerful batch file renamer
 kde-misc/krusader 2.6.0: Advanced twin-panel (commander-style) file-manager with many extras
@@ -12781,7 +12778,6 @@ media-gfx/jpegpixi 1.1.1: almost lossless JPEG pixel interpolator, for correctin
 media-gfx/jpegtoavi 1.5: JPEG to AVI/MJPEG animation command-line conversion tool
 media-gfx/k3d 0.8.0.5: A free 3D modeling, animation, and rendering system
 media-gfx/kcoloredit 2.0.0-r1: Tool for editing color palettes
-media-gfx/kfax 3.3.6-r1: A fax file viewer
 media-gfx/kgraphviewer 2.4.2: Graphviz dot graph file viewer
 media-gfx/kphotoalbum 5.2: Tool for indexing, searching, and viewing images
 media-gfx/kpovmodeler 1.1.3-r1: A modeling and composition program for creating POV-Ray(TM) scenes
@@ -13813,17 +13809,13 @@ media-sound/jalv 1.6.0-r1 1.6.0-r2: Simple but fully featured LV2 host for Jack
 media-sound/jamin 0.95.0-r2 0.95.0-r3: JAMin is the JACK Audio Connection Kit (JACK) Audio Mastering interface
 media-sound/jtagger 1.0-r1: Powerful MP3 tag and filename editor
 media-sound/justeport 0.2: Stream audio to your AirPort Express
-media-sound/k4guitune 1.1.1: Program to tune musical instruments using your computer's mic- or line- input
 media-sound/karlyriceditor 2.2-r1: Application to edit and synchronize lyrics with karaoke songs in various formats
 media-sound/kaudiocreator 1.3_p20170806: CD ripper and audio encoder frontend based on KDE Frameworks
-media-sound/kenvy24 1.2: VIA Envy24 based sound card control utility for KDE
 media-sound/kid3 3.5.0 3.5.1: Simple tag editor based on Qt
 media-sound/klick 0.12.2-r1: An advanced command-line based metronome for JACK
 media-sound/kmetronome 1.0.0: MIDI based metronome using ALSA sequencer
 media-sound/kmid 2.4.0-r1: A MIDI/Karaoke player based on kdelibs
-media-sound/kmidimon 0.7.5: A MIDI monitor for ALSA sequencer
 media-sound/konvertible 1.0.1: A program to convert audio formats with FFmpeg
-media-sound/kradio 4.0.8: kradio is a radio tuner application for KDE
 media-sound/kstreamripper 0.7.100-r2: Program for ripping internet radios
 media-sound/lame 3.99.5-r1 3.100: LAME Ain't an MP3 Encoder
 media-sound/lash 0.5.4-r3: LASH Audio Session Handler
@@ -13972,7 +13964,6 @@ media-sound/shntool 3.0.10-r1: A multi-purpose WAVE data processing and reportin
 media-sound/shorten 3.6.1: fast, low complexity waveform coder (i.e. audio compressor)
 media-sound/sidplay 2.0.9: C64 SID player
 media-sound/sidplayfp 0.3.3 1.1.0 1.4.0: A sidplay2 fork with resid-fp
-media-sound/skype-call-recorder 0.11: Records Skype calls to MP3/Ogg/WAV files
 media-sound/smixer 1.0.4: command-line tool for setting and viewing mixer settings
 media-sound/snd 17.4: Snd is a sound editor
 media-sound/sndfile-tools 1.03 1.03-r1 9999: A small collection of programs that use libsndfile
@@ -14037,7 +14028,6 @@ media-sound/volwheel 0.2.8-r1: A volume control trayicon with mouse wheel suppor
 media-sound/vorbis-tools 1.4.0-r3 1.4.0-r4: tools for using the Ogg Vorbis sound file format
 media-sound/vorbisgain 0.37-r2: Calculator of perceived sound level for Ogg Vorbis files
 media-sound/vsound 0.6-r1: A virtual audio loopback cable
-media-sound/waheela 0.3: Amarok Fullscreen Player
 media-sound/wav2json 0.4: Generate waveformjs.org compatible json data out of wav files
 media-sound/wavbreaker 0.11: wavbreaker/wavmerge GTK+ utility to break or merge WAV files
 media-sound/wavegain 1.3.1: ReplayGain for WAVE audio files
@@ -14153,7 +14143,6 @@ media-video/kino 1.3.4 1.3.4-r1: Kino is a non-linear DV editor for GNU/Linux
 media-video/kmplayer 0.12.0b: Video player plugin for Konqueror and basic MPlayer frontend
 media-video/libav 9.17 11.3 11.3-r1 11.4 11.6 11.7 11.8 11.9999 12 12.1 12.2 9999: Complete solution to record, convert and stream audio and video
 media-video/libva-utils 1.8.0 1.8.1 1.8.2 1.8.3 9999: Collection of utilities and tests for VA-API
-media-video/loopy 0.5.3: Simple video player for KDE
 media-video/lsdvd 0.17: Utility for getting info out of DVDs
 media-video/luvcview 0.2.6: USB Video Class grabber
 media-video/lxdvdrip 1.77: Command line tool to automate the process of ripping and burning DVDs
@@ -14758,7 +14747,7 @@ net-im/ejabberd 16.09 17.01-r2 17.04-r1: Robust, scalable and extensible XMPP se
 net-im/ekg2 0.3.1-r2 9999: Text-based, multi-protocol instant messenger
 net-im/empathy 3.12.12 3.12.14: Telepathy instant messaging and video/audio call client for GNOME
 net-im/err 1.7.1-r1: Plugin based XMPP chatbot designed to be easily deployable, extensible and maintainable
-net-im/gajim 0.16.6-r1 0.16.8: Jabber client written in PyGTK
+net-im/gajim 0.16.6-r1 0.16.8 0.16.8-r1: Jabber client written in PyGTK
 net-im/gg-transport 2.2.4-r1 2.2.6: Gadu-Gadu transport for Jabber
 net-im/gitter-bin 3.1.0: Chat and network platform
 net-im/hangups 9999: Third Party IM Client for Google Hangouts
@@ -14787,7 +14776,6 @@ net-im/sendxmpp 1.23 1.24: A perl-script to send xmpp (jabber), similar to what 
 net-im/silc-toolkit 1.1.10: SDK for the SILC protocol
 net-im/skype 4.3.0.37-r5 4.3.0.37-r6: P2P Internet Telephony (VoiceIP) client
 net-im/skypeforlinux 5.4.0.1 5.5.0.1: Instant messaging client, with support for audio and video
-net-im/skypetab-ng 0.5.2 0.5.2_p20150201 9999: An LD_PRELOAD wrapper that adds tabs to Skype for Linux
 net-im/slack-bin 2.1.2 2.5.2 2.6.3 2.8.0 2.8.2: Team collaboration tool
 net-im/telegram-desktop-bin 1.1.19 1.1.23-r1: Official desktop client for Telegram (binary package)
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers
@@ -15613,7 +15601,6 @@ net-p2p/go-ethereum 1.5.5: Official golang implementation of the Ethereum protoc
 net-p2p/go-ipfs-bin 0.4.1 0.4.2 0.4.10 0.4.11: go-ipfs is the main implementation of IPFS.
 net-p2p/gtk-gnutella 1.1.11 1.1.11-r1 1.1.13: A GTK+ Gnutella client
 net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta files
-net-p2p/kmldonkey 2.0.7: Provides integration for the MLDonkey P2P software
 net-p2p/ktorrent 5.1.0: Powerful BitTorrent client based on KDE Frameworks
 net-p2p/litecoind 0.10.4.0: P2P Internet currency based on Bitcoin but easier to mine
 net-p2p/mktorrent 1.0-r1: Simple command line utility to create BitTorrent metainfo files
