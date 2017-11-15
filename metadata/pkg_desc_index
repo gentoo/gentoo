@@ -1486,7 +1486,7 @@ app-i18n/dbskkd-cdb 2.00 3.00: SKK dictionary server based on cdb
 app-i18n/enca 1.19-r1: Detect and convert encoding of text files
 app-i18n/fbiterm 0.5-r2: Framebuffer internationalized terminal emulator
 app-i18n/fbterm 1.7-r3: Fast terminal emulator for the Linux framebuffer
-app-i18n/fcitx 4.2.9.1 4.2.9.2 4.2.9.3 4.2.9.4 4.9999: Fcitx (Flexible Context-aware Input Tool with eXtension) input method framework
+app-i18n/fcitx 4.2.9.1 4.2.9.2 4.2.9.3 4.2.9.4 4.2.9.5 4.9999: Fcitx (Flexible Context-aware Input Tool with eXtension) input method framework
 app-i18n/fcitx-anthy 0.1.1 0.2.1 0.2.2 0.2.3 4.9999: Japanese Anthy input methods for Fcitx
 app-i18n/fcitx-chewing 0.2.0 0.2.2 0.2.3 4.9999: Chinese Chewing input method for Fcitx
 app-i18n/fcitx-cloudpinyin 0.3.1 0.3.4 0.3.5 4.9999: Internet look-up support for Chinese Pinyin input methods for Fcitx
@@ -1494,12 +1494,12 @@ app-i18n/fcitx-configtool 0.4.6 0.4.8 0.4.9 0.4.10 4.9999: GTK+ GUI configuratio
 app-i18n/fcitx-hangul 0.2.1 0.3.0 0.3.1 4.9999: Korean Hangul input method for Fcitx
 app-i18n/fcitx-libpinyin 0.2.1 0.3.1 0.3.3 0.5.1 0.5.2 0.5.3 4.9999: Chinese LibPinyin input methods for Fcitx
 app-i18n/fcitx-m17n 0.2.3 0.2.4 4.9999: m17n-provided input methods for Fcitx
-app-i18n/fcitx-qt5 1.0.5 1.0.6 1.1.0 1.1.1 4.9999: Fcitx input method module for Qt 5
+app-i18n/fcitx-qt5 1.0.5 1.0.6 1.1.0 1.1.1 1.2.0 4.9999: Fcitx input method module for Qt 5
 app-i18n/fcitx-rime 0.2.0 0.3.1 0.3.2 4.9999: Chinese RIME input method for Fcitx
 app-i18n/fcitx-sayura 0.1.1 0.1.2 4.9999: Sinhala Sayura input method for Fcitx
 app-i18n/fcitx-sunpinyin 0.4.0 0.4.1 0.4.2 4.9999: Chinese SunPinyin input method for Fcitx
 app-i18n/fcitx-table-extra 0.3.3 0.3.6 0.3.7 0.3.8 4.9999: Extra Chinese table input methods for Fcitx
-app-i18n/fcitx-unikey 0.2.0 0.2.4 0.2.5 0.2.6 4.9999: Vietnamese Unikey input methods for Fcitx
+app-i18n/fcitx-unikey 0.2.0 0.2.4 0.2.5 0.2.6 0.2.7 4.9999: Vietnamese Unikey input methods for Fcitx
 app-i18n/freewnn 1.1.1_alpha22 1.1.1_alpha23: Network-Extensible Kana-to-Kanji Conversion System
 app-i18n/ibus 1.5.12 1.5.15 1.5.16: Intelligent Input Bus for Linux / Unix OS
 app-i18n/ibus-anthy 1.5.4 1.5.9: Japanese Anthy engine for IBus
@@ -1537,7 +1537,7 @@ app-i18n/kcc 1.0: A Kanji code converter
 app-i18n/kcm-fcitx 0.4.3 0.5.3 0.5.4 0.5.5 4.4.9999 4.5.9999: KDE configuration module for Fcitx
 app-i18n/kde-l10n-scripts 9999: Set of scripts to manage KDE translation files
 app-i18n/kimera 2.11-r1 2.11-r2: A Japanese input method which supports the XIM protocol
-app-i18n/kinput2 3.1-r1 3.1-r2: A Japanese input server which supports the XIM protocol
+app-i18n/kinput2 3.1-r2: A Japanese input server which supports the XIM protocol
 app-i18n/libcangjie 1.1 1.3: The library implementing the Cangjie input method
 app-i18n/libchewing 0.5.1 9999: Intelligent phonetic (Zhuyin/Bopomofo) input method library
 app-i18n/libguess 1.1 1.2: A high-speed character set detection library
@@ -2348,7 +2348,7 @@ app-text/libgepub 0.4 0.5.2: GObject based library for handling and rendering ep
 app-text/libgxps 0.2.5 0.3.0: Library for handling and rendering XPS documents
 app-text/liblangtag 0.6.2: An interface library to access tags for identifying languages
 app-text/libmspub 0.1.2 9999: Library parsing Microsoft Publisher documents
-app-text/libmwaw 0.3.11-r1 0.3.12 9999: Library parsing many pre-OSX MAC text formats
+app-text/libmwaw 0.3.11-r1 0.3.12 0.3.13 9999: Library parsing many pre-OSX MAC text formats
 app-text/libodfgen 0.1.6 9999: Library to generate ODF documents from libwpd and libwpg
 app-text/libpaper 1.1.24-r2 1.1.24_p5: Library for handling paper characteristics
 app-text/libqxp 0.0.0: Library parsing QuarkXpress documents
@@ -14813,7 +14813,7 @@ net-irc/irssi-xmpp 0.53: An irssi plugin providing Jabber/XMPP support
 net-irc/irssistats 0.75: Generates HTML IRC stats based on irssi logs
 net-irc/jircii 41: jIRCii - IRC client written in Java
 net-irc/konversation 1.7.2 1.7.2-r1 1.7.3: A user friendly IRC Client
-net-irc/kvirc 5.0_pre20170801214745 5.0_pre20171001143427 9999: Advanced IRC Client
+net-irc/kvirc 5.0_pre20171001143427 9999: Advanced IRC Client
 net-irc/limnoria 20150523 20150829 20171025 99999999: Python based extensible IRC infobot and channel bot
 net-irc/miau 0.6.6: Persistent IRC bouncer with multi-client support - a fork of muh
 net-irc/muh 2.2a 2.2a-r1: Persistent IRC bouncer

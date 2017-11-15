@@ -10,4 +10,4 @@ RDEPEND=~dev-db/m17n-db-1.7.0 X? ( x11-libs/libX11 athena? ( x11-libs/libXaw ) b
 SLOT=0
 SRC_URI=mirror://nongnu/m17n/m17n-lib-1.7.0.tar.gz
 _eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=c1692b71c1c80609202606008dbbbe78
+_md5_=4855269d547efc163bce98d2ad5b8ebf
