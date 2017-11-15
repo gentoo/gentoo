@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
-		<remote-id type="launchpad">kdocker</remote-id>
-		<bugs-to>https://bugs.launchpad.net/kdocker</bugs-to>
+		<remote-id type="github">user-none/KDocker</remote-id>
+		<bugs-to>https://github.com/user-none/KDocker/issues</bugs-to>
 	</upstream>
 </pkgmetadata>
