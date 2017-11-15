@@ -5750,8 +5750,6 @@ net-im/qutim:tools - Enable some extra tools for qt developers
 net-im/qutim:vkontakte - Enable vkontakte protocol support
 net-im/qutim:webkit - Enable Adium-like WebView plugin
 net-im/qutim:xscreensaver - Use X screensaver protocol extension to monitor idle/active status based on mouse/keyboard events
-net-im/skype:apulse - Use media-sound/apulse for PulseAudio emulation
-net-im/skype:pax_kernel - Triggers a paxmarking of the main skype binary
 net-im/skypeforlinux:pax_kernel - Triggers a paxmarking of the main skype binary
 net-im/telepathy-connection-managers:gadu - Enable Gadu Gadu protocol support.
 net-im/telepathy-connection-managers:irc - Enable Internet Relay Chat (IRC) support.
