@@ -188,6 +188,9 @@ pkg_setup() {
 }
 
 src_prepare() {
+	# Calling this here supports resumption via FEATURES=keepwork
+	python_setup
+
 	default
 
 	mkdir -p third_party/node/linux/node-linux-x64/bin || die
