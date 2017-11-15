@@ -1729,7 +1729,7 @@ app-misc/brewtarget 2.3.1: Application to create and manage beer recipes
 app-misc/btail 0.3: Bayesian logfile filter
 app-misc/byobu 5.122 5.123: A set of profiles for the GNU Screen console window manager (app-misc/screen)
 app-misc/c_rehash 1.0.2g_p8 1.7-r1: c_rehash script from OpenSSL
-app-misc/ca-certificates 20161130.3.30-r1 20161130.3.30.2 20170717.3.32.1 20170717.3.33: Common CA Certificates PEM files
+app-misc/ca-certificates 20161130.3.30-r1 20161130.3.30.2 20170717.3.32.1 20170717.3.33 20170717.3.34: Common CA Certificates PEM files
 app-misc/cadubi 1.3: CADUBI is an application that allows you to draw ASCII-Art images
 app-misc/calendar 0.9.1 0.9.1-r1: Standard unix calendar program for Linux, ported from OpenBSD
 app-misc/carbon-c-relay 3.0 3.1-r1 3.2: Enhanced C version of Carbon relay, aggregator and rewriter
@@ -5017,7 +5017,7 @@ dev-libs/newt 0.52.15 0.52.18 0.52.20: Redhat's Newt windowing toolkit developme
 dev-libs/npth 1.3 1.4 1.5: New GNU Portable Threads Library
 dev-libs/nsgenbind 0.4: generate javascript to dom bindings from w3c webidl files
 dev-libs/nspr 4.13.1 4.16 4.17: Netscape Portable Runtime
-dev-libs/nss 3.29.5 3.32.1 3.33: Mozilla's Network Security Services library that implements PKI support
+dev-libs/nss 3.29.5 3.32.1 3.33 3.34: Mozilla's Network Security Services library that implements PKI support
 dev-libs/ntl 5.5.2 6.1.0 9.3.0 9.6.4 10.5.0: High-performance and portable Number Theory C++ library
 dev-libs/ocl-icd 2.1.3 2.2.3 2.2.8 2.2.11: Alternative to vendor specific OpenCL ICD loaders
 dev-libs/onigmo 6.1.3: Onigmo is a regular expressions library forked from Oniguruma
@@ -17876,7 +17876,7 @@ sys-kernel/raspberrypi-sources 4.4.9999 4.9.9999 4.10.9999 4.11.9999 4.12.9999 4
 sys-kernel/rt-sources 3.18.69_p75 4.1.42_p50 4.4.86_p99 4.9.47_p37 4.11.12_p13 4.11.12_p14 4.11.12_p16 4.13.7_p1 4.13.10_p3: Full Linux 4.13 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.6.0_rc13-r2 0.6.0_rc14-r3 0.6.1-r3 0.6.2-r5 0.6.3-r1 0.6.4.2 0.6.5.2 0.6.5.3 0.6.5.3-r1 0.6.5.4 0.6.5.4-r1 0.6.5.6 0.6.5.7 0.6.5.8 0.6.5.9 0.6.5.10 0.6.5.11 0.7.0 0.7.1 0.7.2 0.7.3 9999: The Solaris Porting Layer is a Linux kernel module which provides many of the Solaris kernel APIs
 sys-kernel/tuxonice-sources 3.4.110 3.4.111 3.4.112 3.10.100 3.10.101 3.12.56 3.12.58 3.12.60 3.14.64 3.14.67 3.14.70 3.18.28 3.18.31 3.18.34 4.1.19 4.1.22 4.1.24 4.2.8 4.3.6 4.4.5 4.4.8 4.4.11 4.5.2 4.5.4: TuxOnIce + Gentoo patchset sources
-sys-kernel/vanilla-sources 3.2.95 3.16.50 4.1.46 4.4.97 4.9.61 4.13.12 4.14.0: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 3.2.95 3.16.50 4.1.46 4.4.98 4.9.62 4.13.13 4.14.0: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/zen-sources 3.8.9999 3.9.9999 3.10.9999 3.11.9999 3.12.9999 3.13.9999: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
