@@ -88,6 +88,8 @@ RDEPEND="${COMMON_DEPEND}
 	!media-libs/mlt++
 "
 
+DOCS=( AUTHORS ChangeLog NEWS README docs/{framework,melt,mlt{++,-xml}}.txt )
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.2.0-ruby-link.patch
 	"${FILESDIR}"/${P}-libebur128-unbundle.patch
@@ -186,7 +188,7 @@ src_configure() {
 
 src_install() {
 	emake DESTDIR="${D}" install
-	dodoc AUTHORS ChangeLog NEWS README docs/*.txt
+	einstalldocs
 
 	dodir /usr/share/${PN}
 	insinto /usr/share/${PN}
