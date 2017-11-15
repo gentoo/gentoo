@@ -19,7 +19,7 @@ else
 	SRC_URI="https://download.fcitx-im.org/${PN}/${P}.tar.xz"
 fi
 
-LICENSE="GPL-2+"
+LICENSE="BSD GPL-2+"
 SLOT="4"
 KEYWORDS=""
 IUSE=""
