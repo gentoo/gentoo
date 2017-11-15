@@ -5,7 +5,6 @@ EAPI=6
 
 MY_PN="${PN/PEAR-/}"
 MY_PV="${PV/_/}"
-MY_PV="${MY_PV/beta/b}"
 MY_P="${MY_PN}-${MY_PV}"
 
 DESCRIPTION="PHP interface to the GNU Privacy Guard (GnuPG)"
@@ -16,14 +15,15 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="test"
 
-# Really only needs PEAR_Exception, not PEAR-PEAR.
 RDEPEND="app-crypt/gnupg
 	dev-lang/php:*[posix,unicode]
 	dev-php/PEAR-Console_CommandLine
-	dev-php/PEAR-PEAR"
+	dev-php/PEAR-Exception"
 DEPEND="test? (	${RDEPEND} dev-php/phpunit )"
 
 S="${WORKDIR}/${MY_P}"
+
+PATCHES=( "${FILESDIR}/fix-unit-tests-with-new-gpg.patch" )
 
 src_prepare() {
 	default
