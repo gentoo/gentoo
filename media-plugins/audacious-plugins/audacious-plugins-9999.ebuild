@@ -135,7 +135,6 @@ src_configure() {
 	econf \
 		--enable-mpris2 \
 		--enable-songchange \
-		--enable-speedpitch \
 		--disable-oss4 \
 		--disable-qtaudio \
 		--disable-qtglspectrum \
@@ -172,6 +171,7 @@ src_configure() {
 		$(use_enable sid) \
 		$(use_enable sndfile) \
 		$(use_enable soxr) \
+		$(use_enable speedpitch) \
 		$(use_enable vorbis) \
 		$(use_enable wavpack) \
 		$(use_with ffmpeg ffmpeg $(usex libav libav ffmpeg))
