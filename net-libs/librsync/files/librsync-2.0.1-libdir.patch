@@ -1,0 +1,15 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f40bf1d..b123d09 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -333,5 +333,9 @@ endif (ENABLE_COMPRESSION)
+ set_target_properties(rsync PROPERTIES VERSION ${LIBRSYNC_VERSION}
+         SOVERSION ${LIBRSYNC_MAJOR_VERSION})
+-install(TARGETS rsync ${INSTALL_TARGETS_DEFAULT_ARGS} DESTINATION lib)
++
++if (NOT TARGET_LIBDIR)
++  set(TARGET_LIBDIR lib)
++endif()
++install(TARGETS rsync ${INSTALL_TARGETS_DEFAULT_ARGS} DESTINATION ${TARGET_LIBDIR})
+ 
+ 
