@@ -40,7 +40,7 @@ COMMON_DEPEND="
 	jack? (
 		>=dev-libs/libxml2-2.5
 		media-libs/ladspa-sdk
-		>=media-sound/jack-audio-connection-kit-0.121.3
+		virtual/jack
 	)
 	libsamplerate? ( >=media-libs/libsamplerate-0.1.2 )
 	lua? ( >=dev-lang/lua-5.1.4-r4:= )
