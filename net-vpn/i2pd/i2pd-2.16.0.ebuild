@@ -38,7 +38,7 @@ CMAKE_USE_DIR="${S}/build"
 
 DOCS=( README.md contrib/i2pd.conf contrib/tunnels.conf )
 
-PATCHES=( "${FILESDIR}/${PN}-2.5.1-fix_installed_components.patch" )
+PATCHES=( "${FILESDIR}/${PN}-2.14.0-fix_installed_components.patch" )
 
 src_configure() {
 	mycmakeargs=(
