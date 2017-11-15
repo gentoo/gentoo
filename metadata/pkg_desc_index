@@ -14963,7 +14963,7 @@ net-libs/libproxy 0.4.13-r2: Library for automatic proxy configuration managemen
 net-libs/libqmi 1.12.6 1.14.0 1.16.0 1.16.2 1.18.0 9999: Qualcomm MSM (Mobile Station Modem) Interface (QMI) modem protocol helper library
 net-libs/librouteros 1.1.2: Library for accessing MikroTik's RouterOS via its API
 net-libs/librpcsecgss 0.16 0.19 0.19-r1: implementation of rpcsec_gss (RFC 2203) for secure rpc communication
-net-libs/librsync 0.9.7-r3 2.0.0 2.0.0-r1: Remote delta-compression library
+net-libs/librsync 0.9.7-r3 2.0.0 2.0.0-r1 2.0.1: Remote delta-compression library
 net-libs/libs3 2.0-r1: A C Library API for Amazon S3
 net-libs/libsearpc 3.0.8-r1: A simple C language RPC framework
 net-libs/libsignon-glib 1.13-r1 1.14: GLib binding for the D-Bus API provided by signond
