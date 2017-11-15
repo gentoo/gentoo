@@ -165,7 +165,7 @@ app-admin/passook 20121001: Password generator capable of generating pronounceab
 app-admin/passwordsafe 1.02.1_beta: Password manager with wxGTK based frontend
 app-admin/paxtest 0.9.15-r1: PaX regression test suite
 app-admin/perl-cleaner 2.20 2.23 2.24 2.25 2.26 9999: User land tool for cleaning up old perl installs
-app-admin/petrovich 1.0.0 1.0.0-r1: Filesystem Integrity Checker
+app-admin/petrovich 1.0.0-r1: Filesystem Integrity Checker
 app-admin/pprocm 1.0-r2: ncurses-based program to monitor CPU, disk, network and memory usage
 app-admin/prelude-manager 3.0.0 3.1.0 4.0.0: Bus communication for all Prelude modules
 app-admin/procinfo 18-r2: Displays some kernel stats and info on a running Linux system
@@ -14552,7 +14552,7 @@ net-dialup/dial 1.2-r2: A simple client for DWUN
 net-dialup/diald 1.0-r3: Daemon that provides on demand IP links via SLIP or PPP
 net-dialup/dwun 0.96e-r4: Dialer Without a Useful Name (DWUN)
 net-dialup/fbgetty 0.1.698-r1: An extended getty for the framebuffer console
-net-dialup/freeradius 3.0.14 3.0.15: Highly configurable free RADIUS server
+net-dialup/freeradius 3.0.15: Highly configurable free RADIUS server
 net-dialup/freeradius-client 1.1.7: FreeRADIUS Client framework
 net-dialup/globespan-adsl 0.11-r1 0.12: Driver for various ADSL modems. Also known as EciAdsl
 net-dialup/hcfpcimodem 1.20 1.21: Linuxant's modem driver for Connexant HCF chipset
