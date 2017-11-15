@@ -72,6 +72,8 @@ RDEPEND="${COMMON_DEPEND}
 	!app-office/calligra-l10n:4[calligra_features_krita(+)]
 "
 
+RESTRICT+=" test"
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-vc-fix-gcc49-abi.patch
 	"${FILESDIR}"/${P}-qt-5.9.patch
