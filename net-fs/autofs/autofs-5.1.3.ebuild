@@ -39,7 +39,7 @@ RDEPEND=">=sys-apps/util-linux-2.20
 		)
 	)
 	libtirpc? ( net-libs/libtirpc )
-	!libtirpc? ( sys-libs/glibc[rpc(-)] )
+	!libtirpc? ( elibc_glibc? ( sys-libs/glibc[rpc(-)] ) )
 "
 DEPEND="${RDEPEND}
 	sys-devel/flex
