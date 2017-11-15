@@ -134,6 +134,11 @@ pkg_postinst() {
 	xdg_mimeinfo_database_update
 	use gtk2 && gnome2_query_immodules_gtk2
 	use gtk3 && gnome2_query_immodules_gtk3
+
+	elog
+	elog "Quick Phrase Editor is provided by:"
+	elog "  app-i18n/fcitx-qt5:4"
+	elog
 }
 
 pkg_postrm() {
