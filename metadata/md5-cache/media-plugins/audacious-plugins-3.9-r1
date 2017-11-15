@@ -10,4 +10,4 @@ RDEPEND=app-arch/unzip dev-libs/dbus-glib dev-libs/glib dev-libs/libxml2:2 ~medi
 REQUIRED_USE=^^ ( gtk gtk3 qt5 ) qt5? ( !libnotify ) || ( alsa jack pulseaudio sdl ) ampache? ( qt5 http )
 SLOT=0
 SRC_URI=!gtk3? ( http://distfiles.audacious-media-player.org/audacious-plugins-3.9.tar.bz2 ) gtk3? ( http://distfiles.audacious-media-player.org/audacious-plugins-3.9-gtk3.tar.bz2 )
-_md5_=6805e8afaf7ded44c97f7aeb3e82532a
+_md5_=22196308934f7afeaa8f216ace93a420

@@ -13000,7 +13000,7 @@ media-libs/gstreamer-editing-services 1.10.3 1.10.4 1.12.3: SDK for making video
 media-libs/guilib 1.2.1: a simple widget set for SDL
 media-libs/gupnp-dlna 0.10.4 0.10.5: Library providing DLNA-related functionality for MediaServers
 media-libs/hamlib 3.1: Ham radio backend rig control libraries
-media-libs/harfbuzz 1.4.5 1.4.6-r2 1.4.8 1.5.1 1.6.2 1.6.3 9999: An OpenType text shaping engine
+media-libs/harfbuzz 1.4.5 1.4.6-r2 1.4.8 1.5.1 1.6.3 1.7.1 9999: An OpenType text shaping engine
 media-libs/hupnp-ng 9999: A software library for building UPnP devices, fork of herqq
 media-libs/icc-profiles-basiccolor-printing2009 1.2.0: ICC profiles for printing/offset
 media-libs/icc-profiles-openicc 1.3.0 1.3.1: ICC color profiles by OpenICC
@@ -18413,7 +18413,7 @@ www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 52.2.0 52.4.0 52.5.0 57.0: Firefox Web Browser
 www-client/firefox-bin 52.5.0 57.0: Firefox Web Browser
 www-client/google-chrome 62.0.3202.94: The web browser from Google
-www-client/google-chrome-beta 63.0.3239.40: The web browser from Google
+www-client/google-chrome-beta 63.0.3239.52: The web browser from Google
 www-client/google-chrome-unstable 64.0.3260.2: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2 3.49.1 3.49.2-r1: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
@@ -18463,7 +18463,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.30.0 1.30.2 1.30.2-r1: Capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 27.0.0.183: Adobe Flash Player
-www-plugins/chrome-binary-plugins 62.0.3202.94 63.0.3239.40_beta 64.0.3260.2_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 62.0.3202.94 63.0.3239.52_beta 64.0.3260.2_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3 0.3.7: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20160329-r1: GNU Flash movie player that supports many SWF v7,8,9 features
