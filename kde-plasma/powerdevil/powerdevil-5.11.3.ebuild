@@ -9,7 +9,7 @@ inherit kde5
 DESCRIPTION="Power management for KDE Plasma Shell"
 HOMEPAGE="https://projects.kde.org/projects/kde/workspace/powerdevil"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="brightness-control consolekit +wireless"
+IUSE="consolekit +wireless"
 
 DEPEND="
 	$(add_frameworks_dep kactivities)
@@ -40,7 +40,6 @@ DEPEND="
 	$(add_qt_dep qtx11extras)
 	virtual/libudev:=
 	x11-libs/libxcb
-	brightness-control? ( app-misc/ddcutil )
 	wireless? (
 		$(add_frameworks_dep bluez-qt)
 		$(add_frameworks_dep networkmanager-qt)
@@ -60,7 +59,7 @@ RDEPEND="${DEPEND}
 
 src_configure() {
 	local mycmakeargs=(
-		-DWITH_DDCUTIL=$(usex brightness-control)
+		-DWITH_DDCUTIL=OFF
 		$(cmake-utils_use_find_package wireless KF5BluezQt)
 		$(cmake-utils_use_find_package wireless KF5NetworkManagerQt)
 	)
