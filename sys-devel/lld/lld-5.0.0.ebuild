@@ -52,7 +52,7 @@ src_configure() {
 
 		-DLLVM_INCLUDE_TESTS=$(usex test)
 		# TODO: fix detecting pthread upstream in stand-alone build
-		-DPTHREAD_LIB='-lpthread'
+		-DLLVM_PTHREAD_LIB='-lpthread'
 	)
 	use test && mycmakeargs+=(
 		-DLLVM_BUILD_TESTS=ON
