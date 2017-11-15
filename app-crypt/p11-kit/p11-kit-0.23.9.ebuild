@@ -11,7 +11,7 @@ SRC_URI="https://github.com/p11-glue/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="+asn1 debug +libffi +trust"
 REQUIRED_USE="trust? ( asn1 )"
 
@@ -24,6 +24,20 @@ DEPEND="${RDEPEND}
 pkg_setup() {
 	# disable unsafe tests, bug#502088
 	export FAKED_MODE=1
+}
+
+src_prepare() {
+	if [[ ${CHOST} == *-solaris2.* && ${CHOST##*-solaris2.} -lt 11 ]] ; then
+		# Solaris 10 and before doesn't know about XPG7 (XOPEN_SOURCE=700)
+		# drop to XPG6 to make feature_tests.h happy
+		sed -i -e '/define _XOPEN_SOURCE/s/700/600/' common/compat.c || die
+		# paths.h isn't available, oddly enough also not used albeit included
+		sed -i -e '/#include <paths.h>/d' trust/test-trust.c || die
+		# we don't have SUN_LEN here
+		sed -i -e 's/SUN_LEN \(([^)]\+)\)/strlen (\1->sun_path)/' \
+			p11-kit/server.c || die
+	fi
+	default
 }
 
 multilib_src_configure() {
