@@ -237,6 +237,8 @@ src_install() {
 	doexe pypy3-c libpypy3-c.so
 	pax-mark m "${ED%/}${dest}/pypy3-c" "${ED%/}${dest}/libpypy3-c.so"
 	insinto "${dest}"
+	# preserve mtimes to avoid obsoleting caches
+	insopts -p
 	doins -r include lib_pypy lib-python
 	dosym ../$(get_libdir)/pypy3/pypy3-c /usr/bin/pypy3
 	dodoc README.rst
