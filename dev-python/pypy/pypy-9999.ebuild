@@ -247,6 +247,8 @@ src_install() {
 	doexe pypy-c libpypy-c.so
 	pax-mark m "${ED%/}${dest}/pypy-c" "${ED%/}${dest}/libpypy-c.so"
 	insinto "${dest}"
+	# preserve mtimes to avoid obsoleting caches
+	insopts -p
 	doins -r include lib_pypy lib-python
 	dosym ../$(get_libdir)/pypy/pypy-c /usr/bin/pypy
 	dodoc README.rst
