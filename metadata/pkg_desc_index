@@ -10504,7 +10504,7 @@ dev-util/itstool 2.0.2: Translation tool for XML documents that uses gettext fil
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jay 1.1.1-r2: A LALR(1) parser generator: Berkeley yacc retargeted to C# and Java
 dev-util/jconfig 2.8-r3 2.8.5 2.9: jConfig is an extremely helpful utility, providing a simple API for the management of properties
-dev-util/jenkins-bin 2.73.2 2.73.3 2.84 2.86 2.87: Extensible continuous integration server
+dev-util/jenkins-bin 2.73.2 2.73.3 2.84 2.86 2.87 2.90: Extensible continuous integration server
 dev-util/kbuild 0.1.9998_pre20131130-r1 0.1.9998_pre20171020 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 33 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
 dev-util/kdbg 2.9.1: Graphical debugger interface
@@ -17593,7 +17593,7 @@ sys-cluster/util-vserver 0.30.216_pre3120 0.30.216_pre3120-r1: Linux-VServer adm
 sys-cluster/vzctl 4.9.4: OpenVZ ConTainers control utility
 sys-cluster/wulfware 2.6.0: Applications to monitor on a beowulf- or GRID-style clusters
 sys-cluster/zetcd 0.0.4: A ZooKeeper personality for etcd
-sys-cluster/zookeeper-bin 3.4.10: A high-performance coordination service for distributed applications.
+sys-cluster/zookeeper-bin 3.4.10 3.4.11: A high-performance coordination service for distributed applications.
 sys-cluster/zookeepercli 1.0.10: Simple, lightweight, dependable CLI for ZooKeeper
 sys-devel/autoconf 2.13 2.59-r7 2.61-r2 2.62-r1 2.63-r1 2.64 2.65-r1 2.67 2.68 2.69 2.69-r4 9999: Used to create autoconfiguration files
 sys-devel/autoconf-archive 2016.03.20-r1 2016.09.16 2017.03.21 2017.09.28: GNU Autoconf Macro Archive
