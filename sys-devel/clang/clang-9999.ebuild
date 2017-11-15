@@ -74,7 +74,17 @@ CMAKE_BUILD_TYPE=RelWithDebInfo
 # Therefore: use sys-devel/clang[${MULTILIB_USEDEP}] only if you need
 # multilib clang* libraries (not runtime, not wrappers).
 
+clang_envvar_check() {
+	if [[ ! -z ${EGIT_COMMIT} ]]; then
+                eerror "Commits must now be specified using the environmental variables"
+                eerror "CLANG_COMMIT or CLANG_TOOLS_COMMIT"
+                eerror
+                return 1
+        fi
+}
+
 pkg_setup() {
+        clang_envvar_check || die
 	LLVM_MAX_SLOT=${SLOT} llvm_pkg_setup
 	python-single-r1_pkg_setup
 }
@@ -83,15 +93,14 @@ src_unpack() {
 	# create extra parent dir for CLANG_RESOURCE_DIR
 	mkdir -p x/y || die
 	cd x/y || die
-
 	git-r3_fetch "https://git.llvm.org/git/clang-tools-extra.git
-		https://github.com/llvm-mirror/clang-tools-extra.git"
+		https://github.com/llvm-mirror/clang-tools-extra.git" "${CLANG_TOOLS_COMMIT}"
 	if use test; then
 		# needed for patched gtest
 		git-r3_fetch "https://git.llvm.org/git/llvm.git
-			https://github.com/llvm-mirror/llvm.git"
+			https://github.com/llvm-mirror/llvm.git" "${CLANG_COMMIT}"
 	fi
-	git-r3_fetch
+	git-r3_fetch "${EGIT_REPO_URI}" "${CLANG_COMMIT}"
 
 	git-r3_checkout https://llvm.org/git/clang-tools-extra.git \
 		"${S}"/tools/extra
