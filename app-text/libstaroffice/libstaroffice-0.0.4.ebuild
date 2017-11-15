@@ -33,6 +33,7 @@ src_prepare() {
 src_configure() {
 	econf \
 		--disable-werror \
+		--with-sharedptr=c++11 \
 		$(use_enable debug) \
 		$(use_with doc docs) \
 		$(use_enable tools) \

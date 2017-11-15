@@ -21,7 +21,7 @@ fi
 
 LICENSE="BSD GPL-2+ GPL-3+ LGPL-2+"
 SLOT="4"
-KEYWORDS=""
+KEYWORDS="~amd64 ~hppa ~ppc64 ~x86"
 IUSE=""
 
 # Private headers of dev-qt/qtgui:5 used.

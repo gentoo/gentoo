@@ -19,7 +19,7 @@ else
 	SRC_URI="https://download.fcitx-im.org/${PN}/${P}.tar.xz"
 fi
 
-LICENSE="GPL-2+ LGPL-2+"
+LICENSE="GPL-2+ GPL-3+ LGPL-2+"
 SLOT="4"
 KEYWORDS="amd64 ~hppa ~ppc64 x86"
 IUSE=""
