@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5} )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 PYTHON_REQ_USE="sqlite,xml"
 
 inherit python-single-r1
@@ -21,10 +21,14 @@ IUSE=""
 DEPEND="
 	${PYTHON_DEPS}
 	>=dev-python/sip-4.14.3[${PYTHON_USEDEP}]
-	>=dev-python/PyQt5-5.5.1[${PYTHON_USEDEP},gui,help,network,printsupport,sql,svg,webkit]
-	>=dev-python/qscintilla-python-2.8[qt5,${PYTHON_USEDEP}]
+	>=dev-python/PyQt5-5.7.1[${PYTHON_USEDEP},gui,network,printsupport,sql,svg,widgets]
+	>=dev-python/qscintilla-python-2.9.4-r1[${PYTHON_USEDEP},qt5]
 "
 RDEPEND="${DEPEND}
+	|| (
+		dev-python/PyQt5[${PYTHON_USEDEP},help,webkit]
+		dev-python/PyQt5[${PYTHON_USEDEP},help,webengine]
+	)
 	>=dev-python/chardet-3.0.4[${PYTHON_USEDEP}]
 	>=dev-python/coverage-4.1.0[${PYTHON_USEDEP}]
 	>=dev-python/pygments-2.2.0[${PYTHON_USEDEP}]
@@ -47,9 +51,6 @@ src_prepare() {
 	rm -fr eric/DebugClients/Python{,3}/coverage || die
 	sed -i -e 's/from DebugClients\.Python3\?\.coverage/from coverage/' \
 		$(grep -lr 'from DebugClients\.Python3\?\.coverage' .) || die
-
-	# Fix desktop files (bug 458092)
-	sed -i -re '/^Categories=/s:(Python|QtWeb):X-&:g' eric/eric6{,_{,web}browser}.desktop || die
 }
 
 src_install() {
