@@ -29,7 +29,6 @@ RDEPEND="
 	$(add_kdeapps_dep kaddressbook)
 	$(add_kdeapps_dep kalarm)
 	$(add_kdeapps_dep kalarmcal)
-	$(add_kdeapps_dep kblog)
 	$(add_kdeapps_dep kcalcore)
 	$(add_kdeapps_dep kcalutils)
 	$(add_kdeapps_dep kcontacts)
