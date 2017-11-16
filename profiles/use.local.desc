@@ -1032,7 +1032,6 @@ app-office/libreoffice:jemalloc - Use dev-libs/jemalloc for allocations
 app-office/libreoffice:odk - Build the Office Development Kit
 app-office/libreoffice:pdfimport - Enable PDF import via the Poppler library
 app-office/libreoffice:quickstarter - Build the system tray quickstarter
-app-office/libreoffice:telepathy - Enable document colaboration features using telepathy communication framework.
 app-office/libreoffice:vlc - Use media-video/vlc for video embedding
 app-office/libreoffice-l10n:offlinehelp - Install help files locally instead of using the LibreOffice Wiki
 app-office/lyx:aspell - Add support for aspell spellchecking
