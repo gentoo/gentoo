@@ -9748,7 +9748,7 @@ dev-ruby/multi_test 0.1.2: A uniform interface for Ruby testing libraries
 dev-ruby/multi_xml 0.5.4-r2 0.5.5 0.6.0: A generic swappable back-end for XML parsing
 dev-ruby/multipart-post 2.0.0-r1: Adds a streamy multipart form post capability to Net::HTTP
 dev-ruby/mustache 1.0.2 1.0.3 1.0.4 1.0.5: Mustache is a framework-agnostic way to render logic-free views
-dev-ruby/mysql2 0.3.21 0.4.6 0.4.7 0.4.8 0.4.9: A modern, simple and very fast Mysql library for Ruby - binding to libmysql
+dev-ruby/mysql2 0.3.21 0.4.8 0.4.9 0.4.10: A modern, simple and very fast Mysql library for Ruby - binding to libmysql
 dev-ruby/nagios 0.0.4-r1: Nagios-rb is a compact framework for writing Nagios plugins
 dev-ruby/nagios_analyzer 0.0.5-r1: A simple parser for Nagios status files
 dev-ruby/nanotest 0.9.4.1: Extremely mynymal test framework
@@ -9978,7 +9978,7 @@ dev-ruby/safe_yaml 1.0.4-r3: Parse YAML safely, alternative implementation of YA
 dev-ruby/sanitize 2.1.0 4.4.0 4.5.0: Sanitize is a whitelist-based HTML sanitizer
 dev-ruby/sass 3.2.19-r2 3.4.24 3.4.25 3.5.3: An extension of CSS3, adding nested rules, variables, mixins, and more
 dev-ruby/sass-listen 4.0.0: Fork of guard/listen provides a stable API for users of the ruby Sass CLI
-dev-ruby/sass-rails 4.0.5 5.0.6 5.0.6-r1: Official Ruby-on-Rails Integration with Sass
+dev-ruby/sass-rails 4.0.5 5.0.6 5.0.6-r1 5.0.7: Official Ruby-on-Rails Integration with Sass
 dev-ruby/sawyer 0.8.1: Secret User Agent of HTTP
 dev-ruby/sdoc 0.4.1 0.4.2: rdoc generator html with javascript search index
 dev-ruby/seed-fu 2.3.6: Advanced seed data handling for Rails
