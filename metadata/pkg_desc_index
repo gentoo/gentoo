@@ -11866,7 +11866,7 @@ kde-apps/akonadi-notes 17.04.3 17.08.3: Library for akonadi notes integration
 kde-apps/akonadi-search 17.04.3 17.08.3: Libraries and daemons to implement searching in Akonadi
 kde-apps/akonadiconsole 17.04.3 17.08.3: Application for debugging Akonadi Resources
 kde-apps/akregator 4.4.2017.04 17.04.3 17.08.3: News feed aggregator
-kde-apps/analitza 17.04.3 17.08.3: KDE library for mathematical features
+kde-apps/analitza 17.04.3 17.08.3-r1: KDE library for mathematical features
 kde-apps/ark 17.04.3 17.08.3: KDE Archiving tool
 kde-apps/artikulate 17.04.3 17.08.3: Language learning application that helps improving pronunciation skills
 kde-apps/audiocd-kio 17.04.3 17.08.3: kioslave for accessing audio CDs
@@ -11950,7 +11950,7 @@ kde-apps/kdepim-addons 17.04.3 17.08.3: Plugins for KDE Personal Information Man
 kde-apps/kdepim-apps-libs 17.04.3 17.08.3: Libraries for KDE PIM applications
 kde-apps/kdepim-kresources 4.4.2017.04: KDE PIM groupware plugin collection (noakonadi branch)
 kde-apps/kdepim-l10n 4.4.11.1-r2: KDE PIM internationalization package
-kde-apps/kdepim-meta 4.4.2017.04 17.04.3 17.08.3: KDE PIM - merge this to pull in all kdepim-derived packages
+kde-apps/kdepim-meta 4.4.2017.04 17.04.3 17.08.3-r1: KDE PIM - merge this to pull in all kdepim-derived packages
 kde-apps/kdepim-runtime 17.04.3 17.08.3: Runtime plugin collection to extend the functionality of KDE PIM
 kde-apps/kdepim-wizards 4.4.2017.04: KDE PIM wizards (noakonadi branch)
 kde-apps/kdepimlibs 4.14.10_p20160611: Common library for KDE PIM apps
