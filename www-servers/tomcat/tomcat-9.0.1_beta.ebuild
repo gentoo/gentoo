@@ -11,7 +11,7 @@ MY_PV="${PV/_beta/}"
 MY_P="apache-${PN}-${MY_PV}-src"
 
 DESCRIPTION="Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container"
-HOMEPAGE="http://tomcat.apache.org/"
+HOMEPAGE="https://tomcat.apache.org/"
 SRC_URI="mirror://apache/${PN}/tomcat-9/v${MY_PV}/src/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"
