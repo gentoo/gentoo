@@ -1,0 +1,61 @@
+From 6ba6cab570d824641f63c66b355ba28f0721811f Mon Sep 17 00:00:00 2001
+From: Alberto Villa <avilla@FreeBSD.org>
+Date: Sat, 24 Dec 2016 05:10:20 +0100
+Subject: [PATCH] Avoid looking for Qt5OpenGL module
+
+The OpenGL-related code needed by qimage was moved to Qt5Gui, which
+allows to safely remove the dependency on Qt 5 builds.
+
+Build tested on FreeBSD.
+---
+ src/modules/qt/configure | 20 +-------------------
+ 1 file changed, 1 insertion(+), 19 deletions(-)
+
+diff --git a/src/modules/qt/configure b/src/modules/qt/configure
+index 24803baf..7475dc09 100755
+--- a/src/modules/qt/configure
++++ b/src/modules/qt/configure
+@@ -107,14 +107,6 @@ else
+ 		then
+ 			echo QTCXXFLAGS=-I$qt_includedir -I$qt_includedir/QtCore -I$qt_includedir/QtGui -I$qt_includedir/QtXml -I$qt_includedir/QtSvg -I$qt_includedir/QtWidgets >> config.mak
+ 			echo QTLIBS=-Wl,-rpath-link,"$qt_libdir" -L"$qt_libdir" -lQt5Core -lQt5Gui -lQt5Xml -lQt5Svg -lQt5Widgets >> config.mak
+-			if [ -f "$qt_libdir/libQt5OpenGL.so" ] || [ -f "$qt_libdir/libQt5OpenGL.a" ]
+-			then
+-				echo QTCXXFLAGS+=-I$qt_includedir/QtOpenGL >> config.mak
+-				echo QTLIBS+=-lQt5OpenGL >> config.mak
+-			else
+-				echo "- Qt5OpenGL not found: disabling"
+-				without_opengl=true
+-			fi
+ 		# Qt5 on OS X
+ 		elif [ -d "$qt_libdir/QtWidgets.framework" ]
+ 		then
+@@ -123,11 +115,10 @@ else
+ 				-I$qt_includedir/QtGui -I$qt_libdir/QtGui.framework/Headers \
+ 				-I$qt_includedir/QtXml -I$qt_libdir/QtXml.framework/Headers \
+ 				-I$qt_includedir/QtSvg -I$qt_libdir/QtSvg.framework/Headers \
+-				-I$qt_includedir/QtOpenGL -I$qt_libdir/QtOpenGL.framework/Headers \
+ 				-I$qt_includedir/QtWidgets -I$qt_libdir/QtWidgets.framework/Headers \
+ 				>> config.mak
+ 			echo QTLIBS=-F"$qt_libdir" -framework QtCore -framework QtGui -framework \
+-				QtXml -framework QtSvg -framework QtOpenGL -framework QtWidgets >> config.mak
++				QtXml -framework QtSvg -framework QtWidgets >> config.mak
+ 		# Qt4 on OS X
+ 		elif [ -d "$qt_libdir/QtGui.framework" ]
+ 		then
+@@ -151,15 +142,6 @@ else
+ 			without_kde=true
+ 			echo QTCXXFLAGS=$(pkg-config --cflags Qt5Core Qt5Gui Qt5Xml Qt5Svg Qt5Widgets) >> config.mak
+ 			echo QTLIBS=$(pkg-config --libs Qt5Core Qt5Gui Qt5Xml Qt5Svg Qt5Widgets) >> config.mak
+-			pkg-config --exists 'Qt5OpenGL'
+-			if [ $? -eq 0 ]
+-			then
+-				echo QTCXXFLAGS+=$(pkg-config --cflags Qt5OpenGL) >> config.mak
+-				echo QTLIBS+=$(pkg-config --libs Qt5OpenGL) >> config.mak
+-			else
+-				echo "- Qt5OpenGL not found: disabling"
+-				without_opengl=true
+-			fi
+ 		else
+ 			pkg-config --exists 'QtGui >= 4'
+ 			if [ $? -eq 0 ]
