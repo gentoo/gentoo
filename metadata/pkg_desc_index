@@ -17994,7 +17994,7 @@ sys-power/pm-quirks 20100619: Video Quirks database for pm-utils
 sys-power/pm-utils 1.4.1-r6 1.4.1-r7: Suspend and hibernation utilities
 sys-power/pmtools 20071116 20110323 20110323-r1: Collection of tools for ACPI and power management
 sys-power/powermgmt-base 1.31: Script to test whether computer is running on AC power
-sys-power/powernowd 1.00-r3: Daemon to control the speed and voltage of CPUs
+sys-power/powernowd 1.00-r4: Daemon to control the speed and voltage of CPUs
 sys-power/powerstat 0.02.11 9999: Laptop power measuring tool
 sys-power/powertop 1.13 2.6 2.8 9999: tool that helps you find what software is using the most power
 sys-power/sispmctl 3.1 4.0: GEMBIRD SiS-PM control utility
