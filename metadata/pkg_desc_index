@@ -13198,7 +13198,7 @@ media-libs/mediastreamer 2.7.3-r3 2.8.2 2.9.0 2.9.0-r1: Mediastreaming library f
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
 media-libs/mesa 13.0.5 13.0.6 17.0.6 17.1.8 17.1.9 17.1.10 17.2.0 17.2.1 17.2.2 17.2.3 17.2.4 17.2.5 17.3.0_rc2 17.3.0_rc3 17.3.0_rc4 9999: OpenGL-like graphic library for Linux
 media-libs/ming 0.4.7 0.4.8-r1: An Open Source library for Flash movie generation
-media-libs/mlt 6.4.1-r2 6.4.1-r4: Open source multimedia framework for television broadcasting
+media-libs/mlt 6.4.1-r2 6.4.1-r4 6.4.1-r5: Open source multimedia framework for television broadcasting
 media-libs/musicbrainz 3.0.3 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
 media-libs/mutagen 1.35.1 1.38 1.39: Audio metadata tag reader and writer implemented in pure Python
 media-libs/nas 1.9.4 1.9.4-r1 1.9.4-r2: Network Audio System
@@ -14812,7 +14812,7 @@ net-irc/irssi-otr 1.0.0-r1 1.0.2: Off-The-Record messaging (OTR) for irssi
 net-irc/irssi-xmpp 0.53: An irssi plugin providing Jabber/XMPP support
 net-irc/irssistats 0.75: Generates HTML IRC stats based on irssi logs
 net-irc/jircii 41: jIRCii - IRC client written in Java
-net-irc/konversation 1.7.2 1.7.2-r1 1.7.3: A user friendly IRC Client
+net-irc/konversation 1.7.2 1.7.2-r1 1.7.4: A user friendly IRC Client
 net-irc/kvirc 5.0_pre20171001143427 9999: Advanced IRC Client
 net-irc/limnoria 20150523 20150829 20171025 99999999: Python based extensible IRC infobot and channel bot
 net-irc/miau 0.6.6: Persistent IRC bouncer with multi-client support - a fork of muh
