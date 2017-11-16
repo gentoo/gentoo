@@ -44,6 +44,10 @@ kde-apps/kopete cryptography
 # Unstable dependencies.
 dev-util/rpmdevtools emacs
 
+# Andreas Sturmlechner <asturm@gentoo.org> (06 Aug 2017)
+# Requires dev-lang/python-3.5 stabilisation
+>=kde-apps/kdegames-meta-17.04.3 python
+
 # Patrick McLean <chutzpah@gentoo.org> (11 Jul 2017)
 # Requires >=net-dns/libidn2-2.0 stabilization
 net-dns/dnsmasq libidn2
