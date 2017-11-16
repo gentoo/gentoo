@@ -14036,7 +14036,7 @@ media-sound/wavplay 2.0: A command line player/recorder for wav files
 media-sound/wavsplit 1.2.1-r1: WavSplit is a simple command line tool to split WAV files
 media-sound/wildmidi 0.2.3.5 0.3.6 0.3.7 0.3.8: Midi processing library and a midi player using the gus patch set
 media-sound/wmsound-data 1.0.0: A bunch of sounds for WindowMaker Sound Server
-media-sound/xfmpc 0.2.2 0.2.3: Music Player Daemon (MPD) client for the Xfce desktop environment
+media-sound/xfmpc 0.2.2 0.2.3 0.2.3-r1: Music Player Daemon (MPD) client for the Xfce desktop environment
 media-sound/xineadump 0.1-r1: Utility for Xine decoding support in transKode
 media-sound/xmms2 0.8-r4 0.8_p20161122 0.8_p20161122-r1: X(cross)platform Music Multiplexing System. Next generation of the XMMS player
 media-sound/xmms2-scrobbler 0.4.0: XMMS2 AudioScrobbler client
