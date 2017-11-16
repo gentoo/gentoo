@@ -8342,7 +8342,7 @@ dev-python/pygoocanvas 0.14.1-r1: GooCanvas python bindings
 dev-python/pygpgme 0.3-r1: A Python wrapper for the GPGME library
 dev-python/pygpu 0.6.0 0.6.7: Python bindings to libgpuarray
 dev-python/pygraphviz 1.2 1.3.1: Python wrapper for the Graphviz Agraph data structure
-dev-python/pygresql 4.1.1-r2 4.2: A Python interface for the PostgreSQL database
+dev-python/pygresql 4.1.1-r2 4.2 5.0.4: A Python interface for the PostgreSQL database
 dev-python/pygsl 0.9.5-r1 2.1.1: Python interface for the GNU scientific library (gsl)
 dev-python/pygtk 2.24.0-r4: GTK+2 bindings for Python
 dev-python/pygtkglext 1.1.0-r1: Python bindings to GtkGLExt
