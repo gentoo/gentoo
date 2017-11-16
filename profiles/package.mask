@@ -29,6 +29,25 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (16 Nov 2017)
+# Qt4WebKit is ancient and full of security holes.
+# Masked for removal in 30 days. Bug #620684
+dev-qt/qtwebkit:4
+
+# Andreas Sturmlechner <asturm@gentoo.org> (16 Nov 2017)
+# Depends on dead Qt4WebKit. Masked for removal in 30 days. Bug #620826
+<app-misc/anki-2.1
+
+# Andreas Sturmlechner <asturm@gentoo.org> (16 Nov 2017)
+# Depends on dead Qt4WebKit. Masked for removal in 30 days. Bug #620702
+<media-gfx/freecad-0.17
+
+# Andreas Sturmlechner <asturm@gentoo.org> (16 Nov 2017)
+# Depends on dead Qt4WebKit. Masked for removal in 30 days. Bug #620736
+=net-misc/teamviewer-10*
+=net-misc/teamviewer-11*
+=net-misc/teamviewer-12*
+
 # Anthony G. Basile <blueness@gentoo.org> (13 Nov 2017)
 # Masked for removal in 30 days. Deprecated in favor of net-misc/nyx.
 net-misc/arm
@@ -244,17 +263,6 @@ sys-devel/automake:1.8
 # dev-tex/texmfind was superseded by app-portage/pfl 
 # See also bug #634494. Masked for removal on 2017-11-30
 dev-tex/texmfind
-
-# Andreas Sturmlechner <asturm@gentoo.org> (16 Oct 2017)
-# Qt4WebKit is ancient and is likely to have more holes
-# in it than swiss cheese. Bug #620684
-dev-qt/qtwebkit:4
-
-# Andreas Sturmlechner <asturm@gentoo.org> (16 Oct 2017)
-# Reverse-deps on dead Qt4WebKit. Bug #620684
-<app-misc/anki-2.1
-<media-gfx/freecad-0.17
->=net-misc/teamviewer-10
 
 # Kent Fredric <kentnl@gentoo.org> (14 Oct 2017)
 # 12 years without upstream responding to bugs, code almost
