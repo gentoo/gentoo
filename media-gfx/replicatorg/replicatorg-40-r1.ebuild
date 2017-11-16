@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="3"
@@ -8,7 +8,7 @@ inherit eutils versionator user
 MY_P="${PN}-00${PV}"
 
 DESCRIPTION="ReplicatorG is a simple, open source 3D printing program"
-HOMEPAGE="http://replicat.org/start"
+HOMEPAGE="http://replicat.org/start https://github.com/makerbot/ReplicatorG"
 SRC_URI="https://replicatorg.googlecode.com/files/${MY_P}-linux.tgz"
 
 SLOT="0"
