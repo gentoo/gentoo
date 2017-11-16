@@ -21,7 +21,7 @@ IUSE="doc"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="
 	~app-backup/holland-lib-common-${PV}[${PYTHON_USEDEP}]
-	<dev-python/mysql-python-1.2.5[${PYTHON_USEDEP}]
+	dev-python/mysql-python[${PYTHON_USEDEP}]
 "
 PDEPEND="~app-backup/holland-${PV}[${PYTHON_USEDEP}]"
 
