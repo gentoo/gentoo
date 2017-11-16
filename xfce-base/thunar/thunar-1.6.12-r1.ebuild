@@ -48,6 +48,9 @@ REQUIRED_USE="trash-panel-plugin? ( dbus )"
 S=${WORKDIR}/${MY_P}
 
 DOCS=( AUTHORS ChangeLog FAQ HACKING NEWS README THANKS TODO )
+PATCHES=(
+	"${FILESDIR}"/thunar-1.16.2-integer-overflow.patch
+)
 
 src_configure() {
 	local myconf=(
