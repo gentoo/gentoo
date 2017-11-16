@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit gnome2-utils xdg-utils
+inherit xdg-utils
 
 DESCRIPTION="Music Player Daemon (MPD) client for the Xfce desktop environment"
 HOMEPAGE="https://goodies.xfce.org/projects/applications/xfmpc"
@@ -28,10 +28,8 @@ pkg_setup() {
 
 pkg_postinst() {
 	xdg_desktop_database_update
-	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
 	xdg_desktop_database_update
-	gnome2_icon_cache_update
 }
