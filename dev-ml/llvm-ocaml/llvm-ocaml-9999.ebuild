@@ -63,8 +63,7 @@ src_prepare() {
 	# Python is needed to run tests using lit
 	python_setup
 
-	# User patches
-	eapply_user
+	cmake-utils_src_prepare
 }
 
 src_configure() {
