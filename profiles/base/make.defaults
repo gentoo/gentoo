@@ -49,10 +49,6 @@ LIBREOFFICE_EXTENSIONS="presenter-console presenter-minimizer"
 # By default build all koffice / calligra features.
 CALLIGRA_FEATURES="kexi words flow plan sheets stage tables krita karbon braindump author"
 
-# Ole Markus With <olemarkus@gentoo.org> (09 Oct 2010)
-# Default PHP targets (should always be latest stable version)
-PHP_TARGETS="php5-6"
-
 # Andreas K. Huettel <dilfridge@gentoo.org> (28 Sep 2010)
 # Small default list of enabled plugins for collectd
 COLLECTD_PLUGINS="df interface irq load memory rrdtool swap syslog"
@@ -145,3 +141,18 @@ TWISTED_DISABLE_WRITING_OF_PLUGIN_CACHE="1"
 # Aaron W. Swenson <titanofold@gentoo.org> (9 Jul 2017)
 # Default target(s) for postgres{,-multi}.eclass
 POSTGRES_TARGETS="postgres9_5"
+
+# Michael Orlitzky <mjo@gentoo.org> (17 Nov 2017)
+#
+# Default PHP targets, used only for extensions at the moment.
+#
+# The value of this variable should be chosen to be "least annoying by
+# default." For example, some packages support only php-5.x and some
+# only php-7.x. By having both "php5-6" and php7-0" in PHP_TARGETS, we
+# ensure that users who don't care one way or the other don't have to
+# mess with this variable in order to install those packages.
+#
+# Moreover, it should only contain targets that have a stable version
+# of PHP, to avoid pulling in an unstable PHP on stable systems.
+#
+PHP_TARGETS="php5-6 php7-0"
