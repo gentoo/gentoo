@@ -8100,7 +8100,6 @@ sys-kernel/mips-sources:ip27 - Enables additional support for SGI Origin (IP27)
 sys-kernel/mips-sources:ip28 - Enables additional support for SGI Indigo2 Impact R10000 (IP28)
 sys-kernel/mips-sources:ip30 - Enables support for SGI Octane (IP30, 'Speedracer')
 sys-kernel/rt-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
-sys-kernel/spl:debug-log - Enable additional diagnostics
 sys-kernel/tuxonice-sources:experimental - Apply experimental patches; for more information, see "https://wiki.gentoo.org/wiki/Project:Kernel/Experimental".
 sys-libs/binutils-libs:64-bit-bfd - Support 64-bit targets even on 32-bit hosts (is ignored on 64-bit hosts)
 sys-libs/binutils-libs:multitarget - Enable all possible targets in libbfd
