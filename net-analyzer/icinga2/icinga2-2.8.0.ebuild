@@ -10,7 +10,7 @@ else
 	inherit cmake-utils depend.apache eutils git-r3 systemd toolchain-funcs user wxwidgets
 	EGIT_REPO_URI="https://github.com/Icinga/icinga2.git"
 	EGIT_BRANCH="master"
-	KEYWORDS=""
+	KEYWORDS="~ppc ~ppc64"
 fi
 
 DESCRIPTION="Distributed, general purpose, network monitoring engine"
@@ -45,6 +45,9 @@ RDEPEND="
 	studio? ( x11-libs/wxGTK:3.0 )"
 
 REQUIRED_USE="!minimal? ( || ( mysql postgres ) )"
+
+PATCHES=(
+)
 
 want_apache2
 
