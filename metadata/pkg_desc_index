@@ -1060,7 +1060,7 @@ app-editors/qemacs 0.4.0_pre20090420-r1 0.4.1_pre20150916 0.4.1_pre20170225: QEm
 app-editors/qxmledit 0.9.7 0.9.8: Simple Qt-based XML editor
 app-editors/retext 7.0.0 7.0.1 9999: Simple editor for Markdown and reStructuredText
 app-editors/sandy 0.4: an ncurses text editor with an easy-to-read, hackable C source
-app-editors/scite 3.5.5 3.6.2-r1 3.6.4-r1 3.6.5-r1 4.0.2: A very powerful, highly configurable, small editor with syntax coloring.
+app-editors/scite 3.5.5 3.6.5-r1 4.0.2: A very powerful, highly configurable, small editor with syntax coloring.
 app-editors/shed 1.12 1.13 1.15: Simple Hex EDitor
 app-editors/sublime-text 2.0.2-r2 3_pre3126-r3 3_p3143: Sophisticated text editor for code, markup and prose
 app-editors/tea 44.1.0: Small, lightweight Qt text editor
