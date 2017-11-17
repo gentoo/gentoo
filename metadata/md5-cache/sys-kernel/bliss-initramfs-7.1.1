@@ -3,12 +3,12 @@ DESCRIPTION=Boot your system's rootfs from ZFS, LVM, RAID, or a variety of other
 EAPI=6
 HOMEPAGE=https://github.com/fearedbliss/bliss-initramfs
 IUSE=python_targets_python3_4 python_targets_python3_5 python_targets_python3_6 python_single_target_python3_4 python_single_target_python3_5 python_single_target_python3_6
-KEYWORDS=-* amd64
+KEYWORDS=-* ~amd64
 LICENSE=BSD-2
 RDEPEND=python_single_target_python3_4? ( dev-lang/python:3.4 ) python_single_target_python3_5? ( dev-lang/python:3.5 ) python_single_target_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python3_4(-)?,python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python2_7(-),python_single_target_python3_4(+)?,python_single_target_python3_5(+)?,python_single_target_python3_6(+)?] app-arch/cpio virtual/udev
 REQUIRED_USE=^^ ( python_single_target_python3_4 python_single_target_python3_5 python_single_target_python3_6 ) python_single_target_python3_4? ( python_targets_python3_4 ) python_single_target_python3_5? ( python_targets_python3_5 ) python_single_target_python3_6? ( python_targets_python3_6 )
 RESTRICT=strip
 SLOT=0
-SRC_URI=https://github.com/fearedbliss/bliss-initramfs/archive/7.1.0.tar.gz -> bliss-initramfs-7.1.0.tar.gz
+SRC_URI=https://github.com/fearedbliss/bliss-initramfs/archive/7.1.1.tar.gz -> bliss-initramfs-7.1.1.tar.gz
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	317a2557b4d7319a7418225f65accf77	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=520c3a8b84ab4173ddb23e91de993750
+_md5_=3fb848935af15be9b3c949617bdd09b4
