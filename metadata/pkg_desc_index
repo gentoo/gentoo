@@ -9245,8 +9245,8 @@ dev-ros/nav_core 1.13.0 1.13.1 1.14.0 1.14.2 1.15.1 9999: Common interfaces for 
 dev-ros/nav_msgs 1.12.5 9999: Common messages used to interact with the navigation stack
 dev-ros/navfn 1.14.0-r1 1.14.2 1.15.1 9999: Fast interpolated navigation function that can be used to create plans for a mobile base
 dev-ros/nmea_msgs 1.0.0 9999: Messages related to data in the NMEA format
-dev-ros/nodelet 1.9.10 1.9.11 1.9.12 1.9.13 9999: Provides a way to run multiple algorithms in the same process with zero copy transport
-dev-ros/nodelet_topic_tools 1.9.10 1.9.11 1.9.12 1.9.13 9999: Common nodelet tools such as a mux, demux and throttle
+dev-ros/nodelet 1.9.10 1.9.11 1.9.12 1.9.13 1.9.14 9999: Provides a way to run multiple algorithms in the same process with zero copy transport
+dev-ros/nodelet_topic_tools 1.9.10 1.9.11 1.9.12 1.9.13 1.9.14 9999: Common nodelet tools such as a mux, demux and throttle
 dev-ros/nodelet_tutorial_math 0.1.10 9999: Nodelet tutorial
 dev-ros/object_recognition_msgs 0.4.1 9999: ROS message and the actionlib definition used in object_recognition_core
 dev-ros/octomap_msgs 0.3.3 9999: Messages and serializations / conversion for the OctoMap library
@@ -9261,7 +9261,7 @@ dev-ros/pcl_msgs 0.2.0 9999: PCL (Point Cloud Library)-related ROS messages
 dev-ros/pcl_ros 1.4.1-r2 1.5.1 1.5.2 1.5.3 9999: PCL (Point Cloud Library) ROS interface stack
 dev-ros/pluginlib 1.11.1-r1 9999: Provides tools for writing and dynamically loading plugins using the ROS build infrastructure
 dev-ros/pluginlib_tutorials 0.1.8 0.1.10 9999: Pluginlib tutorials
-dev-ros/pointcloud_to_laserscan 1.3.1 9999: Converts a 3D Point Cloud into a 2D laser scan
+dev-ros/pointcloud_to_laserscan 1.3.1 1.4.0 9999: Converts a 3D Point Cloud into a 2D laser scan
 dev-ros/polled_camera 1.11.12 1.11.13 9999: C++ helper classes for implementing a polled camera driver node and requesting images from it
 dev-ros/pr2_dashboard_aggregator 1.11.9 1.11.10 1.11.11 1.11.13 1.11.14 1.12.0 9999: Aggregates all of the topics that a 'pr2_dashboard' app might be interested in
 dev-ros/pr2_description 1.12.0 9999: Description (mechanical, kinematic, visual, etc.) of the PR2 robot
@@ -9387,8 +9387,8 @@ dev-ros/stereo_image_proc 1.12.19-r1 1.12.20 1.12.21 9999: Stereo and single ima
 dev-ros/stereo_msgs 1.12.3 1.12.4 1.12.5 9999: Messages specific to stereo processing, such as disparity images
 dev-ros/test_bond 1.7.19 1.8.0 1.8.1 9999: Tests for bond, bondpy and bondcpp
 dev-ros/test_diagnostic_aggregator 1.8.10 1.9.0 1.9.2 9999: diagnostic_aggregator tests
-dev-ros/test_nodelet 1.9.9 1.9.10 1.9.11 1.9.12 1.9.13 9999: Nodelet unit tests
-dev-ros/test_nodelet_topic_tools 1.9.3 1.9.4 1.9.5 1.9.6 1.9.7 1.9.8 1.9.9 1.9.10 1.9.11 1.9.12 1.9.13 9999: Nodelet topic tools unit tests
+dev-ros/test_nodelet 1.9.9 1.9.10 1.9.11 1.9.12 1.9.13 1.9.14 9999: Nodelet unit tests
+dev-ros/test_nodelet_topic_tools 1.9.3 1.9.4 1.9.5 1.9.6 1.9.7 1.9.8 1.9.9 1.9.10 1.9.11 1.9.12 1.9.13 1.9.14 9999: Nodelet topic tools unit tests
 dev-ros/test_rosbag 1.13.0 1.13.1 1.13.2 1.13.4 1.13.5 9999: Unit tests for rosbag
 dev-ros/test_rosbag_storage 1.13.0 1.13.1 1.13.2 1.13.4 1.13.5 9999: Unit tests for rosbag_storage
 dev-ros/test_roscpp 1.13.0 1.13.1 1.13.2 1.13.4 1.13.5 9999: Unit tests for roscpp
@@ -15897,7 +15897,7 @@ ros-meta/imu_tools 1.1.5 9999: Various tools for IMU devices
 ros-meta/laser_pipeline 1.6.1 1.6.2 9999: Meta-package for processing laser data, e.g. converting laser data into 3D representations
 ros-meta/mavros 0.18.7 0.19.0 9999: Metapackage for mavros packages
 ros-meta/navigation 1.15.1 9999: 2D navigation stack
-ros-meta/nodelet_core 1.9.9 1.9.10 1.9.11 1.9.12 1.9.13 9999: Nodelet Core Metapackage
+ros-meta/nodelet_core 1.9.9 1.9.10 1.9.11 1.9.12 1.9.13 1.9.14 9999: Nodelet Core Metapackage
 ros-meta/perception 1.2.0 1.3.0 1.3.1 9999: Metapackage for ROS perception stack
 ros-meta/perception_pcl 1.3.0 1.4.0 1.4.1 1.5.1 1.5.2 1.5.3 9999: PCL (Point Cloud Library) ROS interface stack
 ros-meta/pr2_common 1.11.9 1.11.10 1.11.11 1.11.13 1.11.14 1.12.0 9999: URDF description and 3D models of robot components of the PR2 robot
