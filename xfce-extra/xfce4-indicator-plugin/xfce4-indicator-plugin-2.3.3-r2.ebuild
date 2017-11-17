@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit xfconf
+EAPI=6
+inherit gnome2-utils xdg-utils
 
 DESCRIPTION="A panel plugin that uses indicator-applet to show new messages"
 HOMEPAGE="https://goodies.xfce.org/projects/panel-plugins/xfce4-indicator-plugin"
@@ -11,7 +11,7 @@ SRC_URI="mirror://xfce/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.bz2"
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug"
+IUSE=""
 
 RDEPEND=">=dev-libs/libindicator-12.10.1:3=
 	>=x11-libs/gtk+-3.6:3=
@@ -29,8 +29,23 @@ pkg_setup() {
 	# TODO: libido3-13.10.0 needs ubuntu-private.h from Ubuntu's GTK+ 3.x
 	XFCONF=(
 		--disable-ido
-		$(xfconf_use_debug)
 		)
 
 	DOCS=( AUTHORS ChangeLog NEWS README THANKS )
+}
+
+src_install() {
+	default
+
+	find "${D}" -name '*.la' -delete || die
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }
