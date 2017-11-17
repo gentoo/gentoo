@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils multilib versionator prefix
+inherit multilib versionator prefix
 
 DESCRIPTION="Filesystem baselayout and init scripts"
 HOMEPAGE="https://www.gentoo.org/"
@@ -18,7 +18,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="build kernel_linux"
+IUSE="build usrmerge kernel_linux"
 
 pkg_setup() {
 	multilib_layout
@@ -26,15 +26,22 @@ pkg_setup() {
 
 # Create our multilib dirs - the Makefile has no knowledge of this
 multilib_layout() {
-	local libdir libdirs=$(get_all_libdirs) def_libdir=$(get_abi_LIBDIR $DEFAULT_ABI)
+	local def_libdir libdir libdirs
+	def_libdir=$(get_abi_LIBDIR $DEFAULT_ABI)
+	libdirs=$(get_all_libdirs)
 	: ${libdirs:=lib}	# it isn't that we don't trust multilib.eclass...
 
-	[ -z "${def_libdir}" ] && die "your DEFAULT_ABI=$DEFAULT_ABI appears to be invalid"
+	[ -z "${def_libdir}" ] &&
+		die "your DEFAULT_ABI=$DEFAULT_ABI appears to be invalid"
 
 	# figure out which paths should be symlinks and which should be directories
 	local dirs syms exp d
 	for libdir in ${libdirs} ; do
-		exp=( {,usr/,usr/local/}${libdir} )
+		if ! use usrmerge; then
+			exp=( {,usr/,usr/local/}${libdir} )
+		else
+			exp=( {usr/,usr/local/}${libdir} )
+		fi
 		for d in "${exp[@]}" ; do
 			# most things should be dirs
 			if [ "${SYMLINK_LIB}" = "yes" ] && [ "${libdir}" = "lib" ] ; then
@@ -56,8 +63,13 @@ multilib_layout() {
 
 	# setup symlinks and dirs where we expect them to be; do not migrate
 	# data ... just fall over in that case.
-	local prefix
-	for prefix in "${EROOT}"{,usr/,usr/local/} ; do
+	local prefix prefix_lst
+	if ! use usrmerge; then
+		prefix_lst="${EROOT}"{,usr/,usr/local/}
+	else
+		prefix_lst="${EROOT}"{usr/,usr/local/}
+	fi
+	for prefix in "${prefix_lst}"; do
 		if [ "${SYMLINK_LIB}" = yes ] ; then
 			# we need to make sure "lib" points to the native libdir
 			if [ -h "${prefix}lib" ] ; then
@@ -115,6 +127,13 @@ multilib_layout() {
 			fi
 		fi
 	done
+	if use usrmerge; then
+		for libdir in ${libdirs}; do
+			if [[ ! -e "${EROOT}${libdir}" ]]; then
+				ln -s usr/"${libdir}" "${EROOT}${libdir}"
+			fi
+		done
+	fi
 }
 
 pkg_preinst() {
@@ -135,7 +154,11 @@ pkg_preinst() {
 	# Also, we cannot reference $S as binpkg will break so we do this.
 	multilib_layout
 	if use build ; then
-		emake -C "${ED}/usr/share/${PN}" DESTDIR="${EROOT}" layout || die
+		if ! use usrmerge; then
+			emake -C "${ED}/usr/share/${PN}" DESTDIR="${EROOT}" layout
+		else
+			emake -C "${ED}/usr/share/${PN}" DESTDIR="${EROOT}" layout-usrmerge
+		fi
 	fi
 	rm -f "${ED}"/usr/share/${PN}/Makefile
 }
