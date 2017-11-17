@@ -355,7 +355,7 @@ app-backup/borgbackup 1.1.1 1.1.2 9999: Deduplicating backup program with compre
 app-backup/borgweb 0.2.0-r2: Browser-based user interface for BorgBackup
 app-backup/btrbk 0.24.0-r1 0.25.1-r1 0.26.0 9999: Tool for creating snapshots and remote backups of btrfs subvolumes
 app-backup/bup 0.28.1 0.29 0.29-r1 0.29.1: A highly efficient backup system based on the git packfile format
-app-backup/burp 1.4.40-r5 2.0.54 2.0.54-r1 2.0.54-r2 2.1.20: Network backup and restore client and server for Unix and Windows
+app-backup/burp 1.4.40-r5 2.0.54 2.0.54-r1 2.0.54-r2 2.1.20 2.1.22: Network backup and restore client and server for Unix and Windows
 app-backup/buttersink 0.6.8 9999: rsync-like utility for btrfs snapshots
 app-backup/ccollect 0.8: Pseudo incremental backup with different exclude lists using hardlinks and rsync
 app-backup/cdbackup 0.7.1-r1: Allows streaming backup utilities to dump/restore from CD-R(W)s or DVD(+/-RW)s
@@ -8353,7 +8353,7 @@ dev-python/pygui 2.5.3-r1: A cross-platform pythonic GUI API
 dev-python/pyh2o 9999: Library of routines for IF97 water & steam properties
 dev-python/pyhamcrest 1.8.2 1.8.3 1.8.5 1.9.0: Hamcrest framework for matcher objects
 dev-python/pyhcl 0.2.3 0.3.6: HCL configuration parser for python
-dev-python/pyicu 1.9.5 1.9.7: Python bindings for dev-libs/icu
+dev-python/pyicu 1.9.5 1.9.7 1.9.8: Python bindings for dev-libs/icu
 dev-python/pyid3lib 0.5.1-r2: Module for manipulating ID3 tags in Python
 dev-python/pyifp 0.2.2-r1: Python bindings for libifp library for accessing iRiver iFP devices
 dev-python/pyinotify 0.9.4-r1 0.9.6: Python module used for monitoring filesystems events
