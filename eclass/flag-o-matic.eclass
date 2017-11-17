@@ -16,7 +16,7 @@ inherit eutils toolchain-funcs multilib
 
 # Return all the flag variables that our high level funcs operate on.
 all-flag-vars() {
-	echo {C,CPP,CXX,CCAS,F,FC,LD}FLAGS
+	echo {ADA,C,CPP,CXX,CCAS,F,FC,LD}FLAGS
 }
 
 # {C,CPP,CXX,CCAS,F,FC,LD}FLAGS that we allow in strip-flags
