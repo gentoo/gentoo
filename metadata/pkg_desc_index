@@ -9572,7 +9572,7 @@ dev-ruby/dbf 2.0.13 3.1.0 3.1.1: a small fast library for reading dBase, xBase, 
 dev-ruby/ddplugin 1.0.1: Provides plugin management for Ruby projects
 dev-ruby/debug_inspector 0.0.2 0.0.3: A Ruby wrapper for the MRI 2.0 debug_inspector API
 dev-ruby/debugger-linecache 1.2.0: A module to read and cache file information of a Ruby program
-dev-ruby/deep_merge 1.0.1 1.1.1: A simple set of utility functions for Hash
+dev-ruby/deep_merge 1.0.1 1.1.1 1.2.1: A simple set of utility functions for Hash
 dev-ruby/delayer 0.0.2: Delay the processing
 dev-ruby/delayer-deferred 1.1.1 2.0.0: Ruby implementation of JSDeferred
 dev-ruby/dep_selector 1.0.5: constraint based package dependency resolver
@@ -10027,7 +10027,7 @@ dev-ruby/stomp 1.4.3 1.4.4: Ruby bindings for the stomp messaging protocol
 dev-ruby/stringex 2.7.0 2.7.1: Extensions for Ruby's String class
 dev-ruby/subexec 0.2.3-r1: Subexec spawns an external command with a timeout
 dev-ruby/syntax 1.2.0-r1 1.2.1 1.2.2: Syntax highlighting for sourcecode and HTML
-dev-ruby/syslogger 1.6.4: Drop-in replacement for the standard Logger, that logs to the syslog
+dev-ruby/syslogger 1.6.4 1.6.5: Drop-in replacement for the standard Logger, that logs to the syslog
 dev-ruby/systemu 2.6.5: Universal capture of STDOUT and STDERR and handling of child process PID
 dev-ruby/tdiff 0.3.3-r1: Calculates the differences between two tree-like structures
 dev-ruby/temple 0.6.10 0.7.7 0.8.0: An abstraction and a framework for compiling templates to pure Ruby
