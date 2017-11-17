@@ -5,6 +5,10 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>brovushkin+gentoo@gmail.com</email>
+		<name>Vladyslav Brovko</name>
+	</maintainer>
 	<longdescription lang="en">
 		This package contains the libraries necessary to enable OpenCL support
 		on AMD GPUs supported by the amdgpu driver. The libraries themselves
