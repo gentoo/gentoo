@@ -7760,7 +7760,7 @@ dev-python/geventhttpclient 1.3.1: A high performance, concurrent HTTP client li
 dev-python/ghp-import 0.4.1 0.4.1-r1: Copy your docs directly to the gh-pages branch
 dev-python/ginga 2.6.4 2.6.5: Astronomical image toolkit for Python
 dev-python/girder-client 2.3.0: Python libraries and CLI to interact with the REST API of a Girder server
-dev-python/git-python 1.0.2 2.0.6 2.1.5: Library used to interact with Git repositories
+dev-python/git-python 1.0.2 2.0.6 2.1.5 2.1.7: Library used to interact with Git repositories
 dev-python/git-review 1.24 1.25.0: Tool to submit code to Gerrit
 dev-python/gitdb 0.6.4: GitDB is a pure-Python git object database
 dev-python/gitdb2 2.0.2: GitDB is a pure-Python git object database
@@ -7860,7 +7860,7 @@ dev-python/ipdb 0.10.1 0.10.2 0.10.3: IPython-enabled pdb
 dev-python/ipdbplugin 1.4 9999: Nose plugin to use iPdb instead of Pdb when tests fail
 dev-python/ipy 0.83: Class and tools for handling of IPv4 and IPv6 addresses and networks
 dev-python/ipykernel 4.2.2 4.3.1 4.4.1 4.5.2 4.6.1-r2: IPython Kernel for Jupyter
-dev-python/ipynb 0.5: Package/Module importer for importing code from Jupyter Notebook files
+dev-python/ipynb 0.5.1: Package/Module importer for importing code from Jupyter Notebook files
 dev-python/ipyparallel 4.1.0 5.0.1 5.1.1 5.2.0 6.0.2 6.0.2-r1: Interactive Parallel Computing with IPython
 dev-python/ipython 3.2.1-r1 5.3.0 5.4.1 6.1.0: Advanced interactive shell for Python
 dev-python/ipython_genutils 0.1.0 0.2.0: Vestigial utilities from IPython
@@ -7912,7 +7912,7 @@ dev-python/jsonschema 2.3.0 2.4.0 2.5.1-r2 2.6.0: An implementation of JSON-Sche
 dev-python/jupyter 1.0.0 1.0.0-r1: Jupyter metapackage. Install all the Jupyter components in one go
 dev-python/jupyter_client 4.4.0 5.1.0-r1: Jupyter protocol implementation and client libraries
 dev-python/jupyter_console 4.0.3 4.1.1 5.0.0 5.1.0: A terminal-based console frontend for Jupyter kernels
-dev-python/jupyter_core 4.0.6 4.1.0 4.2.1 4.3.0: Core common functionality of Jupyter projects
+dev-python/jupyter_core 4.0.6 4.1.0 4.2.1 4.3.0 4.4.0: Core common functionality of Jupyter projects
 dev-python/jwcrypto 0.4.2: Implements JWK,JWS,JWE specifications using python-cryptography
 dev-python/kaa-base 0.6.0-r1: Basic Framework for all Kaa Python Modules
 dev-python/kaa-display 0.1.0-r1: Python API providing Low level support for various displays, such as X11 or framebuffer
@@ -7988,7 +7988,7 @@ dev-python/markdown2 2.3.0: Python Markdown language reimplementation
 dev-python/markups 0.2.4-r1 1.0.1 2.0.0: A wrapper around various text markups
 dev-python/markupsafe 0.23: Implements a XML/HTML/XHTML Markup safe string for Python
 dev-python/matplotlib 1.4.3 1.5.3-r1 1.5.3-r2 2.0.2 2.1.0 2.1.0-r1 9999: Pure python plotting library with matlab like syntax
-dev-python/matplotlib2tikz 0.6.13: Convert matplotlib figures into TikZ/PGFPlots
+dev-python/matplotlib2tikz 0.6.14: Convert matplotlib figures into TikZ/PGFPlots
 dev-python/maybe 0.3.0 0.4.0: See what a program does before deciding whether you really want it to happen
 dev-python/mccabe 0.2.1 0.6.1: flake8 plugin: McCabe complexity checker
 dev-python/mecab-python 0.996: Python binding for MeCab
@@ -8056,7 +8056,7 @@ dev-python/natsort 4.0.4: Natural sorting for Python
 dev-python/nautilus-python 1.1-r2: Python bindings for the Nautilus file manager
 dev-python/nbconvert 4.1.0 4.2.0 4.3.0 5.2.1: Converting Jupyter Notebooks
 dev-python/nbdime 0.1.2 0.2.0: Diff and merge of Jupyter Notebooks
-dev-python/nbformat 4.0.1 4.1.0 4.2.0 4.3.0: Reference implementation of the Jupyter Notebook format
+dev-python/nbformat 4.0.1 4.1.0 4.2.0 4.3.0 4.4.0: Reference implementation of the Jupyter Notebook format
 dev-python/nbsphinx 0.2.8 0.2.13 0.2.14: Jupyter Notebook Tools for Sphinx
 dev-python/ndg-httpsclient 0.4.0 0.4.2 0.4.2-r1: Provides enhanced HTTPS support for httplib and urllib2 using PyOpenSSL
 dev-python/neovim-python-client 0.1.9 0.1.13: Python client for Neovim
@@ -8326,7 +8326,7 @@ dev-python/pyflakes 0.7.2 0.8.1 1.0.0 1.2.3 1.5.0 1.6.0: Passive checker for Pyt
 dev-python/pyflann 1.8.4 1.9.1: Python bindings for FLANN artificial neural network library
 dev-python/pyfltk 1.3.3: Python interface to Fltk library
 dev-python/pyformance 0.3.4: Performance metrics, based on Coda Hale's Yammer metrics
-dev-python/pyftpdlib 1.4.0 1.5.1 1.5.2: Python FTP server library
+dev-python/pyftpdlib 1.4.0 1.5.1 1.5.2 1.5.3: Python FTP server library
 dev-python/pygal 2.0.1 2.1.1: A python SVG charts generator
 dev-python/pygame 1.9.2_pre20120101-r2 1.9.3: Python bindings for SDL multimedia library
 dev-python/pygame_sdl2 6.99.6-r1 6.99.12.4: Reimplementation of portions of the pygame API using SDL2
@@ -14121,7 +14121,7 @@ media-video/ffmpeg2theora 0.30: A simple converter to create Ogg Theora files
 media-video/ffmpegthumbnailer 2.2.0: Lightweight video thumbnailer that can be used by file managers
 media-video/flvstreamer 2.1c: Open source command-line RTMP client intended to stream audio or video flash content
 media-video/frameworks 0.3.7-r1: A small v4l frame capture utility especially suited for stop motion animation
-media-video/gaupol 0.91 1.0 1.2: A subtitle editor for text-based subtitles
+media-video/gaupol 0.91 1.0 1.2 1.3.1: A subtitle editor for text-based subtitles
 media-video/get_flash_videos 1.24-r1 9999: Downloads videos from various Flash-based video hosting sites
 media-video/gnome-mplayer 1.0.8 1.0.9: A GTK+ interface to MPlayer
 media-video/gnome-video-effects 0.4.3: Effects for Cheese, the webcam video and picture application
@@ -14617,7 +14617,7 @@ net-dns/hash-slinger 2.6-r1 2.7: Various tools to generate special DNS records l
 net-dns/hesiod 3.1.0: DNS functionality to access to DB of information that changes infrequently
 net-dns/https_dns_proxy 9999: A lightweight DNS-over-HTTPS proxy.
 net-dns/idnkit 1.0-r2: Toolkit for Internationalized Domain Names (IDN)
-net-dns/knot 2.4.5 2.5.6 2.6.1: High-performance authoritative-only DNS server
+net-dns/knot 2.4.5 2.5.6 2.6.1 2.6.1-r1: High-performance authoritative-only DNS server
 net-dns/ldns-utils 1.6.12 1.6.17 1.7.0: Set of utilities to simplify various dns(sec) tasks
 net-dns/libidn 1.33 1.33-r1: Internationalized Domain Names (IDN) implementation
 net-dns/libidn2 2.0.4: An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
@@ -14735,6 +14735,7 @@ net-ftp/weex 2.6.1.5-r1: Automates maintaining a web page or other FTP archive
 net-ftp/yafc 1.3.7: Console ftp client with a lot of nifty features
 net-im/ayttm 0.6.3-r1: A multi-protocol instant messaging client
 net-im/bitlbee 3.5.1 9999: irc to IM gateway that support multiple IM protocols
+net-im/bitlbee-facebook 1.1.2 9999: Facebook protocol plugin for BitlBee
 net-im/bitlbee-steam 1.2.0 1.4.2 9999: Steam protocol plugin for BitlBee
 net-im/centerim 4.22.10 4.22.10-r1 5.0.1: CenterIM is a ncurses ICQ/Yahoo!/AIM/IRC/MSN/Jabber/GaduGadu/RSS/LiveJournal Client
 net-im/choqok 1.6.0: Free/Open Source micro-blogging client by KDE
@@ -15599,7 +15600,7 @@ net-p2p/fms 0.3.79: A spam-resistant message board application for Freenet
 net-p2p/freenet 0.7.5_p1475-r2 0.7.5_p1478 0.7.5_p1478-r1: An encrypted network without censorship
 net-p2p/gnut 0.4.28-r1: Text-mode gnutella client
 net-p2p/go-ethereum 1.5.5: Official golang implementation of the Ethereum protocol
-net-p2p/go-ipfs-bin 0.4.1 0.4.2 0.4.10 0.4.11: go-ipfs is the main implementation of IPFS.
+net-p2p/go-ipfs-bin 0.4.1 0.4.2 0.4.10 0.4.11 0.4.12: go-ipfs is the main implementation of IPFS.
 net-p2p/gtk-gnutella 1.1.11 1.1.11-r1 1.1.13: A GTK+ Gnutella client
 net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta files
 net-p2p/ktorrent 5.1.0: Powerful BitTorrent client based on KDE Frameworks

@@ -7,5 +7,5 @@ LICENSE=BSD
 RDEPEND=>=dev-php/PEAR-MDB2-2.5.0_beta3 <dev-lang/php-7:*[mysql] >=dev-php/pear-1.8.1
 SLOT=0
 SRC_URI=https://pear.php.net/get/MDB2_Driver_mysql-1.5.0b4.tgz
-_eclasses_=php-pear-r2	b2a1a4ee3c7dbd9ef3b77f199aa75f84
+_eclasses_=php-pear-r2	eb6928c33771db74564e814c5ca6c1b3
 _md5_=93b1719ecb03b2e9e50f0c0eb09f8434

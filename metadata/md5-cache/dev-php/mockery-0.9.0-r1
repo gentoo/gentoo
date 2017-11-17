@@ -7,5 +7,5 @@ LICENSE=BSD
 RDEPEND=>=dev-php/pear-1.8.1
 SLOT=0
 SRC_URI=http:///get/Mockery-0.9.0.tgz
-_eclasses_=php-pear-r2	b2a1a4ee3c7dbd9ef3b77f199aa75f84
+_eclasses_=php-pear-r2	eb6928c33771db74564e814c5ca6c1b3
 _md5_=dc93f92f30c41c5e7c7d8e06406b7cd2

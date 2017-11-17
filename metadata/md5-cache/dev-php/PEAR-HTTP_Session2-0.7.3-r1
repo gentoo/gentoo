@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=!minimal? ( >=dev-php/PEAR-MDB2-2.4.1 >=dev-php/PEAR-DB-1.7.11 ) dev-lang/php:* >=dev-php/pear-1.8.1
 SLOT=0
 SRC_URI=http://pear.php.net/get/HTTP_Session2-0.7.3.tgz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	php-pear-r1	5ed7690006b53587145608c30ed10798	toolchain-funcs	185a06792159ca143528e7010368e8af
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	php-pear-r1	e6a4fc4a452dfc1f425180455f1257d8	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=cb7eec3ba4433553dc6e8f9eed0eb074
