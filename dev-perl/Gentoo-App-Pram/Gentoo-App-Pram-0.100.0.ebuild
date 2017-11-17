@@ -4,7 +4,7 @@
 EAPI=6
 
 DIST_AUTHOR=MONSIEURP
-DIST_VERSION=0.004000
+DIST_VERSION=0.100000
 
 inherit perl-module
 
@@ -15,19 +15,19 @@ KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 RDEPEND="
-	virtual/perl-Encode
-	virtual/perl-File-Temp
-	dev-perl/File-Which
 	dev-vcs/git
-	virtual/perl-Getopt-Long
+	virtual/perl-Encode
+	dev-perl/File-Which
+	virtual/perl-File-Temp
 	virtual/perl-HTTP-Tiny
-	>=dev-perl/IO-Socket-SSL-1.560.0
-	>=dev-perl/Net-SSLeay-1.490.0
+	virtual/perl-Getopt-Long
 	virtual/perl-Term-ANSIColor
-"
-DEPEND="${RDEPEND}
+	>=dev-perl/Net-SSLeay-1.490.0
+	>=dev-perl/IO-Socket-SSL-1.560.0"
+
+DEPEND="
+	${RDEPEND}
 	>=dev-perl/Module-Build-Tiny-0.34.0
 	test? (
 		>=virtual/perl-Test-Simple-0.890.0
-	)
-"
+	)"

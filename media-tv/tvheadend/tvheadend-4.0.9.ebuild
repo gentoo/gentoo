@@ -65,6 +65,7 @@ pkg_setup() {
 }
 
 src_configure() {
+	CC="$(tc-getCC)" \
 	econf --prefix="${EPREFIX}"/usr \
 		--datadir="${EPREFIX}"/usr/share \
 		--disable-ccache \
