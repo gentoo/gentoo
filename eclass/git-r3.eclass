@@ -803,7 +803,7 @@ git-r3_fetch() {
 }
 
 # @FUNCTION: git-r3_checkout
-# @USAGE: [<repo-uri> [<checkout-path> [<local-id>]]]
+# @USAGE: [<repo-uri> [<checkout-path> [<local-id> [<checkout-paths>...]]]]
 # @DESCRIPTION:
 # Check the previously fetched tree to the working copy.
 #
@@ -818,6 +818,12 @@ git-r3_fetch() {
 #
 # <local-id> needs to specify the local identifier that was used
 # for respective git-r3_fetch.
+#
+# If <checkout-paths> are specified, then the specified paths are passed
+# to 'git checkout' to effect a partial checkout. Please note that such
+# checkout will not cause the repository to switch branches,
+# and submodules will be skipped at the moment. The submodules matching
+# those paths might be checked out in a future version of the eclass.
 #
 # The checkout operation will write to the working copy, and export
 # the repository state into the environment. If the repository contains
@@ -836,6 +842,7 @@ git-r3_checkout() {
 
 	local out_dir=${2:-${EGIT_CHECKOUT_DIR:-${WORKDIR}/${P}}}
 	local local_id=${3:-${CATEGORY}/${PN}/${SLOT%/*}}
+	local checkout_paths=( "${@:4}" )
 
 	local -x GIT_DIR
 	_git-r3_set_gitdir "${repos[0]}"
@@ -883,6 +890,9 @@ git-r3_checkout() {
 		else
 			set -- "${@}" "${new_commit_id}"
 		fi
+		if [[ ${checkout_paths[@]} ]]; then
+			set -- "${@}" -- "${checkout_paths[@]}"
+		fi
 		echo "${@}" >&2
 		"${@}" || die "git checkout ${remote_ref:-${new_commit_id}} failed"
 	}
@@ -905,8 +915,12 @@ git-r3_checkout() {
 			echo "   updating from commit:     ${old_commit_id}"
 			echo "   to commit:                ${new_commit_id}"
 
-			git --no-pager diff --stat \
+			set -- git --no-pager diff --stat \
 				${old_commit_id}..${new_commit_id}
+			if [[ ${checkout_paths[@]} ]]; then
+				set -- "${@}" -- "${checkout_paths[@]}"
+			fi
+			"${@}"
 		else
 			echo "   at the commit:            ${new_commit_id}"
 		fi
@@ -914,7 +928,7 @@ git-r3_checkout() {
 	git update-ref --no-deref refs/git-r3/"${local_id}"/{__old__,__main__} || die
 
 	# recursively checkout submodules
-	if [[ -f ${out_dir}/.gitmodules ]]; then
+	if [[ -f ${out_dir}/.gitmodules && ! ${checkout_paths} ]]; then
 		local submodules
 		_git-r3_set_submodules \
 			"$(<"${out_dir}"/.gitmodules)"
