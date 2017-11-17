@@ -174,14 +174,14 @@ src_configure() {
 	# TODO: add swig language bindings
 	# see also https://www.mltframework.org/twiki/bin/view/MLT/ExtremeMakeover
 
-	local swig_lang=()
+	local swig_lang
 	# TODO: java perl php tcl
 	for i in lua python ruby ; do
-		use $i && swig_lang+=( $i )
+		use $i && swig_lang="${swig_lang} $i"
 	done
-	[[ -z ${swig_lang} ]] && swig_lang=( none )
+	[[ -z "${swig_lang}" ]] && swig_lang="none"
 
-	econf ${myconf[@]} --swig-languages="${swig_lang[@]}"
+	econf ${myconf[@]} --swig-languages="${swig_lang}"
 
 	sed -i -e s/^OPT/#OPT/ "${S}/config.mak" || die
 }
