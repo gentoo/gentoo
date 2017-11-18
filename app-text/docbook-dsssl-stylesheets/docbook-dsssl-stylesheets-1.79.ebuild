@@ -8,7 +8,7 @@ inherit sgml-catalog
 MY_P=${P/-stylesheets/}
 S=${WORKDIR}/${MY_P}
 DESCRIPTION="DSSSL Stylesheets for DocBook"
-HOMEPAGE="http://wiki.docbook.org/topic/DocBookDssslStylesheets"
+HOMEPAGE="https://github.com/docbook/wiki/wiki"
 SRC_URI="mirror://sourceforge/docbook/${MY_P}.tar.bz2"
 
 LICENSE="MIT"
