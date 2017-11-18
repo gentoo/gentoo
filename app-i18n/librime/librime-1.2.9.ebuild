@@ -11,7 +11,7 @@ SRC_URI="https://github.com/rime/${PN}/archive/rime-${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0/1"
-KEYWORDS="amd64 ~ppc ppc64 x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="static-libs test"
 
 RDEPEND="app-i18n/opencc:=
