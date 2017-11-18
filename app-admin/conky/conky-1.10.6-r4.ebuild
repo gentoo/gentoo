@@ -77,6 +77,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-new_graph-oor.patch
 	"${FILESDIR}"/${P}-gcc-7.patch
 	"${FILESDIR}"/${P}-fix-text-shades.patch
+	"${FILESDIR}"/${P}-cpu-hotplug.patch
 )
 
 DISABLE_AUTOFORMATTING="yes"
