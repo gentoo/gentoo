@@ -68,6 +68,7 @@ src_configure() {
 		-DLLDB_DISABLE_PYTHON=$(usex !python)
 		-DLLVM_ENABLE_TERMINFO=$(usex ncurses)
 
+		-DLLDB_INCLUDE_TESTS=$(usex test)
 		-DLLVM_BUILD_TESTS=$(usex test)
 		# compilers for lit tests
 		-DLLDB_TEST_C_COMPILER="$(type -P clang)"

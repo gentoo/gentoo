@@ -7,7 +7,7 @@ inherit flag-o-matic mount-boot
 
 DESCRIPTION="Performs a measured and verified boot using Intel Trusted Execution Technology"
 HOMEPAGE="https://sourceforge.net/projects/tboot/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~perfinion/distfiles/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -25,7 +25,7 @@ RDEPEND="${DEPEND}
 sys-boot/grub:2
 selinux? ( sec-policy/selinux-tboot )"
 
-DOCS=(README COPYING CHANGELOG)
+DOCS=( README COPYING CHANGELOG )
 PATCHES=( "${FILESDIR}/${PN}-1.9.5-genkernel-path.patch" )
 
 src_prepare() {

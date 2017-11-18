@@ -73,7 +73,12 @@ CONFIG_CHECK=~IPV6
 
 DOCS=( README.md TODO ChangeLog NEWS AUTHORS )
 
-PATCHES=( "${FILESDIR}"/${P}-new_graph-oor.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-new_graph-oor.patch
+	"${FILESDIR}"/${P}-gcc-7.patch
+	"${FILESDIR}"/${P}-fix-text-shades.patch
+	"${FILESDIR}"/${P}-cpu-hotplug.patch
+)
 
 DISABLE_AUTOFORMATTING="yes"
 DOC_CONTENTS="You can find sample configurations at ${ROOT%/}/usr/share/doc/${PF}.

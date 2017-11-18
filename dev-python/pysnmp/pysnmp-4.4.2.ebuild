@@ -2,13 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
-
 inherit distutils-r1
 
 DESCRIPTION="Python SNMP library"
-HOMEPAGE="http://pysnmp.sf.net/ https://pypi.python.org/pypi/pysnmp"
+HOMEPAGE="http://snmplabs.com/pysnmp/ https://pypi.python.org/pypi/pysnmp"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
@@ -22,6 +20,7 @@ DEPEND="
 "
 RDEPEND="
 	>=dev-python/pyasn1-0.2.3[${PYTHON_USEDEP}]
+	dev-python/pysmi[${PYTHON_USEDEP}]
 	|| (
 		dev-python/pycryptodome[${PYTHON_USEDEP}]
 		dev-python/pycrypto[${PYTHON_USEDEP}]

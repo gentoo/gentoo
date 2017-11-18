@@ -43,6 +43,7 @@
 # A String or Array of filenames of patches to apply to all implementations.
 
 # @ECLASS-VARIABLE: RUBY_OPTIONAL
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Set the value to "yes" to make the dependency on a Ruby interpreter
 # optional and then ruby_implementations_depend() to help populate
