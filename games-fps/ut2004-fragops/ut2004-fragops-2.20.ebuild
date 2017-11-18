@@ -14,7 +14,7 @@ HOMEPAGE="http://www.moddb.com/mods/fragops"
 SRC_URI="https://ut.rushbase.net/beyondunreal/mods/fragops_v220_fulllmw.zip"
 
 LICENSE="freedist"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="dedicated opengl"
 
 src_prepare() {

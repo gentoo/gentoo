@@ -38,7 +38,7 @@ LICENSE="LOKI-EULA"
 SLOT="0"
 IUSE="nocd maps music sounds videos"
 #linguas_en linguas_es linguas_pl linguas_de"
-KEYWORDS="~amd64 x86"
+KEYWORDS="~amd64 ~x86"
 RESTRICT="strip"
 
 DEPEND="=dev-util/xdelta-1*

@@ -13,5 +13,5 @@ SRC_URI="http://downloads.unrealadmin.org/UT2004/BonusPack/cbp1.zip
 	http://files.volved.com/qsr/ut2004_map_packs/cbp1.zip"
 
 LICENSE="freedist"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""

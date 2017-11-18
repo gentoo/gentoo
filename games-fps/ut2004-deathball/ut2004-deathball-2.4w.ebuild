@@ -14,7 +14,7 @@ HOMEPAGE="http://www.deathball.net/"
 SRC_URI="http://www.deathball.net/downloads/deathball${PV/.}.zip"
 
 LICENSE="freedist"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="dedicated opengl"
 
 src_prepare() {

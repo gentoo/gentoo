@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/deng/jdoom-resource-pack-${PV}.zip
 
 LICENSE="free-noncomm"		#505636
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND=">=games-fps/doomsday-1.9.8"

@@ -10,7 +10,7 @@ SRC_URI="http://download.factoryunreal.com/mirror/UT2003CrashFix.zip"
 
 LICENSE="ut2003"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 RESTRICT="strip"
 

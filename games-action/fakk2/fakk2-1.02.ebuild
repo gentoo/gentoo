@@ -10,7 +10,7 @@ SRC_URI=""
 
 LICENSE="LOKI-EULA"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 IUSE="nocd"
 RESTRICT="strip"
 

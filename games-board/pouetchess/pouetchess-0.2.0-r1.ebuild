@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${PN}_src_${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="debug"
 
 DEPEND="media-libs/libsdl:0[opengl,video]

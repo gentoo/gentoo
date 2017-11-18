@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/tenebrae/tenebraedata.zip
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 IUSE=""
 
 RDEPEND="virtual/opengl

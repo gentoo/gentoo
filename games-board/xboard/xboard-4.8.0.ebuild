@@ -10,7 +10,7 @@ SRC_URI="mirror://gnu/xboard/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64 x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE="Xaw3d +default-font gtk nls zippy"
 RESTRICT="test" #124112
 

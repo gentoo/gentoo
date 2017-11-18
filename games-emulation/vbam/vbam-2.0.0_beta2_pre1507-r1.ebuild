@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit subversion
 else
 	SRC_URI="https://dev.gentoo.org/~radhermit/distfiles/${MY_P}.tar.xz"
-	KEYWORDS="amd64 x86"
+	KEYWORDS="~amd64 ~x86"
 
 	# upstream patches
 	SRC_URI+=" https://github.com/visualboyadvance-m/visualboyadvance-m/commit/3f3c3859c1c5f92937bef5d3398a37605e9c16ec.patch -> ${PN}-2.0.0_pre1507-ffmpeg3_defines.patch"

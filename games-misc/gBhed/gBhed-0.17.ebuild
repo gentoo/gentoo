@@ -10,7 +10,7 @@ SRC_URI="http://liquidchile.net/software/gbhed/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="gtk"
 
 DEPEND="gtk? ( x11-libs/gtk+:2 )"

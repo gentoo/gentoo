@@ -10,7 +10,7 @@ SRC_URI="http://mordred.dir.bg/biniax/${P}-fullsrc.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="media-libs/libsdl
