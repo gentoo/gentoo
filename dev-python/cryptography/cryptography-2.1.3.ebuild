@@ -20,7 +20,7 @@ IUSE="libressl test"
 RDEPEND="
 	!libressl? ( dev-libs/openssl:0= ( || ( dev-libs/openssl:0[-bindist(-)]
 										=dev-libs/openssl-1.0.2l-r1:0
-										=dev-libs/openssl-1.1.0f-r1:0 ) ) )
+										>=dev-libs/openssl-1.1.0g-r1:0 ) ) )
 	libressl? ( dev-libs/libressl )
 	$(python_gen_cond_dep '>=dev-python/cffi-1.7:=[${PYTHON_USEDEP}]' 'python*')
 	$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' python2_7 pypy{,3})
