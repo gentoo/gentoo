@@ -553,6 +553,7 @@ _git-r3_is_local_repo() {
 git-r3_fetch() {
 	debug-print-function ${FUNCNAME} "$@"
 
+	# process repos first since we create repo_name from it
 	local repos
 	if [[ ${1} ]]; then
 		repos=( ${1} )
@@ -561,12 +562,6 @@ git-r3_fetch() {
 	else
 		repos=( ${EGIT_REPO_URI} )
 	fi
-
-	local branch=${EGIT_BRANCH:+refs/heads/${EGIT_BRANCH}}
-	local remote_ref=${2:-${EGIT_COMMIT:-${branch:-HEAD}}}
-	local local_id=${3:-${CATEGORY}/${PN}/${SLOT%/*}}
-	local local_ref=refs/git-r3/${local_id}/__main__
-	local commit_date=${4:-${EGIT_COMMIT_DATE}}
 
 	[[ ${repos[@]} ]] || die "No URI provided and EGIT_REPO_URI unset"
 
@@ -590,6 +585,54 @@ git-r3_fetch() {
 			"${repos[@]}"
 		)
 	fi
+
+	# get the default values for the common variables and override them
+	local branch_name=${EGIT_BRANCH}
+	local commit_id=${2:-${EGIT_COMMIT}}
+	local commit_date=${4:-${EGIT_COMMIT_DATE}}
+
+	# support new override API for EAPI 6+
+	if ! has "${EAPI:-0}" 0 1 2 3 4 5; then
+		# get the name and do some more processing:
+		# 1) kill .git suffix,
+		# 2) underscore (remaining) non-variable characters,
+		# 3) add preceding underscore if it starts with a digit,
+		# 4) uppercase.
+		local override_name=${GIT_DIR##*/}
+		override_name=${override_name%.git}
+		override_name=${override_name//[^a-zA-Z0-9_]/_}
+		override_name=${override_name^^}
+
+		local varmap=(
+			REPO:repos
+			BRANCH:branch_name
+			COMMIT:commit_id
+			COMMIT_DATE:commit_date
+		)
+
+		local localvar livevar live_warn=
+		for localvar in "${varmap[@]}"; do
+			livevar=EGIT_OVERRIDE_${localvar%:*}_${override_name}
+			localvar=${localvar#*:}
+
+			if [[ -n ${!livevar} ]]; then
+				[[ ${localvar} == repos ]] && repos=()
+				live_warn=1
+				ewarn "Using ${livevar}=${!livevar}"
+				declare "${localvar}=${!livevar}"
+			fi
+		done
+
+		if [[ ${live_warn} ]]; then
+			ewarn "No support will be provided."
+		fi
+	fi
+
+	# set final variables after applying overrides
+	local branch=${branch_name:+refs/heads/${branch_name}}
+	local remote_ref=${commit_id:-${branch:-HEAD}}
+	local local_id=${3:-${CATEGORY}/${PN}/${SLOT%/*}}
+	local local_ref=refs/git-r3/${local_id}/__main__
 
 	# try to fetch from the remote
 	local success saved_umask
