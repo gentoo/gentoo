@@ -196,6 +196,21 @@ pkg_pretend() {
 			die "old __guard detected"
 		fi
 	fi
+
+	# Check for sanity of /etc/nsswitch.conf
+	if [[ -e ${EROOT}/etc/nsswitch.conf ]] ; then
+		local entry
+		for entry in passwd group shadow; do
+			if ! egrep -q "^[ \t]*${entry}:.*files" "${EROOT}"/etc/nsswitch.conf; then
+				eerror "Your ${EROOT}/etc/nsswitch.conf is out of date."
+				eerror "Please make sure you have 'files' entries for"
+				eerror "'passwd:', 'group:' and 'shadow:' databases."
+				eerror "For more details see:"
+				eerror "  https://wiki.gentoo.org/wiki/Project:Toolchain/nsswitch.conf_in_glibc-2.26"
+				die "nsswitch.conf has no 'files' provider in '${entry}'."
+			fi
+		done
+	fi
 }
 # todo: shouldn't most of these checks be called also in src_configure again?
 # (since consistency is not guaranteed between pkg_ and src_)
@@ -792,5 +807,20 @@ pkg_postinst() {
 		/sbin/telinit U 2>/dev/null
 
 		use compile-locales || run_locale_gen "${EROOT}"
+	fi
+
+	# Check for sanity of /etc/nsswitch.conf, take 2
+	if [[ -e ${EROOT}/etc/nsswitch.conf ]] && ! has_version sys-auth/libnss-nis ; then
+		local entry
+		for entry in passwd group shadow; do
+			if egrep -q "^[ \t]*${entry}:.*nis" "${EROOT}"/etc/nsswitch.conf; then
+				ewarn ""
+				ewarn "Your ${EROOT}/etc/nsswitch.conf uses NIS. Support for that has been"
+				ewarn "removed from glibc and is now provided by the package"
+				ewarn "  sys-auth/libnss-nis"
+				ewarn "Install it now to keep your NIS setup working."
+				ewarn ""
+			fi
+		done
 	fi
 }
