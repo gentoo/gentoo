@@ -16127,7 +16127,7 @@ sci-calculators/orpie 1.5.2-r1: A fullscreen RPN calculator for the console
 sci-calculators/pcalc 3-r1: the programmers calculator
 sci-calculators/qalculate-gtk 0.9.9: Modern multi-purpose calculator
 sci-calculators/qalculator 0.4b-r1: A Qt4 based small calculator application
-sci-calculators/speedcrunch 0.11-r2: Fast and usable calculator for power users
+sci-calculators/speedcrunch 0.11-r2 0.12.0: Fast and usable calculator for power users
 sci-calculators/tiemu 3.03-r1: Texas Instruments hand-helds emulator
 sci-calculators/tilp2 1.18: Communication program for Texas Instruments calculators
 sci-calculators/transcalc 0.14-r2: Microwave and RF transmission line calculator
