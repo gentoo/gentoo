@@ -1,0 +1,12 @@
+--- a/src/sysv/gentoo/sssd.in
++++ b/src/sysv/gentoo/sssd.in
+@@ -1,7 +1,7 @@
+-#!/sbin/runscript
++#!/sbin/openrc-run
+ 
+ depend(){
+-    need localmount netmount clock
++    need localmount clock
+     use syslog xdm
+ }
+ 
