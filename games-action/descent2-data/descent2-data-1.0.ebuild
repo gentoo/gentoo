@@ -17,7 +17,7 @@ SRC_URI=""
 # See readme.txt
 LICENSE="descent-data"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="videos"
 
 # d2x-0.2.5-r2 may include the CD data itself.

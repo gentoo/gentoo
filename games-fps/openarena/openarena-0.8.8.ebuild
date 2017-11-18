@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/oarena/${P}.zip
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="+curl +openal +vorbis"
 
 RDEPEND="virtual/opengl

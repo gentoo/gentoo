@@ -14,7 +14,7 @@ SRC_URI="http://files.bioware.com/neverwinternights/updates/windows/server/NWNDe
 
 LICENSE="NWN-EULA"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE="${LANGUAGES}"
 RESTRICT="mirror strip"
 

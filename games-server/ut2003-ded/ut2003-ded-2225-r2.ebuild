@@ -11,7 +11,7 @@ SRC_URI="http://www.agaland.it/misc/ut2003/ut2003-lnxded-${PV}.tar.bz2
 
 LICENSE="ut2003"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 RESTRICT="mirror strip"
 IUSE=""
 

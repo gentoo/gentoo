@@ -15,7 +15,7 @@ SRC_URI="https://mupen64plus.googlecode.com/files/${MY_P}.tar.gz mirror://gentoo
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="+gtk libsamplerate lirc qt4 cpu_flags_x86_sse"
 
 # GTK+ is currently required by plugins even if no GUI support is enabled

@@ -10,7 +10,7 @@ SRC_URI="http://www.seehuhn.de/data/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
 RDEPEND="sys-libs/ncurses:0"

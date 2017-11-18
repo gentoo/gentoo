@@ -10,7 +10,7 @@ SRC_URI="http://s159260531.onlinehome.us/demos/gishdemo.tar.gz -> ${P}.tar.gz"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
 RESTRICT="mirror bindist strip"
 QA_PREBUILT="${GAMES_PREFIX_OPT:1}/${PN}/gish"

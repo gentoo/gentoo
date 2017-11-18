@@ -13,7 +13,7 @@ SRC_URI="mirror://idsoftware/wolf/linux/old/${MY_P}
 
 LICENSE="RTCW GPL-2" # gpl for init script bug #425946
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE="dedicated"
 RESTRICT="strip mirror"
 

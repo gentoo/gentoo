@@ -11,7 +11,7 @@ SRC_URI="http://bundles.openttdcoop.org/nml/releases/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="~amd64 ~arm ~x86"
 
 RDEPEND="dev-python/pillow[zlib,${PYTHON_USEDEP}]
 	dev-python/ply[${PYTHON_USEDEP}]"

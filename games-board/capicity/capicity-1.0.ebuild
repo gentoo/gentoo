@@ -11,7 +11,7 @@ SRC_URI="dedicated? ( mirror://sourceforge/project/capitalism/Capi%20City/${PV}/
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="dedicated"
 
 RDEPEND="

@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/dgen/files/${P}.tar.gz"
 
 LICENSE="dgen-sdl BSD BSD-2 free-noncomm LGPL-2.1+ GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="joystick opengl"
 
 RDEPEND="media-libs/libsdl[joystick?,opengl?]

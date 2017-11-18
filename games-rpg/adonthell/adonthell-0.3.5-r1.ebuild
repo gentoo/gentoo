@@ -12,7 +12,7 @@ SRC_URI="https://savannah.nongnu.org/download/${PN}/${PN}-src-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc nls"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

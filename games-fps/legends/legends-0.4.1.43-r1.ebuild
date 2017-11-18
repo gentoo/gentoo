@@ -14,7 +14,7 @@ SRC_URI="http://legendsthegame.net/files/${MY_P}.run
 
 LICENSE="Legends LGPL-2.1+"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE="+dedicated"
 RESTRICT="strip"
 

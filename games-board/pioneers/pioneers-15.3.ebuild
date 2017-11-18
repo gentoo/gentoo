@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/pio/${P}.tar.gz"
 
 LICENSE="GPL-2 CC-BY-SA-4.0"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="dedicated help nls"
 
 # dev-util/gob only for autoreconf

@@ -10,7 +10,7 @@ if [[ "${PV}" == "9999" ]]; then
 else
 	inherit toolchain-funcs
 	SRC_URI="https://linux-wbfs-manager.googlecode.com/files/${P}.tar.gz"
-	KEYWORDS="amd64 x86"
+	KEYWORDS="~amd64 ~x86"
 fi;
 
 DESCRIPTION="WBFS manager for Linux using GTK+"

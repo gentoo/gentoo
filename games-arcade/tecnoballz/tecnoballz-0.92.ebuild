@@ -10,7 +10,7 @@ SRC_URI="http://linux.tlk.fr/games/TecnoballZ/download/${P}.tgz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="media-libs/libsdl

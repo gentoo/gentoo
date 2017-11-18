@@ -20,7 +20,7 @@ SRC_URI="mirror://sourceforge/scummvm/drascula-${PV}.zip
 
 LICENSE="drascula"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="l10n_es l10n_de l10n_fr l10n_it +sound"
 RESTRICT="mirror"
 

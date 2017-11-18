@@ -12,7 +12,7 @@ SRC_URI="https://github.com/SimonLarsen/mrrescue/releases/download/v${PV}/${P}-l
 
 LICENSE="CC-BY-SA-3.0 MIT ZLIB"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="games-engines/love:0"

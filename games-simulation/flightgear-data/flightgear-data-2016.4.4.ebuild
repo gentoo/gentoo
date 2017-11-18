@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge/flightgear/FlightGear-${PV}-data.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 # data files split to separate package since 2.10.0

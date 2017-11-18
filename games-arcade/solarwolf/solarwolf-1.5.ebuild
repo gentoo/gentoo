@@ -10,7 +10,7 @@ SRC_URI="http://www.pygame.org/shredwheat/solarwolf/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 hppa x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~x86"
 IUSE=""
 
 RDEPEND=">=dev-python/pygame-1.5.6

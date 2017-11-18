@@ -18,7 +18,7 @@ SRC_URI="http://www.hedgewars.org/download/releases/${MY_P}.tar.bz2
 
 LICENSE="GPL-2 Apache-2.0 FDL-1.3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 QA_FLAGS_IGNORED=${GAMES_BINDIR}/hwengine # pascal sucks
 QA_PRESTRIPPED=${GAMES_BINDIR}/hwengine # pascal sucks

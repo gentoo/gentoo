@@ -8,7 +8,7 @@ DESCRIPTION="clone of old-school Wizardry(tm) games by SirTech"
 HOMEPAGE="http://icculus.org/gwiz/"
 SRC_URI="http://icculus.org/gwiz/${P}.tar.bz2"
 
-KEYWORDS="~alpha amd64 x86"
+KEYWORDS="~alpha ~amd64 ~x86"
 SLOT="0"
 LICENSE="GPL-2"
 IUSE=""

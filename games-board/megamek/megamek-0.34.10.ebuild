@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/${PN}/MegaMek-v${PV}.zip"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=">=virtual/jdk-1.5

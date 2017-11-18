@@ -11,7 +11,7 @@ SRC_URI="mirror://nongnu/freedoom/freedoom-iwad/shareware/freedoom-demo-${PV}.zi
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
 DEPEND="app-arch/unzip"
