@@ -20,6 +20,7 @@ RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtopengl:5
+	dev-qt/qtwidgets:5
 	virtual/glu
 	virtual/opengl
 "
