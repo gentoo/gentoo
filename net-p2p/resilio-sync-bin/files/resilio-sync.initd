@@ -1,0 +1,41 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+extra_commands="reload"
+
+NAME=${SVCNAME##*.}
+if [ -n "${NAME}" -a "${SVCNAME}" != "resilio-sync" ]; then
+    PID="/run/resilio-sync/resilio-sync.${NAME}.pid"
+    PNAME=$(echo ${RC_SVCNAME} | sed 's/\..*//g')
+    CONF_DEFAULT="/etc/conf.d/resilio-sync.${NAME}"
+else
+    PID="/run/resilio-sync/resilio-sync.pid"
+    PNAME=${RC_SVCNAME}
+    CONF_DEFAULT="/etc/conf.d/resilio-sync"
+fi
+CONF=${CONF:-${CONF_DEFAULT}}
+EXEC=${EXEC:-/usr/bin/rslsync}
+
+depend() {
+	need net
+	provide resilio-sync
+}
+
+start() {
+	ebegin "Starting Resilio Sync"
+	start-stop-daemon --start --quiet --pidfile ${PID} --user ${USER}:${GROUP} --exec ${EXEC} -- ${OPTS} ${CONFIG}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping Resilio Sync"
+	start-stop-daemon --stop --exec "${EXEC}" --pidfile "${PID}" --retry 10
+	eend $?
+}
+
+reload() {
+	ebegin "Reloading Resilio Sync"
+	start-stop-daemon --signal HUP --exec "${EXEC}" --pidfile "${PID}"
+	eend $?
+}
