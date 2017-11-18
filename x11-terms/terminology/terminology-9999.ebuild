@@ -9,10 +9,11 @@ if [[ "${PV}" != "9999" ]] ; then
 	SRC_URI="https://download.enlightenment.org/rel/apps/${PN}/${MY_P}.tar.xz"
 	KEYWORDS="~amd64 ~x86"
 else
+	inherit git-r3
 	EGIT_REPO_URI="https://git.enlightenment.org/apps/${PN}.git"
 fi
 
-inherit git-r3 meson
+inherit meson
 
 DESCRIPTION="Feature rich terminal emulator using the Enlightenment Foundation Libraries"
 HOMEPAGE="https://www.enlightenment.org/p.php?p=about/terminology"
