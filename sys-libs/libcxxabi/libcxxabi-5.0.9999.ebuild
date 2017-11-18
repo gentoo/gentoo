@@ -55,7 +55,7 @@ src_unpack() {
 	git-r3_fetch
 
 	git-r3_checkout https://llvm.org/git/libcxx.git \
-		"${WORKDIR}"/libcxx
+		"${WORKDIR}"/libcxx '' include
 	git-r3_checkout
 }
 
