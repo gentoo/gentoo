@@ -14,7 +14,7 @@ SRC_URI="${MY_PN}_linux_1389114090.sh"
 
 LICENSE="all-rights-reserved bundled-libs? ( LGPL-2 LGPL-2.1 ZLIB )"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="bundled-libs"
 RESTRICT="fetch bindist splitdebug"
 

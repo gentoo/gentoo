@@ -12,7 +12,7 @@ HOMEPAGE="http://www.moddb.com/mods/matrix-quake-3"
 SRC_URI="mirror://quakeunity/modifications/matrix24.zip"
 
 LICENSE="freedist"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="dedicated opengl"
 
 src_unpack() {

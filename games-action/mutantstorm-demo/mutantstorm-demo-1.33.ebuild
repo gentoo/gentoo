@@ -10,7 +10,7 @@ SRC_URI="ftp://ggdev-1.homelan.com/mutantstorm/MutantStormDemo_${PV/./_}.sh.bin"
 
 LICENSE="POMPOM"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
 RESTRICT="strip"
 

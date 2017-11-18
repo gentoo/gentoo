@@ -12,7 +12,7 @@ SRC_URI="LegendOfGrimrock-Linux-${TIMESTAMP}.sh"
 
 SLOT="0"
 LICENSE="all-rights-reserved"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE="bundled-libs"
 RESTRICT="fetch bindist splitdebug"
 

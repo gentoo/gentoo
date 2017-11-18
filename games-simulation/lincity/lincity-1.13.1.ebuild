@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/lincity/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="nls"
 
 # dep fix (bug #82318)

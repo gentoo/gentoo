@@ -13,7 +13,7 @@ SRC_URI="mirror://idsoftware/wolf/linux/old/${MY_P}
 
 LICENSE="RTCW"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
 RESTRICT="strip mirror"
 

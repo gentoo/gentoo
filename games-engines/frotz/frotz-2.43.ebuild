@@ -10,7 +10,7 @@ SRC_URI="http://www.ifarchive.org/if-archive/infocom/interpreters/frotz/${P}.tar
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="alsa oss"
 
 DEPEND="sys-libs/ncurses:0

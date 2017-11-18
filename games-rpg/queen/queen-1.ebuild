@@ -36,7 +36,7 @@ SRC_URI="
 
 LICENSE="queen"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64 x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE="mp3 l10n_de +l10n_en l10n_fr l10n_he l10n_it"
 REQUIRED_USE="|| ( l10n_de l10n_en l10n_fr l10n_he l10n_it )"
 

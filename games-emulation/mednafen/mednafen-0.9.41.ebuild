@@ -11,7 +11,7 @@ SRC_URI="https://mednafen.github.io/releases/files/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="alsa altivec cjk debugger jack nls pax_kernel"
 
 RDEPEND="

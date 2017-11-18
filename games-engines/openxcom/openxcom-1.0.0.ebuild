@@ -10,7 +10,7 @@ SRC_URI="https://github.com/SupSuper/OpenXcom/archive/v1.0.tar.gz -> ${P}.tar.gz
 
 LICENSE="GPL-3 CC-BY-SA-4.0"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
 RDEPEND=">=dev-cpp/yaml-cpp-0.5.1

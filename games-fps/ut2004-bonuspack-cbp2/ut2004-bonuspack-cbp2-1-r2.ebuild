@@ -13,7 +13,7 @@ SRC_URI="https://ut.rushbase.net/beyondunreal/official/ut2004/cbp2-volume1_zip.z
 	https://ut.rushbase.net/beyondunreal/official/ut2004/cbp2-volume2_zip.zip"
 
 LICENSE="freedist"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="games-fps/ut2004-bonuspack-cbp1

@@ -10,7 +10,7 @@ SRC_URI="http://www.wh-hms.uni-ulm.de/~mfcn/shared/glxquake/glxquake.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 RESTRICT="strip"
 IUSE=""
 

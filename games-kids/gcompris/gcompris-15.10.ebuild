@@ -13,7 +13,7 @@ SRC_URI="http://gcompris.net/download/${P}.tar.bz2"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="gstreamer"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

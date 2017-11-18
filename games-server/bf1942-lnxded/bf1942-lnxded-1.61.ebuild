@@ -11,7 +11,7 @@ SRC_URI="http://ftp.games.skynet.be/pub/misc/${PN/-/_}-1.6-rc2.run
 
 LICENSE="bf1942-lnxded"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 IUSE=""
 RESTRICT="mirror bindist strip"
 

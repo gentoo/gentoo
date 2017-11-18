@@ -17,7 +17,7 @@ SRC_URI="http://icculus.org/d2x/data/${DEMO}
 LICENSE="free-noncomm"
 
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND=""

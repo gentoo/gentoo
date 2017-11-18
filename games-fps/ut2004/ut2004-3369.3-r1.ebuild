@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="ut2003"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="dedicated opengl"
 RESTRICT="mirror strip"
 

@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/sauerbraten/sauerbraten/2013_02_03/sauerbraten_${P
 
 LICENSE="ZLIB freedist"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="debug dedicated server"
 
 RDEPEND="

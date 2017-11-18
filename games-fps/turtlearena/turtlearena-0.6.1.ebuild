@@ -14,7 +14,7 @@ SRC_URI="https://turtlearena.googlecode.com/files/${MY_P}-0-src.tar.bz2
 
 LICENSE="GPL-2+ CC-BY-SA-3.0 mplus-fonts lcc"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="+curl debug dedicated mumble openal server theora voice vorbis"
 
 RDEPEND="

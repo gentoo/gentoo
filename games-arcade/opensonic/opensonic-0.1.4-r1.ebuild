@@ -13,7 +13,7 @@ SRC_URI="https://sourceforge.net/projects/opensnc/files/Open%20Sonic/${PV}/opens
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 RESTRICT="mirror" # unsure about legality of graphics
 

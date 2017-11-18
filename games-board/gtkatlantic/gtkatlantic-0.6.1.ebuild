@@ -10,7 +10,7 @@ SRC_URI="http://download.tuxfamily.org/gtkatlantic/downloads/v0.6/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="x11-libs/gtk+:3

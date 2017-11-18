@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/vispatch/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 S=${WORKDIR}/${P}/source

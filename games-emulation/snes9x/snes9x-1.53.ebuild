@@ -10,7 +10,7 @@ SRC_URI="https://snes9x-gtk.googlecode.com/files/${P}-src.tar.bz2"
 
 LICENSE="Snes9x GPL-2 GPL-2+ LGPL-2.1 LGPL-2.1+ ISC MIT ZLIB Info-ZIP"
 SLOT="0"
-KEYWORDS="amd64 ppc64 x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc64 ~x86 ~x86-fbsd"
 IUSE="alsa debug gtk joystick multilib netplay nls opengl oss png pulseaudio portaudio +xv +xrandr zlib"
 RESTRICT="bindist"
 

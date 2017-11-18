@@ -11,7 +11,7 @@ SRC_URI="https://ut.rushbase.net/beyondunreal/mods/cbp2003.zip"
 
 LICENSE="ut2003"
 SLOT="1"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 RESTRICT="mirror strip"
 
 RDEPEND="games-fps/ut2003"

@@ -15,7 +15,7 @@ SRC_URI="http://download.tuxfamily.org/xmoto/xmoto/${PV}/${P}-src.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="editor nls"
 
 RDEPEND="

@@ -8,7 +8,7 @@ DESCRIPTION="Match rising tiles to score as many points as possible before the t
 HOMEPAGE="http://www.shiftygames.com/torrent/torrent.html"
 SRC_URI="http://www.shiftygames.com/torrent/${P}.tar.gz"
 
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE=""

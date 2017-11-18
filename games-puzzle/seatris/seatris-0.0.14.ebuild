@@ -10,7 +10,7 @@ SRC_URI="http://www.earth.li/projectpurple/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc64 x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 
 RDEPEND="sys-libs/ncurses"
 DEPEND="${DEPEND}

@@ -12,7 +12,7 @@ SRC_URI="http://filesingularity.timedoctor.org/Textures.tar.bz2
 
 LICENSE="blackshades"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="virtual/opengl
