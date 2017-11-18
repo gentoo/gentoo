@@ -4,9 +4,9 @@ DESCRIPTION=a binary diff and differential compression tools. VCDIFF (RFC 3284) 
 EAPI=6
 HOMEPAGE=http://xdelta.org/
 IUSE=examples lzma
-KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd
+KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-fbsd
 LICENSE=GPL-2
 RDEPEND=lzma? ( app-arch/xz-utils:= )
 SLOT=3
 SRC_URI=https://github.com/jmacd/xdelta-gpl/releases/download/v3.0.11/xdelta3-3.0.11.tar.gz
-_md5_=227e8f0b5e6774a315ba619a329a52bb
+_md5_=efe50106ac6d2addd81b53b7cac142be
