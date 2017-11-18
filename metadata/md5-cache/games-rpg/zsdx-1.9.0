@@ -3,11 +3,11 @@ DEPEND=app-arch/zip sys-devel/make >=dev-util/cmake-3.7.2 >=sys-apps/sed-4
 DESCRIPTION=A free 2D Zelda fangame
 EAPI=5
 HOMEPAGE=http://www.solarus-games.org/
-KEYWORDS=amd64 x86
+KEYWORDS=~amd64 ~x86
 LICENSE=all-rights-reserved CC-BY-SA-3.0 GPL-3
 RDEPEND=>=games-engines/solarus-1.3.0 <games-engines/solarus-1.4.0 games-misc/games-envd
 RESTRICT=mirror
 SLOT=0
 SRC_URI=http://www.zelda-solarus.com/downloads/zsdx/zsdx-1.9.0.tar.gz
 _eclasses_=base	983774947da124fb7d542ce25a218bb1	cmake-utils	f9fb12e2dbe2e0c9c17f030bae85eb02	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	flag-o-matic	a6089a2a4027ae3da4a460dc87b21050	games	2bb3ede665927a68ffdb7c41eec7efde	gnome2-utils	4d211d7614f303710fca59db6ec12c88	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	toolchain-funcs	185a06792159ca143528e7010368e8af	user	e4b567c44272a719fabf53f0f885d3f7	versionator	c80ccf29e90adea7c5cae94b42eb76d0	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=6910095582b82631f11fd5fda0f12cc4
+_md5_=d77589544d004d2fc495127d6b3ec3d7

@@ -3,9 +3,9 @@ DEPEND=>=x11-libs/gtk+-2.8.0:2 gnome-base/libglade x11-libs/gtkglext virtual/ope
 DESCRIPTION=Nintendo DS emulator
 EAPI=6
 HOMEPAGE=http://desmume.org/
-KEYWORDS=amd64 x86
+KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=>=x11-libs/gtk+-2.8.0:2 gnome-base/libglade x11-libs/gtkglext virtual/opengl sys-libs/zlib dev-libs/zziplib media-libs/libsdl[joystick,opengl,video] x11-libs/agg
 SLOT=0
 SRC_URI=mirror://sourceforge/desmume/desmume-0.9.11.tar.gz
-_md5_=2eb01db7477327868150f0dea93086af
+_md5_=2c19d0e26156a8650c9cac8b68f3ea8c

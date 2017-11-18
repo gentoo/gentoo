@@ -3,10 +3,10 @@ DEPEND=dev-games/KXL >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18
 DESCRIPTION=2D length scroll shooting game
 EAPI=5
 HOMEPAGE=http://triring.net/ps2linux/games/kxl/kxlgames.html
-KEYWORDS=amd64 x86
+KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=dev-games/KXL media-fonts/font-adobe-100dpi games-misc/games-envd
 SLOT=0
 SRC_URI=mirror://gentoo/geki2-KXL-2.0.3.tar.gz mirror://gentoo/geki2-KXL.png
 _eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	base	983774947da124fb7d542ce25a218bb1	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	games	2bb3ede665927a68ffdb7c41eec7efde	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	user	e4b567c44272a719fabf53f0f885d3f7
-_md5_=69db7052a184f812e094a5ca77d2d926
+_md5_=c3a5d12913a83ec67706854eb91a9220

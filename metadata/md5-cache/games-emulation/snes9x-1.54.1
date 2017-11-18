@@ -4,11 +4,11 @@ DESCRIPTION=Super Nintendo Entertainment System (SNES) emulator
 EAPI=6
 HOMEPAGE=https://github.com/snes9xgit/snes9x
 IUSE=alsa debug gtk joystick multilib netplay nls opengl oss png pulseaudio portaudio +xv +xrandr
-KEYWORDS=amd64 ppc64 x86 ~x86-fbsd
+KEYWORDS=~amd64 ~ppc64 ~x86 ~x86-fbsd
 LICENSE=Snes9x GPL-2 GPL-2+ LGPL-2.1 LGPL-2.1+ ISC MIT ZLIB Info-ZIP
 RDEPEND=sys-libs/zlib[minizip] x11-libs/libX11 x11-libs/libXext png? ( >=media-libs/libpng-1.2.43:0 ) gtk? ( >=x11-libs/gtk+-2.10:2 x11-misc/xdg-utils portaudio? ( >=media-libs/portaudio-19_pre ) joystick? ( >=media-libs/libsdl-1.2.12[joystick] ) opengl? ( virtual/opengl ) xv? ( x11-libs/libXv ) xrandr? ( x11-libs/libXrandr ) alsa? ( media-libs/alsa-lib ) pulseaudio? ( media-sound/pulseaudio ) )
 RESTRICT=bindist
 SLOT=0
 SRC_URI=https://github.com/snes9xgit/snes9x/archive/1.54.1.tar.gz -> snes9x-1.54.1.tar.gz
 _eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	flag-o-matic	a6089a2a4027ae3da4a460dc87b21050	gnome2-utils	4d211d7614f303710fca59db6ec12c88	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=cdfd4d4e50cc2ca22e92135bffb6454d
+_md5_=334450fc3f0d9733abb27088929210c6

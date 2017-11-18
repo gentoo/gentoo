@@ -4,9 +4,9 @@ DESCRIPTION=A small, flexible, screen-oriented MUD client (aka TinyFugue)
 EAPI=6
 HOMEPAGE=http://tinyfugue.sourceforge.net/
 IUSE=+atcp debug doc +gmcp ipv6 +option102 ssl
-KEYWORDS=amd64 x86
+KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=ssl? ( dev-libs/openssl:0= ) dev-libs/libpcre
 SLOT=0
 SRC_URI=mirror://sourceforge/tinyfugue/tf-50b8.tar.gz http://homepage.mac.com/mikeride/abelinc/scripts/allrootpatch.txt -> tf-allrootpatch.txt http://homepage.mac.com/mikeride/abelinc/scripts/allsrcpatch.txt -> tf-allsrcpatch.txt doc? ( mirror://sourceforge/tinyfugue/tf-50b8-help.tar.gz )
-_md5_=4ac0e334043d57b02a182054e4a4d8b0
+_md5_=923cfc004b3e6db69a9439a9a0342e44
