@@ -47,7 +47,7 @@ src_unpack() {
 
 	if use test; then
 		git-r3_checkout https://llvm.org/git/llvm.git \
-			"${WORKDIR}"/llvm
+			"${WORKDIR}"/llvm '' utils/{lit,unittest}
 	fi
 	git-r3_checkout
 }
