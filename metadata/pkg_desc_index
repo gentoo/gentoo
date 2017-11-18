@@ -5028,7 +5028,7 @@ dev-libs/openct 0.6.20-r4: library for accessing smart card terminals
 dev-libs/openobex 1.7.1: Implementation of the OBEX protocol used for transferring data to mobile devices
 dev-libs/opensc 0.16.0 0.17.0: Libraries and applications to access smartcards
 dev-libs/openspecfun 0.5.1: A collection of special mathematical functions
-dev-libs/openssl 0.9.8z_p8 1.0.2k 1.0.2l 1.0.2l-r1 1.0.2m 1.1.0f 1.1.0f-r1 1.1.0g: full-strength general purpose cryptography library (including SSL and TLS)
+dev-libs/openssl 0.9.8z_p8 1.0.2k 1.0.2l 1.0.2l-r1 1.0.2m 1.1.0f 1.1.0f-r1 1.1.0g 1.1.0g-r1: full-strength general purpose cryptography library (including SSL and TLS)
 dev-libs/ossp-uuid 1.6.2-r4 1.6.2-r6: An ISO-C:1999 API with CLI for generating DCE, ISO/IEC and RFC compliant UUID
 dev-libs/pakchois 0.4-r2: PaKChoiS - PKCS #11 wrapper library
 dev-libs/papi 5.3.0 5.4.0 5.5.1: Performance Application Programming Interface
@@ -9792,7 +9792,7 @@ dev-ruby/packetfu 1.1.13: A mid-level packet manipulation library
 dev-ruby/paint 2.0.0 2.0.1: Terminal painter
 dev-ruby/parallel 1.11.2 1.12.0: Run any code in parallel Processes or Threads
 dev-ruby/paramesan 0.1.1: Parameterized tests in Ruby
-dev-ruby/parser 2.3.3.0 2.3.3.1 2.4.0.0: A production-ready Ruby parser written in pure Ruby
+dev-ruby/parser 2.3.3.0 2.3.3.1 2.4.0.0 2.4.0.2: A production-ready Ruby parser written in pure Ruby
 dev-ruby/parslet 1.7.1 1.8.0: A small PEG based parser library
 dev-ruby/patch_finder 1.0.2: Generic Patch Finder
 dev-ruby/path_expander 1.0.1 1.0.2: Pre-process CLI arguments expanding directories into their constituent files
@@ -9818,7 +9818,7 @@ dev-ruby/prawn 2.1.0 2.2.0: Fast, Nimble PDF Generation For Ruby
 dev-ruby/prawn-table 0.2.2-r1: Provides support for tables in Prawn
 dev-ruby/priorityqueue 0.1.2: A fibonacci-heap priority-queue implementation
 dev-ruby/protected_attributes 1.1.4: Protect attributes from mass-assignment in ActiveRecord models
-dev-ruby/pry 0.10.4 0.11.0 0.11.1 0.11.2: Pry is a powerful alternative to the standard IRB shell for Ruby
+dev-ruby/pry 0.10.4 0.11.0 0.11.1 0.11.2 0.11.3: Pry is a powerful alternative to the standard IRB shell for Ruby
 dev-ruby/psych 2.2.4: A libyaml wrapper for Ruby
 dev-ruby/public_suffix 2.0.5 3.0.0-r1 3.0.1: Parse and decompose a domain name into top level domain, domain and subdomains
 dev-ruby/pundit 1.1.0: Object oriented authorization for Rails applications
