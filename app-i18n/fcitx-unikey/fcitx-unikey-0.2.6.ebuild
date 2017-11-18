@@ -21,7 +21,7 @@ fi
 
 LICENSE="GPL-2+ GPL-3+ LGPL-2+"
 SLOT="4"
-KEYWORDS="amd64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~ppc ppc64 x86"
 IUSE="+macro-editor"
 
 RDEPEND=">=app-i18n/fcitx-4.2.9:4
