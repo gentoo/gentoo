@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst setup
+DEPEND=virtual/udev virtual/pkgconfig >=sys-apps/kmod-15[tools] app-text/asciidoc >=dev-libs/libxslt-1.1.26 app-text/docbook-xml-dtd:4.5 >=app-text/docbook-xsl-stylesheets-1.75.2 virtual/pkgconfig
+DESCRIPTION=Generic initramfs generation tool
+EAPI=6
+HOMEPAGE=https://dracut.wiki.kernel.org
+IUSE=debug selinux
+KEYWORDS=~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=virtual/udev virtual/pkgconfig >=sys-apps/kmod-15[tools] app-arch/cpio >=app-shells/bash-4.0:0 || ( >=sys-apps/sysvinit-2.87-r3 sys-apps/systemd[sysv-utils] ) sys-apps/coreutils[xattr(-)] >=sys-apps/util-linux-2.21 debug? ( dev-util/strace ) selinux? ( sys-libs/libselinux sys-libs/libsepol sec-policy/selinux-dracut ) !net-analyzer/arping
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://kernel/linux/utils/boot/dracut/dracut-046.tar.xz
+_eclasses_=bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	linux-info	ca370deef9d44125d829f2eb6ebc83e0	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	34815d3b76e745c5ca33eec9f95074c2	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=7723ebd5a1d09967a55f7cfa9f1baa28
