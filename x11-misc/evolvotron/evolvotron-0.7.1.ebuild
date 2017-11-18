@@ -19,6 +19,7 @@ RDEPEND="
 	dev-libs/boost:=
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
+	dev-qt/qtxml:5
 "
 DEPEND="${RDEPEND}"
 
