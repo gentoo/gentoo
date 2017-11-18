@@ -4,11 +4,11 @@ DESCRIPTION=Network Information Service tools
 EAPI=6
 HOMEPAGE=http://www.linux-nis.org/nis/
 IUSE=nls
-KEYWORDS=alpha amd64 ~arm hppa ia64 ~mips ~ppc ppc64 ~sparc x86
+KEYWORDS=alpha amd64 ~arm hppa ia64 ~mips ppc ppc64 ~sparc x86
 LICENSE=GPL-2
 RDEPEND=|| ( <sys-libs/glibc-2.26[rpc] net-libs/libtirpc ) net-libs/libnsl:0=
 RESTRICT=test
 SLOT=0
 SRC_URI=http://www.linux-nis.org/download/yp-tools/yp-tools-4.2.2.tar.bz2
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	34815d3b76e745c5ca33eec9f95074c2	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=e744a1b3371cece926cf56497e46eac9
+_md5_=aefb711d0a6a630c29e04572d587d470
