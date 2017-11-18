@@ -2,11 +2,11 @@ DEFINED_PHASES=compile configure install postinst postrm prepare prerm unpack
 DEPEND=>=app-text/sgml-common-0.6.3-r2
 DESCRIPTION=DSSSL Stylesheets for DocBook
 EAPI=5
-HOMEPAGE=http://wiki.docbook.org/topic/DocBookDssslStylesheets
+HOMEPAGE=https://github.com/docbook/wiki/wiki
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x64-solaris
 LICENSE=MIT
 RDEPEND=app-text/sgml-common
 SLOT=0
 SRC_URI=mirror://sourceforge/docbook/docbook-dsssl-1.79.tar.bz2
 _eclasses_=base	983774947da124fb7d542ce25a218bb1	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	sgml-catalog	013e5c68335c5b4df8f1b72d7d7ad25d	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=7578cc0c8b551620514eae547142da5b
+_md5_=288f3e1255d84e4a9f5a785f1208449a
