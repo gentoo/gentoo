@@ -11,7 +11,7 @@ SRC_URI="https://github.com/${PN}-emu/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MPL-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="ffmpeg imagemagick opengl qt5 +sdl"
 REQUIRED_USE="|| ( qt5 sdl )
 		qt5? ( opengl )"

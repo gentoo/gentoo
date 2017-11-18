@@ -10,7 +10,7 @@ SRC_URI="http://downloads.tlhiv.com/xgame/${PF}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="dev-lang/perl

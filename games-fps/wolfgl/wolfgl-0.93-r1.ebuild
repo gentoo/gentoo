@@ -17,7 +17,7 @@ SRC_URI="mirror://gentoo/${P}.tbz2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 IUSE=""
 
 RDEPEND="virtual/opengl"

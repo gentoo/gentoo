@@ -10,7 +10,7 @@ SRC_URI="https://inf.ug.edu.pl/~piotao/xbattle/mirror/www.lysator.liu.se/XBattle
 
 LICENSE="xbattle"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 # Since this uses similar code and the same binary name as the original XBattle,

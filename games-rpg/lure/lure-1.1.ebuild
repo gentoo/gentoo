@@ -19,7 +19,7 @@ SRC_URI="
 
 LICENSE="lure"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 LANGS_IUSE="linguas_en linguas_es linguas_de linguas_fr linguas_it"
 IUSE=${LANGS_IUSE}
 RESTRICT="mirror"

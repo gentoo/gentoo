@@ -11,7 +11,7 @@ SRC_URI="http://filesingularity.timedoctor.org/${MY_P}.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="media-libs/libsdl[joystick,video]

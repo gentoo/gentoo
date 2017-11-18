@@ -13,7 +13,7 @@ SRC_URI="mirror://idsoftware/${MY_PN}/${MY_PN}${MY_PV}.zip"
 # See licinfo.txt
 LICENSE="quake1-demodata"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="symlink"
 
 RDEPEND=""

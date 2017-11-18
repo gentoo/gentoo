@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/pcgen/${P}-full.zip"
 
 LICENSE="LGPL-2.1 OGL-1.0a"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND=">=virtual/jre-1.6"

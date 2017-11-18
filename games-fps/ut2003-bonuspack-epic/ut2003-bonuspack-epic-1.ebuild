@@ -10,7 +10,7 @@ SRC_URI="http://ftp.student.utwente.nl/pub/games/UT2003/BonusPack/UT2003-epicbon
 
 LICENSE="ut2003"
 SLOT="1"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 IUSE=""
 RESTRICT="strip"
 

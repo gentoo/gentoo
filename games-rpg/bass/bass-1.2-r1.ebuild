@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/scummvm/bass-cd-${PV}.zip
 
 LICENSE="bass"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64 x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE=""
 
 RDEPEND=">=games-engines/scummvm-0.5.0"

@@ -14,7 +14,7 @@ HOMEPAGE="http://www.moddb.com/mods/chex-trek-beyond-the-quest"
 SRC_URI="chextrek_beta_${PV/.}.zip"
 
 LICENSE="GameFront"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="dedicated opengl"
 RESTRICT="fetch bindist"
 

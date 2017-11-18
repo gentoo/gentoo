@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/openastromenace/${PV}/astromenace-src-${PV}.tar.bz
 
 LICENSE="GPL-3 GPL-3+ CC-BY-SA-3.0 UbuntuFontLicense-1.0 OFL-1.1"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="virtual/opengl

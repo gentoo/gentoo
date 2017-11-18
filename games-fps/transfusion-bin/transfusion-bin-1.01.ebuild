@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/blood/${MY_PN}-1.0-linux.i386.zip
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* x86"
+KEYWORDS="-* ~x86"
 IUSE=""
 RESTRICT="strip"
 

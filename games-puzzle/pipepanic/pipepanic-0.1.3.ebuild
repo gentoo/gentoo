@@ -10,7 +10,7 @@ SRC_URI="http://www.users.waitrose.com/~thunor/pipepanic/dload/${P}-source.tar.g
 
 LICENSE="GPL-2 FreeArt"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="media-libs/libsdl[video]"

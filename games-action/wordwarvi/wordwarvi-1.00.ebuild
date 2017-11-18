@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/wordwarvi/${P}.tar.gz"
 
 LICENSE="GPL-2 CC-BY-2.0 CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="portaudio"
 
 RDEPEND="x11-libs/gtk+:2

@@ -14,7 +14,7 @@ SRC_URI="https://launchpad.net/widelands/${MY_PV}/build-$(get_version_component_
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="

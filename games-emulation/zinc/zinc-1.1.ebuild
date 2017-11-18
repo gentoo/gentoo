@@ -10,7 +10,7 @@ SRC_URI="http://caesar.logiqx.com/zips/emus/linux/zinc_linux/${P//[-.]/}-lnx.tar
 
 LICENSE="freedist"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
 RESTRICT="strip"
 QA_PREBUILT="${GAMES_PREFIX_OPT:1}/bin/zinc /usr/lib*/*.so"

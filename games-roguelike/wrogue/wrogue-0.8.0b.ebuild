@@ -10,7 +10,7 @@ SRC_URI="mirror://gentoo/${P}.zip"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="media-libs/libsdl[video]"

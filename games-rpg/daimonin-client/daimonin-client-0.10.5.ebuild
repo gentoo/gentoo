@@ -14,7 +14,7 @@ SRC_URI="http://daimonin.svn.sourceforge.net/viewvc/daimonin/main/client/?view=t
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="music debug"
 
 RDEPEND="media-libs/libsdl[sound,video]

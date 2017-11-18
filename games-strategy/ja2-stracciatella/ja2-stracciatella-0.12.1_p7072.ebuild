@@ -11,7 +11,7 @@ SRC_URI="https://dev.gentoo.org/~hasufell/distfiles/${P}.tar.xz
 
 LICENSE="SFI-SCLA"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="cdinstall editor zlib"
 
 DEPEND="media-libs/libsdl[X,sound,video]

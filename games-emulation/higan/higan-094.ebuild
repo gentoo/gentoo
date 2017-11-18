@@ -13,7 +13,7 @@ SRC_URI="http://byuu.org/files/${MY_P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="ao +alsa openal opengl oss profile_accuracy +profile_balanced profile_performance pulseaudio qt4 +sdl udev xv"
 REQUIRED_USE="|| ( ao openal alsa pulseaudio oss )
 	|| ( xv opengl sdl )

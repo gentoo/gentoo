@@ -10,7 +10,7 @@ SRC_URI="http://ironphoenix.org/tril/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 hppa x86"
+KEYWORDS="~amd64 ~hppa ~x86"
 IUSE=""
 
 RDEPEND="x11-libs/gtk+:2

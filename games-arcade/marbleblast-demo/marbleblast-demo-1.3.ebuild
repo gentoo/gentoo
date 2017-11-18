@@ -9,7 +9,7 @@ SRC_URI="ftp://ggdev-1.homelan.com/marbleblast/MarbleBlastDemo-${PV}.sh.bin"
 
 LICENSE="MARBLEBLAST"
 SLOT="0"
-KEYWORDS="-* ~amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
 RESTRICT="strip"
 
