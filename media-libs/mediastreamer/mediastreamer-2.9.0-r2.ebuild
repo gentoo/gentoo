@@ -31,7 +31,7 @@ RDEPEND="
 	g726? ( >=media-libs/spandsp-0.0.6_pre1 )
 	gsm? ( media-sound/gsm )
 	opus? ( media-libs/opus )
-	ortp? ( >=net-libs/ortp-0.21.0[ipv6?] )
+	ortp? ( >=net-libs/ortp-0.21.0:=[ipv6?] )
 	pcap? ( sys-libs/libcap )
 	portaudio? ( media-libs/portaudio )
 	pulseaudio? ( >=media-sound/pulseaudio-0.9.21 )
@@ -44,7 +44,7 @@ RDEPEND="
 		libav? ( >=media-video/libav-9.12:0= )
 		!libav? ( >=media-video/ffmpeg-1.2.6-r1:0= )
 		opengl? (
-			media-libs/glew
+			media-libs/glew:=
 			virtual/opengl
 			x11-libs/libX11
 		)
