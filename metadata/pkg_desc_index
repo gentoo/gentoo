@@ -2981,7 +2981,7 @@ dev-db/mysql-udf-base64 20010618: MySQL UDFs that provide base64 encode/decode
 dev-db/mysql-udf-http 1.0: MySQL User-defined function (UDF) for HTTP REST
 dev-db/mysql-udf-infusion 20110109: New functions for MySQL implemented as UDF
 dev-db/mysql-udf-ipv6 0.4: IPv6 and internationalized domain (IDNA) functions for MySQL
-dev-db/mysql-workbench 6.3.4-r1 6.3.4-r2 6.3.9: MySQL Workbench
+dev-db/mysql-workbench 6.3.4-r1 6.3.4-r2 6.3.9 6.3.10: MySQL Workbench
 dev-db/mysqltuner 1.2.0 1.6.0 1.6.18: MySQLTuner is a high-performance MySQL tuning script
 dev-db/mytop 1.6-r4 1.9.1: mytop - a top clone for mysql
 dev-db/ocp 0.2 9999: Oracle copy tool
@@ -6313,21 +6313,21 @@ dev-perl/MooseX-Object-Pluggable 0.1.400: Make your classes pluggable
 dev-perl/MooseX-OneArgNew 0.5.0: teach ->new to accept single, non-hashref arguments
 dev-perl/MooseX-Params-Validate 0.210.0: An extension of Params::Validate using Moose types
 dev-perl/MooseX-Role-Parameterized 1.80.0 1.100.0: Roles with composition parameters
-dev-perl/MooseX-Role-WithOverloading 0.160.0: Roles which support overloading
+dev-perl/MooseX-Role-WithOverloading 0.160.0 0.170.0: Roles which support overloading (DEPRECATED)
 dev-perl/MooseX-SetOnce 0.200.2: write-once, read-many attributes for Moose
 dev-perl/MooseX-SimpleConfig 0.110.0: A Moose role for setting attributes from a simple configfile
-dev-perl/MooseX-StrictConstructor 0.190.0: Make your object constructors blow up on unknown attributes
-dev-perl/MooseX-Types 0.360.0 0.460.0: Organise your Moose types in libraries
+dev-perl/MooseX-StrictConstructor 0.190.0 0.210.0: Make your object constructors blow up on unknown attributes
+dev-perl/MooseX-Types 0.360.0 0.460.0 0.500.0: Organise your Moose types in libraries
 dev-perl/MooseX-Types-DateTime 0.130.0: DateTime related constraints and coercions for Moose
 dev-perl/MooseX-Types-DateTime-ButMaintained 0.160.0: DateTime related constraints and coercions for Moose
 dev-perl/MooseX-Types-DateTime-MoreCoercions 0.150.0: Extensions to MooseX::Types::DateTime
 dev-perl/MooseX-Types-DateTimeX 0.100.0: Extensions to MooseX::Types::DateTime::ButMaintained
 dev-perl/MooseX-Types-JSON 1.0.0-r1: JSON datatype for Moose
-dev-perl/MooseX-Types-Path-Class 0.80.0: A Path::Class type library for Moose
-dev-perl/MooseX-Types-Path-Tiny 0.11.0: Path::Tiny types and coercions for Moose
+dev-perl/MooseX-Types-Path-Class 0.80.0 0.90.0: A Path::Class type library for Moose
+dev-perl/MooseX-Types-Path-Tiny 0.11.0 0.12.0: Path::Tiny types and coercions for Moose
 dev-perl/MooseX-Types-Perl 0.101.343: Moose types that check against Perl syntax
 dev-perl/MooseX-Types-Stringlike 0.3.0: Moose type constraints for strings or string-like objects
-dev-perl/Mouse 2.4.9: Moose minus the antlers
+dev-perl/Mouse 2.4.9 2.4.10: Moose minus the antlers
 dev-perl/MouseX-NativeTraits 1.90.0-r2: Extend your attribute interfaces for Mouse
 dev-perl/MouseX-Types 0.60.0: Organize your Mouse types in libraries
 dev-perl/Mozilla-CA 20999999: Mozilla's CA cert bundle in PEM format (Gentoo stub)
@@ -10773,11 +10773,11 @@ dev-vcs/tkcvs 8.2.2 8.2.3: Tcl/Tk-based graphical interface to CVS with Subversi
 dev-vcs/topgit 0.9 0.9-r1: A different patch queue manager
 dev-vcs/tortoisehg 4.3.1 9999: Set of graphical tools for Mercurial
 dev-vcs/vcsh 1.20151229.1: Manage config files in $HOME via fake bare git repositories
-games-action/0verkill 0.16-r3 0.16-r4: a bloody 2D action deathmatch-like game in ASCII-ART
-games-action/abuse 0.8 0.8-r1: Port of Abuse by Crack Dot Com
-games-action/accelerator3d 0.1.1-r2 0.1.1-r3: Fast-paced, 3D, first-person shoot/dodge-'em-up, in the vain of Tempest or n2o
+games-action/0verkill 0.16-r4: A bloody 2D action deathmatch-like game in ASCII-ART
+games-action/abuse 0.8-r1: Port of Abuse by Crack Dot Com
+games-action/accelerator3d 0.1.1-r3: Fast-paced, 3D, first-person shoot/dodge-'em-up, in the vain of Tempest or n2o
 games-action/armagetronad 0.2.8.3.3-r1: Fast-paced 3D lightcycle game based on Tron
-games-action/atanks 6.4 6.4-r1: Worms and Scorched Earth-like game
+games-action/atanks 6.4-r1: Worms and Scorched Earth-like game
 games-action/barrage 1.0.4 1.0.4-r1: A violent point-and-click shooting game
 games-action/battalion 1.4b: Be a rampaging monster and destroy the city
 games-action/beathazardultra 20130308 20130308-r1: Intense music-driven arcade shooter powered by your music
@@ -10933,7 +10933,7 @@ games-arcade/notpacman 1.0.4: A mashup of "Not" and "Pacman"
 games-arcade/nottetris2 1: The spiritual successor of the classic Tetris mixed with physics
 games-arcade/openbubbles 1.2: A clone of Evan Bailey's game Bubbles
 games-arcade/openmortal 0.7-r1: A spoof of the famous Mortal Kombat game
-games-arcade/opensonic 0.1.4-r1: A free open-source game based on the Sonic the Hedgehog universe
+games-arcade/opensonic 0.1.4-r2: A free open-source game based on the Sonic the Hedgehog universe
 games-arcade/opentyrian 2.1.20130907 2.1.20130907-r1: Open-source port of the DOS game Tyrian, vertical scrolling shooter
 games-arcade/orthorobot 0: Nice perspective based puzzle game, where you flatten the view to move across gaps
 games-arcade/pachi 1.0: platform game inspired by games like Manic Miner and Jet Set Willy
@@ -11614,7 +11614,7 @@ games-strategy/galaxyhack 1.74: Multiplayer AI script based strategy game
 games-strategy/glob2 0.9.4.4-r1: Real Time Strategy (RTS) game involving a brave army of globs
 games-strategy/gorky17-demo 1.0.1.0.1-r1: Horror conspiracy game mixing elements of strategy and role-playing
 games-strategy/gwp 0.4.0-r3: GNOME client for the classic PBEM strategy game VGA Planets 3
-games-strategy/hedgewars 0.9.22-r2: A turn-based strategy, artillery, action and comedy game
+games-strategy/hedgewars 0.9.22-r2 0.9.23: A turn-based strategy, artillery, action and comedy game
 games-strategy/heroes3 1.3.1a-r2: Heroes of Might and Magic III : The Restoration of Erathia - turn-based 2-D medieval combat
 games-strategy/heroes3-demo 1.3.1a: turn-based 2D medieval combat
 games-strategy/ja2-stracciatella 0.12.1_p7072: A port of Jagged Alliance 2 to SDL
@@ -14154,7 +14154,7 @@ media-video/matroxset 0.4: Matrox utility to switch output modes (activate tvout
 media-video/maven-poke 0.0.1: Matrox utility to read and set maven registers (tune tvout)
 media-video/mediainfo 0.7.99 17.10: MediaInfo supplies technical and tag information about media files
 media-video/minitube 2.5.2-r1: Qt5 YouTube Client
-media-video/mjpegtools 2.1.0-r2: Tools for MJPEG video
+media-video/mjpegtools 2.1.0-r2 2.1.0-r3: Tools for MJPEG video
 media-video/mjpg-streamer 0_pre20120421 0_pre20120621 0_pre20120621-r1: MJPG-streamer takes JPGs from Linux-UVC compatible webcams
 media-video/mkclean 0.8.9 0.8.10: mkclean is a command line tool to clean and optimize Matroska files
 media-video/mkvalidator 0.5.1 0.5.2: mkvalidator is a command line tool to verify Matroska files for spec conformance
@@ -14186,7 +14186,7 @@ media-video/pgmfindclip 1.13: automatically find a clipping border for a sequenc
 media-video/photofilmstrip 2.1.0-r2: Movie slideshow creator using Ken Burns effect
 media-video/pitivi 0.97.1 0.98.1: A non-linear video editor using the GStreamer multimedia framework
 media-video/plasma-mediacenter 5.7.5: Unified media experience for any device capable of running KDE Plasma
-media-video/projectx 0.91.0.10: Converts, splits and demuxes DVB and other MPEG recordings
+media-video/projectx 0.91.0.10 0.91.0.10-r1: Converts, splits and demuxes DVB and other MPEG recordings
 media-video/pymp 1.1-r1: a lean, flexible frontend to mplayer written in python
 media-video/qgifer 0.2.1-r4 0.2.1-r5: A video-based animated GIF creator
 media-video/qt-recordmydesktop 0.3.8-r3: Qt4 interface for RecordMyDesktop
@@ -14776,6 +14776,7 @@ net-im/qtox 1.8.1 1.11.0 9999: Most feature-rich GUI for net-libs/tox using Qt5
 net-im/qutim 0.3.3_p1: Qt4-based multi-protocol instant messenger
 net-im/reaim 0.8-r2: AIM transport proxy over NAT firewalls
 net-im/sendxmpp 1.23 1.24: A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
+net-im/signal-desktop-bin 1.0.38: Signal Desktop
 net-im/silc-toolkit 1.1.10: SDK for the SILC protocol
 net-im/skypeforlinux 5.4.0.1 5.5.0.1: Instant messaging client, with support for audio and video
 net-im/slack-bin 2.1.2 2.5.2 2.6.3 2.8.0 2.8.2: Team collaboration tool
@@ -16685,7 +16686,7 @@ sci-mathematics/reduce 20110414-r1: A general-purpose computer algebra system
 sci-mathematics/relational 2.5: Educational tool for relational algebra
 sci-mathematics/rkward 0.6.5_p20170420: IDE for the R-project
 sci-mathematics/rngstreams 1.0.1: Multiple independent streams of pseudo-random numbers
-sci-mathematics/rstudio 0.99.473-r1 0.99.482 0.99.483 0.99.484 0.99.486-r1 0.99.491 0.99.879 0.99.893 0.99.896 0.99.902 0.99.903 1.0.44 1.0.136 1.0.143 1.0.153 1.1.368: IDE for the R language
+sci-mathematics/rstudio 1.1.368: IDE for the R language
 sci-mathematics/rw 0.7-r2: Compute rank-width decompositions of graphs
 sci-mathematics/sha1-polyml 5.5.0 5.6_p1: implementation of SHA1 is taken from the GNU coreutils package
 sci-mathematics/singular 3.1.6 4.0.2 4.0.3: Computer algebra system for polynomial computations
@@ -16763,7 +16764,7 @@ sci-visualization/gcalc 3.1_rc1-r1: Java Mathematical Graphing System
 sci-visualization/gfsview 20120706-r1: Graphical viewer for Gerris simulation files
 sci-visualization/ggobi 2.1.10 2.1.11: Visualization program for exploring high-dimensional data
 sci-visualization/gle 4.2.4c 4.2.5: Graphics Layout Engine
-sci-visualization/gnuplot 5.0.1-r1 5.0.4 5.0.5 5.0.6 5.0.9999 5.1.9999: Command-line driven interactive plotting program
+sci-visualization/gnuplot 5.0.1-r1 5.0.5 5.0.6 5.0.7 5.0.9999 5.3.9999: Command-line driven interactive plotting program
 sci-visualization/grace 5.1.23 5.1.23-r1 5.1.25: Motif based XY-plotting tool
 sci-visualization/gri 2.12.23-r1: Language for scientific graphics programming
 sci-visualization/gwyddion 2.44 2.47: Framework for Scanning Mode Microscopy data analysis
