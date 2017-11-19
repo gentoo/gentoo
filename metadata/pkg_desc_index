@@ -15546,7 +15546,7 @@ net-nds/rpcbind 0.2.3-r1 0.2.3-r2 0.2.4 0.2.4-r1 9999: portmap replacement which
 net-nds/shelldap 1.3.2 1.4.0: A handy shell-like interface for browsing LDAP servers and editing their content
 net-nds/smbldap-tools 0.9.8 0.9.9 0.9.10 0.9.10-r1: Samba LDAP management tools
 net-nds/tac_plus 4.0.4.19-r3 4.0.4.19-r4 4.0.4.27a: An updated version of Cisco's TACACS+ server
-net-nds/yp-tools 2.12-r1 4.2.2-r1: Network Information Service tools
+net-nds/yp-tools 4.2.2-r1: Network Information Service tools
 net-nds/ypbind 1.37.2-r1: Multithreaded NIS bind service (ypbind-mt)
 net-nds/ypserv 2.26-r1: Network Information Service server
 net-news/amphetadesk 0.93.1-r1: AmphetaDesk is a free syndicated news aggregator
