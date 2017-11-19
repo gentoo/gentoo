@@ -3,6 +3,7 @@
 
 EAPI=6
 
+EGIT_BRANCH="qt5"
 EGIT_REPO_URI="https://github.com/clementine-player/Clementine.git"
 
 PLOCALES="af ar be bg bn br bs ca cs cy da de el en en_CA en_GB eo es et eu fa fi fr ga gl he he_IL hi hr hu hy ia id is it ja ka kk ko lt lv mk_MK mr ms my nb nl oc pa pl pt pt_BR ro ru si_LK sk sl sr sr@latin sv te tr tr_TR uk uz vi zh_CN zh_TW"
@@ -19,7 +20,7 @@ LICENSE="GPL-3"
 SLOT="0"
 [[ ${PV} == *9999* ]] || \
 KEYWORDS="~amd64 ~x86"
-IUSE="box cdda +dbus debug dropbox googledrive ipod lastfm mms moodbar mtp projectm pulseaudio seafile skydrive test +udisks wiimote"
+IUSE="box cdda +dbus debug dropbox googledrive ipod lastfm mms moodbar mtp projectm pulseaudio seafile skydrive test +udisks wiimote +X"
 
 REQUIRED_USE="
 	udisks? ( dbus )
@@ -27,34 +28,41 @@ REQUIRED_USE="
 "
 
 COMMON_DEPEND="
+	app-crypt/qca:2[qt5(+)]
 	dev-db/sqlite:=
 	dev-libs/crypto++
 	dev-libs/glib:2
 	dev-libs/libxml2
 	dev-libs/protobuf:=
-	dev-libs/qjson
-	dev-qt/qtcore:4[ssl]
-	dev-qt/qtgui:4
-	dev-qt/qtopengl:4
-	dev-qt/qtsql:4
+	dev-qt/qtconcurrent:5
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtnetwork:5[ssl]
+	dev-qt/qtsql:5[sqlite]
+	dev-qt/qtwebkit:5
+	dev-qt/qtwidgets:5
+	dev-qt/qtxml:5
 	media-libs/chromaprint:=
 	media-libs/gstreamer:1.0
 	media-libs/gst-plugins-base:1.0
-	>=media-libs/libmygpo-qt-1.0.9[qt4(+)]
+	>=media-libs/libmygpo-qt-1.0.9[qt5]
 	media-libs/taglib[mp4(+)]
 	sys-libs/zlib
 	virtual/glu
 	virtual/opengl
-	x11-libs/libX11
 	cdda? ( dev-libs/libcdio )
-	dbus? ( dev-qt/qtdbus:4 )
+	dbus? ( dev-qt/qtdbus:5 )
 	ipod? ( >=media-libs/libgpod-0.8.0 )
-	lastfm? ( >=media-libs/liblastfm-1[qt4(+)] )
+	lastfm? ( >=media-libs/liblastfm-1[qt5] )
 	moodbar? ( sci-libs/fftw:3.0 )
 	mtp? ( >=media-libs/libmtp-1.0.0 )
 	projectm? (
 		media-libs/glew:=
 		>=media-libs/libprojectm-1.2.0
+	)
+	X? (
+		dev-qt/qtx11extras:5
+		x11-libs/libX11
 	)
 "
 # Note: sqlite driver of dev-qt/qtsql is bundled, so no sqlite use is required; check if this can be overcome someway;
@@ -77,7 +85,7 @@ DEPEND="${COMMON_DEPEND}
 		dev-cpp/gmock
 	)
 	dev-libs/boost:=
-	dev-qt/qttest:4
+	dev-qt/linguist-tools:5
 	sys-devel/gettext
 	virtual/pkgconfig
 	box? ( dev-cpp/sparsehash )
@@ -86,15 +94,22 @@ DEPEND="${COMMON_DEPEND}
 	pulseaudio? ( media-sound/pulseaudio )
 	seafile? ( dev-cpp/sparsehash )
 	skydrive? ( dev-cpp/sparsehash )
-	test? ( gnome-base/gsettings-desktop-schemas )
+	test? (
+		dev-qt/qttest:5
+		gnome-base/gsettings-desktop-schemas
+	)
 "
+
 DOCS=( Changelog README.md )
 
 MY_P="${P/_}"
 [[ ${PV} == *9999* ]] || \
 S="${WORKDIR}/${MY_P^}"
 
-PATCHES=( "${FILESDIR}"/${PN}-1.3-fix-tokenizer.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-fts3-tokenizer.patch
+	"${FILESDIR}"/${PN}-qt5-lconvert.patch
+)
 
 src_prepare() {
 	l10n_find_plocales_changes "src/translations" "" ".po"
@@ -104,6 +119,11 @@ src_prepare() {
 	sed -i \
 		-e '/add_test_file(translations_test.cpp/d' \
 		tests/CMakeLists.txt || die
+
+	if ! use test; then
+		sed -e "/find_package.*Qt5/s:\ Test::" -i CMakeLists.txt || die
+		cmake_comment_add_subdirectory tests
+	fi
 }
 
 src_configure() {
@@ -139,6 +159,7 @@ src_configure() {
 		-DENABLE_LIBPULSE="$(usex pulseaudio)"
 		-DENABLE_UDISKS2="$(usex udisks)"
 		-DENABLE_WIIMOTEDEV="$(usex wiimote)"
+		-DCMAKE_DISABLE_FIND_PACKAGE_X11="$(usex X)"
 	)
 
 	use !debug && append-cppflags -DQT_NO_DEBUG_OUTPUT
