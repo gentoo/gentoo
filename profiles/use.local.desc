@@ -4014,7 +4014,6 @@ media-gfx/jpeg2ps:metric - Default to A4 paper size
 media-gfx/k3d:3ds - Enable support for 3D Studio models
 media-gfx/k3d:cuda - Use nvidia cuda toolkit for speeding up computations
 media-gfx/k3d:gts - Add Support for the GNU Triangulated Surface Library sci-libs/gts
-media-gfx/kphotoalbum:face - Enable face detection and recognition using kde-apps/libkface
 media-gfx/kphotoalbum:kipi - Support for the KDE Image Plugin Interface
 media-gfx/kphotoalbum:map - Enable map display support using kde-apps/libkgeomap
 media-gfx/krita:color-management - Enable color management via media-libs/opencolorio
