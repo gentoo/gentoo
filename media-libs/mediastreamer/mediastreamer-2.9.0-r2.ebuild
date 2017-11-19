@@ -20,13 +20,14 @@ IUSE="+alsa amr bindist coreaudio debug doc examples +filters g726 g729 gsm ilbc
 	silk +speex static-libs test theora upnp v4l video x264 X"
 
 REQUIRED_USE="|| ( oss alsa portaudio coreaudio pulseaudio )
-	video? ( || ( opengl sdl X ) )
+	opengl? ( video )
 	theora? ( video )
-	X? ( video )
 	v4l? ( video )
-	opengl? ( video )"
+	video? ( || ( opengl sdl X ) )
+	X? ( video )"
 
-RDEPEND="alsa? ( media-libs/alsa-lib )
+RDEPEND="
+	alsa? ( media-libs/alsa-lib )
 	g726? ( >=media-libs/spandsp-0.0.6_pre1 )
 	gsm? ( media-sound/gsm )
 	opus? ( media-libs/opus )
@@ -42,29 +43,38 @@ RDEPEND="alsa? ( media-libs/alsa-lib )
 	video? (
 		libav? ( >=media-video/libav-9.12:0= )
 		!libav? ( >=media-video/ffmpeg-1.2.6-r1:0= )
-
-		opengl? ( media-libs/glew
+		opengl? (
+			media-libs/glew
 			virtual/opengl
-			x11-libs/libX11 )
-		v4l? ( media-libs/libv4l
-			sys-kernel/linux-headers )
-		theora? ( media-libs/libtheora )
+			x11-libs/libX11
+		)
 		sdl? ( media-libs/libsdl[video,X] )
-		X? ( x11-libs/libX11
-			x11-libs/libXv ) )"
+		theora? ( media-libs/libtheora )
+		v4l? (
+			media-libs/libv4l
+			sys-kernel/linux-headers
+		)
+		X? (
+			x11-libs/libX11
+			x11-libs/libXv
+		)
+	)
+"
 DEPEND="${RDEPEND}
 	dev-util/intltool
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 	opengl? ( dev-util/xxdi )
 	test? ( >=dev-util/cunit-2.1_p2[ncurses] )
-	X? ( x11-proto/videoproto )"
-
-PDEPEND="amr? ( !bindist? ( media-plugins/mediastreamer-amr ) )
+	X? ( x11-proto/videoproto )
+"
+PDEPEND="
+	amr? ( !bindist? ( media-plugins/mediastreamer-amr ) )
 	g729? ( !bindist? ( media-plugins/mediastreamer-bcg729 ) )
 	ilbc? ( media-plugins/mediastreamer-ilbc )
+	silk? ( !bindist? ( media-plugins/mediastreamer-silk ) )
 	video? ( x264? ( media-plugins/mediastreamer-x264 ) )
-	silk? ( !bindist? ( media-plugins/mediastreamer-silk ) )"
+"
 
 src_prepare() {
 	# variable causes "command not found" warning and is not
@@ -120,7 +130,6 @@ src_configure() {
 		# don't use bundled libs
 		--enable-external-ortp
 		$(use_enable alsa)
-		$(use_enable pulseaudio)
 		$(use_enable coreaudio macsnd)
 		$(use_enable debug)
 		$(use_enable filters)
@@ -134,17 +143,17 @@ src_configure() {
 		$(use_enable oss)
 		$(use_enable pcap)
 		$(use_enable portaudio)
+		$(use_enable pulseaudio)
+		$(use_enable sdl)
 		$(use_enable speex)
 		$(use_enable static-libs static)
 		$(use_enable theora)
 		$(use_enable upnp)
-		$(use_enable video)
 		$(use_enable v4l)
 		$(use_enable v4l libv4l2)
-		$(use_enable sdl)
+		$(use_enable video)
 		$(use_enable X x11)
 		$(use_enable X xv)
-
 		$(use doc || echo ac_cv_path_DOXYGEN=false)
 	)
 
