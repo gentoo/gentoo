@@ -3214,6 +3214,7 @@ games-fps/urbanterror:client - Build binary for client (includes code for non-de
 games-fps/urbanterror:mumble - Use Mumble for ingame VoIP (experimental)
 games-fps/urbanterror:opus - Use opus as sound codec
 games-fps/urbanterror:server - Build binary for dedicated server
+games-fps/urbanterror:skeetshootmod - Build support for skeetshoot mod for specific maps
 games-fps/urbanterror:voip - Use ioq3 ingame VoIP (experimental)
 games-fps/worldofpadman:maps - Install extra maps (PadPack)
 games-fps/xonotic:ode - Enable support for physics engine from dev-games/ode
