@@ -2215,7 +2215,7 @@ app-text/bibus 1.5.2-r3: Bibliographic and reference management software, integr
 app-text/bibutils 4.12: Interconverts between various bibliography formats using common XML intermediate
 app-text/binfind 0.0.3: binfind searches files for a byte sequence specified on the command line
 app-text/blahtexml 0.9: TeX-to-MathML converter
-app-text/blogc 0.12.0 9999: A blog compiler
+app-text/blogc 0.13.0 9999: A blog compiler
 app-text/bogosort 0.4.2-r1: A file sorting program which uses the bogosort algorithm
 app-text/build-docbook-catalog 1.19.1 1.20 1.21: DocBook XML catalog auto-updater
 app-text/c2ps 4.0: Generates a beautified ps document from a source file (c/c++)
@@ -19382,7 +19382,7 @@ x11-themes/clearlooks-phenix 3.0.15 3.0.16 5.0.7 6.0.3 7.0.1 9999: Clearlooks-Ph
 x11-themes/comix-xcursors 0.7.3 0.8.2: X11 mouse theme with a comics feeling
 x11-themes/commonbox-styles 0.6: Common styles for fluxbox, blackbox, and openbox
 x11-themes/commonbox-styles-extra 0.2-r2: Extra styles pack for flux|black|open(box)
-x11-themes/constantine-backgrounds 12.1.1.4 12.1.1.4-r1: Fedora official background artwork
+x11-themes/constantine-backgrounds 12.1.1.4-r1: Fedora official background artwork
 x11-themes/echo-icon-theme 0.3.89.0_pre20081031: SVG icon theme from the Echo Icon project
 x11-themes/elementary-xfce-icon-theme 0.8 0.8_p20170710 0.9: Elementary icons forked from upstream, extended and maintained for Xfce
 x11-themes/emerald-themes 0.5.2: Emerald window decorator themes
