@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,8 +11,10 @@ IUSE="ar atm audit bluetooth ipv6 kerberos netware nis ssl usb build zfs"
 LICENSE="BSD zfs? ( CDDL )"
 
 # Security Advisory and Errata patches.
-UPSTREAM_PATCHES=( "SA-16:25/bspatch.patch"
-	"SA-16:29/bspatch.patch" )
+UPSTREAM_PATCHES=(
+    "SA-16:25/bspatch.patch"
+    "SA-16:29/bspatch.patch"
+)
 
 if [[ ${PV} != *9999* ]]; then
 	KEYWORDS="~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
@@ -113,8 +115,8 @@ pkg_preinst() {
 	# bison installs a /usr/bin/yacc symlink ...
 	# we need to remove it to avoid triggering
 	# collision-protect errors
-	if [[ -L ${ROOT}/usr/bin/yacc ]] ; then
-		rm -f "${ROOT}"/usr/bin/yacc
+	if [[ -L ${ROOT}/usr/bin/yacc ]]; then
+		rm -f "${ROOT}"/usr/bin/yacc || die
 	fi
 }
 
@@ -128,7 +130,7 @@ src_prepare() {
 	# Rename manpage for renamed ar
 	mv "${S}"/ar/ar.1 "${S}"/ar/freebsd-ar.1 || die
 	# Fix whereis(1) manpath search.
-	sed -i -e 's:"manpath -q":"manpath":' "${S}/whereis/pathnames.h"
+	sed -i -e 's:"manpath -q":"manpath":' "${S}/whereis/pathnames.h" || die
 
 	# Build a dynamic make
 	sed -i -e '/^NO_SHARED/ s/^/#/' "${S}"/make/Makefile || die
@@ -141,7 +143,7 @@ src_prepare() {
 }
 
 setup_multilib_vars() {
-	if ! multilib_is_native_abi ; then
+	if ! multilib_is_native_abi; then
 		cd "${WORKDIR}/usr.bin/ldd" || die
 		export mymakeopts="${mymakeopts} PROG=ldd32 WITHOUT_MAN="
 	else
@@ -196,7 +198,7 @@ pkg_postinst() {
 	# We need to ensure that login.conf.db is up-to-date.
 	if [[ -e "${ROOT}"etc/login.conf ]] ; then
 		einfo "Updating ${ROOT}etc/login.conf.db"
-		"${ROOT}"usr/bin/cap_mkdb	-f "${ROOT}"etc/login.conf "${ROOT}"etc/login.conf
+		"${ROOT}"usr/bin/cap_mkdb -f "${ROOT}"etc/login.conf "${ROOT}"etc/login.conf || die
 		elog "Remember to run cap_mkdb /etc/login.conf after making changes to it"
 	fi
 }
@@ -205,6 +207,6 @@ pkg_postrm() {
 	# and if we uninstall yacc but keep bison,
 	# lets restore the /usr/bin/yacc symlink
 	if [[ ! -e ${ROOT}/usr/bin/yacc ]] && [[ -e ${ROOT}/usr/bin/yacc.bison ]] ; then
-		ln -s yacc.bison "${ROOT}"/usr/bin/yacc
+		ln -s yacc.bison "${ROOT}"/usr/bin/yacc || die
 	fi
 }

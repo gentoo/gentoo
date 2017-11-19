@@ -1,6 +1,5 @@
-diff -ur newsyslog-1.0.103.orig/Makefile.in newsyslog-1.0.103/Makefile.in
---- newsyslog-1.0.103.orig/Makefile.in	Tue May 21 14:08:11 2002
-+++ newsyslog-1.0.103/Makefile.in	Sun Aug 18 22:06:23 2002
+--- a/Makefile.in	Tue May 21 14:08:11 2002
++++ b/Makefile.in	Sun Aug 18 22:06:23 2002
 @@ -591,7 +591,7 @@
  
  .8.8.html:
