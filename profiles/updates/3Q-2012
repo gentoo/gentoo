@@ -1,6 +1,5 @@
 slotmove media-gfx/blender 2.60 0
 move net-voip/telepathy-sofiasip net-voip/telepathy-rakia
-slotmove kde-misc/kcollectd 0 4
 slotmove kde-misc/kanyremote 0 4
 move app-i18n/ibus-mozc app-i18n/mozc
 move sys-auth/nss-ldapd sys-auth/nss-pam-ldapd
