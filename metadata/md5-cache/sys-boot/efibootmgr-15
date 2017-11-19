@@ -3,10 +3,10 @@ DEPEND=sys-apps/pciutils >=sys-libs/efivar-25:=
 DESCRIPTION=User-space application to modify the EFI boot manager
 EAPI=6
 HOMEPAGE=https://github.com/rhinstaller/efibootmgr
-KEYWORDS=~amd64 ~arm64 ~ia64 ~x86
+KEYWORDS=~amd64 ~arm64 ~ia64 x86
 LICENSE=GPL-2
 RDEPEND=sys-apps/pciutils >=sys-libs/efivar-25:=
 SLOT=0
 SRC_URI=https://github.com/rhinstaller/efibootmgr/releases/download/15/efibootmgr-15.tar.bz2
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=d29df4f9f5671db4a117a7b508e30dcc
+_md5_=b2d3f936c00124af324fa71d01f63443
