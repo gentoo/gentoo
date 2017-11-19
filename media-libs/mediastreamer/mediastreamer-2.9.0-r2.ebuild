@@ -39,7 +39,7 @@ RDEPEND="
 		>=media-libs/speex-1.2.0
 		media-libs/speexdsp
 	)
-	upnp? ( net-libs/libupnp )
+	upnp? ( net-libs/libupnp:0 )
 	video? (
 		libav? ( >=media-video/libav-9.12:0= )
 		!libav? ( >=media-video/ffmpeg-1.2.6-r1:0= )
