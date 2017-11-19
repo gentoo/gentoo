@@ -25,7 +25,7 @@ src_prepare() {
 
 multilib_src_configure() {
 	# multilib for default search paths
-	sed -i -e "s:/usr/lib/vamp:/usr/$(get_libdir)/vamp:" src/vamp-hostsdk/PluginHostAdapter.cpp || die "sed failed"
+	sed -i -e "s:/usr/lib/vamp:${EPREFIX}/usr/$(get_libdir)/vamp:" src/vamp-hostsdk/PluginHostAdapter.cpp || die "sed failed"
 	econf
 }
 
@@ -39,7 +39,7 @@ multilib_src_compile() {
 }
 
 multilib_src_install() {
-	emake DESTDIR="${D}" INSTALL_SDK_LIBS="/usr/$(get_libdir)" INSTALL_PKGCONFIG="/usr/$(get_libdir)/pkgconfig" INSTALL_PLUGINS="/usr/$(get_libdir)/vamp" install
+	emake DESTDIR="${D}" INSTALL_SDK_LIBS="${EPREFIX}/usr/$(get_libdir)" INSTALL_PKGCONFIG="${EPREFIX}/usr/$(get_libdir)/pkgconfig" INSTALL_PLUGINS="${EPREFIX}/usr/$(get_libdir)/vamp" install
 	multilib_is_native_abi && use doc && dohtml -r build/doc/html/*
 }
 
