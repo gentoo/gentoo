@@ -32,7 +32,9 @@ DEPEND="
 		$(add_kdeapps_dep akonadi-contacts)
 	)
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	!app-office/kraft:4
+"
 
 DOCS=( AUTHORS Changes.txt README Releasenotes.txt TODO )
 
