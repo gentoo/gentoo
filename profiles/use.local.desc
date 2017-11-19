@@ -3608,7 +3608,6 @@ lxqt-base/lxqt-panel:mainmenu - Build mainmenu plugin
 lxqt-base/lxqt-panel:mount - Build mount plugin
 lxqt-base/lxqt-panel:networkmonitor - Build networkmonitor plugin
 lxqt-base/lxqt-panel:quicklaunch - Build quicklaunch plugin
-lxqt-base/lxqt-panel:screensaver - Build screensaver plugin
 lxqt-base/lxqt-panel:sensors - Build sensors plugin
 lxqt-base/lxqt-panel:showdesktop - Build showdesktop plugin
 lxqt-base/lxqt-panel:statusnotifier - Build statusnotifier plugin
