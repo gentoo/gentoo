@@ -1,11 +1,12 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils
 
-DESCRIPTION="a bloody 2D action deathmatch-like game in ASCII-ART"
-HOMEPAGE="http://artax.karlin.mff.cuni.cz/~brain/0verkill/"
+inherit autotools
+
+DESCRIPTION="A bloody 2D action deathmatch-like game in ASCII-ART"
+HOMEPAGE="http://freecode.com/projects/0verkill"
 SRC_URI="http://artax.karlin.mff.cuni.cz/~brain/0verkill/release/${P}.tgz"
 
 LICENSE="GPL-2"
@@ -34,6 +35,8 @@ src_prepare() {
 		-e "s:@CFLAGS@ -O3 :@CFLAGS@ :" Makefile.in || die
 	sed -i \
 		-e "/gettimeofday/s/getopt/getopt calloc/" configure.in || die
+
+	mv configure.{in,ac} || die
 	eautoreconf
 }
 
@@ -42,8 +45,8 @@ src_configure() {
 }
 
 src_install() {
-	local x
 	dobin 0verkill
+	local x
 	for x in avi bot editor server test_server ; do
 		newbin ${x} 0verkill-${x}
 	done
@@ -54,9 +57,9 @@ src_install() {
 		done
 	fi
 
-	insinto "/usr/share/${PN}"
+	insinto /usr/share/${PN}
 	doins -r data grx
 
-	rm doc/README.OS2 doc/Readme\ Win32.txt doc/COPYING
-	dodoc -r doc/
+	rm doc/{README.OS2,"Readme Win32.txt",COPYING} || die
+	dodoc -r doc/.
 }

@@ -21,8 +21,6 @@ DEPEND="${RDEPEND}
 	)
 "
 
-SRC_TEST="do"
-
 src_test() {
 	perl_rm_files t/pod_cvg.t t/pod_syn.t
 	perl-module_src_test

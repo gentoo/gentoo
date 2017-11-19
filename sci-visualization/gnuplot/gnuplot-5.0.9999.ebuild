@@ -66,10 +66,10 @@ GP_VERSION="${PV%.*}"
 E_SITEFILE="lisp/50${PN}-gentoo.el"
 TEXMF="${EPREFIX}/usr/share/texmf-site"
 
-PATCHES=( "${FILESDIR}"/${PN}-5.0.1-fix-underlinking.patch )
-
 src_prepare() {
-	default
+	eapply "${FILESDIR}"/${PN}-5.0.1-fix-underlinking.patch
+	eapply "${FILESDIR}"/${PN}-5.0.6-no-picins.patch
+	eapply_user
 
 	if [[ -z ${PV%%*9999} ]]; then
 		local dir
@@ -162,7 +162,14 @@ src_compile() {
 	if use doc; then
 		# Avoid sandbox violation in epstopdf/ghostscript
 		addpredict /var/cache/fontconfig
-		emake -C docs gnuplot.pdf
+		if use cairo; then
+			emake -C docs pdf
+		else
+			ewarn "Cannot build figures unless cairo is enabled."
+			ewarn "Building documentation without figures."
+			emake -C docs pdf_nofig
+			mv docs/nofigures.pdf docs/gnuplot.pdf || die
+		fi
 		emake -C tutorial pdf
 	fi
 }

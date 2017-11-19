@@ -60,7 +60,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	default
+	cmake-utils_src_prepare
 
 	# Ensure we link to -liconv
 	if use elibc_FreeBSD && has_version dev-libs/libiconv || use elibc_uclibc; then
