@@ -1,9 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit autotools eutils
+inherit autotools ltprune
 
 DESCRIPTION="Mediastreaming library for telephony application"
 HOMEPAGE="https://www.linphone.org/"
@@ -76,7 +76,18 @@ PDEPEND="
 	video? ( x264? ( media-plugins/mediastreamer-x264 ) )
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-v4l-automagic.patch"
+	"${FILESDIR}/${P}-libav9.patch"
+	"${FILESDIR}/${P}-underlinking.patch"
+	"${FILESDIR}/${P}-tests.patch"
+	"${FILESDIR}/${P}-xxd.patch"
+	"${FILESDIR}/${P}-ffmpeg3.patch"
+)
+
 src_prepare() {
+	default
+
 	# variable causes "command not found" warning and is not
 	# needed anyway
 	sed -i \
@@ -107,13 +118,6 @@ src_prepare() {
 	sed -i \
 		-e 's:linux/videodev.h ::' \
 		configure.ac || die
-
-	epatch "${FILESDIR}/${P}-v4l-automagic.patch" \
-		"${FILESDIR}/${P}-libav9.patch" \
-		"${FILESDIR}/${P}-underlinking.patch" \
-		"${FILESDIR}/${P}-tests.patch" \
-		"${FILESDIR}/${P}-xxd.patch" \
-		"${FILESDIR}/${P}-ffmpeg3.patch"
 
 	eautoreconf
 }
