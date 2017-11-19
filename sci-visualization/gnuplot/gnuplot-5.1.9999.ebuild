@@ -67,7 +67,9 @@ E_SITEFILE="lisp/50${PN}-gentoo.el"
 TEXMF="${EPREFIX}/usr/share/texmf-site"
 
 src_prepare() {
-	default
+	eapply "${FILESDIR}"/${PN}-5.0.1-fix-underlinking.patch
+	eapply "${FILESDIR}"/${PN}-5.0.6-no-picins.patch
+	eapply_user
 
 	if [[ -z ${PV%%*9999} ]]; then
 		local dir
@@ -98,7 +100,6 @@ src_prepare() {
 		environment variables. See the FAQ file in /usr/share/doc/${PF}/
 		for more information.'
 
-	mv configure.in configure.ac || die
 	eautoreconf
 
 	# Make sure we don't mix build & host flags.
@@ -125,7 +126,6 @@ src_configure() {
 	export CC_FOR_BUILD=${BUILD_CC}
 
 	econf \
-		--without-pdf \
 		--with-texdir="${TEXMF}/tex/latex/${PN}" \
 		--with-readline=$(usex readline gnu builtin) \
 		$(use_with bitmap bitmap-terminals) \
@@ -160,7 +160,14 @@ src_compile() {
 	if use doc; then
 		# Avoid sandbox violation in epstopdf/ghostscript
 		addpredict /var/cache/fontconfig
-		emake -C docs gnuplot.pdf
+		if use cairo; then
+			emake -C docs pdf
+		else
+			ewarn "Cannot build figures unless cairo is enabled."
+			ewarn "Building documentation without figures."
+			emake -C docs pdf_nofig
+			mv docs/nofigures.pdf docs/gnuplot.pdf || die
+		fi
 		emake -C tutorial pdf
 	fi
 }
