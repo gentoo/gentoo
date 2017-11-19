@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install prepare setup test
-DEPEND=>=dev-libs/icu-4.3.1:= <dev-lang/erlang-20.0[ssl] !libressl? ( >=dev-libs/openssl-0.9.8j:0 ) libressl? ( dev-libs/libressl ) >=net-misc/curl-7.18.2 <dev-lang/spidermonkey-1.8.7 selinux? ( sec-policy/selinux-couchdb ) sys-devel/autoconf-archive >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=>=dev-libs/icu-4.3.1:= <dev-lang/erlang-21.0[ssl] !libressl? ( >=dev-libs/openssl-0.9.8j:0 ) libressl? ( dev-libs/libressl ) >=net-misc/curl-7.18.2 <dev-lang/spidermonkey-1.8.7 selinux? ( sec-policy/selinux-couchdb ) sys-devel/autoconf-archive >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Distributed, fault-tolerant and schema-free document-oriented database
 EAPI=5
 HOMEPAGE=https://couchdb.apache.org/
 IUSE=libressl selinux test
 KEYWORDS=amd64 ppc x86
 LICENSE=Apache-2.0
-RDEPEND=>=dev-libs/icu-4.3.1:= <dev-lang/erlang-20.0[ssl] !libressl? ( >=dev-libs/openssl-0.9.8j:0 ) libressl? ( dev-libs/libressl ) >=net-misc/curl-7.18.2 <dev-lang/spidermonkey-1.8.7 selinux? ( sec-policy/selinux-couchdb )
+RDEPEND=>=dev-libs/icu-4.3.1:= <dev-lang/erlang-21.0[ssl] !libressl? ( >=dev-libs/openssl-0.9.8j:0 ) libressl? ( dev-libs/libressl ) >=net-misc/curl-7.18.2 <dev-lang/spidermonkey-1.8.7 selinux? ( sec-policy/selinux-couchdb )
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://apache/couchdb/source/1.7.1/apache-couchdb-1.7.1.tar.gz
 _eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	pax-utils	4f95120230a315c8caaabeb2307b7eee	toolchain-funcs	185a06792159ca143528e7010368e8af	user	e4b567c44272a719fabf53f0f885d3f7
-_md5_=18e0b160001b0a57d2492cd1e1bc8a74
+_md5_=fe2711490397999bab5fca188c35f61b
