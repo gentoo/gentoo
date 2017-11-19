@@ -64,8 +64,8 @@ DEPEND="${RDEPEND}
 	dev-util/intltool
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
-	opengl? ( dev-util/xxdi )
 	test? ( >=dev-util/cunit-2.1_p2[ncurses] )
+	video? ( dev-util/xxdi )
 	X? ( x11-proto/videoproto )
 "
 PDEPEND="
