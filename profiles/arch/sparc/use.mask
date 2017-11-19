@@ -6,6 +6,11 @@
 
 # This file contains a list of useflags that cannot be used on sparc.
 
+# Sergei Trofimovich <slyfox@gentoo.org> (19 Nov 2017)
+# There is no luajit support on sparc. Bug #554376
+luajit
+luajittex
+
 # David Seifert <soap@gentoo.org> (08 Jul 2017)
 # Games are not keyworded anymore on sparc
 fortune
