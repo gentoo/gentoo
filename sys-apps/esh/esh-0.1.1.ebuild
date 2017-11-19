@@ -3,7 +3,7 @@
 
 EAPI=6
 
-DESCRIPTION="Simple templating engine based on shell"
+DESCRIPTION="esh evaluates shell expressions in plaintext template files."
 HOMEPAGE="https://github.com/jirutka/esh"
 SRC_URI="https://github.com/jirutka/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
