@@ -46,6 +46,7 @@ RDEPEND="${CDEPEND}
 	>=media-fonts/dejavu-2.28"
 
 S=${WORKDIR}/${MY_P}
+PATCHES=( "${FILESDIR}"/${PN}-0.9.22-rpath-fix.patch )
 
 src_prepare() {
 	while IFS="" read -r f ; do
@@ -64,6 +65,9 @@ src_configure() {
 		-DNOSERVER=TRUE
 		-DCMAKE_VERBOSE_MAKEFILE=TRUE
 		-DPHYSFS_SYSTEM=ON
+		# upstream sets RPATH that leafs to weird breakage
+		# https://bugzilla.redhat.com/show_bug.cgi?id=1200193
+		-DCMAKE_SKIP_RPATH=ON
 	)
 	cmake-utils_src_configure
 }
