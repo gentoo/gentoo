@@ -11,7 +11,7 @@ SRC_URI="https://github.com/jnovy/pxz/archive/fcfea93957d96b7661d1439cf4b767ecfd
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86 ~amd64-linux"
+KEYWORDS="~amd64 ~ppc64 x86 ~amd64-linux"
 IUSE=""
 
 # needs the library from xz-utils
