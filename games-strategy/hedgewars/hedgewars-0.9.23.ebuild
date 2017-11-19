@@ -56,7 +56,13 @@ src_configure() {
 		-DNOSERVER=TRUE
 		-DCMAKE_VERBOSE_MAKEFILE=TRUE
 		-DPHYSFS_SYSTEM=ON
-		# upstream sets RPATH that leafs to weird breakage
+		# Need to tell the build system where the fonts are located
+		# as it uses PhysFS' symbolic link protection mode which
+		# prevents us from symlinking the fonts into the right directory
+		#   https://hg.hedgewars.org/hedgewars/rev/76ad55807c24
+		#   https://icculus.org/physfs/docs/html/physfs_8h.html#aad451d9b3f46f627a1be8caee2eef9b7
+		-DFONTS_DIRS="${EPREFIX}/usr/share/fonts/wqy-zenhei;${EPREFIX}/usr/share/fonts/dejavu"
+		# upstream sets RPATH that leads to weird breakage
 		# https://bugzilla.redhat.com/show_bug.cgi?id=1200193
 		-DCMAKE_SKIP_RPATH=ON
 	)
@@ -66,11 +72,6 @@ src_configure() {
 src_install() {
 	cmake-utils_src_install
 
-	rm -f "${ED%/}"/usr/share/games/hedgewars/Data/Fonts/{DejaVuSans-Bold.ttf,wqy-zenhei.ttc} || die
-	dosym ../../../fonts/dejavu/DejaVuSans-Bold.ttf \
-		/usr/share/${PN}/Data/Fonts/DejaVuSans-Bold.ttf
-	dosym ../../../fonts/wqy-zenhei/wqy-zenhei.ttc \
-		/usr/share/${PN}/Data/Fonts/wqy-zenhei.ttc
 	doicon misc/hedgewars.png
 	make_desktop_entry ${PN} Hedgewars
 	doman man/${PN}.6
