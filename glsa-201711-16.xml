@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201711-16">
+  <title>CouchDB: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in CouchDB, the worst of
+    which could lead to the remote execution of arbitrary shell commands.
+  </synopsis>
+  <product type="ebuild">couchdb</product>
+  <announced>2017-11-19</announced>
+  <revised>2017-11-19: 1</revised>
+  <bug>637516</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/couchdb" auto="yes" arch="*">
+      <unaffected range="ge">1.7.1</unaffected>
+      <vulnerable range="lt">1.7.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Apache CouchDB is a distributed, fault-tolerant and schema-free
+      document-oriented database.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in CouchDB. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could execute arbitrary shell commands or escalate
+      privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All CouchDB users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/couchdb-1.7.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12635">
+      CVE-2017-12635
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12636">
+      CVE-2017-12636
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-11-18T03:44:29Z">jmbailey</metadata>
+  <metadata tag="submitter" timestamp="2017-11-19T20:49:32Z">jmbailey</metadata>
+</glsa>
