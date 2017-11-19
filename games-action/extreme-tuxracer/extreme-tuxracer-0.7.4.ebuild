@@ -14,13 +14,15 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
-	>=media-libs/libsfml-2.2
+	>=media-libs/libsfml-2.2:0=
 	virtual/glu
-	virtual/opengl"
+	virtual/opengl
+"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
-S=${WORKDIR}/etr-${PV/_/}
+S="${WORKDIR}/etr-${PV/_/}"
 
 src_prepare() {
 	default
