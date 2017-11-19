@@ -3,19 +3,18 @@
 
 EAPI=6
 
-inherit versionator rpm
+inherit rpm versionator
 
 SRC_PATH=development/15/source/SRPMS
 FEDORA=15
-
 MY_P="${PN}-$(get_version_component_range 1-3)"
 
 DESCRIPTION="Fedora official background artwork"
 HOMEPAGE="https://fedoraproject.org/wiki/F13_Artwork"
-
 SRC_URI="mirror://fedora-dev/${SRC_PATH}/${PN}-$(replace_version_separator 3 -).fc${FEDORA}.src.rpm"
 
 LICENSE="CC-BY-SA-2.0"
+SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
@@ -23,8 +22,6 @@ RDEPEND=""
 DEPEND=""
 
 S="${WORKDIR}/${MY_P}"
-
-SLOT="0"
 
 src_unpack() {
 	rpm_src_unpack
