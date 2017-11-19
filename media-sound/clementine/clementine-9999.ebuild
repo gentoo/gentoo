@@ -5,9 +5,9 @@ EAPI=6
 
 EGIT_REPO_URI="https://github.com/clementine-player/Clementine.git"
 
-LANGS=" af ar be bg bn br bs ca cs cy da de el en_CA en_GB eo es et eu fa fi fr ga gl he he_IL hi hr hu hy ia id is it ja ka kk ko lt lv mr ms my nb nl oc pa pl pt pt_BR ro ru si_LK sk sl sr sr@latin sv te tr tr_TR uk uz vi zh_CN zh_TW"
+PLOCALES="af ar be bg bn br bs ca cs cy da de el en en_CA en_GB eo es et eu fa fi fr ga gl he he_IL hi hr hu hy ia id is it ja ka kk ko lt lv mk_MK mr ms my nb nl oc pa pl pt pt_BR ro ru si_LK sk sl sr sr@latin sv te tr tr_TR uk uz vi zh_CN zh_TW"
 
-inherit cmake-utils flag-o-matic gnome2-utils virtualx xdg-utils
+inherit cmake-utils flag-o-matic gnome2-utils l10n virtualx xdg-utils
 [[ ${PV} == *9999* ]] && inherit git-r3
 
 DESCRIPTION="Modern music player and library organizer based on Amarok 1.4 and Qt"
@@ -20,7 +20,6 @@ SLOT="0"
 [[ ${PV} == *9999* ]] || \
 KEYWORDS="~amd64 ~x86"
 IUSE="box cdda +dbus debug dropbox googledrive ipod lastfm mms moodbar mtp projectm pulseaudio seafile skydrive test +udisks wiimote"
-IUSE+="${LANGS// / linguas_}"
 
 REQUIRED_USE="
 	udisks? ( dbus )
@@ -98,8 +97,9 @@ S="${WORKDIR}/${MY_P^}"
 PATCHES=( "${FILESDIR}"/${PN}-1.3-fix-tokenizer.patch )
 
 src_prepare() {
-	cmake-utils_src_prepare
+	l10n_find_plocales_changes "src/translations" "" ".po"
 
+	cmake-utils_src_prepare
 	# some tests fail or hang
 	sed -i \
 		-e '/add_test_file(translations_test.cpp/d' \
@@ -107,11 +107,6 @@ src_prepare() {
 }
 
 src_configure() {
-	local langs x
-	for x in ${LANGS}; do
-		use linguas_${x} && langs+=" ${x}"
-	done
-
 	# spotify is not in portage
 	local mycmakeargs=(
 		-DBUILD_WERROR=OFF
@@ -128,7 +123,7 @@ src_configure() {
 		-DUSE_SYSTEM_GMOCK=ON
 		-DUSE_SYSTEM_PROJECTM=ON
 		-DBUNDLE_PROJECTM_PRESETS=OFF
-		-DLINGUAS="${langs}"
+		-DLINGUAS=$(l10n_get_locales)
 		-DENABLE_BOX="$(usex box)"
 		-DENABLE_AUDIOCD="$(usex cdda)"
 		-DENABLE_DBUS="$(usex dbus)"
