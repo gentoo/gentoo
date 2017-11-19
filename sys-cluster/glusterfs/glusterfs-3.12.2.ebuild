@@ -14,7 +14,7 @@ SRC_URI="https://download.gluster.org/pub/gluster/${PN}/$(get_version_component_
 LICENSE="|| ( GPL-2 LGPL-3+ )"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
-IUSE="bd-xlator crypt-xlator debug emacs +fuse +georeplication glupy infiniband qemu-block rsyslog static-libs +syslog systemtap test +tiering vim-syntax +xml"
+IUSE="bd-xlator crypt-xlator debug emacs +fuse +georeplication glupy infiniband +libtirpc qemu-block rsyslog static-libs +syslog systemtap test +tiering vim-syntax +xml"
 
 REQUIRED_USE="georeplication? ( ${PYTHON_REQUIRED_USE} )
 	glupy? ( ${PYTHON_REQUIRED_USE} )"
@@ -28,6 +28,8 @@ RDEPEND="bd-xlator? ( sys-fs/lvm2 )
 	fuse? ( >=sys-fs/fuse-2.7.0:0 )
 	georeplication? ( ${PYTHON_DEPS} )
 	infiniband? ( sys-fabric/libibverbs:* sys-fabric/librdmacm:* )
+	libtirpc? ( net-libs/libtirpc:= )
+	!libtirpc? ( elibc_glibc? ( sys-libs/glibc[rpc(-)] ) )
 	qemu-block? ( dev-libs/glib:2 )
 	systemtap? ( dev-util/systemtap )
 	tiering? ( dev-db/sqlite:3 )
@@ -37,6 +39,7 @@ RDEPEND="bd-xlator? ( sys-fs/lvm2 )
 	dev-libs/openssl:=[-bindist]
 	dev-libs/userspace-rcu:=
 	|| ( sys-libs/glibc sys-libs/argp-standalone )
+	net-libs/rpcsvc-proto
 	sys-apps/util-linux"
 DEPEND="${RDEPEND}
 	virtual/acl
@@ -57,6 +60,7 @@ SITEFILE="50${PN}-mode-gentoo.el"
 PATCHES=(
 	"${FILESDIR}/${PN}-3.12.2-poisoned-sysmacros.patch"
 	"${FILESDIR}/${PN}-3.12.2-silent_rules.patch"
+	"${FILESDIR}/${PN}-3.12.3-libtirpc.patch"
 )
 
 DOCS=( AUTHORS ChangeLog NEWS README.md THANKS )
@@ -108,6 +112,7 @@ src_configure() {
 		$(use_enable test cmocka) \
 		$(use_enable tiering) \
 		$(use_enable xml xml-output) \
+		$(use_with libtirpc) \
 		--with-tmpfilesdir="${EPREFIX}"/etc/tmpfiles.d \
 		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
 		--localstatedir="${EPREFIX}"/var
