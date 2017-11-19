@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201711-15">
+  <title>PHPUnit: Remote code execution</title>
+  <synopsis>A vulnerability was discovered in PHPUnit which may allow an
+    unauthenticated remote attacker to execute arbitrary PHP code.
+  </synopsis>
+  <product type="ebuild">PHPUnit</product>
+  <announced>2017-11-19</announced>
+  <revised>2017-11-19: 1</revised>
+  <bug>635356</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-php/phpunit" auto="yes" arch="*">
+      <unaffected range="ge">5.7.15-r1</unaffected>
+      <vulnerable range="lt">5.7.15-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>PHPUnit is a programmer-oriented testing framework for PHP. It is an
+      instance of the xUnit architecture for unit testing frameworks.
+    </p>
+  </background>
+  <description>
+    <p>When PHPUnit is installed in a production environment via composer and
+      these modules are in a web accessible directory, the eval-stdin.php file
+      in PHPUnit contains vulnerable statements that trigger the vulnerability.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary PHP code or cause a
+      Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There are several ways to fix or mitigate this vulnerability:</p>
+    
+    <p>Remove PHPUnit from the production environment.</p>
+    
+    <p>Update PHPUnit.</p>
+    
+    <p>Manually apply the patch.</p>
+    
+    <p>Disable direct access to the composer packages by placing .htaccess file
+      to /vendor folder.
+    </p>
+  </workaround>
+  <resolution>
+    <p>All PHPUnit users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-php/phpunit-5.7.15-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-9841">
+      CVE-2017-9841
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-11-14T01:26:48Z">jmbailey</metadata>
+  <metadata tag="submitter" timestamp="2017-11-19T20:43:04Z">jmbailey</metadata>
+</glsa>
