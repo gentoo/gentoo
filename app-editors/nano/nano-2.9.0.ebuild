@@ -32,10 +32,10 @@ DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )"
 
 src_prepare() {
+	default
 	if [[ ${PV} == "9999" ]] ; then
 		eautoreconf
 	fi
-	default
 }
 
 src_configure() {

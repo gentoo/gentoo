@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils fdo-mime gnome2-utils
+inherit eutils gnome2-utils xdg-utils
 
 LANGS="ar ast be bg ca cs de el en_GB es et eu fa fi fr gl he hi hu id it ja kk ko lb lt mn nl nn pl pt pt_BR ro ru sk sl sr sv tr uk vi zh_CN ZH_TW"
 NOSHORTLANGS="en_GB zh_CN zh_TW"
@@ -13,7 +13,7 @@ SRC_URI="http://download.geany.org/${P}.tar.bz2"
 
 LICENSE="GPL-2+ HPND"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="gtk3 +vte"
 
 RDEPEND=">=dev-libs/glib-2.32:2
@@ -23,7 +23,7 @@ RDEPEND=">=dev-libs/glib-2.32:2
 	)
 	gtk3? (
 		>=x11-libs/gtk+-3.0:3
-		vte? ( x11-libs/vte:2.90 )
+		vte? ( x11-libs/vte:2.91 )
 	)"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
@@ -59,11 +59,11 @@ src_install() {
 pkg_preinst() { gnome2_icon_savelist; }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 	gnome2_icon_cache_update
 }
