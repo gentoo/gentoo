@@ -3,16 +3,18 @@
 
 EAPI=6
 
-inherit cmake-utils git-r3
+inherit cmake-utils
 
 DESCRIPTION="An encoding detector library"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/uchardet/"
-EGIT_REPO_URI="https://anongit.freedesktop.org/git/uchardet/uchardet.git"
+SRC_URI="https://www.freedesktop.org/software/uchardet/releases/${P}.tar.xz"
 
 LICENSE="|| ( MPL-1.1 GPL-2+ LGPL-2.1+ )"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
 IUSE="cpu_flags_x86_sse2 static-libs test"
+
+PATCHES=( "${FILESDIR}/${P}-enforce-IEEE-float-precision.patch" )
 
 src_prepare() {
 	cmake-utils_src_prepare

@@ -12,7 +12,7 @@ if [[ -z ${PV%%*9999} ]]; then
 	inherit cvs
 	ECVS_SERVER="gnuplot.cvs.sourceforge.net:/cvsroot/gnuplot"
 	ECVS_MODULE="gnuplot"
-	ECVS_BRANCH="branch-5-0-stable"
+	ECVS_BRANCH="HEAD"
 	ECVS_USER="anonymous"
 	ECVS_CVS_OPTIONS="-dP"
 	MY_P="${PN}"
@@ -26,7 +26,7 @@ fi
 
 LICENSE="gnuplot bitmap? ( free-noncomm )"
 SLOT="0"
-IUSE="aqua bitmap cairo compat doc examples +gd ggi latex libcaca libcerf lua qt4 readline svga wxwidgets X"
+IUSE="aqua bitmap cairo compat doc examples +gd ggi latex libcaca libcerf lua qt5 readline svga wxwidgets X"
 
 RDEPEND="
 	cairo? (
@@ -41,9 +41,12 @@ RDEPEND="
 			>=dev-texlive/texlive-latexrecommended-2008-r2 ) )
 	libcaca? ( media-libs/libcaca )
 	lua? ( dev-lang/lua:0 )
-	qt4? ( >=dev-qt/qtcore-4.5:4
-		>=dev-qt/qtgui-4.5:4
-		>=dev-qt/qtsvg-4.5:4 )
+	qt5? ( dev-qt/qtcore:5=
+		dev-qt/qtgui:5=
+		dev-qt/qtnetwork:5=
+		dev-qt/qtprintsupport:5=
+		dev-qt/qtsvg:5=
+		dev-qt/qtwidgets:5= )
 	readline? ( sys-libs/readline:0= )
 	libcerf? ( sci-libs/libcerf )
 	svga? ( media-libs/svgalib )
@@ -82,12 +85,6 @@ src_prepare() {
 	# of the gnuplot license
 	sed -i -e "1s/.*/& (Gentoo revision ${PR})/" PATCHLEVEL || die
 
-	# hacky workaround
-	# Please hack the buildsystem if you like
-	if use prefix && use qt4; then
-		append-ldflags -Wl,-rpath,"${EPREFIX}"/usr/$(get_libdir)/qt4
-	fi
-
 	DOC_CONTENTS='Gnuplot no longer links against pdflib, see the ChangeLog
 		for details. You can use the "pdfcairo" terminal for PDF output.'
 	use cairo || DOC_CONTENTS+=' It is available with USE="cairo".'
@@ -100,7 +97,6 @@ src_prepare() {
 		environment variables. See the FAQ file in /usr/share/doc/${PF}/
 		for more information.'
 
-	mv configure.in configure.ac || die
 	eautoreconf
 
 	# Make sure we don't mix build & host flags.
@@ -126,8 +122,9 @@ src_configure() {
 	tc-export_build_env BUILD_CC
 	export CC_FOR_BUILD=${BUILD_CC}
 
+	use qt5 && append-cxxflags -std=c++11
+
 	econf \
-		--without-pdf \
 		--with-texdir="${TEXMF}/tex/latex/${PN}" \
 		--with-readline=$(usex readline gnu builtin) \
 		$(use_with bitmap bitmap-terminals) \
@@ -143,7 +140,7 @@ src_configure() {
 		$(use_with svga linux-vga) \
 		$(use_with X x) \
 		--enable-stats \
-		$(use_with qt4 qt qt4) \
+		$(use_with qt5 qt qt5) \
 		$(use_enable wxwidgets) \
 		DIST_CONTACT="https://bugs.gentoo.org/" \
 		EMACS=no
@@ -177,7 +174,7 @@ src_compile() {
 src_install () {
 	emake DESTDIR="${D}" install
 
-	dodoc BUGS ChangeLog NEWS PGPKEYS PORTING README*
+	dodoc BUGS ChangeLog NEWS PGPKEYS README* RELEASE_NOTES TODO
 	newdoc term/PostScript/README README-ps
 	newdoc term/js/README README-js
 	use lua && newdoc term/lua/README README-lua

@@ -12,7 +12,7 @@ if [[ -z ${PV%%*9999} ]]; then
 	inherit cvs
 	ECVS_SERVER="gnuplot.cvs.sourceforge.net:/cvsroot/gnuplot"
 	ECVS_MODULE="gnuplot"
-	ECVS_BRANCH="HEAD"
+	ECVS_BRANCH="branch-5-2-stable"
 	ECVS_USER="anonymous"
 	ECVS_CVS_OPTIONS="-dP"
 	MY_P="${PN}"
