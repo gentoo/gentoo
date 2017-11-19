@@ -6,7 +6,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="A program to convert abc files to Postscript files"
 HOMEPAGE="http://moinejf.free.fr/"
-SRC_URI="http://moinejf.free.fr/${P}.tar.gz
+SRC_URI="https://github.com/leesavide/abcm2ps/archive/abcm2ps-${PV}.tar.gz
 	http://moinejf.free.fr/transpose_abc.pl"
 
 LICENSE="GPL-2"
