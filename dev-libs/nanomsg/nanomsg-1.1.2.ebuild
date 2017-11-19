@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,17 +7,15 @@ inherit cmake-multilib
 
 DESCRIPTION="High-performance messaging interface for distributed applications"
 HOMEPAGE="http://nanomsg.org/"
-SRC_URI="https://github.com/nanomsg/nanomsg/archive/${PV}-beta.tar.gz -> ${P}-beta.tar.gz"
+SRC_URI="https://github.com/nanomsg/nanomsg/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/5.0.0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm ~arm64"
 IUSE="doc static-libs"
 
 DEPEND="doc? ( dev-ruby/asciidoctor )"
 RDEPEND=""
-
-S="${WORKDIR}/${P}-beta"
 
 multilib_src_configure() {
 	local mycmakeargs=(
