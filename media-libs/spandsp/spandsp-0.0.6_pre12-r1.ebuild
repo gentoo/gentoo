@@ -11,7 +11,7 @@ SRC_URI="http://www.soft-switch.org/downloads/spandsp/${P/_}.tgz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 arm ppc ppc64 x86"
+KEYWORDS="amd64 arm ia64 ppc ppc64 x86"
 IUSE="doc fixed-point static-libs"
 
 RDEPEND="media-libs/tiff"
