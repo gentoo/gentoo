@@ -2556,7 +2556,7 @@ app-vim/ctrlp 1.80: vim plugin: fuzzy file, buffer, mru, tag, ... finder with re
 app-vim/ctx 1.17-r1: vim plugin: display current scope context in a C file
 app-vim/curcmdmode 1.0-r1: vim plugin: library for extending vim's mode() function
 app-vim/cvsmenu 1.147-r1: vim plugin: CVS(NT) integration script
-app-vim/dbext 25.0: vim plugin: easy access to databases
+app-vim/dbext 25.0 26.00: vim plugin: easy access to databases
 app-vim/detectindent 1.0_p20150908: vim plugin: automatically detect file indent settings
 app-vim/dhcpd-syntax 20030825 20030825-r1: vim plugin: syntax highlighting for dhcpd.conf
 app-vim/diffchar 7.01 7.2: vim plugin: highlight the exact differences, based on characters and words
@@ -2582,7 +2582,7 @@ app-vim/gentoo-syntax 20160530 20170225 99999999: Gentoo and portage related syn
 app-vim/genutils 2.5: vim plugin: library with various useful functions
 app-vim/gist 7.3: vim plugin: interact with gists (gist.github.com)
 app-vim/git-patch-tags 0.2: vim plugin: add git patch tags as used in linux kernel development
-app-vim/gitgutter 20170222 99999999: vim plugin: shows a git diff in the sign column and stages/reverts hunks
+app-vim/gitgutter 20170222 20171101 99999999: vim plugin: shows a git diff in the sign column and stages/reverts hunks
 app-vim/gitlog 5.1.0 6.0.0 9999: vim plugin: git log and diff plugin for vim
 app-vim/gitolite-syntax 20111225 20130306: vim plugin: gitolite syntax highlighting
 app-vim/gitv 1.3.1 9999: vim plugin: gitk for vim
@@ -7336,7 +7336,7 @@ dev-python/aplpy 1.0 1.1.1: Astronomical Plotting Library in Python
 dev-python/appdirs 1.4.0 1.4.3: Module for determining appropriate platform-specific dirs
 dev-python/apptools 4.2.1 4.3.0: Enthought Tool Suite: Application tools
 dev-python/apse 0.2-r3: Approximate String Matching in Python
-dev-python/apsw 3.19.3_p1 3.20.1_p1: APSW - Another Python SQLite Wrapper
+dev-python/apsw 3.19.3_p1 3.20.1_p1 3.21.0_p1: APSW - Another Python SQLite Wrapper
 dev-python/aquarium 2.3-r1: Aquarium web application framework
 dev-python/argcomplete 1.4.1 1.6.0 1.8.2 1.9.2: Bash tab completion for argparse
 dev-python/argh 0.26.2 0.26.2-r1: A simple argparse wrapper
@@ -7724,7 +7724,7 @@ dev-python/flexx 0.3.1 0.4.1: Pure Python toolkit for creating GUI's using web t
 dev-python/flipflop 1.0: A FastCGI/WSGI gateway
 dev-python/flower 0.9.1-r1: Real-time monitor and web admin for Celery distributed task queue
 dev-python/flup 1.0.2-r1: Random assortment of WSGI servers
-dev-python/fonttools 3.0 3.10.0 3.15.1 3.17.0 3.18.0: Library for manipulating TrueType, OpenType, AFM and Type1 fonts
+dev-python/fonttools 3.0 3.10.0 3.15.1 3.17.0 3.18.0 3.19.0: Library for manipulating TrueType, OpenType, AFM and Type1 fonts
 dev-python/foolscap 0.7.0 0.11.0: RPC protocol for Twisted
 dev-python/formencode 1.3.0-r2: HTML form validation, generation, and conversion package
 dev-python/fpconst 0.7.3-r1: Python Module for handling IEEE 754 floating point special values
@@ -7958,7 +7958,7 @@ dev-python/line_profiler 1.0 1.0-r1 2.0 9999: Line-by-line profiler
 dev-python/linecache2 1.0.0: Backports of the linecache module
 dev-python/lit 3.9.0 4.0.1 5.0.0 5.0.9999 9999: A stand-alone install of the LLVM suite testing tool
 dev-python/livereload 2.3.2 2.4.0 2.4.1: Python LiveReload is an awesome tool for web developers
-dev-python/llfuse 1.2 1.3: Python bindings for the low-level FUSE API
+dev-python/llfuse 1.2 1.3 1.3.2: Python bindings for the low-level FUSE API
 dev-python/llvmlite 0.12.1 0.15.0 0.16.0 0.19.0 0.20.0: Python wrapper around the llvm C++ library
 dev-python/lmdb 0.92: Python bindings for the Lightning Database
 dev-python/locket 0.2.0: File-based locks for Python
@@ -8495,7 +8495,7 @@ dev-python/pytest-shutil 1.2.4 1.2.8 1.2.11: A goodie-bag of unix shell and envi
 dev-python/pytest-subtesthack 0.1.1: A hack for test fixtures, needed for hypothesis inside py.test
 dev-python/pytest-timeout 1.2.0: py.test plugin to abort hanging tests
 dev-python/pytest-virtualenv 1.2.5 1.2.7 1.2.11: Virtualenv fixture for py.test
-dev-python/pytest-xdist 1.14-r1 1.15.0 1.20.0: Distributed testing and loop-on-failing modes
+dev-python/pytest-xdist 1.14-r1 1.15.0 1.20.0 1.20.1: Distributed testing and loop-on-failing modes
 dev-python/pytest-xprocess 0.9.1 0.12.1: Manage external processes across test runs
 dev-python/python-afl 0.6.1: Enables American fuzzy lop fork server and instrumentation for pure-Python code
 dev-python/python-application 1.5.0: Basic building blocks for python applications
@@ -8752,7 +8752,7 @@ dev-python/setproctitle 1.1.8 1.1.10: Allow customization of the process title
 dev-python/setuptools 30.4.0 34.0.2-r1 35.0.1 35.0.2 36.0.1 36.5.0 36.6.0 36.7.2 9999: Collection of extensions to Distutils
 dev-python/setuptools-git 1.1-r1 1.2: Setuptools revision control system plugin for Git
 dev-python/setuptools_hg 0.4-r1: Setuptools/distribute plugin for finding files under Mercurial version control
-dev-python/setuptools_scm 1.8.0 1.15.0 1.15.5 1.15.6: package to manage versions by scm tags via setuptools
+dev-python/setuptools_scm 1.15.0 1.15.6: package to manage versions by scm tags via setuptools
 dev-python/setuptools_trial 0.6.0: Setuptools plugin that makes unit tests execute with trial instead of pyunit
 dev-python/sexpdata 0.0.3-r1: a simple S-expression parser/serializer
 dev-python/sh 1.11 1.11-r1 1.12.9: Python subprocess interface
@@ -12605,7 +12605,7 @@ media-fonts/proggy-fonts 1: A set of monospaced bitmap programming fonts
 media-fonts/qomolangma 2012.05: Tibetan Unicode Ucan and Umed fonts
 media-fonts/quivira 4.0 4.1: Unicode font with emoticons and elder scripts like Runes, Gothic, ancient Greek
 media-fonts/ricty 3.2.0 3.2.0-r1: A beautiful sans-serif monotype Japanese font designed for code listings
-media-fonts/roboto 2.136 2.138: Standard font for Android 4.0 (Ice Cream Sandwich) and later
+media-fonts/roboto 2.138: Standard font for Android 4.0 (Ice Cream Sandwich) and later
 media-fonts/sazanami 20040629: Sazanami Japanese TrueType fonts
 media-fonts/sgi-fonts 1.0: SGI fonts collection
 media-fonts/shinonome 0.9.11: Japanese bitmap fonts for X
@@ -13022,7 +13022,7 @@ media-libs/ladspa-cmt 1.16-r4: CMT (computer music toolkit) LADSPA library plugi
 media-libs/ladspa-sdk 1.13-r2: The Linux Audio Developer's Simple Plugin API
 media-libs/lasi 1.1.2: C++ library for postscript stream output
 media-libs/lastfmlib 0.4.0: C++ library to scrobble tracks on Last.fm
-media-libs/lcms 2.8-r1 2.8-r2: A lightweight, speed optimized color management engine
+media-libs/lcms 2.8-r1 2.8-r2 2.9: A lightweight, speed optimized color management engine
 media-libs/lensfun 0.3.1 0.3.2: lensfun: A library for rectifying and simulating photographic lens distortions
 media-libs/leptonica 1.74.1 1.74.4: C library for image processing and analysis
 media-libs/lib3ds 1.3.0-r1 2.0.0_rc1: library for managing 3D-Studio Release 3 and 4 .3DS files
@@ -13161,7 +13161,7 @@ media-libs/libsamplerate 0.1.9 9999: Secret Rabbit Code (aka libsamplerate) is a
 media-libs/libsbsms 2.0.0 2.0.1 2.0.2: A library for high quality time and pitch scale modification
 media-libs/libsdl 1.2.15-r9: Simple Direct Media Layer
 media-libs/libsdl2 2.0.4 2.0.5 2.0.5-r1 2.0.6 2.0.7: Simple Direct Media Layer
-media-libs/libsfml 2.3.2-r1 2.4.1 2.4.2: Simple and Fast Multimedia Library (SFML)
+media-libs/libsfml 2.4.2: Simple and Fast Multimedia Library (SFML)
 media-libs/libshout 2.3.1 2.3.1-r1 2.4.1: library for connecting and sending data to icecast servers
 media-libs/libsidplay 1.36.59-r1 1.36.59-r2 2.1.1-r4: C64 SID player library
 media-libs/libsidplayfp 0.3.8 1.1.0 1.8.0 1.8.1: A library for the sidplay2 fork with resid-fp
@@ -14696,7 +14696,7 @@ net-fs/openafs-kernel 1.6.20.1 1.6.20.2-r1 1.6.21-r1 1.6.21.1: The OpenAFS distr
 net-fs/openafs-legacy 0.1: Legacy path symlinks to access FHS-compliant OpenAFS installation
 net-fs/s3backer 1.3.7: FUSE-based single file backing store via Amazon S3
 net-fs/s3fs 1.74 1.78 1.80: Amazon S3 mounting via fuse
-net-fs/s3ql 1.19 2.11 2.11.1 2.12 2.14 2.14-r1 2.17.1 2.20 2.21 2.23: A full-featured file system for online data storage
+net-fs/s3ql 1.19 2.11 2.11.1 2.12 2.14 2.14-r1 2.17.1 2.20 2.21 2.23 2.24: A full-featured file system for online data storage
 net-fs/samba 4.2.14 4.5.10-r1 4.5.13 4.5.14 4.6.8-r1 4.6.9 4.7.0-r1 4.7.1: Samba Suite Version 4
 net-fs/smbnetfs 0.6.0-r1: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
