@@ -3,17 +3,17 @@
 
 EAPI=6
 
-inherit flag-o-matic linux-info meson systemd xdg-utils
+inherit linux-info meson systemd xdg-utils
 
 DESCRIPTION="A small daemon to act on remote or local events"
 HOMEPAGE="https://www.eventd.org/"
-SRC_URI="https://www.eventd.org/download/${PN}/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~kensington/distfiles/${P}.tgz"
 
 LICENSE="GPL-3+ LGPL-3+ MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="debug fbcon +introspection ipv6 libcanberra libnotify +notification
-	pulseaudio purple speech systemd test upnp websocket +X zeroconf"
+	pulseaudio purple speech systemd test upnp webhook websocket +X zeroconf"
 
 REQUIRED_USE="
 	X? ( notification )
@@ -25,6 +25,7 @@ REQUIRED_USE="
 COMMON_DEPEND="
 	>=dev-libs/glib-2.40:2
 	sys-apps/util-linux
+	x11-libs/libxkbcommon
 	introspection? ( >=dev-libs/gobject-introspection-1.42 )
 	libcanberra? ( media-libs/libcanberra )
 	libnotify? ( x11-libs/gdk-pixbuf:2 )
@@ -44,9 +45,10 @@ COMMON_DEPEND="
 		media-sound/pulseaudio
 	)
 	purple? ( net-im/pidgin )
-	speech? ( app-accessibility/speech-dispatcher )
+	speech? ( >=app-accessibility/speech-dispatcher-0.8.7 )
 	systemd? ( sys-apps/systemd:= )
 	upnp? ( net-libs/gssdp:= )
+	webhook? ( >=net-libs/libsoup-2.42:2.4 )
 	websocket? ( >=net-libs/libsoup-2.50:2.4 )
 	zeroconf? ( net-dns/avahi[dbus] )
 "
@@ -61,31 +63,15 @@ RDEPEND="${COMMON_DEPEND}
 	net-libs/glib-networking[ssl]
 "
 
-eventd_check_compiler() {
-	if [[ ${MERGE_TYPE} != "binary" ]] && ! test-flag-CXX -std=c++11; then
-		die "Your compiler lacks C++11 support. Use GCC>=4.7.0 or Clang>=3.3."
-	fi
-}
-
-pkg_pretend() {
-	eventd_check_compiler
-}
-
 pkg_setup() {
 	if use ipv6; then
 		CONFIG_CHECK=$(usex test 'IPV6' '~IPV6')
 		linux-info_pkg_setup
 	fi
-	eventd_check_compiler
 }
 
 src_prepare() {
 	default_src_prepare
-
-	# Workaround Gentoo bug 604398.
-	sed -i \
-		-e 's|libspeechd|speech-dispatcher/libspeechd|g' \
-		plugins/tts/src/tts.c || die
 
 	# Prevent access violations from introspection metadata generation.
 	xdg_environment_reset
@@ -114,6 +100,7 @@ src_configure() {
 		$(eventd_use_enable purple im)
 		$(eventd_use_enable pulseaudio sound)
 		$(eventd_use_enable speech tts)
+		$(eventd_use_enable webhook)
 		$(eventd_use_enable libnotify)
 		$(eventd_use_enable libcanberra)
 		$(eventd_use_enable introspection gobject-introspection)
