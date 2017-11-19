@@ -19,12 +19,11 @@ LICENSE="GPL-3"
 SLOT="0"
 [[ ${PV} == *9999* ]] || \
 KEYWORDS="~amd64 ~x86"
-IUSE="box cdda +dbus debug dropbox googledrive ipod lastfm mms moodbar mtp projectm pulseaudio seafile skydrive test +udisks udisks_legacy wiimote"
+IUSE="box cdda +dbus debug dropbox googledrive ipod lastfm mms moodbar mtp projectm pulseaudio seafile skydrive test +udisks wiimote"
 IUSE+="${LANGS// / linguas_}"
 
 REQUIRED_USE="
 	udisks? ( dbus )
-	udisks_legacy? ( dbus )
 	wiimote? ( dbus )
 "
 
@@ -64,8 +63,7 @@ COMMON_DEPEND="
 # 06-fix-numeric-locale.patch
 # 08-stdlib.h-for-rand.patch
 RDEPEND="${COMMON_DEPEND}
-	dbus? ( udisks? ( sys-fs/udisks:2 )
-	        udisks_legacy? ( sys-fs/udisks:0 ) )
+	dbus? ( udisks? ( sys-fs/udisks:2 ) )
 	mms? ( media-plugins/gst-plugins-libmms:1.0 )
 	mtp? ( gnome-base/gvfs[mtp] )
 	media-plugins/gst-plugins-meta:1.0
@@ -117,11 +115,11 @@ src_configure() {
 	# spotify is not in portage
 	local mycmakeargs=(
 		-DBUILD_WERROR=OFF
+		-DENABLE_DEVICEKIT=OFF
 		-DLINGUAS="${langs}"
 		-DENABLE_AUDIOCD="$(usex cdda)"
 		-DENABLE_DBUS="$(usex dbus)"
 		-DENABLE_UDISKS2="$(usex udisks)"
-		-DENABLE_DEVICEKIT="$(usex udisks_legacy)"
 		-DENABLE_LIBGPOD="$(usex ipod)"
 		-DENABLE_LIBLASTFM="$(usex lastfm)"
 		-DENABLE_LIBMTP="$(usex mtp)"
