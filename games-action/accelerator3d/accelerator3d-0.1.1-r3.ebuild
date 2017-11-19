@@ -1,7 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
 PYTHON_COMPAT=( python2_7 )
 inherit eutils python-r1
 
@@ -13,7 +14,7 @@ LICENSE="Artistic"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~x86-fbsd"
 IUSE=""
-REQUIRED_USE=${PYTHON_REQUIRED_USE}
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="${PYTHON_DEPS}"
 RDEPEND="${DEPEND}
@@ -32,14 +33,15 @@ src_prepare() {
 	default
 
 	sed -i \
-		-e "s:@GENTOO_DATADIR@:/usr/share/${PN}:" \
+		-e "s:@GENTOO_DATADIR@:${EPREFIX}/usr/share/${PN}:" \
 		accelerator.py || die
 }
 
 src_install() {
 	python_foreach_impl python_newscript accelerator.py accelerator
-	insinto "/usr/share/${PN}"
-	doins gfx/* snd/*
-	dodoc CHANGELOG README
+
+	insinto /usr/share/${PN}
+	doins -r gfx/. snd/.
+	einstalldocs
 	make_desktop_entry accelerator
 }
