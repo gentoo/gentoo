@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare setup test
+DEPEND=>=dev-libs/glib-2.40:2 sys-apps/util-linux x11-libs/libxkbcommon introspection? ( >=dev-libs/gobject-introspection-1.42 ) libcanberra? ( media-libs/libcanberra ) libnotify? ( x11-libs/gdk-pixbuf:2 ) notification? ( x11-libs/cairo x11-libs/pango x11-libs/gdk-pixbuf:2 X? ( x11-libs/cairo[xcb] x11-libs/libxcb:= x11-libs/xcb-util x11-libs/xcb-util-wm ) ) pulseaudio? ( media-libs/libsndfile media-sound/pulseaudio ) purple? ( net-im/pidgin ) speech? ( >=app-accessibility/speech-dispatcher-0.8.7 ) systemd? ( sys-apps/systemd:= ) upnp? ( net-libs/gssdp:= ) webhook? ( >=net-libs/libsoup-2.42:2.4 ) websocket? ( >=net-libs/libsoup-2.50:2.4 ) zeroconf? ( net-dns/avahi[dbus] ) app-text/docbook-xml-dtd:4.5 app-text/docbook-xsl-stylesheets dev-libs/libxslt virtual/pkgconfig fbcon? ( virtual/os-headers ) >=dev-util/meson-0.40.0 >=dev-util/ninja-1.7.2 virtual/pkgconfig
+DESCRIPTION=A small daemon to act on remote or local events
+EAPI=6
+HOMEPAGE=https://www.eventd.org/
+IUSE=debug fbcon +introspection ipv6 libcanberra libnotify +notification pulseaudio purple speech systemd test upnp webhook websocket +X zeroconf
+KEYWORDS=~amd64
+LICENSE=GPL-3+ LGPL-3+ MIT
+RDEPEND=>=dev-libs/glib-2.40:2 sys-apps/util-linux x11-libs/libxkbcommon introspection? ( >=dev-libs/gobject-introspection-1.42 ) libcanberra? ( media-libs/libcanberra ) libnotify? ( x11-libs/gdk-pixbuf:2 ) notification? ( x11-libs/cairo x11-libs/pango x11-libs/gdk-pixbuf:2 X? ( x11-libs/cairo[xcb] x11-libs/libxcb:= x11-libs/xcb-util x11-libs/xcb-util-wm ) ) pulseaudio? ( media-libs/libsndfile media-sound/pulseaudio ) purple? ( net-im/pidgin ) speech? ( >=app-accessibility/speech-dispatcher-0.8.7 ) systemd? ( sys-apps/systemd:= ) upnp? ( net-libs/gssdp:= ) webhook? ( >=net-libs/libsoup-2.42:2.4 ) websocket? ( >=net-libs/libsoup-2.50:2.4 ) zeroconf? ( net-dns/avahi[dbus] ) net-libs/glib-networking[ssl]
+REQUIRED_USE=X? ( notification ) fbcon? ( notification ) notification? ( || ( X fbcon ) ) test? ( websocket )
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~kensington/distfiles/eventd-0.23.0_p20171112.tgz
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	linux-info	ca370deef9d44125d829f2eb6ebc83e0	ltprune	2770eed66a9b8ef944714cd0e968182e	meson	0946ddca90e9c2d3e4687bb097dd9ed3	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	systemd	34815d3b76e745c5ca33eec9f95074c2	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=85c64f9cc3ba3bb0c0cef120c5b83b99

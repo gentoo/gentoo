@@ -6341,6 +6341,7 @@ net-misc/eventd:libnotify - Enable plugin to relay events to notification daemon
 net-misc/eventd:notification - Enable plugin to display on-screen notifications
 net-misc/eventd:purple - Enable plugin for IM notifications via libpurple
 net-misc/eventd:speech - Enable plugin for Text-To-Speech support
+net-misc/eventd:webhook - Enable plugin to send payloads to webhook handlers
 net-misc/eventd:websocket - Enable support for WebSocket protocol
 net-misc/fatrat:bittorrent - Use the bittorrent protocol via net-libs/libtorrent-rasterbar.
 net-misc/freerdp:client - Build client binaries
