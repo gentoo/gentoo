@@ -6,7 +6,7 @@ EAPI=5
 inherit autotools eutils
 
 DESCRIPTION="Mediastreaming library for telephony application"
-HOMEPAGE="http://www.linphone.org/"
+HOMEPAGE="https://www.linphone.org/"
 SRC_URI="mirror://nongnu/linphone/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
