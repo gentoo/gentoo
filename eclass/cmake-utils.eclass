@@ -9,6 +9,7 @@
 # Maciej Mrozowski <reavertm@gentoo.org>
 # (undisclosed contributors)
 # Original author: Zephyrus (zephyrus@mirach.it)
+# @SUPPORTED_EAPIS: 5 6
 # @BLURB: common ebuild functions for cmake-based packages
 # @DESCRIPTION:
 # The cmake-utils eclass makes creating ebuilds for cmake-based packages much easier.
