@@ -34,6 +34,4 @@ DEPEND="${RDEPEND}
 		>=virtual/perl-Test-Simple-0.960.0
 	)
 "
-
-SRC_TEST="do parallel"
 mytargets="install"
