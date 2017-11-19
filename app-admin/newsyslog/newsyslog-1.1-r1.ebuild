@@ -17,7 +17,7 @@ RDEPEND="
 	virtual/cron
 	app-arch/gzip"
 
-PATCHES=( "${FILESDIR}"/newsyslog-html.patch )
+PATCHES=( "${FILESDIR}/${P}-html.patch" )
 
 DOCS=( newsyslog.conf AUTHORS ChangeLog INSTALL NEWS ToDo )
 
