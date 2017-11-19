@@ -31,6 +31,7 @@ src_prepare() {
 	# Security bug #219746
 	eapply "${FILESDIR}/${P}-display-security-issue.patch"
 	eapply "${FILESDIR}"/${P}-deadkeys.patch
+	eapply "${FILESDIR}/${P}-dpy.patch"
 
 	#fix pre-stripped files
 	sed -i -e "/INSTALL_PROGRAM/ s:-s::" autoconf/Make.common.in || die "sed Makefile failed"
