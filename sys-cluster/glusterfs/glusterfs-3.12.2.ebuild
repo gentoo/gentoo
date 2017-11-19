@@ -24,6 +24,7 @@ RESTRICT="test"
 
 # sys-apps/util-linux is required for libuuid
 RDEPEND="bd-xlator? ( sys-fs/lvm2 )
+	!elibc_glibc? ( sys-libs/argp-standalone )
 	emacs? ( virtual/emacs )
 	fuse? ( >=sys-fs/fuse-2.7.0:0 )
 	georeplication? ( ${PYTHON_DEPS} )
@@ -38,7 +39,6 @@ RDEPEND="bd-xlator? ( sys-fs/lvm2 )
 	dev-libs/libaio
 	dev-libs/openssl:=[-bindist]
 	dev-libs/userspace-rcu:=
-	|| ( sys-libs/glibc sys-libs/argp-standalone )
 	net-libs/rpcsvc-proto
 	sys-apps/util-linux"
 DEPEND="${RDEPEND}
