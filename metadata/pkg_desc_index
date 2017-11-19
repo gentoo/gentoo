@@ -1047,7 +1047,7 @@ app-editors/lpe 1.2.6.13: a lightweight programmers editor
 app-editors/mg 20161005 20170401 20170828 20171014: MicroGnuEmacs, a port from the BSDs
 app-editors/moe 1.6 1.7: A powerful and user-friendly console text editor
 app-editors/mousepad 0.4.0: GTK+-based editor for the Xfce Desktop Environment
-app-editors/nano 2.7.5 2.8.6 2.8.7 9999: GNU GPL'd Pico clone with more functionality
+app-editors/nano 2.7.5 2.8.7 2.9.0 9999: GNU GPL'd Pico clone with more functionality
 app-editors/ne 3.0.1 3.0.1-r1 3.1.1: the nice editor, easy to use for the beginner and powerful for the wizard
 app-editors/nedit 5.6-r1: Multi-purpose text editor for the X Window System
 app-editors/neovim 0.1.0 0.1.1-r1 0.1.2 0.1.3 0.1.4 0.1.5 0.1.5-r1 0.1.6 0.1.7 0.2.0 9999: Vim-fork focused on extensibility and agility.
@@ -1085,6 +1085,7 @@ app-emacs/analog 1.9.99: Monitor lists of files or command output
 app-emacs/anything 1.3.2: Open anything - QuickSilver-like candidate-selection framework
 app-emacs/apache-mode 1.1: Major mode for editing Apache configuration files
 app-emacs/apel 10.8-r1: A Portable Emacs Library is a library for making portable Emacs Lisp programs
+app-emacs/atomic-chrome 2.0.0: Edit text area on Chrome with Emacs using Atomic Chrome
 app-emacs/auctex 11.88 11.89 11.90: Extensible package for writing and formatting TeX files in Emacs
 app-emacs/auto-complete 1.3.1: Auto-complete package
 app-emacs/autoconf-mode 2.69: Emacs major modes for editing autoconf and autotest input
@@ -1267,6 +1268,7 @@ app-emacs/vm 8.1.2 8.2.0_beta: The VM mail reader for Emacs
 app-emacs/volume 1.0-r1: Tweak your sound card volume from Emacs
 app-emacs/w3mnav 0.5-r3: Add Info-like navigation keys to the emacs-w3m web browser
 app-emacs/wanderlust 2.14.0-r6 2.15.9_p20130619: Yet Another Message Interface on Emacsen
+app-emacs/websocket 1.9: A websocket implementation in elisp
 app-emacs/wgrep 2.1.10: Writable grep buffer and apply the changes to files
 app-emacs/whine 20091222: Complaint generator for GNU Emacs
 app-emacs/wikipedia-mode 0.5-r1: Mode for editing Wikipedia articles off-line
@@ -1306,7 +1308,7 @@ app-emulation/dynamips 0.2.12 0.2.14-r1: Cisco 7200/3600 Simulator
 app-emulation/e-uae 0.8.29_rc4-r2 0.8.29_rc4-r3: The Ubiquitous Amiga Emulator with an emulation core largely based on WinUAE
 app-emulation/edumips64 1.1 1.2: A visual and cross-platform MIPS64 CPU Simulator
 app-emulation/flannel 0.8.0-r2 0.9.0: An etcd backed network fabric for containers
-app-emulation/free42 1.5.15 2.0.6: An HP-42S Calculator Simulator
+app-emulation/free42 2.0.6: An HP-42S Calculator Simulator
 app-emulation/fuse 1.3.8 1.4.0: Free Unix Spectrum Emulator by Philip Kendall
 app-emulation/fuse-utils 1.3.3 1.3.4: Utils for the Free Unix Spectrum Emulator by Philip Kendall
 app-emulation/ganeti 2.15.2-r5 2.15.2-r6 2.16.0_rc1 2.17.0_beta1: Ganeti is a virtual server management software tool
@@ -4633,7 +4635,7 @@ dev-libs/OpenSRF 1.2.0 2.1.1: Framework for the high-level development of the Ev
 dev-libs/UTF8Strings 1.14.0 1.14.2: C++ library providing ability to work natively with UTF8 string
 dev-libs/ace 5.7.2 5.8.3: The Adaptive Communications Environment
 dev-libs/actor-framework 0.13.2 0.14.5: The C++ Actor Framework (CAF)
-dev-libs/amdgpu-pro-opencl 17.10.429170 17.30.458935-r1 17.30.465504: Proprietary OpenCL implementation for AMD GPUs
+dev-libs/amdgpu-pro-opencl 17.10.429170 17.30.458935-r1 17.30.465504 17.40.492261: Proprietary OpenCL implementation for AMD GPUs
 dev-libs/angelscript 2.31.2: A flexible, cross-platform scripting library
 dev-libs/antlr-c 3.5.2: The ANTLR3 C Runtime
 dev-libs/appstream 0.10.6-r1 0.11.5: Cross-distro effort for providing metadata for software in the Linux ecosystem
@@ -10466,8 +10468,8 @@ dev-util/ftnchek 3.3.1-r1: Static analyzer a la 'lint' for Fortran 77
 dev-util/fuzz 0.6-r1: Stress-tests programs by giving them random input
 dev-util/gcovr 3.2 3.3: A Python script for summarizing gcov data
 dev-util/gdbus-codegen 2.50.3 2.52.3: GDBus code and documentation generator
-dev-util/geany 1.28 1.30.1 1.31: GTK+ based fast and lightweight IDE
-dev-util/geany-plugins 1.28-r1 1.30 1.31: A collection of different plugins for Geany
+dev-util/geany 1.30.1 1.31 1.32: GTK+ based fast and lightweight IDE
+dev-util/geany-plugins 1.30 1.31: A collection of different plugins for Geany
 dev-util/gengetopt 2.22.6: A tool to write command line option parsing code for C programs
 dev-util/gertty 1.3.2 1.4.0 1.5.0: Gertty is a console-based interface to the Gerrit Code Review system.
 dev-util/glade 3.20.0: A user interface designer for GTK+ and GNOME
