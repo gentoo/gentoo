@@ -5,8 +5,8 @@ EAPI=6
 inherit golang-build golang-vcs-snapshot
 
 EGO_PN="github.com/minio/minio"
-VERSION="2017-06-13T19-01-01Z"
-EGIT_COMMIT="b9f622824ac17d3e0577d8a9b81a707666cc8cf1"
+VERSION="2017-10-27T18-59-02Z"
+EGIT_COMMIT="03df692ae2f911943d5ef98b0ee2f9461605fb8c"
 ARCHIVE_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
 

@@ -3,6 +3,8 @@
 
 EAPI=6
 
+inherit out-of-source
+
 DESCRIPTION="A free, cross-platform, hardware independent AdLib sound player library"
 HOMEPAGE="http://adplug.sourceforge.net"
 
@@ -27,13 +29,13 @@ src_prepare() {
 	[[ ${PV} == *9999 ]] && eautoreconf
 }
 
-src_configure() {
+my_src_configure() {
 	econf \
 		$(use_enable static-libs static) \
 		$(use_enable debug)
 }
 
-src_install() {
-	default
+my_src_install_all() {
+	einstalldocs
 	find "${D}" -name '*.la' -delete || die
 }
