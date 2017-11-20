@@ -25,11 +25,11 @@ IUSE="debug kerberos libressl mms-agent ssl test +tools"
 
 RDEPEND=">=app-arch/snappy-1.1.2
 	>=dev-cpp/yaml-cpp-0.5.1
-	>=dev-libs/boost-1.57[threads(+)]
+	>=dev-libs/boost-1.57:=[threads(+)]
 	>=dev-libs/libpcre-8.39[cxx]
 	dev-libs/snowball-stemmer
 	net-libs/libpcap
-	>=sys-libs/zlib-1.2.8
+	>=sys-libs/zlib-1.2.8:=
 	mms-agent? ( app-admin/mms-agent )
 	ssl? (
 		!libressl? ( >=dev-libs/openssl-1.0.1g:0= )
