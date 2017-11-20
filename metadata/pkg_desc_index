@@ -4864,7 +4864,7 @@ dev-libs/libidmef 1.0.3: Implementation of the IDMEF XML draft
 dev-libs/libindicate 12.10.1-r2: A library to raise flags on DBus for other components of the desktop
 dev-libs/libindicate-qt 0.2.5.91: Qt wrapper for libindicate library
 dev-libs/libindicator 12.10.1-r201 12.10.1-r301: A set of symbols and convience functions that all indicators would like to use
-dev-libs/libinput 1.6.2 1.7.3 1.8.3 1.9.0 1.9.1: Library to handle input devices in Wayland
+dev-libs/libinput 1.6.2 1.7.3 1.8.3 1.9.0 1.9.1 1.9.2: Library to handle input devices in Wayland
 dev-libs/libintl 0.19.6 0.19.7 0.19.8.1: the GNU international library (split out of gettext)
 dev-libs/libisoburn 1.4.6 1.4.8-r1: Creation/expansion of ISO-9660 filesystems on CD/DVD media supported by libburn
 dev-libs/libisofs 1.4.6 1.4.8: Open-source library for reading, mastering and writing optical discs
@@ -7894,7 +7894,7 @@ dev-python/jenkins-autojobs 0.14.3: Scripts for automatically creating Jenkins j
 dev-python/jenkins-webapi 0.3.2 0.4.0-r1 0.5.0: Module for interacting with the Jenkins CI server
 dev-python/jenkinsapi 0.2.26 0.2.29: API to access resources on a Jenkins continuous-integration server
 dev-python/jingo 0.7 0.9.0: An adapter for using Jinja2 templates with Django
-dev-python/jinja 2.8 2.9.5 2.9.6: A full-featured template engine for Python
+dev-python/jinja 2.8 2.9.5 2.9.6 2.10: A full-featured template engine for Python
 dev-python/jinja2-time 0.2.0: Jinja2 Extension for Dates and Times
 dev-python/jira 1.0.5 1.0.10: Python library for interacting with the JIRA REST API
 dev-python/jmespath 0.9.0 0.9.2 0.9.3: JSON Matching Expressions
@@ -17505,7 +17505,7 @@ sys-boot/sgibootcd 0.12: Creates burnable CD images for SGI LiveCDs
 sys-boot/shlilo-lantank 20040408: bootloader for the SuperH Lantank
 sys-boot/silo 1.4.14_p20100228 1.4.14_p20120226 1.4.14_p20120819: SPARC/UltraSPARC Improved Loader, a boot loader for sparc
 sys-boot/syslinux 3.86 4.07 5.10 6.03 6.04_pre1: SYSLINUX, PXELINUX, ISOLINUX, EXTLINUX and MEMDISK bootloaders
-sys-boot/systemd-boot 233: UEFI boot manager from systemd (formerly gummiboot)
+sys-boot/systemd-boot 233 235: UEFI boot manager from systemd (formerly gummiboot)
 sys-boot/systemrescuecd-x86-grub 0.1: Grub menu entries for the .iso image of systemrescuecd-x86
 sys-boot/tboot 1.9.6_p20171118: Performs a measured and verified boot using Intel Trusted Execution Technology
 sys-boot/udk 2015: Tianocore UEFI Development kit
