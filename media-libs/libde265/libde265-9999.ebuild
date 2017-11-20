@@ -14,17 +14,18 @@ EGIT_REPO_URI="https://github.com/strukturag/${PN}.git"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE="debug qt4 qt5 static-libs cpu_flags_x86_sse tools"
+IUSE="debug qt5 static-libs cpu_flags_x86_sse"
 
 DEPEND="
-	qt4? ( dev-qt/qtgui:4 dev-qt/qtcore:4 )
-	qt5? ( dev-qt/qtgui:5 dev-qt/qtcore:5 dev-qt/qtwidgets:5 )
 	media-libs/libsdl
 	virtual/ffmpeg
+	qt5? (
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtwidgets:5
+	)
 "
 RDEPEND="${DEPEND}"
-
-REQUIRED_USE="tools? ( || ( qt4 qt5 ) )"
 
 src_configure() {
 	local myeconfargs=(
@@ -33,8 +34,8 @@ src_configure() {
 		$(use_enable debug log-info)
 		$(use_enable debug log-debug)
 		$(use_enable debug log-trace)
-		$(use_enable tools dec265)
-		$(use_enable tools sherlock265)
+		$(use_enable qt5 dec265)
+		$(use_enable qt5 sherlock265)
 		--disable-silent-rules
 		--enable-log-error
 	)
