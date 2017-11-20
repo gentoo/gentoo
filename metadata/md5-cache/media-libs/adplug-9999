@@ -8,4 +8,4 @@ LICENSE=LGPL-2.1
 RDEPEND=>=dev-cpp/libbinio-1.4
 SLOT=0
 _eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	git-r3	52a888802d25387c2c74cb845d1219bc	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	out-of-source	599059fedc27d10d7e958a5966b6104c	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=40c0b5311664054e9febe8aadc445d7e
+_md5_=6a04691da03a2829acdc02b9c9b17314

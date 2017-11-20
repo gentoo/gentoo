@@ -2470,7 +2470,7 @@ app-text/tkman 2.2-r1: TkMan man and info page browser
 app-text/tofrodos 1.7.12a: Utility that converts ASCII files between the MSDOS and the Unix format
 app-text/tokyodystopia 0.9.15: A fulltext search engine for Tokyo Cabinet
 app-text/trang 20151127: Multi-format schema converter based on RELAX NG
-app-text/tree 1.7.0: Lists directories recursively, and produces an indented listing of files
+app-text/tree 1.7.0 1.7.0-r1: Lists directories recursively, and produces an indented listing of files
 app-text/ttf2pk2 1.5_p20120701 2.0_p20140525 2.0_p20150521 2.0_p20160523 2.0_p20170524: Freetype 2 based TrueType font to TeX's PK format converter
 app-text/ttf2pt1 3.4.4-r1: True Type Font to Postscript Type 1 Converter
 app-text/tuxcards 2.2.1-r1: A hierarchical notebook
@@ -12921,7 +12921,7 @@ media-libs/SoQt 1.5.0-r1: The glue between Coin3D and Qt
 media-libs/SoXt 1.3.0: GUI binding for using Coin/Open Inventor with Xt/Motif
 media-libs/a52dec 0.7.4-r6 0.7.4-r7: library for decoding ATSC A/52 streams used in DVD
 media-libs/aalib 1.4_rc5-r6 1.4_rc5-r7 1.4_rc5-r8: A ASCII-Graphics Library
-media-libs/adplug 2.2.1 9999: A free, cross-platform, hardware independent AdLib sound player library
+media-libs/adplug 2.2.1 2.3 9999: A free, cross-platform, hardware independent AdLib sound player library
 media-libs/aften 0.0.8 0.0.8-r2: An A/52 (AC-3) audio encoder
 media-libs/aldumb 0.9.3: Allegro support for DUMB (an IT, XM, S3M, and MOD player library)
 media-libs/allegro 4.4.2-r1 5.0.11: A game programming library
