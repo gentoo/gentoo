@@ -7,18 +7,16 @@ PYTHON_COMPAT=( python2_7 )
 inherit toolchain-funcs cmake-utils python-single-r1 java-pkg-opt-2 java-ant-2
 
 DESCRIPTION="A collection of algorithms and sample code for various computer vision problems"
-HOMEPAGE="http://opencv.org"
+HOMEPAGE="https://opencv.org"
 
 SRC_URI="https://github.com/Itseez/opencv/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/2.4"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux"
-IUSE="cuda +eigen examples ffmpeg gstreamer gtk ieee1394 ipp jpeg jpeg2k libav opencl openexr opengl openmp pch png +python qt4 qt5 testprograms threads tiff v4l vtk xine"
-REQUIRED_USE="
-	python? ( ${PYTHON_REQUIRED_USE} )
-	?? ( qt4 qt5 )
-"
+IUSE="cuda +eigen examples ffmpeg gstreamer gtk ieee1394 ipp jpeg jpeg2k libav opencl openexr opengl openmp pch png +python qt5 testprograms threads tiff v4l vtk xine"
+
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 # The following logic is intrinsic in the build system, but we do not enforce
 # it on the useflags since this just blocks emerging pointlessly:
@@ -56,15 +54,11 @@ RDEPEND="
 	opengl? ( virtual/opengl virtual/glu )
 	png? ( media-libs/libpng:0= )
 	python? ( ${PYTHON_DEPS} dev-python/numpy[${PYTHON_USEDEP}] )
-	qt4? (
-		dev-qt/qtgui:4
-		dev-qt/qttest:4
-		opengl? ( dev-qt/qtopengl:4 )
-	)
 	qt5? (
+		dev-qt/qtconcurrent:5
+		dev-qt/qtcore:5
 		dev-qt/qtgui:5
 		dev-qt/qttest:5
-		dev-qt/qtconcurrent:5
 		opengl? ( dev-qt/qtopengl:5 )
 	)
 	threads? ( dev-cpp/tbb )
@@ -137,6 +131,7 @@ src_configure() {
 		-DWITH_OPENNI=OFF
 		-DWITH_PNG=$(usex png)
 		-DWITH_PVAPI=OFF
+		-DWITH_QT=$(usex qt5 5 OFF)
 		-DWITH_GIGEAPI=OFF
 		-DWITH_WIN32UI=OFF
 		-DWITH_QUICKTIME=OFF
@@ -185,14 +180,6 @@ src_configure() {
 
 		-DOPENCV_EXTRA_FLAGS_RELEASE=""				# black magic
 	)
-
-	if use qt4; then
-		mycmakeargs+=( -DWITH_QT=4 )
-	elif use qt5; then
-		mycmakeargs+=( -DWITH_QT=5 )
-	else
-		mycmakeargs+=( -DWITH_QT=OFF )
-	fi
 
 	if use cuda; then
 		if [[ "$(gcc-version)" > "4.8" ]]; then

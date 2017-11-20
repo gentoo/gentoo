@@ -30,27 +30,27 @@ src_configure() {
 }
 
 src_install() {
-	emake install DESTDIR="${D}" || die
+	emake install DESTDIR="${D}"
 	dodoc NEWS ORIGIN README dict-README
 
 	# not sure if this is still needed ...
 	dodir /usr/share/dict
-	cd "${ED%/}"/usr/share/misc
+	cd "${ED%/}"/usr/share/misc || die
 	mv $(awk '$1=="dictfiles"{$1="";$2="";print}' "${S}"/Makefile) ../dict/ || die
-	cd ../dict
+	cd ../dict || die
 	ln -s web2 words || die
 	ln -s web2a extra.words || die
 
 	if use minimal ; then
-		cd "${ED}"/usr/share/dict
-		rm -f words extra.words
-		gzip -9 *
-		ln -s web2.gz words
-		ln -s web2a.gz extra.words
-		ln -s connectives{.gz,}
-		ln -s propernames{.gz,}
-		cd ..
-		rm -r misc rfc
+		pushd "${ED}"/usr/share/dict || die
+		rm -f words extra.words || die
+		gzip -9 * || die
+		ln -s web2.gz words || die
+		ln -s web2a.gz extra.words || die
+		ln -s connectives{.gz,} || die
+		ln -s propernames{.gz,} || die
+		popd || die
+		rm -r misc rfc || die
 	fi
 }
 
