@@ -20,9 +20,7 @@ HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
 
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0/2"
-IUSE="acl apparmor audit build cryptsetup curl elfutils +gcrypt gnuefi http
-	idn importd +kmod libidn2 +lz4 lzma nat pam policykit
-	qrcode +seccomp selinux ssl sysv-utils test vanilla xkb"
+IUSE="acl apparmor audit build cryptsetup curl elfutils +gcrypt gnuefi http idn importd +kmod libidn2 +lz4 lzma nat pam policykit qrcode +seccomp selinux ssl sysv-utils test usrmerge vanilla xkb"
 
 REQUIRED_USE="importd? ( curl gcrypt lzma )"
 
@@ -200,9 +198,8 @@ multilib_src_configure() {
 		-Dpamlibdir="$(getpam_mod_dir)"
 		# avoid bash-completion dep
 		-Dbashcompletiondir="$(get_bashcompdir)"
-		# make sure we get /bin:/sbin in $PATH
-		-Dsplit-usr=true
-		-Drootprefix="${EPREFIX}${ROOTPREFIX}"
+		# make sure we get /bin:/sbin in PATH
+		-Dsplit-usr=$(usex usrmerge false true)
 		-Dsysvinit-path=
 		-Dsysvrcnd-path=
 		# no deps
@@ -299,10 +296,11 @@ multilib_src_install_all() {
 	dodoc "${FILESDIR}"/nsswitch.conf
 
 	if use sysv-utils; then
+		local app
 		for app in halt poweroff reboot runlevel shutdown telinit; do
-			dosym "${EPREFIX}${ROOTPREFIX%/}/bin/systemctl" /sbin/${app}
+			dosym ../bin/systemctl /sbin/${app}
 		done
-		dosym "${EPREFIX}${ROOTPREFIX%/}/lib/systemd/systemd" /sbin/init
+		dosym ../lib/systemd/systemd /sbin/init
 	else
 		# we just keep sysvinit tools, so no need for the mans
 		rm "${ED%/}"/usr/share/man/man8/{halt,poweroff,reboot,runlevel,shutdown,telinit}.8 \
@@ -328,12 +326,12 @@ multilib_src_install_all() {
 	rm -fr "${ED%/}"/etc/systemd/system/sockets.target.wants || die
 	rm -fr "${ED%/}"/etc/systemd/system/sysinit.target.wants || die
 
-	rm -r "${ED%/}${ROOTPREFIX%/}/lib/udev/hwdb.d" || die
+	rm -r "${ED%/}"/lib/udev/hwdb.d || die
 
-	if [[ ! -e "${ED%/}"/usr/lib/systemd/systemd ]]; then
+	if ! use usrmerge; then
 		# Avoid breaking boot/reboot
-		dosym "../../..${ROOTPREFIX%/}/lib/systemd/systemd" /usr/lib/systemd/systemd
-		dosym "../../..${ROOTPREFIX%/}/lib/systemd/systemd-shutdown" /usr/lib/systemd/systemd-shutdown
+		dosym ../../../lib/systemd/systemd /usr/lib/systemd/systemd
+		dosym ../../../lib/systemd/systemd-shutdown /usr/lib/systemd/systemd-shutdown
 	fi
 }
 
@@ -377,19 +375,6 @@ migrate_locale() {
 			ebegin "Creating ${envd_locale_def} -> ../locale.conf symlink"
 			ln -n -s ../locale.conf "${envd_locale_def}"
 			eend ${?} || FAIL=1
-		fi
-	fi
-}
-
-pkg_preinst() {
-	# If /lib/systemd and /usr/lib/systemd are the same directory, remove the
-	# symlinks we created in src_install.
-	if [[ $(realpath "${EROOT%/}${ROOTPREFIX}/lib/systemd") == $(realpath "${EROOT%/}/usr/lib/systemd") ]]; then
-		if [[ -L ${ED%/}/usr/lib/systemd/systemd ]]; then
-			rm "${ED%/}/usr/lib/systemd/systemd" || die
-		fi
-		if [[ -L ${ED%/}/usr/lib/systemd/systemd-shutdown ]]; then
-			rm "${ED%/}/usr/lib/systemd/systemd-shutdown" || die
 		fi
 	fi
 }
