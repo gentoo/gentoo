@@ -15702,7 +15702,7 @@ net-proxy/ratproxy 1.58: A semi-automated, largely passive web application secur
 net-proxy/redsocks 0.5 9999: Transparent redirector of any TCP connection to proxy
 net-proxy/rejik 3.2.10: A squid redirector used for blocking unwanted content
 net-proxy/shadowsocks-libev 2.5.6 2.6.2 3.0.6: A lightweight secured SOCKS5 proxy for embedded devices and low end boxes
-net-proxy/squid 3.5.26: A full-featured web proxy cache
+net-proxy/squid 3.5.26 3.5.27: A full-featured web proxy cache
 net-proxy/squidclamav 6.8 6.10: HTTP Antivirus for Squid based on ClamAv and ICAP
 net-proxy/squidguard 1.5_beta-r2: Combined filter, redirector and access controller plugin for Squid
 net-proxy/squirm 1.26-r1: A redirector for Squid
