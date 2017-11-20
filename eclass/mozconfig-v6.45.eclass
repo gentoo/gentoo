@@ -29,6 +29,7 @@ esac
 inherit flag-o-matic toolchain-funcs mozcoreconf-v4
 
 # @ECLASS-VARIABLE: MOZCONFIG_OPTIONAL_WIFI
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Set this variable before the inherit line, when an ebuild needs to provide
 # optional necko-wifi support via IUSE="wifi".  Currently this would include
@@ -39,6 +40,7 @@ inherit flag-o-matic toolchain-funcs mozcoreconf-v4
 # Set the variable to any value if the use flag should exist but not be default-enabled.
 
 # @ECLASS-VARIABLE: MOZCONFIG_OPTIONAL_JIT
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Set this variable before the inherit line, when an ebuild needs to provide
 # optional necko-wifi support via IUSE="jit".  Currently this would include
@@ -49,6 +51,7 @@ inherit flag-o-matic toolchain-funcs mozcoreconf-v4
 # Set the variable to any value if the use flag should exist but not be default-enabled.
 
 # @ECLASS-VARIABLE: MOZCONFIG_OPTIONAL_GTK3
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Set this variable before the inherit line, when an ebuild can provide
 # optional gtk3 support via IUSE="gtk3".  Currently this would include
@@ -59,6 +62,7 @@ inherit flag-o-matic toolchain-funcs mozcoreconf-v4
 # Set the variable to any value if the use flag should exist but not be default-enabled.
 
 # @ECLASS-VARIABLE: MOZCONFIG_OPTIONAL_QT5
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Set this variable before the inherit line, when an ebuild can provide
 # optional qt5 support via IUSE="qt5".  Currently this would include
