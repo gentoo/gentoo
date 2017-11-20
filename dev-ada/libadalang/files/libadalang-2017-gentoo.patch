@@ -1,0 +1,32 @@
+--- work/langkit-gps-src/langkit/templates/project_file.mako.old	2017-07-11 14:19:12.841221846 +0200
++++ work/langkit-gps-src/langkit/templates/project_file.mako	2017-07-11 14:12:39.104981170 +0200
+@@ -82,9 +82,9 @@
+             for Default_Switches ("Ada") use
+                Common_Ada_Cargs & ("-g", "-O0", "-gnatwe", "-gnata");
+ 
+-            for Default_Switches ("C") use Common_C_Cargs & ("-g3", "-O0");
++            for Default_Switches ("C") use Common_C_Cargs & ("-g3", "-O0", "-fPIC");
+ 
+-            for Switches ("quex_lexer.c") use Common_C_Cargs & ("-g0", "-O0");
++            for Switches ("quex_lexer.c") use Common_C_Cargs & ("-g0", "-O0", "-fPIC");
+             --  This file is *huge* and the debugging information for it harms
+             --  Valgrind runs. We almost never have to debug this file so
+             --  this is acceptable.
+@@ -111,6 +111,7 @@
+                   --  ... and this prevents OOM on other platforms
+             end case;
+       end case;
++      for Driver ("C") use External ("GCC", "gcc");
+    end Compiler;
+ 
+    package Binder is
+--- work/libadalang-gps-src/ada/testsuite/testsuite_support/capi_driver.py	2017-07-30 16:01:31.495287196 +0200
++++ work/libadalang-gps-src/ada/testsuite/testsuite_support/capi_driver.py.old	2017-07-30 16:00:08.104464440 +0200
+@@ -72,6 +72,7 @@
+                        --  different default standard.
+ 
+                        "-I{support_include_dir}", "-g");
++                   for Driver ("C") use External ("GCC", "gcc");
+                 end Compiler;
+             end P;
+             '''.format(main_source=compile_units[0],
