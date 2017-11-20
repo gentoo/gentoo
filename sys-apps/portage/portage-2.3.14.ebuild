@@ -87,6 +87,10 @@ pkg_setup() {
 python_prepare_all() {
 	distutils-r1_python_prepare_all
 
+	sed -e "s|user_options = install_data.user_options$|\0 + [\n\
+		('htmldir=', None, 'HTML documentation install directory')]|" -i \
+		setup.py || die #638046
+
 	if use native-extensions; then
 		printf "[build_ext]\nportage-ext-modules=true\n" >> \
 			setup.cfg || die
@@ -189,8 +193,14 @@ python_install_all() {
 	distutils-r1_python_install_all
 
 	local targets=()
-	use doc && targets+=( install_docbook )
-	use epydoc && targets+=( install_epydoc )
+	use doc && targets+=(
+		install_docbook
+		--htmldir="${EPREFIX}/usr/share/doc/${PF}/html"
+	)
+	use epydoc && targets+=(
+		install_epydoc
+		--htmldir="${EPREFIX}/usr/share/doc/${PF}/html"
+	)
 
 	# install docs
 	if [[ ${targets[@]} ]]; then
