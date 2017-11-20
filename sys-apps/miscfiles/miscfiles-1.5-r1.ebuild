@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="3"
+EAPI="6"
 
 UNI_PV=6.1.0
 DESCRIPTION="Miscellaneous files"
@@ -20,6 +20,7 @@ RDEPEND="!<sys-freebsd/freebsd-share-7.2-r1"
 DEPEND="app-arch/xz-utils"
 
 src_prepare() {
+	default
 	mv "${WORKDIR}"/UnicodeData-${UNI_PV}.txt unicode || die
 }
 
