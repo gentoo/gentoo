@@ -12233,7 +12233,7 @@ kde-misc/plasma-applet-weather-widget 1.6.10: Plasma 5 applet for weather foreca
 kde-misc/rsibreak 0.12.7: Small utility which bothers you at certain intervals
 kde-misc/skanlite 2.0.1: KDE image scanning application
 kde-misc/systemd-kcm 1.2.1: Plasma control module for systemd
-kde-misc/tellico 3.0.2 3.0.2-r1 3.1: A collection manager based on KDE Frameworks
+kde-misc/tellico 3.0.2 3.1: A collection manager based on KDE Frameworks
 kde-misc/wacomtablet 3.0.0_beta1 3.0.0_beta1_p20171107: KControl module for Wacom tablets
 kde-misc/yakuake 3.0.4 3.0.4-r2: Quake-style terminal emulator based on konsole
 kde-misc/zanshin 0.4.1_p20170701: Getting things done application by KDE
@@ -13214,7 +13214,7 @@ media-libs/opencollada 1.6.25 1.6.31 1.6.36 1.6.58: Stream based read/write libr
 media-libs/opencolorio 1.0.9-r2 1.0.9_p20170719: A color management framework for visual effects and animation
 media-libs/opencore-amr 0.1.3-r1 0.1.4 0.1.5: Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec
 media-libs/openctm 1.0.3: OpenCTM - the Open Compressed Triangle Mesh.
-media-libs/opencv 2.4.13 2.4.13-r2 3.1.0-r8 3.2.0-r2 3.2.0-r3 3.3.0-r2 3.3.0-r4: A collection of algorithms and sample code for various computer vision problems
+media-libs/opencv 2.4.13 2.4.13-r3 3.1.0-r8 3.2.0-r2 3.2.0-r3 3.3.0-r2 3.3.0-r4: A collection of algorithms and sample code for various computer vision problems
 media-libs/openexr 1.7.0 2.0.1-r1 2.1.0 2.2.0 2.2.0-r1 2.2.0-r2: ILM's OpenEXR high dynamic-range image file format libraries
 media-libs/openexr_ctl 1.0.1-r1 1.0.1-r2: OpenEXR CTL libraries
 media-libs/openglide 0.09_rc9_p20160913: A Glide to OpenGL wrapper
@@ -17239,7 +17239,7 @@ sys-apps/newrelic-sysmond 1.1.2.124-r1: NewRelic System Monitor
 sys-apps/nix 1.11.14 1.11.15: A purely functional package manager
 sys-apps/noexec 1.1.0-r1: a package for preventing processes from using exec system calls
 sys-apps/nvme-cli 1.1 1.2 1.3 1.4: NVM-Express user space tooling for Linux
-sys-apps/openrc 0.27.2 0.28 0.29 0.30 0.31 0.31.1 0.31.2 0.32 0.32.1 0.33 0.33.1 0.34 0.34.1 0.34.2 0.34.3 0.34.4 0.34.5 0.34.6 0.34.7 0.34.8 9999: OpenRC manages the services, startup and shutdown of a host
+sys-apps/openrc 0.27.2 0.28 0.29 0.30 0.31 0.31.1 0.31.2 0.32 0.32.1 0.33 0.33.1 0.34 0.34.1 0.34.2 0.34.3 0.34.4 0.34.5 0.34.6 0.34.7 0.34.8 0.34.9 9999: OpenRC manages the services, startup and shutdown of a host
 sys-apps/opentmpfiles 0.1.1 0.1.2 0.1.3 9999: A standalone utility to process systemd-style tmpfiles.d files
 sys-apps/osinfo-db 20170326 20170423 20170813: osinfo database files
 sys-apps/osinfo-db-tools 1.1.0: Tools for managing the osinfo database
@@ -17257,7 +17257,7 @@ sys-apps/pkgcore 0.9.4 0.9.7 9999: a framework for package management
 sys-apps/pmount 0.9.99_alpha-r3 0.9.99_alpha-r5: Policy based mounter that gives the ability to mount removable devices as a user
 sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
 sys-apps/policycoreutils 2.6-r1 2.7 9999: SELinux core utilities
-sys-apps/portage 2.3.6 2.3.8 2.3.12 2.3.13 2.3.13-r1 2.3.14 9999: Portage is the package management and distribution system for Gentoo
+sys-apps/portage 2.3.6 2.3.8 2.3.13 2.3.13-r1 2.3.14 9999: Portage is the package management and distribution system for Gentoo
 sys-apps/powerpc-utils 1.1.3.18-r2: PowerPC utilities including nvsetenv, and additional OldWorld apps
 sys-apps/prctl 1.5 1.6: Tool to query and modify process behavior
 sys-apps/prefix-chain-utils 0.2-r7: Chained EPREFIX utilities and wrappers

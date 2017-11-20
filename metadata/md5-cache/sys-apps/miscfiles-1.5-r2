@@ -8,4 +8,4 @@ LICENSE=GPL-2 unicode
 RDEPEND=!<sys-freebsd/freebsd-share-7.2-r1
 SLOT=0
 SRC_URI=mirror://gnu/miscfiles/miscfiles-1.5.tar.gz https://dev.gentoo.org/~whissi/dist/miscfiles/UnicodeData-10.0.0.txt.xz
-_md5_=8c978191d0758cb3ae6c7f2309d5ef0d
+_md5_=267246b22d42360d31a3c88354c41d16
