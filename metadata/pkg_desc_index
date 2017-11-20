@@ -210,7 +210,7 @@ app-admin/supervisor 3.1.4 3.3.3: A system for controlling process state under U
 app-admin/swatchdog 3.2.4-r1: Simple log watcher
 app-admin/sxid 4.2-r1 4.2-r2: suid, sgid file and directory checking
 app-admin/sysklogd 1.5.1 1.5.1-r1: Standard log daemons
-app-admin/syslog-ng 3.4.8 3.6.2 3.6.4 3.7.2 3.7.3: syslog replacement with advanced filtering features
+app-admin/syslog-ng 3.7.3: syslog replacement with advanced filtering features
 app-admin/syslog-summary 1.14-r1: Summarizes the contents of a syslog log file
 app-admin/syslogread 0.92-r1: Syslog message handling tools
 app-admin/sysrqd 14: daemon providing access to the kernel sysrq functions via network
