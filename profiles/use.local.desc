@@ -2913,9 +2913,12 @@ dev-util/intel-ocl-sdk:system-tbb - Use sytem Thread Building Blocks (dev-cpp/tb
 dev-util/intel-ocl-sdk:tools - Install Intel Offline Compiler
 dev-util/kdevelop:gdbui - Enable GUI for attaching GDB to a running process
 dev-util/kdevelop:ninja - Enable support for Ninja build system
-dev-util/kdevelop:okteta - Enable hex editor plugin
+dev-util/kdevelop:okteta - Enable hex editor plugin via kde-apps/okteta
 dev-util/kdevelop:qmake - Enable support for QMake build system
 dev-util/kdevelop:qthelp - Enable support for QtHelp documentation browsing
+dev-util/kdevelop:reviewboard - Enable reviewboard support
+dev-util/kdevelop:webkit - Enable deprecated dev-qt/qtwebkit instead of dev-qt/qtwebengine for integrated documentation
+dev-util/kdevelop:welcomepage - Enable welcome page, requires dev-qt/qtdeclarative
 dev-util/kdevplatform:reviewboard - Enable reviewboard support
 dev-util/kdevplatform:welcomepage - Enable welcome page, requires dev-qt/qtdeclarative
 dev-util/ltrace:unwind - Use sys-libs/libunwind for frame unwinding support
