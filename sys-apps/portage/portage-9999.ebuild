@@ -188,8 +188,14 @@ python_install_all() {
 	distutils-r1_python_install_all
 
 	local targets=()
-	use doc && targets+=( install_docbook )
-	use epydoc && targets+=( install_epydoc )
+	use doc && targets+=(
+		install_docbook
+		--htmldir="${EPREFIX}/usr/share/doc/${PF}/html"
+	)
+	use epydoc && targets+=(
+		install_epydoc
+		--htmldir="${EPREFIX}/usr/share/doc/${PF}/html"
+	)
 
 	# install docs
 	if [[ ${targets[@]} ]]; then
