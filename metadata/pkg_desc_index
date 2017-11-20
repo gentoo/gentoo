@@ -570,7 +570,7 @@ app-crypt/md4sum 0.02.03-r1: md4 and edonkey hash algorithm tool
 app-crypt/md5deep 4.3 4.4: Expanded md5sum program with recursive and comparison options
 app-crypt/md6sum 1.0-r2: A C implementation of MD6
 app-crypt/mhash 0.9.9.9-r2: library providing a uniform interface to a large number of hash algorithms
-app-crypt/mit-krb5 1.14.2 1.14.3 1.14.4 1.14.5 1.15 1.15.1 1.15.2: MIT Kerberos V
+app-crypt/mit-krb5 1.15.2: MIT Kerberos V
 app-crypt/mit-krb5-appl 1.0.3: Kerberized applications split from the main MIT Kerberos V distribution
 app-crypt/monkeysign 2.2.3: A user-friendly commandline tool to sign OpenGPG keys
 app-crypt/monkeysphere 0.36-r1 0.36-r2 0.37 0.38 0.39 0.41: Leverage the OpenPGP web of trust for OpenSSH and Web authentication
@@ -15005,7 +15005,7 @@ net-libs/netembryo 0.1.1: a network abstraction library
 net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP protocols
 net-libs/nfqueue-bindings 0.5 0.6: High-level language bindings for libnetfilter_queue
 net-libs/nghttp2 1.10.0 1.19.0 1.26.0 1.27.0 9999: HTTP/2 C Library
-net-libs/nodejs 0.12.17 4.8.5 6.9.4 6.11.5 8.9.1 9.1.0 9.2.0: A JavaScript runtime built on Chrome's V8 JavaScript engine
+net-libs/nodejs 0.12.17 4.8.5 6.9.4 6.11.5 8.9.1 9.2.0: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-libs/ntirpc 1.4.1 1.5.2 1.5.3: Transport Independent RPC library for nfs-ganesha
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
@@ -15702,7 +15702,7 @@ net-proxy/ratproxy 1.58: A semi-automated, largely passive web application secur
 net-proxy/redsocks 0.5 9999: Transparent redirector of any TCP connection to proxy
 net-proxy/rejik 3.2.10: A squid redirector used for blocking unwanted content
 net-proxy/shadowsocks-libev 2.5.6 2.6.2 3.0.6: A lightweight secured SOCKS5 proxy for embedded devices and low end boxes
-net-proxy/squid 3.5.23 3.5.24 3.5.25 3.5.26: A full-featured web proxy cache
+net-proxy/squid 3.5.26: A full-featured web proxy cache
 net-proxy/squidclamav 6.8 6.10: HTTP Antivirus for Squid based on ClamAv and ICAP
 net-proxy/squidguard 1.5_beta-r2: Combined filter, redirector and access controller plugin for Squid
 net-proxy/squirm 1.26-r1: A redirector for Squid
