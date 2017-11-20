@@ -10,15 +10,24 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
 fi
 
-IUSE="+widgets"
+IUSE="examples +widgets"
+REQUIRED_USE="examples? ( widgets )"
 
 DEPEND="
 	~dev-qt/qtcore-${PV}
 	~dev-qt/qtdeclarative-${PV}
 	~dev-qt/qtgui-${PV}
 	widgets? ( ~dev-qt/qtwidgets-${PV} )
+	examples? (
+		~dev-qt/qtnetwork-${PV}
+		~dev-qt/qtsql-${PV}
+	)
 "
 RDEPEND="${DEPEND}"
+
+QT5_EXAMPLES_SUBDIRS=(
+	examples
+)
 
 src_prepare() {
 	qt_use_disable_mod widgets widgets \

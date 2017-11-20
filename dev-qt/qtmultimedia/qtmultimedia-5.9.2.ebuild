@@ -10,7 +10,8 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
 fi
 
-IUSE="alsa gles2 gstreamer openal pulseaudio qml widgets"
+IUSE="alsa examples gles2 gstreamer openal pulseaudio qml widgets"
+REQUIRED_USE="examples? ( widgets )"
 
 RDEPEND="
 	~dev-qt/qtcore-${PV}
@@ -38,18 +39,25 @@ DEPEND="${RDEPEND}
 	gstreamer? ( x11-proto/videoproto )
 "
 
+QT5_EXAMPLES_SUBDIRS=(
+	examples
+)
+
 src_prepare() {
 	qt_use_disable_config openal openal \
 		src/imports/imports.pro
 
 	qt_use_disable_mod qml quick \
 		src/src.pro \
-		src/plugins/plugins.pro
+		src/plugins/plugins.pro \
+		examples/multimedia/multimedia.pro
 
 	qt_use_disable_mod widgets widgets \
 		src/src.pro \
 		src/gsttools/gsttools.pro \
-		src/plugins/gstreamer/common.pri
+		src/plugins/gstreamer/common.pri \
+		examples/multimedia/multimedia.pro \
+		examples/multimediawidgets/multimediawidgets.pro
 
 	qt5-build_src_prepare
 }

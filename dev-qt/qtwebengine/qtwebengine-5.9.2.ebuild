@@ -11,7 +11,8 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
 
-IUSE="alsa bindist geolocation pax_kernel pulseaudio +system-ffmpeg +system-icu widgets"
+IUSE="alsa bindist examples geolocation pax_kernel pulseaudio +system-ffmpeg +system-icu widgets"
+REQUIRED_USE="examples? ( widgets )"
 
 RDEPEND="
 	app-arch/snappy:=
@@ -62,6 +63,9 @@ RDEPEND="
 	system-ffmpeg? ( media-video/ffmpeg:0= )
 	system-icu? ( dev-libs/icu:= )
 	widgets? ( ~dev-qt/qtwidgets-${PV} )
+	examples? (
+		~dev-qt/qtquickcontrols2-${PV}
+	)
 "
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
@@ -71,6 +75,10 @@ DEPEND="${RDEPEND}
 	sys-devel/bison
 	pax_kernel? ( sys-apps/elfix )
 "
+
+QT5_EXAMPLES_SUBDIRS=(
+	examples
+)
 
 src_prepare() {
 	use pax_kernel && PATCHES+=( "${FILESDIR}/${PN}-5.9.0-paxmark-mksnapshot.patch" )

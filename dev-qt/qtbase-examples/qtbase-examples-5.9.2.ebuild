@@ -3,33 +3,33 @@
 
 EAPI=6
 QT5_MODULE="qtbase"
-VIRTUALX_REQUIRED="test"
 inherit qt5-build
 
-DESCRIPTION="OpenGL support library for the Qt5 framework (deprecated)"
+DESCRIPTION="Examples for cross-platform application development framework"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
 fi
 
-IUSE="examples gles2"
+IUSE="gles2"
 
 DEPEND="
 	~dev-qt/qtcore-${PV}
 	~dev-qt/qtgui-${PV}[gles2=]
 	~dev-qt/qtwidgets-${PV}[gles2=]
-	virtual/opengl
+	~dev-qt/qtnetwork-${PV}
+	~dev-qt/qtconcurrent-${PV}
+	~dev-qt/qtdbus-${PV}
+	~dev-qt/qtopengl-${PV}[gles2=]
+	~dev-qt/qtprintsupport-${PV}
+	~dev-qt/qtsql-${PV}
+	~dev-qt/qttest-${PV}
+	~dev-qt/qtxml-${PV}
 "
 RDEPEND="${DEPEND}"
 
-PDEPEND="
-	examples? (
-		~dev-qt/qtbase-examples-${PV}[gles2=]
-	)
-"
-
 QT5_TARGET_SUBDIRS=(
-	src/opengl
+	examples
 )
 
 src_configure() {

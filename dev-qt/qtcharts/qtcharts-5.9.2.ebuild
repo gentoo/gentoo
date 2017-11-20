@@ -11,7 +11,7 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~x86"
 fi
 
-IUSE="qml"
+IUSE="examples qml"
 
 DEPEND="
 	~dev-qt/qtcore-${PV}
@@ -21,9 +21,14 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+QT5_EXAMPLES_SUBDIRS=(
+	examples/charts
+)
+
 src_prepare() {
 	qt_use_disable_mod qml quick \
-		src/src.pro
+		src/src.pro \
+		examples/charts/charts.pro
 
 	qt5-build_src_prepare
 }

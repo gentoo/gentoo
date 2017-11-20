@@ -12,7 +12,7 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 fi
 
 # keep IUSE defaults in sync with qtgui
-IUSE="gles2 gtk +png +xcb"
+IUSE="examples gles2 gtk +png +xcb"
 
 DEPEND="
 	~dev-qt/qtcore-${PV}
@@ -25,6 +25,12 @@ DEPEND="
 	)
 "
 RDEPEND="${DEPEND}"
+
+PDEPEND="
+	examples? (
+		~dev-qt/qtbase-examples-${PV}[gles2=]
+	)
+"
 
 QT5_TARGET_SUBDIRS=(
 	src/tools/uic

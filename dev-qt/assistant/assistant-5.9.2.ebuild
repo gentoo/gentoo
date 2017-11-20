@@ -11,7 +11,7 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~hppa ~ppc64 ~x86"
 fi
 
-IUSE="webkit"
+IUSE="examples webkit"
 
 DEPEND="
 	~dev-qt/qtcore-${PV}
@@ -27,6 +27,10 @@ RDEPEND="${DEPEND}"
 
 QT5_TARGET_SUBDIRS=(
 	src/assistant/assistant
+)
+
+QT5_EXAMPLES_SUBDIRS=(
+	examples/assistant
 )
 
 src_prepare() {

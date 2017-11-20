@@ -1,0 +1,29 @@
+From ebb346cf768db351bab0d51acc34f0b03b1971b5 Mon Sep 17 00:00:00 2001
+From: "i.Dark_Templar" <darktemplar@dark-templar-archives.net>
+Date: Tue, 10 Oct 2017 20:50:50 +0300
+Subject: [PATCH] qtbase-5.9.2: Always allow to make examples.
+
+---
+ mkspecs/features/qt_example_installs.prf | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/mkspecs/features/qt_example_installs.prf b/mkspecs/features/qt_example_installs.prf
+index 668669e..d0c05b7 100644
+--- a/mkspecs/features/qt_example_installs.prf
++++ b/mkspecs/features/qt_example_installs.prf
+@@ -29,12 +29,6 @@ probase = $$relative_path($$_PRO_FILE_PWD_, $$dirname(_QMAKE_CONF_)/examples)
+ isEmpty(probase)|contains(probase, ^\\..*): \
+     return()
+ 
+-isEmpty(_QMAKE_CACHE_) {
+-    !equals(OUT_PWD, $$_PRO_FILE_PWD_): \
+-        return()
+-    error("You cannot build examples inside the Qt source tree, except as part of a proper Qt build.")
+-}
+-
+ contains(TEMPLATE, "vc.*"): \
+     return()
+ 
+-- 
+2.13.6
+
