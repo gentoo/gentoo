@@ -8533,7 +8533,7 @@ dev-python/python-efl 1.17.0 1.18.0: Python bindings for Enlightenment Fundation
 dev-python/python-engineio 1.4.0 1.7.0: Python implementation of the Engine.IO realtime server.
 dev-python/python-etcd 0.3.2 0.3.3 0.4.4 0.4.5: A python client for etcd
 dev-python/python-ethtool 0.11: Ethernet settings python bindings
-dev-python/python-evdev 0.4.3 0.4.5 0.6.1: Python library for evdev bindings
+dev-python/python-evdev 0.6.1 0.7.0: Python library for evdev bindings
 dev-python/python-eventlib 0.2.1: Coroutine-based networking library
 dev-python/python-exconsole 0.1.5: Emergency/postmortem Python console
 dev-python/python-fastcgi 1.1-r1: Interface to OpenMarket's FastCGI C Library/SDK
