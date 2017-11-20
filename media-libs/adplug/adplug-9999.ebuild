@@ -12,7 +12,7 @@ if [[ ${PV} == *9999 ]]; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="https://github.com/adplug/adplug.git"
 else
-	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+	SRC_URI="https://github.com/adplug/${PN}/releases/download/${P}/${P}.tar.bz2"
 	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
 fi
 
