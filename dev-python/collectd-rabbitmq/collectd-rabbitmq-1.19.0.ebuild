@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5} )
+PYTHON_COMPAT=( python2_7 )
 
 inherit distutils-r1
 
@@ -16,6 +16,6 @@ LICENSE="Apache-2.0"
 SLOT="0"
 
 DEPEND="
-	app-admin/collectd
 	net-misc/rabbitmq-server
+	app-admin/collectd[collectd_plugins_python]
 	dev-python/setuptools[${PYTHON_USEDEP}]"
