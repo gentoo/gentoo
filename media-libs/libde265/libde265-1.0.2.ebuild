@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,17 +14,18 @@ SRC_URI="https://github.com/strukturag/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.g
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="debug qt4 qt5 static-libs cpu_flags_x86_sse tools"
+IUSE="debug qt5 static-libs cpu_flags_x86_sse"
 
 DEPEND="
-	qt4? ( dev-qt/qtgui:4 dev-qt/qtcore:4 )
-	qt5? ( dev-qt/qtgui:5 dev-qt/qtcore:5 dev-qt/qtwidgets:5 )
 	media-libs/libsdl
 	virtual/ffmpeg
+	qt5? (
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtwidgets:5
+	)
 "
 RDEPEND="${DEPEND}"
-
-REQUIRED_USE="tools? ( || ( qt4 qt5 ) )"
 
 src_prepare() {
 	sed -ri 's/(PIX_FMT_)/AV_\1/g' sherlock265/VideoDecoder.cc || die
@@ -38,8 +39,8 @@ src_configure() {
 		$(use_enable debug log-info)
 		$(use_enable debug log-debug)
 		$(use_enable debug log-trace)
-		$(use_enable tools dec265)
-		$(use_enable tools sherlock265)
+		$(use_enable qt5 dec265)
+		$(use_enable qt5 sherlock265)
 		--disable-silent-rules
 		--enable-log-error
 	)
