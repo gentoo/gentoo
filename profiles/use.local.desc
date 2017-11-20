@@ -4146,7 +4146,6 @@ media-libs/libcanberra:gtk3 - Enables building of gtk+3 helper library, gtk+3 ru
 media-libs/libcanberra:pulseaudio - Enables PulseAudio sound driver that should be able to support positional event sounds. This is the preferred choice for best sound events experience and picked by default if compiled in and possible to use at runtime.
 media-libs/libcanberra:sound - Install x11-themes/sound-theme-freedesktop to get sounds on Gnome and Xfce.
 media-libs/libcanberra:tdb - Enables Trivial Database support for caching purposes.
-media-libs/libde265:tools - Install addtional tools, require USE=qt4 or qt5
 media-libs/libextractor:archive - Enable archive support using app-arch/libarchive
 media-libs/libextractor:gsf - Enable OLE2 (MS Office) plug-in support using gnome-extra/libgsf
 media-libs/libextractor:magic - Enable magic support using sys-apps/file

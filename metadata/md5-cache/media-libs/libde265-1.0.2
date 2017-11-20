@@ -1,14 +1,13 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=qt4? ( dev-qt/qtgui:4 dev-qt/qtcore:4 ) qt5? ( dev-qt/qtgui:5 dev-qt/qtcore:5 dev-qt/qtwidgets:5 ) media-libs/libsdl virtual/ffmpeg >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=media-libs/libsdl virtual/ffmpeg qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Open h.265 video codec implementation
 EAPI=5
 HOMEPAGE=https://github.com/strukturag/libde265
-IUSE=debug qt4 qt5 static-libs cpu_flags_x86_sse tools abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
+IUSE=debug qt5 static-libs cpu_flags_x86_sse abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
 KEYWORDS=amd64 x86
 LICENSE=GPL-3
-RDEPEND=qt4? ( dev-qt/qtgui:4 dev-qt/qtcore:4 ) qt5? ( dev-qt/qtgui:5 dev-qt/qtcore:5 dev-qt/qtwidgets:5 ) media-libs/libsdl virtual/ffmpeg
-REQUIRED_USE=tools? ( || ( qt4 qt5 ) )
+RDEPEND=media-libs/libsdl virtual/ffmpeg qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 )
 SLOT=0
 SRC_URI=https://github.com/strukturag/libde265/archive/v1.0.2.tar.gz -> libde265-1.0.2.tar.gz
 _eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	autotools-multilib	f4848d9634439c7203cb7dd3b9650fff	autotools-utils	5a4611dfba155b1659528663fad4cd5e	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	eed53a6313267c9fbcd35fc384bd0087	multilib-minimal	9139c3a57e077cb8e0d0f73ceb080b89	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=0ddb174537d0d6f64db4fb0db844a104
+_md5_=f3c4690e10b306a48ad721d6e4eb92fd
