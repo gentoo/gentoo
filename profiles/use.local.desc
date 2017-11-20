@@ -1282,6 +1282,8 @@ dev-ada/gtkada:gnat_2016 - Compile with dev-lang/gnat-gpl-2016
 dev-ada/gtkada:gnat_2017 - Compile with dev-lang/gnat-gpl-2017
 dev-ada/gtkada:shared - Build gtkada as shared library
 dev-ada/gtkada:static - Build gtkada as static library
+dev-ada/libadalang:gnat_2016 - Compile with dev-lang/gnat-gpl-2016
+dev-ada/libadalang:gnat_2017 - Compile with dev-lang/gnat-gpl-2017
 dev-ada/xmlada:gnat_2016 - Compile with dev-lang/gnat-gpl-2016
 dev-ada/xmlada:gnat_2017 - Compile with dev-lang/gnat-gpl-2017
 dev-ada/xmlada:shared - Build shared library
