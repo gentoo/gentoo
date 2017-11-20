@@ -2,15 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils git-r3
+inherit eutils
 
 DESCRIPTION="Monitor and do event correlation"
 HOMEPAGE="http://nodebrain.sourceforge.net/"
-EGIT_REPO_URI="https://github.com/trettevik/nodebrain-nb"
+SRC_URI="mirror://sourceforge/nodebrain/nodebrain-${PV}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="static-libs"
 
 CDEPEND="
@@ -31,12 +31,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.8.14-include.patch
 	"${FILESDIR}"/${PN}-0.9.04-include.patch
 )
-
-src_prepare() {
-	default
-
-	eautoreconf
-}
 
 src_configure() {
 	econf \
