@@ -55,11 +55,3 @@ media-sound/pulseaudio gnome
 
 # Required by kde-frameworks/kactivities
 sys-libs/zlib minizip
-
-# FIXME: unnecessary REQUIRED_USE ^^ ( qt4 qt5 )
-<dev-python/qscintilla-python-2.10 -qt4
-<x11-libs/qscintilla-2.10 -qt4
-
-# FIXME: REQUIRED_USE conflicts: qt5? ( !qt4 )
->=app-crypt/pinentry-0.9.6-r5 -qt4
->=media-libs/opencv-2.4.12-r1 -qt4
