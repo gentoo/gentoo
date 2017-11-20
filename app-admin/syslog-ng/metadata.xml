@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>mr_bones_@gentoo.org</email>
-		<name>Michael Sterrett</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="amqp">Enable support for AMQP destinations</flag>
 		<flag name="smtp">Enable support for SMTP destinations</flag>
