@@ -9,7 +9,7 @@ libbtrfs_soname=0
 
 if [[ ${PV} != 9999 ]]; then
 	MY_PV=v${PV}
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 	SRC_URI="https://www.kernel.org/pub/linux/kernel/people/kdave/${PN}/${PN}-${MY_PV}.tar.xz"
 	S="${WORKDIR}"/${PN}-${MY_PV}
 else
@@ -83,8 +83,8 @@ src_configure() {
 		--bindir="${EPREFIX}"/sbin
 		$(use_enable convert)
 		$(use_enable elibc_glibc backtrace)
-		--with-convert=ext2$(usex reiserfs ',reiserfs' '')
 		$(use_enable zstd)
+		--with-convert=ext2$(usex reiserfs ',reiserfs' '')
 	)
 	econf "${myeconfargs[@]}"
 }

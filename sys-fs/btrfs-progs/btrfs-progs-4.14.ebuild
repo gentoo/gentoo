@@ -83,6 +83,7 @@ src_configure() {
 		--bindir="${EPREFIX}"/sbin
 		$(use_enable convert)
 		$(use_enable elibc_glibc backtrace)
+		$(use_enable zstd)
 		--with-convert=ext2$(usex reiserfs ',reiserfs' '')
 	)
 	econf "${myeconfargs[@]}"
