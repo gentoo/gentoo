@@ -106,10 +106,7 @@ MY_P="${P/_}"
 [[ ${PV} == *9999* ]] || \
 S="${WORKDIR}/${MY_P^}"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-fts3-tokenizer.patch
-	"${FILESDIR}"/${PN}-qt5-lconvert.patch
-)
+PATCHES=( "${FILESDIR}"/${PN}-fts3-tokenizer.patch )
 
 src_prepare() {
 	l10n_find_plocales_changes "src/translations" "" ".po"
