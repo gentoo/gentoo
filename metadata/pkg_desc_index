@@ -12665,7 +12665,7 @@ media-gfx/apngasm 2.7 2.91: create an APNG from multiple PNG files
 media-gfx/apngdis 2.9: extract PNG frames from an APNG
 media-gfx/apngopt 1.4: optimize APNG images
 media-gfx/aqsis 1.8.2: Open source RenderMan-compliant 3D rendering solution
-media-gfx/argyllcms 1.7.0 1.8.2 1.8.3 1.9.1 1.9.2: Open source, ICC compatible color management system
+media-gfx/argyllcms 1.9.2 2.0.0: Open source, ICC compatible color management system
 media-gfx/arss 0.2.3 0.2.3-r1: Analysis & Resynthesis Sound Spectrograph
 media-gfx/asymptote 2.32 2.41-r1: A vector graphics language that provides a framework for technical drawing
 media-gfx/autopano-sift-C 2.5.1: SIFT algorithm for automatic panorama creation in C
@@ -18501,7 +18501,7 @@ www-servers/lighttpd 1.4.42 1.4.43 1.4.44 1.4.45 1.4.47 9999: Lightweight high-p
 www-servers/mongoose 5.6: easy to use web server
 www-servers/mongrel2 1.11.0 1.11.0-r1: A language agnostic web server focused on web applications
 www-servers/monkeyd 1.6.9-r1 9999: A small, fast, and scalable web server
-www-servers/nginx 1.12.1 1.12.2 1.12.2-r1 1.13.3 1.13.4 1.13.5 1.13.6 1.13.6-r1: Robust, small and high performance http and reverse proxy server
+www-servers/nginx 1.12.1 1.12.2 1.12.2-r1 1.13.3 1.13.4 1.13.5 1.13.6 1.13.6-r1 1.13.7: Robust, small and high performance http and reverse proxy server
 www-servers/ocsigenserver 2.8 9999: Ocaml-powered webserver and framework for dynamic web programming
 www-servers/pathod 0.10 0.11.1 0.12.0: A collection of pathological tools for testing and torturing HTTP clients and servers
 www-servers/pound 2.6 2.7d 2.7f 2.7f-r1: A http/https reverse-proxy and load-balancer
