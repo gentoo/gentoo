@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils gnome2-utils xdg
+inherit eutils gnome2-utils xdg java-pkg-2
 
 MY_COMMIT_HASH="7d5ac993d3f88f6701f56edbfe325d86afcaad87"
 
@@ -242,6 +242,7 @@ IUSE=""
 RESTRICT="bindist"
 DEPEND="dev-java/oracle-jdk-bin[javafx]
 	>=dev-java/gradle-bin-3.0"
+
 # Requires oracle-jdk/jre-bin because there is no openjfx ebuild as of now
 RDEPEND="|| (
 		dev-java/oracle-jre-bin[javafx]
@@ -249,6 +250,10 @@ RDEPEND="|| (
 	)"
 
 S="${WORKDIR}/${PN}-${MY_COMMIT_HASH}/"
+
+JAVA_PKG_WANT_BUILD_VM="oracle-jdk-bin-1.8"
+JAVA_PKG_WANT_SOURCE="1.8"
+JAVA_PKG_WANT_TARGET="1.8"
 
 # Override the repositories with our local maven repository
 # so that it doesn't attemp to fetch from the network
