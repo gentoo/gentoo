@@ -1,0 +1,165 @@
+--- gps-9999/aclocal.m4.old	2017-05-13 21:59:20.129039064 +0200
++++ gps-9999/aclocal.m4	2017-05-13 22:02:12.637234659 +0200
+@@ -37,7 +37,7 @@
+   HAVE_GNAT_PROJECT_$1=yes
+ else
+   # Try with "gnatls", in case gprls was not available
+-  if AC_TRY_COMMAND([gnat ls -Pconftest.gpr system.ads > /dev/null 2>conftest.out])
++  if AC_TRY_COMMAND([@GNAT@ ls -Pconftest.gpr system.ads > /dev/null 2>conftest.out])
+   then
+     HAVE_GNAT_PROJECT_$1=yes
+   else
+@@ -156,7 +156,7 @@
+ 
+ AC_DEFUN(AM_PATH_GNAT,
+ [
+-   AC_PATH_PROG(GNATMAKE, gnatmake, no)
++   AC_PATH_PROG(GNATMAKE, @GNATMAKE@, no)
+ 
+    if test x$GNATMAKE = xno ; then
+       AC_MSG_ERROR(I could not find gnatmake. See the file 'INSTALL' for more details.)
+@@ -279,7 +279,7 @@
+     AC_MSG_RESULT($GTK_PREFIX $GLIB_PREFIX $ATK_PREFIX $PANGO_PREFIX $CAIRO_PREFIX)
+   fi
+ 
+-  AC_PATH_PROG(GNATDRV, gnat, no)
++  AC_PATH_PROG(GNATDRV, @GNAT@, no)
+   min_gtk_version=ifelse([$1], ,2.0.0,$1)
+   AC_MSG_CHECKING(for GtkAda - version >= $min_gtk_version)
+   GTKADA_PRJ=`$GNATDRV ls -vP1 -Pgtkada 2>&1 | grep gtkada.gpr | grep Parsing | cut -d'"' -f2 | head -1`
+--- gps-gps-17.0/templates_parser/templates_parser.gpr.old	2017-05-18 21:34:42.892039427 +0200
++++ gps-gps-17.0/templates_parser/templates_parser.gpr	2017-05-18 21:35:16.661512990 +0200
+@@ -55,7 +55,7 @@
+ 
+    end Naming;
+ 
+-   Common_Options := ("-gnat05");
++   Common_Options := ("-gnat05", "-fPIC");
+    --  Common options used for the Debug and Release modes
+ 
+    Debug_Options :=
+--- gps-gps-17.0/shared.gpr.in.old	2017-05-18 21:35:56.475892075 +0200
++++ gps-gps-17.0/shared.gpr.in	2017-05-18 21:36:24.972447550 +0200
+@@ -24,7 +24,7 @@
+    end IDE;
+ 
+    package Compiler is
+-      Common := ("-g", "-gnat12");
++      Common := ("-g", "-gnat12", "-fPIC");
+       Optimize := ();
+ 
+       case OS is
+@@ -83,6 +83,7 @@
+          when "false" =>
+             null;
+       end case;
++      for Driver use External ("CC", "gcc");
+    end Linker;
+ 
+ end Shared;
+--- gps-gps-17.0/common/common_with_xmlada.gpr.in.old	2017-05-18 21:37:25.302506085 +0200
++++ gps-gps-17.0/common/common_with_xmlada.gpr.in	2017-05-18 21:37:58.472988222 +0200
+@@ -13,7 +13,7 @@
+       for Switches ("Ada") use Shared.Compiler'Switches ("Ada");
+       for Switches ("C") use Shared.Compiler'Switches ("C");
+       for Switches ("test_htables.adb") use ("-g", "-O2", "-gnatwue");
+-      for Switches ("s-memory.adb") use ("-g", "-O2", "-gnatpg");
++      for Switches ("s-memory.adb") use ("-g", "-O2", "-gnatpg", "-fPIC");
+ 
+       No_Checks := ("-g", "-O2", "-gnat2012", "-gnatpn");
+ 
+--- gps-gps-17.0/common/common_no_xmlada.gpr.in.old	2017-05-18 21:37:31.406410812 +0200
++++ gps-gps-17.0/common/common_no_xmlada.gpr.in	2017-05-18 21:38:14.796733359 +0200
+@@ -12,7 +12,7 @@
+       for Switches ("Ada") use Shared.Compiler'Switches ("Ada");
+       for Switches ("C") use Shared.Compiler'Switches ("C");
+       for Switches ("test_htables.adb") use ("-g", "-O2", "-gnatwue");
+-      for Switches ("s-memory.adb") use ("-g", "-O2", "-gnatpg");
++      for Switches ("s-memory.adb") use ("-g", "-O2", "-gnatpg", "-fPIC");
+ 
+       No_Checks := ("-g", "-O2", "-gnat2012", "-gnatpn");
+ 
+--- gps-gps-17.0/widgets/widgets.gpr.old	2017-05-18 22:26:05.117847006 +0200
++++ gps-gps-17.0/widgets/widgets.gpr	2017-05-18 22:21:01.646368091 +0200
+@@ -12,6 +12,7 @@
+    package Compiler extends Shared.Compiler is
+       for Switches ("C") use
+         Shared.Compiler'Switches ("C") & GnatColl_Gtk.Gtk_Include;
++      for Driver ("C") use External ("CC", "gcc");
+    end Compiler;
+ 
+    package IDE renames Shared.IDE;
+--- gps-gps-17.0/cli/Makefile.old	2017-05-19 08:07:44.591042479 +0200
++++ gps-gps-17.0/cli/Makefile	2017-05-19 08:08:50.086991123 +0200
+@@ -1,8 +1,9 @@
+ GPRBUILD=gprbuild
+ GPRCLEAN=gprclean
++GPRBUILD_FLAGS=0
+ 
+ all default:
+-	$(GPRBUILD) -p -Pcli
++	$(GPRBUILD) $(GPRBUILD_FLAGS) -p -Pcli
+ 
+ clean:
+ 	$(GPRCLEAN) -q -r -Pcli
+--- gps-gps-17.0/gps/gps.gpr.old	2017-05-19 09:24:19.438123599 +0200
++++ gps-gps-17.0/gps/gps.gpr	2017-05-19 09:24:58.639492518 +0200
+@@ -75,7 +75,7 @@
+       end case;
+       for Switches ("Ada") use Linker'Switches ("Ada")
+          & Shared.Linker'Switches ("Ada");
+-
++      for Driver use External ("CC", "gcc");
+       --  for Switches ("Ada") use ("-lgmem");
+       --  for Switches ("Ada") use ("-pg");
+    end Linker;
+--- gps-gps-17.0/testsuite/Makefile.old	2017-05-19 11:08:48.966913663 +0200
++++ gps-gps-17.0/testsuite/Makefile	2017-05-19 11:06:17.245366714 +0200
+@@ -1,5 +1,6 @@
+ GPRBUILD=gprbuild
+ GPRCLEAN=gprclean
++GPRBUILD_FLAGS=
+ 
+ SYS := $(shell gcc -dumpmachine)
+ ifeq ($(OS),Windows_NT)
+@@ -14,7 +14,7 @@
+ endif
+ 
+ all default: package
+-	$(GPRBUILD) -P testsuite_drivers.gpr -m -XOS=${OS} -j0 -XLIBRARY_TYPE=relocatable -XXMLADA_BUILD=relocatable
++	$(GPRBUILD) $(GPRBUILD_FLAGS) -P testsuite_drivers.gpr -m -XOS=${OS} -j0 -XLIBRARY_TYPE=relocatable -XXMLADA_BUILD=relocatable
+ 
+ package:
+ 	mkdir -p share/doc
+--- gps-gps-17.0/testsuite/testsuite_drivers.gpr.old	2017-05-19 11:21:20.645705481 +0200
++++ gps-gps-17.0/testsuite/testsuite_drivers.gpr	2017-05-19 11:15:42.163206405 +0200
+@@ -10,6 +10,10 @@
+    for Object_Dir use "obj";
+    for Exec_Dir use "bin";
+ 
++   package Compiler is
++      for Switches ("Ada") use ("-fPIC");
++   end Compiler;
++
+    package Builder is
+       for Switches ("Ada") use ("-gnat12", "-ws", "-g", "-j0", "-m", "-gnaty");
+    end Builder;
+--- gps-gps-17.0/Makefile.in.old	2017-05-19 11:49:47.172018411 +0200
++++ gps-gps-17.0/Makefile.in	2017-05-19 11:50:24.653412280 +0200
+@@ -10,7 +10,7 @@
+ INSTALL_PROGRAM = @INSTALL_PROGRAM@
+ INSTALL_DATA    = @INSTALL_DATA@
+ GNATCOLL_INSTALL  = @GNATCOLL_INSTALL@
+-prefix          = @prefix@
++prefix          = $(DESTDIR)@prefix@
+ bindir          = $(prefix)/bin
+ sharedir        = $(prefix)/share
+ examplesdir     = $(prefix)/share/examples/gps
+--- gps-gps-17.0/docs/Makefile.in.old	2017-05-19 11:54:52.805076624 +0200
++++ gps-gps-17.0/docs/Makefile.in	2017-05-19 11:55:24.332566945 +0200
+@@ -1,4 +1,4 @@
+-prefix = @prefix@
++prefix = $(DESTDIR)@prefix@
+ docdir = $(prefix)/share/doc/gps
+ sharedir = $(prefix)/share/gps
+ 
