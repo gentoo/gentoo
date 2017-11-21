@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (21 Nov 2017)
+# Totally broken, depends on dead Qt4. Use sci-mathematics/octave[gui].
+# Masked for removal in 30 days. Bugs #598930, #615284, #614582, #631524
+sci-mathematics/qtoctave
+
 # Alice Ferrazzi <alicef@gentoo.org> (21 Nov 2017)
 # A regression in kernel 4.14.0
 # Data corruption issue that affects at minimum bcache. 
@@ -197,26 +202,6 @@ sys-devel/autoconf:2.65
 sys-devel/autoconf:2.67
 sys-devel/autoconf:2.68
 
-# Andreas Sturmlechner <asturm@gentoo.org> (22 Oct 2017)
-# Dead upstream, depends on dead kdelibs4/Qt4.
-# Masked for removal in 30 days. Bug #634388
-media-sound/kstreamripper
-
-# Andreas Sturmlechner <asturm@gentoo.org> (22 Oct 2017)
-# Dead upstream, depends on dead kdelibs4/Qt4.
-# Masked for removal in 30 days. Bug #634384
-kde-misc/kcollectd
-
-# Andreas Sturmlechner <asturm@gentoo.org> (22 Oct 2017)
-# Dead upstream, depends on dead kdelibs4/Qt4.
-# Masked for removal in 30 days. Bug #579518
-media-sound/kmid
-
-# Andreas Sturmlechner <asturm@gentoo.org> (22 Oct 2017)
-# Reverse-deps on dead, masked Qt4WebKit.
-# Masked for removal in 30 days. Bug #623928
-net-im/qutim
-
 # Kent Fredric <kentnl@gentoo.org> (21 Oct 2017)
 # Has not been usable since we cleaned the last Moose it worked on back
 # in 2012. Removal in 30 days. Bug #634938
@@ -228,28 +213,6 @@ dev-perl/File-Stat-Moose
 # to name a few). They remain in tree only for old nvidia-drivers 96 and 173.
 <x11-base/xorg-server-1.19.2
 <x11-base/xorg-drivers-1.19
-
-# Andreas Sturmlechner <asturm@gentoo.org> (21 Oct 2017)
-# Dead upstream, depends on dead kdelibs4/Qt4.
-# Masked for removal in 30 days. Bug #629018
-sci-calculators/keurocalc
-
-# Andreas Sturmlechner <asturm@gentoo.org> (21 Oct 2017)
-# Dead upstream, depends on dead kdelibs4/Qt4.
-# Masked for removal in 30 days. Bug #629018
-net-misc/knutclient
-
-# Andreas Sturmlechner <asturm@gentoo.org> (21 Oct 2017)
-# Dead upstream, depends on dead kdelibs4/Qt4.
-# Possible KF5-based alternative is media-sound/soundkonverter.
-# Masked for removal in 30 days. Bug #634386
-media-sound/konvertible
-
-# Andreas Sturmlechner <asturm@gentoo.org> (21 Oct 2017)
-# Dead upstream, depends on dead kdelibs4/Qt4, security liability.
-# If at all necessary we use kde-plasma/kde-cli-tools[kdesu]
-# for that purpose. Masked for removal in 30 days. Bug #634382
-kde-misc/kdesudo
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (20 Oct 2017)
 # Doesn't build with glibc-2.25, doesn't build, needs a

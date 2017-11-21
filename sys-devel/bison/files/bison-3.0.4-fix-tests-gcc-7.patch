@@ -1,0 +1,151 @@
+commit 952416114729b95209dccfc4edacfc1ff13b4e82
+Author: Akim Demaille <akim@lrde.epita.fr>
+Date:   Mon Jan 26 18:23:12 2015 +0100
+
+    tests: c++: fix symbol lookup issue
+    
+    Sun C 5.13 SunOS_sparc 2014/10/20 reports errors on tests 430-432.
+    
+    Reported by Dennis Clarke.
+    <http://lists.gnu.org/archive/html/bug-bison/2015-01/msg00087.html>
+    
+    * tests/c++.at (Variants): Be sure to emit operator<< before using it:
+    use "%code top" rather than "%code".
+    Prefer std::vector to std::list.
+    Do not define anything in std::, to avoid undefined behavior.
+
+diff --git a/tests/c++.at b/tests/c++.at
+index 55d7d40..60292f4 100644
+--- a/tests/c++.at
++++ b/tests/c++.at
+@@ -96,7 +96,7 @@ AT_SETUP([C++ Variant-based Symbols])
+ AT_KEYWORDS([variant])
+ 
+ AT_BISON_OPTION_PUSHDEFS([%skeleton "lalr1.cc" %debug $1])
+-# Store strings and integers in a list of strings.
++# Store strings and integers in a vector of strings.
+ AT_DATA_GRAMMAR([list.y],
+ [[%skeleton "lalr1.cc"
+ %define api.value.type variant
+@@ -114,20 +114,20 @@ AT_DATA_GRAMMAR([list.y],
+ }
+ 
+ %token <int> INT "int"
+-%type < std::list<int> > exp
++%type < std::vector<int> > exp
+ 
+ %printer { yyo << $$; } <int>
+ %printer
+   {
+-    for (std::list<int>::const_iterator i = $$.begin (); i != $$.end (); ++i)
++    for (std::vector<int>::const_iterator i = $$.begin (); i != $$.end (); ++i)
+       {
+         if (i != $$.begin ())
+           yyo << ", ";
+         yyo << *i;
+       }
+-  } < std::list<int> >
++  } < std::vector<int> >
+ 
+-%code requires { #include <list> }
++%code requires { #include <vector> }
+ %code { int yylex (yy::parser::semantic_type* yylval); }
+ 
+ %%
+@@ -185,7 +185,7 @@ m4_pushdef([AT_TEST],
+ [AT_SETUP([Variants $1])
+ 
+ AT_BISON_OPTION_PUSHDEFS([%debug $1])
+-# Store strings and integers in a list of strings.
++# Store strings and integers in a vector of strings.
+ AT_DATA_GRAMMAR([list.y],
+ [[%debug
+ %define api.value.type variant
+@@ -194,29 +194,25 @@ AT_DATA_GRAMMAR([list.y],
+ 
+ %code requires // code for the .hh file
+ {
+-#include <list>
++#include <vector>
+ #include <string>
+-typedef std::list<std::string> strings_type;
++typedef std::vector<std::string> strings_type;
+ }
+ 
+-%code // code for the .cc file
++%code top // code for the .cc file.
+ {
+ #include <cstdlib> // abort, getenv
+ #include <iostream>
++#include <vector>
+ #include <sstream>
++#include <string>
+ 
+-  namespace yy
+-  {
+-    static]AT_TOKEN_CTOR_IF([[
+-    parser::symbol_type yylex ()]], [[
+-    parser::token_type yylex (parser::semantic_type* yylval]AT_LOCATION_IF([,
+-                              parser::location_type* yylloc])[)]])[;
+-  }
+ 
+-  // Printing a list of strings (for %printer).
+-  // Koening look up will look into std, since that's an std::list.
+-  namespace std
++  typedef std::vector<std::string> strings_type;
++
++  namespace yy
+   {
++    // Must be available early, as is used in %destructor.
+     std::ostream&
+     operator<<(std::ostream& o, const strings_type& s)
+     {
+@@ -230,16 +226,27 @@ typedef std::list<std::string> strings_type;
+       return o << ')';
+     }
+   }
++}
+ 
+-  // Conversion to string.
+-  template <typename T>
+-    inline
+-    std::string
+-    to_string (const T& t)
++%code // code for the .cc file.
++{
++  namespace yy
+   {
+-    std::ostringstream o;
+-    o << t;
+-    return o.str ();
++    static]AT_TOKEN_CTOR_IF([[
++    parser::symbol_type yylex ()]], [[
++    parser::token_type yylex (parser::semantic_type* yylval]AT_LOCATION_IF([,
++                              parser::location_type* yylloc])[)]])[;
++
++    // Conversion to string.
++    template <typename T>
++      inline
++      std::string
++      to_string (const T& t)
++    {
++      std::ostringstream o;
++      o << t;
++      return o.str ();
++    }
+   }
+ }
+ 
+@@ -252,10 +259,10 @@ typedef std::list<std::string> strings_type;
+ // Using the template type to exercize its parsing.
+ // Starting with :: to ensure we don't output "<::" which starts by the
+ // digraph for the left square bracket.
+-%type <::std::list<std::string>> list;
++%type <::std::vector<std::string>> list;
+ 
+ %printer { yyo << $$; }
+-  <int> <::std::string> <::std::list<std::string>>;
++  <int> <::std::string> <::std::vector<std::string>>;
+ %destructor { std::cerr << "Destroy: " << $$ << '\n'; } <*>;
+ %destructor { std::cerr << "Destroy: \"" << $$ << "\"\n"; } <::std::string>;
+ %%

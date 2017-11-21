@@ -32,6 +32,14 @@ src_prepare(){
 }
 
 multilib_src_configure() {
-	# Fool multilib-minimal to run ./configure in out-of-tree build
-	ECONF_SOURCE=${S} econf
+	local myconf=(
+		--enable-shared
+		--disable-static
+	)
+	ECONF_SOURCE=${S} econf "${myconf[@]}"
+}
+
+multilib_src_install_all() {
+	einstalldocs
+	find "${ED}" -name '*.la' -delete || die
 }
