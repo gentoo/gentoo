@@ -8340,7 +8340,7 @@ dev-python/pygcrypt 1.0.0: CFFI interface to dev-libs/libgcrypt
 dev-python/pygene 0.2.1-r1: Simple python genetic algorithms programming library
 dev-python/pygeocoder 1.2.5: Python wrapper for Google Geocoding API V3
 dev-python/pyghmi 1.0.22: A pure python implementation of IPMI protocol
-dev-python/pygit2 0.25.0 0.25.1 0.26.0: Python bindings for libgit2
+dev-python/pygit2 0.25.0 0.25.1 0.26.0 0.26.1: Python bindings for libgit2
 dev-python/pyglet 1.1.4-r2 1.2.4: Cross-platform windowing and multimedia library for Python
 dev-python/pygments 2.1.1 2.2.0: Pygments is a syntax highlighting package written in Python
 dev-python/pygobject 2.28.6-r55 3.22.0 3.24.1: GLib's GObject library bindings for Python
@@ -15049,7 +15049,7 @@ net-libs/uhttpmock 0.4.0 0.5.0 0.5.1: HTTP web service mocking library
 net-libs/vanessa-mcast 1.0.0: Multicast Helper Library
 net-libs/vanessa-socket 0.0.12 0.0.13: Simplifies TCP/IP socket operations
 net-libs/wandio 1.0.4: Library for transparent file I/O with compression
-net-libs/webkit-gtk 2.4.11-r1 2.4.11-r200 2.18.2: Open source web browser engine
+net-libs/webkit-gtk 2.4.11-r1 2.4.11-r200 2.18.2 2.18.3: Open source web browser engine
 net-libs/wvstreams 4.6.1-r3 4.6.1-r4 4.6.1-r5: A network programming library in C++
 net-libs/xrootd 4.4.0 4.5.0: Extended ROOT remote file server
 net-libs/zeromq 2.2.0 3.2.3 3.2.5 4.1.1 4.1.6 4.2.0-r1 4.2.1 4.2.2 4.2.2-r1 4.2.2-r2: A brokerless kernel
@@ -18452,7 +18452,7 @@ www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ and libcurl
 www-client/vivaldi 1.12.955.48_p1: A new browser for our friends
-www-client/vivaldi-snapshot 1.13.1008.19_p1 1.13.1008.21_p1: A new browser for our friends
+www-client/vivaldi-snapshot 1.13.1008.19_p1 1.13.1008.21_p1 1.13.1008.30_p1: A new browser for our friends
 www-client/w3m 0.5.3-r9: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r7 0.3.2_p24-r9: A variant of w3m with support for multiple character encodings
 www-client/weboob 0g 0h 9998 9999: Weboob (Web Outside of Browsers) provides several applications to interact with a lot of websites
