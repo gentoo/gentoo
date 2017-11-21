@@ -12099,7 +12099,7 @@ kde-apps/mailcommon 17.04.3 17.08.3: Common mail library
 kde-apps/mailimporter 17.04.3 17.08.3: Library to import mail from various sources
 kde-apps/marble 17.04.3 17.08.3: Virtual Globe and World Atlas to learn more about Earth
 kde-apps/mbox-importer 17.04.3 17.08.3: Import mbox email archives from various sources into Akonadi
-kde-apps/messagelib 17.04.3 17.08.3: Libraries for messaging functions
+kde-apps/messagelib 17.04.3 17.08.3 17.08.3-r1: Libraries for messaging functions
 kde-apps/minuet 17.04.3 17.08.3: A KDE Software for Music Education
 kde-apps/okteta 17.04.3 17.08.3: KDE hexeditor
 kde-apps/okular 17.04.3 17.08.3: Universal document viewer based on KDE Frameworks

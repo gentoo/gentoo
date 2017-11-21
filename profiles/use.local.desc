@@ -1072,6 +1072,7 @@ app-portage/eix:doc - Create description of the eix cache file additionally in h
 app-portage/eix:sqlite - Compile in support for portage's sqlite backend; to actually use it you need additional configuration of portage and eix
 app-portage/g-sorcery:bson - Support BSON file format for package DB
 app-portage/gemato:blake2 - Install dependencies needed for BLAKE2 hash functions
+app-portage/gemato:gpg - Install dependencies needed for OpenPGP signature verification support
 app-portage/gemato:sha3 - Install dependencies needed for SHA3 hash functions
 app-portage/layman:bazaar - Support dev-vcs/bzr based overlays
 app-portage/layman:cvs - Support dev-vcs/cvs based overlays
