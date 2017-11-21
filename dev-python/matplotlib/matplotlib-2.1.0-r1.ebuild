@@ -45,6 +45,7 @@ COMMON_DEPEND="
 	media-fonts/stix-fonts
 	media-libs/freetype:2
 	media-libs/libpng:0
+	python_targets_python2_7? ( dev-python/backports-functools-lru-cache[${PY2_USEDEP}] )
 	>=media-libs/qhull-2013
 	cairo? ( dev-python/cairocffi[${PYTHON_USEDEP}] )
 	gtk2? (
@@ -76,7 +77,6 @@ DEPEND="${COMMON_DEPEND}
 		media-gfx/graphviz[cairo]
 	)
 	test? (
-		dev-python/backports-functools-lru-cache[${PY2_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		>=dev-python/nose-0.11.1[${PYTHON_USEDEP}]
 		)"
