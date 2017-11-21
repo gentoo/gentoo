@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-MY_EXTRAS_VER="20171108-2050Z"
+MY_EXTRAS_VER="20171121-1518Z"
 SUBSLOT="18"
 MYSQL_PV_MAJOR="5.6"
 #fails to build with ninja
@@ -27,6 +27,7 @@ PATCHES=(
 	"${MY_PATCH_DIR}"/20009_all_mysql_myodbc_symbol_fix-5.6.patch
 #	"${MY_PATCH_DIR}"/20018_all_mysql-5.6.25-without-clientlibs-tools.patch
 	"${MY_PATCH_DIR}"/20027_all_mysql-5.5-perl5.26-includes.patch
+	"${MY_PATCH_DIR}"/20028_all_mysql-5.6-gcc7.patch
 	"${MY_PATCH_DIR}"/30000_all_mysql-cluster-multilib-property.patch
 )
 
