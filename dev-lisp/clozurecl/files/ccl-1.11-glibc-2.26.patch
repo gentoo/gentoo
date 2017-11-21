@@ -1,0 +1,41 @@
+diff -U2 -r ccl.orig/lisp-kernel/platform-linuxx8632.h ccl/lisp-kernel/platform-linuxx8632.h
+--- ccl.orig/lisp-kernel/platform-linuxx8632.h	2015-11-07 02:10:11.000000000 +0600
++++ ccl/lisp-kernel/platform-linuxx8632.h	2017-11-21 23:50:31.630113003 +0700
+@@ -21,5 +21,7 @@
+ #define PLATFORM_WORD_SIZE PLATFORM_WORD_SIZE_32
+ 
+-typedef struct ucontext ExceptionInformation;
++#include <ucontext.h>
++
++typedef ucontext_t ExceptionInformation;
+ 
+ #define MAXIMUM_MAPPABLE_MEMORY (9U<<28)
+diff -U2 -r ccl.orig/lisp-kernel/platform-linuxx8664.h ccl/lisp-kernel/platform-linuxx8664.h
+--- ccl.orig/lisp-kernel/platform-linuxx8664.h	2015-11-07 02:10:11.000000000 +0600
++++ ccl/lisp-kernel/platform-linuxx8664.h	2017-11-21 23:51:44.693114350 +0700
+@@ -21,5 +21,7 @@
+ #define PLATFORM_WORD_SIZE PLATFORM_WORD_SIZE_64
+ 
+-typedef struct ucontext ExceptionInformation;
++#include <ucontext.h>
++
++typedef ucontext_t ExceptionInformation;
+ 
+ #define MAXIMUM_MAPPABLE_MEMORY (512L<<30L)
+diff -U2 -r ccl.orig/lisp-kernel/x86-exceptions.c ccl/lisp-kernel/x86-exceptions.c
+--- ccl.orig/lisp-kernel/x86-exceptions.c	2015-11-07 02:10:11.000000000 +0600
++++ ccl/lisp-kernel/x86-exceptions.c	2017-11-21 23:55:00.816117965 +0700
+@@ -1678,5 +1678,5 @@
+ 	void  *puc;
+ 	siginfo_t info;
+-	struct ucontext uc;
++	ucontext_t uc;
+ 	struct _fpstate fpstate;
+ 	char retcode[8];
+@@ -2426,5 +2426,5 @@
+      change copy_ucontext().
+   */
+-  stack.ss_size -= sizeof(struct ucontext);
++  stack.ss_size -= sizeof(ucontext_t);
+ #endif
+   if (sigaltstack(&stack, NULL) != 0) {
