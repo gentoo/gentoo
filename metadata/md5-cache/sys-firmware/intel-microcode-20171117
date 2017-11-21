@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=initramfs? ( sys-apps/iucode_tool )
+DESCRIPTION=Intel IA32/IA64 microcode update data
+EAPI=6
+HOMEPAGE=http://inertiawar.com/microcode/ https://downloadcenter.intel.com/Detail_Desc.aspx?DwnldID=27337
+IUSE=initramfs monolithic +split-ucode
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=intel-ucode
+RDEPEND=!<sys-apps/microcode-ctl-1.17-r2
+REQUIRED_USE=|| ( initramfs monolithic split-ucode )
+SLOT=0
+SRC_URI=http://downloadmirror.intel.com/27337/eng/microcode-20171117.tgz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=f9dffaf81db5c29d235c1c08ae99a8ba
