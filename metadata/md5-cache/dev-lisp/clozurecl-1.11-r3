@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=>=dev-lisp/asdf-2.33-r3:=
+DESCRIPTION=Common Lisp implementation, derived from Digitool's MCL product
+EAPI=6
+HOMEPAGE=https://ccl.clozure.com
+IUSE=doc
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos
+LICENSE=LLGPL-2.1
+RDEPEND=>=dev-lisp/asdf-2.33-r3:=
+SLOT=0
+SRC_URI=x86? ( https://ccl.clozure.com/ftp/pub/release/1.11/ccl-1.11-linuxx86.tar.gz ) amd64? ( https://ccl.clozure.com/ftp/pub/release/1.11/ccl-1.11-linuxx86.tar.gz ) arm? ( https://ccl.clozure.com/ftp/pub/release/1.11/ccl-1.11-linuxarm.tar.gz ) x86-macos? ( https://ccl.clozure.com/ftp/pub/release/1.11/ccl-1.11-darwinx86.tar.gz ) x64-macos? ( https://ccl.clozure.com/ftp/pub/release/1.11/ccl-1.11-darwinx86.tar.gz ) x86-solaris? ( https://ccl.clozure.com/ftp/pub/release/1.11/ccl-1.11-solarisx86.tar.gz ) x64-solaris? ( https://ccl.clozure.com/ftp/pub/release/1.11/ccl-1.11-solarisx86.tar.gz ) doc? ( https://ccl.clozure.com/docs/ccl.html )
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	flag-o-matic	a6089a2a4027ae3da4a460dc87b21050	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=5d0d820b948d1898811b52117ff784f5
