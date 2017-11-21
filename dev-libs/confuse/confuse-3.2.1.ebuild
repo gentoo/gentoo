@@ -10,7 +10,7 @@ HOMEPAGE="http://www.nongnu.org/confuse/"
 SRC_URI="https://github.com/martinh/libconfuse/releases/download/v${PV}/${P}.tar.xz"
 
 LICENSE="ISC"
-SLOT="0/1.1.0"
+SLOT="0/2.0.0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
 
 IUSE="nls static-libs"
