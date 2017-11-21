@@ -11,7 +11,7 @@ SRC_URI="https://github.com/dvorka/hstr/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="Apache-2.0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="sys-libs/ncurses:0="
 
@@ -20,9 +20,7 @@ DEPEND="
 	virtual/pkgconfig"
 
 DOCS=( CONFIGURATION.md README.md )
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.23-tinfo.patch
-)
+PATCHES=( "${FILESDIR}/${P}-tinfo.patch" )
 
 src_prepare() {
 	default
