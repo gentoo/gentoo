@@ -31,7 +31,6 @@ src_prepare(){
 	eautoreconf
 }
 
-
 multilib_src_configure() {
 	local myconf=(
 		--enable-shared
