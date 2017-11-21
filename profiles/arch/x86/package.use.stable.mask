@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (21 Nov 2017)
+# Requires not yet stabilised media-libs/qtav
+media-gfx/digikam mediaplayer
+
 # Thomas Deutschmann <whissi@gentoo.org> (01 Oct 2017)
 # Stable mask dev-ruby/haml test till rails is stabilized.
 dev-ruby/haml test
