@@ -35,6 +35,7 @@ PATCHES=(
 	"${FILESDIR}"/regression_stacksequenceisodd.patch
 	"${FILESDIR}"/${PN}-asneeded.patch
 	"${FILESDIR}"/${PN}-gcc472-error.patch
+	"${FILESDIR}"/${PN}-fix_doc_install.patch
 )
 
 src_prepare() {
@@ -58,7 +59,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local mycmakeargs="${mycmakeargs}
+	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=ON
 		-DCMAKE_INSTALL_PREFIX=/
 		$(cmake-utils_use tiff DCMTK_WITH_TIFF)
@@ -67,7 +68,8 @@ src_configure() {
 		$(cmake-utils_use zlib DCMTK_WITH_ZLIB)
 		$(cmake-utils_use ssl DCMTK_WITH_OPENSSL)
 		$(cmake-utils_use doc DCMTK_WITH_DOXYGEN)
-		$(cmake-utils_use threads DCMTK_WITH_THREADS)"
+		$(cmake-utils_use threads DCMTK_WITH_THREADS)
+	)
 
 	cmake-utils_src_configure
 
