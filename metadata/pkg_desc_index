@@ -2856,6 +2856,7 @@ dev-ada/gnat_util 2016 2017: Provides access to GNAT compiler internals for AdaC
 dev-ada/gnatcoll 2016 2017: GNAT Component Collection
 dev-ada/gnatmem 2016 2017: Monitors dynamic allocation and deallocation activity in a program
 dev-ada/gprbuild 2016 2017: Multi-Language Management
+dev-ada/gps 2017: The GNAT Programming Studio
 dev-ada/gps-bin 2016: The GNAT Programming Studio
 dev-ada/gtkada 2016 2017: A complete Ada graphical toolkit
 dev-ada/libadalang 2017: high performance semantic engine for the Ada programming language
@@ -17536,7 +17537,7 @@ sys-cluster/ganglia 3.7.1-r1: A scalable distributed monitoring system for clust
 sys-cluster/ganglia-web 3.5.8-r1 3.5.10-r1: Web frontend for sys-cluster/ganglia
 sys-cluster/gasnet 1.26.4 1.26.4-r1 1.28.0 1.28.2 1.30.0: Networking middleware for partitioned global address space (PGAS) language
 sys-cluster/gearmand 0.34-r1: Generic framework to farm out work to other machines
-sys-cluster/glusterfs 3.6.5 3.7.4 3.8.6 3.8.11 3.10.1 3.12.2: GlusterFS is a powerful network/cluster filesystem
+sys-cluster/glusterfs 3.6.5 3.12.3: GlusterFS is a powerful network/cluster filesystem
 sys-cluster/heartbeat 3.0.5-r3 3.0.6: Heartbeat high availability cluster manager
 sys-cluster/heat 8.0.4 8.0.5 9.0.0 9.0.1 2017.1.9999 2017.2.9999: A CloudFormation-compatible openstack-native cloud orchistration engine.
 sys-cluster/hpl 2.0-r3: A Portable Implementation of the High-Performance Linpack Benchmark for Distributed-Memory Computers
