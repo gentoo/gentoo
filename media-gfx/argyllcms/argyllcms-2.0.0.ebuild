@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit base flag-o-matic multiprocessing toolchain-funcs udev
+inherit eutils flag-o-matic multiprocessing toolchain-funcs udev
 
 MY_P="Argyll_V${PV}"
 
@@ -13,7 +13,7 @@ SRC_URI="http://www.argyllcms.com/${MY_P}_src.zip"
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="amd64 hppa x86"
+KEYWORDS="~amd64 ~arm64 ~hppa ~x86"
 IUSE="doc"
 
 RDEPEND="
@@ -33,9 +33,6 @@ DEPEND="${RDEPEND}
 	dev-util/ftjam"
 
 S="${WORKDIR}/${MY_P}"
-
-PATCHES=(
-	)
 
 src_compile() {
 	# Make it respect LDFLAGS
@@ -69,9 +66,11 @@ src_install() {
 	done
 	popd > /dev/null
 
-	use doc && dohtml doc/*
-
 	dodoc log.txt Readme.txt ttbd.txt notes.txt
+	if use doc;  then
+		docinto html
+		dodoc doc/*html doc/*jpg doc/*gif
+	fi
 
 	insinto /usr/share/${PN}
 	doins -r ref
