@@ -18,13 +18,15 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x64-macos"
 IUSE="cpu_flags_x86_sse2 debug doc icu +npm +snapshot +ssl systemtap test"
 
-RDEPEND="icu? ( >=dev-libs/icu-56:= )
-	npm? ( ${PYTHON_DEPS} )
-	>=net-libs/http-parser-2.7.0:=
+RDEPEND="
 	>=dev-libs/libuv-1.15.0:=
+	>=net-libs/http-parser-2.7.0:=
 	>=net-libs/nghttp2-1.25.0
-	>=dev-libs/openssl-1.0.2g:0=[-bindist]
-	sys-libs/zlib"
+	sys-libs/zlib
+	icu? ( >=dev-libs/icu-56:= )
+	npm? ( ${PYTHON_DEPS} )
+	ssl? ( >=dev-libs/openssl-1.0.2g:0=[-bindist] )
+"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	systemtap? ( dev-util/systemtap )
@@ -89,14 +91,14 @@ src_prepare() {
 }
 
 src_configure() {
-	local myarch=""
-	local myconf=( --shared-http-parser --shared-libuv --shared-nghttp2 --shared-openssl --shared-zlib )
-	use npm || myconf+=( --without-npm )
-	use icu && myconf+=( --with-intl=system-icu ) || myconf+=( --with-intl=none )
-	use snapshot && myconf+=( --with-snapshot )
-	use ssl || myconf+=( --without-ssl )
+	local myconf=( --shared-http-parser --shared-libuv --shared-nghttp2 --shared-zlib )
 	use debug && myconf+=( --debug )
+	use icu && myconf+=( --with-intl=system-icu ) || myconf+=( --with-intl=none )
+	use npm || myconf+=( --without-npm )
+	use snapshot && myconf+=( --with-snapshot )
+	use ssl && myconf+=( --shared-openssl ) || myconf+=( --without-ssl )
 
+	local myarch=""
 	case ${ABI} in
 		amd64) myarch="x64";;
 		arm) myarch="arm";;
