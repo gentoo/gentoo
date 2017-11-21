@@ -1,21 +1,20 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
-AUTOTOOLS_AUTORECONF=1
 
-inherit autotools-utils elisp-common eutils multilib python-single-r1 systemd versionator
+inherit autotools elisp-common python-single-r1 systemd user versionator
 
 DESCRIPTION="GlusterFS is a powerful network/cluster filesystem"
-HOMEPAGE="http://www.gluster.org/"
-SRC_URI="http://download.gluster.org/pub/gluster/${PN}/$(get_version_component_range '1-2')/${PV}/${P}.tar.gz"
+HOMEPAGE="https://www.gluster.org/"
+SRC_URI="https://download.gluster.org/pub/gluster/${PN}/$(get_version_component_range '1-2')/${PV}/${P}.tar.gz"
 
 LICENSE="|| ( GPL-2 LGPL-3+ )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
-IUSE="bd-xlator crypt-xlator debug emacs +fuse +georeplication glupy infiniband qemu-block rsyslog static-libs +syslog systemtap test +tiering vim-syntax +xml"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+IUSE="bd-xlator crypt-xlator debug emacs +fuse +georeplication glupy infiniband +libtirpc qemu-block rsyslog static-libs +syslog systemtap test +tiering vim-syntax +xml"
 
 REQUIRED_USE="georeplication? ( ${PYTHON_REQUIRED_USE} )
 	glupy? ( ${PYTHON_REQUIRED_USE} )"
@@ -25,10 +24,13 @@ RESTRICT="test"
 
 # sys-apps/util-linux is required for libuuid
 RDEPEND="bd-xlator? ( sys-fs/lvm2 )
+	!elibc_glibc? ( sys-libs/argp-standalone )
 	emacs? ( virtual/emacs )
-	fuse? ( >=sys-fs/fuse-2.7.0 )
+	fuse? ( >=sys-fs/fuse-2.7.0:0 )
 	georeplication? ( ${PYTHON_DEPS} )
 	infiniband? ( sys-fabric/libibverbs:* sys-fabric/librdmacm:* )
+	libtirpc? ( net-libs/libtirpc:= )
+	!libtirpc? ( elibc_glibc? ( sys-libs/glibc[rpc(-)] ) )
 	qemu-block? ( dev-libs/glib:2 )
 	systemtap? ( dev-util/systemtap )
 	tiering? ( dev-db/sqlite:3 )
@@ -37,7 +39,7 @@ RDEPEND="bd-xlator? ( sys-fs/lvm2 )
 	dev-libs/libaio
 	dev-libs/openssl:=[-bindist]
 	dev-libs/userspace-rcu:=
-	|| ( sys-libs/glibc sys-libs/argp-standalone )
+	net-libs/rpcsvc-proto
 	sys-apps/util-linux"
 DEPEND="${RDEPEND}
 	virtual/acl
@@ -56,7 +58,9 @@ DEPEND="${RDEPEND}
 SITEFILE="50${PN}-mode-gentoo.el"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-3.4.0-silent_rules.patch"
+	"${FILESDIR}/${PN}-3.12.2-poisoned-sysmacros.patch"
+	"${FILESDIR}/${PN}-3.12.2-silent_rules.patch"
+	"${FILESDIR}/${PN}-3.12.3-libtirpc.patch"
 )
 
 DOCS=( AUTHORS ChangeLog NEWS README.md THANKS )
@@ -69,58 +73,63 @@ DOCS=( AUTHORS ChangeLog NEWS README.md THANKS )
 pkg_setup() {
 	python_setup "python2*"
 	python-single-r1_pkg_setup
+
+	# Needed for statedumps
+	# https://github.com/gluster/glusterfs/commit/0e50c4b3ea734456c14e2d7a578463999bd332c3
+	enewgroup gluster
+	enewuser gluster -1 -1 "${EPREFIX}"/var/run/gluster gluster
 }
 
 src_prepare() {
+	default
+
 	# build rpc-transport and xlators only once as shared libs
-	for makefile in $(find rpc/rpc-transport xlators -name Makefile.am); do
-		sed -i -e 's|.*$(top_srcdir).*\.sym|\0 -shared|' $makefile || die
-	done
+	find rpc/rpc-transport xlators -name Makefile.am |
+		xargs sed -i 's|.*$(top_srcdir).*\.sym|\0 -shared|' || die
 
 	# fix execution permissions
 	chmod +x libglusterfs/src/gen-defaults.py || die
 
-	autotools-utils_src_prepare
+	eautoreconf
 }
 
 src_configure() {
-	local myeconfargs=(
-		--disable-dependency-tracking
-		--disable-silent-rules
-		--disable-fusermount
-		$(use_enable debug)
-		$(use_enable bd-xlator)
-		$(use_enable crypt-xlator)
-		$(use_enable fuse fuse-client)
-		$(use_enable georeplication)
-		$(use_enable glupy)
-		$(use_enable infiniband ibverbs)
-		$(use_enable qemu-block)
-		$(use_enable static-libs static)
-		$(use_enable syslog)
-		$(use_enable systemtap)
-		$(use_enable test cmocka)
-		$(use_enable tiering)
-		$(use_enable xml xml-output)
-		--docdir=/usr/share/doc/${PF}
-		--localstatedir=/var
-	)
-	autotools-utils_src_configure
+	econf \
+		--disable-dependency-tracking \
+		--disable-silent-rules \
+		--disable-fusermount \
+		$(use_enable debug) \
+		$(use_enable bd-xlator) \
+		$(use_enable crypt-xlator) \
+		$(use_enable fuse fuse-client) \
+		$(use_enable georeplication) \
+		$(use_enable glupy) \
+		$(use_enable infiniband ibverbs) \
+		$(use_enable qemu-block) \
+		$(use_enable static-libs static) \
+		$(use_enable syslog) \
+		$(use_enable systemtap) \
+		$(use_enable test cmocka) \
+		$(use_enable tiering) \
+		$(use_enable xml xml-output) \
+		$(use_with libtirpc) \
+		--with-tmpfilesdir="${EPREFIX}"/etc/tmpfiles.d \
+		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
+		--localstatedir="${EPREFIX}"/var
 }
 
 src_compile() {
-	autotools-utils_src_compile
-
+	default
 	use emacs && elisp-compile extras/glusterfs-mode.el
 }
 
 src_install() {
-	autotools-utils_src_install
+	default
 
 	rm \
-		"${D}"/etc/glusterfs/glusterfs-{georep-,}logrotate \
-		"${D}"/etc/glusterfs/gluster-rsyslog-*.conf \
-		"${D}"/usr/share/doc/${PF}/glusterfs{-mode.el,.vim} || die "removing false files failed"
+		"${ED}"/etc/glusterfs/glusterfs-{georep-,}logrotate \
+		"${ED}"/etc/glusterfs/gluster-rsyslog-*.conf \
+		"${ED}"/usr/share/doc/${PF}/glusterfs{-mode.el,.vim} || die "removing false files failed"
 
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}"/glusterfs.logrotate glusterfs
@@ -159,22 +168,20 @@ src_install() {
 	fi
 
 	newinitd "${FILESDIR}/${PN}-r1.initd" glusterfsd
-	newinitd "${FILESDIR}/glusterd-r2.initd" glusterd
+	newinitd "${FILESDIR}/glusterd-r3.initd" glusterd
 	newconfd "${FILESDIR}/${PN}.confd" glusterfsd
 
 	keepdir /var/log/${PN}
 	keepdir /var/lib/glusterd
 
 	# QA
-	rm -rf "${ED}/var/run/" || die
-	use static-libs || find "${ED}"/usr/$(get_libdir)/ -type f -name '*.la' -delete
+	rm -r "${ED}/var/run/" || die
+	if ! use static-libs; then
+		find "${D}" -type f -name '*.la' -delete || die
+	fi
 
 	# fix all shebang for python2 #560750
 	python_fix_shebang "${ED}"
-
-	# upstream already has a patch ready, to be removed once available, http://review.gluster.org/#/c/9458/
-	echo "d /run/gluster 0755 root root -" > "${T}/gluster.tmpfiles" || die
-	systemd_newtmpfilesd "${T}/gluster.tmpfiles" gluster.conf
 }
 
 src_test() {
@@ -199,10 +206,9 @@ pkg_postinst() {
 	ewarn "You need to use a ntp client to keep the clocks synchronized across all"
 	ewarn "of your servers. Setup a NTP synchronizing service before attempting to"
 	ewarn "run GlusterFS."
-
-	elog
+	echo
 	elog "If you are upgrading from a previous version of ${PN}, please read:"
-	elog "  http://www.gluster.org/community/documentation/index.php/Upgrade_to_3.5"
+	elog "  http://docs.gluster.org/en/latest/Upgrade-Guide/upgrade_to_$(get_version_component_range '1-2')/"
 
 	use emacs && elisp-site-regen
 }
