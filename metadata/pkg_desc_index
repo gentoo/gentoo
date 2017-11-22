@@ -7749,7 +7749,7 @@ dev-python/fusepy 2.0.4-r1: Python FUSE bindings using ctypes
 dev-python/fusil 1.5 1.5-r1: Python library to write fuzzing programs
 dev-python/future 0.15.2 0.16.0: Easy, clean, reliable Python 2/3 compatibility
 dev-python/futures 2.2.0 3.0.3 3.1.1: Backport of the concurrent.futures package from Python 3.2
-dev-python/futurist 0.13.0 1.3.0: Useful additions to futures, from the future
+dev-python/futurist 0.13.0 1.3.0 1.3.1: Useful additions to futures, from the future
 dev-python/fuzzywuzzy 0.12.0: Fuzzy string matching in python
 dev-python/gammapy 0.6: Python package for gamma-ray astronomy
 dev-python/gconf-python 2.28.1-r1: Python bindings for the GConf library
@@ -8131,22 +8131,22 @@ dev-python/osc-lib 1.1.0 1.3.0 1.7.0: A package of common support modules for wr
 dev-python/oslo-cache 1.17.0 1.25.0: Oslo Caching around dogpile.cache
 dev-python/oslo-concurrency 3.18.1 3.21.1: library for running multi-thread, multi-process applications
 dev-python/oslo-config 3.22.1 4.11.1: Oslo Configuration API
-dev-python/oslo-context 2.12.2 2.17.0: Helpers to maintain useful information about a request context
-dev-python/oslo-db 4.17.1 4.25.0: OpenStack Common DB Code
-dev-python/oslo-i18n 3.5.0 3.9.0 3.12.0 3.17.0: Oslo i18n library
-dev-python/oslo-log 3.20.1 3.30.0: OpenStack logging config library, configuration for all openstack projects.
+dev-python/oslo-context 2.12.2 2.17.0 2.17.1: Helpers to maintain useful information about a request context
+dev-python/oslo-db 4.17.1 4.25.0 4.25.1: OpenStack Common DB Code
+dev-python/oslo-i18n 3.12.0 3.17.0 3.17.1: Oslo i18n library
+dev-python/oslo-log 3.20.1 3.30.0 3.30.1: OpenStack logging config library, configuration for all openstack projects.
 dev-python/oslo-messaging 5.17.2 5.30.1: Messaging API for RPC and notifications over different messaging transports
 dev-python/oslo-middleware 3.23.2 3.23.3 3.30.1: Components injected into wsgi pipelines to intercept request/response flows.
-dev-python/oslo-policy 1.18.0 1.25.1: Support for RBAC policy enforcement across all OpenStack services
+dev-python/oslo-policy 1.18.0 1.25.1 1.25.2: Support for RBAC policy enforcement across all OpenStack services
 dev-python/oslo-privsep 1.16.0 1.22.0: OpenStack library for privilege separation.
 dev-python/oslo-reports 1.17.0 1.17.1 1.22.0: generified reports for openstack
-dev-python/oslo-rootwrap 5.4.1 5.9.0: Allows fine filtering of shell commands to run as root from OpenStack services
-dev-python/oslo-serialization 2.16.1 2.20.0: Oslo Serialization library
+dev-python/oslo-rootwrap 5.4.1 5.9.0 5.9.1: Allows fine filtering of shell commands to run as root from OpenStack services
+dev-python/oslo-serialization 2.16.1 2.20.0 2.20.1: Oslo Serialization library
 dev-python/oslo-service 1.19.0 1.19.1 1.25.0: Library for running OpenStack services
-dev-python/oslo-sphinx 3.0.0 4.7.0 4.15.1: OpenStack Sphinx Extensions and Theme
-dev-python/oslo-utils 3.22.1 3.28.0: Oslo Utility library
+dev-python/oslo-sphinx 3.0.0 4.7.0 4.15.1 4.15.2: OpenStack Sphinx Extensions and Theme
+dev-python/oslo-utils 3.22.1 3.28.0 3.28.1: Oslo Utility library
 dev-python/oslo-versionedobjects 1.21.1 1.26.0: A library that provides a generic versioned and RPC-friendly object model.
-dev-python/oslo-vmware 2.17.1 2.23.0: Oslo VMware library for OpenStack projects
+dev-python/oslo-vmware 2.17.1 2.23.0 2.23.1: Oslo VMware library for OpenStack projects
 dev-python/oslotest 2.4.0: Oslo test framework
 dev-python/osprofiler 1.2.0 1.4.0 1.5.0 1.11.0: OpenStack Profiler Library
 dev-python/ovs 2.4.0 2.6.1 2.7.0 2.7.2: OVS bindings for python.
@@ -8839,7 +8839,7 @@ dev-python/statistics 1.0.3.5: A Python 2.* port of 3.4 Statistics Module
 dev-python/statsd 3.2.1: A simple statsd client
 dev-python/statsmodels 0.6.1 0.8.0: Statistical computations and models for use with SciPy
 dev-python/steadymark 0.5.3: Markdown-based test runner for python
-dev-python/stevedore 1.20.1 1.25.0: Manage dynamic plugins for Python applications
+dev-python/stevedore 1.20.1 1.25.0 1.25.1: Manage dynamic plugins for Python applications
 dev-python/stomper 0.3.0: Transport neutral client implementation of the STOMP protocol
 dev-python/storm 0.20-r1: An object-relational mapper for Python developed at Canonical
 dev-python/stormpath 2.4.2 2.4.4 2.4.5: Official Stormpath SDK, used to interact with the Stormpath REST API.
@@ -8864,7 +8864,7 @@ dev-python/sympy 0.7.6.1-r1 1.0-r1 1.1 1.1.1: Computer Algebra System in pure Py
 dev-python/tablib 0.9.11 0.10.0 0.11.1 0.11.2: A format-agnostic tabular dataset library written in Python
 dev-python/tabulate 0.7.7 0.8.1: Pretty-print tabular data
 dev-python/tagpy 2013.1: Python Bindings for TagLib
-dev-python/taskflow 2.9.1 2.14.0: A library to do [jobs, tasks, flows] in a HA manner using different backends
+dev-python/taskflow 2.9.1 2.14.0 2.14.1: A library to do [jobs, tasks, flows] in a HA manner using different backends
 dev-python/tblib 1.3.0 1.3.2: Traceback fiddling library for Python
 dev-python/tdaemon 0.1.6: Test Daemon
 dev-python/telarchive 1.8.3: Script for automated searches of astronomical telescope archives
