@@ -11,37 +11,42 @@ SRC_URI="http://www.fossil-scm.org/index.html/uv/fossil-src-${PV}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
-IUSE="debug fusefs json legacy-mv-rm -miniz sqlite +ssl static tcl th1-docs th1-hooks"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+IUSE="debug fusefs json -legacy-mv-rm -miniz system-sqlite +ssl static
+	  tcl tcl-stubs -tcl-private-stubs th1-docs th1-hooks"
 
 REQUIRED_USE="ssl? ( !miniz )"
 
 DEPEND="
 	sys-libs/zlib
 	|| ( sys-libs/readline:0 dev-libs/libedit )
-	sqlite? ( >=dev-db/sqlite-3.14.0:3 )
+	system-sqlite? ( >=dev-db/sqlite-3.20.0:3 )
 	ssl? ( dev-libs/openssl:0 )
 	tcl? ( dev-lang/tcl:0= )
 "
 RDEPEND="${DEPEND}"
+
+# Tests can't be run from the build directory
+RESTRICT="test"
 
 src_configure() {
 	# this is not an autotools situation so don't make it seem like one
 	# --with-tcl: works
 	# --without-tcl: dies
 	local myconf="--with-openssl=$(usex ssl auto none)"
-	use debug && myconf+=' --fossil-debug'
-	use json   && myconf+=' --json'
-	use sqlite && myconf+=' --disable-internal-sqlite'
-	use static && myconf+=' --static'
-	use tcl    && myconf+=' --with-tcl --with-tcl-stubs'
-
-	local u
-	for u in legacy-mv-rm miniz th1-docs th1-hooks; do
-		use ${u} &&  myconf+=" --with-${u}"
-	done
+	use debug         && myconf+=' --fossil-debug'
+	use json          && myconf+=' --json'
+	use system-sqlite && myconf+=' --disable-internal-sqlite'
+	use static        && myconf+=' --static'
 
 	use fusefs || myconf+=' --disable-fusefs'
+
+	local u useflags
+	useflags=( legacy-mv-rm miniz tcl tcl-stubs tcl-private-stubs
+			   th1-docs th1-hooks )
+	for u in ${useflags[@]} ; do
+		use ${u} &&  myconf+=" --with-${u}"
+	done
 
 	tc-export CC
 	./configure ${myconf} || die

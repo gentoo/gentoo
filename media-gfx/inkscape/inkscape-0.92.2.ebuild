@@ -5,13 +5,14 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="xml"
 
-inherit autotools eutils flag-o-matic gnome2-utils fdo-mime toolchain-funcs python-single-r1
+inherit autotools flag-o-matic gnome2-utils xdg toolchain-funcs python-single-r1
 
 MY_P=${P/_/}
 
 DESCRIPTION="A SVG based generic vector-drawing program"
 HOMEPAGE="https://inkscape.org/"
-SRC_URI="https://inkscape.global.ssl.fastly.net/media/resources/file/${P}.tar.bz2"
+SRC_URI="https://inkscape.global.ssl.fastly.net/media/resources/file/${P}.tar.bz2
+https://dev.gentoo.org/~jstein/dist/inkscape-0.92.1-poppler.patch"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
@@ -100,6 +101,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.91_pre3-exif.patch"
 	"${FILESDIR}/${PN}-0.91_pre3-sk-man.patch"
 	"${FILESDIR}/${PN}-0.48.4-epython.patch"
+	"${DISTDIR}/${PN}-0.92.1-poppler.patch"
 )
 
 S=${WORKDIR}/${MY_P}
@@ -164,10 +166,12 @@ pkg_preinst() {
 
 pkg_postinst() {
 	gnome2_icon_cache_update
-	fdo-mime_desktop_database_update
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
 }
 
 pkg_postrm() {
 	gnome2_icon_cache_update
-	fdo-mime_desktop_database_update
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
 }

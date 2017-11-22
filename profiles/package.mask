@@ -672,12 +672,6 @@ dev-libs/iniparser:4
 =dev-python/django-1.7*
 =dev-python/django-1.9*
 
-# Jeroen Roovers <jer@gentoo.org> (12 Dec 2014)
-# The 96 and 173 branches are no longer supported and remain vulnerable to
-# CVE-2014-8298 (bug #532342). You may be able to mitigate the vulnerability by
-# disabling GLX indirect rendering protocol support on the X server.
-<x11-drivers/nvidia-drivers-304
-
 # Robin H. Johnson <robbat2@gentoo.org> (04 Aug 2014)
 # Masked for testing, presently fails upstream testsuite:
 # FAIL:07:02:35 (00:00:00) db_dump/db_load(./TESTDIR.3/recd001.db:child killed: kill signal): expected 0, got 1
