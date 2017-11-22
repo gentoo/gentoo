@@ -242,13 +242,6 @@ sys-devel/automake:1.8
 # See also bug #634494. Masked for removal on 2017-11-30
 dev-tex/texmfind
 
-# Kent Fredric <kentnl@gentoo.org> (14 Oct 2017)
-# 12 years without upstream responding to bugs, code almost
-# irredeemably unmaintainable and with no way to demonstrate it
-# actually works. Bug #634244
-# Masked for removal in 30 days.
-dev-perl/Apache-SessionX
-
 # Lars Wendler <polynomial-c@gentoo.org> (12 Oct 2017)
 # Dead upstream. No qt5 release. Use app-admin/keepassxc as drop-in
 # replacement which has very active upstream and regular releases.
