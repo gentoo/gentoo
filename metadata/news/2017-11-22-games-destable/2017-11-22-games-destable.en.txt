@@ -1,0 +1,26 @@
+Title: No stable KEYWORDS for Gentoo Games
+Author: David Seifert <soap@gentoo.org>
+Content-Type: text/plain
+Posted: 2017-11-22
+Revision: 1
+News-Item-Format: 1.0
+Display-If-Keyword: amd64 x86
+
+As the Games team does not have enough manpower to keep tabs on all
+games packages, we have dropped all ebuilds maintained by the games
+project to unstable KEYWORDS (without those required by other stable
+packages). If you have any of these stable games packages installed,
+you will have to add them to /etc/portage/package.accept_keywords/
+manually. Failures related to missing stable KEYWORDS will show up as
+
+  The following keyword changes are necessary to proceed:
+   (see "package.accept_keywords" in the portage(5) man page for more details)
+  # required by @selected
+  # required by @world (argument)
+  =games-action/0verkill-0.16-r4 ~amd64
+
+While we accept that this will cause some irritation for the community,
+pretending we have a well supported games collection by having a
+wealth of stable games packages is misleading at best. We welcome
+contributions from outsiders willing to polish up the games landscape
+in Gentoo via the Proxy Maintainers Project.
