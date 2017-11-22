@@ -14220,7 +14220,7 @@ media-video/subtitleeditor 0.53.0 0.54.0: GTK+3 subtitle editing tool
 media-video/subtitler-yuv 0.6.5: for mjpegtools for adding subtitles, pictures, and effects embedded in the picture
 media-video/subtitleripper 0.3.4-r4: DVD Subtitle Ripper for Linux
 media-video/super_demux 0.3: DVB transport stream TS to ES demultiplexer
-media-video/syncplay 1.4.0 9999: Client/server to synchronize media playback
+media-video/syncplay 1.4.0 1.5.0 9999: Client/server to synchronize media playback
 media-video/tcmplex-panteltje 0.4.7 0.4.7-r1: Audio video multiplexer for 8 audio channels
 media-video/tivodecode 0.2_pre4: TiVo File Decoder
 media-video/totem 3.22.1-r1 3.24.0: Media player for GNOME
@@ -14777,7 +14777,7 @@ net-im/pyicq-t 0.8.1.5-r6: Python based jabber transport for ICQ
 net-im/qtox 1.8.1 1.11.0 9999: Most feature-rich GUI for net-libs/tox using Qt5
 net-im/reaim 0.8-r2: AIM transport proxy over NAT firewalls
 net-im/sendxmpp 1.23 1.24: A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
-net-im/signal-desktop-bin 1.0.38: Signal Desktop
+net-im/signal-desktop-bin 1.0.39: Signal Desktop
 net-im/silc-toolkit 1.1.10: SDK for the SILC protocol
 net-im/skypeforlinux 5.4.0.1 5.5.0.1: Instant messaging client, with support for audio and video
 net-im/slack-bin 2.1.2 2.5.2 2.6.3 2.8.0 2.8.2: Team collaboration tool
