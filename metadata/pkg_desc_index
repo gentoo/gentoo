@@ -12775,7 +12775,7 @@ media-gfx/iscan-plugin-gt-f720 0.0.1 0.0.1.2: Epson Perfection V300 PHOTO scanne
 media-gfx/iscan-plugin-gt-x770 2.1.2.1-r3: Epson Perfection V500 scanner plugin for SANE 'epkowa' backend
 media-gfx/iscan-plugin-gt-x820 2.2.0.1: Epson Perfection V600 scanner plugin for SANE 'epkowa' backend
 media-gfx/iscan-plugin-perfection-v370 1.0.0.2: Epson Perfection V370 and similar scanner plugin for SANE 'epkowa' backend
-media-gfx/jhead 2.97 3.00: Exif Jpeg camera setting parser and thumbnail remover
+media-gfx/jhead 2.97 3.00 3.00-r1: Exif Jpeg camera setting parser and thumbnail remover
 media-gfx/jigl 2.0.1: Jason's Image Gallery
 media-gfx/jp2a 1.0.6-r1: JPEG image to ASCII art converter
 media-gfx/jpeg2ps 1.9-r1: Converts JPEG images to Postscript using a wrapper
@@ -13225,7 +13225,7 @@ media-libs/openimageio 1.3.5 1.6.13: A library for reading and writing images
 media-libs/openjpeg 1.5.2 1.5.2-r1 2.1.1_p20160922 2.1.2 2.2.0 2.3.0: An open-source JPEG 2000 library
 media-libs/opensubdiv 3.1.0 3.1.1 3.3.0: An Open-Source subdivision surface library
 media-libs/opus 1.1.3-r1 1.2.1: Open codec designed for internet transmission of interactive speech and audio
-media-libs/opusfile 0.6 0.8 0.9: A high-level decoding and seeking API for .opus files
+media-libs/opusfile 0.6 0.9 0.10: A high-level decoding and seeking API for .opus files
 media-libs/oyranos 0.9.6 9999: Colour management system allowing to share settings across apps and services
 media-libs/partio 1.1.0_p20170829: A library for particle IO and manipulation
 media-libs/phat 0.4.1 0.4.1-r1: PHAT is a collection of GTK+ widgets geared toward pro-audio apps
@@ -13686,7 +13686,7 @@ media-sound/aqualung 1.0-r1 1.0-r2: Music player for a wide range of formats des
 media-sound/ardour 2.8.16-r1 4.7-r1 4.7-r2 5.3-r1 5.5-r1 5.6-r1 5.8-r1 5.9 5.10 9999: Digital Audio Workstation
 media-sound/ario 1.5.1-r1: a GTK2 MPD (Music Player Daemon) client inspired by Rythmbox
 media-sound/aseqview 0.2.8: ALSA sequencer event viewer/filter
-media-sound/asunder 2.2 2.8.1 2.9 2.9.1: A graphical Audio CD ripper and encoder with support for many output formats
+media-sound/asunder 2.2 2.8.1 2.9.1 2.9.2: A graphical Audio CD ripper and encoder with support for many output formats
 media-sound/aucdtect 0.8.2-r1: Commandline FLAC CDDA authenticity verifier
 media-sound/audacious 3.6.2 3.7.1 3.7.1-r1 3.8.2 3.9 9999: Audacious Player - Your music, your way, no exceptions
 media-sound/audacity 2.1.3-r1 2.2.0: Free crossplatform audio editor

@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=media-libs/libogg media-libs/opus http? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) )
 REQUIRED_USE=^^ ( fixed-point float )
 SLOT=0
-SRC_URI=https://downloads.xiph.org/releases/opus/opusfile-0.8.tar.gz
-_md5_=71fcc89d31bf2e06a23ac242d560a5db
+SRC_URI=https://downloads.xiph.org/releases/opus/opusfile-0.10.tar.gz
+_md5_=54bdf6d50968a0ceabc80c50727803cc
