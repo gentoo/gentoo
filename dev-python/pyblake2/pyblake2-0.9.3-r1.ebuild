@@ -46,6 +46,11 @@ python_prepare_all() {
 	distutils-r1_python_prepare_all
 }
 
+python_configure_all() {
+	# reported to break stuff, https://bugs.gentoo.org/638428
+	append-flags -fno-tree-vectorize
+}
+
 python_test() {
 	"${EPYTHON}" test/test.py || die "Tests fail with ${EPYTHON}"
 }
