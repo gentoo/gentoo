@@ -9,9 +9,8 @@ inherit toolchain-funcs
 if [[ ${PV} == *9999 ]]; then
 	inherit golang-vcs
 else
-	MY_PV="${PV/_beta/-beta.}"
-	EGIT_COMMIT="v${MY_PV}"
-	CONTAINERD_COMMIT="a543c93"
+	EGIT_COMMIT="992280e8e265f491f7a624ab82f3e238be086e49"
+	CONTAINERD_COMMIT="992280"
 	SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~ppc64"
 	inherit golang-vcs-snapshot
@@ -36,6 +35,7 @@ src_prepare() {
 	if [[ ${PV} != *9999* ]]; then
 		sed -i -e "s/git describe --match.*$/echo ${PV})/"\
 			-e "s/git rev-parse HEAD.*$/echo $CONTAINERD_COMMIT)/"\
+			-e "s/-s -w//" \
 			Makefile || die
 	fi
 }
