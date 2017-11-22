@@ -435,7 +435,7 @@ app-benchmarks/spew 1.0.8 1.0.8-r1: Measures I/O performance and/or generates I/
 app-benchmarks/stress 1.0.4-r1: Imposes stressful loads on different aspects of the system
 app-benchmarks/stress-ng 0.05.12 0.06.00: A tool to load and stress a computer system
 app-benchmarks/sysbench 1.0.7 1.0.10 9999: System performance benchmark
-app-benchmarks/tiobench 0.3.3-r2 0.4.2: Portable, robust, fully-threaded I/O benchmark program
+app-benchmarks/tiobench 0.4.2: Portable, robust, fully-threaded I/O benchmark program
 app-benchmarks/volanomark 2.5.0.9: Java server benchmark utility
 app-benchmarks/wrk 3.1.2 4.0.2: A modern HTTP benchmarking tool
 app-cdr/b5i2iso 0.2 0.2-r1: Convert CD images from b5i (BlindWrite) to iso
@@ -6226,7 +6226,7 @@ dev-perl/Mail-Mbox-MessageParser 1.510.500: A fast and simple mbox folder reader
 dev-perl/Mail-Message 3.0.0 3.2.0: General Message Object for MIME Messsage Handling
 dev-perl/Mail-POP3Client 2.190.0: POP3 client module for Perl
 dev-perl/Mail-Procmail 1.80.0-r1: Mail sorting/delivery module for Perl
-dev-perl/Mail-SPF 2.9.0-r1: An object-oriented implementation of Sender Policy Framework
+dev-perl/Mail-SPF 2.9.0-r1 2.9.0-r2: An object-oriented implementation of Sender Policy Framework
 dev-perl/Mail-SPF-Query 1.999.1-r1: query Sender Policy Framework for an IP,email,helo
 dev-perl/Mail-SRS 0.310.0-r2: Interface to Sender Rewriting Scheme
 dev-perl/Mail-Sender 0.8.23 0.903.0: Module for sending mails with attachments through an SMTP server
