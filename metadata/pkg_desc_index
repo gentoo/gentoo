@@ -1902,7 +1902,7 @@ app-misc/pfm 2.12.3: A terminal-based file manager written in Perl
 app-misc/physlock 0.5 11-r1: lightweight Linux console locking tool
 app-misc/pip 1.2-r2: Wrapper around programs that don't support stdin/stdout
 app-misc/pipeworks 0.4 0.4-r1: A small utility that measures throughput between stdin and stdout
-app-misc/plod 1.9-r1 1.9-r2: A tool to help administrators keep track of daily activities
+app-misc/plod 1.9-r2: A tool to help administrators keep track of daily activities
 app-misc/ps3pf_utils 2.1.1 2.2.0 2.3: Utilities to set the ps3 specific features
 app-misc/pwsafe 0.2.0-r4: A Password Safe compatible command-line password manager
 app-misc/pysmssend 1.48-r1 9999: Python Application for sending sms over multiple ISPs
@@ -3101,7 +3101,7 @@ dev-embedded/jtag 0.5.1-r1: Tool for working with JTAG-aware devices and boards 
 dev-embedded/kobs-ng 3.0.35.4.1.0: utility to write u-boot images to NAND on Freescale iMX devices
 dev-embedded/libdisasm 0.23: Provides basic disassembly of Intel x86 instructions from a binary stream
 dev-embedded/libftd2xx 0.4.16-r1 1.1.12-r1: Library that allows a direct access to a USB device
-dev-embedded/libftdi 0.19 0.20-r1 1.2-r1 9999: Userspace access to FTDI USB interface chips
+dev-embedded/libftdi 0.19 0.20-r1 1.2-r1 1.2-r2 9999: Userspace access to FTDI USB interface chips
 dev-embedded/libjaylink 0.1.0 9999: Library to access J-Link devices
 dev-embedded/lpc21isp 1.85: In-circuit programming (ISP) tool for the NXP microcontrollers
 dev-embedded/mcu8051ide 1.4.10: Graphical IDE for microcontrollers based on 8051.
@@ -6165,6 +6165,7 @@ dev-perl/Linux-DesktopFiles 0.90.0 0.130.0 0.250.0: Perl module to get and parse
 dev-perl/Linux-Distribution 0.230.0: Perl extension to detect on which Linux distribution we are running
 dev-perl/Linux-Inotify2 1.220.0-r1: scalable directory/file change notification
 dev-perl/Linux-Pid 0.40.0-r1: Interface to Linux getpp?id functions
+dev-perl/Linux-PipeMagic 0.30.0: Perl extension to use the zero copy IO syscalls
 dev-perl/Linux-Smaps 0.130.0: Perl interface to /proc/PID/smaps
 dev-perl/Lirc-Client 2.20.0: A client library for the Linux Infrared Remote Control (LIRC)
 dev-perl/List-AllUtils 0.90.0 0.140.0: Combines many List::* utility modules in one bite-sized package
@@ -6274,7 +6275,7 @@ dev-perl/Module-Find 0.130.0: Find and use installed modules in a (sub)category
 dev-perl/Module-Implementation 0.90.0: Loads one of several alternate underlying implementations for a module
 dev-perl/Module-Info 0.350.0-r1 0.370.0-r1: Information about Perl modules
 dev-perl/Module-Install 1.160.0 1.180.0: Standalone, extensible Perl module installer
-dev-perl/Module-Install-AuthorTests 0.2.0: Designate tests only run by module authors
+dev-perl/Module-Install-AuthorTests 0.2.0 0.2.0-r1: Designate tests only run by module authors
 dev-perl/Module-Locate 1.800.0: Locate modules in the same fashion as require and use
 dev-perl/Module-Manifest 1.80.0-r1: Parse and examine a Perl distribution MANIFEST file
 dev-perl/Module-Path 0.190.0: get the full path to a locally installed module
@@ -6287,7 +6288,7 @@ dev-perl/Module-Signature 0.790.0 0.810.0: Module signature file manipulation
 dev-perl/Module-Starter 1.710.0 1.720.0 1.730.0: A simple starter kit for any module
 dev-perl/Module-Util 1.90.0: Module name tools and transformations
 dev-perl/Module-Versions-Report 1.60.0-r1: Report versions of all modules in memory
-dev-perl/MogileFS-Client 1.170.0-r1: Client library for the MogileFS distributed file system
+dev-perl/MogileFS-Client 1.170.0-r1 1.170.0-r2: Client library for the MogileFS distributed file system
 dev-perl/MogileFS-Client-Async 0.030.0-r1: MogileFS Client using AnyEvent non-blocking IO
 dev-perl/MogileFS-Network 0.060.0-r1: Network awareness and extensions for MogileFS::Server
 dev-perl/MogileFS-Server 2.700.0-r2 2.700.0-r3 2.720.0: Server for the MogileFS distributed file system
@@ -10715,7 +10716,7 @@ dev-vcs/cvsutils 0.2.5: A small bundle of utilities to work with CVS repositorie
 dev-vcs/cvsync 2014.08.24.014706 9999: portable CVS repository synchronization utility
 dev-vcs/darcs 2.8.4-r6 2.10.1 2.10.3-r1 2.12.0 2.12.4 2.12.5: a distributed, interactive, smart revision control system
 dev-vcs/easygit 1.6.5.5: Easy GIT is a wrapper for git, designed to make git easy to learn and use
-dev-vcs/fossil 1.34 1.35 2.2 2.3: Simple, high-reliability, source control management, and more
+dev-vcs/fossil 1.35 2.3 2.4: Simple, high-reliability, source control management, and more
 dev-vcs/giggle 0.7-r2: GTK+ Frontend for GIT
 dev-vcs/git 2.13.6 2.14.3 2.15.0 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
 dev-vcs/git-annex 6.20170818: manage files with git, without checking their contents into git
@@ -12764,7 +12765,7 @@ media-gfx/imagemagick 6.9.9.0 6.9.9.9 6.9.9.18 6.9.9.20 7.0.6.9 7.0.7.6 7.0.7.8:
 media-gfx/imageworsener 1.3.1 1.3.2: Utility for image scaling and processing
 media-gfx/img2pdf 0.2.4: Losslessly convert raster images to PDF
 media-gfx/imv 2.1.3 9999: Minimal image viewer designed for tiling window manager users
-media-gfx/inkscape 0.91-r3 0.92.1 0.92.1-r1: A SVG based generic vector-drawing program
+media-gfx/inkscape 0.91-r3 0.92.1 0.92.1-r1 0.92.2: A SVG based generic vector-drawing program
 media-gfx/ipe 7.1.2 7.1.3: Drawing editor for creating figures in PDF or PS formats
 media-gfx/iscan 2.30.1.1 2.30.2.2: EPSON Image Scan! for Linux (including sane-epkowa backend)
 media-gfx/iscan-data 1.22.0.1 1.36.0.1: Image Scan! for Linux data files
@@ -13661,7 +13662,7 @@ media-radio/wspr 2.00-r2 3.01 3.01-r1: Weak Signal Propagation Reporter
 media-radio/xastir 2.0.6-r1 2.0.8-r1: X Amateur Station Tracking and Information Reporting
 media-radio/xdx 2.5.0: a GTK+ TCP/IP DX-cluster and ON4KST chat client
 media-radio/xlog 2.0.14 2.0.14-r1 2.0.15: An amateur radio logging program
-media-radio/xwxapt 2.4 2.7 2.9: GTK+ linux weather satellite APT image decoder software
+media-radio/xwxapt 2.4 2.7 2.9 3.1: GTK+ linux weather satellite APT image decoder software
 media-sound/SmarTagger 0.1-r2: Perl script for renaming and tagging mp3s
 media-sound/a2jmidid 8-r2: Daemon for exposing legacy ALSA sequencer applications in JACK MIDI system
 media-sound/aacgain 1.9 1.9-r1: AACGain normalizes the volume of music files using the Replay Gain algorithm
@@ -17338,7 +17339,7 @@ sys-apps/yum 3.4.3_p20170619: automatic updater and package installer/remover fo
 sys-apps/zorroutils 0.04: Zorro bus utility for Amigas running 2.1 and later kernels
 sys-auth/bioapi 1.2.3-r2 1.2.4: Framework for biometric-based authentication
 sys-auth/consolekit 0.4.6 1.1.0-r1 1.1.2 1.2.0 9999: Framework for defining and tracking users, login sessions and seats
-sys-auth/docker_auth 1.3 1.3-r1 1.3-r2: Docker Registry 2 authentication server
+sys-auth/docker_auth 1.3-r2: Docker Registry 2 authentication server
 sys-auth/elogind 229.8 231.6 232.5 233.7 234.4: The systemd project's logind, extracted to a standalone package
 sys-auth/fingerprint-gui 1.07: Use Fingerprint Devices with Linux
 sys-auth/fprint_demo 0.4: a simple GTK+ application to demonstrate and test libfprint's capabilities
@@ -18444,7 +18445,7 @@ www-client/seamonkey-bin 2.48 2.49.1_rc2: Mozilla Application Suite - web browse
 www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ and libcurl
-www-client/vivaldi 1.12.955.48_p1: A new browser for our friends
+www-client/vivaldi 1.12.955.48_p1 1.13.1008.32_p1: A new browser for our friends
 www-client/vivaldi-snapshot 1.13.1008.21_p1 1.13.1008.30_p1: A new browser for our friends
 www-client/w3m 0.5.3-r9: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r7 0.3.2_p24-r9: A variant of w3m with support for multiple character encodings
@@ -18605,7 +18606,7 @@ x11-base/xorg-drivers 1.12 1.15 1.19 9999: Meta package containing deps on all x
 x11-base/xorg-server 1.12.4-r7 1.15.2-r4 1.19.5 1.19.5-r1 9999: X.Org X servers
 x11-base/xorg-x11 7.4-r2: An X11 implementation maintained by the X.Org Foundation (meta package)
 x11-drivers/afb-ucode 1.3.11: Binary blob microcode for Elite3D framebuffers to use X, required by xf86-video-sunffb
-x11-drivers/nvidia-drivers 96.43.23-r1 173.14.39-r1 173.14.39-r2 304.137 340.104 375.82 378.13 378.13-r1 381.22 381.22-r1 384.90 387.12 387.22: NVIDIA Accelerated Graphics Driver
+x11-drivers/nvidia-drivers 304.137 340.104 375.82 378.13-r1 381.22-r1 384.90 384.98 387.12 387.22: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-acecad 1.5.0: Acecad Flair input driver
 x11-drivers/xf86-input-aiptek 1.4.1 1.4.1-r1: Aiptek USB Digital Tablet Input Driver for Linux
 x11-drivers/xf86-input-elographics 1.4.1: Elographics input driver
