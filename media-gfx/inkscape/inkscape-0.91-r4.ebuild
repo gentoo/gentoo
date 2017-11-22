@@ -5,7 +5,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="xml"
 
-inherit autotools eutils flag-o-matic gnome2-utils fdo-mime toolchain-funcs python-single-r1
+inherit autotools flag-o-matic gnome2-utils xdg toolchain-funcs python-single-r1
 
 MY_P=${P/_/}
 
@@ -21,12 +21,6 @@ IUSE+=" lcms nls spell static-libs visio wpg"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-WPG_DEPS="
-	|| (
-		( app-text/libwpg:0.3 dev-libs/librevenge )
-		( app-text/libwpd:0.9 app-text/libwpg:0.2 )
-	)
-"
 COMMON_DEPEND="
 	${PYTHON_DEPS}
 	>=app-text/poppler-0.26.0:=[cairo]
@@ -40,6 +34,8 @@ COMMON_DEPEND="
 	>=dev-libs/libxslt-1.0.15
 	dev-libs/popt
 	dev-python/lxml[${PYTHON_USEDEP}]
+	media-gfx/potrace
+	media-gfx/scour[${PYTHON_USEDEP}]
 	media-libs/fontconfig
 	media-libs/freetype:2
 	media-libs/libpng:0
@@ -49,7 +45,8 @@ COMMON_DEPEND="
 	>=x11-libs/pango-1.24
 	cdr? (
 		media-libs/libcdr
-		${WPG_DEPS}
+		app-text/libwpg:0.3
+		dev-libs/librevenge
 	)
 	dbus? ( dev-libs/dbus-glib )
 	exif? ( media-libs/libexif )
@@ -63,9 +60,13 @@ COMMON_DEPEND="
 	)
 	visio? (
 		media-libs/libvisio
-		${WPG_DEPS}
+		app-text/libwpg:0.3
+		dev-libs/librevenge
 	)
-	wpg? ( ${WPG_DEPS} )
+	wpg? (
+		app-text/libwpg:0.3
+		dev-libs/librevenge
+	)
 "
 
 # These only use executables provided by these packages
@@ -92,12 +93,13 @@ DEPEND="${COMMON_DEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-0.92.1-automagic.patch"
+	"${FILESDIR}/${PN}-0.91_pre3-automagic.patch"
 	"${FILESDIR}/${PN}-0.91_pre3-cppflags.patch"
-	"${FILESDIR}/${PN}-0.92.1-desktop.patch"
+	"${FILESDIR}/${PN}-0.91_pre3-desktop.patch"
 	"${FILESDIR}/${PN}-0.91_pre3-exif.patch"
 	"${FILESDIR}/${PN}-0.91_pre3-sk-man.patch"
 	"${FILESDIR}/${PN}-0.48.4-epython.patch"
+	"${FILESDIR}/${PN}-0.91-fix-gtkmm-2.48.patch"
 )
 
 S=${WORKDIR}/${MY_P}
@@ -125,6 +127,10 @@ src_prepare() {
 src_configure() {
 	# aliasing unsafe wrt #310393
 	append-flags -fno-strict-aliasing
+	# enable c++11 as needed for sigc++-2.6, #566318
+	# remove it when upstream solves the issue
+	# https://bugs.launchpad.net/inkscape/+bug/1488079
+	append-cxxflags -std=c++11
 
 	econf \
 		$(use_enable static-libs static) \
@@ -162,10 +168,12 @@ pkg_preinst() {
 
 pkg_postinst() {
 	gnome2_icon_cache_update
-	fdo-mime_desktop_database_update
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
 }
 
 pkg_postrm() {
 	gnome2_icon_cache_update
-	fdo-mime_desktop_database_update
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
 }
