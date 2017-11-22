@@ -1,4 +1,4 @@
-DEFINED_PHASES=prepare
+DEFINED_PHASES=postinst postrm prepare
 DEPEND=>=media-libs/libcddb-0.9.5 media-sound/cdparanoia x11-libs/gtk+:2 dev-util/intltool virtual/pkgconfig sys-devel/gettext
 DESCRIPTION=A graphical Audio CD ripper and encoder with support for many output formats
 EAPI=6
@@ -9,4 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=media-libs/libcddb-0.9.5 media-sound/cdparanoia x11-libs/gtk+:2 aac? ( media-sound/neroaac ) flac? ( media-libs/flac ) mac? ( media-sound/mac ) mp3? ( media-sound/lame ) musepack? ( media-sound/musepack-tools ) opus? ( media-sound/opus-tools ) vorbis? ( media-sound/vorbis-tools ) wavpack? ( media-sound/wavpack )
 SLOT=0
 SRC_URI=http://littlesvr.ca/asunder/releases/asunder-2.9.2.tar.bz2
-_md5_=c79f9e18cc77dedf4f8105ff8d3885cb
+_eclasses_=xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=23775484047749e6b40647e7c0074efe
