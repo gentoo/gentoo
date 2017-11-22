@@ -25,11 +25,13 @@ DEPEND="${RDEPEND}
 REQUIRED_USE="^^ ( fixed-point float )"
 
 src_configure() {
-	econf \
-		--docdir=/usr/share/doc/${PF} \
-		$(use_enable doc) \
+	local myeconfargs=(
+		--docdir=/usr/share/doc/${PF}
+		$(use_enable doc)
 		$(use_enable fixed-point)\
-		$(use_enable float) \
-		$(use_enable http) \
+		$(use_enable float)
+		$(use_enable http)
 		$(use_enable static-libs static)
+	)
+	econf "${myeconfargs[@]}"
 }
