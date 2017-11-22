@@ -36,26 +36,13 @@ S="${WORKDIR}"/${MYP}
 
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
-pkg_setup() {
-	GCC=${ADA:-$(tc-getCC)}
-	GNATLS="${GCC/gcc/gnatls}"
-	GNAT="${GCC/gcc/gnat}"
-	GNATMAKE="${GCC/gcc/gnatmake}"
-	if [[ -z "$(type ${GNATLS} 2>/dev/null)" ]] ; then
-		eerror "You need a gcc compiler that provides the Ada Compiler:"
-		eerror "1) use gcc-config to select the right compiler or"
-		eerror "2) set ADA=gcc-6.3.0 in make.conf"
-		die "ada compiler not available"
-	fi
-	python-single-r1_pkg_setup
-}
-
 src_prepare() {
 	default
+	GCC_PV=6.3.0
 	mv configure.{in,ac} || die
 	sed -i \
-		-e "s:@GNATMAKE@:${GNATMAKE}:g" \
-		-e "s:@GNAT@:${GNAT}:g" \
+		-e "s:@GNATMAKE@:gnatmake-${GCC_PV}:g" \
+		-e "s:@GNAT@:gnat-${GCC_PV}:g" \
 		aclocal.m4 \
 		|| die
 	eautoreconf
