@@ -5470,7 +5470,6 @@ dev-perl/Apache-DBI 1.120.0-r1 1.120.0-r2: Authentication and Authorization via 
 dev-perl/Apache-LogFormat-Compiler 0.350.0: Compile an Apache log format string to perl-code
 dev-perl/Apache-Reload 0.130.0 0.130.0-r1: Automatically reload changed modules without restarting Apache
 dev-perl/Apache-Session 1.930.0: A persistence framework for session data
-dev-perl/Apache-SessionX 2.10.0-r1: An extented persistence framework for session data
 dev-perl/Apache-SizeLimit 0.970.0-r1: Graceful exit for large children
 dev-perl/Apache-Test 1.380.0-r1 1.390.0 1.400.0-r1 1.400.0-r2: Test.pm wrapper with helpers for testing Apache
 dev-perl/Apache2-AuthenNTLM 0.20.0-r1 0.20.0-r2: Perform Microsoft NTLM and Basic User Authentication
@@ -5948,7 +5947,6 @@ dev-perl/File-Slurper 0.0.800 0.9.0 0.10.0: A simple, sane and efficient module 
 dev-perl/File-Sort 1.10.0-r1: Sort a file or merge sort multiple files
 dev-perl/File-Spec-Native 1.4.0: Use native OS implementation of File::Spec from a subclass
 dev-perl/File-Stat-Bits 1.10.0-r1: File stat bit mask constants
-dev-perl/File-Stat-Moose 0.60.0-r1: Status info for a file - Moose-based
 dev-perl/File-Sync 0.110.0: Perl access to fsync() and sync() function calls
 dev-perl/File-Tail 1.200.0 1.300.0: Perl extension for reading from continously updated files
 dev-perl/File-Tempdir 0.20.0-r1: This module provide an object interface to tempdir() from File::Temp
@@ -6247,7 +6245,7 @@ dev-perl/Math-GMP 2.60.0-r1 2.110.0 2.150.0: High speed arbitrary size integer m
 dev-perl/Math-Libm 1.0.0: wrapper to libm functions
 dev-perl/Math-ModInt 0.11.0: modular integer arithmetic
 dev-perl/Math-NumSeq 71.0.0 72.0.0: number sequences (for example from OEIS)
-dev-perl/Math-NumberCruncher 5.0.0: Collection of useful math-related functions
+dev-perl/Math-NumberCruncher 5.0.0 5.0.0-r1: Collection of useful math-related functions
 dev-perl/Math-Pari 2.10.806.50-r1 2.10.808 2.10.809.0: Perl interface to PARI
 dev-perl/Math-PlanePath 123.0.0 124.0.0: Mathematical paths through the 2-D plane
 dev-perl/Math-Prime-XS 0.260.0 0.270.0: Detect and calculate prime numbers with deterministic tests
