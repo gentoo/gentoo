@@ -6263,7 +6263,7 @@ dev-perl/MediaWiki-API 0.410.0: A OO interface to the Mediawiki API
 dev-perl/Mixin-Linewise 0.108.0: write your linewise code for handles; this does the rest
 dev-perl/Mo 0.390.0 0.400.0: Perl Micro Object framework
 dev-perl/Mock-Config 0.30.0: Temporarily set Config or XSConfig values
-dev-perl/Modem-Vgetty 0.30.0-r1: Interface to voice modems using vgetty
+dev-perl/Modem-Vgetty 0.30.0-r1 0.30.0-r2: Interface to voice modems using vgetty
 dev-perl/Modern-Perl 1.201.701.170: enable all of the features of Modern Perl with one import
 dev-perl/Module-Build 0.421.600 0.421.800 0.422.200 0.422.400: Build and install Perl modules
 dev-perl/Module-Build-Tiny 0.39.0: A tiny replacement for Module::Build
@@ -18349,7 +18349,7 @@ www-apps/icingaweb2 2.4.2 9999: Icinga Web 2 - Frontend for icinga2
 www-apps/icingaweb2-module-director 1.1.0 9999: Icinga Web 2 plugin for configuration
 www-apps/icingaweb2-module-graphite 9999: Icinga Web 2 plugin for pnp4nagios
 www-apps/icingaweb2-module-pnp4nagios 1.0.1 9999: Icinga Web 2 plugin for pnp4nagios
-www-apps/ikiwiki 3.20170111: A wiki compiler
+www-apps/ikiwiki 3.20170111 3.20171001: A wiki compiler
 www-apps/jekyll 3.2.1-r2 3.6.0: A simple, blog aware, static site generator
 www-apps/jekyll-coffeescript 1.0.1 1.0.2-r1: A CoffeeScript Converter for Jekyll
 www-apps/jekyll-gist 1.4.0: Liquid tag for displaying GitHub Gists in Jekyll sites
