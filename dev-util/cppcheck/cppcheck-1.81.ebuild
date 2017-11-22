@@ -1,11 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
-inherit distutils-r1 eutils flag-o-matic qmake-utils toolchain-funcs
+inherit distutils-r1 flag-o-matic qmake-utils toolchain-funcs
 
 DESCRIPTION="static analyzer of C/C++ code"
 HOMEPAGE="http://cppcheck.sourceforge.net"
@@ -28,17 +28,17 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
+PATCHES=( "${FILESDIR}"/${PN}-1.75-tinyxml2.patch )
+
 src_prepare() {
+	default
 	append-cxxflags -std=c++0x
 
 	# Drop bundled libs, patch Makefile generator and re-run it
 	rm -r externals/tinyxml || die
-	epatch "${FILESDIR}"/${PN}-1.75-tinyxml2.patch
 	tc-export CXX
 	emake dmake
 	./dmake || die
-
-	default
 }
 
 src_configure() {
