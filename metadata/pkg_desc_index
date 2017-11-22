@@ -10399,7 +10399,7 @@ dev-util/conan 0.24.0-r1 0.25.1: Distributed C/C++ package manager
 dev-util/confix 2.3.5-r2 2.3.5-r3 9999: Confix: A Build Tool on Top of GNU Automake
 dev-util/confix-wrapper 0: Wrapper to select either confix1.py or confix2.py
 dev-util/cookiecutter 1.6.0: Command-line utility to create projects from cookiecutters (project templates)
-dev-util/cppcheck 1.77 1.78 1.79 9999: static analyzer of C/C++ code
+dev-util/cppcheck 1.77 1.78 1.79 1.81 9999: static analyzer of C/C++ code
 dev-util/cppi 1.18: a cpp directive indenter
 dev-util/cpptest 1.1.2: Simple but powerful unit testing framework for C++
 dev-util/cppunit 1.13.1 1.13.2-r2 1.14.0 9999: C++ port of the famous JUnit framework for unit testing
