@@ -16,14 +16,17 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~x86"
 IUSE="htmlreport pcre qt5"
 
-RDEPEND="htmlreport? ( dev-python/pygments[${PYTHON_USEDEP}] )
+RDEPEND="
 	>=dev-libs/tinyxml2-2
+	htmlreport? ( dev-python/pygments[${PYTHON_USEDEP}] )
+	pcre? ( dev-libs/libpcre )
 	qt5? ( dev-qt/qtgui:5 )
-	pcre? ( dev-libs/libpcre )"
+"
 DEPEND="${RDEPEND}
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
 src_prepare() {
 	append-cxxflags -std=c++0x
