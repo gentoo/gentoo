@@ -17,17 +17,23 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~x86"
 IUSE="debug gnutls ncurses parcheck ssl test zlib"
 
-RDEPEND="dev-libs/libxml2
+RDEPEND="dev-libs/libxml2:=
 	ncurses? ( sys-libs/ncurses:0= )
 	ssl? (
 		gnutls? (
 			net-libs/gnutls:=
 			dev-libs/nettle:=
 		)
-		!gnutls? ( dev-libs/openssl:0= )
+		!gnutls? ( dev-libs/openssl:0=[-bindist] )
 	)
-	zlib? ( sys-libs/zlib )"
+	zlib? ( sys-libs/zlib:= )"
 DEPEND="${RDEPEND}
+	test? (
+		|| (
+			=app-arch/rar-5*
+			=app-arch/unrar-5*
+		)
+	)
 	virtual/pkgconfig"
 DOCS=( ChangeLog README nzbget.conf )
 
@@ -58,7 +64,6 @@ src_prepare() {
 
 	sed \
 		-e 's:^MainDir=.*:MainDir=/var/lib/nzbget:' \
-		-e 's:^LockFile=.*:LockFile=/run/nzbget/nzbget.pid:' \
 		-e 's:^LogFile=.*:LogFile=/var/log/nzbget/nzbget.log:' \
 		-e 's:^WebDir=.*:WebDir=/usr/share/nzbget/webui:' \
 		-e 's:^ConfigTemplate=.*:ConfigTemplate=/usr/share/nzbget/nzbget.conf:' \
@@ -91,7 +96,7 @@ src_install() {
 	keepdir /var/lib/nzbget/{dst,nzb,queue,tmp}
 	keepdir /var/log/nzbget
 
-	newinitd "${FILESDIR}"/nzbget.initd nzbget
+	newinitd "${FILESDIR}"/nzbget.initd-r1 nzbget
 	newconfd "${FILESDIR}"/nzbget.confd nzbget
 }
 

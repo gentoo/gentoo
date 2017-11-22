@@ -3,6 +3,8 @@
 
 EAPI=6
 
+inherit xdg-utils
+
 DESCRIPTION="A graphical Audio CD ripper and encoder with support for many output formats"
 HOMEPAGE="http://littlesvr.ca/asunder/"
 SRC_URI="http://littlesvr.ca/${PN}/releases/${P}.tar.bz2"
@@ -32,4 +34,12 @@ RDEPEND="${COMMON_DEPEND}
 src_prepare() {
 	default
 	sed -i -e 's:cd syslogng && $(MAKE) install:true:' Makefile.in || die
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }

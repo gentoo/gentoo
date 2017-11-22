@@ -16,11 +16,11 @@ IUSE="gtk test"
 
 RDEPEND="
 	>=dev-libs/glib-2.32:2
-	>=net-misc/networkmanager-1.2.0:=
-	>=net-vpn/openvpn-2.1_rc9
+	>=net-misc/networkmanager-1.7.0:=
+	>=net-vpn/openvpn-2.1
 	gtk? (
 		>=app-crypt/libsecret-0.18
-		>=gnome-extra/nm-applet-1.2.0
+		>=gnome-extra/nm-applet-1.7.0
 		>=x11-libs/gtk+-3.4:3
 	)
 "
@@ -34,6 +34,14 @@ pkg_setup() {
 	enewgroup nm-openvpn
 	enewuser nm-openvpn -1 -1 -1 nm-openvpn
 }
+
+PATCHES=(
+	# Fix unusable config imports (from 'master')
+	"${FILESDIR}/${PN}-1.8.0-user_cert.patch"
+
+	# Fix validation of static-key in GUI (from 'master')
+	"${FILESDIR}/${PN}-1.8.0-static-key.patch"
+)
 
 src_prepare() {
 	# Test will fail if the machine doesn't have a particular locale installed
