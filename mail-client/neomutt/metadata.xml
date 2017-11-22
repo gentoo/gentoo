@@ -6,13 +6,21 @@
 		<name>Nicolas Bock</name>
 	</maintainer>
 	<use>
+		<flag name="berkdb">Enable BDB (Berkley DB) backend for header
+			caching</flag>
+		<flag name="gdbm">Enable GDBM (GNU dbm) backend for header
+			caching</flag>
 		<flag name="gpg">Enable support for <pkg>app-crypt/gpgme</pkg></flag>
-		<flag name="notmuch">Enable support for <pkg>net-mail/notmuch</pkg></flag>
+		<flag name="kyotocabinet">Enable Kyoto Cabinet database backend for
+			header caching</flag>
+		<flag name="lmdb">Enable LMDB (Lightning Memory-Mapped Database)
+			backend for header caching</flag>
+		<flag name="notmuch">Enable support for
+			<pkg>net-mail/notmuch</pkg></flag>
+		<flag name="qdbm">Enable QDBM (Quicker Database Manager) database
+			backend for header caching</flag>
 		<flag name="smime">Enable support for smime</flag>
-		<flag name="tokyocabinet">Enable tokyocabinet database backend for header
-			caching</flag>
-		<flag name="kyotocabinet">Enable kyotocabinet database backend for header
-			caching</flag>
-		<flag name="lmdb">Enable LMDB backend for header caching</flag>
+		<flag name="tokyocabinet">Enable Tokyo Cabinet database backend for
+			header caching</flag>
 	</use>
 </pkgmetadata>

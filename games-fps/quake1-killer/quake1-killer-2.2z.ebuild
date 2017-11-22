@@ -10,7 +10,7 @@ SRC_URI="http://www.gamers.org/pub/idgames2/quakec/compilations/kqp220z.zip
 
 LICENSE="quake1-killer"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND=""

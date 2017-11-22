@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit toolchain-funcs cmake-utils python-single-r1 java-pkg-opt-2 java-ant-2
 
 DESCRIPTION="A collection of algorithms and sample code for various computer vision problems"
-HOMEPAGE="http://opencv.org"
+HOMEPAGE="https://opencv.org"
 
 SRC_URI="https://github.com/Itseez/opencv/archive/${PV}.zip -> ${P}.zip"
 

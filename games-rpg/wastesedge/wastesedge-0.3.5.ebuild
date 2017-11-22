@@ -11,7 +11,7 @@ SRC_URI="https://savannah.nongnu.org/download/adonthell/${PN}-src-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="nls"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="userpriv"

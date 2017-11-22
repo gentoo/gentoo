@@ -25,11 +25,11 @@ IUSE="debug kerberos libressl mms-agent ssl test +tools"
 
 RDEPEND=">=app-arch/snappy-1.1.3
 	>=dev-cpp/yaml-cpp-0.5.3
-	>=dev-libs/boost-1.60[threads(+)]
+	>=dev-libs/boost-1.60:=[threads(+)]
 	>=dev-libs/libpcre-8.41[cxx]
 	dev-libs/snowball-stemmer
 	net-libs/libpcap
-	>=sys-libs/zlib-1.2.8
+	>=sys-libs/zlib-1.2.8:=
 	mms-agent? ( app-admin/mms-agent )
 	ssl? (
 		!libressl? ( >=dev-libs/openssl-1.0.1g:0= )
@@ -37,6 +37,7 @@ RDEPEND=">=app-arch/snappy-1.1.3
 	)"
 DEPEND="${RDEPEND}
 	=dev-lang/python-2*
+	<dev-util/scons-3
 	>=sys-devel/gcc-5.3.0:*
 	sys-libs/ncurses
 	sys-libs/readline

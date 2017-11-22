@@ -11,7 +11,7 @@ SRC_URI="FTL.${PV}.tar.gz"
 
 LICENSE="all-rights-reserved Boost-1.0 free-noncomm MIT bundled-libs? ( FTL LGPL-2.1 ZLIB libpng )"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE="bundled-libs"
 RESTRICT="fetch bindist splitdebug"
 

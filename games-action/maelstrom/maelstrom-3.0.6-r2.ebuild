@@ -9,7 +9,7 @@ DESCRIPTION="An asteroids battle game"
 HOMEPAGE="http://www.libsdl.org/projects/Maelstrom/"
 SRC_URI="http://www.libsdl.org/projects/Maelstrom/src/${MY_P}.tar.gz"
 
-KEYWORDS="~alpha amd64 x86"
+KEYWORDS="~alpha ~amd64 ~x86"
 SLOT="0"
 LICENSE="GPL-2"
 IUSE=""

@@ -19,9 +19,9 @@ else
 	SRC_URI="https://download.fcitx-im.org/${PN}/${P}.tar.xz"
 fi
 
-LICENSE="GPL-2+"
+LICENSE="BSD GPL-2+"
 SLOT="4"
-KEYWORDS="amd64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE=""
 
 RDEPEND=">=app-i18n/fcitx-4.2.9:4

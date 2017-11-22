@@ -10,8 +10,8 @@ LANGS=" af ar be bg bn br bs ca cs cy da de el en_CA en_GB eo es et eu fa fi fr 
 inherit cmake-utils flag-o-matic xdg-utils gnome2-utils virtualx
 [[ ${PV} == *9999* ]] && inherit git-r3
 
-DESCRIPTION="A modern music player and library organizer based on Amarok 1.4 and Qt4"
-HOMEPAGE="http://www.clementine-player.org https://github.com/clementine-player/Clementine"
+DESCRIPTION="Modern music player and library organizer based on Amarok 1.4 and Qt"
+HOMEPAGE="https://www.clementine-player.org https://github.com/clementine-player/Clementine"
 [[ ${PV} == *9999* ]] || \
 SRC_URI="https://github.com/clementine-player/Clementine/archive/${PV/_}.tar.gz -> ${P}.tar.gz"
 

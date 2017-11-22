@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/gnurobbo/${P}-source.tar.gz"
 
 LICENSE="GPL-2 BitstreamVera"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="media-libs/libsdl[sound,video,joystick]

@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/flightgear/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="dbus debug examples qt5 test +udev +utils vim-syntax"
 
 # zlib is some strange auto-dep from simgear

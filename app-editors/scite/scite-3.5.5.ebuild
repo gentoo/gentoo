@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-inherit toolchain-funcs eutils
+inherit toolchain-funcs eutils xdg-utils
 
 MY_PV=${PV//./}
 DESCRIPTION="A very powerful editor for programmers"
@@ -81,4 +81,12 @@ src_install() {
 
 	doman ../doc/scite.1
 	dodoc ../README
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }

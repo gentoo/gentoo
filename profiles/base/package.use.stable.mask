@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Andreas Sturmlechner <asturm@gentoo.org> (16 Nov 2017)
+# Requires PYTHON_TARGETS="python3_5", bug #620940
+kde-apps/kdegames-meta python
+
 # Brian Evans <grknight@gentoo.org (6 Nov 2017)
 # Requires stable phpunit
 dev-php/PEAR-Text_Password test
@@ -43,10 +47,6 @@ kde-apps/kopete cryptography
 # Michael Palimaka <kensington@gentoo.org) (11 Aug 2017)
 # Unstable dependencies.
 dev-util/rpmdevtools emacs
-
-# Andreas Sturmlechner <asturm@gentoo.org> (06 Aug 2017)
-# Requires dev-lang/python-3.5 stabilisation
->=kde-apps/kdegames-meta-17.04.3 python
 
 # Patrick McLean <chutzpah@gentoo.org> (11 Jul 2017)
 # Requires >=net-dns/libidn2-2.0 stabilization

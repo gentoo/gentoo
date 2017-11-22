@@ -15,7 +15,7 @@ SRC_URI="http://dl.katawa-shoujo.com/gold_1.3/%5b4ls%5d_katawa_shoujo_1.3-%5blin
 LICENSE="CC-BY-NC-ND-3.0
 	!system-renpy? ( MIT PSF-2 LGPL-2.1 || ( FTL GPL-2+ ) IJG libpng ZLIB BZIP2 )"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc +system-renpy"
 
 RDEPEND="system-renpy? ( games-engines/renpy )"

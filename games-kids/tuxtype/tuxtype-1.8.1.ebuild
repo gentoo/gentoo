@@ -10,7 +10,7 @@ SRC_URI="http://alioth.debian.org/frs/download.php/3270/tuxtype_w_fonts-${PV}.ta
 
 LICENSE="GPL-2 OFL-1.1"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="svg"
 
 DEPEND="media-libs/libsdl[video]

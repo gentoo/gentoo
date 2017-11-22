@@ -20,7 +20,7 @@ SRC_URI="https://releases.llvm.org/${PV/_//}/openmp-${PV/_/}.src.tar.xz"
 
 LICENSE="|| ( UoI-NCSA MIT ) MIT LLVM-Grant"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 x86"
 IUSE="hwloc ompt test"
 
 RDEPEND="hwloc? ( sys-apps/hwloc:0=[${MULTILIB_USEDEP}] )"
@@ -53,7 +53,7 @@ src_prepare() {
 	# fix atomic tests with gcc
 	eapply "${FILESDIR}"/4.0.1/0001-test-Try-to-link-latomic-to-provide-atomics-when-ava.patch
 
-	eapply_user
+	cmake-utils_src_prepare
 }
 
 multilib_src_configure() {

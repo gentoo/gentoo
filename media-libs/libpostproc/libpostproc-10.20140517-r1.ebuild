@@ -43,6 +43,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-support-MMXEXT.patch
+}
+
 multilib_src_configure() {
 	local myconf=( ${EXTRA_LIBPOSTPROC_CONF} )
 	for i in $(get-flag march) $(get-flag mcpu) $(get-flag mtune) ; do

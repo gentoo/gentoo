@@ -10,7 +10,7 @@ SRC_URI="mirror://gentoo/cgoban-unix-${PV}.tar.bz2"
 
 LICENSE="freedist"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND=">=virtual/jre-1.3"

@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/noiz2sa/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="media-libs/sdl-mixer[vorbis]

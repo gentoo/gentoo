@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-MY_EXTRAS_VER="20170820-2245Z"
+MY_EXTRAS_VER="20171121-1518Z"
 SUBSLOT="18"
 PYTHON_COMPAT=( python2_7 )
 inherit linux-info python-any-r1 mysql-multilib-r1
@@ -41,6 +41,7 @@ PATCHES=(
 	"${MY_PATCH_DIR}"/20008_all_mysql-tzinfo-symlink-5.6.37.patch
 	"${MY_PATCH_DIR}"/20009_all_mysql_myodbc_symbol_fix-5.6.patch
 	"${MY_PATCH_DIR}"/20018_all_percona-server-5.6.25-without-clientlibs-tools.patch
+	"${MY_PATCH_DIR}"/20028_all_mysql-5.6-gcc7.patch
 )
 
 # Please do not add a naive src_unpack to this ebuild

@@ -12,7 +12,7 @@ EGIT_REPO_URI="https://anongit.freedesktop.org/git/uchardet/uchardet.git"
 LICENSE="|| ( MPL-1.1 GPL-2+ LGPL-2.1+ )"
 SLOT="0"
 KEYWORDS=""
-IUSE="static-libs test"
+IUSE="cpu_flags_x86_sse2 static-libs test"
 
 src_prepare() {
 	cmake-utils_src_prepare
@@ -22,6 +22,7 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_STATIC=$(usex static-libs)
+		-DCHECK_SSE2=$(usex cpu_flags_x86_sse2)
 	)
 	cmake-utils_src_configure
 }

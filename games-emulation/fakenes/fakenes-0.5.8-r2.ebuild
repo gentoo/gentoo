@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/fakenes/${P}.tar.bz2"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="openal opengl zlib"
 
 RDEPEND=">=media-libs/allegro-4.4.1.1:0[opengl?]

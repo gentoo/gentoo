@@ -50,7 +50,6 @@ src_prepare() {
 }
 
 src_install() {
-
 	into "/opt/${SUPER_PN}"
 	dolib opt/${SUPER_PN}/lib/x86_64-linux-gnu/*
 

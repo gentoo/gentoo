@@ -55,7 +55,6 @@ DEPEND="${RDEPEND}
 	doc? ( dev-python/sphinx )
 	gold? ( sys-libs/binutils-libs )
 	libffi? ( virtual/pkgconfig )
-	test? ( $(python_gen_any_dep "~dev-python/lit-${PV}[\${PYTHON_USEDEP}]") )
 	!!<dev-python/configparser-3.3.0.2
 	${PYTHON_DEPS}"
 # There are no file collisions between these versions but having :0
@@ -70,11 +69,6 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
-
-python_check_deps() {
-	! use test \
-		|| has_version "dev-python/lit[${PYTHON_USEDEP}]"
-}
 
 src_prepare() {
 	# Fix llvm-config for shared linking and sane flags
@@ -132,10 +126,6 @@ multilib_src_configure() {
 			-DGO_EXECUTABLE=GO_EXECUTABLE-NOTFOUND
 		)
 #	fi
-
-	use test && mycmakeargs+=(
-		-DLIT_COMMAND="${EPREFIX}/usr/bin/lit"
-	)
 
 	if multilib_is_native_abi; then
 		mycmakeargs+=(

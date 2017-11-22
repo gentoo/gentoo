@@ -25,6 +25,7 @@ IUSE="acl apparmor audit build cryptsetup curl elfutils +gcrypt gnuefi http
 	qrcode +seccomp selinux ssl sysv-utils test vanilla xkb"
 
 REQUIRED_USE="importd? ( curl gcrypt lzma )"
+RESTRICT="!test? ( test )"
 
 MINKV="3.11"
 

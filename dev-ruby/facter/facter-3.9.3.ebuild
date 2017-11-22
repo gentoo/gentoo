@@ -4,6 +4,7 @@
 EAPI=6
 USE_RUBY="ruby21 ruby22 ruby23 ruby24"
 
+# git-r3 goes after ruby-ng so that it overrides src_unpack properly
 inherit cmake-utils eutils multilib ruby-ng
 
 DESCRIPTION="A cross-platform ruby library for retrieving facts from operating systems"
@@ -44,6 +45,7 @@ src_prepare() {
 	sed -i 's/\${LIBFACTER_INSTALL_DESTINATION}\///g' lib/facter.rb.in || die
 	# patches
 	default
+	cmake-utils_src_prepare
 }
 
 src_configure() {

@@ -5,8 +5,8 @@ EAPI=6
 
 inherit toolchain-funcs
 
-DESCRIPTION="cpio-format archives"
-HOMEPAGE="http://members.chello.nl/k.holtman/afio.html"
+DESCRIPTION="Afio creates cpio-format archives."
+HOMEPAGE="http://members.chello.nl/k.holtman/afio.html https://github.com/kholtman/afio"
 SRC_URI="http://members.chello.nl/k.holtman/${P}.tgz"
 
 LICENSE="Artistic LGPL-2"

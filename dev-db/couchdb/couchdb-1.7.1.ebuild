@@ -11,11 +11,11 @@ SRC_URI="mirror://apache/couchdb/source/${PV}/apache-${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="libressl selinux test"
 
 RDEPEND=">=dev-libs/icu-4.3.1:=
-		<dev-lang/erlang-20.0[ssl]
+		<dev-lang/erlang-21.0[ssl]
 		!libressl? ( >=dev-libs/openssl-0.9.8j:0 )
 		libressl? ( dev-libs/libressl )
 		>=net-misc/curl-7.18.2

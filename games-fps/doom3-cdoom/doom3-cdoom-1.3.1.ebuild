@@ -14,7 +14,7 @@ HOMEPAGE="http://www.moddb.com/mods/classic-doom-3"
 SRC_URI="classic_doom_3_${PV//.}.zip"
 
 LICENSE="GameFront"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="dedicated opengl"
 RESTRICT="fetch bindist"
 

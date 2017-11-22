@@ -72,6 +72,8 @@ RDEPEND="${COMMON_DEPEND}
 	!app-office/calligra-l10n:4[calligra_features_krita(+)]
 "
 
+RESTRICT+=" test"
+
 PATCHES=( "${FILESDIR}"/${PN}-3.2.0-tests-optional.patch )
 
 src_configure() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ruby-utils.eclass
@@ -19,6 +19,7 @@ if [[ ! ${_RUBY_UTILS} ]]; then
 
 
 # @ECLASS-VARIABLE: RUBY_TARGETS_PREFERENCE
+# @INTERNAL
 # @DESCRIPTION:
 # This variable lists all the known ruby targets in preference of use as
 # determined by the ruby team. By using this ordering rather than the

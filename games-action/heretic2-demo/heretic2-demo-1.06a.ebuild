@@ -11,7 +11,7 @@ SRC_URI="mirror://lokigames/loki_demos/${PN}.run"
 
 LICENSE="LOKI-EULA"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 RESTRICT="strip"
 QA_TEXTRELS="${GAMES_PREFIX_OPT:1}/heretic2-demo/ref_glx.so"

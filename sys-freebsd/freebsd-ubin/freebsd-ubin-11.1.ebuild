@@ -107,8 +107,8 @@ pkg_preinst() {
 	# bison installs a /usr/bin/yacc symlink ...
 	# we need to remove it to avoid triggering
 	# collision-protect errors
-	if [[ -L ${ROOT}/usr/bin/yacc ]] ; then
-		rm -f "${ROOT}"/usr/bin/yacc
+	if [[ -L ${ROOT}/usr/bin/yacc ]]; then
+		rm -f "${ROOT}"/usr/bin/yacc || die
 	fi
 }
 
@@ -122,7 +122,7 @@ src_prepare() {
 	# Rename manpage for renamed ar
 	mv "${S}"/ar/ar.1 "${S}"/ar/freebsd-ar.1 || die
 	# Fix whereis(1) manpath search.
-	sed -i -e 's:"manpath -q":"manpath":' "${S}/whereis/pathnames.h"
+	sed -i -e 's:"manpath -q":"manpath":' "${S}/whereis/pathnames.h" || die
 
 	# Build a dynamic make
 	sed -i -e '/^NO_SHARED/ s/^/#/' "${S}"/bmake/Makefile.inc || die
@@ -158,7 +158,7 @@ src_compile() {
 
 src_install() {
 	cd "${S}"/calendar/calendars || die
-	for dir in $(find . -type d ! -name "." ) ; do
+	for dir in $(find . -type d ! -name "." ); do
 		dodir /usr/share/calendar/"$(basename ${dir})"
 	done
 
@@ -178,7 +178,7 @@ src_install() {
 
 	cd "${WORKDIR}/etc" || die
 	insinto /etc
-	doins remote phones opieaccess fbtab || die
+	doins remote phones opieaccess fbtab
 
 	exeinto /etc/cron.daily
 	newexe "${FILESDIR}/locate-updatedb-cron" locate.updatedb || die
@@ -197,7 +197,7 @@ pkg_postinst() {
 	# We need to ensure that login.conf.db is up-to-date.
 	if [[ -e "${ROOT}"etc/login.conf ]] ; then
 		einfo "Updating ${ROOT}etc/login.conf.db"
-		"${ROOT}"usr/bin/cap_mkdb	-f "${ROOT}"etc/login.conf "${ROOT}"etc/login.conf
+		"${ROOT}"usr/bin/cap_mkdb -f "${ROOT}"etc/login.conf "${ROOT}"etc/login.conf || die
 		elog "Remember to run cap_mkdb /etc/login.conf after making changes to it"
 	fi
 }
@@ -206,6 +206,6 @@ pkg_postrm() {
 	# and if we uninstall yacc but keep bison,
 	# lets restore the /usr/bin/yacc symlink
 	if [[ ! -e ${ROOT}/usr/bin/yacc ]] && [[ -e ${ROOT}/usr/bin/yacc.bison ]] ; then
-		ln -s yacc.bison "${ROOT}"/usr/bin/yacc
+		ln -s yacc.bison "${ROOT}"/usr/bin/yacc || die
 	fi
 }

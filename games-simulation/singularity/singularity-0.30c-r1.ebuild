@@ -13,7 +13,7 @@ SRC_URI="https://endgame-singularity.googlecode.com/files/${P}-src.tar.gz
 
 LICENSE="GPL-2 CC-BY-SA-2.5"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="+music"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

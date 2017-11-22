@@ -16,7 +16,7 @@ SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 
 IUSE="libressl"
 
@@ -36,6 +36,14 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 RESTRICT=test
 
 python_compile() {
+	# setup.py looks at platform.machine() to determine swig options.
+	# For exotic ABIs, we need to give swig a hint.
+	# https://bugs.gentoo.org/617946
+	# TODO: Fix cross-compiles
+	local -x SWIG_FEATURES=
+	case ${ABI} in
+		x32) SWIG_FEATURES="-D__ILP32__" ;;
+	esac
 	distutils-r1_python_compile --openssl="${EPREFIX}"/usr
 }
 

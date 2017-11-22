@@ -641,6 +641,14 @@ do_gcc_PIE_patches() {
 make_gcc_hard() {
 
 	local gcc_hard_flags=""
+
+	# If we use gcc-6 or newer with pie enable to compile older gcc we need to pass -no-pie
+	# to stage1; bug 618908
+	if ! tc_version_is_at_least 6.0 && [[ $(gcc-major-version) -ge 6 ]] ; then
+		einfo "Disabling PIE in stage1 (only) ..."
+		sed -i -e "/^STAGE1_LDFLAGS/ s/$/ -no-pie/" "${S}"/Makefile.in || die
+	fi
+
 	# Gcc >= 6.X we can use configurations options to turn pie/ssp on as default
 	if tc_version_is_at_least 6.0 ; then
 		if use pie ; then

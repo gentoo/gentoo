@@ -12,7 +12,7 @@ SRC_URI="http://www.ut-files.com/Patches/ut-install-436-GOTY.run
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="3dfx S3TC nls opengl"
 RESTRICT="mirror bindist"
 

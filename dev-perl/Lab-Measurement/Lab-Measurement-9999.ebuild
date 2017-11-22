@@ -53,6 +53,7 @@ RDEPEND="
 	>=dev-perl/TermReadKey-2.300.0
 	virtual/perl-Thread-Semaphore
 	virtual/perl-Time-HiRes
+	dev-perl/Time-Monotonic
 	>=dev-perl/Try-Tiny-0.220.0
 	>=dev-perl/YAML-LibYAML-0.410.0
 	virtual/perl-autodie

@@ -11,7 +11,7 @@ SRC_URI="https://github.com/freedoom/freedoom/releases/download/v${PV}/freedoom-
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
 DEPEND="app-arch/unzip"

@@ -13,7 +13,7 @@ SRC_URI="http://facelift.quakedev.com/download/${MY_SKINS}
 
 LICENSE="quake1-textures"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND=""

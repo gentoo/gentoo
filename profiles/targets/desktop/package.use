@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (19 Nov 2017)
+# Required by opengl, theora, v4l and X
+media-libs/mediastreamer video
+
 # Andreas Sturmlechner <asturm@gentoo.org> (04 Aug 2017)
 # Required by flac and mp3
 kde-apps/k3b taglib

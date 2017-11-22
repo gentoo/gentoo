@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/torcs/${P}.tar.bz2"
 
 LICENSE="GPL-2 FreeArt"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="media-libs/freealut
