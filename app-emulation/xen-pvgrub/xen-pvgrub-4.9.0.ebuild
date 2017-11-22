@@ -1,12 +1,12 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='xml,threads'
 
-inherit flag-o-matic eutils multilib python-single-r1 toolchain-funcs
+inherit eutils flag-o-matic multilib python-single-r1 toolchain-funcs
 
 XEN_EXTFILES_URL="http://xenbits.xensource.com/xen-extfiles"
 LIBPCI_URL=ftp://atrey.karlin.mff.cuni.cz/pub/linux/pci
@@ -29,10 +29,10 @@ SRC_URI="
 S="${WORKDIR}/xen-${PV}"
 
 DESCRIPTION="allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem"
-HOMEPAGE="http://xen.org/"
+HOMEPAGE="https://www.xenproject.org"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="custom-cflags"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -101,13 +101,13 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN/-pvgrub/}-4.3-externals.patch
 
 	# fix jobserver in Makefile
-	epatch "${FILESDIR}"/${PN}-4.2-jserver.patch
+	epatch "${FILESDIR}"/${PN}-4.8-jserver.patch
 
 	#Substitute for internal downloading. pciutils copied only due to the only .bz2
 	cp "${DISTDIR}"/pciutils-2.2.9.tar.bz2 ./stubdom/ || die "pciutils not copied to stubdom"
 	retar-externals || die "re-tar procedure failed"
 
-	epatch_user
+	default
 }
 
 src_configure() {
@@ -157,5 +157,5 @@ src_install() {
 pkg_postinst() {
 	elog "Official Xen Guide and the offical wiki page:"
 	elog "https://wiki.gentoo.org/wiki/Xen"
-	elog "http://wiki.xen.org/wiki/Main_Page"
+	elog "https://wiki.xen.org/wiki/Main_Page"
 }

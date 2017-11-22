@@ -1,12 +1,12 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='ncurses,xml,threads'
 
-inherit eutils bash-completion-r1 flag-o-matic multilib python-single-r1 toolchain-funcs versionator
+inherit bash-completion-r1 eutils flag-o-matic multilib python-single-r1 toolchain-funcs versionator
 
 MY_PV=${PV/_/-}
 MAJOR_V="$(get_version_component_range 1-2)"
@@ -54,7 +54,7 @@ else
 fi
 
 DESCRIPTION="Xen tools including QEMU and xl"
-HOMEPAGE="http://xen.org/"
+HOMEPAGE="https://www.xenproject.org"
 DOCS=( README docs/README.xen-bugtool )
 
 LICENSE="GPL-2"
@@ -62,7 +62,7 @@ SLOT="0/${MAJOR_V}"
 # Inclusion of IUSE ocaml on stabalizing requires maintainer of ocaml to (get off his hands and) make
 # >=dev-lang/ocaml-4 stable
 # Masked in profiles/eapi-5-files instead
-IUSE="api custom-cflags debug doc flask hvm +qemu ocaml ovmf +qemu-traditional +pam python pygrub screen sdl static-libs system-qemu system-seabios"
+IUSE="api custom-cflags debug doc flask hvm ocaml ovmf +pam pygrub python +qemu +qemu-traditional screen sdl static-libs system-qemu system-seabios"
 
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -71,6 +71,7 @@ REQUIRED_USE="
 	^^ ( qemu system-qemu )"
 
 COMMON_DEPEND="
+	sys-apps/pciutils
 	dev-libs/lzo:2
 	dev-libs/glib:2
 	dev-libs/yajl
@@ -81,6 +82,7 @@ COMMON_DEPEND="
 "
 
 DEPEND="${COMMON_DEPEND}
+	>=sys-kernel/linux-headers-4.11
 	dev-python/lxml[${PYTHON_USEDEP}]
 	x86? ( sys-devel/dev86
 		sys-power/iasl )
@@ -100,22 +102,16 @@ DEPEND="${COMMON_DEPEND}
 	dev-lang/perl
 	app-misc/pax-utils
 	doc? (
-		app-doc/doxygen
+		app-text/ghostscript-gpl
+		app-text/pandoc
 		dev-python/markdown[${PYTHON_USEDEP}]
-		dev-tex/latex2html[png,gif]
-		media-gfx/graphviz
-		dev-tex/xcolor
-		media-gfx/transfig
 		dev-texlive/texlive-latexextra
-		virtual/latex-base
-		dev-tex/latexmk
-		dev-texlive/texlive-latex
-		dev-texlive/texlive-pictures
-		dev-texlive/texlive-latexrecommended
+		media-gfx/transfig
 	)
 	hvm? ( x11-proto/xproto
 		!net-libs/libiscsi )
 	qemu? (
+		app-arch/snappy:=
 		x11-libs/pixman
 		sdl? ( media-libs/libsdl[X] )
 	)
@@ -133,8 +129,24 @@ RDEPEND="${COMMON_DEPEND}
 
 # hvmloader is used to bootstrap a fully virtualized kernel
 # Approved by QA team in bug #144032
-QA_WX_LOAD="usr/lib/xen/boot/hvmloader
-	usr/share/qemu-xen/qemu/s390-ccw.img"
+QA_WX_LOAD="
+	usr/libexec/xen/boot/hvmloader
+	usr/share/qemu-xen/qemu/s390-ccw.img
+	usr/share/qemu-xen/qemu/u-boot.e500
+"
+
+QA_PREBUILT="
+	usr/libexec/xen/bin/ivshmem-client
+	usr/libexec/xen/bin/ivshmem-server
+	usr/libexec/xen/bin/qemu-img
+	usr/libexec/xen/bin/qemu-io
+	usr/libexec/xen/bin/qemu-nbd
+	usr/libexec/xen/bin/qemu-system-i386
+	usr/libexec/xen/bin/virtfs-proxy-helper
+	usr/libexec/xen/libexec/xen-bridge-helper
+	usr/share/qemu-xen/qemu/s390-ccw.img
+	usr/share/qemu-xen/qemu/u-boot.e500
+"
 
 RESTRICT="test"
 
@@ -163,6 +175,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	local i
+
 	# Upstream's patchset
 	if [[ -n ${UPSTREAM_VER} ]]; then
 		einfo "Try to apply Xen Upstream patch set"
@@ -307,6 +321,10 @@ src_prepare() {
 	sed -e 's:\$QEMU_XEN -xen-domid:test -e "\$QEMU_XEN" \&\& &:' \
 		-i tools/hotplug/Linux/init.d/xencommons.in || die
 
+	# fix bashishm
+	sed -e '/Usage/s/\$//g' \
+		-i tools/hotplug/Linux/init.d/xendriverdomain.in || die
+
 	# respect multilib, usr/lib/libcacard.so.0.0.0
 	sed -e "/^libdir=/s/\/lib/\/$(get_libdir)/" \
 		-i tools/qemu-xen/configure || die
@@ -322,10 +340,7 @@ src_prepare() {
 		-e 's:^#vif.default.script=:vif.default.script=:' \
 		-i tools/examples/xl.conf  || die
 
-	# Bug #575868 converted to a sed statement, typo of one char
-	sed -e "s:granter’s:granter's:" -i xen/include/public/grant_table.h || die
-
-	epatch_user
+	default
 }
 
 src_configure() {
@@ -351,7 +366,6 @@ src_configure() {
 }
 
 src_compile() {
-	export VARTEXFONTS="${T}/fonts"
 	local myopt
 	use debug && myopt="${myopt} debug=y"
 
@@ -359,10 +373,13 @@ src_compile() {
 		append-flags -fno-strict-overflow
 	fi
 
-	emake V=1 CC="$(tc-getCC)" LD="$(tc-getLD)" AR="$(tc-getAR)" RANLIB="$(tc-getRANLIB)" -C tools ${myopt}
+	emake CC="$(tc-getCC)" LD="$(tc-getLD)" AR="$(tc-getAR)" RANLIB="$(tc-getRANLIB)" build-tools ${myopt}
 
-	use doc && emake -C docs txt html
-	emake -C docs man-pages
+	if use doc; then
+		emake -C docs build
+	else
+		emake -C docs man-pages
+	fi
 }
 
 src_install() {
@@ -377,34 +394,30 @@ src_install() {
 	emake DESTDIR="${ED}" DOCDIR="/usr/share/doc/${PF}" \
 		XEN_PYTHON_NATIVE_INSTALL=y install-tools
 
+	# Created at runtime
+	rm -rv "${ED%/}/var/run" || die
+
 	# Fix the remaining Python shebangs.
 	python_fix_shebang "${D}"
 
 	# Remove RedHat-specific stuff
 	rm -rf "${D}"tmp || die
 
-	if use doc; then
-		emake DESTDIR="${D}" DOCDIR="/usr/share/doc/${PF}" install-docs
-
-		dohtml -r docs/
-		docinto pdf
-		dodoc ${DOCS[@]}
-		[ -d "${D}"/usr/share/doc/xen ] && mv "${D}"/usr/share/doc/xen/* "${D}"/usr/share/doc/${PF}/html
-	fi
-
-	rm -rf "${D}"/usr/share/doc/xen/
-	doman docs/man?/*
+	emake DESTDIR="${D}" DOCDIR="/usr/share/doc/${PF}" install-docs
+	use doc && dodoc -r docs/{pdf,txt}
+	dodoc ${DOCS[@]}
 
 	newconfd "${FILESDIR}"/xendomains.confd xendomains
 	newconfd "${FILESDIR}"/xenstored.confd xenstored
 	newconfd "${FILESDIR}"/xenconsoled.confd xenconsoled
 	newinitd "${FILESDIR}"/xendomains.initd-r2 xendomains
-	newinitd "${FILESDIR}"/xenstored.initd xenstored
+	newinitd "${FILESDIR}"/xenstored.initd-r1 xenstored
 	newinitd "${FILESDIR}"/xenconsoled.initd xenconsoled
 	newinitd "${FILESDIR}"/xencommons.initd xencommons
 	newconfd "${FILESDIR}"/xencommons.confd xencommons
 	newinitd "${FILESDIR}"/xenqemudev.initd xenqemudev
 	newconfd "${FILESDIR}"/xenqemudev.confd xenqemudev
+	newinitd "${FILESDIR}"/xen-watchdog.initd xen-watchdog
 
 	if use screen; then
 		cat "${FILESDIR}"/xendomains-screen.confd >> "${D}"/etc/conf.d/xendomains || die
@@ -428,7 +441,7 @@ src_install() {
 pkg_postinst() {
 	elog "Official Xen Guide and the offical wiki page:"
 	elog "https://wiki.gentoo.org/wiki/Xen"
-	elog "http://wiki.xen.org/wiki/Main_Page"
+	elog "https://wiki.xen.org/wiki/Main_Page"
 	elog ""
 	elog "Recommended to utilise the xencommons script to config sytem At boot"
 	elog "Add by use of rc-update on completion of the install"
@@ -444,6 +457,6 @@ pkg_postinst() {
 		elog "The qemu-bridge-helper is renamed to the xen-bridge-helper in the in source"
 		elog "build of qemu.  This allows for app-emulation/qemu to be emerged concurrently"
 		elog "with the qemu capable xen.  It is up to the user to distinguish between and utilise"
-		elog "the qemu-bridge-helper and the xen-bridge-helper.  File bugs of any issues that arise"
+		elog "the qemu-bridge-helper and the xen-bridge-helper. File bugs of any issues that arise"
 	fi
 }

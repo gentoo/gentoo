@@ -1,14 +1,14 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils multilib mount-boot flag-o-matic python-any-r1 toolchain-funcs
+inherit eutils flag-o-matic mount-boot multilib python-any-r1 toolchain-funcs
 
 MY_PV=${PV/_/-}
-MY_P=${PN}-${PV/_/-}
+MY_P=${PN}-${MY_PV}
 
 if [[ $PV == *9999 ]]; then
 	inherit git-r3
@@ -34,7 +34,7 @@ else
 fi
 
 DESCRIPTION="The Xen virtual machine monitor"
-HOMEPAGE="http://xen.org/"
+HOMEPAGE="https://www.xenproject.org"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="custom-cflags debug efi flask"
@@ -97,6 +97,7 @@ src_prepare() {
 
 		source "${WORKDIR}"/patches-security/${PV}.conf
 
+		local i
 		for i in ${XEN_SECURITY_MAIN}; do
 			epatch "${WORKDIR}"/patches-security/xen/$i
 		done
@@ -132,16 +133,7 @@ src_prepare() {
 			-i {} \; || die "failed to re-set custom-cflags"
 	fi
 
-	# remove -Werror for gcc-4.6's sake
-	find "${S}" -name 'Makefile*' -o -name '*.mk' -o -name 'common.make' | \
-		xargs sed -i 's/ *-Werror */ /'
-	# not strictly necessary to fix this
-	sed -i 's/, "-Werror"//' "${S}/tools/python/setup.py" || die "failed to re-set setup.py"
-
-	# Bug #575868 converted to a sed statement, typo of one char
-	sed -e "s:granter’s:granter's:" -i xen/include/public/grant_table.h || die
-
-	epatch_user
+	default
 }
 
 src_configure() {
@@ -180,9 +172,8 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "Official Xen Guide and the unoffical wiki page:"
+	elog "Official Xen Guide:"
 	elog " https://wiki.gentoo.org/wiki/Xen"
-	elog " http://en.gentoo-wiki.com/wiki/Xen/"
 
 	use efi && einfo "The efi executable is installed in boot/efi/gentoo"
 
