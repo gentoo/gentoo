@@ -8,6 +8,6 @@
 <use>
 	<flag name="berkdb">build programs that use berkdb (just arpd)</flag>
 	<flag name="iptables">include support for iptables filtering</flag>
-	<flag name="minimal">only install ip and tc programs</flag>
+	<flag name="minimal">only install ip and tc programs, without eBPF support</flag>
 </use>
 </pkgmetadata>
