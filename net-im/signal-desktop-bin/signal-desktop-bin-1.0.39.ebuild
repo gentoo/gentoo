@@ -5,7 +5,7 @@ EAPI=6
 
 MY_PN="${PN/-bin/}"
 
-inherit gnome2-utils unpacker xdg-utils
+inherit gnome2-utils unpacker xdg-utils pax-utils
 
 DESCRIPTION="Signal Desktop"
 HOMEPAGE="https://signal.org/ https://github.com/WhisperSystems/Signal-Desktop"
@@ -34,6 +34,7 @@ S="${WORKDIR}"
 src_install() {
 	doins -r .
 	fperms +x /opt/Signal/signal-desktop
+	pax-mark m opt/Signal/signal-desktop
 
 	dosym ../../opt/Signal/${MY_PN} /usr/bin/${MY_PN}
 }
