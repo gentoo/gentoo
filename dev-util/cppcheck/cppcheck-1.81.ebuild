@@ -5,15 +5,15 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
-inherit distutils-r1 flag-o-matic qmake-utils toolchain-funcs git-r3
+inherit distutils-r1 flag-o-matic qmake-utils toolchain-funcs
 
 DESCRIPTION="static analyzer of C/C++ code"
 HOMEPAGE="http://cppcheck.sourceforge.net"
-EGIT_REPO_URI="https://github.com/danmar/cppcheck.git"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~x86"
 IUSE="htmlreport pcre qt5"
 
 RDEPEND="
