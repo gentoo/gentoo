@@ -81,7 +81,7 @@ RDEPEND="${COMMON_DEPEND}
 	latex? (
 		media-gfx/pstoedit[plotutils]
 		app-text/dvipsk
-		app-text/texlive
+		app-text/texlive-core
 	)
 	postscript? ( app-text/ghostscript-gpl )
 "
