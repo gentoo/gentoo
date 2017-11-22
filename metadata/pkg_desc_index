@@ -8275,7 +8275,7 @@ dev-python/pyasn1-modules 0.0.5-r1 0.0.8 0.0.10 0.1.4 0.1.5: pyasn1 modules
 dev-python/pyatspi 2.20.3 2.24.0: Python binding to at-spi library
 dev-python/pyaudio 0.2.8 0.2.11: Python bindings for PortAudio
 dev-python/pyavm 0.9.4: Python module for Astronomy Visualization Metadata i/o
-dev-python/pyblake2 0.9.3 1.0.0: BLAKE2 hash function extension module
+dev-python/pyblake2 0.9.3 1.0.1: BLAKE2 hash function extension module
 dev-python/pybloomfiltermmap 0.3.11-r1 0.3.14 0.3.15: A Bloom filter (bloomfilter) for Python built on mmap
 dev-python/pybluez 0.18-r1 0.22: Python bindings for Bluez Bluetooth Stack
 dev-python/pycadf 2.5.0 2.6.0: python implementation of DMTF Cloud Audit (CADF) data model
@@ -16484,7 +16484,7 @@ sci-libs/libaec 0.3.2 1.0.0 1.0.1: Adaptive Entropy Coding library
 sci-libs/libbufr 000405: ECMWF BUFR library - includes both C and Fortran example utilities
 sci-libs/libccd 2.0 9999: Library for collision detection between two convex shapes
 sci-libs/libccp4 6.4.6: The CCP4 C and F77 subroutine library
-sci-libs/libcerf 1.3 1.4: library that provides an efficient and accurate implementation of complex error functions
+sci-libs/libcerf 1.3 1.4 1.5: efficient and accurate implementation of complex error functions
 sci-libs/libcmatrix 3.11.0-r1: lite version of pNMRsim
 sci-libs/libcore 2.1.1-r1: Robust numerical and geometric computation library
 sci-libs/libctl 3.1 3.2: Guile-based library for scientific simulations
