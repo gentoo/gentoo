@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -45,8 +45,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	validate_desktop_entries
-
 	elog "You need to emerge sys-apps/iproute2 on the machine"
 	elog "that will run the firewall script."
 }
