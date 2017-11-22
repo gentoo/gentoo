@@ -23,6 +23,8 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig"
 
+HTML_DOCS="doc/xwxapt.html"
+
 src_prepare() {
 	eapply_user
 	# suppress -Weverything flag
@@ -34,7 +36,6 @@ src_prepare() {
 
 src_install() {
 	default
-	dohtml doc/xwxapt.html
 	insinto /usr/share/${PN}
 	doins xwxapt/xwxaptrc
 	doins xwxapt/xwxapt.glade
