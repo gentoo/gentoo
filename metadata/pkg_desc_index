@@ -1293,7 +1293,7 @@ app-emulation/crossover-bin 12.5.0-r2 12.5.1-r2 13.0.0-r2 13.0.1-r2 13.1.0-r2 13
 app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/diskimage-builder 1.28.0 2.9.0: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.0.0-r1: DLX Simulator
-app-emulation/docker 17.06.2 17.09.0 17.10.0 9999: The core functions you need to create Docker images and run Docker containers
+app-emulation/docker 17.06.2 17.09.0 17.10.0 17.11.0 9999: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-bench-security 1.3.2 1.3.3: Test for best practices around deploying docker containers
 app-emulation/docker-compose 1.16.1-r1 1.17.1: Multi-container orchestration for Docker
 app-emulation/docker-gc 9999: Docker garbage collection of containers and images
@@ -17550,7 +17550,7 @@ sys-cluster/kube-apiserver 1.8.1 1.8.2 1.8.3: Kubernetes API server
 sys-cluster/kube-controller-manager 1.8.1 1.8.2 1.8.3: Kubernetes Controller Manager
 sys-cluster/kube-proxy 1.8.1 1.8.2 1.8.3: Kubernetes Proxy service
 sys-cluster/kube-scheduler 1.8.1 1.8.2 1.8.3: Kubernetes Controller Manager
-sys-cluster/kubectl 1.8.1 1.8.2 1.8.3: CLI to run commands against Kubernetes clusters
+sys-cluster/kubectl 1.8.3 1.8.4: CLI to run commands against Kubernetes clusters
 sys-cluster/kubelet 1.8.1 1.8.2 1.8.3: Kubernetes Node Agent
 sys-cluster/legion 16.08.0-r1 16.10.0 17.02.0 17.05.0 17.08.0 17.10.0 9999: A data-centric parallel programming system
 sys-cluster/libccs 3.1.5 3.2.0: Cluster Configuration System Library
@@ -18421,7 +18421,7 @@ www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 52.2.0 52.4.0 52.5.0 57.0: Firefox Web Browser
 www-client/firefox-bin 52.5.0 57.0: Firefox Web Browser
 www-client/google-chrome 62.0.3202.94: The web browser from Google
-www-client/google-chrome-beta 63.0.3239.52: The web browser from Google
+www-client/google-chrome-beta 63.0.3239.59: The web browser from Google
 www-client/google-chrome-unstable 64.0.3269.3: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2 3.49.1 3.49.2-r1: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
@@ -18471,7 +18471,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.30.0 1.30.2 1.30.2-r1: Capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 27.0.0.187: Adobe Flash Player
-www-plugins/chrome-binary-plugins 62.0.3202.94 63.0.3239.52_beta 64.0.3269.3_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 62.0.3202.94 63.0.3239.59_beta 64.0.3269.3_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3 0.3.7: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20160329-r1: GNU Flash movie player that supports many SWF v7,8,9 features
