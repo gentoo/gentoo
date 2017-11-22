@@ -15,34 +15,44 @@ SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="doc test"
 
-CDEPEND=">dev-python/oslotest-1.10.0[${PYTHON_USEDEP}]"
-CRDEPEND=">=dev-python/pbr-1.8[${PYTHON_USEDEP}]"
+CDEPEND=">=dev-python/pbr-2.0.0[${PYTHON_USEDEP}]
+	!~dev-python/pbr-2.1.0[${PYTHON_USEDEP}]"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	${CRDEPEND}
+	${CDEPEND}
 	test? (
-		${CDEPEND}
 		>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
-		>=dev-python/coverage-3.6[${PYTHON_USEDEP}]
-		>=dev-python/oslo-config-3.14.0[${PYTHON_USEDEP}]
+		>=dev-python/oslotest-1.10.0[${PYTHON_USEDEP}]
+		>=dev-python/coverage-4.0[${PYTHON_USEDEP}]
+		!~dev-python/coverage-4.4[${PYTHON_USEDEP}]
+		>=dev-python/testscenarios-0.4[${PYTHON_USEDEP}]
+		>=dev-python/oslo-config-4.0.0[${PYTHON_USEDEP}]
+		!~dev-python/oslo-config-4.3.0[${PYTHON_USEDEP}]
+		!~dev-python/oslo-config-4.4.0[${PYTHON_USEDEP}]
 	)
 	doc? (
-		${CDEPEND}
-		>=dev-python/oslo-sphinx-2.5.0[${PYTHON_USEDEP}]
-		!~dev-python/oslo-sphinx-3.4.0[${PYTHON_USEDEP}]
-		>=dev-python/sphinx-1.1.2[${PYTHON_USEDEP}]
-		!~dev-python/sphinx-1.2.0[${PYTHON_USEDEP}]
-		<dev-python/sphinx-1.3[${PYTHON_USEDEP}]
+		>=dev-python/oslotest-1.10.0[${PYTHON_USEDEP}]
+		>=dev-python/openstackdocstheme-1.16.0[${PYTHON_USEDEP}]
+		>=dev-python/sphinx-1.2.1[${PYTHON_USEDEP}]
+		<dev-python/sphinx-1.4[${PYTHON_USEDEP}]
+		>=dev-python/reno-1.8.0[${PYTHON_USEDEP}]
+		!~dev-python/reno-2.3.1[${PYTHON_USEDEP}]
 	)
 "
 RDEPEND="
-	${CRDEPEND}
+	${CDEPEND}
 	>=dev-python/Babel-2.3.4[${PYTHON_USEDEP}]
+	!~dev-python/Babel-2.4.0[${PYTHON_USEDEP}]
 	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
 "
+
+python_prepare_all() {
+	sed -i '/^hacking/d' test-requirements.txt || die
+	distutils-r1_python_prepare_all
+}
 
 python_compile_all() {
 	use doc && esetup.py build_sphinx
