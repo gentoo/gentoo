@@ -14280,7 +14280,7 @@ net-analyzer/cacti-spine 0.8.8h 1.1.20 1.1.21 1.1.25: Spine is a fast poller for
 net-analyzer/calamaris 2.59 2.99.4.0: Calamaris parses the logfiles of a wide variety of Web proxy servers and generates reports
 net-analyzer/carl 0.9-r2: An rsync logfile analyzer
 net-analyzer/cbm 0.1-r1: Display the current traffic on all network devices
-net-analyzer/chaosreader 0.94 0.94-r1: A tool to trace TCP/UDP/... sessions and fetch application data from snoop or tcpdump logs
+net-analyzer/chaosreader 0.94 0.94-r1: Trace TCP/UDP/... sessions and fetch application data.
 net-analyzer/check_mk 1.2.4_p5-r1 1.2.8_p16: General purpose Nagios/Icinga plugin for retrieving data
 net-analyzer/check_mk_agent 1.2.8_p16: Agent to report data to Check_MK for monitoring
 net-analyzer/cloudshark 1.0.2.174 1.0.3.180 1.0.4: Easily upload your wireshark captures to CloudShark
@@ -17547,7 +17547,7 @@ sys-cluster/ipvsadm 1.21-r1 1.24 1.26-r2 1.27-r1 1.28: utility to administer the
 sys-cluster/keepalived 1.2.24 1.3.5: A strong & robust keepalive facility to the Linux Virtual Server project
 sys-cluster/knem 1.1.1 9999: High-Performance Intra-Node MPI Communication
 sys-cluster/kube-apiserver 1.8.3 1.8.4: Kubernetes API server
-sys-cluster/kube-controller-manager 1.8.1 1.8.2 1.8.3: Kubernetes Controller Manager
+sys-cluster/kube-controller-manager 1.8.3 1.8.4: Kubernetes Controller Manager
 sys-cluster/kube-proxy 1.8.3 1.8.4: Kubernetes Proxy service
 sys-cluster/kube-scheduler 1.8.3 1.8.4: Kubernetes Controller Manager
 sys-cluster/kubectl 1.8.3 1.8.4: CLI to run commands against Kubernetes clusters

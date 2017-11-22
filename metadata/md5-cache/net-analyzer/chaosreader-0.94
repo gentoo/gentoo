@@ -1,12 +1,12 @@
 DEFINED_PHASES=install prepare
 DEPEND=>=dev-lang/perl-5.8.0
-DESCRIPTION=A tool to trace TCP/UDP/... sessions and fetch application data from snoop or tcpdump logs
+DESCRIPTION=Trace TCP/UDP/... sessions and fetch application data.
 EAPI=2
-HOMEPAGE=http://users.tpg.com.au/bdgcvb/chaosreader.html
+HOMEPAGE=http://chaosreader.sourceforge.net
 KEYWORDS=~amd64 ~ppc x86 ~amd64-linux ~x86-linux ~x86-macos
 LICENSE=GPL-2
 RDEPEND=>=dev-lang/perl-5.8.0
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~spock/portage/distfiles/chaosreader-0.94.bz2
 _eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=fd1d7566c72cf4e5e4fd72de9934208c
+_md5_=82ec3fb8fd2871761e4b80f3c536bd68
