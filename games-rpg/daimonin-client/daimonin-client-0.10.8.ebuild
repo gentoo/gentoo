@@ -14,7 +14,6 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug music"
-REQUIRED_USE="music"
 
 RDEPEND="
 	dev-games/physfs
