@@ -4,10 +4,10 @@ DESCRIPTION=Mock a DNS Resolver object for testing
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Net-DNS-Resolver-Mock/
 IUSE=test
-KEYWORDS=~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-perl/Net-DNS dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/M/MB/MBRADSHAW/Net-DNS-Resolver-Mock-1.20171031.tar.gz
 _eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
-_md5_=8e8ee8a661d15ee29cb0330b2c625ea4
+_md5_=191ff4f8714b251554afd71597aca4d9
