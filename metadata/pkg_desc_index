@@ -2234,7 +2234,7 @@ app-text/cmark 0.27.1 0.28.0: CommonMark parsing and rendering library and progr
 app-text/cmigemo 1.3c 1.3c-r1 1.3c-r2: C/Migemo -- Migemo library implementation in C
 app-text/code2html 0.9.1-r2: Converts source files to colored HTML output
 app-text/convertlit 1.8-r1 1.8-r3: CLit converts MS ebook .lit files to .opf (xml+html+png+jpg)
-app-text/convmv 2.01 2.03: convert filenames to utf8 or any other charset
+app-text/convmv 2.01 2.03 2.04: convert filenames to utf8 or any other charset
 app-text/cook 1.0.2-r1: Embedded language which can be used as a macro preprocessor
 app-text/coolreader 3.1.2.71-r2: CoolReader - reader of eBook files (fb2,epub,htm,rtf,txt)
 app-text/cpdf 2.1.1-r1: A command line tool for manipulating PDF files
@@ -2410,7 +2410,7 @@ app-text/pep 2.8-r1: General purpose filter and file cleaning program
 app-text/pinfo 0.6.10-r5 0.6.10-r6: Hypertext info and man viewer based on (n)curses
 app-text/po4a 0.45-r3 0.47-r1: Tools for helping translation of documentation
 app-text/podofo 0.9.6_pre20170508-r1 0.9.6_pre20171027: PoDoFo is a C++ library to work with the PDF file format
-app-text/poppler 0.45.0 0.57.0 0.58.0 0.59.0 0.60.1 0.61.1 9999: PDF rendering library based on the xpdf-3.0 code base
+app-text/poppler 0.57.0 0.58.0 0.59.0 0.60.1 0.61.1 9999: PDF rendering library based on the xpdf-3.0 code base
 app-text/poppler-data 0.4.7 0.4.8: Data files for poppler to support uncommon encodings without xpdfrc
 app-text/ps2eps 1.68: Generate Encapsulated Postscript Format files from one-page Postscript documents
 app-text/ps2pkm 1.5_p20120701 1.7_p20150521 1.8_p20160523 1.8_p20170524: Tool that converts a PostScript type1 font into a corresponding TeX PK font
