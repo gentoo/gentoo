@@ -188,7 +188,6 @@ app-editors/emacs-vcs:25 xwidgets
 
 # Matt Turner <mattst88@gentoo.org> (26 Jan 2017)
 # x11-drivers/ati-drivers is masked for removal.
-media-gfx/blender opencl
 media-libs/opensubdiv opencl
 
 # Ian Stakenvicius (25 Jan 2017)
