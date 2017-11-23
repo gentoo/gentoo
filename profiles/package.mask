@@ -99,11 +99,6 @@ media-plugins/vdr-alcd
 # See also bug #624046. Masked for removal on 2017-12-12
 sci-geosciences/gmapcatcher
 
-# Matt Turner <mattst88@gentoo.org> (08 Nov 2017)
-# Vulnerable to CVE-2017-13720, CVE-2017-13722 (bug #634044). Only in tree for
-# masked xorg-server-1.12.
-<x11-libs/libXfont-1.5.0
-
 # Brian Evans <grknight@gentoo.org> (07 Nov 2017)
 # Remote service removed this method, dead upstream
 # Masked for removal in 30 days.
@@ -207,13 +202,6 @@ sys-devel/autoconf:2.63
 sys-devel/autoconf:2.65
 sys-devel/autoconf:2.67
 sys-devel/autoconf:2.68
-
-# Matt Turner <mattst88@gentoo.org> (21 Oct 2017)
-# The 1.12 and 1.15 branches are no longer supported and remain vulnerable to
-# various CVEs (CVE-2013-6424, bug #493294 and CVE-2017-2624 bug #611350 just
-# to name a few). They remain in tree only for old nvidia-drivers 96 and 173.
-<x11-base/xorg-server-1.19.2
-<x11-base/xorg-drivers-1.19
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (20 Oct 2017)
 # Doesn't build with glibc-2.25, doesn't build, needs a
