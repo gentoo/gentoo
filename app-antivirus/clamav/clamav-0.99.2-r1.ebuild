@@ -7,7 +7,6 @@ inherit autotools eutils flag-o-matic user systemd
 
 DESCRIPTION="Clam Anti-Virus Scanner"
 HOMEPAGE="http://www.clamav.net/"
-# no longer on sf.net from 0.99.2 onwards
 SRC_URI="https://www.clamav.net/downloads/production/${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -40,6 +39,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-gcc-6.patch
 	"${FILESDIR}"/${P}-tinfo.patch
 	"${FILESDIR}"/${PN}-0.99-zlib.patch
+	"${FILESDIR}"/${P}-bytecode_api.patch
 )
 
 pkg_setup() {
@@ -140,6 +140,10 @@ src_install() {
 	done
 
 	prune_libtool_files --all
+}
+
+src_test() {
+	emake quick-check
 }
 
 pkg_postinst() {
