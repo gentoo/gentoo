@@ -20,7 +20,11 @@ RDEPEND="
 	>=dev-libs/tinyxml2-2
 	htmlreport? ( dev-python/pygments[${PYTHON_USEDEP}] )
 	pcre? ( dev-libs/libpcre )
-	qt5? ( dev-qt/qtgui:5 )
+	qt5? (
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtprintsupport:5
+	)
 "
 DEPEND="${RDEPEND}
 	app-text/docbook-xsl-stylesheets
