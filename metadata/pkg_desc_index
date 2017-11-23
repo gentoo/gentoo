@@ -10352,15 +10352,15 @@ dev-util/boost-build 1.62.0-r1 1.63.0 1.65.0: A system for large project softwar
 dev-util/bsdiff 4.3-r3: bsdiff: Binary Differencer using a suffix alg
 dev-util/btyacc 3.0-r2: Backtracking YACC - modified from Berkeley YACC
 dev-util/build 0.3.10: A massively-parallel software build system implemented on top of GNU make
-dev-util/buildbot 0.8.12-r3 0.9.10 0.9.11 0.9.12 9999: BuildBot build automation system
-dev-util/buildbot-console-view 0.9.10 0.9.11 0.9.12: Buildbot console-view plugin
-dev-util/buildbot-grid-view 0.9.11 0.9.12_p1: BuildBot grid view web interface
-dev-util/buildbot-pkg 0.9.10 0.9.11 0.9.12: BuildBot common www build tools for packaging releases
+dev-util/buildbot 0.8.12-r3 0.9.10 0.9.11 0.9.12 0.9.13 9999: BuildBot build automation system
+dev-util/buildbot-console-view 0.9.10 0.9.11 0.9.12 0.9.13: Buildbot console-view plugin
+dev-util/buildbot-grid-view 0.9.11 0.9.12_p1 0.9.13: BuildBot grid view web interface
+dev-util/buildbot-pkg 0.9.10 0.9.11 0.9.12 0.9.13: BuildBot common www build tools for packaging releases
 dev-util/buildbot-slave 0.8.12: BuildBot Slave Daemon
-dev-util/buildbot-waterfall-view 0.9.10 0.9.11 0.9.12: Buildbot waterfall-view plugin
-dev-util/buildbot-worker 0.9.10-r2 0.9.11 0.9.12 9999: BuildBot Worker (slave) Daemon
-dev-util/buildbot-wsgi-dashboards 0.9.11 0.9.12: Buildbot plugin to integrate flask or bottle dashboards to buildbot UI
-dev-util/buildbot-www 0.9.10 0.9.11 0.9.12: BuildBot base web interface, use with buildbot-{console-view,waterfall-view}...
+dev-util/buildbot-waterfall-view 0.9.10 0.9.11 0.9.12 0.9.13: Buildbot waterfall-view plugin
+dev-util/buildbot-worker 0.9.10-r2 0.9.11 0.9.12 0.9.13 9999: BuildBot Worker (slave) Daemon
+dev-util/buildbot-wsgi-dashboards 0.9.11 0.9.12 0.9.13: Buildbot plugin to integrate flask or bottle dashboards to buildbot UI
+dev-util/buildbot-www 0.9.10 0.9.11 0.9.12 0.9.13: BuildBot base web interface, use with buildbot-{console-view,waterfall-view}...
 dev-util/bumpversion 0.5.3: Version-bump your software with a single command
 dev-util/bustle 0.4.2-r1 0.4.7-r1 0.5.4: Draw sequence diagrams of D-Bus traffic
 dev-util/byacc 20170201 20170709: the best variant of the Yacc parser generator
