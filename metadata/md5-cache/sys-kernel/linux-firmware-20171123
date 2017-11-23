@@ -9,4 +9,4 @@ RDEPEND=!savedconfig? ( !sys-firmware/alsa-firmware[alsa_cards_ca0132] !sys-firm
 SLOT=0
 SRC_URI=https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/snapshot/linux-firmware-90436ce9f11152483b35aac58dec7f99d52821aa.tar.gz -> linux-firmware-20171123.tar.gz
 _eclasses_=portability	2b88d3ecc35035a3b8ab628b49cafb0e	savedconfig	e6948c872ff47e15a10e5ad1be15c18e
-_md5_=81a33ad7762bc422f8129a3399680021
+_md5_=ed37b6792389ae89c145a0a3b806df72
