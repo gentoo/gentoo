@@ -869,10 +869,6 @@ optfeature() {
 	fi
 }
 
-check_license() {
-	die "you no longer need this as portage supports ACCEPT_LICENSE itself"
-}
-
 case ${EAPI:-0} in
 0|1|2)
 
