@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 inherit eutils libtool multilib-minimal
 
 DESCRIPTION="A library to encapsulate CD-ROM reading and control"
@@ -9,8 +9,8 @@ HOMEPAGE="https://www.gnu.org/software/libcdio/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
-SLOT="0/15" # subslot is based on SONAME
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+SLOT="0/17" # subslot is based on SONAME
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE="cddb +cxx minimal static-libs test"
 
 RDEPEND="
@@ -34,6 +34,7 @@ MULTILIB_WRAPPED_HEADERS=(
 )
 
 src_prepare() {
+	default
 	sed \
 		-e "s:-lncurses:$($(tc-getPKG_CONFIG) --libs ncurses):g" \
 		-i configure || die
