@@ -64,6 +64,7 @@ src_configure() {
 		--enable-smack \
 		--with-cgroup-controller=openrc \
 		--disable-lto \
+		--without-kill-user-processes \
 		$(use_enable debug debug elogind) \
 		$(use_enable acl) \
 		$(use_enable pam) \

@@ -62,8 +62,9 @@ src_configure() {
 		--with-rootprefix="${EPREFIX}/" \
 		--with-rootlibexecdir="${EPREFIX}"/$(get_libdir)/elogind \
 		--enable-smack \
-		--disable-kdbus \
+		--with-cgroup-controller=openrc \
 		--disable-lto \
+		--without-kill-user-processes \
 		$(use_enable debug debug elogind) \
 		$(use_enable acl) \
 		$(use_enable pam) \
