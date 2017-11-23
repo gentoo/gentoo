@@ -17,11 +17,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Davide Pesavento <pesa@gentoo.org> (06 Jun 2016)
-# dev-qt/qtx11extras:5 not stable yet (bug 585228)
-media-video/vlc qt5
-x11-themes/qtcurve qt5
-
 # Pacho Ramos <pacho@gentoo.org> (02 Jul 2014)
 # Mask due Gnome3 not going to be stabilized on this arch
 dev-java/swt webkit
