@@ -18,7 +18,6 @@ CDEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtdbus:5
 	dev-qt/qtx11extras:5
-	kde-frameworks/kwindowsystem:5
 	x11-libs/libxcb
 	x11-libs/libXtst
 	x11-libs/xcb-util-image
