@@ -8458,7 +8458,7 @@ dev-python/pyside 1.2.2-r1: Python bindings for the Qt framework
 dev-python/pyside-tools 0.2.15-r1: PySide development tools (lupdate, rcc, uic)
 dev-python/pysmi 0.1.3: Python Lex & Yacc
 dev-python/pysnmp 4.3.3 4.4.1 4.4.2: Python SNMP library
-dev-python/pysnmp-apps 0.4.1 0.4.2: PySNMP applications
+dev-python/pysnmp-apps 0.4.2 0.5.1: PySNMP applications
 dev-python/pysnmp-mibs 0.1.6: SNMP framework in Python - MIBs
 dev-python/pysolr 3.3.2 3.5.0 3.6.0: Lightweight python wrapper for Apache Solr
 dev-python/pyspf 2.0.11 2.0.12: Python implementation of the Sender Policy Framework (SPF) protocol
@@ -10425,7 +10425,7 @@ dev-util/cyclo 2.1.0: Computes cyclomatic complexity metrics on C source code.
 dev-util/d-feet 0.3.10 0.3.11 0.3.12: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 12.10.1 15.04.0_p100: Run executables under a new DBus session for testing
 dev-util/ddd 3.3.12-r3 3.3.12-r4: Graphical front-end for command-line debuggers
-dev-util/debhelper 9.20160814 10.10.5 10.10.8: Collection of programs that can be used to automate common tasks in debian/rules
+dev-util/debhelper 9.20160814 10.10.5 10.10.8 10.10.9: Collection of programs that can be used to automate common tasks in debian/rules
 dev-util/debootstrap 1.0.87 1.0.89 1.0.91 1.0.92: Debian/Ubuntu bootstrap scripts
 dev-util/debugedit 5.3.5-r1: standalone debugedit taken from rpm
 dev-util/dejagnu 1.4.4-r3 1.5 1.6: Framework for testing other programs
@@ -10577,7 +10577,7 @@ dev-util/obs-service-update_source 20130802: Open Build Service client module - 
 dev-util/obs-service-verify_file 20130403: Open Build Service client module - verify_file service
 dev-util/omake 0.9.8.6.0_rc1 0.10.2 0.10.3: Make replacement
 dev-util/open-vcdiff 0.8.4-r1: An encoder/decoder for the VCDIFF (RFC3284) format
-dev-util/oprofile 0.9.9-r2 1.1.0-r1 1.2.0-r1: A transparent low-overhead system-wide profiler
+dev-util/oprofile 1.1.0-r1 1.2.0-r1: A transparent low-overhead system-wide profiler
 dev-util/osc 0.148.2 0.152.0 0.154.0 9999: Command line tool for Open Build Service
 dev-util/patchbin 20160208 99999999: Apply binary patches without git
 dev-util/patchelf 0.8 0.9: Small utility to modify the dynamic linker and RPATH of ELF executables
@@ -13289,7 +13289,7 @@ media-libs/sratom 0.4.4 0.4.6 0.6.0: Library for serialising LV2 atoms to/from R
 media-libs/stimg 0.1.0: Simple and tiny image loading library
 media-libs/stk 4.4.4-r1 4.5.0 4.5.1: Synthesis ToolKit in C++
 media-libs/stops 0.3.0 0.3.0-r1: Organ stops for aeolus by Fons Adriaensen <fons.adriaensen@skynet.be>
-media-libs/suil 0.8.2 0.8.4 0.10.0: Lightweight C library for loading and wrapping LV2 plugin UIs
+media-libs/suil 0.10.0: Lightweight C library for loading and wrapping LV2 plugin UIs
 media-libs/svgalib 1.9.25-r4 1.9.25-r5: A library for running svga graphics on the console
 media-libs/t1lib 5.1.2-r1: A Type 1 Font Rasterizer Library for UNIX/X11
 media-libs/taglib 1.11.1-r1: A library for reading and editing audio meta data
@@ -18432,7 +18432,7 @@ www-client/midori 0.5.11-r2: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.6: a free, open source web browser
 www-client/opera 12.16_p1860-r1 49.0.2725.34 49.0.2725.39: A fast and secure web browser
-www-client/opera-beta 50.0.2762.4 50.0.2762.9: A fast and secure web browser
+www-client/opera-beta 50.0.2762.9 50.0.2762.14: A fast and secure web browser
 www-client/opera-developer 51.0.2776.0 51.0.2781.0: A fast and secure web browser
 www-client/otter 0.9.91-r1 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0-r1 2.1.1: A headless WebKit scriptable with a JavaScript API
