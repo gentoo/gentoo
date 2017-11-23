@@ -411,7 +411,7 @@ function handle_footer() {
 #
 BEGIN {
 	state = "header"
-	reporting_bugs = "Please report bugs via http://bugs.gentoo.org/"
+	reporting_bugs = "Please report bugs via https://bugs.gentoo.org/"
 	vcs_url = "https://gitweb.gentoo.org/repo/gentoo.git/log/eclass/@ECLASS@"
 }
 
