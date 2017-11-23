@@ -64,6 +64,8 @@ RDEPEND="!savedconfig? (
 	)"
 #add anything else that collides to this
 
+QA_PREBUILT="lib/firmware/*"
+
 src_unpack() {
 	if [[ ${PV} == 99999999* ]]; then
 		git-2_src_unpack
