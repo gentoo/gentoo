@@ -314,36 +314,6 @@ _eutils_eprefix_init() {
 	has "${EAPI:-0}" 0 1 2 && : ${ED:=${D}} ${EPREFIX:=} ${EROOT:=${ROOT}}
 }
 
-# @FUNCTION: validate_desktop_entries
-# @USAGE: [directories]
-# @DESCRIPTION:
-# Validate desktop entries using desktop-file-utils
-validate_desktop_entries() {
-	eqawarn "validate_desktop_entries is deprecated and should be not be used."
-	eqawarn ".desktop file validation is done implicitly by Portage now."
-
-	_eutils_eprefix_init
-	if [[ -x "${EPREFIX}"/usr/bin/desktop-file-validate ]] ; then
-		einfo "Checking desktop entry validity"
-		local directories=""
-		for d in /usr/share/applications $@ ; do
-			[[ -d ${ED}${d} ]] && directories="${directories} ${ED}${d}"
-		done
-		if [[ -n ${directories} ]] ; then
-			for FILE in $(find ${directories} -name "*\.desktop" \
-							-not -path '*.hidden*' | sort -u 2>/dev/null)
-			do
-				local temp=$(desktop-file-validate ${FILE} | grep -v "warning:" | \
-								sed -e "s|error: ||" -e "s|${FILE}:|--|g" )
-				[[ -n $temp ]] && elog ${temp/--/${FILE/${ED}/}:}
-			done
-		fi
-		echo ""
-	else
-		einfo "Passing desktop entry validity check. Install dev-util/desktop-file-utils, if you want to help to improve Gentoo."
-	fi
-}
-
 # @FUNCTION: make_session_desktop
 # @USAGE: <title> <command> [command args...]
 # @DESCRIPTION:
