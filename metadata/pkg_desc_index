@@ -2045,7 +2045,7 @@ app-office/libreoffice 5.4.2.2 5.4.3.2 5.4.9999 9999: A full office productivity
 app-office/libreoffice-bin 5.4.2.2: A full office productivity suite. Binary package
 app-office/libreoffice-bin-debug 5.4.2.2: LibreOffice, a full office productivity suite. Binary package, debug info
 app-office/libreoffice-l10n 5.4.2.2 5.4.3.2: Translations for the Libreoffice suite
-app-office/lyx 2.0.8.1-r1 2.1.5-r1 2.2.2-r1 2.2.3 2.2.3-r1: WYSIWYM frontend for LaTeX, DocBook, etc.
+app-office/lyx 2.0.8.1-r1 2.1.5-r1 2.2.2-r1 2.2.3 2.2.3-r1 2.2.3-r2: WYSIWYM frontend for LaTeX, DocBook, etc.
 app-office/magicpoint 1.13a_p20121015-r1: An X11 based presentation tool
 app-office/mdbtools 0.7.1-r2: Set of libraries and utilities for reading Microsoft Access database (MDB) files
 app-office/multitalk 1.4-r1: A new type of presentation program
