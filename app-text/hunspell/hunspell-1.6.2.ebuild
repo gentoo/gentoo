@@ -8,7 +8,7 @@ MY_P=${PN}-${PV/_beta/b}
 
 DESCRIPTION="Hunspell spell checker - an improved replacement for myspell in OOo"
 SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-HOMEPAGE="http://hunspell.sourceforge.net/"
+HOMEPAGE="https://github.com/hunspell"
 
 SLOT="0/$(get_version_component_range 1-2)"
 LICENSE="MPL-1.1 GPL-2 LGPL-2.1"
