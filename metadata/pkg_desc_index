@@ -14893,7 +14893,7 @@ net-libs/ignition-transport 3.0.1: Combines ZeroMQ with Protobufs to create a fa
 net-libs/jreen 1.3.0: Qt XMPP library
 net-libs/kdav2 0.1.0: KJob based DAV protocol implementation
 net-libs/kimap2 0.1.1 0.2.0: Library for interacting with IMAP servers - successor of kimap
-net-libs/ldns 1.6.17 1.6.17-r1 1.7.0: a library with the aim to simplify DNS programming in C
+net-libs/ldns 1.6.17 1.6.17-r1 1.7.0-r1: a library with the aim to simplify DNS programming in C
 net-libs/liba53 9999: A5/3 Call encryption library
 net-libs/libaccounts-glib 1.21-r2 1.23: Accounts SSO (Single Sign-On) management library for GLib applications
 net-libs/libasr 1.0.1 1.0.1.201505061057 1.0.2: Async Resolver Library from OpenBSD/OpenSMTPD
