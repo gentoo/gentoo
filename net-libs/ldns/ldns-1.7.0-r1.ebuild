@@ -72,6 +72,12 @@ multilib_src_configure() {
 		# >=openssl-1.1.0 required for dane-ta
 }
 
+src_prepare() {
+	cd "$S"
+	epatch "${FILESDIR}/${P}-CVE-2017-1000231.patch"
+	epatch "${FILESDIR}/${P}-CVE-2017-1000232.patch"
+}
+
 multilib_src_compile() {
 	default
 
