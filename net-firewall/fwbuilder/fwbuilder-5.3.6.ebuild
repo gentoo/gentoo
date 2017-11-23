@@ -38,8 +38,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	validate_desktop_entries
-
 	elog "You need to emerge sys-apps/iproute2"
 	elog "in order to run the firewall script."
 }
