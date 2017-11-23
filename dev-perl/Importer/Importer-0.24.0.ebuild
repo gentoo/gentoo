@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Alternative interface to modules that export symbols"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="test"
 
 RDEPEND=""
