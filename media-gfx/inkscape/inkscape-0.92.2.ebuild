@@ -22,12 +22,6 @@ IUSE+=" lcms nls spell static-libs visio wpg"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-WPG_DEPS="
-	|| (
-		( app-text/libwpg:0.3 dev-libs/librevenge )
-		( app-text/libwpd:0.9 app-text/libwpg:0.2 )
-	)
-"
 COMMON_DEPEND="
 	${PYTHON_DEPS}
 	>=app-text/poppler-0.26.0:=[cairo]
@@ -52,7 +46,8 @@ COMMON_DEPEND="
 	>=x11-libs/pango-1.24
 	cdr? (
 		media-libs/libcdr
-		${WPG_DEPS}
+		app-text/libwpg:0.3
+		dev-libs/librevenge
 	)
 	dbus? ( dev-libs/dbus-glib )
 	exif? ( media-libs/libexif )
@@ -66,9 +61,13 @@ COMMON_DEPEND="
 	)
 	visio? (
 		media-libs/libvisio
-		${WPG_DEPS}
+		app-text/libwpg:0.3
+		dev-libs/librevenge
 	)
-	wpg? ( ${WPG_DEPS} )
+	wpg? (
+		app-text/libwpg:0.3
+		dev-libs/librevenge
+	)
 "
 
 # These only use executables provided by these packages
