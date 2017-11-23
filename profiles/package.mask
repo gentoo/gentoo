@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Jonas Stein <jstein@gentoo.org> (23 Nov 2017)
+# Depends on the AIM service which will be discontinued on 2017-12-15.
+# See also bug #638564. Masked for removal on 2017-12-20
+net-analyzer/aimsniff
+
 # Kent Fredric <kentnl@gentoo.org> (22 Nov 2017)
 # Long deprecated upstream in favour of dev-perl/Mail-SPF
 # Masked for removal in 30 days. Bug #638432
