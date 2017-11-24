@@ -134,7 +134,6 @@ video_cards_i740
 video_cards_intel
 video_cards_neomagic
 video_cards_newport
-video_cards_nsc
 video_cards_siliconmotion
 video_cards_sis
 video_cards_trident

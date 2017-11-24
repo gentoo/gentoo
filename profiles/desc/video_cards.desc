@@ -31,7 +31,6 @@ modesetting - VIDEO_CARDS setting to build driver for unaccelerated modesetting
 neomagic - VIDEO_CARDS setting to build driver for neomagic video cards
 newport - VIDEO_CARDS setting to build driver for newport video cards
 nouveau - VIDEO_CARDS setting to build reverse-engineered driver for nvidia cards
-nsc - VIDEO_CARDS setting to build driver for nsc video cards
 nvidia - VIDEO_CARDS setting to build driver for nvidia video cards
 nv - VIDEO_CARDS setting to build driver for nv video cards
 omap - VIDEO_CARDS setting to build DRM driver for TI OMAP video cards
