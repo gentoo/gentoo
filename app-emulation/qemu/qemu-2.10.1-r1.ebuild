@@ -286,7 +286,11 @@ pkg_pretend() {
 			ERROR_VHOST_NET+=" support"
 
 			if use amd64 || use x86 || use amd64-linux || use x86-linux; then
-				CONFIG_CHECK+=" ~KVM_AMD ~KVM_INTEL"
+				if grep -q AuthenticAMD /proc/cpuinfo; then
+					CONFIG_CHECK+=" ~KVM_AMD"
+				elif grep -q GenuineIntel /proc/cpuinfo; then
+					CONFIG_CHECK+=" ~KVM_INTEL"
+				fi
 			fi
 
 			use python && CONFIG_CHECK+=" ~DEBUG_FS"
