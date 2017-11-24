@@ -8943,7 +8943,7 @@ dev-python/typed-ast 1.1.0: A fork of Python 2 and 3 ast modules with type comme
 dev-python/typing 3.5.2.2 3.5.3.0 3.6.2: Type Hints for Python
 dev-python/tzlocal 1.2: tzinfo object for the local timezone
 dev-python/u-msgpack 2.3.0 2.4.1: A portable, lightweight MessagePack serializer and deserializer
-dev-python/uhashring 0.4: Full featured consistent hashing python library compatible with ketama
+dev-python/uhashring 1.0: Full featured consistent hashing python library compatible with ketama
 dev-python/ujson 1.33 1.35: Ultra fast JSON encoder and decoder for Python
 dev-python/uncertainties 3.0.1: Python module for calculations with uncertainties
 dev-python/uncompyle6 2.9.7 2.10.1: Python cross-version byte-code deparser
@@ -17884,7 +17884,7 @@ sys-kernel/raspberrypi-sources 4.4.9999 4.9.9999 4.10.9999 4.11.9999 4.12.9999 4
 sys-kernel/rt-sources 3.18.69_p75 4.1.42_p50 4.4.86_p99 4.9.47_p37 4.11.12_p13 4.11.12_p14 4.11.12_p16 4.13.7_p1 4.13.10_p3: Full Linux 4.13 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.6.5.4-r1 0.6.5.11 0.7.3 9999: The Solaris Porting Layer provides many of the Solaris kernel APIs
 sys-kernel/tuxonice-sources 3.4.110 3.4.111 3.4.112 3.10.100 3.10.101 3.12.56 3.12.58 3.12.60 3.14.64 3.14.67 3.14.70 3.18.28 3.18.31 3.18.34 4.1.19 4.1.22 4.1.24 4.2.8 4.3.6 4.4.5 4.4.8 4.4.11 4.5.2 4.5.4: TuxOnIce + Gentoo patchset sources
-sys-kernel/vanilla-sources 3.2.95 3.16.50 4.1.46 4.4.100 4.9.64 4.13.15: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 3.2.95 3.16.50 4.1.46 4.4.102 4.9.65 4.14.2: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/zen-sources 3.8.9999 3.9.9999 3.10.9999 3.11.9999 3.12.9999 3.13.9999: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
