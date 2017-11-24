@@ -16,7 +16,6 @@ epson - VIDEO_CARDS setting to build driver for epson video cards
 exynos - VIDEO_CARDS setting to build driver for Samsung Exynos video cards
 freedreno - VIDEO_CARDS setting to build reverse-engineered driver for Qualcomm Adreno cards
 fbdev - VIDEO_CARDS setting to build driver for fbdev video cards
-fglrx - VIDEO_CARDS setting to build driver for fglrx video cards
 geode - VIDEO_CARDS setting to build driver for AMD Geode GX and LX video cards
 glint - VIDEO_CARDS setting to build driver for glint video cards
 i128 - VIDEO_CARDS setting to build driver for Number 9 I128 video cards
