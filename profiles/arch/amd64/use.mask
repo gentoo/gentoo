@@ -118,7 +118,12 @@
 -input_devices_synaptics
 -input_devices_vmmouse
 -input_devices_wacom
+-video_cards_ast
+-video_cards_i915
+-video_cards_i965
+-video_cards_intel
 -video_cards_nvidia
+-video_cards_siliconmotion
 -video_cards_via
 -video_cards_virtualbox
 -video_cards_vmware
@@ -170,8 +175,6 @@ drac
 # 2006/02/05 - Donnie Berkholz <dberkholz@gentoo.org>
 # Modular X: mask for architectures on which they aren't available
 video_cards_i740
-video_cards_newport
-video_cards_nsc
 
 # 2004/06/22 - Taken from 2004.0 profile
 # masked

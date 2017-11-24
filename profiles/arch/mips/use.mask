@@ -101,16 +101,13 @@ fuse
 # Modular X: mask for architectures lacking direct rendering
 dri
 
-# James Le Cuirot <chewi@gentoo.org>
-# Unmask as Vivante is available for mips.
+# Available on for mips.
+-video_cards_newport
+-video_cards_siliconmotion
 -video_cards_vivante
 
 # Stephen P. Becker <geoman@gentoo.org>
--video_cards_newport
-
-# Stephen P. Becker <geoman@gentoo.org>
 # more modular X stuff
-video_cards_epson
 video_cards_tdfx
 video_cards_sunffb
 video_cards_mach64
@@ -149,7 +146,6 @@ video_cards_suncg6
 video_cards_sunleo
 video_cards_suntcx
 video_cards_trident
-video_cards_vmware
 video_cards_voodoo
 
 # Matt Turner <mattst88@gentoo.org>
@@ -160,11 +156,6 @@ video_cards_r200
 video_cards_r300
 video_cards_r600
 video_cards_radeonsi
-video_cards_i915
-video_cards_i965
-video_cards_ilo
-# vmware wasn't added with mesa-8.0, but it should still be masked
-video_cards_vmware
 
 # 2006/02/05 - Donnie Berkholz <dberkholz@gentoo.org>
 # Modular X: mask for architectures on which they aren't available
@@ -172,14 +163,11 @@ video_cards_apm
 video_cards_ark
 video_cards_i128
 video_cards_i740
-video_cards_intel
 video_cards_neomagic
-video_cards_nsc
 video_cards_rendition
 video_cards_tga
 video_cards_tseng
 video_cards_vesa
-video_cards_ast
 
 # Diego Pettenò <flameeyes@gentoo.org>
 # Until xine-lib's keywording can be maintained, please leave it masked.

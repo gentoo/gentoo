@@ -201,7 +201,6 @@ hdf5
 
 # 2006/02/05 - Donnie Berkholz <dberkholz@gentoo.org>
 # Modular X: mask for architectures on which they aren't available
-video_cards_nsc
 video_cards_s3
 video_cards_sis
 video_cards_tseng
@@ -212,25 +211,15 @@ video_cards_neomagic
 video_cards_cirrus
 video_cards_tga
 video_cards_i740
-video_cards_siliconmotion
 video_cards_ark
 video_cards_rendition
-video_cards_newport
 video_cards_chips
 video_cards_apm
-video_cards_intel
 video_cards_nv
 video_cards_vesa
-video_cards_ast
 video_cards_nouveau
 
 # Matt Turner <mattst88@gentoo.org>
-# Mask more VIDEO_CARDs added with mesa-8.0
-video_cards_i915
-video_cards_i965
-video_cards_ilo
-# vmware wasn't added with mesa-8.0, but it should still be masked
-video_cards_vmware
 # llvm is not keyworded
 video_cards_amdgpu
 video_cards_radeonsi

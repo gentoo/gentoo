@@ -136,15 +136,17 @@
 -input_devices_synaptics
 -input_devices_vmmouse
 -input_devices_wacom
+-video_cards_ast
+-video_cards_i915
+-video_cards_i965
+-video_cards_intel
 -video_cards_nvidia
+-video_cards_siliconmotion
 -video_cards_vmware
 -video_cards_geode
 -video_cards_via
 -video_cards_virtualbox
 -video_cards_qxl
-
-# Modular X: mask for architectures on which they aren't available
-video_cards_newport
 
 # Diego Pettenò <flameeyes@gentoo.org> (4 Jan 2007)
 # Unmask the flags for PHP that are available only on x86

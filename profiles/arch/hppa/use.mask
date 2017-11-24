@@ -212,22 +212,15 @@ dri
 video_cards_amdgpu
 video_cards_apm
 video_cards_ark
-video_cards_ast
 video_cards_chips
 video_cards_cirrus
 video_cards_glint
 video_cards_i128
 video_cards_i740
-video_cards_i915
-video_cards_i965
-video_cards_ilo
-video_cards_intel
 video_cards_mach64
 video_cards_mga
 video_cards_neomagic
-video_cards_newport
 video_cards_nouveau
-video_cards_nsc
 video_cards_nv
 video_cards_r100
 video_cards_r128
@@ -240,7 +233,6 @@ video_cards_rendition
 video_cards_s3
 video_cards_s3virge
 video_cards_savage
-video_cards_siliconmotion
 video_cards_sis
 video_cards_sisusb
 video_cards_tdfx
@@ -249,7 +241,6 @@ video_cards_trident
 video_cards_tseng
 video_cards_v4l
 video_cards_vesa
-video_cards_vmware
 video_cards_voodoo
 
 # 25 Jul 2005 Guy Martin <gmsoft@gentoo.org>

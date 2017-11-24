@@ -136,11 +136,17 @@ video_cards_newport
 
 # not needed on non-x86, non-amd64 systems
 input_devices_vmmouse
+video_cards_ast
+video_cards_i915
+video_cards_i965
+video_cards_intel
 video_cards_nvidia
-video_cards_fglrx
 video_cards_via
 video_cards_vmware
 video_cards_virtualbox
+
+# not needed on non-x86, non-amd64, non-mips systems
+video_cards_siliconmotion
 
 # not needed on non-arm systems
 video_cards_exynos
