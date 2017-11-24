@@ -4626,7 +4626,6 @@ media-sound/ncmpcpp:outputs - Enable outputs screen
 media-sound/ncmpcpp:visualizer - Enable visualizer screen with sound wave/frequency spectrum modes
 media-sound/patchage:jack-dbus - Use Jack via D-Bus instead of libjack
 media-sound/patchage:session - Include experimental Jack session management (save/restore) support
-media-sound/picard:acoustid - Use media-libs/chromaprint for acoustic fingerprinting
 media-sound/pithos:appindicator - Enable usage of appindicator to export menu options in to unity
 media-sound/pithos:keybinder - Use keybinder to enable global key bindings
 media-sound/pms:regex - Enable regular expression searches
