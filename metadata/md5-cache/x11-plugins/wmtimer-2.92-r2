@@ -2,11 +2,11 @@ DEFINED_PHASES=compile install prepare
 DEPEND=>=dev-libs/glib-2 x11-libs/gtk+:2 x11-libs/libXpm x11-libs/libXext x11-libs/libX11 virtual/pkgconfig
 DESCRIPTION=Dockable clock which can run in alarm, countdown timer or chronograph mode
 EAPI=6
-HOMEPAGE=http://www.darkops.net/wmtimer
+HOMEPAGE=https://github.com/bbidulock/wmtimer
 KEYWORDS=amd64 ppc ppc64 ~sparc x86
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/glib-2 x11-libs/gtk+:2 x11-libs/libXpm x11-libs/libXext x11-libs/libX11
 SLOT=0
-SRC_URI=http://www.darkops.net/wmtimer/wmtimer-2.92.tar.gz
+SRC_URI=https://github.com/bbidulock/wmtimer/releases/download/vwmtimer/wmtimer-2.92.tar.gz
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=22b2d456d38ba3bf4f85918c34ac0d80
+_md5_=1ef00c71f120e47fcc8736ac0d01e8d2
