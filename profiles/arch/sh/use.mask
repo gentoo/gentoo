@@ -96,7 +96,6 @@ video_cards_intel
 video_cards_mach64
 video_cards_mga
 video_cards_neomagic
-video_cards_newport
 video_cards_nouveau
 video_cards_nv
 video_cards_r128

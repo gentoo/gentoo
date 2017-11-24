@@ -214,7 +214,6 @@ video_cards_i740
 video_cards_siliconmotion
 video_cards_ark
 video_cards_rendition
-video_cards_newport
 video_cards_chips
 video_cards_apm
 video_cards_intel
