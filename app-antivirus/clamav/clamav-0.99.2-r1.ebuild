@@ -24,7 +24,7 @@ CDEPEND="bzip2? ( app-arch/bzip2 )
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
 	sys-devel/libtool
-	>dev-libs/libpcre-6
+	|| ( dev-libs/libpcre2 >dev-libs/libpcre-6 )
 	!!<app-antivirus/clamav-0.99"
 # hard block clamav < 0.99 due to linking problems Bug #567680
 # openssl is now *required* see this link as to why
