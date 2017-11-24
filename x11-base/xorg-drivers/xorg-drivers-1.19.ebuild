@@ -38,7 +38,6 @@ IUSE_VIDEO_CARDS="
 	video_cards_chips
 	video_cards_cirrus
 	video_cards_dummy
-	video_cards_epson
 	video_cards_fbdev
 	video_cards_freedreno
 	video_cards_geode
