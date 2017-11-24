@@ -34,6 +34,7 @@
 # Merged in net-misc/owncloud-client since
 # Masked for removal in 30 days. Bug #501228
 net-misc/ocsync
+sys-auth/pam-csync
 
 # Bernard Cafarelli <voyageur@gentoo.org> (24 Nov 2017)
 # Dead upstream, source not available anymore
