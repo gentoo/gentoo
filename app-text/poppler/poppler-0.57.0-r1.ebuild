@@ -65,6 +65,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.53.0-respect-cflags.patch"
 	"${FILESDIR}/${PN}-0.33.0-openjpeg2.patch"
 	"${FILESDIR}/${PN}-0.40-FindQt4.patch"
+	"${FILESDIR}/${P}-disable-internal-jpx.patch"
 	# Fedora backports from upstream
 	"${FILESDIR}/${P}-CVE-2017-14517.patch"
 	"${FILESDIR}/${P}-CVE-2017-14518.patch"
