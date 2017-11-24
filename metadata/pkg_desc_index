@@ -627,7 +627,7 @@ app-crypt/veracrypt 1.19 1.21: Disk encryption with strong security based on Tru
 app-crypt/xca 1.3.2-r2: A GUI to OpenSSL, RSA public keys, certificates, signing requests etc
 app-crypt/xor-analyze 0.5 0.5-r1: program for cryptanalyzing xor 'encryption' with variable key length
 app-crypt/yubikey-manager 0.3.3 0.4.5 0.4.6: Python library and command line tool for configuring a YubiKey
-app-crypt/yubikey-manager-qt 0.3.1 0.3.2: Cross-platform application for configuring any YubiKey over all USB transports
+app-crypt/yubikey-manager-qt 0.3.2: Cross-platform application for configuring any YubiKey over all USB transports
 app-crypt/zuluCrypt 5.1.0: Front end to cryptsetup
 app-dicts/aspell-af 0.50.0: Afrikaans language dictionary for aspell
 app-dicts/aspell-be 0.01-r1: Belarusian language dictionary for aspell
@@ -2191,7 +2191,7 @@ app-shells/smrsh 8.15.2: Sendmail restricted shell, for use with MTAs other than
 app-shells/soapbox 0.3.1-r2: A preload (sandbox) library to restrict filesystem writes
 app-shells/squirrelsh 1.2.7: Cross-platform object-oriented scripting shell using the squirrel language
 app-shells/tcsh 6.20.00: Enhanced version of the Berkeley C shell (csh)
-app-shells/thefuck 3.23 3.24: Magnificent app which corrects your previous console command
+app-shells/thefuck 3.24: Magnificent app which corrects your previous console command
 app-shells/tmux-bash-completion 9999: bash-completion scripts for tmux
 app-shells/zsh 5.0.5 5.2 5.2-r1 5.3.1 5.4.1 5.4.2 5.4.2-r1 9999: UNIX Shell similar to the Korn shell
 app-shells/zsh-completions 0.26.0 0.27.0 9999: Additional completion definitions for Zsh
@@ -2410,7 +2410,7 @@ app-text/pep 2.8-r1: General purpose filter and file cleaning program
 app-text/pinfo 0.6.10-r5 0.6.10-r6: Hypertext info and man viewer based on (n)curses
 app-text/po4a 0.45-r3 0.47-r1: Tools for helping translation of documentation
 app-text/podofo 0.9.6_pre20170508-r1 0.9.6_pre20171027: PoDoFo is a C++ library to work with the PDF file format
-app-text/poppler 0.57.0 0.58.0 0.59.0 0.60.1 0.61.1 9999: PDF rendering library based on the xpdf-3.0 code base
+app-text/poppler 0.57.0 0.57.0-r1 0.58.0 0.59.0 0.60.1 0.61.1 9999: PDF rendering library based on the xpdf-3.0 code base
 app-text/poppler-data 0.4.7 0.4.8: Data files for poppler to support uncommon encodings without xpdfrc
 app-text/ps2eps 1.68: Generate Encapsulated Postscript Format files from one-page Postscript documents
 app-text/ps2pkm 1.5_p20120701 1.7_p20150521 1.8_p20160523 1.8_p20170524: Tool that converts a PostScript type1 font into a corresponding TeX PK font
@@ -3085,7 +3085,7 @@ dev-embedded/bitbake 1.17.0 9999: package management tool for OpenEmbedded
 dev-embedded/cpik 0.7.2_p4: C compiler for PIC18 devices
 dev-embedded/dc-tool-ip 1.0.4: ethernet program loader for the Dreamcast
 dev-embedded/dfu-programmer 0.7.2 0.7.2-r1: A Device Firmware Update based USB programmer for Atmel chips
-dev-embedded/esptool 2.0.1 2.1: Utility to communicate with the ROM bootloader in Espressif ESP8266 and ESP32
+dev-embedded/esptool 2.1: Utility to communicate with the ROM bootloader in Espressif ESP8266 and ESP32
 dev-embedded/ftdi_eeprom 0.3-r1 1.0: Utility to program external EEPROM for FTDI USB chips
 dev-embedded/gnap 2.0: Gentoo-based Network Appliance building system
 dev-embedded/gnap-dev 2.0: Gentoo-based Network Appliance building system development tools
@@ -8409,7 +8409,7 @@ dev-python/pyopengl_accelerate 3.1.0: Accelerate module for PyOpenGL
 dev-python/pyopenssl 0.15.1-r1 16.2.0 17.0.0 17.2.0 17.3.0: Python interface to the OpenSSL library
 dev-python/pyorbit 2.24.0-r1: ORBit2 bindings for Python
 dev-python/pyosd 0.2.14-r1: Python module for displaying text on your X display, like the 'On Screen Displays' used on TVs
-dev-python/pyotherside 1.5.1 1.5.3: Asynchronous Python 3 Bindings for Qt 5
+dev-python/pyotherside 1.5.3: Asynchronous Python 3 Bindings for Qt 5
 dev-python/pypam 0.5.0-r3: Python Bindings for PAM (Pluggable Authentication Modules)
 dev-python/pyparsing 2.0.3 2.1.10 2.2.0: Easy-to-use Python module for text parsing
 dev-python/pyparted 3.10.7: Python bindings for sys-block/parted
@@ -10517,10 +10517,10 @@ dev-util/jenkins-bin 2.73.2 2.73.3 2.84 2.86 2.87 2.90: Extensible continuous in
 dev-util/kbuild 0.1.9998_pre20131130-r1 0.1.9998_pre20171020 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 33 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
 dev-util/kdbg 2.9.1: Graphical debugger interface
-dev-util/kdevelop 5.1.1 5.1.2 5.2.0: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
+dev-util/kdevelop 5.1.1 5.1.2 5.2.1: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
 dev-util/kdevelop-pg-qt 2.0.0-r1 2.1.0: LL(1) parser generator used mainly by KDevelop language plugins
-dev-util/kdevelop-php 5.1.1 5.1.2 5.2.0: PHP plugin for KDevelop
-dev-util/kdevelop-python 5.1.1 5.1.2 5.2.0: Python plugin for KDevelop
+dev-util/kdevelop-php 5.1.1 5.1.2 5.2.1: PHP plugin for KDevelop
+dev-util/kdevelop-python 5.1.1 5.1.2 5.2.1: Python plugin for KDevelop
 dev-util/kdevplatform 5.1.1 5.1.2: KDE development support libraries and apps
 dev-util/kelbt 0.15: A backtracking LR parser by the author of Ragel
 dev-util/kup 0.3.4-r1: kernel.org uploader tool
@@ -17274,7 +17274,7 @@ sys-apps/rescan-scsi-bus 1.29 1.56 1.57 1.57-r1: Script to rescan the SCSI bus w
 sys-apps/restartd 0.2.2: A daemon for checking your running and not running processes
 sys-apps/restorecond 2.7 9999: Daemon to watch for creation and set default SELinux fcontexts
 sys-apps/ripgrep 0.6.0-r1 0.7.1: a search tool that combines the usability of ag with the raw speed of grep
-sys-apps/rkflashtool 5.1 6.1: Tool for flashing Rockchip devices
+sys-apps/rkflashtool 6.1: Tool for flashing Rockchip devices
 sys-apps/rng-tools 5-r2 6-r1 6.1-r1: Daemon to use hardware random number generators
 sys-apps/roccat-tools 5.1.1 5.7.0: Utility for advanced configuration of Roccat devices
 sys-apps/s390-tools 1.23.1 1.36.1: User space utilities for the zSeries (s390) Linux kernel and device drivers
@@ -17400,7 +17400,7 @@ sys-auth/thinkfinger 0.3-r3: Support for the UPEK/SGS Thomson Microelectronics f
 sys-auth/ykclient 2.14 2.15: Yubico C client library
 sys-auth/ykneo-ccid-tools 0.0.0: Tools for Yubico's YubiKey NEO in CCID mode
 sys-auth/ykpers 1.18.0: Library and tool for personalization of Yubico's YubiKey
-sys-auth/yubico-piv-tool 1.4.3 1.4.4: Command line tool for the YubiKey PIV application
+sys-auth/yubico-piv-tool 1.4.4: Command line tool for the YubiKey PIV application
 sys-auth/yubikey-personalization-gui 3.1.23 3.1.24: GUI for personalization of Yubico's YubiKey
 sys-block/aoetools 36 37: tools for ATA over Ethernet (AoE) network storage protocol
 sys-block/arcconf 1.2.20618 1.7.21229: Adaptec RAID Controller Command Line Utility
@@ -19283,7 +19283,7 @@ x11-plugins/wmpeople 1.3: Nice, highly configurable WMaker DockApp that monitors
 x11-plugins/wmpiki 0.2.1: Dockapp which checks and displays small leds for indicate hosts activity
 x11-plugins/wmpinboard 1.0: Window Maker dock applet resembling a miniature pinboard
 x11-plugins/wmping 0.2.1: a simple host status monitoring dockapp
-x11-plugins/wmpop3 0.5.6a 0.5.6a-r1: dockapp for checking pop3 accounts
+x11-plugins/wmpop3 0.5.6a-r1: dockapp for checking pop3 accounts
 x11-plugins/wmpop3lb 2.4.2-r2: dockapp for checking up to 7 pop3 accounts
 x11-plugins/wmpower 0.4.3: a dockapp to get/set power management status for laptops (APM, ACPI and CPUfreq)
 x11-plugins/wmppp 1.3.0 1.3.2-r1: PPP dial control and network load monitor with NeXTStep look
@@ -19299,7 +19299,7 @@ x11-plugins/wmsystemtray 1.3 1.4: a system tray dockapp with the ability to disp
 x11-plugins/wmsystray 0.1.1: Window Maker dock app that provides a system tray for GNOME/KDE applications
 x11-plugins/wmtime 1.0_beta2_p9 1.2 1.4: applet which displays the date and time in a dockable tile
 x11-plugins/wmtimer 2.92-r2: Dockable clock which can run in alarm, countdown timer or chronograph mode
-x11-plugins/wmtop 0.9.0-r1 0.85: dockapp for monitoring the top three processes using cpu or memory
+x11-plugins/wmtop 0.85: dockapp for monitoring the top three processes using cpu or memory
 x11-plugins/wmtz 0.7: dockapp that shows the time in multiple timezones
 x11-plugins/wmudmount 2.2 2.2-r2: A filesystem mounter that uses udisks to handle notification and mounting
 x11-plugins/wmupmon 0.1.3-r1: wmUpMon is a program to monitor your Uptime
