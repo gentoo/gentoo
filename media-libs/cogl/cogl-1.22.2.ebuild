@@ -12,7 +12,7 @@ LICENSE="MIT BSD"
 SLOT="1.0/20" # subslot = .so version
 
 # doc and profile disable for now due to bugs #484750 and #483332
-IUSE="debug examples gles2 gstreamer +introspection +kms +opengl +pango test video_cards_fglrx wayland" # doc profile
+IUSE="debug examples gles2 gstreamer +introspection +kms +opengl +pango test wayland" # doc profile
 REQUIRED_USE="
 	wayland? ( gles2 )
 	|| ( gles2 opengl )
@@ -61,10 +61,6 @@ DEPEND="${COMMON_DEPEND}
 RESTRICT="test"
 
 src_prepare() {
-	# Let cogl work with fglrx driver, bug #567168
-	# https://bugzilla.gnome.org/show_bug.cgi?id=756306
-	use video_cards_fglrx && eapply "${FILESDIR}"/${PN}-1.22.0-fglrx.patch
-
 	# Do not build examples
 	sed -e "s/^\(SUBDIRS +=.*\)examples\(.*\)$/\1\2/" \
 		-i Makefile.am Makefile.in || die
