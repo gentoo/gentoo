@@ -20,13 +20,13 @@ IUSE="doc test"
 PY_VER="1.4.29"
 COMMON_DEPEND="
 	>=dev-python/py-${PY_VER}[${PYTHON_USEDEP}]
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? (
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/sphinx[${PYTHON_USEDEP}]
 	)
 "
 DEPEND="${COMMON_DEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		>=dev-python/hypothesis-3.5.2[${PYTHON_USEDEP}]
 		>dev-python/pytest-xdist-1.13[${PYTHON_USEDEP}]
