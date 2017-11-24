@@ -146,7 +146,6 @@ video_cards_suncg6
 video_cards_sunleo
 video_cards_suntcx
 video_cards_trident
-video_cards_vmware
 video_cards_voodoo
 
 # Matt Turner <mattst88@gentoo.org>
@@ -157,8 +156,6 @@ video_cards_r200
 video_cards_r300
 video_cards_r600
 video_cards_radeonsi
-# vmware wasn't added with mesa-8.0, but it should still be masked
-video_cards_vmware
 
 # 2006/02/05 - Donnie Berkholz <dberkholz@gentoo.org>
 # Modular X: mask for architectures on which they aren't available

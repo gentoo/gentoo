@@ -122,11 +122,6 @@ video_cards_tga
 video_cards_tseng
 video_cards_vesa
 
-# Matt Turner <mattst88@gentoo.org>
-# Mask more VIDEO_CARDs added with mesa-8.0
-# vmware wasn't added with mesa-8.0, but it should still be masked
-video_cards_vmware
-
 # Intel Integrated Primitive (sci-libs/ipp) support
 ipp
 

@@ -241,7 +241,6 @@ video_cards_trident
 video_cards_tseng
 video_cards_v4l
 video_cards_vesa
-video_cards_vmware
 video_cards_voodoo
 
 # 25 Jul 2005 Guy Martin <gmsoft@gentoo.org>
