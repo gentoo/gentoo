@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ inherit autotools
 
 DESCRIPTION="dockapp for monitoring the top three processes using cpu or memory"
 HOMEPAGE="http://www.dockapps.net/wmtop"
-SRC_URI="https://dev.gentoo.org/~voyageur/distfiles/${P}.tar.gz"
+SRC_URI="http://www.dockapps.net/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
