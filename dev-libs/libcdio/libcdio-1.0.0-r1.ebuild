@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils libtool multilib-minimal
+inherit autotools libtool multilib-minimal
 
 DESCRIPTION="A library to encapsulate CD-ROM reading and control"
 HOMEPAGE="https://www.gnu.org/software/libcdio/"
@@ -33,8 +33,13 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/cdio/version.h
 )
 
+PATCHES=( "${FILESDIR}/${P}-version.patch" )
+
 src_prepare() {
 	default
+
+	eautoreconf
+
 	sed \
 		-e "s:-lncurses:$($(tc-getPKG_CONFIG) --libs ncurses):g" \
 		-i configure || die
