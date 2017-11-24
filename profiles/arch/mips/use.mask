@@ -110,7 +110,6 @@ dri
 
 # Stephen P. Becker <geoman@gentoo.org>
 # more modular X stuff
-video_cards_epson
 video_cards_tdfx
 video_cards_sunffb
 video_cards_mach64
