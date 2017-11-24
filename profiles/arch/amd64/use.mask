@@ -118,6 +118,9 @@
 -input_devices_synaptics
 -input_devices_vmmouse
 -input_devices_wacom
+-video_cards_i915
+-video_cards_i965
+-video_cards_intel
 -video_cards_nvidia
 -video_cards_via
 -video_cards_virtualbox
