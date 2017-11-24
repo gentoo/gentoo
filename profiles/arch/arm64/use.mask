@@ -231,7 +231,6 @@ video_cards_r600
 video_cards_radeonsi
 video_cards_i915
 video_cards_i965
-video_cards_ilo
 # vmware wasn't added with mesa-8.0, but it should still be masked
 video_cards_vmware
 
