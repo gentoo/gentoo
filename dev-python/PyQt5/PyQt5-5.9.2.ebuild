@@ -42,9 +42,9 @@ REQUIRED_USE="
 	serialport? ( gui )
 	sql? ( widgets )
 	svg? ( gui widgets )
-	testlib? ( gui widgets )
+	testlib? ( widgets )
 	webchannel? ( network )
-	webengine? ( network widgets? ( webchannel ) )
+	webengine? ( network widgets? ( printsupport webchannel ) )
 	webkit? ( gui network printsupport widgets )
 	websockets? ( network )
 	widgets? ( gui )
@@ -52,11 +52,11 @@ REQUIRED_USE="
 "
 
 # Minimal supported version of Qt.
-QT_PV="5.6.0:5"
+QT_PV="5.7.1:5"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	>=dev-python/sip-4.19.3:=[${PYTHON_USEDEP}]
+	>=dev-python/sip-4.19.6:=[${PYTHON_USEDEP}]
 	>=dev-qt/qtcore-${QT_PV}
 	>=dev-qt/qtxml-${QT_PV}
 	bluetooth? ( >=dev-qt/qtbluetooth-${QT_PV} )
@@ -146,7 +146,7 @@ src_configure() {
 			$(pyqt_use_enable svg)
 			$(pyqt_use_enable testlib QtTest)
 			$(pyqt_use_enable webchannel QtWebChannel)
-			$(pyqt_use_enable webengine QtWebEngineCore $(usex widgets QtWebEngineWidgets ''))
+			$(pyqt_use_enable webengine QtWebEngine QtWebEngineCore $(usex widgets QtWebEngineWidgets ''))
 			$(pyqt_use_enable webkit QtWebKit QtWebKitWidgets)
 			$(pyqt_use_enable websockets QtWebSockets)
 			$(pyqt_use_enable widgets)
