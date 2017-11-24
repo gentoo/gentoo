@@ -1,9 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-PYTHON_COMPAT=( python2_7 )
-inherit autotools python-single-r1 eutils multilib systemd versionator
+EAPI=6
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+inherit  python-utils-r1 python-single-r1 systemd versionator
 
 MY_PV=${PV/_/}
 MY_PV_MM=$(get_version_component_range 1-2)
@@ -13,14 +13,14 @@ SRC_URI="https://github.com/balabit/syslog-ng/releases/download/${P}/${P}.tar.gz
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd"
-IUSE="amqp caps dbi geoip ipv6 json libressl mongodb pacct python redis smtp spoof-source systemd tcpd"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
+IUSE="amqp caps dbi geoip ipv6 json libressl mongodb pacct python redis smtp spoof-source systemd tcpd stomp"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="test"
 
 RDEPEND="
 	caps? ( sys-libs/libcap )
-	dbi? ( >=dev-db/libdbi-0.8.3 )
+	dbi? ( >=dev-db/libdbi-0.9.0 )
 	geoip? ( >=dev-libs/geoip-1.5.0 )
 	json? ( >=dev-libs/json-c-0.9 )
 	python? ( ${PYTHON_DEPS} )
@@ -32,10 +32,11 @@ RDEPEND="
 	dev-libs/libpcre
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
-	>=dev-libs/eventlog-0.2.12
+	!dev-libs/eventlog
 	>=dev-libs/glib-2.10.1:2"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
+	sys-devel/autoconf-archive
 	sys-devel/flex"
 
 S=${WORKDIR}/${PN}-${MY_PV}
@@ -50,8 +51,7 @@ src_prepare() {
 	use python && python_fix_shebang .
 
 	if use !json ; then
-		sed -i -e '1 s/cim //' scl/Makefile.am || die
-		eautoreconf
+		rm -r scl/cim || die "failed to rm -r scl/cim"
 	fi
 
 	for f in "${FILESDIR}"/*logrotate*.in ; do
@@ -63,7 +63,7 @@ src_prepare() {
 				's:@GENTOO_RESTART@:/etc/init.d/syslog-ng reload:')" \
 			"${f}" > "${T}/${bn/.in/}" || die
 	done
-	epatch_user
+	eapply_user
 }
 
 src_configure() {
@@ -78,16 +78,18 @@ src_configure() {
 		--localstatedir=/var/lib/syslog-ng \
 		--with-pidfile-dir=/var/run \
 		--with-module-dir=/usr/$(get_libdir)/syslog-ng \
-		$(systemd_with_unitdir) \
+		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)" \
 		$(use_enable systemd) \
 		$(use_enable caps linux-caps) \
 		$(use_enable geoip) \
 		$(use_enable ipv6) \
 		$(use_enable json) \
+		$(use_enable stomp) \
 		$(use_enable mongodb) \
 		$(use_enable pacct) \
 		$(use_enable python) \
 		$(use_enable redis) \
+		$(usex redis --with-libhiredir=/usr/${get_libdir}/) \
 		$(use_enable smtp) \
 		$(use_enable amqp) \
 		$(usex amqp --with-librabbitmq-client=internal --without-librabbitmq-client) \
@@ -125,7 +127,7 @@ src_install() {
 
 pkg_postinst() {
 	elog "For detailed documentation please see the upstream website:"
-	elog "http://www.balabit.com/sites/default/files/documents/syslog-ng-ose-3.7-guides/en/syslog-ng-ose-v3.7-guide-admin/html/index.html"
+	elog "http://www.balabit.com/sites/default/files/documents/syslog-ng-ose-${MY_PV_MM}-guides/en/syslog-ng-ose-v${MY_PV_MM}-guide-admin/html/index.html"
 
 	# bug #355257
 	if ! has_version app-admin/logrotate ; then
