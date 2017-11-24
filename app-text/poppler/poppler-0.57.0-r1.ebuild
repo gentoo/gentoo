@@ -67,6 +67,11 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.40-FindQt4.patch"
 	# Fedora backports from upstream
 	"${FILESDIR}/${P}-CVE-2017-14517.patch"
+	"${FILESDIR}/${P}-CVE-2017-14926.patch"
+	"${FILESDIR}/${P}-CVE-2017-14927.patch"
+	"${FILESDIR}/${P}-CVE-2017-14928.patch"
+	"${FILESDIR}/${P}-CVE-2017-14929.patch"
+	"${FILESDIR}/${P}-CVE-2017-15565.patch"
 )
 
 src_prepare() {
