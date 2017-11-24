@@ -42,7 +42,7 @@ pkg_setup() {
 }
 
 all_ruby_prepare() {
-	epatch "${FILESDIR}"/${PN}-5.0.20-gentoo.patch
+	epatch "${FILESDIR}"/${PN}-5.1.11-gentoo.patch
 	epatch "${FILESDIR}"/${PN}-5.1.1-isnan.patch
 
 	# Change these with sed instead of a patch so that we can easily use
@@ -73,6 +73,11 @@ all_ruby_prepare() {
 
 	# Fix hard-coded use of AR
 	sed -i -e "s/ar cru/"$(tc-getAR)" cru/" build/support/cplusplus.rb || die
+
+	# Make sure apache support is not attempted with -apache2
+	if ! use apache2 ; then
+		sed -i -e '/fakeroot/ s/:apache2, //' build/packaging.rb || die
+	fi
 }
 
 all_ruby_compile() {
