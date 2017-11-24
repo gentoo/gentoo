@@ -29,6 +29,38 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (23 Nov 2017)
+# For ancient hardware. Tired of maintaining. Masked for removal in 30 days.
+# Bug #606132.
+x11-misc/afbinit
+x11-drivers/afb-ucode
+x11-drivers/xf86-video-apm
+x11-drivers/xf86-video-ark
+x11-drivers/xf86-video-chips
+x11-drivers/xf86-video-cirrus
+x11-drivers/xf86-video-freedreno
+x11-drivers/xf86-video-i128
+x11-drivers/xf86-video-i740
+x11-drivers/xf86-video-mach64
+x11-drivers/xf86-video-modesetting
+x11-drivers/xf86-video-neomagic
+x11-drivers/xf86-video-opentegra
+x11-drivers/xf86-video-rendition
+x11-drivers/xf86-video-s3
+x11-drivers/xf86-video-s3virge
+x11-drivers/xf86-video-savage
+x11-drivers/xf86-video-sis
+x11-drivers/xf86-video-sisusb
+x11-drivers/xf86-video-suncg14
+x11-drivers/xf86-video-suncg3
+x11-drivers/xf86-video-suncg6
+x11-drivers/xf86-video-sunffb
+x11-drivers/xf86-video-sunleo
+x11-drivers/xf86-video-suntcx
+x11-drivers/xf86-video-tga
+x11-drivers/xf86-video-trident
+x11-drivers/xf86-video-tseng
+
 # Jonas Stein <jstein@gentoo.org> (23 Nov 2017)
 # Depends on the AIM service which will be discontinued on 2017-12-15.
 # See also bug #638564. Masked for removal on 2017-12-20
