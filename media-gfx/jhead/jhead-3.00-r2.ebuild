@@ -25,5 +25,6 @@ src_install() {
 	docinto html
 	dodoc *.html
 	doman ${PN}.1
-	dolib.so libjhead.so*
+	doheader ${PN}.h
+	dolib.so lib${PN}.so*
 }
