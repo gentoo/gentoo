@@ -30,6 +30,12 @@
 #--- END OF EXAMPLES ---
 
 # Bernard Cafarelli <voyageur@gentoo.org> (24 Nov 2017)
+# Upstream removed tarball, no separate release in 3 years
+# Merged in net-misc/owncloud-client since
+# Masked for removal in 30 days. Bug #501228
+net-misc/ocsync
+
+# Bernard Cafarelli <voyageur@gentoo.org> (24 Nov 2017)
 # Dead upstream, source not available anymore
 # Last open-source update in 2011
 # Masked for removal in 30 days. Bug #638670
