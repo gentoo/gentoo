@@ -8471,7 +8471,7 @@ dev-python/pysvn 1.8.0: Object-oriented python bindings for subversion
 dev-python/pyswisseph 2.00.00_p2 2.05.01_pre20160529: Python extension to the AstroDienst Swiss Ephemeris
 dev-python/pytables 3.1.1-r2 3.3.0 3.4.2: Hierarchical datasets for Python
 dev-python/pyte 0.5.2-r1 0.5.2-r2: Simple VTXXX-compatible terminal emulator
-dev-python/pytest 2.7.2 3.0.3 3.0.6 3.0.7 3.1.2 3.2.2: Simple powerful testing with Python
+dev-python/pytest 2.7.2 3.0.3 3.2.2: Simple powerful testing with Python
 dev-python/pytest-aiohttp 0.1.3: pytest plugin for aiohttp support
 dev-python/pytest-arraydiff 0.1: pytest plugin to facilitate comparison of arrays
 dev-python/pytest-cache 1.0-r1: mechanisms for caching across test runs
