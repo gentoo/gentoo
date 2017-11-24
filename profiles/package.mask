@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Bernard Cafarelli <voyageur@gentoo.org> (24 Nov 2017)
+# Dead upstream, source not available anymore
+# Last open-source update in 2011
+# Masked for removal in 30 days. Bug #638670
+www-apps/eyeos
+
 # Matt Turner <mattst88@gentoo.org> (23 Nov 2017)
 # For ancient hardware. Tired of maintaining. Masked for removal in 30 days.
 # Bug #606132.
