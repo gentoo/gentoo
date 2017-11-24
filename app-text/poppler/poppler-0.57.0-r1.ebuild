@@ -70,6 +70,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-CVE-2017-14518.patch"
 	"${FILESDIR}/${P}-CVE-2017-14519.patch"
 	"${FILESDIR}/${P}-CVE-2017-14520.patch"
+	"${FILESDIR}/${P}-CVE-2017-14617.patch"
 	"${FILESDIR}/${P}-CVE-2017-14926.patch"
 	"${FILESDIR}/${P}-CVE-2017-14927.patch"
 	"${FILESDIR}/${P}-CVE-2017-14928.patch"
