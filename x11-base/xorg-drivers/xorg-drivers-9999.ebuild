@@ -58,7 +58,6 @@ IUSE_VIDEO_CARDS="
 	video_cards_virtualbox
 	video_cards_vmware
 	video_cards_voodoo
-	video_cards_fglrx
 	video_cards_nvidia
 "
 
