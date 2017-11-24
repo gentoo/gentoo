@@ -137,7 +137,6 @@ video_cards_newport
 # not needed on non-x86, non-amd64 systems
 input_devices_vmmouse
 video_cards_nvidia
-video_cards_fglrx
 video_cards_via
 video_cards_vmware
 video_cards_virtualbox
