@@ -127,7 +127,6 @@ video_cards_rendition
 video_cards_s3
 video_cards_s3virge
 video_cards_savage
-video_cards_siliconmotion
 video_cards_sis
 video_cards_sisusb
 video_cards_tdfx

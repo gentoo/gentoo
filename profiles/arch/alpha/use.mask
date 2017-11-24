@@ -132,7 +132,6 @@ video_cards_chips
 video_cards_i128
 video_cards_i740
 video_cards_neomagic
-video_cards_siliconmotion
 video_cards_sis
 video_cards_trident
 video_cards_tseng

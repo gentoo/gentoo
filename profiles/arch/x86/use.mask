@@ -140,6 +140,7 @@
 -video_cards_i965
 -video_cards_intel
 -video_cards_nvidia
+-video_cards_siliconmotion
 -video_cards_vmware
 -video_cards_geode
 -video_cards_via

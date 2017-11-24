@@ -122,6 +122,7 @@
 -video_cards_i965
 -video_cards_intel
 -video_cards_nvidia
+-video_cards_siliconmotion
 -video_cards_via
 -video_cards_virtualbox
 -video_cards_vmware
