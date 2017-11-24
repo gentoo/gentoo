@@ -6,8 +6,8 @@ EAPI=6
 inherit multilib toolchain-funcs
 
 DESCRIPTION="Dockable clock which can run in alarm, countdown timer or chronograph mode"
-HOMEPAGE="http://www.darkops.net/wmtimer"
-SRC_URI="http://www.darkops.net/${PN}/${P}.tar.gz"
+HOMEPAGE="https://github.com/bbidulock/wmtimer"
+SRC_URI="https://github.com/bbidulock/wmtimer/releases/download/v${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
