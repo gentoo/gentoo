@@ -217,7 +217,6 @@ video_cards_chips
 video_cards_apm
 video_cards_nv
 video_cards_vesa
-video_cards_ast
 video_cards_nouveau
 
 # Matt Turner <mattst88@gentoo.org>

@@ -102,7 +102,6 @@ input_devices_wacom
 video_cards_amdgpu
 video_cards_apm
 video_cards_ark
-video_cards_ast
 video_cards_chips
 video_cards_cirrus
 video_cards_fbdev

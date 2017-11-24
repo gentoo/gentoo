@@ -127,7 +127,6 @@ zaptel
 # Modular X: mask non-alpha cards
 video_cards_apm
 video_cards_ark
-video_cards_ast
 video_cards_chips
 video_cards_i128
 video_cards_i740
