@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>geaaru@gmail.com</email>
+		<name>Geaaru</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<use>
 		<flag name="amqp">Enable support for AMQP destinations</flag>
 		<flag name="smtp">Enable support for SMTP destinations</flag>
@@ -10,6 +17,7 @@
 		<flag name="mongodb">Enable support for mongodb destinations</flag>
 		<flag name="pacct">Enable support for reading Process Accounting files (EXPERIMENTAL, Linux only)</flag>
 		<flag name="redis">Enable support for Redis destinations</flag>
+		<flag name="stomp">Enable support for stomp destinations</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">balabit/syslog-ng</remote-id>
