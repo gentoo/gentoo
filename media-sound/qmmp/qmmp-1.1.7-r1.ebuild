@@ -35,7 +35,7 @@ RDEPEND="
 	alsa? ( media-libs/alsa-lib )
 	bs2b? ( media-libs/libbs2b )
 	cdda? (
-		dev-libs/libcdio
+		dev-libs/libcdio:=
 		dev-libs/libcdio-paranoia
 	)
 	cue? ( media-libs/libcue )
