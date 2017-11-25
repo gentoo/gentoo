@@ -6999,7 +6999,7 @@ sci-biology/clustalw-mpi:static_pairalign - Use static (as opposed to dynamic) s
 sci-biology/exonerate:utils - Install all utilities
 sci-biology/fasttree:double-precision - use double precision instead of single-precision floating point (2x memroy required)
 sci-biology/goby:cpp - Compile C/C++ API
-sci-biology/mcl:blast - add support for NCBI BLAST data
+sci-biology/mcl:blast - Add support for NCBI BLAST data
 sci-biology/plink:R - add support R language
 sci-biology/plink:webcheck - add support for online update checking every time the program starts
 sci-biology/ucsc-genome-browser:server - Install genome browser Web application. If this flag is off, only libraries and utilities from the suite are installed.
@@ -7071,7 +7071,7 @@ sci-electronics/pcb:toporouter - Build toporouter
 sci-electronics/pcb:xrender - Translucent PCB display for Motif/Lesstif GUI
 sci-electronics/pulseview:decode - Enable decoding of protocols while capturing
 sci-electronics/sigrok-cli:decode - Enable decoding of protocols while capturing
-sci-electronics/splat:hires - Builds additional high resolution application 'rfsplat-hd'.
+sci-electronics/splat:hires - Builds additional high resolution application 'rfsplat-hd'
 sci-geosciences/gdal-grass:postgres - Include support for dev-db/postgresql
 sci-geosciences/gmt:gdal - Enable sci-libs/gdal library support
 sci-geosciences/gmt:gmtfull - Full resolution bathymetry database
