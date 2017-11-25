@@ -5,10 +5,10 @@
 		<email>flameeyes@gentoo.org</email>
 	</maintainer>
 	<upstream>
-	  <maintainer>
-	    <!-- Valid on Gentoo Bugzilla -->
-	    <email>martin.osmera@gmail.com</email>
-	    <name>Martin Osmera</name>
-	  </maintainer>
+		<maintainer>
+			<!-- Valid on Gentoo Bugzilla -->
+			<email>martin.osmera@gmail.com</email>
+			<name>Martin Osmera</name>
+		</maintainer>
 	</upstream>
 </pkgmetadata>
