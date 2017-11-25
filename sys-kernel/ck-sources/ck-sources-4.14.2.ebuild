@@ -11,7 +11,7 @@ HOMEPAGE="https://dev.gentoo.org/~mpagano/genpatches/
 K_WANT_GENPATCHES="base extras experimental"
 K_EXP_GENPATCHES_PULL="1"
 K_EXP_GENPATCHES_NOUSE="1"
-K_GENPATCHES_VER="55"
+K_GENPATCHES_VER="3"
 K_SECURITY_UNSUPPORTED="1"
 K_DEBLOB_AVAILABLE="1"
 
@@ -34,14 +34,9 @@ CK_BASE_URL="http://ck.kolivas.org/patches/4.0"
 CK_LVER_URL="${CK_BASE_URL}/${K_BRANCH_ID}/${K_BRANCH_ID}-ck${CK_VERSION}"
 CK_URI="${CK_LVER_URL}/${CK_FILE}"
 
-# solves bug #606866 (Fix build for CONFIG_FREEZER disabled.x)
-FRZR_HASH="7de569950716147ed436b27936628ee3ab5b45cc"
-FRZR_FILE="${PN}-4.9-freezer-fix.patch"
-FRZR_URI="https://github.com/ckolivas/linux/commit/${FRZR_HASH}.patch -> ${FRZR_FILE}"
+SRC_URI="${KERNEL_URI} ${GENPATCHES_URI} ${ARCH_URI} ${CK_URI}"
 
-SRC_URI="${KERNEL_URI} ${GENPATCHES_URI} ${ARCH_URI} ${CK_URI} ${FRZR_URI}"
-
-UNIPATCH_LIST="${DISTDIR}/${CK_FILE} ${DISTDIR}/${FRZR_FILE}"
+UNIPATCH_LIST="${DISTDIR}/${CK_FILE}"
 UNIPATCH_STRICTORDER="yes"
 
 # ck-patches already includes BFQ (similar version as genpatches "experimental" USE flag)
