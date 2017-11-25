@@ -18,12 +18,11 @@ KEYWORDS="~amd64"
 IUSE="gmp gnat_2016 gnat_2017 gtk iconv postgresql pygobject projects readline
 	+shared sqlite static syslog tools"
 
-RDEPEND="gnat_2016? ( dev-lang/gnat-gpl:4.9.4 )
-	gnat_2017? ( dev-lang/gnat-gpl:6.3.0 )
+RDEPEND="dev-lang/gnat-gpl:6.3.0
 	${PYTHON_DEPS}
 	gmp? ( dev-libs/gmp:* )
 	gtk? (
-		dev-ada/gtkada[gnat_2016=,gnat_2017=,shared?,static?]
+		dev-ada/gtkada[gnat_2017,shared?,static?]
 		dev-libs/atk
 		dev-libs/glib
 		x11-libs/cairo
@@ -35,31 +34,31 @@ RDEPEND="gnat_2016? ( dev-lang/gnat-gpl:4.9.4 )
 	postgresql? ( dev-db/postgresql:* )
 	sqlite? ( dev-db/sqlite )
 	projects? (
-		>=dev-ada/gprbuild-2017[gnat_2016=,gnat_2017=,shared?,static?]
+		>=dev-ada/gprbuild-2017[gnat_2017,shared?,static?]
 	)"
 DEPEND="${RDEPEND}
-	dev-ada/gprbuild[gnat_2016=,gnat_2017=]"
+	dev-ada/gprbuild[gnat_2017]"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	pygobject? ( gtk )
-	!gnat_2016 gnat_2017"
+	pygobject? ( gtk )"
 
 S="${WORKDIR}"/${MYP}-src
 
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 src_prepare() {
+	GCC_PV=6.3.0
 	default
 	mv configure.{in,ac} || die
+	sed -i \
+		-e "s:@GNATLS@:gnatls-${GCC_PV}:g" \
+		src/gnatcoll-projects.ads \
+		src/tools/gnatinspect.adb \
+		|| die
 	eautoreconf
 }
 
 src_configure() {
-	if use gnat_2016; then
-		GCC_PV=4.9.4
-	else
-		GCC_PV=6.3.0
-	fi
 	GCC=${CHOST}-gcc-${GCC_PV}
 	GNATMAKE=${CHOST}-gnatmake-${GCC_PV}
 	GNATCHOP=${CHOST}-gnatchop-${GCC_PV}
