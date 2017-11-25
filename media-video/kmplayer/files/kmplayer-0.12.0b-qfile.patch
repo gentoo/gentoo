@@ -1,0 +1,33 @@
+From 7dce8e00c8e48cc08d3cc39909681643aa36ed62 Mon Sep 17 00:00:00 2001
+From: Luigi Toscano <luigi.toscano@tiscali.it>
+Date: Mon, 8 May 2017 18:07:40 +0200
+Subject: Use QFile to copy a file instead of /bin/cp
+
+The code has been there probably way before QFile gained the copy
+functionality.
+---
+ src/kmplayerpartbase.cpp | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
+
+diff --git a/src/kmplayerpartbase.cpp b/src/kmplayerpartbase.cpp
+index fd7b363..f718496 100644
+--- a/src/kmplayerpartbase.cpp
++++ b/src/kmplayerpartbase.cpp
+@@ -124,12 +124,8 @@ PartBase::PartBase (QWidget * wparent, QObject * parent, KSharedConfigPtr config
+     QString bmfile = KStandardDirs::locate ("data", "kmplayer/bookmarks.xml");
+     QString localbmfile = KStandardDirs::locateLocal ("data", "kmplayer/bookmarks.xml");
+     if (localbmfile != bmfile) {
+-        QProcess p;
+-        QStringList args;
+-        args << QFile::encodeName (bmfile) << QFile::encodeName (localbmfile);
+-        p.start ("/bin/cp", args);
+-        kDebug () << "cp " << args.join (" ");
+-        p.waitForFinished ();
++        bool bmfileCopied = QFile(bmfile).copy(localbmfile);
++        kDebug() << "bookmarks.xml copied successfully?" << bmfileCopied;
+     }
+     m_bookmark_manager = KBookmarkManager::managerForFile (localbmfile, "kmplayer");
+     m_bookmark_owner = new BookmarkOwner (this);
+-- 
+cgit v0.11.2
+
