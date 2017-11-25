@@ -3,9 +3,10 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<use>
-		<flag name="jadetex">Add support for <pkg>app-text/jadetex</pkg>
-    (for processing tex files produced by the TeX backend of
-    Jade)</flag>
+		<flag name="jadetex">
+			Add support for <pkg>app-text/jadetex</pkg> (for processing
+			tex files produced by the TeX backend of Jade)
+		</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">sgmltools-lite</remote-id>
