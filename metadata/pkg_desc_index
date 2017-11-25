@@ -12493,43 +12493,43 @@ media-fonts/fgdc-emergency 2.20: FGDC Emergency Response Symbology Prototype
 media-fonts/fifth-leg 0.6: Simplistic, technical sans serif - openSUSE font
 media-fonts/fira-mono 3.205: Default monospaced typeface for FirefoxOS, designed for legibility
 media-fonts/fira-sans 4.002 4.105: Default typeface for FirefoxOS, designed for legibility
-media-fonts/font-adobe-100dpi 1.0.3: X.Org Adobe bitmap fonts
-media-fonts/font-adobe-75dpi 1.0.3: X.Org Adobe bitmap fonts
-media-fonts/font-adobe-utopia-100dpi 1.0.4: X.Org Adobe Utopia bitmap fonts
-media-fonts/font-adobe-utopia-75dpi 1.0.4: X.Org Adobe Utopia bitmap fonts
-media-fonts/font-adobe-utopia-type1 1.0.4: X.Org Adobe Utopia Type 1 fonts
+media-fonts/font-adobe-100dpi 1.0.3 1.0.3-r1: X.Org Adobe bitmap fonts
+media-fonts/font-adobe-75dpi 1.0.3 1.0.3-r1: X.Org Adobe bitmap fonts
+media-fonts/font-adobe-utopia-100dpi 1.0.4 1.0.4-r1: X.Org Adobe Utopia bitmap fonts
+media-fonts/font-adobe-utopia-75dpi 1.0.4 1.0.4-r1: X.Org Adobe Utopia bitmap fonts
+media-fonts/font-adobe-utopia-type1 1.0.4 1.0.4-r1: X.Org Adobe Utopia Type 1 fonts
 media-fonts/font-alias 1.0.3-r1: X.Org font aliases
-media-fonts/font-arabic-misc 1.0.3: X.Org arabic bitmap fonts
+media-fonts/font-arabic-misc 1.0.3 1.0.3-r1: X.Org arabic bitmap fonts
 media-fonts/font-bh-100dpi 1.0.3 1.0.3-r1: X.Org Bigelow & Holmes bitmap fonts
 media-fonts/font-bh-75dpi 1.0.3 1.0.3-r1: X.Org Bigelow & Holmes bitmap fonts
-media-fonts/font-bh-lucidatypewriter-100dpi 1.0.3: X.Org Bigelow & Holmes Lucida bitmap fonts
-media-fonts/font-bh-lucidatypewriter-75dpi 1.0.3: X.Org Bigelow & Holmes Lucida bitmap fonts
-media-fonts/font-bh-ttf 1.0.3: X.Org Bigelow & Holmes TrueType fonts
-media-fonts/font-bh-type1 1.0.3: X.Org Bigelow & Holmes Type 1 fonts
+media-fonts/font-bh-lucidatypewriter-100dpi 1.0.3 1.0.3-r1: X.Org Bigelow & Holmes Lucida bitmap fonts
+media-fonts/font-bh-lucidatypewriter-75dpi 1.0.3 1.0.3-r1: X.Org Bigelow & Holmes Lucida bitmap fonts
+media-fonts/font-bh-ttf 1.0.3 1.0.3-r1: X.Org Bigelow & Holmes TrueType fonts
+media-fonts/font-bh-type1 1.0.3 1.0.3-r1: X.Org Bigelow & Holmes Type 1 fonts
 media-fonts/font-bitstream-100dpi 1.0.3 1.0.3-r1: X.Org Bitstream bitmap fonts
-media-fonts/font-bitstream-75dpi 1.0.3: X.Org Bitstream bitmap fonts
-media-fonts/font-bitstream-speedo 1.0.2: Bitstream Speedo fonts
-media-fonts/font-bitstream-type1 1.0.3: X.Org Bitstream Type 1 fonts
-media-fonts/font-cronyx-cyrillic 1.0.3: X.Org Cronyx cyrillic fonts
-media-fonts/font-cursor-misc 1.0.3: X.Org cursor font
-media-fonts/font-daewoo-misc 1.0.3: X.Org Daewoo fonts
-media-fonts/font-dec-misc 1.0.3: X.Org DEC fonts
-media-fonts/font-ibm-type1 1.0.3: X.Org IBM Courier font
-media-fonts/font-isas-misc 1.0.3: X.Org the Institute of Software, Academia Sinica (chinese) fonts
-media-fonts/font-jis-misc 1.0.3: X.Org JIS (japanese) fonts
-media-fonts/font-micro-misc 1.0.3: X.Org micro-misc font
-media-fonts/font-misc-cyrillic 1.0.3: X.Org misc-cyrillic fonts
-media-fonts/font-misc-ethiopic 1.0.3: Miscellaneous Ethiopic fonts
-media-fonts/font-misc-meltho 1.0.3: X.Org Syriac fonts
+media-fonts/font-bitstream-75dpi 1.0.3 1.0.3-r1: X.Org Bitstream bitmap fonts
+media-fonts/font-bitstream-speedo 1.0.2 1.0.2-r1: Bitstream Speedo fonts
+media-fonts/font-bitstream-type1 1.0.3 1.0.3-r1: X.Org Bitstream Type 1 fonts
+media-fonts/font-cronyx-cyrillic 1.0.3 1.0.3-r1: X.Org Cronyx cyrillic fonts
+media-fonts/font-cursor-misc 1.0.3 1.0.3-r1: X.Org cursor font
+media-fonts/font-daewoo-misc 1.0.3 1.0.3-r1: X.Org Daewoo fonts
+media-fonts/font-dec-misc 1.0.3 1.0.3-r1: X.Org DEC fonts
+media-fonts/font-ibm-type1 1.0.3 1.0.3-r1: X.Org IBM Courier font
+media-fonts/font-isas-misc 1.0.3 1.0.3-r1: X.Org the Institute of Software, Academia Sinica (chinese) fonts
+media-fonts/font-jis-misc 1.0.3 1.0.3-r1: X.Org JIS (japanese) fonts
+media-fonts/font-micro-misc 1.0.3 1.0.3-r1: X.Org micro-misc font
+media-fonts/font-misc-cyrillic 1.0.3 1.0.3-r1: X.Org misc-cyrillic fonts
+media-fonts/font-misc-ethiopic 1.0.3 1.0.3-r1: Miscellaneous Ethiopic fonts
+media-fonts/font-misc-meltho 1.0.3 1.0.3-r1: X.Org Syriac fonts
 media-fonts/font-misc-misc 1.1.2 1.1.2-r1: X.Org miscellaneous fonts
 media-fonts/font-mutt-misc 1.0.3 1.0.3-r1: X.Org ClearlyU fonts
-media-fonts/font-schumacher-misc 1.1.2: X.Org Schumacher fonts
-media-fonts/font-screen-cyrillic 1.0.4: X.Org Screen cyrillic fonts
-media-fonts/font-sony-misc 1.0.3: X.Org Sony fonts
-media-fonts/font-sun-misc 1.0.3: X.Org Sun fonts
+media-fonts/font-schumacher-misc 1.1.2 1.1.2-r1: X.Org Schumacher fonts
+media-fonts/font-screen-cyrillic 1.0.4 1.0.4-r1: X.Org Screen cyrillic fonts
+media-fonts/font-sony-misc 1.0.3 1.0.3-r1: X.Org Sony fonts
+media-fonts/font-sun-misc 1.0.3 1.0.3-r1: X.Org Sun fonts
 media-fonts/font-util 1.3.0 1.3.1: X.Org font utilities
-media-fonts/font-winitzki-cyrillic 1.0.3: X.Org Winitzki cyrillic font
-media-fonts/font-xfree86-type1 1.0.4: X.Org XFree86 Type 1 font
+media-fonts/font-winitzki-cyrillic 1.0.3 1.0.3-r1: X.Org Winitzki cyrillic font
+media-fonts/font-xfree86-type1 1.0.4 1.0.4-r1: X.Org XFree86 Type 1 font
 media-fonts/fontawesome 4.6.3 4.7.0: The iconic font
 media-fonts/free-bangla-font 0.2: Unicode compliant Open Type Bangla fonts
 media-fonts/freefont 20120503: OpenType and TrueType Unicode fonts from the Free UCS Outline Fonts Project
@@ -18740,7 +18740,7 @@ x11-libs/libXtst 1.2.3: X.Org Xlib-based client API for the XTEST & RECORD exten
 x11-libs/libXv 1.0.11: X.Org Xv library
 x11-libs/libXvMC 1.0.10: X.Org XvMC library
 x11-libs/libXxf86dga 1.1.4: X.Org Xxf86dga library
-x11-libs/libXxf86misc 1.0.3: X.Org Xxf86misc library
+x11-libs/libXxf86misc 1.0.3 1.0.3-r1: X.Org Xxf86misc library
 x11-libs/libXxf86vm 1.1.3 1.1.4: X.Org Xxf86vm library
 x11-libs/libaosd 0.2.7: An advanced on screen display (OSD) library
 x11-libs/libast 0.7 0.7-r1 9999: LIBrary of Assorted Spiffy Things
@@ -19313,7 +19313,7 @@ x11-plugins/wmxres 1.2: Dock application to select your display mode among those
 x11-proto/bigreqsproto 1.1.2: X.Org BigReqs protocol headers
 x11-proto/compositeproto 0.4.2-r1: X.Org Composite protocol headers
 x11-proto/damageproto 1.2.1-r1: X.Org Damage protocol headers
-x11-proto/dmxproto 2.3.1: X.Org DMX protocol headers
+x11-proto/dmxproto 2.3.1 2.3.1-r1: X.Org DMX protocol headers
 x11-proto/dri2proto 2.8-r1: X.Org DRI2 protocol headers
 x11-proto/dri3proto 1.0: X.Org DRI3 protocol specification and Xlib/Xserver headers
 x11-proto/fixesproto 5.0 5.0-r1: X.Org Fixes protocol headers
@@ -19570,7 +19570,7 @@ xfce-base/garcon 0.5.0-r2 0.6.1: Xfce's freedesktop.org specification compatible
 xfce-base/libxfce4ui 4.13.0 4.13.2 4.13.3: Unified widget and session management libs for Xfce
 xfce-base/libxfce4util 4.12.1-r1 4.13.1: A basic utility library for the Xfce desktop environment
 xfce-base/libxfcegui4 4.10.0-r1: A compability library for unported Xfce 4.6 plugins (DEPRECATED)
-xfce-base/thunar 1.6.10-r1 1.6.12-r1: File manager for the Xfce desktop environment
+xfce-base/thunar 1.6.10-r1 1.6.12-r1 1.6.13: File manager for the Xfce desktop environment
 xfce-base/xfce4-appfinder 4.12.0-r1 4.13.0: A tool to find and launch installed applications for the Xfce desktop
 xfce-base/xfce4-meta 4.12: The Xfce Desktop Environment (meta package)
 xfce-base/xfce4-panel 4.12.0-r1 4.12.1-r1 4.13.0 4.13.1: Panel for the Xfce desktop environment

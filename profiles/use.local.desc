@@ -8522,7 +8522,6 @@ x11-drivers/nvidia-drivers:kms - Enable support for kernel mode setting (KMS)
 x11-drivers/nvidia-drivers:pax_kernel - PaX patches from the PaX project
 x11-drivers/nvidia-drivers:tools - Install additional tools such as nvidia-settings
 x11-drivers/nvidia-drivers:uvm - Install the Unified Memory kernel module (nvidia-uvm) for sharing memory between CPU and GPU in CUDA programs
-x11-drivers/xf86-video-amdgpu:glamor - Enable Glamor OpenGL 2D acceleration
 x11-drivers/xf86-video-ati:glamor - Enable Glamor OpenGL 2D acceleration
 x11-drivers/xf86-video-geode:ztv - Enable building the V4L2 ZTV driver
 x11-drivers/xf86-video-intel:dri3 - Use DRI3 by default
