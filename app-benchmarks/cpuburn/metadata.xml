@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!-- maintainer-needed -->
-  <longdescription>
+	<!-- maintainer-needed -->
+	<longdescription>
 		CPUBurn is the ultimate stability testing tool for overclockers. The
 		program heats up any x86 CPU to the maximum possible operating
 		temperature that is achievable by using ordinary software.
