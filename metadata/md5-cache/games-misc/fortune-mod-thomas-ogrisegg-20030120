@@ -7,4 +7,4 @@ LICENSE=GPL-2
 RDEPEND=games-misc/fortune-mod
 SLOT=0
 SRC_URI=mirror://sourceforge/fortune-mod-fvl/fortune-mod-thomas.ogrisegg-20030120.tar.gz
-_md5_=5ebde7605c30096329286eb876bfea5f
+_md5_=367d3af70a822936e5b8cba9f4c2b4fe

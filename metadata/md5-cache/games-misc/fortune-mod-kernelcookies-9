@@ -10,4 +10,4 @@ RDEPEND=games-misc/fortune-mod
 SLOT=0
 SRC_URI=http://www.schwarzvogel.de/pkgs/kernelcookies-9.tar.gz
 _eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=2da3987a4df7650acc79a195a7b6f574
+_md5_=88d72613628fd24a95f4cd3b1a79a3ea

@@ -7,4 +7,4 @@ LICENSE=fairuse
 RDEPEND=games-misc/fortune-mod
 SLOT=0
 SRC_URI=http://seiler.us/wiki/images/4/48/Strangelove_20041203.tar.gz
-_md5_=7d627cf2ab0050209eda1f2396d6d3c6
+_md5_=22b4a52afca7ae18c97aa2a52c02630a

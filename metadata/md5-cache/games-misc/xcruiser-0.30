@@ -10,4 +10,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/xcruiser/xcruiser-0.30.tar.gz
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=f4b038b188f544adf06e68deddb58da3
+_md5_=d7a5d40bd4afbe8f660822ee5fd2cd17

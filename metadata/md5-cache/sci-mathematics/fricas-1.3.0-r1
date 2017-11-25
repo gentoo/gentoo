@@ -11,4 +11,4 @@ RESTRICT=strip
 SLOT=0
 SRC_URI=mirror://sourceforge/fricas/fricas-1.3.0-full.tar.bz2
 _eclasses_=elisp-common	23f47b2e1de7abf387105eddd1318738	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=7e29660632d52ae933f442ad3774410c
+_md5_=6fd3b8126bea744f9c3ac0a50502702d

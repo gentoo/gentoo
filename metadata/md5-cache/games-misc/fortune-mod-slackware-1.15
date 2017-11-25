@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=games-misc/fortune-mod
 SLOT=0
 SRC_URI=http://fauxascii.com/linux/data/slack-fortunes-all-1.15.tgz
-_md5_=143966d3e08ffd4353d20ded1100fd8c
+_md5_=ef7ee5a2918bdb354267bacb483ae3d1
