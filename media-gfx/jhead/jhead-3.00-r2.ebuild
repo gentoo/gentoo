@@ -9,7 +9,7 @@ SRC_URI="http://www.sentex.net/~mwandel/${PN}/${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 src_prepare(){
