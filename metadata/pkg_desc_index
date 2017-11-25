@@ -1993,7 +1993,7 @@ app-misc/zygrib 8.0.1: GRIB File Viewer - Weather data visualization
 app-mobilephone/anyremote 6.5: Bluetooth, infrared or cable remote control service
 app-mobilephone/cobex 0.2.13: small implementation of Obex for phones using the DCU-11 USB-to-serial adapter
 app-mobilephone/dfu-util 0.9 9999: implements the Host (PC) side of the USB DFU (Device Firmware Upgrade) protocol
-app-mobilephone/gammu 1.33.0-r1 1.36.8 1.38.4: A tool to handle your cellular phone
+app-mobilephone/gammu 1.33.0-r1 1.36.8 1.38.4 1.38.5: A tool to handle your cellular phone
 app-mobilephone/ganyremote 6.0.1 6.3.3: Gnome frontend to Anyremote
 app-mobilephone/gnocky 0.0.7: GTK-2 version of gnokii
 app-mobilephone/gnokii 0.6.31-r1 9999: User space driver and tools for use with mobile phones
