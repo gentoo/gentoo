@@ -163,3 +163,134 @@
  docdir = $(prefix)/share/doc/gps
  sharedir = $(prefix)/share/gps
  
+--- gps-gpl-2017-src/share/support/core/gnat_help_menus.py.old	2017-11-23 21:41:11.897912345 +0100
++++ gps-gpl-2017-src/share/support/core/gnat_help_menus.py	2017-11-23 21:44:53.019038030 +0100
+@@ -25,7 +25,7 @@
+    # GPRbuild
+    'gprbuild': {"GPR Tools User's Guide":
+                 ('gprbuild/html/gprbuild_ug.html', 'GPR/')},
+-   'gnatls': {
++   '@GNATLS@': {
+        # Ada RMs
+        "Ada 2005 Reference Manual": ('gnat/html/arm05.html', 'Ada/'),
+        "Ada 2012 Reference Manual": ('gnat/html/arm12.html', 'Ada/'),
+@@ -86,8 +86,8 @@
+ 
+         for exec_name in _DOC_ENTRIES.keys():
+             executable = exec_name
+-            if exec_name == 'gnatls' and GPS.get_target():
+-                executable = '{}-gnatls'.format(GPS.get_target())
++            if exec_name == '@GNATLS@' and GPS.get_target():
++                executable = '{}-@GNATLS@'.format(GPS.get_target())
+             ex = os_utils.locate_exec_on_path(executable)
+             if ex:
+                 for descr, tup in _DOC_ENTRIES[exec_name].iteritems():
+--- gps-gpl-2017-src/share/support/core/toolchains.py.old	2017-11-23 21:46:11.969652447 +0100
++++ gps-gpl-2017-src/share/support/core/toolchains.py	2017-11-23 21:47:21.723427305 +0100
+@@ -16,11 +16,11 @@
+        nullified by using an empty value in the corresponding tag
+   -->
+   <toolchain_default>
+-    <gnat_driver>gnat</gnat_driver>
+-    <gnat_list>gnatls</gnat_list>
++    <gnat_driver>@GNAT@</gnat_driver>
++    <gnat_list>@GNATLS@</gnat_list>
+     <debugger>gdb</debugger>
+     <cpp_filt>c++filt</cpp_filt>
+-    <compiler lang="ada">gnatmake</compiler>
++    <compiler lang="ada">@GNATMAKE@</compiler>
+     <compiler lang="c">gcc</compiler>
+     <compiler lang="c++">g++</compiler>
+     <compiler lang="asm">gcc</compiler>
+--- gps-gpl-2017-src/share/support/core/projects.py.old	2017-11-23 21:49:13.477462632 +0100
++++ gps-gpl-2017-src/share/support/core/projects.py	2017-11-23 21:51:53.774640693 +0100
+@@ -143,7 +143,7 @@
+           <string />
+        </index>
+        <specialized_index value="Ada">
+-          <choice default="true" >gnatmake</choice>
++          <choice default="true" >@GNATMAKE@</choice>
+        </specialized_index>
+    </project_attribute>
+ 
+@@ -163,7 +163,7 @@
+        description="The gnatls command used to find where the Ada run time files are installed (including optional arguments, e.g. gnatls --RTS=sjlj)."
+        hide_in="all"
+        label="Gnatls">
+-       <choice default="true" >gnatls</choice>
++       <choice default="true" >@GNATLS@</choice>
+        <string />
+    </project_attribute>
+ 
+@@ -175,7 +175,7 @@
+        description="The gnat driver used to run the various commands associated with the GNAT toolchain."
+        hide_in="all"
+        label="Gnat">
+-       <choice default="true" >gnat</choice>
++       <choice default="true" >@GNAT@</choice>
+        <string />
+    </project_attribute>
+ 
+--- gps-gpl-2017-src/cli/src/gps-cli_utils.adb.old	2017-11-23 22:00:22.716652753 +0100
++++ gps-gpl-2017-src/cli/src/gps-cli_utils.adb	2017-11-23 22:01:19.885640611 +0100
+@@ -166,7 +166,7 @@
+ 
+       --  Set GNAT version
+       Kernel.Registry.Environment.Set_Path_From_Gnatls
+-        ("gnatls", GNAT_Version);
++        ("@GNATLS@", GNAT_Version);
+    end Create_Kernel_Context;
+ 
+    ----------------------------
+--- gps-gpl-2017-src/toolchains_editor/core/src/toolchains.adb.old	2017-11-23 22:02:52.819994229 +0100
++++ gps-gpl-2017-src/toolchains_editor/core/src/toolchains.adb	2017-11-23 22:07:20.326248295 +0100
+@@ -309,12 +309,12 @@
+                else
+                   Set_Command
+                     (Tc, GNAT_Driver,
+-                     To_String (Full_Path) & "gnat",
++                     To_String (Full_Path) & "@GNAT@",
+                      From_Default,
+                      Is_Default_Path);
+                   Set_Command
+                     (Tc, GNAT_List,
+-                     To_String (Full_Path) & "gnatls",
++                     To_String (Full_Path) & "@GNATLS@",
+                      From_Default,
+                      Is_Default_Path);
+                   Set_Command
+@@ -728,10 +728,10 @@
+       begin
+          case Name is
+             when GNAT_List =>
+-               return "gnatls";
++               return "@GNATLS@";
+ 
+             when GNAT_Driver =>
+-               return "gnat";
++               return "@GNAT@";
+ 
+             when Debugger =>
+                return "gdb";
+@@ -2000,15 +2000,18 @@
+          Manager            => Toolchain_Manager (Manager),
+          Refs               => 0);
+ 
+-      Set_Command (Native_Toolchain, GNAT_Driver, "gnat", From_Default, True);
+-      Set_Command (Native_Toolchain, GNAT_List, "gnatls", From_Default, True);
++      Set_Command (Native_Toolchain, GNAT_Driver, "@GNAT@", From_Default,
++         True);
++      Set_Command (Native_Toolchain, GNAT_List, "@GNATLS@", From_Default,
++         True);
+       Set_Command (Native_Toolchain, Debugger, "gdb", From_Default, True);
+       Set_Command (Native_Toolchain, CPP_Filt, "c++filt", From_Default, True);
+ 
+       Compute_Predefined_Paths (Native_Toolchain);
+ 
+       if Get_Compiler (Native_Toolchain, "Ada") = No_Compiler then
+-         Add_Compiler (Native_Toolchain, "Ada", "gnatmake", From_Default);
++         Add_Compiler (Native_Toolchain, "Ada", "@GNATMAKE@",
++            From_Default);
+       end if;
+ 
+       if Get_Compiler (Native_Toolchain, "C") = No_Compiler then
