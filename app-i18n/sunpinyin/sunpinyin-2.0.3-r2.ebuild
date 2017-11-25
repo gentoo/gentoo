@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="3"
+EAPI=6
 
-inherit eutils multilib scons-utils toolchain-funcs
+inherit scons-utils toolchain-funcs
 
 DESCRIPTION="SunPinyin is a SLM (Statistical Language Model) based IME"
 HOMEPAGE="https://sunpinyin.googlecode.com"
@@ -27,8 +27,9 @@ src_unpack() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-force-switch.patch"
-	epatch "${FILESDIR}/${P}-gcc-4.7.patch"
+	eapply "${FILESDIR}/${P}-force-switch.patch"
+	eapply "${FILESDIR}/${P}-gcc-4.7.patch"
+	default
 }
 
 src_configure() {
