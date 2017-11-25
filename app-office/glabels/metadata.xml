@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>gnome@gentoo.org</email>
-	<name>Gentoo GNOME Desktop</name>
-</maintainer>
-<longdescription>
-  gLabels is a program for creating labels and business cards for
-  the GNOME desktop environment. It is designed to work with various
-  laser/ink-jet peel-off label and business card sheets that you'll
-  find at most office supply stores.
-</longdescription>
-<use>
-	<flag name="barcode">Enable barcode support through external libraries.</flag>
-</use>
+	<maintainer type="project">
+		<email>gnome@gentoo.org</email>
+		<name>Gentoo GNOME Desktop</name>
+	</maintainer>
+	<longdescription>
+		gLabels is a program for creating labels and business cards for
+		the GNOME desktop environment. It is designed to work with various
+		laser/ink-jet peel-off label and business card sheets that you'll
+		find at most office supply stores.
+	</longdescription>
+	<use>
+		<flag name="barcode">Enable barcode support through external libraries.</flag>
+	</use>
 </pkgmetadata>
