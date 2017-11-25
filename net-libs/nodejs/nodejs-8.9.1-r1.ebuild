@@ -16,7 +16,11 @@ SRC_URI="https://nodejs.org/dist/v${PV}/node-v${PV}.tar.xz"
 LICENSE="Apache-1.1 Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x64-macos"
-IUSE="cpu_flags_x86_sse2 debug doc icu +npm +snapshot +ssl systemtap test"
+IUSE="cpu_flags_x86_sse2 debug doc icu inspector +npm +snapshot +ssl systemtap test"
+REQUIRED_USE="
+	${PYTHON_REQUIRED_USE}
+	inspector? ( icu ssl )
+"
 
 RDEPEND="
 	>=dev-libs/libuv-1.15.0:=
@@ -33,7 +37,6 @@ DEPEND="${RDEPEND}
 	test? ( net-misc/curl )"
 
 S="${WORKDIR}/node-v${PV}"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 PATCHES=(
 	"${FILESDIR}"/gentoo-global-npm-config.patch
@@ -94,6 +97,7 @@ src_configure() {
 	local myconf=( --shared-http-parser --shared-libuv --shared-nghttp2 --shared-zlib )
 	use debug && myconf+=( --debug )
 	use icu && myconf+=( --with-intl=system-icu ) || myconf+=( --with-intl=none )
+	use inspector || myconf+=( --without-inspector )
 	use npm || myconf+=( --without-npm )
 	use snapshot && myconf+=( --with-snapshot )
 	use ssl && myconf+=( --shared-openssl ) || myconf+=( --without-ssl )
