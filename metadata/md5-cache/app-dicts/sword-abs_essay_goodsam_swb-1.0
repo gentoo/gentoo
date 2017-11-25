@@ -9,4 +9,4 @@ RDEPEND=app-text/sword
 SLOT=0
 SRC_URI=mirror://gentoo/ABS_Essay_GoodSam_SWB-1.0.zip
 _eclasses_=sword-module	f93b38348e60d75f292f55df132bbac4
-_md5_=0ca7401c6c3bda2f63a960bf8a84bc66
+_md5_=10c8db104713e112775448d736131bc3
