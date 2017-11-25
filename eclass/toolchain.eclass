@@ -378,9 +378,6 @@ toolchain_pkg_pretend() {
 			"in your make.conf if you want to use this version."
 	fi
 
-	[[ -z ${UCLIBC_VER} ]] && [[ ${CTARGET} == *-uclibc* ]] && \
-		die "Sorry, this version does not support uClibc"
-
 	if ! use_if_iuse cxx ; then
 		use_if_iuse go && ewarn 'Go requires a C++ compiler, disabled due to USE="-cxx"'
 		use_if_iuse objc++ && ewarn 'Obj-C++ requires a C++ compiler, disabled due to USE="-cxx"'
