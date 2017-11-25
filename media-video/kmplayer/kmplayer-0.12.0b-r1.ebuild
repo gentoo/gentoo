@@ -70,7 +70,7 @@ src_prepare() {
 
 	if use npp; then
 		sed -i src/kmplayer_part.desktop \
-		-e ":^MimeType: s:=:=application/x-shockwave-flash;:" || die
+			-e ":^MimeType: s:=:=application/x-shockwave-flash;:" || die
 	fi
 }
 
@@ -89,7 +89,10 @@ src_install() {
 	kde5_src_install
 
 	if use npp; then
-		kwriteconfig5 --file "${ED}/usr/share/config/kmplayerrc" --group "application/x-shockwave-flash" --key player npp
-		kwriteconfig5 --file "${ED}/usr/share/config/kmplayerrc" --group "application/x-shockwave-flash" --key plugin /usr/lib/nsbrowser/plugins/libflashplayer.so
+		kwriteconfig5 --file "${ED}/usr/share/config/kmplayerrc" \
+			--group "application/x-shockwave-flash" --key player npp
+		kwriteconfig5 --file "${ED}/usr/share/config/kmplayerrc" \
+			--group "application/x-shockwave-flash" \
+			--key plugin /usr/lib/nsbrowser/plugins/libflashplayer.so
 	fi
 }
