@@ -1,0 +1,30 @@
+diff --git a/SConstruct b/SConstruct
+index 68cd365..9bb6ebc 100644
+--- a/SConstruct
++++ b/SConstruct
+@@ -180,12 +180,6 @@ libdir = env['LIBDIR']
+ libdatadir = env['LIBDATADIR'] + '/sunpinyin/data'
+ headersdir = env['PREFIX'] + '/include/sunpinyin-2.0'
+ 
+-if GetOS() != 'Darwin':
+-    env.Append(LINKFLAGS=['-Wl,-soname=libsunpinyin.so.%d' % abi_major])
+-
+-if GetOption('rpath') is not None and GetOS() != 'Darwin':
+-    env.Append(LINKFLAGS='-Wl,-R -Wl,%s' % GetOption('rpath'))
+-
+ # pass through environmental variables
+ envvar = [('CC', 'CC'),
+           ('CXX', 'CXX'),
+@@ -202,6 +196,12 @@ extra_cflags=' -DHAVE_CONFIG_H -DSUNPINYIN_DATA_DIR=\'"%s"\'' % libdatadir
+ env.Append(CFLAGS=extra_cflags)
+ env.Append(CXXFLAGS=extra_cflags)
+ 
++if GetOS() != 'Darwin':
++    env.Append(LINKFLAGS=' -Wl,-soname=libsunpinyin.so.%d' % abi_major)
++
++if GetOption('rpath') is not None and GetOS() != 'Darwin':
++    env.Append(LINKFLAGS=' -Wl,-R -Wl,%s' % GetOption('rpath'))
++
+ #
+ #==============================configure================================
+ #
