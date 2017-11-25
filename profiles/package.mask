@@ -43,6 +43,12 @@ sys-auth/pam-csync
 www-apps/eyeos
 
 # Matt Turner <mattst88@gentoo.org> (23 Nov 2017)
+# The modesetting driver is part of the xorg-server package since version 1.17.
+# The separate xf86-video-modesetting package is no longer needed.
+# Bug #606132.
+x11-drivers/xf86-video-modesetting
+
+# Matt Turner <mattst88@gentoo.org> (23 Nov 2017)
 # For ancient hardware. Tired of maintaining. Masked for removal in 30 days.
 # Bug #606132.
 x11-misc/afbinit
@@ -55,7 +61,6 @@ x11-drivers/xf86-video-freedreno
 x11-drivers/xf86-video-i128
 x11-drivers/xf86-video-i740
 x11-drivers/xf86-video-mach64
-x11-drivers/xf86-video-modesetting
 x11-drivers/xf86-video-neomagic
 x11-drivers/xf86-video-opentegra
 x11-drivers/xf86-video-rendition
