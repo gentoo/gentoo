@@ -38,6 +38,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	mkdir -p "${S}/src/config"
 	default_src_prepare
 	eautoreconf
 }
