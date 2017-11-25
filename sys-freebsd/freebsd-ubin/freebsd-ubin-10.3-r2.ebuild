@@ -12,8 +12,8 @@ LICENSE="BSD zfs? ( CDDL )"
 
 # Security Advisory and Errata patches.
 UPSTREAM_PATCHES=(
-    "SA-16:25/bspatch.patch"
-    "SA-16:29/bspatch.patch"
+	"SA-16:25/bspatch.patch"
+	"SA-16:29/bspatch.patch"
 )
 
 if [[ ${PV} != *9999* ]]; then
