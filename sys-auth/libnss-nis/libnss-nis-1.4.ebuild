@@ -7,12 +7,11 @@ inherit autotools multilib-minimal
 
 DESCRIPTION="NSS module to provide NIS support"
 HOMEPAGE="https://github.com/thkukuk/libnss_nis"
-SRC_URI="https://github.com/thkukuk/libnss_nis/archive/libnss_nis-${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/thkukuk/libnss_nis/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1+ BSD ISC"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
 
 RDEPEND="
 	net-libs/libnsl:0=[${MULTILIB_USEDEP}]
@@ -23,11 +22,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig[${MULTILIB_USEDEP}]
 "
 
-S=${WORKDIR}/libnss_nis-libnss_nis-${PV}
-
-PATCHES=(
-	"${FILESDIR}/map_v4v6_address.patch"
-)
+S=${WORKDIR}/libnss_nis-${PV}
 
 src_prepare() {
 	default
