@@ -67,7 +67,7 @@ app-admin/elektra:ini - Enable new, advanced ini support
 app-admin/elektra:simpleini - Enable simpleini support
 app-admin/elektra:uname - Enable uname information for the key database
 app-admin/elektra:yajl - Enable yajl support
-app-admin/gkrellm:X - Build both the X11 gui (gkrellm) and the server (gkrellmd). Disabling this flag builds the server only.
+app-admin/gkrellm:X - Build both the X11 gui (gkrellm) and the server (gkrellmd). Disabling this flag builds the server only
 app-admin/gkrellm:gnutls - Enable SSL support for mail checking with net-libs/gnutls (overrides 'ssl' USE flag)
 app-admin/gkrellm:hddtemp - Enable monitoring harddrive temperatures via app-admin/hddtemp
 app-admin/gkrellm:lm_sensors - Enable monitoring sensors via sys-apps/lm_sensors
@@ -160,10 +160,10 @@ app-admin/salt:redis - Support returning data to a redis database.
 app-admin/salt:timelib - Use timelib to parse english textual date descriptions.
 app-admin/salt:zeromq - Add support for the zeromq transport.
 app-admin/sshguard:ipfilter - Enable ipfilter firewall support (only for *bsd)
-app-admin/sudo:gcrypt - Use SHA2 from dev-libs/libgcrypt instead of sudo's internal SHA2.
-app-admin/sudo:offensive - Let sudo print insults when the user types the wrong password.
-app-admin/sudo:openssl - Use SHA2 from dev-libs/openssl instead of sudo's internal SHA2.
-app-admin/sudo:sendmail - Allow sudo to send emails with sendmail.
+app-admin/sudo:gcrypt - Use SHA2 from dev-libs/libgcrypt instead of sudo's internal SHA2
+app-admin/sudo:offensive - Let sudo print insults when the user types the wrong password
+app-admin/sudo:openssl - Use SHA2 from dev-libs/openssl instead of sudo's internal SHA2
+app-admin/sudo:sendmail - Allow sudo to send emails with sendmail
 app-admin/sysklogd:logrotate - use app-admin/logrotate for rotating logs rather than custom cron scripts
 app-admin/syslog-ng:amqp - Enable support for AMQP destinations
 app-admin/syslog-ng:json - Enable support for JSON template formatting via dev-libs/json-c
@@ -204,9 +204,9 @@ app-arch/engrampa:packagekit - Enable support for installing via app-admin/packa
 app-arch/file-roller:nautilus - Build contextual menu extension for gnome-base/nautilus.
 app-arch/file-roller:packagekit - Enable support for the distro-neutral package manager GUI app-admin/packagekit
 app-arch/gzip:pic - disable optimized assembly code that is not PIC friendly
-app-arch/innoextract:c++0x - Compile innoextract using the C++11 standard.
-app-arch/innoextract:debug - Enable debug logging and the --debug command-line option.
-app-arch/innoextract:lzma - Enable support for extracting lzma-compressed installers using app-arch/xz-utils.
+app-arch/innoextract:c++0x - Compile innoextract using the C++11 standard
+app-arch/innoextract:debug - Enable debug logging and the --debug command-line option
+app-arch/innoextract:lzma - Enable support for extracting lzma-compressed installers using app-arch/xz-utils
 app-arch/libarchive:bzip2 - Allow accessing bzip2-compressed archives through libbz2 (which comes with app-arch/bzip2). This only affects libarchive's native support: bsdtar will keep using bunzip2 as a filter if that's not built-in.
 app-arch/libarchive:e2fsprogs - Use file flags from sys-fs/e2fsprogs headers instead of virtual/os-headers headers
 app-arch/libarchive:lz4 - Enable support for LZ4 compression using app-arch/lz4
@@ -262,7 +262,7 @@ app-backup/snapper:xattr - Add support for getting and setting POSIX extended at
 app-backup/tsm:tsm_cit - IBM Tivoli Common Inventory Technology
 app-backup/tsm:tsm_hw - Difference snapshot support for NetApp and N-Series file servers
 app-backup/zbackup:tartool - Install tartool utility
-app-benchmarks/filebench:auto-completion - Enable command-line autocompletion using dev-libs/libtecla.
+app-benchmarks/filebench:auto-completion - Enable command-line autocompletion using dev-libs/libtecla
 app-benchmarks/httperf:idleconn - Build with the idleconn program
 app-benchmarks/ramspeed:pic - Force shared libraries to be built as PIC (this is slower)
 app-benchmarks/sysbench:aio - Enable libaio support
@@ -899,7 +899,7 @@ app-misc/gourmet:pdf - Enable export to PDF
 app-misc/gourmet:print - Enable pretty Python printing
 app-misc/gourmet:spell - Enable support for the spell check plugin
 app-misc/gourmet:web - Enable support for the web import plugin
-app-misc/gramps:geo - Enable rendering of geographical data using sci-geosciences/osm-gps-map.
+app-misc/gramps:geo - Enable rendering of geographical data using sci-geosciences/osm-gps-map
 app-misc/gramps:reports - All external software that is needed for graphical reports will be installed
 app-misc/graphlcd-base:g15 - Add support for app-misc/g15daemon driver (e.g. Logitech G15 Keybord)
 app-misc/irtrans-irserver:mono - Enable mono support
@@ -1207,22 +1207,22 @@ app-text/tesseract:webp - Enable support for webp image format.
 app-text/texlive:context - Add support for the ConTeXt format (dev-texlive/texlive-context)
 app-text/texlive:detex - Add support for dev-tex/detex, a filter program that removes the LaTeX (or TeX) control sequences
 app-text/texlive:dvi2tty - Add support for dev-tex/dvi2tty to preview dvi-files on text-only devices
-app-text/texlive:epspdf - Add support for app-text/epspdf, a tool for converting [e]ps files to pdf.
+app-text/texlive:epspdf - Add support for app-text/epspdf, a tool for converting [e]ps files to pdf
 app-text/texlive:extra - Add support for extra TeXLive packages
 app-text/texlive:games - Add typesetting support for games (chess, etc.) (dev-texlive/texlive-games)
 app-text/texlive:graphics - Add support for several graphics packages (pgf, tikz,...)
 app-text/texlive:humanities - Add LaTeX support for the humanities (dev-texlive/texlive-humanities)
 app-text/texlive:jadetex - Add support for app-text/jadetex (for processing tex files produced by the TeX backend of Jade)
 app-text/texlive:luatex - Add extra support for luatex
-app-text/texlive:metapost - Add support for metapost: A tool for creating graphics in scalable PostScript.
+app-text/texlive:metapost - Add support for metapost: A tool for creating graphics in scalable PostScript
 app-text/texlive:music - Add support for music typesetting (dev-texlive/texlive-music)
 app-text/texlive:omega - Add omega packages (dev-texlive/texlive-omega)
-app-text/texlive:pdfannotextractor - Add dev-tex/pdfannotextractor support, for extracting annotations from PDF files.
+app-text/texlive:pdfannotextractor - Add dev-tex/pdfannotextractor support, for extracting annotations from PDF files
 app-text/texlive:pstricks - Add pstricks packages (dev-texlive/texlive-pstricks)
 app-text/texlive:publishers - Add support for publishers (dev-texlive/texlive-publishers)
 app-text/texlive:science - Add typesetting support for natural and computer sciences (dev-texlive/texlive-science)
 app-text/texlive:tex4ht - Add support for dev-tex/tex4ht (for converting (La)TeX to (X)HTML, XML and OO.org)
-app-text/texlive:texi2html - Add support for app-text/texi2html which converts texi files to HTML.
+app-text/texlive:texi2html - Add support for app-text/texi2html which converts texi files to HTML
 app-text/texlive:xetex - Add support for XeTeX macros (dev-texlive/texlive-xetex)
 app-text/texlive:xindy - Add support for app-text/xindy, a flexible indexing system
 app-text/texlive-core:luajittex - Add support for LuaJitTeX: LuaTeX based on LuaJIT which is usually faster.
