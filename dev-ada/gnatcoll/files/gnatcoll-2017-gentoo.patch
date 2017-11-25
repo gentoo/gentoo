@@ -222,3 +222,26 @@
     end Compiler;
  
     package Linker is
+--- gnatcoll-gpl-2017-src/src/gnatcoll-projects.ads.old	2017-11-25 14:50:06.919939453 +0100
++++ gnatcoll-gpl-2017-src/src/gnatcoll-projects.ads	2017-11-25 14:50:38.932387204 +0100
+@@ -1917,7 +1917,8 @@
+       Predefined_Source_Files : GNATCOLL.VFS.File_Array_Access;
+       --  The list of source files in Predefined_Source_Path
+ 
+-      Default_Gnatls : GNAT.Strings.String_Access := new String'("gnatls");
++      Default_Gnatls : GNAT.Strings.String_Access :=
++         new String'("@GNATLS@");
+       --  The default gnatls command to run.
+ 
+       Xrefs_Subdir : GNAT.Strings.String_Access;
+--- gnatcoll-gpl-2017-src/src/tools/gnatinspect.adb.old	2017-11-25 14:52:47.282170250 +0100
++++ gnatcoll-gpl-2017-src/src/tools/gnatinspect.adb	2017-11-25 14:52:57.691990254 +0100
+@@ -642,7 +642,7 @@
+       GNAT_Version : GNAT.Strings.String_Access;
+    begin
+       Env.Set_Path_From_Gnatls
+-        (Gnatls       => "gnatls",
++        (Gnatls       => "@GNATLS@",
+          GNAT_Version => GNAT_Version,
+          Errors       => Local_On_Error'Unrestricted_Access);
+       Free (GNAT_Version);
