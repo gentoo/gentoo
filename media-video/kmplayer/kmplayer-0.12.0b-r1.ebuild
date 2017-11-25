@@ -93,6 +93,6 @@ src_install() {
 			--group "application/x-shockwave-flash" --key player npp
 		kwriteconfig5 --file "${ED}/usr/share/config/kmplayerrc" \
 			--group "application/x-shockwave-flash" \
-			--key plugin /usr/lib/nsbrowser/plugins/libflashplayer.so
+			--key plugin /usr/$(get_libdir)/nsbrowser/plugins/libflashplayer.so
 	fi
 }
