@@ -98,11 +98,11 @@ RUBY_FAKEGEM_BINDIR="${RUBY_FAKEGEM_BINDIR-bin}"
 # Filename of .gemspec file to install instead of generating a generic one.
 
 # @ECLASS-VARIABLE: RUBY_FAKEGEM_EXTRAINSTALL
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # List of files and directories relative to the top directory that also
 # get installed. Some gems provide extra files such as version information,
 # Rails generators, or data that needs to be installed as well.
-RUBY_FAKEGEM_EXTRAINSTALL=""
 
 
 RUBY_FAKEGEM_SUFFIX="${RUBY_FAKEGEM_SUFFIX:-}"
