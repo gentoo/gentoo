@@ -6,4 +6,4 @@ KEYWORDS=~amd64
 LICENSE=BSD
 SLOT=0
 SRC_URI=http://hyperdex.org/src/libpo6-0.8.0.tar.gz
-_md5_=8853ce94a5f2aef837b445dddf0bf179
+_md5_=de9de64a87bb3cc0830a8408f5ace49a
