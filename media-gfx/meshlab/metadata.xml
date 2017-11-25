@@ -9,11 +9,11 @@
 		<name>Gentoo 3D print</name>
 	</maintainer>
 	<longdescription lang="en">
- Printrun is a set of G-code sending applications for RepRap.
- It consists of printcore (dumb G-code sender), pronsole (featured command line
- G-code sender), pronterface (featured G-code sender with graphical user
- interface), and a small collection of helpful scripts.
-</longdescription>
+	Printrun is a set of G-code sending applications for RepRap.
+	It consists of printcore (dumb G-code sender), pronsole (featured command line
+	G-code sender), pronterface (featured G-code sender with graphical user
+	interface), and a small collection of helpful scripts.
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">meshlab</remote-id>
 	</upstream>
