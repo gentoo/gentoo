@@ -2118,7 +2118,7 @@ app-portage/fquery 0.2.2 0.2.3: Installed package query tool for Gentoo Linux
 app-portage/g-cpan 0.16.5 0.16.6 0.16.7 0.16.9 9999: Autogenerate and install ebuilds for CPAN modules
 app-portage/g-octave 0.4.1-r5: A tool that generates and installs ebuilds for Octave-Forge
 app-portage/g-sorcery 0.1-r1 0.2 0.2.1 0.2.1-r1 9999: framework for ebuild generators
-app-portage/gemato 9999: Stand-alone Manifest generation & verification tool
+app-portage/gemato 4 9999: Stand-alone Manifest generation & verification tool
 app-portage/genlop 0.30.9-r1 0.30.10 0.30.10-r1 9999: A nice emerge.log parser
 app-portage/gentoolkit 0.3.3 0.4.0 9999: Collection of administration scripts for Gentoo
 app-portage/gentoolkit-dev 0.2.8.3-r1 0.3.0 0.3.1: Collection of developer scripts for Gentoo
@@ -2204,7 +2204,7 @@ app-text/an 1.2 1.2-r1: Very fast anagram generator with dictionary lookup
 app-text/ansifilter 2.8.1: Handles text files containing ANSI terminal escape codes
 app-text/antiword 0.37-r1: free MS Word reader
 app-text/antixls 0.3b: Print out an XLS file with minimal formatting, or extract the data into CSV
-app-text/apvlv 0.1.5-r1: Alf's PDF Viewer Like Vim
+app-text/apvlv 0.1.5-r1 0.1.5-r2: Alf's PDF Viewer Like Vim
 app-text/asa 1.1-r1: ASA Carriage control conversion for ouput by Fortran programs
 app-text/asciidoc 8.6.9-r2 8.6.9-r6 8.6.10 9999: AsciiDoc is a plain text human readable/writable document format
 app-text/aspell 0.60.6.1-r3 0.60.6.1-r4 0.60.7_rc1: A spell checker replacement for ispell
@@ -4971,7 +4971,7 @@ dev-libs/libusb 1.0.19-r1 1.0.20 1.0.21: Userspace access to USB devices
 dev-libs/libusb-compat 0.1.5-r2 0.1.5-r3: Userspace access to USB devices (libusb-0.1 compat wrapper)
 dev-libs/libusbhp 1.0.2: Usb Hotplug Library
 dev-libs/libutf8proc 1.3.1_p2-r1: mapping tool for UTF-8 strings
-dev-libs/libuv 1.10.2 1.11.0 1.14.0 1.14.1 1.15.0 1.16.1: Cross-platform asychronous I/O
+dev-libs/libuv 1.10.2 1.11.0 1.14.0 1.14.1 1.15.0 1.16.1 1.17.0: Cross-platform asychronous I/O
 dev-libs/libverto 0.2.5 0.2.5-r1 0.2.6: Main event loop abstraction library
 dev-libs/libvformat 1.13-r2: Library to read and write vcard files
 dev-libs/libvolume_id 0.81.0 0.81.1: Library to provide file system information
@@ -5961,7 +5961,7 @@ dev-perl/Filesys-DiskSpace 0.50.0-r1 0.50.0-r2: Perl df
 dev-perl/Filesys-Notify-Simple 0.120.0: Simple and dumb file system watcher
 dev-perl/Filesys-SmbClient 3.200.0-r2 3.200.0-r3: Provide Perl API for libsmbclient.so
 dev-perl/Filter 1.570.0: Interface for creation of Perl Filters
-dev-perl/Finance-Quote 1.370.0 1.380.0: Get stock and mutual fund quotes from various exchanges
+dev-perl/Finance-Quote 1.370.0 1.380.0 1.470.0: Get stock and mutual fund quotes from various exchanges
 dev-perl/Finance-YahooQuote 0.250.0 0.250.0-r1: Get stock quotes from Yahoo! Finance
 dev-perl/Font-AFM 1.200.0-r1: Parse Adobe Font Metric files
 dev-perl/Font-TTF 1.20.0-r1 1.60.0: module for compiling and altering fonts
@@ -5978,7 +5978,7 @@ dev-perl/GSSAPI 0.280.0-r1: GSSAPI - Perl extension providing access to the GSSA
 dev-perl/Gearman 2.3.2 2.4.2 2.4.3 2.4.6 2.4.7 2.4.9: Gearman distributed job system, client and worker libraries
 dev-perl/Gearman-Client-Async 0.940.0-r1 0.940.0-r2: Asynchronous client module for Gearman for Danga::Socket applications
 dev-perl/Gearman-Server 1.120.0-r1 1.130.1-r1: Gearman distributed job system - worker/client connector
-dev-perl/Gentoo-App-Pram 0.4.0 0.100.0: Readily merge Pull Requests from the Gentoo Github repository
+dev-perl/Gentoo-App-Pram 0.100.0: Utility to merge PRs from the Gentoo Github repository
 dev-perl/Gentoo-PerlMod-Version 0.8.1: Convert arbitrary Perl Modules' versions into normalised Gentoo versions
 dev-perl/Geo-IP 1.450.0 1.500.0-r1 1.510.0: Look up country by IP Address
 dev-perl/Geography-Countries 2009041301.0.0-r1: 2-letter, 3-letter, and numerical codes for countries
@@ -6290,24 +6290,24 @@ dev-perl/Module-Util 1.90.0: Module name tools and transformations
 dev-perl/Module-Versions-Report 1.60.0-r1: Report versions of all modules in memory
 dev-perl/MogileFS-Client 1.170.0-r1 1.170.0-r2: Client library for the MogileFS distributed file system
 dev-perl/MogileFS-Client-Async 0.030.0-r1: MogileFS Client using AnyEvent non-blocking IO
-dev-perl/MogileFS-Network 0.060.0-r1: Network awareness and extensions for MogileFS::Server
+dev-perl/MogileFS-Network 0.060.0-r1 0.60.0-r2: Network awareness and extensions for MogileFS::Server
 dev-perl/MogileFS-Server 2.700.0-r2 2.700.0-r3 2.720.0: Server for the MogileFS distributed file system
 dev-perl/MogileFS-Utils 2.290.0: Server for the MogileFS distributed file system
 dev-perl/Mojolicious 6.610.0 7.110.0 7.120.0 7.140.0 7.190.0 7.200.0 7.210.0 7.290.0 7.300.0 7.310.0 7.320.0 7.570.0: Real-time web framework
-dev-perl/Mon 0.110.0-r1: A Monitor Perl Module
+dev-perl/Mon 0.110.0-r1 0.110.0-r2: A Monitor Perl Module
 dev-perl/MongoDB 1.8.0: Official MongoDB Driver for Perl
 dev-perl/Monitoring-Plugin 0.390.0: Modules to streamline Nagios, Icinga, Shinken, etc. plugins
 dev-perl/Moo 2.3.0 2.3.1 2.3.2 2.3.3: Minimalist Object Orientation (with Moose compatiblity)
 dev-perl/MooX-HandlesVia 0.1.8: NativeTrait-like behavior for Moo
 dev-perl/MooX-Types-MooseLike 0.290.0: Some Moosish types and a type builder
 dev-perl/MooX-Types-MooseLike-Numeric 1.20.0 1.30.0: Moo types for numbers
-dev-perl/MooX-late 0.15.0: Easily translate Moose code to Moo
+dev-perl/MooX-late 0.15.0 0.15.0-r1: Easily translate Moose code to Moo
 dev-perl/Moose 2.160.500 2.180.600 2.180.700 2.200.400 2.200.500 2.200.700: A postmodern object system for Perl 5
 dev-perl/Moose-Autobox 0.160.0: Autoboxed wrappers for Native Perl datatypes
 dev-perl/MooseX-Aliases 0.110.0-r1: Easy aliasing of methods and attributes in Moose
 dev-perl/MooseX-ClassAttribute 0.270.0-r1 0.290.0: Declare class attributes Moose-style
 dev-perl/MooseX-ConfigFromFile 0.140.0: An abstract Moose role for setting attributes from a configfile
-dev-perl/MooseX-FollowPBP 0.50.0: Name your accessors get_foo() and set_foo(), whatever that may mean
+dev-perl/MooseX-FollowPBP 0.50.0 0.50.0-r1: Name your accessors get_foo() and set_foo(), whatever that may mean
 dev-perl/MooseX-Getopt 0.680.0 0.710.0: A Moose role for processing command line options
 dev-perl/MooseX-GlobRef 0.70.100: Store a Moose object in glob reference
 dev-perl/MooseX-Has-Sugar 1.0.6: Sugar Syntax for moose 'has' fields
@@ -6333,7 +6333,7 @@ dev-perl/MooseX-Types-Perl 0.101.343: Moose types that check against Perl syntax
 dev-perl/MooseX-Types-Stringlike 0.3.0: Moose type constraints for strings or string-like objects
 dev-perl/Mouse 2.4.9 2.4.10: Moose minus the antlers
 dev-perl/MouseX-NativeTraits 1.90.0-r2: Extend your attribute interfaces for Mouse
-dev-perl/MouseX-Types 0.60.0: Organize your Mouse types in libraries
+dev-perl/MouseX-Types 0.60.0 0.60.0-r1: Organize your Mouse types in libraries
 dev-perl/Mozilla-CA 20999999: Mozilla's CA cert bundle in PEM format (Gentoo stub)
 dev-perl/Mozilla-PublicSuffix 1.0.0: Get a domain name's public suffix via the Mozilla Public Suffix List
 dev-perl/MusicBrainz-DiscID 0.30.0-r1 0.40.0: Perl interface for the MusicBrainz libdiscid library
@@ -8643,7 +8643,7 @@ dev-python/pyzmq 14.4.1 16.0.2: Lightweight and super-fast messaging library bui
 dev-python/pyzor 0.7.0 1.0.0: A distributed, collaborative spam detection and filtering network
 dev-python/qpid-python 0.20: A high-speed platform independent enterprise messaging system for Apache
 dev-python/qrcode 5.1-r1: QR Code generator on top of PIL
-dev-python/qscintilla-python 2.9.2-r1 2.9.4-r1 2.10.1-r1: Python bindings for Qscintilla
+dev-python/qscintilla-python 2.9.4-r1 2.10.1-r1 2.10.2: Python bindings for Qscintilla
 dev-python/qserve 0.2.8-r1: A job queue server
 dev-python/qtawesome 0.3.3 0.4.4: Enables iconic fonts such as Font Awesome in PyQt
 dev-python/qtconsole 4.3.0: Qt-based console for Jupyter with support for rich media output
@@ -9057,68 +9057,68 @@ dev-python/zope-testing 4.6.1 4.6.2: Zope testing helpers
 dev-python/zope-testrunner 4.6.0 4.7.0: Zope testrunner script
 dev-python/zsi 2.1_alpha1-r1: Web Services for Python
 dev-python/zstandard 0.8.1: Zstandard Bindings for Python
-dev-qt/assistant 4.8.7 5.7.1 5.9.2: Tool for viewing on-line documentation in Qt help file format
-dev-qt/designer 4.8.7 5.7.1 5.9.2: WYSIWYG tool for designing and building Qt-based GUIs
-dev-qt/linguist 4.8.7 5.7.1 5.9.2: Graphical tool for translating Qt applications
-dev-qt/linguist-tools 5.7.1 5.9.2: Tools for working with Qt translation data files
-dev-qt/pixeltool 4.8.7 5.7.1 5.9.2: Qt screen magnifier
-dev-qt/qdbus 5.7.1 5.9.2: Interface to Qt applications communicating over D-Bus
-dev-qt/qdbusviewer 4.8.7 5.7.1 5.9.2: Graphical tool that lets you introspect D-Bus objects and messages
-dev-qt/qdoc 5.7.1 5.9.2: Qt documentation generator
+dev-qt/assistant 4.8.7 5.7.1 5.9.2 5.9.3: Tool for viewing on-line documentation in Qt help file format
+dev-qt/designer 4.8.7 5.7.1 5.9.2 5.9.3: WYSIWYG tool for designing and building Qt-based GUIs
+dev-qt/linguist 4.8.7 5.7.1 5.9.2 5.9.3: Graphical tool for translating Qt applications
+dev-qt/linguist-tools 5.7.1 5.9.2 5.9.3: Tools for working with Qt translation data files
+dev-qt/pixeltool 4.8.7 5.7.1 5.9.2 5.9.3: Qt screen magnifier
+dev-qt/qdbus 5.7.1 5.9.2 5.9.3: Interface to Qt applications communicating over D-Bus
+dev-qt/qdbusviewer 4.8.7 5.7.1 5.9.2 5.9.3: Graphical tool that lets you introspect D-Bus objects and messages
+dev-qt/qdoc 5.7.1 5.9.2 5.9.3: Qt documentation generator
 dev-qt/qt-creator 4.3.1 4.4.1 9999: Lightweight IDE for C++/QML development centering around Qt
 dev-qt/qt-docs 5.7.1_p0 5.9.2_p201710050733: Documentation for Qt5, for use with Qt Creator and other tools
 dev-qt/qt-meta 4.8.6: Cross-platform application development framework (metapackage)
-dev-qt/qt3d 5.7.1-r1 5.9.2: The 3D module for the Qt5 framework
+dev-qt/qt3d 5.7.1-r1 5.9.2 5.9.3: The 3D module for the Qt5 framework
 dev-qt/qt3support 4.8.7: The Qt3Support module for the Qt toolkit
 dev-qt/qtbearer 4.8.7: The network bearer plugins for the Qt toolkit
-dev-qt/qtbluetooth 5.7.1 5.9.2: Bluetooth support library for the Qt5 framework
-dev-qt/qtcharts 5.7.1 5.9.2: Chart component library for the Qt5 framework
+dev-qt/qtbluetooth 5.7.1 5.9.2 5.9.3: Bluetooth support library for the Qt5 framework
+dev-qt/qtcharts 5.7.1 5.9.2 5.9.3: Chart component library for the Qt5 framework
 dev-qt/qtchooser 0_p20151008 0_p20170803: Qt4/Qt5 version chooser
-dev-qt/qtconcurrent 5.7.1 5.9.2: Multi-threading concurrence support library for the Qt5 framework
-dev-qt/qtcore 4.8.7-r2 4.8.7-r3 5.7.1-r3 5.9.2: Cross-platform application development framework
-dev-qt/qtdatavis3d 5.7.1 5.9.2: 3D data visualization library for the Qt5 framework
-dev-qt/qtdbus 4.8.7 5.7.1 5.9.2: Qt5 module for inter-process communication over the D-Bus protocol
-dev-qt/qtdeclarative 4.8.7 5.7.1 5.7.1-r1 5.9.2: The QML and Quick modules for the Qt5 framework
+dev-qt/qtconcurrent 5.7.1 5.9.2 5.9.3: Multi-threading concurrence support library for the Qt5 framework
+dev-qt/qtcore 4.8.7-r2 4.8.7-r3 5.7.1-r3 5.9.2 5.9.3: Cross-platform application development framework
+dev-qt/qtdatavis3d 5.7.1 5.9.2 5.9.3: 3D data visualization library for the Qt5 framework
+dev-qt/qtdbus 4.8.7 5.7.1 5.9.2 5.9.3: Qt5 module for inter-process communication over the D-Bus protocol
+dev-qt/qtdeclarative 4.8.7 5.7.1 5.7.1-r1 5.9.2 5.9.3: The QML and Quick modules for the Qt5 framework
 dev-qt/qtdemo 4.8.7: Demonstration module and examples for the Qt toolkit
-dev-qt/qtdiag 5.7.1 5.9.2: Tool for reporting diagnostic information about Qt and its environment
-dev-qt/qtgraphicaleffects 5.7.1 5.9.2: Set of QML types for adding visual effects to user interfaces
-dev-qt/qtgui 4.8.7 5.7.1-r1 5.9.2: The GUI module and platform plugins for the Qt5 framework
-dev-qt/qthelp 4.8.7 5.7.1 5.9.2: Qt5 module for integrating online documentation into applications
-dev-qt/qtimageformats 5.7.1 5.9.2: Additional format plugins for the Qt image I/O system
-dev-qt/qtlocation 5.7.1 5.9.2: The Location module for the Qt5 framework
+dev-qt/qtdiag 5.7.1 5.9.2 5.9.3: Tool for reporting diagnostic information about Qt and its environment
+dev-qt/qtgraphicaleffects 5.7.1 5.9.2 5.9.3: Set of QML types for adding visual effects to user interfaces
+dev-qt/qtgui 4.8.7 5.7.1-r1 5.9.2 5.9.3: The GUI module and platform plugins for the Qt5 framework
+dev-qt/qthelp 4.8.7 5.7.1 5.9.2 5.9.3: Qt5 module for integrating online documentation into applications
+dev-qt/qtimageformats 5.7.1 5.9.2 5.9.3: Additional format plugins for the Qt image I/O system
+dev-qt/qtlocation 5.7.1 5.9.2 5.9.3: The Location module for the Qt5 framework
 dev-qt/qtlockedfile 2.4.1_p20150629: QFile extension with advisory locking functions
-dev-qt/qtmultimedia 4.8.7 5.7.1 5.9.2: Multimedia (audio, video, radio, camera) library for the Qt5 framework
-dev-qt/qtnetwork 5.7.1 5.9.2: Network abstraction library for the Qt5 framework
-dev-qt/qtnetworkauth 5.9.2: Network authorization library for the Qt5 framework
-dev-qt/qtopengl 4.8.7 5.7.1 5.9.2: OpenGL support library for the Qt5 framework (deprecated)
-dev-qt/qtpaths 5.7.1 5.9.2: Command line client to QStandardPaths
-dev-qt/qtplugininfo 5.7.1 5.9.2: Qt5 plugin metadata dumper
-dev-qt/qtpositioning 5.7.1 5.9.2: Physical position determination library for the Qt5 framework
-dev-qt/qtprintsupport 5.7.1 5.9.2: Printing support library for the Qt5 framework
-dev-qt/qtquickcontrols 5.7.1 5.9.2: Set of controls used in conjunction with Qt Quick to build complete interfaces
-dev-qt/qtquickcontrols2 5.7.1 5.9.2: Set of next generation Qt Quick controls for the Qt5 framework
-dev-qt/qtscript 4.8.7 5.7.1 5.9.2: Application scripting library for the Qt5 framework (deprecated)
-dev-qt/qtscxml 5.7.1 5.9.2: State Chart XML (SCXML) support library for the Qt5 framework
-dev-qt/qtsensors 5.7.1 5.9.2: Hardware sensor access library for the Qt5 framework
-dev-qt/qtserialbus 5.9.2: Support for CAN and other serial buses
-dev-qt/qtserialport 5.7.1 5.9.2: Serial port abstraction library for the Qt5 framework
+dev-qt/qtmultimedia 4.8.7 5.7.1 5.9.2 5.9.3: Multimedia (audio, video, radio, camera) library for the Qt5 framework
+dev-qt/qtnetwork 5.7.1 5.9.2 5.9.3: Network abstraction library for the Qt5 framework
+dev-qt/qtnetworkauth 5.9.2 5.9.3: Network authorization library for the Qt5 framework
+dev-qt/qtopengl 4.8.7 5.7.1 5.9.2 5.9.3: OpenGL support library for the Qt5 framework (deprecated)
+dev-qt/qtpaths 5.7.1 5.9.2 5.9.3: Command line client to QStandardPaths
+dev-qt/qtplugininfo 5.7.1 5.9.2 5.9.3: Qt5 plugin metadata dumper
+dev-qt/qtpositioning 5.7.1 5.9.2 5.9.3: Physical position determination library for the Qt5 framework
+dev-qt/qtprintsupport 5.7.1 5.9.2 5.9.3: Printing support library for the Qt5 framework
+dev-qt/qtquickcontrols 5.7.1 5.9.2 5.9.3: Set of controls used in conjunction with Qt Quick to build complete interfaces
+dev-qt/qtquickcontrols2 5.7.1 5.9.2 5.9.3: Set of next generation Qt Quick controls for the Qt5 framework
+dev-qt/qtscript 4.8.7 5.7.1 5.9.2 5.9.3: Application scripting library for the Qt5 framework (deprecated)
+dev-qt/qtscxml 5.7.1 5.9.2 5.9.3: State Chart XML (SCXML) support library for the Qt5 framework
+dev-qt/qtsensors 5.7.1 5.9.2 5.9.3: Hardware sensor access library for the Qt5 framework
+dev-qt/qtserialbus 5.9.2 5.9.3: Support for CAN and other serial buses
+dev-qt/qtserialport 5.7.1 5.9.2 5.9.3: Serial port abstraction library for the Qt5 framework
 dev-qt/qtsingleapplication 2.6.1_p20150629: Qt library to start applications only once per user
-dev-qt/qtspeech 5.9.2: Text-to-speech library for the Qt5 framework
-dev-qt/qtsql 4.8.7-r1 5.7.1 5.7.1-r1 5.9.2: SQL abstraction library for the Qt5 tooolkit
-dev-qt/qtsvg 4.8.7 5.7.1 5.9.2: SVG rendering library for the Qt5 framework
-dev-qt/qttest 4.8.7 5.7.1 5.9.2: Unit testing library for the Qt5 framework
-dev-qt/qttranslations 4.8.7 5.7.1 5.9.2: Translation files for the Qt5 framework
-dev-qt/qtvirtualkeyboard 5.7.1 5.9.2: Virtual keyboard plugin for the Qt5 framework
-dev-qt/qtwayland 5.7.1 5.9.2: Wayland platform plugin for Qt
-dev-qt/qtwebchannel 5.7.1 5.9.2: Qt5 module for integrating C++ and QML applications with HTML/JavaScript clients
-dev-qt/qtwebengine 5.7.1-r2 5.9.2: Library for rendering dynamic web content in Qt5 C++ and QML applications
+dev-qt/qtspeech 5.9.2 5.9.3: Text-to-speech library for the Qt5 framework
+dev-qt/qtsql 4.8.7-r1 5.7.1 5.7.1-r1 5.9.2 5.9.3: SQL abstraction library for the Qt5 tooolkit
+dev-qt/qtsvg 4.8.7 5.7.1 5.9.2 5.9.3: SVG rendering library for the Qt5 framework
+dev-qt/qttest 4.8.7 5.7.1 5.9.2 5.9.3: Unit testing library for the Qt5 framework
+dev-qt/qttranslations 4.8.7 5.7.1 5.9.2 5.9.3: Translation files for the Qt5 framework
+dev-qt/qtvirtualkeyboard 5.7.1 5.9.2 5.9.3: Virtual keyboard plugin for the Qt5 framework
+dev-qt/qtwayland 5.7.1 5.9.2 5.9.3: Wayland platform plugin for Qt
+dev-qt/qtwebchannel 5.7.1 5.9.2 5.9.3: Qt5 module for integrating C++ and QML applications with HTML/JavaScript clients
+dev-qt/qtwebengine 5.7.1-r2 5.9.2 5.9.3: Library for rendering dynamic web content in Qt5 C++ and QML applications
 dev-qt/qtwebkit 4.8.7 4.10.4 5.7.1 5.9.1: WebKit rendering library for the Qt5 framework (deprecated)
-dev-qt/qtwebsockets 5.7.1 5.9.2: Implementation of the WebSocket protocol for the Qt5 framework
-dev-qt/qtwebview 5.7.1 5.9.2: Module for displaying web content in a QML application using the Qt5 framework
-dev-qt/qtwidgets 5.7.1 5.9.2: Set of components for creating classic desktop-style UIs for the Qt5 framework
-dev-qt/qtx11extras 5.7.1 5.9.2: Linux/X11-specific support library for the Qt5 framework
-dev-qt/qtxml 5.7.1 5.9.2: Implementation of SAX and DOM for the Qt5 framework
-dev-qt/qtxmlpatterns 4.8.7 5.7.1 5.9.2: XPath, XQuery, XSLT, and XML Schema validation library for the Qt5 framework
+dev-qt/qtwebsockets 5.7.1 5.9.2 5.9.3: Implementation of the WebSocket protocol for the Qt5 framework
+dev-qt/qtwebview 5.7.1 5.9.2 5.9.3: Module for displaying web content in a QML application using the Qt5 framework
+dev-qt/qtwidgets 5.7.1 5.9.2 5.9.3: Set of components for creating classic desktop-style UIs for the Qt5 framework
+dev-qt/qtx11extras 5.7.1 5.9.2 5.9.3: Linux/X11-specific support library for the Qt5 framework
+dev-qt/qtxml 5.7.1 5.9.2 5.9.3: Implementation of SAX and DOM for the Qt5 framework
+dev-qt/qtxmlpatterns 4.8.7 5.7.1 5.9.2 5.9.3: XPath, XQuery, XSLT, and XML Schema validation library for the Qt5 framework
 dev-ros/actionlib 1.11.9 1.11.10 1.11.11 9999: Provides a standardized interface for interfacing with preemptable tasks
 dev-ros/actionlib_msgs 1.12.5 9999: Common messages to interact with an action server and an action client
 dev-ros/actionlib_tutorials 0.1.8 0.1.10 9999: Actionlib tutorials
@@ -10013,7 +10013,7 @@ dev-ruby/sinatra 1.4.7 1.4.8: A DSL for quickly creating web applications in Rub
 dev-ruby/sinatra-partial 1.0.1: Just the partials helper in a gem
 dev-ruby/six 0.2.0: An ultra lite authorization library
 dev-ruby/slim 3.0.7-r1 3.0.8 3.0.9: A template language aiming to reduce the syntax to the essential parts
-dev-ruby/slop 3.6.0 4.4.1 4.4.3 4.5.0 4.6.0: A simple option parser with an easy to remember syntax and friendly API
+dev-ruby/slop 3.6.0 4.4.1 4.4.3 4.5.0 4.6.0 4.6.1: A simple option parser with an easy to remember syntax and friendly API
 dev-ruby/slow_enumerator_tools 1.0.0 1.1.0: Transform Ruby enumerators that produce data slowly and unpredictably
 dev-ruby/snmplib 1.2.0-r1: SNMP library implemented in pure Ruby
 dev-ruby/source_map 3.0.1: Provides an API for parsing, and an API for generating source maps in ruby
@@ -16351,7 +16351,7 @@ sci-geosciences/opencpn-plugins-meta 4.0.0 4.2.0-r2: Meta ebuild to pull in open
 sci-geosciences/osm-gps-map 1.1.0: A GTK+ widget for displaying OpenStreetMap tiles
 sci-geosciences/osm2pgsql 0.94.0 99999999: Converts OSM planet.osm data to a PostgreSQL/PostGIS database
 sci-geosciences/qgis 2.18.12 2.18.12-r100 2.18.14: User friendly Geographic Information System
-sci-geosciences/qmapshack 1.6.3 1.7.1 1.8.0-r1 1.9.0: GPS mapping utility
+sci-geosciences/qmapshack 1.6.3 1.7.1 1.8.0-r1 1.9.0 1.9.1: GPS mapping utility
 sci-geosciences/readosm 1.0.0e-r1: Library to extract valid data from an Open Street Map input file
 sci-geosciences/routino 3.1.1 3.2: Routing application based on openstreetmap data
 sci-geosciences/seawater 2.0.1 3.3.4: Calculate properties of sea water. Similar to SEAWATER 3.2 for MATLAB
@@ -17863,7 +17863,7 @@ sys-fs/zfs 0.6.5.4-r2 0.6.5.11 0.7.3 9999: Userland utilities for ZFS Linux kern
 sys-fs/zfs-kmod 0.6.5.4-r1 0.6.5.11 0.7.3 9999: Linux ZFS kernel module for sys-fs/zfs
 sys-kernel/aufs-sources 4.4.87-r1 4.4.95 4.4.96 4.4.97 4.4.98 4.9.49-r1 4.9.59 4.9.60 4.9.61 4.9.62 4.12.12 4.12.13 4.12.14 4.13.10 4.13.11 4.13.12 4.13.13: Full sources including the Gentoo patchset for the linux kernel tree and aufs4 support
 sys-kernel/bliss-initramfs 6.8.3-r2 7.1.0 7.1.1: Boot your system's rootfs from ZFS, LVM, RAID, or a variety of other configs.
-sys-kernel/ck-sources 4.9.52 4.9.53 4.9.54 4.9.55 4.9.56 4.9.57 4.9.58 4.9.59 4.9.60 4.9.61 4.9.62 4.9.63 4.9.64 4.12.14 4.13.8 4.13.9 4.13.10 4.13.11 4.13.12 4.13.13 4.13.14 4.13.15 4.14.1: Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 4.14
+sys-kernel/ck-sources 4.9.61 4.9.62 4.9.63 4.9.64 4.9.65 4.13.12 4.13.13 4.13.14 4.13.15 4.13.16 4.14.1 4.14.2: Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 4.14
 sys-kernel/cryptodev 1.7 1.9 9999: device that allows access to Linux kernel cryptographic drivers
 sys-kernel/dracut 044-r1 044-r3 045-r2 046: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.49.2 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.5.0.8 3.5.1.0 3.5.1.1 3.5.2.0-r1 3.5.2.1 3.5.2.2 3.5.2.3 3.5.2.4 9999: Gentoo automatic kernel building scripts
@@ -18788,7 +18788,7 @@ x11-libs/neXtaw 0.15.1-r1 0.15.1-r2: Athena Widgets with N*XTSTEP appearance
 x11-libs/pango 1.40.3 1.40.5 1.40.6 1.40.12: Internationalized text layout and rendering library
 x11-libs/pangox-compat 0.0.2 0.0.2-r1: PangoX compatibility library
 x11-libs/pixman 0.34.0 9999: Low-level pixel manipulation routines
-x11-libs/qscintilla 2.9.2-r1 2.9.4 2.10.1: A Qt port of Neil Hodgson's Scintilla C++ editor class
+x11-libs/qscintilla 2.9.4 2.10.1 2.10.2: A Qt port of Neil Hodgson's Scintilla C++ editor class
 x11-libs/qtermwidget 0.7.1 9999: Qt terminal emulator widget
 x11-libs/qtscriptgenerator 0.2.0-r1: Tool for generating Qt bindings for Qt Script
 x11-libs/qwt 5.2.3-r2 6.1.3-r1: 2D plotting library for Qt4 and Qt5
@@ -18896,7 +18896,7 @@ x11-misc/gxmessage 2.20.3 3.4.3: A GTK+ based xmessage clone
 x11-misc/habak 0.2.5-r2: A simple but powerful tool to set desktop wallpaper
 x11-misc/hsetroot 1.0.2 1.0.2_p5: Tool which allows you to compose wallpapers ('root pixmaps') for X
 x11-misc/i3blocks 1.4-r1: highly flexible status line for the i3 window manager
-x11-misc/i3lock 2.8 2.9.1: Simple screen locker
+x11-misc/i3lock 2.8 2.9.1 2.10: Simple screen locker
 x11-misc/i3status 2.11: generates a status bar for dzen2, xmobar or similar
 x11-misc/i855crt 0.4-r1: Intel Montara 855GM CRT out auxiliary driver
 x11-misc/icewmcp 3.2-r4: A complete control panel for IceWM using gtk & python
@@ -19531,7 +19531,7 @@ x11-wm/i3 4.13-r1 4.14 4.14.1 9999: An improved dynamic tiling window manager
 x11-wm/icewm 1.3.8 1.3.12-r1 1.4.0 1.4.2: Ice Window Manager with Themes
 x11-wm/jwm 2.3.2 2.3.4-r1 2.3.5 2.3.6: Very fast and lightweight still powerful window manager for X
 x11-wm/larswm 7.5.3-r1: Tiling window manager for X11, based on 9wm by David Hogan
-x11-wm/lumina 1.2.0_p1 1.3.0_p1 1.4.0 9999: Lumina desktop environment
+x11-wm/lumina 1.3.0_p1 1.4.0-r1 9999: Lumina desktop environment
 x11-wm/lwm 1.2.2 1.2.3 1.2.4: The ultimate lightweight window manager
 x11-wm/marco 1.12.1 1.12.1-r1 1.14.2-r1 1.16.0-r1 1.18.1: MATE default window manager
 x11-wm/matwm2 0.1.2_pre3: Simple EWMH compatible window manager with titlebars and frames
