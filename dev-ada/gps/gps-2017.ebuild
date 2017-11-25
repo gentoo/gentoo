@@ -43,7 +43,13 @@ src_prepare() {
 	sed -i \
 		-e "s:@GNATMAKE@:gnatmake-${GCC_PV}:g" \
 		-e "s:@GNAT@:gnat-${GCC_PV}:g" \
+		-e "s:@GNATLS@:gnatls-${GCC_PV}:g" \
 		aclocal.m4 \
+		share/support/core/gnat_help_menus.py \
+		share/support/core/toolchains.py \
+		share/support/core/projects.py \
+		cli/src/gps-cli_utils.adb \
+		toolchains_editor/core/src/toolchains.adb \
 		|| die
 	eautoreconf
 }
