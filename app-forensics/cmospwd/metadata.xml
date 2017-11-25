@@ -4,7 +4,7 @@
 	<!-- maintainer-needed -->
 	<longdescription>
 		CmosPwd decrypts password stored in cmos used to access BIOS SETUP.
- 
+
 		Works with the following BIOSes
 		- ACER/IBM BIOS
 		- AMI BIOS
