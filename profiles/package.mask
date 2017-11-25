@@ -29,6 +29,17 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (25 Nov 2017)
+# Testing branch GTK+3 release. Changes API, breaks xfce-base/xfdesktop.
+# Masked until the latter sees a new release.
+>=xfce-base/thunar-1.7
+
+# Jonas Stein <jstein@gentoo.org> (25 Nov 2017)
+# The latest version of this LaTeX package is part of 
+# dev-texlive/texlive-latexextra
+# Masked for removal on 2017-12-30
+dev-tex/notoccite
+
 # Bernard Cafarelli <voyageur@gentoo.org> (24 Nov 2017)
 # Upstream removed tarball, no separate release in 3 years
 # Merged in net-misc/owncloud-client since
