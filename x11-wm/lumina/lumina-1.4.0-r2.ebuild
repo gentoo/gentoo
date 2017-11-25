@@ -4,7 +4,7 @@
 EAPI=6
 PLOCALES="af ar az bg bn bs ca cs cy da de el en_AU en_GB en_ZA es et eu fa fi fr fr_CA fur gl he hi hr hu id is it ja ka ko lt lv mk mn ms mt nb ne nl pa pl pt pt_BR ro ru sa sk sl sr sv sw ta tg th tr uk ur uz vi zh_CN zh_HK zh_TW zu"
 
-inherit qmake-utils l10n
+inherit qmake-utils l10n xdg-utils gnome2-utils
 DESCRIPTION="Lumina desktop environment"
 HOMEPAGE="https://lumina-desktop.org/"
 SRC_URI="https://github.com/trueos/${PN}/archive/v${PV/_/-}.tar.gz -> ${P}.tar.gz"
@@ -47,6 +47,7 @@ S="${WORKDIR}/${P/_/-}"
 PATCHES=(
 	"${FILESDIR}/1.2.0-desktop-files.patch"
 	"${FILESDIR}/1.3.0-OS-detect.patch"
+	"${FILESDIR}/1.4.0-poppler.patch"
 )
 
 DOCS=( README.md )
@@ -79,7 +80,19 @@ src_install(){
 	einstalldocs
 
 	remove_locale() {
-		rm -f "${D}"/usr/share/${PN}-desktop/i18n/${PN}-*_${1}.qm
+		rm -f "${D}"/usr/share/${PN}-desktop/i18n/l*_${1}.qm
 	}
 	l10n_for_each_disabled_locale_do remove_locale
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
+	gnome2_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
+	gnome2_icon_cache_update
 }
