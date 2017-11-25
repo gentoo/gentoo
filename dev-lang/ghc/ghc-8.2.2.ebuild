@@ -26,12 +26,12 @@ arch_binaries=""
 #arch_binaries="$arch_binaries alpha? ( http://code.haskell.org/~slyfox/ghc-alpha/ghc-bin-${PV}-alpha.tbz2 )"
 #arch_binaries="$arch_binaries arm? ( http://code.haskell.org/~slyfox/ghc-arm/ghc-bin-${PV}-armv7a-hardfloat-linux-gnueabi.tbz2 )"
 #arch_binaries="$arch_binaries arm64? ( http://code.haskell.org/~slyfox/ghc-arm64/ghc-bin-${PV}-aarch64-unknown-linux-gnu.tbz2 )"
-#arch_binaries="$arch_binaries amd64? ( http://code.haskell.org/~slyfox/ghc-amd64/ghc-bin-${PV}-x86_64-pc-linux-gnu.tbz2 )"
+arch_binaries="$arch_binaries amd64? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-x86_64-pc-linux-gnu.tbz2 )"
 #arch_binaries="$arch_binaries ia64?  ( http://code.haskell.org/~slyfox/ghc-ia64/ghc-bin-${PV}-ia64-fixed-fiw.tbz2 )"
 #arch_binaries="$arch_binaries ppc? ( http://code.haskell.org/~slyfox/ghc-ppc/ghc-bin-${PV}-ppc.tbz2 )"
 #arch_binaries="$arch_binaries ppc64? ( http://code.haskell.org/~slyfox/ghc-ppc64/ghc-bin-${PV}-ppc64.tbz2 )"
 #arch_binaries="$arch_binaries sparc? ( http://code.haskell.org/~slyfox/ghc-sparc/ghc-bin-${PV}-sparc.tbz2 )"
-#arch_binaries="$arch_binaries x86? ( http://code.haskell.org/~slyfox/ghc-x86/ghc-bin-${PV}-i686-pc-linux-gnu.tbz2 )"
+arch_binaries="$arch_binaries x86? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-i686-pc-linux-gnu.tbz2 )"
 
 # various ports:
 #arch_binaries="$arch_binaries x86-fbsd? ( http://code.haskell.org/~slyfox/ghc-x86-fbsd/ghc-bin-${PV}-x86-fbsd.tbz2 )"
@@ -42,12 +42,12 @@ yet_binary() {
 		#alpha) return 0 ;;
 		#arm64) return 0 ;;
 		#arm) return 0 ;;
-		#amd64) return 0 ;;
+		amd64) return 0 ;;
 		#ia64) return 0 ;;
 		#ppc) return 0 ;;
 		#ppc64) return 0 ;;
 		#sparc) return 0 ;;
-		#x86) return 0 ;;
+		x86) return 0 ;;
 		*) return 1 ;;
 	esac
 }
