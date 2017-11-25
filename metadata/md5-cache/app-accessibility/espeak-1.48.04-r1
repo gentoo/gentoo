@@ -4,10 +4,10 @@ DESCRIPTION=Speech synthesizer for English and other languages
 EAPI=6
 HOMEPAGE=http://espeak.sourceforge.net/
 IUSE=portaudio pulseaudio
-KEYWORDS=alpha amd64 ~arm ~arm64 ~hppa ia64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux
+KEYWORDS=alpha amd64 arm ~arm64 ~hppa ia64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-3
 RDEPEND=portaudio? ( >=media-libs/portaudio-19_pre20071207 ) pulseaudio? ( media-sound/pulseaudio ) media-sound/sox
 SLOT=0
 SRC_URI=mirror://sourceforge/espeak/espeak-1.48.04-source.zip
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=19ed8132c8c8bde252066a98d7f0e653
+_md5_=36d122f6e82fb2c7f977c103a031929a
