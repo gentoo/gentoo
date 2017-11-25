@@ -6,10 +6,10 @@
 		<name>Gentoo Mathematics Project</name>
 	</maintainer>
 	<longdescription lang="en">
-  RngStreams is a C implementation of a high quality uniform random
-  number generator that supports multiple "independent" streams of
-  uniform random numbers. It has been written by Pierre L'Ecuyer and
-  Richard Simard.
-  This is the GNU-style package maintained by Josef Leydold. 
-</longdescription>
+		RngStreams is a C implementation of a high quality uniform random
+		number generator that supports multiple "independent" streams of
+		uniform random numbers. It has been written by Pierre L'Ecuyer and
+		Richard Simard.
+		This is the GNU-style package maintained by Josef Leydold.
+	</longdescription>
 </pkgmetadata>
