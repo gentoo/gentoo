@@ -5,4 +5,12 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="cpan">MouseX-Types</remote-id>
+    <remote-id type="cpan-module">MouseX::Types</remote-id>
+    <remote-id type="cpan-module">MouseX::Types::Base</remote-id>
+    <remote-id type="cpan-module">MouseX::Types::Moose</remote-id>
+    <remote-id type="cpan-module">MouseX::Types::Mouse</remote-id>
+    <remote-id type="cpan-module">MouseX::Types::TypeDecorator</remote-id>
+  </upstream>
 </pkgmetadata>
