@@ -3262,9 +3262,9 @@ games-rpg/daimonin-client:music - Install extra music
 games-rpg/drascula:sound - Install optional audio files
 games-rpg/dreamweb:doc - High-resolution scans of the written material in the original UK game box
 games-rpg/dungeon-defenders:bundled-libs - Use the upstream provided bundled libraries.
-games-rpg/eternal-lands-data:bloodsuckermaps - Will install Bloodsucker's Maps in place of the official map files.
-games-rpg/eternal-lands-data:music - Adds in-game music.
-games-rpg/eternal-lands-data:sound - Adds in-game sound effects.
+games-rpg/eternal-lands-data:bloodsuckermaps - Will install Bloodsucker's Maps in place of the official map files
+games-rpg/eternal-lands-data:music - Enables in-game music
+games-rpg/eternal-lands-data:sound - Enables in-game sound effects
 games-rpg/grimrock:bundled-libs - Use bundled libraries.
 games-rpg/kqlives:cheats - Enable cheating mode
 games-rpg/manaplus:mumble - Enable support for voice chat
@@ -4469,7 +4469,7 @@ media-sound/audacity:soundtouch - Enables soundtouch library support for pitch a
 media-sound/audacity:twolame - Enables twolame support (MPEG Audio Layer 2 encoder)
 media-sound/audacity:vamp - Enables vamp plugins support (Audio analysing plugins)
 media-sound/audacity:vst - Enable VST plugin support
-media-sound/beets:badfiles - Validate MP3 & FLAC files.
+media-sound/beets:badfiles - Validate MP3 & FLAC files
 media-sound/beets:bpd - Enable support for media-sound/mpd server emulation
 media-sound/beets:chroma - Enable support for acoustic fingerprinting plugin using media-libs/chromaprint
 media-sound/beets:convert - Enable support for the convert plugin which makes it possible to transcode files
@@ -5568,7 +5568,7 @@ net-fs/cvmfs:preload - Install the cvmfs cache preloader for distributed file sy
 net-fs/cvmfs:server - Install the cvmfsd program and init script
 net-fs/cvmfs:test-programs - Install unit test programs
 net-fs/netatalk:pgp - Add support pgp authentication module
-net-fs/netatalk:quota - Add support for user quota on various filesystems.
+net-fs/netatalk:quota - Add support for user quota on various filesystems
 net-fs/netatalk:shadow - Add shadow support
 net-fs/netatalk:ssl - Use dev-libs/openssl to provide DHX User Access Modules. These are not used with most recent versions of OS X and can be kept disabled without risks.
 net-fs/netatalk:tracker - Add support for spotlight like tracker
