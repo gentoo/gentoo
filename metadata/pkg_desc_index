@@ -115,7 +115,7 @@ app-admin/grubconfig 1.28-r2: Simple Tool to configure Grub-Bootloader
 app-admin/gtkdiskfree 2.0.1-r1 2.0.3: Graphical tool to show free disk space like df
 app-admin/hardening-check 2.5 2.6 2.7: Report the hardening characterists of a set of binaries
 app-admin/hardinfo 0.5.2_pre20130823: A system information and benchmark tool for Linux systems
-app-admin/haskell-updater 1.2.9 1.2.10: Rebuild Haskell dependencies in Gentoo
+app-admin/haskell-updater 1.2.9 1.2.10 1.2.11: Rebuild Haskell dependencies in Gentoo
 app-admin/hddtemp 0.3_beta15-r7 0.3_beta15-r26: A simple utility to read the temperature of SMART capable hard drives
 app-admin/ide-smart 1.4-r1 1.4-r2: A tool to read SMART information from harddiscs
 app-admin/integrit 4.0 4.1-r1: file integrity verification program
