@@ -13,6 +13,6 @@
 		    * sndfile-generate-chirp
 		    * sndfile-jackplay
 		    * sndfile-spectrogram
-		    * sndfile-mix-to-mono 
+		    * sndfile-mix-to-mono
 	</longdescription>
 </pkgmetadata>
