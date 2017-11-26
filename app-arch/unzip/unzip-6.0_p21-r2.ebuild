@@ -31,6 +31,7 @@ src_prepare() {
 	eapply "${deb}"/*.patch
 
 	eapply "${FILESDIR}"/${PN}-6.0-no-exec-stack.patch
+	eapply "${FILESDIR}"/${PN}-6.0-format-security.patch
 	use natspec && eapply "${FILESDIR}/${PN}-6.0-natspec.patch" #275244
 	sed -i -r \
 		-e '/^CFLAGS/d' \
