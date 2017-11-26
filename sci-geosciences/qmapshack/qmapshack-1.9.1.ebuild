@@ -17,6 +17,7 @@ RDEPEND="dev-qt/qtwebkit:5
 	dev-qt/qtprintsupport:5
 	dev-qt/qtdbus:5
 	dev-qt/qttest:5
+	dev-qt/designer:5
 	dev-qt/qtnetwork:5[ssl]
 	dev-libs/quazip
 	>=sci-geosciences/routino-3.1.1
