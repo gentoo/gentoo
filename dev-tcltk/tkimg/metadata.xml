@@ -6,8 +6,8 @@
 		<name>Gentoo Tcltk Project</name>
 	</maintainer>
 	<longdescription lang="en">
-  The "Img" package adds a lot of image formats to Tcl/Tk.
-</longdescription>
+		The "Img" package adds a lot of image formats to Tcl/Tk.
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">tkimg</remote-id>
 	</upstream>

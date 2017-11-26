@@ -12,6 +12,6 @@
 		<flag name="static">Build gtkada as static library</flag>
 	</use>
 	<longdescription lang="en">
-		 GtkAda is an Ada graphical toolkit based on Gtk+, providing the complete set of Gtk+ widgets using the Object-Oriented features of this language. GtkAda supports the latest 3.14 stable releases.
+		GtkAda is an Ada graphical toolkit based on Gtk+, providing the complete set of Gtk+ widgets using the Object-Oriented features of this language. GtkAda supports the latest 3.14 stable releases.
 	</longdescription>
 </pkgmetadata>
