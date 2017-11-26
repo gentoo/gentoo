@@ -115,7 +115,7 @@ app-admin/grubconfig 1.28-r2: Simple Tool to configure Grub-Bootloader
 app-admin/gtkdiskfree 2.0.1-r1 2.0.3: Graphical tool to show free disk space like df
 app-admin/hardening-check 2.5 2.6 2.7: Report the hardening characterists of a set of binaries
 app-admin/hardinfo 0.5.2_pre20130823: A system information and benchmark tool for Linux systems
-app-admin/haskell-updater 1.2.9 1.2.10 1.2.11: Rebuild Haskell dependencies in Gentoo
+app-admin/haskell-updater 1.2.9 1.2.10 1.2.12: Rebuild Haskell dependencies in Gentoo
 app-admin/hddtemp 0.3_beta15-r7 0.3_beta15-r26: A simple utility to read the temperature of SMART capable hard drives
 app-admin/ide-smart 1.4-r1 1.4-r2: A tool to read SMART information from harddiscs
 app-admin/integrit 4.0 4.1-r1: file integrity verification program
@@ -17578,7 +17578,7 @@ sys-cluster/ocfs 1.0.14: The Oracle Cluster Filesystem
 sys-cluster/onesis 2.0.2: Diskless computing made easy
 sys-cluster/open-mx 1.5.4: Open-MX - Myrinet Express over Generic Ethernet Hardware
 sys-cluster/openais 1.1.4-r1: Open Application Interface Specification cluster framework
-sys-cluster/openmpi 1.4.3 1.4.5 1.6.5-r1 1.7.5-r1 1.8.4-r4 1.8.7-r1 1.8.8 1.10.7 2.0.2 2.0.3 2.1.2: A high-performance message passing library (MPI)
+sys-cluster/openmpi 1.4.3 1.4.5 1.6.5-r1 1.7.5-r1 1.8.4-r4 1.8.7-r1 1.8.8 1.10.7 2.0.2 2.0.4 2.1.2: A high-performance message passing library (MPI)
 sys-cluster/openstack-meta 2016.2.9999 2017.1.9999 2017.2.9999: A openstack meta-package for installing the various openstack pieces
 sys-cluster/osc-mpiexec 0.83: replacement for mpirun, integrates MPI with PBS
 sys-cluster/pacemaker 1.1.12-r2 1.1.14 1.1.16: Pacemaker CRM
