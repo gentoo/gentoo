@@ -1399,11 +1399,11 @@ dev-db/mysql-cluster:systemtap - Build support for profiling and tracing using d
 dev-db/mysql-cluster:test - Install upstream testsuites for end use.
 dev-db/mysql-cluster:yassl - Enable SSL connections and crypto functions using the bundled yaSSL
 dev-db/mysql-connector-c++:gcov - Build coverage support
-dev-db/oracle-instantclient:jdbc - Support for XA, Internationalization, and RowSet operations under JDBC.
-dev-db/oracle-instantclient:odbc - Libraries for enabling ODBC applications.
-dev-db/oracle-instantclient:sdk - Header files and an example makefile for developing Oracle applications.
-dev-db/oracle-instantclient:sqlplus - Libraries and executable for running SQL*Plus.
-dev-db/oracle-instantclient:tools - Workload Replay Client.
+dev-db/oracle-instantclient:jdbc - Support for XA, Internationalization, and RowSet operations under JDBC
+dev-db/oracle-instantclient:odbc - Libraries for enabling ODBC applications
+dev-db/oracle-instantclient:sdk - Header files and an example makefile for developing Oracle applications
+dev-db/oracle-instantclient:sqlplus - Libraries and executable for running SQL*Plus
+dev-db/oracle-instantclient:tools - Workload Replay Client
 dev-db/percona-server:embedded - Build embedded server (libmysqld)
 dev-db/percona-server:extraengine - Add support for alternative storage engines (Archive, CSV, Blackhole, Federated(X), Partition)
 dev-db/percona-server:jemalloc - Use dev-libs/jemalloc for allocations.
@@ -1713,9 +1713,9 @@ dev-haskell/shakespeare-js:test_roy - Test roy.
 dev-haskell/shelly:lifted - run the tests against Shelly.Lifted
 dev-haskell/shuffle:network-uri - Get Network.URI from the network-uri package.
 dev-haskell/simple-sendfile:allow-bsd - Allow use of BSD sendfile (disable on GNU/kFreeBSD)
-dev-haskell/skein:big-endian - When manually selecting the endianness, use big-endian (default is little-endian).
-dev-haskell/skein:force-endianness - Use a manually selected endian when compiling (see flag 'big-endian').
-dev-haskell/skein:reference - Use the reference implementation instead of the optimized one.
+dev-haskell/skein:big-endian - When manually selecting the endianness, use big-endian (default is little-endian)
+dev-haskell/skein:force-endianness - Use a manually selected endian when compiling (see flag 'big-endian')
+dev-haskell/skein:reference - Use the reference implementation instead of the optimized one
 dev-haskell/skylighting:executable - Build the skylighting executable.
 dev-haskell/snap-core:portable - No non-haskell unportable code.
 dev-haskell/snap-server:build-pong - Build a server that just returns "PONG"
@@ -1931,7 +1931,7 @@ dev-lang/php:xmlwriter - Enable XMLWriter support
 dev-lang/php:xslt - Enable the XSL extension
 dev-lang/php:zip - Enable ZIP file support
 dev-lang/php:zip-encryption - Enable ZIP file encryption from dev-libs/libzip
-dev-lang/polyml:portable - Build the portable interpreter version of Poly/ML instead of native.
+dev-lang/polyml:portable - Build the portable interpreter version of Poly/ML instead of native
 dev-lang/python:threads - Enable threading support. (DON'T DISABLE THIS UNLESS YOU KNOW WHAT YOU'RE DOING)
 dev-lang/python:wide-unicode - Enable wide Unicode implementation which uses 4-byte Unicode characters. Switching of this USE flag changes ABI of Python and requires reinstallation of many Python modules. (DON'T DISABLE THIS UNLESS YOU KNOW WHAT YOU'RE DOING)
 dev-lang/python:wininst - Install Windows executables required to create an executable installer for MS Windows.
@@ -2192,10 +2192,10 @@ dev-libs/openct:debug - Add debug output to the driver library for pcsc-lite.
 dev-libs/openct:pcsc-lite - Build a driver library for sys-apps/pcsc-lite, providing PC/SC API access to devices supported by OpenCT.
 dev-libs/openct:udev - Install rules for sys-fs/udev to auto-start openct.
 dev-libs/openobex:irda - Enable IrDA support
-dev-libs/opensc:ctapi - Use CT-API for accessing Smartcard hardware.
-dev-libs/opensc:openct - Use dev-libs/openct (and CT-API) for accessing Smartcard hardware.
-dev-libs/opensc:pcsc-lite - Use sys-apps/pcsc-lite (and PC/SC API) for accessing Smartcard hardware.
-dev-libs/opensc:secure-messaging - Enable secure messaging.
+dev-libs/opensc:ctapi - Use CT-API for accessing Smartcard hardware
+dev-libs/opensc:openct - Use dev-libs/openct (and CT-API) for accessing Smartcard hardware
+dev-libs/opensc:pcsc-lite - Use sys-apps/pcsc-lite (and PC/SC API) for accessing Smartcard hardware
+dev-libs/opensc:secure-messaging - Enable secure messaging
 dev-libs/openssl:asm - Support assembly hand optimized crypto functions (i.e. faster run time)
 dev-libs/openssl:bindist - Disable/Restrict EC algorithms (as they seem to be patented) -- note: changes the ABI
 dev-libs/openssl:rfc3779 - Enable support for RFC 3779 (X.509 Extensions for IP Addresses and AS Identifiers)
@@ -2760,7 +2760,7 @@ dev-ruby/faraday_middleware:oauth - Include FaradayMiddleware::OAuth
 dev-ruby/faraday_middleware:parsexml - Include FaradayMiddleware::ParseXml
 dev-ruby/faraday_middleware:rashify - Include FaradayMiddleware::Rashify
 dev-ruby/maruku:highlight - Enable source code highlighting via dev-ruby/syntax
-dev-ruby/net-ssh:sodium - Use dev-libs/libsodium via dev-ruby/rbnacl for Ed25519 support.
+dev-ruby/net-ssh:sodium - Use dev-libs/libsodium via dev-ruby/rbnacl for Ed25519 support
 dev-ruby/rails:asset-pipeline - Also install the default components for the asset pipeline. These are not required but they are activated automatically in new Rails projects by default.
 dev-ruby/rrdtool-bindings:graph - Enable support for graphing functions
 dev-ruby/rspec-core:highlight - Enable source code highlighting via dev-ruby/coderay
@@ -2933,12 +2933,12 @@ dev-util/mingw64-runtime:idl - Install idl files.
 dev-util/mingw64-runtime:libraries - Build extra libraries.
 dev-util/mingw64-runtime:tools - Build extra tools.
 dev-util/molecule:plugins - Add plugins provided by dev-util/molecule-plugins
-dev-util/nemiver:memoryview - Enable the optional hexadecimal memory inspection with app-editors/ghex.
-dev-util/nvidia-cuda-sdk:cuda - Build CUDA binaries.
-dev-util/nvidia-cuda-sdk:opencl - Build OpenCL binaries.
-dev-util/nvidia-cuda-toolkit:debugger - Installs the CUDA debugger.
+dev-util/nemiver:memoryview - Enable the optional hexadecimal memory inspection with app-editors/ghex
+dev-util/nvidia-cuda-sdk:cuda - Build CUDA binaries
+dev-util/nvidia-cuda-sdk:opencl - Build OpenCL binaries
+dev-util/nvidia-cuda-toolkit:debugger - Installs the CUDA debugger
 dev-util/nvidia-cuda-toolkit:eclipse - Install plugins for eclipse
-dev-util/nvidia-cuda-toolkit:profiler - Installs the NVIDIA CUDA visual profiler.
+dev-util/nvidia-cuda-toolkit:profiler - Installs the NVIDIA CUDA visual profiler
 dev-util/perf:demangle - Enable C++ symbol name demangling, using libbfd from sys-devel/binutils. When this flag is enabled, the package will have to be rebuilt after every version bump of binutils.
 dev-util/perf:doc - Build documentation and man pages. With this USE flag disabled, the --help parameter for perf and its sub-tools will not be available. This is optional because it depends on a few documentation handling tools that are not always welcome on user systems.
 dev-util/perf:numa - Enable NUMA support
