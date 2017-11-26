@@ -4,11 +4,11 @@ DESCRIPTION=Solution for controlling external programs running in the background
 EAPI=5
 HOMEPAGE=https://github.com/jarib/childprocess
 IUSE=test elibc_FreeBSD ruby_targets_ruby22 ruby_targets_ruby23 doc test test
-KEYWORDS=alpha amd64 arm hppa ia64 ppc ppc64 x86
+KEYWORDS=alpha amd64 arm ~hppa ia64 ppc ppc64 x86
 LICENSE=MIT
 RDEPEND=ruby_targets_ruby22? ( >=dev-ruby/ffi-1.0.11[ruby_targets_ruby22] ) ruby_targets_ruby23? ( >=dev-ruby/ffi-1.0.11[ruby_targets_ruby23] ) ruby_targets_ruby22? ( dev-lang/ruby:2.2 ) ruby_targets_ruby23? ( dev-lang/ruby:2.3 ) ruby_targets_ruby22? ( virtual/rubygems[ruby_targets_ruby22] ) ruby_targets_ruby23? ( virtual/rubygems[ruby_targets_ruby23] )
 REQUIRED_USE=|| ( ruby_targets_ruby22 ruby_targets_ruby23 )
 SLOT=2
 SRC_URI=mirror://rubygems/childprocess-0.6.3.gem
 _eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	java-utils-2	1971a6927fcd7ec839f7e12b28a24bdd	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	ruby-fakegem	cf1343b57e8029745950b4b147ff4d3a	ruby-ng	1a95cd8be181598c8171cf918aa225d9	ruby-utils	f8a0644cb27ba724df27b2a20a739b53	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
-_md5_=a54b9b50613d8b1ad10b76b7937f8b78
+_md5_=a3dc604a08e2550613c1c23d857db969
