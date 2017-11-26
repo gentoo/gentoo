@@ -14,7 +14,7 @@ SRC_URI="https://github.com/mgorny/gemato/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="+blake2 bzip2 +gpg lzma sha3"
 
 RDEPEND="
