@@ -7,6 +7,6 @@ LICENSE=genymotion
 RDEPEND=|| ( >=app-emulation/virtualbox-5.0.28 >=app-emulation/virtualbox-bin-5.0.28 ) virtual/opengl dev-libs/openssl dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtopengl:5 dev-qt/qtsql:5[sqlite] dev-qt/qtwebkit:5 dev-qt/qtwebsockets:5 dev-qt/qtsvg:5 dev-qt/qtx11extras:5 dev-qt/qtdeclarative:5[widgets] dev-qt/qtquickcontrols:5 dev-qt/qtconcurrent:5 dev-qt/qtgraphicaleffects:5 sys-apps/util-linux media-libs/gst-plugins-base:0.10
 RESTRICT=bindist fetch
 SLOT=0
-SRC_URI=genymotion-2.10.0-linux_x64.bin
+SRC_URI=genymotion-2.11.0-linux_x64.bin
 _eclasses_=bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	pax-utils	4f95120230a315c8caaabeb2307b7eee	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=ac2a62729ddd90b0c9f366e7c25364a3
+_md5_=03c0d29b452629565095d77839b8a73b
