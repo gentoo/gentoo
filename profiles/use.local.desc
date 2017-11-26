@@ -6437,6 +6437,7 @@ net-misc/networkmanager:json - Enable JSON validation via dev-libs/jansson in li
 net-misc/networkmanager:modemmanager - Enable support for mobile broadband devices using net-misc/modemmanager
 net-misc/networkmanager:nss - Use dev-libs/nss for cryptography
 net-misc/networkmanager:ofono - Use net-misc/ofono for telephony support.
+net-misc/networkmanager:ovs - Enable OpenVSwitch support
 net-misc/networkmanager:ppp - Enable support for mobile broadband and PPPoE connections using net-dialup/ppp
 net-misc/networkmanager:resolvconf - Use net-dns/openresolv for managing DNS information
 net-misc/networkmanager:teamd - Enable Teamd control support
