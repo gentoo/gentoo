@@ -18,7 +18,7 @@ SRC_URI="
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="bootstrap gnat_2016 gnat_2017 +shared static static-pic"
+IUSE="bootstrap +gnat_2016 gnat_2017 +shared static static-pic"
 
 DEPEND="!bootstrap? ( dev-ada/xmlada[static,gnat_2016=,gnat_2017=] )
 	gnat_2016? ( dev-lang/gnat-gpl:4.9.4 )
