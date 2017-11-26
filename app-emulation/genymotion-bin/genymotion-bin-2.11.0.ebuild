@@ -84,7 +84,7 @@ src_install() {
 
 	doins "${MY_PN}"/{libcom,librendering}.so*
 	# library that differ from system version
-	doins "${MY_PN}"/{libswscale,libavutil,libprotobuf}.so*
+	doins "${MY_PN}"/libprotobuf.so*
 	# android library
 	doins "${MY_PN}"/{libEGL_translator,libGLES_CM_translator,libGLES_V2_translator,libOpenglRender,libemugl_logger}.so*
 
