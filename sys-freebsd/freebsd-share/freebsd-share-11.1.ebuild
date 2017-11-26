@@ -97,7 +97,7 @@ src_compile() {
 	export ESED="/usr/bin/sed"
 
 	# libiconv support.
-	if has_version ">=sys-freebsd/freebsd-lib-9.1-r11" ; then
+	if ! has_version "<sys-freebsd/freebsd-lib-9.1-r11" ; then
 		# i18n/csmapper/APPLE requires mkcsmapper_static
 		# i18n/esdb/APPLE requires mkesdb_static
 		for pkg in mkcsmapper_static mkesdb_static
