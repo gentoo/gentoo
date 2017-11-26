@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Mock a DNS Resolver object for testing"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="test"
 
 RDEPEND="dev-perl/Net-DNS"
