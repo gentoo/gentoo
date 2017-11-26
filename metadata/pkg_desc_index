@@ -68,7 +68,7 @@ app-admin/clog 1.1.0: A colorized log tail utility
 app-admin/clsync 0.4.1 0.4.2: Live sync tool based on inotify, written in GNU C
 app-admin/clustershell 1.6 1.6-r1 1.7.3: Python framework for efficient cluster administration
 app-admin/collectd 5.6.2-r4 5.7.1 5.7.2: Collects system statistics and provides mechanisms to store the values
-app-admin/conky 1.10.4 1.10.6-r5: An advanced, highly configurable system monitor for X
+app-admin/conky 1.10.4 1.10.6-r6: An advanced, highly configurable system monitor for X
 app-admin/conkyforecast 2.24-r1: Conky weather forecast script with support for language files
 app-admin/conserver 8.1.18 8.1.18-r1: Serial Console Manager
 app-admin/consolehm 1.31: Console based hardware monitor for FreeBSD
