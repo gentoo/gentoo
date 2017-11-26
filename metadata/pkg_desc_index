@@ -18479,7 +18479,7 @@ www-plugins/google-talkplugin 5.41.0.0 5.41.3.0 9999: Video chat browser plug-in
 www-plugins/lightspark 0.7.2_p20160107 0.8.0 9999: High performance flash player
 www-plugins/mozplugger 2.1.6: Streaming media plugin for Mozilla, based on netscape-plugger
 www-plugins/pdfjs 1.9.426: A PDF reader in JavaScript
-www-servers/adsf 1.2.1 1.3.0: A Dead Simple Fileserver is a static file server that can launch in a directory
+www-servers/adsf 1.2.1 1.3.0 1.3.1: A Dead Simple Fileserver is a static file server that can launch in a directory
 www-servers/apache 2.2.34 2.4.27-r1 2.4.28 2.4.29: The Apache Web Server
 www-servers/boa 0.94.14_rc21-r1 0.94.14_rc21-r2: A very small and very fast http daemon
 www-servers/bozohttpd 20170201: bozohttpd is a small and secure http server
