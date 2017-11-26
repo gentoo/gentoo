@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=ssl? ( dev-libs/openssl:0 ) zlib? ( sys-libs/zlib )
 SLOT=0
 SRC_URI=https://github.com/shadowircd/shadowircd/archive/shadowircd-6.3.3.tar.gz
-_eclasses_=user	e4b567c44272a719fabf53f0f885d3f7
+_eclasses_=user	8bc2845510e2109af75e3eeac607ec81
 _md5_=58c3c693f226c42cf4089dbe97abf505

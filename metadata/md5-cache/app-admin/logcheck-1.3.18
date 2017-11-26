@@ -7,5 +7,5 @@ LICENSE=GPL-2
 RDEPEND=!app-admin/logsentry app-misc/lockfile-progs dev-lang/perl dev-perl/mime-construct virtual/mailx
 SLOT=0
 SRC_URI=mirror://debian/pool/main/l/logcheck/logcheck_1.3.18.tar.xz
-_eclasses_=user	e4b567c44272a719fabf53f0f885d3f7
+_eclasses_=user	8bc2845510e2109af75e3eeac607ec81
 _md5_=2432765987c0a74043f3b65aad28f108
