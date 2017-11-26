@@ -329,7 +329,7 @@ app-arch/unrar 5.5.8: Uncompress rar files
 app-arch/unrar-gpl 0.0.1_p20080417-r1 0.0.1_p20080417-r2: Free rar unpacker for old (pre v3) rar files
 app-arch/unrpa 1.4.1 1.4.2 9999: Ren'Py's RPA data file extractor
 app-arch/unshield 1.4 1.4.2: InstallShield CAB file extractor
-app-arch/unzip 6.0_p20 6.0_p21 6.0_p21-r1: unzipper for pkzip-compressed files
+app-arch/unzip 6.0_p20 6.0_p21 6.0_p21-r2: unzipper for pkzip-compressed files
 app-arch/upx-bin 3.91: Ultimate Packer for eXecutables, binary version with proprietary NRV compression
 app-arch/upx-ucl 3.91: Ultimate Packer for eXecutables (free version using UCL compression and not NRV)
 app-arch/vimball 0.5.1 9999: a command-line vimball archive extractor
@@ -8550,7 +8550,7 @@ dev-python/python-gnupg 0.3.8-r1 0.4.0: Python wrapper for GNU Privacy Guard
 dev-python/python-gnutls 3.1.1: High level object oriented wrapper around libgnutls
 dev-python/python-gtkmvc 1.99.1: model-view-controller (MVC) implementation for pygtk
 dev-python/python-gudev 147.2-r1: Python binding to the GUDev udev helper library
-dev-python/python-heatclient 1.8.1 1.8.2 1.11.1: OpenStack Orchestration API Client Library
+dev-python/python-heatclient 1.8.2 1.11.1: OpenStack Orchestration API Client Library
 dev-python/python-iptables 0.11.0 0.12.0: Python bindings for iptables
 dev-python/python-ironicclient 0.9.0 1.7.1 1.11.1 1.17.0: Python bindings for the Ironic API
 dev-python/python-iwscan 20080402-r1: A Python extension for iwscan access
