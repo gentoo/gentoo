@@ -2,19 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby20 ruby21 ruby22 ruby23"
+USE_RUBY="ruby22 ruby23"
 
-RUBY_FAKEGEM_TASK_DOC=""
-RUBY_FAKEGEM_DOCDIR="doc"
-RUBY_FAKEGEM_EXTRADOC="README.md doc/text/news.md"
+RUBY_FAKEGEM_RECIPE_DOC="rdoc"
+RUBY_FAKEGEM_EXTRADOC="README.md doc.orig/text/news.md"
 
 inherit ruby-fakegem
-
-# Assume for now that ruby23 is not eselected yet and only
-# depend on yard for the other ruby implementations. Without this
-# assumption bootstrapping ruby23 won't be possible due to the yard
-# dependency tree.
-USE_RUBY="${USE_RUBY/ruby23/}" ruby_add_bdepend "doc? ( dev-ruby/yard )"
 
 DESCRIPTION="An xUnit family unit testing framework for Ruby"
 HOMEPAGE="https://rubygems.org/gems/test-unit"
@@ -26,12 +19,8 @@ IUSE="doc test"
 
 ruby_add_rdepend "dev-ruby/power_assert"
 
-all_ruby_compile() {
-	all_fakegem_compile
-
-	if use doc; then
-		yard doc --title ${PN} || die
-	fi
+all_ruby_prepare() {
+	mv doc doc.orig || die
 }
 
 each_ruby_test() {
