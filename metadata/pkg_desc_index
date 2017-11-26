@@ -6391,7 +6391,7 @@ dev-perl/Net-SSH-Any 0.40.0: Use any SSH module
 dev-perl/Net-SSH-AuthorizedKeysFile 0.170.0: Read and modify ssh's authorized_keys files
 dev-perl/Net-SSH-Perl 1.360.0-r1 1.420.0 2.90.0_p1-r2: Perl client Interface to SSH
 dev-perl/Net-SSH2 0.580.0-r1: Support for the SSH 2 protocol via libssh2
-dev-perl/Net-SSLeay 1.810.0: Perl extension for using OpenSSL
+dev-perl/Net-SSLeay 1.810.0 1.820.0: Perl extension for using OpenSSL
 dev-perl/Net-Server 2.8.0: Extensible, general Perl server engine
 dev-perl/Net-Server-Coro 1.300.0-r1: A co-operative multithreaded server using Coro
 dev-perl/Net-Server-Mail 0.230.0: Class to easily create a mail server
@@ -13203,7 +13203,7 @@ media-libs/lv2 1.10.0-r1 1.12.0 1.14.0: A simple but extensible successor of LAD
 media-libs/lvtk 1.2.0: A set of C++ wrappers around the LV2 C API
 media-libs/mediastreamer 2.7.3-r3 2.8.2 2.9.0 2.9.0-r1 2.9.0-r2: Mediastreaming library for telephony application
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
-media-libs/mesa 13.0.5 13.0.6 17.0.6 17.1.8 17.1.9 17.1.10 17.2.0 17.2.1 17.2.2 17.2.3 17.2.4 17.2.5 17.3.0_rc2 17.3.0_rc3 17.3.0_rc4 17.3.0_rc5 9999: OpenGL-like graphic library for Linux
+media-libs/mesa 13.0.5 13.0.6 17.0.6 17.1.8 17.1.9 17.1.10 17.2.0 17.2.1 17.2.2 17.2.3 17.2.4 17.2.5 17.2.6 17.3.0_rc2 17.3.0_rc3 17.3.0_rc4 17.3.0_rc5 9999: OpenGL-like graphic library for Linux
 media-libs/ming 0.4.7 0.4.8-r1: An Open Source library for Flash movie generation
 media-libs/mlt 6.4.1-r2 6.4.1-r4 6.4.1-r5: Open source multimedia framework for television broadcasting
 media-libs/musicbrainz 3.0.3 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
