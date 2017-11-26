@@ -1,0 +1,26 @@
+From 8472348e588c16ad5332fe0b1f1dc9cc8eb4ab7d Mon Sep 17 00:00:00 2001
+From: Torsten Veller <tove@gentoo.org>
+Date: Mon, 16 Jul 2012 05:31:43 +1200
+Subject: Respect CFLAGS
+
+Bug: https://bugs.gentoo.org/378657
+---
+ inc/Module/Install/PRIVATE/Net/SSLeay.pm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/inc/Module/Install/PRIVATE/Net/SSLeay.pm b/inc/Module/Install/PRIVATE/Net/SSLeay.pm
+index 5abcf70..49913e6 100644
+--- a/inc/Module/Install/PRIVATE/Net/SSLeay.pm
++++ b/inc/Module/Install/PRIVATE/Net/SSLeay.pm
+@@ -129,7 +129,7 @@ EOM
+ 
+         if (($Config{cc} =~ /aCC/i) && $^O eq 'hpux') {
+             print "*** Enabling HPUX aCC options (+e)\n";
+-            $opts->{optimize} = '+e -O2 -g';
++            $opts->{optimize} = '+e ' . $opts->{optimize};
+         }
+ 
+         if ( (($Config{ccname} || $Config{cc}) eq 'gcc') && ($Config{cccdlflags} =~ /-fpic/) ) {
+-- 
+2.14.3
+
