@@ -9020,7 +9020,7 @@ dev-python/wtf-peewee 0.2.6: WTForms integration for peewee models
 dev-python/wtforms 2.1: Flexible forms validation and rendering library for python web development
 dev-python/www-authenticate 0.9.2: WWW-Authenticate header parser
 dev-python/wxpython 2.8.12.1-r2 3.0.2.0: A blending of the wxWindows C++ class library with Python
-dev-python/xapp 1.0.1-r1: Python bindings for x11-libs/xapps
+dev-python/xapp 1.0.1-r1 1.0.1-r2: Python bindings for x11-libs/xapps
 dev-python/xarray 0.8.2 0.9.6: N-D labeled arrays and datasets in Python
 dev-python/xcffib 0.4.0 0.5.1: A drop in replacement for xpyb, an XCB python binding
 dev-python/xdis 3.2.4 3.3.0 3.3.1 3.6.0: Python cross-version byte-code disassembler and marshal routines
@@ -11737,15 +11737,15 @@ gnome-extra/activity-log-manager 0.9.7-r1: GUI which lets you easily control wha
 gnome-extra/assogiate 0.2.1-r1: assoGiate is an editor of the file types database for GNOME
 gnome-extra/cameramonitor 0.3.2-r2: Local Webcam monitoring in system tray
 gnome-extra/chrome-gnome-shell 8-r1 8.1 9: GNOME Shell integration for Chrome/Chromium, Firefox, Vivaldi, Opera browsers
-gnome-extra/cinnamon 3.0.7-r2 3.2.0-r2 3.2.6-r1 3.2.7-r1 3.4.2-r1 3.4.6: A fork of GNOME Shell with layout similar to GNOME 2
-gnome-extra/cinnamon-control-center 2.8.1 3.0.1 3.2.0 3.2.1: Cinnamons's main interface to configure various aspects of the desktop
-gnome-extra/cinnamon-desktop 2.8.1 3.0.2 3.2.0 3.2.4 3.4.2: A collection of libraries and utilites used by Cinnamon
-gnome-extra/cinnamon-menus 2.8.0 3.0.2 3.2.0 3.4.0: Cinnamon's library for the Desktop Menu fd.o specification
-gnome-extra/cinnamon-screensaver 2.8.0-r1 3.0.1 3.2.2 3.2.2-r1 3.2.6 3.2.13-r1 3.2.13-r2 3.4.1 3.4.2: Screensaver for Cinnamon
-gnome-extra/cinnamon-session 2.8.2 2.8.3 3.0.1 3.2.0 3.4.1 3.4.2: Cinnamon session manager
-gnome-extra/cinnamon-settings-daemon 2.8.3 2.8.4 3.0.1 3.2.0 3.4.2 3.4.4: Cinnamon's settings daemon
-gnome-extra/cinnamon-translations 2.8.3 3.0.3 3.2.0: Translation data for Cinnamon
-gnome-extra/cjs 3.0.1 3.4.1 3.4.4: Linux Mint's fork of gjs for Cinnamon
+gnome-extra/cinnamon 3.0.7-r2 3.2.0-r2 3.2.6-r1 3.2.7-r1 3.4.2-r1 3.4.6 3.6.6: A fork of GNOME Shell with layout similar to GNOME 2
+gnome-extra/cinnamon-control-center 2.8.1 3.0.1 3.2.0 3.2.1 3.6.5: Cinnamons's main interface to configure various aspects of the desktop
+gnome-extra/cinnamon-desktop 2.8.1 3.0.2 3.2.0 3.2.4 3.4.2 3.6.2: A collection of libraries and utilites used by Cinnamon
+gnome-extra/cinnamon-menus 2.8.0 3.0.2 3.2.0 3.4.0 3.6.0: Cinnamon's library for the Desktop Menu fd.o specification
+gnome-extra/cinnamon-screensaver 2.8.0-r1 3.0.1 3.2.2 3.2.2-r1 3.2.6 3.2.13-r1 3.2.13-r2 3.4.1 3.4.2 3.6.1: Screensaver for Cinnamon
+gnome-extra/cinnamon-session 2.8.2 2.8.3 3.0.1 3.2.0 3.4.1 3.4.2 3.6.1: Cinnamon session manager
+gnome-extra/cinnamon-settings-daemon 2.8.3 2.8.4 3.0.1 3.2.0 3.4.2 3.4.4 3.6.1: Cinnamon's settings daemon
+gnome-extra/cinnamon-translations 2.8.3 3.0.3 3.2.0 3.6.3: Translation data for Cinnamon
+gnome-extra/cjs 3.0.1 3.4.1 3.4.4 3.6.1: Linux Mint's fork of gjs for Cinnamon
 gnome-extra/docky 2.2.1.1-r1: Elegant, powerful, clean dock
 gnome-extra/eiciel 0.9.11 0.9.11-r1: ACL editor for GNOME, with Nautilus extension
 gnome-extra/evolution-data-server 3.22.7 3.24.5 3.24.6: Evolution groupware backend
@@ -11791,7 +11791,7 @@ gnome-extra/nautilus-actions 3.2.3 3.2.4: Configures programs to be launched whe
 gnome-extra/nautilus-dropbox 1.6.2: Store, Sync and Share Files Online
 gnome-extra/nautilus-sendto 3.8.4 3.8.5: A nautilus extension for sending files to locations
 gnome-extra/nautilus-tracker-tags 1.10.5 1.12.2 1.12.3: Nautilus extension to tag files for Tracker
-gnome-extra/nemo 2.8.7 3.0.6 3.2.0 3.4.4 3.4.7: A file manager for Cinnamon, forked from Nautilus
+gnome-extra/nemo 2.8.7 3.0.6 3.2.0 3.4.4 3.4.7 3.6.4: A file manager for Cinnamon, forked from Nautilus
 gnome-extra/nm-applet 1.4.6-r1 1.8.2 1.8.6: GNOME applet for NetworkManager
 gnome-extra/office-runner 1.0.2: Lighthearted tool to temporarily inhibit GNOME's suspend on lid close behavior
 gnome-extra/polkit-gnome 0.105-r1: A dbus session bus service that is used to bring up authentication dialogs
@@ -18801,7 +18801,7 @@ x11-libs/startup-notification 0.12-r1: Application startup notification and feed
 x11-libs/tslib 1.0-r3: Touchscreen Access Library
 x11-libs/vte 0.28.2-r208 0.36.5 0.46.1 0.46.2 0.48.3: Library providing a virtual terminal emulator widget
 x11-libs/wxGTK 2.8.12.1-r1 2.8.12.1-r2 3.0.2.0-r1 3.0.2.0-r2 3.0.2.0-r3 3.0.2.0-r300 3.0.2.0-r301: GTK+ version of wxWidgets, a cross-platform C++ GUI toolkit
-x11-libs/xapps 1.0.2-r1 1.0.3: Cross-desktop libraries and common resources
+x11-libs/xapps 1.0.2-r1 1.0.3 1.0.4: Cross-desktop libraries and common resources
 x11-libs/xbae 4.60.4: Motif-based widget to display a grid of cells as a spreadsheet
 x11-libs/xcb-util 0.4.0: X C-language Bindings sample implementations
 x11-libs/xcb-util-cursor 0.1.1-r1 0.1.2 0.1.3-r1: X C-language Bindings sample implementations
@@ -19535,7 +19535,7 @@ x11-wm/lumina 1.3.0_p1 1.4.0-r2 9999: Lumina desktop environment
 x11-wm/lwm 1.2.2 1.2.3 1.2.4: The ultimate lightweight window manager
 x11-wm/marco 1.12.1 1.12.1-r1 1.14.2-r1 1.16.0-r1 1.18.1: MATE default window manager
 x11-wm/matwm2 0.1.2_pre3: Simple EWMH compatible window manager with titlebars and frames
-x11-wm/muffin 2.8.5 3.0.5 3.2.0 3.2.0-r1 3.4.0 3.4.1: Compositing window manager forked from Mutter for use with Cinnamon
+x11-wm/muffin 2.8.5 3.0.5 3.2.0 3.2.0-r1 3.4.0 3.4.1 3.6.0: Compositing window manager forked from Mutter for use with Cinnamon
 x11-wm/musca 0.9.24_p20100226-r3 0.9.24_p20100226-r4: A simple dynamic window manager, with features nicked from ratpoison and dwm
 x11-wm/mutter 3.22.4-r1 3.24.4: GNOME 3 compositing window manager based on Clutter
 x11-wm/notion 3_p2013030200 3_p2015061300-r1 9999: Notion is a tiling, tabbed window manager for the X window system
