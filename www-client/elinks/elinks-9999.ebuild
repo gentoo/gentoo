@@ -24,22 +24,22 @@ DEPEND="
 	${PYTHON_DEPS}
 	brotli? ( app-arch/brotli )
 	bzip2? ( >=app-arch/bzip2-1.0.2 )
+	gpm? ( >=sys-libs/ncurses-5.2:0= >=sys-libs/gpm-1.20.0-r5 )
+	guile? ( >=dev-scheme/guile-1.6.4-r1[deprecated,discouraged] )
+	idn? ( net-dns/libidn )
+	javascript? ( >=dev-lang/spidermonkey-1.8.5:0= )
+	lua? ( >=dev-lang/lua-5:0= )
+	perl? ( dev-lang/perl:= )
+	ruby? ( dev-lang/ruby:* dev-ruby/rubygems:* )
+	samba? ( net-fs/samba )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
 	)
-	xml? ( >=dev-libs/expat-1.95.4 )
-	X? ( x11-libs/libX11 x11-libs/libXt )
-	zlib? ( >=sys-libs/zlib-1.1.4 )
-	lua? ( >=dev-lang/lua-5:0= )
-	gpm? ( >=sys-libs/ncurses-5.2:0= >=sys-libs/gpm-1.20.0-r5 )
-	guile? ( >=dev-scheme/guile-1.6.4-r1[deprecated,discouraged] )
-	idn? ( net-dns/libidn )
-	perl? ( dev-lang/perl:= )
-	ruby? ( dev-lang/ruby:* dev-ruby/rubygems:* )
-	samba? ( net-fs/samba )
 	tre? ( dev-libs/tre )
-	javascript? ( >=dev-lang/spidermonkey-1.8.5:0= )"
+	X? ( x11-libs/libX11 x11-libs/libXt )
+	xml? ( >=dev-libs/expat-1.95.4 )
+	zlib? ( >=sys-libs/zlib-1.1.4 )"
 RDEPEND="${DEPEND}"
 
 PATCHES=(
@@ -100,26 +100,26 @@ src_configure() {
 		--enable-true-color \
 		--enable-html-highlight \
 		$(use_with gpm) \
-		$(use_with zlib) \
 		$(use_with brotli) \
 		$(use_with bzip2 bzlib) \
-		$(use_with X x) \
-		$(use_with lua) \
 		$(use_with guile) \
-		$(use_with perl) \
-		$(use_with ruby) \
 		$(use_with idn) \
 		$(use_with javascript spidermonkey) \
+		$(use_with lua) \
+		$(use_with perl) \
+		$(use_with ruby) \
 		$(use_with tre) \
+		$(use_with X x) \
+		$(use_with zlib) \
 		$(use_enable bittorrent) \
-		$(use_enable nls) \
-		$(use_enable ipv6) \
+		$(use_enable finger) \
 		$(use_enable ftp) \
 		$(use_enable gopher) \
-		$(use_enable nntp) \
-		$(use_enable finger) \
-		$(use_enable samba smb) \
+		$(use_enable ipv6) \
 		$(use_enable mouse) \
+		$(use_enable nls) \
+		$(use_enable nntp) \
+		$(use_enable samba smb) \
 		$(use_enable xml xbel) \
 		${myconf}
 }
