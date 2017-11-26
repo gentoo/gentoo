@@ -13381,7 +13381,7 @@ media-plugins/gst-plugins-ivorbis 0.10.36-r1: plugin for gstreamer
 media-plugins/gst-plugins-jack 0.10.31-r1 1.10.3 1.10.5 1.12.3: plugin for gstreamer
 media-plugins/gst-plugins-jpeg 0.10.31-r1 1.10.3 1.10.5 1.12.3: JPEG image encoder/decoder plugin for GStreamer
 media-plugins/gst-plugins-kate 1.10.3 1.10.5 1.12.3: Kate overlay codec suppport plugin for GStreamer
-media-plugins/gst-plugins-ladspa 0.10.23-r1: plugin for gstreamer
+media-plugins/gst-plugins-ladspa 0.10.23-r1 1.12.3: Ladspa elements for Gstreamer
 media-plugins/gst-plugins-lame 0.10.19-r1 1.10.3 1.10.5 1.12.3: MP3 encoder plugin for GStreamer
 media-plugins/gst-plugins-libav 1.10.4 1.10.5 1.12.3: FFmpeg based gstreamer plugin
 media-plugins/gst-plugins-libde265 1.10.3 1.10.5 1.12.3: H.265 decoder plugin for GStreamer
@@ -13925,6 +13925,7 @@ media-sound/protux 0.50.100: Professional Audio Tools for GNU/Linux
 media-sound/ptabtools 0.5.0: Utilities for PowerTab Guitar files (.ptb)
 media-sound/puddletag 1.2.0: Audio tag editor
 media-sound/pulseaudio 10.0 10.99.1 11.0 11.1: A networked sound server with an advanced plugin system
+media-sound/pulseeffects 3.0.8 9999: Limiter, compressor, reverberation, equalizer auto volume effects for Pulseaudio
 media-sound/pwavecat 0.4.5: concatenates any number of audio files to stdout
 media-sound/pympd 0.08.1-r1: a Rhythmbox-like PyGTK+ client for Music Player Daemon
 media-sound/qarecord 0.5.0: A simple harddisk recorder writing from an input audio stream to a .wav file
@@ -14049,6 +14050,7 @@ media-sound/xwax 1.5 1.6: Digital vinyl emulation software
 media-sound/yoshimi 1.4.1 1.5.1.1: A software synthesizer based on ZynAddSubFX
 media-sound/zynaddsubfx 3.0.1-r1 3.0.2: ZynAddSubFX is an opensource software synthesizer
 media-tv/channeleditor 1.9.2.1-r1: Editor for VDR channels.conf
+media-tv/dtv-scan-tables 0_p20171003 9999: Digital TV scan tables in v3 and v5 format
 media-tv/dvbstream 0.7_pre20080516 0.7_pre20080516-r1: RTP multicast stream server and other tools for DVB cards
 media-tv/dvbtune 0.5-r1: simple tuning app for DVB cards
 media-tv/gentoo-vdr-scripts 2.0.0 2.5 2.7 2.7.2 2.7.3 2.7.5 2.7.5.1: Scripts necessary for use of vdr as a set-top-box
