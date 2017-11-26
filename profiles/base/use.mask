@@ -4,6 +4,16 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Matt Turner <mattst88@gentoo.org> (25 Nov 2017)
+# Unmaintained upstream. Masked for removal in 30 days.
+# Bug #606132.
+input_devices_acecad
+input_devices_aiptek
+input_devices_fpit
+input_devices_hyperpen
+input_devices_mutouch
+input_devices_pentouch
+
 # Matt Turner <mattst88@gentoo.org> (23 Nov 2017)
 # For ancient hardware. Tired of maintaining. Masked for removal in 30 days.
 # Bug #606132.
