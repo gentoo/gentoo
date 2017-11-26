@@ -2,8 +2,18 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
+		<email>prometheanfire@gentoo.org</email>
+		<name>Matthew Thode</name>
+	</maintainer>
+	<maintainer type="person">
 		<email>jpizarrocallejas@gmail.com</email>
 		<name>Jorge Pizarro Callejas</name>
 		<description>Jorgicio Gentoo Overlay</description>
 	</maintainer>
+	<longdescription lang="en">
+		Audio effects for Pulseaudio applications
+	</longdescription>
+	<upstream>
+		<remote-id type="github">wwmm/pulseeffects</remote-id>
+	</upstream>
 </pkgmetadata>

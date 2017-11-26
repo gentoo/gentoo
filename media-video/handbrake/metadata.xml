@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>thev00d00@gentoo.org</email>
-	<name>Ian Whyman</name>
-  </maintainer>
-  <longdescription>
-    Open-source, GPL-licensed, multiplatform, multithreaded video transcoder.
-  </longdescription>
-  <use>
-    <flag name="gstreamer">Support for the streaming media framework from <pkg>media-libs/gstreamer</pkg>.</flag>
-    <flag name="gtk">Install the GTK UI, ghb.</flag>
-    <flag name="fdk">Support for encoding AAC using <pkg>media-libs/fdk-aac</pkg>.</flag>
-    <flag name="libav-aac">Support for encoding AAC using <pkg>media-video/libav</pkg>'s internal encoder.</flag>
-	<flag name="x265">Support for encoding h265 using <pkg>media-libs/x265</pkg>.</flag>
-  </use>
+	<maintainer type="person">
+		<email>thev00d00@gentoo.org</email>
+		<name>Ian Whyman</name>
+	</maintainer>
+	<longdescription>
+		Open-source, GPL-licensed, multiplatform, multithreaded video transcoder.
+	</longdescription>
+	<use>
+		<flag name="gstreamer">Support for the streaming media framework from <pkg>media-libs/gstreamer</pkg>.</flag>
+		<flag name="gtk">Install the GTK UI, ghb.</flag>
+		<flag name="fdk">Support for encoding AAC using <pkg>media-libs/fdk-aac</pkg>.</flag>
+		<flag name="libav-aac">Support for encoding AAC using <pkg>media-video/libav</pkg>'s internal encoder.</flag>
+		<flag name="x265">Support for encoding h265 using <pkg>media-libs/x265</pkg>.</flag>
+	</use>
 </pkgmetadata>

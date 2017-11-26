@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
+	<maintainer type="project">
 		<email>vdr@gentoo.org</email>
 		<name>Gentoo VDR Project</name>
-    </maintainer>
+	</maintainer>
 	<use>
 		<flag name="graphtft-fe">Install external x11 remote frontend</flag>
 		<flag name="theme_avp">graphTFT Alien vs. Predato theme</flag>
