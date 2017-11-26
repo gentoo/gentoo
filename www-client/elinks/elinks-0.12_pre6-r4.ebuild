@@ -8,7 +8,6 @@ MY_P="${P/_/}"
 DESCRIPTION="Advanced and well-established text-mode web browser"
 HOMEPAGE="http://elinks.or.cz/"
 SRC_URI="http://elinks.or.cz/download/${MY_P}.tar.bz2
-	https://dev.gentoo.org/~spock/portage/distfiles/elinks-0.10.4.conf.bz2
 	https://dev.gentoo.org/~axs/distfiles/${PN}-0.12_pre5-js185-patches.tar.bz2"
 
 LICENSE="GPL-2"
@@ -55,15 +54,6 @@ PATCHES=(
 
 src_prepare() {
 	default
-
-	cd "${WORKDIR}" || die
-	eapply "${FILESDIR}"/${PN}-0.10.4.conf-syscharset.diff
-	mv ${PN}-0.10.4.conf ${PN}.conf || die
-	if ! use ftp ; then
-		sed -i -e 's/\(.*protocol.ftp.*\)/# \1/' ${PN}.conf || die
-	fi
-	sed -i -e 's/\(.*set protocol.ftp.use_epsv.*\)/# \1/' ${PN}.conf || die
-	cd "${S}" || die
 
 	# fix lib order in configure check
 	# (these seds are necessary so that @preserved-libs copies are not used)
@@ -138,7 +128,6 @@ src_install() {
 	emake V=1 DESTDIR="${D}" install
 
 	insinto /etc/elinks
-	doins "${WORKDIR}"/elinks.conf
 	newins contrib/keybind-full.conf keybind-full.sample
 	newins contrib/keybind.conf keybind.conf.sample
 
@@ -154,9 +143,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo "This ebuild provides a default config for ELinks."
-	einfo "Please check /etc/elinks/elinks.conf"
-	einfo
 	einfo "You may want to convert your html.cfg and links.cfg of"
 	einfo "Links or older ELinks versions to the new ELinks elinks.conf"
 	einfo "using /usr/share/doc/${PF}/contrib/conv/conf-links2elinks.pl"
