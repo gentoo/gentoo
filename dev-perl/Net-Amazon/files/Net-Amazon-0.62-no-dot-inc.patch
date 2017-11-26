@@ -1,0 +1,298 @@
+From d51b0583bea818ed483ff26ce1e61081183f6665 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Sun, 26 Nov 2017 17:12:34 +1300
+Subject: Fix test failures due to require() needing a non-@INC path
+
+Due to '.' removal from @INC, "require t/foo" no longer loads ./t/foo
+
+Bug: https://bugs.gentoo.org/617158
+Bug: https://rt.cpan.org/Public/Bug/Display.html?id=121476
+Bug: https://github.com/boumenot/p5-Net-Amazon/pull/8
+---
+ t/010Artist.t       | 3 ++-
+ t/011Locale.t       | 3 ++-
+ t/012Keyword.t      | 3 ++-
+ t/013Seller.t       | 3 ++-
+ t/015Exchange.t     | 3 ++-
+ t/017Author.t       | 3 ++-
+ t/018Actor.t        | 3 ++-
+ t/019MusicLabel.t   | 3 ++-
+ t/022Director.t     | 3 ++-
+ t/023Title.t        | 3 ++-
+ t/024signature.t    | 3 ++-
+ t/025cache.t        | 3 ++-
+ t/027MP3Downloads.t | 3 ++-
+ 13 files changed, 26 insertions(+), 13 deletions(-)
+
+diff --git a/t/010Artist.t b/t/010Artist.t
+index 0272c28..8245908 100644
+--- a/t/010Artist.t
++++ b/t/010Artist.t
+@@ -5,6 +5,7 @@ use warnings;
+ use strict;
+ 
+ use Test::More tests => 23;
++use File::Spec::Functions qw( rel2abs );
+ BEGIN { use_ok('Net::Amazon') };
+ 
+ #use Log::Log4perl qw(:easy);
+@@ -16,7 +17,7 @@ use Net::Amazon::Request::Artist;
+ ################################################################
+ # Setup
+ ################################################################
+-  my($TESTDIR) = map { -d $_ ? $_ : () } qw(t ../t .);
++  my($TESTDIR) = map { -d $_ ? rel2abs($_) : () } qw(t ../t .);
+   require "$TESTDIR/init.pl";
+   my $CANNED = "$TESTDIR/canned";
+ ################################################################
+diff --git a/t/011Locale.t b/t/011Locale.t
+index 473a7e1..96df821 100644
+--- a/t/011Locale.t
++++ b/t/011Locale.t
+@@ -8,12 +8,13 @@ use strict;
+ 
+ use Net::Amazon;
+ use Net::Amazon::Request::ASIN;
++use File::Spec::Functions qw( rel2abs );
+ use Test::More tests => 5;
+ 
+ ################################################################
+ # Setup
+ ################################################################
+-  my($TESTDIR) = map { -d $_ ? $_ : () } qw(t ../t .);
++  my($TESTDIR) = map { -d $_ ? rel2abs($_) : () } qw(t ../t .);
+   require "$TESTDIR/init.pl";
+   my $CANNED = "$TESTDIR/canned";
+ ################################################################
+diff --git a/t/012Keyword.t b/t/012Keyword.t
+index 82c25ab..ded941d 100644
+--- a/t/012Keyword.t
++++ b/t/012Keyword.t
+@@ -9,12 +9,13 @@ use strict;
+ use Net::Amazon;
+ use Net::Amazon::Property;
+ use Net::Amazon::Request::Keyword;
++use File::Spec::Functions qw( rel2abs );
+ use Test::More tests => 12;
+ 
+ ################################################################
+ # Setup
+ ################################################################
+-  my($TESTDIR) = map { -d $_ ? $_ : () } qw(t ../t .);
++  my($TESTDIR) = map { -d $_ ? rel2abs($_) : () } qw(t ../t .);
+   require "$TESTDIR/init.pl";
+   my $CANNED = "$TESTDIR/canned";
+ ################################################################
+diff --git a/t/013Seller.t b/t/013Seller.t
+index fc36778..986bd8d 100644
+--- a/t/013Seller.t
++++ b/t/013Seller.t
+@@ -5,6 +5,7 @@
+ use warnings;
+ use strict;
+ 
++use File::Spec::Functions qw( rel2abs );
+ use Test::More tests => 25;
+ use Net::Amazon;
+ use Net::Amazon::Request::Seller;
+@@ -14,7 +15,7 @@ use Net::Amazon::Request::Seller;
+ ################################################################
+ # Setup
+ ################################################################
+-  my($TESTDIR) = map { -d $_ ? $_ : () } qw(t ../t .);
++  my($TESTDIR) = map { -d $_ ? rel2abs($_) : () } qw(t ../t .);
+   require "$TESTDIR/init.pl";
+   my $CANNED = "$TESTDIR/canned";
+ ################################################################
+diff --git a/t/015Exchange.t b/t/015Exchange.t
+index 4f8610c..7db514d 100644
+--- a/t/015Exchange.t
++++ b/t/015Exchange.t
+@@ -5,6 +5,7 @@
+ use warnings;
+ use strict;
+ 
++use File::Spec::Functions qw( rel2abs );
+ use Test::More tests => 17;
+ use Net::Amazon;
+ use Net::Amazon::Result::Seller::Listing;
+@@ -14,7 +15,7 @@ use Log::Log4perl qw(:easy);
+ ################################################################
+ # Setup
+ ################################################################
+-  my($TESTDIR) = map { -d $_ ? $_ : () } qw(t ../t .);
++  my($TESTDIR) = map { -d $_ ? rel2abs($_) : () } qw(t ../t .);
+   require "$TESTDIR/init.pl";
+   my $CANNED = "$TESTDIR/canned";
+ ################################################################
+diff --git a/t/017Author.t b/t/017Author.t
+index ebf3d3b..a6ebc1f 100644
+--- a/t/017Author.t
++++ b/t/017Author.t
+@@ -4,6 +4,7 @@
+ use warnings;
+ use strict;
+ 
++use File::Spec::Functions qw( rel2abs );
+ use Test::More tests => 30;
+ BEGIN { use_ok('Net::Amazon') };
+ 
+@@ -16,7 +17,7 @@ use Net::Amazon::Request::Author;
+ ################################################################
+ # Setup
+ ################################################################
+-  my($TESTDIR) = map { -d $_ ? $_ : () } qw(t ../t .);
++  my($TESTDIR) = map { -d $_ ? rel2abs($_) : () } qw(t ../t .);
+   require "$TESTDIR/init.pl";
+   my $CANNED = "$TESTDIR/canned";
+ ################################################################
+diff --git a/t/018Actor.t b/t/018Actor.t
+index 26379d9..7106f20 100644
+--- a/t/018Actor.t
++++ b/t/018Actor.t
+@@ -4,6 +4,7 @@
+ use warnings;
+ use strict;
+ 
++use File::Spec::Functions qw( rel2abs );
+ use Test::More tests => 23;
+ BEGIN { use_ok('Net::Amazon') };
+ 
+@@ -16,7 +17,7 @@ use Net::Amazon::Request::Actor;
+ ################################################################
+ # Setup
+ ################################################################
+-  my($TESTDIR) = map { -d $_ ? $_ : () } qw(t ../t .);
++  my($TESTDIR) = map { -d $_ ? rel2abs($_) : () } qw(t ../t .);
+   require "$TESTDIR/init.pl";
+   my $CANNED = "$TESTDIR/canned";
+ ################################################################
+diff --git a/t/019MusicLabel.t b/t/019MusicLabel.t
+index e693798..508da3b 100644
+--- a/t/019MusicLabel.t
++++ b/t/019MusicLabel.t
+@@ -4,6 +4,7 @@
+ use warnings;
+ use strict;
+ 
++use File::Spec::Functions qw( rel2abs );
+ use Test::More tests => 14;
+ BEGIN { use_ok('Net::Amazon') };
+ 
+@@ -16,7 +17,7 @@ use Net::Amazon::Request::MusicLabel;
+ ################################################################
+ # Setup
+ ################################################################
+-  my($TESTDIR) = map { -d $_ ? $_ : () } qw(t ../t .);
++  my($TESTDIR) = map { -d $_ ? rel2abs($_) : () } qw(t ../t .);
+   require "$TESTDIR/init.pl";
+   my $CANNED = "$TESTDIR/canned";
+ ################################################################
+diff --git a/t/022Director.t b/t/022Director.t
+index f7c103f..dff6fbe 100644
+--- a/t/022Director.t
++++ b/t/022Director.t
+@@ -4,6 +4,7 @@
+ use warnings;
+ use strict;
+ 
++use File::Spec::Functions qw( rel2abs );
+ use Test::More tests => 23;
+ BEGIN { use_ok('Net::Amazon') };
+ 
+@@ -16,7 +17,7 @@ use Net::Amazon::Request::Director;
+ ################################################################
+ # Setup
+ ################################################################
+-  my($TESTDIR) = map { -d $_ ? $_ : () } qw(t ../t .);
++  my($TESTDIR) = map { -d $_ ? rel2abs($_) : () } qw(t ../t .);
+   require "$TESTDIR/init.pl";
+   my $CANNED = "$TESTDIR/canned";
+ ################################################################
+diff --git a/t/023Title.t b/t/023Title.t
+index fc72090..9ef9da4 100644
+--- a/t/023Title.t
++++ b/t/023Title.t
+@@ -4,6 +4,7 @@
+ use warnings;
+ use strict;
+ 
++use File::Spec::Functions qw( rel2abs );
+ use Test::More tests => 4;
+ BEGIN { use_ok('Net::Amazon') };
+ 
+@@ -16,7 +17,7 @@ use Net::Amazon::Request::Title;
+ ################################################################
+ # Setup
+ ################################################################
+-  my($TESTDIR) = map { -d $_ ? $_ : () } qw(t ../t .);
++  my($TESTDIR) = map { -d $_ ? rel2abs($_) : () } qw(t ../t .);
+   require "$TESTDIR/init.pl";
+   my $CANNED = "$TESTDIR/canned";
+ ################################################################
+diff --git a/t/024signature.t b/t/024signature.t
+index ca0c9e9..aa15767 100644
+--- a/t/024signature.t
++++ b/t/024signature.t
+@@ -6,6 +6,7 @@ use strict;
+ use utf8; # Needed to include utf8 strings
+ use Encode;
+ 
++use File::Spec::Functions qw( rel2abs );
+ use Test::More tests => 6;
+ BEGIN { use_ok('Net::Amazon') };
+ 
+@@ -19,7 +20,7 @@ use URI;
+ ################################################################
+ # Setup
+ ################################################################
+-  my($TESTDIR) = map { -d $_ ? $_ : () } qw(t ../t .);
++  my($TESTDIR) = map { -d $_ ? rel2abs($_) : () } qw(t ../t .);
+   require "$TESTDIR/init.pl";
+   my $CANNED = "$TESTDIR/canned";
+ ################################################################
+diff --git a/t/025cache.t b/t/025cache.t
+index ba589f1..45283c3 100644
+--- a/t/025cache.t
++++ b/t/025cache.t
+@@ -4,6 +4,7 @@
+ use warnings;
+ use strict;
+ 
++use File::Spec::Functions qw( rel2abs );
+ use Test::More tests => 6;
+ BEGIN { use_ok('Net::Amazon'); use_ok('Log::Log4perl'); }
+ 
+@@ -20,7 +21,7 @@ Log::Log4perl->easy_init({level => $ALL, file => ">>$log_file"});
+ ################################################################
+ # Setup
+ ################################################################
+-  my($TESTDIR) = map { -d $_ ? $_ : () } qw(t ../t .);
++  my($TESTDIR) = map { -d $_ ? rel2abs($_) : () } qw(t ../t .);
+   require "$TESTDIR/init.pl";
+ 
+ SKIP: {
+diff --git a/t/027MP3Downloads.t b/t/027MP3Downloads.t
+index 66f9bda..3e3b5fc 100644
+--- a/t/027MP3Downloads.t
++++ b/t/027MP3Downloads.t
+@@ -4,6 +4,7 @@
+ use warnings;
+ use strict;
+ 
++use File::Spec::Functions qw( rel2abs );
+ use Test::More tests => 17;
+ BEGIN { use_ok('Net::Amazon') };
+ 
+@@ -16,7 +17,7 @@ use Net::Amazon::Request::MP3Downloads;
+ ################################################################
+ # Setup
+ ################################################################
+-  my($TESTDIR) = map { -d $_ ? $_ : () } qw(t ../t .);
++  my($TESTDIR) = map { -d $_ ? rel2abs($_) : () } qw(t ../t .);
+   require "$TESTDIR/init.pl";
+   my $CANNED = "$TESTDIR/canned";
+ ################################################################
+-- 
+2.14.3
+
