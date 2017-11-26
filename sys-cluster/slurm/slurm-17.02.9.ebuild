@@ -22,7 +22,7 @@ else
 	S="${WORKDIR}/${MY_P}"
 fi
 
-inherit autotools eutils pam perl-module user ${INHERIT_GIT}
+inherit autotools eutils pam perl-module prefix user ${INHERIT_GIT}
 
 DESCRIPTION="A Highly Scalable Resource Manager"
 HOMEPAGE="https://www.schedmd.com"
@@ -50,7 +50,7 @@ REQUIRED_USE="torque? ( perl )"
 LIBSLURM_PERL_S="${WORKDIR}/${P}/contribs/perlapi/libslurm/perl"
 LIBSLURMDB_PERL_S="${WORKDIR}/${P}/contribs/perlapi/libslurmdb/perl"
 
-RESTRICT="primaryuri"
+RESTRICT="primaryuri test"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-disable-sview.patch
