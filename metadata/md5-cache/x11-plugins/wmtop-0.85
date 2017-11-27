@@ -9,4 +9,4 @@ RDEPEND=>=x11-libs/libdockapp-0.7:= x11-libs/libX11 x11-libs/libXpm x11-libs/lib
 SLOT=0
 SRC_URI=http://www.dockapps.net/download/wmtop-0.85.tar.gz
 _eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=9c7970710a91210d1c21351841715de7
+_md5_=48d63bb8b5a43b786668bfe15207884f

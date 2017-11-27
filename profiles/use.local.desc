@@ -6604,11 +6604,11 @@ net-nds/nsscache:nsscache - Depend on sys-auth/libnss-cache to handle flat files
 net-nds/nsscache:nssdb - Depend on sys-libs/libnss_db to handle dbm files.
 net-nds/openldap:experimental - Enable experimental backend options
 net-nds/openldap:kinit - Enable support for kerberos init
-net-nds/openldap:minimal - Build libraries & userspace tools only. Does not install any server code.
+net-nds/openldap:minimal - Build libraries & userspace tools only. Does not install any server code
 net-nds/openldap:odbc - Enable ODBC and SQL backend options
 net-nds/openldap:overlays - Enable contributed OpenLDAP overlays
 net-nds/openldap:pbkdf2 - Enable support for pbkdf2 passwords
-net-nds/openldap:sha2 - Enable support for pw-sha2 password hashes.
+net-nds/openldap:sha2 - Enable support for pw-sha2 password hashes
 net-nds/openldap:smbkrb5passwd - Enable overlay for syncing ldap, unix and lanman passwords
 net-nds/rpcbind:warmstarts - Enables rpcbind to cache configuration for warm restarts
 net-nds/tac_plus:finger - Adds support for checking user counts via fingering the NAS
@@ -6834,30 +6834,30 @@ net-vpn/openvpn:mbedtls - Use mbed TLS instead of OpenSSL
 net-vpn/openvpn:pkcs11 - Enable PKCS#11 smartcard support
 net-vpn/openvpn:plugins - Enable the OpenVPN plugin system
 net-vpn/pptpd:gre-extreme-debug - Log all GRE accepted packages when in debug mode (required if you want upstream support)
-net-vpn/strongswan:constraints - Enable advanced X.509 constraint checking plugin.
+net-vpn/strongswan:constraints - Enable advanced X.509 constraint checking plugin
 net-vpn/strongswan:dhcp - Enable server support for querying virtual IP addresses for clients from a DHCP server. (IKEv2 only)
-net-vpn/strongswan:eap - Enable support for the different EAP modules that is supported.
-net-vpn/strongswan:farp - Enable faking of ARP responses for virtual IP addresses assigned to clients. (IKEv2 only)
+net-vpn/strongswan:eap - Enable support for the different EAP modules that are supported
+net-vpn/strongswan:farp - Enable faking of ARP responses for virtual IP addresses assigned to clients (IKEv2 only)
 net-vpn/strongswan:gcrypt - Enable dev-libs/libgcrypt plugin which provides 3DES, AES, Blowfish, Camellia, CAST, DES, Serpent and Twofish ciphers along with MD4, MD5 and SHA1/2 hash algorithms, RSA and DH groups 1,2,5,14-18 and 22-24(4.4+). Also includes a software random number generator.
 net-vpn/strongswan:non-root - Force IKEv1/IKEv2 daemons to normal user privileges. This might impose some restrictions mainly to the IKEv1 daemon. Disable only if you really require superuser privileges.
 net-vpn/strongswan:openssl - Enable dev-libs/openssl plugin which is required for Elliptic Curve Cryptography (DH groups 19-21,25,26) and ECDSA. Also provides 3DES, AES, Blowfish, Camellia, CAST, DES, IDEA and RC5 ciphers along with MD2, MD4, MD5 and SHA1/2 hash algorithms, RSA and DH groups 1,2,5,14-18 and 22-24(4.4+) dev-libs/openssl has to be compiled with USE="-bindist".
-net-vpn/strongswan:pkcs11 - Enable pkcs11 support.
-net-vpn/strongswan:strongswan_plugins_blowfish - Enable support for the blowfish plugin.
-net-vpn/strongswan:strongswan_plugins_ccm - Enable support for the ccm plugin.
-net-vpn/strongswan:strongswan_plugins_ctr - Enable support for the ctr plugin.
-net-vpn/strongswan:strongswan_plugins_gcm - Enable support for the gcm plugin.
-net-vpn/strongswan:strongswan_plugins_ha - Enable support for the ha plugin.
-net-vpn/strongswan:strongswan_plugins_ipseckey - Enable support for the ipseckey plugin.
-net-vpn/strongswan:strongswan_plugins_led - Enable support for the led plugin.
-net-vpn/strongswan:strongswan_plugins_lookip - Enable support for the lookip plugin.
-net-vpn/strongswan:strongswan_plugins_ntru - Enable support for the ntru plugin.
-net-vpn/strongswan:strongswan_plugins_padlock - Enable support for the padlock plugin.
-net-vpn/strongswan:strongswan_plugins_rdrand - Enable support for the rdrand plugin.
-net-vpn/strongswan:strongswan_plugins_systime-fix - Enable support for the systime-fix plugin.
-net-vpn/strongswan:strongswan_plugins_unbound - Enable support for the unbound plugin.
-net-vpn/strongswan:strongswan_plugins_unity - Enable support for the unity plugin.
-net-vpn/strongswan:strongswan_plugins_vici - Enable support for the vici plugin.
-net-vpn/strongswan:strongswan_plugins_whitelist - Enable support for the whitelist plugin.
+net-vpn/strongswan:pkcs11 - Enable pkcs11 support
+net-vpn/strongswan:strongswan_plugins_blowfish - Enable support for the blowfish plugin
+net-vpn/strongswan:strongswan_plugins_ccm - Enable support for the ccm plugin
+net-vpn/strongswan:strongswan_plugins_ctr - Enable support for the ctr plugin
+net-vpn/strongswan:strongswan_plugins_gcm - Enable support for the gcm plugin
+net-vpn/strongswan:strongswan_plugins_ha - Enable support for the ha plugin
+net-vpn/strongswan:strongswan_plugins_ipseckey - Enable support for the ipseckey plugin
+net-vpn/strongswan:strongswan_plugins_led - Enable support for the led plugin
+net-vpn/strongswan:strongswan_plugins_lookip - Enable support for the lookip plugin
+net-vpn/strongswan:strongswan_plugins_ntru - Enable support for the ntru plugin
+net-vpn/strongswan:strongswan_plugins_padlock - Enable support for the padlock plugin
+net-vpn/strongswan:strongswan_plugins_rdrand - Enable support for the rdrand plugin
+net-vpn/strongswan:strongswan_plugins_systime-fix - Enable support for the systime-fix plugin
+net-vpn/strongswan:strongswan_plugins_unbound - Enable support for the unbound plugin
+net-vpn/strongswan:strongswan_plugins_unity - Enable support for the unity plugin
+net-vpn/strongswan:strongswan_plugins_vici - Enable support for the vici plugin
+net-vpn/strongswan:strongswan_plugins_whitelist - Enable support for the whitelist plugin
 net-vpn/tinc:gui - Add GUI support, using dev-python/wxpython
 net-vpn/tinc:uml - Enable support for User Mode Linux Sockets
 net-vpn/tinc:vde - Enable Virtual Distributed Ethernet (VDE) based networking
@@ -7930,7 +7930,7 @@ sys-devel/llvm:sanitize - Build compiler-rt's sanitizers
 sys-devel/llvm:static-analyzer - Install the Clang static analyzer (requires USE=clang)
 sys-devel/sparse:gtk - Build the test-inspect utility (requires x11-libs/gtk+ version 2)
 sys-devel/sparse:llvm - Build the sparse-llvm utility
-sys-devel/sparse:xml - Build the c2xml utility (requires dev-libs/libxml2).
+sys-devel/sparse:xml - Build the c2xml utility (requires dev-libs/libxml2)
 sys-fabric/ofed:dapl - Add support for DAPL abstraction layer
 sys-fabric/ofed:diags - Add dignostic tools for infiniband
 sys-fabric/ofed:ibacm - Add support for userspace pre-connection services
@@ -7973,8 +7973,8 @@ sys-freebsd/freebsd-sources:build-kernel - Build and install a kernel (recommend
 sys-freebsd/freebsd-sources:dtrace - Enable DTrace support.
 sys-freebsd/freebsd-sources:zfs - Enable ZFS support.
 sys-freebsd/freebsd-ubin:ar - Build FreeBSD's ar and ranlib replacements based on libarchive. The toolchain will still use binutils' version but you can play with it. They have been renamed to freebsd-ar and freebsd-ranlib not to collide with binutils.
-sys-freebsd/freebsd-ubin:audit - Build auditing tools.
-sys-freebsd/freebsd-ubin:netware - Build libraries and tools to work with NetWare protocols (IPX and NCP).
+sys-freebsd/freebsd-ubin:audit - Build auditing tools
+sys-freebsd/freebsd-ubin:netware - Build libraries and tools to work with NetWare protocols (IPX and NCP)
 sys-freebsd/freebsd-ubin:zfs - Enable ZFS support (for fstat actually).
 sys-freebsd/freebsd-usbin:audit - Build auditing tools.
 sys-freebsd/freebsd-usbin:floppy - Enable floppy disk utilities (fdcontrol, fdformat, fdread, fdwrite).
@@ -8145,7 +8145,7 @@ sys-libs/uclibc:wordexp - Add support for word expansion (wordexp.h)
 sys-libs/uclibc-ng:rpc - Enable sun nis/rpc support (you should use libtirpc though)
 sys-libs/uclibc-ng:symlink-compat - Explicitly add sym links for libdl.so.0, libm.so.0, and friends for backward compatibility with sys-libs/uclibc-ng-1.0.17 and earlier
 sys-libs/zlib:minizip - include the minizip library for quick and dirty zip extraction
-sys-power/apcupsd:modbus - enable MODBUS support over USB
+sys-power/apcupsd:modbus - Enable MODBUS support over USB
 sys-power/cpupower:cpufreq_bench - Build and install the cpufreq_bench binary
 sys-power/nut:ipmi - Support IPMI-based UPSes.
 sys-power/nut:ups_drivers_al175 - Driver for Eltek UPS models with AL175 alarm module
@@ -8371,12 +8371,12 @@ www-client/seamonkey:ipc - Use inter-process communication between tabs and plug
 www-client/seamonkey:jemalloc - Enable or disable jemalloc
 www-client/seamonkey:roaming - Build roaming extension support (default on)
 www-client/seamonkey:skia - Enable the SKIA engine for 2D rendering as an alternative to cairo
-www-client/seamonkey:system-cairo - Use the system-wide x11-libs/cairo instead of bundled.
-www-client/seamonkey:system-harfbuzz - Use the system-wide media-libs/harfbuzz instead of bundled.
-www-client/seamonkey:system-icu - Use the sytem-wide dev-libs/icu instead of bundled.
-www-client/seamonkey:system-jpeg - Use the system-wide media-libs/libjpeg-turbo instead of bundled.
-www-client/seamonkey:system-libevent - Use the system-wide dev-libs/libevent instead of bundled.
-www-client/seamonkey:system-libvpx - Use the system-wide media-libs/libvpx instead of bundled.
+www-client/seamonkey:system-cairo - Use the system-wide x11-libs/cairo instead of bundled
+www-client/seamonkey:system-harfbuzz - Use the system-wide media-libs/harfbuzz instead of bundled
+www-client/seamonkey:system-icu - Use the sytem-wide dev-libs/icu instead of bundled
+www-client/seamonkey:system-jpeg - Use the system-wide media-libs/libjpeg-turbo instead of bundled
+www-client/seamonkey:system-libevent - Use the system-wide dev-libs/libevent instead of bundled
+www-client/seamonkey:system-libvpx - Use the system-wide media-libs/libvpx instead of bundled
 www-client/seamonkey:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
 www-client/surf:savedconfig - Without a saved config.h, this package depends on net-misc/curl and x11-terms/st for a default download mechanism
 www-client/uget:aria2 - Enable support for net-misc/aria2 through xmlrpc. You'll find the plugin in the app's settings.
