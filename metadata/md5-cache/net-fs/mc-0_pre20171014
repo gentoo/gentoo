@@ -9,5 +9,5 @@ RDEPEND=!!app-misc/mc
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/minio/mc/archive/785e14a725357b39e22b74483cd202e7effa6195.tar.gz -> mc-0_pre20171014.tar.gz
-_eclasses_=golang-base	51a1f13e065f1cff4507685d9cc268c7	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	913580335becddd3ebecefe852e47536
-_md5_=52ef6fc9d230c206ff567925515f8c63
+_eclasses_=bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	golang-base	51a1f13e065f1cff4507685d9cc268c7	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	913580335becddd3ebecefe852e47536	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=688b2cf78278aa69e8d1c17f0a642cd1
