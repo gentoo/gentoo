@@ -557,6 +557,7 @@ app-crypt/keybase 1.0.21 1.0.33 9999: Client for keybase.io
 app-crypt/keylookup 2.2 2.2-r9999: A tool to fetch PGP keys from keyservers
 app-crypt/keynote 2.3-r3: The KeyNote Trust-Management System
 app-crypt/kstart 4.1 4.2: Modified versions of kinit for refreshing kerberos tickets automatically
+app-crypt/libb2 0.98: C library providing BLAKE2b, BLAKE2s, BLAKE2bp, BLAKE2sp
 app-crypt/libmd 0.0.0: Message Digest functions from BSD systems
 app-crypt/libscrypt 1.21: Shared library to impliment the scrypt algorithm
 app-crypt/libsecret 0.18.5: GObject library for accessing the freedesktop.org Secret Service API
@@ -2138,7 +2139,7 @@ app-portage/mirrorselect 2.2.0.1 2.2.2 2.2.2-r2 2.2.3 9999: Tool to help select 
 app-portage/overlint 0.5.2 0.5.3: Simple tool for static analysis of overlays
 app-portage/perl-info 0.16: Tool to gather relevant perl data useful for bugreport; 'emerge --info' for perl
 app-portage/pfl 2.4-r4: Searchable online file/package database for Gentoo
-app-portage/portage-utils 0.62 0.63 0.64: small and fast portage helper tools written in C
+app-portage/portage-utils 0.62 0.63 0.64 0.64-r1: small and fast portage helper tools written in C
 app-portage/porthole 0.6.1-r4: A GTK+-based frontend to Portage
 app-portage/porticron 0.7_p20140126 0.7.1: cron script to sync portage and send update mails to root
 app-portage/portpeek 2.1.18 2.1.21 2.1.24 2.1.25: A helper program for maintaining the package.keyword and package.unmask files
@@ -4329,7 +4330,7 @@ dev-java/myfaces-api 2.2.8: Apache MyFaces API - Core package
 dev-java/myfaces-builder-annotations 1.0.9: Apache MyFaces API - Builder annotations package
 dev-java/nachocalendar 0.23-r1: Flexible Calendar component to the Java Platform
 dev-java/nailgun 0.7.1-r1: A client, protocol and server for running without incurring JVM startup overhead
-dev-java/nanoxml 2.2.3-r3: NanoXML is a small non-validating parser for Java
+dev-java/nanoxml 2.2.3-r4: NanoXML is a small non-validating parser for Java
 dev-java/nekohtml 1.9.18-r1: A simple HTML scanner and tag balancer using standard XML interfaces
 dev-java/netbeans-apisupport 8.2: Netbeans API Support Cluster
 dev-java/netbeans-cnd 8.2: Netbeans CND Cluster
@@ -6291,7 +6292,7 @@ dev-perl/Module-Versions-Report 1.60.0-r1: Report versions of all modules in mem
 dev-perl/MogileFS-Client 1.170.0-r1 1.170.0-r2: Client library for the MogileFS distributed file system
 dev-perl/MogileFS-Client-Async 0.030.0-r1: MogileFS Client using AnyEvent non-blocking IO
 dev-perl/MogileFS-Network 0.060.0-r1 0.60.0-r2: Network awareness and extensions for MogileFS::Server
-dev-perl/MogileFS-Server 2.700.0-r2 2.700.0-r3 2.720.0: Server for the MogileFS distributed file system
+dev-perl/MogileFS-Server 2.700.0-r2 2.700.0-r3 2.720.0-r1: Server for the MogileFS distributed file system
 dev-perl/MogileFS-Utils 2.290.0: Server for the MogileFS distributed file system
 dev-perl/Mojolicious 6.610.0 7.110.0 7.120.0 7.140.0 7.190.0 7.200.0 7.210.0 7.290.0 7.300.0 7.310.0 7.320.0 7.570.0: Real-time web framework
 dev-perl/Mon 0.110.0-r1 0.110.0-r2: A Monitor Perl Module
@@ -9015,7 +9016,7 @@ dev-python/wsaccel 0.6.2 0.6.2_p20170108: Accelerator for ws4py, autobahn and to
 dev-python/wsgiintercept 1.3.1: WSGI application in place of a real URI for testing
 dev-python/wsgilog 0.3-r1: Class for logging in WSGI-applications
 dev-python/wsgiproxy2 0.4.1 0.4.2 0.4.4: HTTP proxying tools for WSGI apps
-dev-python/wstools 0.4.3 0.4.5: WSDL parsing services package for Web Services for Python
+dev-python/wstools 0.4.3 0.4.5-r1: WSDL parsing services package for Web Services for Python
 dev-python/wtf-peewee 0.2.6: WTForms integration for peewee models
 dev-python/wtforms 2.1: Flexible forms validation and rendering library for python web development
 dev-python/www-authenticate 0.9.2: WWW-Authenticate header parser
@@ -9794,7 +9795,7 @@ dev-ruby/openvas-omp 0.0.4: Communicate with OpenVAS manager through OMP
 dev-ruby/optionable 0.2.0: Robust options validation for Ruby methods
 dev-ruby/org-ruby 0.9.12: Ruby routines for parsing org-mode files
 dev-ruby/origin 2.2.2 2.3.0 2.3.1: Origin is a simple DSL for generating MongoDB selectors and options
-dev-ruby/ox 2.5.0 2.6.0 2.7.0 2.8.0 2.8.1: A fast XML parser and Object marshaller
+dev-ruby/ox 2.5.0 2.6.0 2.7.0 2.8.0 2.8.1 2.8.2: A fast XML parser and Object marshaller
 dev-ruby/packetfu 1.1.13: A mid-level packet manipulation library
 dev-ruby/paint 2.0.0 2.0.1: Terminal painter
 dev-ruby/parallel 1.11.2 1.12.0: Run any code in parallel Processes or Threads
@@ -10110,7 +10111,7 @@ dev-scheme/gauche-kakasi 0.1: Kakasi binding for Gauche
 dev-scheme/gauche-qdbm 0.2-r1: QDBM binding for Gauche
 dev-scheme/goosh 1.3: Small process-control library for Guile
 dev-scheme/greg 2.0.0 2.0.0-r1: Testing-Framework for guile
-dev-scheme/guile 1.8.8-r3 2.0.13-r2 2.0.14-r2: GNU Ubiquitous Intelligent Language for Extensions
+dev-scheme/guile 1.8.8-r3 2.0.13-r2 2.0.14-r3: GNU Ubiquitous Intelligent Language for Extensions
 dev-scheme/guile-cairo 1.4.0 1.9.91: Wraps the Cairo graphics library for Guile Scheme
 dev-scheme/guile-gnome-platform 2.16.1 2.16.1-r1 2.16.2: Guile Scheme code that wraps the GNOME developer platform
 dev-scheme/guile-gui 0.2: Guile Scheme code that aims to implement a graphical user interface
@@ -10315,7 +10316,7 @@ dev-util/alleyoop 0.9.8: A Gtk+ front-end to the Valgrind memory checker
 dev-util/amtterm 1.3-r1 1.4 1.6: A nice tool to manage amt-enabled machines
 dev-util/android-ndk 9 9b 9c 9d 10 10b 10d 10e 11c 11c-r1 13b 14b: Open Handset Alliance's Android NDK (Native Dev Kit)
 dev-util/android-sdk-update-manager 21 21.1 22 22.0.1 22.0.1-r1 22.0.4 22.0.5 22.0.5-r1 22.2.1 22.3 22.6 22.6.1 23 23-r1 24.4.1: Open Handset Alliance's Android SDK
-dev-util/android-studio 2.3.3.0.162.4069837 3.0.0.18.171.4408382: A new Android development environment based on IntelliJ IDEA
+dev-util/android-studio 2.3.3.0.162.4069837 3.0.0.18.171.4408382 3.0.1.0.171.4443003: A new Android development environment based on IntelliJ IDEA
 dev-util/android-tools 5.1.1_p13 6.0.1_p79: Android platform tools (adb, fastboot, and mkbootimg)
 dev-util/anjuta 3.22.0: A versatile IDE for GNOME
 dev-util/antlrworks 1.2.3: A novel grammar development environment for ANTLR v3 grammars
@@ -12234,7 +12235,7 @@ kde-misc/plasma-applet-weather-widget 1.6.10: Plasma 5 applet for weather foreca
 kde-misc/rsibreak 0.12.7: Small utility which bothers you at certain intervals
 kde-misc/skanlite 2.0.1: KDE image scanning application
 kde-misc/systemd-kcm 1.2.1: Plasma control module for systemd
-kde-misc/tellico 3.0.2 3.1: A collection manager based on KDE Frameworks
+kde-misc/tellico 3.1: A collection manager based on KDE Frameworks
 kde-misc/wacomtablet 3.0.0_beta1 3.0.0_beta1_p20171107: KControl module for Wacom tablets
 kde-misc/yakuake 3.0.4 3.0.4-r2: Quake-style terminal emulator based on konsole
 kde-misc/zanshin 0.4.1_p20170701: Getting things done application by KDE
@@ -12792,7 +12793,7 @@ media-gfx/krita 3.1.4 3.3.2.1: Free digital painting application. Digital Painti
 media-gfx/kuickshow 0.9.1-r2: KDE program to view images
 media-gfx/kxstitch 2.0.0: Program to create cross stitch patterns
 media-gfx/libimagequant 2.10.1: Palette quantization library that powers pngquant and other PNG optimizers
-media-gfx/librecad 2.0.3 2.0.9-r1 2.1.1 2.1.3-r1 9999: Generic 2D CAD program
+media-gfx/librecad 2.1.3-r1 2.1.3-r2 9999: Generic 2D CAD program
 media-gfx/llgal 0.13.17-r2 0.13.18: Command-line static web gallery generator
 media-gfx/luminance-hdr 2.4.0: Luminance HDR is a graphical user interface that provides a workflow for HDR imaging
 media-gfx/lximage-qt 0.4.0 0.5.0: LXImage Image Viewer - GPicView replacement
@@ -12820,7 +12821,7 @@ media-gfx/opentoonz 1.1.2: An open-source full-featured 2D animation creation so
 media-gfx/openvdb 3.2.0 4.0.0 4.0.2: Libs for the efficient manipulation of volumetric data
 media-gfx/optipng 0.7.6 0.7.6-r1: Compress PNG files without affecting image quality
 media-gfx/panini 0.71.104: OpenGL-based panoramic image viewer
-media-gfx/pdf2svg 0.2.1 0.2.2: pdf2svg is based on poppler and cairo and can convert pdf to svg files
+media-gfx/pdf2svg 0.2.1 0.2.2 0.2.3: pdf2svg is based on poppler and cairo and can convert pdf to svg files
 media-gfx/pencil 0.4.4_beta: A Qt4 based animation and drawing program
 media-gfx/peps 2.0 2.0-r1: Preprocess and convert EPS files to bitmap with Ghostscript
 media-gfx/photivo 0_pre20121006 0_pre20121212 0_pre20131115 9999: Photo processor for RAW and Bitmap images
@@ -12851,7 +12852,7 @@ media-gfx/printrun 20150310-r1 20150310-r2 99999999: GUI interface for 3D printi
 media-gfx/propaganda 1.0 1.0-r1: Propaganda Volume 1-14 + E. Tiling images for your desktop
 media-gfx/psftools 1.0.7: Utilities for manipulation of console fonts in PSF format
 media-gfx/pstoedit 3.70-r1: Translate PostScript and PDF graphics into other vector formats
-media-gfx/pycam 0.5.1 0.6_pre20130416-r1 0.6.2: Open Source CAM - Toolpath Generation for 3-Axis CNC machining
+media-gfx/pycam 0.5.1 0.6.2: Open Source CAM - Toolpath Generation for 3-Axis CNC machining
 media-gfx/qingy-themes 20050816: Collection of qingy themes
 media-gfx/qiv 2.2.4 2.3.1: Quick Image Viewer
 media-gfx/qiviewer 0.5.0-r1: Lightweight image viewer, similar to eog or viewnior for Gnome
@@ -13215,7 +13216,7 @@ media-libs/opencollada 1.6.25 1.6.31 1.6.36 1.6.58: Stream based read/write libr
 media-libs/opencolorio 1.0.9-r2 1.0.9_p20170719: A color management framework for visual effects and animation
 media-libs/opencore-amr 0.1.3-r1 0.1.4 0.1.5: Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec
 media-libs/openctm 1.0.3: OpenCTM - the Open Compressed Triangle Mesh.
-media-libs/opencv 2.4.13 2.4.13-r3 3.1.0-r8 3.2.0-r2 3.2.0-r3 3.3.0-r2 3.3.0-r4: A collection of algorithms and sample code for various computer vision problems
+media-libs/opencv 2.4.13-r3 3.1.0-r8 3.2.0-r2 3.2.0-r3 3.3.0-r2 3.3.0-r4: A collection of algorithms and sample code for various computer vision problems
 media-libs/openexr 1.7.0 2.0.1-r1 2.1.0 2.2.0 2.2.0-r1 2.2.0-r2: ILM's OpenEXR high dynamic-range image file format libraries
 media-libs/openexr_ctl 1.0.1-r1 1.0.1-r2: OpenEXR CTL libraries
 media-libs/openglide 0.09_rc9_p20160913: A Glide to OpenGL wrapper
@@ -14007,7 +14008,7 @@ media-sound/timidity++ 2.14.0-r2: A handy MIDI to WAV converter with OSS and ALS
 media-sound/timidity-eawpatches 12-r5: Eric Welsh's GUS patches for TiMidity
 media-sound/timidity-freepats 20060219-r1: Free and open set of instrument patches
 media-sound/tk707 0.8-r1: An "7x7" type midi drum sequencer for Linux
-media-sound/tomahawk 0.9.0_pre20161029-r1 9999: Multi-source social music player
+media-sound/tomahawk 0.9.0_pre20161029-r1 0.9.0_pre20170808: Multi-source social music player
 media-sound/toolame 02l-r4: tooLAME - an optimized mpeg 1/2 layer 2 audio encoder
 media-sound/traverso 0.49.3: Professional Audio Tools for GNU/Linux
 media-sound/ttaenc 3.4.1-r1: True Audio Compressor Software
@@ -14623,7 +14624,7 @@ net-dns/https_dns_proxy 9999: A lightweight DNS-over-HTTPS proxy.
 net-dns/idnkit 1.0-r2: Toolkit for Internationalized Domain Names (IDN)
 net-dns/knot 2.4.5 2.5.6 2.6.1 2.6.1-r1: High-performance authoritative-only DNS server
 net-dns/ldns-utils 1.6.12 1.6.17 1.7.0: Set of utilities to simplify various dns(sec) tasks
-net-dns/libidn 1.33 1.33-r1: Internationalized Domain Names (IDN) implementation
+net-dns/libidn 1.33 1.33-r1 1.33-r2: Internationalized Domain Names (IDN) implementation
 net-dns/libidn2 2.0.4: An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
 net-dns/maradns 2.0.09-r2: A security-aware DNS server
 net-dns/mdns-repeater 20110921: Multicast DNS repeater
@@ -14677,7 +14678,7 @@ net-firewall/quicktables 2.3: a quick iptables script generator
 net-firewall/rtsp-conntrack 3.7: RTSP conntrack module for Netfilter
 net-firewall/sanewall 1.1.6-r2: iptables firewall generator (fork of firehol)
 net-firewall/shapecfg 36: configuration tool for setting traffic bandwidth parameters
-net-firewall/shorewall 5.1.7.2 5.1.8.1: A high-level tool for configuring Netfilter
+net-firewall/shorewall 5.1.7.2 5.1.8.1 5.1.9: A high-level tool for configuring Netfilter
 net-firewall/ufw 0.34_pre805-r2 0.35-r1: A program used to manage a netfilter firewall
 net-firewall/ufw-frontends 0.3.2-r5: Provides graphical frontend to ufw
 net-firewall/xtables-addons 2.13 2.14: iptables extensions not yet accepted in the main kernel
@@ -15131,7 +15132,7 @@ net-mail/qmailanalog 0.70-r1: collection of tools to help you analyze qmail's ac
 net-mail/qmhandle 1.2.0-r1 1.3.2: Qmail message queue tool
 net-mail/qmrtg 2.1-r1: A tool to analyze qmail activity with the goal to graph everything through MRTG
 net-mail/qpopper 4.1.0: A POP3 Server
-net-mail/qprint 1.0 1.1: MIME quoted-printable data encoding and decoding utility
+net-mail/qprint 1.1: MIME quoted-printable data encoding and decoding utility
 net-mail/qtools 0.56: Several utilities for use with qmail, typically as part of .qmail command processing
 net-mail/queue-fix 1.4-r2: Qmail Queue Repair Application with support for big-todo
 net-mail/queue-repair 0.9.0 0.9.0-r1: A toolkit for dealing with the qmail queue directory structure
@@ -15750,7 +15751,7 @@ net-vpn/tor 0.3.1.7 0.3.1.8 0.3.2.5_alpha: Anonymizing overlay network for TCP
 net-vpn/vpnc 0.5.3_p550: Free client for Cisco VPN routing software
 net-vpn/vpncwatch 1.8 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-vpn/vtun 3.0.3: Create tunnels over TCP/IP networks with shaping, encryption, and compression
-net-vpn/wireguard 0.0.20171122 9999: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
+net-vpn/wireguard 0.0.20171127 9999: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
 net-wireless/aircrack-ng 1.2_rc1-r1 1.2_rc4-r1 9999: WLAN tools for breaking 802.11 WEP/WPA keys
 net-wireless/airpwn 1.4-r2: Tool for generic packet injection on 802.11
 net-wireless/airsnort 0.2.7e: 802.11b Wireless Packet Sniffer/WEP Cracker
@@ -17173,7 +17174,7 @@ sys-apps/input-utils 1.2 1.3: Small collection of linux input layer utils
 sys-apps/install-xattr 0.5 0.5-r1 9999: Wrapper to coreutil's install to preserve Filesystem Extended Attributes
 sys-apps/intel-performance-counter-monitor 2.8 2.10: Intel Performance Counter Monitor - A better way to measure CPU utilization
 sys-apps/intel-sa-00075-tools 1.0: Tools from Intel to detect and mitigate the AMT/MEI vulnerability
-sys-apps/inxi 2.3.8_p20170114 2.3.34_p20170805 2.3.36_p20170816 2.3.37 2.3.43: The CLI inxi collects and prints hardware and system information
+sys-apps/inxi 2.3.8_p20170114 2.3.34_p20170805 2.3.36_p20170816 2.3.37 2.3.43 2.3.47: The CLI inxi collects and prints hardware and system information
 sys-apps/iotools 1.4 1.5: Simple commands to access hardware device registers
 sys-apps/ipmitool 1.8.14-r1 1.8.17-r1 1.8.18-r1: Utility for controlling IPMI enabled devices.
 sys-apps/ipmiutil 3.0.6 3.0.7: IPMI Management Utilities
@@ -17883,7 +17884,7 @@ sys-kernel/mips-sources 4.4.91 4.9.54 4.11.12 4.12.14: Linux-Mips GIT sources fo
 sys-kernel/pf-sources 4.4_p8 4.5_p4 4.8_p8 4.10_p3 4.11_p3 4.11_p4 4.13_p4: Linux kernel fork with new features (-ck patchset (BFS), BFQ, TuxOnIce and UKSM)
 sys-kernel/raspberrypi-image 4.1.17_p20160209 4.1.19_p20160309 9999: Raspberry PI boot loader and firmware
 sys-kernel/raspberrypi-sources 4.4.9999 4.9.9999 4.10.9999 4.11.9999 4.12.9999 4.13.9999 4.14.9999: Raspberry PI kernel sources
-sys-kernel/rt-sources 3.18.69_p75 4.1.42_p50 4.4.86_p99 4.9.47_p37 4.11.12_p13 4.11.12_p14 4.11.12_p16 4.13.7_p1 4.13.10_p3: Full Linux 4.13 kernel sources with the CONFIG_PREEMPT_RT patch
+sys-kernel/rt-sources 3.18.69_p75 3.18.82_p88 4.1.42_p50 4.1.46_p51 4.4.86_p99 4.4.97_p110 4.9.47_p37 4.9.61_p51 4.11.12_p16 4.13.7_p1 4.13.10_p3 4.13.13_p5: Full Linux 4.13 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.6.5.4-r1 0.6.5.11 0.7.3 9999: The Solaris Porting Layer provides many of the Solaris kernel APIs
 sys-kernel/tuxonice-sources 3.4.110 3.4.111 3.4.112 3.10.100 3.10.101 3.12.56 3.12.58 3.12.60 3.14.64 3.14.67 3.14.70 3.18.28 3.18.31 3.18.34 4.1.19 4.1.22 4.1.24 4.2.8 4.3.6 4.4.5 4.4.8 4.4.11 4.5.2 4.5.4: TuxOnIce + Gentoo patchset sources
 sys-kernel/vanilla-sources 3.2.95 3.16.50 4.1.46 4.4.102 4.9.65 4.14.2: Full sources for the Linux kernel
@@ -18797,7 +18798,7 @@ x11-libs/qwt 5.2.3-r2 6.1.3-r1: 2D plotting library for Qt4 and Qt5
 x11-libs/qwtplot3d 0.2.7-r2: Qt4/OpenGL-based 3D widget library for C++
 x11-libs/qwtpolar 1.1.1-r1: Library for displaying values on a polar coordinate system
 x11-libs/rep-gtk 0.90.8.1 0.90.8.3: GTK+/libglade/GNOME bindings for the librep Lisp environment
-x11-libs/scw 0.4.7 0.4.7-r1: A GTK+ widget set specifically designed for chat programs
+x11-libs/scw 0.4.7-r1: A GTK+ widget set specifically designed for chat programs
 x11-libs/snorenotify 0.7.0-r1: Multi platform Qt notification framework
 x11-libs/startup-notification 0.12-r1: Application startup notification and feedback library
 x11-libs/tslib 1.0-r3: Touchscreen Access Library
@@ -19135,7 +19136,7 @@ x11-plugins/cputnik 0.2.0: cputnik is a simple cpu monitor dockapp
 x11-plugins/docker 1.5 1.5-r1: Openbox app which acts as a system tray for KDE and GNOME2
 x11-plugins/enigmail 1.9.6.1-r1 1.9.8.1 1.9.8.2 1.9.8.3 9999: Mozilla extension to provide GPG support in mail clients
 x11-plugins/epplets 0.12 0.14: Base files for Enlightenment epplets and some epplets
-x11-plugins/fsviewer 0.2.6 0.2.6-r1 0.2.6-r2: A file system viewer for Window Maker
+x11-plugins/fsviewer 0.2.6-r2: A file system viewer for Window Maker
 x11-plugins/gkrellaclock 0.3.4-r1: Nice analog clock for GKrellM2
 x11-plugins/gkrellfire 0.4.2-r1: CPU load flames for GKrellM 2
 x11-plugins/gkrellflynn 0.8: A funny GKrellM2 load monitor (for Doom(tm) fans)
@@ -19210,6 +19211,7 @@ x11-plugins/wmacpi 2.3: DockApp ACPI status monitor for laptops
 x11-plugins/wmacpiload-ac 0.2.0 0.2.0-r1: WMACPILoad based dockapp to monitor CPU temp and battery time on ACPI kernels
 x11-plugins/wmacpimon 0.2.1: DockApp monitors the temperature and Speedstep features in ACPI-based systems
 x11-plugins/wmail 2.0-r4: Window Maker dock application showing incoming mail
+x11-plugins/wmamixer 0.2: ALSA mixer dockapp, fork of wmsmixer
 x11-plugins/wmapm 3.1-r1: WindowMaker DockApp: Battery/Power status monitor for laptops
 x11-plugins/wmapmload 0.3.4: dockapp that monitors your apm battery status
 x11-plugins/wmappl 0.71: Simple application launcher for the Window Maker dock
@@ -19218,7 +19220,7 @@ x11-plugins/wmbattery 2.50 2.51: A dockable app to report APM, ACPI, or SPIC bat
 x11-plugins/wmbiff 0.4.28 0.4.30 0.4.31: WMBiff is a dock applet for WindowMaker which can monitor up to 5 mailboxes
 x11-plugins/wmbinclock 0.5: a nifty little binary clock dockapp
 x11-plugins/wmbio 1.02: A Window Maker applet that shows your biorhythm
-x11-plugins/wmblob 1.0.3: a fancy but useless dockapp with moving blobs
+x11-plugins/wmblob 1.0.3 1.0.4: a fancy but useless dockapp with moving blobs
 x11-plugins/wmbluecpu 0.6: a blue dockapp to monitor CPU usage
 x11-plugins/wmbutton 0.7.0 0.7.1: a dockapp application that displays nine configurable buttons
 x11-plugins/wmcalc 0.4 0.5 0.6: A WindowMaker DockApp calculator
@@ -19263,7 +19265,7 @@ x11-plugins/wmlpq 0.2.1-r3: Windowmaker dockapp which monitors up to 5 printqueu
 x11-plugins/wmmaiload 2.2.1-r1 2.3.0 2.3.0-r1: dockapp that monitors one or more mailboxes
 x11-plugins/wmmand 1.3.2-r1: a dockable mandelbrot browser
 x11-plugins/wmmemfree 0.7-r2: a blue memory monitoring dockapp
-x11-plugins/wmmemload 0.1.6 0.1.6-r1 0.1.7 0.1.8: dockapp that displays memory and swap space usage
+x11-plugins/wmmemload 0.1.8: dockapp that displays memory and swap space usage
 x11-plugins/wmmemmon 1.0.2_pre2: a dockapp for monitoring memory and swap
 x11-plugins/wmmenu 1.3-r1: a popup menu of icons like in AfterStep, as a dockapp
 x11-plugins/wmmisc 1.1: a monitoring dockapp for system load, user amount, fork amount and processes
@@ -19274,7 +19276,7 @@ x11-plugins/wmmon+smp 1.0-r2: Dockapp CPU monitor resembling Xosview, support fo
 x11-plugins/wmmoonclock 1.27-r1 1.29: dockapp that shows lunar ephemeris to a high accuracy
 x11-plugins/wmmp 0.10.0-r1: A Window Maker dock app client for Music Player Daemon(media-sound/mpd)
 x11-plugins/wmmp3 0.12: Mp3 player dock app for WindowMaker; frontend to mpg123
-x11-plugins/wmmsg 1.0.1 1.0.1-r1 1.0.1-r2: universal visual notification dockapp
+x11-plugins/wmmsg 1.0.1-r2: universal visual notification dockapp
 x11-plugins/wmnd 0.4.16 0.4.17: WindowMaker Network Devices (dockapp)
 x11-plugins/wmnet 1.06-r1: WMnet is a dock.app network monitor
 x11-plugins/wmnetload 1.3-r4: Network interface monitor dockapp
@@ -19299,7 +19301,7 @@ x11-plugins/wmswallow 0.6.1-r1: A dock applet to make any application dockable
 x11-plugins/wmsysmon 0.7.7: a dockapp to monitor: CPU, Memory, Uptime, IRQs, Paging and Swap activity
 x11-plugins/wmsystemtray 1.3 1.4: a system tray dockapp with the ability to display more than just four tray icons
 x11-plugins/wmsystray 0.1.1: Window Maker dock app that provides a system tray for GNOME/KDE applications
-x11-plugins/wmtime 1.0_beta2_p9 1.2 1.4: applet which displays the date and time in a dockable tile
+x11-plugins/wmtime 1.4: applet which displays the date and time in a dockable tile
 x11-plugins/wmtimer 2.92-r2: Dockable clock which can run in alarm, countdown timer or chronograph mode
 x11-plugins/wmtop 0.85: dockapp for monitoring the top three processes using cpu or memory
 x11-plugins/wmtz 0.7: dockapp that shows the time in multiple timezones

@@ -2,11 +2,11 @@ DEFINED_PHASES=compile install unpack
 DEPEND=>=net-misc/wget-1.9-r2 >=media-gfx/imagemagick-5.5.7.15 x11-libs/libX11 x11-libs/libXext x11-libs/libXpm x11-proto/xproto x11-proto/xextproto >=sys-apps/sed-4.1.5-r1
 DESCRIPTION=wmGrabImage grabs an image from the WWW and displays it
 EAPI=0
-HOMEPAGE=http://dockapps.windowmaker.org/file.php/id/12
+HOMEPAGE=http://www.dockapps.net/wmgrabimage
 KEYWORDS=~amd64 ppc x86
 LICENSE=GPL-2
 RDEPEND=>=net-misc/wget-1.9-r2 >=media-gfx/imagemagick-5.5.7.15 x11-libs/libX11 x11-libs/libXext x11-libs/libXpm
 SLOT=0
-SRC_URI=http://dockapps.windowmaker.org/files/12/19/wmGrabImage-0.72.tgz
+SRC_URI=http://www.dockapps.net/download/wmGrabImage-0.72.tgz
 _eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=123358af224af99bfdab1628cd0ce268
+_md5_=f3bade43e38a3eee2f197fc88f3c29c8

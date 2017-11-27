@@ -7,6 +7,6 @@ KEYWORDS=amd64 ppc ppc64 ~sparc x86
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/glib-2 x11-libs/gtk+:2 x11-libs/libXpm x11-libs/libXext x11-libs/libX11
 SLOT=0
-SRC_URI=https://github.com/bbidulock/wmtimer/releases/download/vwmtimer/wmtimer-2.92.tar.gz
+SRC_URI=https://github.com/bbidulock/wmtimer/releases/download/v2.92/wmtimer-2.92.tar.gz
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=1ef00c71f120e47fcc8736ac0d01e8d2
+_md5_=339519f9dadba9dc4d1b9b4391131842
