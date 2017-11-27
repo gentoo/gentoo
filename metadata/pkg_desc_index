@@ -489,7 +489,7 @@ app-cdr/uif2iso 0.1.7c 0.1.7c-r1: Convert CD images from uif (MagicISO) to iso
 app-cdr/xbiso 0.6.1 0.6.1-r1 0.6.1-r2: Xbox xdvdfs ISO extraction utility
 app-cdr/xcdroast 0.98_alpha16-r3: Lightweight cdrtools front-end for CD and DVD writing
 app-cdr/xdvdfs-tools 2.1-r1: Tools for manipulating Xbox ISO images
-app-cdr/xfburn 0.5.4: GTK+ based CD and DVD burning application
+app-cdr/xfburn 0.5.4 0.5.4-r1: GTK+ based CD and DVD burning application
 app-crypt/WiRouterKeyRec 1.1.2: Recovery tool for wpa passphrase
 app-crypt/acme 0.18.2 0.19.0 9999: An implementation of the ACME protocol
 app-crypt/acme-client 0.1.16: a secure ACME client
