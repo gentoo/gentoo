@@ -1,0 +1,26 @@
+From 4709e64fef29ca8ddd5b0878e3126640bd1480c2 Mon Sep 17 00:00:00 2001
+From: =?utf8?q?Tim=20R=C3=BChsen?= <tim.ruehsen@gmx.de>
+Date: Wed, 4 Oct 2017 15:02:49 +0200
+Subject: [PATCH] * src/Makefile.am: Fix rule for parallel builds
+
+---
+ src/Makefile.am | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 6832c20..218d52e 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -35,7 +35,8 @@ libidn_cmd_la_SOURCES =  idn.ggo idn_cmd.c idn_cmd.h
+ libidn_cmd_la_LIBADD = ../gl/libgnu.la
+ libidn_cmd_la_CFLAGS =
+ 
+-idn_cmd.c idn_cmd.h: idn.ggo Makefile.am
++# pattern rule (%) needed for parallel make (-j)
++idn_cmd%c idn_cmd%h: idn.ggo Makefile.am
+ 	gengetopt --unamed-opts --no-handle-version --no-handle-help \
+ 		--set-package="idn" \
+ 		--input $^ --file-name idn_cmd
+-- 
+1.9.1
+
