@@ -1,12 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils
+EAPI=6
 
 DESCRIPTION="pdf2svg is based on poppler and cairo and can convert pdf to svg files"
 HOMEPAGE="http://www.cityinthesky.co.uk/opensource/pdf2svg/ https://github.com/dawbarton/pdf2svg/"
-SRC_URI="http://www.cityinthesky.co.uk/wp-content/uploads/2013/10/${P}.tar.gz"
+SRC_URI="https://github.com/dawbarton/pdf2svg/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -19,10 +18,12 @@ RDEPEND=">=app-text/poppler-0.12.3-r3:=[cairo]
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-DOCS="AUTHORS" # ChangeLog is only for <=0.2.1 and README.md doesn't have anything useful for usage
+DOCS="AUTHORS" # ChangeLog is only for <=0.2.1
+# and README.md doesn't have anything useful for usage
 
 src_prepare() {
 	sed -i \
 		-e 's:#include <stdio.h>:#include <stdio.h>\n#include <stdlib.h>:' \
 		${PN}.c || die
+	default
 }
