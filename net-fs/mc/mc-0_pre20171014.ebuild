@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit golang-build golang-vcs-snapshot
+inherit golang-build golang-vcs-snapshot bash-completion-r1
 
 EGO_PN="github.com/minio/mc"
 VERSION="2017-10-14T00-51-16Z"
@@ -33,7 +33,6 @@ src_prepare() {
 src_compile() {
 	pushd src/${EGO_PN} || die
 	MC_RELEASE="${VERSION}"
-	go run buildscripts/gen-ldflags.go
 	GOPATH="${S}" go build --ldflags "$(go run buildscripts/gen-ldflags.go)" -o ${PN} || die
 	popd || die
 }
@@ -42,5 +41,6 @@ src_install() {
 	pushd src/${EGO_PN} || die
 	dodoc -r README.md CONTRIBUTING.md docs
 	dobin mc
+	newbashcomp autocomplete/bash_autocomplete ${PN}
 	popd  || die
 }
