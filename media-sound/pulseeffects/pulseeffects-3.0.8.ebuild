@@ -39,6 +39,7 @@ DEPEND="
 	>=media-libs/gst-plugins-good-1.12.0:1.0
 	>=media-libs/gst-plugins-bad-1.12.0:1.0
 	>=media-plugins/gst-plugins-ladspa-1.12.0:1.0
+	>=media-plugins/gst-plugins-pulse-1.12.0:1.0
 "
 RDEPEND="${DEPEND}
 	media-sound/pulseaudio[equalizer]
@@ -51,6 +52,9 @@ pkg_preinst(){
 pkg_postinst(){
 	gnome2_gconf_install
 	gnome2_schemas_update
+	elog "You must enable the equalizer plugin for pulse audio if you wish to use
+	this application as an equalizer.  See the wiki for details.
+	https://wiki.gentoo.org/wiki/PulseAudio#Equalizer"
 }
 
 pkg_postrm(){
