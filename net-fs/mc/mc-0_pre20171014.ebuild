@@ -4,20 +4,22 @@
 EAPI=6
 inherit golang-build golang-vcs-snapshot
 
-EGO_PN="github.com/minio/minio"
-VERSION="2017-09-29T19-16-56Z"
-EGIT_COMMIT="60cc6184d253efee4a3120683517028342229e21"
+EGO_PN="github.com/minio/mc"
+VERSION="2017-10-14T00-51-16Z"
+EGIT_COMMIT="785e14a725357b39e22b74483cd202e7effa6195"
 ARCHIVE_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
 
-DESCRIPTION="An Amazon S3 compatible object storage server"
-HOMEPAGE="https://github.com/minio/minio"
+DESCRIPTION="Minio client provides alternatives for ls, cat on cloud storage and filesystems"
+HOMEPAGE="https://github.com/minio/mc"
 SRC_URI="${ARCHIVE_URI}"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE=""
 
 RESTRICT="test"
+
+RDEPEND="!!app-misc/mc"
 
 src_prepare() {
 	default
@@ -30,7 +32,7 @@ src_prepare() {
 
 src_compile() {
 	pushd src/${EGO_PN} || die
-	MINIO_RELEASE="${VERSION}"
+	MC_RELEASE="${VERSION}"
 	go run buildscripts/gen-ldflags.go
 	GOPATH="${S}" go build --ldflags "$(go run buildscripts/gen-ldflags.go)" -o ${PN} || die
 	popd || die
@@ -38,7 +40,7 @@ src_compile() {
 
 src_install() {
 	pushd src/${EGO_PN} || die
-	dodoc -r README.md CONTRIBUTING.md MAINTAINERS.md docs
-	dobin minio
+	dodoc -r README.md CONTRIBUTING.md docs
+	dobin mc
 	popd  || die
 }
