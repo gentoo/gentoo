@@ -12751,7 +12751,7 @@ media-gfx/graphite2 1.3.10: Library providing rendering capabilities for complex
 media-gfx/graphviz 2.38.0-r1 2.40.1: Open Source Graph Visualization Software
 media-gfx/greycstoration 2.9-r2: Image regularization algorithm for denoising, inpainting and resizing
 media-gfx/grub-splashes 20091109: Collection of grub splashes
-media-gfx/gscan2pdf 1.8.6 1.8.7 1.8.8: Scan documents, perform OCR, produce PDFs and DjVus
+media-gfx/gscan2pdf 1.8.8 1.8.9: Scan documents, perform OCR, produce PDFs and DjVus
 media-gfx/gthumb 3.4.4.1 3.4.5: Image viewer and browser for Gnome
 media-gfx/gtkam 1.0: A frontend for gPhoto 2
 media-gfx/gtkimageview 1.6.4: A simple image viewer widget for GTK
@@ -17542,7 +17542,7 @@ sys-cluster/gasnet 1.26.4 1.26.4-r1 1.28.0 1.28.2 1.30.0: Networking middleware 
 sys-cluster/gearmand 0.34-r1: Generic framework to farm out work to other machines
 sys-cluster/glusterfs 3.6.5 3.12.3: GlusterFS is a powerful network/cluster filesystem
 sys-cluster/heartbeat 3.0.5-r3 3.0.6: Heartbeat high availability cluster manager
-sys-cluster/heat 8.0.4 8.0.5 9.0.0 9.0.1 2017.1.9999 2017.2.9999: A CloudFormation-compatible openstack-native cloud orchistration engine.
+sys-cluster/heat 8.0.5 9.0.1 2017.1.9999 2017.2.9999: A CloudFormation-compatible openstack-native cloud orchistration engine.
 sys-cluster/hpl 2.0-r3: A Portable Implementation of the High-Performance Linpack Benchmark for Distributed-Memory Computers
 sys-cluster/hpx 0.9.8 0.9.9 0.9.10 0.9.99 1.0.0 9999: C++ runtime system for parallel and distributed applications
 sys-cluster/ipvsadm 1.21-r1 1.24 1.26-r2 1.27-r1 1.28: utility to administer the IP virtual server services
@@ -17727,7 +17727,7 @@ sys-freebsd/freebsd-pf 8.2 9.1 10.3 11.0 11.1: FreeBSD's base system libraries
 sys-freebsd/freebsd-rescue 8.2 9.1 10.3 11.0 11.1: FreeBSD's rescue binaries
 sys-freebsd/freebsd-sbin 8.2-r1 9.1 10.3 11.0 11.1: FreeBSD sbin utils
 sys-freebsd/freebsd-share 8.2 9.1 10.3 11.0 11.1: FreeBSD shared tools/files
-sys-freebsd/freebsd-sources 8.2-r2 9.1-r3 9.1-r9 10.3-r6 11.0-r1 11.1_p1: FreeBSD kernel sources
+sys-freebsd/freebsd-sources 8.2-r2 9.1-r3 9.1-r9 10.3-r6 11.0-r1 11.1_p2: FreeBSD kernel sources
 sys-freebsd/freebsd-ubin 8.2-r1 9.1-r2 9.1-r3 10.3-r2 11.0-r1 11.1: FreeBSD's base system source for /usr/bin
 sys-freebsd/freebsd-usbin 8.2-r2 9.1-r1 10.3-r1 11.0-r1 11.1: FreeBSD /usr/sbin tools
 sys-freebsd/ubin-wrappers 0: /usr/bin wrapper scripts for FreeBSD script compatibility
@@ -19204,7 +19204,7 @@ x11-plugins/wmDownload 0.1.2a-r2: dockapp that displays how much data you've rec
 x11-plugins/wmMatrix 0.2-r1: WMaker DockApp: Slightly modified version of Jamie Zawinski's xmatrix screenhack
 x11-plugins/wmSMPmon 3.1-r1: SMP system monitor dockapp
 x11-plugins/wmSpaceWeather 1.04_p19: dockapp showing weather at geosynchronous orbit
-x11-plugins/wmSun 1.03-r1 1.05: dockapp which displays the rise/set time of the sun
+x11-plugins/wmSun 1.05: dockapp which displays the rise/set time of the sun
 x11-plugins/wmXName 0.1: dock-app showing you status of your XName hosted zones
 x11-plugins/wmacpi 2.3: DockApp ACPI status monitor for laptops
 x11-plugins/wmacpiload-ac 0.2.0 0.2.0-r1: WMACPILoad based dockapp to monitor CPU temp and battery time on ACPI kernels
@@ -19251,7 +19251,7 @@ x11-plugins/wmgtemp 1.0-r1 1.2: CPU and SYS temperature dockapp
 x11-plugins/wmhdplop 0.9.9-r2 0.9.10: a dockapp for monitoring disk activities with fancy visuals
 x11-plugins/wmifinfo 0.09 0.10: a dockapp for monitoring network interfaces
 x11-plugins/wmifs 1.8: Network monitoring dockapp
-x11-plugins/wminet 3.0.0 3.0.0-r1: dockapp for monitoring internet connections to and from your computer
+x11-plugins/wminet 3.0.0-r1: dockapp for monitoring internet connections to and from your computer
 x11-plugins/wmitime 0.5: Overglorified clock dockapp w/time, date, and internet time
 x11-plugins/wmix 3.1-r1 3.2: Dockapp mixer for OSS or ALSA
 x11-plugins/wmjsql 0.5: MySQL monitor dockapp
@@ -19283,7 +19283,7 @@ x11-plugins/wmpager 1.2-r1: A simple pager docklet for the WindowMaker window ma
 x11-plugins/wmpasman 0.8.5.3 2.0: Password storage/retrieval in a dockapp
 x11-plugins/wmpeople 1.3: Nice, highly configurable WMaker DockApp that monitors your mail boxes
 x11-plugins/wmpiki 0.2.1: Dockapp which checks and displays small leds for indicate hosts activity
-x11-plugins/wmpinboard 1.0: Window Maker dock applet resembling a miniature pinboard
+x11-plugins/wmpinboard 1.0 1.0.1: Window Maker dock applet resembling a miniature pinboard
 x11-plugins/wmping 0.2.1: a simple host status monitoring dockapp
 x11-plugins/wmpop3 0.5.6a-r1: dockapp for checking pop3 accounts
 x11-plugins/wmpop3lb 2.4.2-r2: dockapp for checking up to 7 pop3 accounts
