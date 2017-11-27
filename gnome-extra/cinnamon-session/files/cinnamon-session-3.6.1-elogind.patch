@@ -53,7 +53,7 @@ index 38db5a3..8dafc6a 100644
 +have_elogind=no
 +PKG_CHECK_MODULES(ELOGIND, [libelogind], [have_elogind=yes], [have_elogind=no])
 +if test x$have_elogind = xyes; then
-+        AC_DEFINE(HAVE_ELOGIND, 1, [Define if logind is supported])
++        AC_DEFINE(HAVE_ELOGIND, 1, [Define if elogind is supported])
 +fi
 +
  AC_SUBST(LOGIND_CFLAGS)
