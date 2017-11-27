@@ -2915,7 +2915,7 @@ dev-cpp/tbb 4.3.20150611 4.4.20160803 2017.20161128 2017.20170226: High level ab
 dev-cpp/tclap 1.2.1: Simple templatized C++ library for parsing command line arguments
 dev-cpp/threadpool 0.2.5-r1: A cross-platform C++ thread pool library (built on top of Boost)
 dev-cpp/tree 2.65-r1 2.81: An STL-like tree class
-dev-cpp/waylandpp 0.1.0 0.1.2 0.1.4 9999: Wayland C++ bindings
+dev-cpp/waylandpp 0.1.0 0.1.2 0.1.4 0.1.5 9999: Wayland C++ bindings
 dev-cpp/websocketpp 0.7.0: C++/Boost Asio based websocket client/server library
 dev-cpp/xsd 4.0.0: An open-source, cross-platform W3C XML Schema to C++ data binding compiler
 dev-cpp/yaml-cpp 0.5.3 0.5.3-r1: YAML parser and emitter in C++
@@ -15486,7 +15486,7 @@ net-misc/telnet-bsd 1.2-r1: Telnet and telnetd ported from OpenBSD with IPv6 sup
 net-misc/termpkg 3.3.9.1-r2: Termpkg, the Poor Man's Terminal Server
 net-misc/throttle 1.2: Bandwidth limiting pipe
 net-misc/tiers 1.1: Random network topography generator
-net-misc/tigervnc 1.7.1-r2 1.7.1-r4 1.8.0: Remote desktop viewer display system
+net-misc/tigervnc 1.8.0: Remote desktop viewer display system
 net-misc/tipcutils 2.0.0 2.0.3: Utilities for TIPC (Transparent Inter-Process Communication)
 net-misc/tlsdate 0.0.13: Update local time over HTTPS
 net-misc/tn5250 0.17.4-r1 0.17.4-r2: IBM AS/400 telnet client which emulates 5250 terminals/printers
@@ -19246,7 +19246,7 @@ x11-plugins/wmfishtime 1.24-r1 1.24-r2: A fun clock applet for your desktop feat
 x11-plugins/wmforkplop 0.9.3 0.9.3-r1: monitors the forking activity of the kernel and most active processes
 x11-plugins/wmfortune 0.241: a dockapp showing fortune-mod messages
 x11-plugins/wmfrog 0.2.0-r1 0.3.1: a weather application, it shows the weather in a graphical way
-x11-plugins/wmfsm 0.34-r1 0.34-r2 0.36: dockapp for monitoring filesystem usage
+x11-plugins/wmfsm 0.36: dockapp for monitoring filesystem usage
 x11-plugins/wmget 0.6.0 0.6.1: a libcurl based dockapp for automated downloads
 x11-plugins/wmgrabimage 0.72-r1: wmGrabImage grabs an image from the WWW and displays it
 x11-plugins/wmgtemp 1.0-r1 1.2: CPU and SYS temperature dockapp
