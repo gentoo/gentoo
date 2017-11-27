@@ -6,6 +6,7 @@
 # qt@gentoo.org
 # @AUTHOR:
 # Davide Pesavento <pesa@gentoo.org>
+# @SUPPORTED_EAPIS: 6
 # @BLURB: Eclass for Qt5 split ebuilds.
 # @DESCRIPTION:
 # This eclass contains various functions that are used when building Qt5.
@@ -21,9 +22,10 @@ case ${EAPI} in
 esac
 
 # @ECLASS-VARIABLE: QT5_MODULE
+# @PRE_INHERIT
 # @DESCRIPTION:
 # The upstream name of the module this package belongs to. Used for
-# SRC_URI and EGIT_REPO_URI. Must be defined before inheriting the eclass.
+# SRC_URI and EGIT_REPO_URI. Must be set before inheriting the eclass.
 : ${QT5_MODULE:=${PN}}
 
 # @ECLASS-VARIABLE: QT5_TARGET_SUBDIRS
@@ -92,6 +94,7 @@ EGIT_REPO_URI=(
 [[ ${QT5_BUILD_TYPE} == live ]] && inherit git-r3
 
 # @ECLASS-VARIABLE: QT5_BUILD_DIR
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # Build directory for out-of-source builds.
 case ${QT5_BUILD_TYPE} in
