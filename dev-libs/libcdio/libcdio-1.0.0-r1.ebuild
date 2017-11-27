@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
 inherit autotools libtool ltprune multilib-minimal
 
 DESCRIPTION="A library to encapsulate CD-ROM reading and control"
@@ -33,7 +34,10 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/cdio/version.h
 )
 
-PATCHES=( "${FILESDIR}/${P}-version.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-version.patch"
+	"${FILESDIR}/${P}-cddb.patch"
+)
 
 src_prepare() {
 	default
