@@ -8,7 +8,7 @@ JAVA_PKG_IUSE="doc source"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Apache MINA Project"
-HOMEPAGE="http://mina.apache.org/"
+HOMEPAGE="https://mina.apache.org/"
 SRC_URI="mirror://gentoo/${P}-sources.jar -> ${P}.jar"
 LICENSE="Apache-2.0"
 SLOT="0"
