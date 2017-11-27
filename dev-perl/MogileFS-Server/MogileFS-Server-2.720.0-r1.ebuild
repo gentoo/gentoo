@@ -28,6 +28,7 @@ RDEPEND="dev-perl/Net-Netmask
 		>=dev-perl/MogileFS-Client-1.170.0
 		>=dev-perl/MogileFS-Utils-2.280.0
 		dev-perl/Cache-Memcached
+		dev-perl/DBI
 		mysql? ( dev-perl/DBD-mysql )
 		postgres? ( dev-perl/DBD-Pg )
 		sqlite? ( dev-perl/DBD-SQLite )"
