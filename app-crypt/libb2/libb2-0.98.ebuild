@@ -13,7 +13,7 @@ SRC_URI="https://github.com/BLAKE2/libb2/archive/${GITHASH}.tar.gz -> ${P}.tar.g
 LICENSE="CC0-1.0"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64"
-IUSE="static"
+IUSE="static native-cflags"
 
 DEPEND=""
 RDEPEND="${DEPEND}"
@@ -28,12 +28,14 @@ src_prepare() {
 }
 
 src_configure() {
-	econf $(use_enable static)
+	econf \
+		$(use_enable static) \
+		$(use_enable native-cflags native)
 }
 
 src_compile() {
-	# respect our CFLAGS
-	emake CFLAGS="${CFLAGS}"
+	# respect our CFLAGS when native-cflags is not in effect
+	emake $(use native-cflags && echo no)CFLAGS="${CFLAGS}"
 }
 
 src_install() {
