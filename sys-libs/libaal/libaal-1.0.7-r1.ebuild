@@ -1,36 +1,39 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI="6"
 
-inherit toolchain-funcs eutils
+inherit toolchain-funcs
 
 DESCRIPTION="library required by reiser4progs"
 HOMEPAGE="https://sourceforge.net/projects/reiser4/"
 SRC_URI="mirror://sourceforge/reiser4/${P}.tar.gz"
 
 LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS="amd64 arm ppc ppc64 -sparc x86"
+SLOT="0/7"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 -sparc ~x86"
 IUSE="static-libs"
 
 DEPEND="virtual/os-headers"
 
 src_prepare() {
+	default
+
 	# remove stupid CFLAG hardcodes
 	sed -i \
 		-e "/GENERIC_CFLAGS/s:-O3::" \
 		-e "/^CFLAGS=/s:\"\":\"${CFLAGS}\":" \
-		configure || die "sed"
-	printf '#!/bin/sh\n:\n' > run-ldconfig
-	epatch "${FILESDIR}"/${PN}-1.0.6-glibc26.patch
+		configure || die
+	printf '#!/bin/sh\n:\n' > run-ldconfig || die
 }
 
 src_configure() {
-	econf \
-		--enable-libminimal \
-		--enable-memory-manager \
+	local myeconfargs=(
+		--enable-libminimal
+		--enable-memory-manager
 		$(use_enable static-libs static)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
