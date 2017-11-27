@@ -10738,7 +10738,7 @@ dev-vcs/git-pimp 0.8: Code review or pull requests as patch email series
 dev-vcs/git-remote-hg 0.2 0.3: Semi-official Mercurial bridge from Git project
 dev-vcs/git-sh 1.3-r1: A customized bash environment suitable for git work
 dev-vcs/git-spindle 3.3 3.3-r1: Git subcommands for interacting with central services
-dev-vcs/git-tools 2015_p20151225-r2 2015_p20160201 2015_p20160201-r1: Assorted git-related scripts
+dev-vcs/git-tools 2015_p20151225-r2 2015_p20160201 2015_p20160201-r1 2017.10: Assorted git-related scripts
 dev-vcs/gitg 3.22.0 3.24.0 3.26.0: git repository viewer for GNOME
 dev-vcs/github-pages-publish 0.1.2: A script that commits files from a directory to Github Pages
 dev-vcs/gitinspector 0.4.4: Statistical analysis tool for git repositories
