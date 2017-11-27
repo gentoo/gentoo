@@ -17831,7 +17831,7 @@ sys-fs/quota 4.03 4.04 4.04-r1: Linux quota tools
 sys-fs/quotatool 1.4.6 1.4.13 1.6.2: command-line utility for filesystem quotas
 sys-fs/rar2fs 1.25.2 1.26.0: A FUSE based filesystem that can mount one or multiple RAR archive(s)
 sys-fs/rarfs 0.1.1-r1: Fuse module to mount uncompressed RAR archives
-sys-fs/reiser4progs 1.1.0: reiser4progs: mkfs, fsck, etc...
+sys-fs/reiser4progs 1.1.0 1.2.0: reiser4progs: mkfs, fsck, etc...
 sys-fs/reiserfs-defrag 0.2.2: Small defragmentation tool for reiserfs
 sys-fs/reiserfsprogs 3.6.24 3.6.25 3.6.26 3.6.27: Reiserfs Utilities
 sys-fs/safecopy 1.7: Data recovery tool to fault-tolerantly extract data from damaged (io-errors) devices or files
@@ -17912,7 +17912,7 @@ sys-libs/kpmcore 3.2.1: Library for managing partitions
 sys-libs/ldb 1.1.26 1.1.29-r1 1.1.31 1.2.2 1.3.0: An LDAP-like embedded database
 sys-libs/lib-compat 1.4.2-r1 1.5: Compatibility C++ library for very old programs
 sys-libs/lib-compat-loki 0.2-r1: Compatibility libc6 libraries for Loki games
-sys-libs/libaal 1.0.6 1.0.7: library required by reiser4progs
+sys-libs/libaal 1.0.6 1.0.7 1.0.7-r1: library required by reiser4progs
 sys-libs/libapparmor 2.11.1: Library to support AppArmor userspace utilities
 sys-libs/libavc1394 0.5.3 0.5.4 0.5.4-r1: library for the 1394 Trade Association AV/C (Audio/Video Control) Digital Interface Command Set
 sys-libs/libblockdev 2.13 2.14: A library for manipulating block devices
