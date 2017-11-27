@@ -22,6 +22,11 @@ DEPEND="${RDEPEND}"
 S=${WORKDIR}/${PN}
 DOCS=( README )
 
+src_unpack() {
+	unpack ${A}
+	S="$(pwd)/${PN}-${PV/_/-}"
+}
+
 src_prepare() {
 	multilib_copy_sources
 }
