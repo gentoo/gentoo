@@ -52,9 +52,6 @@ pkg_preinst(){
 pkg_postinst(){
 	gnome2_gconf_install
 	gnome2_schemas_update
-	elog "You must enable the equalizer plugin for pulse audio if you wish to use
-	this application as an equalizer.  See the wiki for details.
-	https://wiki.gentoo.org/wiki/PulseAudio#Equalizer"
 }
 
 pkg_postrm(){
