@@ -20,13 +20,13 @@ RDEPEND="
 		cddb? ( >=media-libs/libcddb-1.3.2 )
 	)
 	>=virtual/libiconv-0-r1[${MULTILIB_USEDEP}]
-	abi_x86_32? ( !<=app-emulation/emul-linux-x86-medialibs-20130224-r10
-		!app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)] )"
+"
 DEPEND="${RDEPEND}
 	sys-apps/sed
 	sys-devel/gettext
 	virtual/pkgconfig
-	test? ( dev-lang/perl )"
+	test? ( dev-lang/perl )
+"
 
 DOCS=( AUTHORS ChangeLog NEWS README* THANKS TODO )
 
