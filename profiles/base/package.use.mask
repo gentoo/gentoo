@@ -12,7 +12,7 @@
 =media-libs/freeverb3-3.1.2_pre20151102-r1 jack
 
 # Andreas Sturmlechner <asturm@gentoo.org> (29 Oct 2017)
-# Depends on deprecated x11-libs/qscintilla[qt4]/qt4, bug #634976
+# Depends on deprecated x11-libs/qscintilla[qt4]/qt4, bug #634972
 net-analyzer/linkchecker X
 
 # Andreas Sturmlechner <asturm@gentoo.org> (16 Oct 2017)
