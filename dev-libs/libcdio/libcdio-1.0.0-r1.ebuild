@@ -27,7 +27,8 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig
 	test? ( dev-lang/perl )"
-DOCS="AUTHORS ChangeLog NEWS README* THANKS TODO"
+
+DOCS=( AUTHORS ChangeLog NEWS README* THANKS TODO )
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/cdio/cdio_config.h
