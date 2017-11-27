@@ -10325,7 +10325,7 @@ dev-util/appdata-tools 0.1.7 0.1.8-r1: CLI designed to validate AppData descript
 dev-util/appinventor 1.1: MIT App Inventor Setup package
 dev-util/archdiff 1.1.6: Utility to view the differences between two source code archives
 dev-util/argouml 0.34: Modelling tool that helps you do your design using UML
-dev-util/artifactory-bin 4.16.0-r1 4.16.1 5.3.2 5.4.4 5.4.6 5.5.1: The world's most advanced repository manager for maven
+dev-util/artifactory-bin 4.16.0-r1 4.16.1 5.3.2 5.4.4 5.4.6 5.5.1 5.5.2 5.6.2: The world's most advanced repository manager for maven
 dev-util/aruba 0.5.4-r1 0.6.2 0.6.2-r1 0.7.4 0.8.1: Cucumber steps for driving out command line applications
 dev-util/astyle 2.04-r1 2.05.1 2.06 3.0 3.0.1: Artistic Style is a re-indenter and reformatter for C++, C and Java source code
 dev-util/atomic-install 0.1.1 9999: A library and tool to atomically install sets of files
@@ -11738,7 +11738,7 @@ gnome-extra/activity-log-manager 0.9.7-r1: GUI which lets you easily control wha
 gnome-extra/assogiate 0.2.1-r1: assoGiate is an editor of the file types database for GNOME
 gnome-extra/cameramonitor 0.3.2-r2: Local Webcam monitoring in system tray
 gnome-extra/chrome-gnome-shell 8-r1 8.1 9: GNOME Shell integration for Chrome/Chromium, Firefox, Vivaldi, Opera browsers
-gnome-extra/cinnamon 3.0.7-r2 3.2.0-r2 3.2.6-r1 3.2.7-r1 3.4.2-r1 3.4.6 3.6.6: A fork of GNOME Shell with layout similar to GNOME 2
+gnome-extra/cinnamon 3.0.7-r2 3.2.0-r2 3.2.6-r1 3.2.7-r1 3.4.2-r1 3.4.6 3.6.6-r2: A fork of GNOME Shell with layout similar to GNOME 2
 gnome-extra/cinnamon-control-center 2.8.1 3.0.1 3.2.0 3.2.1 3.6.5: Cinnamons's main interface to configure various aspects of the desktop
 gnome-extra/cinnamon-desktop 2.8.1 3.0.2 3.2.0 3.2.4 3.4.2 3.6.2: A collection of libraries and utilites used by Cinnamon
 gnome-extra/cinnamon-menus 2.8.0 3.0.2 3.2.0 3.4.0 3.6.0: Cinnamon's library for the Desktop Menu fd.o specification
