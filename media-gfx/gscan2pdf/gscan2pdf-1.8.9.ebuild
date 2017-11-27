@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils perl-module
+inherit perl-module
 
 DESCRIPTION="Scan documents, perform OCR, produce PDFs and DjVus"
 HOMEPAGE="http://gscan2pdf.sourceforge.net/"
