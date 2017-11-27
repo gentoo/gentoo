@@ -102,9 +102,8 @@ EXPORT_FUNCTIONS pkg_setup pkg_nofetch src_unpack src_prepare src_configure src_
 # and install Qt compressed help files with -DBUILD_QCH=ON when USE=doc.
 if [[ ${CATEGORY} = kde-frameworks ]]; then
 	: ${KDE_QTHELP:=true}
-else
-	: ${KDE_QTHELP:=false}
 fi
+: ${KDE_QTHELP:=false}
 
 # @ECLASS-VARIABLE: KDE_TESTPATTERN
 # @DESCRIPTION:
@@ -127,9 +126,8 @@ fi
 # fix and creates ${T}/${P}-tests-optional.patch to refine and submit upstream.
 if [[ ${CATEGORY} = kde-frameworks ]]; then
 	: ${KDE_TEST:=true}
-else
-	: ${KDE_TEST:=false}
 fi
+: ${KDE_TEST:=false}
 
 # @ECLASS-VARIABLE: KDE_SELINUX_MODULE
 # @DESCRIPTION:
