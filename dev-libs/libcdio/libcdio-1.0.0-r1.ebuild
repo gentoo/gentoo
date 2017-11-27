@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
 inherit autotools libtool ltprune multilib-minimal
 
 DESCRIPTION="A library to encapsulate CD-ROM reading and control"
@@ -19,21 +20,25 @@ RDEPEND="
 		cddb? ( >=media-libs/libcddb-1.3.2 )
 	)
 	>=virtual/libiconv-0-r1[${MULTILIB_USEDEP}]
-	abi_x86_32? ( !<=app-emulation/emul-linux-x86-medialibs-20130224-r10
-		!app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)] )"
+"
 DEPEND="${RDEPEND}
 	sys-apps/sed
 	sys-devel/gettext
 	virtual/pkgconfig
-	test? ( dev-lang/perl )"
-DOCS="AUTHORS ChangeLog NEWS README* THANKS TODO"
+	test? ( dev-lang/perl )
+"
+
+DOCS=( AUTHORS ChangeLog NEWS README* THANKS TODO )
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/cdio/cdio_config.h
 	/usr/include/cdio/version.h
 )
 
-PATCHES=( "${FILESDIR}/${P}-version.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-version.patch"
+	"${FILESDIR}/${P}-cddb.patch"
+)
 
 src_prepare() {
 	default

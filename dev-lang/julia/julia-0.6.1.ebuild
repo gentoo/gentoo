@@ -48,8 +48,10 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-fix_build_system.patch
+	"${FILESDIR}"/${PN}-0.6.0-fix_build_system.patch
 )
+
+S="${WORKDIR}/julia"
 
 src_prepare() {
 	mv "${WORKDIR}"/bundled/UnicodeData.txt doc || die

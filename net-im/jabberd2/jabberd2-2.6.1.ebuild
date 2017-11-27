@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools db-use eutils flag-o-matic pam
+inherit autotools db-use eutils flag-o-matic pam systemd
 
 DESCRIPTION="Open Source Jabber Server"
 HOMEPAGE="http://jabberd2.org"
@@ -136,7 +136,9 @@ src_configure() {
 src_install() {
 	local i
 
-	default
+	# Fix systemd unit files installation path, bug #626026
+	emake systemddir="$(systemd_get_systemunitdir)" DESTDIR="${D}" install
+	einstalldocs
 	prune_libtool_files --modules
 
 	keepdir /var/spool/jabber/{fs,db}
