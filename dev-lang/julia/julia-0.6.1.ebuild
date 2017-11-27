@@ -146,7 +146,7 @@ src_configure() {
 src_compile() {
 
 	# use LLVM:4 ...
-	export PATH="${EPREFIX}/usr/lib/llvm/4/bin/:${PATH}"
+	export PATH="${EPREFIX}/usr/$(get_libdir)/llvm/4/bin/:${PATH}"
 
 	# Julia accesses /proc/self/mem on Linux
 	addpredict /proc/self/mem
