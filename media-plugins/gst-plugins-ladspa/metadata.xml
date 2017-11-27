@@ -5,4 +5,8 @@
 	<email>gstreamer@gentoo.org</email>
 	<name>GStreamer package maintainers</name>
 </maintainer>
+<maintainer type="person">
+	<email>prometheanfire@gentoo.org</email>
+	<name>Matthew Thode</name>
+</maintainer>
 </pkgmetadata>
