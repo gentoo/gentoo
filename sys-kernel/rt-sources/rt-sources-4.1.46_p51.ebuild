@@ -31,10 +31,6 @@ S="${WORKDIR}/linux-${KV_FULL}"
 UNIPATCH_LIST="${DISTDIR}/${RT_FILE}"
 UNIPATCH_STRICTORDER="yes"
 
-PATCHES=(
-	"${FILESDIR}"/rt-sources-posix-printf.patch # 627068
-)
-
 src_prepare() {
 	default
 
