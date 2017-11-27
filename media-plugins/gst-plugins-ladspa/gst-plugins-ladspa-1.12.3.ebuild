@@ -12,6 +12,5 @@ IUSE=""
 
 RDEPEND="
 	media-libs/ladspa-sdk
-	>=media-libs/gstreamer-1.12:1.0
 "
 DEPEND="${RDEPEND}"

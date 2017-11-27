@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 JAVA_PKG_IUSE="doc source"
 
@@ -15,8 +15,7 @@ SRC_URI="http://pkgs.fedoraproject.org/repo/pkgs/nanoxml/${MY_P}.tar.gz/357c7136
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
-IUSE=""
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 
 CDEPEND="dev-java/sax:0"
 
@@ -26,7 +25,6 @@ DEPEND="
 
 RDEPEND="
 	${CDEPEND}
-	source? ( app-arch/zip )
 	>=virtual/jre-1.6"
 
 S="${WORKDIR}/${MY_P}"
@@ -40,8 +38,8 @@ PATCHES=(
 	"${FILESDIR}"/"${P}-enum.patch"
 )
 
-java_prepare() {
+src_prepare() {
+	default
 	java-pkg_clean
 	rm -rf Test || die
-	epatch "${PATCHES[@]}"
 }
