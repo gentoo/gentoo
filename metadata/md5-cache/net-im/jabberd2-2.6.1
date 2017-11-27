@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install postinst prepare pretend
-DEPEND=dev-libs/expat net-libs/udns net-dns/libidn virtual/gsasl berkdb? ( >=sys-libs/db-4.1.25:= ) ldap? ( net-nds/openldap ) mysql? ( virtual/libmysqlclient:= virtual/mysql:= ) pam? ( virtual/pam ) postgres? ( dev-db/postgresql:= ) ssl? ( !libressl? ( >=dev-libs/openssl-1.0.1:0[-bindist] ) libressl? ( dev-libs/libressl:= ) ) sqlite? ( dev-db/sqlite:3 ) websocket? ( net-libs/http-parser:= ) zlib? ( sys-libs/zlib ) app-arch/xz-utils sys-devel/autoconf-archive virtual/pkgconfig test? ( dev-libs/check ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=dev-libs/expat net-libs/udns net-dns/libidn virtual/gsasl berkdb? ( >=sys-libs/db-4.1.25:= ) ldap? ( net-nds/openldap ) mysql? ( virtual/libmysqlclient:= virtual/mysql:= ) pam? ( virtual/pam ) postgres? ( dev-db/postgresql:= ) ssl? ( !libressl? ( >=dev-libs/openssl-1.0.1:0[-bindist] ) libressl? ( dev-libs/libressl:= ) ) sqlite? ( dev-db/sqlite:3 ) websocket? ( net-libs/http-parser:= ) zlib? ( sys-libs/zlib ) app-arch/xz-utils sys-devel/autoconf-archive virtual/pkgconfig test? ( dev-libs/check ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
 DESCRIPTION=Open Source Jabber Server
 EAPI=6
 HOMEPAGE=http://jabberd2.org
@@ -10,5 +10,5 @@ RDEPEND=dev-libs/expat net-libs/udns net-dns/libidn virtual/gsasl berkdb? ( >=sy
 REQUIRED_USE=memdebug? ( debug )
 SLOT=0
 SRC_URI=https://github.com/jabberd2/jabberd2/releases/download/jabberd-2.6.1/jabberd-2.6.1.tar.xz
-_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	db-use	582140d1a711279e50ce284fc7b609f5	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	flag-o-matic	a6089a2a4027ae3da4a460dc87b21050	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	pam	3e788d86170dfcd5b06824d898315e18	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
-_md5_=cba7cec554a2a838a734640eeda9ce38
+_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	db-use	582140d1a711279e50ce284fc7b609f5	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	flag-o-matic	a6089a2a4027ae3da4a460dc87b21050	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	pam	3e788d86170dfcd5b06824d898315e18	systemd	34815d3b76e745c5ca33eec9f95074c2	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=24a9685c2ad05e35cfcfe440ee8169b8

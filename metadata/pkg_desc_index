@@ -4559,7 +4559,7 @@ dev-lang/interprolog 2.1.2: InterProlog is a Java front-end and enhancement for 
 dev-lang/ispc 1.9.1 9999: Intel SPMD Program Compiler
 dev-lang/j 701-r2: Modern, high-level, general-purpose, high-performance programming language
 dev-lang/jimtcl 0.70_pre20110317 0.73 0.74-r1 0.75 0.75-r1 0.76 9999: Small footprint implementation of Tcl programming language
-dev-lang/julia 0.5.0-r3 0.6.0-r1 9999: High-performance programming language for technical computing
+dev-lang/julia 0.5.0-r3 0.6.0-r1 0.6.1 9999: High-performance programming language for technical computing
 dev-lang/jwasm 2.11a: MASM-compatible TASM-similar assembler (fork of Wasm)
 dev-lang/lazarus 1.0.12 1.6.2 1.6.4: Lazarus IDE is a feature rich visual programming environment emulating Delphi
 dev-lang/lfe 0.7 0.10.1 1.0 1.1.1: Lisp-flavoured Erlang
@@ -4801,7 +4801,7 @@ dev-libs/libbulletml 0.0.6: A Library of Bullet Markup Language
 dev-libs/libburn 1.4.6 1.4.8-r1: Open-source library for reading, mastering and writing optical discs
 dev-libs/libbytesize 0.11 1.1 1.2: Tiny library providing a C "class" for working with arbitrary big sizes in bytes
 dev-libs/libcaldav 0.6.2: C library implementing client support for CalDAV
-dev-libs/libcdio 0.93 0.94-r1 1.0.0-r1: A library to encapsulate CD-ROM reading and control
+dev-libs/libcdio 0.93 0.94-r1: A library to encapsulate CD-ROM reading and control
 dev-libs/libcdio-paranoia 0.90_p1-r1 0.93_p1 0.93_p1-r1 0.94_p1-r1 0.94_p2: an advanced CDDA reader with error correction
 dev-libs/libcec 3.1.0-r1 4.0.2: Library for communicating with the Pulse-Eight USB HDMI-CEC Adaptor
 dev-libs/libcgroup 0.41 0.41-r4: Tools and libraries to configure and manage kernel control groups
@@ -14634,9 +14634,9 @@ net-dns/nsd 4.1.16 4.1.17: An authoritative only, high performance, open source 
 net-dns/odsclient 1.03-r1: Client for the Open Domain Server's dynamic dns
 net-dns/opendnssec 1.3.18-r1 1.4.8.2 1.4.12-r1 2.0.1-r1 2.0.3: An open-source turn-key solution for DNSSEC
 net-dns/openresolv 3.8.1 3.9.0: A framework for managing DNS information
-net-dns/pdns 4.0.4 4.0.4-r1 4.1.0_rc3: The PowerDNS Daemon
+net-dns/pdns 4.0.4 4.0.4-r1 4.0.5 4.1.0_rc3: The PowerDNS Daemon
 net-dns/pdns-ldap-backend 0.2: Fork of the official but unmaintained LDAP backend
-net-dns/pdns-recursor 4.0.6 4.0.6-r1 4.1.0_rc3: The PowerDNS Recursor
+net-dns/pdns-recursor 4.0.6 4.0.6-r1 4.0.7 4.1.0_rc3: The PowerDNS Recursor
 net-dns/pdnsd 1.2.9a-r1: Proxy DNS server with permanent caching
 net-dns/rbldnsd 0.998 0.998-r2: DNS server designed to serve blacklist zones
 net-dns/resolv_wrapper 1.1.4 1.1.5: A wrapper for DNS name resolving or DNS faking
@@ -14760,7 +14760,7 @@ net-im/gg-transport 2.2.4-r1 2.2.6: Gadu-Gadu transport for Jabber
 net-im/gitter-bin 3.1.0: Chat and network platform
 net-im/hangups 9999: Third Party IM Client for Google Hangouts
 net-im/jabber-base 0.01 0.01-r1: Jabber servers and transports layout package
-net-im/jabberd2 2.3.3-r2 2.3.4-r1 2.5.0 2.6.1: Open Source Jabber Server
+net-im/jabberd2 2.3.3-r2 2.6.1: Open Source Jabber Server
 net-im/kadu 2.1-r1 4.3-r1: An open source Gadu-Gadu and Jabber/XMPP protocol Instant Messenger client
 net-im/kouchat 1.1.0: KouChat is a simple serverless chat client for local area networks
 net-im/librvp 0.9.6 0.9.7: An RVP (Microsoft Exchange Instant Messaging) plugin for Pidgin
@@ -14782,7 +14782,7 @@ net-im/reaim 0.8-r2: AIM transport proxy over NAT firewalls
 net-im/sendxmpp 1.23 1.24: A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
 net-im/signal-desktop-bin 1.0.39: Signal Desktop
 net-im/silc-toolkit 1.1.10: SDK for the SILC protocol
-net-im/skypeforlinux 5.4.0.1 5.5.0.1: Instant messaging client, with support for audio and video
+net-im/skypeforlinux 8.11.0.4: Instant messaging client, with support for audio and video
 net-im/slack-bin 2.1.2 2.5.2 2.6.3 2.8.0 2.8.2: Team collaboration tool
 net-im/telegram-desktop-bin 1.1.19 1.1.23-r1: Official desktop client for Telegram (binary package)
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers
@@ -17887,7 +17887,7 @@ sys-kernel/raspberrypi-sources 4.4.9999 4.9.9999 4.10.9999 4.11.9999 4.12.9999 4
 sys-kernel/rt-sources 3.18.69_p75 3.18.82_p88 4.1.42_p50 4.1.46_p51 4.4.86_p99 4.4.97_p110 4.9.47_p37 4.9.61_p51 4.11.12_p16 4.13.7_p1 4.13.10_p3 4.13.13_p5: Full Linux 4.13 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.6.5.4-r1 0.6.5.11 0.7.3 9999: The Solaris Porting Layer provides many of the Solaris kernel APIs
 sys-kernel/tuxonice-sources 3.4.110 3.4.111 3.4.112 3.10.100 3.10.101 3.12.56 3.12.58 3.12.60 3.14.64 3.14.67 3.14.70 3.18.28 3.18.31 3.18.34 4.1.19 4.1.22 4.1.24 4.2.8 4.3.6 4.4.5 4.4.8 4.4.11 4.5.2 4.5.4: TuxOnIce + Gentoo patchset sources
-sys-kernel/vanilla-sources 3.2.95 3.16.50 4.1.46 4.4.102 4.9.65 4.14.2: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 3.2.96 3.16.51 4.1.46 4.4.102 4.9.65 4.14.2: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/zen-sources 3.8.9999 3.9.9999 3.10.9999 3.11.9999 3.12.9999 3.13.9999: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc

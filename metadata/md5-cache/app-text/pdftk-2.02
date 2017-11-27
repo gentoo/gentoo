@@ -1,12 +1,12 @@
 DEFINED_PHASES=compile install prepare
-DEPEND=sys-devel/gcc[gcj]
+DEPEND=sys-devel/gcc:5.4.0[gcj] sys-devel/gcc-config
 DESCRIPTION=A tool for manipulating PDF documents
 EAPI=5
 HOMEPAGE=http://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/
 KEYWORDS=amd64 ~arm ppc x86 ~amd64-linux
 LICENSE=GPL-2
-RDEPEND=sys-devel/gcc[gcj]
+RDEPEND=sys-devel/gcc:5.4.0[gcj]
 SLOT=0
 SRC_URI=http://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/pdftk-2.02-src.zip
 _eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=b75e38715e061fdf5b97dd6cc9b5ca68
+_md5_=9886ee05db85171fcb7d0794d83a49b1
