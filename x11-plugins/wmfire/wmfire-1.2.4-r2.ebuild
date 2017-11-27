@@ -1,12 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
 inherit autotools eutils
 
 DESCRIPTION="Load monitoring dockapp displaying dancing flame"
-HOMEPAGE="http://www.swanson.ukfsn.org/#wmfire"
-SRC_URI="http://www.swanson.ukfsn.org/${PN}/${P}.tar.gz"
+HOMEPAGE="http://www.improbability.net/#wmfire"
+SRC_URI="http://www.improbability.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

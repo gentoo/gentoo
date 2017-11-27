@@ -30,15 +30,15 @@ DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	dev-python/pycairo[${PYTHON_USEDEP}]
-	dev-python/gst-python:1.0[${PYTHON_USEDEP}]
+	>=dev-python/gst-python-1.12.0:1.0[${PYTHON_USEDEP}]
 	media-plugins/swh-plugins
 	>=x11-libs/gtk+-3.18:3
 	dev-python/numpy[${PYTHON_USEDEP}]
 	>=sci-libs/scipy-0.18[${PYTHON_USEDEP}]
 	>=media-libs/gstreamer-1.12.0:1.0
-	media-libs/gst-plugins-good:1.0
-	media-libs/gst-plugins-bad:1.0
-	media-plugins/gst-plugins-ladspa:1.0
+	>=media-libs/gst-plugins-good-1.12.0:1.0
+	>=media-libs/gst-plugins-bad-1.12.0:1.0
+	>=media-plugins/gst-plugins-ladspa-1.12.0:1.0
 "
 RDEPEND="${DEPEND}
 	media-sound/pulseaudio[equalizer]

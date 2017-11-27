@@ -13,7 +13,7 @@ SRC_URI="https://github.com/Itseez/opencv/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/2.4"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux"
 IUSE="cuda +eigen examples ffmpeg gstreamer gtk ieee1394 ipp jpeg jpeg2k libav opencl openexr opengl openmp pch png +python qt5 testprograms threads tiff v4l vtk xine"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"

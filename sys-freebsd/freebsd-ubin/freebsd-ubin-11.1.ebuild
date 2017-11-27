@@ -100,7 +100,7 @@ pkg_setup() {
 	use ssl || mymakeopts="${mymakeopts} WITHOUT_OPENSSL= "
 	use usb || mymakeopts="${mymakeopts} WITHOUT_USB= "
 	use zfs || mymakeopts="${mymakeopts} WITHOUT_CDDL= "
-	mymakeopts="${mymakeopts} WITHOUT_CLANG= WITHOUT_LZMA_SUPPORT= WITHOUT_SVN= WITHOUT_SVNLITE= WITHOUT_OPENSSH= WITHOUT_LDNS_UTILS= WITHOUT_MANDOCDB= WITHOUT_GPL_DTC= "
+	mymakeopts="${mymakeopts} WITHOUT_CLANG= WITHOUT_LZMA_SUPPORT= WITHOUT_SVN= WITHOUT_SVNLITE= WITHOUT_OPENSSH= WITHOUT_LDNS_UTILS= WITHOUT_MANDOCDB= "
 }
 
 pkg_preinst() {

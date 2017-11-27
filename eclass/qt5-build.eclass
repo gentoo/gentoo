@@ -50,18 +50,12 @@ esac
 inherit estack flag-o-matic ltprune toolchain-funcs versionator virtualx
 
 HOMEPAGE="https://www.qt.io/"
+LICENSE="|| ( GPL-2 GPL-3 LGPL-3 ) FDL-1.3"
+SLOT=5/$(get_version_component_range 1-2)
 
 QT5_MINOR_VERSION=$(get_version_component_range 2)
 QT5_PATCH_VERSION=$(get_version_component_range 3)
 readonly QT5_MINOR_VERSION QT5_PATCH_VERSION
-
-if [[ ${QT5_MINOR_VERSION} -ge 7 ]]; then
-	LICENSE="|| ( GPL-2 GPL-3 LGPL-3 ) FDL-1.3"
-else
-	LICENSE="|| ( LGPL-2.1 LGPL-3 ) FDL-1.3"
-fi
-
-SLOT=5/$(get_version_component_range 1-2)
 
 case ${PV} in
 	5.9999)
@@ -131,10 +125,7 @@ EXPORT_FUNCTIONS src_unpack src_prepare src_configure src_compile src_install sr
 # Unpacks the sources.
 qt5-build_src_unpack() {
 	if tc-is-gcc; then
-		local min_gcc4_minor_version=5
-		if [[ ${QT5_MINOR_VERSION} -ge 7 || ${PN} == qtwebengine ]]; then
-			min_gcc4_minor_version=7
-		fi
+		local min_gcc4_minor_version=7
 		if [[ $(gcc-major-version) -lt 4 ]] || \
 		   [[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt ${min_gcc4_minor_version} ]]; then
 			eerror "GCC version 4.${min_gcc4_minor_version} or later is required to build this package"
@@ -268,21 +259,9 @@ qt5-build_src_install() {
 	if [[ ${PN} == qtcore ]]; then
 		pushd "${QT5_BUILD_DIR}" >/dev/null || die
 
-		local qmake_install_target=install_qmake
-		if [[ ${QT5_MINOR_VERSION} -ge 7 ]]; then
-			# qmake/qmake-aux.pro
-			qmake_install_target=sub-qmake-qmake-aux-pro-install_subtargets
-		fi
-
-		local global_docs_install_target=
-		if [[ ${QT5_MINOR_VERSION} -le 6 && ${QT5_PATCH_VERSION} -le 2 ]]; then
-			global_docs_install_target=install_global_docs
-		fi
-
 		set -- emake INSTALL_ROOT="${D}" \
-			${qmake_install_target} \
-			install_{syncqt,mkspecs} \
-			${global_docs_install_target}
+			sub-qmake-qmake-aux-pro-install_subtargets \
+			install_{syncqt,mkspecs}
 
 		einfo "Running $*"
 		"$@"
@@ -585,7 +564,7 @@ qt5_base_configure() {
 		# prefer system libraries (only common hard deps here)
 		-system-zlib
 		-system-pcre
-		$([[ ${QT5_MINOR_VERSION} -ge 7 ]] && echo -system-doubleconversion)
+		-system-doubleconversion
 
 		# disable everything to prevent automagic deps (part 1)
 		-no-mtdev
@@ -603,7 +582,7 @@ qt5_base_configure() {
 		-glib
 
 		# disable everything to prevent automagic deps (part 2)
-		$([[ ${QT5_MINOR_VERSION} -ge 7 ]] && echo -no-gtk || echo -no-gtkstyle)
+		-no-gtk
 		$([[ ${QT5_MINOR_VERSION} -lt 8 ]] && echo -no-pulseaudio -no-alsa)
 
 		# exclude examples and tests from default build
