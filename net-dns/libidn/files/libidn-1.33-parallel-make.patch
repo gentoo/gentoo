@@ -17,7 +17,7 @@ index 6832c20..218d52e 100644
  
 -idn_cmd.c idn_cmd.h: idn.ggo Makefile.am
 +# pattern rule (%) needed for parallel make (-j)
-+idn_cmd%c idn_cmd%h: idn.ggo Makefile.am
++idn_cmd%c idn_cmd%h: idn.ggo
  	gengetopt --unamed-opts --no-handle-version --no-handle-help \
  		--set-package="idn" \
  		--input $^ --file-name idn_cmd
@@ -109,7 +109,7 @@ index 6832c20..218d52e 100644
  
 -idn_cmd.c idn_cmd.h: idn.ggo Makefile.am
 +# pattern rule (%) needed for parallel make (-j)
-+idn_cmd%c idn_cmd%h: idn.ggo Makefile.am
++idn_cmd%c idn_cmd%h: idn.ggo
  	gengetopt --unamed-opts --no-handle-version --no-handle-help \
  		--set-package="idn" \
  		--input $^ --file-name idn_cmd
