@@ -146,8 +146,6 @@ src_configure() {
 	use doc || export ac_cv_prog_HAVE_DOXYGEN=false
 	use doc-pdf || export ac_cv_prog_HAVE_FOP=false
 
-	# dumpcap requires libcap
-	# --disable-profile-build bugs #215806, #292991, #479602
 	econf \
 		$(use androiddump && use pcap && echo --enable-androiddump-use-libpcap=yes) \
 		$(use dumpcap && use_with pcap dumpcap-group wireshark) \
@@ -173,7 +171,7 @@ src_configure() {
 		$(use_with geoip) \
 		$(use_with gtk gtk 3) \
 		$(use_with kerberos krb5) \
-		$(use_with libssh ssh) \
+		$(use_with libssh) \
 		$(use_with libxml2) \
 		$(use_with lua) \
 		$(use_with nghttp2) \
@@ -192,7 +190,6 @@ src_configure() {
 		$(usex qt5 MOC=$(qt5_get_bindir)/moc '') \
 		$(usex qt5 RCC=$(qt5_get_bindir)/rcc '') \
 		$(usex qt5 UIC=$(qt5_get_bindir)/uic '') \
-		--disable-profile-build \
 		--disable-warnings-as-errors \
 		--sysconfdir="${EPREFIX}"/etc/wireshark \
 		${myconf[@]}
@@ -236,7 +233,6 @@ src_install() {
 		epan/dissectors/*.h \
 		epan/ftypes/*.h \
 		epan/wmem/*.h \
-		register.h \
 		wiretap/*.h \
 		ws_diag_control.h \
 		ws_symbol_export.h \
