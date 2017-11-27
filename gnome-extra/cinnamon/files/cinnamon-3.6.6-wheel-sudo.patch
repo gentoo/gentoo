@@ -1,0 +1,19 @@
+diff --git a/files/usr/share/cinnamon/cinnamon-settings-users/cinnamon-settings-users.py b/files/usr/share/cinnamon/cinnamon-settings-users/cinnamon-settings-users.py
+index 8028727..85497c8 100755
+--- a/files/usr/share/cinnamon/cinnamon-settings-users/cinnamon-settings-users.py
++++ b/files/usr/share/cinnamon/cinnamon-settings-users/cinnamon-settings-users.py
+@@ -839,11 +839,11 @@ class Module:
+             pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size("/usr/share/cinnamon/faces/user-generic.png", 48, 48)
+             description = "<b>%s</b>\n%s" % (fullname, username)
+             piter = self.users.append(None, [new_user, pixbuf, description])
+-            # Add the user to his/her own group and sudo if Administrator was selected
++            # Add the user to his/her own group and wheel if Administrator was selected
+             if dialog.account_type_combo.get_active() == 1:
+-                subprocess.call(["usermod", username, "-G", "%s,sudo,nopasswdlogin" % username])
++                subprocess.call(["usermod", username, "-G", "%s,wheel,nopasswdlogin" % username])
+             else:
+-                subprocess.call(["usermod", username, "-G", "%s,nopasswdlogin" % username])
++                subprocess.call(["usermod", username, "-G", "%s" % username])
+             self.load_groups()
+         dialog.destroy()
+ 

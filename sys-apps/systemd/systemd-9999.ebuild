@@ -116,6 +116,7 @@ pkg_pretend() {
 		use seccomp && CONFIG_CHECK+=" ~SECCOMP ~SECCOMP_FILTER"
 		kernel_is -lt 3 7 && CONFIG_CHECK+=" ~HOTPLUG"
 		kernel_is -lt 4 7 && CONFIG_CHECK+=" ~DEVPTS_MULTIPLE_INSTANCES"
+		kernel_is -ge 4 10 && CONFIG_CHECK+=" ~CGROUP_BPF"
 
 		if linux_config_exists; then
 			local uevent_helper_path=$(linux_chkconfig_string UEVENT_HELPER_PATH)

@@ -41,9 +41,9 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/libxml2:2
 	gnome-base/gconf:2[introspection]
 	gnome-base/librsvg
-	>=gnome-extra/cinnamon-desktop-2.4:0=[introspection]
-	>=gnome-extra/cinnamon-menus-3.0[introspection]
-	>=gnome-extra/cjs-3.2.0
+	>=gnome-extra/cinnamon-desktop-3.6:0=[introspection]
+	>=gnome-extra/cinnamon-menus-3.6[introspection]
+	>=gnome-extra/cjs-3.6.0
 	>=media-libs/clutter-1.10:1.0[introspection]
 	media-libs/cogl:1.0=[introspection]
 	>=gnome-base/gsettings-desktop-schemas-2.91.91
@@ -57,7 +57,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=x11-libs/startup-notification-0.11
 	x11-libs/libX11
 	>=x11-libs/libXfixes-5.0
-	>=x11-wm/muffin-3.2.0[introspection]
+	>=x11-wm/muffin-3.6.0[introspection]
 	networkmanager? (
 		gnome-base/libgnome-keyring
 		>=net-misc/networkmanager-0.8.999:=[introspection] )
@@ -84,10 +84,8 @@ RDEPEND="${COMMON_DEPEND}
 	>=gnome-base/libgnomekbd-2.91.4[introspection]
 	|| ( sys-power/upower[introspection] sys-power/upower-pm-utils[introspection] )
 
-	>=gnome-extra/cinnamon-session-2.4
-	>=gnome-extra/cinnamon-settings-daemon-2.4
-
-	>=sys-apps/accountsservice-0.6.14[introspection]
+	>=gnome-extra/cinnamon-session-3.6
+	>=gnome-extra/cinnamon-settings-daemon-3.6
 
 	>=app-accessibility/caribou-0.3
 
@@ -107,9 +105,9 @@ RDEPEND="${COMMON_DEPEND}
 	x11-themes/gnome-themes-standard
 	x11-themes/adwaita-icon-theme
 
-	>=gnome-extra/nemo-2.4
-	>=gnome-extra/cinnamon-control-center-2.4
-	>=gnome-extra/cinnamon-screensaver-2.4
+	>=gnome-extra/nemo-3.6
+	>=gnome-extra/cinnamon-control-center-3.6
+	>=gnome-extra/cinnamon-screensaver-3.6
 
 	gnome-extra/polkit-gnome
 
@@ -146,6 +144,10 @@ src_prepare() {
 
 	# Fix automagic gnome-bluetooth dep, bug #398145
 	eapply "${FILESDIR}"/${PN}-2.2.6-automagic-gnome-bluetooth.patch
+
+	# Use wheel group instead of sudo (from Fedora/Arch)
+	# https://github.com/linuxmint/Cinnamon/issues/3576
+	eapply "${FILESDIR}"/${PN}-3.6.6-wheel-sudo.patch
 
 	# Use pkexec instead of gksu (from Arch)
 	# https://github.com/linuxmint/Cinnamon/issues/3565
