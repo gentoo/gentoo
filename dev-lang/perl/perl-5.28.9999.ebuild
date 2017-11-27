@@ -7,7 +7,7 @@ inherit eutils alternatives flag-o-matic toolchain-funcs multilib multiprocessin
 
 PATCH_VER=1
 CROSS_VER=1.1.7
-PATCH_BASE="perl-5.27.1-patches-${PATCH_VER}"
+PATCH_BASE="perl-5.27.6-patches-${PATCH_VER}"
 
 DIST_AUTHOR=SHAY
 
@@ -16,7 +16,7 @@ DIST_AUTHOR=SHAY
 # BIN_OLDVERSEN is contains only C-ABI-intercompatible versions
 PERL_BIN_OLDVERSEN=""
 if [[ "${PV##*.}" == "9999" ]]; then
-	DIST_VERSION=5.27.5
+	DIST_VERSION=5.27.6
 else
 	DIST_VERSION="${PV/_rc/-RC}"
 fi
@@ -80,10 +80,10 @@ dual_scripts() {
 	src_remove_dual      perl-core/Digest-SHA         5.960.0       shasum
 	src_remove_dual      perl-core/Encode             2.930.0       enc2xs piconv
 	src_remove_dual      perl-core/ExtUtils-MakeMaker 7.300.0       instmodsh
-	src_remove_dual      perl-core/ExtUtils-ParseXS   3.350.0       xsubpp
+	src_remove_dual      perl-core/ExtUtils-ParseXS   3.360.0       xsubpp
 	src_remove_dual      perl-core/IO-Compress        2.74.0        zipdetails
 	src_remove_dual      perl-core/JSON-PP            2.940.0       json_pp
-	src_remove_dual      perl-core/Module-CoreList    5.201.710.200 corelist
+	src_remove_dual      perl-core/Module-CoreList    5.201.711.200 corelist
 	src_remove_dual      perl-core/Pod-Parser         1.630.0       pod2usage podchecker podselect
 	src_remove_dual      perl-core/Pod-Perldoc        3.280.100     perldoc
 	src_remove_dual      perl-core/Test-Harness       3.390.0       prove

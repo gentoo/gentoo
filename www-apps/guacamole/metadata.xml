@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>nativemad@gentoo.org</email>
-    <name>Andreas Schuerch</name>
-  </maintainer>
-  <longdescription>
-	Guacamole is an HTML5 web application that provides access to desktop
-	environments using remote desktop protocols such as VNC or RDP. 
-	A centralized server acts as a tunnel and proxy, allowing access to 
-	multiple desktops through a web browser. No plugins are needed: 
-	the client requires nothing more than a web browser supporting 
-	HTML5 and AJAX.
-    </longdescription>
-  <use>
-    <flag name="noauth">enable support for leaving out any authentication on the webinterface</flag>
-  </use>
-  <upstream>
-    <remote-id type="sourceforge">guacamole</remote-id>
-  </upstream>
+	<maintainer type="person">
+		<email>nativemad@gentoo.org</email>
+		<name>Andreas Schuerch</name>
+	</maintainer>
+	<longdescription>
+		Guacamole is an HTML5 web application that provides access to desktop
+		environments using remote desktop protocols such as VNC or RDP.
+		A centralized server acts as a tunnel and proxy, allowing access to
+		multiple desktops through a web browser. No plugins are needed:
+		the client requires nothing more than a web browser supporting
+		HTML5 and AJAX.
+	</longdescription>
+	<use>
+		<flag name="noauth">enable support for leaving out any authentication on the webinterface</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">guacamole</remote-id>
+	</upstream>
 </pkgmetadata>

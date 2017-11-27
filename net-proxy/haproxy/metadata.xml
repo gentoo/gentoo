@@ -6,17 +6,17 @@
 		<name>Christian Ruppert</name>
 	</maintainer>
 	<longdescription>
-HAProxy is a free, very fast and reliable solution offering high availability, load balancing, and proxying for TCP and HTTP-based applications. It is particularly suited for web sites crawling under very high loads while needing persistence or Layer7 processing. Supporting tens of thousands of connections is clearly realistic with todays hardware. Its mode of operation makes its integration into existing architectures very easy and riskless, while still offering the possibility not to expose fragile web servers to the Net.
+		HAProxy is a free, very fast and reliable solution offering high availability, load balancing, and proxying for TCP and HTTP-based applications. It is particularly suited for web sites crawling under very high loads while needing persistence or Layer7 processing. Supporting tens of thousands of connections is clearly realistic with todays hardware. Its mode of operation makes its integration into existing architectures very easy and riskless, while still offering the possibility not to expose fragile web servers to the Net.
 
-It can:
- - route HTTP requests depending on statically assigned cookies
- - spread the load among several servers while assuring server persistence through the use of HTTP cookies
- - switch to backup servers in the event a main one fails
- - accept connections to special ports dedicated to service monitoring
- - stop accepting connections without breaking existing ones
- - add/modify/delete HTTP headers both ways
- - block requests matching a particular pattern
-Its event-driven architecture allows it to easily handle thousands of simultaneous connections on hundreds of instances without risking the system's stability.
+		It can:
+		- route HTTP requests depending on statically assigned cookies
+		- spread the load among several servers while assuring server persistence through the use of HTTP cookies
+		- switch to backup servers in the event a main one fails
+		- accept connections to special ports dedicated to service monitoring
+		- stop accepting connections without breaking existing ones
+		- add/modify/delete HTTP headers both ways
+		- block requests matching a particular pattern
+		Its event-driven architecture allows it to easily handle thousands of simultaneous connections on hundreds of instances without risking the system's stability.
 	</longdescription>
 	<use>
 		<flag name="net_ns">Enable network namespace support (CONFIG_NET_NS)</flag>

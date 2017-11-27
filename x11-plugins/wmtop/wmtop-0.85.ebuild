@@ -20,6 +20,9 @@ RDEPEND=">=x11-libs/libdockapp-0.7:=
 DEPEND="${RDEPEND}
 	x11-proto/xproto"
 
+# Incorrect path in this tarball version
+S=${WORKDIR}/dockapps-be3f170
+
 src_prepare() {
 	eapply_user
 

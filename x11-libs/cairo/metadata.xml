@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-	<email>tetromino@gentoo.org</email>
-	<name>Alexandre Rostovtsev</name>
-  </maintainer>
-  <maintainer type="project">
-    <email>x11@gentoo.org</email>
-    <name>X11</name>
-  </maintainer>
-  <use>
-    <flag name="opengl" restrict="&gt;=x11-libs/cairo-1.10.0">Build the OpenGL backend</flag>
-    <flag name="gles2">Build the OpenGL ES 2 backend</flag>
-    <flag name="glib">Compile with GLib Object System support</flag>
-    <flag name="utils">Build support for Cairo script and trace utilities</flag>
-    <flag name="valgrind">Built-in support to mark memory regions</flag>
-  </use>
-  <upstream>
-    <remote-id type="cpe">cpe:/a:cairographics:cairo</remote-id>
-  </upstream>
+	<maintainer type="person">
+		<email>tetromino@gentoo.org</email>
+		<name>Alexandre Rostovtsev</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>x11@gentoo.org</email>
+		<name>X11</name>
+	</maintainer>
+	<use>
+		<flag name="opengl" restrict="&gt;=x11-libs/cairo-1.10.0">Build the OpenGL backend</flag>
+		<flag name="gles2">Build the OpenGL ES 2 backend</flag>
+		<flag name="glib">Compile with GLib Object System support</flag>
+		<flag name="utils">Build support for Cairo script and trace utilities</flag>
+		<flag name="valgrind">Built-in support to mark memory regions</flag>
+	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:cairographics:cairo</remote-id>
+	</upstream>
 </pkgmetadata>
