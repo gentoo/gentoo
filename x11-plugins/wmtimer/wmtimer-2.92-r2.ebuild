@@ -2,12 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
 inherit multilib toolchain-funcs
 
 DESCRIPTION="Dockable clock which can run in alarm, countdown timer or chronograph mode"
 HOMEPAGE="https://github.com/bbidulock/wmtimer"
-SRC_URI="https://github.com/bbidulock/wmtimer/releases/download/v${PN}/${P}.tar.gz"
+SRC_URI="https://github.com/bbidulock/wmtimer/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

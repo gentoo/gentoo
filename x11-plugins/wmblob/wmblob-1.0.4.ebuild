@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 inherit autotools multilib
 
 DESCRIPTION="a fancy but useless dockapp with moving blobs"
@@ -10,7 +10,7 @@ SRC_URI="https://github.com/bbidulock/wmblob/releases/download/${PV}/${P}.tar.bz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc sparc x86"
+KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE=""
 
 RDEPEND="x11-libs/gtk+:2
@@ -19,12 +19,13 @@ RDEPEND="x11-libs/gtk+:2
 	x11-libs/libXext"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	x11-proto/xextproto
 	x11-libs/libXt"
 
 DOCS="AUTHORS ChangeLog NEWS README doc/how_it_works"
 
 src_prepare() {
+	default
+
 	sed -i \
 		-e "s:-O2:${CFLAGS}:g" \
 		-e "s:\$x_libraries:/usr/$(get_libdir):" \
