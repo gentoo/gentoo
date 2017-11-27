@@ -18,8 +18,6 @@ fi
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.9.9-nogit.patch
-	"${FILESDIR}"/${P}-635618-p1.patch
-	"${FILESDIR}"/${P}-635618-p2.patch
 )
 
 LICENSE="GPL-2"
