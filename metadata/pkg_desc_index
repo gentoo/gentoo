@@ -17857,7 +17857,7 @@ sys-fs/vhba 20170610: Virtual (SCSI) Host Bus Adapter kernel module for the CDEm
 sys-fs/vzquota 3.1: OpenVZ VPS disk quota utility
 sys-fs/wpflash 0: flash the firmware on a Webpal
 sys-fs/xfsdump 3.1.6 3.1.8: xfs dump/restore utilities
-sys-fs/xfsprogs 4.5.0 4.9.0 4.12.0 4.13.1: xfs filesystem utilities
+sys-fs/xfsprogs 4.5.0 4.9.0 4.12.0 4.13.1 4.14.0: xfs filesystem utilities
 sys-fs/xwmfs 0.81: FUSE-based X11 Window-Manager file system
 sys-fs/yaffs-utils 9999: tools for generating YAFFS images
 sys-fs/yaffs2-utils 9999: tools for generating YAFFS images
@@ -18449,7 +18449,7 @@ www-client/seamonkey-bin 2.48 2.49.1_rc2: Mozilla Application Suite - web browse
 www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ and libcurl
-www-client/vivaldi 1.12.955.48_p1 1.13.1008.32_p1: A new browser for our friends
+www-client/vivaldi 1.13.1008.32_p1: A new browser for our friends
 www-client/vivaldi-snapshot 1.13.1008.30_p1: A new browser for our friends
 www-client/w3m 0.5.3-r9: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r7 0.3.2_p24-r9: A variant of w3m with support for multiple character encodings
@@ -18610,7 +18610,7 @@ x11-base/xorg-drivers 1.19 9999: Meta package containing deps on all xorg driver
 x11-base/xorg-server 1.19.5 1.19.5-r1 9999: X.Org X servers
 x11-base/xorg-x11 7.4-r2: An X11 implementation maintained by the X.Org Foundation (meta package)
 x11-drivers/afb-ucode 1.3.11: Binary blob microcode for Elite3D framebuffers to use X, required by xf86-video-sunffb
-x11-drivers/nvidia-drivers 304.137 340.104 375.82 378.13-r1 381.22-r1 384.90 384.98 387.12 387.22: NVIDIA Accelerated Graphics Driver
+x11-drivers/nvidia-drivers 304.137 340.104 375.82 378.13-r1 381.22-r1 384.90 384.98 387.22 387.34: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-acecad 1.5.0: Acecad Flair input driver
 x11-drivers/xf86-input-aiptek 1.4.1 1.4.1-r1: Aiptek USB Digital Tablet Input Driver for Linux
 x11-drivers/xf86-input-elographics 1.4.1: Elographics input driver
