@@ -29,6 +29,18 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (28 Nov 2017)
+# Replaced by split packages. Please install one of:
+# - app-emulation/wine-vanilla (the only choice for stable)
+# - app-emulation/wine-staging
+# - app-emulation/wine-d3d9
+# - app-emulation/wine-any
+# For more information, please read the news item:
+# https://www.gentoo.org/support/news-items/2017-04-10-split-and-slotted-wine.html
+# If you really need the old ebuilds, you can use the 'wine' repository.
+# Removal in 30 days.
+app-emulation/wine
+
 # Jonas Stein <jstein@gentoo.org> (26 Nov 2017)
 # The latest version of this LaTeX package is part of 
 # dev-texlive/texlive-latexextra (bug #421881)
