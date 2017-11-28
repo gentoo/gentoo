@@ -90,7 +90,7 @@ src_install() {
 
 	newinitd "${FILESDIR}/knot.init" knot
 	if use systemd; then
-		systemd_newunit "${FILESDIR}/knot-1.service" knot
+		systemd_newunit "${FILESDIR}/knot-1.service" knot.service
 	fi
 
 	find "${D}" -name '*.la' -delete || die
