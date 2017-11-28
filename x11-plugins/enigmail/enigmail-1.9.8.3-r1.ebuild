@@ -4,22 +4,16 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit git-r3 python-any-r1
+inherit python-any-r1
 
 DESCRIPTION="Mozilla extension to provide GPG support in mail clients"
 HOMEPAGE="http://www.enigmail.net/"
 
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 SLOT="0"
 LICENSE="MPL-2.0 GPL-3"
 IUSE=""
-if [[ ${PV} == *9999 ]]; then
-	EGIT_REPO_URI="https://git.code.sf.net/p/enigmail/source"
-	S="${WORKDIR}/${P}"
-else
-	SRC_URI="http://www.enigmail.net/download/source/${P}.tar.gz"
-	S="${WORKDIR}/${PN}"
-fi
+SRC_URI="http://www.enigmail.net/download/source/${P}.tar.gz"
 
 RDEPEND="|| (
 		( >=app-crypt/gnupg-2.0
@@ -30,15 +24,20 @@ RDEPEND="|| (
 			)
 		)
 		=app-crypt/gnupg-1.4*
-	)"
+	)
+	!<mail-client/thunderbird-52.5.0
+	!<mail-client/thunderbird-2.49.5.0_p0
+	"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	app-arch/zip
 	dev-lang/perl
 	"
 
+S="${WORKDIR}/${PN}"
+
 src_compile() {
-	emake ipc public ui package lang stdlib
+	emake ipc public ui package lang
 	emake xpi
 
 }
@@ -68,7 +67,7 @@ pkg_postinst() {
 		;;
 	esac
 	if [[ -n ${REPLACING_VERSIONS} ]]; then
-		elog
+		elog ""
 		elog "Please restart thunderbird and/or seamonkey in order for them to use"
 		elog "the newly installed version of enigmail."
 	fi
