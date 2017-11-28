@@ -1432,7 +1432,7 @@ app-eselect/eselect-python 20160516 99999999: Eselect module for management of m
 app-eselect/eselect-qtgraphicssystem 1.1.1: Utility to change the active Qt Graphics System
 app-eselect/eselect-rails 0.21 0.22 0.23: Manages Ruby on Rails symlinks
 app-eselect/eselect-renpy 0.6 0.7: Manages renpy symlink
-app-eselect/eselect-repository 1-r1 9999: Manage repos.conf via eselect
+app-eselect/eselect-repository 1-r1 2 9999: Manage repos.conf via eselect
 app-eselect/eselect-ruby 20161226 20170723: Manages multiple Ruby versions
 app-eselect/eselect-rust 0.3_pre20150428: eselect module for rust
 app-eselect/eselect-scala 0.1.1: Manages multiple Scala versions
