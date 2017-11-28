@@ -6,7 +6,7 @@ ETYPE="sources"
 KEYWORDS="~amd64 ~x86"
 
 HOMEPAGE="https://dev.gentoo.org/~mpagano/genpatches/
-	http://users.tpg.com.au/ckolivas/kernel/"
+	http://kernel.kolivas.org/"
 
 K_WANT_GENPATCHES="base extras experimental"
 K_EXP_GENPATCHES_PULL="1"
