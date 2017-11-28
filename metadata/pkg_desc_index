@@ -10516,7 +10516,7 @@ dev-util/jay 1.1.1-r2: A LALR(1) parser generator: Berkeley yacc retargeted to C
 dev-util/jconfig 2.8-r3 2.8.5 2.9: jConfig is an extremely helpful utility, providing a simple API for the management of properties
 dev-util/jenkins-bin 2.73.2 2.73.3 2.84 2.86 2.87 2.90: Extensible continuous integration server
 dev-util/kbuild 0.1.9998_pre20131130-r1 0.1.9998_pre20171020 9999: A makefile framework for writing simple makefiles for complex tasks
-dev-util/kcov 33 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
+dev-util/kcov 33 34 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
 dev-util/kdbg 2.9.1: Graphical debugger interface
 dev-util/kdevelop 5.1.1 5.1.2 5.2.1: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
 dev-util/kdevelop-pg-qt 2.0.0-r1 2.1.0: LL(1) parser generator used mainly by KDevelop language plugins
