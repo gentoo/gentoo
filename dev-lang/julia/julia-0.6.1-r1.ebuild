@@ -5,7 +5,7 @@ EAPI=6
 
 RESTRICT="test"
 
-inherit eutils multilib pax-utils toolchain-funcs
+inherit llvm pax-utils toolchain-funcs
 
 DESCRIPTION="High-performance programming language for technical computing"
 HOMEPAGE="https://julialang.org/"
@@ -19,7 +19,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
+# julia 0.6* is compatible with llvm-4
 RDEPEND="
+	sys-devel/llvm:4=
+	sys-devel/clang:4="
+LLVM_MAX_SLOT=4
+
+RDEPEND+="
 	dev-libs/double-conversion:0=
 	dev-libs/gmp:0=
 	<dev-libs/libgit2-0.25:0=
@@ -34,7 +40,6 @@ RDEPEND="
 	>=dev-libs/libpcre2-10.23:0=[jit]
 	sci-libs/umfpack:0=
 	sci-mathematics/glpk:0=
-	sys-devel/llvm:4=
 	>=sys-libs/libunwind-1.1:7=
 	<sys-libs/libunwind-1.2.1
 	sys-libs/readline:0=
@@ -144,9 +149,6 @@ src_configure() {
 }
 
 src_compile() {
-
-	# use LLVM:4 ...
-	export PATH="${EPREFIX}/usr/$(get_libdir)/llvm/4/bin/:${PATH}"
 
 	# Julia accesses /proc/self/mem on Linux
 	addpredict /proc/self/mem
