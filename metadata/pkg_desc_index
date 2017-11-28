@@ -15049,7 +15049,7 @@ net-libs/uhttpmock 0.4.0 0.5.0 0.5.1: HTTP web service mocking library
 net-libs/vanessa-mcast 1.0.0: Multicast Helper Library
 net-libs/vanessa-socket 0.0.12 0.0.13: Simplifies TCP/IP socket operations
 net-libs/wandio 1.0.4: Library for transparent file I/O with compression
-net-libs/webkit-gtk 2.4.11-r1 2.4.11-r200 2.18.2 2.18.3: Open source web browser engine
+net-libs/webkit-gtk 2.4.11-r1 2.4.11-r200 2.18.3: Open source web browser engine
 net-libs/wvstreams 4.6.1-r3 4.6.1-r4 4.6.1-r5: A network programming library in C++
 net-libs/xrootd 4.4.0 4.5.0: Extended ROOT remote file server
 net-libs/zeromq 2.2.0 3.2.3 3.2.5 4.1.1 4.1.6 4.2.0-r1 4.2.1 4.2.2 4.2.2-r1 4.2.2-r2: A brokerless kernel
