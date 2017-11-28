@@ -1,6 +1,30 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (30 Nov 2017)
+# Not required, but makes life easier with Qt; bug #457934
+app-arch/unzip natspec
+
+# Andreas Sturmlechner <asturm@gentoo.org> (30 Nov 2017)
+# Required by dev-qt/qtcore
+dev-libs/libpcre pcre16
+dev-libs/libpcre2 pcre16
+
+# Andreas Sturmlechner <asturm@gentoo.org> (30 Nov 2017)
+# Required by kde-frameworks/kcoreaddons
+dev-qt/qtcore:5 icu
+
+# Andreas Sturmlechner <asturm@gentoo.org> (30 Nov 2017)
+# Required by kde-frameworks/kwayland
+dev-qt/qtgui:5 egl libinput
+
+# Required by dev-qt/qtwebengine
+media-libs/libvpx svc
+
+# Andreas Sturmlechner <asturm@gentoo.org> (30 Nov 2017)
+# Avoid circular dependency when installing from scratch
+dev-util/cmake -qt5
+
 # Andreas Sturmlechner <asturm@gentoo.org> (19 Nov 2017)
 # Required by opengl, theora, v4l and X
 media-libs/mediastreamer video
