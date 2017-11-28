@@ -14934,7 +14934,7 @@ net-libs/libkvkontakte 5.0.0_pre20170128 5.0.0: Library for accessing the featur
 net-libs/liblockfile 1.09 1.13 1.14: Implements functions designed to lock the standard mailboxes
 net-libs/libmbim 1.6.0 1.10.0 1.12.2 1.12.4 1.14.0: Mobile Broadband Interface Model (MBIM) modem protocol helper library
 net-libs/libmediawiki 5.0.0_pre20170128 5.37.0: C++ interface for MediaWiki based web service as wikipedia.org
-net-libs/libmicrohttpd 0.9.51 0.9.52 0.9.53 0.9.54 0.9.55 0.9.56: Small C library to run an HTTP server as part of another application
+net-libs/libmicrohttpd 0.9.51 0.9.52 0.9.53 0.9.54 0.9.55 0.9.57: Small C library to run an HTTP server as part of another application
 net-libs/libmirisdr 9999: Software for the Mirics MSi2500 + MSi001 SDR platform
 net-libs/libmnl 1.0.3-r1 1.0.4: Minimalistic netlink library
 net-libs/libmrss 0.19.2: A C-library for parsing and writing RSS 0.91/0.92/1.0/2.0 files or streams
