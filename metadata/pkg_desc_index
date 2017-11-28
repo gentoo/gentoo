@@ -3016,7 +3016,7 @@ dev-db/phpmyadmin 4.0.10.20 4.7.0 4.7.1 4.7.2 4.7.5: Web-based administration fo
 dev-db/phppgadmin 5.1 9999: Web-based administration for Postgres database in php
 dev-db/postgis 2.1.8-r1 2.3.3 2.4.0 2.4.2 9999: Geographic Objects for PostgreSQL
 dev-db/postgresql 9.2.19 9.2.22 9.2.23 9.2.23-r1 9.2.24 9.3.15 9.3.18 9.3.19 9.3.19-r1 9.3.20 9.4.10 9.4.13 9.4.14 9.4.14-r1 9.4.15 9.5.5 9.5.8 9.5.9 9.5.9-r1 9.5.10 9.6.4 9.6.5 9.6.5-r1 9.6.6 10.0 10.0-r1 10.1 9999: PostgreSQL RDBMS
-dev-db/pspg 0.5: A better pager for psql
+dev-db/pspg 0.5 0.7.4: A better pager for psql and mysql
 dev-db/psqlodbc 09.06.0200 09.06.0300 09.06.0310: Official ODBC driver for PostgreSQL
 dev-db/qdbm 1.8.78-r1: Quick Database Manager
 dev-db/redis 3.0.7 3.0.7-r1 3.2.5 3.2.8-r2 3.2.8-r5 4.0.1 4.0.1-r1 4.0.2-r1: A persistent caching system, key-value and data structures database
@@ -9877,7 +9877,7 @@ dev-ruby/ref 2.0.0: Implements weak, soft, and strong references in Ruby
 dev-ruby/regexp_parser 0.4.3 0.4.4 0.4.5: A library for tokenizing, lexing, and parsing Ruby regular expressions
 dev-ruby/request_store 1.0.5 1.3.1 1.3.2: Per-request global storage for Rack
 dev-ruby/rest-client 1.8.0-r3 2.0.1 2.0.2: Simple Simple HTTP and REST client for Ruby
-dev-ruby/rex-arch 0.1.4 0.1.5: architecture specific information for Rex
+dev-ruby/rex-arch 0.1.4 0.1.5 0.1.13: architecture specific information for Rex
 dev-ruby/rex-bin_tools 0.1.2: suite of tools for analyzing executables to find specific chunks of code
 dev-ruby/rex-core 0.1.9 0.1.10 0.1.12: Core libraries required for the Ruby Exploitation(Rex) Suite
 dev-ruby/rex-encoder 0.1.3 0.1.4: provides the basis for all of the polymorphic encoders that Metasploit uses
@@ -12239,50 +12239,50 @@ kde-misc/tellico 3.1: A collection manager based on KDE Frameworks
 kde-misc/wacomtablet 3.0.0_beta1 3.0.0_beta1_p20171107: KControl module for Wacom tablets
 kde-misc/yakuake 3.0.4 3.0.4-r2: Quake-style terminal emulator based on konsole
 kde-misc/zanshin 0.4.1_p20170701: Getting things done application by KDE
-kde-plasma/bluedevil 5.10.5 5.11.3: Bluetooth stack for KDE Plasma
-kde-plasma/breeze 5.10.5 5.11.3: Breeze visual style for the Plasma desktop
-kde-plasma/breeze-grub 5.10.5 5.11.3: Breeze theme for GRUB
-kde-plasma/breeze-gtk 5.10.5 5.11.3: Official GTK+ port of Plasma's Breeze widget style
-kde-plasma/breeze-plymouth 5.10.5 5.11.3: Breeze theme for Plymouth
-kde-plasma/drkonqi 5.11.3: Plasma crash handler, gives the user feedback if a program crashed
-kde-plasma/kactivitymanagerd 5.10.5 5.11.3: System service to manage user's activities, track the usage patterns etc.
-kde-plasma/kde-cli-tools 5.10.5 5.11.3: Tools based on KDE Frameworks 5 to better interact with the system
-kde-plasma/kde-gtk-config 5.10.5 5.11.3: KDE Plasma systemsettings kcm to set GTK application look&feel
-kde-plasma/kdecoration 5.10.5 5.11.3: Plugin based library to create window decorations
-kde-plasma/kdeplasma-addons 5.10.5 5.11.3: Extra Plasma applets and engines
-kde-plasma/kgamma 5.10.5 5.11.3: Screen gamma values kcontrol module
-kde-plasma/khotkeys 5.10.5 5.11.3: KDE Plasma workspace hotkey module
-kde-plasma/kinfocenter 5.10.5 5.11.3: A utility that provides information about a computer system
-kde-plasma/kmenuedit 5.10.5 5.11.3: KDE Plasma menu editor
-kde-plasma/kscreen 5.10.5 5.11.3: KDE Plasma screen management
-kde-plasma/kscreenlocker 5.10.5.1 5.11.3: Library and components for secure lock screen architecture
-kde-plasma/ksshaskpass 5.10.5 5.11.3: KDE implementation of ssh-askpass with Kwallet integration
-kde-plasma/ksysguard 5.10.5 5.11.3: Network-enabled task manager and system monitor
-kde-plasma/kwallet-pam 5.10.5-r1 5.11.3: KWallet PAM module to not enter password again
-kde-plasma/kwayland-integration 5.10.5 5.11.3: Provides integration plugins for various KDE frameworks for Wayland
-kde-plasma/kwin 5.10.5 5.11.3: KDE window manager
-kde-plasma/kwrited 5.10.5 5.11.3: KDE Plasma daemon listening for wall and write messages
-kde-plasma/libkscreen 5.10.5 5.11.3: Plasma screen management library
-kde-plasma/libksysguard 5.10.5 5.11.3: Task management and system monitoring library
-kde-plasma/milou 5.10.5 5.11.3: Dedicated search application built on top of Baloo
-kde-plasma/oxygen 5.10.5 5.11.3: Oxygen visual style for the Plasma desktop
+kde-plasma/bluedevil 5.10.5 5.11.3 5.11.4: Bluetooth stack for KDE Plasma
+kde-plasma/breeze 5.10.5 5.11.3 5.11.4: Breeze visual style for the Plasma desktop
+kde-plasma/breeze-grub 5.10.5 5.11.3 5.11.4: Breeze theme for GRUB
+kde-plasma/breeze-gtk 5.10.5 5.11.3 5.11.4: Official GTK+ port of Plasma's Breeze widget style
+kde-plasma/breeze-plymouth 5.10.5 5.11.3 5.11.4: Breeze theme for Plymouth
+kde-plasma/drkonqi 5.11.3 5.11.4: Plasma crash handler, gives the user feedback if a program crashed
+kde-plasma/kactivitymanagerd 5.10.5 5.11.3 5.11.4: System service to manage user's activities, track the usage patterns etc.
+kde-plasma/kde-cli-tools 5.10.5 5.11.3 5.11.4: Tools based on KDE Frameworks 5 to better interact with the system
+kde-plasma/kde-gtk-config 5.10.5 5.11.3 5.11.4: KDE Plasma systemsettings kcm to set GTK application look&feel
+kde-plasma/kdecoration 5.10.5 5.11.3 5.11.4: Plugin based library to create window decorations
+kde-plasma/kdeplasma-addons 5.10.5 5.11.3 5.11.4: Extra Plasma applets and engines
+kde-plasma/kgamma 5.10.5 5.11.3 5.11.4: Screen gamma values kcontrol module
+kde-plasma/khotkeys 5.10.5 5.11.3 5.11.4: KDE Plasma workspace hotkey module
+kde-plasma/kinfocenter 5.10.5 5.11.3 5.11.4: A utility that provides information about a computer system
+kde-plasma/kmenuedit 5.10.5 5.11.3 5.11.4: KDE Plasma menu editor
+kde-plasma/kscreen 5.10.5 5.11.3 5.11.4: KDE Plasma screen management
+kde-plasma/kscreenlocker 5.10.5.1 5.11.3 5.11.4: Library and components for secure lock screen architecture
+kde-plasma/ksshaskpass 5.10.5 5.11.3 5.11.4: KDE implementation of ssh-askpass with Kwallet integration
+kde-plasma/ksysguard 5.10.5 5.11.3 5.11.4: Network-enabled task manager and system monitor
+kde-plasma/kwallet-pam 5.10.5-r1 5.11.3 5.11.4: KWallet PAM module to not enter password again
+kde-plasma/kwayland-integration 5.10.5 5.11.3 5.11.4: Provides integration plugins for various KDE frameworks for Wayland
+kde-plasma/kwin 5.10.5 5.11.3 5.11.4: KDE window manager
+kde-plasma/kwrited 5.10.5 5.11.3 5.11.4: KDE Plasma daemon listening for wall and write messages
+kde-plasma/libkscreen 5.10.5 5.11.3 5.11.4: Plasma screen management library
+kde-plasma/libksysguard 5.10.5 5.11.3 5.11.4: Task management and system monitoring library
+kde-plasma/milou 5.10.5 5.11.3 5.11.4: Dedicated search application built on top of Baloo
+kde-plasma/oxygen 5.10.5 5.11.3 5.11.4: Oxygen visual style for the Plasma desktop
 kde-plasma/oxygen-fonts 5.4.3: Desktop/GUI font family for integrated use with the KDE Plasma desktop
-kde-plasma/plasma-desktop 5.10.5 5.11.3: KDE Plasma desktop
-kde-plasma/plasma-integration 5.10.5 5.11.3: Qt Platform Theme integration plugins for the Plasma workspaces
-kde-plasma/plasma-meta 5.10.5 5.11.3: Merge this to pull in all Plasma 5 packages
-kde-plasma/plasma-nm 5.10.5 5.11.3: KDE Plasma applet for NetworkManager
-kde-plasma/plasma-pa 5.10.5 5.11.3: Plasma applet for audio volume management using PulseAudio
-kde-plasma/plasma-sdk 5.10.5 5.11.3: Useful applications for Plasma development
-kde-plasma/plasma-vault 5.11.3: Plasma applet and services for creating encrypted vaults
-kde-plasma/plasma-workspace 5.10.5-r1 5.11.3: KDE Plasma workspace
-kde-plasma/plasma-workspace-wallpapers 5.10.5 5.11.3: Additional wallpapers for the Plasma workspace
-kde-plasma/plymouth-kcm 5.10.5 5.11.3: KDE Plasma control module for Plymouth
-kde-plasma/polkit-kde-agent 5.10.5 5.11.3: PolKit agent module for KDE Plasma
-kde-plasma/powerdevil 5.10.5 5.11.3: Power management for KDE Plasma Shell
+kde-plasma/plasma-desktop 5.10.5 5.11.3 5.11.4: KDE Plasma desktop
+kde-plasma/plasma-integration 5.10.5 5.11.3 5.11.4: Qt Platform Theme integration plugins for the Plasma workspaces
+kde-plasma/plasma-meta 5.10.5 5.11.3 5.11.4: Merge this to pull in all Plasma 5 packages
+kde-plasma/plasma-nm 5.10.5 5.11.3 5.11.4: KDE Plasma applet for NetworkManager
+kde-plasma/plasma-pa 5.10.5 5.11.3 5.11.4: Plasma applet for audio volume management using PulseAudio
+kde-plasma/plasma-sdk 5.10.5 5.11.3 5.11.4: Useful applications for Plasma development
+kde-plasma/plasma-vault 5.11.3 5.11.4: Plasma applet and services for creating encrypted vaults
+kde-plasma/plasma-workspace 5.10.5-r1 5.11.3 5.11.4: KDE Plasma workspace
+kde-plasma/plasma-workspace-wallpapers 5.10.5 5.11.3 5.11.4: Additional wallpapers for the Plasma workspace
+kde-plasma/plymouth-kcm 5.10.5 5.11.3 5.11.4: KDE Plasma control module for Plymouth
+kde-plasma/polkit-kde-agent 5.10.5 5.11.3 5.11.4: PolKit agent module for KDE Plasma
+kde-plasma/powerdevil 5.10.5 5.11.3 5.11.4: Power management for KDE Plasma Shell
 kde-plasma/qguiplatformplugin_kde 4.11.22: Helps integration of pure Qt applications with KDE Plasma
-kde-plasma/sddm-kcm 5.10.5 5.11.3: KDE Plasma control module for SDDM
-kde-plasma/systemsettings 5.10.5 5.11.3: System settings utility
-kde-plasma/user-manager 5.10.5 5.11.3: Simple system settings module to manage the users of your system
+kde-plasma/sddm-kcm 5.10.5 5.11.3 5.11.4: KDE Plasma control module for SDDM
+kde-plasma/systemsettings 5.10.5 5.11.3 5.11.4: System settings utility
+kde-plasma/user-manager 5.10.5 5.11.3 5.11.4: Simple system settings module to manage the users of your system
 lxde-base/lxappearance 0.5.5 0.6.2 0.6.3: LXDE GTK+ theme switcher
 lxde-base/lxappearance-obconf 0.2.1 0.2.3: LXAppearance plugin for configuring OpenBox
 lxde-base/lxde-common 0.5.5-r3 0.99.1: LXDE Session default configuration files and nuoveXT2 iconset
@@ -18437,7 +18437,7 @@ www-client/midori 0.5.11-r2: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.6: a free, open source web browser
 www-client/opera 12.16_p1860-r1 49.0.2725.34 49.0.2725.39: A fast and secure web browser
-www-client/opera-beta 50.0.2762.9 50.0.2762.14: A fast and secure web browser
+www-client/opera-beta 50.0.2762.14 50.0.2762.18: A fast and secure web browser
 www-client/opera-developer 51.0.2776.0 51.0.2781.0: A fast and secure web browser
 www-client/otter 0.9.91-r1 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0-r1 2.1.1: A headless WebKit scriptable with a JavaScript API
