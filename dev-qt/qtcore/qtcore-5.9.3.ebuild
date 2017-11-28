@@ -24,6 +24,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}/${P}-avx.patch" )
+
 QT5_TARGET_SUBDIRS=(
 	src/tools/bootstrap
 	src/tools/moc

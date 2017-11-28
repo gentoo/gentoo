@@ -29,6 +29,11 @@ DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${P}/bindings/python
 
+src_unpack() {
+	git-r3_fetch
+	git-r3_checkout '' '' '' bindings/python
+}
+
 src_test() {
 	python_foreach_impl python -m unittest discover -v || die
 }
