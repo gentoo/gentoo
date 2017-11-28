@@ -1,10 +1,6 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (15 Nov 2017)
-# Macro Editor requires unkeyworded app-i18n/fcitx-qt5:4.
->=app-i18n/fcitx-unikey-0.2.7 macro-editor
-
 # Sergei Trofimovich <slyfox@gentoo.org> (3 Oct 2017)
 # Incomplete support, bug #605878.
 net-vpn/tor seccomp
