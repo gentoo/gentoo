@@ -18442,7 +18442,7 @@ www-client/otter 0.9.91-r1 9999: Project aiming to recreate classic Opera (12.x)
 www-client/phantomjs 1.9.8 2.0.0-r1 2.1.1: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.12.1 0.13 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qupzilla 2.1.2 2.2.0 2.2.1: A cross-platform web browser using QtWebEngine
-www-client/qutebrowser 1.0.2 1.0.3 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine
+www-client/qutebrowser 1.0.2 1.0.3 1.0.4 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine
 www-client/ripe-atlas-cousteau 1.0.6 1.0.7 1.2: A Python wrapper around the RIPE Atlas API
 www-client/seamonkey 2.46-r1 2.48 2.48-r1 2.49.4.0_p0: Seamonkey Web Browser
 www-client/seamonkey-bin 2.48 2.49.1_rc2: Mozilla Application Suite - web browser, email, HTML editor, IRC
