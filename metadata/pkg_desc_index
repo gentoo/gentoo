@@ -1488,20 +1488,20 @@ app-i18n/dbskkd-cdb 2.00 3.00: SKK dictionary server based on cdb
 app-i18n/enca 1.19-r1: Detect and convert encoding of text files
 app-i18n/fbiterm 0.5-r2: Framebuffer internationalized terminal emulator
 app-i18n/fbterm 1.7-r3: Fast terminal emulator for the Linux framebuffer
-app-i18n/fcitx 4.2.9.1 4.2.9.2 4.2.9.3 4.2.9.4 4.2.9.5 4.9999: Fcitx (Flexible Context-aware Input Tool with eXtension) input method framework
-app-i18n/fcitx-anthy 0.1.1 0.2.1 0.2.2 0.2.3 4.9999: Japanese Anthy input methods for Fcitx
-app-i18n/fcitx-chewing 0.2.0 0.2.2 0.2.3 4.9999: Chinese Chewing input method for Fcitx
-app-i18n/fcitx-cloudpinyin 0.3.1 0.3.4 0.3.5 4.9999: Internet look-up support for Chinese Pinyin input methods for Fcitx
-app-i18n/fcitx-configtool 0.4.6 0.4.8 0.4.9 0.4.10 4.9999: GTK+ GUI configuration tool for Fcitx
-app-i18n/fcitx-hangul 0.2.1 0.3.0 0.3.1 4.9999: Korean Hangul input method for Fcitx
-app-i18n/fcitx-libpinyin 0.2.1 0.3.1 0.3.3 0.5.1 0.5.2 0.5.3 4.9999: Chinese LibPinyin input methods for Fcitx
-app-i18n/fcitx-m17n 0.2.3 0.2.4 4.9999: m17n-provided input methods for Fcitx
-app-i18n/fcitx-qt5 1.0.5 1.0.6 1.1.0 1.1.1 1.2.0 4.9999: Fcitx input method module for Qt 5
-app-i18n/fcitx-rime 0.2.0 0.3.1 0.3.2 4.9999: Chinese RIME input method for Fcitx
-app-i18n/fcitx-sayura 0.1.1 0.1.2 4.9999: Sinhala Sayura input method for Fcitx
-app-i18n/fcitx-sunpinyin 0.4.0 0.4.1 0.4.2 4.9999: Chinese SunPinyin input method for Fcitx
-app-i18n/fcitx-table-extra 0.3.3 0.3.6 0.3.7 0.3.8 4.9999: Extra Chinese table input methods for Fcitx
-app-i18n/fcitx-unikey 0.2.0 0.2.4 0.2.5 0.2.6 0.2.7 4.9999: Vietnamese Unikey input methods for Fcitx
+app-i18n/fcitx 4.2.9.4 4.2.9.5 4.9999: Fcitx (Flexible Context-aware Input Tool with eXtension) input method framework
+app-i18n/fcitx-anthy 0.2.3 4.9999: Japanese Anthy input methods for Fcitx
+app-i18n/fcitx-chewing 0.2.3 4.9999: Chinese Chewing input method for Fcitx
+app-i18n/fcitx-cloudpinyin 0.3.5 0.3.6 4.9999: Internet look-up support for Chinese Pinyin input methods for Fcitx
+app-i18n/fcitx-configtool 0.4.10 4.9999: GTK+ GUI configuration tool for Fcitx
+app-i18n/fcitx-hangul 0.3.1 4.9999: Korean Hangul input method for Fcitx
+app-i18n/fcitx-libpinyin 0.5.3 4.9999: Chinese LibPinyin input methods for Fcitx
+app-i18n/fcitx-m17n 0.2.4 4.9999: m17n-provided input methods for Fcitx
+app-i18n/fcitx-qt5 1.1.1 1.2.0 1.2.1 4.9999: Fcitx input method module for Qt 5
+app-i18n/fcitx-rime 0.3.2 4.9999: Chinese RIME input method for Fcitx
+app-i18n/fcitx-sayura 0.1.2 4.9999: Sinhala Sayura input method for Fcitx
+app-i18n/fcitx-sunpinyin 0.4.2 4.9999: Chinese SunPinyin input method for Fcitx
+app-i18n/fcitx-table-extra 0.3.8 4.9999: Extra Chinese table input methods for Fcitx
+app-i18n/fcitx-unikey 0.2.6 0.2.7 4.9999: Vietnamese Unikey input methods for Fcitx
 app-i18n/freewnn 1.1.1_alpha22 1.1.1_alpha23: Network-Extensible Kana-to-Kanji Conversion System
 app-i18n/ibus 1.5.12 1.5.15 1.5.16: Intelligent Input Bus for Linux / Unix OS
 app-i18n/ibus-anthy 1.5.4 1.5.9: Japanese Anthy engine for IBus
@@ -1512,7 +1512,7 @@ app-i18n/ibus-handwrite 2.1.4-r1 3.0.0: Hand write recognition/input for IBus
 app-i18n/ibus-hangul 1.5.0: The Hangul engine for IBus input platform
 app-i18n/ibus-input-pad 1.4.99_pre20140916: Input Pad for IBus
 app-i18n/ibus-kkc 1.5.22: Japanese Kana Kanji conversion engine for IBus
-app-i18n/ibus-libpinyin 1.6.92 1.7.4 1.9.0 1.9.1 1.9.2: Intelligent Pinyin engine based on libpinyin for IBus
+app-i18n/ibus-libpinyin 1.9.2: Intelligent Pinyin engine based on libpinyin for IBus
 app-i18n/ibus-m17n 1.3.2 1.3.4: M17N engine for IBus
 app-i18n/ibus-pinyin 1.5.0-r2: Chinese Pinyin and Bopomofo engines for IBus
 app-i18n/ibus-qt 1.3.3: Qt IBus library and Qt input method plugin
@@ -1536,7 +1536,7 @@ app-i18n/jfbterm 0.4.7-r4: The J Framebuffer Terminal/Multilingual Enhancement w
 app-i18n/kakasi 2.3.4-r1: Converts Japanese text between kanji, kana, and romaji
 app-i18n/kanjipad 2.0.0: Japanese handwriting recognition tool
 app-i18n/kcc 1.0: A Kanji code converter
-app-i18n/kcm-fcitx 0.4.3 0.5.3 0.5.4 0.5.5 4.4.9999 4.5.9999: KDE configuration module for Fcitx
+app-i18n/kcm-fcitx 0.4.3 0.5.5 4.4.9999 4.5.9999: KDE configuration module for Fcitx
 app-i18n/kde-l10n-scripts 9999: Set of scripts to manage KDE translation files
 app-i18n/kimera 2.11-r1 2.11-r2: A Japanese input method which supports the XIM protocol
 app-i18n/kinput2 3.1-r2: A Japanese input server which supports the XIM protocol
@@ -1545,8 +1545,8 @@ app-i18n/libchewing 0.5.1 9999: Intelligent phonetic (Zhuyin/Bopomofo) input met
 app-i18n/libguess 1.1 1.2: A high-speed character set detection library
 app-i18n/libhangul 0.1.0: Library for hangul input method logic, hanja dictionary
 app-i18n/libkkc 0.3.5: Japanese Kana Kanji conversion input method library
-app-i18n/libpinyin 0.8.0 1.0.0 1.3.0-r1 2.0.92 2.1.0 9999: Library to deal with pinyin
-app-i18n/librime 0.9.9 1.2 1.2.9: Rime Input Method Engine library
+app-i18n/libpinyin 2.1.0 9999: Library to deal with pinyin
+app-i18n/librime 1.2.9: Rime Input Method Engine library
 app-i18n/libskk 1.0.1 1.0.2: GObject-based library to deal with Japanese kana-to-kanji conversion method
 app-i18n/libtabe 0.2.6 0.2.6.1.2: Libtabe provides bimsphone support for xcin-2.5+
 app-i18n/man-pages-da 0.1.2: A somewhat comprehensive collection of Danish Linux man pages
@@ -11743,7 +11743,7 @@ gnome-extra/cinnamon-control-center 2.8.1 3.0.1 3.2.0 3.2.1 3.6.5: Cinnamons's m
 gnome-extra/cinnamon-desktop 2.8.1 3.0.2 3.2.0 3.2.4 3.4.2 3.6.2: A collection of libraries and utilites used by Cinnamon
 gnome-extra/cinnamon-menus 2.8.0 3.0.2 3.2.0 3.4.0 3.6.0: Cinnamon's library for the Desktop Menu fd.o specification
 gnome-extra/cinnamon-screensaver 2.8.0-r1 3.0.1 3.2.2 3.2.2-r1 3.2.6 3.2.13-r1 3.2.13-r2 3.4.1 3.4.2 3.6.1: Screensaver for Cinnamon
-gnome-extra/cinnamon-session 2.8.2 2.8.3 3.0.1 3.2.0 3.4.1 3.4.2 3.6.1 3.6.1-r1: Cinnamon session manager
+gnome-extra/cinnamon-session 2.8.2 2.8.3 3.0.1 3.2.0 3.4.1 3.4.2 3.6.1 3.6.1-r1 3.6.1-r2: Cinnamon session manager
 gnome-extra/cinnamon-settings-daemon 2.8.3 2.8.4 3.0.1 3.2.0 3.4.2 3.4.4 3.6.1: Cinnamon's settings daemon
 gnome-extra/cinnamon-translations 2.8.3 3.0.3 3.2.0 3.6.3: Translation data for Cinnamon
 gnome-extra/cjs 3.0.1 3.4.1 3.4.4 3.6.1: Linux Mint's fork of gjs for Cinnamon
@@ -15294,7 +15294,7 @@ net-misc/java-wakeonlan 1.0.0-r2: A wakeonlan commandline tool and Java library
 net-misc/jlj 2.12: A simple console LiveJournal entry system
 net-misc/jrdesktop 0.3.1.0: Java Remote Desktop (jrdesktop) software for viewing and/or controlling a distance PC
 net-misc/jwhois 3.2.3-r1 4.0 4.0-r1: Advanced Internet Whois client capable of recursive queries
-net-misc/kafka-bin 0.10.0.1 0.10.1.0 0.10.1.0-r1 0.10.1.1 0.10.2.0 0.10.2.1 0.10.2.1-r1 0.11.0.0 0.11.0.0-r1 0.11.0.1 1.0.0: A high-throughput distributed messaging system
+net-misc/kafka-bin 0.10.0.1 0.10.1.0 0.10.1.0-r1 0.10.1.1 0.10.2.0 0.10.2.1 0.10.2.1-r1 0.11.0.0 0.11.0.0-r1 0.11.0.1 0.11.0.2 1.0.0: A high-throughput distributed messaging system
 net-misc/kafkacat 1.3.1: Generic command line non-JVM Apache Kafka producer and consumer
 net-misc/kea 1.2.0-r1 1.3.0: High-performance production grade DHCPv4 & DHCPv6 server
 net-misc/keychain 2.8.1 2.8.2 2.8.3 2.8.4: Agent manager for OpenSSH, ssh.com, Sun SSH, and GnuPG
