@@ -1850,7 +1850,7 @@ app-misc/joy2key 1.6.3-r1: An application that translates joystick events to key
 app-misc/joymouse 0.5: An application that translates joystick events to mouse events
 app-misc/jq 1.5-r3: A lightweight and flexible command-line JSON processor
 app-misc/kanatest 0.4.8: Visual flashcard tool for memorizing the Japanese Hiragana and Katakana alphabet
-app-misc/khal 0.8.4 0.9.0 0.9.3 0.9.4 0.9.5 0.9.6 0.9.7: A CalDAV based calendar
+app-misc/khal 0.9.7: A CalDAV based calendar
 app-misc/klavaro 3.0.1: Another free touch typing tutor program
 app-misc/ktoblzcheck 1.48: Library to check account numbers and bank codes of German banks
 app-misc/lcd4linux 0.10.1_rc2-r4: Shows system and ISDN information on an external display or in a X11 window
@@ -4592,7 +4592,7 @@ dev-lang/parrot 7.1.0 7.5.0 7.11.0 8.1.0: Virtual machine designed to compile an
 dev-lang/pasm 1.7: A portable assembler for processors of the PowerPC family
 dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.24.1-r2 5.24.2 5.24.3 5.26.0 5.26.1 5.26.1-r1 5.26.9999 5.28.9999: Larry Wall's Practical Extraction and Report Language
-dev-lang/php 5.6.32 7.0.25 7.1.11 7.2.0_rc6: The PHP language runtime engine
+dev-lang/php 5.6.32 7.0.25 7.0.26 7.1.11 7.2.0_rc6: The PHP language runtime engine
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2 5.6: Poly/ML is a full implementation of Standard ML
 dev-lang/python 2.7.12 2.7.14 2.7.14-r1 3.4.5 3.4.6 3.4.6-r1 3.5.4 3.5.4-r1 3.6.3 3.6.3-r1: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.4 2.4.5 9999: Python script wrapper
