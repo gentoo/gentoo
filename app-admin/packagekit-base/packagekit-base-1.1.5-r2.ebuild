@@ -43,9 +43,11 @@ COMMON_DEPEND="
 	networkmanager? ( >=net-misc/networkmanager-0.6.4:= )
 	systemd? ( >=sys-apps/systemd-204 )
 "
+# vala-common needed for eautoreconf
 DEPEND="${COMMON_DEPEND}
 	>=dev-cpp/glibmm-2.4
 	dev-libs/libxslt[${PYTHON_USEDEP}]
+	dev-libs/vala-common
 	>=dev-util/gtk-doc-am-1.11
 	>=dev-util/intltool-0.35.0
 	sys-devel/gettext
