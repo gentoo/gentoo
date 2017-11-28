@@ -1,6 +1,5 @@
 Title: Old Wine versions moving to wine-overlay
 Author: NP-Hardass <NP-Hardass@gentoo.org>
-Content-Type: text/plain
 Posted: 2017-11-21
 Revision: 1
 News-Item-Format: 2.0
