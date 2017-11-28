@@ -3,10 +3,10 @@ DEPEND=virtual/perl-File-Spec virtual/perl-File-Temp virtual/perl-HTTP-Tiny virt
 DESCRIPTION=Find and verify functionality of the gnuplot executable
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Alien-Gnuplot/
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-File-Spec virtual/perl-File-Temp virtual/perl-HTTP-Tiny virtual/perl-Time-HiRes sci-visualization/gnuplot dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/Z/ZO/ZOWIE/Alien-Gnuplot-1.033.tar.gz
 _eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
-_md5_=bdc935088b59fdeab71b1ccbf41a6f74
+_md5_=9643570af7a34f39806900a11641fe29

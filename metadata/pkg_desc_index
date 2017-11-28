@@ -553,7 +553,7 @@ app-crypt/kali-archive-keyring 2015.2: GnuPG archive keys of the Kali archive
 app-crypt/kbfs 9999: Keybase Filesystem (KBFS)
 app-crypt/kencfs 1.6.4: GUI frontend for encfs
 app-crypt/kencfs-plasma 2.0.1_alpha: GUI frontend for encfs
-app-crypt/keybase 1.0.21 1.0.33 9999: Client for keybase.io
+app-crypt/keybase 1.0.21 1.0.33 1.0.36 9999: Client for keybase.io
 app-crypt/keylookup 2.2 2.2-r9999: A tool to fetch PGP keys from keyservers
 app-crypt/keynote 2.3-r3: The KeyNote Trust-Management System
 app-crypt/kstart 4.1 4.2: Modified versions of kinit for refreshing kerberos tickets automatically
