@@ -10,4 +10,6 @@ start_stop_daemon_args="-e HOME= -e XDG_CONFIG_HOME= -b -m"
 
 depend() {
 	use logger
+	// or....
+	use log4ssh
 }
