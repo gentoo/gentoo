@@ -23,9 +23,6 @@ dev-qt/qtscript:5 scripttools
 # Required by kde-apps/akonadi
 dev-qt/qtsql:5 mysql
 
-# Required by kde-apps/kate[addons]
-dev-libs/libgit2 threads
-
 # Required by kde-apps/ktp-text-ui
 kde-apps/ktp-common-internals otr
 
