@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>blopsalot@gmail.com</email>
+		<name>Paul Joseph</name>
+		<description>Proxy maintainer. CC him on bugs</description>
+	</maintainer>
+	<upstream>
+		<changelog>https://github.com/slacka/WoeUSB/commits/master</changelog>
+		<doc>https://github.com/slacka/WoeUSB/blob/master/README.md</doc>
+	</upstream>
+</pkgmetadata>
