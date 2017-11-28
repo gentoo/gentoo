@@ -7,5 +7,5 @@ IUSE=doc memcached pam ssl static-libs postgres_targets_postgres9_6 postgres_tar
 LICENSE=BSD
 RDEPEND=postgres_targets_postgres9_6? ( dev-db/postgresql:9.6= ) postgres_targets_postgres9_5? ( dev-db/postgresql:9.5= ) postgres_targets_postgres9_4? ( dev-db/postgresql:9.4= ) postgres_targets_postgres9_3? ( dev-db/postgresql:9.3= ) postgres_targets_postgres9_2? ( dev-db/postgresql:9.2= ) net-libs/libnsl:0= memcached? ( dev-libs/libmemcached ) pam? ( sys-auth/pambase ) ssl? ( dev-libs/openssl:* )
 SLOT=0
-_eclasses_=git-r3	52a888802d25387c2c74cb845d1219bc	multibuild	72647e255187a1fadc81097b3657e5c3	postgres	c59d58664169a60e232dd018eae69172	postgres-multi	4ad3669c874bed68b375f87035e46db8	user	8bc2845510e2109af75e3eeac607ec81
+_eclasses_=git-r3	fec09a83ae965b041b47f5ff7c8ba29a	multibuild	72647e255187a1fadc81097b3657e5c3	postgres	c59d58664169a60e232dd018eae69172	postgres-multi	4ad3669c874bed68b375f87035e46db8	user	8bc2845510e2109af75e3eeac607ec81
 _md5_=d9c2c19aa064284af55be6688767072e

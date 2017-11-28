@@ -7,5 +7,5 @@ IUSE=test
 LICENSE=GPL-2+
 RDEPEND=!sys-apps/renameutils media-libs/fontconfig media-libs/libsdl2 media-libs/sdl2-ttf media-libs/freeimage
 SLOT=0
-_eclasses_=fdo-mime	995b19d3f30e956b4e1bc5a91fdc4ea7	git-r3	52a888802d25387c2c74cb845d1219bc
+_eclasses_=fdo-mime	995b19d3f30e956b4e1bc5a91fdc4ea7	git-r3	fec09a83ae965b041b47f5ff7c8ba29a
 _md5_=ae3755184b899151853e07076ee05a67

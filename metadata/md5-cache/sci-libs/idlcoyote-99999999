@@ -6,5 +6,5 @@ HOMEPAGE=http://www.idlcoyote.com/
 LICENSE=BSD GPL-2
 RDEPEND=dev-lang/gdl
 SLOT=0
-_eclasses_=git-r3	52a888802d25387c2c74cb845d1219bc
+_eclasses_=git-r3	fec09a83ae965b041b47f5ff7c8ba29a
 _md5_=99b27f681db45fbdc3c706419591c898

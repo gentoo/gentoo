@@ -5,5 +5,5 @@ EAPI=6
 HOMEPAGE=https://github.com/haubi/parity
 LICENSE=LGPL-3
 SLOT=0
-_eclasses_=git-r3	52a888802d25387c2c74cb845d1219bc
+_eclasses_=git-r3	fec09a83ae965b041b47f5ff7c8ba29a
 _md5_=3d7d2110306d25bad5b0a8cc784ae1f3
