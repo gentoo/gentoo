@@ -88,7 +88,7 @@ RESTRICT="test"
 # systemd-socket.patch from Fedora
 PATCHES=(
 	"${FILESDIR}/${PN}-2.2.0-dont-compress-manpages.patch"
-	"${FILESDIR}/${PN}-2.2.6-fix-install-perms.patch"
+	"${FILESDIR}/${PN}-2.2.4-fix-install-perms.patch"
 	"${FILESDIR}/${PN}-1.4.4-nostrip.patch"
 	"${FILESDIR}/${PN}-2.0.2-rename-systemd-service-files.patch"
 	"${FILESDIR}/${PN}-2.0.1-xinetd-installation-fix.patch"
