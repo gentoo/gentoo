@@ -248,6 +248,9 @@ EOF
 			ewarn "if you do not want this to happen."
 		fi
 	fi
+
+	has_version ">=sys-apps/openrc-0.35" || add_boot_init cgroups sysinit
+
 }
 
 # >=OpenRC-0.11.3 requires udev-mount to be in the sysinit runlevel with udev.
