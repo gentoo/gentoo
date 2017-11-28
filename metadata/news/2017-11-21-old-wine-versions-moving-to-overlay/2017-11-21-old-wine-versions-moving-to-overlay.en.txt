@@ -1,0 +1,38 @@
+Title: Old Wine versions moving to wine-overlay
+Author: NP-Hardass <NP-Hardass@gentoo.org>
+Content-Type: text/plain
+Posted: 2017-11-21
+Revision: 1
+News-Item-Format: 2.0
+Display-If-Installed: app-emulation/wine:0
+Display-If-Installed: app-emulation/wine-vanilla
+Display-If-Installed: app-emulation/wine-staging
+Display-If-Installed: app-emulation/wine-d3d9
+Display-If-Installed: app-emulation/wine-any
+
+To reduce the burden on main Gentoo repository, older versions of Wine
+will be available only in the wine overlay. These ebuilds will still be
+fully supported by the Gentoo Wine Project.  This will result in
+upstream stable releases and the several most recent upstream devel
+releases being the only versions in ::gentoo; all versions meeting the
+criteria for support within Gentoo [1] will be available in ::wine.
+
+To install the overlay you can either add the repos.conf file to your
+portage configuration directory, add the repository via layman, or add the
+repository via eselect-repository.
+
+* To add the repos.conf file:
+# wget https://dev.gentoo.org/~np-hardass/proj/wine/wine.conf -O \
+    /etc/portage/repos.conf/wine.conf
+
+Edit the /etc/portage/repos.conf/wine.conf file so that "location"
+points to your desired folder to install the overlay.
+# emaint sync --repo wine
+
+* To install the overlay via layman:
+# layman -a wine
+
+* To install the overlay via eselect-repository:
+# eselect repository enable wine
+
+[1] https://wiki.gentoo.org/wiki/Project:Wine/Policies_and_Procedures#Supported_versions
