@@ -30,12 +30,15 @@ COMMON_DEPEND="
 	x11-libs/libXtst
 	x11-libs/pango[X]
 	virtual/opengl
-	systemd? ( >=sys-apps/systemd-183 )
-	!systemd? ( >=sys-power/upower-pm-utils-0.9.23 )
+	systemd? ( >=sys-apps/systemd-183
+			   sys-auth/polkit )
+	!systemd? ( sys-power/upower
+			   sys-auth/polkit[elogind] )
 "
+
 RDEPEND="${COMMON_DEPEND}
 	>=gnome-extra/cinnamon-desktop-2.6[systemd=]
-	!systemd? ( sys-auth/elogind )
+	!systemd? ( sys-auth/elogind[policykit] )
 "
 DEPEND="${COMMON_DEPEND}
 	dev-libs/libxslt
@@ -45,13 +48,12 @@ DEPEND="${COMMON_DEPEND}
 
 	gnome-base/gnome-common
 "
-#	gnome-base/gnome-common for eautoreconf
 
 src_prepare() {
 	# make upower and logind check non-automagic
 	eapply "${FILESDIR}/${PN}-3.0.1-automagic.patch"
 	eapply "${FILESDIR}/${PN}-3.6.1-elogind.patch"
-	
+
 	eautoreconf
 	gnome2_src_prepare
 }
