@@ -138,7 +138,6 @@ app-emulation/ganeti monitoring
 
 # Mike Gilbert <floppym@gentoo.org> (03 Oct 2015)
 # Unmask stable-masked implementations for python-exec
-dev-lang/python-exec -python_targets_python3_5
 dev-lang/python-exec -python_targets_python3_6
 
 # Pacho Ramos <pacho@gentoo.org> (15 May 2015)
