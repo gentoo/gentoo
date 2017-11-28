@@ -4801,7 +4801,7 @@ dev-libs/libbulletml 0.0.6: A Library of Bullet Markup Language
 dev-libs/libburn 1.4.6 1.4.8-r1: Open-source library for reading, mastering and writing optical discs
 dev-libs/libbytesize 0.11 1.1 1.2: Tiny library providing a C "class" for working with arbitrary big sizes in bytes
 dev-libs/libcaldav 0.6.2: C library implementing client support for CalDAV
-dev-libs/libcdio 0.93 0.94-r1: A library to encapsulate CD-ROM reading and control
+dev-libs/libcdio 0.93 0.94-r1 1.0.0-r1: A library to encapsulate CD-ROM reading and control
 dev-libs/libcdio-paranoia 0.90_p1-r1 0.93_p1 0.93_p1-r1 0.94_p1-r1 0.94_p2: an advanced CDDA reader with error correction
 dev-libs/libcec 3.1.0-r1 4.0.2: Library for communicating with the Pulse-Eight USB HDMI-CEC Adaptor
 dev-libs/libcgroup 0.41 0.41-r4: Tools and libraries to configure and manage kernel control groups
