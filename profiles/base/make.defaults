@@ -113,12 +113,13 @@ PYTHONDONTWRITEBYTECODE="1"
 # Add default USE value for bootstrap and rename it from STAGE1_USE to BOOTSTRAP_USE
 # Add in expanded PYTHON_TARGETS or stage1 builds break because of USE="-* ${BOOTSTRAP_USE}"
 # This MUST be kept in sync with the PYTHON_TARGETS below
-BOOTSTRAP_USE="cxx unicode internal-glib python_targets_python3_4 python_targets_python2_7"
+BOOTSTRAP_USE="cxx unicode internal-glib python_targets_python3_5 python_targets_python2_7"
 
 # Mike Gilbert <floppym@gentoo.org> (15 May 2012)
 # Default target(s) for python-r1.eclass
-PYTHON_TARGETS="python2_7 python3_4"
-PYTHON_SINGLE_TARGET="python3_4"
+# Updated to python3_5 on 28 Nov 2017
+PYTHON_TARGETS="python2_7 python3_5"
+PYTHON_SINGLE_TARGET="python3_5"
 
 # Michał Górny <mgorny@gentoo.org> (10 Aug 2013)
 # Moved from portage's make.globals.
