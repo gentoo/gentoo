@@ -43,6 +43,10 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}"/${P/_/-}
 
+PATCHES=(
+	"${FILESDIR}"/CVE-2017-15091-4.0.4.patch
+)
+
 src_configure() {
 	local dynmodules="pipe bind" # the default backends, always enabled
 
