@@ -29,12 +29,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Ian Stakenvicius <axs@gentoo.org> (29 Nov 2017)
-# New method of installing enigmail is broken, thunderbird 52.5 does not load it
-# Mask temporarily until a fix is in place.
->=mail-client/thunderbird-52.5.0
->=x11-plugins/enigmail-1.9.8.3-r1
-
 # Jonas Stein <jstein@gentoo.org> (29 Nov 2017)
 # The old yafaray-0.1.1 depends on qt4 and has bugs we can not fix. 
 # (bug #321169) and (bug #595684)
