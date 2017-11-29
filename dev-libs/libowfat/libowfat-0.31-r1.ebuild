@@ -1,8 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit flag-o-matic toolchain-funcs eutils
+EAPI=6
+
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="reimplement libdjb - excellent libraries from Dan Bernstein"
 SRC_URI="https://www.fefe.de/${PN}/${P}.tar.xz"
@@ -35,7 +36,7 @@ src_compile() {
 src_install () {
 	emake -j1 \
 		DESTDIR="${D}" \
-		LIBDIR="/usr/lib" \
+		LIBDIR="/usr/$(get_libdir)" \
 		MAN3DIR="/usr/share/man/man3" \
 		INCLUDEDIR="/usr/include/libowfat" \
 		install
