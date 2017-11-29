@@ -1048,7 +1048,7 @@ app-editors/lpe 1.2.6.13: a lightweight programmers editor
 app-editors/mg 20161005 20170401 20170828 20171014: MicroGnuEmacs, a port from the BSDs
 app-editors/moe 1.6 1.7: A powerful and user-friendly console text editor
 app-editors/mousepad 0.4.0 0.4.0-r1: GTK+-based editor for the Xfce Desktop Environment
-app-editors/nano 2.7.5 2.8.7 2.9.0 9999: GNU GPL'd Pico clone with more functionality
+app-editors/nano 2.7.5 2.8.7 2.9.0 2.9.1 9999: GNU GPL'd Pico clone with more functionality
 app-editors/ne 3.0.1 3.0.1-r1 3.1.1: the nice editor, easy to use for the beginner and powerful for the wizard
 app-editors/nedit 5.6-r1: Multi-purpose text editor for the X Window System
 app-editors/neovim 0.1.0 0.1.1-r1 0.1.2 0.1.3 0.1.4 0.1.5 0.1.5-r1 0.1.6 0.1.7 0.2.0 9999: Vim-fork focused on extensibility and agility.
@@ -1731,7 +1731,7 @@ app-misc/brewtarget 2.3.1: Application to create and manage beer recipes
 app-misc/btail 0.3: Bayesian logfile filter
 app-misc/byobu 5.123: A set of profiles for the GNU Screen console window manager (app-misc/screen)
 app-misc/c_rehash 1.0.2g_p8 1.7-r1: c_rehash script from OpenSSL
-app-misc/ca-certificates 20161130.3.30-r1 20161130.3.30.2 20170717.3.32.1 20170717.3.33 20170717.3.34: Common CA Certificates PEM files
+app-misc/ca-certificates 20161130.3.30-r1 20161130.3.30.2 20170717.3.32.1 20170717.3.34 20170717.3.34.1: Common CA Certificates PEM files
 app-misc/cadubi 1.3: CADUBI is an application that allows you to draw ASCII-Art images
 app-misc/calendar 0.9.1 0.9.1-r1: Standard unix calendar program for Linux, ported from OpenBSD
 app-misc/carbon-c-relay 3.0 3.1-r1 3.2: Enhanced C version of Carbon relay, aggregator and rewriter
@@ -5024,7 +5024,7 @@ dev-libs/newt 0.52.15 0.52.18 0.52.20: Redhat's Newt windowing toolkit developme
 dev-libs/npth 1.3 1.4 1.5: New GNU Portable Threads Library
 dev-libs/nsgenbind 0.4: generate javascript to dom bindings from w3c webidl files
 dev-libs/nspr 4.13.1 4.16 4.17: Netscape Portable Runtime
-dev-libs/nss 3.29.5 3.32.1 3.33 3.34: Mozilla's Network Security Services library that implements PKI support
+dev-libs/nss 3.29.5 3.32.1 3.34 3.34.1: Mozilla's Network Security Services library that implements PKI support
 dev-libs/ntl 5.5.2 6.1.0 9.3.0 9.6.4 10.5.0: High-performance and portable Number Theory C++ library
 dev-libs/ocl-icd 2.1.3 2.2.3 2.2.8 2.2.11: Alternative to vendor specific OpenCL ICD loaders
 dev-libs/onigmo 6.1.3: Onigmo is a regular expressions library forked from Oniguruma
@@ -7271,7 +7271,7 @@ dev-php/twig 1.31.0: PHP templating engine with syntax similar to Django
 dev-php/webmozart-assert 1.2.0: Assertions to validate method input/output with nice error messages
 dev-php/xcache 3.2.0-r2: A fast and stable PHP opcode cacher
 dev-php/xdebug 2.4.1 2.5.0 2.5.3 2.5.5: A PHP debugging and profiling extension
-dev-php/xdebug-client 2.4.1 2.5.0 2.5.3 2.5.5: Xdebug client for the Common Debugger Protocol (DBGP)
+dev-php/xdebug-client 2.4.1 2.5.0 2.5.3 2.5.5-r1: Xdebug client for the Common Debugger Protocol (DBGP)
 dev-php/xhprof 0.9.4_p20150226-r1: A Hierarchical Profiler for PHP
 dev-python/3to2 1.1.1 1.1.1-r1: Tool to refactor valid 3.x syntax into valid 2.x syntax
 dev-python/APScheduler 3.1.0 3.2.0 3.3.1: In-process task scheduler with Cron-like capabilities
@@ -8985,7 +8985,7 @@ dev-python/w3lib 1.13.0 1.17.0 1.18.0: Python library of web-related functions
 dev-python/waitress 1.0.1 1.0.2: A pure-Python WSGI server
 dev-python/warlock 1.1.0 1.2.0: Python object model built on JSON schema and JSON patch
 dev-python/watchdog 0.8.3-r1 0.8.3-r2: Python API and shell utilities to monitor file system events
-dev-python/wcsaxes 0.8 0.9: Framework for plotting astronomical and geospatial data
+dev-python/wcsaxes 0.8 0.9 0.9-r1: Framework for plotting astronomical and geospatial data
 dev-python/wcwidth 0.1.7 0.1.7-r1: Measures number of Terminal column cells of wide-character codes
 dev-python/weakrefmethod 1.0.3: Backport of WeakMethod from Python 3.4 to Python 2.6+
 dev-python/weasyprint 0.29 0.39 0.40 0.41: Visual rendering engine for HTML and CSS that can export to PDF
