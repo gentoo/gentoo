@@ -98,6 +98,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-transport-crash.patch # from git/in next release
 	epatch "${FILESDIR}"/${P}-address-expando-crash.patch # from git/in next release
 	epatch "${FILESDIR}"/${P}-CVE-2017-16943.patch # from git/in next release
+	epatch "${FILESDIR}"/${P}-CVE-2017-16944.patch # from git/in next release
 
 	if use maildir ; then
 		epatch "${FILESDIR}"/exim-4.20-maildir.patch
