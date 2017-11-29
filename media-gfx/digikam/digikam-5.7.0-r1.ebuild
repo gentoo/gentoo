@@ -106,6 +106,8 @@ RDEPEND="${COMMON_DEPEND}
 RESTRICT=test
 # bug 366505
 
+PATCHES=( "${FILESDIR}/${P}-qt-5.9.3.patch" )
+
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 	kde5_pkg_pretend

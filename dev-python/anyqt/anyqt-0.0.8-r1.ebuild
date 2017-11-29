@@ -18,4 +18,5 @@ IUSE=""
 
 RDEPEND=""
 
-DEPEND="${RDEPEND}"
+DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+	${RDEPEND}"
