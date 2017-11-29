@@ -551,7 +551,6 @@ app-crypt/jetring 0.25: GPG keyring maintenance using changesets
 app-crypt/johntheripper 1.7.9-r6 1.7.9-r10 1.7.9-r11: fast password cracker
 app-crypt/kali-archive-keyring 2015.2: GnuPG archive keys of the Kali archive
 app-crypt/kbfs 9999: Keybase Filesystem (KBFS)
-app-crypt/kencfs 1.6.4: GUI frontend for encfs
 app-crypt/kencfs-plasma 2.0.1_alpha: GUI frontend for encfs
 app-crypt/keybase 1.0.21 1.0.33 1.0.36 9999: Client for keybase.io
 app-crypt/keylookup 2.2 2.2-r9999: A tool to fetch PGP keys from keyservers
@@ -1036,7 +1035,7 @@ app-editors/joe 4.2 4.3-r1 4.4: A free ASCII-Text Screen Editor for UNIX
 app-editors/jove 4.16.0.73: Jonathan's Own Version of Emacs, a light emacs-like editor without LISP bindings
 app-editors/juffed 0.10_p20160323: QScintilla-based tabbed text editor with syntax highlighting
 app-editors/jupp 3.1_p27 3.1_p30: portable version of JOE's Own Editor
-app-editors/kakoune 0_pre20160620 0_pre20170523 9999: Selection-oriented code editor inspired by vim
+app-editors/kakoune 0_pre20171120 9999: Selection-oriented code editor inspired by vim
 app-editors/kile 2.1.3-r3 2.9.91: Latex Editor and TeX shell based on KDE Frameworks
 app-editors/latexila 3.22.1 3.24.2 3.24.3: Integrated LaTeX environment for GNOME
 app-editors/le 1.14.3 1.16.1 1.16.3 1.16.5: Terminal text editor
@@ -4916,7 +4915,7 @@ dev-libs/liboobs 3.0.0: Liboobs is a wrapping library to the System Tools Backen
 dev-libs/liboop 1.0-r1: low-level event loop management library for POSIX-based operating systems
 dev-libs/liborcus 0.12.1 0.13.1 9999: Standalone file import filter library for spreadsheet documents
 dev-libs/libotf 0.9.13: Library for handling OpenType fonts (OTF)
-dev-libs/libowfat 0.29 0.30 0.31: reimplement libdjb - excellent libraries from Dan Bernstein
+dev-libs/libowfat 0.29 0.30 0.31 0.31-r1: reimplement libdjb - excellent libraries from Dan Bernstein
 dev-libs/libp11 0.4.4: Abstraction layer to simplify PKCS#11 API
 dev-libs/libparserutils 0.2.3: library for building efficient parsers, written in C
 dev-libs/libpcre 8.40-r1 8.41 8.41-r1: Perl-compatible regular expression library
@@ -5100,7 +5099,7 @@ dev-libs/tntnet 2.2.1 2.2.1-r1: Modular, multithreaded web application server ex
 dev-libs/totem-pl-parser 3.10.7 3.10.8: Playlist parsing library
 dev-libs/tre 0.8.0-r1: Lightweight, robust, and efficient POSIX compliant regexp matching library
 dev-libs/tut 2013.12.18 2016.12.19: C++ Template Unit Test Framework
-dev-libs/tvision 2.1.0_pre2-r4: Text User Interface that implements the well known CUA widgets
+dev-libs/tvision 2.1.0_pre2-r4 2.2.1.4: Text User Interface that implements the well known CUA widgets
 dev-libs/tvmet 1.7.2-r2: Tiny Vector Matrix library using Expression Templates
 dev-libs/ucl 1.03-r1: the UCL Compression Library
 dev-libs/ucommon 6.0.3 6.1.10 6.3.1 6.5.2 6.5.7: Portable C++ runtime for threads and sockets
@@ -12752,7 +12751,7 @@ media-gfx/graphite2 1.3.10: Library providing rendering capabilities for complex
 media-gfx/graphviz 2.38.0-r1 2.40.1: Open Source Graph Visualization Software
 media-gfx/greycstoration 2.9-r2: Image regularization algorithm for denoising, inpainting and resizing
 media-gfx/grub-splashes 20091109: Collection of grub splashes
-media-gfx/gscan2pdf 1.8.8 1.8.9: Scan documents, perform OCR, produce PDFs and DjVus
+media-gfx/gscan2pdf 1.8.8 1.8.9 1.8.10: Scan documents, perform OCR, produce PDFs and DjVus
 media-gfx/gthumb 3.4.4.1 3.4.5: Image viewer and browser for Gnome
 media-gfx/gtkam 1.0: A frontend for gPhoto 2
 media-gfx/gtkimageview 1.6.4: A simple image viewer widget for GTK
@@ -13779,7 +13778,6 @@ media-sound/gnome-sound-recorder 3.21.92 3.24.0.1: Simple sound recorder
 media-sound/gnump3d 3.0-r1 3.0-r2: A streaming server for MP3, OGG vorbis and other streamable files
 media-sound/gogglesmm 1.1.9: Fast and light music player
 media-sound/gom 0.29.103-r1: Console Mixer Program for OSS
-media-sound/google-musicmanager 1.0.129.6633_beta 1.0.221.5230_beta 1.0.243.1116_beta: An application for adding music to your Google Music library
 media-sound/gpodder 3.9.1: A free cross-platform podcast aggregator
 media-sound/gqradio 1.9.2: An FM radio tuner app from the people who brought you GQmpeg
 media-sound/gramofile 1.6-r1 1.6_p9: Transfer sound from gramophone records to CD
@@ -13852,7 +13850,7 @@ media-sound/moosic 1.5.6-r1: Music player that focuses on easy playlist manageme
 media-sound/mp32ogg 0.11-r6: A perl script to convert MP3 files to Ogg Vorbis files
 media-sound/mp3_check 1.98 1.98-r1: MP3 consistency checker
 media-sound/mp3asm 0.1.3-r2: A command line tool to clean and edit mp3 files
-media-sound/mp3blaster 3.2.5-r1 3.2.5-r2 3.2.6: Text console based program for playing audio files
+media-sound/mp3blaster 3.2.6: Text console based program for playing audio files
 media-sound/mp3c 0.31-r1: console based mp3 ripper, with cddb support
 media-sound/mp3cat 0.4: mp3cat reads and writes MP3 files
 media-sound/mp3check 0.8.4 0.8.7: Checks mp3 files for consistency and prints several errors and warnings
@@ -14808,7 +14806,7 @@ net-irc/epic4 2.10.1: Epic4 IRC Client
 net-irc/epic5 1.1.10-r1: Epic5 IRC Client
 net-irc/hexchat 2.12.4-r1 2.12.4-r2 9999: Graphical IRC client based on XChat
 net-irc/ii 1.7-r1 9999: A minimalist FIFO and filesystem-based IRC client
-net-irc/inspircd 2.0.23 2.0.24-r1: Inspire IRCd - The Stable, High-Performance Modular IRCd
+net-irc/inspircd 2.0.23 2.0.25: Inspire IRCd - The Stable, High-Performance Modular IRCd
 net-irc/irc-server 2.11.1_p1-r4: RFC compliant IRC server
 net-irc/ircii 20110228 20111115: An IRC and ICB client that runs under most UNIX platforms
 net-irc/ircmap 0.99: Scripts to treate diagrams of IRC networks using the LINKS command
@@ -15006,7 +15004,7 @@ net-libs/net6 1.3.14 1.3.14-r1 1.3.14-r2: Network access framework for IPv4/IPv6
 net-libs/netembryo 0.1.1: a network abstraction library
 net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP protocols
 net-libs/nfqueue-bindings 0.5 0.6: High-level language bindings for libnetfilter_queue
-net-libs/nghttp2 1.10.0 1.19.0 1.26.0 1.27.0 9999: HTTP/2 C Library
+net-libs/nghttp2 1.10.0 1.19.0 1.27.0 1.28.0 9999: HTTP/2 C Library
 net-libs/nodejs 0.12.17 4.8.5 6.9.4 6.11.5 8.9.1-r1 9.2.0-r1: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-libs/ntirpc 1.4.1 1.5.2 1.5.3: Transport Independent RPC library for nfs-ganesha
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
@@ -15562,7 +15560,7 @@ net-news/newsbeuter 2.9-r3 9999: A RSS/Atom feed reader for the text console
 net-news/newsboat 2.10 2.10.1 9999: An RSS/Atom feed reader for text terminals
 net-news/quiterss 0.18.4 0.18.5 0.18.6 0.18.8 9999: A Qt-based RSS/Atom feed reader
 net-news/rawdog 2.19 2.20 2.22 2.22-r1: Rawdog, RSS Aggregator Without Delusions Of Grandeur
-net-news/rssguard 3.3.5 3.4.1 9999: A tiny RSS and Atom feed reader
+net-news/rssguard 3.3.5 3.4.1 3.5.5 9999: A tiny RSS and Atom feed reader
 net-news/rsstail 1.8: A tail-like RSS-reader
 net-news/rsstool 1.0.1_rc2: cmdline tool to read, parse, merge, and write RSS (and Atom) feeds
 net-news/snownews 1.5.12-r1: Snownews, a text-mode RSS/RDF newsreader
@@ -15722,7 +15720,6 @@ net-voip/telepathy-gabble 0.18.4: A XMPP connection manager, handles single and 
 net-voip/telepathy-haze 0.8.0 0.8.0-r1 0.8.0-r2: Telepathy connection manager providing libpurple supported protocols
 net-voip/telepathy-rakia 0.8.0: A SIP connection manager for Telepathy based around the Sofia-SIP library
 net-voip/telepathy-salut 0.8.1 0.8.1-r1: A link-local XMPP connection manager for Telepathy
-net-voip/vidyodesktop 3.6.3.017 3.6.7.010: Enterprise video conferencing platform
 net-voip/yate 5.4.0-r1 5.5.0-r1 9999: The Yate AV Suite
 net-vpn/6tunnel 0.12: TCP proxy for applications that don't speak IPv6
 net-vpn/aiccu 2007.01.15-r5: AICCU Client to configure an IPv6 tunnel to SixXS
