@@ -20,8 +20,6 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 DEPEND="${PYTHON_DEPS}"
 RDEPEND="${DEPEND}"
 
-DOCS=( README )
-
 src_prepare() {
 	default
 	sed -i -e "s:/etc/pydfrc:${EPREFIX}/etc/pydfrc:" "${PN}" || die
