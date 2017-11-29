@@ -9,7 +9,7 @@ DESCRIPTION="Plasma applet and services for creating encrypted vaults"
 HOMEPAGE+=" http://cukic.co/2017/02/03/vaults-encryption-in-plasma/"
 
 LICENSE="LGPL-3"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="
@@ -28,5 +28,5 @@ DEPEND="
 	$(add_qt_dep qtwidgets)
 "
 RDEPEND="${DEPEND}
-	|| ( sys-fs/cryfs sys-fs/encfs )
+	|| ( sys-fs/cryfs >=sys-fs/encfs-1.9.2 )
 "
