@@ -3,7 +3,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python3_4 )
+PYTHON_COMPAT=( python3_{4,5} )
 PYTHON_REQ_USE="xml"
 DISTUTILS_IN_SOURCE_BUILD=1
 inherit distutils-r1 eutils gnome2-utils versionator
