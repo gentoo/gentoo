@@ -3,15 +3,15 @@
 
 EAPI=6
 
-inherit flag-o-matic git-r3 qmake-utils
+inherit flag-o-matic qmake-utils
 
 DESCRIPTION="A tiny RSS and Atom feed reader"
 HOMEPAGE="https://github.com/martinrotter/rssguard"
-EGIT_REPO_URI="https://github.com/martinrotter/rssguard.git"
-EGIT_SUBMODULES=()
+SRC_URI="https://github.com/martinrotter/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
+KEYWORDS="~amd64"
 IUSE="debug webengine"
 MINQT="5.8:5"
 

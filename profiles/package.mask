@@ -255,22 +255,6 @@ app-text/jmupdf
 # Masked for removal in 30 days.
 app-backup/obnam
 
-# Andreas Sturmlechner <asturm@gentoo.org> (30 Oct 2017)
-# Requires dead and vulnerable qtwebkit4.
-# Masked for removal in 30 days. Bug #620708
-media-sound/google-musicmanager
-
-# Andreas Sturmlechner <asturm@gentoo.org> (30 Oct 2017)
-# Requires dead and vulnerable qtwebkit4.
-# Masked for removal in 30 days. Bug #620742
-net-voip/vidyodesktop
-
-# Andreas Sturmlechner <asturm@gentoo.org> (29 Oct 2017)
-# Dead upstream, depends on dead kdelibs4/Qt4.
-# Use kde-plasma/plasma-vault or app-crypt/kencfs-plasma instead.
-# Masked for removal in 30 days.
-app-crypt/kencfs
-
 # Mike Gilbert <floppym@gentoo.org> (28 Oct 2017)
 # Tests segfault, bug 635732.
 # No updates upstream since 2013.
