@@ -3,36 +3,39 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_4 )
 PYTHON_REQ_USE="xml"
 DISTUTILS_IN_SOURCE_BUILD=1
-inherit eutils gnome2-utils distutils-r1
+inherit distutils-r1 eutils gnome2-utils versionator
 
-DESCRIPTION="An advanced menu editor that provides modern features in a easy-to-use interface"
+DESCRIPTION="Advanced freedesktop.org compliant menu editor"
 HOMEPAGE="http://www.smdavis.us/projects/menulibre/"
-SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${PN}_${PV}.tar.gz"
+SRC_URI="https://launchpad.net/${PN}/$(get_version_component_range 1-2)/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE=""
+KEYWORDS="amd64 x86"
 
-DEPEND="dev-python/python-distutils-extra[${PYTHON_USEDEP}]"
-RDEPEND="dev-libs/gobject-introspection
+DEPEND="
+	dev-python/python-distutils-extra[${PYTHON_USEDEP}]
+"
+RDEPEND="
+	dev-libs/gobject-introspection
+	dev-python/psutil[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
+	dev-python/pyxdg[${PYTHON_USEDEP}]
+	gnome-base/gnome-menus[introspection]
 	x11-libs/gdk-pixbuf[X,introspection]
 	x11-libs/gtk+:3[X,introspection]
-	x11-themes/hicolor-icon-theme"
-
-PATCHES=( "${FILESDIR}"/${P}-GError-import.patch )
-
-S=${WORKDIR}/${PN}
+	x11-libs/gtksourceview:3.0[introspection]
+	x11-themes/hicolor-icon-theme
+"
 
 python_prepare_all() {
 	# too many categories
 	sed -i \
 		-e 's/X-GNOME-Settings-Panel;X-GNOME-PersonalSettings;DesktopSettings;X-XFCE;//' \
-		menulibre.desktop.in || die 'sed on menulibre.desktop.in failed'
+		menulibre.desktop.in || die
 
 	local i
 	# fix incorrect behavior when LINGUAS is set to an empty string
@@ -50,7 +53,6 @@ python_prepare_all() {
 
 python_install_all() {
 	distutils-r1_python_install_all
-	newicon -s 32 help/C/figures/icon.png menu-editor.png
 }
 
 pkg_preinst() {
@@ -59,8 +61,6 @@ pkg_preinst() {
 
 pkg_postinst() {
 	gnome2_icon_cache_update
-	elog "optional dependencies:"
-	elog "  gnome-extra/yelp (view help contents)"
 }
 
 pkg_postrm() {
