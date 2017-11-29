@@ -19505,7 +19505,7 @@ x11-themes/vertex-theme 20160329 20170128 20170128-r1: Vertex theme for GTK+ bas
 x11-themes/windowmaker-themes 0.1: Collection of Window Maker themes
 x11-themes/wm-icons 0.4.0_pre1-r1 0.4.0: A Large Assortment of Beutiful Themed Icons, Created with FVWM in mind
 x11-themes/xcursor-themes 1.0.4: X.Org cursor themes: whiteglass, redglass and handhelds
-x11-themes/xfce-gant-icon-theme 3.9_p6: Xfce Gant Icon Theme
+x11-themes/xfce-gant-icon-theme 3.9_p6 3.9_p6-r1: Xfce Gant Icon Theme
 x11-themes/xfwm4-themes 4.10.0: Additional themes for the Xfce window manager
 x11-themes/xxv-skins 1.6.1-r1: Additional skins for XXV
 x11-themes/yasis-icon-theme 0.4.2: A scalable icon theme called Yasis
