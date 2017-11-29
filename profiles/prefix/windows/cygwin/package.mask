@@ -1,10 +1,6 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Michael Haubenwallner <haubi@gentoo.org> (29 Nov 2017)
-# Cygwin upstream does not provide coreutils-8.28 yet, bug#638816.
->=sys-apps/coreutils-8.27
-
 # Michael Haubenwallner <haubi@gentoo.org> (15 Mar 2017)
 # Cygwin breakage in 0.16 should be fixed in 0.17
 ~net-dns/libidn2-0.16
