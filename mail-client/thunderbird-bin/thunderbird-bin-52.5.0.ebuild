@@ -3,7 +3,7 @@
 
 EAPI=6
 MOZ_ESR=""
-MOZ_LIGHTNING_VER="5.4.1"
+MOZ_LIGHTNING_VER="5.4.5"
 
 # Can be updated using scripts/get_langs.sh from mozilla overlay
 MOZ_LANGS=(ar ast be bg bn-BD br ca cs cy da de el en en-GB en-US es-AR
@@ -138,9 +138,8 @@ EOF
 	doins "${FILESDIR}"/10${PN}
 
 	# Enable very specific settings for thunderbird-3
-	cp "${FILESDIR}"/thunderbird-gentoo-default-prefs.js \
-		"${ED}/${MOZILLA_FIVE_HOME}/defaults/pref/all-gentoo.js" || \
-		die "failed to cp thunderbird-gentoo-default-prefs.js"
+	insinto ${MOZILLA_FIVE_HOME}/defaults/pref/
+	newins "${FILESDIR}"/thunderbird-gentoo-default-prefs.js all-gentoo.js
 
 	# Plugins dir
 	share_plugins_dir

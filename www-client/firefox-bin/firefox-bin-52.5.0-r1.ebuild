@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+MOZ_ESR=1
 
 # Can be updated using scripts/get_langs.sh from mozilla overlay
 # Missing when bumped : be
@@ -32,7 +33,7 @@ SRC_URI="${SRC_URI}
 HOMEPAGE="http://www.mozilla.com/firefox"
 RESTRICT="strip mirror"
 
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
 IUSE="+ffmpeg +pulseaudio selinux startup-notification"
@@ -118,9 +119,8 @@ src_install() {
 	# Fix prefs that make no sense for a system-wide install
 	insinto ${MOZILLA_FIVE_HOME}/defaults/pref/
 	doins "${FILESDIR}"/local-settings.js
-	# Copy preferences file so we can do a simple rename.
-	cp "${FILESDIR}"/all-gentoo-1.js \
-		"${ED}"${MOZILLA_FIVE_HOME}/all-gentoo.js || die
+	insinto ${MOZILLA_FIVE_HOME}
+	newins "${FILESDIR}"/all-gentoo-1.js all-gentoo.js
 
 	# Install language packs
 	mozlinguas_src_install
@@ -150,7 +150,7 @@ src_install() {
 	echo "SEARCH_DIRS_MASK=${MOZILLA_FIVE_HOME}" >> ${T}/10${PN}
 	doins "${T}"/10${PN} || die
 
-	# Plugins dir, still used for flash
+	# Plugins dir
 	share_plugins_dir
 
 	# Required in order to use plugins and even run firefox on hardened.
