@@ -13684,7 +13684,7 @@ media-sound/amsynth 1.3.2-r1 1.5.1-r1 1.6.4-r1 1.7.0-r1 1.7.1-r1: Virtual analog
 media-sound/apetag 1.12-r2: Command-line ape 2.0 tagger
 media-sound/apulse 0.1.10: PulseAudio emulation for ALSA
 media-sound/aqualung 1.0-r1 1.0-r2: Music player for a wide range of formats designed for gapless playback
-media-sound/ardour 2.8.16-r1 4.7-r1 4.7-r2 5.3-r1 5.5-r1 5.6-r1 5.8-r1 5.9 5.10 9999: Digital Audio Workstation
+media-sound/ardour 2.8.16-r1 4.7-r1 4.7-r2 5.3-r1 5.5-r1 5.6-r1 5.8-r1 5.9 5.10 5.12 9999: Digital Audio Workstation
 media-sound/ario 1.5.1-r1: a GTK2 MPD (Music Player Daemon) client inspired by Rythmbox
 media-sound/aseqview 0.2.8: ALSA sequencer event viewer/filter
 media-sound/asunder 2.2 2.8.1 2.9.1 2.9.2-r1: A graphical Audio CD ripper and encoder with support for many output formats
