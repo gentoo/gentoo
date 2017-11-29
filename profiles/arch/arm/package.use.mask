@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (29 Nov 2017)
+# All current clang versions are broken on ARM.
+app-doc/doxygen clang
+
 # Thomas Deutschmann <whissi@gentoo.org> (28 Nov 2017)
 # Requires dev-libs/mongo-c-driver which isn't keyworded
 >=app-admin/rsyslog-8.31 mongodb
