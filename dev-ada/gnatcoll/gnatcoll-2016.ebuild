@@ -15,7 +15,7 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/5739942ac7a447658d00e1e7
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="gmp gnat_2016 gnat_2017 gtk iconv postgresql pygobject projects readline
+IUSE="gmp +gnat_2016 gnat_2017 gtk iconv postgresql pygobject projects readline
 	+shared sqlite static syslog tools"
 
 RDEPEND="gnat_2016? ( dev-lang/gnat-gpl:4.9.4 )
