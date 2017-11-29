@@ -541,7 +541,7 @@ dev-ruby/poltergeist
 # switch the compiler / the binutils) ASAP. If you need them for a specific
 # (isolated) use case, feel free to unmask them on your system.
 <sys-devel/gcc-4.9
-<sys-libs/glibc-2.23-r4
+<sys-libs/glibc-2.25-r9
 <sys-devel/binutils-2.28.1
 
 # Michał Górny <mgorny@gentoo.org> (20 May 2017)
