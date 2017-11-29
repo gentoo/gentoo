@@ -31,7 +31,7 @@ RDEPEND="
 	luajit? ( dev-lang/luajit:= )
 	mysql? ( virtual/mysql )
 	postgres? ( dev-db/postgresql:= )
-	ldap? ( >=net-nds/openldap-2.0.27-r4 )
+	ldap? ( >=net-nds/openldap-2.0.27-r4 app-crypt/mit-krb5 )
 	sqlite? ( dev-db/sqlite:3 )
 	opendbx? ( dev-db/opendbx )
 	geoip? ( >=dev-cpp/yaml-cpp-0.5.1 dev-libs/geoip )
@@ -42,6 +42,10 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )"
 
 S="${WORKDIR}"/${P/_/-}
+
+PATCHES=(
+	"${FILESDIR}"/CVE-2017-15091-4.0.4.patch
+)
 
 src_configure() {
 	local dynmodules="pipe bind" # the default backends, always enabled

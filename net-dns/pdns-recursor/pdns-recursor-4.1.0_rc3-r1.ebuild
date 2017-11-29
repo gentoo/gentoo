@@ -12,7 +12,7 @@ SRC_URI="https://downloads.powerdns.com/releases/${P/_/-}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="luajit protobuf systemd"
+IUSE="libressl luajit protobuf sodium systemd"
 
 DEPEND="!luajit? ( >=dev-lang/lua-5.1:= )
 	luajit? ( dev-lang/luajit:= )
@@ -21,6 +21,9 @@ DEPEND="!luajit? ( >=dev-lang/lua-5.1:= )
 		>=dev-libs/boost-1.42:=
 	)
 	systemd? ( sys-apps/systemd:0= )
+	sodium? ( dev-libs/libsodium:= )
+	libressl? ( dev-libs/libressl:= )
+	!libressl? ( dev-libs/openssl:= )
 	>=dev-libs/boost-1.35:="
 RDEPEND="${DEPEND}
 	!<net-dns/pdns-2.9.20-r1"
@@ -28,6 +31,10 @@ DEPEND="${DEPEND}
 	virtual/pkgconfig"
 
 S="${WORKDIR}"/${P/_/-}
+
+PATCHES=(
+	"${FILESDIR}"/CVE-2017-{15093,15094}-4.0.6.patch
+)
 
 pkg_setup() {
 	filter-flags -ftree-vectorize
@@ -37,6 +44,7 @@ src_configure() {
 	econf \
 		--sysconfdir=/etc/powerdns \
 		$(use_enable systemd) \
+		$(use_enable sodium libsodium) \
 		$(use_with !luajit lua) \
 		$(use_with luajit luajit) \
 		$(use_with protobuf)
