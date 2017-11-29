@@ -4,10 +4,10 @@ DESCRIPTION=A collection of file system and media management forensic analysis t
 EAPI=6
 HOMEPAGE=https://www.sleuthkit.org/sleuthkit/
 IUSE=aff doc ewf java static-libs test +threads zlib elibc_FreeBSD java elibc_FreeBSD
-KEYWORDS=~amd64 ~hppa ~ppc ~x86
+KEYWORDS=amd64 ~hppa ~ppc ~x86
 LICENSE=BSD CPL-1.0 GPL-2+ IBM java? ( Apache-2.0 )
 RDEPEND=dev-db/sqlite:3 dev-lang/perl:* aff? ( app-forensics/afflib ) ewf? ( app-forensics/libewf:= ) java? ( >=virtual/jdk-1.8:* >=dev-java/c3p0-0.9.5:0 >=dev-java/jdbc-postgresql-9.4:0 ) zlib? ( sys-libs/zlib ) java? ( >=virtual/jre-1.8:= ) java? ( >=dev-java/java-config-2.2.0-r3 )
 SLOT=0/13
 SRC_URI=https://github.com/sleuthkit/sleuthkit/releases/download/sleuthkit-4.5.0/sleuthkit-4.5.0.tar.gz java? ( http://repo1.maven.org/maven2/org/xerial/sqlite-jdbc/3.8.11/sqlite-jdbc-3.8.11.jar )
 _eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	227b041a120d309fdefbebb3b8c1dfa9	java-ant-2	4e2b30d918dda38a51839a4d45282b62	java-pkg-opt-2	77d2e22d0de7640f817d20e861c0ff3f	java-utils-2	1971a6927fcd7ec839f7e12b28a24bdd	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
-_md5_=e9e8791aec597655aea9813e3e7d0423
+_md5_=2f1e6f0cb0ebd21612a1fc9bcdfce34b
