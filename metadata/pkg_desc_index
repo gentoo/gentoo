@@ -1334,7 +1334,7 @@ app-emulation/libvirt-snmp 0.0.2-r2 0.0.3: Provides SNMP functionality for libvi
 app-emulation/lxc 1.0.8 2.0.3-r1 2.0.4 2.0.5 2.0.6-r1 2.0.7 2.0.8: LinuX Containers userspace utilities
 app-emulation/lxd 2.14-r1 2.18 2.19: Fast, dense and secure container management
 app-emulation/nemu 1.1.0 1.2.0 1.3.0: ncurses interface for QEMU
-app-emulation/open-vm-tools 10.1.10: Opensourced tools for VMware guests
+app-emulation/open-vm-tools 10.1.10 10.1.15: Opensourced tools for VMware guests
 app-emulation/openstack-guest-agents-unix 1.39.0 1.39.0-r1 1.39.0-r2 1.39.1 1.39.1_p20170227: Unix Guest Agent for OpenStack
 app-emulation/phpvirtualbox 4.1.11 4.2.7 4.3.0 5.0.3 5.0.5: Web-based administration for VirtualBox in PHP
 app-emulation/playonlinux 4.2.12: Set of scripts to easily install and use Windows games and software
@@ -10778,7 +10778,7 @@ dev-vcs/svnmailer 1.0.9-r1: A subversion commit notifier written in Python
 dev-vcs/tig 2.2.2 2.3.0 9999: text mode interface for git
 dev-vcs/tkcvs 8.2.2 8.2.3: Tcl/Tk-based graphical interface to CVS with Subversion support
 dev-vcs/topgit 0.9 0.9-r1: A different patch queue manager
-dev-vcs/tortoisehg 4.3.1 9999: Set of graphical tools for Mercurial
+dev-vcs/tortoisehg 4.3.1 4.4.1 9999: Set of graphical tools for Mercurial
 dev-vcs/vcsh 1.20151229.1: Manage config files in $HOME via fake bare git repositories
 games-action/0verkill 0.16-r4: A bloody 2D action deathmatch-like game in ASCII-ART
 games-action/abuse 0.8-r1: Port of Abuse by Crack Dot Com
@@ -11541,7 +11541,7 @@ games-rpg/grimrock 20130515: Legend of Grimrock: The Ultimate dungeon crawling R
 games-rpg/gwiz 0.8 0.8-r1: clone of old-school Wizardry(tm) games by SirTech
 games-rpg/kqlives 0.99 0.99-r1: A console-style role playing game
 games-rpg/lure 1.1 1.1-r1: Lure of the Temptress
-games-rpg/manaplus 1.7.10.14 1.7.10.28 9999: OpenSource 2D MMORPG client for Evol Online and The Mana World
+games-rpg/manaplus 1.7.10.28 1.7.11.11 9999: OpenSource 2D MMORPG client for Evol Online and The Mana World
 games-rpg/openglad 0.98 0.98-r1: An SDL clone of Gladiator, a classic RPG game
 games-rpg/pcgen 6.04.01 6.04.01-r1: D&D character generator
 games-rpg/penumbra-collection 1.1: Scary first-person adventure game trilogy which focuses on story, immersion and puzzles
@@ -18423,8 +18423,8 @@ www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 52.2.0 52.4.0 52.5.0 57.0: Firefox Web Browser
 www-client/firefox-bin 52.5.0-r1 57.0-r1: Firefox Web Browser
 www-client/google-chrome 62.0.3202.94: The web browser from Google
-www-client/google-chrome-beta 63.0.3239.59: The web browser from Google
-www-client/google-chrome-unstable 64.0.3269.3: The web browser from Google
+www-client/google-chrome-beta 63.0.3239.70: The web browser from Google
+www-client/google-chrome-unstable 64.0.3278.0: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2 3.49.1 3.49.2-r1: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
 www-client/links 2.14: A fast and lightweight web browser running in both graphics and text mode
@@ -18473,7 +18473,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.30.0 1.30.2 1.30.2-r1: Capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 27.0.0.187: Adobe Flash Player
-www-plugins/chrome-binary-plugins 62.0.3202.94 63.0.3239.59_beta 64.0.3269.3_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 62.0.3202.94 63.0.3239.70_beta 64.0.3278.0_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3 0.3.7: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20160329-r1: GNU Flash movie player that supports many SWF v7,8,9 features
