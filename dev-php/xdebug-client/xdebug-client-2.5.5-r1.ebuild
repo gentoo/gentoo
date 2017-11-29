@@ -17,7 +17,7 @@ IUSE="libedit"
 
 S="${WORKDIR}/xdebug-${MY_PV}/debugclient"
 
-DEPEND="libedit? ( dev-libs/libedit )"
+DEPEND="libedit? ( dev-libs/libedit ) net-libs/libnsl:0="
 RDEPEND="${DEPEND}"
 
 src_configure() {
