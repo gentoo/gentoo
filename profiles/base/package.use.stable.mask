@@ -8,10 +8,6 @@
 # Dependencies have no stable keyword
 app-backup/backup-manager s3
 
-# Andreas Sturmlechner <asturm@gentoo.org> (16 Nov 2017)
-# Requires PYTHON_TARGETS="python3_5", bug #620940
-kde-apps/kdegames-meta python
-
 # Brian Evans <grknight@gentoo.org (6 Nov 2017)
 # Requires stable phpunit
 dev-php/PEAR-Text_Password test
