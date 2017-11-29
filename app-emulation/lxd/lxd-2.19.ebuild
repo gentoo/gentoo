@@ -9,35 +9,36 @@ EGO_PN_PARENT="github.com/lxc"
 EGO_PN="${EGO_PN_PARENT}/lxd"
 
 # Maintained with https://github.com/hsoft/gentoo-ego-vendor-update
+# The "# branch" comments are there for the script, they're important.
 EGO_VENDOR=(
-	"github.com/dustinkirkland/golang-petname 1f4996aa8aa05ee066aaf9e3179d340b48c6da74"
-	"github.com/golang/protobuf 17ce1425424ab154092bbb43af630bd647f3bb0d"
-	"github.com/gorilla/mux bb285ea687c5c77bb6935fdb2402b121d8efcbec"
-	"github.com/gorilla/websocket a69d9f6de432e2c6b296a947d8a5ee88f68522cf"
+	"github.com/dustinkirkland/golang-petname d3c2ba80e75eeef10c5cf2fc76d2c809637376b3"
+	"github.com/golang/protobuf 1643683e1b54a9e88ad26d98f81400c8c9d9f4f9"
+	"github.com/gorilla/mux 7625a85c14e615274a4ee4bc8654f72310a563e4"
+	"github.com/gorilla/websocket 71fa72d4842364bc5f74185f4161e0099ea3624a"
 	"github.com/gosexy/gettext 74466a0a0c4a62fea38f44aa161d4bbfbe79dd6b"
-	"github.com/jessevdk/go-flags 6cf8f02b4ae8ba723ddc64dcfd403e530c06d927"
+	"github.com/jessevdk/go-flags f88afde2fa19a30cf50ba4b05b3d13bc6bae3079"
 	"github.com/mattn/go-colorable ad5389df28cdac544c99bd7b9161a0b5b6ca9d1b"
 	"github.com/mattn/go-runewidth 97311d9f7767e3d6f422ea06661bc2c7a19e8a5d"
-	"github.com/mattn/go-sqlite3 05548ff55570cdb9ac72ff4a25a3b5e77a6fb7e5"
-	"github.com/olekukonko/tablewriter be5337e7b39e64e5f91445ce7e721888dbab7387"
+	"github.com/mattn/go-sqlite3 615c193e01d8d462eef7ee390171506f531a1c9a"
+	"github.com/olekukonko/tablewriter a7a4c189eb47ed33ce7b35f2880070a0c82a67d4"
 	"github.com/pborman/uuid e790cca94e6cc75c7064b1332e63811d4aae1a53"
-	"github.com/stretchr/testify 890a5c3458b43e6104ff5da8dfa139d013d77544"
+	"github.com/stretchr/testify 2aa2c176b9dab406a6970f6a55f513e8a8c8b18f"
 	"github.com/syndtr/gocapability db04d3cc01c8b54962a58ec7e491717d06cfcc16"
 	"github.com/go-stack/stack 817915b46b97fd7bb80e8ab6b69f01a53ac3eebf"
-	"github.com/mattn/go-isatty fc9e8d8ef48496124e79ae0df75490096eccf6fe"
+	"github.com/mattn/go-isatty a5cdd64afdee435007ee3e9f6ed4684af949d568"
 	"github.com/juju/errors c7d06af17c68cd34c835053720b21f6549d9b0ee"
-	"golang.org/x/crypto 81e90905daefcd6fd217b62423c0908922eadb30 github.com/golang/crypto"
-	"golang.org/x/net 66aacef3dd8a676686c7ae3716979581e8b03c47 github.com/golang/net"
-	"golang.org/x/sync f52d1811a62927559de87708c8913c1650ce4f26 github.com/golang/sync"
-	"golang.org/x/text bd91bbf73e9a4a801adbfb97133c992678533126 github.com/golang/text"
-	"golang.org/x/tools 3b1faeda9afbcba128c2d794b38ffe7982141139 github.com/golang/tools"
-	"golang.org/x/sys 7ddbeae9ae08c6a06a59597f0c9edbc5ff2444ce github.com/golang/sys"
-	"gopkg.in/check.v1 20d25e2804050c1cd24a7eea1e7a6447dd0e74ec github.com/go-check/check"
-	"gopkg.in/flosch/pongo2.v3 5e81b817a0c48c1c57cdf1a9056cf76bdee02ca9 github.com/flosch/pongo2"
-	"gopkg.in/inconshreveable/log15.v2 b105bd37f74e5d9dc7b6ad7806715c7a2b83fd3f github.com/inconshreveable/log15"
-	"gopkg.in/lxc/go-lxc.v2 edfe59cec27b76afeb3b35c56f2948c27afac493 github.com/lxc/go-lxc"
-	"gopkg.in/tomb.v2 d5d1b5820637886def9eef33e03a27a9f166942c github.com/go-tomb/tomb"
-	"gopkg.in/yaml.v2 eb3733d160e74a9c7e442f435eb3bea458e1d19f github.com/go-yaml/yaml"
+	"golang.org/x/crypto 2509b142fb2b797aa7587dad548f113b2c0f20ce github.com/golang/crypto"
+	"golang.org/x/net c73622c77280266305273cb545f54516ced95b93 github.com/golang/net"
+	"golang.org/x/sync 8e0aa688b654ef28caa72506fa5ec8dba9fc7690 github.com/golang/sync"
+	"golang.org/x/text 6eab0e8f74e86c598ec3b6fad4888e0c11482d48 github.com/golang/text"
+	"golang.org/x/tools 9b61fcc4c548d69663d915801fc4b42a43b6cd9c github.com/golang/tools"
+	"golang.org/x/sys 661970f62f5897bc0cd5fdca7e087ba8a98a8fa1 github.com/golang/sys"
+	"gopkg.in/check.v1 20d25e2804050c1cd24a7eea1e7a6447dd0e74ec github.com/go-check/check" # branch v1
+	"gopkg.in/flosch/pongo2.v3 5e81b817a0c48c1c57cdf1a9056cf76bdee02ca9 github.com/flosch/pongo2" # branch v3
+	"gopkg.in/inconshreveable/log15.v2 0decfc6c20d9ca0ad143b0e89dcaa20f810b4fb3 github.com/inconshreveable/log15" # branch master
+	"gopkg.in/lxc/go-lxc.v2 74fb852c18ea4341f85e49bb6f33635946aabda7 github.com/lxc/go-lxc" # branch v2
+	"gopkg.in/tomb.v2 d5d1b5820637886def9eef33e03a27a9f166942c github.com/go-tomb/tomb" # branch v2
+	"gopkg.in/yaml.v2 eb3733d160e74a9c7e442f435eb3bea458e1d19f github.com/go-yaml/yaml" # branch v2
 )
 
 ARCHIVE_URI="https://${EGO_PN}/archive/${P}.tar.gz -> ${P}.tar.gz"
@@ -45,7 +46,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 
-IUSE="+daemon +ipv6 nls test"
+IUSE="+daemon +ipv6 +dnsmasq nls test"
 
 inherit bash-completion-r1 linux-info systemd user golang-vcs-snapshot
 
@@ -68,7 +69,9 @@ RDEPEND="
 	daemon? (
 		app-arch/xz-utils
 		>=app-emulation/lxc-2.0.7[seccomp]
-		net-dns/dnsmasq[dhcp,ipv6?]
+		dnsmasq? (
+			net-dns/dnsmasq[dhcp,ipv6?]
+		)
 		net-misc/rsync[xattr]
 		sys-apps/iproute2[ipv6?]
 		sys-fs/squashfs-tools
@@ -161,15 +164,15 @@ src_install() {
 	fi
 
 	if use daemon; then
-		newinitd "${FILESDIR}"/${P}.initd lxd
-		newconfd "${FILESDIR}"/${P}.confd lxd
+		newinitd "${FILESDIR}"/${PN}.initd lxd
+		newconfd "${FILESDIR}"/${PN}.confd lxd
 
-		systemd_newunit "${FILESDIR}"/${P}.service ${PN}.service
+		systemd_newunit "${FILESDIR}"/${PN}.service ${PN}.service
 	fi
 
 	newbashcomp config/bash/lxd-client lxc
 
-	dodoc AUTHORS CONTRIBUTING.md README.md doc/*
+	dodoc AUTHORS README.md doc/*
 }
 
 pkg_postinst() {
