@@ -7,14 +7,14 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite"
 
-inherit autotools cmake-utils eutils linux-info pax-utils python-single-r1
+inherit autotools cmake-utils eutils linux-info pax-utils python-single-r1 versionator
 
 LIBDVDCSS_COMMIT="2f12236bc1c92f73c21e973363f79eb300de603f"
 LIBDVDREAD_COMMIT="17d99db97e7b8f23077b342369d3c22a6250affd"
 LIBDVDNAV_COMMIT="43b5f81f5fe30bceae3b7cecf2b0ca57fc930dac"
-FFMPEG_VERSION="3.4"
-CODENAME="Leia"
-FFMPEG_KODI_VERSION="Alpha-1"
+FFMPEG_VERSION="3.1.11"
+FFMPEG_KODI_VERSION="17.5"
+CODENAME="Krypton"
 SRC_URI="https://github.com/xbmc/libdvdcss/archive/${LIBDVDCSS_COMMIT}.tar.gz -> libdvdcss-${LIBDVDCSS_COMMIT}.tar.gz
 	https://github.com/xbmc/libdvdread/archive/${LIBDVDREAD_COMMIT}.tar.gz -> libdvdread-${LIBDVDREAD_COMMIT}.tar.gz
 	https://github.com/xbmc/libdvdnav/archive/${LIBDVDNAV_COMMIT}.tar.gz -> libdvdnav-${LIBDVDNAV_COMMIT}.tar.gz
@@ -28,12 +28,12 @@ SLOT="0"
 # use flag is called libusb so that it doesn't fool people in thinking that
 # it is _required_ for USB support. Otherwise they'll disable udev and
 # that's going to be worse.
-IUSE="airplay alsa bluetooth bluray caps cec +css dbus debug dvd gbm gles lcms libressl libusb lirc mysql nfs +opengl pulseaudio samba sftp systemd +system-ffmpeg test +udev udisks upnp upower vaapi vdpau wayland webserver +X +xslt zeroconf"
+IUSE="airplay alsa bluetooth bluray caps cec +css dbus debug dvd gles lcms libressl libusb lirc mysql nfs nonfree +opengl pulseaudio samba sftp systemd +system-ffmpeg test +udev udisks upnp upower vaapi vdpau webserver +X +xslt zeroconf"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
-	gbm? ( gles )
 	|| ( gles opengl )
-	^^ ( gbm wayland X )
+	gles? ( X )
+	opengl? ( X )
 	udev? ( !libusb )
 	udisks? ( dbus )
 	upower? ( dbus )
@@ -41,76 +41,63 @@ REQUIRED_USE="
 
 COMMON_DEPEND="${PYTHON_DEPS}
 	airplay? (
-		>=app-pda/libplist-2.0.0[python,${PYTHON_USEDEP}]
+		app-pda/libplist
 		net-libs/shairplay
 	)
-	alsa? ( >=media-libs/alsa-lib-1.1.4.1 )
+	alsa? ( media-libs/alsa-lib )
 	bluetooth? ( net-wireless/bluez )
-	bluray? ( >=media-libs/libbluray-1.0.1 )
+	bluray? ( >=media-libs/libbluray-0.7.0 )
 	caps? ( sys-libs/libcap )
 	dbus? ( sys-apps/dbus )
 	dev-db/sqlite
 	dev-libs/expat
-	>=dev-libs/fribidi-0.19.7
+	dev-libs/fribidi
 	cec? ( >=dev-libs/libcec-4.0 )
 	dev-libs/libpcre[cxx]
-	>=dev-libs/libxml2-2.9.4
+	dev-libs/libxml2
 	>=dev-libs/lzo-2.04
 	dev-libs/tinyxml[stl]
+	>=dev-libs/yajl-2
 	dev-python/pillow[${PYTHON_USEDEP}]
-	>=dev-libs/libcdio-0.94
-	dev-libs/libfmt
-	gbm? (	media-libs/mesa[gbm] )
+	dev-libs/libcdio
 	gles? ( media-libs/mesa[gles2] )
 	lcms? ( media-libs/lcms:2 )
 	libusb? ( virtual/libusb:1 )
 	virtual/ttf-fonts
 	>=media-fonts/noto-20160531
 	media-fonts/roboto
-	>=media-libs/fontconfig-2.12.4
-	>=media-libs/freetype-2.8
+	media-libs/fontconfig
+	media-libs/freetype
 	>=media-libs/libass-0.13.4
 	media-libs/mesa[egl]
 	>=media-libs/taglib-1.11.1
-	system-ffmpeg? ( >=media-video/ffmpeg-${FFMPEG_VERSION}:=[encode,openssl,postproc] )
+	system-ffmpeg? (
+		>=media-video/ffmpeg-${FFMPEG_VERSION}:=[encode,openssl,postproc]
+		<media-video/ffmpeg-3.4
+	)
 	mysql? ( virtual/mysql )
-	>=net-misc/curl-7.56.1
+	>=net-misc/curl-7.51.0
 	nfs? ( net-fs/libnfs:= )
 	opengl? ( media-libs/glu )
-	!libressl? ( >=dev-libs/openssl-1.0.2l:0= )
+	!libressl? ( >=dev-libs/openssl-1.0.2j:0= )
 	libressl? ( dev-libs/libressl:0= )
 	pulseaudio? ( media-sound/pulseaudio )
 	samba? ( >=net-fs/samba-3.4.6[smbclient(+)] )
 	sftp? ( net-libs/libssh[sftp] )
-	>=sys-libs/zlib-1.2.11
+	sys-libs/zlib
 	udev? ( virtual/udev )
-	vaapi? (
-		x11-libs/libva[egl]
-		opengl? ( x11-libs/libva[opengl] )
-		system-ffmpeg? ( media-video/ffmpeg[vaapi] )
-		vdpau? ( x11-libs/libva[vdpau] )
-		wayland? ( x11-libs/libva[wayland] )
-		X? ( x11-libs/libva[X] )
-	)
-	virtual/libiconv
+	vaapi? ( x11-libs/libva[opengl] )
 	vdpau? (
 		|| ( >=x11-libs/libvdpau-1.1 >=x11-drivers/nvidia-drivers-180.51 )
 		system-ffmpeg? ( media-video/ffmpeg[vdpau] )
 	)
-	wayland? (
-		>=dev-cpp/waylandpp-0.1.5
-		media-libs/mesa[wayland]
-		>=dev-libs/wayland-protocols-1.7
-		x11-libs/libxkbcommon
-	)
-	webserver? ( >=net-libs/libmicrohttpd-0.9.55[messages] )
+	webserver? ( >=net-libs/libmicrohttpd-0.9.50[messages] )
 	X? (
+		x11-libs/libdrm
 		x11-libs/libX11
 		x11-libs/libXrandr
 		x11-libs/libXrender
-		system-ffmpeg? ( media-video/ffmpeg[X] )
 	)
-	x11-libs/libdrm
 	xslt? ( dev-libs/libxslt )
 	zeroconf? ( net-dns/avahi[dbus] )
 "
@@ -129,10 +116,11 @@ RDEPEND="${COMMON_DEPEND}
 "
 DEPEND="${COMMON_DEPEND}
 	app-arch/bzip2
+	app-arch/unzip
 	app-arch/xz-utils
+	app-arch/zip
 	dev-lang/swig
 	dev-libs/crossguid
-	dev-libs/rapidjson
 	dev-util/cmake
 	dev-util/gperf
 	media-libs/giflib
@@ -176,6 +164,8 @@ In some cases Kodi needs to access multicast addresses.
 Please consider enabling IP_MULTICAST under Networking options.
 "
 
+CMAKE_USE_DIR=${S}/project/cmake/
+
 pkg_setup() {
 	check_extra_config
 	python-single-r1_pkg_setup
@@ -209,7 +199,7 @@ src_prepare() {
 
 	# Prevent autoreconf rerun
 	sed -e 's/autoreconf -vif/echo "autoreconf already done in src_prepare()"/' -i \
-		"${S}"/cmake/modules/FindCpluff.cmake \
+		"${S}"/project/cmake/modules/FindCpluff.cmake \
 		"${S}"/tools/depends/native/TexturePacker/src/autogen.sh \
 		"${S}"/tools/depends/native/JsonSchemaBuilder/src/autogen.sh \
 		|| die
@@ -236,6 +226,7 @@ src_configure() {
 		-DENABLE_MICROHTTPD=$(usex webserver)
 		-DENABLE_MYSQLCLIENT=$(usex mysql)
 		-DENABLE_NFS=$(usex nfs)
+		-DENABLE_NONFREE=$(usex nonfree)
 		-DENABLE_OPENGLES=$(usex gles)
 		-DENABLE_OPENGL=$(usex opengl)
 		-DENABLE_OPENSSL=ON
@@ -248,6 +239,7 @@ src_configure() {
 		-DENABLE_UPNP=$(usex upnp)
 		-DENABLE_VAAPI=$(usex vaapi)
 		-DENABLE_VDPAU=$(usex vdpau)
+		-DENABLE_X11=$(usex X)
 		-DENABLE_XSLT=$(usex xslt)
 		-Dlibdvdread_URL="${DISTDIR}/libdvdread-${LIBDVDREAD_COMMIT}.tar.gz"
 		-Dlibdvdnav_URL="${DISTDIR}/libdvdnav-${LIBDVDNAV_COMMIT}.tar.gz"
@@ -260,23 +252,6 @@ src_configure() {
 		mycmakeargs+=( -DWITH_FFMPEG="yes" )
 	else
 		mycmakeargs+=( -DFFMPEG_URL="${DISTDIR}/ffmpeg-${PN}-${FFMPEG_VERSION}-${CODENAME}-${FFMPEG_KODI_VERSION}.tar.gz" )
-	fi
-
-	if use gbm; then
-		mycmakeargs+=( -DCORE_PLATFORM_NAME="gbm" )
-	fi
-
-	if use wayland; then
-		mycmakeargs+=( -DCORE_PLATFORM_NAME="wayland" )
-		if use opengl; then
-			mycmakeargs+=( -DWAYLAND_RENDER_SYSTEM="gl" )
-		else
-			mycmakeargs+=( -DWAYLAND_RENDER_SYSTEM="gles" )
-		fi
-	fi
-
-	if use X; then
-		mycmakeargs+=( -DCORE_PLATFORM_NAME="x11" )
 	fi
 
 	cmake-utils_src_configure
