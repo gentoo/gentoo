@@ -29,6 +29,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Jonas Stein <jstein@gentoo.org> (29 Nov 2017)
+# The old yafaray-0.1.1 depends on qt4 and has bugs we can not fix. 
+# (bug #321169) and (bug #595684)
+# Users of yafaray may be interested in >=yafaray-3.3.0 (bug #639046)
+# and its fork TheBounty (#639158) which require completely new ebuilds.
+# 
+# The old and for now the last version in the tree is 
+# masked for removal on 2018-02-30
+=media-gfx/yafaray-0.1.1
+
 # Michał Górny <mgorny@gentoo.org> (28 Nov 2017)
 # Replaced by split packages. Please install one of:
 # - app-emulation/wine-vanilla (the only choice for stable)
