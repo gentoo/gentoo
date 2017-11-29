@@ -53,6 +53,7 @@ src_prepare() {
 	# make upower and logind check non-automagic
 	eapply "${FILESDIR}/${PN}-3.0.1-automagic.patch"
 	eapply "${FILESDIR}/${PN}-3.6.1-elogind.patch"
+	eapply "${FILESDIR}/${PN}-3.6.1-elogind2.patch"
 
 	eautoreconf
 	gnome2_src_prepare
