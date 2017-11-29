@@ -28,6 +28,7 @@ RDEPEND="
 	dev-perl/Proc-ProcessTable
 	dev-perl/Sort-Naturally
 	dev-perl/TermReadKey
+	sys-apps/init-system-helpers
 "
 DEPEND="${RDEPEND}
 	sys-devel/gettext

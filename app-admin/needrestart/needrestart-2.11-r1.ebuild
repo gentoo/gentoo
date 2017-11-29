@@ -21,20 +21,18 @@ LICENSE="GPL-2+"
 
 RDEPEND="
 	>=sys-apps/sed-4.2.2
+	dev-lang/perl:=
 	dev-perl/libintl-perl
 	dev-perl/Module-Find
 	dev-perl/Module-ScanDeps
 	dev-perl/Proc-ProcessTable
 	dev-perl/Sort-Naturally
 	dev-perl/TermReadKey
+	sys-apps/init-system-helpers
 "
 DEPEND="${RDEPEND}
 	sys-devel/gettext
 "
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-parallelmake.patch # https://bugs.gentoo.org/show_bug.cgi?id=588216
-)
 
 src_install() {
 	default
