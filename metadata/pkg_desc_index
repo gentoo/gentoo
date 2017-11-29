@@ -7967,7 +7967,7 @@ dev-python/linecache2 1.0.0: Backports of the linecache module
 dev-python/lit 3.9.0 4.0.1 5.0.0 5.0.9999 9999: A stand-alone install of the LLVM suite testing tool
 dev-python/livereload 2.3.2 2.4.0 2.4.1: Python LiveReload is an awesome tool for web developers
 dev-python/llfuse 1.2 1.3 1.3.2: Python bindings for the low-level FUSE API
-dev-python/llvmlite 0.12.1 0.15.0 0.16.0 0.19.0 0.20.0: Python wrapper around the llvm C++ library
+dev-python/llvmlite 0.12.1 0.16.0 0.19.0 0.20.0: Python wrapper around the llvm C++ library
 dev-python/lmdb 0.92: Python bindings for the Lightning Database
 dev-python/locket 0.2.0: File-based locks for Python
 dev-python/lockfile 0.11.0-r1 0.12.2 0.12.2-r1: Platform-independent file locking module
@@ -10409,7 +10409,7 @@ dev-util/cproto 4.7e: Generate C function prototypes from C source code
 dev-util/cpuinfo-collection 20060720 20070104 20101114: huge collection of /proc/cpuinfo files
 dev-util/cram 0.7: Functional testing framework for command line applications
 dev-util/crash 6.1.4 7.0.0 7.0.3 7.0.7 7.1.4 7.1.8 7.1.9: Red Hat crash utility; used for analyzing kernel core dumps
-dev-util/creduce 2.4.0 2.5.0 2.6.0 2.7.0 9999: C-Reduce - a plugin-based C program reducer
+dev-util/creduce 2.4.0 2.6.0 2.7.0 9999: C-Reduce - a plugin-based C program reducer
 dev-util/cscope 15.8a-r1 15.8a-r2: Interactively examine a C program
 dev-util/csup 20060318: A rewrite of CVSup
 dev-util/ctags 20161028 20170704: Exuberant Ctags creates tags files for code browsing in editors
@@ -12342,8 +12342,8 @@ mail-client/novell-groupwise-client 8.0.2.96933: Novell Groupwise Client for Lin
 mail-client/pinepgp 0.18.0-r1: Use GPG/PGP with Pine
 mail-client/roundcube 1.2.5 1.2.6 1.2.7 1.3.0 1.3.1 1.3.3: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/sylpheed 3.4.2 3.5.1 3.6.0: A lightweight email client and newsreader
-mail-client/thunderbird 45.8.0 52.2.0 52.3.0 52.4.0: Thunderbird Mail Client
-mail-client/thunderbird-bin 52.4.0: Thunderbird Mail Client
+mail-client/thunderbird 45.8.0 52.2.0 52.3.0 52.4.0 52.5.0: Thunderbird Mail Client
+mail-client/thunderbird-bin 52.5.0: Thunderbird Mail Client
 mail-client/trojita 0.7-r2 9999: A Qt IMAP e-mail client
 mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
 mail-filter/afew 1.1.0 1.2.0: Initial tagging script for Notmuch
@@ -17624,7 +17624,7 @@ sys-devel/bison 1.875d 2.4.3 2.7.1 3.0.4-r1: A general-purpose (yacc-compatible)
 sys-devel/bmake 20170421 20170510 20170812: NetBSD's portable make
 sys-devel/boost-m4 0.4 0.4-r1 0.4_p20160328: Another set of autoconf macros for compiling against boost
 sys-devel/byfl 1.4-r1 1.5 9999: Compiler-based Application Analysis
-sys-devel/clang 3.4.2-r100 3.5.2-r100 3.6.2-r100 3.7.1-r100 3.8.1-r100 3.9.1-r100 4.0.1 5.0.0 5.0.9999 9999: C language family frontend for LLVM
+sys-devel/clang 3.4.2-r100 3.5.2-r100 3.6.2-r100 3.7.1-r100 3.9.1-r100 4.0.1 5.0.0 5.0.9999 9999: C language family frontend for LLVM
 sys-devel/clang-runtime 3.9.0 3.9.1 4.0.1 5.0.0 5.0.9999 9999: Meta-ebuild for clang runtime libraries
 sys-devel/cons 2.2.0 2.3.0: Extensible perl-based build utility
 sys-devel/crossdev 20151026-r1 20160602 20160602-r1 20171119 99999999: Gentoo Cross-toolchain generator
@@ -17645,7 +17645,7 @@ sys-devel/icecream 0.9.7-r1 1.0.0-r1 1.0.0-r2: icecc is a program for distribute
 sys-devel/kgcc64 4.1.2 4.2.4 4.3.5 4.4.5 4.4.6 4.5.3 4.5.4 4.6.4 4.7.3 4.7.4 4.8.3 4.8.5 4.9.4 5.4.0 6.3.0 6.4.0 7.2.0: 64bit kernel compiler
 sys-devel/libtool 2.4.6-r2 2.4.6-r3 2.4.6-r4 9999: A shared library tool for developers
 sys-devel/lld 4.0.1 5.0.0 5.0.9999 9999: The LLVM linker (link editor)
-sys-devel/llvm 3.4.2-r100 3.5.2-r100 3.6.2-r100 3.7.1-r3 3.8.1-r2 3.9.1-r1 4.0.1 5.0.0 5.0.9999 9999: Low Level Virtual Machine
+sys-devel/llvm 3.4.2-r100 3.5.2-r100 3.6.2-r100 3.7.1-r3 3.9.1-r1 4.0.1 5.0.0 5.0.9999 9999: Low Level Virtual Machine
 sys-devel/llvm-common 4.0.1 5.0.0 5.0.9999 9999: Common files shared between multiple slots of LLVM
 sys-devel/llvmgold 4 5 6: LLVMgold plugin symlink for autoloading
 sys-devel/m4 1.4.17 1.4.18: GNU macro processor
@@ -18424,7 +18424,7 @@ www-client/elinks 0.12_pre6-r1 0.12_pre6-r2 0.12_pre6-r3 9999: Advanced and well
 www-client/epiphany 3.22.7 3.24.5: GNOME webbrowser based on Webkit
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 52.2.0 52.4.0 52.5.0 57.0: Firefox Web Browser
-www-client/firefox-bin 52.5.0 57.0: Firefox Web Browser
+www-client/firefox-bin 52.5.0-r1 57.0-r1: Firefox Web Browser
 www-client/google-chrome 62.0.3202.94: The web browser from Google
 www-client/google-chrome-beta 63.0.3239.59: The web browser from Google
 www-client/google-chrome-unstable 64.0.3269.3: The web browser from Google
@@ -18445,7 +18445,7 @@ www-client/pybugz 0.12.1 0.13 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qupzilla 2.1.2 2.2.0 2.2.1: A cross-platform web browser using QtWebEngine
 www-client/qutebrowser 1.0.2 1.0.3 1.0.4 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine
 www-client/ripe-atlas-cousteau 1.0.6 1.0.7 1.2: A Python wrapper around the RIPE Atlas API
-www-client/seamonkey 2.46-r1 2.48 2.48-r1 2.49.4.0_p0: Seamonkey Web Browser
+www-client/seamonkey 2.46-r1 2.48 2.48-r1 2.49.4.0_p0 2.49.5.0_p0: Seamonkey Web Browser
 www-client/seamonkey-bin 2.48 2.49.1_rc2: Mozilla Application Suite - web browser, email, HTML editor, IRC
 www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
@@ -19136,7 +19136,7 @@ x11-plugins/compiz-plugins-main 0.8.8: Compiz Fusion Window Decorator Plugins
 x11-plugins/compiz-plugins-unsupported 0.8.8: Compiz Fusion Window Decorator Unsupported Plugins
 x11-plugins/cputnik 0.2.0: cputnik is a simple cpu monitor dockapp
 x11-plugins/docker 1.5 1.5-r1: Openbox app which acts as a system tray for KDE and GNOME2
-x11-plugins/enigmail 1.9.6.1-r1 1.9.8.1 1.9.8.2 1.9.8.3 9999: Mozilla extension to provide GPG support in mail clients
+x11-plugins/enigmail 1.9.6.1-r1 1.9.8.1 1.9.8.2 1.9.8.3 1.9.8.3-r1 9999: Mozilla extension to provide GPG support in mail clients
 x11-plugins/epplets 0.12 0.14: Base files for Enlightenment epplets and some epplets
 x11-plugins/fsviewer 0.2.6-r2: A file system viewer for Window Maker
 x11-plugins/gkrellaclock 0.3.4-r1: Nice analog clock for GKrellM2
