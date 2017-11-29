@@ -28,7 +28,7 @@ SLOT="0"
 # use flag is called libusb so that it doesn't fool people in thinking that
 # it is _required_ for USB support. Otherwise they'll disable udev and
 # that's going to be worse.
-IUSE="airplay alsa bluetooth bluray caps cec +css dbus debug dvd gbm gles lcms libressl libusb lirc mysql nfs +opengl pulseaudio samba sftp systemd +system-ffmpeg test +udev udisks upnp upower vaapi vdpau wayland webserver +X +xslt zeroconf"
+IUSE="airplay alsa bluetooth bluray caps cec +css dbus debug dvd gbm gles lcms libressl libusb lirc mysql +opengl pulseaudio samba sftp systemd +system-ffmpeg test +udev udisks upnp upower vaapi vdpau wayland webserver +X +xslt zeroconf"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	gbm? ( gles )
@@ -75,7 +75,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	system-ffmpeg? ( >=media-video/ffmpeg-${FFMPEG_VERSION}:=[encode,openssl,postproc] )
 	mysql? ( virtual/mysql )
 	>=net-misc/curl-7.56.1
-	nfs? ( net-fs/libnfs:= )
 	opengl? ( media-libs/glu )
 	!libressl? ( >=dev-libs/openssl-1.0.2l:0= )
 	libressl? ( dev-libs/libressl:0= )
@@ -235,7 +234,6 @@ src_configure() {
 		-DENABLE_LIRC=$(usex lirc)
 		-DENABLE_MICROHTTPD=$(usex webserver)
 		-DENABLE_MYSQLCLIENT=$(usex mysql)
-		-DENABLE_NFS=$(usex nfs)
 		-DENABLE_OPENGLES=$(usex gles)
 		-DENABLE_OPENGL=$(usex opengl)
 		-DENABLE_OPENSSL=ON
