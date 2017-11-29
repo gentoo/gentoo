@@ -29,7 +29,7 @@ RDEPEND="!net-misc/arpd
 DEPEND="${RDEPEND}
 	app-arch/xz-utils
 	iptables? ( virtual/pkgconfig )
-	sys-devel/bison
+	>=sys-devel/bison-2.4
 	sys-devel/flex
 	>=sys-kernel/linux-headers-3.7
 	elibc_glibc? ( >=sys-libs/glibc-2.7 )"
