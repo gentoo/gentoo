@@ -7763,7 +7763,7 @@ dev-python/geoip-python 1.3.2 1.3.2-r1: Python bindings for GeoIP
 dev-python/geopy 1.8.1 1.11.0: A Geocoding Toolbox for Python
 dev-python/gevent 1.0.1 1.2.1 1.2.2: Coroutine-based network library
 dev-python/gevent-socketio 0.3.5_rc2-r1 0.3.6: SocketIO server based on the Gevent pywsgi server
-dev-python/gevent-websocket 0.9.3 0.9.5: Websocket handler for the gevent pywsgi server
+dev-python/gevent-websocket 0.9.3 0.9.5 0.10.1: Websocket handler for the gevent pywsgi server
 dev-python/geventhttpclient 1.3.1: A high performance, concurrent HTTP client library for Python using gevent
 dev-python/ghp-import 0.4.1 0.4.1-r1: Copy your docs directly to the gh-pages branch
 dev-python/ginga 2.6.5: Astronomical image toolkit for Python
