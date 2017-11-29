@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile install
-DEPEND=gnat_2016? ( dev-lang/gnat-gpl:4.9.4 ) gnat_2017? ( dev-lang/gnat-gpl:6.3.0 ) dev-ada/gprbuild[gnat_2016=,gnat_2017=]
+DEPEND=dev-lang/gnat-gpl:6.3.0 dev-ada/gprbuild[gnat_2017]
 DESCRIPTION=Provides access to GNAT compiler internals for AdaCore utilities
 EAPI=6
 HOMEPAGE=http://libre.adacore.com
-IUSE=gnat_2016 gnat_2017 +shared static static-pic
+IUSE=gnat_2016 +gnat_2017 +shared static static-pic
 KEYWORDS=~amd64
 LICENSE=GPL-3
-RDEPEND=gnat_2016? ( dev-lang/gnat-gpl:4.9.4 ) gnat_2017? ( dev-lang/gnat-gpl:6.3.0 )
+RDEPEND=dev-lang/gnat-gpl:6.3.0
 REQUIRED_USE=!gnat_2016 gnat_2017
 SLOT=0
 SRC_URI=http://mirrors.cdn.adacore.com/art/591c45e2c7a447af2deed037 -> gnat_util-gpl-2017-src.tar.gz
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=bb52216783d29a112ba91b01de87b108
+_md5_=3d9191b3f7c57cd00019c45983091ffe

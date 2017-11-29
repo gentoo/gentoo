@@ -955,6 +955,11 @@
       <role>ARM</role>
     </member>
     <member>
+      <email>nerdboy@gentoo.org</email>
+      <name>Steve Arnold</name>
+      <role>ARM, ARM64, AMD64, X86, MIPS</role>
+    </member>
+    <member>
       <email>robbat2@gentoo.org</email>
       <name>Robin Johnson</name>
       <role>JTAG, dev-embedded</role>
@@ -1184,11 +1189,6 @@
     <member>
       <email>creffett@gentoo.org</email>
       <name>Chris Reffett</name>
-      <role>GLEP Editor</role>
-    </member>
-    <member>
-      <email>dev-zero@gentoo.org</email>
-      <name>Tiziano Müller</name>
       <role>GLEP Editor</role>
     </member>
     <member>
@@ -1422,10 +1422,10 @@
       <name>Michael Palimaka</name>
       <role>Member</role>
     </member>
-    <member is-lead="1">
+    <member>
       <email>mgorny@gentoo.org</email>
       <name>Michał Górny</name>
-      <role>Lead</role>
+      <role>Minor janitor</role>
     </member>
     <member>
       <email>monsieurp@gentoo.org</email>
@@ -1445,9 +1445,13 @@
   </project>
   <project>
     <email>graphics@gentoo.org</email>
-    <name>Gentoo Graphics Project</name>
+    <name>Graphics Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Graphics</url>
-    <description>The Gentoo Graphics Project maintains media-gfx and related packages.</description>
+    <description>The Graphics Project maintains media-gfx and related packages.</description>
+    <member>
+      <email>jstein@gentoo.org</email>
+      <name>Jonas Stein</name>
+    </member>
     <member>
       <email>lu_zero@gentoo.org</email>
       <name>Luca Barbato</name>
@@ -1771,11 +1775,6 @@
       <role>Developer</role>
     </member>
     <member>
-      <email>dilfridge@gentoo.org</email>
-      <name>Andreas K. Hüttel</name>
-      <role>Developer</role>
-    </member>
-    <member>
       <email>jcallen@gentoo.org</email>
       <name>Jonathan Callen</name>
       <role>Developer</role>
@@ -2009,11 +2008,6 @@
       <role>Developer</role>
     </member>
     <member>
-      <email>dilfridge@gentoo.org</email>
-      <name>Andreas K. Hüttel</name>
-      <role>Developer</role>
-    </member>
-    <member>
       <email>soap@gentoo.org</email>
       <name>David Seifert</name>
       <role>Developer</role>
@@ -2028,7 +2022,7 @@
     <email>licenses@gentoo.org</email>
     <name>Gentoo Licenses Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Licenses</url>
-    <description>This is a small team in Gentoo that try to make heads &amp; tails of license terms.</description>
+    <description>The Gentoo Licenses Project tries to make heads &amp; tails of license terms.</description>
     <member>
       <email>bernalex@gentoo.org</email>
       <name>Alexander Berntsen</name>
@@ -2037,6 +2031,11 @@
     <member>
       <email>hanno@gentoo.org</email>
       <name>Hanno Böck</name>
+      <role>Member</role>
+    </member>
+    <member>
+      <email>jstein@gentoo.org</email>
+      <name>Jonas Stein</name>
       <role>Member</role>
     </member>
     <member>
@@ -2499,6 +2498,11 @@ developers and volunteer mentors.</description>
       <role>Git</role>
     </member>
     <member>
+      <email>NP-Hardass@gentoo.org</email>
+      <name>NP-Hardass</name>
+      <role>Hosted Overlays for Developers and Projects</role>
+    </member>
+    <member>
       <email>robbat2@gentoo.org</email>
       <name>Robin Johnson</name>
       <role>Git</role>
@@ -2915,11 +2919,6 @@ developers and volunteer mentors.</description>
       <role>Member</role>
     </member>
     <member>
-      <email>amynka@gentoo.org</email>
-      <name>Amy Liffey</name>
-      <role>Member</role>
-    </member>
-    <member>
       <email>asturm@gentoo.org</email>
       <name>Andreas Sturmlechner</name>
       <role>Member</role>
@@ -2929,10 +2928,10 @@ developers and volunteer mentors.</description>
       <name>Yixun Lan</name>
       <role>Member</role>
     </member>
-    <member>
+    <member is-lead="1">
       <email>jstein@gentoo.org</email>
       <name>Jonas Stein</name>
-      <role>Deputy Lead</role>
+      <role>Lead</role>
     </member>
     <member>
       <email>kensington@gentoo.org</email>
@@ -2953,11 +2952,6 @@ developers and volunteer mentors.</description>
       <email>marecki@gentoo.org</email>
       <name>Marek Szuba</name>
       <role>Member</role>
-    </member>
-    <member is-lead="1">
-      <email>mgorny@gentoo.org</email>
-      <name>Michał Górny</name>
-      <role>Lead</role>
     </member>
     <member>
       <email>monsieurp@gentoo.org</email>
@@ -3079,11 +3073,6 @@ developers and volunteer mentors.</description>
     <member>
       <email>dev-zero@gentoo.org</email>
       <name>Tiziano Müller</name>
-      <role>Member</role>
-    </member>
-    <member>
-      <email>djc@gentoo.org</email>
-      <name>Dirkjan Ochtman</name>
       <role>Member</role>
     </member>
     <member is-lead="1">
@@ -3725,6 +3714,11 @@ developers and volunteer mentors.</description>
       <role>GLSA Coordinator</role>
     </member>
     <member>
+      <email>chrisadr@gentoo.org</email>
+      <name>Christopher Díaz Riveros</name>
+      <role>GLSA Coordinator</role>
+    </member>
+    <member>
       <email>creffett@gentoo.org</email>
       <name>Chris Reffett</name>
       <role>GLSA Coordinator</role>
@@ -3901,7 +3895,7 @@ developers and volunteer mentors.</description>
     <email>tex@gentoo.org</email>
     <name>Gentoo TeX Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:TeX</url>
-    <description>The TeX project maintains ebuilds for TeX distributions and TeX related packages. This includes [https://packages.gentoo.org/packages/app-text/texlive app-text/texlive], the [https://packages.gentoo.org/categories/dev-texlive dev-texlive] category, most of [https://packages.gentoo.org/categories/dev-tex dev-tex] and a few others.</description>
+    <description>The TeX project maintains ebuilds for TeXLive and TeX related packages. This includes [https://packages.gentoo.org/packages/app-text/texlive app-text/texlive], the [https://packages.gentoo.org/categories/dev-texlive dev-texlive] category, most of [https://packages.gentoo.org/categories/dev-tex dev-tex] and a few others.</description>
     <member is-lead="1">
       <email>aballier@gentoo.org</email>
       <name>Alexis Ballier</name>
@@ -4398,6 +4392,11 @@ developers and volunteer mentors.</description>
     <name>Gentoo Xfce Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Xfce</url>
     <description>The Gentoo Xfce Project aims to bring the current and complete Xfce desktop environment to Gentoo.</description>
+    <member>
+      <email>calchan@gentoo.org</email>
+      <name>Denis Dupeyron</name>
+      <role>Member</role>
+    </member>
     <member>
       <email>chutzpah@gentoo.org</email>
       <name>Patrick McLean</name>
