@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile install
-DEPEND=dev-ada/gnat_util[gnat_2016=,gnat_2017=] dev-ada/gnatcoll[gnat_2016=,gnat_2017=,projects,shared] dev-ada/gprbuild[gnat_2016=,gnat_2017=] dev-ada/xmlada[gnat_2016=,gnat_2017=] gnat_2016? ( dev-lang/gnat-gpl:4.9.4 ) gnat_2017? ( dev-lang/gnat-gpl:6.3.0 )
+DEPEND=dev-ada/gnat_util[gnat_2017] dev-ada/gnatcoll[gnat_2017,projects,shared] dev-ada/gprbuild[gnat_2017] dev-ada/xmlada[gnat_2017] dev-lang/gnat-gpl:6.3.0
 DESCRIPTION=To develop tools for Ada software
 EAPI=6
 HOMEPAGE=http://libre.adacore.com/
-IUSE=gnat_2016 gnat_2017
+IUSE=gnat_2016 +gnat_2017
 KEYWORDS=~amd64
 LICENSE=GPL-3
 REQUIRED_USE=!gnat_2016 gnat_2017
 SLOT=0
 SRC_URI=http://mirrors.cdn.adacore.com/art/591c45e2c7a447af2deecffb -> asis-gpl-2017-src.tar.gz
 _eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e
-_md5_=8ac399a67243b3167a929ae0d9bcda17
+_md5_=b782270e1f147bbb3645e5bc4ec47814
