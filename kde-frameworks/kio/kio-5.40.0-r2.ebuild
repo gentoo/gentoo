@@ -62,7 +62,10 @@ PDEPEND="
 	$(add_frameworks_dep kded)
 "
 
-PATCHES=( "${FILESDIR}/${P}-mkpath-qt-5.9.3.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-mkpath-qt-5.9.3.patch"
+	"${FILESDIR}/${P}-knewfilemenu-mkpath-qt-5.9.3.patch"
+)
 
 # tests hang
 RESTRICT+=" test"
