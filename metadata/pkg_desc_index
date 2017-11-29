@@ -2499,7 +2499,7 @@ app-text/xapian-omega 1.2.24 1.2.25 1.4.4 1.4.5: An application built on Xapian,
 app-text/xchm 1.23-r1 1.23-r2: Utility for viewing Compiled HTML Help (CHM) files
 app-text/xdvik 22.87.03: DVI previewer for X Window System
 app-text/xdvipdfmx 0.7.8_p20120701 0.7.9_p20130530: Extended dvipdfmx for use with XeTeX and other unicode TeXs
-app-text/xfbib 0.0.2-r1: a lightweight BibTeX editor
+app-text/xfbib 0.0.2-r1 0.0.2-r2: a lightweight BibTeX editor
 app-text/xhtml1 20020801-r4: DTDs for the eXtensible HyperText Markup Language 1.0
 app-text/xindy 2.4 2.4-r1: A Flexible Indexing System
 app-text/xiphos 4.0.4 4.0.4-r1 4.0.6a: A bible study frontend for Sword (formerly known as GnomeSword)
