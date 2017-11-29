@@ -1,0 +1,50 @@
+Title: New 17.0 profiles in the Gentoo repository
+Author: Andreas K. Hüttel <dilfridge@gentoo.org>
+Posted: 2017-11-30
+Revision: 1
+News-Item-Format: 2.0
+Display-If-Installed: >=sys-devel/gcc-6.4.0
+
+We have just added (for all arches except arm and mips, these follow
+later) a new set of profiles with release version 17.0 to the Gentoo 
+repository. These bring three changes:
+1) The default C++ language version for applications is now C++14.
+   This change is mostly relevant to Gentoo developers. It also
+   means, however, that compilers earlier than GCC 6 are masked 
+   and not supported for use as a system compiler anymore. Feel 
+   free to unmask them if you need them for specific applications.
+2) Where supported, GCC will now build position-independent
+   executables (PIE) by default. This improves the overall
+   security fingerprint. The switch from non-PIE to PIE binaries,
+   however, requires some steps by users, as detailed below.
+3) Up to now, hardened profiles were separate from the default
+   profile tree. Now they are moving into the 17.0 profile
+   as a feature there, similar to "no-multilib" and "systemd".
+
+Please migrate away from the 13.0 profiles within the six weeks after
+GCC 6.4.0 has been stabilized on your architecture. The 13.0 profiles
+will be deprecated then and removed in half a year.
+
+If you are not already running a hardened setup with PIE enabled, then
+switching the profile involves the following steps: 
+If not already done,
+* Use gcc-config to select gcc-6.4.0 or later as system compiler
+* Re-source /etc/profile:
+    . /etc/profile
+* Re-emerge libtool
+    emerge -1 sys-devel/libtool
+Then, 
+* Select the new profile with eselect
+* Re-emerge, in this sequence, gcc, binutils, and glibc
+    emerge -1 sys-devel/gcc:6.4.0
+    emerge -1 sys-devel/binutils
+    emerge -1 sys-libs/glibc
+* Rebuild your entire system
+    emerge -e @world
+
+Switching the profile from 13.0 to 17.0 modifies the settings of 
+GCC 6 to generate PIE executables by default; thus, you need to do 
+the rebuilds even if you have already used GCC 6 beforehand.
+If you do not follow these steps you may get spurious build
+failures when the linker tries unsuccessfully to combine non-PIE
+and PIE code.
