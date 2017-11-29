@@ -6,7 +6,7 @@ EAPI="6"
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 DISTUTILS_OPTIONAL=1
 
-inherit distutils-r1 flag-o-matic ltprune qmake-utils toolchain-funcs
+inherit autotools distutils-r1 flag-o-matic ltprune qmake-utils toolchain-funcs
 
 MY_PV="${PV//_/-}"
 MY_P="${PN}-${MY_PV}"
@@ -39,6 +39,10 @@ RDEPEND="${COMMON_DEPEND}
 
 REQUIRED_USE="qt5? ( cxx ) python? ( ${PYTHON_REQUIRED_USE} )"
 
+PATCHES=(
+	"${FILESDIR}/${P}-build.patch"
+)
+
 S="${WORKDIR}/${MY_P}"
 
 do_python() {
@@ -55,6 +59,7 @@ pkg_setup() {
 
 src_prepare() {
 	default
+	eautoreconf
 
 	# Socket name is too long if we use full beta name
 	# tests are failing
