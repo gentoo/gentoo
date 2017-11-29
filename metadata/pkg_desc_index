@@ -105,7 +105,7 @@ app-admin/gamin 0.1.10-r1: Meta package providing the File Alteration Monitor AP
 app-admin/genromfs 0.5.2: Create space-efficient, small, read-only romfs filesystems
 app-admin/gentoo-perl-helpers 0.1.0 0.2.0 0.2.1 0.2.2-r1 0.3.0 0.3.1: Introspection and Upgrade Assistance tools for Gentoo Perl
 app-admin/gentoo-rsync-mirror 1.0-r5: Ebuild for setting up a Gentoo rsync mirror
-app-admin/github-backup-utils 2.5.0 2.6.0 2.6.3 2.6.4 2.7.0 2.7.0-r1 2.7.1 2.8.2 2.9.0 2.10.0 2.11.0 2.11.1 2.11.2: Backup and recovery utilities for GitHub Enterprise
+app-admin/github-backup-utils 2.5.0 2.6.0 2.6.3 2.6.4 2.7.0 2.7.0-r1 2.7.1 2.8.2 2.9.0 2.9.0-r1 2.10.0 2.10.0-r1 2.11.0 2.11.0-r1 2.11.1 2.11.1-r1 2.11.2 2.11.2-r1: Backup and recovery utilities for GitHub Enterprise
 app-admin/gixy 0.1.5 0.1.8: Nginx configuration static analyzer
 app-admin/gkrellm 2.3.10-r1: Single process stack of various system monitors
 app-admin/glance 14.0.0 14.0.0-r1 15.0.0 2017.1.9999 2017.2.9999: Services for discovering, registering, and retrieving VM images
@@ -19578,7 +19578,7 @@ xfce-base/libxfce4util 4.12.1-r1 4.13.1: A basic utility library for the Xfce de
 xfce-base/libxfcegui4 4.10.0-r1 4.10.0-r2: A compability library for unported Xfce 4.6 plugins (DEPRECATED)
 xfce-base/thunar 1.6.10-r1 1.6.12-r1 1.6.13 1.7.0: File manager for the Xfce desktop environment
 xfce-base/xfce4-appfinder 4.12.0-r1 4.13.0: A tool to find and launch installed applications for the Xfce desktop
-xfce-base/xfce4-meta 4.12: The Xfce Desktop Environment (meta package)
+xfce-base/xfce4-meta 4.12 4.12-r1: The Xfce Desktop Environment (meta package)
 xfce-base/xfce4-panel 4.12.0-r1 4.12.1-r1 4.13.0 4.13.1: Panel for the Xfce desktop environment
 xfce-base/xfce4-session 4.12.1-r1 4.13.0: A session manager for the Xfce desktop environment
 xfce-base/xfce4-settings 4.12.0-r2 4.13.0 4.13.1: Configuration system for the Xfce desktop environment

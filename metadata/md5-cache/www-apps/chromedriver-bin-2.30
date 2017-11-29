@@ -6,5 +6,5 @@ KEYWORDS=~amd64
 LICENSE=google-chrome
 RDEPEND=www-client/google-chrome
 SLOT=0
-SRC_URI=amd64? ( https://chromedriver.storage.googleapis.com/2.30/chromedriver_linux64.zip ) x86? ( https://chromedriver.storage.googleapis.com/2.30/chromedriver_linux32.zip )
-_md5_=6a740b12ebb26e820563ef7b8978b53d
+SRC_URI=amd64? ( https://chromedriver.storage.googleapis.com/2.30/chromedriver_linux64.zip -> chromedriver-bin-2.30.linux64.zip ) x86? ( https://chromedriver.storage.googleapis.com/2.30/chromedriver_linux32.zip -> chromedriver-bin-2.30.linux32.zip )
+_md5_=deb48cd7b19ae3e15be2029ee9863d69
