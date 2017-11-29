@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Use shorter versions of class names"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86 ~x64-macos"
+KEYWORDS="amd64 ~arm ~ppc ~x86 ~x64-macos"
 IUSE="test"
 
 RDEPEND="

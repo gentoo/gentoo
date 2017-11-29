@@ -119,7 +119,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=media-libs/harfbuzz-0.9.42:=[graphite,icu]
 	media-libs/lcms:2
 	>=media-libs/libcdr-0.1.0
-	>=media-libs/libepoxy-1.3.1
+	>=media-libs/libepoxy-1.3.1[X]
 	>=media-libs/libfreehand-0.1.0
 	media-libs/libpagemaker
 	>=media-libs/libpng-1.4:0=

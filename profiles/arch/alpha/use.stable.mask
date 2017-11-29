@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # This file requires eapi 5 or later. New entries go on top.
@@ -8,8 +8,6 @@
 # Mask python targets until dev-lang/python is stable.
 python_single_target_python3_6
 python_targets_python3_6
-python_single_target_python3_5
-python_targets_python3_5
 
 # Tobias Klausmann <klausman@gentoo.org> (17 Mar 2016)
 # Webkit itself is enormous (~13h compile+test on our fastest dev machine), so

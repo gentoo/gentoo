@@ -29,6 +29,55 @@
 
 #--- END OF EXAMPLES ---
 
+# Jonas Stein <jstein@gentoo.org> (29 Nov 2017)
+# The old yafaray-0.1.1 depends on qt4 and has bugs we can not fix. 
+# (bug #321169) and (bug #595684)
+# Users of yafaray may be interested in >=yafaray-3.3.0 (bug #639046)
+# and its fork TheBounty (#639158) which require completely new ebuilds.
+# 
+# The old and for now the last version in the tree is 
+# masked for removal on 2018-02-30
+=media-gfx/yafaray-0.1.1
+
+# Michał Górny <mgorny@gentoo.org> (28 Nov 2017)
+# Replaced by split packages. Please install one of:
+# - app-emulation/wine-vanilla (the only choice for stable)
+# - app-emulation/wine-staging
+# - app-emulation/wine-d3d9
+# - app-emulation/wine-any
+# For more information, please read the news item:
+# https://www.gentoo.org/support/news-items/2017-04-10-split-and-slotted-wine.html
+# If you really need the old ebuilds, you can use the 'wine' repository.
+# Removal in 30 days.
+app-emulation/wine
+
+# Jonas Stein <jstein@gentoo.org> (26 Nov 2017)
+# The latest version of this LaTeX package is part of 
+# dev-texlive/texlive-latexextra (bug #421881)
+# Masked for removal on 2017-12-30
+dev-tex/isotope
+
+# Matt Turner <mattst88@gentoo.org> (25 Nov 2017)
+# Unmaintained upstream. Masked for removal in 30 days.
+# Bug #606132.
+x11-drivers/xf86-input-acecad
+x11-drivers/xf86-input-aiptek
+x11-drivers/xf86-input-fpit
+x11-drivers/xf86-input-hyperpen
+x11-drivers/xf86-input-mutouch
+x11-drivers/xf86-input-pentouch
+
+# Michał Górny <mgorny@gentoo.org> (25 Nov 2017)
+# Testing branch GTK+3 release. Changes API, breaks xfce-base/xfdesktop.
+# Masked until the latter sees a new release.
+>=xfce-base/thunar-1.7
+
+# Jonas Stein <jstein@gentoo.org> (25 Nov 2017)
+# The latest version of this LaTeX package is part of 
+# dev-texlive/texlive-latexextra
+# Masked for removal on 2017-12-30
+dev-tex/notoccite
+
 # Bernard Cafarelli <voyageur@gentoo.org> (24 Nov 2017)
 # Upstream removed tarball, no separate release in 3 years
 # Merged in net-misc/owncloud-client since
@@ -43,6 +92,12 @@ sys-auth/pam-csync
 www-apps/eyeos
 
 # Matt Turner <mattst88@gentoo.org> (23 Nov 2017)
+# The modesetting driver is part of the xorg-server package since version 1.17.
+# The separate xf86-video-modesetting package is no longer needed.
+# Bug #606132.
+x11-drivers/xf86-video-modesetting
+
+# Matt Turner <mattst88@gentoo.org> (23 Nov 2017)
 # For ancient hardware. Tired of maintaining. Masked for removal in 30 days.
 # Bug #606132.
 x11-misc/afbinit
@@ -55,7 +110,6 @@ x11-drivers/xf86-video-freedreno
 x11-drivers/xf86-video-i128
 x11-drivers/xf86-video-i740
 x11-drivers/xf86-video-mach64
-x11-drivers/xf86-video-modesetting
 x11-drivers/xf86-video-neomagic
 x11-drivers/xf86-video-opentegra
 x11-drivers/xf86-video-rendition
@@ -497,7 +551,7 @@ dev-ruby/poltergeist
 # switch the compiler / the binutils) ASAP. If you need them for a specific
 # (isolated) use case, feel free to unmask them on your system.
 <sys-devel/gcc-4.9
-<sys-libs/glibc-2.23-r4
+<sys-libs/glibc-2.25-r9
 <sys-devel/binutils-2.28.1
 
 # Michał Górny <mgorny@gentoo.org> (20 May 2017)

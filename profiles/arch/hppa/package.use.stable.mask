@@ -17,6 +17,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (26 Nov 2017)
+# Several packages no longer have stable keywords due
+# to bug 626682
+dev-ruby/bundler doc
+dev-ruby/rspec-core highlight test
+sys-block/thin-provisioning-tools test
+
 # Andreas Sturmlechner <asturm@gentoo.org> (29 Oct 2017)
 # dev-qt/* stabilisation timeout.
 app-text/poppler cairo-qt

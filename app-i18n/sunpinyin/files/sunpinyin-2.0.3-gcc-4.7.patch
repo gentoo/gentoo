@@ -1,0 +1,49 @@
+From 3d35aa0370d9c7bd455098caa9ba22ebe1f82968 Mon Sep 17 00:00:00 2001
+From: Yong Sun <mail@yongsun.me>
+Date: Wed, 4 Apr 2012 18:41:39 +0800
+Subject: [PATCH] Integrated patch from YunQiang Su, fixed FTBFS with gcc-4.7
+
+---
+ SConstruct        |    3 ++-
+ src/portability.h |    5 ++---
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/SConstruct b/SConstruct
+index 97abf47..354fd19 100644
+--- a/SConstruct
++++ b/SConstruct
+@@ -313,7 +313,8 @@ def DoConfigure():
+     conf.CheckCHeader('sys/param.h')
+     conf.CheckCHeader('sys/stat.h')
+     conf.CheckCHeader('sys/types.h')
+-    conf.CheckCHeader('unistd.h')
++    if conf.CheckCHeader('unistd.h'):
++        conf.Define('DHAVE_UNISTD_H', 1)
+     conf.CheckCHeader('wchar.h')
+ 
+     # add essential package requirements
+diff --git a/src/portability.h b/src/portability.h
+index 949d4f2..cf43bd0 100644
+--- a/src/portability.h
++++ b/src/portability.h
+@@ -44,15 +44,14 @@
+ #include <string>
+ #include <cstring>
+ 
+-#if defined(sun)
++#if defined(HAVE_UNISTD_H)
+ #include <unistd.h>
+ #ifdef __cplusplus
+ #include <algorithm>
+ #else
+ #include <sys/ddi.h>
+ #endif //__cpluscplus
+-#endif //defined(sun)
+-
++#endif //defined(HAVE_UNISTD_H)
+ 
+ #ifndef HOST_OS_GNUC_2
+     #if defined(DEBUG) && !defined(NDEBUG)
+-- 
+1.7.8.5
+

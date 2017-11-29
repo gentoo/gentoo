@@ -1,0 +1,10 @@
+diff -r -U2 lumina-1.4.0.orig/src-qt5/desktop-utils/lumina-pdf/lumina-pdf.pro lumina-1.4.0/src-qt5/desktop-utils/lumina-pdf/lumina-pdf.pro
+--- lumina-1.4.0.orig/src-qt5/desktop-utils/lumina-pdf/lumina-pdf.pro	2017-11-21 23:21:47.000000000 +0700
++++ lumina-1.4.0/src-qt5/desktop-utils/lumina-pdf/lumina-pdf.pro	2017-11-25 19:17:01.771778161 +0700
+@@ -26,5 +26,5 @@
+ 
+ LIBS += -lpoppler-qt5
+-INCLUDEPATH+= $${L_INCLUDEDIR}/poppler/qt5
++INCLUDEPATH+= /usr/include/poppler/qt5
+ 
+ TRANSLATIONS =  i18n/l-pdf_af.ts \

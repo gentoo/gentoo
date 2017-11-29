@@ -24,8 +24,9 @@ RDEPEND="
 	gpg? ( app-crypt/gnupg )
 	lzma? ( $(python_gen_cond_dep 'dev-python/backports-lzma[${PYTHON_USEDEP}]' python2_7 pypy) )
 	sha3? ( $(python_gen_cond_dep 'dev-python/pysha3[${PYTHON_USEDEP}]' python{2_7,3_4,3_5} pypy{,3}) )"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-python/setuptools[${PYTHON_USEDEP}]"
 
 python_test() {
-	"${PYTHON}" -m unittest discover -v || die "Tests fail with ${EPYTHON}"
+	esetup.py test
 }

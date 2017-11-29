@@ -1,9 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI="5"
 
-PATCH_VER="1.0"
+PATCH_VER="1.2"
 UCLIBC_VER="1.0"
 
 # Hardened gcc 4 stuff
@@ -48,11 +48,15 @@ DEPEND="${RDEPEND}
 	elibc_glibc? ( >=sys-libs/glibc-2.8 )
 	>=sys-devel/binutils-2.20"
 
+PDEPEND="${PDEPEND} elibc_glibc? ( >=sys-libs/glibc-2.8 )"
+
 S="${WORKDIR}"/${MYP}
 
 FSFGCC=gcc-${TOOLCHAIN_GCC_PV}
 
 pkg_setup() {
+	toolchain_pkg_setup
+
 	if use bootstrap; then
 		GCC="${WORKDIR}"/gnat-gpl-2014-x86_64-linux-bin/bin/gcc
 	else
@@ -120,10 +124,13 @@ src_prepare() {
 		EPATCH_EXCLUDE+=" 10_all_default-fortify-source.patch"
 	fi
 
+	# Bug 638056
+	epatch "${FILESDIR}/${P}-bootstrap.patch"
+
 	toolchain_src_prepare
 
 	use vanilla && return 0
-	#Use -r1 for newer piepatchet that use DRIVER_SELF_SPECS for the hardened specs.
+	# Use -r1 for newer piepatchet that use DRIVER_SELF_SPECS for the hardened specs.
 	[[ ${CHOST} == ${CTARGET} ]] && epatch "${FILESDIR}"/gcc-spec-env-r1.patch
 }
 

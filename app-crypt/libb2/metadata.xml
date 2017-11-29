@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>grobian@gentoo.org</email>
+		<name>Fabian Groffen</name>
+	</maintainer>
+	<longdescription lang="en">
+		C library providing BLAKE2b, BLAKE2s, BLAKE2bp, BLAKE2sp
+
+		Official implementations from BLAKE2 project.
+	</longdescription>
+	<use>
+		<flag name="native-cflags">
+		Use CFLAGS as determined by configure script.  These flags will
+		enable all CPU specific features it find available, to further
+		optimise the implementation.  This discards any existing CFLAGS
+		set in make.conf or similar.
+		</flag>
+	</use>
+</pkgmetadata>

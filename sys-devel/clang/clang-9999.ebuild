@@ -96,7 +96,7 @@ src_unpack() {
 		"${S}"/tools/extra
 	if use test; then
 		git-r3_checkout https://llvm.org/git/llvm.git \
-			"${WORKDIR}"/llvm
+			"${WORKDIR}"/llvm '' utils/{lit,llvm-lit,unittest}
 	fi
 	git-r3_checkout "${EGIT_REPO_URI}" "${S}"
 }

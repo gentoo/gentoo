@@ -73,7 +73,6 @@ multilib_src_configure() {
 }
 
 src_prepare() {
-	cd "$S"
 	epatch "${FILESDIR}/${P}-CVE-2017-1000231.patch"
 	epatch "${FILESDIR}/${P}-CVE-2017-1000232.patch"
 }

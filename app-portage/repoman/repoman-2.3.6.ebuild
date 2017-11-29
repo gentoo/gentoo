@@ -14,7 +14,7 @@ if [[ ${PV} == *9999 ]]; then
 	S="${WORKDIR}/${P}/repoman"
 else
 	SRC_URI="https://dev.gentoo.org/~zmedico/portage/archives/${P}.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 fi
 
 DESCRIPTION="Repoman is a Quality Assurance tool for Gentoo ebuilds"

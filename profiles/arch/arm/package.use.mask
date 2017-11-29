@@ -1,6 +1,19 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (29 Nov 2017)
+# kde-plasma/plasma-vault is not keyworded, which depends on also
+# not yet keyworded sys-fs/{encfs,cryfs}: bugs #630486 and #633882
+kde-plasma/plasma-meta crypt
+
+# Michał Górny <mgorny@gentoo.org> (29 Nov 2017)
+# All current clang versions are broken on ARM.
+app-doc/doxygen clang
+
+# Thomas Deutschmann <whissi@gentoo.org> (28 Nov 2017)
+# Requires dev-libs/mongo-c-driver which isn't keyworded
+>=app-admin/rsyslog-8.31 mongodb
+
 # Ulrich Müller <ulm@gentoo.org> (23 Oct 2017)
 # Needs net-mail/mailutils which is not keyworded, bug #635216.
 app-editors/emacs-vcs mailutils
@@ -122,12 +135,6 @@ dev-scheme/racket futures jit
 # Patrick McLean <chutzpah@gentoo.org> (12 May 2016)
 # Tests require dev-python/tox which isn't keyworded on arm
 sys-cluster/ceph test
-
-# Thomas Deutschmann <whissi@whissi.de> (25 Apr 2016), on behalf of
-# Ian Delaney <idella4@gentoo.org> (25 Apr 2016)
-# for the proxy-maintainers project
-# Unkeyworded deps, bug #581180
-app-admin/rsyslog grok
 
 # Thomas Deutschmann <whissi@whissi.de> (19 Mar 2016), on behalf of
 # Ian Delaney <idella4@gentoo.org> (19 Mar 2016)

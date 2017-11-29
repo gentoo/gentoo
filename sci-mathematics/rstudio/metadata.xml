@@ -6,9 +6,9 @@
 		<name>Mark Wright</name>
 	</maintainer>
 	<longdescription lang="en">
-  RStudio is an integrated development environment (IDE) for R. It can
-  run it on a desktop or even over the web using RStudio Server.
-</longdescription>
+		RStudio is an integrated development environment (IDE) for R. It can
+		run it on a desktop or even over the web using RStudio Server.
+	</longdescription>
 	<use>
 		<flag name="server">Build and install the RStudio server</flag>
 	</use>

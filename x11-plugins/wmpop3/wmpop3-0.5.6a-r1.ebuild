@@ -5,8 +5,8 @@ EAPI=6
 inherit eutils toolchain-funcs
 
 DESCRIPTION="dockapp for checking pop3 accounts"
-HOMEPAGE="http://www.cs.mun.ca/~scotth/"
-SRC_URI="http://www.cs.mun.ca/~scotth/download/${P/wmpop3/WMPop3}.tar.gz"
+HOMEPAGE="http://www.dockapps.net/wmpop3"
+SRC_URI="http://www.dockapps.net/download/${P/wmpop3/WMPop3}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

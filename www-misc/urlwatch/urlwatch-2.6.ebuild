@@ -7,13 +7,14 @@ PYTHON_COMPAT=( python{3_4,3_5} )
 inherit distutils-r1
 
 DESCRIPTION="A tool for monitoring webpages for updates"
-HOMEPAGE="https://thp.io/2008/urlwatch/ https://pypi.python.org/pypi/urlwatch"
-SRC_URI="https://thp.io/2008/${PN}/${P}.tar.gz"
+HOMEPAGE="https://pypi.python.org/pypi/urlwatch"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
+RESTRICT="test"
 
 RDEPEND="
 	dev-python/keyring[${PYTHON_USEDEP}]

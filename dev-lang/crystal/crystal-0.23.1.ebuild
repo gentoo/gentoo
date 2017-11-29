@@ -22,7 +22,7 @@ IUSE="doc debug examples blocking-stdio-hack +xml +yaml"
 
 # dev-libs/boehm-gc[static-libs] dependency problem,  check the issue: https://github.com/manastech/crystal/issues/1382
 DEPEND="
-	>=sys-devel/llvm-3.9.0
+	>=sys-devel/llvm-3.9.0:*
 	dev-libs/boehm-gc[static-libs,threads]
 	dev-libs/libatomic_ops
 	dev-libs/libevent

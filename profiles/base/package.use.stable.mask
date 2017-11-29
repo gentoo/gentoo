@@ -4,9 +4,9 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
-# Andreas Sturmlechner <asturm@gentoo.org> (16 Nov 2017)
-# Requires PYTHON_TARGETS="python3_5", bug #620940
-kde-apps/kdegames-meta python
+# Bernard Cafarelli <voyageur@gentoo.org> (27 Nov 2017)
+# Dependencies have no stable keyword
+app-backup/backup-manager s3
 
 # Brian Evans <grknight@gentoo.org (6 Nov 2017)
 # Requires stable phpunit
@@ -134,7 +134,6 @@ app-emulation/ganeti monitoring
 
 # Mike Gilbert <floppym@gentoo.org> (03 Oct 2015)
 # Unmask stable-masked implementations for python-exec
-dev-lang/python-exec -python_targets_python3_5
 dev-lang/python-exec -python_targets_python3_6
 
 # Pacho Ramos <pacho@gentoo.org> (15 May 2015)

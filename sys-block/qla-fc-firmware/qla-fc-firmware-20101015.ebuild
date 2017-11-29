@@ -1,9 +1,12 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=6
 
 DESCRIPTION="QLogic Linux Fibre Channel HBA Firmware for ql2xxx cards"
 HOMEPAGE="ftp://ftp.qlogic.com/outgoing/linux/firmware/"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
+
 LICENSE="qlogic-fibre-channel-firmware"
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 sparc x86"
@@ -12,8 +15,6 @@ IUSE=""
 # really depends on absolutely nothing
 DEPEND=""
 RDEPEND="!sys-kernel/linux-firmware"
-
-FW_BASENAME="ql2100_fw.bin ql2200_fw.bin ql2300_fw.bin ql2322_fw.bin ql2400_fw.bin ql2500_fw.bin ql6312_fw.bin"
 
 src_install() {
 	# We must install this, say QLogic's people.
@@ -31,9 +32,10 @@ src_install() {
 	# Please see README.* as to why we do not use the MID/MIDX versions by
 	# default if they are newer.
 	# TODO: Provide a means to get them for people that really want them.
-	for f in ${FW_BASENAME} ; do
-		doins ${f}.*
-		latest_f="$(ls ${f}.* |grep -v MID | sort -n | tail -n1)"
-		dosym ${latest_f} /lib/firmware/${f}
+	local f fw_basename=( ql2100_fw.bin ql2200_fw.bin ql2300_fw.bin ql2322_fw.bin ql2400_fw.bin ql2500_fw.bin ql6312_fw.bin )
+	for f in "${fw_basename[@]}"; do
+		doins "${f}".*
+		latest_f="$(ls ${f}.* | grep -v MID | sort -n | tail -n1)"
+		dosym "${latest_f}" /lib/firmware/"${f}"
 	done
 }

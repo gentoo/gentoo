@@ -1,0 +1,16 @@
+Workaround clone syscall mishandling.
+
+https://bugs.gentoo.org/630704
+--- a/sysdeputil.c	2017-09-11 11:38:06.522229630 +0200
++++ b/sysdeputil.c	2017-09-11 11:38:10.422229500 +0200
+@@ -67,7 +67,9 @@
+ #if defined(__linux__)
+   #include <errno.h>
+   #include <syscall.h>
+-  #define VSF_SYSDEP_HAVE_LINUX_CLONE
++  #ifndef __sparc__
++    #define VSF_SYSDEP_HAVE_LINUX_CLONE
++  #endif
+   #include <sched.h>
+   #ifndef CLONE_NEWPID
+     #define CLONE_NEWPID 0x20000000

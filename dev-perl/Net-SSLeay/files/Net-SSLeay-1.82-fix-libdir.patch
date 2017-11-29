@@ -1,0 +1,26 @@
+From 7beee46a64a9af1a7edf6bb9011327b4a08e353a Mon Sep 17 00:00:00 2001
+From: Torsten Veller <tove@gentoo.org>
+Date: Mon, 16 Jul 2012 05:31:43 +1200
+Subject: Fix libdir
+
+Bug: https://bugs.gentoo.org/416339
+---
+ inc/Module/Install/PRIVATE/Net/SSLeay.pm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/inc/Module/Install/PRIVATE/Net/SSLeay.pm b/inc/Module/Install/PRIVATE/Net/SSLeay.pm
+index 49913e6..0a3aa24 100644
+--- a/inc/Module/Install/PRIVATE/Net/SSLeay.pm
++++ b/inc/Module/Install/PRIVATE/Net/SSLeay.pm
+@@ -67,7 +67,7 @@ sub ssleay_get_build_opts {
+     for ("$prefix/include", "$prefix/inc32", '/usr/kerberos/include') {
+       push @{$opts->{inc_paths}}, $_ if -f "$_/openssl/ssl.h";
+     }
+-    for ($prefix, "$prefix/lib64", "$prefix/lib", "$prefix/out32dll") {
++    for ($prefix, "$prefix/$ENV{LIBDIR}", "$prefix/out32dll") {
+       push @{$opts->{lib_paths}}, $_ if -d $_;
+     }
+ 
+-- 
+2.14.3
+

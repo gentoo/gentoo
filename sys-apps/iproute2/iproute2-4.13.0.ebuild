@@ -34,7 +34,7 @@ DEPEND="
 	${RDEPEND}
 	app-arch/xz-utils
 	iptables? ( virtual/pkgconfig )
-	sys-devel/bison
+	>=sys-devel/bison-2.4
 	sys-devel/flex
 	>=sys-kernel/linux-headers-3.16
 	elibc_glibc? ( >=sys-libs/glibc-2.7 )
@@ -62,7 +62,7 @@ src_prepare() {
 	default
 
 	sed -i \
-		-e '/^CC :=/d' \
+		-e '/^CC :\?=/d' \
 		-e "/^LIBDIR/s:=.*:=/$(get_libdir):" \
 		-e "s:-O2:${CFLAGS} ${CPPFLAGS}:" \
 		-e "/^HOSTCC/s:=.*:= $(tc-getBUILD_CC):" \
