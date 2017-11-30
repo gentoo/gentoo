@@ -102,7 +102,7 @@ src_install() {
 	dosym /usr/sbin/haproxy /usr/bin/haproxy
 
 	newconfd "${FILESDIR}/${PN}.confd" $PN
-	newinitd "${FILESDIR}/${PN}.initd-r5" $PN
+	newinitd "${FILESDIR}/${PN}.initd-r6" $PN
 
 	doman doc/haproxy.1
 
