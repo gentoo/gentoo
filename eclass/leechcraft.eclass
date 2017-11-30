@@ -18,7 +18,7 @@
 #
 # Thanks for original eclass to Andrian Nord <NightNord@niifaq.ru>.
 #
-# Only EAPI >4 supported
+# Only EAPI >=6 is supported
 
 case ${EAPI:-0} in
 	6) ;;
