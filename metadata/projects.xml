@@ -827,7 +827,7 @@
     <description>The Dotnet Project handles the development using the C# language. More specifically, it is often oriented with the mono development environment.</description>
     <member is-lead="1">
       <email>cynede@gentoo.org</email>
-      <name>Mikhail Pukhlikov</name>
+      <name>Cynede</name>
     </member>
   </project>
   <project>
@@ -1414,7 +1414,7 @@
     <description>Support team for the Gentoo organization on GitHub and the related resources (mirrors, pull requests).</description>
     <member>
       <email>cynede@gentoo.org</email>
-      <name>Mikhail Pukhlikov</name>
+      <name>Cynede</name>
       <role>Member</role>
     </member>
     <member>
@@ -1579,7 +1579,7 @@
     </member>
     <member>
       <email>cynede@gentoo.org</email>
-      <name>Mikhail Pukhlikov</name>
+      <name>Cynede</name>
     </member>
     <member>
       <email>gienah@gentoo.org</email>
@@ -3470,7 +3470,7 @@ developers and volunteer mentors.</description>
     </member>
     <member>
       <email>cynede@gentoo.org</email>
-      <name>Mikhail Pukhlikov</name>
+      <name>Cynede</name>
     </member>
     <member>
       <email>djc@gentoo.org</email>
