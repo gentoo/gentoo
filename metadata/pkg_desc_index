@@ -3010,7 +3010,7 @@ dev-db/pgbouncer 1.7.2: Lightweight connection pooler for PostgreSQL
 dev-db/pgmemcache 2.1.2 2.2.0 2.3.0: A PostgreSQL API based on libmemcached to interface with memcached
 dev-db/pgpool2 3.5.2 3.5.5 3.6.1 3.6.4 3.6.5 3.6.6 3.6.7 9999: Connection pool server for PostgreSQL
 dev-db/pgrouting 2.0.0 2.5.0: pgRouting extends PostGIS and PostgreSQL with geospatial routing functionality.
-dev-db/pgtap 0.93.0 0.97.0: Unit testing for PostgreSQL
+dev-db/pgtap 0.93.0 0.97.0 0.98.0: Unit testing for PostgreSQL
 dev-db/pgxnclient 1.2-r1 1.2.1: PostgreSQL Extension Network Client
 dev-db/phpmyadmin 4.0.10.20 4.7.0 4.7.1 4.7.2 4.7.5: Web-based administration for MySQL database in PHP
 dev-db/phppgadmin 5.1 9999: Web-based administration for Postgres database in php
@@ -4592,7 +4592,7 @@ dev-lang/parrot 7.1.0 7.5.0 7.11.0 8.1.0: Virtual machine designed to compile an
 dev-lang/pasm 1.7: A portable assembler for processors of the PowerPC family
 dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.24.1-r2 5.24.2 5.24.3 5.26.0 5.26.1 5.26.1-r1 5.26.9999 5.28.9999: Larry Wall's Practical Extraction and Report Language
-dev-lang/php 5.6.32 7.0.25 7.0.26 7.1.11 7.1.12 7.2.0_rc6: The PHP language runtime engine
+dev-lang/php 5.6.32 7.0.25 7.0.26 7.1.11 7.1.12 7.2.0: The PHP language runtime engine
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2 5.6: Poly/ML is a full implementation of Standard ML
 dev-lang/python 2.7.12 2.7.14 2.7.14-r1 3.4.5 3.4.6 3.4.6-r1 3.5.4 3.5.4-r1 3.6.3 3.6.3-r1: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.4 2.4.5 9999: Python script wrapper
@@ -4840,7 +4840,7 @@ dev-libs/libezV24 0.1.1: library that provides an easy API to Linux serial ports
 dev-libs/libf2c 20110801-r4 20130927: Library that converts FORTRAN to C source
 dev-libs/libfastjson 0.99.2 0.99.4 0.99.6 0.99.7: Fork of the json-c library, which is optimized for liblognorm processing
 dev-libs/libffi 3.2.1: a portable, high level programming interface to various calling conventions
-dev-libs/libfilezilla 0.9.1 0.9.2 0.10.0 0.11.0: C++ library offering some basic functionality for platform-independent programs
+dev-libs/libfilezilla 0.9.1 0.9.2 0.11.0 0.11.1: C++ library offering some basic functionality for platform-independent programs
 dev-libs/libflatarray 0.1.1 0.3.0: Struct of arrays library with object oriented interface for C++
 dev-libs/libfmt 3.0.1 3.0.2 4.0.0 9999: Small, safe and fast formatting library
 dev-libs/libg15 1.2.7-r1 9999: The libg15 library gives low-level access to the Logitech G15 keyboard
@@ -14386,7 +14386,7 @@ net-analyzer/nagios-check_openvpn-simple 0.0.1-r1: A Nagios plugin to check whet
 net-analyzer/nagios-check_pidfile 1: A nagios plugin for checking daemons via pidfiles
 net-analyzer/nagios-check_rbl 1.4.1: Monitor whether or not a host is blacklisted
 net-analyzer/nagios-core 3.5.1 4.3.1-r1 4.3.3 4.3.4: Nagios core - monitoring daemon, web GUI, and documentation
-net-analyzer/nagios-plugin-check_raid 4.0.0-r1 4.0.0_p20151215 4.0.0_p20160215 4.0.1: Nagios/Icinga plugin to check current server's RAID status
+net-analyzer/nagios-plugin-check_raid 4.0.0-r1 4.0.0_p20151215 4.0.0_p20160215 4.0.1 4.0.2: Nagios/Icinga plugin to check current server's RAID status
 net-analyzer/nagios-plugins 2.0.3-r2 2.2.1-r2: Official plugins for Nagios
 net-analyzer/nagios-plugins-flameeyes 9999: Flameeyes's custom Nagios/Icinga plugins
 net-analyzer/nagios-plugins-snmp 0.6.0-r2: Additional Nagios plugins for monitoring SNMP capable devices
@@ -14631,11 +14631,11 @@ net-dns/maradns 2.0.09-r2: A security-aware DNS server
 net-dns/mdns-repeater 20110921: Multicast DNS repeater
 net-dns/mydns 1.2.8.31-r1: A DNS-Server which gets its data from a MySQL-/PostgreSQL-database
 net-dns/ndu 0.4-r4: DNS serial number incrementer and reverse zone builder
-net-dns/nsd 4.1.16 4.1.17: An authoritative only, high performance, open source name server
+net-dns/nsd 4.1.16 4.1.17 4.1.18: An authoritative only, high performance, open source name server
 net-dns/odsclient 1.03-r1: Client for the Open Domain Server's dynamic dns
 net-dns/opendnssec 1.3.18-r1 1.4.8.2 1.4.12-r1 2.0.1-r1 2.0.3: An open-source turn-key solution for DNSSEC
 net-dns/openresolv 3.8.1 3.9.0: A framework for managing DNS information
-net-dns/pdns 4.0.4 4.0.4-r1 4.0.5 4.1.0_rc3-r1: The PowerDNS Daemon
+net-dns/pdns 4.0.4 4.0.4-r1 4.0.5 4.1.0: The PowerDNS Daemon
 net-dns/pdns-ldap-backend 0.2: Fork of the official but unmaintained LDAP backend
 net-dns/pdns-recursor 4.0.6 4.0.6-r1 4.0.7 4.1.0_rc3-r1: The PowerDNS Recursor
 net-dns/pdnsd 1.2.9a-r1: Proxy DNS server with permanent caching
@@ -17239,7 +17239,7 @@ sys-apps/newrelic-sysmond 1.1.2.124-r1: NewRelic System Monitor
 sys-apps/nix 1.11.14 1.11.15: A purely functional package manager
 sys-apps/noexec 1.1.0-r1: a package for preventing processes from using exec system calls
 sys-apps/nvme-cli 1.1 1.2 1.3 1.4: NVM-Express user space tooling for Linux
-sys-apps/openrc 0.28 0.32.1 0.34.10 0.34.11 9999: OpenRC manages the services, startup and shutdown of a host
+sys-apps/openrc 0.28 0.32.1 0.34.11 9999: OpenRC manages the services, startup and shutdown of a host
 sys-apps/opentmpfiles 0.1.1 0.1.2 0.1.3 9999: A standalone utility to process systemd-style tmpfiles.d files
 sys-apps/osinfo-db 20170326 20170423 20170813: osinfo database files
 sys-apps/osinfo-db-tools 1.1.0: Tools for managing the osinfo database
@@ -17420,7 +17420,7 @@ sys-block/disktype 9: Detect the content format of a disk or disk image
 sys-block/eject-bsd 1.5: eject command for FreeBSD systems
 sys-block/endpoint 0.1.0: Endpoint turns a Linux machine with one or more firewire cards into an SBP-2 device
 sys-block/f3 6.0: Utilities to detect broken or counterfeit flash storage
-sys-block/fio 2.15 2.16: Jens Axboe's Flexible IO tester
+sys-block/fio 2.15 2.16 3.2: Jens Axboe's Flexible IO tester
 sys-block/flashbench 20120606: Tool for benchmarking and classifying flash memory drives
 sys-block/fwdl 1.2.3: Seagate Fibre-Channel disk firmware upgrade tool
 sys-block/gpart 0.1h-r2 0.3: Partition table rescue/guessing tool
@@ -17538,7 +17538,7 @@ sys-cluster/fake 1.1.10: Fake has been designed to switch in backup servers on a
 sys-cluster/feedbackd-agent 0.4: system for dynamic feedback of server loads in a Linux Virtual Server (LVS)-based cluster
 sys-cluster/feedbackd-master 0.4: Linux Virtual Server (LVS) addon for dynamic server health feedback
 sys-cluster/fence-agents 3.1.5-r1 3.1.5-r2: Cluster Fencing Agents
-sys-cluster/galera 25.3.20 25.3.21: Synchronous multi-master replication engine that provides the wsrep API
+sys-cluster/galera 25.3.20 25.3.21 25.3.22: Synchronous multi-master replication engine that provides the wsrep API
 sys-cluster/ganglia 3.7.1-r1: A scalable distributed monitoring system for clusters and grids
 sys-cluster/ganglia-web 3.5.8-r1 3.5.10-r1: Web frontend for sys-cluster/ganglia
 sys-cluster/gasnet 1.26.4 1.26.4-r1 1.28.0 1.28.2 1.30.0: Networking middleware for partitioned global address space (PGAS) language
@@ -17868,7 +17868,7 @@ sys-fs/zfs 0.6.5.4-r2 0.6.5.11 0.7.3 9999: Userland utilities for ZFS Linux kern
 sys-fs/zfs-kmod 0.6.5.4-r1 0.6.5.11 0.7.3 9999: Linux ZFS kernel module for sys-fs/zfs
 sys-kernel/aufs-sources 4.4.87-r1 4.4.95 4.4.96 4.4.97 4.4.98 4.9.49-r1 4.9.59 4.9.60 4.9.61 4.9.62 4.12.12 4.12.13 4.12.14 4.13.10 4.13.11 4.13.12 4.13.13: Full sources including the Gentoo patchset for the linux kernel tree and aufs4 support
 sys-kernel/bliss-initramfs 6.8.3-r2 7.1.0 7.1.1: Boot your system's rootfs from ZFS, LVM, RAID, or a variety of other configs.
-sys-kernel/ck-sources 4.9.61 4.9.62 4.9.63 4.9.64 4.9.65 4.13.12 4.13.13 4.13.14 4.13.15 4.13.16 4.14.1 4.14.2: Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 4.14
+sys-kernel/ck-sources 4.9.61 4.9.62 4.9.63 4.9.64 4.9.65 4.9.66 4.13.12 4.13.13 4.13.14 4.13.15 4.13.16 4.14.1 4.14.2 4.14.3: Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 4.14
 sys-kernel/cryptodev 1.7 1.9 9999: device that allows access to Linux kernel cryptographic drivers
 sys-kernel/dracut 044-r1 044-r3 045-r2 046: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.49.2 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.5.0.8 3.5.1.0 3.5.1.1 3.5.2.0-r1 3.5.2.1 3.5.2.2 3.5.2.3 3.5.2.4 9999: Gentoo automatic kernel building scripts
@@ -19585,10 +19585,10 @@ xfce-base/xfce4-settings 4.12.0-r2 4.13.0 4.13.1: Configuration system for the X
 xfce-base/xfconf 4.12.0-r1 4.12.1 4.13.4: A configuration management system for Xfce
 xfce-base/xfdesktop 4.12.3 4.12.4 4.13.1: Desktop manager for the Xfce desktop environment
 xfce-base/xfwm4 4.12.3-r1 4.12.4 4.13.0 4.13.0-r1: Window manager for the Xfce desktop environment
-xfce-extra/eatmonkey 0.1.4: A download manager that works exclusively with aria2
-xfce-extra/multiload-nandhp 0.3: A port of the GNOME multiload applet for the Xfce panel
-xfce-extra/thunar-archive-plugin 0.3.1-r2: Archive plug-in for the Thunar filemanager
-xfce-extra/thunar-media-tags-plugin 0.2.1: Adds special features for media files to the Thunar File Manager
+xfce-extra/eatmonkey 0.1.4 0.1.4-r1: A download manager that works exclusively with aria2
+xfce-extra/multiload-nandhp 0.3 0.3-r1: A port of the GNOME multiload applet for the Xfce panel
+xfce-extra/thunar-archive-plugin 0.3.1-r2 0.3.1-r3: Archive plug-in for the Thunar filemanager
+xfce-extra/thunar-media-tags-plugin 0.2.1 0.2.1-r1: Adds special features for media files to the Thunar File Manager
 xfce-extra/thunar-shares-plugin 0.2.0_p20101105: Thunar plugin to share files using Samba
 xfce-extra/thunar-vcs-plugin 0.1.4 0.1.5: Adds Subversion and GIT actions to the context menu of thunar
 xfce-extra/thunar-volman 0.8.1: Daemon that enforces volume-related policies

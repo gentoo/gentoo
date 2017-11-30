@@ -5509,6 +5509,7 @@ net-dns/pdns:mydns - Making it possible to use a MyDNS MySQL database with Power
 net-dns/pdns:opendbx - Use a database supported by dev-db/opendbx as backend.
 net-dns/pdns:protobuf - Enable support for dev-libs/protobuf.
 net-dns/pdns:remote - Use a generic socket or pipe as a backend (via JSON RPC requests).
+net-dns/pdns:sodium - Use dev-libs/libsodium for cryptography
 net-dns/pdns:tinydns - Use a TinyDNS CDB database as backend.
 net-dns/pdns:tools - Build optional tools (dnsscan, dnsscope, etc..).
 net-dns/pdns-recursor:luajit - Enable support for dev-lang/luajit.

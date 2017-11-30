@@ -3,7 +3,7 @@ DEPEND=dev-ada/xmlada[gnat_2016=,gnat_2017=,static] dev-ada/gnat_util[gnat_2016=
 DESCRIPTION=A complete Web development framework
 EAPI=6
 HOMEPAGE=http://libre.adacore.com/tools/aws/
-IUSE=gnat_2016 gnat_2017
+IUSE=+gnat_2016 gnat_2017
 KEYWORDS=~amd64
 LICENSE=GPL-3
 RDEPEND=dev-ada/xmlada[gnat_2016=,gnat_2017=,static]
@@ -11,4 +11,4 @@ REQUIRED_USE=^^ ( gnat_2016 gnat_2017 )
 SLOT=0
 SRC_URI=http://mirrors.cdn.adacore.com/art/57399112c7a447658d00e1cd -> aws-gpl-2016-src.tar.gz
 _eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e
-_md5_=e992d56ad6846425d5680d3fd41928be
+_md5_=7e0844cdb9c635c0bea459c5a79e3bbf
