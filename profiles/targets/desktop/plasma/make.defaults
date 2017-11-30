@@ -1,4 +1,4 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-USE="activities consolekit declarative dri kde kipi kwallet phonon plasma policykit qml qt5 semantic-desktop widgets xcomposite xinerama xscreensaver"
+USE="activities consolekit declarative dri kde kipi kwallet phonon plasma policykit qml semantic-desktop widgets xcomposite xinerama"

@@ -1,30 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Avoid circular dependency when installing from scratch
-dev-util/cmake -qt5
-
-# Not required, but makes life easier with Qt; bug 457934
-app-arch/unzip natspec
-
-# Required by dev-qt/qtcore
-dev-libs/libpcre pcre16
-dev-libs/libpcre2 pcre16
-
-# Required by kde-frameworks/kcoreaddons
-dev-qt/qtcore:5 icu
-
-# Required by kde-frameworks/kwayland
-dev-qt/qtgui:5 egl libinput
-
 # Required by kde-apps/okteta
 dev-qt/qtscript:5 scripttools
 
 # Required by kde-apps/akonadi
 dev-qt/qtsql:5 mysql
-
-# Required by kde-apps/kate[addons]
-dev-libs/libgit2 threads
 
 # Required by kde-apps/ktp-text-ui
 kde-apps/ktp-common-internals otr
@@ -37,9 +18,6 @@ media-gfx/graphviz python
 
 # Required by media-gfx/graphviz which is required by kde-apps/kcachegrind
 media-libs/gd fontconfig
-
-# Required by dev-qt/qtwebengine
-media-libs/libvpx svc
 
 # Required by kde-plasma/kwin
 media-libs/mesa egl wayland

@@ -34,7 +34,6 @@ dev-lang/icc
 dev-lang/idb
 dev-lang/ifc
 dev-perl/Archive-Rar
-dev-python/skype4py
 dev-util/android-ndk
 dev-util/android-sdk-update-manager
 dev-util/android-studio
@@ -137,12 +136,9 @@ games-strategy/smac
 games-strategy/spaz
 media-fonts/acroread-asianfonts
 media-sound/aucdtect
-media-sound/skype-call-recorder
 media-sound/ventrilo-server-bin
 media-video/binkplayer
 media-video/tsmuxer
-net-im/skype
-net-im/skypetab-ng
 net-misc/icaclient
 net-misc/ps3mediaserver
 net-print/cndrvcups-common-lb
