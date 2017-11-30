@@ -3419,7 +3419,6 @@ gnustep-base/gnustep-make:native-exceptions - Enables use of the native Objectiv
 gnustep-base/libobjc2:boehm-gc - Enable Hans Boehm's garbage collector (dev-libs/boehm-gc). Not recommended by upstream
 kde-apps/akonadi:designer - Install plugin for dev-qt/designer
 kde-apps/akonadi:tools - Install tools for developers and testing
-kde-apps/akonadi-contacts:prison - Enable support for QRcodes in contacts
 kde-apps/analitza:eigen - Enable dev-cpp/eigen mathematical templates support
 kde-apps/ark:zip - Enable ZIP archive support via dev-libs/libzip
 kde-apps/artikulate:qtmedia - Enable playback via Qt5Multimedia
@@ -3436,7 +3435,6 @@ kde-apps/dolphin-plugins:mercurial - Enable support for the mercurial VCS
 kde-apps/gwenview:kipi - Support for the KDE Image Plugin Interface
 kde-apps/k3b:emovix - Enable burning support for eMoviX images
 kde-apps/kaccessible:speechd - Enable support for the speech-dispatcher speech synthesizer
-kde-apps/kaddressbook:prison - Enable support for QRcodes in contacts
 kde-apps/kalzium:editor - Enable the embedded molecule editor/viewer
 kde-apps/kalzium:solver - Enable the equation solver
 kde-apps/kanagram:speech - Enable text-to-speech support
@@ -3447,14 +3445,10 @@ kde-apps/kdeadmin-meta:cron - Installs KDE application for virtual/cron configur
 kde-apps/kdebase-kioslaves:sftp - Enable SFTP protocol support using net-libs/libssh
 kde-apps/kdegraphics-mobipocket:thumbnail - Enables thumbnail generation
 kde-apps/kdemultimedia-meta:cdrom - Include packages for optical discs
-kde-apps/kdenetwork-meta:ppp - Enable support for net-dialup/ppp.
 kde-apps/kdenlive:freesound - Enable freesound.org credentials support via dev-qt/qtwebkit to download files
 kde-apps/kdenlive:gles2 - Use GLES 2.0 or later instead of full OpenGL
 kde-apps/kdenlive:jogshuttle - Enable support for Jog-Shuttle devices
 kde-apps/kdepim-addons:importwizard - Enable additional import plugins for kde-apps/akonadi-import-wizard
-kde-apps/kdepim-apps-libs:prison - Enable support for QRcodes in contacts
-kde-apps/kdepim-meta:google - Google service integration via kde-apps/libkgapi
-kde-apps/kdepim-runtime:google - Google service integration via kde-apps/libkgapi
 kde-apps/kdepim-runtime:speech - Enable text-to-speech support
 kde-apps/kdeutils-meta:floppy - Install kde-apps/kfloppy to format and create DOS or ext2fs filesystems in a floppy.
 kde-apps/keditbookmarks:man - Build and install man pages
@@ -3510,7 +3504,6 @@ kde-apps/mailcommon:designer - Build plugins for dev-qt/designer
 kde-apps/marble:aprs - Enable support for APRS data sources
 kde-apps/marble:designer - Install plugin for dev-qt/designer
 kde-apps/marble:phonon - Enable sound support via media-libs/phonon
-kde-apps/marble:positioning - Enable position information via dev-qt/qtpositioning and dev-qt/qtlocation
 kde-apps/marble:shapefile - Enable support for ESRI shapefiles
 kde-apps/okteta:designer - Build plugins for dev-qt/designer
 kde-apps/okular:chm - Enable support for Microsoft Compiled HTML Help files
