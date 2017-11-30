@@ -13,10 +13,6 @@ python_targets_python3_6
 # Drop stable ruby on sparc
 ruby
 
-# Hans de Graaff <graaff@gentoo.org> (17 Apr 2017)
-# Temporary mask to support stable bug 615818
-ruby_targets_ruby22
-
 # Andrey Grozin <grozin@gentoo.org> (25 Jun 2014)
 # no stable version on sparc
 ecls

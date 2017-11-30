@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 MODULES_OPTIONAL_USE=modules
 inherit linux-info linux-mod
 
@@ -36,10 +36,11 @@ pkg_setup() {
 	# It does still build without NET_NS, but it may be needed in future.
 	#CONFIG_CHECK="${CONFIG_CHECK} NET_NS"
 	#ERROR_NET_NS="ipset requires NET_NS (network namespace) support in your kernel."
+	CONFIG_CHECK+=" !PAX_CONSTIFY_PLUGIN"
+	ERROR_PAX_CONSTIFY_PLUGIN="ipset contains constified variables (#614896)"
 
 	build_modules=0
 	if use modules; then
-		kernel_is -lt 2 6 35 && die "${PN} requires kernel greater then 2.6.35."
 		if linux_config_src_exists && linux_chkconfig_builtin "MODULES" ; then
 			if linux_chkconfig_present "IP_NF_SET" || \
 				linux_chkconfig_present "IP_SET"; then #274577
@@ -87,7 +88,7 @@ src_install() {
 	default
 	prune_libtool_files
 
-	newinitd "${FILESDIR}"/ipset.initd-r3 ${PN}
+	newinitd "${FILESDIR}"/ipset.initd-r4 ${PN}
 	newconfd "${FILESDIR}"/ipset.confd ${PN}
 	keepdir /var/lib/ipset
 
