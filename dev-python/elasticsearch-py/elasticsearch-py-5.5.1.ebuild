@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
 
-ES_VERSION="5.2.1"
+ES_VERSION="5.6.4"
 
 inherit distutils-r1
 
@@ -16,22 +16,22 @@ RESTRICT="test"
 MY_PN=${PN/-py/}
 
 DESCRIPTION="official Python low-level client for Elasticsearch"
-HOMEPAGE="http://elasticsearch-py.rtfd.org/"
+HOMEPAGE="https://github.com/elastic/elasticsearch-py"
 SRC_URI="https://github.com/elasticsearch/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 	test? ( https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${ES_VERSION}.tar.gz )"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="examples doc test"
 
-RDEPEND=">=dev-python/urllib3-1.8[${PYTHON_USEDEP}]
-	<dev-python/urllib3-2.0[${PYTHON_USEDEP}]"
+RDEPEND=">=dev-python/urllib3-1.21.1[${PYTHON_USEDEP}]
+	<dev-python/urllib3-1.22[${PYTHON_USEDEP}]"
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/sphinx-1.3.1-r1[${PYTHON_USEDEP}]
 	test? ( ${RDEPEND}
-		>=dev-python/requests-1.0.0[${PYTHON_USEDEP}]
+		>=dev-python/requests-2.0.0[${PYTHON_USEDEP}]
 		<dev-python/requests-3.0.0[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/coverage[${PYTHON_USEDEP}]
@@ -54,11 +54,11 @@ python_test() {
 		"${ES}/config/elasticsearch.yml" || die
 
 	# start local instance of elasticsearch
-	"${ES}"/bin/elasticsearch -d -p "${PID}" -Edefault.path.repo=/ || die
+	"${ES}"/bin/elasticsearch -d -p "${PID}" -Epath.repo=/ || die
 
 	local i
 	local es_started=0
-	for i in {1..15}; do
+	for i in {1..20}; do
 		grep -q "started" ${ES_LOG} 2> /dev/null
 		if [[ $? -eq 0 ]]; then
 			einfo "Elasticsearch started"

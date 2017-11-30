@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 MY_PN="curator"
-ES_VERSION="5.5.2"
+ES_VERSION="6.0.0"
 
 # tests fail in chroot
 # https://github.com/elastic/elasticsearch/issues/12018
@@ -29,7 +29,7 @@ IUSE="doc test"
 
 RDEPEND="
 	>=dev-python/elasticsearch-py-5.4.0[${PYTHON_USEDEP}]
-	<dev-python/elasticsearch-py-6.0.0[${PYTHON_USEDEP}]
+	<dev-python/elasticsearch-py-7.0.0[${PYTHON_USEDEP}]
 	>=dev-python/click-6.7[${PYTHON_USEDEP}]
 	>=dev-python/certifi-2017.4.17[${PYTHON_USEDEP}]
 	>=dev-python/urllib3-1.20[${PYTHON_USEDEP}]

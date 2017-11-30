@@ -16,8 +16,8 @@ IUSE=""
 
 RDEPEND="
 	virtual/libintl:=
-	x11-libs/gtk+:2=
-	xfce-base/exo:=
+	x11-libs/gtk+:3=
+	>=xfce-base/exo-0.11.0:=
 	xfce-base/garcon:=
 	xfce-base/libxfce4ui:=
 	xfce-base/libxfce4util:=
@@ -26,19 +26,6 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig"
-
-src_prepare() {
-	local i
-	cd po || die
-	if [[ -n "${LINGUAS+x}" ]] ; then
-		for i in *.po ; do
-			einfo "removing ${i%.po} linguas"
-			has ${i%.po} ${LINGUAS} || { rm ${i} || die ; }
-		done
-	fi
-
-	cmake-utils_src_prepare
-}
 
 src_configure() {
 	local mycmakeargs=(

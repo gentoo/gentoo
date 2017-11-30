@@ -51,7 +51,7 @@ RDEPEND=">=dev-lang/perl-5.26
 	dev-perl/XML-LibXML-Simple
 	dev-perl/XML-LibXSLT
 	dev-perl/XML-Writer
-	~dev-tex/biblatex-3.8
+	~dev-tex/biblatex-3.9
 	virtual/perl-IPC-Cmd
 	>=virtual/perl-Unicode-Collate-1.210.0"
 DEPEND="${RDEPEND}

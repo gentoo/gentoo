@@ -16,7 +16,7 @@ RESTRICT="test"
 MY_PN=${PN/-py/}
 
 DESCRIPTION="official Python low-level client for Elasticsearch"
-HOMEPAGE="http://elasticsearch-py.rtfd.org/"
+HOMEPAGE="https://github.com/elastic/elasticsearch-py"
 SRC_URI="https://github.com/elasticsearch/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 	test? ( https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${ES_VERSION}.tar.gz )"
 
