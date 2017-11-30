@@ -21,3 +21,6 @@
 # The following packages require GCC 5 or earlier and are therefore
 # masked in the 17.0 profiles.
 app-text/pdftk
+dev-java/ecj-gcj
+dev-java/gcj-jdk
+<dev-util/nvidia-cuda-toolkit-9
