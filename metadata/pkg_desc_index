@@ -41,7 +41,7 @@ app-admin/abrt 2.0.12-r2: Automatic bug detection and reporting tool
 app-admin/aerospike-amc-community 3.6.8 3.6.8.2 3.6.9 3.6.10.1 3.6.11 3.6.12 3.6.13 3.6.13-r1: Web UI based monitoring tool for Aerospike Community Edition Server
 app-admin/amazon-ec2-init 20101127-r1: Init script to setup Amazon EC2 instance parameters
 app-admin/analog 6.0-r4: A webserver log analyzer
-app-admin/ansible 2.3.2.0-r2 2.4.0.0 2.4.1.0-r1 9999: Model-driven deployment, config management, and command execution framework
+app-admin/ansible 2.3.2.0-r2 2.4.0.0 2.4.1.0-r1 2.4.2.0 9999: Model-driven deployment, config management, and command execution framework
 app-admin/apache-tools 2.2.34 2.4.27 2.4.28 2.4.29: Useful Apache tools - htdigest, htpasswd, ab, htdbm
 app-admin/apachetop 0.12.6-r1 0.12.6-r2: A realtime Apache log analyzer
 app-admin/apg 2.3.0b-r5: Another Password Generator
@@ -7438,7 +7438,7 @@ dev-python/capturer 2.3: Easily capture stdout/stderr of the current process and
 dev-python/carbon 0.9.13 0.9.13-r1 0.9.14-r1 0.9.15-r1: Backend data caching and persistence daemon for Graphite
 dev-python/carrot 0.10.7-r1: AMQP Messaging Framework for Python
 dev-python/case 1.2.3 1.5.2: Python unittest Utilities
-dev-python/castellan 0.4.0 0.12.0: Generic Key Manager interface for OpenStack
+dev-python/castellan 0.4.0 0.12.0 0.12.1: Generic Key Manager interface for OpenStack
 dev-python/casuarius 1.1: Cython wrapper for the Cassowary incremental constraint solver
 dev-python/catkin_pkg 0.3.6 0.3.8 0.3.9 9999: Standalone Python library for the catkin package system
 dev-python/cbor 1.0.0: RFC 7049 - Concise Binary Object Representation
@@ -8127,7 +8127,7 @@ dev-python/os-virtual-interfacesv2-python-novaclient-ext 0.19 0.20: Adds Virtual
 dev-python/os-win 0.4.0 1.2.1 1.4.1 2.2.0: Windows / Hyper-V library for OpenStack projects.
 dev-python/os-xenapi 0.1.1 0.2.0: XenAPI library for OpenStack projects
 dev-python/osc-lib 1.1.0 1.3.0 1.7.0: A package of common support modules for writing OSC plugins.
-dev-python/oslo-cache 1.17.0 1.25.0: Oslo Caching around dogpile.cache
+dev-python/oslo-cache 1.17.0 1.25.0 1.25.1: Oslo Caching around dogpile.cache
 dev-python/oslo-concurrency 3.18.1 3.21.1: library for running multi-thread, multi-process applications
 dev-python/oslo-config 3.22.1 4.11.1: Oslo Configuration API
 dev-python/oslo-context 2.12.2 2.17.0 2.17.1: Helpers to maintain useful information about a request context
@@ -8137,16 +8137,16 @@ dev-python/oslo-log 3.20.1 3.30.0 3.30.1: OpenStack logging config library, conf
 dev-python/oslo-messaging 5.17.2 5.30.1: Messaging API for RPC and notifications over different messaging transports
 dev-python/oslo-middleware 3.23.2 3.23.3 3.30.1: Components injected into wsgi pipelines to intercept request/response flows.
 dev-python/oslo-policy 1.18.0 1.25.1 1.25.2: Support for RBAC policy enforcement across all OpenStack services
-dev-python/oslo-privsep 1.16.0 1.22.0: OpenStack library for privilege separation.
-dev-python/oslo-reports 1.17.0 1.17.1 1.22.0: generified reports for openstack
+dev-python/oslo-privsep 1.16.0 1.22.0 1.22.1: OpenStack library for privilege separation.
+dev-python/oslo-reports 1.17.0 1.17.1 1.22.0 1.22.1: generified reports for openstack
 dev-python/oslo-rootwrap 5.4.1 5.9.0 5.9.1: Allows fine filtering of shell commands to run as root from OpenStack services
 dev-python/oslo-serialization 2.16.1 2.20.0 2.20.1: Oslo Serialization library
-dev-python/oslo-service 1.19.0 1.19.1 1.25.0: Library for running OpenStack services
+dev-python/oslo-service 1.19.0 1.19.1 1.25.0 1.25.1: Library for running OpenStack services
 dev-python/oslo-sphinx 3.0.0 4.7.0 4.15.1 4.15.2: OpenStack Sphinx Extensions and Theme
 dev-python/oslo-utils 3.22.1 3.28.0 3.28.1: Oslo Utility library
-dev-python/oslo-versionedobjects 1.21.1 1.26.0: A library that provides a generic versioned and RPC-friendly object model.
+dev-python/oslo-versionedobjects 1.21.1 1.26.0 1.26.1: A library that provides a generic versioned and RPC-friendly object model.
 dev-python/oslo-vmware 2.17.1 2.23.0 2.23.1: Oslo VMware library for OpenStack projects
-dev-python/oslotest 2.4.0: Oslo test framework
+dev-python/oslotest 2.4.0 2.17.1: Oslo test framework
 dev-python/osprofiler 1.2.0 1.4.0 1.5.0 1.11.0: OpenStack Profiler Library
 dev-python/ovs 2.4.0 2.6.1 2.7.0 2.7.2: OVS bindings for python.
 dev-python/ovsdbapp 0.4.0: A library for creating OVSDB applications
@@ -8566,7 +8566,7 @@ dev-python/python-manilaclient 1.11.0 1.14.0: A client for the OpenStack Manila 
 dev-python/python-memcached 1.53-r1 1.58: Pure python memcached client
 dev-python/python-meteor 0.1.6: An event driven meteor client
 dev-python/python-mhash 1.4-r1: Python interface to libmhash
-dev-python/python-mistralclient 3.0.2 3.1.3: A client for the OpenStack Mistral API
+dev-python/python-mistralclient 3.0.2 3.1.3 3.1.4: A client for the OpenStack Mistral API
 dev-python/python-monascaclient 1.5.1 1.7.0: A client for the OpenStack Monasca API
 dev-python/python-mpd 0.5.5: Python MPD client library
 dev-python/python-msrplib 0.18.0: Client library for MSRP protocol and its relay extension
@@ -8612,7 +8612,7 @@ dev-python/python-xlib 0.15_rc1-r2 0.19: A fully functional X client library for
 dev-python/python-yadis 1.1.0-r2: Yadis service discovery library
 dev-python/python-zaqarclient 1.2.0: A client for the OpenStack Zaqar API
 dev-python/python-zipstream 1.1.4: A zip archive generator
-dev-python/python-zunclient 0.4.0: A client for the OpenStack Zun API
+dev-python/python-zunclient 0.4.0 0.4.1: A client for the OpenStack Zun API
 dev-python/python3-openid 3.0.4_p1 3.1.0: Python 3 port of the python-openid library
 dev-python/python_orocos_kdl 1.3.1-r1 9999: Python bindings for KDL
 dev-python/pythondialog 3.2.2 3.3.0 3.3.0-r200 3.4.0: A Python module for making simple text/console-mode user interfaces
