@@ -14,10 +14,14 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]"
-RDEPEND="${DEPEND}"
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	test? (
+		$(python_gen_cond_dep 'dev-python/unittest2[${PYTHON_USEDEP}]' -2)
+	)
+"
 
 PATCHES=(
 	"${FILESDIR}/${P}-sort_keys-segfault.patch"
