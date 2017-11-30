@@ -4,11 +4,6 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
-# Mike Gilbert <floppym@gentoo.org> (28 Oct 2017)
-# Mask python targets until dev-lang/python is stable.
-python_single_target_python3_6
-python_targets_python3_6
-
 # Tobias Klausmann <klausman@gentoo.org> (17 Mar 2016)
 # Webkit itself is enormous (~13h compile+test on our fastest dev machine), so
 # it will remain not-stable forever. Mask the USE flag accordingly.
