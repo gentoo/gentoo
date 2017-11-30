@@ -12,6 +12,11 @@ alpha           default/linux/alpha/13.0/desktop                stable
 alpha           default/linux/alpha/13.0/desktop/gnome          stable
 alpha           default/linux/alpha/13.0/desktop/gnome/systemd  stable
 alpha           default/linux/alpha/13.0/developer              stable
+alpha           default/linux/alpha/17.0                        exp
+alpha           default/linux/alpha/17.0/desktop                exp
+alpha           default/linux/alpha/17.0/desktop/gnome          exp
+alpha           default/linux/alpha/17.0/desktop/gnome/systemd  exp
+alpha           default/linux/alpha/17.0/developer              exp
 
 # AMD64 Profiles
 amd64           default/linux/amd64/13.0                           stable
@@ -25,6 +30,17 @@ amd64           default/linux/amd64/13.0/developer                 stable
 amd64           default/linux/amd64/13.0/no-multilib               dev
 amd64           default/linux/amd64/13.0/systemd                   stable
 amd64           default/linux/amd64/13.0/x32                       dev
+amd64           default/linux/amd64/17.0                           stable
+amd64           default/linux/amd64/17.0/selinux                   dev
+amd64           default/linux/amd64/17.0/desktop                   stable
+amd64           default/linux/amd64/17.0/desktop/gnome             stable
+amd64           default/linux/amd64/17.0/desktop/gnome/systemd     stable
+amd64           default/linux/amd64/17.0/desktop/plasma            stable
+amd64           default/linux/amd64/17.0/desktop/plasma/systemd    stable
+amd64           default/linux/amd64/17.0/developer                 stable
+amd64           default/linux/amd64/17.0/no-multilib               dev
+amd64           default/linux/amd64/17.0/systemd                   stable
+amd64           default/linux/amd64/17.0/x32                       dev
 
 # ARM Profiles
 arm             default/linux/arm/13.0                          stable
@@ -59,11 +75,19 @@ arm64           default/linux/arm64/13.0/desktop                exp
 arm64           default/linux/arm64/13.0/desktop/systemd        dev
 arm64           default/linux/arm64/13.0/developer              exp
 arm64           default/linux/arm64/13.0/systemd                exp
+arm64           default/linux/arm64/17.0                        dev
+arm64           default/linux/arm64/17.0/desktop                exp
+arm64           default/linux/arm64/17.0/desktop/systemd        dev
+arm64           default/linux/arm64/17.0/developer              exp
+arm64           default/linux/arm64/17.0/systemd                exp
 
 # HPPA Profiles
 hppa            default/linux/hppa/13.0                         stable
 hppa            default/linux/hppa/13.0/desktop                 dev
 hppa            default/linux/hppa/13.0/developer               dev
+hppa            default/linux/hppa/17.0                         exp
+hppa            default/linux/hppa/17.0/desktop                 exp
+hppa            default/linux/hppa/17.0/developer               exp
 
 # IA64 Profiles
 ia64            default/linux/ia64/13.0                         stable
@@ -71,12 +95,21 @@ ia64            default/linux/ia64/13.0/desktop                 stable
 ia64            default/linux/ia64/13.0/desktop/gnome           stable
 ia64            default/linux/ia64/13.0/desktop/gnome/systemd   stable
 ia64            default/linux/ia64/13.0/developer               stable
+ia64            default/linux/ia64/17.0                         stable
+ia64            default/linux/ia64/17.0/desktop                 stable
+ia64            default/linux/ia64/17.0/desktop/gnome           stable
+ia64            default/linux/ia64/17.0/desktop/gnome/systemd   stable
+ia64            default/linux/ia64/17.0/developer               stable
 
 # M68K Profiles
 m68k            default/linux/m68k/13.0                         exp
 m68k            default/linux/m68k/13.0/desktop                 exp
 m68k            default/linux/m68k/13.0/desktop/gnome           exp
 m68k            default/linux/m68k/13.0/developer               exp
+m68k            default/linux/m68k/17.0                         exp
+m68k            default/linux/m68k/17.0/desktop                 exp
+m68k            default/linux/m68k/17.0/desktop/gnome           exp
+m68k            default/linux/m68k/17.0/developer               exp
 
 # MIPS Profiles
 mips            default/linux/mips/13.0/o32                     dev
@@ -94,6 +127,7 @@ mips            default/linux/mips/13.0/mipsel/multilib/n64     exp
 
 # Nios II Profiles
 nios2           default/linux/nios2/13.0                        exp
+nios2           default/linux/nios2/17.0                        exp
 
 # PPC32 Profiles
 ppc             default/linux/powerpc/ppc32/13.0                       stable
@@ -101,6 +135,11 @@ ppc             default/linux/powerpc/ppc32/13.0/desktop               stable
 ppc             default/linux/powerpc/ppc32/13.0/desktop/gnome         stable
 ppc             default/linux/powerpc/ppc32/13.0/desktop/gnome/systemd stable
 ppc             default/linux/powerpc/ppc32/13.0/developer             stable
+ppc             default/linux/powerpc/ppc32/17.0                       stable
+ppc             default/linux/powerpc/ppc32/17.0/desktop               stable
+ppc             default/linux/powerpc/ppc32/17.0/desktop/gnome         stable
+ppc             default/linux/powerpc/ppc32/17.0/desktop/gnome/systemd stable
+ppc             default/linux/powerpc/ppc32/17.0/developer             stable
 
 # PPC64 Profiles
 ppc             default/linux/powerpc/ppc64/13.0/32bit-userland                         stable
@@ -115,19 +154,38 @@ ppc64           default/linux/powerpc/ppc64/13.0/64bit-userland/desktop/gnome/sy
 ppc64           default/linux/powerpc/ppc64/13.0/64bit-userland/developer               stable
 ppc64		default/linux/powerpc/ppc64/13.0/64bit-userland/little-endian		exp
 ppc64		default/linux/powerpc/ppc64/13.0/64bit-userland/little-endian/systemd	exp
+ppc             default/linux/powerpc/ppc64/17.0/32bit-userland                         stable
+ppc             default/linux/powerpc/ppc64/17.0/32bit-userland/desktop                 stable
+ppc             default/linux/powerpc/ppc64/17.0/32bit-userland/desktop/gnome           stable
+ppc             default/linux/powerpc/ppc64/17.0/32bit-userland/desktop/gnome/systemd   stable
+ppc             default/linux/powerpc/ppc64/17.0/32bit-userland/developer               stable
+ppc64           default/linux/powerpc/ppc64/17.0/64bit-userland                         stable
+ppc64           default/linux/powerpc/ppc64/17.0/64bit-userland/desktop                 stable
+ppc64           default/linux/powerpc/ppc64/17.0/64bit-userland/desktop/gnome           stable
+ppc64           default/linux/powerpc/ppc64/17.0/64bit-userland/desktop/gnome/systemd   stable
+ppc64           default/linux/powerpc/ppc64/17.0/64bit-userland/developer               stable
+ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/little-endian		exp
+ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/little-endian/systemd	exp
 
 # RISC-V Profiles
 riscv           default/linux/riscv/13.0                        exp
+riscv           default/linux/riscv/17.0                        exp
 
 # S390 Profiles
 s390            default/linux/s390/13.0                         exp
 s390            default/linux/s390/13.0/s390x                   exp
+s390            default/linux/s390/17.0                         exp
+s390            default/linux/s390/17.0/s390x                   exp
 
 # SH Profiles
 sh              default/linux/sh/13.0                           exp
 sh              default/linux/sh/13.0/desktop                   exp
 sh              default/linux/sh/13.0/desktop/gnome             exp
 sh              default/linux/sh/13.0/developer                 exp
+sh              default/linux/sh/17.0                           exp
+sh              default/linux/sh/17.0/desktop                   exp
+sh              default/linux/sh/17.0/desktop/gnome             exp
+sh              default/linux/sh/17.0/developer                 exp
 
 # SPARC Profiles
 sparc           default/linux/sparc/13.0                        exp
@@ -135,6 +193,11 @@ sparc           default/linux/sparc/13.0/desktop                exp
 sparc           default/linux/sparc/13.0/desktop/gnome          exp
 sparc           default/linux/sparc/13.0/desktop/gnome/systemd  exp
 sparc           default/linux/sparc/13.0/developer              exp
+sparc           default/linux/sparc/17.0                        exp
+sparc           default/linux/sparc/17.0/desktop                exp
+sparc           default/linux/sparc/17.0/desktop/gnome          exp
+sparc           default/linux/sparc/17.0/desktop/gnome/systemd  exp
+sparc           default/linux/sparc/17.0/developer              exp
 
 # x86 Profiles
 x86             default/linux/x86/13.0                          stable
@@ -146,6 +209,15 @@ x86             default/linux/x86/13.0/desktop/plasma           stable
 x86             default/linux/x86/13.0/desktop/plasma/systemd   stable
 x86             default/linux/x86/13.0/developer                stable
 x86		default/linux/x86/13.0/systemd			stable
+x86             default/linux/x86/17.0                          stable
+x86             default/linux/x86/17.0/selinux                  dev
+x86             default/linux/x86/17.0/desktop                  stable
+x86             default/linux/x86/17.0/desktop/gnome            stable
+x86             default/linux/x86/17.0/desktop/gnome/systemd    stable
+x86             default/linux/x86/17.0/desktop/plasma           stable
+x86             default/linux/x86/17.0/desktop/plasma/systemd   stable
+x86             default/linux/x86/17.0/developer                stable
+x86		default/linux/x86/17.0/systemd			stable
 
 # Gentoo/FreeBSD Profiles
 amd64-fbsd	default/bsd/fbsd/amd64/9.1			dev
