@@ -483,11 +483,6 @@ app-xemacs/xemacs-packages-all
 # See: https://github.com/perl5-dbi/DBD-mysql/issues/117
 =dev-perl/DBD-mysql-4.42.0
 
-# Brian Evans <grknight@gentoo.org> (21 Jul 2017)
-# Mask initial beta of PHP 7.2 for further testing
->=dev-lang/php-7.2.0_beta1
-=virtual/httpd-php-7.2
-
 # Mikhail Pukhlikov <cynede@gentoo.org> (20 Jul 2017)
 # Old mono/dotnet packages (used on GNOME2 stack)
 # also some deprecated forks used for monodevelop
