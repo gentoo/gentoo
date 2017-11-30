@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergey Popov <pinkbyte@gentoo.org> (30 Nov 2017)
+# Depends on dead Qt4, no release in two years
+# Masked for removal in 30 days, bug #625110
+dev-util/qfsm
+
 # Andreas Sturmlechner <asturm@gentoo.org> (30 Nov 2017)
 # Still depends on dead kdelibs4/Qt3Support/Qt4, no KF5-based release.
 # Masked for removal in 30 days. Bug #629018
