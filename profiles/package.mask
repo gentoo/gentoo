@@ -105,6 +105,7 @@ x11-drivers/xf86-input-pentouch
 # Michał Górny <mgorny@gentoo.org> (25 Nov 2017)
 # Testing branch GTK+3 release. Changes API, breaks xfce-base/xfdesktop.
 # Masked until the latter sees a new release.
+>=dev-python/thunarx-python-0.4.0
 >=xfce-base/thunar-1.7
 
 # Jonas Stein <jstein@gentoo.org> (25 Nov 2017)
