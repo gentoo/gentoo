@@ -10596,7 +10596,7 @@ dev-util/premake 3.7 4.3-r1: A makefile generation tool
 dev-util/pretrace 0.4: start dynamically linked applications under debugging environment
 dev-util/promu 0.1.0: Prometheus Utility Tool
 dev-util/pscan 20000721-r1: A limited problem scanner for C source files
-dev-util/pycharm-community 2016.3.2-r1 2017.1.5 2017.2.3 2017.2.4: Intelligent Python IDE with unique code assistance and analysis
+dev-util/pycharm-community 2016.3.2-r1 2017.1.5 2017.2.3 2017.2.4 2017.3: Intelligent Python IDE with unique code assistance and analysis
 dev-util/pycharm-professional 2016.3.2 2017.1.5 2017.2.3 2017.2.4: Intelligent Python IDE with unique code assistance and analysis
 dev-util/qbs 1.8.1-r1 1.9.1: Modern build tool for software projects
 dev-util/qdevicemonitor 1.0.1 9999: Crossplatform log viewer for Android, iOS and text files
