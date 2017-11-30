@@ -1,0 +1,38 @@
+From a72d3fdc230e37b73d18940685bf9e37be66237d Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Wed, 29 Nov 2017 14:46:38 -0500
+Subject: [PATCH] Look for systemctl in PATH
+
+/bin/sh will look for commands in PATH, so there is no need to specify
+an absolute path for systemctl.
+---
+ src/bin/systemd-crontab-generator.py | 2 +-
+ src/units/cron-update.service.in     | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/bin/systemd-crontab-generator.py b/src/bin/systemd-crontab-generator.py
+index b847044..70c3685 100755
+--- a/src/bin/systemd-crontab-generator.py
++++ b/src/bin/systemd-crontab-generator.py
+@@ -558,7 +558,7 @@ def main():
+ 
+             f.write('\n[Service]\n')
+             f.write('Type=oneshot\n')
+-            f.write('ExecStart=/bin/sh -c "@bindir@/systemctl daemon-reload ; @bindir@/systemctl try-restart cron.target"\n')
++            f.write('ExecStart=/bin/sh -c "systemctl daemon-reload ; systemctl try-restart cron.target"\n')
+ 
+         MULTIUSER_DIR = os.path.join(TARGET_DIR, 'multi-user.target.wants')
+ 
+diff --git a/src/units/cron-update.service.in b/src/units/cron-update.service.in
+index 9bc8de7..36be33e 100644
+--- a/src/units/cron-update.service.in
++++ b/src/units/cron-update.service.in
+@@ -5,4 +5,4 @@ Documentation=man:systemd.cron(7)
+ [Service]
+ Type=oneshot
+ ExecStartPre=/usr/bin/touch /run/crond.reboot
+-ExecStart=/bin/sh -c '@bindir@/systemctl daemon-reload ; sleep 1 ; @bindir@/systemctl restart cron.target'
++ExecStart=/bin/sh -c 'systemctl daemon-reload ; sleep 1 ; systemctl restart cron.target'
+-- 
+2.15.1
+

@@ -26,6 +26,9 @@ DEPEND="sys-process/cronbase
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 src_prepare() {
+	epatch "${FILESDIR}/1.5.10-systemctl-path.patch"
+	epatch "${FILESDIR}/1.5.10-generatordir.patch"
+
 	python_fix_shebang --force "${S}/src/bin"
 
 	sed -i \
@@ -64,6 +67,7 @@ src_configure() {
 		--runparts="${EPREFIX}/bin/run-parts" \
 		--mandir="${EPREFIX}/usr/share/man" \
 		--unitdir="$(systemd_get_unitdir)" \
+		--generatordir="$(systemd_get_systemgeneratordir)" \
 		$(my_use_enable cron-boot boot) \
 		$(my_use_enable minutely) \
 		$(my_use_enable yearly) \
