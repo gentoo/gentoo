@@ -1747,7 +1747,7 @@ app-misc/ckermit 8.0.211-r4: combined serial and network communication software 
 app-misc/clockywock 0.3.1a: ncurses based analog clock
 app-misc/cmatrix 1.2a-r3: An ncurses based app to show a scrolling screen from the Matrix
 app-misc/color 1.2-r1 1.2-r2: Easily add ANSI colouring to shell scripts
-app-misc/colordiff 1.0.16 1.0.18: Colorizes output of diff
+app-misc/colordiff 1.0.18: Colorizes output of diff
 app-misc/conmux 0.15.1-r3: A console multiplexor
 app-misc/countrycodes 1.0.5-r1 1.0.5-r2 1.0.5-r3: An ISO 3166 country code finder
 app-misc/cpipe 3.0.3: Counting pipe, measures data transfered over pipe
