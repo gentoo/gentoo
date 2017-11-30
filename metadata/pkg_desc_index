@@ -397,7 +397,7 @@ app-backup/rdumpfs 0.1: a rsync-based dump file system backup tool
 app-backup/rdup 1.1.15: Generate a file list suitable for full or incremental backups
 app-backup/rear 1.15-r1 1.17.0 1.17.1: A setup-and-forget Linux bare metal disaster recovery solution
 app-backup/reoback 1.0_p3-r1: Reoback Backup Solution
-app-backup/restic 0.6.1 0.7.1 0.7.3: A backup program that is fast, efficient and secure
+app-backup/restic 0.7.3 0.8.0: A backup program that is fast, efficient and secure
 app-backup/rsnapshot 1.3.1-r2 1.4.1 1.4.2: A filesystem backup utility based on rsync
 app-backup/sarab 1.0.0: SaraB is a powerful and automated backup scheduling system based on DAR
 app-backup/simplebackup 1.8.1-r1: Cross-platform backup program
@@ -7644,8 +7644,8 @@ dev-python/editobj 0.5.7-r2: EditObj can create a dialog box to edit ANY Python 
 dev-python/editorconfig-core-py 0.12.0: Clone of EditorConfig core written in Python
 dev-python/egenix-mx-base 3.2.5 3.2.8 3.2.9: eGenix utils for Python
 dev-python/egg-python 2.25.3-r1: EggTrayIcon bindings for Python
-dev-python/elasticsearch-curator 4.2.6 5.1.2 5.2.0 5.3.0: Tending time-series indices in Elasticsearch
-dev-python/elasticsearch-py 2.3.0 2.4.1 5.0.1 5.1.0 5.2.0 5.3.0 5.4.0: official Python low-level client for Elasticsearch
+dev-python/elasticsearch-curator 5.1.2 5.3.0 5.4.0: Tending time-series indices in Elasticsearch
+dev-python/elasticsearch-py 5.4.0 5.5.1 6.0.0: official Python low-level client for Elasticsearch
 dev-python/elementtree 1.2.6-r3: A light-weight XML object model for Python
 dev-python/elib-intl 0_pre20110711: Enhanced internationalization (I18N) services for your Python modules and applications
 dev-python/eliot 0.4.0: Logging as Storytelling
@@ -8066,6 +8066,7 @@ dev-python/nbconvert 4.1.0 4.2.0 4.3.0 5.2.1: Converting Jupyter Notebooks
 dev-python/nbdime 0.1.2 0.2.0: Diff and merge of Jupyter Notebooks
 dev-python/nbformat 4.0.1 4.1.0 4.2.0 4.3.0 4.4.0: Reference implementation of the Jupyter Notebook format
 dev-python/nbsphinx 0.2.8 0.2.13 0.2.14: Jupyter Notebook Tools for Sphinx
+dev-python/nbval 0.7: A py.test plugin to validate Jupyter notebooks
 dev-python/ndg-httpsclient 0.4.0 0.4.2 0.4.2-r1: Provides enhanced HTTPS support for httplib and urllib2 using PyOpenSSL
 dev-python/neovim-python-client 0.1.9 0.1.13: Python client for Neovim
 dev-python/netaddr 0.7.12 0.7.13 0.7.14 0.7.15 0.7.17 0.7.18 0.7.19: Network address representation and manipulation library
@@ -8815,6 +8816,7 @@ dev-python/sphinxcontrib-cheeseshop 0.2 0.2-r1 0.2-r2: Sphinx extension cheesesh
 dev-python/sphinxcontrib-ditaa 0.2: Ditaa Sphinx extension
 dev-python/sphinxcontrib-documentedlist 0.6: Sphinx extension to convert a Python list into a generated table
 dev-python/sphinxcontrib-doxylink 1.3 1.3-r1: Extension to link to external Doxygen API documentation
+dev-python/sphinxcontrib-github-alt 1.0: Link to GitHub issues, pull requests, commits and users from Sphinx docs
 dev-python/sphinxcontrib-googleanalytics 0.1-r1 0.1-r2: Sphinx extension googleanalytics
 dev-python/sphinxcontrib-httpdomain 1.4.0 1.5.0: Extension providing a Sphinx domain for describing RESTful HTTP APIs
 dev-python/sphinxcontrib-issuetracker 0.11-r1 0.11-r2: Extension to sphinx to create links to issue trackers
@@ -10175,8 +10177,8 @@ dev-tcltk/vtcl 1.6.0-r1: Visual Tcl is a high-quality application development en
 dev-tex/aastex 5.2: LaTeX package for American Astronomical Society journals. (AASTeX)
 dev-tex/abntex 0.9_beta2: LaTeX macros for writing documents following the ABNT norms
 dev-tex/bera 20040930: LaTeX package for the Bera Type1 font family
-dev-tex/biber 2.5 2.7 2.8-r1: A BibTeX replacement for users of biblatex
-dev-tex/biblatex 3.4-r1 3.7 3.7-r1 3.8: Reimplementation of the bibliographic facilities provided by LaTeX
+dev-tex/biber 2.5 2.7 2.9: A BibTeX replacement for users of biblatex
+dev-tex/biblatex 3.4-r1 3.7 3.7-r1 3.9: Reimplementation of the bibliographic facilities provided by LaTeX
 dev-tex/biblatex-apa 7.4 7.5: APA style for BibLaTeX
 dev-tex/bibtex2html 1.98: A bibtex to HTML converter
 dev-tex/bibtexu 3.71_p20120701 3.71_p20150521 3.71_p20160523 3.71_p20170524: 8-bit Implementation of BibTeX 0.99 with a Very Large Capacity
@@ -13825,7 +13827,7 @@ media-sound/lame 3.99.5-r1 3.100: LAME Ain't an MP3 Encoder
 media-sound/lash 0.5.4-r3: LASH Audio Session Handler
 media-sound/lastfmplayer 1.5.4.27091-r3: A player for last.fm radio streams
 media-sound/lilycomp 1.0.2-r2: graphical note entry program for use with LilyPond
-media-sound/lilypond 2.18.2-r3 2.19.54 2.19.61 2.19.63 2.19.64 9999: GNU Music Typesetter
+media-sound/lilypond 2.18.2-r3 2.19.54 2.19.64 2.19.80 9999: GNU Music Typesetter
 media-sound/lingot 0.9.1: LINGOT Is Not a Guitar-Only Tuner
 media-sound/linuxsampler 2.0.0-r2: LinuxSampler is a software audio sampler engine with professional grade features
 media-sound/litestream 1.3_rc3: Litstream is a lightweight and robust shoutcast-compatible streaming mp3 server
@@ -16645,7 +16647,7 @@ sci-mathematics/geogebra 5.0.339.0_p20170308-r1: Mathematics software for geomet
 sci-mathematics/geomview 1.9.5-r1: Interactive Geometry Viewer
 sci-mathematics/gfan 0.5-r1: computes Groebner fans and tropical varities
 sci-mathematics/ggnfs 0.77.1-r2: A suite of algorithms to help factoring large integers
-sci-mathematics/gimps 28.10-r1: The Great Internet Mersenne Prime Search
+sci-mathematics/gimps 28.10-r1 29.4.5: The Great Internet Mersenne Prime Search
 sci-mathematics/ginac 1.6.6 1.7.2: C++ library and tools for symbolic calculations
 sci-mathematics/glpk 4.45 4.48 4.54 4.55 4.57 4.60 4.61-r1 4.63: GNU Linear Programming Kit
 sci-mathematics/gmm 5.1: Generic C++ template library for sparse, dense and skyline matrices
@@ -17857,7 +17859,7 @@ sys-fs/vzquota 3.1: OpenVZ VPS disk quota utility
 sys-fs/wpflash 0: flash the firmware on a Webpal
 sys-fs/xfsdump 3.1.6 3.1.8: xfs dump/restore utilities
 sys-fs/xfsprogs 4.5.0 4.9.0 4.12.0 4.13.1 4.14.0: xfs filesystem utilities
-sys-fs/xwmfs 0.81: FUSE-based X11 Window-Manager file system
+sys-fs/xwmfs 0.82: FUSE-based X11 Window-Manager file system
 sys-fs/yaffs-utils 9999: tools for generating YAFFS images
 sys-fs/yaffs2-utils 9999: tools for generating YAFFS images
 sys-fs/yaffs2utils 0.2.9: tools for generating YAFFS images
@@ -19642,7 +19644,7 @@ xfce-extra/xfce4-verve-plugin 1.1.0: A comfortable command line plugin for the X
 xfce-extra/xfce4-volumed-pulse 0.2.0 0.2.2: Daemon to control volume up/down and mute keys for pulseaudio
 xfce-extra/xfce4-wavelan-plugin 0.5.12 0.6.0: A panel plug-in to display wireless interface statistics
 xfce-extra/xfce4-weather-plugin 0.8.8 0.8.9 0.8.10: A weather plug-in for the Xfce desktop environment
-xfce-extra/xfce4-whiskermenu-plugin 1.6.0 1.7.3 2.1.3: Alternate application launcher for Xfce
+xfce-extra/xfce4-whiskermenu-plugin 1.6.0 1.7.4 2.1.4: Alternate application launcher for Xfce
 xfce-extra/xfce4-windowck-plugin 0.2.4: Xfce plugin puts the maximized window title and windows buttons on the panel
 xfce-extra/xfce4-wmdock-plugin 0.6.0: a compatibility layer for running WindowMaker dockapps on Xfce4
 xfce-extra/xfce4-xkb-plugin 0.7.1-r1 0.8.0 0.8.1: XKB layout switching panel plug-in for the Xfce desktop environment
