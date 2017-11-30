@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cmake-utils
+inherit cmake-utils xdg-utils
 
 DESCRIPTION="Cross-platform music production software"
 HOMEPAGE="https://lmms.io"
@@ -11,8 +11,9 @@ if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/LMMS/lmms.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/LMMS/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/LMMS/${PN}/archive/v${PV/_/-}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
+	S="${WORKDIR}/${P/_/-}"
 fi
 
 LICENSE="GPL-2 LGPL-2"
@@ -84,4 +85,14 @@ src_configure() {
 		-DWANT_SF2=$(usex fluidsynth)
 	)
 	cmake-utils_src_configure
+}
+
+pkg_postinst() {
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
 }
