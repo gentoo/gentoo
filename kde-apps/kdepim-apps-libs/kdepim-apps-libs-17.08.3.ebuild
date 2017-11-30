@@ -9,7 +9,7 @@ inherit kde5
 
 DESCRIPTION="Libraries for KDE PIM applications"
 LICENSE="GPL-2+ LGPL-2.1+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="

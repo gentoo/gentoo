@@ -82,7 +82,6 @@ dev-python/PyQt5 bluetooth location webengine
 
 # Michael Palimaka <kensington@gentoo.org> (07 Jul 2016)
 # Requires unkeyworded dependencies
-app-misc/hachoir-metadata kde
 dev-vcs/subversion kwallet
 games-arcade/jumpnbump kde
 kde-apps/katepart handbook

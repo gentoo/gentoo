@@ -99,10 +99,6 @@ net-im/telepathy-connection-managers steam
 # Mask for all arches, can be unmasked on arm once keyworded there
 games-board/stockfish armv7
 
-# Tim Harder <radhermit@gentoo.org> (10 Oct 2014)
-# Masked since skype isn't stable
-net-im/bitlbee skype
-
 # Mike Frysinger <vapier@gentoo.org> (04 Aug 2014)
 # Mask flashrom drivers that only work on x86 due to in/out asm insns #454024
 sys-apps/flashrom atahpt nic3com nicnatsemi nicrealtek rayer_spi satamv

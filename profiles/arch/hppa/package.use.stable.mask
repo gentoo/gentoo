@@ -24,10 +24,6 @@ dev-ruby/bundler doc
 dev-ruby/rspec-core highlight test
 sys-block/thin-provisioning-tools test
 
-# Andreas Sturmlechner <asturm@gentoo.org> (29 Oct 2017)
-# dev-qt/* stabilisation timeout.
-app-text/poppler cairo-qt
-
 # Andreas Sturmlechner <asturm@gentoo.org> (07 Oct 2017)
 # media-gfx/graphite2 security stabilisation timeout.
 # bug #621724
