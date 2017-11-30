@@ -16,3 +16,8 @@
 ->=dev-libs/icu-59
 ->=dev-libs/icu-layoutex-59
 ->=net-libs/nodejs-9.0.0
+
+# Andreas K. Huettel <dilfridge@gentoo.org> (1 Dec 2017)
+# The following packages require GCC 5 or earlier and are therefore
+# masked in the 17.0 profiles.
+app-text/pdftk
