@@ -83,7 +83,7 @@ src_prepare() {
 }
 
 src_configure() {
-	append-cflags "$($(tc-getPKG_CONFIG) --cflags libtirpc)"
+	append-cppflags "$($(tc-getPKG_CONFIG) --cflags libtirpc)"
 	export LIBVMTOOLS_LIBADD="$($(tc-getPKG_CONFIG) --libs libtirpc)"
 	local myeconfargs=(
 		--disable-deploypkg
