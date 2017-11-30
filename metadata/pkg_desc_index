@@ -1286,6 +1286,7 @@ app-emacs/zenirc 2.112-r1: A full-featured scriptable IRC client for the Emacs t
 app-emulation/aqemu 0.9.2: Graphical interface for QEMU and KVM emulators, using Qt5
 app-emulation/armv8-fast-model 0.8.5206: emulator for a basic ARMv8 platform environment (for running bare metal & Linux)
 app-emulation/bochs 2.6.9: LGPL-ed pc emulator
+app-emulation/cadvisor 0.28.2: Analyzes resource usage and performance characteristics of running containers
 app-emulation/cloud-init 0.7.6-r1 0.7.6-r2 0.7.6_p1212 0.7.6_p1212-r1 0.7.7 0.7.8-r2 0.7.9 17.1 9999: cloud initialisation magic
 app-emulation/coldfire 0.3.1: Motorola Coldfire Emulator
 app-emulation/containerd 0.2.9_p20170605 0.2.9_p20170917 1.0.0_beta2_p20171019 1.0.0_beta3 9999: A daemon to control runC
@@ -5150,7 +5151,7 @@ dev-lisp/cl-ppcre 2.0.11: CL-PPCRE is a portable regular expression library for 
 dev-lisp/cl-ppcre-unicode 2.0.11: CL-PPCRE is a portable regular expression library for Common Lisp.
 dev-lisp/cl-unicode 0.1.5: Provides Common Lisp implementations with knowledge about Unicode characters.
 dev-lisp/clisp 2.48-r1 2.48-r2 2.49-r8 2.49-r9 2.49-r100 2.49-r101: A portable, bytecode-compiled implementation of Common Lisp
-dev-lisp/clozurecl 1.10 1.11-r1 1.11-r2 1.11-r3: Common Lisp implementation, derived from Digitool's MCL product
+dev-lisp/clozurecl 1.10 1.11-r1 1.11-r2 1.11-r3 1.11.5: Common Lisp implementation, derived from Digitool's MCL product
 dev-lisp/clx 0.7.4-r1 9999: A fork of crhodes' fork of danb's fork of CLX, an X11 client for Common Lisp
 dev-lisp/cmucl 20e 21a: CMU Common Lisp is an implementation of ANSI Common Lisp
 dev-lisp/common-lisp-controller 4.27 5.13-r1: Common Lisp Controller
