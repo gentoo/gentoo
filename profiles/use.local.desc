@@ -6738,6 +6738,8 @@ net-proxy/haproxy:51degrees - Device Detection using 51 Degrees
 net-proxy/haproxy:device-atlas - Use dev-libs/device-atlas-api-c library
 net-proxy/haproxy:net_ns - Enable network namespace support (CONFIG_NET_NS)
 net-proxy/haproxy:pcre-jit - Use JIT support for PCRE
+net-proxy/haproxy:pcre2 - Enable PCRE2 RegEx support
+net-proxy/haproxy:pcre2-jit - Use JIT support for PCRE2
 net-proxy/haproxy:slz - Use dev-libs/libslz compression library
 net-proxy/haproxy:tools - Install additional tools (halog, iprange)
 net-proxy/haproxy:wurfl - Device Detection using WURFL
