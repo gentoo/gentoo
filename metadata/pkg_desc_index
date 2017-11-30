@@ -16578,7 +16578,7 @@ sci-libs/scikits_image 0.11.3 0.12.3 0.13.0: Image processing routines for SciPy
 sci-libs/scikits_learn 0.17 0.17.1 0.18.1 0.18.2 0.18.2-r1 0.19.0: Python modules for machine learning and data mining
 sci-libs/scikits_optimization 0.3: Python module for numerical optimization
 sci-libs/scikits_timeseries 0.91.3-r1: SciPy module for manipulating, reporting, and plotting time series
-sci-libs/scipy 0.16.1 0.18.1 0.19.1 9999: Scientific algorithms library for Python
+sci-libs/scipy 0.16.1 0.18.1 0.19.1 1.0.0 9999: Scientific algorithms library for Python
 sci-libs/scotch 5.1.12b 6.0.0 6.0.4 6.0.4-r1 6.0.4-r2: Software for graph, mesh and hypergraph partitioning
 sci-libs/shapelib 1.4.0-r1: Library for manipulating ESRI Shapefiles
 sci-libs/shogun 5.0.0: Large Scale Machine Learning Toolbox
