@@ -34,9 +34,9 @@ pkg_setup() {
 }
 
 src_prepare() {
-    default
+	default
 
-    sed -i -e '/CXXFLAGS += -O3/d' src/Makefile || \
+	sed -i -e '/CXXFLAGS += -O3/d' src/Makefile || \
 		die "Failed to patch makefile"
 }
 

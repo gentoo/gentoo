@@ -12,7 +12,7 @@ DESCRIPTION="A TCP/HTTP reverse proxy for high availability environments"
 HOMEPAGE="http://haproxy.1wt.eu"
 if [[ ${PV} != *9999 ]]; then
 	SRC_URI="http://haproxy.1wt.eu/download/$(get_version_component_range 1-2)/src/${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~ppc ~x86"
+	KEYWORDS="amd64 arm ppc x86"
 else
 	EGIT_REPO_URI="http://git.haproxy.org/git/haproxy-$(get_version_component_range 1-2).git/"
 	EGIT_BRANCH=master
@@ -22,7 +22,6 @@ LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 IUSE="+crypt doc examples libressl slz net_ns +pcre pcre-jit ssl tools vim-syntax +zlib lua device-atlas 51degrees wurfl"
 REQUIRED_USE="pcre-jit? ( pcre )
-	device-atlas? ( pcre )
 	?? ( slz zlib )"
 
 DEPEND="
@@ -64,6 +63,15 @@ pkg_setup() {
 	fi
 }
 
+src_prepare() {
+	default
+
+	sed -e 's:@SBINDIR@:'/usr/bin':' contrib/systemd/haproxy.service.in \
+		> contrib/systemd/haproxy.service || die
+
+	sed -ie 's:/usr/sbin/haproxy:/usr/bin/haproxy:' src/haproxy-systemd-wrapper.c || die
+}
+
 src_compile() {
 	local -a args=(
 		TARGET=linux2628
@@ -87,7 +95,6 @@ src_compile() {
 	append-cflags -fno-strict-aliasing
 
 	emake CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" CC=$(tc-getCC) ${args[@]}
-	emake -C contrib/systemd SBINDIR=/usr/sbin
 
 	if use tools ; then
 		for contrib in ${CONTRIBS[@]} ; do
@@ -98,16 +105,14 @@ src_compile() {
 }
 
 src_install() {
-	dosbin haproxy
-	dosym /usr/sbin/haproxy /usr/bin/haproxy
+	dobin haproxy
 
 	newconfd "${FILESDIR}/${PN}.confd" $PN
-	newinitd "${FILESDIR}/${PN}.initd-r5" $PN
+	newinitd "${FILESDIR}/${PN}.initd-r6" $PN
 
 	doman doc/haproxy.1
 
-	dosbin haproxy-systemd-wrapper
-	dosym /usr/sbin/haproxy-systemd-wrapper /usr/bin/haproxy-systemd-wrapper
+	dobin haproxy-systemd-wrapper
 	systemd_dounit contrib/systemd/haproxy.service
 
 	einstalldocs

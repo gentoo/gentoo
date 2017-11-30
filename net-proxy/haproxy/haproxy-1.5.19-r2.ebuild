@@ -91,7 +91,7 @@ src_install() {
 	dosbin haproxy
 	dosym /usr/sbin/haproxy /usr/bin/haproxy
 
-	newinitd "${FILESDIR}/haproxy.initd-r5" haproxy
+	newinitd "${FILESDIR}/haproxy.initd-r6" haproxy
 
 	# Don't install useless files
 #	rm examples/build.cfg doc/*gpl.txt
