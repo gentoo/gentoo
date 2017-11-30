@@ -194,7 +194,7 @@ RDEPEND="
 	gcrypt? ( >=dev-libs/libgcrypt-1.6:0=[${MULTILIB_USEDEP}] )
 	gme? ( >=media-libs/game-music-emu-0.6.0[${MULTILIB_USEDEP}] )
 	gmp? ( >=dev-libs/gmp-6:0=[${MULTILIB_USEDEP}] )
-	gnutls? ( >=net-libs/gnutls-2.12.23-r6:=[${MULTILIB_USEDEP}] )
+	gnutls? ( !openssl? ( >=net-libs/gnutls-2.12.23-r6:=[${MULTILIB_USEDEP}] ) )
 	gsm? ( >=media-sound/gsm-1.0.13-r1[${MULTILIB_USEDEP}] )
 	iconv? ( >=virtual/libiconv-0-r1[${MULTILIB_USEDEP}] )
 	iec61883? (
@@ -343,6 +343,14 @@ multilib_src_configure() {
 	for i in "${ffuse[@]#+}" ; do
 		myconf+=( $(use_enable ${i%:*} ${i#*:}) )
 	done
+
+	# Incompatible features: openssl and gnutls
+	# openssl support provides a (strict) superset of gnutls support as of 2017.11.30
+	# So, we warn the user and disable gnutls
+	if use openssl && use gnutls; then
+		ewarn "openssl and gnutls are mutually exclusive in ${PN}, disabling gnutls since openssl provides more features"
+		myconf+=( --disable-gnutls )
+	fi
 
 	# (temporarily) disable non-multilib deps
 	if ! multilib_is_native_abi; then
