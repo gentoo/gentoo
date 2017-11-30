@@ -18,7 +18,7 @@ DEPEND="dev-texlive/texlive-bibtexextra
 	dev-texlive/texlive-latexextra
 	|| ( dev-texlive/texlive-plaingeneric dev-texlive/texlive-genericextra )"
 RDEPEND="${DEPEND}"
-PDEPEND="biber? ( ~dev-tex/biber-2.8 )"
+PDEPEND="biber? ( ~dev-tex/biber-2.9 )"
 
 S="${WORKDIR}"
 TEXMF=/usr/share/texmf-site
@@ -27,7 +27,7 @@ src_install() {
 	insinto "${TEXMF}"
 	doins -r bibtex tex
 
-	dodoc doc/latex/biblatex/{README,CHANGES.org}
+	dodoc doc/latex/biblatex/{README,CHANGES.md}
 	if use doc ; then
 		pushd doc || die
 		latex-package_src_doinstall doc
