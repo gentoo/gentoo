@@ -36,6 +36,8 @@ pkg_setup() {
 	# It does still build without NET_NS, but it may be needed in future.
 	#CONFIG_CHECK="${CONFIG_CHECK} NET_NS"
 	#ERROR_NET_NS="ipset requires NET_NS (network namespace) support in your kernel."
+	CONFIG_CHECK+=" !PAX_CONSTIFY_PLUGIN"
+	ERROR_PAX_CONSTIFY_PLUGIN="ipset contains constified variables (#614896)"
 
 	build_modules=0
 	if use modules; then
