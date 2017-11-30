@@ -19,6 +19,7 @@ src_configure () {
 src_test () {
 	if [[ ${FEATURES} = *sandbox* ]] ; then
 		# skip tests as they will fail
+		ewarn "Skipped tests. Please disable sandbox to run tests."
 		return 0
 	fi
 	emake check ||  die "Tests failed"
