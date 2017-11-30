@@ -50,10 +50,6 @@ audacious
 # postgres-9.2 is EOL and masked
 postgres_targets_postgres9_2
 
-# Brian Evans <grknight@gentoo.org> (14 Aug 2017)
-# php 7.2 beta is masked for initial testing
-php_targets_php7-2
-
 # Michael Palimaka <kensington@gentoo.org> (03 Jun 2017)
 # Unkeyworded on most arches, unmasked in supported arch profiles.
 elogind

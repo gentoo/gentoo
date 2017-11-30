@@ -5,11 +5,9 @@ EAPI=6
 
 inherit flag-o-matic versionator systemd
 
-MY_PV="${PV/_rc/RC}"
-
 DESCRIPTION="The PHP language runtime engine"
 HOMEPAGE="https://secure.php.net/"
-SRC_URI="https://downloads.php.net/~pollita/${PN}-${MY_PV}.tar.xz"
+SRC_URI="https://secure.php.net/distributions/${P}.tar.xz"
 
 LICENSE="PHP-3.01
 	BSD
@@ -22,7 +20,6 @@ LICENSE="PHP-3.01
 SLOT="$(get_version_component_range 1-2)"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 
-S="${WORKDIR}/${PN}-${MY_PV}"
 # We can build the following SAPIs in the given order
 SAPIS="embed cli cgi fpm apache2 phpdbg"
 

@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 # oracle: dito (need Oracle Client Libraries)
 # xdb: (almost) dead, surely not supported
 
-IUSE="botan debug doc geoip ldap libressl lua luajit mydns mysql opendbx postgres protobuf remote sqlite systemd tools tinydns test"
+IUSE="botan debug doc geoip ldap libressl lua luajit mydns mysql opendbx postgres protobuf remote sodium sqlite systemd tools tinydns test"
 
 REQUIRED_USE="mydns? ( mysql ) ?? ( lua luajit )"
 
@@ -35,6 +35,7 @@ RDEPEND="
 	sqlite? ( dev-db/sqlite:3 )
 	opendbx? ( dev-db/opendbx )
 	geoip? ( >=dev-cpp/yaml-cpp-0.5.1 dev-libs/geoip )
+	sodium? ( dev-libs/libsodium:= )
 	tinydns? ( >=dev-db/tinycdb-0.77 )
 	protobuf? ( dev-libs/protobuf )"
 DEPEND="${RDEPEND}
@@ -42,10 +43,6 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )"
 
 S="${WORKDIR}"/${P/_/-}
-
-PATCHES=(
-	"${FILESDIR}"/CVE-2017-15091-4.0.4.patch
-)
 
 src_configure() {
 	local dynmodules="pipe bind" # the default backends, always enabled
@@ -76,6 +73,7 @@ src_configure() {
 		$(use_enable test unit-tests) \
 		$(use_enable tools) \
 		$(use_enable systemd) \
+		$(use_enable sodium libsodium) \
 		$(use_with lua) \
 		$(use_with luajit) \
 		$(use_with protobuf) \
