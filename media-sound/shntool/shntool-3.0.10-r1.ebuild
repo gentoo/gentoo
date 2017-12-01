@@ -23,6 +23,6 @@ DEPEND="${RDEPEND}"
 DOCS="NEWS README ChangeLog AUTHORS doc/*"
 
 src_configure() {
-	unset CONFIG_SHELL  # default to bash, bug #527310
+	export CONFIG_SHELL=${BASH}  # bug #527310
 	default
 }
