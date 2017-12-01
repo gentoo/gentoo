@@ -23,8 +23,3 @@ dev-java/gcj-jdk
 # masked in the 17.0 profiles.
 app-office/auto-multiple-choice
 app-office/impressive
-
-# Andreas K. Huettel <dilfridge@gentoo.org> (1 Dec 2017)
-# This version of blender uses only old cuda which is
-# masked in the 17.0 profiles.
-=media-gfx/blender-2.78a-r1 cuda

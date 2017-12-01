@@ -1,6 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas K. Huettel <dilfridge@gentoo.org> (1 Dec 2017)
+# This version of blender uses only old cuda which is
+# masked in the 17.0 profiles.
+=media-gfx/blender-2.78a-r1 cuda
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (27 May 2017)
 # Unmask default-PIE on 17.0 profiles.
 sys-devel/gcc -pie
