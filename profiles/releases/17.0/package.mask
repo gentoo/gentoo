@@ -16,9 +16,15 @@ app-text/pdftk
 dev-java/ecj-gcj
 dev-java/gcj-jdk
 <dev-util/nvidia-cuda-toolkit-9
+<dev-util/nvidia-cuda-sdk-9
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (1 Dec 2017)
 # The following packages require pdftk and are therefore
 # masked in the 17.0 profiles.
 app-office/auto-multiple-choice
 app-office/impressive
+
+# Andreas K. Huettel <dilfridge@gentoo.org> (1 Dec 2017)
+# This version of blender uses only old cuda which is
+# masked in the 17.0 profiles.
+=media-gfx/blender-2.78a-r1 cuda
