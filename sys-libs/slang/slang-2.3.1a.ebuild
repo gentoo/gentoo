@@ -4,7 +4,7 @@
 EAPI=6
 inherit eutils multilib-minimal
 
-DESCRIPTION="A multi-platform programmer's library designed to allow a developer to create robust software"
+DESCRIPTION="Multi-platform library designed to allow a developer to create robust software"
 HOMEPAGE="http://www.jedsoft.org/slang/"
 SRC_URI="http://www.jedsoft.org/releases/${PN}/${P}.tar.bz2
 	http://www.jedsoft.org/releases/${PN}/old/${P}.tar.bz2"
