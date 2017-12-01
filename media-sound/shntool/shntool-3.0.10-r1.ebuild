@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -21,3 +21,8 @@ RDEPEND="flac? ( media-libs/flac )
 DEPEND="${RDEPEND}"
 
 DOCS="NEWS README ChangeLog AUTHORS doc/*"
+
+src_configure() {
+	unset CONFIG_SHELL  # default to bash, bug #527310
+	default
+}
