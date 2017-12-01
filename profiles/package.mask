@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Alexey Shvetsov <alexxy@gentoo.org> (01 Dec 2017)
+# Mask beta gromacs version
+=sci-chemistry/gromacs-2018_beta*
+
 # Andreas Sturmlechner <asturm@gentoo.org> (01 Dec 2017)
 # Dead upstream, depends on dead kdelibs4/qt4.
 # Masked for removal in 30 days. Bug #634138

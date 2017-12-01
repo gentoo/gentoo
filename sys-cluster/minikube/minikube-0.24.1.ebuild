@@ -37,7 +37,7 @@ src_compile() {
 
 src_install() {
 	pushd src/${EGO_PN} || die
-	dobin out/minikube out/localkube
+	dobin out/minikube
 	dodoc -r docs CHANGELOG.md README.md
 	popd || die
 }

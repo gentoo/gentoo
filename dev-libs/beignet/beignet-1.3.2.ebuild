@@ -25,12 +25,12 @@ else
 	S=${WORKDIR}/Beignet-${PV}-Source
 fi
 
-COMMON="media-libs/mesa
-	sys-devel/clang:=
-	sys-devel/llvm:=
-	>=x11-libs/libdrm-2.4.70[video_cards_intel]
-	x11-libs/libXext
-	x11-libs/libXfixes"
+COMMON="media-libs/mesa[${MULTILIB_USEDEP}]
+	sys-devel/clang:=[${MULTILIB_USEDEP}]
+	sys-devel/llvm:=[${MULTILIB_USEDEP}]
+	>=x11-libs/libdrm-2.4.70[video_cards_intel,${MULTILIB_USEDEP}]
+	x11-libs/libXext[${MULTILIB_USEDEP}]
+	x11-libs/libXfixes[${MULTILIB_USEDEP}]"
 RDEPEND="${COMMON}
 	app-eselect/eselect-opencl"
 DEPEND="${COMMON}

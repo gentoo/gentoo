@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,10 +13,10 @@ else
 		https://dev.gentoo.org/~dolsen/releases/catalyst/${P}.tar.bz2
 		https://dev.gentoo.org/~jmbsvicetto/distfiles/${P}.tar.bz2
 		https://dev.gentoo.org/~zerochaos/distfiles/${P}.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 fi
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 inherit distutils-r1 multilib ${SRC_ECLASS}
 
@@ -35,7 +35,8 @@ RDEPEND="
 	>=dev-python/pydecomp-0.1[${PYTHON_USEDEP}]
 	app-arch/lbzip2
 	app-crypt/shash
-	app-arch/tar[xattr]
+	!x86-fbsd? ( || ( app-arch/tar[xattr] app-arch/libarchive[xattr] ) )
+	x86-fbsd? ( app-arch/libarchive[xattr] )
 	virtual/cdrtools
 	amd64? ( >=sys-boot/syslinux-3.72 )
 	ia64? ( sys-fs/dosfstools )

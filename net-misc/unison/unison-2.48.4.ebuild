@@ -63,7 +63,7 @@ src_compile() {
 }
 
 src_test() {
-	emake selftest
+	emake selftest CFLAGS=""
 }
 
 src_install () {

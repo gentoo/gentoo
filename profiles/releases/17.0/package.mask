@@ -16,6 +16,7 @@ app-text/pdftk
 dev-java/ecj-gcj
 dev-java/gcj-jdk
 <dev-util/nvidia-cuda-toolkit-9
+<dev-util/nvidia-cuda-sdk-9
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (1 Dec 2017)
 # The following packages require pdftk and are therefore
