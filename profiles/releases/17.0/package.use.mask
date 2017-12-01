@@ -15,3 +15,8 @@ dev-qt/qtwebkit:4 icu
 # that prevent the >=icu-59 dependency
 >=www-client/chromium-62.0.3202.9 -system-icu
 >=www-client/firefox-56.0 -system-icu
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (1 Dec 2017)
+# The following need pdftk, which is masked now
+app-text/getxbook pdf
+dev-util/diffoscope pdf
