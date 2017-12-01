@@ -29,6 +29,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DSTLINK_UDEV_RULES_DIR="$(get_udevdir)"/rules.d
 		-DSTLINK_MODPROBED_DIR="${EPREFIX}/etc/modprobe.d"
+		-DCMAKE_LIBRARY_PATH=/usr/$(get_libdir)
 	)
 
 	cmake-utils_src_configure
