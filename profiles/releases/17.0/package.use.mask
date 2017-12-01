@@ -4,7 +4,8 @@
 # Andreas K. Huettel <dilfridge@gentoo.org> (1 Dec 2017)
 # This version of blender uses only old cuda which is
 # masked in the 17.0 profiles.
-=media-gfx/blender-2.78a-r1 cuda
+# The opensubdiv USE requires cuda making it an impossible combination
+=media-gfx/blender-2.78a-r1 cuda opensubdiv
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (27 May 2017)
 # Unmask default-PIE on 17.0 profiles.
