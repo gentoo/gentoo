@@ -4,7 +4,7 @@
 EAPI=5
 inherit games
 
-DESCRIPTION="a single-user single-tasking operating system for 32 bit Atari computer emulators"
+DESCRIPTION="Single-user single-tasking operating system for 32 bit Atari computer emulators"
 HOMEPAGE="http://emutos.sourceforge.net"
 SRC_URI="mirror://sourceforge/emutos/emutos-src-0.9.3.tar.gz
 	mirror://sourceforge/emutos/emutos-512k-${PV}.zip
