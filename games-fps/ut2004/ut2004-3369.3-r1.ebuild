@@ -5,7 +5,7 @@ EAPI=5
 inherit eutils multilib games
 
 MY_P="ut2004-lnxpatch${PV%.*}-2.tar.bz2"
-DESCRIPTION="Editor's Choice Edition plus Mega Pack for the critically-acclaimed first-person shooter"
+DESCRIPTION="Editor's Choice Edition plus Mega Pack for the well-known first-person shooter"
 HOMEPAGE="http://www.unrealtournament2004.com/"
 SRC_URI="
 	http://treefort.icculus.org/${PN}/${MY_P}
