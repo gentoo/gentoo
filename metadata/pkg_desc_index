@@ -2231,7 +2231,7 @@ app-text/chasen 2.4.4-r3: Japanese Morphological Analysis System, ChaSen
 app-text/cherrytree 0.37.0: A hierarchical note taking application
 app-text/chm2pdf 0.9.1-r2: A script that converts a CHM file into a single PDF file
 app-text/clara 20031214 20031214-r1: An OCR (Optical Character Recognition) program
-app-text/cmark 0.27.1 0.28.0: CommonMark parsing and rendering library and program in C
+app-text/cmark 0.28.0 0.28.3: CommonMark parsing and rendering library and program in C
 app-text/cmigemo 1.3c 1.3c-r1 1.3c-r2: C/Migemo -- Migemo library implementation in C
 app-text/code2html 0.9.1-r2: Converts source files to colored HTML output
 app-text/convertlit 1.8-r1 1.8-r3: CLit converts MS ebook .lit files to .opf (xml+html+png+jpg)
@@ -17521,6 +17521,7 @@ sys-cluster/ampi 0_pre20140616: MPI library for algorithmic differentiation
 sys-cluster/c3 4.0.1: The Cluster Command and Control (C3) tool suite
 sys-cluster/ccs 2.03.09: cluster configuration system to manage the cluster config file
 sys-cluster/ceph 10.2.3-r2 10.2.7-r1 10.2.9 10.2.9-r1 10.2.9-r2 10.2.9-r3 10.2.10 12.2.1: Ceph distributed filesystem
+sys-cluster/charliecloud 0.2.3_pre20171121 9999: Lightweight user-defined software stacks for high-performance computing
 sys-cluster/charm 6.5.1-r1 6.5.1-r2 6.5.1-r3 6.6.0 6.6.0-r1 6.6.1 6.7.1: Message-passing parallel language and runtime system
 sys-cluster/charmdebug 6.2.0-r1: A debugger for Charm++ applications
 sys-cluster/cinder 9.1.4 10.0.6 11.0.0 11.0.1 2016.2.9999 2017.1.9999 2017.2.9999: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
