@@ -4,7 +4,7 @@
 EAPI=5
 inherit eutils games
 
-DESCRIPTION="Flight of the Amazon Queen - a 2D point-and-click adventure game set in the 1940s"
+DESCRIPTION="Flight of the Amazon Queen - 2D point-and-click adventure game set in the 1940s"
 HOMEPAGE="http://scummvm.sourceforge.net/"
 SF_BASE_URL="mirror://sourceforge/scummvm/"
 LYS_BASE_URL="http://www.lysator.liu.se/~zino/scummvm/queen/"
