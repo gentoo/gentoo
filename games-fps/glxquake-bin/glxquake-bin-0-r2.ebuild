@@ -4,7 +4,7 @@
 EAPI=5
 inherit games
 
-DESCRIPTION="a binary that works with every 3D-graphics-card that supports the glx X-extension"
+DESCRIPTION="A binary that works with any 3D-graphics-card that supports the glx X-extension"
 HOMEPAGE="http://mfcn.ilo.de/glxquake/"
 SRC_URI="http://www.wh-hms.uni-ulm.de/~mfcn/shared/glxquake/glxquake.tar.gz"
 
