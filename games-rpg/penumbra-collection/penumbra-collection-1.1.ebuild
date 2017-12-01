@@ -6,7 +6,7 @@ inherit eutils unpacker gnome2-utils games
 
 MY_PN="PenumbraCollection"
 
-DESCRIPTION="Scary first-person adventure game trilogy which focuses on story, immersion and puzzles"
+DESCRIPTION="Scary first-person adventure trilogy focussing on story, immersion and puzzles"
 HOMEPAGE="http://www.penumbragame.com/"
 SRC_URI="${MY_PN}-${PV}.sh"
 
