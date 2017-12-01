@@ -3,8 +3,8 @@
 
 EAPI=5
 
-MOD_DESC="Community Bonus Pack 2 volumes 1 and 2"
-MOD_NAME="Community Bonus Pack 2 volumes 1 and 2"
+MOD_DESC="Community Bonus Pack 2 Vol 1 and 2"
+MOD_NAME="Community Bonus Pack 2 Vol 1 and 2"
 
 inherit games games-mods
 
