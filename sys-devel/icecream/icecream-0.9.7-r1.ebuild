@@ -7,7 +7,7 @@ inherit autotools base user
 
 MY_P=icecc-${PV}
 
-DESCRIPTION="icecc is a program for distributed compiling of C(++) code across several machines; based on distcc"
+DESCRIPTION="Distributed compiling of C(++) code across several machines; based on distcc"
 HOMEPAGE="http://en.opensuse.org/Icecream"
 SRC_URI="ftp://ftp.suse.com/pub/projects/${PN}/${MY_P}.tar.bz2"
 

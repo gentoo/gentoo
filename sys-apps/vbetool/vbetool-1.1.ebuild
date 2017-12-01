@@ -5,7 +5,7 @@ EAPI="4"
 
 inherit eutils autotools
 
-DESCRIPTION="Run real-mode video BIOS code to alter hardware state (i.e. reinitialize video card)"
+DESCRIPTION="Run real-mode video BIOS code to alter hw state (i.e. reinitialize video card)"
 HOMEPAGE="http://www.codon.org.uk/~mjg59/vbetool/"
 SRC_URI="http://www.codon.org.uk/~mjg59/vbetool/download/vbetool-1.1.tar.gz"
 

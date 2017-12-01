@@ -5,7 +5,7 @@ EAPI=5
 
 inherit perl-module webapp multilib eutils depend.apache
 
-DESCRIPTION="general purpose source code indexer and cross-referener with a web-based frontend"
+DESCRIPTION="general purpose source code indexer and cross-referener with web-based frontend"
 HOMEPAGE="https://sourceforge.net/projects/lxr"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tgz"
 

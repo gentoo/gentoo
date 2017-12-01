@@ -10,7 +10,7 @@ INTEL_SUBDIR=composerxe
 
 inherit intel-sdp
 
-DESCRIPTION="Intel Integrated Performance Primitive library for multimedia and data processing"
+DESCRIPTION="Intel Integrated Performance Primitives for multimedia and data processing"
 HOMEPAGE="http://software.intel.com/en-us/articles/intel-ipp/"
 
 IUSE=""

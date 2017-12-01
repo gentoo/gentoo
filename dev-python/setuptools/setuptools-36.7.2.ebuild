@@ -28,7 +28,7 @@ DEPEND="${RDEPEND}
 	app-arch/unzip
 	test? (
 		dev-python/pip[${PYTHON_USEDEP}]
-		>=dev-python/pytest-2.8[${PYTHON_USEDEP}]
+		>=dev-python/pytest-3.1.0[${PYTHON_USEDEP}]
 		dev-python/pytest-fixture-config[${PYTHON_USEDEP}]
 		dev-python/pytest-virtualenv[${PYTHON_USEDEP}]
 		>=dev-python/backports-unittest-mock-1.2[${PYTHON_USEDEP}]

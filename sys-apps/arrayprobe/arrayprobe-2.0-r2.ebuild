@@ -5,7 +5,7 @@ EAPI="4"
 
 inherit eutils autotools
 
-DESCRIPTION="CLI utility that reports the status of a HP (Compaq) array controller (both IDA & CCISS supported)"
+DESCRIPTION="Utility to report status of an HP (Compaq) array controller (both IDA & CCISS)"
 HOMEPAGE="http://www.strocamp.net/opensource/arrayprobe.php"
 SRC_URI="http://www.strocamp.net/opensource/compaq/downloads/${P}.tar.gz"
 
