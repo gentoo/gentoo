@@ -5,7 +5,7 @@ EAPI=5
 inherit games
 
 ORANAME="OracleAll_050523.txt"
-DESCRIPTION="play collectable/trading card games (Magic: the Gathering and possibly others) against other people"
+DESCRIPTION="Play trading card games (Magic: the Gathering etc.) against other people"
 HOMEPAGE="http://mindless.sourceforge.net/"
 SRC_URI="mirror://sourceforge/mindless/${P}.tar.gz
 	http://www.wizards.com/dci/oracle/${ORANAME}"

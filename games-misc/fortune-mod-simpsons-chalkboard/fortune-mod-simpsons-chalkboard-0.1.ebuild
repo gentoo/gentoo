@@ -2,8 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
+
 MY_P=${PN/-mod/}
-DESCRIPTION="Quotes from Bart Simpson's Chalkboard, shown at the opening of each Simpsons episode"
+
+DESCRIPTION="Quotes from Bart Simpson's Chalkboard, shown at the opening of Simpsons episode"
 HOMEPAGE="http://www.splitbrain.org/projects/fortunes/simpsons"
 SRC_URI="http://www.splitbrain.org/_media/projects/fortunes/${MY_P}.tgz"
 

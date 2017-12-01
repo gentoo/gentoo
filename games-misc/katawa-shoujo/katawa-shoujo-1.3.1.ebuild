@@ -5,7 +5,7 @@ EAPI=5
 
 inherit eutils gnome2-utils
 
-DESCRIPTION="bishoujo-style visual novel by Four Leaf Studios"
+DESCRIPTION="Bishoujo-style visual novel by Four Leaf Studios"
 HOMEPAGE="http://katawa-shoujo.com/"
 SRC_URI="http://dl.katawa-shoujo.com/gold_1.3.1/%5B4ls%5D_katawa_shoujo_1.3.1-%5Blinux-x86%5D%5B18161880%5D.tar.bz2 -> ${P}.tar.bz2
 	https://dev.gentoo.org/~hasufell/distfiles/katawa-shoujo-48.png

@@ -4,7 +4,7 @@
 EAPI=5
 inherit eutils games
 
-DESCRIPTION="Tetanus On Drugs simulates playing a Tetris clone under the influence of hallucinogenic drugs"
+DESCRIPTION="Tetanus On Drugs simulates playing Tetris under the influence of drugs"
 HOMEPAGE="http://www.pineight.com/tod/"
 SRC_URI="http://www.pineight.com/pc/win${PN}.zip"
 

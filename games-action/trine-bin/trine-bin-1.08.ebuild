@@ -10,7 +10,7 @@
 EAPI=5
 inherit unpacker eutils games
 
-DESCRIPTION="a physics-based action game where diff characters allow diff solutions to challenges"
+DESCRIPTION="A physics-based action game with character-dependent solutions to challenges"
 HOMEPAGE="http://trine-thegame.com/"
 SRC_URI="Trine.64.run"
 

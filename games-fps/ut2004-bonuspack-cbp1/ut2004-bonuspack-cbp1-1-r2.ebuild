@@ -3,8 +3,8 @@
 
 EAPI=5
 
-MOD_DESC="UT2003 Community Bonus Pack repacked for UT2004"
-MOD_NAME="Community Bonus Pack Volume 1"
+MOD_DESC="UT2003 Community Bonus Pack for UT2004"
+MOD_NAME="Community Bonus Pack Vol 1"
 
 inherit games games-mods
 

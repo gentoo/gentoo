@@ -5,7 +5,7 @@ EAPI=5
 
 inherit eutils gnome2-utils games
 
-DESCRIPTION="Arcade styled 2d action game centered around evacuating civilians from burning buildings"
+DESCRIPTION="Arcade 2d action game based around evacuating civilians from burning buildings"
 HOMEPAGE="http://tangramgames.dk/games/mrrescue/"
 SRC_URI="https://github.com/SimonLarsen/mrrescue/releases/download/v${PV}/${P}-love.zip
 	https://dev.gentoo.org/~hasufell/distfiles/${PN}.png"

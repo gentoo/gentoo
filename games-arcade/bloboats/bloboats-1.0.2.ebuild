@@ -4,7 +4,7 @@
 EAPI=5
 inherit eutils games
 
-DESCRIPTION="arcade-like boat racing game combining platform jumpers and elastomania / x-moto like games"
+DESCRIPTION="Arcade-like boat racing game combining platform jumpers and x-moto like games"
 HOMEPAGE="http://bloboats.dy.fi/"
 SRC_URI="http://mirror.kapsi.fi/bloboats.dy.fi/${P}.tar.gz"
 

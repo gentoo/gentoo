@@ -4,7 +4,7 @@
 EAPI=5
 inherit games
 
-DESCRIPTION="Match rising tiles to score as many points as possible before the tiles touch the top of the board"
+DESCRIPTION="Match rising tiles before reaching the top to score as many points as possible"
 HOMEPAGE="http://www.shiftygames.com/torrent/torrent.html"
 SRC_URI="http://www.shiftygames.com/torrent/${P}.tar.gz"
 

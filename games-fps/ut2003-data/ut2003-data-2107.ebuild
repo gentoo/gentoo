@@ -4,7 +4,7 @@
 EAPI=5
 inherit eutils unpacker cdrom games
 
-DESCRIPTION="Unreal Tournament 2003 - Sequel to the 1999 Game of the Year multi-player first-person shooter"
+DESCRIPTION="Unreal Tournament 2003 - Sequel to the 1999 multi-player first-person shooter"
 HOMEPAGE="http://www.unrealtournament2003.com/"
 SRC_URI="http://download.factoryunreal.com/mirror/UT2003CrashFix.zip"
 

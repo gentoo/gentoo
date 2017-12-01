@@ -9,7 +9,7 @@ VIRTUALX_REQUIRED="manual"
 inherit eutils gnome2-utils toolchain-funcs games
 
 MY_P="stone_soup-${PV}"
-DESCRIPTION="Dungeon Crawl Stone Soup is a role-playing roguelike game of exploration and treasure-hunting in dungeons"
+DESCRIPTION="Role-playing roguelike game of exploration and treasure-hunting in dungeons"
 HOMEPAGE="http://crawl.develz.org/wordpress/"
 SRC_URI="https://crawl.develz.org/release/stone_soup-${PV}.tar.xz
 	https://dev.gentoo.org/~hasufell/distfiles/${PN}.png

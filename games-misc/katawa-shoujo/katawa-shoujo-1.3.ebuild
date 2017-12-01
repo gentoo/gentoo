@@ -5,7 +5,7 @@ EAPI=5
 
 inherit eutils gnome2-utils games
 
-DESCRIPTION="Bishoujo-style visual novel set in the fictional Yamaku High School for disabled children"
+DESCRIPTION="Bishoujo-style visual novel by Four Leaf Studios"
 HOMEPAGE="http://katawa-shoujo.com/"
 SRC_URI="http://dl.katawa-shoujo.com/gold_1.3/%5b4ls%5d_katawa_shoujo_1.3-%5blinux-x86%5d%5bFCF758CC%5d.tar.bz2 -> ${P}.tar.bz2
 	https://dev.gentoo.org/~hasufell/distfiles/katawa-shoujo-48.png
