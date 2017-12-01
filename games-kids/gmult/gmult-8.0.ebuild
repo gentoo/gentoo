@@ -4,7 +4,7 @@
 EAPI=5
 inherit eutils gnome2-utils flag-o-matic games
 
-DESCRIPTION="Multiplication Puzzle is a simple GTK+ 2 game that emulates the multiplication game found in Emacs"
+DESCRIPTION="Multiplication Puzzle emulates the multiplication game found in Emacs"
 HOMEPAGE="http://www.mterry.name/gmult/"
 SRC_URI="https://launchpad.net/gmult/trunk/${PV}/+download/${P}.tar.bz2"
 
