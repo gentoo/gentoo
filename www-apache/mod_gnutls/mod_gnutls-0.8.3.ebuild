@@ -4,7 +4,7 @@
 EAPI=6
 inherit autotools apache-module
 
-DESCRIPTION="mod_gnutls uses GnuTLS to provide SSL/TLS encryption for Apache2, similarly to mod_ssl"
+DESCRIPTION="mod_gnutls uses GnuTLS for SSL/TLS encryption in Apache2 (compare to mod_ssl)"
 HOMEPAGE="https://mod.gnutls.org/"
 SRC_URI="https://mod.gnutls.org/downloads/${P}.tar.bz2"
 
