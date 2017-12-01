@@ -1,8 +1,8 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-USE_RUBY="ruby20 ruby21 ruby22 ruby23"
+EAPI=6
+USE_RUBY="ruby22 ruby23 ruby24"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
@@ -20,7 +20,7 @@ RUBY_S="${PN}-gem-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm ~ppc64"
 IUSE=""
 
 ruby_add_rdepend "
@@ -30,7 +30,11 @@ ruby_add_rdepend "
 "
 
 all_ruby_prepare() {
-	sed -i -e 's/1.1.0/1.1/' ${RUBY_FAKEGEM_GEMSPEC} || die
+	sed -i -e 's/1.1.0/1.1/' \
+		-e "s/spec.version.*$/spec.version = '${PV}'/" ${RUBY_FAKEGEM_GEMSPEC} || die
 
 	sed -i -e '/simplecov/,/^end/ s:^:#:' spec/spec_helper.rb || die
+
+	# Avoid spec with specific locale requirements
+	sed -i -e '/can clear the locale/,/^    end/ s:^:#:' spec/lib/gettext-setup/gettext_setup_spec.rb || die
 }
