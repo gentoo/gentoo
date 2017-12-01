@@ -3,7 +3,7 @@
 
 EAPI=5
 
-MOD_DESC="add co-op support and/or play against swarms of monsters"
+MOD_DESC="add co-op support or play against swarms of monsters"
 MOD_NAME="Last Man Standing"
 MOD_DIR="lms4"
 
