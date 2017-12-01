@@ -21,7 +21,8 @@ RDEPEND="
 	"
 DEPEND="${RDEPEND}
 	!!<dev-python/jupyter-1.0.0-r1
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
+	doc? ( dev-python/sphinx[${PYTHON_USEDEP}]
+		dev-python/sphinxcontrib-github-alt[${PYTHON_USEDEP}] )
 	test? (
 		dev-python/pytest[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' 'python2*')
