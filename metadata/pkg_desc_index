@@ -143,7 +143,7 @@ app-admin/lsyncd 2.2.0 2.2.1 2.2.2: Live Syncing (Mirror) Daemon
 app-admin/makepasswd 1.10: Random password generator
 app-admin/matter 302: Automated Packages Builder for Portage and Entropy
 app-admin/mcelog 149 154: A tool to log and decode Machine Check Exceptions
-app-admin/mcollective 2.11.2 2.11.3 2.11.4: Framework to build server orchestration or parallel job execution systems
+app-admin/mcollective 2.11.3 2.11.4: Framework to build server orchestration or parallel job execution systems
 app-admin/mei-amt-check 0_p20170515: AMT status checker
 app-admin/metalog 3-r1 3-r2: A highly configurable replacement for syslogd/klogd
 app-admin/mktwpol 0.2.6 1.0.0: Bash scripts to install tripwire and generate tripwire policy files
