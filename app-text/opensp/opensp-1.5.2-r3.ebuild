@@ -37,6 +37,8 @@ src_prepare() {
 }
 
 src_configure() {
+	export CONFIG_SHELL=${BASH}  # configure needs bash
+
 	# The following filters are taken from openjade's ebuild. See bug #100828.
 	# Please note!  Opts are disabled.  If you know what you're doing
 	# feel free to remove this line.  It may cause problems with
