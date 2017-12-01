@@ -18,7 +18,7 @@ LANGPACKVERSION=1.0.4
 
 inherit eutils unpacker cdrom games
 
-DESCRIPTION="Heroes of Might and Magic III : The Restoration of Erathia - turn-based 2-D medieval combat"
+DESCRIPTION="Heroes of Might and Magic III: The Restoration of Erathia"
 HOMEPAGE="http://www.lokigames.com/products/heroes3/"
 
 # Since I do not have a PPC machine to test with, I will leave the PPC stuff in
