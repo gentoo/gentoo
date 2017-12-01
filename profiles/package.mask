@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Ulrich Müller <ulm@gentoo.org> (01 Dec 2017)
+# Major breakage (network access in upstream configure), bug #639438.
+dev-db/qt5-sqlcipher
+=net-im/openmittsu-0.9.9.48
+
 # Alexey Shvetsov <alexxy@gentoo.org> (01 Dec 2017)
 # Mask beta gromacs version
 =sci-chemistry/gromacs-2018_beta*
