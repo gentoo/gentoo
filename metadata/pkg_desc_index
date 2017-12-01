@@ -1289,7 +1289,7 @@ app-emulation/bochs 2.6.9: LGPL-ed pc emulator
 app-emulation/cadvisor 0.28.2: Analyzes resource usage and performance characteristics of running containers
 app-emulation/cloud-init 0.7.6-r1 0.7.6-r2 0.7.6_p1212 0.7.6_p1212-r1 0.7.7 0.7.8-r2 0.7.9 17.1 9999: cloud initialisation magic
 app-emulation/coldfire 0.3.1: Motorola Coldfire Emulator
-app-emulation/containerd 0.2.9_p20170605 0.2.9_p20170917 1.0.0_beta2_p20171019 1.0.0_beta3 9999: A daemon to control runC
+app-emulation/containerd 0.2.9_p20170605 0.2.9_p20170917 1.0.0_beta2_p20171019 1.0.0_beta3 1.0.0_rc0 9999: A daemon to control runC
 app-emulation/crossover-bin 12.5.0-r2 12.5.1-r2 13.0.0-r2 13.0.1-r2 13.1.0-r2 13.1.2-r2 13.1.3-r2 13.2.0-r2 14.0.3-r1 14.1.4-r1 15.0.0 15.0.1 15.1.0 15.2.0: Commercial version of app-emulation/wine with paid support.
 app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/diskimage-builder 1.28.0 2.9.0: Golden Disk Image builder.
@@ -3008,7 +3008,7 @@ dev-db/pgagent 3.4.0-r1 3.4.0-r3: pgAgent is a job scheduler for PostgreSQL
 dev-db/pgbadger 9.1-r1: pgBadger is a PostgreSQL log analyzer.
 dev-db/pgbouncer 1.7.2: Lightweight connection pooler for PostgreSQL
 dev-db/pgmemcache 2.1.2 2.2.0 2.3.0: A PostgreSQL API based on libmemcached to interface with memcached
-dev-db/pgpool2 3.5.2 3.5.5 3.6.1 3.6.4 3.6.5 3.6.6 3.6.7 9999: Connection pool server for PostgreSQL
+dev-db/pgpool2 3.5.2 3.5.5 3.6.1 3.6.4 3.6.5 3.6.6 3.6.7 3.7.0 9999: Connection pool server for PostgreSQL
 dev-db/pgrouting 2.0.0 2.5.0: pgRouting extends PostGIS and PostgreSQL with geospatial routing functionality.
 dev-db/pgtap 0.93.0 0.97.0 0.98.0: Unit testing for PostgreSQL
 dev-db/pgxnclient 1.2-r1 1.2.1: PostgreSQL Extension Network Client
@@ -3016,7 +3016,7 @@ dev-db/phpmyadmin 4.0.10.20 4.7.0 4.7.1 4.7.2 4.7.5: Web-based administration fo
 dev-db/phppgadmin 5.1 9999: Web-based administration for Postgres database in php
 dev-db/postgis 2.1.8-r1 2.3.3 2.4.0 2.4.2 9999: Geographic Objects for PostgreSQL
 dev-db/postgresql 9.2.19 9.2.22 9.2.23 9.2.23-r1 9.2.24 9.3.15 9.3.18 9.3.19 9.3.19-r1 9.3.20 9.4.10 9.4.13 9.4.14 9.4.14-r1 9.4.15 9.5.5 9.5.8 9.5.9 9.5.9-r1 9.5.10 9.6.4 9.6.5 9.6.5-r1 9.6.6 10.0 10.0-r1 10.1 9999: PostgreSQL RDBMS
-dev-db/pspg 0.5 0.7.4: A better pager for psql and mysql
+dev-db/pspg 0.5 0.7.4 0.7.5: A better pager for psql and mysql
 dev-db/psqlodbc 09.06.0200 09.06.0300 09.06.0310: Official ODBC driver for PostgreSQL
 dev-db/qdbm 1.8.78-r1: Quick Database Manager
 dev-db/qt5-sqlcipher 0.1.1_pre20171123: Qt SQL driver plugin for SQLCipher
@@ -4869,7 +4869,7 @@ dev-libs/libidmef 1.0.3: Implementation of the IDMEF XML draft
 dev-libs/libindicate 12.10.1-r2: A library to raise flags on DBus for other components of the desktop
 dev-libs/libindicate-qt 0.2.5.91: Qt wrapper for libindicate library
 dev-libs/libindicator 12.10.1-r201 12.10.1-r301: A set of symbols and convience functions that all indicators would like to use
-dev-libs/libinput 1.6.2 1.7.3 1.8.3 1.9.0 1.9.1 1.9.2: Library to handle input devices in Wayland
+dev-libs/libinput 1.6.2 1.7.3 1.8.3 1.9.2 1.9.3: Library to handle input devices in Wayland
 dev-libs/libintl 0.19.6 0.19.7 0.19.8.1: the GNU international library (split out of gettext)
 dev-libs/libisoburn 1.4.6 1.4.8-r1: Creation/expansion of ISO-9660 filesystems on CD/DVD media supported by libburn
 dev-libs/libisofs 1.4.6 1.4.8: Open-source library for reading, mastering and writing optical discs
@@ -4896,7 +4896,7 @@ dev-libs/libmcrypt 2.5.8-r4: libmcrypt provides uniform interface to access seve
 dev-libs/libmcs 0.7.2: Abstracts the storage of configuration settings away from applications
 dev-libs/libmelf 0.4.0-r1: libmelf is a library interface for manipulating ELF object files
 dev-libs/libmemcache 1.4.0_rc2-r1: C API for memcached
-dev-libs/libmemcached 0.50 1.0.14 1.0.17-r3 1.0.17-r4 1.0.18 1.0.18-r1 1.0.18-r2 1.0.18-r3: a C client library to the memcached server
+dev-libs/libmemcached 1.0.14 1.0.18 1.0.18-r1 1.0.18-r2 1.0.18-r3: a C client library to the memcached server
 dev-libs/libmirage 3.1.0: CD and DVD image access library
 dev-libs/libmix 2.05-r7: Programs Crypto/Network/Multipurpose Library
 dev-libs/libmodbus 3.1.2 3.1.4: Modbus library which supports RTU communication over a serial line or a TCP link
@@ -9185,7 +9185,7 @@ dev-ros/geneus 2.2.5 2.2.6 9999: EusLisp ROS message and service generators
 dev-ros/genlisp 0.4.16 9999: Common-Lisp ROS message and service generators
 dev-ros/genmsg 0.5.8 0.5.9 9999: Python library for generating ROS message and service data structures for various languages
 dev-ros/gennodejs 2.0.1 9999: Javascript ROS message and service generators
-dev-ros/genpy 0.6.5 0.6.6 0.6.7 9999: Python ROS message and service generators
+dev-ros/genpy 0.6.7 9999: Python ROS message and service generators
 dev-ros/geodesy 0.5.2 9999: Python and C++ interfaces for manipulating geodetic coordinates
 dev-ros/geographic_msgs 0.5.0 0.5.2 9999: ROS messages for Geographic Information Systems
 dev-ros/geometric_shapes 0.5.1 0.5.2 9999: Generic definitions of geometric shapes and bodies
@@ -10369,7 +10369,7 @@ dev-util/bumpversion 0.5.3: Version-bump your software with a single command
 dev-util/bustle 0.4.2-r1 0.4.7-r1 0.5.4: Draw sequence diagrams of D-Bus traffic
 dev-util/byacc 20170201 20170709: the best variant of the Yacc parser generator
 dev-util/cargo 0.15.0 0.16.0 0.17.0 0.20.0 0.21.0: The Rust's package manager
-dev-util/catalyst 2.0.18-r1 2.0.18-r4 2.0.9999 2.9999 3.0_rc1 9999: Release metatool used for creating releases based on Gentoo Linux
+dev-util/catalyst 2.0.18-r1 2.0.18-r4 2.0.9999 3.0.0 9999: Release metatool used for creating releases based on Gentoo Linux
 dev-util/catfish 1.2.2: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/catkin 0.7.6-r1 0.7.7 0.7.8 9999: Cmake macros and associated python code used to build some parts of ROS
 dev-util/ccache 3.2.4 3.2.5 3.2.7 3.3.3 3.3.4 3.3.4-r1: fast compiler cache
@@ -10484,7 +10484,7 @@ dev-util/glade 3.20.0: A user interface designer for GTK+ and GNOME
 dev-util/global 6.3.1 6.5.7: tag system to find an object location in various sources
 dev-util/gnome-devel-docs 3.22.1: Documentation for developing for the GNOME desktop environment
 dev-util/gob 2.0.20: Preprocessor for making GTK+ objects with inline C code
-dev-util/goland 173.3531.21: Golang IDE by JetBrains
+dev-util/goland 173.3531.21 2017.3: Golang IDE by JetBrains
 dev-util/google-perftools 1.8.3 2.0-r2 2.4 2.5 2.6 2.6.1 2.6.2: Fast, multi-threaded malloc() and nifty performance analysis tools
 dev-util/gource 0.47: A software version control visualization tool
 dev-util/gperf 3.0.4 3.1: A perfect hash function generator
@@ -13785,7 +13785,7 @@ media-sound/gom 0.29.103-r1: Console Mixer Program for OSS
 media-sound/gpodder 3.9.1: A free cross-platform podcast aggregator
 media-sound/gqradio 1.9.2: An FM radio tuner app from the people who brought you GQmpeg
 media-sound/gramofile 1.6-r1 1.6_p9: Transfer sound from gramophone records to CD
-media-sound/grip 3.3.1-r3 3.4.3 3.5.2 3.6.1: GTK+ based Audio CD Player/Ripper
+media-sound/grip 3.3.1-r3 3.4.3 3.5.2 3.6.1 3.6.2: GTK+ based Audio CD Player/Ripper
 media-sound/gsm 1.0.13-r1: Lossy speech compression library and tool
 media-sound/gst123 0.3.4: A GStreamer based command line media player
 media-sound/gstreamripper 0.2: A GTK+ toolkit based frontend for streamripper
@@ -14546,7 +14546,7 @@ net-analyzer/vnstat 1.17 1.17-r3 9999: Console-based network traffic monitor tha
 net-analyzer/w3af 1.1-r1 1.5: Web Application Attack and Audit Framework
 net-analyzer/wapiti 2.3.0 9999: Web-application vulnerability scanner
 net-analyzer/webfuzzer 0.2.0-r1: Poor man's web vulnerability scanner
-net-analyzer/wireshark 2.2.7 2.4.2 99999999: A network protocol analyzer formerly known as ethereal
+net-analyzer/wireshark 2.2.7 2.4.2 2.4.3 99999999: A network protocol analyzer formerly known as ethereal
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.7.3 0.8.2: A framework for layer 2 attacks
@@ -16171,7 +16171,7 @@ sci-chemistry/gabedit 2.4.6 2.4.7 2.4.8: GUI for computational chemistry package
 sci-chemistry/gelemental 1.2.0-r1: Periodic table viewer with detailed information on the chemical elements
 sci-chemistry/ghemical 3.0.0: Chemical quantum mechanics and molecular mechanics
 sci-chemistry/gperiodic 2.0.10-r2 3.0.1: Periodic table application for Linux
-sci-chemistry/gromacs 4.6.9999 5.0.4 5.0.9999 5.1.3 5.1.9999 2016 2016.1 2016.2 2016.3 2016.4 2016.9999 9999: The ultimate molecular dynamics simulation package
+sci-chemistry/gromacs 4.6.9999 5.0.4 5.0.9999 5.1.3 5.1.9999 2016 2016.1 2016.2 2016.3 2016.4 2016.9999 2018_beta1 2018.9999 9999: The ultimate molecular dynamics simulation package
 sci-chemistry/gsim 21.3 21.3-r1: Visualisation and processing of experimental and simulated NMR spectra
 sci-chemistry/hollow 1.2-r1: Production of surface images of proteins
 sci-chemistry/jmol 12.0.45-r1 12.2.27-r1: Java molecular viever for 3-D chemical structures
@@ -17570,7 +17570,7 @@ sys-cluster/libqb 0.17.1 0.17.2 1.0.1: Library providing high performance loggin
 sys-cluster/libquo 1.2 1.2.2 1.2.3 1.2.4-r1 1.2.9 9999: run-time tuning of process binding policies made easy
 sys-cluster/lspbs 1.1-r1: Displays clear, concise and up-to-date PBS node and CPU usage information
 sys-cluster/maui 3.3.1-r2 3.3.1-r3: Maui Cluster Scheduler
-sys-cluster/minikube 0.22.3 0.23.0: Single Node Kubernetes Cluster
+sys-cluster/minikube 0.23.0 0.24.1: Single Node Kubernetes Cluster
 sys-cluster/moosefs 1.6.26-r1 1.6.27: A filesystem for highly reliable petabyte storage
 sys-cluster/mpe2 1.0.6_p1-r2: MPI development tools
 sys-cluster/mpich 3.0.4 3.1.3 3.1.4 3.2 3.2-r1: A high performance and portable MPI implementation
@@ -18345,7 +18345,7 @@ www-apps/drupal 7.56 8.3.7 8.4.2: PHP-based open-source platform and content man
 www-apps/dspam-web 3.10.1: Web based administration and user controls for dspam
 www-apps/eyeos 2.5: AJAX web-based desktop environment
 www-apps/freeradius-dialupadmin 1.70.3 1.80: Web administration interface of freeradius server
-www-apps/gitea 1.1.4 1.2.2 1.2.3: A painless self-hosted Git service, written in Go
+www-apps/gitea 1.2.3 1.3.0: A painless self-hosted Git service, written in Go
 www-apps/gitit 0.12.1.1 0.12.1.1-r2 0.12.2 0.12.2.1: Wiki using happstack, git or darcs, and pandoc
 www-apps/gnopaste 0.5.5: gnopaste is a nopaste script based on PHP with MySQL
 www-apps/grafana-bin 4.5.2 4.6.1 4.6.2: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
@@ -18439,7 +18439,7 @@ www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.6: a free, open source web browser
 www-client/opera 12.16_p1860-r1 49.0.2725.34 49.0.2725.39: A fast and secure web browser
 www-client/opera-beta 50.0.2762.14 50.0.2762.18: A fast and secure web browser
-www-client/opera-developer 51.0.2776.0 51.0.2781.0: A fast and secure web browser
+www-client/opera-developer 51.0.2781.0 51.0.2791.0: A fast and secure web browser
 www-client/otter 0.9.91-r1 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0-r1 2.1.1: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.12.1 0.13 9999: Command line interface to (Gentoo) Bugzilla

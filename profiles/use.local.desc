@@ -457,6 +457,7 @@ app-emulation/bochs:avx - Enable support for emulating Advanced Vector Extension
 app-emulation/bochs:debugger - Enable debugger (slows down emulation)
 app-emulation/bochs:gdb - Enable support for the remote GDB stub
 app-emulation/bochs:x86-64 - Enable support for emulation of 64-bit CPUs
+app-emulation/containerd:btrfs - Support for BTRFS snapshot driver
 app-emulation/crossover-bin:capi - Enable ISDN support via CAPI
 app-emulation/docker:apparmor - Enable AppArmor support.
 app-emulation/docker:aufs - Enables dependencies for the "aufs" graph driver, including necessary kernel flags.
@@ -7027,6 +7028,7 @@ sci-chemistry/gromacs:hwloc - Enable HWLoc lib support
 sci-chemistry/gromacs:make-symlinks - Create symbolic links for pre-5.0 binary names
 sci-chemistry/gromacs:mkl - Use sci-libs/mkl for fft, blas, lapack routines
 sci-chemistry/gromacs:offensive - Enable gromacs partly offensive quotes
+sci-chemistry/gromacs:opencl - Enable opencl non-bonded kernels
 sci-chemistry/gromacs:single-precision - Single precision version of gromacs (default)
 sci-chemistry/gromacs:tng - Enable new trajectory format - tng
 sci-chemistry/gsim:emf - Support for .emf export
