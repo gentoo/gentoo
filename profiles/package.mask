@@ -29,13 +29,18 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (01 Dec 2017)
+# Dead upstream, depends on dead kdelibs4/qt4.
+# Masked for removal in 30 days. Bug #634138
+media-gfx/kpovmodeler
+
 # Sergey Popov <pinkbyte@gentoo.org> (30 Nov 2017)
 # Depends on dead Qt4, no release in two years
 # Masked for removal in 30 days, bug #625110
 dev-util/qfsm
 
 # Andreas Sturmlechner <asturm@gentoo.org> (30 Nov 2017)
-# Declared dead upstream. Masked for removal in 30 days. Bug #620708
+# Declared dead upstream. Masked for removal in 30 days. Bug #634138
 kde-apps/blogilo
 kde-apps/jovie
 kde-apps/kabcclient
@@ -59,10 +64,12 @@ kde-apps/libkpgp
 
 # Andreas Sturmlechner <asturm@gentoo.org> (30 Nov 2017)
 # Depends on dead kdepimlibs:4. KF5-based snapshot available.
+# Masked for removal in 30 days. Bug #634138
 app-office/kraft:4
 
 # Andreas Sturmlechner <asturm@gentoo.org> (30 Nov 2017)
 # Depends on dead kdepimlibs:4. KF5-based snapshot available.
+# Masked for removal in 30 days. Bug #634138
 kde-apps/kopete:4
 kde-misc/kopete-antispam
 kde-misc/kopete-thinklight
