@@ -5,7 +5,7 @@ EAPI=5
 
 inherit eutils unpacker games
 
-DESCRIPTION="Demo for the sequel to the 1999 Game of the Year multi-player first-person shooter"
+DESCRIPTION="Demo for the sequel to the 1999 multi-player first-person shooter"
 HOMEPAGE="http://www.ut2003.com/"
 SRC_URI="http://unreal.epicgames.com/linux/ut2003/ut2003demo-lnx-${PV}.sh.bin
 	http://download.factoryunreal.com/mirror/UT2003CrashFix.zip
