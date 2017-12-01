@@ -4,7 +4,7 @@
 EAPI=5
 inherit eutils gnome2-utils qmake-utils games
 
-DESCRIPTION="A monopd compatible boardgame to play Monopoly-like games (previously named capitalism)"
+DESCRIPTION="Monopd compatible boardgame for Monopoly-like games, previously named capitalism"
 HOMEPAGE="http://linux-ecke.de/CapiCity/"
 SRC_URI="dedicated? ( mirror://sourceforge/project/capitalism/Capi%20City/${PV}/Capid_${PV}.tar.gz )
 	!dedicated? ( mirror://sourceforge/project/capitalism/Capi%20City/${PV}/CapiCity_${PV}.tar.gz )"
