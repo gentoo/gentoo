@@ -10485,7 +10485,7 @@ dev-util/global 6.3.1 6.5.7: tag system to find an object location in various so
 dev-util/gnome-devel-docs 3.22.1: Documentation for developing for the GNOME desktop environment
 dev-util/gob 2.0.20: Preprocessor for making GTK+ objects with inline C code
 dev-util/goland 173.3531.21: Golang IDE by JetBrains
-dev-util/google-perftools 1.8.3 2.0-r2 2.4 2.5 2.6 2.6.1: Fast, multi-threaded malloc() and nifty performance analysis tools
+dev-util/google-perftools 1.8.3 2.0-r2 2.4 2.5 2.6 2.6.1 2.6.2: Fast, multi-threaded malloc() and nifty performance analysis tools
 dev-util/gource 0.47: A software version control visualization tool
 dev-util/gperf 3.0.4 3.1: A perfect hash function generator
 dev-util/gprof2dot 2013.05.17 2016.10.13 2017.09.19: Converts profiling output to dot graphs
