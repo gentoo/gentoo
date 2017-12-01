@@ -3,7 +3,7 @@
 
 inherit bsdmk freebsd
 
-DESCRIPTION="Makefiles definitions used for building and installing libraries and system files"
+DESCRIPTION="Makefile definitions used for building and installing libraries and system files"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~sparc-fbsd ~x86-fbsd"
 
