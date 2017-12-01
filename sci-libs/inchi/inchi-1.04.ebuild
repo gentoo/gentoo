@@ -5,7 +5,7 @@ EAPI=5
 
 inherit eutils toolchain-funcs
 
-DESCRIPTION="A program and library for generating standard and non-standard InChI and InChIKeys"
+DESCRIPTION="Program and library for generating standard and non-standard InChI and InChIKeys"
 HOMEPAGE="http://www.iupac.org/inchi/"
 SRC_URI="
 	http://www.inchi-trust.org/sites/default/files/inchi-${PV}/INCHI-1-API.ZIP -> ${P}.zip
