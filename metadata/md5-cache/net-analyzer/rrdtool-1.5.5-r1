@@ -4,7 +4,7 @@ DESCRIPTION=A system to store and display time-series data
 EAPI=5
 HOMEPAGE=http://oss.oetiker.ch/rrdtool/
 IUSE=dbi doc graph lua perl python rados rrdcgi ruby static-libs tcl tcpd python_targets_python2_7
-KEYWORDS=alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~s390 ~sh ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos ~x86-solaris
+KEYWORDS=alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos ~x86-solaris
 LICENSE=GPL-2
 PDEPEND=ruby? ( ~dev-ruby/rrdtool-bindings-1.5.5 )
 RDEPEND=>=dev-libs/glib-2.28.7:2[static-libs(+)?] >=dev-libs/libxml2-2.7.8:2[static-libs(+)?] dbi? ( dev-db/libdbi[static-libs(+)?] ) graph? ( >=media-libs/libpng-1.5.10:0=[static-libs(+)?] >=x11-libs/cairo-1.10.2[svg,static-libs(+)?] >=x11-libs/pango-1.28 ) lua? ( dev-lang/lua:*[deprecated] ) perl? ( dev-lang/perl:= ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] ) rados? ( sys-cluster/ceph ) tcl? ( dev-lang/tcl:0= ) tcpd? ( sys-apps/tcp-wrappers )
@@ -12,4 +12,4 @@ REQUIRED_USE=python? ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=http://oss.oetiker.ch/rrdtool/pub/rrdtool-1.5.5.tar.gz
 _eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	distutils-r1	372bbe39047c0a2550319a3a82f3e063	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	flag-o-matic	a6089a2a4027ae3da4a460dc87b21050	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011	python-single-r1	317a2557b4d7319a7418225f65accf77	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	185a06792159ca143528e7010368e8af	unpacker	f40f7b4bd5aa88c2a4ba7b0d1e0ded70	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=f922b8060f0d4d465ccdf0d47985e175
+_md5_=2dad8e27d0193e65a4e68a204b145f9a
