@@ -4,7 +4,7 @@
 EAPI=5
 inherit eutils games
 
-DESCRIPTION="A UNIX-hosted, curses-based clone of the nifty little Macintosh freeware game Galaxis"
+DESCRIPTION="Curses-based clone of the nifty little Macintosh freeware game Galaxis"
 HOMEPAGE="http://www.catb.org/~esr/galaxis/"
 SRC_URI="http://www.catb.org/~esr/galaxis/${P}.tar.gz"
 
