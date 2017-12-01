@@ -1,6 +1,6 @@
 DEFINED_PHASES=unpack
 DEPEND=sys-fabric/libibumad:3.12 >=app-arch/rpm2targz-9.0.0.3g
-DESCRIPTION=OpenIB library providing low layer IB functions for use by the IB diagnostic/management programs
+DESCRIPTION=OpenIB library provides the API for use interfacing with IB management programs
 EAPI=5
 HOMEPAGE=https://www.openfabrics.org/
 KEYWORDS=~amd64 ~x86 ~amd64-linux
@@ -9,4 +9,4 @@ RDEPEND=sys-fabric/libibumad:3.12 !sys-fabric/libibmad:0 !sys-fabric/libibmad:3.
 SLOT=3.12
 SRC_URI=https://www.openfabrics.org/downloads/OFED/ofed-3.12/OFED-3.12-rc1.tgz
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	openib	443c6b0f0a1051b711905cf473961cb2	rpm	f52cfa3a435468d86d3b49c357b9cb35	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
-_md5_=6aee8c2b143f99d6c8e94258fe32b787
+_md5_=93b58ec22148e0edd8a8cd8d62aeac37

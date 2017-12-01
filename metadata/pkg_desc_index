@@ -16185,11 +16185,11 @@ sci-chemistry/molden 4.8-r2 5.0 5.5: Display molecular density from GAMESS-UK, G
 sci-chemistry/moldy 2.16e-r2: Molecular dynamics simulations platform
 sci-chemistry/molequeue 0.8.0: Abstract, manage and coordinate execution of tasks
 sci-chemistry/molmol 2k_p2-r2 2k_p2-r3 2k_p2-r4 2k_p2-r5: Publication-quality molecular visualization package
-sci-chemistry/molscript 2.1.2-r2: Display molecular 3D structures, such as proteins, in both schematic and detailed representations
+sci-chemistry/molscript 2.1.2-r2: Display 3D molecules (e.g., proteins) in schematic and detailed representations
 sci-chemistry/molsketch 0.3.0 0.4.1-r1: A drawing tool for 2D molecular structures
 sci-chemistry/mopac7 1.15 1.15-r1: Autotooled, updated version of a powerful, fast semi-empirical package
 sci-chemistry/mpqc 2.3.1-r1 2.3.1-r2 2.3.1-r3 2.3.1-r4: The Massively Parallel Quantum Chemistry Program
-sci-chemistry/msms-bin 2.6.1-r1: MSMS allows to compute very efficiently triangulations of Solvent Excluded Surfaces
+sci-chemistry/msms-bin 2.6.1-r1: MSMS very efficiently computes triangulations of Solvent Excluded Surfaces
 sci-chemistry/mustang 3.2.1 3.2.2: MUltiple STructural AligNment AlGorithm
 sci-chemistry/namd 2.9-r1 2.10: A powerful and highly parallelized molecular dynamics code
 sci-chemistry/nmrglue 0.5-r1: A module for working with NMR data in Python
@@ -16200,19 +16200,19 @@ sci-chemistry/openbabel-python 2.3.2 2.4.1-r1: Python bindings for OpenBabel (in
 sci-chemistry/ortep3 1.0.3-r1: Thermal ellipsoid plot program for crystal structure illustrations
 sci-chemistry/p3d 0.4.3-r1 9999: Python module for structural bioinformatics
 sci-chemistry/parassign 20130522: Assign protein nuclei solely on the basis of pseudocontact shifts (PCS)
-sci-chemistry/pdb-tools 0.2.1-r1 0.2.1-r2: Tools for manipulating and doing calculations on wwPDB macromolecule structure files
-sci-chemistry/pdb2pqr 1.9.0-r1: An automated pipeline for performing Poisson-Boltzmann electrostatics calculations
+sci-chemistry/pdb-tools 0.2.1-r1 0.2.1-r2: Tools for manipulating and calculations on wwPDB macromolecule structure files
+sci-chemistry/pdb2pqr 1.9.0-r1: Automated pipeline for performing Poisson-Boltzmann electrostatics calculations
 sci-chemistry/pdbcat 1.3: Manipulate and process PDB files using tools such as Perl, awk, etc
-sci-chemistry/pdbcns 2.0.010504: Convert atom names for common amino acids and nucleic acid bases from PDB format to CNS or back
+sci-chemistry/pdbcns 2.0.010504: Convert atom names for amino acids/nucleic acid bases between PDB and CNS format
 sci-chemistry/pdbmat 3.89: Calculate Tirion's model from pdb structures
 sci-chemistry/platon 20151001: Versatile, SHELX-97 compatible, multipurpose crystallographic tool
 sci-chemistry/povscript+ 2.1.2.2.19 2.1.2.2.20: Modified molscript that uses POV-Ray, does thermal ellipsoids, and more
-sci-chemistry/prekin 6.51.081122-r1: Prepares molecular kinemages (input files for Mage & KiNG) from PDB-format coordinate files
+sci-chemistry/prekin 6.51.081122-r1: Prepares molecular kinemages from PDB-format coordinate files
 sci-chemistry/probe 2.13.110909: Evaluates atomic packing within or between molecules
 sci-chemistry/procheck 3.5.4-r3: Checks the stereochemical quality of a protein structure
 sci-chemistry/prodecomp 3.0-r1: Decomposition-based analysis of NMR projections
 sci-chemistry/prody 1.6: Protein Dynamics Analysis
-sci-chemistry/propka 3.1_p140511: Prediction of the pKa values of ionizable groups in proteins and protein-ligand complexes
+sci-chemistry/propka 3.1_p140511: pKa-value prediction of ionizable groups in protein and protein-ligand complexes
 sci-chemistry/psi 3.4.0-r2: Suite for ab initio quantum chemistry computing various molecular properties
 sci-chemistry/pymol 1.8.4.0-r1 1.8.6.0: A Python-extensible molecular graphics system
 sci-chemistry/pymol-plugins-bni-tools 0.27: Gives Pymol additional functionalities and presets to the PyMOL GUI
@@ -16227,9 +16227,9 @@ sci-chemistry/rasmol 2.7.5.2-r2: Molecular Graphics Visualisation Tool
 sci-chemistry/raster3d 3.0.2 3.0.3: Generation high quality raster images of proteins or other molecules
 sci-chemistry/reduce 3.16.111118: Adds hydrogens to a Protein Data Bank (PDB) molecule structure file
 sci-chemistry/relax 4.0.0-r1: Molecular dynamics by NMR data analysis
-sci-chemistry/shelx 20141228: Programs for crystal structure determination from single-crystal diffraction data
+sci-chemistry/shelx 20141228: Crystal structure determination from single-crystal diffraction data
 sci-chemistry/sparky 3.115-r2: Graphical NMR assignment and integration program for large polymers
-sci-chemistry/suitename 0.3.070628: The ROC RNA Ontology Consortium consensus RNA backbone nomenclature and conformer-list development
+sci-chemistry/suitename 0.3.070628: The ROC RNA Ontology nomenclature and conformer-list development
 sci-chemistry/surf 1.0: Solvent accesible Surface calculator
 sci-chemistry/theseus 2.0.6 3.0.0 3.3.0: Maximum likelihood superpositioning and analysis of macromolecular structures
 sci-chemistry/threeV 1.2-r1: 3V: Voss Volume Voxelator
@@ -16252,7 +16252,7 @@ sci-electronics/balsa 4.0-r1: The Balsa asynchronous synthesis system
 sci-electronics/cirkuit 0.4.3-r1: An application to generate publication-ready figures
 sci-electronics/drawtiming 0.7.1-r1 0.7.1-r2: Command line tool for drawing timing diagrams
 sci-electronics/eagle 7.3.0 7.4.0 7.6.0: CadSoft EAGLE schematic and printed circuit board (PCB) layout editor
-sci-electronics/electric 8.09 8.11 9.02 9.03: Complete Electronic Design Automation (EDA) system that can handle many forms of circuit design
+sci-electronics/electric 8.09 8.11 9.02 9.03: Complete Electronic Design Automation system for many forms of circuit design
 sci-electronics/electronics-menu 1.0-r1: Creates an "Electronics" desktop menu
 sci-electronics/espresso-ab 1.0-r1 1.0-r2: POSIX compliant version of the espresso logic minimization tool
 sci-electronics/fasthenry 3.0_p082514: Three dimensional inductance computation program, Whiteley Research version
@@ -16281,7 +16281,7 @@ sci-electronics/linsmith 0.99.30-r1: Smith charting program, mainly designed for
 sci-electronics/magic 7.5.202-r1 7.5.231 8.0.138 8.0.207: The VLSI design CAD tool
 sci-electronics/netgen 1.3.11 1.4.52: LVS tool (layout versus schematic comparison)
 sci-electronics/ngspice 26: The Next Generation Spice (Electronic Circuit Simulator)
-sci-electronics/oregano 0.69.1-r1 0.82: Oregano is an application for schematic capture and simulation of electrical circuits
+sci-electronics/oregano 0.69.1-r1 0.82: Application for the schematic capturing and simulation of electrical circuits
 sci-electronics/osqoop 1.1.1: multi-platform open source software oscilloscope based on Qt 4
 sci-electronics/pcb 20140316-r1: GPL Electronic Design Automation: Printed Circuit Board editor
 sci-electronics/petrify 4.2-r1: Synthesize Petri nets into asynchronous circuits
@@ -16382,7 +16382,7 @@ sci-libs/avogadrolibs 0.7.2-r1 0.8.0 0.9.0: Advanced molecule editor and visuali
 sci-libs/beagle 3.0.3-r1: Open BEAGLE, a versatile EC/GA/GP framework
 sci-libs/blas-reference 20070226-r4 20151113-r1 20161223: Basic Linear Algebra Subprograms F77 reference implementations
 sci-libs/bliss 0.73-r1: Compute Automorphism Groups and Canonical Labelings of Graphs
-sci-libs/bmrblib 1.0.3: API abstracting the BioMagResBank (BMRB) NMR-STAR format (http://www.bmrb.wisc.edu/)
+sci-libs/bmrblib 1.0.3: API abstracting the BioMagResBank (BMRB) NMR-STAR format
 sci-libs/btf 1.1.3 1.2.0: Algorithm for matrix permutation into block triangular form
 sci-libs/buddy 2.4-r1: Binary Decision Diagram Package
 sci-libs/camd 2.3.1: Library to order a sparse matrix prior to Cholesky factorization
@@ -16472,11 +16472,11 @@ sci-libs/hypre 2.9.0b 2.11.1: Parallel matrix preconditioners library
 sci-libs/idlcoyote 20161220 99999999: GDL library from D. Fannings IDL courses
 sci-libs/idlmarkwardt 20130418 20160319: Craig Markwardt IDL procedures (MPFIT, CMSVLIB, etc)
 sci-libs/ignition-math 3.2.0: A small, fast, and high performance math library for robot applications
-sci-libs/inchi 1.04: A program and library for generating standard and non-standard InChI and InChIKeys
+sci-libs/inchi 1.04: Program and library for generating standard and non-standard InChI and InChIKeys
 sci-libs/indilib 1.3.1 1.4.1: INDI Astronomical Control Protocol library
 sci-libs/io_lib 1.10.1 1.11.2.1 1.12.5 1.13.2 1.14.7: General purpose trace and experiment file reading/writing interface
 sci-libs/ipopt 3.11.7 3.11.8: Interior-Point Optimizer for large-scale nonlinear optimization
-sci-libs/ipp 7.1.0.079 7.1.1.117 7.1.1.146 7.1.1.192 8.0.1.080 8.2.0.090 8.2.1.164 8.2.2.187: Intel Integrated Performance Primitive library for multimedia and data processing
+sci-libs/ipp 7.1.0.079 7.1.1.117 7.1.1.146 7.1.1.192 8.0.1.080 8.2.0.090 8.2.1.164 8.2.2.187: Intel Integrated Performance Primitives for multimedia and data processing
 sci-libs/itpp 4.3.1-r1: C++ library of mathematical, signal processing and communication
 sci-libs/jama 1.2.5: Java-like matrix C++ templates
 sci-libs/jmol-acme 1.0: Portions of the Acme collection required for jMol
@@ -16490,7 +16490,7 @@ sci-libs/libaec 0.3.2 1.0.0 1.0.1: Adaptive Entropy Coding library
 sci-libs/libbufr 000405: ECMWF BUFR library - includes both C and Fortran example utilities
 sci-libs/libccd 2.0 9999: Library for collision detection between two convex shapes
 sci-libs/libccp4 6.4.6: The CCP4 C and F77 subroutine library
-sci-libs/libcerf 1.3 1.4 1.5: efficient and accurate implementation of complex error functions
+sci-libs/libcerf 1.3 1.4 1.5: Efficient and accurate implementation of complex error functions
 sci-libs/libcmatrix 3.11.0-r1: lite version of pNMRsim
 sci-libs/libcore 2.1.1-r1: Robust numerical and geometric computation library
 sci-libs/libctl 3.1 3.2: Guile-based library for scientific simulations
@@ -16530,7 +16530,7 @@ sci-libs/metis 4.0.3 5.1.0-r2 5.1.0-r3: A package for unstructured serial graph 
 sci-libs/minfx 1.0.3-r1 1.0.4_pre98 1.0.4 1.0.5 1.0.6 1.0.10 1.0.11: Numerical optimisation library
 sci-libs/minuit 5.34.14: A C++ physics analysis tool for function minimization
 sci-libs/mkl 10.0.5.025 10.0.5.025-r1: Intel(R) Math Kernel Library: linear algebra, fft, math functions
-sci-libs/mmdb 1.25.5-r1 2.0.1: The Coordinate Library, designed to assist CCP4 developers in working with coordinate files
+sci-libs/mmdb 1.25.5-r1 2.0.1: The Coordinate Library for working with CCP4 coordinate files
 sci-libs/mmtk 2.7.9: Molecular Modeling ToolKit for Python
 sci-libs/monomer-db 5.41: Monomer library used for macromolecular structure building and refinement
 sci-libs/mpfi 1.5.1: Multiple precision interval arithmetic library based on MPFR
@@ -16569,7 +16569,7 @@ sci-libs/profphd-utils 1.0.10 1.0.10-r1: Additional utils for profphd
 sci-libs/proj 4.8.0 4.9.2: Proj.4 cartographic projection software
 sci-libs/punc 1.5: Portable Understructure for Numerical Computing
 sci-libs/pycifrw 3.6.2 4.1.1: Reading and writing CIF (Crystallographic Information Format) files
-sci-libs/pymmlib 1.2.1: Toolkit and library for the analysis and manipulation of macromolecular structural models
+sci-libs/pymmlib 1.2.1: Toolkit and library for the analysis and manipulation of macromolecular models
 sci-libs/pyshp 1.2.0 9999: Pure Python read/write support for ESRI Shapefile format
 sci-libs/qd 2.3.17: Quad-double and double-double float arithmetics
 sci-libs/qfits 6.2.0: ESO stand-alone C library offering easy access to FITS files
@@ -17062,7 +17062,7 @@ sys-apps/apmd 3.2.2_p14-r1: Advanced Power Management Daemon
 sys-apps/apparmor 2.11.1-r1: Userspace utils and init scripts for the AppArmor application security system
 sys-apps/apparmor-utils 2.11.1: Additional userspace utils to assist with AppArmor profile management
 sys-apps/apply-default-acl 0.0.6: Apply default POSIX ACLs to files and directories
-sys-apps/arrayprobe 2.0-r2: CLI utility that reports the status of a HP (Compaq) array controller (both IDA & CCISS supported)
+sys-apps/arrayprobe 2.0-r2: Utility to report status of an HP (Compaq) array controller (both IDA & CCISS)
 sys-apps/attr 2.4.47-r2: Extended attributes tools
 sys-apps/audio-entropyd 2.0.3-r1: Audio-entropyd generates entropy-data for the /dev/random device
 sys-apps/baobab 3.22.1 3.24.0: Disk usage browser for GNOME
@@ -17084,7 +17084,7 @@ sys-apps/cinit 0.2.1: a fast, small and simple init with support for profiles
 sys-apps/ckbcomp 1.164: Compile an XKB keymap for loadkeys
 sys-apps/clrngd 1.0.3: Clock randomness gathering daemon
 sys-apps/cobalt-panel-utils 1.0.2: LCD and LED panel utilities for the Sun Cobalts
-sys-apps/collectl 3.7.4 4.0.5 4.1.0 4.1.3 4.2.0: light-weight performance monitoring tool capable of reporting interactively and logging to disk
+sys-apps/collectl 3.7.4 4.0.5 4.1.0 4.1.3 4.2.0: Performance monitoring tool capable of interactive reporting and logging to disk
 sys-apps/colorized-logs 2.1: Tools for logs with ANSI color
 sys-apps/conspy 1.10: Remote control for Linux virtual consoles
 sys-apps/coreutils 8.25 8.26 8.27 8.28 8.28-r1: Standard GNU utilities (chmod, cp, dd, ls, sort, tr, head, wc, who,...)
@@ -17146,7 +17146,7 @@ sys-apps/gradm 3.1.201603152148 3.1.201607172312 3.1.201608131257 3.1.2017080120
 sys-apps/grep 2.27-r1 3.0 3.1: GNU regular expression matcher
 sys-apps/grepcidr 2.0: Filter IPv4 and IPv6 addresses matching CIDR patterns
 sys-apps/groff 1.22.2 1.22.3: Text formatter used for man pages
-sys-apps/gscanbus 0.8: a little bus scanning, testing, and topology visualizing tool for the Linux IEEE1394 subsystem
+sys-apps/gscanbus 0.8: Bus scanning, testing and topology visualizing tool for Linux IEEE1394 subsystem
 sys-apps/gsmartcontrol 1.0.2 1.1.1 1.1.3: Hard disk drive health inspection tool
 sys-apps/guix 0.12.0-r3 0.13.0: GNU package manager (nix sibling)
 sys-apps/habitat 0.28.0: Application automation framework
@@ -17168,8 +17168,8 @@ sys-apps/hwinfo 19.1 20.0 21.4 21.23: Hardware detection tool used in SuSE Linux
 sys-apps/hwloc 1.11.2-r1 1.11.7: displays the hardware topology in convenient formats
 sys-apps/hwsetup 1.2-r3: Hardware setup program from Knoppix - used only on LiveCD
 sys-apps/i2c-tools 3.1.1-r1: I2C tools for bus probing, chip dumping, EEPROM decoding, and more
-sys-apps/ibm-powerpc-utils 1.1.0 1.2.2 1.2.12 1.2.25 1.2.26: This package provides utilities for the maintainance of the IBM and Apple powerpc platforms.
-sys-apps/ibm-powerpc-utils-papr 1.1.0 1.1.6: This package provides the utilities which are intended for the maintenance of IBM powerpc platforms
+sys-apps/ibm-powerpc-utils 1.1.0 1.2.2 1.2.12 1.2.25 1.2.26: Utilities for the maintainance of the IBM and Apple PowerPC platforms
+sys-apps/ibm-powerpc-utils-papr 1.1.0 1.1.6: Utilities for the maintenance of IBM PowerPC platforms
 sys-apps/idle3-tools 0.9.1: Read, Set or disable the idle3 timer of Western Digital drives
 sys-apps/ifd-gempc 1.0.7: GemCore based PC/SC reader drivers for pcsc-lite
 sys-apps/ifplugd 0.28-r9 0.28-r10: Brings up/down ethernet ports automatically with cable detection
@@ -17268,7 +17268,7 @@ sys-apps/progress 0.13: Coreutils Viewer: show progress for cp, rm, dd, and so f
 sys-apps/proot 3.2.2-r1 4.0.1 4.0.3 5.0.0 5.1.0: User-space implementation of chroot, mount --bind, and binfmt_misc
 sys-apps/pv 1.6.0-r1 1.6.6: Pipe Viewer: a tool for monitoring the progress of data through a pipe
 sys-apps/pyrenamer 0.6.0-r2: Mass rename files
-sys-apps/qcontrol 0.4.2-r1: Allows to send commands to some microcontrollers, for example to change leds or sound a buzzer
+sys-apps/qcontrol 0.4.2-r1: Send commands to some microcontrollers, e.g., to change LEDs or sound a buzzer
 sys-apps/qdirstat 1.4: Qt app to show where your disk space has gone and to help you clean it up
 sys-apps/qdiskusage 1.0.4: Qt4 Graphical Disk Usage Analyzer
 sys-apps/qingy 1.0.0-r2: a DirectFB getty replacement
@@ -17335,7 +17335,7 @@ sys-apps/usbutils 008-r1 009: USB enumeration utilities
 sys-apps/usermode-utilities 20070815-r3: Tools for use with Usermode Linux virtual machines
 sys-apps/utempter 0.5.5.6: App that allows non-privileged apps to write utmp (login) info
 sys-apps/util-linux 2.28.2 2.29.2-r1 2.30.1 2.30.2 2.31 9999: Various useful Linux utilities
-sys-apps/vbetool 1.1: Run real-mode video BIOS code to alter hardware state (i.e. reinitialize video card)
+sys-apps/vbetool 1.1: Run real-mode video BIOS code to alter hw state (i.e. reinitialize video card)
 sys-apps/watchdog 5.14 5.15: A software watchdog and /dev/watchdog daemon
 sys-apps/which 2.21: Prints out location of specified executables that are in your path
 sys-apps/x86info 1.30: Dave Jones' handy, informative x86 CPU diagnostic utility
@@ -17371,10 +17371,10 @@ sys-auth/otpcalc 0.97-r8: A One Time Password and S/Key calculator for X
 sys-auth/pam-afs-session 1.3 1.5 1.6: OpenAFS PAM Module
 sys-auth/pam-csync 0.42.0-r1: PAM module to provide roaming home directories for a user session
 sys-auth/pam-pgsql 0.7.3.2: pam module to authenticate users via PostgreSQL
-sys-auth/pam-script 1.1.6 1.1.7 1.1.8: PAM module for executing scripts during authorization, password changes, and sessions
+sys-auth/pam-script 1.1.6 1.1.7 1.1.8: PAM module for running scripts during authorization, password change and session
 sys-auth/pam_abl 0.6.0: PAM module for blacklisting hosts and users repeatedly failed authentication
 sys-auth/pam_bioapi 0.4.0 0.4.0-r1: PAM interface to bioapi package
-sys-auth/pam_blue 0.9.0 0.9.0-r1: Linux PAM module providing ability to authenticate via a bluetooth compatible device
+sys-auth/pam_blue 0.9.0 0.9.0-r1: PAM module providing ability to authenticate via a bluetooth compatible device
 sys-auth/pam_chroot 0.9.2: Linux-PAM module that allows a user to be chrooted in auth, account, or session
 sys-auth/pam_dotfile 0.7-r1 0.7-r2: pam module to allow password-storing in $HOME/dotfiles
 sys-auth/pam_fprint 0.2-r1: a simple PAM module which uses libfprint's functionality for authentication
@@ -17388,7 +17388,7 @@ sys-auth/pam_passwdqc 1.0.4 1.0.5 1.3.0: Stub ebuild to help migrate to newer pa
 sys-auth/pam_radius 1.3.17-r1: PAM RADIUS authentication module
 sys-auth/pam_require 0.7: Allows you to require a special group or user to access a service
 sys-auth/pam_skey 1.1.5-r5: PAM interface for the S/Key authentication system
-sys-auth/pam_smb 2.0.0_rc6-r1 2.0.0_rc6-r2: The PAM SMB module, allows authentication against a SMB (such as the Win_x families) server
+sys-auth/pam_smb 2.0.0_rc6-r1 2.0.0_rc6-r2: PAM module for authenticating against an SMB (such as the Win_x families) server
 sys-auth/pam_ssh 1.97-r1 1.97-r2 1.97-r3 1.98 2.1: Uses ssh-agent to provide single sign-on
 sys-auth/pam_ssh_agent_auth 0.9.2 0.9.3 0.9.4 0.10.2: Simple module to authenticate users against their ssh-agent keys
 sys-auth/pam_u2f 1.0.4: Library for authenticating against PAM with a Yubikey
@@ -17403,7 +17403,7 @@ sys-auth/rtkit 0.11-r1 0.11-r2: Realtime Policy and Watchdog Daemon
 sys-auth/skey 1.1.5-r11: Linux Port of OpenBSD Single-key Password System
 sys-auth/sssd 1.12.1 1.12.4 1.12.5 1.13.0 1.13.1: System Security Services Daemon provides access to identity and authentication
 sys-auth/tfm-fingerprint 1.0: TouchChip TFM/ESS FingerPrint BSP
-sys-auth/thinkfinger 0.3-r3: Support for the UPEK/SGS Thomson Microelectronics fingerprint reader, often seen in Thinkpads
+sys-auth/thinkfinger 0.3-r3: Support for the UPEK/SGS Thomson fingerprint reader, common in Thinkpads
 sys-auth/ykclient 2.14 2.15: Yubico C client library
 sys-auth/ykneo-ccid-tools 0.0.0: Tools for Yubico's YubiKey NEO in CCID mode
 sys-auth/ykpers 1.18.0: Library and tool for personalization of Yubico's YubiKey
@@ -17420,7 +17420,7 @@ sys-block/devio 1.2: correctly read (or write) a region of a block device
 sys-block/di 4.43 4.44: Disk Information Utility
 sys-block/disktype 9: Detect the content format of a disk or disk image
 sys-block/eject-bsd 1.5: eject command for FreeBSD systems
-sys-block/endpoint 0.1.0: Endpoint turns a Linux machine with one or more firewire cards into an SBP-2 device
+sys-block/endpoint 0.1.0: Endpoint turns a Linux machine with a firewire card into an SBP-2 device
 sys-block/f3 6.0: Utilities to detect broken or counterfeit flash storage
 sys-block/fio 2.15 2.16 3.2: Jens Axboe's Flexible IO tester
 sys-block/flashbench 20120606: Tool for benchmarking and classifying flash memory drives
@@ -17428,7 +17428,7 @@ sys-block/fwdl 1.2.3: Seagate Fibre-Channel disk firmware upgrade tool
 sys-block/gpart 0.1h-r2 0.3: Partition table rescue/guessing tool
 sys-block/gparted 0.27.0 0.28.1 0.29.0: Gnome Partition Editor
 sys-block/hdrecover 0.5: Attempts to recover a hard disk that has bad blocks on it
-sys-block/hpacucli 9.30.15.0 9.40.12.0: HP Array Configuration Utility Command Line Interface (HPACUCLI, formerly CPQACUXE)
+sys-block/hpacucli 9.30.15.0 9.40.12.0: HP Array Config Utility Command Line Interface (HPACUCLI, formerly CPQACUXE)
 sys-block/hpssacli 2.40.13.0-r1: HPE Smart Storage Administrator (HPE SSA) CLI (HPSSACLI, formerly HPACUCLI)
 sys-block/iscsitarget 0.4.17 1.4.19 1.4.20.2 1.4.20.2_p20130103 1.4.20.2_p20130821 9999: Open Source iSCSI target with professional features
 sys-block/kvpm 0.9.10: KDE frontend for Linux LVM2 and GNU parted
@@ -17447,7 +17447,7 @@ sys-block/nwutil 1.4 1.8: Netwinder hardware utilities
 sys-block/open-iscsi 2.0.872-r2 2.0.872-r3 2.0.873 2.0.873-r1 2.0.873-r2 2.0.873-r3 2.0.874 2.0.874-r1: A performant, transport independent, multi-platform implementation of RFC3720
 sys-block/open-isns 0.97: iSNS server and client for Linux
 sys-block/parted 2.4 2.4-r1 3.1-r1 3.1-r2 3.2 3.2-r1 3.2-r2: Create, destroy, resize, check, copy partitions and file systems
-sys-block/partimage 0.6.9: Console-based application to efficiently save raw partition data to an image file
+sys-block/partimage 0.6.9: Console-based application to efficiently save raw partition data to image file
 sys-block/partitionmanager 3.2.1: KDE utility for management of partitions and file systems
 sys-block/qla-fc-firmware 20101015: QLogic Linux Fibre Channel HBA Firmware for ql2xxx cards
 sys-block/raid-check 20140719-r1: Script to do "scrubbing" on software RAID systems
@@ -17538,7 +17538,7 @@ sys-cluster/drbd 8.0.16 8.3.7 8.3.8.1 8.3.8.1-r1 8.3.10 8.3.11-r1 8.3.12 8.3.13 
 sys-cluster/drbd-kernel 8.0.16 8.3.6 8.3.8.1: mirror/replicate block-devices across a network-connection
 sys-cluster/drbd-utils 8.9.3 8.9.6 8.9.6-r1: mirror/replicate block-devices across a network-connection
 sys-cluster/fake 1.1.10: Fake has been designed to switch in backup servers on a LAN
-sys-cluster/feedbackd-agent 0.4: system for dynamic feedback of server loads in a Linux Virtual Server (LVS)-based cluster
+sys-cluster/feedbackd-agent 0.4: Dynamic feedback of server loads in a Linux Virtual Server (LVS)-based cluster
 sys-cluster/feedbackd-master 0.4: Linux Virtual Server (LVS) addon for dynamic server health feedback
 sys-cluster/fence-agents 3.1.5-r1 3.1.5-r2: Cluster Fencing Agents
 sys-cluster/galera 25.3.20 25.3.21 25.3.22: Synchronous multi-master replication engine that provides the wsrep API
@@ -17549,7 +17549,7 @@ sys-cluster/gearmand 0.34-r1: Generic framework to farm out work to other machin
 sys-cluster/glusterfs 3.12.3: GlusterFS is a powerful network/cluster filesystem
 sys-cluster/heartbeat 3.0.5-r3 3.0.6: Heartbeat high availability cluster manager
 sys-cluster/heat 8.0.5 9.0.1 2017.1.9999 2017.2.9999: A CloudFormation-compatible openstack-native cloud orchistration engine.
-sys-cluster/hpl 2.0-r3: A Portable Implementation of the High-Performance Linpack Benchmark for Distributed-Memory Computers
+sys-cluster/hpl 2.0-r3: Portable Implementation of the Linpack Benchmark for Distributed-Memory Clusters
 sys-cluster/hpx 0.9.8 0.9.9 0.9.10 0.9.99 1.0.0 9999: C++ runtime system for parallel and distributed applications
 sys-cluster/ipvsadm 1.21-r1 1.24 1.26-r2 1.27-r1 1.28: utility to administer the IP virtual server services
 sys-cluster/keepalived 1.2.24 1.3.5: A strong & robust keepalive facility to the Linux Virtual Server project
@@ -17563,7 +17563,7 @@ sys-cluster/kubelet 1.8.3 1.8.4: Kubernetes Node Agent
 sys-cluster/legion 16.08.0-r1 16.10.0 17.02.0 17.05.0 17.08.0 17.10.0 9999: A data-centric parallel programming system
 sys-cluster/libccs 3.1.5 3.2.0: Cluster Configuration System Library
 sys-cluster/libccs-perl 3.1.5: Cluster Configuration System Library Perl-Bindings
-sys-cluster/libcircle 0.2.0_rc1 0.2.1_rc1: an API for distributing embarrassingly parallel workloads using self-stabilization
+sys-cluster/libcircle 0.2.0_rc1 0.2.1_rc1: API for distributing embarrassingly parallel workloads using self-stabilization
 sys-cluster/libcman 3.1.5 3.2.0: Cluster Manager Library
 sys-cluster/libdlm 3.1.5 3.2.0: General-purpose Distributed Lock Manager Library
 sys-cluster/libfence 3.1.5 3.2.0: Cluster Fencing Library
@@ -17644,7 +17644,7 @@ sys-devel/gdb-apple 768-r1 966 1461 1752: Apple branch of the GNU Debugger, Deve
 sys-devel/gettext 0.19.8.1: GNU locale utilities
 sys-devel/gnuconfig 20160402 20161104 20170101 99999999: Updated config.sub and config.guess file from GNU
 sys-devel/heirloom-devtools 070527-r2 999999: Original UNIX development tools
-sys-devel/icecream 0.9.7-r1 1.0.0-r1 1.0.0-r2: icecc is a program for distributed compiling of C(++) code across several machines; based on distcc
+sys-devel/icecream 0.9.7-r1 1.0.0-r1 1.0.0-r2: Distributed compiling of C(++) code across several machines; based on distcc
 sys-devel/kgcc64 4.1.2 4.2.4 4.3.5 4.4.5 4.4.6 4.5.3 4.5.4 4.6.4 4.7.3 4.7.4 4.8.3 4.8.5 4.9.4 5.4.0 6.3.0 6.4.0 7.2.0: 64bit kernel compiler
 sys-devel/libtool 2.4.6-r2 2.4.6-r3 2.4.6-r4 9999: A shared library tool for developers
 sys-devel/lld 4.0.1 5.0.0 5.0.9999 9999: The LLVM linker (link editor)
@@ -17660,7 +17660,7 @@ sys-devel/patch 2.7.5: Utility to apply diffs to files
 sys-devel/pmake 1.111.3.1 1.111.3.3: BSD build tool to create programs in parallel. Debian's version of NetBSD's make
 sys-devel/prelink 20130503 20130503-r1 20151030: Modifies ELFs to avoid runtime symbol resolutions resulting in faster load times
 sys-devel/qconf 2.3: ./configure like generator for qmake-based projects
-sys-devel/remake 3.81.0.2 3.81.0.3 3.82.0.4 3.82.0.9 4.1.1.1: patched version of GNU make that adds improved error reporting, tracing, and a debugger
+sys-devel/remake 3.81.0.2 3.81.0.3 3.82.0.4 3.82.0.9 4.1.1.1: patched version of GNU make with improved error reporting, tracing and debugging
 sys-devel/slibtool 0.5.17: A skinny libtool implementation, written in C
 sys-devel/smatch 1.57 1.57-r1 1.59 9999: static analysis tool for C
 sys-devel/sparse 0.4.3 0.4.4 0.5.0 9999: C semantic parser
@@ -17675,9 +17675,9 @@ sys-fabric/libcxgb3 1.3.1-r2: OpenIB - driver for Chelsio T3-based iWARP (RDMA o
 sys-fabric/libcxgb4 1.3.2: OpenIB - driver for Chelsio T4-based iWARP (RDMA over IP/ethernet)
 sys-fabric/libehca 1.2.2-r3: OpenIB - IBM eServer eHCA Infiniband device driver for Linux on POWER
 sys-fabric/libibcm 1.0.5-r3: OpenIB Userspace CM library
-sys-fabric/libibmad 1.3.11: OpenIB library providing low layer IB functions for use by the IB diagnostic/management programs
-sys-fabric/libibumad 1.3.9: OpenIB User MAD library functions which sit on top of the user MAD modules in the kernel
-sys-fabric/libibverbs 1.1.7 1.1.7-r1: A library allowing programs to use InfiniBand 'verbs' for direct access to IB hardware
+sys-fabric/libibmad 1.3.11: OpenIB library provides the API for use interfacing with IB management programs
+sys-fabric/libibumad 1.3.9: OpenIB User MAD lib functions which sit on top of the user MAD kernel modules
+sys-fabric/libibverbs 1.1.7 1.1.7-r1: A library to use InfiniBand 'verbs' for direct access to IB hardware
 sys-fabric/libipathverbs 1.2.1: OpenIB userspace driver for the PathScale InfiniBand HCAs
 sys-fabric/libmlx4 1.0.5: OpenIB userspace driver for Mellanox ConnectX HCA
 sys-fabric/libmlx5 1.0.1: OpenIB userspace driver for Mellanox ConnectIB HCA
@@ -17716,7 +17716,7 @@ sys-firmware/midisport-firmware 1.2: Firmware for M-Audio/Midiman USB MIDI devic
 sys-firmware/nvidia-firmware 325.15 340.32: Kernel and mesa firmware for nouveau (video accel and pgraph)
 sys-firmware/seabios 1.10.1 1.10.2: Open Source implementation of a 16-bit x86 BIOS
 sys-firmware/sgabios 0.1_pre8: serial graphics adapter bios option rom for x86
-sys-firmware/sigrok-firmware-fx2lafw 0.1.2 0.1.3 0.1.4 0.1.5 9999: open-source firmware for Cypress FX2 chips which makes them usable as simple logic analyzer hardware
+sys-firmware/sigrok-firmware-fx2lafw 0.1.2 0.1.3 0.1.4 0.1.5 9999: Firmware for Cypress FX2 chips for use as simple logic analyzer hardware
 sys-firmware/tt-s2-6400-firmware 0.5.0 0.5.1: Firmware for the Technotrend S2-6400 DVB Card
 sys-firmware/vgabios 0.6c-r1 0.7a 0.7a-r1: VGA BIOS implementation
 sys-firmware/zd1201-firmware 0.14: Firmware for ZyDAS 1201 based USB 802.11b Network WiFi devices
@@ -17727,7 +17727,7 @@ sys-freebsd/freebsd-cddl 8.2 9.1 10.3 11.0 11.1: FreeBSD CDDL (opensolaris/zfs) 
 sys-freebsd/freebsd-contrib 8.2 9.1: Contributed sources for FreeBSD
 sys-freebsd/freebsd-lib 8.2-r1 9.1-r11 10.3-r3 11.0-r1 11.1: FreeBSD's base system libraries
 sys-freebsd/freebsd-libexec 8.2 8.2-r1 9.1-r2 10.3 11.0: FreeBSD libexec things
-sys-freebsd/freebsd-mk-defs 8.2 9.1 10.3 11.0 11.1: Makefiles definitions used for building and installing libraries and system files
+sys-freebsd/freebsd-mk-defs 8.2 9.1 10.3 11.0 11.1: Makefile definitions used for building and installing libraries and system files
 sys-freebsd/freebsd-pam-modules 8.2 9.1-r1 10.3 11.0 11.1: FreeBSD's PAM authentication modules
 sys-freebsd/freebsd-pf 8.2 9.1 10.3 11.0 11.1: FreeBSD's base system libraries
 sys-freebsd/freebsd-rescue 8.2 9.1 10.3 11.0 11.1: FreeBSD's rescue binaries
@@ -17782,7 +17782,7 @@ sys-fs/etcd-fs 0_p20140620 0_p20170517: Use etcd as a FUSE filesystem
 sys-fs/eudev 3.1.5 3.2.4 3.2.5 4.9999 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
 sys-fs/exfat-utils 1.2.4 1.2.6 1.2.7: exFAT filesystem utilities
 sys-fs/ext3grep 0.10.2: Recover deleted files on an ext3 file system
-sys-fs/ext4magic 0.3.2: Linux admin tool, can help to recover deleted or overwritten files on ext3 and ext4 filesystems
+sys-fs/ext4magic 0.3.2: Tool for recovery of deleted or overwritten files on ext3/ext4 filesystems
 sys-fs/extundelete 0.2.0-r1 0.2.0-r2 0.2.4: A utility to undelete files from an ext3 or ext4 partition
 sys-fs/f2fs-tools 1.6.1 1.8.0 1.9.0: Tools for Flash-Friendly File System (F2FS)
 sys-fs/fatsort 1.3 1.4.2: Sorts files on FAT16/32 partitions, ideal for basic audio players
@@ -17816,7 +17816,7 @@ sys-fs/lufs 0.9.7-r3: User-mode filesystem implementation
 sys-fs/lvm2 2.02.116 2.02.116-r1 2.02.116-r2 2.02.116-r4 2.02.116-r5 2.02.116-r6 2.02.136 2.02.136-r1 2.02.136-r2 2.02.139 2.02.139-r1 2.02.145 2.02.145-r1 2.02.145-r2 2.02.166 2.02.166-r2 2.02.171 2.02.172 2.02.173: User-land utilities for LVM2 (device-mapper) software
 sys-fs/lxcfs 2.0.4 2.0.6: FUSE filesystem for LXC
 sys-fs/mac-fdisk 0.1-r7 0.1_p16: Mac/PowerMac disk partitioning utility
-sys-fs/mdadm 3.3.1-r2 3.4 4.0: A useful tool for running RAID systems - it can be used as a replacement for the raidtools
+sys-fs/mdadm 3.3.1-r2 3.4 4.0: Tool for running RAID systems - replacement for the raidtools
 sys-fs/mhddfs 0.1.39: Fuse multi harddrive filesystem
 sys-fs/mp3fs 0.32 0.91: a read-only FUSE filesystem which transcodes FLAC audio files to MP3 when read
 sys-fs/mtd-utils 1.5.2 99999999: MTD userspace tools (NFTL, JFFS2, NAND, FTL, UBI)
@@ -17838,7 +17838,7 @@ sys-fs/rarfs 0.1.1-r1: Fuse module to mount uncompressed RAR archives
 sys-fs/reiser4progs 1.1.0 1.2.0: reiser4progs: mkfs, fsck, etc...
 sys-fs/reiserfs-defrag 0.2.2: Small defragmentation tool for reiserfs
 sys-fs/reiserfsprogs 3.6.24 3.6.25 3.6.26 3.6.27: Reiserfs Utilities
-sys-fs/safecopy 1.7: Data recovery tool to fault-tolerantly extract data from damaged (io-errors) devices or files
+sys-fs/safecopy 1.7: Tool for fault-tolerant data recovery from damaged (io-errors) devices or files
 sys-fs/scan-ffs 1.2: Recovers lost disklabel
 sys-fs/shake 0.999 1.0: defragmenter that runs in userspace while the system is used
 sys-fs/simple-mtpfs 0.1 0.3.0: Simple MTP fuse filesystem driver
@@ -17869,7 +17869,7 @@ sys-fs/yaffs2utils 0.2.9: tools for generating YAFFS images
 sys-fs/zerofree 1.0.1 1.0.3 1.0.4: Zero's out all free space on a filesystem
 sys-fs/zfs 0.6.5.4-r2 0.6.5.11 0.7.3 9999: Userland utilities for ZFS Linux kernel module
 sys-fs/zfs-kmod 0.6.5.4-r1 0.6.5.11 0.7.3 9999: Linux ZFS kernel module for sys-fs/zfs
-sys-kernel/aufs-sources 4.4.87-r1 4.4.95 4.4.96 4.4.97 4.4.98 4.9.49-r1 4.9.59 4.9.60 4.9.61 4.9.62 4.12.12 4.12.13 4.12.14 4.13.10 4.13.11 4.13.12 4.13.13: Full sources including the Gentoo patchset for the linux kernel tree and aufs4 support
+sys-kernel/aufs-sources 4.4.87-r1 4.4.95 4.4.96 4.4.97 4.4.98 4.9.49-r1 4.9.59 4.9.60 4.9.61 4.9.62 4.12.12 4.12.13 4.12.14 4.13.10 4.13.11 4.13.12 4.13.13: Full sources (incl. Gentoo patchset) for the linux kernel tree and aufs4 support
 sys-kernel/bliss-initramfs 6.8.3-r2 7.1.0 7.1.1: Boot your system's rootfs from ZFS, LVM, RAID, or a variety of other configs.
 sys-kernel/ck-sources 4.9.61 4.9.62 4.9.63 4.9.64 4.9.65 4.9.66 4.13.12 4.13.13 4.13.14 4.13.15 4.13.16 4.14.1 4.14.2 4.14.3: Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 4.14
 sys-kernel/cryptodev 1.7 1.9 9999: device that allows access to Linux kernel cryptographic drivers
@@ -17918,11 +17918,11 @@ sys-libs/lib-compat 1.4.2-r1 1.5: Compatibility C++ library for very old program
 sys-libs/lib-compat-loki 0.2-r1: Compatibility libc6 libraries for Loki games
 sys-libs/libaal 1.0.6 1.0.7 1.0.7-r1: library required by reiser4progs
 sys-libs/libapparmor 2.11.1: Library to support AppArmor userspace utilities
-sys-libs/libavc1394 0.5.3 0.5.4 0.5.4-r1: library for the 1394 Trade Association AV/C (Audio/Video Control) Digital Interface Command Set
+sys-libs/libavc1394 0.5.3 0.5.4 0.5.4-r1: library for the 1394 AV/C (Audio/Video Control) Digital Interface Command Set
 sys-libs/libblockdev 2.13 2.14: A library for manipulating block devices
 sys-libs/libcap 2.24-r2 2.25: POSIX 1003.1e capabilities
 sys-libs/libcap-ng 0.7.8: POSIX 1003.1e capabilities
-sys-libs/libchipcard 5.0.2: Libchipcard is a library for easy access to chip cards via chip card readers (terminals)
+sys-libs/libchipcard 5.0.2: Library for accessing chip cards via chip card readers (terminals)
 sys-libs/libcxx 3.7.1 3.8.1 3.9.0 3.9.1 4.0.1 5.0.0 5.0.9999 9999: New implementation of the C++ standard library, targeting C++11
 sys-libs/libcxxabi 3.9.0 3.9.1 4.0.1 5.0.0 5.0.9999 9999: Low level support for a standard C++ library
 sys-libs/libcxxrt 0.0_p20140322 0.0_p20150423-r1 0.0_p20160922 0.0_p20170515 9999: C++ Runtime from PathScale, FreeBSD and NetBSD
@@ -17932,7 +17932,7 @@ sys-libs/libhx 3.16 3.22 3.22-r1: Platform independent library providing basic s
 sys-libs/libieee1284 0.2.11-r4 0.2.11-r5 0.2.11-r6: Library to query devices using IEEE1284
 sys-libs/libixp 0.5_p20110208-r3: A stand-alone client/server 9P library including ixpc client
 sys-libs/libkudzu 1.2.57.1: Red Hat Hardware detection tools
-sys-libs/libmath++ 0.0.4-r1: template based math library, written in C++, for symbolic and numeric calculus applications
+sys-libs/libmath++ 0.0.4-r1: C++ Template math library, for symbolic and numeric calculus applications
 sys-libs/libnih 1.0.3-r3: Light-weight 'standard library' of C functions
 sys-libs/libomp 3.7.1 3.8.1 3.9.0 3.9.1 4.0.1 5.0.0 5.0.9999 9999: OpenMP runtime library for LLVM/clang compiler
 sys-libs/libosinfo 1.0.0 1.0.0-r1: GObject library for managing information about real and virtual OSes
@@ -17947,11 +17947,11 @@ sys-libs/libsmbios 2.3.0-r1 2.3.2 2.3.3: Provide access to (SM)BIOS information
 sys-libs/libspe2 2.2.80_p95-r1 2.3.0_p135: A wrapper library to adapt the JSRE SPU usage model to SPUFS
 sys-libs/libstatgrab 0.17 0.91: A tool to provide access to statistics about the system on which it's run
 sys-libs/libstdc++-v3 3.3.6-r1: Compatibility package for binaries linked against a pre gcc 3.4 libstdc++
-sys-libs/libstdc++-v3-bin 3.3.6: Compatibility package for running binaries linked against a pre gcc 3.4 libstdc++
+sys-libs/libstdc++-v3-bin 3.3.6: Compatibility package for running binaries linked against a <gcc-3.4 libstdc++
 sys-libs/libtermcap-compat 2.0.8-r2 2.0.8-r3 2.0.8-r4: Compatibility package for old termcap-based programs
 sys-libs/libudev-compat 186: Wrapper around libudev.so.1 for packages needing the old libudev.so.0
 sys-libs/libunwind 1.1-r1 1.2 1.2.1: Portable and efficient API to determine the call-chain of a program
-sys-libs/libutempter 1.1.6-r2: Library that allows non-privileged apps to write utmp (login) info, which need root access
+sys-libs/libutempter 1.1.6-r2: Library that allows non-privileged apps to write utmp (login) info
 sys-libs/libuuid 1.0.3: Portable uuid C library
 sys-libs/libvpd 2.1.3 2.2.4 2.2.5: Library implementation for listing vpds
 sys-libs/libxcrypt 2.0 2.4: A replacement for libcrypt with DES, MD5 and blowfish support
@@ -17975,7 +17975,7 @@ sys-libs/pinktrace 0.9.3: ptrace() easy wrapper library
 sys-libs/pwdb 0.62-r1: Password database
 sys-libs/readline 4.3_p5 5.2_p14 6.3_p8-r3 7.0_p3: Another cute console display library
 sys-libs/rvm 1.12 1.17-r1: Recoverable Virtual Memory (used by Coda)
-sys-libs/slang 2.3.0 2.3.1a: A multi-platform programmer's library designed to allow a developer to create robust software
+sys-libs/slang 2.3.0 2.3.1a: Multi-platform library designed to allow a developer to create robust software
 sys-libs/suacomp 0.6.14 9999: library wrapping the interix lib-c to make it less buggy
 sys-libs/system-config-base 1-r1: system-config-* layout package
 sys-libs/talloc 2.1.5 2.1.9 2.1.10: Samba talloc library
@@ -18293,7 +18293,7 @@ www-apache/mod_fastcgi_handler 0.6: A simple FastCGI handler module
 www-apache/mod_fcgid 2.3.9 2.3.9-r1: Binary-compatible alternative to mod_fastcgi with better process management
 www-apache/mod_flvx 0.0.1-r1: mod_flvx allows to seek inside FLV files for streaming purposes
 www-apache/mod_geoip2 1.2.7-r1: geoip module gets the country and city a request originated from
-www-apache/mod_gnutls 0.8.2-r1 0.8.3: mod_gnutls uses GnuTLS to provide SSL/TLS encryption for Apache2, similarly to mod_ssl
+www-apache/mod_gnutls 0.8.2-r1 0.8.3: mod_gnutls uses GnuTLS for SSL/TLS encryption in Apache2 (compare to mod_ssl)
 www-apache/mod_h2 1.4.7 1.5.6 1.10.10 9999: HTTP/2 module for Apache
 www-apache/mod_jk 1.2.42: JK module for connecting Tomcat and Apache using the ajp13 protocol
 www-apache/mod_ldap_userdir 1.1.19: Look up Apache ~user directories in an LDAP directory
@@ -18316,7 +18316,7 @@ www-apache/mod_vhost_ldap 2.4.0-r1: Store and configure Apache virtual hosts usi
 www-apache/mod_whatkilledus 2.01: Debug segmentation faults in Apache threads
 www-apache/mod_wsgi 4.5.13 4.5.17 4.5.21: An Apache2 module for running Python WSGI applications
 www-apache/mod_xml2enc 1.0.3 1.0.4: An Apache2 module to provide libxml2 encoding
-www-apache/mod_xsendfile 1.0_beta1: Apache2 module that processes X-SENDFILE headers registered by the original output handler
+www-apache/mod_xsendfile 1.0_beta1: Apache module that processes X-SENDFILE headers registered by the output handler
 www-apache/modsec-flameeyes 20130216 99999999: Flameeyes's Ruleset for ModSecurity
 www-apache/modsecurity-crs 2.2.6-r1 2.2.7 2.2.9 3.0.2: Core Rule Set for ModSecurity
 www-apache/mpm_itk 2.4.7_p4-r1: Run virtual hosts under separate users/groups
@@ -18328,7 +18328,7 @@ www-apps/airdcpp-webui 2.2.0 2.2.1: Web interface for airdcpp-webclient
 www-apps/ampache 3.8.3: PHP-based tool for managing,updating and playing audio files via a web interface
 www-apps/b2evolution 4.1.7: Multilingual multiuser multi-blog engine
 www-apps/baikal 0.2.7 0.3.5 0.4.4 0.4.6: Lightweight CalDAV+CardDAV server
-www-apps/blazeblogger 1.2.0 1.2.0-r1: simple-to-use, capable content management system for the cmdline producing static content
+www-apps/blazeblogger 1.2.0 1.2.0-r1: Simple, capable content management system for producing static content
 www-apps/blohg 0.13-r2 9999: A Mercurial (or Git) based blogging engine
 www-apps/blohg-tumblelog 0.2 9999: A blohg extension with reStructuredText directives to run a tumblelog
 www-apps/browser-config 1.1: A lightweight modular configurable http url handler/browser launcher
@@ -18369,7 +18369,7 @@ www-apps/kibana-bin 5.5.2 5.6.4 6.0.0: Analytics and search dashboard for Elasti
 www-apps/klaus 1.1.0 1.2.1: A simple, easy-to-set-up Git web viewer
 www-apps/liquid_feedback_core 2.2.3 2.2.6 3.0.4: Internet platforms for proposition development and decision making
 www-apps/liquid_feedback_frontend 2.2.2 2.2.7 3.0.6: Internet platforms for proposition development and decision making
-www-apps/lxr 0.9.8-r1: general purpose source code indexer and cross-referener with a web-based frontend
+www-apps/lxr 0.9.8-r1: general purpose source code indexer and cross-referener with web-based frontend
 www-apps/mediawiki 1.27.3: The MediaWiki wiki web application (as used on wikipedia.org)
 www-apps/metadot 6.1.6-r1 6.4.5.4-r2: Metadot is a CMS with file, page and link management, and collaboration features
 www-apps/mirmon 1.38-r4 2.10: Simple webapp to monitor the status of mirrors
@@ -18383,7 +18383,7 @@ www-apps/nanoc 4.6.4 4.7.14 4.8.10: nanoc is a simple but very flexible static s
 www-apps/nextcloud 11.0.4 11.0.5 12.0.2 12.0.3: Personal cloud that runs on your own server
 www-apps/nikola 7.8.8: A static website and blog generator
 www-apps/novnc 0.6.2 9999: noVNC is a VNC client implemented using HTML5 technologies
-www-apps/openwebstats 1.1: PHP stats application that reads Apache log files and imports the data to a MySQL database
+www-apps/openwebstats 1.1: PHP stats app that reads Apache logs and imports the data into a MySQL database
 www-apps/otrs 5.0.23: OTRS is an Open source Ticket Request System
 www-apps/owncloud 9.0.10 9.1.6 10.0.2 10.0.3: Web-based storage application where all your data is under your own control
 www-apps/ownpaste 0.2.2-r1 9999: Private pastebin (server-side implementation)
@@ -18457,7 +18457,7 @@ www-client/vivaldi 1.13.1008.32_p1 1.13.1008.34_p1: A new browser for our friend
 www-client/vivaldi-snapshot 1.14.1030.3_p1: A new browser for our friends
 www-client/w3m 0.5.3-r9: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r7 0.3.2_p24-r9: A variant of w3m with support for multiple character encodings
-www-client/weboob 0g 0h 9998 9999: Weboob (Web Outside of Browsers) provides several applications to interact with a lot of websites
+www-client/weboob 0g 0h 9998 9999: Consume lots of websites without a browser (Web Outside Of Browsers)
 www-misc/awstats 7.1_p20121017 7.4 7.5: AWStats is short for Advanced Web Statistics
 www-misc/bookmarksync 0.3.4-r2: bookmarksync synchronizes various browser bookmark files
 www-misc/fcgiwrap 1.1.0_pre20150419 1.1.0-r1 9999: Simple FastCGI wrapper for CGI scripts (CGI support for nginx)
@@ -18468,7 +18468,7 @@ www-misc/log-toolkit 0.9.6-r1: set of tools to manipulate and maintain webserver
 www-misc/mergelog 4.5-r2: A utility to merge apache logs in chronological order
 www-misc/monitorix 3.5.1 3.8.1-r1 3.9.0: A lightweight system monitoring tool
 www-misc/multisort 1.1-r1: Merges httpd logfiles in the Common Log Format
-www-misc/nx_util 0.52.1 0.53.1: Whitelist & Reports generation for Naxsi (Web Application Firewall module for Nginx)
+www-misc/nx_util 0.52.1 0.53.1: Whitelist & Reports generation for Naxsi (Web App Firewall module for Nginx)
 www-misc/profile-sync-daemon 5.45.1 6.31 9999: Symlinks and syncs browser profile dirs to RAM.
 www-misc/shellinabox 2.20-r1: Export command line tools to a web based terminal emulator
 www-misc/surl 0.7.1.1-r1: URL shortening command line application that supports various sites
@@ -18505,7 +18505,7 @@ www-servers/mongrel2 1.11.0 1.11.0-r1: A language agnostic web server focused on
 www-servers/monkeyd 1.6.9-r1 9999: A small, fast, and scalable web server
 www-servers/nginx 1.12.1 1.12.2 1.12.2-r1 1.13.3 1.13.4 1.13.5 1.13.6 1.13.6-r1 1.13.7: Robust, small and high performance http and reverse proxy server
 www-servers/ocsigenserver 2.8 9999: Ocaml-powered webserver and framework for dynamic web programming
-www-servers/pathod 0.10 0.11.1 0.12.0: A collection of pathological tools for testing and torturing HTTP clients and servers
+www-servers/pathod 0.10 0.11.1 0.12.0: A collection of tools for testing and torturing HTTP clients and servers
 www-servers/pound 2.6 2.7d 2.7f 2.7f-r1: A http/https reverse-proxy and load-balancer
 www-servers/pshs 0.3.2 9999: Pretty small HTTP server -- a command-line tool to share files
 www-servers/puma 3.6.2 3.9.1 3.10.0 3.11.0: a simple, fast, threaded, and highly concurrent HTTP 1.1 server for Ruby/Rack
@@ -18613,7 +18613,7 @@ x11-apps/xwud 1.0.4: image displayer for X
 x11-base/xorg-drivers 1.19 9999: Meta package containing deps on all xorg drivers
 x11-base/xorg-server 1.19.5 1.19.5-r1 9999: X.Org X servers
 x11-base/xorg-x11 7.4-r2: An X11 implementation maintained by the X.Org Foundation (meta package)
-x11-drivers/afb-ucode 1.3.11: Binary blob microcode for Elite3D framebuffers to use X, required by xf86-video-sunffb
+x11-drivers/afb-ucode 1.3.11: Binary blob microcode for Elite3D framebuffers, required by xf86-video-sunffb
 x11-drivers/nvidia-drivers 304.137 340.104 375.82 378.13-r1 381.22-r1 384.90 384.98 387.22 387.34: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-acecad 1.5.0: Acecad Flair input driver
 x11-drivers/xf86-input-aiptek 1.4.1 1.4.1-r1: Aiptek USB Digital Tablet Input Driver for Linux
