@@ -5,7 +5,7 @@ EAPI=5
 
 inherit eutils qt4-r2 toolchain-funcs
 
-DESCRIPTION="Programm for visualisation and processing of experimental and simulated NMR spectra"
+DESCRIPTION="Visualisation and processing of experimental and simulated NMR spectra"
 HOMEPAGE="https://sourceforge.net/projects/gsim/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
