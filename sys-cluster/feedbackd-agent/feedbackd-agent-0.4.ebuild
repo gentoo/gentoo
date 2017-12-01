@@ -3,7 +3,7 @@
 
 inherit eutils flag-o-matic
 
-DESCRIPTION="system for dynamic feedback of server loads in a Linux Virtual Server (LVS)-based cluster"
+DESCRIPTION="Dynamic feedback of server loads in a Linux Virtual Server (LVS)-based cluster"
 HOMEPAGE="http://ozlabs.org/~jk/projects/feedbackd/"
 SRC_URI="mirror://sourceforge/feedbackd/${P}.tar.gz"
 
