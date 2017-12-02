@@ -9,15 +9,21 @@
     <name>Net-Mail</name>
   </maintainer>
   <use>
-    <flag name="hcache">Enable header cache</flag>
-    <flag name="gpg">Enable support for <pkg>app-crypt/gpgme</pkg></flag>
-    <flag name="pop">Enable support for POP3</flag>
+    <flag name="berkdb">Enable <pkg>sys-libs/db</pkg> database backend
+      for header caching</flag>
+    <flag name="gdbm">Enable <pkg>sys-libs/gdbm</pkg> database backend
+      for header caching</flag>
+    <flag name="gpg">Enable support for <pkg>app-crypt/gpgme</pkg> to
+      sign/verify and encrypt/decrypt OpenPGP messages</flag>
+    <flag name="hcache">Enable header cache, one database backend needs
+      to be enabled</flag>
     <flag name="lmdb">Enable <pkg>dev-db/lmdb</pkg> database backend for
       header caching</flag>
     <flag name="notmuch">Enable support for <pkg>net-mail/notmuch</pkg></flag>
+    <flag name="pop">Enable support for POP3 mailboxes</flag>
     <flag name="sidebar">Enable the sidebar feature</flag>
-    <flag name="smime">Enable support for S/MIME</flag>
-    <flag name="smtp">Enable support for smtp</flag>
+    <flag name="smime">Enable support for S/MIME mailparts</flag>
+    <flag name="smtp">Enable support for direct SMTP delivery</flag>
     <flag name="tokyocabinet">Enable <pkg>dev-db/tokyocabinet</pkg>
       database backend for header caching</flag>
   </use>
