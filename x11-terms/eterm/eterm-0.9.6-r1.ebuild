@@ -2,14 +2,16 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools git-r3
 
 DESCRIPTION="A vt102 terminal emulator for X"
 HOMEPAGE="http://www.eterm.org/"
-EGIT_REPO_URI="https://git.enlightenment.org/apps/eterm.git"
+SRC_URI="
+	http://www.eterm.org/download/${P^}.tar.gz
+	!minimal? ( http://www.eterm.org/download/Eterm-bg-${PV}.tar.gz )"
 
 LICENSE="BSD"
 SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~ppc-macos ~x86-macos"
 IUSE="escreen minimal cpu_flags_x86_mmx cpu_flags_x86_sse2 unicode +utempter"
 
 RDEPEND="
@@ -27,10 +29,14 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 DOCS=( ChangeLog README ReleaseNotes bg/README.backgrounds )
+PATCHES=( "${FILESDIR}"/${P}-asm-gnu-stack.patch )
 
-src_prepare() {
-	default
-	eautoreconf
+S=${WORKDIR}/${P^}
+
+src_unpack() {
+	unpack ${P^}.tar.gz
+	cd "${S}" || die
+	use minimal || unpack Eterm-bg-${PV}.tar.gz
 }
 
 src_configure() {
