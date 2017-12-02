@@ -13,7 +13,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
 
-IUSE="+capmt +constcw +cwc dbus debug dvbcsa dvben50221 +dvb +ffmpeg hdhomerun +imagecache +inotify iptv libressl opus satip systemd +timeshift uriparser vpx x264 x265 xmltv zeroconf zlib"
+IUSE="+capmt +constcw +cwc dbus debug ddci dvbcsa dvben50221 +dvb +ffmpeg hdhomerun +imagecache +inotify iptv libressl opus satip systemd +timeshift uriparser vpx x264 x265 xmltv zeroconf zlib"
 
 RDEPEND="
 	virtual/libiconv
@@ -47,7 +47,10 @@ RDEPEND+="
 	dvb? ( media-tv/dtv-scan-tables )
 	xmltv? ( media-tv/xmltv )"
 
-REQUIRED_USE="dvbcsa? ( || ( capmt constcw cwc dvben50221 ) )"
+REQUIRED_USE="
+	dvbcsa? ( || ( capmt constcw cwc dvben50221 ) )
+	ddci? ( dvb dvben50221 )
+"
 
 # Some patches from:
 # https://github.com/rpmfusion/tvheadend
@@ -92,6 +95,7 @@ src_configure() {
 		$(use_enable cwc) \
 		$(use_enable dbus dbus_1) \
 		$(use_enable debug trace) \
+		$(use_enable ddci) \
 		$(use_enable dvb linuxdvb) \
 		$(use_enable dvbcsa) \
 		$(use_enable dvben50221) \
