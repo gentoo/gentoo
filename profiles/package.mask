@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (02 Dec 2017)
+# Depends on dead Qt 4. Dead upstream.
+# Masked for removal in 30 days. Bug #639252.
+dev-vcs/qsvn
+
 # Ulrich Müller <ulm@gentoo.org> (01 Dec 2017)
 # Major breakage (network access in upstream configure), bug #639438.
 dev-db/qt5-sqlcipher
