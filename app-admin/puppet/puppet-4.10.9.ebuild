@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-USE_RUBY="ruby21 ruby22 ruby23"
+USE_RUBY="ruby22 ruby23 ruby24"
 
 #RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -17,12 +17,14 @@ SRC_URI="http://downloads.puppetlabs.com/puppet/${P}.tar.gz"
 
 LICENSE="Apache-2.0 GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~ppc64"
 IUSE="augeas diff doc emacs experimental ldap rrdtool selinux shadow sqlite vim-syntax xemacs"
 RESTRICT="test"
 
 ruby_add_rdepend "
-	dev-ruby/hiera
+	>=dev-ruby/gettext-setup-0.10:0
+	>=dev-ruby/hiera-2.0
+	>=dev-ruby/locale-2.1
 	>=dev-ruby/rgen-0.6.5
 	dev-ruby/json:=
 	>=dev-ruby/facter-3.0.0
