@@ -3,7 +3,7 @@
 
 EAPI=5
 
-DESCRIPTION="esmtp is a user configurable relay-only Mail Transfer Agent (MTA) with a sendmail compatible syntax"
+DESCRIPTION="User configurable relay-only Mail Transfer Agent with a sendmail-like syntax"
 HOMEPAGE="http://esmtp.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 

@@ -1,7 +1,7 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-DESCRIPTION="A simple spamassassin-like script for virus scanning (through clamav) and filtering e-mail messages"
+DESCRIPTION="Simple spamassassin-like script for virus scanning and filtering e-mail messages"
 HOMEPAGE="http://jameslick.com/clamassassin/"
 SRC_URI="http://jameslick.com/clamassassin/${P}.tar.gz"
 LICENSE="BSD"
@@ -34,5 +34,5 @@ src_compile() {
 
 src_install() {
 	dobin clamassassin
-	dodoc CHANGELOG LICENSE README
+	dodoc CHANGELOG README
 }

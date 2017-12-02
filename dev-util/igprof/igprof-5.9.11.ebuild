@@ -5,7 +5,7 @@ EAPI=5
 
 inherit cmake-utils
 
-DESCRIPTION="Ignominous Profiler for analysing application memory and performance characteristics"
+DESCRIPTION="Ignominous Profiler for analysing application memory and performance"
 HOMEPAGE="http://igprof.org"
 SRC_URI="https://github.com/ktf/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 

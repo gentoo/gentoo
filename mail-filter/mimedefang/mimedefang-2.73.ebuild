@@ -5,7 +5,7 @@ EAPI=4
 
 inherit eutils user
 
-DESCRIPTION="Antispam, antivirus and other customizable filtering for MTAs with Milter support"
+DESCRIPTION="Antispam, antivirus and other customizable filters for MTAs with Milter support"
 HOMEPAGE="http://www.mimedefang.org/"
 SRC_URI="http://www.mimedefang.org/static/${P}.tar.gz"
 LICENSE="GPL-2"

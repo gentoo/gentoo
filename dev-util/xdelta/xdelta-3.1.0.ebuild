@@ -9,7 +9,7 @@ inherit autotools python-any-r1
 
 MY_P=xdelta3-${PV}
 
-DESCRIPTION="a binary diff and differential compression tools. VCDIFF (RFC 3284) delta compression"
+DESCRIPTION="Computes changes between binary or text files and creates deltas"
 HOMEPAGE="http://xdelta.org/"
 SRC_URI="https://github.com/jmacd/xdelta-gpl/releases/download/v${PV}/${MY_P}.tar.gz"
 
