@@ -2862,6 +2862,7 @@ dev-ada/gps 2017: The GNAT Programming Studio
 dev-ada/gps-bin 2016: The GNAT Programming Studio
 dev-ada/gtkada 2016 2017: A complete Ada graphical toolkit
 dev-ada/libadalang 2017: high performance semantic engine for the Ada programming language
+dev-ada/libgpr 2016 2017: Multi-Language Management
 dev-ada/xmlada 2016 2017: Set of modules that provide a simple manipulation of XML streams
 dev-cpp/ETL 0.04.15: ETL is a multi-platform class and template library
 dev-cpp/antlr-cpp 2.7.7 2.7.7-r1 3.5.2 3.5.2-r1: The ANTLR 3 C++ Runtime
