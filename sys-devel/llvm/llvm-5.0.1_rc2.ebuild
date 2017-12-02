@@ -8,15 +8,13 @@ EAPI=6
 CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils eapi7-ver flag-o-matic git-r3 multilib-minimal \
+inherit cmake-utils eapi7-ver flag-o-matic multilib-minimal \
 	pax-utils python-any-r1 toolchain-funcs
 
 DESCRIPTION="Low Level Virtual Machine"
 HOMEPAGE="https://llvm.org/"
-SRC_URI=""
-EGIT_REPO_URI="https://git.llvm.org/git/llvm.git
-	https://github.com/llvm-mirror/llvm.git"
-EGIT_BRANCH="release_50"
+SRC_URI="http://prereleases.llvm.org/${PV/_//}/${P/_/}.src.tar.xz"
+#	!doc? ( https://dev.gentoo.org/~mgorny/dist/llvm/llvm-manpages-${PV}.tar.bz2 )"
 
 # Keep in sync with CMakeLists.txt
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
@@ -66,6 +64,8 @@ PDEPEND="sys-devel/llvm-common
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	|| ( ${ALL_LLVM_TARGETS[*]} )"
+
+S=${WORKDIR}/${P/_/}.src
 
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
@@ -224,6 +224,13 @@ multilib_src_install_all() {
 		LDPATH="$( IFS=:; echo "${LLVM_LDPATHS[*]}" )"
 _EOF_
 	doenvd "${T}/10llvm-${revord}"
+
+	# install pre-generated manpages
+	if ! use doc; then
+		# (doman does not support custom paths)
+		insinto "/usr/lib/llvm/${SLOT}/share/man/man1"
+		doins "${WORKDIR}/llvm-manpages-${PV}/llvm"/*.1
+	fi
 
 	docompress "/usr/lib/llvm/${SLOT}/share/man"
 }

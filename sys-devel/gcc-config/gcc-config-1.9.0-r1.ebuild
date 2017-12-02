@@ -18,7 +18,9 @@ IUSE=""
 RDEPEND=">=sys-apps/gentoo-functions-0.10"
 
 src_compile() {
-	emake CC="$(tc-getCC)"
+	emake CC="$(tc-getCC)" \
+		PV="${PV}" \
+		SUBLIBDIR="$(get_libdir)"
 }
 
 src_install() {
