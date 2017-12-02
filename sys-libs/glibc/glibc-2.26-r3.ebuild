@@ -34,8 +34,8 @@ SRC_URI+=" multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-${GCC_BOO
 
 IUSE="audit caps debug gd hardened multilib nscd selinux systemtap profile suid vanilla crosscompile_opts_headers-only"
 
-# Min kernel version nptl requires
-: ${NPTL_KERN_VER:="2.6.32"}
+# Min kernel version glibc requires
+: ${NPTL_KERN_VER:="3.2.0"}
 
 # Here's how the cross-compile logic breaks down ...
 #  CTARGET - machine that will target the binaries
