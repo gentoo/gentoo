@@ -40,6 +40,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.8.13-tinfo.patch
+	"${FILESDIR}"/${PN}-4.8.19-selected-size.patch
 )
 
 S=${WORKDIR}/${MY_P}
