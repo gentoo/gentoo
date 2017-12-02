@@ -27,7 +27,7 @@ app-accessibility/perlbox-voice 0.09-r2: A voice enabled application to bring yo
 app-accessibility/pidgin-festival 2.4: A plugin which enables text-to-speech output of conversations using festival
 app-accessibility/pocketsphinx 0.8: Speaker-independent large vocabulary with continuous speech recognizer
 app-accessibility/powiedz 1.0-r2: Polish speech synthesizer based on rsynth
-app-accessibility/simon 0.4.1 0.4.90: Open-source speech recognition program for replacing mouse and keyboard
+app-accessibility/simon 0.4.1 0.4.90-r1: Open-source speech recognition program for replacing mouse and keyboard
 app-accessibility/sound-icons 0.1: a collection of Sound Icons for speech-dispatcher
 app-accessibility/speech-dispatcher 0.8.1 0.8.3 0.8.7: Speech synthesis interface
 app-accessibility/speech-tools 2.1-r2 2.1-r3 2.1-r4: Speech tools for Festival Text to Speech engine
@@ -12154,7 +12154,7 @@ kde-frameworks/kcoreaddons 5.37.0 5.40.0: Framework for solving common problems 
 kde-frameworks/kcrash 5.37.0 5.40.0: Framework for intercepting and handling application crashes
 kde-frameworks/kdbusaddons 5.37.0 5.40.0: Framework for registering services and applications per freedesktop standards
 kde-frameworks/kdeclarative 5.37.0 5.40.0: Framework providing integration of QML and KDE work spaces
-kde-frameworks/kded 5.37.0 5.40.0: Central daemon of KDE workspaces
+kde-frameworks/kded 5.37.0 5.40.0-r1: Central daemon of KDE workspaces
 kde-frameworks/kdelibs 4.14.37: Libraries needed for programs by KDE
 kde-frameworks/kdelibs-env 4.14.3: Environment setting required for all KDELibs4 apps to run
 kde-frameworks/kdelibs4support 5.37.0 5.40.0: Framework easing the development transition from KDELibs 4 to KF 5
