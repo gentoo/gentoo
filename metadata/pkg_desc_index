@@ -4663,7 +4663,7 @@ dev-libs/boehm-gc 6.8 7.1-r1 7.2d 7.2d-r1 7.2e 7.4.0 7.4.2 7.6.0: The Boehm-Deme
 dev-libs/boost 1.62.0-r1 1.63.0 1.65.0: Boost Libraries for C++
 dev-libs/boost-mpl-cartesian_product 20161205: an extension to the Boost.MPL library
 dev-libs/boost-numpy 9999: Boost.Python interface for NumPy
-dev-libs/botan 1.10.17 2.3.0: A C++ crypto library
+dev-libs/botan 1.10.17 2.3.0 9999: A C++ crypto library
 dev-libs/btparser 0.24 0.25 0.26: Parser and analyzer for backtraces produced by GDB
 dev-libs/busybee 0.5.2 0.6.0 0.7.0: A messaging abstraction on top of TCP sockets used in HyperDex
 dev-libs/c-blosc 1.3.2 1.3.5 1.5.3 1.11.1 1.11.2: Blocking, shuffling and lossless compression library
