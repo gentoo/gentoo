@@ -1,5 +1,5 @@
---- probe.c.old	2010-01-13 12:15:32.000000000 +0100
-+++ probe.c	2010-01-13 12:16:44.000000000 +0100
+--- a/probe.c
++++ b/probe.c
 @@ -354,7 +354,7 @@
  	int drivenum = event.detail.logstatchange.logicaldrivenumber;
  	logdrvs[drivenum].state.state = event.detail.logstatchange.newlogicaldrivestate;
