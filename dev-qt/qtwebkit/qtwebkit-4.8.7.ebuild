@@ -20,7 +20,7 @@ DEPEND="
 	~dev-qt/qtxmlpatterns-${PV}[aqua=,debug=,${MULTILIB_USEDEP}]
 	>=x11-libs/libX11-1.5.0-r1[${MULTILIB_USEDEP}]
 	>=x11-libs/libXrender-0.9.7-r1[${MULTILIB_USEDEP}]
-	icu? ( dev-libs/icu:=[${MULTILIB_USEDEP}] )
+	icu? ( <dev-libs/icu-59:=[${MULTILIB_USEDEP}] )
 "
 RDEPEND="${DEPEND}"
 
