@@ -19,6 +19,7 @@ RDEPEND="
 	dev-python/pytest-fixture-config[${PYTHON_USEDEP}]
 	dev-python/pytest-shutil[${PYTHON_USEDEP}]
 	dev-python/pytest[${PYTHON_USEDEP}]
+	dev-python/virtualenv[${PYTHON_USEDEP}]
 "
 
 DEPEND="
