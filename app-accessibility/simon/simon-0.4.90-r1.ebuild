@@ -3,8 +3,6 @@
 
 EAPI=6
 
-KDE_LINGUAS="ast bs ca ca@valencia cs da de el en_GB es et fa fi fr ga gl
-hu ia ja kk lt mr nds nl pl pt pt_BR sk sl sv tr ug uk zh_CN zh_TW"
 SQL_REQUIRED="always"
 inherit kde4-base
 
@@ -21,7 +19,7 @@ RDEPEND="
 	media-libs/alsa-lib
 	x11-libs/libX11
 	x11-libs/libXtst
-	x11-libs/qwt:6[qt4(+)]
+	x11-libs/qwt:6[qt4]
 	libsamplerate? ( media-libs/libsamplerate )
 	opencv? ( media-libs/opencv )
 	sphinx? (

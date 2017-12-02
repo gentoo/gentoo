@@ -27,6 +27,8 @@ DEPEND="${RDEPEND}
 	man? ( $(add_frameworks_dep kdoctools) )
 "
 
+PATCHES=( "${FILESDIR}/${P}-obsolete-dbus-calls.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package man KF5DocTools)
