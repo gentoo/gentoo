@@ -1,9 +1,9 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=6
 
-inherit eutils autotools
+inherit autotools
 
 DESCRIPTION="Run real-mode video BIOS code to alter hw state (i.e. reinitialize video card)"
 HOMEPAGE="http://www.codon.org.uk/~mjg59/vbetool/"
@@ -14,13 +14,17 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-DEPEND="sys-libs/zlib
+RDEPEND="
+	sys-libs/zlib
 	sys-apps/pciutils
 	>=dev-libs/libx86-1.1-r1"
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
+
+PATCHES=( "${FILESDIR}"/${PN}-1.0-build.patch )
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.0-build.patch
+	default
+
 	eaclocal # temp fix for #439614
 	eautoreconf
 }

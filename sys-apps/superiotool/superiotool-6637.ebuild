@@ -1,14 +1,13 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=6
 
-inherit toolchain-funcs eutils
+inherit toolchain-funcs
 
-if [[ ${PV} == "99999999" ]] ; then
+if [[ ${PV} == *99999999 ]] ; then
 	ESVN_REPO_URI="svn://coreboot.org/coreboot/trunk/util/${PN}"
 	inherit subversion
-	SRC_URI=""
 else
 	SRC_URI="mirror://gentoo/${P}.tar.xz"
 	KEYWORDS="~amd64 ~x86"
@@ -26,6 +25,8 @@ DEPEND="${RDEPEND}
 	app-arch/xz-utils"
 
 src_prepare() {
+	default
+
 	sed -i \
 		-e 's:-Werror ::' \
 		-e 's:-O2 ::' \
@@ -39,9 +40,4 @@ src_compile() {
 	emake \
 		CC="$(tc-getCC)" \
 		SVNDEF="-D'SUPERIOTOOL_VERSION=\"${ESVN_WC_REVISION}\"'"
-}
-
-src_install() {
-	emake install DESTDIR="${D}"
-	dodoc README
 }
