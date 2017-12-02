@@ -3653,14 +3653,16 @@ mail-client/evolution:ldap - Enable support for fetching contacts from an LDAP o
 mail-client/evolution:spamassassin - Build mail-filter/spamassassin plugin
 mail-client/evolution:weather - Enable optional weather calendar support
 mail-client/mail-notification:sylpheed - Enable support for MH mailboxes used by mail-client/sylpheed
-mail-client/mutt:gpg - Enable support for app-crypt/gpgme
-mail-client/mutt:hcache - Enable header cache
+mail-client/mutt:berkdb - Enable sys-libs/db database backend for header caching
+mail-client/mutt:gdbm - Enable sys-libs/gdbm database backend for header caching
+mail-client/mutt:gpg - Enable support for app-crypt/gpgme to sign/verify and encrypt/decrypt OpenPGP messages
+mail-client/mutt:hcache - Enable header cache, one database backend needs to be enabled
 mail-client/mutt:lmdb - Enable dev-db/lmdb database backend for header caching
 mail-client/mutt:notmuch - Enable support for net-mail/notmuch
-mail-client/mutt:pop - Enable support for POP3
+mail-client/mutt:pop - Enable support for POP3 mailboxes
 mail-client/mutt:sidebar - Enable the sidebar feature
-mail-client/mutt:smime - Enable support for S/MIME
-mail-client/mutt:smtp - Enable support for smtp
+mail-client/mutt:smime - Enable support for S/MIME mailparts
+mail-client/mutt:smtp - Enable support for direct SMTP delivery
 mail-client/mutt:tokyocabinet - Enable dev-db/tokyocabinet database backend for header caching
 mail-client/nail:kerberos - If network is enabled, this adds support for GSSAPI login on IMAP through virtual/krb5.
 mail-client/nail:net - Enable support for network protocols (POP, IMAP and SMTP). If you only need to send mail with the local Transport Agent, disabling this will get you support for only /usr/sbin/sendmail call.
