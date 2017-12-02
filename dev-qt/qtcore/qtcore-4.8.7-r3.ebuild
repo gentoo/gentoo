@@ -16,7 +16,7 @@ DEPEND="
 	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 	glib? ( dev-libs/glib:2[${MULTILIB_USEDEP}] )
 	iconv? ( >=virtual/libiconv-0-r2[${MULTILIB_USEDEP}] )
-	icu? ( dev-libs/icu:=[${MULTILIB_USEDEP}] )
+	icu? ( <dev-libs/icu-59:=[${MULTILIB_USEDEP}] )
 	ssl? (
 		!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0[${MULTILIB_USEDEP}] )
 		libressl? ( dev-libs/libressl:=[${MULTILIB_USEDEP}] )
