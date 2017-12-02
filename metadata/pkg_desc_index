@@ -9996,7 +9996,7 @@ dev-ruby/sass-rails 4.0.5 5.0.6 5.0.6-r1 5.0.7: Official Ruby-on-Rails Integrati
 dev-ruby/sawyer 0.8.1: Secret User Agent of HTTP
 dev-ruby/sdoc 0.4.1 0.4.2: rdoc generator html with javascript search index
 dev-ruby/seed-fu 2.3.6: Advanced seed data handling for Rails
-dev-ruby/selenium-webdriver 2.53.4-r1 3.4.3 3.4.4 3.5.1 3.5.2 3.6.0 3.7.0: This gem provides Ruby bindings for WebDriver
+dev-ruby/selenium-webdriver 2.53.4-r1 3.5.1 3.5.2 3.6.0 3.7.0 3.8.0: This gem provides Ruby bindings for WebDriver
 dev-ruby/semantic_puppet 0.1.3 1.0.0 1.0.1-r1: Library of tools for working with Semantic Versions and module dependencies
 dev-ruby/semver2 3.4.2: maintain versions as per http://semver.org
 dev-ruby/serialport 1.3.1: a library for serial port (rs232) access in ruby
@@ -10421,7 +10421,7 @@ dev-util/cucumber 1.3.20-r1 2.4.0-r1 3.0.1: Executable feature scenarios
 dev-util/cucumber-core 1.5.0 3.0.0 3.1.0: Executable feature scenarios
 dev-util/cucumber-expressions 4.0.3 4.0.4: a simpler alternative to Regular Expressions
 dev-util/cucumber-rails 1.4.5 1.5.0: Executable feature scenarios for Rails
-dev-util/cucumber-tag_expressions 1.0.1 1.1.0: Cucumber tag expressions for ruby
+dev-util/cucumber-tag_expressions 1.0.1 1.1.0 1.1.1: Cucumber tag expressions for ruby
 dev-util/cucumber-wire 0.0.1: Executable feature scenarios
 dev-util/cunit 2.1_p2-r1 2.1_p3: C Unit Test Framework
 dev-util/cutils 1.6-r4: C language utilities
