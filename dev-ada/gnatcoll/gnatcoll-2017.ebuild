@@ -34,7 +34,7 @@ RDEPEND="dev-lang/gnat-gpl:6.3.0
 	postgresql? ( dev-db/postgresql:* )
 	sqlite? ( dev-db/sqlite )
 	projects? (
-		>=dev-ada/gprbuild-2017[gnat_2017,shared?,static?]
+		>=dev-ada/libgpr-2017[gnat_2017,shared?,static]
 	)"
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[gnat_2017]"

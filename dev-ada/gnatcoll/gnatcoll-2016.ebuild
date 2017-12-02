@@ -35,7 +35,7 @@ RDEPEND="gnat_2016? ( dev-lang/gnat-gpl:4.9.4 )
 	postgresql? ( dev-db/postgresql:* )
 	sqlite? ( dev-db/sqlite )
 	projects? (
-		=dev-ada/gprbuild-2016[gnat_2016=,gnat_2017=,shared?,static?]
+		=dev-ada/libgpr-2016[gnat_2016=,gnat_2017=,shared?,static?]
 	)"
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[gnat_2016=,gnat_2017=]"
