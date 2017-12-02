@@ -32,7 +32,7 @@ DEPEND="
 	>=dev-python/snakeoil-0.6.5[${PYTHON_USEDEP}]
 "
 RDEPEND="
-	>=dev-python/pydecomp-0.1[${PYTHON_USEDEP}]
+	>=dev-python/pydecomp-0.2[${PYTHON_USEDEP}]
 	app-arch/lbzip2
 	app-crypt/shash
 	!x86-fbsd? ( || ( app-arch/tar[xattr] app-arch/libarchive[xattr] ) )
