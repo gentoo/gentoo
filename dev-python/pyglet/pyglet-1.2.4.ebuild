@@ -21,7 +21,8 @@ RDEPEND="
 	alsa? ( media-libs/alsa-lib[alisp] )
 	gtk? ( x11-libs/gtk+:2 )
 	openal? ( media-libs/openal )"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-python/setuptools[${PYTHON_USEDEP}]"
 #	ffmpeg? ( media-libs/avbin-bin )
 
 # pyglet.gl.glx_info.GLXInfoException: pyglet requires an X server with GLX
