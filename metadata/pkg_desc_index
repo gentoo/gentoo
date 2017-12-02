@@ -5287,7 +5287,7 @@ dev-ml/lablgl 1.05-r1: Objective CAML interface for OpenGL
 dev-ml/lablgtk 2.18.5: Objective CAML interface for Gtk+2
 dev-ml/labltk 8.06.2 8.06.3: OCaml interface to the Tcl/Tk GUI framework
 dev-ml/lambda-term 1.11: A cross-platform library for manipulating the terminal
-dev-ml/llvm-ocaml 4.0.1 5.0.0 5.0.9999 9999: OCaml bindings for LLVM
+dev-ml/llvm-ocaml 4.0.1 5.0.0 5.0.1_rc2 5.0.9999 9999: OCaml bindings for LLVM
 dev-ml/logs 0.6.2: Logging infrastructure for OCaml
 dev-ml/lwt 3.0.0 3.1.0: Cooperative light-weight thread library for OCaml
 dev-ml/lwt_glib 1.0.1: GLib integration for Lwt
@@ -7466,7 +7466,7 @@ dev-python/cheetah-docs 0.9.16_alpha1: Documentation for Cheetah templates
 dev-python/cherrypy 3.8.0: CherryPy is a pythonic, object-oriented HTTP framework
 dev-python/cherrytemplate 1.0.0-r1: Easy and powerful templating module for Python
 dev-python/chump 1.5.1 1.5.2: API wrapper for Pushover
-dev-python/clang-python 4.0.1 5.0.0 5.0.9999 9999: Python bindings for sys-devel/clang
+dev-python/clang-python 4.0.1 5.0.0 5.0.1_rc2 5.0.9999 9999: Python bindings for sys-devel/clang
 dev-python/cli_helpers 0.2.0 1.0.0 9999: Python helpers for common CLI tasks
 dev-python/cliapp 1.20140315 1.20150305 1.20160724-r1: Framework for Unix-like command line programs
 dev-python/click 6.6 6.7: A Python package for creating beautiful command line interfaces
@@ -7966,7 +7966,7 @@ dev-python/libwnck-python 2.32.0-r1: Python bindings for the libwnck library
 dev-python/libzilla 1.3: Library for managing Bugzilla bug reports from the CLI
 dev-python/line_profiler 1.0 1.0-r1 2.0 9999: Line-by-line profiler
 dev-python/linecache2 1.0.0: Backports of the linecache module
-dev-python/lit 3.9.0 4.0.1 5.0.0 5.0.9999 9999: A stand-alone install of the LLVM suite testing tool
+dev-python/lit 3.9.0 4.0.1 5.0.0 5.0.1_rc2 5.0.9999 9999: A stand-alone install of the LLVM suite testing tool
 dev-python/livereload 2.3.2 2.4.0 2.4.1: Python LiveReload is an awesome tool for web developers
 dev-python/llfuse 1.2 1.3 1.3.2: Python bindings for the low-level FUSE API
 dev-python/llvmlite 0.12.1 0.16.0 0.19.0 0.20.0: Python wrapper around the llvm C++ library
@@ -10533,7 +10533,7 @@ dev-util/kyua 0.13-r1: Testing framework for infrastructure software
 dev-util/lcov 1.9-r1 1.11 1.13-r1: A graphical front-end for GCC's coverage testing tool gcov
 dev-util/leaktracer 2.4-r3: trace and analyze memory leaks in C++ programs
 dev-util/linklint 2.3.5: A Perl program that checks links on web sites
-dev-util/lldb 4.0.1 5.0.0 5.0.9999 9999: The LLVM debugger
+dev-util/lldb 4.0.1 5.0.0 5.0.1_rc2 5.0.9999 9999: The LLVM debugger
 dev-util/lockrun 20120508 20120508-r1: Lockrun - runs cronjobs with overrun protection
 dev-util/lsuio 0.2.0: list available userspace I/O (UIO) devices
 dev-util/ltrace 0.7.2 0.7.3 0.7.3_p4: trace library calls made at runtime
@@ -17627,8 +17627,8 @@ sys-devel/bison 1.875d 2.4.3 2.7.1 3.0.4-r1: A general-purpose (yacc-compatible)
 sys-devel/bmake 20170421 20170510 20170812: NetBSD's portable make
 sys-devel/boost-m4 0.4 0.4-r1 0.4_p20160328: Another set of autoconf macros for compiling against boost
 sys-devel/byfl 1.4-r1 1.5 9999: Compiler-based Application Analysis
-sys-devel/clang 3.4.2-r100 3.5.2-r100 3.6.2-r100 3.7.1-r100 3.9.1-r100 4.0.1 5.0.0 5.0.9999 9999: C language family frontend for LLVM
-sys-devel/clang-runtime 3.9.0 3.9.1 4.0.1 5.0.0 5.0.9999 9999: Meta-ebuild for clang runtime libraries
+sys-devel/clang 3.4.2-r100 3.5.2-r100 3.6.2-r100 3.7.1-r100 3.9.1-r100 4.0.1 5.0.0 5.0.1_rc2 5.0.9999 9999: C language family frontend for LLVM
+sys-devel/clang-runtime 3.9.0 3.9.1 4.0.1 5.0.0 5.0.1_rc2 5.0.9999 9999: Meta-ebuild for clang runtime libraries
 sys-devel/cons 2.2.0 2.3.0: Extensible perl-based build utility
 sys-devel/crossdev 20151026-r1 20160602 20160602-r1 20171119 99999999: Gentoo Cross-toolchain generator
 sys-devel/ct-ng 1.22.0 1.23.0: crosstool-ng is a tool to build cross-compiling toolchains
@@ -17638,7 +17638,7 @@ sys-devel/dwz 0.9: DWARF optimization and duplicate removal tool
 sys-devel/flex 2.6.1 2.6.3 2.6.3-r1 2.6.4 2.6.4-r1: The Fast Lexical Analyzer
 sys-devel/gcc 2.95.3-r10 3.3.6-r1 3.4.6-r2 4.0.4 4.1.2 4.2.4-r1 4.3.6-r1 4.4.7 4.5.4 4.6.4 4.7.4 4.8.5 4.9.4 5.4.0-r3 6.3.0 6.4.0 7.2.0: The GNU Compiler Collection
 sys-devel/gcc-apple 4.2.1_p5666-r2: Apple branch of the GNU Compiler Collection, Developer Tools 4.0
-sys-devel/gcc-config 1.7.3 1.8 1.8-r1 1.9.0: Utility to manage compilers
+sys-devel/gcc-config 1.7.3 1.8 1.8-r1 1.9.0-r1: Utility to manage compilers
 sys-devel/gdb 7.9.1 7.10.1 7.12.1 8.0 8.0.1 9999: GNU debugger
 sys-devel/gdb-apple 768-r1 966 1461 1752: Apple branch of the GNU Debugger, Developer Tools 4.3
 sys-devel/gettext 0.19.8.1: GNU locale utilities
@@ -17647,9 +17647,9 @@ sys-devel/heirloom-devtools 070527-r2 999999: Original UNIX development tools
 sys-devel/icecream 0.9.7-r1 1.0.0-r1 1.0.0-r2: Distributed compiling of C(++) code across several machines; based on distcc
 sys-devel/kgcc64 4.1.2 4.2.4 4.3.5 4.4.5 4.4.6 4.5.3 4.5.4 4.6.4 4.7.3 4.7.4 4.8.3 4.8.5 4.9.4 5.4.0 6.3.0 6.4.0 7.2.0: 64bit kernel compiler
 sys-devel/libtool 2.4.6-r2 2.4.6-r3 2.4.6-r4 9999: A shared library tool for developers
-sys-devel/lld 4.0.1 5.0.0 5.0.9999 9999: The LLVM linker (link editor)
-sys-devel/llvm 3.4.2-r100 3.5.2-r100 3.6.2-r100 3.7.1-r3 3.9.1-r1 4.0.1 5.0.0 5.0.9999 9999: Low Level Virtual Machine
-sys-devel/llvm-common 4.0.1 5.0.0 5.0.9999 9999: Common files shared between multiple slots of LLVM
+sys-devel/lld 4.0.1 5.0.0 5.0.1_rc2 5.0.9999 9999: The LLVM linker (link editor)
+sys-devel/llvm 3.4.2-r100 3.5.2-r100 3.6.2-r100 3.7.1-r3 3.9.1-r1 4.0.1-r1 5.0.0 5.0.1_rc2 5.0.9999 9999: Low Level Virtual Machine
+sys-devel/llvm-common 4.0.1 5.0.0 5.0.1_rc2 5.0.9999 9999: Common files shared between multiple slots of LLVM
 sys-devel/llvmgold 4 5 6: LLVMgold plugin symlink for autoloading
 sys-devel/m4 1.4.17 1.4.18: GNU macro processor
 sys-devel/make 3.80-r4 3.81-r2 3.82-r4 4.0-r1 4.1-r1 4.2.1 4.2.1-r1: Standard tool to compile source trees
@@ -17897,8 +17897,8 @@ sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/zen-sources 3.8.9999 3.9.9999 3.10.9999 3.11.9999 3.12.9999 3.13.9999: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
 sys-libs/binutils-libs 2.25.1-r2 2.27 2.28.1 2.29.1-r1: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
-sys-libs/compiler-rt 4.0.1 5.0.0 5.0.9999 9999: Compiler runtime library for clang (built-in part)
-sys-libs/compiler-rt-sanitizers 4.0.1 5.0.0 5.0.9999 9999: Compiler runtime libraries for clang (sanitizers & xray)
+sys-libs/compiler-rt 4.0.1 5.0.0 5.0.1_rc2 5.0.9999 9999: Compiler runtime library for clang (built-in part)
+sys-libs/compiler-rt-sanitizers 4.0.1 5.0.0 5.0.1_rc2 5.0.9999 9999: Compiler runtime libraries for clang (sanitizers & xray)
 sys-libs/cracklib 2.9.6-r1: Password Checking Library
 sys-libs/csu 79 85: Darwin Csu (crt1.o) - Mac OS X 10.10 version
 sys-libs/cygwin-crypt 1.4: Cygwin Encryption/Decryption utility and library
@@ -17923,8 +17923,8 @@ sys-libs/libblockdev 2.13 2.14: A library for manipulating block devices
 sys-libs/libcap 2.24-r2 2.25: POSIX 1003.1e capabilities
 sys-libs/libcap-ng 0.7.8: POSIX 1003.1e capabilities
 sys-libs/libchipcard 5.0.2: Library for accessing chip cards via chip card readers (terminals)
-sys-libs/libcxx 3.7.1 3.8.1 3.9.0 3.9.1 4.0.1 5.0.0 5.0.9999 9999: New implementation of the C++ standard library, targeting C++11
-sys-libs/libcxxabi 3.9.0 3.9.1 4.0.1 5.0.0 5.0.9999 9999: Low level support for a standard C++ library
+sys-libs/libcxx 3.7.1 3.8.1 3.9.0 3.9.1 4.0.1 5.0.0 5.0.1_rc2 5.0.9999 9999: New implementation of the C++ standard library, targeting C++11
+sys-libs/libcxxabi 3.9.0 3.9.1 4.0.1 5.0.0 5.0.1_rc2 5.0.9999 9999: Low level support for a standard C++ library
 sys-libs/libcxxrt 0.0_p20140322 0.0_p20150423-r1 0.0_p20160922 0.0_p20170515 9999: C++ Runtime from PathScale, FreeBSD and NetBSD
 sys-libs/libfaketime 0.9.6-r1 0.9.6-r2 0.9.7: Report faked system time to programs
 sys-libs/libhugetlbfs 2.18 2.19 2.19-r1 2.20: easy hugepage access
@@ -17934,7 +17934,7 @@ sys-libs/libixp 0.5_p20110208-r3: A stand-alone client/server 9P library includi
 sys-libs/libkudzu 1.2.57.1: Red Hat Hardware detection tools
 sys-libs/libmath++ 0.0.4-r1: C++ Template math library, for symbolic and numeric calculus applications
 sys-libs/libnih 1.0.3-r3: Light-weight 'standard library' of C functions
-sys-libs/libomp 3.7.1 3.8.1 3.9.0 3.9.1 4.0.1 5.0.0 5.0.9999 9999: OpenMP runtime library for LLVM/clang compiler
+sys-libs/libomp 3.7.1 3.8.1 3.9.0 3.9.1 4.0.1 5.0.0 5.0.1_rc2 5.0.9999 9999: OpenMP runtime library for LLVM/clang compiler
 sys-libs/libosinfo 1.0.0 1.0.0-r1: GObject library for managing information about real and virtual OSes
 sys-libs/libraw1394 2.1.0-r1 2.1.1 2.1.2: library that provides direct access to the IEEE 1394 bus
 sys-libs/librtas 1.3.6 1.3.8 1.3.13: A set of libraries for userspace access to RTAS on the PowerPC platform(s)
@@ -17955,7 +17955,7 @@ sys-libs/libutempter 1.1.6-r2: Library that allows non-privileged apps to write 
 sys-libs/libuuid 1.0.3: Portable uuid C library
 sys-libs/libvpd 2.1.3 2.2.4 2.2.5: Library implementation for listing vpds
 sys-libs/libxcrypt 2.0 2.4: A replacement for libcrypt with DES, MD5 and blowfish support
-sys-libs/llvm-libunwind 3.8.1 3.9.0-r1 3.9.1 4.0.1 5.0.0 5.0.9999 9999: C++ runtime stack unwinder from LLVM
+sys-libs/llvm-libunwind 3.8.1 3.9.0-r1 3.9.1 4.0.1 5.0.0 5.0.1_rc2 5.0.9999 9999: C++ runtime stack unwinder from LLVM
 sys-libs/lrmi 0.10-r1: library for calling real mode BIOS routines under Linux
 sys-libs/lwp 2.2 2.6-r1 2.8: Light-weight process library (used by Coda)
 sys-libs/mars 1.0.1: Multicore Application Runtime System
