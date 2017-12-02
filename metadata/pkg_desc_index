@@ -5027,7 +5027,7 @@ dev-libs/npth 1.3 1.4 1.5: New GNU Portable Threads Library
 dev-libs/nsgenbind 0.4: generate javascript to dom bindings from w3c webidl files
 dev-libs/nspr 4.13.1 4.16 4.17: Netscape Portable Runtime
 dev-libs/nss 3.29.5 3.32.1 3.34 3.34.1: Mozilla's Network Security Services library that implements PKI support
-dev-libs/ntl 5.5.2 6.1.0 9.3.0 9.6.4 10.5.0: High-performance and portable Number Theory C++ library
+dev-libs/ntl 9.3.0 9.6.4 10.5.0: High-performance and portable Number Theory C++ library
 dev-libs/ocl-icd 2.1.3 2.2.3 2.2.8 2.2.11: Alternative to vendor specific OpenCL ICD loaders
 dev-libs/onigmo 6.1.3: Onigmo is a regular expressions library forked from Oniguruma
 dev-libs/oniguruma 5.9.5 5.9.6_p1-r1 6.4.0 6.6.1: Regular expression library for different character encodings
@@ -5048,7 +5048,7 @@ dev-libs/pkcs11-helper 1.21-r1: PKCS#11 helper library
 dev-libs/poco 1.4.6_p4 1.4.6_p4-r1 1.7.6: C++ libraries for building network-based applications
 dev-libs/polylib 9999: ppl port of cloog
 dev-libs/popt 1.16-r2: Parse Options - Command line parser
-dev-libs/ppl 0.12.1-r1 1.1 1.2: The Parma Polyhedra Library for numerical analysis of complex systems
+dev-libs/ppl 1.1 1.2: The Parma Polyhedra Library for numerical analysis of complex systems
 dev-libs/protobuf 2.5.0-r2 2.6.1-r3 3.0.0_beta3_p1 3.0.2 3.1.0 3.3.0 3.4.1: Google's Protocol Buffers - Extensible mechanism for serializing structured data
 dev-libs/protobuf-c 1.0.2-r1 1.1.1 1.2.1-r1 1.3.0 1.3.0-r1: Protocol Buffers implementation in C
 dev-libs/pslib 0.4.1-r2 0.4.5: pslib is a C-library to create PostScript files on the fly
@@ -10124,7 +10124,7 @@ dev-scheme/guile-lib 0.1.9 0.2.4: An accumulation place for pure-scheme Guile mo
 dev-scheme/guile-www 2.34 2.35: Guile Scheme modules to facilitate HTTP, URL and CGI programming
 dev-scheme/ikarus 0.0.3_p1870: A free optimizing incremental native-code compiler for R6RS Scheme
 dev-scheme/jscheme 7.2: JScheme is a Scheme dialect with a simple Java interface called Javadot notation
-dev-scheme/kawa 1.10 1.14: Kawa, the Java-based Scheme system & Language Framework
+dev-scheme/kawa 1.14: Kawa, the Java-based Scheme system & Language Framework
 dev-scheme/net-http 0.3.1 0.3.1-r1: Library for doing HTTP client-side programming in Guile
 dev-scheme/racket 5.3.6 6.7 6.9: General purpose, multi-paradigm Lisp-Scheme programming language
 dev-scheme/scheme48 1.9.2-r1: Scheme48 is an implementation of the Scheme Programming Language
@@ -10542,7 +10542,7 @@ dev-util/lttng-tools 2.6.1 2.7.1 2.7.3 2.8.0: Linux Trace Toolkit - next generat
 dev-util/lttng-ust 2.6.5 2.7.1 2.7.4 2.8.1: Linux Trace Toolkit - UST library
 dev-util/lxqt-build-tools 0.2.0: LXQt Build tools
 dev-util/makeheaders 0_p4: simple utility that will automatically generate header files
-dev-util/makepp 1.18 1.40.1a 1.50_pre110621 2.0-r1 2.0.98.4 2.0.98.5 2.0.98.5-r1 2.0.99.1: GNU make replacement
+dev-util/makepp 1.18 1.40.1a 2.0-r1 2.0.98.4 2.0.98.5 2.0.98.5-r1 2.0.99.1: GNU make replacement
 dev-util/massif-visualizer 0.7.0: Tool visualising massif data
 dev-util/mdds 1.2.3 1.3.1 9999: A collection of multi-dimensional data structure and indexing algorithm
 dev-util/meld 3.16.4 3.18.0: A graphical diff and merge tool
@@ -14090,7 +14090,7 @@ media-video/avidemux 2.6.20 9999: Video editor designed for simple cutting, filt
 media-video/baka-mplayer 2.0.4: Cross-platform libmpv-based multimedia player with uncluttered design
 media-video/bashnapi 1.1.5 1.3.5: Napiprojekt.pl subtitle downloader in bash
 media-video/bbtools 1.9: bbdmux, bbinfo, bbvinfo and bbainfo from Brent Beyeler
-media-video/bdsup2sub 4.0.0-r1 4.0.0-r2: A tool to convert and tweak bitmap based subtitle streams
+media-video/bdsup2sub 4.0.0-r2: A tool to convert and tweak bitmap based subtitle streams
 media-video/bdsup2sub++ 1.0.2: C++ port of BDSup2Sub
 media-video/binkplayer 1.99w: Bink Video! Player
 media-video/bino 1.6.1-r2: Stereoscopic and multi-display media player
@@ -14211,7 +14211,7 @@ media-video/simplescreenrecorder 0.3.8 9999: A Simple Screen Recorder
 media-video/smplayer 16.11.0 17.11.0 17.11.2: Great Qt GUI front-end for mplayer/mpv
 media-video/smtube 17.5.0-r1: YouTube Browser for SMPlayer
 media-video/snappy 1.0-r1: A simple media player written using GStreamer and Clutter
-media-video/sonic-snap 1.7 1.7-r1: Webcam app for sn9c10x based camera controllers (with optional MPEG4 support)
+media-video/sonic-snap 1.7-r1: Webcam app for sn9c10x based camera controllers (with optional MPEG4 support)
 media-video/sswf 1.8.2-r1 1.8.4-r1: A C++ Library and a script language tool to create Flash (SWF) movies up to version 8
 media-video/streamdvd 0.4-r1: fast tool to backup Video DVDs 'on the fly'
 media-video/sub2srt 0.5.3: Tool to convert several subtitle formats into subviewer srt
@@ -14540,7 +14540,7 @@ net-analyzer/traceproto 1.1.2_beta1: A traceroute-like utility that sends packet
 net-analyzer/traceroute 2.0.20 2.0.22 2.1.0: Utility to trace the route of IP packets
 net-analyzer/traceroute-nanog 6.4.2-r1: Traceroute with AS lookup, TOS support, MTU discovery and other features
 net-analyzer/trafshow 5.2.3: Full screen visualization of the network traffic
-net-analyzer/tsung 1.6.0 1.7.0: Erlang's multi-protocol distributed load testing tool
+net-analyzer/tsung 1.7.0: Erlang's multi-protocol distributed load testing tool
 net-analyzer/ttcp 1.12-r2: Tool to test TCP and UDP throughput
 net-analyzer/upnpscan 0.4-r3: Scans the network for UPNP capable devices
 net-analyzer/vnstat 1.17 1.17-r3 9999: Console-based network traffic monitor that keeps statistics of network usage
@@ -16619,7 +16619,7 @@ sci-libs/xgks-pmel 2.5.5: PMEL fork of XGKS, an X11-based version of the ANSI Gr
 sci-libs/xkaapi 2.1 2.2 3.0.3: Kernel for Adaptative, Asynchronous Parallel and Interactive programming
 sci-libs/xylib 1.1 1.2: Experimental x-y data reading library
 sci-mathematics/4ti2 1.6.2 1.6.5 1.6.6 1.6.7: Software package for algebraic, geometric and combinatorial problems
-sci-mathematics/Macaulay2 1.7_pre 1.8.2.1-r1: Research tool for commutative algebra and algebraic geometry
+sci-mathematics/Macaulay2 1.8.2.1-r1: Research tool for commutative algebra and algebraic geometry
 sci-mathematics/agda 2.4.2.5-r2 2.5.2-r1: A dependently typed functional programming language and proof assistant
 sci-mathematics/agda-lib-ffi 0.0.2 0.0.2-r2: Auxiliary Haskell code used by Agda's standard library
 sci-mathematics/agda-stdlib 2.4.2.5 2.5.2.0.13: Agda standard library
@@ -19353,7 +19353,7 @@ x11-proto/xf86vidmodeproto 2.3.1-r1: X.Org XF86VidMode protocol headers
 x11-proto/xineramaproto 1.2.1-r1: X.Org Xinerama protocol headers
 x11-proto/xproto 7.0.31: X.Org xproto protocol headers
 x11-terms/aterm 1.0.1-r2 1.0.1-r3: rxvt compatible terminal emulator with transparency support
-x11-terms/eterm 0.9.5 0.9.6 9999: A vt102 terminal emulator for X
+x11-terms/eterm 0.9.5 0.9.6-r1 9999: A vt102 terminal emulator for X
 x11-terms/gnome-terminal 3.22.2 3.24.2: The Gnome Terminal
 x11-terms/guake 0.8.8 0.8.10 0.8.11 9999: Drop-down terminal for GTK+ desktops
 x11-terms/hanterm 3.1.6-r2 3.1.6-r4: Hanterm -- Korean terminal
@@ -19386,7 +19386,7 @@ x11-themes/arc-theme 20170302: A flat theme with transparent elements for GTK+3,
 x11-themes/audacious-themes 0.0.4 0.0.4-r1: Collection of XMMS themes for Audacious
 x11-themes/bespin 0_p20140225-r1: Very configurable Qt4 style derived from the Oxygen project
 x11-themes/blueglass-xcursors 0.4: A high quality set of Xfree 4.3.0 animated mouse cursors
-x11-themes/chameleon-xcursors 0.5 0.5-r1: Style neutral scalable cursor theme
+x11-themes/chameleon-xcursors 0.5-r1: Style neutral scalable cursor theme
 x11-themes/claws-mail-themes 20140629: Iconsets for Claws Mail
 x11-themes/clearlooks-phenix 3.0.15 3.0.16 5.0.7 6.0.3 7.0.1 9999: Clearlooks-Phenix is a GTK+ 3 port of Clearlooks, the default theme for GNOME 2
 x11-themes/comix-xcursors 0.7.3 0.8.2: X11 mouse theme with a comics feeling
