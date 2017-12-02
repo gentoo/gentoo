@@ -1,10 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-inherit rpm eutils user
+EAPI=6
+
+inherit flag-o-matic rpm toolchain-funcs user
 
 MY_P=${P%.*}-${PV##*.}
-S=${WORKDIR}/${P%.*}
+
 DESCRIPTION="App that allows non-privileged apps to write utmp (login) info"
 HOMEPAGE="https://www.redhat.com/"
 SRC_URI="mirror://gentoo/${MY_P}.src.rpm"
@@ -14,43 +16,43 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86"
 IUSE=""
 
-RDEPEND="!sys-libs/libutempter
+RDEPEND="
+	!sys-libs/libutempter
 	!dev-python/utmp"
+
+S=${WORKDIR}/${P%.*}
+PATCHES=(
+	"${FILESDIR}"/${P}-no_utmpx.patch
+	"${FILESDIR}"/${P}-fix-build-system.patch
+)
 
 pkg_setup() {
 	enewgroup utmp 406
 }
 
-src_unpack() {
-	rpm_src_unpack
-	cd "${S}"
-	epatch "${FILESDIR}"/${P}-soname-makefile-fix.patch
-	epatch "${FILESDIR}"/${P}-no_utmpx.patch
-	epatch "${FILESDIR}"/${P}-build.patch
-}
-
-src_compile() {
-	emake RPM_OPT_FLAGS="${CFLAGS} ${CPPFLAGS}" || die
+src_configure() {
+	tc-export CC
+	append-cflags -Wall
 }
 
 src_install() {
 	emake \
-		RPM_BUILD_ROOT="${D}" \
+		RPM_BUILD_ROOT="${ED}" \
 		LIBDIR=/usr/$(get_libdir) \
-		install || die
-	dobin utmp || die
+		install
+	dobin utmp
 
 	fowners root:utmp /usr/sbin/utempter
 	fperms 2755 /usr/sbin/utempter
 }
 
 pkg_postinst() {
-	if [ -f "${ROOT}"/var/log/wtmp ] ; then
-		chown root:utmp "${ROOT}"/var/log/wtmp
-		chmod 664 "${ROOT}"/var/log/wtmp
+	if [[ -f "${EROOT%/}"/var/log/wtmp ]] ; then
+		chown root:utmp "${EROOT%/}"/var/log/wtmp
+		chmod 664 "${EROOT%/}"/var/log/wtmp
 	fi
-	if [ -f "${ROOT}"/var/run/utmp ] ; then
-		chown root:utmp "${ROOT}"/var/run/utmp
-		chmod 664 "${ROOT}"/var/run/utmp
+	if [[ -f "${EROOT%/}"/var/run/utmp ]] ; then
+		chown root:utmp "${EROOT%/}"/var/run/utmp
+		chmod 664 "${EROOT%/}"/var/run/utmp
 	fi
 }
