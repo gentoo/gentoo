@@ -4,7 +4,7 @@
 EAPI=6
 inherit flag-o-matic
 
-DESCRIPTION="dhcp_probe attempts to discover DHCP and BootP servers on a directly-attached Ethernet network"
+DESCRIPTION="discover DHCP and BootP servers on a directly-attached Ethernet network"
 HOMEPAGE="http://www.net.princeton.edu/software/dhcp_probe/"
 SRC_URI="http://www.net.princeton.edu/software/${PN}/${P}.tar.gz"
 
