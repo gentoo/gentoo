@@ -18,6 +18,7 @@ RDEPEND="
 	dev-cpp/antlr-cpp:2
 	dev-db/sqlite:3
 	dev-libs/qcustomplot[qt5(+)]
+	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtwidgets:5
