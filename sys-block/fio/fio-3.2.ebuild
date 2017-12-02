@@ -90,7 +90,6 @@ src_install() {
 		python_replicate_script \
 			"${ED}/usr/bin/fio2gnuplot" \
 			"${ED}/usr/bin/fiologparser_hist.py" \
-			"${ED}/usr/bin/fio_latency2csv.py" \
 			"${ED}/usr/bin/fiologparser.py"
 	else
 		rm "${ED}"/usr/bin/{fio2gnuplot,fio_generate_plots} || die

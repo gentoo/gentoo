@@ -18,6 +18,7 @@ IUSE="test"
 
 RDEPEND=""
 DEPEND="${RDEPEND}
+	dev-python/flake8
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/pew-0.1.26[${PYTHON_USEDEP}]
 	>=dev-python/pip-9.0.1[${PYTHON_USEDEP}]
