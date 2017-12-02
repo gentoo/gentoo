@@ -1,25 +1,29 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 inherit autotools eutils toolchain-funcs
 
-DESCRIPTION="library to provide an API for commonly used low-level network functions (mainly packet injection)"
+DESCRIPTION="library providing an API for commonly used low-level network functions"
 HOMEPAGE="http://www.packetfactory.net/libnet/"
 SRC_URI="http://www.packetfactory.net/libnet/dist/deprecated/${P}.tar.gz"
 
 LICENSE="BSD BSD-2 HPND"
 SLOT="1.0"
-KEYWORDS="alpha amd64 arm hppa ppc ppc64 sparc x86 ~x86-fbsd"
-IUSE=""
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.0.2a-gcc33-fix.patch
+	"${FILESDIR}"/${PN}-1.0.2a-slot.patch
+	"${FILESDIR}"/${PN}-1.0.2a-endian.patch
+	"${FILESDIR}"/${PN}-1.0.2a-_SOURCE.patch
+	"${FILESDIR}"/${PN}-1.0.2a-funroll.patch
+
+)
 S=${WORKDIR}/Libnet-${PV}
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.0.2a-gcc33-fix.patch \
-		"${FILESDIR}"/${PN}-1.0.2a-slot.patch
-
-	use arm && epatch "${FILESDIR}"/${PN}-1.0.2a-endian.patch
+	default
 
 	cd "${S}"
 	mv libnet-config.in libnet-${SLOT}-config.in || die "moving libnet-config"
@@ -29,14 +33,13 @@ src_prepare() {
 
 	cd libnet
 	for f in *.h ; do
-		ln -s ${f} ${f/-/-${SLOT}-} || die "linking ${f}"
+		ln -s ${f} ${f/-/-${SLOT}-} || die
 	done
 
 	cd "${S}"/doc
-	ln -s libnet.3 libnet-${SLOT}.3 || die "linking manpage"
+	ln -s libnet.3 libnet-${SLOT}.3 || die
 
 	cd "${S}"
-	sed -i configure.in -e '/CCOPTS=/d;/CFLAGS=/s|.*|:|' || die
 
 	eautoconf
 
@@ -52,12 +55,4 @@ src_install() {
 	newdoc README README.1st
 	docinto example ; dodoc example/libnet*
 	docinto Ancillary ; dodoc doc/Ancillary/*
-}
-
-pkg_postinst(){
-	elog "libnet ${SLOT} is deprecated !"
-	elog "config script: libnet-${SLOT}-config"
-	elog "manpage: libnet-${SLOT}"
-	elog "library: libnet-${SLOT}.a"
-	elog "include: libnet-${SLOT}.h"
 }

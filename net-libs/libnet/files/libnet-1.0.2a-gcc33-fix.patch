@@ -1,5 +1,5 @@
---- Libnet-1.0.2a-orig/include/libnet.h	2001-02-07 00:19:25.000000000 +0100
-+++ Libnet-1.0.2a/include/libnet.h	2003-07-24 18:34:33.000000000 +0200
+--- a/include/libnet.h
++++ b/include/libnet.h
 @@ -84,8 +84,8 @@
  #define LIBNET_VERSION  "1.0.2a"
  
