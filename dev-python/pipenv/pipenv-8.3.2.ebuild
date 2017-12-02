@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_{3,4,5}} pypy pypy3 )
+PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
 
 inherit distutils-r1
 
@@ -19,6 +19,10 @@ IUSE="test"
 RDEPEND=""
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
+	>=dev-python/pew-0.1.26[${PYTHON_USEDEP}]
+	>=dev-python/pip-9.0.1[${PYTHON_USEDEP}]
+	>dev-python/requests-2.18.0[${PYTHON_USEDEP}]
+	>=dev-python/urllib3-1.21.1[${PYTHON_USEDEP}]
 	test? (
 		dev-python/flake8[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]

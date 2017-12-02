@@ -4,6 +4,7 @@
 # @ECLASS: kde5-functions.eclass
 # @MAINTAINER:
 # kde@gentoo.org
+# @SUPPORTED_EAPIS: 6
 # @BLURB: Common ebuild functions for packages based on KDE Frameworks 5.
 # @DESCRIPTION:
 # This eclass contains functions shared by the other KDE eclasses and forms
@@ -16,9 +17,6 @@ _KDE5_FUNCTIONS_ECLASS=1
 
 inherit toolchain-funcs versionator
 
-# @ECLASS-VARIABLE: EAPI
-# @DESCRIPTION:
-# Currently EAPI 6 is supported.
 case ${EAPI} in
 	6) ;;
 	*) die "EAPI=${EAPI:-0} is not supported" ;;
@@ -28,10 +26,9 @@ esac
 # @DESCRIPTION:
 # If PV matches "*9999*", this is automatically set to "live".
 # Otherwise, this is automatically set to "release".
+KDE_BUILD_TYPE="release"
 if [[ ${PV} = *9999* ]]; then
 	KDE_BUILD_TYPE="live"
-else
-	KDE_BUILD_TYPE="release"
 fi
 export KDE_BUILD_TYPE
 
@@ -74,6 +71,7 @@ esac
 # kde5_pkg_pretend and kde5_pkg_setup.
 
 # @ECLASS-VARIABLE: KDEBASE
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # This gets set to a non-zero value when a package is considered a
 # kdevelop ebuild.

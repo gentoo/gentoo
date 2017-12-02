@@ -20,6 +20,7 @@ DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		$(python_gen_cond_dep 'dev-python/unittest2[${PYTHON_USEDEP}]' -2)
+		dev-python/pytz[${PYTHON_USEDEP}]
 	)
 "
 
