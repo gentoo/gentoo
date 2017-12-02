@@ -6,7 +6,7 @@ inherit autotools toolchain-funcs vcs-snapshot
 
 DESCRIPTION="alpine is an easy to use text-based based mail and news client"
 HOMEPAGE="http://www.washington.edu/alpine/ http://repo.or.cz/alpine.git/"
-GIT_COMMIT="59678f8c7af17eb361f4b9cc9c30a26bff01a1f3"
+GIT_COMMIT="672d6838a9babf2faeb9f79267525a4ab9d20b14"
 SRC_URI="http://repo.or.cz/alpine.git/snapshot/${GIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
