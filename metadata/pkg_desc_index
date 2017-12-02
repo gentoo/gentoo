@@ -2097,7 +2097,7 @@ app-pda/pilot-link 0.12.5-r1: suite of tools for moving data between a Palm devi
 app-pda/usbmuxd 1.0.8_p20140530: USB multiplex daemon for use with Apple iPhone/iPod Touch devices
 app-portage/cfg-update 1.8.9: Easy to use GUI & CLI alternative for etc-update
 app-portage/conf-update 1.0.3-r1: conf-update is a ncurses-based config management utility
-app-portage/cpuid2cpuflags 1 2 3 4 9999: Tool to guess CPU_FLAGS_X86 flags for the host
+app-portage/cpuid2cpuflags 1 4 5 9999: Tool to guess CPU_FLAGS_X86 flags for the host
 app-portage/deltup 0.4.6-r1: Delta-Update - patch system for updating source-archives.
 app-portage/demerge 0.047-r2: demerge - revert to previous installation states
 app-portage/diffmask 0.3.3-r2 9999: A utility to maintain package.unmask entries up-to-date with masks
@@ -4854,7 +4854,7 @@ dev-libs/libgcrypt 1.5.6-r101 1.8.1: General purpose crypto library based on the
 dev-libs/libgdata 0.17.8 0.17.9-r1: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.8 0.18.1 0.20.0: GObject-based interfaces and classes for commonly used data structures
 dev-libs/libgit2 0.24.6 0.25.1 0.26.0 9999: A linkable library for Git
-dev-libs/libgit2-glib 0.24.4 0.25.0 0.26.0-r1: Git library for GLib
+dev-libs/libgit2-glib 0.24.4 0.25.0 0.26.0-r1 0.26.2: Git library for GLib
 dev-libs/libgnome-games-support 1.2.1 1.2.2 1.2.3: Library for code common to Gnome games
 dev-libs/libgpg-error 1.27-r1: Contains error handling functions used by GnuPG software
 dev-libs/libgpuarray 0.6.0 0.6.7: Library to manipulate tensors on the GPU
