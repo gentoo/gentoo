@@ -1,15 +1,5 @@
-diff -Nru zorroutils-0.04.orig/zorro.ids zorroutils-0.04/zorro.ids
---- zorroutils-0.04.orig/zorro.ids	2000-09-28 20:45:47.000000000 +0200
-+++ zorroutils-0.04/zorro.ids	2002-10-14 15:08:58.000000000 +0200
-@@ -4,7 +4,7 @@
- #	Maintained by Geert Uytterhoeven <zorro@linux-m68k.org>
- #	If you have any new entries, please send them to the maintainer.
- #
--#	$Id$
-+#	$Id$
- #
- 
- # Manufacturers and Products. Please keep sorted.
+--- a/zorro.ids
++++ b/zorro.ids
 @@ -42,7 +42,7 @@
  	5000  A2620 68020 [Accelerator and RAM Expansion]
  	5100  A2630 68030 [Accelerator and RAM Expansion]
