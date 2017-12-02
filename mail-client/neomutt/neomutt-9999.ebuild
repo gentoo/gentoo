@@ -14,8 +14,9 @@ HOMEPAGE="https://www.neomutt.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="berkdb crypt debug doc gdbm gnutls gpg idn kerberos kyotocabinet
-	libressl lmdb nls notmuch qdbm sasl selinux slang smime ssl tokyocabinet"
+IUSE="berkdb debug doc gdbm gnutls gpgme idn kerberos kyotocabinet libressl
+	lmdb nls notmuch pgp_classic qdbm sasl selinux slang smime_classic ssl
+	tokyocabinet"
 
 CDEPEND="
 	app-misc/mime-types
@@ -27,7 +28,7 @@ CDEPEND="
 	qdbm? ( dev-db/qdbm )
 	tokyocabinet? ( dev-db/tokyocabinet )
 	gnutls? ( >=net-libs/gnutls-1.0.17 )
-	gpg? ( >=app-crypt/gpgme-0.9.0 )
+	gpgme? ( >=app-crypt/gpgme-0.9.0 )
 	idn? ( net-dns/libidn )
 	kerberos? ( virtual/krb5 )
 	notmuch? ( net-mail/notmuch )
@@ -60,22 +61,22 @@ src_prepare() {
 
 src_configure() {
 	local myconf=(
-		"$(use_enable crypt pgp)"
 		"$(use_enable debug)"
 		"$(use_enable doc)"
-		"$(use_enable gpg gpgme)"
+		"$(use_enable gpgme)"
 		"$(use_enable nls)"
-		"$(use_enable smime)"
 		"$(use_enable notmuch)"
+		"$(use_enable pgp_classic pgp)"
+		"$(use_enable smime_classic smime)"
+		"$(use_with berkdb bdb)"
+		"$(use_with gdbm)"
 		"$(use_with idn)"
 		"$(use_with kerberos gss)"
+		"$(use_with kyotocabinet)"
+		"$(use_with lmdb)"
+		"$(use_with qdbm)"
 		"$(use_with sasl)"
 		"$(use_with tokyocabinet)"
-		"$(use_with kyotocabinet)"
-		"$(use_with qdbm)"
-		"$(use_with gdbm)"
-		"$(use_with berkdb bdb)"
-		"$(use_with lmdb)"
 		"--with-$(usex slang slang curses)"
 		"--sysconfdir=${EPREFIX}/etc/${PN}"
 		"--with-docdir=${EPREFIX}/usr/share/doc/${PF}"
