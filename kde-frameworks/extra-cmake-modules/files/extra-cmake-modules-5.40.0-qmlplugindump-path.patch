@@ -1,0 +1,38 @@
+From 32d596b8c64c1c963b053788feeee67ef012b836 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date: Sat, 2 Dec 2017 19:04:10 +0100
+Subject: [PATCH] Make sure to search for Qt5-based qmlplugindump
+
+Summary:
+Without any hint, qmlplugindump version is whatever default is set by qtchooser.
+Fix uses the same approach as FindQtWaylandScanner.cmake.
+
+Test Plan: ecm_find_qmlmodule now works properly for e.g. kirigami.
+
+Reviewers: apol
+
+Subscribers: #frameworks, #build_system
+
+Tags: #frameworks, #build_system
+
+Differential Revision: https://phabricator.kde.org/D9116
+---
+ modules/ECMFindQMLModule.cmake.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/modules/ECMFindQMLModule.cmake.in b/modules/ECMFindQMLModule.cmake.in
+index 428d60a..d72c52b 100644
+--- a/modules/ECMFindQMLModule.cmake.in
++++ b/modules/ECMFindQMLModule.cmake.in
+@@ -27,7 +27,7 @@
+ 
+ include(FindPackageHandleStandardArgs)
+ 
+-find_program(QMLPLUGINDUMP_PROGRAM qmlplugindump)
++find_program(QMLPLUGINDUMP_PROGRAM NAMES qmlplugindump HINTS /usr/lib/${CMAKE_LIBRARY_ARCHITECTURE}/qt5/bin/)
+ if(NOT QMLPLUGINDUMP_PROGRAM)
+     message(WARNING "Could not find qmlplugindump. It is necessary to look up qml module dependencies.")
+ endif()
+-- 
+2.15.1
+
