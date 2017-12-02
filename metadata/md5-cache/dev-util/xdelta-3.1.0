@@ -1,6 +1,6 @@
 DEFINED_PHASES=install prepare setup test
 DEPEND=app-arch/xz-utils test? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 =sys-devel/automake-1.14* >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
-DESCRIPTION=a binary diff and differential compression tools. VCDIFF (RFC 3284) delta compression
+DESCRIPTION=Computes changes between binary or text files and creates deltas
 EAPI=6
 HOMEPAGE=http://xdelta.org/
 IUSE=examples test
@@ -10,4 +10,4 @@ RDEPEND=app-arch/xz-utils
 SLOT=3
 SRC_URI=https://github.com/jmacd/xdelta-gpl/releases/download/v3.1.0/xdelta3-3.1.0.tar.gz
 _eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	python-any-r1	27d7f9da7187d283b7f3eae8390b7b09	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=a4f995ddc52f069e55f0f574f83f281b
+_md5_=14a01e537d2aa95b5479d2dc7de8a661

@@ -2202,7 +2202,7 @@ app-text/active-dvi 1.10.2-r1: A DVI previewer and a presenter for slides writte
 app-text/agrep 2.04-r2: A tool for the fast searching of text allowing for errors in the search pattern
 app-text/aiksaurus 1.2.1: A thesaurus lib, tool and database
 app-text/an 1.2 1.2-r1: Very fast anagram generator with dictionary lookup
-app-text/ansifilter 2.8.1: Handles text files containing ANSI terminal escape codes
+app-text/ansifilter 2.8.1 2.9: Handles text files containing ANSI terminal escape codes
 app-text/antiword 0.37-r1: free MS Word reader
 app-text/antixls 0.3b: Print out an XLS file with minimal formatting, or extract the data into CSV
 app-text/apvlv 0.1.5-r1 0.1.5-r2: Alf's PDF Viewer Like Vim
@@ -10123,7 +10123,7 @@ dev-scheme/guile-json 0.6.0: JSON module for Guile
 dev-scheme/guile-lib 0.1.9 0.2.4: An accumulation place for pure-scheme Guile modules
 dev-scheme/guile-www 2.34 2.35: Guile Scheme modules to facilitate HTTP, URL and CGI programming
 dev-scheme/ikarus 0.0.3_p1870: A free optimizing incremental native-code compiler for R6RS Scheme
-dev-scheme/jscheme 7.2: JScheme is a dialect of Scheme with a very simple interface to Java, called the Javadot notation
+dev-scheme/jscheme 7.2: JScheme is a Scheme dialect with a simple Java interface called Javadot notation
 dev-scheme/kawa 1.10 1.14: Kawa, the Java-based Scheme system & Language Framework
 dev-scheme/net-http 0.3.1 0.3.1-r1: Library for doing HTTP client-side programming in Guile
 dev-scheme/racket 5.3.6 6.7 6.9: General purpose, multi-paradigm Lisp-Scheme programming language
@@ -10250,7 +10250,7 @@ dev-tex/revtex 4 4.1_p2-r1: LaTeX2e macros to prepare manuscripts for the journa
 dev-tex/rubber 1.4: A LaTeX wrapper for automatically building documents
 dev-tex/serienbrief 0.2.5: Easy creation of form letters written in LaTeX
 dev-tex/sketch 0.3.7: Produces drawings of two- or three-dimensional solid objects and scenes for TeX
-dev-tex/slatex 20090928: SLaTeX is a Scheme program that allows you to write Scheme code in your (La)TeX source
+dev-tex/slatex 20090928: SLaTeX is a Scheme program allowing you to write Scheme in your (La)TeX source
 dev-tex/style-check 0.14: Parses LaTeX-formatted text in search of forbidden phrases
 dev-tex/svninfo 0.7.4: A LaTeX module to access SVN version info
 dev-tex/tex4ht 20090611_p1038-r2 20090611_p1038-r3 20090611_p1038-r4 20090611_p1038-r5: Converts (La)TeX to (X)HTML, XML and OO.org
@@ -10325,7 +10325,7 @@ dev-util/android-tools 5.1.1_p13 6.0.1_p79: Android platform tools (adb, fastboo
 dev-util/anjuta 3.22.0: A versatile IDE for GNOME
 dev-util/antlrworks 1.2.3: A novel grammar development environment for ANTLR v3 grammars
 dev-util/apitrace 7.1: A tool for tracing, analyzing, and debugging graphics APIs
-dev-util/appdata-tools 0.1.7 0.1.8-r1: CLI designed to validate AppData descriptions for standards compliance and to the style guide
+dev-util/appdata-tools 0.1.7 0.1.8-r1: CLI designed to validate AppData descriptions for standards and style compliance
 dev-util/appinventor 1.1: MIT App Inventor Setup package
 dev-util/archdiff 1.1.6: Utility to view the differences between two source code archives
 dev-util/argouml 0.34: Modelling tool that helps you do your design using UML
@@ -10335,7 +10335,7 @@ dev-util/astyle 2.04-r1 2.05.1 2.06 3.0 3.0.1: Artistic Style is a re-indenter a
 dev-util/atomic-install 0.1.1 9999: A library and tool to atomically install sets of files
 dev-util/autodia 2.140.0-r1: Parses source code, XML or data and produces an XML document in Dia format
 dev-util/automoc 0.9.88-r1: KDE Meta Object Compiler
-dev-util/autoproject 0.20 0.20_p5: Used to start a programming project using autotools and a command line parser generator
+dev-util/autoproject 0.20 0.20_p5: Start a programming project using autotools and a command line parser generator
 dev-util/babeltrace 1.2.3 1.2.4: A command-line tool and library to read and convert trace files
 dev-util/bakefile 0.2.9-r1: Native makefiles generator
 dev-util/bam 0.4.0-r1: Fast and flexible Lua-based build system
@@ -10459,7 +10459,7 @@ dev-util/drone-ui 0.6.0_rc1_pre20170412: React front-end for the Drone continuou
 dev-util/dropwatch 1.4-r1 1.4_p20150706: A utility to interface to the kernel to monitor for dropped network packets
 dev-util/duma 2.5.13 2.5.15-r2: DUMA (Detect Unintended Memory Access) is a memory debugging library
 dev-util/dwarves 1.10_p20140618 1.10_p20160519 1.10_p20160630 9999: pahole (Poke-a-Hole) and other DWARF2 utilities
-dev-util/dwdiff 2.1.0 2.1.0-r1 2.1.1: diff-like program that operates at the word level instead of the line level
+dev-util/dwdiff 2.1.0 2.1.0-r1 2.1.1: diff-like program operating at word level instead of line level
 dev-util/edb-debugger 0.9.21 9999: edb is a cross platform x86/x86-64 debugger, inspired by Ollydbg
 dev-util/editorconfig-geany 0.1_p20160725: EditorConfig plugin for Geany
 dev-util/egypt 1.10: devilishly simple tool for creating call graphs of C programs
@@ -10472,7 +10472,7 @@ dev-util/fhist 1.16 1.19 1.21: File history and comparison tools
 dev-util/findbugs 3.0.1: Find Bugs in Java Programs
 dev-util/fix-la-relink-command 0.1.1: Helps prevent .la files from relinking to libraries outside a build tree
 dev-util/flawfinder 1.31: Examines C/C++ source code for security flaws
-dev-util/ftjam 2.5.3_rc2-r1: Jam is a powerful alternative to make. FTJam is a 100% compatible enhanced Jam implementation
+dev-util/ftjam 2.5.3_rc2-r1: FTJam is a 100% compatible, enhanced implementation of the make alternative Jam
 dev-util/ftnchek 3.3.1-r1: Static analyzer a la 'lint' for Fortran 77
 dev-util/fuzz 0.6-r1: Stress-tests programs by giving them random input
 dev-util/gcovr 3.2 3.3: A Python script for summarizing gcov data
@@ -10507,7 +10507,7 @@ dev-util/icmake 9.02.02 9.02.03: Hybrid between a make utility and a shell scrip
 dev-util/idea-community 2017.2.2.172.3757.52: A complete toolset for web, mobile and enterprise development
 dev-util/idea-ultimate 2017.2.2.172.3757.52: A complete toolset for web, mobile and enterprise development
 dev-util/idutils 4.2 4.5 4.6: Fast, high-capacity, identifier database tool
-dev-util/igprof 5.9.11: Ignominous Profiler for analysing application memory and performance characteristics
+dev-util/igprof 5.9.11: Ignominous Profiler for analysing application memory and performance
 dev-util/imediff2 1.1.2-r3: An interactive, user friendly 2-way merge tool in text mode
 dev-util/include-what-you-use 3.9 4.0 4.0-r1: Find unused include directives in C/C++ programs
 dev-util/indent 2.2.11-r1 2.2.11_p5: Indent program source files
@@ -10517,7 +10517,7 @@ dev-util/its4 1.1.1 1.1.1-r1: ITS4: Software Security Tool
 dev-util/itstool 2.0.2: Translation tool for XML documents that uses gettext files and ITS rules
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jay 1.1.1-r2: A LALR(1) parser generator: Berkeley yacc retargeted to C# and Java
-dev-util/jconfig 2.8-r3 2.8.5 2.9: jConfig is an extremely helpful utility, providing a simple API for the management of properties
+dev-util/jconfig 2.8-r3 2.8.5 2.9: Utility that provides a simple API for the management of properties
 dev-util/jenkins-bin 2.73.2 2.73.3 2.84 2.86 2.87 2.90: Extensible continuous integration server
 dev-util/kbuild 0.1.9998_pre20131130-r1 0.1.9998_pre20171020 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 33 34 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
@@ -10554,7 +10554,7 @@ dev-util/mingw64-runtime 3.0.0 3.1.0 3.2.0-r1 4.0.1 4.0.4 4.0.6 5.0.1 5.0.2 5.0.
 dev-util/molecule 2: Meta package for dev-util/molecule-core and dev-util/molecule-plugins
 dev-util/molecule-core 1.0.2-r1: Sabayon distro-agnostic images build tool
 dev-util/molecule-plugins 1.0.2-r1: A set of base plugins for Molecule
-dev-util/mpatch 0.8-r1: Patch-like tool for applying diffs which can resolve common causes of patch rejects
+dev-util/mpatch 0.8-r1: Patch-like tool which can resolve common causes of patch rejects when applying
 dev-util/mutrace 0.2-r1: A mutex tracer/profiler
 dev-util/nemiver 0.9.6: A gtkmm front end to the GNU Debugger (gdb)
 dev-util/netbeans 8.2: Netbeans IDE
@@ -10621,7 +10621,7 @@ dev-util/repo 1.12.37: Google tool for managing git, particularly multiple repos
 dev-util/reswrap 3.2.0 4.0.0: Utility to wrap icon resources into C++ code, from the FOX Toolkit
 dev-util/rosdep 0.11.5 0.11.6 0.11.8 9999: Command-line tool for installing ROS system dependencies
 dev-util/rosinstall 0.7.8 9999: Command-line tools for maintaining a workspace of projects for ROS
-dev-util/rosinstall_generator 0.1.11 0.1.12 0.1.13 9999: Generates rosinstall files containing information about repositories with ROS packages/stacks
+dev-util/rosinstall_generator 0.1.11 0.1.12 0.1.13 9999: Generates rosinstall metadata about repositories with ROS packages/stacks
 dev-util/rpmdevtools 8.10: Collection of rpm packaging related utilities
 dev-util/rr 4.5.0 5.0.0: Record and Replay Framework
 dev-util/rustfmt 0.5.0 0.6.3: Tool to find and fix Rust formatting issues
@@ -10687,7 +10687,7 @@ dev-util/wiggle 0.9-r1 1.0: tool for applying patches that patch cannot apply be
 dev-util/wsta 0.5.0: A CLI development tool for WebSocket APIs
 dev-util/wstool 0.1.13 9999: Commands to manage several local SCM repositories for ROS
 dev-util/wxglade 0.6.3-r3: Glade-like GUI designer which can generate Python, Perl, C++ or XRC code
-dev-util/xdelta 1.1.4-r1 3.0.11 3.1.0: a binary diff and differential compression tools. VCDIFF (RFC 3284) delta compression
+dev-util/xdelta 1.1.4-r1 3.0.11 3.1.0: Computes changes between binary or text files and creates deltas
 dev-util/xesam-tools 0.7.0-r1: Development tools and examples for the Xesam desktop search API
 dev-util/xfce4-dev-tools 4.12.0 4.12.0-r1: A set of scripts and m4/autoconf macros that ease build system maintenance
 dev-util/xmlindent 0.2.17-r2: XML stream reformatter for ASCII text, but not UTF-8, written in ANSI C
@@ -10702,8 +10702,8 @@ dev-vcs/bzr-explorer 1.3.0-r1: A high level interface to all commonly used Bazaa
 dev-vcs/bzr-fastimport 0.13.0: Plugin providing fast loading of revision control data into Bazaar
 dev-vcs/bzr-git 0.6.8-r1: Support for Git branches in Bazaar
 dev-vcs/bzr-gtk 0.104.0-r1: A GTK+ interfaces to most Bazaar operations
-dev-vcs/bzr-rewrite 0.6.3: Bazaar plugin that adds support for rebasing, similar to the functionality in git
-dev-vcs/bzr-xmloutput 0.8.8-r2: A Bazaar plugin that provides a option to generate XML output forbuiltin commands.
+dev-vcs/bzr-rewrite 0.6.3: Bazaar plugin that adds support for rebasing, similar to git rebase
+dev-vcs/bzr-xmloutput 0.8.8-r2: Bazaar plugin providing an option to generate XML output for builtin commands
 dev-vcs/bzrtools 2.5: bzrtools is a useful collection of utilities for bzr
 dev-vcs/colorcvs 1.4-r1: A tool based on colorgcc to beautify cvs output
 dev-vcs/colorsvn 0.3.3: Subversion output colorizer
@@ -12359,7 +12359,7 @@ mail-filter/ask 2.4.1 2.5.3: Active Spam Killer: A program to filter spam
 mail-filter/assp 1.8.5.9 1.9.4.7 1.9.4.8 1.9.4.9 1.9.8.13030: Anti-Spam SMTP Proxy written in Perl
 mail-filter/bmf 0.9.4-r2: A fast and small Bayesian spam filter
 mail-filter/bogofilter 1.2.4-r1: Bayesian spam filter designed with fast algorithms, and tuned for speed
-mail-filter/clamassassin 1.2.4: A simple spamassassin-like script for virus scanning (through clamav) and filtering e-mail messages
+mail-filter/clamassassin 1.2.4: Simple spamassassin-like script for virus scanning and filtering e-mail messages
 mail-filter/clamsmtp 1.10: An SMTP filter to check for viruses using the ClamAV anti-virus software
 mail-filter/couriersrs 0.1.2: SRS (Sender Rewriting Scheme) wrapper for the courier MTA
 mail-filter/dcc 1.3.140-r1 1.3.154 1.3.158: Distributed Checksum Clearinghouse
@@ -12375,14 +12375,14 @@ mail-filter/imapfilter 2.5.4 2.5.6 2.5.7 2.5.7-r1: An IMAP mail filtering utilit
 mail-filter/libdkim 1.0.21-r3: DomainKeys Identified Mail library from Alt-N Inc
 mail-filter/libmilter 1.0.2: The Sendmail Filter API (Milter)
 mail-filter/libsieve 2.2.7: A library for parsing, sorting and filtering your mail
-mail-filter/libspf2 1.2.9-r3 1.2.10: libspf2 implements the Sender Policy Framework, a part of the SPF/SRS protocol pair
+mail-filter/libspf2 1.2.9-r3 1.2.10: libspf2 implements the Sender Policy Framework, a part of the SPF/SRS protocols
 mail-filter/libsrs2 1.0.18: libsrs2 is the next generation Sender Rewriting Scheme library
 mail-filter/libsrs_alt 1.0: Sender Rewriting Scheme library
 mail-filter/maildrop 2.8.3 2.8.5 2.9.0: Mail delivery agent/filter
 mail-filter/mailfilter 0.8.2 0.8.4: Mailfilter is a utility to get rid of unwanted spam mails
 mail-filter/mapson 3.3: A challenge/response-based white-list spam filter
 mail-filter/milter-regex 1.9: A milter-based regular expression filter
-mail-filter/mimedefang 2.73 2.74 2.75: Antispam, antivirus and other customizable filtering for MTAs with Milter support
+mail-filter/mimedefang 2.73 2.74 2.75: Antispam, antivirus and other customizable filters for MTAs with Milter support
 mail-filter/normalizemime 1.19: Helper program to normalize MIME encoded messages
 mail-filter/opendkim 2.10.3 2.10.3-r2 2.10.3-r3: A milter-based application to provide DKIM signing and verification
 mail-filter/opendmarc 1.1.3 1.3.0 1.3.1 1.3.2-r1: Open source DMARC implementation
@@ -12411,13 +12411,13 @@ mail-filter/spamassassin 3.4.1-r8 3.4.1-r19: An extensible mail filter which can
 mail-filter/spamassassin-botnet 0.8-r1: SpamAssassin plugin that attempts to detect messages sent by a botnet
 mail-filter/spambayes 1.1_alpha6-r2 1.1_beta1 1.1_beta2: An anti-spam filter using on Bayesian filtering
 mail-filter/spamdyke 4.3.0 4.3.0-r1 5.0.1: A drop-in connection-time spam filter for qmail
-mail-filter/spampd 2.30 2.42: spampd is a program to scan messages for possible Unsolicited Commercial E-mail content
+mail-filter/spampd 2.30 2.42: spampd is a program to scan messages for Unsolicited Commercial E-mail content
 mail-filter/spamprobe 1.4d-r1: Fast, intelligent, automatic spam detector using Bayesian analysis
 mail-filter/sqlgrey 1.7.6-r2: SQLgrey is a postfix policy service implementing a grey-listing policy
 mail-filter/tmda 1.1.12-r2: Python-based SPAM reduction system
 mail-filter/zdkimfilter 1.1: DKIM filter for Courier-MTA
 mail-mta/courier 0.75.0 0.75.0-r1 0.76.4: An MTA designed specifically for maildirs
-mail-mta/esmtp 1.2 1.2-r1: esmtp is a user configurable relay-only Mail Transfer Agent (MTA) with a sendmail compatible syntax
+mail-mta/esmtp 1.2 1.2-r1: User configurable relay-only Mail Transfer Agent with a sendmail-like syntax
 mail-mta/exim 4.89-r1 4.89-r3 4.89-r5 4.89.1: A highly configurable, drop-in replacement for sendmail
 mail-mta/mini-qmail 1.05 1.05-r1 1.06: a small null client that forwards mail via QMQP to a full qmail server
 mail-mta/msmtp 1.6.6: An SMTP client and SMTP plugin for mail user agents such as Mutt
