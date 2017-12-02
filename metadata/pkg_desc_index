@@ -8208,6 +8208,7 @@ dev-python/pilkit 2.0: A collection of utilities and processors for the Python I
 dev-python/pillow 3.4.2-r1 4.2.1-r2 4.3.0: Python Imaging Library (fork)
 dev-python/pillowfight 0.2: Eases the transition from PIL to Pillow
 dev-python/pip 7.1.2 9.0.1-r1 9.0.1-r2: Installs python packages -- replacement for easy_install
+dev-python/pipenv 8.3.2: Python Development Workflow for Humans.
 dev-python/pivy 0.5_alpha20110303-r1 9999: Coin3d binding for Python
 dev-python/pkgconfig 1.2.2: Interface Python with pkg-config
 dev-python/pkginfo 1.2.1: Provides an API for querying the distutils metadata written in a PKG-INFO file
@@ -8312,7 +8313,7 @@ dev-python/pycups 1.9.72 1.9.73 1.9.73-r1: Python bindings for the CUPS API
 dev-python/pycurl 7.43.0: python binding for curl/libcurl
 dev-python/pycxx 6.2.6: Set of facilities to extend Python with C++
 dev-python/pydb 1.26-r2: Extended python debugger
-dev-python/pydecomp 0.1 9999: A python library of common (de)compression and contents handling
+dev-python/pydecomp 0.2 9999: A python library of common (de)compression and contents handling
 dev-python/pydiff 0.2: Diffs two Python files at the bytecode level
 dev-python/pydispatcher 2.0.5: Multi-producer-multi-consumer signal dispatching mechanism
 dev-python/pydl 0.5.3 0.5.4: Library of IDL astronomy routines converted to Python
@@ -8505,7 +8506,7 @@ dev-python/pytest-salt 0.1_pre20170731: PyTest Salt Plugin
 dev-python/pytest-shutil 1.2.4 1.2.8 1.2.11: A goodie-bag of unix shell and environment tools for py.test
 dev-python/pytest-subtesthack 0.1.1: A hack for test fixtures, needed for hypothesis inside py.test
 dev-python/pytest-timeout 1.2.0: py.test plugin to abort hanging tests
-dev-python/pytest-virtualenv 1.2.5 1.2.7 1.2.11: Virtualenv fixture for py.test
+dev-python/pytest-virtualenv 1.2.11: Virtualenv fixture for py.test
 dev-python/pytest-xdist 1.14-r1 1.15.0 1.20.0 1.20.1: Distributed testing and loop-on-failing modes
 dev-python/pytest-xprocess 0.9.1 0.12.1: Manage external processes across test runs
 dev-python/python-afl 0.6.1: Enables American fuzzy lop fork server and instrumentation for pure-Python code
@@ -17869,7 +17870,7 @@ sys-fs/yaffs2utils 0.2.9: tools for generating YAFFS images
 sys-fs/zerofree 1.0.1 1.0.3 1.0.4: Zero's out all free space on a filesystem
 sys-fs/zfs 0.6.5.4-r2 0.6.5.11 0.7.3 9999: Userland utilities for ZFS Linux kernel module
 sys-fs/zfs-kmod 0.6.5.4-r1 0.6.5.11 0.7.3 9999: Linux ZFS kernel module for sys-fs/zfs
-sys-kernel/aufs-sources 4.4.87-r1 4.4.95 4.4.96 4.4.97 4.4.98 4.9.49-r1 4.9.59 4.9.60 4.9.61 4.9.62 4.12.12 4.12.13 4.12.14 4.13.10 4.13.11 4.13.12 4.13.13: Full sources (incl. Gentoo patchset) for the linux kernel tree and aufs4 support
+sys-kernel/aufs-sources 4.4.87-r1 4.4.95 4.4.96 4.4.97 4.4.98 4.4.99 4.4.100 4.4.102 4.4.103 4.9.49-r1 4.9.59 4.9.60 4.9.61 4.9.62 4.9.63 4.9.64 4.9.65 4.9.66 4.12.12 4.12.13 4.12.14 4.13.10 4.13.11 4.13.12 4.13.13 4.13.14 4.13.15 4.13.16 4.14.1 4.14.2 4.14.3: Full sources (incl. Gentoo patchset) for the linux kernel tree and aufs4 support
 sys-kernel/bliss-initramfs 6.8.3-r2 7.1.0 7.1.1: Boot your system's rootfs from ZFS, LVM, RAID, or a variety of other configs.
 sys-kernel/ck-sources 4.9.61 4.9.62 4.9.63 4.9.64 4.9.65 4.9.66 4.13.12 4.13.13 4.13.14 4.13.15 4.13.16 4.14.1 4.14.2 4.14.3: Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 4.14
 sys-kernel/cryptodev 1.7 1.9 9999: device that allows access to Linux kernel cryptographic drivers
