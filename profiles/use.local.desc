@@ -2901,6 +2901,7 @@ dev-util/geany-plugins:gtkspell - Use gtkspell for dictionary support in GeanyVC
 dev-util/geany-plugins:keyrecord - Enable the keyrecord plugin
 dev-util/geany-plugins:multiterm - Enable the multiterm plugin
 dev-util/geany-plugins:overview - Enable overview plugin
+dev-util/geany-plugins:pretty-printer - Enable pretty-printer plugin
 dev-util/geany-plugins:scope - Enable the scope plugin which is a graphical GDB front-end
 dev-util/geany-plugins:soup - Enable updatechecker and geniuspaste plugins which require net-libs/libsoup
 dev-util/global:vim - Integrate the GNU GLOBAL source code tag system with Vim
