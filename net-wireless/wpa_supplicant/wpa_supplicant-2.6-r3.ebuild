@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils qmake-utils systemd toolchain-funcs
+inherit eutils qmake-utils systemd toolchain-funcs readme.gentoo-r1
 
 DESCRIPTION="IEEE 802.1X/WPA supplicant for secure wireless transfers"
 HOMEPAGE="https://w1.fi/wpa_supplicant/"
@@ -49,6 +49,14 @@ DEPEND="${CDEPEND}
 "
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-networkmanager )
+"
+
+DOC_CONTENTS="
+	If this is a clean installation of wpa_supplicant, you
+	have to create a configuration file named
+	${EROOT%/}/etc/wpa_supplicant/wpa_supplicant.conf
+	An example configuration file is available for reference in
+	${EROOT%/}/usr/share/doc/${PF}/
 "
 
 S="${WORKDIR}/${P}/${PN}"
@@ -333,6 +341,7 @@ src_install() {
 	exeinto /etc/wpa_supplicant/
 	newexe "${FILESDIR}/wpa_cli.sh" wpa_cli.sh
 
+	readme.gentoo_create_doc
 	dodoc ChangeLog {eap_testing,todo}.txt README{,-WPS} \
 		wpa_supplicant.conf
 
@@ -367,12 +376,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "If this is a clean installation of wpa_supplicant, you"
-	elog "have to create a configuration file named"
-	elog "${EROOT%/}/etc/wpa_supplicant/wpa_supplicant.conf"
-	elog
-	elog "An example configuration file is available for reference in"
-	elog "${EROOT%/}/usr/share/doc/${PF}/"
+	readme.gentoo_print_elog
 
 	if [[ -e "${EROOT%/}"/etc/wpa_supplicant.conf ]] ; then
 		echo
