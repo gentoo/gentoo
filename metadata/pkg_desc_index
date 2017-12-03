@@ -12328,7 +12328,7 @@ lxqt-base/lxqt-qtplugin 0.11.0: LXQt system integration plugin for Qt
 lxqt-base/lxqt-runner 0.11.0: LXQt quick launcher
 lxqt-base/lxqt-session 0.11.0: LXQT session manager
 lxqt-base/lxqt-sudo 0.11.0: LXQt GUI frontend for sudo
-mail-client/alot 0.3.7-r1 0.5.1: Experimental terminal UI for net-mail/notmuch written in Python
+mail-client/alot 0.3.7-r1 0.5.1 0.6: Experimental terminal UI for net-mail/notmuch written in Python
 mail-client/alpine 2.00-r7 2.21: alpine is an easy to use text-based based mail and news client
 mail-client/balsa 2.5.2-r1 2.5.3 2.5.3-r1: Email client for GNOME
 mail-client/biabam 0.9.7: Biabam is a small commandline tool for sending mail attachments
