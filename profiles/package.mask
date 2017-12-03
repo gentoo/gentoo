@@ -30,6 +30,23 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (03 Dec 2017)
+# Dead upstreams, depending on dead qt3support/qt4.
+# Masked for removal in 30 days. Bug #631788
+games-board/capicity
+games-board/kcheckers
+games-board/qgo
+games-board/holdingnuts
+games-board/qcheckers
+games-emulation/virtualjaguar
+games-emulation/dboxfe
+games-kids/cubetest
+games-kids/crayon-physics
+games-misc/ggencoder
+games-misc/qlife
+games-puzzle/bubble-chains
+games-puzzle/jag
+
+# Andreas Sturmlechner <asturm@gentoo.org> (03 Dec 2017)
 # Dead upstream, depends on dead qt4.
 # Masked for removal in 30 days. Bug #639254
 x11-misc/qtnotifydaemon

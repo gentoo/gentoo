@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,12 +14,13 @@ SRC_URI="http://byuu.org/files/${MY_P}.tar.xz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="ao +alsa openal opengl oss profile_accuracy +profile_balanced profile_performance pulseaudio qt4 +sdl udev xv"
+IUSE="ao +alsa openal opengl oss profile_accuracy +profile_balanced profile_performance pulseaudio +sdl udev xv"
 REQUIRED_USE="|| ( ao openal alsa pulseaudio oss )
 	|| ( xv opengl sdl )
 	|| ( profile_accuracy profile_balanced profile_performance )"
 
 RDEPEND="
+	x11-libs/gtk+:2
 	x11-libs/libX11
 	x11-libs/libXext
 	ao? ( media-libs/libao )
@@ -30,8 +31,7 @@ RDEPEND="
 	opengl? ( virtual/opengl )
 	sdl? ( media-libs/libsdl[X,joystick,video] )
 	udev? ( virtual/udev )
-	!qt4? ( x11-libs/gtk+:2 )
-	qt4? ( >=dev-qt/qtgui-4.5:4 )"
+"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
@@ -69,12 +69,6 @@ src_prepare() {
 	use sdl || disable_module input.sdl
 	use udev || disable_module input.udev
 
-	# regenerate .moc if needed
-	if use qt4; then
-		cd phoenix/qt || die
-		 "$(qt4_get_bindir)"/moc -i -I. -o platform.moc platform.moc.hpp || die
-	fi
-
 	for i in profile_accuracy profile_balanced profile_performance ; do
 		if use ${i} ; then
 			cp -dRP "${S}" "${S}_${i}" || die
@@ -85,11 +79,7 @@ src_prepare() {
 src_compile() {
 	local mytoolkit i
 
-	if use qt4; then
-		mytoolkit="qt"
-	else
-		mytoolkit="gtk"
-	fi
+	mytoolkit="gtk"
 
 	for i in profile_accuracy profile_balanced profile_performance ; do
 		if use ${i} ; then
