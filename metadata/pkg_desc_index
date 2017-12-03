@@ -4618,7 +4618,7 @@ dev-lang/spark 2017: Software development for high-reliability applications.
 dev-lang/spidermonkey 1.7.0-r3 1.8.5-r6 17.0.0-r4 17.0.0-r5 24.2.0-r3 24.2.0-r4 38.2.1_rc0 45.0.2 52.4.0_pre20171003-r1: Stand-alone JavaScript C++ library
 dev-lang/squirrel 2.2.4-r2 3.1: A interpreted language mainly used for games
 dev-lang/srf 1.0-r1 1.0-r2: The Simple Recursive Functions programming language
-dev-lang/swi-prolog 6.6.6 7.2.3-r1 7.4.1 7.4.2 7.5.13 7.5.14 7.5.15 7.6.0_rc1 7.6.0_rc2 7.6.0 7.7.0 7.7.1: free, small, and standard compliant Prolog compiler
+dev-lang/swi-prolog 6.6.6 7.2.3-r1 7.4.1 7.4.2 7.5.13 7.5.14 7.5.15 7.6.0 7.6.1 7.7.0 7.7.1 7.7.2: free, small, and standard compliant Prolog compiler
 dev-lang/swig 1.3.40-r2 2.0.9 2.0.12 3.0.5 3.0.8 3.0.10 3.0.11 3.0.12: Simplified Wrapper and Interface Generator
 dev-lang/tcc 0.9.26-r1 0.9.26-r2 0.9.26-r3 9999: A very small C compiler for ix86/amd64
 dev-lang/tcl 8.5.17 8.5.17-r100 8.6.5 8.6.6 8.6.7: Tool Command Language
@@ -17884,7 +17884,7 @@ sys-kernel/dracut 044-r1 044-r3 045-r2 046: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.49.2 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.5.0.8 3.5.1.0 3.5.1.1 3.5.2.0-r1 3.5.2.1 3.5.2.2 3.5.2.3 3.5.2.4 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 66 68: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-sources 3.10.107-r1 4.1.43-r1 4.4.87-r1 4.4.95 4.4.96 4.4.97 4.4.98 4.4.99 4.4.100 4.4.102 4.4.103 4.9.49-r1 4.9.59 4.9.60 4.9.61 4.9.62 4.9.63 4.9.64 4.9.65 4.9.66 4.12.12 4.12.13 4.12.14 4.13.10 4.13.11 4.13.12 4.13.13 4.13.14 4.13.15 4.13.16 4.14.1 4.14.2 4.14.3: Full sources including the Gentoo patchset for the 4.14 kernel tree
-sys-kernel/git-sources 4.14_rc1 4.14_rc2 4.14_rc3 4.14_rc4 4.14_rc5 4.14_rc6 4.14_rc7 4.14_rc8 4.15_rc1: The very latest -git version of the Linux kernel
+sys-kernel/git-sources 4.15_rc1 4.15_rc2: The very latest -git version of the Linux kernel
 sys-kernel/hardened-sources 4.4.8-r1 4.7.6 4.7.10 4.8.17-r2 4.9.21 4.9.22 4.9.23 4.9.24: Hardened kernel sources (kernel series 4.9)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
 sys-kernel/kergen 0.1.3 0.1.4: Kernel config generator
