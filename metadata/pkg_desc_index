@@ -13681,7 +13681,7 @@ media-sound/aacgain 1.9 1.9-r1: AACGain normalizes the volume of music files usi
 media-sound/aacplusenc 0.17.5: High-Efficiency AAC (AAC+) Encoder
 media-sound/abcde 2.5.4-r1 2.8.1: A command line CD encoder
 media-sound/abcm2ps 8.12.9 8.13.9 8.13.10 8.13.11 8.13.12: A program to convert abc files to Postscript files
-media-sound/abcmidi 2017.11.08 2017.11.10 2017.11.19: Programs for processing ABC music notation files
+media-sound/abcmidi 2017.11.08 2017.11.10 2017.11.19 2017.11.27: Programs for processing ABC music notation files
 media-sound/adplay 1.7: A console player for AdLib music
 media-sound/aeolus 0.9.0 0.9.5: A synthesised pipe organ emulator
 media-sound/alac_decoder 0.2.0-r1: Basic decoder for Apple Lossless Audio Codec files (ALAC)
@@ -14858,7 +14858,7 @@ net-irc/sic 1.2 1.2-r1: An extremly simple IRC client
 net-irc/telepathy-idle 0.2.0: Full-featured IRC connection manager for Telepathy
 net-irc/ultimate 3.0.2-r2: An IRCd server based on DALnet's DreamForge IRCd
 net-irc/unrealircd 3.2.10.7 4.0.12: An advanced Internet Relay Chat daemon
-net-irc/weechat 1.9.1 9999: Portable and multi-interface IRC client
+net-irc/weechat 1.9.1 2.0 9999: Portable and multi-interface IRC client
 net-irc/xaric 0.13.6: An IRC client similar to ircII, BitchX, or ircII EPIC
 net-irc/znc 1.6.3-r1 1.6.5 9999: An advanced IRC Bouncer
 net-libs/NativeThread 0_pre20080330: NativeThread for priorities on linux for freenet

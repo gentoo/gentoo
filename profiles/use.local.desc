@@ -5880,17 +5880,18 @@ net-irc/unrealircd:showlistmodes - Display channel modes in /LIST (only configur
 net-irc/unrealircd:shunnotices - Enable notifying a user when un-shunned
 net-irc/unrealircd:topicisnuhost - Enable displaying nick!user@host as topic setter
 net-irc/unrealircd:usermod - Enable /set* and /chg* commands
-net-irc/weechat:alias - Enable plugin for alias control.
-net-irc/weechat:buflist - Enable buflist plugin.
-net-irc/weechat:charset - Enable encoding conversions.
-net-irc/weechat:exec - Enable exec plugin.
-net-irc/weechat:fifo - Enable FIFO support (sh pipes).
-net-irc/weechat:irc - Enable IRC protocol support.
-net-irc/weechat:logger - Enable support for logging.
+net-irc/weechat:alias - Enable plugin for alias control
+net-irc/weechat:buflist - Enable buflist plugin
+net-irc/weechat:charset - Enable encoding conversions
+net-irc/weechat:exec - Enable exec plugin
+net-irc/weechat:fifo - Enable FIFO support (sh pipes)
+net-irc/weechat:fset - Enable fast set plugin
+net-irc/weechat:irc - Enable IRC protocol support
+net-irc/weechat:logger - Enable support for logging
 net-irc/weechat:relay - Enable relay plugin (experimental)
-net-irc/weechat:scripts - Build infrastructure for scripting.
-net-irc/weechat:trigger - Enable trigger plugin.
-net-irc/weechat:xfer - Enable xfer plugin support.
+net-irc/weechat:scripts - Build infrastructure for scripting
+net-irc/weechat:trigger - Enable trigger plugin
+net-irc/weechat:xfer - Enable xfer plugin support
 net-irc/znc:daemon - Allow znc to run as a system-wide service. Installs an init script and creates a znc user:group.
 net-irc/znc:zlib - Enable mod_deflate-like gzip support for znc's web interface using sys-libs/zlib.
 net-libs/aqbanking:chipcard - Enable support for DDV/RSA-chipcards
