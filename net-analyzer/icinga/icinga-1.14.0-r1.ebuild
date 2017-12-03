@@ -165,7 +165,7 @@ src_install() {
 
 	if use eventhandler ; then
 		dodir /etc/icinga/eventhandlers
-		fowners icinga:icinga /etc/icinga/eventhandlers
+#		fowners icinga:icinga /etc/icinga/eventhandlers
 	fi
 
 	keepdir /etc/icinga
