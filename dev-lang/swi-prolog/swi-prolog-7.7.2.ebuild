@@ -3,15 +3,13 @@
 
 EAPI=5
 
-MY_PV=${PV/_/-}
-
 inherit eutils flag-o-matic java-pkg-opt-2 multilib
 
 PATCHSET_VER="0"
 
 DESCRIPTION="free, small, and standard compliant Prolog compiler"
 HOMEPAGE="http://www.swi-prolog.org/"
-SRC_URI="http://www.swi-prolog.org/download/stable/src/swipl-${MY_PV}.tar.gz"
+SRC_URI="http://www.swi-prolog.org/download/devel/src/swipl-${PV}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
@@ -46,7 +44,7 @@ DEPEND="${RDEPEND}
 	X? ( x11-proto/xproto )
 	java? ( test? ( =dev-java/junit-3.8* ) )"
 
-S="${WORKDIR}/swipl-${MY_PV}"
+S="${WORKDIR}/swipl-${PV}"
 
 src_prepare() {
 	EPATCH_FORCE=yes
