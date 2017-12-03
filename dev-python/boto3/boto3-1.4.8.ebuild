@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc test"
 
-CDEPEND="
+RDEPEND="
 	>=dev-python/botocore-1.8.0[${PYTHON_USEDEP}]
 	<dev-python/botocore-1.9.0[${PYTHON_USEDEP}]
 	>=dev-python/jmespath-0.7.1[${PYTHON_USEDEP}]
@@ -32,12 +32,11 @@ DEPEND="
 		<dev-python/sphinx-1.7[${PYTHON_USEDEP}]
 	)
 	test? (
-		${CDEPEND}
+		${RDEPEND}
 		~dev-python/mock-1.3.0[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
 	)
 "
-RDEPEND="${CDEPEND}"
 
 python_compile_all() {
 	use doc && emake -C docs html
