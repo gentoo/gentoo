@@ -4,10 +4,10 @@ DESCRIPTION=Check validity of Internet email addresses
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Email-Valid/
 IUSE=test
-KEYWORDS=~amd64 ~hppa ~mips ~ppc ~ppc64 ~x86 ~x86-linux
+KEYWORDS=~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~x86 ~x86-linux
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Carp virtual/perl-File-Spec dev-perl/IO-CaptureOutput virtual/perl-IO dev-perl/MailTools dev-perl/Net-DNS >=dev-perl/Net-Domain-TLD-1.650.0 virtual/perl-Scalar-List-Utils dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RJ/RJBS/Email-Valid-1.202.tar.gz
 _eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
-_md5_=9a152049dfdc308ab975f67a2c7b6878
+_md5_=48c4b7dd4420c06975a2b027b97df8d1
