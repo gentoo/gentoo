@@ -32,7 +32,7 @@ SLOT="0/5-8" # vlc - vlccore
 IUSE="a52 aalib alsa altivec +audioqueue +avcodec +avformat bidi bluray cddb
 	chromaprint chromecast dbus dc1394 debug directfb directx dts dvb +dvbpsi dvd
 	dxva2 elibc_glibc +encode faad fdk fluidsynth +ffmpeg flac fontconfig +gcrypt
-	gme gnutls gstreamer httpd ieee1394 jack jpeg kate kde libass libav libcaca
+	gme gnutls gstreamer httpd ieee1394 jack jpeg kate libass libav libcaca
 	libnotify +libsamplerate libtiger linsys libtar lirc live lua macosx-eyetv
 	macosx-notifications macosx-qtkit matroska cpu_flags_x86_mmx modplug mp3
 	mpeg mtp musepack ncurses neon ogg omxil opencv opengl optimisememory opus
@@ -183,7 +183,6 @@ DEPEND="${RDEPEND}
 	app-arch/xz-utils:0
 	>=sys-devel/gettext-0.19.6:*
 	virtual/pkgconfig:*
-	!qt5? ( kde? ( kde-frameworks/kdelibs:4 ) )
 	amd64? ( dev-lang/yasm:* )
 	x86?   ( dev-lang/yasm:* )
 	xcb? ( x11-proto/xproto:0 )
@@ -284,10 +283,6 @@ src_configure() {
 
 	if use qt4 || use qt5 ; then
 		myconf+=" --enable-qt"
-	fi
-
-	if ! use qt5 && use kde ; then
-		myconf+=" --with-kde-solid"
 	fi
 
 	econf \

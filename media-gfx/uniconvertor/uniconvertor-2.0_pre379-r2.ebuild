@@ -29,6 +29,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-import.patch
 	"${FILESDIR}"/${P}-libimg.patch
 	"${FILESDIR}"/${P}-test.patch
+	"${FILESDIR}"/${P}-abs.patch
 	)
 
 python_prepare_all() {
