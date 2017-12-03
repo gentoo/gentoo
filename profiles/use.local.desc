@@ -3525,7 +3525,6 @@ kde-apps/step:qalculate - Enable the libqalculate library for unit conversion
 kde-frameworks/frameworkintegration:appstream - Enable AppStream software metadata support
 kde-frameworks/kconfigwidgets:man - Build and install man pages
 kde-frameworks/kded:man - Build and install man pages
-kde-frameworks/kdelibs:opengl - Enable OpenGL support for Plasma (GLApplet)
 kde-frameworks/kdelibs:qt3support - Enable kde3support/qt3support for very old applications
 kde-frameworks/kdesignerplugin:designer - Build KF5 widgets plugin for QtDesigner
 kde-frameworks/kdesignerplugin:webkit - Build kdewebkit plugin for QtDesigner
@@ -4845,6 +4844,7 @@ media-tv/xmltv:uk_bleb - Britain tv listing grabber
 media-tv/xmltv:uk_rt - Britain alternative tv listing grabber
 media-tv/xmltv:uk_tvguide - UK and Ireland tv listing grabber using TV Guide website
 media-tv/xmltv:za - South Africa tv listing grabber
+media-tv/xmltv:zz_sdjson - Grabber for schedulesDirect.org SD-JSON service (many countries)
 media-video/aegisub:uchardet - Enable charset discovery via app-i18n/uchardet
 media-video/aravis:X - Build the GTK+-based video viewer for aravis. This requires GStreamer and a few plugins but technically not the GST plugin for aravis.
 media-video/aravis:gstreamer - Build the GStreamer plugin for aravis, but not the video viewer.

@@ -14084,7 +14084,7 @@ media-tv/tvnamer 2.3 2.4: Automatic TV episode file renamer, data from thetvdb.c
 media-tv/v4l-dvb-saa716x 0.0.1_p20140322 0.0.1_p20141109 0.0.1_p20141109-r1 0.0.1_p20141109-r2 0.0.1_p20170225: driver for saa716x based dvb cards like TT S2-6400 or Skystar 2 eXpress HD
 media-tv/v4l-utils 1.6.2 1.10.1 1.12.3 1.12.5: Separate utilities ebuild from upstream v4l-utils package
 media-tv/w_scan 20141122: Scan for DVB-C/DVB-T/DVB-S channels without prior knowledge of frequencies and modulations
-media-tv/xmltv 0.5.57 0.5.67 0.5.68: Set of utilities to manage TV listings stored in the XMLTV format
+media-tv/xmltv 0.5.57 0.5.67 0.5.68 0.5.70: Set of utilities to manage TV listings stored in the XMLTV format
 media-video/2mandvd 1.8.5: The successor of ManDVD
 media-video/aacskeys 0.4.0c-r2 0.4.0e-r1: Decrypt keys from an AACS source (HD DVD / Blu-Ray)
 media-video/abby 0.4.8: GUI front-end for cclive and clive video extraction utilities
@@ -15526,7 +15526,7 @@ net-misc/vncrec 0.2-r1: VNC session recorder and player
 net-misc/vncsnapshot 1.2a: A command-line tool for taking JPEG snapshots of VNC servers
 net-misc/vrrpd 1.0 1.9: Virtual Router Redundancy Protocol Daemon
 net-misc/wakeonlan 0.41-r2: Client for Wake-On-LAN
-net-misc/wget 1.19.1-r1 1.19.1-r2 1.19.2 1.19.2-r1: Network utility to retrieve files from the WWW
+net-misc/wget 1.19.1-r1 1.19.1-r2 1.19.2 1.19.2-r1 1.19.2-r2: Network utility to retrieve files from the WWW
 net-misc/whatmask 1.2-r1: little C program to compute different subnet mask notations
 net-misc/whatportis 0.6: A command to search port names and numbers
 net-misc/whois 5.2.12 5.2.17 5.2.18: improved Whois Client
