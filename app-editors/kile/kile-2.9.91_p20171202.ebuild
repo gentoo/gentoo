@@ -12,7 +12,7 @@ HOMEPAGE="https://kile.sourceforge.io/"
 SRC_URI="https://github.com/KDE/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="FDL-1.2 GPL-2"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="+pdf +png"
 
 DEPEND="
