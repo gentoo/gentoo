@@ -7539,7 +7539,7 @@ dev-python/decoratortools 1.8-r1: Class, function, and metaclass decorators
 dev-python/deform 0.9.9: Another form generation library
 dev-python/defusedxml 0.4.1-r1 0.5.0: XML bomb protection for Python stdlib modules, an xml serialiser
 dev-python/demjson 2.2.4: encoder, decoder, and lint/validator for JSON (JavaScript Object Notation) compliant with RFC 4627
-dev-python/denonavr 0.5.3 0.5.4: Automation Library for Denon AVR receivers
+dev-python/denonavr 0.5.4 0.5.5: Automation Library for Denon AVR receivers
 dev-python/deprecation 1.0.1: A library to handle automated deprecations
 dev-python/dexml 0.5.1: Dead-simple Object-XML mapper for Python
 dev-python/dib-utils 0.0.8 0.0.10: Standalone tools related to diskimage-builder.
@@ -16698,7 +16698,7 @@ sci-mathematics/reduce 20110414-r1: A general-purpose computer algebra system
 sci-mathematics/relational 2.5: Educational tool for relational algebra
 sci-mathematics/rkward 0.6.5_p20170420: IDE for the R-project
 sci-mathematics/rngstreams 1.0.1: Multiple independent streams of pseudo-random numbers
-sci-mathematics/rstudio 1.1.368: IDE for the R language
+sci-mathematics/rstudio 1.1.368 1.1.383: IDE for the R language
 sci-mathematics/rw 0.7-r2: Compute rank-width decompositions of graphs
 sci-mathematics/sha1-polyml 5.5.0 5.6_p1: implementation of SHA1 is taken from the GNU coreutils package
 sci-mathematics/singular 3.1.6 4.0.2 4.0.3: Computer algebra system for polynomial computations
