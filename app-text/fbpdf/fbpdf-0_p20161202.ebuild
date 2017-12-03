@@ -15,13 +15,14 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	>=app-text/mupdf-1.10:0=
+	app-text/djvu:0=
 	dev-lang/mujs:0=
+	dev-libs/openssl:0=
+	!media-gfx/fbida[fbcon]
 	media-libs/freetype:2=
 	media-libs/jbig2dec:0=
-	virtual/jpeg:0=
 	media-libs/openjpeg:0=
-	dev-libs/openssl:0=
-	app-text/djvu:0=
+	virtual/jpeg:0=
 "
 
 DEPEND="${RDEPEND}"
