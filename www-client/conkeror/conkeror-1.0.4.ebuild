@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit eutils toolchain-funcs fdo-mime
+inherit toolchain-funcs desktop xdg-utils
 
 DESCRIPTION="A Mozilla-based web browser whose design is inspired by GNU Emacs"
 HOMEPAGE="http://conkeror.org/"
@@ -17,7 +17,8 @@ LICENSE="|| ( MPL-1.1 GPL-2 LGPL-2.1 ) CC-BY-SA-3.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
-RDEPEND="|| ( >=www-client/firefox-5.0 >=www-client/firefox-bin-23.0 )"
+RDEPEND="|| ( ( >=www-client/firefox-5.0 <www-client/firefox-57 )
+	( >=www-client/firefox-bin-23.0 <www-client/firefox-bin-57 ) )"
 
 S="${WORKDIR}/${PN}"
 
@@ -50,9 +51,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }
