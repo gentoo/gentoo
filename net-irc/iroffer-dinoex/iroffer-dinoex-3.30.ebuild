@@ -42,7 +42,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-config.patch"\
+	epatch "${FILESDIR}/${PN}-3.29-config.patch"\
 	       "${FILESDIR}/${PN}-Werror.patch"
 	epatch_user
 	l10n_find_plocales_changes "" 'help-admin-' '.txt'
