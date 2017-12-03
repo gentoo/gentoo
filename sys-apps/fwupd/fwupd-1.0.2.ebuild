@@ -15,8 +15,10 @@ LICENSE="GPL-2+"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="colorhug dell doc elf +man systemd uefi uefi_labels"
-REQUIRED_USE="uefi_labels? ( ${PYTHON_REQUIRED_USE} )"
+IUSE="colorhug dell doc gpg +man systemd test uefi uefi_labels"
+REQUIRED_USE="
+	uefi_labels? ( ${PYTHON_REQUIRED_USE} )
+"
 
 RDEPEND="
 	app-crypt/gpgme
@@ -28,12 +30,16 @@ RDEPEND="
 	>=dev-libs/libgusb-0.2.9[introspection]
 	>=net-libs/libsoup-2.51.92:2.4
 	>=sys-auth/polkit-0.103
+	virtual/libelf:0=
 	colorhug? ( >=x11-misc/colord-1.2.12:0= )
 	dell? (
 		sys-libs/efivar
 		>=sys-libs/libsmbios-2.3.3
 	)
-	elf? ( virtual/libelf:0= )
+	gpg? (
+		app-crypt/gpgme
+		dev-libs/libgpg-error
+	)
 	systemd? ( >=sys-apps/systemd-231 )
 	!systemd? ( >=sys-auth/consolekit-1.0.0 )
 	uefi? ( >=sys-apps/fwupdate-5 )
@@ -57,24 +63,35 @@ DEPEND="
 	virtual/pkgconfig
 	doc? ( dev-util/gtk-doc )
 	man? ( app-text/docbook-sgml-utils )
+	test? ( net-libs/gnutls[tools] )
 "
 
+# tests require some ominous "certtool" which has not been packages for Gentoo yet
+RESTRICT="test"
+
 REQUIRED_USE="dell? ( uefi )"
+
+src_prepare() {
+	default
+	sed -i -e "s/'--create'/'--absolute-name', '--create'/" data/tests/builder/meson.build || die
+}
 
 src_configure() {
 	xdg_environment_reset
 	local emesonargs=(
-		-Denable-colorhug="$(usex colorhug true false)"
-		-Denable-consolekit="$(usex systemd false true)"
-		-Denable-dell="$(usex dell true false)"
-		-Denable-doc="$(usex doc true false)"
-		-Denable-man="$(usex man true false)"
-		-Denable-libelf="$(usex elf true false)"
-		-Denable-systemd="$(usex systemd true false)"
+		-Dconsolekit="$(usex systemd false true)"
+		-Dgpg="$(usex gpg true false)"
+		-Dgtkdoc="$(usex doc true false)"
+		-Dman="$(usex man true false)"
+		-Dplugin_colorhug="$(usex colorhug true false)"
+		-Dplugin_dell="$(usex dell true false)"
+		-Dplugin_synaptics="$(usex dell true false)"
 		# requires libtbtfwu which is not packaged yet
-		-Denable-thunderbolt=false
-		-Denable-uefi="$(usex uefi true false)"
-		-Denable-uefi-labels="$(usex uefi_labels true false)"
+		-Dplugin_thunderbolt=false
+		-Dplugin_uefi="$(usex uefi true false)"
+		-Dplugin_uefi-labels="$(usex uefi_labels true false)"
+		-Dsystemd="$(usex systemd true false)"
+		-Dtests="$(usex test true false)"
 	)
 	meson_src_configure
 }

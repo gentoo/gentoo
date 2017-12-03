@@ -11,6 +11,7 @@
     <flag name="dell">Enable Dell-specific support.</flag>
     <flag name="elf">Enable libelf support through
       <pkg>dev-libs/libelf</pkg> package.</flag>
+    <flag name="gpg">Enable GPG support.</flag>
     <flag name="man">Build and install man pages</flag>
     <flag name="uefi">Enable UEFI support</flag>
     <flag name="uefi_labels">Enable UEFI labels support</flag>
