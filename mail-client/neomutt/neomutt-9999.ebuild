@@ -3,19 +3,25 @@
 
 EAPI=6
 
-inherit autotools eutils flag-o-matic git-r3
+inherit autotools eutils flag-o-matic
 
-EGIT_REPO_URI="https://github.com/neomutt/neomutt.git"
-EGIT_CHECKOUT_DIR="${WORKDIR}/neomutt-${P}"
-KEYWORDS=""
+if (( ${PV} == 9999 )); then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/neomutt/neomutt.git"
+	EGIT_CHECKOUT_DIR="${WORKDIR}/neomutt-${P}"
+	KEYWORDS=""
+else
+	SRC_URI="https://github.com/${PN}/${PN}/archive/${P}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
+fi
 
 DESCRIPTION="A small but very powerful text-based mail client"
 HOMEPAGE="https://www.neomutt.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="berkdb debug doc gdbm gnutls gpgme idn kerberos kyotocabinet libressl
-	lmdb nls notmuch pgp_classic qdbm sasl selinux slang smime_classic ssl
+IUSE="berkdb doc gdbm gnutls gpgme idn kerberos kyotocabinet libressl lmdb nls
+	notmuch pgp_classic qdbm sasl selinux slang smime_classic ssl
 	tokyocabinet"
 
 CDEPEND="
@@ -61,7 +67,6 @@ src_prepare() {
 
 src_configure() {
 	local myconf=(
-		"$(use_enable debug)"
 		"$(use_enable doc)"
 		"$(use_enable gpgme)"
 		"$(use_enable nls)"
