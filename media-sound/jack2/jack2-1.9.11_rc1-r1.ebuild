@@ -49,6 +49,10 @@ RDEPEND="${CDEPEND}
 
 DOCS=( ChangeLog README README_NETJACK2 TODO )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc7.patch
+)
+
 src_prepare() {
 	default
 	multilib_copy_sources
