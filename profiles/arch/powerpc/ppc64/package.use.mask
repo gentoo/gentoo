@@ -103,10 +103,8 @@ kde-apps/marble	gps
 
 # Samuli Suominen <ssuominen@gentoo.org> (21 Jun 2010)
 # These need stable kdelibs-4.
-app-i18n/uim kde
 app-arch/p7zip kde
 dev-vcs/subversion kwallet
-media-video/vlc kde
 net-libs/libproxy kde
 
 # Kacper Kowalik <xarthisius@gentoo.org> (30 May 2010)
