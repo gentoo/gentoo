@@ -3,20 +3,26 @@
 
 EAPI=6
 
-inherit autotools eutils flag-o-matic git-r3
+inherit autotools eutils flag-o-matic
 
-EGIT_REPO_URI="https://github.com/neomutt/neomutt.git"
-EGIT_CHECKOUT_DIR="${WORKDIR}/neomutt-${P}"
-KEYWORDS=""
+if (( ${PV} == 9999 )); then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/neomutt/neomutt.git"
+	EGIT_CHECKOUT_DIR="${WORKDIR}/neomutt-${P}"
+	KEYWORDS=""
+else
+	SRC_URI="https://github.com/${PN}/${PN}/archive/${P}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
+fi
 
 DESCRIPTION="A small but very powerful text-based mail client"
 HOMEPAGE="https://www.neomutt.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="berkdb debug doc gdbm gnutls gpgme idn kerberos kyotocabinet libressl
-	lmdb nls notmuch pgp_classic qdbm sasl selinux slang smime_classic ssl
-	tokyocabinet"
+IUSE="berkdb crypt doc gdbm gnutls gpg gpgme idn kerberos kyotocabinet
+	libressl lmdb nls notmuch pgp_classic qdbm sasl selinux slang smime
+	smime_classic ssl tokyocabinet"
 
 CDEPEND="
 	app-misc/mime-types
@@ -28,6 +34,7 @@ CDEPEND="
 	qdbm? ( dev-db/qdbm )
 	tokyocabinet? ( dev-db/tokyocabinet )
 	gnutls? ( >=net-libs/gnutls-1.0.17 )
+	gpg? ( >=app-crypt/gpgme-0.9.0 )
 	gpgme? ( >=app-crypt/gpgme-0.9.0 )
 	idn? ( net-dns/libidn )
 	kerberos? ( virtual/krb5 )
@@ -61,12 +68,14 @@ src_prepare() {
 
 src_configure() {
 	local myconf=(
-		"$(use_enable debug)"
 		"$(use_enable doc)"
+		"$(use_enable gpg gpgme)"
 		"$(use_enable gpgme)"
 		"$(use_enable nls)"
 		"$(use_enable notmuch)"
+		"$(use_enable crypt pgp)"
 		"$(use_enable pgp_classic pgp)"
+		"$(use_enable smime)"
 		"$(use_enable smime_classic smime)"
 		"$(use_with berkdb bdb)"
 		"$(use_with gdbm)"
@@ -108,4 +117,14 @@ src_install() {
 	fi
 
 	dodoc COPYRIGHT LICENSE* ChangeLog* README*
+}
+
+pkg_postinst() {
+	ewarn "Pleae note that the crypto related USE flags of neomutt have changed."
+	ewarn "(https://bugs.gentoo.org/637176)"
+	ewarn "crypt -> pgp_classic"
+	ewarn "gpg -> gpgme"
+	ewarn "smime -> smime_classic"
+	ewarn "The old USE flags still work but their use is deprecated and will"
+	ewarn "be removed in a future release."
 }

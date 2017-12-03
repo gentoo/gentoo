@@ -2,14 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils flag-o-matic gnome2-utils
+inherit flag-o-matic gnome2-utils ltprune xdg-utils
 
 DESCRIPTION="multiplayer strategy game (Civilization Clone)"
 HOMEPAGE="http://www.freeciv.org/"
-SRC_URI="mirror://sourceforge/freeciv/${P}.tar.bz2"
+SRC_URI="mirror://sourceforge/freeciv/${P/_/-}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
+[[ ${PV} != *_beta* ]] || [[ ${PV} != *_rc* ]] || \
 KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE="auth aimodules dedicated +gtk ipv6 mapimg modpack mysql nls qt5 readline sdl +server +sound sqlite system-lua"
 
@@ -37,25 +38,27 @@ RDEPEND="app-arch/bzip2
 			dev-qt/qtwidgets:5
 		)
 		sdl? (
-			media-libs/libsdl[video]
-			media-libs/sdl-gfx
-			media-libs/sdl-image[png]
-			media-libs/sdl-ttf
+			media-libs/libsdl2[video]
+			media-libs/sdl2-gfx
+			media-libs/sdl2-image[png]
+			media-libs/sdl2-ttf
 		)
 		server? ( aimodules? ( sys-devel/libtool:2 ) )
 		sound? (
-			media-libs/libsdl[sound]
-			media-libs/sdl-mixer[vorbis]
+			media-libs/libsdl2[sound]
+			media-libs/sdl2-mixer[vorbis]
 		)
 		!sdl? ( !gtk? ( x11-libs/gtk+:2 ) )
 	)
-	system-lua? ( >=dev-lang/lua-5.2 )"
+	system-lua? ( >=dev-lang/lua-5.3 )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	!dedicated? (
 		x11-proto/xextproto
 		nls? ( sys-devel/gettext )
 	)"
+
+S="${WORKDIR}/${P/_/-}"
 
 pkg_setup() {
 	if use !dedicated && use !server ; then
@@ -82,16 +85,16 @@ src_prepare() {
 }
 
 src_configure() {
-	local myclient myopts mydatabase
+	local myclient mydatabase myeconfargs
 
 	if use auth ; then
-		if use !mysql && use !sqlite ; then
+		if ! use mysql && ! use sqlite ; then
 			einfo "No database backend chosen, defaulting"
 			einfo "to mysql!"
 			mydatabase=mysql
 		else
-			use mysql && mydatabase="${mydatabase} mysql"
-			use sqlite && mydatabase="${mydatabase} sqlite3"
+			use mysql && mydatabase+=" mysql"
+			use sqlite && mydatabase+=" sqlite3"
 		fi
 	else
 		mydatabase=no
@@ -99,46 +102,53 @@ src_configure() {
 
 	if use dedicated ; then
 		myclient="no"
-		myopts="--enable-server"
+		myeconfargs+=(
+			--enable-server
+			--enable-freeciv-manual=html
+		)
 	else
 		if use !sdl && use !gtk && ! use qt5 ; then
 			einfo "No client backend given, defaulting to"
 			einfo "gtk2 client!"
 			myclient="gtk2"
 		else
-			use sdl && myclient+=" sdl"
+			use sdl && myclient+=" sdl2"
 			use gtk && myclient+=" gtk2"
 			if use qt5 ; then
 				myclient+=" qt"
 				append-cxxflags -std=c++11
 			fi
 		fi
-		myopts="$(use_enable server) --without-ggz-client"
+		myeconfargs+=(
+			$(use_enable server)
+			$(use_enable server freeciv-manual html )
+		)
 	fi
 
-	# disabling shared libs will break aimodules USE flag
-	econf \
-		--localedir=/usr/share/locale \
-		$(use_enable ipv6) \
-		$(use_enable mapimg) \
-		--enable-aimodules="$(usex aimodules "yes" "no")" \
-		--enable-shared \
-		--enable-fcdb="${mydatabase}" \
-		$(use_enable nls) \
-		$(use_with readline) \
-		$(use_enable sound sdl-mixer) \
-		--enable-fcmp="$(usex modpack "gtk2" "no")" \
-		$(use_enable system-lua sys-lua) \
-		${myopts} \
+	myeconfargs+=(
+		--enable-aimodules="$(usex aimodules "yes" "no")"
 		--enable-client="${myclient}"
+		--enable-fcdb="${mydatabase}"
+		--enable-fcmp="$(usex modpack "gtk2" "no")"
+		# disabling shared libs will break aimodules USE flag
+		--enable-shared
+		--localedir=/usr/share/locale
+		$(use_enable ipv6)
+		$(use_enable mapimg)
+		$(use_enable nls)
+		$(use_enable sound sdl-mixer)
+		$(use_enable system-lua sys-lua)
+		$(use_with readline)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
 	default
 
 	if use dedicated ; then
-		rm -rf "${D}/usr/share/pixmaps"
-		rm -f "${D}"/usr/share/man/man6/freeciv-{client,gtk2,gtk3,modpack,qt,sdl,xaw}*
+		rm -rf "${ED%/}/usr/share/pixmaps"
+		rm -f "${ED%/}"/usr/share/man/man6/freeciv-{client,gtk2,gtk3,modpack,qt,sdl,xaw}*
 	else
 		if use server ; then
 			# Create and install the html manual. It can't be done for dedicated
@@ -148,18 +158,18 @@ src_install() {
 			# something like that, but then it's a PITA to avoid orphan files...
 			./tools/freeciv-manual || die
 			docinto html
-			dodoc manual*.html
+			dodoc classic*.html
 		fi
 		if use sdl ; then
 			make_desktop_entry freeciv-sdl "Freeciv (SDL)" freeciv-client
 		else
-			rm -f "${D}"/usr/share/man/man6/freeciv-sdl*
+			rm -f "${ED%/}"/usr/share/man/man6/freeciv-sdl*
 		fi
-		rm -f "${D}"/usr/share/man/man6/freeciv-xaw*
+		rm -f "${ED%/}"/usr/share/man/man6/freeciv-xaw*
 	fi
-	find "${D}" -name "freeciv-manual*" -delete
+	find "${ED}" -name "freeciv-manual*" -delete
 
-	rm -f "${D}/usr/$(get_libdir)"/*.a
+	rm -f "${ED%/}/usr/$(get_libdir)"/*.a
 	prune_libtool_files
 }
 
