@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ DESCRIPTION="Library for managing Bugzilla bug reports from the CLI"
 HOMEPAGE="https://github.com/monsieurp/libzilla"
 SRC_URI="https://github.com/monsieurp/libzilla/archive/v${PV}.zip -> ${P}.zip"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 LICENSE="MIT"
 SLOT="0"
 IUSE=""
