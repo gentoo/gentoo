@@ -5,11 +5,10 @@ EAPI=6
 
 inherit autotools eutils flag-o-matic
 
-if (( ${PV} == 9999 )); then
+if [[ ${PV} =~ 9999$ ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/neomutt/neomutt.git"
 	EGIT_CHECKOUT_DIR="${WORKDIR}/neomutt-${P}"
-	KEYWORDS=""
 else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
