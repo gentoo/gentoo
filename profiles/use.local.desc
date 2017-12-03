@@ -7531,6 +7531,7 @@ sys-apps/flashrom:wiki - Enable wiki informations, like supported devices etc.
 sys-apps/fwupd:colorhug - Enable ColorHug support through x11-misc/colord package.
 sys-apps/fwupd:dell - Enable Dell-specific support.
 sys-apps/fwupd:elf - Enable libelf support through dev-libs/libelf package.
+sys-apps/fwupd:gpg - Enable GPG support.
 sys-apps/fwupd:man - Build and install man pages
 sys-apps/fwupd:uefi - Enable UEFI support
 sys-apps/fwupd:uefi_labels - Enable UEFI labels support
