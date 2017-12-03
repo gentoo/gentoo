@@ -47,6 +47,8 @@ pkg_setup() {
 src_prepare() {
 	# remove '-Werror' wrt bug #438424
 	sed -e 's:-Werror::' -i Makefile || die 'sed failed!'
+
+	epatch_user
 }
 
 src_configure() {
