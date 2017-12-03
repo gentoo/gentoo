@@ -15,69 +15,43 @@ HOMEPAGE="http://quassel-irc.org/"
 LICENSE="GPL-3"
 KEYWORDS="amd64 ~arm ~ppc x86 ~amd64-linux ~sparc-solaris"
 SLOT="0"
-IUSE="ayatana crypt dbus debug kde monolithic phonon postgres qt5 +server
+IUSE="crypt dbus debug kde monolithic phonon postgres +server
 snorenotify +ssl syslog webkit X"
 
 SERVER_RDEPEND="
-	qt5? (
-		dev-qt/qtscript:5
-		crypt? ( app-crypt/qca:2[qt5,ssl] )
-		postgres? ( dev-qt/qtsql:5[postgres] )
-		!postgres? ( dev-qt/qtsql:5[sqlite] dev-db/sqlite:3[threadsafe(+),-secure-delete] )
-	)
-	!qt5? (
-		dev-qt/qtscript:4
-		crypt? ( app-crypt/qca:2[qt4,ssl] )
-		postgres? ( dev-qt/qtsql:4[postgres] )
-		!postgres? ( dev-qt/qtsql:4[sqlite] dev-db/sqlite:3[threadsafe(+),-secure-delete] )
-	)
+	dev-qt/qtscript:5
+	crypt? ( app-crypt/qca:2[qt5(+),ssl] )
+	postgres? ( dev-qt/qtsql:5[postgres] )
+	!postgres? ( dev-qt/qtsql:5[sqlite] dev-db/sqlite:3[threadsafe(+),-secure-delete] )
 	syslog? ( virtual/logger )
 "
 
 GUI_RDEPEND="
-	qt5? (
-		dev-qt/qtgui:5
-		dev-qt/qtwidgets:5
-		dbus? (
-			>=dev-libs/libdbusmenu-qt-0.9.3_pre20140619[qt5(+)]
-			dev-qt/qtdbus:5
-		)
-		kde? (
-			kde-frameworks/kconfigwidgets:5
-			kde-frameworks/kcoreaddons:5
-			kde-frameworks/knotifications:5
-			kde-frameworks/knotifyconfig:5
-			kde-frameworks/ktextwidgets:5
-			kde-frameworks/kwidgetsaddons:5
-			kde-frameworks/kxmlgui:5
-			kde-frameworks/sonnet:5
-		)
-		phonon? ( media-libs/phonon[qt5(+)] )
-		snorenotify? ( >=x11-libs/snorenotify-0.7.0 )
-		webkit? ( dev-qt/qtwebkit:5 )
+	dev-qt/qtgui:5
+	dev-qt/qtwidgets:5
+	dbus? (
+		>=dev-libs/libdbusmenu-qt-0.9.3_pre20140619[qt5(+)]
+		dev-qt/qtdbus:5
 	)
-	!qt5? (
-		dev-qt/qtgui:4
-		ayatana? ( dev-libs/libindicate-qt )
-		dbus? (
-			>=dev-libs/libdbusmenu-qt-0.9.3_pre20140619[qt4]
-			dev-qt/qtdbus:4
-			kde? (
-				kde-frameworks/kdelibs:4
-				kde-frameworks/oxygen-icons:*
-			)
-		)
-		phonon? ( media-libs/phonon[qt4] )
+	kde? (
+		kde-frameworks/kconfigwidgets:5
+		kde-frameworks/kcoreaddons:5
+		kde-frameworks/knotifications:5
+		kde-frameworks/knotifyconfig:5
+		kde-frameworks/ktextwidgets:5
+		kde-frameworks/kwidgetsaddons:5
+		kde-frameworks/kxmlgui:5
+		kde-frameworks/sonnet:5
 	)
+	phonon? ( media-libs/phonon[qt5(+)] )
+	snorenotify? ( >=x11-libs/snorenotify-0.7.0 )
+	webkit? ( dev-qt/qtwebkit:5 )
 "
 
 RDEPEND="
+	dev-qt/qtcore:5
+	dev-qt/qtnetwork:5[ssl?]
 	sys-libs/zlib
-	qt5? (
-		dev-qt/qtcore:5
-		dev-qt/qtnetwork:5[ssl?]
-	)
-	!qt5? ( dev-qt/qtcore:4[ssl?] )
 	monolithic? (
 		${SERVER_RDEPEND}
 		${GUI_RDEPEND}
@@ -88,26 +62,22 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}
-	qt5? (
-		dev-qt/linguist-tools:5
-		kde-frameworks/extra-cmake-modules
-	)
+	dev-qt/linguist-tools:5
+	kde-frameworks/extra-cmake-modules
 "
 
 DOCS=( AUTHORS ChangeLog README )
 
 REQUIRED_USE="
 	|| ( X server monolithic )
-	ayatana? ( || ( X monolithic ) )
 	crypt? ( || ( server monolithic ) )
 	dbus? ( || ( X monolithic ) )
 	kde? ( || ( X monolithic ) phonon )
 	phonon? ( || ( X monolithic ) )
 	postgres? ( || ( server monolithic ) )
-	qt5? ( !ayatana )
-	snorenotify? ( qt5 || ( X monolithic ) )
+	snorenotify? ( || ( X monolithic ) )
 	syslog? ( || ( server monolithic ) )
-	webkit? ( qt5 || ( X monolithic ) )
+	webkit? ( || ( X monolithic ) )
 "
 
 pkg_setup() {
@@ -122,17 +92,13 @@ pkg_setup() {
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package ayatana IndicateQt)
-		$(cmake-utils_use_find_package crypt QCA2)
 		$(cmake-utils_use_find_package crypt QCA2-QT5)
-		$(cmake-utils_use_find_package dbus dbusmenu-qt)
 		$(cmake-utils_use_find_package dbus dbusmenu-qt5)
 		-DWITH_KDE=$(usex kde)
 		-DWITH_OXYGEN=$(usex !kde)
 		-DWANT_MONO=$(usex monolithic)
-		$(cmake-utils_use_find_package phonon Phonon)
 		$(cmake-utils_use_find_package phonon Phonon4Qt5)
-		-DUSE_QT5=$(usex qt5)
+		-DUSE_QT5=ON
 		-DWANT_CORE=$(usex server)
 		$(cmake-utils_use_find_package snorenotify LibsnoreQt5)
 		-DWITH_WEBKIT=$(usex webkit)

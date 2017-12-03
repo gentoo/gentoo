@@ -3,8 +3,6 @@
 
 EAPI=6
 
-KDE_LINGUAS="bs ca ca@valencia cs da de el en_GB es et eu fi fr gl
-hu it kk nds nl pl pt pt_BR ro ru sk sv tr uk zh_CN zh_TW"
 KDE_HANDBOOK="optional"
 SQL_REQUIRED="always"
 VIRTUALX_REQUIRED="test"

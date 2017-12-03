@@ -3,9 +3,6 @@
 
 EAPI=6
 
-KDE_LINGUAS="bs ca ca@valencia cs da de el en_GB es et eu fi fr ga gl hu it ja
-lt lv nb nl pa pl pt pt_BR ro ru sl sr sr@ijekavian sr@ijekavianlatin sr@latin
-sv tr uk zh_CN zh_TW"
 KDE_REQUIRED="never"
 KDE_HANDBOOK="optional"
 SQL_REQUIRED="always"
@@ -30,19 +27,19 @@ fi
 
 # ipod requires gdk enabled and also gtk compiled in libgpod
 COMMONDEPEND="
-	app-crypt/qca:2[qt4(+)]
-	kde-frameworks/kdelibs:4[opengl?,plasma(+)]
 	$(add_kdeapps_dep kdebase-kioslaves)
+	app-crypt/qca:2[qt4]
+	>=dev-qt/qtcore-4.8:4
+	>=dev-qt/qtdbus-4.8:4
+	>=dev-qt/qtscript-4.8:4
+	>=kde-frameworks/kdelibs-4.14.37:4[opengl?,plasma]
 	>=media-libs/taglib-1.7[asf(+),mp4(+)]
 	>=media-libs/taglib-extras-1.0.1
 	sys-libs/zlib
 	>=virtual/mysql-5.1[embedded?]
-	>=dev-qt/qtcore-4.8:4
-	>=dev-qt/qtdbus-4.8:4
-	>=dev-qt/qtscript-4.8:4
 	>=x11-libs/qtscriptgenerator-0.1.0
 	ipod? ( >=media-libs/libgpod-0.7.0[gtk] )
-	lastfm? ( >=media-libs/liblastfm-1.0.3[qt4(+)] )
+	lastfm? ( >=media-libs/liblastfm-1.0.3[qt4] )
 	mp3tunes? (
 		dev-libs/glib:2
 		dev-libs/libxml2

@@ -3,10 +3,6 @@
 
 EAPI=6
 
-KDE_LINGUAS="af ar be bg bn br ca ca@valencia cs cy da de el en_GB eo es et eu
-fa fi fr ga gl he hi hne hr hu is it ja km lt lv mai mk ms nb nds ne nl nn oc
-pa pl pt pt_BR ro ru se sk sl sv ta tg th tr uk uz uz@cyrillic vi xh zh_CN
-zh_TW"
 KDE_DOC_DIRS="doc doc-translations/%lingua_${PN}"
 inherit kde4-base
 

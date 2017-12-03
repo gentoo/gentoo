@@ -86,6 +86,7 @@ dev-vcs/subversion kwallet
 games-arcade/jumpnbump kde
 kde-apps/katepart handbook
 kde-frameworks/kdelibs handbook policykit
+net-irc/quassel kde
 net-libs/libproxy kde
 sys-auth/polkit kde
 sys-block/gparted kde
