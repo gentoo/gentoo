@@ -18,7 +18,7 @@ else
 	MY_PV="${PV/_rc/-RC}"
 	MY_P="${PN}-${MY_PV}"
 	S="${WORKDIR}/${MY_P}"
-	SRC_URI="https://github.com/jackaudio/${PN}/archive/v${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
+	SRC_URI="https://github.com/jackaudio/jack2/releases/download/v${MY_PV}/${MY_P}.tar.gz"
 	KEYWORDS="~amd64 ~ppc ~x86"
 fi
 
