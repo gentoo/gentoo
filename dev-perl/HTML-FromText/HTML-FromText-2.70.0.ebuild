@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Convert plain text to HTML"
 
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~mips ~ppc ~x86"
+KEYWORDS="~amd64 ~arm ~hppa ~mips ~ppc ~x86"
 IUSE="test"
 
 # Email::Find::addrspec -> Email-Find 0.09

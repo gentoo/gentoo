@@ -50,7 +50,7 @@ openexr
 gimp
 
 # No hardware to test by the team
-dvb
+hdhomerun
 ios
 ipod
 

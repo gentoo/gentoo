@@ -286,10 +286,6 @@ src_prepare_perlcross() {
 	cp -a ../perl-cross-${CROSS_VER}/* . || die
 
 	sed -i \
-		-e 's/(15 + $CLEANUP)/(13 + $CLEANUP)/' \
-		cnf/diffs/perl5-${PV}/makemaker-test.patch || die
-
-	sed -i \
 		-e 's/MakeMaker\.pm .*/MakeMaker.pm bf9174c70a0e50ff2fee4552c7df89b37d292da1/' \
 		-e 's/MM_Unix\.pm .*/MM_Unix.pm b0ec308fe2d7dcfcef5732880db0fae1f4ea80fa/' \
 		cnf/diffs/perl5-${PV}/customized.patch || die
