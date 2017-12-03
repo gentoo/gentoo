@@ -21,6 +21,8 @@ Reviewers: #frameworks, dfaure
 Tags: #frameworks
 
 Differential Revision: https://phabricator.kde.org/D8836
+
+* asturm: Fix build with Qt-5.7.1
 ---
  src/core/mkpathjob.cpp | 17 ++++++++++++++---
  1 file changed, 14 insertions(+), 3 deletions(-)
@@ -37,7 +39,7 @@ index bff46ca..a177805 100644
 -                m_url.setPath(m_url.path() + '/' + m_pathComponents.at(i));
 +            const QString pathComponent = m_pathComponents.at(i);
 +            if (pathComponent == basePathComponents.at(i)) {
-+                if (m_url.path() == QLatin1Char('/')) {
++                if (m_url.path() == QLatin1String("/")) {
 +                    m_url.setPath(m_url.path() + pathComponent);
 +                } else {
 +                    m_url.setPath(m_url.path() + '/' + pathComponent);
@@ -52,7 +54,7 @@ index bff46ca..a177805 100644
 -                QString testDir = m_url.toLocalFile() + '/' + m_pathComponents.at(i);
 +                const QString localFile = m_url.toLocalFile();
 +                QString testDir;
-+                if (localFile == QLatin1Char('/')) {
++                if (localFile == QLatin1String("/")) {
 +                    testDir = localFile + m_pathComponents.at(i);
 +                } else {
 +                    testDir = localFile + '/' + m_pathComponents.at(i);
