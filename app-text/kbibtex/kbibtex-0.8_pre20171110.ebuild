@@ -3,7 +3,7 @@
 
 EAPI=6
 
-COMMIT=49764d8677e46cddee0b20e60749983b7924c79d
+COMMIT=4ce7c51f163508f293c3fd39a716770cbb14ef7d
 KDE_HANDBOOK="optional"
 KDE_TEST="true"
 inherit kde5 vcs-snapshot

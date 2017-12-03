@@ -3,15 +3,16 @@
 
 EAPI=6
 
+COMMIT=dbaf4c55edd2af4f08571fee364377d48c9a0df5
 KDE_HANDBOOK="forceoptional"
-inherit kde5
+inherit kde5 vcs-snapshot
 
 DESCRIPTION="Latex Editor and TeX shell based on KDE Frameworks"
-HOMEPAGE="http://kile.sourceforge.net/"
-[[ ${PV} != *9999* ]] && SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+HOMEPAGE="https://kile.sourceforge.io/"
+SRC_URI="https://github.com/KDE/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="FDL-1.2 GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE="+pdf +png"
 
 DEPEND="
@@ -52,7 +53,7 @@ RDEPEND="${DEPEND}
 	)
 	png? (
 		app-text/dvipng
-		|| ( media-gfx/imagemagick[png] media-gfx/graphicsmagick[imagemagick,png] )
+		virtual/imagemagick-tools[png?]
 	)
 "
 
