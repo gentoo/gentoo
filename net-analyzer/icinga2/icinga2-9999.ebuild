@@ -72,7 +72,6 @@ src_configure() {
 		-DICINGA2_PLUGINDIR="/usr/$(get_libdir)/nagios/plugins"
 		-DICINGA2_USER=icinga
 		-DICINGA2_GROUP=icingacmd
-		-DICINGA2_COMMAND_USER=icinga
 		-DICINGA2_COMMAND_GROUP=icingacmd
 		-DINSTALL_SYSTEMD_SERVICE_AND_INITSCRIPT=yes
 		-DLOGROTATE_HAS_SU=ON
