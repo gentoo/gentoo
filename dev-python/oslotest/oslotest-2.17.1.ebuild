@@ -47,8 +47,6 @@ RDEPEND="
 
 python_compile_all() {
 	if use doc; then
-		esetup.py build_sphinx
-	else
 		esetup.py build_sphinx -b man
 	fi
 }
