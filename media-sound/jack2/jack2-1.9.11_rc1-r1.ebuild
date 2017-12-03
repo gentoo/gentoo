@@ -26,7 +26,9 @@ LICENSE="GPL-2"
 SLOT="2"
 IUSE="alsa celt dbus doc opus pam classic sndfile libsamplerate readline"
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+REQUIRED_USE="
+	${PYTHON_REQUIRED_USE}
+	|| ( classic dbus )"
 
 CDEPEND="media-libs/libsamplerate
 	media-libs/libsndfile
