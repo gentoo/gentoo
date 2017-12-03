@@ -166,6 +166,7 @@ app-admin/sudo:openssl - Use SHA2 from dev-libs/openssl instead of sudo's intern
 app-admin/sudo:sendmail - Allow sudo to send emails with sendmail
 app-admin/sysklogd:logrotate - use app-admin/logrotate for rotating logs rather than custom cron scripts
 app-admin/syslog-ng:amqp - Enable support for AMQP destinations
+app-admin/syslog-ng:http - Enable support for HTTP destinations
 app-admin/syslog-ng:json - Enable support for JSON template formatting via dev-libs/json-c
 app-admin/syslog-ng:mongodb - Enable support for mongodb destinations
 app-admin/syslog-ng:pacct - Enable support for reading Process Accounting files (EXPERIMENTAL, Linux only)

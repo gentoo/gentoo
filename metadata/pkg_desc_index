@@ -211,7 +211,7 @@ app-admin/supervisor 3.1.4 3.3.3: A system for controlling process state under U
 app-admin/swatchdog 3.2.4-r1: Simple log watcher
 app-admin/sxid 4.2-r1 4.2-r2: suid, sgid file and directory checking
 app-admin/sysklogd 1.5.1 1.5.1-r1: Standard log daemons
-app-admin/syslog-ng 3.7.3: syslog replacement with advanced filtering features
+app-admin/syslog-ng 3.7.3 3.12.1: syslog replacement with advanced filtering features
 app-admin/syslog-summary 1.14-r1: Summarizes the contents of a syslog log file
 app-admin/syslogread 0.92-r1: Syslog message handling tools
 app-admin/sysrqd 14: daemon providing access to the kernel sysrq functions via network
@@ -4765,6 +4765,7 @@ dev-libs/injeqt 1.0.1 1.1.0 1.2.0: Dependency injection framework for Qt5
 dev-libs/input-pad 1.0.99_pre20140916: On-screen input pad to send characters with mouse
 dev-libs/intel-common 13.1.5.192 14.0.3.174 15.0.6.233: Common libraries and utilities needed for Intel compilers and libraries
 dev-libs/isl 0.12.2 0.13 0.14 0.14.1 0.15 0.16.1 0.17.1 0.18: A library for manipulating integer points bounded by linear constraints
+dev-libs/ivykis 0.42.2: Library for asynchronous I/O readiness notification
 dev-libs/jansson 2.9 2.10: C library for encoding, decoding and manipulating JSON data
 dev-libs/jemalloc 2.2.5-r1 3.3.1 3.6.0 4.4.0 4.5.0 5.0.1: Jemalloc is a general-purpose scalable concurrent allocator
 dev-libs/jerasure 2.0.0-r1: A Library in C Facilitating Erasure Coding for Storage Applications
@@ -7155,7 +7156,7 @@ dev-php/agavi 1.0.8: PHP MVC application framework
 dev-php/awl 0.56: Andrew McMillan's Web Libraries
 dev-php/ca-bundle 1.0.3: Find the system CA bundle or fall back to the Mozilla one
 dev-php/cli-prompt 1.0.0: Allows you to prompt for user input on the command line
-dev-php/composer 1.5.2-r1: Dependency Manager for PHP
+dev-php/composer 1.5.5: Dependency Manager for PHP
 dev-php/cphplib 0.51-r1: Cute PHP Library (cphplib)
 dev-php/doctrine 1.2.5 2.4.6: An object relational mapper for PHP5
 dev-php/doctrine-instantiator 1.0.5: Utility to instantiate objects in PHP without invoking their constructors
