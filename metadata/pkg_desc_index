@@ -18426,7 +18426,7 @@ www-apps/wiliki 0.6.1: WiLiKi is a lightweight Wiki engine written in and runnin
 www-apps/wordpress 4.8.3 4.9 4.9.1: Wordpress PHP and MySQL based content management system (CMS)
 www-client/chromium 62.0.3202.89 62.0.3202.94 63.0.3239.59 63.0.3239.70 64.0.3253.3 64.0.3260.2: Open-source version of Google Chrome web browser
 www-client/ck4up 1.2: Check for Updates on HTTP pages
-www-client/conkeror 1.0_pre20140212 1.0_pre20150519 1.0.3: A Mozilla-based web browser whose design is inspired by GNU Emacs
+www-client/conkeror 1.0_pre20140212 1.0.3 1.0.4: A Mozilla-based web browser whose design is inspired by GNU Emacs
 www-client/dillo 3.0.5 3.0.5-r1: Lean FLTK based web browser
 www-client/dooble 1.56c: A Secure and Open Source Web Browser
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r2 0.12_pre6-r3 9999: Advanced and well-established text-mode web browser
