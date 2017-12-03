@@ -1037,7 +1037,7 @@ app-editors/jove 4.16.0.73: Jonathan's Own Version of Emacs, a light emacs-like 
 app-editors/juffed 0.10_p20160323: QScintilla-based tabbed text editor with syntax highlighting
 app-editors/jupp 3.1_p27 3.1_p30: portable version of JOE's Own Editor
 app-editors/kakoune 0_pre20171120 9999: Selection-oriented code editor inspired by vim
-app-editors/kile 2.1.3-r3 2.9.91: Latex Editor and TeX shell based on KDE Frameworks
+app-editors/kile 2.1.3-r3 2.9.91_p20171202: Latex Editor and TeX shell based on KDE Frameworks
 app-editors/latexila 3.22.1 3.24.2 3.24.3: Integrated LaTeX environment for GNOME
 app-editors/le 1.14.3 1.16.1 1.16.3 1.16.5: Terminal text editor
 app-editors/leafpad 0.8.18.1: A simple GTK2 text editor
@@ -2334,7 +2334,7 @@ app-text/jist 1.5.1-r1: A ruby gem to publish a gist
 app-text/jmupdf 0.4.1-r1 9999: Java library for rendering PDF, XPS and CBZ (Comic Book) documents
 app-text/jo 1.1: JSON output from a shell
 app-text/jpdftweak 0.9-r1: Swiss Army Knife for PDF files
-app-text/kbibtex 0.6.2 0.8_pre20171028: BibTeX editor to edit bibliographies used with LaTeX
+app-text/kbibtex 0.6.2 0.8_pre20171110: BibTeX editor to edit bibliographies used with LaTeX
 app-text/kchmviewer 7.7-r1: Feature rich chm file viewer, based on Qt
 app-text/keepnote 0.7.9-r2: A note taking application
 app-text/krop 0.4.11 0.4.13: A tool to crop PDF files
