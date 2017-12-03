@@ -13332,7 +13332,7 @@ media-libs/zvbi 0.2.35-r1: VBI Decoding Library for Zapping
 media-plugins/alsa-plugins 1.1.1-r1 1.1.4-r1 1.1.5: ALSA extra plugins
 media-plugins/alsaequal 0.6-r2: a real-time adjustable equalizer plugin for ALSA
 media-plugins/amb-plugins 0.8.1 0.8.1-r1: AMB-plugins ladspa plugin package. Filters by Fons Adriaensen
-media-plugins/ams-lv2 1.1.0: A port of the AMS internal modules to LV2 plugins to create modular synthesizers
+media-plugins/ams-lv2 1.1.0 1.2.1: A port of the AMS internal modules to LV2 plugins to create modular synthesizers
 media-plugins/audacious-plugins 3.6.2-r1 3.7.1 3.7.1-r1 3.8.2 3.9-r1 9999: Audacious Player - Your music, your way, no exceptions
 media-plugins/calf 0.0.60-r1 9999: A set of open source instruments and effects for digital audio workstations
 media-plugins/caps-plugins 0.4.5-r1 0.4.5-r2 0.9.15 0.9.15-r1 0.9.24: The CAPS Audio Plugin Suite - LADSPA plugin suite
