@@ -19,7 +19,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="4"
-IUSE="debug +embedded ipod lastfm mp3tunes mtp ofa opengl test +utils"
+IUSE="debug +embedded ipod lastfm mp3tunes mtp ofa test +utils"
 
 if [[ ${KDE_BUILD_TYPE} == live ]]; then
 	RESTRICT+=" test"
@@ -32,7 +32,7 @@ COMMONDEPEND="
 	>=dev-qt/qtcore-4.8:4
 	>=dev-qt/qtdbus-4.8:4
 	>=dev-qt/qtscript-4.8:4
-	>=kde-frameworks/kdelibs-4.14.37:4[opengl?,plasma]
+	>=kde-frameworks/kdelibs-4.14.37:4[plasma]
 	>=media-libs/taglib-1.7[asf(+),mp4(+)]
 	>=media-libs/taglib-extras-1.0.1
 	sys-libs/zlib
@@ -50,7 +50,6 @@ COMMONDEPEND="
 	)
 	mtp? ( >=media-libs/libmtp-1.0.0 )
 	ofa? ( >=media-libs/libofa-0.9.0 )
-	opengl? ( virtual/opengl )
 "
 DEPEND="${COMMONDEPEND}
 	dev-util/automoc
