@@ -3672,6 +3672,7 @@ mail-client/nail:kerberos - If network is enabled, this adds support for GSSAPI 
 mail-client/nail:net - Enable support for network protocols (POP, IMAP and SMTP). If you only need to send mail with the local Transport Agent, disabling this will get you support for only /usr/sbin/sendmail call.
 mail-client/nail:ssl - If network is enabled, this adds support for S/MIME and SSL/TLS-powered protocols through dev-libs/openssl.
 mail-client/neomutt:berkdb - Enable BDB (Berkley DB) backend for header caching
+mail-client/neomutt:crypt - Add support for encryption -- using mcrypt or gpg where applicable
 mail-client/neomutt:gdbm - Enable GDBM (GNU dbm) backend for header caching
 mail-client/neomutt:gpg - Enable support for app-crypt/gpgme
 mail-client/neomutt:gpgme - Build gpgme backend to support S/MIME, PGP/MIME and traditional/inline PGP
