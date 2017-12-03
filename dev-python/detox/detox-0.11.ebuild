@@ -23,6 +23,7 @@ RDEPEND="
 	>=dev-python/tox-2[${PYTHON_USEDEP}]
 "
 DEPEND="
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
 		dev-python/pytest[${PYTHON_USEDEP}]
