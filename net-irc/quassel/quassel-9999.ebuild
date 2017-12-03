@@ -50,9 +50,9 @@ GUI_RDEPEND="
 "
 
 RDEPEND="
-	sys-libs/zlib
 	dev-qt/qtcore:5
 	dev-qt/qtnetwork:5[ssl?]
+	sys-libs/zlib
 	monolithic? (
 		${SERVER_RDEPEND}
 		${GUI_RDEPEND}
