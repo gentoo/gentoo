@@ -1,0 +1,11 @@
+--- a/configure.ac	2016-11-07 01:21:01.000000000 +0100
++++ b/configure.ac	2017-12-04 19:49:32.993241964 +0100
+@@ -56,7 +56,7 @@
+ 	AM_COND_IF([WITH_QT5], [
+ 		PKG_CHECK_MODULES([QT5], [Qt5Core >= 5.1.0 Qt5Gui Qt5Widgets Qt5X11Extras], [
+ 			QT_PATH1="$( eval $PKG_CONFIG --variable=libdir Qt5Core )/qt5/bin"
+-			QT_PATH2="$( eval $PKG_CONFIG --variable=exec_prefix Qt5Core )/bin"
++			QT_PATH2="$( eval $PKG_CONFIG --variable=host_bins Qt5Core )/bin"
+ 			AC_PATH_PROGS([MOC], [moc-qt5 moc], [moc], [$QT_PATH1:$QT_PATH2])
+ 			AC_PATH_PROGS([RCC], [rcc-qt5 rcc], [rcc], [$QT_PATH1:$QT_PATH2])
+ 			AC_PATH_PROGS([UIC], [uic-qt5 uic], [uic], [$QT_PATH1:$QT_PATH2])

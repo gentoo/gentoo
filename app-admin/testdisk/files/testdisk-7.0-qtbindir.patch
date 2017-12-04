@@ -1,0 +1,27 @@
+--- a/configure.ac	2015-04-18 11:04:47.000000000 +0200
++++ b/configure.ac	2017-12-04 20:34:51.804861863 +0100
+@@ -854,17 +854,14 @@
+ 
+ if test "$use_qt" = "true";
+ then
+-  PKG_CHECK_MODULES(QTGUI, [QtGui  >= 4.0.1],,use_qt=false)
+-  AC_CHECK_TOOLS(MOC,[moc-qt4 moc],)
+-  if test x$MOC = x ; then
+-	AC_MSG_WARN(Could not find a moc-qt4 or moc tool in your PATH.)
++  PKG_CHECK_MODULES([QTGUI], [QtCore >= 4.8.0 QtGui], [
++        QT_PATH="$( eval $PKG_CONFIG --variable=libdir QtCore )/bin"
++        AC_PATH_PROGS([MOC], [moc-qt4 moc], [moc], [$QT_PATH])
++        AC_PATH_PROGS([RCC], [rcc-qt4 rcc], [rcc], [$QT_PATH])
++  ], [
++        AC_MSG_ERROR([Qt4 not found])
+ 	use_qt=false
+-  fi 
+-  AC_CHECK_TOOLS(RCC,[rcc-qt4 rcc],)
+-  if test x$RCC = x ; then
+-	AC_MSG_WARN(Could not find a rcc-qt4 or rcc tool in your PATH.)
+-	use_qt=false
+-  fi 
++  ])
+   qphotorec_LDADD="$qphotorec_LDADD $QTGUI_LIBS"
+   qphotorec_CXXFLAGS="$qphotorec_CXXFLAGS $QTGUI_CFLAGS"
+ fi
