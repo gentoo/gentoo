@@ -1,13 +1,13 @@
-DEFINED_PHASES=compile configure install prepare
+DEFINED_PHASES=compile configure install prepare unpack
 DEPEND=virtual/pam >=sys-libs/ncurses-5.1:0= ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) ldap? ( net-nds/openldap ) kerberos? ( app-crypt/mit-krb5 ) spell? ( app-text/aspell ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=alpine is an easy to use text-based based mail and news client
 EAPI=6
-HOMEPAGE=http://www.washington.edu/alpine/ http://alpine.freeiz.com/alpine/ http://repo.or.cz/alpine.git/
+HOMEPAGE=http://www.washington.edu/alpine/ http://repo.or.cz/alpine.git/
 IUSE=doc ipv6 kerberos ldap libressl nls onlyalpine passfile smime spell ssl threads
 KEYWORDS=~amd64 ~x86 ~alpha ~ia64 ~ppc ~sparc
 LICENSE=Apache-2.0
 RDEPEND=virtual/pam >=sys-libs/ncurses-5.1:0= ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) ldap? ( net-nds/openldap ) kerberos? ( app-crypt/mit-krb5 ) spell? ( app-text/aspell ) app-misc/mime-types !onlyalpine? ( !mail-client/pine ) !<=net-mail/uw-imap-2004g
 SLOT=0
-SRC_URI=http://alpine.freeiz.com/alpine/release/src/alpine-2.21.tar.xz
-_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=a3d49d02a62207aa538413c7072e93c9
+SRC_URI=http://repo.or.cz/alpine.git/snapshot/672d6838a9babf2faeb9f79267525a4ab9d20b14.tar.gz -> alpine-2.21.1.tar.gz
+_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	vcs-snapshot	03289f51c769cf409d200d2d628cdd6e
+_md5_=be8026969ee6206b50859b91880f6748

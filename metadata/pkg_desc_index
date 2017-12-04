@@ -5077,7 +5077,7 @@ dev-libs/rlog 1.4: A C++ logging library
 dev-libs/rote 0.2.8: simple C library for VT102 terminal emulation
 dev-libs/rremove 1.0.5: A simple library to recursively delete non-empty directories
 dev-libs/sblim-sfcc 2.2.5: Small Footprint CIM Client Library
-dev-libs/sdformat 5.2.0: Simulation Description Format (SDF) parser
+dev-libs/sdformat 5.2.0 5.3.0: Simulation Description Format (SDF) parser
 dev-libs/serd 0.26.0 0.28.0: Library for RDF syntax which supports reading and writing Turtle and NTriples
 dev-libs/serdisplib 1.97.9: Library to drive serial/parallel/usb displays with built-in controllers
 dev-libs/shhopt 1.1.7-r2: library for parsing command line options
@@ -8292,7 +8292,7 @@ dev-python/pycadf 2.5.0 2.6.0: python implementation of DMTF Cloud Audit (CADF) 
 dev-python/pycairo 1.10.0-r5 1.15.3 1.15.4: Python bindings for the cairo library
 dev-python/pycallgraph 1.0.1: library and command line tool to visualise the flow of Python applications
 dev-python/pycanberra 0_pre20130515: Basic Python wrapper for libcanberra
-dev-python/pycapnp 0.5.12-r1 0.6.1: Python wrapping of the Cap'n Proto library
+dev-python/pycapnp 0.6.1 0.6.2: Python wrapping of the Cap'n Proto library
 dev-python/pycares 2.1.0 2.1.1: Python interface for c-ares
 dev-python/pycdf 0.6.3-r1: Python interface to scientific netCDF library
 dev-python/pycdio 0.20-r1: Python OO interface to libcdio (CD Input and Control library)
@@ -8784,7 +8784,7 @@ dev-python/simplecv 1.3: Python interface to several powerful open source comput
 dev-python/simpleeval 0.8.7 0.9.3 0.9.5: A simple, safe single expression evaluator library
 dev-python/simplegeneric 0.8.1-r1: Simple generic functions for Python
 dev-python/simplejson 3.10.0 3.11.1 3.12.0 3.13.2: Simple, fast, extensible JSON encoder/decoder for Python
-dev-python/simplekv 0.9.2 0.10.0 0.11.1 0.11.2 0.11.3: A key-value storage for binary data, support many backends.
+dev-python/simplekv 0.9.2 0.11.3 0.11.5: A key-value storage for binary data, support many backends.
 dev-python/simpleparse 2.1.1-r1: A Parser Generator for mxTextTools
 dev-python/simples3 1.0: A fairly simple, decently quick python interface to Amazon's S3 storage service
 dev-python/simplesettings 0.5-r1: Simple settings initialization
@@ -12331,7 +12331,7 @@ lxqt-base/lxqt-runner 0.11.0: LXQt quick launcher
 lxqt-base/lxqt-session 0.11.0: LXQT session manager
 lxqt-base/lxqt-sudo 0.11.0: LXQt GUI frontend for sudo
 mail-client/alot 0.3.7-r1 0.5.1 0.6: Experimental terminal UI for net-mail/notmuch written in Python
-mail-client/alpine 2.00-r7 2.21: alpine is an easy to use text-based based mail and news client
+mail-client/alpine 2.00-r7 2.21.1: alpine is an easy to use text-based based mail and news client
 mail-client/balsa 2.5.2-r1 2.5.3 2.5.3-r1: Email client for GNOME
 mail-client/biabam 0.9.7: Biabam is a small commandline tool for sending mail attachments
 mail-client/claws-mail 3.13.2 3.14.1-r1 3.15.0-r2 3.15.1: An email client (and news reader) based on GTK+
@@ -14080,7 +14080,7 @@ media-tv/nvtv 0.4.7-r3: TV-Out for NVidia cards
 media-tv/plex-media-server 1.8.1 1.9.4 1.9.6: A free media library that is intended for use with a plex client.
 media-tv/shoutcast2vdr 0.0.8 0.0.8-r1: VDR script: generate shoutcast playlists
 media-tv/tvbrowser 3.4.1.0-r1 3.4.3 9999-r1: Themeable and easy to use TV Guide - written in Java
-media-tv/tvheadend 4.0.9 9999: Tvheadend is a TV streaming server and digital video recorder
+media-tv/tvheadend 4.2.4 9999: Tvheadend is a TV streaming server and digital video recorder
 media-tv/tvnamer 2.3 2.4: Automatic TV episode file renamer, data from thetvdb.com
 media-tv/v4l-dvb-saa716x 0.0.1_p20140322 0.0.1_p20141109 0.0.1_p20141109-r1 0.0.1_p20141109-r2 0.0.1_p20170225: driver for saa716x based dvb cards like TT S2-6400 or Skystar 2 eXpress HD
 media-tv/v4l-utils 1.6.2 1.10.1 1.12.3 1.12.5: Separate utilities ebuild from upstream v4l-utils package
@@ -15623,7 +15623,7 @@ net-p2p/gtk-gnutella 1.1.11 1.1.11-r1 1.1.13: A GTK+ Gnutella client
 net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta files
 net-p2p/ktorrent 5.1.0: Powerful BitTorrent client based on KDE Frameworks
 net-p2p/litecoind 0.10.4.0: P2P Internet currency based on Bitcoin but easier to mine
-net-p2p/mktorrent 1.0-r1: Simple command line utility to create BitTorrent metainfo files
+net-p2p/mktorrent 1.0-r1 1.1: Simple command line utility to create BitTorrent metainfo files
 net-p2p/mktorrent-borg 0.9.9: Console .torrent file creator. It support Multi Trackers (tier groups)
 net-p2p/mldonkey 3.1.5-r1 3.1.6 3.1.6-r1: A multi-network P2P application written in Ocaml, with its own Gtk GUI, web and telnet interface
 net-p2p/multibit 0.5.18: Secure, lightweight, international Bitcoin wallet written in Java
