@@ -33,10 +33,6 @@ DEPEND="${DEPEND}
 
 S="${WORKDIR}"/${P/_/-}
 
-PATCHES=(
-	"${FILESDIR}"/CVE-2017-{15093,15094}-4.0.6.patch
-)
-
 pkg_setup() {
 	filter-flags -ftree-vectorize
 }
