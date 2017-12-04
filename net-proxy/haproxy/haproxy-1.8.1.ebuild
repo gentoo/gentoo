@@ -50,8 +50,6 @@ RDEPEND="${DEPEND}"
 S="${WORKDIR}/${MY_P}"
 
 DOCS=( CHANGELOG CONTRIBUTING MAINTAINERS README )
-version_is_at_least 1.7.0 $PV && PATCHES=( "${FILESDIR}"/haproxy-1.7-contrib.patch )
-version_is_at_least 1.8.0 $PV && PATCHES=( "${FILESDIR}"/haproxy-1.8-contrib.patch )
 CONTRIBS=( halog iprange )
 # ip6range is present in 1.6, but broken.
 version_is_at_least 1.7.0 $PV && CONTRIBS+=( ip6range spoa_example tcploop )
