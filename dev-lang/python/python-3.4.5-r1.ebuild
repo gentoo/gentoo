@@ -73,6 +73,7 @@ src_prepare() {
 	epatch "${FILESDIR}/${PN}-3.4.3-ncurses-pkg-config.patch"
 	epatch "${FILESDIR}/${PN}-3.4.5-cross.patch"
 	epatch "${FILESDIR}/3.4-getentropy-linux.patch"
+	epatch "${FILESDIR}/3.6-disable-nis.patch"
 
 	epatch_user
 
