@@ -4667,7 +4667,7 @@ dev-libs/boost-numpy 9999: Boost.Python interface for NumPy
 dev-libs/botan 1.10.17 2.3.0 9999: A C++ crypto library
 dev-libs/btparser 0.24 0.25 0.26: Parser and analyzer for backtraces produced by GDB
 dev-libs/busybee 0.5.2 0.6.0 0.7.0: A messaging abstraction on top of TCP sockets used in HyperDex
-dev-libs/c-blosc 1.3.2 1.3.5 1.5.3 1.11.1 1.11.2: Blocking, shuffling and lossless compression library
+dev-libs/c-blosc 1.11.2: Blocking, shuffling and lossless compression library
 dev-libs/c-capnproto 0.3: C library/compiler for the Cap'n Proto serialization/RPC protocol
 dev-libs/caliper 1.5.0: Application Introspection System
 dev-libs/capnproto 0.6.0 0.6.1: RPC/Serialization system with capabilities support
@@ -8480,7 +8480,7 @@ dev-python/pystdf 1.3.1-r1: Python module that makes it easy to work with STDF
 dev-python/pysvg 0.2.2: Python SVG document creation library
 dev-python/pysvn 1.8.0: Object-oriented python bindings for subversion
 dev-python/pyswisseph 2.00.00_p2 2.05.01_pre20160529: Python extension to the AstroDienst Swiss Ephemeris
-dev-python/pytables 3.1.1-r2 3.3.0 3.4.2: Hierarchical datasets for Python
+dev-python/pytables 3.3.0 3.4.2: Hierarchical datasets for Python
 dev-python/pyte 0.5.2-r1 0.5.2-r2: Simple VTXXX-compatible terminal emulator
 dev-python/pytest 3.0.3 3.2.2: Simple powerful testing with Python
 dev-python/pytest-aiohttp 0.1.3: pytest plugin for aiohttp support
