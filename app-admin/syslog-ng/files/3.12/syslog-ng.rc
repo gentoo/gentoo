@@ -46,7 +46,7 @@ start_pre() {
 }
 
 stop_pre() {
-	[[ "$RC_CMD" == "restart" ]] && sleep 1
+	[ "$RC_CMD" = "restart" ] && sleep 1
 	return 0
 }
 
