@@ -44,7 +44,7 @@ DOCS=( ChangeLog README.txt )
 
 src_prepare() {
 	default
-
+	unset JDK_HOME #621992
 	if use java ; then
 		export JDK_HOME="$(java-config -g JAVA_HOME)"
 
