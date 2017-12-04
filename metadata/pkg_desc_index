@@ -17845,7 +17845,7 @@ sys-fs/quota 4.03 4.04 4.04-r1: Linux quota tools
 sys-fs/quotatool 1.4.6 1.4.13 1.6.2: command-line utility for filesystem quotas
 sys-fs/rar2fs 1.25.2 1.26.0: A FUSE based filesystem that can mount one or multiple RAR archive(s)
 sys-fs/rarfs 0.1.1-r1: Fuse module to mount uncompressed RAR archives
-sys-fs/reiser4progs 1.1.0 1.2.0: reiser4progs: mkfs, fsck, etc...
+sys-fs/reiser4progs 1.1.0 1.2.0 1.2.1: reiser4progs: mkfs, fsck, etc...
 sys-fs/reiserfs-defrag 0.2.2: Small defragmentation tool for reiserfs
 sys-fs/reiserfsprogs 3.6.24 3.6.25 3.6.26 3.6.27: Reiserfs Utilities
 sys-fs/safecopy 1.7: Tool for fault-tolerant data recovery from damaged (io-errors) devices or files

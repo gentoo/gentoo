@@ -6265,6 +6265,7 @@ net-misc/bfgminer:zeusminer - Enable support for mining with ZeusMiner units
 net-misc/bfgminer:ztex - Enable support for mining with Ztex FPGAs
 net-misc/cfengine:html - Install HTML documentation
 net-misc/cfengine:libvirt - Enable support for virtual machine management through app-emulation/libvirt
+net-misc/cfengine:masterfiles - Install the Masterfiles Policy Framework
 net-misc/cfengine:qdbm - Use dev-db/qdbm as database backend
 net-misc/cfengine:tests - Install test files
 net-misc/cfengine:tokyocabinet - Use dev-db/tokyocabinet as database backend
