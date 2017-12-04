@@ -10,7 +10,6 @@
 		<flag name="constcw">Enable support for the constcw protocol</flag>
 		<flag name="cwc">Enable support for the cwc (newcamd) protocol</flag>
 		<flag name="dvbcsa">Enable decryption of the DVB Common Scrambling Algorithm</flag>
-		<flag name="dvbscan">Use scan tables from dtv-scan-tables git repository</flag>
 		<flag name="dvben50221">Enable support for hardware CAM</flag>
 		<flag name="hdhomerun">Enable support for the HDHomeRun device</flag>
 		<flag name="imagecache">Enable support for image caching</flag>
