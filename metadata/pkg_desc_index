@@ -9808,7 +9808,7 @@ dev-ruby/openvas-omp 0.0.4: Communicate with OpenVAS manager through OMP
 dev-ruby/optionable 0.2.0: Robust options validation for Ruby methods
 dev-ruby/org-ruby 0.9.12: Ruby routines for parsing org-mode files
 dev-ruby/origin 2.2.2 2.3.0 2.3.1: Origin is a simple DSL for generating MongoDB selectors and options
-dev-ruby/ox 2.5.0 2.6.0 2.7.0 2.8.0 2.8.1 2.8.2: A fast XML parser and Object marshaller
+dev-ruby/ox 2.6.0 2.8.0 2.8.1 2.8.2: A fast XML parser and Object marshaller
 dev-ruby/packetfu 1.1.13: A mid-level packet manipulation library
 dev-ruby/paint 2.0.0 2.0.1: Terminal painter
 dev-ruby/parallel 1.11.2 1.12.0: Run any code in parallel Processes or Threads
@@ -9870,7 +9870,7 @@ dev-ruby/rake-remote_task 2.4.1 2.4.2: Extends Rake with remote task goodness
 dev-ruby/rash 0.4.0-r2: Rash is an extension to Hashie
 dev-ruby/rash_alt 0.4.3 0.4.4: Rash alt version for Hashie's own Rash
 dev-ruby/rb-gsl 1.16.0.6 2.1.0.1: Ruby interface to GNU Scientific Library
-dev-ruby/rb-inotify 0.9.5-r1 0.9.8 0.9.9 0.9.10: A thorough inotify wrapper for Ruby using FFI
+dev-ruby/rb-inotify 0.9.5-r1 0.9.10: A thorough inotify wrapper for Ruby using FFI
 dev-ruby/rb-readline 0.5.3 0.5.4 0.5.5: Ruby implementation of the GNU readline C library
 dev-ruby/rb-readline-r7 0.5.2.0: Ruby implementation of the GNU readline C library forked by r7
 dev-ruby/rbnacl 4.0.2 5.0.0: Provides a high-level toolkit for building cryptographic systems and protocols
