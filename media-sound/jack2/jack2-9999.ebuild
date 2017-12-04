@@ -1,37 +1,38 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads(+)"
-[[ "${PV}" = "2.9999" ]] && inherit git-r3
 inherit eutils python-single-r1 waf-utils multilib-minimal
 
 DESCRIPTION="Jackdmp jack implemention for multi-processor machine"
 HOMEPAGE="http://jackaudio.org/"
 
-RESTRICT="mirror"
-if [[ "${PV}" = "2.9999" ]]; then
+if [[ "${PV}" = "9999" ]]; then
+	inherit git-r3
 	EGIT_REPO_URI="https://github.com/jackaudio/${PN}.git"
 	KEYWORDS=""
 else
-	SRC_URI="https://github.com/jackaudio/${PN}/archive/v${PV}.tar.gz -> jack2-${PV}.tar.gz"
+	MY_PV="${PV/_rc/-RC}"
+	MY_P="${PN}-${MY_PV}"
+	S="${WORKDIR}/${MY_P}"
+	SRC_URI="https://github.com/jackaudio/jack2/releases/download/v${MY_PV}/${MY_P}.tar.gz"
 	KEYWORDS="~amd64 ~ppc ~x86"
 fi
 
 LICENSE="GPL-2"
 SLOT="2"
-IUSE="alsa celt dbus doc opus pam"
+IUSE="alsa celt dbus doc opus pam classic sndfile libsamplerate readline"
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+REQUIRED_USE="
+	${PYTHON_REQUIRED_USE}
+	|| ( classic dbus )"
 
-# FIXME: automagic deps: readline, samplerate, sndfile, celt, opus
-# FIXME: even though sndfile is just used for binaries, the check is flawed
-#	making the build fail if multilib libsndfile is not found.
-CDEPEND="media-libs/libsamplerate[${MULTILIB_USEDEP}]
-	media-libs/libsndfile[${MULTILIB_USEDEP}]
-	sys-libs/readline:0
+CDEPEND="media-libs/libsamplerate
+	media-libs/libsndfile
+	sys-libs/readline:0=
 	${PYTHON_DEPS}
 	alsa? ( media-libs/alsa-lib[${MULTILIB_USEDEP}] )
 	celt? ( media-libs/celt:0[${MULTILIB_USEDEP}] )
@@ -48,17 +49,7 @@ RDEPEND="${CDEPEND}
 	pam? ( sys-auth/realtime-base )
 	!media-sound/jack-audio-connection-kit:0"
 
-[[ "${PV}" = "2.9999" ]] || S="${WORKDIR}/jack2-${PV}"
-
 DOCS=( ChangeLog README README_NETJACK2 TODO )
-
-src_unpack() {
-	if [[ "${PV}" = "2.9999" ]]; then
-		git-r3_src_unpack
-	else
-		default
-	fi
-}
 
 src_prepare() {
 	default
@@ -67,24 +58,31 @@ src_prepare() {
 
 multilib_src_configure() {
 	local mywafconfargs=(
-		$(usex alsa --alsa "")
-		$(usex dbus --dbus --classic)
+		--htmldir=/usr/share/doc/${PF}/html
+		$(usex dbus --dbus "")
+		$(usex classic --classic "")
+		--alsa=$(usex alsa yes no)
+		--celt=$(usex celt yes no)
+		--doxygen=$(multilib_native_usex doc yes no)
+		--firewire=no
+		--freebob=no
+		--iio=no
+		--opus=$(usex opus yes no)
+		--portaudio=no
+		--readline=$(multilib_native_usex readline yes no)
+		--samplerate=$(multilib_native_usex libsamplerate yes no)
+		--sndfile=$(multilib_native_usex sndfile yes no)
+		--winmme=no
 	)
 
-	WAF_BINARY="${BUILD_DIR}"/waf waf-utils_src_configure ${mywafconfargs[@]}
+	waf-utils_src_configure ${mywafconfargs[@]}
 }
 
 multilib_src_compile() {
 	WAF_BINARY="${BUILD_DIR}"/waf waf-utils_src_compile
-
-	if multilib_is_native_abi && use doc; then
-		doxygen || die "doxygen failed"
-	fi
 }
 
 multilib_src_install() {
-	multilib_is_native_abi && use doc && \
-		HTML_DOCS=( "${BUILD_DIR}"/html/ )
 	WAF_BINARY="${BUILD_DIR}"/waf waf-utils_src_install
 }
 

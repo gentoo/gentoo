@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads(+)"
@@ -26,7 +26,9 @@ LICENSE="GPL-2"
 SLOT="2"
 IUSE="alsa celt dbus doc opus pam classic sndfile libsamplerate readline"
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+REQUIRED_USE="
+	${PYTHON_REQUIRED_USE}
+	|| ( classic dbus )"
 
 CDEPEND="media-libs/libsamplerate
 	media-libs/libsndfile
@@ -48,6 +50,10 @@ RDEPEND="${CDEPEND}
 	!media-sound/jack-audio-connection-kit:0"
 
 DOCS=( ChangeLog README README_NETJACK2 TODO )
+
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc7.patch
+)
 
 src_prepare() {
 	default
