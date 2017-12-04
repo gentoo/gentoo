@@ -1,5 +1,6 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
 EAPI=6
 
 MY_P="5533-Silver-XCursors-3D-${PV}"
