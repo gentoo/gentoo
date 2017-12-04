@@ -4,18 +4,18 @@
 EAPI=6
 
 if [[ ${PV} == 9999* ]]; then
-	EGIT_REPO_URI="https://github.com/raoulh/moolticute.git"
+	EGIT_REPO_URI="https://github.com/mooltipass/moolticute.git"
 	inherit git-r3
 	KEYWORDS=""
 else
-	SRC_URI="https://github.com/raoulh/moolticute/archive/v${PV/_/-}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/mooltipass/moolticute/archive/v${PV/_/-}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm"
 fi
 
 inherit gnome2-utils qmake-utils udev
 
 DESCRIPTION="Mooltipass crossplatform daemon/tools"
-HOMEPAGE="https://github.com/raoulh/moolticute"
+HOMEPAGE="https://github.com/mooltipass/moolticute"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -33,6 +33,15 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${P/_/-}"
+
+src_prepare() {
+	default
+
+	# Fill version.h with package version
+	if [[ ${PV} != 9999* ]]; then
+		sed -i "s/\"git\"/\"v${PV/_/-}\"/" src/version.h || die
+	fi
+}
 
 src_configure() {
 	eqmake5 PREFIX="/usr" Moolticute.pro
