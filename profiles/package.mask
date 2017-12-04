@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Ian Whyman <thev00d00@gentoo.org> (04 Dec 2017)
+# Declared dead upstream. Masked for removal in 30 days
+# Please see net-misc/gerbera for a replacement.
+net-misc/mediatomb
+
 # Andreas Sturmlechner <asturm@gentoo.org> (03 Dec 2017)
 # Dead upstreams, depending on dead qt3support/qt4.
 # Masked for removal in 30 days. Bug #631788
