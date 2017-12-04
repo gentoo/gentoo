@@ -6361,7 +6361,7 @@ dev-perl/Net-FreeDB 0.80.0-r1 0.100.0: OOP interface to the FreeDB database
 dev-perl/Net-Google-SafeBrowsing-Blocklist 1.40.0-r1: Query a Google SafeBrowsing table
 dev-perl/Net-HTTP 6.90.0 6.120.0 6.130.0 6.150.0 6.160.0: Low-level HTTP connection (client)
 dev-perl/Net-IDN-Encode 2.300.0 2.301.0 2.302.0 2.303.0 2.400.0: Internationalizing Domain Names in Applications (IDNA)
-dev-perl/Net-IMAP-Simple 1.220.600: Perl extension for simple IMAP account handling
+dev-perl/Net-IMAP-Simple 1.220.600 1.220.900: Perl extension for simple IMAP account handling
 dev-perl/Net-IMAP-Simple-SSL 1.300.0-r1: SSL support for Net::IMAP::Simple
 dev-perl/Net-IP 1.260.0-r1: Perl extension for manipulating IPv4/IPv6 addresses
 dev-perl/Net-IP-Minimal 0.60.0: Minimal functions from Net::IP
