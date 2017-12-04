@@ -7,7 +7,7 @@ inherit cmake-utils toolchain-funcs xdg-utils
 
 if [[ "${PV}" == "9999" ]] ; then
 	inherit git-r3
-	EGIT_REPO_URI="https://anongit.freedesktop.org/git/poppler/poppler.git"
+	EGIT_REPO_URI="git://git.freedesktop.org/git/${PN}/${PN}"
 	SLOT="0/9999"
 else
 	SRC_URI="https://poppler.freedesktop.org/${P}.tar.xz"
