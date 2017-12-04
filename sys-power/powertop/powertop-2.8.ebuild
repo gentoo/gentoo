@@ -4,14 +4,8 @@
 EAPI="5"
 
 inherit eutils linux-info
-if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="https://github.com/fenrus75/powertop.git"
-	inherit git-2 autotools
-	SRC_URI=""
-else
-	SRC_URI="https://01.org/sites/default/files/downloads/${PN}/${P}.tar.gz"
-	KEYWORDS="amd64 arm ppc sparc x86 ~amd64-linux ~x86-linux"
-fi
+SRC_URI="https://01.org/sites/default/files/downloads/${PN}/${P}.tar.gz"
+KEYWORDS="amd64 arm ppc sparc x86 ~amd64-linux ~x86-linux"
 
 DESCRIPTION="tool that helps you find what software is using the most power"
 HOMEPAGE="https://01.org/powertop/"
