@@ -1,20 +1,22 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit readme.gentoo elisp
+inherit elisp readme.gentoo-r1
 
 DESCRIPTION="Emacs Speaks Statistics"
 HOMEPAGE="http://ess.r-project.org/"
-SRC_URI="http://ess.r-project.org/downloads/ess/${P}.tgz"
+# ${P}.tgz is plain (uncompresses) tar, so use zip for this version
+SRC_URI="http://ess.r-project.org/downloads/ess/${P}.zip"
 
 LICENSE="GPL-2+ GPL-3+ Texinfo-manual"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux ~x86-macos"
 
 DEPEND="app-text/texi2html
-	virtual/latex-base"
+	virtual/latex-base
+	app-arch/unzip"
 
 SITEFILE="50${PN}-gentoo.el"
 
