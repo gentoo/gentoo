@@ -22,7 +22,6 @@ RDEPEND="
 	dev-qt/qtprintsupport:5
 	media-libs/ladspa-sdk:=
 	x11-libs/libSM:=
-	media-sound/jack-audio-connection-kit:=
 	media-libs/alsa-lib:=
 	>=media-libs/dssi-1.0.0:=
 	media-libs/liblo:=
@@ -31,7 +30,9 @@ RDEPEND="
 	media-libs/libsamplerate:=
 	media-libs/libsndfile:=
 	sys-libs/zlib:=
-	lirc? ( app-misc/lirc:= )"
+	virtual/jack
+	lirc? ( app-misc/lirc:= )
+"
 DEPEND="${RDEPEND}
 	dev-qt/qttest:5
 	virtual/pkgconfig"
