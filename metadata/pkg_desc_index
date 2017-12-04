@@ -575,7 +575,7 @@ app-crypt/mit-krb5 1.15.2: MIT Kerberos V
 app-crypt/mit-krb5-appl 1.0.3: Kerberized applications split from the main MIT Kerberos V distribution
 app-crypt/monkeysign 2.2.3: A user-friendly commandline tool to sign OpenGPG keys
 app-crypt/monkeysphere 0.36-r1 0.36-r2 0.37 0.38 0.39 0.41: Leverage the OpenPGP web of trust for OpenSSH and Web authentication
-app-crypt/moolticute 0.9.8_beta 9999: Mooltipass crossplatform daemon/tools
+app-crypt/moolticute 0.10.0_beta 9999: Mooltipass crossplatform daemon/tools
 app-crypt/nasty 0.6-r1: Proof-of-concept GPG passphrase recovery tool
 app-crypt/nistp224 0.75-r1: Performs compressed Diffie-Hellman key exchange on the NIST P-224 elliptic curve
 app-crypt/nitrokey-app 0.6.3: Cross platform personalization tool for the Nitrokey
