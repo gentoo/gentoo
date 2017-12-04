@@ -41,7 +41,7 @@ app-admin/abrt 2.0.12-r2: Automatic bug detection and reporting tool
 app-admin/aerospike-amc-community 3.6.8 3.6.8.2 3.6.9 3.6.10.1 3.6.11 3.6.12 3.6.13 3.6.13-r1: Web UI based monitoring tool for Aerospike Community Edition Server
 app-admin/amazon-ec2-init 20101127-r1: Init script to setup Amazon EC2 instance parameters
 app-admin/analog 6.0-r4: A webserver log analyzer
-app-admin/ansible 2.3.2.0-r2 2.4.0.0 2.4.1.0-r1 2.4.2.0 9999: Model-driven deployment, config management, and command execution framework
+app-admin/ansible 2.4.1.0-r1 2.4.2.0 9999: Model-driven deployment, config management, and command execution framework
 app-admin/apache-tools 2.2.34 2.4.27 2.4.28 2.4.29: Useful Apache tools - htdigest, htpasswd, ab, htdbm
 app-admin/apachetop 0.12.6-r1 0.12.6-r2: A realtime Apache log analyzer
 app-admin/apg 2.3.0b-r5: Another Password Generator
@@ -6348,9 +6348,9 @@ dev-perl/Net-Amazon-S3 0.800.0: Framework for accessing the Amazon S3 Simple Sto
 dev-perl/Net-Bonjour 0.960.0: Module for DNS service discovery (Apple's Bonjour)
 dev-perl/Net-CIDR 0.180.0: Manipulate netblock lists in CIDR notation
 dev-perl/Net-CIDR-Lite 0.210.0: Perl extension for merging IPv4 or IPv6 CIDR addresses
-dev-perl/Net-CUPS 0.630.0: CUPS C API Interface
+dev-perl/Net-CUPS 0.630.0 0.640.0: CUPS C API Interface
 dev-perl/Net-DBus 1.1.0: Perl extension for the DBus message system
-dev-perl/Net-DNS 1.40.0 1.70.0 1.80.0 1.90.0 1.100.0: Perl Net::DNS - Perl DNS Resolver Module
+dev-perl/Net-DNS 1.40.0 1.70.0 1.80.0 1.90.0 1.100.0 1.130.0: Perl Interface to the Domain Name System
 dev-perl/Net-DNS-Async 1.70.0-r1: Asynchronous DNS helper for high volume applications
 dev-perl/Net-DNS-Resolver-Mock 1.201.710.310: Mock a DNS Resolver object for testing
 dev-perl/Net-DNS-Resolver-Programmable 0.3.0-r1: programmable DNS resolver class for offline emulation of DNS
@@ -6374,6 +6374,7 @@ dev-perl/Net-Kismet 0.04-r1: Module for writing perl Kismet clients
 dev-perl/Net-LDAP-Server 0.430.0: LDAP server side protocol handling
 dev-perl/Net-LDAPapi 3.0.4: Perl5 Module Supporting LDAP API
 dev-perl/Net-LibIDN 0.120.0-r1: Perl bindings for GNU Libidn
+dev-perl/Net-LibIDN2 1.0.0: Perl bindings for GNU Libidn2
 dev-perl/Net-Netmask 1.902.200: Parse, manipulate and lookup IP network blocks
 dev-perl/Net-OAuth 0.280.0-r1: OAuth protocol support
 dev-perl/Net-OpenID-Common 1.200.0: Libraries shared between Net::OpenID::Consumer and Net::OpenID::Server
