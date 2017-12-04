@@ -16476,7 +16476,7 @@ sci-libs/gts 20121130: GNU Triangulated Surface Library
 sci-libs/h5hut 1.99.13: High-Performance I/O Library for Particle-based Simulations
 sci-libs/h5part 1.6.6: Portable High Performance Parallel Data Interface to HDF5
 sci-libs/hdf 4.2.8 4.2.9 4.2.11 4.2.13: General purpose library and format for storing scientific data
-sci-libs/hdf5 1.8.18: General purpose library and file format for storing scientific data
+sci-libs/hdf5 1.8.18 1.10.1: General purpose library and file format for storing scientific data
 sci-libs/htslib 1.5: C library for high-throughput sequencing data formats
 sci-libs/hypre 2.9.0b 2.11.1: Parallel matrix preconditioners library
 sci-libs/idlcoyote 20161220 99999999: GDL library from D. Fannings IDL courses
