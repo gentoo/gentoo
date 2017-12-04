@@ -1429,7 +1429,7 @@ app-eselect/eselect-pdftex 0.3: pdftex module for eselect
 app-eselect/eselect-php 0.9.2 0.9.4-r2 9999: PHP eselect module
 app-eselect/eselect-pinentry 0.7: Manage /usr/bin/pinentry symlink
 app-eselect/eselect-postgresql 1.2.1 2.0 2.1 2.2: Utility to select the default PostgreSQL slot
-app-eselect/eselect-python 20160516 99999999: Eselect module for management of multiple Python versions
+app-eselect/eselect-python 20160516 20171204 99999999: Eselect module for management of multiple Python versions
 app-eselect/eselect-qtgraphicssystem 1.1.1: Utility to change the active Qt Graphics System
 app-eselect/eselect-rails 0.21 0.22 0.23: Manages Ruby on Rails symlinks
 app-eselect/eselect-renpy 0.6 0.7: Manages renpy symlink
@@ -7199,7 +7199,7 @@ dev-php/pecl-libevent 0.1.0-r2: PHP wrapper for libevent
 dev-php/pecl-lzf 1.6.5: This package handles LZF de/compression
 dev-php/pecl-mailparse 2.1.6-r4 3.0.2: PHP extension for parsing and working with RFC822 and MIME compliant messages
 dev-php/pecl-memcache 3.0.8-r2 3.0.8-r3: PHP extension for using memcached
-dev-php/pecl-memcached 2.2.0-r2 3.0.0 3.0.3: Interface PHP with memcached via libmemcached library
+dev-php/pecl-memcached 2.2.0-r2 3.0.0 3.0.3 3.0.4: Interface PHP with memcached via libmemcached library
 dev-php/pecl-mongo 1.6.14-r1 1.6.16: Legacy MongoDB database driver for PHP
 dev-php/pecl-mongodb 1.1.8 1.1.10 1.2.9 1.2.11: MongoDB database driver for PHP
 dev-php/pecl-mysqlnd_ms 1.6.0_pre20141127: A replication and load balancing plugin for the mysqlnd library
