@@ -26,6 +26,8 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}"/${MYP}-src
 
+PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
+
 src_configure () {
 	econf --prefix="${D}"/usr
 }
@@ -43,6 +45,11 @@ src_compile () {
 				-cargs ${ADAFLAGS} || die "gprbuild failed"
 		fi
 	done
+}
+
+src_test() {
+	emake test
+	emake run_test | grep DIFF && die
 }
 
 src_install () {

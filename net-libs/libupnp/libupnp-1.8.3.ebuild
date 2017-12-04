@@ -12,12 +12,12 @@ SRC_URI="https://github.com/mrjimenez/pupnp/archive/release-${PV}.tar.gz -> ${P}
 LICENSE="BSD"
 SLOT="1.8"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
-IUSE="debug doc reuseaddr ipv6 static-libs"
+IUSE="blocking-tcp debug doc ipv6 +reuseaddr samples static-libs"
 
-DOCS="NEWS README.md ChangeLog"
+DOCS="NEWS ChangeLog"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.8.0-docs-install.patch
+	"${FILESDIR}"/${PN}-1.6.19-docs-install.patch
 	"${FILESDIR}"/${PN}-1.6.21-cflags.patch
 )
 
@@ -34,14 +34,37 @@ src_configure() {
 	use x86-fbsd &&	append-flags -O1
 	# w/o docdir to avoid sandbox violations
 	econf $(use_enable debug) \
+		$(use_enable blocking-tcp blocking-tcp-connections) \
 		$(use_enable ipv6) \
 		$(use_enable reuseaddr) \
 		$(use_enable static-libs static) \
+		$(use_enable samples) \
 		$(use_with doc documentation "${EPREFIX}/usr/share/doc/${PF}")
 }
 
 src_install () {
 	default
-	dobin upnp/sample/.libs/tv_{combo,ctrlpt,device}-1.8
+
 	use static-libs || prune_libtool_files
+
+	# Slot samples
+	if $(use samples); then
+		for bin in combo ctrlpt device ; do
+			newbin "upnp/sample/.libs/tv_$bin" "tv_$bin-${SLOT}"
+		done
+	fi
+
+	# Slot includes
+	cd "${D}/usr/include" || die
+	mv upnp "upnp-${SLOT}" || die
+
+	# Slot pkgconfig
+	cd "${D}/usr/$(get_libdir)/pkgconfig" || die
+	mv libupnp.pc "libupnp-${SLOT}.pc" || die
+	sed -i "s#/upnp#/upnp-${SLOT}#" "libupnp-${SLOT}.pc" || die
+
+	# Slot symlinks
+	cd "${D}/usr/$(get_libdir)" || die
+	mv libupnp.so "libupnp-${SLOT}.so" || die
+	mv libixml.so "libixml-${SLOT}.so" || die
 }
