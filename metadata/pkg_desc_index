@@ -4597,7 +4597,7 @@ dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.24.1-r2 5.24.2 5.24.3 5.26.0 5.26.1 5.26.1-r1 5.26.9999 5.28.9999: Larry Wall's Practical Extraction and Report Language
 dev-lang/php 5.6.32 7.0.25 7.0.26 7.1.11 7.1.12 7.2.0: The PHP language runtime engine
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2 5.6: Poly/ML is a full implementation of Standard ML
-dev-lang/python 2.7.12 2.7.14 2.7.14-r1 3.4.5 3.4.6 3.4.6-r1 3.5.4 3.5.4-r1 3.6.3 3.6.3-r1: An interpreted, interactive, object-oriented programming language
+dev-lang/python 2.7.14-r1 3.4.5-r1 3.4.6-r1 3.5.4-r1 3.6.3-r1: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.4 2.4.5 9999: Python script wrapper
 dev-lang/qu-prolog 10.0: Extended Prolog supporting quantifiers, object-variables and substitutions
 dev-lang/rakudo 2017.07 2017.08 2017.09 2017.10 9999: A compiler for the Perl 6 programming language
@@ -14398,7 +14398,7 @@ net-analyzer/nagios-check_openvpn-simple 0.0.1-r1: A Nagios plugin to check whet
 net-analyzer/nagios-check_pidfile 1: A nagios plugin for checking daemons via pidfiles
 net-analyzer/nagios-check_rbl 1.4.1: Monitor whether or not a host is blacklisted
 net-analyzer/nagios-core 3.5.1 4.3.1-r1 4.3.3 4.3.4: Nagios core - monitoring daemon, web GUI, and documentation
-net-analyzer/nagios-plugin-check_raid 4.0.0-r1 4.0.0_p20151215 4.0.0_p20160215 4.0.1 4.0.2: Nagios/Icinga plugin to check current server's RAID status
+net-analyzer/nagios-plugin-check_raid 4.0.0-r1 4.0.0_p20151215 4.0.0_p20160215 4.0.1 4.0.2 4.0.8: Nagios/Icinga plugin to check current server's RAID status
 net-analyzer/nagios-plugins 2.0.3-r2 2.2.1-r2: Official plugins for Nagios
 net-analyzer/nagios-plugins-flameeyes 9999: Flameeyes's custom Nagios/Icinga plugins
 net-analyzer/nagios-plugins-snmp 0.6.0-r2: Additional Nagios plugins for monitoring SNMP capable devices
