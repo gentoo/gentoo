@@ -5487,7 +5487,7 @@ dev-perl/AppConfig 1.710.0: Perl5 module for reading configuration files and par
 dev-perl/Archive-Any 0.94.100 0.94.500: Single interface to deal with file archives
 dev-perl/Archive-Extract 0.720.0 0.760.0: Generic archive extracting mechanism
 dev-perl/Archive-Tar-Wrapper 0.230.0: API wrapper around the 'tar' utility
-dev-perl/Archive-Zip 1.530.0 1.560.0 1.570.0 1.590.0: A wrapper that lets you read Zip archive members as if they were files
+dev-perl/Archive-Zip 1.590.0: A wrapper that lets you read Zip archive members as if they were files
 dev-perl/Array-Compare 2.20.0-r1 2.110.0 3.0.0: Perl extension for comparing arrays
 dev-perl/Array-RefElem 1.0.0-r1: Set up array elements as aliases
 dev-perl/Array-Window 1.20.0-r1: Array::Window - Calculate windows/subsets/pages of arrays
@@ -6352,7 +6352,7 @@ dev-perl/Net-DBus 1.1.0: Perl extension for the DBus message system
 dev-perl/Net-DNS 1.40.0 1.70.0 1.80.0 1.90.0 1.100.0 1.130.0: Perl Interface to the Domain Name System
 dev-perl/Net-DNS-Async 1.70.0-r1: Asynchronous DNS helper for high volume applications
 dev-perl/Net-DNS-Resolver-Mock 1.201.710.310: Mock a DNS Resolver object for testing
-dev-perl/Net-DNS-Resolver-Programmable 0.3.0-r1: programmable DNS resolver class for offline emulation of DNS
+dev-perl/Net-DNS-Resolver-Programmable 0.3.0-r1 0.9.0: programmable DNS resolver class for offline emulation of DNS
 dev-perl/Net-DNS-SEC 1.20.0: DNSSEC extensions to Net::DNS
 dev-perl/Net-Daemon 0.480.0-r1 0.480.0-r2: Abstract base class for portable servers
 dev-perl/Net-Domain-TLD 1.740.0: Current top level domain names including new ICANN additions and ccTLDs
@@ -6551,7 +6551,7 @@ dev-perl/RedisDB 2.360.0: Perl extension to access redis database
 dev-perl/RedisDB-Parser 2.200.0: Redis protocol parser for RedisDB
 dev-perl/Ref-Util 0.101.0 0.111.0 0.113.0 0.203.0: Utility functions for checking references
 dev-perl/Ref-Util-XS 0.116.0: XS Implementation for Ref::Util
-dev-perl/Regexp-Common 2013031301.0.0 2016020301.0.0 2016060801.0.0 2017040401.0.0 2017060201.0.0: Provide commonly requested regular expressions
+dev-perl/Regexp-Common 2017060201.0.0: Provide commonly requested regular expressions
 dev-perl/Regexp-Common-net-CIDR 0.20.0-r1: Provides patterns for CIDR blocks
 dev-perl/Regexp-IPv6 0.30.0-r1: Regular expression for IPv6 addresses
 dev-perl/Regexp-RegGrp 2.10.0: Groups a regular expressions collection
@@ -12997,7 +12997,7 @@ media-libs/game-music-emu 0.6.1: Video game music file emulators
 media-libs/ganv 1.4.2: A GTK+ widget for interactive graph-like environments
 media-libs/gavl 1.2.0 1.4.0 1.4.0-r1: library for handling uncompressed audio and video data
 media-libs/gd 2.2.4 2.2.5: A graphics library for fast image creation
-media-libs/gegl 0.2.0-r2 0.3.0 0.3.4 0.3.8 0.3.10 0.3.12 0.3.14 0.3.20 9999: A graph based image processing framework
+media-libs/gegl 0.2.0-r2 0.2.0-r3 0.3.0 0.3.4 0.3.8 0.3.10 0.3.12 0.3.14 0.3.20 9999: A graph based image processing framework
 media-libs/gexiv2 0.10.3 0.10.5-r1 0.10.6: GObject-based wrapper around the Exiv2 library
 media-libs/giblib 1.2.4 1.2.4-r1: a graphics library built on top of imlib2
 media-libs/giflib 4.1.6-r2 4.1.6-r3 4.2.3-r1 5.0.6 5.1.3 5.1.4: Library to handle, display and manipulate GIF images
@@ -19560,7 +19560,7 @@ x11-wm/mutter 3.22.4-r1 3.24.4: GNOME 3 compositing window manager based on Clut
 x11-wm/notion 3_p2013030200 3_p2015061300-r1 9999: Notion is a tiling, tabbed window manager for the X window system
 x11-wm/openbox 3.5.2-r1 3.6 3.6.1 9999: A standards compliant, fast, light-weight, extensible window manager
 x11-wm/oroborus 2.0.20 2.0.20-r1: Small and fast window manager
-x11-wm/page 1.9.8 1.9.8-r1 1.9.9: A mouse friendly tiling window manager
+x11-wm/page 1.9.8 1.9.8-r1 1.9.9 1.9.9-r1: A mouse friendly tiling window manager
 x11-wm/pekwm 0.1.17-r1: A lightweight window manager initially based on aewm++
 x11-wm/plwm 2.7_rc1-r1: Python classes for, and an implementation of, a window manager
 x11-wm/qtile 0.10.5 0.10.6 9999: A full-featured, hackable tiling window manager written in Python
