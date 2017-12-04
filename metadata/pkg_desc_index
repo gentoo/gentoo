@@ -13313,7 +13313,7 @@ media-libs/tiff 3.9.7-r1 4.0.8 4.0.9: Tag Image File Format (TIFF) library
 media-libs/tremor 0_pre20130223-r1: A fixed-point version of the Ogg Vorbis decoder (also known as libvorbisidec)
 media-libs/tse3 0.3.1-r1: TSE3 Sequencer library
 media-libs/urt 3.1b-r1: the Utah Raster Toolkit is a library for dealing with raster images
-media-libs/vamp-plugin-sdk 2.6-r1 2.7.1: Audio processing plugin system for plugins that extract descriptive information from audio data
+media-libs/vamp-plugin-sdk 2.6-r1 2.7.1: Audio processing system for plugins to extract information from audio data
 media-libs/varconf 0.6.6 0.6.7 0.6.7-r1: A configuration system designed for the STAGE server
 media-libs/vigra 1.9.0 1.11.0: C++ computer vision library emphasizing customizable algorithms and structures
 media-libs/vips 7.38.5-r1: VIPS Image Processing Library
@@ -13522,9 +13522,9 @@ media-plugins/qmmp-plugin-pack 1.1.3-r1 1.1.5 1.2.0: A set of extra plugins for 
 media-plugins/rev-plugins 0.3.1-r1 0.3.1-r2 0.7.1: REV LADSPA plugins package. A stereo reverb plugin based on the well-known greverb
 media-plugins/swh-lv2 1.0.15 1.0.16: Large collection of LV2 audio plugins/effects
 media-plugins/swh-plugins 0.4.15-r3: Large collection of LADSPA audio plugins/effects
-media-plugins/tap-plugins 0.7.2 0.7.3: TAP LADSPA plugins package. Contains DeEsser, Dynamics, Equalizer, Reverb, Stereo Echo, Tremolo
+media-plugins/tap-plugins 0.7.2 0.7.3: A bunch of LADSPA plugins for audio processing
 media-plugins/vamp-aubio-plugins 0.5.0 0.5.1: Onset detection, pitch tracking, note tracking and tempo tracking plugins
-media-plugins/vamp-libxtract-plugins 0.6.6.20121204: Low-level feature extraction plugins using Jamie Bullock's libxtract library to provide around 50 spectral and other features
+media-plugins/vamp-libxtract-plugins 0.6.6.20121204: Vamp plugin encapsulating many of the functions of the LibXtract library
 media-plugins/vco-plugins 0.3.0 0.3.0-r1: SAW-VCO ladspa plugin package. Anti-aliased oscillators
 media-plugins/vdr-actuator 1.2.1: VDR plugin: control an linear or horizon actuator attached trough the parallel port
 media-plugins/vdr-admin 0.8.0: VDR plugin: Admin OSD - This is not! the webadmin program called vdradmin
@@ -13824,7 +13824,7 @@ media-sound/jack-audio-connection-kit 0.121.3-r1 0.124.1-r1 0.125.0: A low-laten
 media-sound/jack-keyboard 2.5: A virtual MIDI keyboard for JACK MIDI
 media-sound/jack-rack 1.4.7-r1 1.4.8_rc1: JACK Rack is an effects rack for the JACK low latency audio API
 media-sound/jack-smf-utils 1.0: Utilities for MIDI streams and files using Jack MIDI
-media-sound/jack2 1.9.10 1.9.11_rc1: Jackdmp jack implemention for multi-processor machine
+media-sound/jack2 1.9.11_rc1 1.9.11_rc1-r1 9999: Jackdmp jack implemention for multi-processor machine
 media-sound/jackbeat 0.7.6: An audio sequencer for Linux
 media-sound/jalv 1.6.0-r1 1.6.0-r2: Simple but fully featured LV2 host for Jack
 media-sound/jamin 0.95.0-r2 0.95.0-r3: JAMin is the JACK Audio Connection Kit (JACK) Audio Mastering interface
