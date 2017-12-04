@@ -36,6 +36,8 @@ DEPEND="${RDEPEND}
 	dev-qt/qttest:5
 	virtual/pkgconfig"
 
+PATCHES=( "${FILESDIR}/${P}-cmake-3.9.1.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		"-DDISABLE_LIRC=$(usex lirc OFF ON)"
