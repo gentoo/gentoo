@@ -35,7 +35,7 @@ RDEPEND="
 	jpeg2k? ( >=media-libs/jasper-1.900.1:= )
 	openexr? ( media-libs/openexr )
 	png? ( media-libs/libpng:0= )
-	raw? ( >=media-libs/libopenraw-0.1 )
+	raw? ( >=media-libs/libopenraw-0.1:0= )
 	sdl? ( media-libs/libsdl )
 	svg? ( >=gnome-base/librsvg-2.14:2 )
 	umfpack? ( sci-libs/umfpack )
