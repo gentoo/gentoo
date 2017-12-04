@@ -9,8 +9,8 @@ DESCRIPTION="Native APR library for Tomcat"
 
 SLOT="0"
 SRC_URI="mirror://apache/tomcat/tomcat-connectors/native/${PV}/source/${P}-src.tar.gz"
-HOMEPAGE="http://tomcat.apache.org/"
-KEYWORDS="~amd64 ~x86"
+HOMEPAGE="https://tomcat.apache.org/"
+KEYWORDS="amd64 ~x86"
 LICENSE="Apache-2.0"
 IUSE="test"
 
@@ -50,7 +50,7 @@ src_test() {
 pkg_postinst() {
 	elog
 	elog " APR should be available with Tomcat, for more information"
-	elog " please see http://tomcat.apache.org/tomcat-6.0-doc/apr.html"
+	elog " please see https://tomcat.apache.org/tomcat-6.0-doc/apr.html"
 	elog
 	elog " Please report any bugs to https://bugs.gentoo.org/"
 	elog
