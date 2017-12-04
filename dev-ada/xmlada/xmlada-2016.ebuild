@@ -40,6 +40,11 @@ src_compile () {
 	done
 }
 
+src_test() {
+	emake test
+	emake run_test | grep DIFF && die
+}
+
 src_install () {
 	for kind in shared static static-pic; do
 		if use ${kind}; then
