@@ -17231,7 +17231,7 @@ sys-apps/memtester 4.2.2 4.3.0: userspace utility for testing the memory subsyst
 sys-apps/microcode-ctl 1.23 1.27 1.28 1.28-r1: Intel processor microcode update utility
 sys-apps/miller 4.2.0: A tool like sed, awk, cut, join, and sort for name-indexed data (CSV, JSON, ..)
 sys-apps/minised 1.15: a smaller, cheaper and faster sed implementation
-sys-apps/miscfiles 1.5-r1 1.5-r2: Miscellaneous files
+sys-apps/miscfiles 1.5-r1 1.5-r2 1.5-r3: Miscellaneous files
 sys-apps/mlocate 0.26-r2: Merging locate is an utility to index and quickly search for files
 sys-apps/modutils 2.4.27-r1: Standard kernel module utilities for linux-2.4 and older
 sys-apps/moreutils 0.60-r1 0.61: a collection of tools that nobody thought to write when Unix was young
