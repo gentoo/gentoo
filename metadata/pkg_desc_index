@@ -2917,7 +2917,7 @@ dev-cpp/tbb 4.3.20150611 4.4.20160803 2017.20161128 2017.20170226: High level ab
 dev-cpp/tclap 1.2.1: Simple templatized C++ library for parsing command line arguments
 dev-cpp/threadpool 0.2.5-r1: A cross-platform C++ thread pool library (built on top of Boost)
 dev-cpp/tree 2.65-r1 2.81: An STL-like tree class
-dev-cpp/waylandpp 0.1.0 0.1.2 0.1.4 0.1.5 9999: Wayland C++ bindings
+dev-cpp/waylandpp 0.1.0 0.1.2 0.1.4 0.1.5 0.1.6 9999: Wayland C++ bindings
 dev-cpp/websocketpp 0.7.0: C++/Boost Asio based websocket client/server library
 dev-cpp/xsd 4.0.0: An open-source, cross-platform W3C XML Schema to C++ data binding compiler
 dev-cpp/yaml-cpp 0.5.3 0.5.3-r1: YAML parser and emitter in C++
@@ -18022,7 +18022,7 @@ sys-power/pmtools 20071116 20110323 20110323-r1: Collection of tools for ACPI an
 sys-power/powermgmt-base 1.31: Script to test whether computer is running on AC power
 sys-power/powernowd 1.00-r4: Daemon to control the speed and voltage of CPUs
 sys-power/powerstat 0.02.11 9999: Laptop power measuring tool
-sys-power/powertop 1.13 2.6 2.8 9999: tool that helps you find what software is using the most power
+sys-power/powertop 2.8 9999: tool that helps you find what software is using the most power
 sys-power/sispmctl 3.1 4.0: GEMBIRD SiS-PM control utility
 sys-power/suspend 1.0_p20150810: Userspace Software Suspend and S2Ram
 sys-power/thermald 1.4.2-r1 1.5.3 1.5.4 1.6: Thermal daemon for Intel architectures
