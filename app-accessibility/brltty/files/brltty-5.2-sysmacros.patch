@@ -1,24 +1,20 @@
---- a/Programs/system_linux.c	2017-12-02 12:54:34.098643832 -0800
-+++ b/Programs/system_linux.c	2017-12-02 12:59:00.683592161 -0800
-@@ -24,6 +24,9 @@
+--- a/Programs/system_linux.c
++++ b/Programs/system_linux.c
+@@ -24,6 +24,7 @@
  #include <fcntl.h>
  #include <sys/ioctl.h>
  #include <sys/stat.h>
-+#ifdef HAVE_SYS_SYSMACROS_H
-+#include <sys/sysmacros.h>          /* major() w/newer glibc */
-+#endif
++#include <sys/sysmacros.h>
  
  #include "log.h"
  #include "file.h"
---- a/Programs/brlapi_client.c	2017-12-02 14:29:37.524205316 -0800
-+++ b/Programs/brlapi_client.c	2017-12-02 14:32:45.679948051 -0800
-@@ -73,6 +73,9 @@
+--- a/Programs/brlapi_client.c
++++ b/Programs/brlapi_client.c
+@@ -73,6 +73,7 @@
  #include <linux/tty.h>
  #include <linux/vt.h>
  #define MAXIMUM_VIRTUAL_CONSOLE MAX_NR_CONSOLES
-+#ifdef HAVE_SYS_SYSMACROS_H
-+#include <sys/sysmacros.h>          /* major() w/newer glibc */
-+#endif
++#include <sys/sysmacros.h>
  #endif /* linux */
  
  #ifdef __OpenBSD__
