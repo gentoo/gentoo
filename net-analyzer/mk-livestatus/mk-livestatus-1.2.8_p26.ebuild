@@ -110,18 +110,18 @@ src_install() {
 	cat <<EOF >"${T}"/nagios.cfg
 # Ensure all data is set to event brokers
 event_broker_options=-1
-broker_module=${EPREFIX%/}/usr/$(get_libdir)/mk-livestatus/livestatus.o
+broker_module=${EPREFIX%/}/usr/$(get_libdir)/${PN}/livestatus.o
 EOF
 	# same for icigna
 	cat <<EOF >"${T}"/icigna.cfg
 define module{
-        module_name             mk-livestatus
+        module_name             ${PN}
         module_type             neb
-        path                    /usr/$(get_libdir)/mk-livestatus/livestatus.o
+        path                    /usr/$(get_libdir)/${PN}/livestatus.o
         args                    /var/lib/icigna/rw/live
         }
 EOF
-	insinto /usr/share/mk-livestatus
+	insinto /usr/share/${PN}
 	doins "${T}"/{nagios,icigna}.cfg
 
 	if use perl; then
