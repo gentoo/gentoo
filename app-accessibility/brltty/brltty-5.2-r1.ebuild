@@ -3,7 +3,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_3 python3_4 python3_5 )
+PYTHON_COMPAT=( python2_7 python3_{4,5} )
 FINDLIB_USE="ocaml"
 
 inherit findlib eutils multilib toolchain-funcs java-pkg-opt-2 flag-o-matic \
@@ -22,7 +22,7 @@ IUSE="+api +beeper bluetooth +contracted-braille doc +fm gpm iconv icu
 REQUIRED_USE="doc? ( api )
 	java? ( api )
 	ocaml? ( api )
-	python? ( api )
+	python? ( api ${PYTHON_REQUIRED_USE} )
 	tcl? ( api )"
 
 COMMON_DEP="bluetooth? ( net-wireless/bluez )
@@ -30,7 +30,7 @@ COMMON_DEP="bluetooth? ( net-wireless/bluez )
 	iconv? ( virtual/libiconv )
 	icu? ( dev-libs/icu:= )
 	python? ( ${PYTHON_DEPS} )
-	ncurses? ( sys-libs/ncurses:= )
+	ncurses? ( sys-libs/ncurses:0= )
 	nls? ( virtual/libintl )
 	tcl? ( >=dev-lang/tcl-8.4.15:0= )
 	usb? ( virtual/libusb:0 )
@@ -64,10 +64,8 @@ src_prepare() {
 }
 
 src_configure() {
-	filter-flags "_*_SOURCE*"
-	append-cppflags -D_DEFAULT_SOURCE
-	has_version ">=sys-libs/glibc-2.25-r5" && append-cppflags -DHAVE_SYS_SYSMACROS_H
-	has_version "sys-libs/ncurses[tinfo]" && append-libs -ltinfo
+	append-cppflags "$($(tc-getPKG_CONFIG) --cflags ncurses)"
+	append-libs "$($(tc-getPKG_CONFIG) --libs ncurses)"
 
 	tc-export AR LD PKG_CONFIG
 	# override prefix in order to install into /
