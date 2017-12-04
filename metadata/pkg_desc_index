@@ -12833,7 +12833,7 @@ media-gfx/openmesh 4.1: A generic data structure to represent and manipulate pol
 media-gfx/openscad 2015.03_p2-r3 9999: The Programmers Solid 3D CAD Modeller
 media-gfx/opentoonz 1.1.2: An open-source full-featured 2D animation creation software
 media-gfx/openvdb 3.2.0 4.0.0 4.0.2: Libs for the efficient manipulation of volumetric data
-media-gfx/optipng 0.7.6-r1: Compress PNG files without affecting image quality
+media-gfx/optipng 0.7.6-r1 0.7.6-r2: Compress PNG files without affecting image quality
 media-gfx/panini 0.71.104: OpenGL-based panoramic image viewer
 media-gfx/pdf2svg 0.2.1 0.2.2 0.2.3: pdf2svg is based on poppler and cairo and can convert pdf to svg files
 media-gfx/pencil 0.4.4_beta: A Qt4 based animation and drawing program
