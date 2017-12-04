@@ -76,6 +76,14 @@ src_prepare() {
 
 	# requires qtwebkit
 	sed -i -e "s/wikipedia,//" data/amarok_homerc || die
+
+	sed -i -e "/macro_log_feature.*QT_QTOPENGL_FOUND/d" \
+		CMakeLists.txt \
+		|| die "failed to remove QT_QTOPENGL detection"
+
+	sed -i -e "/if/ s/QT_QTOPENGL_FOUND/FALSE/" \
+		src/context/applets/CMakeLists.txt \
+		|| die "failed to sed out QT_QTOPENGL_FOUND"
 }
 
 src_configure() {
@@ -84,19 +92,19 @@ src_configure() {
 
 	local mycmakeargs=(
 		-DWITH_PLAYER=ON
-		-DWITH_Libgcrypt=OFF
-		-DWITH_SPECTRUM_ANALYZER=OFF
 		-DWITH_NepomukCore=OFF
 		-DWITH_Soprano=OFF
 		-DWITH_MYSQL_EMBEDDED=$(usex embedded)
 		-DWITH_IPOD=$(usex ipod)
-		-DWITH_GDKPixBuf=$(usex ipod)
 		-DWITH_LibLastFm=$(usex lastfm)
 		-DWITH_MP3Tunes=$(usex mp3tunes)
 		-DWITH_Mtp=$(usex mtp)
 		-DWITH_LibOFA=$(usex ofa)
 		-DWITH_UTILITIES=$(usex utils)
 	)
+
+	use ipod && mycmakeargs+=( DWITH_GDKPixBuf=ON )
+	use mp3tunes && mycmakeargs+=( -DWITH_Libgcrypt=OFF )
 
 	# bug 581554: add libmysqld location for rpath patch
 	use embedded && mycmakeargs+=( -DMYSQLD_DIR="${EPREFIX}/usr/$(get_libdir)/mysql" )
