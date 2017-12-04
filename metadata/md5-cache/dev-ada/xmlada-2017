@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install
+DEFINED_PHASES=compile configure install test
 DEPEND=gnat_2016? ( dev-lang/gnat-gpl:4.9.4 ) gnat_2017? ( dev-lang/gnat-gpl:6.3.0 ) dev-ada/gprbuild[gnat_2016=,gnat_2017=]
 DESCRIPTION=Set of modules that provide a simple manipulation of XML streams
 EAPI=6
@@ -11,4 +11,4 @@ REQUIRED_USE=|| ( shared static static-pic ) ^^ ( gnat_2016 gnat_2017 )
 SLOT=0
 SRC_URI=http://mirrors.cdn.adacore.com/art/591aeb88c7a4473fcbb154f8 -> xmlada-gpl-2017-src.tar.gz
 _eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e
-_md5_=8905aecc247346dc59b272966d8c7c94
+_md5_=1047be1ceb8c22b4819c2af40b498563
