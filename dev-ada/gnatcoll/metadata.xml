@@ -8,7 +8,6 @@
 	<use>
 		<flag name="gnat_2016">Compile with dev-lang/gnat-gpl-2016</flag>
 		<flag name="gnat_2017">Compile with dev-lang/gnat-gpl-2017</flag>
-		<flag name="postgresql">Adds support for postgresql</flag>
 		<flag name="projects">Adds support for projects</flag>
 		<flag name="pygobject">Adds support for pygobject</flag>
 		<flag name="shared">Build shared library</flag>

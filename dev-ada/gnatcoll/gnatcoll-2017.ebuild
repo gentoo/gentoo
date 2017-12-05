@@ -15,7 +15,7 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/591c45e2c7a447af2deed016
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="gmp gnat_2016 +gnat_2017 gtk iconv postgresql pygobject projects readline
+IUSE="gmp gnat_2016 +gnat_2017 gtk iconv postgres pygobject projects readline
 	+shared sqlite static syslog tools"
 
 RDEPEND="dev-lang/gnat-gpl:6.3.0
@@ -31,7 +31,7 @@ RDEPEND="dev-lang/gnat-gpl:6.3.0
 		x11-libs/pango
 	)
 	pygobject? ( dev-python/pygobject:3[${PYTHON_USEDEP}] )
-	postgresql? ( dev-db/postgresql:* )
+	postgres? ( dev-db/postgresql:* )
 	sqlite? ( dev-db/sqlite )
 	projects? (
 		>=dev-ada/libgpr-2017[gnat_2017,shared?,static]
@@ -79,7 +79,7 @@ src_configure() {
 		--with-python \
 		$(use_with gmp) \
 		$(use_with iconv) \
-		$(use_with postgresql) \
+		$(use_with postgres postgresql) \
 		$(use_enable projects) \
 		$(use_enable pygobject) \
 		$(use_enable readline gpl) \
