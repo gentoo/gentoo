@@ -7,7 +7,7 @@ inherit toolchain-funcs multiprocessing
 
 MYP=gprbuild-gpl-${PV}
 
-DESCRIPTION="Multi-Language Management"
+DESCRIPTION="Ada library to handle GPRbuild project files"
 HOMEPAGE="http://libre.adacore.com/"
 SRC_URI="http://mirrors.cdn.adacore.com/art/57399662c7a447658e0affa8
 		-> ${MYP}-src.tar.gz"
