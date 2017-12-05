@@ -1,0 +1,28 @@
+From 850029f5c664b8a496fead6fe5489c2b4aebae7a Mon Sep 17 00:00:00 2001
+From: Mauro Carvalho Chehab <mchehab@s-opensource.com>
+Date: Wed, 29 Nov 2017 22:28:53 -0200
+Subject: Update Brasilian Portuguese translation
+
+---
+ src/customization/pt-BR/user.entities | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/customization/pt-BR/user.entities b/src/customization/pt-BR/user.entities
+index 11abcd5..c63a743 100644
+--- a/src/customization/pt-BR/user.entities
++++ b/src/customization/pt-BR/user.entities
+@@ -33,6 +33,11 @@
+ <!ENTITY plasma-desktop	"<productname>&kde; Plasma Desktop</productname>">
+ <!ENTITY plasma-workspaces	"<productname>&kde; Plasma Workspaces</productname>">
+ <!ENTITY plasmapa	"<productname>&kde; Plasma Pulseaudio</productname>">
++<!ENTITY PgUp   "<keysym>PgUp</keysym>">
++<!ENTITY PgDn   "<keysym>PgDn</keysym>">
++<!ENTITY Left   "<keysym>←</keysym>"> <!-- Cursor key-->
++<!ENTITY Right  "<keysym>→</keysym>"> <!-- Cursor key-->
++<!ENTITY Space  "<keysym>Espaço</keysym>">
+ <!ENTITY BDM 	"botão <mousebutton>direito</mousebutton> do mouse">   <!-- English: &RMB; -->
+ <!ENTITY RMB 	"botão <mousebutton>direito</mousebutton> do mouse">
+ <!ENTITY Shift	"<keycap>Shift</keycap>">
+-- 
+cgit v0.11.2
+
