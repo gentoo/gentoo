@@ -8510,7 +8510,7 @@ dev-python/pytest-runner 2.6.2 2.10.1 2.11.1: Adds support for tests during inst
 dev-python/pytest-salt 0.1_pre20170731: PyTest Salt Plugin
 dev-python/pytest-shutil 1.2.4 1.2.8 1.2.11: A goodie-bag of unix shell and environment tools for py.test
 dev-python/pytest-subtesthack 0.1.1: A hack for test fixtures, needed for hypothesis inside py.test
-dev-python/pytest-timeout 1.2.0: py.test plugin to abort hanging tests
+dev-python/pytest-timeout 1.2.0 1.2.1: py.test plugin to abort hanging tests
 dev-python/pytest-virtualenv 1.2.11: Virtualenv fixture for py.test
 dev-python/pytest-xdist 1.14-r1 1.15.0 1.20.0 1.20.1: Distributed testing and loop-on-failing modes
 dev-python/pytest-xprocess 0.9.1 0.12.1: Manage external processes across test runs
