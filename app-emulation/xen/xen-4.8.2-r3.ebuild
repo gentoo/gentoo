@@ -17,7 +17,7 @@ if [[ $PV == *9999 ]]; then
 	SRC_URI=""
 else
 	KEYWORDS="~amd64 ~arm -x86"
-	UPSTREAM_VER=0
+	UPSTREAM_VER=3
 	SECURITY_VER=
 	GENTOO_VER=
 
@@ -34,6 +34,7 @@ else
 fi
 
 DESCRIPTION="The Xen virtual machine monitor"
+HOMEPAGE="http://xen.org/"
 HOMEPAGE="https://www.xenproject.org"
 LICENSE="GPL-2"
 SLOT="0"
