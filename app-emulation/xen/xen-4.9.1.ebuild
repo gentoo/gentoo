@@ -79,12 +79,7 @@ pkg_setup() {
 
 src_prepare() {
 	# Upstream's patchset
-	if [[ -n ${UPSTREAM_VER} ]]; then
-		EPATCH_SUFFIX="patch" \
-		EPATCH_FORCE="yes" \
-		EPATCH_OPTS="-p1" \
-			epatch "${WORKDIR}"/patches-upstream
-	fi
+	[[ -n ${UPSTREAM_VER} ]] && eapply "${WORKDIR}"/patches-upstream
 
 	# Security patchset
 	if [[ -n ${SECURITY_VER} ]]; then
@@ -92,25 +87,18 @@ src_prepare() {
 		# apply main xen patches
 		# Two parallel systems, both work side by side
 		# Over time they may concdense into one. This will suffice for now
-		EPATCH_SUFFIX="patch"
-		EPATCH_FORCE="yes"
-
 		source "${WORKDIR}"/patches-security/${PV}.conf
 
 		local i
 		for i in ${XEN_SECURITY_MAIN}; do
-			epatch "${WORKDIR}"/patches-security/xen/$i
+			eapply "${WORKDIR}"/patches-security/xen/$i
 		done
 	fi
 
 	# Gentoo's patchset
-	if [[ -n ${GENTOO_VER} ]]; then
-		EPATCH_SUFFIX="patch" \
-		EPATCH_FORCE="yes" \
-			epatch "${WORKDIR}"/patches-gentoo
-	fi
+	[[ -n ${GENTOO_VER} ]] && eapply "${WORKDIR}"/patches-gentoo
 
-	epatch "${FILESDIR}"/${PN}-4.6-efi.patch
+	eapply "${FILESDIR}"/${PN}-4.6-efi.patch
 
 	# Drop .config
 	sed -e '/-include $(XEN_ROOT)\/.config/d' -i Config.mk || die "Couldn't	drop"
