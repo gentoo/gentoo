@@ -5,7 +5,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='threads(+)'
 
-inherit flag-o-matic waf-utils python-any-r1
+inherit flag-o-matic gnome2-utils waf-utils python-any-r1
 
 DESCRIPTION="Modular patch bay for audio and MIDI systems"
 HOMEPAGE="http://wiki.drobilla.net/Patchage"
@@ -42,4 +42,12 @@ src_configure() {
 		$(use debug && echo "--debug") \
 		$(use alsa || echo "--no-alsa") \
 		$(use lash || echo "--no-lash")
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
 }
