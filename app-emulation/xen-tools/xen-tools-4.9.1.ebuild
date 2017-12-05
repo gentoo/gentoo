@@ -18,8 +18,8 @@ if [[ $PV == *9999 ]]; then
 	EGIT_REPO_URI="git://xenbits.xen.org/${REPO}"
 	S="${WORKDIR}/${REPO}"
 else
-	KEYWORDS="amd64 ~arm ~arm64 x86"
-	UPSTREAM_VER=2
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	UPSTREAM_VER=
 	SECURITY_VER=
 	# xen-tools's gentoo patches tarball
 	GENTOO_VER=10
@@ -82,6 +82,7 @@ COMMON_DEPEND="
 "
 
 DEPEND="${COMMON_DEPEND}
+	>=sys-kernel/linux-headers-4.11
 	dev-python/lxml[${PYTHON_USEDEP}]
 	x86? ( sys-devel/dev86
 		sys-power/iasl )
@@ -241,11 +242,6 @@ src_prepare() {
 
 	mv tools/qemu-xen/qemu-bridge-helper.c tools/qemu-xen/xen-bridge-helper.c || die
 
-	# Fix building with gcc 7, Bug #634338
-	# https://xenbits.xen.org/gitweb/?p=xen.git;a=commit;h=f49fa658b53580cf2ad354d2bf1796766cc11222
-	sed -e 's/name\[60\]/name\[100\]/g' \
-		-i tools/misc/xenlockprof.c || die
-
 	# Fix texi2html build error with new texi2html, qemu.doc.html
 	sed -i -e "/texi2html -monolithic/s/-number//" tools/qemu-xen-traditional/Makefile || die
 
@@ -362,7 +358,6 @@ src_configure() {
 }
 
 src_compile() {
-	export VARTEXFONTS="${T}/fonts"
 	local myopt
 	use debug && myopt="${myopt} debug=y"
 
@@ -370,7 +365,7 @@ src_compile() {
 		append-flags -fno-strict-overflow
 	fi
 
-	emake V=1 CC="$(tc-getCC)" LD="$(tc-getLD)" AR="$(tc-getAR)" RANLIB="$(tc-getRANLIB)" -C tools ${myopt}
+	emake CC="$(tc-getCC)" LD="$(tc-getLD)" AR="$(tc-getAR)" RANLIB="$(tc-getRANLIB)" build-tools ${myopt}
 
 	if use doc; then
 		emake -C docs build
