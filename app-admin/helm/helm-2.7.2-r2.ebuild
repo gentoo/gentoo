@@ -139,6 +139,6 @@ src_install() {
 	insinto /usr/share/zsh/site-functions
 	newins ${PN}.zsh _${PN}
 
-	dobin bin/${PN}
+	dobin bin/${PN} bin/tiller
 	dodoc src/${EGO_PN}/README.md
 }
