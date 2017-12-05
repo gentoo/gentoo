@@ -18436,8 +18436,8 @@ www-client/dooble 1.56c: A Secure and Open Source Web Browser
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r2 0.12_pre6-r3 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.22.7 3.24.5: GNOME webbrowser based on Webkit
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
-www-client/firefox 52.2.0 52.4.0 52.5.0 57.0: Firefox Web Browser
-www-client/firefox-bin 52.5.0-r1 57.0-r1: Firefox Web Browser
+www-client/firefox 52.2.0 52.4.0 52.5.0 57.0.1: Firefox Web Browser
+www-client/firefox-bin 52.5.0-r1 57.0.1: Firefox Web Browser
 www-client/google-chrome 62.0.3202.94: The web browser from Google
 www-client/google-chrome-beta 63.0.3239.70: The web browser from Google
 www-client/google-chrome-unstable 64.0.3278.0: The web browser from Google
