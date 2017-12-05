@@ -4221,15 +4221,11 @@ media-libs/mesa:dri3 - Enable DRI3 support.
 media-libs/mesa:egl - Enable EGL support.
 media-libs/mesa:gallium - Build drivers based on Gallium3D, the new architecture for 3D graphics drivers.
 media-libs/mesa:gbm - Enable the Graphics Buffer Manager for EGL on KMS.
-media-libs/mesa:gcrypt - Use dev-libs/libgcrypt for low level sha1 utility functions.
 media-libs/mesa:gles1 - Enable GLESv1 support.
 media-libs/mesa:gles2 - Enable GLESv2 support.
-media-libs/mesa:libressl - Use dev-libs/libressl for low level sha1 utility functions.
 media-libs/mesa:llvm - Enable LLVM backend for Gallium3D.
-media-libs/mesa:nettle - Use dev-libs/nettle for low level sha1 utility functions.
 media-libs/mesa:opencl - Enable the Clover Gallium OpenCL state tracker.
 media-libs/mesa:openmax - Enable OpenMAX video decode/encode acceleration for Gallium3D.
-media-libs/mesa:openssl - Use dev-libs/openssl for low level sha1 utility functions. May cause issues with games from Steam.
 media-libs/mesa:osmesa - Build the Mesa library for off-screen rendering.
 media-libs/mesa:pax_kernel - Enable if the user plans to run the package under a pax enabled hardened kernel
 media-libs/mesa:pic - disable optimized assembly code that is not PIC friendly
