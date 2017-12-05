@@ -27,6 +27,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}/${PN}-1.0.2-qtbindir.patch" )
+
 src_configure() {
 	local myeconfargs=(
 		$(use_enable cpu_flags_x86_sse sse)
