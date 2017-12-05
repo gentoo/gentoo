@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='threads(+)'
-inherit waf-utils python-any-r1
+inherit gnome2-utils waf-utils python-any-r1
 
 DESCRIPTION="Modular patch bay for JACK-based audio and MIDI systems"
 HOMEPAGE="http://drobilla.net/software/patchage"
@@ -37,4 +37,12 @@ src_configure() {
 		$(use alsa || echo "--no-alsa") \
 		$(use jack-dbus && echo "--jack-dbus") \
 		$(use session && echo "--jack-session-manage")
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
 }
