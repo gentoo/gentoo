@@ -18,8 +18,8 @@ DESCRIPTION="A new browser for our friends"
 HOMEPAGE="http://vivaldi.com/"
 VIVALDI_BASE_URI="https://downloads.vivaldi.com/${VIVALDI_BRANCH:-stable}/${VIVALDI_PN}_${PV/_p/-}_"
 SRC_URI="
-	arm? ( ${VIVALDI_BASE_URI}armhf.deb -> ${P}-armhf.deb )
 	amd64? ( ${VIVALDI_BASE_URI}amd64.deb -> ${P}-amd64.deb )
+	arm? ( ${VIVALDI_BASE_URI}armhf.deb -> ${P}-armhf.deb )
 	x86? ( ${VIVALDI_BASE_URI}i386.deb -> ${P}-i386.deb )
 "
 
