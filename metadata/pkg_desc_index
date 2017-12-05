@@ -13023,7 +13023,7 @@ media-libs/gstreamer-editing-services 1.10.3 1.10.4 1.12.3: SDK for making video
 media-libs/guilib 1.2.1: a simple widget set for SDL
 media-libs/gupnp-dlna 0.10.4 0.10.5: Library providing DLNA-related functionality for MediaServers
 media-libs/hamlib 3.1: Ham radio backend rig control libraries
-media-libs/harfbuzz 1.4.5 1.4.6-r2 1.4.8 1.5.1 1.6.3 1.7.1 9999: An OpenType text shaping engine
+media-libs/harfbuzz 1.4.5 1.4.6-r2 1.4.8 1.5.1 1.6.3 1.7.1 1.7.2 9999: An OpenType text shaping engine
 media-libs/hupnp-ng 9999: A software library for building UPnP devices, fork of herqq
 media-libs/icc-profiles-basiccolor-printing2009 1.2.0: ICC profiles for printing/offset
 media-libs/icc-profiles-openicc 1.3.0 1.3.1: ICC color profiles by OpenICC
@@ -17866,7 +17866,7 @@ sys-fs/udev 216 225-r1 233 234-r1 235 9999: Linux dynamic and persistent device 
 sys-fs/udev-init-scripts 27 30 31 32 9999: udev startup scripts for openrc
 sys-fs/udftools 1.0.0b-r9 1.0.0b-r10 1.1 1.2 1.3: Ben Fennema's tools for packet writing and the UDF filesystem
 sys-fs/udiskie 0.6.2 0.6.4 1.1.1: An automatic disk mounting service using udisks
-sys-fs/udisks 1.0.5-r1 2.1.8 2.6.5 2.7.3 2.7.4: Daemon providing interfaces to work with storage devices
+sys-fs/udisks 1.0.5-r1 2.1.8 2.6.5 2.7.4 2.7.5: Daemon providing interfaces to work with storage devices
 sys-fs/ufsutils 8.2_p3: FFS/UFS/UFS2 filesystem utilities from FreeBSD
 sys-fs/unionfs-fuse 1.0 2.0 9999: Self-syncing tree-merging file system based on FUSE
 sys-fs/vhba 20170610: Virtual (SCSI) Host Bus Adapter kernel module for the CDEmu suite
@@ -18457,7 +18457,7 @@ www-client/opera-developer 51.0.2781.0 51.0.2791.0: A fast and secure web browse
 www-client/otter 0.9.91-r1 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0-r1 2.1.1: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.12.1 0.13 9999: Command line interface to (Gentoo) Bugzilla
-www-client/qupzilla 2.1.2 2.2.0 2.2.1: A cross-platform web browser using QtWebEngine
+www-client/qupzilla 2.1.2 2.2.1 2.2.2: A cross-platform web browser using QtWebEngine
 www-client/qutebrowser 1.0.2 1.0.3 1.0.4 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine
 www-client/ripe-atlas-cousteau 1.0.6 1.0.7 1.2: A Python wrapper around the RIPE Atlas API
 www-client/seamonkey 2.46-r1 2.48 2.48-r1 2.49.4.0_p0 2.49.5.0_p0: Seamonkey Web Browser
