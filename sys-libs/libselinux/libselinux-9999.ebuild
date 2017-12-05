@@ -3,14 +3,14 @@
 
 EAPI="6"
 PYTHON_COMPAT=( python2_7 python3_4 python3_5 python3_6 )
-USE_RUBY="ruby21 ruby22 ruby23"
+USE_RUBY="ruby22 ruby23"
 
 # No, I am not calling ruby-ng
 inherit multilib python-r1 toolchain-funcs multilib-minimal
 
 MY_P="${P//_/-}"
 SEPOL_VER="${PV}"
-MY_RELEASEDATE="20161014"
+MY_RELEASEDATE="20170804"
 
 DESCRIPTION="SELinux userland library"
 HOMEPAGE="https://github.com/SELinuxProject/selinux/wiki"
@@ -27,15 +27,14 @@ fi
 
 LICENSE="public-domain"
 SLOT="0"
-
 IUSE="pcre2 python ruby static-libs ruby_targets_ruby21 ruby_targets_ruby22 ruby_targets_ruby23"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND=">=sys-libs/libsepol-${SEPOL_VER}:=[${MULTILIB_USEDEP}]
 	!pcre2? ( >=dev-libs/libpcre-8.33-r1:=[static-libs?,${MULTILIB_USEDEP}] )
 	pcre2? ( dev-libs/libpcre2:=[static-libs?,${MULTILIB_USEDEP}] )
 	python? ( ${PYTHON_DEPS} )
 	ruby? (
-		ruby_targets_ruby21? ( dev-lang/ruby:2.1 )
 		ruby_targets_ruby22? ( dev-lang/ruby:2.2 )
 		ruby_targets_ruby23? ( dev-lang/ruby:2.3 )
 	)"
@@ -44,11 +43,6 @@ DEPEND="${RDEPEND}
 	python? ( >=dev-lang/swig-2.0.9 )"
 
 src_prepare() {
-	if [[ ${PV} != 9999 ]] ; then
-		# If needed for live builds, place them in /etc/portage/patches
-		eapply "${FILESDIR}/libselinux-2.6-0007-build-related-fixes-bug-500674.patch"
-	fi
-
 	eapply_user
 
 	multilib_copy_sources

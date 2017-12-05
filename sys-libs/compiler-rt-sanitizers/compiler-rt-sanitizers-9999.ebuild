@@ -8,17 +8,17 @@ EAPI=6
 CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
-inherit check-reqs cmake-utils flag-o-matic git-r3 llvm python-any-r1 versionator
+inherit check-reqs cmake-utils flag-o-matic git-r3 llvm python-any-r1
 
 DESCRIPTION="Compiler runtime libraries for clang (sanitizers & xray)"
-HOMEPAGE="http://llvm.org/"
+HOMEPAGE="https://llvm.org/"
 SRC_URI=""
-EGIT_REPO_URI="http://llvm.org/git/compiler-rt.git
+EGIT_REPO_URI="https://git.llvm.org/git/compiler-rt.git
 	https://github.com/llvm-mirror/compiler-rt.git"
 
 LICENSE="|| ( UoI-NCSA MIT )"
 # Note: this needs to be updated to match version of clang-9999
-SLOT="5.0.0"
+SLOT="6.0.0"
 KEYWORDS=""
 IUSE="test"
 
@@ -56,14 +56,14 @@ pkg_setup() {
 src_unpack() {
 	if use test; then
 		# needed for patched gtest
-		git-r3_fetch "http://llvm.org/git/llvm.git
+		git-r3_fetch "https://git.llvm.org/git/llvm.git
 			https://github.com/llvm-mirror/llvm.git"
 	fi
 	git-r3_fetch
 
 	if use test; then
-		git-r3_checkout http://llvm.org/git/llvm.git \
-			"${WORKDIR}"/llvm
+		git-r3_checkout https://llvm.org/git/llvm.git \
+			"${WORKDIR}"/llvm '' utils/unittest
 	fi
 	git-r3_checkout
 }
@@ -81,13 +81,21 @@ src_configure() {
 		-DCOMPILER_RT_INCLUDE_TESTS=$(usex test)
 		# built-ins installed by sys-libs/compiler-rt
 		-DCOMPILER_RT_BUILD_BUILTINS=OFF
+		-DCOMPILER_RT_BUILD_LIBFUZZER=ON
+		-DCOMPILER_RT_BUILD_PROFILE=ON
 		-DCOMPILER_RT_BUILD_SANITIZERS=ON
 		-DCOMPILER_RT_BUILD_XRAY=ON
 	)
 	if use test; then
+		cat > "${T}"/unsandbox-lit.py <<-EOF || die
+			import os, sys
+			os.execlp("unsandbox", sys.argv[0], "lit", *sys.argv[1:])
+		EOF
+
 		mycmakeargs+=(
 			-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
-			-DLIT_COMMAND="${EPREFIX}/usr/bin/unsandbox;${EPREFIX}/usr/bin/lit"
+			-DLLVM_EXTERNAL_LIT="${T}/unsandbox-lit.py"
+			-DLLVM_LIT_ARGS="-vv"
 
 			# they are created during src_test()
 			-DCOMPILER_RT_TEST_COMPILER="${BUILD_DIR}/lib/llvm/${LLVM_SLOT}/bin/clang"

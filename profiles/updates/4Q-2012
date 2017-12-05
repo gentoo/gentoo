@@ -4,8 +4,6 @@ move app-emulation/qemu-kvm app-emulation/qemu
 move media-libs/libmediawiki net-libs/libmediawiki
 move media-fonts/source-sans-pro media-fonts/source-pro
 move media-fonts/source-code-pro media-fonts/source-pro
-move x11-wm/razorqt razorqt-base/razorqt-meta
-move x11-misc/lightdm-razorqt-greeter razorqt-base/razorqt-lightdm-greeter
 move x11-libs/openmotif x11-libs/motif
 move app-doc/openmotif-manual app-doc/motif-reference-manual
 slotmove dev-libs/boost 1.36 0
@@ -40,7 +38,6 @@ slotmove dev-util/boost-build 1.48 0
 slotmove dev-util/boost-build 1.49 0
 slotmove dev-util/boost-build 1.50 0
 slotmove dev-util/boost-build 1.51 0
-slotmove net-im/emesene 2 0
 move sci-chemistry/mmtk sci-libs/mmtk
 move app-office/texmakerx app-office/texstudio
 slotmove =media-libs/gst-rtsp-server-0.10* 0 0.10
@@ -48,14 +45,11 @@ move games-board/jrisk games-board/domination
 move x11-libs/elementary media-libs/elementary
 move x11-misc/pnmixer media-sound/pnmixer
 move app-portage/pyGPG dev-python/pyGPG
-move mail-client/claws-mail-tnef_parse mail-client/claws-mail-tnef-parse
-move mail-client/claws-mail-spam_report mail-client/claws-mail-spam-report
 move x11-libs/vdpau-video x11-libs/libva-vdpau-driver
-move app-editors/XML-XSH app-editors/XML-XSH2
 slotmove <net-libs/farstream-0.1.90 0 0.1
 move dev-ruby/ruby-bsearch dev-ruby/bsearch
 move net-misc/ptunnel net-proxy/pingtunnel
-move media-sound/leechcraft-lemon net-misc/leechcraft-lemon
+move media-sound/leechcraft-lemon app-leechcraft/lc-lemon
 move dev-haskell/hsql-sqlite dev-haskell/hsql-sqlite3
 slotmove dev-ruby/builder 3.1.4 3.1
 move x11-terms/terminal x11-terms/xfce4-terminal

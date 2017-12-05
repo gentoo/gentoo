@@ -9,18 +9,16 @@ inherit distutils-r1 eutils
 if [[ ${PV} != *9999* ]]; then
 	KEYWORDS="~amd64 ~x86"
 	SRC_URI="https://www.bitbucket.org/${PN}/targz/downloads/${P}.tar.gz"
-	HG_DEPEND=">=dev-vcs/mercurial-3.6 <dev-vcs/mercurial-3.8"
+	HG_DEPEND=">=dev-vcs/mercurial-4.3 <dev-vcs/mercurial-4.5"
 else
 	inherit mercurial
 	EHG_REPO_URI="https://bitbucket.org/tortoisehg/thg"
 	EHG_REVISION="stable"
-	KEYWORDS=""
-	SRC_URI=""
 	HG_DEPEND="dev-vcs/mercurial"
 fi
 
 DESCRIPTION="Set of graphical tools for Mercurial"
-HOMEPAGE="https://tortoisehg.bitbucket.org"
+HOMEPAGE="https://tortoisehg.bitbucket.io/"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -29,8 +27,8 @@ IUSE="doc"
 RDEPEND="${HG_DEPEND}
 	dev-python/iniparse[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
-	dev-python/PyQt4[svg,${PYTHON_USEDEP}]
-	dev-python/qscintilla-python[qt4(+),${PYTHON_USEDEP}]"
+	dev-python/PyQt5[svg,${PYTHON_USEDEP}]
+	>=dev-python/qscintilla-python-2.9.4:=[qt5(+),${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	doc? ( >=dev-python/sphinx-1.0.3 )"
 
@@ -72,6 +70,6 @@ python_install_all() {
 
 pkg_postinst() {
 	elog "When startup of ${PN} fails with an API version mismatch error"
-	elog "between dev-python/sip and dev-python/PyQt4 please rebuild"
+	elog "between dev-python/sip and dev-python/PyQt5 please rebuild"
 	elog "dev-python/qscintilla-python."
 }

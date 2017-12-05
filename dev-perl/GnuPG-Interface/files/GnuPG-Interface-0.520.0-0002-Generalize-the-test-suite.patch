@@ -1,0 +1,151 @@
+From: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
+Date: Tue, 13 Sep 2016 10:38:12 -0400
+Subject: Generalize the test suite
+
+The test suite currently assumes it knows something about the internal
+state of GnuPG's homedir.
+
+It's safer and less brittle to rely explicitly on the public interface
+that GnuPG has committed to, such as --import-keys and --list-keys,
+rather than assuming that certain files are in certain places in the
+GnuPG homedir.
+
+It's also better to create a fresh homedir and allow GnuPG to populate
+it during the test suite, cleaning it up at the end, rather than hope
+that GnuPG will leave a pre-existing homedir untouched.
+
+With this change, many more of the tests pass when /usr/bin/gpg is
+provided by GnuPG 2.1.
+---
+ t/000_setup.t              | 28 ++++++++++++++++++++++++++++
+ t/MyTestSpecific.pm        |  2 +-
+ t/zzz_cleanup.t            | 17 +++++++++++++++++
+ test/fake-pinentry.pl      | 28 ++++++++++++++++++++++++++++
+ test/{options => gpg.conf} |  0
+ test/secret-keys/1.0.test  |  4 ++--
+ 6 files changed, 76 insertions(+), 3 deletions(-)
+ create mode 100644 t/000_setup.t
+ create mode 100644 t/zzz_cleanup.t
+ create mode 100755 test/fake-pinentry.pl
+ rename test/{options => gpg.conf} (100%)
+
+diff --git a/t/000_setup.t b/t/000_setup.t
+new file mode 100644
+index 0000000..7f7f7b0
+--- /dev/null
++++ b/t/000_setup.t
+@@ -0,0 +1,28 @@
++#!/usr/bin/perl -w
++
++use strict;
++use English qw( -no_match_vars );
++
++use lib './t';
++use MyTest;
++use MyTestSpecific;
++use Cwd;
++use File::Path qw (make_path);
++use File::Copy;
++
++TEST
++{
++    make_path('test/gnupghome', { mode => 0700 });
++    my $agentconf = IO::File->new( "> test/gnupghome/gpg-agent.conf" );
++    $agentconf->write("pinentry-program " . getcwd() . "/test/fake-pinentry.pl\n");
++    $agentconf->close();
++    copy('test/gpg.conf', 'test/gnupghome/gpg.conf');
++    reset_handles();
++
++    my $pid = $gnupg->import_keys(command_args => [ 'test/pubring.gpg', 'test/secring.gpg' ],
++                                  options => [ 'batch'],
++                                  handles => $handles);
++    waitpid $pid, 0;
++
++    return $CHILD_ERROR == 0;
++};
+diff --git a/t/MyTestSpecific.pm b/t/MyTestSpecific.pm
+index 053b749..1af98ae 100644
+--- a/t/MyTestSpecific.pm
++++ b/t/MyTestSpecific.pm
+@@ -40,7 +40,7 @@ use vars qw( @ISA           @EXPORT
+ 
+ $gnupg = GnuPG::Interface->new( passphrase => 'test' );
+ 
+-$gnupg->options->hash_init( homedir              => 'test',
++$gnupg->options->hash_init( homedir              => 'test/gnupghome',
+                             armor                => 1,
+                             meta_interactive     => 0,
+                             meta_signing_key_id  => '0xF950DA9C',
+diff --git a/t/zzz_cleanup.t b/t/zzz_cleanup.t
+new file mode 100644
+index 0000000..5c03a72
+--- /dev/null
++++ b/t/zzz_cleanup.t
+@@ -0,0 +1,17 @@
++#!/usr/bin/perl -w
++
++use strict;
++use English qw( -no_match_vars );
++
++use lib './t';
++use MyTest;
++use MyTestSpecific;
++use File::Path qw (remove_tree);
++
++# this is actually no test, just cleanup.
++TEST
++{
++    my $err = [];
++    remove_tree('test/gnupghome', {error => \$err});
++    return ! @$err;
++};
+diff --git a/test/fake-pinentry.pl b/test/fake-pinentry.pl
+new file mode 100755
+index 0000000..12d3611
+--- /dev/null
++++ b/test/fake-pinentry.pl
+@@ -0,0 +1,28 @@
++#!/usr/bin/perl -w
++# Use this for your test suites when a perl interpreter is available.
++#
++# The encrypted keys in your test suite that you expect to work must
++# be locked with a passphrase of "test"
++#
++# Author: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
++#
++# License: This trivial work is hereby explicitly placed into the
++# public domain.  Anyone may reuse it, modify it, redistribute it for
++# any purpose.
++
++use strict;
++use warnings;
++
++# turn off buffering
++$| = 1;
++
++print "OK This is only for test suites, and should never be used in production\n";
++while (<STDIN>) {
++  chomp;
++  next if (/^$/);
++  next if (/^#/);
++  print ("D test\n") if (/^getpin/i);
++  print "OK\n";
++  exit if (/^bye/i);
++}
++1;
+diff --git a/test/options b/test/gpg.conf
+similarity index 100%
+rename from test/options
+rename to test/gpg.conf
+diff --git a/test/secret-keys/1.0.test b/test/secret-keys/1.0.test
+index 5999484..129d472 100644
+--- a/test/secret-keys/1.0.test
++++ b/test/secret-keys/1.0.test
+@@ -1,5 +1,5 @@
+-test/secring.gpg
+-----------------
++test/gnupghome/secring.gpg
++--------------------------
+ sec   1024D/F950DA9C 2000-02-06
+ uid                  GnuPG test key (for testing purposes only)
+ uid                  Foo Bar (1)

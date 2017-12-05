@@ -9,7 +9,7 @@ SRC_URI="http://www.smspower.org/meka/releases/${PN}${PV}.tgz"
 
 LICENSE="mekanix"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 RESTRICT="strip"
 IUSE=""
 

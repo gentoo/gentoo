@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>yngwin@gentoo.org</email>
-    <name>Ben de Groot</name>
-  </maintainer>
   <maintainer type="project">
     <email>python@gentoo.org</email>
     <name>Python</name>
@@ -29,10 +25,6 @@
     <flag name="jinja">
       Add support for <pkg>dev-python/jinja</pkg> as alternative templating
       engine to Mako
-    </flag>
-    <flag name="markdown">
-      Add support for Markdown as alternative markup language to
-      reStructuredText
     </flag>
     <flag name="watchdog">
       Use <pkg>dev-python/watchdog</pkg> to monitor file system events

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,11 +7,11 @@ EGIT_REPO_URI="https://github.com/clementine-player/Clementine.git"
 
 LANGS=" af ar be bg bn br bs ca cs cy da de el en_CA en_GB eo es et eu fa fi fr ga gl he he_IL hi hr hu hy ia id is it ja ka kk ko lt lv mr ms my nb nl oc pa pl pt pt_BR ro ru si_LK sk sl sr sr@latin sv te tr tr_TR uk uz vi zh_CN zh_TW"
 
-inherit cmake-utils flag-o-matic fdo-mime gnome2-utils virtualx
+inherit cmake-utils flag-o-matic xdg-utils gnome2-utils virtualx
 [[ ${PV} == *9999* ]] && inherit git-r3
 
-DESCRIPTION="A modern music player and library organizer based on Amarok 1.4 and Qt4"
-HOMEPAGE="http://www.clementine-player.org https://github.com/clementine-player/Clementine"
+DESCRIPTION="Modern music player and library organizer based on Amarok 1.4 and Qt"
+HOMEPAGE="https://www.clementine-player.org https://github.com/clementine-player/Clementine"
 [[ ${PV} == *9999* ]] || \
 SRC_URI="https://github.com/clementine-player/Clementine/archive/${PV/_}.tar.gz -> ${P}.tar.gz"
 
@@ -75,7 +75,10 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	sys-devel/gettext
 	dev-qt/qttest:4
-	dev-cpp/gmock
+	|| (
+		>=dev-cpp/gtest-1.8.0
+		dev-cpp/gmock
+	)
 	amazoncloud? ( dev-cpp/sparsehash )
 	box? ( dev-cpp/sparsehash )
 	dropbox? ( dev-cpp/sparsehash )
@@ -95,6 +98,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-fix-desktop-file.patch
 	"${FILESDIR}"/${P}-chromaprint14.patch #603662
 	"${FILESDIR}"/${P}-libechonest_removal.patch
+	"${FILESDIR}"/${P}-add-missing-functional-includes.patch #618214
 )
 
 src_prepare() {
@@ -162,11 +166,15 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 	gnome2_icon_cache_update
+
+	elog "Note that list of supported formats is controlled by media-plugins/gst-plugins-meta "
+	elog "USE flags. You may be intrested in setting aac, flac, mp3, ogg or wavpack USE flags "
+	elog "depending on your preferences"
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 	gnome2_icon_cache_update
 }

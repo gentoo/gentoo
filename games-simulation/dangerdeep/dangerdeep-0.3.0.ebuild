@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
 
 LICENSE="GPL-2 CC-BY-NC-ND-2.0"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="cpu_flags_x86_sse debug"
 
 RDEPEND="virtual/opengl
@@ -29,7 +29,8 @@ src_prepare() {
 		"${FILESDIR}"/${P}-build.patch \
 		"${FILESDIR}"/${P}-gcc43.patch \
 		"${FILESDIR}"/${P}-gcc47.patch \
-		"${FILESDIR}"/${P}-gcc44.patch
+		"${FILESDIR}"/${P}-gcc44.patch \
+		"${FILESDIR}"/${P}-gcc6.patch
 	sed -i -e "/console_log.txt/ s:fopen.*:stderr;:" src/system.cpp || die
 }
 

@@ -1,0 +1,89 @@
+From 9bf9ff9e8a548ecb5306d0142e75cdc274e93ba1 Mon Sep 17 00:00:00 2001
+From: Valery Kartel <valery.kartel@gmail.com>
+Date: Wed, 26 Jul 2017 17:12:14 +0300
+Subject: [PATCH] Fix build with LibreSSL
+
+---
+ libfreerdp/crypto/crypto.c      | 2 +-
+ winpr/libwinpr/utils/ssl.c      | 6 +++---
+ winpr/tools/makecert/makecert.c | 6 +++---
+ 3 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/libfreerdp/crypto/crypto.c b/libfreerdp/crypto/crypto.c
+index 15e65d534..f3bb595b8 100644
+--- a/libfreerdp/crypto/crypto.c
++++ b/libfreerdp/crypto/crypto.c
+@@ -388,7 +388,7 @@ BOOL x509_verify_certificate(CryptoCert cert, char* certificate_store_path)
+ 	if (cert_ctx == NULL)
+ 		goto end;
+ 
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+ 	OpenSSL_add_all_algorithms();
+ #else
+ 	OPENSSL_init_crypto(OPENSSL_INIT_ADD_ALL_CIPHERS \
+diff --git a/winpr/libwinpr/utils/ssl.c b/winpr/libwinpr/utils/ssl.c
+index b674e21d5..78cbab1d8 100644
+--- a/winpr/libwinpr/utils/ssl.c
++++ b/winpr/libwinpr/utils/ssl.c
+@@ -255,7 +255,7 @@ static BOOL CALLBACK _winpr_openssl_initialize(PINIT_ONCE once, PVOID param, PVO
+ 	}
+ #endif
+ 	/* SSL_load_error_strings() is void */
+-#if (OPENSSL_VERSION_NUMBER < 0x10100000L)
++#if (OPENSSL_VERSION_NUMBER < 0x10100000L) || defined(LIBRESSL_VERSION_NUMBER)
+ 	SSL_load_error_strings();
+ 	/* SSL_library_init() always returns "1" */
+ 	SSL_library_init();
+@@ -296,7 +296,7 @@ BOOL winpr_CleanupSSL(DWORD flags)
+ #ifdef WINPR_OPENSSL_LOCKING_REQUIRED
+ 		_winpr_openssl_cleanup_locking();
+ #endif
+-#if (OPENSSL_VERSION_NUMBER < 0x10100000L)
++#if (OPENSSL_VERSION_NUMBER < 0x10100000L) || defined(LIBRESSL_VERSION_NUMBER)
+ 		CRYPTO_cleanup_all_ex_data();
+ 		ERR_free_strings();
+ 		EVP_cleanup();
+@@ -307,7 +307,7 @@ BOOL winpr_CleanupSSL(DWORD flags)
+ #ifdef WINPR_OPENSSL_LOCKING_REQUIRED
+ 	if (flags & WINPR_SSL_CLEANUP_THREAD)
+ 	{
+-#if (OPENSSL_VERSION_NUMBER < 0x10000000L)
++#if (OPENSSL_VERSION_NUMBER < 0x10000000L) || defined(LIBRESSL_VERSION_NUMBER)
+ 		ERR_remove_state(0);
+ #else
+ 		ERR_remove_thread_state(NULL);
+diff --git a/winpr/tools/makecert/makecert.c b/winpr/tools/makecert/makecert.c
+index a9efb352c..c9e38200a 100644
+--- a/winpr/tools/makecert/makecert.c
++++ b/winpr/tools/makecert/makecert.c
+@@ -620,7 +620,7 @@ int makecert_context_output_certificate_file(MAKECERT_CONTEXT* context, char* pa
+ 				printf("Using default export password \"password\"\n");
+ 			}
+ 
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+ 			OpenSSL_add_all_algorithms();
+ 			OpenSSL_add_all_ciphers();
+ 			OpenSSL_add_all_digests();
+@@ -1008,7 +1008,7 @@ int makecert_context_process(MAKECERT_CONTEXT* context, int argc, char** argv)
+ 		key_length = atoi(arg->Value);
+ 	}
+ 
+-#if (OPENSSL_VERSION_NUMBER < 0x10100000L)
++#if (OPENSSL_VERSION_NUMBER < 0x10100000L) || defined(LIBRESSL_VERSION_NUMBER)
+ 	context->rsa = RSA_generate_key(key_length, RSA_F4, NULL, NULL);
+ #else
+ 	{
+@@ -1043,7 +1043,7 @@ int makecert_context_process(MAKECERT_CONTEXT* context, int argc, char** argv)
+ 	{
+ 		ASN1_TIME* before;
+ 		ASN1_TIME* after;
+-#if (OPENSSL_VERSION_NUMBER < 0x10100000L)
++#if (OPENSSL_VERSION_NUMBER < 0x10100000L) || defined(LIBRESSL_VERSION_NUMBER)
+ 		before = X509_get_notBefore(context->x509);
+ 		after = X509_get_notAfter(context->x509);
+ #else
+-- 
+2.14.1
+

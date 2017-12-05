@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/radmind/${P}.tar.gz"
 
 LICENSE="HPND"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="libressl"
 
 DEPEND="
@@ -24,6 +24,7 @@ src_prepare() {
 	# remove dnssd as it doesn't compile
 	epatch "${FILESDIR}"/${PN}-1.7.1-dnssd.patch
 	epatch "${FILESDIR}"/${PN}-1.14.0-parallel-make.patch
+	epatch "${FILESDIR}"/${PN}-1.14.1-glibc225.patch
 }
 
 src_install() {

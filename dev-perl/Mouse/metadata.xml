@@ -27,6 +27,7 @@
     <remote-id type="cpan-module">Mouse::PurePerl</remote-id>
     <remote-id type="cpan-module">Mouse::Role</remote-id>
     <remote-id type="cpan-module">Mouse::Spec</remote-id>
+    <remote-id type="cpan-module">Mouse::Tiny</remote-id>
     <remote-id type="cpan-module">Mouse::TypeRegistry</remote-id>
     <remote-id type="cpan-module">Mouse::Util</remote-id>
     <remote-id type="cpan-module">Mouse::Util::MetaRole</remote-id>

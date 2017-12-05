@@ -10,7 +10,7 @@ SRC_URI="http://fms.komkon.org/VGBA/VGBA${PV/.}-Linux-Ubuntu-bin.tgz"
 
 LICENSE="VGBA"
 SLOT="0"
-KEYWORDS="-* x86"
+KEYWORDS="-* ~x86"
 RESTRICT="strip"
 IUSE=""
 

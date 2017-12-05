@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/pauker/${P}.src.jar"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 COMMON_DEP="dev-java/browserlauncher2:1.0

@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5} )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 
 inherit distutils-r1 bash-completion-r1
 
@@ -32,6 +32,7 @@ DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( ${RDEPEND}
 		>=dev-python/case-1.3.1[${PYTHON_USEDEP}]
+		dev-python/eventlet[${PYTHON_USEDEP}]
 		dev-python/gevent[$(python_gen_usedep python2_7)]
 		>=dev-python/pymongo-2.6.2[${PYTHON_USEDEP}]
 		dev-python/pyopenssl[${PYTHON_USEDEP}]
@@ -43,17 +44,22 @@ DEPEND="
 		>=dev-python/boto-2.13.3[${PYTHON_USEDEP}]
 		>=dev-python/pyzmq-13.1.0[${PYTHON_USEDEP}]
 		>=dev-python/pyyaml-3.10[${PYTHON_USEDEP}]
+		>=dev-python/unittest2-0.5.1[${PYTHON_USEDEP}]
 	)
 	doc? (
 		dev-python/docutils[${PYTHON_USEDEP}]
 		>=dev-python/sphinx_celery-1.3[${PYTHON_USEDEP}]
 		dev-python/jinja[${PYTHON_USEDEP}]
 		dev-python/sqlalchemy[${PYTHON_USEDEP}]
-		dev-python/typing[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep 'dev-python/typing[${PYTHON_USEDEP}]' python2_7 python3_4)
 		)"
 
 # testsuite needs it own source
 DISTUTILS_IN_SOURCE_BUILD=1
+
+PATCHES=(
+	"${FILESDIR}"/${P}-log-endless-loop.patch
+	)
 
 python_compile_all() {
 	if use doc; then

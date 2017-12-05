@@ -19,6 +19,7 @@
 		<name>Andy Grover</name>
 	</maintainer>
 	<remote-id type="github">open-iscsi/configshell-fb</remote-id>
+	<remote-id type="pypi">configshell-fb</remote-id>
 	<bugs-to>https://github.com/open-iscsi/configshell-fb/issues</bugs-to>
 </upstream>
 </pkgmetadata>

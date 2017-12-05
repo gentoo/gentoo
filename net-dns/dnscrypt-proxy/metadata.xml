@@ -5,6 +5,16 @@
 		<email>amesists@gmail.com</email>
 		<name>Jiajun Wang</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>ya@sysdump.net</email>
+		<name>Georgy Yakovlev</name>
+		<description>Proxied maintainer. Please assign bugs to him.</description>
+	</maintainer>
+	<maintainer type="person">
+		<email>polynomial-c@gentoo.org</email>
+		<name>Lars Wendler</name>
+	<description>Proxy maintainer of Georgy. Please CC on bugs.</description>
+	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
@@ -16,8 +26,6 @@
 		server.
 	</longdescription>
 	<use>
-		<flag name="ldns">Use <pkg>net-libs/ldns</pkg> for DNSSEC/SSHFP
-			validation</flag>
 		<flag name="plugins">Enable plugin support to inspect and modify
 			queries and responses</flag>
 		<flag name="systemd">Use systemd's socket activation instead of

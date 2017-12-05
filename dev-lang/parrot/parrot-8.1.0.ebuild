@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ inherit eutils multilib
 # weird failures
 RESTRICT="test"
 
-DESCRIPTION="Virtual machine designed to efficiently compile and execute bytecode for dynamic languages"
+DESCRIPTION="Virtual machine designed to compile and execute bytecode for dynamic languages"
 HOMEPAGE="http://www.parrot.org/"
 SRC_URI="ftp://ftp.parrot.org/pub/parrot/releases/all/${PV}/${P}.tar.gz"
 
@@ -19,6 +19,7 @@ IUSE="opengl nls doc examples gdbm +gmp ssl +unicode pcre"
 
 RDEPEND="sys-libs/readline
 	dev-libs/libffi
+	net-libs/libnsl:0=
 	opengl? ( media-libs/freeglut )
 	nls? ( sys-devel/gettext )
 	unicode? ( >=dev-libs/icu-2.6:= )

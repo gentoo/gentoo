@@ -15,7 +15,7 @@ SRC_URI="mirror://gentoo/sf_180_server_files.tar.gz
 
 LICENSE="unreal-tournament-strikeforce"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 IUSE=""
 RESTRICT="bindist"
 

@@ -13,7 +13,7 @@ HOMEPAGE="http://www.moddb.com/mods/strike-force-2004"
 SRC_URI="https://ut.rushbase.net/beyondunreal/mods/strikeforce-ce-v${PV}.zip"
 
 LICENSE="freedist"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="dedicated opengl"
 
 src_prepare() {

@@ -6,9 +6,9 @@
 		<name>Gentoo Chemistry Project</name>
 	</maintainer>
 	<longdescription>
-    GPeriodic is a program for looking up various data about elements from the
-    periodic table, based on the GTK2 toolkit. It also features a command line
-    interface.
+		GPeriodic is a program for looking up various data about elements from the
+		periodic table, based on the GTK2 toolkit. It also features a command line
+		interface.
 	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">downloads</remote-id>

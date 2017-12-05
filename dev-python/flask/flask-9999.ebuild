@@ -6,8 +6,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 
 inherit distutils-r1 git-2
 
-EGIT_REPO_URI="git://github.com/mitsuhiko/flask.git
-	https://github.com/mitsuhiko/flask.git"
+EGIT_REPO_URI="https://github.com/mitsuhiko/flask.git"
 
 DESCRIPTION="A microframework based on Werkzeug, Jinja2 and good intentions"
 MY_PN="Flask"

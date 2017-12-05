@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: php-pear-r1.eclass
@@ -42,7 +42,7 @@ RDEPEND="${DEPEND}"
 [[ -z "${PHP_PEAR_PKG_NAME}" ]] && PHP_PEAR_PKG_NAME="${PN/PEAR-/}"
 
 fix_PEAR_PV() {
-	tmp="${PV}"
+	local tmp="${PV}"
 	tmp="${tmp/_/}"
 	tmp="${tmp/rc/RC}"
 	tmp="${tmp/beta/b}"
@@ -51,6 +51,7 @@ fix_PEAR_PV() {
 }
 
 # @ECLASS-VARIABLE: PEAR_PV
+# @DEFAULT: PV with _rc->RC, _beta->b, _alpha->a, _pre->pre, _p->p
 # @DESCRIPTION:
 # Set in ebuild if the eclass ${PV} mangling breaks SRC_URI for alpha/beta/rc versions
 [[ -z "${PEAR_PV}" ]] && fix_PEAR_PV

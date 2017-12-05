@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils cmake-utils
 
 DESCRIPTION="A tool to handle your cellular phone"
-HOMEPAGE="http://wammu.eu/gammu/"
+HOMEPAGE="https://wammu.eu/gammu/"
 SRC_URI="http://dl.cihar.com/${PN}/releases/${P}.tar.bz2"
 
 LICENSE="GPL-2"
@@ -40,9 +40,13 @@ RDEPEND="
 MY_AVAILABLE_LINGUAS=" af ar bg bn ca cs da de el en_GB es et fi fr gl he hu id it ko nl pl pt_BR ro ru sk sv sw tr zh_CN zh_TW"
 IUSE="${IUSE} ${MY_AVAILABLE_LINGUAS// / linguas_}"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-skip-locktest.patch"
+	"${FILESDIR}/${PN}-1.36.8-bashcompdir.patch"
+)
+
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-skip-locktest.patch" \
-		"${FILESDIR}/${PN}-1.36.8-bashcompdir.patch"
+	cmake-utils_src_prepare
 
 	local lang support_linguas=no
 	for lang in ${MY_AVAILABLE_LINGUAS} ; do

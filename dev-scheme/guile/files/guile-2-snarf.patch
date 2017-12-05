@@ -1,0 +1,47 @@
+From f775ab3654357fcaad294b95efb0b1c16de1eda8 Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyfox@gentoo.org>
+Date: Sun, 19 Feb 2017 22:58:40 +0000
+Subject: guile-snarf: skip -g* arguments to avoid build failure
+
+* libguile/guile-snarf.in: skip -g* arguments to avoid failure on
+  -ggdb3.
+
+Bug: https://bugs.gentoo.org/608190
+Bug: http://debbugs.gnu.org/cgi/bugreport.cgi?bug=25803
+Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+---
+ libguile/guile-snarf.in | 16 ++++++++++++++--
+ 1 file changed, 14 insertions(+), 2 deletions(-)
+
+diff --git a/libguile/guile-snarf.in b/libguile/guile-snarf.in
+index 47bbc04..22dc1d3 100644
+--- a/libguile/guile-snarf.in
++++ b/libguile/guile-snarf.in
+@@ -95,10 +95,22 @@ if [ x"$CPP" = x ] ; then cpp="@CPP@" ; else cpp="$CPP" ; fi
+ 
+ trap "rm -rf $tempdir" 0 1 2 15
+ 
++# filter out -g* flags from commandline
++# as some flags like -ggdb3 cause CPP
++
++cpp_args=""
++for arg in "$@"
++do
++    case "$arg" in
++        -g*) ;; # skip debug flag
++        *) cpp_args="$cpp_args $arg" ;;
++    esac
++done
++
+ if [ ! "$outfile" = "-" ] ; then
+-    modern_snarf "$@" > $outfile
++    modern_snarf $cpp_args > $outfile
+ else
+-    modern_snarf "$@"
++    modern_snarf $cpp_args
+ fi
+ 
+ # zonk outfile if errors occurred
+-- 
+cgit v1.0-41-gc330
+

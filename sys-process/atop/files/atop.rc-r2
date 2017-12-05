@@ -1,0 +1,8 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+description="Resource-specific view of processes"
+pidfile="/var/run/atop.pid"
+command="/usr/share/atop/atop.daily"
+command_background="true"

@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-PYTHON_COMPAT=( python{2_7,3_{4,5}} )
+PYTHON_COMPAT=( python2_7 )
 
 inherit distutils-r1
 
@@ -17,16 +17,16 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-python/lxml
-	>=dev-python/django-1.4
-	dev-python/django-appconf
-	>=dev-python/django-cms-3.0
-	>=dev-python/django-haystack-2.0.0
-	dev-python/django-spurl
-	dev-python/django-standard-form
-	>=dev-python/aldryn-common-1.0.2
+	dev-python/lxml[${PYTHON_USEDEP}]
+	>=dev-python/django-1.4[${PYTHON_USEDEP}]
+	dev-python/django-appconf[${PYTHON_USEDEP}]
+	>=dev-python/django-cms-3.0[${PYTHON_USEDEP}]
+	>=dev-python/django-haystack-2.0.0[${PYTHON_USEDEP}]
+	dev-python/django-spurl[${PYTHON_USEDEP}]
+	dev-python/django-standard-form[${PYTHON_USEDEP}]
+	>=dev-python/aldryn-common-1.0.2[${PYTHON_USEDEP}]
 "
 DEPEND="
 	${RDEPEND}
-	dev-python/setuptools
+	dev-python/setuptools[${PYTHON_USEDEP}]
 "

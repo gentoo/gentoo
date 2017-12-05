@@ -20,7 +20,7 @@ HOMEPAGE="http://ultravideo.cs.tut.fi/ https://github.com/ultravideo/kvazaar"
 if [ "${PV#9999}" = "${PV}" ] ; then
 	SRC_URI="https://github.com/ultravideo/kvazaar/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		test? ( https://github.com/silentbicycle/greatest/archive/v${GREATEST_PV}.tar.gz -> greatest-${GREATEST_PV}.tar.gz )"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
+	KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ppc ppc64 x86"
 fi
 
 LICENSE="LGPL-2.1"
@@ -38,6 +38,7 @@ DEPEND="${DEPEND}
 	abi_x86_64? ( ${ASM_DEP} )"
 
 src_prepare() {
+	epatch "${FILESDIR}/gcc7.patch"
 	eautoreconf
 	if use test && [ "${PV#9999}" = "${PV}" ]; then
 		# https://bugs.gentoo.org/show_bug.cgi?id=595932
@@ -49,6 +50,7 @@ src_prepare() {
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" \
 		econf \
+			--disable-werror \
 			--docdir "/usr/share/doc/${PF}" \
 			$(use_enable static-libs static)
 }

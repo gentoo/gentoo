@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 
 inherit git-r3 python-single-r1 cmake-utils
 
-EGIT_REPO_URI="git://github.com/0xd34df00d/Qross.git"
+EGIT_REPO_URI="https://github.com/0xd34df00d/Qross.git"
 
 DESCRIPTION="Python scripting backend for Qross"
 HOMEPAGE="https://github.com/0xd34df00d/Qross"

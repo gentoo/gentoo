@@ -4,6 +4,54 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Bernard Cafarelli <voyageur@gentoo.org> (27 Nov 2017)
+# Dependencies have no stable keyword
+app-backup/backup-manager s3
+
+# Brian Evans <grknight@gentoo.org (6 Nov 2017)
+# Requires stable phpunit
+dev-php/PEAR-Text_Password test
+
+# Andreas Sturmlechner <asturm@gentoo.org> (22 Oct 2017)
+# Requires unmaintained unstable dependency net-libs/gloox.
+# The go flag requires stable masked dev-lang/go[gccgo].
+www-servers/uwsgi go pypy uwsgi_plugins_alarm_xmpp
+
+# Andreas Sturmlechner <asturm@gentoo.org> (11 Oct 2017)
+# Requires unstable dependency dev-qt/qtspeech.
+kde-apps/kanagram speech
+kde-apps/kdepim-runtime speech
+kde-apps/konqueror speech
+kde-apps/kpimtextedit speech
+kde-apps/ktp-text-ui speech
+kde-apps/okular speech
+kde-frameworks/knotifications speech
+kde-frameworks/ktextwidgets speech
+
+# Michael Palimaka <kensington@gentoo.org> (30 Sep 2017)
+# Required dependeny is not stable
+sci-libs/gdal mdb
+
+# Tim Harder <radhermit@gentoo.org> (11 Sep 2017)
+# Requires guile-2 which is still unstable.
+>=net-irc/weechat-1.7 guile
+
+# Andreas Sturmlechner <asturm@gentoo.org> (12 Aug 2017)
+# Not operational, bug #619534
+>=kde-apps/cantor-17.04.3 R
+
+# Michael Palimaka <kensington@gentoo.org) (11 Aug 2017)
+# Unstable dependencies.
+dev-util/rpmdevtools emacs
+
+# Patrick McLean <chutzpah@gentoo.org> (11 Jul 2017)
+# Requires >=net-dns/libidn2-2.0 stabilization
+net-dns/dnsmasq libidn2
+
+# Andreas Sturmlechner <asturm@gentoo.org> (23 Mar 2017)
+# Requires dev-lang/julia stabilisation, bug #613576
+kde-apps/cantor julia
+
 # Andreas Sturmlechner <asturm@gentoo.org> (22 Feb 2017)
 # Requires not yet stabilised sci-geosciences/grass,
 # which probably needs bump to solve several issues.
@@ -34,12 +82,6 @@ media-plugins/kipi-plugins mediawiki vkontakte
 # Requires testing version of media-libs/opencv
 media-libs/mlt opencv
 
-# Johannes Huber <johu@gentoo.org> (25 Jan 2017)
-# Fails to build with dev-lang/ocaml-0.04.0 which
-# needs to be stabilized due to security issue.
-# Bugs: #603050, #581946
-kde-apps/kalzium solver
-
 # Matthias Maier <tamiko@gentoo.org> (22 Jan 2017)
 # sys-fs/zfs isn't going to be marked stable anytime soon
 app-emulation/libvirt zfs
@@ -62,12 +104,6 @@ dev-lang/rust system-llvm
 # Alon Bar-Lev <alonbl@gentoo.org> (01 Jan 2017)
 # Will always require unstable packages.
 net-libs/gnutls test-full
-
-# Zac Medico <zmedico@gentoo.org> (19 Dec 2016)
-# The go flag requires dev-lang/go[gccgo], and gccgo
-# is stable masked since it requires gcc-5 which is
-# currently unstable.
-www-servers/uwsgi go pypy
 
 # Lars Wendler <polynomial-c@gentoo.org> (15 Dev 2016)
 # Requires php:7.0 and ruby:2.2 being stable
@@ -94,7 +130,6 @@ app-emulation/ganeti monitoring
 
 # Mike Gilbert <floppym@gentoo.org> (03 Oct 2015)
 # Unmask stable-masked implementations for python-exec
-dev-lang/python-exec -python_targets_python3_5
 dev-lang/python-exec -python_targets_python3_6
 
 # Pacho Ramos <pacho@gentoo.org> (15 May 2015)
@@ -147,10 +182,6 @@ media-libs/libcaca java mono
 # Alon Bar-Lev <alonbl@gentoo.org> (21 Jul 2014)
 # dev-libs/opencryptoki will not be stabile any time soon (bug#510204)
 app-crypt/tpm-tools pkcs11
-
-# Andreas K. Huettel <dilfridge@gentoo.org> (29 Jun 2014)
-# Not yet stabilized dependencies blocking sec bug 514886
-app-office/libreoffice firebird
 
 # Sergey Popov <pinkbyte@gentoo.org> (28 Oct 2013)
 # sys-cluster/cman is still in ~arch.

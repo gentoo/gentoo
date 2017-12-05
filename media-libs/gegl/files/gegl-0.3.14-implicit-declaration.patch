@@ -1,0 +1,37 @@
+From 72905e2865b4f352da7caa8f722b1db77c07a173 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Sun, 2 Apr 2017 00:13:54 +0200
+Subject: [PATCH] Apply upstream fixes for implicit function declaration
+ warnings
+
+Source commits:
+https://git.gnome.org/browse/gegl/commit/tests/simple/test-buffer-sharing.c?id=7cb72e3a9ade11a506e252623bead17635de2047
+https://git.gnome.org/browse/gegl/commit/tests/simple/test-buffer-sharing.c?id=52f01ba49e2246df24a504084863b12794682d37
+---
+ tests/simple/test-buffer-sharing.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/tests/simple/test-buffer-sharing.c b/tests/simple/test-buffer-sharing.c
+index 94eccda..a52bfa8 100644
+--- a/tests/simple/test-buffer-sharing.c
++++ b/tests/simple/test-buffer-sharing.c
+@@ -16,6 +16,7 @@
+  */
+ 
+ #include <gegl.h>
++#include <glib/gstdio.h>
+ 
+ // in order of progression
+ typedef enum _TestState {
+@@ -164,6 +165,8 @@ on_timeout(gpointer user_data) {
+     return FALSE;
+ }
+ 
++#include <unistd.h>
++
+ static void
+ test_init(TestData *data) {
+ 
+-- 
+2.12.2
+

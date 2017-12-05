@@ -1,0 +1,67 @@
+https://bugs.gentoo.org/show_bug.cgi?id=212709
+
+Author: OKUMURA N. Shin-ya <oku.ns@dream.com>
+
+--- a/pty.C
++++ b/pty.C
+@@ -257,6 +257,23 @@
+         }
+     }
+ 
++#if defined(_POSIX_C_SOURCE)
++    // BSD pty が開けないので、POSIX の方法を試す
++    if ((master = posix_openpt(O_RDWR)) >= 0) {
++        if (grantpt(master) == 0 && unlockpt(master) == 0) {
++            // マスタデバイス名は固定
++            strcpy(line, "/dev/ptmx");
++            tcgetattr(0, &tt);
++            tt.c_iflag &= ~ISTRIP;
++            ioctl(0, TIOCGWINSZ, (char*) &win);
++            return;
++        }
++        close(master);
++    } else {
++        perror("/dev/ptmx");
++    }
++#endif  // _POSIX_C_SOURCE
++
+     printf("Out of pty's\n");
+     fail();
+ }
+@@ -265,12 +282,36 @@
+ void
+ Pty::getslave()
+ {
++#if defined(_POSIX_C_SOURCE)
++    // マスタデバイスが POSIX 方式の場合
++    if (strcmp(line, "/dev/ptmx") == 0) {
++        char *slave_devname = ptsname(master);
++        if (slave_devname == NULL) {
++            perror("ptsname");
++            fail();
++        }
++        slave = open(slave_devname, O_RDWR);
++        if (slave < 0) {
++            perror(slave_devname);
++            fail();
++        }
++        strcpy(line, slave_devname);
++    } else {
++        line[strlen("/dev/")] = 't';
++        slave = open(line, O_RDWR);
++        if (slave < 0) {
++            perror(line);
++            fail();
++        }
++    }
++#else   // ! _POSIX_C_SOURCE
+     line[strlen("/dev/")] = 't';
+     slave = open(line, O_RDWR);
+     if (slave < 0) {
+         perror(line);
+         fail();
+     }
++#endif  // _POSIX_C_SOURCE
+     tcsetattr(slave, TCSAFLUSH, &tt);
+     if (!hs)
+         win.ws_row--;

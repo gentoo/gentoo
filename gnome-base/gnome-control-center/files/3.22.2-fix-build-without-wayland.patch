@@ -1,0 +1,35 @@
+From 4825881b129bdde0eaa5419ece6198ebda420825 Mon Sep 17 00:00:00 2001
+From: Ting-Wei Lan <lantw@src.gnome.org>
+Date: Thu, 10 Nov 2016 22:27:11 +0800
+Subject: [PATCH 1/2] info: Fix build when Wayland is disabled
+
+https://bugzilla.gnome.org/show_bug.cgi?id=774324
+---
+ panels/info/cc-info-panel.c | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/panels/info/cc-info-panel.c b/panels/info/cc-info-panel.c
+index 4584766..1d596a3 100644
+--- a/panels/info/cc-info-panel.c
++++ b/panels/info/cc-info-panel.c
+@@ -351,8 +351,15 @@ get_graphics_data (void)
+   display = gdk_display_get_default ();
+ 
+ #if defined(GDK_WINDOWING_X11) || defined(GDK_WINDOWING_WAYLAND)
+-  if (GDK_IS_X11_DISPLAY (display) ||
+-      GDK_IS_WAYLAND_DISPLAY (display))
++  gboolean x11_or_wayland = FALSE;
++#ifdef GDK_WINDOWING_X11
++  x11_or_wayland = GDK_IS_X11_DISPLAY (display);
++#endif
++#ifdef GDK_WINDOWING_WAYLAND
++  x11_or_wayland = x11_or_wayland || GDK_IS_WAYLAND_DISPLAY (display);
++#endif
++
++  if (x11_or_wayland)
+     {
+       char *discrete_renderer = NULL;
+       char *renderer;
+-- 
+2.10.1
+

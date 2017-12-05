@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit cmake-utils user
+inherit cmake-utils systemd user
 
 DESCRIPTION="Simple Desktop Display Manager"
 HOMEPAGE="https://github.com/sddm/sddm"
@@ -67,6 +67,8 @@ src_configure() {
 pkg_postinst() {
 	enewgroup ${PN}
 	enewuser ${PN} -1 -1 /var/lib/${PN} ${PN},video
+
+	systemd_reenable sddm.service
 
 	if use consolekit && use pam && [[ -e "${ROOT}"/etc/pam.d/system-login ]]; then
 		local line=$(grep "pam_ck_connector.*nox11" "${ROOT}"/etc/pam.d/system-login)

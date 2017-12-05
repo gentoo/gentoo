@@ -15,6 +15,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="chm exif gsf pdf python taglib samba test"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
 	app-text/gnome-doc-utils
@@ -30,7 +31,10 @@ RDEPEND="
 	gsf? ( >=gnome-extra/libgsf-1.12.0 )
 	samba? ( >=gnome-base/gnome-vfs-2.0.0[samba] )
 	pdf? ( >=app-text/poppler-0.18 )
-	python? ( >=dev-python/gnome-vfs-python-2.0.0 )
+	python? (
+		${PYTHON_DEPS}
+		>=dev-python/gnome-vfs-python-2.0.0
+	)
 	taglib? ( >=media-libs/taglib-1.4 )
 "
 DEPEND="
@@ -41,6 +45,10 @@ DEPEND="
 	virtual/pkgconfig
 	test? ( >=dev-util/cppunit-1.13.2 )
 "
+
+pkg_setup() {
+	use python && python-single-r1_pkg_setup
+}
 
 src_configure() {
 	gnome2_src_configure \

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python3_4 )
+PYTHON_COMPAT=( python3_{4,5,6} )
 
 inherit autotools gnome2 multilib python-single-r1
 
@@ -13,6 +13,7 @@ SRC_URI="https://github.com/linuxmint/cinnamon-screensaver/archive/${PV}.tar.gz 
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE="debug doc pam systemd"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 KEYWORDS="~amd64 ~x86"
 
 COMMON_DEPEND="
@@ -42,7 +43,7 @@ COMMON_DEPEND="
 	systemd? ( >=sys-apps/systemd-31:0= )
 "
 # our cinnamon-1.8 ebuilds installed a cinnamon-screensaver.desktop hack
-RDEPEND="
+RDEPEND="${COMMON_DEPEND}
 	!~gnome-extra/cinnamon-1.8.8.1
 	!systemd? ( sys-auth/consolekit )
 	dev-python/pygobject:3[${PYTHON_USEDEP}]

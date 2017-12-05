@@ -6,7 +6,7 @@ EAPI="3"
 # for updating the texmf database, id est latex-package_rehash
 inherit latex-package
 
-DESCRIPTION="SLaTeX is a Scheme program that allows you to write Scheme code in your (La)TeX source"
+DESCRIPTION="SLaTeX is a Scheme program allowing you to write Scheme in your (La)TeX source"
 HOMEPAGE="http://www.ccs.neu.edu/home/dorai/slatex/slatxdoc.html"
 SRC_URI="http://evalwhen.com/slatex/slatex.tar.bz2 -> ${P}.tar.bz2"
 

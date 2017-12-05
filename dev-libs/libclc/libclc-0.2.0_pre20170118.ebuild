@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ else
 	GIT_ECLASS="vcs-snapshot"
 fi
 
-inherit python-any-r1 toolchain-funcs ${GIT_ECLASS}
+inherit llvm python-any-r1 toolchain-funcs ${GIT_ECLASS}
 
 DESCRIPTION="OpenCL C library"
 HOMEPAGE="http://libclc.llvm.org/"
@@ -29,7 +29,7 @@ fi
 
 LICENSE="|| ( MIT BSD )"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE=""
 
 RDEPEND="
@@ -38,10 +38,19 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}"
 
+llvm_check_deps() {
+	has_version "sys-devel/clang:${LLVM_SLOT}"
+}
+
+pkg_setup() {
+	# we do not need llvm_pkg_setup
+	python-any-r1_pkg_setup
+}
+
 src_configure() {
 	./configure.py \
 		--with-cxx-compiler="$(tc-getCXX)" \
-		--with-llvm-config="$(type -P llvm-config)" \
+		--with-llvm-config="$(get_llvm_prefix)/bin/llvm-config" \
 		--prefix="${EPREFIX}/usr" || die
 }
 

@@ -25,7 +25,7 @@ RDEPEND="
 	dev-python/m2crypto[$PYTHON_USEDEP]
 	net-dns/unbound[python,$PYTHON_USEDEP]
 	virtual/python-dnspython[$PYTHON_USEDEP]
-	ipsec? ( net-misc/libreswan[dnssec] )
+	ipsec? ( net-vpn/libreswan[dnssec] )
 	openpgp? ( dev-python/python-gnupg[$PYTHON_USEDEP] )
 	ssh? ( net-misc/openssh )
 "

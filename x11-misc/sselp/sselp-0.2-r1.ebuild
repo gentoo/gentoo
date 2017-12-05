@@ -5,12 +5,12 @@ EAPI=6
 inherit toolchain-funcs
 
 DESCRIPTION="Simple X selection printer"
-HOMEPAGE="http://tools.suckless.org/x/sselp"
-SRC_URI="http://dl.suckless.org/tools/${P}.tar.gz"
+HOMEPAGE="https://tools.suckless.org/x/sselp"
+SRC_URI="https://dl.suckless.org/tools/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 hppa ~ppc ~ppc64 x86"
 
 DEPEND="x11-libs/libX11"
 RDEPEND="${DEPEND}"

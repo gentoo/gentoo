@@ -5,7 +5,7 @@ EAPI="6"
 
 inherit toolchain-funcs
 
-MY_RELEASEDATE="20161014"
+MY_RELEASEDATE="20170804"
 SEPOL_VER="${PV}"
 SELNX_VER="${PV}"
 
@@ -41,6 +41,7 @@ src_prepare() {
 
 src_compile() {
 	emake \
+		CC="$(tc-getCC)" \
 		LIBDIR="\$(PREFIX)/$(get_libdir)"
 }
 

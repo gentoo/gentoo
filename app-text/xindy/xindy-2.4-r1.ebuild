@@ -6,8 +6,11 @@ EAPI=6
 inherit autotools
 
 DESCRIPTION="A Flexible Indexing System"
-HOMEPAGE="http://www.xindy.org/"
+HOMEPAGE="http://www.xindy.org/ https://github.com/jschrod/xindy.ctan"
 SRC_URI="http://www.xindy.org/${P}.tar.gz"
+
+# The latest development is now on the TeXlive SVN. 
+# The author jschrod backports it from time to time to his github repo.
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -24,7 +27,8 @@ DEPEND="${RDEPEND}
 
 PATCHES=("${FILESDIR}"/${P}-configure.patch
 	"${FILESDIR}"/${P}-locale.patch
-	"${FILESDIR}"/${P}-nogrep.patch)
+	"${FILESDIR}"/${P}-nogrep.patch
+	"${FILESDIR}"/${P}-perl5.26.patch)
 DOCS=(AUTHORS ChangeLog.Gour NEWS README)
 
 src_prepare() {

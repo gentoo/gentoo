@@ -6,7 +6,7 @@ EAPI="6"
 inherit linux-info systemd toolchain-funcs multilib-minimal
 
 DESCRIPTION="Hardware Monitoring user-space utilities"
-HOMEPAGE="http://www.lm-sensors.org/ https://github.com/groeck/lm-sensors"
+HOMEPAGE="https://hwmon.wiki.kernel.org/ https://github.com/groeck/lm-sensors"
 
 COMMIT="45ffa15cf02e63f70ff3b85c23e22dfbab7e8f9c"
 MY_PN="${PN/_/-}"
@@ -19,7 +19,7 @@ LICENSE="GPL-2+ LGPL-2.1"
 # SUBSLOT based on SONAME of libsensors.so
 SLOT="0/4.4.0"
 
-KEYWORDS="alpha amd64 arm ~mips ppc ppc64 sparc x86 ~amd64-linux ~arm-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm ~arm64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~arm-linux ~x86-linux"
 IUSE="sensord static-libs"
 
 COMMON_DEPS="

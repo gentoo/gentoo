@@ -15,12 +15,14 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="dev-lang/perl
 	virtual/opengl
 	sys-libs/zlib
 	x11-libs/wxGTK:${WX_GTK_VER}[X]"
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	${PYTHON_DEPS}"
 
 S=${WORKDIR}/${P}-src
 ECONF_SOURCE=gui-wx/configure

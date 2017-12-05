@@ -5,10 +5,6 @@
     <email>sping@gentoo.org</email>
     <name>Sebastian Pipping</name>
   </maintainer>
-  <maintainer type="project">
-    <email>python@gentoo.org</email>
-    <name>Python</name>
-  </maintainer>
   <upstream>
     <remote-id type="pypi">ansi2html</remote-id>
     <remote-id type="github">ralphbean/ansi2html</remote-id>

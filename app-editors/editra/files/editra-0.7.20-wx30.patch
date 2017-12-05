@@ -1,0 +1,44 @@
+Description: Updates for better wxPython 3.0 compatibility
+Author: Olly Betts <olly@survex.com>
+Bug-Debian: https://bugs.debian.org/758947
+Forwarded: no
+Last-Update: 2014-08-30
+
+--- editra-0.7.20+dfsg.1.orig/src/ed_main.py
++++ editra-0.7.20+dfsg.1/src/ed_main.py
+@@ -432,7 +432,7 @@ class MainWindow(wx.Frame, viewmgr.Persp
+ 
+             dlg = wx.FileDialog(self, _("Editra: Open"), fdir, "",
+                                 ''.join(syntax.GenFileFilters()),
+-                                wx.OPEN | wx.MULTIPLE | wx.CHANGE_DIR)
++                                wx.FD_OPEN | wx.FD_MULTIPLE | wx.FD_CHANGE_DIR)
+             dlg.SetFilterIndex(_PGET('FFILTER', 'int', 0))
+ 
+             if ebmlib.LockCall(self._mlock, dlg.ShowModal) == wx.ID_OK:
+@@ -680,7 +680,7 @@ class MainWindow(wx.Frame, viewmgr.Persp
+                             os.path.dirname(sdir),
+                             title.lstrip(u"*"),
+                             u''.join(syntax.GenFileFilters()),
+-                            wx.SAVE | wx.OVERWRITE_PROMPT)
++                            wx.FD_SAVE | wx.FD_OVERWRITE_PROMPT)
+ 
+         if ebmlib.LockCall(self._mlock, dlg.ShowModal) == wx.ID_OK:
+             path = dlg.GetPath()
+@@ -713,7 +713,7 @@ class MainWindow(wx.Frame, viewmgr.Persp
+             dlg = wx.FileDialog(self, _("Where to Save Profile?"), \
+                                CONFIG['PROFILE_DIR'], "default.ppb", \
+                                _("Profile") + " (*.ppb)|*.ppb",
+-                                wx.SAVE | wx.OVERWRITE_PROMPT)
++                                wx.FD_SAVE | wx.FD_OVERWRITE_PROMPT)
+ 
+             if ebmlib.LockCall(self._mlock, dlg.ShowModal) == wx.ID_OK:
+                 profiler.TheProfile.Write(dlg.GetPath())
+@@ -732,7 +732,7 @@ class MainWindow(wx.Frame, viewmgr.Persp
+         if evt.Id == ID_LOAD_PROFILE:
+             dlg = wx.FileDialog(self, _("Load a Custom Profile"),
+                                 CONFIG['PROFILE_DIR'], "default.ppb",
+-                                _("Profile") + " (*.ppb)|*.ppb", wx.OPEN)
++                                _("Profile") + " (*.ppb)|*.ppb", wx.FD_OPEN)
+ 
+             if ebmlib.LockCall(self._mlock, dlg.ShowModal) == wx.ID_OK:
+                 profiler.TheProfile.Load(dlg.GetPath())

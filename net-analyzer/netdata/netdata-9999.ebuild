@@ -2,17 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 inherit autotools fcaps linux-info python-r1 systemd user
 
-if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="git://github.com/firehol/${PN}.git"
+if [[ ${PV} == *9999 ]] ; then
+	EGIT_REPO_URI="https://github.com/firehol/${PN}.git"
 	inherit git-r3
-	SRC_URI=""
-	KEYWORDS=""
 else
-	SRC_URI="https://github.com/firehol/netdata/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/firehol/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -21,39 +19,42 @@ HOMEPAGE="https://github.com/firehol/netdata https://my-netdata.io/"
 
 LICENSE="GPL-3+ MIT BSD"
 SLOT="0"
-IUSE="+compression cpu_flags_x86_sse2 mysql nfacct nodejs postgres +python"
+IUSE="caps +compression cpu_flags_x86_sse2 ipmi mysql nfacct nodejs postgres +python"
 REQUIRED_USE="
 	mysql? ( python )
 	python? ( ${PYTHON_REQUIRED_USE} )"
 # most unconditional dependencies are for plugins.d/charts.d.plugin:
 RDEPEND="
 	>=app-shells/bash-4:0
-	net-misc/curl
-	net-misc/wget
-	virtual/awk
-	net-libs/libmnl
-	|| ( net-analyzer/netcat6 net-analyzer/netcat )
+	|| (
+		net-analyzer/netcat6
+		net-analyzer/netcat
+	)
 	net-analyzer/tcpdump
 	net-analyzer/traceroute
+	net-misc/curl
+	net-misc/wget
+	sys-apps/util-linux
+	virtual/awk
+	caps? ( sys-libs/libcap )
 	compression? ( sys-libs/zlib )
-	python? (
-		${PYTHON_DEPS}
-		dev-python/pyyaml[${PYTHON_USEDEP}]
-		mysql? (
-			|| ( dev-python/mysqlclient[${PYTHON_USEDEP}] dev-python/mysql-python[${PYTHON_USEDEP}] )
-		)
-		postgres? (
-			dev-python/psycopg:2[${PYTHON_USEDEP}]
-		)
-	)
+	ipmi? ( sys-libs/freeipmi )
 	nfacct? (
 		net-firewall/nfacct
 		net-libs/libmnl
 	)
-	nodejs? (
-		net-libs/nodejs
+	nodejs? ( net-libs/nodejs )
+	python? (
+		${PYTHON_DEPS}
+		dev-python/pyyaml[${PYTHON_USEDEP}]
+		mysql? (
+			|| (
+				dev-python/mysqlclient[${PYTHON_USEDEP}]
+				dev-python/mysql-python[${PYTHON_USEDEP}]
+			)
+		)
+		postgres? ( dev-python/psycopg:2[${PYTHON_USEDEP}] )
 	)"
-
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
@@ -81,6 +82,7 @@ src_configure() {
 		--localstatedir="${EPREFIX}"/var \
 		--with-user=${NETDATA_USER} \
 		$(use_enable nfacct plugin-nfacct) \
+		$(use_enable ipmi plugin-freeipmi) \
 		$(use_enable cpu_flags_x86_sse2 x86-sse) \
 		$(use_with compression zlib)
 }
@@ -88,8 +90,12 @@ src_configure() {
 src_install() {
 	default
 
+	rm -rf "${D}/var/cache/netdata" || die
+
+	# Remove unneeded .keep files
+	find "${ED}" -name ".keep" -delete || die
+
 	fowners -Rc ${NETDATA_USER}:${NETDATA_GROUP} /var/log/netdata
-	fowners -Rc ${NETDATA_USER}:${NETDATA_GROUP} /var/cache/netdata
 	fowners -Rc ${NETDATA_USER}:${NETDATA_GROUP} /var/lib/netdata
 
 	fowners -Rc root:${NETDATA_GROUP} /usr/share/${PN}

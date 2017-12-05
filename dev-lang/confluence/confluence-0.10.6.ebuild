@@ -1,11 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
 
 inherit eutils
 
-DESCRIPTION="Functional programming language for reactive system design (digital logic, hard-real-time software)"
+DESCRIPTION="Functional programming language for reactive system design"
 HOMEPAGE="http://www.funhdl.org/wiki/doku.php?id=confluence"
 SRC_URI="http://www.funhdl.org/download/${P}.tar.gz"
 

@@ -1,2 +1,9 @@
 # Unmask armv5 specific USE flags
 -armv5te
+
+-cpu_flags_arm_v4
+-cpu_flags_arm_v5
+
+-cpu_flags_arm_edsp
+-cpu_flags_arm_thumb
+-cpu_flags_arm_vfp

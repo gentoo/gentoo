@@ -7,7 +7,7 @@ inherit latex-package elisp-common toolchain-funcs multilib eutils flag-o-matic
 
 MY_P="${P/-latex/}"
 
-DESCRIPTION="A LaTeX 2e macro package which enables the use of CJK scripts in various encodings"
+DESCRIPTION="LaTeX package to use CJK (Chinese/Japanese/Korean) scripts in various encodings"
 HOMEPAGE="http://cjk.ffii.org/"
 # fonts are taken from ftp://ftp.ctan.org/tex-archive/fonts/CJK.zip
 SRC_URI="ftp://ftp.ffii.org/pub/cjk/${MY_P}.tar.gz
@@ -16,7 +16,7 @@ SRC_URI="ftp://ftp.ffii.org/pub/cjk/${MY_P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="doc emacs"
 
 RDEPEND="virtual/latex-base

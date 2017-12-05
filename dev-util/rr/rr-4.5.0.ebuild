@@ -16,8 +16,11 @@ LICENSE="MIT BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-DEPEND="sys-libs/zlib"
+DEPEND="
+	sys-libs/zlib
+	${PYTHON_DEPS}"
 RDEPEND="${DEPEND}
 	sys-devel/gdb[xml]"
 # Add all the deps needed only at build/test time.
@@ -25,8 +28,7 @@ DEPEND+="
 	test? (
 		dev-python/pexpect[${PYTHON_USEDEP}]
 		sys-devel/gdb[xml]
-	)
-	${PYTHON_DEPS}"
+	)"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-sysmacros.patch
@@ -41,7 +43,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	default
+	cmake-utils_src_prepare
 
 	sed -i 's:-Werror::' CMakeLists.txt || die #609192
 }

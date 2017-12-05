@@ -6,17 +6,16 @@
     <name>Cjk</name>
   </maintainer>
   <longdescription lang="en">
-    M17N engine for IBus input platform. It allows input of many
-    launguaes using the input table maps from m17n-db.
+    The M17N engine for IBus. It allows input of many languages using the input
+    table maps from <pkg>dev-libs/m17n-lib</pkg>.
   </longdescription>
-  <upstream>
-    <remote-id type="cpe">cpe:/a:ibus_project:ibus-m17n</remote-id>
-    <remote-id type="github">ibus/ibus</remote-id>
-  </upstream>
   <use>
-    <flag name="gtk">
-      Build the preference interfaces, based on
-      <pkg>x11-libs/gtk+</pkg> (GTK+ 2).
+    <flag name="gtk2">
+      Build with <pkg>x11-libs/gtk+</pkg>:2 instead of <pkg>x11-libs/gtk+</pkg>:3
     </flag>
   </use>
+  <upstream>
+    <remote-id type="cpe">cpe:/a:ibus_project:ibus-m17n</remote-id>
+    <remote-id type="github">ibus/ibus-m17n</remote-id>
+  </upstream>
 </pkgmetadata>

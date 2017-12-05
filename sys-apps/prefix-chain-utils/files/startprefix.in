@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 
-. "@GENTOO_PORTAGE_EPREFIX@"/sbin/functions.sh
+if [[ -r "@GENTOO_PORTAGE_EPREFIX@"/lib/gentoo/functions.sh ]]; then
+	. "@GENTOO_PORTAGE_EPREFIX@"/lib/gentoo/functions.sh
+elif [[ -r "@GENTOO_PORTAGE_EPREFIX@"/etc/init.d/functions.sh ]]; then
+	. "@GENTOO_PORTAGE_EPREFIX@"/etc/init.d/functions.sh
+elif [[ -r "@GENTOO_PORTAGE_EPREFIX@"/sbin/functions.sh ]]; then
+	. "@GENTOO_PORTAGE_EPREFIX@"/sbin/functions.sh
+fi
+
 einfo "entering chained prefix @GENTOO_PORTAGE_EPREFIX@ ..."
 
 # inform profiles very early of us beeing interactive (or at least,

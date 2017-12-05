@@ -1,0 +1,9 @@
+diff --git a/Makefile b/Makefile
+index f986689..374837f 100644
+--- a/Makefile
++++ b/Makefile
+@@ -13,3 +13,3 @@ clean:
+ fbpdf: fbpdf.o mupdf.o draw.o
+-	$(CC) -o $@ $^ $(LDFLAGS) -lmupdf -lmupdfthird -lcrypto -lm
++	$(CC) -o $@ $^ $(LDFLAGS) -lmupdf -lcrypto -lm
+ 

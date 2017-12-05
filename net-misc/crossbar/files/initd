@@ -1,0 +1,35 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+NODE=${RC_SVCNAME:9}
+
+command=/usr/bin/crossbar
+command_args="start --cbdir=${BASEDIR}/${NODE} --logtofile --colour=false --loglevel=${LOGLEVEL}"
+command_background=true
+description="start crossbar wamp router for ${NODE}"
+pidfile="${BASEDIR}/${NODE}/crossbar.pid"
+
+
+depend() {
+	need net
+}
+
+checkconfig() {
+	if [ -z "${BASEDIR}" ]; then
+		eerror "BASEDIR not set"
+		return 1
+	fi
+	if [ -z "${USERNAME}" ]; then
+		eerror "USERNAME not set"
+		return 1
+	fi
+	if [ ! -d "${BASEDIR}" ]; then
+		eerror "${BASEDIR} is not a directory"
+		return 1
+	fi
+	if [ ! -e "${BASEDIR}/${NODE}" ]; then
+		eerror "${BASEDIR} does not contain a ${NODE} sub directory"
+		return 1
+	fi
+}

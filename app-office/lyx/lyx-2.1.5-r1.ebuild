@@ -18,7 +18,7 @@ SRC_URI="ftp://ftp.lyx.org/pub/lyx/stable/2.1.x/${MY_P}.tar.xz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~x64-macos ~x86-macos"
+KEYWORDS="alpha amd64 ~hppa ia64 ppc ppc64 sparc x86 ~x64-macos ~x86-macos"
 IUSE="cups debug nls +latex monolithic-build html rtf dot docbook dia subversion rcs svg gnumeric +hunspell aspell enchant"
 
 LANGS="ar ca cs de da el en es eu fi fr gl he hu ia id it ja nb nn pl pt ro ru sk sr sv tr uk zh_CN zh_TW"
@@ -51,7 +51,7 @@ RDEPEND="${COMMONDEPEND}
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-pictures
 		|| ( dev-texlive/texlive-mathscience dev-texlive/texlive-science )
-		dev-texlive/texlive-genericextra
+		|| ( dev-texlive/texlive-plaingeneric dev-texlive/texlive-genericextra )
 		dev-texlive/texlive-fontsrecommended
 		|| (
 			dev-tex/latex2html
@@ -135,8 +135,8 @@ src_install() {
 	python_fix_shebang "${ED}"/usr/share/${PN}
 
 	if use hunspell ; then
-		dosym /usr/share/myspell /usr/share/lyx/dicts
-		dosym /usr/share/myspell /usr/share/lyx/thes
+		dosym ../myspell /usr/share/lyx/dicts
+		dosym ../myspell /usr/share/lyx/thes
 	fi
 }
 

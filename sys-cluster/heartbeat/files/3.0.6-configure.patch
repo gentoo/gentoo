@@ -1,0 +1,103 @@
+diff -ru a/configure.ac b/configure.ac
+--- a/configure.ac	2015-02-04 15:57:04.000000000 +0100
++++ b/configure.ac	2017-04-25 13:33:58.668521006 +0200
+@@ -243,9 +243,9 @@
+ mandir=`var "$mandir" "$exec_prefix/man"`
+ dnl docdir is available in autoconf 2.60+, for older versions preseed
+ dnl with the same value that 2.60+ uses
+-docdir=`var "$docdir" "${datadir}/doc/${HB_PKG}"`
+-libdir=`var "$libdir" "$exec_prefix/lib"`
+-libexecdir=`var "$libexecdir" "$exec_prefix/libexec"`
++dnl docdir=`var "$docdir" "${datadir}/doc/${PACKAGE_NAME}"`
++dnl libdir=`var "$libdir" "$exec_prefix/lib"`
++dnl libexecdir=`var "$libexecdir" "$exec_prefix/libexec"`
+ noarchlibdir=`var "$noarchlibdir" "$prefix/lib"`
+ 
+ 
+@@ -284,53 +284,12 @@
+   LIBC=`${LDD} ${tmpOutfile} | grep libc | sed -e 's%.*=> *%%' -e 's% .*$%%'`
+   LibCdir=`dirname $LIBC`
+   dirlist=`echo $LibCdir | tr '/' ' '`
+-  LibDirSuffix=unknown
+-  for dir in $dirlist
+-  do
+-    case $dir in
+-      *lib*)	LibDirSuffix=$dir; break;;
+-      *);;
+-    esac
+-  done
+-  case $LibDirSuffix in
+-    unknown)	LibDirSuffix=`basename $LibCdir`;;
+-  esac
+   OutFileType=`file $tmpOutfile`
+   rm -f $tmpCfile $tmpOutfile
+ else
+   AC_MSG_ERROR([Cannot Compile trivial C program])
+ fi
+-#
+-#	The code above doesn't work right everywhere
+-#		(like Fedora and OpenBSD) 
+-#
+-case ${LibDirSuffix} in
+-	*lib*)	: Cool;;
+-	*)	: Sigh...
+-		case $OutFileType in
+-		  *64-bit*)	
+-		  	case $host_os in
+-			  openbsd*)	LibDirSuffix=lib;;
+-		  	  *)		LibDirSuffix=lib64;;
+-			esac;;
+-		  *32-bit*)	LibDirSuffix=lib;;
+-		  *)		LibDirSuffix=lib;;
+-		esac;;
+-esac
+-#
+-#	This may not yet be quite right for PPC where the default
+-#	is to produce 32-bit binaries, even though the OS is 64-bit
+-#	or for that matter for system Z, But, it's a lot better than
+-#	it used to be.
+-#
+-AC_MSG_RESULT($LibDirSuffix)
+ 
+-case $libdir in
+-  */*${LibDirSuffix})	: Cool ;;
+-  *)			: Uh Oh... 
+-	libdir=`dirname $libdir`/$LibDirSuffix
+-	AC_MSG_WARN([Overriding libdir to: $libdir]);;
+-esac
+ for j in exec_prefix bindir sbindir datadir sysconfdir localstatedir \
+ 	includedir oldincludedir mandir docdir stdocdir libdir noarchlibdir
+ do 
+@@ -379,7 +338,6 @@
+ fi
+ 
+ AC_CHECK_HEADERS(heartbeat/glue_config.h)
+-GLUE_HEADER=none
+ if test "$ac_cv_header_heartbeat_glue_config_h" = "yes";  then
+    GLUE_HEADER=heartbeat/glue_config.h
+ else
+@@ -463,15 +421,6 @@
+ 
+ dnl	We use this in the RPM specfile...
+ AC_SUBST(ac_configure_args)
+-cleaned_configure_args=""
+-for j in ${ac_configure_args}
+-do
+-  case $j in
+-    *--libdir=*|*--libexecdir=*)	;;
+-    *)		cleaned_configure_args="$cleaned_configure_args $j";;
+-  esac
+-done
+-AC_SUBST(cleaned_configure_args)
+ 
+ dnl *************************************************************************
+ PATH="$PATH:/sbin:/usr/sbin:/usr/local/sbin:/usr/local/bin"
+@@ -2087,7 +2036,7 @@
+ fi
+ 
+ if test "$GCC" = yes; then
+-  CFLAGS="$CFLAGS -ggdb3"
++  CFLAGS="$CFLAGS"
+   if
+     cc_supports_flag -funsigned-char
+   then

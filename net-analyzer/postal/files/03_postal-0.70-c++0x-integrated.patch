@@ -36,7 +36,7 @@ diff -NrU5 postal-0.69.orig/bhmusers.h postal-0.69/bhmusers.h
  #include <string>
  #include "conf.h"
  
-+#ifdef HAVE_STDCXX_0X
++#if (defined HAVE_STDCXX_0X) || (__cplusplus >= 201103L)
 +#include <unordered_map>
 +#include <tr1/functional_hash.h>
 +#else
@@ -58,7 +58,7 @@ diff -NrU5 postal-0.69.orig/bhmusers.h postal-0.69/bhmusers.h
    int sync_time;
  } BHM_DATA;
  
-+#ifdef HAVE_STDCXX_0X
++#if (defined HAVE_STDCXX_0X) || (__cplusplus >= 201103L)
 +typedef unordered_map<string, BHM_DATA , hash<string> > NAME_MAP;
 +#else
  namespace __gnu_cxx
@@ -237,7 +237,7 @@ diff -NrU5 postal-0.69.orig/smtp.h postal-0.69/smtp.h
  #include <cstring>
  #include <time.h>
  #include "conf.h"
-+#ifdef HAVE_STDCXX_0X
++#if (defined HAVE_STDCXX_0X) || (__cplusplus >= 201103L)
 +#include <unordered_map>
 +#else
  #ifdef HAVE_EXT_HASH_MAP
@@ -258,7 +258,7 @@ diff -NrU5 postal-0.69.orig/smtp.h postal-0.69/smtp.h
    }
  };
  
-+#ifdef HAVE_STDCXX_0X
++#if (defined HAVE_STDCXX_0X) || (__cplusplus >= 201103L)
 +typedef unordered_map<unsigned long, string *, hash<unsigned long>, eqlng> NAME_MAP;
 +#else
  typedef hash_map<unsigned long, string *, hash<unsigned long>, eqlng> NAME_MAP;

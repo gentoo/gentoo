@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 #
 # @MAINTAINER:
@@ -41,7 +41,7 @@ RV="$(get_version_component_range 1-2 ${MY_PV})"
 #	9.1.9999   -->	releng/9.1
 #   9.9999     -->	stable/9
 #	9999 -->	head
-# 
+#
 # svn revision can be specified by patch level:
 #	freebsd-lib-9.9999_p247000 --> set svn -r 247000
 
@@ -68,7 +68,7 @@ if [[ ${MY_PV} == *9999* ]]; then
 	ESVN_PROJECT="freebsd-${BRANCH}"
 fi
 
-# use the original source code.
+# Use the original source code.
 if [[ ${MY_PV} != *9999* ]] && version_is_at_least 10.0 ${RV} ; then
 	DL_PV=${MY_PV/_rc/-RC}
 	DL_PV=${DL_PV/_beta/-BETA}
@@ -114,7 +114,7 @@ freebsd_get_bmake() {
 	echo "${bmake}"
 }
 
-# Generates a patch SRC_URI or DISTDIR of upstream.
+# Generates SRC_URI or DISTDIR for the upstream patch.
 freebsd_upstream_patches() {
 	local opt=$1
 	[[ ${#UPSTREAM_PATCHES[@]} -eq 0 ]] && return 1
@@ -172,8 +172,8 @@ freebsd_src_unpack() {
 	if [[ ${MY_PV} == *9999* ]]; then
 		S="${WORKDIR}" subversion_src_unpack
 
-		# When share/mk exists in ${WORKDIR}, it is used on FreeBSD 10.0
-		# Removed "${WORKDIR}"/share/mk/*.mk, use to force /usr/share/mk.
+		# When share/mk exists in ${WORKDIR}, BSD's make will try to use it on FreeBSD 10.0 or later.
+		# We should remove "${WORKDIR}"/share/mk/*.mk to use /usr/share/mk{,/system}.
 		if [[ ${PN} != freebsd-mk-defs ]] ; then
 			[[ -e "${WORKDIR}"/share/mk ]] && rm -rf "${WORKDIR}"/share/mk/*.mk
 		fi
@@ -182,7 +182,7 @@ freebsd_src_unpack() {
 			local tarball="freebsd-src-${MY_PV}.tar.xz"
 			local topdir="usr/src/"
 			local extractlist=()
-			for i in ${EXTRACTONLY} ; do
+			for i in ${EXTRACTONLY} tools/ ; do
 				extractlist+=( ${topdir}${i} )
 			done
 			ebegin "Unpacking parts of ${tarball} to ${WORKDIR}"
@@ -210,11 +210,12 @@ freebsd_src_unpack() {
 		export INSTALL_LINK="ln -f"
 		export INSTALL_SYMLINK="ln -fs"
 	fi
-	if version_is_at_least 11.0 ${RV} ; then
-		export RSYMLINK=" -l s"
+	# An older version of install command doesn't support the -T option.
+	if version_is_at_least 11.0 ${RV} && ! has_version ">=sys-freebsd/freebsd-ubin-${RV}" ; then
+		export INSTALL="sh ${WORKDIR}/tools/install.sh"
 	fi
 
-	# When CC=clang, force use clang-cpp #478810, #595878
+	# If CC=clang, we should use clang-cpp instead of cpp. #478810, #595878
 	if [[ $(tc-getCC) == *clang* ]] ; then
 		if type -P clang-cpp > /dev/null ; then
 			export CPP=clang-cpp
@@ -225,7 +226,7 @@ freebsd_src_unpack() {
 		fi
 	fi
 
-	# Add a special CFLAGS required for multilib support.
+	# Add the special CFLAGS required for multilib support.
 	use amd64-fbsd && export CFLAGS_x86_fbsd="${CFLAGS_x86_fbsd} -DCOMPAT_32BIT -B/usr/lib32 -L/usr/lib32"
 }
 
@@ -235,13 +236,13 @@ freebsd_src_compile() {
 		if ! use profile ; then
 			mymakeopts="${mymakeopts} WITHOUT_PROFILE= "
 		fi
-		# Disable debugging info, use FEATURES=splitdebug instead.
+		# Disable the debugging information, use FEATURES=splitdebug instead.
 		mymakeopts="${mymakeopts} WITHOUT_DEBUG_FILES= "
-		# Test does not support yet.
+		# We don't support test yet.
 		mymakeopts="${mymakeopts} WITHOUT_TESTS= "
-		# Force set SRCTOP.
+		# Set the SRCTOP to detect the source directory.
 		mymakeopts="${mymakeopts} SRCTOP=${WORKDIR} "
-		# Set common option.
+		# Set the common settings.
 		mymakeopts="${mymakeopts} WITHOUT_MANCOMPRESS= WITHOUT_INFOCOMPRESS= "
 	else
 		use profile || mymakeopts="${mymakeopts} NO_PROFILE= "
@@ -263,7 +264,7 @@ freebsd_src_compile() {
 }
 
 # Helper function to make a multilib build with FreeBSD Makefiles.
-# Usage: 
+# Usage:
 # MULTIBUILD_VARIANTS=( $(get_all_abis) )
 # multibuild_foreach_variant freebsd_multilib_multibuild_wrapper my_function
 #
@@ -296,9 +297,9 @@ freebsd_multilib_multibuild_wrapper() {
 	if [ ! -d "${MAKEOBJDIRPREFIX}" ] ; then
 		mkdir "${MAKEOBJDIRPREFIX}" || die "Could not create ${MAKEOBJDIRPREFIX}."
 	fi
-	
+
 	CTARGET="${CHOST}" "$@"
-	
+
 	# Restore the variables now.
 	for i in CFLAGS CXXFLAGS LDFLAGS LDADD mymakeopts ; do
 		ii="${i}_SAVE"
@@ -311,13 +312,13 @@ freebsd_src_install() {
 		if ! use profile ; then
 			mymakeopts="${mymakeopts} WITHOUT_PROFILE= "
 		fi
-		# Disable debugging info, use FEATURES=splitdebug instead.
+		# Disable the debugging information, use FEATURES=splitdebug instead.
 		mymakeopts="${mymakeopts} WITHOUT_DEBUG_FILES= "
-		# Test does not support yet.
+		# We don't support test yet.
 		mymakeopts="${mymakeopts} WITHOUT_TESTS= "
-		# Force set SRCTOP.
+		# Set the SRCTOP to detect the source directory.
 		mymakeopts="${mymakeopts} SRCTOP=${WORKDIR} "
-		# Set common option.
+		# Set the common settings.
 		mymakeopts="${mymakeopts} WITHOUT_MANCOMPRESS= WITHOUT_INFOCOMPRESS= "
 	else
 		use profile || mymakeopts="${mymakeopts} NO_PROFILE= "

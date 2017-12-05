@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -7,7 +7,7 @@ inherit eutils multilib toolchain-funcs
 
 MY_P="${P/-/_}"
 DESCRIPTION="A library for creating and verifying Usenet cancel locks"
-HOMEPAGE="http://packages.qa.debian.org/c/canlock.html"
+HOMEPAGE="https://packages.qa.debian.org/c/canlock.html"
 SRC_URI="mirror://debian/pool/main/c/${PN}/${MY_P}.orig.tar.gz
 	mirror://debian/pool/main/c/${PN}/${MY_P}-6.diff.gz"
 

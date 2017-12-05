@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -8,7 +8,7 @@ inherit eutils toolchain-funcs flag-o-matic multilib versionator
 MY_P="${P/_}"
 MY_DOCP="${PN}-$(get_version_component_range 1-3)-all-doc"
 
-DESCRIPTION="C++ class libraries to simplify the development of network-centric, portable applications"
+DESCRIPTION="C++ libraries for building network-based applications"
 HOMEPAGE="http://pocoproject.org/"
 SRC_URI="http://pocoproject.org/releases/poco-$(get_version_component_range 1-3)/${MY_P}-all.tar.bz2
 	doc? ( mirror://sourceforge/poco/${MY_DOCP}.zip )"

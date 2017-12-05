@@ -1,13 +1,13 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 if [[ ${PV} != *9999* ]]; then
-	SRC_URI="https://gstreamer.freedesktop.org/src/${PN}/${P}.tar.xz"
+	SRC_URI="https://gstreamer.freedesktop.org/src/qt-gstreamer/${P}.tar.xz"
 	KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86"
 else
-	EGIT_REPO_URI=( "git://anongit.freedesktop.org/gstreamer/${PN}" )
+	EGIT_REPO_URI="https://anongit.freedesktop.org/git/gstreamer/qt-gstreamer.git"
 	inherit git-r3
 fi
 

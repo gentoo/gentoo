@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -21,5 +21,10 @@ RDEPEND="
 	virtual/perl-MIME-Base64
 "
 DEPEND="${RDEPEND}"
+PATCHES=(
+	"${FILESDIR}/${P}-526.patch"
+	"${FILESDIR}/${P}-decryptiontest.patch"
+	"${FILESDIR}/${P}-testbuilder.patch"
+)
 
 SRC_TEST=do

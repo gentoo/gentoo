@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit autotools
+inherit autotools eutils
 
-DESCRIPTION="libspf2 implements the Sender Policy Framework, a part of the SPF/SRS protocol pair"
+DESCRIPTION="libspf2 implements the Sender Policy Framework, a part of the SPF/SRS protocols"
 HOMEPAGE="http://www.libspf2.org"
 SRC_URI="http://www.libspf2.org/spf/libspf2-${PV}.tar.gz"
 
@@ -26,6 +26,7 @@ src_prepare() {
 			|| die
 		#eautoreconf
 	fi
+	epatch "${FILESDIR}"/${P}-gcc5.patch #570486
 
 	sed -i 's/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/' configure.ac || die
 	eautoreconf

@@ -1,0 +1,73 @@
+From 2c3c28f5dbbd61bcfa5c548d1d423fffbaf2132d Mon Sep 17 00:00:00 2001
+From: Brian Dolbec <dolsen@gentoo.org>
+Date: Fri, 31 Mar 2017 09:32:18 -0700
+Subject: [PATCH] tests/test_main.py: Fix test_twisted to handle differntly
+ sorted options
+
+Some systems retuned the usage with '__main__.py' instead of the command 'trial'
+So, substitute that out if it exists.
+The options returned via python can be a different sort order than is output via the
+command --help.  So break up the lines into a list and check equality, lines are neither
+missing or extra.
+---
+ src/twisted/test/test_main.py | 34 ++++++++++++++++++++++++++++++++--
+ 1 file changed, 32 insertions(+), 2 deletions(-)
+
+diff --git a/src/twisted/test/test_main.py b/src/twisted/test/test_main.py
+index 572769018..b010a389e 100644
+--- a/src/twisted/test/test_main.py
++++ b/src/twisted/test/test_main.py
+@@ -18,6 +18,10 @@ from twisted.trial.unittest import TestCase
+ 
+ class MainTests(TestCase):
+     """Test that twisted scripts can be invoked as modules."""
++    # this test just does not work correctly on Gentoo
++    # the output has '__main__.py' instead of 'trial'
++    # I have only been able to get 2.7 working correctly
++    # with replacing the value with what is expected.
+     def test_twisted(self):
+         """Invoking python -m twisted should execute twist."""
+         cmd = sys.executable
+@@ -28,11 +32,37 @@ class MainTests(TestCase):
+ 
+         def processEnded(ign):
+             f = p.outF
+-            output = f.getvalue().replace(b'\r\n', b'\n')
++            # Some systems may return __main__.py instead of the command name expected
++            output = f.getvalue().replace(b'\r\n', b'\n').replace(b"__main__.py", b"trial")
+ 
+             options = TwistOptions()
+             message = '{}\n'.format(options).encode('utf-8')
+-            self.assertEqual(output, message)
++            # NOTE: python may return the  options in a different order
++            # than is output via the command --help option
++            # so we must break up the text and compare that lines
++            # are not missing or extra from what is expected
++            a = output.split(b'\n')
++            b = message.split(b'\n')
++            extras = []
++            missing = []
++            equal_len = (len(a) == len(b))
++            for i in a:
++                if i not in b:
++                    extras.append(i)
++            for i in b:
++                if i not in a:
++                    missing.append(i)
++
++            self.assertTrue(equal_len,
++                msg="Usage reported a different number of lines than expected")
++            self.assertTrue(extras == [],
++                msg="Usage returned these extra lines not expected: %s"
++                    % '\n'.join(extras)
++            )
++            self.assertTrue(missing == [],
++                msg="Usage was missing these expected lines: %s"
++                    % '\n'.join(missing)
++            )
+         return d.addCallback(processEnded)
+ 
+     def test_twisted_import(self):
+-- 
+2.12.1
+

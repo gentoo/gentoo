@@ -50,17 +50,17 @@
 		<flag name="wiki">Enable wiki informations, like supported devices etc.</flag>
 	</use>
 	<longdescription lang="en">
-flashrom is a utility for identifying, reading, writing, verifying and erasing flash chips. It is designed to flash BIOS/EFI/coreboot/firmware/optionROM images on mainboards, network/graphics/storage controller cards, and various other programmer devices.
+		flashrom is a utility for identifying, reading, writing, verifying and erasing flash chips. It is designed to flash BIOS/EFI/coreboot/firmware/optionROM images on mainboards, network/graphics/storage controller cards, and various other programmer devices.
 
-    Supports more than 380 flash chips, 260 chipsets, 450 mainboards, 50 PCI devices, 12 USB devices and various parallel/serial port-based programmers.
-    Supports parallel, LPC, FWH and SPI flash interfaces and various chip packages (DIP32, PLCC32, DIP8, SO8/SOIC8, TSOP32, TSOP40, TSOP48, BGA and more)
-    No physical access needed, root access is sufficient (not needed for some programmers).
-    No bootable floppy disk, bootable CD-ROM or other media needed.
-    No keyboard or monitor needed. Simply reflash remotely via SSH.
-    No instant reboot needed. Reflash your chip in a running system, verify it, be happy. The new firmware will be present next time you boot.
-    Crossflashing and hotflashing is possible as long as the flash chips are electrically and logically compatible (same protocol). Great for recovery.
-    Scriptability. Reflash a whole pool of identical machines at the same time from the command line. It is recommended to check flashrom output and error codes.
-    Speed. flashrom is often much faster than most vendor flash tools.
-    Portability. Supports DOS, Linux, FreeBSD, NetBSD, OpenBSD, DragonFly BSD, Solaris, Mac OS X, and other Unix-like OSes. Partial Windows support is available (no internal programmer support at the moment, hence no "BIOS flashing").
+		Supports more than 380 flash chips, 260 chipsets, 450 mainboards, 50 PCI devices, 12 USB devices and various parallel/serial port-based programmers.
+		Supports parallel, LPC, FWH and SPI flash interfaces and various chip packages (DIP32, PLCC32, DIP8, SO8/SOIC8, TSOP32, TSOP40, TSOP48, BGA and more)
+		No physical access needed, root access is sufficient (not needed for some programmers).
+		No bootable floppy disk, bootable CD-ROM or other media needed.
+		No keyboard or monitor needed. Simply reflash remotely via SSH.
+		No instant reboot needed. Reflash your chip in a running system, verify it, be happy. The new firmware will be present next time you boot.
+		Crossflashing and hotflashing is possible as long as the flash chips are electrically and logically compatible (same protocol). Great for recovery.
+		Scriptability. Reflash a whole pool of identical machines at the same time from the command line. It is recommended to check flashrom output and error codes.
+		Speed. flashrom is often much faster than most vendor flash tools.
+		Portability. Supports DOS, Linux, FreeBSD, NetBSD, OpenBSD, DragonFly BSD, Solaris, Mac OS X, and other Unix-like OSes. Partial Windows support is available (no internal programmer support at the moment, hence no "BIOS flashing").
 	</longdescription>
 </pkgmetadata>

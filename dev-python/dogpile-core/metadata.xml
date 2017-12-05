@@ -10,10 +10,10 @@
 		<name>Python</name>
 	</maintainer>
 	<longdescription lang="en">
-    A "dogpile" lock, one which allows a single thread to generate an
-	expensive resource while other threads use the "old" value,
-	until the "new" value is ready.
-  </longdescription>
+		A "dogpile" lock, one which allows a single thread to generate an
+		expensive resource while other threads use the "old" value,
+		until the "new" value is ready.
+	</longdescription>
 	<upstream>
 		<remote-id type="pypi">dogpile.core</remote-id>
 		<remote-id type="bitbucket">zzzeek/dogpile.core</remote-id>

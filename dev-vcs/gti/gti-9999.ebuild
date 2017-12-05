@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
 
-EGIT_REPO_URI="git://github.com/rwos/${PN}.git"
+EGIT_REPO_URI="https://github.com/rwos/${PN}.git"
 inherit git-2
 
 DESCRIPTION="A silly git launcher, basically. Inspired by sl"

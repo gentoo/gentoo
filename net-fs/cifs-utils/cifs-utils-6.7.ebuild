@@ -6,7 +6,7 @@ EAPI=6
 inherit autotools eutils linux-info multilib pam
 
 DESCRIPTION="Tools for Managing Linux CIFS Client Filesystems"
-HOMEPAGE="http://wiki.samba.org/index.php/LinuxCIFS_utils"
+HOMEPAGE="https://wiki.samba.org/index.php/LinuxCIFS_utils"
 SRC_URI="https://ftp.samba.org/pub/linux-cifs/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-3"
@@ -35,6 +35,10 @@ REQUIRED_USE="acl? ( ads )"
 
 DOCS="doc/linux-cifs-client-guide.odt"
 
+PATCHES=(
+	"${FILESDIR}/${P}-talloc.patch"
+)
+
 pkg_setup() {
 	linux-info_pkg_setup
 
@@ -52,6 +56,12 @@ pkg_setup() {
 
 src_prepare() {
 	default
+
+	if has_version app-crypt/heimdal ; then
+		# https://bugs.gentoo.org/612584
+		eapply "${FILESDIR}/${PN}-6.7-heimdal.patch"
+	fi
+
 	eautoreconf
 }
 

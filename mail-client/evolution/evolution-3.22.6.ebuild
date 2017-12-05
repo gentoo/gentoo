@@ -15,7 +15,7 @@ SLOT="2.0"
 
 IUSE="archive +bogofilter crypt geolocation highlight ldap spamassassin spell ssl +weather"
 
-KEYWORDS="~alpha ~amd64 ~x86"
+KEYWORDS="~alpha amd64 ~ia64 ~ppc ~ppc64 x86"
 
 # We need a graphical pinentry frontend to be able to ask for the GPG
 # password from inside evolution, bug 160302
@@ -26,7 +26,7 @@ PINENTRY_DEPEND="|| ( app-crypt/pinentry[gnome-keyring] app-crypt/pinentry[gtk] 
 # dconf explicitely needed for backup plugin
 # gnome-desktop support is optional with --enable-gnome-desktop
 COMMON_DEPEND="
-	>=app-crypt/gcr-3.4:=
+	>=app-crypt/gcr-3.4:=[gtk]
 	>=app-text/enchant-1.1.7
 	>=dev-libs/glib-2.46:2[dbus]
 	>=dev-libs/libxml2-2.7.3:2

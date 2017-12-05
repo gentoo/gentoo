@@ -9,12 +9,12 @@ inherit eutils libtool multilib-minimal
 
 DESCRIPTION="Portable and efficient API to determine the call-chain of a program"
 HOMEPAGE="https://savannah.nongnu.org/projects/libunwind"
-SRC_URI="http://download.savannah.nongnu.org/releases/libunwind/${MY_P}.tar.gz"
+SRC_URI="mirror://nongnu/libunwind/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="7"
 KEYWORDS="~amd64 ~arm arm64 hppa ~ia64 ~mips ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
-IUSE="debug debug-frame doc libatomic lzma static-libs"
+IUSE="debug debug-frame doc libatomic lzma +static-libs"
 
 RESTRICT="test" #461958 -- re-enable tests with >1.1 again for retesting, this is here for #461394
 
@@ -24,6 +24,9 @@ DEPEND="${RDEPEND}
 	libatomic? ( dev-libs/libatomic_ops )"
 
 QA_DT_NEEDED_x86_fbsd="usr/lib/libunwind.so.7.0.0"
+
+# Bug 586208
+CCACHE_NODIRECT=1
 
 S="${WORKDIR}/${MY_P}"
 
@@ -46,6 +49,10 @@ MULTILIB_WRAPPED_HEADERS=(
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-1.2-coredump-regs.patch #586092
+	epatch "${FILESDIR}"/${PN}-1.2-ia64-undwarf.patch
+	epatch "${FILESDIR}"/${PN}-1.2-ia64-ptrace-coredump.patch
+	epatch -p1 "${FILESDIR}"/${PN}-1.2-ia64-missing.patch
+	chmod +x src/ia64/mk_cursor_i || die
 
 	# These tests like to fail.  bleh.
 	echo 'int main(){return 0;}' > tests/Gtest-dyn1.c

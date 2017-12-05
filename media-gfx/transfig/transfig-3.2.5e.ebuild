@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -9,11 +9,12 @@ MY_P=${PN}.${PV}
 DESCRIPTION="A set of tools for creating TeX documents with graphics"
 HOMEPAGE="http://www.xfig.org/"
 SRC_URI="mirror://sourceforge/mcj/${MY_P}.tar.gz
-	mirror://gentoo/fig2mpdf-1.1.2.tar.bz2"
+	mirror://gentoo/fig2mpdf-1.1.2.tar.bz2
+	https://dev.gentoo.org/~mgorny/dist/${P}-gentoo-patchset.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 ~arm ~arm64 hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 IUSE=""
 
 RDEPEND="x11-libs/libXpm
@@ -47,12 +48,12 @@ sed_Imakefile() {
 src_prepare() {
 	find . -type f -exec chmod a-x '{}' \;
 	find . -name Makefile -delete
-	epatch "${FILESDIR}"/${PN}-3.2.5d-fig2mpdf-r1.patch
-	epatch "${FILESDIR}"/${PN}-3.2.5c-maxfontsize.patch
-	epatch "${FILESDIR}"/${PN}-3.2.5-solaris.patch
-	epatch "${FILESDIR}"/${PN}-3.2.5e-typos.patch
-	epatch "${FILESDIR}"/${PN}-3.2.5e-man-hyphen.patch
-	epatch "${FILESDIR}"/${PN}-3.2.5e-fprintf_format_warnings.patch
+	epatch "${WORKDIR}/${P}-gentoo-patchset"/${PN}-3.2.5d-fig2mpdf-r1.patch
+	epatch "${WORKDIR}/${P}-gentoo-patchset"/${PN}-3.2.5c-maxfontsize.patch
+	epatch "${WORKDIR}/${P}-gentoo-patchset"/${PN}-3.2.5-solaris.patch
+	epatch "${WORKDIR}/${P}-gentoo-patchset"/${PN}-3.2.5e-typos.patch
+	epatch "${WORKDIR}/${P}-gentoo-patchset"/${PN}-3.2.5e-man-hyphen.patch
+	epatch "${WORKDIR}/${P}-gentoo-patchset"/${PN}-3.2.5e-fprintf_format_warnings.patch
 
 	sed -e 's:-L$(ZLIBDIR) -lz::' \
 		-e 's: -lX11::' \
@@ -76,9 +77,9 @@ src_install() {
 	doman "${WORKDIR}/fig2mpdf/fig2mpdf.1"
 
 	insinto /usr/share/fig2dev/
-	newins "${FILESDIR}/transfig-ru_RU.CP1251.ps" ru_RU.CP1251.ps
-	newins "${FILESDIR}/transfig-ru_RU.KOI8-R.ps" ru_RU.KOI8-R.ps
-	newins "${FILESDIR}/transfig-uk_UA.KOI8-U.ps" uk_UA.KOI8-U.ps
+	newins "${WORKDIR}/${P}-gentoo-patchset/transfig-ru_RU.CP1251.ps" ru_RU.CP1251.ps
+	newins "${WORKDIR}/${P}-gentoo-patchset/transfig-ru_RU.KOI8-R.ps" ru_RU.KOI8-R.ps
+	newins "${WORKDIR}/${P}-gentoo-patchset/transfig-uk_UA.KOI8-U.ps" uk_UA.KOI8-U.ps
 
 	dohtml "${WORKDIR}/fig2mpdf/doc/"* || die
 

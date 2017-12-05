@@ -5,7 +5,7 @@ EAPI=4
 inherit multilib toolchain-funcs eutils
 
 DESCRIPTION="A program (and preload library) to fake system date"
-HOMEPAGE="http://packages.qa.debian.org/d/datefudge.html"
+HOMEPAGE="https://packages.qa.debian.org/d/datefudge.html"
 SRC_URI="mirror://debian/pool/main/d/${PN}/${PN}_${PV}.tar.gz"
 
 LICENSE="GPL-2"

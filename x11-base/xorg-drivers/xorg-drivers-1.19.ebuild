@@ -38,7 +38,6 @@ IUSE_VIDEO_CARDS="
 	video_cards_chips
 	video_cards_cirrus
 	video_cards_dummy
-	video_cards_epson
 	video_cards_fbdev
 	video_cards_freedreno
 	video_cards_geode
@@ -80,10 +79,10 @@ IUSE_VIDEO_CARDS="
 	video_cards_tseng
 	video_cards_vesa
 	video_cards_via
+	video_cards_vc4
 	video_cards_virtualbox
 	video_cards_vmware
 	video_cards_voodoo
-	video_cards_fglrx
 	video_cards_nvidia
 "
 
@@ -133,7 +132,6 @@ PDEPEND="
 	video_cards_omap?          ( x11-drivers/xf86-video-omap )
 	video_cards_qxl?           ( x11-drivers/xf86-video-qxl )
 	video_cards_nvidia?        ( x11-drivers/nvidia-drivers )
-	video_cards_fglrx?         ( x11-drivers/ati-drivers )
 	video_cards_r128?          ( x11-drivers/xf86-video-r128 )
 	video_cards_radeon?        ( x11-drivers/xf86-video-ati )
 	video_cards_radeonsi?      ( x11-drivers/xf86-video-ati[glamor] )
@@ -155,6 +153,7 @@ PDEPEND="
 	video_cards_tga?           ( x11-drivers/xf86-video-tga )
 	video_cards_trident?       ( x11-drivers/xf86-video-trident )
 	video_cards_tseng?         ( x11-drivers/xf86-video-tseng )
+	video_cards_vc4?           ( >=x11-base/xorg-server-${PV}[glamor] )
 	video_cards_vesa?          ( x11-drivers/xf86-video-vesa )
 	video_cards_via?           ( x11-drivers/xf86-video-openchrome )
 	video_cards_virtualbox?    ( x11-drivers/xf86-video-virtualbox )

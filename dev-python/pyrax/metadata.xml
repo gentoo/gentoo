@@ -14,10 +14,10 @@
 		<name>Python</name>
 	</maintainer>
 	<longdescription lang="en">
-    Python SDK for OpenStack/Rackspace APIs
-	pyrax should work with most OpenStack-based cloud deployments,
-	though it specifically targets the Rackspace public cloud.
-  </longdescription>
+		Python SDK for OpenStack/Rackspace APIs
+		pyrax should work with most OpenStack-based cloud deployments,
+		though it specifically targets the Rackspace public cloud.
+	</longdescription>
 	<upstream>
 		<remote-id type="pypi">pyrax</remote-id>
 		<remote-id type="github">rackspace/pyrax</remote-id>

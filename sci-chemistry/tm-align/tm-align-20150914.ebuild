@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,6 +17,8 @@ IUSE="static custom-cflags"
 S="${WORKDIR}"
 
 src_prepare() {
+	cmake-utils_src_prepare
+
 	cp "${FILESDIR}"/CMakeLists.txt . || die
 	use static && append-fflags -static && append-ldflags -static
 	# recommended by upstream

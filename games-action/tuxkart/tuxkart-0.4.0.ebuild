@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/tuxkart/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 x86"
+KEYWORDS="~alpha ~amd64 ~x86"
 IUSE=""
 
 RDEPEND=">=media-libs/plib-1.8.0

@@ -5,4 +5,8 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="cpan">Data-Structure-Util</remote-id>
+    <remote-id type="cpan-module">Data::Structure::Util</remote-id>
+  </upstream>
 </pkgmetadata>

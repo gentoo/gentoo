@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ SRC_URI="http://downloads.tuxfamily.org/slime/v242/${PN}_${PV}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="net"
 
 RDEPEND="media-libs/libsdl[X,sound,video]
@@ -28,11 +28,15 @@ PATCHES=( "${FILESDIR}"/${P}-nodatalocal.patch
 
 S=${WORKDIR}/${PN}
 
+src_prepare() {
+	cmake-utils_src_prepare
+}
+
 src_configure() {
-	mycmakeargs=(
-	"-DCMAKE_VERBOSE_MAKEFILE=TRUE"
-	"-DBIN_DIR=${GAMES_BINDIR}"
-	$(use net && echo "-DNO_NET=0" || echo "-DNO_NET=1")
+	local mycmakeargs=(
+		"-DCMAKE_VERBOSE_MAKEFILE=TRUE"
+		"-DBIN_DIR=${GAMES_BINDIR}"
+		$(use net && echo "-DNO_NET=0" || echo "-DNO_NET=1")
 	)
 	cmake-utils_src_configure
 }

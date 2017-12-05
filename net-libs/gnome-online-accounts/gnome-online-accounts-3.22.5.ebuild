@@ -13,7 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/GnomeOnlineAccounts"
 LICENSE="LGPL-2+"
 SLOT="0/1"
 IUSE="debug gnome +introspection kerberos" # telepathy"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 
 # pango used in goaeditablelabel
 # libsoup used in goaoauthprovider
@@ -34,7 +34,7 @@ RDEPEND="
 
 	introspection? ( >=dev-libs/gobject-introspection-0.6.2:= )
 	kerberos? (
-		app-crypt/gcr:0=
+		app-crypt/gcr:0=[gtk]
 		app-crypt/mit-krb5 )
 "
 #	telepathy? ( net-libs/telepathy-glib )

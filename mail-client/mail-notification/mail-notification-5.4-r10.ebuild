@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -69,8 +69,6 @@ src_prepare() {
 	# Apply Fedora patches
 	# Fix gcc warning
 	eapply "${FILESDIR}/${PN}-jb-gcc-format.patch"
-	# Support aarch64
-	eapply "${FILESDIR}/${PN}-aarch64.patch"
 	# Fix build with latest libc
 	eapply "${FILESDIR}/${PN}-dont-link-against-bsd-compat.patch"
 

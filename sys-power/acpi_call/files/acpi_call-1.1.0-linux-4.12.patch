@@ -1,0 +1,10 @@
+--- acpi_call-1.1.0.orig/acpi_call.c	2017-07-03 22:44:38.111270788 +0200
++++ acpi_call-1.1.0/acpi_call.c	2017-07-03 22:44:31.010270815 +0200
+@@ -6,6 +6,7 @@
+ #include <linux/proc_fs.h>
+ #include <linux/slab.h>
+ #include <asm/uaccess.h>
++#include <linux/uaccess.h>
+ #include <linux/acpi.h>
+ 
+ MODULE_LICENSE("GPL");

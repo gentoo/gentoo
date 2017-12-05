@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,7 +12,7 @@ SRC_URI="http://qx11grab.hjcms.de/downloads/${PV}/${P}.tar.xz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="libav kde opengl pulseaudio"
+IUSE="libav opengl pulseaudio"
 
 RDEPEND="
 	dev-libs/qjson
@@ -27,13 +27,11 @@ RDEPEND="
 	>=x11-libs/libXrandr-1.3
 	libav? ( >=media-video/libav-9:0=[X,encode,truetype] )
 	!libav? ( >=media-video/ffmpeg-1.1:0=[X,encode,truetype] )
-	kde? ( kde-frameworks/kdelibs:4 )
 	opengl? ( >=dev-qt/qtopengl-4.7.4:4 )
 	pulseaudio? ( media-sound/pulseaudio )
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	kde? ( dev-util/automoc )
 "
 PDEPEND="virtual/freedesktop-icon-theme"
 
@@ -49,7 +47,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_enable kde KDE_SUPPORT)
+		-DENABLE_KDE_SUPPORT=OFF
 		$(cmake-utils_use_enable opengl)
 		$(cmake-utils_use_enable pulseaudio PULSE)
 	)

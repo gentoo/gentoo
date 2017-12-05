@@ -6,6 +6,6 @@
 		<name>Gentoo Video project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">mediainfo</remote-id>
+		<remote-id type="github">MediaArea/MediaInfo</remote-id>
 	</upstream>
 </pkgmetadata>

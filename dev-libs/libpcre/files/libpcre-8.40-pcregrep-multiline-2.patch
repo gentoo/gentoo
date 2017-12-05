@@ -1,0 +1,25 @@
+From 8b0fdf16e57ce9a653a0a03c39f6cc061e8122e8 Mon Sep 17 00:00:00 2001
+From: Philip Hazel <ph10@cam.ac.uk>
+Date: Sun, 12 Feb 2017 13:28:11 +0000
+Subject: [PATCH] Fix bug in most recent fix for multiline pcre2grep.
+
+git-svn-id: svn://vcs.exim.org/pcre/code/trunk@1679 2f5784b3-3f2a-0410-8824-cb99058d5e15
+---
+ pcregrep.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/pcregrep.c b/pcregrep.c
+index 2070c057e4a0..3cd70eeb4261 100644
+--- a/pcregrep.c
++++ b/pcregrep.c
+@@ -1826,6 +1826,7 @@ while (ptr < endptr)
+           startoffset -= (int)(linelength + endlinelength);
+           t = end_of_line(ptr, endptr, &endlinelength);
+           linelength = t - ptr - endlinelength;
++          length = (size_t)(endptr - ptr); 
+           }              
+ 
+         goto ONLY_MATCHING_RESTART;
+-- 
+2.12.0
+

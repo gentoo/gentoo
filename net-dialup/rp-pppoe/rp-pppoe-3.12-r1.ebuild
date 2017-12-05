@@ -10,11 +10,11 @@ PPP_P="ppp-2.4.7"
 DESCRIPTION="A user-mode PPPoE client and server suite for Linux"
 HOMEPAGE="https://www.roaringpenguin.com/products/pppoe"
 SRC_URI="http://www.roaringpenguin.com/files/download/${P}.tar.gz
-	ftp://ftp.samba.org/pub/ppp/${PPP_P}.tar.gz"
+	https://www.samba.org/ftp/pub/ppp/${PPP_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~sh sparc x86"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ~ia64 ~mips ppc ppc64 ~sh sparc x86"
 IUSE="tk"
 
 RDEPEND="

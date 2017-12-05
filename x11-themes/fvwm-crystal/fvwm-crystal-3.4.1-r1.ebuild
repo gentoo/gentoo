@@ -2,23 +2,21 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-RESTRICT=mirror
 
 PYTHON_COMPAT=( python2_7 )
 inherit eutils readme.gentoo-r1 python-r1 user
 
 DESCRIPTION="Configurable FVWM theme with transparency and freedesktop compatible menu"
-HOMEPAGE="http://fvwm-crystal.org/"
+HOMEPAGE="http://fvwm-crystal.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 case ${PV} in
 *9999)
-	PROPERTIES="live"
 	inherit subversion
 	ESVN_REPO_URI="svn://svn.code.sf.net/p/fvwm-crystal/code"
 	SRC_URI=""

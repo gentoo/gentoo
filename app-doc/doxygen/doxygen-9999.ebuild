@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 inherit cmake-utils eutils fdo-mime flag-o-matic python-any-r1
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://github.com/doxygen/doxygen.git"
+	EGIT_REPO_URI="https://github.com/doxygen/doxygen.git"
 	SRC_URI=""
 	KEYWORDS=""
 else
@@ -18,7 +18,7 @@ fi
 SRC_URI+=" https://dev.gentoo.org/~xarthisius/distfiles/doxywizard.png"
 
 DESCRIPTION="Documentation system for most programming languages"
-HOMEPAGE="http://www.doxygen.org/"
+HOMEPAGE="https://www.stack.nl/~dimitri/doxygen/"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -60,7 +60,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	default
+	cmake-utils_src_prepare
 
 	# Ensure we link to -liconv
 	if use elibc_FreeBSD && has_version dev-libs/libiconv || use elibc_uclibc; then

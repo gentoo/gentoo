@@ -23,6 +23,7 @@
     <remote-id type="cpan-module">Log::Dispatch::Output</remote-id>
     <remote-id type="cpan-module">Log::Dispatch::Screen</remote-id>
     <remote-id type="cpan-module">Log::Dispatch::Syslog</remote-id>
+    <remote-id type="cpan-module">Log::Dispatch::Types</remote-id>
     <remote-id type="cpan-module">Log::Dispatch::Vars</remote-id>
   </upstream>
 </pkgmetadata>

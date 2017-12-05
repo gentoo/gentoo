@@ -14,13 +14,12 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 
 [[ ${PV} == 9999 ]] || \
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 IUSE="doc static-libs tools"
 
 RDEPEND="
 	dev-libs/librevenge
-	dev-libs/libxml2
 	sys-libs/zlib
 "
 DEPEND="${RDEPEND}
@@ -39,7 +38,6 @@ src_configure() {
 	econf \
 		--enable-zip \
 		--disable-werror \
-		--with-sharedptr=c++11 \
 		$(use_with doc docs) \
 		$(use_enable static-libs static) \
 		$(use_enable tools)

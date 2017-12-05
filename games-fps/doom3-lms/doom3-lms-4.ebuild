@@ -3,7 +3,7 @@
 
 EAPI=5
 
-MOD_DESC="add co-op support and/or play against swarms of monsters"
+MOD_DESC="add co-op support or play against swarms of monsters"
 MOD_NAME="Last Man Standing"
 MOD_DIR="lms4"
 
@@ -13,7 +13,7 @@ HOMEPAGE="http://doom3coop.com/"
 SRC_URI="LastManStandingCoop4Multiplatform.zip"
 
 LICENSE="GameFront"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="dedicated opengl"
 RESTRICT="fetch bindist"
 

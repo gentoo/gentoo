@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # Format of /etc/env.d/binutils/:
@@ -145,13 +145,17 @@ switch_profile() {
 	cd "${ROOT}/${LIBPATH}" || exit 1
 	if [[ ${TARGET} == ${HOST} ]] ; then
 		dstlib=${EROOT}/usr/${HOST}/lib
+	elif [[ -d ${EROOT}/usr/${TARGET}/lib ]] ; then
+		# true for at least avr and msp targets
+		dstlib=${EROOT}/usr/${TARGET}/lib
 	else
 		dstlib=${EROOT}/usr/${HOST}/${TARGET}/lib
 	fi
 	# When upgrading, we need to clean up ldscripts and libs.
 	# Don't symlink back in the libs -- the binutils-lib package handles
 	# these now.
-	# TODO: Stop requiring even the ldscripts symlink.
+	# TODO: Stop requiring even the ldscripts symlink, except
+	# we can't for bare-metal toolchains, so...  bug #147155
 	mkdir -p "${dstlib}"
 	rm -rf "${ROOT}/${BINPATH_LINKS}"/ldscripts
 	atomic_ln "${LIBPATH}/ldscripts" "${dstlib}" "ldscripts"

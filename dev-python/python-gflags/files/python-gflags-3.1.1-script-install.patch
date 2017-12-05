@@ -1,0 +1,33 @@
+From 3bc427f5ba0b612430066d5da0ba7a67252ebc75 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Tue, 9 May 2017 21:47:08 +0200
+Subject: [PATCH] setup.py: Install the script as 'scripts', rather than
+ 'data_files'
+
+Install the Python script using the 'scripts' key rather than
+the 'data_files' hack. This ensures that it is installed
+in the correct location (respecting install options) and its shebang
+is updated to match the correct Python interpreter.
+
+This is the same patch as I've sent back in 2012, rebased on top
+of the newest release.
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 647db36..1f9e8cb 100644
+--- a/setup.py
++++ b/setup.py
+@@ -39,7 +39,7 @@ setup(name='python-gflags',
+       author_email='google-gflags@googlegroups.com',
+       url='https://github.com/google/python-gflags',
+       packages=['gflags', 'gflags.third_party', 'gflags.third_party.pep257'],
+-      data_files=[('bin', ['gflags2man.py'])],
++      scripts=['gflags2man.py'],
+       requires=['six'],
+       classifiers=[
+           'Programming Language :: Python :: 2.7',
+-- 
+2.13.0.rc2
+

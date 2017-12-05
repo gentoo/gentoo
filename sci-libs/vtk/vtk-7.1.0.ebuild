@@ -13,18 +13,18 @@ inherit flag-o-matic java-pkg-opt-2 python-single-r1 qmake-utils versionator too
 SPV="$(get_version_component_range 1-2)"
 
 DESCRIPTION="The Visualization Toolkit"
-HOMEPAGE="http://www.vtk.org/"
+HOMEPAGE="https://www.vtk.org/"
 SRC_URI="
-	http://www.vtk.org/files/release/${SPV}/VTK-${PV}.tar.gz
-	doc? ( http://www.vtk.org/files/release/${SPV}/vtkDocHtml-${PV}.tar.gz )
+	https://www.vtk.org/files/release/${SPV}/VTK-${PV}.tar.gz
+	doc? ( https://www.vtk.org/files/release/${SPV}/vtkDocHtml-${PV}.tar.gz )
 	test? (
-		http://www.vtk.org/files/release/${SPV}/VTKData-${PV}.tar.gz
-		http://www.vtk.org/files/release/${SPV}/VTKLargeData-${PV}.tar.gz
+		https://www.vtk.org/files/release/${SPV}/VTKData-${PV}.tar.gz
+		https://www.vtk.org/files/release/${SPV}/VTKLargeData-${PV}.tar.gz
 		)
 	"
 
 LICENSE="BSD LGPL-2"
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 SLOT="0"
 IUSE="
 	all-modules aqua boost doc examples imaging ffmpeg gdal java json kaapi mpi
@@ -43,10 +43,24 @@ REQUIRED_USE="
 	"
 
 RDEPEND="
-	boost? ( dev-libs/boost:=[mpi?] )
 	dev-libs/expat
 	dev-libs/jsoncpp:=
 	dev-libs/libxml2:2
+	>=media-libs/freetype-2.5.4
+	media-libs/libpng:0=
+	media-libs/libtheora
+	media-libs/mesa
+	media-libs/tiff:0
+	sci-libs/exodusii
+	sci-libs/hdf5:=
+	sci-libs/netcdf-cxx:3
+	sys-libs/zlib
+	virtual/jpeg:0
+	virtual/opengl
+	x11-libs/libX11
+	x11-libs/libXmu
+	x11-libs/libXt
+	boost? ( dev-libs/boost:=[mpi?] )
 	examples? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
@@ -56,11 +70,6 @@ RDEPEND="
 	gdal? ( sci-libs/gdal )
 	java? ( >=virtual/jdk-1.7:* )
 	kaapi? ( <sci-libs/xkaapi-3 )
-	>=media-libs/freetype-2.5.4
-	media-libs/libpng:0=
-	media-libs/mesa
-	media-libs/libtheora
-	media-libs/tiff:0
 	mpi? (
 		virtual/mpi[cxx,romio]
 		python? ( dev-python/mpi4py[${PYTHON_USEDEP}] )
@@ -83,38 +92,31 @@ RDEPEND="
 		python? ( dev-python/PyQt5[${PYTHON_USEDEP}] )
 	)
 	R? ( dev-lang/R )
-	sci-libs/exodusii
-	sci-libs/hdf5:=
-	sci-libs/netcdf-cxx:3
-	sys-libs/zlib
 	tbb? ( dev-cpp/tbb )
 	tcl? ( dev-lang/tcl:0= )
 	tk? ( dev-lang/tk:0= )
 	video_cards_nvidia? ( || ( x11-drivers/nvidia-drivers[tools,static-libs] media-video/nvidia-settings ) )
-	virtual/jpeg:0
-	virtual/opengl
 	web? (
 		${WEBAPP_DEPEND}
+		dev-python/six[${PYTHON_USEDEP}]
 		dev-python/autobahn[${PYTHON_USEDEP}]
-		dev-python/twisted-core[${PYTHON_USEDEP}]
+		dev-python/twisted[${PYTHON_USEDEP}]
 		dev-python/zope-interface[${PYTHON_USEDEP}]
 	)
 	xdmf2? ( sci-libs/xdmf2 )
-	x11-libs/libX11
-	x11-libs/libXmu
-	x11-libs/libXt"
-
+"
 DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen )"
+	doc? ( app-doc/doxygen )
+"
 
 S="${WORKDIR}"/VTK-${PV}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-7.0.0-glext.patch
 	"${FILESDIR}"/${PN}-6.1.0-memset.patch
-	)
+)
 
-RESTRICT=test
+RESTRICT="test"
 
 pkg_setup() {
 	use java && java-pkg-opt-2_pkg_setup
@@ -246,6 +248,7 @@ src_configure() {
 			-DVTK_PYTHON_INCLUDE_DIR="$(python_get_includedir)"
 			-DVTK_PYTHON_LIBRARY="$(python_get_library_path)"
 			-DVTK_PYTHON_SETUP_ARGS:STRING="--prefix=${EPREFIX} --root=${D}"
+			-DVTK_USE_SYSTEM_SIX=ON
 		)
 	fi
 

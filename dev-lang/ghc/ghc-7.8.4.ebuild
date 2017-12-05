@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -73,31 +73,24 @@ IUSE+=" elibc_glibc" # system stuff
 RDEPEND="
 	>=dev-lang/perl-5.6.1
 	>=dev-libs/gmp-5:=
-	sys-libs/ncurses:=[unicode]
+	sys-libs/ncurses:0=[unicode]
 	!ghcmakebinary? ( virtual/libffi:= )
 "
-# gentoo binaries are built against ncurses-5
-RDEPEND+="
-	binary? (
-		|| (
-			sys-libs/ncurses:0/5
-			sys-libs/ncurses:5/5
-		)
-	)
+
+PREBUILT_BINARY_DEPENDS="
+	!prefix? ( elibc_glibc? ( >=sys-libs/glibc-2.17 ) )
+	sys-libs/ncurses:5/5
 "
 
-# force dependency on >=gmp-5, even if >=gmp-4.1 would be enough. this is due to
-# that we want the binaries to use the latest versioun available, and not to be
-# built against gmp-4
+RDEPEND+="binary? ( ${PREBUILT_BINARY_DEPENDS} )"
 
-# similar for glibc. we have bootstrapped binaries against glibc-2.17
 DEPEND="${RDEPEND}
 	ghcbootstrap? (
 		doc? ( app-text/docbook-xml-dtd:4.2
 			app-text/docbook-xml-dtd:4.5
 			app-text/docbook-xsl-stylesheets
 			>=dev-libs/libxslt-1.1.2 ) )
-	!ghcbootstrap? ( !prefix? ( elibc_glibc? ( >=sys-libs/glibc-2.17 ) ) )"
+	!ghcbootstrap? ( ${PREBUILT_BINARY_DEPENDS} )"
 
 PDEPEND="!ghcbootstrap? ( =app-admin/haskell-updater-1.2* )"
 
@@ -249,21 +242,6 @@ relocate_ghc() {
 	# this one we will use to regenerate cache
 	# so it should point to current tree location
 	relocate_path "/usr" "${WORKDIR}/usr" "$gp_back"
-
-	if use prefix; then
-		# and insert LD_LIBRARY_PATH entry to EPREFIX dir tree
-		# TODO: add the same for darwin's CHOST and it's DYLD_
-		local new_ldpath='LD_LIBRARY_PATH="'${EPREFIX}/$(get_libdir):${EPREFIX}/usr/$(get_libdir)'${LD_LIBRARY_PATH:+:}${LD_LIBRARY_PATH}"\nexport LD_LIBRARY_PATH'
-		sed -i -e '2i'"$new_ldpath" \
-			"${WORKDIR}/usr/bin/ghc-${GHC_PV}" \
-			"${WORKDIR}/usr/bin/ghci-${GHC_PV}" \
-			"${WORKDIR}/usr/bin/ghc-pkg-${GHC_PV}" \
-			"${WORKDIR}/usr/bin/hsc2hs" \
-			"${WORKDIR}/usr/bin/runghc-${GHC_PV}" \
-			"$gp_back" \
-			"${WORKDIR}/usr/bin/hsc2hs" \
-			|| die "Adding LD_LIBRARY_PATH for wrappers failed"
-	fi
 
 	# regenerate the binary package cache
 	"$gp_back" recache || die "failed to update cache after relocation"

@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
-inherit autotools eutils python-r1 vcs-snapshot xdg-utils
+inherit autotools python-r1 vcs-snapshot xdg-utils
 
 DESCRIPTION="GLib binding for the D-Bus API provided by signond"
 HOMEPAGE="https://01.org/gsso/"
@@ -15,7 +15,7 @@ LICENSE="LGPL-2.1"
 KEYWORDS="amd64 x86"
 IUSE="debug doc +introspection python test"
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE} python? ( introspection )"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} introspection )"
 
 RDEPEND="
 	dev-libs/glib:2
@@ -40,7 +40,7 @@ src_prepare() {
 	default
 
 	if ! use doc; then
-		epatch "${FILESDIR}/${PN}-1.12-doc-disable.patch"
+		eapply "${FILESDIR}/${PN}-1.12-doc-disable.patch"
 	fi
 
 	eautoreconf
@@ -83,5 +83,5 @@ src_install() {
 	if use python; then
 		python_foreach_impl run_in_build_dir default
 	fi
-	prune_libtool_files
+	find "${D}" -name '*.la' -delete || die
 }

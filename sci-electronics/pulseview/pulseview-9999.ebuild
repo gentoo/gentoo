@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-PYTHON_COMPAT=( python3_4 )
+PYTHON_COMPAT=( python3_{4,5,6} )
 
-inherit cmake-utils python-single-r1
+inherit cmake-utils gnome2-utils python-single-r1 xdg-utils
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="git://sigrok.org/${PN}"
@@ -20,27 +20,20 @@ HOMEPAGE="http://sigrok.org/wiki/PulseView"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="+decode qt4 qt5 static"
-REQUIRED_USE="decode? ( ${PYTHON_REQUIRED_USE} ) ^^ ( qt4 qt5 )"
+IUSE="+decode static"
+REQUIRED_USE="decode? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
-	>=dev-libs/boost-1.53:=
+	>=dev-libs/boost-1.55:=
 	>=dev-libs/glib-2.28.0:2
 	>=dev-cpp/glibmm-2.28.0:2
-	>=sci-libs/libsigrok-0.4.0[cxx]
-	qt4? (
-		>=dev-qt/qtcore-4.5:4
-		>=dev-qt/qtgui-4.5:4
-		>=dev-qt/qtsvg-4.5:4
-	)
-	qt5? (
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qtwidgets:5
-		dev-qt/qtsvg:5
-	)
+	>=sci-libs/libsigrok-0.6.0:=[cxx]
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtwidgets:5
+	dev-qt/qtsvg:5
 	decode? (
-		>=sci-libs/libsigrokdecode-0.4.0[${PYTHON_USEDEP}]
+		>=sci-libs/libsigrokdecode-0.6.0:=[${PYTHON_USEDEP}]
 		${PYTHON_DEPS}
 	)"
 DEPEND="${RDEPEND}
@@ -53,7 +46,16 @@ src_configure() {
 		-DDISABLE_WERROR=TRUE
 		-DENABLE_DECODE=$(usex decode)
 		-DSTATIC_PKGDEPS_LIBS=$(usex static)
-		-DFORCE_QT4=$(usex qt4)
 	)
 	cmake-utils_src_configure
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }

@@ -10,7 +10,7 @@ SRC_URI="http://kigb.emuunlim.com/${PN}_lin.tar.gz"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="-* x86"
+KEYWORDS="-* ~x86"
 IUSE=""
 RESTRICT="mirror bindist strip"
 

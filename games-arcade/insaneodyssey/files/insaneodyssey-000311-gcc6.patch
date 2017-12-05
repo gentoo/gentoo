@@ -1,0 +1,21 @@
+Bug: https://bugs.gentoo.org/600894
+
+--- a/insaneodyssey/io.cpp
++++ b/insaneodyssey/io.cpp
+@@ -22,6 +22,7 @@
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <string.h>
++#include <cmath>
+ 
+ #include <SDL/SDL.h>
+ 
+@@ -894,7 +895,7 @@
+ 	else
+ 	{	
+ 	   if ( jumping )
+-	      yspeed = -jumpheight - abs(xspeed)/4;
++	      yspeed = -jumpheight - std::abs(xspeed)/4;
+ 	}
+ 
+     	short TempX = (x + width/2) / TILESIZE;

@@ -17,7 +17,7 @@ if [ "${PV}" != "9999" ]; then
 	S="${WORKDIR}/${P#votca-}"
 else
 	inherit git-r3
-	EGIT_REPO_URI="git://github.com/${PN/-//}.git https://github.com/${PN/-//}.git"
+	EGIT_REPO_URI="https://github.com/${PN/-//}.git"
 	KEYWORDS="amd64 x86"
 fi
 
@@ -52,13 +52,13 @@ src_unpack() {
 	else
 		git-r3_src_unpack
 		if use doc; then
-			EGIT_REPO_URI="git://github.com/${PN/-//}-manual.git https://github.com/${PN/-//}-manual.git"
+			EGIT_REPO_URI="https://github.com/${PN/-//}-manual.git"
 			EGIT_BRANCH="master"
 			EGIT_CHECKOUT_DIR="${WORKDIR}/${PN}-manual"\
 				git-r3_src_unpack
 		fi
 		if use examples; then
-			EGIT_REPO_URI="git://github.com/${PN/-//}-tutorials.git https://github.com/${PN/-//}-tutorials.git"
+			EGIT_REPO_URI="https://github.com/${PN/-//}-tutorials.git"
 			EGIT_BRANCH="master"
 			EGIT_CHECKOUT_DIR="${WORKDIR}/${PN#votca-}-tutorials"\
 				git-r3_src_unpack
@@ -108,6 +108,6 @@ pkg_postinst() {
 	einfo
 	einfo "Please read and cite:"
 	einfo "VOTCA, J. Chem. Theory Comput. 5, 3211 (2009). "
-	einfo "http://dx.doi.org/10.1021/ct900369w"
+	einfo "https://dx.doi.org/10.1021/ct900369w"
 	einfo
 }

@@ -1,0 +1,25 @@
+--- a/include/mapnik/text/harfbuzz_shaper.hpp	2017-10-31 17:45:30.737250086 +0100
++++ b/include/mapnik/text/harfbuzz_shaper.hpp	2017-10-31 17:46:56.002247847 +0100
+@@ -39,10 +39,11 @@
+ // harfbuzz
+ #include <harfbuzz/hb.h>
+ #include <harfbuzz/hb-ft.h>
+-
++#include <unicode/uvernum.h>
+ // icu
+ #include <unicode/uscript.h>
+ 
++
+ namespace mapnik
+ {
+ 
+@@ -55,7 +56,8 @@
+ static inline const uint16_t * uchar_to_utf16(const UChar* src)
+ {
+    static_assert(sizeof(UChar) == sizeof(uint16_t),"UChar is eq size to uint16_t");
+-#if defined(_MSC_VER)
++#if defined(_MSC_VER) || (U_ICU_VERSION_MAJOR_NUM >= 59)
++   // ^^ http://site.icu-project.org/download/59#TOC-ICU4C-char16_t1
+    return reinterpret_cast<const uint16_t *>(src);
+ #else
+    return src;

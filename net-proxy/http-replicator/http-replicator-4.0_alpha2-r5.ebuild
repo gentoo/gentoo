@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
@@ -16,6 +16,10 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tgz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~sparc ~x86"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
+RDEPEND="${PYTHON_DEPS}"
+DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -30,7 +34,7 @@ src_test() {
 	./unit-test && die
 }
 
-src_install(){
+src_install() {
 	python_foreach_impl python_doscript http-replicator
 
 	newbin "${FILESDIR}"/${PN}-3.0-callrepcacheman-0.1 repcacheman

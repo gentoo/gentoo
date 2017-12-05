@@ -10,7 +10,7 @@ inherit autotools eutils flag-o-matic gnome2-utils fdo-mime toolchain-funcs pyth
 MY_P=${P/_/}
 
 DESCRIPTION="A SVG based generic vector-drawing program"
-HOMEPAGE="http://www.inkscape.org/"
+HOMEPAGE="https://inkscape.org/"
 SRC_URI="https://inkscape.global.ssl.fastly.net/media/resources/file/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1"
@@ -33,7 +33,7 @@ COMMON_DEPEND="
 	>=dev-cpp/glibmm-2.48
 	>=dev-cpp/gtkmm-2.18.0:2.4
 	>=dev-cpp/cairomm-1.9.8
-	>=dev-libs/boehm-gc-6.4
+	>=dev-libs/boehm-gc-7.1
 	>=dev-libs/glib-2.28
 	>=dev-libs/libsigc++-2.0.12
 	>=dev-libs/libxml2-2.6.20
@@ -79,7 +79,7 @@ RDEPEND="${COMMON_DEPEND}
 	latex? (
 		media-gfx/pstoedit[plotutils]
 		app-text/dvipsk
-		app-text/texlive
+		app-text/texlive-core
 	)
 	postscript? ( app-text/ghostscript-gpl )
 "

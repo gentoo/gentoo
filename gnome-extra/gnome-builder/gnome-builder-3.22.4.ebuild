@@ -16,7 +16,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Builder"
 # FIXME: Review licenses at some point
 LICENSE="GPL-3+ GPL-2+ LGPL-3+ LGPL-2+ MIT CC-BY-SA-3.0 CC0-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="clang +git sysprof vala webkit"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -40,10 +40,10 @@ RDEPEND="
 	>=dev-python/pygobject-3.22.0:3
 	>=dev-libs/libxml2-2.9
 	>=x11-libs/pango-1.38.0
-	>=dev-libs/libpeas-1.18.0
+	>=dev-libs/libpeas-1.18.0[python,${PYTHON_USEDEP}]
 	>=dev-libs/json-glib-1.2.0
 	webkit? ( >=net-libs/webkit-gtk-2.12.0:4=[introspection] )
-	clang? ( sys-devel/clang )
+	clang? ( sys-devel/clang:= )
 	git? (
 		dev-libs/libgit2[ssh,threads]
 		>=dev-libs/libgit2-glib-0.24.0[ssh] )

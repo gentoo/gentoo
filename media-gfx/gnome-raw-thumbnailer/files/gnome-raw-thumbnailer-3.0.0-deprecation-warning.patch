@@ -1,0 +1,63 @@
+From e769ad77617a3456f0f4aee9418ef6bdbab40403 Mon Sep 17 00:00:00 2001
+From: Anton Keks <anton@codeborne.com>
+Date: Thu, 2 Jan 2014 23:14:55 +0200
+Subject: [PATCH 1/8] fix deprecation warnings
+
+---
+ src/raw-thumbnailer.c | 11 ++---------
+ 1 file changed, 2 insertions(+), 9 deletions(-)
+
+diff --git a/src/raw-thumbnailer.c b/src/raw-thumbnailer.c
+index d638102..b32bc49 100644
+--- a/src/raw-thumbnailer.c
++++ b/src/raw-thumbnailer.c
+@@ -64,7 +64,7 @@ save_pixbuf (GdkPixbuf *pixbuf, const char *path, int size)
+   }
+   else {
+     small = pixbuf;
+-    gdk_pixbuf_ref (small);
++    g_object_ref (small);
+   }
+   
+   a_width = g_strdup_printf ("%d", width);
+@@ -88,14 +88,11 @@ save_pixbuf (GdkPixbuf *pixbuf, const char *path, int size)
+   g_free(a_height);
+   
+   if (small) {
+-    gdk_pixbuf_unref (small);
++    g_object_unref (small);
+   }
+   return;
+ }
+ 
+-
+-
+-
+ static const GOptionEntry entries[] = {
+   { "jpeg", 'j',  0, G_OPTION_ARG_NONE, &jpeg_output, "Output the thumbnail as a JPEG instead of PNG", NULL },
+   { "size", 's', 0, G_OPTION_ARG_INT, &output_size, "Size of the thumbnail in pixels", NULL },
+@@ -107,8 +104,6 @@ static const GOptionEntry entries[] = {
+   { NULL }
+ };
+ 
+-
+-
+ int main (int argc, char ** argv)
+ {
+   const char *output_name;
+@@ -121,7 +116,6 @@ int main (int argc, char ** argv)
+   
+   context = g_option_context_new ("Thumbnail camera RAW files.");
+   g_option_context_add_main_entries (context, entries, GETTEXT_PACKAGE);
+-  g_type_init ();
+   
+   if (g_option_context_parse (context, &argc, &argv, &err) == FALSE) {
+     g_print ("couldn't parse command-line options: %s\n", err->message);
+@@ -161,4 +155,3 @@ int main (int argc, char ** argv)
+   return 0;
+ }
+ 
+-
+-- 
+2.12.2
+

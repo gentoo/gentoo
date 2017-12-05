@@ -14,7 +14,7 @@ HOMEPAGE="http://www.moddb.com/mods/action-unreal-tournament/addons/action-unrea
 SRC_URI="https://ut.rushbase.net/beyondunreal/mods/aut-r1-msuc.zip"
 
 LICENSE="freedist"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="dedicated opengl"
 
 src_unpack() {

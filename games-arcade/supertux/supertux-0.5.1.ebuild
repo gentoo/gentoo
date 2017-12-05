@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ inherit cmake-utils flag-o-matic
 MY_P="SuperTux-v${PV}-Source"
 
 DESCRIPTION="A game similar to Super Mario Bros."
-HOMEPAGE="http://supertuxproject.org/"
+HOMEPAGE="https://supertux.org/"
 SRC_URI="https://github.com/SuperTux/${PN}/releases/download/v${PV}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2+ GPL-3+ ZLIB MIT CC-BY-SA-2.0 CC-BY-SA-3.0"
@@ -35,7 +35,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	default
+	cmake-utils_src_prepare
 
 	# This is not a developer release so switch the logo to the non-dev one.
 	sed 's@logo_dev@logo@' \

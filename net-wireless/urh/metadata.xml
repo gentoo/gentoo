@@ -9,11 +9,10 @@
 		<email>radio@gentoo.org</email>
 		<name>Radio</name>
 	</maintainer>
-	<longdescription lang="en">
-</longdescription>
 	<use>
 		<flag name="hackrf">use native backend which directly uses <pkg>net-libs/libhackrf</pkg></flag>
 		<flag name="rtlsdr">use native backend which directly uses <pkg>net-wireless/rtl-sdr</pkg></flag>
+		<flag name="uhd">use native backend which directly uses <pkg>net-wireless/uhd</pkg></flag>
 	</use>
 	<upstream>
 		<remote-id type="github">jopohl/urh</remote-id>

@@ -17,13 +17,26 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (30 Sep 2017)
+# Required dependeny is not stable
+sci-libs/gdal oracle
+
+# NP-Hardass <NP-Hardass@gentoo.org> (27 Sep 2017)
+# patchset variants are not stable
+virtual/wine d3d9 staging
+
+# Tim Harder <radhermit@gentoo.org> (11 Sep 2017)
+# Pulls in dev-ruby/asciidoctor which has too large of a ruby testing
+# dep tree to be stabilized at this time.
+>=net-irc/weechat-1.7 doc
+
 # Andreas Sturmlechner <asturm@gentoo.org> (01 Mar 2017)
 # Requires not yet stabilised dev-db/oracle-instantclient.
 sci-geosciences/qgis oracle
 
 # Christoph Junghans <junghans@gentoo.org> (26 Feb 2017)
 # Stable mask some fabrics (bug #525534)
-sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_open-mx openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_pbs openmpi_rm_slurm openmpi_ofed_features_rdmacm
+sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_open-mx openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_pbs openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
 
 # Brian Evans <grknight@gentoo.org> (17 Jan 2017)
 # Stable mask groonga on mariadb as I don't know how stable
@@ -42,10 +55,6 @@ sys-cluster/ceph zfs
 # Pacho Ramos <pacho@gentoo.org> (08 Mar 2015)
 # mayavi is broken, bug #500104
 dev-python/apptools test
-
-# Tim Harder <radhermit@gentoo.org> (11 Oct 2014)
-# Masked since skype isn't stable
-net-im/bitlbee skype
 
 # Michał Górny <mgorny@gentoo.org> (30 Mar 2014)
 # Don't apply stable masks to python-exec since we're forcing every

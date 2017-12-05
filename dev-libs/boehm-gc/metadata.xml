@@ -5,4 +5,8 @@
 	<email>patrick@gentoo.org</email>
 	<name>Patrick Lauer</name>
 </maintainer>
+<maintainer type="project">
+	<email>toolchain@gentoo.org</email>
+	<name>Gentoo Toolchain Project</name>
+</maintainer>
 </pkgmetadata>

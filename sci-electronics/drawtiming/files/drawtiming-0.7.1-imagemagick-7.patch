@@ -1,0 +1,137 @@
+diff -u drawtiming-0.7.1.old/configure.in drawtiming-0.7.1/configure.in
+--- drawtiming-0.7.1.old/configure.ac	2009-04-03 02:59:52.000000000 +0000
++++ drawtiming-0.7.1/configure.ac	2017-06-01 15:20:15.168508458 +0000
+@@ -15,7 +15,7 @@
+   [], [with_magick=check])
+ 
+ AS_IF([test "x$with_magick" != "xno"],
+-  [PKG_CHECK_MODULES([MAGICK], [ImageMagick++])],
++  [PKG_CHECK_MODULES([MAGICK], [Magick++])],
+   [AC_DEFINE([LITE],[1],[Build without ImageMagick])])
+ 
+ AC_OUTPUT(Makefile drawtiming.spec src/Makefile doc/Makefile samples/Makefile)
+diff -u -r drawtiming-0.7.1.old/src/timing.cc drawtiming-0.7.1/src/timing.cc
+--- drawtiming-0.7.1.old/src/timing.cc	2017-06-05 15:36:36.603638861 +0000
++++ drawtiming-0.7.1/src/timing.cc	2017-06-02 12:48:03.523309638 +0000
+@@ -517,7 +517,7 @@
+ // ------------------------------------------------------------
+ 
+ static void draw_dependency (gc &gc, int x0, int y0, int x1, int y1) {
+-  list<Coordinate> shaft, head;
++  vector<Coordinate> shaft, head;
+ 
+   gc.push ();
+   gc.stroke_color ("blue");
+@@ -571,7 +571,7 @@
+ 
+ static void draw_delay (gc &gc, int x0, int y0, int x1, int y1, int y2,
+ 			const string &text) {
+-  list<Coordinate> head;
++  vector<Coordinate> head;
+ 
+   gc.push ();
+   gc.stroke_color ("blue");
+@@ -688,7 +688,7 @@
+ 
+ // ------------------------------------------------------------
+ 
+-void magick_gc::bezier (const std::list<Magick::Coordinate> &points) {
++void magick_gc::bezier (const std::vector<Magick::Coordinate> &points) {
+   drawables.push_back (DrawableBezier (points));
+ }
+ 
+@@ -724,7 +724,7 @@
+ 
+ // ------------------------------------------------------------
+ 
+-void magick_gc::polygon (const std::list<Magick::Coordinate> &points)
++void magick_gc::polygon (const std::vector<Magick::Coordinate> &points)
+ {
+   drawables.push_back (DrawablePolygon (points));
+ }
+diff -u -r drawtiming-0.7.1.old/src/timing.h drawtiming-0.7.1/src/timing.h
+--- drawtiming-0.7.1.old/src/timing.h	2009-04-03 03:02:40.000000000 +0000
++++ drawtiming-0.7.1/src/timing.h	2017-06-02 12:49:35.780468543 +0000
+@@ -129,13 +129,13 @@
+     gc (void) : width(0), height(0) { }
+     virtual ~gc() { }
+ 
+-    virtual void bezier (const std::list<Magick::Coordinate> &points) = 0;
++    virtual void bezier (const std::vector<Magick::Coordinate> &points) = 0;
+     virtual void fill_color (const std::string &name) = 0;
+     virtual void fill_opacity (int op) = 0;
+     virtual void font (const std::string &name) = 0;
+     virtual void line (int x1, int y1, int x2, int y2) = 0;
+     virtual void point_size (int size) = 0;
+-    virtual void polygon (const std::list<Magick::Coordinate> &points) = 0;
++    virtual void polygon (const std::vector<Magick::Coordinate> &points) = 0;
+     virtual void pop (void) = 0;
+     virtual void push (void) = 0;
+     virtual void scaling (double hscale, double vscale) = 0;
+@@ -146,18 +146,18 @@
+ 
+ #ifndef LITE
+   class magick_gc : public gc {
+-    std::list<Magick::Drawable> drawables;
++    std::vector<Magick::Drawable> drawables;
+ 
+   public:
+     ~magick_gc (void);
+ 
+-    void bezier (const std::list<Magick::Coordinate> &points);
++    void bezier (const std::vector<Magick::Coordinate> &points);
+     void fill_color (const std::string &name);
+     void fill_opacity (int op);
+     void font (const std::string &name);
+     void line (int x1, int y1, int x2, int y2);
+     void point_size (int size);
+-    void polygon (const std::list<Magick::Coordinate> &points);
++    void polygon (const std::vector<Magick::Coordinate> &points);
+     void pop (void);
+     void push (void);
+     void scaling (double hscale, double vscale);
+diff -u -r drawtiming-0.7.1.old/src/timing.cc drawtiming-0.7.1/src/timing.cc
+--- drawtiming-0.7.1.old/src/timing.cc	2017-06-05 15:36:36.603638861 +0000
++++ drawtiming-0.7.1/src/timing.cc	2017-06-02 12:48:03.523309638 +0000
+@@ -790,8 +790,8 @@
+ 
+ // ------------------------------------------------------------
+ 
+-void postscript_gc::bezier (const std::list<Magick::Coordinate> &points) {
+-  std::list<Magick::Coordinate>::const_iterator i = points.begin();
++void postscript_gc::bezier (const std::vector<Magick::Coordinate> &points) {
++  std::vector<Magick::Coordinate>::const_iterator i = points.begin();
+ 
+   ps_text << "newpath\n";
+   ps_text << i->x () << ' ' << (height - i->y ()) << " moveto\n";
+@@ -840,9 +840,9 @@
+ 
+ // ------------------------------------------------------------
+ 
+-void postscript_gc::polygon (const std::list<Magick::Coordinate> &points) {
++void postscript_gc::polygon (const std::vector<Magick::Coordinate> &points) {
+   static const char *ops[] = {"stroke", "fill"};
+-  std::list<Magick::Coordinate>::const_iterator i;
++  std::vector<Magick::Coordinate>::const_iterator i;
+   int j;
+ 
+   for (j = 0; j < 2; j++) {
+diff -u -r drawtiming-0.7.1.old/src/timing.h drawtiming-0.7.1/src/timing.h
+--- drawtiming-0.7.1.old/src/timing.h	2009-04-03 03:02:40.000000000 +0000
++++ drawtiming-0.7.1/src/timing.h	2017-06-02 12:49:35.780468543 +0000
+@@ -176,13 +176,13 @@
+     postscript_gc (void);
+     ~postscript_gc (void);
+ 
+-    void bezier (const std::list<Magick::Coordinate> &points);
++    void bezier (const std::vector<Magick::Coordinate> &points);
+     void fill_color (const std::string &name);
+     void fill_opacity (int op);
+     void font (const std::string &name);
+     void line (int x1, int y1, int x2, int y2);
+     void point_size (int size);
+-    void polygon (const std::list<Magick::Coordinate> &points);
++    void polygon (const std::vector<Magick::Coordinate> &points);
+     void pop (void);
+     void push (void);
+     void scaling (double hscale, double vscale);

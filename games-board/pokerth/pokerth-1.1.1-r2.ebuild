@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/pokerth/${MY_P}.tar.bz2"
 
 LICENSE="AGPL-3 GPL-1 GPL-2 GPL-3 BitstreamVera public-domain"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="dedicated"
 
 RDEPEND="dev-db/sqlite:3
@@ -38,10 +38,11 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${MY_P}
 
 PATCHES=(
-	"${FILESDIR}/${P}-qt5.patch"
-	"${FILESDIR}/${P}-boost-1.60.patch"
-	"${FILESDIR}/${P}-qmake-gcc-6.patch"
-	"${FILESDIR}/${P}-boost-noexcept.patch"
+	"${FILESDIR}"/${PN}-1.1.1-qt5.patch
+	"${FILESDIR}"/${PN}-1.1.1-boost-1.60.patch
+	"${FILESDIR}"/${PN}-1.1.1-qmake-gcc-6.patch
+	"${FILESDIR}"/${PN}-1.1.1-boost-noexcept.patch
+	"${FILESDIR}"/${PN}-1.1.1-boost-1.65-ambiguous-advance.patch
 )
 
 src_prepare() {

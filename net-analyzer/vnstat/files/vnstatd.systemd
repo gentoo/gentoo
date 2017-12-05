@@ -1,0 +1,11 @@
+[Unit]
+Description=vnStat network traffic monitor
+Documentation=man:vnstatd(1) man:vnstat(1) man:vnstat.conf(5)
+After=network-online.target
+
+[Service]
+ExecStart=/usr/bin/vnstatd --nodaemon
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target

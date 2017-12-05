@@ -2,13 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils flag-o-matic elisp-common toolchain-funcs multilib
+inherit elisp-common eutils flag-o-matic multilib toolchain-funcs xdg-utils
 
 DESCRIPTION="DVI previewer for X Window System"
 HOMEPAGE="http://xdvi.sourceforge.net/"
 SRC_URI="mirror://sourceforge/xdvi/${P}.tar.gz"
 
-KEYWORDS="alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 SLOT="0"
 LICENSE="GPL-2"
 IUSE="motif neXt Xaw3d emacs"
@@ -66,8 +66,8 @@ src_configure() {
 		--with-system-kpathsea \
 		--with-kpathsea-include="${EPREFIX}"/usr/include/kpathsea \
 		--with-xdvi-x-toolkit="${toolkit}" \
-		--x-includes="${EPREFIX}"/usr/include \
-		--x-libraries="${EPREFIX}"/usr/$(get_libdir)
+		--x-includes="${SYSROOT}${EPREFIX}"/usr/include \
+		--x-libraries="${SYSROOT}${EPREFIX}"/usr/$(get_libdir)
 }
 
 src_compile() {
@@ -80,7 +80,7 @@ src_install() {
 
 	emake DESTDIR="${D}" install
 
-	dosym /usr/share/texmf-dist/xdvi/XDvi /usr/share/X11/app-defaults/XDvi
+	dosym ../../texmf-dist/xdvi/XDvi /usr/share/X11/app-defaults/XDvi
 
 	dodoc BUGS FAQ README.*
 
@@ -92,10 +92,16 @@ src_install() {
 }
 
 pkg_postinst() {
+	xdg_desktop_database_update
+
 	if use emacs; then
 		elog "Add"
 		elog "	(add-to-list 'load-path \"${EPREFIX}${SITELISP}/tex-utils\")"
 		elog "	(require 'xdvi-search)"
 		elog "to your ~/.emacs file"
 	fi
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }

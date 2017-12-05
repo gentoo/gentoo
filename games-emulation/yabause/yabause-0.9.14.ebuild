@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="openal opengl pic qt5 sdl"
 
 # x11-libs/libXrandr is an automagic dep
@@ -39,9 +39,13 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-RWX.patch
+	"${FILESDIR}"/${P}-cmake.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-RWX.patch \
-		"${FILESDIR}"/${P}-cmake.patch
+	cmake-utils_src_prepare
 }
 
 src_configure() {

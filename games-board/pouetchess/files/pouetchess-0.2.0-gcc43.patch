@@ -1,5 +1,5 @@
---- src/sxmlgui/XMLUtils.h.orig	2008-06-14 14:50:16.000000000 +0000
-+++ src/sxmlgui/XMLUtils.h	2008-06-14 14:50:33.000000000 +0000
+--- a/src/sxmlgui/XMLUtils.h.orig	2008-06-14 14:50:16.000000000 +0000
++++ b/src/sxmlgui/XMLUtils.h	2008-06-14 14:50:33.000000000 +0000
 @@ -38,6 +38,8 @@
  #include <stdio.h>
  #include <assert.h>

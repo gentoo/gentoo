@@ -1,0 +1,21 @@
+diff --git a/Makefile.am b/Makefile.am
+index 6bef38ed5..951b829e3 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -95,6 +95,7 @@ pppd_plugindir = $(PPPD_PLUGIN_DIR)
+ pppd_plugin_LTLIBRARIES = src/nm-fortisslvpn-pppd-plugin.la
+ 
+ src_nm_fortisslvpn_pppd_plugin_la_SOURCES = \
++	shared/nm-utils/nm-shared-utils.c \
+ 	src/nm-fortisslvpn-pppd-plugin.c \
+ 	src/nm-ppp-status.h
+ src_nm_fortisslvpn_pppd_plugin_la_CPPFLAGS = $(src_cppflags)
+@@ -102,7 +103,7 @@ src_nm_fortisslvpn_pppd_plugin_la_LDFLAGS = \
+ 	-module -avoid-version
+ src_nm_fortisslvpn_pppd_plugin_la_LIBADD = \
+ 	src/libnm-fortisslvpn-pppd-service-dbus.la \
+-	$(GLIB_LIBS)
++	$(GLIB_LIBS) \
+ 	$(LIBNM_LIBS)
+ 
+ ###############################################################################

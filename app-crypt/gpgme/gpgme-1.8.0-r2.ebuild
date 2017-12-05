@@ -6,7 +6,7 @@ EAPI="6"
 PYTHON_COMPAT=( python2_7 python3_{4,5} )
 DISTUTILS_OPTIONAL=1
 
-inherit distutils-r1 eutils flag-o-matic qmake-utils
+inherit distutils-r1 flag-o-matic ltprune qmake-utils
 
 DESCRIPTION="GnuPG Made Easy is a library for making GnuPG easier to use"
 HOMEPAGE="http://www.gnupg.org/related_software/gpgme"
@@ -19,7 +19,7 @@ IUSE="common-lisp static-libs cxx python qt5"
 
 COMMON_DEPEND="app-crypt/gnupg
 	>=dev-libs/libassuan-2.0.2
-	>=dev-libs/libgpg-error-1.11
+	>=dev-libs/libgpg-error-1.17
 	python? ( ${PYTHON_DEPS} )
 	qt5? ( dev-qt/qtcore:5 )"
 	#doc? ( app-doc/doxygen[dot] )
@@ -32,7 +32,7 @@ RDEPEND="${COMMON_DEPEND}
 		!kde-apps/kdepimlibs:4
 	)"
 
-REQUIRED_USE="qt5? ( cxx )"
+REQUIRED_USE="qt5? ( cxx ) python? ( ${PYTHON_REQUIRED_USE} )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.1.8-et_EE.patch

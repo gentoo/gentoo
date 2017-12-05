@@ -2,6 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
+		<email>holgersson@posteo.de</email>
+		<name>Nils Freydank</name>
+	</maintainer>
+	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
@@ -16,4 +20,7 @@
 		<flag name="tools">Install hex2raw and prettypacket tools</flag>
 		<flag name="experimental">Install experimental packets.tcl</flag>
 	</use>
+	<upstream>
+		<remote-id type="sourceforge">hexinject</remote-id>
+	</upstream>
 </pkgmetadata>

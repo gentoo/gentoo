@@ -8,6 +8,5 @@
   <upstream>
     <remote-id type="cpan">Apache-CGI-Builder</remote-id>
     <remote-id type="cpan-module">Apache2::CGI::Builder</remote-id>
-    <remote-id type="cpan-module">Apache::CGI::Builder</remote-id>
   </upstream>
 </pkgmetadata>

@@ -5,12 +5,15 @@
 		<email>python@gentoo.org</email>
 		<name>Python</name>
 	</maintainer>
-	<longdescription lang="en">pyudev is a Python binding to libudev, the hardware management
-		library and service found in modern linux systems.</longdescription>
+	<longdescription lang="en">
+		pyudev is a Python binding to libudev, the hardware management library
+		and service found in modern linux systems.
+	</longdescription>
 	<use>
-		<flag name="pygobject">Install PyGobject binding</flag>
-		<flag name="pyqt4">Install PyQt4 binding</flag>
-		<flag name="pyside">Install PySide binding</flag>
+		<flag name="pygobject">Install PyGobject bindings</flag>
+		<flag name="qt4">Install PyQt4 bindings</flag>
+		<flag name="qt5">Install PyQt5 bindings</flag>
+		<flag name="pyside">Install PySide bindings</flag>
 	</use>
 	<upstream>
 		<remote-id type="pypi">pyudev</remote-id>

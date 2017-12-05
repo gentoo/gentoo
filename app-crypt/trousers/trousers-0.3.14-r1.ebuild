@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools eutils linux-info readme.gentoo-r1 systemd user udev
+inherit autotools linux-info ltprune readme.gentoo-r1 systemd user udev
 
 DESCRIPTION="An open-source TCG Software Stack (TSS) v1.1 implementation"
 HOMEPAGE="http://trousers.sf.net"

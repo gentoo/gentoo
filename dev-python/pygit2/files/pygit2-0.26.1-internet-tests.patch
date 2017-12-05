@@ -1,0 +1,133 @@
+From 24a929d003f1b6b4899f41cb227293e8c4b62eb7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Tue, 21 Nov 2017 17:53:48 +0100
+Subject: [PATCH] Disable tests requiring network access
+
+---
+ test/test_credentials.py | 3 +++
+ test/test_repository.py  | 1 +
+ test/test_submodule.py   | 4 ++++
+ 3 files changed, 8 insertions(+)
+
+diff --git a/test/test_credentials.py b/test/test_credentials.py
+index 7921a41..e60383a 100644
+--- a/test/test_credentials.py
++++ b/test/test_credentials.py
+@@ -70,39 +70,42 @@ class CredentialCreateTest(utils.NoRepoTestCase):
+         username = "git"
+  
+         cred = KeypairFromAgent(username)
+         self.assertEqual((username, None, None, None), cred.credential_tuple)
+ 
+ 
+ class CredentialCallback(utils.RepoTestCase):
++    @unittest.skip('requires Internet access')
+     def test_callback(self):
+         class MyCallbacks(pygit2.RemoteCallbacks):
+             @staticmethod
+             def credentials(url, username, allowed):
+                 self.assertTrue(allowed & GIT_CREDTYPE_USERPASS_PLAINTEXT)
+                 raise Exception("I don't know the password")
+ 
+         url = "https://github.com/github/github"
+         remote = self.repo.create_remote("github", url)
+ 
+         self.assertRaises(Exception, lambda: remote.fetch(callbacks=MyCallbacks()))
+ 
++    @unittest.skip('requires Internet access')
+     def test_bad_cred_type(self):
+         class MyCallbacks(pygit2.RemoteCallbacks):
+             @staticmethod
+             def credentials(url, username, allowed):
+                 self.assertTrue(allowed & GIT_CREDTYPE_USERPASS_PLAINTEXT)
+                 return Keypair("git", "foo.pub", "foo", "sekkrit")
+ 
+         url = "https://github.com/github/github"
+         remote = self.repo.create_remote("github", url)
+         self.assertRaises(TypeError, lambda: remote.fetch(callbacks=MyCallbacks()))
+ 
+ class CallableCredentialTest(utils.RepoTestCase):
+ 
++    @unittest.skip('requires Internet access')
+     def test_user_pass(self):
+         credentials = UserPass("libgit2", "libgit2")
+         callbacks = pygit2.RemoteCallbacks(credentials=credentials)
+ 
+         url = "https://bitbucket.org/libgit2/testgitrepository.git"
+         remote = self.repo.create_remote("bb", url)
+         remote.fetch(callbacks=callbacks)
+diff --git a/test/test_repository.py b/test/test_repository.py
+index 941851b..33f0571 100644
+--- a/test/test_repository.py
++++ b/test/test_repository.py
+@@ -569,14 +569,15 @@ class CloneRepositoryTest(utils.NoRepoTestCase):
+             return repo.remotes.create("custom_remote", url)
+ 
+         repo = clone_repository(url, repo_path, repository=create_repository, remote=create_remote)
+         self.assertFalse(repo.is_empty)
+         self.assertTrue('refs/remotes/custom_remote/master' in repo.listall_references())
+         self.assertIsNotNone(repo.remotes["custom_remote"])
+ 
++    @unittest.skip('requires Internet access')
+     def test_clone_with_credentials(self):
+         repo = clone_repository(
+             "https://bitbucket.org/libgit2/testgitrepository.git",
+             self._temp_dir, callbacks=pygit2.RemoteCallbacks(credentials=pygit2.UserPass("libgit2", "libgit2")))
+ 
+         self.assertFalse(repo.is_empty)
+ 
+diff --git a/test/test_submodule.py b/test/test_submodule.py
+index f123b8b..df44e16 100644
+--- a/test/test_submodule.py
++++ b/test/test_submodule.py
+@@ -49,14 +49,15 @@ class SubmoduleTest(utils.SubmoduleRepoTestCase):
+         self.assertIsNotNone(s)
+ 
+     def test_listall_submodules(self):
+         submodules = self.repo.listall_submodules()
+         self.assertEqual(len(submodules), 1)
+         self.assertEqual(submodules[0], SUBM_PATH)
+ 
++    @unittest.skip('requires Internet access')
+     def test_submodule_open(self):
+         s = self.repo.lookup_submodule(SUBM_PATH)
+         self.repo.init_submodules()
+         self.repo.update_submodules()
+         r = s.open()
+         self.assertIsNotNone(r)
+         self.assertEqual(str(r.head.target), SUBM_HEAD_SHA)
+@@ -69,28 +70,31 @@ class SubmoduleTest(utils.SubmoduleRepoTestCase):
+         s = self.repo.lookup_submodule(SUBM_PATH)
+         self.assertEqual(SUBM_PATH, s.path)
+ 
+     def test_url(self):
+         s = self.repo.lookup_submodule(SUBM_PATH)
+         self.assertEqual(SUBM_URL, s.url)
+ 
++    @unittest.skip('requires Internet access')
+     def test_init_and_update(self):
+         subrepo_file_path = os.path.join(self.repo_path, 'submodule', 'setup.py')
+         self.assertFalse(os.path.exists(subrepo_file_path))
+         self.repo.init_submodules()
+         self.repo.update_submodules()
+         self.assertTrue(os.path.exists(subrepo_file_path))
+ 
++    @unittest.skip('requires Internet access')
+     def test_specified_update(self):
+         subrepo_file_path = os.path.join(self.repo_path, 'submodule', 'setup.py')
+         self.assertFalse(os.path.exists(subrepo_file_path))
+         self.repo.init_submodules(submodules=['submodule'])
+         self.repo.update_submodules(submodules=['submodule'])
+         self.assertTrue(os.path.exists(subrepo_file_path))
+ 
++    @unittest.skip('requires Internet access')
+     def test_oneshot_update(self):
+         subrepo_file_path = os.path.join(self.repo_path, 'submodule', 'setup.py')
+         self.assertFalse(os.path.exists(subrepo_file_path))
+         self.repo.update_submodules(init=True)
+         self.assertTrue(os.path.exists(subrepo_file_path))
+ 
+ if __name__ == '__main__':
+-- 
+2.15.0
+

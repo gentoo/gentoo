@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ inherit bash-completion-r1 cmake-utils cuda eutils multilib readme.gentoo-r1 too
 if [[ $PV = *9999* ]]; then
 	EGIT_REPO_URI="git://git.gromacs.org/gromacs.git
 		https://gerrit.gromacs.org/gromacs.git
-		git://github.com/gromacs/gromacs.git
+		https://github.com/gromacs/gromacs.git
 		http://repo.or.cz/r/gromacs.git"
 	EGIT_BRANCH="release-4-6"
 	inherit git-r3
@@ -251,7 +251,7 @@ pkg_postinst() {
 	einfo
 	einfo  "Please read and cite:"
 	einfo  "Gromacs 4, J. Chem. Theory Comput. 4, 435 (2008). "
-	einfo  "http://dx.doi.org/10.1021/ct700301q"
+	einfo  "https://dx.doi.org/10.1021/ct700301q"
 	if use offensive; then
 		einfo
 		einfo  $(g_luck)

@@ -37,6 +37,7 @@ src_prepare() {
 	replace-flags -ggdb1 -g
 	#epatch "${FILESDIR}"/${PN}-4.0.0-dont-mess-with-cflags.patch
 	epatch "${FILESDIR}"/${PN}-sgsnggsn-inetutils-hostname-fix.diff
+	epatch "${FILESDIR}"/${P}-gcc6.patch
 	eautoreconf
 }
 

@@ -1,0 +1,27 @@
+--- a/src/plugins/exiv2_extractor.cc	2013-06-25 13:02:05.000000000 +0200
++++ b/src/plugins/exiv2_extractor.cc	2017-06-10 14:22:57.000000000 +0200
+@@ -180,7 +180,11 @@
+    *
+    * @return -1 on error
+    */
++#if EXIV2_VERSION >= EXIV2_MAKE_VERSION(0,26,0)
++  virtual size_t size (void) const;
++#else
+   virtual long int size (void) const;
++#endif
+ 
+   /**
+    * Check if file is open.
+@@ -445,7 +449,11 @@
+  *
+  * @return -1 on error
+  */
+-long int 
++#if EXIV2_VERSION >= EXIV2_MAKE_VERSION(0,26,0)
++size_t
++#else
++long int
++#endif
+ ExtractorIO::size (void) const
+ {
+   return (long) ec->get_size (ec->cls);

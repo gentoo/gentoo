@@ -3,7 +3,7 @@
 
 EAPI=6
 
-EGIT_REPO_URI="git://github.com/IgnorantGuru/${PN}.git"
+EGIT_REPO_URI="https://github.com/IgnorantGuru/${PN}.git"
 EGIT_BRANCH="next"
 
 inherit fdo-mime git-r3 gnome2-utils linux-info
@@ -64,7 +64,7 @@ pkg_postinst() {
 	elog "  sys-apps/udevil"
 	elog "To perform as root functionality you need one of the following:"
 	elog "  x11-misc/ktsuss"
-	elog "  kde-apps/kdesu"
+	elog "  kde-plasma/kde-cli-tools[kdesu]"
 	elog "Other optional dependencies:"
 	elog "  sys-apps/dbus"
 	elog "  sys-process/lsof (device processes)"

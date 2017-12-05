@@ -1,5 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+# Ulrich Müller <ulm@gentoo.org> (23 Oct 2017)
+# Needs net-mail/mailutils which is not keyworded, bug #635216.
+app-editors/emacs-vcs mailutils
 
 # Alexis Ballier <aballier@gentoo.org> (31 Jan 2017)
 # nvidia drivers are unmasked here
@@ -33,7 +37,7 @@ media-plugins/gst-plugins-meta modplug vaapi
 
 # Lars Wendler <polynomial-c@gentoo.org> (09 May 2014)
 # Masked kde USE flag until bug #509892 is fixed
-dev-vcs/subversion kde
+dev-vcs/subversion kwallet
 
 # Pacho Ramos <pacho@gentoo.org> (02 Dec 2013)
 # Missing keywords, bug #493156

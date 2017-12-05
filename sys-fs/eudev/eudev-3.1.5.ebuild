@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -8,8 +8,8 @@ KV_min=2.6.39
 inherit autotools eutils linux-info multilib multilib-minimal user
 
 if [[ ${PV} = 9999* ]]; then
-	EGIT_REPO_URI="git://github.com/gentoo/eudev.git"
-	inherit git-2
+	EGIT_REPO_URI="https://github.com/gentoo/eudev.git"
+	inherit git-r3
 else
 	SRC_URI="https://dev.gentoo.org/~blueness/${PN}/${P}.tar.gz"
 	KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 sparc x86"
@@ -88,6 +88,8 @@ src_prepare() {
 	# change rules back to group uucp instead of dialout for now
 	sed -e 's/GROUP="dialout"/GROUP="uucp"/' -i rules/*.rules \
 	|| die "failed to change group dialout to uucp"
+
+	epatch "${FILESDIR}"/${PN}-include-sysmacros-header.patch
 
 	epatch_user
 	eautoreconf
@@ -236,7 +238,5 @@ pkg_postinst() {
 
 	elog
 	elog "For more information on eudev on Gentoo, writing udev rules, and"
-	elog "fixing known issues visit:"
-	elog "         https://www.gentoo.org/doc/en/udev-guide.xml"
-	elog
+	elog "fixing known issues visit: https://wiki.gentoo.org/wiki/Eudev"
 }

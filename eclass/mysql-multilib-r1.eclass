@@ -1,7 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# @ECLASS: mysql-multilib.eclass
+# @ECLASS: mysql-multilib-r1.eclass
 # @MAINTAINER:
 # Maintainers:
 #	- MySQL Team <mysql-bugs@gentoo.org>
@@ -20,20 +20,24 @@
 MYSQL_EXTRAS=""
 
 # @ECLASS-VARIABLE: MYSQL_EXTRAS_VER
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # The version of the MYSQL_EXTRAS repo to use to build mysql
 # Use "none" to disable it's use
 [[ ${MY_EXTRAS_VER} == "live" ]] && MYSQL_EXTRAS="git-r3"
 
 # @ECLASS-VARIABLE: MYSQL_CMAKE_NATIVE_DEFINES
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # An array of extra CMake arguments for native multilib builds
 
 # @ECLASS-VARIABLE: MYSQL_CMAKE_NONNATIVE_DEFINES
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # An array of extra CMake arguments for non-native multilib builds
 
 # @ECLASS-VARIABLE: MYSQL_CMAKE_EXTRA_DEFINES
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # An array of CMake arguments added to native and non-native
 
@@ -211,7 +215,7 @@ DEPEND="${DEPEND}
 # For other stuff to bring us in
 # dev-perl/DBD-mysql is needed by some scripts installed by MySQL
 PDEPEND="${PDEPEND} perl? ( >=dev-perl/DBD-mysql-2.9004 )
-	 ~virtual/mysql-${MYSQL_PV_MAJOR}[embedded=,static=]
+	 server? ( ~virtual/mysql-${MYSQL_PV_MAJOR}[embedded=,static=] )
 	 virtual/libmysqlclient:${SLOT}[${MULTILIB_USEDEP},static-libs=]"
 
 # my_config.h includes ABI specific data
@@ -342,11 +346,7 @@ mysql-multilib-r1_src_prepare() {
 		echo > "${S}/support-files/SELinux/CMakeLists.txt" || die
 	fi
 
-	if [[ "${EAPI}x" == "5x" ]] ; then
-		epatch_user
-	else
-		default
-	fi
+	cmake-utils_src_prepare
 }
 
 # @FUNCTION: mysql-multilib-r1_src_configure
@@ -392,7 +392,7 @@ multilib_src_configure() {
 		-DINSTALL_SQLBENCHDIR=share/mysql
 		-DINSTALL_SUPPORTFILESDIR=${EPREFIX}/usr/share/mysql
 		-DWITH_COMMENT="Gentoo Linux ${PF}"
-		-DWITH_UNIT_TESTS=$(usex test)
+		-DWITH_UNIT_TESTS=$(usex test ON OFF)
 		-DWITH_LIBEDIT=0
 		-DWITH_ZLIB=system
 		-DWITHOUT_LIBWRAP=1
@@ -402,20 +402,17 @@ multilib_src_configure() {
 		-DWITH_DEFAULT_COMPILER_OPTIONS=0
 		-DWITH_DEFAULT_FEATURE_SET=0
 		-DINSTALL_SYSTEMD_UNITDIR="$(systemd_get_systemunitdir)"
-		-DENABLE_STATIC_LIBS=$(usex static-libs)
+		-DENABLE_STATIC_LIBS=$(usex static-libs ON OFF)
 		# The build forces this to be defined when cross-compiling.  We pass it
 		# all the time for simplicity and to make sure it is actually correct.
 		-DSTACK_DIRECTION=$(tc-stack-grows-down && echo -1 || echo 1)
+		-DPKG_CONFIG_EXECUTABLE="${EPREFIX}/usr/bin/$(tc-getPKG_CONFIG)"
 	)
 
 	if use test ; then
 		mycmakeargs+=( -DINSTALL_MYSQLTESTDIR=share/mysql/mysql-test )
 	else
 		mycmakeargs+=( -DINSTALL_MYSQLTESTDIR='' )
-	fi
-
-	if in_iuse systemd ; then
-		mycmakeargs+=( -DWITH_SYSTEMD=$(usex systemd) )
 	fi
 
 	if use openssl || use libressl ; then
@@ -447,6 +444,12 @@ multilib_src_configure() {
 	mycmakeargs+=( -DWITH_EDITLINE=bundled )
 
 	if multilib_is_native_abi && use server ; then
+
+		# systemd is only linked to for server notification
+		if in_iuse systemd ; then
+			mycmakeargs+=( -DWITH_SYSTEMD=$(usex systemd yes no) )
+		fi
+
 		if [[ ( -n ${MYSQL_DEFAULT_CHARSET} ) && ( -n ${MYSQL_DEFAULT_COLLATION} ) ]]; then
 			ewarn "You are using a custom charset of ${MYSQL_DEFAULT_CHARSET}"
 			ewarn "and a collation of ${MYSQL_DEFAULT_COLLATION}."
@@ -505,6 +508,7 @@ multilib_src_configure() {
 			-DWITHOUT_EMBEDDED_SERVER=1
 			-DEXTRA_CHARSETS=none
 			-DINSTALL_SQLBENCHDIR=
+			-DWITH_SYSTEMD=no
 		)
 	fi
 
@@ -598,22 +602,6 @@ multilib_src_install() {
 		newins "${TMPDIR}/my.cnf.ok" my.cnf
 
 		if use server ; then
-			einfo "Creating initial directories"
-			# Empty directories ...
-			diropts "-m0750"
-			if [[ ${PREVIOUS_DATADIR} != "yes" ]] ; then
-				dodir "${MY_DATADIR#${EPREFIX}}"
-				keepdir "${MY_DATADIR#${EPREFIX}}"
-				chown -R mysql:mysql "${D}/${MY_DATADIR}"
-			fi
-
-			diropts "-m0755"
-			for folder in "${MY_LOGDIR#${EPREFIX}}" ; do
-				dodir "${folder}"
-				keepdir "${folder}"
-				chown -R mysql:mysql "${ED}/${folder}"
-			done
-
 			einfo "Including support files and sample configurations"
 			docinto "support-files"
 			for script in \
@@ -680,15 +668,9 @@ mysql-multilib-r1_pkg_postinst() {
 	# Make sure the vars are correctly initialized
 	mysql_init_vars
 
-	# Check FEATURES="collision-protect" before removing this
+	# Create log directory securely if it does not exist
 	[[ -d "${ROOT}${MY_LOGDIR}" ]] || install -d -m0750 -o mysql -g mysql "${ROOT}${MY_LOGDIR}"
 
-	# Secure the logfiles
-	touch "${ROOT}${MY_LOGDIR}"/mysql.{log,err}
-	chown mysql:mysql "${ROOT}${MY_LOGDIR}"/mysql*
-	chmod 0660 "${ROOT}${MY_LOGDIR}"/mysql*
-
-	# Minimal builds don't have the MySQL server
 	if use server ; then
 		docinto "support-files"
 		for script in \
@@ -909,7 +891,7 @@ mysql-multilib-r1_pkg_config() {
 	${EROOT}/usr/sbin/mysqld --verbose --help >"${helpfile}" 2>/dev/null
 	for opt in grant-tables host-cache name-resolve networking slave-start \
 		federated ssl log-bin relay-log slow-query-log external-locking \
-		ndbcluster log-slave-updates \
+		ndbcluster log-slave-updates wsrep-on \
 		; do
 		optexp="--(skip-)?${opt}" optfull="--loose-skip-${opt}"
 		egrep -sq -- "${optexp}" "${helpfile}" && options="${options} ${optfull}"
@@ -918,19 +900,19 @@ mysql-multilib-r1_pkg_config() {
 	egrep -sq external-locking "${helpfile}" && \
 	options="${options/skip-locking/skip-external-locking}"
 
-	use prefix || options="${options} --user=mysql"
-
 	einfo "Creating the mysql database and setting proper permissions on it ..."
 
 	# Now that /var/run is a tmpfs mount point, we need to ensure it exists before using it
 	PID_DIR="${EROOT}/var/run/mysqld"
 	if [[ ! -d "${PID_DIR}" ]]; then
-		mkdir -p "${PID_DIR}" || die "Could not create pid directory"
-		chown mysql:mysql "${PID_DIR}" || die "Could not set ownership on pid directory"
-		chmod 755 "${PID_DIR}" || die "Could not set permissions on pid directory"
+		install -d -m 755 -o mysql -g mysql "${PID_DIR}" || die "Could not create pid directory"
 	fi
 
-	pushd "${TMPDIR}" &>/dev/null
+	if [[ ! -d "${MY_DATADIR}" ]]; then
+		install -d -m 750 -o mysql -g mysql "${MY_DATADIR}" || die "Could not create data directory"
+	fi
+
+	pushd "${TMPDIR}" &>/dev/null || die
 
 	# Filling timezones, see
 	# http://dev.mysql.com/doc/mysql/en/time-zone-support.html
@@ -942,7 +924,7 @@ mysql-multilib-r1_pkg_config() {
 		# --initialize-insecure will not set root password
 		# --initialize would set a random one in the log which we don't need as we set it ourselves
 		cmd=( "${EROOT}usr/sbin/mysqld" )
-		initialize_options="--initialize-insecure  '--init-file=${sqltmp}'"
+		initialize_options="--initialize-insecure  --init-file='${sqltmp}'"
 		sqltmp="" # the initialize will take care of it
 	else
 		cmd=( "${EROOT}usr/share/mysql/scripts/mysql_install_db" )
@@ -953,17 +935,15 @@ mysql-multilib-r1_pkg_config() {
 	fi
 	cmd+=( "--basedir=${EPREFIX}/usr" ${options} "--datadir=${ROOT}/${MY_DATADIR}" "--tmpdir=${ROOT}/${MYSQL_TMPDIR}" ${initialize_options} )
 	einfo "Command: ${cmd[*]}"
-	"${cmd[@]}" \
+	su -s /bin/sh -c "${cmd[*]}" mysql \
 		>"${TMPDIR}"/mysql_install_db.log 2>&1
 	if [ $? -ne 0 ]; then
 		grep -B5 -A999 -i "ERROR" "${TMPDIR}"/mysql_install_db.log 1>&2
 		die "Failed to initialize mysqld. Please review ${EPREFIX}/var/log/mysql/mysqld.err AND ${TMPDIR}/mysql_install_db.log"
 	fi
-	popd &>/dev/null
+	popd &>/dev/null || die
 	[[ -f "${ROOT}/${MY_DATADIR}/mysql/user.frm" ]] \
 	|| die "MySQL databases not installed"
-	chown -R mysql:mysql "${ROOT}/${MY_DATADIR}" 2>/dev/null
-	chmod 0750 "${ROOT}/${MY_DATADIR}" 2>/dev/null
 
 	local socket="${EROOT}/var/run/mysqld/mysqld${RANDOM}.sock"
 	local pidfile="${EROOT}/var/run/mysqld/mysqld${RANDOM}.pid"

@@ -15,6 +15,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64"
 IUSE="python setproctitle"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="dev-libs/protobuf-c
 	dev-libs/libnl:3
@@ -27,7 +28,10 @@ DEPEND="${RDEPEND}
 	app-text/xmlto"
 RDEPEND="${RDEPEND}
 	python? (
-		dev-libs/protobuf[python,${PYTHON_USEDEP}]
+		|| (
+			dev-python/protobuf-python[${PYTHON_USEDEP}]
+			dev-libs/protobuf[python,${PYTHON_USEDEP}]
+		)
 		dev-python/ipaddr[${PYTHON_USEDEP}]
 	)"
 

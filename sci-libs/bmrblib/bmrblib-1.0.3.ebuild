@@ -1,13 +1,13 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_4 pypy )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
 
 inherit distutils-r1
 
-DESCRIPTION="API abstracting the BioMagResBank (BMRB) NMR-STAR format (http://www.bmrb.wisc.edu/)"
+DESCRIPTION="API abstracting the BioMagResBank (BMRB) NMR-STAR format"
 HOMEPAGE="http://gna.org/projects/bmrblib/"
 SRC_URI="http://download.gna.org/${PN}/${P}.tar.bz2"
 

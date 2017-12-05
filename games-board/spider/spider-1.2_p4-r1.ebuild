@@ -15,7 +15,7 @@ SRC_URI="mirror://debian/pool/main/s/spider/${MY_P}.orig.tar.gz
 
 LICENSE="HPND"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="athena"
 
 RDEPEND="x11-libs/libXext

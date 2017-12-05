@@ -25,7 +25,7 @@ RDEPEND="
 	libressl? ( dev-libs/libressl:0= )
 	dev-perl/Locale-gettext
 	>=virtual/perl-MIME-Base64-2.12
-	>=dev-perl/gtk2-perl-1.072"
+	>=dev-perl/Gtk2-1.072"
 DEPEND="${RDEPEND}
 	>=sys-apps/sed-4"
 

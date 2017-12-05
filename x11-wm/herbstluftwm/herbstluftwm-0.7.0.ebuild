@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 inherit toolchain-funcs bash-completion-r1
 
 if [[ ${PV} == 9999* ]] ; then
@@ -10,7 +10,7 @@ if [[ ${PV} == 9999* ]] ; then
 	EXTRA_DEPEND="app-text/asciidoc"
 else
 	SRC_URI="http://herbstluftwm.org/tarballs/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 	EXTRA_DEPEND=""
 fi
 

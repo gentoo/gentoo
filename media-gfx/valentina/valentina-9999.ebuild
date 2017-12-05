@@ -1,13 +1,12 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit mercurial qmake-utils gnome2-utils fdo-mime
+inherit mercurial qmake-utils gnome2-utils xdg-utils
 
 DESCRIPTION="Cloth patternmaking software"
-HOMEPAGE="http://valentinaproject.bitbucket.org/"
-SRC_URI=""
+HOMEPAGE="https://valentinaproject.bitbucket.io/"
 EHG_REPO_URI="https://bitbucket.org/dismine/valentina"
 EHG_REVISION="develop"
 
@@ -17,7 +16,7 @@ KEYWORDS=""
 IUSE="gnome"
 
 # en_IN not supported in Gentoo so not added here
-LANGS="cs_CZ de_DE en_CA en_US es_ES fi_FI fr_FR he_IL id_ID it_IT nl_NL ro_RO ru_RU uk_UA zh_CN"
+LANGS="cs_CZ de_DE el_GR en_CA en_US es_ES fi_FI fr_FR he_IL id_ID it_IT nl_NL pt_BR ro_RO ru_RU uk_UA zh_CN"
 
 for LANG in ${LANGS}; do
 	IUSE="${IUSE} linguas_${LANG}"
@@ -51,7 +50,7 @@ src_configure() {
 src_install() {
 	emake install INSTALL_ROOT="${D}"
 
-	dodoc LICENSE_GPL.txt ChangeLog.txt README.txt
+	dodoc AUTHORS.txt ChangeLog.txt README.txt
 
 	doman dist/debian/${PN}.1
 	doman dist/debian/tape.1
@@ -62,7 +61,8 @@ src_install() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 
 	if use gnome ; then
 		gnome2_icon_cache_update

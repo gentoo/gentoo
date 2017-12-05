@@ -131,6 +131,7 @@
     <remote-id type="cpan-module">DateTime::TimeZone::America::Port_of_Spain</remote-id>
     <remote-id type="cpan-module">DateTime::TimeZone::America::Porto_Velho</remote-id>
     <remote-id type="cpan-module">DateTime::TimeZone::America::Puerto_Rico</remote-id>
+    <remote-id type="cpan-module">DateTime::TimeZone::America::Punta_Arenas</remote-id>
     <remote-id type="cpan-module">DateTime::TimeZone::America::Rainy_River</remote-id>
     <remote-id type="cpan-module">DateTime::TimeZone::America::Rankin_Inlet</remote-id>
     <remote-id type="cpan-module">DateTime::TimeZone::America::Recife</remote-id>
@@ -171,6 +172,7 @@
     <remote-id type="cpan-module">DateTime::TimeZone::Asia::Aqtau</remote-id>
     <remote-id type="cpan-module">DateTime::TimeZone::Asia::Aqtobe</remote-id>
     <remote-id type="cpan-module">DateTime::TimeZone::Asia::Ashgabat</remote-id>
+    <remote-id type="cpan-module">DateTime::TimeZone::Asia::Atyrau</remote-id>
     <remote-id type="cpan-module">DateTime::TimeZone::Asia::Baghdad</remote-id>
     <remote-id type="cpan-module">DateTime::TimeZone::Asia::Baku</remote-id>
     <remote-id type="cpan-module">DateTime::TimeZone::Asia::Bangkok</remote-id>
@@ -299,6 +301,7 @@
     <remote-id type="cpan-module">DateTime::TimeZone::Europe::Riga</remote-id>
     <remote-id type="cpan-module">DateTime::TimeZone::Europe::Rome</remote-id>
     <remote-id type="cpan-module">DateTime::TimeZone::Europe::Samara</remote-id>
+    <remote-id type="cpan-module">DateTime::TimeZone::Europe::Saratov</remote-id>
     <remote-id type="cpan-module">DateTime::TimeZone::Europe::Simferopol</remote-id>
     <remote-id type="cpan-module">DateTime::TimeZone::Europe::Sofia</remote-id>
     <remote-id type="cpan-module">DateTime::TimeZone::Europe::Stockholm</remote-id>

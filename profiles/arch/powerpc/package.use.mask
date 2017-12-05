@@ -1,6 +1,63 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Robin H. Johnson <robbat2@gentoo.org> (10 Nov 2017)
+# Masked for dependencies:
+# - bug #438780: sys-firmware/ipxe not buildable on PPC without cross-compiler
+app-emulation/qemu qemu_softmmu_targets_i386 qemu_softmmu_targets_x86_64
+# - media-libs/virglrenderer: pending keywording
+app-emulation/qemu virgl
+
+# Michael Palimaka <kensington@gentoo.org> (30 Sep 2017)
+# Required dependencies are not keyworded.
+x11-themes/qtcurve plasma
+
+# Jonathan Scruggs <j.scruggs@gmail.com> (23 Sep 2017)
+# dependencies not keyworded yet
+media-libs/openimageio field3d ptex
+
+# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (22 Aug 2017)
+# Dictionary Manager requires unkeyworded dev-qt/qtwebengine.
+app-i18n/fcitx-libpinyin dictionary-manager
+
+# Göktürk Yüksek <gokturk@gentoo.org> (15 Aug 2017)
+# Requires java
+app-forensics/sleuthkit java
+
+# Michał Górny <mgorny@gentoo.org> (10 Aug 2017)
+# Requires USE=ipmi which is masked in this profile.
+sys-power/nut ups_drivers_nut-ipmipsu
+
+# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
+media-libs/mesa vulkan
+
+# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Requires USE=opencl that is masked in this profile.
+net-misc/bfgminer adl lm_sensors
+
+# Andreas Sturmlechner <asturm@gentoo.org> (31 Jul 2017)
+# Mask for removal of ancient versions of media-libs/libvisio,
+# media-libs/libcdr, app-text/libwpd and app-text/libwpg
+media-gfx/inkscape cdr visio wpg
+
+# Michael Weber <xmw@gentoo.org> (14 Mar 2017)
+# mask unkeyworded dependency media-libs/glfw
+app-text/mupdf opengl
+
+# Jason Zaman <perfinion@gentoo.org> (09 May 2017)
+# x11-libs/libXpresent is not keyworded on ppc
+xfce-base/xfwm4 xpresent
+
+# Michael Weber <xmw@gentoo.org> (06 Apr 2017)
+# mask unkeyworded dep pymongo -> mongodb
+app-portage/g-sorcery bson
+
+# Michał Górny <mgorny@gentoo.org> (24 Mar 2017)
+# libcxx fails to compile on ppc*, #595744.
+sys-devel/clang default-libcxx
+sys-devel/clang-runtime libcxx
+
 # Andreas Sturmlechner <asturm@gentoo.org> (27 Feb 2017)
 # Requires dev-qt/qtwebengine, not keyworded on ppc
 sci-geosciences/gpsbabel gui
@@ -11,6 +68,7 @@ games-emulation/dosbox glide
 
 # Thomas Deutschmann <whissi@gentoo.org> (26 Aug 2016)
 # Enable numa support on supported architectures
+dev-db/mysql -numa
 dev-db/percona-server -numa
 
 # Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
@@ -24,17 +82,15 @@ dev-python/PyQt5 bluetooth location webengine
 
 # Michael Palimaka <kensington@gentoo.org> (07 Jul 2016)
 # Requires unkeyworded dependencies
-app-misc/hachoir-metadata kde
 dev-vcs/subversion kwallet
 games-arcade/jumpnbump kde
 kde-apps/katepart handbook
 kde-frameworks/kdelibs handbook policykit
+net-irc/quassel kde
 net-libs/libproxy kde
-net-voip/ekiga kde
 sys-auth/polkit kde
 sys-block/gparted kde
 virtual/notification-daemon kde
-x11-misc/lightdm kde
 
 # Davide Pesavento <pesa@gentoo.org> (06 Jun 2016)
 # Requires unkeyworded dev-python/PyQt5
@@ -78,7 +134,7 @@ sys-devel/llvm ocaml
 
 # Justin Lecher <jlec@gentoo> (18 May 2015)
 # missing keywords
-dev-python/matplotlib qt5
+dev-python/matplotlib qt5 test
 
 # Pacho Ramos <pacho@gentoo.org> (15 May 2015)
 # Missing keywords
@@ -132,7 +188,7 @@ dev-ruby/haml test
 
 # Anthony G. Basile <blueness@gentoo.org> (14 Aug 2014)
 # Mask these flags since mongodb is broken on ppc/ppc64
-dev-python/ipython doc matplotlib mongodb nbconvert notebook qt4
+dev-python/ipython doc matplotlib mongodb nbconvert notebook qt4 test
 
 # Anthony G. Basile <blueness@gentoo.org> (12 Aug 2014)
 # Ultimately pulls in nodejs which is broken.
@@ -174,14 +230,6 @@ gnome-base/gnome classic extras
 # template-haskell not yet available
 dev-haskell/dataenc test
 
-# Johannes Huber <johu@gentoo.org> (15 Sep 2013)
-# # Depends on kde-misc/networkmanagement, not keyworded yet.
-kde-apps/solid-runtime networkmanager
-
-# Pacho Ramos <pacho@gentoo.org> (08 Sep 2013)
-# monodevelop is not keyworded, bug #468030
-gnome-extra/zeitgeist-datasources mono
-
 # Agostino Sarubbo <ago@gentoo.org> (24 Aug 2013)
 # Klibc does not work anymore on ppc
 app-shells/mksh static
@@ -189,10 +237,6 @@ app-shells/mksh static
 # Pacho Ramos <pacho@gentoo.org> (20 Jul 2013)
 # Keywords pending, bug #476710
 >=gnome-base/gnome-extra-apps-3.8 games
-
-# Patrick Lauer <patrick@gentoo.org> (17 Jun 2013)
-# Fix per-arch mask of phonon[zeitgeist] #460140
-media-libs/phonon zeitgeist
 
 # Agostino Sarubbo <ago@gentoo.org> (23 Apr 2013)
 # dev-db/spatialite fails to compile on ppc*
@@ -212,7 +256,6 @@ x11-misc/colord argyllcms extra-print-profiles
 
 # Anthony G. Basile <blueness@gentoo.org> (15 Nove 2012)
 # Mask telepathy, no stable net-libs/telepathy-qt, bug #441456
-kde-apps/krfb telepathy
 net-im/choqok telepathy
 
 # Robin H Johnson <robbat2@gentoo.org> (01 Nov 2012)
@@ -233,7 +276,7 @@ dev-ruby/rack-test test
 
 # Anthony G. Basile <blueness@gentoo.org> (21 Aug 2012)
 # Does not work on ppc/ppc64
-net-misc/tor tor-hardening
+net-vpn/tor tor-hardening
 
 # Brent Baude <ranger@gentoo.org> (06 Mar 2012)
 # masking kde on gajim
@@ -241,7 +284,7 @@ net-im/gajim kde
 
 # Pacho Ramos <pacho@gentoo.org> (07 May 2012)
 # libhid is not keyworded
-app-misc/lcdproc hid
+app-misc/lcdproc hid lcd_devices_mdm166a
 
 # Brent Baude <ranger@gentoo.org> (06 Mar 2012)
 # masking wimax use flag
@@ -249,7 +292,7 @@ net-misc/connman ofono
 
 # Alexey Shvetsov <alexxy@gentoo.org> (20 Jan 2012)
 # Mask some use flags for openmpi due to unkeyworded deps
-sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_open-mx openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_slurm openmpi_ofed_features_rdmacm
+sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_open-mx openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
 
 # Kacper Kowalik <xarthisius@gentoo.org> (20 Nov 2011)
 # Dropped dietlibc wrt #364103
@@ -283,7 +326,7 @@ app-text/asciidoc test
 
 # Justin Lecher <jlec@gentoo.org> (01 Nov 2010)
 # Deps not Keyworded
-sci-chemistry/apbs fetk
+sci-chemistry/apbs fetk iapbs python
 
 # Alexey Shvetsov <alexxy@gentoo.org> (22 Aug 2010)
 # sci-chemistry/msms not available for this arch

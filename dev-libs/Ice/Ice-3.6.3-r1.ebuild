@@ -23,13 +23,14 @@ BERKDB_SLOTS=( 6.1 5.3 5.1 4.8 )
 inherit db-use eutils mono-env php-ext-source-r2 python-r1 ruby-ng toolchain-funcs versionator
 
 DESCRIPTION="ICE middleware C++ library and generator tools"
-HOMEPAGE="http://www.zeroc.com/"
+HOMEPAGE="https://zeroc.com/products/ice"
 SRC_URI="https://github.com/zeroc-ice/ice/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	doc? ( http://download.zeroc.com/Ice/$(get_version_component_range 1-2)/${P}.pdf )"
 LICENSE="GPL-2"
 SLOT="0/36"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="doc examples libressl +ncurses mono php python ruby test debug"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND=">=dev-libs/expat-2.0.1
 	>=app-arch/bzip2-1.0.5

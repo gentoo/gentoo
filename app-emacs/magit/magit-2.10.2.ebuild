@@ -21,6 +21,7 @@ DOCS="../README.md ../Documentation/AUTHORS.md ../Documentation/RelNotes/${PV}.t
 
 DEPEND=">=app-emacs/dash-2.13.0 >=app-emacs/with-editor-2.5.10"
 RDEPEND="${DEPEND} >=dev-vcs/git-1.9.4"
+DEPEND="${DEPEND} sys-apps/texinfo"
 
 src_prepare() {
 	default

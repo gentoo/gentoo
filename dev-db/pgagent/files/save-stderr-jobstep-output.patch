@@ -1,0 +1,79 @@
+From 5d2e0d3500a8e144215cdfe10b52cf7415b58046 Mon Sep 17 00:00:00 2001
+From: Ashesh Vashi <ashesh.vashi@enterprisedb.com>
+Date: Mon, 25 May 2015 12:37:42 +0530
+Subject: [PATCH] Save the standarad error too along with the standard output
+ in the jobstep output for the batch jobs.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+[Worked on by: Mehmet Emin KARAKAŞ, Akshay Joshi]
+[Reviewed and improvised by: Sanket Joshi, Ashesh Vashi]
+---
+ job.cpp | 37 +++++++++++++++++++++++++++++++++++++
+ 1 file changed, 37 insertions(+)
+
+diff --git a/job.cpp b/job.cpp
+index 00334ab..c4b39ce 100644
+--- a/job.cpp
++++ b/job.cpp
+@@ -186,8 +186,10 @@ int Job::Execute()
+ 
+ #ifdef __WIN32__
+ 				wxString filename = dirname + wxT("\\") + jobid + wxT("_") + stepid + wxT(".bat");
++				wxString errorFile = dirname + wxT("\\") + jobid + wxT("_") + stepid + wxT("_error.txt");
+ #else
+ 				wxString filename = dirname + wxT("/") + jobid + wxT("_") + stepid + wxT(".scr");
++				wxString errorFile = dirname + wxT("/") + jobid + wxT("_") + stepid + wxT("_error.txt");
+ #endif
+ 
+ 				// Write the script
+@@ -233,6 +235,10 @@ int Job::Execute()
+ 				file->Close();
+ 				LogMessage(wxString::Format(_("Executing script file: %s"), filename.c_str()), LOG_DEBUG);
+ 
++				// freopen function is used to redirect output of stream (stderr in our case)
++				// into the specified file.
++				FILE *fpError = freopen(errorFile.mb_str(), "w", stderr);
++
+ 				// Execute the file and capture the output
+ #ifdef __WIN32__
+ 				// The Windows way
+@@ -304,6 +310,37 @@ int Job::Execute()
+ 				if (rc == 0)
+ 					succeeded = true;
+ 
++				// If output is empty then either script did not return any output
++				// or script threw some error into stderr.
++				// Check script threw some error into stderr
++				if (fpError)
++				{
++					//fclose(fpError);
++					FILE* fpErr = fopen(errorFile.mb_str(), "r");
++					if (fpErr)
++					{
++						char buffer[4098];
++						wxString errorMsg = wxEmptyString;
++						while (!feof(fpErr))
++						{
++							if (fgets(buffer, 4096, fpErr) != NULL)
++								errorMsg += wxString(buffer, wxConvLibc);
++						}
++
++						if (errorMsg != wxEmptyString) {
++							wxString errmsg =
++								wxString::Format(
++										_("Script Error: \n%s\n"),
++										errorMsg.c_str());
++							LogMessage(errmsg, LOG_WARNING);
++							output += wxT("\n") + errmsg;
++						}
++
++						fclose(fpErr);
++					}
++					wxRemoveFile(errorFile);
++				}
++
+ 				// Delete the file/directory. If we fail, don't overwrite the script output in the log, just throw warnings.
+ 				if (!wxRemoveFile(filename))
+ 				{

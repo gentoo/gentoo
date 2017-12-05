@@ -15,7 +15,9 @@ KEYWORDS="amd64 x86"
 RDEPEND="
 	>=dev-lang/erlang-18.1[smp,wxwidgets]
 	dev-libs/cl
+	media-libs/glu
 	media-libs/libsdl[opengl]
+	virtual/opengl
 "
 DEPEND="${RDEPEND}"
 
@@ -25,6 +27,13 @@ src_prepare() {
 	sed -i \
 		-e '/include_lib/s|"wings/|"../|' \
 		$(find . -name '*'.erl) \
+		|| die
+
+	sed -i \
+		-e 's|-O3||g' \
+		-e 's|-Werror||g' \
+		-e 's|CFLAGS = |CFLAGS += |g' \
+		$(find . -name Makefile) \
 		|| die
 }
 

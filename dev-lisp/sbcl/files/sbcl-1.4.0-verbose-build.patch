@@ -1,0 +1,29 @@
+diff -Nuar a/make.sh b/make.sh
+--- a/make.sh	2017-09-30 18:30:58.000000000 +0200
++++ b/make.sh	2017-10-01 18:08:26.742909789 +0200
+@@ -24,7 +24,7 @@
+ # thing" when run on the target machine, with the minor caveat that
+ # any --xc-host parameter should be suitable for the host machine
+ # instead of the target.
+-sh make-config.sh "$@" || exit $?
++sh -x make-config.sh "$@" || exit $?
+ 
+ . output/prefix.def
+ . output/build-config
+@@ -76,11 +76,11 @@
+         $@
+     fi
+ }
+-maybetime sh make-host-1.sh
+-maybetime sh make-target-1.sh
+-maybetime sh make-host-2.sh
+-maybetime sh make-target-2.sh
+-maybetime sh make-target-contrib.sh
++maybetime sh -x make-host-1.sh
++maybetime sh -x make-target-1.sh
++maybetime sh -x make-host-2.sh
++maybetime sh -x make-target-2.sh
++maybetime sh -x make-target-contrib.sh
+ 
+ NCONTRIBS=`find contrib -name Makefile -print | wc -l`
+ NPASSED=`find obj/asdf-cache -name test-passed.test-report -print | wc -l`

@@ -1,12 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit autotools eutils
 
 DESCRIPTION="dockapp running Conway's Game of Life (and program launcher)"
-HOMEPAGE="http://www.swanson.ukfsn.org/#wmlife"
-SRC_URI="http://www.swanson.ukfsn.org/${PN}/${P}.tar.gz"
+HOMEPAGE="http://www.improbability.net/#wmlife"
+SRC_URI="http://www.improbability.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

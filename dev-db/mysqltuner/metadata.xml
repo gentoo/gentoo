@@ -3,6 +3,7 @@
 <pkgmetadata>
   <!-- maintainer-needed -->
   <upstream>
-    <remote-id type="github">rackerhacker/MySQLTuner-perl</remote-id>
+    <remote-id type="github">major/MySQLTuner-perl</remote-id>
+    <bugs-to>https://github.com/major/MySQLTuner-perl/issues</bugs-to>
   </upstream>
 </pkgmetadata>

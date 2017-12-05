@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby20 ruby21"
+USE_RUBY="ruby21 ruby22"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
@@ -28,7 +28,7 @@ RESTRICT="test"
 ruby_add_rdepend ">=dev-ruby/sass-3.2.2:0
 	=dev-ruby/railties-4*
 	=dev-ruby/sprockets-rails-2*
-	=dev-ruby/sprockets-2* >=dev-ruby/sprockets-2.8"
+	>=dev-ruby/sprockets-2.8:2"
 
 each_ruby_test() {
 	${RUBY} -S bundle exec rake test || die

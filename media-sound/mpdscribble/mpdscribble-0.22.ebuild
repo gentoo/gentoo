@@ -5,8 +5,8 @@ EAPI=6
 inherit eutils
 
 DESCRIPTION="An MPD client that submits information to Audioscrobbler"
-HOMEPAGE="http://mpd.wikia.com/wiki/Client:Mpdscribble"
-SRC_URI="mirror://sourceforge/musicpd/${P}.tar.bz2"
+HOMEPAGE="https://www.musicpd.org/clients/mpdscribble/"
+SRC_URI="https://www.musicpd.org/download/${PN}/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

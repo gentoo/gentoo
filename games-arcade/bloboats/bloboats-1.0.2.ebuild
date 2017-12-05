@@ -1,16 +1,16 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit eutils games
 
-DESCRIPTION="arcade-like boat racing game combining platform jumpers and elastomania / x-moto like games"
+DESCRIPTION="Arcade-like boat racing game combining platform jumpers and x-moto like games"
 HOMEPAGE="http://bloboats.dy.fi/"
 SRC_URI="http://mirror.kapsi.fi/bloboats.dy.fi/${P}.tar.gz"
 
 LICENSE="GPL-2 CC-Sampling-Plus-1.0"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="media-libs/libsdl[opengl,video]
@@ -24,6 +24,7 @@ RDEPEND="${DEPEND}"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-warnings.patch
+	epatch "${FILESDIR}"/${P}-gcc6.patch
 	sed -i \
 		-e "/PREFIX/s://:${D}:" \
 		-e "/DATADIR/s:/usr/games/bloboats/data:${GAMES_DATADIR}/${PN}:" \

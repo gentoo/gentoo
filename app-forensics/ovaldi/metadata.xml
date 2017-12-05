@@ -10,9 +10,6 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<use>
-		<flag name="rpm">Enable the RPM probes</flag>
-	</use>
 	<upstream>
 		<remote-id type="sourceforge">ovaldi</remote-id>
 	</upstream>

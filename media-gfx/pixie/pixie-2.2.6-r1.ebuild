@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
@@ -12,7 +12,7 @@ S="${WORKDIR}/${MY_PN}"
 
 DESCRIPTION="RenderMan like photorealistic renderer"
 HOMEPAGE="http://pixie.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_PN}-src-${PV}.tgz"
+SRC_URI="mirror://sourceforge/${PN}/${MY_PN}-src-${PV}.tgz https://dev.gentoo.org/~dilfridge/distfiles/pixie-2.2.6-gcc6.patch.gz"
 
 LICENSE="GPL-2"
 IUSE="X static-libs"
@@ -47,6 +47,8 @@ src_prepare() {
 	# FIX: missing @includedir@
 	# https://sf.net/tracker/?func=detail&aid=2923415&group_id=59462&atid=491094
 	epatch "${FILESDIR}"/${P}-autotools.patch
+	# bug 594354
+	epatch "${WORKDIR}"/${P}-gcc6.patch
 	eautoreconf
 
 	# FIX: removing pre-compiled shaders

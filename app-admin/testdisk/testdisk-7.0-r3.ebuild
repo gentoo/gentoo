@@ -47,6 +47,8 @@ RDEPEND="!static? ( ${DEPEND} )"
 AUTOTOOLS_IN_SOURCE_BUILD=1
 DOCS=( )
 
+PATCHES=( "${FILESDIR}/${P}-qtbindir.patch" )
+
 src_configure() {
 	local myconf
 

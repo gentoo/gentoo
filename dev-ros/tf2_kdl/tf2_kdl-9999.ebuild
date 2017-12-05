@@ -23,4 +23,8 @@ RDEPEND="
 	dev-ros/tf2_msgs[${PYTHON_USEDEP}]
 	dev-ros/cmake_modules
 "
-DEPEND="${RDEPEND} test? ( dev-ros/rostest[${PYTHON_USEDEP}] )"
+DEPEND="${RDEPEND}
+	test? (
+		dev-ros/rostest[${PYTHON_USEDEP}]
+		dev-cpp/gtest
+	)"

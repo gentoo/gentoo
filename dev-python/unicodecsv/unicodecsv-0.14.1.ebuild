@@ -3,7 +3,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5} pypy )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
 
 inherit distutils-r1
 
@@ -15,6 +15,8 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~ppc x86"
 IUSE=""
+
+DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 python_test() {
 	python -m unittest discover

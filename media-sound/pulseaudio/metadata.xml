@@ -42,7 +42,7 @@
       script for PulseAudio. Since this support is only supported for
       embedded situations, do not enable without reading the upstream
       instructions at
-	  http://www.freedesktop.org/wiki/Software/PulseAudio/Documentation/User/WhatIsWrongWithSystemWide/ .
+      https://www.freedesktop.org/wiki/Software/PulseAudio/Documentation/User/WhatIsWrongWithSystemWide/ .
     </flag>
     <flag name="asyncns">Use libasyncns for asynchronous name resolution.</flag>
     <flag name="doc">Build the doxygen-described API documentation.</flag>
@@ -66,9 +66,6 @@
       Uses the webrtc.org AudioProcessing library for enhancing VoIP calls
       greatly in applications that support it by performing acoustic echo
       cancellation, analog gain control, noise suppression and other processing.
-    </flag>
-    <flag name="xen">
-      Builds a special paravirtualized module for running in a Xen guest.
     </flag>
     <flag name="systemd">
       Build with <pkg>sys-apps/systemd</pkg> support to replace standalone

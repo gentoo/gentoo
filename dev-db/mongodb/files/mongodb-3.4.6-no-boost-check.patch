@@ -1,0 +1,11 @@
+--- SConstruct.orig	2017-06-27 19:02:43.000000000 +0000
++++ SConstruct	2017-07-07 11:33:13.252639289 +0000
+@@ -2798,8 +2798,6 @@
+     if use_system_version_of_library("boost"):
+         if not conf.CheckCXXHeader( "boost/filesystem/operations.hpp" ):
+             myenv.ConfError("can't find boost headers")
+-        if not conf.CheckBoostMinVersion():
+-            myenv.ConfError("system's version of boost is too old. version 1.49 or better required")
+ 
+         # Note that on Windows with using-system-boost builds, the following
+         # FindSysLibDep calls do nothing useful (but nothing problematic either)

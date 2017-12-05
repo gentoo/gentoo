@@ -4,8 +4,8 @@
 EAPI=5
 inherit xfconf
 
-DESCRIPTION="A tool to find and launch installed applications for the Xfce desktop environment"
-HOMEPAGE="http://www.xfce.org/projects/"
+DESCRIPTION="A tool to find and launch installed applications for the Xfce desktop"
+HOMEPAGE="https://docs.xfce.org/xfce/xfce4-appfinder/start"
 SRC_URI="mirror://xfce/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"

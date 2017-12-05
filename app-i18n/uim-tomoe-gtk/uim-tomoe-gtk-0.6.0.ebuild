@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 DESCRIPTION="Japanese input method Tomoe IMEngine for uim"
@@ -11,7 +11,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="|| ( app-i18n/uim app-i18n/uim-svn )
-	>=app-i18n/libtomoe-gtk-0.6.0"
+	>=app-i18n/tomoe-gtk-0.6.0"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 

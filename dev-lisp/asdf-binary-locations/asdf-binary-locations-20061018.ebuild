@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="3"
 inherit common-lisp
 
-DESCRIPTION="An ASDF-Extension to specify where your Common Lisp binaries (FASL files) should go"
+DESCRIPTION="ASDF-Extension to specify where Common Lisp binaries (FASL files) should go"
 HOMEPAGE="http://common-lisp.net/project/cl-containers/asdf-binary-locations/"
 SRC_URI="http://common-lisp.net/project/portage-overlay/distfiles/${PN}_${PV}.tar.gz"
 LICENSE="MIT"

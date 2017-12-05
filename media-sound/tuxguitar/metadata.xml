@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>j.scruggs@gmail.com</email>
 		<name>Jonathan Scruggs</name>
-        </maintainer>
+	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
@@ -39,4 +39,7 @@
 			Adds an icon to the tray that controls midi playback.
 		</flag>
 	</use>
+	<upstream>
+		<remote-id type="sourceforge">tuxguitar</remote-id>
+	</upstream>
 </pkgmetadata>

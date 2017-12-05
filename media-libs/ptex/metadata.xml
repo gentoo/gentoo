@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer restrict="&gt;=media-libs/ptex-2.1.10" type="person">
@@ -16,4 +16,7 @@
 	<longdescription>
 		Per-Face Texture Mapping for Production Rendering.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">wdas/ptex</remote-id>
+	</upstream>
 </pkgmetadata>

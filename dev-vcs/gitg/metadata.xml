@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>ikelos@gentoo.org</email>
-    <name>Mike Auty</name>
-  </maintainer>
-  <maintainer type="project">
-    <email>gnome@gentoo.org</email>
-    <name>Gentoo GNOME Desktop</name>
-  </maintainer>
-  <longdescription lang="en">
+	<maintainer type="person">
+		<email>ikelos@gentoo.org</email>
+		<name>Mike Auty</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>gnome@gentoo.org</email>
+		<name>Gentoo GNOME Desktop</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
+	</maintainer>
+	<longdescription lang="en">
 		GTK+ based frontend for GIT
 	</longdescription>
-  <use>
-    <flag name="glade">Install a glade catalog file</flag>
-    <flag name="python">Install Python bindings for those plugins requiring it.</flag>
-  </use>
+	<use>
+		<flag name="glade">Install a glade catalog file</flag>
+		<flag name="python">Install Python bindings for those plugins requiring it.</flag>
+	</use>
 </pkgmetadata>

@@ -14,11 +14,12 @@ SRC_URI="http://download.byuu.org/${MY_P}.7z"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="ao +alsa +icarus openal opengl oss pulseaudio qt4 +sdl udev xv"
+IUSE="ao +alsa +icarus openal opengl oss pulseaudio +sdl udev xv"
 REQUIRED_USE="|| ( ao openal alsa pulseaudio oss )
 	|| ( xv opengl sdl )"
 
 RDEPEND="
+	x11-libs/gtk+:2
 	x11-libs/libX11
 	x11-libs/libXext
 	icarus? ( x11-libs/gtksourceview:2.0
@@ -39,9 +40,7 @@ RDEPEND="
 	opengl? ( virtual/opengl )
 	sdl? ( media-libs/libsdl[X,joystick,video] )
 	udev? ( virtual/udev )
-	!qt4? ( x11-libs/gtk+:2 )
-	qt4? (  dev-qt/qtcore:4
-			>=dev-qt/qtgui-4.5:4 )"
+"
 DEPEND="${RDEPEND}
 	app-arch/p7zip
 	virtual/pkgconfig"
@@ -77,22 +76,12 @@ src_prepare() {
 	# input modules
 	use sdl || disable_module input.sdl
 	use udev || disable_module input.udev
-
-	# regenerate .moc if needed
-	if use qt4; then
-		cd hiro/qt || die
-		 "$(qt4_get_bindir)"/moc -i -I. -o qt.moc qt.hpp || die
-	fi
 }
 
 src_compile() {
 	local mytoolkit
 
-	if use qt4; then
-		mytoolkit="qt"
-	else
-		mytoolkit="gtk"
-	fi
+	mytoolkit="gtk"
 
 	if use icarus; then
 		cd "${S}/icarus" || die

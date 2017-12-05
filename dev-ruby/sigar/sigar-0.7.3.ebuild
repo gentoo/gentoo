@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -20,6 +20,10 @@ IUSE=""
 
 all_ruby_prepare() {
 	sed -i -e '25i$CFLAGS += " -std=gnu89"' bindings/ruby/extconf.rb || die
+
+	# Fix compatibility with glibc 2.25
+	sed -i -e '26i#include <sys/sysmacros.h>' \
+		-e '27i#include <ctype.h>' bindings/ruby/rbsigar.c src/os/linux/linux_sigar.c || die
 }
 
 each_ruby_configure() {

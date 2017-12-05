@@ -12,7 +12,6 @@
 		<flag name="declarative">Build bindings for the QtDeclarative module</flag>
 		<flag name="designer">Build bindings for the QtDesigner module and enable the designer plugin</flag>
 		<flag name="help">Build bindings for the QtHelp module</flag>
-		<flag name="kde">Select <pkg>media-libs/phonon</pkg> as Phonon variant (needed for KDE)</flag>
 		<flag name="multimedia">Build bindings for the QtMultimedia module</flag>
 		<flag name="opengl">Build bindings for the QtOpenGL module</flag>
 		<flag name="phonon">Build bindings for the phonon module</flag>

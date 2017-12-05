@@ -10,7 +10,7 @@ SRC_URI="http://neverball.org/${P}.tar.gz"
 
 LICENSE="GPL-2+ IJG"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="nls"
 RESTRICT="test"
 

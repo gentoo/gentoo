@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-EGIT_REPO_URI="git://github.com/waffle-gl/waffle.git"
+EGIT_REPO_URI="https://github.com/waffle-gl/${PN}.git"
 
 if [[ ${PV} = 9999* ]]; then
 	GIT_ECLASS="git-2"
@@ -17,7 +17,7 @@ HOMEPAGE="https://people.freedesktop.org/~chadversary/waffle/"
 if [[ $PV = 9999* ]]; then
 	KEYWORDS=""
 else
-	SRC_URI="https://people.freedesktop.org/~chadversary/waffle/files/release/${P}/${P}.tar.xz"
+	SRC_URI="https://people.freedesktop.org/~chadversary/${PN}/files/release/${P}/${P}.tar.xz"
 	KEYWORDS="amd64 arm x86"
 fi
 

@@ -1,0 +1,11 @@
+diff --git a/libglusterfs/src/compat.h b/libglusterfs/src/compat.h
+index 1d0ac27e8..b1a7c0a93 100644
+--- a/libglusterfs/src/compat.h
++++ b/libglusterfs/src/compat.h
+@@ -510,6 +510,7 @@ int gf_mkostemp (char *tmpl, int suffixlen, int flags);
+ /* Use run API, see run.h */
+ #include <stdlib.h> /* system(), mkostemp() */
+ #include <stdio.h> /* popen() */
++#include <sys/sysmacros.h>
+ #pragma GCC poison system mkostemp popen
+ #endif

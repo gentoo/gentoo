@@ -1,11 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=5
 
 inherit php-pear-r1
 
-DESCRIPTION="Find out the minimum version and the extensions required for a piece of code to run"
+DESCRIPTION="Determine minimum version and the extensions required for a piece of code to run"
 
 LICENSE="PHP-3.01"
 SLOT="0"

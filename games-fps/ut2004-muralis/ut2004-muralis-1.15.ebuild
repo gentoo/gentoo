@@ -13,7 +13,7 @@ HOMEPAGE="http://www.moddb.com/mods/muralis"
 SRC_URI="https://ut.rushbase.net/beyondunreal/mods/muralis-v${PV}-zip.zip"
 
 LICENSE="freedist"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="dedicated opengl"
 
 src_prepare() {

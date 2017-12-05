@@ -1,0 +1,25 @@
+From af898e9117b475230e793fa4fd75274145ecf25d Mon Sep 17 00:00:00 2001
+From: Heiko Becker <heirecka@exherbo.org>
+Date: Wed, 22 Nov 2017 21:29:20 +0100
+Subject: [PATCH] Fix build with --disable-webui
+
+"app/application.cpp:108:7: error: class 'Application' does not have
+any field named 'm_webui'"
+---
+ src/app/application.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/app/application.cpp b/src/app/application.cpp
+index 3b0d4d78de..b3221efa88 100644
+--- a/src/app/application.cpp
++++ b/src/app/application.cpp
+@@ -105,7 +105,9 @@ Application::Application(const QString &id, int &argc, char **argv)
+     , m_running(false)
+     , m_shutdownAct(ShutdownDialogAction::Exit)
+     , m_commandLineArgs(parseCommandLine(this->arguments()))
++#ifndef DISABLE_WEBUI
+     , m_webui(nullptr)
++#endif
+ {
+     qRegisterMetaType<Log::Msg>("Log::Msg");
+ 

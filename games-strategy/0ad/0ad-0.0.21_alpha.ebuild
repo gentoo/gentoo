@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ inherit eutils wxwidgets toolchain-funcs gnome2-utils python-any-r1
 
 MY_P=0ad-${PV/_/-}
 DESCRIPTION="A free, real-time strategy game"
-HOMEPAGE="http://play0ad.com/"
+HOMEPAGE="https://play0ad.com/"
 SRC_URI="mirror://sourceforge/zero-ad/${MY_P}-unix-build.tar.xz"
 
 LICENSE="GPL-2 LGPL-2.1 MIT CC-BY-SA-3.0 ZLIB"

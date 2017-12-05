@@ -1,0 +1,15 @@
+# load the tun module
+VDE_MODPROBE_TUN="yes"
+
+# virtual tap networking device to be used for vde
+VDE_TAP="tap0"
+
+# The group that will have access to the VDE control socket.
+VDE_GROUP="qemu"
+
+# VDE socket location (default: /run/${RC_SVCNAME}.ctl)
+VDE_SOCKET=""
+
+# Additional options passed to the vde_switch daemon.
+#VDE_OPTS=""
+VDE_OPTS=""

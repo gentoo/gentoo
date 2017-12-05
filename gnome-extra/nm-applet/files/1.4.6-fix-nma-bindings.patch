@@ -1,0 +1,38 @@
+From 58e47dc92d38974141e1053b25cae02d7c8414b0 Mon Sep 17 00:00:00 2001
+From: Thomas Haller <thaller@redhat.com>
+Date: Tue, 7 Mar 2017 09:43:03 +0100
+Subject: [PATCH] libnma/pygobject: libnma/NMA must use libnm/NM instead of
+ legacy libraries
+
+libnma uses libnm, and not libnm-util/libnm-glib. Hence, the python bindings
+must load "NM" and not "NMClient"/"NetworkManager".
+
+As it was, the generated bindings for libnma were unusable and loading
+them would fail with
+
+    libnm-ERROR **: libnm-util symbols detected; Mixing libnm with libnm-util/libnm-glib is not supported
+
+https://bugzilla.gnome.org/show_bug.cgi?id=779153
+
+Fixes: 76a12beac4e8692f30071169e11e2b521ec4eab7
+(cherry picked from commit 7a59d41e5f6666d0da51f1f7aae7518befdb1182)
+---
+ Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index a57e15f..e76c9ba 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -532,7 +532,7 @@ pkgconfig_DATA += src/libnma/libnma.pc
+ 
+ if HAVE_INTROSPECTION
+ src/libnma/NMA-1.0.gir: src/libnma/libnma.la
+-src_libnma_NMA_1_0_gir_INCLUDES = NMClient-1.0 NetworkManager-1.0 Gtk-3.0
++src_libnma_NMA_1_0_gir_INCLUDES = NM-1.0 Gtk-3.0
+ src_libnma_NMA_1_0_gir_EXPORT_PACKAGES = libnma
+ src_libnma_NMA_1_0_gir_CFLAGS = $(src_libnma_libnma_la_CFLAGS)
+ src_libnma_NMA_1_0_gir_LIBS = src/libnma/libnma.la
+-- 
+2.10.1
+

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby21 ruby22"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_RECIPE_TEST="cucumber"
@@ -16,7 +16,7 @@ DESCRIPTION="Cucumber steps for driving out command line applications"
 HOMEPAGE="https://github.com/cucumber/aruba"
 LICENSE="MIT"
 
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~x86"
 SLOT="0"
 IUSE=""
 
@@ -24,7 +24,7 @@ DEPEND="${DEPEND} test? ( sys-devel/bc )"
 RDEPEND="${RDEPEND}"
 
 ruby_add_rdepend "
-	>=dev-ruby/childprocess-0.5.6 =dev-ruby/childprocess-0.5*
+	>=dev-ruby/childprocess-0.5.6 =dev-ruby/childprocess-0*
 	>=dev-ruby/contracts-0.9:0
 	>=dev-ruby/rspec-expectations-2.99:2
 	>=dev-util/cucumber-1.3.19"
@@ -42,8 +42,10 @@ all_ruby_prepare() {
 	rm -f features/support/simplecov_setup.rb || die
 	sed -i -e '1i require "time"' spec/spec_helper.rb || die
 
-	# Remove references to git ls-files.
-	sed -i -e '/git ls-files/d' aruba.gemspec || die
+	# Remove references to git ls-files and fix childprocess dependency
+	sed -i -e '/git ls-files/d' \
+		-e '/childprocess/ s/0.5.6/0.5/' \
+		aruba.gemspec || die
 
 	# Avoid scenarios making broken assumptions on ${HOME}
 	sed -i -e '/Scenario: Use ~ in path/i @wip' \

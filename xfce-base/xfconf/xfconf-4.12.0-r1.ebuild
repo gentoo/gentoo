@@ -4,8 +4,8 @@
 EAPI=5
 inherit xfconf
 
-DESCRIPTION="A simple client-server configuration storage and query system for the Xfce desktop environment"
-HOMEPAGE="http://www.xfce.org/projects/"
+DESCRIPTION="A configuration management system for Xfce"
+HOMEPAGE="https://docs.xfce.org/xfce/xfconf/start"
 SRC_URI="mirror://xfce/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"

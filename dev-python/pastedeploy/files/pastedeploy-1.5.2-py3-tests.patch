@@ -1,0 +1,19 @@
+# HG changeset patch
+# User aodag <aodagx@gmail.com>
+# Date 1457425517 -32400
+# Node ID 6aeb907ef222ed071b149f8b07b14f0a61e45dbe
+# Parent  0c2ea2f675bc77f2ee2a889c0e83d61d026fbc7b
+use explicit bytes literal
+
+diff --git a/tests/test_config_middleware.py b/tests/test_config_middleware.py
+--- a/tests/test_config_middleware.py
++++ b/tests/test_config_middleware.py
+@@ -10,7 +10,7 @@
+ 
+ def app_with_exception(environ, start_response):
+     def cont():
+-        yield "something"
++        yield b"something"
+         raise Bug
+     start_response('200 OK', [('Content-type', 'text/html')])
+     return cont()

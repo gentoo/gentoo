@@ -6,6 +6,7 @@
 		<flag name="addbookmarks">Automatically add incoming urls to bookmarks.</flag>
 		<flag name="autoreplace">Automatically replace selected text</flag>
 		<flag name="contactnotes">Enables writing personal notes for contacts.</flag>
+		<flag name="cryptography">Enable cryptography plugin</flag>
 		<flag name="highlight">Allows you to specify highlights on specific events.</flag>
 		<flag name="history">Enables saving chat history.</flag>
 		<flag name="latex">Embed latex formatted text into messages.</flag>

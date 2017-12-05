@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -6,7 +6,10 @@ inherit linux-info eutils
 
 DESCRIPTION="the low-level library for netfilter related kernel/userspace communication"
 HOMEPAGE="http://www.netfilter.org/projects/libnfnetlink/"
-SRC_URI="http://www.netfilter.org/projects/${PN}/files/${P}.tar.bz2"
+PATCH_BLOB=04aef8a4dedf267dd5744afb134ef8046e77f613
+PATCH_FN=${PATCH_BLOB}-musl-fix-includes.patch
+SRC_URI="http://www.netfilter.org/projects/${PN}/files/${P}.tar.bz2
+		 https://git.alpinelinux.org/cgit/aports/plain/main/libnfnetlink/musl-fix-includes.patch -> ${PATCH_FN}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -14,6 +17,11 @@ KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86
 IUSE="static-libs"
 
 DOCS=( README )
+PATCHES=( "${DISTDIR}/${PATCH_FN}" )
+
+src_prepare() {
+	epatch "${PATCHES[@]}"
+}
 
 pkg_setup() {
 	linux-info_pkg_setup

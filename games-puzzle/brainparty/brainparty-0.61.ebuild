@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ SRC_URI="https://launchpad.net/brainparty/trunk/${PV}/+download/${PN}${PV}.tar.g
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="media-libs/libsdl[sound,opengl,video]
@@ -34,7 +34,8 @@ src_prepare() {
 		main.cpp || die
 	epatch \
 		"${FILESDIR}"/${P}-savegame.patch \
-		"${FILESDIR}"/${P}-gcc49.patch
+		"${FILESDIR}"/${P}-gcc49.patch \
+		"${FILESDIR}"/${P}-gnu_cxx-hash.patch
 
 }
 

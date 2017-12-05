@@ -1,7 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
+
+inherit opam
 
 DESCRIPTION="Functional reactive programming with incremental changes in data structures"
 HOMEPAGE="https://github.com/ocsigen/reactiveData"
@@ -20,11 +22,9 @@ LICENSE="LGPL-3-with-linking-exception"
 SLOT="0/${PV}"
 IUSE="+ocamlopt"
 
-RDEPEND=">=dev-lang/ocaml-3.12:=[ocamlopt?]
-	dev-ml/react:="
+RDEPEND="dev-ml/react:="
 DEPEND="${RDEPEND}
 	dev-ml/findlib
-	dev-ml/opam
 	dev-ml/ocamlbuild
 "
 
@@ -33,13 +33,4 @@ src_compile() {
 		native=$(usex ocamlopt true false) \
 		native-dynlink=$(usex ocamlopt true false) \
 		|| die
-}
-
-src_install() {
-	opam-installer \
-		--prefix="${ED}/usr" \
-		--libdir="${D}/$(ocamlc -where)" \
-		--docdir="${ED}/usr/share/doc/${PF}" \
-		|| die
-	dodoc README.md
 }

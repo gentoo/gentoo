@@ -7,7 +7,7 @@ EAUTORECONF="yes"
 inherit xfconf
 
 DESCRIPTION="Archive plug-in for the Thunar filemanager"
-HOMEPAGE="http://goodies.xfce.org/projects/thunar-plugins/thunar-archive-plugin"
+HOMEPAGE="https://goodies.xfce.org/projects/thunar-plugins/thunar-archive-plugin"
 SRC_URI="mirror://xfce/src/thunar-plugins/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="LGPL-2"

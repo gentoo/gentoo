@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby22 ruby23 ruby24"
 
 inherit ruby-ng toolchain-funcs
 
@@ -32,7 +32,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 ruby_add_rdepend "dev-ruby/archive-tar-minitar"
-ruby_add_bdepend "dev-ruby/rake"
+ruby_add_bdepend "dev-ruby/rake doc? ( dev-ruby/rdoc )"
 
 all_ruby_unpack() {
 	if [[ ${PV} == "9999" ]]; then

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -10,8 +10,8 @@ inherit autotools eutils
 MY_P="${PN}"-20160906.853cea9
 
 DESCRIPTION="A utility for tracking down wasted disk space"
-HOMEPAGE="http://www.chiark.greenend.org.uk/~sgtatham/agedu/"
-SRC_URI="http://www.chiark.greenend.org.uk/~sgtatham/${PN}/${MY_P}.tar.gz -> ${MY_P}.tar.gz"
+HOMEPAGE="https://www.chiark.greenend.org.uk/~sgtatham/agedu/"
+SRC_URI="https://www.chiark.greenend.org.uk/~sgtatham/agedu/${MY_P}.tar.gz -> ${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
@@ -20,7 +20,6 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc ipv6"
 
 DEPEND="doc? ( app-doc/halibut )"
-RDEPEND="${DEPEND}"
 
 src_prepare() {
 	epatch "${FILESDIR}/${PN}-r9671-fix-automagic.patch"

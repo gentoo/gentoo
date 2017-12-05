@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/btanks/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND=">=dev-lang/lua-5.1:0
@@ -28,7 +28,8 @@ src_prepare() {
 	rm -rf sdlx/gfx
 	epatch "${FILESDIR}"/${P}-scons-blows.patch \
 		"${FILESDIR}"/${P}-gcc46.patch \
-		"${FILESDIR}"/${P}-gcc47.patch
+		"${FILESDIR}"/${P}-gcc47.patch \
+		"${FILESDIR}"/${P}-gcc6.patch
 }
 
 src_compile() {

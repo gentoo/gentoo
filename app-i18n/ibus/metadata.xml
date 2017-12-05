@@ -6,14 +6,14 @@
     <name>Cjk</name>
   </maintainer>
   <longdescription lang="en">
-IBus means Intelligent Input Bus. It is a new input framework for Linux OS. It provides
-full featured and user friendly input method user interface. It also may help
-developers to develop input method easily.
-</longdescription>
+    IBus is a Intelligent Input Bus. It is a new input framework for Linux OS.
+    It provides full featured and user friendly input method user interface. It
+    also may help developers to develop input method easily.
+  </longdescription>
   <use>
+    <flag name="emoji">Enable support for Emoji</flag>
     <flag name="gconf">Enable support for <pkg>gnome-base/gconf</pkg></flag>
-    <flag name="gtk3">Enable support for gtk+3</flag>
-    <flag name="deprecated">install the deprecated ibus python library</flag>
+    <flag name="gtk2">Enable support for <pkg>x11-libs/gtk+</pkg>:2</flag>
   </use>
   <upstream>
     <remote-id type="cpe">cpe:/a:ibus_project:ibus</remote-id>

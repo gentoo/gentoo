@@ -3,7 +3,7 @@
 
 EAPI=6
 
-EGIT_REPO_URI="git://github.com/anholt/libepoxy.git"
+EGIT_REPO_URI="https://github.com/anholt/${PN}.git"
 
 if [[ ${PV} = 9999* ]]; then
 	GIT_ECLASS="git-r3"

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,8 +15,8 @@ SRC_URI="mirror://gentoo/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
-
 IUSE="mysql python iconv mpd"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # The following array holds the USE_EXPANDed keywords
 IUSE_LCD_DEVICES=(beckmannegle bwct cfontz ncurses cwlinux
@@ -48,10 +48,10 @@ DEPEND="
 	lcd_devices_usbhub?   ( =virtual/libusb-0* )
 	lcd_devices_usblcd?   ( =virtual/libusb-0* )
 	lcd_devices_luise?    ( dev-libs/luise-bin )
-	lcd_devices_ncurses?  ( sys-libs/ncurses )
+	lcd_devices_ncurses?  ( sys-libs/ncurses:0= )
 	lcd_devices_noritake? ( media-libs/gd )
 	lcd_devices_t6963?    ( media-libs/gd )
-	lcd_devices_png?      ( media-libs/libpng media-libs/gd )
+	lcd_devices_png?      ( media-libs/libpng:0= media-libs/gd )
 	lcd_devices_X?        ( x11-libs/libX11  media-libs/gd )
 	lcd_devices_serdisplib? ( dev-libs/serdisplib  media-libs/gd )
 "

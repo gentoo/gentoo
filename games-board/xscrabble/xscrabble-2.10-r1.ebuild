@@ -12,7 +12,7 @@ SRC_URI="ftp://ftp.ac-grenoble.fr/ge/educational_games/${P}.tgz
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="l10n_fr"
 
 RDEPEND="x11-libs/libXaw

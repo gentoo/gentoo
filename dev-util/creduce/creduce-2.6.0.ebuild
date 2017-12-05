@@ -7,10 +7,10 @@ EAPI="6"
 inherit cmake-utils
 
 DESCRIPTION="C-Reduce - a plugin-based C program reducer"
-HOMEPAGE="http://embed.cs.utah.edu/creduce/"
-SRC_URI="http://embed.cs.utah.edu/creduce/${P}.tar.gz"
+HOMEPAGE="https://embed.cs.utah.edu/creduce/"
+SRC_URI="https://embed.cs.utah.edu/creduce/${P}.tar.gz"
 
-LICENSE="creduce"
+LICENSE="UoI-NCSA"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tupone@gentoo.org</email>
+		<name>Tupone Alfredo</name>
+	</maintainer>
+	<use>
+		<flag name="gnat_2016">Compile with dev-lang/gnat-gpl-2016</flag>
+		<flag name="gnat_2017">Compile with dev-lang/gnat-gpl-2017</flag>
+	</use>
+	<longdescription lang="en">
+		AWS is a complete framework to develop Web based applications. The main part
+		of the framework is the embedded Web server. This small yet powerful Web
+		server can be embedded into your application so your application will be
+		able to talk with a standard Web browser like Microsoft Internet Explorer or
+		Firefox for example. Around this Web server a lot of services have been
+		developed.
+	</longdescription>
+</pkgmetadata>

@@ -1,0 +1,60 @@
+commit 5014a8023b42762052d6417ebbc0cd2adb1fda90
+Author: Sebastien Vincent <sebastien.vincent@cppextrem.com>
+Date:   Sat Aug 5 20:10:55 2017 +0200
+
+    Fixes compilation with g++-7.
+
+diff --git a/libs/asiotap/src/posix/posix_tap_adapter.cpp b/libs/asiotap/src/posix/posix_tap_adapter.cpp
+index 71377cee..cdd7abf3 100644
+--- a/libs/asiotap/src/posix/posix_tap_adapter.cpp
++++ b/libs/asiotap/src/posix/posix_tap_adapter.cpp
+@@ -206,6 +206,7 @@ namespace asiotap
+ 						{
+ 							result[name] = name;
+ 						}
++						break;
+ 					}
+ 					case tap_adapter_layer::ip:
+ 					{
+@@ -213,6 +214,7 @@ namespace asiotap
+ 						{
+ 							result[name] = name;
+ 						}
++						break;
+ 					}
+ 				}
+ 			}
+diff --git a/libs/netlinkplus/include/netlinkplus/endpoint.hpp b/libs/netlinkplus/include/netlinkplus/endpoint.hpp
+index 3503cae3..74fb7e1b 100644
+--- a/libs/netlinkplus/include/netlinkplus/endpoint.hpp
++++ b/libs/netlinkplus/include/netlinkplus/endpoint.hpp
+@@ -44,6 +44,8 @@
+ 
+ #pragma once
+ 
++#include <cstring>
++
+ #include <boost/asio.hpp>
+ 
+ #include <linux/netlink.h>
+@@ -125,17 +127,17 @@ namespace netlinkplus
+ 
+ 			friend bool operator==(const netlink_endpoint& lhs, const netlink_endpoint& rhs)
+ 			{
+-				return (lhs.m_sockaddr == rhs.m_sockaddr);
++				return (std::memcmp(&lhs.m_sockaddr, &rhs.m_sockaddr, sizeof(sockaddr_nl)) == 0);
+ 			}
+ 
+ 			friend bool operator!=(const netlink_endpoint& lhs, const netlink_endpoint& rhs)
+ 			{
+-				return (lhs.m_sockaddr != rhs.m_sockaddr);
++				return (std::memcmp(&lhs.m_sockaddr, &rhs.m_sockaddr, sizeof(sockaddr_nl)) != 0);
+ 			}
+ 
+ 			friend bool operator<(const netlink_endpoint& lhs, const netlink_endpoint& rhs)
+ 			{
+-				return (lhs.m_sockaddr < rhs.m_sockaddr);
++				return (std::memcmp(&lhs.m_sockaddr, &rhs.m_sockaddr, sizeof(sockaddr_nl)) < 0);
+ 			}
+ 
+ 		private:

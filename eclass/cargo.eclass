@@ -29,12 +29,18 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 # @DESCRIPTION:
 # Generates the URIs to put in SRC_URI to help fetch dependencies.
 cargo_crate_uris() {
-	for crate in $*; do
-		local name version url
+	local crate
+	for crate in "$@"; do
+		local name version url pretag
 		name="${crate%-*}"
 		version="${crate##*-}"
+		pretag="[a-zA-Z]+"
+		if [[ $version =~ $pretag ]]; then
+			version="${name##*-}-${version}"
+			name="${name%-*}"
+		fi
 		url="https://crates.io/api/v1/crates/${name}/${version}/download -> ${crate}.crate"
-		echo $url
+		echo "${url}"
 	done
 }
 
@@ -47,7 +53,7 @@ cargo_src_unpack() {
 	mkdir -p "${ECARGO_VENDOR}" || die
 	mkdir -p "${S}" || die
 
-	local archive
+	local archive shasum pkg
 	for archive in ${A}; do
 		case "${archive}" in
 			*.crate)
@@ -93,7 +99,7 @@ cargo_src_unpack() {
 cargo_gen_config() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	cat <<- EOF > ${ECARGO_HOME}/config
+	cat <<- EOF > "${ECARGO_HOME}/config"
 	[source.gentoo]
 	directory = "${ECARGO_VENDOR}"
 
@@ -125,7 +131,7 @@ cargo_src_install() {
 		|| die "cargo install failed"
 	rm -f "${D}/usr/.crates.toml"
 
-	[ -d "${S}/man" ] && doman "${S}/man"
+	[ -d "${S}/man" ] && doman "${S}/man" || return 0
 }
 
 fi

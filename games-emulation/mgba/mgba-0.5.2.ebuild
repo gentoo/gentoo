@@ -11,7 +11,7 @@ SRC_URI="https://github.com/${PN}-emu/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MPL-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="ffmpeg imagemagick opengl qt5 +sdl"
 REQUIRED_USE="|| ( qt5 sdl )
 		qt5? ( opengl )"
@@ -33,8 +33,12 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	>=dev-util/cmake-3.2.2"
 
+PATCHES=(
+	"${FILESDIR}/${P}-imagemagick7.patch"
+)
+
 src_prepare() {
-	default
+	cmake-utils_src_prepare
 
 	# Get rid of any bundled stuff we don't want
 	for pkg in libpng lzma zlib ; do

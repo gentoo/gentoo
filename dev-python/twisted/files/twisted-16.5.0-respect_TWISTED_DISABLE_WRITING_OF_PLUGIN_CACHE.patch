@@ -1,0 +1,11 @@
+--- src/twisted/plugin.py
++++ src/twisted/plugin.py
+@@ -180,7 +180,7 @@
+             if pluginKey not in existingKeys:
+                 del dropinDotCache[pluginKey]
+                 needsWrite = True
+-        if needsWrite:
++        if needsWrite and os.environ.get("TWISTED_DISABLE_WRITING_OF_PLUGIN_CACHE") is None:
+             try:
+                 dropinPath.setContent(pickle.dumps(dropinDotCache))
+             except:

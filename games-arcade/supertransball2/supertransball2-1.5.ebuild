@@ -15,7 +15,7 @@ SRC_URI="http://braingames.bugreport.nl/stransball2/${FILE}.zip
 	mirror://debian/pool/main/s/${PN}/${DEBIAN_PATCH}.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~x86-fbsd"
+KEYWORDS="~x86 ~x86-fbsd"
 IUSE=""
 
 RDEPEND="media-libs/libsdl[sound,video]

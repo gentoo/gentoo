@@ -1,0 +1,25 @@
+move app-vim/llvm-vim sys-devel/llvm-common
+move dev-libs/kirigami kde-frameworks/kirigami
+slotmove kde-frameworks/kirigami 2 5
+move app-i18n/libtomoe-gtk app-i18n/tomoe-gtk
+move dev-libs/libchewing app-i18n/libchewing
+move media-gfx/pydot dev-python/pydot
+move x11-plugins/wmMoonClock x11-plugins/wmmoonclock
+move dev-python/crossbar net-misc/crossbar
+slotmove app-i18n/fcitx 0 4
+slotmove app-i18n/fcitx-anthy 0 4
+slotmove app-i18n/fcitx-chewing 0 4
+slotmove app-i18n/fcitx-cloudpinyin 0 4
+slotmove app-i18n/fcitx-configtool 0 4
+slotmove app-i18n/fcitx-hangul 0 4
+slotmove app-i18n/fcitx-libpinyin 0 4
+slotmove app-i18n/fcitx-m17n 0 4
+slotmove app-i18n/fcitx-qt5 0 4
+slotmove app-i18n/fcitx-rime 0 4
+slotmove app-i18n/fcitx-sayura 0 4
+slotmove app-i18n/fcitx-sunpinyin 0 4
+slotmove app-i18n/fcitx-table-extra 0 4
+slotmove app-i18n/fcitx-unikey 0 4
+slotmove app-i18n/kcm-fcitx 4 4-plasma4
+slotmove app-i18n/kcm-fcitx 5 4-plasma5
+move dev-libs/dfxml app-forensics/dfxml

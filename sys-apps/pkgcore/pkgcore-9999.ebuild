@@ -11,7 +11,7 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 else
 	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
-	SRC_URI="https://github.com/pkgcore/${PN}/releases/download/v${PV}/${P}.tar.gz"
+	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 fi
 
 DESCRIPTION="a framework for package management"
@@ -26,7 +26,12 @@ if [[ ${PV} == *9999 ]] ; then
 else
 	SPHINX="doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
 fi
-RDEPEND="=dev-python/snakeoil-9999[${PYTHON_USEDEP}]"
+RDEPEND="$(python_gen_cond_dep 'dev-python/pyblake2[${PYTHON_USEDEP}]' python{2_7,3_4,3_5})"
+if [[ ${PV} == *9999 ]]; then
+	RDEPEND+=" =dev-python/snakeoil-9999[${PYTHON_USEDEP}]"
+else
+	RDEPEND+=" >=dev-python/snakeoil-0.7.5[${PYTHON_USEDEP}]"
+fi
 DEPEND="${RDEPEND}
 	${SPHINX}
 	dev-python/setuptools[${PYTHON_USEDEP}]

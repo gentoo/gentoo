@@ -19,4 +19,7 @@
 		<flag name="qt4">Install input method module for Qt 4</flag>
 		<flag name="table">Install table input methods for Simplified Chinese</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">fcitx/fcitx</remote-id>
+	</upstream>
 </pkgmetadata>

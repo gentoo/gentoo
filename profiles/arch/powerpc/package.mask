@@ -13,7 +13,3 @@ x11-themes/smplayer-themes
 # Alexey Shvetsov <alexxy@gentoo.org> (21 May 2012)
 # Need deps pecl-apc and pecl-uploadprogress bug #416897
 >=www-apps/drupal-7.14
-
-# Doug Goldstein <cardoe@gentoo.org> (11 Jan 2013)
-# Masked due to depends on bug #438780
->=app-emulation/qemu-1.2.0

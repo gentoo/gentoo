@@ -5,6 +5,9 @@
 -x86
 -abi_x86_32
 
+# ssp is broken on x86 musl.  This is critical for gcc-6.
+ssp
+
 # unmask all SIMD assembler flags
 -cpu_flags_x86_3dnow
 -cpu_flags_x86_3dnowext

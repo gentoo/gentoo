@@ -4,8 +4,8 @@
 EAPI=5
 inherit xfconf
 
-DESCRIPTION="A flexible, easy-to-use configuration management system for Xfce"
-HOMEPAGE="http://www.xfce.org/projects/"
+DESCRIPTION="A configuration management system for Xfce"
+HOMEPAGE="https://www.xfce.org/projects/"
 SRC_URI="mirror://xfce/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"

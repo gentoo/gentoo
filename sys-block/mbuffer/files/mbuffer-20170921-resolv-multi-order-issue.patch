@@ -1,0 +1,23 @@
+work around "multi off" in /etc/host.conf and "::1 localhost"
+*not* being the *first* "localhost" entry in /etc/hosts
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -86,7 +86,7 @@ test2: test.md5
+ 	./mbuffer -q -I :8000 -o $@.tar -o - | openssl md5 > $@.md5 & \
+ 		sleep 1; \
+ 		rm -f $@.tar; \
+-		./mbuffer -i test.tar -o /dev/null -O localhost:8000 -H; \
++		./mbuffer -i test.tar -o /dev/null -4 -O 127.0.0.1:8000 -H; \
+ 		wait
+ 	sync
+ 	diff $@.md5 test.md5
+@@ -101,7 +101,7 @@ test3: test.md5
+ 	./mbuffer -q -6 -I :8000 | openssl md5 > $@.md5 & \
+ 		sleep 1; \
+ 		rm -f $@.tar; \
+-		./mbuffer -i test.tar -o /dev/null -6 -O ip6-localhost:8000 -o $@.tar -H; \
++		./mbuffer -i test.tar -o /dev/null -6 -O ::1:8000 -o $@.tar -H; \
+ 		wait
+ 	sync
+ 	diff $@.md5 test.md5

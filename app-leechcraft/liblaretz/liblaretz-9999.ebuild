@@ -4,9 +4,9 @@
 EAPI=6
 
 DESCRIPTION="Shared library to be used by the Laretz sync server and its clients"
-HOMEPAGE="http://leechcraft.org"
+HOMEPAGE="https://leechcraft.org"
 
-EGIT_REPO_URI="git://github.com/0xd34df00d/laretz.git"
+EGIT_REPO_URI="https://github.com/0xd34df00d/laretz.git"
 EGIT_PROJECT="laretz"
 
 inherit cmake-utils git-r3

@@ -1,0 +1,72 @@
+DXX-REBIRTH LICENSE
+====================
+The original Descent source release is copyright by Parallax and subject 
+to the Parallax license below.  Contributions from the D1X/D2X ("DXX") 
+and D1X-Rebirth/D2X-Rebirth ("Rebirth") projects are copyright their 
+respective contributors.  The DXX and Rebirth contributors grant you 
+permission to convey their work, with or without modifications, pursuant 
+to the terms of the GNU General Public License, version 3 ("GPLv3").  As 
+a special exception, in recognition of the restrictions imposed by the 
+original Parallax license, you are excused from GPLv3 requirements that 
+conflict with the restrictions of the original Parallax license, but 
+only to the extent that such excuse is required to prevent a conflict 
+between the terms of the original Parallax license and the GNU General 
+Public License v3.  This special exception is an "Additional permission" 
+as defined by section 7 of the GNU General Public License v3.  All 
+provisions of the GPLv3 that can be satisfied without violating the 
+original Parallax license must be satisfied to the greatest extent 
+possible without violating the original Parallax license.  Failure to 
+satisfy any non-excused GPLv3 provision is expressly prohibited under 
+this license, and is therefore void and is handled pursuant to GPLv3 
+section 8 "Termination.", exactly as would occur for a non-permitted 
+propagation or modification of a GPLv3 covered work that had no special 
+exceptions.
+
+For purposes of this document, "copyright by Parallax" shall include any 
+subsequent entities to which some or all of the Parallax copyrights were 
+transferred, without regard to how the transfer occurred.  In the event 
+that you are permitted to convey the material originally copyright by 
+Parallax under terms other than the original Parallax license below, 
+whether due to a general relicensing by the appropriate copyright 
+holders, due to special permission from the appropriate copyright 
+holders, or any other circumstance, the contributions from the DXX and 
+Rebirth projects remain subject to the GNU General Public License, 
+version 3.  The special exception described in the preceding paragraph 
+excuses only conflicts with the original Parallax license.  If a 
+subsequent license to the Parallax work conflicts with the GPLv3 in any 
+way that the original Parallax license did not conflict, then such new 
+conflicts are not excused.  As detailed in GPLv3 section 12 "No 
+Surrender of Others' Freedom.", if you cannot simultaneously satisfy the 
+non-excused terms of the GPLv3 and all other conditions imposed on you, 
+then you may not convey the GPLv3 covered work at all.
+
+Additionally, if you are permitted to convey the material originally 
+copyright by Parallax under terms other than the original Parallax 
+license, and such new permission allows you to comply with the GPLv3 to 
+a greater extent than the original Parallax license allowed, and you 
+convey the covered work or a portion thereof, then such conveyance must 
+comply with all GPLv3 terms which can be satisfied without violating the 
+permission under which you convey the material originally copyright by 
+Parallax.
+
+
+See GPL-3.txt for further details on the GPLv3.
+For project history and its contributors, please visit the 
+DXX-Rebirth GIT repository at https://github.com/dxx-rebirth/dxx-rebirth/
+
+
+
+PARALLAX LICENSE
+================
+THE COMPUTER CODE CONTAINED HEREIN IS THE SOLE PROPERTY OF PARALLAX
+SOFTWARE CORPORATION ("PARALLAX").  PARALLAX, IN DISTRIBUTING THE CODE TO
+END-USERS, AND SUBJECT TO ALL OF THE TERMS AND CONDITIONS HEREIN, GRANTS A
+ROYALTY-FREE, PERPETUAL LICENSE TO SUCH END-USERS FOR USE BY SUCH END-USERS
+IN USING, DISPLAYING,  AND CREATING DERIVATIVE WORKS THEREOF, SO LONG AS
+SUCH USE, DISPLAY OR CREATION IS FOR NON-COMMERCIAL, ROYALTY OR REVENUE
+FREE PURPOSES.  IN NO EVENT SHALL THE END-USER USE THE COMPUTER CODE
+CONTAINED HEREIN FOR REVENUE-BEARING PURPOSES.  THE END-USER UNDERSTANDS
+AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
+COPYRIGHT 1993-1998 PARALLAX SOFTWARE CORPORATION.  ALL RIGHTS RESERVED.
+
+We make no warranties as to the usability or correctness of this code.

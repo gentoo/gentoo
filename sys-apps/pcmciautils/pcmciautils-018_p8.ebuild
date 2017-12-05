@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -8,7 +8,7 @@ DEB_REV=${PV#*_p}
 MY_PV=${PV%_p*}
 
 DESCRIPTION="PCMCIA userspace utilities for Linux"
-HOMEPAGE="http://packages.qa.debian.org/pcmciautils"
+HOMEPAGE="https://packages.qa.debian.org/pcmciautils"
 SRC_URI="mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${MY_PV}.orig.tar.gz
 	mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${MY_PV}-${DEB_REV}.debian.tar.gz"
 

@@ -10,7 +10,7 @@ SRC_URI="mirror://gentoo/rune-all-0.2.tar.bz2"
 
 LICENSE="LOKI-EULA"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 RESTRICT="strip"
 

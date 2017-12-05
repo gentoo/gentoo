@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_4} pypy )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
 
 inherit distutils-r1
 
@@ -18,7 +18,10 @@ IUSE=""
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND=""
 
+RESTRICT="test"
+
 python_test() {
-	# and it fails almost all;https://github.com/kennethreitz/envoy/issues/58
-	"${PYTHON}" test_envoy.py
+	# These unit tests fail, see the following issue:
+	# https://github.com/kennethreitz/envoy/issues/58
+	"${PYTHON}" test_envoy.py || die
 }

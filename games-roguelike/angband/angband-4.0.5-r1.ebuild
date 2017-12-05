@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ SRC_URI="http://rephial.org/downloads/${MAJOR_PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="ncurses sdl +sound X"
 
 RDEPEND="X? ( x11-libs/libX11 )
@@ -26,6 +26,8 @@ RDEPEND="X? ( x11-libs/libX11 )
 DEPEND="${RDEPEND}
 	dev-python/docutils
 	virtual/pkgconfig"
+
+PATCHES=("${FILESDIR}"/${P}-pie-gcc.patch)
 
 src_prepare() {
 	default
@@ -59,7 +61,7 @@ src_configure() {
 
 	ac_cv_path_NCURSES_CONFIG="pkg-config ncursesw" \
 	econf \
-		--bindir=/usr/bin \
+		--bindir="${EPREFIX}"/usr/bin \
 		--with-private-dirs \
 		$(use_enable X x11) \
 		$(use_enable sdl) \

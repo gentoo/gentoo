@@ -1,11 +1,11 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
 
 inherit eutils
 
-DESCRIPTION="This program helps manage the verification of checksums related to Shorten and FLAC files"
+DESCRIPTION="Manage the verification of checksums related to Shorten and FLAC files"
 HOMEPAGE="https://sourceforge.net/projects/shnflacverify/"
 SRC_URI="http://downloads.sourceforge.net/project/${PN}/${PN}/${P}/${P}.zip"
 

@@ -26,6 +26,7 @@ RDEPEND="|| ( app-editors/nano
 	app-editors/jed
 	app-editors/joe
 	app-editors/jove
+	app-editors/kakoune
 	app-editors/le
 	app-editors/levee
 	app-editors/lpe
@@ -40,6 +41,7 @@ RDEPEND="|| ( app-editors/nano
 	app-editors/vile
 	app-editors/vim
 	app-editors/gvim
+	app-editors/vis
 	app-editors/xemacs
 	app-editors/zile
 	app-misc/mc[edit]

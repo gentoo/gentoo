@@ -14,7 +14,7 @@ ARCHIVE_URI="https://${EGO_PN%/*}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
 
 DESCRIPTION="Tools for browsing and manipulating docker registries"
-HOMEPAGE="https://github.com/jessfraz/reg"
+HOMEPAGE="https://github.com/mayflower/docker-ls"
 SRC_URI="${ARCHIVE_URI}
 	${EGO_VENDOR_URI}"
 LICENSE="MIT"

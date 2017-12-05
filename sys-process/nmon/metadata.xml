@@ -2,12 +2,16 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>marc.popp@sunny-computing.de</email>
-		<name>Marc Popp</name>
-		<description>Maintainer. Assign bugs to him</description>
+		<email>nelo@wallus.de</email>
+		<name>Nelo-Thara Wallus</name>
+		<description>Proxied by Polynomial-C</description>
 	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
+	<maintainer type="person">
+		<email>polynomial-c@gentoo.org</email>
+		<name>Lars Wendler</name>
+		<description>Proxy maintainer for Nelo</description>
 	</maintainer>
+	<upstream>
+		<remote-id type="sourceforge">nmon</remote-id>
+	</upstream>
 </pkgmetadata>

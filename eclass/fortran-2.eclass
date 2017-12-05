@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: fortran-2.eclass
@@ -29,7 +29,7 @@
 inherit eutils toolchain-funcs
 
 case ${EAPI:-0} in
-	0|1|2|3|4|5|6) EXPORT_FUNCTIONS pkg_setup ;;
+	4|5|6) EXPORT_FUNCTIONS pkg_setup ;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 
@@ -275,19 +275,9 @@ _fortran-2_pkg_setup() {
 fortran-2_pkg_setup() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	case ${EAPI:-0} in
-		0|1|2|3)
-			eqawarn "Support for EAPI < 4 will be removed from the"
-			eqawarn "fortran-2.eclass in until 2013-09-30."
-			eqawarn "Please migrate your package to a higher EAPI"
-			eqawarn "or file a bug at https://bugs.gentoo.org"
-			_fortran-2_pkg_setup ;;
-		*)
-			if [[ ${MERGE_TYPE} != binary ]]; then
-				_fortran-2_pkg_setup
-			fi
-			;;
-	esac
+	if [[ ${MERGE_TYPE} != binary ]]; then
+		_fortran-2_pkg_setup
+	fi
 }
 
 _FORTRAN_2_ECLASS=1

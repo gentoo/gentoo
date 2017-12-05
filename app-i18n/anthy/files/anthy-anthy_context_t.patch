@@ -1,0 +1,11 @@
+--- a/anthy/input.h
++++ b/anthy/input.h
+@@ -10,6 +10,8 @@
+ #ifndef INPUT_H_INCLUDE
+ #define INPUT_H_INCLUDE
+ 
++#include "anthy.h"
++
+ #ifdef __cplusplus
+ extern "C" {
+ #endif

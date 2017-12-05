@@ -1,15 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>volkris@gmail.com</email>
-		<name>Chris Carlin</name>
-		<description>Proxy maintainer</description>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
+<!-- maintainer-needed -->
 	<longdescription>Python based jabber transport for AIM</longdescription>
 	<use>
 		<flag name="webinterface">Install dependencies needed for the web
@@ -17,5 +9,6 @@
 	</use>
 	<upstream>
 		<remote-id type="google-code">pyaimt</remote-id>
+		<remote-id type="launchpad">ubuntu</remote-id>
 	</upstream>
 </pkgmetadata>

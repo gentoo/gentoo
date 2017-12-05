@@ -12,6 +12,5 @@
 	</maintainer>
 	<use>
 		<flag name="extras">Install some extra deps for plugins (ex. Titlebar)</flag>
-		<flag name="gstreamer-0">Enable audio support via legacy gstreamer:0.10</flag>
 	</use>
 </pkgmetadata>

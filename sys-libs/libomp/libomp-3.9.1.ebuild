@@ -9,8 +9,8 @@ inherit cmake-multilib
 
 MY_P=openmp-${PV}
 DESCRIPTION="OpenMP runtime library for LLVM/clang compiler"
-HOMEPAGE="http://openmp.llvm.org"
-SRC_URI="http://llvm.org/releases/${PV}/${MY_P}.src.tar.xz"
+HOMEPAGE="https://openmp.llvm.org"
+SRC_URI="https://llvm.org/releases/${PV}/${MY_P}.src.tar.xz"
 
 # Additional licenses:
 # - MIT-licensed Intel code,
@@ -18,7 +18,7 @@ SRC_URI="http://llvm.org/releases/${PV}/${MY_P}.src.tar.xz"
 
 LICENSE="|| ( UoI-NCSA MIT ) MIT LLVM-Grant"
 SLOT="0/3.9"
-KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="amd64 ~arm64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="hwloc ompt"
 
 RDEPEND="hwloc? ( sys-apps/hwloc:0=[${MULTILIB_USEDEP}] )"

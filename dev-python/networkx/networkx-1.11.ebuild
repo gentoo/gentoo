@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 inherit distutils-r1 virtualx
 
@@ -13,10 +13,10 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="amd64 ~arm64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="doc examples test"
 
-REQUIRED_USE="doc? ( || ( $(python_gen_useflags 'python2*') ) )"
+REQUIRED_USE="doc? ( || ( $(python_gen_useflags -2) ) )"
 
 COMMON_DEPEND="
 	dev-python/matplotlib[${PYTHON_USEDEP}]
@@ -32,7 +32,7 @@ DEPEND="
 	test? (
 		${COMMON_DEPEND}
 		dev-python/nose[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'media-gfx/pydot[${PYTHON_USEDEP}]' python2_7)
+		$(python_gen_cond_dep 'dev-python/pydot[${PYTHON_USEDEP}]' -2)
 	)"
 RDEPEND="
 	>=dev-python/decorator-3.4.0[${PYTHON_USEDEP}]
@@ -43,9 +43,9 @@ RDEPEND="
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 	)"
 
-pkg_setup() {
-	use doc && DISTUTILS_ALL_SUBPHASE_IMPLS=( 'python2*' )
-}
+PATCHES=(
+	"${FILESDIR}"/1.11-sphinx-pngmath.patch
+)
 
 python_prepare_all() {
 	# Avoid d'loading of file objects.inv from 2 sites of python docs
@@ -54,11 +54,8 @@ python_prepare_all() {
 }
 
 python_compile_all() {
-	# https://github.com/networkx/networkx/issues/1263
 	if use doc; then
-		sed \
-			-e "s:^\t\./:\t${PYTHON} :g" \
-			-i doc/Makefile || die
+		python_setup -2
 		emake -C doc html
 	fi
 }

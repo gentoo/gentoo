@@ -11,7 +11,7 @@ SRC_URI="http://www.donhopkins.com/home/micropolis/${PN}-activity-source.tgz
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="x11-libs/libX11

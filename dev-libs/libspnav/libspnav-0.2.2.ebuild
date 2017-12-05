@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -6,7 +6,7 @@ EAPI="4"
 inherit multilib eutils toolchain-funcs
 
 MY_PN='spacenav'
-DESCRIPTION="The libspnav provides a replacement of the magellan library with cleaner and more orthogonal API"
+DESCRIPTION="libspnav is a replacement for the magellan library with a cleaner API"
 HOMEPAGE="http://spacenav.sourceforge.net/"
 SRC_URI="mirror://sourceforge/project/${MY_PN}/${MY_PN}%20library%20%28SDK%29/${PN}%20${PV}/${P}.tar.gz"
 LICENSE="BSD"

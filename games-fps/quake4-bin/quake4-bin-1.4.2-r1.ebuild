@@ -10,7 +10,7 @@ SRC_URI="mirror://idsoftware/quake4/linux/quake4-linux-${PV}.x86.run"
 
 LICENSE="QUAKE4"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE="cdinstall dedicated l10n_cs l10n_fr l10n_it l10n_pl l10n_ru"
 RESTRICT="strip"
 

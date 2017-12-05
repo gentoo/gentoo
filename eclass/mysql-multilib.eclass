@@ -1,6 +1,7 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# @DEAD
 # @ECLASS: mysql-multilib.eclass
 # @MAINTAINER:
 # Maintainers:
@@ -17,6 +18,8 @@
 # It provides the src_unpack, src_prepare, src_configure, src_compile,
 # src_install, pkg_preinst, pkg_postinst, pkg_config and pkg_postrm
 # phase hooks.
+
+die "Please upgrade to mysql-multilib-r1.  This eclass is due to be removed."
 
 MYSQL_EXTRAS=""
 
@@ -227,9 +230,9 @@ if [[ ${PN} == "mariadb" || ${PN} == "mariadb-galera" ]]; then
 	# 5.5.33 and 10.0.5 add TokuDB. Authors strongly recommend jemalloc or perfomance suffers
 	mysql_version_is_at_least "10.0.5" && IUSE="${IUSE} odbc xml"
 	if [[ ${HAS_TOOLS_PATCH} ]] ; then
-		REQUIRED_USE="${REQUIRED_USE} !server? ( !oqgraph !sphinx ) tokudb? ( jemalloc )"
+		REQUIRED_USE="${REQUIRED_USE} !server? ( !oqgraph !sphinx ) tokudb? ( jemalloc !tcmalloc )"
 	else
-		REQUIRED_USE="${REQUIRED_USE} minimal? ( !oqgraph !sphinx ) tokudb? ( jemalloc )"
+		REQUIRED_USE="${REQUIRED_USE} minimal? ( !oqgraph !sphinx ) tokudb? ( jemalloc !tcmalloc )"
 	fi
 	# MariaDB 10.1 introduces InnoDB/XtraDB compression with external libraries
 	# Choices are bzip2, lz4, lzma, lzo.  bzip2 and lzma enabled by default as they are system libraries
@@ -265,7 +268,7 @@ fi
 
 REQUIRED_USE="
 	${REQUIRED_USE} tcmalloc? ( !jemalloc ) jemalloc? ( !tcmalloc )
-	 static? ( yassl )"
+	 static? ( yassl !openssl !libressl )"
 
 #
 # DEPENDENCIES:
@@ -843,13 +846,8 @@ mysql-multilib_pkg_postinst() {
 	# Make sure the vars are correctly initialized
 	mysql_init_vars
 
-	# Check FEATURES="collision-protect" before removing this
+	# Create log directory securely if it does not exist
 	[[ -d "${ROOT}${MY_LOGDIR}" ]] || install -d -m0750 -o mysql -g mysql "${ROOT}${MY_LOGDIR}"
-
-	# Secure the logfiles
-	touch "${ROOT}${MY_LOGDIR}"/mysql.{log,err}
-	chown mysql:mysql "${ROOT}${MY_LOGDIR}"/mysql*
-	chmod 0660 "${ROOT}${MY_LOGDIR}"/mysql*
 
 	# Minimal builds don't have the MySQL server
 	if use_if_iuse minimal ; then
@@ -1049,7 +1047,7 @@ mysql-multilib_pkg_config() {
 	${EROOT}/usr/sbin/mysqld --verbose --help >"${helpfile}" 2>/dev/null
 	for opt in grant-tables host-cache name-resolve networking slave-start \
 		federated ssl log-bin relay-log slow-query-log external-locking \
-		ndbcluster log-slave-updates \
+		ndbcluster log-slave-updates wsrep-on \
 		; do
 		optexp="--(skip-)?${opt}" optfull="--loose-skip-${opt}"
 		egrep -sq -- "${optexp}" "${helpfile}" && options="${options} ${optfull}"
@@ -1057,8 +1055,6 @@ mysql-multilib_pkg_config() {
 	# But some options changed names
 	egrep -sq external-locking "${helpfile}" && \
 	options="${options/skip-locking/skip-external-locking}"
-
-	use prefix || options="${options} --user=mysql"
 
 	# MySQL 5.6+ needs InnoDB
 	if [[ ${PN} == "mysql" || ${PN} == "percona-server" ]] ; then
@@ -1070,28 +1066,28 @@ mysql-multilib_pkg_config() {
 	# Now that /var/run is a tmpfs mount point, we need to ensure it exists before using it
 	PID_DIR="${EROOT}/var/run/mysqld"
 	if [[ ! -d "${PID_DIR}" ]]; then
-		mkdir -p "${PID_DIR}" || die "Could not create pid directory"
-		chown mysql:mysql "${PID_DIR}" || die "Could not set ownership on pid directory"
-		chmod 755 "${PID_DIR}" || die "Could not set permissions on pid directory"
+		install -d -m 755 -o mysql -g mysql "${PID_DIR}" || die "Could not create pid directory"
 	fi
 
-	pushd "${TMPDIR}" &>/dev/null
+	if [[ ! -d "${MY_DATADIR}" ]]; then
+		install -d -m 750 -o mysql -g mysql "${MY_DATADIR}" || die "Could not create data directory"
+	fi
+
+	pushd "${TMPDIR}" &>/dev/null || die
 	#cmd="'${EROOT}/usr/share/mysql/scripts/mysql_install_db' '--basedir=${EPREFIX}/usr' ${options}"
 	cmd=${EROOT}usr/share/mysql/scripts/mysql_install_db
 	[[ -f ${cmd} ]] || cmd=${EROOT}usr/bin/mysql_install_db
 	cmd="'$cmd' '--basedir=${EPREFIX}/usr' ${options} '--datadir=${ROOT}/${MY_DATADIR}' '--tmpdir=${ROOT}/${MYSQL_TMPDIR}'"
 	einfo "Command: $cmd"
-	eval $cmd \
+	su -s /bin/sh -c "${cmd}" mysql \
 		>"${TMPDIR}"/mysql_install_db.log 2>&1
 	if [ $? -ne 0 ]; then
 		grep -B5 -A999 -i "ERROR" "${TMPDIR}"/mysql_install_db.log 1>&2
 		die "Failed to run mysql_install_db. Please review ${EPREFIX}/var/log/mysql/mysqld.err AND ${TMPDIR}/mysql_install_db.log"
 	fi
-	popd &>/dev/null
+	popd &>/dev/null || die
 	[[ -f "${ROOT}/${MY_DATADIR}/mysql/user.frm" ]] \
 	|| die "MySQL databases not installed"
-	chown -R mysql:mysql "${ROOT}/${MY_DATADIR}" 2>/dev/null
-	chmod 0750 "${ROOT}/${MY_DATADIR}" 2>/dev/null
 
 	# Filling timezones, see
 	# http://dev.mysql.com/doc/mysql/en/time-zone-support.html

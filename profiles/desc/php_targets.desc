@@ -3,6 +3,7 @@
 
 # This file contains descriptions of the PHP_TARGETS USE_EXPAND flags
 
+php7-2 - Build against PHP 7.2
 php7-1 - Build against PHP 7.1
 php7-0 - Build against PHP 7.0
 php5-6 - Build against PHP 5.6

@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 MY_P="slb_rf72"
 S=${WORKDIR}/${MY_P}

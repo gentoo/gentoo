@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,13 +7,13 @@ inherit eutils autotools gnome2-utils games
 MY_P="${P/_/}"
 MY_P="${MY_P/beta/beta-}"
 DESCRIPTION="A Panzer General clone written in SDL"
-HOMEPAGE="http://lgames.sourceforge.net/index.php?project=LGeneral"
+HOMEPAGE="http://lgames.sourceforge.net/LGeneral/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz
 	mirror://sourceforge/${PN}/pg-data.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="nls"
 
 RDEPEND="media-libs/libsdl[sound,video]

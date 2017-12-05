@@ -1,0 +1,76 @@
+---
+# repository-modules.yaml
+#
+# This is the repository configuration file for repoman modules
+#
+# no random drive-by commits please
+# Please obtain authorization from the portage team
+#
+# Overlay maintainers override/add/negate checks at your discression
+# but support for third party module will be limited to the plugin API
+#
+
+# Repoman API version (do not edit)
+version: 1
+# minimum
+repoman_version: 2.3.3
+
+# NOTE: for non-gentoo repos, any custom modules added will need their
+# module names to the modules list in order for them to run.
+
+# These are the non-mandatory modules that can be disabled/enabled.
+# use -foo notation to disable, just like use flags
+# Add custom modules to enable them too
+scan_modules:
+    description
+    eapi
+    ebuild_metadata
+    fetches
+    files
+    keywords
+    live
+    manifests
+    multicheck
+    pkgmetadata
+    profile
+    restrict
+    ruby
+
+linechecks_modules:
+    assignment
+    eapi3assignment
+    implicitdepend
+    hasq
+    useq
+    preservelib
+    bindnow
+    inherit
+    dosym
+    definition
+    srcprepare
+    eapi3deprecated
+    pkgpretend
+    eapi4incompatible
+    eapi4gonevars
+    paralleldisabled
+    autodefault
+    gentooheader
+    nooffset
+    nesteddie
+    patches
+    emakeparallel
+    srccompileeconf
+    srcunpackpatches
+    portageinternal
+    portageinternalvariableassignment
+    quote
+    quoteda
+    httpsuri
+    builtwith
+    uselesscds
+    uselessdodoc
+    whitespace
+    blankline
+    addpredict
+    noasneeded
+

@@ -10,7 +10,7 @@ FreeBSD - KERNEL setting for system using the FreeBSD kernel
 freemint - KERNEL setting for system using the FreeMiNT kernel
 linux - KERNEL setting for system using the Linux kernel
 HPUX - KERNEL setting for system using the HP-UX kernel
-Interix - KERNEL setting for system using the Interix subsystem (SFU on Windows)
 NetBSD - KERNEL setting for system using the NetBSD kernel
 OpenBSD - KERNEL setting for system using the OpenBSD kernel
 SunOS - KERNEL setting for system using an SunOS (i.e.: Solaris) kernel
+Winnt - KERNEL setting for systems on Windows (Cygwin, MinGW, Winnt, ...)

@@ -9,7 +9,7 @@ SRC_URI=""
 
 LICENSE="ETQW"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE="videos"
 
 S=${WORKDIR}

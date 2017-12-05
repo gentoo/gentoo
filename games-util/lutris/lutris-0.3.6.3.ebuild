@@ -13,7 +13,7 @@ SRC_URI="http://lutris.net/releases/${PN}_${PV}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="dev-python/pygobject:3[${PYTHON_USEDEP}]

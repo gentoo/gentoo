@@ -15,7 +15,7 @@ SRC_URI="http://bani.anime.net/etpro/etpro-${PV//./_}.zip
 	http://www.enemyterritory.sk/files/etpro-${PV//./_}.zip"
 
 LICENSE="all-rights-reserved"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="dedicated opengl"
 
 QA_PREBUILT="${INS_DIR:1}/${MOD_DIR}/*so"

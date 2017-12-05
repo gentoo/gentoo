@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
 inherit eutils
 
-DESCRIPTION="Library for manipulating Unicode strings and C strings according to the Unicode standard"
+DESCRIPTION="Library for manipulating Unicode and C strings according to Unicode standard"
 HOMEPAGE="https://www.gnu.org/software/libunistring/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 

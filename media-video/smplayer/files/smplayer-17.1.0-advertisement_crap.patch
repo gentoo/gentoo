@@ -1,0 +1,85 @@
+--- smplayer-17.1.0/src/basegui.cpp
++++ smplayer-17.1.0/src/basegui.cpp
+@@ -906,9 +906,11 @@
+ 	connect( showConfigAct, SIGNAL(triggered()),
+              this, SLOT(helpShowConfig()) );
+ 
++#ifdef DONATE_REMINDER
+ 	donateAct = new MyAction( this, "donate" );
+ 	connect( donateAct, SIGNAL(triggered()),
+              this, SLOT(helpDonate()) );
++#endif
+ 
+ 	aboutThisAct = new MyAction( this, "about_smplayer" );
+ 	connect( aboutThisAct, SIGNAL(triggered()),
+@@ -1846,8 +1848,10 @@
+ #ifdef SHARE_ACTIONS
+ 	donateAct->change( Images::icon("donate"), tr("&Donate / Share with your friends") );
+ #else
++#ifdef DONATE_REMINDER
+ 	donateAct->change( Images::icon("donate"), tr("&Donate") );
+ #endif
++#endif
+ 	aboutThisAct->change( Images::icon("logo"), tr("About &SMPlayer") );
+ 
+ #ifdef SHARE_MENU
+@@ -2993,8 +2997,10 @@
+ 		helpMenu->addAction(showConfigAct);
+ 		helpMenu->addSeparator();
+ 	}
++	#ifdef DONATE_REMINDER
+ 	helpMenu->addAction(donateAct);
+ 	helpMenu->addSeparator();
++	#endif
+ 	helpMenu->addAction(aboutThisAct);
+ 
+ 	// Access menu
+@@ -4489,6 +4495,7 @@
+ 	}
+ }
+ #else
++#ifdef DONATE_REMINDER
+ void BaseGui::helpDonate() {
+ 	qDebug("BaseGui::helpDonate");
+ 
+@@ -4530,6 +4537,7 @@
+ 	if (accepted != 0) *accepted = result;
+ }
+ #endif
++#endif
+ 
+ void BaseGui::helpAbout() {
+ 	About d(this);
+--- smplayer-17.1.0/src/basegui.h
++++ smplayer-17.1.0/src/basegui.h
+@@ -73,10 +73,6 @@
+ class ShareWidget;
+ #endif
+ 
+-#ifndef SHARE_WIDGET
+-#define DONATE_REMINDER
+-#endif
+-
+ class BaseGui : public QMainWindow
+ {
+ 	Q_OBJECT
+@@ -129,8 +125,8 @@
+ 	virtual void helpFAQ();
+ 	virtual void helpCLOptions();
+ 	virtual void helpCheckUpdates();
++#ifdef DONATE_REMINDER
+ 	virtual void helpDonate();
+-#ifndef SHARE_ACTIONS
+ 	void showHelpDonateDialog(bool * accepted = 0);
+ #endif
+ 	virtual void helpShowConfig();
+@@ -574,7 +570,9 @@
+ 	MyAction * updateYTAct;
+ #endif
+ 	MyAction * showConfigAct;
++#ifdef DONATE_REMINDER
+ 	MyAction * donateAct;
++#endif
+ 	MyAction * aboutThisAct;
+ 
+ #ifdef SHARE_MENU

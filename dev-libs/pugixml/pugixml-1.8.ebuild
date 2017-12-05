@@ -7,12 +7,12 @@ CMAKE_MAKEFILE_GENERATOR=emake
 inherit cmake-utils
 
 DESCRIPTION="Light-weight, simple, and fast XML parser for C++ with XPath support"
-HOMEPAGE="http://pugixml.org/ https://github.com/zeux/pugixml/"
+HOMEPAGE="https://pugixml.org/ https://github.com/zeux/pugixml/"
 SRC_URI="https://github.com/zeux/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~ia64 ppc ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 
 src_configure() {
 	local mycmakeargs=( -DBUILD_SHARED_LIBS=ON )

@@ -1,0 +1,32 @@
+--- patch/13_all_default-ssp-fix.patch.old	2017-06-14 11:29:28.997183865 +0200
++++ patch/13_all_default-ssp-fix.patch	2017-06-14 12:24:15.042271863 +0200
+@@ -39,9 +39,9 @@
+   %{!fsyntax-only:%{S:%W{o*}%{!o*:-o %b.s}}}\
+   %{fsyntax-only:-o %j} %{-param*}\
+ + %{nostdlib:-nostdlib}\
+-  %{coverage:-fprofile-arcs -ftest-coverage}";
++  %{coverage:-fprofile-arcs -ftest-coverage}\
++  %{fdump-scos:-fpreserve-decisions-generic}";
+  
+- static const char *asm_options =
+ --- a/gcc/params.def	2016-03-30 09:47:40.000000000 +0200
+ +++ b/gcc/params.def	2016-09-19 12:56:58.443179039 +0200
+ @@ -673,7 +673,7 @@ DEFPARAM (PARAM_INTEGER_SHARE_LIMIT,
+--- gcc-6-gpl-2017-src/gcc/ada/osint.adb.old	2017-03-10 21:58:02.600710156 +0100
++++ gcc-6-gpl-2017-src/gcc/ada/osint.adb	2017-03-10 21:59:38.033983293 +0100
+@@ -2229,14 +2229,11 @@
+       for J in Start_Of_Prefix .. Name_Len - Prog'Length + 1 loop
+          if Name_Buffer (J .. J + Prog'Length - 1) = Prog then
+             End_Of_Prefix := J - 1;
++            Start_Of_Suffix := J + Prog'Length;
+             exit;
+          end if;
+       end loop;
+ 
+-      if End_Of_Prefix > 1 then
+-         Start_Of_Suffix := End_Of_Prefix + Prog'Length + 1;
+-      end if;
+-
+       --  Create the new program name
+ 
+       return new String'

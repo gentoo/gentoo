@@ -34,5 +34,5 @@ mydoc="HISTORY"
 
 src_test() {
 	perl_rm_files t/pod_coverage.t t/pod.t
-	perl-module_src_test
+	TZ=UTC perl-module_src_test
 }

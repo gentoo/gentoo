@@ -6,9 +6,9 @@ EAPI=6
 DESCRIPTION="'Dive Into Python' by Mark Pilgrim - Python 3"
 HOMEPAGE="http://www.diveintopython3.net/"
 
-SRC_URI="http://dev.gentoo.org/~monsieurp/packages/${P}.tar.gz
+SRC_URI="https://dev.gentoo.org/~monsieurp/packages/${P}.tar.gz
 	pdf? (
-		http://dev.gentoo.org/~monsieurp/packages/${P}-pdf.tar.gz
+		https://dev.gentoo.org/~monsieurp/packages/${P}-pdf.tar.gz
 	)"
 
 LICENSE="CC-BY-SA-3.0"

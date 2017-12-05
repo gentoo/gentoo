@@ -1,8 +1,8 @@
 http://bugs.gentoo.org/366885
 http://bugs.gentoo.org/499940
 
---- Makefile.am
-+++ Makefile.am
+--- a/Makefile.am
++++ b/Makefile.am
 @@ -16,7 +16,7 @@
  xdgdir=$(sysconfdir)/xdg
  xdg_DATA=user-dirs.conf user-dirs.defaults

@@ -1,0 +1,27 @@
+--- examples/Makefile.orig	2017-07-25 11:56:03.545393093 +0200
++++ examples/Makefile	2017-07-25 11:56:37.468572887 +0200
+@@ -158,6 +158,7 @@
+ 	rm -f $(LOCAL_EXAMPLE)/weakbosons.lhe
+ 	rm -f $(LOCAL_EXAMPLE)/Pythia8.promc
+ 	rm -f $(LOCAL_EXAMPLE)/hist.root
++	rm main*out *.dat
+ 
+ # Clean all temporary and generated files.
+ distclean: clean
+@@ -168,3 +169,16 @@
+ 	rm -f $(LOCAL_SHARE)/COPYING
+ 	rm -f $(LOCAL_SHARE)/GUIDELINES
+ 	rm -f $(LOCAL_SHARE)/README
++
++# Run tests, inject test-specific arguments when needed
++main%.out: main%
++	./$< \
++		$(if $(findstring $*,16 42 43 $(shell seq 81 89)), main$*.cmnd) \
++		$(if $(findstring $*,         $(shell seq 81 83)), w+_production_lhc_0.lhe) \
++		$(if $(findstring $*,                         84), hepmcout84.dat 2 w+_production_lhc) \
++		$(if $(findstring $*,         $(shell seq 85 88)), w_production) \
++		$(if $(findstring $*,   42 43 $(shell seq 81 89)), histout$*.dat) \
++		> $@
++
++main89.out: main89
++	$(foreach cmd, $(wildcard main89*.cmnd), ./$< $(cmd) histout-$(cmd).dat >> $@ || exit;)

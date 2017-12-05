@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -10,8 +10,9 @@ BibleTime is a Bible study application for Linux. It is based on the
 K Desktop Environment and uses the SWORD programming library to work 
 with Bible texts, commentaries, dictionaries and books provided by 
 the Crosswire Bible Society.
-</longdescription>
+	</longdescription>
 	<upstream>
+		<remote-id type="github">bibletime/bibletime</remote-id>
 		<remote-id type="sourceforge">bibletime</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -4,13 +4,6 @@
 EAPI=6
 
 DESCRIPTION="Virtual for LeechCraft plugins providing WYSIWYG text editor"
-HOMEPAGE=""
-SRC_URI=""
-
-LICENSE=""
 SLOT="0"
-KEYWORDS=""
-IUSE=""
 
 RDEPEND="~app-leechcraft/lc-lhtr-${PV}"
-DEPEND=""

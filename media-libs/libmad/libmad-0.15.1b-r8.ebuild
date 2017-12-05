@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit eutils autotools libtool flag-o-matic multilib-minimal
+inherit autotools epatch flag-o-matic libtool ltprune multilib-minimal
 
 DESCRIPTION="\"M\"peg \"A\"udio \"D\"ecoder library"
 HOMEPAGE="http://mad.sourceforge.net"

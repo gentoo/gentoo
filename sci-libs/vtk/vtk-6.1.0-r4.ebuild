@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,13 +14,13 @@ inherit eutils flag-o-matic java-pkg-opt-2 python-single-r1 qmake-utils versiona
 SPV="$(get_version_component_range 1-2)"
 
 DESCRIPTION="The Visualization Toolkit"
-HOMEPAGE="http://www.vtk.org/"
+HOMEPAGE="https://www.vtk.org/"
 SRC_URI="
-	http://www.${PN}.org/files/release/${SPV}/VTK-${PV}.tar.gz
-	doc? ( http://www.${PN}.org/files/release/${SPV}/${PN}DocHtml-${PV}.tar.gz )
+	https://www.${PN}.org/files/release/${SPV}/VTK-${PV}.tar.gz
+	doc? ( https://www.${PN}.org/files/release/${SPV}/${PN}DocHtml-${PV}.tar.gz )
 	test? (
-		http://www.${PN}.org/files/release/${SPV}/VTKData-${PV}.tar.gz
-		http://www.${PN}.org/files/release/${SPV}/VTKLargeData-${PV}.tar.gz
+		https://www.${PN}.org/files/release/${SPV}/VTKData-${PV}.tar.gz
+		https://www.${PN}.org/files/release/${SPV}/VTKLargeData-${PV}.tar.gz
 		)
 	"
 
@@ -77,6 +77,7 @@ RDEPEND="
 	mpi? (
 		virtual/mpi[cxx,romio]
 		python? ( dev-python/mpi4py[${PYTHON_USEDEP}] )
+	)
 	mysql? ( virtual/mysql )
 	odbc? ( dev-db/unixODBC )
 	offscreen? ( media-libs/mesa[osmesa] )
@@ -84,7 +85,6 @@ RDEPEND="
 	python? (
 		${PYTHON_DEPS}
 		dev-python/sip[${PYTHON_USEDEP}]
-		)
 	)
 	qt5? (
 		dev-qt/designer:5
@@ -94,7 +94,8 @@ RDEPEND="
 		dev-qt/qtsql:5
 		dev-qt/qtwebkit:5
 		python? ( dev-python/PyQt5[${PYTHON_USEDEP}] )
-		)
+	)
+	R? ( dev-lang/R )
 	tbb? ( dev-cpp/tbb )
 	tcl? ( dev-lang/tcl:0= )
 	tk? ( dev-lang/tk:0= )
@@ -108,10 +109,11 @@ RDEPEND="
 			)
 		)
 	xdmf2? ( sci-libs/xdmf2 )
-	R? ( dev-lang/R )"
+"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
-	java? ( >=virtual/jdk-1.5 )"
+	java? ( >=virtual/jdk-1.5 )
+"
 
 S="${WORKDIR}"/VTK-${PV}
 
@@ -124,9 +126,10 @@ PATCHES=(
 	"${FILESDIR}"/${P}-glext.patch
 	"${FILESDIR}"/${P}-memset.patch
 	"${FILESDIR}"/${P}-gdal2.patch
-	)
+	"${FILESDIR}"/${P}-gcc67.patch
+)
 
-RESTRICT=test
+RESTRICT="test"
 
 pkg_setup() {
 	use java && java-pkg-opt-2_pkg_setup
@@ -290,7 +293,7 @@ src_configure() {
 			-DSIP_INCLUDE_DIR="$(python_get_includedir)"
 			-DVTK_PYTHON_INCLUDE_DIR="$(python_get_includedir)"
 			-DVTK_PYTHON_LIBRARY="$(python_get_library_path)"
-			-DVTK_PYTHON_SETUP_ARGS:STRING="--prefix=${PREFIX} --root=${D}"
+			-DVTK_PYTHON_SETUP_ARGS:STRING="--prefix=${EPREFIX}/usr --root=${D}"
 		)
 	fi
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,10 +9,10 @@ inherit eutils autotools-utils
 if [[ ${PV} = *9999* ]]; then
 	inherit git-2
 	SRC_URI=""
-	EGIT_REPO_URI="git://github.com/sahlberg/libiscsi.git"
+	EGIT_REPO_URI="https://github.com/sahlberg/${PN}.git"
 	KEYWORDS="~alpha ~hppa ~ppc64"
 else
-	SRC_URI="https://github.com/sahlberg/libiscsi/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/sahlberg/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~alpha amd64 ~hppa ~ppc64 x86"
 fi
 

@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=2
 inherit autotools eutils
 
-DESCRIPTION="Library and client for communicating with PTP enabled devices (e.g. digital photo cameras)"
+DESCRIPTION="Library and client to communicate with cameras via PTP"
 HOMEPAGE="https://sourceforge.net/projects/libptp/"
 SRC_URI="mirror://sourceforge/libptp/${P}.tar.gz"
 

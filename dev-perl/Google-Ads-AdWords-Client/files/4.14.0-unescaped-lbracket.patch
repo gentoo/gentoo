@@ -1,0 +1,46 @@
+From a7e92591ac0415fbb7119e4ad7572f910e4fdb8f Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentfredric@gmail.com>
+Date: Sun, 4 Jun 2017 07:43:59 +1200
+Subject: [PATCH 3/3] Fix unescaped "{" error in tests t/022* and t/024*
+
+Perl 5.26 makes use of literal unescaped { in a regex illegal,
+and this leads to test failures.
+
+This change simply quotes the offending characters to make tests pass.
+
+This closes RT#118509
+
+Bug: https://rt.cpan.org/Ticket/Display.html?id=118509
+---
+ t/022_ReportUtils.t     | 2 +-
+ t/024_BatchJobHandler.t | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/t/022_ReportUtils.t b/t/022_ReportUtils.t
+index 4f5f326..d0e2000 100755
+--- a/t/022_ReportUtils.t
++++ b/t/022_ReportUtils.t
+@@ -57,7 +57,7 @@ my $report_as_string = $report_handler->get_as_string();
+ ok(!$report_as_string, "report as string");
+ ok($report_as_string->isa("Google::Ads::Common::ReportDownloadError"),
+   "check report handler->report_as_string return type");
+-ok($report_as_string =~ /ReportDownloadError\s{[^}]+}/,
++ok($report_as_string =~ /ReportDownloadError\s\{[^}]+}/,
+   "check ReportDownloadError STRINGIFY");
+ 
+ my ($fh, $filename) = tempfile();
+diff --git a/t/024_BatchJobHandler.t b/t/024_BatchJobHandler.t
+index 15983ae..4b86703 100755
+--- a/t/024_BatchJobHandler.t
++++ b/t/024_BatchJobHandler.t
+@@ -133,6 +133,6 @@ my $batch_job_handler_error =
+     description => "test"
+   });
+ ok(!$batch_job_handler_error, "BOOLIFY on error false");
+-ok($batch_job_handler_error =~ /BatchJobHandlerError\s{[^}]+}/,
++ok($batch_job_handler_error =~ /BatchJobHandlerError\s\{[^}]+}/,
+   "check BatchJobHandlerError STRINGIFY");
+ 
+-- 
+2.12.2
+

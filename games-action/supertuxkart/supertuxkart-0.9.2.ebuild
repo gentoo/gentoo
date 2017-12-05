@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,18 +6,18 @@ EAPI=6
 inherit cmake-utils eutils gnome2-utils
 
 DESCRIPTION="A kart racing game starring Tux, the linux penguin (TuxKart fork)"
-HOMEPAGE="http://supertuxkart.sourceforge.net/"
+HOMEPAGE="https://supertuxkart.net/"
 SRC_URI="mirror://sourceforge/${PN}/SuperTuxKart/${PV}/${P}-src.tar.xz
 	mirror://gentoo/${PN}.png"
 
 LICENSE="GPL-2 GPL-3 CC-BY-SA-3.0 CC-BY-2.0 public-domain ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="debug fribidi wiimote"
 
 # don't unbundle irrlicht and bullet
 # both are modified and system versions will break the game
-# https://sourceforge.net/tracker/?func=detail&aid=3454889&group_id=74339&atid=540679
+# https://sourceforge.net/p/irrlicht/feature-requests/138/
 
 RDEPEND="
 	media-libs/glew:0=

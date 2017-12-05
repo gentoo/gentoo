@@ -1,0 +1,99 @@
+Make shebangs portable and prefix friendly
+See also: https://blogs.gentoo.org/mgorny/2016/02/08/a-quick-note-on-portable-shebangs/
+
+--- a/scripts/last-dotplot.py
++++ b/scripts/last-dotplot.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ 
+ # Read pair-wise alignments in MAF or LAST tabular format: write an
+ # "Oxford grid", a.k.a. dotplot.
+--- a/scripts/last-map-probs.py
++++ b/scripts/last-map-probs.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ 
+ # Copyright 2010, 2011, 2012 Martin C. Frith
+ 
+--- a/scripts/last-merge-batches.py
++++ b/scripts/last-merge-batches.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ 
+ # Copyright 2010, 2011 Martin C. Frith
+ 
+--- a/scripts/last-pair-probs.py
++++ b/scripts/last-pair-probs.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ 
+ # Copyright 2011, 2012, 2013 Martin C. Frith
+ 
+--- a/scripts/last-reduce-alignments.sh
++++ b/scripts/last-reduce-alignments.sh
+@@ -1,4 +1,4 @@
+-#! /bin/sh
++#!/usr/bin/env sh
+ 
+ # This script reads MAF-format alignments with lastal header
+ # information, removes "uninteresting" alignments, and writes the
+--- a/scripts/last-remove-dominated.py
++++ b/scripts/last-remove-dominated.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ 
+ # Read MAF-format alignments, and write those are not "dominated" by
+ # any other one.  X dominates Y if they overlap on the top sequence,
+--- a/scripts/last-split-probs.py
++++ b/scripts/last-split-probs.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ 
+ # Copyright 2012 Martin C. Frith
+ 
+--- a/scripts/maf-convert.py
++++ b/scripts/maf-convert.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ # Copyright 2010, 2011 Martin C. Frith
+ # Read MAF-format alignments: write them in other formats.
+ # Seems to work with Python 2.x, x>=4
+--- a/scripts/maf-cull.py
++++ b/scripts/maf-cull.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ 
+ # Read MAF-format alignments.  Write them, omitting alignments whose
+ # coordinates in the top-most sequence are contained in those of >=
+--- a/scripts/maf-join.py
++++ b/scripts/maf-join.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ 
+ # Copyright 2009, 2010, 2011 Martin C. Frith
+ 
+--- a/scripts/maf-sort.sh
++++ b/scripts/maf-sort.sh
+@@ -1,4 +1,4 @@
+-#! /bin/sh
++#!/usr/bin/env sh
+ 
+ # Sort MAF-format alignments by sequence name, then strand, then start
+ # position, then end position, of the top sequence.  Also, merge
+--- a/scripts/maf-swap.py
++++ b/scripts/maf-swap.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ 
+ # Read MAF-format alignments, and write them, after moving the Nth
+ # sequence to the top in each alignment.

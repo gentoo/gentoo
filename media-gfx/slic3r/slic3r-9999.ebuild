@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,6 +19,7 @@ IUSE="+gui test"
 RDEPEND="!=dev-lang/perl-5.16*
 	>=dev-libs/boost-1.55[threads]
 	dev-perl/Class-XSAccessor
+	dev-perl/Devel-CheckLib
 	dev-perl/Devel-Size
 	>=dev-perl/Encode-Locale-1.50.0
 	dev-perl/IO-stringy
@@ -71,7 +72,8 @@ src_unpack() {
 
 src_prepare() {
 	pushd "${WORKDIR}/slic3r-${PV}" || die
-	eapply "${FILESDIR}/${P}-adjust_var_path.patch"
+	sed -i lib/Slic3r.pm -e "s@FindBin::Bin@FindBin::RealBin@g" || die
+	eapply "${FILESDIR}"/${P}-no-locallib.patch
 	eapply_user
 	popd || die
 }

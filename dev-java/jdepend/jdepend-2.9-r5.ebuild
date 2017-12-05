@@ -7,7 +7,7 @@ JAVA_PKG_IUSE="doc source"
 
 inherit java-pkg-2 java-ant-2
 
-DESCRIPTION="JDepend traverses Java class file directories and generates design quality metrics per package"
+DESCRIPTION="Traverses Java class file directories and generates design quality metrics"
 HOMEPAGE="http://www.clarkware.com/software/JDepend.html"
 SRC_URI="http://www.clarkware.com/software/${P}.zip"
 

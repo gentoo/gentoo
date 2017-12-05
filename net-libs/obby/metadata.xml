@@ -5,9 +5,5 @@
     <email>dev-zero@gentoo.org</email>
     <name>Tiziano Müller</name>
   </maintainer>
-  <maintainer type="person">
-    <email>xarthisius@gentoo.org</email>
-    <name>Kacper Kowalik</name>
-  </maintainer>
   <longdescription>Framework to synchronize changes within a text documents to other participants of a session</longdescription>
 </pkgmetadata>

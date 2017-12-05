@@ -1,0 +1,29 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -9,7 +9,7 @@
+ libexecdir = @libexecdir@
+ includedir = @includedir@
+ #docdir = $(prefix)/doc
+-mandir = $(prefix)/man
++mandir = @mandir@
+ 
+ EXEEXT = @EXEEXT@
+ 
+@@ -29,7 +29,7 @@
+ INCLUDES = -I.
+ DEFS = @DEFS@
+ CC = @CC@
+-COMMONCFLAGS = -Wall -g -Werror -pipe
++COMMONCFLAGS = -Wall -g -pipe
+ CFLAGS = $(COMMONCFLAGS) @CFLAGS@
+ INSTALL = $(LIBTOOL) --mode=install @INSTALL@
+ INSTALL_DATA = $(LIBTOOL) --mode=install @INSTALL@ -m 644
+@@ -48,7 +48,7 @@
+ AGENTOBJS = sptagent.o sptconn.$lo cfuncs.$lo
+ LIBOBJS = libspt.$lo sptconn.$lo cfuncs.$lo error.$lo utilapi.$lo termios.$lo
+ OBJS = test.o $(LIBOBJS)
+-AGENT_MODE = -m 4755 -o root -g wheel
++AGENT_MODE =
+ 
+ .SUFFIXES: .c .o .cc .lo
+ .c.lo:

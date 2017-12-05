@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,7 +17,7 @@ IUSE="gtk"
 
 DEPEND="
 	gtk? ( dev-ml/lablgtk:= )
-	x11-libs/cairo
+	x11-libs/cairo[svg(+)]
 "
 RDEPEND="${DEPEND}"
 DOCS=( README.md )

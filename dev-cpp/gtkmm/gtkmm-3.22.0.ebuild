@@ -5,18 +5,18 @@ EAPI=6
 inherit gnome2 multilib-minimal virtualx
 
 DESCRIPTION="C++ interface for GTK+"
-HOMEPAGE="http://www.gtkmm.org"
+HOMEPAGE="https://www.gtkmm.org"
 
 LICENSE="LGPL-2.1+"
 SLOT="3.0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
 
 IUSE="aqua doc test wayland X"
 REQUIRED_USE="|| ( aqua wayland X )"
 
 RDEPEND="
 	>=dev-cpp/glibmm-2.49.1:2[${MULTILIB_USEDEP}]
-	>=x11-libs/gtk+-3.20.0:3[aqua?,wayland?,X?,${MULTILIB_USEDEP}]
+	>=x11-libs/gtk+-3.22.0:3[aqua?,wayland?,X?,${MULTILIB_USEDEP}]
 	>=x11-libs/gdk-pixbuf-2.35.5:2[${MULTILIB_USEDEP}]
 	>=dev-cpp/atkmm-2.24.2[${MULTILIB_USEDEP}]
 	>=dev-cpp/cairomm-1.12.0[${MULTILIB_USEDEP}]

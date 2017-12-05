@@ -1,17 +1,26 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Author: Francesco Riosa (Retired) <vivo@gentoo.org>
-# Maintainer:
+# DEPRECATED
+# Recent versions have begun deprecating this eclass.
+# Do not use it in new series.
+
+# @ECLASS: mysql_fx.eclass
+# @AUTHOR: Francesco Riosa (Retired) <vivo@gentoo.org>
+# @MAINTAINER:
 #	- MySQL Team <mysql-bugs@gentoo.org>
 #	- Luca Longinotti <chtekk@gentoo.org>
+# @BLURB: This eclass provides some helper functions for mysql ebuilds
+# @DESCRIPTION:
+# This eclass providers helpers to build mysql servers including patching
+# from an index and initializing certain variables as part of the build.
 
 inherit multilib
 
-#
+# @FUNCTION: stripdots
+# @DESCRIPTION:
 # Helper function, version (integer) may have sections separated by dots
 # for readability.
-#
 stripdots() {
 	local dotver=${1:-"0"}
 	local v=""
@@ -39,12 +48,12 @@ stripdots() {
 	fi
 }
 
-#
+# @FUNCTION: mysql_check_version_range
+# @DESCRIPTION:
 # Check if a version number falls inside a given range.
 # The range includes the extremes and must be specified as
 # "low_version to high_version" i.e. "4.1.2 to 5.1.99.99".
 # Returns true if inside the range.
-#
 mysql_check_version_range() {
 	local lbound="${1%% to *}" ; lbound=$(stripdots "${lbound}")
 	local rbound="${1#* to }"  ; rbound=$(stripdots "${rbound}")
@@ -53,9 +62,10 @@ mysql_check_version_range() {
 	return 1
 }
 
-#
+# @FUNCTION: _mysql_test_patch_ver_pn
+# @INTERNAL
+# @DESCRIPTION:
 # True if at least one applicable range is found for the patch.
-#
 _mysql_test_patch_ver_pn() {
 	local allelements=", version, package name"
 	# So that it fails the directory test if none of them exist
@@ -88,7 +98,8 @@ _mysql_test_patch_ver_pn() {
 	return 1
 }
 
-#
+# @FUNCTION: mysql_mv_patches
+# @DESCRIPTION:
 # Parse a "index_file" looking for patches to apply to the
 # current MySQL version.
 # If the patch applies, print its description.
@@ -119,6 +130,8 @@ mysql_mv_patches() {
 	_mysql_mv_patches "${index_file}" "${my_ver}" "${my_test_fx}"
 }
 
+# @FUNCTION: _mysql_mv_patches
+# @INTERNAL
 _mysql_mv_patches() {
 	local index_file="${1}"
 	local my_ver="${2}"
@@ -168,7 +181,8 @@ _mysql_mv_patches() {
 	&& for (( i=0 ; $i < $ndsc ; i++ )) ; do einfo ">    ${dsc[$i]}" ; done
 }
 
-#
+# @FUNCTION: mysql_version_is_at_least
+# @DESCRIPTION:
 # Is $2 (defaults to $MYSQL_VERSION_ID) at least version $1?
 # (nice) idea from versionator.eclass
 #
@@ -178,9 +192,10 @@ mysql_version_is_at_least() {
 	[[ ${want_s} -le ${have_s} ]] && return 0 || return 1
 }
 
-#
+# @FUNCTION: mysql_lib_symlinks
+# @DESCRIPTION:
 # To be called on the live filesystem, reassigning symlinks of each MySQL
-# library to the best version available.
+# library to the best version available. (Obsolete)
 #
 mysql_lib_symlinks() {
 

@@ -18,7 +18,7 @@ IUSE=""
 DEPEND="!<dev-texlive/texlive-latex-2009
 !<dev-texlive/texlive-latexrecommended-2009
 !dev-texlive/texlive-documentation-base
->=app-text/texlive-core-2015[luajittex?]
+=app-text/texlive-core-2015*[luajittex?]
 "
 RDEPEND="${DEPEND} "
 PATCHES=( "${FILESDIR}/texmfcnflua2015.patch" )

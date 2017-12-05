@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils multilib toolchain-funcs flag-o-matic cmake-utils
+inherit eutils cmake-utils
 
 DESCRIPTION="Help a girl named Violet in the struggle with hordes of monsters"
 HOMEPAGE="https://code.google.com/p/violetland/"
@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
-	dev-libs/boost[threads(+)]
+	dev-libs/boost:=[threads(+)]
 	media-libs/libsdl[sound,video]
 	media-libs/sdl-image[png]
 	media-libs/sdl-mixer[vorbis]
@@ -24,33 +24,28 @@ RDEPEND="
 	virtual/opengl"
 DEPEND="${RDEPEND}"
 
-PATCHES=(
-	"${FILESDIR}"/${P}-boost150.patch
-)
+PATCHES=( "${FILESDIR}"/${P}-boost150.patch )
 
 src_prepare() {
-	default
+	cmake-utils_src_prepare
 
 	sed -i \
 		-e "/README_EN.TXT/d" \
 		-e "/README_RU.TXT/d" \
 		CMakeLists.txt || die "sed failed"
+	rm README_RU.TXT || die
 }
 
 src_configure() {
-	mycmakeargs=(
-		"-DCMAKE_INSTALL_PREFIX=/usr"
-		"-DDATA_INSTALL_DIR=/usr/share/${PN}"
-		)
+	local mycmakeargs=(
+		-DDATA_INSTALL_DIR=share/${PN}
+	)
 	cmake-utils_src_configure
 }
 
-src_compile() {
-	cmake-utils_src_compile
-}
-
 src_install() {
-	DOCS="README_EN.TXT CHANGELOG" cmake-utils_src_install
+	cmake-utils_src_install
+
 	newicon icon-light.png ${PN}.png
 	make_desktop_entry ${PN} VioletLand
 }

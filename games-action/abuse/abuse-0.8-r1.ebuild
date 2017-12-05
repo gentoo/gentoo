@@ -1,8 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools
+
+inherit autotools eutils
 
 DESCRIPTION="Port of Abuse by Crack Dot Com"
 HOMEPAGE="http://abuse.zoy.org/"
@@ -10,7 +11,7 @@ SRC_URI="http://abuse.zoy.org/raw-attachment/wiki/download/${P}.tar.gz"
 
 LICENSE="GPL-2 WTFPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=">=media-libs/libsdl-1.1.6[sound,opengl,video]

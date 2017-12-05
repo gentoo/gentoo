@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -36,6 +36,7 @@ DEPEND="${RDEPEND}
 		dev-perl/Test-Deep
 	)
 "
+PATCHES=( "${FILESDIR}/${P}-no-dot-inc.patch" )
 
 want_apache2 modperl
 

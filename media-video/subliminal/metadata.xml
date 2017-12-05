@@ -12,5 +12,6 @@
 	<upstream>
 		<remote-id type="github">Diaoul/subliminal</remote-id>
 		<remote-id type="pypi">subliminal</remote-id>
+		<remote-id type="sourceforge">matroska</remote-id>
 	</upstream>
 </pkgmetadata>

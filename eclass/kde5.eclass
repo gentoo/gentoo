@@ -4,9 +4,22 @@
 # @ECLASS: kde5.eclass
 # @MAINTAINER:
 # kde@gentoo.org
-# @BLURB: Support eclass for KDE 5-related packages.
+# @BLURB: Support eclass for packages that follow KDE packaging conventions.
 # @DESCRIPTION:
-# The kde5.eclass provides support for building KDE 5-related packages.
+# This eclass is intended to streamline the creation of ebuilds for packages
+# that follow KDE upstream packaging conventions. It's primarily intended for
+# the three upstream release groups (Frameworks, Plasma, Applications) but
+# is also for any package that follows similar conventions.
+#
+# This eclass unconditionally inherits kde5-functions.eclass and all its public
+# functions and variables may be considered as part of this eclass's API.
+#
+# This eclass unconditionally inherits cmake-utils.eclass and all its public
+# variables and helper functions (not phase functions) may be considered as part
+# of this eclass's API.
+#
+# This eclass's phase functions are not intended to be mixed and matched, so if
+# any phase functions are overriden the version here should also be called.
 
 if [[ -z ${_KDE5_ECLASS} ]]; then
 _KDE5_ECLASS=1
@@ -35,19 +48,22 @@ EXPORT_FUNCTIONS pkg_setup pkg_nofetch src_unpack src_prepare src_configure src_
 # @ECLASS-VARIABLE: KDE_AUTODEPS
 # @DESCRIPTION:
 # If set to "false", do nothing.
-# For any other value, add a dependency on dev-qt/qtcore:5 and kde-frameworks/extra-cmake-modules:5.
+# For any other value, add dependencies on dev-qt/qtcore:5, kde-frameworks/kf-env
+# and kde-frameworks/extra-cmake-modules:5. Additionally, required blockers may
+# be set depending on the value of CATEGORY.
 : ${KDE_AUTODEPS:=true}
 
 # @ECLASS-VARIABLE: KDE_BLOCK_SLOT4
 # @DESCRIPTION:
-# This variable is used when KDE_AUTODEPS is set.
-# If set to "true", add RDEPEND block on kde-apps/${PN}:4
+# This variable only has any effect when when CATEGORY = "kde-apps" and
+# KDE_AUTODEPS is also set. If set to "true", add RDEPEND block on kde-apps/${PN}:4
 : ${KDE_BLOCK_SLOT4:=true}
 
 # @ECLASS-VARIABLE: KDE_DEBUG
 # @DESCRIPTION:
-# If set to "false", unconditionally build with -DNDEBUG.
-# Otherwise, add debug to IUSE to control building with that flag.
+# If set to "false", add -DNDEBUG (via cmake-utils_src_configure) and -DQT_NO_DEBUG
+# to CPPFLAGS.
+# Otherwise, add debug to IUSE.
 : ${KDE_DEBUG:=true}
 
 # @ECLASS-VARIABLE: KDE_DESIGNERPLUGIN
@@ -76,8 +92,25 @@ EXPORT_FUNCTIONS pkg_setup pkg_nofetch src_unpack src_prepare src_configure src_
 
 # @ECLASS-VARIABLE: KDE_DOC_DIR
 # @DESCRIPTION:
-# Defaults to "doc". Otherwise, use alternative KDE handbook path.
+# Specifies the location of the KDE handbook if not the default.
 : ${KDE_DOC_DIR:=doc}
+
+# @ECLASS-VARIABLE: KDE_QTHELP
+# @DESCRIPTION:
+# If set to "false", do nothing.
+# Otherwise, add "doc" to IUSE, add the appropriate dependency, generate
+# and install Qt compressed help files with -DBUILD_QCH=ON when USE=doc.
+if [[ ${CATEGORY} = kde-frameworks ]]; then
+	: ${KDE_QTHELP:=true}
+fi
+: ${KDE_QTHELP:=false}
+
+# @ECLASS-VARIABLE: KDE_TESTPATTERN
+# @DESCRIPTION:
+# DANGER: Only touch it if you know what you are doing.
+# By default, matches autotest(s), unittest(s) and test(s) pattern inside
+# cmake add_subdirectory calls.
+: ${KDE_TESTPATTERN:="\(auto|unit\)\?tests\?"}
 
 # @ECLASS-VARIABLE: KDE_TEST
 # @DESCRIPTION:
@@ -87,23 +120,14 @@ EXPORT_FUNCTIONS pkg_setup pkg_nofetch src_unpack src_prepare src_configure src_
 # when USE=!test.
 # If set to "forceoptional", remove a Qt5Test dependency and comment test
 # subdirs from the root CMakeLists.txt in addition to the above.
-# If set to "forceoptional-recursive", remove a Qt5Test dependency and comment
-# test subdirs from *any* CMakeLists.txt in addition to the above.
+# If set to "forceoptional-recursive", remove Qt5Test dependencies and make
+# test subdirs according to KDE_TESTPATTERN from *any* CMakeLists.txt in ${S}
+# and below conditional on BUILD_TESTING. This is always meant as a short-term
+# fix and creates ${T}/${P}-tests-optional.patch to refine and submit upstream.
 if [[ ${CATEGORY} = kde-frameworks ]]; then
 	: ${KDE_TEST:=true}
-else
-	: ${KDE_TEST:=false}
 fi
-
-# @ECLASS-VARIABLE: KDE_L10N
-# @DESCRIPTION:
-# This is an array of translations this ebuild supports. These translations
-# are automatically added to IUSE.
-if [[ ${KDEBASE} = kdel10n ]]; then
-	if [[ -n ${KDE_L10N} ]]; then
-		IUSE="${IUSE} $(printf 'l10n_%s ' ${KDE_L10N[@]})"
-	fi
-fi
+: ${KDE_TEST:=false}
 
 # @ECLASS-VARIABLE: KDE_SELINUX_MODULE
 # @DESCRIPTION:
@@ -130,8 +154,6 @@ KDE_UNRELEASED=( )
 
 if [[ ${KDEBASE} = kdevelop ]]; then
 	HOMEPAGE="https://www.kdevelop.org/"
-elif [[ ${KDEBASE} = kdel10n ]]; then
-	HOMEPAGE="http://l10n.kde.org"
 elif [[ ${KMNAME} = kdepim ]]; then
 	HOMEPAGE="https://www.kde.org/applications/office/kontact/"
 else
@@ -172,13 +194,26 @@ case ${KDE_AUTODEPS} in
 		RDEPEND+=" >=kde-frameworks/kf-env-4"
 		COMMONDEPEND+=" $(add_qt_dep qtcore)"
 
-		if [[ ${CATEGORY} = kde-frameworks || ${CATEGORY} = kde-plasma && ${PN} != polkit-kde-agent ]]; then
-			RDEPEND+=" !<kde-apps/kde4-l10n-15.12.3-r1"
+		# all packages need breeze/oxygen icons for basic iconset, bug #564838
+		if [[ ${PN} != breeze-icons && ${PN} != oxygen-icons ]]; then
+			RDEPEND+=" || ( $(add_frameworks_dep breeze-icons) kde-frameworks/oxygen-icons:* )"
 		fi
 
-		if [[ ${KDE_BLOCK_SLOT4} = true && ${CATEGORY} = kde-apps ]]; then
-			RDEPEND+=" !kde-apps/${PN}:4"
-		fi
+		case ${CATEGORY} in
+			kde-frameworks | \
+			kde-plasma)
+				RDEPEND+=" !<kde-apps/kde4-l10n-15.12.3-r1"
+				;;
+			kde-apps)
+				[[ ${KDE_BLOCK_SLOT4} = true ]] && RDEPEND+=" !kde-apps/${PN}:4"
+				[[ $(get_version_component_range 1) -ge 17 ]] && \
+					RDEPEND+="
+						!kde-apps/kde-l10n
+						!<kde-apps/kde4-l10n-16.12.0:4
+						!kde-apps/kdepim-l10n:5
+					"
+				;;
+		esac
 		;;
 esac
 
@@ -215,6 +250,18 @@ case ${KDE_HANDBOOK} in
 		;;
 esac
 
+case ${KDE_QTHELP} in
+	false)	;;
+	*)
+		IUSE+=" doc"
+		COMMONDEPEND+=" doc? ( $(add_qt_dep qt-docs) )"
+		DEPEND+=" doc? (
+			$(add_qt_dep qthelp)
+			>=app-doc/doxygen-1.8.13-r1
+		)"
+		;;
+esac
+
 case ${KDE_TEST} in
 	false)	;;
 	*)
@@ -241,9 +288,9 @@ fi
 
 if [[ -n ${KDEBASE} && ${KDEBASE} = kdevelop && ${KDE_BUILD_TYPE} = release ]]; then
 	if [[ -n ${KMNAME} ]]; then
-		S=${WORKDIR}/${KMNAME}-${PV%.0}	# kdevelop missing trailing .0 in first release
+		S=${WORKDIR}/${KMNAME}-${PV}
 	else
-		S=${WORKDIR}/${PN}-${PV%.0}	# kdevelop missing trailing .0 in first release
+		S=${WORKDIR}/${P}
 	fi
 fi
 
@@ -300,7 +347,7 @@ _calculate_src_uri() {
 			local plasmapv=$(get_version_component_range 1-3)
 
 			case ${PV} in
-				5.?.[6-9]? )
+				5.?.[6-9]? | 5.??.[6-9]? )
 					# Plasma 5 beta releases
 					SRC_URI="mirror://kde/unstable/plasma/${plasmapv}/${_kmname}-${PV}.tar.xz"
 					RESTRICT+=" mirror"
@@ -326,24 +373,9 @@ _calculate_src_uri() {
 				RESTRICT+=" mirror"
 				;;
 			*)
-				SRC_URI="mirror://kde/stable/${_kdebase}/${PV}/src/${_kmname}-${PV%.0}.tar.xz" ;;
+				SRC_URI="mirror://kde/stable/${_kdebase}/${PV}/src/${_kmname}-${PV}.tar.xz" ;;
 		esac
 		unset _kdebase
-	fi
-
-	if [[ ${KDEBASE} = kdel10n ]] ; then
-		local uri_base="${SRC_URI/${_kmname}-${PV}.tar.xz/}kde-l10n/kde-l10n"
-		SRC_URI=""
-		for my_l10n in ${KDE_L10N[@]} ; do
-			case ${my_l10n} in
-				sr | sr-ijekavsk | sr-Latn-ijekavsk | sr-Latn)
-					SRC_URI="${SRC_URI} l10n_${my_l10n}? ( ${uri_base}-sr-${PV}.tar.xz )"
-					;;
-				*)
-					SRC_URI="${SRC_URI} l10n_${my_l10n}? ( ${uri_base}-$(kde_l10n2lingua ${my_l10n})-${PV}.tar.xz )"
-					;;
-			esac
-		done
 	fi
 
 	if _kde_is_unreleased ; then
@@ -402,7 +434,8 @@ debug-print "${LINENO} ${ECLASS} ${FUNCNAME}: SRC_URI is ${SRC_URI}"
 
 # @FUNCTION: kde5_pkg_pretend
 # @DESCRIPTION:
-# Do some basic settings
+# Checks if the active compiler meets the minimum version requirements.
+# phase function is only exported if KDE_GCC_MINIMAL is defined.
 kde5_pkg_pretend() {
 	debug-print-function ${FUNCNAME} "$@"
 	_check_gcc_version
@@ -410,7 +443,7 @@ kde5_pkg_pretend() {
 
 # @FUNCTION: kde5_pkg_setup
 # @DESCRIPTION:
-# Do some basic settings
+# Checks if the active compiler meets the minimum version requirements.
 kde5_pkg_setup() {
 	debug-print-function ${FUNCNAME} "$@"
 	_check_gcc_version
@@ -418,7 +451,9 @@ kde5_pkg_setup() {
 
 # @FUNCTION: kde5_pkg_nofetch
 # @DESCRIPTION:
-# Display package publication status
+# Intended for use in the KDE overlay. If this package matches something in
+# KDE_UNRELEASED, display a giant warning that the package has not yet been
+# released upstream and should not be used.
 kde5_pkg_nofetch() {
 	if ! _kde_is_unreleased ; then
 		return
@@ -448,7 +483,7 @@ kde5_pkg_nofetch() {
 
 # @FUNCTION: kde5_src_unpack
 # @DESCRIPTION:
-# Function for unpacking KDE 5.
+# Unpack the sources, automatically handling both release and live ebuilds.
 kde5_src_unpack() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -458,16 +493,6 @@ kde5_src_unpack() {
 				git-r3_src_unpack
 				;;
 		esac
-	elif [[ ${KDEBASE} = kdel10n ]]; then
-		local l10npart=5
-		[[ ${PN} = kde4-l10n ]] && l10npart=4
-		mkdir -p "${S}" || die "Failed to create source dir ${S}"
-		cd "${S}"
-		for my_tar in ${A}; do
-			tar -xpf "${DISTDIR}/${my_tar}" --xz \
-				"${my_tar/.tar.xz/}/CMakeLists.txt" "${my_tar/.tar.xz/}/${l10npart}" 2> /dev/null ||
-				elog "${my_tar}: tar extract command failed at least partially - continuing"
-		done
 	else
 		default
 	fi
@@ -475,45 +500,10 @@ kde5_src_unpack() {
 
 # @FUNCTION: kde5_src_prepare
 # @DESCRIPTION:
-# Function for preparing the KDE 5 sources.
+# Wrapper for cmake-utils_src_prepare with lots of extra logic for magic
+# handling of linguas, tests, handbook etc.
 kde5_src_prepare() {
 	debug-print-function ${FUNCNAME} "$@"
-
-	if [[ ${KDEBASE} = kdel10n ]]; then
-		local l10npart=5
-		[[ ${PN} = kde4-l10n ]] && l10npart=4
-		# move known variant subdirs to root dir, currently sr@*
-		use_if_iuse l10n_sr-ijekavsk && _l10n_variant_subdir2root sr-ijekavsk sr
-		use_if_iuse l10n_sr-Latn-ijekavsk && _l10n_variant_subdir2root sr-Latn-ijekavsk sr
-		use_if_iuse l10n_sr-Latn && _l10n_variant_subdir2root sr-Latn sr
-		if use_if_iuse l10n_sr; then
-			rm -rf kde-l10n-sr-${PV}/${l10npart}/sr/sr@* || die "Failed to cleanup L10N=sr"
-			_l10n_variant_subdir_buster sr
-		elif [[ -d kde-l10n-sr-${PV} ]]; then
-			# having any variant selected means parent lingua will be unpacked as well
-			rm -r kde-l10n-sr-${PV} || die "Failed to remove sr parent lingua"
-		fi
-
-		cat <<-EOF > CMakeLists.txt || die
-		project(${PN})
-		cmake_minimum_required(VERSION 2.8.12)
-		EOF
-		# add all l10n directories to cmake
-		if [[ -n ${A} ]]; then
-			cat <<-EOF >> CMakeLists.txt || die
-			$(printf "add_subdirectory( %s )\n" \
-				`find . -mindepth 1 -maxdepth 1 -type d | sed -e "s:^\./::"`)
-			EOF
-		fi
-
-		# for KF5: drop KDE4-based part; for KDE4: drop KF5-based part
-		case ${l10npart} in
-			5) find -maxdepth 2 -type f -name CMakeLists.txt -exec \
-				sed -i -e "/add_subdirectory(4)/ s/^/#DONT/" {} + || die ;;
-			4) find -maxdepth 2 -type f -name CMakeLists.txt -exec \
-				sed -i -e "/add_subdirectory(5)/ s/^/#DONT/" {} + || die ;;
-		esac
-	fi
 
 	cmake-utils_src_prepare
 
@@ -528,32 +518,45 @@ kde5_src_prepare() {
 
 		if [[ ${KDE_HANDBOOK} = forceoptional ]] ; then
 			punt_bogus_dep KF5 DocTools
+			sed -i -e "/kdoctools_install/ s/^/#DONT/" CMakeLists.txt || die
 		fi
 	fi
 
 	# drop translations when nls is not wanted
-	if [[ -d po ]] && in_iuse nls && ! use nls ; then
-		rm -r po || die
+	if in_iuse nls && ! use nls ; then
+		if [[ -d po ]] ; then
+			rm -r po || die
+		fi
+		if [[ -d poqm ]] ; then
+			rm -r poqm || die
+		fi
 	fi
 
-	# enable only the requested translations
-	# when required
-	if [[ -d po && -v LINGUAS ]] ; then
-		pushd po > /dev/null || die
-		local lang
-		for lang in *; do
-			if [[ -d ${lang} ]] && ! has ${lang} ${LINGUAS} ; then
-				rm -r ${lang} || die
-				if [[ -e CMakeLists.txt ]] ; then
-					cmake_comment_add_subdirectory ${lang}
+	# enable only the requested translations when required
+	if [[ -v LINGUAS ]] ; then
+		local po
+		for po in po poqm; do
+		if [[ -d ${po} ]] ; then
+			pushd ${po} > /dev/null || die
+			local lang
+			for lang in *; do
+				if [[ -e ${lang} ]] && ! has ${lang/.po/} ${LINGUAS} ; then
+					case ${lang} in
+						cmake_modules | \
+						CMakeLists.txt | \
+						${PN}.pot)	;;
+						*) rm -r ${lang} || die	;;
+					esac
+					if [[ -e CMakeLists.txt ]] ; then
+						cmake_comment_add_subdirectory ${lang}
+						sed -e "/add_subdirectory([[:space:]]*${lang}\/.*[[:space:]]*)/d" \
+							-i CMakeLists.txt || die
+					fi
 				fi
-			elif [[ -f ${lang} ]] && ! has ${lang/.po/} ${LINGUAS} ; then
-				if [[ ${lang} != CMakeLists.txt && ${lang} != ${PN}.pot ]] ; then
-					rm ${lang} || die
-				fi
-			fi
+			done
+			popd > /dev/null || die
+		fi
 		done
-		popd > /dev/null || die
 	fi
 
 	if [[ ${KDE_BUILD_TYPE} = release && ${CATEGORY} != kde-apps ]] ; then
@@ -569,11 +572,6 @@ kde5_src_prepare() {
 		fi
 	fi
 
-	# in frameworks, tests = manual tests so never build them
-	if [[ ${CATEGORY} = kde-frameworks ]] && [[ ${PN} != extra-cmake-modules ]]; then
-		cmake_comment_add_subdirectory tests
-	fi
-
 	# only build unit tests when required
 	if ! use_if_iuse test ; then
 		if [[ ${KDE_TEST} = forceoptional ]] ; then
@@ -582,22 +580,39 @@ kde5_src_prepare() {
 			cmake_comment_add_subdirectory autotests test tests
 		elif [[ ${KDE_TEST} = forceoptional-recursive ]] ; then
 			punt_bogus_dep Qt5 Test
-			local d
-			for d in $(find . -type d -name "autotests" -or -name "tests" -or -name "test" -or -name "unittests"); do
-				pushd ${d%/*} > /dev/null || die
+			local f pf="${T}/${P}"-tests-optional.patch
+			touch ${pf} || die "Failed to touch patch file"
+			for f in $(find . -type f -name "CMakeLists.txt" -exec \
+				grep -l "^\s*add_subdirectory\s*\(\s*.*${KDE_TESTPATTERN}\s*)\s*\)" {} \;); do
+				cp ${f} ${f}.old || die "Failed to prepare patch origfile"
+				pushd ${f%/*} > /dev/null || die
 					punt_bogus_dep Qt5 Test
-					cmake_comment_add_subdirectory autotests test tests
+					sed -i CMakeLists.txt -e \
+						"/^#/! s/add_subdirectory\s*\(\s*.*${KDE_TESTPATTERN}\s*)\s*\)/if(BUILD_TESTING)\n&\nendif()/" \
+						|| die
 				popd > /dev/null || die
+				diff -Naur ${f}.old ${f} 1>>${pf}
+				rm ${f}.old || die "Failed to clean up"
 			done
+			einfo "Build system was modified by KDE_TEST=forceoptional-recursive."
+			einfo "Unified diff file ready for pickup in:"
+			einfo "  ${pf}"
+			einfo "Push it upstream to make this message go away."
 		elif [[ ${CATEGORY} = kde-frameworks || ${CATEGORY} = kde-plasma || ${CATEGORY} = kde-apps ]] ; then
 			cmake_comment_add_subdirectory autotests test tests
 		fi
+	fi
+
+	# in frameworks, tests = manual tests so never build them
+	if [[ ${CATEGORY} = kde-frameworks ]] && [[ ${PN} != extra-cmake-modules ]]; then
+		cmake_comment_add_subdirectory tests
 	fi
 }
 
 # @FUNCTION: kde5_src_configure
 # @DESCRIPTION:
-# Function for configuring the build of KDE 5.
+# Wrapper for cmake-utils_src_configure with extra logic for magic handling of
+# handbook, tests etc.
 kde5_src_configure() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -608,7 +623,7 @@ kde5_src_configure() {
 
 	local cmakeargs
 
-	if ! use_if_iuse test ; then
+	if in_iuse test && ! use test ; then
 		cmakeargs+=( -DBUILD_TESTING=OFF )
 
 		if [[ ${KDE_TEST} = optional ]] ; then
@@ -624,6 +639,10 @@ kde5_src_configure() {
 		cmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_Qt5Designer=ON )
 	fi
 
+	if [[ ${KDE_QTHELP} != false ]]; then
+		cmakeargs+=( -DBUILD_QCH=$(usex doc) )
+	fi
+
 	# install mkspecs in the same directory as qt stuff
 	cmakeargs+=(-DKDE_INSTALL_USE_QT_SYS_PATHS=ON)
 
@@ -635,7 +654,8 @@ kde5_src_configure() {
 
 # @FUNCTION: kde5_src_compile
 # @DESCRIPTION:
-# Function for compiling KDE 5.
+# Wrapper for cmake-utils_src_compile. Currently doesn't do anything extra, but
+# is included as part of the API just in case it's needed in the future.
 kde5_src_compile() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -644,7 +664,8 @@ kde5_src_compile() {
 
 # @FUNCTION: kde5_src_test
 # @DESCRIPTION:
-# Function for testing KDE 5.
+# Wrapper for cmake-utils_src_test with extra logic for magic handling of dbus
+# and virtualx.
 kde5_src_test() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -675,22 +696,32 @@ kde5_src_test() {
 
 # @FUNCTION: kde5_src_install
 # @DESCRIPTION:
-# Function for installing KDE 5.
+# Wrapper for cmake-utils_src_install with extra logic to avoid compressing
+# certain types of files. For example, khelpcenter is not able to read
+# compressed handbooks.
 kde5_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	cmake-utils_src_install
 
-	# We don't want ${PREFIX}/share/doc/HTML to be compressed,
+	# We don't want QCH and tags files to be compressed, because then
+	# cmake can't find the tags and qthelp viewers can't find the docs
+	local p=$(best_version dev-qt/qtcore:5)
+	local pv=$(echo ${p/%-r[0-9]*/} | rev | cut -d - -f 1 | rev)
+	if [[ -d ${ED%/}/usr/share/doc/qt-${pv} ]]; then
+		docompress -x /usr/share/doc/qt-${pv}
+	fi
+
+	# We don't want /usr/share/doc/HTML to be compressed,
 	# because then khelpcenter can't find the docs
-	if [[ -d ${ED}/${PREFIX}/share/doc/HTML ]]; then
-		docompress -x ${PREFIX}/share/doc/HTML
+	if [[ -d ${ED%/}/usr/share/doc/HTML ]]; then
+		docompress -x /usr/share/doc/HTML
 	fi
 }
 
 # @FUNCTION: kde5_pkg_preinst
 # @DESCRIPTION:
-# Function storing icon caches
+# Sets up environment variables required in kde5_pkg_postinst.
 kde5_pkg_preinst() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -700,11 +731,13 @@ kde5_pkg_preinst() {
 
 # @FUNCTION: kde5_pkg_postinst
 # @DESCRIPTION:
-# Function to rebuild the KDE System Configuration Cache after an application has been installed.
+# Updates the various XDG caches (icon, desktop, mime) if necessary.
 kde5_pkg_postinst() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	gnome2_icon_cache_update
+	if [[ -n ${GNOME2_ECLASS_ICONS} ]]; then
+		gnome2_icon_cache_update
+	fi
 	xdg_pkg_postinst
 
 	if [[ -z ${I_KNOW_WHAT_I_AM_DOING} ]]; then
@@ -714,63 +747,19 @@ kde5_pkg_postinst() {
 			einfo "Use it at your own risk."
 			einfo "Do _NOT_ file bugs at bugs.gentoo.org because of this ebuild!"
 		fi
-		# for kf5-based applications tell user that he SHOULD NOT be using kde-plasma/plasma-workspace:4
-		if [[ ${KDEBASE} != kde-base || ${CATEGORY} = kde-apps ]]  && \
-				has_version 'kde-plasma/plasma-workspace:4'; then
-			echo
-			ewarn "WARNING! Your system configuration still contains \"kde-plasma/plasma-workspace:4\","
-			ewarn "indicating a Plasma 4 setup. With this setting you are unsupported by KDE team."
-			ewarn "Please consider upgrading to Plasma 5."
-		fi
 	fi
 }
 
 # @FUNCTION: kde5_pkg_postrm
 # @DESCRIPTION:
-# Function to rebuild the KDE System Configuration Cache after an application has been removed.
+# Updates the various XDG caches (icon, desktop, mime) if necessary.
 kde5_pkg_postrm() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	gnome2_icon_cache_update
+	if [[ -n ${GNOME2_ECLASS_ICONS} ]]; then
+		gnome2_icon_cache_update
+	fi
 	xdg_pkg_postrm
-}
-
-_l10n_variant_subdir2root() {
-	local l10npart=5
-	[[ ${PN} = kde4-l10n ]] && l10npart=4
-	local lingua=$(kde_l10n2lingua ${1})
-	local src=kde-l10n-${2}-${PV}
-	local dest=kde-l10n-${lingua}-${PV}/${l10npart}
-
-	# create variant rootdir structure from parent lingua and adapt it
-	mkdir -p ${dest} || die "Failed to create ${dest}"
-	mv ${src}/${l10npart}/${2}/${lingua} ${dest}/${lingua} || die "Failed to create ${dest}/${lingua}"
-	cp -f ${src}/CMakeLists.txt kde-l10n-${lingua}-${PV} || die "Failed to prepare L10N=${1} subdir"
-	echo "add_subdirectory(${lingua})" > ${dest}/CMakeLists.txt ||
-		die "Failed to prepare ${dest}/CMakeLists.txt"
-	cp -f ${src}/${l10npart}/${2}/CMakeLists.txt ${dest}/${lingua} ||
-		die "Failed to create ${dest}/${lingua}/CMakeLists.txt"
-	sed -e "s/${2}/${lingua}/" -i ${dest}/${lingua}/CMakeLists.txt ||
-		die "Failed to prepare ${dest}/${lingua}/CMakeLists.txt"
-
-	_l10n_variant_subdir_buster ${1}
-}
-
-_l10n_variant_subdir_buster() {
-	local l10npart=5
-	[[ ${PN} = kde4-l10n ]] && l10npart=4
-	local dir=kde-l10n-$(kde_l10n2lingua ${1})-${PV}/${l10npart}/$(kde_l10n2lingua ${1})
-
-	case ${l10npart} in
-		5) sed -e "/^add_subdirectory(/d" -i ${dir}/CMakeLists.txt || die "Failed to cleanup ${dir} subdir" ;;
-		4) sed -e "/^macro.*subdirectory(/d" -i ${dir}/CMakeLists.txt || die "Failed to cleanup ${dir} subdir" ;;
-	esac
-
-	for subdir in $(find ${dir} -mindepth 1 -maxdepth 1 -type d | sed -e "s:^\./::"); do
-		if [[ ${subdir##*/} != "cmake_modules" ]] ; then
-			echo "add_subdirectory(${subdir##*/})" >> ${dir}/CMakeLists.txt || die
-		fi
-	done
 }
 
 fi

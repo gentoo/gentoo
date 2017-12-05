@@ -13,7 +13,7 @@ HOMEPAGE="http://www.moddb.com/mods/troopers-dawn-of-destiny/"
 SRC_URI="troopersversion${PV/.}zip.zip"
 
 LICENSE="freedist"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="dedicated opengl"
 RESTRICT="fetch"
 

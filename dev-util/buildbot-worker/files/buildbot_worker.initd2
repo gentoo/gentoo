@@ -1,0 +1,57 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+BUILDWORKER_NAME=${RC_SVCNAME:16}
+BUILDWORKER_PATH="${BASEDIR}/${BUILDWORKER_NAME}"
+depend() {
+	need net
+}
+
+checkconfig() {
+	if [ -z "${BUILDWORKER_NAME}" ]; then
+		eerror "Buildbot-worker name not defined. Please link buildbot_worker.foo to this file to start the buildbot_worker with the name \"foo\"."
+		return 1
+	fi
+	if [ -z "${BASEDIR}" ]; then
+		eerror "BASEDIR not set"
+		return 1
+	fi
+	if [ -z "${USERNAME}" ]; then
+		eerror "USERNAME not set"
+		return 1
+	fi
+	if [ ! -d "${BUILDWORKER_PATH}" ]; then
+		eerror "${BUILDWORKER_PATH} is not a directory"
+		return 1
+	fi
+	if [ ! -e "${BUILDWORKER_PATH}/buildbot.tac" ]; then
+		eerror "${BUILDWORKER_PATH} does not contain buildbot.tac"
+		return 1
+	fi
+	if [ ! -e "${RUNTIME_PYTHON}" ]; then
+		RUNTIME_PYTHON="/usr/bin/python"
+	fi
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Starting buildbot-worker in ${BUILDWORKER_PATH}"
+	# We set HOME here to make something valid show up in the env of child
+	# processes spawned by the buildbot-worker.
+	start-stop-daemon --start -u "${USERNAME}" \
+		--pidfile "${BUILDWORKER_PATH}/buildbot_worker.pid" \
+		--env HOME="${BUILDWORKER_PATH}" \
+		--exec "${RUNTIME_PYTHON}" -- /usr/bin/twistd \
+		--no_save \
+		--logfile="${BUILDWORKER_PATH}/twistd.log" \
+		--pidfile="${BUILDWORKER_PATH}/buildbot_worker.pid" \
+		--python="${BUILDWORKER_PATH}/buildbot.tac"
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping buildbot-worker in ${BUILDWORKER_PATH}"
+	start-stop-daemon --stop --pidfile "${BUILDWORKER_PATH}/buildbot_worker.pid"
+	eend $?
+}

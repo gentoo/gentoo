@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -17,11 +17,7 @@
 		support for monitors (such as Apple displays) that implement MCCS using
 		a USB connection.
 	</longdescription>
-
 	<use>
-		<flag name="enable-api-libs" restrict="&gt;=app-misc/ddcutil-0.7.0">
-			Enables the C/C++ API.
-		</flag>
 		<flag name="user-permissions">
 			Adds a udev rules to allow non-root users in the i2c group to
 			access the /dev/i2c-* devices. If usb-monitor is selected, users
@@ -32,4 +28,7 @@
 			Adds support for monitors attached via USB.
 		</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">rockowitz/ddcutil</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,12 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit eutils toolchain-funcs
 
 DESCRIPTION="A dock applet to make any application dockable"
-HOMEPAGE="http://burse.uni-hamburg.de/~friedel/software/wmswallow.html"
-SRC_URI="http://burse.uni-hamburg.de/~friedel/software/wmswallow/${PN}.tar.Z"
+HOMEPAGE="http://www.dockapps.net/wmswallow"
+SRC_URI="http://www.dockapps.net/downloaduuu/${PN}.tar.Z"
 
 LICENSE="GPL-2"
 SLOT="0"

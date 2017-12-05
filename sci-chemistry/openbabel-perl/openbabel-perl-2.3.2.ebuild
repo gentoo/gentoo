@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ DESCRIPTION="Perl bindings for OpenBabel"
 HOMEPAGE="http://openbabel.sourceforge.net/"
 SRC_URI="mirror://sourceforge/openbabel/openbabel-${PV}.tar.gz"
 
-KEYWORDS="amd64 ~arm ppc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 SLOT="0"
 LICENSE="GPL-2"
 IUSE=""
@@ -23,13 +23,17 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/openbabel-${PV}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-trunk_cmake.patch
+	"${FILESDIR}"/${P}-bindings_only.patch
+	"${FILESDIR}"/${P}-gcc-6_and_7-backport.patch
+)
+
 src_prepare() {
 	sed \
 		-e '/__GNUC__/s:== 4:>= 4:g' \
 		-i include/openbabel/shared_ptr.h || die
-	epatch \
-		"${FILESDIR}"/${P}-trunk_cmake.patch \
-		"${FILESDIR}"/${P}-bindings_only.patch
+	cmake-utils_src_prepare
 	perl_set_version
 }
 

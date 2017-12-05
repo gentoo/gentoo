@@ -156,7 +156,7 @@ src_install() {
 		# create a symlink for uname in /usr/bin/ since autotools require it
 		local x
 		for x in ${com} uname ; do
-			dosym /bin/${x} /usr/bin/${x}
+			dosym ../../bin/${x} /usr/bin/${x}
 		done
 	else
 		# For now, drop the man pages, collides with the ones of the system.

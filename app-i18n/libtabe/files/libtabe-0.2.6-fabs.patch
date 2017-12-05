@@ -5,7 +5,7 @@
  *	tabe_tsi.c:496: warning: incompatible implicit declaration of built-in function ‘fabs’
  * Please do not file a Gentoo bug and instead report the above QA
  * issues directly to the upstream developers of this software.
- * Homepage: http://packages.qa.debian.org/libt/libtabe.html
+ * Homepage: https://packages.qa.debian.org/libt/libtabe.html
 
 diff -NrU5 libtabe-0.2.6.orig.really/src/tabe_tsi.c libtabe-0.2.6.orig/src/tabe_tsi.c
 --- libtabe-0.2.6.orig.really/src/tabe_tsi.c	2008-04-20 01:35:56.000000000 +0200

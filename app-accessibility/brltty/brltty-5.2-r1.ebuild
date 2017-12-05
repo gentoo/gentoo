@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_4 python3_5 )
+PYTHON_COMPAT=( python2_7 python3_{4,5} )
 FINDLIB_USE="ocaml"
 
 inherit findlib eutils multilib toolchain-funcs java-pkg-opt-2 flag-o-matic \
@@ -22,7 +22,7 @@ IUSE="+api +beeper bluetooth +contracted-braille doc +fm gpm iconv icu
 REQUIRED_USE="doc? ( api )
 	java? ( api )
 	ocaml? ( api )
-	python? ( api )
+	python? ( api ${PYTHON_REQUIRED_USE} )
 	tcl? ( api )"
 
 COMMON_DEP="bluetooth? ( net-wireless/bluez )
@@ -46,7 +46,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-fix-ldflags.patch \
 		"${FILESDIR}"/${P}-udev.patch \
 		"${FILESDIR}"/${P}-respect-AR.patch \
-		"${FILESDIR}"/${P}-major.patch
+		"${FILESDIR}"/${P}-sysmacros.patch
 
 	java-pkg-opt-2_src_prepare
 
@@ -64,6 +64,9 @@ src_prepare() {
 }
 
 src_configure() {
+	append-cppflags "$($(tc-getPKG_CONFIG) --cflags ncurses)"
+	append-libs "$($(tc-getPKG_CONFIG) --libs ncurses)"
+
 	tc-export AR LD PKG_CONFIG
 	# override prefix in order to install into /
 	# braille terminal needs to be available as soon in the boot process as

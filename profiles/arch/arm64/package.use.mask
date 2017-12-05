@@ -1,6 +1,134 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# NeddySeagoon <neddysegoon@gentoo.org> 24 Aug 2017
+# Support for g15daemon  still needs -9999 packages on all arches 
+media-sound/mumble g15
+
+# NeddySeagoon <neddysegoon@gentoo.org> (21 Aug 2107)
+# Pulls in sci-libs/coinor-mp which wants immintrin.h not on arm64
+app-office/libreoffice coinmp
+
+# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
+media-libs/mesa vulkan
+
+# Alexis Ballier <aballier@gentoo.org> (31 Jul 2017)
+# Passes -mfpu=neon with neon enabled
+mail-client/thunderbird neon
+
+# Alexis Ballier <aballier@gentoo.org> (20 Jul 2017)
+# media-libs/libemf fails with #error unknown CPU.
+media-gfx/pstoedit emf
+
+# Alexis Ballier <aballier@gentoo.org> (14 Jul 2017)
+# Appends -mfpu=neon and asm seems arm32
+net-misc/freerdp neon
+
+# Alexis Ballier <aballier@gentoo.org> (14 Jul 2017)
+# zfs does not build on arm64 (yet?)
+app-emulation/libvirt zfs
+sys-cluster/ceph zfs
+
+# Alexis Ballier <aballier@gentoo.org> (11 Jul 2017)
+# Needs indirectly clisp:
+# https://bugs.gentoo.org/show_bug.cgi?id=624532
+app-text/texlive xindy
+
+# Alexis Ballier <aballier@gentoo.org> (11 Jul 2017)
+# dev-libs/botan:0 fails with 'ERROR: Unknown or unidentifiable processor
+# "aarch64"'
+app-crypt/qca botan
+
+# Alexis Ballier <aballier@gentoo.org> (10 Jul 2017)
+# openvz-sources are likely too old for any proper arm64 usage
+app-emulation/libvirt openvz
+
+# Alexis Ballier <aballier@gentoo.org> (10 Jul 2017)
+# sys-firmware/ipxe does not build, mask x86 targets needing it
+app-emulation/qemu qemu_softmmu_targets_i386 qemu_softmmu_targets_x86_64
+
+# Alexis Ballier <aballier@gentoo.org> (10 Jul 2017)
+# pull webkit-gtk:2 which we would like to avoid
+x11-libs/wxGTK:2.8 webkit
+x11-libs/wxGTK:3.0 webkit
+
+# Alexis Ballier <aballier@gentoo.org> (10 Jul 2017)
+# media-gfx/nvidia-texture-tools does not support arm64
+media-libs/devil nvtt
+
+# Alexis Ballier <aballier@gentoo.org> (10 Jul 2017)
+# luajit added arm64 support in luajit 2.1, still in rc/beta, revisit this when
+# such a version hits the tree
+dev-db/redis luajit
+www-servers/nginx luajit
+
+# Alexis Ballier <aballier@gentoo.org> (10 Jul 2017)
+# Virtualbox is x86 only
+app-emulation/libvirt virtualbox
+
+# Alexis Ballier <aballier@gentoo.org> (7 Jul 2017)
+# nautilus pulls in gnome-extra/sushi -> dev-libs/gjs -> dev-lang/spidermonkey:24
+# Older spidermonkey does not work on arm64.
+# This should be revised when gjs is updated.
+gnome-base/nautilus previewer
+app-crypt/libsecret test
+
+# Michał Górny <mgorny@gentoo.org> (28 Jun 2017)
+# app-misc/dtach & dev-tcltk/tcllib are not keyworded, and tests are
+# restricted anyway, so no point in pursuing it right now.
+app-shells/bash-completion test
+
+# Alexis Ballier <aballier@gentoo.org> (27 Jun 2017)
+# qtwebkit:4 is old and doesnt build with gcc7, skip it
+dev-python/PyQt4 webkit
+dev-qt/designer:4 webkit
+dev-qt/qtdeclarative:4 webkit
+dev-python/pyside webkit
+
+# Alexis Ballier <aballier@gentoo.org> (21 Jun 2017)
+# Appends -mfpu=neon that doesnt work on arm64
+media-libs/speexdsp cpu_flags_arm_neon
+
+# Alexis Ballier <aballier@gentoo.org> (21 Jun 2017)
+# net-fs/openafs-kernel does not recognize arm64 properly
+# Need to check if this has a chance to work with in-kernel drivers
+app-crypt/heimdal afs
+
+# Alexis Ballier <aballier@gentoo.org> (20 Jun 2017)
+# Appends -mfpu=neon which is only valid for arm32 and suggests this is arm32
+# only
+media-sound/pulseaudio neon
+
+# Alexis Ballier <aballier@gentoo.org> (19 Jun 2017)
+# This is for arm32 only neon asm
+media-libs/vo-aacenc cpu_flags_arm_neon
+
+# Alexis Ballier <aballier@gentoo.org> (16 Jun 2017)
+# neon on pixman seems armv7 only, at least according to configure checks: it
+# aborts when neon is enabled.
+x11-libs/pixman neon
+
+# James Le Cuirot <chewi@gentoo.org> (22 May 2017)
+# Only available on some architectures.
+dev-java/icedtea -shenandoah
+
+# Michael Weber <xmw@gentoo.org> (18 May 2017)
+# mask due missing keywords on dev-python/epydoc[latex]
+sys-apps/portage epydoc
+
+# Jason Zaman <perfinion@gentoo.org> (09 May 2017)
+# x11-libs/libXpresent is not keyworded on arm64
+xfce-base/xfwm4 xpresent
+
+# James Le Cuirot <chewi@gentoo.org> (25 Apr 2017)
+# Oracle doesn't include VisualVM on this platform.
+dev-java/oracle-jdk-bin visualvm
+
+# Markus Meier <maekke@gentoo.org> (24 Mar 2017)
+# unkeyworded deps, bug #552330
+app-portage/g-sorcery bson
+
 # Thomas Deutschmann <whissi@gentoo.org> (01 Mar 2017)
 # Unkeyworded depedencies
 app-admin/rsyslog grok kafka mongodb normalize rabbitmq
@@ -48,7 +176,7 @@ net-misc/tlsdate seccomp
 # Mike Frysinger <vapier@gentoo.org> (20 Jul 2015)
 # Mart Raudsepp <leio@gentoo.org> (04 Feb 2017)
 # Needs deps tested.
-net-misc/curl curl_ssl_axtls curl_ssl_libressl curl_ssl_polarssl metalink
+net-misc/curl curl_ssl_axtls curl_ssl_libressl metalink
 
 # Mike Frysinger <vapier@gentoo.org> (16 Mar 2015)
 # Needs sci-physics/bullet tested #499974
@@ -89,10 +217,6 @@ media-sound/rhythmbox visualizer
 # Unkeyworded deps, bug #481462
 dev-python/ipython nbconvert
 
-# Johannes Huber <johu@gentoo.org> (15 Sep 2013)
-# Depends on kde-misc/networkmanagement, not keyworded yet.
-kde-apps/solid-runtime networkmanager
-
 # Sergey Popov <pinkbyte@gentoo.org> (06 Sep 2013)
 # sci-libs/hdf does not build properly on arm
 dev-perl/PDL	hdf
@@ -113,10 +237,6 @@ media-libs/devil allegro nvtt
 # requires net-misc/freerdp which is not keyworded on arm
 dev-libs/weston rdp
 
-# Patrick Lauer <patrick@gentoo.org> (17 June 2013)
-# Fix per-arch mask of phonon[zeitgeist] #460140
-media-libs/phonon zeitgeist
-
 # Andreas K. Huettel <dilfridge@gentoo.org> (27 May 2013)
 # Firmware loader not keyworded yet
 sci-libs/linux-gpib firmware
@@ -124,10 +244,6 @@ sci-libs/linux-gpib firmware
 # Markus Meier <maekke@gentoo.org> (10 May 2013)
 # unkeyworded deps for dev-python/ipython
 dev-python/ipython mongodb
-
-# Markus Meier <maekke@gentoo.org> (09 May 2013)
-# unkeyworded deps for x11-misc/lightdm
-x11-misc/lightdm kde
 
 # Agostino Sarubbo <ago@gentoo.org> (05 May 2013)
 # dev-util/google-perftools is not keyworded for arm
@@ -147,7 +263,7 @@ net-misc/unison gtk
 
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (20 Feb 2013)
 # Mask flags of calligra and dependencies due to lack of keywords
-app-office/calligra color-management openexr postgres spacenav vc
+app-office/calligra openexr spacenav
 media-gfx/pstoedit emf
 
 # Michał Górny <mgorny@gentoo.org> (01 Feb 2013)
@@ -187,11 +303,9 @@ app-accessibility/speech-dispatcher flite
 # Markus Meier <maekke@gentoo.org> (23 Dec 2012)
 # mask kde-apps/* flags due to unkeyworded dependencies
 kde-apps/kalzium editor solver
-kde-apps/kopete jingle
-kde-apps/okular ebook chm
+kde-apps/okular chm
 kde-apps/kstars indi
 kde-apps/kdeutils-meta floppy
-kde-apps/kdenetwork-meta ppp
 
 # Markus Meier <maekke@gentoo.org> (08 Dec 2012)
 # mask app-office/libreoffice java extensions
@@ -222,11 +336,7 @@ net-libs/webkit-gtk -jit
 # Anthony G. Basile <blueness@gentoo.org> (Dec 21, 2011)
 # Mask the vde flag on tinc because net-misc/vde is not
 # keyworded for arm
-net-misc/tinc vde
-
-# Patrick McLean <chutzpah@gentoo.org> (08 Nov 2011)
-# mask conntrack USE flag for dnsmasq as dep is not keyworded
-net-dns/dnsmasq conntrack
+net-vpn/tinc vde
 
 # Tobias Klausmann <klausman@gentoo.org> (02 Nov 2011)
 # libpcre jit is not supported on alpha
@@ -257,8 +367,8 @@ net-libs/libproxy kde
 net-misc/mediatomb lastfm
 
 # Raúl Porcel <armin76@gentoo.org> (28 Mar 2010)
-# Needs kde-4 stable
-dev-vcs/subversion kde
+# Needs kde-frameworks/kwallet and kde-frameworks/kdelibs stable
+dev-vcs/subversion kwallet
 
 # Markus Meier <maekke@gentoo.org> (27 Sep 2009)
 # mask media-gfx/imagemagick[autotrace] as autotrace is not keyworded
@@ -281,3 +391,7 @@ media-video/vlc projectm chromaprint opencv
 # Ultrabug <ultrabug@gentoo.org> (05 Sept 2011)
 # missing keyword for net-libs/zeromq
 app-admin/rsyslog zeromq
+
+# Ian Whyman <thev00d00@gentoo.org> (05 Sept 2017)
+# missing keywords dev-lang/duktape media-libs/lastfmlib
+net-misc/gerbera javascript lastfm

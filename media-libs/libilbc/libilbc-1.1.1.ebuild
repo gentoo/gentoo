@@ -1,11 +1,11 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
 
 if [[ ${PV} == 9999 ]] ; then
 	SCM="autotools git-2"
-	EGIT_REPO_URI="git://github.com/lu-zero/libilbc.git"
+	EGIT_REPO_URI="https://github.com/lu-zero/${PN}.git"
 	SRC_URI=""
 	KEYWORDS=""
 else
@@ -16,7 +16,7 @@ fi
 inherit eutils multilib ${SCM}
 
 DESCRIPTION="Packaged version of iLBC codec from the WebRTC project"
-HOMEPAGE="https://github.com/dekkers/libilbc"
+HOMEPAGE="https://github.com/lu-zero/libilbc https://github.com/TimothyGu/libilbc"
 
 LICENSE="BSD"
 SLOT="0"

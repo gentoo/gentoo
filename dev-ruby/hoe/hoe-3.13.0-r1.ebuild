@@ -18,11 +18,12 @@ HOMEPAGE="http://seattlerb.rubyforge.org/"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
 ruby_add_bdepend "test? ( >=dev-ruby/minitest-5.3:5 )"
 
+ruby_add_bdepend ">=dev-ruby/rdoc-4.0" # Needed for rdoc call in compile, RDEPEND could have it merged too late.
 ruby_add_rdepend ">=dev-ruby/rake-0.8.7 >=dev-ruby/rdoc-4.0"
 
 all_ruby_prepare() {

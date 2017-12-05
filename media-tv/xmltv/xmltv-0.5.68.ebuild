@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -81,11 +81,19 @@ DEPEND="${RDEPEND}
 
 PREFIX="/usr"
 
+pkg_setup() {
+	# Uses Data::Manip in various places which can fail
+	# if TZ is still set to Factory as it is in stock gentoo
+	# install media
+	export TZ=UTC
+}
 src_prepare() {
 	sed -i \
 		-e "s:\$VERSION = '${PV}':\$VERSION = '${PVR}':" \
 		-e "/^@docs/s:doc/COPYING ::" \
 		Makefile.PL || die
+
+	epatch "${FILESDIR}/${P}-perl526-1.patch"
 
 	epatch_user
 }

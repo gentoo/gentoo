@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ if [ "${PV}" != "9999" ]; then
 	S="${WORKDIR}/${P#votca-}"
 else
 	inherit git-r3
-	EGIT_REPO_URI="git://github.com/${PN/-//}.git https://github.com/${PN/-//}.git"
+	EGIT_REPO_URI="https://github.com/${PN/-//}.git"
 	KEYWORDS=""
 fi
 
@@ -27,7 +27,9 @@ SLOT="0"
 
 RDEPEND="
 	=sci-libs/votca-tools-${PV}[sqlite]
-	=sci-chemistry/votca-csg-${PV}"
+	=sci-libs/votca-moo-${PV}
+	=sci-chemistry/votca-csg-${PV}
+	=sci-chemistry/votca-ctp-${PV}"
 
 DEPEND="${RDEPEND}
 	doc? (
@@ -44,6 +46,7 @@ DOCS=( README NOTICE CHANGELOG.md )
 src_configure() {
 	mycmakeargs=(
 		-DLIB=$(get_libdir)
+		-DBUILD_XTP_MANUAL=$(usex doc)
 	)
 	cmake-utils_src_configure
 }
@@ -51,12 +54,7 @@ src_configure() {
 src_install() {
 	cmake-utils_src_install
 	if use doc; then
-		if [[ ${PV} = *9999* ]]; then
-			cmake-utils_src_make -C "${CMAKE_BUILD_DIR}" manual
-			newdoc "${S}"/manual/xtp-manual.pdf "${PN}-manual-${PV}.pdf"
-		else
-			dodoc "${DISTDIR}/${PN}-manual-${PV}.pdf"
-		fi
+		[[ ${PV} != *9999* ]] && dodoc "${DISTDIR}/${PN}-manual-${PV}.pdf"
 		cmake-utils_src_make -C "${CMAKE_BUILD_DIR}" html
 		dodoc -r "${CMAKE_BUILD_DIR}"/share/doc/html
 	fi
@@ -66,6 +64,6 @@ pkg_postinst() {
 	einfo
 	einfo "Please read and cite:"
 	einfo "VOTCA-CTP, J. Chem. Theo. Comp. 7, 3335-3345 (2011)"
-	einfo "http://dx.doi.org/10.1021/ct200388s"
+	einfo "https://dx.doi.org/10.1021/ct200388s"
 	einfo
 }

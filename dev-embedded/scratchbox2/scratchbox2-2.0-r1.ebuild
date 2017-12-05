@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
@@ -8,7 +8,7 @@ inherit autotools eutils multilib toolchain-funcs
 MY_PN="${PN/cratch}"
 MY_P="${MY_PN}-${PV}"
 
-DESCRIPTION="A cross-compilation toolkit designed to make embedded Linux application development easier"
+DESCRIPTION="A cross-compilation toolkit for embedded Linux application development"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/sbox2"
 SRC_URI="https://cgit.freedesktop.org/${MY_PN}/snapshot/${MY_P}.tar.bz2"
 

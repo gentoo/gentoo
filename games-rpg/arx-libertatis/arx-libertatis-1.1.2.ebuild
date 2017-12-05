@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/arx/${P}/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="c++0x debug +unity-build crash-reporter static tools"
 
 COMMON_DEPEND="
@@ -38,6 +38,10 @@ DOCS=( README.md AUTHORS CHANGELOG )
 PATCHES=(
 	"${FILESDIR}"/${P}-cmake-3.5.patch
 )
+
+src_prepare() {
+	cmake-utils_src_prepare
+}
 
 src_configure() {
 	# editor does not build

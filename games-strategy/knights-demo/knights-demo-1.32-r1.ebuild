@@ -11,7 +11,7 @@ SRC_URI="mirror://gentoo/${P}.run"
 
 LICENSE="knights-demo"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 IUSE=""
 RESTRICT="strip"
 

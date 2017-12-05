@@ -1,45 +1,32 @@
 #!/sbin/openrc-run
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-KEYFILE=${KEYFILE:="/etc/spiped/keyfile"}
-SPIPED_USER=${SPIPED_USER:="nobody"}
-PIDFILE="/run/spiped/spiped.pid"
+: ${KEYFILE:="/etc/spiped/keyfile"}
+: ${SPIPED_USER:="nobody"}
 
-command="spiped"
-command_args="${OPTS} -s [${SRCHOST}]:${SRCPORT} -t ${TARGETHOST}:${TARGETPORT} -k ${KEYFILE} -p ${PIDFILE}"
+command="/usr/sbin/spiped"
+command_args="${OPTS}
+	-s [${SRCHOST}]:${SRCPORT}
+	-t ${TARGETHOST}:${TARGETPORT}
+	-k ${KEYFILE}
+	-F"
+command_background="true"
+command_user="${SPIPED_USER}"
+pidfile="/run/${RC_SVCNAME}.pid"
 
 depend() {
-	use net
-	before logger
+    use net
+    before logger
 }
 
 checkconfig() {
-  if [[ ! "$IS_CONFIGURED" == "yes" ]]; then
-    eerror "You need to setup /etc/conf.d/spiped first!"
-    return 1
-  fi
+    if [[ ! "$IS_CONFIGURED" == "yes" ]]; then
+        eerror "You need to setup /etc/conf.d/spiped first!"
+        return 1
+    fi
 }
 
-start() {
-	checkconfig || return 1
-
-	ebegin "Starting ${SVCNAME}"
-	checkpath -d -o "${SPIPED_USER}" -m750 "$(dirname "${PIDFILE}")"
-
-	start-stop-daemon --start \
-		--user ${SPIPED_USER} \
-		--pidfile ${PIDFILE} \
-		--exec $command -- $command_args
-        
-	eend $?
-}
-
-stop() {
-	ebegin "Stopping ${SVCNAME}"
-        
-	start-stop-daemon --stop \
-		--pidfile ${PIDFILE}
-        
-	eend $?
+start_pre() {
+    checkconfig || return 1
 }

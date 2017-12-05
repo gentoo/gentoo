@@ -12,7 +12,7 @@ SRC_URI="https://gstreamer.freedesktop.org/src/${MY_PN}/${MY_PN}-${PV}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="1.0"
-KEYWORDS="amd64 arm hppa ~mips ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="libav +orc"
 
 # XXX: bzip2/lzma are automagic
@@ -48,7 +48,7 @@ multilib_src_configure() {
 	if use libav; then
 		ewarn "Using internal ffmpeg copy as upstream dropped"
 		ewarn "the support for compiling against system libav"
-		ewarn "http://bugzilla.gnome.org/show_bug.cgi?id=758183"
+		ewarn "https://bugzilla.gnome.org/show_bug.cgi?id=758183"
 	else
 		myconf="--with-system-libav"
 	fi

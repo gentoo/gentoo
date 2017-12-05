@@ -10,7 +10,7 @@ inherit php-pear-r2
 DESCRIPTION="Database Abstraction Layer, oci8 driver"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 IUSE=""
 
 RDEPEND=">=dev-php/PEAR-MDB2-2.5.0_beta3

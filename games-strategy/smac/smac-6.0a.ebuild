@@ -12,7 +12,7 @@ SRC_URI="x86? ( mirror://lokigames/${PN}/${P}-x86.run )
 
 LICENSE="LOKI-EULA"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="+videos"
 RESTRICT="strip"
 

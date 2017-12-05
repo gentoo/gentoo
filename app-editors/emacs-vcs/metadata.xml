@@ -39,6 +39,8 @@
     processing</flag>
   <flag name="libxml2">Use <pkg>dev-libs/libxml2</pkg> to parse XML instead
     of the internal Lisp implementations</flag>
+  <flag name="mailutils">Retrieve e-mail using <pkg>net-mail/mailutils</pkg>
+    instead of the internal movemail substitute</flag>
   <flag name="pax_kernel">Enable building under a PaX enabled kernel</flag>
   <flag name="source">Install C source files and make them available for
     find-function</flag>

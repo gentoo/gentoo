@@ -1,7 +1,7 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-inherit eutils
+inherit eutils toolchain-funcs
 
 KERN_VER="2.6.22"
 
@@ -33,14 +33,18 @@ src_unpack() {
 	epatch "${FILESDIR}/aboot-pt_note.patch"
 	# Bug 364697
 	epatch "${FILESDIR}/aboot-define_stat_only_in_userspace.patch"
+	epatch "${FILESDIR}"/aboot-respect-AR.patch
+	epatch "${FILESDIR}"/aboot-gnu90.patch
 
 	# Modified patch from Debian to add netboot support
 	epatch "${WORKDIR}"/aboot_gentoo.diff
+
+	epatch_user
 }
 
 src_compile() {
 	# too many problems with parallel building
-	emake -j1 || die "emake failed"
+	emake -j1 AR=$(tc-getAR) CC=$(tc-getCC) LD=$(tc-getLD) || die "emake failed"
 }
 
 src_install() {

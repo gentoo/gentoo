@@ -19,7 +19,7 @@ RDEPEND="
 	>=dev-libs/glib-2.32:2
 	>=dev-libs/dbus-glib-0.74
 	dev-libs/libxml2:2
-	>=net-misc/openconnect-3.02:=
+	>=net-vpn/openconnect-3.02:=
 	gtk? (
 		>=app-crypt/libsecret-0.18
 		>=x11-libs/gtk+-3.4:3 )

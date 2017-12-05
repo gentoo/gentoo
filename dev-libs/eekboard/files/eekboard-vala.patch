@@ -1,0 +1,33 @@
+--- a/bindings/vala/Makefile.am
++++ b/bindings/vala/Makefile.am
+@@ -59,12 +59,14 @@
+ 
+ eek_gtk_vapi_deps =					\
++	eek-$(EEK_API_VERSION).vapi			\
+ 	$(srcdir)/EekGtk-$(EEK_API_VERSION).metadata	\
+ 	|						\
+ 	$(top_builddir)/eek/EekGtk-$(EEK_API_VERSION).gir	\
+ 	$(NULL)
+ 
+ eek-gtk-$(EEK_API_VERSION).vapi: $(eek_gtk_vapi_deps)
+ 	$(VAPIGEN_V)$(VAPIGEN) --vapidir=$(builddir) \
++		--girdir=$(top_builddir)/eek \
+ 		--library eek-gtk-$(EEK_API_VERSION) \
+ 		--pkg eek-$(EEK_API_VERSION) \
+ 		--pkg gio-2.0 \
+@@ -74,6 +76,7 @@
+ 
+ eek_xkl_vapi_deps =						\
++	eek-$(EEK_API_VERSION).vapi				\
+ 	$(srcdir)/EekXkl-$(EEK_API_VERSION).metadata		\
+ 	|							\
+ 	$(top_builddir)/eek/EekXkl-$(EEK_API_VERSION).gir	\
+ 	$(NULL)
+@@ -81,6 +84,7 @@
+ eek-xkl-$(EEK_API_VERSION).vapi: $(eek_xkl_vapi_deps)
+ 	$(VAPIGEN_V)$(VAPIGEN) \
+ 		--vapidir=$(builddir) \
++		--girdir=$(top_builddir)/eek \
+ 		--library eek-xkl-$(EEK_API_VERSION) \
+ 		--pkg eek-$(EEK_API_VERSION) \
+ 		--pkg gio-2.0 \

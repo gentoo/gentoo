@@ -1,7 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
+
 PYTHON_COMPAT=( python2_7 )
 
 inherit eutils versionator python-single-r1 readme.gentoo
@@ -22,8 +23,9 @@ IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
+	${PYTHON_DEPS}
 	app-admin/sudo
-	>=dev-python/pygtk-2.16.0-r1
+	>=dev-python/pygtk-2.16.0-r1[${PYTHON_USEDEP}]
 	>=net-wireless/wireless-tools-29
 	|| ( net-misc/dhcpcd net-misc/dhcp net-misc/pump )
 "

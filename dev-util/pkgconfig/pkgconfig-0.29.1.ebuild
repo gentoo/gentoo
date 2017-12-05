@@ -12,7 +12,7 @@ if [[ ${PV} == *9999* ]]; then
 	# 1.12 is only needed for tests due to some am__check_pre / LOG_DRIVER
 	# weirdness with "/bin/bash /bin/sh" in arguments chain with >=1.13
 	WANT_AUTOMAKE=1.12
-	EGIT_REPO_URI="git://anongit.freedesktop.org/pkg-config"
+	EGIT_REPO_URI="https://anongit.freedesktop.org/git/pkg-config.git"
 	EGIT_CHECKOUT_DIR=${WORKDIR}/${MY_P}
 	inherit autotools git-r3
 else
@@ -83,7 +83,7 @@ multilib_src_configure() {
 			fi
 		fi
 	else
-		if ! has_version dev-util/pkgconfig; then
+		if ! has_version --host-root dev-util/pkgconfig; then
 			export GLIB_CFLAGS="-I${EPREFIX}/usr/include/glib-2.0 -I${EPREFIX}/usr/$(get_libdir)/glib-2.0/include"
 			export GLIB_LIBS="-lglib-2.0"
 		fi

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,12 +7,17 @@ KDE_AUTODEPS="false"
 inherit kde5
 
 DESCRIPTION="Widget styles for Qt and GTK2"
-HOMEPAGE="https://quickgit.kde.org/?p=qtcurve.git"
+HOMEPAGE="https://cgit.kde.org/qtcurve.git"
 
 LICENSE="LGPL-2+"
 SLOT="0"
 IUSE="+X gtk nls plasma qt4 +qt5 test"
-KEYWORDS=""
+
+if [[ "${PV}" != 9999 ]] ; then
+	SRC_URI="https://github.com/KDE/qtcurve/archive/${PV/_/-}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+	S="${WORKDIR}/${P/_/-}"
+fi
 
 REQUIRED_USE="gtk? ( X )
 	|| ( gtk qt4 qt5 )
@@ -35,6 +40,7 @@ COMMON_DEPEND="
 		$(add_qt_dep qtx11extras)
 	)
 	plasma? (
+		$(add_frameworks_dep frameworkintegration)
 		$(add_frameworks_dep karchive)
 		$(add_frameworks_dep kcompletion)
 		$(add_frameworks_dep kconfig)
@@ -78,6 +84,7 @@ pkg_setup() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DLIB_INSTALL_DIR="$(get_libdir)"
 		-DQTC_QT4_ENABLE_KDE=OFF
 		-DQTC_QT4_ENABLE_KWIN=OFF
 		-DQTC_KDE4_DEFAULT_HOME=ON

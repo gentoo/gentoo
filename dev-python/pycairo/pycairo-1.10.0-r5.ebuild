@@ -15,7 +15,8 @@ DESCRIPTION="Python bindings for the cairo library"
 HOMEPAGE="http://cairographics.org/pycairo/ https://pypi.python.org/pypi/pycairo"
 SRC_URI="
 	http://cairographics.org/releases/py2cairo-${PYCAIRO_PYTHON2_VERSION}.tar.bz2
-	http://cairographics.org/releases/pycairo-${PYCAIRO_PYTHON3_VERSION}.tar.bz2"
+	http://cairographics.org/releases/pycairo-${PYCAIRO_PYTHON3_VERSION}.tar.bz2
+	https://dev.gentoo.org/~mgorny/dist/${P}-gentoo-patchset.tar.bz2"
 
 # LGPL-3 for pycairo 1.10.0.
 # || ( LGPL-2.1 MPL-1.1 ) for pycairo 1.8.10.
@@ -39,19 +40,19 @@ src_prepare() {
 	pushd "${WORKDIR}/pycairo-${PYCAIRO_PYTHON3_VERSION}" > /dev/null || die
 	rm -f src/config.h || die
 	epatch \
-		"${FILESDIR}/${PN}-1.10.0-svg_check.patch" \
-		"${FILESDIR}/${PN}-1.10.0-xpyb.patch" \
-		"${FILESDIR}/${PN}-1.10.0-waf-unpack.patch" \
-		"${FILESDIR}"/py2cairo-1.10.0-ppc-darwin.patch \
-		"${FILESDIR}"/pycairo-1.10.0-101_pycairo-region.patch
+		"${WORKDIR}/${P}-gentoo-patchset/${PN}-1.10.0-svg_check.patch" \
+		"${WORKDIR}/${P}-gentoo-patchset/${PN}-1.10.0-xpyb.patch" \
+		"${WORKDIR}/${P}-gentoo-patchset/${PN}-1.10.0-waf-unpack.patch" \
+		"${WORKDIR}/${P}-gentoo-patchset"/py2cairo-1.10.0-ppc-darwin.patch \
+		"${WORKDIR}/${P}-gentoo-patchset"/pycairo-1.10.0-101_pycairo-region.patch
 	popd > /dev/null
 
 	pushd "${WORKDIR}/py2cairo-${PYCAIRO_PYTHON2_VERSION}" > /dev/null || die
 	rm -f src/config.h || die
 	epatch \
-		"${FILESDIR}/py2cairo-1.10.0-svg_check.patch" \
-		"${FILESDIR}/py2cairo-1.10.0-xpyb.patch" \
-		"${FILESDIR}"/py2cairo-1.10.0-ppc-darwin.patch
+		"${WORKDIR}/${P}-gentoo-patchset/py2cairo-1.10.0-svg_check.patch" \
+		"${WORKDIR}/${P}-gentoo-patchset/py2cairo-1.10.0-xpyb.patch" \
+		"${WORKDIR}/${P}-gentoo-patchset"/py2cairo-1.10.0-ppc-darwin.patch
 	popd > /dev/null
 
 	preparation() {
@@ -61,10 +62,10 @@ src_prepare() {
 			wafdir="$(./waf unpack)"
 			pushd "${wafdir}" > /dev/null || die
 			epatch \
-				"${FILESDIR}/${PN}-1.10.0-waf-py3_4.patch" \
-				"${FILESDIR}"/pycairo-1.10.0-50_specify-encoding-in-waf.patch \
-				"${FILESDIR}"/pycairo-1.10.0-80_fix-pickle.patch \
-				"${FILESDIR}"/pycairo-1.10.0-81_pickling-again.patch
+				"${WORKDIR}/${P}-gentoo-patchset/${PN}-1.10.0-waf-py3_4.patch" \
+				"${WORKDIR}/${P}-gentoo-patchset"/pycairo-1.10.0-50_specify-encoding-in-waf.patch \
+				"${WORKDIR}/${P}-gentoo-patchset"/pycairo-1.10.0-80_fix-pickle.patch \
+				"${WORKDIR}/${P}-gentoo-patchset"/pycairo-1.10.0-81_pickling-again.patch
 
 			popd > /dev/null
 			popd > /dev/null

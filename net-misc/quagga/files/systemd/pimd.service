@@ -1,7 +1,7 @@
 [Unit]
 Description=PIM-SSM routing daemon
 Documentation=man:zebra(8)
-BindTo=zebra.service
+BindsTo=zebra.service
 After=network.target zebra.service
 ConditionPathExists=/etc/quagga/pimd.conf
 

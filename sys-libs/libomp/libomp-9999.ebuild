@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,9 +11,9 @@ PYTHON_COMPAT=( python2_7 )
 inherit cmake-multilib git-r3 python-any-r1
 
 DESCRIPTION="OpenMP runtime library for LLVM/clang compiler"
-HOMEPAGE="http://openmp.llvm.org"
+HOMEPAGE="https://openmp.llvm.org"
 SRC_URI=""
-EGIT_REPO_URI="http://llvm.org/git/openmp.git
+EGIT_REPO_URI="https://git.llvm.org/git/openmp.git
 	https://github.com/llvm-mirror/openmp.git"
 
 # Additional licenses:
@@ -54,6 +54,7 @@ multilib_src_configure() {
 	local mycmakeargs=(
 		-DLIBOMP_LIBDIR_SUFFIX="${libdir#lib}"
 		-DLIBOMPTARGET_LIBDIR_SUFFIX="${libdir#lib}"
+
 		-DLIBOMP_USE_HWLOC=$(usex hwloc)
 		-DLIBOMP_OMPT_SUPPORT=$(usex ompt)
 		# do not install libgomp.so & libiomp5.so aliases
@@ -61,6 +62,10 @@ multilib_src_configure() {
 		# disable unnecessary hack copying stuff back to srcdir
 		-DLIBOMP_COPY_EXPORTS=OFF
 		-DLIBOMP_TEST_COMPILER="$(type -P "${CHOST}-clang")"
+	)
+	use test && mycmakeargs+=(
+		-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
+		-DLLVM_LIT_ARGS="-vv"
 	)
 	cmake-utils_src_configure
 }

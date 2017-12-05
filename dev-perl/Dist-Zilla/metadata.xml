@@ -56,6 +56,7 @@
     <remote-id type="cpan-module">Dist::Zilla::Plugin::FinderCode</remote-id>
     <remote-id type="cpan-module">Dist::Zilla::Plugin::GatherDir</remote-id>
     <remote-id type="cpan-module">Dist::Zilla::Plugin::GatherDir::Template</remote-id>
+    <remote-id type="cpan-module">Dist::Zilla::Plugin::GatherFile</remote-id>
     <remote-id type="cpan-module">Dist::Zilla::Plugin::GenerateFile</remote-id>
     <remote-id type="cpan-module">Dist::Zilla::Plugin::InlineFiles</remote-id>
     <remote-id type="cpan-module">Dist::Zilla::Plugin::License</remote-id>

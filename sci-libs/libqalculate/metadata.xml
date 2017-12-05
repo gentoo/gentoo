@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
@@ -6,6 +6,7 @@
     <name>Gentoo Science Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="sourceforge">.tar.gz</remote-id>
+    <remote-id type="sourceforge">qalculate-0.9.7</remote-id>
+    <remote-id type="github">Qalculate/libqalculate</remote-id>
   </upstream>
 </pkgmetadata>

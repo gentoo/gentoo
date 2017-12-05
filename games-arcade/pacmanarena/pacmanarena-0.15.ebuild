@@ -4,14 +4,14 @@
 EAPI=5
 inherit eutils autotools games
 
-DESCRIPTION="a Pacman clone in full 3D with a few surprises. Rockets, bombs and explosions abound"
+DESCRIPTION="3D Pacman clone with a few surprises. Rockets, bombs and explosions abound"
 HOMEPAGE="http://pacmanarena.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/pacman-arena-${PV}.tar.bz2
 	mirror://sourceforge/${PN}/pacman-data-0.0.zip"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 x86"
+KEYWORDS="~alpha ~amd64 ~x86"
 IUSE=""
 
 RDEPEND="virtual/opengl

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -11,7 +11,8 @@ MY_PN="mozjs"
 MY_P="${MY_PN}${PV}"
 DESCRIPTION="Stand-alone JavaScript C library"
 HOMEPAGE="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey"
-SRC_URI="http://ftp.mozilla.org/pub/mozilla.org/js/${MY_PN}${PV}.tar.gz"
+SRC_URI="http://archive.mozilla.org/pub/js/${MY_PN}${PV}.tar.gz
+	https://dev.gentoo.org/~axs/distfiles/${PN}-slot17-patches-01.tar.xz"
 
 LICENSE="NPL-1.1"
 SLOT="17"
@@ -42,9 +43,9 @@ pkg_setup(){
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-${SLOT}-js-config-shebang.patch
-	epatch "${FILESDIR}"/${PN}-${SLOT}-ia64-mmap.patch
-	epatch "${FILESDIR}"/${PN}-17.0.0-fix-file-permissions.patch
+	epatch "${WORKDIR}"/sm17/${PN}-${SLOT}-js-config-shebang.patch
+	epatch "${WORKDIR}"/sm17/${PN}-${SLOT}-ia64-mmap.patch
+	epatch "${WORKDIR}"/sm17/${PN}-17.0.0-fix-file-permissions.patch
 	# https://bugs.gentoo.org/show_bug.cgi?id=552786
 	epatch "${FILESDIR}"/${PN}-perl-defined-array-check.patch
 

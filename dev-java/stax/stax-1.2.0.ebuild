@@ -1,12 +1,12 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 JAVA_PKG_IUSE="doc source"
 
 inherit java-pkg-2 java-ant-2
 
-DESCRIPTION="A standard XML processing API that allows you to stream XML data from and to your application"
-HOMEPAGE="http://stax.codehaus.org/"
+DESCRIPTION="A standard XML processing API that allows you to stream XML data"
+HOMEPAGE="https://github.com/codehaus"
 SRC_URI="http://dist.codehaus.org/${PN}/distributions/${PN}-src-${PV}.zip"
 
 LICENSE="Apache-2.0"

@@ -1,4 +1,4 @@
-app-misc/pax-utils
+*app-misc/pax-utils
 
 # remove stuff not needed on uclibc
 -*net-misc/iputils

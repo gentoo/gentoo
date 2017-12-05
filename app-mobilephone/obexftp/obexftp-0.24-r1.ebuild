@@ -4,7 +4,9 @@
 EAPI=5
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
-inherit cmake-utils python-single-r1 python-utils-r1 eutils multilib
+USE_RUBY="ruby21 ruby22"
+
+inherit cmake-utils python-single-r1 python-utils-r1 ruby-single eutils multilib
 
 DESCRIPTION="File transfer over OBEX for mobile phones"
 HOMEPAGE="http://dev.zuckschwerdt.org/openobex/wiki/ObexFtp"
@@ -16,13 +18,14 @@ KEYWORDS="amd64 hppa ppc x86"
 
 # bluetooth support is not really optional, bug #529068
 IUSE="perl python ruby tcl" #bluetooth
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
 	>=dev-libs/openobex-1.7
 	net-wireless/bluez
 	perl? ( dev-lang/perl:= )
 	python? ( ${PYTHON_DEPS} )
-	ruby? ( dev-lang/ruby:2.1 )
+	ruby? ( ${RUBY_DEPS} )
 	tcl? ( dev-lang/tcl:0= )
 "
 DEPEND="

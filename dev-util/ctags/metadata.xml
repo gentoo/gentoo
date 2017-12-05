@@ -6,7 +6,6 @@
     <name>Gentoo Vim Project</name>
   </maintainer>
   <use>
-    <flag name="ada">Enable Ada support</flag>
     <flag name="json">Enable JSON output support</flag>
     <flag name="xml">Enable XML parsing support</flag>
     <flag name="yaml">Enable YAML parsing support</flag>

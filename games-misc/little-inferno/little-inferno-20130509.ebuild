@@ -10,7 +10,7 @@ SRC_URI="LittleInferno-${PV}.sh"
 
 LICENSE="Gameplay-Group-EULA"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE="bundled-libs"
 RESTRICT="bindist fetch bundled-libs? ( splitdebug )"
 

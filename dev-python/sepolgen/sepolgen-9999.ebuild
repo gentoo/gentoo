@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 inherit python-r1
 
 MY_P="${P//_/-}"
-MY_RELEASEDATE="20161014"
+MY_RELEASEDATE="20170630"
 
 DESCRIPTION="SELinux policy generation library"
 HOMEPAGE="https://github.com/SELinuxProject/selinux/wiki"
@@ -25,10 +25,12 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-DEPEND=">=sys-libs/libselinux-2.4[python]
-		>=app-admin/setools-4.0[${PYTHON_USEDEP}]
-		${PYTHON_DEPS}"
+DEPEND="
+	>=sys-libs/libselinux-2.4[python,${PYTHON_USEDEP}]
+	>=app-admin/setools-4.0[${PYTHON_USEDEP}]
+	${PYTHON_DEPS}"
 RDEPEND="${DEPEND}"
 
 src_prepare() {

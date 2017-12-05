@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,15 +13,14 @@ SRC_URI="https://github.com/ddccontrol/ddccontrol/archive/${COMMIT_ID}.tar.gz ->
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="doc gtk nls +pci static-libs video_cards_fglrx"
+IUSE="doc gtk nls +pci static-libs"
 S=${WORKDIR}/${PN}-${COMMIT_ID}
 
 RDEPEND="app-misc/ddccontrol-db
 	dev-libs/libxml2:2
 	gtk? ( x11-libs/gtk+:2 )
 	nls? ( sys-devel/gettext )
-	pci? ( sys-apps/pciutils )
-	video_cards_fglrx? ( x11-libs/amd-adl-sdk )"
+	pci? ( sys-apps/pciutils )"
 DEPEND="${RDEPEND}
 	dev-perl/XML-Parser
 	dev-util/intltool
@@ -68,8 +67,7 @@ src_configure() {
 		$(use_enable gtk gnome) \
 		$(use_enable nls) \
 		$(use_enable pci ddcpci) \
-		$(use_enable static-libs static) \
-		$(use_enable video_cards_fglrx amdadl)
+		$(use_enable static-libs static)
 }
 
 src_install() {

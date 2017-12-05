@@ -5,7 +5,7 @@ EAPI=6
 inherit autotools eutils libtool
 
 DESCRIPTION="A sophisticated ftp/sftp/http/https/torrent client and file transfer program"
-HOMEPAGE="http://lftp.tech/"
+HOMEPAGE="https://lftp.tech/"
 SRC_URI="${HOMEPAGE}ftp/${P}.tar.xz"
 
 LICENSE="GPL-3"
@@ -15,6 +15,7 @@ KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 sparc x86 ~spar
 IUSE="convert-mozilla-cookies +gnutls idn ipv6 libressl nls socks5 +ssl verify-file"
 LFTP_LINGUAS=( cs de es fr it ja ko pl pt_BR ru uk zh_CN zh_HK zh_TW )
 IUSE+=" ${LFTP_LINGUAS[@]/#/linguas_}"
+RESTRICT="test"
 
 RDEPEND="
 	>=sys-libs/ncurses-5.1:=
@@ -54,8 +55,8 @@ DOCS=(
 )
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-4.0.2.91-lafile.patch \
-	"${FILESDIR}"/${PN}-4.5.5-am_config_header.patch \
+	"${FILESDIR}"/${PN}-4.0.2.91-lafile.patch
+	"${FILESDIR}"/${PN}-4.5.5-am_config_header.patch
 	"${FILESDIR}"/${PN}-4.7.0-gettext.patch
 )
 

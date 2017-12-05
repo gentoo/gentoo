@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -30,7 +30,7 @@ SRC_URI="
 	"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-fbsd ~x86-fbsd"
 IUSE=""
 
 DEPEND="app-arch/xz-utils"
@@ -52,17 +52,17 @@ src_install() {
 
 	# We install all versions of OpenCL headers
 	for CL_ABI in 1.0 1.1 1.2 2.0 2.1; do
-		mkdir -p "${D}/usr/$(get_libdir)/OpenCL/global/include/CL-${CL_ABI}"
+		mkdir -p "${ED}/usr/$(get_libdir)/OpenCL/global/include/CL-${CL_ABI}"
 		for f in ${headers[@]}; do
-			cp "${WORKDIR}"/OpenCL-Headers-opencl${CL_ABI/./}/${f} "${D}/usr/$(get_libdir)/OpenCL/global/include/CL-${CL_ABI}/${f}" > /dev/null
+			cp "${WORKDIR}"/OpenCL-Headers-opencl${CL_ABI/./}/${f} "${ED}/usr/$(get_libdir)/OpenCL/global/include/CL-${CL_ABI}/${f}" > /dev/null
 		done
 	done
 
 	for i in 1.1 1.2 2.1; do
-		cp "${WORKDIR}"/$i/cl.hpp "${D}/usr/$(get_libdir)/OpenCL/global/include/CL-${CL_ABI}/"
+		cp "${WORKDIR}"/$i/cl.hpp "${ED}/usr/$(get_libdir)/OpenCL/global/include/CL-${CL_ABI}/"
 	done
 	# Create symlinks to newest. Maybe this should be switchable?
 	for f in ${headers[@]}; do
-		dosym "${D}/usr/$(get_libdir)/OpenCL/global/include/CL-1.2/${f}" "/usr/include/CL/${f}"
+		dosym "${ED}/usr/$(get_libdir)/OpenCL/global/include/CL-1.2/${f}" "/usr/include/CL/${f}"
 	done
 }

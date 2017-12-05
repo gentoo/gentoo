@@ -1,13 +1,13 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
-PYTHON_COMPAT=(python{2_7,3_4})
+PYTHON_COMPAT=(python{2_7,3_4,3_5,3_6})
 PYTHON_REQ_USE="readline(+)"
 
 inherit distutils-r1 git-2
 
-EGIT_REPO_URI="git://github.com/fuzzyray/esearch.git"
+EGIT_REPO_URI="https://github.com/fuzzyray/esearch.git"
 
 DESCRIPTION="Replacement for 'emerge --search' with search-index"
 HOMEPAGE="https://github.com/fuzzyray/esearch"

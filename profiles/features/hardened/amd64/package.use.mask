@@ -1,0 +1,8 @@
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# Cernlib has address space issues on amd64 and package is no
+# longer supported by upstream. Thus masking it and its reverse
+# dependencies.
+# See bugs 426764, 556612.
+=sci-physics/geant-4.9.4* geant3

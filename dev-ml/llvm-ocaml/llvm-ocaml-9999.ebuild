@@ -11,33 +11,34 @@ PYTHON_COMPAT=( python2_7 )
 inherit cmake-utils git-r3 llvm python-any-r1
 
 DESCRIPTION="OCaml bindings for LLVM"
-HOMEPAGE="http://llvm.org/"
+HOMEPAGE="https://llvm.org/"
 SRC_URI=""
-EGIT_REPO_URI="http://llvm.org/git/llvm.git
+EGIT_REPO_URI="https://git.llvm.org/git/llvm.git
 	https://github.com/llvm-mirror/llvm.git"
 
 # Keep in sync with sys-devel/llvm
+ALL_LLVM_EXPERIMENTAL_TARGETS=( AVR Nios2 RISCV WebAssembly )
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
-	NVPTX PowerPC RISCV Sparc SystemZ X86 XCore )
+	NVPTX PowerPC Sparc SystemZ X86 XCore
+	"${ALL_LLVM_EXPERIMENTAL_TARGETS[@]}" )
 ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
 LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/?}
 
 LICENSE="UoI-NCSA"
 SLOT="0/${PV}"
 KEYWORDS=""
-IUSE="test ${ALL_LLVM_TARGETS[*]}"
+IUSE="debug test ${ALL_LLVM_TARGETS[*]}"
 
 RDEPEND="
 	>=dev-lang/ocaml-4.00.0:0=
 	dev-ml/ocaml-ctypes:=
-	~sys-devel/llvm-${PV}:=[${LLVM_TARGET_USEDEPS// /,}]
+	~sys-devel/llvm-${PV}:=[${LLVM_TARGET_USEDEPS// /,},debug?]
 	!sys-devel/llvm[ocaml(-)]"
 # configparser-3.2 breaks the build (3.3 or none at all are fine)
 DEPEND="${RDEPEND}
 	dev-lang/perl
 	dev-ml/findlib
-	test? ( dev-ml/ounit
-		$(python_gen_any_dep "~dev-python/lit-${PV}[\${PYTHON_USEDEP}]") )
+	test? ( dev-ml/ounit )
 	!!<dev-python/configparser-3.3.0.2
 	${PYTHON_DEPS}"
 
@@ -46,11 +47,6 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
-
-python_check_deps() {
-	! use test \
-		|| has_version "dev-python/lit[${PYTHON_USEDEP}]"
-}
 
 pkg_setup() {
 	llvm_pkg_setup
@@ -61,8 +57,7 @@ src_prepare() {
 	# Python is needed to run tests using lit
 	python_setup
 
-	# User patches
-	eapply_user
+	cmake-utils_src_prepare
 }
 
 src_configure() {
@@ -72,7 +67,10 @@ src_configure() {
 
 		-DBUILD_SHARED_LIBS=ON
 		-DLLVM_OCAML_OUT_OF_TREE=ON
-		-DLLVM_TARGETS_TO_BUILD="${LLVM_TARGETS// /;}"
+		# cheap hack: LLVM combines both anyway, and the only difference
+		# is that the former list is explicitly verified at cmake time
+		-DLLVM_TARGETS_TO_BUILD=""
+		-DLLVM_EXPERIMENTAL_TARGETS_TO_BUILD="${LLVM_TARGETS// /;}"
 		-DLLVM_BUILD_TESTS=$(usex test)
 
 		# disable various irrelevant deps and settings
@@ -80,7 +78,7 @@ src_configure() {
 		-DLLVM_ENABLE_TERMINFO=OFF
 		-DHAVE_HISTEDIT_H=NO
 		-DWITH_POLLY=OFF
-		-DLLVM_ENABLE_ASSERTIONS=OFF
+		-DLLVM_ENABLE_ASSERTIONS=$(usex debug)
 		-DLLVM_ENABLE_EH=ON
 		-DLLVM_ENABLE_RTTI=ON
 
@@ -93,9 +91,12 @@ src_configure() {
 	)
 
 	use test && mycmakeargs+=(
-		-DLIT_COMMAND="${EPREFIX}/usr/bin/lit"
+		-DLLVM_LIT_ARGS="-vv"
 	)
 
+	# LLVM_ENABLE_ASSERTIONS=NO does not guarantee this for us, #614844
+	# also: custom rules for OCaml do not work for CPPFLAGS
+	use debug || local -x CFLAGS="${CFLAGS} -DNDEBUG"
 	cmake-utils_src_configure
 
 	local llvm_libdir=$(llvm-config --libdir)
@@ -107,7 +108,7 @@ src_configure() {
 		local llvm_bindir=$(llvm-config --bindir)
 		# Force using system-installed tools.
 		sed -i -e "/llvm_tools_dir/s@\".*\"@\"${llvm_bindir}\"@" \
-			"${BUILD_DIR}"/test/lit.site.cfg || die
+			"${BUILD_DIR}"/test/lit.site.cfg.py || die
 	fi
 }
 

@@ -1,11 +1,11 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit eutils
 
 MY_P="${P/_beta/b}"
 
-DESCRIPTION="Httpush is an intercepting proxy, allowing user to modify HTTP requests on-the-fly"
+DESCRIPTION="Intercepting proxy, allowing user to modify HTTP requests on-the-fly"
 HOMEPAGE="http://httpush.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 

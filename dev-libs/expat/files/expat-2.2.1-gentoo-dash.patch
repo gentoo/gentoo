@@ -1,0 +1,31 @@
+From 9502963fd2e84ac529950f3a6f4173d86b93b5d2 Mon Sep 17 00:00:00 2001
+From: Kerin Millar <kfm@plushkava.net>
+Date: Thu, 29 Jun 2017 16:51:18 +0100
+Subject: [PATCH] conftools/get-version.sh: Use printf rather than try to infer
+ non-portable echo options
+
+---
+ expat/conftools/get-version.sh | 13 +------------
+ 1 file changed, 1 insertion(+), 12 deletions(-)
+
+diff --git a/expat/conftools/get-version.sh b/expat/conftools/get-version.sh
+index a70e0fb..91e5c64 100755
+--- a/expat/conftools/get-version.sh
++++ b/expat/conftools/get-version.sh
+@@ -32,15 +32,4 @@ MAJOR_VERSION="`sed -n -e '/MAJOR_VERSION/s/[^0-9]*//gp' $hdr`"
+ MINOR_VERSION="`sed -n -e '/MINOR_VERSION/s/[^0-9]*//gp' $hdr`"
+ MICRO_VERSION="`sed -n -e '/MICRO_VERSION/s/[^0-9]*//gp' $hdr`"
+ 
+-# Determine how to tell echo not to print the trailing \n. This is
+-# similar to Autoconf's @ECHO_C@ and @ECHO_N@; however, we don't
+-#  generate this file via autoconf (in fact, get-version.sh is used
+-# to *create* ./configure), so we just do something similar inline.
+-case `echo "testing\c"; echo 1,2,3`,`echo -n testing; echo 1,2,3` in
+-  *c*,-n*) ECHO_N= ECHO_C='
+-' ;;
+-  *c*,*  ) ECHO_N=-n ECHO_C= ;;
+-  *)      ECHO_N= ECHO_C='\c' ;;
+-esac
+-
+-echo $ECHO_N "$MAJOR_VERSION.$MINOR_VERSION.$MICRO_VERSION$ECHO_C"
++printf '%s.%s.%s' "$MAJOR_VERSION" "$MINOR_VERSION" "$MICRO_VERSION"

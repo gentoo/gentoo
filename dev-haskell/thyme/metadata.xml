@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -16,4 +16,7 @@
 		<flag name="lens">use the full lens package</flag>
 		<flag name="show-internal">instance Show of internal representation</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">liyang/thyme</remote-id>
+	</upstream>
 </pkgmetadata>

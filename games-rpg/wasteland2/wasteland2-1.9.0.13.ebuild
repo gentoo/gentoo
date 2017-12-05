@@ -5,7 +5,7 @@ EAPI=5
 
 inherit eutils gnome2-utils check-reqs games
 
-DESCRIPTION="Direct sequel to 1988's Wasteland, the first-ever post-apocalyptic computer RPG and the inspiration behind the Fallout series"
+DESCRIPTION="Sequel to 1988 Wasteland, post-apocalyptic computer RPG inspiration for Fallout"
 HOMEPAGE="https://wasteland.inxile-entertainment.com/"
 SRC_URI="gog_wasteland_2_${PV}.tar.gz"
 

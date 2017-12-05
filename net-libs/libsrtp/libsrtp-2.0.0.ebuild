@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -59,9 +59,9 @@ src_compile() {
 src_test() {
 	LD_LIBRARY_PATH="${S}" emake -j1 runtest
 
-	# Makefile.in has '$(testapp): libsrtp.a'
+	# Makefile.in has '$(testapp): libsrtp2.a'
 	if use !static-libs; then
-		rm libsrtp.a || die
+		rm libsrtp2.a || die
 	fi
 }
 

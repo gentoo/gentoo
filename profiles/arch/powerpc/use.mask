@@ -1,5 +1,30 @@
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
 # PPC Specific use flags
 #
+
+# David Seifert <soap@gentoo.org> (08 Jul 2017)
+# Games are not keyworded anymore on ppc
+capslib
+fortune
+nagios-game
+physfs
+
+# James Le Cuirot <chewi@gentoo.org> (29 Jun 2017)
+# Unmask as this profile is big endian.
+-big-endian
+
+# Matt Turner <mattst88@gentoo.org> (24 Mar 2017)
+# virtual/opencl is not keyworded
+opencl
+
+# Matt Turner <mattst88@gentoo.org> (24 Mar 2017)
+# We don't have sys-devel/llvm
+llvm
+video_cards_amdgpu
+video_cards_radeonsi
+clang
 
 # Jeroen Roovers <jer@gentoo.org> (22 Sep 2015)
 # sci-libs/mkl is not supported on PPC
@@ -88,30 +113,14 @@ lcd_devices_t6963
 # Modular X: mask for architectures on which they aren't available
 video_cards_apm
 video_cards_ark
-video_cards_ast
 video_cards_i128
 video_cards_i740
-video_cards_intel
 video_cards_neomagic
-video_cards_nsc
 video_cards_rendition
-video_cards_siliconmotion
 video_cards_sis
 video_cards_tga
 video_cards_tseng
 video_cards_vesa
-
-# Matt Turner <mattst88@gentoo.org>
-# Mask more VIDEO_CARDs added with mesa-8.0
-video_cards_i915
-video_cards_i965
-video_cards_ilo
-# vmware wasn't added with mesa-8.0, but it should still be masked
-video_cards_vmware
-
-# Matt Turner <mattst88@gentoo.org> (13 Nov 2015)
-# radeonsi requires glamor support
-video_cards_radeonsi
 
 # Intel Integrated Primitive (sci-libs/ipp) support
 ipp

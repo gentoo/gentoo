@@ -15,7 +15,7 @@ SRC_URI="http://www.ut-files.com/Patches/utbonuspack4.zip -> UTBonusPack4.zip"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
 RESTRICT="mirror bindist"
 

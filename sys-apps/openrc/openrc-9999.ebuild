@@ -9,7 +9,7 @@ DESCRIPTION="OpenRC manages the services, startup and shutdown of a host"
 HOMEPAGE="https://github.com/openrc/openrc/"
 
 if [[ ${PV} == "9999" ]]; then
-	EGIT_REPO_URI="git://github.com/OpenRC/${PN}.git"
+	EGIT_REPO_URI="https://github.com/OpenRC/${PN}.git"
 	inherit git-r3
 else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
@@ -34,7 +34,7 @@ COMMON_DEPEND="kernel_FreeBSD? ( || ( >=sys-freebsd/freebsd-ubin-9.0_rc sys-proc
 	)
 	selinux? (
 		sys-apps/policycoreutils
-		sys-libs/libselinux
+		>=sys-libs/libselinux-2.6
 	)
 	!<sys-apps/baselayout-2.1-r1
 	!<sys-fs/udev-init-scripts-27"
@@ -50,8 +50,8 @@ RDEPEND="${COMMON_DEPEND}
 		kernel_FreeBSD? ( sys-freebsd/freebsd-sbin )
 	)
 	selinux? (
-		sec-policy/selinux-base-policy
-		sec-policy/selinux-openrc
+		>=sec-policy/selinux-base-policy-2.20170204-r4
+		>=sec-policy/selinux-openrc-2.20170204-r4
 	)
 "
 
@@ -248,6 +248,9 @@ EOF
 			ewarn "if you do not want this to happen."
 		fi
 	fi
+
+	has_version ">=sys-apps/openrc-0.35" || add_boot_init cgroups sysinit
+
 }
 
 # >=OpenRC-0.11.3 requires udev-mount to be in the sysinit runlevel with udev.
@@ -313,7 +316,7 @@ pkg_postinst() {
 		ewarn "You have emerged OpenRc without network support. This"
 		ewarn "means you need to SET UP a network manager such as"
 		ewarn "	net-misc/netifrc, net-misc/dhcpcd, net-misc/wicd,"
-		ewarn "net-misc/NetworkManager, or net-misc/badvpn."
+		ewarn "net-misc/NetworkManager, or net-vpn/badvpn."
 		ewarn "Or, you have the option of emerging openrc with the newnet"
 		ewarn "use flag and configuring /etc/conf.d/network and"
 		ewarn "/etc/conf.d/staticroute if you only use static interfaces."

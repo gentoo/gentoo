@@ -1,0 +1,24 @@
+diff --git a/src/Hpack/Config.hs b/src/Hpack/Config.hs
+index cb84f71..5566b8c 100644
+--- a/src/Hpack/Config.hs
++++ b/src/Hpack/Config.hs
+@@ -101,3 +101,9 @@ githubBaseUrl = "https://github.com/"
+ 
+-genericParseJSON_ :: forall a. (Generic a, GFromJSON (Rep a), HasTypeName a) => Value -> Parser a
++#if MIN_VERSION_aeson(1,0,0)
++#    define AESON_ARITY Zero
++#else
++#    define AESON_ARITY
++#endif
++
++genericParseJSON_ :: forall a. (Generic a, GFromJSON AESON_ARITY (Rep a), HasTypeName a) => Value -> Parser a
+ genericParseJSON_ = genericParseJSON defaultOptions {fieldLabelModifier = hyphenize name}
+diff --git a/test/Hpack/ConfigSpec.hs b/test/Hpack/ConfigSpec.hs
+index 320ba9a..d13d932 100644
+--- a/test/Hpack/ConfigSpec.hs
++++ b/test/Hpack/ConfigSpec.hs
+@@ -971,3 +971,3 @@ spec = do
+             |]
+-          readPackageConfig file `shouldReturn` Left (file ++ ": Error in $.executables.foo: failed to parse field executables: The key \"main\" was not found")
++          readPackageConfig file `shouldReturn` Left (file ++ ": Error in $.executables.foo: key \"main\" not present")
+ 

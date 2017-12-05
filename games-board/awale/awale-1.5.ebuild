@@ -15,7 +15,7 @@ SRC_URI="${SRC_URI} https://dev.gentoo.org/~hasufell/distfiles/${P}-no-autorecon
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="tk"
 
 RDEPEND="tk? ( dev-lang/tcl:0= dev-lang/tk:0= )"

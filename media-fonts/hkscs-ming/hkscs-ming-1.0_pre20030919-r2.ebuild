@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit rpm font
@@ -7,7 +7,7 @@ RESTRICT="mirror strip binchecks"
 
 RPM_V=1.0
 
-DESCRIPTION="Hong Kong SAR Government Official Reference Chinese Font that implements ISO10646 and HKSCS-2001"
+DESCRIPTION="Hong Kong Official Reference Chinese Font that implements ISO10646 & HKSCS-2001"
 HOMEPAGE="http://www.ogcio.gov.hk/en/business/tech_promotion/ccli/hkscs/"
 SRC_URI="http://www.ogcio.gov.hk/en/business/tech_promotion/ccli/terms/doc/mandrake_setup.bin"
 

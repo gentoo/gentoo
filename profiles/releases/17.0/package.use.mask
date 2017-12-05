@@ -1,0 +1,28 @@
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# Andreas K. Huettel <dilfridge@gentoo.org> (1 Dec 2017)
+# This version of blender uses only old cuda which is
+# masked in the 17.0 profiles.
+# The opensubdiv USE requires cuda making it an impossible combination
+=media-gfx/blender-2.78a-r1 cuda opensubdiv
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (27 May 2017)
+# Unmask default-PIE on 17.0 profiles.
+sys-devel/gcc -pie
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (7 June 2017)
+# Qt-4 will never work with >=icu-59, see bug 618638 and bug 618640
+dev-qt/qtcore:4 icu
+dev-qt/qtwebkit:4 icu
+
+# Ian Stakenvicius <axs@gentoo.org> (27 Sep 2017)
+# Remove system-icu masks (see base/package.use.mask)
+# that prevent the >=icu-59 dependency
+>=www-client/chromium-62.0.3202.9 -system-icu
+>=www-client/firefox-56.0 -system-icu
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (1 Dec 2017)
+# The following need pdftk, which is masked now
+app-text/getxbook pdf
+dev-util/diffoscope pdf

@@ -1,8 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
+
 PYTHON_COMPAT=( python2_7 )
+
 inherit cmake-utils perl-module linux-info python-single-r1
 
 DESCRIPTION="High-level language bindings for libnetfilter_queue"
@@ -13,12 +15,14 @@ KEYWORDS="~x86 ~amd64"
 SLOT="0"
 LICENSE="GPL-3"
 IUSE="perl python examples"
-REQUIRED_USE="|| ( perl python )"
+REQUIRED_USE="|| ( perl python ) python? ( ${PYTHON_REQUIRED_USE} )"
 
-DEPEND="python? (
+RDEPEND="
+	python? (
 		dev-python/dpkt[${PYTHON_USEDEP}]
 		${PYTHON_DEPS}
-	)
+	)"
+DEPEND="${RDEPEND}
 	perl? ( dev-lang/perl )
 	net-libs/libnetfilter_queue
 	dev-lang/swig"
@@ -41,13 +45,19 @@ pkg_setup() {
 }
 
 src_prepare() {
-	# Fix Perl destination directory
-	perl_set_version
-	sed -i "s|\${LIB_INSTALL_DIR}/perl\${PERL_VERSION}/|${VENDOR_ARCH}|" perl/CMakeLists.txt || die
-	sed -i "s|\${LIB_INSTALL_DIR}/python\${PYTHON_VERSION}/dist-packages/|$(python_get_sitedir)|" python/CMakeLists.txt || die
-	# Disable Perl/Python from USE flags
-	use perl || sed -i 's|ADD_SUBDIRECTORY(perl)||' CMakeLists.txt || die
-	use python || sed -i 's|ADD_SUBDIRECTORY(python)||' CMakeLists.txt || die
+	if use perl; then
+		# Fix Perl destination directory
+		perl_set_version
+		sed -i "s|\${LIB_INSTALL_DIR}/perl\${PERL_VERSION}/|${VENDOR_ARCH}|" perl/CMakeLists.txt || die
+	else
+		sed -i 's|ADD_SUBDIRECTORY(perl)||' CMakeLists.txt || die
+	fi
+
+	if use python; then
+		sed -i "s|\${LIB_INSTALL_DIR}/python\${PYTHON_VERSION}/dist-packages/|$(python_get_sitedir)|" python/CMakeLists.txt || die
+	else
+		sed -i 's|ADD_SUBDIRECTORY(python)||' CMakeLists.txt || die
+	fi
 }
 
 src_install() {

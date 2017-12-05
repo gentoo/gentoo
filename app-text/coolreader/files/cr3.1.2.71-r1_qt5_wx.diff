@@ -1,0 +1,242 @@
+diff -Naur old/CMakeLists.txt new/CMakeLists.txt
+--- old/CMakeLists.txt	2017-08-30 18:31:28.000000000 +0300
++++ new/CMakeLists.txt	2017-09-02 23:43:38.000000000 +0300
+@@ -29,7 +29,7 @@
+   endif()
+ elseif(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
+   # Update if necessary
+-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wno-long-long -pedantic")
++  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wno-long-long -pedantic -std=c++11 -fPIC")
+ endif()
+ 
+ if (NOT DEFINED GUI)
+@@ -323,7 +323,7 @@
+   message("Will make CR3/WX")
+   ADD_DEFINITIONS( ${DESKTOP_DEFS} -DCR_WX_SUPPORT=1 )
+   SET(wxWidgets_USE_LIBS base core )
+-  FIND_PACKAGE(wxWidgets)
++  FIND_PACKAGE(wxWidgets 2.8)
+   IF (wxWidgets_FOUND)
+     INCLUDE(${wxWidgets_USE_FILE})
+     include_directories( ${wxWidgets_INCLUDE_DIRS} )
+diff -Naur old/cr3qt/CMakeLists.txt new/cr3qt/CMakeLists.txt
+--- old/cr3qt/CMakeLists.txt	2017-08-30 18:31:28.000000000 +0300
++++ new/cr3qt/CMakeLists.txt	2017-09-03 00:53:38.000000000 +0300
+@@ -173,7 +173,11 @@
+     SET (EXTRA_LIBS ${QT_LIBRARIES} ${STD_LIBS} )
+ #${QT_LIBRARIES} 
+ ELSEIF (UNIX)
+-    SET (EXTRA_LIBS ${QT_LIBRARIES} fontconfig ${STD_LIBS} )
++    IF( ${GUI} STREQUAL QT )
++	SET (EXTRA_LIBS ${QT_LIBRARIES} fontconfig ${STD_LIBS} )
++    ELSE()
++        SET (EXTRA_LIBS fontconfig ${STD_LIBS} ${Qt5Core_LIBRARIES} ${Qt5Widgets_LIBRARIES})
++    ENDIF()
+ ELSE()
+     SET (EXTRA_LIBS ${STD_LIBS} ${QT_LIBRARIES} ${Qt5Core_LIBRARIES} ${Qt5Widgets_LIBRARIES} )
+ ENDIF(MAC)
+diff -Naur old/cr3qt/src/aboutdlg.ui new/cr3qt/src/aboutdlg.ui
+--- old/cr3qt/src/aboutdlg.ui	2017-08-30 18:31:28.000000000 +0300
++++ new/cr3qt/src/aboutdlg.ui	2017-09-03 00:56:14.000000000 +0300
+@@ -56,7 +56,7 @@
+      <item>
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+-        <string notr="true">(c) 1998-2010 Vadim Lopatin</string>
++        <string notr="true">(c) 1998-2015 Vadim Lopatin</string>
+        </property>
+       </widget>
+      </item>
+diff -Naur old/cr3wx/CMakeLists.txt new/cr3wx/CMakeLists.txt
+--- old/cr3wx/CMakeLists.txt	2017-08-30 18:31:28.000000000 +0300
++++ new/cr3wx/CMakeLists.txt	2017-09-03 00:54:59.000000000 +0300
+@@ -10,7 +10,7 @@
+ )
+ LINK_DIRECTORIES(${wxWidgets_LIBRARY_DIRS})
+ ADD_EXECUTABLE(cr3 ${CR3_SOURCES})
+-SET (EXTRA_LIBS  ${wxWidgets_LIBRARIES} ${STD_LIBS})
++SET (EXTRA_LIBS  ${wxWidgets_LIBRARIES} fontconfig ${STD_LIBS})
+ TARGET_LINK_LIBRARIES(cr3 crengine tinydict ${EXTRA_LIBS})
+ 
+ IF (UNIX)
+@@ -22,6 +22,9 @@
+   INSTALL( DIRECTORY ../cr3qt/data/hyph DESTINATION share/cr3 
+   FILES_MATCHING PATTERN "*.pattern" )
+   INSTALL( DIRECTORY ../cr3qt/data/skins DESTINATION share/cr3/skins )
++  INSTALL( FILES ../cr3qt/src/desktop/cr3.desktop DESTINATION share/applications )
++  INSTALL( FILES ../cr3qt/src/desktop/cr3.png DESTINATION share/pixmaps )
++  INSTALL( FILES ../cr3qt/src/desktop/cr3.xpm DESTINATION share/pixmaps )
+ ELSE()
+   INSTALL( TARGETS cr3 RUNTIME DESTINATION . )
+   INSTALL( DIRECTORY ../cr3qt/data/ DESTINATION . 
+diff -Naur old/cr3wx/src/cr3.cpp new/cr3wx/src/cr3.cpp
+--- old/cr3wx/src/cr3.cpp	2017-08-30 18:31:28.000000000 +0300
++++ new/cr3wx/src/cr3.cpp	2017-09-03 02:30:35.000000000 +0300
+@@ -395,7 +395,11 @@
+ 
+ lString16 GetConfigFileName()
+ {
+-    lString16 cfgdir( wxStandardPaths::Get().GetUserDataDir().c_str() );
++    #if wxCHECK_VERSION(3, 0, 0)
++        lString16 cfgdir( wxStandardPaths::Get().GetUserDataDir().wx_str() );
++    #else
++        lString16 cfgdir( wxStandardPaths::Get().GetUserDataDir().c_str() );
++    #endif
+     if ( !wxDirExists( cfgdir.c_str() ) )
+         ::wxMkdir( wxString( cfgdir.c_str() ) );
+     lChar16 slash = detectSlash( cfgdir );
+@@ -520,6 +524,7 @@
+ 
+ wxBitmap cr3Frame::getIcon16x16( const lChar16 * name )
+ {
++    wxLogNull logNo; // Temporary disable warnings ( see: http://trac.wxwidgets.org/ticket/15331 )
+     lString16 dir;
+     if ( _toolbarSize==2 )
+         dir = "icons/22x22/";
+@@ -531,7 +536,7 @@
+     if ( icon.IsOk() )
+         return icon;
+     return wxNullBitmap;
+-}
++} // ~wxLogNull called, old log sink restored
+ 
+ #if (USE_FREETYPE==1)
+ bool getDirectoryFonts( lString16Collection & pathList, lString16 ext, lString16Collection & fonts, bool absPath )
+@@ -622,7 +627,11 @@
+     wxImage::AddHandler(new wxPNGHandler);
+     resources = new ResourceContainer();
+ 
+-    lString16 appname( argv[0] );
++    #if wxCHECK_VERSION(3, 0, 0)
++        lString16 appname( argv[0].wx_str() );
++    #else
++        lString16 appname( argv[0] );
++    #endif
+     int lastSlash=-1;
+     lChar16 slashChar = '/';
+     for ( int p=0; p<(int)appname.length(); p++ ) {
+@@ -777,7 +786,11 @@
+     int argc = wxGetApp().argc;
+     lString16 fnameToOpen;
+     for ( int i=1; i<argc; i++ ) {
+-        lString16 param = lString16( wxGetApp().argv[1] );
++        #if wxCHECK_VERSION(3, 0, 0)
++            lString16 param = lString16( wxGetApp().argv[1].wx_str() );
++        #else
++            lString16 param = lString16( wxGetApp().argv[1] );
++        #endif
+         if ( param[0]!='-' )
+             fnameToOpen = param;
+     }
+@@ -1193,7 +1206,11 @@
+     lString16 outFile;
+     bool convert = false;
+     for ( int i=1; i<argc; i++ ) {
+-        lString16 param = lString16( wxGetApp().argv[i] );
++        #if wxCHECK_VERSION(3, 0, 0)
++            lString16 param = lString16( wxGetApp().argv[i].wx_str() );
++        #else
++            lString16 param = lString16( wxGetApp().argv[i] );
++        #endif
+         if ( param[0]!='-' )
+             fnameToOpen = param;
+         else if (param.startsWith("--convert"))
+@@ -1470,7 +1487,11 @@
+         wxCursor hg( wxCURSOR_WAIT );
+         this->SetCursor( hg );
+         wxSetCursor( hg );
+-        _view->getDocView()->exportWolFile( dlg.GetPath(), opts.getMode()==0, opts.getLevels() );
++        #if wxCHECK_VERSION(3, 0, 0)
++            _view->getDocView()->exportWolFile( dlg.GetPath().wx_str(), opts.getMode()==0, opts.getLevels() );
++        #else
++            _view->getDocView()->exportWolFile( dlg.GetPath(), opts.getMode()==0, opts.getLevels() );
++        #endif
+         wxSetCursor( wxNullCursor );
+         this->SetCursor( wxNullCursor );
+     }
+@@ -1479,7 +1500,7 @@
+ void 
+ cr3Frame::OnAbout( wxCommandEvent& WXUNUSED( event ) )
+ {
+-    wxMessageBox( wxT( "Cool Reader " wxT(CR3_VERSION) wxT("\n(c) 1998-2007 Vadim Lopatin\nwxWidgets version\n") )
++    wxMessageBox( wxT( "Cool Reader " wxT(CR3_VERSION) wxT("\n(c) 1998-2015 Vadim Lopatin\n" wxVERSION_STRING"\n") )
+     wxT("\nBased on CREngine library " wxT(CR_ENGINE_VERSION) )
+     wxT("\nThird party libraries used:")
+     wxT("\nzlib, libpng, libjpeg, freetype2,")
+diff -Naur old/cr3wx/src/optdlg.cpp new/cr3wx/src/optdlg.cpp
+--- old/cr3wx/src/optdlg.cpp	2017-08-30 18:31:28.000000000 +0300
++++ new/cr3wx/src/optdlg.cpp	2017-09-03 02:36:51.000000000 +0300
+@@ -41,7 +41,11 @@
+             if ( v==_choices[i] )
+                 tb = i;
+         if ( _storeStringValues ) {
+-            props->setString( _option, lString16(_choices[tb]) );
++            #if wxCHECK_VERSION(3, 0, 0)
++                props->setString( _option, lString16(_choices[tb].wx_str()) );
++            #else
++                props->setString( _option, lString16(_choices[tb]) );
++            #endif
+         } else {
+             props->setInt( _option, tb );
+         }
+@@ -50,7 +54,11 @@
+     {
+         unsigned tb = _defvalue;
+         if ( _storeStringValues ) {
+-            lString8 s8 = UnicodeToUtf8( lString16(_choices[_defvalue]) );
++            #if wxCHECK_VERSION(3, 0, 0)
++                lString8 s8 = UnicodeToUtf8( lString16(_choices[_defvalue].wx_str()) );
++            #else
++                lString8 s8 = UnicodeToUtf8( lString16(_choices[_defvalue]) );
++            #endif
+             lString16 s16 = props->getStringDef( _option, s8.c_str() );
+             wxString v = s16.c_str();
+             for ( unsigned i=0; i<_choices.GetCount(); i++ )
+diff -Naur old/cr3wx/src/view.cpp new/cr3wx/src/view.cpp
+--- old/cr3wx/src/view.cpp	2017-08-30 18:31:28.000000000 +0300
++++ new/cr3wx/src/view.cpp	2017-09-03 02:40:42.000000000 +0300
+@@ -353,7 +353,11 @@
+ 
+ lString16 cr3view::GetHistoryFileName()
+ {
+-    lString16 cfgdir( wxStandardPaths::Get().GetUserDataDir().c_str() );
++    #if wxCHECK_VERSION(3, 0, 0)
++        lString16 cfgdir( wxStandardPaths::Get().GetUserDataDir().wx_str() );
++    #else
++        lString16 cfgdir( wxStandardPaths::Get().GetUserDataDir().c_str() );
++    #endif
+     if ( !wxDirExists( cfgdir.c_str() ) )
+         ::wxMkdir( wxString( cfgdir.c_str() ) );
+     lChar16 slash = detectSlash( cfgdir );
+@@ -667,13 +671,21 @@
+     //===========================================
+     GetParent()->Update();
+     //printf("   loading...  ");
+-    bool res = getDocView()->LoadDocument( fname.c_str() );
++    #if wxCHECK_VERSION(3, 0, 0)
++        bool res = getDocView()->LoadDocument( fname.wx_str() );
++    #else
++        bool res = getDocView()->LoadDocument( fname.c_str() );
++    #endif
+     //printf("   done. \n");
+ 	//DEBUG
+ 	//_docview->exportWolFile( "test.wol", true );
+ 	//_docview->SetPos(0);
+     if ( !res )
+-        getDocView()->createDefaultDocument(lString16("File open error"), lString16("Cannot open file ") + fname.c_str() );
++        #if wxCHECK_VERSION(3, 0, 0)
++            getDocView()->createDefaultDocument(lString16("File open error"), lString16("Cannot open file ") + fname.wx_str() );
++        #else
++            getDocView()->createDefaultDocument(lString16("File open error"), lString16("Cannot open file ") + fname.c_str() );
++        #endif
+     lString16 title = getDocView()->getAuthors();
+     if ( !title.empty() && !getDocView()->getTitle().empty() )
+         title << L". ";
+diff -Naur old/crengine/include/cr3version.h new/crengine/include/cr3version.h
+--- old/crengine/include/cr3version.h	2017-08-30 18:31:28.000000000 +0300
++++ new/crengine/include/cr3version.h	2017-09-03 00:55:28.000000000 +0300
+@@ -1,2 +1,2 @@
+-#define CR_ENGINE_VERSION "3.1.2-52"
+-#define CR_ENGINE_BUILD_DATE "2014-11-19"
++#define CR_ENGINE_VERSION "3.1.2-71"
++#define CR_ENGINE_BUILD_DATE "2015-07-02"

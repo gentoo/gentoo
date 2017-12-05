@@ -11,12 +11,10 @@ inherit distutils-r1 git-r3
 DESCRIPTION="Unittest extension with automatic test suite discovery and easy test authoring"
 HOMEPAGE="
 	https://pypi.python.org/pypi/nose
-	http://readthedocs.org/docs/nose/
+	https://nose.readthedocs.io/en/latest/
 	https://github.com/nose-devs/nose"
 SRC_URI=""
-EGIT_REPO_URI="
-	git://github.com/nose-devs/${PN}.git
-	https://github.com/nose-devs/${PN}.git"
+EGIT_REPO_URI="https://github.com/nose-devs/${PN}.git"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
@@ -31,7 +29,7 @@ RDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	doc? ( >=dev-python/sphinx-0.6[${PYTHON_USEDEP}] )
-	test? ( $(python_gen_cond_dep 'dev-python/twisted-core[${PYTHON_USEDEP}]' python2_7) )"
+	test? ( $(python_gen_cond_dep 'dev-python/twisted[${PYTHON_USEDEP}]' python2_7 python3_{4,5,6}) )"
 
 pkg_setup() {
 	use doc && DISTUTILS_ALL_SUBPHASE_IMPLS=( 'python2*' )

@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ MODULE_AUTHOR=TIMA
 MODULE_VERSION=2.11
 inherit perl-module
 
-DESCRIPTION="an XML::Parser style and generic classes for simplistic and perlish handling of XML data"
+DESCRIPTION="XML::Parser style and generic classes for handling of XML data"
 
 LICENSE="Artistic"
 SLOT="0"

@@ -1,0 +1,139 @@
+diff -dNur a/src/library/basesqltablemodel.cpp b/src/library/basesqltablemodel.cpp
+--- a/src/library/basesqltablemodel.cpp	2015-12-29 17:10:41.000000000 +0100
++++ b/src/library/basesqltablemodel.cpp	2017-02-04 21:33:39.403861857 +0100
+@@ -559,7 +559,7 @@
+             if (column == fieldIndex(ColumnCache::COLUMN_LIBRARYTABLE_DURATION)) {
+                 int duration = value.toInt();
+                 if (duration > 0) {
+-                    value = Time::formatSeconds(duration, false);
++                    value = Time::formatSeconds(duration);
+                 } else {
+                     value = QString();
+                 }
+diff -dNur a/src/library/browse/browsethread.cpp b/src/library/browse/browsethread.cpp
+--- a/src/library/browse/browsethread.cpp	2015-12-29 17:10:41.000000000 +0100
++++ b/src/library/browse/browsethread.cpp	2017-02-04 21:32:23.605066421 +0100
+@@ -185,8 +185,7 @@
+         item->setData(item->text(), Qt::UserRole);
+         row_data.insert(COLUMN_COMMENT, item);
+ 
+-        QString duration = Time::formatSeconds(qVariantValue<int>(
+-                tio.getDuration()), false);
++        QString duration = Time::formatSeconds(tio.getDuration());
+         item = new QStandardItem(duration);
+         item->setToolTip(item->text());
+         item->setData(item->text(), Qt::UserRole);
+diff -dNur a/src/library/cratefeature.cpp b/src/library/cratefeature.cpp
+--- a/src/library/cratefeature.cpp	2015-12-29 17:10:41.000000000 +0100
++++ b/src/library/cratefeature.cpp	2017-02-04 21:30:54.962474898 +0100
+@@ -493,7 +493,7 @@
+             crateListTableModel.index(row, durationColumn)).toInt();
+         m_crateList.append(qMakePair(id, QString("%1 (%2) %3")
+                                      .arg(name, QString::number(count),
+-                                          Time::formatSeconds(duration, false))));
++                                          Time::formatSeconds(duration))));
+     }
+ }
+ 
+diff -dNur a/src/library/playlistfeature.cpp b/src/library/playlistfeature.cpp
+--- a/src/library/playlistfeature.cpp	2015-12-29 17:10:41.000000000 +0100
++++ b/src/library/playlistfeature.cpp	2017-02-04 21:33:06.920378091 +0100
+@@ -168,7 +168,7 @@
+             playlistTableModel.index(row, durationColumn)).toInt();
+         m_playlistList.append(qMakePair(id, QString("%1 (%2) %3")
+                                         .arg(name, QString::number(count),
+-                                             Time::formatSeconds(duration, false))));
++                                             Time::formatSeconds(duration))));
+     }
+ }
+ 
+diff -dNur a/src/trackinfoobject.cpp b/src/trackinfoobject.cpp
+--- a/src/trackinfoobject.cpp	2015-12-29 17:10:41.000000000 +0100
++++ b/src/trackinfoobject.cpp	2017-02-04 21:42:36.423323807 +0100
+@@ -293,7 +293,7 @@
+     int iDuration = m_iDuration;
+     lock.unlock();
+ 
+-    return Time::formatSeconds(iDuration, false);
++    return Time::formatSeconds(iDuration);
+ }
+ 
+ void TrackInfoObject::setLocation(const QString& location) {
+diff -dNur a/src/util/time.cpp b/src/util/time.cpp
+--- a/src/util/time.cpp	2017-02-04 21:29:44.439595305 +0100
++++ b/src/util/time.cpp	2017-02-04 21:37:54.739803100 +0100
+@@ -1,5 +1,7 @@
+ #include "util/time.h"
+ 
++#include "util/assert.h"
++
+ // static
+ LLTIMER Time::s_timer;
+ // static
+@@ -8,7 +10,7 @@
+ qint64 Time::s_testElapsed_nsecs = 0;
+ 
+ // static
+-QString Time::formatSeconds(double dSeconds, bool showCentis) {
++QString Time::formatSeconds(double dSeconds, Precision precision) {
+     if (dSeconds < 0) {
+         return "?";
+     }
+@@ -24,13 +26,14 @@
+             (days > 0 ? (QString::number(days) %
+                          QLatin1String("'d', ")) : QString()) %
+             QLatin1String(days > 0 || t.hour() > 0 ? "hh:mm:ss" : "mm:ss") %
+-            QLatin1String(showCentis ? ".zzz" : "");
++            QLatin1String(Precision::SECONDS == precision ? "" : ".zzz");
+ 
+     QString timeString = t.toString(formatString);
+ 
+     // The format string gives us milliseconds but we want
+     // centiseconds. Slice one character off.
+-    if (showCentis) {
++    if (Precision::CENTISECONDS == precision) {
++        DEBUG_ASSERT(1 <= timeString.length());
+         timeString = timeString.left(timeString.length() - 1);
+     }
+ 
+diff -dNur a/src/util/time.h b/src/util/time.h
+--- a/src/util/time.h	2017-02-04 21:29:44.439595305 +0100
++++ b/src/util/time.h	2017-02-04 21:41:01.476833822 +0100
+@@ -55,10 +55,17 @@
+         s_testElapsed_nsecs = elapsed * 1000000;
+     }
+ 
+-    // The standard way of formatting a time in seconds. Used for display of
+-    // track duration, etc. showCentis indicates whether to include
+-    // centisecond-precision or to round to the nearest second.
+-    static QString formatSeconds(double dSeconds, bool showCentis);
++    enum class Precision {
++        SECONDS,
++        CENTISECONDS,
++        MILLISECONDS
++    };
++
++    // The standard way of formatting a time in seconds. Used for display
++    // of track duration, etc.
++    static QString formatSeconds(
++            double dSeconds,
++            Precision precision = Time::Precision::SECONDS);
+ 
+   private:
+     static LLTIMER s_timer;
+diff -dNur a/src/widget/wnumberpos.cpp b/src/widget/wnumberpos.cpp
+--- a/src/widget/wnumberpos.cpp	2015-12-29 17:10:41.000000000 +0100
++++ b/src/widget/wnumberpos.cpp	2017-02-04 21:41:57.023950430 +0100
+@@ -92,10 +92,10 @@
+     QString valueString;
+     if (valueMillis >= 0) {
+         valueString = m_skinText % Time::formatSeconds(
+-                valueMillis / Time::kMillisPerSecond, true);
++                valueMillis / Time::kMillisPerSecond, Time::Precision::MILLISECONDS);
+     } else {
+         valueString = m_skinText % QLatin1String("-") % Time::formatSeconds(
+-                -valueMillis / Time::kMillisPerSecond, true);
++                -valueMillis / Time::kMillisPerSecond, Time::Precision::CENTISECONDS);
+     }
+     setText(valueString);
+ }

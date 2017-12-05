@@ -15,7 +15,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="dev-qt/qtgui:4
-	virtual/libusb:0"
+	virtual/libusb:0
+	x11-libs/libXtst"
 DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${PN}-${PN}

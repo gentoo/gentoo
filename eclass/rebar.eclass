@@ -78,6 +78,22 @@ _rebar_find_dep() {
 	echo "${result}"
 }
 
+# @FUNCTION: rebar_disable_coverage
+# @USAGE: [<rebar_config>]
+# @DESCRIPTION:
+# Disable coverage in rebar.config. This is a workaround for failing coverage.
+# Coverage is not relevant in this context, so there's no harm to disable it,
+# although the issue should be fixed.
+rebar_disable_coverage() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	local rebar_config="${1:-rebar.config}"
+
+	sed -e 's/{cover_enabled, true}/{cover_enabled, false}/' \
+		-i "${rebar_config}" \
+		|| die "failed to disable coverage in ${rebar_config}"
+}
+
 # @FUNCTION: erebar
 # @USAGE: <targets>
 # @DESCRIPTION:
@@ -183,7 +199,10 @@ rebar_src_prepare() {
 
 	default
 	rebar_set_vsn
-	[[ -f rebar.config ]] && rebar_remove_deps
+	if [[ -f rebar.config ]]; then
+		rebar_disable_coverage
+		rebar_remove_deps
+	fi
 }
 
 # @FUNCTION: rebar_src_configure

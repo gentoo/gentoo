@@ -120,7 +120,7 @@ makeopts_loadavg() {
 	# This assumes the first .* will be more greedy than the second .*
 	# since POSIX doesn't specify a non-greedy match (i.e. ".*?").
 	local lavg=$(echo " $* " | sed -r -n \
-		-e 's:.*[[:space:]](-[a-z]*l|--(load-average|max-load)[=[:space:]])[[:space:]]*([0-9]+|[0-9]+\.[0-9]+).*:\3:p' \
+		-e 's:.*[[:space:]](-[a-z]*l|--(load-average|max-load)[=[:space:]])[[:space:]]*([0-9]+(\.[0-9]+)?)[[:space:]].*:\3:p' \
 		-e "s:.*[[:space:]](-[a-z]*l|--(load-average|max-load))[[:space:]].*:${2:-999}:p")
 	# Default to ${inf} since the default is to not use a load limit.
 	echo ${lavg:-${2:-999}}

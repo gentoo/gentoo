@@ -1,12 +1,12 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit eutils git-r3 multilib savedconfig toolchain-funcs
 
 DESCRIPTION="simple terminal implementation for X"
-HOMEPAGE="http://st.suckless.org/"
-EGIT_REPO_URI="git://git.suckless.org/st"
+HOMEPAGE="https://st.suckless.org/"
+EGIT_REPO_URI="https://git.suckless.org/st"
 
 LICENSE="MIT-with-advertising"
 SLOT="0"
@@ -27,20 +27,22 @@ DEPEND="
 "
 
 src_prepare() {
-	eapply_user
+	default
 
-	sed -e '/^CFLAGS/s:[[:space:]]-Wall[[:space:]]: :' \
+	sed -i \
+		-e '/^CFLAGS/s:[[:space:]]-Wall[[:space:]]: :' \
 		-e '/^CFLAGS/s:[[:space:]]-O[^[:space:]]*[[:space:]]: :' \
 		-e '/^LDFLAGS/{s:[[:space:]]-s[[:space:]]: :}' \
 		-e '/^X11INC/{s:/usr/X11R6/include:/usr/include/X11:}' \
 		-e "/^X11LIB/{s:/usr/X11R6/lib:/usr/$(get_libdir)/X11:}" \
-		-i config.mk || die
-	sed -e '/@echo/!s:@::' \
+		config.mk || die
+	sed -i \
 		-e '/tic/d' \
-		-i Makefile || die
-	tc-export CC
+		Makefile || die
 
 	restore_config config.h
+
+	tc-export CC
 }
 
 src_install() {

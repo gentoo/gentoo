@@ -1,0 +1,15 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -93,9 +93,9 @@
+ )
+ if test x"$enable_boost" = x"yes"; then
+     # check boost
+-    BOOST_REQUIRE([1.39])
+-    BOOST_FIND_HEADER([boost/bind.hpp])
+-    BOOST_FIND_HEADER([boost/signals2.hpp])
++    AX_BOOST_BASE([1.39])
++    AC_CHECK_HEADERS([boost/bind.hpp])
++    AC_CHECK_HEADERS([boost/signals2.hpp])
+ fi
+ AM_CONDITIONAL(HAVE_BOOST, test x"$enable_boost" = x"yes")
+ 

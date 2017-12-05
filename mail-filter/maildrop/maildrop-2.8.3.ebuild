@@ -12,7 +12,7 @@ HOMEPAGE="http://www.courier-mta.org/maildrop/"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ~ppc64 ~s390 ~sh sparc x86"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 ~s390 ~sh sparc x86"
 IUSE="berkdb debug dovecot fam gdbm ldap mysql postgres static-libs authlib +tools trashquota"
 
 CDEPEND="!mail-mta/courier
@@ -60,7 +60,7 @@ src_prepare() {
 		's~AC_MSG_ERROR(Cannot determine default mailbox)~SPOOLDIR="./.maildir"~' \
 		"${S}"/libs/maildrop/configure.ac || die "sed failed"
 
-	epatch "${FILESDIR}"/${PN}-testsuite-r2.patch
+	epatch "${FILESDIR}"/${PN}-testsuite-r3.patch
 	eautoreconf
 }
 

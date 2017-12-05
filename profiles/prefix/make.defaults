@@ -12,5 +12,9 @@ FEATURES="collision-protect"
 
 # Python 3.5 is unmasked for us, build stuff by default, in particular
 # for bug #572502 where the default python is set to 3.5 for it was
-# built first.
-PYTHON_TARGETS="${PYTHON_TARGETS} python3_5"
+# built first.  Drop Python 3.4 to avoid unnecessary builds.
+PYTHON_TARGETS="python2_7 python3_5"
+PYTHON_SINGLE_TARGET="python3_5"
+
+# Move away from ruby21, fast forward to ruby24, we don't have ruby23
+RUBY_TARGETS="ruby22 ruby24"

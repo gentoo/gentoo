@@ -8,6 +8,5 @@
 	<longdescription>Cluster Glue is a set of libraries, tools and utilities suitable for the Heartbeat/Pacemaker cluster stack.</longdescription>
 	<use>
 		<flag name="libnet">Force use of <pkg>net-libs/libnet</pkg></flag>
-		<flag name="large-cluster">Extend messages length limits for resource heavy clusters</flag>
 	</use>
 </pkgmetadata>

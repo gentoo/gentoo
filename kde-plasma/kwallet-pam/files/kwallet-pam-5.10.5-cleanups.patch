@@ -1,0 +1,173 @@
+From a33ec22b96e837899528b05963eae8ea6b01171a Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Thu, 3 Aug 2017 09:02:14 +0200
+Subject: Several cleanups
+
+Summary:
+- No cppcheck warnings anymore
+- Use snprintf everywhere
+- Avoid pointless multiplication with sizeof(char)
+- Avoid memory leaks
+
+Test Plan: Still builds, works the same as before.
+
+Reviewers: #plasma
+
+Subscribers: plasma-devel
+
+Tags: #plasma
+
+Differential Revision: https://phabricator.kde.org/D7123
+---
+ pam_kwallet.c | 44 ++++++++++++++++++++++++++++++++------------
+ 1 file changed, 32 insertions(+), 12 deletions(-)
+
+diff --git a/pam_kwallet.c b/pam_kwallet.c
+index d88c5e0..cba57e7 100644
+--- a/pam_kwallet.c
++++ b/pam_kwallet.c
+@@ -151,13 +151,14 @@ static int set_env(pam_handle_t *pamh, const char *name, const char *value)
+         //We do not return because pam_putenv might work
+     }
+ 
+-    char *pamEnv = malloc(strlen(name) + strlen(value) + 2); //2 is for = and \0
++    size_t pamEnvSize = strlen(name) + strlen(value) + 2; //2 is for = and \0
++    char *pamEnv = malloc(pamEnvSize);
+     if (!pamEnv) {
+         pam_syslog(pamh, LOG_WARNING, "%s: Impossible to allocate memory for pamEnv", logPrefix);
+         return -1;
+     }
+ 
+-    sprintf (pamEnv, "%s=%s", name, value);
++    snprintf (pamEnv, pamEnvSize, "%s=%s", name, value);
+     int ret = pam_putenv(pamh, pamEnv);
+     free(pamEnv);
+ 
+@@ -240,6 +241,11 @@ cleanup:
+     return result;
+ }
+ 
++static void cleanup_free(pam_handle_t *pamh, void *ptr, int error_status)
++{
++    free(ptr);
++}
++
+ PAM_EXTERN int pam_sm_authenticate(pam_handle_t *pamh, int flags, int argc, const char **argv)
+ {
+     pam_syslog(pamh, LOG_INFO, "%s: pam_sm_authenticate\n", logPrefix);
+@@ -297,14 +303,17 @@ PAM_EXTERN int pam_sm_authenticate(pam_handle_t *pamh, int flags, int argc, cons
+         return PAM_IGNORE;
+     }
+ 
+-    char *key = malloc(sizeof(char) * KWALLET_PAM_KEYSIZE);
+-    if (kwallet_hash(password, userInfo, key) != 0) {
++    char *key = malloc(KWALLET_PAM_KEYSIZE);
++    if (!key || kwallet_hash(password, userInfo, key) != 0) {
++        free(key);
+         pam_syslog(pamh, LOG_ERR, "%s: Fail into creating the hash", logPrefix);
+         return PAM_IGNORE;
+     }
+ 
+-    result = pam_set_data(pamh, kwalletPamDataKey, key, NULL);
++    result = pam_set_data(pamh, kwalletPamDataKey, key, cleanup_free);
++
+     if (result != PAM_SUCCESS) {
++        free(key);
+         pam_syslog(pamh, LOG_ERR, "%s: Impossible to store the hashed password: %s", logPrefix
+             , pam_strerror(pamh, result));
+         return PAM_IGNORE;
+@@ -385,9 +394,8 @@ cleanup:
+ static int better_write(int fd, const char *buffer, int len)
+ {
+     size_t writtenBytes = 0;
+-    int result;
+     while(writtenBytes < len) {
+-        result = write(fd, buffer + writtenBytes, len - writtenBytes);
++        int result = write(fd, buffer + writtenBytes, len - writtenBytes);
+         if (result < 0) {
+             if (errno != EAGAIN && errno != EINTR) {
+                 return -1;
+@@ -450,6 +458,7 @@ static void start_kwallet(pam_handle_t *pamh, struct passwd *userInfo, const cha
+     if (result != PAM_SUCCESS) {
+         pam_syslog(pamh, LOG_ERR, "%s: Impossible to set %s env, %s",
+                    logPrefix, envVar, pam_strerror(pamh, result));
++        free(fullSocket);
+         return;
+     }
+ 
+@@ -459,12 +468,15 @@ static void start_kwallet(pam_handle_t *pamh, struct passwd *userInfo, const cha
+     if (strlen(fullSocket) > sizeof(local.sun_path)) {
+         pam_syslog(pamh, LOG_ERR, "%s: socket path %s too long to open",
+                    logPrefix, fullSocket);
++        free(fullSocket);
+         return;
+     }
+     strcpy(local.sun_path, fullSocket);
++    free(fullSocket);
++    fullSocket = NULL;
+     unlink(local.sun_path);//Just in case it exists from a previous login
+ 
+-    pam_syslog(pamh, LOG_INFO, "%s: final socket path: %s", logPrefix, fullSocket);
++    pam_syslog(pamh, LOG_INFO, "%s: final socket path: %s", logPrefix, local.sun_path);
+ 
+     size_t len = strlen(local.sun_path) + sizeof(local.sun_family);
+     if (bind(envSocket, (struct sockaddr *)&local, len) == -1) {
+@@ -477,7 +489,7 @@ static void start_kwallet(pam_handle_t *pamh, struct passwd *userInfo, const cha
+         return;
+     }
+ 
+-    if (chown(fullSocket, userInfo->pw_uid, userInfo->pw_gid) == -1) {
++    if (chown(local.sun_path, userInfo->pw_uid, userInfo->pw_gid) == -1) {
+         pam_syslog(pamh, LOG_INFO, "%s: Couldn't change ownership of the socket", logPrefix);
+         return;
+     }
+@@ -655,7 +667,8 @@ int kwallet_hash(const char *passphrase, struct passwd *userInfo, char *key)
+ #else
+     char *fixpath = "share/apps/kwallet/kdewallet.salt";
+ #endif
+-    char *path = (char*) malloc(strlen(userInfo->pw_dir) + strlen(kdehome) + strlen(fixpath) + 3);//3 == / and \0
++    size_t pathSize = strlen(userInfo->pw_dir) + strlen(kdehome) + strlen(fixpath) + 3;//3 == /, / and \0
++    char *path = (char*) malloc(pathSize);
+     sprintf(path, "%s/%s/%s", userInfo->pw_dir, kdehome, fixpath);
+ 
+     struct stat info;
+@@ -666,21 +679,26 @@ int kwallet_hash(const char *passphrase, struct passwd *userInfo, char *key)
+         FILE *fd = fopen(path, "r");
+         if (fd == NULL) {
+             syslog(LOG_ERR, "%s: Couldn't open file: %s because: %d-%s", logPrefix, path, errno, strerror(errno));
++            free(path);
+             return 1;
+         }
+-        salt = (char*) malloc(sizeof(char) * KWALLET_PAM_SALTSIZE);
++        salt = (char*) malloc(KWALLET_PAM_SALTSIZE);
+         memset(salt, '\0', KWALLET_PAM_SALTSIZE);
+         fread(salt, KWALLET_PAM_SALTSIZE, 1, fd);
+         fclose(fd);
+     }
++    free(path);
++
+     if (salt == NULL) {
+         syslog(LOG_ERR, "%s-kwalletd: Couldn't create or read the salt file", logPrefix);
+         return 1;
+     }
+ 
+     gcry_error_t error;
++
+     error = gcry_control(GCRYCTL_INIT_SECMEM, 32768, 0);
+     if (error != 0) {
++        free(salt);
+         syslog(LOG_ERR, "%s-kwalletd: Can't get secure memory: %d", logPrefix, error);
+         return 1;
+     }
+@@ -691,5 +709,7 @@ int kwallet_hash(const char *passphrase, struct passwd *userInfo, char *key)
+                             GCRY_KDF_PBKDF2, GCRY_MD_SHA512,
+                             salt, KWALLET_PAM_SALTSIZE,
+                             KWALLET_PAM_ITERATIONS,KWALLET_PAM_KEYSIZE, key);
+-    return 0;
++
++    free(salt);
++    return (int) error; // gcry_kdf_derive returns 0 on success
+ }
+-- 
+cgit v0.11.2
+

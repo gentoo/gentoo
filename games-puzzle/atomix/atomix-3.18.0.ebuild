@@ -4,12 +4,12 @@
 EAPI=5
 inherit gnome-games
 
-DESCRIPTION="a game where you build full molecules, from simple inorganic to extremely complex organic ones"
+DESCRIPTION="Build molecules, from simple inorganic to extremely complex organic ones"
 HOMEPAGE="http://ftp.gnome.org/pub/GNOME/sources/atomix/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="

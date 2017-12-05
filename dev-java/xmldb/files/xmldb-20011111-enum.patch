@@ -1,0 +1,15 @@
+--- a/org/xmldb/api/sdk/modules/SetContentHandler.java	2017-03-17 21:49:05.540172602 +0000
++++ b/org/xmldb/api/sdk/modules/SetContentHandler.java	2017-03-17 21:49:22.860172942 +0000
+@@ -168,9 +168,9 @@
+          }
+       }
+
+-      Enumeration enum = namespaces.keys();
+-      while ( enum.hasMoreElements() ) {
+-         String key = (String) enum.nextElement();
++      Enumeration myEnum = namespaces.keys();
++      while ( myEnum.hasMoreElements() ) {
++         String key = (String) myEnum.nextElement();
+          newContent.append(" xmlns");
+          if (key.length() > 0) {
+             newContent.append(":");

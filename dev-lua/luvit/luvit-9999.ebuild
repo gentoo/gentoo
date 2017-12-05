@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,8 +8,8 @@ inherit toolchain-funcs multilib git-2
 # TODO: FHS https://github.com/luvit/luvit/issues/379
 
 DESCRIPTION="Takes node.js' architecture and dependencies and fits it in the Lua language"
-HOMEPAGE="http://luvit.io/"
-EGIT_REPO_URI="git://github.com/luvit/luvit.git"
+HOMEPAGE="https://luvit.io/"
+EGIT_REPO_URI="https://github.com/luvit/luvit.git"
 
 KEYWORDS=""
 SLOT="0"

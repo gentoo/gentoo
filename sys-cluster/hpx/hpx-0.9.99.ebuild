@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ else
 	S="${WORKDIR}/${PN}_${PV}"
 fi
 
-inherit cmake-utils fortran-2 multilib python-single-r1
+inherit cmake-utils fortran-2 multilib python-any-r1
 
 DESCRIPTION="C++ runtime system for parallel and distributed applications"
 HOMEPAGE="http://stellar.cct.lsu.edu/tag/hpx/"
@@ -38,14 +38,14 @@ DEPEND="${RDEPEND}
 	test? ( ${PYTHON_DEPS} )
 	doc? ( >=dev-libs/boost-1.56.0-r1:=[tools] )
 "
-REQUIRED_USE="test? ( ${PYTHON_REQUIRED_USE} )
+REQUIRED_USE="
 	jemalloc? ( !perftools !tbb )
 	perftools? ( !jemalloc !tbb )
 	tbb? ( !jemalloc !perftools )
 	"
 
 pkg_setup() {
-	use test && python-single-r1_pkg_setup
+	use test && python-any-r1_pkg_setup
 }
 
 src_configure() {

@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>christian.tietz@mailbox.org</email>
 		<name>Christian Tietz</name>
 		<description>Proxy Maintainer</description>
-	</maintainer>	
+	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
@@ -13,5 +13,6 @@
 	<upstream>
 		<remote-id type="github">bleachbit/bleachbit</remote-id>
 		<bugs-to>https://bugs.launchpad.net/bleachbit</bugs-to>
+		<remote-id type="sourceforge">bleachbit</remote-id>
 	</upstream>
 </pkgmetadata>

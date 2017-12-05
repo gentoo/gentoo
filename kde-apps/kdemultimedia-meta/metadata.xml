@@ -5,4 +5,7 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
+	<use>
+		<flag name="cdrom">Include packages for optical discs</flag>
+	</use>
 </pkgmetadata>

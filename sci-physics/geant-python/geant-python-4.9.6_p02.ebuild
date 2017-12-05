@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,10 +17,11 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 LICENSE="geant4"
 SLOT="0"
 IUSE="examples"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	dev-libs/boost[${PYTHON_USEDEP}]
+	dev-libs/boost:=[python,${PYTHON_USEDEP}]
 	dev-libs/xerces-c
 	=sci-physics/geant-${PV}*"
 DEPEND="${RDEPEND}"

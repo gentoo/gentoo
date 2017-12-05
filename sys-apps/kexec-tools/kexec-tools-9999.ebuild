@@ -1,18 +1,17 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
 if [[ ${PV} == "9999" ]] ; then
-	inherit git-r3
-	EGIT_REPO_URI="git://git.kernel.org/pub/scm/utils/kernel/kexec/kexec-tools.git"
-	AUTOTOOLS_AUTORECONF=true
+	inherit git-r3 autotools
+	EGIT_REPO_URI="https://git.kernel.org/pub/scm/utils/kernel/kexec/kexec-tools.git"
 else
 	SRC_URI="mirror://kernel/linux/utils/kernel/kexec/${P}.tar.xz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
-inherit autotools-utils linux-info systemd
+inherit libtool linux-info systemd
 
 DESCRIPTION="Load another kernel from the currently executing Linux kernel"
 HOMEPAGE="https://kernel.org/pub/linux/utils/kernel/kexec/"
@@ -40,6 +39,15 @@ pkg_setup() {
 	export ASFLAGS="${CCASFLAGS}"
 }
 
+src_prepare() {
+	default
+	if [[ ${PV} == "9999" ]] ; then
+		eautoreconf
+	else
+		elibtoolize
+	fi
+}
+
 src_configure() {
 	local myeconfargs=(
 		$(use_with booke)
@@ -47,15 +55,15 @@ src_configure() {
 		$(use_with xen)
 		$(use_with zlib)
 	)
-	autotools-utils_src_configure
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
-	autotools-utils_src_install
+	default
 
 	dodoc "${FILESDIR}"/README.Gentoo
 
-	newinitd "${FILESDIR}"/kexec.init-2.0.12 kexec
+	newinitd "${FILESDIR}"/kexec.init-2.0.13-r1 kexec
 	newconfd "${FILESDIR}"/kexec.conf-2.0.4 kexec
 
 	insinto /etc

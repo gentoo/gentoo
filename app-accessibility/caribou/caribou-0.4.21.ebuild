@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 GNOME2_LA_PUNT="yes"
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 PYTHON_REQ_USE="xml"
 
 inherit gnome2 python-r1
@@ -30,6 +30,7 @@ COMMON_DEPEND="
 	x11-libs/libX11
 	x11-libs/libxklavier
 	x11-libs/libXtst
+	${PYTHON_DEPS}
 "
 # gsettings-desktop-schemas is needed for the 'toolkit-accessibility' key
 # pyatspi-2.1.90 needed to run caribou if pygobject:3 is installed

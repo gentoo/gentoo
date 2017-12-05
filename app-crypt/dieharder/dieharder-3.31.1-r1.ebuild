@@ -3,15 +3,13 @@
 
 EAPI=6
 
-inherit autotools eutils
-
 DESCRIPTION="An advanced suite for testing the randomness of RNG's"
 HOMEPAGE="http://www.phy.duke.edu/~rgb/General/dieharder.php"
 SRC_URI="http://www.phy.duke.edu/~rgb/General/${PN}/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~x86"
+KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="doc"
 
 RDEPEND="sci-libs/gsl"
@@ -35,11 +33,6 @@ pkg_setup() {
 	use doc && HTML_DOCS+=(
 		dieharder.html
 	)
-}
-
-src_prepare() {
-	default
-	eautoreconf
 }
 
 src_compile() {

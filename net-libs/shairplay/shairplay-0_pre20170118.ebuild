@@ -7,11 +7,11 @@ inherit autotools vcs-snapshot
 
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
-	EGIT_REPO_URI="git://github.com/juhovh/shairplay.git"
+	EGIT_REPO_URI="https://github.com/juhovh/${PN}.git"
 else
 	EGIT_COMMIT="498bc5bcdd305e04721f94a04b9f26a7da72673f"
-	SRC_URI="https://github.com/juhovh/shairplay/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	SRC_URI="https://github.com/juhovh/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="amd64 x86"
 fi
 
 DESCRIPTION="Apple airplay and raop protocol server"

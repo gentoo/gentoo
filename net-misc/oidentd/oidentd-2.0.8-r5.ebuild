@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,10 +14,14 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ~s390 ~sh sparc x86 ~x86-fbsd"
 IUSE="debug ipv6 masquerade"
 
+PATCHES=(
+	"${FILESDIR}/${P}-masquerading.patch"
+	"${FILESDIR}/${P}-bind-to-ipv6-too.patch"
+	"${FILESDIR}/${P}-gcc5.patch"
+)
+
 src_prepare() {
-	epatch "${FILESDIR}/${P}-masquerading.patch" \
-		"${FILESDIR}/${P}-bind-to-ipv6-too.patch" \
-		"${FILESDIR}/${P}-gcc5.patch"
+	epatch -p1 "${PATCHES[@]}"
 }
 
 src_configure() {

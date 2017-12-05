@@ -1,5 +1,5 @@
---- lib-python/2.7/distutils/unixccompiler.py
-+++ lib-python/2.7/distutils/unixccompiler.py
+--- a/lib-python/2.7/distutils/unixccompiler.py
++++ b/lib-python/2.7/distutils/unixccompiler.py
 @@ -297,7 +297,7 @@
          # this time, there's no way to determine this information from
          # the configuration data stored in the Python installation, so

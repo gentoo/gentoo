@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -9,7 +9,7 @@ GENTOO_DEPEND_ON_PERL="no"
 PYTHON_COMPAT=( python2_7 python3_{4,5} )
 DISTUTILS_OPTIONAL=1
 
-inherit autotools perl-module distutils-r1 toolchain-funcs java-pkg-opt-2
+inherit autotools perl-module distutils-r1 toolchain-funcs flag-o-matic java-pkg-opt-2
 
 DESCRIPTION="Translator library for raster geospatial data formats (includes OGR support)"
 HOMEPAGE="http://www.gdal.org/"
@@ -17,7 +17,7 @@ SRC_URI="http://download.osgeo.org/${PN}/${PV}/${P}.tar.gz"
 
 SLOT="0/2"
 LICENSE="BSD Info-ZIP MIT"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="amd64 ~arm ~arm64 ~ia64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="armadillo +aux_xml curl debug doc fits geos gif gml hdf5 java jpeg jpeg2k mdb mysql netcdf odbc ogdi opencl oracle pdf perl png postgres python spatialite sqlite threads xls"
 
 COMMON_DEPEND="dev-libs/expat
@@ -121,6 +121,9 @@ src_prepare() {
 		swig/python/setup.cfg || die "sed python setup.cfg failed"
 
 	default
+
+	# bug 626844, poppler headers require C++11
+	use pdf && append-cxxflags -std=c++11
 
 	tc-export AR RANLIB
 

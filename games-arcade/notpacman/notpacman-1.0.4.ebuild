@@ -12,7 +12,7 @@ SRC_URI="http://stabyourself.net/dl.php?file=notpacman-1004/notpacman-linux.zip 
 
 LICENSE="WTFPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 LVSLOT="0.7"
 RDEPEND=">=games-engines/love-0.7.2:${LVSLOT}

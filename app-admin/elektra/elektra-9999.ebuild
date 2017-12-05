@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ inherit cmake-multilib eutils java-pkg-opt-2 git-r3
 
 DESCRIPTION="Framework to store config parameters in hierarchical key-value pairs"
 HOMEPAGE="https://freedesktop.org/wiki/Software/Elektra"
-EGIT_REPO_URI="git://github.com/ElektraInitiative/libelektra.git"
+EGIT_REPO_URI="https://github.com/ElektraInitiative/libelektra.git"
 
 LICENSE="BSD"
 SLOT="0/${PV}"

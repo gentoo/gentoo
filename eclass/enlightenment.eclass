@@ -9,7 +9,7 @@
 if [[ -z ${_ENLIGHTENMENT_ECLASS} ]]; then
 _ENLIGHTENMENT_ECLASS=1
 
-inherit eutils libtool
+inherit epatch epunt-cxx libtool
 
 # @ECLASS-VARIABLE: E_PYTHON
 # @DEFAULT_UNSET

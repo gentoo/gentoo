@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI="5"
 
-DESCRIPTION="Japanese input method Anthy IMEngine for IBus Framework"
+DESCRIPTION="Japanese SKK engine for IBus"
 HOMEPAGE="https://github.com/ueno/ibus-skk"
 SRC_URI="mirror://github/ueno/${PN}/${P}.tar.gz"
 
@@ -12,15 +12,16 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="nls"
 
-RDEPEND=">=app-i18n/ibus-1.3
-	>=app-i18n/libskk-0.0.11
+CDEPEND="app-i18n/ibus
+	<=app-i18n/libskk-1.0.1
+	x11-libs/gtk+:3
 	nls? ( virtual/libintl )"
-DEPEND="${RDEPEND}
+RDEPEND="${CDEPEND}
+	app-i18n/skk-jisyo"
+DEPEND="${CDEPEND}
 	dev-util/intltool
 	virtual/pkgconfig
-	nls? ( >=sys-devel/gettext-0.16.1 )"
-RDEPEND="${RDEPEND}
-	app-i18n/skk-jisyo"
+	nls? ( sys-devel/gettext )"
 
 DOCS="ChangeLog NEWS README THANKS"
 

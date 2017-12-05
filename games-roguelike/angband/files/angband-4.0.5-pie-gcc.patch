@@ -1,0 +1,13 @@
+Allow gcc to construct correct partial linking command to ld.
+Otherwise ld gets an incompatible mix of '-pie -r'.
+
+https://bugs.gentoo.org/617982
+diff --git a/src/Makefile b/src/Makefile
+index 79be4cc..d27bb91 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -33,3 +33,3 @@ win/$(PROGNAME).res: win/$(PROGNAME).rc
+ $(PROGNAME).o: $(OBJECTS)
+-	$(LD) -nostdlib -Wl,-r -o $@ $(OBJECTS)
++	$(LD) -nostdlib -r -o $@ $(OBJECTS)
+ 	@printf "%10s %-20s\n" LINK $@

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby20 ruby21 ruby22 ruby23"
+USE_RUBY="ruby21 ruby22 ruby23 ruby24"
 
 RUBY_FAKEGEM_TASK_TEST="test"
 
@@ -18,7 +18,7 @@ HOMEPAGE="https://github.com/petergoldstein/dalli"
 SRC_URI="https://github.com/petergoldstein/dalli/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
 IUSE=""
 
 DEPEND+="${DEPEND} test? ( >=net-misc/memcached-1.4.0 )"
@@ -27,7 +27,7 @@ ruby_add_bdepend "test? (
 		dev-ruby/minitest:5
 		>=dev-ruby/mocha-0.13
 		dev-ruby/rack
-		>=dev-ruby/activesupport-4.1
+		>=dev-ruby/activesupport-4.1 <dev-ruby/activesupport-5.1
 		dev-ruby/connection_pool )"
 
 all_ruby_prepare() {
@@ -35,7 +35,7 @@ all_ruby_prepare() {
 
 	sed -i -e '/\(appraisal\|bundler\)/ s:^:#:' Rakefile || die
 
-	sed -i -e '1igem "minitest", "~> 5.0"' \
+	sed -i -e '1igem "minitest", "~> 5.0"; gem "activesupport", "< 5.1"' \
 		-e '/bundler/ s:^:#:' test/helper.rb || die
 
 	# Drop rails dependency which is only used to display the version

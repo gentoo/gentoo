@@ -12,4 +12,7 @@
 	<use>
 		<flag name="macro-editor">Install macro editor</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">fcitx/fcitx-unikey</remote-id>
+	</upstream>
 </pkgmetadata>

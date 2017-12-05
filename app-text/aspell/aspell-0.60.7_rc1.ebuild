@@ -71,6 +71,11 @@ src_prepare() {
 	# This has to be after automake has run so that we don't clobber
 	# the default target that automake creates for us.
 	echo 'install-filterLTLIBRARIES: install-libLTLIBRARIES' >> Makefile.in || die
+
+	# unicode patch breaks on Darwin, NCURSES_WIDECHAR won't get set
+	# any more.  Fix this.
+	[[ ${CHOST} == *-darwin* ]] && use unicode && \
+		append-cppflags -DNCURSES_WIDECHAR=1
 }
 
 src_configure() {

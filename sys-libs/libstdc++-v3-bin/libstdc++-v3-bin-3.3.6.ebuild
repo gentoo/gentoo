@@ -1,7 +1,7 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-DESCRIPTION="Compatibility package for running binaries linked against a pre gcc 3.4 libstdc++"
+DESCRIPTION="Compatibility package for running binaries linked against a <gcc-3.4 libstdc++"
 HOMEPAGE="https://gcc.gnu.org/libstdc++/"
 SRC_URI="ia64? ( mirror://gentoo/${PN}-ia64-${PV}.tbz2 )
 	ppc64? ( mirror://gentoo/${PN}-ppc64-${PV}.tbz2 )"

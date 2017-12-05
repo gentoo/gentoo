@@ -10,10 +10,10 @@
 		<name>Openstack</name>
 	</maintainer>
 	<longdescription lang="en">
-    A caching API built around the concept of a "dogpile lock", which allows
-	continued access to an expiring data value while
-	a single thread generates a new value.
-  </longdescription>
+		A caching API built around the concept of a "dogpile lock", which allows
+		continued access to an expiring data value while
+		a single thread generates a new value.
+	</longdescription>
 	<upstream>
 		<remote-id type="pypi">dogpile.cache</remote-id>
 		<remote-id type="bitbucket">zzzeek/dogpile.cache</remote-id>

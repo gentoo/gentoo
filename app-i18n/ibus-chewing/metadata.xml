@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>cjk@gentoo.org</email>
-		<name>Cjk</name>
-	</maintainer>
-	<longdescription lang="en">The Chewing engine for IBus platform. It provides Chinese input method from libchewing.</longdescription>
-	<upstream>
-		<remote-id type="google-code">ibus</remote-id>
-		<remote-id type="github">ibus/ibus</remote-id>
-	</upstream>
+  <maintainer type="project">
+    <email>cjk@gentoo.org</email>
+    <name>Cjk</name>
+  </maintainer>
+  <longdescription lang="en">
+    The Chewing engine for IBus. It provides a Chinese input method from
+    <pkg>app-i18n/libchewing</pkg>.
+  </longdescription>
+  <use>
+    <flag name="gconf">Enable support for <pkg>gnome-base/gconf</pkg></flag>
+  </use>
+  <upstream>
+    <remote-id type="github">definite/ibus-chewing</remote-id>
+  </upstream>
 </pkgmetadata>

@@ -11,7 +11,7 @@ SRC_URI="avadon-black-fortress_${PV}_all.run"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
 RESTRICT="fetch bindist"
 

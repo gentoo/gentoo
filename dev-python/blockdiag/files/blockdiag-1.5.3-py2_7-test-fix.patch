@@ -1,0 +1,12 @@
+diff -r 07f96892bfda src/blockdiag/tests/test_utils_fontmap.py
+--- a/src/blockdiag/tests/test_utils_fontmap.py	Sat Aug 22 13:38:35 2015 +0900
++++ b/src/blockdiag/tests/test_utils_fontmap.py	Mon Apr 10 05:56:48 2017 -0700
+@@ -223,7 +223,7 @@
+         _config = u("[fontmap]\nsansserif: %s\nsansserif: %s\n") % \
+                   (self.fontpath[0], self.fontpath[1])
+         config = StringIO(_config)
+-        if sys.version_info[0] == 2:
++        if sys.version_info < (2, 7):
+             fmap = FontMap(config)
+ 
+             font1 = fmap.find()

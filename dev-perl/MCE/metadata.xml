@@ -5,6 +5,9 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <use>
+    <flag name="sereal">Install <pkg>dev-perl/Sereal-Encoder</pkg> and decoder for faster worker IPC</flag>
+  </use>
   <upstream>
     <remote-id type="cpan">MCE</remote-id>
     <remote-id type="cpan-module">MCE</remote-id>
@@ -22,6 +25,8 @@
     <remote-id type="cpan-module">MCE::Loop</remote-id>
     <remote-id type="cpan-module">MCE::Map</remote-id>
     <remote-id type="cpan-module">MCE::Mutex</remote-id>
+    <remote-id type="cpan-module">MCE::Mutex::Channel</remote-id>
+    <remote-id type="cpan-module">MCE::Mutex::Flock</remote-id>
     <remote-id type="cpan-module">MCE::Queue</remote-id>
     <remote-id type="cpan-module">MCE::Relay</remote-id>
     <remote-id type="cpan-module">MCE::Signal</remote-id>

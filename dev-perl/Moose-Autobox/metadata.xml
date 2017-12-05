@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Moose-Autobox</remote-id>
+    <remote-id type="cpan-module">Moose::Autobox</remote-id>
+    <remote-id type="cpan-module">Moose::Autobox::Array</remote-id>
+    <remote-id type="cpan-module">Moose::Autobox::Code</remote-id>
+    <remote-id type="cpan-module">Moose::Autobox::Defined</remote-id>
+    <remote-id type="cpan-module">Moose::Autobox::Hash</remote-id>
+    <remote-id type="cpan-module">Moose::Autobox::Indexed</remote-id>
+    <remote-id type="cpan-module">Moose::Autobox::Item</remote-id>
+    <remote-id type="cpan-module">Moose::Autobox::List</remote-id>
+    <remote-id type="cpan-module">Moose::Autobox::Number</remote-id>
+    <remote-id type="cpan-module">Moose::Autobox::Ref</remote-id>
+    <remote-id type="cpan-module">Moose::Autobox::Scalar</remote-id>
+    <remote-id type="cpan-module">Moose::Autobox::String</remote-id>
+    <remote-id type="cpan-module">Moose::Autobox::Undef</remote-id>
+    <remote-id type="cpan-module">Moose::Autobox::Value</remote-id>
+  </upstream>
+</pkgmetadata>

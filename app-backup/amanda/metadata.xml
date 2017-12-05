@@ -23,6 +23,7 @@
 	<use>
 		<flag name="xfs">Support for backing up raw XFS filesystems using xfsdump</flag>
 		<flag name="s3">Support for backing up to the Amazon S3 system</flag>
+		<flag name="ndmp">Support for the NDMP protocol</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">amanda</remote-id>

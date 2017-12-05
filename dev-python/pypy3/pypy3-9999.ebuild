@@ -1,28 +1,24 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 # pypy3 needs to be built using python 2
 PYTHON_COMPAT=( python2_7 pypy )
 EHG_PROJECT="pypy"
 EHG_REPO_URI="https://bitbucket.org/pypy/pypy"
 EHG_REVISION="py3k"
-inherit check-reqs eutils mercurial multilib multiprocessing pax-utils \
-	python-any-r1 toolchain-funcs versionator
-
-CPY_PATCHSET_VERSION="3.3.5-0"
+inherit check-reqs mercurial pax-utils python-any-r1 toolchain-funcs versionator
 
 DESCRIPTION="A fast, compliant alternative implementation of the Python (3.3) language"
 HOMEPAGE="http://pypy.org/"
-SRC_URI="
-	https://dev.gentoo.org/~floppym/python-gentoo-patches-${CPY_PATCHSET_VERSION}.tar.xz"
+SRC_URI=""
 
 LICENSE="MIT"
-# XX from pypy3-XX.so module suffix
-SLOT="0/55"
+# pypy3 -c 'import sysconfig; print(sysconfig.get_config_var("SOABI"))'
+SLOT="0/59"
 KEYWORDS=""
-IUSE="bzip2 gdbm +jit libressl low-memory ncurses sandbox +shadowstack sqlite cpu_flags_x86_sse2 tk"
+IUSE="bzip2 gdbm +jit libressl low-memory ncurses sandbox sqlite cpu_flags_x86_sse2 tk"
 
 RDEPEND=">=sys-libs/zlib-1.1.3:0=
 	virtual/libffi:0=
@@ -40,30 +36,40 @@ RDEPEND=">=sys-libs/zlib-1.1.3:0=
 	)
 	!dev-python/pypy3-bin:0"
 DEPEND="${RDEPEND}
-	low-memory? ( virtual/pypy:0 )
-	!low-memory? ( ${PYTHON_DEPS} )"
+	low-memory? ( virtual/pypy )
+	!low-memory? (
+		|| (
+			virtual/pypy
+			(
+				dev-lang/python:2.7
+				dev-python/pycparser[python_targets_python2_7(-),python_single_target_python2_7(+)]
+			)
+		)
+	)"
 #	doc? ( dev-python/sphinx )
 
 # Who would care about predictable directory names?
 S="${WORKDIR}/pypy3-v${PV%_*}-src"
 
-pkg_pretend() {
-	if [[ ${MERGE_TYPE} != binary ]]; then
-		if use low-memory; then
-			CHECKREQS_MEMORY="1750M"
-			use amd64 && CHECKREQS_MEMORY="3500M"
-		else
-			CHECKREQS_MEMORY="3G"
-			use amd64 && CHECKREQS_MEMORY="6G"
-		fi
-
-		check-reqs_pkg_pretend
+check_env() {
+	if use low-memory; then
+		CHECKREQS_MEMORY="1750M"
+		use amd64 && CHECKREQS_MEMORY="3500M"
+	else
+		CHECKREQS_MEMORY="3G"
+		use amd64 && CHECKREQS_MEMORY="6G"
 	fi
+
+	check-reqs_pkg_pretend
+}
+
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && check_env
 }
 
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
-		pkg_pretend
+		check_env
 
 		# unset to allow forcing pypy below :)
 		use low-memory && local EPYTHON=
@@ -86,9 +92,9 @@ src_unpack() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/4.0.0-gentoo-path.patch" \
-		"${FILESDIR}/1.9-distutils.unixccompiler.UnixCCompiler.runtime_library_dir_option.patch" \
-		"${FILESDIR}"/2.5.0-shared-lib.patch	# 517002
+	eapply "${FILESDIR}/4.0.0-gentoo-path.patch"
+	eapply "${FILESDIR}/1.9-distutils.unixccompiler.UnixCCompiler.runtime_library_dir_option.patch"
+	eapply "${FILESDIR}"/5.9.0-shared-lib.patch	# 517002
 
 	sed -e "s^@EPREFIX@^${EPREFIX}^" \
 		-e "s^@libdir@^$(get_libdir)^" \
@@ -96,11 +102,11 @@ src_prepare() {
 
 	# apply CPython stdlib patches
 	pushd lib-python/3 > /dev/null || die
-	epatch "${FILESDIR}"/5.2.0-distutils-c++.patch \
-		"${WORKDIR}"/patches/24_all_sqlite-3.8.4.patch
+	eapply "${FILESDIR}"/5.8.0_all_distutils_cxx.patch
+	eapply "${FILESDIR}"/python-3.5-distutils-OO-build.patch
 	popd > /dev/null || die
 
-	epatch_user
+	eapply_user
 }
 
 src_configure() {
@@ -129,11 +135,9 @@ src_configure() {
 	local args=(
 		--shared
 		$(usex jit -Ojit -O2)
-		$(usex shadowstack --gcrootfinder=shadowstack '')
 		$(usex sandbox --sandbox '')
 
 		${jit_backend}
-		--make-jobs=$(makeopts_jobs)
 
 		pypy/goal/targetpypystandalone
 	)
@@ -169,13 +173,52 @@ src_configure() {
 }
 
 src_compile() {
-	emake -C "${T}"/usession*-current/testing_1
+	emake -C "${T}"/usession*-0/testing_1
 
 	# copy back to make sys.prefix happy
-	cp -p "${T}"/usession*-current/testing_1/{pypy-c,libpypy-c.so} . || die
-	pax-mark m pypy-c libpypy-c.so
+	cp -p "${T}"/usession*-0/testing_1/{pypy3-c,libpypy3-c.so} . || die
+	pax-mark m pypy3-c libpypy3-c.so
 
 	#use doc && emake -C pypy/doc html
+
+	einfo "Generating caches and CFFI modules ..."
+
+	# Generate Grammar and PatternGrammar pickles.
+	./pypy3-c -c "import lib2to3.pygram, lib2to3.patcomp; lib2to3.patcomp.PatternCompiler()" \
+		|| die "Generation of Grammar and PatternGrammar pickles failed"
+
+	# Generate cffi modules
+	# Please keep in sync with pypy/tool/build_cffi_imports.py!
+#cffi_build_scripts = {
+#    "sqlite3": "_sqlite3_build.py",
+#    "audioop": "_audioop_build.py",
+#    "tk": "_tkinter/tklib_build.py",
+#    "curses": "_curses_build.py" if sys.platform != "win32" else None,
+#    "syslog": "_syslog_build.py" if sys.platform != "win32" else None,
+#    "_gdbm": "_gdbm_build.py"  if sys.platform != "win32" else None,
+#    "pwdgrp": "_pwdgrp_build.py" if sys.platform != "win32" else None,
+#    "resource": "_resource_build.py" if sys.platform != "win32" else None,
+#    "lzma": "_lzma_build.py",
+#    "_decimal": "_decimal_build.py",
+#    "ssl": "_ssl_build.py",
+	cffi_targets=( audioop syslog pwdgrp resource lzma decimal ssl )
+	use gdbm && cffi_targets+=( gdbm )
+	use ncurses && cffi_targets+=( curses )
+	use sqlite && cffi_targets+=( sqlite3 )
+	use tk && cffi_targets+=( tkinter/tklib )
+
+	local t
+	# all modules except tkinter output to .
+	# tkinter outputs to the correct dir ...
+	cd lib_pypy || die
+	for t in "${cffi_targets[@]}"; do
+		# tkinter doesn't work via -m
+		../pypy3-c "_${t}_build.py" || die "Failed to build CFFI bindings for ${t}"
+	done
+
+	# Cleanup temporary objects
+	find -name "_cffi_*.[co]" -delete || die
+	find -type d -empty -delete || die
 }
 
 src_test() {
@@ -184,18 +227,20 @@ src_test() {
 
 	# Test runner requires Python 2 too. However, it spawns PyPy3
 	# internally so that we end up testing the correct interpreter.
-	"${PYTHON}" ./pypy/test_all.py --pypy=./pypy-c lib-python || die
+	"${PYTHON}" ./pypy/test_all.py --pypy=./pypy3-c lib-python || die
 }
 
 src_install() {
 	local dest=/usr/$(get_libdir)/pypy3
 	einfo "Installing PyPy ..."
 	exeinto "${dest}"
-	doexe pypy-c libpypy-c.so
-	pax-mark m "${ED%/}${dest}/pypy-c" "${ED%/}${dest}/libpypy-c.so"
+	doexe pypy3-c libpypy3-c.so
+	pax-mark m "${ED%/}${dest}/pypy3-c" "${ED%/}${dest}/libpypy3-c.so"
 	insinto "${dest}"
+	# preserve mtimes to avoid obsoleting caches
+	insopts -p
 	doins -r include lib_pypy lib-python
-	dosym ../$(get_libdir)/pypy3/pypy-c /usr/bin/pypy3
+	dosym ../$(get_libdir)/pypy3/pypy3-c /usr/bin/pypy3
 	dodoc README.rst
 
 	if ! use gdbm; then
@@ -218,8 +263,7 @@ src_install() {
 
 	einfo "Generating caches and byte-compiling ..."
 
-	local -x PYTHON=${ED%/}${dest}/pypy-c
-	local -x LD_LIBRARY_PATH="${ED%/}${dest}"
+	local -x PYTHON=${ED%/}${dest}/pypy3-c
 	# we can't use eclass function since PyPy is dumb and always gives
 	# paths relative to the interpreter
 	local PYTHON_SITEDIR=${EPREFIX}/usr/$(get_libdir)/pypy3/site-packages
@@ -228,41 +272,7 @@ src_install() {
 	echo "EPYTHON='${EPYTHON}'" > epython.py || die
 	python_domodule epython.py
 
-	# Generate Grammar and PatternGrammar pickles.
-	"${PYTHON}" -c "import lib2to3.pygram, lib2to3.patcomp; lib2to3.patcomp.PatternCompiler()" \
-		|| die "Generation of Grammar and PatternGrammar pickles failed"
-
-	# Generate cffi modules
-	# Please keep in sync with pypy/tool/build_cffi_imports.py!
-#cffi_build_scripts = {
-#    "sqlite3": "_sqlite3_build.py",
-#    "audioop": "_audioop_build.py",
-#    "tk": "_tkinter/tklib_build.py",
-#    "curses": "_curses_build.py" if sys.platform != "win32" else None,
-#    "syslog": "_syslog_build.py" if sys.platform != "win32" else None,
-#    "_gdbm": "_gdbm_build.py"  if sys.platform != "win32" else None,
-#    "pwdgrp": "_pwdgrp_build.py" if sys.platform != "win32" else None,
-#    "resource": "_resource_build.py" if sys.platform != "win32" else None,
-#    "lzma": "_lzma_build.py",
-#    "_decimal": "_decimal_build.py",
-	cffi_targets=( audioop syslog pwdgrp resource lzma decimal )
-	use gdbm && cffi_targets+=( gdbm )
-	use ncurses && cffi_targets+=( curses )
-	use sqlite && cffi_targets+=( sqlite3 )
-	use tk && cffi_targets+=( tkinter/tklib )
-
-	local t
-	# all modules except tkinter output to .
-	# tkinter outputs to the correct dir ...
-	cd "${ED%/}${dest}"/lib_pypy || die
-	for t in "${cffi_targets[@]}"; do
-		# tkinter doesn't work via -m
-		"${PYTHON}" "_${t}_build.py" || die "Failed to build CFFI bindings for ${t}"
-	done
-
-	# Cleanup temporary objects
-	find "${ED%/}${dest}" -name "_cffi_*.[co]" -delete || die
-	find "${ED%/}${dest}" -type d -empty -delete || die
+	einfo "Byte-compiling Python standard library..."
 
 	# compile the installed modules
 	python_optimize "${ED%/}${dest}"

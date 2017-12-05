@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,8 +18,10 @@ RDEPEND="boehm-gc? ( dev-libs/boehm-gc )
 DEPEND="${DEPEND}
 	>=sys-devel/clang-2.9"
 
+PATCHES=( "${FILESDIR}"/${PN}-1.7-fix_soname.patch )
+
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.7-fix_soname.patch
+	cmake-utils_src_prepare
 
 	if ! use cxx;
 	then
@@ -32,7 +34,6 @@ src_configure() {
 	export CC=clang
 	export CXX=clang++
 
-	export PREFIX=/usr
 	local mycmakeargs=(
 		-DGNUSTEP_CONFIG=GNUSTEP_CONFIG-NOTFOUND
 		$(cmake-utils_use boehm-gc BOEHM_GC)

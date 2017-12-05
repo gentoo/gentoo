@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,13 +11,13 @@ SRC_URI="https://github.com/jgke/connman-gtk/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE="openconnect"
 
 CDEPEND="
 	>=dev-libs/glib-2.0:2
 	>=x11-libs/gtk+-3.10:3
-	openconnect? ( >=net-misc/openconnect-5.99 )
+	openconnect? ( >=net-vpn/openconnect-5.99 )
 "
 RDEPEND="${CDEPEND}
 	net-misc/connman

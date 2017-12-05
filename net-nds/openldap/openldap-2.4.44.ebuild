@@ -658,7 +658,6 @@ multilib_src_test() {
 multilib_src_install() {
 	local lt="${BUILD_DIR}/libtool"
 	emake DESTDIR="${D}" SHELL="${EPREFIX}"/bin/bash install
-	use static-libs || prune_libtool_files --all
 
 	if ! use minimal && multilib_is_native_abi; then
 		# openldap modules go here
@@ -694,18 +693,16 @@ multilib_src_install() {
 
 		# install our own init scripts and systemd unit files
 		einfo "Install init scripts"
-		newinitd "${FILESDIR}"/slapd-initd-2.4.40-r2 slapd
+		sed -e "s,/usr/lib/,/usr/$(get_libdir)/," "${FILESDIR}"/slapd-initd-2.4.40-r2 > "${T}"/slapd || die
+		doinitd "${T}"/slapd
 		newconfd "${FILESDIR}"/slapd-confd-2.4.28-r1 slapd
+
 		einfo "Install systemd service"
-		systemd_dounit "${FILESDIR}"/slapd.service
+		sed -e "s,/usr/lib/,/usr/$(get_libdir)/," "${FILESDIR}"/slapd.service > "${T}"/slapd.service || die
+		systemd_dounit "${T}"/slapd.service
 		systemd_install_serviced "${FILESDIR}"/slapd.service.conf
 		systemd_newtmpfilesd "${FILESDIR}"/slapd.tmpfilesd slapd.conf
 
-		if [[ $(get_libdir) != lib ]]; then
-			sed -e "s,/usr/lib/,/usr/$(get_libdir)/," -i \
-				"${ED}"/etc/init.d/slapd \
-				"${ED}"/usr/lib/systemd/system/slapd.service || die
-		fi
 		# If built without SLP, we don't need to be before avahi
 		use slp \
 			|| sed -i \
@@ -772,6 +769,8 @@ multilib_src_install() {
 		dosbin "${S}"/contrib/slapd-tools/statslog
 		newdoc "${S}"/contrib/slapd-tools/README README.statslog
 	fi
+
+	use static-libs || prune_libtool_files --all
 }
 
 multilib_src_install_all() {
@@ -820,7 +819,7 @@ pkg_postinst() {
 	if has_version 'net-nds/openldap[-minimal]' && ((${OPENLDAP_PRINT_MESSAGES})); then
 		elog "Getting started using OpenLDAP? There is some documentation available:"
 		elog "Gentoo Guide to OpenLDAP Authentication"
-		elog "(https://www.gentoo.org/doc/en/ldap-howto.xml)"
+		elog "(https://wiki.gentoo.org/wiki/Centralized_authentication_using_OpenLDAP)"
 		elog "---"
 		elog "An example file for tuning BDB backends with openldap is"
 		elog "DB_CONFIG.fast.example in /usr/share/doc/${PF}/"

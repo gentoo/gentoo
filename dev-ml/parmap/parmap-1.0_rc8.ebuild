@@ -6,13 +6,13 @@ EAPI=5
 inherit multilib
 
 MY_PV="${PV/_/-}"
-DESCRIPTION="Library allowing to exploit multicore architectures for OCaml programs with minimal modifications"
+DESCRIPTION="Library to exploit multicore architectures for OCaml programs"
 HOMEPAGE="http://www.dicosmo.org/code/parmap/"
 SRC_URI="https://github.com/rdicosmo/parmap/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2-with-linking-exception"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
 IUSE="+ocamlopt"
 
 RDEPEND=">=dev-lang/ocaml-4.03:=[ocamlopt?]"

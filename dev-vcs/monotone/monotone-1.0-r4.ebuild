@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # QA failiures reported in https://code.monotone.ca/p/monotone/issues/181/
@@ -7,7 +7,8 @@ inherit bash-completion-r1 elisp-common eutils toolchain-funcs user
 
 DESCRIPTION="Monotone Distributed Version Control System"
 HOMEPAGE="http://monotone.ca"
-SRC_URI="http://monotone.ca/downloads/${PV}/${P}.tar.bz2"
+SRC_URI="http://monotone.ca/downloads/${PV}/${P}.tar.bz2
+	https://dev.gentoo.org/~mgorny/dist/${P}-gentoo-patchset.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="1"
@@ -16,7 +17,7 @@ IUSE="doc ipv6 nls test"
 
 RDEPEND="sys-libs/zlib
 	>=dev-libs/libpcre-7.6
-	>=dev-libs/botan-1.8.0
+	>=dev-libs/botan-1.8.0:0
 	>=dev-db/sqlite-3.3.8
 	>=dev-lang/lua-5.1
 	net-dns/libidn"
@@ -37,12 +38,13 @@ src_prepare() {
 		( $(gcc-major-version) -eq "3" && $(gcc-minor-version) -le 3 ) ]]; then
 		die 'requires >=gcc-3.4'
 	fi
-	epatch "${FILESDIR}/monotone-1.0-bash-completion-tests.patch"
-	epatch "${FILESDIR}/monotone-1.0-botan-1.10-v2.patch"
-	epatch "${FILESDIR}/monotone-1.0-glibc-2.14-file-handle.patch"
-	epatch "${FILESDIR}/monotone-1.0-boost-1.53.patch"
-	epatch "${FILESDIR}/monotone-1.0-pcre3.patch"
-	epatch "${FILESDIR}/monotone-1.0-texinfo-5.1.patch"
+	epatch "${WORKDIR}/${P}-gentoo-patchset/monotone-1.0-bash-completion-tests.patch"
+	epatch "${WORKDIR}/${P}-gentoo-patchset/monotone-1.0-botan-1.10-v2.patch"
+	epatch "${WORKDIR}/${P}-gentoo-patchset/monotone-1.0-glibc-2.14-file-handle.patch"
+	epatch "${WORKDIR}/${P}-gentoo-patchset/monotone-1.0-boost-1.53.patch"
+	epatch "${WORKDIR}/${P}-gentoo-patchset/monotone-1.0-pcre3.patch"
+	epatch "${WORKDIR}/${P}-gentoo-patchset/monotone-1.0-texinfo-5.1.patch"
+	epatch "${WORKDIR}/${P}-gentoo-patchset/monotone-1.0-gcc6.patch"
 }
 
 src_configure() {

@@ -11,7 +11,7 @@ SRC_URI=" http://demos.linuxgamepublishing.com/mindrover/${MY_P}"
 
 LICENSE="all-rights-reserved GPL-2+"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 IUSE=""
 RESTRICT="mirror bindist strip"
 

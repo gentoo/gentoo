@@ -1,0 +1,31 @@
+From 70505aa1569c541dd252115848f46f91811955c0 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date: Sun, 9 Apr 2017 20:21:28 +0200
+Subject: [PATCH 1/2] Use FeatureSummary
+
+---
+ CMakeLists.txt | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ed0a84013a..26f4659f61 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -28,6 +28,8 @@ SET(CMAKE_COLOR_MAKEFILE ON)
+ # set path to additional CMake modules
+ SET(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
+ 
++include(FeatureSummary)
++
+ # in generated makefiles use relative paths so the project dir is moveable
+ # Note commented out since it cause problems but it would be nice to resolve these and enable
+ #
+@@ -908,3 +910,5 @@ ENDIF(WIN32 AND NOT UNIX)
+ SET(CPACK_PACKAGE_EXECUTABLES "qgis" "QGIS")
+ SET(CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_SOURCE_DIR}/README.md")
+ INCLUDE(CPack)
++
++FEATURE_SUMMARY(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
+-- 
+2.12.2
+

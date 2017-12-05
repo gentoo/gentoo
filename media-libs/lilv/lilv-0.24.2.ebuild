@@ -3,7 +3,7 @@
 
 EAPI=4
 
-PYTHON_COMPAT=( python{2_7,3_4} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 PYTHON_REQ_USE='threads(+)'
 
 inherit base python-any-r1 waf-utils bash-completion-r1
@@ -14,7 +14,7 @@ SRC_URI="http://download.drobilla.net/${P}.tar.bz2"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="doc +dyn-manifest static-libs test"
 
 RDEPEND=">=media-libs/lv2-1.14.0

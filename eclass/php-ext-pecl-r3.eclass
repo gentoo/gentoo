@@ -8,7 +8,7 @@
 # @DESCRIPTION:
 # This eclass should be used by all dev-php/pecl-* ebuilds as a uniform
 # way of installing PECL extensions. For more information about PECL,
-# see http://pecl.php.net/
+# see https://pecl.php.net/
 
 # @ECLASS-VARIABLE: PHP_EXT_PECL_PKG
 # @DESCRIPTION:
@@ -47,15 +47,15 @@ inherit php-ext-source-r3
 EXPORT_FUNCTIONS src_install src_test
 
 if [[ -z "${PHP_EXT_PECL_FILENAME}" ]] ; then
-	SRC_URI="http://pecl.php.net/get/${PHP_EXT_PECL_PKG_V}.tgz"
+	SRC_URI="https://pecl.php.net/get/${PHP_EXT_PECL_PKG_V}.tgz"
 else
-	SRC_URI="http://pecl.php.net/get/${PHP_EXT_PECL_FILENAME}"
+	SRC_URI="https://pecl.php.net/get/${PHP_EXT_PECL_FILENAME}"
 fi
 
 # Don't leave this laying around in the environment.
 unset PHP_EXT_PECL_PKG_V
 
-HOMEPAGE="http://pecl.php.net/${PHP_EXT_PECL_PKG}"
+HOMEPAGE="https://pecl.php.net/${PHP_EXT_PECL_PKG}"
 
 
 # @FUNCTION: php-ext-pecl-r3_src_install

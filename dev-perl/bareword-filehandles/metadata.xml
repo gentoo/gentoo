@@ -5,4 +5,8 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="cpan">bareword-filehandles</remote-id>
+    <remote-id type="cpan-module">bareword::filehandles</remote-id>
+  </upstream>
 </pkgmetadata>

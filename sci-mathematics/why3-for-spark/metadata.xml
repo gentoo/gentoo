@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tupone@gentoo.org</email>
+		<name>Tupone Alfredo</name>
+	</maintainer>
+	<longdescription lang="en">
+		Why3 is a platform for deductive program verification. It provides a
+		rich language for specification and programming, called WhyML, and
+		relies on external theorem provers, both automated and interactive, to
+		discharge verification conditions. Why3 comes with a standard library
+		of logical theories (integer and real arithmetic, Boolean operations,
+		sets and maps, etc.) and basic programming data structures (arrays,
+		queues, hash tables, etc.). A user can write WhyML programs directly
+		and get correct-by-construction OCaml programs through an automated
+		extraction mechanism. WhyML is also used as an intermediate language
+		for the verification of C, Java, or Ada programs.
+	</longdescription>
+	<use>
+		<flag name="coq">Add <pkg>sci-mathematics/coq</pkg> support</flag>
+		<flag name="html">Build HTML documentation</flag>
+		<flag name="hypothesis-selection">Enable hypothesis selection</flag>
+		<flag name="profiling">Enable profiling</flag>
+		<flag name="zarith">Use <pkg>dev-ml/zarith</pkg></flag>
+		<flag name="zip">Enable compression of session files</flag>
+	</use>
+</pkgmetadata>

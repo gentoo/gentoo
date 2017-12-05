@@ -1,9 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 WX_GTK_VER="3.0"
-inherit eutils flag-o-matic multilib java-pkg-opt-2 autotools wxwidgets versionator multiprocessing
+
+inherit flag-o-matic java-pkg-opt-2 autotools wxwidgets versionator multiprocessing
 
 MY_P=${PN}-src-${PV}
 PATH_P=${PN}-$(get_version_component_range 1-2)
@@ -17,7 +18,8 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="3ds alsa bullet cal3d cegui cg doc java jpeg mng ode png speex truetype vorbis wxwidgets"
 
-COMMON_DEP="virtual/opengl
+COMMON_DEP="
+	virtual/opengl
 	media-libs/openal
 	x11-libs/libXt
 	x11-libs/libXxf86vm
@@ -33,35 +35,43 @@ COMMON_DEP="virtual/opengl
 	truetype? ( >=media-libs/freetype-2.1 )
 	alsa? ( media-libs/alsa-lib )
 	mng? ( media-libs/libmng )
-	png? ( media-libs/libpng:0 )
+	png? ( media-libs/libpng:0= )
 	wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}[X,opengl] )
 	cegui? ( >=dev-games/cegui-0.5.0 )
-	3ds? ( media-libs/lib3ds )"
-
+	3ds? ( media-libs/lib3ds )
+"
 RDEPEND="${COMMON_DEP}
-	java? ( >=virtual/jre-1.5 )"
-
+	java? ( >=virtual/jre-1.5 )
+"
 DEPEND="${COMMON_DEP}
 	java? ( >=virtual/jdk-1.5
 		dev-java/ant-core )
 	dev-util/ftjam
 	<dev-lang/swig-3
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc47.patch
+	"${FILESDIR}"/${P}-gcc52.patch
+	"${FILESDIR}"/${P}-wxgtk.patch
+	"${FILESDIR}"/${P}-gcc6.patch
+)
 
 src_prepare() {
+	default
+
 	# Installing doc conflict with dodoc on src_install
 	# Removing conflicting target
 	sed -i \
 		-e "/^InstallDoc/d" \
 		Jamfile.in \
 		docs/Jamfile || die
-	epatch \
-		"${FILESDIR}"/${P}-gcc47.patch \
-		"${FILESDIR}"/${P}-gcc52.patch \
-		"${FILESDIR}"/${P}-wxgtk.patch
+
 	use wxwidgets && append-libs -lGL
+
 	AT_M4DIR=mk/autoconf \
 		eautoreconf
 }

@@ -5,7 +5,7 @@ EAPI=5
 inherit xfconf
 
 DESCRIPTION="A set of scripts and m4/autoconf macros that ease build system maintenance"
-HOMEPAGE="http://www.xfce.org/ http://foo-projects.org/~benny/projects/xfce4-dev-tools/"
+HOMEPAGE="https://www.xfce.org/ http://users.xfce.org/~benny/projects/xfce4-dev-tools/"
 SRC_URI="mirror://xfce/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"

@@ -5,7 +5,7 @@ EAPI=6
 inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Digital clock for the X window system"
-HOMEPAGE="http://packages.qa.debian.org/d/dclock.html"
+HOMEPAGE="https://packages.qa.debian.org/d/dclock.html"
 SRC_URI="
 	mirror://debian/pool/main/d/${PN}/${PN}_${PV/_p*/}.orig.tar.gz
 	mirror://debian/pool/main/d/${PN}/${PN}_${PV/_p/-}.debian.tar.xz
@@ -13,7 +13,7 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="xft"
 
 RDEPEND="

@@ -1,0 +1,25 @@
+From 7fad3a742a0d825113bdbad92086159f70111b13 Mon Sep 17 00:00:00 2001
+From: Arfrever Frehtes Taifersar Arahesis <Arfrever@Apache.Org>
+Date: Sun, 10 Sep 2017 16:09:07 +0200
+Subject: [PATCH 1/2] kresources: Fix build with GCC-6.3.0
+
+---
+ kresources/groupwise/soap/incidenceconverter.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/kresources/groupwise/soap/incidenceconverter.cpp b/kresources/groupwise/soap/incidenceconverter.cpp
+index 12104bf8ac..a2b6c645ca 100644
+--- a/kresources/groupwise/soap/incidenceconverter.cpp
++++ b/kresources/groupwise/soap/incidenceconverter.cpp
+@@ -462,7 +462,7 @@ void IncidenceConverter::setAttendees( KCal::Incidence *incidence,
+   item->distribution->sendoptions->statusTracking = soap_new_ngwt__StatusTracking( soap(),
+     -1 );
+ 
+-  item->distribution->sendoptions->statusTracking->autoDelete = false;
++  item->distribution->sendoptions->statusTracking->autoDelete = NULL;
+   item->distribution->sendoptions->statusTracking->__item = All_;
+ 
+   item->distribution->recipients = soap_new_ngwt__RecipientList( soap(), -1 );
+-- 
+2.14.1
+

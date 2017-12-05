@@ -4,7 +4,7 @@
 EAPI=3
 
 DESCRIPTION="High-performance C development framework. Can be used stand-alone or as a supplement to GLib"
-HOMEPAGE="http://www.atheme.org/project/mowgli"
+HOMEPAGE="http://atheme.org/projects/libmowgli.html"
 SRC_URI="http://distfiles.atheme.org/${P}.tar.bz2"
 IUSE=""
 

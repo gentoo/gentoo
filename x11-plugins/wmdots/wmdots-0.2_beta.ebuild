@@ -1,11 +1,11 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit eutils multilib toolchain-funcs
 
 DESCRIPTION="multishape 3d rotating dots"
-HOMEPAGE="http://dockapps.windowmaker.org/file.php/id/116"
-SRC_URI="http://dockapps.windowmaker.org/download.php/id/153/${P/_/}.tar.gz"
+HOMEPAGE="http://www.dockapps.net/wmdots"
+SRC_URI="http://www.dockapps.net/download/${P/_}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

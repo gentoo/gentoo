@@ -4,7 +4,7 @@
 EAPI=5
 
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="git://github.com/pkgconf/pkgconf.git"
+	EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
 	inherit autotools git-2 multilib-minimal
 else
 	inherit eutils multilib-minimal

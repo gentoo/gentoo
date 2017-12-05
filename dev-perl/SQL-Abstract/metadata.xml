@@ -6,12 +6,16 @@
     <name>Gentoo Perl Project</name>
   </maintainer>
   <longdescription lang="en">
-		A Perl module to create SQL statements based on perl structures.
-	</longdescription>
+    A Perl module to create SQL statements based on perl structures.
+  </longdescription>
   <longdescription lang="ja">
-		perlデータ構造でSQLステートメントを作るperlモジュール。
-	</longdescription>
+    perlデータ構造でSQLステートメントを作るperlモジュール。
+  </longdescription>
   <upstream>
     <remote-id type="cpan">SQL-Abstract</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::Debug::PrettyPrint</remote-id>
+    <remote-id type="cpan-module">SQL::Abstract</remote-id>
+    <remote-id type="cpan-module">SQL::Abstract::Test</remote-id>
+    <remote-id type="cpan-module">SQL::Abstract::Tree</remote-id>
   </upstream>
 </pkgmetadata>

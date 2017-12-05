@@ -9,7 +9,7 @@ GNOME_TARBALL_SUFFIX="bz2"
 inherit flag-o-matic gnome2
 
 DESCRIPTION="C++ bindings for GConf"
-HOMEPAGE="http://www.gtkmm.org"
+HOMEPAGE="https://www.gtkmm.org"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

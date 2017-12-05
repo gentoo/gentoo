@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -13,4 +13,7 @@
 		because it's so much easier than writing yet another library in python
 		or adding a dependency.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">seveas/whelk</remote-id>
+	</upstream>
 </pkgmetadata>

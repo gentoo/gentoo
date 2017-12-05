@@ -1,0 +1,65 @@
+This is the diff for generated sources after applying:
+https://github.com/gentoo/pax-utils/pull/2
+
+diff -ru pax-utils-HEAD.orig/config.h.in pax-utils-HEAD/config.h.in
+--- pax-utils-HEAD.orig/config.h.in	2017-04-18 16:26:42.000000000 +0200
++++ pax-utils-HEAD/config.h.in	2017-04-18 16:28:05.000000000 +0200
+@@ -526,6 +526,9 @@
+ /* Define to 1 if you have the `link' function. */
+ #undef HAVE_LINK
+ 
++/* Define to 1 if you have the <linux/securebits.h> header file. */
++#undef HAVE_LINUX_SECUREBITS_H
++
+ /* Define to 1 if the system has the type 'long long int'. */
+ #undef HAVE_LONG_LONG_INT
+ 
+diff -ru pax-utils-HEAD.orig/configure pax-utils-HEAD/configure
+--- pax-utils-HEAD.orig/configure	2017-04-18 16:26:41.000000000 +0200
++++ pax-utils-HEAD/configure	2017-04-18 16:28:03.000000000 +0200
+@@ -34537,6 +34537,19 @@
+ 
+ 
+ 
++for ac_header in linux/securebits.h
++do :
++  ac_fn_c_check_header_mongrel "$LINENO" "linux/securebits.h" "ac_cv_header_linux_securebits_h" "$ac_includes_default"
++if test "x$ac_cv_header_linux_securebits_h" = xyes; then :
++  cat >>confdefs.h <<_ACEOF
++#define HAVE_LINUX_SECUREBITS_H 1
++_ACEOF
++
++fi
++
++done
++
++
+ ac_config_files="$ac_config_files Makefile autotools/gnulib/Makefile"
+ 
+ cat >confcache <<\_ACEOF
+diff -ru pax-utils-HEAD.orig/configure.ac pax-utils-HEAD/configure.ac
+--- pax-utils-HEAD.orig/configure.ac	2017-04-18 16:25:48.000000000 +0200
++++ pax-utils-HEAD/configure.ac	2017-04-18 16:27:11.000000000 +0200
+#@@ -62,6 +62,8 @@
+ 	AX_CHECK_COMPILE_FLAG(flag, AS_VAR_APPEND([CFLAGS], " flag"))
+ ])
+ 
++AC_CHECK_HEADERS([linux/securebits.h])
++
+ AC_CONFIG_FILES([
+ 	Makefile
+ 	autotools/gnulib/Makefile
+diff -ru pax-utils-HEAD.orig/porting.h pax-utils-HEAD/porting.h
+--- pax-utils-HEAD.orig/porting.h	2017-03-03 21:07:15.000000000 +0100
++++ pax-utils-HEAD/porting.h	2017-04-18 16:18:22.000000000 +0200
+@@ -46,7 +46,9 @@
+ #endif
+ #if defined(__linux__)
+ # include <sys/prctl.h>
+-# include <linux/securebits.h>
++# if !defined(HAVE_CONFIG_H) || defined(HAVE_LINUX_SECUREBITS_H)
++#  include <linux/securebits.h>
++# endif
+ #endif
+ #if defined(__GLIBC__) || defined(__UCLIBC__) || defined(__ANDROID__)
+ # include <byteswap.h>

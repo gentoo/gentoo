@@ -5,10 +5,6 @@
 		<email>NP-Hardass@gentoo.org</email>
 		<name>NP-Hardass</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>duc@zevv.nl</email>
-		<name>Ico Doornekamp</name>
-	</maintainer>
 	<use>
 		<flag name="cairo">Build support for exporting to PNG and PDF with <pkg>x11-libs/cairo</pkg></flag>
 		<flag name="gui">Build support for a graphical client</flag>

@@ -36,6 +36,9 @@ RDEPEND=">=dev-php/pear-1.8.1"
 # Set in ebuild if the ${PV} breaks SRC_URI for alpha/beta/rc versions
 : ${PEAR_PV:=${PV}}
 
+# @ECLASS-VARIABLE: PEAR-P
+# @INTERNAL
+# @DESCRIPTION: Combines PHP_PEAR_PKG_NAME and PEAR_PV
 PEAR_P="${PHP_PEAR_PKG_NAME}-${PEAR_PV}"
 
 # @ECLASS-VARIABLE: PHP_PEAR_DOMAIN
@@ -60,7 +63,7 @@ fi
 
 S="${WORKDIR}/${PEAR_P}"
 
-# @FUNCTION php-pear-r2_install_packagexml
+# @FUNCTION: php-pear-r2_install_packagexml
 # @DESCRIPTION:
 # Copies the package2.xml or package.xml file and, optionally, the channel.xml
 # file to a Gentoo-specific location so that pkg_postinst can install the package
@@ -97,9 +100,10 @@ php-pear-r2_src_install() {
 php-pear-r2_pkg_postinst() {
 	# Add unknown channels
 	if [[ -f "${EROOT}usr/share/php/.packagexml/${PEAR_P}-channel.xml" ]] ; then
-		if "${EROOT}usr/bin/peardev" channel-info "${PHP_PEAR_DOMAIN}" &> /dev/null; then
+		"${EROOT}usr/bin/peardev" channel-info "${PHP_PEAR_DOMAIN}" &> /dev/null
+		if [[ $? -ne 0 ]]; then
 			"${EROOT}usr/bin/peardev" channel-add \
-				"${EROOT}usr/share/php/.packagexml/${PEAR_PN}-channel.xml" \
+				"${EROOT}usr/share/php/.packagexml/${PEAR_P}-channel.xml" \
 				|| einfo "Ignore any errors about existing channels"
 		fi
 	fi

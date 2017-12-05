@@ -29,7 +29,7 @@ RDEPEND="
 	dev-python/twisted-core
 	dev-python/wxpython
 	dev-libs/openssl:0[-bindist]
-	net-libs/rb_libtorrent[python]
+	net-libs/libtorrent-rasterbar[python]
 	vlc? (
 			media-video/vlc
 			media-video/ffmpeg:0

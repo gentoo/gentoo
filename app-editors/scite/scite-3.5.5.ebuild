@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-inherit toolchain-funcs eutils
+inherit toolchain-funcs eutils xdg-utils
 
 MY_PV=${PV//./}
 DESCRIPTION="A very powerful editor for programmers"
@@ -73,7 +73,7 @@ src_install() {
 
 	# we have to keep this because otherwise it'll break upgrading
 	mv "${ED}/usr/bin/SciTE" "${ED}/usr/bin/scite" || die
-	dosym /usr/bin/scite /usr/bin/SciTE
+	dosym scite /usr/bin/SciTE
 
 	# replace .desktop file with our own working version
 	rm -f "${ED}/usr/share/applications/SciTE.desktop" || die
@@ -81,4 +81,12 @@ src_install() {
 
 	doman ../doc/scite.1
 	dodoc ../README
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }

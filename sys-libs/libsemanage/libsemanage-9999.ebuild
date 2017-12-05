@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 inherit multilib python-r1 toolchain-funcs multilib-minimal
 
 MY_P="${P//_/-}"
-MY_RELEASEDATE="20161014"
+MY_RELEASEDATE="20170804"
 
 SEPOL_VER="${PV}"
 SELNX_VER="${PV}"
@@ -28,19 +28,19 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="python"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND=">=sys-libs/libsepol-${SEPOL_VER}[${MULTILIB_USEDEP}]
 	>=sys-libs/libselinux-${SELNX_VER}[${MULTILIB_USEDEP}]
 	>=sys-process/audit-2.2.2[${MULTILIB_USEDEP}]
 	>=dev-libs/ustr-1.0.4-r2[${MULTILIB_USEDEP}]
-	"
+	python? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}
 	sys-devel/bison
 	sys-devel/flex
 	python? (
 		>=dev-lang/swig-2.0.4-r1
 		virtual/pkgconfig
-		${PYTHON_DEPS}
 	)"
 
 # tests are not meant to be run outside of the
@@ -71,8 +71,6 @@ src_prepare() {
 	echo "# decompression of modules in the module store." >> "${S}/src/semanage.conf"
 	echo "bzip-small=true" >> "${S}/src/semanage.conf"
 
-	eapply "${FILESDIR}"/${PN}-2.7-build-paths.patch
-
 	eapply_user
 
 	multilib_copy_sources
@@ -87,7 +85,11 @@ multilib_src_compile() {
 
 	if multilib_is_native_abi && use python; then
 		building_py() {
-			emake "$@"
+			emake \
+				AR="$(tc-getAR)" \
+				CC="$(tc-getCC)" \
+				LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
+				"$@"
 		}
 		python_foreach_impl building_py swigify
 		python_foreach_impl building_py pywrap

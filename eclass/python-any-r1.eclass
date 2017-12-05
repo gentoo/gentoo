@@ -224,7 +224,7 @@ python_gen_any_dep() {
 	local depstr=${1}
 	[[ ${depstr} ]] || die "No dependency string provided"
 
-	local PYTHON_PKG_DEP out=
+	local i PYTHON_PKG_DEP out=
 	for i in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		local PYTHON_USEDEP="python_targets_${i}(-),python_single_target_${i}(+)"
 		python_export "${i}" PYTHON_PKG_DEP

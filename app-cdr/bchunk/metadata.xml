@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
+<maintainer type="person">
+    <email>yegortimoshenko@gmail.com</email>
+    <name>Yegor Timoshenko</name>
+</maintainer>
 <longdescription>binchunker converts a CD image in a ".bin / .cue" format
 (sometimes ".raw / .cue") to a set of .iso and .cdr tracks.</longdescription>
 </pkgmetadata>

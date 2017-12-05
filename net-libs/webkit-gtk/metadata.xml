@@ -11,6 +11,7 @@
 	<flag name="geoloc">Enable geolocation support through <pkg>app-misc/geoclue</pkg></flag>
 	<flag name="geolocation">Enable geolocation support through <pkg>app-misc/geoclue</pkg></flag>
 	<flag name="gles2">Enable GLESv2 support</flag>
+	<flag name="nsplugin">Enable full nsplugin support (GTK2 plugins)</flag>
 	<flag name="webgl">Build support for the WebGL HTML API using <pkg>virtual/opengl</pkg></flag>
 </use>
 </pkgmetadata>

@@ -5,8 +5,6 @@
     <email>dotnet@gentoo.org</email>
     <name>Gentoo Dotnet Project</name>
   </maintainer>
-  <use>
-  </use>
   <upstream>
     <remote-id type="github">mrward/nuget</remote-id>
   </upstream>

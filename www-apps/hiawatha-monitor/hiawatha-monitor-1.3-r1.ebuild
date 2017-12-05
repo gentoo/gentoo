@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,8 +6,8 @@ EAPI=6
 MY_P="monitor"
 
 DESCRIPTION="Monitoring application for www-servers/hiawatha"
-HOMEPAGE="http://www.hiawatha-webserver.org/howto/monitor"
-SRC_URI="http://www.hiawatha-webserver.org/files/${MY_P}-${PV}.tar.gz "
+HOMEPAGE="https://www.hiawatha-webserver.org/howto/monitor"
+SRC_URI="https://www.hiawatha-webserver.org/files/${MY_P}-${PV}.tar.gz "
 
 LICENSE="GPL-2"
 SLOT="0"

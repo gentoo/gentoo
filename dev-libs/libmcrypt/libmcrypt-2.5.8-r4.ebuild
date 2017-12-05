@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit autotools eutils
+inherit autotools
 
 DESCRIPTION="libmcrypt provides uniform interface to access several encryption algorithms"
 HOMEPAGE="http://mcrypt.sourceforge.net/"

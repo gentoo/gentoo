@@ -8,7 +8,7 @@ inherit sgml-catalog
 MY_P=${P/-stylesheets/}
 S=${WORKDIR}/${MY_P}
 DESCRIPTION="DSSSL Stylesheets for DocBook"
-HOMEPAGE="http://wiki.docbook.org/topic/DocBookDssslStylesheets"
+HOMEPAGE="https://github.com/docbook/wiki/wiki"
 SRC_URI="mirror://sourceforge/docbook/${MY_P}.tar.bz2"
 
 LICENSE="MIT"
@@ -49,7 +49,7 @@ src_install() {
 		ewarn "as directory already exists there.  Will assume you know"
 		ewarn "what you're doing."
 	else
-		dosym /usr/share/sgml/docbook/dsssl-stylesheets-${PV} \
+		dosym ../../docbook/dsssl-stylesheets-${PV} \
 			/usr/share/sgml/stylesheets/dsssl/docbook
 	fi
 

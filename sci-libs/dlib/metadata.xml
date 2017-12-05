@@ -10,8 +10,13 @@
   networking, threads, graphical interfaces, data structures, linear
   algebra, machine learning, XML and text parsing, numerical
   optimization, Bayesian nets, and numerous other tasks.
-</longdescription>
+  </longdescription>
+  <use>
+    <flag name="cblas">Build with CBLAS <pkg>virtual/cblas</pkg></flag>
+    <flag name="cuda">Enable support for CUDA for Deep Neural Networks (cuDNN) on GPU (experimental)</flag>
+    <flag name="mkl">Enable support for Intel FFT <pkg>sci-libs/mkl</pkg></flag>
+  </use>
   <upstream>
-    <remote-id type="sourceforge">dclib</remote-id>
+    <remote-id type="github">davisking/dlib</remote-id>
   </upstream>
 </pkgmetadata>

@@ -10,7 +10,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 inherit distutils-r1
 
 DESCRIPTION="Foreign Function Interface for Python calling C code"
-HOMEPAGE="http://cffi.readthedocs.org/ https://pypi.python.org/pypi/cffi"
+HOMEPAGE="https://cffi.readthedocs.io/ https://pypi.python.org/pypi/cffi"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
@@ -22,6 +22,7 @@ RDEPEND="
 	virtual/libffi
 	dev-python/pycparser[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
+	virtual/pkgconfig
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? (	dev-python/pytest[${PYTHON_USEDEP}] )"
 

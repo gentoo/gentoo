@@ -6,7 +6,7 @@ index 683f662..347eea5 100644
      #
      # What happens when an impossible name is given, relative to the provided
      # `module`?
-+    @unittest.skipIf(sys.version_info[:2] == (3, 5), "python 3.5 has problems here")
++    @unittest.skipIf(sys.version_info[:2] >= (3, 5), "python 3.5 has problems here")
      def test_loadTestsFromName__relative_malformed_name(self):
          loader = unittest.TestLoader()
  
@@ -14,7 +14,7 @@ index 683f662..347eea5 100644
      # TestCase or TestSuite instance."
      #
      # What happens when presented with an impossible module name?
-+    @unittest.skipIf(sys.version_info[:2] == (3, 5), "python 3.5 has problems here")
++    @unittest.skipIf(sys.version_info[:2] >= (3, 5), "python 3.5 has problems here")
      def test_loadTestsFromNames__malformed_name(self):
          loader = unittest2.TestLoader()
  
@@ -22,7 +22,7 @@ index 683f662..347eea5 100644
      # "The method optionally resolves name relative to the given module"
      #
      # What happens when presented with an impossible attribute name?
-+    @unittest.skipIf(sys.version_info[:2] == (3, 5), "python 3.5 has problems here")
++    @unittest.skipIf(sys.version_info[:2] >= (3, 5), "python 3.5 has problems here")
      def test_loadTestsFromNames__relative_malformed_name(self):
          loader = unittest.TestLoader()
  

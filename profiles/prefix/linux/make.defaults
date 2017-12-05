@@ -5,6 +5,11 @@
 ELIBC="glibc"
 KERNEL="linux"
 
+# Fabian Groffen <grobian@gentoo.org> (13 Sep 2017)
+# Traditional Prefix is no-multilib, and always installs in /lib so
+# don't check against this for "incompatible" objects
+FEATURES="-multilib-strict"
+
 # 2006/10/28 - Luca Barbato <lu_zero@gentoo.org>
 # on glibc system you cannot turn it off
 USE="iconv"

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,12 @@ DESCRIPTION="Library for build EFI Applications"
 HOMEPAGE="http://gnu-efi.sourceforge.net/"
 SRC_URI="mirror://sourceforge/gnu-efi/${P}.tar.bz2"
 
-LICENSE="GPL-2"
+# inc/, lib/ dirs (README.efilib)
+# - BSD-2
+# gnuefi dir:
+# - BSD (3-cluase): crt0-efi-ia32.S
+# - GPL-2+ : setjmp_ia32.S
+LICENSE="GPL-2+ BSD BSD-2"
 SLOT="0"
 KEYWORDS="-* ~amd64 ia64 ~x86"
 IUSE=""

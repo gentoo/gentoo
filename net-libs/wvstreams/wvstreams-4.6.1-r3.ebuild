@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -23,7 +23,7 @@ RESTRICT="test"
 RDEPEND="sys-libs/readline:0=
 	sys-libs/zlib
 	dbus? ( >=sys-apps/dbus-1.4.20 )
-	dev-libs/openssl:0=
+	<dev-libs/openssl-1.1:0=
 	pam? ( virtual/pam )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
@@ -53,7 +53,7 @@ src_prepare() {
 	sed -i \
 		-e 's:AM_CONFIG_HEADER:AC_CONFIG_HEADERS:' \
 		-e 's:AM_PROG_CC_STDC:AC_PROG_CC:' \
-		configure.ac argp/configure.ac || die
+		argp/configure.ac || die
 
 	eautoreconf
 	pushd argp >/dev/null

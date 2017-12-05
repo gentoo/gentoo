@@ -1,11 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-# git:// first because https:// uses the dumb transport
-EGIT_REPO_URI="git://git.exherbo.org/paludis/paludis.git
-	https://git.exherbo.org/paludis/paludis.git"
+EGIT_REPO_URI="https://git.exherbo.org/git/paludis/paludis.git"
 PYTHON_COMPAT=( python2_7 )
 RUBY_VER=2.3
 
@@ -15,7 +13,7 @@ DESCRIPTION="paludis, the other package mangler"
 HOMEPAGE="http://paludis.exherbo.org/"
 SRC_URI=""
 
-IUSE="doc pbins pink python ruby search-index test +xml"
+IUSE="doc pbins pink python ruby ruby_targets_ruby${RUBY_VER/./} search-index test +xml"
 LICENSE="GPL-2 vim"
 SLOT="0"
 KEYWORDS=""
@@ -51,7 +49,8 @@ RDEPEND="${COMMON_DEPEND}
 
 PDEPEND="app-eselect/eselect-package-manager"
 
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
+	ruby? ( ruby_targets_ruby${RUBY_VER/./} )"
 RESTRICT="!test? ( test )"
 
 pkg_pretend() {
@@ -79,7 +78,7 @@ src_prepare() {
 	# https://bugs.gentoo.org/show_bug.cgi?id=439372#c2
 	sed -i -e "1s/ruby/&${RUBY_VER/./}/" ruby/demos/*.rb || die
 
-	eapply_user
+	cmake-utils_src_prepare
 }
 
 src_configure() {

@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 PYTHON_COMPAT=( python{2_7,3_4} )
 
-inherit cmake-utils fortran-2 multilib python-single-r1 versionator
+inherit cmake-utils fortran-2 multilib python-any-r1 versionator
 
 MY_PV="$(replace_version_separator _ -)"
 
@@ -31,17 +31,17 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	test? ( dev-lang/python )
+	test? ( ${PYTHON_DEPS} )
 	doc? ( >=dev-libs/boost-1.56.0-r1[tools] )
 "
-REQUIRED_USE="test? ( ${PYTHON_REQUIRED_USE} )
+REQUIRED_USE="
 	jemalloc? ( !perftools !tbb )
 	perftools? ( !jemalloc !tbb )
 	tbb? ( !jemalloc !perftools )
 	"
 
 pkg_setup() {
-	use test && python-single-r1_pkg_setup
+	use test && python-any-r1_pkg_setup
 }
 
 src_configure() {

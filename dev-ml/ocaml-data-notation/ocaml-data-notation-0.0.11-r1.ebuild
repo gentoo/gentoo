@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ OASIS_BUILD_TESTS=1
 
 inherit oasis
 
-DESCRIPTION="This project uses type-conv to dump OCaml data structure using OCaml data notation"
+DESCRIPTION="Use type-conv to dump OCaml data structure using OCaml data notation"
 HOMEPAGE="http://forge.ocamlcore.org/projects/odn"
 SRC_URI="http://forge.ocamlcore.org/frs/download.php/1310/${P}.tar.gz"
 

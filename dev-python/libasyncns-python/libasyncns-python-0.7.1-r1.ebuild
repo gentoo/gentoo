@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
-PYTHON_COMPAT=( python{2_7,3_4} pypy )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
 
 inherit distutils-r1
 
@@ -17,6 +17,8 @@ IUSE=""
 
 DEPEND=">=net-libs/libasyncns-0.4"
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}/${PN}-0.7.1-glibc-2.25.patch" )
 
 python_compile() {
 	if [[ ${EPYTHON} != python3* ]]; then

@@ -8,7 +8,7 @@ EAPI=6
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
 # (needed due to CMAKE_BUILD_TYPE != Gentoo)
 CMAKE_MIN_VERSION=3.7.0-r1
-EGIT_REPO_URI="http://llvm.org/git/libcxx.git
+EGIT_REPO_URI="https://git.llvm.org/git/libcxx.git
 	https://github.com/llvm-mirror/libcxx.git"
 PYTHON_COMPAT=( python2_7 )
 
@@ -17,9 +17,9 @@ PYTHON_COMPAT=( python2_7 )
 inherit ${SCM} cmake-multilib llvm python-any-r1 toolchain-funcs
 
 DESCRIPTION="New implementation of the C++ standard library, targeting C++11"
-HOMEPAGE="http://libcxx.llvm.org/"
+HOMEPAGE="https://libcxx.llvm.org/"
 if [[ ${PV} != 9999 ]] ; then
-	SRC_URI="http://llvm.org/releases/${PV}/${P}.src.tar.xz"
+	SRC_URI="https://llvm.org/releases/${PV}/${P}.src.tar.xz"
 	S="${WORKDIR}/${P}.src"
 else
 	SRC_URI=""
@@ -135,10 +135,8 @@ multilib_src_configure() {
 
 	if use test; then
 		mycmakeargs+=(
-			# this can be any directory, it just needs to exist...
-			# FIXME: remove this once https://reviews.llvm.org/D25093 is merged
-			-DLLVM_MAIN_SRC_DIR="${T}"
-			-DLIT_COMMAND="${EPREFIX}"/usr/bin/lit
+			-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
+			-DLLVM_LIT_ARGS="-vv"
 		)
 	fi
 	cmake-utils_src_configure

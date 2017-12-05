@@ -6,8 +6,7 @@
 		<name>Cjk</name>
 	</maintainer>
 	<use>
-		<flag name="kasumi">Use Anthy dictionary maintenance tool
-    (<pkg>app-dicts/kasumi</pkg>)</flag>
+		<flag name="kasumi">Use Anthy dictionary maintenance tool (<pkg>app-dicts/kasumi</pkg>)</flag>
 		<flag name="gtk3">Enable support for <pkg>x11-libs/gtk+</pkg>:3</flag>
 	</use>
 	<upstream>

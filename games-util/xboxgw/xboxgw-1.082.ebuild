@@ -14,7 +14,7 @@ SRC_URI="http://www.xboxgw.com/rel/dist2.1/tarballs/i386/${XBOXGW_P}.tgz
 
 LICENSE="freedist"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 QA_PREBUILT="opt/${PN}/lib/libhmdb.so

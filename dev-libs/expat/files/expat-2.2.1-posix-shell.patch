@@ -1,0 +1,26 @@
+From e5e25fac1698d9ea8dbb2e51c18d1072254b5f4b Mon Sep 17 00:00:00 2001
+From: spzeidler <spz@netbsd.org>
+Date: Sun, 18 Jun 2017 14:30:22 +0200
+Subject: [PATCH] Fix sh syntax in configure.ac (#49)
+
+The old '==' sh-is-not-C issue
+It doesn't matter in bash, but some other sh don't like it, so it's a portability issue
+---
+ expat/configure.ac | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/expat/configure.ac b/expat/configure.ac
+index e48c32e..1357c9a 100644
+--- a/expat/configure.ac
++++ b/expat/configure.ac
+@@ -220,8 +220,8 @@ AS_HELP_STRING([--disable-xml-context],
+     [Do not retain context around the current parse point]),
+   [enable_xml_context=${enableval}])
+ AS_IF([test "x${enable_xml_context}" != "xno"], [
+-  AS_IF([test "x${enable_xml_context}" == "xyes" \
+-      -o "x${enable_xml_context}" == "x"], [
++  AS_IF([test "x${enable_xml_context}" = "xyes" \
++      -o "x${enable_xml_context}" = "x"], [
+     enable_xml_context=1024
+   ])
+   AC_DEFINE_UNQUOTED([XML_CONTEXT_BYTES], [${enable_xml_context}],

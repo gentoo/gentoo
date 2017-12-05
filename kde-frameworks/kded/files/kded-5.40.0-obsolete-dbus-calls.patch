@@ -1,0 +1,70 @@
+From 185afa8a3af8002172d8f5d6aa08c57244422a12 Mon Sep 17 00:00:00 2001
+From: David Faure <faure@kde.org>
+Date: Thu, 2 Nov 2017 22:27:29 +0100
+Subject: kded: remove dbus calls to ksplash.
+
+Summary:
+Not needed anymore since June 2016 (b6058a0 in plasma-workspace, i.e. Plasma
+5.7).
+
+Originally at https://git.reviewboard.kde.org/r/129010/
+
+Test Plan: none, this is dead code
+
+Reviewers: davidedmundson
+
+Reviewed By: davidedmundson
+
+Subscribers: #plasma, #frameworks
+
+Tags: #frameworks
+
+Differential Revision: https://phabricator.kde.org/D8632
+---
+ src/kded.cpp | 21 ---------------------
+ 1 file changed, 21 deletions(-)
+
+diff --git a/src/kded.cpp b/src/kded.cpp
+index 526bd4e..11ddd4f 100644
+--- a/src/kded.cpp
++++ b/src/kded.cpp
+@@ -37,7 +37,6 @@
+ #include <QDBusConnectionInterface>
+ #include <QDBusInterface>
+ #include <QDBusServiceWatcher>
+-#include <QDBusPendingCall>
+ 
+ #include <KDBusService>
+ #include <kconfiggroup.h>
+@@ -777,28 +776,8 @@ extern "C" Q_DECL_EXPORT int kdemain(int argc, char *argv[])
+         (void) new KUpdateD;    // Watch for updates
+     }
+ 
+-//NOTE: We are going to change how KDE starts and this certanly doesn't fit on the new design.
+-#ifdef Q_OS_LINUX
+-    // Tell KSplash that KDED has started
+-    QDBusMessage ksplashProgressMessage = QDBusMessage::createMethodCall(QStringLiteral("org.kde.KSplash"),
+-                                          QStringLiteral("/KSplash"),
+-                                          QStringLiteral("org.kde.KSplash"),
+-                                          QStringLiteral("setStage"));
+-    ksplashProgressMessage.setArguments(QList<QVariant>() << QStringLiteral("kded"));
+-    QDBusConnection::sessionBus().asyncCall(ksplashProgressMessage);
+-#endif
+-
+     runKonfUpdate(); // Run it once.
+ 
+-#ifdef Q_OS_LINUX
+-    ksplashProgressMessage = QDBusMessage::createMethodCall(QStringLiteral("org.kde.KSplash"),
+-                             QStringLiteral("/KSplash"),
+-                             QStringLiteral("org.kde.KSplash"),
+-                             QStringLiteral("setStage"));
+-    ksplashProgressMessage.setArguments(QList<QVariant>() << QStringLiteral("confupdate"));
+-    QDBusConnection::sessionBus().asyncCall(ksplashProgressMessage);
+-#endif
+-
+     int result = app.exec(); // keep running
+ 
+     delete kded;
+-- 
+cgit v0.11.2
+

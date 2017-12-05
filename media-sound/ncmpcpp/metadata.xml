@@ -11,26 +11,25 @@
 	<use>
 		<flag name="clock">Enable clock screen</flag>
 		<flag name="outputs">Enable outputs screen</flag>
-		<flag name="visualizer">Enable visualizer screen with sound wave/frequency
-			spectrum modes</flag>
+		<flag name="visualizer">Enable visualizer screen with sound wave/frequency spectrum modes</flag>
 	</use>
 	<longdescription lang="en">
-	A featureful <pkg>sys-libs/ncurses</pkg> based <pkg>media-sound/mpd</pkg>
-	client inspired by <pkg>media-sound/ncmpc</pkg>
+		A featureful <pkg>sys-libs/ncurses</pkg> based <pkg>media-sound/mpd</pkg>
+		client inspired by <pkg>media-sound/ncmpc</pkg>
 
-	Ncmpcpp is very similar to ncmpc if it comes to user interface, but it
-	provides a lot of new useful features. 
+		Ncmpcpp is very similar to ncmpc if it comes to user interface, but it
+		provides a lot of new useful features.
 
-	Main new features:
-	 * tag editor
-	 * playlist editor
-	 * easy to use search engine
-	 * media library
-	 * music visualizer
-	 * ability to fetch artist info from last.fm
-	 * new display mode
-	 * alternative user interface
-	 * ability to browse and add files from outside of MPD music directory
-	 ..and a lot more minor convenient functions.
+		Main new features:
+		* tag editor
+		* playlist editor
+		* easy to use search engine
+		* media library
+		* music visualizer
+		* ability to fetch artist info from last.fm
+		* new display mode
+		* alternative user interface
+		* ability to browse and add files from outside of MPD music directory
+		..and a lot more minor convenient functions.
 	</longdescription>
 </pkgmetadata>

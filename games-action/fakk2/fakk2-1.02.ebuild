@@ -4,13 +4,13 @@
 EAPI=5
 inherit eutils cdrom games
 
-DESCRIPTION="Heavy Metal: FAKK2 - 3D third-person action shooter based on the Heavy Metal comics/movies"
+DESCRIPTION="3D third-person action shooter based on the Heavy Metal comics/movies"
 HOMEPAGE="http://www.lokigames.com/products/fakk2/"
 SRC_URI=""
 
 LICENSE="LOKI-EULA"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 IUSE="nocd"
 RESTRICT="strip"
 

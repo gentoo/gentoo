@@ -1,0 +1,247 @@
+--- gnatcoll-gpl-2016-src/Makefile.old	2017-01-20 19:39:07.131398270 +0100
++++ gnatcoll-gpl-2016-src/Makefile	2017-01-20 19:42:30.088728844 +0100
+@@ -49,12 +49,12 @@
+ 	@${RM} src/gnatcoll-atomic.adb
+ 
+ 	@echo "====== Building $(@F) libraries ======"
+-	${GPRBUILD} ${GPRBLD_OPTS} -Pgnatcoll_full
++	${GPRBUILD} ${GPRBLD_OPTS} -Pgnatcoll_full -cargs ${ADAFLAGS}
+ 
+ 	@# Need to build libgnatcoll_gtk separately, because its project files
+ 	@# requires gtkada.gpr, which might not exist on the machine.
+ ifeq (${WITH_GTK},yes)
+-	${GPRBUILD} ${GPRBLD_OPTS} -Psrc/gnatcoll_gtk
++	${GPRBUILD} ${GPRBLD_OPTS} -Psrc/gnatcoll_gtk -cargs ${ADAFLAGS}
+ endif
+ 
+ build_tools/%: build_library_type/%
+@@ -63,7 +63,7 @@
+ 	@# They are not build as part of the above because only the Main from
+ 	@# gnatcoll_full.gpr are build. We could use aggregate projects to
+ 	@# speed things up.
+-	${GPRBUILD} ${GPRBLD_OPTS} -q -Psrc/gnatcoll_tools
++	${GPRBUILD} ${GPRBLD_OPTS} -q -Psrc/gnatcoll_tools -cargs ${ADAFLAGS}
+ 
+ #######################################################################
+ #  install
+--- gnatcoll-gpl-2015-src/src/gnatcoll_iconv.gpr.old	2017-01-07 08:58:01.361112843 +0100
++++ gnatcoll-gpl-2015-src/src/gnatcoll_iconv.gpr	2017-01-07 08:58:23.653687385 +0100
+@@ -26,6 +26,7 @@
+ 
+    package Compiler is
+       for Switches ("Ada") use GnatColl_Shared.Compiler'Switches ("Ada");
++      for Driver ("C") use External ("GCC", "gcc");
+       for Switches ("C") use GnatColl_Shared.Compiler'Switches ("C")
+           & GnatColl_Shared.Iconv_Include;
+    end Compiler;
+--- gnatcoll-gpl-2015-src/src/gnatcoll_sqlite.gpr.old	2017-01-07 09:00:17.146448202 +0100
++++ gnatcoll-gpl-2015-src/src/gnatcoll_sqlite.gpr	2017-01-07 09:00:44.884885281 +0100
+@@ -60,8 +60,9 @@
+ 
+                   --  force full optimization for sqlite, we do not debug it
+                   --  in any case.
+                   "-O3") & Gnatcoll_Shared.Sqlite_Switches;
+       end case;
++      for Driver ("C") use External ("GCC", "gcc");
+    end Compiler;
+ 
+    package Linker is
+--- gnatcoll-gpl-2015-src/src/gnatcoll_postgres.gpr.old	2017-01-07 09:05:09.177756146 +0100
++++ gnatcoll-gpl-2015-src/src/gnatcoll_postgres.gpr	2017-01-07 09:05:34.282279733 +0100
+@@ -38,6 +38,7 @@
+            for Switches ("C") use
+               GnatColl_Shared.Compiler'Switches ("C");
+       end case;
++      for Driver ("C") use External ("GCC", "gcc");
+    end Compiler;
+ 
+    package Linker is
+--- gnatcoll-gpl-2016-src/gnatcoll_shared.gpr.in.old	2017-01-20 19:50:03.222808656 +0100
++++ gnatcoll-gpl-2016-src/gnatcoll_shared.gpr.in	2017-01-20 19:50:28.200399274 +0100
+@@ -13,7 +13,7 @@
+ 
+    type Yes_No is ("yes", "no");
+    Gtk       : Yes_No := External ("GTK", "@WITH_GTK@");
+-   Python    : Yes_No := External ("PYTHON", "@WITH_PYTHON@");
++   Python    : Yes_No := "@WITH_PYTHON@"; 
+    Syslog    : Yes_No := External ("SYSLOG", "@WITH_SYSLOG@");
+    Postgres  : Yes_No := External ("POSTGRES", "@WITH_POSTGRES@");
+    type Sqlite_Inclusion is ("yes", "no", "embedded");
+--- gnatcoll-gpl-2016-src/src/gnatcoll__libgpr.gpr.old	2017-02-04 15:56:11.685079607 +0100
++++ gnatcoll-gpl-2016-src/src/gnatcoll__libgpr.gpr	2017-02-04 15:57:00.383221978 +0100
+@@ -49,6 +49,8 @@
+    package Builder renames GnatColl_Shared.Builder;
+ 
+    package Compiler is
++      for Driver ("C") use External ("GCC", "gcc");
++
+       for Switches ("Ada") use GnatColl_Shared.Compiler'Switches ("Ada");
+       for Switches ("C") use GnatColl_Shared.Compiler'Switches ("C");
+       for Switches ("sinfo.adb") use Compiler'Switches ("Ada") & ("-gnatg");
+--- gnatcoll-gpl-2016-src/src/gnatcoll__nogpr.gpr.old	2017-02-04 15:58:41.008450044 +0100
++++ gnatcoll-gpl-2016-src/src/gnatcoll__nogpr.gpr	2017-02-04 15:59:02.815066080 +0100
+@@ -64,6 +64,7 @@
+       for Switches ("Ada") use GnatColl_Shared.Compiler'Switches ("Ada");
+       for Switches ("C") use GnatColl_Shared.Compiler'Switches ("C");
+       for Switches ("sinfo.adb") use Compiler'Switches ("Ada") & ("-gnatg");
++      for Driver ("C") use External ("GCC", "gcc");
+ 
+       case GnatColl_Shared.Atomics is
+          when "intrinsic" =>
+--- gnatcoll-gpl-2016-src/aclocal.m4.old	2017-04-06 08:25:14.796699365 +0200
++++ gnatcoll-gpl-2016-src/aclocal.m4	2017-04-06 08:25:36.622318016 +0200
+@@ -45,7 +45,7 @@
+    cat > conftest.ada <<EOF
+ [$3]
+ EOF
+-   if AC_TRY_COMMAND([gnatchop -q conftest.ada && $1 $2 >/dev/null 2>conftest.out])
++   if AC_TRY_COMMAND([${GNATCHOP} -q conftest.ada && $1 $2 >/dev/null 2>conftest.out])
+    then
+       : Success
+       $4
+@@ -68,7 +68,7 @@
+ AC_DEFUN(AM_HAS_INTRINSIC_SYNC_COUNTERS,
+ [
+   AC_MSG_CHECKING([whether platform supports atomic inc/dec])
+-  AM_TRY_ADA([gnatmake], [check.adb],
++  AM_TRY_ADA([${GNATMAKE}], [check.adb],
+ [
+ with Interfaces; use Interfaces;
+ procedure Check is
+--- gnatcoll-gpl-2016-src/testsuite/json/__init__.py.old	2017-04-24 17:52:34.158513249 +0200
++++ gnatcoll-gpl-2016-src/testsuite/json/__init__.py	2017-04-24 17:52:52.636207017 +0200
+@@ -21,7 +21,7 @@
+     @requires_not_aix    # Storage_Error on that machine
+     @chdir("MB28-001")
+     def test_MB28_001(self):
+-        self.runexec(["python", "make_json.py"])
++        self.runexec(["python2.7", "make_json.py"])
+         self.gprbuild()
+         self.runexec("json_stack_test", "test.out")
+ 
+--- gnatcoll-gpl-2016-src/testsuite/projects/aggregate_create/c1/c.gpr.old	2017-04-24 18:00:21.652975475 +0200
++++ gnatcoll-gpl-2016-src/testsuite/projects/aggregate_create/c1/c.gpr	2017-04-24 18:01:23.035983670 +0200
+@@ -15,5 +15,6 @@
+       for Default_Switches ("ada") use
+         ("-g", "-gnatQ", "-O1", "-gnatf", "-gnato", "-gnatwa.Xe", "-gnaty");
++      for Driver ("c") use External ("GCC", "gcc");
+    end Compiler;
+ 
+ end c;
+--- gnatcoll-gpl-2016-src/testsuite/projects/aggregate_create/c2/c.gpr.old	2017-04-24 18:01:28.394896928 +0200
++++ gnatcoll-gpl-2016-src/testsuite/projects/aggregate_create/c2/c.gpr	2017-04-24 18:01:44.343638682 +0200
+@@ -15,5 +15,6 @@
+       for Default_Switches ("ada") use
+         ("-g", "-gnatQ", "-O1", "-gnatf", "-gnato", "-gnatwa.Xe", "-gnaty");
++      for Driver ("C") use External ("GCC", "gcc");
+    end Compiler;
+ 
+ end c;
+--- gnatcoll-gpl-2016-src/testsuite/projects/__init__.py.old	2017-04-24 19:10:30.465246199 +0200
++++ gnatcoll-gpl-2016-src/testsuite/projects/__init__.py	2017-04-24 19:10:42.768035080 +0200
+@@ -105,25 +105,6 @@
+         self.gprbuild("default.gpr")
+         self.runexec("main", "")
+ 
+-    @support.requires_not_windows
+-    @chdir("N918-040")
+-    def test_bareboard(self):
+-        self.create_fake_bb_compiler('install', 'arm-eabi', '6.1.0w', '3.4.6')
+-
+-        # Make sure auto.cgpr is not deleted on exit
+-        try:
+-            os.unlink('auto.cgpr')
+-        except:
+-            pass
+-        self.gprbuild('main_prj', switches=['--autoconf=auto.cgpr'])
+-        m = re.search('for Target use "(.*?)"', open('auto.cgpr').read())
+-        target = m.group(1)
+-
+-        def customFilter(actual):
+-            return actual.replace(target, "<native>")
+-
+-        self.runexec(['sh', 'test.sh'], 'test.out', customFilter=customFilter)
+-
+     @chdir("NB12-045")
+     def test_NB12_045(self):
+         # Test registering attribute in unknown package
+--- gnatcoll-gpl-2016-src/testsuite/xref/tabs/default.gpr.old	2017-04-24 20:01:55.535913959 +0200
++++ gnatcoll-gpl-2016-src/testsuite/xref/tabs/default.gpr	2017-04-24 20:02:51.740950192 +0200
+@@ -1,3 +1,6 @@
+ project Default is
+    for Languages use ("Ada", "C");
++   package Compiler is
++      for Driver ("C") use External ("GCC", "gcc");
++   end Compiler;
+ end Default;
+--- gnatcoll-gpl-2016-src/testsuite/xref/doc1/dummy.gpr.old	2017-04-24 20:04:12.012574064 +0200
++++ gnatcoll-gpl-2016-src/testsuite/xref/doc1/dummy.gpr	2017-04-24 20:04:54.025853974 +0200
+@@ -6,4 +6,7 @@
+       for Body_Suffix ("c++") use ".cc";
+    end Naming;
+ 
++   package Compiler is
++      for Driver ("C") use External ("GCC", "gcc");
++   end Compiler;
+ end Dummy;
+--- gnatcoll-gpl-2016-src/src/tools/gnatcoll_db2ada.adb.old	2017-04-24 21:36:09.193973179 +0200
++++ gnatcoll-gpl-2016-src/src/tools/gnatcoll_db2ada.adb	2017-04-24 21:36:16.029858932 +0200
+@@ -211,7 +211,7 @@
+ 
+       declare
+          Output : constant String := Get_Command_Output
+-           (Command     => "python",
++           (Command     => "python2.7",
+             Arguments   => Args,
+             Input       => "",
+             Status      => Status'Access,
+--- gnatcoll-gpl-2017-src/src/gnatcoll_python.gpr.old	2017-06-24 18:06:19.702063079 +0200
++++ gnatcoll-gpl-2017-src/src/gnatcoll_python.gpr	2017-06-24 18:05:04.276103652 +0200
+@@ -60,6 +60,7 @@
+ 
+       for Switches ("C") use
+-        ("-g", "-O2") & GnatColl_Shared.Python_Cflags;
++        ("-g", "-O2", "-fPIC") & GnatColl_Shared.Python_Cflags;
++      for Driver ("C") use External ("GCC", "gcc");
+    end Compiler;
+ 
+    package Linker is
+--- gnatcoll-gpl-2017-src/src/gnatcoll_gtk.gpr.old	2017-06-24 18:37:22.164631219 +0200
++++ gnatcoll-gpl-2017-src/src/gnatcoll_gtk.gpr	2017-06-24 18:37:55.763186201 +0200
+@@ -71,11 +71,12 @@
+       for Switches ("Ada") use GnatColl_Shared.Compiler'Switches ("Ada");
+ 
+       for Switches ("C") use
+-        ("-g", "-O2")
++        ("-g", "-O2", "-fPIC")
+         & GnatColl_Shared.Python_Cflags
+         & GnatColl_Shared.Pygtk_Include
+         & GnatColl_Shared.PyGobject_Include
+         & Gtk_Include;
++      for Driver ("C") use External ("GCC", "gcc");
+    end Compiler;
+ 
+    package Linker is
+--- gnatcoll-gpl-2017-src/src/gnatcoll-projects.ads.old	2017-11-25 14:50:06.919939453 +0100
++++ gnatcoll-gpl-2017-src/src/gnatcoll-projects.ads	2017-11-25 14:50:38.932387204 +0100
+@@ -1917,7 +1917,8 @@
+       Predefined_Source_Files : GNATCOLL.VFS.File_Array_Access;
+       --  The list of source files in Predefined_Source_Path
+ 
+-      Default_Gnatls : GNAT.Strings.String_Access := new String'("gnatls");
++      Default_Gnatls : GNAT.Strings.String_Access :=
++         new String'("@GNATLS@");
+       --  The default gnatls command to run.
+ 
+       Xrefs_Subdir : GNAT.Strings.String_Access;
+--- gnatcoll-gpl-2017-src/src/tools/gnatinspect.adb.old	2017-11-25 14:52:47.282170250 +0100
++++ gnatcoll-gpl-2017-src/src/tools/gnatinspect.adb	2017-11-25 14:52:57.691990254 +0100
+@@ -642,7 +642,7 @@
+       GNAT_Version : GNAT.Strings.String_Access;
+    begin
+       Env.Set_Path_From_Gnatls
+-        (Gnatls       => "gnatls",
++        (Gnatls       => "@GNATLS@",
+          GNAT_Version => GNAT_Version,
+          Errors       => Local_On_Error'Unrestricted_Access);
+       Free (GNAT_Version);

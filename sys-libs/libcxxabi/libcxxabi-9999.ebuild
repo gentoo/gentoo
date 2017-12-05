@@ -11,9 +11,9 @@ PYTHON_COMPAT=( python2_7 )
 inherit cmake-multilib git-r3 llvm python-any-r1
 
 DESCRIPTION="Low level support for a standard C++ library"
-HOMEPAGE="http://libcxxabi.llvm.org/"
+HOMEPAGE="https://libcxxabi.llvm.org/"
 SRC_URI=""
-EGIT_REPO_URI="http://llvm.org/git/libcxxabi.git
+EGIT_REPO_URI="https://git.llvm.org/git/libcxxabi.git
 	https://github.com/llvm-mirror/libcxxabi.git"
 
 LICENSE="|| ( UoI-NCSA MIT )"
@@ -49,12 +49,12 @@ pkg_setup() {
 
 src_unpack() {
 	# we need the headers
-	git-r3_fetch "http://llvm.org/git/libcxx.git
+	git-r3_fetch "https://git.llvm.org/git/libcxx.git
 		https://github.com/llvm-mirror/libcxx.git"
 	git-r3_fetch
 
-	git-r3_checkout http://llvm.org/git/libcxx.git \
-		"${WORKDIR}"/libcxx
+	git-r3_checkout https://llvm.org/git/libcxx.git \
+		"${WORKDIR}"/libcxx '' include utils/libcxx
 	git-r3_checkout
 }
 
@@ -71,13 +71,11 @@ multilib_src_configure() {
 		# upstream is omitting standard search path for this
 		# probably because gcc & clang are bundling their own unwind.h
 		-DLIBCXXABI_LIBUNWIND_INCLUDES="${EPREFIX}"/usr/include
-		# this only needs to exist, it does not have to make sense
-		# FIXME: remove this once https://reviews.llvm.org/D25314 is merged
-		-DLIBCXXABI_LIBUNWIND_SOURCES="${T}"
 	)
 	if use test; then
 		mycmakeargs+=(
-			-DLIT_COMMAND="${EPREFIX}"/usr/bin/lit
+			-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
+			-DLLVM_LIT_ARGS="-vv"
 		)
 	fi
 	cmake-utils_src_configure

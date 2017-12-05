@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/alleg/${P}.tar.gz"
 
 LICENSE="Allegro MIT GPL-2+ ZLIB"
 SLOT="0"
-KEYWORDS="amd64 ~mips ppc ppc64 x86"
+KEYWORDS="amd64 ~arm64 ~mips ppc ppc64 x86"
 IUSE="alsa fbcon jack jpeg opengl oss png svga test vga vorbis X"
 
 RDEPEND="alsa? ( media-libs/alsa-lib )
@@ -42,11 +42,15 @@ DEPEND="${RDEPEND}
 		x11-proto/xproto
 	)"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-shared.patch
+	"${FILESDIR}"/${P}-underlink.patch
+	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${P}-rpath.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-shared.patch \
-		"${FILESDIR}"/${P}-underlink.patch \
-		"${FILESDIR}"/${P}-gentoo.patch \
-		"${FILESDIR}"/${P}-rpath.patch
+	cmake-utils_src_prepare
 
 	sed -i \
 		-e "s:allegro-\${ALLEGRO_VERSION}:${PF}:" \

@@ -1,0 +1,53 @@
+From: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
+Date: Tue, 11 Oct 2016 20:25:48 -0400
+Subject: fix spelling: s/convience/convenience/
+
+---
+ README                 | 4 ++--
+ lib/GnuPG/Interface.pm | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/README b/README
+index ed94ede..a05ef9b 100644
+--- a/README
++++ b/README
+@@ -143,7 +143,7 @@ OBJECT METHODS
+         does not come into play. If the passphrase data member handle of the
+         handles object is not defined, but the the passphrase data member
+         handle of GnuPG::Interface object is, GnuPG::Interface will handle
+-        passing this information into GnuPG for the user as a convience.
++        passing this information into GnuPG for the user as a convenience.
+         Note that this will result in GnuPG::Interface storing the
+         passphrase in memory, instead of having it simply 'pass-through' to
+         GnuPG via a handle.
+@@ -271,7 +271,7 @@ EXAMPLES
+                                        );
+ 
+       # indicate our pasphrase through the
+-      # convience method
++      # convenience method
+       $gnupg->passphrase( $passphrase );
+ 
+       # this sets up the communication
+diff --git a/lib/GnuPG/Interface.pm b/lib/GnuPG/Interface.pm
+index 6eaef7d..29205f0 100644
+--- a/lib/GnuPG/Interface.pm
++++ b/lib/GnuPG/Interface.pm
+@@ -1008,7 +1008,7 @@ and so this information is not generated and does not come into play.
+ If the B<passphrase> data member handle of the B<handles> object
+ is not defined, but the the B<passphrase> data member handle of GnuPG::Interface
+ object is, GnuPG::Interface will handle passing this information into GnuPG
+-for the user as a convience.  Note that this will result in
++for the user as a convenience.  Note that this will result in
+ GnuPG::Interface storing the passphrase in memory, instead of having
+ it simply 'pass-through' to GnuPG via a handle.
+ 
+@@ -1175,7 +1175,7 @@ The following setup can be done before any of the following examples:
+ 				   );
+ 
+   # indicate our pasphrase through the
+-  # convience method
++  # convenience method
+   $gnupg->passphrase( $passphrase );
+ 
+   # this sets up the communication

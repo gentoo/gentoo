@@ -3,7 +3,6 @@
 
 EAPI=6
 
-EGIT_BRANCH="0.12"
 KDE_HANDBOOK="true"
 inherit kde5
 
@@ -12,7 +11,7 @@ HOMEPAGE="https://kmplayer.kde.org"
 SRC_URI="mirror://kde/stable/${PN}/${EGIT_BRANCH}/${P}.tar.bz2"
 
 LICENSE="GPL-2 FDL-1.2 LGPL-2.1"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="cairo npp"
 
 CDEPEND="
@@ -36,7 +35,7 @@ CDEPEND="
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtx11extras)
 	$(add_qt_dep qtxml)
-	media-libs/phonon[qt5]
+	media-libs/phonon[qt5(+)]
 	x11-libs/libX11
 	x11-libs/libxcb
 	cairo? ( x11-libs/cairo[xcb] )
@@ -55,13 +54,15 @@ RDEPEND="${CDEPEND}
 	!media-video/kmplayer:4
 "
 
+PATCHES=( "${FILESDIR}/${P}-qt-5.9.patch" )
+
 src_prepare() {
+	kde5_src_prepare
+
 	if use npp; then
 		sed -i src/kmplayer_part.desktop \
 		-e ":^MimeType: s:=:=application/x-shockwave-flash;:" || die
 	fi
-
-	kde5_src_prepare
 }
 
 src_configure() {

@@ -1,0 +1,58 @@
+From fda708069c3c3bdb2b6d8922b21eb604084d51e2 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Fri, 6 Oct 2017 22:32:36 +1300
+Subject: Keep dist-root in @INC beyond Perl 5.26
+
+The only thing that makes sense is to ensure CWD of some description is
+in @INC at some stage before plugins are actually loaded, because
+that's the traditional expectation.
+
+Basically, this option is the only option that works. There's no viable
+way to scope @INC changes to anything narrower without breaking the
+usage entirely.
+
+There's no sane way to limit the depth of @INC changes either, even if
+we wanted to.
+
+And if you have vulnerable code in your project source tree that you're
+worried about, you're pretty much beyond screwed already, and you're
+about to be screwing CPAN when you ship next, and no amount of @INC
+magic will save you.
+
+Bug: https://bugs.gentoo.org/613586
+Bug: https://github.com/rjbs/Dist-Zilla/issues/581
+Bug: https://github.com/rjbs/Dist-Zilla/pull/590
+Bug: https://github.com/rjbs/Dist-Zilla/pull/600
+---
+ lib/Dist/Zilla/Dist/Builder.pm    | 1 +
+ lib/Dist/Zilla/Util/AuthorDeps.pm | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/lib/Dist/Zilla/Dist/Builder.pm b/lib/Dist/Zilla/Dist/Builder.pm
+index 2148eeb..6b8e301 100644
+--- a/lib/Dist/Zilla/Dist/Builder.pm
++++ b/lib/Dist/Zilla/Dist/Builder.pm
+@@ -36,6 +36,7 @@ sub from_config {
+   $arg ||= {};
+ 
+   my $root = path($arg->{dist_root} || '.');
++  unshift @INC, $root->absolute->stringify;
+ 
+   my $sequence = $class->_load_config({
+     root   => $root,
+diff --git a/lib/Dist/Zilla/Util/AuthorDeps.pm b/lib/Dist/Zilla/Util/AuthorDeps.pm
+index 01a958e..cfcd62f 100644
+--- a/lib/Dist/Zilla/Util/AuthorDeps.pm
++++ b/lib/Dist/Zilla/Util/AuthorDeps.pm
+@@ -105,7 +105,7 @@ sub extract_author_deps {
+ 
+   if ($missing) {
+     require Module::Runtime;
+-
++    unshift @INC, $root->absolute->stringify;
+     @packages =
+       grep {
+         $_ eq 'perl'
+-- 
+2.14.1
+

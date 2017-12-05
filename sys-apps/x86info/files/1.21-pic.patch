@@ -1,6 +1,5 @@
-diff -Nuar x86info-1.21.orig/bench/benchmarks.c x86info-1.21/bench/benchmarks.c
---- x86info-1.21.orig/bench/benchmarks.c	2007-11-26 17:53:58.278467889 -0800
-+++ x86info-1.21/bench/benchmarks.c	2007-11-26 17:54:32.014318066 -0800
+--- a/bench/benchmarks.c
++++ b/bench/benchmarks.c
 @@ -19,7 +19,10 @@
  #ifdef __linux__
  	TIME(asm volatile("int $0x80" :"=a" (tmp) :"0" (__NR_getppid)), "int 0x80");

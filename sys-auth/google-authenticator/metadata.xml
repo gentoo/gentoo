@@ -5,6 +5,6 @@
 	<email>vapier@gentoo.org</email>
 </maintainer>
 <upstream>
-	<remote-id type="github">google/google-authenticator</remote-id>
+	<remote-id type="github">google/google-authenticator-libpam</remote-id>
 </upstream>
 </pkgmetadata>

@@ -1,8 +1,10 @@
 <?php
 /* Autoloader for dev-php/phpunit and its dependencies */
 
+$include_dir = '/usr/share/php';
+
 if (!class_exists('Fedora\\Autoloader\\Autoload', false)) {
-    require_once '/usr/share/php/Fedora/Autoloader/autoload.php';
+    require_once "${include_dir}/Fedora/Autoloader/autoload.php";
 }
 
 \Fedora\Autoloader\Autoload::addClassMap(
@@ -144,24 +146,25 @@ if (!class_exists('Fedora\\Autoloader\\Autoload', false)) {
 	'phpunit_util_type' => '/Util/Type.php',
 	'phpunit_util_xml' => '/Util/XML.php',
 ),
-  '/usr/share/php/PHPUnit'
+  "${include_dir}/PHPUnit"
 );
 
 // Dependencies
 \Fedora\Autoloader\Dependencies::required(array(
-  '/usr/share/php/File/Iterator/autoload.php',
-  '/usr/share/php/PHP/CodeCoverage/autoload.php',
-  '/usr/share/php/PHP/Timer/autoload.php',
-  '/usr/share/php/SebastianBergmann/Version/autoload.php',
-  '/usr/share/php/SebastianBergmann/Diff/autoload.php',
-  '/usr/share/php/SebastianBergmann/Environment/autoload.php',
-  '/usr/share/php/SebastianBergmann/Exporter/autoload.php',
-  '/usr/share/php/SebastianBergmann/GlobalState/autoload.php',
-  '/usr/share/php/SebastianBergmann/Comparator/autoload.php',
-  '/usr/share/php/SebastianBergmann/ResourceOperations/autoload.php',
-  '/usr/share/php/Symfony/Component/Yaml/autoload.php',
-  '/usr/share/php/Text/Template/autoload.php',
-  '/usr/share/php/myclabs/DeepCopy/autoload.php',
-  '/usr/share/php/PHPUnit/Framework/MockObject/autoload.php',
-  '/usr/share/php/phpspec/Prophecy/autoload.php',
+  "${include_dir}/File/Iterator/autoload.php",
+  "${include_dir}/PHP/CodeCoverage/autoload.php",
+  "${include_dir}/PHP/Timer/autoload.php",
+  "${include_dir}/SebastianBergmann/Version/autoload.php",
+  "${include_dir}/SebastianBergmann/Diff/autoload.php",
+  "${include_dir}/SebastianBergmann/Environment/autoload.php",
+  "${include_dir}/SebastianBergmann/Exporter/autoload.php",
+  "${include_dir}/SebastianBergmann/GlobalState/autoload.php",
+  "${include_dir}/SebastianBergmann/Comparator/autoload.php",
+  "${include_dir}/SebastianBergmann/ObjectEnumerator/autoload.php",
+  "${include_dir}/SebastianBergmann/ResourceOperations/autoload.php",
+  "${include_dir}/Symfony/Component/Yaml/autoload.php",
+  "${include_dir}/Text/Template/autoload.php",
+  "${include_dir}/myclabs/DeepCopy/autoload.php",
+  "${include_dir}/PHPUnit/Framework/MockObject/autoload.php",
+  "${include_dir}/phpspec/Prophecy/autoload.php",
 ));

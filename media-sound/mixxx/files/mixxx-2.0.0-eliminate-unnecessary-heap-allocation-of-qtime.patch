@@ -1,0 +1,55 @@
+diff -dNur a/src/analyserwaveform.cpp b/src/analyserwaveform.cpp
+--- a/src/analyserwaveform.cpp	2015-12-29 17:10:41.000000000 +0100
++++ b/src/analyserwaveform.cpp	2017-02-04 21:12:30.127952910 +0100
+@@ -1,6 +1,3 @@
+-#include <QImage>
+-#include <QtDebug>
+-#include <QTime>
+ #include <QtDebug>
+ 
+ #include "analyserwaveform.h"
+@@ -40,7 +37,6 @@
+         }
+     }
+ 
+-    m_timer = new QTime();
+     m_analysisDao = new AnalysisDao(m_database, pConfig);
+ }
+ 
+@@ -48,14 +44,13 @@
+     qDebug() << "AnalyserWaveform::~AnalyserWaveform()";
+     destroyFilters();
+     m_database.close();
+-    delete m_timer;
+     delete m_analysisDao;
+ }
+ 
+ bool AnalyserWaveform::initialise(TrackPointer tio, int sampleRate, int totalSamples) {
+     m_skipProcessing = false;
+ 
+-    m_timer->start();
++    m_timer.start();
+ 
+     if (totalSamples == 0) {
+         qWarning() << "AnalyserWaveform::initialise - no waveform/waveform summary";
+@@ -320,7 +315,7 @@
+ #endif
+ 
+     qDebug() << "Waveform generation for track" << tio->getId() << "done"
+-             << m_timer->elapsed()/1000.0 << "s";
++             << m_timer.elapsed()/1000.0 << "s";
+ }
+ 
+ void AnalyserWaveform::storeIfGreater(float* pDest, float source) {
+diff -dNur a/src/analyserwaveform.h b/src/analyserwaveform.h
+--- a/src/analyserwaveform.h	2015-12-29 17:10:41.000000000 +0100
++++ b/src/analyserwaveform.h	2017-02-04 21:12:45.367713395 +0100
+@@ -171,7 +171,7 @@
+     EngineFilterIIRBase* m_filter[FilterCount];
+     std::vector<float> m_buffers[FilterCount];
+ 
+-    QTime* m_timer;
++    QTime m_timer;
+     QSqlDatabase m_database;
+     AnalysisDao* m_analysisDao;
+ 

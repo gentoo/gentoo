@@ -1,0 +1,13 @@
+[Unit]
+Description=An optimized HTTP/1.x, HTTP/2 server
+After=network-online.target nss-lookup.target remote-fs.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/h2o -c /etc/h2o/h2o.conf -m master
+SyslogLevel=notice
+PrivateTmp=true
+LimitNOFILE=infinity
+
+[Install]
+WantedBy=multi-user.target

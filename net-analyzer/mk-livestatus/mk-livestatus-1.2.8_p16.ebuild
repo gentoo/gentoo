@@ -18,6 +18,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="examples nagios4 perl python test"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="!sys-apps/ucspi-unix:0
 	perl? (
@@ -27,7 +28,8 @@ RDEPEND="!sys-apps/ucspi-unix:0
 		>=virtual/perl-Thread-Queue-2.11:0
 		virtual/perl-Encode:0
 		dev-perl/JSON-XS:0
-	)"
+	)
+	python? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}
 	perl? (
 		dev-perl/Module-Install:0

@@ -9,6 +9,7 @@ KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 RDEPEND="|| (
 		app-i18n/skkserv
+		app-i18n/dbskkd-cdb
 		app-i18n/mecab-skkserv
 		app-i18n/multiskkserv
 		app-i18n/yaskkserv

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -14,8 +14,9 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc ~sparc x86 ~x86-fbsd"
 IUSE=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="
+RDEPEND="${PYTHON_DEPS}
 		|| ( dev-python/PyQt4[${PYTHON_USEDEP},X]
 			dev-python/pyside[${PYTHON_USEDEP},X] )
 		>=sys-apps/portage-2.1
@@ -38,7 +39,7 @@ pkg_postinst() {
 	elog "and at least one of "
 	elog "		 PORTAGE_ELOG_CLASSES=\"warn error info log qa\""
 	elog "More information on the elog system can be found"
-	elog "in /etc/make.conf.example"
+	elog "in /usr/share/portage/config/make.conf.example"
 	elog
 	elog "To operate properly this software needs the directory"
 	elog "${PORT_LOGDIR:-/var/log/portage}/elog created, belonging to group portage."

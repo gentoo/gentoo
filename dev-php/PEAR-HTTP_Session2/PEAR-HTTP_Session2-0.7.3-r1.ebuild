@@ -1,11 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 inherit php-pear-r1
 
-DESCRIPTION="Wraps PHP's session_* functions, providing extras like db storage for session data"
+DESCRIPTION="Wraps PHP's session functions providing extras like db storage for session data"
 
 LICENSE="BSD"
 SLOT="0"

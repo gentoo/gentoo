@@ -18,6 +18,7 @@ IUSE="dbus"
 
 RDEPEND="
 	dev-qt/qtgui:5
+	dev-qt/qtnetwork:5
 	dev-qt/qtprintsupport:5
 	dev-qt/qtsvg:5
 	dev-qt/qtxml:5
@@ -39,6 +40,8 @@ src_prepare() {
 			vym.pro || die
 	}
 
+	gunzip doc/vym.1.gz || die
+
 	#remove dead en translation
 	rm lang/vym.en.ts || die
 	remove_locale en
@@ -58,8 +61,10 @@ src_configure() {
 
 src_install() {
 	emake INSTALL_ROOT="${D}" install
+
 	einstalldocs
-	doman doc/vym.1.gz
+
+	doman doc/vym.1
 
 	make_desktop_entry vym vym /usr/share/vym/icons/vym.png Education
 }

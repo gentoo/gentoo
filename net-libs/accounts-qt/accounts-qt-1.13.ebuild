@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ inherit qmake-utils
 
 DESCRIPTION="Qt5 bindings for libaccounts-glib"
 HOMEPAGE="https://01.org/gsso/"
-SRC_URI="http://dev.gentoo.org/~kensington/distfiles/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~kensington/distfiles/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

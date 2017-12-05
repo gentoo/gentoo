@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -12,4 +12,7 @@
 		you can use them without linking against Cabal or depending on it being installed.
 		This is a better maintained fork of the "temporary" package.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">feuerbach/temporary</remote-id>
+	</upstream>
 </pkgmetadata>

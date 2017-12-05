@@ -1,5 +1,6 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
 EAPI=5
 
 JAVA_PKG_IUSE="source"
@@ -16,7 +17,7 @@ LICENSE="MIT public-domain
 		 jemacs? ( GPL-2 )
 		 krl? ( GPL-2 )"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86"
 IUSE="+awt echo2 +frontend jemacs krl +sax servlets +swing swt +xml xqtests"
 
 CDEPEND="( >=virtual/jdk-1.6 )

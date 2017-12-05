@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -11,7 +11,7 @@ SRC_URI="mirror://kernel/linux/network/${PN}/${P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
-IUSE="bluetooth debug doc examples +ethernet l2tp ofono openvpn openconnect pptp policykit tools vpnc +wifi wispr"
+IUSE="bluetooth debug doc examples +ethernet l2tp ofono openvpn openconnect pptp policykit tools vpnc +wifi wispr networkmanager"
 
 RDEPEND=">=dev-libs/glib-2.16
 	>=sys-apps/dbus-1.2.24
@@ -19,11 +19,11 @@ RDEPEND=">=dev-libs/glib-2.16
 	bluetooth? ( net-wireless/bluez )
 	l2tp? ( net-dialup/xl2tpd )
 	ofono? ( net-misc/ofono )
-	openconnect? ( net-misc/openconnect )
-	openvpn? ( net-misc/openvpn )
+	openconnect? ( net-vpn/openconnect )
+	openvpn? ( net-vpn/openvpn )
 	policykit? ( sys-auth/polkit )
 	pptp? ( net-dialup/pptpclient )
-	vpnc? ( net-misc/vpnc )
+	vpnc? ( net-vpn/vpnc )
 	wifi? ( >=net-wireless/wpa_supplicant-2.0[dbus] )
 	wispr? ( net-libs/gnutls )"
 
@@ -46,7 +46,7 @@ src_configure() {
 	econf \
 		--localstatedir=/var \
 		--with-systemdunitdir=$(systemd_get_systemunitdir) \
-		--with-tmpfilesdir=${EPRIFEX}/usr/lib/tmpfiles.d \
+		--with-tmpfilesdir="${EPREFIX}"/usr/lib/tmpfiles.d \
 		--enable-client \
 		--enable-datafiles \
 		--enable-loopback=builtin \
@@ -64,6 +64,7 @@ src_configure() {
 		$(use_enable wispr wispr builtin) \
 		$(use_enable debug) \
 		$(use_enable tools) \
+		$(use_enable networkmanager nmcompat) \
 		--disable-iospm \
 		--disable-hh2serial-gps
 }

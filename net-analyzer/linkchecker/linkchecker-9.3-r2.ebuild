@@ -17,12 +17,12 @@ SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86 ~ppc-macos ~x64-solaris"
+KEYWORDS="amd64 x86 ~ppc-macos ~x64-solaris"
 IUSE="gnome sqlite X"
 
 RDEPEND="
 	virtual/python-dnspython[${PYTHON_USEDEP}]
-	>=dev-python/requests-2.2.1[${PYTHON_USEDEP}]
+	<dev-python/requests-2.15[${PYTHON_USEDEP}]
 	gnome? ( dev-python/pygtk:2[${PYTHON_USEDEP}] )
 	X? (
 		dev-python/PyQt4[X,help,${PYTHON_USEDEP}]

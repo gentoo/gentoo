@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ AUTOTOOLS_PRUNE_LIBTOOL_FILES=all
 
 if [[ ${PV} == *9999 ]] ; then
 	SCM="git-2"
-	EGIT_REPO_URI="git://github.com/mstorsjo/${PN}.git"
+	EGIT_REPO_URI="https://github.com/mstorsjo/${PN}.git"
 	[[ ${PV%9999} != "" ]] && EGIT_BRANCH="release/${PV%.9999}"
 	AUTOTOOLS_AUTORECONF=1
 fi
@@ -29,7 +29,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 
 [[ ${PV} == *9999 ]] || \
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x64-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x64-macos"
 IUSE="examples static-libs"
 
 src_configure() {

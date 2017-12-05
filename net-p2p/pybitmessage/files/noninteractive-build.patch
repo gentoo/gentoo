@@ -1,0 +1,18 @@
+Temporary workaround for a build system that wants you to press
+"Return" interactively.
+
+https://github.com/Bitmessage/PyBitmessage/issues/993
+
+diff --git a/setup.py b/setup.py
+index 2c769a6..166ab14 100644
+--- a/setup.py
++++ b/setup.py
+@@ -163,7 +163,7 @@ if __name__ == "__main__":
+         print "Press Return to continue"
+         try:
+             nothing = raw_input()
+-        except NameError:
++        except EOFError,NameError:
+             pass
+ 
+     here = os.path.abspath(os.path.dirname(__file__))

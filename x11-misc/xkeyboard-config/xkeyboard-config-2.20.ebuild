@@ -6,11 +6,11 @@ EAPI=5
 XORG_STATIC=no
 inherit xorg-2
 
-EGIT_REPO_URI="git://anongit.freedesktop.org/git/xkeyboard-config"
+EGIT_REPO_URI="https://anongit.freedesktop.org/git/xkeyboard-config.git"
 
 DESCRIPTION="X keyboard configuration database"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/XKeyboardConfig"
-[[ ${PV} == *9999* ]] || SRC_URI="${XORG_BASE_INDIVIDUAL_URI}/data/${PN}/${P}.tar.bz2"
+[[ ${PV} == *9999* ]] || SRC_URI="https://www.x.org/releases/individual/data/xkeyboard-config/${P}.tar.bz2"
 
 KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE=""

@@ -7,7 +7,7 @@ inherit font
 
 MY_P="IPAfont${PV/.}"
 
-DESCRIPTION="Japanese TrueType fonts developed by IPA (Information-technology Promotion Agency, Japan)"
+DESCRIPTION="TrueType fonts developed by Japanese Information-technology Promotion Agency"
 HOMEPAGE="http://ipafont.ipa.go.jp/"
 SRC_URI="http://dl.ipafont.ipa.go.jp/IPAfont/${MY_P}.zip"
 

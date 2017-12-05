@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit java-pkg-2 versionator
 
 MY_PV=$(replace_version_separator 1 '_')
-DESCRIPTION="Monitoring APIs and tools for monitoring the performance of the JVM in production environments"
+DESCRIPTION="Monitoring APIs and tools for monitoring the performance of the JVM"
 HOMEPAGE="http://java.sun.com/performance/jvmstat/"
 SRC_URI="jvmstat-${MY_PV}.zip"
 

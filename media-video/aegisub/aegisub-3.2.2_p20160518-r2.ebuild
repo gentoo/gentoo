@@ -16,7 +16,7 @@ SRC_URI="https://github.com/Aegisub/Aegisub/archive/${COMMIT_ID}.tar.gz -> ${P}.
 LICENSE="BSD MIT"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="alsa debug +fftw openal oss portaudio pulseaudio spell test +uchardet"
+IUSE="+alsa debug +fftw openal oss portaudio pulseaudio spell test +uchardet"
 
 # aegisub bundles luabins (https://github.com/agladysh/luabins).
 # Unfortunately, luabins upstream is practically dead since 2010.
@@ -58,6 +58,7 @@ PATCHES=(
 	"${FILESDIR}/${PV}/${P}-fix-system-luajit-build.patch"
 	"${FILESDIR}/${PV}/${P}-respect-compiler-flags.patch"
 	"${FILESDIR}/${PV}/${P}-support-system-gtest.patch"
+	"${FILESDIR}/${PV}/${P}-fix-icu59-build.patch"
 )
 
 aegisub_check_compiler() {

@@ -20,7 +20,7 @@ else
 	SRC_URI="http://www.lirc.org/software/snapshots/${MY_P}.tar.bz2"
 fi
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="audio doc ftdi gtk inputlirc static-libs systemd usb X"

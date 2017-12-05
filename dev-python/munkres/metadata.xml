@@ -10,7 +10,7 @@
     <name>Proxy Maintainers</name>
   </maintainer>
   <longdescription lang="en">The Munkres module provides an implementation of the Munkres algorithm (also called the Hungarian algorithm or the Kuhn-Munkres algorithm), useful for solving the Assignment Problem.
-	</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="pypi">munkres</remote-id>
   </upstream>

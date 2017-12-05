@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -9,7 +9,7 @@ inherit java-pkg-2 java-pkg-simple
 
 MY_PN="netty"
 MY_P="${MY_PN}-${PV}"
-DESCRIPTION="Async event-driven framework for rapid development of high performance network applications"
+DESCRIPTION="Async event-driven framework for high performance network applications"
 HOMEPAGE="http://netty.io/"
 SRC_URI="https://github.com/${MY_PN}/${MY_PN}/archive/${MY_P}.Final.tar.gz"
 

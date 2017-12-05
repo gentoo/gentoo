@@ -5,4 +5,7 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
+	<use>
+		<flag name="zip">Enable ZIP archive support via <pkg>dev-libs/libzip</pkg></flag>
+	</use>
 </pkgmetadata>

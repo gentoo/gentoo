@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit font toolchain-funcs
+inherit font toolchain-funcs xdg-utils
 
 DESCRIPTION="GNU Unifont - a Pan-Unicode X11 bitmap iso10646 font"
 HOMEPAGE="http://unifoundry.com/"
@@ -11,7 +11,7 @@ SRC_URI="mirror://gnu/${PN}/${P}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ia64 ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd"
 IUSE="fontforge utils"
 
 DEPEND="
@@ -38,6 +38,7 @@ src_prepare() {
 src_compile() {
 	if use fontforge || use utils; then
 		tc-export CC
+		xdg_environment_reset
 		makeargs=(
 			CFLAGS="${CFLAGS}"
 			BUILDFONT=$(usex fontforge 1 '')

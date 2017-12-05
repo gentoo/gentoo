@@ -1,0 +1,39 @@
+diff -purN a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2017-07-25 21:58:09.000000000 +0100
++++ b/CMakeLists.txt	2017-08-15 14:51:36.771044414 +0100
+@@ -23,6 +23,7 @@
+ #
+ 
+ project(OpenSubdiv)
++include(GNUInstallDirs)
+ 
+ cmake_minimum_required(VERSION 2.8.6)
+ 
+@@ -63,15 +64,15 @@ if (NOT DEFINED CMAKE_INSTALL_PREFIX)
+ endif()
+ 
+ if (NOT DEFINED CMAKE_INCDIR_BASE)
+-    set( CMAKE_INCDIR_BASE include/opensubdiv )
++    set( CMAKE_INCDIR_BASE ${CMAKE_INSTALL_INCLUDEDIR}/opensubdiv )
+ endif()
+ 
+ if (NOT DEFINED CMAKE_BINDIR_BASE)
+-    set( CMAKE_BINDIR_BASE bin )
++    set( CMAKE_BINDIR_BASE ${CMAKE_INSTALL_BINDIR} )
+ endif()
+ 
+ if (NOT DEFINED CMAKE_LIBDIR_BASE)
+-    set( CMAKE_LIBDIR_BASE lib )
++    set( CMAKE_LIBDIR_BASE ${CMAKE_INSTALL_LIBDIR} )
+ endif()
+ 
+ if (NOT DEFINED CMAKE_FRAMEWORKDIR_BASE)
+@@ -83,7 +84,7 @@ if (NOT DEFINED CMAKE_PLUGINDIR_BASE)
+ endif()
+ 
+ if (NOT DEFINED CMAKE_DOCDIR_BASE)
+-    set( CMAKE_DOCDIR_BASE share/doc/opensubdiv )
++    set( CMAKE_DOCDIR_BASE ${CMAKE_INSTALL_DOCDIR} )
+ else()
+     if (IS_ABSOLUTE ${CMAKE_DOCDIR_BASE})
+         set( CMAKE_DOCDIR_BASE "${CMAKE_DOCDIR_BASE}" )

@@ -21,7 +21,6 @@
   supported right now).
 </longdescription>
   <upstream>
-    <remote-id type="google-code">pacproxy</remote-id>
     <remote-id type="github">pacparser/pacparser</remote-id>
   </upstream>
 </pkgmetadata>

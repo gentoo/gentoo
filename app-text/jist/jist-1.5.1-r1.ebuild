@@ -4,7 +4,7 @@
 EAPI=5
 USE_RUBY="ruby21 ruby22 ruby23"
 
-RUBY_FAKEGEM_RECIPE_TEST="rspec"
+RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="README.md"
 
@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/ConradIrwin/jist"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE=""
 
 ruby_add_rdepend "dev-ruby/json:*"

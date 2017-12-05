@@ -2,14 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 RESTRICT="test"
 
 inherit distutils-r1 eutils
 
 DESCRIPTION="Classes and setuptools plugin for Mercurial repositories"
-HOMEPAGE="https://bitbucket.org/jaraco/hgtools/"
+HOMEPAGE="https://pypi.python.org/pypi/hgtools https://github.com/jaraco/hgtools"
 SRC_URI="mirror://pypi/h/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

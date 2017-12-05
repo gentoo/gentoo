@@ -9,8 +9,10 @@ DESCRIPTION="QEMU QXL paravirt video driver"
 
 KEYWORDS="amd64 x86"
 IUSE="xspice"
+REQUIRED_USE="xspice? ( ${PYTHON_REQUIRED_USE} )"
 
-RDEPEND="xspice? (
+RDEPEND="
+	xspice? (
 		app-emulation/spice
 		${PYTHON_DEPS}
 	)

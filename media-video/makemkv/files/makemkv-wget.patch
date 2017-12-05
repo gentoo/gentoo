@@ -1,0 +1,29 @@
+https://www.makemkv.com/forum2/viewtopic.php?f=3&t=15885
+
+diff -Naur a/libabi/src/httplinux.cpp b/libabi/src/httplinux.cpp
+--- a/libabi/src/httplinux.cpp	2017-03-26 16:33:04.000000000 +0100
++++ b/libabi/src/httplinux.cpp	2017-03-26 20:31:04.630357491 +0100
+@@ -29,8 +29,8 @@
+ int HTTP_Download(const char* Url,const char* Agent,void* Buffer,uint32_t* Size)
+ {
+     int     pipe_fd[2],err;
+-    char*   argv[10];
+-    char    argv0[16],argv1[4],argv2[4],argv3[4],argv4[4],argv5[4],argv6[4];
++    char*   argv[12];
++    char    argv0[16],argv1[4],argv2[4],argv3[4],argv4[4],argv5[4],argv6[4],argv8[4],argv9[16];
+     char    *lagent,*lurl;
+     ssize_t rd;
+ 
+@@ -53,8 +53,10 @@
+     strcpy(argv5,"20"); argv[5]=argv5;
+     strcpy(argv6,"-U"); argv[6]=argv6;
+     argv[7]=lagent;
+-    argv[8]=lurl;
+-    argv[9]=NULL;
++    strcpy(argv8,"-o"); argv[8]=argv8;
++    strcpy(argv9,"/dev/null"); argv[9]=argv9;
++    argv[10]=lurl;
++    argv[11]=NULL;
+ 
+     err = SYS_posix_launch(argv,0,pipe_fd[1],0,SYS_posix_envp());
+ 

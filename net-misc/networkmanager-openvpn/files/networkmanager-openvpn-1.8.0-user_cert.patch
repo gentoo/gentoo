@@ -1,0 +1,29 @@
+From c79c951aa10524a238992314561c033e10f45882 Mon Sep 17 00:00:00 2001
+From: polygamma <jonny.westphalen@googlemail.com>
+Date: Mon, 25 Sep 2017 22:56:29 +0200
+Subject: [PATCH 1/1] properties: fix unusable config imports
+
+Fixes: 86a70095afc229f1f970b7e546390d166152cfc2
+
+https://github.com/NetworkManager/network-manager-openvpn/pull/1
+(cherry picked from commit fcf4b58fe0da5994687469ebb0c6eac3cf083e83)
+---
+ properties/auth-helpers.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/properties/auth-helpers.c b/properties/auth-helpers.c
+index f9babfb..c55afd1 100644
+--- a/properties/auth-helpers.c
++++ b/properties/auth-helpers.c
+@@ -544,7 +544,7 @@ update_tls (GtkBuilder *builder, const char *prefix, NMSettingVpn *s_vpn)
+ 	                          NM_OPENVPN_KEY_CERT,
+ 	                          NM_OPENVPN_KEY_KEY,
+ 	                          NM_OPENVPN_KEY_CERTPASS,
+-	                          prefix, "ca_cert", s_vpn);
++	                          prefix, "user_cert", s_vpn);
+ }
+ 
+ static void
+-- 
+2.13.5
+

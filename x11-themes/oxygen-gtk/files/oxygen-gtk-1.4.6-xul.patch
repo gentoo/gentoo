@@ -1,0 +1,113 @@
+From b1ee5fb80c44c6c8a625333af1cfdc997d408805 Mon Sep 17 00:00:00 2001
+From: Hugo Pereira Da Costa <hugo.pereira@free.fr>
+Date: Sat, 18 Jul 2015 20:09:28 +0200
+Subject: moved xul application names to dedicated header file, added a number
+ of xul applications to prevent crash for these CCBUG: 341181
+
+---
+ src/oxygenapplicationname.cpp   | 18 ++-----------
+ src/oxygenxulapplicationnames.h | 56 +++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 58 insertions(+), 16 deletions(-)
+ create mode 100644 src/oxygenxulapplicationnames.h
+
+diff --git a/src/oxygenapplicationname.cpp b/src/oxygenapplicationname.cpp
+index feb5a23..17c8a1a 100644
+--- a/src/oxygenapplicationname.cpp
++++ b/src/oxygenapplicationname.cpp
+@@ -25,6 +25,7 @@
+ 
+ #include "oxygenapplicationname.h"
+ #include "oxygengtkutils.h"
++#include "oxygenxulapplicationnames.h"
+ #include "config.h"
+ 
+ #include <cstdlib>
+@@ -79,23 +80,8 @@ namespace Oxygen
+             gtkAppName == "chromium" ||
+             gtkAppName == "chromium-browser" ||
+             gtkAppName == "google-chrome" ) _name = GoogleChrome;
+-        else {
+ 
+-            // tag all mozilla-like applications (XUL)
+-            static const std::string XulAppNames[] =
+-            {
+-                "firefox",
+-                "thunderbird",
+-                "seamonkey",
+-                "iceweasel",
+-                "icecat",
+-                "icedove",
+-                "xulrunner",
+-                "komodo",
+-                "aurora",
+-                "zotero",
+-                ""
+-            };
++        else {
+ 
+             for( unsigned int index = 0; !XulAppNames[index].empty(); ++index )
+             {
+diff --git a/src/oxygenxulapplicationnames.h b/src/oxygenxulapplicationnames.h
+new file mode 100644
+index 0000000..252a1fc
+--- /dev/null
++++ b/src/oxygenxulapplicationnames.h
+@@ -0,0 +1,56 @@
++#ifndef oxygenxulapplicationname_h
++#define oxygenxulapplicationname_h
++/*
++* this file is part of the oxygen gtk engine
++* Copyright (c) 2010 Hugo Pereira Da Costa <hugo.pereira@free.fr>
++*
++* inspired notably from kdelibs/kdeui/color/kcolorutils.h
++* Copyright (C) 2007 Matthew Woehlke <mw_triad@users.sourceforge.net>
++* Copyright (C) 2007 Thomas Zander <zander@kde.org>
++* Copyright (C) 2007 Zack Rusin <zack@kde.org>
++*
++* This  library is free  software; you can  redistribute it and/or
++* modify it  under  the terms  of the  GNU Lesser  General  Public
++* License  as published  by the Free  Software  Foundation; either
++* version 2 of the License, or( at your option ) any later version.
++*
++* This library is distributed  in the hope that it will be useful,
++* but  WITHOUT ANY WARRANTY; without even  the implied warranty of
++* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
++* Lesser General Public License for more details.
++*
++* You should have received a copy of the GNU Lesser General Public
++* License  along  with  this library;  if not,  write to  the Free
++* Software Foundation, Inc., 51  Franklin St, Fifth Floor, Boston,
++* MA 02110-1301, USA.
++*/
++
++#include <string>
++
++namespace Oxygen
++{
++
++    // tag all mozilla-like applications (XUL)
++    static const std::string XulAppNames[] =
++    {
++        "aurora",
++        "earlybird",
++        "icecat",
++        "icedove",
++        "iceweasel",
++        "instantbird",
++        "firefox",
++        "fossamail",
++        "komodo",
++        "newmoon",
++        "palemoon",
++        "seamonkey",
++        "thunderbird",
++        "xulrunner",
++        "zotero",
++        ""
++    };
++
++}
++
++#endif
+-- 
+cgit v0.11.2

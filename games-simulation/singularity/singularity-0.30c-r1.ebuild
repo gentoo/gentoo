@@ -6,14 +6,14 @@ PYTHON_COMPAT=( python2_7 )
 inherit eutils python-single-r1 games
 
 MUSIC=endgame-${PN}-music-006
-DESCRIPTION="A simulation of a true AI. Go from computer to computer, pursued by the entire world"
+DESCRIPTION="Simulation of a true AI. Go from computer to computer, chased by the whole world"
 HOMEPAGE="http://www.emhsoft.com/singularity/"
 SRC_URI="https://endgame-singularity.googlecode.com/files/${P}-src.tar.gz
 	music? ( https://endgame-singularity.googlecode.com/files/${MUSIC}.zip )"
 
 LICENSE="GPL-2 CC-BY-SA-2.5"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="+music"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

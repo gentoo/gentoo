@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>thev00d00@gentoo.org</email>
+    <name>Ian Whyman</name>
+  </maintainer>
+  <longdescription>
+    Duktape is an embeddable Javascript engine, with a focus on portability and compact footprint.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">svaarala/duktape</remote-id>
+  </upstream>
+</pkgmetadata>

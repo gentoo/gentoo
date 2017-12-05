@@ -28,7 +28,7 @@ DEPEND="${COMMON_DEPEND}
 		virtual/latex-base
 		dev-texlive/texlive-fontsextra
 	)"
-RDEPEND="${COMMONDEPEND}
+RDEPEND="${COMMON_DEPEND}
 	java? ( >=virtual/jre-1.4 )"
 
 DOCS=( BUGS README BENCHMARKS NEWS )
@@ -38,6 +38,7 @@ PATCHES=(
 
 	# Fixes bug 596904
 	"${FILESDIR}"/${P}-c++11-allow-throw-in-destructors.patch
+	"${FILESDIR}"/${P}-cast-uchar.patch #618676
 )
 
 pkg_setup() {

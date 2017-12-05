@@ -4,13 +4,13 @@
 EAPI=5
 inherit eutils flag-o-matic games
 
-DESCRIPTION="Curses-based interpreter and development tools for TADS 2 and TADS 3 text adventures"
+DESCRIPTION="Curses-based interpreter and dev tools for TADS 2 and TADS 3 text adventures"
 HOMEPAGE="http://www.tads.org/frobtads.htm"
 SRC_URI="http://www.tads.org/frobtads/${P}.tar.gz"
 
 LICENSE="TADS2 TADS3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="debug tads2compiler tads3compiler"
 
 RESTRICT="!tads3compiler? ( test )"

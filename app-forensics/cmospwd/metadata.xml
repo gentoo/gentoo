@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>forensics@gentoo.org</email>
-		<name>Gentoo Forensics Project</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription>
 		CmosPwd decrypts password stored in cmos used to access BIOS SETUP.
- 
+
 		Works with the following BIOSes
 		- ACER/IBM BIOS
 		- AMI BIOS

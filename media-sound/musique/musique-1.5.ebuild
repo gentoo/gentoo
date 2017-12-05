@@ -5,13 +5,13 @@ EAPI="6"
 
 inherit gnome2-utils qmake-utils
 
-DESCRIPTION="Qt4 music player"
+DESCRIPTION="Qt music player"
 HOMEPAGE="http://flavio.tordini.org/musique"
 SRC_URI="https://github.com/flaviotordini/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="
@@ -22,7 +22,7 @@ RDEPEND="
 	dev-qt/qtsingleapplication[qt5,X]
 	dev-qt/qtsql:5[sqlite]
 	dev-qt/qtwidgets:5
-	media-libs/phonon[qt5]
+	media-libs/phonon[qt5(+)]
 	media-libs/taglib
 "
 DEPEND="${RDEPEND}"

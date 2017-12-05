@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/${PN}/${PN}2-linux-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND=">=dev-games/physfs-2[zip]

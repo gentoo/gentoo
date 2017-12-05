@@ -1,0 +1,18 @@
+Author: holgersson <holgersson@posteo.de>
+Date:   Fri Oct 20 18:30:00 2017 +0200
+
+Don’t call gcc directly, and respect CFLAGS. As this project
+is plain C I don’t care fore CXXFLAGS here.
+
+--- a/Makefile	2017-10-20 18:15:11.743805540 +0200
++++ b/Makefile	2017-10-20 18:24:55.120009439 +0200
+@@ -1,6 +1,6 @@
+-CC = gcc
+-CFLAGS = -Wall
+-LDFLAGS = -lpcap
++CC ?= gcc
++CFLAGS += -Wall
++LDFLAGS = -lpcap
+ 
+ all:
+ 	$(CC) $(CFLAGS) $(LDFLAGS) -o hexinject hexinject.c

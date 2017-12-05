@@ -6,14 +6,14 @@ EAPI=6
 inherit gnome2
 
 DESCRIPTION="GTK update icon cache"
-HOMEPAGE="http://www.gtk.org/ https://github.com/EvaSDK/gtk-update-icon-cache"
+HOMEPAGE="https://www.gtk.org/ https://github.com/EvaSDK/gtk-update-icon-cache"
 SRC_URI="https://dev.gentoo.org/~eva/distfiles/${PN}/${P}.tar.xz"
 
 LICENSE="LGPL-2+"
 SLOT="0"
 IUSE=""
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
 # man page was previously installed by gtk+:3 ebuild
 RDEPEND="

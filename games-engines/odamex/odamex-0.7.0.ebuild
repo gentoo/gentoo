@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/Odamex/${PV}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="dedicated +odalaunch master portmidi server"
 
 RDEPEND="
@@ -40,7 +40,8 @@ src_prepare() {
 		"${FILESDIR}"/2-${P}-cmake-options.patch \
 		"${FILESDIR}"/3-${P}-wad-search-path.patch \
 		"${FILESDIR}"/4-${P}-odalauncher-bin-path.patch \
-		"${FILESDIR}"/${P}-miniupnpc.patch
+		"${FILESDIR}"/${P}-miniupnpc.patch \
+		"${FILESDIR}"/${P}-gcc6.patch
 
 	rm -r libraries/libminiupnpc || die
 

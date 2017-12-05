@@ -4,13 +4,13 @@
 EAPI=5
 inherit eutils toolchain-funcs games
 
-DESCRIPTION="This program will let you UNIX user experience the authentic microsoft windows experience"
+DESCRIPTION="This program will let you experience the authentic Microsoft Windows experience"
 HOMEPAGE="http://www.vanheusden.com/bsod/"
 SRC_URI="http://www.vanheusden.com/${PN}/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="sys-libs/ncurses:0"
 DEPEND="

@@ -10,6 +10,6 @@
 		<flag name="utils">Install nghttp, nghttpd and nghttpx</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">tatsuhiro-t/nghttp2</remote-id>
+		<remote-id type="github">nghttp2/nghttp2</remote-id>
 	</upstream>
 </pkgmetadata>

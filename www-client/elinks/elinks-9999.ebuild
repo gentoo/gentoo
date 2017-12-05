@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads"
-inherit autotools eutils git-r3 flag-o-matic python-any-r1
+inherit autotools git-r3 python-any-r1
 
 EGIT_REPO_URI="git://repo.or.cz/elinks.git"
 
@@ -16,13 +16,14 @@ SRC_URI="https://dev.gentoo.org/~spock/portage/distfiles/elinks-0.10.4.conf.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="bittorrent bzip2 debug finger ftp gc gopher gpm guile idn ipv6
-	  javascript libressl lua +mouse nls nntp perl ruby samba ssl unicode X xml zlib"
+IUSE="bittorrent brotli bzip2 debug finger ftp gopher gpm guile idn ipv6
+	  javascript libressl lua +mouse nls nntp perl ruby samba ssl tre unicode X xml zlib"
 RESTRICT="test"
 
 DEPEND="
+	${PYTHON_DEPS}
+	brotli? ( app-arch/brotli )
 	bzip2? ( >=app-arch/bzip2-1.0.2 )
-	gc? ( dev-libs/boehm-gc )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
@@ -37,8 +38,13 @@ DEPEND="
 	perl? ( dev-lang/perl:= )
 	ruby? ( dev-lang/ruby:* dev-ruby/rubygems:* )
 	samba? ( net-fs/samba )
+	tre? ( dev-libs/tre )
 	javascript? ( >=dev-lang/spidermonkey-1.8.5:0= )"
 RDEPEND="${DEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-parallel-make.patch
+	)
 
 src_unpack() {
 	default
@@ -46,30 +52,29 @@ src_unpack() {
 }
 
 src_prepare() {
-	mv "${WORKDIR}/${PN}-0.10.4.conf" "${WORKDIR}/${PN}.conf"
-	if ! use ftp ; then
-		sed -i -e 's/\(.*protocol.ftp.*\)/# \1/' "${WORKDIR}"/${PN}.conf
-	fi
-	sed -i -e 's/\(.*set protocol.ftp.use_epsv.*\)/# \1/' "${WORKDIR}"/${PN}.conf
-	epatch "${FILESDIR}"/${P}-parallel-make.patch
+	default
 
-	epatch_user
+	cd "${WORKDIR}" || die
+	eapply "${FILESDIR}"/${PN}-0.10.4.conf-syscharset.diff
+	mv ${PN}-0.10.4.conf ${PN}.conf || die
+	if ! use ftp ; then
+		sed -i -e 's/\(.*protocol.ftp.*\)/# \1/' ${PN}.conf || die
+	fi
+	sed -i -e 's/\(.*set protocol.ftp.use_epsv.*\)/# \1/' ${PN}.conf || die
+	cd "${S}" || die
 
 	# Regenerate acinclude.m4 - based on autogen.sh.
-	cat > acinclude.m4 <<- _EOF
+	cat > acinclude.m4 <<- _EOF || die
 		dnl Automatically generated from config/m4/ files.
 		dnl Do not modify!
 	_EOF
-	cat config/m4/*.m4 >> acinclude.m4
-	sed -i -e 's/-Werror//' configure*
+	cat config/m4/*.m4 >> acinclude.m4 || die
+	sed -i -e 's/-Werror//' configure* || die
 
 	eautoreconf
 }
 
 src_configure() {
-	# NOTE about GNUTSL SSL support (from the README -- 25/12/2002)
-	# As GNUTLS is not yet 100% stable and its support in ELinks is not so well
-	# tested yet, it's recommended for users to give a strong preference to OpenSSL whenever possible.
 	local myconf=""
 
 	if use debug ; then
@@ -78,6 +83,9 @@ src_configure() {
 		myconf="--enable-fastmem"
 	fi
 
+	# NOTE about GNUTSL SSL support (from the README -- 25/12/2002)
+	# As GNUTLS is not yet 100% stable and its support in ELinks is not so well
+	# tested yet, it's recommended for users to give a strong preference to OpenSSL whenever possible.
 	if use ssl ; then
 		myconf="${myconf} --with-openssl=${EPREFIX}/usr"
 	else
@@ -93,8 +101,8 @@ src_configure() {
 		--enable-html-highlight \
 		$(use_with gpm) \
 		$(use_with zlib) \
+		$(use_with brotli) \
 		$(use_with bzip2 bzlib) \
-		$(use_with gc) \
 		$(use_with X x) \
 		$(use_with lua) \
 		$(use_with guile) \
@@ -102,6 +110,7 @@ src_configure() {
 		$(use_with ruby) \
 		$(use_with idn) \
 		$(use_with javascript spidermonkey) \
+		$(use_with tre) \
 		$(use_enable bittorrent) \
 		$(use_enable nls) \
 		$(use_enable ipv6) \
@@ -122,20 +131,20 @@ src_compile() {
 src_install() {
 	emake V=1 DESTDIR="${D}" install
 
-	insopts -m 644 ; insinto /etc/elinks
+	insinto /etc/elinks
 	doins "${WORKDIR}"/elinks.conf
 	newins contrib/keybind-full.conf keybind-full.sample
 	newins contrib/keybind.conf keybind.conf.sample
 
 	dodoc AUTHORS BUGS ChangeLog INSTALL NEWS README SITES THANKS TODO doc/*.*
 	docinto contrib ; dodoc contrib/{README,colws.diff,elinks[-.]vim*}
-	insinto /usr/share/doc/${PF}/contrib/lua ; doins contrib/lua/{*.lua,elinks-remote}
-	insinto /usr/share/doc/${PF}/contrib/conv ; doins contrib/conv/*.*
-	insinto /usr/share/doc/${PF}/contrib/guile ; doins contrib/guile/*.scm
+	docinto contrib/lua ; dodoc contrib/lua/{*.lua,elinks-remote}
+	docinto contrib/conv ; dodoc contrib/conv/*.*
+	docinto contrib/guile ; dodoc contrib/guile/*.scm
 
-	# Remove some conflicting files on OSX.  The files provided by OSX 10.4
-	# are more or less the same.  -- Fabian Groffen (2005-06-30)
-	rm -f "${ED}"/usr/share/locale/locale.alias "${ED}"/usr/lib/charset.alias || die
+	# elinks uses an internal copy of gettext which ships files that may
+	# colliding with the system's gettext (https://bugs.gentoo.org/635090)
+	rm -f "${ED}"/usr/{share/locale/locale,lib/charset}.alias || die
 }
 
 pkg_postinst() {
@@ -151,5 +160,4 @@ pkg_postinst() {
 	einfo
 	einfo "You will have to set your TERM variable to 'xterm-256color'"
 	einfo "to be able to use 256 colors in elinks."
-	echo
 }

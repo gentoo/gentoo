@@ -1,0 +1,17 @@
+--- a/src/global.cpp
++++ b/src/global.cpp
+@@ -44,10 +44,10 @@
+ #define GREEN(s)                 s
+ #define RED(s)                   s
+ #else
+-#define BLACK(s)                 "\033[0;1m"s"\033[0m"
+-#define BLINKINK_BLACK_ON_RED(s) "\033[05;1;41m"s"\033[0m"
+-#define GREEN(s)                 "\033[32m"s"\033[0m"
+-#define RED(s)                   "\033[31m"s"\033[0m"
++#define BLACK(s)                 "\033[0;1m" s "\033[0m"
++#define BLINKINK_BLACK_ON_RED(s) "\033[05;1;41m" s "\033[0m"
++#define GREEN(s)                 "\033[32m" s "\033[0m"
++#define RED(s)                   "\033[31m" s "\033[0m"
+ #endif
+ 
+ /**********************************************************/

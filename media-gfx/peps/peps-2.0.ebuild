@@ -1,11 +1,11 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
 
 inherit eutils toolchain-funcs
 
-DESCRIPTION="Peps preprocesses EPS files and passes it to Ghostscript for conversion into a bitmap"
+DESCRIPTION="Preprocess and convert EPS files to bitmap with Ghostscript"
 HOMEPAGE="http://peps.redprince.net/peps/"
 SRC_URI="http://www.peps.redprince.net/peps/${P}.tar.gz"
 

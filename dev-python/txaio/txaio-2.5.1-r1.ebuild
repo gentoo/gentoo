@@ -1,8 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+
+# test failure with py3.6 upstream bug:
+#    https://github.com/crossbario/txaio/issues/83
+PYTHON_COMPAT=( python2_7 python3_{4,5} )
 
 inherit distutils-r1
 
@@ -51,7 +54,7 @@ python_prepare() {
 }
 
 python_compile_all() {
-	use doc && emake -C doc html
+	use doc && emake -C docs html
 }
 
 python_test() {

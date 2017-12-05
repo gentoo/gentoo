@@ -6,6 +6,18 @@
 
 # SECTION: Unmask
 
+# Michael Palimaka <kensington@gentoo.org> (03 Jun 2017)
+# Unmask elogind since it is keyworded here.
+-elogind
+
+# Sven Wegener <swegener@gentoo.org> (31 May 2017)
+# libvirt is supported on amd64
+-libvirt
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (26 May 2017)
+# dev-db/firebird is keyworded ~amd64
+-firebird
+
 # cilk has been ported to this arch.
 -cilk
 
@@ -81,10 +93,6 @@
 # Add support for Ruby Enterprise Edition targets where rubyee is available
 # -ruby_targets_ree18
 
-# 2010/01/08 - Diego E. Pettenò <flameeyes@gentoo.org>
-# Add support for JRuby targets where jruby is available
-# -ruby_targets_jruby
-
 # 2011/10/21 - Hans de Graaff <graaff@gentoo.org>
 # Add support for Rubinius targets where rbx is available
 #-ruby_targets_rbx
@@ -110,7 +118,12 @@
 -input_devices_synaptics
 -input_devices_vmmouse
 -input_devices_wacom
+-video_cards_ast
+-video_cards_i915
+-video_cards_i965
+-video_cards_intel
 -video_cards_nvidia
+-video_cards_siliconmotion
 -video_cards_via
 -video_cards_virtualbox
 -video_cards_vmware
@@ -162,8 +175,6 @@ drac
 # 2006/02/05 - Donnie Berkholz <dberkholz@gentoo.org>
 # Modular X: mask for architectures on which they aren't available
 video_cards_i740
-video_cards_newport
-video_cards_nsc
 
 # 2004/06/22 - Taken from 2004.0 profile
 # masked

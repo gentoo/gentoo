@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_4 python3_5 )
+PYTHON_COMPAT=( python2_7 python3_4 python3_5 python3_6 )
 inherit distutils-r1
 
 DESCRIPTION="An Amazon S3 Transfer Manager"
@@ -12,7 +12,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 
 CDEPEND="
@@ -33,5 +33,5 @@ DEPEND="
 RDEPEND="${CDEPEND}"
 
 python_test() {
-	nosetests tests/unit/ tests/functional/ || die "tests failed under ${EPYTHON}"
+	nosetests -v tests/unit/ tests/functional/ || die "tests failed under ${EPYTHON}"
 }

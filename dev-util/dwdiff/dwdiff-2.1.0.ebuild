@@ -4,7 +4,7 @@
 EAPI=5
 inherit eutils toolchain-funcs
 
-DESCRIPTION="A front-end for the diff program that operates at the word level instead of the line level"
+DESCRIPTION="diff-like program operating at word level instead of line level"
 HOMEPAGE="http://os.ghalkes.nl/dwdiff.html"
 SRC_URI="http://os.ghalkes.nl/dist/${P}.tar.bz2"
 

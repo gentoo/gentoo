@@ -1,11 +1,11 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
 
 inherit apache-module
 
-DESCRIPTION="a TidyLib based module to parse, clean-up and pretty-print the webservers' (X)HTML output"
+DESCRIPTION="TidyLib module to clean-up and pretty-print the webserver (X)HTML output"
 SRC_URI="http://mod-tidy.sourceforge.net/src/${P}.tar.gz"
 HOMEPAGE="http://mod-tidy.sourceforge.net/"
 

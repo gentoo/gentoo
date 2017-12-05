@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_4} pypy )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
 
 inherit distutils-r1
 
@@ -15,7 +15,7 @@ SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x64-macos ~x86-macos"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~x64-macos ~x86-macos"
 IUSE="test"
 
 RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
@@ -25,8 +25,12 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${MY_P}
 
+python_prepare_all() {
+	# https://github.com/paver/paver/issues/143#issuecomment-103943327
+	find paver/tests -name '*.pyc' -delete || die
+	distutils-r1_python_prepare_all
+}
+
 python_test() {
-	# There is a regression in tests
-	# https://github.com/paver/paver/issues/143
 	nosetests || die "Testing failed with ${EPYTHON}"
 }

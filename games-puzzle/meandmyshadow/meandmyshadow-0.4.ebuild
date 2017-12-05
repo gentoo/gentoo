@@ -4,13 +4,13 @@
 EAPI=5
 inherit cmake-utils gnome2-utils games
 
-DESCRIPTION="A puzzle/plateform game with a player and its shadow"
+DESCRIPTION="A puzzle/platform game with a player and its shadow"
 HOMEPAGE="http://meandmyshadow.sourceforge.net/"
 SRC_URI="mirror://sourceforge/meandmyshadow/${PV}/${P}-src.tar.gz"
 
 LICENSE="GPL-3 OFL-1.1 CC-BY-SA-2.5"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="opengl"
 
 DEPEND="media-libs/libsdl[sound,video,X]

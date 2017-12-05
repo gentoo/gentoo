@@ -7,11 +7,19 @@ inherit autotools multilib
 
 DESCRIPTION="digital signal processing library for software-defined radios"
 HOMEPAGE="http://liquidsdr.org"
-SRC_URI="https://github.com/jgaeddert/liquid-dsp/archive/v1.3.0.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+
+if [ "${PV}" = "9999" ]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/jgaeddert/liquid-dsp.git"
+	KEYWORDS=""
+else
+	KEYWORDS="~amd64 ~x86"
+	SRC_URI="https://github.com/jgaeddert/liquid-dsp/archive/v1.3.0.tar.gz -> ${P}.tar.gz"
+fi
+
 IUSE="static-libs"
 
 DEPEND="sci-libs/fftw:3.0="

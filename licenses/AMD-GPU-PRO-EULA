@@ -1,0 +1,177 @@
+END USER LICENSE AGREEMENT
+(AMD GPU-PRO)
+
+IMPORTANT-READ CAREFULLY: DO NOT INSTALL, COPY OR USE THE ENCLOSED SOFTWARE,
+DOCUMENTATION (AS DEFINED BELOW), OR ANY PORTION THEREOF, (COLLECTIVELY
+"SOFTWARE") UNTIL YOU HAVE CAREFULLY READ AND AGREED TO THE FOLLOWING TERMS AND
+CONDITIONS. THIS IS A LEGAL AGREEMENT ("AGREEMENT") BETWEEN YOU (EITHER AN
+INDIVIDUAL OR AN ENTITY) (COLLECTIVELY "YOU" AND "YOUR") AND ADVANCED MICRO
+DEVICES, INC. ("AMD").
+
+IF YOU DO NOT AGREE TO THE TERMS OF THIS AGREEMENT, DO NOT INSTALL, COPY OR USE
+THIS SOFTWARE. BY INSTALLING, COPYING OR USING THE SOFTWARE YOU AGREE TO ALL
+THE TERMS AND CONDITIONS OF THIS AGREEMENT.
+
+1. DEFINITIONS
+
+ 1. “Documentation” means install scripts and online or electronic
+    documentation associated, included, or provided in connection with the
+    Software, or any portion thereof.
+
+ 2. “Intellectual Property Rights” means all copyrights, trademarks, trade
+    secrets, patents, mask works, and all related, similar, or other
+    intellectual property rights recognized in any jurisdiction worldwide,
+    including all applications and registrations with respect thereto.
+
+ 3. “Free Software License” means an open source or other license that
+    requires, as a condition of use, modification or distribution, that any
+    resulting software must be (a) disclosed or distributed in source code
+    form; (b) licensed for the purpose of making derivative works; or (c)
+    redistributable at no charge.
+
+2. LICENSE
+
+Subject to the terms and conditions of this Agreement, AMD hereby grants You a
+non-exclusive, royalty-free, revocable, non-transferable, limited, copyright
+license to use the Software solely in conjunction with systems or components
+that include or incorporate AMD processors, as applicable.
+
+3. RESTRICTIONS
+
+Except for the limited license expressly granted in Section 2 herein, You have
+no other rights in the Software, whether express, implied, arising by estoppel
+or otherwise. Further restrictions regarding Your use of the Software are set
+forth below. You may not:
+
+ 1. modify or create derivative works of the Software;
+ 2. distribute, assign or otherwise transfer the Software;
+ 3. decompile, reverse engineer, disassemble or otherwise reduce the Software
+    to a human-perceivable form (except as allowed by applicable law);
+ 4. alter or remove any copyright, trademark or patent notice(s) in the
+    Software; or
+ 5. use the Software to: (i) develop inventions directly derived from
+    confidential information to seek patent protection; (ii) assist in the
+    analysis of Your patents and patent applications; or (iii) modify existing
+    patents.;
+ 6. use, modify and/or distribute any of the Software so that any part becomes
+    subject to a Free Software License.
+
+4. FEEDBACK
+
+You have no obligation to give AMD any suggestions, comments or other feedback
+(“Feedback”) relating to the Software. However, AMD may use and include any
+Feedback that it receives from You to improve the Software or other AMD
+products, software and technologies. Accordingly, for any Feedback You provide
+to AMD, You grant AMD and its affiliates and subsidiaries a worldwide,
+non-exclusive, irrevocable, royalty-free, perpetual license to, directly or
+indirectly, use, reproduce, license, sublicense, distribute, make, have made,
+sell and otherwise commercialize the Feedback in the Software or other AMD
+products, software and technologies. You further agree not to provide any
+Feedback that (a) You know is subject to any Intellectual Property Rights of
+any third party or (b) is subject to license terms which seek to require any
+products incorporating or derived from such Feedback, or other AMD intellectual
+property, to be licensed to or otherwise shared with any third party.
+
+5. OWNERSHIP AND COPYRIGHT OF SOFTWARE
+
+The Software, including all Intellectual Property Rights therein, is and
+remains the sole and exclusive property of AMD or its licensors, and You shall
+have no right, title or interest therein except as expressly set forth in this
+Agreement. You agree to prevent any unauthorized copying of the Software. All
+title in and to the Software, all copies thereof (in whole or in part, and in
+any form), and all rights and Intellectual Property Rights therein shall remain
+vested in AMD. Except as expressly provided in Section 2 herein, AMD does not
+grant any express or implied right to You under AMD patents, copyrights,
+trademarks, or trade secret information.
+
+6. WARRANTY DISCLAIMER
+
+THE SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND. AMD DISCLAIMS
+ALL WARRANTIES, EXPRESS, IMPLIED, OR STATUTORY, INCLUDING BUT NOT LIMITED TO
+THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE,
+TITLE, NON-INFRINGEMENT, THAT THE SOFTWARE WILL RUN UNINTERRUPTED OR ERROR-FREE
+OR WARRANTIES ARISING FROM CUSTOM OF TRADE OR COURSE OF USAGE. THE ENTIRE RISK
+ASSOCIATED WITH THE USE OF THE SOFTWARE IS ASSUMED BY YOU. Some jurisdictions
+do not allow the exclusion of implied warranties, so the above exclusion may
+not apply to You.
+
+7. LIMITATION OF LIABILITY AND INDEMNIFICATION
+
+AMD AND ITS LICENSORS WILL NOT, UNDER ANY CIRCUMSTANCES BE LIABLE TO YOU FOR
+ANY PUNITIVE, DIRECT, INCIDENTAL, INDIRECT, SPECIAL OR CONSEQUENTIAL DAMAGES
+ARISING FROM USE OF THE SOFTWARE OR THIS AGREEMENT EVEN IF AMD AND ITS
+LICENSORS HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. In no event
+shall AMD's total liability to You for all damages, losses, and causes of
+action (whether in contract, tort (including negligence) or otherwise) exceed
+the amount of $100 USD. You agree to defend, indemnify and hold harmless AMD
+and its licensors, and any of their directors, officers, employees, affiliates
+or agents from and against any and all loss, damage, liability and other
+expenses (including reasonable attorneys' fees), resulting from Your use of the
+Software or violation of the terms and conditions of this Agreement.
+
+8. EXPORT RESTRICTIONS
+
+You shall adhere to all applicable U.S., European, and other export laws,
+including but not limited to the U.S. Export Administration Regulations
+("EAR"), (15 C.F.R. Sections 730 through 774), and E.U. Council Regulation (EC)
+No 428/2009 of 5 May 2009. Further, pursuant to Section 740.6 of the EAR, You
+hereby certify that, except pursuant to a license granted by the United States
+Department of Commerce Bureau of Industry and Security or as otherwise
+permitted pursuant to a License Exception under the EAR, You will not (1)
+export, re-export or release to a national of a country in Country Groups D:1,
+E:1 or E:2 any restricted technology, software, or source code You receive from
+AMD, or (2) export to Country Groups D:1, E:1 or E:2 the direct product of such
+technology or software, if such foreign produced direct product is subject to
+national security controls as identified on the Commerce Control List
+(currently found in Supplement 1 to Part 774 of EAR). For the most current
+Country Group listings, or for additional information about the EAR or Your
+obligations under those regulations, please refer to the U.S. Bureau of
+Industry and Security's website at http://www.bis.doc.gov/.
+
+9. U.S. GOVERNMENT RESTRICTED RIGHTS
+
+The Software is provided with "RESTRICTED RIGHTS." Use, duplication, or
+disclosure by the Government is subject to the restrictions as set forth in FAR
+52.227-14 and DFAR252.227-7013, et seq., or its successor. Use of the Software
+by the Government constitutes acknowledgement of AMD's proprietary rights in
+them.
+
+10. TERMINATION OF LICENSE
+
+This Agreement will terminate immediately without notice from AMD or judicial
+resolution if (1) You fail to comply with any provisions of this Agreement, or
+(2) You provide AMD with notice that You would like to terminate this
+Agreement. Upon termination of this Agreement, You must delete or destroy all
+copies of the Software. Upon termination or expiration of this Agreement, all
+provisions survive except for Section 2.
+
+11. GOVERNING LAW
+
+This Agreement is made under and shall be construed according to the laws of
+the State of California, excluding conflicts of law rules. Each party submits
+to the jurisdiction of the state and federal courts of Santa Clara County and
+the Northern District of California for the purposes of this Agreement. You
+acknowledge that Your breach of this Agreement may cause irreparable damage and
+agree that AMD shall be entitled to seek injunctive relief under this
+Agreement, as well as such further relief as may be granted by a court of
+competent jurisdiction.
+
+12. GENERAL PROVISIONS
+
+You may not assign this Agreement without the prior written consent of AMD and
+any assignment without such consent will be null and void. The parties do not
+intend that any agency or partnership relationship be created between them by
+this Agreement. Each provision of this Agreement shall be interpreted in such a
+manner as to be effective and valid under applicable law. However, in the event
+that any provision of this Agreement becomes or is declared unenforceable by
+any court of competent jurisdiction, such provision shall be deemed deleted and
+the remainder of this Agreement shall remain in full force and effect.
+
+13. ENTIRE AGREEMENT
+
+This Agreement sets forth the entire agreement and understanding between the
+parties with respect to the Software and supersedes and merges all prior oral
+and written agreements, discussions and understandings between them regarding
+the subject matter of this Agreement. No waiver or modification of any
+provision of this Agreement shall be binding unless made in writing and signed
+by an authorized representative of each party.

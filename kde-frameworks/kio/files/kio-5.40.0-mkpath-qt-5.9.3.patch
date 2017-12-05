@@ -1,0 +1,67 @@
+From 2353119aae8f03565bc7779ed1d597d266f5afda Mon Sep 17 00:00:00 2001
+From: Elvis Angelaccio <elvis.angelaccio@kde.org>
+Date: Thu, 16 Nov 2017 10:41:19 +0100
+Subject: Fix KIO::mkpath with qtbase 5.10 beta 4
+
+Summary:
+The latest Qt 5.10 beta includes [1] which breaks a bunch of unit tests,
+since `url.setPath("//foo")` will now result in an invalid (empty) QUrl.
+
+This patch fixes the KIO::mkpath() case.
+
+[1]: http://code.qt.io/cgit/qt/qtbase.git/commit/?id=f62768d046528636789f901ac79e2cfa1843a7b7
+
+Test Plan:
+
+* I can now create folders from dolphin and plasma.
+* fileundomanagertest and mkpathjobtest no longer fail
+
+Reviewers: #frameworks, dfaure
+
+Tags: #frameworks
+
+Differential Revision: https://phabricator.kde.org/D8836
+
+* asturm: Fix build with Qt-5.7.1
+---
+ src/core/mkpathjob.cpp | 17 ++++++++++++++---
+ 1 file changed, 14 insertions(+), 3 deletions(-)
+
+diff --git a/src/core/mkpathjob.cpp b/src/core/mkpathjob.cpp
+index bff46ca..a177805 100644
+--- a/src/core/mkpathjob.cpp
++++ b/src/core/mkpathjob.cpp
+@@ -43,8 +43,13 @@ public:
+         m_url.setPath(QStringLiteral("/"));
+         int i = 0;
+         for (; i < basePathComponents.count() && i < m_pathComponents.count(); ++i) {
+-            if (m_pathComponents.at(i) == basePathComponents.at(i)) {
+-                m_url.setPath(m_url.path() + '/' + m_pathComponents.at(i));
++            const QString pathComponent = m_pathComponents.at(i);
++            if (pathComponent == basePathComponents.at(i)) {
++                if (m_url.path() == QLatin1String("/")) {
++                    m_url.setPath(m_url.path() + pathComponent);
++                } else {
++                    m_url.setPath(m_url.path() + '/' + pathComponent);
++                }
+             } else {
+                 break;
+             }
+@@ -57,7 +62,13 @@ public:
+         if (m_url.isLocalFile()) {
+             i = 0;
+             for (; i < m_pathComponents.count(); ++i) {
+-                QString testDir = m_url.toLocalFile() + '/' + m_pathComponents.at(i);
++                const QString localFile = m_url.toLocalFile();
++                QString testDir;
++                if (localFile == QLatin1String("/")) {
++                    testDir = localFile + m_pathComponents.at(i);
++                } else {
++                    testDir = localFile + '/' + m_pathComponents.at(i);
++                }
+                 if (QFileInfo(testDir).isDir()) {
+                     m_url.setPath(testDir);
+                 } else {
+-- 
+cgit v0.11.2
+

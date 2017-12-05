@@ -1,6 +1,14 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# James Le Cuirot <chewi@gentoo.org> (29 Jun 2017)
+# Forced and masked by default. Unmask where necessary.
+big-endian
+
+# Sven Wegener <swegener@gentoo.org> (31 May 2017)
+# libvirt is only supported on specific architectures
+libvirt
+
 # Michael Orlitzky <mjo@gentoo.org> (7 Jan 2017)
 # The dev-db/firebird and dev-db/oracle-instantclient* packages
 # only support amd64 and x86.
@@ -76,6 +84,26 @@ ps3
 vis
 
 # arm arch specific USE flags
+cpu_flags_arm_v4
+cpu_flags_arm_v5
+cpu_flags_arm_v6
+cpu_flags_arm_v7
+cpu_flags_arm_v8
+cpu_flags_arm_aes
+cpu_flags_arm_crc32
+cpu_flags_arm_edsp
+cpu_flags_arm_iwmmxt
+cpu_flags_arm_neon
+cpu_flags_arm_sha1
+cpu_flags_arm_sha2
+cpu_flags_arm_thumb
+cpu_flags_arm_thumb2
+cpu_flags_arm_vfp
+cpu_flags_arm_vfpv3
+cpu_flags_arm_vfpv4
+cpu_flags_arm_vfp-d32
+
+# [old] arm arch specific USE flags
 armvfp
 armv5te
 armv6
@@ -108,18 +136,28 @@ video_cards_newport
 
 # not needed on non-x86, non-amd64 systems
 input_devices_vmmouse
+video_cards_ast
+video_cards_i915
+video_cards_i965
+video_cards_intel
 video_cards_nvidia
-video_cards_fglrx
 video_cards_via
 video_cards_vmware
 video_cards_virtualbox
 
+# not needed on non-x86, non-amd64, non-mips systems
+video_cards_siliconmotion
+
 # not needed on non-arm systems
 video_cards_exynos
 video_cards_freedreno
+video_cards_imx
 video_cards_omap
 video_cards_tegra
 video_cards_vc4
+
+# James Le Cuirot <chewi@gentoo.org>
+# Vivante is only available for arm and mips.
 video_cards_vivante
 
 # linux-only drivers

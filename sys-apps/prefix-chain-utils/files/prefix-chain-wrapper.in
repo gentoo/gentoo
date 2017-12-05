@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+if [ -r /cygdrive/. ]; then
+	winpath2unix() { cygpath -u "$1"; }
+	unixpath2win() { cygpath -w "$1"; }
+fi
+
 link_dirs=()
 opts=()
 chost="@GENTOO_PORTAGE_CHOST@"
@@ -10,7 +15,7 @@ if [[ ${CHOST} == *"-winnt"* ]]; then
     # in this case, PATH elements get the "/dev/fs/C/WINDOWS/SUA" prefix
     absprefix=$(winpath2unix "$(unixpath2win "${absprefix}")")
 fi
-mode=link
+[[ $0 == *windres* ]] && mode=compile || mode=link
 orig_args=("$@")
 
 for opt in "$@"; do

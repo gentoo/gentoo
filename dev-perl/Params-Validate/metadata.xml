@@ -7,7 +7,6 @@
   </maintainer>
   <upstream>
     <remote-id type="cpan">Params-Validate</remote-id>
-    <remote-id type="cpan-module">Attribute::Params::Validate</remote-id>
     <remote-id type="cpan-module">Params::Validate</remote-id>
     <remote-id type="cpan-module">Params::Validate::Constants</remote-id>
     <remote-id type="cpan-module">Params::Validate::PP</remote-id>

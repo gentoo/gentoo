@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools eutils
+inherit autotools ltprune
 
 MY_P="${P/-tpm-/_tpm_}"
 

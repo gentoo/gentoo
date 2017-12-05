@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -7,7 +7,7 @@ JAVA_PKG_IUSE="doc source test"
 
 inherit java-pkg-2 java-pkg-simple vcs-snapshot
 
-DESCRIPTION="Library for introspecting generic type information of types, member/static methods, fields"
+DESCRIPTION="Zero-dependency Java library for accurately introspecting type information"
 HOMEPAGE="https://github.com/cowtowncoder/java-classmate/"
 SRC_URI="https://github.com/cowtowncoder/java-classmate/archive/${P}.tar.gz"
 

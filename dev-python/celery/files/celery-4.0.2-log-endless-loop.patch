@@ -1,0 +1,22 @@
+From 9c950b47eca2b4e93fd2fe52cf80f158e6cf97ad Mon Sep 17 00:00:00 2001
+From: George Psarakis <giwrgos.psarakis@gmail.com>
+Date: Mon, 23 Jan 2017 11:49:38 +0200
+Subject: [PATCH] AWS DynamoDB result backend (#3736)
+
+* Fix endless loop in logger_isa (Python 3.6)
+
+https://github.com/celery/celery/pull/3736#issuecomment-274155454
+
+diff --git a/celery/utils/log.py b/celery/utils/log.py
+index 2fb15e6..00df476 100644
+--- a/celery/utils/log.py
++++ b/celery/utils/log.py
+@@ -82,7 +82,7 @@ def logger_isa(l, p, max=1000):
+         else:
+             if this in seen:
+                 raise RuntimeError(
+-                    'Logger {0!r} parents recursive'.format(l),
++                    'Logger {0!r} parents recursive'.format(l.name),
+                 )
+             seen.add(this)
+             this = this.parent

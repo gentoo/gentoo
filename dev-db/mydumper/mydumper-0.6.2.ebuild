@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit cmake-utils versionator
 
-DESCRIPTION="A high-performance multi-threaded backup (and restore) toolset for MySQL and Drizzle"
+DESCRIPTION="A high-performance multi-threaded backup toolset for MySQL and Drizzle"
 HOMEPAGE="https://launchpad.net/mydumper"
 SRC_URI="https://launchpad.net/mydumper/$(get_version_component_range 1-2)/${PV}/+download/${P}.tar.gz"
 LICENSE="GPL-3"
@@ -22,6 +22,8 @@ DEPEND="${RDEPEND}
 DOCS=( README )
 
 src_prepare() {
+	cmake-utils_src_prepare
+
 	# respect user cflags; do not expand ${CMAKE_C_FLAGS} (!)
 	sed -i -e 's:-Werror -O3 -g:${CMAKE_C_FLAGS}:' CMakeLists.txt
 	# fix doc install path

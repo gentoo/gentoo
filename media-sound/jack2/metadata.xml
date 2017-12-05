@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
@@ -9,5 +9,9 @@
     <flag name="pam">Add basic realtime configuration via <pkg>sys-auth/realtime-base</pkg></flag>
     <flag name="celt">Support CELT low delay audio codec (<pkg>media-libs/celt</pkg>)</flag>
     <flag name="opus">Support <pkg>media-libs/opus</pkg></flag>
+    <flag name="classic">Enable building of jackd</flag>
   </use>
+  <upstream>
+    <remote-id type="github">jackaudio/jack2</remote-id>
+  </upstream>
 </pkgmetadata>

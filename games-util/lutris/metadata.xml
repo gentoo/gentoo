@@ -5,6 +5,14 @@
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>fdsfgs@krutt.org</email>
+		<name>soredake</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<longdescription lang="en">
 		Lutris is a gaming platform for GNU/Linux. Its goal is to make
 		gaming on Linux as easy as possible by taking care of installing

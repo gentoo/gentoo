@@ -1,0 +1,77 @@
+diff -ruN timezone-data-2017c.orig/Makefile timezone-data-2017c/Makefile
+--- timezone-data-2017c.orig/Makefile	2017-10-02 02:23:52.000000000 +0200
++++ timezone-data-2017c/Makefile	2017-11-05 01:03:06.514561762 +0100
+@@ -44,7 +44,7 @@
+ 
+ # Everything gets put in subdirectories of. . .
+ 
+-TOPDIR=		/usr/local
++TOPDIR=		/usr
+ 
+ # "Compiled" time zone information is placed in the "TZDIR" directory
+ # (and subdirectories).
+@@ -52,14 +52,14 @@
+ # TZDIR_BASENAME should not contain "/" and should not be ".", ".." or empty.
+ 
+ TZDIR_BASENAME=	zoneinfo
+-TZDIR=		$(TOPDIR)/etc/$(TZDIR_BASENAME)
++TZDIR=		$(TOPDIR)/share/$(TZDIR_BASENAME)
+ 
+ # Types to try, as an alternative to time_t.  int64_t should be first.
+ TIME_T_ALTERNATIVES= int64_t int32_t uint32_t uint64_t
+ 
+ # The "tzselect", "zic", and "zdump" commands get installed in. . .
+ 
+-ETCDIR=		$(TOPDIR)/etc
++SBINDIR=		$(TOPDIR)/sbin
+ 
+ # If you "make INSTALL", the "date" command gets installed in. . .
+ 
+@@ -67,7 +67,7 @@
+ 
+ # Manual pages go in subdirectories of. . .
+ 
+-MANDIR=		$(TOPDIR)/man
++MANDIR=		$(TOPDIR)/share/man
+ 
+ # Library functions are put in an archive in LIBDIR.
+ 
+@@ -395,8 +395,7 @@
+ 
+ #MAKE=		make
+ 
+-cc=		cc
+-CC=		$(cc) -DTZDIR=\"$(TZDIR)\"
++CPPFLAGS+=		-DTZDIR=\"$(TZDIR)\"
+ 
+ AR=		ar
+ 
+@@ -474,17 +473,13 @@
+ 
+ install:	all $(DATA) $(REDO) $(MANS)
+ 		mkdir -p $(DESTDIR)$(ETCDIR) $(DESTDIR)$(TZDIR) \
+-			$(DESTDIR)$(LIBDIR) \
++			$(DESTDIR)$(BINDIR) \
+ 			$(DESTDIR)$(MANDIR)/man3 $(DESTDIR)$(MANDIR)/man5 \
+ 			$(DESTDIR)$(MANDIR)/man8
+ 		$(ZIC_INSTALL) -l $(LOCALTIME) -p $(POSIXRULES)
+ 		cp -f $(TABDATA) $(DESTDIR)$(TZDIR)/.
+-		cp tzselect zic zdump $(DESTDIR)$(ETCDIR)/.
+-		cp libtz.a $(DESTDIR)$(LIBDIR)/.
+-		$(RANLIB) $(DESTDIR)$(LIBDIR)/libtz.a
++		cp tzselect zic zdump $(DESTDIR)$(BINDIR)/.
+ 		cp -f newctime.3 newtzset.3 $(DESTDIR)$(MANDIR)/man3/.
+-		cp -f tzfile.5 $(DESTDIR)$(MANDIR)/man5/.
+-		cp -f tzselect.8 zdump.8 zic.8 $(DESTDIR)$(MANDIR)/man8/.
+ 
+ INSTALL:	ALL install date.1
+ 		mkdir -p $(DESTDIR)$(BINDIR) $(DESTDIR)$(MANDIR)/man1
+@@ -621,7 +616,7 @@
+ 
+ check:		check_character_set check_white_space check_links \
+ 		  check_name_lengths check_sorted \
+-		  check_tables check_web check_zishrink check_tzs
++		  check_tables check_zishrink
+ 
+ check_character_set: $(ENCHILADA)
+ 	test ! '$(UTF8_LOCALE)' || \

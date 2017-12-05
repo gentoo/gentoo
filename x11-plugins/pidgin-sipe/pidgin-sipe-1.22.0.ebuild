@@ -11,11 +11,12 @@ SRC_URI="mirror://sourceforge/sipe/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE="debug kerberos ocs2005-message-hack openssl telepathy voice"
 
-RDEPEND=">=dev-libs/gmime-2.4.16
+RDEPEND="
+	dev-libs/gmime:2.6
 	dev-libs/libxml2
 	openssl? ( dev-libs/openssl:= )
 	!openssl? ( dev-libs/nss )

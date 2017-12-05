@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ SRC_URI="http://download.tuxfamily.org/hatari/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -26,14 +26,19 @@ RDEPEND="${RDEPEND}
 	dev-python/pygtk[${PYTHON_USEDEP}]
 	games-emulation/emutos"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${P}-gentoo-docdir.patch
+)
+
 pkg_setup() {
 	games_pkg_setup
 	python-single-r1_pkg_setup
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-gentoo.patch \
-		"${FILESDIR}"/${P}-gentoo-docdir.patch
+	cmake-utils_src_prepare
+
 	# build with newer zlib (bug #387829)
 	sed -i -e '1i#define OF(x) x' src/includes/unzip.h || die
 	sed -i -e '/Encoding/d' ./python-ui/hatariui.desktop || die

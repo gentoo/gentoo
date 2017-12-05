@@ -1,0 +1,11 @@
+--- a/cmake/FindQScintilla2.cmake	2016-03-23 20:43:22.000000000 +0100
++++ b/cmake/FindQScintilla2.cmake	2017-10-08 17:25:06.984464985 +0200
+@@ -52,7 +52,7 @@
+         ENDIF()
+     ENDFOREACH()
+ 
+-    SET(QSCINTILLA_NAMES ${QSCINTILLA_NAMES} qt5scintilla2 libqt5scintilla2 libqscintilla2-qt5 qscintilla2-qt5)
++    SET(QSCINTILLA_NAMES ${QSCINTILLA_NAMES} qscintilla2 libqscintilla2 libqscintilla2_qt5 qscintilla2_qt5)
+     GET_TARGET_PROPERTY(QT5_WIDGETSLIBRARY Qt5::Widgets LOCATION)
+     GET_FILENAME_COMPONENT(QT5_WIDGETSLIBRARYPATH ${QT5_WIDGETSLIBRARY} PATH)
+ 

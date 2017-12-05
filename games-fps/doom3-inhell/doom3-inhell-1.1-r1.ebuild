@@ -13,7 +13,7 @@ HOMEPAGE="http://www.doomerland.de.vu/"
 SRC_URI="in_hell_v${PV/.}.zip"
 
 LICENSE="GameFront"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="dedicated opengl"
 RESTRICT="fetch bindist"
 

@@ -1,5 +1,6 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
 EAPI=5
 MODULE_AUTHOR=LEONT
 MODULE_VERSION=0.010
@@ -8,7 +9,7 @@ inherit perl-module
 DESCRIPTION='Build.PL install path logic made easy'
 LICENSE=" || ( Artistic GPL-2 )"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ~ia64 ppc ~ppc64 ~sparc x86"
+KEYWORDS="alpha amd64 arm hppa ~ia64 ppc ~ppc64 ~sparc x86 ~amd64-fbsd"
 IUSE="test"
 
 DEPEND="

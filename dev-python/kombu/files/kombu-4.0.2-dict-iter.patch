@@ -1,0 +1,24 @@
+From 2940a4b1830bc2fc6d3f65de4feeec6ea5a49fe5 Mon Sep 17 00:00:00 2001
+From: Felix Yan <felixonmars@archlinux.org>
+Date: Tue, 21 Feb 2017 11:52:18 -0600
+Subject: [PATCH] Don't modify dict size while iterating over it (#676)
+
+This fixes https://github.com/celery/kombu/issues/675.
+---
+ kombu/messaging.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/kombu/messaging.py b/kombu/messaging.py
+index 03e7e15..e1800b5 100644
+--- a/kombu/messaging.py
++++ b/kombu/messaging.py
+@@ -397,7 +397,8 @@ def revive(self, channel):
+         """Revive consumer after connection loss."""
+         self._active_tags.clear()
+         channel = self.channel = maybe_channel(channel)
+-        for qname, queue in items(self._queues):
++        # modify dict size while iterating over it is not allowed
++        for qname, queue in list(items(self._queues)):
+             # name may have changed after declare
+             self._queues.pop(qname, None)
+             queue = self._queues[queue.name] = queue(self.channel)

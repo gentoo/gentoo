@@ -13,7 +13,7 @@ HOMEPAGE="http://www.unrealtournament2004.com/"
 SRC_URI="http://ut2004.ut-files.com/BonusPacks/${MY_P}"
 
 LICENSE="ut2003"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 src_prepare() {

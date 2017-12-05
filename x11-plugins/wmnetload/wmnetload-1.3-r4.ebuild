@@ -1,12 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit autotools eutils
 
 DESCRIPTION="Network interface monitor dockapp"
-HOMEPAGE="http://freshmeat.net/projects/wmnetload/"
-SRC_URI="ftp://truffula.com/pub/${P}.tar.gz"
+HOMEPAGE="https://github.com/bbidulock/wmnetload"
+SRC_URI="https://github.com/bbidulock/wmnetload/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

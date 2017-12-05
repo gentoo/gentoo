@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,11 +7,10 @@ inherit qt5-build
 DESCRIPTION="Multimedia (audio, video, radio, camera) library for the Qt5 framework"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
+	KEYWORDS="amd64 arm ~arm64 ~hppa ppc ppc64 x86"
 fi
 
-IUSE="alsa gles2 gstreamer gstreamer010 openal pulseaudio qml widgets"
-REQUIRED_USE="?? ( gstreamer gstreamer010 )"
+IUSE="alsa gles2 gstreamer openal pulseaudio qml widgets"
 
 RDEPEND="
 	~dev-qt/qtcore-${PV}
@@ -23,12 +22,6 @@ RDEPEND="
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-bad:1.0
 		media-libs/gst-plugins-base:1.0
-	)
-	gstreamer010? (
-		dev-libs/glib:2
-		media-libs/gstreamer:0.10
-		media-libs/gst-plugins-bad:0.10
-		media-libs/gst-plugins-base:0.10
 	)
 	pulseaudio? ( media-sound/pulseaudio )
 	qml? (
@@ -70,7 +63,6 @@ src_prepare() {
 src_configure() {
 	local myqmakeargs=(
 		$(usex gstreamer 'GST_VERSION=1.0' '')
-		$(usex gstreamer010 'GST_VERSION=0.10' '')
 	)
 	qt5-build_src_configure
 }

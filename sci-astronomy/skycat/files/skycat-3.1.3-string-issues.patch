@@ -1,0 +1,57 @@
+diff -Nur skycat-3.1.3.orig/cat/generic/TclAstroCat.C skycat-3.1.3/cat/generic/TclAstroCat.C
+--- skycat-3.1.3.orig/cat/generic/TclAstroCat.C	2017-08-10 16:18:22.110000000 +0000
++++ skycat-3.1.3/cat/generic/TclAstroCat.C	2017-08-10 18:06:22.660000000 +0000
+@@ -75,7 +75,7 @@
+  */
+ static class TclAstroCatSubCmds {
+ public:
+-    char* name;      // method name
++    const char* name;      // method name
+     int (TclAstroCat::*fptr)(int argc, char* argv[]); 
+     int min_args;    // minimum number of args
+     int max_args;    // maximum number of args
+diff -Nur skycat-3.1.3.orig/rtd/generic/BiasData.C skycat-3.1.3/rtd/generic/BiasData.C
+--- skycat-3.1.3.orig/rtd/generic/BiasData.C	2017-08-10 16:18:22.120000000 +0000
++++ skycat-3.1.3/rtd/generic/BiasData.C	2017-08-10 18:05:35.520000000 +0000
+@@ -76,7 +76,7 @@
+ char* BiasData::file(int nr)
+ {
+     if (nr < 0 || nr >=MAXBIAS)
+-	return '\0';
++	return "";
+     return &files_[nr][0];
+ }
+ 
+diff -Nur skycat-3.1.3.orig/rtd/generic/RtdPerf.C skycat-3.1.3/rtd/generic/RtdPerf.C
+--- skycat-3.1.3.orig/rtd/generic/RtdPerf.C	2017-08-10 16:18:22.120000000 +0000
++++ skycat-3.1.3/rtd/generic/RtdPerf.C	2017-08-10 18:05:35.520000000 +0000
+@@ -226,18 +226,18 @@
+     accGENtime_    = accTCLtime_ = accXtime_ = accFREQtime_ = 0.0;
+ 
+     // Clear the Tcl variables.
+-    Tcl_SetVar2(interp_, var, "PERF_COUNT",     '\0', TCL_GLOBAL_ONLY);
++    Tcl_SetVar2(interp_, var, "PERF_COUNT",     "", TCL_GLOBAL_ONLY);
+ 
+-    Tcl_SetVar2(interp_, var, "PERF_FREQ",      '\0', TCL_GLOBAL_ONLY);
+-    Tcl_SetVar2(interp_, var, "PERF_GEN",       '\0', TCL_GLOBAL_ONLY);
+-    Tcl_SetVar2(interp_, var, "PERF_XFUNC",     '\0', TCL_GLOBAL_ONLY);
+-    Tcl_SetVar2(interp_, var, "PERF_TCL",       '\0', TCL_GLOBAL_ONLY);
+-    Tcl_SetVar2(interp_, var, "PERF_TOTAL",     '\0', TCL_GLOBAL_ONLY);
++    Tcl_SetVar2(interp_, var, "PERF_FREQ",      "", TCL_GLOBAL_ONLY);
++    Tcl_SetVar2(interp_, var, "PERF_GEN",       "", TCL_GLOBAL_ONLY);
++    Tcl_SetVar2(interp_, var, "PERF_XFUNC",     "", TCL_GLOBAL_ONLY);
++    Tcl_SetVar2(interp_, var, "PERF_TCL",       "", TCL_GLOBAL_ONLY);
++    Tcl_SetVar2(interp_, var, "PERF_TOTAL",     "", TCL_GLOBAL_ONLY);
+ 
+-    Tcl_SetVar2(interp_, var, "PERF_FREQ_AVE",  '\0', TCL_GLOBAL_ONLY);
+-    Tcl_SetVar2(interp_, var, "PERF_GEN_AVE",   '\0', TCL_GLOBAL_ONLY);
+-    Tcl_SetVar2(interp_, var, "PERF_XFUNC_AVE", '\0', TCL_GLOBAL_ONLY);
+-    Tcl_SetVar2(interp_, var, "PERF_TCL_AVE",   '\0', TCL_GLOBAL_ONLY);
+-    Tcl_SetVar2(interp_, var, "PERF_TOTAL_AVE", '\0', TCL_GLOBAL_ONLY);
++    Tcl_SetVar2(interp_, var, "PERF_FREQ_AVE",  "", TCL_GLOBAL_ONLY);
++    Tcl_SetVar2(interp_, var, "PERF_GEN_AVE",   "", TCL_GLOBAL_ONLY);
++    Tcl_SetVar2(interp_, var, "PERF_XFUNC_AVE", "", TCL_GLOBAL_ONLY);
++    Tcl_SetVar2(interp_, var, "PERF_TCL_AVE",   "", TCL_GLOBAL_ONLY);
++    Tcl_SetVar2(interp_, var, "PERF_TOTAL_AVE", "", TCL_GLOBAL_ONLY);
+ }
+ 

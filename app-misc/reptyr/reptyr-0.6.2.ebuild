@@ -1,7 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit toolchain-funcs flag-o-matic vcs-snapshot
 
@@ -15,7 +15,15 @@ KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 
 RESTRICT="test"
 
+# https://github.com/nelhage/reptyr/issues/81
+SRC_URI+=" https://github.com/nelhage/reptyr/commit/b45fd9238958fcf2d8f3d6fc23e6d491febea2ac.patch -> ${PN}-0.6.2-sysmacros.patch"
+
+PATCHES=(
+	"${DISTDIR}/${P}-sysmacros.patch" #581974
+)
+
 src_prepare() {
+	default
 	# respect CFLAGS
 	sed -i '/^override/d' Makefile || die
 }

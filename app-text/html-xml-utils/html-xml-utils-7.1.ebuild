@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,8 +11,9 @@ HOMEPAGE="http://www.w3.org/Tools/HTML-XML-utils/"
 
 LICENSE="W3C"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~x86-linux ~ppc-macos ~x86-macos"
-IUSE=""
+KEYWORDS="amd64 ppc ppc64 x86 ~x86-linux ~ppc-macos ~x86-macos"
+
+RESTRICT="test"
 
 RDEPEND="net-misc/curl"
 DEPEND="${RDEPEND}"

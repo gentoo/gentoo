@@ -4,7 +4,7 @@
 EAPI=6
 inherit eutils multilib-minimal
 
-DESCRIPTION="A multi-platform programmer's library designed to allow a developer to create robust software"
+DESCRIPTION="Multi-platform library designed to allow a developer to create robust software"
 HOMEPAGE="http://www.jedsoft.org/slang/"
 SRC_URI="http://www.jedsoft.org/releases/${PN}/${P}.tar.bz2
 	http://www.jedsoft.org/releases/${PN}/old/${P}.tar.bz2"
@@ -18,7 +18,7 @@ IUSE="cjk pcre png readline static-libs zlib"
 RDEPEND="sys-libs/ncurses:0=
 	pcre? ( >=dev-libs/libpcre-8.33-r1[${MULTILIB_USEDEP}] )
 	png? ( >=media-libs/libpng-1.6.10:0=[${MULTILIB_USEDEP}] )
-	cjk? ( >=dev-libs/oniguruma-5.9.5[${MULTILIB_USEDEP}] )
+	cjk? ( >=dev-libs/oniguruma-5.9.5:=[${MULTILIB_USEDEP}] )
 	readline? ( >=sys-libs/readline-6.2_p5-r1:0=[${MULTILIB_USEDEP}] )
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
 	abi_x86_32? (

@@ -1,0 +1,51 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+extra_commands="configtest"
+extra_started_commands="reload"
+description="An optimized HTTP/1.x, HTTP/2 server"
+description_configtest="Run H2O' internal config check"
+description_reload="Reload the H2O configuration or upgrade the binary without losing connections"
+
+: ${config:="/etc/h2o/h2o.conf"}
+pidfile=$(grep pid-file "${config}" | cut -d' ' -f2)
+
+name="H2O"
+command="/usr/bin/h2o"
+command_args="-m daemon -c ${config}"
+required_files="$config"
+
+depend() {
+	use net
+	after logger
+}
+
+start_pre() {
+	if [ "${RC_CMD}" != "restart" ]; then
+		configtest || return 1
+	fi
+}
+
+stop_pre() {
+	if [ "${RC_CMD}" = "restart" ]; then
+		configtest || return 1
+	fi
+}
+
+reload() {
+	configtest || return 1
+	ebegin "Refreshing ${name} configuration"
+	kill -HUP $(cat ${pidfile}) &>/dev/null
+	eend $? "Failed to reload ${name}"
+}
+
+configtest() {
+	ebegin "Checking ${name} configuration"
+
+	if ! ${command} -c ${config} -t &>/dev/null; then
+		${command} -c ${config} -t
+	fi
+
+	eend $? "Failed, please correct the errors above"
+}

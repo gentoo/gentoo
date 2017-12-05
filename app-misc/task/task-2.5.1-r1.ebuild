@@ -6,12 +6,12 @@ EAPI=6
 inherit cmake-utils bash-completion-r1
 
 DESCRIPTION="Taskwarrior is a command-line todo list manager"
-HOMEPAGE="http://taskwarrior.org/"
-SRC_URI="http://taskwarrior.org/download/${P}.tar.gz"
+HOMEPAGE="https://taskwarrior.org/"
+SRC_URI="https://taskwarrior.org/download/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86 ~x64-macos"
+KEYWORDS="amd64 ~arm x86 ~x64-macos"
 IUSE="+sync vim-syntax zsh-completion"
 
 DEPEND="sys-libs/readline:0
@@ -22,7 +22,7 @@ RDEPEND="${DEPEND}"
 PATCHES=( "${FILESDIR}"/0001-TW-1778-Unicode-strings-are-truncated-in-task-descri.patch )
 
 src_prepare() {
-	default
+	cmake-utils_src_prepare
 
 	# don't automatically install scripts
 	sed -i '/scripts/d' CMakeLists.txt || die

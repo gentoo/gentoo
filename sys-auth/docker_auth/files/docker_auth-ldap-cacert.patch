@@ -1,0 +1,67 @@
+From 5505de31a91aea88e0cf623ec8edfd928b5432a7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Manuel=20R=C3=BCger?= <mrueg@gentoo.org>
+Date: Mon, 18 Sep 2017 14:02:38 +0200
+Subject: [PATCH] Set custom CA certificate for ldap cert verification
+
+Code taken from: https://github.com/hashicorp/go-rootcerts/blob/master/rootcerts.go
+Original author: Paul Hinze <phinze@phinze.com>
+---
+ auth_server/authn/ldap_auth.go | 17 ++++++++++++++++-
+ examples/reference.yml         |  2 ++
+ 2 files changed, 18 insertions(+), 1 deletion(-)
+
+diff --git a/auth_server/authn/ldap_auth.go b/auth_server/authn/ldap_auth.go
+index 3bdf7c3..a3425ed 100644
+--- a/auth_server/authn/ldap_auth.go
++++ b/auth_server/authn/ldap_auth.go
+@@ -19,6 +19,7 @@ package authn
+ import (
+ 	"bytes"
+ 	"crypto/tls"
++	"crypto/x509"
+ 	"fmt"
+ 	"io/ioutil"
+ 	"strings"
+@@ -31,6 +32,7 @@ type LDAPAuthConfig struct {
+ 	Addr                  string              `yaml:"addr,omitempty"`
+ 	TLS                   string              `yaml:"tls,omitempty"`
+ 	InsecureTLSSkipVerify bool                `yaml:"insecure_tls_skip_verify,omitempty"`
++	CACertificate         string              `yaml:"ca_certificate,omitempty"`
+ 	Base                  string              `yaml:"base,omitempty"`
+ 	Filter                string              `yaml:"filter,omitempty"`
+ 	BindDN                string              `yaml:"bind_dn,omitempty"`
+@@ -140,7 +142,20 @@ func (la *LDAPAuth) ldapConnection() (*ldap.Conn, error) {
+ 	tlsConfig := &tls.Config{InsecureSkipVerify: true}
+ 	if !la.config.InsecureTLSSkipVerify {
+ 		addr := strings.Split(la.config.Addr, ":")
+-		tlsConfig = &tls.Config{InsecureSkipVerify: false, ServerName: addr[0]}
++		if la.config.CACertificate != "" {
++			pool := x509.NewCertPool()
++			pem, err := ioutil.ReadFile(la.config.CACertificate)
++			if err != nil {
++				return nil, fmt.Errorf("Error loading CA File: %s", err)
++			}
++			ok := pool.AppendCertsFromPEM(pem)
++			if !ok {
++				return nil, fmt.Errorf("Error loading CA File: Couldn't parse PEM in: %s", la.config.CACertificate)
++			}
++			tlsConfig = &tls.Config{InsecureSkipVerify: false, ServerName: addr[0], RootCAs: pool}
++		} else {
++			tlsConfig = &tls.Config{InsecureSkipVerify: false, ServerName: addr[0]}
++		}
+ 	}
+ 
+ 	if la.config.TLS == "" || la.config.TLS == "none" || la.config.TLS == "starttls" {
+diff --git a/examples/reference.yml b/examples/reference.yml
+index 3090978..769cc91 100644
+--- a/examples/reference.yml
++++ b/examples/reference.yml
+@@ -131,6 +131,8 @@ ldap_auth:
+   tls: always
+   # set to true to allow insecure tls
+   insecure_tls_skip_verify: false
++  # set this to specify the ca certificate path
++  ca_cert:
+   # In case bind DN and password is required for querying user information,
+   # specify them here. Plain text password is read from the file.
+   bind_dn:

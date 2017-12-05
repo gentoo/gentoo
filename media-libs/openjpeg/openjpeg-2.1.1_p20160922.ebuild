@@ -17,7 +17,7 @@ SRC_URI="https://github.com/uclouvain/${PN}/archive/${MY_P_COMMIT}.tar.gz -> ${P
 
 LICENSE="BSD-2"
 SLOT="2/7" # based on SONAME
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc static-libs test"
 
 RDEPEND="media-libs/lcms:2=
@@ -36,7 +36,7 @@ src_prepare() {
 		mv "${WORKDIR}"/openjpeg-data-${MY_TESTDATA_COMMIT} "${WORKDIR}"/data || die "Failed to rename test data"
 	fi
 
-	default
+	cmake-utils_src_prepare
 
 	# Stop installing LICENSE file, and install CHANGES from DOCS instead:
 	sed -i -e '/install.*FILES.*DESTINATION.*OPENJPEG_INSTALL_DOC_DIR/d' CMakeLists.txt || die
@@ -117,7 +117,7 @@ multilib_src_test() {
 				die "Test suite failed. New/unknown test failure(s) found!"
 			else
 				echo ""
-				einfo "Test suite passed. Now new/unknown test failure found!"
+				einfo "Test suite passed. No new/unknown test failure found!"
 			fi
 
 			return 0

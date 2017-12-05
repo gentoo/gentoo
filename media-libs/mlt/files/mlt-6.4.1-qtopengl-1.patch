@@ -1,0 +1,33 @@
+From d2a04ae77a6b2c82a2e12b9fb631beb8f825946d Mon Sep 17 00:00:00 2001
+From: Alberto Villa <avilla@FreeBSD.org>
+Date: Sat, 24 Dec 2016 05:07:54 +0100
+Subject: [PATCH] Move Qt OpenGL include(s) to Qt 4 specific code
+
+Only Qt 4 code references those files (QMutex and QWaitCondition are
+not OpenGL files, but still they're only useful in Qt 4 code).
+---
+ src/modules/qt/consumer_qglsl.cpp | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/src/modules/qt/consumer_qglsl.cpp b/src/modules/qt/consumer_qglsl.cpp
+index 74840602..ca0cf383 100644
+--- a/src/modules/qt/consumer_qglsl.cpp
++++ b/src/modules/qt/consumer_qglsl.cpp
+@@ -20,13 +20,14 @@
+ #include "common.h"
+ #include <framework/mlt.h>
+ #include <QApplication>
+-#include <QGLWidget>
+-#include <QMutex>
+-#include <QWaitCondition>
+ #include <QtGlobal>
+ 
+ #if QT_VERSION < QT_VERSION_CHECK(5, 0, 0)
+ 
++#include <QGLWidget>
++#include <QMutex>
++#include <QWaitCondition>
++
+ class GLWidget : public QGLWidget
+ {
+ private:

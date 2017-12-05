@@ -10,7 +10,7 @@ SRC_URI="https://dev.gentoo.org/~calchan/distfiles/${P}.tar.gz"
 
 LICENSE="eschalon-book-1-demo"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 RESTRICT="strip"
 QA_PREBUILT="${GAMES_PREFIX_OPT:1}/${PN}/Eschalon Book I Demo"

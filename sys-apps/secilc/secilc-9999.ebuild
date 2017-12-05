@@ -1,10 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
+inherit toolchain-funcs
 
 MY_P="${P//_/-}"
-MY_RELEASEDATE="20161014"
+MY_RELEASEDATE="20170804"
 
 SEPOL_VER="${PV}"
 
@@ -36,3 +37,8 @@ RDEPEND="
 # tests are not meant to be run outside of the
 # full SELinux userland repo
 RESTRICT="test"
+
+src_compile() {
+	tc-export CC
+	default
+}

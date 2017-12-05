@@ -1,14 +1,14 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 KDE_DOC_DIRS="doc"
 KDE_HANDBOOK="optional"
 MY_P=${P/_beta/b}
 inherit kde4-base
 
-DESCRIPTION="A Latex Editor and TeX shell for KDE"
+DESCRIPTION="A Latex Editor and TeX shell by KDE"
 HOMEPAGE="http://kile.sourceforge.net/"
 [[ ${PV} != *9999* ]] && SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2"
 
@@ -21,6 +21,7 @@ DEPEND="
 	x11-misc/shared-mime-info
 "
 RDEPEND="${DEPEND}
+	$(add_kdeapps_dep katepart '' 4.14.3)
 	$(add_kdeapps_dep kdebase-data)
 	$(add_kdeapps_dep konsolepart)
 	|| (

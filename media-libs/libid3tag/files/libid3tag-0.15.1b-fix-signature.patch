@@ -1,0 +1,12 @@
+diff -pur libid3tag-0.15.1b-orig/compat.h libid3tag-0.15.1b/compat.h
+--- libid3tag-0.15.1b-orig/compat.h	2004-01-23 10:41:32.000000000 +0100
++++ libid3tag-0.15.1b/compat.h	2017-03-15 01:49:23.808834401 +0100
+@@ -34,7 +34,7 @@ struct id3_compat {
+ };
+ 
+ struct id3_compat const *id3_compat_lookup(register char const *,
+-					   register unsigned int);
++					   register size_t);
+ 
+ int id3_compat_fixup(struct id3_tag *);
+ 

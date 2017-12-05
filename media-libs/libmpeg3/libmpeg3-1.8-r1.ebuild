@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,11 +12,11 @@ SRC_URI="mirror://sourceforge/heroines/${P}-src.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 ~sh sparc x86"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 ~sh sparc x86"
 IUSE="cpu_flags_x86_mmx"
 
 RDEPEND="sys-libs/zlib
-	virtual/jpeg
+	virtual/jpeg:0
 	media-libs/a52dec"
 DEPEND="${RDEPEND}
 	cpu_flags_x86_mmx? ( dev-lang/nasm )"

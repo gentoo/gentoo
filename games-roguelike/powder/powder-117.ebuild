@@ -12,7 +12,7 @@ SRC_URI="http://www.zincland.com/powder/release/${MY_P}.tar.gz"
 
 LICENSE="CC-Sampling-Plus-1.0"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="media-libs/libsdl[video]"

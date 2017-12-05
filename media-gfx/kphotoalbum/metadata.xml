@@ -6,7 +6,6 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
-		<flag name="face">Enable face detection and recognition using <pkg>kde-apps/libkface</pkg></flag>
 		<flag name="kipi">Support for the KDE Image Plugin Interface</flag>
 		<flag name="map">Enable map display support using <pkg>kde-apps/libkgeomap</pkg></flag>
 	</use>

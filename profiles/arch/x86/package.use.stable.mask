@@ -17,13 +17,29 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (21 Nov 2017)
+# Requires not yet stabilised media-libs/qtav
+media-gfx/digikam mediaplayer
+
+# Thomas Deutschmann <whissi@gentoo.org> (01 Oct 2017)
+# Stable mask dev-ruby/haml test till rails is stabilized.
+dev-ruby/haml test
+
+# Michael Palimaka <kensington@gentoo.org> (30 Sep 2017)
+# Required dependeny is not stable
+sci-libs/gdal oracle
+
+# NP-Hardass <NP-Hardass@gentoo.org> (27 Sep 2017)
+# patchset variants are not stable
+virtual/wine d3d9 staging
+
 # Andreas Sturmlechner <asturm@gentoo.org> (01 Mar 2017)
 # Requires not yet stabilised dev-db/oracle-instantclient.
 sci-geosciences/qgis oracle
 
 # Christoph Junghans <junghans@gentoo.org> (26 Feb 2017)
 # Stable mask some fabrics (bug #525534)
-sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_open-mx openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_pbs openmpi_rm_slurm openmpi_ofed_features_rdmacm
+sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_open-mx openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_pbs openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
 
 # Brian Evans <grknight@gentoo.org> (17 Jan 2017)
 # Stable mask groonga on mariadb as I don't know how stable
@@ -42,15 +58,6 @@ dev-cpp/eigen test
 # Pacho Ramos <pacho@gentoo.org> (08 Mar 2015)
 # mayavi is broken, bug #500104
 dev-python/apptools test
-
-# Tim Harder <radhermit@gentoo.org> (11 Oct 2014)
-# Masked since skype isn't stable
-net-im/bitlbee skype
-
-# Andreas K. Huettel <dilfridge@gentoo.org> (29 Jun 2014)
-# Not yet stabilized dependencies blocking sec bug 514886
-# we need to repeat this here likely because of the use.mask entry
-app-office/libreoffice firebird
 
 # Michał Górny <mgorny@gentoo.org> (30 Mar 2014)
 # Don't apply stable masks to python-exec since we're forcing every

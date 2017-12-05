@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Thomas Deutschmann <whissi@gentoo.org> (26 Oct 2017)
+# libressl: dev-libs/libressl is a base package on FreeBSD
+net-misc/wget libressl
+
 # Thomas Deutschmann <whissi@gentoo.org> (20 Jan 2017)
 # libressl: dev-libs/libressl is a base package on FreeBSD
 net-libs/libvncserver libressl

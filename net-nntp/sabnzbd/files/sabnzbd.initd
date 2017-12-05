@@ -58,7 +58,7 @@ stop() {
 
 	ebegin "Stopping SABnzbd"
 
-	if [ "$(wget -q -t 1 -O - -T 10 "${url}")" = "ok" ]; then
+	if [ "$(wget -o /dev/null -t 1 -O - -T 10 "${url}")" = "ok" ]; then
 		signals="NULL/5/${signals}"
 	fi
 

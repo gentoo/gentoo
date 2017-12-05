@@ -1,0 +1,95 @@
+From: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
+Date: Tue, 13 Sep 2016 14:46:13 -0400
+Subject: test suite: match plaintext output across versions of GnuPG
+
+The human-readable version of --list-keys is *not* expected to be
+static over time or as the user's environment changes (e.g. LANG or
+LC_MESSAGES), so expecting it to be machine-parseable is probably a
+mistake.
+
+That said, some users might want to pull textual information about
+specific keys to display directly to the user, so it's not a terrible
+idea to have it in the test suite.
+
+Modern GnuPG (2.1 or later) changes the default structure of the
+human-readable output in a few significant ways:
+
+ * it writes the path to the keyring as an absolute path, even if
+   $GNUPGHOME is set to a non-absolute path.
+
+ * it shows the calculated user id validity by default (see
+   show-uid-validity in gpg's --list-options).  (note that this is a
+   translated string, so that "unknown" (in the default C locale)
+   becomes "inconnue" when LANG or LC_MESSAGES is set to fr_CH.UTF-8,
+   for example.
+
+ * it writes the key algorithm names differently (e.g. rsa2048 instead
+   of 2048R)
+
+ * it does not display the key ID at all by default
+
+ * it displays the full fingerprint in compact form by default
+
+This changeset fixes the test suite so that it can do a rough
+verification of the human-readable text output by list_secret_keys in
+the C locale in modern versions of GnuPG, while leaving it working for
+older GnuPG suites.
+---
+ t/list_secret_keys.t           | 15 +++++++++++++--
+ test/secret-keys/1.modern.test |  8 ++++++++
+ 2 files changed, 21 insertions(+), 2 deletions(-)
+ create mode 100644 test/secret-keys/1.modern.test
+
+diff --git a/t/list_secret_keys.t b/t/list_secret_keys.t
+index 1fe9b7e..51e3651 100644
+--- a/t/list_secret_keys.t
++++ b/t/list_secret_keys.t
+@@ -16,13 +16,22 @@ TEST
+ {
+     reset_handles();
+ 
++    $ENV{LC_MESSAGES} = 'C';
+     my $pid = $gnupg->list_secret_keys( handles => $handles );
+     close $stdin;
+ 
+     $outfile = 'test/secret-keys/1.out';
+     my $out = IO::File->new( "> $outfile" )
+       or die "cannot open $outfile for writing: $ERRNO";
+-    $out->print( <$stdout> );
++    while (<$stdout>) {
++      if ($gpg_is_modern && /^\/.*\/test\/gnupghome\/pubring.kbx$/) {
++        $out->print("test/gnupghome/pubring.kbx\n");
++      } elsif ($gpg_is_modern && /^--*$/) {
++        $out->print("--------------------------\n");
++      } else {
++        $out->print( $_ );
++      }
++    }
+     close $stdout;
+     $out->close();
+     waitpid $pid, 0;
+@@ -33,7 +42,9 @@ TEST
+ 
+ TEST
+ {
+-    my @files_to_test = ( 'test/secret-keys/1.0.test' );
++    my $suffix = '0';
++    $suffix = 'modern' if ($gpg_is_modern);
++    my @files_to_test = ( 'test/secret-keys/1.'.$suffix.'.test' );
+ 
+     return file_match( $outfile, @files_to_test );
+ };
+diff --git a/test/secret-keys/1.modern.test b/test/secret-keys/1.modern.test
+new file mode 100644
+index 0000000..3e46407
+--- /dev/null
++++ b/test/secret-keys/1.modern.test
+@@ -0,0 +1,8 @@
++test/gnupghome/pubring.kbx
++--------------------------
++sec   dsa1024 2000-02-06 [SCA]
++      93AFC4B1B0288A104996B44253AE596EF950DA9C
++uid           [ unknown] GnuPG test key (for testing purposes only)
++uid           [ unknown] Foo Bar (1)
++ssb   elg768 2000-02-06 [E]
++

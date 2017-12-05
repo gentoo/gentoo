@@ -1,0 +1,46 @@
+From e18ff93353a432867e373e549206928d3ced04cc Mon Sep 17 00:00:00 2001
+From: Ole Reifschneider <tranquility@gentoo.org>
+Date: Sat, 25 Apr 2015 22:22:09 +0200
+Subject: [PATCH 2/5] Make wayland support optional
+
+Signed-off-by: Gilles Dartiguelongue <eva@gentoo.org>
+Signed-off-by: Mart Raudsepp <leio@gentoo.org>
+---
+ configure.ac | 21 +++++++++++++++------
+ 1 file changed, 15 insertions(+), 6 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 9566fb7..b47dbc8 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -227,12 +227,21 @@ if test "x$have_udev" = xyes ; then
+ fi
+ AM_CONDITIONAL(HAVE_UDEV, [test "x$have_udev" = "xyes"])
+ 
+-PKG_CHECK_MODULES(WAYLAND, gdk-wayland-3.0, have_wayland=yes, have_wayland=no)
+-if test "x$have_wayland" = xyes ; then
+-	if test "x$have_udev" != xyes ; then
+-		AC_MSG_ERROR([udev is required for Wayland support])
+-	fi
+-fi
++AC_ARG_ENABLE(
++  [wayland],
++  AS_HELP_STRING([--disable-wayland], [disable wayland support]),
++  [],
++  enable_wayland=auto
++)
++
++AS_IF([test "$enable_wayland" != "no"],
++      [
++        AS_IF([test "x$have_udev" = xno],
++              [AC_MSG_ERROR([udev is required for Wayland support])],
++              [AC_DEFINE(HAVE_UDEV, 1, [System has udev])])
++
++        PKG_CHECK_MODULES(WAYLAND, gdk-wayland-3.0)
++])
+ 
+ # Panels that must be built on Linux systems
+ linux_error_or_warn()
+-- 
+2.10.2
+

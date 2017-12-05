@@ -10,7 +10,7 @@ SRC_URI="http://www.adom.de/adom/download/linux/${P//.}-elf.tar.gz"
 
 LICENSE="adom"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 RESTRICT="strip" #bug #137340
 QA_FLAGS_IGNORED="${GAMES_PREFIX_OPT:1}/bin/adom"

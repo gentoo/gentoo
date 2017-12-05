@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}-src.tar.bz2"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="acl ldap rpm selinux"
+IUSE="acl ldap selinux"
 
 CDEPEND="dev-libs/libgcrypt:0
 	dev-libs/libpcre
@@ -21,8 +21,7 @@ CDEPEND="dev-libs/libgcrypt:0
 	sys-apps/util-linux
 	sys-libs/libcap
 	acl? ( sys-apps/acl )
-	ldap? ( net-nds/openldap )
-	rpm? ( app-arch/rpm )"
+	ldap? ( net-nds/openldap )"
 DEPEND="${CDEPEND}
 	sys-apps/sed"
 RDEPEND="${CDEPEND}
@@ -54,16 +53,9 @@ src_prepare() {
 		sed -i 's, -lacl , ,' project/linux/Makefile || die
 	fi
 
-	# rpm probes support is build dependant only on the presence of the rpm binary
-	if use rpm ; then
-		#Same problems as bug 274679, so i do a local copy of the header and patch it
-		cp /usr/include/rpm/rpmdb.h src/probes/linux/ || die
-		epatch "${FILESDIR}"/use_local_rpmdb.patch
-		epatch "${FILESDIR}"/rpmdb.patch
-	else
-		einfo "Disabling rpm probes"
-		sed -i 's/^PACKAGE_RPM/#PACKAGE_RPM/' project/linux/Makefile || die
-	fi
+	einfo "Disabling rpm probes"
+	sed -i 's/^PACKAGE_RPM/#PACKAGE_RPM/' project/linux/Makefile || die
+
 	# same thing for dpkg, but package dpkg is not sufficient, needs app-arch/apt-pkg that is not on tree
 	einfo "Disabling dpkg probes"
 	sed -i 's/^PACKAGE_DPKG/#PACKAGE_DPKG/' project/linux/Makefile || die

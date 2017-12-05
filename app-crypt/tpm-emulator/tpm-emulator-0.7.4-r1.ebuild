@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+MODULES_OPTIONAL_USE="modules"
 inherit user linux-mod cmake-utils udev
 
 MY_P=${P/-/_}
@@ -13,7 +14,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="libressl ssl modules"
+IUSE="libressl ssl"
 RDEPEND="ssl? (
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
@@ -34,14 +35,15 @@ pkg_setup() {
 }
 
 src_prepare() {
-	default
+	cmake-utils_src_prepare
+
 	# do not build and install the kernel module
 	sed -i 's/COMMAND ${tpmd_dev_BUILD_CMD}//' tpmd_dev/CMakeLists.txt || die
 	sed -i 's/install(CODE.*//' tpmd_dev/CMakeLists.txt || die
 }
 
 src_configure() {
-	mycmakeargs=(
+	local mycmakeargs=(
 		-DUSE_OPENSSL=$(usex ssl)
 	)
 	cmake-utils_src_configure

@@ -8,12 +8,12 @@ inherit cmake-utils versionator
 MY_P="SFML-${PV}"
 
 DESCRIPTION="Simple and Fast Multimedia Library (SFML)"
-HOMEPAGE="http://www.sfml-dev.org/ https://github.com/SFML/SFML"
+HOMEPAGE="https://www.sfml-dev.org/ https://github.com/SFML/SFML"
 SRC_URI="https://github.com/SFML/SFML/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0/$(get_version_component_range 1-2)"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug doc examples"
 
 RDEPEND="
@@ -48,7 +48,7 @@ src_prepare() {
 	sed -i "s:DESTINATION .*:DESTINATION /usr/share/doc/${PF}:" \
 		doc/CMakeLists.txt || die
 
-	default
+	cmake-utils_src_prepare
 }
 
 src_configure() {

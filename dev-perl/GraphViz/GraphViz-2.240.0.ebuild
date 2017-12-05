@@ -12,7 +12,7 @@ inherit perl-module
 DESCRIPTION="Interface to AT&T's GraphViz"
 
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="test"
 
 RDEPEND="

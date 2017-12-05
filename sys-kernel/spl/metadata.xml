@@ -9,9 +9,6 @@
 		<email>fearedbliss@gentoo.org</email>
 		<name>Jonathan Vasquez</name>
 	</maintainer>
-	<use>
-		<flag name="debug-log">Enable additional diagnostics</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">zfsonlinux/spl</remote-id>
 	</upstream>

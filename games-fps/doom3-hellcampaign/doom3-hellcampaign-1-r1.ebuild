@@ -14,7 +14,7 @@ SRC_URI="sp_hc_final.zip
 	hardcorehellcampaign_patch.zip"
 
 LICENSE="GameFront"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="dedicated opengl"
 RESTRICT="fetch bindist"
 

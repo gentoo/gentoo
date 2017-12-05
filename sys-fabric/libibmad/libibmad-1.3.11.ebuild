@@ -10,7 +10,7 @@ OFED_SUFFIX="1"
 
 inherit openib
 
-DESCRIPTION="OpenIB library providing low layer IB functions for use by the IB diagnostic/management programs"
+DESCRIPTION="OpenIB library provides the API for use interfacing with IB management programs"
 KEYWORDS="~amd64 ~x86 ~amd64-linux"
 IUSE=""
 

@@ -15,6 +15,7 @@ LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="python static-libs"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="app-accessibility/sphinxbase
 	media-libs/gstreamer:0.10

@@ -16,6 +16,7 @@ SRC_URI="https://github.com/harelba/q/archive/${PV}.tar.gz -> ${MY_P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # No dependencies other than python >= 2.5
 # http://harelba.github.io/q/requirements.html

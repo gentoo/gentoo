@@ -15,10 +15,11 @@ SRC_URI="https://github.com/Synss/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ppc ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ppc ~sparc x86 ~x86-fbsd"
 IUSE=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="
+RDEPEND="${PYTHON_DEPS}
 	|| (
 		dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}]
 		dev-python/PyQt4[${PYTHON_USEDEP},X]
@@ -32,14 +33,13 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-
 DOC_CONTENTS="In order to use this software, you need to activate
 Portage's elog features.  Required is
 	PORTAGE_ELOG_SYSTEM=\"save\"
 and at least one of
 	PORTAGE_ELOG_CLASSES=\"warn error info log qa\"
-More information on the elog system can be found in /etc/make.conf.example
+More information on the elog system can be found in
+/usr/share/portage/config/make.conf.example
 
 To operate properly this software needs the directory
 ${PORT_LOGDIR:-/var/log/portage}/elog created, belonging to group portage.

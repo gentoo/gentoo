@@ -4,8 +4,8 @@ Patch by Kevin F. Quinn <kevquinn@gentoo.org>
 
 http://bugs.gentoo.org/115100
 
---- libelf/elf.h
-+++ libelf/elf.h
+--- a/libelf/elf.h
++++ b/libelf/elf.h
 @@ -568,6 +568,7 @@
  #define PT_GNU_EH_FRAME	0x6474e550	/* GCC .eh_frame_hdr segment */
  #define PT_GNU_STACK	0x6474e551	/* Indicates stack executability */
@@ -14,8 +14,8 @@ http://bugs.gentoo.org/115100
  #define PT_LOSUNW	0x6ffffffa
  #define PT_SUNWBSS	0x6ffffffa	/* Sun Specific segment */
  #define PT_SUNWSTACK	0x6ffffffb	/* Stack segment */
---- src/elflint.c
-+++ src/elflint.c
+--- a/src/elflint.c
++++ b/src/elflint.c
 @@ -3187,6 +3187,7 @@
  
        if (phdr->p_type >= PT_NUM && phdr->p_type != PT_GNU_EH_FRAME

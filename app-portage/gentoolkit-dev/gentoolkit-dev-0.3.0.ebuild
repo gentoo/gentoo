@@ -15,7 +15,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_BRANCH="gentoolkit-dev"
 else
 	SRC_URI="https://dev.gentoo.org/~floppym/dist/${P}.tar.gz"
-	KEYWORDS="~alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 DESCRIPTION="Collection of developer scripts for Gentoo"
@@ -32,6 +32,7 @@ CDEPEND="
 	dev-lang/perl
 	sys-apps/diffutils"
 DEPEND="${PYTHON_DEPS}
+	!>=app-portage/gentoolkit-0.4.0
 	test? ( ${CDEPEND} )"
 RDEPEND="${PYTHON_DEPS}
 	${CDEPEND}"
@@ -76,4 +77,10 @@ src_test() {
 src_install() {
 	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install
 	python_replicate_script "${ED}"/usr/bin/{ekeyword,imlate}
+}
+
+pkg_postinst() {
+	ewarn "This package is deprecated.  ebump, ekeyword and imlate have "
+	ewarn "been moved to >=app-portage/gentoolkit-0.4.0"
+	ewarn "The remaining gentoolkit-dev commands are considered deprecated"
 }

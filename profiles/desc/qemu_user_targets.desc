@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation.
+# Copyright 1999-2017 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
 
 # This file contains descriptions of QEMU_SOFTMMU_TARGETS USE_EXPAND flags.
@@ -23,7 +23,6 @@ mipsn32 - MIPS N32 ABI userspace emulation target
 mips - userspace emulation target
 nios2 - userspace emulation target
 or1k - OpenRISC system emulation target
-or32 - OpenRISC userspace emulation target
 ppc64abi32 - userspace emulation target
 ppc64le - PowerPC 64-bit little endian userspace emulation target
 ppc64 - PowerPC 64-bit big endian userspace emulation target
@@ -35,5 +34,4 @@ sparc32plus - userspace emulation target
 sparc64 - userspace emulation target
 sparc - userspace emulation target
 tilegx - TILE-Gx 64-bit userspace emulation target
-unicore32 - userspace emulation target
 x86_64 - userspace emulation target

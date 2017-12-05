@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
@@ -8,9 +8,9 @@ inherit eutils
 MY_PV=${PV%.?}-${PV##*.}
 MY_PV=${PV}
 MY_P=${PN}2-${MY_PV}
-DESCRIPTION="library that hides the complexity of using the SIP protocol for multimedia session establishement"
+DESCRIPTION="library to use the SIP protocol for multimedia session establishement"
 HOMEPAGE="https://savannah.nongnu.org/projects/exosip/"
-SRC_URI="http://download.savannah.nongnu.org/releases/exosip/${MY_P}.tar.gz"
+SRC_URI="mirror://nongnu/exosip/${MY_P}.tar.gz"
 
 KEYWORDS="amd64 ppc x86 ~ppc-macos ~x86-macos"
 SLOT="0"

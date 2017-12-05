@@ -2,7 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
+# This is a backport from python3.5+
+# Do not add python3.5 or later support here, there's no need for it.
+PYTHON_COMPAT=( python{2_7,3_4} pypy )
 
 inherit distutils-r1
 
@@ -31,6 +33,5 @@ python_install_all() {
 python_install() {
 	# main namespace provided by dev-python/backports
 	rm "${BUILD_DIR}"/lib/backports/__init__.py || die
-	rm -f backports/__init__.py || die
-	distutils-r1_python_install
+	distutils-r1_python_install --skip-build
 }

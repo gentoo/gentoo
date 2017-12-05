@@ -4,7 +4,7 @@
 EAPI=6
 inherit eutils flag-o-matic
 
-KEYWORDS="alpha amd64 arm ~hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86"
 
 DESCRIPTION="Fast, production-quality, standard-conformant FTP server"
 HOMEPAGE="http://www.pureftpd.org/"
@@ -38,6 +38,7 @@ RDEPEND="${DEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.28-pam.patch
+	"${FILESDIR}"/${P}-openssl-1.1.patch
 )
 
 src_configure() {

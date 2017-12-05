@@ -5,7 +5,7 @@
 		<email>johu@gentoo.org</email>
 		<name>Johannes Huber</name>
 	</maintainer>
-    <upstream>
+	<upstream>
 		<remote-id type="github">luceneplusplus/luceneplusplus</remote-id>
 	</upstream>
 </pkgmetadata>

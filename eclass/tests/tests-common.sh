@@ -17,11 +17,11 @@ inherit() {
 			local eclass=${path}/${e}.eclass
 			if [[ -e "${eclass}" ]] ; then
 				source "${eclass}"
-				return 0
+				continue 2
 			fi
 		done
+		die "could not find ${e}.eclass"
 	done
-	die "could not find ${eclass}"
 }
 EXPORT_FUNCTIONS() { :; }
 

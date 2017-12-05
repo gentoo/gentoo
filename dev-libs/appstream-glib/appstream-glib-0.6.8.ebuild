@@ -12,7 +12,7 @@ SRC_URI="https://people.freedesktop.org/~hughsient/${PN}/releases/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/8" # soname version
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ~ia64 ppc ppc64 sparc x86"
 IUSE="+introspection nls stemmer"
 
 RDEPEND="
@@ -26,7 +26,7 @@ RDEPEND="
 	>=media-libs/freetype-2.4:2
 	>=net-libs/libsoup-2.51.92:2.4
 	sys-apps/util-linux
-	>=x11-libs/gdk-pixbuf-2.31.5:2
+	>=x11-libs/gdk-pixbuf-2.31.5:2[introspection?]
 	x11-libs/gtk+:3
 	x11-libs/pango
 	introspection? ( >=dev-libs/gobject-introspection-0.9.8:= )

@@ -1,0 +1,62 @@
+From 63248f8004e7e0b05fe1716f6ff432b16b382e8f Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date: Thu, 16 Nov 2017 22:14:05 +0100
+Subject: [PATCH] Sort deps, add implicit, and split PIM from real KF5 libs
+
+Add descriptions to PIM dependencies.
+---
+ CMakeLists.txt | 33 ++++++++++++++++++++++++++-------
+ 1 file changed, 26 insertions(+), 7 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 739daac..9f95ecf 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -25,21 +25,40 @@ remove_definitions(-DQT_NO_CAST_FROM_ASCII)
+ 
+ find_package(Qt5 CONFIG REQUIRED
+     Core
+-    Network
+-    Widgets
++    Gui
+     Sql
++    Widgets
++    Xml
+ )
+ 
+ find_package(KF5 REQUIRED COMPONENTS
+-    Contacts
++    Config
++    ConfigWidgets
++    CoreAddons
+     I18n
++    WidgetsAddons
+     XmlGui
+-    OPTIONAL_COMPONENTS
+-    Akonadi
+-    AkonadiContact
+ )
+ 
+-if(KF5Akonadi_FOUND)
++find_package(KF5Contacts REQUIRED)
++
++find_package(KF5Akonadi)
++set_package_properties(KF5Akonadi PROPERTIES
++    DESCRIPTION "Library for general Access to Akonadi"
++    URL "https://www.kde.org/"
++    PURPOSE "Optionally used for addressbook integration"
++    TYPE OPTIONAL
++)
++
++find_package(KF5AkonadiContact)
++set_package_properties(KF5AkonadiContact PROPERTIES
++    DESCRIPTION "Library for Accessing Contacts stored in Akonadi"
++    URL "https://www.kde.org/"
++    PURPOSE "Optionally used for addressbook integration"
++    TYPE OPTIONAL
++)
++
++if(KF5Akonadi_FOUND AND KF5AkonadiContact_FOUND)
+    add_definitions(-DHAVE_AKONADI)
+ endif()
+ 

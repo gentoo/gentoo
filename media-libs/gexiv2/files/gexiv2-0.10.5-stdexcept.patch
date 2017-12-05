@@ -1,0 +1,11 @@
+diff -Naur gexiv2-0.10.5/gexiv2/gexiv2-metadata-gps.cpp gexiv2-0.10.5b/gexiv2/gexiv2-metadata-gps.cpp
+--- gexiv2-0.10.5/gexiv2/gexiv2-metadata-gps.cpp	2017-03-19 18:00:55.000000000 +0100
++++ gexiv2-0.10.5b/gexiv2/gexiv2-metadata-gps.cpp	2017-03-26 09:45:44.638692802 +0200
+@@ -12,6 +12,7 @@
+ #include "gexiv2-metadata-private.h"
+ #include <string>
+ #include <cmath>
++#include <stdexcept>
+ #include <stdio.h>
+ #include <glib-object.h>
+ #include <exiv2/exif.hpp>

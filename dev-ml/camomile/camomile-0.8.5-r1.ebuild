@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,6 +19,10 @@ RDEPEND="
 	dev-ml/camlp4:=
 "
 DEPEND="${RDEPEND}"
+
+src_prepare() {
+	has_version '>=dev-lang/ocaml-4.05_beta' && epatch "${FILESDIR}/ocaml405.patch"
+}
 
 src_configure() {
 	econf $(use_enable debug)

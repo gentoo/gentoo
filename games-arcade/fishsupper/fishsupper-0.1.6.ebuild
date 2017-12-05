@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="CC-BY-SA-2.5 GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="media-libs/libsdl[sound,video,opengl,X]
@@ -22,7 +22,8 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-ovflfix.patch \
-		"${FILESDIR}"/${P}-asneeded.patch
+		"${FILESDIR}"/${P}-asneeded.patch \
+		"${FILESDIR}"/${P}-gcc6.patch
 	eautoreconf
 }
 

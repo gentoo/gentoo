@@ -6,12 +6,12 @@ EAPI=6
 inherit fdo-mime gnome2-utils
 
 DESCRIPTION="An open-source jukebox for large collections of mp3/ogg/flac files"
-HOMEPAGE="http://gmusicbrowser.org/"
-SRC_URI="http://${PN}.org/download/${P}.tar.gz"
+HOMEPAGE="https://gmusicbrowser.org/"
+SRC_URI="https://${PN}.org/download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="dbus doc extras gstreamer libnotify mplayer"
 
 GSTREAMER_DEPEND="dev-perl/Glib-Object-Introspection"
@@ -24,7 +24,7 @@ OTHER_DEPEND="
 	media-sound/vorbis-tools"
 
 RDEPEND="dev-lang/perl
-	dev-perl/gtk2-perl
+	dev-perl/Gtk2
 	virtual/perl-MIME-Base64
 	|| ( net-misc/wget dev-perl/AnyEvent-HTTP )
 	dbus? ( dev-perl/Net-DBus )

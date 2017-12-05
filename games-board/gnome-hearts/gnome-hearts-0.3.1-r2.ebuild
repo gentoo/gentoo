@@ -11,7 +11,7 @@ DESCRIPTION="A clone of classic hearts card game"
 HOMEPAGE="http://www.gnome-hearts.org"
 SRC_URI="http://www.jejik.com/files/${PN}/${P}.tar.gz"
 
-LICENSE="GPL-2 FDL-1.2"
+LICENSE="GPL-2+ FDL-1.2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 

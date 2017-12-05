@@ -29,7 +29,6 @@
 		<flag name="projectm">Build with ProjectM visualization</flag>
 		<flag name="seafile">Enable support for seafile: a file sync service</flag>
 		<flag name="skydrive">Enable Skydrive support</flag>
-		<flag name="udisks_legacy">Enable storage management support via legacy <pkg>sys-fs/udisks</pkg>:0</flag>
 		<flag name="vkontakte">Enable vk.com support</flag>
 		<flag name="wiimote">Enable support for Wii remote</flag>
 	</use>

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ inherit cmake-utils flag-o-matic python-single-r1
 WEIRD_UPSTREAM_VERSION=0.7
 
 DESCRIPTION="Find unused include directives in C/C++ programs"
-HOMEPAGE="http://include-what-you-use.org/"
+HOMEPAGE="https://include-what-you-use.org/"
 SRC_URI="http://include-what-you-use.org/downloads/${PN}-${WEIRD_UPSTREAM_VERSION}.src.tar.gz -> ${P}.src.tar.gz"
 
 LICENSE="GPL-2"
@@ -28,8 +28,8 @@ REQUIRED_USE=${PYTHON_REQUIRED_USE}
 S=${WORKDIR}/llvm/tools/clang/tools/${PN}
 
 src_prepare() {
+	cmake-utils_src_prepare
 	python_fix_shebang .
-	default
 }
 
 src_configure() {

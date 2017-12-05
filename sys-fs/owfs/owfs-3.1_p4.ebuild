@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ DESCRIPTION="Access 1-Wire devices like a filesystem"
 SRC_URI="mirror://sourceforge/owfs/${MY_P}.tar.gz"
 HOMEPAGE="http://owfs.org/ https://sourceforge.net/projects/owfs/"
 
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="amd64 arm x86"
 SLOT="0/4.0.0"
 LICENSE="GPL-2"
 

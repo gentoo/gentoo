@@ -1,8 +1,0 @@
-# Copyright 1999-2015 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-
-eblit-autoconf-src_prepare() {
-	find -name Makefile.in -exec sed -i '/^pkgdatadir/s:$:-@VERSION@:' {} +
-
-	[[ ${#PATCHES[@]} -gt 0 ]] && epatch "${PATCHES[@]}"
-}

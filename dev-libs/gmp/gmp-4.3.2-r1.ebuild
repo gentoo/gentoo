@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # this ebuild is only for the libgmp.so.3 ABI SONAME
@@ -7,7 +7,7 @@ EAPI="5"
 
 inherit eutils libtool toolchain-funcs multilib-minimal
 
-DESCRIPTION="Library for arithmetic on arbitrary precision integers, rational numbers, and floating-point numbers"
+DESCRIPTION="Library for arbitrary-precision arithmetic on different type of numbers"
 HOMEPAGE="http://gmplib.org/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.bz2"
 

@@ -1,0 +1,24 @@
+Use pkg-config to determine ncurses libs and cflags to use. Fixes when building
+against ncurses with libtinfo split out.
+
+--- pick-1.8.0/configure.ac
++++ pick-1.8.0/configure.ac
+@@ -5,13 +5,10 @@
+ AC_PROG_CC
+ AM_PROG_CC_C_O
+ AC_CHECK_FUNCS([pledge reallocarray strtonum])
+-AC_SEARCH_LIBS([setupterm], [curses], [],
+-  [
+-    AC_SEARCH_LIBS([setupterm], [ncursesw],
+-      [AC_DEFINE([HAVE_NCURSESW_H], [1], [Define if ncursesw is available])],
+-      [AC_MSG_ERROR([unable to find setupterm function])]
+-    )
+-  ]
+-)
++PKG_CHECK_MODULES([NCURSES], [ncursesw],
++  [AC_DEFINE([HAVE_NCURSESW_H], [1], [Define if ncursesw is available])],
++  [PKG_CHECK_MODULES([NCURSES], [ncurses])])
++CFLAGS="$CFLAGS $NCURSES_CFLAGS"
++LIBS="$LIBS $NCURSES_LIBS"
+ AC_CONFIG_FILES([Makefile])
+ AC_OUTPUT

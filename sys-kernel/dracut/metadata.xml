@@ -10,8 +10,8 @@
 		<name>Alexander Tsoy</name>
 	</maintainer>
 	<maintainer type="person">
-		<email>aidecoe@gentoo.org</email>
-		<name>Amadeusz Żołnowski</name>
+		<email>floppym@gentoo.org</email>
+		<name>Mike Gilbert</name>
 	</maintainer>
 	<use>
 		<flag name="debug">Module installing additional tools like strace, file

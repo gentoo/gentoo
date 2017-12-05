@@ -8,7 +8,7 @@ inherit twisted-r1
 
 MY_PN="${PN/m/M}"
 DESCRIPTION="An extensible, multi-protocol, multi-user, interactive application server"
-HOMEPAGE="https://github.com/twisted/mantissa"
+HOMEPAGE="https://github.com/twisted/mantissa https://pypi.python.org/pypi/Mantissa"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz -> ${P}.tar.gz"
 
 KEYWORDS="~amd64 ~x86"

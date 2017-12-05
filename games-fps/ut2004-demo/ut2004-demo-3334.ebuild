@@ -11,7 +11,7 @@ SRC_URI="mirror://gentoo/${MY_P}"
 
 LICENSE="ut2003-demo"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 RESTRICT="strip"
 IUSE=""
 

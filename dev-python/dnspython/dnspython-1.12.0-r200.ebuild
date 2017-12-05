@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,7 +19,6 @@ IUSE="examples test"
 RDEPEND="dev-python/pycrypto[${PYTHON_USEDEP}]
 	!dev-python/dnspython:0"
 DEPEND="${RDEPEND}
-	!dev-python/dnspython:0
 	app-arch/unzip"
 
 # For testsuite

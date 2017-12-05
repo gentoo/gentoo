@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -17,12 +17,13 @@
 	<use>
 		<flag name="cli">Enables the CLI version of RetroShare</flag>
 		<flag name="feedreader">Enables the Feedreader plugin</flag>
+		<flag name="gnome-keyring">Enables potentially insecure autologin capability via Gnome Keyring</flag>
 		<flag name="gui">Enables the GUI version of RetroShare</flag>
-		<flag name="links-cloud">Enables LinkClouds plugin</flag>
 		<flag name="voip">Enables VOIP plugin</flag>
 	</use>
 	<upstream>
 		<bugs-to>https://sourceforge.net/p/retroshare/bugs</bugs-to>
 		<remote-id type="sourceforge">retroshare</remote-id>
+		<remote-id type="github">RetroShare/RetroShare</remote-id>
 	</upstream>
 </pkgmetadata>

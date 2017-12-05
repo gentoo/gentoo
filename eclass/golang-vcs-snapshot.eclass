@@ -34,7 +34,7 @@
 #
 # inherit golang-vcs-snapshot
 #
-# SRC_URI="http://github.com/example/${PN}/tarball/v${PV} -> ${P}.tar.gz
+# SRC_URI="https://github.com/example/${PN}/tarball/v${PV} -> ${P}.tar.gz
 # ${EGO_VENDOR_URI}"
 # @CODE
 #

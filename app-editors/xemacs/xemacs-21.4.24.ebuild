@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # Note: xemacs currently does not work with a hardened profile. If you
@@ -17,7 +17,7 @@ SRC_URI="http://ftp.xemacs.org/xemacs-21.4/${P}.tar.gz
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 hppa ~mips ppc ppc64 sparc x86"
 IUSE="eolconv gif gpm pop postgres ldap xface nas dnd X jpeg tiff png mule motif freewnn canna xim athena neXt Xaw3d gdbm berkdb"
 
 X_DEPEND="x11-libs/libXt x11-libs/libXmu x11-libs/libXext x11-misc/xbitmaps"
@@ -63,6 +63,8 @@ src_prepare() {
 	epatch "${FILESDIR}"/xemacs-21.4.19-db.patch
 	# see bug 576512
 	epatch "${FILESDIR}"/xemacs-21.4.24-gcc5.patch
+	# see bug 615544
+	epatch "${FILESDIR}"/xemacs-21.4.24-ncurses-tinfo.patch
 
 	# Some binaries and man pages are installed under suffixed names
 	# to avoid collions with their GNU Emacs counterparts (see below).

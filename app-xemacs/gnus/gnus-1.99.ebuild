@@ -1,12 +1,13 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-SLOT="0"
-IUSE=""
-DESCRIPTION="The Gnus Newsreader and Mailreader"
-PKG_CAT="standard"
+EAPI=6
 
-EXPERIMENTAL=true
+SLOT="0"
+DESCRIPTION="The Gnus Newsreader and Mailreader"
+XEMACS_PKG_CAT="standard"
+
+XEMACS_EXPERIMENTAL="true"
 
 RDEPEND="app-xemacs/mail-lib
 app-xemacs/xemacs-base

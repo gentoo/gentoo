@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/kildclient/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc gnutls spell"
 
 RDEPEND="x11-libs/gtk+:3

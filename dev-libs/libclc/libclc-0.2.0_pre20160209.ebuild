@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -24,12 +24,14 @@ fi
 
 LICENSE="|| ( MIT BSD )"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="
-	>=sys-devel/clang-3.7
-	>=sys-devel/llvm-3.7"
+	>=sys-devel/clang-3.7:0
+	>=sys-devel/llvm-3.7:0
+	<sys-devel/clang-3.9:0
+	<sys-devel/llvm-3.9:0"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}"
 

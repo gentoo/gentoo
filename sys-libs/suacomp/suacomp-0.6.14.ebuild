@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="BEER-WARE"
 SLOT="0"
-KEYWORDS="-*"
+KEYWORDS=""
 IUSE="debug"
 
 DEPEND=""

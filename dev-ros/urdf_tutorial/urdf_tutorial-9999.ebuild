@@ -1,9 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 ROS_REPO_URI="https://github.com/ros/urdf_tutorial"
 KEYWORDS="~amd64"
+ROS_SUBDIR="${PN}"
+PYTHON_COMPAT=( python2_7 )
 
 inherit ros-catkin
 
@@ -15,9 +17,10 @@ IUSE=""
 RDEPEND="
 	dev-ros/urdf
 	dev-ros/joint_state_publisher
-	dev-ros/pr2_description
 	dev-ros/robot_state_publisher
 	dev-ros/rviz
 	dev-ros/xacro
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	test? ( dev-ros/roslaunch[${PYTHON_USEDEP}] )
+"

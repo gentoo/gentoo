@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,8 +7,8 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Alternative Python bindings for Subversion"
-HOMEPAGE="http://samba.org/~jelmer/subvertpy/ https://pypi.python.org/pypi/subvertpy"
-SRC_URI="http://samba.org/~jelmer/${PN}/${P}.tar.gz"
+HOMEPAGE="https://www.samba.org/~jelmer/subvertpy/ https://pypi.python.org/pypi/subvertpy"
+SRC_URI="https://www.samba.org/~jelmer/${PN}/${P}.tar.gz"
 
 LICENSE="|| ( LGPL-2.1 LGPL-3 )"
 SLOT="0"

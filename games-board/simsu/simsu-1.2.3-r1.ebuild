@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,8 +6,8 @@ EAPI=6
 inherit eutils gnome2-utils qmake-utils
 
 DESCRIPTION="A basic sudoku game"
-HOMEPAGE="http://gottcode.org/simsu/"
-SRC_URI="http://gottcode.org/${PN}/${P}-src.tar.bz2"
+HOMEPAGE="https://gottcode.org/simsu/"
+SRC_URI="https://gottcode.org/${PN}/${P}-src.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"

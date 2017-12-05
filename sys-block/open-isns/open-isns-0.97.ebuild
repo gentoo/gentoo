@@ -7,11 +7,11 @@ inherit flag-o-matic
 
 DESCRIPTION="iSNS server and client for Linux"
 HOMEPAGE="https://github.com/open-iscsi/open-isns"
-SRC_URI="http://github.com/open-iscsi/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/open-iscsi/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="debug slp ssl static"
 
 DEPEND="

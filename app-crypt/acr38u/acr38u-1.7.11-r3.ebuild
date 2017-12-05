@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools versionator toolchain-funcs udev
+inherit autotools ltprune versionator toolchain-funcs udev
 
 MY_P=ACR38_LINUX_$(get_version_component_range 1)00$(get_version_component_range 2)$(get_version_component_range 3)_P
 
@@ -16,8 +16,8 @@ DESCRIPTION="Non CCID driver for ACR38 AC1038-based Smart Card Reader"
 # tarball release is encapsuled in a .zip file :-(
 # http://www.acs.com.hk/drivers/eng/ACR38_Driver_Lnx_101_P.zip
 # I'm waiting an answer from info@acs.com.hk about that !
-SRC_URI="http://www.linuxunderground.be/${MY_P}.tar.bz2"
-HOMEPAGE="http://www.acs.com.hk"
+SRC_URI="https://www.linuxunderground.be/${MY_P}.tar.bz2"
+HOMEPAGE="https://www.acs.com.hk"
 
 # Make this safe from collisions, require a version of pcsc-lite that
 # uses libusb-1.0 and use the wrapper library instead.

@@ -1,10 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+EAPI=6
+
 SLOT="0"
-IUSE=""
 DESCRIPTION="MULE: Extended coding systems (including Unicode) for XEmacs"
-PKG_CAT="mule"
+XEMACS_PKG_CAT="mule"
 
 RDEPEND="app-xemacs/mule-base
 app-xemacs/latin-euro-standards

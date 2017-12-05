@@ -5,7 +5,7 @@ EAPI=5
 inherit multilib xfconf
 
 DESCRIPTION="A simple timer plug-in for the Xfce desktop environment"
-HOMEPAGE="http://goodies.xfce.org/projects/panel-plugins/xfce4-timer-plugin"
+HOMEPAGE="https://goodies.xfce.org/projects/panel-plugins/xfce4-timer-plugin"
 SRC_URI="mirror://xfce/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"

@@ -1,6 +1,22 @@
-diff -ur a/Makefile.PL b/Makefile.PL
---- a/Makefile.PL	2010-05-29 02:43:06.000000000 -0400
-+++ b/Makefile.PL	2012-10-11 14:56:18.000000000 -0400
+From 9c0fbdce2ee643c23b3be8fa391b779fc6afbab3 Mon Sep 17 00:00:00 2001
+From: Ian Stakenvicius <axs@gentoo.org>
+Date: Fri, 12 Oct 2012 08:09:57 +1300
+Subject: Support spidermonkey 1.8.5 and newer
+
+Fix support for x86_64
+
+Bug: https://bugs.gentoo.org/404129
+---
+ Makefile.PL     |  44 ++++++++++++-----
+ SpiderMonkey.pm |   5 +-
+ SpiderMonkey.xs | 150 ++++++++++++++++++++++++++++++++++++++++++++++++++++++--
+ t/error.t       |   2 +-
+ 4 files changed, 180 insertions(+), 21 deletions(-)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index 901b773..6095dcd 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
 @@ -12,6 +12,7 @@
  ######################################################################
  
@@ -9,8 +25,8 @@ diff -ur a/Makefile.PL b/Makefile.PL
  use Getopt::Long;
  
  # Get the right lib and include dirs for different platforms
-@@ -37,7 +38,7 @@
-   "/usr/lib/firefox" => "/usr/include/firefox",
+@@ -39,7 +40,7 @@ my %possible_install_paths = (
+   "/opt/local/lib"   => "/opt/local/include",    # MacPorts
  );
  
 -my ($JS_LIB_DIR, @JS_INCL_DIRS, $JS_LIB_NAME);
@@ -18,7 +34,7 @@ diff -ur a/Makefile.PL b/Makefile.PL
  
  #### Determine compile options
  ##############################
-@@ -57,6 +58,19 @@
+@@ -59,6 +60,19 @@ GetOptions(
    "JS_LIB_DIR=s"    => \$JS_LIB_DIR,
    "JS_LIB_NAME=s"   => \$JS_LIB_NAME,         
  );
@@ -38,7 +54,7 @@ diff -ur a/Makefile.PL b/Makefile.PL
  if ($JS_LIB_DIR) {
      push @JS_INCL_DIRS, $JS_LIB_DIR;
  }
-@@ -78,13 +92,15 @@
+@@ -80,13 +94,15 @@ foreach my $install_path(keys %possible_install_paths) {
          }
        }
        if (scalar(@JS_INCL_DIRS) == scalar(@c_header_files)) {
@@ -55,7 +71,7 @@ diff -ur a/Makefile.PL b/Makefile.PL
          last;
        } else {
          @JS_INCL_DIRS = ();
-@@ -94,15 +110,22 @@
+@@ -96,15 +112,22 @@ foreach my $install_path(keys %possible_install_paths) {
    }
    last if $JS_LIB_DIR;
  }
@@ -79,7 +95,7 @@ diff -ur a/Makefile.PL b/Makefile.PL
      print <<EOT;
  
  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-@@ -111,17 +134,13 @@
+@@ -113,17 +136,13 @@ README file on how to download, compile and link it.
  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
  
  EOT
@@ -100,7 +116,7 @@ diff -ur a/Makefile.PL b/Makefile.PL
  ## Determine library name and system-related defines
  if ($^O ne 'MSWin32') {
    $JS_DEFINE  = '-DXP_UNIX';
-@@ -160,10 +179,11 @@
+@@ -162,10 +181,11 @@ WriteMakefile(
      ($] >= 5.005 ?    ## Add these new keywords supported since 5.005
        (ABSTRACT_FROM => 'SpiderMonkey.pm', # retrieve abstract from module
         AUTHOR     => 'Mike Schilli <m@perlmeister.com>') : ()),
@@ -114,10 +130,11 @@ diff -ur a/Makefile.PL b/Makefile.PL
  	# Un-comment this if you add C files to link with later:
      # 'OBJECT'		=> '$(O_FILES)', # link all the C files too
  );
-diff -ur a/SpiderMonkey.pm b/SpiderMonkey.pm
---- a/SpiderMonkey.pm	2010-05-29 02:49:31.000000000 -0400
-+++ b/SpiderMonkey.pm	2012-10-11 14:56:18.000000000 -0400
-@@ -161,9 +161,8 @@
+diff --git a/SpiderMonkey.pm b/SpiderMonkey.pm
+index 223204a..de210c3 100644
+--- a/SpiderMonkey.pm
++++ b/SpiderMonkey.pm
+@@ -162,9 +162,8 @@ sub init {
      $self->{global_class} = 
          JavaScript::SpiderMonkey::JS_GlobalClass();
      $self->{global_object} = 
@@ -129,9 +146,10 @@ diff -ur a/SpiderMonkey.pm b/SpiderMonkey.pm
  
      JavaScript::SpiderMonkey::JS_InitStandardClasses($self->{context}, 
                                                       $self->{global_object});
-diff -ur a/SpiderMonkey.xs b/SpiderMonkey.xs
---- a/SpiderMonkey.xs	2010-05-29 02:49:31.000000000 -0400
-+++ b/SpiderMonkey.xs	2012-10-11 14:56:18.000000000 -0400
+diff --git a/SpiderMonkey.xs b/SpiderMonkey.xs
+index 4d97117..1cfc9a5 100644
+--- a/SpiderMonkey.xs
++++ b/SpiderMonkey.xs
 @@ -20,10 +20,13 @@
  #define snprintf _snprintf 
  #endif
@@ -147,7 +165,7 @@ diff -ur a/SpiderMonkey.xs b/SpiderMonkey.xs
      JS_PropertyStub,  JS_PropertyStub,  JS_PropertyStub,  JS_PropertyStub,
      JS_EnumerateStub, JS_ResolveStub,   JS_ConvertStub,   JS_FinalizeStub
  };
-@@ -67,10 +70,18 @@
+@@ -67,10 +70,18 @@ JSBool getsetter_dispatcher(
           * I hope all reasonable machines can hold an address in
           * an int.
           */
@@ -167,7 +185,7 @@ diff -ur a/SpiderMonkey.xs b/SpiderMonkey.xs
      PUTBACK;
      call_pv("JavaScript::SpiderMonkey::getsetter_dispatcher", G_DISCARD);
      FREETMPS;
-@@ -83,10 +94,21 @@
+@@ -83,10 +94,21 @@ JSBool getsetter_dispatcher(
  JSBool getter_dispatcher(
      JSContext *cx, 
      JSObject  *obj,
@@ -189,7 +207,7 @@ diff -ur a/SpiderMonkey.xs b/SpiderMonkey.xs
      return getsetter_dispatcher(cx, obj, id, vp, "getter");
  }
  
-@@ -94,10 +116,22 @@
+@@ -94,10 +116,22 @@ JSBool getter_dispatcher(
  JSBool setter_dispatcher(
      JSContext *cx, 
      JSObject  *obj,
@@ -212,7 +230,7 @@ diff -ur a/SpiderMonkey.xs b/SpiderMonkey.xs
      return getsetter_dispatcher(cx, obj, id, vp, "setter");
  }
  
-@@ -128,10 +162,19 @@
+@@ -128,10 +162,19 @@ int debug_enabled(
  
  /* --------------------------------------------------------------------- */
  static JSBool
@@ -232,7 +250,7 @@ diff -ur a/SpiderMonkey.xs b/SpiderMonkey.xs
      SV          *sv;
      char        *n_jstr;
      int         n_jnum;
-@@ -149,12 +192,20 @@
+@@ -149,12 +192,20 @@ FunctionDispatcher(JSContext *cx, JSObject *obj, uintN argc,
      ENTER ; 
      SAVETMPS ;
      PUSHMARK(SP);
@@ -255,7 +273,7 @@ diff -ur a/SpiderMonkey.xs b/SpiderMonkey.xs
      }
      PUTBACK;
      count = call_pv("JavaScript::SpiderMonkey::function_dispatcher", G_SCALAR);
-@@ -174,7 +225,11 @@
+@@ -174,7 +225,11 @@ FunctionDispatcher(JSContext *cx, JSObject *obj, uintN argc,
  
              if(Debug)
                  fprintf(stderr, "DEBUG: %lx is a ref!\n", (long) sv);
@@ -268,7 +286,7 @@ diff -ur a/SpiderMonkey.xs b/SpiderMonkey.xs
          }
          else if(SvIOK(sv)) {
              /* It appears that we have been sent an int return
-@@ -183,7 +238,11 @@
+@@ -183,7 +238,11 @@ FunctionDispatcher(JSContext *cx, JSObject *obj, uintN argc,
              n_jnum=SvIV(sv);
              if(Debug)
                  fprintf(stderr, "DEBUG: %lx is an int (%d)\n", (long) sv,n_jnum);
@@ -280,7 +298,7 @@ diff -ur a/SpiderMonkey.xs b/SpiderMonkey.xs
          } else if(SvNOK(sv)) {
              /* It appears that we have been sent an double return
               * value.  Thats fine we can give javascript an double
-@@ -192,11 +251,20 @@
+@@ -192,11 +251,20 @@ FunctionDispatcher(JSContext *cx, JSObject *obj, uintN argc,
  
              if(Debug) 
                  fprintf(stderr, "DEBUG: %lx is a double(%f)\n", (long) sv,n_jdbl);
@@ -301,7 +319,7 @@ diff -ur a/SpiderMonkey.xs b/SpiderMonkey.xs
          }
      }
  
-@@ -240,8 +308,13 @@
+@@ -240,8 +308,13 @@ ErrorReporter(JSContext *cx, const char *message, JSErrorReport *report) {
  }
  
  /* --------------------------------------------------------------------- */
@@ -315,7 +333,7 @@ diff -ur a/SpiderMonkey.xs b/SpiderMonkey.xs
  /* --------------------------------------------------------------------- */
    PJS_Context* pcx = (PJS_Context*) JS_GetContextPrivate(cx);
  
-@@ -374,11 +447,46 @@
+@@ -374,11 +447,46 @@ JS_NewObject(cx, class, proto, parent)
      JSObject *obj;
      CODE:
      {
@@ -362,7 +380,7 @@ diff -ur a/SpiderMonkey.xs b/SpiderMonkey.xs
      }
      OUTPUT:
      RETVAL
-@@ -404,6 +512,9 @@
+@@ -404,6 +512,9 @@ JS_InitClass(cx, iobj, parent_proto, clasp, constructor, nargs, ps, fs, static_p
      na = (uintN) nargs;
      CODE:
      {
@@ -372,7 +390,7 @@ diff -ur a/SpiderMonkey.xs b/SpiderMonkey.xs
          obj = JS_InitClass(cx, iobj, parent_proto, clasp,
                             constructor, nargs, ps, fs, static_ps,
                             static_fs);
-@@ -411,6 +522,9 @@
+@@ -411,6 +522,9 @@ JS_InitClass(cx, iobj, parent_proto, clasp, constructor, nargs, ps, fs, static_p
              XSRETURN_UNDEF;
          }
          RETVAL = obj;
@@ -382,7 +400,7 @@ diff -ur a/SpiderMonkey.xs b/SpiderMonkey.xs
      }
      OUTPUT:
      RETVAL
-@@ -469,11 +583,17 @@
+@@ -469,11 +583,17 @@ JS_InitStandardClasses(cx, gobj)
      JSBool rc;
      CODE:
      {
@@ -400,7 +418,7 @@ diff -ur a/SpiderMonkey.xs b/SpiderMonkey.xs
      }
      OUTPUT:
      RETVAL
-@@ -582,10 +702,18 @@
+@@ -582,10 +702,18 @@ JS_GetProperty(cx, obj, name)
          rc = JS_GetProperty(cx, obj, name, &vp);
          if(rc) {
              str = JS_ValueToString(cx, vp);
@@ -419,7 +437,7 @@ diff -ur a/SpiderMonkey.xs b/SpiderMonkey.xs
              }
          } else {
              sv = &PL_sv_undef;
-@@ -675,10 +803,18 @@
+@@ -675,10 +803,18 @@ JS_GetElement(cx, obj, idx)
          rc = JS_GetElement(cx, obj, idx, &vp);
          if(rc) {
              str = JS_ValueToString(cx, vp);
@@ -438,7 +456,7 @@ diff -ur a/SpiderMonkey.xs b/SpiderMonkey.xs
              }
          } else {
              sv = &PL_sv_undef;
-@@ -718,7 +854,11 @@
+@@ -718,7 +854,11 @@ JS_SetMaxBranchOperations(cx, max_branch_operations)
          PJS_Context* pcx = (PJS_Context *) JS_GetContextPrivate(cx);
          pcx->branch_count = 0;
          pcx->branch_max = max_branch_operations;
@@ -450,10 +468,11 @@ diff -ur a/SpiderMonkey.xs b/SpiderMonkey.xs
      }
      OUTPUT:
  
-diff -ur a/t/error.t b/t/error.t
---- a/t/error.t	2010-05-28 13:02:43.000000000 -0400
-+++ b/t/error.t	2012-10-11 14:56:18.000000000 -0400
-@@ -9,7 +9,7 @@
+diff --git a/t/error.t b/t/error.t
+index 732226c..de977a1 100644
+--- a/t/error.t
++++ b/t/error.t
+@@ -9,7 +9,7 @@ my $js1 = JavaScript::SpiderMonkey->new ();
  $js1->init ();
  ok (!$js1->eval ($jscode1));
  ok ($@ !~ "\n");
@@ -462,3 +481,6 @@ diff -ur a/t/error.t b/t/error.t
  #print "$@\n";
  my $jscode2 =<<EOF;
  var fruit = non_existant_function ();
+-- 
+2.14.3
+

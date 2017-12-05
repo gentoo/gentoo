@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
@@ -9,7 +9,7 @@ MY_PN="jruby-${PN}"
 GIT_PV="0-gbaaab90"
 
 DESCRIPTION="Byte-based encoding support library for Java"
-HOMEPAGE="http://jruby.codehaus.org/"
+HOMEPAGE="https://github.com/codehaus"
 #SRC_URI="https://github.com/jruby/${PN}/tarball/${PV} -> ${P}-git.tar.gz"
 SRC_URI="mirror://gentoo/${P}-git.tar.gz"
 LICENSE="MIT"

@@ -3,9 +3,9 @@
 
 EAPI=6
 
-EGIT_REPO_URI="git://github.com/0xd34df00d/leechcraft.git"
+EGIT_REPO_URI="https://github.com/0xd34df00d/leechcraft.git"
 
-inherit eutils confutils leechcraft
+inherit leechcraft
 
 DESCRIPTION="Core of LeechCraft, the modular network client"
 

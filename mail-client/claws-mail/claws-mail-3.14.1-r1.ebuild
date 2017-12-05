@@ -20,6 +20,7 @@ REQUIRED_USE="libcanberra? ( notification )
 	libindicate? ( notification )
 	libnotify? ( notification )
 	networkmanager? ( dbus )
+	python? ( ${PYTHON_REQUIRED_USE} )
 	smime? ( pgp )"
 
 COMMONDEPEND="

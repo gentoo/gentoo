@@ -1,13 +1,13 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 if [[ ${PV} != 9999 ]]; then
 	inherit cmake-utils depend.apache eutils systemd toolchain-funcs user wxwidgets
 	SRC_URI="https://github.com/Icinga/icinga2/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 else
-	inherit cmake-utils depend.apache eutils git-2 systemd toolchain-funcs user wxwidgets
+	inherit cmake-utils depend.apache eutils git-r3 systemd toolchain-funcs user wxwidgets
 	EGIT_REPO_URI="https://github.com/Icinga/icinga2.git"
 	EGIT_BRANCH="master"
 	KEYWORDS=""
@@ -24,7 +24,7 @@ WX_GTK_VER="3.0"
 CDEPEND="
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
-	>=dev-libs/boost-1.41
+	>=dev-libs/boost-1.58-r1
 	console? ( dev-libs/libedit )
 	mysql? ( virtual/mysql )
 	postgres? ( dev-db/postgresql:= )"
@@ -69,9 +69,9 @@ src_configure() {
 		-DCMAKE_INSTALL_SYSCONFDIR=/etc
 		-DCMAKE_INSTALL_LOCALSTATEDIR=/var
 		-DICINGA2_SYSCONFIGFILE=/etc/conf.d/icinga2
+		-DICINGA2_PLUGINDIR="/usr/$(get_libdir)/nagios/plugins"
 		-DICINGA2_USER=icinga
 		-DICINGA2_GROUP=icingacmd
-		-DICINGA2_COMMAND_USER=icinga
 		-DICINGA2_COMMAND_GROUP=icingacmd
 		-DINSTALL_SYSTEMD_SERVICE_AND_INITSCRIPT=yes
 		-DLOGROTATE_HAS_SU=ON
@@ -121,7 +121,6 @@ src_install() {
 	einstalldocs
 
 	newinitd "${FILESDIR}"/icinga2.initd icinga2
-	newconfd "${FILESDIR}"/icinga2.confd icinga2
 
 	if use mysql ; then
 		docinto schema
@@ -144,7 +143,8 @@ src_install() {
 	rm -r "${D}/var/run" || die "failed to remove /var/run"
 	rm -r "${D}/var/cache" || die "failed to remove /var/cache"
 
-	fowners icinga:icinga /etc/icinga2
+	fowners root:icinga /etc/icinga2
+	fperms 0750 /etc/icinga2
 	fowners icinga:icinga /var/lib/icinga2
 	fowners icinga:icinga /var/spool/icinga2
 	fowners -R icinga:icingacmd /var/lib/icinga2/api

@@ -5,6 +5,6 @@ EAPI=5
 
 DESCRIPTION="Virtual Package installing the Header files for DVB"
 SLOT="0"
-KEYWORDS="amd64 arm ~mips ppc ppc64 x86"
+KEYWORDS="amd64 arm ~arm64 ~mips ppc ppc64 x86"
 
 RDEPEND=">=sys-kernel/linux-headers-3.7"

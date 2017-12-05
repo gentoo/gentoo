@@ -1,0 +1,68 @@
+https://bugs.gentoo.org/609592
+https://bugs.exim.org/show_bug.cgi?id=2035
+
+From 7ddfbe9d0b9f43402f8043e940172a318cc407c6 Mon Sep 17 00:00:00 2001
+From: Zoltan Herczeg <hzmester@freemail.hu>
+Date: Tue, 14 Feb 2017 08:48:18 +0000
+Subject: [PATCH] Fix a missing else in the JIT compiler reported by
+ 'idaifish'.
+
+git-svn-id: svn://vcs.exim.org/pcre/code/trunk@1680 2f5784b3-3f2a-0410-8824-cb99058d5e15
+---
+ ChangeLog             | 2 ++
+ pcre_jit_compile.c    | 2 +-
+ testdata/testinput12  | 2 ++
+ testdata/testoutput12 | 2 ++
+ 4 files changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/ChangeLog b/ChangeLog
+index 373ee8422ef5..d813935539bd 100644
+--- a/ChangeLog
++++ b/ChangeLog
+@@ -15,6 +15,8 @@ mode with --only-matching matched several lines, it restarted scanning at the
+ next line instead of moving on to the end of the matched string, which can be 
+ several lines after the start.
+ 
++3.  Fix a missing else in the JIT compiler reported by 'idaifish'.
++
+ 
+ Version 8.40 11-January-2017
+ ----------------------------
+diff --git a/pcre_jit_compile.c b/pcre_jit_compile.c
+index c301f05d5e3f..6ef8e48ff5e8 100644
+--- a/pcre_jit_compile.c
++++ b/pcre_jit_compile.c
+@@ -8110,7 +8110,7 @@ if (opcode == OP_COND || opcode == OP_SCOND)
+ 
+     if (*matchingpath == OP_FAIL)
+       stacksize = 0;
+-    if (*matchingpath == OP_RREF)
++    else if (*matchingpath == OP_RREF)
+       {
+       stacksize = GET2(matchingpath, 1);
+       if (common->currententry == NULL)
+diff --git a/testdata/testinput12 b/testdata/testinput12
+index 944be6943f5e..89ed4564bcd4 100644
+--- a/testdata/testinput12
++++ b/testdata/testinput12
+@@ -104,4 +104,6 @@ and a couple of things that are different with JIT. --/
+ /(.|.)*?bx/
+     aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabax
+ 
++/((?(?!))x)(?'name')(?1)/S++
++
+ /-- End of testinput12 --/
+diff --git a/testdata/testoutput12 b/testdata/testoutput12
+index 87911086f498..7632c4e58013 100644
+--- a/testdata/testoutput12
++++ b/testdata/testoutput12
+@@ -201,4 +201,6 @@ No match, mark = m (JIT)
+     aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabax
+ Error -8 (match limit exceeded)
+ 
++/((?(?!))x)(?'name')(?1)/S++
++
+ /-- End of testinput12 --/
+-- 
+2.12.0
+

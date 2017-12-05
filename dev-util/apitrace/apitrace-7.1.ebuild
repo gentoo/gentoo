@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -15,21 +15,20 @@ LICENSE+=" BSD CC-BY-3.0 CC-BY-4.0 public-domain" #bundled snappy
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="+cli egl qt5 system-snappy"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	>=sys-devel/gcc-4.7:*
 	system-snappy? ( >=app-arch/snappy-1.1.1[${MULTILIB_USEDEP}] )
 	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 	>=media-libs/mesa-9.1.6[egl?,${MULTILIB_USEDEP}]
-	egl? ( || (
-		>=media-libs/mesa-8.0[gles1,gles2]
-		<media-libs/mesa-8.0[gles]
-		)
-		media-libs/waffle[egl]
-	)
 	media-libs/libpng:0=
 	sys-process/procps
 	x11-libs/libX11
+	egl? (
+		>=media-libs/mesa-8.0[gles1,gles2]
+		media-libs/waffle[egl]
+	)
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
@@ -47,7 +46,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	enable_cmake-utils_src_prepare
+	cmake-utils_src_prepare
 
 	# The apitrace code grubs around in the internal zlib structures.
 	# We have to extract this header and clean it up to keep that working.

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -9,4 +9,7 @@
 		Shell escaping library, offering both Bourne shell and Bash style escaping
 		of ByteStrings.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">solidsnack/shell-escape</remote-id>
+	</upstream>
 </pkgmetadata>

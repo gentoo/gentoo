@@ -6,6 +6,10 @@
 	<name>Gentoo GNOME Desktop</name>
 </maintainer>
 <use>
+	<flag name="browser-extension">Ensure the presence of extensions.gnome.org
+		native connector <pkg>gnome-extra/chrome-gnome-shell</pkg></flag>
+	<flag name="ibus">Enable support for enhanced input methods through
+		<pkg>app-i18n/ibus</pkg></flag>
 	<flag name="openrc-force">Skip systemd dependency (#480336),
 		enabling this flag will become your setup to be fully
 		unsupported by upstream and downstream Gnome team. Do not

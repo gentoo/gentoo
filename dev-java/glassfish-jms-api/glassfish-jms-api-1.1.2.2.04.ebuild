@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
@@ -17,7 +17,7 @@ SRC_URI="http://download.java.net/javaee5/${MAJOR}/promoted/source/${ZIP}"
 
 LICENSE="|| ( CDDL GPL-2 )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm x86 ~amd64-fbsd"
+KEYWORDS="~amd64 ~arm ~arm64 x86 ~amd64-fbsd"
 
 IUSE=""
 

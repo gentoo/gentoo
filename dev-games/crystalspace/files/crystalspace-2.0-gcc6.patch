@@ -1,0 +1,238 @@
+--- crystalspace-src-2.0/include/csutil/redblacktree.h.old	2016-09-20 22:06:36.732698058 -0400
++++ crystalspace-src-2.0/include/csutil/redblacktree.h	2016-09-20 22:09:08.437064011 -0400
+@@ -37,7 +37,7 @@
+  * @{ */
+ 
+ template <typename K, typename Allocator,
+-  template<typename K, typename K2> class Ordering>
++  template<typename K1, typename K2> class Ordering>
+ class csRedBlackTree;
+ 
+ template <typename K, typename T>
+@@ -237,7 +237,7 @@
+ template <typename K,
+           typename Allocator =
+ 	    CS::Container::DefaultRedBlackTreeAllocator<K>,
+-	  template<typename K, typename K2> class Ordering =
++	  template<typename K1, typename K2> class Ordering =
+ 	    CS::Container::RedBlackTreeOrderingTotal>
+ class csRedBlackTree
+ {
+--- crystalspace-src-2.0/plugins/terraformer/pagingformer/pagingformer.cpp.old	2016-09-20 22:10:54.287917849 -0400
++++ crystalspace-src-2.0/plugins/terraformer/pagingformer/pagingformer.cpp	2016-09-20 22:12:31.684739007 -0400
+@@ -1159,7 +1159,7 @@
+   else
+   {
+     // Something we can't return was requested
+-    return false;
++    return NULL;
+   }
+ }
+ 
+--- crystalspace-src-2.0/plugins/documentsystem/xmlread/characters.cpp.old	2016-09-20 22:13:28.794863758 -0400
++++ crystalspace-src-2.0/plugins/documentsystem/xmlread/characters.cpp	2016-09-20 22:22:26.124668024 -0400
+@@ -46,20 +46,20 @@
+   //       0 1 2 3 4 5 6 7 8 9 A B C D E F
+   CHAR_ROW(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0), // 00-0f
+   CHAR_ROW(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0), // 10-1f
+-  CHAR_ROW(0,0,0,0,0,0,0,0,0,0,0,0,0,S,S,0), // 20-2f
+-  CHAR_ROW(S,S,S,S,S,S,S,S,S,S,F,0,0,0,0,0), // 30-3f
+-  CHAR_ROW(0,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F), // 40-4f
+-  CHAR_ROW(F,F,F,F,F,F,F,F,F,F,F,0,0,0,0,F), // 50-5f
+-  CHAR_ROW(0,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F), // 60-6f
+-  CHAR_ROW(F,F,F,F,F,F,F,F,F,F,F,0,0,0,0,0), // 70-7f
++  CHAR_ROW(0,0,0,0,0,0,0,0,0,0,0,0,0,(uint32)S,(uint32)S,0), // 20-2f
++  CHAR_ROW((uint32)S,(uint32)S,(uint32)S,(uint32)S,(uint32)S,(uint32)S,(uint32)S,(uint32)S,(uint32)S,(uint32)S,(uint32)F,0,0,0,0,0), // 30-3f
++  CHAR_ROW(0,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F), // 40-4f
++  CHAR_ROW((uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,0,0,0,0,(uint32)F), // 50-5f
++  CHAR_ROW(0,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F), // 60-6f
++  CHAR_ROW((uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,0,0,0,0,0), // 70-7f
+   CHAR_ROW(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0), // 80-8f
+   CHAR_ROW(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0), // 90-9f
+   CHAR_ROW(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0), // a0-af
+   CHAR_ROW(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0), // b0-bf
+-  CHAR_ROW(F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F), // c0-cf
+-  CHAR_ROW(F,F,F,F,F,F,F,0,F,F,F,F,F,F,F,F), // d0-df
+-  CHAR_ROW(F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F), // e0-ef
+-  CHAR_ROW(F,F,F,F,F,F,F,0,F,F,F,F,F,F,F,F), // f0-ff
++  CHAR_ROW((uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F), // c0-cf
++  CHAR_ROW((uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,0,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F), // d0-df
++  CHAR_ROW((uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F), // e0-ef
++  CHAR_ROW((uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,0,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F,(uint32)F), // f0-ff
+ };
+ 
+ #undef CHAR_ROW
+--- crystalspace-src-2.0/plugins/mesh/protomesh/object/protomesh.cpp.old	2016-09-20 22:13:51.298710883 -0400
++++ crystalspace-src-2.0/plugins/mesh/protomesh/object/protomesh.cpp	2016-09-20 22:24:27.087156627 -0400
+@@ -141,7 +141,7 @@
+ {
+   n = 0;
+ 
+-  if (vis_cb) if (!vis_cb->BeforeDrawing (this, rview)) return false;
++  if (vis_cb) if (!vis_cb->BeforeDrawing (this, rview)) return NULL;
+ 
+   SetupObject ();
+ 
+--- crystalspace-src-2.0/plugins/terraformer/simpleformer/simpleformer.cpp.old	2016-09-20 22:14:11.555573385 -0400
++++ crystalspace-src-2.0/plugins/terraformer/simpleformer/simpleformer.cpp	2016-09-20 22:25:57.007048574 -0400
+@@ -1012,7 +1012,7 @@
+   else
+   {
+     // Something we can't return was requested
+-    return false;
++    return NULL;
+   }
+ }
+ 
+--- crystalspace-src-2.0/plugins/mesh/skeleton/persist/standard/skelldr.cpp.old	2016-09-20 22:14:28.534458231 -0400
++++ crystalspace-src-2.0/plugins/mesh/skeleton/persist/standard/skelldr.cpp	2016-09-20 22:28:15.857616492 -0400
+@@ -157,7 +157,7 @@
+           {
+             csVector3 v;
+             if (!SyntaxService->ParseVector (vector_node, v))
+-              return false;
++              return NULL;
+             bone->GetTransform ().SetOrigin (v);
+           }
+ 
+@@ -166,7 +166,7 @@
+           {
+             csMatrix3 m;
+             if (!SyntaxService->ParseMatrix (matrix_node, m))
+-              return false;
++              return NULL;
+             bone->GetTransform ().SetO2T (m);
+           }
+         }
+@@ -201,7 +201,7 @@
+             {
+               csVector3 v;
+               if (!SyntaxService->ParseVector (vector_node, v))
+-              return false;
++              return NULL;
+               socket_transform.SetOrigin (v);
+             }
+     
+@@ -210,7 +210,7 @@
+             {
+               csMatrix3 m;
+               if (!SyntaxService->ParseMatrix (matrix_node, m))
+-              return false;
++              return NULL;
+               socket_transform.SetO2T (m);
+             }
+             socket->SetTransform(socket_transform);
+@@ -550,7 +550,7 @@
+           {
+           csVector3 v;
+           if (!SyntaxService->ParseVector (vector_node, v))
+-            return false;
++            return NULL;
+           key_transform.SetOrigin (v);
+           }
+ 
+@@ -559,7 +559,7 @@
+           {
+           csMatrix3 m;
+           if (!SyntaxService->ParseMatrix (matrix_node, m))
+-            return false;
++            return NULL;
+           key_transform.SetO2T (m);
+           }
+         }
+--- crystalspace-src-2.0/plugins/mesh/animesh/persist/skeleton2/skeleton2ldr.cpp.old	2016-09-20 22:14:53.609288299 -0400
++++ crystalspace-src-2.0/plugins/mesh/animesh/persist/skeleton2/skeleton2ldr.cpp	2016-09-20 22:29:41.797284147 -0400
+@@ -516,7 +516,7 @@
+     if (!name)
+     {
+       synldr->ReportError (msgid, node, "No name set for animation");
+-      return false;
++      return NULL;
+     }
+ 
+     CS::Animation::iSkeletonAnimation* fact = packet->CreateAnimation (name);
+@@ -524,7 +524,7 @@
+     {
+       synldr->ReportError (msgid, node, 
+         "Could not create animation, another animation with same name already exist");
+-      return false;
++      return NULL;
+     }
+ 
+     if (node->GetAttributeValueAsBool ("bindspace", false))
+--- crystalspace-src-2.0/plugins/mesh/watermesh/object/watermesh.cpp.old	2016-09-20 22:15:10.911171145 -0400
++++ crystalspace-src-2.0/plugins/mesh/watermesh/object/watermesh.cpp	2016-09-20 22:30:58.603396904 -0400
+@@ -363,7 +363,7 @@
+ {
+   n = 0;
+ 
+-  if (vis_cb) if (!vis_cb->BeforeDrawing (this, rview)) return false;
++  if (vis_cb) if (!vis_cb->BeforeDrawing (this, rview)) return NULL;
+ 
+   iCamera* camera = rview->GetCamera ();
+ 
+--- crystalspace-src-2.0/plugins/csparser/csparser.cpp.old	2016-09-20 22:15:32.086027857 -0400
++++ crystalspace-src-2.0/plugins/csparser/csparser.cpp	2016-09-20 22:36:18.576856714 -0400
+@@ -571,7 +571,7 @@
+         break;
+       case XMLTOKEN_KEY:
+         if (!ParseKey (child, &Keys))
+-          return false;
++          return NULL;
+         break;
+       case XMLTOKEN_HALO:
+         {
+@@ -779,7 +779,7 @@
+           {
+             csMatrix3 m;
+             if (!SyntaxService->ParseMatrix (matrix_node, m))
+-              return false;
++              return NULL;
+             light_transf.SetO2T (m);
+           }
+           csRef<iDocumentNode> vector_node = child->GetNode ("v");
+@@ -787,7 +787,7 @@
+           {
+             csVector3 v;
+             if (!SyntaxService->ParseVector (vector_node, v))
+-              return false;
++              return NULL;
+             use_light_transf_vector = true;
+             light_transf.SetO2TTranslation (v);
+           }
+@@ -830,7 +830,7 @@
+         {
+           bool flag;
+           if (!SyntaxService->ParseBool (child, flag, true))
+-            return false;
++            return NULL;
+           lightFlags.SetBool (CS_LIGHT_NOSHADOWS, flag);
+         }
+         break;
+@@ -1193,7 +1193,7 @@
+         {
+           csColor c;
+           if (!SyntaxService->ParseColor (child, c))
+-            return false;
++            return NULL;
+           sector->SetDynamicAmbientLight (c);
+         }
+         break;
+@@ -1387,7 +1387,7 @@
+           iRenderLoop* loop = ParseRenderLoop (child, set);
+           if (!loop)
+           {
+-            return false;
++            return NULL;
+           }
+           if (set)
+           {
+@@ -1569,7 +1569,7 @@
+         return 0;
+       case XMLTOKEN_KEY:
+         if (!ParseKey (child, pNode->QueryObject()))
+-          return false;
++          return NULL;
+         break;
+       case XMLTOKEN_POSITION:
+         if (!SyntaxService->ParseVector (child, pos))

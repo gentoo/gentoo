@@ -1,0 +1,15 @@
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+/var/log/turnserver.log {
+daily
+rotate 7
+create 660 turnserver turnserver
+notifempty
+size 50M
+sharedscripts
+missingok
+postrotate
+[ -f /var/run/turnserver/turnserver.pid ] && kill -HUP `cat /var/run/turnserver/turnserver.pid`
+endscript
+}

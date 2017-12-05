@@ -4,16 +4,24 @@
 # Unmask the flag which corresponds to ARCH.
 -x86
 
+# Michael Palimaka <kensington@gentoo.org> (03 Jun 2017)
+# Unmask elogind since it is keyworded here.
+-elogind
+
+# Sven Wegener <swegener@gentoo.org> (31 May 2017)
+# libvirt is supported on x86
+-libvirt
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (26 May 2017)
+# dev-db/firebird is keyworded ~x86
+-firebird
+
 # cilk has been ported to this arch.
 -cilk
 
 # Mike Gilbert <floppym@gentoo.org (19 Oct 2014)
 # sys-libs/libapparmor
 -apparmor
-
-# Alexey Shvetsov <alexxy@gentoo.org> (08 Apr 2014)
-# Cuda works here
--cuda
 
 # Michał Górny <mgorny@gentoo.org> (30 Mar 2014)
 # PyPy is keyworded on this arch.
@@ -88,10 +96,6 @@
 # Add support for Ruby Enterprise Edition targets where rubyee is available
 # -ruby_targets_ree18
 
-# 2010/01/08 - Diego E. Pettenò <flameeyes@gentoo.org>
-# Add support for JRuby targets where jruby is available
-#-ruby_targets_jruby
-
 # pbbuttonsd and macbook for KDE and pbuttonsd it
 #-pbbuttonsd
 -macbook
@@ -132,15 +136,17 @@
 -input_devices_synaptics
 -input_devices_vmmouse
 -input_devices_wacom
+-video_cards_ast
+-video_cards_i915
+-video_cards_i965
+-video_cards_intel
 -video_cards_nvidia
+-video_cards_siliconmotion
 -video_cards_vmware
 -video_cards_geode
 -video_cards_via
 -video_cards_virtualbox
 -video_cards_qxl
-
-# Modular X: mask for architectures on which they aren't available
-video_cards_newport
 
 # Diego Pettenò <flameeyes@gentoo.org> (4 Jan 2007)
 # Unmask the flags for PHP that are available only on x86

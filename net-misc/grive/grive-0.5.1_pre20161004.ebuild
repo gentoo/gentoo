@@ -7,7 +7,7 @@ inherit cmake-utils
 
 if [[ ${PV} = *9999 ]]; then
 	inherit git-2
-	EGIT_REPO_URI="git://github.com/vitalif/${PN}2.git"
+	EGIT_REPO_URI="https://github.com/vitalif/${PN}2.git"
 else
 	inherit vcs-snapshot
 	COMMIT="7bbb01c3014cc996ec24a7e5c0684f24b604b735"

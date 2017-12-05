@@ -10,7 +10,7 @@ SRC_URI="http://www.introversion.co.uk/darwinia/downloads/${PN}2-${PV}.sh"
 
 LICENSE="Introversion"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
 RESTRICT="mirror strip"
 

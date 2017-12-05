@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -11,7 +11,7 @@ AUTOTOOLS_IN_SOURCE_BUILD="1"
 if [ ${PV} == "9999" ] ; then
 	inherit git-r3 linux-mod
 	AUTOTOOLS_AUTORECONF="1"
-	EGIT_REPO_URI="git://github.com/zfsonlinux/${PN}.git"
+	EGIT_REPO_URI="https://github.com/zfsonlinux/${PN}.git"
 else
 	SRC_URI="https://github.com/zfsonlinux/${PN}/releases/download/${P}/${P}.tar.gz
 		https://dev.gentoo.org/~ryao/dist/${P}-patches-p${PR#r}.tar.xz"
@@ -37,7 +37,10 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 "
 
+# Adding glibc >= 2.25 blocker for ZFS versions lower
+# than 0.7.0, due to bug 617628.
 RDEPEND="${COMMON_DEPEND}
+	!>=sys-libs/glibc-2.25
 	!=sys-apps/grep-2.13*
 	!kernel-builtin? (
 		=sys-fs/zfs-kmod-${PV}*

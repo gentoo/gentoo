@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -46,6 +46,9 @@ src_prepare() {
 		"${FILESDIR}/${PV}-r1-cxxlinkage.patch" \
 		"${FILESDIR}/${PV}-mariadb-dynamic-array.patch" \
 		"${FILESDIR}/${PV}-my_malloc.patch"
+
+	# Fix undefined references due to standards change
+	append-cflags -std=gnu89
 }
 
 multilib_src_configure() {

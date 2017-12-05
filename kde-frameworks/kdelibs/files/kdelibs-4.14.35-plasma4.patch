@@ -1,0 +1,54 @@
+commit 8a9ec27390a9df359343d1d3537b52e16f680c25
+Author: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date:   Sun Jul 23 01:02:08 2017 +0200
+
+    Make Plasma-4 support optional (default on)
+    
+    This adds a new option WITH_PLASMA4SUPPORT.
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d7caade3cf..8e7759ef0d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -51,6 +51,9 @@ option(WITH_KDEWEBKIT "Enables the deprecated kdewebkit and kdewebkit-widgets" "
+ ############### Give the user the option to build without qt3support dependency ###############
+ option(WITH_KDE3SUPPORT "Enables the deprecated kde3support" "ON")
+ 
++############### Give the user the option to build without Plasma-4 support ###############
++option(WITH_PLASMA4SUPPORT "Enables the deprecated Plasma-4 Workspace support" "ON")
++
+ ############### Load the CTest options ###############
+ # CTestCustom.cmake has to be in the CTEST_BINARY_DIR.
+ # in the KDE build system, this is the same as CMAKE_BINARY_DIR.
+@@ -358,9 +361,9 @@ endif(NOT WINCE)
+ add_subdirectory( dnssd )
+ add_subdirectory( kross )
+ add_subdirectory( security )
+-if(NOT WINCE)
++if(NOT WINCE AND WITH_PLASMA4SUPPORT)
+ add_subdirectory( plasma )
+-endif(NOT WINCE)
++endif(NOT WINCE AND WITH_PLASMA4SUPPORT)
+ add_subdirectory( kunitconversion )
+ if(WITH_KDEWEBKIT)
+ add_subdirectory( kdewebkit )
+diff --git a/includes/CMakeLists.txt b/includes/CMakeLists.txt
+index cdf014320e..44f3fdd6e2 100644
+--- a/includes/CMakeLists.txt
++++ b/includes/CMakeLists.txt
+@@ -1051,6 +1051,7 @@ install(FILES
+ DESTINATION ${INCLUDE_INSTALL_DIR}/KDE/Nepomuk/Vocabulary COMPONENT Devel)
+ 
+ 
++if(WITH_PLASMA4SUPPORT)
+ install(FILES
+   Plasma/AbstractDialogManager
+   Plasma/AbstractRunner
+@@ -1145,6 +1146,7 @@ install( FILES
+   Plasma/AnimationDriver
+ DESTINATION ${INCLUDE_INSTALL_DIR}/KDE/Plasma COMPONENT Devel)
+ endif(NOT KDE_NO_DEPRECATED)
++endif(WITH_PLASMA4SUPPORT)
+ 
+ 
+ install(FILES

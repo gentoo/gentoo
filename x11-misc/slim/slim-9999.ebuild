@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 inherit cmake-utils pam eutils systemd versionator
 
 if [[ ${PV} = 9999* ]]; then
-	EGIT_REPO_URI="git://github.com/axs-gentoo/slim-git.git"
+	EGIT_REPO_URI="https://github.com/axs-gentoo/slim-git.git"
 	inherit git-r3
 	KEYWORDS=""
 else
@@ -38,9 +38,13 @@ DEPEND="${RDEPEND}
 	x11-proto/xproto"
 PDEPEND="branding? ( >=x11-themes/slim-themes-1.2.3a-r3 )"
 
-src_prepare() {
+PATCHES=(
 	# Our Gentoo-specific config changes
-	epatch "${FILESDIR}"/${P}-config.diff
+	"${FILESDIR}"/${P}-config.diff
+)
+
+src_prepare() {
+	cmake-utils_src_prepare
 
 	if use elibc_FreeBSD; then
 		sed -i -e 's/"-DHAVE_SHADOW"/"-DNEEDS_BASENAME"/' CMakeLists.txt \
@@ -54,7 +58,7 @@ src_prepare() {
 }
 
 src_configure() {
-	mycmakeargs=(
+	local mycmakeargs=(
 		$(cmake-utils_use pam USE_PAM)
 		$(cmake-utils_use consolekit USE_CONSOLEKIT)
 	)

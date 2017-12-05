@@ -11,7 +11,7 @@ SRC_URI="mirror://idsoftware/quake3/linux/linuxq3apoint-1.32b-3.x86.run
 
 LICENSE="Q3AEULA GPL-2" #gpl for init script bug #425942
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE="cdinstall dedicated teamarena"
 RESTRICT="strip"
 

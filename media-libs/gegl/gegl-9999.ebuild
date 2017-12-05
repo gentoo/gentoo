@@ -1,12 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
 PYTHON_COMPAT=( python2_7 )
 
 # vala and introspection support is broken, bug #468208
-VALA_MIN_API_VERSION=0.20
 VALA_USE_DEPEND=vapigen
 
 inherit versionator gnome2-utils eutils autotools python-any-r1 vala
@@ -26,18 +24,18 @@ HOMEPAGE="http://www.gegl.org/"
 LICENSE="|| ( GPL-3 LGPL-3 )"
 SLOT="0.3"
 
-IUSE="cairo cpu_flags_x86_mmx cpu_flags_x86_sse debug ffmpeg +introspection jpeg jpeg2k lcms lensfun libav openexr png raw sdl svg test tiff umfpack vala v4l webp"
+IUSE="cairo cpu_flags_x86_mmx cpu_flags_x86_sse debug ffmpeg +introspection jpeg2k lcms lensfun libav openexr raw sdl svg test tiff umfpack vala v4l webp"
 REQUIRED_USE="
 	svg? ( cairo )
 	vala? ( introspection )
 "
 
 RDEPEND="
-	>=dev-libs/glib-2.36:2
+	>=dev-libs/glib-2.44:2
 	dev-libs/json-glib
-	>=media-libs/babl-0.1.14
+	>=media-libs/babl-0.1.30
 	sys-libs/zlib
-	>=x11-libs/gdk-pixbuf-2.18:2
+	>=x11-libs/gdk-pixbuf-2.32:2
 	x11-libs/pango
 
 	cairo? ( x11-libs/cairo )
@@ -45,14 +43,14 @@ RDEPEND="
 		libav? ( media-video/libav:0= )
 		!libav? ( media-video/ffmpeg:0= )
 	)
-	introspection? ( >=dev-libs/gobject-introspection-1.32 )
-	jpeg? ( virtual/jpeg:0= )
+	introspection? ( >=dev-libs/gobject-introspection-1.32:= )
+	virtual/jpeg:0=
 	jpeg2k? ( >=media-libs/jasper-1.900.1:= )
 	lcms? ( >=media-libs/lcms-2.2:2 )
 	lensfun? ( >=media-libs/lensfun-0.2.5 )
 	openexr? ( media-libs/openexr:= )
-	png? ( media-libs/libpng:0= )
-	raw? ( >=media-libs/libraw-0.15.4 )
+	media-libs/libpng:0=
+	raw? ( >=media-libs/libraw-0.15.4:0= )
 	sdl? ( media-libs/libsdl )
 	svg? ( >=gnome-base/librsvg-2.14:2 )
 	tiff? ( >=media-libs/tiff-4:0 )
@@ -86,14 +84,14 @@ src_prepare() {
 		sed -i -e 's/#ifdef __APPLE__/#if 0/' gegl/opencl/* || die
 	fi
 
-	#epatch "${FILESDIR}"/${P}-g_log_domain.patch
-
 	# commit 7c78497b : tests that use gegl.png are broken on non-amd64
 	sed -e '/clones.xml/d' \
 		-e '/composite-transform.xml/d' \
 		-i tests/compositions/Makefile.am || die
 
 	eautoreconf
+
+	gnome2_environment_reset
 
 	use vala && vala_src_prepare
 }
@@ -145,14 +143,12 @@ src_configure() {
 		$(use_with ffmpeg libavformat) \
 		--without-gexiv2 \
 		--without-graphviz \
-		$(use_with jpeg libjpeg) \
 		$(use_with jpeg2k jasper) \
 		$(use_with lcms) \
 		$(use_with lensfun) \
 		--without-lua \
 		--without-mrg \
 		$(use_with openexr) \
-		$(use_with png libpng) \
 		$(use_with raw libraw) \
 		$(use_with sdl) \
 		$(use_with svg librsvg) \
@@ -165,13 +161,7 @@ src_configure() {
 		$(use_with webp)
 }
 
-src_test() {
-	gnome2_environment_reset  # sandbox issues
-	default
-}
-
 src_compile() {
-	gnome2_environment_reset  # sandbox issues (bug #396687)
 	default
 
 	[[ ${PV} == *9999* ]] && emake ./ChangeLog  # "./" prevents "Circular ChangeLog <- ChangeLog dependency dropped."

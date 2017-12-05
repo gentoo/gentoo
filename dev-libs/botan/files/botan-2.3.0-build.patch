@@ -1,0 +1,48 @@
+From 9e28eac720176ecb9b784510d352aa0ac38d0b56 Mon Sep 17 00:00:00 2001
+From: Jack Lloyd <jack@randombit.net>
+Date: Wed, 4 Oct 2017 13:59:21 -0400
+Subject: [PATCH] Add limits.h header for INT_MAX
+
+Gentoo bug https://bugs.gentoo.org/633468
+---
+ src/lib/prov/openssl/openssl_mode.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/lib/prov/openssl/openssl_mode.cpp b/src/lib/prov/openssl/openssl_mode.cpp
+index 9580bc9c5..fabaccb18 100644
+--- a/src/lib/prov/openssl/openssl_mode.cpp
++++ b/src/lib/prov/openssl/openssl_mode.cpp
+@@ -10,6 +10,7 @@
+ #include <botan/internal/rounding.h>
+ #include <botan/internal/openssl.h>
+ #include <openssl/evp.h>
++#include <limits.h>
+ 
+ namespace Botan {
+ 
+From 8526077c273c752661786e0ef5d9f7b945c83931 Mon Sep 17 00:00:00 2001
+From: Alon Bar-Lev <alon.barlev@gmail.com>
+Date: Fri, 13 Oct 2017 19:34:25 +0300
+Subject: [PATCH] Add limits.h header for INT_MAX
+
+Gentoo-Bug: https://bugs.gentoo.org/633468
+Signed-off-by: Alon Bar-Lev <alon.barlev@gmail.com>
+---
+ src/lib/prov/openssl/openssl_rsa.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/lib/prov/openssl/openssl_rsa.cpp b/src/lib/prov/openssl/openssl_rsa.cpp
+index fae869b..ab5ac64 100644
+--- a/src/lib/prov/openssl/openssl_rsa.cpp
++++ b/src/lib/prov/openssl/openssl_rsa.cpp
+@@ -22,6 +22,7 @@
+ #include <openssl/x509.h>
+ #include <openssl/err.h>
+ #include <openssl/rand.h>
++#include <limits.h>
+ 
+ namespace Botan {
+ 
+-- 
+2.13.6
+

@@ -1,7 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
+
+inherit eutils opam
 
 DESCRIPTION="A Yojson codec generator for OCaml"
 HOMEPAGE="https://github.com/whitequark/ppx_deriving_yojson/"
@@ -25,6 +27,10 @@ DEPEND="${DEPEND}
 	dev-ml/ocamlbuild
 	test? ( dev-ml/ounit dev-ml/ppx_import )"
 
+src_prepare() {
+	has_version '>=dev-lang/ocaml-4.05_rc' && epatch "${FILESDIR}/ocaml405.patch"
+}
+
 src_compile() {
 	cp pkg/META.in pkg/META
 	ocaml pkg/build.ml \
@@ -35,13 +41,4 @@ src_compile() {
 
 src_test() {
 	ocamlbuild -j 0 -use-ocamlfind -classic-display src_test/test_ppx_yojson.byte -- || die
-}
-
-src_install() {
-	opam-installer -i \
-		--prefix="${ED}/usr" \
-		--libdir="${D}/$(ocamlc -where)" \
-		--docdir="${T}/dontinstallit" \
-		${PN}.install || die
-	dodoc CHANGELOG.md README.md
 }

@@ -1,6 +1,38 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
+media-libs/mesa vulkan
+
+# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Requires USE=opencl that is masked in this profile.
+net-misc/bfgminer adl lm_sensors
+
+# Michał Górny <mgorny@gentoo.org> (28 Jun 2017)
+# app-misc/dtach is not keyworded, and tests are restricted anyway, so
+# no point in pursuing it right now.
+app-shells/bash-completion test
+
+# Mart Raudsepp <leio@gentoo.org> (27 May 2017)
+# app-pda/libimobiledevice, app-pda/libplist and co not tested
+sys-power/upower ios
+sys-power/upower-pm-utils ios
+gnome-base/gvfs ios
+
+# Mart Raudsepp <leio@gentoo.org> (27 May 2017)
+# dev-libs/libgdata and net-libs/gnome-online-accounts not tested
+gnome-base/gvfs google
+
+# Jason Zaman <perfinion@gentoo.org> (09 May 2017)
+# x11-libs/libXpresent is not keyworded on mips
+xfce-base/xfwm4 xpresent
+
+# Brian Dolbec <dolsen@gentoo.org> (21 Mar 2017)
+# This is masked as mongo-db needed for bson use flag
+# which is not keyworded on many arches.
+app-portage/g-sorcery bson
+
 # Mart Raudsepp <leio@gentoo.org> (07 Feb 2017)
 # dev-python/gmpy fails tests about sizeof (conch), bug 608496
 # dev-python/attrs fails tests on slow mips, couldn't test service_identity test path (crypt), bug 608570
@@ -61,7 +93,7 @@ x11-libs/wxGTK webkit
 
 # Markos Chandras <hwoarang@gentoo.org> (05 Jan 2014)
 # Perl is heavily unkeyworded on MIPS. See 497068
-dev-vcs/git mediawiki
+dev-vcs/git mediawiki mediawiki-experimental
 
 # Sergey Popov <pinkbyte@gentoo.org> (02 Sep 2013)
 # Not tested

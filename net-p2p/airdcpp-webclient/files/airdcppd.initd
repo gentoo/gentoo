@@ -1,10 +1,10 @@
 #!/sbin/openrc-run
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 AIRDCPPD_USER="${AIRDCPPD_USER:-${RC_SVCNAME}}"
 AIRDCPPD_GROUP="${AIRDCPPD_GROUP:-${RC_SVCNAME}}"
-AIRDCPPD_UMASK="${SYNCTHING_UMASK:-007}"
+AIRDCPPD_UMASK="${AIRDCPPD_UMASK:-007}"
 AIRDCPPD_HOME="$(getent passwd "${AIRDCPPD_USER}" | cut -d: -f6)"
 
 command="/usr/bin/airdcppd"

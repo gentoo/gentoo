@@ -1,0 +1,32 @@
+From f9bf1ccb27ebcfce00e7a6d467bc0e1b5ee9555e Mon Sep 17 00:00:00 2001
+From: Ashesh Vashi <ashesh.vashi@enterprisedb.com>
+Date: Wed, 1 Apr 2015 15:24:11 +0530
+Subject: [PATCH] Fixed a bug in DBconn::GetLastError() function.
+
+pgAgent was crashing, while removing the trailing new-lines from the
+empty error message string (Reported by: Thomas Krennwallner)
+---
+ connection.cpp | 10 +---------
+ 1 file changed, 1 insertion(+), 9 deletions(-)
+
+diff --git a/connection.cpp b/connection.cpp
+index b7623e6..f2213bd 100644
+--- a/connection.cpp
++++ b/connection.cpp
+@@ -313,15 +313,7 @@ int DBconn::ExecuteVoid(const wxString &query)
+ 
+ wxString DBconn::GetLastError()
+ {
+-	// Return the last error message, minus any trailing line ends
+-	if (lastError.substr(lastError.length() - 2, 2) == wxT("\r\n")) // DOS
+-		return lastError.substr(0, lastError.length() - 2);
+-	else if (lastError.substr(lastError.length() - 1, 1) == wxT("\n")) // Unix
+-		return lastError.substr(0, lastError.length() - 1);
+-	else if (lastError.substr(lastError.length() - 1, 1) == wxT("\r")) // Mac
+-		return lastError.substr(0, lastError.length() - 1);
+-	else
+-		return lastError;
++	return lastError.Trim(true);
+ }
+ 
+ ///////////////////////////////////////////////////////7

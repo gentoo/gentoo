@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # prefix USE flag should always be unmasked in prefix profiles
@@ -17,10 +17,6 @@ pam
 
 # USE=udev just does not make sense in Gentoo Prefix. bug 293480
 udev
-
-# The JRuby stack adds *alot* of non-tested ebuilds. If someone has time and
-# motivation, please look into porting this to Gentoo Prefix. bug 302563
-ruby_targets_jruby
 
 # suid requires root privilege, which is not support by prefix in general
 # one example: bug 447340.
