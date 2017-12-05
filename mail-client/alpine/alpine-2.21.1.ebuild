@@ -63,13 +63,13 @@ src_configure() {
 }
 
 src_compile() {
-	emake -j1 AR=$(tc-getAR)
+	emake AR=$(tc-getAR)
 }
 
 src_install() {
 	if use onlyalpine ; then
 		dobin alpine/alpine
-		doman doc/alpine.1
+		doman doc/man1/alpine.1
 	else
 		emake DESTDIR="${D}" install
 		doman doc/man1/*.1
