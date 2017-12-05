@@ -1,27 +1,24 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=2
 inherit eutils
 
-IUSE=""
-
-MY_P=${PN}${PV}
-S=${WORKDIR}/${MY_P}
 DESCRIPTION="dockapp for checking up to 7 pop3 accounts"
-HOMEPAGE="http://wmpop3lb.jourdain.org"
-SRC_URI="http://lbj.free.fr/wmpop3/${MY_P}.tar.gz"
+HOMEPAGE="http://www.dockapps.net/wmpop3lb"
+SRC_URI="http://www.dockapps.net/download/${P/-}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="amd64 ~sparc x86"
+IUSE=""
 
 RDEPEND="x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXpm"
-DEPEND="${RDEPEND}
-	x11-proto/xextproto
-	>=sys-apps/sed-4"
+DEPEND="${RDEPEND}"
+
+S=${WORKDIR}/${P/-}
 
 src_prepare() {
 	#Honour Gentoo CFLAGS
