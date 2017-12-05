@@ -2998,7 +2998,7 @@ dev-db/oracle-instantclient-basic 10.2.0.3-r1 11.2.0.2 11.2.0.3 11.2.0.4 12: Tra
 dev-db/oracle-instantclient-jdbc 10.2.0.3 11.2.0.2 11.2.0.3 11.2.0.4 12: Transition package moving to single dev-db/oracle-instantclient package
 dev-db/oracle-instantclient-odbc 11.2.0.2-r1 11.2.0.3 11.2.0.4 12: Transition package moving to single dev-db/oracle-instantclient package
 dev-db/oracle-instantclient-sqlplus 10.2.0.3 11.2.0.2 11.2.0.3 11.2.0.3-r1 11.2.0.4 12: Transition package moving to single dev-db/oracle-instantclient package
-dev-db/percona-server 5.6.37.82.2-r1: An enhanced, drop-in replacement for MySQL from the Percona team
+dev-db/percona-server 5.6.37.82.2-r2: An enhanced, drop-in replacement for MySQL from the Percona team
 dev-db/percona-toolkit 2.2.11 2.2.17 2.2.19 2.2.20: Advanced command-line tools to perform a variety of MySQL and system tasks
 dev-db/percona-xtrabackup 2.4.7 2.4.8 2.4.9: Hot backup utility for MySQL based servers
 dev-db/pg_activity 1.2.0: Realtime PostgreSQL database server monitoring tool
@@ -5686,6 +5686,8 @@ dev-perl/Crypt-IDEA 1.100.0: Parse and save PGP packet streams
 dev-perl/Crypt-OpenPGP 1.120.0: Pure-Perl OpenPGP-compatible PGP implementation
 dev-perl/Crypt-OpenSSL-Bignum 0.40.0-r2 0.70.0 0.80.0 0.80.0-r1: OpenSSL's multiprecision integer arithmetic
 dev-perl/Crypt-OpenSSL-DSA 0.150.0-r1 0.180.0 0.190.0: Digital Signature Algorithm using OpenSSL
+dev-perl/Crypt-OpenSSL-EC 1.310.0: Perl extension for OpenSSL EC (Elliptic Curves) library
+dev-perl/Crypt-OpenSSL-ECDSA 0.80.0: OpenSSL ECDSA (Elliptic Curve Digital Signature Algorithm) Perl extension
 dev-perl/Crypt-OpenSSL-RSA 0.280.0-r3: Crypt::OpenSSL::RSA module for perl
 dev-perl/Crypt-OpenSSL-Random 0.40.0-r2 0.110.0: OpenSSL/LibreSSL pseudo-random number generator access
 dev-perl/Crypt-PasswdMD5 1.400.0: Provides interoperable MD5-based crypt() functions
@@ -6353,12 +6355,12 @@ dev-perl/Net-DNS 1.40.0 1.70.0 1.80.0 1.90.0 1.100.0 1.130.0: Perl Interface to 
 dev-perl/Net-DNS-Async 1.70.0-r1: Asynchronous DNS helper for high volume applications
 dev-perl/Net-DNS-Resolver-Mock 1.201.710.310: Mock a DNS Resolver object for testing
 dev-perl/Net-DNS-Resolver-Programmable 0.3.0-r1 0.9.0: programmable DNS resolver class for offline emulation of DNS
-dev-perl/Net-DNS-SEC 1.20.0: DNSSEC extensions to Net::DNS
+dev-perl/Net-DNS-SEC 1.20.0 1.30.0: DNSSEC extensions to Net::DNS
 dev-perl/Net-Daemon 0.480.0-r1 0.480.0-r2: Abstract base class for portable servers
-dev-perl/Net-Domain-TLD 1.740.0: Current top level domain names including new ICANN additions and ccTLDs
+dev-perl/Net-Domain-TLD 1.740.0 1.750.0: Current top level domain names including new ICANN additions and ccTLDs
 dev-perl/Net-FreeDB 0.80.0-r1 0.100.0: OOP interface to the FreeDB database
 dev-perl/Net-Google-SafeBrowsing-Blocklist 1.40.0-r1: Query a Google SafeBrowsing table
-dev-perl/Net-HTTP 6.90.0 6.120.0 6.130.0 6.150.0 6.160.0: Low-level HTTP connection (client)
+dev-perl/Net-HTTP 6.90.0 6.120.0 6.130.0 6.150.0 6.160.0 6.170.0: Low-level HTTP connection (client)
 dev-perl/Net-IDN-Encode 2.300.0 2.301.0 2.302.0 2.303.0 2.400.0: Internationalizing Domain Names in Applications (IDNA)
 dev-perl/Net-IMAP-Simple 1.220.600 1.220.900: Perl extension for simple IMAP account handling
 dev-perl/Net-IMAP-Simple-SSL 1.300.0-r1: SSL support for Net::IMAP::Simple
@@ -6371,7 +6373,7 @@ dev-perl/Net-Ident 1.240.0: lookup the username on the remote end of a TCP/IP co
 dev-perl/Net-Jabber 2.0.0-r1: Jabber Perl library
 dev-perl/Net-Kismet 0.04-r1: Module for writing perl Kismet clients
 dev-perl/Net-LDAP-Server 0.430.0: LDAP server side protocol handling
-dev-perl/Net-LDAPapi 3.0.4: Perl5 Module Supporting LDAP API
+dev-perl/Net-LDAPapi 3.0.4 3.0.5: Perl5 Module Supporting LDAP API
 dev-perl/Net-LibIDN 0.120.0-r1: Perl bindings for GNU Libidn
 dev-perl/Net-LibIDN2 1.0.0: Perl bindings for GNU Libidn2
 dev-perl/Net-Netmask 1.902.200: Parse, manipulate and lookup IP network blocks
@@ -11495,7 +11497,7 @@ games-puzzle/triptych-demo 0: fast-paced tetris-like puzzler
 games-puzzle/twindistress 1.1.0: Match and remove all of the blocks before time runs out
 games-puzzle/wakkabox 1.1.0: A simple block-pushing game
 games-puzzle/wizznic 306 369: Block-clearing puzzle game
-games-puzzle/wmpuzzle 0.5.2: wmpuzzle provides a 4x4 puzzle on a 64x64 mini window
+games-puzzle/wmpuzzle 0.5.2-r1: a 4x4 puzzle on a 64x64 mini window
 games-puzzle/world-of-goo 1.41-r1: A puzzle game with a strong emphasis on physics
 games-puzzle/world-of-goo-demo 1.41-r1: A puzzle game with a strong emphasis on physics
 games-puzzle/xblockout 1.1.6: X Window block dropping game in 3 Dimension
@@ -19238,7 +19240,7 @@ x11-plugins/wmbio 1.02: A Window Maker applet that shows your biorhythm
 x11-plugins/wmblob 1.0.3 1.0.4: a fancy but useless dockapp with moving blobs
 x11-plugins/wmbluecpu 0.6: a blue dockapp to monitor CPU usage
 x11-plugins/wmbutton 0.7.0 0.7.1: a dockapp application that displays nine configurable buttons
-x11-plugins/wmcalc 0.4 0.5 0.6: A WindowMaker DockApp calculator
+x11-plugins/wmcalc 0.6: A WindowMaker DockApp calculator
 x11-plugins/wmcalendar 0.5.2 0.5.2-r1: a calendar dockapp
 x11-plugins/wmcdplay 1.0_beta1 1.1: CD player applet for WindowMaker
 x11-plugins/wmcliphist 2.1 2.1-r1 2.1-r2: Dockable clipboard history application for Window Maker
@@ -19252,7 +19254,7 @@ x11-plugins/wmcpuload 1.1.0_pre5 1.1.1: a dockapp for monitoring CPU usage with 
 x11-plugins/wmcube 0.98 1.0.2: a dockapp cpu monitor with spinning 3d objects
 x11-plugins/wmdate 0.7-r1: yet another date-display dock application
 x11-plugins/wmdf 0.1.6-r1: An app to monitor disk space on partitions
-x11-plugins/wmdiskmon 0.0.1 0.0.2: a dockapp to display disk space usage
+x11-plugins/wmdiskmon 0.0.2: a dockapp to display disk space usage
 x11-plugins/wmdl 1.4.1: WindowMaker Doom Load dockapp
 x11-plugins/wmdots 0.2_beta: multishape 3d rotating dots
 x11-plugins/wmdrawer 0.10.5-r2 0.10.5-r3: dockapp which provides a drawer (retractable button bar) to launch applications
@@ -19262,15 +19264,15 @@ x11-plugins/wmforkplop 0.9.3 0.9.3-r1: monitors the forking activity of the kern
 x11-plugins/wmfortune 0.241: a dockapp showing fortune-mod messages
 x11-plugins/wmfrog 0.2.0-r1 0.3.1: a weather application, it shows the weather in a graphical way
 x11-plugins/wmfsm 0.36: dockapp for monitoring filesystem usage
-x11-plugins/wmget 0.6.0 0.6.1: a libcurl based dockapp for automated downloads
+x11-plugins/wmget 0.6.1: a libcurl based dockapp for automated downloads
 x11-plugins/wmgrabimage 0.72-r1: wmGrabImage grabs an image from the WWW and displays it
-x11-plugins/wmgtemp 1.0-r1 1.2: CPU and SYS temperature dockapp
-x11-plugins/wmhdplop 0.9.9-r2 0.9.10: a dockapp for monitoring disk activities with fancy visuals
-x11-plugins/wmifinfo 0.09 0.10: a dockapp for monitoring network interfaces
+x11-plugins/wmgtemp 1.2: CPU and SYS temperature dockapp
+x11-plugins/wmhdplop 0.9.10: a dockapp for monitoring disk activities with fancy visuals
+x11-plugins/wmifinfo 0.10: a dockapp for monitoring network interfaces
 x11-plugins/wmifs 1.8: Network monitoring dockapp
 x11-plugins/wminet 3.0.0-r1: dockapp for monitoring internet connections to and from your computer
 x11-plugins/wmitime 0.5: Overglorified clock dockapp w/time, date, and internet time
-x11-plugins/wmix 3.1-r1 3.2: Dockapp mixer for OSS or ALSA
+x11-plugins/wmix 3.2 3.3: Dockapp mixer for OSS or ALSA
 x11-plugins/wmjsql 0.5: MySQL monitor dockapp
 x11-plugins/wmlaptop 1.4: Dockapp for laptop users
 x11-plugins/wmlife 1.0.1: dockapp running Conway's Game of Life (and program launcher)
@@ -19284,7 +19286,7 @@ x11-plugins/wmmemload 0.1.8: dockapp that displays memory and swap space usage
 x11-plugins/wmmemmon 1.0.2_pre2: a dockapp for monitoring memory and swap
 x11-plugins/wmmenu 1.3-r1: a popup menu of icons like in AfterStep, as a dockapp
 x11-plugins/wmmisc 1.1: a monitoring dockapp for system load, user amount, fork amount and processes
-x11-plugins/wmmixer 1.7 1.8: A mixer designed for WindowMaker
+x11-plugins/wmmixer 1.8: A mixer designed for WindowMaker
 x11-plugins/wmmldonkey 0.003-r1: wmmsg is a dockapp to show the up and downloadrate from your mldonkey
 x11-plugins/wmmon 1.2_beta1 1.3: Dockable system resources monitor applet for WindowMaker
 x11-plugins/wmmon+smp 1.0-r2: Dockapp CPU monitor resembling Xosview, support for smp
