@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -22,7 +22,7 @@ RDEPEND=">=media-libs/raul-0.7.0
 	>=dev-cpp/glibmm-2.14:2
 	>=dev-cpp/libglademm-2.6.0:2.4
 	dev-cpp/libgnomecanvasmm:2.6
-	>=media-sound/jack-audio-connection-kit-0.107
+	virtual/jack
 	alsa? ( media-libs/alsa-lib )
 	lash? ( dev-libs/dbus-glib )"
 DEPEND="${RDEPEND}
