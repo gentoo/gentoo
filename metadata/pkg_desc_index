@@ -2861,7 +2861,7 @@ dev-ada/gps 2017: The GNAT Programming Studio
 dev-ada/gps-bin 2016: The GNAT Programming Studio
 dev-ada/gtkada 2016 2017: A complete Ada graphical toolkit
 dev-ada/libadalang 2017: high performance semantic engine for the Ada programming language
-dev-ada/libgpr 2016 2017: Multi-Language Management
+dev-ada/libgpr 2016 2017: Ada library to handle GPRbuild project files
 dev-ada/xmlada 2016 2017: Set of modules that provide a simple manipulation of XML streams
 dev-cpp/ETL 0.04.15: ETL is a multi-platform class and template library
 dev-cpp/antlr-cpp 2.7.7 2.7.7-r1 3.5.2 3.5.2-r1: The ANTLR 3 C++ Runtime
@@ -17532,7 +17532,7 @@ sys-boot/yaboot-static 1.3.14-r1 1.3.16-r1 1.3.17-r1: Static yaboot ppc boot loa
 sys-cluster/ampi 0_pre20140616: MPI library for algorithmic differentiation
 sys-cluster/c3 4.0.1: The Cluster Command and Control (C3) tool suite
 sys-cluster/ccs 2.03.09: cluster configuration system to manage the cluster config file
-sys-cluster/ceph 10.2.3-r2 10.2.7-r1 10.2.9 10.2.9-r1 10.2.9-r2 10.2.9-r3 10.2.10 12.2.1: Ceph distributed filesystem
+sys-cluster/ceph 10.2.3-r2 10.2.7-r1 10.2.9 10.2.9-r1 10.2.9-r2 10.2.9-r3 10.2.10 12.2.1 12.2.2: Ceph distributed filesystem
 sys-cluster/charliecloud 0.2.3_pre20171121 9999: Lightweight user-defined software stacks for high-performance computing
 sys-cluster/charm 6.5.1-r1 6.5.1-r2 6.5.1-r3 6.6.0 6.6.0-r1 6.6.1 6.7.1: Message-passing parallel language and runtime system
 sys-cluster/charmdebug 6.2.0-r1: A debugger for Charm++ applications
