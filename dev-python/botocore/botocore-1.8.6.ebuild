@@ -43,7 +43,7 @@ python_compile_all() {
 }
 
 python_test() {
-	nosetests -v tests/unit || die "tests failed under ${EPYTHON}"
+	nosetests -v tests/unit tests/functional || die "tests failed under ${EPYTHON}"
 }
 
 python_install_all() {
