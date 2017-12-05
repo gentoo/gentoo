@@ -46,6 +46,19 @@ amd64           default/linux/amd64/17.0/no-multilib/hardened/selinux   dev
 amd64           default/linux/amd64/17.0/systemd                        stable
 amd64           default/linux/amd64/17.0/x32                            dev
 
+# Experimental SYMLINK_LIB=no profiles (work-in-progress)
+# Run app-portage/unsymlink-lib *before* switching the profile.
+#amd64           default/linux/amd64/17.1                           exp
+#amd64           default/linux/amd64/17.1/selinux                   exp
+#amd64           default/linux/amd64/17.1/hardened                  exp
+#amd64           default/linux/amd64/17.1/desktop                   exp
+#amd64           default/linux/amd64/17.1/desktop/gnome             exp
+#amd64           default/linux/amd64/17.1/desktop/gnome/systemd     exp
+#amd64           default/linux/amd64/17.1/desktop/plasma            exp
+#amd64           default/linux/amd64/17.1/desktop/plasma/systemd    exp
+#amd64           default/linux/amd64/17.1/developer                 exp
+#amd64           default/linux/amd64/17.1/systemd                   exp
+
 # ARM Profiles
 arm             default/linux/arm/13.0                          stable
 arm             default/linux/arm/13.0/desktop                  dev
