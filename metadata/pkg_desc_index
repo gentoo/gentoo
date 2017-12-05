@@ -14169,7 +14169,7 @@ media-video/lsdvd 0.17: Utility for getting info out of DVDs
 media-video/luvcview 0.2.6: USB Video Class grabber
 media-video/lxdvdrip 1.77: Command line tool to automate the process of ripping and burning DVDs
 media-video/m2vrequantizer 0.0.2_pre20060306: Tool to requantize mpeg2 videos
-media-video/makemkv 1.10.7-r1: Tool for ripping and streaming Blu-ray, HD-DVD and DVD discs
+media-video/makemkv 1.10.8: Tool for ripping and streaming Blu-ray, HD-DVD and DVD discs
 media-video/matroxset 0.4: Matrox utility to switch output modes (activate tvout)
 media-video/maven-poke 0.0.1: Matrox utility to read and set maven registers (tune tvout)
 media-video/mediainfo 0.7.99 17.10: MediaInfo supplies technical and tag information about media files
