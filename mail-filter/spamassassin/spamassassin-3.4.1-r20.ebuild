@@ -148,7 +148,7 @@ src_install () {
 		dobin spamc/qmail-spamc
 	fi
 
-	ln -s mail/spamassassin "${ED}"/etc/spamassassin || die
+	dosym mail/spamassassin /etc/spamassassin
 
 	# Disable plugin by default
 	sed -i -e 's/^loadplugin/\#loadplugin/g' \
