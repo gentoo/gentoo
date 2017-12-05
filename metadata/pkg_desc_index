@@ -10460,7 +10460,7 @@ dev-util/docker-ls 0.2.1_p20161102 0.3.1: Tools for browsing and manipulating do
 dev-util/dogtail 0.9.9 0.9.10: GUI test tool and automation framework using accessibility framework
 dev-util/doxy-coverage 151229: Source Code Documentation Coverage Measurement
 dev-util/dput-ng 1.10: Next generation Debian package upload tool
-dev-util/drone 0.7.3 0.8.2: A Continuous Delivery platform built on Docker, written in Go
+dev-util/drone 0.7.3 0.8.2 0.8.3: A Continuous Delivery platform built on Docker, written in Go
 dev-util/drone-cli 0.7.0_p20170717 0.8.0: Command-line interface for Drone
 dev-util/drone-ui 0.6.0_rc1_pre20170412: React front-end for the Drone continuous integration server
 dev-util/dropwatch 1.4-r1 1.4_p20150706: A utility to interface to the kernel to monitor for dropped network packets
