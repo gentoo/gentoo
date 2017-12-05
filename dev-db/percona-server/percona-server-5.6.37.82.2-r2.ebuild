@@ -5,7 +5,7 @@ EAPI="6"
 MY_EXTRAS_VER="20171121-1518Z"
 SUBSLOT="18"
 PYTHON_COMPAT=( python2_7 )
-inherit linux-info python-any-r1 mysql-multilib-r1
+inherit linux-info python-any-r1 mysql-multilib-r1 toolchain-funcs
 
 IUSE="numa pam tokudb tokudb-backup-plugin"
 
@@ -53,6 +53,15 @@ PATCHES=(
 
 pkg_pretend() {
 	mysql-multilib-r1_pkg_pretend
+
+	if [[ ${MERGE_TYPE} != binary && tc-is-gcc ]]; then
+		if [[ $(gcc-major-version) -gt 6 ]]; then
+			# https://bugs.gentoo.org/639936
+			eerror "${P} is incompatible with >gcc-6.x."
+			eerror "Please use gcc-config or package.env file to switch to <gcc-7.x for this package."
+			die
+		fi
+	fi
 
 	if use numa; then
 		local CONFIG_CHECK="~NUMA"
@@ -196,8 +205,26 @@ multilib_src_test() {
 	pushd "${TESTDIR}" || die
 
 	# Set file limits higher so tests run
-	# Upper limit comes from parts.partition_* tests
-	ulimit -n 16500
+	if ! ulimit -n 16500 1>/dev/null 2>&1; then
+		# Upper limit comes from parts.partition_* tests
+		ewarn "For maximum test coverage please raise open file limit to 16500 (ulimit -n 16500) before calling the package manager."
+
+		if ! ulimit -n 4162 1>/dev/null 2>&1; then
+			# Medium limit comes from '[Warning] Buffered warning: Could not increase number of max_open_files to more than 3000 (request: 4162)'
+			ewarn "For medium test coverage please raise open file limit to 4162 (ulimit -n 4162) before calling the package manager."
+
+			if ! ulimit -n 3000 1>/dev/null 2>&1; then
+				ewarn "For minimum test coverage please raise open file limit to 3000 (ulimit -n 3000) before calling the package manager."
+			else
+				einfo "Will run test suite with open file limit set to 3000 (minimum test coverage)."
+			fi
+		else
+			einfo "Will run test suite with open file limit set to 4162 (medium test coverage)."
+		fi
+	else
+		einfo "Will run test suite with open file limit set to 16500 (best test coverage)."
+	fi
+
 	python_setup
 	# run mysql-test tests
 	perl mysql-test-run.pl --force --vardir="${T}/var-tests" \

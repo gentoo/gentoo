@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=2
@@ -6,7 +6,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Dockable keyboard layout switcher for Window Maker"
 HOMEPAGE="http://wmalms.tripod.com/#WMXKB"
-SRC_URI="mirror://gentoo/${P}.tar.gz"
+SRC_URI="http://wmalms.tripod.com/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
