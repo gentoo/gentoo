@@ -25,7 +25,10 @@ COMMON_DEPEND="numa? ( sys-process/numactl:= )
 
 DEPEND="${COMMON_DEPEND}
 	|| ( >=sys-devel/gcc-3.4.6 >=sys-devel/gcc-apple-4.0 )
-	test? ( $(python_gen_any_dep 'dev-python/mysql-python[${PYTHON_USEDEP}]') )"
+	test? (
+		$(python_gen_any_dep 'dev-python/mysql-python[${PYTHON_USEDEP}]')
+		dev-perl/JSON
+	)"
 RDEPEND="${COMMON_DEPEND}"
 
 REQUIRED_USE="tokudb-backup-plugin? ( tokudb ) tokudb? ( jemalloc !tcmalloc )"
@@ -193,7 +196,8 @@ multilib_src_test() {
 	pushd "${TESTDIR}" || die
 
 	# Set file limits higher so tests run
-	ulimit -n 3000
+	# Upper limit comes from parts.partition_* tests
+	ulimit -n 16500
 	python_setup
 	# run mysql-test tests
 	perl mysql-test-run.pl --force --vardir="${T}/var-tests" \
