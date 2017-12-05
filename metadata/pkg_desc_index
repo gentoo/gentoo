@@ -1392,9 +1392,9 @@ app-emulation/winetricks 20170823 99999999: Easy way to install DLLs needed to w
 app-emulation/x48 0.6.4 0.6.4-r1: HP48 Calculator Emulator
 app-emulation/xcpc 20070122: XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C.
 app-emulation/xe-guest-utilities 5.6.0_p595 6.1.0_p1033 6.2.0_p1120: XenServer Virtual Machine Tools
-app-emulation/xen 4.8.2-r2 4.9.0: The Xen virtual machine monitor
-app-emulation/xen-pvgrub 4.8.2-r1 4.9.0: allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
-app-emulation/xen-tools 4.8.2-r3 4.9.0: Xen tools including QEMU and xl
+app-emulation/xen 4.8.2-r2 4.8.2-r3 4.9.0 4.9.1: The Xen virtual machine monitor
+app-emulation/xen-pvgrub 4.8.2-r1 4.9.0 4.9.1: allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
+app-emulation/xen-tools 4.8.2-r3 4.9.0 4.9.1: Xen tools including QEMU and xl
 app-emulation/xtrs 4.9d-r4 4.9d-r5: Radio Shack TRS-80 emulator
 app-eselect/eselect-audicle 1.0.1: Manages the /usr/bin/audicle symlink
 app-eselect/eselect-awk 0.2: Manages the {,/usr}/bin/awk symlink
