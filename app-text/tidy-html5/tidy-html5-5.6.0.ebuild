@@ -7,7 +7,7 @@ inherit cmake-utils
 
 DESCRIPTION="Tidy the layout and correct errors in HTML, HTML5 and XML documents"
 HOMEPAGE="http://www.html-tidy.org/"
-SRC_URI="https://github.com/htacg/${PN}/archive/${PV}.zip -> ${P}.zip"
+SRC_URI="https://github.com/htacg/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
