@@ -2466,7 +2466,7 @@ app-text/tesseract 3.04.01 3.04.01-r1 3.05.00 3.05.01 4.00.00_alpha 9999: An OCR
 app-text/texi2html 5.0-r1: Perl script that converts Texinfo to HTML
 app-text/texlive 2015 2016 2017: A complete TeX distribution
 app-text/texlive-core 2012-r1 2012-r3 2013-r3 2014-r4 2015-r1 2016-r5 2017-r2: A complete TeX distribution
-app-text/tidy-html5 5.4.0: Tidy the layout and correct errors in HTML, HTML5 and XML documents
+app-text/tidy-html5 5.6.0: Tidy the layout and correct errors in HTML, HTML5 and XML documents
 app-text/tkinfo 2.8-r1: Info Browser in TK
 app-text/tkman 2.2-r1: TkMan man and info page browser
 app-text/tofrodos 1.7.12a: Utility that converts ASCII files between the MSDOS and the Unix format
