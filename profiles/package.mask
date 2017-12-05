@@ -29,6 +29,30 @@
 
 #--- END OF EXAMPLES ---
 
+# Bernard Cafarelli <voyageur@gentoo.org> (05 Dec 2017)
+# Dead Window Maker dockapps, dead upstreams and download links
+# (no release for more than 10 years)
+# Masked for removal in 30 days. Bug #639914
+x11-plugins/monto
+x11-plugins/wmbluecpu
+x11-plugins/wmcpu
+x11-plugins/wmdate
+x11-plugins/wmdf
+x11-plugins/wmdl
+x11-plugins/wmjsql
+x11-plugins/wmlpq
+x11-plugins/wmmemfree
+x11-plugins/wmmemmon
+x11-plugins/wmmldonkey
+x11-plugins/wmmsg
+x11-plugins/wmnetselect
+x11-plugins/wmpiki
+x11-plugins/wmsound
+x11-plugins/wmsvencd
+x11-plugins/wmsysmon
+x11-plugins/wmupmon
+x11-plugins/wmwave
+
 # Ian Whyman <thev00d00@gentoo.org> (04 Dec 2017)
 # Declared dead upstream. Masked for removal in 30 days
 # Please see net-misc/gerbera for a replacement.
