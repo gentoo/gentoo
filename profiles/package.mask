@@ -430,11 +430,6 @@ sys-devel/automake:1.6
 sys-devel/automake:1.7
 sys-devel/automake:1.8
 
-# Jonas Stein <jstein@gentoo.org> (17 Oct 2017)
-# dev-tex/texmfind was superseded by app-portage/pfl 
-# See also bug #634494. Masked for removal on 2017-11-30
-dev-tex/texmfind
-
 # Lars Wendler <polynomial-c@gentoo.org> (12 Oct 2017)
 # Dead upstream. No qt5 release. Use app-admin/keepassxc as drop-in
 # replacement which has very active upstream and regular releases.
