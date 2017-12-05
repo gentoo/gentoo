@@ -12720,7 +12720,7 @@ media-gfx/evoluspencil 2.0.5: A simple GUI prototyping tool to create mockups
 media-gfx/exact-image 0.8.1-r3: A fast, modern and generic image processing library
 media-gfx/exif 0.6.21: Small CLI util to show EXIF infos hidden in JPEG files
 media-gfx/exiftags 1.01: Extracts JPEG EXIF headers from digital camera photos
-media-gfx/exiv2 0.26_p20171104: EXIF, IPTC and XMP metadata C++ library and command line utility
+media-gfx/exiv2 0.26_p20171104 0.26_p20171104-r1: EXIF, IPTC and XMP metadata C++ library and command line utility
 media-gfx/farbfeld 2 3 9999: farbfeld simple image format tools
 media-gfx/fbgrab 1.0-r2 1.3: Framebuffer screenshot utility
 media-gfx/fbida 2.12 2.13-r1 2.14 9999: Image viewers for the framebuffer console (fbi) and X11 (ida)
