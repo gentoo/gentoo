@@ -88,6 +88,8 @@ src_prepare() {
 src_configure() {
 	filter-flags -fprefetch-loop-arrays
 	filter-mfpmath sse
+	# bug 639614
+	append-cxxflags -flifetime-dse=1 -fno-sized-deallocation -fno-delete-null-pointer-checks
 
 	econf \
 		--prefix=/usr/$(get_libdir)/firebird \
