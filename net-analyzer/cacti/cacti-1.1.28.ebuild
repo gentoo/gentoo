@@ -26,15 +26,6 @@ RDEPEND="
 	snmp? ( >=net-analyzer/net-snmp-5.2.0 )
 "
 
-src_prepare() {
-	default
-	sed -i -e \
-		's:$config\["library_path"\] . "/adodb/adodb.inc.php":"adodb/adodb.inc.php":' \
-		"${S}"/include/global.php || die
-
-	rm -rf lib/adodb || die # don't use bundled adodb
-}
-
 src_compile() { :; }
 
 src_install() {
