@@ -18396,7 +18396,7 @@ www-apps/nextcloud 11.0.4 11.0.5 12.0.2 12.0.3: Personal cloud that runs on your
 www-apps/nikola 7.8.8: A static website and blog generator
 www-apps/novnc 0.6.2 9999: noVNC is a VNC client implemented using HTML5 technologies
 www-apps/openwebstats 1.1: PHP stats app that reads Apache logs and imports the data into a MySQL database
-www-apps/otrs 5.0.23: OTRS is an Open source Ticket Request System
+www-apps/otrs 5.0.23 5.0.25: OTRS is an Open source Ticket Request System
 www-apps/owncloud 9.0.10 9.1.6 10.0.2 10.0.3: Web-based storage application where all your data is under your own control
 www-apps/ownpaste 0.2.2-r1 9999: Private pastebin (server-side implementation)
 www-apps/pcgi 2.0_alpha5: Jeff Bauer's Persistent CGI
