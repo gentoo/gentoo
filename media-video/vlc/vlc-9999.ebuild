@@ -29,15 +29,15 @@ HOMEPAGE="https://www.videolan.org/vlc/"
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/5-8" # vlc - vlccore
 
-IUSE="a52 aalib alsa altivec +audioqueue +avcodec +avformat bidi bluray cddb
-	chromaprint chromecast dbus dc1394 debug directfb directx dts dvb +dvbpsi dvd
+IUSE="a52 aalib alsa altivec aom archive +avcodec +avformat bidi bluray cddb
+	chromaprint chromecast dbus dc1394 debug directx dts dvb +dvbpsi dvd
 	dxva2 elibc_glibc +encode faad fdk fluidsynth +ffmpeg flac fontconfig +gcrypt
-	gme gnutls gstreamer httpd ieee1394 jack jpeg kate libass libav libcaca
-	libnotify +libsamplerate libtiger linsys libtar lirc live lua macosx-eyetv
+	gme gnutls gstreamer ieee1394 jack jpeg kate libass libav libcaca
+	libnotify +libsamplerate libtiger linsys libtar lirc live lua
 	macosx-notifications macosx-qtkit matroska cpu_flags_x86_mmx modplug mp3
-	mpeg mtp musepack ncurses neon ogg omxil opencv opengl optimisememory opus
-	png postproc projectm pulseaudio qt4 +qt5 rdp rtsp run-as-root samba
-	schroedinger sdl sdl-image sftp shout sid skins speex cpu_flags_x86_sse svg
+	mpeg mtp musepack ncurses neon nfs ogg omxil opencv opengl optimisememory opus
+	png postproc projectm pulseaudio +qt5 rdp rtsp run-as-root samba
+	schroedinger sdl-image sftp shout sid skins speex cpu_flags_x86_sse svg
 	+swscale taglib theora tremor truetype twolame udev upnp vaapi v4l vcd vdpau
 	vlm vnc vorbis vpx wma-fixed +X x264 x265 +xcb xml xv zeroconf zvbi
 "
@@ -49,14 +49,10 @@ REQUIRED_USE="
 	ffmpeg? ( avcodec avformat swscale )
 	fontconfig? ( truetype )
 	gnutls? ( gcrypt )
-	httpd? ( lua )
 	libcaca? ( X )
 	libtar? ( skins )
 	libtiger? ( kate )
-	qt4? ( X )
-	qt5? ( X )
-	sdl? ( X )
-	skins? ( truetype X xml || ( qt4 qt5 ) )
+	skins? ( qt5 truetype X xml )
 	vaapi? ( avcodec X )
 	vdpau? ( X )
 	vlm? ( encode )
@@ -70,6 +66,8 @@ RDEPEND="
 	a52? ( >=media-libs/a52dec-0.7.4-r3:0 )
 	aalib? ( media-libs/aalib:0 )
 	alsa? ( >=media-libs/alsa-lib-1.0.24:0 )
+	aom? ( media-libs/libaom:= )
+	archive? ( app-arch/libarchive:= )
 	avcodec? (
 		!libav? ( media-video/ffmpeg:0= )
 		libav? ( media-video/libav:0= )
@@ -85,7 +83,6 @@ RDEPEND="
 	chromecast? ( >=dev-libs/protobuf-2.5.0 )
 	dbus? ( >=sys-apps/dbus-1.6:0 )
 	dc1394? ( >=sys-libs/libraw1394-2.0.1:0 >=media-libs/libdc1394-2.1:2 )
-	directfb? ( dev-libs/DirectFB:0 sys-libs/zlib:0 )
 	dts? ( >=media-libs/libdca-0.0.5:0 )
 	dvbpsi? ( >=media-libs/libdvbpsi-1.2.0:0= )
 	dvd? ( >=media-libs/libdvdread-4.9:0 >=media-libs/libdvdnav-4.9:0 )
@@ -97,7 +94,7 @@ RDEPEND="
 	fontconfig? ( media-libs/fontconfig:1.0 )
 	gcrypt? ( >=dev-libs/libgcrypt-1.6.0:0= )
 	gme? ( media-libs/game-music-emu:0 )
-	gnutls? ( >=net-libs/gnutls-3.2.0:0 )
+	gnutls? ( net-libs/gnutls:0 )
 	gstreamer? ( >=media-libs/gst-plugins-base-1.4.5:1.0 )
 	ieee1394? ( >=sys-libs/libraw1394-2.0.1:0 >=sys-libs/libavc1394-0.5.3:0 )
 	jack? ( virtual/jack )
@@ -120,6 +117,7 @@ RDEPEND="
 	mtp? ( >=media-libs/libmtp-1:0 )
 	musepack? ( >=media-sound/musepack-tools-444:0 )
 	ncurses? ( sys-libs/ncurses:0=[unicode] )
+	nfs? ( >=net-fs/libnfs-0.10.0:= )
 	ogg? ( >=media-libs/libogg-1:0 )
 	opencv? ( >media-libs/opencv-2:0= )
 	opengl? ( virtual/opengl:0 >=x11-libs/libX11-1.3.99.901:0 )
@@ -131,13 +129,12 @@ RDEPEND="
 	)
 	projectm? ( media-libs/libprojectm:0 media-fonts/dejavu:0 )
 	pulseaudio? ( >=media-sound/pulseaudio-1:0 )
-	!qt5? ( qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 ) )
-	qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 )
+	qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5
+		X? ( dev-qt/qtx11extras:5 ) )
 	rdp? ( =net-misc/freerdp-1*:0=[client] )
 	samba? ( >=net-fs/samba-4.0.0_alpha1:0[client] )
 	schroedinger? ( >=media-libs/schroedinger-1.0.10:0 )
-	sdl? ( >=media-libs/libsdl-1.2.10:0
-		sdl-image? ( >=media-libs/sdl-image-1.2.10:0 sys-libs/zlib:0 ) )
+	sdl-image? ( >=media-libs/sdl-image-1.2.10:0 sys-libs/zlib:0 )
 	sftp? ( net-libs/libssh2:0 )
 	shout? ( >=media-libs/libshout-2.1:0 )
 	sid? ( media-libs/libsidplay:2 )
@@ -181,7 +178,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	app-arch/xz-utils:0
-	>=sys-devel/gettext-0.19.6:*
+	>=sys-devel/gettext-0.19.8:*
 	virtual/pkgconfig:*
 	amd64? ( dev-lang/yasm:* )
 	x86?   ( dev-lang/yasm:* )
@@ -191,9 +188,6 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	# Fix build system mistake.
 	"${FILESDIR}"/${PN}-2.1.0-fix-libtremor-libs.patch
-
-	# Patch up incompatibilities and reconfigure autotools.
-	"${FILESDIR}"/${PN}-9999-libva-1.2.1-compat.patch
 
 	# Fix up broken audio when skipping using a fixed reversed bisected commit.
 	"${FILESDIR}"/${PN}-2.1.0-TomWij-bisected-PA-broken-underflow.patch
@@ -248,14 +242,6 @@ src_prepare() {
 
 	# Disable automatic running of tests.
 	find . -name 'Makefile.in' -exec sed -i 's/\(..*\)check-TESTS/\1/' {} \; || die
-
-	# If qtchooser is installed, it may break the build, because moc,rcc and uic binaries for wrong qt
-	# version may be used. Setting QT_SELECT environment variable will enforce correct binaries.
-	if use qt5; then
-		export QT_SELECT=qt5
-	elif use qt4; then
-		export QT_SELECT=qt4
-	fi
 }
 
 src_configure() {
@@ -281,10 +267,6 @@ src_configure() {
 				--with-default-monospace-font-family=Monospace"
 	fi
 
-	if use qt4 || use qt5 ; then
-		myconf+=" --enable-qt"
-	fi
-
 	econf \
 		${myconf} \
 		--enable-vlc \
@@ -298,7 +280,8 @@ src_configure() {
 		$(use_enable aalib aa) \
 		$(use_enable alsa) \
 		$(use_enable altivec) \
-		$(use_enable audioqueue) \
+		$(use_enable aom) \
+		$(use_enable archive) \
 		$(use_enable avcodec) \
 		$(use_enable avformat) \
 		$(use_enable bidi fribidi) \
@@ -307,7 +290,6 @@ src_configure() {
 		$(use_enable chromaprint) \
 		$(use_enable chromecast) \
 		$(use_enable dbus) \
-		$(use_enable directfb) \
 		$(use_enable directx) \
 		$(use_enable dc1394) \
 		$(use_enable debug) \
@@ -325,7 +307,6 @@ src_configure() {
 		$(use_enable gme) \
 		$(use_enable gnutls) \
 		$(use_enable gstreamer gst-decode) \
-		$(use_enable httpd) \
 		$(use_enable ieee1394 dv1394) \
 		$(use_enable jack) \
 		$(use_enable jpeg) \
@@ -340,7 +321,6 @@ src_configure() {
 		$(use_enable lirc) \
 		$(use_enable live live555) \
 		$(use_enable lua) \
-		$(use_enable macosx-eyetv) \
 		$(use_enable macosx-notifications osx-notifications) \
 		$(use_enable macosx-qtkit) \
 		$(use_enable cpu_flags_x86_mmx mmx) \
@@ -361,12 +341,12 @@ src_configure() {
 		$(use_enable postproc) \
 		$(use_enable projectm) \
 		$(use_enable pulseaudio pulse) \
+		$(use_enable qt5 qt) \
 		$(use_enable rdp freerdp) \
 		$(use_enable rtsp realrtsp) \
 		$(use_enable run-as-root) \
 		$(use_enable samba smbclient) \
 		$(use_enable schroedinger) \
-		$(use_enable sdl) \
 		$(use_enable sdl-image) \
 		$(use_enable sid) \
 		$(use_enable sftp) \
@@ -406,11 +386,11 @@ src_configure() {
 		--disable-cprof \
 		--disable-crystalhd \
 		--disable-decklink \
-		--disable-gles1 \
 		--disable-gles2 \
 		--disable-goom \
 		--disable-kai \
 		--disable-kva \
+		--disable-libplacebo \
 		--disable-maintainer-mode \
 		--disable-merge-ffmpeg \
 		--disable-mfx \
@@ -420,7 +400,8 @@ src_configure() {
 		--disable-rpi-omxil \
 		--disable-shine \
 		--disable-sndio \
-		--disable-vda \
+		--disable-spatialaudio \
+		--disable-srt \
 		--disable-vsxu \
 		--disable-wasapi
 

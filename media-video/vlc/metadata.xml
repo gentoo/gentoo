@@ -6,6 +6,8 @@
 		<name>Gentoo Video project</name>
 	</maintainer>
 	<use>
+		<flag name="aom">Enables experimental support for AV1 codec</flag>
+		<flag name="archive">Enables support for libarchive stream extractor</flag>
 		<flag name="atmo">Enables support for AtmoLight (homebrew Ambient Lighting Technology)</flag>
 		<flag name="audioqueue">Enables AudioQueue audio module for Mac OS X.</flag>
 		<flag name="avcodec">Enables libavcodec support for video/audio encoding/decoding. libavcodec is part of FFmpeg.</flag>
@@ -39,6 +41,7 @@
 		<flag name="macosx-qtkit">Enables Mac OS X qtkit module: qtcapture (video) and qtsound (audio) module.</flag>
 		<flag name="matroska">Enables matroska support using reference libraries (fallback on other existing matroska support if disabled, i.e., matroska enabled FFmpeg)</flag>
 		<flag name="mpeg">Add libmpeg2 support for mpeg-1 and mpeg-2 video streams</flag>
+		<flag name="nfs">Enables support for nfs protocol via <pkg>net-fs/libnfs</pkg></flag>
 		<flag name="omxil">Enables OpenMAX Integration Layer codec module.</flag>
 		<flag name="optimisememory">Enable optimisation for memory rather than performance.</flag>
 		<flag name="opencv">Enabled OpenCV (computer vision) filter module.</flag>
