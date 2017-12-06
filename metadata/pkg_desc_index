@@ -14293,8 +14293,8 @@ net-analyzer/bwbar 1.2.3: The kernel.org "Current bandwidth utilization" bar
 net-analyzer/bwm-ng 0.6.1-r1: Bandwidth Monitor NG is a small and simple console-based bandwidth monitor
 net-analyzer/bwmon 1.3-r2: Simple ncurses bandwidth monitor
 net-analyzer/bwping 1.7-r1 1.8 1.9: A tool to measure bandwidth and RTT between two hosts using ICMP
-net-analyzer/cacti 0.8.8h 1.1.20 1.1.21 1.1.25: Cacti is a complete frontend to rrdtool
-net-analyzer/cacti-spine 0.8.8h 1.1.20 1.1.21 1.1.25: Spine is a fast poller for Cacti (formerly known as Cactid)
+net-analyzer/cacti 1.1.20 1.1.21 1.1.28: Cacti is a complete frontend to rrdtool
+net-analyzer/cacti-spine 1.1.20 1.1.21 1.1.28: Spine is a fast poller for Cacti (formerly known as Cactid)
 net-analyzer/calamaris 2.59 2.99.4.0: Calamaris parses the logfiles of a wide variety of Web proxy servers and generates reports
 net-analyzer/carl 0.9-r2: An rsync logfile analyzer
 net-analyzer/cbm 0.1-r1: Display the current traffic on all network devices
