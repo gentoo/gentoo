@@ -253,24 +253,13 @@ S="${WORKDIR}/${MY_P}"
 src_prepare() {
 	default
 
-	# Remove unnecessary warnings about unimplemented pragmas on gcc for now.
-	# Need to recheck this with gcc 4.9 and every subsequent minor bump of gcc.
-	#
-	# config.h:792: warning: ignoring #pragma STDC FENV_ACCESS [-Wunknown-pragmas]
-	# config.h:793: warning: ignoring #pragma STDC FP_CONTRACT [-Wunknown-pragmas]
-	#
-	# https://gcc.gnu.org/c99status.html
-	if tc-is-gcc ; then
-		sed -i 's/ifndef __FAST_MATH__/if 0/g' configure.ac || die
-	fi
-
 	# Bootstrap when we are on a git checkout.
 	if [[ ${PV} = *9999 ]] ; then
 		./bootstrap
 	fi
 
 	# Make it build with libtool 1.5
-	rm -f m4/lt* m4/libtool.m4 || die
+	rm m4/lt* m4/libtool.m4 || die
 
 	# We are not in a real git checkout due to the absence of a .git directory.
 	touch src/revision.txt || die
