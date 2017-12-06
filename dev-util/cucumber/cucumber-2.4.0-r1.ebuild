@@ -54,6 +54,10 @@ all_ruby_prepare() {
 	sed -i -e '/converts the snapshot path to a relative path/,/end/ s:^:#:' \
 		spec/cucumber/formatter/html_spec.rb || die
 
+	# Avoid specs that fail due to changes in the ruby backtrace, 
+	# introduced in newer versions of dev-lang/ruby, bug 628580
+	rm -f features/docs/defining_steps/nested_steps.feature
+
 	# Avoid dependency on git
 	sed -i -e '/executables/ s/=.*/= ["cucumber"]/' \
 		-e '/git ls-files/d' cucumber.gemspec || die
