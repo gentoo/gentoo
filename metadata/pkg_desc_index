@@ -19315,7 +19315,7 @@ x11-plugins/wmsound 0.9.5 0.9.5-r1: An sound server for the WindowMaker desktop
 x11-plugins/wmstickynotes 0.2: A dockapp for keeping small notes around on the desktop
 x11-plugins/wmsvencd 0.5.0: Window Maker Dockable CD-Player with CDDB
 x11-plugins/wmswallow 0.6.1-r1: A dock applet to make any application dockable
-x11-plugins/wmsysmon 0.7.7: a dockapp to monitor: CPU, Memory, Uptime, IRQs, Paging and Swap activity
+x11-plugins/wmsysmon 0.7.7 0.7.8: a dockapp to monitor: CPU, Memory, Uptime, IRQs, Paging and Swap activity
 x11-plugins/wmsystemtray 1.3 1.4: a system tray dockapp with the ability to display more than just four tray icons
 x11-plugins/wmsystray 0.1.1: Window Maker dock app that provides a system tray for GNOME/KDE applications
 x11-plugins/wmtime 1.4: applet which displays the date and time in a dockable tile
