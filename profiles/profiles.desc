@@ -33,6 +33,7 @@ amd64           default/linux/amd64/13.0/x32                       dev
 amd64           default/linux/amd64/17.0                           stable
 amd64           default/linux/amd64/17.0/selinux                   dev
 amd64           default/linux/amd64/17.0/hardened                  dev
+amd64           default/linux/amd64/17.0/hardened/selinux          dev
 amd64           default/linux/amd64/17.0/desktop                   stable
 amd64           default/linux/amd64/17.0/desktop/gnome             stable
 amd64           default/linux/amd64/17.0/desktop/gnome/systemd     stable
