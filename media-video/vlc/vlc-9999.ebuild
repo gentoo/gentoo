@@ -239,9 +239,6 @@ PATCHES=(
 	# Fix build system mistake.
 	"${FILESDIR}"/${PN}-2.1.0-fix-libtremor-libs.patch
 
-	# Fix up broken audio when skipping using a fixed reversed bisected commit.
-	"${FILESDIR}"/${PN}-2.1.0-TomWij-bisected-PA-broken-underflow.patch
-
 	# Bug #593460
 	"${FILESDIR}"/${PN}-2.2.4-libav-11.7.patch
 )
