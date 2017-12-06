@@ -49,9 +49,9 @@ x11-plugins/wmnetselect
 x11-plugins/wmpiki
 x11-plugins/wmsound
 x11-plugins/wmsvencd
-x11-plugins/wmsysmon
 x11-plugins/wmupmon
 x11-plugins/wmwave
+<=x11-plugins/wmsysmon-0.7.7
 
 # Ian Whyman <thev00d00@gentoo.org> (04 Dec 2017)
 # Declared dead upstream. Masked for removal in 30 days
