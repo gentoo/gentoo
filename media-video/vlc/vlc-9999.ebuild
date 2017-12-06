@@ -148,10 +148,7 @@ RDEPEND="
 		>=x11-libs/libX11-1.3.99.901:0
 	)
 	opus? ( >=media-libs/opus-1.0.3:0 )
-	png? (
-		media-libs/libpng:0=
-		sys-libs/zlib:0
-	)
+	png? ( media-libs/libpng:0= )
 	postproc? (
 		!libav? ( >=media-video/ffmpeg-3.1.3:0= )
 		libav? ( media-libs/libpostproc:0= )
@@ -171,10 +168,7 @@ RDEPEND="
 	rdp? ( =net-misc/freerdp-1*:0=[client] )
 	samba? ( >=net-fs/samba-4.0.0:0[client] )
 	schroedinger? ( >=media-libs/schroedinger-1.0.10:0 )
-	sdl-image? (
-		>=media-libs/sdl-image-1.2.10:0
-		sys-libs/zlib:0
-	)
+	sdl-image? ( >=media-libs/sdl-image-1.2.10:0 )
 	sftp? ( net-libs/libssh2:0 )
 	shout? ( >=media-libs/libshout-2.1:0 )
 	sid? ( media-libs/libsidplay:2 )
@@ -195,10 +189,7 @@ RDEPEND="
 		!libav? ( media-video/ffmpeg:0= )
 		libav? ( media-video/libav:0= )
 	)
-	taglib? (
-		>=media-libs/taglib-1.9:0
-		sys-libs/zlib:0
-	)
+	taglib? ( >=media-libs/taglib-1.9:0 )
 	theora? ( media-libs/libtheora:0 )
 	tremor? ( media-libs/tremor:0 )
 	truetype? (
