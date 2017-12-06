@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (06 Dec 2017)
+# No maintainer, depends on dead PyQt4/Qt4.
+# Masked for removal in 30 days. Bugs #480250, #640114
+dev-vcs/qbzr
+dev-vcs/bzr-explorer
+
 # Bernard Cafarelli <voyageur@gentoo.org> (05 Dec 2017)
 # Dead Window Maker dockapps, dead upstreams and download links
 # (no release for more than 10 years)
