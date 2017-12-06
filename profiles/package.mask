@@ -615,6 +615,14 @@ dev-lang/spidermonkey:52
 # upstream.
 =app-text/jabref-bin-4.0
 
+# Nicolas Bock <nicolasbock@gentoo.org> (6 Dec 2017)
+# Development has ceased, the last commit to the upstream repository was
+# on 16 July 2016 with a note stating that its status is unmaintained [1].
+# See also Bug 640034.
+#
+# [1] https://github.com/projecthamster/hamster/commit/c3e5fb761c88fdecfd1566cac8b6836228a27cce
+app-office/hamster-time-tracker
+
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Doesn't work with >=openvpn-2.3, bug 470696
 # Fix is work in progress, see above bug. dilfridge@g.o
