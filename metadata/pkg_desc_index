@@ -1023,7 +1023,7 @@ app-editors/gedit 3.22.0 3.22.1: A text editor for the GNOME desktop
 app-editors/gedit-plugins 3.22.0: Official plugins for gedit
 app-editors/ghex 3.18.3: GNOME hexadecimal editor
 app-editors/ghostwriter 1.5.0: Cross-platform, aesthetic, distraction-free markdown editor
-app-editors/gummi 0.6.6: Simple LaTeX editor for GTK+ users
+app-editors/gummi 0.6.6 0.6.6-r1: Simple LaTeX editor for GTK+ users
 app-editors/gvim 8.0.0386 8.0.1188 8.0.1298 9999: GUI version of the Vim text editor
 app-editors/hexcurse 1.55 1.60.0: ncurses based hex editor
 app-editors/hexedit 1.2.13: View and edit files in hex or ASCII
@@ -15502,7 +15502,7 @@ net-misc/telnet-bsd 1.2-r1: Telnet and telnetd ported from OpenBSD with IPv6 sup
 net-misc/termpkg 3.3.9.1-r2: Termpkg, the Poor Man's Terminal Server
 net-misc/throttle 1.2: Bandwidth limiting pipe
 net-misc/tiers 1.1: Random network topography generator
-net-misc/tigervnc 1.8.0: Remote desktop viewer display system
+net-misc/tigervnc 1.8.0 1.8.0-r1: Remote desktop viewer display system
 net-misc/tipcutils 2.0.0 2.0.3: Utilities for TIPC (Transparent Inter-Process Communication)
 net-misc/tlsdate 0.0.13: Update local time over HTTPS
 net-misc/tn5250 0.17.4-r1 0.17.4-r2: IBM AS/400 telnet client which emulates 5250 terminals/printers
