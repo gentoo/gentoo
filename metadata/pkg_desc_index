@@ -8149,7 +8149,7 @@ dev-python/oslo-middleware 3.23.2 3.23.3 3.30.1: Components injected into wsgi p
 dev-python/oslo-policy 1.18.0 1.25.1 1.25.2: Support for RBAC policy enforcement across all OpenStack services
 dev-python/oslo-privsep 1.16.0 1.22.0 1.22.1: OpenStack library for privilege separation.
 dev-python/oslo-reports 1.17.0 1.17.1 1.22.0 1.22.1: generified reports for openstack
-dev-python/oslo-rootwrap 5.4.1 5.9.0 5.9.1: Allows fine filtering of shell commands to run as root from OpenStack services
+dev-python/oslo-rootwrap 5.4.1 5.4.2 5.9.0 5.9.1 5.9.2: Allows fine filtering of shell commands to run as root from OpenStack services
 dev-python/oslo-serialization 2.16.1 2.20.0 2.20.1: Oslo Serialization library
 dev-python/oslo-service 1.19.0 1.19.1 1.25.0 1.25.1: Library for running OpenStack services
 dev-python/oslo-sphinx 3.0.0 4.7.0 4.15.1 4.15.2: OpenStack Sphinx Extensions and Theme
