@@ -1,4 +1,4 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: prefix.eclass
@@ -48,8 +48,7 @@ eprefixify() {
 }
 
 # @FUNCTION: hprefixify
-# @USAGE: [ -w <line match> ] [ -e <extended regex> ] [ -q <quotation char> ]
-#	<list of files>
+# @USAGE: [ -w <line match> ] [ -e <extended regex> ] [ -q <quotation char> ] <list of files>
 # @DESCRIPTION:
 # Tries a set of heuristics to prefixify the given files. Dies if no
 # arguments are given, a file does not exist, or changing a file failed.
