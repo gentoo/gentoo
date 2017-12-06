@@ -110,7 +110,7 @@ case ${EAPI} in
 esac
 
 inherit toolchain-funcs multilib ninja-utils flag-o-matic eutils \
-	multiprocessing versionator
+	multiprocessing versionator xdg-utils
 
 EXPORT_FUNCTIONS src_prepare src_configure src_compile src_test src_install
 
@@ -491,7 +491,7 @@ cmake-utils_src_configure() {
 	_cmake_check_build_dir
 
 	# Fix xdg collision with sandbox
-	local -x XDG_CONFIG_HOME="${T}"
+	xdg_environment_reset
 
 	# @SEE CMAKE_BUILD_TYPE
 	if [[ ${CMAKE_BUILD_TYPE} = Gentoo ]]; then
