@@ -10,7 +10,12 @@ SRC_URI="https://github.com/troglobit/${PN}/releases/download/v${PV}/${P}.tar.xz
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="static-libs"
 
 DEPEND=""
 RDEPEND="${DEPEND}"
+
+src_configure(){
+	econf --enable-static=$(usex static-libs)
+}
+
