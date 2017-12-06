@@ -23,3 +23,6 @@ DEPEND="${RDEPEND}
 	dev-lang/perl
 	dev-perl/URI
 "
+
+# already required by media-video/kaffeine-2.0.14
+PATCHES=( "${FILESDIR}/${P}-pt_BR-fix.patch" )
