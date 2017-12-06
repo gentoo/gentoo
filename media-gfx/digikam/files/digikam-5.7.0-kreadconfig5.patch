@@ -1,0 +1,28 @@
+From bbf087645d426e20ce96fa2accd70ff4198d30ec Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date: Wed, 6 Dec 2017 22:31:29 +0100
+Subject: [PATCH] cleanup_digikamdb: Don't depend on kde-runtime
+
+Summary: This needs to use kreadconfig5 in a Frameworks world.
+
+Differential Revision: https://phabricator.kde.org/D9235
+---
+ data/scripts/cleanup_digikamdb/cleanup_digikamdb | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/data/scripts/cleanup_digikamdb/cleanup_digikamdb b/data/scripts/cleanup_digikamdb/cleanup_digikamdb
+index 3a68d3d040..9cfcd6ac8d 100644
+--- a/data/scripts/cleanup_digikamdb/cleanup_digikamdb
++++ b/data/scripts/cleanup_digikamdb/cleanup_digikamdb
+@@ -58,7 +58,7 @@ readConfigValue()
+ {
+     local config_file="digikamrc"
+     local config_group="Database Settings"
+-    local db_dir=$(kreadconfig --file "${config_file}" --group "${config_group}" --key "$1")
++    local db_dir=$(kreadconfig5 --file "${config_file}" --group "${config_group}" --key "$1")
+     echo "${db_dir}"
+ }
+ 
+-- 
+2.15.1
+
