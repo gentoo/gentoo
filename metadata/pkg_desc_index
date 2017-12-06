@@ -7502,7 +7502,7 @@ dev-python/configparser 3.3.0.2 3.5.0 3.5.0-r1: Backport of Python-3 built-in co
 dev-python/configshell 1.6 9999: ConfigShell Community Edition for target_core_mod/ConfigFS
 dev-python/configshell-fb 1.1.22 1.1.23: A Python library for building configuration shells
 dev-python/constantly 15.1.0: Symbolic constants in Python
-dev-python/construct 2.5.2 2.8.12 2.8.14: A powerful declarative parser for binary data
+dev-python/construct 2.8.14 2.8.16: A powerful declarative parser for binary data
 dev-python/contextlib2 0.5.4 0.5.5: Backports and enhancements for the contextlib module
 dev-python/cookies 2.2.1: Friendlier RFC 6265-compliant cookie parser/renderer
 dev-python/corner 2.0.1: Make scatter matrix corner plots
@@ -12702,7 +12702,7 @@ media-gfx/curaengine 0.15.04.6 2.1.0_beta 2.3.1 2.6.0: A 3D model slicing engine
 media-gfx/darktable 2.2.4 2.2.5 9999: A virtual lighttable and darkroom for photographers
 media-gfx/dawn 3.90b: 3D geometrical postscript renderer
 media-gfx/dcraw 9.27.0: Command-line decoder for raw digital photos
-media-gfx/digikam 5.5.0 5.7.0-r1: Digital photo management application
+media-gfx/digikam 5.5.0 5.7.0-r1 5.7.0-r2: Digital photo management application
 media-gfx/displaycal 3.3.3.0 3.3.4.1 3.3.5.0: Display calibration and characterization powered by Argyll CMS
 media-gfx/ditaa 0.10: A utility that converts ascii-art diagrams to bitmap diagrams
 media-gfx/dpic 20130310 20160712 20160824: Converts PIC plots into pstricks, PGF/TikZ, PostScript, MetaPost and TeX
