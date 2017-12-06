@@ -474,9 +474,8 @@ amanda_permissions_fix() {
 	[ -z "${root}" ] && die "Failed to pass root argument to amanda_permissions_fix!"
 	local le="/usr/libexec/amanda"
 	local i
-	for i in /usr/sbin/amcheck "${le}"/calcsize "${le}"/killpgrp \
-		"${le}"/rundump "${le}"/runtar "${le}"/dumper \
-		"${le}"/planner ; do
+	for i in "${le}"/calcsize "${le}"/killpgrp \
+		"${le}"/rundump "${le}"/runtar ; do
 	    [ -e "${root}"/${i} ] || continue
 		chown root:${AMANDA_GROUP_NAME} "${root}"/${i} || die
 		chmod u=srwx,g=rx,o= "${root}"/${i} || die
