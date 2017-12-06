@@ -21,7 +21,7 @@ DEPEND="virtual/mta
 	gdbm? ( sys-libs/gdbm )
 	drac? ( mail-client/drac )
 	pam? ( >=sys-libs/pam-0.72 )
-	ssl? ( dev-libs/openssl )
+	ssl? ( dev-libs/openssl:0 )
 "
 RDEPEND="${DEPEND}"
 
@@ -92,9 +92,9 @@ src_install() {
 		newinitd "${FILESDIR}/qpopper.init.d" qpopper
 	fi
 
-        HTML_DOCS="doc/LMOS-FAQ.html"
-        einstalldocs
-        dodoc doc/{Release.Notes,Changes}
+	HTML_DOCS="doc/LMOS-FAQ.html"
+	einstalldocs
+	dodoc doc/{Release.Notes,Changes}
 
 	docinto rfc
 	dodoc doc/rfc*.txt
