@@ -8091,6 +8091,7 @@ sys-kernel/aufs-sources:experimental - Apply experimental patches; for more info
 sys-kernel/aufs-sources:module - Patch kernel to allow aufs being build as a module.
 sys-kernel/aufs-sources:vanilla - Use vanilla kernel sources without applying genpatches. WARNING: This flag will drop all support from the Gentoo Kernel Security team
 sys-kernel/ck-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
+sys-kernel/ck-sources:experimental - Apply experimental patches; for more information, see "https://wiki.gentoo.org/wiki/Project:Kernel/Experimental".
 sys-kernel/dracut:debug - Module installing additional tools like strace, file editor, ssh and more
 sys-kernel/genkernel:crypt - Obsolete USE flag. Use cryptsetup for LUKS support. (bug ##414523)
 sys-kernel/genkernel:cryptsetup - Enable support for Luks disk encryption using sys-fs/cryptsetup

@@ -1,6 +1,6 @@
-DEFINED_PHASES=compile install prepare setup
+DEFINED_PHASES=compile install setup
 DESCRIPTION=Yet another small httpd
-EAPI=3
+EAPI=6
 HOMEPAGE=http://www.fefe.de/fnord/
 IUSE=auth
 KEYWORDS=~amd64 ~hppa ~ppc ~sparc ~x86
@@ -9,4 +9,4 @@ RDEPEND=virtual/daemontools sys-apps/ucspi-tcp
 SLOT=0
 SRC_URI=http://www.fefe.de/fnord/fnord-1.11.tar.bz2
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	flag-o-matic	a6089a2a4027ae3da4a460dc87b21050	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	user	8bc2845510e2109af75e3eeac607ec81
-_md5_=aa337219a5d37cb069a30fe287930eb6
+_md5_=ac6838221a2ca0350d2f9fbf4512811a

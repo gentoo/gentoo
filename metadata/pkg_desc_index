@@ -17883,7 +17883,7 @@ sys-fs/zfs 0.6.5.4-r2 0.6.5.11 0.7.3 9999: Userland utilities for ZFS Linux kern
 sys-fs/zfs-kmod 0.6.5.4-r1 0.6.5.11 0.7.3 9999: Linux ZFS kernel module for sys-fs/zfs
 sys-kernel/aufs-sources 4.4.87-r1 4.4.95 4.4.96 4.4.97 4.4.98 4.4.99 4.4.100 4.4.102 4.4.103 4.9.49-r1 4.9.59 4.9.60 4.9.61 4.9.62 4.9.63 4.9.64 4.9.65 4.9.66 4.12.12 4.12.13 4.12.14 4.13.10 4.13.11 4.13.12 4.13.13 4.13.14 4.13.15 4.13.16 4.14.1 4.14.2 4.14.3: Full sources (incl. Gentoo patchset) for the linux kernel tree and aufs4 support
 sys-kernel/bliss-initramfs 6.8.3-r2 7.1.0 7.1.1: Boot your system's rootfs from ZFS, LVM, RAID, or a variety of other configs.
-sys-kernel/ck-sources 4.9.61 4.9.62 4.9.63 4.9.64 4.9.65 4.9.66 4.13.12 4.13.13 4.13.14 4.13.15 4.13.16 4.14.1 4.14.2 4.14.3: Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 4.14
+sys-kernel/ck-sources 4.9.61 4.9.62 4.9.63 4.9.64 4.9.65 4.9.66 4.9.67 4.13.12 4.13.13 4.13.14 4.13.15 4.13.16 4.13.16-r1 4.14.1 4.14.2 4.14.3 4.14.4: Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 4.14
 sys-kernel/cryptodev 1.7 1.9 9999: device that allows access to Linux kernel cryptographic drivers
 sys-kernel/dracut 044-r1 044-r3 045-r2 046: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.49.2 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.5.0.8 3.5.1.0 3.5.1.1 3.5.2.0-r1 3.5.2.1 3.5.2.2 3.5.2.3 3.5.2.4 9999: Gentoo automatic kernel building scripts
@@ -18506,7 +18506,7 @@ www-servers/bozohttpd 20170201: bozohttpd is a small and secure http server
 www-servers/caddy 0.10.9 0.10.10: Fast, cross-platform HTTP/2 web server with automatic HTTPS
 www-servers/cherokee 1.2.104: An extremely fast and tiny web server
 www-servers/civetweb 1.10: Embedded C/C++ web server
-www-servers/fnord 1.10-r2 1.11: Yet another small httpd
+www-servers/fnord 1.10-r2 1.11-r1: Yet another small httpd
 www-servers/gatling 0.12-r2 0.13 0.13-r1 0.15: High performance web server
 www-servers/gunicorn 19.1.1 19.3.0 19.4.5 19.6.0: A WSGI HTTP Server for UNIX
 www-servers/h2o 2.2.3 9999: An optimized HTTP server with support for HTTP/1.x and HTTP/2
