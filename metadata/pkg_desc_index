@@ -19000,7 +19000,7 @@ x11-misc/safeeyes 1.2.1 1.2.2 2.0.0: Linux alternative to EyeLeo
 x11-misc/screen-message 0.24 0.25: Display a multi-line message large, fullscreen, black on white
 x11-misc/screengrab 1.2.1-r1: Qt application for getting screenshots
 x11-misc/sct 0.3 0.4: Set color temperature of the screen
-x11-misc/sddm 0.14.0-r2 0.15.0 0.16.0-r2 0.16.0-r3: Simple Desktop Display Manager
+x11-misc/sddm 0.15.0 0.16.0-r3 0.17.0: Simple Desktop Display Manager
 x11-misc/seetxt 0.72-r1: Clever, lightweight GUI text file and manual page viewer for X windows
 x11-misc/sent 0.2 1 9999: Simple plaintext presentation tool
 x11-misc/set_opacity 1.0 9999: Tool for set real compositing for windows through window's id, process' pid etc.

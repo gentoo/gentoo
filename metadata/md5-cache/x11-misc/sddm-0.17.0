@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=>=dev-qt/qtcore-5.6:5 >=dev-qt/qtdbus-5.6:5 >=dev-qt/qtdeclarative-5.6:5 >=dev-qt/qtgui-5.6:5 >=dev-qt/qtnetwork-5.6:5 >=x11-base/xorg-server-1.15.1 x11-libs/libxcb[xkb] consolekit? ( >=sys-auth/consolekit-0.9.4 ) elogind? ( sys-auth/elogind ) pam? ( sys-libs/pam ) systemd? ( sys-apps/systemd:= ) !systemd? ( sys-power/upower ) dev-python/docutils >=dev-qt/linguist-tools-5.6:5 kde-frameworks/extra-cmake-modules virtual/pkgconfig test? ( >=dev-qt/qttest-5.6:5 ) sys-devel/make >=dev-util/cmake-3.7.2 virtual/pkgconfig
+DESCRIPTION=Simple Desktop Display Manager
+EAPI=6
+HOMEPAGE=https://github.com/sddm/sddm
+IUSE=consolekit elogind +pam systemd test linguas_ar linguas_ca linguas_cs linguas_da linguas_de linguas_es linguas_et linguas_fi linguas_fr linguas_hi_IN linguas_hu linguas_it linguas_ja linguas_kk linguas_ko linguas_lt linguas_lv linguas_nb linguas_nl linguas_nn linguas_pl linguas_pt_BR linguas_pt_PT linguas_ro linguas_ru linguas_sk linguas_sr linguas_sr@ijekavian linguas_sr@ijekavianlatin linguas_sr@latin linguas_sv linguas_tr linguas_uk linguas_zh_CN linguas_zh_TW
+KEYWORDS=~amd64 ~arm ~arm64 ~x86
+LICENSE=GPL-2+ MIT CC-BY-3.0 CC-BY-SA-3.0 public-domain
+RDEPEND=>=dev-qt/qtcore-5.6:5 >=dev-qt/qtdbus-5.6:5 >=dev-qt/qtdeclarative-5.6:5 >=dev-qt/qtgui-5.6:5 >=dev-qt/qtnetwork-5.6:5 >=x11-base/xorg-server-1.15.1 x11-libs/libxcb[xkb] consolekit? ( >=sys-auth/consolekit-0.9.4 ) elogind? ( sys-auth/elogind ) pam? ( sys-libs/pam ) systemd? ( sys-apps/systemd:= ) !systemd? ( sys-power/upower )
+REQUIRED_USE=?? ( elogind systemd )
+SLOT=0
+SRC_URI=https://github.com/sddm/sddm/releases/download/v0.17.0/sddm-0.17.0.tar.gz
+_eclasses_=cmake-utils	77a5a8d3308359caadcdd91688f20093	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	flag-o-matic	a6089a2a4027ae3da4a460dc87b21050	l10n	2c2e15383ba891d642f51896a7f0ecfe	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	systemd	34815d3b76e745c5ca33eec9f95074c2	toolchain-funcs	185a06792159ca143528e7010368e8af	user	8bc2845510e2109af75e3eeac607ec81	versionator	c80ccf29e90adea7c5cae94b42eb76d0	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=884d2748c14c63a6af929f15be56017b
