@@ -8,6 +8,6 @@ LICENSE=GPL-3
 RDEPEND=gnome-base/gconf:2 dev-libs/libappindicator:3 dev-libs/nss x11-libs/libXtst
 RESTRICT=bindist mirror
 SLOT=0
-SRC_URI=https://updates.signal.org/desktop/apt/pool/main/s/signal-desktop/signal-desktop_1.0.39_amd64.deb
+SRC_URI=https://updates.signal.org/desktop/apt/pool/main/s/signal-desktop/signal-desktop_1.0.40_amd64.deb
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	gnome2-utils	4d211d7614f303710fca59db6ec12c88	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	pax-utils	4f95120230a315c8caaabeb2307b7eee	toolchain-funcs	185a06792159ca143528e7010368e8af	unpacker	f40f7b4bd5aa88c2a4ba7b0d1e0ded70	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
 _md5_=e3d68b42c4f81e96310e557af3ec2041

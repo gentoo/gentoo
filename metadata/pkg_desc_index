@@ -14796,7 +14796,7 @@ net-im/pyicq-t 0.8.1.5-r6: Python based jabber transport for ICQ
 net-im/qtox 1.8.1 1.11.0 9999: Most feature-rich GUI for net-libs/tox using Qt5
 net-im/reaim 0.8-r2: AIM transport proxy over NAT firewalls
 net-im/sendxmpp 1.23 1.24: A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
-net-im/signal-desktop-bin 1.0.39: Signal Desktop
+net-im/signal-desktop-bin 1.0.40: Signal Desktop
 net-im/silc-toolkit 1.1.10: SDK for the SILC protocol
 net-im/skypeforlinux 8.11.0.4: Instant messaging client, with support for audio and video
 net-im/slack-bin 2.1.2 2.5.2 2.6.3 2.8.0 2.8.2: Team collaboration tool
@@ -15417,7 +15417,7 @@ net-misc/proxychains 4.11 4.12-r1: force any tcp connections to flow through a p
 net-misc/proxytunnel 1.9.1-r1: Connect stdin and stdout to a server somewhere on the network, through a standard HTTPS proxy
 net-misc/ps3mediaserver 1.90.1: DLNA compliant UPNP server for streaming media to Playstation 3
 net-misc/pssh 2.3.1-r1: PSSH provides parallel versions of OpenSSH and related tools
-net-misc/ptpd 2.3.1 2.3.1-r1: Precision Time Protocol daemon
+net-misc/ptpd 2.3.1-r1: Precision Time Protocol daemon
 net-misc/puf 1.0.0 1.0.0-r1: A download tool for UNIX-like systems
 net-misc/pulseaudio-dlna 0.5.2 0.5.2-r1: A lightweight DLNA/UPNP/Chromecast streaming server for PulseAudio
 net-misc/pump 0.8.24-r4: This is the DHCP/BOOTP client written by RedHat
