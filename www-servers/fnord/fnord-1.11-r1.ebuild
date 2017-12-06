@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="3"
+EAPI=6
 
-inherit eutils flag-o-matic toolchain-funcs user
+inherit flag-o-matic toolchain-funcs user
 
 DESCRIPTION="Yet another small httpd"
 HOMEPAGE="http://www.fefe.de/fnord/"
@@ -19,28 +19,25 @@ RDEPEND="${DEPEND}
 	virtual/daemontools
 	sys-apps/ucspi-tcp"
 
+DOCS=( TODO README README.auth SPEED CHANGES )
+PATCHES=( "${FILESDIR}/${PN}"-1.10-gentoo.diff )
+
 pkg_setup() {
 	enewgroup nofiles 200
 	enewuser fnord -1 -1 /etc/fnord nofiles
 	enewuser fnordlog -1 -1 /etc/fnord nofiles
 }
 
-src_prepare() {
-	epatch "${FILESDIR}/${PN}"-1.10-gentoo.diff
-}
-
 src_compile() {
 	# Fix for bug #45716
-	replace-sparc64-flags
+	use sparc && replace-sparc64-flags
 
-	use auth && \
-		append-flags -DAUTH
+	use auth && append-flags -DAUTH
 
-	emake DIET="" CC=$(tc-getCC) \
-		CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" || die "emake failed"
+	emake DIET="" CC=$(tc-getCC) CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
 }
 
 src_install () {
-	dobin fnord-conf fnord || die
-	dodoc TODO README* SPEED CHANGES
+	dobin fnord-conf fnord
+	einstalldocs
 }
