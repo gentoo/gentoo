@@ -5,6 +5,8 @@ EAPI="6"
 MY_EXTRAS_VER="20171121-1518Z"
 SUBSLOT="18"
 PYTHON_COMPAT=( python2_7 )
+# Build fails with ninja
+CMAKE_MAKEFILE_GENERATOR="emake"
 inherit linux-info python-any-r1 mysql-multilib-r1 toolchain-funcs
 
 IUSE="numa pam tokudb tokudb-backup-plugin"
