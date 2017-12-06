@@ -12167,7 +12167,7 @@ kde-frameworks/kdesignerplugin 5.37.0 5.40.0: Framework providing plugins to use
 kde-frameworks/kdesu 5.37.0 5.40.0: Framework to handle super user actions
 kde-frameworks/kdewebkit 5.37.0 5.40.0: Framework providing KDE integration of QtWebKit
 kde-frameworks/kdnssd 5.37.0 5.40.0: Framework for network service discovery using Zeroconf
-kde-frameworks/kdoctools 5.37.0 5.40.0: Tools to generate documentation in various formats from DocBook files
+kde-frameworks/kdoctools 5.37.0 5.40.0-r1: Tools to generate documentation in various formats from DocBook files
 kde-frameworks/kemoticons 5.37.0 5.40.0: Framework for converting text emoticons to graphical representations
 kde-frameworks/kf-env 4: Environment setting required for all KDE Frameworks apps to run
 kde-frameworks/kfilemetadata 5.37.0 5.40.0: Library for extracting file metadata
