@@ -383,11 +383,6 @@ dev-java/icedtea-bin:7
 virtual/jdk:1.7
 virtual/jre:1.7
 
-# James Le Cuirot <chewi@gentoo.org> (05 Nov 2017)
-# Upstream dead, bundles a vulnerable mupdf, nothing depends on it,
-# and blocks the removal of Java 7. Removal in 30 days. Bug #472832.
-app-text/jmupdf
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (04 Nov 2017)
 # Many, many, many open bugs. Blocks gcc-6 stabilization.
 # Removal of the old versions in 30 days; please upgrade to
