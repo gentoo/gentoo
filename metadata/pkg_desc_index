@@ -13847,7 +13847,7 @@ media-sound/linuxsampler 2.0.0-r2: LinuxSampler is a software audio sampler engi
 media-sound/litestream 1.3_rc3: Litstream is a lightweight and robust shoutcast-compatible streaming mp3 server
 media-sound/lltag 0.14.4-r1 0.14.5: Automatic command-line mp3/ogg/flac file tagger and renamer
 media-sound/lmms 1.1.90 1.2.0_rc4 9999: Cross-platform music production software
-media-sound/lxmusic 0.4.5 0.4.7: A simple GUI XMMS2 client with minimal functionality
+media-sound/lxmusic 0.4.7: A simple GUI XMMS2 client with minimal functionality
 media-sound/lyvi 2.0.0: A simple command-line lyrics viewer
 media-sound/mac 4.11.4.5.7: Monkey's Audio Codecs
 media-sound/madplay 0.15.2b-r1: The MAD audio player
