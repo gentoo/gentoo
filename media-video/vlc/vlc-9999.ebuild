@@ -82,27 +82,47 @@ RDEPEND="
 	chromaprint? ( >=media-libs/chromaprint-0.6:0 )
 	chromecast? ( >=dev-libs/protobuf-2.5.0 )
 	dbus? ( >=sys-apps/dbus-1.6:0 )
-	dc1394? ( >=sys-libs/libraw1394-2.0.1:0 >=media-libs/libdc1394-2.1:2 )
+	dc1394? (
+		>=media-libs/libdc1394-2.1:2
+		>=sys-libs/libraw1394-2.0.1:0
+	)
 	dts? ( >=media-libs/libdca-0.0.5:0 )
 	dvbpsi? ( >=media-libs/libdvbpsi-1.2.0:0= )
-	dvd? ( >=media-libs/libdvdread-4.9:0 >=media-libs/libdvdnav-4.9:0 )
+	dvd? (
+		>=media-libs/libdvdnav-4.9:0
+		>=media-libs/libdvdread-4.9:0
+	)
 	elibc_glibc? ( >=sys-libs/glibc-2.8:2.2 )
 	faad? ( >=media-libs/faad2-2.6.1:0 )
 	fdk? ( media-libs/fdk-aac:0 )
-	flac? ( >=media-libs/libogg-1:0 >=media-libs/flac-1.1.2:0 )
+	flac? (
+		>=media-libs/flac-1.1.2:0
+		>=media-libs/libogg-1:0
+	)
 	fluidsynth? ( >=media-sound/fluidsynth-1.1.2:0 )
 	fontconfig? ( media-libs/fontconfig:1.0 )
 	gcrypt? ( >=dev-libs/libgcrypt-1.6.0:0= )
 	gme? ( media-libs/game-music-emu:0 )
 	gnutls? ( net-libs/gnutls:0 )
 	gstreamer? ( >=media-libs/gst-plugins-base-1.4.5:1.0 )
-	ieee1394? ( >=sys-libs/libraw1394-2.0.1:0 >=sys-libs/libavc1394-0.5.3:0 )
+	ieee1394? (
+		>=sys-libs/libavc1394-0.5.3:0
+		>=sys-libs/libraw1394-2.0.1:0
+	)
 	jack? ( virtual/jack )
 	jpeg? ( virtual/jpeg:0 )
 	kate? ( >=media-libs/libkate-0.3:0 )
-	libass? ( >=media-libs/libass-0.9.8:0= media-libs/fontconfig:1.0 )
+	libass? (
+		media-libs/fontconfig:1.0
+		>=media-libs/libass-0.9.8:0=
+	)
 	libcaca? ( >=media-libs/libcaca-0.99_beta14:0 )
-	libnotify? ( x11-libs/libnotify:0 x11-libs/gtk+:2 x11-libs/gdk-pixbuf:2 dev-libs/glib:2 )
+	libnotify? (
+		dev-libs/glib:2
+		x11-libs/gdk-pixbuf:2
+		x11-libs/gtk+:2
+		x11-libs/libnotify:0
+	)
 	libsamplerate? ( media-libs/libsamplerate:0 )
 	libtar? ( >=dev-libs/libtar-1.2.11-r3:0 )
 	libtiger? ( >=media-libs/libtiger-0.3.1:0 )
@@ -110,8 +130,11 @@ RDEPEND="
 	lirc? ( app-misc/lirc:0 )
 	live? ( >=media-plugins/live-2011.12.23:0 )
 	lua? ( >=dev-lang/lua-5.1:0 )
-	matroska? (	>=dev-libs/libebml-1:0= >=media-libs/libmatroska-1:0= )
-	modplug? ( >=media-libs/libmodplug-0.8.4:0 !~media-libs/libmodplug-0.8.8 )
+	matroska? (
+		>=dev-libs/libebml-1:0=
+		>=media-libs/libmatroska-1:0=
+	)
+	modplug? ( media-libs/libmodplug:0 )
 	mp3? ( media-libs/libmad:0 )
 	mpeg? ( >=media-libs/libmpeg2-0.3.2:0 )
 	mtp? ( >=media-libs/libmtp-1:0 )
@@ -120,38 +143,70 @@ RDEPEND="
 	nfs? ( >=net-fs/libnfs-0.10.0:= )
 	ogg? ( >=media-libs/libogg-1:0 )
 	opencv? ( >media-libs/opencv-2:0= )
-	opengl? ( virtual/opengl:0 >=x11-libs/libX11-1.3.99.901:0 )
+	opengl? (
+		virtual/opengl:0
+		>=x11-libs/libX11-1.3.99.901:0
+	)
 	opus? ( >=media-libs/opus-1.0.3:0 )
-	png? ( media-libs/libpng:0= sys-libs/zlib:0 )
+	png? (
+		media-libs/libpng:0=
+		sys-libs/zlib:0
+	)
 	postproc? (
 		!libav? ( >=media-video/ffmpeg-3.1.3:0= )
 		libav? ( media-libs/libpostproc:0= )
 	)
-	projectm? ( media-libs/libprojectm:0 media-fonts/dejavu:0 )
+	projectm? (
+		media-fonts/dejavu:0
+		media-libs/libprojectm:0
+	)
 	pulseaudio? ( >=media-sound/pulseaudio-1:0 )
-	qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5
-		X? ( dev-qt/qtx11extras:5 ) )
+	qt5? (
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtsvg:5
+		dev-qt/qtwidgets:5
+		X? ( dev-qt/qtx11extras:5 )
+	)
 	rdp? ( =net-misc/freerdp-1*:0=[client] )
-	samba? ( >=net-fs/samba-4.0.0_alpha1:0[client] )
+	samba? ( >=net-fs/samba-4.0.0:0[client] )
 	schroedinger? ( >=media-libs/schroedinger-1.0.10:0 )
-	sdl-image? ( >=media-libs/sdl-image-1.2.10:0 sys-libs/zlib:0 )
+	sdl-image? (
+		>=media-libs/sdl-image-1.2.10:0
+		sys-libs/zlib:0
+	)
 	sftp? ( net-libs/libssh2:0 )
 	shout? ( >=media-libs/libshout-2.1:0 )
 	sid? ( media-libs/libsidplay:2 )
-	skins? ( x11-libs/libXext:0 x11-libs/libXpm:0 x11-libs/libXinerama:0 )
-	speex? ( >=media-libs/speex-1.2.0:0 media-libs/speexdsp:0 )
-	svg? ( >=gnome-base/librsvg-2.9:2 >=x11-libs/cairo-1.13.1:0 )
+	skins? (
+		x11-libs/libXext:0
+		x11-libs/libXinerama:0
+		x11-libs/libXpm:0
+	)
+	speex? (
+		>=media-libs/speex-1.2.0:0
+		media-libs/speexdsp:0
+	)
+	svg? (
+		>=gnome-base/librsvg-2.9:2
+		>=x11-libs/cairo-1.13.1:0
+	)
 	swscale? (
 		!libav? ( media-video/ffmpeg:0= )
 		libav? ( media-video/libav:0= )
 	)
-	taglib? ( >=media-libs/taglib-1.9:0 sys-libs/zlib:0 )
-	theora? ( >=media-libs/libtheora-1.0_beta3:0 )
+	taglib? (
+		>=media-libs/taglib-1.9:0
+		sys-libs/zlib:0
+	)
+	theora? ( media-libs/libtheora:0 )
 	tremor? ( media-libs/tremor:0 )
-	truetype? ( media-libs/freetype:2 virtual/ttf-fonts:0
-		!fontconfig? ( media-fonts/dejavu:0 ) )
+	truetype? (
+		media-libs/freetype:2 virtual/ttf-fonts:0
+		!fontconfig? ( media-fonts/dejavu:0 )
+	)
 	twolame? ( media-sound/twolame:0 )
-	udev? ( >=virtual/udev-142:0 )
+	udev? ( virtual/udev:0 )
 	upnp? ( net-libs/libupnp:0 )
 	v4l? ( media-libs/libv4l:0 )
 	vaapi? (
@@ -171,7 +226,11 @@ RDEPEND="
 	X? ( x11-libs/libX11:0 )
 	x264? ( media-libs/x264:0= )
 	x265? ( media-libs/x265:0= )
-	xcb? ( x11-libs/libxcb:0 x11-libs/xcb-util:0 x11-libs/xcb-util-keysyms:0 )
+	xcb? (
+		x11-libs/libxcb:0
+		x11-libs/xcb-util:0
+		x11-libs/xcb-util-keysyms:0
+	)
 	xml? ( dev-libs/libxml2:2 )
 	zeroconf? ( >=net-dns/avahi-0.6:0[dbus] )
 	zvbi? ( media-libs/zvbi:0 )
@@ -199,14 +258,6 @@ PATCHES=(
 DOCS=( AUTHORS THANKS NEWS README doc/fortunes.txt )
 
 S="${WORKDIR}/${MY_P}"
-
-src_unpack() {
-	if [[ ${PV} = *9999 ]] ; then
-		git-r3_src_unpack
-	else
-		unpack ${A}
-	fi
-}
 
 src_prepare() {
 	default
