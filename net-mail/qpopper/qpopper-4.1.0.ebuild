@@ -1,9 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
-#inherit eutils flag-o-matic ssl-cert
-inherit eutils ssl-cert user
+EAPI=6
+inherit ssl-cert user
 
 MY_P=${PN}${PV}
 
@@ -11,7 +10,7 @@ DESCRIPTION="A POP3 Server"
 HOMEPAGE="http://www.eudora.com/products/unsupported/qpopper/index.html"
 SRC_URI="ftp://ftp.qualcomm.com/eudora/servers/unix/popper/${MY_P}.tar.gz"
 
-LICENSE="qpopper ISOC-rfc"
+LICENSE="qpopper GPL-2 ISOC-rfc"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="debug drac gdbm mailbox pam ssl xinetd apop"
@@ -22,19 +21,25 @@ DEPEND="virtual/mta
 	gdbm? ( sys-libs/gdbm )
 	drac? ( mail-client/drac )
 	pam? ( >=sys-libs/pam-0.72 )
-	ssl? ( dev-libs/openssl )"
+	ssl? ( dev-libs/openssl )
+"
 RDEPEND="${DEPEND}"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.1-parallel-build.patch
+	"${FILESDIR}"/${PN}-4.1.0-glibc.patch #532254
+)
 
 pkg_setup() {
 	use apop && enewuser pop
 }
 
 src_prepare() {
+	default
 	# Test dirs are full of binary craft. Drop it.
 	rm -rf ./mmangle/test || die
-	epatch "${FILESDIR}"/${PN}-4.1-parallel-build.patch
 	sed -i -e 's:-o popauth:& ${LDFLAGS}:' popper/Makefile.in || die
 }
 
@@ -87,11 +92,12 @@ src_install() {
 		newinitd "${FILESDIR}/qpopper.init.d" qpopper
 	fi
 
-	dodoc README doc/{Release.Notes,Changes}
+        HTML_DOCS="doc/LMOS-FAQ.html"
+        einstalldocs
+        dodoc doc/{Release.Notes,Changes}
 
 	docinto rfc
 	dodoc doc/rfc*.txt
-	dohtml doc/LMOS-FAQ.html
 
 	insinto /usr/share/doc/${PF}
 	doins GUIDE.pdf
