@@ -2331,7 +2331,6 @@ app-text/jabref 2.10-r2 2.10-r4: Java GUI for managing BibTeX and other bibliogr
 app-text/jabref-bin 2.10 2.11 2.11.1 3.1 3.2 3.3 3.4 3.6 3.7 3.8 3.8.1 3.8.2 4.0 4.9999: Java GUI manages bibliographies in a BibTeX database
 app-text/jadetex 3.13-r7: TeX macros used by Jade TeX output
 app-text/jist 1.5.1-r1: A ruby gem to publish a gist
-app-text/jmupdf 0.4.1-r1 9999: Java library for rendering PDF, XPS and CBZ (Comic Book) documents
 app-text/jo 1.1: JSON output from a shell
 app-text/jpdftweak 0.9-r1: Swiss Army Knife for PDF files
 app-text/kbibtex 0.6.2 0.8_pre20171110: BibTeX editor to edit bibliographies used with LaTeX
@@ -4116,8 +4115,8 @@ dev-java/htmlparser-org 1.6: Java library used to parse HTML (from htmlparser.or
 dev-java/httpcomponents-client 4.5: A low level toolset of Java components focused on HTTP and associated protocols
 dev-java/httpcomponents-core 4.4.1-r1: A low level toolset of Java components focused on HTTP and associated protocols
 dev-java/ical4j 1.0.5: a Java library for handling iCalendar data streams
-dev-java/icedtea 3.6.0 7.2.6.11: A harness to build OpenJDK using Free Software build tools and dependencies
-dev-java/icedtea-bin 3.6.0 7.2.6.11: A Gentoo-made binary build of the IcedTea JDK
+dev-java/icedtea 3.6.0: A harness to build OpenJDK using Free Software build tools and dependencies
+dev-java/icedtea-bin 3.6.0: A Gentoo-made binary build of the IcedTea JDK
 dev-java/icedtea-sound 1.0.1: Plugins for javax.sound
 dev-java/icedtea-web 1.6.1-r1 1.6.2: FOSS Java browser plugin and Web Start implementation
 dev-java/icu4j 54.1.1 55.1 56.1: A set of Java libraries providing Unicode and Globalization support
@@ -13240,6 +13239,7 @@ media-libs/openh264 1.4.0-r1 1.5.0 1.7.0: Cisco OpenH264 library and Gecko Media
 media-libs/openicc 0.1.0: Config database to store, share and manipulate colour management informations
 media-libs/openimageio 1.3.5 1.6.13: A library for reading and writing images
 media-libs/openjpeg 1.5.2 1.5.2-r1 2.1.1_p20160922 2.1.2 2.2.0 2.3.0: An open-source JPEG 2000 library
+media-libs/openmoiv 1.0.3a: Object-oriented 3D toolkit for rendering and interaction of chemical systems
 media-libs/opensubdiv 3.1.0 3.1.1 3.3.0: An Open-Source subdivision surface library
 media-libs/opus 1.1.3-r1 1.2.1: Open codec designed for internet transmission of interactive speech and audio
 media-libs/opusfile 0.6 0.9 0.10: A high-level decoding and seeking API for .opus files
@@ -17461,6 +17461,7 @@ sys-block/open-isns 0.97 0.98: iSNS server and client for Linux
 sys-block/parted 2.4 2.4-r1 3.1-r1 3.1-r2 3.2 3.2-r1 3.2-r2: Create, destroy, resize, check, copy partitions and file systems
 sys-block/partimage 0.6.9: Console-based application to efficiently save raw partition data to image file
 sys-block/partitionmanager 3.2.1: KDE utility for management of partitions and file systems
+sys-block/perccli 7.1.007.0127: LINUX PERCCLI Utility For All PERC Controllers
 sys-block/qla-fc-firmware 20101015: QLogic Linux Fibre Channel HBA Firmware for ql2xxx cards
 sys-block/raid-check 20140719-r1: Script to do "scrubbing" on software RAID systems
 sys-block/rts5229 1.07-r6: PCIE RTS5229 card reader driver for Linux
@@ -18111,9 +18112,9 @@ virtual/imagemagick-tools 0: Virtual for imagemagick command line tools
 virtual/imap-c-client 0 1 2: Virtual for IMAP c-client
 virtual/inetd 0: Virtual for the internet super-server daemon
 virtual/jack 0: Virtual for JACK Audio Connection Kit
-virtual/jdk 1.7.0-r2 1.8.0-r3: Virtual for Java Development Kit (JDK)
+virtual/jdk 1.8.0-r3: Virtual for Java Development Kit (JDK)
 virtual/jpeg 0-r2 62: A virtual for the libjpeg.so.62 ABI for binary-only programs
-virtual/jre 1.7.0-r2 1.8.0-r1: Virtual for Java Runtime Environment (JRE)
+virtual/jre 1.8.0-r1: Virtual for Java Runtime Environment (JRE)
 virtual/krb5 0 0-r1: Virtual for Kerberos V implementation
 virtual/lapack 3.0 3.1 3.6 3.7: Virtual for Linear Algebra Package FORTRAN 77 (LAPACK) implementation
 virtual/latex-base 1.0: Virtual for basic LaTeX binaries
