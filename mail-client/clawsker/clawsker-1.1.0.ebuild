@@ -6,6 +6,7 @@ EAPI=6
 DESCRIPTION="Applet to edit Claws Mail's hidden preferences"
 HOMEPAGE="http://www.claws-mail.org/clawsker.php"
 SRC_URI="http://www.claws-mail.org/tools/${P}.tar.xz"
+
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
