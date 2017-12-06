@@ -117,7 +117,7 @@ src_prepare() {
 	default
 	sed -i -e "s/git rev-parse HEAD/echo ${GIT_COMMIT}/"\
 		-e "s/git rev-parse --short HEAD/echo ${GIT_COMMIT:0:7}/"\
-		-e "s#git describe --tags --abbrev=0 --exact-match 2>/dev/null#echo ${PV}#"\
+		-e "s#git describe --tags --abbrev=0 --exact-match 2>/dev/null#echo v${PV}#"\
 		-e 's/test -n "`git status --porcelain`" && echo "dirty" ||//' src/${EGO_PN}/versioning.mk || die
 
 	rm -rf src/${EGO_PN}/vendor/*/*/vendor src/${EGO_PN}/vendor/*/*/*/vendor  || die
@@ -139,6 +139,6 @@ src_install() {
 	insinto /usr/share/zsh/site-functions
 	newins ${PN}.zsh _${PN}
 
-	dobin bin/${PN}
+	dobin bin/${PN} bin/tiller
 	dodoc src/${EGO_PN}/README.md
 }
