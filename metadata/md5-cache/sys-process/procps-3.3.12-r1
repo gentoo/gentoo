@@ -4,10 +4,10 @@ DESCRIPTION=standard informational utilities and process-handling tools
 EAPI=5
 HOMEPAGE=http://procps-ng.sourceforge.net/ https://gitlab.com/procps-ng/procps
 IUSE=elogind +kill modern-top +ncurses nls selinux static-libs systemd test unicode
-KEYWORDS=alpha ~amd64 ~arm ~arm64 ~hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux
+KEYWORDS=alpha ~amd64 ~arm ~arm64 ~hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc ~x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
 RDEPEND=elogind? ( sys-auth/elogind ) ncurses? ( >=sys-libs/ncurses-5.7-r7:=[unicode?] ) selinux? ( sys-libs/libselinux ) systemd? ( sys-apps/systemd ) kill? ( !sys-apps/coreutils[kill] !sys-apps/util-linux[kill] ) !<sys-apps/sysvinit-2.88-r6
 SLOT=0/5
 SRC_URI=mirror://sourceforge/procps-ng/procps-ng-3.3.12.tar.xz
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	flag-o-matic	a6089a2a4027ae3da4a460dc87b21050	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=5733e0af95d0d31d150a49954012d1f8
+_md5_=c1b82a070cba61e0e298758778628898

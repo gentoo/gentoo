@@ -4,10 +4,10 @@ DESCRIPTION=Easily create test classes in an xUnit/JUnit style
 EAPI=5
 HOMEPAGE=http://search.cpan.org/dist/Test-Class/
 IUSE=test
-KEYWORDS=~alpha amd64 ~ia64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+KEYWORDS=~alpha amd64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=virtual/perl-Attribute-Handlers-0.770.0 virtual/perl-Carp virtual/perl-File-Spec >=dev-perl/MRO-Compat-0.110.0 dev-perl/Module-Runtime >=virtual/perl-Storable-2.40.0 virtual/perl-Test-Simple dev-perl/Try-Tiny dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/E/ET/ETHER/Test-Class-0.50.tar.gz
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011	toolchain-funcs	185a06792159ca143528e7010368e8af	unpacker	f40f7b4bd5aa88c2a4ba7b0d1e0ded70
-_md5_=01f61165fd2a46e6a0416ac5795baa08
+_md5_=052f1e761018799aef938ccfc4f40887
