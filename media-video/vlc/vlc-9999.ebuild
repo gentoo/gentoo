@@ -193,7 +193,8 @@ RDEPEND="
 	theora? ( media-libs/libtheora:0 )
 	tremor? ( media-libs/tremor:0 )
 	truetype? (
-		media-libs/freetype:2 virtual/ttf-fonts:0
+		media-libs/freetype:2
+		virtual/ttf-fonts:0
 		!fontconfig? ( media-fonts/dejavu:0 )
 	)
 	twolame? ( media-sound/twolame:0 )
