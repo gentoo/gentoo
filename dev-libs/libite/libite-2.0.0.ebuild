@@ -4,8 +4,8 @@
 EAPI=6
 
 DESCRIPTION="A collection of useful BSD APIs"
-HOMEPAGE="https://github.com/troglobit/libuev"
-SRC_URI="https://github.com/troglobit/${PN}/releases/download/v${PV}/${P}.tar.xz"
+HOMEPAGE="https://github.com/troglobit/libite"
+SRC_URI="https://github.com/troglobit/libite/releases/download/v${PV}/${P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
