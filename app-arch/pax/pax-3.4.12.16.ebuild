@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -25,7 +25,10 @@ src_prepare() {
 	rpm_spec_epatch ../${PN}.spec
 	epatch "${FILESDIR}"/pax-3.4-x32.patch
 	epatch "${FILESDIR}"/pax-3.4-sysmacros.patch
-	sed -i configure.in -e 's|AM_CONFIG_HEADER|AC_CONFIG_HEADERS|g' || die
+	sed -i configure.in \
+		-e 's|AM_CONFIG_HEADER|AC_CONFIG_HEADERS|g' \
+		-e 's|-Werror||g' \
+		|| die
 	eautoreconf
 }
 
