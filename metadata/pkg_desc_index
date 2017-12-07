@@ -5039,7 +5039,7 @@ dev-libs/openct 0.6.20-r4: library for accessing smart card terminals
 dev-libs/openobex 1.7.1: Implementation of the OBEX protocol used for transferring data to mobile devices
 dev-libs/opensc 0.16.0 0.17.0: Libraries and applications to access smartcards
 dev-libs/openspecfun 0.5.1: A collection of special mathematical functions
-dev-libs/openssl 0.9.8z_p8 1.0.2k 1.0.2l 1.0.2l-r1 1.0.2m 1.0.2n 1.1.0f 1.1.0f-r1 1.1.0g 1.1.0g-r1: full-strength general purpose cryptography library (including SSL and TLS)
+dev-libs/openssl 0.9.8z_p8 1.0.2k 1.0.2l 1.0.2l-r1 1.0.2m 1.0.2n 1.1.0g-r2: full-strength general purpose cryptography library (including SSL and TLS)
 dev-libs/ossp-uuid 1.6.2-r4 1.6.2-r6: An ISO-C:1999 API with CLI for generating DCE, ISO/IEC and RFC compliant UUID
 dev-libs/pakchois 0.4-r2: PaKChoiS - PKCS #11 wrapper library
 dev-libs/papi 5.3.0 5.4.0 5.5.1: Performance Application Programming Interface
