@@ -84,7 +84,7 @@ app-admin/diradm 2.9.7.1: A nearly complete nss/shadow suite for managing POSIX 
 app-admin/doas 6.0: Run commands as super user or another user, alternative to sudo from OpenBSD
 app-admin/drush 6.7.0 6.7.0-r1: Command line shell and scripting interface for Drupal
 app-admin/durep 0.9-r4: A perl script designed for monitoring disk usage in a more visual way than du
-app-admin/dxf 6.2.0 6.3.0 7.0.0 7.0.1 7.1.0: Docker registry v2 client in Python
+app-admin/dxf 7.0.1 7.1.0: Docker registry v2 client in Python
 app-admin/ec2-ami-tools 1.5.7: Command-line tools that serve as client interface to the Amazon EC2 web service
 app-admin/eclean-kernel 0.4 0.4.1 0.4.2 1.99.3 9999: Clean up old and stale kernel files
 app-admin/elektra 0.8.16 9999: Framework to store config parameters in hierarchical key-value pairs
