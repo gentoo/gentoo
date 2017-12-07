@@ -13,7 +13,7 @@ detect_arch
 
 inherit git-r3 versionator
 EGIT_REPO_URI="https://github.com/raspberrypi/linux.git -> raspberrypi-linux.git"
-EGIT_CHECKOUT_DIR="${WORKDIR}/linux-${PV}-raspberrypi"
+EGIT_BRANCH="rpi-$(get_version_component_range 1-2).y"
 
 DESCRIPTION="Raspberry PI kernel sources"
 HOMEPAGE="https://github.com/raspberrypi/linux"
