@@ -9766,7 +9766,7 @@ dev-ruby/mixlib-shellout 2.2.7 2.3.2: Run external commands on Unix or Windows
 dev-ruby/mocha 0.10.5-r2 0.11.4-r1 0.12.10-r1 0.13.3-r2 0.14.0 1.1.0 1.2.0 1.2.1 1.3.0: Mocking and stubbing using a syntax like that of JMock and SchMock
 dev-ruby/moneta 0.8.1 1.0.0: A unified interface to key/value stores
 dev-ruby/mongo 2.0.6: A Ruby driver for MongoDB
-dev-ruby/msgpack 0.7.6 1.0.3 1.1.0 1.1.0-r1: Binary-based efficient data interchange format for ruby binding
+dev-ruby/msgpack 0.7.6 1.0.3 1.1.0 1.1.0-r1 1.2.0: Binary-based efficient data interchange format for ruby binding
 dev-ruby/multi_json 1.9.3 1.12.1 1.12.2: A gem to provide swappable JSON backends
 dev-ruby/multi_test 0.1.2: A uniform interface for Ruby testing libraries
 dev-ruby/multi_xml 0.5.4-r2 0.5.5 0.6.0: A generic swappable back-end for XML parsing
@@ -9881,7 +9881,7 @@ dev-ruby/rbst 0.5.1: A simple Ruby wrapper for processing rST via docutils
 dev-ruby/rbtree 0.4.2-r1: Ruby/RBTree module
 dev-ruby/rcairo 1.14.3 1.15.9-r1 1.15.10: Ruby bindings for cairo
 dev-ruby/rdiscount 2.1.8 2.2.0.1: Implementation of John Gruber's Markdown
-dev-ruby/rdoc 4.2.0 4.3.0 5.0.0-r3 5.1.0: An extended version of the RDoc library from Ruby 1.8
+dev-ruby/rdoc 4.2.0 4.3.0 5.0.0-r3 5.1.0 6.0.0: An extended version of the RDoc library from Ruby 1.8
 dev-ruby/rdtool 0.6.38-r2: A multipurpose documentation format for Ruby
 dev-ruby/recog 2.0.14-r1 2.1.6-r1: Pattern recognition for hosts, services, and content
 dev-ruby/redcarpet 3.3.4 3.4.0: A Ruby wrapper for Upskirt
