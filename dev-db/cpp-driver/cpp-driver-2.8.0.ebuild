@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="ssl libressl"
 
 RDEPEND="
-	dev-libs/libuv
+	dev-libs/libuv:=
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
