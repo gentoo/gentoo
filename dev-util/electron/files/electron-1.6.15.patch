@@ -1,25 +1,26 @@
-From b756fa976480791c76e9338a16ee2b0a29265b93 Mon Sep 17 00:00:00 2001
+From 8aa9ca32e88f7b6e66ded532d3110f4e84e99a9b Mon Sep 17 00:00:00 2001
 From: Elvis Pranskevichus <elvis@magic.io>
 Date: Mon, 8 Feb 2016 15:16:40 -0500
 Subject: [PATCH] electron build fixes
 
 ---
- common.gypi               | 43 ++++++++++++++++++++++-----
- electron.gyp              | 74 +++++++++++++++++++++++++++++++++++----------
- toolchain.gypi            | 76 +++++++++++++++++++----------------------------
- tools/ar-flags.py         | 15 ++++++++++
- tools/atom_source_root.py |  5 ++++
- tools/browserify.py       | 24 +++++++++++++++
- tools/get-endianness.py   |  4 +++
- tools/js2asar.py          | 13 ++++----
- 8 files changed, 179 insertions(+), 75 deletions(-)
+ common.gypi                   | 70 ++++++++++++++++++++++++++++++++++-----
+ electron.gyp                  | 70 +++++++++++++++++++++++++++++++--------
+ toolchain.gypi                | 76 +++++++++++++++++--------------------------
+ tools/ar-flags.py             | 15 +++++++++
+ tools/atom_source_root.py     |  5 +++
+ tools/browserify.py           | 24 ++++++++++++++
+ tools/get-endianness.py       |  4 +++
+ tools/js2asar.py              | 13 ++++----
+ tools/list-browserify-deps.py |  3 +-
+ 9 files changed, 204 insertions(+), 76 deletions(-)
  create mode 100644 tools/ar-flags.py
  create mode 100644 tools/atom_source_root.py
  create mode 100644 tools/browserify.py
  create mode 100644 tools/get-endianness.py
 
 diff --git a/common.gypi b/common.gypi
-index 7c1bf366a..c441ae04b 100644
+index 7c1bf366a..7892926eb 100644
 --- a/common.gypi
 +++ b/common.gypi
 @@ -2,6 +2,7 @@
@@ -30,8 +31,24 @@ index 7c1bf366a..c441ae04b 100644
    ],
    'variables': {
      # Tell crashpad to build as external project.
-@@ -16,26 +17,23 @@
+@@ -11,31 +12,44 @@
+     'chromeos': 0,
+     # Reflects node's config.gypi.
+     'component%': 'static_library',
+-    'python': 'python',
++    'python%': 'python',
+     'openssl_fips': '',
      'openssl_no_asm': 1,
++
++    'host_arch': '<!(python <(DEPTH)/chromium/v8/gypfiles/detect_v8_host_arch.py)',
++
++    # ICU configuration for Node.
++    # Note: the use of icu-system.gyp does not necessarily
++    # indicate that the system ICU will be used, it merely
++    # disables the use of the version bundled with Node.
++    'icu_gyp_path': 'tools/icu/icu-system.gyp',
++    'icu_small': 'false',
++
      'use_openssl_def': 0,
      'OPENSSL_PRODUCT': 'libopenssl.a',
 -    'node_release_urlbase': 'https://atom.io/download/atom-shell',
@@ -43,12 +60,17 @@ index 7c1bf366a..c441ae04b 100644
      'node_install_npm': 'false',
      'node_prefix': '',
      'node_shared': 'true',
--    'node_shared_cares': 'false',
+     'node_shared_cares': 'false',
 -    'node_shared_http_parser': 'false',
 -    'node_shared_libuv': 'false',
 -    'node_shared_openssl': 'false',
      'node_shared_v8': 'true',
 -    'node_shared_zlib': 'false',
++    'node_shared_http_parser': 'true',
++    # There are ABI-incompatible modifications to libuv
++    'node_shared_libuv': 'false',
++    'node_shared_openssl': 'true',
++    'node_shared_zlib': 'true',
      'node_tag': '',
      'node_use_dtrace': 'false',
      'node_use_etw': 'false',
@@ -62,10 +84,11 @@ index 7c1bf366a..c441ae04b 100644
      'node_enable_d8': 'false',
      'uv_library': 'static_library',
      'uv_parent_path': 'vendor/node/deps/uv',
-@@ -44,10 +42,16 @@
+@@ -44,10 +58,17 @@
      'v8_postmortem_support': 'false',
      'v8_enable_i18n_support': 'false',
      'v8_inspector': 'false',
++    'v8_host_byteorder': '<!(python <(DEPTH)/tools/get-endianness.py)',
 +    'v8_use_snapshot': 'true',
 +    'v8_use_external_startup_data': 1,
    },
@@ -79,7 +102,7 @@ index 7c1bf366a..c441ae04b 100644
        ['_target_name in ["libuv", "http_parser", "openssl", "openssl-cli", "cares", "node", "zlib"]', {
          'msvs_disabled_warnings': [
            4003,  # not enough actual parameters for macro 'V'
-@@ -128,6 +132,14 @@
+@@ -128,6 +149,20 @@
          ],
        }],
        ['_target_name=="node"', {
@@ -91,10 +114,27 @@ index 7c1bf366a..c441ae04b 100644
 +        'cflags_cc!': [
 +          '-fvisibility-inlines-hidden',
 +        ],
++        'libraries': [
++          '-lz',
++          '-lhttp_parser',
++          '-lcrypto',
++          '-lssl',
++        ],
          'include_dirs': [
            '<(libchromiumcontent_src_dir)',
            '<(libchromiumcontent_src_dir)/third_party/icu/source/common',
-@@ -228,6 +240,21 @@
+@@ -167,7 +202,9 @@
+               '-Wl,--no-whole-archive',
+             ],
+           }, {
+-            'libraries': [ '<@(libchromiumcontent_v8_libraries)' ],
++            'libraries': [
++              '<@(libchromiumcontent_v8_libraries)',
++            ],
+           }],
+         ],
+       }],
+@@ -228,6 +265,21 @@
            }],  # OS=="win"
          ],
        }],
@@ -117,7 +157,7 @@ index 7c1bf366a..c441ae04b 100644
      'msvs_cygwin_shell': 0, # Strangely setting it to 1 would make building under cygwin fail.
      'msvs_disabled_warnings': [
 diff --git a/electron.gyp b/electron.gyp
-index b415525b1..4d0185561 100644
+index f82de1e1f..2c398fe75 100644
 --- a/electron.gyp
 +++ b/electron.gyp
 @@ -191,7 +191,7 @@
@@ -129,15 +169,7 @@ index b415525b1..4d0185561 100644
                      ],
                    }],
                  ],
-@@ -200,7 +200,6 @@
-               'files': [
-                 '<@(copied_libraries)',
-                 '<(libchromiumcontent_dir)/locales',
--                '<(libchromiumcontent_dir)/icudtl.dat',
-                 '<(libchromiumcontent_dir)/blink_image_resources_200_percent.pak',
-                 '<(libchromiumcontent_dir)/content_resources_200_percent.pak',
-                 '<(libchromiumcontent_dir)/content_shell.pak',
-@@ -245,15 +244,17 @@
+@@ -244,8 +244,8 @@
          '<@(lib_sources)',
        ],
        'include_dirs': [
@@ -146,10 +178,8 @@ index b415525b1..4d0185561 100644
 +        '.',
          'vendor/brightray',
          'vendor/native_mate',
-+        # libicu headers shim.
-+        '<(SHARED_INTERMEDIATE_DIR)/shim_headers/icui18n_shim',
-+        '<(SHARED_INTERMEDIATE_DIR)/shim_headers/icuuc_shim',
-         # Include atom_natives.h.
+         # libicu headers shim.
+@@ -255,7 +255,6 @@
          '<(SHARED_INTERMEDIATE_DIR)',
          # Include directories for uv and node.
          'vendor/node/src',
@@ -157,7 +187,7 @@ index b415525b1..4d0185561 100644
          'vendor/node/deps/uv/include',
          # The `node.h` is using `#include"v8.h"`.
          '<(libchromiumcontent_src_dir)/v8/include',
-@@ -342,11 +343,12 @@
+@@ -344,11 +343,12 @@
              '<@(lib_sources_nss)',
            ],
            'link_settings': {
@@ -171,7 +201,7 @@ index b415525b1..4d0185561 100644
                # Make native module dynamic loading work.
                '-rdynamic',
              ],
-@@ -368,6 +370,9 @@
+@@ -370,6 +370,9 @@
      {
        'target_name': 'js2asar',
        'type': 'none',
@@ -181,7 +211,7 @@ index b415525b1..4d0185561 100644
        'actions': [
          {
            'action_name': 'js2asar',
-@@ -389,6 +394,7 @@
+@@ -391,6 +394,7 @@
            'action': [
              'python',
              'tools/js2asar.py',
@@ -189,7 +219,7 @@ index b415525b1..4d0185561 100644
              '<@(_outputs)',
              'lib',
              '<@(_inputs)',
-@@ -399,6 +405,9 @@
+@@ -401,6 +405,9 @@
      {
        'target_name': 'app2asar',
        'type': 'none',
@@ -199,7 +229,7 @@ index b415525b1..4d0185561 100644
        'actions': [
          {
            'action_name': 'app2asar',
-@@ -420,6 +429,7 @@
+@@ -422,6 +429,7 @@
            'action': [
              'python',
              'tools/js2asar.py',
@@ -207,7 +237,7 @@ index b415525b1..4d0185561 100644
              '<@(_outputs)',
              'default_app',
              '<@(_inputs)',
-@@ -445,6 +455,7 @@
+@@ -447,6 +455,7 @@
        'dependencies': [
          # depend on this target to ensure the '<(js2c_input_dir)' is created
          'atom_js2c_copy',
@@ -215,7 +245,7 @@ index b415525b1..4d0185561 100644
        ],
        'variables': {
          'sandbox_args': [
-@@ -474,11 +485,9 @@
+@@ -476,11 +485,9 @@
              '<(js2c_input_dir)/preload_bundle.js',
            ],
            'action': [
@@ -230,7 +260,7 @@ index b415525b1..4d0185561 100644
              '<@(sandbox_args)',
              '-o',
              '<@(_outputs)',
-@@ -493,12 +502,11 @@
+@@ -495,12 +502,11 @@
              '<(js2c_input_dir)/isolated_bundle.js',
            ],
            'action': [
@@ -247,7 +277,7 @@ index b415525b1..4d0185561 100644
              '-o',
              '<@(_outputs)',
            ],
-@@ -533,6 +541,42 @@
+@@ -535,6 +541,42 @@
          }
        ],
      },  # target atom_js2c
@@ -507,6 +537,20 @@ index adad1751e..ca7686893 100755
  
  
  def safe_mkdir(path):
+diff --git a/tools/list-browserify-deps.py b/tools/list-browserify-deps.py
+index c25007d2a..bbd921bc6 100755
+--- a/tools/list-browserify-deps.py
++++ b/tools/list-browserify-deps.py
+@@ -9,7 +9,8 @@ BROWSERIFY = os.path.join(SOURCE_ROOT, 'node_modules', '.bin', 'browserify')
+ if sys.platform == 'win32':
+   BROWSERIFY += '.cmd'
+ 
+-deps = subprocess.check_output([BROWSERIFY, '--list'] + sys.argv[1:])
++deps = subprocess.check_output([BROWSERIFY, '--list'] + sys.argv[1:],
++                               universal_newlines=True)
+ for dep in deps.split('\n'):
+     if dep:
+         dep = os.path.relpath(dep, SOURCE_ROOT)
 -- 
-2.14.1
+2.14.3
 

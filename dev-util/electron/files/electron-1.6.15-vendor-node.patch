@@ -1,30 +1,30 @@
-From fc6ba3a74ffa88b22435531d6522d934a52187e5 Mon Sep 17 00:00:00 2001
+From 672445004bafb94ea14cbb89c12c205c731eb288 Mon Sep 17 00:00:00 2001
 From: Elvis Pranskevichus <elvis@magic.io>
 Date: Wed, 10 Feb 2016 14:45:13 -0500
 Subject: [PATCH] Build fixes
 
 ---
- lib/internal/bootstrap_node.js | 2 ++
- node.gyp                       | 9 +++++++++
- src/node_main.cc               | 2 ++
- 3 files changed, 13 insertions(+)
+ lib/internal/bootstrap_node.js |  2 ++
+ node.gyp                       | 14 +++++++++-----
+ src/node_main.cc               |  4 ++++
+ 3 files changed, 15 insertions(+), 5 deletions(-)
 
 diff --git a/lib/internal/bootstrap_node.js b/lib/internal/bootstrap_node.js
-index 085ea00fd0..cb49fc87a7 100644
+index aee7261f23..b921843643 100644
 --- a/lib/internal/bootstrap_node.js
 +++ b/lib/internal/bootstrap_node.js
-@@ -40,7 +40,9 @@
+@@ -39,7 +39,9 @@
        setupGlobalConsole();
      }
  
-+    if (!process.env.ELECTRON_NODE_DISABLE_ASAR_SUPPORT) {
++    if (!process.env._ELECTRON_BUILD_NO_ASAR) {
      setupAsarSupport();
 +    }
  
      const _process = NativeModule.require('internal/process');
  
 diff --git a/node.gyp b/node.gyp
-index 95f24933fc..1434904324 100644
+index c0bc2d7d4c..e5920f6a33 100644
 --- a/node.gyp
 +++ b/node.gyp
 @@ -17,6 +17,7 @@
@@ -35,7 +35,7 @@ index 95f24933fc..1434904324 100644
      'node_v8_options%': '',
      'node_enable_v8_vtunejit%': 'false',
      'node_core_target_name%': 'node',
-@@ -133,6 +134,7 @@
+@@ -146,6 +147,7 @@
        ],
  
        'include_dirs': [
@@ -43,7 +43,7 @@ index 95f24933fc..1434904324 100644
          'src',
          'tools/msvs/genfiles',
          'deps/uv/src/ares',
-@@ -238,6 +240,13 @@
+@@ -261,6 +263,13 @@
          'V8_DEPRECATION_WARNINGS=1',
        ],
  
@@ -57,11 +57,23 @@ index 95f24933fc..1434904324 100644
  
        'conditions': [
          [ 'node_shared=="false"', {
+@@ -950,11 +959,6 @@
+             }]
+           ]
+         }],
+-        [ 'node_use_v8_platform=="true"', {
+-          'dependencies': [
+-            'deps/v8/src/v8.gyp:v8_libplatform',
+-          ],
+-        }],
+         [ 'node_use_bundled_v8=="true"', {
+           'dependencies': [
+             'deps/v8/src/v8.gyp:v8',
 diff --git a/src/node_main.cc b/src/node_main.cc
-index 16bda81ae6..fd559ef1c3 100644
+index 16bda81ae6..2eb1d08369 100644
 --- a/src/node_main.cc
 +++ b/src/node_main.cc
-@@ -50,11 +50,13 @@ int wmain(int argc, wchar_t *wargv[]) {
+@@ -50,11 +50,15 @@ int wmain(int argc, wchar_t *wargv[]) {
  }
  #else
  // UNIX
@@ -71,10 +83,12 @@ index 16bda81ae6..fd559ef1c3 100644
    // calls elsewhere in the program (e.g., any logging from V8.)
    setvbuf(stdout, nullptr, _IONBF, 0);
    setvbuf(stderr, nullptr, _IONBF, 0);
-+  putenv("ELECTRON_NODE_DISABLE_ASAR_SUPPORT=1");
++#ifdef ELECTRON_NODE_BUILD_NO_ASAR
++  setenv("_ELECTRON_BUILD_NO_ASAR", "1", 1);
++#endif
    return node::Start(argc, argv);
  }
  #endif
 -- 
-2.13.3
+2.14.3
 
