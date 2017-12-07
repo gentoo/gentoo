@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI="6"
 
 inherit eutils flag-o-matic toolchain-funcs multilib multilib-minimal
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://openssl/source/${MY_P}.tar.gz"
 LICENSE="openssl"
 SLOT="0/1.1" # .so version of libssl/libcrypto
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~arm-linux ~x86-linux"
-IUSE="+asm bindist rfc3779 sctp cpu_flags_x86_sse2 static-libs test tls-heartbeat vanilla zlib"
+IUSE="+asm bindist elibc_musl rfc3779 sctp cpu_flags_x86_sse2 static-libs test tls-heartbeat vanilla zlib"
 RESTRICT="!bindist? ( bindist )"
 
 RDEPEND=">=app-misc/c_rehash-1.7-r1
@@ -56,6 +56,7 @@ MULTILIB_WRAPPED_HEADERS=(
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.2a-x32-asm.patch #542618
+	"${FILESDIR}"/${PN}-1.1.0g-CVE-2017-3738.patch
 )
 
 src_prepare() {
@@ -85,8 +86,9 @@ src_prepare() {
 
 	if ! use vanilla ; then
 		epatch "${PATCHES[@]}"
-		epatch_user #332661
 	fi
+
+	eapply_user #332661
 
 	# make sure the man pages are suffixed #302165
 	# don't bother building man pages if they're disabled
@@ -181,6 +183,7 @@ multilib_src_configure() {
 		enable-ec \
 		$(use_ssl !bindist ec2m) \
 		enable-srp \
+		$(use elibc_musl && echo "no-async") \
 		${ec_nistp_64_gcc_128} \
 		enable-idea \
 		enable-mdc2 \
@@ -234,7 +237,6 @@ multilib_src_install_all() {
 	rm "${ED}"/usr/bin/c_rehash || die
 
 	dodoc CHANGES* FAQ NEWS README doc/*.txt doc/${PN}-c-indent.el
-	dohtml -r doc/*
 
 	# This is crappy in that the static archives are still built even
 	# when USE=static-libs.  But this is due to a failing in the openssl
