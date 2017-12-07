@@ -12824,7 +12824,7 @@ media-gfx/monica 3.7: Monica is a Monitor Calibration Tool
 media-gfx/mscgen 0.20: A message sequence chart generator
 media-gfx/mypaint 1.1.0-r2 1.2.0 1.2.1: fast and easy graphics application for digital painters
 media-gfx/nip2 7.38.1: VIPS Image Processing Graphical User Interface
-media-gfx/nomacs 3.6.1 3.6.1-r1: Qt-based image viewer
+media-gfx/nomacs 3.6.1 3.6.1-r1 3.8.0: Qt-based image viewer
 media-gfx/nvidia-cg-toolkit 3.1.0013-r3 3.1.0013-r5: NVIDIA's C graphics compiler toolkit
 media-gfx/nvidia-texture-tools 2.0.8-r3: A set of cuda-enabled texture tools and compressors
 media-gfx/opcion 1.1.1-r2: Free font viewer written in Java
