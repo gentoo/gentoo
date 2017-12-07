@@ -32,6 +32,11 @@
 # Michael Palimaka <kensington@gentoo.org> (07 Dec 2017)
 # Dead upstream. Requires dead Qt4.
 # Masked for removal in 30 days. Bug #640138.
+net-ftp/oneclickftp
+
+# Michael Palimaka <kensington@gentoo.org> (07 Dec 2017)
+# Dead upstream. Requires dead Qt4.
+# Masked for removal in 30 days. Bug #640138.
 dev-vcs/qct
 
 # Andreas Sturmlechner <asturm@gentoo.org> (06 Dec 2017)
