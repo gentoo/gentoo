@@ -82,7 +82,7 @@ src_prepare() {
 	find . -name \*.sh -exec chmod +x {} + || die
 	rm -r extern/{btyacc,editline,icu} || die
 
-	mv configure.in configure.ac || "failed to mv configure.in configure.ac"
+	mv configure.in configure.ac || die "failed to mv configure.in configure.ac"
 
 	eautoreconf
 }
