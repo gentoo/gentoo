@@ -295,7 +295,7 @@ app-arch/p7zip 16.02-r1: Port of 7-Zip archiver for Unix
 app-arch/par 1.1: Parchive archive fixing tool
 app-arch/par2cmdline 0.7.3 0.7.4: A PAR-2.0 file verification and repair tool
 app-arch/patool 1.12: Portable archive file manager
-app-arch/pax 3.4.12.16 3.4.12.16-r1 20160306: pax (Portable Archive eXchange) is the POSIX standard archive tool
+app-arch/pax 3.4.12.16 3.4.12.16-r1 20160306 20161104: pax (Portable Archive eXchange) is the POSIX standard archive tool
 app-arch/pbzip2 1.1.12 1.1.12-r1 1.1.13: Parallel bzip2 (de)compressor using libbz2
 app-arch/pdlzip 1.8: Public-domain version of lzip compressor
 app-arch/pdv 1.5.1-r2: build a self-extracting and self-installing binary package
@@ -15022,7 +15022,7 @@ net-libs/netembryo 0.1.1: a network abstraction library
 net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP protocols
 net-libs/nfqueue-bindings 0.5 0.6: High-level language bindings for libnetfilter_queue
 net-libs/nghttp2 1.10.0 1.19.0 1.27.0 1.28.0 9999: HTTP/2 C Library
-net-libs/nodejs 0.12.17 4.8.5 6.9.4 6.11.5 8.9.1-r1 8.9.2 9.2.0-r1: A JavaScript runtime built on Chrome's V8 JavaScript engine
+net-libs/nodejs 0.12.17 4.8.5 6.9.4 6.11.5 8.9.1-r1 8.9.2 9.2.0-r1 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-libs/ntirpc 1.4.1 1.5.2 1.5.3: Transport Independent RPC library for nfs-ganesha
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
