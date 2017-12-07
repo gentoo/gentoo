@@ -11,4 +11,4 @@ REQUIRED_USE=aalib? ( X ) bidi? ( truetype ) cddb? ( cdda ) dvb? ( dvbpsi ) dxva
 SLOT=0/5-8
 SRC_URI=https://download.videolan.org/pub/videolan/vlc/2.2.6/vlc-2.2.6.tar.xz
 _eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	flag-o-matic	a6089a2a4027ae3da4a460dc87b21050	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0	virtualx	171580f737f5aaf18fcb456548588066
-_md5_=3ce5db9d21636c15bc32140d2666febd
+_md5_=81db0bcf1ce22d82d75f39134186403a

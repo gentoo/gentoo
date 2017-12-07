@@ -5075,6 +5075,8 @@ media-video/vdr:vasarajanauloja - replacement for the liemikuutio patch, adds so
 media-video/vdr:wareagleicon - Replace original icon set in menu
 media-video/vdr:yaepg - Enables support for the vdr-yaepg plugin
 media-video/vlc:X - Enables support for, e.g., fullscreen mode via the X Window System. By itself, this flag does not build a graphical interface.
+media-video/vlc:aom - Enables experimental support for AV1 codec
+media-video/vlc:archive - Enables support for libarchive stream extractor
 media-video/vlc:atmo - Enables support for AtmoLight (homebrew Ambient Lighting Technology)
 media-video/vlc:audioqueue - Enables AudioQueue audio module for Mac OS X.
 media-video/vlc:avcodec - Enables libavcodec support for video/audio encoding/decoding. libavcodec is part of FFmpeg.
@@ -5108,6 +5110,7 @@ media-video/vlc:macosx-qtkit - Enables Mac OS X qtkit module: qtcapture (video) 
 media-video/vlc:macosx-quartztext - Enables Mac OS X quartz text module.
 media-video/vlc:matroska - Enables matroska support using reference libraries (fallback on other existing matroska support if disabled, i.e., matroska enabled FFmpeg)
 media-video/vlc:mpeg - Add libmpeg2 support for mpeg-1 and mpeg-2 video streams
+media-video/vlc:nfs - Enables support for nfs protocol via net-fs/libnfs
 media-video/vlc:omxil - Enables OpenMAX Integration Layer codec module.
 media-video/vlc:opencv - Enabled OpenCV (computer vision) filter module.
 media-video/vlc:optimisememory - Enable optimisation for memory rather than performance.
