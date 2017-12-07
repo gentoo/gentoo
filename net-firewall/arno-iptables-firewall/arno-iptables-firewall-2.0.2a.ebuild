@@ -1,14 +1,15 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit readme.gentoo systemd versionator
+EAPI=6
+inherit readme.gentoo-r1 systemd versionator
 
 DESCRIPTION="Arno's iptables firewall script"
 HOMEPAGE="http://rocky.eld.leidenuniv.nl"
 
 MY_PV=$(replace_version_separator 3 -)
-SRC_URI="http://rocky.eld.leidenuniv.nl/${PN}/${PN}_${MY_PV}.tar.gz"
+MY_PV=${MY_PV/rc/RC}
+SRC_URI="https://github.com/${PN}/aif/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -19,12 +20,13 @@ IUSE="+plugins"
 # https://bugs.gentoo.org/show_bug.cgi?id=448716
 
 DEPEND=""
-RDEPEND="net-firewall/iptables
-		>sys-apps/coreutils-8.20-r1
-		sys-apps/iproute2
-		plugins? ( net-dns/bind-tools )"
+RDEPEND="net-firewall/ipset
+	net-firewall/iptables
+	>=sys-apps/coreutils-8.21
+	sys-apps/iproute2
+	plugins? ( net-dns/bind-tools )"
 
-S="${WORKDIR}/${PN}_${MY_PV/rc/RC}"
+S="${WORKDIR}/aif-${MY_PV}"
 
 DISABLE_AUTOFORMATTING="yes"
 DOC_CONTENTS="You will need to configure /etc/${PN}/firewall.conf
@@ -43,6 +45,7 @@ src_prepare() {
 		etc/"${PN}"/firewall.conf || die "Sed failed!"
 	sed -i -e 's:/usr/local/sbin/:/usr/sbin/:' \
 		lib/systemd/system/"${PN}.service" || die "Sed failed!"
+	eapply_user
 }
 
 src_install() {
