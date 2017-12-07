@@ -19001,7 +19001,7 @@ x11-misc/rofi 1.3.1 1.4.1 1.4.2: A window switcher, run dialog and dmenu replace
 x11-misc/rss-glx 0.9.1 0.9.1-r1: Really Slick OpenGL Screensavers for XScreenSaver
 x11-misc/safeeyes 1.2.1 1.2.2 2.0.0: Linux alternative to EyeLeo
 x11-misc/screen-message 0.24 0.25: Display a multi-line message large, fullscreen, black on white
-x11-misc/screengrab 1.2.1-r1: Qt application for getting screenshots
+x11-misc/screengrab 1.2.1-r1 1.97: Qt application for getting screenshots
 x11-misc/sct 0.3 0.4: Set color temperature of the screen
 x11-misc/sddm 0.15.0 0.16.0-r3 0.17.0: Simple Desktop Display Manager
 x11-misc/seetxt 0.72-r1: Clever, lightweight GUI text file and manual page viewer for X windows
