@@ -1297,7 +1297,7 @@ app-emulation/diskimage-builder 1.28.0 2.9.0: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.0.0-r1: DLX Simulator
 app-emulation/docker 17.06.2 17.09.0 17.10.0 17.11.0 9999: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-bench-security 1.3.2 1.3.3: Test for best practices around deploying docker containers
-app-emulation/docker-compose 1.17.1: Multi-container orchestration for Docker
+app-emulation/docker-compose 1.17.1 1.18.0_rc1: Multi-container orchestration for Docker
 app-emulation/docker-gc 9999: Docker garbage collection of containers and images
 app-emulation/docker-machine 0.12.2 0.13.0: Machine management for a container-centric world
 app-emulation/docker-machine-kvm 0.10.0: KVM driver for docker-machine
@@ -5039,7 +5039,7 @@ dev-libs/openct 0.6.20-r4: library for accessing smart card terminals
 dev-libs/openobex 1.7.1: Implementation of the OBEX protocol used for transferring data to mobile devices
 dev-libs/opensc 0.16.0 0.17.0: Libraries and applications to access smartcards
 dev-libs/openspecfun 0.5.1: A collection of special mathematical functions
-dev-libs/openssl 0.9.8z_p8 1.0.2k 1.0.2l 1.0.2l-r1 1.0.2m 1.1.0f 1.1.0f-r1 1.1.0g 1.1.0g-r1: full-strength general purpose cryptography library (including SSL and TLS)
+dev-libs/openssl 0.9.8z_p8 1.0.2k 1.0.2l 1.0.2l-r1 1.0.2m 1.0.2n 1.1.0f 1.1.0f-r1 1.1.0g 1.1.0g-r1: full-strength general purpose cryptography library (including SSL and TLS)
 dev-libs/ossp-uuid 1.6.2-r4 1.6.2-r6: An ISO-C:1999 API with CLI for generating DCE, ISO/IEC and RFC compliant UUID
 dev-libs/pakchois 0.4-r2: PaKChoiS - PKCS #11 wrapper library
 dev-libs/papi 5.3.0 5.4.0 5.5.1: Performance Application Programming Interface
@@ -8917,7 +8917,7 @@ dev-python/torment 3.0.1 3.0.2 3.0.3: A Study in Fixture Based Testing Framework
 dev-python/toro 1.0.1: Synchronization primitives for Tornado coroutines
 dev-python/tox 2.7.0 2.8.1 2.9.1: virtualenv-based automation of test activities
 dev-python/tpg 3.2.2-r1: Toy Parser Generator for Python
-dev-python/tqdm 4.8.4 4.10.0 9999: Add a progress meter to your loops in a second.
+dev-python/tqdm 4.8.4 4.10.0 4.19.4 9999: Add a progress meter to your loops in a second.
 dev-python/traceback2 1.4.0: Backports of the traceback module
 dev-python/tracing 0.8 0.10: Debug log/trace messages
 dev-python/traitlets 4.0.0 4.1.0 4.2.2 4.3.1 4.3.2: A configuration system for Python applications
@@ -17899,7 +17899,7 @@ sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
 sys-kernel/kergen 0.1.3 0.1.4: Kernel config generator
 sys-kernel/kpatch 0.4.0-r1 9999: Dynamic kernel patching for Linux
 sys-kernel/linux-docs 4.1 4.4 4.9: Developer documentation generated from the Linux kernel
-sys-kernel/linux-firmware 20161205 20170314 20170622 20170906 20171009 20171123 99999999: Linux firmware files
+sys-kernel/linux-firmware 20170314 20171009 20171123 20171206 99999999: Linux firmware files
 sys-kernel/linux-headers 2.4.33.3 2.4.36 3.18 4.3 4.4 4.5 4.6 4.7 4.8 4.9 4.10 4.11 4.12 4.13: Linux system headers
 sys-kernel/mips-sources 4.4.91 4.9.54 4.11.12 4.12.14: Linux-Mips GIT sources for MIPS-based machines, dated 20170703
 sys-kernel/pf-sources 4.4_p8 4.5_p4 4.8_p8 4.10_p3 4.11_p3 4.11_p4 4.13_p4: Linux kernel fork with new features (-ck patchset (BFS), BFQ, TuxOnIce and UKSM)
