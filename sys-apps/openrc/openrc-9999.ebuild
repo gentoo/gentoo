@@ -74,11 +74,13 @@ src_compile() {
 	MAKE_ARGS="${MAKE_ARGS}
 		LIBNAME=$(get_libdir)
 		LIBEXECDIR=${EPREFIX}/$(get_libdir)/rc
+		MKBASHCOMP=yes
 		MKNET=$(usex newnet)
 		MKSELINUX=$(usex selinux)
 		MKAUDIT=$(usex audit)
 		MKPAM=$(usev pam)
-		MKSTATICLIBS=$(usex static-libs)"
+		MKSTATICLIBS=$(usex static-libs)
+		MKZSHCOMP=yes"
 
 	local brand="Unknown"
 	if use kernel_linux ; then
