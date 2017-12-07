@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare test
+DEPEND=~sys-libs/libapparmor-2.11.1 dev-lang/perl sys-devel/bison sys-devel/flex doc? ( dev-tex/latex2html ) virtual/pkgconfig
+DESCRIPTION=Userspace utils and init scripts for the AppArmor application security system
+EAPI=6
+HOMEPAGE=http://apparmor.net/
+IUSE=doc
+KEYWORDS=~amd64
+LICENSE=GPL-2
+RDEPEND=~sys-libs/libapparmor-2.11.1
+SLOT=0
+SRC_URI=https://launchpad.net/apparmor/2.11/2.11.1/+download/apparmor-2.11.1.tar.gz
+_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	34815d3b76e745c5ca33eec9f95074c2	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=3142e9f0c17e81b1bfe11fa705e7b900

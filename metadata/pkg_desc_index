@@ -17071,7 +17071,7 @@ sys-apps/adjtime 0.4-r2: A perl script to adjust the clock tick of the hardware 
 sys-apps/agedu 20170831 20171202: A utility for tracking down wasted disk space
 sys-apps/aix-miscutils 0.1.1671: Miscellaneous helpers for AIX (currently just ldd)
 sys-apps/apmd 3.2.2_p14-r1: Advanced Power Management Daemon
-sys-apps/apparmor 2.11.1-r1: Userspace utils and init scripts for the AppArmor application security system
+sys-apps/apparmor 2.11.1-r1 2.11.1-r2: Userspace utils and init scripts for the AppArmor application security system
 sys-apps/apparmor-utils 2.11.1: Additional userspace utils to assist with AppArmor profile management
 sys-apps/apply-default-acl 0.0.6: Apply default POSIX ACLs to files and directories
 sys-apps/arrayprobe 2.0-r2: Utility to report status of an HP (Compaq) array controller (both IDA & CCISS)
