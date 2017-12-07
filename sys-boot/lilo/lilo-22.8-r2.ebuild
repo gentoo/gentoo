@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit eutils flag-o-matic toolchain-funcs
@@ -48,16 +48,12 @@ src_compile() {
 	# lilo needs this. bug #140209
 	export LC_ALL=C
 
-	# hardened automatic PIC plus PIE building should be suppressed
-	# because of assembler instructions that cannot be compiled PIC
-	HARDENED_CFLAGS="`test-flags-CC -fno-pic -nopie`"
-
 	# we explicitly prevent the custom CFLAGS for stability reasons
 	if use static; then
-		emake CC="$(tc-getCC) ${HARDENED_CFLAGS}" lilo.static || die
+		emake CC="$(tc-getCC)" lilo.static || die
 		mv lilo.static lilo || die
 	else
-		emake CC="$(tc-getCC) ${HARDENED_CFLAGS}" lilo || die
+		emake CC="$(tc-getCC)" lilo || die
 	fi
 }
 
