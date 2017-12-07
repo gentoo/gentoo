@@ -193,7 +193,8 @@ RDEPEND="
 	theora? ( media-libs/libtheora:0 )
 	tremor? ( media-libs/tremor:0 )
 	truetype? (
-		media-libs/freetype:2 virtual/ttf-fonts:0
+		media-libs/freetype:2
+		virtual/ttf-fonts:0
 		!fontconfig? ( media-fonts/dejavu:0 )
 	)
 	twolame? ( media-sound/twolame:0 )
@@ -448,10 +449,6 @@ src_test() {
 src_install() {
 	default
 	find "${D}" -name '*.la' -delete || die
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
 }
 
 pkg_postinst() {
