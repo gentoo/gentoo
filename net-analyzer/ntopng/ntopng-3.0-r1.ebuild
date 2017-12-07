@@ -30,6 +30,7 @@ RDEPEND="${DEPEND}
 PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
 	"${FILESDIR}"/${P}-mysqltool.patch
+	"${FILESDIR}"/${P}-pointer-cmp.patch
 )
 
 src_prepare() {

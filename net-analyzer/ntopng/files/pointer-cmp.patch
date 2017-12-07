@@ -1,0 +1,12 @@
+diff -Naur ntopng-3.0-orig/src/AddressResolution.cpp ntopng-3.0/src/AddressResolution.cpp
+--- ntopng-3.0-orig/src/AddressResolution.cpp	2017-06-01 00:18:57.000000000 -0700
++++ ntopng-3.0/src/AddressResolution.cpp	2017-11-27 23:13:50.158163187 -0800
+@@ -52,7 +52,7 @@
+   u_int numeric_ip_len;
+ 
+   snprintf(query, sizeof(query), "%s", _numeric_ip);
+-  if((at = strchr(query, '@')) != '\0') at[0] = '\0';
++  if((at = strchr(query, '@')) != NULL) at[0] = '\0';
+   numeric_ip = query;
+   numeric_ip_len = strlen(numeric_ip)-1;
+ 
