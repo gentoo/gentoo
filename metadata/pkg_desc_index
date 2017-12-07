@@ -543,7 +543,7 @@ app-crypt/gpg-ringmgr 1.12: GPG Keyring Manager to handle large GPG keyrings mor
 app-crypt/gpgme 1.8.0-r2 1.8.0-r3 1.10.0_beta81 9999: GnuPG Made Easy is a library for making GnuPG easier to use
 app-crypt/gpgstats 0.5-r1: GPGstats calculates statistics on the keys in your key-ring
 app-crypt/hashalot 0.3-r2: CryptoAPI utils
-app-crypt/hashcat 3.5.0: World's fastest and most advanced password recovery utility
+app-crypt/hashcat 3.5.0 4.0.1: World's fastest and most advanced password recovery utility
 app-crypt/heimdal 7.4.0: Kerberos 5 implementation from KTH
 app-crypt/hmaccalc 0.9.14: Tools for computing and checking HMAC values for files
 app-crypt/ima-evm-utils 0.2 0.8 1.0 9999: Supporting tools for IMA and EVM
@@ -1330,7 +1330,7 @@ app-emulation/libdsk 1.5.4: LIBDSK is a library for accessing discs and disc ima
 app-emulation/libguestfs 1.28.5-r3 1.36.5: Tools for accessing, inspect and modifying virtual machine (VM) disk images
 app-emulation/libguestfs-appliance 1.26.0-r1 1.28.1 1.28.1-r1 1.36.1: VM appliance disk image used in libguestfs package
 app-emulation/libspectrum 1.3.6 1.4.0: Spectrum emulation library
-app-emulation/libvirt 3.8.0-r1 3.9.0 9999: C toolkit to manipulate virtual machines
+app-emulation/libvirt 3.8.0-r1 3.10.0 9999: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 1.0.0 1.0.0-r1: GLib and GObject mappings for libvirt
 app-emulation/libvirt-snmp 0.0.2-r2 0.0.3: Provides SNMP functionality for libvirt
 app-emulation/lxc 1.0.8 2.0.3-r1 2.0.4 2.0.5 2.0.6-r1 2.0.7 2.0.8: LinuX Containers userspace utilities
@@ -7968,7 +7968,7 @@ dev-python/libnatpmp 20130911 20140401-r1 20150609: Python module for libnatpmp,
 dev-python/libpillowfight 0.2.1 0.2.2: Small library containing various image processing algorithms
 dev-python/librharris 0.1.14-r1: Python Internet Programming Library
 dev-python/librsvg-python 2.32.0-r1: Python bindings for the librsvg library
-dev-python/libvirt-python 3.8.0 3.9.0 9999: libvirt Python bindings
+dev-python/libvirt-python 3.8.0 3.10.0 9999: libvirt Python bindings
 dev-python/libwnck-python 2.32.0-r1: Python bindings for the libwnck library
 dev-python/libzilla 1.3 1.4: Library for managing Bugzilla bug reports from the CLI
 dev-python/line_profiler 2.0 9999: Line-by-line profiler
@@ -18468,8 +18468,8 @@ www-client/seamonkey-bin 2.48 2.49.1_rc2: Mozilla Application Suite - web browse
 www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ and libcurl
-www-client/vivaldi 1.13.1008.32_p1 1.13.1008.34_p1: A new browser for our friends
-www-client/vivaldi-snapshot 1.14.1030.3_p1: A new browser for our friends
+www-client/vivaldi 1.13.1008.34_p1: A new browser for our friends
+www-client/vivaldi-snapshot 1.14.1030.3_p1 1.14.1036.3_p1: A new browser for our friends
 www-client/w3m 0.5.3-r9: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r7 0.3.2_p24-r9: A variant of w3m with support for multiple character encodings
 www-client/weboob 0g 0h 9998 9999: Consume lots of websites without a browser (Web Outside Of Browsers)
