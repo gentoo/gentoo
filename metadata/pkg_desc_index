@@ -1340,7 +1340,7 @@ app-emulation/open-vm-tools 10.1.10 10.1.15: Opensourced tools for VMware guests
 app-emulation/openstack-guest-agents-unix 1.39.0 1.39.0-r1 1.39.0-r2 1.39.1 1.39.1_p20170227: Unix Guest Agent for OpenStack
 app-emulation/phpvirtualbox 4.1.11 4.2.7 4.3.0 5.0.3 5.0.5: Web-based administration for VirtualBox in PHP
 app-emulation/playonlinux 4.2.12: Set of scripts to easily install and use Windows games and software
-app-emulation/q4wine 1.3.5: Qt GUI configuration tool for Wine
+app-emulation/q4wine 1.3.5 1.3.6: Qt GUI configuration tool for Wine
 app-emulation/qemu 2.10.1 9999: QEMU + Kernel-based Virtual Machine userland tools
 app-emulation/qemu-guest-agent 2.5.0 2.6.0 2.8.1 2.9.0 2.10.1: QEMU Guest Agent (qemu-ga) for use when running inside a VM
 app-emulation/qemu-init-scripts 0.3.0: Kvm and qemu init scripts
@@ -19500,7 +19500,7 @@ x11-themes/shiki-colors 4.6: Mixes the elegance of a dark theme with the usabili
 x11-themes/silver-xcursors 0.4 0.4-r1: A high quality set of Xfree 4.3.0 animated mouse cursors
 x11-themes/skinenigmang-logos 20070214-r1 20131008: VDR - Skin Plugin: enigma-ng logos
 x11-themes/slim-themes 1.2.3a-r7: SLiM (Simple Login Manager) themes pack
-x11-themes/smplayer-skins 15.2.0: Skins for SMPlayer
+x11-themes/smplayer-skins 15.2.0 15.2.0-r1: Skins for SMPlayer
 x11-themes/smplayer-themes 15.12.0 16.8.0 17.2.0 17.3.0: Icon themes for smplayer
 x11-themes/solar-backgrounds 0.92.0.5-r1: Fedora official background artwork
 x11-themes/sound-theme-freedesktop 0.8: Default freedesktop.org sound theme following the XDG theming specification
