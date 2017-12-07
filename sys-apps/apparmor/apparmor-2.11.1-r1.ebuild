@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit toolchain-funcs versionator
+inherit toolchain-funcs versionator systemd
 
 MY_PV="$(get_version_component_range 1-2)"
 
@@ -53,7 +53,12 @@ src_install() {
 
 	dodir /etc/apparmor.d/disable
 
-	newinitd "${FILESDIR}"/${PN}-init ${PN}
+	newinitd "${FILESDIR}/${PN}-init" ${PN}
+	systemd_newunit "${FILESDIR}/apparmor.service" apparmor.service
 
 	use doc && dodoc techdoc.pdf
+
+	exeinto /usr/share/apparmor
+	doexe "${FILESDIR}/apparmor_load.sh"
+	doexe "${FILESDIR}/apparmor_unload.sh"
 }
