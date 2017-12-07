@@ -59,7 +59,7 @@ RDEPEND="
 	>=net-libs/gnutls-1.0.25:0=
 	net-libs/libssh2
 	net-libs/libtirpc
-	net-libs/rpcsvc-proto
+	|| ( sys-libs/glibc[rpc(-)] net-libs/rpcsvc-proto )
 	>=net-misc/curl-7.18.0
 	sys-apps/dmidecode
 	>=sys-apps/util-linux-2.17
@@ -124,10 +124,9 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.0-do_not_use_sysconf.patch
 	"${FILESDIR}"/${PN}-1.2.16-fix_paths_in_libvirt-guests_sh.patch
-	"${FILESDIR}"/${PN}-3.0.0-fix_paths_for_apparmor.patch
+	"${FILESDIR}"/${PN}-3.10.0-fix_paths_for_apparmor.patch
 	"${FILESDIR}"/${PN}-1.3.4-glibc-2.23.patch
 	"${FILESDIR}"/${PN}-3.1.0-musl-fix-includes.patch          # bug #609488
-	"${FILESDIR}"/${PN}-3.9.0-tirpc.patch
 )
 
 pkg_setup() {

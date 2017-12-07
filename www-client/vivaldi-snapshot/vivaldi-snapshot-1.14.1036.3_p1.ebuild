@@ -9,22 +9,19 @@ CHROMIUM_LANGS="
 "
 inherit chromium-2 eutils gnome2-utils multilib unpacker toolchain-funcs xdg-utils
 
-#VIVALDI_BRANCH="snapshot"
-
-VIVALDI_PN="${PN}-${VIVALDI_BRANCH:-stable}"
-VIVALDI_BIN="${PN}${VIVALDI_BRANCH/snapshot/-snapshot}"
-VIVALDI_HOME="opt/${VIVALDI_BIN}"
+VIVALDI_HOME="opt/${PN}"
 DESCRIPTION="A new browser for our friends"
 HOMEPAGE="http://vivaldi.com/"
-VIVALDI_BASE_URI="https://downloads.vivaldi.com/${VIVALDI_BRANCH:-stable}/${VIVALDI_PN}_${PV/_p/-}_"
+VIVALDI_BASE_URI="https://downloads.vivaldi.com/snapshot/${PN}_${PV/_p/-}_"
 SRC_URI="
 	amd64? ( ${VIVALDI_BASE_URI}amd64.deb -> ${P}-amd64.deb )
+	arm? ( ${VIVALDI_BASE_URI}armhf.deb -> ${P}-armhf.deb )
 	x86? ( ${VIVALDI_BASE_URI}i386.deb -> ${P}-i386.deb )
 "
 
 LICENSE="Vivaldi"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~arm ~x86"
 RESTRICT="bindist mirror"
 
 DEPEND="
@@ -68,20 +65,15 @@ src_unpack() {
 }
 
 src_prepare() {
-	iconv -c -t UTF-8 usr/share/applications/${VIVALDI_PN}.desktop > "${T}"/${VIVALDI_PN}.desktop || die
-	mv "${T}"/${VIVALDI_PN}.desktop usr/share/applications/${VIVALDI_PN}.desktop || die
+	iconv -c -t UTF-8 usr/share/applications/${PN}.desktop > "${T}"/${PN}.desktop || die
+	mv "${T}"/${PN}.desktop usr/share/applications/${PN}.desktop || die
 
-	sed -i \
-		-e "s|${VIVALDI_BIN}|${PN}|g" \
-		usr/share/applications/${VIVALDI_PN}.desktop \
-		usr/share/xfce4/helpers/${VIVALDI_BIN}.desktop || die
-
-	mv usr/share/doc/${VIVALDI_PN} usr/share/doc/${PF} || die
+	mv usr/share/doc/${PN} usr/share/doc/${PF} || die
 	chmod 0755 usr/share/doc/${PF} || die
 
 	rm \
 		_gpgbuilder \
-		etc/cron.daily/${VIVALDI_BIN} \
+		etc/cron.daily/${PN} \
 		${VIVALDI_HOME}/libwidevinecdm.so \
 		|| die
 	rmdir \
@@ -94,14 +86,14 @@ src_prepare() {
 		mkdir -p usr/share/icons/hicolor/${d}x${d}/apps || die
 		cp \
 			${VIVALDI_HOME}/product_logo_${d}.png \
-			usr/share/icons/hicolor/${d}x${d}/apps/vivaldi.png || die
+			usr/share/icons/hicolor/${d}x${d}/apps/${PN}.png || die
 	done
 
 	pushd "${VIVALDI_HOME}/locales" > /dev/null || die
 	chromium_remove_language_paks
 	popd > /dev/null || die
 
-	epatch "${FILESDIR}"/${PN}-1.13.1008.32_p1-libffmpeg.patch
+	epatch "${FILESDIR}"/vivaldi-snapshot-1.13.997.3_p1-libffmpeg.patch
 
 	epatch_user
 }
@@ -110,9 +102,8 @@ src_install() {
 	mv * "${D}" || die
 	dosym /${VIVALDI_HOME}/${PN} /usr/bin/${PN}
 
-	fperms 4711 /${VIVALDI_HOME}/${PN}-sandbox
+	fperms 4711 /${VIVALDI_HOME}/vivaldi-sandbox
 }
-
 pkg_preinst() {
 	gnome2_icon_savelist
 }
