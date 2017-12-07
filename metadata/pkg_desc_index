@@ -15779,7 +15779,7 @@ net-wireless/bladerf 2015.02 2015.07 2016.01_rc1 2016.06 9999: Libraries for sup
 net-wireless/bladerf-firmware 1.7.1 1.8.0 1.9.0 2.0.0: bladeRF FX3 firmware images
 net-wireless/bladerf-fpga 0.0.6 0.1.1-r1 0.1.2 0.3.4 0.5.0 0.6.0: bladeRF FPGA bitstreams
 net-wireless/blueberry 1.1.8-r1 1.1.13-r1: A Bluetooth configuration tool
-net-wireless/blueman 2.0.3 2.0.4 2.1_alpha1 9999: Simple and intuitive GTK+ Bluetooth Manager
+net-wireless/blueman 2.0.4 2.1_alpha2 9999: Simple and intuitive GTK+ Bluetooth Manager
 net-wireless/bluez 5.47-r1: Bluetooth Tools and System Daemons for Linux
 net-wireless/bluez-hcidump 2.5: Bluetooth HCI packet analyzer
 net-wireless/bluez-tools 0_p20161212: A set of tools to manage bluetooth devices for linux
@@ -19645,7 +19645,7 @@ xfce-extra/xfce4-notifyd 0.2.4 0.3.6 0.4.0: Notification daemon for the Xfce des
 xfce-extra/xfce4-places-plugin 1.7.0: A panel plug-in to provide quick access to files, folders and removable media
 xfce-extra/xfce4-playercontrol-plugin 0.3.0: Audacious and MPD panel plugins
 xfce-extra/xfce4-power-manager 1.6.0 1.6.0-r1: Power manager for the Xfce desktop environment
-xfce-extra/xfce4-pulseaudio-plugin 0.2.4 0.3.2 0.3.3: A panel plug-in for PulseAudio volume control
+xfce-extra/xfce4-pulseaudio-plugin 0.2.4 0.3.3 0.3.4: A panel plug-in for PulseAudio volume control
 xfce-extra/xfce4-quicklauncher-plugin 1.9.4-r1: A quicklauncher plug-in for the Xfce panel
 xfce-extra/xfce4-radio-plugin 0.5.1-r1: V4L radio device control plug-in for the Xfce desktop environment
 xfce-extra/xfce4-screenshooter 1.8.2 1.9.1: Xfce4 screenshooter application and panel plugin
