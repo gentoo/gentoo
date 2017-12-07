@@ -21,7 +21,7 @@ else
 	fi
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 -sparc ~x86 ~x86-fbsd"
 fi
-inherit autotools flag-o-matic toolchain-funcs versionator virtualx ${SCM}
+inherit autotools flag-o-matic gnome2-utils toolchain-funcs versionator virtualx xdg-utils ${SCM}
 
 DESCRIPTION="VLC media player - Video player and streamer"
 HOMEPAGE="https://www.videolan.org/vlc/"
@@ -450,6 +450,10 @@ src_install() {
 	find "${D}" -name '*.la' -delete || die
 }
 
+pkg_preinst() {
+	gnome2_icon_savelist
+}
+
 pkg_postinst() {
 	if [[ "$ROOT" = "/" ]] && [[ -x "/usr/$(get_libdir)/vlc/vlc-cache-gen" ]] ; then
 		einfo "Running /usr/$(get_libdir)/vlc/vlc-cache-gen on /usr/$(get_libdir)/vlc/plugins/"
@@ -459,4 +463,14 @@ pkg_postinst() {
 		ewarn "Please run /usr/$(get_libdir)/vlc/vlc-cache-gen manually"
 		ewarn "If you do not do it, vlc will take a long time to load."
 	fi
+
+	gnome2_icon_cache_update
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
 }
