@@ -1,0 +1,22 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+: ${REDIS_SENTINEL_DIR:=/tmp}
+: ${REDIS_SENTINEL_CONF:=/etc/sentinel.conf}
+: ${REDIS_SENTINEL_USER:=redis}
+: ${REDIS_SENTINEL_GROUP:=redis}
+: ${REDIS_SENTINEL_TIMEOUT:=30}
+
+command="/usr/sbin/redis-sentinel"
+command_args="${REDIS_SENTINEL_CONF}"
+command_background="true"
+command_user="${REDIS_SENTINEL_USER}:${REDIS_SENTINEL_GROUP}"
+pidfile="/run/${RC_SVCNAME}.pid"
+retry="${REDIS_SENTINEL_TIMEOUT}"
+start_stop_daemon_args="--chdir \"${REDIS_SENTINEL_DIR}\""
+
+depend() {
+	use localmount logger
+	after keepalived redis
+}
