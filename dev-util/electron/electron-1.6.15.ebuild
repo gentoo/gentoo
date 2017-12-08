@@ -780,14 +780,14 @@ src_compile() {
 	create_dist_args+=" --no_zip"
 	create_dist_args+=" --system-icu"
 	CHROMIUM_BUILD_DIR="${chromium_target}" \
-	python2 "${libcc_path}"/script/create-dist ${create_dist_args} || die
+	"${EPYTHON}" "${libcc_path}"/script/create-dist ${create_dist_args} || die
 
 	# v8 is built as a shared library, so copy it manually
 	# for generate_filenames_gypi to find.
 	mkdir -p "${libcc_dist_shared_path}" || die
 	cp "${chromium_target}/libv8.so" "${libcc_dist_shared_path}" || die
 
-	python2 "${libcc_path}"/tools/generate_filenames_gypi.py \
+	"${EPYTHON}" "${libcc_path}"/tools/generate_filenames_gypi.py \
 		"${libcc_dist_path}/filenames.gypi" \
 		"${CHROMIUM_S}" \
 		"${libcc_dist_shared_path}" \
@@ -820,7 +820,7 @@ src_compile() {
 		-Dsysroot="
 
 	myconf_gyp+=" -Dtarget_arch=${target_arch}"
-	myconf_gyp+=" -Dpython=python2"
+	myconf_gyp+=" -Dpython=${EPYTHON}"
 
 	# Make sure that -Werror doesn't get added to CFLAGS by the build system.
 	# Depending on GCC version the warnings are different and we don't want
