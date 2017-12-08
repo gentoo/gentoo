@@ -494,7 +494,7 @@ app-cdr/xfburn 0.5.4 0.5.4-r1: GTK+ based CD and DVD burning application
 app-crypt/WiRouterKeyRec 1.1.2: Recovery tool for wpa passphrase
 app-crypt/acme 0.18.2 0.19.0 9999: An implementation of the ACME protocol
 app-crypt/acme-client 0.1.16: a secure ACME client
-app-crypt/acme-tiny 9999 20170207: A tiny, auditable script for Let's Encrypt's ACME Protocol
+app-crypt/acme-tiny 20170917 99999999: A tiny, auditable script for Let's Encrypt's ACME Protocol
 app-crypt/acr38u 1.7.11-r3: Non CCID driver for ACR38 AC1038-based Smart Card Reader
 app-crypt/aescrypt 3.0.6b: Advanced file encryption using AES
 app-crypt/aespipe 2.4e: Encrypts data from stdin to stdout
@@ -11632,7 +11632,7 @@ games-strategy/dunelegacy 0.96.3: Updated clone of Westood Studios' Dune2
 games-strategy/endless-sky 0.9.1 0.9.6: Space exploration, trading & combat in the tradition of Terminal Velocity
 games-strategy/freeciv 2.5.9 2.6.0_beta1: multiplayer strategy game (Civilization Clone)
 games-strategy/freecol 0.11.5 0.11.6: An open source clone of the game Colonization
-games-strategy/freeorion 0.4.7.1 0.4.7.1-r1 9999: A free turn-based space empire and galactic conquest game
+games-strategy/freeorion 0.4.7.1 0.4.7.1-r2 9999: A free turn-based space empire and galactic conquest game
 games-strategy/freesynd 0.7.1: A portable reimplementation of engine for the classic Bullfrog game, Syndicate
 games-strategy/galaxyhack 1.74: Multiplayer AI script based strategy game
 games-strategy/glob2 0.9.4.4-r1: Real Time Strategy (RTS) game involving a brave army of globs
