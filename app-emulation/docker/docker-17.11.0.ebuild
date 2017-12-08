@@ -60,6 +60,7 @@ RDEPEND="
 	sys-process/procps
 	>=dev-vcs/git-1.7
 	>=app-arch/xz-utils-4.9
+	dev-libs/libltdl:0
 
 	~app-emulation/containerd-1.0.0_beta2_p20171019
 	~app-emulation/docker-runc-1.0.0_rc4_p20170926[apparmor?,seccomp?]
