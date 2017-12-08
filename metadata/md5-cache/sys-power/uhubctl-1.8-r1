@@ -1,0 +1,11 @@
+DEFINED_PHASES=prepare
+DEPEND=virtual/libusb:1
+DESCRIPTION=USB hub per-port power control
+EAPI=6
+HOMEPAGE=https://github.com/mvp/uhubctl
+KEYWORDS=~amd64 ~x86 ~arm
+LICENSE=GPL-2
+RDEPEND=virtual/libusb:1
+SLOT=0
+SRC_URI=https://github.com/mvp/uhubctl/archive/v1.8.tar.gz -> uhubctl-1.8.tar.gz
+_md5_=4af4983f7fd93a6dc97032d73c3d73b7

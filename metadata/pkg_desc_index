@@ -18032,7 +18032,7 @@ sys-power/powertop 2.8 9999: tool that helps you find what software is using the
 sys-power/sispmctl 3.1 4.0: GEMBIRD SiS-PM control utility
 sys-power/suspend 1.0_p20150810: Userspace Software Suspend and S2Ram
 sys-power/thermald 1.4.2-r1 1.5.3 1.5.4 1.6: Thermal daemon for Intel architectures
-sys-power/uhubctl 1.8: USB hub per-port power control
+sys-power/uhubctl 1.8-r1: USB hub per-port power control
 sys-power/upower 0.99.4 0.99.4-r1 0.99.5 0.99.6 0.99.7: D-Bus abstraction for enumerating power devices, querying history and statistics
 sys-power/upower-pm-utils 0.9.23-r2: The upstream upower 0.9 git branch for use with sys-power/pm-utils
 sys-process/acct 6.5.5-r4 6.6.1 6.6.2 6.6.2-r1 6.6.4 6.6.4-r1: GNU system accounting utilities
