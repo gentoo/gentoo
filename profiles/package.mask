@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrice Clement <monsieurp@gentoo.org> (19 Dec 2017)
+# A slightly better syntax file for PAM configuration files is shipped with Vim
+# since version 8.0. The one we package is old and out of date.
+# Masked for removal in 30 days. See bug 578278.
+app-vim/pam-syntax
+
 # Andreas Sturmlechner <asturm@gentoo.org> (19 Dec 2017)
 # Dead upstream, depends on dead qt3support/qt4.
 # Bug #639246. Masked for removal in 30 days.
