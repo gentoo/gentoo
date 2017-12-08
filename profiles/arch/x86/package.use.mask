@@ -3,6 +3,11 @@
 
 # This file requires >=portage-2.1.1
 
+# Hans de Graaff <graaff@gentoo.org> (8 Dec 2017)
+# Test dependencies are no longer keyworded due to dropped Rails
+# keyword.
+dev-ruby/asciidoctor test
+
 # Tim Harder <radhermit@gentoo.org> (11 Sep 2017)
 # Pulls in dev-ruby/asciidoctor which has too large of a ruby testing
 # dep tree that is unkeyworded at this time.
