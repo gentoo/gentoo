@@ -16251,7 +16251,7 @@ sci-chemistry/threeV 1.2-r1: 3V: Voss Volume Voxelator
 sci-chemistry/tinker 7.1.2: Molecular modeling package that includes force fields, such as AMBER and CHARMM
 sci-chemistry/tm-align 20140601 20150914: Quick & Accurate Structural Alignment
 sci-chemistry/viewmol 2.4.1-r3: Open-source graphical front end for computational chemistry programs
-sci-chemistry/vmd 1.9.2: Visual Molecular Dynamics
+sci-chemistry/vmd 1.9.2 1.9.3: Visual Molecular Dynamics
 sci-chemistry/votca-csg 1.4 1.4.1 9999: Votca coarse-graining engine
 sci-chemistry/votca-csgapps 1.4 1.4.1 9999: Extra applications for votca-csg
 sci-chemistry/votca-ctp 9999: Votca charge transport module
