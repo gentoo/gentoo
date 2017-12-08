@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,8 @@ inherit eutils multilib toolchain-funcs
 
 DESCRIPTION="open source high performance realtime 3D engine written in C++"
 HOMEPAGE="http://irrlicht.sourceforge.net/"
-SRC_URI="mirror://sourceforge/irrlicht/${P}.zip"
+SRC_URI="mirror://sourceforge/irrlicht/${P}.zip
+	https://dev.gentoo.org/~mgorny/dist/${P}-patchset.tar.bz2"
 
 LICENSE="ZLIB"
 SLOT="0"
@@ -32,11 +33,11 @@ src_prepare() {
 	edos2unix include/IrrCompileConfig.h
 
 	epatch \
-		"${FILESDIR}"/${P}-gentoo.patch \
-		"${FILESDIR}"/${P}-config.patch \
-		"${FILESDIR}"/${P}-demoMake.patch \
-		"${FILESDIR}"/${P}-mesa-10.x.patch \
-		"${FILESDIR}"/${P}-jpeg-9a.patch
+		"${WORKDIR}"/${P}-patchset/${P}-gentoo.patch \
+		"${WORKDIR}"/${P}-patchset/${P}-config.patch \
+		"${WORKDIR}"/${P}-patchset/${P}-demoMake.patch \
+		"${WORKDIR}"/${P}-patchset/${P}-mesa-10.x.patch \
+		"${WORKDIR}"/${P}-patchset/${P}-jpeg-9a.patch
 
 	sed -i \
 		-e 's:\.\./\.\./media:../media:g' \

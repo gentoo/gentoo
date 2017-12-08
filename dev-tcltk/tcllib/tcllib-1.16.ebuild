@@ -10,7 +10,8 @@ MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Tcl Standard Library"
 HOMEPAGE="http://www.tcl.tk/software/tcllib/"
-SRC_URI="mirror://sourceforge//project/${PN}/${PN}/${PV}/${MY_P}.tar.bz2"
+SRC_URI="mirror://sourceforge//project/${PN}/${PN}/${PV}/${MY_P}.tar.bz2
+	https://dev.gentoo.org/~mgorny/dist/${P}-patchset.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -27,11 +28,11 @@ DOCS=( DESCRIPTION.txt STATUS )
 
 S="${WORKDIR}"/${MY_P}
 
-PATCHES=( "${FILESDIR}"/${P}-XSS-vuln.patch )
+PATCHES=( "${WORKDIR}"/${P}-patchset/${P}-XSS-vuln.patch )
 
 src_prepare() {
 	has_version ">=dev-lang/tcl-8.6" && \
-		PATCHES+=( "${FILESDIR}"/${P}-test.patch )
+		PATCHES+=( "${WORKDIR}"/${P}-patchset/${P}-test.patch )
 	epatch "${PATCHES[@]}"
 
 	sed \
