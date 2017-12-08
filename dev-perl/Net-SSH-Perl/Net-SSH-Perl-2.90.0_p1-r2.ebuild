@@ -42,6 +42,6 @@ PERL_RM_FILES=( # Gentoo integrity checks are used instead
 )
 src_prepare() {
 	sed -i -r -e '/signature_target/d' \
-		"${S}/Makefile.PL" || "Can't strip signing controls from Makefile.PL"
+		"${S}/Makefile.PL" || die "Can't strip signing controls from Makefile.PL"
 	perl-module_src_prepare
 }
