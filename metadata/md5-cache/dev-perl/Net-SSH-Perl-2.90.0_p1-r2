@@ -10,4 +10,4 @@ RDEPEND=>=dev-perl/Crypt-Curve25519-0.50.0 dev-perl/Crypt-IDEA >=dev-perl/CryptX
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/S/SC/SCHWIGON/Net-SSH-Perl-2.09.01.tar.gz
 _eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
-_md5_=c108358222c9dc19ff1bc28d27ab954c
+_md5_=59f5ed00711220da308a356ee945131f
