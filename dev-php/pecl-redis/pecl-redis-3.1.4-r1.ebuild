@@ -4,7 +4,7 @@
 EAPI=6
 
 PHP_EXT_NAME="redis"
-USE_PHP="php5-6 php7-0 php7-1"
+USE_PHP="php5-6 php7-0 php7-1 php7-2"
 DOCS=( arrays.markdown cluster.markdown README.markdown CREDITS )
 MY_P="${PN/pecl-/}-${PV/_rc/RC}"
 PHP_EXT_PECL_FILENAME="${MY_P}.tgz"
@@ -21,7 +21,8 @@ IUSE="igbinary +session"
 DEPEND="igbinary? (
 	php_targets_php5-6? ( dev-php/igbinary[php_targets_php5-6] )
 	php_targets_php7-0? ( dev-php/igbinary[php_targets_php7-0] )
-	php_targets_php7-1? ( dev-php/igbinary[php_targets_php7-1] ) ) "
+	php_targets_php7-1? ( dev-php/igbinary[php_targets_php7-1] )
+	php_targets_php7-2? ( dev-php/igbinary[php_targets_php7-2] ) ) "
 RDEPEND="${DEPEND} !dev-php/pecl-redis:7"
 
 # The test suite requires network access.
