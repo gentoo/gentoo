@@ -20,6 +20,7 @@ DEPEND="dev-cpp/eigen:3
 	dev-cpp/muParser
 	dev-qt/qtcore:5
 	dev-qt/qtopengl:5
+	dev-qt/qtscript:5
 	dev-qt/qtxmlpatterns:5
 	>=media-gfx/jhead-3.00-r2
 	media-libs/glew:0
