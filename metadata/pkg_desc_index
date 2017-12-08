@@ -10475,7 +10475,7 @@ dev-util/dwdiff 2.1.0 2.1.0-r1 2.1.1: diff-like program operating at word level 
 dev-util/edb-debugger 0.9.21 9999: edb is a cross platform x86/x86-64 debugger, inspired by Ollydbg
 dev-util/editorconfig-geany 0.1_p20160725: EditorConfig plugin for Geany
 dev-util/egypt 1.10: devilishly simple tool for creating call graphs of C programs
-dev-util/electron 0.36.12-r5 0.37.8-r2 1.3.13-r1 1.6.11-r1: Cross platform application development framework based on web technologies
+dev-util/electron 0.36.12-r5 0.37.8-r2 1.3.13-r1 1.6.15: Cross platform application development framework based on web technologies
 dev-util/elfkickers 3.0a 3.1: collection of programs to manipulate ELF files: sstrip, rebind, elfls, elftoc
 dev-util/emilpro 3-r3 9999: a graphical disassembler for a large number of instruction sets
 dev-util/eric 17.09 17.11: A full featured Python IDE using PyQt and QScintilla
@@ -18015,7 +18015,7 @@ sys-power/cpupower 3.18 4.9.0-r1 4.13.0: Shows and sets processor power related 
 sys-power/hibernate-script 2.0-r6: Hibernate script supporting multiple suspend methods
 sys-power/iasl 20121018 20140828 20160729 20161222: Intel ACPI Source Language (ASL) compiler
 sys-power/ncpufreqd 2.4: Daemon controlling CPU speed and temperature
-sys-power/nut 2.6.5-r1 2.7.2-r2 2.7.3 2.7.4: Network-UPS Tools
+sys-power/nut 2.6.5-r1 2.7.2-r2 2.7.3 2.7.4 2.7.4-r1: Network-UPS Tools
 sys-power/nvclock 0.8_p20110102-r2: NVIDIA Overclocking Utility
 sys-power/nvram-reboot 2004.10.03: PowerOff Boot-Images for nvram-wakeup (not needed for GRUB)
 sys-power/nvram-wakeup 1.0 1.1: read and write the WakeUp time in the BIOS
@@ -18700,7 +18700,7 @@ x11-drivers/xf86-video-vmware 13.0.1-r1 13.0.2 13.1.0 13.2.1: VMware SVGA video 
 x11-drivers/xf86-video-voodoo 1.2.5: Voodoo video driver
 x11-libs/agg 2.5-r2: Anti-Grain Geometry - A High Quality Rendering Engine for C++
 x11-libs/c++-gtk-utils 2.0.27 2.0.29 2.0.30 2.0.31 2.0.31.1 2.2.10 2.2.12 2.2.13 2.2.14 2.2.14.1: A number of classes and functions for programming GTK+ programs using C++
-x11-libs/cairo 1.14.8 1.14.10 9999: A vector graphics library with cross-device output support
+x11-libs/cairo 1.14.8 1.14.10 1.14.12 9999: A vector graphics library with cross-device output support
 x11-libs/colord-gtk 0.1.25 0.1.26: GTK support library for colord
 x11-libs/compiz-bcop 0.8.8: Compiz Option code Generator
 x11-libs/compizconfig-backend-gconf 0.8.8: Compizconfig Gconf Backend
