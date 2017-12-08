@@ -9,6 +9,7 @@ inherit bash-completion-r1 gnome2
 
 DESCRIPTION="GNOME's main interface to configure various aspects of the desktop"
 HOMEPAGE="https://git.gnome.org/browse/gnome-control-center/"
+SRC_URI+=" https://dev.gentoo.org/~mgorny/dist/${P}-patchset.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="2"
@@ -128,16 +129,16 @@ DEPEND="${COMMON_DEPEND}
 
 PATCHES=(
 	# From gnome-3-22 branch
-	"${FILESDIR}"/${PV}-fix-build-without-wayland.patch # bug 613192
-	"${FILESDIR}"/${PV}-fix-dual-gpu-crash.patch
+	"${WORKDIR}"/${P}-patchset/${PV}-fix-build-without-wayland.patch # bug 613192
+	"${WORKDIR}"/${P}-patchset/${PV}-fix-dual-gpu-crash.patch
 	# Make some panels and dependencies optional; requires eautoreconf
 	# https://bugzilla.gnome.org/686840, 697478, 700145
-	"${FILESDIR}"/${PN}-3.22.0-optional.patch
-	"${FILESDIR}"/${PN}-3.22.0-make-wayland-optional.patch
-	"${FILESDIR}"/${PN}-3.22.0-keep-panels-optional.patch
-	"${FILESDIR}"/${PN}-3.22.0-make-networkmanager-optional.patch
+	"${WORKDIR}"/${P}-patchset/${PN}-3.22.0-optional.patch
+	"${WORKDIR}"/${P}-patchset/${PN}-3.22.0-make-wayland-optional.patch
+	"${WORKDIR}"/${P}-patchset/${PN}-3.22.0-keep-panels-optional.patch
+	"${WORKDIR}"/${P}-patchset/${PN}-3.22.0-make-networkmanager-optional.patch
 	# Fix some absolute paths to be appropriate for Gentoo
-	"${FILESDIR}"/${PN}-3.22.0-gentoo-paths.patch
+	"${WORKDIR}"/${P}-patchset/${PN}-3.22.0-gentoo-paths.patch
 )
 
 src_configure() {
