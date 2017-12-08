@@ -6972,9 +6972,11 @@ net-wireless/wepattack:john - Build with app-crypt/johntheripper support
 net-wireless/wireless-tools:multicall - Build the most commonly used tools as one binary
 net-wireless/wpa_supplicant:ap - Add support for access point mode
 net-wireless/wpa_supplicant:eap-sim - Add support for EAP-SIM authentication algorithm
+net-wireless/wpa_supplicant:eapol_test - Build and install eapol_test binary
 net-wireless/wpa_supplicant:fasteap - Add support for FAST-EAP authentication algorithm
 net-wireless/wpa_supplicant:hs2-0 - Add support for 802.11u and Passpoint for HotSpot 2.0
 net-wireless/wpa_supplicant:p2p - Add support for Wi-Fi Direct mode
+net-wireless/wpa_supplicant:privsep - Enable wpa_priv privledge separation binary
 net-wireless/wpa_supplicant:ps3 - Add support for ps3 hypervisor driven gelic wifi
 net-wireless/wpa_supplicant:smartcard - Add support for smartcards
 net-wireless/wpa_supplicant:tdls - Add support for Tunneled Direct Link Setup (802.11z)

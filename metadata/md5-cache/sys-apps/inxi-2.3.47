@@ -5,7 +5,7 @@ HOMEPAGE=https://github.com/smxi/inxi
 IUSE=bluetooth hddtemp opengl
 KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86
 LICENSE=GPL-3
-RDEPEND=>=app-shells/bash-3.0 sys-apps/pciutils sys-apps/usbutils bluetooth? ( net-wireless/bluez ) hddtemp? ( app-admin/hddtemp ) opengl? ( x11-apps/mesa-progs )
+RDEPEND=sys-apps/pciutils sys-apps/usbutils bluetooth? ( net-wireless/bluez ) hddtemp? ( app-admin/hddtemp ) opengl? ( x11-apps/mesa-progs )
 SLOT=0
 SRC_URI=https://github.com/smxi/inxi/tarball/0a9ac17c8ea0b0ab61ba0ad50b34c9a4765ed7a0 -> inxi-2.3.47.tar.gz
-_md5_=1be58759e95b00c4c8863cc0fad61bf2
+_md5_=67ce68bdb857896bd1deadba2dc7c361
