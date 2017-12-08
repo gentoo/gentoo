@@ -6,12 +6,12 @@ EAPI=6
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 inherit distutils-r1
 
-if [[ ${PV} == 9999 ]]; then
+if [[ ${PV} == 99999999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/diafygi/${PN}.git"
 	KEYWORDS=""
 else
-	HASH="daba51d37efd7c1f205f9da383b9b09968e30d29"
+	HASH="4ed13950c0a9cf61f1ca81ff1874cde1cf48ab32"
 	SRC_URI="https://github.com/diafygi/${PN}/archive/${HASH}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 	S="${WORKDIR}/${PN}-${HASH}"
