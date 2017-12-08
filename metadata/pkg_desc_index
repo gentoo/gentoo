@@ -15242,7 +15242,7 @@ net-misc/datapipe 1.0-r1: bind a local port and connect it to a remote socket
 net-misc/dcetest 2.0: dcetest is a clone of the Windows rpcinfo
 net-misc/dhcdrop 0.5: Effectively suppresses illegal DHCP servers on the LAN
 net-misc/dhcp 4.3.4 4.3.5 4.3.6 4.3.6-r1: ISC Dynamic Host Configuration Protocol (DHCP) client/server
-net-misc/dhcpcd 6.10.1 6.11.1-r1 6.11.3 6.11.5 7.0.0_beta3 7.0.0_rc1 7.0.0_rc2 7.0.0_rc3 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
+net-misc/dhcpcd 6.10.1 6.11.1-r1 6.11.3 6.11.5 7.0.0_beta3 7.0.0_rc1 7.0.0_rc2 7.0.0_rc3 7.0.0_rc4 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
 net-misc/dhcpcd-ui 0.7.5-r1: Desktop notification and configuration for dhcpcd
 net-misc/dhcpd-pools 2.21: ISC dhcpd lease analysis and reporting
 net-misc/dhcping 1.2: Utility for sending a dhcp request to a dhcp server to see if it is responding
