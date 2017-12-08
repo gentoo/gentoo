@@ -7,6 +7,7 @@
 # Test dependencies are no longer keyworded due to dropped Rails
 # keyword.
 dev-ruby/asciidoctor test
+dev-ruby/tilt:0 test
 
 # Tim Harder <radhermit@gentoo.org> (11 Sep 2017)
 # Pulls in dev-ruby/asciidoctor which has too large of a ruby testing
