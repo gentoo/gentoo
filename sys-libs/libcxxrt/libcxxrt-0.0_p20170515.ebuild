@@ -21,9 +21,9 @@ fi
 LICENSE="BSD-2"
 SLOT="0"
 if [ "${PV%9999}" = "${PV}" ] ; then
-	KEYWORDS="~amd64 ~arm64 ~mips ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+	KEYWORDS="~amd64 ~arm64 ~mips x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 else
-	KEYWORDS=""
+	KEYWORDS="x86"
 fi
 IUSE="+libunwind +static-libs test"
 
