@@ -39,7 +39,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.8.9-static_libgfortran.patch
 	"${FILESDIR}"/${PN}-1.8.9-mpicxx.patch
 	"${FILESDIR}"/${PN}-1.8.13-no-messing-ldpath.patch
-	"${FILESDIR}"/${PN}-1.8.15-implicits.patch
 )
 
 pkg_setup() {
