@@ -5,9 +5,6 @@ DEFAULT_ABI="x32"
 ABI="x32"
 MULTILIB_ABIS="amd64 x86 x32"
 
-LIBDIR_x86="lib"
-SYMLINK_LIB="no"
-
 # Michał Górny <mgorny@gentoo.org> (01 Jul 2014)
 # Default to abi_x86_x32 for packages that don't have it forced.
 ABI_X86="x32"
