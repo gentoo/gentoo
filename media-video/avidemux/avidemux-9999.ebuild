@@ -28,13 +28,12 @@ fi
 
 DEPEND="
 	~media-libs/avidemux-core-${PV}:${SLOT}[nls?,sdl?,vaapi?,vdpau?,xv?,nvenc?]
+	nvenc? ( amd64? ( media-video/nvidia_video_sdk:0 ) )
 	opengl? ( virtual/opengl:0 )
 	qt5? ( dev-qt/qtgui:5 )
 	vaapi? ( x11-libs/libva:0 )
-	nvenc? ( amd64? ( media-video/nvidia_video_sdk:0 ) )
 "
-RDEPEND="
-	$DEPEND
+RDEPEND="${DEPEND}
 	nls? ( virtual/libintl:0 )
 "
 PDEPEND="~media-libs/avidemux-plugins-${PV}:${SLOT}[opengl?,qt5?]"
