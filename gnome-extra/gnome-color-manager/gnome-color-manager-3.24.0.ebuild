@@ -26,7 +26,7 @@ RDEPEND="
 	>=x11-libs/colord-gtk-0.1.20
 
 	packagekit? ( app-admin/packagekit-base )
-	raw? ( media-gfx/exiv2 )
+	raw? ( media-gfx/exiv2:0= )
 "
 # docbook-sgml-{utils,dtd:4.1} needed to generate man pages
 DEPEND="${RDEPEND}
