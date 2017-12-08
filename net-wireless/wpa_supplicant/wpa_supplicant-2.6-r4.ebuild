@@ -12,7 +12,7 @@ LICENSE="|| ( GPL-2 BSD )"
 
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
-IUSE="ap dbus gnutls eap-sim fasteap +hs2-0 libressl p2p ps3 qt5 readline selinux smartcard ssl tdls uncommon-eap-types wimax wps kernel_linux kernel_FreeBSD"
+IUSE="ap dbus eap-sim eapol_test fasteap gnutls +hs2-0 libressl p2p privsep ps3 qt5 readline selinux smartcard ssl tdls uncommon-eap-types wimax wps kernel_linux kernel_FreeBSD"
 REQUIRED_USE="fasteap? ( !ssl ) smartcard? ( ssl )"
 
 CDEPEND="dbus? ( sys-apps/dbus )
@@ -72,6 +72,9 @@ Kconfig_style_config() {
 			sed -i "/^# *$CONFIG_PARAM=/s/^# *//" .config || echo "Kconfig_style_config error uncommenting $CONFIG_PARAM"
 			#set item = $setting (defaulting to y)
 			sed -i "/^$CONFIG_PARAM/s/=.*/=$setting/" .config || echo "Kconfig_style_config error setting $CONFIG_PARAM=$setting"
+			if [ -z "$( grep ^$CONFIG_PARAM= .config )" ] ; then
+				echo "$CONFIG_PARAM=$setting" >>.config
+			fi
 		else
 			#ensure item commented out
 			sed -i "/^$CONFIG_PARAM/s/$CONFIG_PARAM/# $CONFIG_PARAM/" .config || echo "Kconfig_style_config error commenting $CONFIG_PARAM"
@@ -188,6 +191,10 @@ src_configure() {
 		Kconfig_style_config CTRL_IFACE_DBUS_INTRO
 	fi
 
+	if use eapol_test ; then
+		Kconfig_style_config EAPOL_TEST
+	fi
+
 	# Enable support for writing debug info to a log file and syslog.
 	Kconfig_style_config DEBUG_FILE
 	Kconfig_style_config DEBUG_SYSLOG
@@ -289,8 +296,21 @@ src_configure() {
 		Kconfig_style_config AP
 	fi
 
+	# Enable essentials for AP/P2P
+	if use ap || use p2p ; then
+		# Enabling HT support (802.11n)
+		Kconfig_style_config IEEE80211N
+
+		# Enabling VHT support (802.11ac)
+		Kconfig_style_config IEEE80211AC
+	fi
+
 	# Enable mitigation against certain attacks against TKIP
 	Kconfig_style_config DELAYED_MIC_ERROR_REPORT
+
+	if use privsep ; then
+		Kconfig_style_config PRIVSEP
+	fi
 
 	# If we are using libnl 2.0 and above, enable support for it
 	# Bug 382159
@@ -320,10 +340,15 @@ src_compile() {
 		einfo "Building wpa_gui"
 		emake -C "${S}"/wpa_gui-qt4
 	fi
+
+	if use eapol_test ; then
+		emake eapol_test
+	fi
 }
 
 src_install() {
 	dosbin wpa_supplicant
+	use privsep && dosbin wpa_priv
 	dobin wpa_cli wpa_passphrase
 
 	# baselayout-1 compat
@@ -355,6 +380,8 @@ src_install() {
 		dobin wpa_gui-qt4/wpa_gui
 		doicon wpa_gui-qt4/icons/wpa_gui.svg
 		make_desktop_entry wpa_gui "WPA Supplicant Administration GUI" "wpa_gui" "Qt;Network;"
+	else
+		rm "${ED}"/usr/share/man/man8/wpa_gui.8
 	fi
 
 	use wimax && emake DESTDIR="${D}" -C ../src/eap_peer install
@@ -369,6 +396,10 @@ src_install() {
 
 		# This unit relies on dbus support, bug 538600.
 		systemd_dounit systemd/wpa_supplicant.service
+	fi
+
+	if use eapol_test ; then
+		dobin eapol_test
 	fi
 
 	systemd_dounit "systemd/wpa_supplicant@.service"
