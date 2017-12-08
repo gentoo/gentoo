@@ -57,6 +57,9 @@ amd64           default/linux/amd64/17.0/x32                            dev
 #amd64           default/linux/amd64/17.1/desktop/plasma            exp
 #amd64           default/linux/amd64/17.1/desktop/plasma/systemd    exp
 #amd64           default/linux/amd64/17.1/developer                 exp
+#amd64           default/linux/amd64/17.0/no-multilib                    exp
+#amd64           default/linux/amd64/17.0/no-multilib/hardened           exp
+#amd64           default/linux/amd64/17.0/no-multilib/hardened/selinux   exp
 #amd64           default/linux/amd64/17.1/systemd                   exp
 
 # ARM Profiles
