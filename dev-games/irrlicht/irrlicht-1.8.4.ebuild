@@ -6,7 +6,8 @@ inherit eutils toolchain-funcs
 
 DESCRIPTION="open source high performance realtime 3D engine written in C++"
 HOMEPAGE="http://irrlicht.sourceforge.net/"
-SRC_URI="mirror://sourceforge/irrlicht/${P}.zip"
+SRC_URI="mirror://sourceforge/irrlicht/${P}.zip
+	https://dev.gentoo.org/~mgorny/dist/${P}-patchset.tar.bz2"
 
 LICENSE="ZLIB"
 SLOT="0"
@@ -27,11 +28,11 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${P}/source/${PN^}
 
-PATCHES=( "${FILESDIR}"/${P}-gentoo.patch
-	"${FILESDIR}"/${P}-config.patch
-	"${FILESDIR}"/${P}-demoMake.patch
-	"${FILESDIR}"/${P}-mesa-10.x.patch
-	"${FILESDIR}"/${P}-jpeg-9a.patch )
+PATCHES=( "${WORKDIR}"/${P}-patchset/${P}-gentoo.patch
+	"${WORKDIR}"/${P}-patchset/${P}-config.patch
+	"${WORKDIR}"/${P}-patchset/${P}-demoMake.patch
+	"${WORKDIR}"/${P}-patchset/${P}-mesa-10.x.patch
+	"${WORKDIR}"/${P}-patchset/${P}-jpeg-9a.patch )
 
 DOCS=( changes.txt readme.txt )
 
