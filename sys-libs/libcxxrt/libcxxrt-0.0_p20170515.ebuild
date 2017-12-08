@@ -25,7 +25,7 @@ if [ "${PV%9999}" = "${PV}" ] ; then
 else
 	KEYWORDS=""
 fi
-IUSE="+libunwind +static-libs"
+IUSE="+libunwind +static-libs test"
 
 RDEPEND="libunwind? ( || ( >=sys-libs/libunwind-1.0.1-r1[static-libs?,${MULTILIB_USEDEP}]
 		sys-libs/llvm-libunwind[static-libs?,${MULTILIB_USEDEP}] ) )"
@@ -33,6 +33,22 @@ DEPEND="${RDEPEND}
 	${DEPEND}"
 
 DOCS=( AUTHORS COPYRIGHT README )
+
+gcc_check() {
+	if tc-is-gcc && [[ $(gcc-major-version) -lt 6 ]] && use test; then
+		eerror "At least gcc-6 is required to run tests. Please switch to a newer"
+		eerror "compiler before proceeding."
+		die "gcc-6 required for tests"
+	fi
+}
+
+pkg_pretend() {
+	gcc_check
+}
+
+pkg_setup() {
+	gcc_check
+}
 
 src_prepare() {
 	cp "${FILESDIR}/Makefile" src/ || die
