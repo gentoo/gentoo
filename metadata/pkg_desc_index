@@ -7524,7 +7524,7 @@ dev-python/cssutils 1.0.1 1.0.2: A CSS Cascading Style Sheets library
 dev-python/ctypesgen 0_p72-r1: Python wrapper generator for ctypes
 dev-python/cursive 0.1.1 0.1.2: Cursive implements OpenStack-specific validation of digital signatures.
 dev-python/curtsies 0.2.10 0.2.11: Curses-like terminal wrapper, with colored strings
-dev-python/cvxopt 1.1.6-r2 1.1.8 1.1.9: Python package for convex optimization
+dev-python/cvxopt 1.1.9: Python package for convex optimization
 dev-python/cx_Freeze 4.3.4 5.0.2: Create standalone executables from Python scripts
 dev-python/cycler 0.10.0: Composable style cycles
 dev-python/cython 0.22 0.24.1 0.25.2 0.26 0.26.1: A Python to C compiler
@@ -8273,7 +8273,7 @@ dev-python/py-ubjson 0.9.0 0.10.0: Universal Binary JSON encoder/decoder
 dev-python/py-xmlrpc 0.9: Fast XML-RPC implementation for Python
 dev-python/py2neo 2.0.9 3.1.2: A simple and pragmatic library which accesses the Neo4j graph database
 dev-python/py2play 0.1.10-r1: A Peer To Peer network game engine
-dev-python/pyClamd 0.3.10 0.3.17: python interface to Clamd (Clamav daemon)
+dev-python/pyClamd 0.3.17 0.4.0: python interface to Clamd (Clamav daemon)
 dev-python/pyGPG 0.1 0.2 9999: A python interface wrapper for gnupg's gpg command
 dev-python/pyPdf 1.13-r1: Python library to work with pdf files
 dev-python/pyacoustid 1.0.0-r1: Python module for Chromaprint acoustic fingerprinting and the Acoustid API
@@ -8728,7 +8728,7 @@ dev-python/ropeide 1.5.1-r2: Python refactoring IDE
 dev-python/ropemacs 0.8: Rope in Emacs
 dev-python/ropemode 0.2-r1 0.3 0.4: A helper for using rope refactoring library in IDEs
 dev-python/rosdistro 0.6.1 0.6.2 9999: Tools to work with catkinized rosdistro files
-dev-python/rospkg 1.1.3 1.1.4 9999: Standalone Python library for the ROS package system
+dev-python/rospkg 1.1.4 9999: Standalone Python library for the ROS package system
 dev-python/routes 2.4.1: A re-implementation of Rails routes system, mapping URLs to Controllers/Actions
 dev-python/rply 0.7.4: Pure python parser generator that also works with RPython
 dev-python/rpy 2.6.2 2.8.5 2.8.6 2.9.0: Python interface to the R Programming Language
@@ -9276,7 +9276,7 @@ dev-ros/nodelet_tutorial_math 0.1.10 9999: Nodelet tutorial
 dev-ros/object_recognition_msgs 0.4.1 9999: ROS message and the actionlib definition used in object_recognition_core
 dev-ros/octomap_msgs 0.3.3 9999: Messages and serializations / conversion for the OctoMap library
 dev-ros/octomap_ros 0.4.0-r1 9999: Conversion functions between ROS / PCL and OctoMap's native types
-dev-ros/opencv_apps 1.12.0 9999: OpenCV applications for ROS
+dev-ros/opencv_apps 1.12.0 2.0.0 9999: OpenCV applications for ROS
 dev-ros/opencv_tests 1.12.1-r1 1.12.2 1.12.3 1.12.4 1.12.5 1.12.7 9999: Tests for ROS OpenCV integration
 dev-ros/openni2_camera 0.2.7-r1 0.2.8 0.3.0 9999: ROS drivers for the Asus Xtion and Primesense Devices
 dev-ros/openni2_launch 0.2.2 0.2.3 0.3.0 9999: Launch files to start the openni2_camera drivers using rgbd_launch
@@ -14911,7 +14911,7 @@ net-libs/h323plus 1.25.0-r1 1.25.0-r2: Open Source implementation of the ITU H.3
 net-libs/http-parser 2.6.2 2.7.1: Http request/response parser for C
 net-libs/iax 0.2.2 0.2.2-r1 0.2.2-r3: IAX (Inter Asterisk eXchange) Library
 net-libs/ignition-msgs 0.7.0: Protobuf messages and functions for robot applications
-net-libs/ignition-transport 3.0.1: Combines ZeroMQ with Protobufs to create a fast and efficient message passing system
+net-libs/ignition-transport 3.0.1 3.1.0: Combines ZeroMQ with Protobufs to create a fast and efficient message passing system
 net-libs/jreen 1.3.0-r1: Qt XMPP library
 net-libs/kdav2 0.1.0: KJob based DAV protocol implementation
 net-libs/kimap2 0.1.1 0.2.0: Library for interacting with IMAP servers - successor of kimap
@@ -16722,7 +16722,7 @@ sci-mathematics/xmds 2.2.2: XMDS - The eXtensible Multi-Dimensional Simulator
 sci-mathematics/yacas 1.6.1-r1: General purpose computer algebra system
 sci-mathematics/yafu 1.34.3 9999: Yet another factoring utility
 sci-mathematics/z3 4.4.1 4.5.0: An efficient theorem prover
-sci-misc/ViSP-images 3.0.1: ViSP images data set
+sci-misc/ViSP-images 3.0.1 3.1.0: ViSP images data set
 sci-misc/apertium 3.2.0: Shallow-transfer machine Translation engine and toolbox
 sci-misc/boinc 7.8.1: The Berkeley Open Infrastructure for Network Computing
 sci-misc/cdfplayer 10.4.0 11.0.1: Wolfram Player for the interactive Computable Document Format (CDF)

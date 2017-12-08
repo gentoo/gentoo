@@ -8,6 +8,6 @@ KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~x86 ~x86-fbsd ~amd64-linux ~x86-l
 LICENSE=BSD
 RDEPEND=dev-lang/tcl:0= dev-tcltk/tdom
 SLOT=0
-SRC_URI=mirror://sourceforge//project/tcllib/tcllib/1.16/Tcllib-1.16.tar.bz2
+SRC_URI=mirror://sourceforge//project/tcllib/tcllib/1.16/Tcllib-1.16.tar.bz2 https://dev.gentoo.org/~mgorny/dist/tcllib-1.16-patchset.tar.xz
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	virtualx	171580f737f5aaf18fcb456548588066
-_md5_=cee96c768d413412374b1d8f1e9377b4
+_md5_=fdcf5d46bac1fbbb1134c7c1a348778f
