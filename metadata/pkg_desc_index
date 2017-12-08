@@ -15623,7 +15623,7 @@ net-p2p/fms 0.3.79: A spam-resistant message board application for Freenet
 net-p2p/freenet 0.7.5_p1475-r2 0.7.5_p1478 0.7.5_p1478-r1: An encrypted network without censorship
 net-p2p/gnut 0.4.28-r1: Text-mode gnutella client
 net-p2p/go-ethereum 1.5.5: Official golang implementation of the Ethereum protocol
-net-p2p/go-ipfs-bin 0.4.1 0.4.2 0.4.10 0.4.11 0.4.12: go-ipfs is the main implementation of IPFS.
+net-p2p/go-ipfs-bin 0.4.11 0.4.12 0.4.13: go-ipfs is the main implementation of IPFS.
 net-p2p/gtk-gnutella 1.1.11 1.1.11-r1 1.1.13: A GTK+ Gnutella client
 net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta files
 net-p2p/ktorrent 5.1.0: Powerful BitTorrent client based on KDE Frameworks
