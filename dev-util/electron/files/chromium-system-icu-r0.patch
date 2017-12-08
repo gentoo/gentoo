@@ -1,0 +1,140 @@
+From 520c62f2b87a42bf4f8f8820f6bcde15e342fe4a Mon Sep 17 00:00:00 2001
+From: floppymaster <floppymaster@gmail.com>
+Date: Mon, 12 Jun 2017 09:44:54 -0700
+Subject: [PATCH] ICU unbundling fixes
+
+Update instructions to generate ICU header lists
+Update header list for unbundling ICU 59
+
+Bug: https://bugs.gentoo.org/619796#c2
+Review-Url: https://codereview.chromium.org/2935603002
+Cr-Commit-Position: refs/heads/master@{#478662}
+---
+ build/linux/unbundle/icu.gn | 29 +++++++++++++++++------------
+ 1 file changed, 17 insertions(+), 12 deletions(-)
+
+diff --git a/build/linux/unbundle/icu.gn b/build/linux/unbundle/icu.gn
+index f3734b7a01a3..5bdd91555df7 100644
+--- a/build/linux/unbundle/icu.gn
++++ b/build/linux/unbundle/icu.gn
+@@ -16,6 +16,7 @@ config("icu_config") {
+   defines = [
+     "USING_SYSTEM_ICU=1",
+     "ICU_UTIL_DATA_IMPL=ICU_UTIL_DATA_STATIC",
++    "UCHAR_TYPE=uint16_t",
+   ]
+ }
+ 
+@@ -50,10 +51,9 @@ source_set("icuuc") {
+ shim_headers("icui18n_shim") {
+   root_path = "source/i18n"
+   headers = [
+-    # This list can easily be updated using the command below:
+-    # find third_party/icu/source/i18n/unicode \
+-    # -iname '*.h' -printf '"%p",\n' | \
+-    # sed -e 's|third_party/icu/i18n/common/||' | sort -u
++    # This list can easily be updated using the commands below:
++    # cd third_party/icu/source/i18n
++    # find unicode -iname '*.h' -printf '    "%p",\n' | LC_ALL=C sort -u
+     "unicode/alphaindex.h",
+     "unicode/basictz.h",
+     "unicode/calendar.h",
+@@ -78,7 +78,6 @@ shim_headers("icui18n_shim") {
+     "unicode/fpositer.h",
+     "unicode/gender.h",
+     "unicode/gregocal.h",
+-    "unicode/locdspnm.h",
+     "unicode/measfmt.h",
+     "unicode/measunit.h",
+     "unicode/measure.h",
+@@ -113,15 +112,12 @@ shim_headers("icui18n_shim") {
+     "unicode/ucol.h",
+     "unicode/ucoleitr.h",
+     "unicode/ucsdet.h",
+-    "unicode/ucurr.h",
+     "unicode/udat.h",
+     "unicode/udateintervalformat.h",
+     "unicode/udatpg.h",
+-    "unicode/udisplaycontext.h",
+     "unicode/ufieldpositer.h",
+     "unicode/uformattable.h",
+     "unicode/ugender.h",
+-    "unicode/uldnames.h",
+     "unicode/ulocdata.h",
+     "unicode/umsg.h",
+     "unicode/unirepl.h",
+@@ -130,6 +126,7 @@ shim_headers("icui18n_shim") {
+     "unicode/upluralrules.h",
+     "unicode/uregex.h",
+     "unicode/uregion.h",
++    "unicode/ureldatefmt.h",
+     "unicode/usearch.h",
+     "unicode/uspoof.h",
+     "unicode/utmscale.h",
+@@ -141,20 +138,22 @@ shim_headers("icui18n_shim") {
+ shim_headers("icuuc_shim") {
+   root_path = "source/common"
+   headers = [
+-    # This list can easily be updated using the command below:
+-    # find third_party/icu/source/common/unicode \
+-    # -iname '*.h' -printf '"%p",\n' | \
+-    # sed -e 's|third_party/icu/source/common/||' | sort -u
++    # This list can easily be updated using the commands below:
++    # cd third_party/icu/source/common
++    # find unicode -iname '*.h' -printf '    "%p",\n' | LC_ALL=C sort -u
+     "unicode/appendable.h",
+     "unicode/brkiter.h",
+     "unicode/bytestream.h",
+     "unicode/bytestrie.h",
+     "unicode/bytestriebuilder.h",
+     "unicode/caniter.h",
++    "unicode/casemap.h",
++    "unicode/char16ptr.h",
+     "unicode/chariter.h",
+     "unicode/dbbi.h",
+     "unicode/docmain.h",
+     "unicode/dtintrv.h",
++    "unicode/edits.h",
+     "unicode/enumset.h",
+     "unicode/errorcode.h",
+     "unicode/filteredbrk.h",
+@@ -163,6 +162,7 @@ shim_headers("icuuc_shim") {
+     "unicode/idna.h",
+     "unicode/listformatter.h",
+     "unicode/localpointer.h",
++    "unicode/locdspnm.h",
+     "unicode/locid.h",
+     "unicode/messagepattern.h",
+     "unicode/normalizer2.h",
+@@ -176,12 +176,14 @@ shim_headers("icuuc_shim") {
+     "unicode/rep.h",
+     "unicode/resbund.h",
+     "unicode/schriter.h",
++    "unicode/simpleformatter.h",
+     "unicode/std_string.h",
+     "unicode/strenum.h",
+     "unicode/stringpiece.h",
+     "unicode/stringtriebuilder.h",
+     "unicode/symtable.h",
+     "unicode/ubidi.h",
++    "unicode/ubiditransform.h",
+     "unicode/ubrk.h",
+     "unicode/ucasemap.h",
+     "unicode/ucat.h",
+@@ -195,10 +197,13 @@ shim_headers("icuuc_shim") {
+     "unicode/ucnv_err.h",
+     "unicode/ucnvsel.h",
+     "unicode/uconfig.h",
++    "unicode/ucurr.h",
+     "unicode/udata.h",
++    "unicode/udisplaycontext.h",
+     "unicode/uenum.h",
+     "unicode/uidna.h",
+     "unicode/uiter.h",
++    "unicode/uldnames.h",
+     "unicode/ulistformatter.h",
+     "unicode/uloc.h",
+     "unicode/umachine.h",
+-- 
+2.14.3
+

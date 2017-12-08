@@ -1,15 +1,15 @@
-From 610ee2681f9532a13f63edf78aab55b1dcb8abf2 Mon Sep 17 00:00:00 2001
+From 055fb62fc58ef7027b444dd235bc4781effa30d7 Mon Sep 17 00:00:00 2001
 From: Elvis Pranskevichus <elvis@magic.io>
-Date: Mon, 8 Feb 2016 15:14:58 -0500
-Subject: [PATCH] brightray build fixes
+Date: Mon, 2 Oct 2017 15:22:51 -0400
+Subject: [PATCH] Gentoo build fixes
 
 ---
- brightray.gyp  | 66 ++++++++++++++++++++++++++++++++++++++++++++++++++++++----
- brightray.gypi | 14 ++-----------
- 2 files changed, 64 insertions(+), 16 deletions(-)
+ brightray.gyp  | 93 +++++++++++++++++++++++++++++++++++++++++++++++++++++-----
+ brightray.gypi | 14 ++-------
+ 2 files changed, 88 insertions(+), 19 deletions(-)
 
 diff --git a/brightray.gyp b/brightray.gyp
-index e60d17a..37e5159 100644
+index e60d17a..79e0618 100644
 --- a/brightray.gyp
 +++ b/brightray.gyp
 @@ -1,7 +1,7 @@
@@ -21,52 +21,59 @@ index e60d17a..37e5159 100644
    },
    'includes': [
      'filenames.gypi',
-@@ -9,6 +9,10 @@
+@@ -9,6 +9,11 @@
    'targets': [
      {
        'target_name': 'brightray',
 +      'dependencies': [
 +        'cups',
 +        'gconf',
++        'icu',
 +      ],
        'type': 'static_library',
        'include_dirs': [
          '.',
-@@ -130,18 +134,30 @@
+@@ -130,18 +135,33 @@
              }, {
                'link_settings': {
                  'libraries': [
 -                  # Link with ffmpeg.
 -                  '<(libchromiumcontent_dir)/libffmpeg.so',
                    # Following libraries are required by libchromiumcontent:
++                  '-lFLAC',
                    '-lasound',
-                   '-lcap',
--                  '-lcups',
-                   '-lrt',
-                   '-ldl',
-                   '-lresolv',
-                   '-lfontconfig',
-                   '-lfreetype',
-                   '-lexpat',
-+                  '-lre2',
-+                  '-ljpeg',
-+                  '-lsnappy',
-+                  '-lharfbuzz',
-+                  '-lpng',
-+                  '-lxml2',
-+                  '-lxslt',
-+                  '-lwebp',
-+                  '-lwebpdemux',
 +                  '-lavcodec',
 +                  '-lavformat',
 +                  '-lavutil',
-+                  '-lvpx',
-+                  '-lFLAC',
+                   '-lcap',
+-                  '-lcups',
+-                  '-lrt',
++                  '-lcrypto',
+                   '-ldl',
+-                  '-lresolv',
++                  '-lexpat',
+                   '-lfontconfig',
+                   '-lfreetype',
+-                  '-lexpat',
++                  '-lharfbuzz',
++                  '-ljpeg',
 +                  '-lminizip',
++                  '-lpng',
++                  '-lre2',
++                  '-lresolv',
++                  '-lrt',
++                  '-lsnappy',
++                  '-lssl',
++                  '-lvpx',
++                  '-lwebp',
++                  '-lwebpdemux',
++                  '-lxml2',
++                  '-lxslt',
++                  '-lz',
                  ],
                },
              }],
-@@ -390,5 +406,47 @@
+@@ -390,5 +410,64 @@
          }],  # OS=="win"
        ],
      },
@@ -106,6 +113,23 @@ index e60d17a..37e5159 100644
 +            'link_settings': {
 +              'libraries': [
 +                '-lcups',
++              ],
++            },
++          },
++        }],
++      ],
++    },
++    {
++      'target_name': 'icu',
++      'type': 'none',
++      'conditions': [
++        ['use_system_icu==1', {
++          'direct_dependent_settings': {
++            'link_settings': {
++              'libraries': [
++                '-licui18n',
++                '-licuuc',
++                '-licudata',
 +              ],
 +            },
 +          },
@@ -159,5 +183,5 @@ index 064ae1a..95d6f14 100644
              ],
            }],  # OS=="linux"
 -- 
-2.13.3
+2.14.3
 
