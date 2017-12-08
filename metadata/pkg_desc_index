@@ -14082,7 +14082,7 @@ media-tv/me-tv 1.4.0.10: Me TV is a GTK desktop application for watching digital
 media-tv/mythtv 0.28.1-r1: Homebrew PVR project
 media-tv/mythtv-status 0.10.4: Displays the current status of MythTV at the command prompt
 media-tv/nvtv 0.4.7-r3: TV-Out for NVidia cards
-media-tv/plex-media-server 1.8.1 1.9.4 1.9.6: A free media library that is intended for use with a plex client.
+media-tv/plex-media-server 1.8.1 1.9.4 1.9.6 1.10.0: A free media library that is intended for use with a plex client.
 media-tv/shoutcast2vdr 0.0.8 0.0.8-r1: VDR script: generate shoutcast playlists
 media-tv/tvbrowser 3.4.1.0-r1 3.4.3 9999-r1: Themeable and easy to use TV Guide - written in Java
 media-tv/tvheadend 4.2.4 9999: Tvheadend is a TV streaming server and digital video recorder
