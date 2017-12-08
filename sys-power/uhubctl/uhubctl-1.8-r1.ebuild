@@ -5,14 +5,14 @@ EAPI=6
 
 DESCRIPTION="USB hub per-port power control"
 HOMEPAGE="https://github.com/mvp/uhubctl"
-SRC_URI="https://github.com/mvp/uhubctl/archive/v${PV}.tar.gz"
+SRC_URI="https://github.com/mvp/uhubctl/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~arm"
 IUSE=""
 
-DEPEND="dev-libs/libusb:1"
+DEPEND="virtual/libusb:1"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
