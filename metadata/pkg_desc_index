@@ -9466,18 +9466,18 @@ dev-ros/xmlrpcpp 1.13.0 1.13.1 1.13.2 1.13.4 1.13.5 9999: C++ implementation of 
 dev-ruby/GeoRuby 2.5.2: Ruby data holder for OGC Simple Features
 dev-ruby/abstract 1.0.0-r3: Library which enable you to define abstract method in Ruby
 dev-ruby/actioncable 5.0.3 5.0.4 5.0.5 5.0.6 5.1.1 5.1.2 5.1.3 5.1.4: Integrated WebSockets for Rails
-dev-ruby/actionmailer 4.2.8 4.2.9 4.2.10 5.0.3 5.0.4 5.0.5 5.0.6 5.1.1 5.1.2 5.1.3 5.1.4: Framework for designing email-service layers
-dev-ruby/actionpack 4.2.8 4.2.9 4.2.10 5.0.3 5.0.4 5.0.5 5.0.6 5.1.1 5.1.2 5.1.3 5.1.4: Eases web-request routing, handling, and response
+dev-ruby/actionmailer 4.2.10 5.0.3 5.0.4 5.0.5 5.0.6 5.1.1 5.1.2 5.1.3 5.1.4: Framework for designing email-service layers
+dev-ruby/actionpack 4.2.10 5.0.3 5.0.4 5.0.5 5.0.6 5.1.1 5.1.2 5.1.3 5.1.4: Eases web-request routing, handling, and response
 dev-ruby/actionpack-action_caching 1.2.0: Action caching for Action Pack (removed from core in Rails 4.0)
 dev-ruby/actionpack-xml_parser 1.0.2 2.0.0 2.0.1: XML parameters parser for Action Pack (removed from core in Rails 4.0)
-dev-ruby/actionview 4.2.8 4.2.9 4.2.10 5.0.3 5.0.4 5.0.5 5.0.6 5.1.1 5.1.2 5.1.3 5.1.4: Simple, battle-tested conventions and helpers for building web pages
-dev-ruby/activejob 4.2.8 4.2.9 4.2.10 5.0.3 5.0.4 5.0.5 5.0.6 5.1.1 5.1.2 5.1.3 5.1.4: Job framework with pluggable queues
+dev-ruby/actionview 4.2.10 5.0.3 5.0.4 5.0.5 5.0.6 5.1.1 5.1.2 5.1.3 5.1.4: Simple, battle-tested conventions and helpers for building web pages
+dev-ruby/activejob 4.2.10 5.0.3 5.0.4 5.0.5 5.0.6 5.1.1 5.1.2 5.1.3 5.1.4: Job framework with pluggable queues
 dev-ruby/activeldap 4.0.6 5.1.0: ActiveLDAP provides an activerecord inspired object oriented interface to LDAP
-dev-ruby/activemodel 4.2.8 4.2.9 4.2.10 5.0.3 5.0.4 5.0.5 5.0.6 5.1.1 5.1.2 5.1.3 5.1.4: Toolkit for building modeling frameworks like Active Record and Active Resource
+dev-ruby/activemodel 4.2.10 5.0.3 5.0.4 5.0.5 5.0.6 5.1.1 5.1.2 5.1.3 5.1.4: Toolkit for building modeling frameworks like Active Record and Active Resource
 dev-ruby/activemodel-serializers-xml 1.0.1 1.0.2: XML serialization for your Active Model objects and Active Record models
-dev-ruby/activerecord 4.2.8 4.2.9 4.2.10 5.0.3 5.0.4 5.0.5 5.0.6 5.1.1 5.1.2 5.1.3 5.1.4: Implements the ActiveRecord pattern (Fowler, PoEAA) for ORM
+dev-ruby/activerecord 4.2.10 5.0.3 5.0.4 5.0.5 5.0.6 5.1.1 5.1.2 5.1.3 5.1.4: Implements the ActiveRecord pattern (Fowler, PoEAA) for ORM
 dev-ruby/activerecord-deprecated_finders 1.0.4: Used to extract and deprecate old-style finder option hashes in Active Record
-dev-ruby/activesupport 4.2.8 4.2.9 4.2.10 5.0.3 5.0.4 5.0.5 5.0.6 5.1.1 5.1.2 5.1.3 5.1.4: Utility Classes and Extension to the Standard Library
+dev-ruby/activesupport 4.2.10 5.0.3 5.0.4 5.0.5 5.0.6 5.1.1 5.1.2 5.1.3 5.1.4: Utility Classes and Extension to the Standard Library
 dev-ruby/acts_as_list 0.9.7 0.9.8 0.9.9 0.9.10: Capabilities for sorting and reordering a number of objects in a list
 dev-ruby/addressable 2.4.0-r1 2.5.1 2.5.2: A replacement for the URI implementation that is part of Ruby's standard library
 dev-ruby/ae 1.8.2: Assertive Expressive is an assertions library designed for reuse
@@ -9486,7 +9486,7 @@ dev-ruby/airbrussh 1.3.0: A replacement log formatter for SSHKit
 dev-ruby/akismet 1.0.2 2.0.0: A Ruby client for the Akismet API
 dev-ruby/allison 2.0.3-r3: A modern, pretty RDoc template
 dev-ruby/amatch 0.3.1 0.4.0: Approximate Matching Extension for Ruby
-dev-ruby/ammeter 1.1.4 1.1.4-r1: Write specs for your Rails 3+ generators
+dev-ruby/ammeter 1.1.4-r1: Write specs for your Rails 3+ generators
 dev-ruby/amq-client 1.0.4: A fully-featured, low-level AMQP 0.9.1 client
 dev-ruby/amq-protocol 1.9.2 2.1.0 2.2.0: An AMQP 0.9.1 serialization library for Ruby
 dev-ruby/amqp 1.6.0 1.7.0: AMQP client implementation in Ruby/EventMachine
@@ -9626,14 +9626,14 @@ dev-ruby/exifr 1.3.1 1.3.3: A library to read EXIF info from JPEG and TIFF image
 dev-ruby/expression_parser 0.9.0_p20130518: A math parser
 dev-ruby/facets 3.1.0: Facets is the premier collection of extension methods for Ruby
 dev-ruby/facter 2.4.6 2.5.1 3.1.8 3.6.3 3.6.4 3.6.7 3.6.8 3.7.1 3.8.0 3.9.0 3.9.1 3.9.2 3.9.3 9999: A cross-platform ruby library for retrieving facts from operating systems
-dev-ruby/factory_girl 4.8.0 4.8.1: factory_girl provides a framework and DSL for defining and using factories
+dev-ruby/factory_girl 4.8.1: factory_girl provides a framework and DSL for defining and using factories
 dev-ruby/fakefs 0.9.2 0.11.0 0.11.1 0.11.2 0.11.3: A fake filesystem. Use it in your tests
 dev-ruby/fakeweb 1.3.0.20131201-r1: Helper for faking web requests in Ruby
 dev-ruby/faraday 0.9.2-r1 0.9.2-r2 0.11.0 0.12.2: HTTP/REST API client library with pluggable components
 dev-ruby/faraday_middleware 0.10.0 0.11.0 0.11.0.1 0.12.0 0.12.2: Various middleware for Faraday
 dev-ruby/faraday_middleware-multi_json 0.0.6 0.0.6-r1: Response JSON parser using MultiJson and FaradayMiddleware
 dev-ruby/fast-stemmer 1.0.2-r2: Simple wrapper around multithreaded Porter stemming algorithm
-dev-ruby/fast_gettext 1.4.1 1.4.1-r1 1.5.0 1.5.1 1.6.0: GetText but 3.5x faster, 560x less memory, clean namespace and threadsave!
+dev-ruby/fast_gettext 1.5.1 1.6.0: GetText but 3.5x faster, 560x less memory, clean namespace and threadsave!
 dev-ruby/fast_xs 0.8.0-r2: fast_xs text escaping library ruby bindings
 dev-ruby/fattr 2.3.0: fattr.rb is a "fatter attr" for ruby
 dev-ruby/fcgi 0.9.2.1-r1: FastCGI library for Ruby
@@ -9651,7 +9651,7 @@ dev-ruby/forgery 0.6.0 0.7.0: Easy and customizable generation of forged data
 dev-ruby/forwardable-extended 2.6.0 2.6.0-r1: Forwardable with hash, and instance variable extensions
 dev-ruby/fuubar 2.2.0: Instafailing RSpec progress bar formatter
 dev-ruby/gettext-setup 0.26-r1 0.28 0.29: A gem to ease i18n
-dev-ruby/gettext_i18n_rails 1.7.2 1.8.0: FastGettext / Rails integration
+dev-ruby/gettext_i18n_rails 1.8.0: FastGettext / Rails integration
 dev-ruby/gh 0.15.0-r1 0.15.1: multi-layer client for the github api v3
 dev-ruby/gherkin 2.12.0-r3 2.12.2 4.1.3 5.0.0: Fast Gherkin lexer and parser
 dev-ruby/git 1.3.0: Library for using Git in Ruby
@@ -9712,7 +9712,7 @@ dev-ruby/jwt 1.5.6 2.0.0: A Ruby implementation of JSON Web Token draft 06
 dev-ruby/kirbybase 2.6.1-r2: A simple Ruby DBMS that stores data in plaintext files
 dev-ruby/kissfft 0.0.2: ruby interface to kissfft
 dev-ruby/kpeg 1.1.0: A simple PEG library for Ruby
-dev-ruby/kramdown 1.13.2 1.13.2-r1 1.14.0: Yet-another-markdown-parser but fast, pure Ruby, using strict syntax definition
+dev-ruby/kramdown 1.13.2-r1 1.14.0: Yet-another-markdown-parser but fast, pure Ruby, using strict syntax definition
 dev-ruby/launchy 2.4.3-r1 2.4.3-r2: Helper class for launching cross-platform applications
 dev-ruby/lemon 0.9.1: Lemon is a unit testing framework
 dev-ruby/letter_opener 1.4.1: Preview mail in the browser instead of sending
@@ -9860,13 +9860,13 @@ dev-ruby/rack-openid 1.4.2: Provides a more HTTPish API around the ruby-openid l
 dev-ruby/rack-protection 1.5.3-r1 2.0.0: This gem protects against typical web attacks
 dev-ruby/rack-ssl 1.3.4 1.4.1: Force SSL/TLS in your app
 dev-ruby/rack-test 0.6.3 0.7.1 0.8.2: Rack::Test is a small, simple testing API for Rack apps
-dev-ruby/radius 0.7.4-r3 0.7.4-r4: Powerful tag-based template system
+dev-ruby/radius 0.7.4-r4: Powerful tag-based template system
 dev-ruby/ragol 1.0.1-r2: Another implementation of an option processor
-dev-ruby/rails 4.2.8 4.2.9 4.2.10 5.0.3 5.0.4 5.0.5 5.0.6 5.1.1 5.1.2 5.1.3 5.1.4: ruby on rails is a web-application and persistance framework
+dev-ruby/rails 4.2.10 5.0.3 5.0.4 5.0.5 5.0.6 5.1.1 5.1.2 5.1.3 5.1.4: ruby on rails is a web-application and persistance framework
 dev-ruby/rails-deprecated_sanitizer 1.0.3-r1 1.0.3-r2: Deprecated sanitizer API extracted from Action View
 dev-ruby/rails-dom-testing 1.0.8 1.0.8-r1 2.0.2 2.0.3: Compare doms and assert certain elements exists in doms using Nokogiri
 dev-ruby/rails-html-sanitizer 1.0.3-r1: Sanitize HTML fragments in Rails applications
-dev-ruby/railties 4.2.8 4.2.9 4.2.10 5.0.3 5.0.4 5.0.5 5.0.6 5.1.1 5.1.2 5.1.3 5.1.4: Tools for creating, working with, and running Rails applications
+dev-ruby/railties 4.2.10 5.0.3 5.0.4 5.0.5 5.0.6 5.1.1 5.1.2 5.1.3 5.1.4: Tools for creating, working with, and running Rails applications
 dev-ruby/rainbow 1.1.4-r1 2.2.2 3.0.0: Colorize printed text on ANSI terminals
 dev-ruby/rake 0.9.6-r1 10.5.0 11.3.0 12.0.0 12.1.0 12.2.1 12.3.0: Make-like scripting in Ruby
 dev-ruby/rake-compiler 1.0.2 1.0.4: Provide a standard and simplified way to build and package Ruby extensions
@@ -9935,7 +9935,7 @@ dev-ruby/rspec-expectations 2.14.5-r1 2.99.2 3.5.0 3.6.0 3.7.0: A Behaviour Driv
 dev-ruby/rspec-its 1.2.0-r1: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-json_expectations 2.1.0: Set of matchers and helpers to allow you test your APIs responses.
 dev-ruby/rspec-mocks 2.14.6-r1 2.99.2 3.5.0 3.6.0 3.7.0: A Behaviour Driven Development (BDD) framework for Ruby
-dev-ruby/rspec-rails 2.14.2 2.99.0 3.5.2 3.5.2-r1 3.6.0 3.6.1 3.7.1 3.7.2: RSpec's official Ruby on Rails plugin
+dev-ruby/rspec-rails 2.99.0 3.5.2-r1 3.6.0 3.6.1 3.7.1 3.7.2: RSpec's official Ruby on Rails plugin
 dev-ruby/rspec-retry 0.5.4 0.5.5 0.5.6: Retry intermittently failing rspec examples
 dev-ruby/rspec-support 3.5.0 3.6.0 3.7.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspectacular 0.70.7: RSpec support and matchers
@@ -10005,7 +10005,7 @@ dev-ruby/safe_yaml 1.0.4-r3: Parse YAML safely, alternative implementation of YA
 dev-ruby/sanitize 2.1.0 4.4.0 4.5.0: Sanitize is a whitelist-based HTML sanitizer
 dev-ruby/sass 3.2.19-r2 3.4.24 3.4.25 3.5.3: An extension of CSS3, adding nested rules, variables, mixins, and more
 dev-ruby/sass-listen 4.0.0: Fork of guard/listen provides a stable API for users of the ruby Sass CLI
-dev-ruby/sass-rails 4.0.5 5.0.6 5.0.6-r1 5.0.7: Official Ruby-on-Rails Integration with Sass
+dev-ruby/sass-rails 4.0.5 5.0.6-r1 5.0.7: Official Ruby-on-Rails Integration with Sass
 dev-ruby/sawyer 0.8.1: Secret User Agent of HTTP
 dev-ruby/sdoc 0.4.1 0.4.2: rdoc generator html with javascript search index
 dev-ruby/seed-fu 2.3.6: Advanced seed data handling for Rails
@@ -10049,7 +10049,7 @@ dev-ruby/sshkit 1.13.1 1.14.0: SSHKit makes it easy to write structured, testabl
 dev-ruby/stamp 0.6.0: Date and time formatting for humans
 dev-ruby/state_machine 1.2.0: Adds support for creating state machines for attributes on any Ruby class
 dev-ruby/stomp 1.4.3 1.4.4: Ruby bindings for the stomp messaging protocol
-dev-ruby/stringex 2.7.0 2.7.1: Extensions for Ruby's String class
+dev-ruby/stringex 2.7.1: Extensions for Ruby's String class
 dev-ruby/subexec 0.2.3-r1: Subexec spawns an external command with a timeout
 dev-ruby/syntax 1.2.0-r1 1.2.1 1.2.2: Syntax highlighting for sourcecode and HTML
 dev-ruby/syslogger 1.6.4 1.6.5: Drop-in replacement for the standard Logger, that logs to the syslog
@@ -10106,7 +10106,7 @@ dev-ruby/websocket 1.2.3 1.2.4 1.2.5: Universal Ruby library to handle WebSocket
 dev-ruby/websocket-driver 0.6.5 0.7.0: A complete implementation of the WebSocket protocols
 dev-ruby/websocket-extensions 0.1.2 0.1.3: Generic extension manager for WebSocket connections
 dev-ruby/wikicloth 0.8.3: A mediawiki parser
-dev-ruby/will_paginate 3.1.5 3.1.6: Most awesome pagination solution for Ruby
+dev-ruby/will_paginate 3.1.6: Most awesome pagination solution for Ruby
 dev-ruby/windows_error 0.1.1 0.1.2: reference for standard Windows API Error Codes
 dev-ruby/wirble 0.1.3-r4: Wirble is a set of enhancements for Irb
 dev-ruby/xml-simple 1.1.5: Easy API to maintain XML. A Ruby port of Grant McLean's Perl module XML::Simple
