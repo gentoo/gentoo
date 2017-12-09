@@ -8217,7 +8217,7 @@ dev-python/pilkit 2.0: A collection of utilities and processors for the Python I
 dev-python/pillow 3.4.2-r1 4.2.1-r2 4.3.0: Python Imaging Library (fork)
 dev-python/pillowfight 0.2: Eases the transition from PIL to Pillow
 dev-python/pip 7.1.2 9.0.1-r1 9.0.1-r2: Installs python packages -- replacement for easy_install
-dev-python/pipenv 8.3.2: Python Development Workflow for Humans.
+dev-python/pipenv 8.3.2 9.0.0: Python Development Workflow for Humans
 dev-python/pivy 0.5_alpha20110303-r1 9999: Coin3d binding for Python
 dev-python/pkgconfig 1.2.2: Interface Python with pkg-config
 dev-python/pkginfo 1.2.1: Provides an API for querying the distutils metadata written in a PKG-INFO file
@@ -12344,7 +12344,7 @@ mail-client/cone 0.92 0.95 0.96: CONE: COnsole News reader and Emailer
 mail-client/drac 1.12-r1: A robust implementation of POP-before-SMTP
 mail-client/etpan-ng 0.7.1-r1: etPan is a console mail client that is based on libEtPan
 mail-client/evolution 3.22.4 3.22.6 3.24.5: Integrated mail, addressbook and calendaring functionality
-mail-client/geary 0.11.3: A lightweight, easy-to-use, feature-rich email client
+mail-client/geary 0.11.3 0.12.0: A lightweight, easy-to-use, feature-rich email client
 mail-client/hap 3.7-r1: A terminal mail notification program (replacement for biff)
 mail-client/kube 0.3.1: A mail client by KDE
 mail-client/mail-notification 5.4-r10: Status icon informing about new mail
