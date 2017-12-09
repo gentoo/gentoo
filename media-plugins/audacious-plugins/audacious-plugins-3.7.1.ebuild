@@ -47,7 +47,7 @@ RDEPEND="app-arch/unzip
 	      dev-qt/qtwidgets:5
 	      media-libs/adplug )
 	jack? ( >=media-libs/bio2jack-0.4
-		media-sound/jack-audio-connection-kit )
+		virtual/jack )
 	lame? ( media-sound/lame )
 	libnotify? ( x11-libs/libnotify )
 	libsamplerate? ( media-libs/libsamplerate )
