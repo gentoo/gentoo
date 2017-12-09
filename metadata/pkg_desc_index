@@ -3353,7 +3353,7 @@ dev-haskell/comonad-transformers 3.1 4.0: This package has been merged into como
 dev-haskell/comonads-fd 3.0.3 4.0: This package has been merged into comonad 4.0
 dev-haskell/concurrent-extra 0.7.0.10: Extra concurrency primitives
 dev-haskell/concurrent-output 1.7.3 1.7.6 1.7.7 1.7.8: Ungarble output from several threads or commands
-dev-haskell/conduit 1.0.15.1 1.1.6 1.2.6.1 1.2.6.6 1.2.8: Streaming data processing library
+dev-haskell/conduit 1.0.15.1 1.1.6 1.2.6.1 1.2.6.6 1.2.8 1.2.12.1: Streaming data processing library
 dev-haskell/conduit-extra 1.1.9.1 1.1.9.2 1.1.13.1 1.1.15: Batteries included conduit: adapters for common libraries
 dev-haskell/configfile 1.1.4: Configuration file reading & writing
 dev-haskell/configurator 0.3.0.0-r1: Configuration management
