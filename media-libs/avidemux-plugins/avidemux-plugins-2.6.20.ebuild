@@ -70,7 +70,7 @@ RDEPEND="
 	)
 	xvid? ( media-libs/xvid:0 )
 	vorbis? ( media-libs/libvorbis:0 )
-	vpx? ( media-libs/libvpx:0 )
+	vpx? ( media-libs/libvpx:0= )
 	${PYTHON_DEPS}
 "
 DEPEND="${RDEPEND}
