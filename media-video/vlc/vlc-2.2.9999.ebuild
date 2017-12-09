@@ -213,6 +213,8 @@ PATCHES=(
 
 	# Bug #593460
 	"${FILESDIR}"/${PN}-2.2.4-libav-11.7.patch
+
+	"${FILESDIR}"/${P}-libupnp-compat.patch
 )
 
 DOCS=( AUTHORS THANKS NEWS README doc/fortunes.txt doc/intf-vcd.txt )
