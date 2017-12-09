@@ -62,6 +62,10 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/fontforge-2.0.${PV}"
 
+PATCHES=(
+	"${FILESDIR}"/20170731-startnoui-FindOrMakeEncoding.patch
+)
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }

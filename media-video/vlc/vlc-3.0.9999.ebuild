@@ -166,7 +166,7 @@ RDEPEND="
 		X? ( dev-qt/qtx11extras:5 )
 	)
 	rdp? ( =net-misc/freerdp-1*:0=[client] )
-	samba? ( >=net-fs/samba-4.0.0:0[client] )
+	samba? ( >=net-fs/samba-4.0.0:0[client,-debug(-)] )
 	schroedinger? ( >=media-libs/schroedinger-1.0.10:0 )
 	sdl-image? ( >=media-libs/sdl-image-1.2.10:0 )
 	sftp? ( net-libs/libssh2:0 )
