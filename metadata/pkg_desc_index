@@ -12833,7 +12833,7 @@ media-gfx/openclipart 0.20: Open Clip Art Library (openclipart.org)
 media-gfx/opencsg 1.4.2: The Constructive Solid Geometry rendering library
 media-gfx/openexr_viewers 1.0.2 2.0.1 2.1.0 2.2.0 2.2.0-r1: OpenEXR Viewers
 media-gfx/openmesh 4.1: A generic data structure to represent and manipulate polygonal meshes
-media-gfx/openscad 2015.03_p2-r3 9999: The Programmers Solid 3D CAD Modeller
+media-gfx/openscad 2015.03_p2-r3 2015.03_p3 9999: The Programmers Solid 3D CAD Modeller
 media-gfx/opentoonz 1.1.2: An open-source full-featured 2D animation creation software
 media-gfx/openvdb 3.2.0 4.0.0 4.0.2: Libs for the efficient manipulation of volumetric data
 media-gfx/optipng 0.7.6-r1 0.7.6-r2: Compress PNG files without affecting image quality
