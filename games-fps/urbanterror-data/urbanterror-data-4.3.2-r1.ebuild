@@ -11,6 +11,10 @@ MY_PV=43_full
 
 DESCRIPTION="Data files for UrbanTerror"
 HOMEPAGE="http://www.urbanterror.info"
+
+# Todo in the next release: save into ${PN}-4.3.0.zip
+# I just made a mistake, but loading some GiB just for
+# a mostly cosmetical fix isn’t worth the bandwith.
 SRC_URI="https://up.barbatos.fr/urt/${MY_PN}${MY_PV}.zip -> ${P}.zip"
 
 # fetch updates recursively for |4.3.x-4.3.0|
