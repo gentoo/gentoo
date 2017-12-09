@@ -219,14 +219,6 @@ DOCS=( AUTHORS THANKS NEWS README doc/fortunes.txt doc/intf-vcd.txt )
 
 S="${WORKDIR}/${MY_P}"
 
-src_unpack() {
-	if [[ ${PV} = *9999 ]] ; then
-		git-r3_src_unpack
-	else
-		unpack ${A}
-	fi
-}
-
 src_prepare() {
 	default
 
