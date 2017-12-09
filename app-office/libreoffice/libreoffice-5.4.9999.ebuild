@@ -64,7 +64,7 @@ unset ADDONS_SRC
 # Extensions that need extra work:
 LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
 
-IUSE="bluetooth +branding coinmp collada +cups dbus debug eds firebird gltf gnome googledrive
+IUSE="bluetooth +branding coinmp collada +cups dbus debug eds firebird gltf googledrive
 gstreamer +gtk gtk3 jemalloc kde libressl mysql odk pdfimport postgres quickstarter test vlc
 $(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 
@@ -125,13 +125,13 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	net-misc/curl
 	net-nds/openldap
 	sci-mathematics/lpsolve
+	virtual/glu
+	virtual/jpeg:0
+	virtual/opengl
 	x11-libs/cairo[X]
 	x11-libs/libXinerama
 	x11-libs/libXrandr
 	x11-libs/libXrender
-	virtual/glu
-	virtual/jpeg:0
-	virtual/opengl
 	bluetooth? ( net-wireless/bluez )
 	coinmp? ( sci-libs/coinor-mp )
 	collada? ( media-libs/opencollada )
@@ -143,7 +143,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	)
 	firebird? ( >=dev-db/firebird-3.0.2.32703.0-r1 )
 	gltf? ( >=media-libs/libgltf-0.1.0 )
-	gnome? ( gnome-base/dconf )
 	gstreamer? (
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
@@ -155,6 +154,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	gtk3? (
 		dev-libs/glib:2
 		dev-libs/gobject-introspection
+		gnome-base/dconf
 		x11-libs/gtk+:3
 	)
 	jemalloc? ( dev-libs/jemalloc )
@@ -231,8 +231,7 @@ DEPEND="${COMMON_DEPEND}
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	bluetooth? ( dbus )
 	collada? ( gltf )
-	eds? ( gnome )
-	gnome? ( gtk )
+	eds? ( gtk3 )
 	libreoffice_extensions_nlpsolver? ( java )
 	libreoffice_extensions_scripting-beanshell? ( java )
 	libreoffice_extensions_scripting-javascript? ( java )
@@ -463,11 +462,11 @@ src_configure() {
 		$(use_enable eds evolution2) \
 		$(use_enable firebird firebird-sdbc) \
 		$(use_enable gltf) \
-		$(use_enable gnome gio) \
-		$(use_enable gnome dconf) \
 		$(use_enable gstreamer gstreamer-1-0) \
 		$(use_enable gtk) \
 		$(use_enable gtk3) \
+		$(use_enable gtk3 dconf) \
+		$(use_enable gtk3 gio) \
 		$(use_enable kde kde4) \
 		$(use_enable mysql ext-mariadb-connector) \
 		$(use_enable odk) \

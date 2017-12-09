@@ -145,9 +145,7 @@ PATCHES=(
 	"${FILESDIR}/chromium-widevine-r1.patch"
 	"${FILESDIR}/chromium-FORTIFY_SOURCE-r2.patch"
 	"${FILESDIR}/chromium-webrtc-r0.patch"
-	"${FILESDIR}/chromium-math-includes-r0.patch"
-	"${FILESDIR}/chromium-${PV}-gpu_lists_version.h.patch"
-	"${FILESDIR}/chromium-gcc5-r5.patch"
+	"${FILESDIR}/chromium-memcpy-r0.patch"
 )
 
 pre_build_checks() {
@@ -184,13 +182,13 @@ pkg_pretend() {
 pkg_setup() {
 	pre_build_checks
 
-	# Make sure the build system will use the right python, bug #344367.
-	python-any-r1_pkg_setup
-
 	chromium_suid_sandbox_check_kernel_config
 }
 
 src_prepare() {
+	# Calling this here supports resumption via FEATURES=keepwork
+	python_setup
+
 	default
 
 	mkdir -p third_party/node/linux/node-linux-x64/bin || die
@@ -220,6 +218,7 @@ src_prepare() {
 		third_party/angle/src/third_party/trace_event
 		third_party/blink
 		third_party/boringssl
+		third_party/boringssl/src/third_party/fiat
 		third_party/breakpad
 		third_party/breakpad/breakpad/src/third_party/curl
 		third_party/brotli
@@ -235,7 +234,6 @@ src_prepare() {
 		third_party/catapult/tracing/third_party/oboe
 		third_party/catapult/tracing/third_party/pako
 		third_party/ced
-		third_party/cld_2
 		third_party/cld_3
 		third_party/crc32c
 		third_party/cros_system_api
@@ -360,6 +358,9 @@ bootstrap_gn() {
 }
 
 src_configure() {
+	# Calling this here supports resumption via FEATURES=keepwork
+	python_setup
+
 	local myconf_gn=""
 
 	# GN needs explicit config for Debug/Release as opposed to inferring it from build directory.
@@ -539,6 +540,9 @@ src_configure() {
 }
 
 src_compile() {
+	# Calling this here supports resumption via FEATURES=keepwork
+	python_setup
+
 	local ninja_targets="chrome chromedriver"
 	if use suid; then
 		ninja_targets+=" chrome_sandbox"
