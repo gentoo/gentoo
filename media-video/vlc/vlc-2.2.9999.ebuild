@@ -230,6 +230,8 @@ src_unpack() {
 src_prepare() {
 	default
 
+	has_version '>=net-libs/libupnp-1.8.0' && eapply "${FILESDIR}"/${PN}-2.2.8-libupnp-slot-1.8.patch
+
 	# Remove unnecessary warnings about unimplemented pragmas on gcc for now.
 	# Need to recheck this with gcc 4.9 and every subsequent minor bump of gcc.
 	#
