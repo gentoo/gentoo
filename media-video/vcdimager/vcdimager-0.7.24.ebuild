@@ -25,6 +25,8 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS BUGS ChangeLog FAQ HACKING NEWS README THANKS TODO )
 
+PATCHES=( "${FILESDIR}/${P}-libcdio-1.0.0.patch" )
+
 src_prepare() {
 	default
 
