@@ -12,6 +12,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="static-libs"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-which-path.patch
+	"${FILESDIR}"/${P}-fix-path.patch
+)
+
 src_configure(){
 	econf --enable-static=$(usex static-libs)
 }
