@@ -29,6 +29,8 @@ DEPEND="${RDEPEND}
 
 DOCS=( README NEWS )
 
+PATCHES=( "${FILESDIR}/${P}-hidpi.patch" )
+
 src_prepare() {
 	default
 
