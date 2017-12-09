@@ -23,13 +23,14 @@ DEPEND="
 	dev-libs/glib:2
 	dev-libs/gmp:0=
 	dev-libs/mpfr:0=
+	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtopengl:5
-	>=media-libs/glew-2.0.0:0
 	media-gfx/opencsg
 	media-libs/fontconfig:1.0
 	media-libs/freetype:2
+	>=media-libs/glew-2.0.0:*
 	media-libs/harfbuzz
 	sci-mathematics/cgal:=
 	>=x11-libs/qscintilla-2.9.4:=[qt5(+)]
