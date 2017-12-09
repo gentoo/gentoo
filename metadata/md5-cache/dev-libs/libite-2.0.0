@@ -7,4 +7,4 @@ KEYWORDS=~amd64 ~x86
 LICENSE=MIT
 SLOT=0
 SRC_URI=https://github.com/troglobit/libite/releases/download/v2.0.0/libite-2.0.0.tar.xz
-_md5_=87ab1a800a1c6808954d139474132ee1
+_md5_=dc978293de4bbf90a5d39d212d8007c4
