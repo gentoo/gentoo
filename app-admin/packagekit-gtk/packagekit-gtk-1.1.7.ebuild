@@ -40,7 +40,6 @@ src_configure() {
 		--disable-gtk-doc \
 		--disable-local \
 		--disable-man-pages \
-		--disable-networkmanager \
 		--disable-static \
 		--disable-systemd \
 		--disable-vala \
