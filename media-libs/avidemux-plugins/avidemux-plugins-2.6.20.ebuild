@@ -40,7 +40,7 @@ RDEPEND="
 	media-libs/libpng:0=
 	virtual/libiconv:0
 	aac? (
-		media-libs/faac:0
+		>=media-libs/faac-1.29.9.2:0
 		media-libs/faad2:0
 	)
 	aften? ( media-libs/aften:0 )
@@ -70,7 +70,7 @@ RDEPEND="
 	)
 	xvid? ( media-libs/xvid:0 )
 	vorbis? ( media-libs/libvorbis:0 )
-	vpx? ( media-libs/libvpx:0 )
+	vpx? ( media-libs/libvpx:0= )
 	${PYTHON_DEPS}
 "
 DEPEND="${RDEPEND}
