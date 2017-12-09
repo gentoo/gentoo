@@ -3,7 +3,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{4,5} )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 FINDLIB_USE="ocaml"
 
 inherit findlib eutils multilib toolchain-funcs java-pkg-opt-2 flag-o-matic \
