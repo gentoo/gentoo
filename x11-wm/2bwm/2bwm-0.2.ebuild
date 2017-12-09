@@ -10,7 +10,6 @@ HOMEPAGE="https://github.com/venam/2bwm"
 EGIT_REPO_URI="https://github.com/venam/2bwm"
 EGIT_COMMIT="6a453990a79f7b62ca057f380cf6cb616329a553"
 
-
 SLOT="0"
 KEYWORDS=""
 IUSE="savedconfig"
