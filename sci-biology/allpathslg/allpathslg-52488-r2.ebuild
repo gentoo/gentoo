@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,8 @@ inherit autotools flag-o-matic toolchain-funcs
 DESCRIPTION="De novo assembly of whole-genome shotgun microreads"
 # see also http://www.broadinstitute.org/software/allpaths-lg/blog/?page_id=12
 HOMEPAGE="http://www.broadinstitute.org/science/programs/genome-biology/crd"
-SRC_URI="ftp://ftp.broadinstitute.org/pub/crd/ALLPATHS/Release-LG/latest_source_code/${P}.tar.gz"
+SRC_URI="ftp://ftp.broadinstitute.org/pub/crd/ALLPATHS/Release-LG/latest_source_code/${P}.tar.gz
+	https://dev.gentoo.org/~mgorny/dist/${P}-patchset.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
@@ -22,8 +23,8 @@ DEPEND="
 	dev-libs/boost:="
 
 PATCHES=(
-	"${FILESDIR}/${P}_fix-buildsystem.patch"
-	"${FILESDIR}/${P}_remove-namespace-std.patch"
+	"${WORKDIR}/${P}-patchset/${P}_fix-buildsystem.patch"
+	"${WORKDIR}/${P}-patchset/${P}_remove-namespace-std.patch"
 )
 
 pkg_pretend() {
