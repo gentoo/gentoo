@@ -17652,7 +17652,7 @@ sys-devel/dev86 0.16.19 0.16.21 0.16.21-r2: Bruce's C compiler - Simple C compil
 sys-devel/distcc 3.1-r10 3.2_rc1-r4 3.2_rc1-r5: Distribute compilation of C code across several machines on a network
 sys-devel/dwz 0.9: DWARF optimization and duplicate removal tool
 sys-devel/flex 2.6.1 2.6.3 2.6.3-r1 2.6.4 2.6.4-r1: The Fast Lexical Analyzer
-sys-devel/gcc 2.95.3-r10 3.3.6-r1 3.4.6-r2 4.0.4 4.1.2 4.2.4-r1 4.3.6-r1 4.4.7 4.5.4 4.6.4 4.7.4 4.8.5 4.9.4 5.4.0-r3 6.3.0 6.4.0 7.2.0: The GNU Compiler Collection
+sys-devel/gcc 2.95.3-r10 3.3.6-r1 3.4.6-r2 4.0.4 4.1.2 4.2.4-r1 4.3.6-r1 4.4.7 4.5.4 4.6.4 4.7.4 4.8.5 4.9.4 5.4.0-r3 6.4.0 7.2.0: The GNU Compiler Collection
 sys-devel/gcc-apple 4.2.1_p5666-r2: Apple branch of the GNU Compiler Collection, Developer Tools 4.0
 sys-devel/gcc-config 1.7.3 1.8 1.8-r1 1.9.0-r1: Utility to manage compilers
 sys-devel/gdb 7.9.1 7.10.1 7.12.1 8.0 8.0.1 9999: GNU debugger
@@ -17908,7 +17908,7 @@ sys-kernel/raspberrypi-sources 4.4.9999 4.9.9999 4.10.9999 4.11.9999 4.12.9999 4
 sys-kernel/rt-sources 3.18.69_p75 3.18.82_p88 4.1.42_p50 4.1.46_p51 4.4.86_p99 4.4.97_p110 4.9.47_p37 4.9.61_p51 4.11.12_p16 4.13.7_p1 4.13.10_p3 4.13.13_p5: Full Linux 4.13 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.6.5.4-r1 0.6.5.11 0.7.3 9999: The Solaris Porting Layer provides many of the Solaris kernel APIs
 sys-kernel/tuxonice-sources 3.4.110 3.4.111 3.4.112 3.10.100 3.10.101 3.12.56 3.12.58 3.12.60 3.14.64 3.14.67 3.14.70 3.18.28 3.18.31 3.18.34 4.1.19 4.1.22 4.1.24 4.2.8 4.3.6 4.4.5 4.4.8 4.4.11 4.5.2 4.5.4: TuxOnIce + Gentoo patchset sources
-sys-kernel/vanilla-sources 3.2.96 3.16.51 4.1.46 4.4.104 4.9.67 4.14.4: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 3.2.96 3.16.51 4.1.47 4.4.105 4.9.67 4.14.4: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/zen-sources 3.8.9999 3.9.9999 3.10.9999 3.11.9999 3.12.9999 3.13.9999: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
@@ -18076,7 +18076,7 @@ sys-process/rtirq 20150216: Modify realtime scheduling policy and priority of IR
 sys-process/runit 2.1.1-r1 2.1.2 2.1.2-r1: A UNIX init scheme with service supervision
 sys-process/schedtool 1.3.0-r1: A tool to query or alter a process' scheduling policy
 sys-process/supervise-scripts 4.0: Starting and stopping daemontools managed services
-sys-process/systemd-cron 1.5.3 1.5.4 1.5.10: systemd units to create timers for cron directories and crontab
+sys-process/systemd-cron 1.5.3 1.5.4 1.5.10 1.5.12: systemd units to create timers for cron directories and crontab
 sys-process/time 1.7-r1 1.7-r3 1.7.2: Displays info about resources used by a program
 sys-process/tini 0.13.2 0.15.0 0.16.1: A tiny but valid init for containers
 sys-process/tiptop 2.2 2.3 2.3.1: top for performance counters

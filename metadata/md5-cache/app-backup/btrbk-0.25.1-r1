@@ -9,5 +9,5 @@ LICENSE=GPL-3+
 RDEPEND=dev-lang/perl net-misc/openssh pv? ( sys-apps/pv ) >=sys-fs/btrfs-progs-3.18.2 <sys-fs/btrfs-progs-4.13.2
 SLOT=0
 SRC_URI=https://digint.ch/download/btrbk/releases/btrbk-0.25.1.tar.xz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	34815d3b76e745c5ca33eec9f95074c2	toolchain-funcs	185a06792159ca143528e7010368e8af
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	8f5286f89e265842f5b5189666eae88b	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=b21d8f0833d41170c38ed9f391e72ec4
