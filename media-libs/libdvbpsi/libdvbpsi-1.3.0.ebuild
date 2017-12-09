@@ -4,8 +4,8 @@
 EAPI=4
 
 DESCRIPTION="library for MPEG TS/DVB PSI tables decoding and generation"
-HOMEPAGE="http://www.videolan.org/libdvbpsi"
-SRC_URI="http://download.videolan.org/pub/${PN}/${PV}/${P}.tar.bz2"
+HOMEPAGE="https://www.videolan.org/libdvbpsi"
+SRC_URI="https://download.videolan.org/pub/${PN}/${PV}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
