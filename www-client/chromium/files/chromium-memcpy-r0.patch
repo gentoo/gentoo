@@ -1,0 +1,11 @@
+--- a/cc/paint/raw_memory_transfer_cache_entry.cc
++++ b/cc/paint/raw_memory_transfer_cache_entry.cc
+@@ -4,6 +4,8 @@
+ 
+ #include "cc/paint/raw_memory_transfer_cache_entry.h"
+ 
++#include <cstring>
++
+ namespace cc {
+ 
+ ClientRawMemoryTransferCacheEntry::ClientRawMemoryTransferCacheEntry(
