@@ -59,7 +59,7 @@ DOCS=( doc/{en,ja} )
 src_prepare() {
 	# default config
 	sed -i \
-		-e "/ icon_path =/aicon_path = ${EPREFIX}/usr/share/pixmaps/mlterm-icon.svg" \
+		-e "/ icon_path =/aicon_path = ${EPREFIX}/usr/share/pixmaps/${PN}-icon.svg" \
 		-e "/ scrollbar_view_name =/ascrollbar_view_name = sample" \
 		etc/main
 
@@ -90,7 +90,7 @@ src_configure() {
 	)
 
 	local scrollbars="sample,extra"
-	local tools="mlclient,mlcc,mlfc,mlmenu,mlterm-zoom"
+	local tools="mlclient,mlcc,mlfc,mlmenu,${PN}-zoom"
 	if use gtk; then
 		myconf+=(
 			$(use_with gtk gtk $(usex gtk2 2.0 3.0))
@@ -120,6 +120,6 @@ src_install () {
 	docinto contrib/icon
 	dodoc contrib/icon/README
 
-	doicon contrib/icon/mlterm*
-	make_desktop_entry mlterm mlterm mlterm-icon "System;TerminalEmulator"
+	doicon contrib/icon/${PN}*
+	make_desktop_entry ${PN} ${PN} ${PN}-icon "System;TerminalEmulator"
 }
