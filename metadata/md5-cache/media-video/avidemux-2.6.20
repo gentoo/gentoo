@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install postinst postrm prepare test
-DEPEND=~media-libs/avidemux-core-2.6.20:2.6[nls?,sdl?,vaapi?,vdpau?,xv?,nvenc?] opengl? ( virtual/opengl:0 ) qt4? ( >=dev-qt/qtgui-4.8.3:4 ) qt5? ( dev-qt/qtgui:5 ) vaapi? ( x11-libs/libva:0 ) nvenc? ( amd64? ( media-video/nvidia_video_sdk:0 ) ) sys-devel/make >=dev-util/cmake-3.7.2
+DEPEND=~media-libs/avidemux-core-2.6.20:2.6[nls?,sdl?,vaapi?,vdpau?,xv?,nvenc?] opengl? ( virtual/opengl:0 ) qt5? ( dev-qt/qtgui:5 ) vaapi? ( x11-libs/libva:0 ) nvenc? ( amd64? ( media-video/nvidia_video_sdk:0 ) ) sys-devel/make >=dev-util/cmake-3.7.2
 DESCRIPTION=Video editor designed for simple cutting, filtering and encoding tasks
 EAPI=6
 HOMEPAGE=http://fixounet.free.fr/avidemux
-IUSE=debug opengl nls nvenc qt4 qt5 sdl vaapi vdpau xv linguas_ca linguas_cs linguas_de linguas_el linguas_es linguas_fr linguas_it linguas_ja linguas_pt_BR linguas_ru linguas_sr linguas_sr@latin linguas_tr
+IUSE=debug opengl nls nvenc qt5 sdl vaapi vdpau xv linguas_ca linguas_cs linguas_de linguas_el linguas_es linguas_fr linguas_it linguas_ja linguas_pt_BR linguas_ru linguas_sr linguas_sr@latin linguas_tr
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-1 GPL-2 MIT PSF-2 public-domain
-PDEPEND=~media-libs/avidemux-plugins-2.6.20:2.6[opengl?,qt4?,qt5?]
-RDEPEND=~media-libs/avidemux-core-2.6.20:2.6[nls?,sdl?,vaapi?,vdpau?,xv?,nvenc?] opengl? ( virtual/opengl:0 ) qt4? ( >=dev-qt/qtgui-4.8.3:4 ) qt5? ( dev-qt/qtgui:5 ) vaapi? ( x11-libs/libva:0 ) nvenc? ( amd64? ( media-video/nvidia_video_sdk:0 ) ) nls? ( virtual/libintl:0 )
+PDEPEND=~media-libs/avidemux-plugins-2.6.20:2.6[opengl?,qt5?]
+RDEPEND=~media-libs/avidemux-core-2.6.20:2.6[nls?,sdl?,vaapi?,vdpau?,xv?,nvenc?] opengl? ( virtual/opengl:0 ) qt5? ( dev-qt/qtgui:5 ) vaapi? ( x11-libs/libva:0 ) nvenc? ( amd64? ( media-video/nvidia_video_sdk:0 ) ) nls? ( virtual/libintl:0 )
 SLOT=2.6
 SRC_URI=mirror://sourceforge/avidemux/avidemux/2.6.20/avidemux_2.6.20.tar.gz
 _eclasses_=cmake-utils	77a5a8d3308359caadcdd91688f20093	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	flag-o-matic	a6089a2a4027ae3da4a460dc87b21050	l10n	2c2e15383ba891d642f51896a7f0ecfe	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=2baba92048b5181a58a5ed6ad0ff2428
+_md5_=5054d3a386aafc2503cb10ee2b5ae62f
