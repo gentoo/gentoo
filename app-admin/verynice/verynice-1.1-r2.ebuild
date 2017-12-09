@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils systemd toolchain-funcs
 
 DESCRIPTION="A tool for dynamically adjusting the nice-level of processes"
-HOMEPAGE="http://thermal.cnde.iastate.edu/~sdh4/verynice/"
+HOMEPAGE="https://web.archive.org/web/2010033109/http://thermal.cnde.iastate.edu/~sdh4/verynice/"
 SRC_URI="http://thermal.cnde.iastate.edu/~sdh4/verynice/down/${P}.tar.gz"
 
 LICENSE="GPL-2"
