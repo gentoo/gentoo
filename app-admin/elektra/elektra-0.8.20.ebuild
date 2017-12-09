@@ -3,15 +3,15 @@
 
 EAPI=6
 
-inherit cmake-multilib eutils java-pkg-opt-2 git-r3
+inherit cmake-multilib eutils java-pkg-opt-2
 
 DESCRIPTION="Framework to store config parameters in hierarchical key-value pairs"
-HOMEPAGE="https://freedesktop.org/wiki/Software/Elektra"
-EGIT_REPO_URI="https://github.com/ElektraInitiative/libelektra.git"
+HOMEPAGE="https://www.libelektra.org"
+SRC_URI="https://www.libelektra.org/ftp/elektra/releases/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 PLUGIN_IUSE="augeas iconv ini java simpleini syslog systemd tcl +uname xml yajl";
 IUSE="dbus doc qt5 static-libs test ${PLUGIN_IUSE}"
 
@@ -34,13 +34,11 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 	test? ( >=dev-cpp/gtest-1.7.0 )"
 
-DOCS=( README.md doc/AUTHORS doc/CODING.md doc/NEWS.md doc/todo/TODO )
+DOCS=( README.md doc/AUTHORS doc/CODING.md doc/todo/TODO )
 # tries to write to user's home directory (and doesn't respect HOME)
 RESTRICT="test"
 
 MULTILIB_WRAPPED_HEADERS=( /usr/include/elektra/kdbconfig.h )
-
-PATCHES=( "${FILESDIR}/${PN}"-0.8.15-conditional-glob-tests.patch )
 
 src_prepare() {
 	cmake-utils_src_prepare
