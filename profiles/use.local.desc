@@ -2155,6 +2155,7 @@ dev-libs/libslz:tools - Install additional tools (zenc, zdec)
 dev-libs/libsodium:asm - Enables assembly implementations
 dev-libs/libsodium:urandom - Use /dev/urandom instead of /dev/random
 dev-libs/libsolv:rpm - Enable support for RPM files
+dev-libs/libspt:libtirpc - Build against net-libs/libtirpc for RPC support
 dev-libs/libsqlora8:orathreads - Use Oracle threads
 dev-libs/libtasn1:valgrind - Enable usage of dev-util/valgrind in debug
 dev-libs/libtermkey:demos - Install demos, which pulls in dev-libs/glib
