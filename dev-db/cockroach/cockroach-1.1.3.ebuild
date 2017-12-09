@@ -38,6 +38,8 @@ pkg_setup() {
 }
 
 src_compile() {
+	# workaround for https://github.com/cockroachdb/cockroach/issues/20596
+	unset CMAKE_MODULE_PATH
 	emake build
 }
 
