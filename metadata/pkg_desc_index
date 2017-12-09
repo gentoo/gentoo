@@ -1458,7 +1458,7 @@ app-forensics/dfxml 20170921-r1 99999999: Digital Forensics XML
 app-forensics/examiner 0.5-r2: Utilizes the objdump command to disassemble and comment foreign binaries
 app-forensics/foremost 0.69 1.5.7-r2 1.5.7-r3: A console program to recover files based on their headers and footers
 app-forensics/galleta 20040505_p1: IE Cookie Parser
-app-forensics/honggfuzz 1.0 1.1 1.2: A general purpose fuzzer with feedback support
+app-forensics/honggfuzz 1.0 1.1 1.2 1.3: A general purpose fuzzer with feedback support
 app-forensics/libbfio 0.0.20120425_alpha 0.0.20130609_alpha 0.0.20130721: Library for providing a basic file input/output abstraction layer
 app-forensics/libewf 20130416 20140608: Implementation of the EWF (SMART and EnCase) image format
 app-forensics/lynis 2.5.2: Security and system auditing tool
@@ -17562,7 +17562,7 @@ sys-cluster/ganglia 3.7.1-r1: A scalable distributed monitoring system for clust
 sys-cluster/ganglia-web 3.5.8-r1 3.5.10-r1: Web frontend for sys-cluster/ganglia
 sys-cluster/gasnet 1.26.4 1.26.4-r1 1.28.0 1.28.2 1.30.0: Networking middleware for partitioned global address space (PGAS) language
 sys-cluster/gearmand 0.34-r1: Generic framework to farm out work to other machines
-sys-cluster/glusterfs 3.12.3: GlusterFS is a powerful network/cluster filesystem
+sys-cluster/glusterfs 3.12.3 3.13.0 9999: GlusterFS is a powerful network/cluster filesystem
 sys-cluster/heartbeat 3.0.5-r3 3.0.6: Heartbeat high availability cluster manager
 sys-cluster/heat 8.0.5 9.0.1 2017.1.9999 2017.2.9999: A CloudFormation-compatible openstack-native cloud orchistration engine.
 sys-cluster/hpl 2.0-r3: Portable Implementation of the Linpack Benchmark for Distributed-Memory Clusters
@@ -17890,7 +17890,7 @@ sys-kernel/bliss-initramfs 6.8.3-r2 7.1.0 7.1.1: Boot your system's rootfs from 
 sys-kernel/ck-sources 4.9.61 4.9.62 4.9.63 4.9.64 4.9.65 4.9.66 4.9.67 4.13.12 4.13.13 4.13.14 4.13.15 4.13.16 4.13.16-r1 4.14.1 4.14.2 4.14.3 4.14.4: Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 4.14
 sys-kernel/cryptodev 1.7 1.9 9999: device that allows access to Linux kernel cryptographic drivers
 sys-kernel/dracut 044-r1 044-r3 045-r2 046: Generic initramfs generation tool
-sys-kernel/genkernel 3.4.49.2 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.5.0.8 3.5.1.0 3.5.1.1 3.5.2.0-r1 3.5.2.1 3.5.2.2 3.5.2.3 3.5.2.4 9999: Gentoo automatic kernel building scripts
+sys-kernel/genkernel 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.5.1.1 3.5.2.0-r1 3.5.2.1 3.5.2.2 3.5.2.3 3.5.2.4 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 66 68: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-sources 3.10.107-r1 4.1.43-r1 4.1.47 4.4.87-r1 4.4.95 4.4.96 4.4.97 4.4.98 4.4.99 4.4.100 4.4.102 4.4.103 4.4.104 4.9.49-r1 4.9.59 4.9.60 4.9.61 4.9.62 4.9.63 4.9.64 4.9.65 4.9.66 4.9.67 4.12.12 4.12.13 4.12.14 4.13.10 4.13.11 4.13.12 4.13.13 4.13.14 4.13.15 4.13.16 4.14.1 4.14.2 4.14.3 4.14.4: Full sources including the Gentoo patchset for the 4.14 kernel tree
 sys-kernel/git-sources 4.15_rc1 4.15_rc2: The very latest -git version of the Linux kernel
