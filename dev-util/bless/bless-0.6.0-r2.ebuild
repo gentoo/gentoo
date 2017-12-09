@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,9 +15,7 @@ IUSE="debug"
 
 RDEPEND="
 	>=dev-lang/mono-1.1.14
-	>=dev-dotnet/gtk-sharp-2.12
-	|| ( >=dev-dotnet/gtk-sharp-2.12.21
-	     >=dev-dotnet/glade-sharp-2.12 )
+	>=dev-dotnet/gtk-sharp-2.12.21
 "
 DEPEND="${RDEPEND}
 	app-text/rarian
