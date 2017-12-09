@@ -37,7 +37,7 @@ IUSE="a52 aalib alsa altivec atmo +audioqueue +avcodec +avformat bidi bluray cdd
 	macosx-dialog-provider macosx-eyetv macosx-quartztext macosx-qtkit
 	matroska cpu_flags_x86_mmx modplug mp3 mpeg mtp musepack ncurses neon ogg
 	omxil opencv opengl optimisememory opus png postproc projectm pulseaudio
-	qt4 +qt5 rdp rtsp run-as-root samba schroedinger sdl sdl-image sftp shout
+	+qt5 rdp rtsp run-as-root samba schroedinger sdl sdl-image sftp shout
 	sid skins speex cpu_flags_x86_sse svg +swscale taglib theora tremor truetype
 	twolame udev upnp vaapi v4l vcdx vdpau vlm vnc vorbis vpx wma-fixed +X
 	x264 x265 +xcb xml xv zeroconf zvbi
@@ -55,10 +55,9 @@ REQUIRED_USE="
 	libcaca? ( X )
 	libtar? ( skins )
 	libtiger? ( kate )
-	qt4? ( X )
 	qt5? ( X )
 	sdl? ( X )
-	skins? ( truetype X xml || ( qt4 qt5 ) )
+	skins? ( qt5 truetype X xml )
 	vaapi? ( avcodec X )
 	vdpau? ( X )
 	vlm? ( encode )
@@ -133,7 +132,6 @@ RDEPEND="
 	)
 	projectm? ( media-libs/libprojectm:0 media-fonts/dejavu:0 )
 	pulseaudio? ( >=media-sound/pulseaudio-1:0 )
-	!qt5? ( qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 ) )
 	qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 )
 	rdp? ( =net-misc/freerdp-1*:0=[client] )
 	samba? ( >=net-fs/samba-4.0.0:0[client,-debug(-)] )
@@ -251,8 +249,6 @@ src_prepare() {
 	# version may be used. Setting QT_SELECT environment variable will enforce correct binaries.
 	if use qt5; then
 		export QT_SELECT=qt5
-	elif use qt4; then
-		export QT_SELECT=qt4
 	fi
 }
 
@@ -279,11 +275,7 @@ src_configure() {
 	if use qt5 ; then
 		myconf+=" --enable-qt=5"
 	else
-		if use qt4 ; then
-			myconf+=" --enable-qt=4"
-		else
-			myconf+=" --disable-qt"
-		fi
+		myconf+=" --disable-qt"
 	fi
 
 	econf \
