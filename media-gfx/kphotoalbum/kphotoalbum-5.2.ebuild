@@ -4,7 +4,7 @@
 EAPI=6
 
 KDE_HANDBOOK="forceoptional"
-inherit kde5
+inherit flag-o-matic kde5
 
 DESCRIPTION="Tool for indexing, searching, and viewing images"
 HOMEPAGE="https://www.kphotoalbum.org/"
@@ -53,6 +53,8 @@ RDEPEND="${COMMON_DEPEND}
 DOCS=( ChangeLog README )
 
 src_configure() {
+	append-ldflags -fuse-ld=gold #bug #623566
+
 	local mycmakeargs=(
 		-DENABLE_PLAYGROUND=ON
 		-DCMAKE_DISABLE_FIND_PACKAGE_KF5KFace=ON
