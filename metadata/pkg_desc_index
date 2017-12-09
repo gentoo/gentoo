@@ -157,9 +157,9 @@ app-admin/needrestart 2.11 2.11-r1 9999: Restart daemons after library updates
 app-admin/newsyslog 1.1-r1: a highly configurable program for managing and archiving log files
 app-admin/ngxtop 0.0.2-r1 0.0.3_pre141201: real-time metrics for nginx server (and others)
 app-admin/openrc-settingsd 1.0.1: System settings D-Bus service for OpenRC
-app-admin/packagekit 1.0.11-r1 1.1.1 1.1.4 1.1.5: PackageKit Package Manager interface (meta package)
-app-admin/packagekit-base 1.0.11 1.1.1 1.1.4 1.1.5-r2: Manage packages in a secure way using a cross-distro and cross-architecture API
-app-admin/packagekit-gtk 1.0.11 1.1.1 1.1.4 1.1.5: Gtk3 PackageKit backend library
+app-admin/packagekit 1.0.11-r1 1.1.1 1.1.4 1.1.5 1.1.7: PackageKit Package Manager interface (meta package)
+app-admin/packagekit-base 1.0.11 1.1.1 1.1.4 1.1.5-r2 1.1.7: Manage packages in a secure way using a cross-distro and cross-architecture API
+app-admin/packagekit-gtk 1.0.11 1.1.1 1.1.4 1.1.5 1.1.7: Gtk3 PackageKit backend library
 app-admin/packagekit-qt 0.9.6: Qt PackageKit backend library
 app-admin/pass 1.7.1 9999: Stores, retrieves, generates, and synchronizes passwords securely
 app-admin/passook 20121001: Password generator capable of generating pronounceable and/or secure passwords
