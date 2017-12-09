@@ -8,7 +8,7 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="git://git.videolan.org/${PN}.git"
 else
-	SRC_URI="http://ftp.videolan.org/pub/videolan/${PN}/${PV}/${P}.tar.bz2"
+	SRC_URI="http://downloads.videolan.org/pub/videolan/${PN}/${PV}/${P}.tar.bz2"
 	KEYWORDS="amd64 ppc ppc64 sparc x86"
 fi
 
