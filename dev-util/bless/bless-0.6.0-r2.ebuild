@@ -5,8 +5,8 @@ EAPI=6
 inherit autotools gnome2 mono-env
 
 DESCRIPTION="GTK# Hex Editor"
-HOMEPAGE="http://home.gna.org/bless/"
-SRC_URI="http://download.gna.org/bless/${P}.tar.gz"
+HOMEPAGE="https://github.com/bwrsandman/Bless/"
+SRC_URI="https://dev.gentoo.org/~ikelos/devoverlay-distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
