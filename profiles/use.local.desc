@@ -444,7 +444,6 @@ app-emacs/calfw:howm - Add support for the app-emacs/howm note-taking tool
 app-emacs/company-mode:ropemacs - Install backend for dev-python/ropemacs
 app-emacs/emacs-common-gentoo:games - Support shared score files for games
 app-emacs/emhacks:jde - Enable support for Java Development Environment
-app-emacs/magit:contrib - Install user-contributed files
 app-emacs/org-mode:contrib - Install user-contributed files
 app-emacs/org-mode:odt-schema - Install non-free schema files for OpenDocument Text exporter
 app-emacs/remember:bbdb - Include support for app-emacs/bbdb
