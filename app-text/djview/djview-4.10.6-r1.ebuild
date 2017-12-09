@@ -1,9 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
-inherit autotools gnome2-utils fdo-mime flag-o-matic qmake-utils versionator toolchain-funcs multilib nsplugins
+inherit autotools gnome2-utils flag-o-matic nsplugins qmake-utils toolchain-funcs versionator xdg-utils
 
 DESCRIPTION="Portable DjVu viewer using Qt"
 HOMEPAGE="http://djvu.sourceforge.net/djview4.html"
@@ -27,7 +27,11 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	nsplugin? ( dev-libs/glib:2 )"
 
+DOCS=( README NEWS )
+
 src_prepare() {
+	default
+
 	# Force XEmbed instead of Xt-based mainloop (disable Xt autodep)
 	sed -e 's:\(ac_xt=\)yes:\1no:' -i configure* || die
 	sed 's/AC_CXX_OPTIMIZE/OPTS=;AC_SUBST(OPTS)/' -i configure.ac || die #263688
@@ -55,7 +59,7 @@ src_install() {
 		plugindir=/usr/$(get_libdir)/${PLUGINS_DIR} \
 			install
 
-	dodoc README NEWS
+	einstalldocs
 
 	cd desktopfiles
 	insinto /usr/share/icons/hicolor/32x32/apps
@@ -68,16 +72,12 @@ src_install() {
 	domenu djvulibre-djview4.desktop
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
 pkg_postinst() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 	gnome2_icon_cache_update
 }
