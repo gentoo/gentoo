@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
 
 inherit autotools gnome2-utils fdo-mime flag-o-matic versionator toolchain-funcs multilib nsplugins
 
-DESCRIPTION="Portable DjVu viewer using Qt4"
+DESCRIPTION="Portable DjVu viewer using Qt"
 HOMEPAGE="http://djvu.sourceforge.net/djview4.html"
 SRC_URI="mirror://sourceforge/djvu/${P}.tar.gz"
 
