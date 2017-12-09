@@ -1,11 +1,11 @@
 DEFINED_PHASES=compile configure install postinst postrm prepare unpack
-DEPEND=dev-cpp/eigen:3 dev-libs/boost:= dev-libs/glib:2 dev-libs/gmp:0= dev-libs/mpfr:0= dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtopengl:5 media-gfx/opencsg media-libs/fontconfig:1.0 media-libs/freetype:2 media-libs/glew:* media-libs/harfbuzz sci-mathematics/cgal:= >=x11-libs/qscintilla-2.9.4:=[qt5(+)] emacs? ( virtual/emacs ) >=dev-vcs/git-1.8.2.1
+DEPEND=dev-cpp/eigen:3 dev-libs/boost:= dev-libs/glib:2 dev-libs/gmp:0= dev-libs/mpfr:0= dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5[-gles2] dev-qt/qtopengl:5 media-gfx/opencsg media-libs/fontconfig:1.0 media-libs/freetype:2 >=media-libs/glew-2.0.0:* media-libs/harfbuzz sci-mathematics/cgal:= >=x11-libs/qscintilla-2.9.4:=[qt5(+)] emacs? ( virtual/emacs ) >=dev-vcs/git-1.8.2.1
 DESCRIPTION=The Programmers Solid 3D CAD Modeller
 EAPI=6
 HOMEPAGE=http://www.openscad.org/
 IUSE=emacs
 LICENSE=GPL-2
-RDEPEND=dev-cpp/eigen:3 dev-libs/boost:= dev-libs/glib:2 dev-libs/gmp:0= dev-libs/mpfr:0= dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtopengl:5 media-gfx/opencsg media-libs/fontconfig:1.0 media-libs/freetype:2 media-libs/glew:* media-libs/harfbuzz sci-mathematics/cgal:= >=x11-libs/qscintilla-2.9.4:=[qt5(+)] emacs? ( virtual/emacs )
+RDEPEND=dev-cpp/eigen:3 dev-libs/boost:= dev-libs/glib:2 dev-libs/gmp:0= dev-libs/mpfr:0= dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5[-gles2] dev-qt/qtopengl:5 media-gfx/opencsg media-libs/fontconfig:1.0 media-libs/freetype:2 >=media-libs/glew-2.0.0:* media-libs/harfbuzz sci-mathematics/cgal:= >=x11-libs/qscintilla-2.9.4:=[qt5(+)] emacs? ( virtual/emacs )
 SLOT=0
 _eclasses_=elisp-common	23f47b2e1de7abf387105eddd1318738	estack	43ddf5aaffa7a8d0482df54d25a66a1f	git-r3	fec09a83ae965b041b47f5ff7c8ba29a	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	185a06792159ca143528e7010368e8af	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=540bf92ca1cbe18d9dcadcc9dc9adacb
+_md5_=43752e2c2bae0d3f6458df7d739b3b0e
