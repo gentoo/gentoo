@@ -9084,7 +9084,7 @@ dev-qt/qdbus 5.7.1 5.9.2 5.9.3: Interface to Qt applications communicating over 
 dev-qt/qdbusviewer 4.8.7 5.7.1 5.9.2 5.9.3: Graphical tool that lets you introspect D-Bus objects and messages
 dev-qt/qdoc 5.7.1 5.9.2 5.9.3: Qt documentation generator
 dev-qt/qt-creator 4.3.1 4.4.1 9999: Lightweight IDE for C++/QML development centering around Qt
-dev-qt/qt-docs 5.7.1_p0 5.9.2_p201710050733: Documentation for Qt5, for use with Qt Creator and other tools
+dev-qt/qt-docs 5.7.1_p0 5.9.2_p201710050733 5.9.3_p201711211135: Qt5 documentation, for use with Qt Creator and other tools
 dev-qt/qt-meta 4.8.6: Cross-platform application development framework (metapackage)
 dev-qt/qt3d 5.7.1-r1 5.9.2 5.9.3: The 3D module for the Qt5 framework
 dev-qt/qt3support 4.8.7: The Qt3Support module for the Qt toolkit
