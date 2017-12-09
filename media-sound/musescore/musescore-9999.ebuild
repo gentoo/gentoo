@@ -8,6 +8,7 @@ inherit cmake-utils git-r3
 DESCRIPTION="WYSIWYG Music Score Typesetter"
 HOMEPAGE="https://musescore.org/"
 EGIT_REPO_URI="https://github.com/${PN}/MuseScore.git"
+SRC_URI="https://dev.gentoo.org/~mgorny/dist/${P}-fix-buildsystem.patch.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -40,7 +41,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	"
 PATCHES=(
-	"${FILESDIR}/${P}-fix-buildsystem.patch"
+	"${WORKDIR}/${P}-fix-buildsystem.patch"
 )
 
 src_configure() {
