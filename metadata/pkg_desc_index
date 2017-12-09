@@ -7977,7 +7977,7 @@ dev-python/linecache2 1.0.0: Backports of the linecache module
 dev-python/lit 3.9.0 4.0.1 5.0.0 5.0.1_rc2 5.0.9999 9999: A stand-alone install of the LLVM suite testing tool
 dev-python/livereload 2.3.2 2.4.0 2.4.1: Python LiveReload is an awesome tool for web developers
 dev-python/llfuse 1.2 1.3 1.3.2: Python bindings for the low-level FUSE API
-dev-python/llvmlite 0.12.1 0.16.0 0.19.0 0.20.0: Python wrapper around the llvm C++ library
+dev-python/llvmlite 0.12.1 0.16.0 0.19.0 0.20.0 0.21.0: Python wrapper around the llvm C++ library
 dev-python/lmdb 0.92: Python bindings for the Lightning Database
 dev-python/locket 0.2.0: File-based locks for Python
 dev-python/lockfile 0.11.0-r1 0.12.2 0.12.2-r1: Platform-independent file locking module
