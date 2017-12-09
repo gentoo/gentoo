@@ -1,8 +1,10 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+EAPI=6
+
 DESCRIPTION="yEnc encoder/decoder package"
-HOMEPAGE="http://www.yencode.org"
+HOMEPAGE="https://web.archive.org/web/20030927163000/http://www.yencode.org:80/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -12,7 +14,7 @@ IUSE="nls"
 
 DEPEND=""
 
-src_compile() {
+src_configure() {
 	local myconf
 	use nls || myconf="--disable-nls"
 
