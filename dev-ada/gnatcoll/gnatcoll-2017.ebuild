@@ -52,7 +52,7 @@ src_prepare() {
 	default
 	mv configure.{in,ac} || die
 	sed -i \
-		-e "s:@GNATLS@:gnatls-${GCC_PV}:g" \
+		-e "s:@GNATLS@:${CHOST}-gnatls-${GCC_PV}:g" \
 		src/gnatcoll-projects.ads \
 		src/tools/gnatinspect.adb \
 		|| die
