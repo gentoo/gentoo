@@ -25,7 +25,7 @@ DEPEND="
 	dev-libs/mpfr:0=
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
-	dev-qt/qtgui:5
+	dev-qt/qtgui:5[-gles2]
 	dev-qt/qtopengl:5
 	media-gfx/opencsg
 	media-libs/fontconfig:1.0
