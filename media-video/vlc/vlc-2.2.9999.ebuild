@@ -157,7 +157,7 @@ RDEPEND="
 		!fontconfig? ( media-fonts/dejavu:0 ) )
 	twolame? ( media-sound/twolame:0 )
 	udev? ( >=virtual/udev-142:0 )
-	upnp? ( net-libs/libupnp:0 )
+	upnp? ( net-libs/libupnp:= )
 	v4l? ( media-libs/libv4l:0 )
 	vaapi? (
 		x11-libs/libva:0[X,drm]
