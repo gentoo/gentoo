@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
 inherit distutils-r1
 
 DESCRIPTION="Python Development Workflow for Humans"
-HOMEPAGE="https://github.com/kennethreitz/pipenv https://pypi.python.org/pypi/pipenv"
+HOMEPAGE="https://github.com/pypa/pipenv https://pypi.python.org/pypi/pipenv"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
