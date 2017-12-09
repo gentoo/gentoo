@@ -8,7 +8,7 @@ PYTHON_REQ_USE='threads(+)'
 inherit flag-o-matic gnome2-utils waf-utils python-any-r1
 
 DESCRIPTION="Modular patch bay for audio and MIDI systems"
-HOMEPAGE="http://wiki.drobilla.net/Patchage"
+HOMEPAGE="http://drobilla.net/software/patchage"
 SRC_URI="http://download.drobilla.net/${P}.tar.bz2"
 
 LICENSE="GPL-2"
