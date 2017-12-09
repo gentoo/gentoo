@@ -805,12 +805,6 @@ x11-libs/gtk+:1
 # Masked while being tested and reverse deps aren't fully compatible
 =dev-libs/openssl-1.1*
 
-# Michał Górny <mgorny@gentoo.org> (18 Jul 2016)
-# Pre-release of a complete rewrite, provided for early testing. Not all
-# functionality is provided yet. Use --pretend to make sure correct
-# files will be removed.
->=app-admin/eclean-kernel-1.99
-
 # Chris Reffett <creffett@gentoo.org> (25 May 2016)
 # The webkit-gtk:4 backend for Xiphos has known text display issues.
 # Use at your own risk.
