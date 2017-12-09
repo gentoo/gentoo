@@ -136,7 +136,7 @@ RDEPEND="
 	!qt5? ( qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 ) )
 	qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 )
 	rdp? ( =net-misc/freerdp-1*:0=[client] )
-	samba? ( >=net-fs/samba-4.0.0_alpha1:0[client] )
+	samba? ( >=net-fs/samba-4.0.0:0[client,-debug(-)] )
 	schroedinger? ( >=media-libs/schroedinger-1.0.10:0 )
 	sdl? ( >=media-libs/libsdl-1.2.10:0
 		sdl-image? ( >=media-libs/sdl-image-1.2.10:0 ) )
