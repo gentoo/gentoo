@@ -118,7 +118,6 @@ src_configure() {
 		$(use_enable tiering) \
 		$(use_enable xml xml-output) \
 		$(use_with libtirpc ipv6-default) \
-		$(use_with libtirpc) \
 		--with-tmpfilesdir="${EPREFIX}"/etc/tmpfiles.d \
 		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
 		--localstatedir="${EPREFIX}"/var
