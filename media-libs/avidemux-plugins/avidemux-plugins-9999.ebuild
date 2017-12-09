@@ -40,7 +40,7 @@ RDEPEND="${PYTHON_DEPS}
 	media-libs/libpng:0=
 	virtual/libiconv:0
 	aac? (
-		media-libs/faac:0
+		>=media-libs/faac-1.29.9.2:0
 		media-libs/faad2:0
 	)
 	aften? ( media-libs/aften:0 )
