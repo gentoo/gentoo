@@ -86,7 +86,7 @@ RDEPEND="
 	chromaprint? ( >=media-libs/chromaprint-0.6:0 )
 	dbus? ( >=sys-apps/dbus-1.6:0 )
 	dc1394? ( >=sys-libs/libraw1394-2.0.1:0 >=media-libs/libdc1394-2.1:2 )
-	directfb? ( dev-libs/DirectFB:0 sys-libs/zlib:0 )
+	directfb? ( dev-libs/DirectFB:0 )
 	dts? ( >=media-libs/libdca-0.0.5:0 )
 	dvbpsi? ( >=media-libs/libdvbpsi-1.0.0:0= )
 	dvd? ( >=media-libs/libdvdread-4.9:0 >=media-libs/libdvdnav-4.9:0 )
@@ -126,7 +126,7 @@ RDEPEND="
 	opencv? ( >media-libs/opencv-2:0= )
 	opengl? ( virtual/opengl:0 >=x11-libs/libX11-1.3.99.901:0 )
 	opus? ( >=media-libs/opus-1.0.3:0 )
-	png? ( media-libs/libpng:0= sys-libs/zlib:0 )
+	png? ( media-libs/libpng:0= )
 	postproc? (
 		!libav? ( >=media-video/ffmpeg-2.2:0= )
 		libav? ( media-libs/libpostproc:0= )
@@ -139,7 +139,7 @@ RDEPEND="
 	samba? ( >=net-fs/samba-4.0.0_alpha1:0[client] )
 	schroedinger? ( >=media-libs/schroedinger-1.0.10:0 )
 	sdl? ( >=media-libs/libsdl-1.2.10:0
-		sdl-image? ( >=media-libs/sdl-image-1.2.10:0 sys-libs/zlib:0 ) )
+		sdl-image? ( >=media-libs/sdl-image-1.2.10:0 ) )
 	sftp? ( net-libs/libssh2:0 )
 	shout? ( >=media-libs/libshout-2.1:0 )
 	sid? ( media-libs/libsidplay:2 )
@@ -150,7 +150,7 @@ RDEPEND="
 		!libav? ( media-video/ffmpeg:0= )
 		libav? ( media-video/libav:0= )
 	)
-	taglib? ( >=media-libs/taglib-1.9:0 sys-libs/zlib:0 )
+	taglib? ( >=media-libs/taglib-1.9:0 )
 	theora? ( >=media-libs/libtheora-1.0_beta3:0 )
 	tremor? ( media-libs/tremor:0 )
 	truetype? ( media-libs/freetype:2 virtual/ttf-fonts:0
