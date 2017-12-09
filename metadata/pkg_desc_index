@@ -1730,7 +1730,7 @@ app-misc/bottlerocket 0.04c-r1: CLI interface to the X-10 Firecracker Kit
 app-misc/boxes 1.1.2-r1 1.1.2-r2 1.1.2-r3: Draw any kind of boxes around your text
 app-misc/brewtarget 2.3.1: Application to create and manage beer recipes
 app-misc/btail 0.3: Bayesian logfile filter
-app-misc/byobu 5.123: A set of profiles for the GNU Screen console window manager (app-misc/screen)
+app-misc/byobu 5.123 5.124: A set of profiles for the GNU Screen console window manager (app-misc/screen)
 app-misc/c_rehash 1.0.2g_p8 1.7-r1: c_rehash script from OpenSSL
 app-misc/ca-certificates 20161130.3.30-r1 20161130.3.30.2 20170717.3.32.1 20170717.3.34 20170717.3.34.1: Common CA Certificates PEM files
 app-misc/cadubi 1.3: CADUBI is an application that allows you to draw ASCII-Art images
@@ -2103,7 +2103,7 @@ app-portage/demerge 0.047-r2: demerge - revert to previous installation states
 app-portage/diffmask 0.3.3-r2 9999: A utility to maintain package.unmask entries up-to-date with masks
 app-portage/distpatch 0.1.2: Distfile Patching Support for Gentoo Linux (tools)
 app-portage/eclass-manpages 20170321 20170428 20170521 20170712 20170905 99999999: collection of Gentoo eclass manpages
-app-portage/eix 0.32.4 0.32.5 0.32.5-r1 0.32.9 0.32.10 0.33.0-r1: Search and query ebuilds
+app-portage/eix 0.32.9 0.33.0-r1: Search and query ebuilds
 app-portage/elogv 0.7.6.1-r1 0.7.6.2 0.7.6.3 0.7.6.4 0.7.6.5 0.7.6.6: Curses based utility to parse the contents of elogs created by Portage
 app-portage/elogviewer 0.6.2-r3 2.1-r1 2.1-r2 2.6 2.6-r1 2.6-r2 2.7: Elog viewer for Gentoo
 app-portage/elt-patches 20170317 20170422 20170815 20170826.1: Collection of patches for libtool.eclass
@@ -2179,8 +2179,8 @@ app-shells/pdsh 2.18-r1 2.26: A high-performance, parallel remote shell utility
 app-shells/peco 0.5.1: Simplistic interactive filtering tool
 app-shells/posh 0.12.6: Reimplementation of Bourne shell based on pdksh
 app-shells/psh 1.8.1-r3: Combines the interactive nature of a Unix shell with the power of Perl
-app-shells/push 1.6 2.0 2.0-r1: A POSIX shell function to treat a variable like an array, quoting args
-app-shells/quoter 3.0_p2 3.0_p2-r1: Quote arguments or standard input for usage in POSIX shell by eval
+app-shells/push 2.0-r1: A POSIX shell function to treat a variable like an array, quoting args
+app-shells/quoter 3.0_p2-r1: Quote arguments or standard input for usage in POSIX shell by eval
 app-shells/rc 1.7.4 1.7.4-r1: A reimplementation of the Plan 9 shell
 app-shells/rrs 1.70-r1 1.70-r2: Reverse Remote Shell
 app-shells/rssh 2.3.4 2.3.4_p3: Restricted shell for SSHd
@@ -7516,8 +7516,8 @@ dev-python/coverage 3.7.1 4.2: Code coverage measurement for Python
 dev-python/crcmod 1.7-r2: Python CRC Generator module
 dev-python/croniter 0.3.11 0.3.15 0.3.17: Python module to provide iteration for datetime object
 dev-python/crumbs 2.1.0: Generalized all-in-one parameters module
-dev-python/cryptography 1.7.1 1.7.2 1.8.1 1.9 2.0.2 2.0.2-r1 2.0.3 2.1.1 2.1.2 2.1.2-r1 2.1.3: Library providing cryptographic recipes and primitives
-dev-python/cryptography-vectors 1.7.1 1.7.2 1.8.1 1.9 2.0.2 2.0.3 2.1.1 2.1.2 2.1.3: Test vectors for the cryptography package
+dev-python/cryptography 1.7.1 1.7.2 1.8.1 1.9 2.0.2 2.0.2-r1 2.0.3 2.1.1 2.1.2 2.1.2-r1 2.1.3 2.1.4: Library providing cryptographic recipes and primitives
+dev-python/cryptography-vectors 1.7.1 1.7.2 1.8.1 1.9 2.0.2 2.0.3 2.1.1 2.1.2 2.1.3 2.1.4: Test vectors for the cryptography package
 dev-python/cssselect 0.9.1 1.0.1: parses CSS3 Selectors and translates them to XPath 1.0
 dev-python/cssselect2 0.2.0: parses CSS3 Selectors and translates them to XPath 1.0
 dev-python/cssutils 1.0.1 1.0.2: A CSS Cascading Style Sheets library
@@ -7951,7 +7951,7 @@ dev-python/kiwi 1.9.39.2 1.9.40: Kiwi is a pure Python framework and set of enha
 dev-python/kiwisolver 0.1.3: An efficient C++ implementation of the Cassowary constraint solving algorithm
 dev-python/kombu 3.0.37 4.0.2 4.1.0: AMQP Messaging Framework for Python
 dev-python/larch 1.20130808 1.20131130: Copy-on-write B-tree data structure
-dev-python/lazy-object-proxy 1.2.1: A fast and thorough lazy object proxy
+dev-python/lazy-object-proxy 1.2.1 1.3.1: A fast and thorough lazy object proxy
 dev-python/ldap3 1.4.0 2.2.3: A strictly RFC 4511 conforming LDAP V3 pure Python client
 dev-python/ldappool 1.0 2.0.0 2.1.0: A connection pool for python-ldap
 dev-python/lesscpy 0.9j 0.11.1: A compiler written in Python for the LESS language
@@ -12977,7 +12977,7 @@ media-libs/elles_icc_profiles 20160501.0932: Elle Stone's well-behaved RGB and g
 media-libs/emfengine 0.8: Native vector graphics file format on Windows
 media-libs/esdl 1.0.1 1.2 1.3.1: Erlang bindings for the SDL library
 media-libs/exempi 2.2.1 2.4.2: Exempi is a port of the Adobe XMP SDK to work on UNIX
-media-libs/exiftool 10.64 10.66 10.67: Read and write meta information in image, audio and video files
+media-libs/exiftool 10.64 10.66 10.67 10.68: Read and write meta information in image, audio and video files
 media-libs/faac 1.28-r4 1.29.8.3 1.29.9.2: Free MPEG-4 audio codecs by AudioCoding.com
 media-libs/faad2 2.7-r3 2.8.5 2.8.6: AAC audio decoding library
 media-libs/fdk-aac 0.1.3 0.1.5: Fraunhofer AAC codec library
@@ -15434,7 +15434,7 @@ net-misc/qtm 1.3.18: Qt blogging client
 net-misc/quagga 1.2.1 1.2.2: A free routing daemon replacing Zebra supporting RIP, OSPF and BGP
 net-misc/r8168 8.044.02: r8168 driver for Realtek 8111/8168 PCI-E NICs
 net-misc/rabbitmq-server 3.6.5 3.6.9 3.6.10: RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang
-net-misc/radvd 2.14 2.15-r1 2.16 2.17 2.17-r1: Linux IPv6 Router Advertisement Daemon
+net-misc/radvd 2.14 2.17-r1: Linux IPv6 Router Advertisement Daemon
 net-misc/rancid 2.3.8: Really Awesome New Cisco confIg Differ
 net-misc/rancid-git 2.3.8: New Cisco confIg Differ with git extensions and support for colorized emails!
 net-misc/rclone 1.36 1.37 1.38 9999: A program to sync files to and from various cloud storage providers
