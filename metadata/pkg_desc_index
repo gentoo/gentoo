@@ -9506,9 +9506,9 @@ dev-ruby/atomic 1.1.99: An atomic reference implementation for JRuby, Rubinius, 
 dev-ruby/autoprefixer-rails 6.7.7.2 7.1.2.6 7.1.4 7.1.6 7.2.1: Add vendor prefixes to CSS rules using values from the Can I Use website
 dev-ruby/awesome_print 1.7.0 1.8.0: Library to pretty print Ruby objects in full color with proper indentation
 dev-ruby/aws-s3 0.6.3: Client library for Amazon's Simple Storage Service's REST API
-dev-ruby/aws-sdk 1.66.0 2.6.50 2.8.14 2.9.44 2.10.37 2.10.74: Official SDK for Amazon Web Services
-dev-ruby/aws-sdk-core 2.6.50 2.8.14 2.9.44 2.10.37 2.10.74: Official SDK for Amazon Web Services
-dev-ruby/aws-sdk-resources 2.6.50 2.8.14 2.9.44 2.10.37 2.10.74: Official SDK for Amazon Web Services
+dev-ruby/aws-sdk 1.66.0 2.6.50 2.8.14 2.9.44 2.10.37 2.10.74 2.10.100: Official SDK for Amazon Web Services
+dev-ruby/aws-sdk-core 2.6.50 2.8.14 2.9.44 2.10.37 2.10.74 2.10.100: Official SDK for Amazon Web Services
+dev-ruby/aws-sdk-resources 2.6.50 2.8.14 2.9.44 2.10.37 2.10.74 2.10.100: Official SDK for Amazon Web Services
 dev-ruby/aws-sigv4 1.0.0 1.0.1 1.0.2: Amazon Web Services Signature Version 4 signing library
 dev-ruby/axiom-types 0.1.1: Define types with optional constraints for use within axiom and other libraries
 dev-ruby/backports 3.8.0: Backports of Ruby features for older Ruby
