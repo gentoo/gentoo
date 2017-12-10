@@ -5,9 +5,11 @@ EAPI="6"
 
 inherit autotools elisp-common ltprune
 
+MY_P="${P/_pre/pre}"
+
 DESCRIPTION="Namazu is a full-text search engine"
 HOMEPAGE="http://www.namazu.org/"
-SRC_URI="http://www.namazu.org/test/${P/_p/pre}.tar.gz"
+SRC_URI="http://www.namazu.org/test/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -32,7 +34,7 @@ RDEPEND="dev-perl/File-MMagic
 	)"
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
-S="${WORKDIR}"/${P/_p/pre}
+S="${WORKDIR}"/${MY_P}
 
 PATCHES=( "${FILESDIR}"/${PN}-gentoo.patch )
 
@@ -67,6 +69,10 @@ src_compile() {
 		rm -f browse*
 		elisp-compile *.el
 	fi
+}
+
+src_test() {
+	emake -j1 check
 }
 
 src_install () {
