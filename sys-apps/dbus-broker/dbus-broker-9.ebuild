@@ -27,8 +27,7 @@ HOMEPAGE="https://github.com/bus1/dbus-broker/wiki"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="audit +launcher selinux test"
-RESTRICT="!test? ( test )"
+IUSE="audit +launcher selinux"
 
 RDEPEND="
 	audit? ( sys-process/audit )
@@ -42,7 +41,6 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-python/docutils
 	virtual/pkgconfig
-	test? ( >=sys-apps/dbus-1.10 )
 "
 
 src_prepare() {
