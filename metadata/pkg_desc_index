@@ -1427,7 +1427,7 @@ app-eselect/eselect-opencl 1.1.0-r1 1.1.0-r2 1.1.0-r3 1.1.0-r4: Utility to chang
 app-eselect/eselect-opengl 1.3.1-r4: Utility to change the OpenGL interface being used
 app-eselect/eselect-package-manager 20110108: Manages PACKAGE_MANAGER environment variable
 app-eselect/eselect-pdftex 0.3: pdftex module for eselect
-app-eselect/eselect-php 0.9.2 0.9.4-r2 9999: PHP eselect module
+app-eselect/eselect-php 0.9.2 0.9.4-r2 0.9.4-r3 9999: PHP eselect module
 app-eselect/eselect-pinentry 0.7: Manage /usr/bin/pinentry symlink
 app-eselect/eselect-postgresql 1.2.1 2.0 2.1 2.2: Utility to select the default PostgreSQL slot
 app-eselect/eselect-python 20160516 20171204 99999999: Eselect module for management of multiple Python versions
@@ -4161,7 +4161,7 @@ dev-java/java-apicheck 0_p20150907: Command line tool to check Java packages for
 dev-java/java-config 2.2.0-r3: Java environment configuration query tool
 dev-java/java-dep-check 0.3-r1 0.4: Java Dependency checker
 dev-java/java-getopt 1.0.14: Java command line option parser
-dev-java/java-sdk-docs 1.7.0.80 1.8.0.152: Oracle's documentation bundle (including API) for Java SE
+dev-java/java-sdk-docs 1.8.0.152 9.0.1: Oracle's documentation bundle (including API) for Java SE
 dev-java/java-service-wrapper 3.5.25-r1: A wrapper that makes it possible to install a Java Application as daemon
 dev-java/javacc 5.0-r3: Java Compiler Compiler - The Java Parser Generator
 dev-java/javacsv 2.1: Java library for reading and writing CSV and plain delimited text files
@@ -4192,7 +4192,7 @@ dev-java/jcommander 1.48: Command line parsing framework for Java
 dev-java/jcommon 1.0.23: A collection of useful classes used by JFreeChart, JFreeReport and others
 dev-java/jcs 2.0: A distributed caching system for server-side Java applications
 dev-java/jdbc-informix 3.00.3: JDBC Type 4 Drivers for Informix
-dev-java/jdbc-mssqlserver 4.0.2206.100: JDBC driver for Microsoft SQL Server
+dev-java/jdbc-mssqlserver 6.2.2: JDBC driver for Microsoft SQL Server
 dev-java/jdbc-mysql 5.1.26: MySQL JDBC driver
 dev-java/jdbc-postgresql 9.2_p1003 9.2_p1004 9.3_p1100 9.4_p1205 9.4_p1206: JDBC Driver for PostgreSQL
 dev-java/jdbc2-stdext 2.0-r3: A standard set of libs for Server-Side JDBC support
@@ -11268,8 +11268,8 @@ games-fps/unreal-tournament 451: Futuristic FPS
 games-fps/unreal-tournament-bonuspacks 436: Futuristic FPS (bonus packs)
 games-fps/unreal-tournament-goty 436 451: Futuristic FPS (Game Of The Year edition)
 games-fps/unreal-tournament-strikeforce 1.81: A UT addon where you fight terrorists as part of an elite strikeforce
-games-fps/urbanterror 4.3.2_p20170426 4.3.2_p20170713 4.3.2_p20170915 4.3.2_p20171016 4.3.2_p20171105: Hollywood tactical shooter based on the ioquake3 engine
-games-fps/urbanterror-data 4.3.2 4.3.2-r1: Data files for UrbanTerror
+games-fps/urbanterror 4.3.2_p20171208: Hollywood tactical shooter based on the ioquake3 engine
+games-fps/urbanterror-data 4.3.2-r1: Data files for UrbanTerror
 games-fps/ut2003 2225-r4: Sequel to the 1999 Game of the Year multi-player first-person shooter
 games-fps/ut2003-bonuspack-cm 1: Community Bonus Pack for UT2003
 games-fps/ut2003-bonuspack-de 1: Digital Extremes Bonus Pack for UT2003
@@ -11695,7 +11695,7 @@ games-util/joystick 1.4.8 1.5.1 1.6.0: joystick testing utilities
 games-util/lgogdownloader 3.2 3.3 9999: Unofficial GOG.com downloader for Linux
 games-util/linux-wbfs-manager 0.1.12 9999: WBFS manager for Linux using GTK+
 games-util/loki_patch 20091105: Loki Software binary patch tool
-games-util/lutris 0.3.6.3 0.3.8 0.4.13 9999: Lutris is an open source gaming platform for GNU/Linux.
+games-util/lutris 0.4.14 9999: Lutris is an open source gaming platform for GNU/Linux.
 games-util/mcrcon 0.0.5 0.0.5-r1: Remote connection client for Minecraft servers
 games-util/nml 0.4.2-r1 0.4.4 0.4.4-r1: Compiler of NML files into grf/nfo files
 games-util/pogo-manager-bin 0.1.6 0.1.7: Pokemon Go manager
@@ -13223,7 +13223,7 @@ media-libs/lv2 1.10.0-r1 1.12.0 1.14.0: A simple but extensible successor of LAD
 media-libs/lvtk 1.2.0: A set of C++ wrappers around the LV2 C API
 media-libs/mediastreamer 2.7.3-r3 2.8.2 2.9.0 2.9.0-r1 2.9.0-r2: Mediastreaming library for telephony application
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
-media-libs/mesa 17.0.6 17.1.10 17.2.6 17.3.0_rc5 9999: OpenGL-like graphic library for Linux
+media-libs/mesa 17.1.10 17.2.6 17.3.0 9999: OpenGL-like graphic library for Linux
 media-libs/ming 0.4.7 0.4.8-r1: An Open Source library for Flash movie generation
 media-libs/mlt 6.4.1-r2 6.4.1-r4 6.4.1-r5: Open source multimedia framework for television broadcasting
 media-libs/musicbrainz 3.0.3 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
@@ -14642,7 +14642,7 @@ net-dns/hesiod 3.1.0: DNS functionality to access to DB of information that chan
 net-dns/https_dns_proxy 9999: A lightweight DNS-over-HTTPS proxy.
 net-dns/idnkit 1.0-r2: Toolkit for Internationalized Domain Names (IDN)
 net-dns/knot 2.5.6 2.6.1-r1 2.6.3: High-performance authoritative-only DNS server
-net-dns/ldns-utils 1.6.12 1.6.17 1.7.0: Set of utilities to simplify various dns(sec) tasks
+net-dns/ldns-utils 1.6.12 1.6.17 1.7.0 1.7.0-r1: Set of utilities to simplify various dns(sec) tasks
 net-dns/libidn 1.33 1.33-r1 1.33-r2: Internationalized Domain Names (IDN) implementation
 net-dns/libidn2 2.0.4: An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
 net-dns/maradns 2.0.09-r2 2.0.14: A security-aware DNS server
@@ -14916,7 +14916,7 @@ net-libs/ignition-transport 3.0.1 3.1.0: Combines ZeroMQ with Protobufs to creat
 net-libs/jreen 1.3.0-r1: Qt XMPP library
 net-libs/kdav2 0.1.0: KJob based DAV protocol implementation
 net-libs/kimap2 0.1.1 0.2.0: Library for interacting with IMAP servers - successor of kimap
-net-libs/ldns 1.6.17 1.6.17-r1 1.7.0-r1: a library with the aim to simplify DNS programming in C
+net-libs/ldns 1.6.17 1.6.17-r1 1.7.0-r1 1.7.0-r2: a library with the aim to simplify DNS programming in C
 net-libs/liba53 9999: A5/3 Call encryption library
 net-libs/libaccounts-glib 1.21-r2 1.23: Accounts SSO (Single Sign-On) management library for GLib applications
 net-libs/libasr 1.0.1 1.0.1.201505061057 1.0.2: Async Resolver Library from OpenBSD/OpenSMTPD
@@ -15445,7 +15445,7 @@ net-misc/redir 2.2.1: Redir is a port redirector
 net-misc/remmina 1.2.0_rc16-r1 1.2.0_rc20 1.2.0_rc21 1.2.0_rc24: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
 net-misc/ris-linux 0.4-r1: BINL server to doing Windows(r) RIS
-net-misc/rsync 3.1.2 3.1.2-r1: File transfer program to keep remote files into sync
+net-misc/rsync 3.1.2 3.1.2-r1 3.1.2-r2: File transfer program to keep remote files into sync
 net-misc/rwbs 0.27-r2: Roger Wilco base station
 net-misc/rwhoisd 1.5.9.5-r3 1.5.9.6: ARIN rwhois daemon
 net-misc/rygel 0.32.1 0.34.0: Rygel is an open source UPnP/DLNA MediaServer
@@ -17112,7 +17112,7 @@ sys-apps/daemonize 1.7.4 1.7.5 1.7.6: Runs a command as a Unix daemon
 sys-apps/daisydog 2014.05.30: A very simple /dev/watchdog daemon
 sys-apps/darwin-miscutils 6-r1 8 9 10 11: Miscellaneous commands used on macOS, Sierra 10.12
 sys-apps/dbus 1.10.18 1.10.24 1.12.0 1.12.2: A message bus system, a simple way for applications to talk to each other
-sys-apps/dbus-broker 8 9999: Linux D-Bus Message Broker
+sys-apps/dbus-broker 9 9999: Linux D-Bus Message Broker
 sys-apps/dcfldd 1.3.4.1: enhanced dd with features for forensics and security
 sys-apps/dchroot 0.12.1: Utility for managing chroots for non-root users
 sys-apps/debianutils 4.7 4.8.1.1 4.8.2 4.8.3: A selection of tools from Debian
