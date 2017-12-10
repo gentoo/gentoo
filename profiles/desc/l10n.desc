@@ -54,6 +54,7 @@ dsb - Lower Sorbian
 dz - Dzongkha
 el - Modern Greek
 en - English
+en-AU - English (Australia)
 en-GB - English (United Kingdom)
 en-US - English (United States)
 en-ZA - English (South Africa)
@@ -62,8 +63,12 @@ es - Spanish
 es-419 - Spanish (Latin America)
 es-AR - Spanish (Argentina)
 es-CL - Spanish (Chile)
+es-CO - Spanish (Colombia)
+es-DO - Spanish (Dominican Republic)
 es-ES - Spanish (Spain)
 es-MX - Spanish (Mexico)
+es-UY - Spanish (Uruguay)
+es-VE - Spanish (Venezuela)
 et - Estonian
 eu - Basque
 fa - Persian
@@ -129,6 +134,7 @@ oc - Occitan
 om - Oromo
 or - Oriya (macrolanguage)
 pa - Punjabi
+pam - Kapampangan
 pl - Polish
 pt - Portuguese
 pt-BR - Portuguese (Brazil)
@@ -146,6 +152,7 @@ si - Sinhala
 sid - Sidamo
 sk - Slovak
 sl - Slovenian
+sn - Shona
 son - Songhai languages
 sq - Albanian
 sr - Serbian
