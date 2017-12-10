@@ -18,8 +18,8 @@ RDEPEND="
 	net-misc/wget
 	sys-devel/binutils
 "
-
 DOCS=( TODO debian/changelog )
+S=${WORKDIR}/${PN}
 
 src_unpack() {
 	unpack ${PN}_${PV}.tar.gz
