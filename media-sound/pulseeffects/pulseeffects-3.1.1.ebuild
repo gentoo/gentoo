@@ -35,6 +35,7 @@ DEPEND="
 	>=x11-libs/gtk+-3.18:3
 	dev-python/numpy[${PYTHON_USEDEP}]
 	>=sci-libs/scipy-0.18[${PYTHON_USEDEP}]
+	media-libs/lilv
 	>=media-libs/gstreamer-1.12.0:1.0
 	>=media-libs/gst-plugins-good-1.12.0:1.0
 	>=media-libs/gst-plugins-bad-1.12.0:1.0
