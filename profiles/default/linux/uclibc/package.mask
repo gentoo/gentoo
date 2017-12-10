@@ -12,6 +12,9 @@ sys-fs/udev
 # Working on it, bug #470884
 dev-libs/elfutils
 
+# packages that unconditionally depend on dev-libs/elfutils
+<net-firewall/fwbuilder-5.3.7
+
 # These binary pkgs have a hard dep on glibc; make repoman shut up
 app-arch/rar
 dev-games/gtkradiant
