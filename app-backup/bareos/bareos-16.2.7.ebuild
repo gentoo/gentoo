@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -16,18 +16,27 @@ RESTRICT="mirror"
 LICENSE="AGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="acl clientonly +director fastlz ipv6 libressl logwatch mysql ndmp postgres
-		python qt4 readline scsi-crypto sql-pooling +sqlite ssl static +storage-daemon
-		tcpd vim-syntax X"
+IUSE="X acl cephfs clientonly +director fastlz glusterfs gnutls ipv6 jansson lmdb libressl
+	logwatch mysql ndmp postgres python qt4 rados rados-striper readline scsi-crypto
+	sql-pooling +sqlite ssl static +storage-daemon tcpd vim-syntax"
+REQUIRED_USE="!clientonly? ( || ( mysql postgres sqlite ) )"
 
 DEPEND="
 	!app-backup/bacula
+	cephfs? ( sys-cluster/ceph )
+	rados? ( sys-cluster/ceph )
+	rados-striper? ( >=sys-cluster/ceph-0.94.2 )
+	glusterfs? ( sys-cluster/glusterfs )
+	lmdb? ( dev-db/lmdb )
 	dev-libs/gmp:0
 	!clientonly? (
 		postgres? ( dev-db/postgresql:*[threads] )
 		mysql? ( virtual/mysql )
 		sqlite? ( dev-db/sqlite:3 )
-		director? ( virtual/mta )
+		director? (
+			virtual/mta
+			jansson? ( dev-libs/jansson )
+		)
 	)
 	qt4? (
 		dev-qt/qtsvg:4
@@ -43,16 +52,22 @@ DEPEND="
 		dev-libs/lzo[static-libs]
 		sys-libs/ncurses:=[static-libs]
 		ssl? (
-			!libressl? ( dev-libs/openssl:0=[static-libs] )
-			libressl? ( dev-libs/libressl:0=[static-libs] )
+			!gnutls? (
+				!libressl? ( dev-libs/openssl:0=[static-libs] )
+				libressl? ( dev-libs/libressl:0=[static-libs] )
+			)
+			gnutls? ( net-libs/gnutls[static-libs] )
 		)
 	)
 	!static? (
 		acl? ( virtual/acl )
 		dev-libs/lzo
 		ssl? (
-			!libressl? ( dev-libs/openssl:0= )
-			libressl? ( dev-libs/libressl:0= )
+			!gnutls? (
+				!libressl? ( dev-libs/openssl:0= )
+				libressl? ( dev-libs/libressl:0= )
+			)
+			gnutls? ( net-libs/gnutls )
 		)
 		sys-libs/ncurses:=
 		sys-libs/zlib
@@ -137,6 +152,8 @@ src_prepare() {
 src_configure() {
 	local myconf=''
 
+	addpredict /var/lib/logrotate.status
+
 	if use clientonly; then
 		myconf="${myconf} \
 			$(use_enable clientonly client-only) \
@@ -170,6 +187,12 @@ src_configure() {
 		$(use sqlite || echo "--without-sqlite3") \
 		$(use_with ssl openssl) \
 		$(use_with tcpd tcp-wrappers) \
+		$(use_enable lmdb) \
+		$(use_with glusterfs) \
+		$(use_with rados) \
+		$(use_with rados-striper) \
+		$(use_with cephfs) \
+		$(use_with jansson) \
 		"
 
 	econf \
@@ -177,12 +200,13 @@ src_configure() {
 		--docdir=/usr/share/doc/${PF} \
 		--htmldir=/usr/share/doc/${PF}/html \
 		--with-pid-dir=/run/bareos \
-		--sysconfdir=/etc/bareos \
+		--sysconfdir=/etc \
 		--with-subsys-dir=/run/lock/subsys \
 		--with-working-dir=/var/lib/bareos \
 		--with-logdir=/var/log/bareos \
 		--with-scriptdir=/usr/libexec/bareos \
 		--with-plugindir=/usr/$(get_libdir)/${PN}/plugin \
+		--with-backenddir=/usr/$(get_libdir)/${PN}/backend \
 		--with-dir-user=bareos \
 		--with-dir-group=bareos \
 		--with-sd-user=root \
@@ -190,8 +214,9 @@ src_configure() {
 		--with-fd-user=root \
 		--with-fd-group=bareos \
 		--with-sbin-perm=0755 \
-		--enable-smartalloc \
+		--with-systemd \
 		--enable-dynamic-cats-backends \
+		--enable-dynamic-storage-backends \
 		--enable-batch-insert \
 		--disable-afs \
 		--host=${CHOST} \
@@ -218,7 +243,7 @@ src_compile() {
 
 src_install() {
 	emake DESTDIR="${D}" install
-	doicon scripts/bareos.png
+	newicon src/images/bareos_logo_shadow.png bareos.png
 
 	# install bat icon and desktop file when enabled
 	# (for some reason ./configure doesn't pick this up)
@@ -328,7 +353,7 @@ src_install() {
 	for script in ${myscripts}; do
 		# copy over init script and config to a temporary location
 		# so we can modify them as needed
-		cp "${FILESDIR}/${script}".confd "${T}/${script}".confd || die "failed to copy ${script}.confd"
+		cp "${FILESDIR}/${script}".confd-16 "${T}/${script}".confd || die "failed to copy ${script}.confd"
 		cp "${FILESDIR}/${script}".initd "${T}/${script}".initd || die "failed to copy ${script}.initd"
 
 		# now set the database dependency for the director init script
