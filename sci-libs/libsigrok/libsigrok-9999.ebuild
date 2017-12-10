@@ -44,6 +44,7 @@ DEPEND="${LIB_DEPEND//\[static-libs(+)]}
 	)
 	python? (
 		dev-python/setuptools[${PYTHON_USEDEP}]
+		dev-python/numpy[${PYTHON_USEDEP}]
 		>=dev-lang/swig-3.0.6
 	)
 	virtual/pkgconfig"
