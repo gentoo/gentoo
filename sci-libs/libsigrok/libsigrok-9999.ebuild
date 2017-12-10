@@ -43,6 +43,7 @@ DEPEND="${LIB_DEPEND//\[static-libs(+)]}
 		>=virtual/jdk-1.4
 	)
 	python? (
+		dev-python/setuptools[${PYTHON_USEDEP}]
 		>=dev-lang/swig-3.0.6
 	)
 	virtual/pkgconfig"
