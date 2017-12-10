@@ -7164,7 +7164,7 @@ dev-php/composer 1.5.5: Dependency Manager for PHP
 dev-php/cphplib 0.51-r1: Cute PHP Library (cphplib)
 dev-php/doctrine 1.2.5 2.4.6: An object relational mapper for PHP5
 dev-php/doctrine-instantiator 1.0.5: Utility to instantiate objects in PHP without invoking their constructors
-dev-php/fedora-autoloader 0.2.1: Fedora's Static PSR-4, PSR-0, and classmap autoloader
+dev-php/fedora-autoloader 0.2.1 1.0.0: Fedora's Static PSR-4, PSR-0, and classmap autoloader
 dev-php/igbinary 2.0.1 2.0.4 2.0.5: A fast drop-in replacement for the standard PHP serialize
 dev-php/jpgraph 4.0.2: Object-oriented graphing library for PHP
 dev-php/json-schema 4.1.0: PHP implementation of JSON schema
