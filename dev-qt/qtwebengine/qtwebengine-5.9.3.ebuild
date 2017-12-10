@@ -61,7 +61,10 @@ RDEPEND="
 	pulseaudio? ( media-sound/pulseaudio:= )
 	system-ffmpeg? ( media-video/ffmpeg:0= )
 	system-icu? ( dev-libs/icu:= )
-	widgets? ( ~dev-qt/qtwidgets-${PV} )
+	widgets? (
+		~dev-qt/qtdeclarative-${PV}[widgets]
+		~dev-qt/qtwidgets-${PV}
+	)
 "
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
