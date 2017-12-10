@@ -104,6 +104,7 @@ src_configure() {
 	strip-flags
 	filter-flags -fstrict-aliasing -pie
 	append-flags $(test-flags -fno-strict-aliasing)
+	append-ldflags $(test-flags -no-pie)	#639568
 
 	if use sh; then
 		replace-flags "-O[1-9]" -O0		#262359
