@@ -1,10 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
-AUTOTOOLS_AUTORECONF="1"
-inherit autotools-utils eutils elisp-common
+inherit autotools elisp-common ltprune
 
 DESCRIPTION="Namazu is a full-text search engine"
 HOMEPAGE="http://www.namazu.org/"
@@ -13,9 +12,9 @@ SRC_URI="http://www.namazu.org/test/${P/_p/pre}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="emacs nls tk l10n_ja"
+IUSE="emacs l10n_ja nls static-libs tk"
 
-RDEPEND=">=dev-perl/File-MMagic-1.20
+RDEPEND="dev-perl/File-MMagic
 	emacs? ( virtual/emacs )
 	l10n_ja? (
 		app-i18n/nkf
@@ -37,41 +36,51 @@ S="${WORKDIR}"/${P/_p/pre}
 
 PATCHES=( "${FILESDIR}"/${PN}-gentoo.patch )
 
+src_prepare() {
+	default
+
+	mv configure.{in,ac}
+	mv tk${PN}/configure.{in,ac}
+	eautoreconf
+}
+
 src_configure() {
-	local myeconfargs=(
+	local myconf=(
 		$(use_enable nls)
-		$(use_enable tk tknamazu)
-		--docdir="${EPREFIX}"/usr/share/doc/${PF}
-		--htmldir="${EPREFIX}"/usr/share/doc/${PF}/html
+		$(use_enable static-libs static)
+		$(use_enable tk tk${PN})
+	)
+	use tk && myconf+=(
+		--with-${PN}="${EPREFIX}"/usr/bin/${PN}
+		--with-mknmz="${EPREFIX}"/usr/bin/mknmz
+		--with-indexdir="${EPREFIX}"/var/lib/${PN}/index
 	)
 
-	use tk && myeconfargs+=(
-		--with-namazu=/usr/bin/namazu
-		--with-mknmz=/usr/bin/mknmz
-		--with-indexdir=/var/lib/namazu/index
-	)
-	autotools-utils_src_configure
+	econf "${myconf[@]}"
 }
 
 src_compile() {
-	autotools-utils_src_compile
+	emake
 
 	if use emacs; then
 		cd lisp
-		elisp-compile gnus-nmz-1.el namazu.el
+		rm -f browse*
+		elisp-compile *.el
 	fi
 }
 
 src_install () {
-	autotools-utils_src_install
+	emake DESTDIR="${D}" install
 
 	if use emacs; then
-		elisp-install ${PN} lisp/gnus-nmz-1.el* lisp/namazu.el*
+		elisp-install ${PN} lisp/*.el*
 		elisp-site-file-install "${FILESDIR}"/50${PN}-gentoo.el
 
 		docinto lisp
 		dodoc lisp/ChangeLog*
 	fi
+
+	prune_libtool_files
 }
 
 pkg_postinst() {
