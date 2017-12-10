@@ -13944,7 +13944,7 @@ media-sound/protux 0.50.100: Professional Audio Tools for GNU/Linux
 media-sound/ptabtools 0.5.0: Utilities for PowerTab Guitar files (.ptb)
 media-sound/puddletag 1.2.0: Audio tag editor
 media-sound/pulseaudio 10.0 10.99.1 11.0 11.1: A networked sound server with an advanced plugin system
-media-sound/pulseeffects 3.0.8 3.0.9 9999: Limiter, compressor, reverberation, equalizer auto volume effects for Pulseaudio
+media-sound/pulseeffects 3.0.8 3.0.9 3.1.1 9999: Limiter, compressor, reverberation, equalizer auto volume effects for Pulseaudio
 media-sound/pwavecat 0.4.5: concatenates any number of audio files to stdout
 media-sound/pympd 0.08.1-r1: a Rhythmbox-like PyGTK+ client for Music Player Daemon
 media-sound/qarecord 0.5.0: A simple harddisk recorder writing from an input audio stream to a .wav file
