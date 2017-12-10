@@ -1288,7 +1288,7 @@ app-emacs/zenirc 2.112-r1: A full-featured scriptable IRC client for the Emacs t
 app-emulation/aqemu 0.9.2: Graphical interface for QEMU and KVM emulators, using Qt5
 app-emulation/armv8-fast-model 0.8.5206: emulator for a basic ARMv8 platform environment (for running bare metal & Linux)
 app-emulation/bochs 2.6.9: LGPL-ed pc emulator
-app-emulation/cadvisor 0.28.2: Analyzes resource usage and performance characteristics of running containers
+app-emulation/cadvisor 0.28.2 0.28.3: Analyzes resource usage and performance characteristics of running containers
 app-emulation/cloud-init 0.7.6-r1 0.7.6-r2 0.7.6_p1212 0.7.6_p1212-r1 0.7.7 0.7.8-r2 0.7.9 17.1 9999: cloud initialisation magic
 app-emulation/coldfire 0.3.1: Motorola Coldfire Emulator
 app-emulation/containerd 0.2.9_p20170605 0.2.9_p20170917 1.0.0_beta2_p20171019 1.0.0 9999: A daemon to control runC
@@ -17571,12 +17571,12 @@ sys-cluster/hpx 0.9.8 0.9.9 0.9.10 0.9.99 1.0.0 9999: C++ runtime system for par
 sys-cluster/ipvsadm 1.21-r1 1.24 1.26-r2 1.27-r1 1.28: utility to administer the IP virtual server services
 sys-cluster/keepalived 1.2.24 1.3.5: A strong & robust keepalive facility to the Linux Virtual Server project
 sys-cluster/knem 1.1.1 9999: High-Performance Intra-Node MPI Communication
-sys-cluster/kube-apiserver 1.8.3 1.8.4: Kubernetes API server
-sys-cluster/kube-controller-manager 1.8.3 1.8.4: Kubernetes Controller Manager
-sys-cluster/kube-proxy 1.8.3 1.8.4: Kubernetes Proxy service
-sys-cluster/kube-scheduler 1.8.3 1.8.4: Kubernetes Controller Manager
-sys-cluster/kubectl 1.8.3 1.8.4: CLI to run commands against Kubernetes clusters
-sys-cluster/kubelet 1.8.3 1.8.4: Kubernetes Node Agent
+sys-cluster/kube-apiserver 1.8.3 1.8.4 1.8.5: Kubernetes API server
+sys-cluster/kube-controller-manager 1.8.3 1.8.4 1.8.5: Kubernetes Controller Manager
+sys-cluster/kube-proxy 1.8.3 1.8.4 1.8.5: Kubernetes Proxy service
+sys-cluster/kube-scheduler 1.8.3 1.8.4 1.8.5: Kubernetes Controller Manager
+sys-cluster/kubectl 1.8.3 1.8.4 1.8.5: CLI to run commands against Kubernetes clusters
+sys-cluster/kubelet 1.8.3 1.8.4 1.8.5: Kubernetes Node Agent
 sys-cluster/legion 16.08.0-r1 16.10.0 17.02.0 17.05.0 17.08.0 17.10.0 9999: A data-centric parallel programming system
 sys-cluster/libccs 3.1.5 3.2.0: Cluster Configuration System Library
 sys-cluster/libccs-perl 3.1.5: Cluster Configuration System Library Perl-Bindings
@@ -18365,7 +18365,7 @@ www-apps/drupal 7.56 8.3.7 8.4.2: PHP-based open-source platform and content man
 www-apps/dspam-web 3.10.1: Web based administration and user controls for dspam
 www-apps/eyeos 2.5: AJAX web-based desktop environment
 www-apps/freeradius-dialupadmin 1.70.3 1.80: Web administration interface of freeradius server
-www-apps/gitea 1.2.3 1.3.0: A painless self-hosted Git service, written in Go
+www-apps/gitea 1.2.3 1.3.0 1.3.1: A painless self-hosted Git service, written in Go
 www-apps/gitit 0.12.1.1 0.12.1.1-r2 0.12.2 0.12.2.1: Wiki using happstack, git or darcs, and pandoc
 www-apps/gnopaste 0.5.5: gnopaste is a nopaste script based on PHP with MySQL
 www-apps/grafana-bin 4.5.2 4.6.1 4.6.2: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
@@ -18436,7 +18436,7 @@ www-apps/webmcp 1.2.5 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-apps/wiliki 0.6.1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 4.8.3 4.9 4.9.1: Wordpress PHP and MySQL based content management system (CMS)
-www-client/chromium 62.0.3202.89 62.0.3202.94 63.0.3239.70 63.0.3239.84 64.0.3260.2 64.0.3282.14: Open-source version of Google Chrome web browser
+www-client/chromium 63.0.3239.84 64.0.3260.2 64.0.3282.14: Open-source version of Google Chrome web browser
 www-client/ck4up 1.2: Check for Updates on HTTP pages
 www-client/conkeror 1.0_pre20140212 1.0.3 1.0.4: A Mozilla-based web browser whose design is inspired by GNU Emacs
 www-client/dillo 3.0.5 3.0.5-r1: Lean FLTK based web browser
