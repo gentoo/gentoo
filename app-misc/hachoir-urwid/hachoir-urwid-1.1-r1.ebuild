@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ PYTHON_REQ_USE="ncurses"
 inherit distutils-r1
 
 DESCRIPTION="Binary file explorer using Hachoir and urwid libraries"
-HOMEPAGE="https://bitbucket.org/haypo/hachoir/wiki/hachoir-urwid https://pypi.python.org/pypi/hachoir-urwid"
+HOMEPAGE="https://web.archive.org/web/20161220110246/https://bitbucket.org/haypo/hachoir/wiki/hachoir-urwid https://pypi.python.org/pypi/hachoir-urwid"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
