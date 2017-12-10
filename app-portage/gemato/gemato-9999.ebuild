@@ -16,16 +16,20 @@ EGIT_REPO_URI="https://github.com/mgorny/gemato.git"
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="+blake2 bzip2 +gpg lzma +portage-postsync sha3"
+IUSE="+blake2 bzip2 +gpg lzma +portage-postsync sha3 test"
 
-RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+MODULE_RDEPEND="
 	blake2? ( $(python_gen_cond_dep 'dev-python/pyblake2[${PYTHON_USEDEP}]' python{2_7,3_4,3_5} pypy{,3}) )
 	bzip2? ( $(python_gen_cond_dep 'dev-python/bz2file[${PYTHON_USEDEP}]' python2_7 pypy) )
 	gpg? ( app-crypt/gnupg )
 	lzma? ( $(python_gen_cond_dep 'dev-python/backports-lzma[${PYTHON_USEDEP}]' python2_7 pypy) )
-	portage-postsync? ( app-crypt/gentoo-keys )
 	sha3? ( $(python_gen_cond_dep 'dev-python/pysha3[${PYTHON_USEDEP}]' python{2_7,3_4,3_5} pypy{,3}) )"
-DEPEND="${RDEPEND}"
+
+RDEPEND="${MODULE_RDEPEND}
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	portage-postsync? ( app-crypt/gentoo-keys )"
+DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+	test? ( ${MODULE_RDEPEND} )"
 
 python_test() {
 	esetup.py test
