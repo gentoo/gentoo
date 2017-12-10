@@ -15,5 +15,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">bitcoin/bitcoin</remote-id>
+		<remote-id type="github">bitcoinknots/bitcoin</remote-id>
 	</upstream>
 </pkgmetadata>
