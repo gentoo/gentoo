@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="gpm X"
 
-RDEPEND="sys-libs/ncurses
+RDEPEND="sys-libs/ncurses:0=
 	gpm? ( sys-libs/gpm )
 	X? (
 		x11-libs/libX11
