@@ -2,14 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils systemd user cmake-utils
+inherit eutils systemd user cmake-utils versionator toolchain-funcs
 
 DESCRIPTION="A C++ daemon for accessing the I2P anonymous network"
 HOMEPAGE="https://github.com/PurpleI2P/i2pd"
 SRC_URI="https://github.com/PurpleI2P/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="cpu_flags_x86_aes i2p-hardening libressl static +upnp websocket"
 
 # if using libressl, require >=boost-1.65, see #597798
@@ -26,10 +26,9 @@ DEPEND="${RDEPEND}
 		libressl? ( dev-libs/libressl:0[static-libs]
 					>=dev-libs/boost-1.65 )
 		sys-libs/zlib[static-libs]
-		upnp? ( net-libs/miniupnpc[static-libs] ) )
-	websocket? ( dev-cpp/websocketpp )
-	i2p-hardening? ( >=sys-devel/gcc-4.7 )
-	|| ( >=sys-devel/gcc-4.7 >=sys-devel/clang-3.3 )"
+		upnp? ( net-libs/miniupnpc[static-libs] )
+	)
+	websocket? ( dev-cpp/websocketpp )"
 
 I2PD_USER=i2pd
 I2PD_GROUP=i2pd
@@ -39,6 +38,15 @@ CMAKE_USE_DIR="${S}/build"
 DOCS=( README.md contrib/i2pd.conf contrib/tunnels.conf )
 
 PATCHES=( "${FILESDIR}/${PN}-2.14.0-fix_installed_components.patch" )
+
+pkg_pretend() {
+	if tc-is-gcc && ! version_is_at_least "4.7" "$(gcc-version)"; then
+		die "At least gcc 4.7 is required"
+	fi
+	if use i2p-hardening && ! tc-is-gcc; then
+		die "i2p-hardening requires gcc"
+	fi
+}
 
 src_configure() {
 	mycmakeargs=(
