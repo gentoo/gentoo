@@ -45,9 +45,9 @@ src_prepare() {
 	GCC_PV=6.3.0
 	mv configure.{in,ac} || die
 	sed -i \
-		-e "s:@GNATMAKE@:gnatmake-${GCC_PV}:g" \
-		-e "s:@GNAT@:gnat-${GCC_PV}:g" \
-		-e "s:@GNATLS@:gnatls-${GCC_PV}:g" \
+		-e "s:@GNATMAKE@:${CHOST}-gnatmake-${GCC_PV}:g" \
+		-e "s:@GNAT@:${CHOST}-gnat-${GCC_PV}:g" \
+		-e "s:@GNATLS@:${CHOST}-gnatls-${GCC_PV}:g" \
 		aclocal.m4 \
 		share/support/core/gnat_help_menus.py \
 		share/support/core/toolchains.py \

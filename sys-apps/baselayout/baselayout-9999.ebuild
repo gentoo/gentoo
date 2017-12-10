@@ -111,7 +111,7 @@ multilib_layout() {
 				case ${CHOST} in
 				*-gentoo-freebsd*) ;; # We want it the other way on fbsd.
 				i?86*|x86_64*|powerpc*|sparc*|s390*)
-					if [ -d "${prefix}lib32" ] ; then
+					if [[ -d ${prefix}lib32 && ! -h ${prefix}lib32 ]] ; then
 						rm -f "${prefix}lib32"/.keep
 						if ! rmdir "${prefix}lib32" 2>/dev/null ; then
 							ewarn "You need to merge ${prefix}lib32 into ${prefix}lib"

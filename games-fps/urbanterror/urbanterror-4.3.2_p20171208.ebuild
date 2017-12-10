@@ -2,17 +2,17 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-inherit flag-o-matic gnome2-utils
+inherit eapi7-ver flag-o-matic toolchain-funcs xdg-utils
 
 DESCRIPTION="Hollywood tactical shooter based on the ioquake3 engine"
 HOMEPAGE="http://urbanterror.info https://github.com/mickael9/ioq3"
 
-if [[ ${PV} == "9999" ]]; then
+if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/mickael9/ioq3.git"
 	EGIT_BRANCH="urt"
 else
-	COMMIT_ID="3e555ab1405c38556cbfcdd42eac23a4af49e633"
+	COMMIT_ID="e3bc50248c9d6c319d4822ca23caa5d46fc118ab"
 	SRC_URI="https://github.com/mickael9/ioq3/archive/${COMMIT_ID}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/ioq3-${COMMIT_ID}"
 	KEYWORDS="~amd64 ~x86"
@@ -20,25 +20,24 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+altgamma +client +curl debug mumble openal +opus server voip vorbis"
+IUSE="+altgamma +client +curl debug mumble openal +opus server +skeetshootmod voip vorbis"
 REQUIRED_USE=" || ( client server )"
 
-PATCHES=( "${FILESDIR}"/${PN}-4.3-respect_CFLAGS.patch )
-
+PATCHES=( "${FILESDIR}"/${PN}-4.3-fix-build_system.patch )
 RDEPEND="
 	client? (
-		media-libs/libsdl2[X,sound,joystick,opengl,video]
-		mumble? ( media-sound/mumble )
-		openal? ( media-libs/openal )
-		opus? ( media-libs/opusfile )
+		media-libs/libsdl2:=[X,sound,joystick,opengl,video]
+		mumble? ( media-sound/mumble:= )
+		openal? ( media-libs/openal:= )
+		opus? ( media-libs/opusfile:= )
 		vorbis? (
-			media-libs/libogg
-			media-libs/libvorbis
+			media-libs/libogg:=
+			media-libs/libvorbis:=
 		)
 	)
 	curl? ( net-misc/curl )
 	~games-fps/urbanterror-data-4.3.2
-	sys-libs/zlib[minizip]
+	sys-libs/zlib:=[minizip]
 	virtual/jpeg:0
 "
 
@@ -53,9 +52,17 @@ pkg_pretend() {
 	fi
 }
 
+src_configure() {
+	default
+
+	tc-export CC
+}
+
 src_compile() {
-	# Workaround for used zlib macro, wrt bug #449510
-	append-flags "-DOF=_Z_OF"
+	# Workaround for used zlib macro, which got renamed in Gentoo
+	# wrt bug #449510
+	append-cppflags "-DOF=_Z_OF"
+
 	local my_arch=$(usex amd64 "x86_64" "i386")
 
 	emake \
@@ -81,6 +88,7 @@ src_compile() {
 		USE_CODEC_VORBIS=$(usex "vorbis" 1 0) \
 		USE_CODEC_OPUS=$(usex "opus" 1 0) \
 		USE_MUMBLE=$(usex "mumble" 1 0) \
+		USE_SKEETMOD=$(usex "skeetshootmod" 1 0) \
 		USE_VOIP=$(usex "mumble" 1 0) \
 		USE_INTERNAL_LIBS=0 \
 		USE_LOCAL_HEADERS=0 \
@@ -104,12 +112,8 @@ src_install() {
 	fi
 }
 
-pkg_preinst() {
-	use client && gnome2_icon_savelist
-}
-
 pkg_postinst() {
-	use client && gnome2_icon_cache_update
+	use client && xdg_desktop_database_update
 
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
 		# This is a new installation
@@ -134,6 +138,7 @@ pkg_postinst() {
 			elog "For details take a look at:"
 			elog "https://bugs.freedesktop.org/show_bug.cgi?id=27222"
 		fi
+
 		if ! use client; then
 			elog ""
 			elog "You disabled client support. You won't be able to connect"
@@ -141,8 +146,18 @@ pkg_postinst() {
 			elog "USE=\"client\"."
 		fi
 	fi
+
+	if ver_test -ge 4.3.2_p20171105; then
+		# Yippee, new features!
+		if use skeetshootmod; then
+			elog ""
+			elog "You might need to set:"
+			elog "  seta sv_skeetshoot \"1\""
+			elog "in your ~/.q3a/q3ut4/q3config.cfg to use the skeetshoot mod."
+		fi
+	fi
 }
 
 pkg_postrm() {
-	use client && gnome2_icon_cache_update
+	use client && xdg_desktop_database_update
 }

@@ -7,7 +7,7 @@
 EAPI="5"
 
 WANT_AUTOCONF="2.1"
-inherit autotools eutils flag-o-matic toolchain-funcs
+inherit autotools eutils flag-o-matic toolchain-funcs xdg-utils
 
 DESCRIPTION="highly customizable open source text editor and application development system"
 HOMEPAGE="http://www.xemacs.org/"
@@ -233,9 +233,11 @@ src_install() {
 pkg_postinst() {
 	eselect emacs update ifunset
 	eselect gnuclient update ifunset
+	xdg_desktop_database_update
 }
 
 pkg_postrm() {
 	eselect emacs update ifunset
 	eselect gnuclient update ifunset
+	xdg_desktop_database_update
 }

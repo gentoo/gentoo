@@ -11,7 +11,7 @@ SRC_URI="https://github.com/fwbuilder/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 x86"
+KEYWORDS="~amd64 ppc ppc64 x86"
 IUSE=""
 
 DEPEND="

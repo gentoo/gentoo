@@ -7,7 +7,7 @@
 EAPI=5
 
 WANT_AUTOCONF="2.5"
-inherit eutils flag-o-matic multilib
+inherit eutils flag-o-matic multilib xdg-utils
 
 DESCRIPTION="highly customizable open source text editor and application development system"
 HOMEPAGE="http://www.xemacs.org/"
@@ -235,6 +235,7 @@ src_install() {
 pkg_postinst() {
 	eselect emacs update ifunset
 	eselect gnuclient update ifunset
+	xdg_desktop_database_update
 
 	einfo "If you are upgrading from XEmacs 21.4 you should note the following"
 	einfo "incompatibilities:"
@@ -252,4 +253,5 @@ pkg_postinst() {
 pkg_postrm() {
 	eselect emacs update ifunset
 	eselect gnuclient update ifunset
+	xdg_desktop_database_update
 }
