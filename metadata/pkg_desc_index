@@ -10621,7 +10621,7 @@ dev-util/qfsm 0.54.0: A graphical tool for designing finite state machines
 dev-util/qmtest 2.4.1-r1: CodeSourcery's test harness system
 dev-util/qstlink2 1.0.3: GUI and CLI ST-Link V2(Debugger/Programmer) client
 dev-util/quilt 0.50 0.63 0.65 9999: quilt patch manager
-dev-util/radare2 2.1.0 2.1.0-r1 9999: unix-like reverse engineering framework and commandline tools
+dev-util/radare2 2.1.0 2.1.0-r1 2.1.0-r2 9999: unix-like reverse engineering framework and commandline tools
 dev-util/ragel 6.7-r1 6.8 6.9 6.10 7.0.0.9 7.0.0.10: Compiles finite state machines from regular languages into executable code
 dev-util/rats 2.1-r2 2.4: RATS - Rough Auditing Tool for Security
 dev-util/rbtools 0.7.10: Command line tools for use with Review Board
