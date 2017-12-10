@@ -10,8 +10,8 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/bus1/dbus-broker.git"
 else
 	dvar=7706828ecda2d8c508d6fc233dc9d198bab482ad
-	list=9e50b8b08e0b0b75e1c651d5aa4e3cf94368a574
-	rbtree=6181232360c9b517a6af3d82ebdbdce5fe36933a
+	list=72c59181d677a3f50b201d51f190b1bff02d4279
+	rbtree=825f626a16257c5f0b0c523c11ce1bca16851180
 	sundry=50c8ccf01b39b3f11e59c69d1cafea5bef5a9769
 	SRC_URI="https://github.com/bus1/dbus-broker/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		https://github.com/c-util/c-dvar/archive/${dvar}.tar.gz -> c-dvar-${dvar}.tar.gz
