@@ -64,6 +64,7 @@ S="${WORKDIR}/fontforge-2.0.${PV}"
 
 PATCHES=(
 	"${FILESDIR}"/20170731-startnoui-FindOrMakeEncoding.patch
+	"${FILESDIR}"/20170731-tilepath.patch
 )
 
 pkg_setup() {
