@@ -65,6 +65,10 @@ DEPEND="${CDEPEND}
 	)"
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-mutt )
+	smime? ( || ( dev-libs/libressl >=dev-libs/openssl-0.9.6:0 ) )
+	smime_classic? ( || ( dev-libs/libressl >=dev-libs/openssl-0.9.6:0 ) )
+	crypt? ( app-crypt/gnupg )
+	pgp_classic? ( app-crypt/gnupg )
 "
 
 src_prepare() {
@@ -240,25 +244,13 @@ pkg_postinst() {
 		elog "the Gentoo QuickStart Guide to Mutt E-Mail:"
 		elog "   https://wiki.gentoo.org/wiki/Mutt"
 		echo
-	else
-		local ver
-		local preconddate=
-		for ver in ${REPLACING_VERSIONS} ; do
-			[[ ${ver} == "1.5"* || ${ver} == "1.6"* ]] && preconddate=true
-		done
-		if [[ -n ${preconddate} ]] ; then
-			echo
-			elog "The SmartTime functionality has been replaced with"
-			elog "CondDate feature.  To mimic SmartTime, use this CondDate formatter:"
-			elog "%<[12m?%<[7d?%<[12H?%[%H:%M ]&%[%a-%d]>&%[%d-%b]>&%[%b-%y]>"
-			echo
-		fi
 	fi
-	ewarn "Pleae note that the crypto related USE flags of neomutt have changed."
-	ewarn "(https://bugs.gentoo.org/637176)"
-	ewarn "crypt -> pgp_classic"
-	ewarn "gpg -> gpgme"
-	ewarn "smime -> smime_classic"
+	ewarn "Please note that the crypto related USE-flags of mutt have changed."
+	ewarn "To remove some unclarity, the following USE-flags are renamed:"
+	ewarn "(see https://bugs.gentoo.org/637176)"
+	ewarn "  crypt -> pgp_classic"
+	ewarn "  gpg   -> gpgme"
+	ewarn "  smime -> smime_classic"
 	ewarn "The old USE flags still work but their use is deprecated and will"
 	ewarn "be removed in a future release."
 }
