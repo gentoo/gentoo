@@ -358,6 +358,7 @@ app-backup/btrbk 0.24.0-r1 0.25.1-r1 0.26.0 9999: Tool for creating snapshots an
 app-backup/bup 0.28.1 0.29 0.29-r1 0.29.1: A highly efficient backup system based on the git packfile format
 app-backup/burp 1.4.40-r5 2.0.54 2.0.54-r1 2.0.54-r2 2.1.20 2.1.22: Network backup and restore client and server for Unix and Windows
 app-backup/buttersink 0.6.8 9999: rsync-like utility for btrfs snapshots
+app-backup/cachedir 1.4: Tag/untag cache directories
 app-backup/ccollect 0.8: Pseudo incremental backup with different exclude lists using hardlinks and rsync
 app-backup/cdbackup 0.7.1-r1: Allows streaming backup utilities to dump/restore from CD-R(W)s or DVD(+/-RW)s
 app-backup/cdbkup 1.0-r2: performs full/incremental backups of local/remote filesystems onto CD-R(W)s
@@ -17885,7 +17886,7 @@ sys-fs/yaffs2utils 0.2.9: tools for generating YAFFS images
 sys-fs/zerofree 1.0.1 1.0.3 1.0.4: Zero's out all free space on a filesystem
 sys-fs/zfs 0.6.5.4-r2 0.6.5.11 0.7.3 9999: Userland utilities for ZFS Linux kernel module
 sys-fs/zfs-kmod 0.6.5.4-r1 0.6.5.11 0.7.3 9999: Linux ZFS kernel module for sys-fs/zfs
-sys-kernel/aufs-sources 4.4.87-r1 4.4.95 4.4.96 4.4.97 4.4.98 4.4.99 4.4.100 4.4.102 4.4.103 4.9.49-r1 4.9.59 4.9.60 4.9.61 4.9.62 4.9.63 4.9.64 4.9.65 4.9.66 4.12.12 4.12.13 4.12.14 4.13.10 4.13.11 4.13.12 4.13.13 4.13.14 4.13.15 4.13.16 4.14.1 4.14.2 4.14.3: Full sources (incl. Gentoo patchset) for the linux kernel tree and aufs4 support
+sys-kernel/aufs-sources 4.4.87-r1 4.4.95 4.4.96 4.4.97 4.4.98 4.4.99 4.4.100 4.4.102 4.4.103 4.4.104 4.4.105 4.9.49-r1 4.9.59 4.9.60 4.9.61 4.9.62 4.9.63 4.9.64 4.9.65 4.9.66 4.9.67 4.9.68 4.12.12 4.12.13 4.12.14 4.13.10 4.13.11 4.13.12 4.13.13 4.13.14 4.13.15 4.13.16 4.14.1 4.14.2 4.14.3 4.14.4 4.14.5: Full sources (incl. Gentoo patchset) for the linux kernel tree and aufs4 support
 sys-kernel/bliss-initramfs 6.8.3-r2 7.1.0 7.1.1: Boot your system's rootfs from ZFS, LVM, RAID, or a variety of other configs.
 sys-kernel/ck-sources 4.9.61 4.9.62 4.9.63 4.9.64 4.9.65 4.9.66 4.9.67 4.13.12 4.13.13 4.13.14 4.13.15 4.13.16 4.13.16-r1 4.14.1 4.14.2 4.14.3 4.14.4: Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 4.14
 sys-kernel/cryptodev 1.7 1.9 9999: device that allows access to Linux kernel cryptographic drivers

@@ -3134,7 +3134,7 @@ games-emulation/mupen64plus:audio-sdl - Enable SDL audio plugin.
 games-emulation/mupen64plus:input-sdl - Enable SDL input plugin.
 games-emulation/mupen64plus:rsp-hle - Enable HLE RSP plugin.
 games-emulation/mupen64plus:ui-console - Enable default console UI.
-games-emulation/mupen64plus:ui-m64py - Enable PyQt4 UI using games-emulation/m64py.
+games-emulation/mupen64plus:ui-m64py - Enable PyQt5 UI using games-emulation/m64py.
 games-emulation/mupen64plus:video-glide64mk2 - Enable Glide64mk2 video plugin.
 games-emulation/mupen64plus:video-rice - Enable Rice video plugin.
 games-emulation/mupen64plus-core:debugger - Build the debugger
