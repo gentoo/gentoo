@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -25,7 +25,7 @@ RDEPEND="dev-libs/expat
 	dev-libs/openssl:0
 	sys-libs/zlib
 	fuse? ( sys-fs/fuse )
-	ncurses? ( sys-libs/ncurses )
+	ncurses? ( sys-libs/ncurses:0= )
 	python? ( ${PYTHON_DEPS} )
 	readline? ( sys-libs/readline:0 )
 	s3? ( net-misc/curl )"

@@ -16,7 +16,7 @@ IUSE="+bzip2 +lzma nls selinux test unicode +update-alternatives +zlib"
 RDEPEND="
 	>=dev-lang/perl-5.6.0:=
 	dev-perl/TimeDate
-	>=sys-libs/ncurses-5.2-r7
+	>=sys-libs/ncurses-5.2-r7:0=
 	bzip2? ( app-arch/bzip2 )
 	lzma? ( app-arch/xz-utils )
 	selinux? ( sys-libs/libselinux )

@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 DEPEND="sys-devel/gcc:*
-	sys-devel/clang"
+	sys-devel/clang:*"
 RDEPEND="${DEPEND}"
 QA_PREBUILT="/usr/share/afl/testcases/others/elf/small_exec.elf"
 
