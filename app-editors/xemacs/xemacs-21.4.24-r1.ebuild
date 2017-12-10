@@ -1,9 +1,8 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Note: xemacs currently does not work with a hardened profile. If you
-# want to use xemacs on a hardened profile then compile with the
-# -nopie flag in CFLAGS or help fix bug #75028.
+# Note: xemacs currently does not work with position independent code
+# so the build forces the use of the -no-pie option
 
 EAPI="5"
 
@@ -86,6 +85,10 @@ src_prepare() {
 src_configure() {
 	local myconf=""
 
+	# Can't build with pie. See bug #75028
+	test-flags -no-pie >/dev/null && append-flags -no-pie
+	filter-flags -pie
+
 	if use X; then
 
 		myconf="${myconf} --with-widgets=athena"
@@ -156,14 +159,6 @@ src_configure() {
 		myconf="${myconf} --without-database"
 	fi
 
-	# fixes #21264, this should be fixed in 21.4.21 and has been fixed
-	# in 21.5 for sure. Now that 21.4.21 is out there is no real
-	# evidence that this indeed got fixed, so keep these exceptions
-	# for now.
-	use alpha && myconf="${myconf} --with-system-malloc"
-	use ppc64 && myconf="${myconf} --with-system-malloc"
-	use ia64  && myconf="${myconf} --with-system-malloc"
-
 	# Enabling modules will cause segfaults outside the XEmacs build directory
 	use ia64  && myconf="${myconf} --without-modules"
 
@@ -184,6 +179,7 @@ src_configure() {
 		--compiler=$(tc-getCC) \
 		--prefix=/usr \
 		--with-ncurses \
+		--with-system-malloc \
 		--with-msw=no \
 		--mail-locking=flock \
 		--with-site-lisp=yes \

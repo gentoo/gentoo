@@ -1,9 +1,8 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Note: xemacs currently does not work with a hardened profile. If you
-# want to use xemacs on a hardened profile then compile with the
-# -nopie flag in CFLAGS or help fix bug #75028.
+# Note: xemacs currently does not work with position independent code
+# so the build forces the use of the -no-pie option
 
 EAPI=5
 
@@ -79,6 +78,10 @@ src_prepare() {
 
 src_configure() {
 	local myconf=""
+
+	# bug #639642
+	test-flags -no-pie >/dev/null && append-flags -no-pie
+	filter-flags -pie
 
 	if use X; then
 
