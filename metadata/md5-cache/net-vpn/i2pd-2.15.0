@@ -1,13 +1,13 @@
-DEFINED_PHASES=compile configure install postinst prepare setup test
-DEPEND=!static? ( dev-libs/boost[threads] !libressl? ( dev-libs/openssl:0[-bindist] ) libressl? ( dev-libs/libressl:0 >=dev-libs/boost-1.65 ) sys-libs/zlib upnp? ( net-libs/miniupnpc ) ) static? ( dev-libs/boost[static-libs,threads] !libressl? ( dev-libs/openssl:0[static-libs] ) libressl? ( dev-libs/libressl:0[static-libs] >=dev-libs/boost-1.65 ) sys-libs/zlib[static-libs] upnp? ( net-libs/miniupnpc[static-libs] ) ) websocket? ( dev-cpp/websocketpp ) i2p-hardening? ( >=sys-devel/gcc-4.7 ) || ( >=sys-devel/gcc-4.7 >=sys-devel/clang-3.3 ) virtual/pkgconfig sys-devel/make >=dev-util/cmake-3.7.2
+DEFINED_PHASES=compile configure install postinst prepare pretend setup test
+DEPEND=!static? ( dev-libs/boost[threads] !libressl? ( dev-libs/openssl:0[-bindist] ) libressl? ( dev-libs/libressl:0 >=dev-libs/boost-1.65 ) sys-libs/zlib upnp? ( net-libs/miniupnpc ) ) static? ( dev-libs/boost[static-libs,threads] !libressl? ( dev-libs/openssl:0[static-libs] ) libressl? ( dev-libs/libressl:0[static-libs] >=dev-libs/boost-1.65 ) sys-libs/zlib[static-libs] upnp? ( net-libs/miniupnpc[static-libs] ) ) websocket? ( dev-cpp/websocketpp ) virtual/pkgconfig sys-devel/make >=dev-util/cmake-3.7.2
 DESCRIPTION=A C++ daemon for accessing the I2P anonymous network
 EAPI=6
 HOMEPAGE=https://github.com/PurpleI2P/i2pd
 IUSE=cpu_flags_x86_aes i2p-hardening libressl static +upnp websocket
-KEYWORDS=~amd64 ~arm ~x86
+KEYWORDS=~amd64 ~arm ~arm64 ~x86
 LICENSE=BSD
 RDEPEND=!static? ( dev-libs/boost[threads] !libressl? ( dev-libs/openssl:0[-bindist] ) libressl? ( dev-libs/libressl:0 >=dev-libs/boost-1.65 ) sys-libs/zlib upnp? ( net-libs/miniupnpc ) )
 SLOT=0
 SRC_URI=https://github.com/PurpleI2P/i2pd/archive/2.15.0.tar.gz -> i2pd-2.15.0.tar.gz
 _eclasses_=cmake-utils	77a5a8d3308359caadcdd91688f20093	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	flag-o-matic	a6089a2a4027ae3da4a460dc87b21050	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	systemd	8f5286f89e265842f5b5189666eae88b	toolchain-funcs	185a06792159ca143528e7010368e8af	user	8bc2845510e2109af75e3eeac607ec81	versionator	c80ccf29e90adea7c5cae94b42eb76d0	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=cd319557084a5d5f33760d535de27292
+_md5_=b39ae6bdd8f62f0f0b824e2b3eee1261

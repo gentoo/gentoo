@@ -15749,7 +15749,7 @@ net-vpn/freelan 2.0: Peer-to-peer VPN software that abstracts a LAN over the Int
 net-vpn/httptunnel 3.3-r2: httptunnel can create IP tunnels through firewalls/proxies using HTTP
 net-vpn/htun 0.9.6: Project to tunnel IP traffic over HTTP
 net-vpn/i2p 0.9.30 0.9.30-r1 0.9.31: A privacy-centric, anonymous network.
-net-vpn/i2pd 2.14.0 2.15.0 2.16.0: A C++ daemon for accessing the I2P anonymous network
+net-vpn/i2pd 2.15.0 2.16.0 2.17.0: A C++ daemon for accessing the I2P anonymous network
 net-vpn/iodine 0.7.0-r2: IP over DNS tunnel
 net-vpn/ipsec-tools 0.8.2-r5: A port of KAME's IPsec utilities to the Linux-2.6 IPsec implementation
 net-vpn/isatapd 0.9.7-r2: creates and maintains an ISATAP tunnel (rfc5214)
