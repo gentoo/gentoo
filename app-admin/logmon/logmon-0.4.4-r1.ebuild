@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -16,7 +16,7 @@ LICENSE="Artistic"
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 x86"
 
-DEPEND="sys-libs/ncurses"
+DEPEND="sys-libs/ncurses:0="
 RDEPEND="${DEPEND}"
 
 src_prepare() {
