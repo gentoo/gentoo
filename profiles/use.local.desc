@@ -1074,6 +1074,7 @@ app-portage/eix:sqlite - Compile in support for portage's sqlite backend; to act
 app-portage/g-sorcery:bson - Support BSON file format for package DB
 app-portage/gemato:blake2 - Install dependencies needed for BLAKE2 hash functions
 app-portage/gemato:gpg - Install dependencies needed for OpenPGP signature verification support
+app-portage/gemato:portage-postsync - Install a Portage hook to verify the repository after fetching via rsync
 app-portage/gemato:sha3 - Install dependencies needed for SHA3 hash functions
 app-portage/layman:bazaar - Support dev-vcs/bzr based overlays
 app-portage/layman:cvs - Support dev-vcs/cvs based overlays

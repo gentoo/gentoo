@@ -2119,7 +2119,7 @@ app-portage/fquery 0.2.2 0.2.3: Installed package query tool for Gentoo Linux
 app-portage/g-cpan 0.16.5 0.16.6 0.16.7 0.16.9 9999: Autogenerate and install ebuilds for CPAN modules
 app-portage/g-octave 0.4.1-r5: A tool that generates and installs ebuilds for Octave-Forge
 app-portage/g-sorcery 0.1-r1 0.2 0.2.1 0.2.1-r1 9999: framework for ebuild generators
-app-portage/gemato 8 9.1 9999: Stand-alone Manifest generation & verification tool
+app-portage/gemato 8 9.1 9.2 9999: Stand-alone Manifest generation & verification tool
 app-portage/genlop 0.30.9-r1 0.30.10 0.30.10-r1 9999: A nice emerge.log parser
 app-portage/gentoolkit 0.3.3 0.4.0 9999: Collection of administration scripts for Gentoo
 app-portage/gentoolkit-dev 0.2.8.3-r1 0.3.0 0.3.1: Collection of developer scripts for Gentoo

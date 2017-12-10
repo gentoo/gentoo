@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm prepare setup test
-DEPEND=sys-devel/flex sys-devel/bison doc? ( || ( dev-lang/python:3.5 dev-lang/python:3.4 >=dev-lang/python-2.7.5-r2:2.7 ) ) app-text/ghostscript-gpl dev-lang/perl media-libs/libpng:0= virtual/libiconv clang? ( sys-devel/clang:= ) dot? ( media-gfx/graphviz media-libs/freetype ) doxysearch? ( =dev-libs/xapian-1.2* ) latex? ( app-text/texlive[extra] ) qt5? ( dev-qt/qtgui:5 dev-qt/qtwidgets:5 ) sqlite? ( dev-db/sqlite:3 ) sys-devel/make >=dev-util/cmake-3.7.2
+DEPEND=sys-devel/flex sys-devel/bison doc? ( || ( dev-lang/python:3.6 dev-lang/python:3.5 dev-lang/python:3.4 >=dev-lang/python-2.7.5-r2:2.7 ) ) app-text/ghostscript-gpl dev-lang/perl media-libs/libpng:0= virtual/libiconv clang? ( sys-devel/clang:= ) dot? ( media-gfx/graphviz media-libs/freetype ) doxysearch? ( =dev-libs/xapian-1.2* ) latex? ( app-text/texlive[extra] ) qt5? ( dev-qt/qtgui:5 dev-qt/qtwidgets:5 ) sqlite? ( dev-db/sqlite:3 ) sys-devel/make >=dev-util/cmake-3.7.2
 DESCRIPTION=Documentation system for most programming languages
 EAPI=6
 HOMEPAGE=https://www.stack.nl/~dimitri/doxygen/
@@ -12,4 +12,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://ftp.stack.nl/pub/users/dimitri/doxygen-1.8.13.src.tar.gz https://dev.gentoo.org/~xarthisius/distfiles/doxywizard.png
 _eclasses_=cmake-utils	77a5a8d3308359caadcdd91688f20093	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	fdo-mime	995b19d3f30e956b4e1bc5a91fdc4ea7	flag-o-matic	a6089a2a4027ae3da4a460dc87b21050	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	python-any-r1	27d7f9da7187d283b7f3eae8390b7b09	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=ddf9ba0226af81b96ba3fe76a70e4451
+_md5_=8c0cc6f41a906bf934594cf159fecd82
