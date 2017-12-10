@@ -10443,7 +10443,7 @@ dev-util/d-feet 0.3.10 0.3.11 0.3.12: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 12.10.1 15.04.0_p100: Run executables under a new DBus session for testing
 dev-util/ddd 3.3.12-r3 3.3.12-r4: Graphical front-end for command-line debuggers
 dev-util/debhelper 9.20160814 10.10.5 10.10.8 10.10.9: Collection of programs that can be used to automate common tasks in debian/rules
-dev-util/debootstrap 1.0.87 1.0.89 1.0.91 1.0.92: Debian/Ubuntu bootstrap scripts
+dev-util/debootstrap 1.0.87 1.0.89 1.0.92 1.0.93: Debian/Ubuntu bootstrap scripts
 dev-util/debugedit 5.3.5-r1: standalone debugedit taken from rpm
 dev-util/dejagnu 1.4.4-r3 1.5 1.6: Framework for testing other programs
 dev-util/desktop-file-utils 0.23: Command line utilities to work with desktop menu entries
