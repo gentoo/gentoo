@@ -1,10 +1,10 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit eutils toolchain-funcs
 
 DESCRIPTION="Self-employed-mode software for 3COM/USR message modems"
-HOMEPAGE="http://www.hof-berlin.de/mepl/"
+HOMEPAGE="https://web.archive.org/web/20031204100644/http://www.hof-berlin.de:80/mepl/"
 SRC_URI="http://www.hof-berlin.de/mepl/mepl${PV}.tar.gz"
 
 LICENSE="GPL-2"
