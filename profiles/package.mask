@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Beierlein <tomjbe@gentoo.org> (10 Dec 2017)
+# Development stopped, nasty build system.
+# Functionality superseded by media-radio/wsjtx.
+# Masked for removal in 30 days.
+media-radio/wspr
+
 # Michael Palimaka <kensington@gentoo.org> (07 Dec 2017)
 # Dead upstream. Requires dead Qt4.
 # Masked for removal in 30 days. Bug #640138.
