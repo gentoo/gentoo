@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils cmake-utils fdo-mime
 
 DESCRIPTION="A fast text editor supporting folding, syntax highlighting, etc."
-HOMEPAGE="http://efte.sourceforge.net"
+HOMEPAGE="https://github.com/lanurmi/efte"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="|| ( GPL-2 Artistic )"

@@ -539,27 +539,34 @@ src_configure() {
 	"$@" || die
 }
 
+host_binary() {
+	local x
+	for x; do
+		if tc-is-cross-compiler; then
+			eninja -C out/Release "host/${x}"
+			pax-mark m "out/Release/host/${x}"
+		else
+			eninja -C out/Release "${x}"
+			pax-mark m "out/Release/${x}"
+		fi
+	done
+}
+
 src_compile() {
 	# Calling this here supports resumption via FEATURES=keepwork
 	python_setup
 
-	local ninja_targets="chrome chromedriver"
-	if use suid; then
-		ninja_targets+=" chrome_sandbox"
-	fi
-
 	# Build mksnapshot and pax-mark it.
-	if tc-is-cross-compiler; then
-		eninja -C out/Release host/mksnapshot || die
-		pax-mark m out/Release/host/mksnapshot
-	else
-		eninja -C out/Release mksnapshot || die
-		pax-mark m out/Release/mksnapshot
-	fi
+	host_binary mksnapshot v8_context_snapshot_generator
+
+	# Work around circular dep issue
+	# https://chromium-review.googlesource.com/c/chromium/src/+/617768
+	eninja -C out/Release gen/ui/accessibility/ax_enums.h
 
 	# Even though ninja autodetects number of CPUs, we respect
 	# user's options, for debugging with -j 1 or any other reason.
-	eninja -C out/Release ${ninja_targets} || die
+	eninja -C out/Release chrome chromedriver
+	use suid && eninja -C out/Release chrome_sandbox
 
 	pax-mark m out/Release/chrome
 }
