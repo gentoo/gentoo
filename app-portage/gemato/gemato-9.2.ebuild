@@ -6,16 +6,15 @@ EAPI=6
 # backports.lzma is broken with pypy
 # pyblake2 & pysha3 are broken with pypy3
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="Stand-alone Manifest generation & verification tool"
 HOMEPAGE="https://github.com/mgorny/gemato"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/mgorny/gemato.git"
+SRC_URI="mirror://pypi/${PN::1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64 ~x86"
 IUSE="+blake2 bzip2 +gpg lzma +portage-postsync sha3 test"
 
 MODULE_RDEPEND="
