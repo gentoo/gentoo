@@ -2378,7 +2378,7 @@ app-text/mpage 2.5.6-r1: Many to one page printing utility
 app-text/multitail 6.4.1 6.4.2: Tail with multiple windows
 app-text/mupdf 1.11-r1 1.11-r2: a lightweight PDF viewer and toolkit written in portable C
 app-text/mythes 1.2.4: A simple thesaurus for Libreoffice
-app-text/namazu 2.0.21 2.0.22_p1: Namazu is a full-text search engine
+app-text/namazu 2.0.21 2.0.22_pre7: Namazu is a full-text search engine
 app-text/nfoview 1.15.1 9999: simple viewer for NFO files, which are ASCII art in the CP437 codepage
 app-text/noweb 2.11b-r4: a literate programming tool, lighter than web
 app-text/o3read 0.0.4: Converts OpenOffice formats to text or HTML
@@ -7905,7 +7905,7 @@ dev-python/jdcal 1.0 1.2: Julian dates from proleptic Gregorian and Julian calen
 dev-python/jedi 0.10.2: Autocompletion library for Python
 dev-python/jellyfish 0.5.6: Python module for doing approximate and phonetic matching of strings
 dev-python/jenkins-autojobs 0.14.3: Scripts for automatically creating Jenkins jobs from scm branches
-dev-python/jenkins-webapi 0.3.2 0.4.0-r1 0.5.0: Module for interacting with the Jenkins CI server
+dev-python/jenkins-webapi 0.5.0: Module for interacting with the Jenkins CI server
 dev-python/jenkinsapi 0.2.26 0.2.29: API to access resources on a Jenkins continuous-integration server
 dev-python/jingo 0.7 0.9.0: An adapter for using Jinja2 templates with Django
 dev-python/jinja 2.8 2.9.5 2.9.6 2.10: A full-featured template engine for Python
