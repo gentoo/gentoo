@@ -244,7 +244,7 @@
     ----------------------------
 --- gps-gpl-2017-src/toolchains_editor/core/src/toolchains.adb.old	2017-11-23 22:02:52.819994229 +0100
 +++ gps-gpl-2017-src/toolchains_editor/core/src/toolchains.adb	2017-11-23 22:07:20.326248295 +0100
-@@ -309,12 +309,12 @@
+@@ -309,12 +309,13 @@
                 else
                    Set_Command
                      (Tc, GNAT_Driver,
@@ -255,7 +255,8 @@
                    Set_Command
                      (Tc, GNAT_List,
 -                     To_String (Full_Path) & "gnatls",
-+                     To_String (Full_Path) & "@GNATLS@",
++                     To_String (Full_Path) &
++                        "@GNATLS@",
                       From_Default,
                       Is_Default_Path);
                    Set_Command
@@ -278,10 +279,10 @@
  
 -      Set_Command (Native_Toolchain, GNAT_Driver, "gnat", From_Default, True);
 -      Set_Command (Native_Toolchain, GNAT_List, "gnatls", From_Default, True);
-+      Set_Command (Native_Toolchain, GNAT_Driver, "@GNAT@", From_Default,
-+         True);
-+      Set_Command (Native_Toolchain, GNAT_List, "@GNATLS@", From_Default,
-+         True);
++      Set_Command (Native_Toolchain, GNAT_Driver,
++         "@GNAT@", From_Default, True);
++      Set_Command (Native_Toolchain, GNAT_List,
++         "@GNATLS@", From_Default, True);
        Set_Command (Native_Toolchain, Debugger, "gdb", From_Default, True);
        Set_Command (Native_Toolchain, CPP_Filt, "c++filt", From_Default, True);
  
@@ -289,8 +290,50 @@
  
        if Get_Compiler (Native_Toolchain, "Ada") = No_Compiler then
 -         Add_Compiler (Native_Toolchain, "Ada", "gnatmake", From_Default);
-+         Add_Compiler (Native_Toolchain, "Ada", "@GNATMAKE@",
-+            From_Default);
++         Add_Compiler (Native_Toolchain, "Ada",
++            "@GNATMAKE@", From_Default);
        end if;
  
        if Get_Compiler (Native_Toolchain, "C") = No_Compiler then
+--- gps-gpl-2017-src/gps/Makefile.old	2017-12-10 20:29:18.267622400 +0100
++++ gps-gpl-2017-src/gps/Makefile	2017-12-10 20:29:34.564312700 +0100
+@@ -45,7 +45,8 @@
+ 	for f in ../kernel/generated/*; do cat $$f | tr -d '\015' > $$f-aux; mv -f $$f-aux $$f; done
+ endif
+ 	$(GPRBUILD) $(GPRBUILD_FLAGS) -m -p -ws -XTP_TASKING=No_Tasking \
+-	  $(GPRBUILD_BUILD_TYPE_FLAGS) -Pgps -largs `pkg-config gmodule-2.0 --libs`
++	  $(GPRBUILD_BUILD_TYPE_FLAGS) -Pgps -largs `pkg-config gmodule-2.0 --libs` \
++	  -cargs:Ada $(ADAFLAGS) -cargs:C ${CFLAGS}
+ 
+ resources:
+ ifeq ($(OS),Windows_NT)
+--- gps-gpl-2017-src/common/common_no_xmlada.gpr.in.old	2017-12-10 20:48:13.986166250 +0100
++++ gps-gpl-2017-src/common/common_no_xmlada.gpr.in	2017-12-10 20:48:29.654872055 +0100
+@@ -22,6 +22,7 @@
+              for Switches ("dynamic_arrays.adb") use No_Checks;
+           when "Debug" =>
+       end case;
++      for Driver ("C") use External ("CC", "gcc");
+    end Compiler;
+ 
+    package Naming is
+--- gps-gpl-2017-src/common/common_with_xmlada.gpr.in.old	2017-12-10 20:48:37.352727540 +0100
++++ gps-gpl-2017-src/common/common_with_xmlada.gpr.in	2017-12-10 20:48:50.423482155 +0100
+@@ -23,6 +23,7 @@
+              for Switches ("dynamic_arrays.adb") use No_Checks;
+           when "Debug" =>
+       end case;
++      for Driver ("C") use External ("CC", "gcc");
+    end Compiler;
+ 
+    package Binder is
+--- gps-gpl-2017-src/shared.gpr.in.old	2017-12-10 20:52:51.117967249 +0100
++++ gps-gpl-2017-src/shared.gpr.in	2017-12-10 20:53:15.627507886 +0100
+@@ -56,6 +56,7 @@
+                );
+             for Switches ("C") use Optimize & ("-g", "-O2");
+       end case;
++      for Driver ("C") use External ("CC", "gcc");
+    end Compiler;
+ 
+    package Binder is
