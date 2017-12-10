@@ -10,6 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
+		<flag name="asm">Enable assembly for optimization</flag>
 		<flag name="bitcoin_policy_rbf">Replace By Fee policy: Your node will preferentially mine and relay transactions paying the highest fee, regardless of receive order</flag>
 		<flag name="bitcoin_policy_spamfilter">Enhanced spam filter policy: Notorious spammers will not be assisted by your node</flag>
 		<flag name="knots">Build enhanced Bitcoin Knots version, rather than Bitcoin Core</flag>
@@ -20,5 +21,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">bitcoin/bitcoin</remote-id>
+		<remote-id type="github">bitcoinknots/bitcoin</remote-id>
 	</upstream>
 </pkgmetadata>
