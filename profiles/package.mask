@@ -28,6 +28,14 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+# Manuel Ullmann <labre@posteo.de> (09 Nov 2017)
+# Masking Java 9 until it is absolutely certain, that it won’t break
+#  anything.
+>=virtual/jre-9:9
+>=virtual/jdk-9:9
+>=dev-java/oracle-jre-bin-9.0.1:9
+>=dev-java/oracle-jdk-bin-9.0.1:9
+>=dev-java/java-sdk-docs-9.0.1:9
 
 # Thomas Beierlein <tomjbe@gentoo.org> (10 Dec 2017)
 # Development stopped, nasty build system.
