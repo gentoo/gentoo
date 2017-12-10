@@ -37,9 +37,14 @@ case ${CATEGORY} in
 		[[ ${KDE_BUILD_TYPE} = live ]] && : ${FRAMEWORKS_MINIMAL:=9999}
 		;;
 	kde-plasma)
-		[[ ${PV} = 5.11* ]] && : ${FRAMEWORKS_MINIMAL:=5.38.0}
 		if [[ ${KDE_BUILD_TYPE} = live ]]; then
+			: ${QT_MINIMAL:=5.9.1}
 			: ${FRAMEWORKS_MINIMAL:=9999}
+		fi
+		;;
+	kde-apps)
+		if [[ ${KDE_BUILD_TYPE} = live || ${PV} = 17.12* ]]; then
+			: ${QT_MINIMAL:=5.9.1}
 		fi
 		;;
 esac
@@ -52,7 +57,7 @@ esac
 # @ECLASS-VARIABLE: FRAMEWORKS_MINIMAL
 # @DESCRIPTION:
 # Minimum version of Frameworks to require. This affects add_frameworks_dep.
-: ${FRAMEWORKS_MINIMAL:=5.37.0}
+: ${FRAMEWORKS_MINIMAL:=5.40.0}
 
 # @ECLASS-VARIABLE: PLASMA_MINIMAL
 # @DESCRIPTION:

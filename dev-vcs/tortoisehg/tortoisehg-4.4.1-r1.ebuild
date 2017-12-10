@@ -27,7 +27,7 @@ IUSE="doc"
 RDEPEND="${HG_DEPEND}
 	dev-python/iniparse[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
-	dev-python/PyQt5[svg,${PYTHON_USEDEP}]
+	dev-python/PyQt5[network,svg,${PYTHON_USEDEP}]
 	>=dev-python/qscintilla-python-2.9.4:=[qt5(+),${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	doc? ( >=dev-python/sphinx-1.0.3 )"
