@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="amd64 ppc ppc64 x86 ~ppc-macos ~x86-macos ~m68k-mint ~sparc-solaris"
 IUSE="X"
 
-RDEPEND=">=sys-libs/ncurses-5.7-r7
+RDEPEND=">=sys-libs/ncurses-5.7-r7:0=
 	X? ( >=x11-proto/xproto-7.0.4
 		>=x11-libs/libX11-1.0.0
 		>=x11-libs/libXt-1.0.0
