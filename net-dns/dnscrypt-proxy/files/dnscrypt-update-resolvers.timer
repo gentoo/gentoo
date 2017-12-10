@@ -1,0 +1,11 @@
+[Unit]
+Description=Update the local copy of dnscrypt-resolvers.csv database.
+Documentation=man:dnscrypt
+
+[Timer]
+OnCalendar=daily
+AccuracySec=1h
+Persistent=true
+
+[Install]
+WantedBy=timers.target
