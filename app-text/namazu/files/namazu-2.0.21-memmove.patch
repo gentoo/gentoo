@@ -1,5 +1,5 @@
---- a/nmz/search.c	2011-08-05 09:26:47.000000000 +0900
-+++ b/nmz/search.c	2011-08-05 09:32:25.000000000 +0900
+--- a/nmz/search.c
++++ b/nmz/search.c
 @@ -572,7 +572,7 @@
  {
      if (*expr == '*' && expr[strlen(expr) - 1] != '*') {

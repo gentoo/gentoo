@@ -1,8 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
+AUTOTOOLS_AUTORECONF="1"
 inherit autotools-utils eutils elisp-common
 
 DESCRIPTION="Namazu is a full-text search engine"
@@ -34,15 +35,14 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
 S="${WORKDIR}"/${P/_p/pre}
 
-PATCHES=(
-	"${FILESDIR}/${PN}-2.0.19-gentoo.patch"
-)
-DOCS=(AUTHORS CREDITS NEWS THANKS TODO)
+PATCHES=( "${FILESDIR}"/${PN}-gentoo.patch )
 
 src_configure() {
 	local myeconfargs=(
 		$(use_enable nls)
 		$(use_enable tk tknamazu)
+		--docdir="${EPREFIX}"/usr/share/doc/${PF}
+		--htmldir="${EPREFIX}"/usr/share/doc/${PF}/html
 	)
 
 	use tk && myeconfargs+=(
@@ -64,9 +64,7 @@ src_compile() {
 
 src_install () {
 	autotools-utils_src_install
-	dodoc ChangeLog* HACKING* README* etc/*.png
-	dohtml -r doc/*
-	rm -r "${ED}"/usr/share/namazu/doc || die
+
 	if use emacs; then
 		elisp-install ${PN} lisp/gnus-nmz-1.el* lisp/namazu.el*
 		elisp-site-file-install "${FILESDIR}"/50${PN}-gentoo.el
