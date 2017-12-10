@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install postinst postrm prepare test
-DEPEND=sys-libs/ncurses gpm? ( sys-libs/gpm ) X? ( x11-libs/libX11 x11-libs/libXpm x11-libs/libXdmcp x11-libs/libXau media-fonts/font-misc-misc ) sys-devel/make >=dev-util/cmake-3.7.2
+DEPEND=sys-libs/ncurses:0= gpm? ( sys-libs/gpm ) X? ( x11-libs/libX11 x11-libs/libXpm x11-libs/libXdmcp x11-libs/libXau media-fonts/font-misc-misc ) sys-devel/make >=dev-util/cmake-3.7.2
 DESCRIPTION=A fast text editor supporting folding, syntax highlighting, etc.
 EAPI=5
 HOMEPAGE=http://efte.sourceforge.net
 IUSE=gpm X
 KEYWORDS=amd64 x86
 LICENSE=|| ( GPL-2 Artistic )
-RDEPEND=sys-libs/ncurses gpm? ( sys-libs/gpm ) X? ( x11-libs/libX11 x11-libs/libXpm x11-libs/libXdmcp x11-libs/libXau media-fonts/font-misc-misc )
+RDEPEND=sys-libs/ncurses:0= gpm? ( sys-libs/gpm ) X? ( x11-libs/libX11 x11-libs/libXpm x11-libs/libXdmcp x11-libs/libXau media-fonts/font-misc-misc )
 SLOT=0
 SRC_URI=mirror://sourceforge/efte/efte-1.1.tar.bz2
 _eclasses_=cmake-utils	77a5a8d3308359caadcdd91688f20093	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	fdo-mime	995b19d3f30e956b4e1bc5a91fdc4ea7	flag-o-matic	a6089a2a4027ae3da4a460dc87b21050	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=759515777421dd93789397ea97f69192
+_md5_=3e8a6967e5138426603c66a8dda87b67

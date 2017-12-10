@@ -1,12 +1,12 @@
 DEFINED_PHASES=compile configure prepare
-DEPEND=sys-libs/ncurses virtual/pkgconfig
+DEPEND=sys-libs/ncurses:0= virtual/pkgconfig
 DESCRIPTION=A minimal console text editor
 EAPI=5
 HOMEPAGE=http://dav-text.sourceforge.net/
 KEYWORDS=alpha amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=GPL-2
-RDEPEND=sys-libs/ncurses
+RDEPEND=sys-libs/ncurses:0=
 SLOT=0
 SRC_URI=http://dav-text.sourceforge.net/files/dav-0.8.5.tar.gz
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=db2e4b72acb5e2d6ca790f2d05f14fd7
+_md5_=d7bd03385f5c48271717845fa5f018a2
