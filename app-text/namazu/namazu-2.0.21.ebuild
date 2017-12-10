@@ -36,6 +36,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-gentoo.patch
 	"${FILESDIR}"/${PN}-perl-5.18.patch
+	"${FILESDIR}"/${PN}-perl-5.26.patch
 	"${FILESDIR}"/${P}-memmove.patch
 )
 
