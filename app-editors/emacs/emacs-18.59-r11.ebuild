@@ -60,11 +60,13 @@ src_configure() {
 		src/s-linux.h || die
 
 	# -O3 and -finline-functions cause segmentation faults at run time.
-	filter-flags -finline-functions
-	replace-flags -O[3-9] -O2
+	# -Wno-implicit will quieten GCC 5; feel free to submit a patch
+	# adding all those missing prototypes.
 	strip-flags
-	# Quieten GCC 5. Feel free to submit a patch adding all those prototypes.
+	filter-flags -finline-functions -fpie
 	append-flags -Wno-implicit
+	append-ldflags $(test-flags -no-pie)	#639562
+	replace-flags -O[3-9] -O2
 }
 
 src_compile() {
