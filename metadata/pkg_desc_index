@@ -1326,7 +1326,7 @@ app-emulation/hercules 3.10 3.12: Hercules System/370, ESA/390 and zArchitecture
 app-emulation/hyperd 0.7.0-r1: Hypervisor-based Runtime for OCI
 app-emulation/kompose 1.3.0 1.4.0 1.5.0: Tool to move from docker-compose to Kubernetes
 app-emulation/libcacard 0.1.2 2.5.1: virtual Common Access Card (CAC) library emulator
-app-emulation/libdsk 1.5.4: LIBDSK is a library for accessing discs and disc image files
+app-emulation/libdsk 1.5.5: LIBDSK is a library for accessing discs and disc image files
 app-emulation/libguestfs 1.28.5-r3 1.36.5: Tools for accessing, inspect and modifying virtual machine (VM) disk images
 app-emulation/libguestfs-appliance 1.26.0-r1 1.28.1 1.28.1-r1 1.36.1: VM appliance disk image used in libguestfs package
 app-emulation/libspectrum 1.3.6 1.4.0: Spectrum emulation library
