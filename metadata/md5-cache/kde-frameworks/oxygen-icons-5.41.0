@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup test unpack
+DEPEND=>=kde-frameworks/extra-cmake-modules-5.41:5 >=dev-qt/qtcore-5.7.1:5 test? ( >=dev-qt/qttest-5.7.1:5 app-misc/fdupes ) sys-devel/make >=dev-util/cmake-3.7.2 >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info test? ( >=dev-qt/qttest-5.7.1:5 ) dev-util/desktop-file-utils app-arch/xz-utils
+DESCRIPTION=Oxygen SVG icon theme
+EAPI=6
+HOMEPAGE=https://www.kde.org/
+IUSE=test
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
+LICENSE=LGPL-3
+RDEPEND=!kde-apps/kdepim-icons:4 !kde-frameworks/oxygen-icons:4
+SLOT=5/5.41
+SRC_URI=mirror://kde/stable/frameworks/5.41/oxygen-icons5-5.41.0.tar.xz
+_eclasses_=cmake-utils	77a5a8d3308359caadcdd91688f20093	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	flag-o-matic	a6089a2a4027ae3da4a460dc87b21050	gnome2-utils	4d211d7614f303710fca59db6ec12c88	kde5	aeb3e2e5e6d47b055239967bc5beafd1	kde5-functions	32035c63585f9f5de8a6610e7dab0aa9	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0	virtualx	171580f737f5aaf18fcb456548588066	xdg	6cd76cc914c1a759dee032778487b57f	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=ec9ece790d250e4927dcde8aea28491e
