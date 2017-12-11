@@ -10,7 +10,7 @@ BASE_PACKAGENAME="bin"
 BASE_AMD64_URI="http://packages.gentooexperimental.org/packages/amd64-libreoffice/amd64-${BASE_PACKAGENAME}-"
 BASE_X86_URI="http://packages.gentooexperimental.org/packages/x86-libreoffice/x86-${BASE_PACKAGENAME}-"
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_5 )
 PYTHON_REQ_USE="threads,xml"
 
 inherit kde4-base java-pkg-opt-2 python-single-r1 pax-utils prefix versionator
