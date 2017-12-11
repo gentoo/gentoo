@@ -117,7 +117,7 @@ app-admin/hardening-check 2.5 2.6 2.7: Report the hardening characterists of a s
 app-admin/hardinfo 0.5.2_pre20130823: A system information and benchmark tool for Linux systems
 app-admin/haskell-updater 1.2.9 1.2.10 1.2.12: Rebuild Haskell dependencies in Gentoo
 app-admin/hddtemp 0.3_beta15-r26: A simple utility to read the temperature of SMART capable hard drives
-app-admin/helm 2.7.2-r2: Kubernetes Package Manager
+app-admin/helm 2.7.2-r3: Kubernetes Package Manager
 app-admin/ide-smart 1.4-r1 1.4-r2: A tool to read SMART information from harddiscs
 app-admin/integrit 4.0 4.1-r1: file integrity verification program
 app-admin/jinit 0.1.12-r1: An alternative to sysvinit which supports the need(8) concept
