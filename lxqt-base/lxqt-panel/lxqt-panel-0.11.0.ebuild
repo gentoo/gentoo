@@ -56,7 +56,7 @@ RDEPEND="${CDEPEND}
 	>=lxde-base/lxmenu-data-0.1.2"
 
 PATCHES=(
-	${FILESDIR}/${P}-fix-undef-explicit.patch
+	"${FILESDIR}"/${P}-fix-undef-explicit.patch
 )
 
 src_configure() {
