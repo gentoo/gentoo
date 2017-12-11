@@ -59,7 +59,7 @@ RDEPEND="
 	>=net-libs/gnutls-1.0.25:0=
 	net-libs/libssh2
 	net-libs/libtirpc
-	|| ( sys-libs/glibc[rpc(-)] net-libs/rpcsvc-proto )
+	net-libs/rpcsvc-proto
 	>=net-misc/curl-7.18.0
 	sys-apps/dmidecode
 	>=sys-apps/util-linux-2.17
