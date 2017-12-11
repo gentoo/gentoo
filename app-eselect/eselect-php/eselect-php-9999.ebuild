@@ -16,8 +16,7 @@ IUSE="fpm apache2"
 
 # The "DirectoryIndex" line in 70_mod_php.conf requires mod_dir.
 RDEPEND="app-admin/eselect
-	apache2? ( www-servers/apache[apache2_modules_dir] )
-	fpm? ( sys-apps/gentoo-functions )"
+	apache2? ( www-servers/apache[apache2_modules_dir] )"
 
 src_prepare() {
 	eapply_user
