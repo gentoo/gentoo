@@ -20,20 +20,19 @@ src_configure() {
 
 	./configure \
 		--host=${CHOST} \
-		--prefix=/usr \
-		--infodir=/usr/share/info \
-		--mandir=/usr/share/man \
+		--prefix="${EPREFIX}"/usr \
+		--infodir="${EPREFIX}"/usr/share/info \
+		--mandir="${EPREFIX}"/usr/share/man \
 		${myconf} || die "./configure failed"
 
-	emake || die
 }
 
 src_install () {
-	make \
+	emake \
 		prefix=${D}/usr \
 		mandir=${D}/usr/share/man \
 		infodir=${D}/usr/share/info \
 		install || die
-	dodoc AUTHORS NEWS README ChangeLog
+	einstalldocs AUTHORS NEWS README ChangeLog
 	doman doc/ydecode.1 doc/yencode.1 doc/ypost.1 doc/ypostrc.5
 }
