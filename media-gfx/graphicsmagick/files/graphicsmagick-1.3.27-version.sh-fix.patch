@@ -1,0 +1,11 @@
+--- a/version.sh
++++ b/version.sh
+@@ -27,7 +27,7 @@ PACKAGE_STRING="$PACKAGE_NAME $PACKAGE_VERSION"
+ #
+ # Formal Package release date
+ # Set to string "unreleased" if package is not a formal release.
+-PACKAGE_RELEASE_DATE="2017-12-09
++PACKAGE_RELEASE_DATE="2017-12-09"
+ #PACKAGE_RELEASE_DATE="unreleased"
+ 
+ #
