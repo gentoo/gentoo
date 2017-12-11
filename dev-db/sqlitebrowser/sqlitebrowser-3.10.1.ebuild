@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cmake-utils eutils
+inherit cmake-utils eutils gnome2-utils xdg-utils
 
 DESCRIPTION="SQLite Database Browser"
 HOMEPAGE="http://sqlitebrowser.org"
@@ -56,4 +56,14 @@ src_configure() {
 src_install() {
 	cmake-utils_src_install
 	doicon images/sqlitebrowser.svg
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }
