@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrice Clement <monsieurp@gentoo.org> (12 Dec 2017)
+# Masked due to a hard dependency on an ancient versions of dev-libs/msgpack
+# (<0.6) that have been punted from the tree.
+net-misc/cocaine-core
+
 # Jonas Stein <jstein@gentoo.org> (10 Dec 2017)
 # Site blocks certain IP blocks from downloading files, while the package
 # may not be mirrored. (bug #640508)
