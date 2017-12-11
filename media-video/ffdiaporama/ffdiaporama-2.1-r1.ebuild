@@ -39,7 +39,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 DOCS=( authors.txt )
-PATCHES=( "${FILESDIR}"/${P}-{ffmpeg-2.4,libav10,ffmpeg-3.0}.patch )
+PATCHES=( "${DISTDIR}"/${P}-libav10.patch "${FILESDIR}"/${P}-{ffmpeg-2.4,ffmpeg-3.0}.patch )
 
 S="${WORKDIR}/ffDiaporama"
 
