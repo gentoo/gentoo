@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils readme.gentoo-r1
+inherit gnome2-utils xdg-utils readme.gentoo-r1
 
 DESCRIPTION="Intelligent Python IDE with unique code assistance and analysis"
 HOMEPAGE="http://www.jetbrains.com/pycharm/"
@@ -42,8 +42,18 @@ src_install() {
 	fperms a+x /opt/${PN}/bin/{pycharm.sh,fsnotifier{,64},inspect.sh}
 
 	dosym ../../opt/${PN}/bin/pycharm.sh /usr/bin/${PN}
-	newicon "bin/${MY_PN}.png" ${PN}.png
-	make_desktop_entry ${PN} "${PN}" "${PN}"
+	newicon bin/${MY_PN}.png ${PN}.png
+	make_desktop_entry ${PN} ${PN} ${PN}
 
 	readme.gentoo_create_doc
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+	gnome2_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
+	gnome2_icon_cache_update
 }
