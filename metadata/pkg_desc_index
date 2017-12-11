@@ -126,6 +126,7 @@ app-admin/keepassx 0.4.4 2.0.2-r1 2.0.3: Qt password manager compatible with its
 app-admin/keepassxc 2.1.4-r1 2.2.1-r1 2.2.2 9999: KeePassXC - KeePass Cross-platform Community Edition
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/kpcli 3.0 3.1: A command line interface to KeePass database files
+app-admin/kube-bench 0.0.6: Kubernetes Bench for Security runs the CIS Kubernetes Benchmark
 app-admin/lastpass-binary-component 4.1.44: Binary component required by the LastPass Password Manager browser extension
 app-admin/lastpass-cli 1.0.0 1.1.2 1.2.1 1.2.2: Interfaces with LastPass.com from the command line.
 app-admin/lib_users 0.10: Check for mapped libs and open files that are marked as deleted
@@ -5025,7 +5026,7 @@ dev-libs/mpfr 2.4.2_p3-r1 3.1.3_p4 3.1.4 3.1.5_p2 3.1.6: library for multiple-pr
 dev-libs/mps 1.106.2 1.110.0 1.111.0 1.114.0: Ravenbrook Memory Pool System
 dev-libs/msgpack 0.5.9 1.0.0 1.0.1 1.1.0 1.4.2 2.0.0 2.1.1: MessagePack is a binary-based efficient data interchange format
 dev-libs/nanomsg 1.0.0 1.1.0 1.1.2: High-performance messaging interface for distributed applications
-dev-libs/nettle 3.3-r2: Low-level cryptographic library
+dev-libs/nettle 3.3-r2 3.4: Low-level cryptographic library
 dev-libs/newt 0.52.15 0.52.18 0.52.20: Redhat's Newt windowing toolkit development files
 dev-libs/npth 1.3 1.4 1.5: New GNU Portable Threads Library
 dev-libs/nsgenbind 0.4: generate javascript to dom bindings from w3c webidl files
@@ -10542,7 +10543,7 @@ dev-util/itstool 2.0.2: Translation tool for XML documents that uses gettext fil
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jay 1.1.1-r2: A LALR(1) parser generator: Berkeley yacc retargeted to C# and Java
 dev-util/jconfig 2.8-r3 2.8.5 2.9: Utility that provides a simple API for the management of properties
-dev-util/jenkins-bin 2.73.2 2.73.3 2.84 2.86 2.87 2.90: Extensible continuous integration server
+dev-util/jenkins-bin 2.73.3 2.84 2.86 2.87 2.89.1 2.90: Extensible continuous integration server
 dev-util/kbuild 0.1.9998_pre20131130-r1 0.1.9998_pre20171020 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 33 34 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
 dev-util/kdbg 2.9.1: Graphical debugger interface
@@ -18483,7 +18484,7 @@ www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ and libcurl
 www-client/vivaldi 1.13.1008.34_p1: A new browser for our friends
-www-client/vivaldi-snapshot 1.14.1030.3_p1 1.14.1036.3_p1: A new browser for our friends
+www-client/vivaldi-snapshot 1.14.1036.3_p1 1.14.1038.3_p1: A new browser for our friends
 www-client/w3m 0.5.3-r9: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r7 0.3.2_p24-r9: A variant of w3m with support for multiple character encodings
 www-client/weboob 0g 0h 9998 9999: Consume lots of websites without a browser (Web Outside Of Browsers)
