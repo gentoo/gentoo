@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -21,6 +21,7 @@ CDEPEND="
 	x11-libs/gtk+:2
 	>=x11-libs/cairo-1.2.0
 	>=dev-scheme/guile-1.8[deprecated]
+	<dev-scheme/guile-2.2
 	nls? ( virtual/libintl )
 	stroke? ( >=dev-libs/libstroke-0.5.1 )"
 
