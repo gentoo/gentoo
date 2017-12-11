@@ -5,16 +5,14 @@ EAPI=6
 
 DESCRIPTION="WoeUSB  creates a Windows USB stick installer from a real Windows DVD or image."
 HOMEPAGE="https://github.com/slacka/WoeUSB"
-MY_PN="WoeUSB"
-MY_P="${MY_PN}-${PV}"
 
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/slacka/${MY_PN}.git"
+	EGIT_REPO_URI="https://github.com/slacka/${PN}.git"
 
 else
-	SRC_URI="https://github.com/slacka/${MY_PN}/archive/v${PV}.tar.gz"
-	S="${WORKDIR}/${MY_P}"
+	SRC_URI="https://github.com/slacka/${PN}/archive/v${PV}.tar.gz -> ${PF}.tar.gz"
+	S="${WORKDIR}/${PF}"
 fi
 
 LICENSE="GPL-3"
