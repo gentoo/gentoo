@@ -4,11 +4,11 @@ DESCRIPTION=Domain Name manipulation library for Ruby
 EAPI=5
 HOMEPAGE=https://github.com/knu/ruby-domain_name
 IUSE=test elibc_FreeBSD ruby_targets_ruby22 ruby_targets_ruby23 ruby_targets_ruby24 test
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ppc ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
+KEYWORDS=~alpha amd64 ~arm ~arm64 ppc ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
 LICENSE=BSD-2
 RDEPEND=ruby_targets_ruby22? ( >=dev-ruby/unf-0.0.5-r1:0[ruby_targets_ruby22] ) ruby_targets_ruby23? ( >=dev-ruby/unf-0.0.5-r1:0[ruby_targets_ruby23] ) ruby_targets_ruby24? ( >=dev-ruby/unf-0.0.5-r1:0[ruby_targets_ruby24] ) ruby_targets_ruby22? ( dev-lang/ruby:2.2 ) ruby_targets_ruby23? ( dev-lang/ruby:2.3 ) ruby_targets_ruby24? ( dev-lang/ruby:2.4 ) ruby_targets_ruby22? ( virtual/rubygems[ruby_targets_ruby22] ) ruby_targets_ruby23? ( virtual/rubygems[ruby_targets_ruby23] ) ruby_targets_ruby24? ( virtual/rubygems[ruby_targets_ruby24] )
 REQUIRED_USE=|| ( ruby_targets_ruby22 ruby_targets_ruby23 ruby_targets_ruby24 )
 SLOT=0
 SRC_URI=mirror://rubygems/domain_name-0.5.20170404.gem
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	java-utils-2	1971a6927fcd7ec839f7e12b28a24bdd	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	ruby-fakegem	cf1343b57e8029745950b4b147ff4d3a	ruby-ng	1a95cd8be181598c8171cf918aa225d9	ruby-utils	f8a0644cb27ba724df27b2a20a739b53	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
-_md5_=3a0099abea80577e34af485a7fcb80cd
+_md5_=bc09651c5fdd22ff7cb38bc10b46a753

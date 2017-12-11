@@ -9620,7 +9620,7 @@ dev-ruby/did_you_mean 1.0.2 1.1.0 1.1.2: 'did you mean?'experience in Ruby
 dev-ruby/diff-lcs 1.2.5-r1 1.3: Use the McIlroy-Hunt LCS algorithm to compute differences
 dev-ruby/dnsruby 1.59.3 1.60.0 1.60.1 1.60.2: A pure Ruby DNS client library
 dev-ruby/docile 1.1.5: Turns any Ruby object into a DSL
-dev-ruby/domain_name 0.5.24 0.5.20170223 0.5.20170404: Domain Name manipulation library for Ruby
+dev-ruby/domain_name 0.5.24 0.5.20170404: Domain Name manipulation library for Ruby
 dev-ruby/dotenv 2.2.1: Loads environment variables from .env into ENV
 dev-ruby/dust 0.1.7-r2: Descriptive block syntax definition for Test::Unit
 dev-ruby/elasticsearch 5.0.4: Ruby integrations for ES, elasticsearch module
@@ -9843,7 +9843,7 @@ dev-ruby/permutation 0.1.8-r1: Library performing operations with permutations o
 dev-ruby/pg 0.17.1-r1 0.18.4-r1 0.21.0: Ruby extension library providing an API to PostgreSQL
 dev-ruby/pg_array_parser 0.0.9-r2: Simple library to parse PostgreSQL arrays into a array of strings
 dev-ruby/pkg-config 1.1.7 1.2.3 1.2.4 1.2.7 1.2.8: A pkg-config implementation by Ruby
-dev-ruby/plist 3.2.0 3.3.0: A library to manipulate Property List files, also known as plists
+dev-ruby/plist 3.2.0 3.3.0 3.4.0: A library to manipulate Property List files, also known as plists
 dev-ruby/pluggaloid 1.0.2 1.1.1: Pluggaloid is extensible plugin system for mikutter
 dev-ruby/podcast 0.0.4-r2: A pure Ruby library for generating podcasts from mp3 files
 dev-ruby/poltergeist 1.9.0 1.10.0 1.14.0: A PhantomJS driver for Capybara
@@ -10100,7 +10100,7 @@ dev-ruby/typed-array 0.1.2-r1: Gem provides enforced-type functionality to Array
 dev-ruby/typhoeus 0.6.9 1.1.2 1.3.0: Runs HTTP requests in parallel while cleanly encapsulating handling logic
 dev-ruby/tzinfo 0.3.53 1.2.3 1.2.4: Daylight-savings aware timezone library
 dev-ruby/uconv 0.6.1-r2: A module to convert ISO/IEC 10646 (Unicode) string and Japanese strings
-dev-ruby/uglifier 2.7.2 3.2.0 4.0.0 4.0.1: Ruby wrapper for UglifyJS JavaScript compressor
+dev-ruby/uglifier 2.7.2 3.2.0 4.0.0 4.0.1 4.0.2: Ruby wrapper for UglifyJS JavaScript compressor
 dev-ruby/ultraviolet 1.0.1: A syntax highlighting engine based on Textpow
 dev-ruby/unf 0.1.4: A wrapper library to bring Unicode Normalization Form support to Ruby/JRuby
 dev-ruby/unf_ext 0.0.7.4: Unicode Normalization Form support library for CRuby
