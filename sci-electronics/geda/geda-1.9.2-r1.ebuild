@@ -1,8 +1,8 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils fdo-mime gnome2-utils versionator
+EAPI=6
+inherit autotools eutils xdg-utils gnome2-utils versionator
 
 MY_PN=${PN}-gaf
 MY_P=${MY_PN}-${PV}
@@ -40,13 +40,19 @@ S=${WORKDIR}/${MY_P}
 
 DOCS="AUTHORS NEWS README"
 
+PATCHES=( "${FILESDIR}"/${P}-guile-2.2.patch )
+
 src_prepare() {
+	default
+
 	if ! use doc ; then
 		sed -i -e '/^SUBDIRS = /s/docs//' Makefile.in || die
 	fi
 	if ! use examples ; then
 		sed -i -e 's/\texamples$//' Makefile.in || die
 	fi
+
+	eautoreconf
 }
 
 src_configure() {
@@ -70,13 +76,13 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	gnome2_icon_cache_update
 }
