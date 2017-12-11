@@ -2044,8 +2044,8 @@ app-office/kraft 0.59 0.80_pre20171115: Software to manage quotes and invoices i
 app-office/ledger 3.1.1: A double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 5.0.0: Library with common classes and functionality used by KDE finance applications
 app-office/libreoffice 5.4.2.2 5.4.3.2 5.4.9999 6.0.9999 9999: A full office productivity suite
-app-office/libreoffice-bin 5.4.2.2: A full office productivity suite. Binary package
-app-office/libreoffice-bin-debug 5.4.2.2: LibreOffice, a full office productivity suite. Binary package, debug info
+app-office/libreoffice-bin 5.4.2.2 5.4.2.2-r1: A full office productivity suite. Binary package
+app-office/libreoffice-bin-debug 5.4.2.2 5.4.2.2-r1: LibreOffice, a full office productivity suite. Binary package, debug info
 app-office/libreoffice-l10n 5.4.2.2 5.4.3.2: Translations for the Libreoffice suite
 app-office/lyx 2.0.8.1-r1 2.1.5-r1 2.2.2-r1 2.2.3 2.2.3-r1 2.2.3-r2: WYSIWYM frontend for LaTeX, DocBook, etc.
 app-office/magicpoint 1.13a_p20121015-r1: An X11 based presentation tool
@@ -14666,7 +14666,7 @@ net-dns/opendnssec 1.3.18-r1 1.4.8.2 1.4.12-r1 2.0.1-r1 2.0.3: An open-source tu
 net-dns/openresolv 3.8.1 3.9.0: A framework for managing DNS information
 net-dns/pdns 4.0.5 4.1.0: The PowerDNS Daemon
 net-dns/pdns-ldap-backend 0.2: Fork of the official but unmaintained LDAP backend
-net-dns/pdns-recursor 4.0.7 4.1.0: The PowerDNS Recursor
+net-dns/pdns-recursor 4.0.7 4.0.8 4.1.0: The PowerDNS Recursor
 net-dns/pdnsd 1.2.9a-r1: Proxy DNS server with permanent caching
 net-dns/rbldnsd 0.998 0.998-r2: DNS server designed to serve blacklist zones
 net-dns/resolv_wrapper 1.1.4 1.1.5: A wrapper for DNS name resolving or DNS faking
