@@ -50,5 +50,5 @@ src_compile() {
 src_install() {
 	dobin src/${EGO_PN}/${PN}
 	insinto /etc/kube-bench
-	doins src/${EGO_PN}/cfg /etc/kube-bench
+	doins -r src/${EGO_PN}/cfg
 }

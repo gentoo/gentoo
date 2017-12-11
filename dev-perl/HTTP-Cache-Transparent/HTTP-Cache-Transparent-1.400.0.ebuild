@@ -18,7 +18,10 @@ RDEPEND="dev-perl/libwww-perl
 	virtual/perl-Digest-MD5
 	virtual/perl-Storable"
 DEPEND="${RDEPEND}
-	test? ( virtual/perl-Test-Simple )"
+	test? (
+		dev-perl/Test-RequiresInternet
+		virtual/perl-Test-Simple
+	)"
 
 src_test() {
 	perl_rm_files t/pod.t t/pod-coverage.t
