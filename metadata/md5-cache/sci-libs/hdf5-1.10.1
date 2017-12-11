@@ -3,12 +3,12 @@ DEPEND=mpi? ( virtual/mpi[romio] ) szip? ( virtual/szip ) zlib? ( sys-libs/zlib:
 DESCRIPTION=General purpose library and file format for storing scientific data
 EAPI=5
 HOMEPAGE=http://www.hdfgroup.org/HDF5/
-IUSE=cxx debug examples fortran mpi static-libs szip threads zlib
+IUSE=cxx debug examples fortran +hl mpi static-libs szip threads zlib
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux
 LICENSE=NCSA-HDF
 RDEPEND=mpi? ( virtual/mpi[romio] ) szip? ( virtual/szip ) zlib? ( sys-libs/zlib:0= ) fortran? ( virtual/fortran )
-REQUIRED_USE=cxx? ( !mpi ) mpi? ( !cxx ) threads? ( !cxx !mpi !fortran )
+REQUIRED_USE=cxx? ( !mpi ) mpi? ( !cxx ) threads? ( !cxx !mpi !fortran !hl )
 SLOT=0/1.10.1
 SRC_URI=http://www.hdfgroup.org/ftp/HDF5/releases/hdf5-1.10/hdf5-1.10.1/src/hdf5-1.10.1.tar.bz2
 _eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	autotools-utils	5a4611dfba155b1659528663fad4cd5e	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	flag-o-matic	a6089a2a4027ae3da4a460dc87b21050	fortran-2	9e7f20c99213f0627ff7f873d4aaa25d	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	prefix	e51c7882b7b721e54e684f7eb143cbfe	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
-_md5_=debb4d77e233873daeb9cadf811cb53e
+_md5_=5190fefcab597c896b5f11d09fd593a6

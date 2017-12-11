@@ -3,10 +3,10 @@ DEPEND=sys-apps/gentoo-functions >=app-portage/elt-patches-20170422
 DESCRIPTION=Minimal baselayout for Gentoo Prefix installs
 EAPI=6
 HOMEPAGE=https://www.gentoo.org/
-KEYWORDS=~arm ~ppc-aix ~x64-cygwin ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt
+KEYWORDS=~arm ~arm64 ~ppc-aix ~x64-cygwin ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt
 LICENSE=GPL-2
 RDEPEND=sys-apps/gentoo-functions
 SLOT=0
 SRC_URI=mirror://gentoo/baselayout-2.2.tar.bz2 https://dev.gentoo.org/~vapier/dist/baselayout-2.2.tar.bz2
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=dcbb368f925dea19a342685ae7dc4775
+_md5_=f22d2cbe69237fde83f500f7e6612200
