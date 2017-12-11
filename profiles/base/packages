@@ -43,8 +43,6 @@
 *sys-apps/kbd
 # temporary bugfix for #398295
 *sys-apps/less
-# stopgap solution for functions.sh #373219 and #504116
-*sys-apps/openrc
 *sys-process/procps
 *sys-process/psmisc
 *sys-apps/sed
