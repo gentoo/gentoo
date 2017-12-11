@@ -128,7 +128,7 @@ src_compile() {
 	GOPATH="${S}" go build -o bin/protoc-gen-go ./vendor/github.com/golang/protobuf/protoc-gen-go || die
 	./scripts/setup-apimachinery.sh || die
 	GOBINDIR="$(pwd)/bin" GOPATH="${S}"\
-	go install -v -ldflags "-X k8s.io/helm/pkg/version.Version=${PV} -X k8s.io/helm/pkg/version.BuildMetadata= -X k8s.io/helm/pkg/version.GitCommit=${GIT_COMMIT} -X k8s.io/helm/pkg/version.GitTreeState=clean" k8s.io/helm/cmd/... || die
+	go install -v -ldflags "-X k8s.io/helm/pkg/version.Version=v${PV} -X k8s.io/helm/pkg/version.BuildMetadata= -X k8s.io/helm/pkg/version.GitCommit=${GIT_COMMIT} -X k8s.io/helm/pkg/version.GitTreeState=clean" k8s.io/helm/cmd/... || die
 	popd || die
 	bin/${PN} completion bash > ${PN}.bash || die
 	bin/${PN} completion zsh > ${PN}.zsh || die
