@@ -97,6 +97,7 @@ src_prepare() {
 src_configure() {
 	strip-flags
 	filter-flags -pie					#526948
+	append-ldflags $(test-flags -no-pie)	#639570
 
 	if use sh; then
 		replace-flags "-O[1-9]" -O0		#262359
