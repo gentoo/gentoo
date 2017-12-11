@@ -8,7 +8,7 @@ inherit distutils-r1
 
 MY_PN=${PN/-/.}
 
-DESCRIPTION="python3_4 python3_5 python3_6"
+DESCRIPTION="NFS-safe file locking with timeouts for POSIX systems."
 HOMEPAGE="https://gitlab.com/warsaw/flufl.lock"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${MY_PN}-${PV}"
