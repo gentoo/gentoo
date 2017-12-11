@@ -7379,6 +7379,7 @@ dev-python/async 0.6.2: Async Framework
 dev-python/async_timeout 1.0.0 1.1.0 1.2.0 1.2.1: Timeout context manager for asyncio programs
 dev-python/atom 0.3.10: Memory efficient Python objects
 dev-python/atomicwrites 0.1.8 0.1.9 1.1.5-r2: Atomic file writes
+dev-python/atpublic 1.0: A decorator and function to polulate a module's __all__ and the module globals.
 dev-python/atpy 0.9.7: Astronomical tables support for Python
 dev-python/attrdict 2.0.0: A dict with attribute-style access
 dev-python/attrs 16.3.0-r1 17.2.0 17.3.0: Attributes without boilerplate
@@ -7686,7 +7687,7 @@ dev-python/extras 0.0.3 1.0.0: Useful extra bits for Python that should be in th
 dev-python/extremes 1.1.1: Production-quality 'Min' and 'Max' objects
 dev-python/eyeD3 0.7.5: Module for manipulating ID3 (v1 + v2) tags in Python
 dev-python/fabric 1.10.0-r1 1.12.0 1.14.0: A simple pythonic tool for remote execution and deployment
-dev-python/falcon 0.1.6 0.1.7 0.1.8 0.1.9: A supersonic micro-framework for building cloud APIs
+dev-python/falcon 0.1.6 0.1.7 0.1.8 0.1.9 1.3.0: A supersonic micro-framework for building cloud APIs
 dev-python/fasteners 0.13.0 0.14.1: Python package that provides useful locks
 dev-python/fastparquet 0.1.0 0.1.1: Python implementation of the parquet columnar file format
 dev-python/faulthandler 2.6: functions to dump Python tracebacks explicitly (on fault, user signal, timeout)
@@ -7741,6 +7742,9 @@ dev-python/flask-xml-rpc 0.1.2-r1: XML-RPC support for Flask applications
 dev-python/flexx 0.3.1 0.4.1: Pure Python toolkit for creating GUI's using web technology
 dev-python/flipflop 1.0: A FastCGI/WSGI gateway
 dev-python/flower 0.9.1-r1: Real-time monitor and web admin for Celery distributed task queue
+dev-python/flufl-bounce 3.0: Email bounce detectors.
+dev-python/flufl-i18n 2.0.1: A high level API for Python internationalization.
+dev-python/flufl-lock 3.2: python3_4 python3_5 python3_6
 dev-python/flup 1.0.2-r1: Random assortment of WSGI servers
 dev-python/fonttools 3.0 3.10.0 3.15.1 3.17.0 3.18.0 3.19.0 3.20.1: Library for manipulating TrueType, OpenType, AFM and Type1 fonts
 dev-python/foolscap 0.7.0 0.11.0: RPC protocol for Twisted
@@ -9068,10 +9072,13 @@ dev-python/zeroconf 0.17.5 0.19.1: Pure Python Multicast DNS Service Discovery L
 dev-python/zfec 1.4.24: Fast erasure codec for the command-line, C, Python, or Haskell
 dev-python/zict 0.1.2: Mutable mapping tools
 dev-python/zope-component 4.3.0 4.3.0-r1 4.4.0 4.4.1: Zope Component Architecture
+dev-python/zope-configuration 4.1.0: Zope Configuration Architecture
 dev-python/zope-deprecation 4.2.0: Zope Deprecation Infrastructure
 dev-python/zope-event 4.2.0 4.2.0-r1 4.3.0: Event publishing / dispatch, used by Zope Component Architecture
 dev-python/zope-exceptions 4.1.0: General purpose exceptions for Zope packages
+dev-python/zope-i18nmessageid 4.1.0: Zope i18nmessageid Architecture
 dev-python/zope-interface 4.1.1 4.3.2 4.4.0 4.4.0-r1 4.4.1 4.4.2 4.4.3: Interfaces for Python
+dev-python/zope-schema 4.5.0: Zope schema Architecture
 dev-python/zope-testing 4.6.1 4.6.2: Zope testing helpers
 dev-python/zope-testrunner 4.6.0 4.7.0: Zope testrunner script
 dev-python/zsi 2.1_alpha1-r1: Web Services for Python
