@@ -1299,7 +1299,7 @@ app-emulation/diskimage-builder 1.28.0 2.9.0: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.0.0-r1: DLX Simulator
 app-emulation/docker 17.06.2 17.09.0 17.10.0 17.11.0 9999: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-bench-security 1.3.2 1.3.3: Test for best practices around deploying docker containers
-app-emulation/docker-compose 1.17.1 1.18.0_rc1: Multi-container orchestration for Docker
+app-emulation/docker-compose 1.17.1 1.18.0_rc1 1.18.0_rc2: Multi-container orchestration for Docker
 app-emulation/docker-gc 9999: Docker garbage collection of containers and images
 app-emulation/docker-machine 0.12.2 0.13.0: Machine management for a container-centric world
 app-emulation/docker-machine-kvm 0.10.0: KVM driver for docker-machine
@@ -5024,7 +5024,7 @@ dev-libs/mongo-cxx-driver 0.0.2.6.7-r1 1.0.0 1.0.5 1.1.2-r1: C++ Driver for Mong
 dev-libs/mpc 1.0.1 1.0.2 1.0.2-r1 1.0.3: A library for multiprecision complex arithmetic with exact rounding
 dev-libs/mpfr 2.4.2_p3-r1 3.1.3_p4 3.1.4 3.1.5_p2 3.1.6: library for multiple-precision floating-point computations with exact rounding
 dev-libs/mps 1.106.2 1.110.0 1.111.0 1.114.0: Ravenbrook Memory Pool System
-dev-libs/msgpack 0.5.9 1.0.0 1.0.1 1.1.0 1.4.2 2.0.0 2.1.1: MessagePack is a binary-based efficient data interchange format
+dev-libs/msgpack 1.1.0 1.4.2 2.0.0 2.1.1: MessagePack is a binary-based efficient data interchange format
 dev-libs/nanomsg 1.0.0 1.1.0 1.1.2: High-performance messaging interface for distributed applications
 dev-libs/nettle 3.3-r2 3.4: Low-level cryptographic library
 dev-libs/newt 0.52.15 0.52.18 0.52.20: Redhat's Newt windowing toolkit development files
@@ -5157,7 +5157,7 @@ dev-lisp/asdf-binary-locations 20061018: ASDF-Extension to specify where Common 
 dev-lisp/cl-ppcre 2.0.11: CL-PPCRE is a portable regular expression library for Common Lisp.
 dev-lisp/cl-ppcre-unicode 2.0.11: CL-PPCRE is a portable regular expression library for Common Lisp.
 dev-lisp/cl-unicode 0.1.5: Provides Common Lisp implementations with knowledge about Unicode characters.
-dev-lisp/clisp 2.48-r1 2.48-r2 2.49-r8 2.49-r9 2.49-r100 2.49-r101: A portable, bytecode-compiled implementation of Common Lisp
+dev-lisp/clisp 2.48-r1 2.48-r2 2.49-r8 2.49-r9 2.49-r100 2.49-r101 2.49.60: A portable, bytecode-compiled implementation of Common Lisp
 dev-lisp/clozurecl 1.10 1.11-r1 1.11-r2 1.11-r3 1.11.5: Common Lisp implementation, derived from Digitool's MCL product
 dev-lisp/clx 0.7.4-r1 9999: A fork of crhodes' fork of danb's fork of CLX, an X11 client for Common Lisp
 dev-lisp/cmucl 20e 21a: CMU Common Lisp is an implementation of ANSI Common Lisp
@@ -6386,22 +6386,22 @@ dev-perl/Net-OpenID-Common 1.200.0: Libraries shared between Net::OpenID::Consum
 dev-perl/Net-OpenID-Consumer 1.180.0: Library for consumers of OpenID identities
 dev-perl/Net-OpenSSH 0.600.0 0.700.0 0.740.0: Net::OpenSSH, Perl wrapper for OpenSSH secure shell client
 dev-perl/Net-Patricia 1.210.0-r1 1.220.0: Patricia Trie perl module for fast IP address lookups
-dev-perl/Net-Pcap 0.170.0-r1: Perl Net::Pcap - Perl binding to the LBL pcap
+dev-perl/Net-Pcap 0.170.0-r1 0.180.0: Interface to the pcap(3) LBL packet capture library
 dev-perl/Net-PcapUtils 0.10.0-r1: Perl Net::PcapUtils - Net::Pcap library utils
 dev-perl/Net-RBLClient 0.500.0-r1: Net::RBLClient - Queries multiple Realtime Blackhole Lists in parallel
 dev-perl/Net-RawIP 0.250.0-r1: Perl Net::RawIP - Raw IP packets manipulation Module
 dev-perl/Net-SFTP 0.100.0-r1: Secure File Transfer Protocol client
 dev-perl/Net-SFTP-Foreign 1.810.0 1.870.0: SSH File Transfer Protocol client
-dev-perl/Net-SMTP-SSL 1.30.0: SSL support for Net::SMTP
+dev-perl/Net-SMTP-SSL 1.30.0 1.40.0: (Deprecated) SSL support for Net::SMTP
 dev-perl/Net-SMTP-TLS 0.120.0-r2: A SMTP client supporting TLS and AUTH
 dev-perl/Net-SMTP-TLS-ButMaintained 0.240.0-r1: An SMTP client supporting TLS and AUTH
-dev-perl/Net-SMTPS 0.40.0 0.50.0 0.60.0: SSL/STARTTLS support for Net::SMTP
+dev-perl/Net-SMTPS 0.40.0 0.50.0 0.60.0 0.90.0: SSL/STARTTLS support for Net::SMTP
 dev-perl/Net-SNMP 6.0.1-r1 6.0.1-r2: A SNMP Perl Module
 dev-perl/Net-SNPP 1.170.0-r1: libnet SNPP component
-dev-perl/Net-SSH-Any 0.40.0: Use any SSH module
-dev-perl/Net-SSH-AuthorizedKeysFile 0.170.0: Read and modify ssh's authorized_keys files
-dev-perl/Net-SSH-Perl 1.360.0-r1 1.420.0 2.90.0_p1-r2: Perl client Interface to SSH
-dev-perl/Net-SSH2 0.580.0-r1: Support for the SSH 2 protocol via libssh2
+dev-perl/Net-SSH-Any 0.40.0 0.100.0: Use any SSH module
+dev-perl/Net-SSH-AuthorizedKeysFile 0.170.0 0.180.0: Read and modify ssh's authorized_keys files
+dev-perl/Net-SSH-Perl 1.360.0-r1 1.420.0 2.90.0_p1-r2 2.140.0: Perl client Interface to SSH
+dev-perl/Net-SSH2 0.580.0-r1 0.670.0: Support for the SSH 2 protocol via libssh2
 dev-perl/Net-SSLeay 1.810.0 1.820.0: Perl extension for using OpenSSL
 dev-perl/Net-Server 2.8.0 2.9.0: Extensible, general Perl server engine
 dev-perl/Net-Server-Coro 1.300.0-r1: A co-operative multithreaded server using Coro
@@ -14454,7 +14454,7 @@ net-analyzer/nettop 0.2.3-r2: top like program for network activity
 net-analyzer/netwag 5.39.0: Tcl/tk interface to netwox (Toolbox of 222 utilities for testing Ethernet/IP networks)
 net-analyzer/netwatch 1.3.0.1-r3: Ethernet/PPP IP Packet Monitor
 net-analyzer/netwox 5.39.0: Toolbox of 217 utilities for testing Ethernet/IP networks
-net-analyzer/nfdump 1.6.14-r1 1.6.15: A set of tools to collect and process netflow data
+net-analyzer/nfdump 1.6.14-r1 1.6.15 1.6.16: A set of tools to collect and process netflow data
 net-analyzer/ngrep 1.45-r3: A grep for network layers
 net-analyzer/nikto 1.36 2.1.5: Web Server vulnerability scanner
 net-analyzer/nipper 0.12.0: Router configuration security analysis tool
@@ -14728,8 +14728,8 @@ net-fs/netatalk 3.1.8 3.1.10 3.1.11: Open Source AFP server
 net-fs/nfs-utils 1.3.4-r1 2.1.1-r1 2.1.2_rc6 2.2.1 2.2.2_rc1 2.2.2_rc1_p20171107: NFS client and server daemons
 net-fs/nfs4-acl-tools 0.3.3: Commandline and GUI tools that deal directly with NFSv4 ACLs
 net-fs/nfstest 1.0.2 2.1.2: Tools for testing either the NFS client or the NFS server
-net-fs/openafs 1.6.20.1 1.6.20.2-r1 1.6.21-r1 1.6.21.1: The OpenAFS distributed file system
-net-fs/openafs-kernel 1.6.20.1 1.6.20.2-r1 1.6.21-r1 1.6.21.1: The OpenAFS distributed file system kernel module
+net-fs/openafs 1.6.22: The OpenAFS distributed file system
+net-fs/openafs-kernel 1.6.22: The OpenAFS distributed file system kernel module
 net-fs/openafs-legacy 0.1: Legacy path symlinks to access FHS-compliant OpenAFS installation
 net-fs/s3backer 1.3.7: FUSE-based single file backing store via Amazon S3
 net-fs/s3fs 1.74 1.78 1.80: Amazon S3 mounting via fuse
@@ -16706,7 +16706,7 @@ sci-mathematics/octave 4.2.1: High-level interactive language for numerical comp
 sci-mathematics/octave-epstk 2.3 2.4: Graphical output functions for Matlab and Octave
 sci-mathematics/otter 3.3-r3: An Automated Deduction System
 sci-mathematics/p9m4 05-r1: This is a Graphical User Interface for Prover9 and Mace4
-sci-mathematics/pari 2.3.5 2.5.0-r3 2.5.1 2.5.1-r1 2.5.2 2.5.3 2.5.4 2.7.0 2.7.1: Computer-aided number theory C library and tools
+sci-mathematics/pari 2.3.5 2.5.4 2.7.1: Computer-aided number theory C library and tools
 sci-mathematics/pari-data 20120726: Data sets for pari
 sci-mathematics/polymake 3.0_p2: research tool for polyhedral geometry and combinatorics
 sci-mathematics/prng 3.0.2-r2: Pseudo-Random Number Generator library
@@ -16813,7 +16813,7 @@ sci-visualization/pyxplot 0.9.2-r1: Gnuplot like graphing program publication-qu
 sci-visualization/qtiplot 0.9.8.9-r2 0.9.8.9-r3 0.9.8.9-r4: Qt based clone of the Origin plotting package
 sci-visualization/quickplot 0.10.6 0.10.8 1.0.1_rc: A fast interactive 2D plotter
 sci-visualization/spectromatic 1.0-r3: Generates time-frequency analysis images from wav files
-sci-visualization/spyview 20150124 20150124-r1: 2D and 3D data visualization and analysis program
+sci-visualization/spyview 20150124-r1: 2D and 3D data visualization and analysis program
 sci-visualization/veusz 1.25.1 1.26.1: Qt scientific plotting package with good Postscript output
 sci-visualization/visit 2.12.3: A software that delivers parallel interactive visualizations
 sci-visualization/xd3d 8.3.1-r1: Scientific visualization tool

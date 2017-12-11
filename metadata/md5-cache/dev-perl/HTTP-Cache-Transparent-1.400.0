@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=dev-perl/libwww-perl virtual/perl-Digest-MD5 virtual/perl-Storable test? ( virtual/perl-Test-Simple ) dev-lang/perl:=
+DEPEND=dev-perl/libwww-perl virtual/perl-Digest-MD5 virtual/perl-Storable test? ( dev-perl/Test-RequiresInternet virtual/perl-Test-Simple ) dev-lang/perl:=
 DESCRIPTION=Cache the result of http get-requests persistently
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/HTTP-Cache-Transparent/
@@ -10,4 +10,4 @@ RDEPEND=dev-perl/libwww-perl virtual/perl-Digest-MD5 virtual/perl-Storable dev-l
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/M/MA/MATTIASH/HTTP-Cache-Transparent-1.4.tar.gz
 _eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
-_md5_=df6454e1ae3ea0903b4539dfdecfad54
+_md5_=aefcf76a3de59b45005a6554452a9842
