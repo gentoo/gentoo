@@ -55,6 +55,10 @@ RDEPEND="${CDEPEND}
 	dev-qt/qtsvg:5
 	>=lxde-base/lxmenu-data-0.1.2"
 
+PATCHES=(
+	${FILESDIR}/${P}-fix-undef-explicit.patch
+)
+
 src_configure() {
 	local mycmakeargs i y
 	mycmakeargs=( -DPULL_TRANSLATIONS=OFF )
