@@ -74,7 +74,7 @@ all_ruby_prepare() {
 	# remove ldap staff module if disabled to avoid #413779
 	use ldap || rm app/models/auth_source_ldap.rb || die
 
-	eapply "${FILESDIR}/${P}_requires.patch"
+	eapply "${FILESDIR}/${PN}-3.4.3_requires.patch"
 }
 
 all_ruby_install() {
