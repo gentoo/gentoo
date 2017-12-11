@@ -10572,7 +10572,7 @@ dev-util/massif-visualizer 0.7.0: Tool visualising massif data
 dev-util/mdds 1.2.3 1.3.1 9999: A collection of multi-dimensional data structure and indexing algorithm
 dev-util/meld 3.16.4 3.18.0: A graphical diff and merge tool
 dev-util/memprof 0.6.2-r1: Profiling and leak detection tool
-dev-util/meson 0.41.2 0.42.0 0.42.1 0.43.0 9999: Open source build system
+dev-util/meson 0.41.2 0.42.0 0.42.1 0.43.0 0.44.0 9999: Open source build system
 dev-util/min-cscope 16.1.0: Interactively examine a C program
 dev-util/mingw-runtime 3.18 3.20 3.20.2 4.0.3.1: Free Win32 runtime and import library definitions
 dev-util/mingw64-runtime 3.0.0 3.1.0 3.2.0-r1 4.0.1 4.0.4 4.0.6 5.0.1 5.0.2 5.0.2-r1 5.0.2-r2 5.0.3: Free Win64 runtime and import library definitions
