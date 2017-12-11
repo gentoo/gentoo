@@ -1,0 +1,31 @@
+--- ngspice-26/src/xspice/icm/makedefs.in
++++ ngspice-26/src/xspice/icm/makedefs.in
+@@ -44,16 +44,19 @@
+ LIBS = -lm
+ 
+ # Flags to use when linking shared library
+-LDFLAGS = -shared
+ ifeq ($(ISMINGW), 1)
+-  LDFLAGS = -shared @LDFLAGS@
+-endif
+-ifeq "$(strip $(uname))" "Darwin"
+-  LDFLAGS = -bundle -flat_namespace -undefined suppress
+-endif
+-ifeq "$(strip $(uname))" "SunOS"
+-  ifneq "$(CC)" "gcc"
+-    LDFLAGS = -G
++  LDFLAGS += -shared @LDFLAGS@
++else
++  ifeq "$(strip $(uname))" "Darwin"
++    LDFLAGS += -bundle -flat_namespace -undefined suppress
++  else
++    ifeq "$(strip $(uname))" "SunOS"
++      ifneq "$(CC)" "gcc"
++        LDFLAGS += -G
++      else
++        LDFLAGS += -shared
++      endif
++    endif
+   endif
+ endif
+ 

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,6 +14,7 @@ DESCRIPTION="Movie creator from photos and video clips"
 HOMEPAGE="http://ffdiaporama.tuxfamily.org"
 SRC_URI="http://ffdiaporama.tuxfamily.org/script/GetPackage.php?f=${PN}_bin_${BIN_PV}.tar.gz -> ${PN}_bin_${BIN_PV}.tar.gz
 	http://ffdiaporama.tuxfamily.org/script/GetPackage.php?f=${PN}_rsc_${RSC_PV}.tar.gz -> ${PN}_rsc_${RSC_PV}.tar.gz
+	https://dev.gentoo.org/~jstein/dist/ffdiaporama-2.1-libav10.patch
 	openclipart? ( http://openclipart.org/downloads/${OPENCLI_PV}/${OPENCLI_P}-svgonly.tar.bz2 )
 	texturemate? ( http://ffdiaporama.tuxfamily.org/script/GetPackage.php?f=${PN}_texturemate_${TMT_PV}.tar.gz -> ${PN}_texturemate_${TMT_PV}.tar.gz )"
 

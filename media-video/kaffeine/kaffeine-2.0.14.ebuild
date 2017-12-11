@@ -46,6 +46,13 @@ RDEPEND="${CDEPEND}
 
 DOCS=( Changelog NOTES README.md )
 
+src_prepare() {
+	if has_version '<kde-frameworks/kdoctools-5.40.0-r1'; then
+		rm -r po/pt_BR/docs || die "failed to remove pt-BR handbook"
+	fi
+	kde5_src_prepare
+}
+
 src_configure() {
 	# tools working on $HOME directory for a local git checkout
 	local mycmakeargs=(

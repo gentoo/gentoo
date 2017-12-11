@@ -1,6 +1,20 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (03 Dec 2017)
+# Integration for Qt4-based applications
+kde-plasma/plasma-desktop qt4
+kde-plasma/breeze qt4
+kde-plasma/oxygen qt4
+
+# Andreas Sturmlechner <asturm@gentoo.org> (03 Dec 2017)
+# Required by kde-frameworks/kdelibs
+app-crypt/qca qt4
+dev-libs/libdbusmenu-qt qt4
+media-libs/phonon qt4
+media-libs/phonon-vlc qt4
+sys-auth/polkit-qt qt4
+
 # Andreas Sturmlechner <asturm@gentoo.org> (30 Nov 2017)
 # Not required, but makes life easier with Qt; bug #457934
 app-arch/unzip natspec

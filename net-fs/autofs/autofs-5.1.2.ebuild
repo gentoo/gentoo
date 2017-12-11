@@ -44,7 +44,9 @@ RDEPEND=">=sys-apps/util-linux-2.20
 
 DEPEND="${RDEPEND}
 	sys-devel/flex
-	virtual/yacc"
+	virtual/yacc
+	libtirpc? ( net-libs/rpcsvc-proto )
+"
 
 CONFIG_CHECK="~AUTOFS4_FS"
 

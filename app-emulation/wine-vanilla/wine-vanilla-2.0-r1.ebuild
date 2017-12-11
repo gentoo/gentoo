@@ -20,7 +20,7 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	MAJOR_V=$(get_version_component_range 1)
 	SRC_URI="https://dl.winehq.org/wine/source/${MAJOR_V}.0/${MY_P}.tar.bz2"
-	KEYWORDS="-* ~amd64 ~x86 ~x86-fbsd"
+	KEYWORDS="-* amd64 x86 ~x86-fbsd"
 fi
 S="${WORKDIR}/${MY_P}"
 
@@ -483,7 +483,7 @@ multilib_src_install_all() {
 	# respect LINGUAS when installing man pages, #469418
 	local l
 	for l in de fr pl; do
-		use linguas_${l} || rm -r "${D%/}${MY_MANDIR}"/${l}*
+		use linguas_${l} || rm -rf "${D%/}${MY_MANDIR}"/${l}*
 	done
 
 	eval "${glob_state}"

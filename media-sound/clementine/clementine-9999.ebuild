@@ -20,7 +20,7 @@ LICENSE="GPL-3"
 SLOT="0"
 [[ ${PV} == *9999* ]] || \
 KEYWORDS="~amd64 ~x86"
-IUSE="box cdda +dbus debug dropbox googledrive ipod lastfm mms moodbar mtp projectm pulseaudio seafile skydrive test +udisks wiimote +X"
+IUSE="box cdda +dbus debug dropbox googledrive ipod lastfm mms moodbar mtp projectm pulseaudio seafile skydrive test +udisks wiimote"
 
 REQUIRED_USE="
 	udisks? ( dbus )
@@ -41,6 +41,7 @@ COMMON_DEPEND="
 	dev-qt/qtsql:5[sqlite]
 	dev-qt/qtwebkit:5
 	dev-qt/qtwidgets:5
+	dev-qt/qtx11extras:5
 	dev-qt/qtxml:5
 	media-libs/chromaprint:=
 	media-libs/gstreamer:1.0
@@ -50,6 +51,7 @@ COMMON_DEPEND="
 	sys-libs/zlib
 	virtual/glu
 	virtual/opengl
+	x11-libs/libX11
 	cdda? ( dev-libs/libcdio )
 	dbus? ( dev-qt/qtdbus:5 )
 	ipod? ( >=media-libs/libgpod-0.8.0 )
@@ -59,10 +61,6 @@ COMMON_DEPEND="
 	projectm? (
 		media-libs/glew:=
 		>=media-libs/libprojectm-1.2.0
-	)
-	X? (
-		dev-qt/qtx11extras:5
-		x11-libs/libX11
 	)
 "
 # Note: sqlite driver of dev-qt/qtsql is bundled, so no sqlite use is required; check if this can be overcome someway;
@@ -156,7 +154,6 @@ src_configure() {
 		-DENABLE_LIBPULSE="$(usex pulseaudio)"
 		-DENABLE_UDISKS2="$(usex udisks)"
 		-DENABLE_WIIMOTEDEV="$(usex wiimote)"
-		-DCMAKE_DISABLE_FIND_PACKAGE_X11="$(usex X)"
 	)
 
 	use !debug && append-cppflags -DQT_NO_DEBUG_OUTPUT

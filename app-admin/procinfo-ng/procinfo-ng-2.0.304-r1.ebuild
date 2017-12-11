@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,7 +15,7 @@ KEYWORDS="amd64 hppa x86"
 IUSE=""
 
 RDEPEND="
-	sys-libs/ncurses
+	sys-libs/ncurses:0=
 	!app-admin/procinfo"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"

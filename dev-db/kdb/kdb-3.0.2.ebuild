@@ -29,6 +29,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
+	dev-qt/linguist-tools:5
 "
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"

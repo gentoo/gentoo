@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
-inherit eutils fdo-mime flag-o-matic gnome2-utils versionator
+inherit eutils xdg-utils flag-o-matic gnome2-utils versionator
 
 MY_PN=${PN}-gaf
 MY_P=${MY_PN}-${PV}
@@ -21,6 +21,7 @@ CDEPEND="
 	x11-libs/gtk+:2
 	>=x11-libs/cairo-1.2.0
 	>=dev-scheme/guile-1.8[deprecated]
+	<dev-scheme/guile-2.2
 	nls? ( virtual/libintl )
 	stroke? ( >=dev-libs/libstroke-0.5.1 )"
 
@@ -69,13 +70,13 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	gnome2_icon_cache_update
 }

@@ -11,8 +11,12 @@ sys-libs/glibc
 # We use eudev which is tested on both uclibc and musl
 sys-apps/systemd
 sys-fs/udev
-#
+
+# dev-libs/elfutils needs a port to musl, bug #602126
 dev-libs/elfutils
+
+# packages that unconditionally depend on dev-libs/elfutils
+<net-firewall/fwbuilder-5.3.7
 
 # packages that need masked packages or multilib
 dev-games/gtkradiant

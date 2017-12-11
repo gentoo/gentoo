@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,9 +18,9 @@ IUSE="debug ewf +fuse rawio +ssl static-libs +uuid unicode zlib"
 
 DEPEND="
 	sys-libs/zlib
-	fuse? ( sys-fs/fuse )
+	fuse? ( sys-fs/fuse:= )
 	uuid? ( sys-apps/util-linux )
-	ssl? ( dev-libs/openssl )
+	ssl? ( dev-libs/openssl:0= )
 	zlib? ( sys-libs/zlib )"
 RDEPEND="${DEPEND}"
 

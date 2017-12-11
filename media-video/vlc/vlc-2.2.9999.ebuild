@@ -21,7 +21,7 @@ else
 	fi
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 -sparc ~x86 ~x86-fbsd"
 fi
-inherit autotools flag-o-matic toolchain-funcs versionator virtualx ${SCM}
+inherit autotools flag-o-matic gnome2-utils toolchain-funcs versionator virtualx xdg-utils ${SCM}
 
 DESCRIPTION="VLC media player - Video player and streamer"
 HOMEPAGE="https://www.videolan.org/vlc/"
@@ -32,12 +32,12 @@ SLOT="0/5-8" # vlc - vlccore
 IUSE="a52 aalib alsa altivec atmo +audioqueue +avcodec +avformat bidi bluray cdda
 	cddb chromaprint dbus dc1394 debug directfb directx dts dvb +dvbpsi dvd dxva2
 	elibc_glibc +encode faad fdk fluidsynth +ffmpeg flac fontconfig +gcrypt gme
-	gnome gnutls growl gstreamer httpd ieee1394 jack jpeg kate kde libass libav
+	gnome gnutls growl gstreamer httpd ieee1394 jack jpeg kate libass libav
 	libcaca libnotify +libsamplerate libtiger linsys libtar lirc live lua
 	macosx-dialog-provider macosx-eyetv macosx-quartztext macosx-qtkit
 	matroska cpu_flags_x86_mmx modplug mp3 mpeg mtp musepack ncurses neon ogg
 	omxil opencv opengl optimisememory opus png postproc projectm pulseaudio
-	qt4 +qt5 rdp rtsp run-as-root samba schroedinger sdl sdl-image sftp shout
+	+qt5 rdp rtsp run-as-root samba schroedinger sdl sdl-image sftp shout
 	sid skins speex cpu_flags_x86_sse svg +swscale taglib theora tremor truetype
 	twolame udev upnp vaapi v4l vcdx vdpau vlm vnc vorbis vpx wma-fixed +X
 	x264 x265 +xcb xml xv zeroconf zvbi
@@ -55,10 +55,9 @@ REQUIRED_USE="
 	libcaca? ( X )
 	libtar? ( skins )
 	libtiger? ( kate )
-	qt4? ( X )
 	qt5? ( X )
 	sdl? ( X )
-	skins? ( truetype X xml || ( qt4 qt5 ) )
+	skins? ( qt5 truetype X xml )
 	vaapi? ( avcodec X )
 	vdpau? ( X )
 	vlm? ( encode )
@@ -86,7 +85,7 @@ RDEPEND="
 	chromaprint? ( >=media-libs/chromaprint-0.6:0 )
 	dbus? ( >=sys-apps/dbus-1.6:0 )
 	dc1394? ( >=sys-libs/libraw1394-2.0.1:0 >=media-libs/libdc1394-2.1:2 )
-	directfb? ( dev-libs/DirectFB:0 sys-libs/zlib:0 )
+	directfb? ( dev-libs/DirectFB:0 )
 	dts? ( >=media-libs/libdca-0.0.5:0 )
 	dvbpsi? ( >=media-libs/libdvbpsi-1.0.0:0= )
 	dvd? ( >=media-libs/libdvdread-4.9:0 >=media-libs/libdvdnav-4.9:0 )
@@ -126,20 +125,19 @@ RDEPEND="
 	opencv? ( >media-libs/opencv-2:0= )
 	opengl? ( virtual/opengl:0 >=x11-libs/libX11-1.3.99.901:0 )
 	opus? ( >=media-libs/opus-1.0.3:0 )
-	png? ( media-libs/libpng:0= sys-libs/zlib:0 )
+	png? ( media-libs/libpng:0= )
 	postproc? (
 		!libav? ( >=media-video/ffmpeg-2.2:0= )
 		libav? ( media-libs/libpostproc:0= )
 	)
 	projectm? ( media-libs/libprojectm:0 media-fonts/dejavu:0 )
 	pulseaudio? ( >=media-sound/pulseaudio-1:0 )
-	!qt5? ( qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 ) )
 	qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 )
 	rdp? ( =net-misc/freerdp-1*:0=[client] )
-	samba? ( >=net-fs/samba-4.0.0_alpha1:0[client] )
+	samba? ( >=net-fs/samba-4.0.0:0[client,-debug(-)] )
 	schroedinger? ( >=media-libs/schroedinger-1.0.10:0 )
 	sdl? ( >=media-libs/libsdl-1.2.10:0
-		sdl-image? ( >=media-libs/sdl-image-1.2.10:0 sys-libs/zlib:0 ) )
+		sdl-image? ( >=media-libs/sdl-image-1.2.10:0 ) )
 	sftp? ( net-libs/libssh2:0 )
 	shout? ( >=media-libs/libshout-2.1:0 )
 	sid? ( media-libs/libsidplay:2 )
@@ -150,14 +148,14 @@ RDEPEND="
 		!libav? ( media-video/ffmpeg:0= )
 		libav? ( media-video/libav:0= )
 	)
-	taglib? ( >=media-libs/taglib-1.9:0 sys-libs/zlib:0 )
+	taglib? ( >=media-libs/taglib-1.9:0 )
 	theora? ( >=media-libs/libtheora-1.0_beta3:0 )
 	tremor? ( media-libs/tremor:0 )
 	truetype? ( media-libs/freetype:2 virtual/ttf-fonts:0
 		!fontconfig? ( media-fonts/dejavu:0 ) )
 	twolame? ( media-sound/twolame:0 )
 	udev? ( >=virtual/udev-142:0 )
-	upnp? ( net-libs/libupnp:0 )
+	upnp? ( net-libs/libupnp:= )
 	v4l? ( media-libs/libv4l:0 )
 	vaapi? (
 		x11-libs/libva:0[X,drm]
@@ -185,7 +183,6 @@ DEPEND="${RDEPEND}
 	app-arch/xz-utils:0
 	>=sys-devel/gettext-0.18.3:*
 	virtual/pkgconfig:*
-	!qt5? ( kde? ( kde-frameworks/kdelibs:4 ) )
 	amd64? ( dev-lang/yasm:* )
 	x86?   ( dev-lang/yasm:* )
 	xcb? ( x11-proto/xproto:0 )
@@ -194,12 +191,6 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	# Fix build system mistake.
 	"${FILESDIR}"/${PN}-2.1.0-fix-libtremor-libs.patch
-
-	# Patch up incompatibilities and reconfigure autotools.
-	"${FILESDIR}"/${PN}-9999-libva-1.2.1-compat.patch
-
-	# Fix up broken audio when skipping using a fixed reversed bisected commit.
-	"${FILESDIR}"/${PN}-2.1.0-TomWij-bisected-PA-broken-underflow.patch
 
 	# Bug #541678
 	"${FILESDIR}"/qt4-select.patch
@@ -220,33 +211,18 @@ PATCHES=(
 
 	# Bug #593460
 	"${FILESDIR}"/${PN}-2.2.4-libav-11.7.patch
+
+	"${FILESDIR}"/${P}-libupnp-compat.patch
 )
 
 DOCS=( AUTHORS THANKS NEWS README doc/fortunes.txt doc/intf-vcd.txt )
 
 S="${WORKDIR}/${MY_P}"
 
-src_unpack() {
-	if [[ ${PV} = *9999 ]] ; then
-		git-r3_src_unpack
-	else
-		unpack ${A}
-	fi
-}
-
 src_prepare() {
 	default
 
-	# Remove unnecessary warnings about unimplemented pragmas on gcc for now.
-	# Need to recheck this with gcc 4.9 and every subsequent minor bump of gcc.
-	#
-	# config.h:792: warning: ignoring #pragma STDC FENV_ACCESS [-Wunknown-pragmas]
-	# config.h:793: warning: ignoring #pragma STDC FP_CONTRACT [-Wunknown-pragmas]
-	#
-	# https://gcc.gnu.org/c99status.html
-	if tc-is-gcc ; then
-		sed -i 's/ifndef __FAST_MATH__/if 0/g' configure.ac || die
-	fi
+	has_version '>=net-libs/libupnp-1.8.0' && eapply "${FILESDIR}"/${PN}-2.2.8-libupnp-slot-1.8.patch
 
 	# Bootstrap when we are on a git checkout.
 	if [[ ${PV} = *9999 ]] ; then
@@ -273,8 +249,6 @@ src_prepare() {
 	# version may be used. Setting QT_SELECT environment variable will enforce correct binaries.
 	if use qt5; then
 		export QT_SELECT=qt5
-	elif use qt4; then
-		export QT_SELECT=qt4
 	fi
 }
 
@@ -301,12 +275,7 @@ src_configure() {
 	if use qt5 ; then
 		myconf+=" --enable-qt=5"
 	else
-		if use qt4 ; then
-			myconf+=" --enable-qt=4"
-		else
-			myconf+=" --disable-qt"
-		fi
-		use kde && myconf+=" --with-kde-solid"
+		myconf+=" --disable-qt"
 	fi
 
 	econf \
@@ -482,4 +451,14 @@ pkg_postinst() {
 		ewarn "Please run /usr/$(get_libdir)/vlc/vlc-cache-gen manually"
 		ewarn "If you do not do it, vlc will take a long time to load."
 	fi
+
+	gnome2_icon_cache_update
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
 }

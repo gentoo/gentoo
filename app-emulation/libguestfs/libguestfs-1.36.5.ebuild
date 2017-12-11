@@ -19,7 +19,7 @@ LICENSE="GPL-2 LGPL-2"
 SLOT="0/"${MY_PV_1}""
 
 KEYWORDS="~amd64"
-IUSE="bash-completion erlang +fuse debug ocaml doc +perl python ruby static-libs
+IUSE="bash-completion erlang +fuse debug doc +perl python ruby static-libs
 selinux systemtap introspection inspect-icons test lua gtk"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
@@ -72,11 +72,10 @@ COMMON_DEPEND="
 		sys-libs/libsemanage
 	)
 	systemtap? ( dev-util/systemtap )
-	ocaml? ( >=dev-lang/ocaml-4.02[ocamlopt]
-		dev-ml/findlib[ocamlopt]
-		dev-ml/ocaml-gettext
-		>=dev-ml/ounit-2
-	)
+	>=dev-lang/ocaml-4.02[ocamlopt]
+	dev-ml/findlib[ocamlopt]
+	dev-ml/ocaml-gettext
+	>=dev-ml/ounit-2
 	erlang? ( dev-lang/erlang )
 	inspect-icons? (
 		media-libs/netpbm
@@ -139,7 +138,7 @@ src_configure() {
 		--without-java \
 		$(use_enable perl) \
 		$(use_enable fuse) \
-		$(use_enable ocaml) \
+		--enable-ocaml \
 		$(use_enable ruby) \
 		--disable-haskell \
 		--disable-golang \
@@ -161,9 +160,6 @@ src_install() {
 pkg_postinst() {
 	if ! use perl ; then
 		einfo "Perl based tools NOT build"
-	fi
-	if ! use ocaml ; then
-		einfo "Ocaml based tools ( sysprep , ... ) NOT installed"
 	fi
 	if ! gtk ; then
 		einfo "virt-p2v NOT installed"

@@ -29,15 +29,99 @@
 
 #--- END OF EXAMPLES ---
 
+# Jonas Stein <jstein@gentoo.org> (10 Dec 2017)
+# Site blocks certain IP blocks from downloading files, while the package
+# may not be mirrored. (bug #640508)
+# Masked for removal on 2018-01-12
+app-arch/defluff
+
+# Thomas Beierlein <tomjbe@gentoo.org> (10 Dec 2017)
+# Development stopped, nasty build system.
+# Functionality superseded by media-radio/wsjtx.
+# Masked for removal in 30 days.
+media-radio/wspr
+
+# Michael Palimaka <kensington@gentoo.org> (07 Dec 2017)
+# Dead upstream. Requires dead Qt4.
+# Masked for removal in 30 days. Bug #640138.
+net-ftp/oneclickftp
+
+# Michael Palimaka <kensington@gentoo.org> (07 Dec 2017)
+# Dead upstream. Requires dead Qt4.
+# Masked for removal in 30 days. Bug #640138.
+dev-vcs/qct
+
+# Andreas Sturmlechner <asturm@gentoo.org> (06 Dec 2017)
+# No maintainer, depends on dead PyQt4/Qt4.
+# Masked for removal in 30 days. Bugs #480250, #640114
+dev-vcs/qbzr
+dev-vcs/bzr-explorer
+
+# Bernard Cafarelli <voyageur@gentoo.org> (05 Dec 2017)
+# Dead Window Maker dockapps, dead upstreams and download links
+# (no release for more than 10 years)
+# Masked for removal in 30 days. Bug #639914
+x11-plugins/monto
+x11-plugins/wmbluecpu
+x11-plugins/wmcpu
+x11-plugins/wmdate
+x11-plugins/wmdf
+x11-plugins/wmdl
+x11-plugins/wmjsql
+x11-plugins/wmlpq
+x11-plugins/wmmemfree
+x11-plugins/wmmemmon
+x11-plugins/wmmldonkey
+x11-plugins/wmmsg
+x11-plugins/wmnetselect
+x11-plugins/wmpiki
+x11-plugins/wmsound
+x11-plugins/wmsvencd
+x11-plugins/wmupmon
+x11-plugins/wmwave
+<=x11-plugins/wmsysmon-0.7.7
+
+# Ian Whyman <thev00d00@gentoo.org> (04 Dec 2017)
+# Declared dead upstream. Masked for removal in 30 days
+# Please see net-misc/gerbera for a replacement.
+net-misc/mediatomb
+
+# Andreas Sturmlechner <asturm@gentoo.org> (03 Dec 2017)
+# Dead upstreams, depending on dead qt3support/qt4.
+# Masked for removal in 30 days. Bug #631788
+games-board/capicity
+games-board/kcheckers
+games-board/qgo
+games-board/holdingnuts
+games-board/qcheckers
+games-emulation/virtualjaguar
+games-emulation/dboxfe
+games-kids/cubetest
+games-kids/crayon-physics
+games-misc/ggencoder
+games-misc/qlife
+games-puzzle/bubble-chains
+games-puzzle/jag
+
+# Andreas Sturmlechner <asturm@gentoo.org> (03 Dec 2017)
+# Dead upstream, depends on dead qt4.
+# Masked for removal in 30 days. Bug #639254
+x11-misc/qtnotifydaemon
+
+# Andreas Sturmlechner <asturm@gentoo.org> (03 Dec 2017)
+# Dead upstream, depends on dead qt4.
+# Masked for removal in 30 days. Bug #637098
+app-office/qchartdiary
+
+# Andreas Sturmlechner <asturm@gentoo.org> (03 Dec 2017)
+# Dead upstream, depends on dead qt4.
+# Masked for removal in 30 days. Bug #638688
+x11-plugins/qled
+
 # Michael Palimaka <kensington@gentoo.org> (02 Dec 2017)
 # Depends on dead Qt 4. Dead upstream.
 # Masked for removal in 30 days. Bug #639252.
 dev-vcs/qsvn
-
-# Ulrich Müller <ulm@gentoo.org> (01 Dec 2017)
-# Major breakage (network access in upstream configure), bug #639438.
-dev-db/qt5-sqlcipher
-=net-im/openmittsu-0.9.9.48
 
 # Alexey Shvetsov <alexxy@gentoo.org> (01 Dec 2017)
 # Mask beta gromacs version
@@ -321,11 +405,6 @@ dev-java/icedtea-bin:7
 virtual/jdk:1.7
 virtual/jre:1.7
 
-# James Le Cuirot <chewi@gentoo.org> (05 Nov 2017)
-# Upstream dead, bundles a vulnerable mupdf, nothing depends on it,
-# and blocks the removal of Java 7. Removal in 30 days. Bug #472832.
-app-text/jmupdf
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (04 Nov 2017)
 # Many, many, many open bugs. Blocks gcc-6 stabilization.
 # Removal of the old versions in 30 days; please upgrade to
@@ -398,11 +477,6 @@ sys-devel/automake:1.6
 sys-devel/automake:1.7
 sys-devel/automake:1.8
 
-# Jonas Stein <jstein@gentoo.org> (17 Oct 2017)
-# dev-tex/texmfind was superseded by app-portage/pfl 
-# See also bug #634494. Masked for removal on 2017-11-30
-dev-tex/texmfind
-
 # Lars Wendler <polynomial-c@gentoo.org> (12 Oct 2017)
 # Dead upstream. No qt5 release. Use app-admin/keepassxc as drop-in
 # replacement which has very active upstream and regular releases.
@@ -419,11 +493,6 @@ app-admin/keepassx
 #   emerge -C perl-core/Unicode-Collate
 # See bug #634040
 <perl-core/Unicode-Collate-1.190.0-r99
-
-# Patrice Clement <monsieurp@gentoo.org> (10 Oct 2017)
-# This plugin's functions now collide with most Vim 8.0 functions.
-# Masked for removal in 30 days. See bug 589194.
-app-vim/html5
 
 # Jonas Stein <jstein@gentoo.org> (10 Oct 2017)
 # Depends on the AIM service which will be discontinued on 2017-12-15.
@@ -568,6 +637,14 @@ dev-lang/spidermonkey:52
 # upstream.
 =app-text/jabref-bin-4.0
 
+# Nicolas Bock <nicolasbock@gentoo.org> (6 Dec 2017)
+# Development has ceased, the last commit to the upstream repository was
+# on 16 July 2016 with a note stating that its status is unmaintained [1].
+# See also Bug 640034.
+#
+# [1] https://github.com/projecthamster/hamster/commit/c3e5fb761c88fdecfd1566cac8b6836228a27cce
+app-office/hamster-time-tracker
+
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Doesn't work with >=openvpn-2.3, bug 470696
 # Fix is work in progress, see above bug. dilfridge@g.o
@@ -689,11 +766,6 @@ media-plugins/gst-plugins-ffmpeg
 # Alpha release with new features, masked for testing
 =app-text/tesseract-4.00.00_alpha*
 
-# Michał Górny <mgorny@gentoo.org> (26 Jan 2017)
-# Pre-release, masked for testing. Major changes since 2.0.4,
-# including dropped support for BlueZ 4.
-=net-wireless/blueman-2.1_alpha*
-
 # Yixun Lan <dlan@gentoo.org> (16 Jan 2017)
 # Masked, Vulnerable due to RGW Denial of Service (bug #598206)
 # We mask it instead of removing them, due user may need them while
@@ -744,12 +816,6 @@ x11-libs/gtk+:1
 # Lars Wendler <polynomial-c@gentoo.org> (26 Aug 2016)
 # Masked while being tested and reverse deps aren't fully compatible
 =dev-libs/openssl-1.1*
-
-# Michał Górny <mgorny@gentoo.org> (18 Jul 2016)
-# Pre-release of a complete rewrite, provided for early testing. Not all
-# functionality is provided yet. Use --pretend to make sure correct
-# files will be removed.
->=app-admin/eclean-kernel-1.99
 
 # Chris Reffett <creffett@gentoo.org> (25 May 2016)
 # The webkit-gtk:4 backend for Xiphos has known text display issues.

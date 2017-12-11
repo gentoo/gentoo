@@ -117,8 +117,3 @@ media-libs/coin simage
 #nixnut <nixnut@gentoo.org> (24 jan 2009)
 #don't want zemberek for enchant for ppc32
 app-text/enchant zemberek
-
-# Chí-Thanh Christopher Nguyễn (11 Jul 2016)
-# Requires unkeyworded kde-frameworks packages
-net-irc/quassel qt5
-

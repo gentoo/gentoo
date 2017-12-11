@@ -3,12 +3,14 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5} )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 
 inherit distutils-r1
 
 DESCRIPTION="Line-by-line profiler"
-HOMEPAGE="https://github.com/rkern/line_profiler"
+HOMEPAGE="
+	https://github.com/rkern/line_profiler
+	https://pypi.python.org/pypi/line_profiler"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 KEYWORDS="~amd64"
 

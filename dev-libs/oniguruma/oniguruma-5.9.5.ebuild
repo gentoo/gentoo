@@ -10,8 +10,8 @@ inherit eutils autotools-multilib
 MY_P=onig-${PV}
 
 DESCRIPTION="a regular expression library for different character encodings"
-HOMEPAGE="http://www.geocities.jp/kosako3/oniguruma"
-SRC_URI="http://www.geocities.jp/kosako3/oniguruma/archive/${MY_P}.tar.gz"
+HOMEPAGE="https://github.com/kkos/oniguruma"
+SRC_URI="mirror://gentoo/${MY_P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"

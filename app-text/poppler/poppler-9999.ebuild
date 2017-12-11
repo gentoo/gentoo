@@ -19,7 +19,7 @@ DESCRIPTION="PDF rendering library based on the xpdf-3.0 code base"
 HOMEPAGE="https://poppler.freedesktop.org/"
 
 LICENSE="GPL-2"
-IUSE="cairo cjk curl cxx debug doc +introspection +jpeg +jpeg2k +lcms nss png qt4 qt5 tiff +utils"
+IUSE="cairo cjk curl cxx debug doc +introspection +jpeg +jpeg2k +lcms nss png qt5 tiff +utils"
 
 # No test data provided
 RESTRICT="test"
@@ -39,10 +39,6 @@ COMMON_DEPEND="
 	lcms? ( media-libs/lcms:2 )
 	nss? ( >=dev-libs/nss-3.19:0 )
 	png? ( media-libs/libpng:0= )
-	qt4? (
-		dev-qt/qtcore:4
-		dev-qt/qtgui:4
-	)
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
@@ -63,8 +59,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.60.1-qt5-dependencies.patch"
 	"${FILESDIR}/${PN}-0.28.1-fix-multilib-configuration.patch"
 	"${FILESDIR}/${PN}-0.61.0-respect-cflags.patch"
-	"${FILESDIR}/${PN}-0.33.0-openjpeg2.patch"
-	"${FILESDIR}/${PN}-0.40-FindQt4.patch"
+	"${FILESDIR}/${PN}-0.62.0-openjpeg2.patch"
 )
 
 src_prepare() {
@@ -93,7 +88,6 @@ src_configure() {
 	xdg_environment_reset
 	local mycmakeargs=(
 		-DBUILD_GTK_TESTS=OFF
-		-DBUILD_QT4_TESTS=OFF
 		-DBUILD_QT5_TESTS=OFF
 		-DBUILD_CPP_TESTS=OFF
 		-DENABLE_SPLASH=ON
@@ -111,7 +105,6 @@ src_configure() {
 		-DWITH_JPEG="$(usex jpeg)"
 		-DWITH_NSS3="$(usex nss)"
 		-DWITH_PNG="$(usex png)"
-		-DWITH_Qt4="$(usex qt4)"
 		$(cmake-utils_use_find_package qt5 Qt5Core)
 		-DWITH_TIFF="$(usex tiff)"
 	)

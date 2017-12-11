@@ -27,6 +27,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}/${P}-qtbindir.patch" )
+
 src_prepare() {
 	sed -ri 's/(PIX_FMT_)/AV_\1/g' sherlock265/VideoDecoder.cc || die
 	autotools-multilib_src_prepare

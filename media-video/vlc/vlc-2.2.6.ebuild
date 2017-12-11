@@ -41,7 +41,7 @@ IUSE="a52 aalib alsa altivec atmo +audioqueue +avcodec
 	+avformat bidi bluray cdda cddb chromaprint dbus dc1394 debug
 	directfb directx dts dvb +dvbpsi dvd dxva2 elibc_glibc +encode faad fdk
 	fluidsynth +ffmpeg flac fontconfig +gcrypt gme gnome gnutls
-	growl gstreamer httpd ieee1394 jack jpeg kate kde libass libav libcaca libnotify
+	growl gstreamer httpd ieee1394 jack jpeg kate libass libav libcaca libnotify
 	+libsamplerate libtiger linsys libtar lirc live lua
 	macosx-dialog-provider macosx-eyetv macosx-quartztext macosx-qtkit
 	matroska cpu_flags_x86_mmx modplug mp3 mpeg
@@ -175,7 +175,6 @@ RDEPEND="${RDEPEND}
 "
 
 DEPEND="${RDEPEND}
-	!qt5? ( kde? ( kde-frameworks/kdelibs:4 ) )
 	amd64? ( dev-lang/yasm:* )
 	x86?   ( dev-lang/yasm:* )
 	xcb? ( x11-proto/xproto:0 )
@@ -332,7 +331,6 @@ src_configure() {
 		else
 			myconf+=" --disable-qt"
 		fi
-		use kde && myconf+=" --with-kde-solid"
 	fi
 
 	econf \

@@ -1,11 +1,11 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit eutils multilib toolchain-funcs
 
 DESCRIPTION="A pager dockapp"
-HOMEPAGE="http://dockapps.windowmaker.org/file.php/id/158"
-SRC_URI="http://dockapps.windowmaker.org/download.php/id/213/${P}.tar.gz"
+HOMEPAGE="http://www.dockapps.net/wmcp"
+SRC_URI="http://www.dockapps.net/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

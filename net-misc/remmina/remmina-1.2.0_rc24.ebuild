@@ -13,7 +13,7 @@ SRC_URI="https://github.com/FreeRDP/Remmina/archive/v${MY_PV}.tar.gz -> ${P}.tar
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="ayatana crypt rdp gnome-keyring nls spice ssh telepathy vnc zeroconf"
 
 CDEPEND="

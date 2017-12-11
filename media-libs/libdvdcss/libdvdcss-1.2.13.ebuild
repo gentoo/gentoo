@@ -6,8 +6,8 @@ EAPI=5
 inherit autotools-utils
 
 DESCRIPTION="A portable abstraction library for DVD decryption"
-HOMEPAGE="http://www.videolan.org/developers/libdvdcss.html"
-SRC_URI="http://www.videolan.org/pub/${PN}/${PV}/${P}.tar.bz2"
+HOMEPAGE="https://www.videolan.org/developers/libdvdcss.html"
+SRC_URI="https://www.videolan.org/pub/${PN}/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="1.2"

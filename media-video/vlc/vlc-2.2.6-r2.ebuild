@@ -32,7 +32,7 @@ SLOT="0/5-8" # vlc - vlccore
 IUSE="a52 aalib alsa altivec atmo +audioqueue +avcodec +avformat bidi bluray cdda
 	cddb chromaprint dbus dc1394 debug directfb directx dts dvb +dvbpsi dvd dxva2
 	elibc_glibc +encode faad fdk fluidsynth +ffmpeg flac fontconfig +gcrypt gme
-	gnome gnutls growl gstreamer httpd ieee1394 jack jpeg kate kde libass libav
+	gnome gnutls growl gstreamer httpd ieee1394 jack jpeg kate libass libav
 	libcaca libnotify +libsamplerate libtiger linsys libtar lirc live lua
 	macosx-dialog-provider macosx-eyetv macosx-quartztext macosx-qtkit
 	matroska cpu_flags_x86_mmx modplug mp3 mpeg mtp musepack ncurses neon ogg
@@ -185,7 +185,6 @@ DEPEND="${RDEPEND}
 	app-arch/xz-utils:0
 	>=sys-devel/gettext-0.18.3:*
 	virtual/pkgconfig:*
-	!qt5? ( kde? ( kde-frameworks/kdelibs:4 ) )
 	amd64? ( dev-lang/yasm:* )
 	x86?   ( dev-lang/yasm:* )
 	xcb? ( x11-proto/xproto:0 )
@@ -194,12 +193,6 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	# Fix build system mistake.
 	"${FILESDIR}"/${PN}-2.1.0-fix-libtremor-libs.patch
-
-	# Patch up incompatibilities and reconfigure autotools.
-# 	"${FILESDIR}"/${PN}-9999-libva-1.2.1-compat.patch
-
-	# Fix up broken audio when skipping using a fixed reversed bisected commit.
-# 	"${FILESDIR}"/${PN}-2.1.0-TomWij-bisected-PA-broken-underflow.patch
 
 	# Bug #541678
 	"${FILESDIR}"/qt4-select.patch
@@ -306,7 +299,6 @@ src_configure() {
 		else
 			myconf+=" --disable-qt"
 		fi
-		use kde && myconf+=" --with-kde-solid"
 	fi
 
 	econf \

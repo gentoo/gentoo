@@ -13,6 +13,7 @@
 	<use>
 		<flag name="html">Install HTML documentation</flag>
 		<flag name="libvirt">Enable support for virtual machine management through <pkg>app-emulation/libvirt</pkg></flag>
+		<flag name="masterfiles">Install the Masterfiles Policy Framework</flag>
 		<flag name="qdbm">Use <pkg>dev-db/qdbm</pkg> as database backend</flag>
 		<flag name="tests">Install test files</flag>
 		<flag name="tokyocabinet">Use <pkg>dev-db/tokyocabinet</pkg> as database backend</flag>

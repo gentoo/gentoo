@@ -21,3 +21,16 @@ PATCHES=( "${FILESDIR}"/${PN}-1.4.3-distutils.patch )
 python_test() {
 	"${PYTHON}" test/test_api.py || die "Tests fail with ${EPYTHON}"
 }
+
+[[ ${PV} == 1.4.3 ]] || die "Please remove pkg_preinst from the ebuild"
+pkg_preinst() {
+	_remove_egg_info() {
+		local pyver="$("${PYTHON}" -c 'import sys; print(sys.version[:3])')"
+		local egginfo="${ROOT%/}$(python_get_sitedir)/${P}-py${pyver}.egg-info"
+		if [[ -d ${egginfo} ]]; then
+			einfo "Removing ${egginfo}"
+			rm -r "${egginfo}" || die
+		fi
+	}
+	python_foreach_impl _remove_egg_info
+}

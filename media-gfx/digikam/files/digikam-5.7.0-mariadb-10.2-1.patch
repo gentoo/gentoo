@@ -1,0 +1,58 @@
+From 395ab5b02ed7d02736a08e370217c0c96b391bb9 Mon Sep 17 00:00:00 2001
+From: Maik Qualmann <metzpinguin@gmail.com>
+Date: Wed, 6 Dec 2017 08:09:44 +0100
+Subject: Workaround for the problem mariaDB >= 10.2 and QTBUG-63108
+
+---
+ libs/album/albummanager.cpp | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+
+diff --git a/libs/album/albummanager.cpp b/libs/album/albummanager.cpp
+index a72acc3..2ea40e9 100644
+--- a/libs/album/albummanager.cpp
++++ b/libs/album/albummanager.cpp
+@@ -162,6 +162,7 @@ public:
+         hasPriorizedDbPath(false),
+         dbPort(0),
+         dbInternalServer(false),
++        dbFakeConnection(false),
+         showOnlyAvailableAlbums(false),
+         albumListJob(0),
+         dateListJob(0),
+@@ -192,6 +193,7 @@ public:
+     QString                     dbHostName;
+     int                         dbPort;
+     bool                        dbInternalServer;
++    bool                        dbFakeConnection;
+ 
+     bool                        showOnlyAvailableAlbums;
+ 
+@@ -391,6 +393,11 @@ void AlbumManager::cleanUp()
+         d->personListJob->cancel();
+         d->personListJob = 0;
+     }
++
++    if (d->dbFakeConnection)
++    {
++        QSqlDatabase::removeDatabase(QLatin1String("FakeConnection"));
++    }
+ }
+ 
+ bool AlbumManager::databaseEqual(const DbEngineParameters& parameters) const
+@@ -727,6 +734,13 @@ bool AlbumManager::setDatabase(const DbEngineParameters& params, bool priority,
+     // ensure, embedded database is loaded
+     qCDebug(DIGIKAM_GENERAL_LOG) << params;
+ 
++    // workaround for the problem mariaDB >= 10.2 and QTBUG-63108.
++    if (params.isMySQL() && !d->dbFakeConnection)
++    {
++        QSqlDatabase::addDatabase(QLatin1String("QMYSQL"), QLatin1String("FakeConnection"));
++        d->dbFakeConnection = true;
++    }
++
+     if (params.internalServer)
+     {
+         DatabaseServerError result = DatabaseServerStarter::instance()->startServerManagerProcess(params);
+-- 
+cgit v0.11.2
+

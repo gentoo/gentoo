@@ -10,7 +10,7 @@ if [[ "${PV}" == "9999" ]]; then
 	EGIT_REPO_URI="git://git.lxde.org/git/lxde/${PN}"
 else
 	SRC_URI="https://github.com/lxde/${PN}/releases/download/${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm64 x86"
 fi
 
 DESCRIPTION="Qt port of libfm, a library providing components to build desktop file managers"

@@ -6,7 +6,7 @@ inherit eutils toolchain-funcs
 
 DESCRIPTION="A dock applet to make any application dockable"
 HOMEPAGE="http://www.dockapps.net/wmswallow"
-SRC_URI="http://www.dockapps.net/downloaduuu/${PN}.tar.Z"
+SRC_URI="http://www.dockapps.net/download/${PN}.tar.Z"
 
 LICENSE="GPL-2"
 SLOT="0"

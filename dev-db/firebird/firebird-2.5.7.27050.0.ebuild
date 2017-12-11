@@ -79,8 +79,10 @@ src_prepare() {
 		-e 's:ISQL :FBSQL :w /dev/stdout' \
 		src/msgs/messages2.sql | wc -l)" "6" "src/msgs/messages2.sql" # 6 lines
 
-	find "${S}" -name \*.sh -exec chmod +x {} + || die
-	rm -r "${S}"/extern/{btyacc,editline,icu} || die
+	find . -name \*.sh -exec chmod +x {} + || die
+	rm -r extern/{btyacc,editline,icu} || die
+
+	mv configure.in configure.ac || die "failed to mv configure.in configure.ac"
 
 	eautoreconf
 }
@@ -88,6 +90,8 @@ src_prepare() {
 src_configure() {
 	filter-flags -fprefetch-loop-arrays
 	filter-mfpmath sse
+	# bug 639614
+	append-cxxflags -flifetime-dse=1 -fno-sized-deallocation -fno-delete-null-pointer-checks
 
 	econf \
 		--prefix=/usr/$(get_libdir)/firebird \

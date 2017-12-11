@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>aidecoe@gentoo.org</email>
+		<name>Amadeusz Żołnowski</name>
+	</maintainer>
+	<longdescription lang="en">
+		Python module that implements DKIM (DomainKeys Identified Mail) email
+		signing and verification. It also provides helper scripts for command
+		line signing and verification. As of version 0.6.0, it also supports
+		the experimental Authenticated Received Chain (ARC) protocol.
+
+		Originally developed by Greg Hewgill http://hewgill.com/pydkim/ - The
+		code in this project has been modified and development work continued.
+		This is now a fork of pydkim and we've renamed it dkimpy to avoid
+		confusion. The original author of pydkim has confirmed he no longer
+		intends to maintain it and supports this as its continuation.
+
+		Current documentation is available online at
+		https://gathman.org/pydkim/
+
+		ARC is still in development. dkimpy 0.6.0 supports draft
+		https://tools.ietf.org/html/draft-ietf-dmarc-arc-protocol-01 with the
+		exception of requiring 1024 bit minimum key size (this matches the
+		planned changes in the next update).
+	</longdescription>
+</pkgmetadata>
+

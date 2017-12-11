@@ -796,6 +796,11 @@ glibc_do_configure() {
 
 	if version_is_at_least 2.25 ; then
 		case ${CTARGET} in
+			mips*)
+				# dlopen() detects stack smash on mips n32 ABI.
+				# Cause is unknown: https://bugs.gentoo.org/640130
+				myconf+=( --enable-stack-protector=no )
+				;;
 			powerpc-*)
 				# Currently gcc on powerpc32 generates invalid code for
 				# __builtin_return_address(0) calls. Normally programs

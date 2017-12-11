@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools linux-info pam udev
+inherit autotools linux-info pam udev xdg-utils
 
 DESCRIPTION="The systemd project's logind, extracted to a standalone package"
 HOMEPAGE="https://github.com/elogind/elogind"
@@ -14,16 +14,15 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="acl debug pam policykit selinux"
 
-RDEPEND="
+COMMON_DEPEND="
 	sys-apps/util-linux
 	sys-libs/libcap
 	virtual/libudev:=
 	acl? ( sys-apps/acl )
 	pam? ( virtual/pam )
 	selinux? ( sys-libs/libselinux )
-	!sys-apps/systemd
 "
-DEPEND="${RDEPEND}
+DEPEND="${COMMON_DEPEND}
 	app-text/docbook-xml-dtd:4.2
 	app-text/docbook-xml-dtd:4.5
 	app-text/docbook-xsl-stylesheets
@@ -31,6 +30,9 @@ DEPEND="${RDEPEND}
 	dev-util/intltool
 	sys-devel/libtool
 	virtual/pkgconfig
+"
+RDEPEND="${COMMON_DEPEND}
+	!sys-apps/systemd
 "
 PDEPEND="
 	sys-apps/dbus
@@ -51,6 +53,7 @@ pkg_setup() {
 src_prepare() {
 	default
 	eautoreconf # Makefile.am patched by "${FILESDIR}/${P}-docs.patch"
+	xdg_environment_reset
 }
 
 src_configure() {

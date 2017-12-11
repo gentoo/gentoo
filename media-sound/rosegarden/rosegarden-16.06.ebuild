@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit cmake-utils eutils fdo-mime gnome2-utils
+inherit cmake-utils eutils xdg-utils gnome2-utils
 
 DESCRIPTION="MIDI and audio sequencer and notation editor"
 HOMEPAGE="http://www.rosegardenmusic.com/"
@@ -49,12 +49,12 @@ pkg_preinst() {
 
 pkg_postinst() {
 	gnome2_icon_cache_update
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }
 
 pkg_postrm() {
 	gnome2_icon_cache_update
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }

@@ -70,7 +70,7 @@ RDEPEND="app-arch/unzip
 		   media-libs/adplug
 		   ~media-sound/audacious-${PV}[qt5?] )
 	jack? ( >=media-libs/bio2jack-0.4
-		media-sound/jack-audio-connection-kit )
+		virtual/jack )
 	lame? ( media-sound/lame )
 	libnotify? ( x11-libs/libnotify )
 	libsamplerate? ( media-libs/libsamplerate )

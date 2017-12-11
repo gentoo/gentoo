@@ -47,10 +47,8 @@ media-video/vlc opencv
 # Michael Palimaka <kensington@gentoo.org> (25 May 2016)
 # Dependencies not stable
 app-arch/p7zip kde
-app-i18n/uim kde
 dev-vcs/subversion kwallet
 games-arcade/jumpnbump kde
-media-video/vlc kde
 net-irc/quassel kde
 net-libs/libproxy kde
 sys-auth/polkit kde

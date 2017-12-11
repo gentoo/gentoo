@@ -15,11 +15,10 @@ KEYWORDS=""
 SLOT="2/3" # soname version
 LICENSE="BSD"
 IUSE="bindist doc boost python bzip2 libressl lzma sqlite ssl static-libs zlib"
-REQUIRED_USE="python? ( boost ) boost? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="bzip2? ( >=app-arch/bzip2-1.0.5 )
 	zlib? ( >=sys-libs/zlib-1.2.3 )
-	boost? ( ${PYTHON_DEPS} >=dev-libs/boost-1.48[python?,${PYTHON_USEDEP}] )
+	boost? ( >=dev-libs/boost-1.48 )
 	lzma? ( app-arch/xz-utils )
 	sqlite? ( dev-db/sqlite:3 )
 	ssl? (
@@ -36,10 +35,9 @@ src_prepare() {
 }
 
 src_configure() {
-	local disable_modules=( proc_walk unix_procs )
+	local disable_modules=()
 	use boost || disable_modules+=( "boost" )
 	use bindist && disable_modules+=( "ecdsa" )
-	use python || disable_modules+=( "ffi" )
 	elog "Disabling modules: ${disable_modules[@]}"
 
 	# Enable v9 instructions for sparc64

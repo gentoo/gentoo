@@ -11,7 +11,8 @@ MY_PV=${PV/_p*}
 MY_P=${PN}-${MY_PV}
 DESCRIPTION="library for multiple-precision floating-point computations with exact rounding"
 HOMEPAGE="http://www.mpfr.org/"
-SRC_URI="http://www.mpfr.org/mpfr-${MY_PV}/${MY_P}.tar.bz2"
+SRC_URI="http://www.mpfr.org/mpfr-${MY_PV}/${MY_P}.tar.bz2
+	https://dev.gentoo.org/~mgorny/dist/${MY_P}-patchset.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="1"
@@ -24,7 +25,7 @@ DEPEND="${RDEPEND}"
 S=${WORKDIR}/${MY_P}
 
 src_prepare() {
-	epatch "${FILESDIR}"/${MY_PV}/patch*
+	epatch "${WORKDIR}"/${MY_P}-patchset/patch*
 	sed -i '/if test/s:==:=:' configure #261016
 	find . -type f -exec touch -r configure {} +
 	elibtoolize

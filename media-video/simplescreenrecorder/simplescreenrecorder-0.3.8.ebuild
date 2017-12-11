@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit flag-o-matic multilib-minimal
+inherit autotools flag-o-matic multilib-minimal
 
 if [[ ${PV} = 9999 ]]; then
 	inherit git-r3
@@ -43,7 +43,11 @@ RDEPEND="
 	jack? ( virtual/jack )
 	pulseaudio? ( media-sound/pulseaudio )
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-qt/linguist-tools:5
+"
+
+PATCHES=( "${FILESDIR}/${P}-qtbindir.patch" )
 
 pkg_setup() {
 	if [[ ${ABI} == amd64 ]]; then
@@ -66,6 +70,11 @@ pkg_setup() {
 	# Recently removed from the default compile options upstream
 	# https://github.com/MaartenBaert/ssr/commit/25fe1743058f0d1f95f6fbb39014b6ac146b5180
 	append-flags -fPIC
+}
+
+src_prepare() {
+	default
+	eautoreconf
 }
 
 multilib_src_configure() {

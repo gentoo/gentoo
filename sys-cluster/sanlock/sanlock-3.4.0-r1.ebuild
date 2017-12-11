@@ -18,6 +18,7 @@ IUSE="python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 DEPEND="
+	dev-libs/libaio
 	sys-apps/util-linux
 	python? ( ${PYTHON_DEPS} )
 "

@@ -62,6 +62,9 @@ DEPEND="
 	test? ( net-libs/gnutls[tools] )
 "
 
+# tests require some ominous "certtool" which has not been packages for Gentoo yet
+RESTRICT="test"
+
 REQUIRED_USE="dell? ( uefi )"
 
 src_prepare() {

@@ -1,0 +1,29 @@
+------------------------------------------------------------------------
+r2706 | jwoithe | 2017-08-08 08:39:56 +0900 (Tue, 08 Aug 2017) | 11 lines
+
+PosixMessageQueue: ensure visibility of SIGEV_THREAD declaration.
+
+Orcan Ogetbil reported on the ffado-devel list that during the recent Fedora
+rebuild effort FFADO 2.3.0 failed to compile because SIGEV_THREAD was
+undeclared.  Jano Svitok made the plausible suggestion that signal.h needs
+to be included explicitly under newer glibc versions.  This trivial patch 
+implements this.  As of this commit it has not been verified that the
+problem is fixed with this addition.  However, there's no harm done by the
+change in general and conceptionally the change is consistent with the
+source file's content given the use of signal-related functionality.
+
+
+Index: src/libutil/PosixMessageQueue.cpp
+===================================================================
+--- a/src/libutil/PosixMessageQueue.cpp	(revision 2705)
++++ b/src/libutil/PosixMessageQueue.cpp	(revision 2706)
+@@ -30,6 +30,7 @@
+ #include <errno.h>
+ #include <string.h>
+ #include <poll.h>
++#include <signal.h>
+ 
+ #define MQ_INVALID_ID ((mqd_t) -1)
+ // one second
+
+------------------------------------------------------------------------

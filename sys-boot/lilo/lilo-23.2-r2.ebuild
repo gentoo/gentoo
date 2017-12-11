@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
@@ -49,10 +49,6 @@ src_compile() {
 	# lilo needs this. bug #140209
 	export LC_ALL=C
 
-	# hardened automatic PIC plus PIE building should be suppressed
-	# because of assembler instructions that cannot be compiled PIC
-	HARDENED_CFLAGS=$(test-flags-CC -fno-pic -nopie)
-
 	# we explicitly prevent the custom CFLAGS for stability reasons
 	if use static; then
 		local target=alles
@@ -60,7 +56,7 @@ src_compile() {
 		local target=all
 	fi
 
-	emake CC="$(tc-getCC) ${LDFLAGS} ${HARDENED_CFLAGS}" ${target} || die
+	emake CC="$(tc-getCC) ${LDFLAGS}" ${target} || die
 }
 
 src_install() {

@@ -19,12 +19,13 @@ HOMEPAGE="http://vivaldi.com/"
 VIVALDI_BASE_URI="https://downloads.vivaldi.com/${VIVALDI_BRANCH:-stable}/${VIVALDI_PN}_${PV/_p/-}_"
 SRC_URI="
 	amd64? ( ${VIVALDI_BASE_URI}amd64.deb -> ${P}-amd64.deb )
+	arm? ( ${VIVALDI_BASE_URI}armhf.deb -> ${P}-armhf.deb )
 	x86? ( ${VIVALDI_BASE_URI}i386.deb -> ${P}-i386.deb )
 "
 
 LICENSE="Vivaldi"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 ~arm x86"
 RESTRICT="bindist mirror"
 
 DEPEND="

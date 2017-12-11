@@ -228,10 +228,9 @@ case ${KDE_DESIGNERPLUGIN} in
 	false)  ;;
 	*)
 		IUSE+=" designer"
-		DEPEND+=" designer? (
-			$(add_frameworks_dep kdesignerplugin)
-			$(add_qt_dep designer)
-		)"
+		DEPEND+=" designer? ( $(add_frameworks_dep kdesignerplugin) )"
+		[[ ${PV} = 17.08* ]] && \
+			DEPEND+=" designer? ( $(add_qt_dep designer) )"
 		;;
 esac
 
@@ -636,7 +635,11 @@ kde5_src_configure() {
 	fi
 
 	if ! use_if_iuse designer && [[ ${KDE_DESIGNERPLUGIN} != false ]] ; then
-		cmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_Qt5Designer=ON )
+		if [[ ${PV} = 17.08* ]]; then
+			cmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_Qt5Designer=ON )
+		else
+			cmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_KF5DesignerPlugin=ON )
+		fi
 	fi
 
 	if [[ ${KDE_QTHELP} != false ]]; then

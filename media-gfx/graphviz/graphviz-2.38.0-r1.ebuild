@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit autotools eutils flag-o-matic java-pkg-opt-2 multilib python-single-r1 qmake-utils
 
 DESCRIPTION="Open Source Graph Visualization Software"
-HOMEPAGE="http://www.graphviz.org/"
+HOMEPAGE="http://www.graphviz.org/ https://gitlab.com/graphviz/graphviz/"
 SRC_URI="http://www.graphviz.org/pub/graphviz/stable/SOURCES/${P}.tar.gz"
 
 LICENSE="CPL-1.0"
@@ -47,7 +47,7 @@ RDEPEND="
 	gts?	( sci-libs/gts )
 	lasi?	( media-libs/lasi )
 	pdf?	( app-text/poppler )
-	perl?   ( dev-lang/perl:= )
+	perl?	( dev-lang/perl:= )
 	python?	( ${PYTHON_DEPS} )
 	qt4?	(
 		dev-qt/qtcore:4

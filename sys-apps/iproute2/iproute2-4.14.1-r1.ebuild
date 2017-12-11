@@ -10,7 +10,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 else
 	SRC_URI="mirror://kernel/linux/utils/net/${PN}/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh ~sparc x86"
 fi
 
 DESCRIPTION="kernel routing and traffic control utilities"
@@ -48,14 +48,6 @@ src_prepare() {
 	if ! use ipv6 ; then
 		PATCHES+=(
 			"${FILESDIR}"/${PN}-4.11.0-no-ipv6.patch #326849
-		)
-	fi
-
-	# Local uclibc-ng compat fix until uclibc-ng upstream can sync
-	# netinet/in.h with glibc.  Resolves #626546.
-	if use elibc_uclibc ; then
-		PATCHES+=(
-			"${FILESDIR}"/${PN}-4.12.0-uclibc-ng-add-ipproto_mh.patch
 		)
 	fi
 

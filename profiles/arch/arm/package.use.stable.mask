@@ -89,7 +89,6 @@ net-misc/networkmanager teamd
 
 # Michael Palimaka <kensington@gentoo.org> (28 Oct 2015)
 # KDE is not stable on arm
-media-video/vlc kde
 virtual/notification-daemon kde
 
 # Pacho Ramos <pacho@gentoo.org> (03 Oct 2015)

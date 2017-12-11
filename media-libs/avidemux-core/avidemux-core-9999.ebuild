@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
 inherit cmake-utils
 
@@ -26,22 +26,20 @@ else
 fi
 
 # Trying to use virtual; ffmpeg misses aac,cpudetection USE flags now though, are they needed?
-DEPEND="
-	!<media-video/avidemux-${PV}:${SLOT}
+COMMON_DEPEND="
 	dev-db/sqlite:3
+	nvenc? ( media-video/nvidia_video_sdk )
 	sdl? ( media-libs/libsdl:0 )
 	system-ffmpeg? ( >=virtual/ffmpeg-9:0[mp3,theora] )
-	xv? ( x11-libs/libXv:0 )
 	vaapi? ( x11-libs/libva:0 )
 	vdpau? ( x11-libs/libvdpau:0 )
-	nvenc? ( media-video/nvidia_video_sdk )
+	xv? ( x11-libs/libXv:0 )
 "
-RDEPEND="
-	$DEPEND
+RDEPEND="${COMMON_DEPEND}
+	!<media-video/avidemux-${PV}:${SLOT}
 	nls? ( virtual/libintl:0 )
 "
-DEPEND="
-	$DEPEND
+DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 	!system-ffmpeg? ( dev-lang/yasm[nls=] )
@@ -76,11 +74,11 @@ src_configure() {
 	local mycmakeargs=(
 		-DAVIDEMUX_SOURCE_DIR='${S}'
 		-DGETTEXT="$(usex nls)"
+		-DNVENC="$(usex nvenc)"
 		-DSDL="$(usex sdl)"
 		-DLIBVA="$(usex vaapi)"
 		-DVDPAU="$(usex vdpau)"
 		-DXVIDEO="$(usex xv)"
-		-DNVENC="$(usex nvenc)"
 	)
 
 	if use debug ; then

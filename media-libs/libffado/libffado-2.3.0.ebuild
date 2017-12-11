@@ -46,6 +46,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}/libffado-2.3.0-modelname-strip.patch"
 	"${FILESDIR}/libffado-2.3.0-gcc6.patch"
+	"${FILESDIR}/libffado-2.3.0-include-signal.patch"
 )
 
 myescons() {

@@ -33,12 +33,12 @@
 		- Transitions between sequences with definition of the transition type, sequence by sequence.
 		- Addition of a background sound (wav, mp3 or ogg) with customizable effects for volume, fade in/out and passage in pause, sequence by sequence.
 		- Generation of videos usable on most current video equipment (DVD player/smartphone, multimedia box, hard drive, etc.) but also publishable on the main video-sharing Websites (YouTube, Dailymotion, etc.)
-		- Video formats from QVGA (320×240) to Full HD (1920×1080) by way of the DVD and HD 720 formats.
+		- Video formats from QVGA (320x240) to Full HD (1920x1080) by way of the DVD and HD 720 formats.
 		- Image geometry (aspect ratio) : 4:3, 16:9 or 2.35:1 (cinema)
 		- Possible formats for rendering : avi, mpg, mp4, mkv
 	</longdescription>
 	<use>
-		<flag name="openclipart">Support openslipart database</flag>
+		<flag name="openclipart">Support openclipart database</flag>
 		<flag name="texturemate">Install extra backgrounds</flag>
 	</use>
 </pkgmetadata>

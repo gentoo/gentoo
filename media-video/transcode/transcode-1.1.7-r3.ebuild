@@ -7,7 +7,7 @@ inherit autotools libtool multilib
 DESCRIPTION="A suite of utilities for transcoding video and audio codecs in different containers"
 HOMEPAGE="http://www.transcoding.org/ https://bitbucket.org/france/transcode-tcforge"
 SRC_URI="https://www.bitbucket.org/france/${PN}-tcforge/downloads/${P}.tar.bz2
-	https://dev.gentoo.org/~polynomial-c/${P}-imagemagick7.patch"
+	https://dev.gentoo.org/~mgorny/dist/${P}-patchset.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -56,26 +56,26 @@ REQUIRED_USE="
 	"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-ffmpeg.patch
-	"${FILESDIR}"/${P}-ffmpeg-0.10.patch
-	"${FILESDIR}"/${P}-ffmpeg-0.11.patch
-	"${FILESDIR}"/${P}-preset-free.patch
-	"${FILESDIR}"/${P}-libav-9.patch
-	"${FILESDIR}"/${P}-libav-10.patch
-	"${FILESDIR}"/${P}-preset-force.patch
-	"${FILESDIR}"/${P}-ffmpeg2.patch
-	"${FILESDIR}"/${P}-freetype251.patch
-	"${FILESDIR}"/${P}-ffmpeg24.patch
+	"${WORKDIR}"/${P}-patchset/${P}-ffmpeg.patch
+	"${WORKDIR}"/${P}-patchset/${P}-ffmpeg-0.10.patch
+	"${WORKDIR}"/${P}-patchset/${P}-ffmpeg-0.11.patch
+	"${WORKDIR}"/${P}-patchset/${P}-preset-free.patch
+	"${WORKDIR}"/${P}-patchset/${P}-libav-9.patch
+	"${WORKDIR}"/${P}-patchset/${P}-libav-10.patch
+	"${WORKDIR}"/${P}-patchset/${P}-preset-force.patch
+	"${WORKDIR}"/${P}-patchset/${P}-ffmpeg2.patch
+	"${WORKDIR}"/${P}-patchset/${P}-freetype251.patch
+	"${WORKDIR}"/${P}-patchset/${P}-ffmpeg24.patch
 )
 
 src_prepare() {
 	if has_version '>=media-video/ffmpeg-2.8' ||
 		has_version '>=media-video/libav-12'; then
-		PATCHES+=( "${FILESDIR}"/${P}-ffmpeg29.patch )
+		PATCHES+=( "${WORKDIR}"/${P}-patchset/${P}-ffmpeg29.patch )
 	fi
 
 	if has_version '>=media-gfx/imagemagick-7.0.1.0' ; then
-		PATCHES+=( "${DISTDIR}"/${P}-imagemagick7.patch )
+		PATCHES+=( "${WORKDIR}"/${P}-patchset/${P}-imagemagick7.patch )
 	fi
 
 	default

@@ -24,6 +24,7 @@ IUSE="examples test"
 ruby_add_bdepend "
 	test? (
 		dev-ruby/rspec:3
+		dev-ruby/bundler
 		>=dev-ruby/nokogiri-1.5.2
 		>=dev-ruby/syntax-1.0.0
 		>=dev-util/aruba-0.6.1 =dev-util/aruba-0.6*
@@ -53,6 +54,10 @@ all_ruby_prepare() {
 	# Avoid harmless failing spec
 	sed -i -e '/converts the snapshot path to a relative path/,/end/ s:^:#:' \
 		spec/cucumber/formatter/html_spec.rb || die
+
+	# Avoid specs that fail due to changes in the ruby backtrace, 
+	# introduced in newer versions of dev-lang/ruby, bug 628580
+	rm -f features/docs/defining_steps/nested_steps.feature
 
 	# Avoid dependency on git
 	sed -i -e '/executables/ s/=.*/= ["cucumber"]/' \

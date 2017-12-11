@@ -1,6 +1,6 @@
 --- xmlada-2016-src/Makefile.in.old	2016-12-04 21:58:57.251338692 +0100
 +++ xmlada-2016-src/Makefile.in	2016-12-04 21:59:31.332755615 +0100
-@@ -49,13 +49,13 @@
+@@ -49,16 +49,17 @@
  endif
  
  static:
@@ -17,3 +17,26 @@
  
  # Rebuild the tests (and not the XML/Ada code itself)
  test: force
++	GPR_PROJECT_PATH=schema:input_sources:dom:sax:unicode \
+ 	${GPRBUILD} -p -XLIBRARY_TYPE=static ${GPROPTS} \
+ 		-XTESTS_ACTIVATED=Only xmlada.gpr
+ 
+--- xmlada-gpl-2016-src/tests/Makefile.old	2017-12-04 21:15:16.330459020 +0100
++++ xmlada-gpl-2016-src/tests/Makefile	2017-12-04 21:15:33.176156634 +0100
+@@ -1,8 +1,6 @@
+ TESTS= test_unicode \
+ 		 test_state \
+-		 test_xml \
+ 		 test_adacore_dom \
+-		 test_schema \
+ 		 test_date_time \
+ 		 test_numbers \
+ 		 test_adacore_schema \
+@@ -71,6 +71,7 @@
+ test_multiple_xsd:
+ 	@echo "multiple xsd"
+ 	@cd schema/multiple_xsd; \
++		GPR_PROJECT_PATH=../../../distrib:../../../input_sources:../../../dom:../../../sax:../../../schema:../../../unicode \
+ 		gprbuild -q -Pdefault.gpr; \
+ 		./validate > $(RESULTS)/multiple_xsd.out; \
+ 		cp $(RESULTS)/multiple_xsd.out $(RESULTS)/multiple_xsd.diff; \

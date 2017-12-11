@@ -1,0 +1,10 @@
+diff --git a/Setup.hs b/Setup.hs
+index 42784ab..6bb3f8a 100644
+--- a/Setup.hs
++++ b/Setup.hs
+@@ -1,2 +1,4 @@
+-import Distribution.Simple
++{-# LANGUAGE PackageImports #-}
++-- forces not to use local files
++import "Cabal" Distribution.Simple
+ main :: IO ()

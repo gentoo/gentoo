@@ -8,7 +8,7 @@ MY_P=Mixer.app-${PV}
 
 DESCRIPTION="mixer_app has volume controllers that can be configured to handle sound sources"
 HOMEPAGE="http://www.fukt.bsnet.se/~per/mixer/"
-SRC_URI="mirror://gentoo/${MY_P}.tar.gz"
+SRC_URI="http://www.fukt.bsnet.se/~per/mixer/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -16,6 +16,7 @@ PROFILE_IS_HARDENED=1
 
 # We set the default markings to XATTR_PAX
 PAX_MARKINGS="XT"
+USE="${USE} -ptpax"
 
 # Default starting set of USE flags for all default/linux profiles.
 # We unset them so we get a clean use flag profile.

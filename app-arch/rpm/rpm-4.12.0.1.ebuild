@@ -19,7 +19,7 @@ IUSE="nls python doc caps lua acl selinux"
 
 CDEPEND="!app-arch/rpm5
 	app-arch/libarchive
-	>=sys-libs/db-4.5
+	>=sys-libs/db-4.5:*
 	>=sys-libs/zlib-1.2.3-r1
 	>=app-arch/bzip2-1.0.1
 	>=dev-libs/popt-1.7
@@ -30,7 +30,7 @@ CDEPEND="!app-arch/rpm5
 	dev-libs/nss
 	python? ( ${PYTHON_DEPS} )
 	nls? ( virtual/libintl )
-	lua? ( >=dev-lang/lua-5.1.0[deprecated] )
+	lua? ( >=dev-lang/lua-5.1.0:*[deprecated] )
 	acl? ( virtual/acl )
 	caps? ( >=sys-libs/libcap-2.0 )"
 

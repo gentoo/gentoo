@@ -30,10 +30,6 @@ dev-qt/qtdemo:4 webkit
 dev-python/PyQt4 webkit
 dev-python/pyside:0 webkit
 
-# Mike Gilbert <floppym@gentoo.org> (10 Oct 2017)
-# Depends on old ffmpeg-2, which no longer exists in the repo.
-<=media-tv/tvheadend-4.0.9 ffmpeg
-
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (18 Sep 2017)
 # Ian Stakenvicius <axs@gentoo.org> (27 Sep 2017)
 # Depends on >=icu-59, still masked.
