@@ -8,10 +8,10 @@ KEYWORDS="~amd64 ~x86"
 HOMEPAGE="https://dev.gentoo.org/~mpagano/genpatches/
 	http://kernel.kolivas.org/"
 
+IUSE="experimental"
+
 K_WANT_GENPATCHES="base extras experimental"
-K_EXP_GENPATCHES_PULL="1"
-K_EXP_GENPATCHES_NOUSE="1"
-K_GENPATCHES_VER="14"
+K_GENPATCHES_VER="6"
 K_SECURITY_UNSUPPORTED="1"
 K_DEBLOB_AVAILABLE="1"
 
@@ -39,11 +39,6 @@ SRC_URI="${KERNEL_URI} ${GENPATCHES_URI} ${ARCH_URI} ${CK_URI}"
 UNIPATCH_LIST="${DISTDIR}/${CK_FILE}"
 UNIPATCH_STRICTORDER="yes"
 
-# ck-patches already includes BFQ (similar version as genpatches "experimental" USE flag)
-# what's not included is: "additional cpu optimizations" (5010) from genpatches experimental
-
-K_EXP_GENPATCHES_LIST="5010_*.patch*"
-
 pkg_setup() {
 	use deblob && python-any-r1_pkg_setup
 	kernel-2_pkg_setup
@@ -57,4 +52,10 @@ src_prepare() {
 	sed -i -e 's/\(^EXTRAVERSION :=.*$\)/# \1/' "${S}/Makefile" || die
 
 	kernel-2_src_prepare
+}
+
+pkg_postinst() {
+	elog "ck-sources previously enabled CPU optimizations by default."
+	elog "USE=\"experimental\" is now required to enable this patch."
+	elog "this can be set in /etc/portage/package.use (or make.conf)"
 }
