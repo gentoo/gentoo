@@ -12,7 +12,7 @@ PLOCALES="ar_SA bg_BG ca_ES cs_CZ da_DK de_DE el_GR es_ES es_MX es_VE eu_ES
 PLUGINS_HASH='c332d306c0f6cf645c75eaf198d2fc5e12339e9e'
 PLUGINS_VERSION='2016.05.02' # if there are no updates, we can use the older archive
 
-inherit l10n qmake-utils
+inherit l10n qmake-utils xdg-utils
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -106,4 +106,12 @@ src_configure() {
 src_install() {
 	emake INSTALL_ROOT="${D}" install
 	einstalldocs
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }
