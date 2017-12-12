@@ -201,11 +201,6 @@ kde-misc/kopete-thinklight
 games-mud/kmuddy
 
 # Andreas Sturmlechner <asturm@gentoo.org> (30 Nov 2017)
-# Depends on dead kdelibs4/Qt4, no KF5-based release.
-# Masked for removal in 30 days. Bug #629018
-media-gfx/kcoloredit:4
-
-# Andreas Sturmlechner <asturm@gentoo.org> (30 Nov 2017)
 # Dead upstream, depends on dead kdelibs4/Qt3Support/Qt4.
 # Masked for removal in 30 days. Bug #629018
 kde-misc/krcstat
