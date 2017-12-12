@@ -49,13 +49,13 @@ src_prepare() {
 	tc-export CC PKG_CONFIG
 	sed -i 's: root : :' atop.cronsysv || die #191926
 	# prefixify
-	sed -i "s:/\(usr\|etc\|var\):${EPREFIX}/\1:g" Makefile
+	sed -i "s:/\(usr\|etc\|var\):${EPREFIX}/\1:g" Makefile || die
 }
 
 src_install() {
 	emake DESTDIR="${D}" genericinstall
 	# useless -${PV} copies ?
-	rm -f "${ED%/}"/usr/bin/atop*-${PV}
+	rm "${ED%/}"/usr/bin/atop*-${PV} || die
 	newinitd "${FILESDIR}"/${PN}.rc-r2 ${PN}
 	newinitd "${FILESDIR}"/atopacct.rc atopacct
 	systemd_dounit "${FILESDIR}"/${PN}.service
