@@ -2071,7 +2071,7 @@ app-office/tedia2sql 1.2.12: Convert database ERD designed in Dia into SQL DDL s
 app-office/texmacs 1.99.2-r1 1.99.5: Wysiwyg text processor with high-quality maths
 app-office/texmaker 4.5-r2 4.5-r3 5.0: A nice LaTeX-IDE
 app-office/texstudio 2.11.2-r1 2.12.2 2.12.4 2.12.6: Free cross-platform LaTeX editor (fork from texmakerX)
-app-office/unoconv 0.7 99999999: Convert between document formats supported by Libreoffice
+app-office/unoconv 0.7 0.8.2: Convert between document formats supported by Libreoffice
 app-office/upwork 4.1.134 4.2.153: Project collaboration and tracking software for upwork.com
 app-office/worklog-assistant-bin 2.1.3580: Hassle-free time tracking for JIRA self-hosted and OnDemand
 app-office/wps-office 10.1.0.5707_alpha21: WPS Office is an office productivity suite
