@@ -546,7 +546,7 @@ app-crypt/gpgme 1.8.0-r2 1.8.0-r3 1.10.0_beta81 9999: GnuPG Made Easy is a libra
 app-crypt/gpgstats 0.5-r1: GPGstats calculates statistics on the keys in your key-ring
 app-crypt/hashalot 0.3-r2: CryptoAPI utils
 app-crypt/hashcat 3.5.0 4.0.1: World's fastest and most advanced password recovery utility
-app-crypt/heimdal 7.4.0: Kerberos 5 implementation from KTH
+app-crypt/heimdal 7.4.0 7.5.0: Kerberos 5 implementation from KTH
 app-crypt/hmaccalc 0.9.14: Tools for computing and checking HMAC values for files
 app-crypt/ima-evm-utils 0.2 0.8 1.0 9999: Supporting tools for IMA and EVM
 app-crypt/jacksum 1.7.0: Java utility for computing and verifying checksums: CRC*, MD*, etc.
@@ -14964,7 +14964,7 @@ net-libs/libkvkontakte 5.0.0_pre20170128 5.0.0: Library for accessing the featur
 net-libs/liblockfile 1.09 1.13 1.14: Implements functions designed to lock the standard mailboxes
 net-libs/libmbim 1.6.0 1.10.0 1.12.2 1.12.4 1.14.0: Mobile Broadband Interface Model (MBIM) modem protocol helper library
 net-libs/libmediawiki 5.0.0_pre20170128 5.37.0: C++ interface for MediaWiki based web service as wikipedia.org
-net-libs/libmicrohttpd 0.9.51 0.9.52 0.9.53 0.9.54 0.9.55 0.9.57: Small C library to run an HTTP server as part of another application
+net-libs/libmicrohttpd 0.9.52 0.9.55 0.9.57 0.9.58: Small C library to run an HTTP server as part of another application
 net-libs/libmirisdr 9999: Software for the Mirics MSi2500 + MSi001 SDR platform
 net-libs/libmnl 1.0.3-r1 1.0.4: Minimalistic netlink library
 net-libs/libmrss 0.19.2: A C-library for parsing and writing RSS 0.91/0.92/1.0/2.0 files or streams
