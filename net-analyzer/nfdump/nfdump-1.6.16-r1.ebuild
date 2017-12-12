@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="
 "
 
 LICENSE="BSD"
-SLOT="0/${PV}"
+SLOT="0/1.6.15"
 KEYWORDS="~amd64 ~x86"
 IUSE="compat15 debug ftconv nfprofile nftrack readpcap sflow static-libs"
 
@@ -32,15 +32,15 @@ RDEPEND="
 	${COMMON_DEPEND}
 	dev-lang/perl
 "
-
-DOCS=( AUTHORS ChangeLog NEWS README )
+DOCS=( AUTHORS ChangeLog README.md )
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.6.14-libft.patch
+	"${FILESDIR}"/${PN}-1.6.16-libnfdump.patch
+	"${FILESDIR}"/${PN}-1.6.16-DEVEL.patch
+)
 
 src_prepare() {
-	eapply \
-		"${FILESDIR}"/${PN}-1.6.14-libft.patch \
-		"${FILESDIR}"/${PN}-1.6.14-libnfdump.patch
-
-	eapply_user
+	default
 
 	eautoreconf
 }

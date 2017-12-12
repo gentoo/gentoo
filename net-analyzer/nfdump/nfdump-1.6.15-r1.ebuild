@@ -11,7 +11,7 @@ SRC_URI="
 "
 
 LICENSE="BSD"
-SLOT="0/1.6.15"
+SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="compat15 debug ftconv nfprofile nftrack readpcap sflow static-libs"
 
@@ -32,14 +32,15 @@ RDEPEND="
 	${COMMON_DEPEND}
 	dev-lang/perl
 "
-DOCS=( AUTHORS ChangeLog NEWS README )
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.6.14-libft.patch
-	"${FILESDIR}"/${PN}-1.6.16-libnfdump.patch
-)
+
+DOCS=( AUTHORS ChangeLog README.md )
 
 src_prepare() {
-	default
+	eapply \
+		"${FILESDIR}"/${PN}-1.6.14-libft.patch \
+		"${FILESDIR}"/${PN}-1.6.14-libnfdump.patch
+
+	eapply_user
 
 	eautoreconf
 }
