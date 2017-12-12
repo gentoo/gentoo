@@ -25,9 +25,3 @@ DEPEND="test? (
 python_test() {
 	py.test -vv || die "Tests failed under ${EPYTHON}"
 }
-
-pkg_postinst() {
-	ewarn "Version 2.8.x has significant API and implementation changes from"
-	ewarn "previous 2.5.x releases. Please read the documentation at"
-	ewarn "http://construct.readthedocs.io/ for more info."
-}
