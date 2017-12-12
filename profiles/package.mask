@@ -386,12 +386,6 @@ media-plugins/vdr-alcd
 # See also bug #624046. Masked for removal on 2017-12-12
 sci-geosciences/gmapcatcher
 
-# Brian Evans <grknight@gentoo.org> (07 Nov 2017)
-# Remote service removed this method, dead upstream
-# Masked for removal in 30 days.
-# Bug 636796
-dev-php/PEAR-Services_W3C_HTMLValidator
-
 # Mike Gilbert <floppym@gentoo.org> (05 Nov 2017)
 # Breaks several reverse dependencies.
 # https://bugs.gentoo.org/635934
