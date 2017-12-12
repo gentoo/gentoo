@@ -5,19 +5,20 @@ EAPI=6
 
 inherit user systemd
 
+# version voodoo needed only for non-release tarballs: 4.0.0_rc1 => 4.0.0rc1
+MY_PV="${PV/_rc/rc}"
+MY_PV="${MY_PV/_beta/b}"
+MY_P="${PN}-${MY_PV}"
+
 DESCRIPTION="An authoritative only, high performance, open source name server"
 HOMEPAGE="http://www.nlnetlabs.nl/projects/nsd"
-# version voodoo needed only for non-release tarballs: 4.0.0_rc1 => 4.0.0rc1
-MY_PV=${PV/_rc/rc}
-MY_PV=${MY_PV/_beta/b}
-MY_P=${PN}-${MY_PV}
-S="${WORKDIR}/${MY_P}"
 SRC_URI="http://www.nlnetlabs.nl/downloads/${PN}/${MY_P}.tar.gz"
-
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="bind8-stats ipv6 libevent minimal-responses mmap munin +nsec3 ratelimit root-server runtime-checks ssl libressl"
+
+S="${WORKDIR}/${MY_P}"
 
 RDEPEND="
 	virtual/yacc
@@ -85,7 +86,7 @@ src_install() {
 
 	# remove the /run directory that usually resides on tmpfs and is
 	# being taken care of by the nsd init script anyway (checkpath)
-	rm -r "${ED}"/run || die "Failed to remove /run"
+	rm -r "${ED%/}"/run || die "Failed to remove /run"
 }
 
 pkg_postinst() {
