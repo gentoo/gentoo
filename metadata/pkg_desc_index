@@ -96,7 +96,7 @@ app-admin/evtxtools 1.1.1-r1: Read, decode and dump Windows Vista/2008/7 event l
 app-admin/fam 2.7.0-r7: FAM, the File Alteration Monitor
 app-admin/fetchlog 1.0 1.4-r1: Displays the last new messages of a logfile
 app-admin/fifo-cronolog 1.1.1-r1: cronolog wrapper for use with dumb daemons like squid, varnish and so on
-app-admin/filebeat 5.5.2 5.6.4 6.0.0: Lightweight log shipper for Logstash and Elasticsearch
+app-admin/filebeat 5.5.2 5.6.5 6.0.1: Lightweight log shipper for Logstash and Elasticsearch
 app-admin/filewatcher 2.4.6-r1: File control configuration system and IDS
 app-admin/fleet 0.11.5 0.11.8 1.0.0 9999: A Distributed init System
 app-admin/fsvs 1.2.5-r1 1.2.5-r2: Backup/restore for subversion backends
@@ -137,7 +137,7 @@ app-admin/logmon 0.4.4-r1: Split-screen terminal/ncurses based log viewer
 app-admin/logrotate 3.9.1 3.12.3-r1 3.12.3-r2 3.13.0: Rotates, compresses, and mails system logs
 app-admin/logsentry 1.1.1 1.1.1-r2: Automatically monitor system logs and mail security violations
 app-admin/logstalgia 1.0.7: Replays or streams an access_log as a retro arcade game-like simulation
-app-admin/logstash-bin 5.5.3 5.6.4 6.0.0: Tool for managing events and logs
+app-admin/logstash-bin 5.5.3 5.6.5 6.0.1: Tool for managing events and logs
 app-admin/logsurfer+ 1.8-r3: Real Time Log Monitoring and Alerting
 app-admin/longrun 0.9-r4: A utility to control Transmeta's Crusoe and Efficeon processors
 app-admin/lsat 0.9.7.1-r2: The Linux Security Auditing Tool
@@ -212,7 +212,7 @@ app-admin/supervisor 3.1.4 3.3.3: A system for controlling process state under U
 app-admin/swatchdog 3.2.4-r1: Simple log watcher
 app-admin/sxid 4.2-r1 4.2-r2: suid, sgid file and directory checking
 app-admin/sysklogd 1.5.1 1.5.1-r1: Standard log daemons
-app-admin/syslog-ng 3.7.3 3.12.1: syslog replacement with advanced filtering features
+app-admin/syslog-ng 3.7.3 3.12.1 3.13.2: syslog replacement with advanced filtering features
 app-admin/syslog-summary 1.14-r1: Summarizes the contents of a syslog log file
 app-admin/syslogread 0.92-r1: Syslog message handling tools
 app-admin/sysrqd 14: daemon providing access to the kernel sysrq functions via network
@@ -1000,7 +1000,7 @@ app-doc/zsh-lovers 0.9.0 0.9.1: Tips, tricks and examples for the Z shell
 app-editors/adie 1.7.54: Text editor based on the FOX Toolkit
 app-editors/aee 2.2.15b 2.2.21: An easy to use text editor
 app-editors/amyedit 1.0-r2: AmyEdit is a LaTeX editor
-app-editors/atom 1.15.0-r1 1.16.0 1.18.0 1.20.1 1.21.0: A hackable text editor for the 21st Century
+app-editors/atom 1.22.1 1.23.0_beta1: A hackable text editor for the 21st Century
 app-editors/beaver 0.4.1: Beaver is an Early AdVanced EditoR
 app-editors/bluefish 2.2.6 2.2.8 2.2.9 2.2.10: A GTK HTML editor for the experienced web designer or programmer
 app-editors/bvi 1.3.2-r2 1.4.0_alpha: display-oriented editor for binary files, based on the vi texteditor
@@ -1780,7 +1780,7 @@ app-misc/dvtm 0.14 0.15 9999: Dynamic virtual terminal manager
 app-misc/editor-wrapper 4: Wrapper scripts that will execute EDITOR or PAGER
 app-misc/egads 0.9.5 0.9.5-r1: Entropy Gathering And Distribution System
 app-misc/eid-viewer-bin 4.0.7_p184 4.1.9: Graphical interface to the Belgian Electronic Identity Card
-app-misc/elasticsearch 5.5.2 5.6.4 6.0.0: Open Source, Distributed, RESTful, Search Engine
+app-misc/elasticsearch 5.5.3 5.6.5 6.0.1: Open Source, Distributed, RESTful, Search Engine
 app-misc/email2trac 2.6.2-r1 2.8.4 2.8.8: Utilities to convert emails to trac tickets
 app-misc/emelfm2 0.9.1-r1 0.9.1-r2: A file manager that implements the popular two-pane design
 app-misc/empty 0.6.20b: Small shell utility, similar to expect(1)
@@ -4324,7 +4324,7 @@ dev-java/miglayout 4.0: Easy to use yet very powerful Java Swing layout manager
 dev-java/milton-api 2.7.1.3: Milton WebDav library
 dev-java/milton-mail-api 2.7.1.3: Milton WebDav library
 dev-java/mimepull 1.8 1.9.6-r1: Pull API for parsing MIME messages
-dev-java/mina-core 1.1.7 1.1.7-r1 2.0.7-r1: Apache MINA Project
+dev-java/mina-core 1.1.7-r1 2.0.7-r1: Apache MINA Project
 dev-java/minlog 1.2: Minimal overhead Java logging
 dev-java/mockito 1.9.5-r1: A mocking framework for Java
 dev-java/mojarra 2.2.12-r1: Project Mojarra - GlassFish's Implementation for JavaServer Faces API
@@ -7507,7 +7507,7 @@ dev-python/configparser 3.3.0.2 3.5.0 3.5.0-r1: Backport of Python-3 built-in co
 dev-python/configshell 1.6 9999: ConfigShell Community Edition for target_core_mod/ConfigFS
 dev-python/configshell-fb 1.1.22 1.1.23: A Python library for building configuration shells
 dev-python/constantly 15.1.0: Symbolic constants in Python
-dev-python/construct 2.8.14 2.8.16: A powerful declarative parser for binary data
+dev-python/construct 2.8.16 2.8.17: A powerful declarative parser for binary data
 dev-python/contextlib2 0.5.4 0.5.5: Backports and enhancements for the contextlib module
 dev-python/cookies 2.2.1: Friendlier RFC 6265-compliant cookie parser/renderer
 dev-python/corner 2.0.1: Make scatter matrix corner plots
@@ -8154,7 +8154,7 @@ dev-python/oslo-context 2.12.2 2.17.0 2.17.1: Helpers to maintain useful informa
 dev-python/oslo-db 4.17.1 4.25.0 4.25.1: OpenStack Common DB Code
 dev-python/oslo-i18n 3.12.0 3.17.0 3.17.1: Oslo i18n library
 dev-python/oslo-log 3.20.1 3.30.0 3.30.1: OpenStack logging config library, configuration for all openstack projects.
-dev-python/oslo-messaging 5.17.2 5.30.1: Messaging API for RPC and notifications over different messaging transports
+dev-python/oslo-messaging 5.17.2 5.30.1 5.30.2: Messaging API for RPC and notifications over different messaging transports
 dev-python/oslo-middleware 3.23.2 3.23.3 3.30.1: Components injected into wsgi pipelines to intercept request/response flows.
 dev-python/oslo-policy 1.18.0 1.25.1 1.25.2: Support for RBAC policy enforcement across all OpenStack services
 dev-python/oslo-privsep 1.16.0 1.22.0 1.22.1: OpenStack library for privilege separation.
@@ -13955,7 +13955,7 @@ media-sound/protux 0.50.100: Professional Audio Tools for GNU/Linux
 media-sound/ptabtools 0.5.0: Utilities for PowerTab Guitar files (.ptb)
 media-sound/puddletag 1.2.0: Audio tag editor
 media-sound/pulseaudio 10.0 10.99.1 11.0 11.1: A networked sound server with an advanced plugin system
-media-sound/pulseeffects 3.0.8 3.0.9 3.1.1 9999: Limiter, compressor, reverberation, equalizer auto volume effects for Pulseaudio
+media-sound/pulseeffects 3.0.9 3.1.1 3.1.2 9999: Limiter, compressor, reverberation, equalizer auto volume effects for Pulseaudio
 media-sound/pwavecat 0.4.5: concatenates any number of audio files to stdout
 media-sound/pympd 0.08.1-r1: a Rhythmbox-like PyGTK+ client for Music Player Daemon
 media-sound/qarecord 0.5.0: A simple harddisk recorder writing from an input audio stream to a .wav file
@@ -17575,7 +17575,7 @@ sys-cluster/gasnet 1.26.4 1.26.4-r1 1.28.0 1.28.2 1.30.0: Networking middleware 
 sys-cluster/gearmand 0.34-r1: Generic framework to farm out work to other machines
 sys-cluster/glusterfs 3.12.3 3.13.0 9999: GlusterFS is a powerful network/cluster filesystem
 sys-cluster/heartbeat 3.0.5-r3 3.0.6: Heartbeat high availability cluster manager
-sys-cluster/heat 8.0.5 9.0.1 2017.1.9999 2017.2.9999: A CloudFormation-compatible openstack-native cloud orchistration engine.
+sys-cluster/heat 8.0.5 8.0.6 9.0.1 9.0.2 2017.1.9999 2017.2.9999: A CloudFormation-compatible openstack-native cloud orchistration engine.
 sys-cluster/hpl 2.0-r3: Portable Implementation of the Linpack Benchmark for Distributed-Memory Clusters
 sys-cluster/hpx 0.9.8 0.9.9 0.9.10 0.9.99 1.0.0 9999: C++ runtime system for parallel and distributed applications
 sys-cluster/ipvsadm 1.21-r1 1.24 1.26-r2 1.27-r1 1.28: utility to administer the IP virtual server services
