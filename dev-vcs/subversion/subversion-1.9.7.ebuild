@@ -13,7 +13,8 @@ inherit autotools bash-completion-r1 db-use depend.apache distutils-r1 elisp-com
 MY_P="${P/_/-}"
 DESCRIPTION="Advanced version control system"
 HOMEPAGE="http://subversion.apache.org/"
-SRC_URI="mirror://apache/${PN}/${MY_P}.tar.bz2"
+SRC_URI="mirror://apache/${PN}/${MY_P}.tar.bz2
+	https://dev.gentoo.org/~mgorny/dist/${PN}-1.8.18-patchset.tar.bz2"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="Subversion GPL-2"
@@ -65,12 +66,12 @@ REQUIRED_USE="
 	)"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.5.4-interix.patch
-	"${FILESDIR}"/${PN}-1.5.6-aix-dso.patch
-	"${FILESDIR}"/${PN}-1.8.0-hpux-dso.patch
-	"${FILESDIR}"/${PN}-fix-parallel-build-support-for-perl-bindings.patch
-	"${FILESDIR}"/${PN}-1.8.1-revert_bdb6check.patch
-	"${FILESDIR}"/${PN}-1.8.16-javadoc-nolint.patch
+	"${WORKDIR}"/${PN}-1.8.18-patchset/${PN}-1.5.4-interix.patch
+	"${WORKDIR}"/${PN}-1.8.18-patchset/${PN}-1.5.6-aix-dso.patch
+	"${WORKDIR}"/${PN}-1.8.18-patchset/${PN}-1.8.0-hpux-dso.patch
+	"${WORKDIR}"/${PN}-1.8.18-patchset/${PN}-fix-parallel-build-support-for-perl-bindings.patch
+	"${WORKDIR}"/${PN}-1.8.18-patchset/${PN}-1.8.1-revert_bdb6check.patch
+	"${WORKDIR}"/${PN}-1.8.18-patchset/${PN}-1.8.16-javadoc-nolint.patch
 )
 
 want_apache

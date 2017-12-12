@@ -6,6 +6,7 @@ EAPI=6
 DESCRIPTION="A decoder implementation of the JBIG2 image compression format"
 HOMEPAGE="http://ghostscript.com/jbig2dec.html"
 SRC_URI="http://downloads.ghostscript.com/public/${PN}/${P}.tar.gz
+	https://dev.gentoo.org/~mgorny/dist/${P}-patchset.tar.bz2
 	test? ( http://jbig2dec.sourceforge.net/ubc/jb2streams.zip )"
 
 LICENSE="AGPL-3"
@@ -23,11 +24,11 @@ RESTRICT="test"
 DOCS="CHANGES README"
 
 PATCHES=(
-	"${FILESDIR}/${P}-CVE-2016-9601.patch"
-	"${FILESDIR}/${P}-CVE-2017-9216.patch"
-	"${FILESDIR}/${P}-CVE-2017-7885.patch"
-	"${FILESDIR}/${P}-CVE-2017-7975.patch"
-	"${FILESDIR}/${P}-CVE-2017-7976.patch"
+	"${WORKDIR}/${P}-patchset/${P}-CVE-2016-9601.patch"
+	"${WORKDIR}/${P}-patchset/${P}-CVE-2017-9216.patch"
+	"${WORKDIR}/${P}-patchset/${P}-CVE-2017-7885.patch"
+	"${WORKDIR}/${P}-patchset/${P}-CVE-2017-7975.patch"
+	"${WORKDIR}/${P}-patchset/${P}-CVE-2017-7976.patch"
 )
 
 src_prepare() {
