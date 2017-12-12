@@ -2123,7 +2123,7 @@ app-portage/g-octave 0.4.1-r5: A tool that generates and installs ebuilds for Oc
 app-portage/g-sorcery 0.1-r1 0.2 0.2.1 0.2.1-r1 9999: framework for ebuild generators
 app-portage/gemato 8 9.1 9.2 9999: Stand-alone Manifest generation & verification tool
 app-portage/genlop 0.30.9-r1 0.30.10 0.30.10-r1 9999: A nice emerge.log parser
-app-portage/gentoolkit 0.3.3 0.4.0 9999: Collection of administration scripts for Gentoo
+app-portage/gentoolkit 0.3.3 0.4.0 0.4.1 9999: Collection of administration scripts for Gentoo
 app-portage/gentoolkit-dev 0.2.8.3-r1 0.3.0 0.3.1: Collection of developer scripts for Gentoo
 app-portage/gentoopm 0.2.9 9999: A common interface to Gentoo package managers
 app-portage/getdelta 0.7.9-r2: dynamic deltup client
@@ -15140,7 +15140,7 @@ net-mail/mswatch 1.2.0-r1: A utility to watch mailstores for changes and initiat
 net-mail/mu 0.9.9.6 0.9.15-r1 0.9.16 0.9.18-r1 0.9.18-r2: Set of tools to deal with Maildirs, in particular, searching and indexing
 net-mail/muchsync 3 4: Synchronizes mail messages and notmuch tags across machines
 net-mail/nmzmail 1.1: Fast mail searching for mutt using namazu
-net-mail/notmuch 0.23.7 0.24.2 0.25 0.25.1 0.25.2: Thread-based e-mail indexer, supporting quick search and tagging
+net-mail/notmuch 0.23.7 0.24.2 0.25 0.25.1 0.25.2 0.25.3: Thread-based e-mail indexer, supporting quick search and tagging
 net-mail/offlineimap 6.5.6 6.7.0.3 7.0.14 7.1.0 7.1.1 7.1.2 7.1.3 7.1.4: Powerful IMAP/Maildir synchronization and reader support
 net-mail/peephole 1.5: A daemon that polls your POP servers, checking if there are messages from specific people
 net-mail/pflogsumm 1.1.5: Pflogsumm is a log analyzer for Postfix logs
