@@ -37,6 +37,8 @@ DEPEND="${RDEPEND}
 
 PATCHES=( "${FILESDIR}"/${PN}-0.4.1-libdir.patch )
 
+RESTRICT+=" test"
+
 src_configure() {
 	local mycmakeargs=(
 		-DSIMON_LIB_INSTALL_DIR=/usr/$(get_libdir)

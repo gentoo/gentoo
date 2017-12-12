@@ -29,6 +29,20 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (12 Dec 2017)
+# Depends on dead kdelibs4/qt4, unmaintained upstream. No port to
+# KF5 released. If you depend on this package, please help test KF5-based
+# cirkuit-9999 in KDE ebuild repository to decide on a possible snapshot.
+# Bug #640884. Masked for removal in 30 days.
+sci-electronics/cirkuit
+
+# Andreas Sturmlechner <asturm@gentoo.org> (12 Dec 2017)
+# Depends on dead kdelibs4/qt4, no port to KF5 released yet.
+# If you depend on this package, help test KF5-based simon-9999
+# to decide on a possible snapshot. Bugs #640846, 639960, 635816.
+# Masked for removal in 30 days.
+app-accessibility/simon:4
+
 # Patrick Lauer <patrick@gentoo.org> (12 Dec 2017)
 # Unfetchable / wrong checksum #640718
 =dev-libs/nettle-3.4
@@ -182,19 +196,9 @@ kde-misc/kopete-antispam
 kde-misc/kopete-thinklight
 
 # Andreas Sturmlechner <asturm@gentoo.org> (30 Nov 2017)
-# Still depends on dead kdelibs4/Qt3Support/Qt4, no KF5-based release.
-# Masked for removal in 30 days. Bug #629018
-<=dev-util/kdbg-2.9.1
-
-# Andreas Sturmlechner <asturm@gentoo.org> (30 Nov 2017)
 # Dead upstream, depends on dead kdelibs4/Qt3Support/Qt4.
 # Masked for removal in 30 days. Bug #634324
 games-mud/kmuddy
-
-# Andreas Sturmlechner <asturm@gentoo.org> (30 Nov 2017)
-# Depends on dead kdelibs4/Qt4, no KF5-based release.
-# Masked for removal in 30 days. Bug #629018
-media-gfx/kcoloredit:4
 
 # Andreas Sturmlechner <asturm@gentoo.org> (30 Nov 2017)
 # Dead upstream, depends on dead kdelibs4/Qt3Support/Qt4.
