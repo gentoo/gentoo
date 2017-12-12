@@ -35,6 +35,7 @@ LIBCHROMIUMCONTENT_COMMIT="a9b88fab38a8162bb485cc5854973f71ea0bc7a6"
 ASAR_VERSION="0.13.0"
 BROWSERIFY_VERSION="14.0.0"
 
+PATCHES_P="gentoo-electron-patches-${P}"
 CHROMIUM_P="chromium-${CHROMIUM_VERSION}"
 BREAKPAD_P="chromium-breakpad-${BREAKPAD_COMMIT}"
 BREAKPAD_SRC_P="breakpad-${BREAKPAD_SRC_COMMIT}"
@@ -48,7 +49,7 @@ ASAR_P="asar-${ASAR_VERSION}"
 BROWSERIFY_P="browserify-${BROWSERIFY_VERSION}"
 
 DESCRIPTION="Cross platform application development framework based on web technologies"
-HOMEPAGE="http://electron.atom.io/"
+HOMEPAGE="https://electronjs.org/"
 SRC_URI="
 	https://commondatastorage.googleapis.com/chromium-browser-official/${CHROMIUM_P}.tar.xz
 	https://github.com/electron/electron/archive/v${PV}.tar.gz -> ${P}.tar.gz
@@ -62,6 +63,7 @@ SRC_URI="
 	https://github.com/electron/libchromiumcontent/archive/${LIBCHROMIUMCONTENT_COMMIT}.tar.gz -> electron-${LIBCHROMIUMCONTENT_P}.tar.gz
 	https://github.com/elprans/asar/releases/download/v${ASAR_VERSION}-gentoo/asar-build.tar.gz -> ${ASAR_P}.tar.gz
 	https://github.com/elprans/node-browserify/releases/download/${BROWSERIFY_VERSION}-gentoo/browserify-build.tar.gz -> ${BROWSERIFY_P}.tar.gz
+	https://github.com/elprans/gentoo-electron-patches/archive/${P}.tar.gz -> electron-patches-${PV}.tar.gz
 "
 
 S="${WORKDIR}/${P}"
@@ -176,23 +178,6 @@ DEPEND="${COMMON_DEPEND}
 		dev-python/html5lib[${PYTHON_USEDEP}]
 		dev-python/simplejson[${PYTHON_USEDEP}]
 	')
-"
-
-CHROMIUM_PATCHES="
-	chromium-FORTIFY_SOURCE.patch
-	chromium-gcc-7-r0.patch
-	chromium-glibc-2.24.patch
-	chromium-56-gcc4.patch
-	chromium-system-ffmpeg-r4.patch
-	chromium-system-icu-r0.patch
-	chromium-icu-59-r0.patch
-	chromium-icu-60-r0.patch
-	chromium-v8-icu-59-r0.patch
-	chromium-disable-widevine.patch
-	chromium-remove-gardiner-mod-font-r1.patch
-	chromium-shared-v8-r2.patch
-	chromium-lto-fixes-r3.patch
-	chromium-python3-compat-r0.patch
 "
 
 # Keep this in sync with the python_gen_any_dep call.
@@ -339,15 +324,8 @@ src_prepare() {
 	rsync -a "${WORKDIR}/${BROWSERIFY_P}/node_modules/" \
         "${S}/node_modules/" || die
 
-	# electron patches
-	cd "${ELECTRON_S}" || die
-	eapply "${FILESDIR}/${P}.patch"
-	eapply "${FILESDIR}/${PN}-system-icu-r0.patch"
-
 	# node patches
 	cd "${NODE_S}" || die
-	eapply "${FILESDIR}/${P}-vendor-node.patch"
-	eapply "${FILESDIR}/${PN}-vendor-node-external-snapshots-r2.patch"
 	# make sure node uses the correct version of v8
 	rm -r deps/v8 || die
 	ln -s "${CHROMIUM_S}/v8" deps/ || die
@@ -371,22 +349,9 @@ src_prepare() {
 	sed -i -e "s/'lib'/'${LIBDIR}'/" lib/module.js || die
 	sed -i -e "s|\"lib\"|\"${LIBDIR}\"|" deps/npm/lib/npm.js || die
 
-	# brightray patches
-	cd "${BRIGHTRAY_S}" || die
-	eapply "${FILESDIR}/${P}-vendor-brightray.patch"
-
-	# libchromiumcontent patches
-	cd "${LIBCC_S}" || die
-	eapply "${FILESDIR}/${P}-vendor-libchromiumcontent.patch"
-
-	# breakpad patches
-	cd "${BREAKPAD_S}" || die
-	eapply "${FILESDIR}/${P}-vendor-breakpad.patch"
-
-	# chromium patches
 	cd "${CHROMIUM_S}" || die
 
-	# libcc chromium patches
+	# Apply libcc Chromium patches.
 	_unnest_patches "${LIBCC_S}/patches"
 
 	EPATCH_SOURCE="${LIBCC_S}/patches" \
@@ -395,11 +360,16 @@ src_prepare() {
 	EPATCH_MULTI_MSG="Applying libchromiumcontent patches..." \
 		epatch
 
-	# Apply Gentoo-specific Chromium patches
-	local p
-	for p in ${CHROMIUM_PATCHES}; do
-		eapply "${FILESDIR}/${p}"
-	done
+	cd "${S}" || die
+
+	# Apply Gentoo patches
+	_unnest_patches "${WORKDIR}/${PATCHES_P}/${PV}"
+
+	EPATCH_SOURCE="${WORKDIR}/${PATCHES_P}/${PV}" \
+	EPATCH_SUFFIX="patch" \
+	EPATCH_FORCE="yes" \
+	EPATCH_MULTI_MSG="Applying Gentoo patches..." \
+		epatch
 
 	# Merge chromiumcontent component into chromium source tree.
 	mkdir -p "${CHROMIUM_S}/chromiumcontent" || die
@@ -525,6 +495,8 @@ src_prepare() {
 	if ! use system-ffmpeg; then
 		keeplibs+=( third_party/ffmpeg )
 	fi
+
+	cd "${CHROMIUM_S}" || die
 
 	# Remove most bundled libraries. Some are still needed.
 	ebegin "Unbundling libraries"
