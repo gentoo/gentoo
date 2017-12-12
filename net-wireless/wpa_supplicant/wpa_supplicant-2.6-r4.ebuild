@@ -380,6 +380,7 @@ src_install() {
 		dobin wpa_gui-qt4/wpa_gui
 		doicon wpa_gui-qt4/icons/wpa_gui.svg
 		make_desktop_entry wpa_gui "WPA Supplicant Administration GUI" "wpa_gui" "Qt;Network;"
+		mv "${ED%/}"/usr/share/applications/wpa_gui{-wpa_supplicant,}.desktop || die
 	else
 		rm "${ED}"/usr/share/man/man8/wpa_gui.8
 	fi
