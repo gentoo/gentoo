@@ -6,8 +6,9 @@ EAPI="6"
 inherit font
 
 DESCRIPTION="Chinese TrueType Fonts"
-HOMEPAGE="http://www.opendesktop.org.tw/"
-SRC_URI="ftp://ftp.opendesktop.org.tw/odp/ODOFonts/OpenFonts/${P}.tar.gz"
+#HOMEPAGE="http://www.opendesktop.org.tw/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="Arphic"
 SLOT="0"
