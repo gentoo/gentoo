@@ -7,7 +7,7 @@
 -etcdir     = $(pkgdatadir)/etc
 -etc_DATA   = AUTHORS ChangeLog ChangeLog.1 CREDITS COPYING INSTALL \
 -	     INSTALL-ja README README-es README-ja NEWS THANKS TODO \
-+etcdir     = @docdir@
++etcdir     = $(docdir)
 +etc_DATA   = AUTHORS ChangeLog ChangeLog.1 CREDITS \
 +	     README README-es README-ja NEWS THANKS TODO \
  	     HACKING HACKING-ja
@@ -20,7 +20,7 @@
  SUBDIRS = en ja
  
 -cssdir = $(pkgdatadir)/doc
-+cssdir = @htmldir@
++cssdir = $(htmldir)
  
  css_DATA   = namazu.css
  EXTRA_DIST = $(css_DATA)
