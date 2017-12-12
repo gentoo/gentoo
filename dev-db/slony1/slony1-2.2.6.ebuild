@@ -30,6 +30,8 @@ RDEPEND=${DEPEND}
 
 REQUIRE_USE="${POSTGRES_REQ_USE}"
 
+RESTRICT="test"
+
 src_configure() {
 	local slot_bin_dir="/usr/$(get_libdir)/postgresql-@PG_SLOT@/bin"
 	use perl && myconf=" --with-perltools=\"${slot_bin_dir}\""

@@ -31,6 +31,9 @@ src_prepare() {
 	# Respect CFLAGS, LDFLAGS
 	eapply "${FILESDIR}"/${PN}-3.7.0-respect-flags.patch
 
+	# Fix test failures on glibc-2.26
+	eapply "${FILESDIR}"/${P}-test-fixes.patch
+
 	# Allow users to test their own patches
 	eapply_user
 
