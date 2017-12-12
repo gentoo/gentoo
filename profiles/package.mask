@@ -388,12 +388,6 @@ sci-geosciences/gmapcatcher
 # Bug 636796
 dev-php/PEAR-Services_W3C_HTMLValidator
 
-# Brian Evans <grknight@gentoo.org> (06 Nov 2017)
-# Broken with new PHP, dead upstream, broken tests
-# Masked for removal in 30 days.
-# Bug 636742
-dev-php/PEAR-HTTP_Download
-
 # Mike Gilbert <floppym@gentoo.org> (05 Nov 2017)
 # Breaks several reverse dependencies.
 # https://bugs.gentoo.org/635934
