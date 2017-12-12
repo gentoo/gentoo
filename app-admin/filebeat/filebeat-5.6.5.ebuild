@@ -11,7 +11,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND=">=dev-lang/go-1.8.3"
+DEPEND=">=dev-lang/go-1.9.2"
 RDEPEND="!app-admin/filebeat-bin"
 
 ELASTIC="${WORKDIR}/src/github.com/elastic"
