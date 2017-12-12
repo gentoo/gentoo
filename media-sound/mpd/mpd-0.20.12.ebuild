@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools eutils flag-o-matic linux-info multilib systemd user
+inherit autotools flag-o-matic linux-info systemd user
 
 DESCRIPTION="The Music Player Daemon (mpd)"
 HOMEPAGE="https://www.musicpd.org https://github.com/MusicPlayerDaemon/MPD"
@@ -17,7 +17,7 @@ IUSE="adplug +alsa ao audiofile bzip2 cdio +curl debug +eventfd expat faad
 	lame mms libav libmpdclient libsamplerate libsoxr +mad mikmod modplug
 	mpg123 musepack +network nfs ogg openal opus oss pipe pulseaudio recorder
 	samba selinux sid +signalfd sndfile soundcloud sqlite systemd tcpd twolame
-	unicode upnp vorbis wavpack wildmidi zeroconf zip zlib"
+	unicode upnp vorbis wavpack wildmidi zeroconf zip zlib webdav"
 
 OUTPUT_PLUGINS="alsa ao fifo jack network openal oss pipe pulseaudio recorder"
 DECODER_PLUGINS="adplug audiofile faad ffmpeg flac fluidsynth mad mikmod
@@ -31,13 +31,14 @@ REQUIRED_USE="
 	recorder? ( || ( ${ENCODER_PLUGINS} ) )
 	opus? ( ogg )
 	upnp? ( expat )
+	webdav? ( curl expat )
 "
 
-CDEPEND="!<sys-cluster/mpich2-1.4_rc2
+CDEPEND="
 	adplug? ( media-libs/adplug )
 	alsa? (
-		media-sound/alsa-utils
 		media-libs/alsa-lib
+		media-sound/alsa-utils
 	)
 	ao? ( media-libs/libao[alsa?,pulseaudio?] )
 	audiofile? ( media-libs/audiofile )
@@ -59,6 +60,7 @@ CDEPEND="!<sys-cluster/mpich2-1.4_rc2
 	lame? ( network? ( media-sound/lame ) )
 	libmpdclient? ( media-libs/libmpdclient )
 	libsamplerate? ( media-libs/libsamplerate )
+	libsoxr? ( media-libs/soxr )
 	mad? ( media-libs/libmad )
 	mikmod? ( media-libs/libmikmod:0 )
 	mms? ( media-libs/libmms )
@@ -75,10 +77,12 @@ CDEPEND="!<sys-cluster/mpich2-1.4_rc2
 	opus? ( media-libs/opus )
 	pulseaudio? ( media-sound/pulseaudio )
 	samba? ( >=net-fs/samba-4.0.25 )
-	sid? ( || ( media-libs/libsidplay:2 media-libs/libsidplayfp ) )
+	sid? ( || (
+		media-libs/libsidplay:2
+		media-libs/libsidplayfp
+	) )
 	sndfile? ( media-libs/libsndfile )
 	soundcloud? ( >=dev-libs/yajl-2:= )
-	libsoxr? ( media-libs/soxr )
 	sqlite? ( dev-db/sqlite:3 )
 	systemd? ( sys-apps/systemd )
 	tcpd? ( sys-apps/tcp-wrappers )
@@ -94,12 +98,11 @@ DEPEND="${CDEPEND}
 	dev-libs/boost
 	virtual/pkgconfig"
 RDEPEND="${CDEPEND}
+	!<sys-cluster/mpich2-1.4_rc2
 	selinux? ( sec-policy/selinux-mpd )
 "
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-0.18.conf.patch
-)
+PATCHES=( "${FILESDIR}"/${PN}-0.18.conf.patch )
 
 pkg_setup() {
 	use network || ewarn "Icecast and Shoutcast streaming needs networking."
@@ -220,8 +223,10 @@ src_configure() {
 		$(use_enable wildmidi)
 		$(use_enable zip zzip)
 		$(use_enable icu)
+		$(use_enable webdav)
 		$(use_enable faad aac)
 		$(use_with zeroconf zeroconf avahi)
+		--with-boost="${EPREFIX}"/usr
 		--with-systemdsystemunitdir=$(systemd_get_systemunitdir)
 		--with-systemduserunitdir=$(systemd_get_userunitdir)
 	)

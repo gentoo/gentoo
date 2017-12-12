@@ -6,14 +6,11 @@ EAPI="6"
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 DISTUTILS_OPTIONAL=1
 
-inherit autotools distutils-r1 flag-o-matic ltprune qmake-utils toolchain-funcs
-
-MY_PV="${PV//_/-}"
-MY_P="${PN}-${MY_PV}"
+inherit distutils-r1 flag-o-matic ltprune qmake-utils toolchain-funcs
 
 DESCRIPTION="GnuPG Made Easy is a library for making GnuPG easier to use"
 HOMEPAGE="http://www.gnupg.org/related_software/gpgme"
-SRC_URI="mirror://gentoo/${MY_P}.tar.bz2"
+SRC_URI="mirror://gnupg/gpgme/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="1/11" # subslot = soname major version
@@ -39,12 +36,6 @@ RDEPEND="${COMMON_DEPEND}
 
 REQUIRED_USE="qt5? ( cxx ) python? ( ${PYTHON_REQUIRED_USE} )"
 
-PATCHES=(
-	"${FILESDIR}/${P}-build.patch"
-)
-
-S="${WORKDIR}/${MY_P}"
-
 do_python() {
 	if use python; then
 		pushd "lang/python" > /dev/null || die
@@ -55,16 +46,6 @@ do_python() {
 
 pkg_setup() {
 	addpredict /run/user/$(id -u)/gnupg
-}
-
-src_prepare() {
-	default
-	eautoreconf
-
-	# Socket name is too long if we use full beta name
-	# tests are failing
-	ln -s "${MY_P}" "${WORKDIR}/b"
-	S="${WORKDIR}/b"
 }
 
 src_configure() {
