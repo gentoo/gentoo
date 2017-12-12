@@ -3,6 +3,8 @@
 
 EAPI="6"
 
+inherit multilib-minimal
+
 MY_P="${P/_/}"
 
 DESCRIPTION="Small C library to run an HTTP server as part of another application"
@@ -11,7 +13,7 @@ SRC_URI="mirror://gnu/${PN}/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/12"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="epoll messages ssl static-libs test"
 
 RDEPEND="ssl? (
@@ -30,12 +32,8 @@ S=${WORKDIR}/${MY_P}
 
 DOCS="AUTHORS NEWS README ChangeLog"
 
-src_prepare() {
-	eapply "${FILESDIR}"/${P}-fix-build-without-epoll.patch
-	eapply_user
-}
-
-src_configure() {
+multilib_src_configure() {
+	ECONF_SOURCE="${S}" \
 	econf \
 		--enable-bauth \
 		--enable-dauth \
@@ -55,7 +53,7 @@ src_test() {
 	:
 }
 
-src_install() {
+multilib_src_install_all() {
 	default
 
 	use static-libs || find "${ED}" -name '*.la' -delete
