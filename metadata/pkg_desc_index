@@ -27,7 +27,7 @@ app-accessibility/perlbox-voice 0.09-r2: A voice enabled application to bring yo
 app-accessibility/pidgin-festival 2.4: A plugin which enables text-to-speech output of conversations using festival
 app-accessibility/pocketsphinx 0.8: Speaker-independent large vocabulary with continuous speech recognizer
 app-accessibility/powiedz 1.0-r2: Polish speech synthesizer based on rsynth
-app-accessibility/simon 0.4.1 0.4.90-r1: Open-source speech recognition program for replacing mouse and keyboard
+app-accessibility/simon 0.4.90-r1 9999: Open-source speech recognition program for replacing mouse and keyboard
 app-accessibility/sound-icons 0.1: a collection of Sound Icons for speech-dispatcher
 app-accessibility/speech-dispatcher 0.8.1 0.8.3 0.8.7: Speech synthesis interface
 app-accessibility/speech-tools 2.1-r2 2.1-r3 2.1-r4: Speech tools for Festival Text to Speech engine
@@ -2278,7 +2278,7 @@ app-text/dvipdfm 0.13.2d-r1 0.13.2d-r2: DVI to PDF translator
 app-text/dvipdfmx 20110311-r1: DVI to PDF translator with multi-byte character support
 app-text/dvipng 1.15: Translate DVI files into PNG or GIF graphics
 app-text/dvipsk 5.992_p20120701 5.995_p20150521 5.996_p20160523 5.997_p20170524: DVI-to-PostScript translator
-app-text/dvisvgm 1.10 2.1.3 2.2 2.2.1 2.2.2: Converts DVI files to SVG
+app-text/dvisvgm 1.10 2.1.3 2.2 2.2.1 2.2.2 2.2.3: Converts DVI files to SVG
 app-text/ebook-tools 0.2.2-r1: Tools for accessing and converting various ebook file formats
 app-text/editorconfig-core-c 0.12.1: EditorConfig core library written in C
 app-text/enchant 1.6.0 1.6.1 2.1.0 2.1.1: Spellchecker wrapping library
@@ -10544,7 +10544,7 @@ dev-util/jconfig 2.8-r3 2.8.5 2.9: Utility that provides a simple API for the ma
 dev-util/jenkins-bin 2.73.3 2.84 2.86 2.87 2.89.1 2.90: Extensible continuous integration server
 dev-util/kbuild 0.1.9998_pre20131130-r1 0.1.9998_pre20171020 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 33 34 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
-dev-util/kdbg 2.9.1: Graphical debugger interface
+dev-util/kdbg 3.0.0: Graphical debugger interface
 dev-util/kdevelop 5.1.1 5.1.2 5.2.1: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
 dev-util/kdevelop-pg-qt 2.0.0-r1 2.1.0: LL(1) parser generator used mainly by KDevelop language plugins
 dev-util/kdevelop-php 5.1.1 5.1.2 5.2.1: PHP plugin for KDevelop
@@ -12813,7 +12813,7 @@ media-gfx/jpegoptim 1.4.3 1.4.4: Utility to optimize JPEG files
 media-gfx/jpegpixi 1.1.1: almost lossless JPEG pixel interpolator, for correcting digital camera defects
 media-gfx/jpegtoavi 1.5: JPEG to AVI/MJPEG animation command-line conversion tool
 media-gfx/k3d 0.8.0.5: A free 3D modeling, animation, and rendering system
-media-gfx/kcoloredit 2.0.0-r1: Tool for editing color palettes
+media-gfx/kcoloredit 2.0.0_p20171121: Tool for editing color palettes
 media-gfx/kgraphviewer 2.4.2: Graphviz dot graph file viewer
 media-gfx/kphotoalbum 5.2: Tool for indexing, searching, and viewing images
 media-gfx/kpovmodeler 1.1.3-r1: A modeling and composition program for creating POV-Ray(TM) scenes

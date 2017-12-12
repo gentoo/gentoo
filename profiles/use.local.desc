@@ -16,6 +16,7 @@ app-accessibility/freetts:jsapi - build Java Speech API (JSAPI)
 app-accessibility/freetts:mbrola - Adds support for mbrola voices
 app-accessibility/orca:braille - Enable braille support
 app-accessibility/simon:opencv - Use media-libs/opencv
+app-accessibility/simon:pim - Enable support for KDE PIM resources integration
 app-accessibility/simon:sphinx - Build sphinx backend (pulls app-accessibility/julius if disabled
 app-accessibility/speech-dispatcher:espeak - Adds support for espeak speech engine
 app-accessibility/speech-dispatcher:flite - Adds support for flite speech engine
