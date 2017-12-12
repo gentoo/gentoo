@@ -13,6 +13,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="app-i18n/ibus-table
-	!app-i18n/ibus-table-code"
+	!app-i18n/ibus-table-code
+	!app-i18n/ibus-table-cyrillic"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
