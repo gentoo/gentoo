@@ -6,21 +6,20 @@ EAPI="6"
 inherit font font-ebdftopcf
 
 DESCRIPTION="Japanese fixed fonts that cover JIS0213 charset"
-HOMEPAGE="http://www12.ocn.ne.jp/~imamura/jisx0213.html"
-SRC_BASE1="http://www12.ocn.ne.jp/~imamura"
-SRC_BASE2="http://gitatsu.hp.infoseek.co.jp/bdf"
-SRC_URI="${SRC_BASE1}/jiskan16-2004-1.bdf.gz
-	${SRC_BASE1}/jiskan16-2000-1.bdf.gz
-	${SRC_BASE1}/jiskan16-2000-2.bdf.gz
-	${SRC_BASE1}/K14-2004-1.bdf.gz
-	${SRC_BASE1}/K14-2000-1.bdf.gz
-	${SRC_BASE1}/K14-2000-2.bdf.gz
-	${SRC_BASE1}/K12-1.bdf.gz
-	${SRC_BASE1}/K12-2.bdf.gz
-	${SRC_BASE1}/A14.bdf.gz
-	${SRC_BASE1}/A12.bdf.gz
-	${SRC_BASE2}/jiskan24-2000-1.bdf.gz
-	${SRC_BASE2}/jiskan24-2000-2.bdf.gz"
+#HOMEPAGE="http://www12.ocn.ne.jp/~imamura/jisx0213.html"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+SRC_URI="mirror://gentoo/jiskan16-2004-1.bdf.gz
+	mirror://gentoo/jiskan16-2000-1.bdf.gz
+	mirror://gentoo/jiskan16-2000-2.bdf.gz
+	mirror://gentoo/K14-2004-1.bdf.gz
+	mirror://gentoo/K14-2000-1.bdf.gz
+	mirror://gentoo/K14-2000-2.bdf.gz
+	mirror://gentoo/K12-1.bdf.gz
+	mirror://gentoo/K12-2.bdf.gz
+	mirror://gentoo/A14.bdf.gz
+	mirror://gentoo/A12.bdf.gz
+	mirror://gentoo/jiskan24-2000-1.bdf.gz
+	mirror://gentoo/jiskan24-2000-2.bdf.gz"
 
 LICENSE="public-domain"
 SLOT="0"
