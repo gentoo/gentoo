@@ -7,7 +7,7 @@ inherit autotools multilib-build multilib-minimal multilib toolchain-funcs
 
 DESCRIPTION="Low-level cryptographic library"
 HOMEPAGE="http://www.lysator.liu.se/~nisse/nettle/"
-SRC_URI="https://www.lysator.liu.se/~nisse/archive/${P}.tar.gz"
+SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="|| ( LGPL-3 LGPL-2.1 )"
 SLOT="0/6.2" # subslot = libnettle soname version, .2 as broke ABI bug#601512 then fixed
