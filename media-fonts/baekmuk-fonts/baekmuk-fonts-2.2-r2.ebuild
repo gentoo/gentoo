@@ -10,10 +10,10 @@ TTF_P="${P/fonts/ttf}"
 UNI_P="20020418"
 
 DESCRIPTION="Korean Baekmuk Font"
-HOMEPAGE="http://kldp.net/projects/baekmuk/"
-SRC_URI="http://kldp.net/download.php/1428/${BDF_P}.tar.gz
-	http://kldp.net/download.php/1429/${TTF_P}.tar.gz
-	unicode? ( http://chem.skku.ac.kr/~wkpark/baekmuk/iso10646/${UNI_P}.tar.bz2 )"
+HOMEPAGE="http://kldp.net/baekmuk/"
+SRC_URI="http://kldp.net/${PN/-*}/release/865-${BDF_P}.tar.gz -> ${BDF_P}.tar.gz
+	http://kldp.net/${PN/-*}/release/865-${TTF_P}.tar.gz -> ${TTF_P}.tar.gz
+	unicode? ( mirror://gentoo/${UNI_P}.tar.bz2 )"
 
 LICENSE="BSD"
 SLOT="0"
