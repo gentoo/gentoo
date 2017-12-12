@@ -127,7 +127,7 @@ app-admin/keepassxc 2.1.4-r1 2.2.1-r1 2.2.2 9999: KeePassXC - KeePass Cross-plat
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/kpcli 3.0 3.1: A command line interface to KeePass database files
 app-admin/kube-bench 0.0.6: Kubernetes Bench for Security runs the CIS Kubernetes Benchmark
-app-admin/lastpass-binary-component 4.1.44: Binary component required by the LastPass Password Manager browser extension
+app-admin/lastpass-binary-component 4.1.44_p20171210: Binary component required by the LastPass Password Manager browser extension
 app-admin/lastpass-cli 1.0.0 1.1.2 1.2.1 1.2.2: Interfaces with LastPass.com from the command line.
 app-admin/lib_users 0.10: Check for mapped libs and open files that are marked as deleted
 app-admin/lnav 0.8.1 0.8.2: A curses-based tool for viewing and analyzing log files
@@ -1462,7 +1462,7 @@ app-forensics/foremost 0.69 1.5.7-r2 1.5.7-r3: A console program to recover file
 app-forensics/galleta 20040505_p1: IE Cookie Parser
 app-forensics/honggfuzz 1.0 1.1 1.2 1.3: A general purpose fuzzer with feedback support
 app-forensics/libbfio 0.0.20120425_alpha 0.0.20130609_alpha 0.0.20130721: Library for providing a basic file input/output abstraction layer
-app-forensics/libewf 20130416 20140608: Implementation of the EWF (SMART and EnCase) image format
+app-forensics/libewf 20130416 20140608 20140608-r1: Implementation of the EWF (SMART and EnCase) image format
 app-forensics/lynis 2.5.2: Security and system auditing tool
 app-forensics/mac-robber 1.02: mac-robber is a digital forensics and incident response tool that collects data
 app-forensics/magicrescue 1.1.9: Find deleted files in block devices

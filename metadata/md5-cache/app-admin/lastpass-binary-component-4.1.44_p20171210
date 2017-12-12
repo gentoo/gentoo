@@ -7,5 +7,5 @@ LICENSE=LastPass
 RDEPEND=!!app-admin/lastpass
 RESTRICT=strip mirror
 SLOT=0
-SRC_URI=https://lastpass.com/lplinux.tar.bz2 -> lastpass-binary-component-4.1.44.tar.bz2
-_md5_=5cb504929e89f44153a49166ab99784e
+SRC_URI=https://lastpass.com/lplinux.tar.bz2 -> lastpass-binary-component-4.1.44_p20171210.tar.bz2
+_md5_=093d713efc82e9736d8c1782563733b4
