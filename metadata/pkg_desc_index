@@ -1706,7 +1706,7 @@ app-leechcraft/leechcraft-meta 9999: Metapackage containing all ready-to-use Lee
 app-leechcraft/liblaretz 0.1.0 9999: Shared library to be used by the Laretz sync server and its clients
 app-misc/abduco 0.5 0.6: lightweight session manager with {de,at}tach support
 app-misc/abook 0.6.1 0.6.1-r1: Abook is a text-based addressbook program designed to use with mutt mail client
-app-misc/acdctl 1.1: Apple Cinema Display Control
+app-misc/acdctl 1.1 1.1-r1: Apple Cinema Display Control
 app-misc/activylircd 0.4: ACTIVYLIRCD lirc daemon for activy remote control
 app-misc/actkbd 0.2.8-r2: A keyboard shortcut daemon
 app-misc/aldo 0.7.7: A morse tutor
