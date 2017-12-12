@@ -14,6 +14,7 @@ IUSE=""
 
 RDEPEND="app-i18n/ibus-table
 	!app-i18n/ibus-table-code
-	!app-i18n/ibus-table-cyrillic"
+	!app-i18n/ibus-table-cyrillic
+	!app-i18n/ibus-table-tv"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
