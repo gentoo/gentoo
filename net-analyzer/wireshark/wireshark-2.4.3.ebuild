@@ -14,7 +14,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
 IUSE="
 	adns androiddump +capinfos +caps +captype ciscodump cpu_flags_x86_sse4_2
 	+dftest doc doc-pdf +dumpcap +editcap geoip gtk kerberos libssh libxml2 lua
-	+mergecap +netlink nghttp2 +pcap portaudio +qt5 +randpkt +randpktdump
+	lz4 +mergecap +netlink nghttp2 +pcap portaudio +qt5 +randpkt +randpktdump
 	+reordercap sbc selinux +sharkd smi snappy spandsp sshdump ssl +text2pcap
 	tfshark +tshark +udpdump zlib
 "
@@ -42,6 +42,7 @@ CDEPEND="
 	libssh? ( >=net-libs/libssh-0.6 )
 	libxml2? ( dev-libs/libxml2 )
 	lua? ( >=dev-lang/lua-5.1:* )
+	lz4? ( app-arch/lz4 )
 	nghttp2? ( net-libs/nghttp2 )
 	pcap? ( net-libs/libpcap )
 	portaudio? ( media-libs/portaudio )
@@ -170,6 +171,7 @@ src_configure() {
 		$(use_with libssh) \
 		$(use_with libxml2) \
 		$(use_with lua) \
+		$(use_with lz4) \
 		$(use_with nghttp2) \
 		$(use_with pcap) \
 		$(use_with portaudio) \
