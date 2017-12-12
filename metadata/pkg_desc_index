@@ -1523,7 +1523,7 @@ app-i18n/ibus-rime 0.9.9 1.1 1.2: Rime Input Method Engine for IBus Framework
 app-i18n/ibus-skk 1.4.1-r1 1.4.2: Japanese SKK engine for IBus
 app-i18n/ibus-sunpinyin 2.0.4_pre20130108-r2: The SunPinYin IMEngine for IBus Framework
 app-i18n/ibus-table 1.5.0-r1 1.9.18: Tables engines for IBus
-app-i18n/ibus-table-chinese 1.4.6 1.8.2: Chinese tables for IBus-Table
+app-i18n/ibus-table-chinese 1.8.2: Chinese tables for IBus-Table
 app-i18n/ibus-table-extraphrase 1.3.9.20110826: Chinese extra phrases for IBus-Table
 app-i18n/ibus-table-latin 1.2.0.20100305: Latin tables for IBus-Table
 app-i18n/ibus-table-others 1.3.9: Various tables for IBus-Table
