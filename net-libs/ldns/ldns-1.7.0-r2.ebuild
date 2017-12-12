@@ -13,7 +13,7 @@ SRC_URI="http://www.nlnetlabs.nl/downloads/${PN}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~ppc-macos ~x64-macos ~x64-solaris"
-IUSE="+dane doc +ecdsa gost libressl python ssl static-libs vim-syntax"
+IUSE="+dane doc +ecdsa gost libressl python static-libs vim-syntax"
 
 # configure will die if ecdsa is enabled and ssl is not
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
