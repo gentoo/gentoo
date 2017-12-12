@@ -196,11 +196,6 @@ kde-misc/kopete-antispam
 kde-misc/kopete-thinklight
 
 # Andreas Sturmlechner <asturm@gentoo.org> (30 Nov 2017)
-# Still depends on dead kdelibs4/Qt3Support/Qt4, no KF5-based release.
-# Masked for removal in 30 days. Bug #629018
-<=dev-util/kdbg-2.9.1
-
-# Andreas Sturmlechner <asturm@gentoo.org> (30 Nov 2017)
 # Dead upstream, depends on dead kdelibs4/Qt3Support/Qt4.
 # Masked for removal in 30 days. Bug #634324
 games-mud/kmuddy
