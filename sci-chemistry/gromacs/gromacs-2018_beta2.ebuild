@@ -66,10 +66,6 @@ REQUIRED_USE="
 
 DOCS=( AUTHORS README )
 
-PATCHES=(
-	"${FILESDIR}/${PN}-2018-fix-build.patch"
-	)
-
 if [[ ${PV} != *9999 ]]; then
 	S="${WORKDIR}/${PN}-${PV/_/-}"
 fi
