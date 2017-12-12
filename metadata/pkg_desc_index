@@ -1366,7 +1366,7 @@ app-emulation/spim 8.0-r1 8.0-r2: MIPS Simulator
 app-emulation/uade 2.13: Unix Amiga Delitracker Emulator - plays old Amiga tunes through UAE emulation
 app-emulation/uae 0.8.29-r2: The Umiquious Amiga Emulator
 app-emulation/umoci 0.2.1: Manipulation tool for OCI images
-app-emulation/vagrant 1.9.8 2.0.0 2.0.1: A tool for building and distributing development environments
+app-emulation/vagrant 1.9.8 2.0.0 2.0.1-r1: A tool for building and distributing development environments
 app-emulation/vice 2.4.22 2.4.27 2.4.27-r2 2.4.27-r3 2.4.31: The Versatile Commodore 8-bit Emulator
 app-emulation/virt-manager 1.4.0-r3 1.4.1 1.4.2 1.4.3 9999: A graphical tool for administering virtual machines
 app-emulation/virt-viewer 4.0 5.0 6.0: Graphical console client for connecting to virtual machines
@@ -2449,7 +2449,7 @@ app-text/scrollkeeper 9999-r1: Dummy scrollkeeper for testing rarian
 app-text/scrollkeeper-dtd 1.0: DTD from the Scrollkeeper package
 app-text/sdcv 0.5.0_beta2 0.5.0_beta2-r1: Console version of Stardict program
 app-text/searchmonkey 0.8.1 2.0.0 2.0.0-r1: Powerful text searches using regular expressions
-app-text/sgml-common 0.6.3-r5: Base ISO character entities and utilities for SGML
+app-text/sgml-common 0.6.3-r5 0.6.3-r6: Base ISO character entities and utilities for SGML
 app-text/sgmltools-lite 3.0.3-r14: Python interface to SGML software in a DocBook/OpenJade env
 app-text/sgrep 1.94a: Use structural criteria to grep and index text, SGML, XML and HTML and filter
 app-text/sigil 0.8.7-r1 0.9.5-r2 0.9.6 0.9.8: Sigil is a multi-platform WYSIWYG ebook editor for ePub format
@@ -8669,7 +8669,7 @@ dev-python/qrcode 5.1-r1: QR Code generator on top of PIL
 dev-python/qscintilla-python 2.10.1-r1 2.10.2: Python bindings for Qscintilla
 dev-python/qserve 0.2.8-r1: A job queue server
 dev-python/qtawesome 0.3.3 0.4.4: Enables iconic fonts such as Font Awesome in PyQt
-dev-python/qtconsole 4.3.0: Qt-based console for Jupyter with support for rich media output
+dev-python/qtconsole 4.3.0 4.3.1: Qt-based console for Jupyter with support for rich media output
 dev-python/queuelib 1.1.1: Collection of persistent (disk-based) queues
 dev-python/quixote 2.8: Python HTML templating framework for developing web applications
 dev-python/rackspace-auth-openstack 1.3 9999: Rackspace Auth Plugin for OpenStack Clients
@@ -12350,7 +12350,7 @@ mail-client/alpine 2.00-r7 2.21.1: alpine is an easy to use text-based based mai
 mail-client/balsa 2.5.2-r1 2.5.3 2.5.3-r1: Email client for GNOME
 mail-client/biabam 0.9.7: Biabam is a small commandline tool for sending mail attachments
 mail-client/claws-mail 3.13.2 3.14.1-r1 3.15.0-r2 3.15.1: An email client (and news reader) based on GTK+
-mail-client/clawsker 0.7.8 0.7.10: Applet to edit Claws Mail's hidden preferences
+mail-client/clawsker 0.7.8 0.7.10 1.1.0: Applet to edit Claws Mail's hidden preferences
 mail-client/cone 0.92 0.95 0.96: CONE: COnsole News reader and Emailer
 mail-client/drac 1.12-r1: A robust implementation of POP-before-SMTP
 mail-client/etpan-ng 0.7.1-r1: etPan is a console mail client that is based on libEtPan
@@ -16198,7 +16198,7 @@ sci-chemistry/gabedit 2.4.6 2.4.7 2.4.8: GUI for computational chemistry package
 sci-chemistry/gelemental 1.2.0-r1: Periodic table viewer with detailed information on the chemical elements
 sci-chemistry/ghemical 3.0.0: Chemical quantum mechanics and molecular mechanics
 sci-chemistry/gperiodic 2.0.10-r2 3.0.1: Periodic table application for Linux
-sci-chemistry/gromacs 4.6.9999 5.0.4 5.0.9999 5.1.3 5.1.9999 2016 2016.1 2016.2 2016.3 2016.4 2016.9999 2018_beta1 2018.9999 9999: The ultimate molecular dynamics simulation package
+sci-chemistry/gromacs 4.6.9999 5.0.4 5.0.9999 5.1.3 5.1.9999 2016 2016.1 2016.2 2016.3 2016.4 2016.9999 2018_beta2 2018.9999 9999: The ultimate molecular dynamics simulation package
 sci-chemistry/gsim 21.3 21.3-r1: Visualisation and processing of experimental and simulated NMR spectra
 sci-chemistry/hollow 1.2-r1: Production of surface images of proteins
 sci-chemistry/jmol 12.0.45-r1 12.2.27-r1: Java molecular viever for 3-D chemical structures
