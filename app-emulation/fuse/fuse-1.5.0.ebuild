@@ -15,7 +15,7 @@ IUSE="alsa ao fbcon gpm gtk joystick memlimit png sdl svga X xml"
 # Only one UI back-end can be enabled at a time
 REQUIRED_USE="^^ ( X fbcon gtk sdl svga )"
 
-RDEPEND=">=app-emulation/libspectrum-1.3.6
+RDEPEND=">=app-emulation/libspectrum-1.4.1
 	dev-libs/glib:2
 	alsa? ( media-libs/alsa-lib )
 	ao? ( media-libs/libao )
