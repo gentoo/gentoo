@@ -4806,7 +4806,7 @@ dev-libs/libbulletml 0.0.6: A Library of Bullet Markup Language
 dev-libs/libburn 1.4.6 1.4.8-r1: Open-source library for reading, mastering and writing optical discs
 dev-libs/libbytesize 0.11 1.1 1.2: Tiny library providing a C "class" for working with arbitrary big sizes in bytes
 dev-libs/libcaldav 0.6.2: C library implementing client support for CalDAV
-dev-libs/libcdio 0.93 0.94-r1 1.0.0-r1: A library to encapsulate CD-ROM reading and control
+dev-libs/libcdio 0.93 0.94-r1 1.0.0-r1 1.1.0: A library to encapsulate CD-ROM reading and control
 dev-libs/libcdio-paranoia 0.90_p1-r1 0.93_p1 0.93_p1-r1 0.94_p1-r1 0.94_p2: an advanced CDDA reader with error correction
 dev-libs/libcec 3.1.0-r1 4.0.2: Library for communicating with the Pulse-Eight USB HDMI-CEC Adaptor
 dev-libs/libcgroup 0.41 0.41-r4: Tools and libraries to configure and manage kernel control groups
@@ -7125,7 +7125,6 @@ dev-php/PEAR-Pager 2.4.9 2.5.1: Data paging class
 dev-php/PEAR-Services_JSON 1.0.3: PHP implementaion of json_encode/decode
 dev-php/PEAR-Services_TinyURL 0.1.2-r1: An interface for creating and retrieving TinyURLs with their API
 dev-php/PEAR-Services_W3C_CSSValidator 0.2.3: Provides an object oriented interface for the W3 CSS Validator
-dev-php/PEAR-Services_W3C_HTMLValidator 1.0.0-r1: Object oriented interface to the API of validator.w3.org
 dev-php/PEAR-Spreadsheet_Excel_Writer 0.9.3 0.9.4: Package for generating Excel spreadsheets
 dev-php/PEAR-Structures_DataGrid 0.9.3: A tabular structure that contains a record set of data for paging and sorting
 dev-php/PEAR-Structures_Graph 1.1.1-r1: Graph datastructure manipulation library
@@ -14500,7 +14499,7 @@ net-analyzer/prelude-lml-rules 3.0.1 3.1.0 4.0.0: Prelude LML community ruleset
 net-analyzer/prelude-nessus 20021107: Nessus Correlation support for Prelude-IDS
 net-analyzer/prometheus 1.8.2 2.0.0: Prometheus monitoring system and time series database
 net-analyzer/prometheus-alertmanager 0.11.0: Alertmanager for alerts sent by client applications such as Prometheus
-net-analyzer/prometheus-blackbox_exporter 0.10.0: Prometheus exporter for blackbox probing via HTTP, HTTPS, DNS, TCP and ICMP
+net-analyzer/prometheus-blackbox_exporter 0.10.0 0.11.0: Prometheus exporter for blackbox probing via HTTP, HTTPS, DNS, TCP and ICMP
 net-analyzer/prometheus-node_exporter 0.15.1 0.15.2: Prometheus exporter for machine metrics
 net-analyzer/prometheus-snmp_exporter 0.8.0: Prometheus exporter for snmp metrics
 net-analyzer/pypacker 2.9: Fast and simple packet creation and parsing library for Python
@@ -14660,7 +14659,7 @@ net-dns/maradns 2.0.09-r2 2.0.14: A security-aware DNS server
 net-dns/mdns-repeater 20110921: Multicast DNS repeater
 net-dns/mydns 1.2.8.31-r1: A DNS-Server which gets its data from a MySQL-/PostgreSQL-database
 net-dns/ndu 0.4-r4: DNS serial number incrementer and reverse zone builder
-net-dns/nsd 4.1.16 4.1.17 4.1.18: An authoritative only, high performance, open source name server
+net-dns/nsd 4.1.16 4.1.18 4.1.19: An authoritative only, high performance, open source name server
 net-dns/odsclient 1.03-r1: Client for the Open Domain Server's dynamic dns
 net-dns/opendnssec 1.3.18-r1 1.4.8.2 1.4.12-r1 2.0.1-r1 2.0.3: An open-source turn-key solution for DNSSEC
 net-dns/openresolv 3.8.1 3.9.0: A framework for managing DNS information
@@ -15547,7 +15546,7 @@ net-misc/wakeonlan 0.41-r2: Client for Wake-On-LAN
 net-misc/wget 1.19.1-r1 1.19.1-r2 1.19.2 1.19.2-r1 1.19.2-r2: Network utility to retrieve files from the WWW
 net-misc/whatmask 1.2-r1: little C program to compute different subnet mask notations
 net-misc/whatportis 0.6: A command to search port names and numbers
-net-misc/whois 5.2.12 5.2.17 5.2.18: improved Whois Client
+net-misc/whois 5.2.12 5.2.18 5.2.19: improved Whois Client
 net-misc/wicd 1.7.4-r3: A lightweight wired and wireless network manager for Linux
 net-misc/wol 0.7.1-r1: Wake up hardware that is Magic Packet compliant
 net-misc/wput 0.6.1 0.6.1-r1: Tiny program like wget, to upload files/whole directories via FTP
