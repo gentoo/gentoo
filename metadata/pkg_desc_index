@@ -17724,7 +17724,7 @@ sys-firmware/atmel-firmware 1.3-r1: Firmware and config for atmel and atmel_cs w
 sys-firmware/b43-firmware 5.100.138 6.30.163.46: broadcom firmware for b43 LP PHY and >=linux-3.2
 sys-firmware/b43legacy-firmware 3.130.20.0: broadcom firmware for b43legacy/bcm43xx
 sys-firmware/bluez-firmware 1.2: Firmware for Broadcom BCM203x and STLC2300 Bluetooth chips
-sys-firmware/edk2-ovmf 2017_pre20170505: UEFI firmware for 64-bit x86 virtual machines
+sys-firmware/edk2-ovmf 2017_pre20170505 2017_pre20170505-r1 9999: UEFI firmware for 64-bit x86 virtual machines
 sys-firmware/firmware-imx 5.4: NXP i.MX firmware
 sys-firmware/intel-microcode 20140430 20140624 20140913 20150121 20150121-r1 20151106 20160607 20160714 20161104 20170511 20170707 20171117: Intel IA32/IA64 microcode update data
 sys-firmware/ipw2100-firmware 1.3: Firmware for the Intel PRO/Wireless 2100 3B miniPCI adapter
@@ -18457,7 +18457,7 @@ www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 52.2.0 52.4.0 52.5.2 57.0.1: Firefox Web Browser
 www-client/firefox-bin 52.5.0-r1 52.5.2 57.0.1: Firefox Web Browser
 www-client/google-chrome 63.0.3239.84: The web browser from Google
-www-client/google-chrome-beta 63.0.3239.84: The web browser from Google
+www-client/google-chrome-beta 63.0.3239.90: The web browser from Google
 www-client/google-chrome-unstable 64.0.3282.14: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2 3.49.1 3.49.2-r1: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
@@ -18507,7 +18507,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.30.0 1.30.2 1.30.2-r1: Capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 27.0.0.187: Adobe Flash Player
-www-plugins/chrome-binary-plugins 63.0.3239.84_beta 63.0.3239.84 64.0.3282.14_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 63.0.3239.84 63.0.3239.90_beta 64.0.3282.14_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3 0.3.7: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20160329-r1: GNU Flash movie player that supports many SWF v7,8,9 features
@@ -19654,7 +19654,7 @@ xfce-extra/xfce4-mpc-plugin 0.4.5 0.5.0: Music Player Daemon (mpd) panel plugin
 xfce-extra/xfce4-netload-plugin 1.2.4 1.3.1: A network load plug-in for the Xfce panel
 xfce-extra/xfce4-netspeed-plugin 0.3.1: A network transfer rate monitor for the panel
 xfce-extra/xfce4-notes-plugin 1.8.1: Xfce4 panel sticky notes plugin
-xfce-extra/xfce4-notifyd 0.2.4 0.3.6 0.4.0: Notification daemon for the Xfce desktop environment
+xfce-extra/xfce4-notifyd 0.2.4 0.3.6 0.4.0 0.4.1: Notification daemon for the Xfce desktop environment
 xfce-extra/xfce4-places-plugin 1.7.0: A panel plug-in to provide quick access to files, folders and removable media
 xfce-extra/xfce4-playercontrol-plugin 0.3.0: Audacious and MPD panel plugins
 xfce-extra/xfce4-power-manager 1.6.0 1.6.0-r1: Power manager for the Xfce desktop environment
