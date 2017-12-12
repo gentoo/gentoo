@@ -7,7 +7,7 @@ inherit font font-ebdftopcf
 
 BDF_P="${P/fonts/bdf}"
 TTF_P="${P/fonts/ttf}"
-UNI_P="20020418"
+UNI_P="${PN/fonts/unicode-bdf}-20020418"
 
 DESCRIPTION="Korean Baekmuk Font"
 HOMEPAGE="http://kldp.net/baekmuk/"
