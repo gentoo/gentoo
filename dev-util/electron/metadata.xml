@@ -19,6 +19,7 @@
 	</use>
 	<upstream>
 		<remote-id type="github">elprans/asar</remote-id>
+		<remote-id type="github">elprans/gentoo-electron-patches</remote-id>
 		<remote-id type="github">elprans/grit</remote-id>
 		<remote-id type="github">elprans/node-browserify</remote-id>
 	</upstream>

@@ -12,6 +12,9 @@ inherit check-reqs chromium-2 eutils gnome2-utils flag-o-matic multilib \
 	multiprocessing pax-utils portability python-any-r1 toolchain-funcs \
 	versionator virtualx xdg-utils
 
+# The commit in elprans/gentoo-electron-patches that contains patches
+# for this version.
+PATCHES_COMMIT="3b4feb36d23ba3ab74048e11ce2b0fbdbc2b8e85"
 # Keep this in sync with vendor/brightray/vendor/libchromiumcontent/VERSION
 CHROMIUM_VERSION="56.0.2924.87"
 # Keep this in sync with vendor/breakpad
@@ -35,6 +38,7 @@ LIBCHROMIUMCONTENT_COMMIT="a9b88fab38a8162bb485cc5854973f71ea0bc7a6"
 ASAR_VERSION="0.13.0"
 BROWSERIFY_VERSION="14.0.0"
 
+PATCHES_P="gentoo-electron-patches-${PATCHES_COMMIT}"
 CHROMIUM_P="chromium-${CHROMIUM_VERSION}"
 BREAKPAD_P="chromium-breakpad-${BREAKPAD_COMMIT}"
 BREAKPAD_SRC_P="breakpad-${BREAKPAD_SRC_COMMIT}"
@@ -48,7 +52,7 @@ ASAR_P="asar-${ASAR_VERSION}"
 BROWSERIFY_P="browserify-${BROWSERIFY_VERSION}"
 
 DESCRIPTION="Cross platform application development framework based on web technologies"
-HOMEPAGE="http://electron.atom.io/"
+HOMEPAGE="https://electronjs.org/"
 SRC_URI="
 	https://commondatastorage.googleapis.com/chromium-browser-official/${CHROMIUM_P}.tar.xz
 	https://github.com/electron/electron/archive/v${PV}.tar.gz -> ${P}.tar.gz
@@ -62,6 +66,7 @@ SRC_URI="
 	https://github.com/electron/libchromiumcontent/archive/${LIBCHROMIUMCONTENT_COMMIT}.tar.gz -> electron-${LIBCHROMIUMCONTENT_P}.tar.gz
 	https://github.com/elprans/asar/releases/download/v${ASAR_VERSION}-gentoo/asar-build.tar.gz -> ${ASAR_P}.tar.gz
 	https://github.com/elprans/node-browserify/releases/download/${BROWSERIFY_VERSION}-gentoo/browserify-build.tar.gz -> ${BROWSERIFY_P}.tar.gz
+	https://github.com/elprans/gentoo-electron-patches/archive/${PATCHES_COMMIT}.tar.gz -> electron-patches-${PATCHES_COMMIT}.tar.gz
 "
 
 S="${WORKDIR}/${P}"
@@ -316,6 +321,48 @@ _get_target_arch() {
 	echo -n "${target_arch}"
 }
 
+_apply_gentoo_patches() {
+	shopt -s extglob
+
+	local patches="${1%/}"
+	local target="${2%/}"
+	local vn=$(get_version_component_count)
+	local vi=0
+	local vcomp
+	local patch
+	local patchname
+	local path
+	local lastpath="${S}"
+
+	pushd "${S}" >/dev/null || die
+
+	while [ $vi -lt $vn ]; do
+		let vi=vi+1
+		vcomp=$(get_version_component_range 1-${vi})
+
+		if [ -d "${patches}/${vcomp}" ]; then
+			for patch in "${patches}/${vcomp}"/*.patch; do
+				patchname="$(basename ${patch})"
+				path="${patchname%__*}"
+				path="${path//__//}"
+				if [ "${path}" == "${patchname}" -o -z "${path}" ]; then
+					path="${S}"
+				else
+					path="${S}/${path}"
+				fi
+
+				if [ "${path}" != "${lastpath}" ]; then
+					cd "${path}" || die
+					lastpath="${path}"
+				fi
+				eapply "${patch}"
+			done
+		fi
+	done
+
+	popd >/dev/null || die
+}
+
 src_prepare() {
 	mv "${WORKDIR}/${CHROMIUM_P}" "${CHROMIUM_S}" || die
 	rm -r "${NODE_S}" &&
@@ -339,15 +386,8 @@ src_prepare() {
 	rsync -a "${WORKDIR}/${BROWSERIFY_P}/node_modules/" \
         "${S}/node_modules/" || die
 
-	# electron patches
-	cd "${ELECTRON_S}" || die
-	eapply "${FILESDIR}/${P}.patch"
-	eapply "${FILESDIR}/${PN}-system-icu-r0.patch"
-
 	# node patches
 	cd "${NODE_S}" || die
-	eapply "${FILESDIR}/${P}-vendor-node.patch"
-	eapply "${FILESDIR}/${PN}-vendor-node-external-snapshots-r2.patch"
 	# make sure node uses the correct version of v8
 	rm -r deps/v8 || die
 	ln -s "${CHROMIUM_S}/v8" deps/ || die
@@ -371,22 +411,9 @@ src_prepare() {
 	sed -i -e "s/'lib'/'${LIBDIR}'/" lib/module.js || die
 	sed -i -e "s|\"lib\"|\"${LIBDIR}\"|" deps/npm/lib/npm.js || die
 
-	# brightray patches
-	cd "${BRIGHTRAY_S}" || die
-	eapply "${FILESDIR}/${P}-vendor-brightray.patch"
-
-	# libchromiumcontent patches
-	cd "${LIBCC_S}" || die
-	eapply "${FILESDIR}/${P}-vendor-libchromiumcontent.patch"
-
-	# breakpad patches
-	cd "${BREAKPAD_S}" || die
-	eapply "${FILESDIR}/${P}-vendor-breakpad.patch"
-
-	# chromium patches
 	cd "${CHROMIUM_S}" || die
 
-	# libcc chromium patches
+	# Apply libcc Chromium patches.
 	_unnest_patches "${LIBCC_S}/patches"
 
 	EPATCH_SOURCE="${LIBCC_S}/patches" \
@@ -395,11 +422,8 @@ src_prepare() {
 	EPATCH_MULTI_MSG="Applying libchromiumcontent patches..." \
 		epatch
 
-	# Apply Gentoo-specific Chromium patches
-	local p
-	for p in ${CHROMIUM_PATCHES}; do
-		eapply "${FILESDIR}/${p}"
-	done
+	# Apply Gentoo-specific patches.
+	_apply_gentoo_patches "${WORKDIR}/${PATCHES_P}"
 
 	# Merge chromiumcontent component into chromium source tree.
 	mkdir -p "${CHROMIUM_S}/chromiumcontent" || die
