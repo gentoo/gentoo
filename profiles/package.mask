@@ -32,6 +32,24 @@
 # Andreas Sturmlechner <asturm@gentoo.org> (12 Dec 2017)
 # Depends on dead kdelibs4/qt4, unmaintained upstream. No port to
 # KF5 released. If you depend on this package, please help test KF5-based
+# amarok-9999 in KDE ebuild repository to decide on a possible snapshot.
+# Possible alternatives are media-sound/cantata (an awesome mpd client),
+# media-sound/clementine and media-sound/tomahawk (the latter also declared
+# unmaintained upstream).
+# Bug #635468. Masked for removal in 30 days.
+media-sound/amarok
+kde-apps/kdebase-kioslaves
+kde-apps/phonon-kde
+x11-libs/qtscriptgenerator
+
+# Andreas Sturmlechner <asturm@gentoo.org> (12 Dec 2017)
+# Depends on dead media-sound/amarok:4, dead upstream,
+# last release in 2006. Bug #635468. Masked for removal in 30 days.
+media-sound/vdramgw
+
+# Andreas Sturmlechner <asturm@gentoo.org> (12 Dec 2017)
+# Depends on dead kdelibs4/qt4, unmaintained upstream. No port to
+# KF5 released. If you depend on this package, please help test KF5-based
 # cirkuit-9999 in KDE ebuild repository to decide on a possible snapshot.
 # Bug #640884. Masked for removal in 30 days.
 sci-electronics/cirkuit
