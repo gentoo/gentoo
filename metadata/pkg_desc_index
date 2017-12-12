@@ -542,7 +542,7 @@ app-crypt/gnupg-pkcs11-scd 0.9.1: PKCS#11 support for GnuPG
 app-crypt/gorilla 1.4-r1: Password Safe in secure way with GUI interface
 app-crypt/gpa 0.9.10: The GNU Privacy Assistant (GPA) is a graphical user interface for GnuPG
 app-crypt/gpg-ringmgr 1.12: GPG Keyring Manager to handle large GPG keyrings more easily
-app-crypt/gpgme 1.8.0-r2 1.8.0-r3 1.10.0_beta81 9999: GnuPG Made Easy is a library for making GnuPG easier to use
+app-crypt/gpgme 1.8.0-r2 1.8.0-r3 1.10.0 9999: GnuPG Made Easy is a library for making GnuPG easier to use
 app-crypt/gpgstats 0.5-r1: GPGstats calculates statistics on the keys in your key-ring
 app-crypt/hashalot 0.3-r2: CryptoAPI utils
 app-crypt/hashcat 3.5.0 4.0.1: World's fastest and most advanced password recovery utility
@@ -12193,7 +12193,7 @@ kde-frameworks/kidletime 5.40.0 5.41.0: Framework for detection and notification
 kde-frameworks/kimageformats 5.40.0 5.41.0: Framework providing additional format plugins for Qt's image I/O system
 kde-frameworks/kinit 5.40.0 5.41.0: Helper library to speed up start of applications on KDE work spaces
 kde-frameworks/kio 5.40.0-r2 5.40.0-r3 5.41.0: Framework providing transparent file and data management
-kde-frameworks/kirigami 1.1.0 5.40.0 5.41.0: Lightweight user interface framework for mobile and convergent applications
+kde-frameworks/kirigami 5.40.0 5.41.0: Lightweight user interface framework for mobile and convergent applications
 kde-frameworks/kitemmodels 5.40.0 5.41.0: Framework providing data models to help with tasks such as sorting and filtering
 kde-frameworks/kitemviews 5.40.0 5.41.0: Framework providing additional widgets for item models
 kde-frameworks/kjobwidgets 5.40.0 5.41.0: Framework providing assorted widgets for showing the progress of jobs
@@ -12235,7 +12235,7 @@ kde-misc/basket 2.49a_p20170225: A DropDrawers clone. Multiple information organ
 kde-misc/colord-kde 0.5.0: Provides interfaces and session daemon to colord
 kde-misc/gmailfeed 1.1: Plasma 5 applet providing a list of unread emails from your Gmail inbox
 kde-misc/kanyremote 6.4: KDE frontend to Anyremote
-kde-misc/kdeconnect 1.0.3 1.2: Adds communication between KDE Plasma and your smartphone
+kde-misc/kdeconnect 1.2: Adds communication between KDE Plasma and your smartphone
 kde-misc/kdiff3 0.9.98_p20170219-r1: Frontend to diff3 based on Qt/KF5
 kde-misc/kdirstat 3.1.2: GUI equivalent to the du command based on KDE Frameworks
 kde-misc/kimtoy 1.91: An input method frontend for Plasma
@@ -13896,7 +13896,7 @@ media-sound/mp3val 0.1.8: Validate and fix MPEG audio files
 media-sound/mp3wrap 0.5: Command-line utility that wraps quickly two or more mp3 files in one single large playable mp3
 media-sound/mpc 0.27 0.28: A commandline client for Music Player Daemon (media-sound/mpd)
 media-sound/mpck 0.15: Checks MP3s for errors
-media-sound/mpd 0.19.19 0.19.21 0.19.21-r1 0.20.4 0.20.6 0.20.8 0.20.9 0.20.10: The Music Player Daemon (mpd)
+media-sound/mpd 0.19.19 0.20.10 0.20.12: The Music Player Daemon (mpd)
 media-sound/mpdas 0.4.0-r1 0.4.1 0.4.2: An AudioScrobbler client for MPD written in C++
 media-sound/mpdscribble 0.22 9999: An MPD client that submits information to Audioscrobbler
 media-sound/mpfc 1.3.7-r1 1.3.8.1-r2: Music Player For Console
