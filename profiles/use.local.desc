@@ -5395,6 +5395,7 @@ net-analyzer/wireshark:dumpcap - Install dumpcap, to dump network traffic from i
 net-analyzer/wireshark:editcap - Install editcap, to edit and/or translate the format of capture files
 net-analyzer/wireshark:libssh - Use net-libs/libssh (for sshdump)
 net-analyzer/wireshark:libxml2 - Use dev-libs/libxml2 for handling XML configuration in dissectors
+net-analyzer/wireshark:lz4 - Use app-arch/lz4 for compression/decompression
 net-analyzer/wireshark:mergecap - Install mergecap, to merge two or more capture files into one
 net-analyzer/wireshark:netlink - Use dev-libs/libnl
 net-analyzer/wireshark:nghttp2 - Use net-libs/nghttp2 for HTTP/2 support

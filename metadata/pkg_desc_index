@@ -10694,7 +10694,7 @@ dev-util/umockdev 0.8.11 0.9.4: Mock hardware devices for creating unit tests
 dev-util/uncrustify 0.59 0.66 0.66.1 9999: C/C++/C#/D/Java/Pawn code indenter and beautifier
 dev-util/unifdef 2.10 2.11: remove #ifdef'ed lines from a file while otherwise leaving the file alone
 dev-util/usb-robot 0.2.0: USB Reverse engineering tools
-dev-util/valgrind 3.12.0 3.13.0 9999: An open-source memory debugger for GNU/Linux
+dev-util/valgrind 3.12.0 3.13.0 3.13.0-r1 9999: An open-source memory debugger for GNU/Linux
 dev-util/valkyrie 2.0.0 2.0.0-r1: Graphical front-end to the Valgrind suite of tools
 dev-util/vbindiff 3.0_beta4-r1 3.0_beta5: Visual binary diff utility
 dev-util/vint 0.3.13-r1 0.3.16: Lint tool for Vim script language
@@ -17787,7 +17787,7 @@ sys-fs/copyfs 1.0.1: fuse-based filesystem for maintaining configuration files
 sys-fs/cramfs 1.1: Linux filesystem designed to be simple, small, and to compress things well
 sys-fs/cryfs 0.9.7 9999: Encrypted FUSE filesystem that conceals metadata
 sys-fs/cryptmount 5.2.2: A utility for management and user-mode mounting of encrypted filesystems
-sys-fs/cryptsetup 1.7.4 1.7.5 2.0.0_rc1: Tool to setup encrypted devices with dm-crypt
+sys-fs/cryptsetup 1.7.4 1.7.5 2.0.0: Tool to setup encrypted devices with dm-crypt
 sys-fs/ctmg 1.2: Simple wrapper around cryptsetup for encrypted containers
 sys-fs/davl 1.2.4-r1 1.2.4-r2: Visualizes the fragmentation status of ext2/3 filesystems
 sys-fs/dd-rescue 1.46 1.99.5 1.99.6 1.99.6-r1 1.99.7: Similar to dd but can copy from source with errors
@@ -18506,7 +18506,7 @@ www-misc/visitors 0.7-r1: Fast web log analyzer
 www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.30.0 1.30.2 1.30.2-r1: Capture, analyse, record and monitor any cameras attached to your system
-www-plugins/adobe-flash 27.0.0.187: Adobe Flash Player
+www-plugins/adobe-flash 28.0.0.126: Adobe Flash Player
 www-plugins/chrome-binary-plugins 63.0.3239.84 63.0.3239.90_beta 64.0.3282.14_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3 0.3.7: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
