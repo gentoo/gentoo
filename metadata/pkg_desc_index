@@ -14814,7 +14814,7 @@ net-im/signal-desktop-bin 1.0.40: Signal Desktop
 net-im/silc-toolkit 1.1.10: SDK for the SILC protocol
 net-im/skypeforlinux 8.11.0.4: Instant messaging client, with support for audio and video
 net-im/slack-bin 2.1.2 2.5.2 2.6.3 2.8.0 2.8.2: Team collaboration tool
-net-im/telegram-desktop-bin 1.1.19 1.1.23-r1: Official desktop client for Telegram (binary package)
+net-im/telegram-desktop-bin 1.1.23-r1 1.2.0: Official desktop client for Telegram (binary package)
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers
 net-im/telepathy-logger 0.8.1 0.8.2: Telepathy Logger is a session daemon that should be activated whenever telepathy is being used
 net-im/telepathy-mission-control 5.16.4: An account manager and channel dispatcher for the Telepathy framework
