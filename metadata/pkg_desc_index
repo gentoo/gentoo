@@ -4755,8 +4755,8 @@ dev-libs/http-fetcher 1.1.0 1.1.0-r1: Library for downloading files via HTTP usi
 dev-libs/hyperleveldb 1.2.2: Hyperdex fork/extension of leveldb
 dev-libs/hyperscan 4.4.1 4.4.1-r1 4.5.2 4.6.0: High-performance regular expression matching library
 dev-libs/hyphen 2.8.8: ALTLinux hyphenation library
-dev-libs/icu 58.1-r1 58.2-r1 59.1 60.1: International Components for Unicode
-dev-libs/icu-layoutex 58.1 58.2 59.1 60.1: External layout part of International Components for Unicode
+dev-libs/icu 58.1-r1 58.2-r1 59.1 60.1 60.2: International Components for Unicode
+dev-libs/icu-layoutex 58.1 58.2 59.1 60.1 60.2: External layout part of International Components for Unicode
 dev-libs/icu-le-hb 1.0.3: ICU Layout Engine API on top of HarfBuzz shaping library
 dev-libs/igraph 0.7.1-r2: Creating and manipulating undirected and directed graphs
 dev-libs/iksemel 1.3 1.4 1.4-r1: eXtensible Markup Language parser library designed for Jabber applications
