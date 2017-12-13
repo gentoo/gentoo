@@ -6,10 +6,14 @@ EAPI="6"
 inherit eutils versionator pax-utils multilib-minimal
 
 MY_PVM=$(get_version_component_range 1-2)
+MYLIB_PVM=12.1
+
+MY_PV=$(get_version_component_range 1-4)
+MY_PVP=$(get_version_component_range 5) # p2
 
 MY_PLAT_x86="Linux x86"
 MY_BITS_x86=32
-MY_A_x86="${PN/oracle-/}-basic-linux-${PV}.0.zip"
+MY_A_x86="${PN/oracle-/}-basic-linux-${MY_PV}.0.zip"
 MY_A_x86_sdk="${MY_A_x86/basic/sdk}"
 MY_A_x86_odbc="${MY_A_x86/basic/odbc}"
 MY_A_x86_jdbc="${MY_A_x86/basic/jdbc}"
@@ -18,12 +22,20 @@ MY_A_x86_tools="${MY_A_x86/basic/tools}"
 
 MY_PLAT_amd64="Linux x86-64"
 MY_BITS_amd64=64
-MY_A_amd64="${PN/oracle-}-basic-linux.x64-${PV}.0.zip"
+MY_A_amd64="${PN/oracle-}-basic-linux.x64-${MY_PV}.0.zip"
 MY_A_amd64_sdk="${MY_A_amd64/basic/sdk}"
 MY_A_amd64_odbc="${MY_A_amd64/basic/odbc}"
 MY_A_amd64_jdbc="${MY_A_amd64/basic/jdbc}"
 MY_A_amd64_sqlplus="${MY_A_amd64/basic/sqlplus}"
 MY_A_amd64_tools="${MY_A_amd64/basic/tools}"
+
+if [[ ${MY_PVP} == p* ]]
+then
+	MY_PVP=-${MY_PVP#p}
+	# Updated 9/22/2017: instantclient-odbc-linux-12.2.0.1.0-2.zip
+	MY_A_x86_odbc="${MY_A_x86_odbc%.zip}${MY_PVP}.zip"
+	MY_A_amd64_odbc="${MY_A_amd64_odbc%.zip}${MY_PVP}.zip"
+fi
 
 DESCRIPTION="Oracle 12c Instant Client with SDK"
 HOMEPAGE="http://www.oracle.com/technetwork/database/features/instant-client/index.html"
@@ -48,7 +60,7 @@ SRC_URI="
 "
 
 LICENSE="OTN"
-SLOT="0/${MY_PVM}"
+SLOT="0/${MYLIB_PVM}"
 KEYWORDS="~amd64 ~x86"
 RESTRICT="fetch splitdebug"
 IUSE="jdbc odbc +sdk +sqlplus tools"
@@ -168,10 +180,10 @@ src_install() {
 
 		# ensure to be linkable
 		[[ -e libocci$(get_libname) ]] ||
-		dosym libocci$(get_libname ${MY_PVM}) \
+		dosym libocci$(get_libname ${MYLIB_PVM}) \
 			"/${oracle_home}"/$(get_libdir)/libocci$(get_libname)
 		[[ -e libclntsh$(get_libname) ]] ||
-		dosym libclntsh$(get_libname ${MY_PVM}) \
+		dosym libclntsh$(get_libname ${MYLIB_PVM}) \
 			"/${oracle_home}"/$(get_libdir)/libclntsh$(get_libname)
 
 		# java archives
@@ -231,7 +243,7 @@ src_install() {
 		doins include/*.h
 		dosym rdbms/public "/${oracle_home}"/include
 		# ruby-oci8 expects the headers here
-		dosym "/${oracle_home}"/rdbms/public /usr/include/oracle/${MY_PVM}/client
+		dosym "/${oracle_home}"/rdbms/public /usr/include/oracle/${MYLIB_PVM}/client
 
 		# ott
 		insinto "/${oracle_home}"/$(get_libdir)
