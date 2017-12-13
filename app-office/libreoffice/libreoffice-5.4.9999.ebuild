@@ -139,6 +139,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dbus? ( dev-libs/dbus-glib )
 	eds? (
 		dev-libs/glib:2
+		gnome-base/dconf
 		gnome-extra/evolution-data-server
 	)
 	firebird? ( >=dev-db/firebird-3.0.2.32703.0-r1 )
@@ -231,7 +232,6 @@ DEPEND="${COMMON_DEPEND}
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	bluetooth? ( dbus )
 	collada? ( gltf )
-	eds? ( gtk3 )
 	libreoffice_extensions_nlpsolver? ( java )
 	libreoffice_extensions_scripting-beanshell? ( java )
 	libreoffice_extensions_scripting-javascript? ( java )
@@ -349,8 +349,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local java_opts
-	local ext_opts
+	local ext_opts gtk_opts java_opts
 
 	# Set up Google API keys, see https://www.chromium.org/developers/how-tos/api-keys
 	# Note: these are for Gentoo use ONLY. For your own distribution, please get
@@ -377,6 +376,12 @@ src_configure() {
 			ext_opts+=" $(use_enable libreoffice_extensions_${lo_xt} ext-${lo_xt})"
 		fi
 	done
+
+	if use eds || use gtk3; then
+		gtk_opts=( --enable-dconf --enable-gio )
+	else
+		gtk_opts=( --disable-dconf --disable-gio )
+	fi
 
 	if use java; then
 		# hsqldb: system one is too new
@@ -465,8 +470,6 @@ src_configure() {
 		$(use_enable gstreamer gstreamer-1-0) \
 		$(use_enable gtk) \
 		$(use_enable gtk3) \
-		$(use_enable gtk3 dconf) \
-		$(use_enable gtk3 gio) \
 		$(use_enable kde kde4) \
 		$(use_enable mysql ext-mariadb-connector) \
 		$(use_enable odk) \
@@ -482,8 +485,9 @@ src_configure() {
 		$(use_with java) \
 		$(use_with mysql system-mysql-cppconn) \
 		$(use_with odk doxygen) \
-		${java_opts} \
-		${ext_opts}
+		${ext_opts} \
+		${gtk_opts[@]} \
+		${java_opts}
 }
 
 src_compile() {
