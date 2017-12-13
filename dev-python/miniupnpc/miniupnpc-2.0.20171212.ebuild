@@ -13,14 +13,15 @@ SRC_URI="http://miniupnp.free.fr/files/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE=""
 
 RDEPEND=">=net-libs/miniupnpc-${PV}:0="
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-python/setuptools[${PYTHON_USEDEP}]"
 
 PATCHES=(
-	"${FILESDIR}"/miniupnpc-1.9.20150917-shared-lib.patch
+	"${FILESDIR}"/miniupnpc-2.0.20171102-shared-lib.patch
 )
 
 # DOCS are installed by net-libs/miniupnpc.
