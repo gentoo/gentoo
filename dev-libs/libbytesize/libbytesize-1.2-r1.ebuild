@@ -5,14 +5,14 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
 
-inherit autotools python-single-r1
+inherit autotools python-r1
 
 DESCRIPTION="Tiny library providing a C \"class\" for working with arbitrary big sizes in bytes"
 HOMEPAGE="https://github.com/rhinstaller/libbytesize"
 SRC_URI="https://github.com/rhinstaller/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="LGPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc test"
 
 RDEPEND="
@@ -34,7 +34,7 @@ DEPEND="
 RESTRICT="test"
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python_setup
 }
 
 src_prepare() {
@@ -44,7 +44,13 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
+		--without-python3
 		$(use_with doc gtk-doc)
 	)
 	econf "${myeconfargs[@]}"
+}
+
+src_install() {
+	emake install DESTDIR="${D}"
+	python_foreach_impl emake -C src/python install DESTDIR="${D}"
 }
