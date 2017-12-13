@@ -25,6 +25,7 @@ REQUIRED_USE="^^ ( ${CRYPTO_BACKENDS//+/} )
 	static? ( !gcrypt )" #496612
 
 LIB_DEPEND="
+	dev-libs/json-c[static-libs(+)]
 	dev-libs/libgpg-error[static-libs(+)]
 	dev-libs/popt[static-libs(+)]
 	sys-apps/util-linux[static-libs(+)]
@@ -45,7 +46,6 @@ RDEPEND="static-libs? ( ${LIB_DEPEND} )
 	${LIB_DEPEND//\[static-libs\(+\)\]}
 	python? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}
-	dev-libs/json-c
 	virtual/pkgconfig
 	static? ( ${LIB_DEPEND} )"
 
