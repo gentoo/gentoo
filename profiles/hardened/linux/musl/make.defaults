@@ -1,15 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
 
-ELIBC="musl"
-
-FEATURES="sandbox sfperms strict"
-
-USE="hardened nptl pic unicode -berkdb -jit -orc"
-BOOTSTRAP_USE="${BOOTSTRAP_USE} hardened nptl pic -berkdb -jit -nls -orc"
-
-SYMLINK_LIB="no"
-
-# TODO: fix so musl doesn't generate this for all packages
-# that use a charset, it causes package collisons.
-INSTALL_MASK="charset.alias"
+USE="${USE} hardened pic -jit -orc"
+BOOTSTRAP_USE="${BOOTSTRAP_USE} hardened pic -jit -orc"
