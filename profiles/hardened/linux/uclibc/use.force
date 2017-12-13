@@ -1,7 +1,7 @@
-# Copyright 1999-2013 Gentoo Foundation.
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-elibc_musl
+elibc_uclibc
 
 # Make sure people don't accidentally turn of ssp/pie in important packages.
 pie
