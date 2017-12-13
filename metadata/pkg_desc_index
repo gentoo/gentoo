@@ -7916,7 +7916,7 @@ dev-python/jenkinsapi 0.2.26 0.2.29: API to access resources on a Jenkins contin
 dev-python/jingo 0.7 0.9.0: An adapter for using Jinja2 templates with Django
 dev-python/jinja 2.8 2.9.5 2.9.6 2.10: A full-featured template engine for Python
 dev-python/jinja2-time 0.2.0: Jinja2 Extension for Dates and Times
-dev-python/jira 1.0.5 1.0.10: Python library for interacting with the JIRA REST API
+dev-python/jira 1.0.5 1.0.10 1.0.10-r1: Python library for interacting with the JIRA REST API
 dev-python/jmespath 0.9.0 0.9.2 0.9.3: JSON Matching Expressions
 dev-python/joblib 0.10.0 0.11: Tools to provide lightweight pipelining in Python
 dev-python/jonpy 0.11 0.13: Powerful multi-threaded object-oriented CGI/FastCGI/mod_python/html-templating facilities
