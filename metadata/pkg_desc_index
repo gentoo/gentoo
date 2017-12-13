@@ -12760,7 +12760,7 @@ media-gfx/gif2png 2.5.8 2.5.9 2.5.10 2.5.11: Converts images from gif format to 
 media-gfx/gifsicle 1.86 1.90: Create, manipulate, and optimize GIF images and animations
 media-gfx/gimageview 0.2.27-r4: Powerful GTK+ based image & movie viewer
 media-gfx/gimmage 0.2.3-r1: A slim GTK-based image browser
-media-gfx/gimp 2.8.22 2.9.6 9999: GNU Image Manipulation Program
+media-gfx/gimp 2.8.22 2.9.6 2.9.8 9999: GNU Image Manipulation Program
 media-gfx/gimp-arrow-brushes 20120122: Brushes for GIMP including the styles arrow, handpointer, button arrow and cursor
 media-gfx/gliv 1.9.6 1.9.7: An image viewer that uses OpenGL
 media-gfx/gmic 1.7.8 1.7.9 2.0.0: GREYC's Magic Image Converter
@@ -13013,7 +13013,7 @@ media-libs/game-music-emu 0.6.1: Video game music file emulators
 media-libs/ganv 1.4.2: A GTK+ widget for interactive graph-like environments
 media-libs/gavl 1.2.0 1.4.0 1.4.0-r1: library for handling uncompressed audio and video data
 media-libs/gd 2.2.4 2.2.5: A graphics library for fast image creation
-media-libs/gegl 0.2.0-r2 0.2.0-r4 0.3.0 0.3.4 0.3.8 0.3.10 0.3.12 0.3.14 0.3.20 9999: A graph based image processing framework
+media-libs/gegl 0.2.0-r2 0.2.0-r4 0.3.0 0.3.8 0.3.20 0.3.24 9999: A graph based image processing framework
 media-libs/gexiv2 0.10.3 0.10.5-r1 0.10.6: GObject-based wrapper around the Exiv2 library
 media-libs/giblib 1.2.4 1.2.4-r1: a graphics library built on top of imlib2
 media-libs/giflib 4.1.6-r2 4.1.6-r3 4.2.3-r1 5.0.6 5.1.3 5.1.4: Library to handle, display and manipulate GIF images
