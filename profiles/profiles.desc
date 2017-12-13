@@ -260,15 +260,9 @@ amd64		hardened/linux/amd64/selinux				stable
 amd64		hardened/linux/amd64/no-multilib			stable
 amd64		hardened/linux/amd64/no-multilib/selinux		stable
 amd64		hardened/linux/amd64/x32				dev
-amd64		hardened/linux/musl/amd64				exp
-amd64		hardened/linux/musl/amd64/x32				exp
 arm		hardened/linux/arm/armv7a				dev
 arm		hardened/linux/arm/armv6j				dev
-arm		hardened/linux/musl/arm/armv7a				exp
-arm64		hardened/linux/musl/arm64 				exp
 ia64		hardened/linux/ia64					dev
-mips		hardened/linux/musl/mips				exp
-mips		hardened/linux/musl/mips/mipsel				exp
 mips		hardened/linux/mips/mipsel/multilib/n32			exp
 mips		hardened/linux/mips/mipsel/multilib/n64			exp
 mips		hardened/linux/mips/mipsel/n32				exp
@@ -279,10 +273,26 @@ mips		hardened/linux/mips/n32					exp
 mips		hardened/linux/mips/n64					exp
 ppc		hardened/linux/powerpc/ppc32				dev
 ppc		hardened/linux/powerpc/ppc64/32bit-userland		dev
-ppc		hardened/linux/musl/ppc					exp
 ppc64		hardened/linux/powerpc/ppc64/64bit-userland		dev
 x86		hardened/linux/x86					stable
 x86		hardened/linux/x86/selinux				stable
+
+# musl profiles
+amd64		default/linux/musl/amd64				exp
+amd64		hardened/linux/musl/amd64				exp
+amd64		default/linux/musl/amd64/x32				exp
+amd64		hardened/linux/musl/amd64/x32				exp
+arm		default/linux/musl/arm/armv7a				exp
+arm		hardened/linux/musl/arm/armv7a				exp
+arm64		default/linux/musl/arm64 				exp
+arm64		hardened/linux/musl/arm64 				exp
+mips		default/linux/musl/mips					exp
+mips		hardened/linux/musl/mips				exp
+mips		default/linux/musl/mips/mipsel				exp
+mips		hardened/linux/musl/mips/mipsel				exp
+ppc		default/linux/musl/ppc					exp
+ppc		hardened/linux/musl/ppc					exp
+x86		default/linux/musl/x86					exp
 x86		hardened/linux/musl/x86					exp
 
 # Non-embedded uclibc profiles
