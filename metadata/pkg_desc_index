@@ -7388,7 +7388,7 @@ dev-python/authres 0.701 0.800: Authentication Results Header Module
 dev-python/autobahn 0.9.4.2 0.16.0-r1 17.5.1-r2 17.7.1 17.9.1 17.9.2: WebSocket and WAMP for Twisted and Asyncio
 dev-python/automat 0.5.0 0.6.0: Self-service finite-state machines for the programmer on the go
 dev-python/automaton 0.8.0 1.12.1: Friendly state machines for python.
-dev-python/autopep8 1.3.2 9999: Automatically formats Python code to conform to the PEP 8 style guide
+dev-python/autopep8 1.3.2 1.3.3 9999: Automatically formats Python code to conform to the PEP 8 style guide
 dev-python/awscli 1.10.51 1.10.53 1.10.59 1.11.0 1.11.81 1.11.154 1.11.158: Universal Command Line Environment for AWS
 dev-python/axiom 0.7.2 0.7.5: Object database implemented on top of SQLite
 dev-python/babelfish 0.5.5-r1 9999: Python library to work with countries and languages
@@ -17790,7 +17790,7 @@ sys-fs/cryptmount 5.2.2: A utility for management and user-mode mounting of encr
 sys-fs/cryptsetup 1.7.4 1.7.5 2.0.0: Tool to setup encrypted devices with dm-crypt
 sys-fs/ctmg 1.2: Simple wrapper around cryptsetup for encrypted containers
 sys-fs/davl 1.2.4-r1 1.2.4-r2: Visualizes the fragmentation status of ext2/3 filesystems
-sys-fs/dd-rescue 1.46 1.99.5 1.99.6 1.99.6-r1 1.99.7: Similar to dd but can copy from source with errors
+sys-fs/dd-rescue 1.46 1.99.5 1.99.6 1.99.6-r1 1.99.7 1.99.8: Similar to dd but can copy from source with errors
 sys-fs/ddrescue 1.21-r1 1.22-r1: Copy data from one file or block device to another with read-error recovery
 sys-fs/devfsd 1.3.25-r9: Daemon for the Linux Device Filesystem
 sys-fs/dfc 3.0.5-r1: A simple CLI tool that display file system usage, with colors
@@ -19540,7 +19540,7 @@ x11-themes/xfce-gant-icon-theme 3.9_p6 3.9_p6-r1: Xfce Gant Icon Theme
 x11-themes/xfwm4-themes 4.10.0 4.10.0-r1: Additional themes for the Xfce window manager
 x11-themes/xxv-skins 1.6.1-r1: Additional skins for XXV
 x11-themes/yasis-icon-theme 0.4.2: A scalable icon theme called Yasis
-x11-themes/zuki-themes 3.20 3.24.2: Zuki themes for GTK, gnome-shell and more
+x11-themes/zuki-themes 3.20 3.24.2 3.24.3: Zuki themes for GTK, gnome-shell and more
 x11-themes/zukini 20120806: Unified look for GTK+ 2.x, GTK+ 3.x, gnome-shell, metacity and more
 x11-themes/zukitwo 2016.08.08: Transition package to zuki-themes
 x11-themes/zukitwo-shell 2016.08.08: Transition package to zuki-themes
