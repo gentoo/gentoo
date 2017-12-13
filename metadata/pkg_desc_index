@@ -4995,7 +4995,7 @@ dev-libs/libxdg-basedir 1.2.0-r1: Small library to access XDG Base Directories S
 dev-libs/libxdiff 0.23-r1 0.23-r2: Library for creating diff files
 dev-libs/libxls 1.4.0-r1: A library which can read Excel (xls) files
 dev-libs/libxml2 2.9.4-r1 2.9.4-r2 2.9.4-r3 2.9.5 2.9.6: Version 2 of the library to manipulate XML files
-dev-libs/libxslt 1.1.29-r1 1.1.30 1.1.30-r1 1.1.30-r2: XSLT libraries and tools
+dev-libs/libxslt 1.1.29-r1 1.1.30-r2: XSLT libraries and tools
 dev-libs/libyaml 0.1.7: YAML 1.1 parser and emitter written in C
 dev-libs/libzeitgeist 0.3.18: Client library to interact with zeitgeist
 dev-libs/libzia 4.11: platform abstraction code for tucnak package
@@ -6348,7 +6348,7 @@ dev-perl/MouseX-Types 0.60.0 0.60.0-r1: Organize your Mouse types in libraries
 dev-perl/Mozilla-CA 20999999: Mozilla's CA cert bundle in PEM format (Gentoo stub)
 dev-perl/Mozilla-PublicSuffix 1.0.0: Get a domain name's public suffix via the Mozilla Public Suffix List
 dev-perl/MusicBrainz-DiscID 0.30.0-r1 0.40.0: Perl interface for the MusicBrainz libdiscid library
-dev-perl/Net-ARP 1.0.9: Perl extension for creating ARP packets
+dev-perl/Net-ARP 1.0.9 1.0.9-r1: Perl extension for creating ARP packets
 dev-perl/Net-Amazon 0.620.0: Framework for accessing amazon.com via SOAP and XML/HTTP
 dev-perl/Net-Amazon-S3 0.800.0: Framework for accessing the Amazon S3 Simple Storage Service
 dev-perl/Net-Bonjour 0.960.0: Module for DNS service discovery (Apple's Bonjour)
@@ -8035,7 +8035,7 @@ dev-python/mimeparse 0.1.4-r1 1.6.0: Basic functions for handling mime-types in 
 dev-python/mimerender 0.5.5 0.6.0: RESTful HTTP Content Negotiation for Flask, Bottle, web.py and webapp2
 dev-python/minidb 2.0.1-r1 2.0.2: Simple SQLite-based object store
 dev-python/minimock 1.2.8-r1: The simplest possible mock library
-dev-python/miniupnpc 2.0.20171102 2.0.20171212: Python bindings for UPnP client library
+dev-python/miniupnpc 2.0.20170509 2.0.20171102 2.0.20171212: Python bindings for UPnP client library
 dev-python/misaka 1.0.2: The Python binding for Sundown, a markdown parsing library
 dev-python/mistune 0.7.2 0.7.4: The fastest markdown parser in pure Python
 dev-python/mkdocs 0.12.2 0.14.0 0.15.3: Project documentation with Markdown.
@@ -15027,7 +15027,7 @@ net-libs/liquid-dsp 1.3.0 1.3.1 9999: digital signal processing library for soft
 net-libs/loudmouth 1.4.3-r2 1.5.2-r1 1.5.3: Lightweight C Jabber library
 net-libs/mbedtls 2.6.0 2.6.1: Cryptographic library for embedded systems
 net-libs/meanwhile 1.0.2-r1: Meanwhile (Sametime protocol) library
-net-libs/miniupnpc 2.0.20171102 2.0.20171212: UPnP client library and a simple UPnP client
+net-libs/miniupnpc 2.0.20170509 2.0.20171102 2.0.20171212: UPnP client library and a simple UPnP client
 net-libs/nDPI 2.0: Open Source Deep Packet Inspection Software Toolkit
 net-libs/nacl 0_p20110221: high-speed software library for network communication, encryption, decryption, signatures
 net-libs/nativebiginteger 0.6.4 0.6.4-r3 0.8.7: jbigi JNI library for net.i2p.util.NativeBigInteger java-class from I2P

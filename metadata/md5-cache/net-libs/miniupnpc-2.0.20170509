@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare test
+DEPEND=kernel_linux? ( sys-apps/lsb-release sys-apps/which )
+DESCRIPTION=UPnP client library and a simple UPnP client
+EAPI=6
+HOMEPAGE=http://miniupnp.free.fr/
+IUSE=ipv6 kernel_linux static-libs
+KEYWORDS=amd64 arm ~arm64 hppa ~mips ppc ppc64 sparc x86 ~x86-fbsd
+LICENSE=BSD
+SLOT=0/16
+SRC_URI=http://miniupnp.free.fr/files/miniupnpc-2.0.20170509.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=81d3249fcfccb381a912ba7227f0940c
