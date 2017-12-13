@@ -1,0 +1,52 @@
+--- a/CMakeLists.txt    2017-06-18 00:17:02.883555561 +0200
++++ b/CMakeLists.txt    2017-06-25 16:18:20.745018789 +0200
+@@ -15,7 +15,7 @@
+ option(BUILD_SHARED_LIBS "build shared libraries instead of static libraries"
+        ON)
+ 
+-option(USE_OMP "use parallelization use OMP" ON)
++option(USE_OpenMP "use parallelization using OpenMP" ON)
+ 
+ # determine lib suffix
+ get_property(LIB64 GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS)
+@@ -25,7 +25,7 @@
+     set(LIBSUFFIX "")
+ endif()
+ 
+-add_definitions( -Wall -O3 -g -Wno-pointer-sign -fPIC -std=gnu99)
++add_definitions(-Wall -Wno-pointer-sign)
+ # add_definitions(  -Wall -O0 -g -Wno-pointer-sign )
+ 
+ ### ORC is not used in any active code at the moment  ###
+@@ -41,12 +41,16 @@
+ 
+ # here we should check for SSE2
+ # our  -DUSE_SSE2_ASM code does not work with fpic
+-if(SSE2_FOUND)
+-add_definitions( -DUSE_SSE2 -msse2 -ffast-math )
+-endif()
+-
+-if(USE_OMP)
+-add_definitions(-fopenmp -DUSE_OMP)
++#if(SSE2_FOUND)
++#add_definitions( -DUSE_SSE2 -msse2 -ffast-math )
++#endif()
++
++if(USE_OpenMP)
++  find_package(OpenMP)
++  if(OPENMP_FOUND)
++    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")
++    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
++  endif()
+ endif()
+ 
+ set(SOURCES src/frameinfo.c src/transformtype.c src/libvidstab.c
+@@ -64,6 +68,8 @@
+ 
+ #set version of lib
+ set_target_properties(vidstab PROPERTIES SOVERSION ${MAJOR_VERSION}.${MINOR_VERSION})
++# set C standard
++set_target_properties(vidstab PROPERTIES C_STANDARD 99)
+ 
+ 
+ target_link_libraries(vidstab m)
