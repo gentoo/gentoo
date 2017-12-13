@@ -45,7 +45,7 @@ COMMON_DEPEND="
 	)
 	soundio? ( media-libs/libsoundio )
 	stk? ( media-libs/stk )
-	vst? ( || ( app-emulation/wine virtual/wine ) )
+	vst? ( || ( virtual/wine app-emulation/wine ) )
 "
 DEPEND="${COMMON_DEPEND}
 	dev-qt/linguist-tools:5
