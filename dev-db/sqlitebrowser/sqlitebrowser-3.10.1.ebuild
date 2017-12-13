@@ -30,6 +30,7 @@ DEPEND="${RDEPEND}
 "
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-3.10.1-cmake.patch
 	"${FILESDIR}"/${PN}-3.10.1-unbundle.patch
 )
 
