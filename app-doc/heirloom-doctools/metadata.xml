@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>staal1978@gmail.com</email>
+  </maintainer>
+  <longdescription> The Heirloom Documentation Tools package provides
+    troff, nroff, and related utilities to format manual pages and other
+    documents for output on terminals and printers. They are portable
+    and enhanced versions of the utilities released by Sun as part of
+    OpenSolaris. Heirloom-doctools can be used as an alternative to
+    the GNU groff package.
+</longdescription>
+  <use>
+    <flag name='cxx'>
+      Build the mpm utility; this is disabled by default because it's
+      rarely used and the only C++ tool in the suite.
+    </flag>
+  </use>
+</pkgmetadata>
