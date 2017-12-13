@@ -61,10 +61,6 @@ sci-electronics/cirkuit
 # Masked for removal in 30 days.
 app-accessibility/simon:4
 
-# Patrick Lauer <patrick@gentoo.org> (12 Dec 2017)
-# Unfetchable / wrong checksum #640718
-=dev-libs/nettle-3.4
-
 # Patrice Clement <monsieurp@gentoo.org> (12 Dec 2017)
 # Masked due to a hard dependency on an ancient versions of dev-libs/msgpack
 # (<0.6) that have been punted from the tree.
