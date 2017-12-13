@@ -2995,7 +2995,7 @@ dev-db/mytop 1.6-r4 1.9.1: mytop - a top clone for mysql
 dev-db/ocp 0.2 9999: Oracle copy tool
 dev-db/odbtp 1.1.4: Fast, efficient TCP/IP protocol for connecting to Win32-based databases
 dev-db/opendbx 1.4.5-r1 1.4.6-r1 1.5.0-r1: OpenDBX - A database abstraction layer
-dev-db/oracle-instantclient 12.1.0.2 12.2.0.1 12.2.0.1-r1: Oracle 12c Instant Client with SDK
+dev-db/oracle-instantclient 12.1.0.2 12.2.0.1_p2: Oracle 12c Instant Client with SDK
 dev-db/oracle-instantclient-basic 10.2.0.3-r1 11.2.0.2 11.2.0.3 11.2.0.4 12: Transition package moving to single dev-db/oracle-instantclient package
 dev-db/oracle-instantclient-jdbc 10.2.0.3 11.2.0.2 11.2.0.3 11.2.0.4 12: Transition package moving to single dev-db/oracle-instantclient package
 dev-db/oracle-instantclient-odbc 11.2.0.2-r1 11.2.0.3 11.2.0.4 12: Transition package moving to single dev-db/oracle-instantclient package
