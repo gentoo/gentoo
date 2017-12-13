@@ -4778,6 +4778,7 @@ dev-libs/judy 1.0.4 1.0.5 1.0.5-r1: A C library that implements a dynamic array
 dev-libs/kasync 0.2.0: C++ library for controlling asynchronous tasks
 dev-libs/kdiagram 2.6.0: Powerful libraries (KChart, KGantt) for creating business diagrams
 dev-libs/keybinder 0.3.1-r200 0.3.1-r300: A library for registering global keyboard shortcuts
+dev-libs/keystone 0.9.1 9999: assembly/assembler framework + bindings
 dev-libs/klibc 2.0.4-r2: A minimal libc subset for use with initramfs
 dev-libs/kpathsea 6.2.2_p20160523 6.2.3_p20170524: Path searching library for TeX-related files
 dev-libs/kproperty 3.0.2: Property editing framework with editor widget similar to Qt Designer
@@ -10354,7 +10355,7 @@ dev-util/archdiff 1.1.6: Utility to view the differences between two source code
 dev-util/argouml 0.34: Modelling tool that helps you do your design using UML
 dev-util/artifactory-bin 4.16.0-r1 4.16.1 5.3.2 5.4.4 5.4.6 5.5.1 5.5.2 5.6.2: The world's most advanced repository manager for maven
 dev-util/aruba 0.5.4-r1 0.6.2 0.6.2-r1 0.7.4 0.8.1: Cucumber steps for driving out command line applications
-dev-util/astyle 2.04-r1 2.05.1 2.06 3.0 3.0.1: Artistic Style is a re-indenter and reformatter for C++, C and Java source code
+dev-util/astyle 3.0.1: Artistic Style is a re-indenter and reformatter for C++, C and Java source code
 dev-util/atomic-install 0.1.1 9999: A library and tool to atomically install sets of files
 dev-util/autodia 2.140.0-r1: Parses source code, XML or data and produces an XML document in Dia format
 dev-util/automoc 0.9.88-r1: KDE Meta Object Compiler
@@ -14819,7 +14820,7 @@ net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection
 net-im/telepathy-logger 0.8.1 0.8.2: Telepathy Logger is a session daemon that should be activated whenever telepathy is being used
 net-im/telepathy-mission-control 5.16.4: An account manager and channel dispatcher for the Telepathy framework
 net-im/tkabber 0.11.1-r1: A jabber client written in Tcl/Tk
-net-im/toxic 0.7.1 0.7.2 0.7.2-r1 0.8.0 0.8.0-r1: A curses-based client for Tox.
+net-im/toxic 0.8.0-r1: A curses-based client for Tox.
 net-im/turses 0.2.23: Command line twitter client
 net-im/vacuum 1.2.5 9999: Qt Crossplatform Jabber client
 net-im/ysm 2.9.9.1-r1: A console ICQ client supporting versions 7/8
