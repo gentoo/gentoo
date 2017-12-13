@@ -34,35 +34,35 @@ REQUIRED_USE="
 #       so there is no chance to support libav right now (Gentoo bug #567638)
 #       If it returns, please check prior GEGL ebuilds for how libav was integrated.  Thanks!
 RDEPEND="
-	>=dev-libs/glib-2.36:2
+	>=dev-libs/glib-2.44:2
 	dev-libs/json-glib
-	>=media-libs/babl-0.1.24
+	>=media-libs/babl-0.1.38
 	sys-libs/zlib
-	>=x11-libs/gdk-pixbuf-2.18:2
+	>=x11-libs/gdk-pixbuf-2.32:2
 	x11-libs/pango
 
-	cairo? ( x11-libs/cairo )
+	cairo? ( >=x11-libs/cairo-1.12.2 )
 	ffmpeg? (
 		>=media-video/ffmpeg-2.8:0=
 	)
 	introspection? ( >=dev-libs/gobject-introspection-1.32:= )
 	virtual/jpeg:0=
 	jpeg2k? ( >=media-libs/jasper-1.900.1:= )
-	lcms? ( >=media-libs/lcms-2.2:2 )
+	lcms? ( >=media-libs/lcms-2.8:2 )
 	lensfun? ( >=media-libs/lensfun-0.2.5 )
-	openexr? ( media-libs/openexr:= )
-	media-libs/libpng:0=
+	openexr? ( >=media-libs/openexr-1.6.1:= )
+	>=media-libs/libpng-1.6.0:0=
 	raw? ( >=media-libs/libraw-0.15.4:0= )
-	sdl? ( media-libs/libsdl )
-	svg? ( >=gnome-base/librsvg-2.14:2 )
+	sdl? ( >=media-libs/libsdl-1.2.0 )
+	svg? ( >=gnome-base/librsvg-2.40.6:2 )
 	tiff? ( >=media-libs/tiff-4:0 )
 	umfpack? ( sci-libs/umfpack )
 	v4l? ( >=media-libs/libv4l-1.0.1 )
-	webp? ( media-libs/libwebp )
+	webp? ( >=media-libs/libwebp-0.5.0:= )
 "
 DEPEND="${RDEPEND}
 	>=dev-util/gtk-doc-am-1
-	>=dev-util/intltool-0.40.1
+	>=sys-devel/gettext-0.19.8
 	dev-lang/perl
 	virtual/pkgconfig
 	>=sys-devel/libtool-2.2
@@ -85,8 +85,6 @@ src_prepare() {
 	if [[ ${CHOST} == *-darwin* && ${CHOST#*-darwin} -le 9 ]] ; then
 		sed -i -e 's/#ifdef __APPLE__/#if 0/' gegl/opencl/* || die
 	fi
-
-	#epatch "${FILESDIR}"/${P}-g_log_domain.patch
 
 	# commit 7c78497b : tests that use gegl.png are broken on non-amd64
 	sed -e '/clones.xml/d' \
