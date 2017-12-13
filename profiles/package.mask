@@ -29,12 +29,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Patrick Lauer <patrick@gentoo.org> (13 Dec 2017)
-# distfile no longer available, upstream seems to have
-# withdrawn this version #640896
-=dev-libs/icu-60.2
-=dev-libs/icu-layoutex-60.2
-
 # Andreas Sturmlechner <asturm@gentoo.org> (12 Dec 2017)
 # Depends on dead kdelibs4/qt4, unmaintained upstream. No port to
 # KF5 released. If you depend on this package, please help test KF5-based
