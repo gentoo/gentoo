@@ -4805,7 +4805,7 @@ dev-libs/libbsd 0.8.3 0.8.5 0.8.6: An library to provide useful functions common
 dev-libs/libbson 0.98.0 1.1.2 1.1.10 1.3.5 1.3.6 1.6.2 1.8.2: A BSON utility library
 dev-libs/libbulletml 0.0.6: A Library of Bullet Markup Language
 dev-libs/libburn 1.4.6 1.4.8-r1: Open-source library for reading, mastering and writing optical discs
-dev-libs/libbytesize 0.11 1.1 1.2: Tiny library providing a C "class" for working with arbitrary big sizes in bytes
+dev-libs/libbytesize 1.2-r1: Tiny library providing a C "class" for working with arbitrary big sizes in bytes
 dev-libs/libcaldav 0.6.2: C library implementing client support for CalDAV
 dev-libs/libcdio 0.93 0.94-r1 1.0.0-r1 1.1.0: A library to encapsulate CD-ROM reading and control
 dev-libs/libcdio-paranoia 0.90_p1-r1 0.93_p1 0.93_p1-r1 0.94_p1-r1 0.94_p2: an advanced CDDA reader with error correction
