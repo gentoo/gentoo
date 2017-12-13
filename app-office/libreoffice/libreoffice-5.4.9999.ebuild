@@ -139,6 +139,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dbus? ( dev-libs/dbus-glib )
 	eds? (
 		dev-libs/glib:2
+		gnome-base/dconf
 		gnome-extra/evolution-data-server
 	)
 	firebird? ( >=dev-db/firebird-3.0.2.32703.0-r1 )
@@ -231,7 +232,6 @@ DEPEND="${COMMON_DEPEND}
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	bluetooth? ( dbus )
 	collada? ( gltf )
-	eds? ( gtk3 )
 	libreoffice_extensions_nlpsolver? ( java )
 	libreoffice_extensions_scripting-beanshell? ( java )
 	libreoffice_extensions_scripting-javascript? ( java )
@@ -349,9 +349,6 @@ src_prepare() {
 }
 
 src_configure() {
-	local java_opts
-	local ext_opts
-
 	# Set up Google API keys, see https://www.chromium.org/developers/how-tos/api-keys
 	# Note: these are for Gentoo use ONLY. For your own distribution, please get
 	# your own set of keys. Feel free to contact chromium@gentoo.org for more info.
@@ -367,32 +364,6 @@ src_configure() {
 	if use collada; then
 		export OPENCOLLADA_CFLAGS="-I/usr/include/opencollada/COLLADABaseUtils -I/usr/include/opencollada/COLLADAFramework -I/usr/include/opencollada/COLLADASaxFrameworkLoader -I/usr/include/opencollada/GeneratedSaxParser"
 		export OPENCOLLADA_LIBS="-L /usr/$(get_libdir)/opencollada -lOpenCOLLADABaseUtils -lOpenCOLLADAFramework -lOpenCOLLADASaxFrameworkLoader -lGeneratedSaxParser"
-	fi
-
-	# libreoffice extensions handling
-	for lo_xt in ${LO_EXTS}; do
-		if [[ "${lo_xt}" == "scripting-beanshell" || "${lo_xt}" == "scripting-javascript" ]]; then
-			ext_opts+=" $(use_enable libreoffice_extensions_${lo_xt} ${lo_xt})"
-		else
-			ext_opts+=" $(use_enable libreoffice_extensions_${lo_xt} ext-${lo_xt})"
-		fi
-	done
-
-	if use java; then
-		# hsqldb: system one is too new
-		java_opts="
-			--without-junit
-			--without-system-hsqldb
-			--with-ant-home="${ANT_HOME}"
-			--with-jdk-home=$(java-config --jdk-home 2>/dev/null)
-			--with-jvm-path="${EPREFIX}/usr/lib/"
-		"
-
-		use libreoffice_extensions_scripting-beanshell && \
-			java_opts+=" --with-beanshell-jar=$(java-pkg_getjar bsh bsh.jar)"
-
-		use libreoffice_extensions_scripting-javascript && \
-			java_opts+=" --with-rhino-jar=$(java-pkg_getjar rhino-1.6 js.jar)"
 	fi
 
 	if use kde; then
@@ -413,77 +384,108 @@ src_configure() {
 	# --without-system-sane: just sane.h header that is used for scan in writer,
 	#   not linked or anything else, worthless to depend on
 	# --disable-pdfium: not yet packaged
-	econf \
-		--with-system-dicts \
-		--with-system-epoxy \
-		--with-system-headers \
-		--with-system-jars \
-		--with-system-libs \
-		--enable-cairo-canvas \
-		--enable-largefile \
-		--enable-mergelibs \
-		--enable-neon \
-		--enable-python=system \
-		--enable-randr \
-		--enable-release-build \
-		--disable-breakpad \
-		--disable-ccache \
-		--disable-dependency-tracking \
-		--disable-epm \
-		--disable-fetch-external \
-		--disable-gstreamer-0-10 \
-		--disable-online-update \
-		--disable-pdfium \
-		--disable-report-builder \
-		--with-alloc=$(use jemalloc && echo "jemalloc" || echo "system") \
-		--with-build-version="Gentoo official package" \
-		--enable-extension-integration \
-		--with-external-dict-dir="${EPREFIX}/usr/share/myspell" \
-		--with-external-hyph-dir="${EPREFIX}/usr/share/myspell" \
-		--with-external-thes-dir="${EPREFIX}/usr/share/myspell" \
-		--with-external-tar="${DISTDIR}" \
-		--with-lang="" \
-		--with-parallelism=$(makeopts_jobs) \
-		--with-system-ucpp \
-		--with-vendor="Gentoo Foundation" \
-		--with-x \
-		--without-fonts \
-		--without-myspell-dicts \
-		--without-help \
-		--with-helppack-integration \
-		--with-system-gpgmepp \
-		--without-system-sane \
-		$(use_enable bluetooth sdremote-bluetooth) \
-		$(use_enable coinmp) \
-		$(use_enable collada) \
-		$(use_enable cups) \
-		$(use_enable debug) \
-		$(use_enable dbus) \
-		$(use_enable eds evolution2) \
-		$(use_enable firebird firebird-sdbc) \
-		$(use_enable gltf) \
-		$(use_enable gstreamer gstreamer-1-0) \
-		$(use_enable gtk) \
-		$(use_enable gtk3) \
-		$(use_enable gtk3 dconf) \
-		$(use_enable gtk3 gio) \
-		$(use_enable kde kde4) \
-		$(use_enable mysql ext-mariadb-connector) \
-		$(use_enable odk) \
-		$(use_enable pdfimport) \
-		$(use_enable postgres postgresql-sdbc) \
-		$(use_enable quickstarter systray) \
-		$(use_enable vlc) \
-		$(use_with coinmp system-coinmp) \
-		$(use_with collada system-opencollada) \
-		$(use_with gltf system-libgltf) \
-		$(use_with googledrive gdrive-client-id ${google_default_client_id}) \
-		$(use_with googledrive gdrive-client-secret ${google_default_client_secret}) \
-		$(use_with java) \
-		$(use_with mysql system-mysql-cppconn) \
-		$(use_with odk doxygen) \
-		${java_opts} \
-		${ext_opts}
+	local myeconfargs=(
+		--with-system-dicts
+		--with-system-epoxy
+		--with-system-headers
+		--with-system-jars
+		--with-system-libs
+		--enable-cairo-canvas
+		--enable-largefile
+		--enable-mergelibs
+		--enable-neon
+		--enable-python=system
+		--enable-randr
+		--enable-release-build
+		--disable-breakpad
+		--disable-ccache
+		--disable-dependency-tracking
+		--disable-epm
+		--disable-fetch-external
+		--disable-gstreamer-0-10
+		--disable-online-update
+		--disable-pdfium
+		--disable-report-builder
+		--with-alloc=$(use jemalloc && echo "jemalloc" || echo "system")
+		--with-build-version="Gentoo official package"
+		--enable-extension-integration
+		--with-external-dict-dir="${EPREFIX}/usr/share/myspell"
+		--with-external-hyph-dir="${EPREFIX}/usr/share/myspell"
+		--with-external-thes-dir="${EPREFIX}/usr/share/myspell"
+		--with-external-tar="${DISTDIR}"
+		--with-lang=""
+		--with-parallelism=$(makeopts_jobs)
+		--with-system-ucpp
+		--with-vendor="Gentoo Foundation"
+		--with-x
+		--without-fonts
+		--without-myspell-dicts
+		--without-help
+		--with-helppack-integration
+		--with-system-gpgmepp
+		--without-system-sane
+		$(use_enable bluetooth sdremote-bluetooth)
+		$(use_enable coinmp)
+		$(use_enable collada)
+		$(use_enable cups)
+		$(use_enable debug)
+		$(use_enable dbus)
+		$(use_enable eds evolution2)
+		$(use_enable firebird firebird-sdbc)
+		$(use_enable gltf)
+		$(use_enable gstreamer gstreamer-1-0)
+		$(use_enable gtk)
+		$(use_enable gtk3)
+		$(use_enable kde kde4)
+		$(use_enable mysql ext-mariadb-connector)
+		$(use_enable odk)
+		$(use_enable pdfimport)
+		$(use_enable postgres postgresql-sdbc)
+		$(use_enable quickstarter systray)
+		$(use_enable vlc)
+		$(use_with coinmp system-coinmp)
+		$(use_with collada system-opencollada)
+		$(use_with gltf system-libgltf)
+		$(use_with googledrive gdrive-client-id ${google_default_client_id})
+		$(use_with googledrive gdrive-client-secret ${google_default_client_secret})
+		$(use_with java)
+		$(use_with mysql system-mysql-cppconn)
+		$(use_with odk doxygen)
+	)
+
+	if use eds || use gtk3; then
+		myeconfargs+=( --enable-dconf --enable-gio )
+	else
+		myeconfargs+=( --disable-dconf --disable-gio )
+	fi
+
+	# libreoffice extensions handling
+	for lo_xt in ${LO_EXTS}; do
+		if [[ "${lo_xt}" == "scripting-beanshell" || "${lo_xt}" == "scripting-javascript" ]]; then
+			myeconfargs+=( $(use_enable libreoffice_extensions_${lo_xt} ${lo_xt}) )
+		else
+			myeconfargs+=( $(use_enable libreoffice_extensions_${lo_xt} ext-${lo_xt}) )
+		fi
+	done
+
+	if use java; then
+		# hsqldb: system one is too new
+		myeconfargs+=(
+			--without-junit
+			--without-system-hsqldb
+			--with-ant-home="${ANT_HOME}"
+			--with-jdk-home=$(java-config --jdk-home 2>/dev/null)
+			--with-jvm-path="${EPREFIX}/usr/$(get_libdir)/"
+		)
+
+		use libreoffice_extensions_scripting-beanshell && \
+			myeconfargs+=( --with-beanshell-jar=$(java-pkg_getjar bsh bsh.jar) )
+
+		use libreoffice_extensions_scripting-javascript && \
+			myeconfargs+=( --with-rhino-jar=$(java-pkg_getjar rhino-1.6 js.jar) )
+	fi
+
+	econf "${myeconfargs[@]}"
 }
 
 src_compile() {
