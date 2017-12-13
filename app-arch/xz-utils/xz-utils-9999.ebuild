@@ -45,12 +45,16 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	local myconf=(
+		$(use_enable nls)
+		$(use_enable threads)
+		$(use_enable static-libs static)
+	)
+	multilib_is_native_abi ||
+		myconf+=( --disable-{xz,xzdec,lzmadec,lzmainfo,lzma-links,scripts} )
+
 	use elibc_FreeBSD && export ac_cv_header_sha256_h=no #545714
-	ECONF_SOURCE="${S}" econf \
-		$(use_enable nls) \
-		$(use_enable threads) \
-		$(use_enable static-libs static) \
-		$(multilib_is_native_abi || echo --disable-{xz,xzdec,lzmadec,lzmainfo,lzma-links,scripts})
+	ECONF_SOURCE="${S}" econf "${myconf[@]}"
 }
 
 multilib_src_install() {
