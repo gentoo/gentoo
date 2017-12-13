@@ -15,14 +15,14 @@ SRC_URI="https://github.com/rhinstaller/${PN}/archive/${MY_PV}.tar.gz -> ${MY_P}
 LICENSE="LGPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="bcache +crypt dmraid doc lvm kbd test"
+IUSE="bcache +cryptsetup dmraid doc lvm kbd test"
 
 CDEPEND="
 	>=dev-libs/glib-2.42.2
 	dev-libs/libbytesize
 	>=sys-apps/util-linux-2.27
 	>=sys-block/parted-3.1
-	crypt? (
+	cryptsetup? (
 		>=dev-libs/nss-3.18.0
 		dev-libs/volume_key
 		>=sys-fs/cryptsetup-1.6.7
@@ -71,7 +71,7 @@ src_configure() {
 		--without-mpath
 		$(use_enable test tests)
 		$(use_with bcache)
-		$(use_with crypt crypto)
+		$(use_with cryptsetup crypto)
 		$(use_with dmraid dm)
 		$(use_with doc gtk-doc)
 		$(use_with lvm lvm)
