@@ -475,7 +475,7 @@ src_configure() {
 			--without-system-hsqldb
 			--with-ant-home="${ANT_HOME}"
 			--with-jdk-home=$(java-config --jdk-home 2>/dev/null)
-			--with-jvm-path="${EPREFIX}/usr/lib/"
+			--with-jvm-path="${EPREFIX}/usr/$(get_libdir)/"
 		)
 
 		use libreoffice_extensions_scripting-beanshell && \
