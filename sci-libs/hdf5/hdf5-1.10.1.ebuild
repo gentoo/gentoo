@@ -84,6 +84,7 @@ src_configure() {
 		$(use_enable debug codestack)
 		$(use_enable cxx)
 		$(use_enable fortran)
+		$(use_enable hl)
 		$(use_enable mpi parallel)
 		$(use_enable threads threadsafe)
 		$(use_with szip szlib)
