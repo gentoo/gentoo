@@ -253,6 +253,9 @@ PATCHES=(
 )
 
 pkg_pretend() {
+	use qt5 && \
+		ewarn "Qt5 is a work in progress. Do _NOT_ file bugs at bugs.gentoo.org related to Qt5 support!"
+
 	use java || \
 		ewarn "If you plan to use Base application you should enable java or you will get various crashes."
 
@@ -263,7 +266,6 @@ pkg_pretend() {
 	fi
 
 	if [[ ${MERGE_TYPE} != binary ]]; then
-
 		CHECKREQS_MEMORY="512M"
 		if is-flagq "-g*" && ! is-flagq "-g*0" ; then
 			CHECKREQS_DISK_BUILD="22G"
