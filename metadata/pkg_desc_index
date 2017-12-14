@@ -492,7 +492,7 @@ app-cdr/uif2iso 0.1.7c 0.1.7c-r1: Convert CD images from uif (MagicISO) to iso
 app-cdr/xbiso 0.6.1 0.6.1-r1 0.6.1-r2: Xbox xdvdfs ISO extraction utility
 app-cdr/xcdroast 0.98_alpha16-r3: Lightweight cdrtools front-end for CD and DVD writing
 app-cdr/xdvdfs-tools 2.1-r1: Tools for manipulating Xbox ISO images
-app-cdr/xfburn 0.5.4 0.5.4-r1: GTK+ based CD and DVD burning application
+app-cdr/xfburn 0.5.4 0.5.4-r1 0.5.5: GTK+ based CD and DVD burning application
 app-crypt/WiRouterKeyRec 1.1.2: Recovery tool for wpa passphrase
 app-crypt/acme 0.18.2 0.19.0 0.20.0 9999: An implementation of the ACME protocol
 app-crypt/acme-client 0.1.16: a secure ACME client
@@ -19612,7 +19612,7 @@ xfce-base/libxfcegui4 4.10.0-r1 4.10.0-r2: A compability library for unported Xf
 xfce-base/thunar 1.6.10-r1 1.6.12-r1 1.6.13 1.7.0: File manager for the Xfce desktop environment
 xfce-base/xfce4-appfinder 4.12.0-r1 4.13.0: A tool to find and launch installed applications for the Xfce desktop
 xfce-base/xfce4-meta 4.12 4.12-r1: The Xfce Desktop Environment (meta package)
-xfce-base/xfce4-panel 4.12.0-r1 4.12.1-r1 4.13.0 4.13.1: Panel for the Xfce desktop environment
+xfce-base/xfce4-panel 4.12.0-r1 4.12.1-r1 4.12.2 4.13.1 4.13.2: Panel for the Xfce desktop environment
 xfce-base/xfce4-session 4.12.1-r1 4.13.0: A session manager for the Xfce desktop environment
 xfce-base/xfce4-settings 4.12.0-r2 4.13.0 4.13.1: Configuration system for the Xfce desktop environment
 xfce-base/xfconf 4.12.0-r1 4.12.1 4.13.4: A configuration management system for Xfce
@@ -19620,11 +19620,11 @@ xfce-base/xfdesktop 4.12.3 4.12.4 4.13.1: Desktop manager for the Xfce desktop e
 xfce-base/xfwm4 4.12.3-r1 4.12.4 4.13.0 4.13.0-r1: Window manager for the Xfce desktop environment
 xfce-extra/eatmonkey 0.1.4 0.1.4-r1: A download manager that works exclusively with aria2
 xfce-extra/multiload-nandhp 0.3 0.3-r1: A port of the GNOME multiload applet for the Xfce panel
-xfce-extra/thunar-archive-plugin 0.3.1-r2 0.3.1-r3: Archive plug-in for the Thunar filemanager
+xfce-extra/thunar-archive-plugin 0.3.1-r2 0.3.1-r3 0.4.0: Archive plug-in for the Thunar filemanager
 xfce-extra/thunar-media-tags-plugin 0.2.1 0.2.1-r1: Adds special features for media files to the Thunar File Manager
 xfce-extra/thunar-shares-plugin 0.2.0_p20101105: Thunar plugin to share files using Samba
 xfce-extra/thunar-vcs-plugin 0.1.4 0.1.5-r1: Adds Subversion and GIT actions to the context menu of thunar
-xfce-extra/thunar-volman 0.8.1 0.8.1-r1: Daemon that enforces volume-related policies
+xfce-extra/thunar-volman 0.8.1 0.8.1-r1 0.9.0: Daemon that enforces volume-related policies
 xfce-extra/transd 0_p20120503: A small daemon to watch for window creation and set window transparency values
 xfce-extra/tumbler 0.1.31-r1 0.1.32 0.2.0: A thumbnail service for Thunar
 xfce-extra/xfce-theme-manager 0.3.6: An alternative theme manager for The Xfce Desktop Environment
