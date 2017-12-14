@@ -88,7 +88,9 @@ DEPEND="${RDEPEND}
 	) ) )
 "
 
-DOCS=( README )
+PATCHES=(
+	"${FILESDIR}/2.0.0-rc1-libressl.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(

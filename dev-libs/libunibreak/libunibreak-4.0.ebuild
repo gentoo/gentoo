@@ -32,6 +32,14 @@ src_compile() {
 	default
 	if use man; then
 		doxygen || die 'doxygen failed'
+		pushd "${S}"/doc/man > /dev/null
+		mv man3 x || die
+		mkdir man3 || die
+		for h in graphemebreak linebreak linebreakdef unibreakbase unibreakdef wordbreak; do
+			mv x/${h}.h.3 man3/ || die "man ${h} not found"
+		done
+		rm -rf x || die
+		popd > /dev/null
 	fi
 }
 
@@ -41,7 +49,5 @@ src_install() {
 	find "${D}" -name '*.la' -delete || die
 	if use man; then
 		doman doc/man/man3/*.3
-		PREFIX=`echo "${WORKDIR}" | sed -e 's|/|_|g'`
-		rm "${D}usr/share/man/man3/${PREFIX}_${P}_src_.3"* || die 'rm man failed'
 	fi
 }
