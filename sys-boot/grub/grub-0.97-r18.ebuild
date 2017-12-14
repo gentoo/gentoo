@@ -172,13 +172,13 @@ src_test() {
 }
 
 src_install() {
-	_stage2_file="${S}/stage2/stage2"
+	local _stage2_file="${S}/stage2/stage2"
 	if [[ -f "${_stage2_file}" ]]; then
 		local _stage2_filesize=$(stat -c '%s' "${_stage2_file}" 2>/dev/null)
 		if [[ -z "${_stage2_filesize}" ]]; then
 			ewarn "Sanity check skipped -- 'stat' returned nothing"
 		elif [[ "${_stage2_filesize}" -gt 1000000 ]]; then
-			eerror "Sanity check failed: stage2 (${_stage2_file}) is more than 1MB large (${_stage2_filesize} bytes)!"
+			eerror "Sanity check failed: stage2 (${_stage2_file}) is larger than 1MB (${_stage2_filesize} bytes)!"
 			eerror "Please check your CFLAGS and/or file a bug report at https://bugs.gentoo.org."
 			die "stage2 sanity check failed"
 		else
