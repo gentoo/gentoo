@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201712-03">
+  <title>OpenSSL: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in OpenSSL, the worst of
+    which may lead to a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">openssl</product>
+  <announced>2017-12-14</announced>
+  <revised>2017-12-14: 1</revised>
+  <bug>629290</bug>
+  <bug>636264</bug>
+  <bug>640172</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/openssl" auto="yes" arch="*">
+      <unaffected range="ge">1.0.2n</unaffected>
+      <vulnerable range="lt">1.0.2n</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenSSL is a robust, commercial-grade, and full-featured toolkit for the
+      Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in OpenSSL. Please review
+      the referenced CVE identifiers for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could cause a Denial of Service condition, recover a
+      private key in unlikely circumstances, circumvent security restrictions
+      to perform unauthorized actions, or gain access to sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There are no known workarounds at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OpenSSL users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/openssl-1.0.2n"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3735">
+      CVE-2017-3735
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3736">
+      CVE-2017-3736
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3737">
+      CVE-2017-3737
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3738">
+      CVE-2017-3738
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-11-22T00:36:52Z">jmbailey</metadata>
+  <metadata tag="submitter" timestamp="2017-12-14T18:16:28Z">jmbailey</metadata>
+</glsa>
