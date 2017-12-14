@@ -26,7 +26,7 @@ LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/?}
 
 LICENSE="UoI-NCSA"
 SLOT="$(get_major_version)"
-KEYWORDS="~amd64 ~arm64 x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="debug default-compiler-rt default-libcxx doc +static-analyzer
 	test xml elibc_musl kernel_FreeBSD ${ALL_LLVM_TARGETS[*]}"
 
