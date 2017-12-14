@@ -13,3 +13,10 @@ DESCRIPTION="SELinux policy for gpg"
 if [[ ${PV} != 9999* ]] ; then
 	KEYWORDS="~amd64 -arm ~arm64 ~mips ~x86"
 fi
+
+DEPEND="${DEPEND}
+	sec-policy/selinux-dirmngr
+"
+RDEPEND="${RDEPEND}
+	sec-policy/selinux-dirmngr
+"
