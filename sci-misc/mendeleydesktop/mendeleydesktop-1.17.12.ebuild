@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
-inherit eutils fdo-mime multilib python-single-r1
+inherit eutils multilib python-single-r1 xdg gnome2-utils
 
 MY_P_AMD64="${P}-linux-x86_64"
 MY_P_X86="${P}-linux-i486"
@@ -117,15 +117,15 @@ src_install() {
 	doins -r share/mendeleydesktop
 
 	# symlink launch script
-	dosym /opt/mendeleydesktop/bin/mendeleydesktop /opt/bin/mendeleydesktop
+	dosym ../mendeleydesktop/bin/mendeleydesktop /opt/bin/mendeleydesktop
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_pkg_postinst
+	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_pkg_postrm
+	gnome2_icon_cache_update
 }
