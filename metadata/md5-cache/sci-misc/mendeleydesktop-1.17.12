@@ -1,4 +1,5 @@
-DEFINED_PHASES=install postinst postrm prepare setup unpack
+DEFINED_PHASES=install postinst postrm preinst prepare setup unpack
+DEPEND=dev-util/desktop-file-utils x11-misc/shared-mime-info >=sys-apps/sed-4
 DESCRIPTION=Research management tool for desktop and web
 EAPI=6
 HOMEPAGE=http://www.mendeley.com/
@@ -9,6 +10,6 @@ RDEPEND=dev-qt/qtcore:5 dev-qt/qtdeclarative:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5
 REQUIRED_USE=^^ ( python_single_target_python2_7 python_single_target_python3_4 python_single_target_python3_5 python_single_target_python3_6 ) python_single_target_python2_7? ( python_targets_python2_7 ) python_single_target_python3_4? ( python_targets_python3_4 ) python_single_target_python3_5? ( python_targets_python3_5 ) python_single_target_python3_6? ( python_targets_python3_6 )
 RESTRICT=fetch
 SLOT=0
-SRC_URI=amd64? ( mendeleydesktop-1.17.9-linux-x86_64.tar.bz2 ) x86? ( mendeleydesktop-1.17.9-linux-i486.tar.bz2 ) amd64-linux? ( mendeleydesktop-1.17.9-linux-x86_64.tar.bz2 ) x86-linux? ( mendeleydesktop-1.17.9-linux-i486.tar.bz2 )
-_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	fdo-mime	995b19d3f30e956b4e1bc5a91fdc4ea7	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	317a2557b4d7319a7418225f65accf77	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=62b7ab321fe1c6c2dae394e753c33021
+SRC_URI=amd64? ( mendeleydesktop-1.17.12-linux-x86_64.tar.bz2 ) x86? ( mendeleydesktop-1.17.12-linux-i486.tar.bz2 ) amd64-linux? ( mendeleydesktop-1.17.12-linux-x86_64.tar.bz2 ) x86-linux? ( mendeleydesktop-1.17.12-linux-i486.tar.bz2 )
+_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	gnome2-utils	4d211d7614f303710fca59db6ec12c88	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	317a2557b4d7319a7418225f65accf77	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	185a06792159ca143528e7010368e8af	xdg	6cd76cc914c1a759dee032778487b57f	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=34e42c7a8dc0206c2579c9153dda07b8

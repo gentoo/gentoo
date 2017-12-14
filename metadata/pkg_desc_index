@@ -15212,8 +15212,8 @@ net-misc/autossh 1.4e: Automatically restart SSH sessions and tunnels
 net-misc/autoupnp 0.4.6 0.4.7 9999: Automatic open port forwarder using UPnP
 net-misc/axel 2.4-r3 2.12 2.14.1 2.15 9999: Light Unix download accelerator
 net-misc/balance 3.57: TCP Load Balancing Port Forwarder
-net-misc/batctl 2013.4.0 2014.2.0 2017.4: BATMAN advanced control and management tool
-net-misc/batman-adv 2013.4.0 2014.2.0 2017.4: Better approach to mobile Ad-Hoc networking on layer 2 kernel module
+net-misc/batctl 2017.4: BATMAN advanced control and management tool
+net-misc/batman-adv 2017.4: Better approach to mobile Ad-Hoc networking on layer 2 kernel module
 net-misc/bfgminer 3.10.5 3.10.10 4.10.3 4.10.4 5.3.0 5.4.0 5.4.1 5.4.2: Modular Bitcoin ASIC/FPGA/GPU/CPU miner in C
 net-misc/bgpq3 0.1.22 0.1.33: Generate access-lists for Cisco/Juniper routers, successor of bgpq
 net-misc/bird 1.4.5 1.5.0 1.6.0 1.6.1 1.6.2 1.6.3: A routing daemon implementing OSPF, RIPv2 & BGP for IPv4 or IPv6
@@ -16745,7 +16745,7 @@ sci-misc/gato 1.2.2: Graph Animation Toolbox
 sci-misc/gt-itm 19961004-r2: Routines to generate / analyze graphs using models for internetwork topology
 sci-misc/h5utils 1.12.1-r2: Utilities for visualization and conversion of HDF5 files
 sci-misc/lttoolbox 3.3.3: Toolbox for lexical processing, morphological analysis and generation of words
-sci-misc/mendeleydesktop 1.17.9: Research management tool for desktop and web
+sci-misc/mendeleydesktop 1.17.12: Research management tool for desktop and web
 sci-misc/nco 3.9.9 4.5.1-r2: Command line utilities for operating on netCDF files
 sci-misc/ncview 2.1.7: X-based viewer for netCDF files
 sci-misc/netlogo-bin 5.0.3-r1: Cross-platform multi-agent programmable modeling environment
@@ -18032,7 +18032,7 @@ sys-power/nut 2.6.5-r1 2.7.2-r2 2.7.3 2.7.4 2.7.4-r1: Network-UPS Tools
 sys-power/nvclock 0.8_p20110102-r2: NVIDIA Overclocking Utility
 sys-power/nvram-reboot 2004.10.03: PowerOff Boot-Images for nvram-wakeup (not needed for GRUB)
 sys-power/nvram-wakeup 1.0 1.1: read and write the WakeUp time in the BIOS
-sys-power/phc-intel 0.3.2.12.17 0.3.2.12.21: Processor Hardware Control for Intel CPUs
+sys-power/phc-intel 0.3.2.12.17 0.3.2.12.21 0.3.2.12.24: Processor Hardware Control for Intel CPUs
 sys-power/phc-k8 0.4.3 0.4.4: Processor Hardware Control for AMD K8 CPUs
 sys-power/phctool 0.5.2.2-r3: Processor Hardware Control userland configuration tool
 sys-power/pm-quirks 20100619: Video Quirks database for pm-utils
