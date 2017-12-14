@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DEPEND=dev-libs/glib:2 x11-libs/gdk-pixbuf[jpeg] x11-libs/gtk+:3 x11-libs/goocanvas:2.0 net-misc/curl dev-util/intltool virtual/pkgconfig sys-devel/gettext
+DESCRIPTION=Real-time satellite tracking and orbit prediction application
+EAPI=6
+HOMEPAGE=http://gpredict.oz9aec.net
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/glib:2 x11-libs/gdk-pixbuf[jpeg] x11-libs/gtk+:3 x11-libs/goocanvas:2.0 net-misc/curl
+SLOT=0
+SRC_URI=mirror://sourceforge/gpredict/gpredict-2.0.tar.gz
+_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=070cac5f9528246c3087edc0388355ba
