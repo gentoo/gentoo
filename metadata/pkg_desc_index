@@ -6353,7 +6353,7 @@ dev-perl/Net-Amazon 0.620.0: Framework for accessing amazon.com via SOAP and XML
 dev-perl/Net-Amazon-S3 0.800.0: Framework for accessing the Amazon S3 Simple Storage Service
 dev-perl/Net-Bonjour 0.960.0: Module for DNS service discovery (Apple's Bonjour)
 dev-perl/Net-CIDR 0.180.0: Manipulate netblock lists in CIDR notation
-dev-perl/Net-CIDR-Lite 0.210.0: Perl extension for merging IPv4 or IPv6 CIDR addresses
+dev-perl/Net-CIDR-Lite 0.210.0 0.210.0-r1: Perl extension for merging IPv4 or IPv6 CIDR addresses
 dev-perl/Net-CUPS 0.630.0 0.640.0: CUPS C API Interface
 dev-perl/Net-DBus 1.1.0: Perl extension for the DBus message system
 dev-perl/Net-DNS 1.40.0 1.70.0 1.80.0 1.90.0 1.100.0 1.130.0: Perl Interface to the Domain Name System
@@ -6364,7 +6364,7 @@ dev-perl/Net-DNS-SEC 1.20.0 1.30.0: DNSSEC extensions to Net::DNS
 dev-perl/Net-Daemon 0.480.0-r1 0.480.0-r2: Abstract base class for portable servers
 dev-perl/Net-Domain-TLD 1.740.0 1.750.0: Current top level domain names including new ICANN additions and ccTLDs
 dev-perl/Net-FreeDB 0.80.0-r1 0.100.0: OOP interface to the FreeDB database
-dev-perl/Net-Google-SafeBrowsing-Blocklist 1.40.0-r1: Query a Google SafeBrowsing table
+dev-perl/Net-Google-SafeBrowsing-Blocklist 1.40.0-r1 1.40.0-r2: Query a Google SafeBrowsing table
 dev-perl/Net-HTTP 6.90.0 6.120.0 6.130.0 6.150.0 6.160.0 6.170.0: Low-level HTTP connection (client)
 dev-perl/Net-IDN-Encode 2.300.0 2.301.0 2.302.0 2.303.0 2.400.0: Internationalizing Domain Names in Applications (IDNA)
 dev-perl/Net-IMAP-Simple 1.220.600 1.220.900: Perl extension for simple IMAP account handling
@@ -6374,10 +6374,10 @@ dev-perl/Net-IP-Minimal 0.60.0: Minimal functions from Net::IP
 dev-perl/Net-IPv4Addr 0.100.0: Perl extension for manipulating IPv4 addresses
 dev-perl/Net-IRC 0.790.0-r1: Perl IRC module
 dev-perl/Net-IRR 0.80.0-r1: Internet Route Registry daemon (IRRd) client
-dev-perl/Net-Ident 1.240.0: lookup the username on the remote end of a TCP/IP connection
+dev-perl/Net-Ident 1.240.0 1.240.0-r1: lookup the username on the remote end of a TCP/IP connection
 dev-perl/Net-Jabber 2.0.0-r1: Jabber Perl library
 dev-perl/Net-Kismet 0.04-r1: Module for writing perl Kismet clients
-dev-perl/Net-LDAP-Server 0.430.0: LDAP server side protocol handling
+dev-perl/Net-LDAP-Server 0.430.0 0.430.0-r1: LDAP server side protocol handling
 dev-perl/Net-LDAPapi 3.0.4 3.0.5: Perl5 Module Supporting LDAP API
 dev-perl/Net-LibIDN 0.120.0-r1: Perl bindings for GNU Libidn
 dev-perl/Net-LibIDN2 1.0.0: Perl bindings for GNU Libidn2
@@ -6386,7 +6386,7 @@ dev-perl/Net-OAuth 0.280.0-r1: OAuth protocol support
 dev-perl/Net-OpenID-Common 1.200.0: Libraries shared between Net::OpenID::Consumer and Net::OpenID::Server
 dev-perl/Net-OpenID-Consumer 1.180.0: Library for consumers of OpenID identities
 dev-perl/Net-OpenSSH 0.600.0 0.700.0 0.740.0: Net::OpenSSH, Perl wrapper for OpenSSH secure shell client
-dev-perl/Net-Patricia 1.210.0-r1 1.220.0: Patricia Trie perl module for fast IP address lookups
+dev-perl/Net-Patricia 1.210.0-r1 1.220.0 1.220.0-r1: Patricia Trie perl module for fast IP address lookups
 dev-perl/Net-Pcap 0.170.0-r1 0.180.0: Interface to the pcap(3) LBL packet capture library
 dev-perl/Net-PcapUtils 0.10.0-r1: Perl Net::PcapUtils - Net::Pcap library utils
 dev-perl/Net-RBLClient 0.500.0-r1: Net::RBLClient - Queries multiple Realtime Blackhole Lists in parallel
@@ -9884,7 +9884,7 @@ dev-ruby/rake 0.9.6-r1 10.5.0 11.3.0 12.0.0 12.1.0 12.2.1 12.3.0: Make-like scri
 dev-ruby/rake-compiler 1.0.2 1.0.4: Provide a standard and simplified way to build and package Ruby extensions
 dev-ruby/rake-remote_task 2.4.1 2.4.2: Extends Rake with remote task goodness
 dev-ruby/rash 0.4.0-r2: Rash is an extension to Hashie
-dev-ruby/rash_alt 0.4.3 0.4.4: Rash alt version for Hashie's own Rash
+dev-ruby/rash_alt 0.4.3 0.4.4 0.4.5: Rash alt version for Hashie's own Rash
 dev-ruby/rb-gsl 1.16.0.6 2.1.0.1: Ruby interface to GNU Scientific Library
 dev-ruby/rb-inotify 0.9.5-r1 0.9.10: A thorough inotify wrapper for Ruby using FFI
 dev-ruby/rb-readline 0.5.3 0.5.4 0.5.5: Ruby implementation of the GNU readline C library
