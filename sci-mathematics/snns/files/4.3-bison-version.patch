@@ -1,5 +1,5 @@
---- configure.old	2015-04-08 16:27:05.000000000 -0400
-+++ configure	2015-04-08 16:26:41.000000000 -0400
+--- a/configure	2015-04-08 16:27:05.000000000 -0400
++++ b/configure	2015-04-08 16:26:41.000000000 -0400
 @@ -5071,7 +5071,7 @@
  else
      { echo "$as_me:$LINENO: checking for version of bison" >&5
