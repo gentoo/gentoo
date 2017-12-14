@@ -2290,7 +2290,7 @@ app-text/expander 2.0.5-r2: Expander is a utility that acts as a filter for text
 app-text/extract_url 1.6.2: extracts URLs from correctly-encoded MIME email messages or plain text
 app-text/fbless 0.2.3: Python-based console fb2 reader with less-like interface
 app-text/fbpdf 0_p20161202: framebuffer pdf and djvu viewer
-app-text/fbreader 0.99.4-r2 0.99.4-r3: E-Book Reader. Supports many e-book formats
+app-text/fbreader 0.99.4-r2 0.99.4-r3 0.99.4-r4: E-Book Reader. Supports many e-book formats
 app-text/fdftk 6.0-r1: Acrobat FDF Toolkit
 app-text/flpsed 0.7.0 0.7.2 0.7.3: Pseudo PostScript editor
 app-text/freepwing 1.4.3: FreePWING is a free JIS X 4081 (subset of EPWING V1) formatter
@@ -4973,6 +4973,7 @@ dev-libs/libtreadstone 0.1.0 0.2.0: Hyperdex libtreadstone support library
 dev-libs/libtubo 5.0.15: small and simple interprocess communication library
 dev-libs/libucl 0.7.3: Universal configuration library parser
 dev-libs/libuev 2.1.0: A collection of useful BSD APIs
+dev-libs/libunibreak 4.0: Line and word breaking library
 dev-libs/libunicode 0.4-r1: Unicode library
 dev-libs/libunique 1.1.6-r2 3.0.2-r1: A library for writing single instance application
 dev-libs/libunistring 0.9.5 0.9.6 0.9.7: Library for manipulating Unicode and C strings according to Unicode standard

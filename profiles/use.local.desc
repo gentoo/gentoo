@@ -2165,6 +2165,8 @@ dev-libs/libucl:regex - Enable regex checking for schema
 dev-libs/libucl:signatures - Enable signatures check
 dev-libs/libucl:urlfetch - Enable URLs fetch
 dev-libs/libucl:utils - Install the chargen and objdump utilities
+dev-libs/libunibreak:doc - Install html API documentation.
+dev-libs/libunibreak:man - Generate man pages with doxygen.
 dev-libs/libverto:glib - Support event loops using dev-libs/glib
 dev-libs/libverto:libev - Support event loops using dev-libs/libev
 dev-libs/libverto:libevent - Support event loops using dev-libs/libevent
