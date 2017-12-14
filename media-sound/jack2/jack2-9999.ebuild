@@ -5,7 +5,7 @@ EAPI="6"
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads(+)"
-inherit eutils python-single-r1 waf-utils multilib-minimal
+inherit python-single-r1 waf-utils multilib-minimal
 
 DESCRIPTION="Jackdmp jack implemention for multi-processor machine"
 HOMEPAGE="http://jackaudio.org/"
