@@ -88,8 +88,6 @@ DEPEND="${RDEPEND}
 	) ) )
 "
 
-DOCS=( README )
-
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTING=$(usex test)
