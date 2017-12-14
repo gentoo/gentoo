@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201712-01">
+  <title>WebKitGTK+: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been discovered in WebKitGTK+, the
+    worst of which may lead to arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">WebkitGTK</product>
+  <announced>2017-12-14</announced>
+  <revised>2017-12-14: 1</revised>
+  <bug>637076</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/webkit-gtk" auto="yes" arch="*">
+      <unaffected range="ge">2.18.3</unaffected>
+      <vulnerable range="lt">2.18.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>WebKitGTK+ is a full-featured port of the WebKit rendering engine,
+      suitable for projects requiring any kind of web integration, from hybrid
+      HTML/CSS applications to full-fledged web browsers.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in WebKitGTK+. Please
+      review the referenced CVE identifiers for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>By enticing a victim to visit maliciously crafted web content, a remote
+      attacker could execute arbitrary code or cause a denial of service
+      condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There are no known workarounds at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All WebKitGTK+ users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/webkit-gtk-2.18.3"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13783">
+      CVE-2017-13783
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13784">
+      CVE-2017-13784
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13785">
+      CVE-2017-13785
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13788">
+      CVE-2017-13788
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13791">
+      CVE-2017-13791
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13792">
+      CVE-2017-13792
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13793">
+      CVE-2017-13793
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13794">
+      CVE-2017-13794
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13795">
+      CVE-2017-13795
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13796">
+      CVE-2017-13796
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13798">
+      CVE-2017-13798
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13802">
+      CVE-2017-13802
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13803">
+      CVE-2017-13803
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-12-03T01:49:25Z">jmbailey</metadata>
+  <metadata tag="submitter" timestamp="2017-12-14T16:50:30Z">jmbailey</metadata>
+</glsa>
