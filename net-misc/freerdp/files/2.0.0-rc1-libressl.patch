@@ -1,0 +1,35 @@
+From bfe3af4c72b45e33321962644d864843e1c9ce3d Mon Sep 17 00:00:00 2001
+From: Greg V <greg@unrelenting.technology>
+Date: Fri, 1 Dec 2017 18:34:48 +0300
+Subject: [PATCH] Fix LibreSSL build
+
+LibreSSL does not support FIPS mode.
+---
+ winpr/libwinpr/utils/ssl.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/winpr/libwinpr/utils/ssl.c b/winpr/libwinpr/utils/ssl.c
+index f749939ac..194f82609 100644
+--- a/winpr/libwinpr/utils/ssl.c
++++ b/winpr/libwinpr/utils/ssl.c
+@@ -279,7 +279,7 @@ static BOOL CALLBACK _winpr_openssl_initialize(PINIT_ONCE once, PVOID param, PVO
+ 
+ 	if (flags & WINPR_SSL_INIT_ENABLE_FIPS)
+ 	{
+-#if (OPENSSL_VERSION_NUMBER < 0x10001000L)
++#if (OPENSSL_VERSION_NUMBER < 0x10001000L) || defined(LIBRESSL_VERSION_NUMBER)
+ 		WLog_ERR(TAG, "Openssl fips mode ENable not available on openssl versions less than 1.0.1!");
+ #else
+ 		WLog_DBG(TAG, "Ensuring openssl fips mode is ENabled");
+@@ -348,7 +348,7 @@ BOOL winpr_CleanupSSL(DWORD flags)
+ 
+ BOOL winpr_FIPSMode(void)
+ {
+-#if (OPENSSL_VERSION_NUMBER < 0x10001000L)
++#if (OPENSSL_VERSION_NUMBER < 0x10001000L) || defined(LIBRESSL_VERSION_NUMBER)
+ 	return FALSE;
+ #else
+ 	return (FIPS_mode() == 1);
+-- 
+2.15.1
+

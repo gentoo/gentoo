@@ -88,6 +88,10 @@ DEPEND="${RDEPEND}
 	) ) )
 "
 
+PATCHES=(
+	"${FILESDIR}/2.0.0-rc1-libressl.patch"
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTING=$(usex test)
