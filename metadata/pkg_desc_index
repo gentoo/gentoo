@@ -2055,7 +2055,7 @@ app-office/multitalk 1.4-r1: A new type of presentation program
 app-office/odeskteam 3.6.1 3.12.9 3.12.19: Project collaboration and tracking software for oDesk.com
 app-office/ooextras 20060909: OOExtras: Extra Templates for OpenOffice.org!
 app-office/openerp 7.0.20140125 8.0.20140125: Open Source ERP & CRM
-app-office/openoffice-bin 4.1.3: Apache OpenOffice productivity suite
+app-office/openoffice-bin 4.1.3 4.1.4: Apache OpenOffice productivity suite
 app-office/orage 4.12.1 4.12.1-r1: A time managing application (and panel plug-in) for the Xfce desktop environment
 app-office/pinpoint 0.1.8: A tool for making hackers do excellent presentations
 app-office/plan 1.10: Motif based schedule planner
@@ -18032,7 +18032,7 @@ sys-power/nut 2.6.5-r1 2.7.2-r2 2.7.3 2.7.4 2.7.4-r1: Network-UPS Tools
 sys-power/nvclock 0.8_p20110102-r2: NVIDIA Overclocking Utility
 sys-power/nvram-reboot 2004.10.03: PowerOff Boot-Images for nvram-wakeup (not needed for GRUB)
 sys-power/nvram-wakeup 1.0 1.1: read and write the WakeUp time in the BIOS
-sys-power/phc-intel 0.3.2.12.15.1 0.3.2.12.16 0.3.2.12.17 0.3.2.12.21: Processor Hardware Control for Intel CPUs
+sys-power/phc-intel 0.3.2.12.17 0.3.2.12.21: Processor Hardware Control for Intel CPUs
 sys-power/phc-k8 0.4.3 0.4.4: Processor Hardware Control for AMD K8 CPUs
 sys-power/phctool 0.5.2.2-r3: Processor Hardware Control userland configuration tool
 sys-power/pm-quirks 20100619: Video Quirks database for pm-utils
@@ -18483,7 +18483,7 @@ www-client/seamonkey-bin 2.48 2.49.1_rc2: Mozilla Application Suite - web browse
 www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ and libcurl
-www-client/vivaldi 1.13.1008.34_p1 1.13.1008.36_p1: A new browser for our friends
+www-client/vivaldi 1.13.1008.36_p1: A new browser for our friends
 www-client/vivaldi-snapshot 1.14.1036.3_p1 1.14.1038.3_p1: A new browser for our friends
 www-client/w3m 0.5.3-r9: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r7 0.3.2_p24-r9: A variant of w3m with support for multiple character encodings
