@@ -27,7 +27,6 @@
     <flag name="fits">Enable support for images and data from FITS files with <pkg>sci-libs/cfitsio</pkg></flag>
     <flag name="fortran">Compile included Fortran programs</flag>
     <flag name="gdml">Enable GDML writer and reader</flag>
-    <flag name="geocad">Enable ROOT-CAD interface using <pkg>sci-libs/opencascade</pkg></flag>
     <flag name="http">Enable http server support including but not limited to fastcgi support</flag>
     <flag name="jemalloc">Enable support for <pkg>dev-libs/jemalloc</pkg></flag>
     <flag name="libcxx">Build ROOT against <pkg>sys-libs/libcxx</pkg></flag>
