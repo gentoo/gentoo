@@ -33,7 +33,7 @@ LICENSE="UoI-NCSA rc BSD public-domain
 	llvm_targets_ARM? ( LLVM-Grant )"
 SLOT="$(ver_cut 1)"
 KEYWORDS=""
-IUSE="debug +doc gold libedit +libffi ncurses test
+IUSE="debug doc gold libedit +libffi ncurses test
 	kernel_Darwin ${ALL_LLVM_TARGETS[*]}"
 
 RDEPEND="
@@ -226,11 +226,11 @@ _EOF_
 	doenvd "${T}/10llvm-${revord}"
 
 	# install pre-generated manpages
-	if ! use doc; then
-		# (doman does not support custom paths)
-		insinto "/usr/lib/llvm/${SLOT}/share/man/man1"
-		doins "${WORKDIR}/llvm-manpages-${PV}/llvm"/*.1
-	fi
+#	if ! use doc; then
+#		# (doman does not support custom paths)
+#		insinto "/usr/lib/llvm/${SLOT}/share/man/man1"
+#		doins "${WORKDIR}/llvm-manpages-${PV}/llvm"/*.1
+#	fi
 
 	docompress "/usr/lib/llvm/${SLOT}/share/man"
 }

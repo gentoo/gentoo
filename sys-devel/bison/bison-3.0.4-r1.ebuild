@@ -7,7 +7,8 @@ inherit flag-o-matic eutils
 
 DESCRIPTION="A general-purpose (yacc-compatible) parser generator"
 HOMEPAGE="https://www.gnu.org/software/bison/"
-SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
+SRC_URI="mirror://gnu/${PN}/${P}.tar.xz
+	https://dev.gentoo.org/~mgorny/dist/${P}-patchset.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -24,9 +25,9 @@ DEPEND="${RDEPEND}
 DOCS=( AUTHORS ChangeLog-2012 NEWS README THANKS TODO ) # ChangeLog-1998 PACKAGING README-alpha README-release
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-optional-perl.patch #538300
-	epatch "${FILESDIR}"/${P}-darwin17-printf-n.patch #632500
-	epatch "${FILESDIR}"/${P}-fix-tests-gcc-7.patch #638308
+	epatch "${WORKDIR}"/${P}-patchset/${P}-optional-perl.patch #538300
+	epatch "${WORKDIR}"/${P}-patchset/${P}-darwin17-printf-n.patch #632500
+	epatch "${WORKDIR}"/${P}-patchset/${P}-fix-tests-gcc-7.patch #638308
 	# The makefiles make the man page depend on the configure script
 	# which we patched above.  Touch it to prevent regeneration.
 	touch doc/bison.1 #548778 #538300#9

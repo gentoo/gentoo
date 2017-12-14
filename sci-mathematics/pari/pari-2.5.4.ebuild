@@ -7,7 +7,8 @@ inherit eutils flag-o-matic toolchain-funcs multilib
 
 DESCRIPTION="Computer-aided number theory C library and tools"
 HOMEPAGE="http://pari.math.u-bordeaux.fr/"
-SRC_URI="http://pari.math.u-bordeaux.fr/pub/${PN}/unix/${P}.tar.gz"
+SRC_URI="http://pari.math.u-bordeaux.fr/pub/${PN}/unix/${P}.tar.gz
+	https://dev.gentoo.org/~mgorny/dist/${P}-patchset.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -34,22 +35,22 @@ get_compile_dir() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-2.3.2-strip.patch
-	epatch "${FILESDIR}"/${PN}-2.3.2-ppc-powerpc-arch-fix.patch
+	epatch "${WORKDIR}"/${P}-patchset/${PN}-2.3.2-strip.patch
+	epatch "${WORKDIR}"/${P}-patchset/${PN}-2.3.2-ppc-powerpc-arch-fix.patch
 	# fix parallel make
-	epatch "${FILESDIR}"/${PN}-2.5.0-doc-make.patch
+	epatch "${WORKDIR}"/${P}-patchset/${PN}-2.5.0-doc-make.patch
 	# sage error handling patch
-	epatch "${FILESDIR}"/${PN}-2.5.0-mp.c.patch
+	epatch "${WORKDIR}"/${P}-patchset/${PN}-2.5.0-mp.c.patch
 	# OS X: add -install_name to the linker option
-	epatch "${FILESDIR}"/${PN}-2.5.0-macos.patch
+	epatch "${WORKDIR}"/${P}-patchset/${PN}-2.5.0-macos.patch
 	# Fix Perl 5.26
-	epatch "${FILESDIR}/"${PN}-2.5.0-no-dot-inc.patch
+	epatch "${WORKDIR}"/${P}-patchset/${PN}-2.5.0-no-dot-inc.patch
 	# fix automagic
-	epatch "${FILESDIR}"/${PN}-2.5.1-no-automagic.patch
+	epatch "${WORKDIR}"/${P}-patchset/${PN}-2.5.1-no-automagic.patch
 	# sage-on-gentoo trac 13902: Slowdown for PARI integer determinant
-	epatch "${FILESDIR}"/${PN}-2.5.4-slow_determinant.patch
+	epatch "${WORKDIR}"/${P}-patchset/${PN}-2.5.4-slow_determinant.patch
 	# sage-on-gentoo trac 13054: polred bug / pari bug 1395
-	epatch "${FILESDIR}"/${PN}-2.5.4-polred.patch
+	epatch "${WORKDIR}"/${P}-patchset/${PN}-2.5.4-polred.patch
 
 	# disable default building of docs during install
 	sed -i \

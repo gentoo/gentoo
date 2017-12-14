@@ -9,6 +9,7 @@ HOMEPAGE="http://pari.math.u-bordeaux.fr/"
 
 SRC_COM="http://pari.math.u-bordeaux.fr/pub/${PN}"
 SRC_URI="${SRC_COM}/unix/${P}.tar.gz
+	https://dev.gentoo.org/~mgorny/dist/${P}-patchset.tar.bz2
 	data? (	${SRC_COM}/packages/elldata.tgz
 			${SRC_COM}/packages/galdata.tgz
 			${SRC_COM}/packages/seadata.tgz
@@ -40,10 +41,10 @@ src_prepare() {
 	if use data; then
 		mv "${WORKDIR}"/data "${S}" || die "failed to move data"
 	fi
-	epatch "${FILESDIR}/"${PN}-2.3.2-strip.patch
-	epatch "${FILESDIR}/"${PN}-2.3.2-ppc-powerpc-arch-fix.patch
-	epatch "${FILESDIR}/"${PN}-2.3.5-doc-make.patch
-	epatch "${FILESDIR}/"${PN}-2.3.5-no-dot-inc.patch
+	epatch "${WORKDIR}"/${P}-patchset/${PN}-2.3.2-strip.patch
+	epatch "${WORKDIR}"/${P}-patchset/${PN}-2.3.2-ppc-powerpc-arch-fix.patch
+	epatch "${WORKDIR}"/${P}-patchset/${PN}-2.3.5-doc-make.patch
+	epatch "${WORKDIR}"/${P}-patchset/${PN}-2.3.5-no-dot-inc.patch
 
 	# disable default building of docs during install
 	sed -i \

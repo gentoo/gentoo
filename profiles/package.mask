@@ -29,6 +29,43 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (12 Dec 2017)
+# Depends on dead kdelibs4/qt4, unmaintained upstream. No port to
+# KF5 released. If you depend on this package, please help test KF5-based
+# amarok-9999 in KDE ebuild repository to decide on a possible snapshot.
+# Possible alternatives are media-sound/cantata (an awesome mpd client),
+# media-sound/clementine and media-sound/tomahawk (the latter also declared
+# unmaintained upstream).
+# Bug #635468. Masked for removal in 30 days.
+media-sound/amarok
+kde-apps/kdebase-kioslaves
+kde-apps/phonon-kde
+x11-libs/qtscriptgenerator
+
+# Andreas Sturmlechner <asturm@gentoo.org> (12 Dec 2017)
+# Depends on dead media-sound/amarok:4, dead upstream,
+# last release in 2006. Bug #635468. Masked for removal in 30 days.
+media-sound/vdramgw
+
+# Andreas Sturmlechner <asturm@gentoo.org> (12 Dec 2017)
+# Depends on dead kdelibs4/qt4, unmaintained upstream. No port to
+# KF5 released. If you depend on this package, please help test KF5-based
+# cirkuit-9999 in KDE ebuild repository to decide on a possible snapshot.
+# Bug #640884. Masked for removal in 30 days.
+sci-electronics/cirkuit
+
+# Andreas Sturmlechner <asturm@gentoo.org> (12 Dec 2017)
+# Depends on dead kdelibs4/qt4, no port to KF5 released yet.
+# If you depend on this package, help test KF5-based simon-9999
+# to decide on a possible snapshot. Bugs #640846, 639960, 635816.
+# Masked for removal in 30 days.
+app-accessibility/simon:4
+
+# Patrice Clement <monsieurp@gentoo.org> (12 Dec 2017)
+# Masked due to a hard dependency on an ancient versions of dev-libs/msgpack
+# (<0.6) that have been punted from the tree.
+net-misc/cocaine-core
+
 # Jonas Stein <jstein@gentoo.org> (10 Dec 2017)
 # Site blocks certain IP blocks from downloading files, while the package
 # may not be mirrored. (bug #640508)
@@ -173,19 +210,9 @@ kde-misc/kopete-antispam
 kde-misc/kopete-thinklight
 
 # Andreas Sturmlechner <asturm@gentoo.org> (30 Nov 2017)
-# Still depends on dead kdelibs4/Qt3Support/Qt4, no KF5-based release.
-# Masked for removal in 30 days. Bug #629018
-<=dev-util/kdbg-2.9.1
-
-# Andreas Sturmlechner <asturm@gentoo.org> (30 Nov 2017)
 # Dead upstream, depends on dead kdelibs4/Qt3Support/Qt4.
 # Masked for removal in 30 days. Bug #634324
 games-mud/kmuddy
-
-# Andreas Sturmlechner <asturm@gentoo.org> (30 Nov 2017)
-# Depends on dead kdelibs4/Qt4, no KF5-based release.
-# Masked for removal in 30 days. Bug #629018
-media-gfx/kcoloredit:4
 
 # Andreas Sturmlechner <asturm@gentoo.org> (30 Nov 2017)
 # Dead upstream, depends on dead kdelibs4/Qt3Support/Qt4.
@@ -376,18 +403,6 @@ media-plugins/vdr-alcd
 # The package is unmaintained. Upstream will not / can not fix this problem.
 # See also bug #624046. Masked for removal on 2017-12-12
 sci-geosciences/gmapcatcher
-
-# Brian Evans <grknight@gentoo.org> (07 Nov 2017)
-# Remote service removed this method, dead upstream
-# Masked for removal in 30 days.
-# Bug 636796
-dev-php/PEAR-Services_W3C_HTMLValidator
-
-# Brian Evans <grknight@gentoo.org> (06 Nov 2017)
-# Broken with new PHP, dead upstream, broken tests
-# Masked for removal in 30 days.
-# Bug 636742
-dev-php/PEAR-HTTP_Download
 
 # Mike Gilbert <floppym@gentoo.org> (05 Nov 2017)
 # Breaks several reverse dependencies.

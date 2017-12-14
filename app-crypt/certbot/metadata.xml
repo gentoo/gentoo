@@ -5,10 +5,6 @@
 		<email>prometheanfire@gentoo.org</email>
 		<name>Matthew Thode</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>zlg@gentoo.org</email>
-		<name>Daniel Campbell</name>
-	</maintainer>
 	<upstream>
 		<remote-id type="github">certbot/certbot</remote-id>
 	</upstream>

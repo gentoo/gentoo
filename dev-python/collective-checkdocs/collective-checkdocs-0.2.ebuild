@@ -13,7 +13,7 @@ S="${WORKDIR}/collective.checkdocs-${PV}"
 
 LICENSE="GPL-2"  # until https://github.com/collective/collective.checkdocs/issues/8 is fixed
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm arm64 x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"

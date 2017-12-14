@@ -29,6 +29,8 @@ DEPEND="${RDEPEND}
 	test? ( ${PYTHON_DEPS} )
 "
 
+RESTRICT+=" test"
+
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
 	kde5_pkg_setup

@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools eutils flag-o-matic
+inherit eutils flag-o-matic
 
 if [[ ${PV} =~ 9999$ ]]; then
 	inherit git-r3
@@ -47,6 +47,7 @@ CDEPEND="
 	)
 "
 DEPEND="${CDEPEND}
+	dev-lang/tcl
 	net-mail/mailbase
 	doc? (
 		dev-libs/libxml2
@@ -60,11 +61,6 @@ RDEPEND="${CDEPEND}
 
 S="${WORKDIR}/${PN}-${P}"
 
-src_prepare() {
-	eapply_user
-	eautoreconf
-}
-
 src_configure() {
 	local myconf=(
 		"$(use_enable doc)"
@@ -76,25 +72,20 @@ src_configure() {
 		"$(use_enable pgp_classic pgp)"
 		"$(use_enable smime)"
 		"$(use_enable smime_classic smime)"
-		"$(use_with berkdb bdb)"
-		"$(use_with gdbm)"
-		"$(use_with idn)"
-		"$(use_with kerberos gss)"
-		"$(use_with kyotocabinet)"
-		"$(use_with lmdb)"
-		"$(use_with qdbm)"
-		"$(use_with sasl)"
-		"$(use_with tokyocabinet)"
-		"--with-$(usex slang slang curses)"
+		"$(use_enable berkdb bdb)"
+		"$(use_enable gdbm)"
+		"$(use_enable idn)"
+		"$(use_enable kerberos gss)"
+		"$(use_enable kyotocabinet)"
+		"$(use_enable lmdb)"
+		"$(use_enable qdbm)"
+		"$(use_enable sasl)"
+		"$(use_enable tokyocabinet)"
+		"--with-ui=$(usex slang slang ncurses)"
 		"--sysconfdir=${EPREFIX}/etc/${PN}"
-		"--with-docdir=${EPREFIX}/usr/share/doc/${PF}"
+		"$(use_enable ssl)"
+		"$(use_enable gnutls)"
 	)
-
-	if use gnutls; then
-		myconf+=( "--with-gnutls" )
-	elif use ssl; then
-		myconf+=( "--with-ssl" )
-	fi
 
 	econf "${myconf[@]}"
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ SRC_URI="http://download.savannah.gnu.org/releases/openexr/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 hppa ia64 ppc ppc64 ~sparc x86 ~x86-fbsd"
+KEYWORDS="amd64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd"
 IUSE="cg opengl"
 
 RDEPEND=">=media-libs/ilmbase-${PV}:=

@@ -14,6 +14,12 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="+dane ecdsa examples gost ssl"
 
+REQUIRED_USE="
+	ecdsa? ( ssl )
+	dane? ( ssl )
+	gost? ( ssl )
+"
+
 DEPEND=">=net-libs/ldns-${PV}[dane?,ecdsa?,gost?]
 	examples? ( net-libs/libpcap )"
 RDEPEND="${DEPEND}"

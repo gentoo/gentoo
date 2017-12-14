@@ -6,6 +6,7 @@ EAPI=5
 inherit xorg-2
 
 DESCRIPTION="Old Imake-related build files"
+SRC_URI+=" https://dev.gentoo.org/~mgorny/dist/${PN}-1.0.2-solaris-prefix.patch.bz2"
 KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
@@ -13,7 +14,7 @@ RDEPEND=""
 DEPEND="${RDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.0.2-solaris-prefix.patch
+	"${WORKDIR}"/${PN}-1.0.2-solaris-prefix.patch
 )
 
 src_install() {
