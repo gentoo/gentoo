@@ -17515,7 +17515,7 @@ sys-boot/efibootmgr 14 15: User-space application to modify the EFI boot manager
 sys-boot/elilo 3.6_p20060314 3.10 3.12 3.16: Linux boot loader for EFI-based systems such as IA-64
 sys-boot/getdvhoff 0.12-r1: Utility for use on LiveCDs to calculate offset of the ext2 partition for losetup
 sys-boot/gnu-efi 3.0.2 3.0.3 3.0.6-r1: Library for build EFI Applications
-sys-boot/grub 0.97-r16 0.97-r17 2.02 9999: GNU GRUB boot loader
+sys-boot/grub 0.97-r16 0.97-r17 0.97-r18 2.02 9999: GNU GRUB boot loader
 sys-boot/grub-static 0.96-r1 0.97 0.97-r6 0.97-r9 0.97-r10 0.97-r12: GNU GRUB Legacy boot loader (static build)
 sys-boot/lilo 22.8-r2 23.2-r2 24.0-r1 24.1 24.2: Standard Linux boot loader
 sys-boot/makebootfat 1.4: Command line utility able to create bootable USB disks
