@@ -29,6 +29,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Gilbert <floppym@gentoo.org> (14 Dec 2017)
+# Fails to build against glibc-2.26 / libtirpc, bug 640642.
+# Inactive upstream.
+# Please migrate to net-nds/rpcbind.
+# Removal in 30 days.
+net-nds/portmap
+
 # Thomas Deutschmann <whissi@gentoo.org> (14 Dec 2017)
 # Unpatched security vulnerability per bug #537108
 # Removal in 30 days. Please migrate to net-libs/mbedtls if you have
