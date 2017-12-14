@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Deutschmann <whissi@gentoo.org> (14 Dec 2017)
+# Unpatched security vulnerability per bug #537108
+# Removal in 30 days. Please migrate to net-libs/mbedtls if you have
+# not done yet.
+net-libs/polarssl
+
 # Andreas Sturmlechner <asturm@gentoo.org> (12 Dec 2017)
 # Depends on dead kdelibs4/qt4, unmaintained upstream. No port to
 # KF5 released. If you depend on this package, please help test KF5-based
