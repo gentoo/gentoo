@@ -1,0 +1,11 @@
+DEFINED_PHASES=postinst
+DESCRIPTION=Plasma Telepathy client
+EAPI=6
+HOMEPAGE=https://community.kde.org/KTp
+IUSE=gstreamer
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( GPL-2 GPL-3 LGPL-2.1 )
+RDEPEND=>=kde-apps/ktp-accounts-kcm-17.12.0 >=kde-apps/ktp-approver-17.12.0 >=kde-apps/ktp-auth-handler-17.12.0 >=kde-apps/ktp-common-internals-17.12.0 >=kde-apps/ktp-contact-list-17.12.0 >=kde-apps/ktp-contact-runner-17.12.0 >=kde-apps/ktp-desktop-applets-17.12.0 >=kde-apps/ktp-filetransfer-handler-17.12.0 >=kde-apps/ktp-kded-module-17.12.0 >=kde-apps/ktp-send-file-17.12.0 >=kde-apps/ktp-text-ui-17.12.0 gstreamer? ( >=kde-apps/ktp-call-ui-17.12.0 ) !kde-apps/plasma-telepathy-meta:4
+SLOT=5
+_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	kde5-functions	32035c63585f9f5de8a6610e7dab0aa9	kde5-meta-pkg	3d8c9f0bc2b2bececeb9a9bb63b82e8d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=1615b0b2d699b0becaff58ddf6b0e4e8
