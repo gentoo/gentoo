@@ -21,6 +21,7 @@ RDEPEND="${DEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-cflags.patch
 	"${FILESDIR}"/${PN}-dicrc.patch
+	"${FILESDIR}"/${PN}-getopt.patch
 )
 HTML_DOCS=( index.html ${PN}.css )
 
@@ -28,6 +29,7 @@ src_prepare() {
 	sed -i "/^dictdir/s:lib:$(get_libdir):" Makefile.am
 
 	default
+	mv configure.{in,ac} || die
 	eautoreconf
 }
 
