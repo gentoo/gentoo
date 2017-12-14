@@ -1,12 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 FORTRAN_NEEDED=fortran
-AUTOTOOLS_AUTORECONF=1
 
-inherit autotools-utils eutils fortran-2 flag-o-matic toolchain-funcs multilib
+inherit eutils fortran-2 flag-o-matic toolchain-funcs multilib
 
 MY_P=${PN}-${PV/_p/-patch}
 
@@ -85,7 +84,7 @@ src_prepare() {
 	use prefix && \
 		append-ldflags -Wl,-rpath,"${EPREFIX}"/usr/$(get_libdir) \
 		-Wl,-rpath,"${EPREFIX}"/$(get_libdir)
-	autotools-utils_src_prepare
+	default
 }
 
 src_configure() {
@@ -107,5 +106,5 @@ src_configure() {
 		$(use_with zlib)
 		$(use mpi && use cxx && echo --enable-unsupported)
 	)
-	autotools-utils_src_configure
+	default
 }

@@ -1,12 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 FORTRAN_NEEDED=fortran
-AUTOTOOLS_AUTORECONF=1
 
-inherit autotools-utils eutils fortran-2 flag-o-matic toolchain-funcs multilib versionator prefix
+inherit eutils fortran-2 flag-o-matic toolchain-funcs multilib versionator prefix
 
 MY_P=${PN}-${PV/_p/-patch}
 MAJOR_P=${PN}-$(get_version_component_range 1-2 ${PV})
@@ -73,7 +72,7 @@ src_prepare() {
 	# enable shared libs by default for h5cc config utility
 	sed -i -e "s/SHLIB:-no/SHLIB:-yes/g" tools/src/misc/h5cc.in || die
 	hprefixify m4/libtool.m4
-	autotools-utils_src_prepare
+	default
 }
 
 src_configure() {
@@ -90,5 +89,5 @@ src_configure() {
 		$(use_with threads pthread)
 		$(use_with zlib)
 	)
-	autotools-utils_src_configure
+	default
 }
