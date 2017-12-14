@@ -3,12 +3,12 @@ DEPEND=app-editors/vim[python] || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3
 DESCRIPTION=vim plugin: binding to the autocompletion library jedi
 EAPI=6
 HOMEPAGE=https://github.com/davidhalter/jedi-vim
-IUSE=python_targets_python2_7 python_targets_python3_4
+IUSE=python_targets_python2_7 python_targets_python3_4 python_targets_python3_5
 KEYWORDS=~amd64 ~x86
 LICENSE=MIT
-RDEPEND=dev-python/jedi[python_targets_python2_7(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-)] || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+RDEPEND=dev-python/jedi[python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)] || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/davidhalter/jedi-vim/archive/77924398bd594e238766153cec97ace62650f082.zip -> jedi-0.8_p20171015.zip
 _eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	python-r1	e9350ec46bb5c9f3504b4fbe8b8d8987	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	185a06792159ca143528e7010368e8af	vim-doc	af2c81a1feeb0a99e91bee3e20769edb	vim-plugin	3160d9cb05ef44497be1485db0fe7590
-_md5_=1e338a9ab0096e07637aa6bf31f24eca
+_md5_=1bff0fc3d2e7be6b228962420ec1d0ba
