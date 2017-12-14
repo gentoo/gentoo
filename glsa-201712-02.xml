@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201712-02">
+  <title>OpenCV: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been discovered in OpenCV, the worst
+    of which may result in a denial of service condition.
+  </synopsis>
+  <product type="ebuild">OpenCV</product>
+  <announced>2017-12-14</announced>
+  <revised>2017-12-14: 1</revised>
+  <bug>627230</bug>
+  <bug>627958</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/opencv" auto="yes" arch="*">
+      <unaffected range="ge">2.4.13-r3</unaffected>
+      <vulnerable range="lt">2.4.13-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenCV (Open Source Computer Vision Library) is an open source computer
+      vision and machine learning software library.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in OpenCV. Please review
+      the referenced CVE identifiers for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker can cause a denial of service condition or conduct other
+      memory corruption attacks.
+    </p>
+  </impact>
+  <workaround>
+    <p>There are no known workarounds at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OpenCV users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/opencv-2.4.13-r3"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12597">
+      CVE-2017-12597
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12598">
+      CVE-2017-12598
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12599">
+      CVE-2017-12599
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12600">
+      CVE-2017-12600
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12601">
+      CVE-2017-12601
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12602">
+      CVE-2017-12602
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12603">
+      CVE-2017-12603
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12604">
+      CVE-2017-12604
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12605">
+      CVE-2017-12605
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12606">
+      CVE-2017-12606
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12862">
+      CVE-2017-12862
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12863">
+      CVE-2017-12863
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12864">
+      CVE-2017-12864
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-14136">
+      CVE-2017-14136
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-12-03T01:50:47Z">jmbailey</metadata>
+  <metadata tag="submitter" timestamp="2017-12-14T16:50:47Z">jmbailey</metadata>
+</glsa>
