@@ -28,6 +28,7 @@ src_prepare() {
 	sed -i "/^dictdir/s:lib:$(get_libdir):" Makefile.am
 
 	default
+	mv configure.{in,ac} || die
 	eautoreconf
 }
 
