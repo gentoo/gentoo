@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit bash-completion-r1 elisp-common
 
@@ -30,6 +30,8 @@ RDEPEND="
 S="${WORKDIR}/password-store-${PV}"
 
 src_prepare() {
+	default
+
 	use elibc_Darwin || return
 	# use coreutils'
 	sed -i -e 's/openssl base64/base64/g' src/platform/darwin.sh || die
