@@ -52,5 +52,10 @@ src_configure() {
 
 src_install() {
 	emake install DESTDIR="${D}"
-	python_foreach_impl emake -C src/python install DESTDIR="${D}"
+
+	python_install() {
+		emake -C src/python install DESTDIR="${D}"
+		python_optimize
+	}
+	python_foreach_impl python_install
 }
