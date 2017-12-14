@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>bircoph@gentoo.org</email>
-    <name>Andrew Savchenko</name>
+    <email>amadio@gentoo.org</email>
+    <name>Guilherme Amadio</name>
   </maintainer>
   <maintainer type="project">
     <email>sci-physics@gentoo.org</email>
