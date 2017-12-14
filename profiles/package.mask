@@ -272,6 +272,7 @@ x11-drivers/xf86-input-pentouch
 # Masked until the latter sees a new release.
 >=dev-python/thunarx-python-0.4.0
 >=xfce-base/thunar-1.7
+>=xfce-extra/thunar-archive-plugin-0.4.0
 
 # Jonas Stein <jstein@gentoo.org> (25 Nov 2017)
 # The latest version of this LaTeX package is part of 
