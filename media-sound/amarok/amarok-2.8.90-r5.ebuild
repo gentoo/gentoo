@@ -123,18 +123,15 @@ pkg_postinst() {
 	kde4-base_pkg_postinst
 
 	if ! use embedded; then
-		echo
 		elog "You've disabled the amarok support for embedded mysql DBs."
 		elog "You'll have to configure amarok to use an external db server."
-		echo
-		elog "Please read http://amarok.kde.org/wiki/MySQL_Server for details on how"
+		elog "Please read https://community.kde.org/Amarok/Community/MySQL for details on how"
 		elog "to configure the external db and migrate your data from the embedded database."
-		echo
 
 		if has_version "virtual/mysql[minimal]"; then
+			elog
 			elog "You built mysql with the minimal use flag, so it doesn't include the server."
 			elog "You won't be able to use the local mysql installation to store your amarok collection."
-			echo
 		fi
 	fi
 }
