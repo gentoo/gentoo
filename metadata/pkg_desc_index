@@ -4854,7 +4854,7 @@ dev-libs/libg15render 1.2-r2 9999: Small library for display text and graphics o
 dev-libs/libgames-support 1.0.2: Library for code commong to Gnome games
 dev-libs/libgamin 0.1.10-r5: Library providing the FAM File Alteration Monitor API
 dev-libs/libgaminggear 0.13.0 0.15.1: Provides functionality for gaming input devices
-dev-libs/libgcrypt 1.5.6-r101 1.8.1: General purpose crypto library based on the code used in GnuPG
+dev-libs/libgcrypt 1.5.6-r101 1.8.1 1.8.2: General purpose crypto library based on the code used in GnuPG
 dev-libs/libgdata 0.17.8 0.17.9-r1: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.8 0.18.1 0.20.0: GObject-based interfaces and classes for commonly used data structures
 dev-libs/libgit2 0.24.6 0.25.1 0.26.0 9999: A linkable library for Git
@@ -8673,6 +8673,7 @@ dev-python/qserve 0.2.8-r1: A job queue server
 dev-python/qtawesome 0.3.3 0.4.4: Enables iconic fonts such as Font Awesome in PyQt
 dev-python/qtconsole 4.3.0 4.3.1: Qt-based console for Jupyter with support for rich media output
 dev-python/queuelib 1.1.1: Collection of persistent (disk-based) queues
+dev-python/quex 0.65.4: Mode Oriented Directly Coded Lexical Analyser Generator
 dev-python/quixote 2.8: Python HTML templating framework for developing web applications
 dev-python/rackspace-auth-openstack 1.3 9999: Rackspace Auth Plugin for OpenStack Clients
 dev-python/rackspace-monitoring 0.6.5: Client library for Rackspace Cloud Monitoring
