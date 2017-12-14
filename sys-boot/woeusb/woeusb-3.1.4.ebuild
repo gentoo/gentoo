@@ -11,13 +11,13 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/slacka/${PN}.git"
 
 else
-	SRC_URI="https://github.com/slacka/${PN}/archive/v${PV}.tar.gz -> ${PF}.tar.gz"
-	S="${WORKDIR}/${PF}"
+	SRC_URI="https://github.com/slacka/${PN}/archive/v${PV}.tar.gz -> ${PN}-${PV}.tar.gz"
+	S="${WORKDIR}/WoeUSB-${PV}"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="sys-apps/sed"
@@ -30,7 +30,12 @@ RDEPEND="${DEPEND}
 	sys-fs/ntfs3g
 	sys-fs/dosfstools"
 
+src_prepare() {
+	default
+	sed -i "s/@@WOEUSB_VERSION@@/${PV}/g" "src/woeusb" "src/woeusb.1"
+}
+	
 src_install() {
-	sed -i -e 's/@@WOEUSB_VERSION@@/3.1.4/g' src/woeusb
 	dosbin src/woeusb
+	doman src/woeusb.1
 }
