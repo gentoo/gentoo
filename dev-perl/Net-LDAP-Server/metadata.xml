@@ -9,4 +9,8 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="cpan">Net-LDAP-Server</remote-id>
+    <remote-id type="cpan-module">Net::LDAP::Server</remote-id>
+  </upstream>
 </pkgmetadata>
