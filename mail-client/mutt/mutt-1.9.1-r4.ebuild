@@ -121,31 +121,41 @@ src_prepare() {
 
 src_configure() {
 	local myconf=(
-		"$(use_enable crypt pgp)"
-		"$(use_enable pgp_classic pgp)"
-		"$(use_enable debug)"
-		"$(use_enable doc)"
-		"$(use_enable gpg gpgme)"
-		"$(use_enable gpgme)"
-		"$(use_enable nls)"
-		"$(use_enable notmuch)"
-		"$(use_enable sidebar)"
-		"$(use_enable smime)"
-		"$(use_enable smime_classic smime)"
+		# signing and encryption
+		# clumpsy blocks for transition period of USE-flag renames
+		$(use crypt         && use_enable crypt pgp)
+		$(use pgp_classic   && use_enable pgp_classic pgp)
+		$(use !crypt && use !pgp_classic && echo "--disable-pgp")
 
-		"$(use_enable imap)"
-		"$(use_enable pop)"
-		"$(use_enable nntp)"
-		"$(use_enable smtp)"
+		$(use smime         && use_enable smime)
+		$(use smime_classic && use_enable smime_classic smime)
+		$(use !smime && use !smime_classic && echo "--disable-smime")
+
+		$(use gpg           && use_enable gpg gpgme)
+		$(use gpgme         && use_enable gpgme)
+		$(use !gpg && use !gpgme && echo "--disable-gpgme")
+
+		# features
+		$(use_enable debug)
+		$(use_enable doc)
+		$(use_enable nls)
+		$(use_enable notmuch)
+		$(use_enable sidebar)
+
+		# protocols
+		$(use_enable imap)
+		$(use_enable pop)
+		$(use_enable nntp)
+		$(use_enable smtp)
 
 		$(use  ssl && use  gnutls && echo --with-gnutls    --without-ssl)
 		$(use  ssl && use !gnutls && echo --without-gnutls --with-ssl   )
 		$(use !ssl &&                echo --without-gnutls --without-ssl)
 
-		"$(use_with idn)"
-		"$(use_with kerberos gss)"
-		"$(use_with sasl)"
-		"$(use slang && echo --with-slang=${EPREFIX}/usr)"
+		$(use_with sasl)
+		$(use_with idn)
+		$(use_with kerberos gss)
+		"$(use slang && echo --with-slang=${EPREFIX}/usr || echo a=b)"
 		"$(use_with !slang curses ${EPREFIX}/usr)"
 
 		"--enable-compressed"
@@ -245,12 +255,20 @@ pkg_postinst() {
 		elog "   https://wiki.gentoo.org/wiki/Mutt"
 		echo
 	fi
-	ewarn "Please note that the crypto related USE-flags of mutt have changed."
-	ewarn "To remove some unclarity, the following USE-flags are renamed:"
-	ewarn "(see https://bugs.gentoo.org/637176)"
-	ewarn "  crypt -> pgp_classic"
-	ewarn "  gpg   -> gpgme"
-	ewarn "  smime -> smime_classic"
-	ewarn "The old USE flags still work but their use is deprecated and will"
-	ewarn "be removed in a future release."
+	if use crypt || use gpg || use smime ; then
+		ewarn "Please note that the crypto related USE-flags of mutt have changed."
+		ewarn "To remove some unclarity, the following USE-flags are renamed:"
+		ewarn "(see https://bugs.gentoo.org/637176)"
+		ewarn "  crypt -> pgp_classic"
+		ewarn "  gpg   -> gpgme"
+		ewarn "  smime -> smime_classic"
+		ewarn "The old USE flags still work but their use is deprecated and will"
+		ewarn "be removed in a future release.  Please update your package.use"
+		if use gpg && ( use crypt || use smime ) ; then
+			ewarn "  Note that gpgme (old gpg) includes both pgp and smime"
+			ewarn "  support.  You can probably remove pgp_classic (old crypt)"
+			ewarn "  and smime_classic (old smime) from your USE-flags and"
+			ewarn "  only enable gpgme."
+		fi
+	fi
 }
