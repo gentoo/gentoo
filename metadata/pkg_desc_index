@@ -11150,7 +11150,7 @@ games-emulation/nestra 0.66-r2: NES emulation for Linux/x86
 games-emulation/openmsx 0.9.1: MSX emulator that aims for perfection
 games-emulation/pcsx2 1.4.0 9999: A PlayStation 2 emulator
 games-emulation/pcsxr 1.9.94-r1 1.9.94-r2: PCSX-Reloaded: a fork of PCSX, the discontinued Playstation emulator
-games-emulation/ppsspp 1.4 1.4.2 9999: A PSP emulator written in C++.
+games-emulation/ppsspp 1.4 1.4.2 1.5.4 9999: A PSP emulator written in C++.
 games-emulation/raine 0.51.9: R A I N E M680x0 Arcade Emulation
 games-emulation/sdlmame 0.168 0.174: Multiple Arcade Machine Emulator + Multi Emulator Super System (MESS)
 games-emulation/snes9x 1.53 1.54.1: Super Nintendo Entertainment System (SNES) emulator
