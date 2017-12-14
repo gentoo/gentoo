@@ -390,12 +390,6 @@ net-misc/arm
 # Removal in 30 days.
 app-admin/python-updater
 
-# Zac Medico <zmedico@gentoo.org> (13 Nov 2017)
-# Masked for removal in 30 days. Current versions do not include a
-# standalone web server command, and there is an open security issue
-# (bug #630976). A fork is available as www-servers/civetweb.
-www-servers/mongoose
-
 # Jonas Stein <jstein@gentoo.org> (11 Nov 2017)
 # The upstream developer and former maintainer asked to treeclean these 
 # packages, because they can be used only with the Siemens Mediacenter 
