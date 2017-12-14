@@ -21,6 +21,7 @@ RDEPEND="${DEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-cflags.patch
 	"${FILESDIR}"/${PN}-dicrc.patch
+	"${FILESDIR}"/${PN}-getopt.patch
 )
 HTML_DOCS=( index.html ${PN}.css )
 
