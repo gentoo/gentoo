@@ -6,7 +6,7 @@ EAPI=6
 inherit flag-o-matic qmake-utils
 
 DESCRIPTION="Audio/MIDI multi-track sequencer written in C++ with the Qt framework"
-HOMEPAGE="https://qtractor.sourceforge.net/"
+HOMEPAGE="https://qtractor.sourceforge.io"
 SRC_URI="mirror://sourceforge/qtractor/${P}.tar.gz"
 
 LICENSE="GPL-2"
