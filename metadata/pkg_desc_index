@@ -15814,6 +15814,7 @@ net-wireless/gobi_loader 0.7-r2: gobi_loader is a firmware loader for Qualcomm G
 net-wireless/gqrx 2.7 9999: Software defined radio receiver powered by GNU Radio and Qt
 net-wireless/gr-air-modes 9999: This module implements a complete Mode S and ADS-B receiver for Gnuradio
 net-wireless/gr-baz 9999: Gnuradio baz
+net-wireless/gr-doa 9999: Gnuradio flowgraphs and modules for Direction of Arrival analysis
 net-wireless/gr-foo 9999: Some GNU Radio blocks that bastianbl uses
 net-wireless/gr-ieee802154 9999: IEEE 802.15.4 ZigBee Transceiver
 net-wireless/gr-iqbal 0.37.2 9999: gnuradio I/Q balancing
