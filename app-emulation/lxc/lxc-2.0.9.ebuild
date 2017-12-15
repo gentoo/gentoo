@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~arm ~arm64"
 
 LICENSE="LGPL-3"
 SLOT="0"
-IUSE="cgmanager doc examples lua python seccomp selinux"
+IUSE="cgmanager examples lua python seccomp selinux"
 
 RDEPEND="
 	net-libs/gnutls
@@ -28,7 +28,7 @@ RDEPEND="
 	selinux? ( sys-libs/libselinux )"
 
 DEPEND="${RDEPEND}
-	doc? ( app-text/docbook-sgml-utils )
+	app-text/docbook-sgml-utils
 	>=sys-kernel/linux-headers-3.2"
 
 RDEPEND="${RDEPEND}
@@ -123,6 +123,9 @@ src_configure() {
 	# /var/lib/lxc is probably more appropriate than
 	# /usr/lib/lxc.
 	# Note by holgersson: Why is apparmor disabled?
+
+	# --enable-doc is for manpages which is why we don't link it to a "doc"
+	# USE flag. We always want man pages.
 	econf \
 		--localstatedir=/var \
 		--bindir=/usr/bin \
@@ -133,8 +136,8 @@ src_configure() {
 		--with-runtime-path=/run \
 		--disable-apparmor \
 		--disable-werror \
+		--enable-doc \
 		$(use_enable cgmanager) \
-		$(use_enable doc) \
 		$(use_enable examples) \
 		$(use_enable lua) \
 		$(use_enable python) \
