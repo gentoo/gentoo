@@ -19272,6 +19272,7 @@ x11-plugins/wmcoincoin 2.6.2_p20140602 2.6.3: a dockapp for browsing dacode news
 x11-plugins/wmcp 1.2.8: A pager dockapp
 x11-plugins/wmcpu 1.4: wmcpu is a dockapp to monitor memory and CPU usage, similar to xosview
 x11-plugins/wmcpuload 1.1.0_pre5 1.1.1: a dockapp for monitoring CPU usage with a LCD display
+x11-plugins/wmcpuwatch 0.2: dockapp showing the load of every logical CPU on the system
 x11-plugins/wmcube 0.98 1.0.2: a dockapp cpu monitor with spinning 3d objects
 x11-plugins/wmdate 0.7-r1: yet another date-display dock application
 x11-plugins/wmdf 0.1.6-r1: An app to monitor disk space on partitions
