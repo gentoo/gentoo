@@ -13,7 +13,7 @@ SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MPL-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="selinux tools"
 
 RDEPEND="selinux? ( sec-policy/selinux-syncthing )"
