@@ -962,7 +962,7 @@ app-doc/cppman 0.4.8: C++ man pages for Linux, with source from cplusplus.com an
 app-doc/csound-manual 6.06 6.07 6.08: The Csound reference manual
 app-doc/devmanual 0_pre20141116 9999: The Gentoo Development Guide
 app-doc/diveintopython 2 3: 'Dive Into Python' by Mark Pilgrim - Python 3
-app-doc/doxygen 1.8.12 1.8.13-r1 9999: Documentation system for most programming languages
+app-doc/doxygen 1.8.13-r1 9999: Documentation system for most programming languages
 app-doc/edox-data 0.16.8.0.2: The Enlightenment online help
 app-doc/elisp-manual 18.1.03 19.2.4.2 20.2.5 21.2.8-r2 22.2.9 23.4 24.5 25.3: The GNU Emacs Lisp Reference Manual
 app-doc/geant-docs 4.9.6 4.10.0 4.10.03 4.10.1 4.10.2: User documentation for Geant4 physics simulation toolkit
