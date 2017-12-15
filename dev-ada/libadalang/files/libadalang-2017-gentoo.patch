@@ -30,3 +30,15 @@
                  end Compiler;
              end P;
              '''.format(main_source=compile_units[0],
+--- work/langkit-gps-src/langkit/compile_context.py.old	2017-12-13 22:12:38.689143125 +0100
++++ work/langkit-gps-src/langkit/compile_context.py	2017-12-13 22:13:02.446737994 +0100
+@@ -1171,8 +1171,7 @@
+         # the Quex specification changed from last build.
+         if generate_lexer and self.cache.is_stale('quex_specification',
+                                                   quex_spec):
+-            quex_py_file = path.join(os.environ["QUEX_PATH"], "quex-exe.py")
+-            subprocess.check_call([sys.executable, quex_py_file, "-i",
++            subprocess.check_call(["quex", "-i",
+                                    quex_file,
+                                    "-o", "quex_lexer",
+                                    "--buffer-element-size", "4",
