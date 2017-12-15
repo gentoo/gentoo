@@ -17199,7 +17199,7 @@ sys-apps/hwids 20170328 20170715 20171003 99999999: Hardware (PCI, USB, OUI, IAB
 sys-apps/hwinfo 19.1 20.0 21.4 21.23: Hardware detection tool used in SuSE Linux
 sys-apps/hwloc 1.11.2-r1 1.11.7: displays the hardware topology in convenient formats
 sys-apps/hwsetup 1.2-r3: Hardware setup program from Knoppix - used only on LiveCD
-sys-apps/i2c-tools 3.1.1-r1: I2C tools for bus probing, chip dumping, EEPROM decoding, and more
+sys-apps/i2c-tools 3.1.1-r1 4.0: I2C tools for bus probing, chip dumping, EEPROM decoding, and more
 sys-apps/ibm-powerpc-utils 1.1.0 1.2.2 1.2.12 1.2.25 1.2.26: Utilities for the maintainance of the IBM and Apple PowerPC platforms
 sys-apps/ibm-powerpc-utils-papr 1.1.0 1.1.6: Utilities for the maintenance of IBM PowerPC platforms
 sys-apps/idle3-tools 0.9.1: Read, Set or disable the idle3 timer of Western Digital drives
