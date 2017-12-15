@@ -12367,7 +12367,7 @@ mail-client/mailx 8.1.2.20050715-r6 8.1.2.20050715-r7: The /bin/mail program, wh
 mail-client/mailx-support 20060102-r1 20060102-r2: Provides lockspool utility
 mail-client/mutt 1.7.2 1.9.0-r2 1.9.1-r2 1.9.1-r4: A small but very powerful text-based mail client
 mail-client/nail 12.4 12.4-r2 12.4-r3: an enhanced mailx-compatible mail client
-mail-client/neomutt 9999 20170714 20170912 20171006 20171013 20171027 20171208: A small but very powerful text-based mail client
+mail-client/neomutt 9999 20170714 20170912 20171006 20171013 20171027 20171208 20171215: A small but very powerful text-based mail client
 mail-client/nmh 1.6: New MH mail reader
 mail-client/novell-groupwise-client 8.0.2.96933: Novell Groupwise Client for Linux
 mail-client/pinepgp 0.18.0-r1: Use GPG/PGP with Pine
