@@ -190,7 +190,7 @@ src_prepare() {
 	# avoid long delays when powerkit isn't running #348580
 	sed -i \
 		-e '/dbus_connection_send_with_reply_and_block/s:-1:3000:' \
-		xbmc/linux/*.cpp || die
+		xbmc/platform/linux/*.cpp || die
 
 	# Prepare tools and libs witch are configured with autotools during compile time
 	AUTOTOOLS_DIRS=(
