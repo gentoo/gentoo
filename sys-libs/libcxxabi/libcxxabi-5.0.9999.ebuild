@@ -21,6 +21,7 @@ LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="0"
 KEYWORDS=""
 IUSE="+libunwind +static-libs test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	libunwind? (
