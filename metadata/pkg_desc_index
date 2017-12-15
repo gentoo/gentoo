@@ -4471,7 +4471,7 @@ dev-java/tomcat-jstl-el 1.2.5-r1: JSP Standard Tag Library (JSTL) - EL jar
 dev-java/tomcat-jstl-impl 1.2.5-r1: JSP Standard Tag Library (JSTL) - Implementation jar
 dev-java/tomcat-jstl-spec 1.2.5-r1: JSP Standard Tag Library (JSTL) - Specification jar
 dev-java/tomcat-native 1.2.14 1.2.16: Native APR library for Tomcat
-dev-java/tomcat-servlet-api 3 4.1.36 5.5.27-r1 5.5.34 6.0.44-r1 6.0.45 6.0.53 7.0.82 8.0.47 8.5.11 8.5.23 8.5.24 9.0.2_beta: Tomcat's Servlet API 4.0/JSP API 2.4?/EL API 3.1? implementation
+dev-java/tomcat-servlet-api 3 4.1.36 5.5.27-r1 5.5.34 6.0.44-r1 6.0.45 6.0.53 7.0.82 8.0.47 8.0.48 8.5.11 8.5.23 8.5.24 9.0.2_beta: Tomcat's Servlet API 4.0/JSP API 2.4?/EL API 3.1? implementation
 dev-java/toolbar 1.1.0-r2: An improved version of JToolBar
 dev-java/touchgraph-graphlayout 1.22-r1: TouchGraph provides a set of interfaces for graph visualization
 dev-java/treelayout 1.0.2: Efficiently create compact tree layouts in Java
@@ -11046,7 +11046,7 @@ games-board/eboard 1.1.1-r1 1.1.1-r2: chess interface for POSIX systems
 games-board/four-in-a-row 3.22.1 3.22.2: Make lines of the same color to win
 games-board/freedoko 0.7.13-r1 0.7.14 0.7.14-r1: FreeDoko is a Doppelkopf-game
 games-board/fruit 2.1: UCI-only chess engine
-games-board/gambit 1.0.1 1.0.3 1.0.3-r1: Qt-based chess application + engine "gupta"
+games-board/gambit 1.0.1 1.0.3 1.0.3-r1 1.0.4: Qt-based chess application + engine "gupta"
 games-board/gmchess 0.29.6-r1 0.29.6-r2: Chinese chess with gtkmm and c++
 games-board/gnome-chess 3.22.2 3.24.1: Play the classic two-player boardgame of chess
 games-board/gnome-hearts 0.3.1-r2: A clone of classic hearts card game
@@ -18549,7 +18549,7 @@ www-servers/sniproxy 0.5.0: Proxies incoming HTTP and TLS connections based on t
 www-servers/spawn-fcgi 1.6.3-r1 1.6.3-r2 1.6.4: A FCGI spawner for lighttpd and cherokee and other webservers
 www-servers/thin 1.7.0-r1 1.7.1 1.7.2: A fast and very simple Ruby web server
 www-servers/thttpd 2.27.1 9999: Fork of thttpd, a small, fast, multiplexing webserver
-www-servers/tomcat 7.0.82 8.0.47 8.5.23 8.5.24 9.0.2_beta: Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container
+www-servers/tomcat 7.0.82 8.0.47 8.0.48 8.5.23 8.5.24 9.0.2_beta: Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container
 www-servers/tornado 4.4.2-r1 4.5.1: Python web framework and asynchronous networking library
 www-servers/uwsgi 2.0.15 2.0.15-r1: uWSGI server for Python web applications
 www-servers/varnish 4.0.5 4.1.8 5.1.3: Varnish is a state-of-the-art, high-performance HTTP accelerator
