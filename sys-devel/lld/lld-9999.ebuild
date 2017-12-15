@@ -20,6 +20,7 @@ LICENSE="UoI-NCSA"
 SLOT="0"
 KEYWORDS=""
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="~sys-devel/llvm-${PV}"
 DEPEND="${RDEPEND}
