@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit gnome2-utils
+inherit gnome2-utils vala
 
 DESCRIPTION="Unified widget and session management libs for Xfce"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
@@ -12,7 +12,8 @@ SRC_URI="mirror://xfce/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 LICENSE="LGPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
-IUSE="debug glade introspection startup-notification"
+IUSE="debug glade introspection startup-notification vala"
+REQUIRED_USE="vala? ( introspection )"
 
 RDEPEND=">=dev-libs/glib-2.42:2=
 	>=x11-libs/gtk+-2.24:2=
@@ -25,6 +26,7 @@ RDEPEND=">=dev-libs/glib-2.42:2=
 	glade? ( dev-util/glade:3.10= )
 	introspection? ( dev-libs/gobject-introspection:= )
 	startup-notification? ( x11-libs/startup-notification:= )
+	vala? ( $(vala_depend) )
 	!xfce-base/xfce-utils"
 DEPEND="${RDEPEND}
 	dev-lang/perl
@@ -32,10 +34,16 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig"
 
+src_prepare() {
+	# stupid vala.eclass...
+	default
+}
+
 src_configure() {
 	local myconf=(
 		$(use_enable introspection)
 		$(use_enable startup-notification)
+		$(use_enable vala)
 		# TODO: check revdeps and make it optional one day
 		--enable-gtk2
 		# requires deprecated glade:3 (gladeui-1.0), bug #551296
@@ -45,6 +53,7 @@ src_configure() {
 		--with-vendor-info=Gentoo
 	)
 
+	use vala && vala_src_prepare
 	econf "${myconf[@]}"
 }
 
