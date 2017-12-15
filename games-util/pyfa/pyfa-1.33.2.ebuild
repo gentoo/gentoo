@@ -83,10 +83,8 @@ src_install() {
 	popd > /dev/null || die
 
 	dodoc README.md
-	insinto /usr/share/icons/hicolor/32x32/apps
-	doins imgs/gui/pyfa.png
-	insinto /usr/share/icons/hicolor/64x64/apps
-	newins imgs/gui/pyfa64.png pyfa.png
+	doicon -s 32 imgs/gui/pyfa.png
+	newicon -s 64 imgs/gui/pyfa64.png pyfa.png
 	domenu "${FILESDIR}/${PN}.desktop"
 }
 
