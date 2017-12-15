@@ -130,7 +130,7 @@ src_install() {
 
 	local size
 	for size in 16 22 24 32 48 64 128 256 ; do
-		newicon -s ${size} "${CHROME_HOME}/product_logo_${size}.png" ${PN}.png
+		newicon -s ${size} "${CHROME_HOME}/product_logo_${size}_beta.png" ${PN}.png
 	done
 
 	pax-mark m "${CHROME_HOME}/chrome"

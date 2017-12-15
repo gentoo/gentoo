@@ -3,10 +3,9 @@
 
 EAPI=6
 
-DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
-inherit autotools distutils-r1 linux-info libtool ltprune versionator
+inherit autotools python-single-r1 linux-info libtool ltprune versionator
 
 DESCRIPTION="Tool to setup encrypted devices with dm-crypt"
 HOMEPAGE="https://gitlab.com/cryptsetup/cryptsetup/blob/master/README.md"
@@ -19,7 +18,7 @@ KEYWORDS="~amd64 ~arm64 ~mips ~s390 ~sh ~sparc ~x86"
 CRYPTO_BACKENDS="+gcrypt kernel nettle openssl"
 # we don't support nss since it doesn't allow cryptsetup to be built statically
 # and it's missing ripemd160 support so it can't provide full backward compatibility
-IUSE="${CRYPTO_BACKENDS} +argon2 libressl nls pwquality python reencrypt static static-libs udev urandom"
+IUSE="${CRYPTO_BACKENDS} argon2 libressl nls pwquality python reencrypt static static-libs udev urandom"
 REQUIRED_USE="^^ ( ${CRYPTO_BACKENDS//+/} )
 	python? ( ${PYTHON_REQUIRED_USE} )
 	static? ( !gcrypt )" #496612
@@ -66,12 +65,6 @@ src_prepare() {
 	sed -i '/^LOOPDEV=/s:$: || exit 0:' tests/{compat,mode}-test || die
 	default
 	eautoreconf
-
-	if use python ; then
-		cd python
-		cp "${FILESDIR}"/setup-1.7.0.py setup.py || die
-		distutils-r1_src_prepare
-	fi
 }
 
 src_configure() {
@@ -81,17 +74,20 @@ src_configure() {
 		ewarn "userspace crypto libraries."
 	fi
 
+	use python && python_setup
+
 	# We disable autotool python integration so we can use eclasses
 	# for proper integration with multiple python versions.
 	local myeconfargs=(
-		--disable-python
 		--disable-internal-argon2
 		--enable-shared
 		--sbindir=/sbin
+		--with-tmpfilesdir="${EPREFIX%/}/usr/lib/tmpfiles.d"
 		--with-crypto_backend=$(for x in ${CRYPTO_BACKENDS//+/} ; do usev ${x} ; done)
 		$(use_enable argon2 libargon2)
 		$(use_enable nls)
 		$(use_enable pwquality)
+		$(use_enable python)
 		$(use_enable reencrypt cryptsetup-reencrypt)
 		$(use_enable static static-cryptsetup)
 		$(use_enable static-libs static)
@@ -99,13 +95,6 @@ src_configure() {
 		$(use_enable !urandom dev-random)
 	)
 	econf "${myeconfargs[@]}"
-
-	use python && cd python && distutils-r1_src_configure
-}
-
-src_compile() {
-	default
-	use python && cd python && distutils-r1_src_compile
 }
 
 src_test() {
@@ -113,19 +102,22 @@ src_test() {
 		ewarn "No /dev/mapper/control found -- skipping tests"
 		return 0
 	fi
+
 	local p
 	for p in /dev/mapper /dev/loop* ; do
 		addwrite ${p}
 	done
+
 	default
 }
 
 src_install() {
 	default
+
 	if use static ; then
-		mv "${ED}"/sbin/cryptsetup{.static,} || die
-		mv "${ED}"/sbin/veritysetup{.static,} || die
-		use reencrypt && { mv "${ED}"/sbin/cryptsetup-reencrypt{.static,} || die ; }
+		mv "${ED%}"/sbin/cryptsetup{.static,} || die
+		mv "${ED%}"/sbin/veritysetup{.static,} || die
+		use reencrypt && { mv "${ED%}"/sbin/cryptsetup-reencrypt{.static,} || die ; }
 	fi
 	prune_libtool_files --modules
 
@@ -133,9 +125,4 @@ src_install() {
 
 	newconfd "${FILESDIR}"/1.6.7-dmcrypt.confd dmcrypt
 	newinitd "${FILESDIR}"/1.6.7-dmcrypt.rc dmcrypt
-
-	insinto /etc/tmpfiles.d
-	doins scripts/${PN}.conf
-
-	use python && cd python && distutils-r1_src_install
 }
