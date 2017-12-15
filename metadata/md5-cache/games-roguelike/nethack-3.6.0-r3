@@ -2,7 +2,7 @@ DEFINED_PHASES=compile install postinst prepare setup
 DEPEND=sys-libs/ncurses:0= X? ( x11-libs/libXaw x11-libs/libXpm x11-libs/libXt ) virtual/pkgconfig X? ( x11-proto/xproto x11-apps/bdftopcf x11-apps/mkfontdir )
 DESCRIPTION=The ultimate old-school single player dungeon exploration game
 EAPI=6
-HOMEPAGE=http://www.nethack.org/
+HOMEPAGE=https://www.nethack.org/
 IUSE=experimental X
 KEYWORDS=~amd64 ~arm ~hppa ~x86 ~x86-fbsd
 LICENSE=nethack
@@ -10,4 +10,4 @@ RDEPEND=sys-libs/ncurses:0= X? ( x11-libs/libXaw x11-libs/libXpm x11-libs/libXt 
 SLOT=0
 SRC_URI=mirror://sourceforge/nethack/nethack-360-src.tgz
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	flag-o-matic	a6089a2a4027ae3da4a460dc87b21050	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	user	8bc2845510e2109af75e3eeac607ec81
-_md5_=5bd812dd4e955cb0c91543fc87518b41
+_md5_=114f3c2a401f4c6a8409334418a5feca

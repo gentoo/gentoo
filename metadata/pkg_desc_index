@@ -4606,7 +4606,7 @@ dev-lang/rebol 9999: Relative Expression-Based Object Language
 dev-lang/rebol-bin 3_pre111 3_pre20140304: Relative Expression-Based Object Language
 dev-lang/regina-rexx 3.9.1-r1: Portable Rexx interpreter
 dev-lang/rubinius 3.43: A re-implementation of the Ruby VM designed for speed
-dev-lang/ruby 2.2.8 2.2.9 2.3.5 2.4.2: An object-oriented scripting language
+dev-lang/ruby 2.2.8 2.2.9 2.3.5 2.3.6 2.4.2 2.4.3: An object-oriented scripting language
 dev-lang/rust 1.15.1 1.16.0 1.19.0: Systems programming language from Mozilla
 dev-lang/rust-bin 1.12.1 1.13.0 1.14.0 1.15.0 1.15.1 1.16.0 1.19.0: Systems programming language from Mozilla
 dev-lang/sassc 3.4.5 3.4.7 9999: A libsass command line driver
