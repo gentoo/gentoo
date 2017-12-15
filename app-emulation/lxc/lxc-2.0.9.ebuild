@@ -189,7 +189,7 @@ src_install() {
 	DOC_CONTENTS="
 	Starting from version ${PN}-1.1.0-r3, the default lxc path has been
 	moved from /etc/lxc to /var/lib/lxc. If you still want to use /etc/lxc
-	please add the following to your /etc/lxc/default.conf
+	please add the following to your /etc/lxc/lxc.conf
 
 	  lxc.lxcpath = /etc/lxc
 
