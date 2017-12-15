@@ -21,6 +21,7 @@ LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="6.0.0"
 KEYWORDS=""
 IUSE="+clang test"
+RESTRICT="!test? ( test )"
 
 LLVM_SLOT=${SLOT%%.*}
 # llvm-4 needed for --cmakedir
