@@ -6,7 +6,7 @@ inherit golang-build golang-vcs-snapshot
 
 EGO_PN="github.com/kubernetes/kompose"
 EGIT_COMMIT="v${PV}"
-COMPOSE_COMMIT="99f88ef"
+KOMPOSE_COMMIT="e4adfef"
 ARCHIVE_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
 
@@ -21,7 +21,7 @@ RESTRICT="test"
 
 src_compile() {
 	export CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')"
-	GOPATH="${S}" go build -ldflags="-X github.com/kubernetes/kompose/cmd.GITCOMMIT=${COMPOSE_COMMIT}" -o bin/kompose src/${EGO_PN}/main.go || die
+	GOPATH="${S}" go build -v -ldflags="-X github.com/kubernetes/kompose/cmd.GITCOMMIT=${COMPOSE_KOMMIT}" -o bin/kompose src/${EGO_PN}/main.go || die
 }
 
 src_install() {

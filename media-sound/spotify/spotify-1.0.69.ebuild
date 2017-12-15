@@ -2,11 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils fdo-mime gnome2-utils pax-utils unpacker
+inherit eutils xdg-utils gnome2-utils pax-utils unpacker
 
 DESCRIPTION="Spotify is a social music platform"
 HOMEPAGE="https://www.spotify.com/ch-de/download/previews/"
-BUILD_ID="582.g19436fa3-28"
+BUILD_ID="336.g7edcc575-39"
 SRC_BASE="http://repository.spotify.com/pool/non-free/s/${PN}-client/"
 SRC_URI="amd64? ( ${SRC_BASE}${PN}-client_${PV}.${BUILD_ID}_amd64.deb )
 	x86? ( ${SRC_BASE}${PN}-client_${PV}.${BUILD_ID}_i386.deb )"
@@ -97,8 +97,8 @@ pkg_preinst() {
 
 pkg_postinst() {
 	gnome2_icon_cache_update
-	fdo-mime_mime_database_update
-	fdo-mime_desktop_database_update
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
 
 	ewarn "If Spotify crashes after an upgrade its cache may be corrupt."
 	ewarn "To remove the cache:"
@@ -112,6 +112,6 @@ pkg_postinst() {
 
 pkg_postrm() {
 	gnome2_icon_cache_update
-	fdo-mime_mime_database_update
-	fdo-mime_desktop_database_update
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
 }

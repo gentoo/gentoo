@@ -39,6 +39,7 @@ SLOT="6"
 KEYWORDS=""
 IUSE="debug doc gold libedit +libffi ncurses test
 	kernel_Darwin ${ALL_LLVM_TARGETS[*]}"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	sys-libs/zlib:0=
