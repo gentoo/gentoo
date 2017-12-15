@@ -8236,7 +8236,7 @@ dev-python/placefinder 0.3: Yahoo! BOSS PlaceFinder Python Client
 dev-python/plotly 1.9.6: Browser-based graphing library for Python
 dev-python/pluggy 0.4.0 0.5.2: plugin and hook calling mechanisms for python
 dev-python/pluginbase 0.5: Support library for building plugins sytems in Python
-dev-python/plumbum 1.6.0 1.6.3: A library for shell script-like programs in python
+dev-python/plumbum 1.6.0 1.6.3 1.6.4: A library for shell script-like programs in python
 dev-python/ply 3.6-r1 3.9 3.10: Python Lex-Yacc library
 dev-python/plyr 1.0.6: A python wrapper for Glyr
 dev-python/plyvel 0.9: Python interface to LevelDB
@@ -8743,7 +8743,7 @@ dev-python/rospkg 1.1.4 9999: Standalone Python library for the ROS package syst
 dev-python/routes 2.4.1: A re-implementation of Rails routes system, mapping URLs to Controllers/Actions
 dev-python/rply 0.7.4: Pure python parser generator that also works with RPython
 dev-python/rpy 2.6.2 2.8.5 2.8.6 2.9.0: Python interface to the R Programming Language
-dev-python/rpyc 3.3.0 3.3.0-r1: Remote Python Call (RPyC), a transparent and symmetric RPC library
+dev-python/rpyc 3.3.0 3.3.0-r1 3.4.4: Remote Python Call (RPyC), a transparent and symmetric RPC library
 dev-python/rsa 3.2.3-r1 3.4.2: Pure-Python RSA implementation
 dev-python/rst-linker 1.7 1.9 1.9-r1: Sphinx plugin to add links and timestamps to the changelog
 dev-python/rst2pdf 0.93-r2: Tool for transforming reStructuredText to PDF using ReportLab
