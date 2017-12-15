@@ -38,12 +38,15 @@ DEPEND="
 "
 RDEPEND="${CDEPEND}"
 
+PATCHES=( "${FILESDIR}/1.8.6-tests-pass-all-env-vars-to-cmd-runner.patch" )
+
 python_compile_all() {
 	use doc && emake -C docs html
 }
 
 python_test() {
-	nosetests -v tests/unit tests/functional || die "tests failed under ${EPYTHON}"
+	PYTHONPATH="${BUILD_DIR}/lib" nosetests -v tests/unit || die "unit tests failed under ${EPYTHON}"
+	PYTHONPATH="${BUILD_DIR}/lib" nosetests -v tests/functional || die "functional tests failed under ${EPYTHON}"
 }
 
 python_install_all() {
