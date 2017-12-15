@@ -43,7 +43,7 @@ src_compile() {
 }
 
 src_install() {
-	emake install libdir=$(get_libdir) prefix="${D}"/usr
+	emake install-lib install libdir="${D}"/usr/$(get_libdir) prefix="${D}"/usr
 	dosbin eepromer/eeprom{,er}
 	rm -rf "${D}"/usr/include # part of linux-headers
 	dodoc CHANGES README
