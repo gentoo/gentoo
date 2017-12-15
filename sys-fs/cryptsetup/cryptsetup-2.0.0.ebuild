@@ -3,10 +3,9 @@
 
 EAPI=6
 
-DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
-inherit autotools distutils-r1 linux-info libtool ltprune versionator
+inherit autotools python-r1 linux-info libtool ltprune versionator
 
 DESCRIPTION="Tool to setup encrypted devices with dm-crypt"
 HOMEPAGE="https://gitlab.com/cryptsetup/cryptsetup/blob/master/README.md"
@@ -66,15 +65,9 @@ src_prepare() {
 	sed -i '/^LOOPDEV=/s:$: || exit 0:' tests/{compat,mode}-test || die
 	default
 	eautoreconf
-
-	if use python ; then
-		cd python
-		cp "${FILESDIR}"/setup-1.7.0.py setup.py || die
-		distutils-r1_src_prepare
-	fi
 }
 
-src_configure() {
+do_configure() {
 	if use kernel ; then
 		ewarn "Note that kernel backend is very slow for this type of operation"
 		ewarn "and is provided mainly for embedded systems wanting to avoid"
@@ -84,7 +77,6 @@ src_configure() {
 	# We disable autotool python integration so we can use eclasses
 	# for proper integration with multiple python versions.
 	local myeconfargs=(
-		--disable-python
 		--disable-internal-argon2
 		--enable-shared
 		--sbindir=/sbin
@@ -97,15 +89,28 @@ src_configure() {
 		$(use_enable static-libs static)
 		$(use_enable udev)
 		$(use_enable !urandom dev-random)
+		"$@"
 	)
+	local ECONF_SOURCE="${S}"
 	econf "${myeconfargs[@]}"
 
 	use python && cd python && distutils-r1_src_configure
 }
 
+src_configure() {
+	if use python; then
+		python_foreach_impl run_in_build_dir do_configure --enable-python
+	else
+		do_configure --disable-python
+	fi
+}
+
 src_compile() {
-	default
-	use python && cd python && distutils-r1_src_compile
+	if use python; then
+		python_foreach_impl run_in_build_dir emake
+	else
+		emake
+	fi
 }
 
 src_test() {
@@ -117,11 +122,21 @@ src_test() {
 	for p in /dev/mapper /dev/loop* ; do
 		addwrite ${p}
 	done
-	default
+	if use python; then
+		python_foreach_impl run_in_build_dir emake check
+	else
+		emake check
+	fi
 }
 
 src_install() {
-	default
+	if use python; then
+		python_foreach_impl run_in_build_dir emake DESTDIR="${D}" install
+	else
+		emake DESTDIR="${D}" install
+	fi
+	einstalldocs
+
 	if use static ; then
 		mv "${ED}"/sbin/cryptsetup{.static,} || die
 		mv "${ED}"/sbin/veritysetup{.static,} || die
@@ -133,9 +148,4 @@ src_install() {
 
 	newconfd "${FILESDIR}"/1.6.7-dmcrypt.confd dmcrypt
 	newinitd "${FILESDIR}"/1.6.7-dmcrypt.rc dmcrypt
-
-	insinto /etc/tmpfiles.d
-	doins scripts/${PN}.conf
-
-	use python && cd python && distutils-r1_src_install
 }
