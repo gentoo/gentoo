@@ -987,7 +987,7 @@ app-doc/phrack-all 68: Hacker magazine by the community, for the community (all 
 app-doc/pms 5_p20120920 6_p20170429 9999: Gentoo Package Manager Specification (draft)
 app-doc/podbrowser 0.12-r3: PodBrowser is a documentation browser for Perl
 app-doc/psmark 2.1: Prints watermark-like text on any PostScript document
-app-doc/root-docs 5.34.36 6.04.06: Documentation for ROOT Data Analysis Framework
+app-doc/root-docs 5.34.36: Documentation for ROOT Data Analysis Framework
 app-doc/selfhtml 8.1.2: "The" German HTML/XHTML/CSS/XML/DHTML/CGI/Perl/JavaScript Documentation
 app-doc/selflinux 0.13.0: german-language hypertext tutorial about Linux
 app-doc/single-unix-specification 3 4_p2: The Single UNIX Specification, Version 4, 2016 Edition
