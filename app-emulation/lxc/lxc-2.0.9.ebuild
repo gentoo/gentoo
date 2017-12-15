@@ -6,8 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_{4,5,6} )
 DISTUTILS_OPTIONAL=1
 
-inherit autotools bash-completion-r1 distutils-r1 linux-info versionator flag-o-matic systemd
-
+inherit autotools bash-completion-r1 distutils-r1 linux-info versionator flag-o-matic systemd readme.gentoo-r1
 DESCRIPTION="LinuX Containers userspace utilities"
 HOMEPAGE="https://linuxcontainers.org/"
 SRC_URI="https://linuxcontainers.org/downloads/lxc/${P}.tar.gz"
@@ -186,20 +185,26 @@ src_install() {
 	# Remember to compare our systemd unit file with the upstream one
 	# config/init/systemd/lxc.service.in
 	systemd_newunit "${FILESDIR}"/${PN}_at.service.4 "lxc@.service"
+
+	DOC_CONTENTS="
+	Starting from version ${PN}-1.1.0-r3, the default lxc path has been
+	moved from /etc/lxc to /var/lib/lxc. If you still want to use /etc/lxc
+	please add the following to your /etc/lxc/default.conf
+
+	  lxc.lxcpath = /etc/lxc
+
+	For openrc, there is an init script provided with the package.
+	You _should_ only need to symlink /etc/init.d/lxc to
+	/etc/init.d/lxc.configname to start the container defined in
+	/etc/lxc/configname.conf.
+
+	Correspondingly, for systemd a service file lxc@.service is installed.
+	Enable and start lxc@configname in order to start the container defined
+	in /etc/lxc/configname.conf."
+	DISABLE_AUTOFORMATTING=true
+	readme.gentoo_create_doc
 }
 
 pkg_postinst() {
-	elog ""
-	elog "Starting from version ${PN}-1.1.0-r3, the default lxc path has been"
-	elog "moved from /etc/lxc to /var/lib/lxc. If you still want to use /etc/lxc"
-	elog "please add the following to your /etc/lxc/default.conf"
-	elog "lxc.lxcpath = /etc/lxc"
-	elog ""
-	elog "There is an init script provided with the package now; no documentation"
-	elog "is currently available though, so please check out /etc/init.d/lxc ."
-	elog "You _should_ only need to symlink it to /etc/init.d/lxc.configname"
-	elog "to start the container defined into /etc/lxc/configname.conf ."
-	elog "For further information about LXC development see"
-	elog "http://blog.flameeyes.eu/tag/lxc" # remove once proper doc is available
-	elog ""
+	readme.gentoo_print_elog
 }
