@@ -6,7 +6,7 @@ inherit eutils fdo-mime gnome2-utils pax-utils unpacker
 
 DESCRIPTION="Spotify is a social music platform"
 HOMEPAGE="https://www.spotify.com/ch-de/download/previews/"
-BUILD_ID="582.g19436fa3-28"
+BUILD_ID="336.g7edcc575-39"
 SRC_BASE="http://repository.spotify.com/pool/non-free/s/${PN}-client/"
 SRC_URI="amd64? ( ${SRC_BASE}${PN}-client_${PV}.${BUILD_ID}_amd64.deb )
 	x86? ( ${SRC_BASE}${PN}-client_${PV}.${BUILD_ID}_i386.deb )"
