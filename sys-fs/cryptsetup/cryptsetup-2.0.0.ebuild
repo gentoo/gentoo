@@ -3,10 +3,9 @@
 
 EAPI=6
 
-DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
-inherit autotools distutils-r1 linux-info libtool ltprune versionator
+inherit autotools python-single-r1 linux-info libtool ltprune versionator
 
 DESCRIPTION="Tool to setup encrypted devices with dm-crypt"
 HOMEPAGE="https://gitlab.com/cryptsetup/cryptsetup/blob/master/README.md"
@@ -81,10 +80,11 @@ src_configure() {
 		ewarn "userspace crypto libraries."
 	fi
 
+	use python && python_setup
+
 	# We disable autotool python integration so we can use eclasses
 	# for proper integration with multiple python versions.
 	local myeconfargs=(
-		--disable-python
 		--disable-internal-argon2
 		--enable-shared
 		--sbindir=/sbin
@@ -92,6 +92,7 @@ src_configure() {
 		$(use_enable argon2 libargon2)
 		$(use_enable nls)
 		$(use_enable pwquality)
+		$(use_enable python)
 		$(use_enable reencrypt cryptsetup-reencrypt)
 		$(use_enable static static-cryptsetup)
 		$(use_enable static-libs static)
@@ -99,13 +100,10 @@ src_configure() {
 		$(use_enable !urandom dev-random)
 	)
 	econf "${myeconfargs[@]}"
-
-	use python && cd python && distutils-r1_src_configure
 }
 
 src_compile() {
 	default
-	use python && cd python && distutils-r1_src_compile
 }
 
 src_test() {
@@ -133,9 +131,4 @@ src_install() {
 
 	newconfd "${FILESDIR}"/1.6.7-dmcrypt.confd dmcrypt
 	newinitd "${FILESDIR}"/1.6.7-dmcrypt.rc dmcrypt
-
-	insinto /etc/tmpfiles.d
-	doins scripts/${PN}.conf
-
-	use python && cd python && distutils-r1_src_install
 }
