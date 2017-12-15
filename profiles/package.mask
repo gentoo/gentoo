@@ -29,6 +29,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Aaron W. Swenson <titanofold.org> (15 Dec 2017)
+# Masked for removal in 30 days (2017-01-14). Upstream doesn't appear
+# to be active and is really far behind in supporting the latest
+# enhancements from PostgreSQL. Consider using dev-db/pgadmin4
+# instead. (Bug 641140)
+dev-db/phppgadmin
+
 # Andrey Grozin <grozin@gentoo.org> (15 Dec 2017)
 # Dead upstream. Removal in 30 days. Use bpython or ptpython instead.
 dev-python/dreampie
