@@ -7286,7 +7286,7 @@ dev-php/xhprof 0.9.4_p20150226-r1: A Hierarchical Profiler for PHP
 dev-python/3to2 1.1.1 1.1.1-r1: Tool to refactor valid 3.x syntax into valid 2.x syntax
 dev-python/APScheduler 3.1.0 3.2.0 3.3.1: In-process task scheduler with Cron-like capabilities
 dev-python/Babel 2.1.1 2.3.4 2.4.0 2.5.0: Collection of tools for internationalizing Python applications
-dev-python/BitVector 3.4.4 3.4.6: A pure-Python memory-efficient packed representation for bit arrays
+dev-python/BitVector 3.4.4 3.4.6 3.4.7: A pure-Python memory-efficient packed representation for bit arrays
 dev-python/CacheControl 0.11.5 0.11.7: The httplib2 caching algorithms packaged up for use with requests
 dev-python/Coffin 2.0.1: Jinja2 adapter for Django
 dev-python/CommonMark 0.5.4 0.7.3 0.7.4: Python parser for the CommonMark Markdown spec
@@ -10544,7 +10544,7 @@ dev-util/itstool 2.0.2: Translation tool for XML documents that uses gettext fil
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jay 1.1.1-r2: A LALR(1) parser generator: Berkeley yacc retargeted to C# and Java
 dev-util/jconfig 2.8-r3 2.8.5 2.9: Utility that provides a simple API for the management of properties
-dev-util/jenkins-bin 2.73.3 2.84 2.86 2.87 2.89.1 2.90: Extensible continuous integration server
+dev-util/jenkins-bin 2.89.2 2.95: Extensible continuous integration server
 dev-util/kbuild 0.1.9998_pre20131130-r1 0.1.9998_pre20171020 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 33 34 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
 dev-util/kdbg 3.0.0: Graphical debugger interface
