@@ -2754,7 +2754,7 @@ developers and volunteer mentors.</description>
   </project>
   <project>
     <email>pgsql-bugs@gentoo.org</email>
-    <name>PostgreSQL and Related Package Development</name>
+    <name>PostgreSQL</name>
     <url>https://wiki.gentoo.org/wiki/Project:PostgreSQL</url>
     <description>This project is focused on maintaining ebuilds and utilities that are closely tied to PostgreSQL including PostgreSQL itself.</description>
     <member>
