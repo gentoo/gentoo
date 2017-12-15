@@ -2127,6 +2127,7 @@ app-portage/gentoolkit 0.3.3 0.4.0 0.4.1 9999: Collection of administration scri
 app-portage/gentoolkit-dev 0.2.8.3-r1 0.3.0 0.3.1: Collection of developer scripts for Gentoo
 app-portage/gentoopm 0.2.9 9999: A common interface to Gentoo package managers
 app-portage/getdelta 0.7.9-r2: dynamic deltup client
+app-portage/golop 9999: A pure Go re-implementation of genlop
 app-portage/gpytage 0.3.0_rc1-r1: GTK Utility to help manage Portage's user config files
 app-portage/gpyutils 0.1.4 0.2.1 9999: Utitilies for maintaining Python packages
 app-portage/grs 0.4 0.5 9999: Suite to build Gentoo Reference Systems
