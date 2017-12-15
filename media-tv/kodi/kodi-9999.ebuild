@@ -65,7 +65,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	lcms? ( media-libs/lcms:2 )
 	libusb? ( virtual/libusb:1 )
 	virtual/ttf-fonts
-	>=media-fonts/noto-20160531
 	media-fonts/roboto
 	>=media-libs/fontconfig-2.12.4
 	>=media-libs/freetype-2.8
@@ -299,18 +298,6 @@ src_install() {
 	rm "${ED%/}"/usr/share/doc/*/{LICENSE.GPL,copying.txt}* || die
 
 	newicon media/icon48x48.png kodi.png
-
-	# Replace bundled fonts with system ones.
-	rm "${ED%/}"/usr/share/kodi/addons/skin.estouchy/fonts/NotoSans-Regular.ttf || die
-	dosym ../../../../fonts/noto/NotoSans-Regular.ttf \
-		usr/share/kodi/addons/skin.estouchy/fonts/NotoSans-Regular.ttf
-
-	local f
-	for f in NotoMono-Regular.ttf NotoSans-Bold.ttf NotoSans-Regular.ttf ; do
-		rm "${ED%/}"/usr/share/kodi/addons/skin.estuary/fonts/"${f}" || die
-		dosym ../../../../fonts/noto/"${f}" \
-			usr/share/kodi/addons/skin.estuary/fonts/"${f}"
-	done
 
 	rm "${ED%/}"/usr/share/kodi/addons/skin.estuary/fonts/Roboto-Thin.ttf || die
 	dosym ../../../../fonts/roboto/Roboto-Thin.ttf \
