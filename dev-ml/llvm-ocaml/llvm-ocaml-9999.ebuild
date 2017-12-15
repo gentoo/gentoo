@@ -28,6 +28,7 @@ LICENSE="UoI-NCSA"
 SLOT="0/${PV}"
 KEYWORDS=""
 IUSE="debug test ${ALL_LLVM_TARGETS[*]}"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-lang/ocaml-4.00.0:0=
