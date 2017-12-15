@@ -36,7 +36,7 @@ RDEPEND="app-text/ghostscript-gpl
 	doxysearch? ( =dev-libs/xapian-1.2* )
 	latex? (
 		dev-texlive/texlive-bibtexextra
-		dev-texlive/texlive-fontsxextra
+		dev-texlive/texlive-fontsextra
 		dev-texlive/texlive-fontutils
 		dev-texlive/texlive-latex
 		dev-texlive/texlive-latexextra
