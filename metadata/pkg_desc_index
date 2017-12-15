@@ -1313,8 +1313,8 @@ app-emulation/e-uae 0.8.29_rc4-r2 0.8.29_rc4-r3: The Ubiquitous Amiga Emulator w
 app-emulation/edumips64 1.1 1.2: A visual and cross-platform MIPS64 CPU Simulator
 app-emulation/flannel 0.9.0 0.9.1: An etcd backed network fabric for containers
 app-emulation/free42 2.0.6 2.0.7: An HP-42S Calculator Simulator
-app-emulation/fuse 1.3.8 1.4.0: Free Unix Spectrum Emulator by Philip Kendall
-app-emulation/fuse-utils 1.3.3 1.3.4: Utils for the Free Unix Spectrum Emulator by Philip Kendall
+app-emulation/fuse 1.4.0 1.5.0: Free Unix Spectrum Emulator by Philip Kendall
+app-emulation/fuse-utils 1.3.4 1.4.0: Utils for the Free Unix Spectrum Emulator by Philip Kendall
 app-emulation/ganeti 2.15.2-r5 2.15.2-r6 2.16.0_rc1 2.17.0_beta1: Ganeti is a virtual server management software tool
 app-emulation/ganeti-htools 0.3.1: Cluster tools for fixing common allocation problems on Ganeti 2.0 clusters
 app-emulation/ganeti-instance-debootstrap 0.11 0.12 0.16: Scripts to build Ganeti VMs with debootstrap
@@ -1331,7 +1331,7 @@ app-emulation/libcacard 0.1.2 2.5.1: virtual Common Access Card (CAC) library em
 app-emulation/libdsk 1.5.5: LIBDSK is a library for accessing discs and disc image files
 app-emulation/libguestfs 1.28.5-r3 1.36.5: Tools for accessing, inspect and modifying virtual machine (VM) disk images
 app-emulation/libguestfs-appliance 1.26.0-r1 1.28.1 1.28.1-r1 1.36.1: VM appliance disk image used in libguestfs package
-app-emulation/libspectrum 1.3.6 1.4.0: Spectrum emulation library
+app-emulation/libspectrum 1.4.0 1.4.1: Spectrum emulation library
 app-emulation/libvirt 3.8.0-r1 3.10.0-r1 9999: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 1.0.0 1.0.0-r1: GLib and GObject mappings for libvirt
 app-emulation/libvirt-snmp 0.0.2-r2 0.0.3: Provides SNMP functionality for libvirt
@@ -10426,7 +10426,7 @@ dev-util/colm 0.13.0.4 0.13.0.5: COmputer Language Manipulation
 dev-util/colorgcc 1.3.2-r7: Perl script to colorise the gcc output.
 dev-util/comparator 2.10: ESR's utility for making fast comparisons among large source trees
 dev-util/complexity 1.10: a tool designed for analyzing the complexity of C program functions
-dev-util/conan 0.24.0-r1 0.25.1: Distributed C/C++ package manager
+dev-util/conan 0.24.0-r1 0.25.1 0.30.2: Distributed C/C++ package manager
 dev-util/confix 2.3.5-r2 2.3.5-r3 9999: Confix: A Build Tool on Top of GNU Automake
 dev-util/confix-wrapper 0: Wrapper to select either confix1.py or confix2.py
 dev-util/cookiecutter 1.6.0: Command-line utility to create projects from cookiecutters (project templates)
@@ -12515,7 +12515,7 @@ media-fonts/dzongkha-fonts 2009.09: Bhutanese/Tibetan fonts for dzongkha script 
 media-fonts/eb-garamond 0.016: Claude Garamont's humanist typeface from the mid-16th century
 media-fonts/efont-unicode 0.4.2-r1: The /efont/ Unicode Bitmap Fonts
 media-fonts/ekushey-bangla-fonts 20070420: A collection of Free fonts for the Bangla (Bengali) script
-media-fonts/encodings 1.0.4 1.0.4-r1: X.Org font encodings
+media-fonts/encodings 1.0.4-r1: X.Org font encodings
 media-fonts/essays1743 2.000 2.001: John Stracke's Essays 1743 font
 media-fonts/exljbris-free 20100320: Beautiful free fonts from exljbris Font Foundry
 media-fonts/exo 2: A geometric sans-serif font with a technological feel
@@ -12525,43 +12525,43 @@ media-fonts/fgdc-emergency 2.20: FGDC Emergency Response Symbology Prototype
 media-fonts/fifth-leg 0.6: Simplistic, technical sans serif - openSUSE font
 media-fonts/fira-mono 3.205: Default monospaced typeface for FirefoxOS, designed for legibility
 media-fonts/fira-sans 4.002 4.105: Default typeface for FirefoxOS, designed for legibility
-media-fonts/font-adobe-100dpi 1.0.3 1.0.3-r1: X.Org Adobe bitmap fonts
-media-fonts/font-adobe-75dpi 1.0.3 1.0.3-r1: X.Org Adobe bitmap fonts
-media-fonts/font-adobe-utopia-100dpi 1.0.4 1.0.4-r1: X.Org Adobe Utopia bitmap fonts
-media-fonts/font-adobe-utopia-75dpi 1.0.4 1.0.4-r1: X.Org Adobe Utopia bitmap fonts
-media-fonts/font-adobe-utopia-type1 1.0.4 1.0.4-r1: X.Org Adobe Utopia Type 1 fonts
+media-fonts/font-adobe-100dpi 1.0.3-r1: X.Org Adobe bitmap fonts
+media-fonts/font-adobe-75dpi 1.0.3-r1: X.Org Adobe bitmap fonts
+media-fonts/font-adobe-utopia-100dpi 1.0.4-r1: X.Org Adobe Utopia bitmap fonts
+media-fonts/font-adobe-utopia-75dpi 1.0.4-r1: X.Org Adobe Utopia bitmap fonts
+media-fonts/font-adobe-utopia-type1 1.0.4-r1: X.Org Adobe Utopia Type 1 fonts
 media-fonts/font-alias 1.0.3-r1: X.Org font aliases
-media-fonts/font-arabic-misc 1.0.3 1.0.3-r1: X.Org arabic bitmap fonts
-media-fonts/font-bh-100dpi 1.0.3 1.0.3-r1: X.Org Bigelow & Holmes bitmap fonts
-media-fonts/font-bh-75dpi 1.0.3 1.0.3-r1: X.Org Bigelow & Holmes bitmap fonts
-media-fonts/font-bh-lucidatypewriter-100dpi 1.0.3 1.0.3-r1: X.Org Bigelow & Holmes Lucida bitmap fonts
-media-fonts/font-bh-lucidatypewriter-75dpi 1.0.3 1.0.3-r1: X.Org Bigelow & Holmes Lucida bitmap fonts
-media-fonts/font-bh-ttf 1.0.3 1.0.3-r1: X.Org Bigelow & Holmes TrueType fonts
-media-fonts/font-bh-type1 1.0.3 1.0.3-r1: X.Org Bigelow & Holmes Type 1 fonts
-media-fonts/font-bitstream-100dpi 1.0.3 1.0.3-r1: X.Org Bitstream bitmap fonts
-media-fonts/font-bitstream-75dpi 1.0.3 1.0.3-r1: X.Org Bitstream bitmap fonts
-media-fonts/font-bitstream-speedo 1.0.2 1.0.2-r1: Bitstream Speedo fonts
-media-fonts/font-bitstream-type1 1.0.3 1.0.3-r1: X.Org Bitstream Type 1 fonts
-media-fonts/font-cronyx-cyrillic 1.0.3 1.0.3-r1: X.Org Cronyx cyrillic fonts
-media-fonts/font-cursor-misc 1.0.3 1.0.3-r1: X.Org cursor font
-media-fonts/font-daewoo-misc 1.0.3 1.0.3-r1: X.Org Daewoo fonts
-media-fonts/font-dec-misc 1.0.3 1.0.3-r1: X.Org DEC fonts
-media-fonts/font-ibm-type1 1.0.3 1.0.3-r1: X.Org IBM Courier font
-media-fonts/font-isas-misc 1.0.3 1.0.3-r1: X.Org the Institute of Software, Academia Sinica (chinese) fonts
-media-fonts/font-jis-misc 1.0.3 1.0.3-r1: X.Org JIS (japanese) fonts
-media-fonts/font-micro-misc 1.0.3 1.0.3-r1: X.Org micro-misc font
-media-fonts/font-misc-cyrillic 1.0.3 1.0.3-r1: X.Org misc-cyrillic fonts
-media-fonts/font-misc-ethiopic 1.0.3 1.0.3-r1: Miscellaneous Ethiopic fonts
-media-fonts/font-misc-meltho 1.0.3 1.0.3-r1: X.Org Syriac fonts
-media-fonts/font-misc-misc 1.1.2 1.1.2-r1: X.Org miscellaneous fonts
-media-fonts/font-mutt-misc 1.0.3 1.0.3-r1: X.Org ClearlyU fonts
-media-fonts/font-schumacher-misc 1.1.2 1.1.2-r1: X.Org Schumacher fonts
-media-fonts/font-screen-cyrillic 1.0.4 1.0.4-r1: X.Org Screen cyrillic fonts
-media-fonts/font-sony-misc 1.0.3 1.0.3-r1: X.Org Sony fonts
-media-fonts/font-sun-misc 1.0.3 1.0.3-r1: X.Org Sun fonts
+media-fonts/font-arabic-misc 1.0.3-r1: X.Org arabic bitmap fonts
+media-fonts/font-bh-100dpi 1.0.3-r1: X.Org Bigelow & Holmes bitmap fonts
+media-fonts/font-bh-75dpi 1.0.3-r1: X.Org Bigelow & Holmes bitmap fonts
+media-fonts/font-bh-lucidatypewriter-100dpi 1.0.3-r1: X.Org Bigelow & Holmes Lucida bitmap fonts
+media-fonts/font-bh-lucidatypewriter-75dpi 1.0.3-r1: X.Org Bigelow & Holmes Lucida bitmap fonts
+media-fonts/font-bh-ttf 1.0.3-r1: X.Org Bigelow & Holmes TrueType fonts
+media-fonts/font-bh-type1 1.0.3-r1: X.Org Bigelow & Holmes Type 1 fonts
+media-fonts/font-bitstream-100dpi 1.0.3-r1: X.Org Bitstream bitmap fonts
+media-fonts/font-bitstream-75dpi 1.0.3-r1: X.Org Bitstream bitmap fonts
+media-fonts/font-bitstream-speedo 1.0.2-r1: Bitstream Speedo fonts
+media-fonts/font-bitstream-type1 1.0.3-r1: X.Org Bitstream Type 1 fonts
+media-fonts/font-cronyx-cyrillic 1.0.3-r1: X.Org Cronyx cyrillic fonts
+media-fonts/font-cursor-misc 1.0.3-r1: X.Org cursor font
+media-fonts/font-daewoo-misc 1.0.3-r1: X.Org Daewoo fonts
+media-fonts/font-dec-misc 1.0.3-r1: X.Org DEC fonts
+media-fonts/font-ibm-type1 1.0.3-r1: X.Org IBM Courier font
+media-fonts/font-isas-misc 1.0.3-r1: X.Org the Institute of Software, Academia Sinica (chinese) fonts
+media-fonts/font-jis-misc 1.0.3-r1: X.Org JIS (japanese) fonts
+media-fonts/font-micro-misc 1.0.3-r1: X.Org micro-misc font
+media-fonts/font-misc-cyrillic 1.0.3-r1: X.Org misc-cyrillic fonts
+media-fonts/font-misc-ethiopic 1.0.3-r1: Miscellaneous Ethiopic fonts
+media-fonts/font-misc-meltho 1.0.3-r1: X.Org Syriac fonts
+media-fonts/font-misc-misc 1.1.2-r1: X.Org miscellaneous fonts
+media-fonts/font-mutt-misc 1.0.3-r1: X.Org ClearlyU fonts
+media-fonts/font-schumacher-misc 1.1.2-r1: X.Org Schumacher fonts
+media-fonts/font-screen-cyrillic 1.0.4-r1: X.Org Screen cyrillic fonts
+media-fonts/font-sony-misc 1.0.3-r1: X.Org Sony fonts
+media-fonts/font-sun-misc 1.0.3-r1: X.Org Sun fonts
 media-fonts/font-util 1.3.0 1.3.1: X.Org font utilities
-media-fonts/font-winitzki-cyrillic 1.0.3 1.0.3-r1: X.Org Winitzki cyrillic font
-media-fonts/font-xfree86-type1 1.0.4 1.0.4-r1: X.Org XFree86 Type 1 font
+media-fonts/font-winitzki-cyrillic 1.0.3-r1: X.Org Winitzki cyrillic font
+media-fonts/font-xfree86-type1 1.0.4-r1: X.Org XFree86 Type 1 font
 media-fonts/fontawesome 4.6.3 4.7.0: The iconic font
 media-fonts/free-bangla-font 0.2: Unicode compliant Open Type Bangla fonts
 media-fonts/freefont 20120503: OpenType and TrueType Unicode fonts from the Free UCS Outline Fonts Project
@@ -17904,7 +17904,7 @@ sys-fs/zfs 0.6.5.4-r2 0.6.5.11 0.7.3 9999: Userland utilities for ZFS Linux kern
 sys-fs/zfs-kmod 0.6.5.4-r1 0.6.5.11 0.7.3 9999: Linux ZFS kernel module for sys-fs/zfs
 sys-kernel/aufs-sources 4.4.87-r1 4.4.95 4.4.96 4.4.97 4.4.98 4.4.99 4.4.100 4.4.102 4.4.103 4.4.104 4.4.105 4.9.49-r1 4.9.59 4.9.60 4.9.61 4.9.62 4.9.63 4.9.64 4.9.65 4.9.66 4.9.67 4.9.68 4.12.12 4.12.13 4.12.14 4.13.10 4.13.11 4.13.12 4.13.13 4.13.14 4.13.15 4.13.16 4.14.1 4.14.2 4.14.3 4.14.4 4.14.5: Full sources (incl. Gentoo patchset) for the linux kernel tree and aufs4 support
 sys-kernel/bliss-initramfs 6.8.3-r2 7.1.0 7.1.1: Boot your system's rootfs from ZFS, LVM, RAID, or a variety of other configs.
-sys-kernel/ck-sources 4.9.66 4.9.67 4.9.68 4.13.16-r1 4.14.3 4.14.4 4.14.5: Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 4.14
+sys-kernel/ck-sources 4.9.66 4.9.67 4.9.68 4.9.69 4.13.16-r1 4.14.3 4.14.4 4.14.5 4.14.6: Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 4.14
 sys-kernel/cryptodev 1.7 1.9 9999: device that allows access to Linux kernel cryptographic drivers
 sys-kernel/dracut 044-r1 044-r3 045-r2 046: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.5.1.1 3.5.2.0-r1 3.5.2.1 3.5.2.2 3.5.2.3 3.5.2.4 9999: Gentoo automatic kernel building scripts
