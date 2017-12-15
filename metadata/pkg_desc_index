@@ -1335,7 +1335,7 @@ app-emulation/libspectrum 1.4.0 1.4.1: Spectrum emulation library
 app-emulation/libvirt 3.8.0-r1 3.10.0-r1 9999: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 1.0.0 1.0.0-r1: GLib and GObject mappings for libvirt
 app-emulation/libvirt-snmp 0.0.2-r2 0.0.3: Provides SNMP functionality for libvirt
-app-emulation/lxc 1.0.8 1.0.11 2.0.7 2.0.8: LinuX Containers userspace utilities
+app-emulation/lxc 1.0.8 1.0.11 2.0.7 2.0.8 2.0.9: LinuX Containers userspace utilities
 app-emulation/lxd 2.14-r1 2.18 2.19: Fast, dense and secure container management
 app-emulation/nemu 1.1.0 1.2.0 1.3.0: ncurses interface for QEMU
 app-emulation/open-vm-tools 10.1.10 10.1.15: Opensourced tools for VMware guests
@@ -2348,7 +2348,7 @@ app-text/lesspipe 1.83: a preprocessor for less
 app-text/letterize 1.3 1.4: Generate English-plausible alphabetic mnemonics for a phone number
 app-text/libabw 0.1.1: Library parsing abiword documents
 app-text/libebook 0.1.2-r1: Library parsing various ebook formats
-app-text/libepubgen 0.0.1: EPUB generator for librevenge
+app-text/libepubgen 0.1.0: EPUB generator for librevenge
 app-text/libetonyek 0.1.6 0.1.7 9999: Library parsing Apple Keynote presentations
 app-text/libexttextcat 3.4.4 3.4.5: Library implementing N-gram-based text categorization
 app-text/libgepub 0.4 0.5.2: GObject based library for handling and rendering epub documents
