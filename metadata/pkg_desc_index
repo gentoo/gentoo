@@ -3020,7 +3020,7 @@ dev-db/phpmyadmin 4.0.10.20 4.7.0 4.7.1 4.7.2 4.7.5 4.7.5-r1: Web-based administ
 dev-db/phppgadmin 5.1 9999: Web-based administration for Postgres database in php
 dev-db/postgis 2.1.8-r1 2.3.3 2.4.0 2.4.2 9999: Geographic Objects for PostgreSQL
 dev-db/postgresql 9.2.19 9.2.22 9.2.23 9.2.23-r1 9.2.24 9.3.15 9.3.18 9.3.19 9.3.19-r1 9.3.20 9.4.10 9.4.13 9.4.14 9.4.14-r1 9.4.15 9.5.5 9.5.8 9.5.9 9.5.9-r1 9.5.10 9.6.4 9.6.5 9.6.5-r1 9.6.6 10.0 10.0-r1 10.1 9999: PostgreSQL RDBMS
-dev-db/pspg 0.5 0.7.4 0.7.5: A better pager for psql and mysql
+dev-db/pspg 0.5 0.7.4 0.7.5 0.8.0: A better pager for psql and mysql
 dev-db/psqlodbc 09.06.0200 09.06.0300 09.06.0310: Official ODBC driver for PostgreSQL
 dev-db/qdbm 1.8.78-r1: Quick Database Manager
 dev-db/qt5-sqlcipher 0.1.1_pre20171202: Qt SQL driver plugin for SQLCipher
@@ -4935,7 +4935,7 @@ dev-libs/libpfm 4.4.0 4.6.0 4.8.0: Hardware-based performance monitoring interfa
 dev-libs/libpipeline 1.4.0 1.4.2 1.5.0: a pipeline manipulation library
 dev-libs/libplatform 2.0.1 2.1.0.1: Platform support library used by libCEC and binary add-ons for Kodi
 dev-libs/libpo6 0.6.0 0.7.0 0.8.0: Hyperdex libpo6 support library
-dev-libs/libpqxx 4.0.1 5.1.0: Standard front-end for writing C++ programs that use PostgreSQL
+dev-libs/libpqxx 4.0.1 5.1.0 5.1.1: Standard front-end for writing C++ programs that use PostgreSQL
 dev-libs/libprelude 3.0.0 3.1.0-r1 4.0.0: Prelude-SIEM Framework Library
 dev-libs/libpreludedb 3.0.0 3.1.0 4.0.0: Framework to easy access to the Prelude database
 dev-libs/libproccpuinfo 0.0.8-r1: Architecture independent C API for reading /proc/cpuinfo
