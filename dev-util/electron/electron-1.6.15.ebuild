@@ -180,23 +180,6 @@ DEPEND="${COMMON_DEPEND}
 	')
 "
 
-CHROMIUM_PATCHES="
-	chromium-FORTIFY_SOURCE.patch
-	chromium-gcc-7-r0.patch
-	chromium-glibc-2.24.patch
-	chromium-56-gcc4.patch
-	chromium-system-ffmpeg-r4.patch
-	chromium-system-icu-r0.patch
-	chromium-icu-59-r0.patch
-	chromium-icu-60-r0.patch
-	chromium-v8-icu-59-r0.patch
-	chromium-disable-widevine.patch
-	chromium-remove-gardiner-mod-font-r1.patch
-	chromium-shared-v8-r2.patch
-	chromium-lto-fixes-r3.patch
-	chromium-python3-compat-r0.patch
-"
-
 # Keep this in sync with the python_gen_any_dep call.
 python_check_deps() {
 	has_version --host-root "dev-python/beautifulsoup:python-2[${PYTHON_USEDEP}]" &&
@@ -318,46 +301,6 @@ _get_target_arch() {
 	echo -n "${target_arch}"
 }
 
-_apply_gentoo_patches() {
-	local patches="${1%/}"
-	local target="${2%/}"
-	local vn=$(get_version_component_count)
-	local vi=0
-	local vcomp
-	local patch
-	local patchname
-	local path
-	local lastpath="${S}"
-
-	pushd "${S}" >/dev/null || die
-
-	while [ $vi -lt $vn ]; do
-		let vi=vi+1
-		vcomp=$(get_version_component_range 1-${vi})
-
-		if [ -d "${patches}/${vcomp}" ]; then
-			for patch in "${patches}/${vcomp}"/*.patch; do
-				patchname="$(basename ${patch})"
-				path="${patchname%__*}"
-				path="${path//__//}"
-				if [ "${path}" == "${patchname}" -o -z "${path}" ]; then
-					path="${S}"
-				else
-					path="${S}/${path}"
-				fi
-
-				if [ "${path}" != "${lastpath}" ]; then
-					cd "${path}" || die
-					lastpath="${path}"
-				fi
-				eapply "${patch}"
-			done
-		fi
-	done
-
-	popd >/dev/null || die
-}
-
 src_prepare() {
 	mv "${WORKDIR}/${CHROMIUM_P}" "${CHROMIUM_S}" || die
 	rm -r "${NODE_S}" &&
@@ -417,8 +360,16 @@ src_prepare() {
 	EPATCH_MULTI_MSG="Applying libchromiumcontent patches..." \
 		epatch
 
-	# Apply Gentoo-specific patches.
-	_apply_gentoo_patches "${WORKDIR}/${PATCHES_P}"
+	cd "${S}" || die
+
+	# Apply Gentoo patches
+	_unnest_patches "${WORKDIR}/${PATCHES_P}/${PV}"
+
+	EPATCH_SOURCE="${WORKDIR}/${PATCHES_P}/${PV}" \
+	EPATCH_SUFFIX="patch" \
+	EPATCH_FORCE="yes" \
+	EPATCH_MULTI_MSG="Applying Gentoo patches..." \
+		epatch
 
 	# Merge chromiumcontent component into chromium source tree.
 	mkdir -p "${CHROMIUM_S}/chromiumcontent" || die
@@ -544,6 +495,8 @@ src_prepare() {
 	if ! use system-ffmpeg; then
 		keeplibs+=( third_party/ffmpeg )
 	fi
+
+	cd "${CHROMIUM_S}" || die
 
 	# Remove most bundled libraries. Some are still needed.
 	ebegin "Unbundling libraries"
