@@ -17,6 +17,7 @@ LICENSE="UoI-NCSA"
 SLOT="0"
 KEYWORDS=""
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 S=${WORKDIR}/${P}/utils/lit
 
