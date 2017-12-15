@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Encrypted UDP based FTP with multicast"
 HOMEPAGE="http://uftp-multicast.sourceforge.net/"
@@ -14,13 +14,12 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+server ssl"
 
-DEPEND="ssl? ( dev-libs/openssl:0 )"
+DEPEND="ssl? ( dev-libs/openssl:0= )"
 RDEPEND="${DEPEND}"
 
-src_prepare() {
-	epatch "${FILESDIR}/${P}_makefile.patch"
-	default
-}
+PATCHES=(
+	"${FILESDIR}/${P}_makefile.patch"
+)
 
 src_compile() {
 	use ssl || local opt="NO_ENCRYPTION=1"
