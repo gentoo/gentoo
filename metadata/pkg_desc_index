@@ -14521,7 +14521,7 @@ net-analyzer/scanlogd 2.2.7: a port scan detection tool
 net-analyzer/scanssh 2.1: network scanner that gathers info on SSH protocols and versions
 net-analyzer/scapy 2.3.2-r1 2.3.3 9999: A Python interactive packet manipulation program for mastering the network
 net-analyzer/scli 0.4.0-r1: SNMP Command Line Interface
-net-analyzer/sec 2.7.6-r1 2.7.10 2.7.11: Simple Event Correlator
+net-analyzer/sec 2.7.6-r1 2.7.11 2.7.12: Simple Event Correlator
 net-analyzer/sflowtool 3.34 3.35 3.41: sflowtool is a utility for collecting and processing sFlow data
 net-analyzer/sguil-client 0.8.0 0.9.0: GUI Console for sguil Network Security Monitoring
 net-analyzer/sguil-sensor 0.8.0 0.9.0: Sensor part of sguil Network Security Monitoring
@@ -16785,7 +16785,7 @@ sci-physics/pythia 6.4.28 6.4.28-r1 8.1.86 8.1.86-r1 8.2.10 8.2.26: Lund Monte C
 sci-physics/qutip 4.2.0: Simulating dynamics of open quantum systems in Python.
 sci-physics/reduze 2.0.9 2.1: Program for reducing Feynman integrals
 sci-physics/rivet 2.3.0 2.5.2: Toolkit for validation of Monte Carlo HEP event generators
-sci-physics/root 5.34.36 6.04.06: C++ data analysis framework and interpreter from CERN
+sci-physics/root 5.34.36 6.12.04: C++ data analysis framework and interpreter from CERN
 sci-physics/sassena 1.4.2: Software for Calculating Scattering Diagrams on Massively Parallel Computers
 sci-physics/siscone 2.0.6 3.0.3: Hadron Seedless Infrared-Safe Cone jet algorithm
 sci-physics/thepeg 1.9.2 2.0.0 2.0.4: Toolkit for High Energy Physics Event Generation
@@ -18473,7 +18473,7 @@ www-client/lynx 2.8.9_pre11 2.8.9_pre16: An excellent console-based web browser 
 www-client/midori 0.5.11-r2: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.6: a free, open source web browser
-www-client/opera 12.16_p1860-r1 49.0.2725.34 49.0.2725.39: A fast and secure web browser
+www-client/opera 12.16_p1860-r1 49.0.2725.39 49.0.2725.56: A fast and secure web browser
 www-client/opera-beta 50.0.2762.28 50.0.2762.35: A fast and secure web browser
 www-client/opera-developer 51.0.2796.0 51.0.2802.0: A fast and secure web browser
 www-client/otter 0.9.91-r1 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5

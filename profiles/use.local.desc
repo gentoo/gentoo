@@ -7427,19 +7427,30 @@ sci-physics/pythia:hepmc - Adds support for High Energy Physics Monte Carlo Gene
 sci-physics/pythia:lhapdf - Support the use of external PDF sets via sci-physics/lhapdf
 sci-physics/pythia:root - Use sci-physics/root trees and histograms (in examples only)
 sci-physics/root:R - Enable support for dev-lang/R
+sci-physics/root:asimage - Enable support for media-libs/libafterimage
 sci-physics/root:c++11 - Build ROOT using the C++11 standard
 sci-physics/root:c++14 - Build ROOT using the C++14 standard
-sci-physics/root:fits - Support for images and data from FITS files with sci-libs/cfitsio
+sci-physics/root:davix - Enable support for DAVIX Data Management Client (https://cern.ch/davix)
+sci-physics/root:fits - Enable support for images and data from FITS files with sci-libs/cfitsio
+sci-physics/root:fortran - Compile included Fortran programs
 sci-physics/root:gdml - Enable GDML writer and reader
-sci-physics/root:geocad - Enable ROOT-CAD interface using sci-libs/opencascade
 sci-physics/root:http - Enable http server support including but not limited to fastcgi support
+sci-physics/root:jemalloc - Enable support for dev-libs/jemalloc
+sci-physics/root:libcxx - Build ROOT against sys-libs/libcxx
 sci-physics/root:math - Build all math related libraries plugins, needs sci-libs/gsl
 sci-physics/root:memstat - Build memory statistics library, helps to detect memory leaks
+sci-physics/root:minuit - Build ROOT's internal versions of minuit (fortran) and minuit2 (C++)
 sci-physics/root:pythia6 - Build the interface for sci-physics/pythia version 6.x
 sci-physics/root:pythia8 - Build the interface for sci-physics/pythia version 8.x
 sci-physics/root:reflex - Build the reflection database for the C++ interpreter
+sci-physics/root:roofit - Build RooFit function fitting package
+sci-physics/root:root7 - Build experimental features to be released with ROOT 7
 sci-physics/root:shadow - Enable shadow authentication in rootd and proofd
 sci-physics/root:table - Build libTable contrib library
+sci-physics/root:tbb - Enable implicit multi-threading (IMT) with dev-cpp/tbb
+sci-physics/root:tmva - Built TMVA (ROOT's multi-variate analysis toolkit for machine learning)
+sci-physics/root:unuran - Enable support for sci-mathematics/unuran
+sci-physics/root:vc - Enable support for dev-libs/vc with VecCore
 sci-physics/root:xrootd - Build the interface for net-libs/xrootd
 sci-physics/thepeg:c++11 - Build ThePEG using the C++11 standard. Experimental feature, not for production use.
 sci-physics/thepeg:fastjet - Adds support for sci-physics/fastjet
