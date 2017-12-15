@@ -12,7 +12,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="audiofile gcrypt jpeg png zlib"
 
-RDEPEND=">=app-emulation/libspectrum-1.3.6[gcrypt?,zlib?]
+RDEPEND=">=app-emulation/libspectrum-1.4.1[gcrypt?,zlib?]
 	audiofile? ( >=media-libs/audiofile-0.3.6 )
 	jpeg? ( virtual/jpeg:0 )
 	png? ( media-libs/libpng:0 )
