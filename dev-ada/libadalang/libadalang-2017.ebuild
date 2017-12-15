@@ -11,7 +11,6 @@ DESCRIPTION="high performance semantic engine for the Ada programming language"
 HOMEPAGE="https://libre.adacore.com/"
 SRC_URI="http://mirrors.cdn.adacore.com/art/591c45e2c7a447af2deed042
 	-> ${P}-src.tar.gz
-	mirror://sourceforge/quex/quex-0.65.4.tar.gz
 	http://mirrors.cdn.adacore.com/art/591c45e2c7a447af2deed044
 	-> langkit-gps-src-${PV}.tar.gz"
 
@@ -23,13 +22,12 @@ IUSE="gnat_2016 gnat_2017"
 RDEPEND="dev-python/pyyaml
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
-	dev-python/virtualenv
 	dev-ada/gnatcoll[projects,shared,gnat_2016=,gnat_2017=]
 	dev-python/docutils
 	dev-python/mako
 	dev-python/enum34
+	dev-python/quex
 	dev-python/funcy"
-#REQUIRED_USE="gnat_2016 !gnat_2017 ${PYTHON_REQUIRED_USE}"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 S="${WORKDIR}"
@@ -46,7 +44,6 @@ src_compile() {
 	mkdir bin
 	ln -sf /usr/bin/gnatbind-4.9.4 bin/gnatbind
 	PATH=$PATH:${PWD}/bin \
-		QUEX_PATH="${WORKDIR}"/quex-0.65.4 \
 		PYTHONPATH=${PYTHONPATH}:"${WORKDIR}"/langkit-gps-src \
 		GCC=${CHOST}-gcc-4.9.4 ada/manage.py make || die
 }
@@ -66,8 +63,7 @@ src_test () {
 
 src_install () {
 	cd ${PN}-gps-src
-	QUEX_PATH="${WORKDIR}"/quex-0.65.4 \
-		PYTHONPATH=${PYTHONPATH}:"${WORKDIR}"/langkit-gps-src \
+	PYTHONPATH=${PYTHONPATH}:"${WORKDIR}"/langkit-gps-src \
 		ada/manage.py install "${D}"usr
 	python_domodule build/python/libadalang.py
 }
