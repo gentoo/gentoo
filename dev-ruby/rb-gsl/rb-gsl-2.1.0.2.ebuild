@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby22 ruby23"
+USE_RUBY="ruby22 ruby23 ruby24"
 
 RUBY_FAKEGEM_NAME="gsl"
 inherit ruby-fakegem multilib
@@ -22,8 +22,6 @@ DEPEND+=" >=sci-libs/gsl-2.3[deprecated]"
 RDEPEND+=" >=sci-libs/gsl-2.3[deprecated]"
 
 RUBY_S="${PN}-${P}"
-
-RUBY_PATCHES=( "${FILESDIR}"/${P}-narray-superclass.patch )
 
 ruby_add_bdepend "dev-ruby/narray"
 ruby_add_rdepend "dev-ruby/narray"
