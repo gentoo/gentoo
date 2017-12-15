@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install prepare setup test
-DEPEND=dev-python/pyyaml python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] dev-python/virtualenv dev-ada/gnatcoll[projects,shared,gnat_2016=,gnat_2017=] dev-python/docutils dev-python/mako dev-python/enum34 dev-python/funcy
+DEPEND=dev-python/pyyaml python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] dev-ada/gnatcoll[projects,shared,gnat_2016=,gnat_2017=] dev-python/docutils dev-python/mako dev-python/enum34 dev-python/quex dev-python/funcy
 DESCRIPTION=high performance semantic engine for the Ada programming language
 EAPI=6
 HOMEPAGE=https://libre.adacore.com/
@@ -9,6 +9,6 @@ LICENSE=GPL-3 gcc-runtime-library-exception-3.1
 RDEPEND=dev-python/pyyaml python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)]
 REQUIRED_USE=python_targets_python2_7
 SLOT=0
-SRC_URI=http://mirrors.cdn.adacore.com/art/591c45e2c7a447af2deed042 -> libadalang-2017-src.tar.gz mirror://sourceforge/quex/quex-0.65.4.tar.gz http://mirrors.cdn.adacore.com/art/591c45e2c7a447af2deed044 -> langkit-gps-src-2017.tar.gz
+SRC_URI=http://mirrors.cdn.adacore.com/art/591c45e2c7a447af2deed042 -> libadalang-2017-src.tar.gz http://mirrors.cdn.adacore.com/art/591c45e2c7a447af2deed044 -> langkit-gps-src-2017.tar.gz
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	317a2557b4d7319a7418225f65accf77	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=3f244ece39aeb235e2bf17554ef3028c
+_md5_=a893843954ac34bc8c10569246f8e029

@@ -4966,7 +4966,7 @@ dev-libs/libtasn1 4.12-r1: ASN.1 library
 dev-libs/libtecla 1.6.1-r2 1.6.2 1.6.3: Tecla command-line editing library
 dev-libs/libtermkey 0.19 0.20: Library for easy processing of keyboard entry from terminal-based programs
 dev-libs/libtomfloat 0.02: library for floating point number manipulation
-dev-libs/libtommath 0.42.0-r1 1.0 1.0-r1: Optimized and portable routines for integer theoretic applications
+dev-libs/libtommath 0.42.0-r1 1.0 1.0-r1 1.0.1: Optimized and portable routines for integer theoretic applications
 dev-libs/libtompoly 0.04: portable ISO C library for polynomial basis arithmetic
 dev-libs/libtrain 0.9b: Library for calculating fastest train routes
 dev-libs/libtreadstone 0.1.0 0.2.0: Hyperdex libtreadstone support library
