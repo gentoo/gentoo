@@ -29,6 +29,18 @@
 
 #--- END OF EXAMPLES ---
 
+# Andrey Grozin <grozin@gentoo.org> (15 Dec 2017)
+# Dead upstream. Removal in 30 days. Use bpython or ptpython instead.
+dev-python/dreampie
+
+# Andrey Grozin <grozin@gentoo.org> (15 Dec 2017)
+# Dead upstream. Removal in 30 days.
+dev-python/pydb
+
+# Andrey Grozin <grozin@gentoo.org> (15 Dec 2017)
+# Dead upstream, unclear license. Removal in 30 days.
+dev-python/pygui
+
 # Thomas Deutschmann <whissi@gentoo.org> (14 Dec 2017)
 # Unpatched security vulnerability per bug #537108
 # Removal in 30 days. Please migrate to net-libs/mbedtls if you have
