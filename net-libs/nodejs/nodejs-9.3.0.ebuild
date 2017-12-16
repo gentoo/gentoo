@@ -23,23 +23,22 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	>=dev-libs/libuv-1.15.0:=
+	>=dev-libs/libuv-1.18.0:=
 	>=net-libs/http-parser-2.7.0:=
 	>=net-libs/nghttp2-1.25.0
 	sys-libs/zlib
-	icu? ( >=dev-libs/icu-59.1:= )
+	icu? ( >=dev-libs/icu-60.1:= )
 	ssl? ( >=dev-libs/openssl-1.0.2n:0=[-bindist] )
 "
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
 	${PYTHON_DEPS}
 	systemtap? ( dev-util/systemtap )
-	test? ( net-misc/curl )"
-
+	test? ( net-misc/curl )
+"
 S="${WORKDIR}/node-v${PV}"
-
 PATCHES=(
 	"${FILESDIR}"/gentoo-global-npm-config.patch
-	"${FILESDIR}"/nodejs-8.9.0-shared-nghttp2.patch
 )
 
 pkg_pretend() {

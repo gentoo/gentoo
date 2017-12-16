@@ -6,4 +6,4 @@
 # So we mask it here, and unmask in 17.0 release profiles
 >=dev-libs/icu-59
 >=dev-libs/icu-layoutex-59
->=net-libs/nodejs-9.0.0
+>=net-libs/nodejs-8.9.3
