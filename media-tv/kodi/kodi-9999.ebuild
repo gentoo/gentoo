@@ -46,7 +46,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	)
 	alsa? ( >=media-libs/alsa-lib-1.1.4.1 )
 	bluetooth? ( net-wireless/bluez )
-	bluray? ( >=media-libs/libbluray-1.0.1 )
+	bluray? ( >=media-libs/libbluray-1.0.2 )
 	caps? ( sys-libs/libcap )
 	dbus? ( sys-apps/dbus )
 	dev-db/sqlite
