@@ -2671,7 +2671,7 @@ app-vim/tmpl 0.1-r1: vim plugin: Syntax for Sam Tregar's HTML::Template
 app-vim/toggle 0.5-r1: vim plugin: quickly toggle boolean-type keywords
 app-vim/tt2-syntax 1.13 1.13-r1: vim plugin: syntax highlighting for perl module Template-Toolkit
 app-vim/txtfmt 2.4-r1 3.1: vim plugin: rich text highlighting in vim
-app-vim/udev-syntax 20051016-r1 20051016-r2: vim plugin: syntax highlighting for udev rules files
+app-vim/udev-syntax 20051016-r2: vim plugin: syntax highlighting for udev rules files
 app-vim/undotree 5.0 9999: vim plugin: display your undo history in a graph
 app-vim/unite 4.0-r1: vim plugin: unite all sources
 app-vim/uptime 1.3-r1: vim plugin: display vim uptimes
