@@ -5,7 +5,7 @@ EAPI=6
 GNOME2_EAUTORECONF="yes"
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools gnome2 python-single-r1
+inherit gnome2 python-single-r1
 
 DESCRIPTION="Pybliographer is a tool for working with bibliographic databases"
 HOMEPAGE="http://pybliographer.org/"
