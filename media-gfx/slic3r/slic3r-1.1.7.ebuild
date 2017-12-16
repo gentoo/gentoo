@@ -11,7 +11,7 @@ SRC_URI="https://github.com/alexrj/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="AGPL-3 CC-BY-3.0"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="+gui test"
 
 # check Build.PL for dependencies
