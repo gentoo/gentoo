@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Brian Evans <grknight@gentoo.org> (16 Dec 2017)
+# Needs dev-lang/php:7.1 stable
+php_targets_php7-1
+
 # Tobias Klausmann <klausman@gentoo.org> (17 Mar 2016)
 # Webkit itself is enormous (~13h compile+test on our fastest dev machine), so
 # it will remain not-stable forever. Mask the USE flag accordingly.

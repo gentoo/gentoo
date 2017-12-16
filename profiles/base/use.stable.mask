@@ -8,10 +8,6 @@
 # Needs dev-lang/php:7.2 stable
 php_targets_php7-2
 
-# Brian Evans <grknight@gentoo.org> (06 Dec 2016)
-# Needs dev-lang/php:7.1 stable
-php_targets_php7-1
-
 # Zac Medico <zmedico@gentoo.org> (01 Sep 2016)
 # Needs virtual/pypy* stable
 python_targets_pypy
