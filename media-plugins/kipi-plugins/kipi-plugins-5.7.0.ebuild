@@ -13,7 +13,7 @@ LICENSE="GPL-2+"
 IUSE="flashexport mediawiki +remotestorage vkontakte"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
-	KEYWORDS="~amd64 x86"
+	KEYWORDS="amd64 x86"
 	if [[ ${PV} =~ beta[0-9]$ ]]; then
 		SRC_BRANCH="unstable"
 	else
