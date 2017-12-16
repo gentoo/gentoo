@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit cmake-utils
 
@@ -16,22 +16,21 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="berkdb doc mpi"
 
 RDEPEND=">=sci-mathematics/ginac-1.4.1
-	berkdb? ( sys-libs/db[cxx] )
+	berkdb? ( sys-libs/db:6.0[cxx] )
 	mpi? ( virtual/mpi )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
 
-DOCS=( ChangeLog README )
-
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-gcc6.patch
-
+	cmake-utils_src_prepare
 	# gentoo doc directory
 	sed -i \
 		-e "s:share/reduze:share/doc/${PF}:g" \
 		CMakeLists.txt || die
-	use doc || sed -i -e '/share/d' CMakeLists.txt
+	if ! use doc ; then
+		sed -i -e '/share/d' CMakeLists.txt || die
+	fi
 	# prefix fix
 	sed -i \
 		-e "s:/usr:${EPREFIX}/usr:g" \
@@ -45,23 +44,22 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DUSE_HASH_TABLE=ON
-		$(cmake-utils_use berkdb USE_DATABASE)
-		$(cmake-utils_use mpi USE_MPI)
+		-DUSE_DATABASE=$(usex berkdb)
+		-DUSE_MPI=$(usex mpi)
 	)
 	cmake-utils_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile all $(use doc && echo doc)
+	cmake-utils_src_compile all $(usev doc)
 }
 
 src_test() {
-	cd "${CMAKE_BUILD_DIR}"
-	emake check
-	use mpi && emake check_mpi
+	cmake-utils_src_compile check
+	use mpi && cmake-utils_src_compile check_mpi
 }
 
 src_install() {
+	use doc && HTML_DOCS+=( "${BUILD_DIR}"/doc/code/html/. )
 	cmake-utils_src_install
-	use doc && dohtml -r "${CMAKE_BUILD_DIR}"/doc/code/html/*
 }
