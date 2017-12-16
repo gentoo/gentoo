@@ -17673,7 +17673,7 @@ sys-devel/dwz 0.9: DWARF optimization and duplicate removal tool
 sys-devel/flex 2.6.1 2.6.3 2.6.3-r1 2.6.4 2.6.4-r1: The Fast Lexical Analyzer
 sys-devel/gcc 2.95.3-r10 3.3.6-r1 3.4.6-r2 4.0.4 4.1.2 4.2.4-r1 4.3.6-r1 4.4.7 4.5.4 4.6.4 4.7.4 4.8.5 4.9.4 5.4.0-r3 6.4.0 7.2.0: The GNU Compiler Collection
 sys-devel/gcc-apple 4.2.1_p5666-r2: Apple branch of the GNU Compiler Collection, Developer Tools 4.0
-sys-devel/gcc-config 1.8-r1 1.9.0-r1: Utility to manage compilers
+sys-devel/gcc-config 1.8-r1 1.9.0-r1 9999: Utility to manage compilers
 sys-devel/gdb 7.9.1 7.10.1 7.12.1 8.0 8.0.1 9999: GNU debugger
 sys-devel/gdb-apple 768-r1 966 1461 1752: Apple branch of the GNU Debugger, Developer Tools 4.3
 sys-devel/gettext 0.19.8.1: GNU locale utilities
