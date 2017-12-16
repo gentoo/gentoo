@@ -122,7 +122,7 @@ app-admin/ide-smart 1.4-r1 1.4-r2: A tool to read SMART information from harddis
 app-admin/integrit 4.0 4.1-r1: file integrity verification program
 app-admin/jinit 0.1.12-r1: An alternative to sysvinit which supports the need(8) concept
 app-admin/keepass 2.37: A free, open source, light-weight and easy-to-use password manager
-app-admin/keepassxc 2.1.4-r1 2.2.1-r1 2.2.2 9999: KeePassXC - KeePass Cross-platform Community Edition
+app-admin/keepassxc 2.1.4-r1 2.2.2 2.2.4 9999: KeePassXC - KeePass Cross-platform Community Edition
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/kpcli 3.0 3.1: A command line interface to KeePass database files
 app-admin/kube-bench 0.0.6: Kubernetes Bench for Security runs the CIS Kubernetes Benchmark
@@ -2060,7 +2060,7 @@ app-office/pinpoint 0.1.8: A tool for making hackers do excellent presentations
 app-office/plan 1.10: Motif based schedule planner
 app-office/planner 0.14.6_p20130520: Project manager for Gnome
 app-office/projectlibre-bin 1.6.2: An open source desktop alternative to Microsoft Project
-app-office/pybliographer 1.2.15-r1: Pybliographer is a tool for working with bibliographic databases
+app-office/pybliographer 1.2.15-r1 1.2.18: Pybliographer is a tool for working with bibliographic databases
 app-office/qchartdiary 0.6.4.1-r2: Free Qt4 diary/agenda application
 app-office/sc 7.16-r1 7.16-r2: Spreadsheet Calculator
 app-office/scribus 1.4.6 1.5.3 9999: Desktop publishing (DTP) and layout program
@@ -14010,7 +14010,7 @@ media-sound/snd 17.4: Snd is a sound editor
 media-sound/sndfile-tools 1.03 1.03-r1 9999: A small collection of programs that use libsndfile
 media-sound/sndpeek 1.4: real-time audio visualization
 media-sound/solfege 3.22.2: GNU Solfege is a program written to help you practice ear training
-media-sound/sonata 1.6.2.1-r1: An elegant GTK+ music client for the Music Player Daemon (MPD)
+media-sound/sonata 1.6.2.1-r1 1.6.2.1-r2: An elegant GTK+ music client for the Music Player Daemon (MPD)
 media-sound/sonic-visualiser 2.5 3.0.2: Music audio files viewer and analiser
 media-sound/sooperlooper 1.7.3-r1: Live looping sampler with immediate loop recording
 media-sound/sound-juicer 3.22.1 3.24.0: CD ripper for GNOME
@@ -16294,7 +16294,7 @@ sci-electronics/fritzing 0.9.2b-r2: Electronic Design Automation
 sci-electronics/gazebo 8.1.1: A 3D multiple robot simulator with dynamics
 sci-electronics/geda 1.8.2 1.9.2-r1: GPL Electronic Design Automation (gEDA):gaf core package
 sci-electronics/geda-suite 20110427: Metapackage for all components for a full-featured gEDA/gaf system
-sci-electronics/geda-xgsch2pcb 0.1.3-r3: A graphical front-end for the gschem -> pcb workflow
+sci-electronics/geda-xgsch2pcb 0.1.3-r3 0.1.3-r4: A graphical front-end for the gschem -> pcb workflow
 sci-electronics/gerbv 2.6.0 2.6.1: A RS-274X (Gerber) and NC drill (Excellon) file viewer
 sci-electronics/gnetman 0.0.1_pre20110124: A GNU Netlist Manipulation Library
 sci-electronics/gnucap 0.35.20091207: GNUCap is the GNU Circuit Analysis Package
