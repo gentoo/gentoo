@@ -775,7 +775,7 @@ pkg_preinst() {
 	# Default /etc/hosts.conf:multi to on for systems with small dbs.
 	if [[ $(wc -l < "${EROOT}"/etc/hosts) -lt 1000 ]] ; then
 		sed -i '/^multi off/s:off:on:' "${ED}"/etc/host.conf
-		elog "Defaulting /etc/host.conf:multi to on"
+		einfo "Defaulting /etc/host.conf:multi to on"
 	fi
 
 	[[ ${ROOT} != "/" ]] && return 0
