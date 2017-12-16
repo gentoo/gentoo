@@ -4719,7 +4719,7 @@ dev-libs/faxpp 0.4: Small, fast and conformant XML pull parser written in C
 dev-libs/fcgi 2.4.1_pre0910052249-r2: FastCGI Developer's Kit
 dev-libs/fddl 20111124-r1: Free Decision Diagram Library
 dev-libs/ferrisloki 3.0.13-r2: Loki C++ library from Modern C++ Design
-dev-libs/ffcall 1.10 1.10-r2 1.10-r5 1.13 2.0: foreign function call libraries
+dev-libs/ffcall 1.13 2.0: foreign function call libraries
 dev-libs/flatbuffers 1.7.1: Memory efficient serialization library
 dev-libs/folks 0.11.3 0.11.4: Library for aggregating people from multiple sources
 dev-libs/freexl 1.0.1 1.0.2: Simple XLS data extraction library
