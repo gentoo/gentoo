@@ -2551,6 +2551,7 @@ dev-python/pygame:midi - Enable midi support using media-libs/portmidi
 dev-python/pygpu:cuda - Enable NVIDIA CUDA toolkit support
 dev-python/pygpu:opencl - Enable OpenCL support
 dev-python/pyhamcrest:numpy - Enable optional dependence on dev-python/numpy
+dev-python/pyilmbase:numpy - Add bindings for dev-python/numpy use.
 dev-python/pyocr:cuneiform - Enable support for the app-text/cuneiform OCR engine
 dev-python/pyocr:tesseract - Enable support for the app-text/tesseract OCR engine
 dev-python/pypax:ptpax - Enable PT_PAX_FLAGS support.
@@ -2925,10 +2926,8 @@ dev-util/intel-ocl-sdk:system-qt - Use system Qt (sys-devel-qtcore, sys-devel/qt
 dev-util/intel-ocl-sdk:system-tbb - Use sytem Thread Building Blocks (dev-cpp/tbb) instead of bundled one
 dev-util/intel-ocl-sdk:tools - Install Intel Offline Compiler
 dev-util/kdevelop:gdbui - Enable GUI for attaching GDB to a running process
-dev-util/kdevelop:ninja - Enable support for Ninja build system
 dev-util/kdevelop:okteta - Enable hex editor plugin via kde-apps/okteta
 dev-util/kdevelop:qmake - Enable support for QMake build system
-dev-util/kdevelop:qthelp - Enable support for QtHelp documentation browsing
 dev-util/kdevelop:reviewboard - Enable reviewboard support
 dev-util/kdevelop:webkit - Enable deprecated dev-qt/qtwebkit instead of dev-qt/qtwebengine for integrated documentation
 dev-util/kdevelop:welcomepage - Enable welcome page, requires dev-qt/qtdeclarative
@@ -3926,6 +3925,11 @@ media-fonts/unifont:fontforge - Use media-gfx/fontforge to build fonts from sour
 media-fonts/unifont:utils - Install unifont utilities
 media-gfx/album:plugins - Install optional plugins
 media-gfx/album:themes - Install optional themes
+media-gfx/alembic:boost - Use dev-libs/boost library
+media-gfx/alembic:hdf5 - Add support sci-libs/hdf5
+media-gfx/alembic:pyalembic - Build pyalembic python bindings (needs dev-python/pyilmbase)
+media-gfx/alembic:test - Build and run the test-suite
+media-gfx/alembic:zlib - Use sys-libs/zlib for compressions
 media-gfx/apngasm:7z - Enable support for 7zip compression
 media-gfx/apngasm:zopfli - Enable support for Zopfli compression
 media-gfx/asymptote:boehm-gc - Enables using the Boehm-Demers-Weiser conservative garbage collector
