@@ -93,7 +93,7 @@ src_prepare() {
 	EOF
 
 	local PATCHES=(
-		"${FILESDIR}/234-uucp-group.patch"
+		"${FILESDIR}/236-uucp-group.patch"
 	)
 
 	default
