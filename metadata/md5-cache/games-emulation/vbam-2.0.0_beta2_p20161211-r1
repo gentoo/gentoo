@@ -4,11 +4,11 @@ DESCRIPTION=Game Boy, GBC, and GBA emulator forked from VisualBoyAdvance
 EAPI=6
 HOMEPAGE=http://vba-m.com/
 IUSE=cairo ffmpeg gtk link lirc nls openal +sdl wxwidgets
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=GPL-2+
 RDEPEND=media-libs/libpng:0= media-libs/libsdl2[sound] sys-libs/zlib virtual/glu virtual/opengl link? ( >=media-libs/libsfml-2.0 ) ffmpeg? ( virtual/ffmpeg[-libav] ) lirc? ( app-misc/lirc ) nls? ( virtual/libintl ) sdl? ( media-libs/libsdl[joystick,opengl] ) gtk? ( >=dev-cpp/glibmm-2.4.0:2 >=dev-cpp/gtkmm-2.4.0:2.4 >=dev-cpp/gtkglextmm-1.2.0 ) wxwidgets? ( cairo? ( x11-libs/cairo ) openal? ( media-libs/openal ) x11-libs/wxGTK:3.0[X,opengl] )
 REQUIRED_USE=|| ( sdl gtk wxwidgets )
 SLOT=0
 SRC_URI=https://github.com/visualboyadvance-m/visualboyadvance-m/archive/c2165287938aea2306a75f0714744a6d23ba7dab.tar.gz -> vbam-2.0.0_beta2_p20161211.tar.gz
 _eclasses_=cmake-utils	77a5a8d3308359caadcdd91688f20093	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	fdo-mime	995b19d3f30e956b4e1bc5a91fdc4ea7	flag-o-matic	02908f00f002f0f07c5b74783d778325	gnome2-utils	4d211d7614f303710fca59db6ec12c88	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	toolchain-funcs	185a06792159ca143528e7010368e8af	vcs-snapshot	03289f51c769cf409d200d2d628cdd6e	versionator	c80ccf29e90adea7c5cae94b42eb76d0	wxwidgets	04e063b0eff26daaea83d859dd9d6e05	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=5c1932e981fc0c7d6f939d20ff461b01
+_md5_=876ea157fb100e668d6ea7f6e5833932

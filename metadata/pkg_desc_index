@@ -15020,7 +15020,7 @@ net-libs/libtirpc 1.0.1-r1 1.0.2-r1: Transport Independent RPC library (SunRPC r
 net-libs/libtorrent 0.13.6 0.13.6-r1: BitTorrent library written in C++ for *nix
 net-libs/libtorrent-rasterbar 1.0.11-r1 1.1.5-r1: C++ BitTorrent implementation focusing on efficiency and scalability
 net-libs/libtrace 4.0.1 4.0.2: A library and tools for trace processing
-net-libs/libupnp 1.6.21 1.6.24 1.8.2 1.8.3: An Portable Open Source UPnP Development Kit
+net-libs/libupnp 1.6.21 1.6.24 1.8.2 1.8.3-r1: An Portable Open Source UPnP Development Kit
 net-libs/libvncserver 0.9.11-r1: library for creating vnc servers
 net-libs/libwebsockets 1.7.9 2.0.2 2.1.1: canonical libwebsockets.org websocket library
 net-libs/libwhisker 2.5-r1: Perl module geared to HTTP testing
