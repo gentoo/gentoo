@@ -328,7 +328,10 @@ multilib_src_install_all() {
 	rm -fr "${ED%/}"/etc/systemd/system/sockets.target.wants || die
 	rm -fr "${ED%/}"/etc/systemd/system/sysinit.target.wants || die
 
-	rm -r "${ED%/}"/lib/udev/hwdb.d || die
+	local udevdir=/lib/udev
+	use usrmerge && udevdir=/usr/lib/udev
+
+	rm -r "${ED%/}${udevdir}/hwdb.d" || die
 
 	if ! use usrmerge; then
 		# Avoid breaking boot/reboot
