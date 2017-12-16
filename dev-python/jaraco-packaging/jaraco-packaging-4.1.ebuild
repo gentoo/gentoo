@@ -35,8 +35,9 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 python_compile_all() {
 	if use doc; then
-		sphinx-build docs html || die "docs failed to build"
-		HTML_DOCS=( html/. )
+		cd docs || die
+		sphinx-build . _build/html || die
+		HTML_DOCS=( docs/_build/html/. )
 	fi
 }
 
