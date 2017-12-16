@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -124,7 +124,7 @@ DEPEND="${DEPEND}
 src_configure() {
 	local CFLAGS="${CFLAGS}"
 	local with_curses
-	use hardened && CFLAGS="${CFLAGS} -nopie"
+	use hardened && CFLAGS="${CFLAGS} -no-pie"
 
 	if use ncurses; then
 		if use unicode; then
