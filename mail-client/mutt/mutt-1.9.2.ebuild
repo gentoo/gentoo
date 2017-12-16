@@ -5,7 +5,7 @@ EAPI="6"
 
 inherit eutils flag-o-matic autotools
 
-PATCHREV="r3"
+PATCHREV="r0"
 PATCHSET="gentoo-${PVR}/${PATCHREV}"
 
 DESCRIPTION="A small but very powerful text-based mail client"
@@ -14,16 +14,17 @@ MUTT_G_PATCHES="mutt-gentoo-${PV}-patches-${PATCHREV}.tar.xz"
 SRC_URI="ftp://ftp.mutt.org/pub/mutt/${P}.tar.gz
 	https://bitbucket.org/${PN}/${PN}/downloads/${P}.tar.gz
 	https://dev.gentoo.org/~grobian/distfiles/${MUTT_G_PATCHES}"
-IUSE="berkdb crypt debug doc gdbm gnutls gpg +hcache idn imap kerberos libressl lmdb mbox nls nntp notmuch pop qdbm sasl selinux sidebar slang smime smtp ssl tokyocabinet vanilla prefix"
+IUSE="berkdb crypt debug doc gdbm gnutls gpg gpgme +hcache idn imap kerberos libressl lmdb mbox nls nntp notmuch pgp_classic pop qdbm sasl selinux sidebar slang smime smime_classic smtp ssl tokyocabinet vanilla prefix"
 REQUIRED_USE="
-	hcache?   ( ^^ ( berkdb gdbm lmdb qdbm tokyocabinet ) )
-	imap?     ( ssl )
-	pop?      ( ssl )
-	nntp?     ( ssl )
-	smime?    ( ssl !gnutls )
-	smtp?     ( ssl )
-	sasl?     ( || ( imap pop smtp nntp ) )
-	kerberos? ( || ( imap pop smtp nntp ) )"
+	hcache?           ( ^^ ( berkdb gdbm lmdb qdbm tokyocabinet ) )
+	imap?             ( ssl )
+	pop?              ( ssl )
+	nntp?             ( ssl )
+	smime?            ( ssl !gnutls )
+	smime_classic?    ( ssl !gnutls )
+	smtp?             ( ssl )
+	sasl?             ( || ( imap pop smtp nntp ) )
+	kerberos?         ( || ( imap pop smtp nntp ) )"
 SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
@@ -49,6 +50,7 @@ CDEPEND="
 	kerberos?      ( virtual/krb5 )
 	idn?           ( net-dns/libidn )
 	gpg?           ( >=app-crypt/gpgme-0.9.0:= )
+	gpgme?         ( >=app-crypt/gpgme-0.9.0:= )
 	notmuch?       ( net-mail/notmuch:= )
 	slang?         ( sys-libs/slang )
 	!slang?        ( >=sys-libs/ncurses-5.2:0= )
@@ -63,6 +65,10 @@ DEPEND="${CDEPEND}
 	)"
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-mutt )
+	smime? ( || ( dev-libs/libressl >=dev-libs/openssl-0.9.6:0 ) )
+	smime_classic? ( || ( dev-libs/libressl >=dev-libs/openssl-0.9.6:0 ) )
+	crypt? ( app-crypt/gnupg )
+	pgp_classic? ( app-crypt/gnupg )
 "
 
 src_prepare() {
@@ -72,8 +78,7 @@ src_prepare() {
 		# apply patches
 		export EPATCH_FORCE="yes"
 		export EPATCH_SUFFIX="patch"
-		# http://hg.code.sf.net/p/gentoomutt/code/file/gentoo-1.8
-		# http://hg.code.sf.net/p/gentoomuttpatches/code/file/mutt-1.8
+		# http://hg.code.sf.net/p/gentoomuttpatches/code/file/mutt-1.9
 		local patches=(
 			patches-mutt
 			bugs-gentoo
@@ -84,7 +89,7 @@ src_prepare() {
 		local patchset
 		for patchset in "${patches[@]}" ; do
 			[[ -d "${PATCHDIR}/${patchset}" ]] || continue
-			einfo "Applying ${PATCHSET} patchset ${patchset}"
+			einfo "Patches for ${PATCHSET} patchset ${patchset}"
 			EPATCH_SOURCE="${PATCHDIR}"/${patchset} epatch \
 				|| die "patchset ${patchset} failed"
 		done
@@ -115,29 +120,42 @@ src_prepare() {
 
 src_configure() {
 	local myconf=(
-		"$(use_enable crypt pgp)"
-		"$(use_enable debug)"
-		"$(use_enable doc)"
-		"$(use_enable gpg gpgme)"
-		"$(use_enable nls)"
-		"$(use_enable notmuch)"
-		"$(use_enable sidebar)"
-		"$(use_enable smime)"
+		# signing and encryption
+		# clumpsy blocks for transition period of USE-flag renames
+		$(use crypt         && use_enable crypt pgp)
+		$(use pgp_classic   && use_enable pgp_classic pgp)
+		$(use !crypt && use !pgp_classic && echo "--disable-pgp")
 
-		"$(use_enable imap)"
-		"$(use_enable pop)"
-		"$(use_enable nntp)"
-		"$(use_enable smtp)"
+		$(use smime         && use_enable smime)
+		$(use smime_classic && use_enable smime_classic smime)
+		$(use !smime && use !smime_classic && echo "--disable-smime")
+
+		$(use gpg           && use_enable gpg gpgme)
+		$(use gpgme         && use_enable gpgme)
+		$(use !gpg && use !gpgme && echo "--disable-gpgme")
+
+		# features
+		$(use_enable debug)
+		$(use_enable doc)
+		$(use_enable nls)
+		$(use_enable notmuch)
+		$(use_enable sidebar)
+
+		# protocols
+		$(use_enable imap)
+		$(use_enable pop)
+		$(use_enable nntp)
+		$(use_enable smtp)
 
 		$(use  ssl && use  gnutls && echo --with-gnutls    --without-ssl)
 		$(use  ssl && use !gnutls && echo --without-gnutls --with-ssl   )
 		$(use !ssl &&                echo --without-gnutls --without-ssl)
 
-		"$(use_with idn)"
-		"$(use_with kerberos gss)"
-		"$(use_with sasl)"
-		"$(use slang && echo --with-slang=${EPREFIX}/usr)"
-		"$(use_with !slang curses ${EPREFIX}/usr)"
+		$(use_with sasl)
+		$(use_with idn)
+		$(use_with kerberos gss)
+		"$(use slang && echo --with-slang="${EPREFIX}"/usr || echo a=b)"
+		"$(use_with !slang curses "${EPREFIX}"/usr)"
 
 		"--enable-compressed"
 		"--enable-external-dotlock"
@@ -235,18 +253,21 @@ pkg_postinst() {
 		elog "the Gentoo QuickStart Guide to Mutt E-Mail:"
 		elog "   https://wiki.gentoo.org/wiki/Mutt"
 		echo
-	else
-		local ver
-		local preconddate=
-		for ver in ${REPLACING_VERSIONS} ; do
-			[[ ${ver} == "1.5"* || ${ver} == "1.6"* ]] && preconddate=true
-		done
-		if [[ -n ${preconddate} ]] ; then
-			echo
-			elog "The SmartTime functionality has been replaced with"
-			elog "CondDate feature.  To mimic SmartTime, use this CondDate formatter:"
-			elog "%<[12m?%<[7d?%<[12H?%[%H:%M ]&%[%a-%d]>&%[%d-%b]>&%[%b-%y]>"
-			echo
+	fi
+	if use crypt || use gpg || use smime ; then
+		ewarn "Please note that the crypto related USE-flags of mutt have changed."
+		ewarn "To remove some unclarity, the following USE-flags are renamed:"
+		ewarn "(see https://bugs.gentoo.org/637176)"
+		ewarn "  crypt -> pgp_classic"
+		ewarn "  gpg   -> gpgme"
+		ewarn "  smime -> smime_classic"
+		ewarn "The old USE flags still work but their use is deprecated and will"
+		ewarn "be removed in a future release.  Please update your package.use"
+		if use gpg && ( use crypt || use smime ) ; then
+			ewarn "  Note that gpgme (old gpg) includes both pgp and smime"
+			ewarn "  support.  You can probably remove pgp_classic (old crypt)"
+			ewarn "  and smime_classic (old smime) from your USE-flags and"
+			ewarn "  only enable gpgme."
 		fi
 	fi
 }
