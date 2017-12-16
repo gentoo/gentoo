@@ -15557,8 +15557,8 @@ net-misc/wicd 1.7.4-r3: A lightweight wired and wireless network manager for Lin
 net-misc/wol 0.7.1-r1: Wake up hardware that is Magic Packet compliant
 net-misc/wput 0.6.1 0.6.1-r1: Tiny program like wget, to upload files/whole directories via FTP
 net-misc/x11-ssh-askpass 1.2.4.1-r1: X11-based passphrase dialog for use with OpenSSH
-net-misc/x2goclient 4.0.3.2 4.1.0.0-r1 4.1.0.1 4.1.0.1-r1 4.1.1.0: The X2Go Qt client
-net-misc/x2goserver 4.0.1.19 4.0.1.20 4.0.1.21 4.0.1.22: The X2Go server
+net-misc/x2goclient 4.1.0.0-r1 4.1.0.1 4.1.0.1-r1 4.1.1.0: The X2Go Qt client
+net-misc/x2goserver 4.0.1.20 4.0.1.21 4.0.1.22: The X2Go server
 net-misc/yandex-disk 0.1.5.940_p1 0.1.5.978_p1: CLI to access Yandex Disk file storage service
 net-misc/yangcli-pro 16.10_p8: Network manager client that lets you test and manage NETCONF servers
 net-misc/you-get 0.4.536: utility to download media contents from the web
