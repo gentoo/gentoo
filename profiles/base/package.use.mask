@@ -335,7 +335,7 @@ app-arch/cfv bittorrent
 # Fabian Groffen <grobian@gentoo.org> (08 Sep 2015)
 # GnuTLS support is currently broken/causes hang, bug #559834
 # http://dev.mutt.org/trac/ticket/3772
->=mail-client/mutt-1.5.23-r8 gnutls
+<mail-client/mutt-1.9.0 gnutls
 
 # Jason Zaman <perfinion@gentoo.org> (06 Sep 2015)
 # This is for cgmanager which is linux only.
