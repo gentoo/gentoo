@@ -19,7 +19,7 @@ REQUIRED_USE="
 	vala? ( introspection )
 "
 
-KEYWORDS="alpha ~amd64 ~arm ~arm64 hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha amd64 ~arm ~arm64 hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 RDEPEND="
 	>=dev-libs/glib-2.44.0:2
