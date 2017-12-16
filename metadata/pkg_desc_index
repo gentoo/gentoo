@@ -16802,7 +16802,7 @@ sci-visualization/gcalc 3.1_rc1-r1: Java Mathematical Graphing System
 sci-visualization/gfsview 20120706-r1: Graphical viewer for Gerris simulation files
 sci-visualization/ggobi 2.1.10 2.1.11: Visualization program for exploring high-dimensional data
 sci-visualization/gle 4.2.4c 4.2.5: Graphics Layout Engine
-sci-visualization/gnuplot 5.0.1-r1 5.0.5 5.0.6 5.0.7 5.2.2 5.2.9999 5.3.9999: Command-line driven interactive plotting program
+sci-visualization/gnuplot 5.0.1-r1 5.0.6 5.0.7 5.2.2 5.2.9999 5.3.9999: Command-line driven interactive plotting program
 sci-visualization/grace 5.1.23 5.1.23-r1 5.1.25: Motif based XY-plotting tool
 sci-visualization/gri 2.12.23-r1: Language for scientific graphics programming
 sci-visualization/gwyddion 2.44 2.47: Framework for Scanning Mode Microscopy data analysis
@@ -18454,7 +18454,7 @@ www-apps/webmcp 1.2.5 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-apps/wiliki 0.6.1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 4.8.3 4.9 4.9.1: Wordpress PHP and MySQL based content management system (CMS)
-www-client/chromium 63.0.3239.84 63.0.3239.90 64.0.3282.14 64.0.3282.24: Open-source version of Google Chrome web browser
+www-client/chromium 63.0.3239.84 63.0.3239.108 64.0.3282.14 64.0.3282.24: Open-source version of Google Chrome web browser
 www-client/ck4up 1.2: Check for Updates on HTTP pages
 www-client/conkeror 1.0_pre20140212 1.0.3 1.0.4: A Mozilla-based web browser whose design is inspired by GNU Emacs
 www-client/dillo 3.0.5 3.0.5-r1: Lean FLTK based web browser
