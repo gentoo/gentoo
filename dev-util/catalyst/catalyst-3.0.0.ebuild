@@ -35,11 +35,11 @@ RDEPEND="
 	>=dev-python/pydecomp-0.2[${PYTHON_USEDEP}]
 	app-arch/lbzip2
 	app-crypt/shash
+	sys-fs/dosfstools
 	!x86-fbsd? ( || ( app-arch/tar[xattr] app-arch/libarchive[xattr] ) )
 	x86-fbsd? ( app-arch/libarchive[xattr] )
 	virtual/cdrtools
 	amd64? ( >=sys-boot/syslinux-3.72 )
-	ia64? ( sys-fs/dosfstools )
 	x86? ( >=sys-boot/syslinux-3.72 )
 	ccache? ( dev-util/ccache )
 	kernel_linux? ( app-misc/zisofs-tools >=sys-fs/squashfs-tools-2.1 )
