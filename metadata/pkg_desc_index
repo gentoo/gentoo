@@ -6390,16 +6390,16 @@ dev-perl/Net-OpenSSH 0.600.0 0.700.0 0.740.0: Net::OpenSSH, Perl wrapper for Ope
 dev-perl/Net-Patricia 1.210.0-r1 1.220.0 1.220.0-r1: Patricia Trie perl module for fast IP address lookups
 dev-perl/Net-Pcap 0.170.0-r1 0.180.0: Interface to the pcap(3) LBL packet capture library
 dev-perl/Net-PcapUtils 0.10.0-r1 0.10.0-r2: Utility routines for use with Net::Pcap
-dev-perl/Net-RBLClient 0.500.0-r1: Net::RBLClient - Queries multiple Realtime Blackhole Lists in parallel
-dev-perl/Net-RawIP 0.250.0-r1: Perl Net::RawIP - Raw IP packets manipulation Module
-dev-perl/Net-SFTP 0.100.0-r1: Secure File Transfer Protocol client
+dev-perl/Net-RBLClient 0.500.0-r1 0.500.0-r2: Queries multiple Realtime Blackhole Lists in parallel
+dev-perl/Net-RawIP 0.250.0-r1 0.250.0-r2: Raw IP packets manipulation Module
+dev-perl/Net-SFTP 0.100.0-r1 0.100.0-r2: Secure File Transfer Protocol client
 dev-perl/Net-SFTP-Foreign 1.810.0 1.870.0: SSH File Transfer Protocol client
 dev-perl/Net-SMTP-SSL 1.30.0 1.40.0: (Deprecated) SSL support for Net::SMTP
 dev-perl/Net-SMTP-TLS 0.120.0-r2: A SMTP client supporting TLS and AUTH
 dev-perl/Net-SMTP-TLS-ButMaintained 0.240.0-r1: An SMTP client supporting TLS and AUTH
 dev-perl/Net-SMTPS 0.40.0 0.50.0 0.60.0 0.90.0: SSL/STARTTLS support for Net::SMTP
 dev-perl/Net-SNMP 6.0.1-r1 6.0.1-r2: A SNMP Perl Module
-dev-perl/Net-SNPP 1.170.0-r1: libnet SNPP component
+dev-perl/Net-SNPP 1.170.0-r1 1.170.0-r2: libnet SNPP component
 dev-perl/Net-SSH-Any 0.40.0 0.100.0: Use any SSH module
 dev-perl/Net-SSH-AuthorizedKeysFile 0.170.0 0.180.0: Read and modify ssh's authorized_keys files
 dev-perl/Net-SSH-Perl 1.360.0-r1 1.420.0 2.90.0_p1-r2 2.140.0: Perl client Interface to SSH
@@ -10489,7 +10489,7 @@ dev-util/dwdiff 2.1.0 2.1.0-r1 2.1.1: diff-like program operating at word level 
 dev-util/edb-debugger 0.9.21 9999: edb is a cross platform x86/x86-64 debugger, inspired by Ollydbg
 dev-util/editorconfig-geany 0.1_p20160725: EditorConfig plugin for Geany
 dev-util/egypt 1.10: devilishly simple tool for creating call graphs of C programs
-dev-util/electron 0.36.12-r5 0.37.8-r2 1.3.13-r1 1.6.15: Cross platform application development framework based on web technologies
+dev-util/electron 1.6.15: Cross platform application development framework based on web technologies
 dev-util/elfkickers 3.0a 3.1: collection of programs to manipulate ELF files: sstrip, rebind, elfls, elftoc
 dev-util/emilpro 3-r3 9999: a graphical disassembler for a large number of instruction sets
 dev-util/eric 17.09 17.11: A full featured Python IDE using PyQt and QScintilla
@@ -15040,7 +15040,7 @@ net-libs/netembryo 0.1.1: a network abstraction library
 net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP protocols
 net-libs/nfqueue-bindings 0.5 0.6: High-level language bindings for libnetfilter_queue
 net-libs/nghttp2 1.10.0 1.19.0 1.27.0 1.28.0 9999: HTTP/2 C Library
-net-libs/nodejs 0.12.17 4.8.5 6.9.4 6.11.5 8.9.3 9.2.1 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
+net-libs/nodejs 0.12.17 4.8.5 6.9.4 6.11.5 8.9.3 9.2.1 9.3.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-libs/ntirpc 1.4.1 1.5.2 1.5.3: Transport Independent RPC library for nfs-ganesha
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
