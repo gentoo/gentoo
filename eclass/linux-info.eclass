@@ -477,12 +477,17 @@ get_version() {
 
 	if [ ! -s "${KV_DIR}/Makefile" ]
 	then
-		if [ -z "${get_version_warning_done}" ]; then
-			get_version_warning_done=1
-			qeerror "Could not find a Makefile in the kernel source directory."
-			qeerror "Please ensure that ${KERNEL_DIR} points to a complete set of Linux sources"
+		if [ ! -s "${KBUILD_OUTPUT}/Makefile" ]; then
+			if [ -z "${get_version_warning_done}" ]; then
+				get_version_warning_done=1
+				qeerror "Could not find a Makefile in the kernel source directory."
+				qeerror "Please ensure that ${KERNEL_DIR} points to a complete set of Linux sources"
+			fi
+			return 1
 		fi
-		return 1
+		KERNEL_MAKEFILE="${KBUILD_OUTPUT}/Makefile"
+	else
+		KERNEL_MAKEFILE="${KV_DIR}/Makefile"
 	fi
 
 	# OK so now we know our sources directory, but they might be using
@@ -490,9 +495,6 @@ get_version() {
 	# so we better find it eh?
 	# do we pass KBUILD_OUTPUT on the CLI?
 	local OUTPUT_DIR=${KBUILD_OUTPUT}
-
-	# keep track of it
-	KERNEL_MAKEFILE="${KV_DIR}/Makefile"
 
 	if [[ -z ${OUTPUT_DIR} ]]; then
 		# Decide the function used to extract makefile variables.
@@ -513,7 +515,7 @@ get_version() {
 	KV_PATCH=$(getfilevar_noexec SUBLEVEL "${KERNEL_MAKEFILE}")
 	KV_EXTRA=$(getfilevar_noexec EXTRAVERSION "${KERNEL_MAKEFILE}")
 
-	if [ -z "${KV_MAJOR}" -o -z "${KV_MINOR}" -o -z "${KV_PATCH}" ]
+	if [ -z "${KV_MAJOR}" -o -z "${KV_MINOR}" ]
 	then
 		if [ -z "${get_version_warning_done}" ]; then
 			get_version_warning_done=1
@@ -521,6 +523,13 @@ get_version() {
 			qeerror "Please ensure that ${KERNEL_DIR} points to a complete set of Linux sources."
 		fi
 		return 1
+	fi
+
+	# ${KBUILD_OUTPUT}/Makefile does not contain SUBLEVEL, so provide a fallback
+	if [ -z "${KV_PATCH}" ]
+	then
+		KV_PATCH=0
+		qewarn "Could not detect complete kernel version, assuming ${KV_MAJOR}.${KV_MINOR}.${KV_PATCH}"
 	fi
 
 	# and in newer versions we can also pull LOCALVERSION if it is set.
