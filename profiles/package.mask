@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Gilbert <floppym@gentoo.org> (16 Dec 2017)
+# Dev channel releases are only for people who are developers or want more
+# experimental features and accept a more unstable release.
+>=www-client/chromium-65
+
 # Aaron W. Swenson <titanofold.org> (15 Dec 2017)
 # Masked for removal in 30 days (2017-01-14). Upstream doesn't appear
 # to be active and is really far behind in supporting the latest
@@ -447,11 +452,6 @@ virtual/jre:1.7
 <media-sound/audacious-3.9
 <media-plugins/audacious-plugins-3.9
 <x11-themes/audacious-themes-0.0.4-r1
-
-# Mike Gilbert <floppym@gentoo.org> (04 Nov 2017)
-# Dev channel releases are only for people who are developers or want more
-# experimental features and accept a more unstable release.
->=www-client/chromium-64
 
 # Marc Schiffbauer <mschiff@gentoo.org> (01 Nov 2017)
 # Upstream abandoned obnam as of the end of the year

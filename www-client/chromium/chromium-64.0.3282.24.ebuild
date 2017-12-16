@@ -146,6 +146,7 @@ PATCHES=(
 	"${FILESDIR}/chromium-FORTIFY_SOURCE-r2.patch"
 	"${FILESDIR}/chromium-webrtc-r0.patch"
 	"${FILESDIR}/chromium-memcpy-r0.patch"
+	"${FILESDIR}/chromium-cups-r0.patch"
 )
 
 pre_build_checks() {
