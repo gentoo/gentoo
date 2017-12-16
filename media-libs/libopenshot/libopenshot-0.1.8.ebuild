@@ -13,7 +13,7 @@ SRC_URI="https://github.com/OpenShot/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="+imagemagick libav +python test"
 # https://github.com/OpenShot/libopenshot/issues/43
 RESTRICT="test"
