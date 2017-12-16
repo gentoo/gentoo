@@ -512,12 +512,6 @@ sys-devel/automake:1.6
 sys-devel/automake:1.7
 sys-devel/automake:1.8
 
-# Lars Wendler <polynomial-c@gentoo.org> (12 Oct 2017)
-# Dead upstream. No qt5 release. Use app-admin/keepassxc as drop-in
-# replacement which has very active upstream and regular releases.
-# Masked for removal in 30 days.
-app-admin/keepassx
-
 # Kent Fredric <kentnl@gentoo.org> (11 Oct 2017)
 # This package should now be provided entirely by dev-lang/perl,
 # stable perl 5.24 provides Unicode-Collate-1.140.0
