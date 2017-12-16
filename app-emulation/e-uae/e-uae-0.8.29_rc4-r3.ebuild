@@ -23,7 +23,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ppc x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="X dga ncurses sdl alsa oss sdl-sound capslib"
 
 # Note: opposed to ./configure --help zlib support required! Check
