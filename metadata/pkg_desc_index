@@ -5746,7 +5746,7 @@ dev-perl/Data-Dump-Streamer 2.400.0: Accurately serialize a data structure as Pe
 dev-perl/Data-DumpXML 1.60.0-r1: Dump arbitrary data structures as XML
 dev-perl/Data-Dumper-Concise 2.23.0: Less indentation and newlines plus sub deparsing
 dev-perl/Data-Float 0.12.0 0.13.0: details of the floating point data type
-dev-perl/Data-FormValidator 4.810.0-r1 4.850.0 4.860.0 4.860.0-r1 4.880.0: Validates user input (usually from an HTML form) based on input profile
+dev-perl/Data-FormValidator 4.860.0-r1 4.880.0: Validates user input (usually from an HTML form) based on input profile
 dev-perl/Data-GUID 0.48.0 0.49.0: Simple interface for generating and using globally unique identifiers
 dev-perl/Data-HexDump 0.02-r1 0.20.0: A Simple Hexadecial Dumper
 dev-perl/Data-Hexify 1.0.0-r1: Perl extension for hexdumping arbitrary data
@@ -6229,7 +6229,7 @@ dev-perl/Mail-Box-POP3 3.1.0 3.3.0: Mail::Box connector via POP3
 dev-perl/Mail-Builder 2.90.0 2.130.0: Easily create plaintext/html e-mail messages with attachments and inline images
 dev-perl/Mail-Builder-Simple 0.160.0-r1: Send UTF-8 HTML and text email using templates
 dev-perl/Mail-DKIM 0.400.0 0.410.0 0.440.0: Signs/verifies Internet mail using DKIM message signatures
-dev-perl/Mail-DMARC 1.201.509.80 1.201.709.110: Perl implementation of DMARC
+dev-perl/Mail-DMARC 1.201.709.110: Perl implementation of DMARC
 dev-perl/Mail-DomainKeys 1.0.0-r1: A perl implementation of DomainKeys
 dev-perl/Mail-IMAPClient 3.370.0 3.380.0 3.390.0: IMAP client module for Perl
 dev-perl/Mail-ListDetector 1.40.0-r1: Perl extension for detecting mailing list messages
@@ -6368,7 +6368,7 @@ dev-perl/Net-FreeDB 0.80.0-r1 0.100.0: OOP interface to the FreeDB database
 dev-perl/Net-Google-SafeBrowsing-Blocklist 1.40.0-r1 1.40.0-r2: Query a Google SafeBrowsing table
 dev-perl/Net-HTTP 6.90.0 6.120.0 6.130.0 6.150.0 6.160.0 6.170.0: Low-level HTTP connection (client)
 dev-perl/Net-IDN-Encode 2.300.0 2.301.0 2.302.0 2.303.0 2.400.0: Internationalizing Domain Names in Applications (IDNA)
-dev-perl/Net-IMAP-Simple 1.220.600 1.220.900: Perl extension for simple IMAP account handling
+dev-perl/Net-IMAP-Simple 1.220.900: Perl extension for simple IMAP account handling
 dev-perl/Net-IMAP-Simple-SSL 1.300.0-r1: SSL support for Net::IMAP::Simple
 dev-perl/Net-IP 1.260.0-r1: Perl extension for manipulating IPv4/IPv6 addresses
 dev-perl/Net-IP-Minimal 0.60.0: Minimal functions from Net::IP
@@ -15040,7 +15040,7 @@ net-libs/netembryo 0.1.1: a network abstraction library
 net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP protocols
 net-libs/nfqueue-bindings 0.5 0.6: High-level language bindings for libnetfilter_queue
 net-libs/nghttp2 1.10.0 1.19.0 1.27.0 1.28.0 9999: HTTP/2 C Library
-net-libs/nodejs 0.12.17 4.8.5 6.9.4 6.11.5 8.9.3 9.2.1 9.3.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
+net-libs/nodejs 0.12.17 4.8.5 6.9.4 6.11.5 6.12.2 8.9.3 9.2.1 9.3.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-libs/ntirpc 1.4.1 1.5.2 1.5.3: Transport Independent RPC library for nfs-ganesha
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
