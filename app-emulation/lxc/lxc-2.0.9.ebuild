@@ -11,7 +11,7 @@ DESCRIPTION="LinuX Containers userspace utilities"
 HOMEPAGE="https://linuxcontainers.org/"
 SRC_URI="https://linuxcontainers.org/downloads/lxc/${P}.tar.gz"
 
-KEYWORDS="~amd64 ~arm ~arm64"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 LICENSE="LGPL-3"
 SLOT="0"
@@ -31,7 +31,6 @@ DEPEND="${RDEPEND}
 	>=sys-kernel/linux-headers-3.2"
 
 RDEPEND="${RDEPEND}
-	sys-process/criu[selinux=]
 	sys-apps/util-linux
 	app-misc/pax-utils
 	virtual/awk"
@@ -189,7 +188,7 @@ src_install() {
 	DOC_CONTENTS="
 	Starting from version ${PN}-1.1.0-r3, the default lxc path has been
 	moved from /etc/lxc to /var/lib/lxc. If you still want to use /etc/lxc
-	please add the following to your /etc/lxc/default.conf
+	please add the following to your /etc/lxc/lxc.conf
 
 	  lxc.lxcpath = /etc/lxc
 
@@ -200,7 +199,10 @@ src_install() {
 
 	Correspondingly, for systemd a service file lxc@.service is installed.
 	Enable and start lxc@configname in order to start the container defined
-	in /etc/lxc/configname.conf."
+	in /etc/lxc/configname.conf.
+
+	If you want checkpoint/restore functionality, please install criu
+	(sys-process/criu)."
 	DISABLE_AUTOFORMATTING=true
 	readme.gentoo_create_doc
 }
