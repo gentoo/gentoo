@@ -11,10 +11,10 @@ DESCRIPTION="highly flexible status line for the i3 window manager"
 HOMEPAGE="https://github.com/vivien/i3blocks"
 if [[ ${PV} = 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/vivien/${PN}"
-	KEYWORDS="x86"
+	KEYWORDS="amd64 x86"
 else
 	SRC_URI="https://github.com/vivien/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 x86"
+	KEYWORDS="amd64 x86"
 fi
 
 SLOT="0"
