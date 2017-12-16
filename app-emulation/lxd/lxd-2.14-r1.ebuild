@@ -38,7 +38,7 @@ EGO_VENDOR=(
 ARCHIVE_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 PLOCALES="de el fr it ja nl ru sr sv tr"
 IUSE="+daemon nls test"

@@ -61,7 +61,9 @@ src_install () {
 	# Slot pkgconfig
 	cd "${D}/usr/$(get_libdir)/pkgconfig" || die
 	mv libupnp.pc "libupnp-${SLOT}.pc" || die
-	sed -i "s#/upnp#/upnp-${SLOT}#" "libupnp-${SLOT}.pc" || die
+	sed -i -e "s#/upnp#/upnp-${SLOT}#" \
+		-e "s#lupnp#lupnp-${SLOT}#" \
+		-e "s#lixml#lixml-${SLOT}#" "libupnp-${SLOT}.pc" || die
 
 	# Slot symlinks
 	cd "${D}/usr/$(get_libdir)" || die

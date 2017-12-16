@@ -13,7 +13,7 @@ HOMEPAGE="http://gcmd.github.io/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="chm exif gsf pdf python taglib samba test +unique"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
