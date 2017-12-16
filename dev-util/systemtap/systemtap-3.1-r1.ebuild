@@ -33,7 +33,9 @@ ERROR_DEBUG_FS="${PN} works best with support for Debug Filesystem (DEBUG_FS) - 
 
 DOCS="AUTHORS HACKING NEWS README"
 
-PATCHES=("${FILESDIR}"/${PN}-3.1-ia64.patch)
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.1-ia64.patch
+)
 
 pkg_setup() {
 	linux-info_pkg_setup
