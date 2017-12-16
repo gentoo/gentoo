@@ -10,7 +10,7 @@ SRC_URI="http://pawsa.fedorapeople.org/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 
 IUSE="crypt gnome gnome-keyring kerberos ldap libnotify libressl rubrica sqlite webkit xface"
 
