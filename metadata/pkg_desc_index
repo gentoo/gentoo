@@ -4643,7 +4643,7 @@ dev-libs/OpenSRF 1.2.0 2.1.1: Framework for the high-level development of the Ev
 dev-libs/UTF8Strings 1.14.0 1.14.2: C++ library providing ability to work natively with UTF8 string
 dev-libs/ace 5.7.2 5.8.3: The Adaptive Communications Environment
 dev-libs/actor-framework 0.13.2 0.14.5: The C++ Actor Framework (CAF)
-dev-libs/amdgpu-pro-opencl 17.10.429170 17.30.458935-r1 17.30.465504 17.40.492261 17.50.511655: Proprietary OpenCL implementation for AMD GPUs
+dev-libs/amdgpu-pro-opencl 17.40.492261 17.50.511655: Proprietary OpenCL implementation for AMD GPUs
 dev-libs/angelscript 2.31.2: A flexible, cross-platform scripting library
 dev-libs/antlr-c 3.5.2: The ANTLR3 C Runtime
 dev-libs/appstream 0.10.6-r1 0.11.5: Cross-distro effort for providing metadata for software in the Linux ecosystem
