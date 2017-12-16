@@ -3,10 +3,10 @@ DEPEND=>=dev-libs/glib-2.49.4:2 >=x11-libs/gdk-pixbuf-2.30:2 !<x11-libs/gtk+-2.2
 DESCRIPTION=GTK update icon cache
 EAPI=6
 HOMEPAGE=https://www.gtk.org/ https://github.com/EvaSDK/gtk-update-icon-cache
-KEYWORDS=alpha ~amd64 ~arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=alpha amd64 ~arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=LGPL-2+
 RDEPEND=>=dev-libs/glib-2.49.4:2 >=x11-libs/gdk-pixbuf-2.30:2 !<x11-libs/gtk+-2.24.28-r1:2 !<x11-libs/gtk+-3.22.2:3
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~eva/distfiles/gtk-update-icon-cache/gtk-update-icon-cache-3.22.19.tar.xz
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	gnome.org	5e4cc5af3f1b17bdee155bf02e8c2df4	gnome2	6e4acb9c9da2cfa25f2dfedb93bb4a43	gnome2-utils	4d211d7614f303710fca59db6ec12c88	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0	xdg	6cd76cc914c1a759dee032778487b57f	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=939125d1ec2af22f15b2cfa62a8dd082
+_md5_=8f7879b2d36c968dc283ecbae6809186
