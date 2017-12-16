@@ -31,7 +31,6 @@ DEPEND="${RDEPEND}
 	>=sys-kernel/linux-headers-3.2"
 
 RDEPEND="${RDEPEND}
-	sys-process/criu[selinux=]
 	sys-apps/util-linux
 	app-misc/pax-utils
 	virtual/awk"
@@ -200,7 +199,10 @@ src_install() {
 
 	Correspondingly, for systemd a service file lxc@.service is installed.
 	Enable and start lxc@configname in order to start the container defined
-	in /etc/lxc/configname.conf."
+	in /etc/lxc/configname.conf.
+
+	If you want checkpoint/restore functionality, please install criu
+	(sys-process/criu)."
 	DISABLE_AUTOFORMATTING=true
 	readme.gentoo_create_doc
 }
