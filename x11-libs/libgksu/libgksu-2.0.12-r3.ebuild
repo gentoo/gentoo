@@ -12,7 +12,7 @@ SRC_URI="https://people.debian.org/~kov/gksu/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="2"
-KEYWORDS="alpha ~amd64 ~arm ~arm64 ia64 ~mips ppc ppc64 ~sh sparc ~x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 ~arm ~arm64 ia64 ~mips ppc ppc64 ~sh sparc ~x86 ~x86-fbsd"
 IUSE="nls static-libs"
 
 COMMON_DEPEND="
