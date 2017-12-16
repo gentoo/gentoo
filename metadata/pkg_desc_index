@@ -17292,7 +17292,7 @@ sys-apps/pkgcore 0.9.4 0.9.7 9999: a framework for package management
 sys-apps/pmount 0.9.99_alpha-r3 0.9.99_alpha-r5: Policy based mounter that gives the ability to mount removable devices as a user
 sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
 sys-apps/policycoreutils 2.6-r1 2.7 9999: SELinux core utilities
-sys-apps/portage 2.3.6 2.3.8 2.3.13 2.3.13-r1 2.3.14 2.3.16 2.3.18 9999: Portage is the package management and distribution system for Gentoo
+sys-apps/portage 2.3.6 2.3.8 2.3.13 2.3.13-r1 2.3.14 2.3.16 2.3.19 9999: Portage is the package management and distribution system for Gentoo
 sys-apps/powerpc-utils 1.1.3.18-r2: PowerPC utilities including nvsetenv, and additional OldWorld apps
 sys-apps/prctl 1.5 1.6: Tool to query and modify process behavior
 sys-apps/prefix-chain-utils 0.2-r7: Chained EPREFIX utilities and wrappers
@@ -18864,7 +18864,7 @@ x11-misc/Xorgautoconfig 0.2.4-r1: Xorgautconfig generates xorg.conf files for PP
 x11-misc/accessx 0951-r2: Interface to the XKEYBOARD extension in X11
 x11-misc/afbinit 1.0.1-r7: loads the microcode for Elite3D framebuffers to use X
 x11-misc/alacarte 3.11.91: Simple GNOME menu editor
-x11-misc/albert 0.12.0 0.14.2 0.14.3 0.14.4 0.14.6 0.14.7 0.14.10: Desktop agnostic launcher
+x11-misc/albert 0.12.0 0.14.2 0.14.3 0.14.4 0.14.6 0.14.7 0.14.10 0.14.14: Desktop agnostic launcher
 x11-misc/alock 1.0.0: locks the local X display until a password is entered
 x11-misc/appmenu-qt 0.2.6: Application menu module for Qt
 x11-misc/apwal 0.4.5-r2: A simple application launcher and combined editor
