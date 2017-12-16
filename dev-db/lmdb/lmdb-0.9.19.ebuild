@@ -38,6 +38,8 @@ src_configure() {
 	if [[ ${CHOST} == *-solaris* ]] ; then
 		# ensure sigwait has a second sig argument
 		append-cppflags -D_POSIX_PTHREAD_SEMANTICS
+		# fdatasync lives in -lrt on Solaris 10
+		[[ ${CHOST#*-solaris2.} -le 10 ]] && append-ldflags -lrt
 	fi
 }
 
