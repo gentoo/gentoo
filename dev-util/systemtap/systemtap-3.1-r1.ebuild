@@ -49,7 +49,6 @@ src_prepare() {
 		Makefile.am \
 		staprun/Makefile.am \
 		stapdyn/Makefile.am \
-		buildrun.cxx \
 		testsuite/systemtap.unprivileged/unprivileged_probes.exp \
 		testsuite/systemtap.unprivileged/unprivileged_myproc.exp \
 		testsuite/systemtap.base/stmt_rel_user.exp \
