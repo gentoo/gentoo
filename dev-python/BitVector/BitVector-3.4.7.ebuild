@@ -15,6 +15,7 @@ RDEPEND=""
 LICENSE="PSF-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 python_test() {
 	"${PYTHON}" TestBitVector/Test.py || die "Tests fail with ${EPYTHON}"
