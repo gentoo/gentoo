@@ -56,8 +56,7 @@ net-libs/polarssl
 
 # Andreas Sturmlechner <asturm@gentoo.org> (12 Dec 2017)
 # Depends on dead kdelibs4/qt4, unmaintained upstream. No port to
-# KF5 released. If you depend on this package, please help test KF5-based
-# amarok-9999 in KDE ebuild repository to decide on a possible snapshot.
+# KF5 released.
 # Possible alternatives are media-sound/cantata (an awesome mpd client),
 # media-sound/clementine and media-sound/tomahawk (the latter also declared
 # unmaintained upstream).
