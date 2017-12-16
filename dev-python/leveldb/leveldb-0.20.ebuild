@@ -34,18 +34,9 @@ python_compile() {
 	distutils-r1_python_compile
 }
 
-python_compile_all() {
-	use doc && emake doc
-}
-
 python_test() {
 	local lib="$(ls "${BUILD_DIR}/lib/${PN}/"*.so | head -n1)"
 	ln -s "${lib}" "${PN}" || die
 	py.test || die "tests failed with ${EPYTHON}"
 	rm "${PN}/$(basename "${lib}")" || die
-}
-
-python_install_all() {
-	use doc && local HTML_DOCS=( doc/build//html/. )
-	distutils-r1_python_install_all
 }
