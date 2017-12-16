@@ -1913,7 +1913,7 @@ app-misc/qlcplus 4.10.5b-r1 4.10.5b-r2 4.11.1: QLC+ - Q Light Controller Plus to
 app-misc/ranger 1.8.1 1.9.0_beta5 9999: A vim-inspired file manager for the console
 app-misc/razertool 0.0.7-r4: Unofficial tool for controlling the Razer Copperhead mouse
 app-misc/realpath 1.17 1.18: Return the canonicalized absolute pathname
-app-misc/recoll 1.22.4 1.23.2 1.23.3: A personal full text search package
+app-misc/recoll 1.23.3: A personal full text search package
 app-misc/regex-markup 0.10.0-r1: A tool to color syslog files as well
 app-misc/regionset 0.1-r1 0.2: Sets the region on DVD drives
 app-misc/remind 03.01.15: Ridiculously functional reminder program
@@ -5063,7 +5063,7 @@ dev-libs/ptexenc 1.3.4_p20160523 1.3.5_p20170524: Library for Japanese pTeX prov
 dev-libs/pugixml 1.8: Light-weight, simple, and fast XML parser for C++ with XPath support
 dev-libs/purpose 1.2.1: Library for providing abstractions to get the developer's purposes fulfilled
 dev-libs/qcustomplot 1.3.2 2.0.0: Qt C++ widget for plotting and data visualization
-dev-libs/qjson 0.8.1-r1 0.9.0: Library for mapping JSON data to QVariant objects
+dev-libs/qjson 0.9.0: Library for mapping JSON data to QVariant objects
 dev-libs/qoauth 1.0.1 2.0.1_pre20160315-r2: Qt-based library for OAuth support
 dev-libs/qof 0.8.8-r1: A Query Object Framework
 dev-libs/qqwing 1.3.3 1.3.4: Sudoku puzzle generator and solver
@@ -12722,7 +12722,7 @@ media-gfx/curaengine 0.15.04.6 2.1.0_beta 2.3.1 2.6.0: A 3D model slicing engine
 media-gfx/darktable 2.2.4 2.2.5 9999: A virtual lighttable and darkroom for photographers
 media-gfx/dawn 3.90b: 3D geometrical postscript renderer
 media-gfx/dcraw 9.27.0: Command-line decoder for raw digital photos
-media-gfx/digikam 5.5.0 5.7.0-r1 5.7.0-r2: Digital photo management application
+media-gfx/digikam 5.7.0-r1 5.7.0-r2: Digital photo management application
 media-gfx/displaycal 3.3.3.0 3.3.4.1 3.3.5.0: Display calibration and characterization powered by Argyll CMS
 media-gfx/ditaa 0.10: A utility that converts ascii-art diagrams to bitmap diagrams
 media-gfx/dpic 20130310 20160712 20160824: Converts PIC plots into pstricks, PGF/TikZ, PostScript, MetaPost and TeX
@@ -12823,7 +12823,7 @@ media-gfx/kcoloredit 2.0.0_p20171121: Tool for editing color palettes
 media-gfx/kgraphviewer 2.4.2: Graphviz dot graph file viewer
 media-gfx/kphotoalbum 5.2: Tool for indexing, searching, and viewing images
 media-gfx/kpovmodeler 1.1.3-r1: A modeling and composition program for creating POV-Ray(TM) scenes
-media-gfx/krita 3.1.4 3.3.2.1: Free digital painting application. Digital Painting, Creative Freedom!
+media-gfx/krita 3.3.2.1: Free digital painting application. Digital Painting, Creative Freedom!
 media-gfx/kuickshow 0.9.1-r3: KDE program to view images
 media-gfx/kxstitch 2.0.0: Program to create cross stitch patterns
 media-gfx/libimagequant 2.10.1 2.11.4: Palette quantization library that powers pngquant and other PNG optimizers
