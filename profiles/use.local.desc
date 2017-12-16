@@ -2955,7 +2955,6 @@ dev-util/perf:numa - Enable NUMA support
 dev-util/perf:perl - Add support for Perl as a scripting language for perf tools.
 dev-util/perf:unwind - Use sys-libs/libunwind for frame unwinding support.
 dev-util/pkgconf:pkg-config - Install as a replacement for dev-util/pkgconfig
-dev-util/pkgconf:strict - Adhere to POSIX pkg-config specification. Useful for finding uses of non-standard pkg-config invocations
 dev-util/pkgconfig:internal-glib - Use internal copy of dev-libs/glib
 dev-util/pkgconfig-openbsd:pkg-config - Install as a replacement for dev-util/pkgconfig
 dev-util/radare2:system-capstone - Use dev-libs/capstone instead of bundled copy.

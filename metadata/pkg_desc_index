@@ -10617,7 +10617,7 @@ dev-util/patdiff 0.9.0: Colored patience diffs with word-level refinement
 dev-util/peg 0.1.9 0.1.13 0.1.15 0.1.15-r1: Recursive-descent parser generators for C
 dev-util/perf 3.12 3.13.1-r1 3.15.5 4.1.5-r1 4.4.4 4.9.13: Userland tools for Linux Performance Counters
 dev-util/pkgcheck 0.5.3 0.5.4 9999: pkgcore-based QA utility
-dev-util/pkgconf 0.9.11 0.9.12 1.0.1 1.0.2 1.1.0 1.2.2 1.3.5 1.3.7 1.3.10 9999: pkg-config compatible replacement with no dependencies other than ANSI C89
+dev-util/pkgconf 1.3.7 1.3.10 1.3.90 9999: pkg-config compatible replacement with no dependencies other than ANSI C89
 dev-util/pkgconfig 0.28-r2 0.28-r3 0.29.1 0.29.2 9999: Package config system that manages compile/link flags
 dev-util/pkgconfig-openbsd 20130507-r1 20130507-r2: A perl based version of pkg-config from OpenBSD
 dev-util/plan9port 20140306-r4: Port of many Plan 9 programs and libraries
