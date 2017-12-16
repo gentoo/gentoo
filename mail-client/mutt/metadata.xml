@@ -35,7 +35,10 @@
 			S/MIME</flag>
 	</use>
 	<upstream>
+		<!-- for releases before 1.9.2 -->
 		<remote-id type="sourceforge">mutt</remote-id>
 		<remote-id type="bitbucket">mutt/mutt</remote-id>
+		<!-- from 1.9.2 onwards -->
+		<remote-id type="gitlab">muttmua/mutt</remote-id>
 	</upstream>
 </pkgmetadata>
