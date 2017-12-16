@@ -25,7 +25,7 @@
 		<flag name="nat">Enable support for network address translation in networkd</flag>
 		<flag name="qrcode">Enable qrcode output support in journal</flag>
 		<flag name="sysv-utils">Install sysvinit compatibility symlinks and manpages for init, telinit, halt, poweroff, reboot, runlevel, and shutdown</flag>
-		<flag name="usrmerge">Enable /usr merge</flag>
+		<flag name="usrmerge">Enable /usr merge (experimental)</flag>
 		<flag name="vanilla">Disable Gentoo-specific behavior and compatibility quirks</flag>
 		<flag name="xkb">Depend on <pkg>x11-libs/libxkbcommon</pkg> to allow logind to control the X11 keymap</flag>
 	</use>
