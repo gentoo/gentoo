@@ -7228,7 +7228,7 @@ dev-php/pecl-timezonedb 2016.10 2017.3: Timezone Database to be used with PHP's 
 dev-php/pecl-translit 0.6.2-r1: Transliterates non-latin character sets to latin
 dev-php/pecl-uploadprogress 1.0.3.1-r3: An extension to track progress of a file upload
 dev-php/pecl-uuid 1.0.4-r1: A wrapper around libuuid
-dev-php/pecl-xdiff 1.5.2-r5 2.0.1-r1: PHP extension for generating diff files
+dev-php/pecl-xdiff 1.5.2-r5 2.0.1-r2: PHP extension for generating diff files
 dev-php/pecl-xrange 1.3.2-r2: Implementation of weak references
 dev-php/pecl-yaml 1.3.0 1.3.1 2.0.0 2.0.2: YAML 1.1 (YAML Ain't Markup Language) serialization for PHP
 dev-php/pecl-yaz 1.2.1 1.2.2: This extension implements a Z39.50 client for PHP using the YAZ toolkit
