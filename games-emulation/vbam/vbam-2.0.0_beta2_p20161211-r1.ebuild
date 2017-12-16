@@ -10,7 +10,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git
 else
 	SRC_URI="https://github.com/visualboyadvance-m/visualboyadvance-m/archive/c2165287938aea2306a75f0714744a6d23ba7dab.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 	inherit vcs-snapshot
 fi
 
