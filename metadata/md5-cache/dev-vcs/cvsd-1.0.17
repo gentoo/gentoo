@@ -4,10 +4,10 @@ DESCRIPTION=CVS pserver daemon
 EAPI=0
 HOMEPAGE=http://ch.tudelft.nl/~arthur/cvsd/
 IUSE=tcpd
-KEYWORDS=~amd64 ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+KEYWORDS=amd64 ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
 LICENSE=GPL-2
 RDEPEND=>=dev-vcs/cvs-1.11.6 tcpd? ( >=sys-apps/tcp-wrappers-7.6 ) >=dev-lang/perl-5.8.0
 SLOT=0
 SRC_URI=http://ch.tudelft.nl/~arthur/cvsd/cvsd-1.0.17.tar.gz
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	user	8bc2845510e2109af75e3eeac607ec81
-_md5_=9212562f72ba9722dd389223db227de8
+_md5_=f41ab916ae81b435b5b3c0c7d41ce4b4

@@ -4,10 +4,10 @@ DESCRIPTION=reimplement libdjb - excellent libraries from Dan Bernstein
 EAPI=6
 HOMEPAGE=https://www.fefe.de/libowfat/
 IUSE=diet
-KEYWORDS=~amd64 hppa sparc x86
+KEYWORDS=amd64 hppa sparc x86
 LICENSE=GPL-2
 RDEPEND=diet? ( >=dev-libs/dietlibc-0.33_pre20090721 )
 SLOT=0
 SRC_URI=https://www.fefe.de/libowfat/libowfat-0.31.tar.xz
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	flag-o-matic	02908f00f002f0f07c5b74783d778325	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=65bf3c83d9dcd33d9bd4062b6186921a
+_md5_=326d82cc0781bc55e8709d4af9c8deb7
