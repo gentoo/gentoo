@@ -14,7 +14,7 @@ MUTT_G_PATCHES="mutt-gentoo-${PV}-patches-${PATCHREV}.tar.xz"
 SRC_URI="ftp://ftp.mutt.org/pub/mutt/${P}.tar.gz
 	https://bitbucket.org/${PN}/${PN}/downloads/${P}.tar.gz
 	https://dev.gentoo.org/~grobian/distfiles/${MUTT_G_PATCHES}"
-IUSE="berkdb crypt debug doc gdbm gnutls gpg gpgme +hcache idn imap kerberos libressl lmdb mbox nls nntp notmuch pgp_classic pop qdbm sasl selinux sidebar slang smime smime_classic smtp ssl tokyocabinet vanilla prefix"
+IUSE="berkdb crypt debug doc gdbm gnutls gpg gpgme +hcache idn imap kerberos libressl lmdb mbox nls nntp notmuch pgp_classic pop qdbm sasl selinux slang smime smime_classic smtp ssl tokyocabinet vanilla prefix"
 REQUIRED_USE="
 	hcache?           ( ^^ ( berkdb gdbm lmdb qdbm tokyocabinet ) )
 	imap?             ( ssl )
@@ -139,7 +139,6 @@ src_configure() {
 		$(use_enable doc)
 		$(use_enable nls)
 		$(use_enable notmuch)
-		$(use_enable sidebar)
 
 		# protocols
 		$(use_enable imap)
@@ -160,6 +159,7 @@ src_configure() {
 		"--enable-compressed"
 		"--enable-external-dotlock"
 		"--enable-nfs-fix"
+		"--enable-sidebar"
 		"--sysconfdir=${EPREFIX}/etc/${PN}"
 		"--with-docdir=${EPREFIX}/usr/share/doc/${PN}-${PVR}"
 		"--with-regex"
