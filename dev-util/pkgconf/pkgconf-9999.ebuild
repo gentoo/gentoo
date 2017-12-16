@@ -11,7 +11,7 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 fi
 
-inherit ltprune multilib-minimal
+inherit multilib-minimal
 
 DESCRIPTION="pkg-config compatible replacement with no dependencies other than ANSI C89"
 HOMEPAGE="https://github.com/pkgconf/pkgconf"
@@ -67,6 +67,6 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	prune_libtool_files
 	einstalldocs
+	find "${ED}" -name '*.la' -delete || die
 }
