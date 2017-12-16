@@ -7657,10 +7657,10 @@ sys-apps/superiotool:pci - Support for PCI-attached "Super I/Os" (e.g. in VIA VT
 sys-apps/systemd:apparmor - Enable AppArmor support
 sys-apps/systemd:audit - Enable support for sys-process/audit
 sys-apps/systemd:cryptsetup - Enable cryptsetup tools (includes unit generator for crypttab)
-sys-apps/systemd:curl - Enable support for uploading journals; required to build systemd-import/systemd-pull
+sys-apps/systemd:curl - Enable support for uploading journals
 sys-apps/systemd:doc - Generate systemd.index.7 and systemd.directives.7
 sys-apps/systemd:elfutils - Enable coredump stacktraces in the journal
-sys-apps/systemd:gcrypt - Enable sealing of journal files using gcrypt; required to build systemd-import/systemd-pull
+sys-apps/systemd:gcrypt - Enable sealing of journal files using gcrypt
 sys-apps/systemd:gnuefi - Enable EFI boot manager and stub loader (built using sys-boot/gnu-efi)
 sys-apps/systemd:http - Enable embedded HTTP server in journald
 sys-apps/systemd:importd - Enable import daemon
