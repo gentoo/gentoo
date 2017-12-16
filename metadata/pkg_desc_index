@@ -9829,7 +9829,7 @@ dev-ruby/origin 2.2.2 2.3.0 2.3.1: Origin is a simple DSL for generating MongoDB
 dev-ruby/ox 2.6.0 2.8.0 2.8.1 2.8.2: A fast XML parser and Object marshaller
 dev-ruby/packetfu 1.1.13: A mid-level packet manipulation library
 dev-ruby/paint 2.0.0 2.0.1: Terminal painter
-dev-ruby/parallel 1.11.2 1.12.0: Run any code in parallel Processes or Threads
+dev-ruby/parallel 1.11.2 1.12.0 1.12.1: Run any code in parallel Processes or Threads
 dev-ruby/paramesan 0.1.1: Parameterized tests in Ruby
 dev-ruby/parser 2.3.3.0 2.3.3.1 2.4.0.0 2.4.0.2: A production-ready Ruby parser written in pure Ruby
 dev-ruby/parslet 1.7.1 1.8.0 1.8.1: A small PEG based parser library
@@ -10466,7 +10466,7 @@ dev-util/devhelp 3.22.0 3.24.0: An API documentation browser for GNOME
 dev-util/dialog 1.3.20160828 1.3.20170131 1.3.20170509: tool to display dialog boxes from a shell
 dev-util/diffball 1.0.1: Delta compression suite for using/generating binary patches
 dev-util/difffilter 0.3.3: Filter files out of unified diffs using POSIX extended regular expressions
-dev-util/diffoscope 78 87: Will try to get to the bottom of what makes files or directories different
+dev-util/diffoscope 87 88: Will try to get to the bottom of what makes files or directories different
 dev-util/diffstat 1.60 1.61: Display a histogram of diff changes
 dev-util/diffuse 0.4.8: A graphical tool to compare and merge text files
 dev-util/dirdiff 2.1-r2 2.1-r3: A tool for differing and merging directories
@@ -14182,7 +14182,7 @@ media-video/kamoso 3.2.4: Application to take pictures and videos from your webc
 media-video/kino 1.3.4 1.3.4-r1: Kino is a non-linear DV editor for GNU/Linux
 media-video/kmplayer 0.12.0b 0.12.0b-r1: Video player plugin for Konqueror and basic MPlayer frontend
 media-video/libav 9.17 11.3 11.3-r1 11.4 11.6 11.7 11.8 11.9999 12 12.1 12.2 9999: Complete solution to record, convert and stream audio and video
-media-video/libva-utils 1.8.0 1.8.1 1.8.2 1.8.3 9999: Collection of utilities and tests for VA-API
+media-video/libva-utils 1.8.0 1.8.1 1.8.2 1.8.3 2.0.0 9999: Collection of utilities and tests for VA-API
 media-video/lsdvd 0.17: Utility for getting info out of DVDs
 media-video/luvcview 0.2.6: USB Video Class grabber
 media-video/lxdvdrip 1.77: Command line tool to automate the process of ripping and burning DVDs
@@ -18808,8 +18808,8 @@ x11-libs/librfm 5.3.16.3-r1: The basic library used by some rfm applications, su
 x11-libs/libtinynotify 0.2.1 9999: A lightweight implementation of Desktop Notification Spec
 x11-libs/libtinynotify-cli 1.2.1 9999: Common CLI routines for tinynotify-send & sw-notify-send
 x11-libs/libtinynotify-systemwide 0.1 9999: A system-wide notifications module for libtinynotify
-x11-libs/libva 1.7.3 1.8.0 1.8.1 1.8.2 1.8.3 9999: Video Acceleration (VA) API for Linux
-x11-libs/libva-intel-driver 1.7.3 1.8.0 1.8.1 1.8.2 1.8.3 9999: HW video decode support for Intel integrated graphics
+x11-libs/libva 1.7.3 1.8.0 1.8.1 1.8.2 1.8.3 2.0.0 9999: Video Acceleration (VA) API for Linux
+x11-libs/libva-intel-driver 1.7.3 1.8.0 1.8.1 1.8.2 1.8.3 2.0.0 9999: HW video decode support for Intel integrated graphics
 x11-libs/libva-vdpau-driver 0.7.4-r4: VDPAU Backend for Video Acceleration (VA) API
 x11-libs/libvdpau 1.1.1: VDPAU wrapper and trace libraries
 x11-libs/libwnck 2.31.0 3.20.1 3.24.1: A window navigation construction kit
