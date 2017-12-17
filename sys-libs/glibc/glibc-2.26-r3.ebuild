@@ -32,7 +32,7 @@ PATCH_VER=4
 SRC_URI+=" https://dev.gentoo.org/~dilfridge/distfiles/${P}-patches-${PATCH_VER}.tar.bz2"
 SRC_URI+=" multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-${GCC_BOOTSTRAP_VER}-multilib-bootstrap.tar.bz2 )"
 
-IUSE="audit caps debug gd hardened multilib nscd selinux systemtap profile suid vanilla crosscompile_opts_headers-only"
+IUSE="audit caps debug doc gd hardened multilib nscd selinux systemtap profile suid vanilla crosscompile_opts_headers-only"
 
 # Min kernel version glibc requires
 : ${NPTL_KERN_VER:="3.2.0"}
@@ -80,6 +80,7 @@ DEPEND="${COMMON_DEPEND}
 	>=app-misc/pax-utils-0.1.10
 	!<sys-apps/sandbox-1.6
 	!<sys-apps/portage-2.1.2
+	doc? ( sys-apps/texinfo )
 "
 RDEPEND="${COMMON_DEPEND}
 	!sys-kernel/ps3-sources
@@ -286,8 +287,14 @@ glibc_do_configure() {
 
 	einfo "Configuring glibc for $1"
 
+	if use doc ; then
+		export MAKEINFO=makeinfo
+	else
+		export MAKEINFO=/dev/null
+	fi
+
 	local v
-	for v in ABI CBUILD CHOST CTARGET CBUILD_OPT CTARGET_OPT CC CXX LD {AS,C,CPP,CXX,LD}FLAGS ; do
+	for v in ABI CBUILD CHOST CTARGET CBUILD_OPT CTARGET_OPT CC CXX LD {AS,C,CPP,CXX,LD}FLAGS MAKEINFO ; do
 		einfo " $(printf '%15s' ${v}:)   ${!v}"
 	done
 
