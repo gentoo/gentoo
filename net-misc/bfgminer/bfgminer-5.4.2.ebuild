@@ -1,7 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit eutils
 
@@ -11,7 +11,7 @@ SRC_URI="http://luke.dashjr.org/programs/bitcoin/files/${PN}/${PV}/${P}.txz -> $
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~mips ~ppc ~ppc64 x86"
 
 # TODO: knc (needs i2c-tools header)
 # TODO: kncasic & titan (need systemwide knc-asic install)
@@ -124,7 +124,7 @@ DEPEND="${DEPEND}
 src_configure() {
 	local CFLAGS="${CFLAGS}"
 	local with_curses
-	use hardened && CFLAGS="${CFLAGS} -nopie"
+	use hardened && CFLAGS="${CFLAGS} -no-pie"
 
 	if use ncurses; then
 		if use unicode; then
