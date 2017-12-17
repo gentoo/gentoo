@@ -1294,7 +1294,7 @@ app-text/cmigemo 1.3c-r2: C/Migemo -- Migemo library implementation in C
 app-text/code2html 0.9.1-r2: Converts source files to colored HTML output
 app-text/convertlit 1.8-r1: CLit converts MS ebook .lit files to .opf (xml+html+png+jpg)
 app-text/convmv 2.01: convert filenames to utf8 or any other charset
-app-text/crf++ 0.54: Yet Another CRF toolkit for segmenting/labelling sequential data
+app-text/crf++ 0.58: Yet Another CRF toolkit for segmenting/labelling sequential data
 app-text/cwtext 0.96: Text to Morse Code converter
 app-text/dbacl 1.14: Digramic Bayesian text classifier
 app-text/dblatex 0.3.7: Transform DocBook using TeX macros
