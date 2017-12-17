@@ -9,13 +9,13 @@ EAPI=5
 inherit eutils multilib toolchain-funcs libtool multilib-minimal
 
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="http://git.tukaani.org/xz.git"
+	EGIT_REPO_URI="https://git.tukaani.org/xz.git"
 	inherit git-2 autotools
 	SRC_URI=""
 	EXTRA_DEPEND="sys-devel/gettext dev-vcs/cvs >=sys-devel/libtool-2" #272880 286068
 else
 	MY_P="${PN/-utils}-${PV/_}"
-	SRC_URI="http://tukaani.org/xz/${MY_P}.tar.gz"
+	SRC_URI="https://tukaani.org/xz/${MY_P}.tar.gz"
 	KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 	S=${WORKDIR}/${MY_P}
 	EXTRA_DEPEND=
