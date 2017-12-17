@@ -89,7 +89,7 @@ app-admin/lsyncd 2.2.0: Live Syncing (Mirror) Daemon
 app-admin/makepasswd 1.10: Random password generator
 app-admin/mcelog 149 154: A tool to log and decode Machine Check Exceptions
 app-admin/mcollective 2.11.3 2.11.4: Framework to build server orchestration or parallel job execution systems
-app-admin/metalog 3-r1 3-r2: A highly configurable replacement for syslogd/klogd
+app-admin/metalog 3-r2: A highly configurable replacement for syslogd/klogd
 app-admin/mktwpol 0.2.6 1.0.0: Bash scripts to install tripwire and generate tripwire policy files
 app-admin/mms-agent 3.7.0.212_p1: MongoDB MMS agents
 app-admin/mongo-tools 3.0.14: A high-performance, open source, schema-free document-oriented database
