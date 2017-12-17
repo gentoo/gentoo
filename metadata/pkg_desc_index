@@ -12701,7 +12701,7 @@ media-gfx/apngopt 1.4: optimize APNG images
 media-gfx/aqsis 1.8.2: Open source RenderMan-compliant 3D rendering solution
 media-gfx/argyllcms 1.9.2 2.0.0: Open source, ICC compatible color management system
 media-gfx/arss 0.2.3 0.2.3-r1: Analysis & Resynthesis Sound Spectrograph
-media-gfx/asymptote 2.32 2.41-r1: A vector graphics language that provides a framework for technical drawing
+media-gfx/asymptote 2.41-r1: A vector graphics language that provides a framework for technical drawing
 media-gfx/autopano-sift-C 2.5.1: SIFT algorithm for automatic panorama creation in C
 media-gfx/aview 1.3.0_rc1-r1 1.3.0_rc1-r3: An ASCII Image Viewer
 media-gfx/birdfont 2.18.3: Font editor for the creation of vector graphics and export TTF, EOT & SVG fonts
@@ -15782,7 +15782,7 @@ net-vpn/peervpn 0.044-r4: P2P mesh VPN
 net-vpn/pptpd 1.4.0-r2: Linux Point-to-Point Tunnelling Protocol Server
 net-vpn/strongswan 5.5.3 5.6.0 5.6.0-r1: IPsec-based VPN solution focused on security and ease of use, supporting IKEv1/IKEv2 and MOBIKE
 net-vpn/tinc 1.0.31 1.0.32 1.0.33 1.1_pre15: tinc is an easy to configure VPN implementation
-net-vpn/tor 0.3.1.7 0.3.1.8 0.3.1.9 0.3.2.5_alpha 0.3.2.6_alpha: Anonymizing overlay network for TCP
+net-vpn/tor 0.3.1.7 0.3.1.8 0.3.1.9 0.3.2.7_rc: Anonymizing overlay network for TCP
 net-vpn/vpnc 0.5.3_p550: Free client for Cisco VPN routing software
 net-vpn/vpncwatch 1.8 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-vpn/vtun 3.0.3: Create tunnels over TCP/IP networks with shaping, encryption, and compression
