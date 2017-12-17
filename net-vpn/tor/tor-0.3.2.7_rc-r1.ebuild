@@ -52,6 +52,7 @@ src_configure() {
 		--enable-asciidoc \
 		--disable-libfuzzer \
 		--disable-rust \
+		$(use_enable lzma) \
 		$(use_enable scrypt libscrypt) \
 		$(use_enable seccomp) \
 		$(use_enable systemd) \
@@ -59,7 +60,8 @@ src_configure() {
 		$(use_enable tor-hardening linker-hardening) \
 		$(use_enable web tor2web-mode) \
 		$(use_enable test unittests) \
-		$(use_enable test coverage)
+		$(use_enable test coverage) \
+		$(use_enable zstd)
 }
 
 src_install() {
