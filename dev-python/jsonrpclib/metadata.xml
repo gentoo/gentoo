@@ -10,6 +10,6 @@
     <name>Python</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">joshmarshall/jsonrpclib</remote-id>
+    <remote-id type="github">tcalmant/jsonrpclib</remote-id>
   </upstream>
 </pkgmetadata>
