@@ -1,13 +1,13 @@
 DEFINED_PHASES=configure install prepare
 DEPEND=acl? ( virtual/acl ) selinux? ( sys-libs/libselinux ) nls? ( >=sys-devel/gettext-0.10.35 ) xattr? ( elibc_glibc? ( sys-apps/attr ) )
 DESCRIPTION=Use this to make tarballs :)
-EAPI=5
+EAPI=6
 HOMEPAGE=https://www.gnu.org/software/tar/
 IUSE=acl elibc_glibc minimal nls selinux static userland_GNU xattr
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=GPL-3+
 RDEPEND=acl? ( virtual/acl ) selinux? ( sys-libs/libselinux )
 SLOT=0
-SRC_URI=mirror://gnu/tar/tar-1.29.tar.bz2 mirror://gnu-alpha/tar/tar-1.29.tar.bz2
+SRC_URI=mirror://gnu/tar/tar-1.30.tar.bz2 mirror://gnu-alpha/tar/tar-1.30.tar.bz2
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	flag-o-matic	02908f00f002f0f07c5b74783d778325	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=54e2d641813d4116a545aa9c9d6ebc4b
+_md5_=2d2010b7e562e98140174aed135af112
