@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 MY_PTV=0.2
 
@@ -30,6 +30,8 @@ src_prepare() {
 			sed -i 's/.*vim.*//' test/Makefile || die
 		fi
 	fi
+
+	default
 }
 
 src_configure() {
