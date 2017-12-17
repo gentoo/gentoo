@@ -9,7 +9,7 @@ DESCRIPTION="A free library for encoding X264/AVC streams"
 HOMEPAGE="https://www.videolan.org/developers/x264.html"
 if [[ ${PV} == 9999 ]]; then
 	inherit git-2
-	EGIT_REPO_URI="https://git.videolan.org/x264.git"
+	EGIT_REPO_URI="https://git.videolan.org/git/x264.git"
 else
 	inherit versionator
 	MY_P="x264-snapshot-$(get_version_component_range 3)-2245"
