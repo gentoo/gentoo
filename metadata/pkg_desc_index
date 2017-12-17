@@ -230,7 +230,7 @@ app-backup/backintime 1.1.8-r1 1.1.12: Backup system inspired by TimeVault and F
 app-backup/backup-manager 0.7.5 0.7.14: Backup Manager is a command line backup tool for GNU/Linux
 app-backup/backupninja 1.0.1: lightweight, extensible meta-backup system
 app-backup/backuppc 3.3.1-r5: High-performance backups to a server's disk
-app-backup/bacula 7.0.5-r1 7.4.4-r2: Featureful client/server network backup suite
+app-backup/bacula 7.4.4-r2: Featureful client/server network backup suite
 app-backup/borgbackup 1.1.3: Deduplicating backup program with compression and authenticated encryption
 app-backup/btrbk 0.24.0-r1 0.25.1-r1: Tool for creating snapshots and remote backups of btrfs subvolumes
 app-backup/burp 1.4.40-r5 2.0.54: Network backup and restore client and server for Unix and Windows
@@ -1028,7 +1028,7 @@ app-misc/klavaro 3.0.1: Another free touch typing tutor program
 app-misc/ktoblzcheck 1.48: Library to check account numbers and bank codes of German banks
 app-misc/lcd4linux 0.10.1_rc2-r4: Shows system and ISDN information on an external display or in a X11 window
 app-misc/lcdproc 0.5.2-r1: Client/Server suite to drive all kinds of LCD (-like) devices
-app-misc/leave 20100918: Command-line tool from FreeBSD that reminds you when its time to leave
+app-misc/leave 20100918-r1: FreeBSD command-line tool that reminds you when its time to leave
 app-misc/ledit 2.03: A line editor to be used with interactive commands
 app-misc/linux-logo 5.11-r3: A utility that displays an ANSI/ASCII logo and some system information
 app-misc/lirc 0.9.0-r6: decode and send infra-red signals of many commonly used remote controls
