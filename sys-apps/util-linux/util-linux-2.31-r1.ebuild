@@ -1,20 +1,21 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 
-inherit eutils toolchain-funcs libtool flag-o-matic bash-completion-r1 \
+inherit toolchain-funcs libtool flag-o-matic bash-completion-r1 \
 	pam python-single-r1 multilib-minimal systemd
 
-MY_PV=${PV/_/-}
-MY_P=${PN}-${MY_PV}
+MY_PV="${PV/_/-}"
+MY_P="${PN}-${MY_PV}"
 
 if [[ ${PV} == 9999 ]] ; then
-	inherit git-2 autotools
+	inherit git-r3 autotools
 	EGIT_REPO_URI="git://git.kernel.org/pub/scm/utils/util-linux/util-linux.git"
 else
+	[[ "${PV}" = *_rc* ]] || \
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux"
 	SRC_URI="mirror://kernel/linux/utils/util-linux/v${PV:0:4}/${MY_P}.tar.xz"
 fi
@@ -48,23 +49,30 @@ RDEPEND+="
 		!sys-apps/coreutils[kill]
 		!sys-process/procps[kill]
 	)
+	!net-wireless/rfkill
 	!sys-process/schedutils
 	!sys-apps/setarch
 	!<sys-apps/sysvinit-2.88-r7
 	!sys-block/eject
 	!<sys-libs/e2fsprogs-libs-1.41.8
 	!<sys-fs/e2fsprogs-1.41.8
-	!<app-shells/bash-completion-2.3-r2"
+	!<app-shells/bash-completion-2.7-r1"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-S=${WORKDIR}/${MY_P}
+PATCHES=(
+	"${FILESDIR}"/${P}-too_generic_symbols_pt{1,2,3}.patch #641226
+)
+
+S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
 
 src_prepare() {
+	default
+
 	if [[ ${PV} == 9999 ]] ; then
 		po/update-potfiles
 		eautoreconf
@@ -75,8 +83,6 @@ src_prepare() {
 		-e 's:(ncursesw?)[56]-config --version:$PKG_CONFIG --exists --print-errors \1:' \
 		configure || die
 	elibtoolize
-
-	epatch_user
 }
 
 lfs_fallocate_test() {
@@ -102,46 +108,46 @@ multilib_src_configure() {
 	export ac_cv_header_security_pam_appl_h=$(multilib_native_usex pam) #545042
 
 	local myeconfargs=(
-		--enable-fs-paths-extra="${EPREFIX}/usr/sbin:${EPREFIX}/bin:${EPREFIX}/usr/bin"
-		--docdir='${datarootdir}'/doc/${PF}
-		$(multilib_native_use_enable nls)
-		--enable-agetty
-		--with-bashcompletiondir="$(get_bashcompdir)"
-		--enable-bash-completion
-		$(multilib_native_use_enable caps setpriv)
 		--disable-chfn-chsh
+		--disable-login
+		--disable-nologin
+		--disable-su
+		--docdir='${datarootdir}'/doc/${PF}
+		--enable-agetty
+		--enable-bash-completion
+		--enable-fs-paths-extra="${EPREFIX}/usr/sbin:${EPREFIX}/bin:${EPREFIX}/usr/bin"
+		--enable-line
+		--enable-partx
+		--enable-raw
+		--enable-rename
+		--enable-rfkill
+		--enable-schedutils
+		--with-bashcompletiondir="$(get_bashcompdir)"
+		--with-systemdsystemunitdir=$(multilib_native_usex systemd "$(systemd_get_systemunitdir)" "no")
+		$(multilib_native_use_enable caps setpriv)
 		$(multilib_native_use_enable cramfs)
 		$(multilib_native_use_enable fdformat)
-		$(multilib_native_usex ncurses "$(use_with unicode ncursesw)" '--without-ncursesw')
-		$(multilib_native_usex ncurses "$(use_with !unicode ncurses)" '--without-ncurses')
-		$(usex ncurses '' '--without-tinfo')
-		$(use_enable unicode widechar)
-		$(use_enable kill)
-		--disable-login
-		$(multilib_native_use_enable tty-helpers mesg)
-		--disable-nologin
-		--enable-partx
-		$(multilib_native_use_with python)
-		--enable-raw
-		$(multilib_native_use_with readline)
-		--enable-rename
-		--disable-reset
-		--enable-schedutils
-		--disable-su
-		$(multilib_native_use_enable tty-helpers wall)
-		$(multilib_native_use_enable tty-helpers write)
+		$(multilib_native_use_enable nls)
 		$(multilib_native_use_enable suid makeinstall-chown)
 		$(multilib_native_use_enable suid makeinstall-setuid)
-		$(use_with selinux)
+		$(multilib_native_use_enable tty-helpers mesg)
+		$(multilib_native_use_enable tty-helpers wall)
+		$(multilib_native_use_enable tty-helpers write)
+		$(multilib_native_use_with python)
+		$(multilib_native_use_with readline)
 		$(multilib_native_use_with slang)
-		$(use_enable static-libs static)
 		$(multilib_native_use_with systemd)
-		--with-systemdsystemunitdir=$(multilib_native_usex systemd "$(systemd_get_unitdir)" "no")
 		$(multilib_native_use_with udev)
+		$(multilib_native_usex ncurses "$(use_with unicode ncursesw)" '--without-ncursesw')
+		$(multilib_native_usex ncurses "$(use_with !unicode ncurses)" '--without-ncurses')
 		$(tc-has-tls || echo --disable-tls)
+		$(use_enable unicode widechar)
+		$(use_enable kill)
+		$(use_enable static-libs static)
+		$(use_with selinux)
+		$(usex ncurses '' '--without-tinfo')
 	)
-	ECONF_SOURCE=${S} \
-	econf "${myeconfargs[@]}"
+	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
 multilib_src_compile() {
@@ -180,7 +186,7 @@ multilib_src_install_all() {
 	dodoc AUTHORS NEWS README* Documentation/{TODO,*.txt,releases/*}
 
 	# e2fsprogs-libs didnt install .la files, and .pc work fine
-	prune_libtool_files
+	find "${ED}" -name "*.la" -delete || die
 
 	if use pam; then
 		newpamd "${FILESDIR}/runuser.pamd" runuser

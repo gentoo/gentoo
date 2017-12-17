@@ -1,0 +1,207 @@
+From ff5feb96ec70e8a3fde41bd591b28c9855dab3fc Mon Sep 17 00:00:00 2001
+From: Karel Zak <kzak@redhat.com>
+Date: Tue, 12 Dec 2017 11:29:02 +0100
+Subject: [PATCH] lib/sha1: use ul_/UL_prefix for symbols
+
+Unfortunately, the symbols are visible in statically compiled libuuid
+and the names are too generic.
+
+Addresses: https://github.com/karelzak/util-linux/issues/548
+Signed-off-by: Karel Zak <kzak@redhat.com>
+---
+ include/sha1.h         | 49 +++++++++++++++----------------------------------
+ lib/sha1.c             | 34 +++++++++++++++++-----------------
+ libuuid/src/gen_uuid.c | 12 ++++++------
+ 3 files changed, 38 insertions(+), 57 deletions(-)
+
+diff --git a/include/sha1.h b/include/sha1.h
+index 5c28bce92..62af1da6f 100644
+--- a/include/sha1.h
++++ b/include/sha1.h
+@@ -1,5 +1,5 @@
+-#ifndef SHA1_H
+-#define SHA1_H
++#ifndef UTIL_LINUX_SHA1_H
++#define UTIL_LINUX_SHA1_H
+ 
+ /*
+    SHA-1 in C
+@@ -9,38 +9,19 @@
+ 
+ #include "stdint.h"
+ 
+-#define SHA1LENGTH		20
++#define UL_SHA1LENGTH		20
+ 
+ typedef struct
+ {
+-    uint32_t state[5];
+-    uint32_t count[2];
+-    unsigned char buffer[64];
+-} SHA1_CTX;
+-
+-void SHA1Transform(
+-    uint32_t state[5],
+-    const unsigned char buffer[64]
+-    );
+-
+-void SHA1Init(
+-    SHA1_CTX * context
+-    );
+-
+-void SHA1Update(
+-    SHA1_CTX * context,
+-    const unsigned char *data,
+-    uint32_t len
+-    );
+-
+-void SHA1Final(
+-    unsigned char digest[SHA1LENGTH],
+-    SHA1_CTX * context
+-    );
+-
+-void SHA1(
+-    char *hash_out,
+-    const char *str,
+-    unsigned len);
+-
+-#endif /* SHA1_H */
++    uint32_t	state[5];
++    uint32_t	count[2];
++    unsigned	char buffer[64];
++} UL_SHA1_CTX;
++
++void ul_SHA1Transform(uint32_t state[5], const unsigned char buffer[64]);
++void ul_SHA1Init(UL_SHA1_CTX *context);
++void ul_SHA1Update(UL_SHA1_CTX *context, const unsigned char *data, uint32_t len);
++void ul_SHA1Final(unsigned char digest[UL_SHA1LENGTH], UL_SHA1_CTX *context);
++void ul_SHA1(char *hash_out, const char *str, unsigned len);
++
++#endif /* UTIL_LINUX_SHA1_H */
+diff --git a/lib/sha1.c b/lib/sha1.c
+index a2ac7f8ef..62c036774 100644
+--- a/lib/sha1.c
++++ b/lib/sha1.c
+@@ -51,7 +51,7 @@ A million repetitions of "a"
+ 
+ /* Hash a single 512-bit block. This is the core of the algorithm. */
+ 
+-void SHA1Transform(
++void ul_SHA1Transform(
+     uint32_t state[5],
+     const unsigned char buffer[64]
+ )
+@@ -179,8 +179,8 @@ void SHA1Transform(
+ 
+ /* SHA1Init - Initialize new context */
+ 
+-void SHA1Init(
+-    SHA1_CTX * context
++void ul_SHA1Init(
++    UL_SHA1_CTX * context
+ )
+ {
+     /* SHA1 initialization constants */
+@@ -195,8 +195,8 @@ void SHA1Init(
+ 
+ /* Run your data through this. */
+ 
+-void SHA1Update(
+-    SHA1_CTX * context,
++void ul_SHA1Update(
++    UL_SHA1_CTX * context,
+     const unsigned char *data,
+     uint32_t len
+ )
+@@ -213,10 +213,10 @@ void SHA1Update(
+     if ((j + len) > 63)
+     {
+         memcpy(&context->buffer[j], data, (i = 64 - j));
+-        SHA1Transform(context->state, context->buffer);
++        ul_SHA1Transform(context->state, context->buffer);
+         for (; i + 63 < len; i += 64)
+         {
+-            SHA1Transform(context->state, &data[i]);
++            ul_SHA1Transform(context->state, &data[i]);
+         }
+         j = 0;
+     }
+@@ -228,9 +228,9 @@ void SHA1Update(
+ 
+ /* Add padding and return the message digest. */
+ 
+-void SHA1Final(
++void ul_SHA1Final(
+     unsigned char digest[20],
+-    SHA1_CTX * context
++    UL_SHA1_CTX * context
+ )
+ {
+     unsigned i;
+@@ -262,13 +262,13 @@ void SHA1Final(
+     }
+ #endif
+     c = 0200;
+-    SHA1Update(context, &c, 1);
++    ul_SHA1Update(context, &c, 1);
+     while ((context->count[0] & 504) != 448)
+     {
+         c = 0000;
+-        SHA1Update(context, &c, 1);
++        ul_SHA1Update(context, &c, 1);
+     }
+-    SHA1Update(context, finalcount, 8); /* Should cause a SHA1Transform() */
++    ul_SHA1Update(context, finalcount, 8); /* Should cause a SHA1Transform() */
+     for (i = 0; i < 20; i++)
+     {
+         digest[i] = (unsigned char)
+@@ -279,18 +279,18 @@ void SHA1Final(
+     memset(&finalcount, '\0', sizeof(finalcount));
+ }
+ 
+-void SHA1(
++void ul_SHA1(
+     char *hash_out,
+     const char *str,
+     unsigned len)
+ {
+-    SHA1_CTX ctx;
++    UL_SHA1_CTX ctx;
+     unsigned int ii;
+ 
+-    SHA1Init(&ctx);
++    ul_SHA1Init(&ctx);
+     for (ii=0; ii<len; ii+=1)
+-        SHA1Update(&ctx, (const unsigned char*)str + ii, 1);
+-    SHA1Final((unsigned char *)hash_out, &ctx);
++        ul_SHA1Update(&ctx, (const unsigned char*)str + ii, 1);
++    ul_SHA1Final((unsigned char *)hash_out, &ctx);
+     hash_out[20] = '\0';
+ }
+ 
+diff --git a/libuuid/src/gen_uuid.c b/libuuid/src/gen_uuid.c
+index cf7cacd55..431bf2064 100644
+--- a/libuuid/src/gen_uuid.c
++++ b/libuuid/src/gen_uuid.c
+@@ -589,15 +589,15 @@ void uuid_generate_md5(uuid_t out, const uuid_t ns, const char *name, size_t len
+  */
+ void uuid_generate_sha1(uuid_t out, const uuid_t ns, const char *name, size_t len)
+ {
+-	SHA1_CTX ctx;
+-	char hash[SHA1LENGTH];
++	UL_SHA1_CTX ctx;
++	char hash[UL_SHA1LENGTH];
+ 
+-	SHA1Init(&ctx);
++	ul_SHA1Init(&ctx);
+ 	/* hash concatenation of well-known UUID with name */
+-	SHA1Update(&ctx, ns, sizeof(uuid_t));
+-	SHA1Update(&ctx, (const unsigned char *)name, len);
++	ul_SHA1Update(&ctx, ns, sizeof(uuid_t));
++	ul_SHA1Update(&ctx, (const unsigned char *)name, len);
+ 
+-	SHA1Final((unsigned char *)hash, &ctx);
++	ul_SHA1Final((unsigned char *)hash, &ctx);
+ 
+ 	memcpy(out, hash, sizeof(uuid_t));
+ 
