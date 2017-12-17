@@ -7932,7 +7932,7 @@ dev-python/jsonpatch 1.13 1.15: Apply JSON-Patches according to http://tools.iet
 dev-python/jsonpickle 0.9.3: Python library for serializing any arbitrary object graph into JSON
 dev-python/jsonpointer 1.10: Identify specific nodes in a JSON document (according to draft 08)
 dev-python/jsonref 0.1: An implementation of JSON Reference for Python
-dev-python/jsonrpclib 0_pre20110820-r1 0.1.7 9999: python implementation of the JSON-RPC spec (1.0 and 2.0)
+dev-python/jsonrpclib 0_pre20110820-r1 0.1.7 0.3.1 9999: python implementation of the JSON-RPC spec (1.0 and 2.0)
 dev-python/jsonschema 2.3.0 2.4.0 2.5.1-r2 2.6.0: An implementation of JSON-Schema validation for Python
 dev-python/jupyter 1.0.0 1.0.0-r1: Jupyter metapackage. Install all the Jupyter components in one go
 dev-python/jupyter_client 4.4.0 5.1.0-r1: Jupyter protocol implementation and client libraries
