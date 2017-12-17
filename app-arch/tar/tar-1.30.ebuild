@@ -1,9 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
-inherit flag-o-matic eutils
+inherit flag-o-matic
 
 DESCRIPTION="Use this to make tarballs :)"
 HOMEPAGE="https://www.gnu.org/software/tar/"
@@ -12,7 +12,7 @@ SRC_URI="mirror://gnu/tar/${P}.tar.bz2
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="acl elibc_glibc minimal nls selinux static userland_GNU xattr"
 
 RDEPEND="acl? ( virtual/acl )
@@ -21,13 +21,8 @@ DEPEND="${RDEPEND}
 	nls? ( >=sys-devel/gettext-0.10.35 )
 	xattr? ( elibc_glibc? ( sys-apps/attr ) )"
 
-PATCHES=(
-	"${FILESDIR}/${P}-extract-pathname-bypass-upstream.patch" #598334
-)
-
 src_prepare() {
-	epatch "${PATCHES[@]}"
-	epatch_user
+	default
 
 	if ! use userland_GNU ; then
 		sed -i \
@@ -39,16 +34,17 @@ src_prepare() {
 
 src_configure() {
 	use static && append-ldflags -static
-	FORCE_UNSAFE_CONFIGURE=1 \
-	econf \
-		--enable-backup-scripts \
-		--bindir="${EPREFIX}"/bin \
-		--libexecdir="${EPREFIX}"/usr/sbin \
-		$(usex userland_GNU "" "--program-prefix=g") \
-		$(use_with acl posix-acls) \
-		$(use_enable nls) \
-		$(use_with selinux) \
+	local myeconfargs=(
+		--bindir="${EPREFIX}"/bin
+		--enable-backup-scripts
+		--libexecdir="${EPREFIX}"/usr/sbin
+		$(usex userland_GNU "" "--program-prefix=g")
+		$(use_with acl posix-acls)
+		$(use_enable nls)
+		$(use_with selinux)
 		$(use_with xattr xattrs)
+	)
+	FORCE_UNSAFE_CONFIGURE=1 econf "${myeconfargs[@]}"
 }
 
 src_install() {
@@ -69,8 +65,8 @@ src_install() {
 		dosym tar /bin/gtar
 	fi
 
-	mv "${ED}"/usr/sbin/${p}backup{,-tar} || die
-	mv "${ED}"/usr/sbin/${p}restore{,-tar} || die
+	mv "${ED%/}"/usr/sbin/${p}backup{,-tar} || die
+	mv "${ED%/}"/usr/sbin/${p}restore{,-tar} || die
 
 	if use minimal ; then
 		find "${ED}"/etc "${ED}"/*bin/ "${ED}"/usr/*bin/ \
