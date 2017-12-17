@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python{3_4,3_5} )
-PLOCALES="ru"
+PLOCALES="de ru"
 
 inherit cmake-utils l10n python-single-r1 readme.gentoo-r1 systemd user
 
