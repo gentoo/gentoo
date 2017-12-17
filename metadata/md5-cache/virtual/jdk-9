@@ -1,0 +1,7 @@
+DEFINED_PHASES=-
+DESCRIPTION=Virtual for Java Development Kit (JDK)
+EAPI=6
+KEYWORDS=~amd64 ~x64-macos ~sparc64-solaris
+RDEPEND=dev-java/oracle-jdk-bin:9[gentoo-vm(+)]
+SLOT=9
+_md5_=5bd5fdf2ad1d6f0203efb9f5882a02f3
