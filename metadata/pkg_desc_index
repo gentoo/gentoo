@@ -6854,7 +6854,7 @@ lxqt-base/lxqt-session 0.11.0: LXQT session manager
 lxqt-base/lxqt-sudo 0.11.0: LXQt GUI frontend for sudo
 mail-client/alpine 2.00-r7: alpine is an easy to use text-based based mail and news client
 mail-client/balsa 2.5.2-r1 2.5.3 2.5.3-r1: Email client for GNOME
-mail-client/claws-mail 3.13.2 3.15.0-r2: An email client (and news reader) based on GTK+
+mail-client/claws-mail 3.15.0-r2: An email client (and news reader) based on GTK+
 mail-client/clawsker 0.7.8: Applet to edit Claws Mail's hidden preferences
 mail-client/cone 0.92: CONE: COnsole News reader and Emailer
 mail-client/evolution 3.22.6: Integrated mail, addressbook and calendaring functionality
