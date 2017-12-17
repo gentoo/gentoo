@@ -6,7 +6,7 @@ inherit autotools eutils
 
 MY_P="${P/crf/CRF}"
 DESCRIPTION="Yet Another CRF toolkit for segmenting/labelling sequential data"
-HOMEPAGE="http://crfpp.sourceforge.net/"
+HOMEPAGE="https://taku910.github.io/crfpp/"
 SRC_URI="mirror://sourceforge/crfpp/${MY_P}.tar.gz"
 
 LICENSE="|| ( BSD LGPL-2.1 )"
