@@ -141,6 +141,7 @@ RDEPEND="${COMMON_DEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-0.19.0-make-ffmpeg-version-check-non-fatal.patch"
 	"${FILESDIR}/${PN}-0.23.0-make-libavdevice-check-accept-libav.patch"
+	"${FILESDIR}/${PN}-libva2.patch" #641384
 )
 
 pkg_setup() {
@@ -151,7 +152,7 @@ src_prepare() {
 	cp "${DISTDIR}/waf-${WAF_PV}" "${S}"/waf || die
 	chmod +x "${S}"/waf || die
 	eapply "${FILESDIR}/${PV}"
-	default_src_prepare
+	default
 }
 
 src_configure() {
