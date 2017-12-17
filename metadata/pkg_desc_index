@@ -1314,7 +1314,7 @@ app-text/docbook-xml-simple-dtd 1.0-r1 4.1.2.4-r2 4.1.2.5-r2: Simplified Docbook
 app-text/docbook-xsl-ns-stylesheets 1.78.0: XSL Stylesheets for Docbook
 app-text/docbook-xsl-stylesheets 1.79.1-r2: XSL Stylesheets for Docbook
 app-text/docbook2X 0.8.8-r4: Tools to convert docbook to man and info
-app-text/dos2unix 7.3.4 7.3.5: Convert DOS or MAC text files to UNIX format or vice versa
+app-text/dos2unix 7.3.5: Convert DOS or MAC text files to UNIX format or vice versa
 app-text/duali 0.2.0-r1: Arabic dictionary based on the DICT protocol
 app-text/dvipdfm 0.13.2d-r1: DVI to PDF translator
 app-text/dvipdfmx 20110311-r1: DVI to PDF translator with multi-byte character support
@@ -9806,7 +9806,7 @@ sys-apps/usbredir 0.7 0.7.1_p20170503: TCP daemon and set of libraries for usbre
 sys-apps/usbutils 008-r1: USB enumeration utilities
 sys-apps/usermode-utilities 20070815-r3: Tools for use with Usermode Linux virtual machines
 sys-apps/utempter 0.5.5.6: App that allows non-privileged apps to write utmp (login) info
-sys-apps/util-linux 2.28.2 2.30.2: Various useful Linux utilities
+sys-apps/util-linux 2.30.2: Various useful Linux utilities
 sys-apps/vbetool 1.1: Run real-mode video BIOS code to alter hw state (i.e. reinitialize video card)
 sys-apps/watchdog 5.14: A software watchdog and /dev/watchdog daemon
 sys-apps/which 2.21: Prints out location of specified executables that are in your path
