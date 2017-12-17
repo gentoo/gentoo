@@ -67,9 +67,6 @@ DOCS="RELEASE-NOTES"
 src_prepare() {
 	eapply "${FILESDIR}/2.8.0-no-user-root.patch"
 
-	# Don't advise using PIP
-	sed -i "s/On Linux, try 'sudo pip install zbar'/Re-emerge Electrum with the qrcode USE flag/" lib/qrscanner.py || die
-
 	# Prevent icon from being installed in the wrong location
 	sed -i '/icons/d' setup.py || die
 
@@ -133,6 +130,7 @@ src_prepare() {
 		ledger \
 		keepkey \
 		$(usex sync            '' labels               ) \
+		revealer \
 		trezor  \
 		$(usex trustedcoin_com '' trustedcoin          ) \
 		$(usex vkb             '' virtualkeyboard      ) \
