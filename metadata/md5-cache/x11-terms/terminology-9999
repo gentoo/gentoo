@@ -1,11 +1,10 @@
-DEFINED_PHASES=compile configure install prepare unpack
-DEPEND=>=dev-libs/efl-1.18 virtual/pkgconfig >=app-portage/elt-patches-20170317 >=app-portage/elt-patches-20170422 dev-vcs/git !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 doc? ( app-doc/doxygen )
+DEFINED_PHASES=compile configure install test unpack
+DEPEND=>=dev-libs/efl-1.18[X] virtual/pkgconfig >=dev-vcs/git-1.8.2.1 >=dev-util/meson-0.40.0 >=dev-util/ninja-1.7.2
 DESCRIPTION=Feature rich terminal emulator using the Enlightenment Foundation Libraries
-EAPI=5
+EAPI=6
 HOMEPAGE=https://www.enlightenment.org/p.php?p=about/terminology
-IUSE=nls doc
-LICENSE=BSD
-RDEPEND=>=dev-libs/efl-1.18 nls? ( sys-devel/gettext )
+LICENSE=BSD-2
+RDEPEND=>=dev-libs/efl-1.18[X]
 SLOT=0
-_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	enlightenment	ac1fc335a7f44c04309a9f4aae403165	epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	e99babeaa7d98c1caaa6a61a79902210	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	git-2	195a672bfaf52d868442171c9469bbb6	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=4b88f351ea3aec9269362d3f3446edb9
+_eclasses_=git-r3	fec09a83ae965b041b47f5ff7c8ba29a	meson	0946ddca90e9c2d3e4687bb097dd9ed3	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=150071e98905454b5196ce51df99304a

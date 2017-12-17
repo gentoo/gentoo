@@ -752,7 +752,7 @@ app-emulation/spectemu 0.99.3: 48k ZX Spectrum Emulator
 app-emulation/spice 0.13.3-r1 0.13.3-r2: SPICE server
 app-emulation/spice-protocol 0.12.12: Headers defining the SPICE protocol
 app-emulation/spice-vdagent 0.17.0: SPICE VD Linux Guest Agent
-app-emulation/spim 8.0-r1 8.0-r2: MIPS Simulator
+app-emulation/spim 8.0-r2: MIPS Simulator
 app-emulation/uade 2.13: Unix Amiga Delitracker Emulator - plays old Amiga tunes through UAE emulation
 app-emulation/vice 2.4.22: The Versatile Commodore 8-bit Emulator
 app-emulation/virt-manager 1.4.0-r3: A graphical tool for administering virtual machines
@@ -7619,7 +7619,7 @@ media-libs/zita-alsa-pcmi 0.2.0: Provides easy access to ALSA PCM devices
 media-libs/zvbi 0.2.35-r1: VBI Decoding Library for Zapping
 media-plugins/alsa-plugins 1.1.1-r1: ALSA extra plugins
 media-plugins/alsaequal 0.6-r2: a real-time adjustable equalizer plugin for ALSA
-media-plugins/amb-plugins 0.8.1: AMB-plugins ladspa plugin package. Filters by Fons Adriaensen
+media-plugins/amb-plugins 0.8.1-r1: AMB-plugins ladspa plugin package. Filters by Fons Adriaensen
 media-plugins/caps-plugins 0.4.5-r1 0.9.15 0.9.24: The CAPS Audio Plugin Suite - LADSPA plugin suite
 media-plugins/emotion_generic_players 1.17.0: Provides external applications as generic loaders for Evas
 media-plugins/evas_generic_loaders 1.17.0: Provides external applications as generic loaders for Evas
