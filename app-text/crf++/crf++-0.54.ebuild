@@ -22,6 +22,7 @@ src_prepare() {
 		-e "/CXXFLAGS/s/-O3/${CXXFLAGS}/" \
 		configure.in || die
 
+	epatch "${FILESDIR}"/${PN}-automake-1.13.patch
 	epatch "${FILESDIR}"/${P}-c++11.patch
 	# bug #365921
 	epatch "${FILESDIR}/${P}-gcc46.patch"
