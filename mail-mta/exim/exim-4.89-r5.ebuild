@@ -59,6 +59,7 @@ COMMON_DEPEND=">=sys-apps/sed-4.0.5
 	sqlite? ( dev-db/sqlite )
 	radius? ( net-dialup/freeradius-client )
 	virtual/libiconv
+	elibc_glibc? ( net-libs/libnsl )
 	"
 	# added X check for #57206
 DEPEND="${COMMON_DEPEND}
