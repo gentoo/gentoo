@@ -176,6 +176,7 @@ app-arch/pbzip2:symlink - Install symlinks which override app-arch/bzip2 impleme
 app-arch/pigz:symlink - Install symlinks which override app-arch/gzip implementation
 app-arch/tar:minimal - just install `tar`
 app-arch/unzip:natspec - Use dev-libs/libnatspec to correctly decode non-ascii file names archived in Windows.
+app-arch/xz-utils:extra-filters - Build additional filters that are not used in any of the default xz presets. This includes delta and BCJ coders, additional match finders and SHA256 checks.
 app-arch/zip:natspec - Use dev-libs/libnatspec to correctly decode non-ascii file names archived in Windows.
 app-backup/amanda:ndmp - Support for the NDMP protocol
 app-backup/amanda:s3 - Support for backing up to the Amazon S3 system
