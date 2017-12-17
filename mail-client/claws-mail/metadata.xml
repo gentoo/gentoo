@@ -34,8 +34,6 @@
 			plugin</flag>
 		<flag name="valgrind">Add support for memory debugging
 			using valgrind</flag>
-		<flag name="webkit">Enables HTML e-mail rendering by using
-			the <pkg>net-libs/webkit-gtk</pkg> library.</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">sylpheed-claws</remote-id>
