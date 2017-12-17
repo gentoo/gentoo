@@ -15270,7 +15270,7 @@ net-misc/dropbear 2016.74: small SSH 2 client/server designed for small memory e
 net-misc/dropbox 40.3.44 41.3.76: Dropbox daemon (pretends to be GUI-less)
 net-misc/dropbox-cli 1-r1 1.6.0: Cli interface for dropbox (python), part of nautilus-dropbox
 net-misc/efax 0.9a-r4: A simple fax program for single-user systems
-net-misc/electrum 2.7.15 2.8.0-r1 2.8.2 2.8.3 2.9.3: User friendly Bitcoin client
+net-misc/electrum 2.7.15 2.8.0-r1 2.8.2 2.8.3 2.9.3 3.0.3: User friendly Bitcoin client
 net-misc/ethercard-diag 20050321.1g 20050321.1g-r1: low level mii diagnostic tools including mii-diag and etherwake (merge of netdiag/isa-diag)
 net-misc/eventd 0.21.0 0.23.0_p20171112: A small daemon to act on remote or local events
 net-misc/exabgp 3.2.17: The BGP swiss army knife of networking
