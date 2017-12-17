@@ -27,13 +27,16 @@ HOMEPAGE="http://tukaani.org/xz/"
 # See top-level COPYING file as it outlines the various pieces and their licenses.
 LICENSE="public-domain LGPL-2.1+ GPL-2+"
 SLOT="0"
-IUSE="elibc_FreeBSD nls static-libs +threads"
+IUSE="elibc_FreeBSD +extra-filters nls static-libs +threads"
 
 RDEPEND="!<app-arch/lzma-4.63
 	!app-arch/lzma-utils
 	!<app-arch/p7zip-4.57"
 DEPEND="${RDEPEND}
 	${EXTRA_DEPEND}"
+
+# Tests currently do not account for smaller feature set
+RESTRICT="!extra-filters? ( test )"
 
 src_prepare() {
 	if [[ ${PV} == "9999" ]] ; then
@@ -45,12 +48,27 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	local myconf=(
+		$(use_enable nls)
+		$(use_enable threads)
+		$(use_enable static-libs static)
+	)
+	multilib_is_native_abi ||
+		myconf+=( --disable-{xz,xzdec,lzmadec,lzmainfo,lzma-links,scripts} )
+	if ! use extra-filters; then
+		myconf+=(
+			# LZMA1 + LZMA2 for standard .lzma & .xz files
+			--enable-encoders=lzma1,lzma2
+			--enable-decoders=lzma1,lzma2
+			# those are used by default, depending on preset
+			--enable-match-finders=hc3,hc4,bt4
+			# CRC64 is used by default, though some (old?) files use CRC32
+			--enable-checks=crc32,crc64
+		)
+	fi
+
 	use elibc_FreeBSD && export ac_cv_header_sha256_h=no #545714
-	ECONF_SOURCE="${S}" econf \
-		$(use_enable nls) \
-		$(use_enable threads) \
-		$(use_enable static-libs static) \
-		$(multilib_is_native_abi || echo --disable-{xz,xzdec,lzmadec,lzmainfo,lzma-links,scripts})
+	ECONF_SOURCE="${S}" econf "${myconf[@]}"
 }
 
 multilib_src_install() {
