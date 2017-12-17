@@ -13459,7 +13459,7 @@ media-plugins/gst-plugins-theora 0.10.36-r1: plugin for gstreamer
 media-plugins/gst-plugins-twolame 0.10.19-r1 1.10.5 1.12.3: MPEG2 encoder plugin for GStreamer
 media-plugins/gst-plugins-uvch264 1.10.5 1.12.3: UVC compliant H264 encoding cameras plugin for GStreamer
 media-plugins/gst-plugins-v4l2 0.10.31-r1 1.10.3 1.10.5 1.12.3: plugin for gstreamer
-media-plugins/gst-plugins-vaapi 1.12.3: Hardware accelerated video decoding through VA-API plugin for GStreamer
+media-plugins/gst-plugins-vaapi 1.12.3 1.12.4: Hardware accelerated video decoding through VA-API plugin for GStreamer
 media-plugins/gst-plugins-voaacenc 1.10.5 1.12.3: AAC encoder plugin for GStreamer
 media-plugins/gst-plugins-voamrwbenc 1.10.5 1.12.3: AMR-WB audio encoder plugin for GStreamer
 media-plugins/gst-plugins-vorbis 0.10.36-r1: plugin for gstreamer
