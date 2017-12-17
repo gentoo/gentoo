@@ -11,7 +11,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	dvar=7706828ecda2d8c508d6fc233dc9d198bab482ad
 	list=72c59181d677a3f50b201d51f190b1bff02d4279
-	rbtree=825f626a16257c5f0b0c523c11ce1bca16851180
+	rbtree=ba0527e9157316cdb60522f23fb884ea196b1346
 	sundry=50c8ccf01b39b3f11e59c69d1cafea5bef5a9769
 	SRC_URI="https://github.com/bus1/dbus-broker/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		https://github.com/c-util/c-dvar/archive/${dvar}.tar.gz -> c-dvar-${dvar}.tar.gz
