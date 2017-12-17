@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 inherit git-r3
 
 DESCRIPTION="modern, legacy free, simple yet efficient vim-like editor"
@@ -24,6 +24,8 @@ src_prepare() {
 	if use test && ! type -P vim &>/dev/null; then
 		sed -i 's/.*vim.*//' "${S}/test/Makefile" || die
 	fi
+
+	default
 }
 
 src_configure() {
