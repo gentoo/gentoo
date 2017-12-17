@@ -202,7 +202,7 @@ RDEPEND="
 	upnp? ( net-libs/libupnp:= )
 	v4l? ( media-libs/libv4l:0 )
 	vaapi? (
-		x11-libs/libva:0[X,drm]
+		x11-libs/libva:0=[X,drm]
 		!libav? ( >=media-video/ffmpeg-3.1.3:0=[vaapi] )
 		libav? ( media-video/libav:0=[vaapi] )
 	)
