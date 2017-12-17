@@ -7,6 +7,14 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# James Le Cuirot <chewi@gentoo.org> (17 Dec 2017)
+# Java 9 is not yet fully supported on Gentoo. Having a masked
+# gentoo-vm flag allows us to provide it without it breaking Gentoo
+# packages. Those who wish to experiment with it as a fully recognised
+# Gentoo JVM can unmask the flag.
+dev-java/oracle-jdk-bin:9 gentoo-vm
+dev-java/oracle-jre-bin:9 gentoo-vm
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (04 Nov 2017)
 # Requires audacious, which is masked. Bug 632513
 =media-libs/freeverb3-3.1.2_pre20151102-r1 jack
