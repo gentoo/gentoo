@@ -2884,7 +2884,7 @@ dev-cpp/glog 0.3.3-r1 0.3.4 0.3.4-r1: Google's C++ logging library
 dev-cpp/gmock 1.7.0-r1: Google's C++ mocking framework
 dev-cpp/gnome-vfsmm 2.26.0-r1: C++ bindings for gnome-vfs
 dev-cpp/gsl 0_pre20171105: Guideline Support Library implementation by Microsoft
-dev-cpp/gstreamermm 0.10.11 1.4.3 1.10.0: C++ interface for GStreamer
+dev-cpp/gstreamermm 0.10.11 1.10.0: C++ interface for GStreamer
 dev-cpp/gtest 1.7.0-r1 1.8.0 9999: Google C++ Testing Framework
 dev-cpp/gtkglextmm 1.2.0-r1 1.2.0-r2: C++ bindings for gtkglext
 dev-cpp/gtkmm 2.24.5 3.22.0 3.22.1 3.22.2: C++ interface for GTK+
@@ -7813,7 +7813,7 @@ dev-python/graphcanvas 4.0.2-r1: Enthought Tool Suite: Interactive Graph (networ
 dev-python/graphviz 0.7.1: Simple Python interface for Graphviz
 dev-python/graphy 1.0-r1: Simple Chart Library for Python
 dev-python/greenlet 0.4.10 0.4.12: Lightweight in-process concurrent programming
-dev-python/gst-python 0.10.22-r1 1.10.3 1.10.5 1.12.3: A Python Interface to GStreamer
+dev-python/gst-python 0.10.22-r1 1.10.5 1.12.3: A Python Interface to GStreamer
 dev-python/gtkspell-python 2.25.3-r1: GtkSpell bindings for Python
 dev-python/guessit 2.1.2-r1 2.1.3-r1 2.1.4 9999: Python library for guessing information from video filenames
 dev-python/guppy 0.1.10-r1: Guppy-PE -- A Python Programming Environment
@@ -13036,9 +13036,9 @@ media-libs/gst-plugins-bad 0.10.23-r4 1.10.5 1.12.3: Less plugins for GStreamer
 media-libs/gst-plugins-base 0.10.36-r2 1.10.5 1.12.3: Basepack of plugins for gstreamer
 media-libs/gst-plugins-good 0.10.31-r2 1.10.5 1.12.3: Basepack of plugins for GStreamer
 media-libs/gst-plugins-ugly 0.10.19-r1 1.10.5 1.12.3: Basepack of plugins for gstreamer
-media-libs/gst-rtsp-server 0.10.8-r1 1.10.3 1.12.3: A GStreamer based RTSP server
+media-libs/gst-rtsp-server 0.10.8-r1 1.12.3: A GStreamer based RTSP server
 media-libs/gstreamer 0.10.36-r2 1.10.5 1.12.3: Open source multimedia framework
-media-libs/gstreamer-editing-services 1.10.3 1.10.4 1.12.3: SDK for making video editors and more
+media-libs/gstreamer-editing-services 1.12.3: SDK for making video editors and more
 media-libs/guilib 1.2.1: a simple widget set for SDL
 media-libs/gupnp-dlna 0.10.4 0.10.5: Library providing DLNA-related functionality for MediaServers
 media-libs/hamlib 3.1: Ham radio backend rig control libraries
@@ -13427,7 +13427,7 @@ media-plugins/gst-plugins-libnice 0.1.13 0.1.13-r100: GStreamer plugin for ICE (
 media-plugins/gst-plugins-libpng 0.10.31-r1 1.10.5 1.12.3: PNG image encoder/decoder plugin for GStreamer
 media-plugins/gst-plugins-libvisual 0.10.36-r1 1.10.5 1.12.3: Visualization elements for GStreamer
 media-plugins/gst-plugins-mad 0.10.19-r1 1.10.5: MP3 decoder plugin for GStreamer
-media-plugins/gst-plugins-meta 0.10-r11 1.8.3 1.10.3 1.10.5 1.12.3: Meta ebuild to pull in gst plugins for apps
+media-plugins/gst-plugins-meta 0.10-r11 1.8.3 1.10.5 1.12.3: Meta ebuild to pull in gst plugins for apps
 media-plugins/gst-plugins-modplug 0.10.23-r1 1.10.5 1.12.3: MOD audio decoder plugin for GStreamer
 media-plugins/gst-plugins-mpeg2dec 0.10.19-r1 1.10.5 1.12.3: MPEG2 decoder plugin for GStreamer
 media-plugins/gst-plugins-mpeg2enc 0.10.23-r1 1.10.5 1.12.3: MPEG-1/2 video encoding plugin for GStreamer
