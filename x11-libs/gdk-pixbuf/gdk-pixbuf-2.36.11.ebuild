@@ -3,6 +3,7 @@
 
 EAPI=6
 GNOME2_LA_PUNT="yes"
+GNOME2_EAUTORECONF="yes"
 
 inherit flag-o-matic gnome2 multilib multilib-minimal
 
@@ -40,10 +41,16 @@ MULTILIB_CHOST_TOOLS=(
 	/usr/bin/gdk-pixbuf-query-loaders$(get_exeext)
 )
 
-src_prepare() {
+PATCHES=(
+	# Do not run lowmem test on uclibc
 	# See https://bugzilla.gnome.org/show_bug.cgi?id=756590
-	eapply "${FILESDIR}"/${PN}-2.32.3-fix-lowmem-uclibc.patch
+	"${FILESDIR}"/${PN}-2.32.3-fix-lowmem-uclibc.patch
+	# Fix --without-libtiff having no effect (from master)
+	# https://bugzilla.gnome.org/show_bug.cgi?id=788770
+	"${FILESDIR}"/${PV}-fix-libtiff-disable.patch
+)
 
+src_prepare() {
 	# This will avoid polluting the pkg-config file with versioned libpng,
 	# which is causing problems with libpng14 -> libpng15 upgrade
 	# See upstream bug #667068
