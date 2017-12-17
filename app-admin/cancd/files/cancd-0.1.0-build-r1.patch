@@ -2,8 +2,8 @@ fix building with newer glibc
 
 http://bugs.gentoo.org/246734
 
---- cancd.c
-+++ cancd.c
+--- a/cancd.c
++++ b/cancd.c
 @@ -36,6 +36,7 @@
  #include <libgen.h>
  #include <getopt.h>

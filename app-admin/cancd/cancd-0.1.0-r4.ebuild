@@ -1,11 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit eutils
+inherit user
 
-DESCRIPTION="the CA NetConsole Daemon receives output from the Linux netconsole driver"
+DESCRIPTION="CA NetConsole Daemon receives output from the Linux netconsole driver"
 HOMEPAGE="http://oss.oracle.com/projects/cancd/"
 SRC_URI="http://oss.oracle.com/projects/cancd/dist/files/source/${P}.tar.gz"
 
@@ -14,9 +14,14 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
+PATCHES=(
+	"${FILESDIR}/${P}-build-r1.patch"
+	"${FILESDIR}/${P}-c-cleanup.patch"
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-build.patch #246734
-	epatch "${FILESDIR}"/${P}-c-cleanup.patch
+	default
+
 	# slight makefile cleanup
 	sed -i \
 		-e '/^CFLAGS/s,-g,,' \
@@ -27,11 +32,12 @@ src_prepare() {
 
 src_install() {
 	dosbin cancd
-	newinitd "${FILESDIR}"/cancd-init.d cancd
-	newconfd "${FILESDIR}"/cancd-conf.d cancd
+	newinitd "${FILESDIR}"/cancd-init.d-r1 cancd
+	newconfd "${FILESDIR}"/cancd-conf.d-r1 cancd
 	newinitd "${FILESDIR}"/netconsole-init.d netconsole
 	newconfd "${FILESDIR}"/netconsole-conf.d netconsole
-	keepdir /var/crash
-	fowners adm:nobody /var/crash
-	fperms 700 /var/crash
+}
+
+pkg_preinst() {
+	enewuser cancd
 }
