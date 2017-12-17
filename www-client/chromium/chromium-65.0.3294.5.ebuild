@@ -8,7 +8,7 @@ CHROMIUM_LANGS="am ar bg bn ca cs da de el en-GB es es-419 et fa fi fil fr gu he
 	hi hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro ru sk sl sr
 	sv sw ta te th tr uk vi zh-CN zh-TW"
 
-inherit check-reqs chromium-2 eutils gnome2-utils flag-o-matic multilib ninja-utils pax-utils portability python-any-r1 readme.gentoo-r1 toolchain-funcs versionator xdg-utils
+inherit check-reqs chromium-2 eutils gnome2-utils flag-o-matic multilib multiprocessing ninja-utils pax-utils portability python-any-r1 readme.gentoo-r1 toolchain-funcs versionator xdg-utils
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="http://chromium.org/"
@@ -164,16 +164,24 @@ pre_build_checks() {
 	fi
 
 	# Check build requirements, bug #541816 and bug #471810 .
-	CHECKREQS_MEMORY="3G"
+	local reqmem=3
 	CHECKREQS_DISK_BUILD="5G"
 	eshopts_push -s extglob
 	if is-flagq '-g?(gdb)?([1-9])'; then
 		CHECKREQS_DISK_BUILD="25G"
 		if ! use component-build; then
-			CHECKREQS_MEMORY="16G"
+			reqmem=16
 		fi
 	fi
 	eshopts_pop
+
+	local jobs=$(makeopts_jobs)
+	if (( jobs > reqmem )); then
+		CHECKREQS_MEMORY="${jobs}G"
+	else
+		CHECKREQS_MEMORY="${reqmem}G"
+	fi
+
 	check-reqs_pkg_setup
 }
 
