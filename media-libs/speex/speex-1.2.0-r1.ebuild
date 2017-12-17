@@ -8,8 +8,8 @@ MY_P=${P/_}
 MY_P=${MY_P/_p/.}
 
 DESCRIPTION="Audio compression format designed for speech"
-HOMEPAGE="http://www.speex.org/"
-SRC_URI="http://downloads.xiph.org/releases/speex/${MY_P}.tar.gz"
+HOMEPAGE="https://www.speex.org/"
+SRC_URI="https://downloads.xiph.org/releases/speex/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
