@@ -58,6 +58,7 @@ RDEPEND="
 	x11-libs/libXrender
 	x11-libs/libXScrnSaver
 	x11-libs/libXtst
+	x11-libs/libxcb
 	x11-libs/pango
 	x11-misc/xdg-utils
 "
