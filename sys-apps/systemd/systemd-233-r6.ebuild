@@ -8,6 +8,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/systemd/systemd/archive/v${PV}.tar.gz -> ${P}.tar.gz
+		https://dev.gentoo.org/~floppym/dist/${P}-patches.tar.gz
 		!doc? ( https://dev.gentoo.org/~floppym/dist/${P}-man.tar.gz )"
 	KEYWORDS="alpha amd64 arm ~arm64 ia64 ppc ppc64 ~sparc x86"
 fi
@@ -153,13 +154,7 @@ src_prepare() {
 	sed -i -e 's/GROUP="dialout"/GROUP="uucp"/' rules/*.rules || die
 
 	local PATCHES=(
-		"${FILESDIR}/233-0001-Avoid-strict-DM-interface-version-dependencies-5519.patch"
-		"${FILESDIR}/233-CVE-2017-9445.patch"
-		"${FILESDIR}/233-format-warnings.patch"
-		"${FILESDIR}/233-0002-core-load-fragment-refuse-units-with-errors-in-RootD.patch"
-		"${FILESDIR}/233-0003-core-load-fragment-refuse-units-with-errors-in-certa.patch"
 		"${FILESDIR}/CVE-2017-15908.patch"
-		"${FILESDIR}/CVE-2017-9217.patch"
 	)
 
 	if ! use vanilla; then
