@@ -140,7 +140,7 @@ pkg_setup() {
 src_prepare() {
 	cp "${DISTDIR}/waf-${WAF_PV}" "${S}"/waf || die
 	chmod +x "${S}"/waf || die
-	default_src_prepare
+	default
 }
 
 src_configure() {
