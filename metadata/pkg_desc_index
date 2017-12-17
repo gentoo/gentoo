@@ -960,10 +960,10 @@ app-misc/chkcrontab 1.6 1.7: A tool to detect crontab errors
 app-misc/ckermit 8.0.211-r4: combined serial and network communication software package
 app-misc/clockywock 0.3.1a: ncurses based analog clock
 app-misc/cmatrix 1.2a-r3: An ncurses based app to show a scrolling screen from the Matrix
-app-misc/color 1.2-r1 1.2-r2: Easily add ANSI colouring to shell scripts
+app-misc/color 1.2-r2: Easily add ANSI colouring to shell scripts
 app-misc/colordiff 1.0.18: Colorizes output of diff
 app-misc/conmux 0.15.1-r3: A console multiplexor
-app-misc/countrycodes 1.0.5-r1: An ISO 3166 country code finder
+app-misc/countrycodes 1.0.5-r1 1.0.5-r3: An ISO 3166 country code finder
 app-misc/cstream 3.1.1: general-purpose stream-handling tool like UNIX dd
 app-misc/cw 1.0.16-r3: A non-intrusive real-time ANSI color wrapper for common unix-based commands
 app-misc/dailystrips 1.0.28-r2: dailystrips automatically downloads your favorite online comics from the web
@@ -1424,7 +1424,7 @@ app-text/ps2eps 1.68: Generate Encapsulated Postscript Format files from one-pag
 app-text/ps2pkm 1.5_p20120701 1.7_p20150521 1.8_p20160523 1.8_p20170524: Tool that converts a PostScript type1 font into a corresponding TeX PK font
 app-text/pspresent 1.3-r1: A tool to display full-screen PostScript presentations
 app-text/pstotext 1.9-r4: Extract ASCII text from a PostScript or PDF file
-app-text/psutils 1.17-r2 1.17-r3: PostScript Utilities
+app-text/psutils 1.17-r3: PostScript Utilities
 app-text/pylize 1.3b-r1: Python HTML Slideshow Generator using HTML and CSS
 app-text/pytextile 2.1.8 2.3.3: A Python port of Textile, A humane web text generator
 app-text/qpdf 5.1.1-r1: Command-line tool for structural, content-preserving transformation of PDF files
