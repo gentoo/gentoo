@@ -235,8 +235,6 @@ src_configure() {
 		$(usex libmpv "$(use_enable opengl plain-gl)" '--disable-plain-gl')
 		--disable-mali-fbdev	# Only available in overlays.
 		$(usex opengl '' '--disable-gl')
-		--disable-vulkan		# Requires glslang and spirv-tools packaged.
-		--disable-shaderc		# Only available in overlays.
 
 		# HWaccels:
 		# Automagic Video Toolbox HW acceleration. See Gentoo bug 577332.
