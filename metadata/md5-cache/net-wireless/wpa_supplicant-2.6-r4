@@ -9,6 +9,6 @@ LICENSE=|| ( GPL-2 BSD )
 RDEPEND=dbus? ( sys-apps/dbus ) kernel_linux? ( dev-libs/libnl:3 net-wireless/crda eap-sim? ( sys-apps/pcsc-lite ) ) !kernel_linux? ( net-libs/libpcap ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 ) readline? ( sys-libs/ncurses:0= sys-libs/readline:0= ) ssl? ( gnutls? ( dev-libs/libgcrypt:0= net-libs/gnutls:= ) !gnutls? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) ) !ssl? ( dev-libs/libtommath ) selinux? ( sec-policy/selinux-networkmanager )
 REQUIRED_USE=fasteap? ( !ssl ) smartcard? ( ssl )
 SLOT=0
-SRC_URI=http://hostap.epitest.fi/releases/wpa_supplicant-2.6.tar.gz
+SRC_URI=https://w1.fi/releases/wpa_supplicant-2.6.tar.gz
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	readme.gentoo-r1	6f03e110529650f57fc7d1fb908b8986	systemd	8f5286f89e265842f5b5189666eae88b	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=24f4674521351e6141aab099c543bca2
+_md5_=7be142e87f085cf8b0e4cf43c59d2d98
