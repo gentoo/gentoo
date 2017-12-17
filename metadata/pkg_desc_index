@@ -6422,7 +6422,7 @@ gnustep-apps/projectcenter 0.6.2: An IDE for GNUstep
 gnustep-apps/simpleagenda 0.43: a simple calendar and agenda application
 gnustep-apps/systempreferences 1.2.0: System Preferences is a clone of Apple OS X' System Preferences
 gnustep-apps/terminal 0.9.8: A terminal emulator for GNUstep
-gnustep-apps/textedit 0.95_pre20100427 0.95_pre20100427-r1: A text editor with font, color, and style capabilities for GNUstep
+gnustep-apps/textedit 0.95_pre20100427-r1: A text editor with font, color, and style capabilities for GNUstep
 gnustep-apps/zipper 1.5: Zipper is a tool for inspecting and extracting compressed archives
 gnustep-base/gnustep-back-art 0.25.0: libart_lgpl back-end component for the GNUstep GUI Library
 gnustep-base/gnustep-back-cairo 0.25.0: Cairo back-end component for the GNUstep GUI Library
@@ -8725,7 +8725,7 @@ net-misc/charm 1.9.2-r1: A text based livejournal client
 net-misc/chrony 2.3: NTP client and server programs
 net-misc/clockspeed 0.62-r6: A simple Network Time Protocol (NTP) client
 net-misc/clusterssh 4.03.03: Concurrent Multi-Server Terminal Access
-net-misc/connect 1.100: network connection relaying command (proxy)
+net-misc/connect 1.103: network connection relaying command (proxy)
 net-misc/connman 1.29: Provides a daemon for managing internet connections
 net-misc/connman-gtk 1.1.1: GTK GUI for Connman
 net-misc/curl 7.55.1 7.56.1 7.57.0: A Client that groks URLs
