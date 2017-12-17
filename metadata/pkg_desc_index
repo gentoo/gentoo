@@ -6213,7 +6213,7 @@ dev-util/uncrustify 0.59: C/C++/C#/D/Java/Pawn code indenter and beautifier
 dev-util/unifdef 2.10: remove #ifdef'ed lines from a file while otherwise leaving the file alone
 dev-util/usb-robot 0.2.0: USB Reverse engineering tools
 dev-util/valgrind 3.12.0 3.13.0: An open-source memory debugger for GNU/Linux
-dev-util/valkyrie 2.0.0: Graphical front-end to the Valgrind suite of tools
+dev-util/valkyrie 2.0.0-r1: Graphical front-end to the Valgrind suite of tools
 dev-util/vbindiff 3.0_beta4-r1: Visual binary diff utility
 dev-util/vint 0.3.13-r1: Lint tool for Vim script language
 dev-util/weka 3.7.13: A Java data mining package
@@ -11063,7 +11063,7 @@ x11-proto/xf86rushproto 1.1.2-r1: X.Org XF86Rush protocol headers
 x11-proto/xf86vidmodeproto 2.3.1-r1: X.Org XF86VidMode protocol headers
 x11-proto/xineramaproto 1.2.1-r1: X.Org Xinerama protocol headers
 x11-proto/xproto 7.0.31: X.Org xproto protocol headers
-x11-terms/aterm 1.0.1-r2 1.0.1-r3: rxvt compatible terminal emulator with transparency support
+x11-terms/aterm 1.0.1-r3: rxvt compatible terminal emulator with transparency support
 x11-terms/eterm 0.9.5: A vt102 terminal emulator for X
 x11-terms/gnome-terminal 3.22.2: The Gnome Terminal
 x11-terms/guake 0.8.8: Drop-down terminal for GTK+ desktops
