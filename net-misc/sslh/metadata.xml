@@ -4,4 +4,11 @@
 	<maintainer type="person">
 		<email>kensington@gentoo.org</email>
 	</maintainer>
+	<maintainer type="person">
+		<email>candrews@gentoo.org</email>
+		<name>Craig Andrews</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">yrutschle/sslh</remote-id>
+	</upstream>
 </pkgmetadata>
