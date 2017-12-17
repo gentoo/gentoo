@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="3"
@@ -22,6 +22,7 @@ src_prepare() {
 		-e "/CXXFLAGS/s/-O3/${CXXFLAGS}/" \
 		configure.in || die
 
+	epatch "${FILESDIR}"/${P}-c++11.patch
 	# bug #365921
 	epatch "${FILESDIR}/${P}-gcc46.patch"
 
