@@ -98,6 +98,7 @@ COMMON_DEPEND="
 	wayland? (
 		>=dev-libs/wayland-1.6.0
 		>=x11-libs/libxkbcommon-0.3.0
+		dev-libs/wayland-protocols
 	)
 	X? (
 		x11-libs/libX11
@@ -212,6 +213,8 @@ src_configure() {
 		$(use_enable aqua cocoa)
 		$(use_enable drm)
 		$(use_enable gbm)
+		$(use_enable wayland wayland-scanner)
+		$(use_enable wayland wayland-protocols)
 		$(use_enable wayland)
 		$(use_enable X x11)
 		$(use_enable xv)
