@@ -26,7 +26,7 @@ src_prepare() {
 		-e '/^LDFLAGS/d' \
 		-e '/STRIP/d' \
 		Makefile
-	
+
 	eapply_user
 }
 
