@@ -13,7 +13,7 @@ SRC_URI="ftp://ftp.andrew.cmu.edu/pub/mpack/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="HPND"
-KEYWORDS="~amd64 x86 ~ppc-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="amd64 x86 ~ppc-macos ~sparc-solaris ~x86-solaris"
 IUSE=""
 
 PATCHES=( "${FILESDIR}"/${P}-filenames.patch
