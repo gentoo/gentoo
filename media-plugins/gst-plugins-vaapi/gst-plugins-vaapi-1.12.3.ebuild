@@ -23,6 +23,7 @@ RDEPEND="
 	>=media-libs/gst-plugins-base-${PV}:${SLOT}[${MULTILIB_USEDEP}]
 	>=media-libs/gst-plugins-bad-${PV}:${SLOT}[opengl?,${MULTILIB_USEDEP}]
 	>=x11-libs/libva-1.4.0[drm?,X?,opengl?,wayland?,${MULTILIB_USEDEP}]
+	<x11-libs/libva-1.99
 	drm? (
 		>=virtual/libudev-208:=[${MULTILIB_USEDEP}]
 		>=x11-libs/libdrm-2.4.46[${MULTILIB_USEDEP}] )
