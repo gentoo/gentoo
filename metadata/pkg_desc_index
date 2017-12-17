@@ -730,7 +730,7 @@ app-emulation/docker 17.06.2: The core functions you need to create Docker image
 app-emulation/docker-proxy 0.8.0_p20161111: Docker container networking
 app-emulation/docker-runc 1.0.0_rc3_p20170706: runc container cli tools (docker fork)
 app-emulation/dosemu 1.4.1_pre20130107-r5: DOS Emulator
-app-emulation/e-uae 0.8.29_rc4-r2 0.8.29_rc4-r3: The Ubiquitous Amiga Emulator with an emulation core largely based on WinUAE
+app-emulation/e-uae 0.8.29_rc4-r3: The Ubiquitous Amiga Emulator with an emulation core largely based on WinUAE
 app-emulation/free42 2.0.6: An HP-42S Calculator Simulator
 app-emulation/ganeti 2.15.2-r5: Ganeti is a virtual server management software tool
 app-emulation/ganeti-htools 0.3.1: Cluster tools for fixing common allocation problems on Ganeti 2.0 clusters
@@ -787,7 +787,7 @@ app-eselect/eselect-lapack 0.1: LAPACK module for eselect
 app-eselect/eselect-lcdfilter 1: Eselect module to choose Freetype infinality-enhanced LCD filtering settings
 app-eselect/eselect-lib-bin-symlink 0.1.1: An eselect library to manage executable symlinks
 app-eselect/eselect-mesa 0.0.10-r1: Utility to change the Mesa OpenGL driver being used
-app-eselect/eselect-miniaudicle 1.0.1-r1 1.0.1-r2: Manages the /usr/bin/miniAudicle symlink
+app-eselect/eselect-miniaudicle 1.0.1-r2: Manages the /usr/bin/miniAudicle symlink
 app-eselect/eselect-mpg123 0.1: Manage /usr/bin/mpg123 symlink
 app-eselect/eselect-mpost 0.3: mpost module for eselect
 app-eselect/eselect-notify-send 0.1: Manage /usr/bin/notify-send symlink
@@ -1437,7 +1437,7 @@ app-text/rman 3.2-r1: PolyGlotMan man page translator AKA RosettaMan
 app-text/rnv 1.7.11: A lightweight Relax NG Compact Syntax validator
 app-text/ronn 0.7.3-r3: Converts simple, human readable textfiles to roff for terminal display, and HTML
 app-text/rpl 1.5.5-r1: Intelligent recursive search/replace utility
-app-text/sablotron 1.0.3: An XSLT Parser in C++
+app-text/sablotron 1.0.3-r1: An XSLT Parser in C++
 app-text/sary 1.2.0-r1: Sary: suffix array library and tools
 app-text/scrollkeeper 9999-r1: Dummy scrollkeeper for testing rarian
 app-text/scrollkeeper-dtd 1.0: DTD from the Scrollkeeper package
