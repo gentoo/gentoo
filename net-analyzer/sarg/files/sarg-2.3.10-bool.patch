@@ -1,0 +1,11 @@
+--- a/util.c
++++ b/util.c
+@@ -2088,7 +2088,7 @@
+ 	int pad_len;
+ 	bool bracket=false;
+ 	bool port=false;
+-	bool port_num=0;
++	int port_num=0;
+ 
+ 	// skip leading spaces and tabs
+ 	while (*buf && (*buf==' ' || *buf=='\t')) buf++;
