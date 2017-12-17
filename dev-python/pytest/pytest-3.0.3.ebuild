@@ -36,7 +36,7 @@ DEPEND="${COMMON_DEPEND}
 	)
 "
 RDEPEND="${COMMON_DEPEND}
-	!dev-python/logilab-common
+	!<dev-python/logilab-common-1.3.0
 "
 
 python_prepare_all() {
