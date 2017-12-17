@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{3_4,3_5} )
+PYTHON_COMPAT=( python3_{4,5,6} )
 PLOCALES="de ru"
 
 inherit cmake-utils l10n python-single-r1 readme.gentoo-r1 systemd user
@@ -42,7 +42,7 @@ RDEPEND="
 		libressl? ( dev-libs/libressl:0= )
 	)
 	tcl? ( dev-lang/tcl:0= )
-	zlib? ( sys-libs/zlib )
+	zlib? ( sys-libs/zlib:0= )
 "
 DEPEND="
 	${RDEPEND}
