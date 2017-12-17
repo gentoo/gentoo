@@ -84,7 +84,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=sys-libs/zlib-1.2.11
 	udev? ( virtual/udev )
 	vaapi? (
-		x11-libs/libva[egl]
+		x11-libs/libva
 		opengl? ( x11-libs/libva[opengl] )
 		system-ffmpeg? ( media-video/ffmpeg[vaapi] )
 		vdpau? ( x11-libs/libva[vdpau] )
