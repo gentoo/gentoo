@@ -63,7 +63,7 @@ COMMON_DEPEND="
 		$(add_kdeapps_dep akonadi-contacts)
 		$(add_kdeapps_dep kcontacts)
 	)
-	calendar? ( $(add_kdeapps_dep kcalcore) )
+	calendar? ( <kde-apps/kcalcore-17.11.80:5 )
 	gphoto2? ( media-libs/libgphoto2:= )
 	jpeg2k? ( media-libs/jasper:= )
 	kipi? ( $(add_kdeapps_dep libkipi '' '16.03.80') )
