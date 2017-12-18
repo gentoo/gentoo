@@ -3,6 +3,8 @@
 
 EAPI="5"
 
+inherit eutils
+
 DESCRIPTION="Tools for manipulating UEFI secure boot platforms"
 HOMEPAGE="https://git.kernel.org/cgit/linux/kernel/git/jejb/efitools.git"
 SRC_URI="https://git.kernel.org/cgit/linux/kernel/git/jejb/efitools.git/snapshot/v${PV}.tar.bz2 -> ${P}.tar.bz2"
@@ -24,3 +26,8 @@ DEPEND="${RDEPEND}
 	dev-perl/File-Slurp"
 
 S=${WORKDIR}/v${PV}
+
+src_prepare() {
+	epatch "${FILESDIR}/1.7.0-Make.rules.patch"
+	epatch_user
+}
