@@ -11,7 +11,7 @@ SRC_URI="http://www.dnssec-tools.org/download/dnsval-${PV}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="ipv6 static-libs +threads"
 
 RDEPEND="dev-libs/openssl:0
