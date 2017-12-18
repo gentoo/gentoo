@@ -21,6 +21,8 @@ DEPEND="${RDEPEND}
 	nls? ( >=sys-devel/gettext-0.10.35 )
 	xattr? ( elibc_glibc? ( sys-apps/attr ) )"
 
+PATCHES=( "${FILESDIR}"/${P}-fix-test-92.patch )
+
 src_prepare() {
 	default
 
