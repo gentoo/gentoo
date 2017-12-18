@@ -53,14 +53,6 @@ PDEPEND="
 
 PATCHES=( "${FILESDIR}/${PN}-4.7.0-plugin-install.patch" )
 
-pkg_setup() {
-	if use qt4 && [[ $(gcc-major-version) -lt 5 ]] ; then
-		ewarn "A GCC version older than 5 was detected. There may be trouble. See also Gentoo bug #595618"
-	fi
-
-	MULTIBUILD_VARIANTS=( $(usev qt4) $(usev qt5) )
-}
-
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DPHONON_BUILD_DESIGNER_PLUGIN=$(usex designer)
