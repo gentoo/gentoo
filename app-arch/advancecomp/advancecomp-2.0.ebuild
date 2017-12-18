@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit eutils
 
@@ -17,10 +17,8 @@ IUSE="mng png test"
 RDEPEND="app-arch/bzip2
 	sys-libs/zlib"
 DEPEND="${RDEPEND}"
-#	test? (
-#		app-text/tofrodos
-#		dev-util/valgrind
-#	)"
+#	test? ( dev-util/valgrind )
+#   test? ( app-text/tofrodos )
 
 RESTRICT="test" #282441, #523212
 

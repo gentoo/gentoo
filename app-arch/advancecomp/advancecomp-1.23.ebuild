@@ -1,13 +1,13 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit eutils
 
 DESCRIPTION="Recompress ZIP, PNG and MNG, considerably improving compression"
-HOMEPAGE="http://advancemame.sourceforge.net/comp-readme.html"
-SRC_URI="mirror://sourceforge/project/advancemame/${PN}/${PV}/${P}.tar.gz"
+HOMEPAGE="http://www.advancemame.it/comp-readme.html"
+SRC_URI="https://github.com/amadvance/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="GPL-3 LGPL-2"
 SLOT="0"
@@ -17,10 +17,8 @@ IUSE="mng png test"
 RDEPEND="app-arch/bzip2
 	sys-libs/zlib"
 DEPEND="${RDEPEND}"
-#	test? (
-#		app-text/tofrodos
-#		dev-util/valgrind
-#	)"
+#	test? ( dev-util/valgrind )
+#   test? ( app-text/tofrodos )
 
 RESTRICT="test" #282441, #523212
 

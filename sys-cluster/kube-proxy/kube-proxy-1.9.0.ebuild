@@ -21,7 +21,6 @@ RESTRICT="test"
 
 src_prepare() {
 	default
-	sed -i -e "s/git archive/git-archive/" src/${EGO_PN}/hack/lib/version.sh || die
 	sed -i -e "/vendor\/github.com\/jteeuwen\/go-bindata\/go-bindata/d" src/${EGO_PN}/hack/lib/golang.sh || die
 	sed -i -e "/export PATH/d" src/${EGO_PN}/hack/generate-bindata.sh || die
 }

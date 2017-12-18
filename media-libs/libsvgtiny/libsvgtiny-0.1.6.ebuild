@@ -3,7 +3,7 @@
 
 EAPI=5
 
-NETSURF_BUILDSYSTEM=buildsystem-1.4
+NETSURF_BUILDSYSTEM=buildsystem-1.6
 inherit netsurf
 
 DESCRIPTION="framebuffer abstraction library, written in C"
