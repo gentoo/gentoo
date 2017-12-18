@@ -36,7 +36,9 @@ CDEPEND="gtk? ( dev-libs/glib:2[${MULTILIB_USEDEP}]
 RDEPEND="${CDEPEND}
 	java? ( >=virtual/jre-1.4 )"
 DEPEND="${CDEPEND}
-	java? ( >=virtual/jdk-1.4 )
+	java? ( >=virtual/jdk-1.4
+		test? ( dev-java/junit:4
+			dev-java/hamcrest-core:1.3 ) )
 	test? ( ${PYTHON_DEPS} )
 	app-arch/unzip
 	sys-devel/gettext
@@ -83,6 +85,11 @@ multilib_src_configure() {
 	if multilib_is_native_abi && use java; then
 		export JAVACFLAGS="$(java-pkg_javac-args)"
 		export JAVA_CFLAGS="$(java-pkg_get-jni-cflags)"
+		if use test ; then # bug 629078
+			java-pkg_append_ CLASSPATH .
+			java-pkg_append_ CLASSPATH $(java-pkg_getjar --build-only junit-4 junit.jar)
+			java-pkg_append_ CLASSPATH $(java-pkg_getjar --build-only hamcrest-core-1.3 hamcrest-core.jar)
+		fi
 	fi
 
 	append-cppflags -DNDEBUG
