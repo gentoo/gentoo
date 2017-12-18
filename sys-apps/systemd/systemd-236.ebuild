@@ -338,6 +338,8 @@ multilib_src_install_all() {
 		# Avoid breaking boot/reboot
 		dosym ../../../lib/systemd/systemd /usr/lib/systemd/systemd
 		dosym ../../../lib/systemd/systemd-shutdown /usr/lib/systemd/systemd-shutdown
+		# Ensure the static resolv.conf path fits to the upstream documentation
+		dosym ../../../lib/systemd/resolv.conf /usr/lib/systemd/resolv.conf
 	fi
 }
 
