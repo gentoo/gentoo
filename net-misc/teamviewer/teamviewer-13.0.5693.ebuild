@@ -107,6 +107,9 @@ src_install() {
 pkg_postinst() {
 	gnome2_icon_cache_update
 
+	elog "Please note that parallel installation of multiple versions of"
+	elog "TeamViewer is currently not supported at runtime. Bug #621818"
+	elog ""
 	elog "Before using TeamViewer, you need to start its daemon:"
 	elog "OpenRC:"
 	elog "# /etc/init.d/teamviewerd${SLOT} start"
