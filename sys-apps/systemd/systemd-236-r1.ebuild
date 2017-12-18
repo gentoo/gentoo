@@ -148,6 +148,7 @@ src_unpack() {
 
 src_prepare() {
 	local PATCHES=(
+		"${FILESDIR}/236-0001-cryptsetup-generator-Don-t-mistake-NULL-input-as-OOM.patch"
 	)
 
 	if ! use vanilla; then
