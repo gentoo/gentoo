@@ -1,0 +1,2594 @@
+diff --git a/Makefile.in b/Makefile.in
+index 502376ec4b..da7d369ad1 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -921,7 +921,8 @@ MONODLL_CFLAGS = $(__monodll_PCH_INC) -D__WX$(TOOLKIT)__ $(__WXUNIV_DEFINE_p) \
+ 	$(__INC_EXPAT_p) -I$(top_srcdir)/src/stc/scintilla/include \
+ 	-I$(top_srcdir)/src/stc/scintilla/lexlib \
+ 	-I$(top_srcdir)/src/stc/scintilla/src -D__WX__ -DSCI_LEXER -DLINK_LEXERS \
+-	-DwxUSE_BASE=1 -DWXMAKINGDLL $(PIC_FLAG) $(CPPFLAGS) $(CFLAGS)
++	-DwxUSE_BASE=1 -DWXMAKINGDLL $(__webviewdll_ext_dir_define_p) $(PIC_FLAG) \
++	$(CPPFLAGS) $(CFLAGS)
+ MONODLL_CXXFLAGS = $(__monodll_PCH_INC) -D__WX$(TOOLKIT)__ \
+ 	$(__WXUNIV_DEFINE_p) $(__DEBUG_DEFINE_p) $(__EXCEPTIONS_DEFINE_p) \
+ 	$(__RTTI_DEFINE_p) $(__THREAD_DEFINE_p) -DWXBUILDING $(__INC_TIFF_BUILD_p) \
+@@ -930,8 +931,8 @@ MONODLL_CXXFLAGS = $(__monodll_PCH_INC) -D__WX$(TOOLKIT)__ \
+ 	-I$(top_srcdir)/src/stc/scintilla/include \
+ 	-I$(top_srcdir)/src/stc/scintilla/lexlib \
+ 	-I$(top_srcdir)/src/stc/scintilla/src -D__WX__ -DSCI_LEXER -DLINK_LEXERS \
+-	-DwxUSE_BASE=1 -DWXMAKINGDLL $(PIC_FLAG) $(CXXWARNINGS) $(CPPFLAGS) \
+-	$(CXXFLAGS)
++	-DwxUSE_BASE=1 -DWXMAKINGDLL $(__webviewdll_ext_dir_define_p) $(PIC_FLAG) \
++	$(CXXWARNINGS) $(CPPFLAGS) $(CXXFLAGS)
+ MONODLL_OBJCXXFLAGS = $(__monodll_PCH_INC) -D__WX$(TOOLKIT)__ \
+ 	$(__WXUNIV_DEFINE_p) $(__DEBUG_DEFINE_p) $(__EXCEPTIONS_DEFINE_p) \
+ 	$(__RTTI_DEFINE_p) $(__THREAD_DEFINE_p) -DWXBUILDING $(__INC_TIFF_BUILD_p) \
+@@ -940,7 +941,8 @@ MONODLL_OBJCXXFLAGS = $(__monodll_PCH_INC) -D__WX$(TOOLKIT)__ \
+ 	-I$(top_srcdir)/src/stc/scintilla/include \
+ 	-I$(top_srcdir)/src/stc/scintilla/lexlib \
+ 	-I$(top_srcdir)/src/stc/scintilla/src -D__WX__ -DSCI_LEXER -DLINK_LEXERS \
+-	-DwxUSE_BASE=1 -DWXMAKINGDLL $(PIC_FLAG) $(CPPFLAGS) $(OBJCXXFLAGS)
++	-DwxUSE_BASE=1 -DWXMAKINGDLL $(__webviewdll_ext_dir_define_p) $(PIC_FLAG) \
++	$(CPPFLAGS) $(OBJCXXFLAGS)
+ MONODLL_OBJECTS =  \
+ 	monodll_any.o \
+ 	monodll_appbase.o \
+@@ -1060,7 +1062,7 @@ MONOLIB_CFLAGS = $(__monolib_PCH_INC) -D__WX$(TOOLKIT)__ $(__WXUNIV_DEFINE_p) \
+ 	$(__INC_EXPAT_p) -I$(top_srcdir)/src/stc/scintilla/include \
+ 	-I$(top_srcdir)/src/stc/scintilla/lexlib \
+ 	-I$(top_srcdir)/src/stc/scintilla/src -D__WX__ -DSCI_LEXER -DLINK_LEXERS \
+-	-DwxUSE_BASE=1 $(CPPFLAGS) $(CFLAGS)
++	-DwxUSE_BASE=1 $(__webviewdll_ext_dir_define_p) $(CPPFLAGS) $(CFLAGS)
+ MONOLIB_CXXFLAGS = $(__monolib_PCH_INC) -D__WX$(TOOLKIT)__ \
+ 	$(__WXUNIV_DEFINE_p) $(__DEBUG_DEFINE_p) $(__EXCEPTIONS_DEFINE_p) \
+ 	$(__RTTI_DEFINE_p) $(__THREAD_DEFINE_p) -DWXBUILDING $(__INC_TIFF_BUILD_p) \
+@@ -1069,7 +1071,8 @@ MONOLIB_CXXFLAGS = $(__monolib_PCH_INC) -D__WX$(TOOLKIT)__ \
+ 	-I$(top_srcdir)/src/stc/scintilla/include \
+ 	-I$(top_srcdir)/src/stc/scintilla/lexlib \
+ 	-I$(top_srcdir)/src/stc/scintilla/src -D__WX__ -DSCI_LEXER -DLINK_LEXERS \
+-	-DwxUSE_BASE=1 $(CXXWARNINGS) $(CPPFLAGS) $(CXXFLAGS)
++	-DwxUSE_BASE=1 $(__webviewdll_ext_dir_define_p) $(CXXWARNINGS) $(CPPFLAGS) \
++	$(CXXFLAGS)
+ MONOLIB_OBJCXXFLAGS = $(__monolib_PCH_INC) -D__WX$(TOOLKIT)__ \
+ 	$(__WXUNIV_DEFINE_p) $(__DEBUG_DEFINE_p) $(__EXCEPTIONS_DEFINE_p) \
+ 	$(__RTTI_DEFINE_p) $(__THREAD_DEFINE_p) -DWXBUILDING $(__INC_TIFF_BUILD_p) \
+@@ -1078,7 +1081,7 @@ MONOLIB_OBJCXXFLAGS = $(__monolib_PCH_INC) -D__WX$(TOOLKIT)__ \
+ 	-I$(top_srcdir)/src/stc/scintilla/include \
+ 	-I$(top_srcdir)/src/stc/scintilla/lexlib \
+ 	-I$(top_srcdir)/src/stc/scintilla/src -D__WX__ -DSCI_LEXER -DLINK_LEXERS \
+-	-DwxUSE_BASE=1 $(CPPFLAGS) $(OBJCXXFLAGS)
++	-DwxUSE_BASE=1 $(__webviewdll_ext_dir_define_p) $(CPPFLAGS) $(OBJCXXFLAGS)
+ MONOLIB_OBJECTS =  \
+ 	monolib_any.o \
+ 	monolib_appbase.o \
+@@ -1655,13 +1658,14 @@ WEBVIEWDLL_CXXFLAGS = $(__webviewdll_PCH_INC) -D__WX$(TOOLKIT)__ \
+ 	$(__RTTI_DEFINE_p) $(__THREAD_DEFINE_p) -DWXBUILDING $(__INC_TIFF_BUILD_p) \
+ 	$(__INC_TIFF_p) $(__INC_JPEG_p) $(__INC_PNG_p) $(__INC_ZLIB_p) \
+ 	$(__INC_REGEX_p) $(__INC_EXPAT_p) -DWXUSINGDLL -DWXMAKINGDLL_WEBVIEW \
+-	$(PIC_FLAG) $(CXXWARNINGS) $(CPPFLAGS) $(CXXFLAGS)
++	$(__webviewdll_ext_dir_define_p) $(PIC_FLAG) $(CXXWARNINGS) $(CPPFLAGS) \
++	$(CXXFLAGS)
+ WEBVIEWDLL_OBJCXXFLAGS = $(__webviewdll_PCH_INC) -D__WX$(TOOLKIT)__ \
+ 	$(__WXUNIV_DEFINE_p) $(__DEBUG_DEFINE_p) $(__EXCEPTIONS_DEFINE_p) \
+ 	$(__RTTI_DEFINE_p) $(__THREAD_DEFINE_p) -DWXBUILDING $(__INC_TIFF_BUILD_p) \
+ 	$(__INC_TIFF_p) $(__INC_JPEG_p) $(__INC_PNG_p) $(__INC_ZLIB_p) \
+ 	$(__INC_REGEX_p) $(__INC_EXPAT_p) -DWXUSINGDLL -DWXMAKINGDLL_WEBVIEW \
+-	$(PIC_FLAG) $(CPPFLAGS) $(OBJCXXFLAGS)
++	$(__webviewdll_ext_dir_define_p) $(PIC_FLAG) $(CPPFLAGS) $(OBJCXXFLAGS)
+ WEBVIEWDLL_OBJECTS =  \
+ 	$(__webviewdll___win32rc) \
+ 	$(__WEBVIEW_SRC_PLATFORM_OBJECTS_2) \
+@@ -2078,6 +2082,10 @@ SOUND_SDL_CXXFLAGS = -DWXUSINGDLL -DwxUSE_GUI=0 $(PIC_FLAG) $(CPPFLAGS) \
+ 	$(CXXFLAGS)
+ SOUND_SDL_OBJECTS =  \
+ 	sound_sdl_sound_sdl.o
++WEBKIT2_EXT_CXXFLAGS = -DWXUSINGDLL -DwxUSE_GUI=0 $(PIC_FLAG) $(CPPFLAGS) \
++	$(CXXFLAGS)
++WEBKIT2_EXT_OBJECTS =  \
++	webkit2_ext_webview_webkit2_extension.o
+ LOCALE_LINGUAS = ca cs da de el es fi fr hu id it ja nl pl ru sl sv tr uk zh zh_CN zh_TW
+ LOCALE_MSW_LINGUAS =  it
+ 
+@@ -6753,7 +6761,7 @@ COND_TOOLKIT_X11___ADVANCED_PLATFORM_SRC_OBJECTS_1 =  \
+ @COND_PLATFORM_MACOSX_1@__WEBVIEW_SRC_PLATFORM_OBJECTS \
+ @COND_PLATFORM_MACOSX_1@	= monodll_osx_webview_webkit.o
+ @COND_TOOLKIT_GTK@__WEBVIEW_SRC_PLATFORM_OBJECTS = \
+-@COND_TOOLKIT_GTK@	monodll_gtk_webview_webkit.o
++@COND_TOOLKIT_GTK@	monodll_gtk_webview_webkit.o monodll_webview_webkit2.o
+ @COND_TOOLKIT_MSW@__WEBVIEW_SRC_PLATFORM_OBJECTS = monodll_webview_ie.o
+ @COND_TOOLKIT_GTK_TOOLKIT_VERSION_2@__AUI_GTK_SRC_OBJECTS \
+ @COND_TOOLKIT_GTK_TOOLKIT_VERSION_2@	= monodll_tabartgtk.o
+@@ -9008,7 +9016,7 @@ COND_TOOLKIT_X11___ADVANCED_PLATFORM_SRC_OBJECTS_3 =  \
+ @COND_PLATFORM_MACOSX_1@__WEBVIEW_SRC_PLATFORM_OBJECTS_1 \
+ @COND_PLATFORM_MACOSX_1@	= monolib_osx_webview_webkit.o
+ @COND_TOOLKIT_GTK@__WEBVIEW_SRC_PLATFORM_OBJECTS_1 = \
+-@COND_TOOLKIT_GTK@	monolib_gtk_webview_webkit.o
++@COND_TOOLKIT_GTK@	monolib_gtk_webview_webkit.o monolib_webview_webkit2.o
+ @COND_TOOLKIT_MSW@__WEBVIEW_SRC_PLATFORM_OBJECTS_1 = monolib_webview_ie.o
+ @COND_TOOLKIT_GTK_TOOLKIT_VERSION_2@__AUI_GTK_SRC_OBJECTS_1 \
+ @COND_TOOLKIT_GTK_TOOLKIT_VERSION_2@	= monolib_tabartgtk.o
+@@ -13764,7 +13772,8 @@ COND_USE_SOVERSOLARIS_1___webviewdll___so_symlinks_uninst_cmd = rm -f \
+ @COND_PLATFORM_MACOSX_1@__WEBVIEW_SRC_PLATFORM_OBJECTS_2 \
+ @COND_PLATFORM_MACOSX_1@	= webviewdll_osx_webview_webkit.o
+ @COND_TOOLKIT_GTK@__WEBVIEW_SRC_PLATFORM_OBJECTS_2 = \
+-@COND_TOOLKIT_GTK@	webviewdll_gtk_webview_webkit.o
++@COND_TOOLKIT_GTK@	webviewdll_gtk_webview_webkit.o \
++@COND_TOOLKIT_GTK@	webviewdll_webview_webkit2.o
+ @COND_TOOLKIT_MSW@__WEBVIEW_SRC_PLATFORM_OBJECTS_2 = \
+ @COND_TOOLKIT_MSW@	webviewdll_webview_ie.o
+ COND_MONOLITHIC_0_SHARED_0_USE_GUI_1_USE_WEBVIEW_1___webviewlib___depname = \
+@@ -13783,7 +13792,8 @@ COND_MONOLITHIC_0_SHARED_0_USE_GUI_1_USE_WEBVIEW_1___webviewlib___depname = \
+ @COND_PLATFORM_MACOSX_1@__WEBVIEW_SRC_PLATFORM_OBJECTS_3 \
+ @COND_PLATFORM_MACOSX_1@	= webviewlib_osx_webview_webkit.o
+ @COND_TOOLKIT_GTK@__WEBVIEW_SRC_PLATFORM_OBJECTS_3 = \
+-@COND_TOOLKIT_GTK@	webviewlib_gtk_webview_webkit.o
++@COND_TOOLKIT_GTK@	webviewlib_gtk_webview_webkit.o \
++@COND_TOOLKIT_GTK@	webviewlib_webview_webkit2.o
+ @COND_TOOLKIT_MSW@__WEBVIEW_SRC_PLATFORM_OBJECTS_3 = \
+ @COND_TOOLKIT_MSW@	webviewlib_webview_ie.o
+ @COND_SHARED_1@____wxwebview_namedll_DEP = $(__webviewdll___depname)
+@@ -14586,6 +14596,13 @@ COND_WITH_PLUGIN_SDL_1___sound_sdl___depname = \
+ @COND_WITH_PLUGIN_SDL_1@__install_sound_sdl___depname = install_sound_sdl
+ @COND_WITH_PLUGIN_SDL_1@__uninstall_sound_sdl___depname \
+ @COND_WITH_PLUGIN_SDL_1@	= uninstall_sound_sdl
++COND_USE_WEBVIEW_WEBKIT2_1___webkit2_ext___depname = \
++	$(DLLPREFIX_MODULE)webkit2_ext$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(PLUGVERDELIM)$(PLUGIN_VERSION0)$(WXCOMPILER).$(SO_SUFFIX_MODULE)
++@COND_USE_WEBVIEW_WEBKIT2_1@__webkit2_ext___depname = $(COND_USE_WEBVIEW_WEBKIT2_1___webkit2_ext___depname)
++@COND_USE_WEBVIEW_WEBKIT2_1@__install_webkit2_ext___depname \
++@COND_USE_WEBVIEW_WEBKIT2_1@	= install_webkit2_ext
++@COND_USE_WEBVIEW_WEBKIT2_1@__uninstall_webkit2_ext___depname \
++@COND_USE_WEBVIEW_WEBKIT2_1@	= uninstall_webkit2_ext
+ @COND_USE_XRC_1@__wxrc___depname = wxrc
+ @COND_USE_XRC_1@__clean_wxrc___depname = clean-wxrc
+ @COND_USE_XRC_1@__install_wxrc___depname = install-wxrc
+@@ -14741,6 +14758,9 @@ COND_PLATFORM_UNIX_1___ADVANCED_GTK_PLATFORM_SRC_OBJECTS =  \
+ @COND_PLATFORM_WIN32_1@__ADVANCED_GTK_PLATFORM_SRC_OBJECTS \
+ @COND_PLATFORM_WIN32_1@	= monodll_taskbarcmn.o monodll_msw_joystick.o \
+ @COND_PLATFORM_WIN32_1@	monodll_msw_sound.o
++COND_USE_WEBVIEW_WEBKIT2_1___webviewdll_ext_dir_define_p_0 = --define \
++	WX_WEB_EXTENSIONS_DIRECTORY=\"$(PLUGINS_INST_DIR)/web-extensions\"
++@COND_USE_WEBVIEW_WEBKIT2_1@__webviewdll_ext_dir_define_p_0 = $(COND_USE_WEBVIEW_WEBKIT2_1___webviewdll_ext_dir_define_p_0)
+ @COND_PLATFORM_MACOSX_1@__PLATFORM_SRC_OBJECTS_0 = monolib_apptraits.o
+ @COND_PLATFORM_UNIX_1@__PLATFORM_SRC_OBJECTS_0 = monolib_apptraits.o
+ COND_PLATFORM_MACOSX_1___OSX_CARBON_COCOA_SRC_OBJECTS_12 =  \
+@@ -14888,6 +14908,9 @@ COND_PLATFORM_UNIX_1___ADVANCED_GTK_PLATFORM_SRC_OBJECTS_17 =  \
+ @COND_PLATFORM_WIN32_1@__ADVANCED_GTK_PLATFORM_SRC_OBJECTS_17 \
+ @COND_PLATFORM_WIN32_1@	= monolib_taskbarcmn.o monolib_msw_joystick.o \
+ @COND_PLATFORM_WIN32_1@	monolib_msw_sound.o
++@COND_USE_WEBVIEW_WEBKIT2_1@__webviewdll_ext_dir_define_p \
++@COND_USE_WEBVIEW_WEBKIT2_1@	= \
++@COND_USE_WEBVIEW_WEBKIT2_1@	-DWX_WEB_EXTENSIONS_DIRECTORY=\"$(PLUGINS_INST_DIR)/web-extensions\"
+ @COND_PLATFORM_MACOSX_1@__PLATFORM_SRC_OBJECTS_8 = coredll_apptraits.o
+ @COND_PLATFORM_UNIX_1@__PLATFORM_SRC_OBJECTS_8 = coredll_apptraits.o
+ COND_PLATFORM_MACOSX_1___OSX_CARBON_COCOA_SRC_OBJECTS_14 =  \
+@@ -15255,9 +15278,9 @@ COND_wxUSE_REGEX_builtin___LIB_REGEX_p = \
+ 
+ ### Targets: ###
+ 
+-all: $(__wxregex___depname) $(__wxzlib___depname) $(__wxpng___depname) $(__wxjpeg___depname) $(__wxtiff___depname) $(__wxexpat___depname) $(__wxscintilla___depname) $(__monodll___depname) $(__monolib___depname) $(__basedll___depname) $(__baselib___depname) $(__netdll___depname) $(__netlib___depname) $(__coredll___depname) $(__corelib___depname) $(__advdll___depname) $(__advlib___depname) $(__mediadll___depname) $(__medialib___depname) $(__htmldll___depname) $(__htmllib___depname) $(__webviewdll___depname) $(__webviewlib___depname) $(__qadll___depname) $(__qalib___depname) $(__xmldll___depname) $(__xmllib___depname) $(__xrcdll___depname) $(__xrclib___depname) $(__auidll___depname) $(__auilib___depname) $(__ribbondll___depname) $(__ribbonlib___depname) $(__propgriddll___depname) $(__propgridlib___depname) $(__richtextdll___depname) $(__richtextlib___depname) $(__stcdll___depname) $(__stclib___depname) $(__gldll___depname) $(__gllib___depname) $(__sound_sdl___depname) $(__wxrc___depname) $(__cocoa_res___depname)
++all: $(__wxregex___depname) $(__wxzlib___depname) $(__wxpng___depname) $(__wxjpeg___depname) $(__wxtiff___depname) $(__wxexpat___depname) $(__wxscintilla___depname) $(__monodll___depname) $(__monolib___depname) $(__basedll___depname) $(__baselib___depname) $(__netdll___depname) $(__netlib___depname) $(__coredll___depname) $(__corelib___depname) $(__advdll___depname) $(__advlib___depname) $(__mediadll___depname) $(__medialib___depname) $(__htmldll___depname) $(__htmllib___depname) $(__webviewdll___depname) $(__webviewlib___depname) $(__qadll___depname) $(__qalib___depname) $(__xmldll___depname) $(__xmllib___depname) $(__xrcdll___depname) $(__xrclib___depname) $(__auidll___depname) $(__auilib___depname) $(__ribbondll___depname) $(__ribbonlib___depname) $(__propgriddll___depname) $(__propgridlib___depname) $(__richtextdll___depname) $(__richtextlib___depname) $(__stcdll___depname) $(__stclib___depname) $(__gldll___depname) $(__gllib___depname) $(__sound_sdl___depname) $(__webkit2_ext___depname) $(__wxrc___depname) $(__cocoa_res___depname)
+ 
+-install: $(__install_wxregex___depname) $(__install_wxzlib___depname) $(__install_wxpng___depname) $(__install_wxjpeg___depname) $(__install_wxtiff___depname) $(__install_wxexpat___depname) $(__install_wxscintilla___depname) $(__install_monodll___depname) $(__install_monolib___depname) $(__install_basedll___depname) $(__install_baselib___depname) $(__install_netdll___depname) $(__install_netlib___depname) $(__install_coredll___depname) $(__install_corelib___depname) $(__install_advdll___depname) $(__install_advlib___depname) $(__install_mediadll___depname) $(__install_medialib___depname) $(__install_htmldll___depname) $(__install_htmllib___depname) $(__install_webviewdll___depname) $(__install_webviewlib___depname) $(__install_qadll___depname) $(__install_qalib___depname) $(__install_xmldll___depname) $(__install_xmllib___depname) $(__install_xrcdll___depname) $(__install_xrclib___depname) $(__install_auidll___depname) $(__install_auilib___depname) $(__install_ribbondll___depname) $(__install_ribbonlib___depname) $(__install_propgriddll___depname) $(__install_propgridlib___depname) $(__install_richtextdll___depname) $(__install_richtextlib___depname) $(__install_stcdll___depname) $(__install_stclib___depname) $(__install_gldll___depname) $(__install_gllib___depname) $(__install_sound_sdl___depname) $(__install_wxrc___depname) install-wxconfig locale_install locale_msw_install $(__cocoa_res_install___depname)
++install: $(__install_wxregex___depname) $(__install_wxzlib___depname) $(__install_wxpng___depname) $(__install_wxjpeg___depname) $(__install_wxtiff___depname) $(__install_wxexpat___depname) $(__install_wxscintilla___depname) $(__install_monodll___depname) $(__install_monolib___depname) $(__install_basedll___depname) $(__install_baselib___depname) $(__install_netdll___depname) $(__install_netlib___depname) $(__install_coredll___depname) $(__install_corelib___depname) $(__install_advdll___depname) $(__install_advlib___depname) $(__install_mediadll___depname) $(__install_medialib___depname) $(__install_htmldll___depname) $(__install_htmllib___depname) $(__install_webviewdll___depname) $(__install_webviewlib___depname) $(__install_qadll___depname) $(__install_qalib___depname) $(__install_xmldll___depname) $(__install_xmllib___depname) $(__install_xrcdll___depname) $(__install_xrclib___depname) $(__install_auidll___depname) $(__install_auilib___depname) $(__install_ribbondll___depname) $(__install_ribbonlib___depname) $(__install_propgriddll___depname) $(__install_propgridlib___depname) $(__install_richtextdll___depname) $(__install_richtextlib___depname) $(__install_stcdll___depname) $(__install_stclib___depname) $(__install_gldll___depname) $(__install_gllib___depname) $(__install_sound_sdl___depname) $(__install_webkit2_ext___depname) $(__install_wxrc___depname) install-wxconfig locale_install locale_msw_install $(__cocoa_res_install___depname)
+ 	$(INSTALL_DIR) $(DESTDIR)$(datadir)/aclocal
+ 	(cd $(srcdir) ; $(INSTALL_DATA)  wxwin.m4 $(DESTDIR)$(datadir)/aclocal)
+ 	$(INSTALL_DIR) $(DESTDIR)$(datadir)/bakefile/presets
+@@ -15293,7 +15316,7 @@ install: $(__install_wxregex___depname) $(__install_wxzlib___depname) $(__instal
+ 	@echo " ------------------------------------------------------"
+ 	@echo " "
+ 
+-uninstall: $(__uninstall_wxregex___depname) $(__uninstall_wxzlib___depname) $(__uninstall_wxpng___depname) $(__uninstall_wxjpeg___depname) $(__uninstall_wxtiff___depname) $(__uninstall_wxexpat___depname) $(__uninstall_wxscintilla___depname) $(__uninstall_monodll___depname) $(__uninstall_monolib___depname) $(__uninstall_basedll___depname) $(__uninstall_baselib___depname) $(__uninstall_netdll___depname) $(__uninstall_netlib___depname) $(__uninstall_coredll___depname) $(__uninstall_corelib___depname) $(__uninstall_advdll___depname) $(__uninstall_advlib___depname) $(__uninstall_mediadll___depname) $(__uninstall_medialib___depname) $(__uninstall_htmldll___depname) $(__uninstall_htmllib___depname) $(__uninstall_webviewdll___depname) $(__uninstall_webviewlib___depname) $(__uninstall_qadll___depname) $(__uninstall_qalib___depname) $(__uninstall_xmldll___depname) $(__uninstall_xmllib___depname) $(__uninstall_xrcdll___depname) $(__uninstall_xrclib___depname) $(__uninstall_auidll___depname) $(__uninstall_auilib___depname) $(__uninstall_ribbondll___depname) $(__uninstall_ribbonlib___depname) $(__uninstall_propgriddll___depname) $(__uninstall_propgridlib___depname) $(__uninstall_richtextdll___depname) $(__uninstall_richtextlib___depname) $(__uninstall_stcdll___depname) $(__uninstall_stclib___depname) $(__uninstall_gldll___depname) $(__uninstall_gllib___depname) $(__uninstall_sound_sdl___depname) locale_uninstall locale_msw_uninstall
++uninstall: $(__uninstall_wxregex___depname) $(__uninstall_wxzlib___depname) $(__uninstall_wxpng___depname) $(__uninstall_wxjpeg___depname) $(__uninstall_wxtiff___depname) $(__uninstall_wxexpat___depname) $(__uninstall_wxscintilla___depname) $(__uninstall_monodll___depname) $(__uninstall_monolib___depname) $(__uninstall_basedll___depname) $(__uninstall_baselib___depname) $(__uninstall_netdll___depname) $(__uninstall_netlib___depname) $(__uninstall_coredll___depname) $(__uninstall_corelib___depname) $(__uninstall_advdll___depname) $(__uninstall_advlib___depname) $(__uninstall_mediadll___depname) $(__uninstall_medialib___depname) $(__uninstall_htmldll___depname) $(__uninstall_htmllib___depname) $(__uninstall_webviewdll___depname) $(__uninstall_webviewlib___depname) $(__uninstall_qadll___depname) $(__uninstall_qalib___depname) $(__uninstall_xmldll___depname) $(__uninstall_xmllib___depname) $(__uninstall_xrcdll___depname) $(__uninstall_xrclib___depname) $(__uninstall_auidll___depname) $(__uninstall_auilib___depname) $(__uninstall_ribbondll___depname) $(__uninstall_ribbonlib___depname) $(__uninstall_propgriddll___depname) $(__uninstall_propgridlib___depname) $(__uninstall_richtextdll___depname) $(__uninstall_richtextlib___depname) $(__uninstall_stcdll___depname) $(__uninstall_stclib___depname) $(__uninstall_gldll___depname) $(__uninstall_gllib___depname) $(__uninstall_sound_sdl___depname) $(__uninstall_webkit2_ext___depname) locale_uninstall locale_msw_uninstall
+ 	(cd $(DESTDIR)$(datadir)/aclocal ; rm -f wxwin.m4)
+ 	(cd $(DESTDIR)$(datadir)/bakefile/presets ; rm -f wx.bkl wx_unix.bkl wx_win32.bkl wx_xrc.bkl wx_presets.py)
+ 	for f in setup.h $(RCDEFS_H); do \
+@@ -15322,6 +15345,7 @@ install-strip: install
+ 	$(STRIP) $(DESTDIR)$(libdir)/$(DLLPREFIX)$(WXDLLNAMEPREFIXGUI)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)_stc$(WXCOMPILER)$(VENDORTAG)$(WXDLLVERSIONTAG)$(dll___targetsuf3)
+ 	$(STRIP) $(DESTDIR)$(libdir)/$(DLLPREFIX)$(WXDLLNAMEPREFIXGUI)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)_gl$(WXCOMPILER)$(VENDORTAG)$(WXDLLVERSIONTAG)$(dll___targetsuf3)
+ 	$(STRIP) $(DESTDIR)$(PLUGINS_INST_DIR)/$(DLLPREFIX_MODULE)sound_sdl$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(PLUGVERDELIM)$(PLUGIN_VERSION0)$(WXCOMPILER).$(SO_SUFFIX_MODULE)
++	$(STRIP) $(DESTDIR)$(PLUGINS_INST_DIR)/web-extensions/$(DLLPREFIX_MODULE)webkit2_ext$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(PLUGVERDELIM)$(PLUGIN_VERSION0)$(WXCOMPILER).$(SO_SUFFIX_MODULE)
+ 
+ clean: $(__clean_wxrc___depname)
+ 	rm -rf ./.deps ./.pch
+@@ -15402,6 +15426,7 @@ clean: $(__clean_wxrc___depname)
+ 	rm -f $(LIBDIRNAME)/$(LIBPREFIX)wx_$(PORTNAME)$(WXUNIVNAME)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)_gl-$(WX_RELEASE)$(HOST_SUFFIX).$(DLLIMP_SUFFIX) $(LIBDIRNAME)/$(DLLPREFIX)$(WXDLLNAMEPREFIXGUI)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)_gl$(WXCOMPILER)$(VENDORTAG)$(WXDLLVERSIONTAG)$(dll___targetsuf2)
+ 	rm -f $(LIBDIRNAME)/$(LIBPREFIX)wx_$(PORTNAME)$(WXUNIVNAME)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)_gl-$(WX_RELEASE)$(HOST_SUFFIX)$(LIBEXT)
+ 	rm -f $(DLLPREFIX_MODULE)sound_sdl$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(PLUGVERDELIM)$(PLUGIN_VERSION0)$(WXCOMPILER).$(SO_SUFFIX_MODULE)
++	rm -f $(DLLPREFIX_MODULE)webkit2_ext$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(PLUGVERDELIM)$(PLUGIN_VERSION0)$(WXCOMPILER).$(SO_SUFFIX_MODULE)
+ 	-(cd samples && $(MAKE) clean)
+ 	rm -f lib/libwx_$(TOOLCHAIN_NAME).0.rsrc lib/libwx_$(TOOLCHAIN_NAME).0.r
+ 
+@@ -16130,6 +16155,16 @@ distclean: clean
+ @COND_WITH_PLUGIN_SDL_1@uninstall_sound_sdl: 
+ @COND_WITH_PLUGIN_SDL_1@	rm -f $(DESTDIR)$(PLUGINS_INST_DIR)/$(DLLPREFIX_MODULE)sound_sdl$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(PLUGVERDELIM)$(PLUGIN_VERSION0)$(WXCOMPILER).$(SO_SUFFIX_MODULE)
+ 
++@COND_USE_WEBVIEW_WEBKIT2_1@$(DLLPREFIX_MODULE)webkit2_ext$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(PLUGVERDELIM)$(PLUGIN_VERSION0)$(WXCOMPILER).$(SO_SUFFIX_MODULE): $(WEBKIT2_EXT_OBJECTS)
++@COND_USE_WEBVIEW_WEBKIT2_1@	$(SHARED_LD_MODULE_CXX) $@ $(WEBKIT2_EXT_OBJECTS)  $(LDFLAGS)  $(EXTRALIBS_WEBVIEW) $(LIBS)
++
++@COND_USE_WEBVIEW_WEBKIT2_1@install_webkit2_ext: $(__webkit2_ext___depname)
++@COND_USE_WEBVIEW_WEBKIT2_1@	$(INSTALL_DIR) $(DESTDIR)$(PLUGINS_INST_DIR)/web-extensions
++@COND_USE_WEBVIEW_WEBKIT2_1@	$(INSTALL_PROGRAM) $(DLLPREFIX_MODULE)webkit2_ext$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(PLUGVERDELIM)$(PLUGIN_VERSION0)$(WXCOMPILER).$(SO_SUFFIX_MODULE) $(DESTDIR)$(PLUGINS_INST_DIR)/web-extensions
++
++@COND_USE_WEBVIEW_WEBKIT2_1@uninstall_webkit2_ext: 
++@COND_USE_WEBVIEW_WEBKIT2_1@	rm -f $(DESTDIR)$(PLUGINS_INST_DIR)/web-extensions/$(DLLPREFIX_MODULE)webkit2_ext$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(PLUGVERDELIM)$(PLUGIN_VERSION0)$(WXCOMPILER).$(SO_SUFFIX_MODULE)
++
+ samples: 
+ 	(cd samples && $(MAKE) all)
+ 
+@@ -18563,6 +18598,9 @@ monodll_webview_ie.o: $(srcdir)/src/msw/webview_ie.cpp $(MONODLL_ODEP)
+ monodll_gtk_webview_webkit.o: $(srcdir)/src/gtk/webview_webkit.cpp $(MONODLL_ODEP)
+ 	$(CXXC) -c -o $@ $(MONODLL_CXXFLAGS) $(srcdir)/src/gtk/webview_webkit.cpp
+ 
++monodll_webview_webkit2.o: $(srcdir)/src/gtk/webview_webkit2.cpp $(MONODLL_ODEP)
++	$(CXXC) -c -o $@ $(MONODLL_CXXFLAGS) $(srcdir)/src/gtk/webview_webkit2.cpp
++
+ monodll_osx_webview_webkit.o: $(srcdir)/src/osx/webview_webkit.mm $(MONODLL_ODEP)
+ 	$(CXXC) -c -o $@ $(MONODLL_OBJCXXFLAGS) $(srcdir)/src/osx/webview_webkit.mm
+ 
+@@ -22797,7 +22835,7 @@ monodll_sound_sdl.o: $(srcdir)/src/unix/sound_sdl.cpp $(MONODLL_ODEP)
+ @COND_PLATFORM_MACOSX_1_USE_GUI_1@	$(CXXC) -c -o $@ $(MONODLL_CXXFLAGS) $(srcdir)/src/html/chm.cpp
+ 
+ monodll_version_rc.o: $(srcdir)/src/msw/version.rc $(MONODLL_ODEP)
+-	$(WINDRES) -i$< -o$@    --define __WX$(TOOLKIT)__ $(__WXUNIV_DEFINE_p_67) $(__DEBUG_DEFINE_p_66)  $(__EXCEPTIONS_DEFINE_p_65) $(__RTTI_DEFINE_p_65) $(__THREAD_DEFINE_p_65)   --define WXBUILDING --define WXDLLNAME=$(WXDLLNAMEPREFIXGUI)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)$(WXCOMPILER)$(VENDORTAG)$(WXDLLVERSIONTAG) $(__RCDEFDIR_p) --include-dir $(top_srcdir)/include $(__INC_TIFF_BUILD_p_66) $(__INC_TIFF_p_66) $(__INC_JPEG_p_66) $(__INC_PNG_p_65) $(__INC_ZLIB_p_67) $(__INC_REGEX_p_65) $(__INC_EXPAT_p_65) --include-dir $(top_srcdir)/src/stc/scintilla/include --include-dir $(top_srcdir)/src/stc/scintilla/lexlib --include-dir $(top_srcdir)/src/stc/scintilla/src --define __WX__ --define SCI_LEXER --define LINK_LEXERS --define wxUSE_BASE=1 --define WXMAKINGDLL
++	$(WINDRES) -i$< -o$@    --define __WX$(TOOLKIT)__ $(__WXUNIV_DEFINE_p_67) $(__DEBUG_DEFINE_p_66)  $(__EXCEPTIONS_DEFINE_p_65) $(__RTTI_DEFINE_p_65) $(__THREAD_DEFINE_p_65)   --define WXBUILDING --define WXDLLNAME=$(WXDLLNAMEPREFIXGUI)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)$(WXCOMPILER)$(VENDORTAG)$(WXDLLVERSIONTAG) $(__RCDEFDIR_p) --include-dir $(top_srcdir)/include $(__INC_TIFF_BUILD_p_66) $(__INC_TIFF_p_66) $(__INC_JPEG_p_66) $(__INC_PNG_p_65) $(__INC_ZLIB_p_67) $(__INC_REGEX_p_65) $(__INC_EXPAT_p_65) --include-dir $(top_srcdir)/src/stc/scintilla/include --include-dir $(top_srcdir)/src/stc/scintilla/lexlib --include-dir $(top_srcdir)/src/stc/scintilla/src --define __WX__ --define SCI_LEXER --define LINK_LEXERS --define wxUSE_BASE=1 --define WXMAKINGDLL $(__webviewdll_ext_dir_define_p_0)
+ 
+ monolib_any.o: $(srcdir)/src/common/any.cpp $(MONOLIB_ODEP)
+ 	$(CXXC) -c -o $@ $(MONOLIB_CXXFLAGS) $(srcdir)/src/common/any.cpp
+@@ -24440,6 +24478,9 @@ monolib_webview_ie.o: $(srcdir)/src/msw/webview_ie.cpp $(MONOLIB_ODEP)
+ monolib_gtk_webview_webkit.o: $(srcdir)/src/gtk/webview_webkit.cpp $(MONOLIB_ODEP)
+ 	$(CXXC) -c -o $@ $(MONOLIB_CXXFLAGS) $(srcdir)/src/gtk/webview_webkit.cpp
+ 
++monolib_webview_webkit2.o: $(srcdir)/src/gtk/webview_webkit2.cpp $(MONOLIB_ODEP)
++	$(CXXC) -c -o $@ $(MONOLIB_CXXFLAGS) $(srcdir)/src/gtk/webview_webkit2.cpp
++
+ monolib_osx_webview_webkit.o: $(srcdir)/src/osx/webview_webkit.mm $(MONOLIB_ODEP)
+ 	$(CXXC) -c -o $@ $(MONOLIB_OBJCXXFLAGS) $(srcdir)/src/osx/webview_webkit.mm
+ 
+@@ -39792,7 +39833,7 @@ htmllib_htmllbox.o: $(srcdir)/src/generic/htmllbox.cpp $(HTMLLIB_ODEP)
+ @COND_PLATFORM_MACOSX_1@	$(CXXC) -c -o $@ $(HTMLLIB_CXXFLAGS) $(srcdir)/src/html/chm.cpp
+ 
+ webviewdll_version_rc.o: $(srcdir)/src/msw/version.rc $(WEBVIEWDLL_ODEP)
+-	$(WINDRES) -i$< -o$@    --define __WX$(TOOLKIT)__ $(__WXUNIV_DEFINE_p_67) $(__DEBUG_DEFINE_p_66)  $(__EXCEPTIONS_DEFINE_p_65) $(__RTTI_DEFINE_p_65) $(__THREAD_DEFINE_p_65)   --define WXBUILDING --define WXDLLNAME=$(WXDLLNAMEPREFIXGUI)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)_webview$(WXCOMPILER)$(VENDORTAG)$(WXDLLVERSIONTAG) $(__RCDEFDIR_p) --include-dir $(top_srcdir)/include $(__INC_TIFF_BUILD_p_66) $(__INC_TIFF_p_66) $(__INC_JPEG_p_66) $(__INC_PNG_p_65) $(__INC_ZLIB_p_67) $(__INC_REGEX_p_65) $(__INC_EXPAT_p_65) --define WXUSINGDLL --define WXMAKINGDLL_WEBVIEW
++	$(WINDRES) -i$< -o$@    --define __WX$(TOOLKIT)__ $(__WXUNIV_DEFINE_p_67) $(__DEBUG_DEFINE_p_66)  $(__EXCEPTIONS_DEFINE_p_65) $(__RTTI_DEFINE_p_65) $(__THREAD_DEFINE_p_65)   --define WXBUILDING --define WXDLLNAME=$(WXDLLNAMEPREFIXGUI)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)_webview$(WXCOMPILER)$(VENDORTAG)$(WXDLLVERSIONTAG) $(__RCDEFDIR_p) --include-dir $(top_srcdir)/include $(__INC_TIFF_BUILD_p_66) $(__INC_TIFF_p_66) $(__INC_JPEG_p_66) $(__INC_PNG_p_65) $(__INC_ZLIB_p_67) $(__INC_REGEX_p_65) $(__INC_EXPAT_p_65) --define WXUSINGDLL --define WXMAKINGDLL_WEBVIEW $(__webviewdll_ext_dir_define_p_0)
+ 
+ webviewdll_webview_ie.o: $(srcdir)/src/msw/webview_ie.cpp $(WEBVIEWDLL_ODEP)
+ 	$(CXXC) -c -o $@ $(WEBVIEWDLL_CXXFLAGS) $(srcdir)/src/msw/webview_ie.cpp
+@@ -39800,6 +39841,9 @@ webviewdll_webview_ie.o: $(srcdir)/src/msw/webview_ie.cpp $(WEBVIEWDLL_ODEP)
+ webviewdll_gtk_webview_webkit.o: $(srcdir)/src/gtk/webview_webkit.cpp $(WEBVIEWDLL_ODEP)
+ 	$(CXXC) -c -o $@ $(WEBVIEWDLL_CXXFLAGS) $(srcdir)/src/gtk/webview_webkit.cpp
+ 
++webviewdll_webview_webkit2.o: $(srcdir)/src/gtk/webview_webkit2.cpp $(WEBVIEWDLL_ODEP)
++	$(CXXC) -c -o $@ $(WEBVIEWDLL_CXXFLAGS) $(srcdir)/src/gtk/webview_webkit2.cpp
++
+ webviewdll_osx_webview_webkit.o: $(srcdir)/src/osx/webview_webkit.mm $(WEBVIEWDLL_ODEP)
+ 	$(CXXC) -c -o $@ $(WEBVIEWDLL_OBJCXXFLAGS) $(srcdir)/src/osx/webview_webkit.mm
+ 
+@@ -39818,6 +39862,9 @@ webviewlib_webview_ie.o: $(srcdir)/src/msw/webview_ie.cpp $(WEBVIEWLIB_ODEP)
+ webviewlib_gtk_webview_webkit.o: $(srcdir)/src/gtk/webview_webkit.cpp $(WEBVIEWLIB_ODEP)
+ 	$(CXXC) -c -o $@ $(WEBVIEWLIB_CXXFLAGS) $(srcdir)/src/gtk/webview_webkit.cpp
+ 
++webviewlib_webview_webkit2.o: $(srcdir)/src/gtk/webview_webkit2.cpp $(WEBVIEWLIB_ODEP)
++	$(CXXC) -c -o $@ $(WEBVIEWLIB_CXXFLAGS) $(srcdir)/src/gtk/webview_webkit2.cpp
++
+ webviewlib_osx_webview_webkit.o: $(srcdir)/src/osx/webview_webkit.mm $(WEBVIEWLIB_ODEP)
+ 	$(CXXC) -c -o $@ $(WEBVIEWLIB_OBJCXXFLAGS) $(srcdir)/src/osx/webview_webkit.mm
+ 
+@@ -40658,6 +40705,9 @@ gllib_os2_glcanvas.o: $(srcdir)/src/os2/glcanvas.cpp $(GLLIB_ODEP)
+ sound_sdl_sound_sdl.o: $(srcdir)/src/unix/sound_sdl.cpp
+ 	$(CXXC) -c -o $@ $(SOUND_SDL_CXXFLAGS) $(srcdir)/src/unix/sound_sdl.cpp
+ 
++webkit2_ext_webview_webkit2_extension.o: $(srcdir)/src/gtk/webview_webkit2_extension.cpp
++	$(CXXC) -c -o $@ $(WEBKIT2_EXT_CXXFLAGS) $(srcdir)/src/gtk/webview_webkit2_extension.cpp
++
+ 
+ @COND_PYTHON@@COND_USE_STC_1@$(srcdir)/include/wx/stc/stc.h: \
+ @COND_PYTHON@@COND_USE_STC_1@$(srcdir)/src/stc/scintilla/include/Scintilla.iface \
+@@ -41569,4 +41619,4 @@ win-dist: MSW_ZIP_TEXT_DIST SAMPLES_DIST DEMOS_DIST UTILS_DIST MISC_DIST INTL_DI
+ 	uninstall_richtextlib wxrichtext install_stcdll uninstall_stcdll \
+ 	install_stclib uninstall_stclib wxstc install_gldll uninstall_gldll \
+ 	install_gllib uninstall_gllib wxgl install_sound_sdl uninstall_sound_sdl \
+-	samples
++	install_webkit2_ext uninstall_webkit2_ext samples
+diff --git a/autoconf_inc.m4 b/autoconf_inc.m4
+index 76cea6a950..7b4735c5c5 100644
+--- a/autoconf_inc.m4
++++ b/autoconf_inc.m4
+@@ -1088,6 +1088,12 @@ dnl ### begin block 20_COND_USE_THREADS_1[../../demos/bombs/bombs.bkl,../../demo
+         COND_USE_THREADS_1=""
+     fi
+     AC_SUBST(COND_USE_THREADS_1)
++dnl ### begin block 20_COND_USE_WEBVIEW_WEBKIT2_1[../../demos/bombs/bombs.bkl,../../demos/forty/forty.bkl,../../demos/fractal/fractal.bkl,../../demos/life/life.bkl,../../demos/poem/poem.bkl,../../samples/access/access.bkl,../../samples/animate/anitest.bkl,../../samples/artprov/artprov.bkl,../../samples/aui/auidemo.bkl,../../samples/calendar/calendar.bkl,../../samples/caret/caret.bkl,../../samples/clipboard/clipboard.bkl,../../samples/collpane/collpane.bkl,../../samples/combo/combo.bkl,../../samples/config/config.bkl,../../samples/console/console.bkl,../../samples/controls/controls.bkl,../../samples/dataview/dataview.bkl,../../samples/debugrpt/debugrpt.bkl,../../samples/dialogs/dialogs.bkl,../../samples/dialup/dialup.bkl,../../samples/display/display.bkl,../../samples/dll/dll.bkl,../../samples/dnd/dnd.bkl,../../samples/docview/docview.bkl,../../samples/dragimag/dragimag.bkl,../../samples/drawing/drawing.bkl,../../samples/erase/erase.bkl,../../samples/event/event.bkl,../../samples/except/except.bkl,../../samples/exec/exec.bkl,../../samples/font/font.bkl,../../samples/fswatcher/fswatcher.bkl,../../samples/grid/grid.bkl,../../samples/help/help.bkl,../../samples/htlbox/htlbox.bkl,../../samples/html/about/about.bkl,../../samples/html/help/help.bkl,../../samples/html/helpview/helpview.bkl,../../samples/html/htmlctrl/htmlctrl.bkl,../../samples/html/printing/printing.bkl,../../samples/html/test/test.bkl,../../samples/html/virtual/virtual.bkl,../../samples/html/widget/widget.bkl,../../samples/html/zip/zip.bkl,../../samples/image/image.bkl,../../samples/internat/internat.bkl,../../samples/ipc/ipc.bkl,../../samples/joytest/joytest.bkl,../../samples/keyboard/keyboard.bkl,../../samples/layout/layout.bkl,../../samples/listctrl/listctrl.bkl,../../samples/mdi/mdi.bkl,../../samples/mediaplayer/mediaplayer.bkl,../../samples/memcheck/memcheck.bkl,../../samples/menu/menu.bkl,../../samples/minimal/minimal.bkl,../../samples/nativdlg/nativdlg.bkl,../../samples/notebook/notebook.bkl,../../samples/oleauto/oleauto.bkl,../../samples/opengl/cube/cube.bkl,../../samples/opengl/isosurf/isosurf.bkl,../../samples/opengl/penguin/penguin.bkl,../../samples/ownerdrw/ownerdrw.bkl,../../samples/popup/popup.bkl,../../samples/power/power.bkl,../../samples/preferences/preferences.bkl,../../samples/printing/printing.bkl,../../samples/propgrid/propgrid.bkl,../../samples/regtest/regtest.bkl,../../samples/render/render.bkl,../../samples/ribbon/ribbon.bkl,../../samples/richtext/richtext.bkl,../../samples/sashtest/sashtest.bkl,../../samples/scroll/scroll.bkl,../../samples/shaped/shaped.bkl,../../samples/sockets/sockets.bkl,../../samples/sound/sound.bkl,../../samples/splash/splash.bkl,../../samples/splitter/splitter.bkl,../../samples/statbar/statbar.bkl,../../samples/stc/stctest.bkl,../../samples/svg/svgtest.bkl,../../samples/taborder/taborder.bkl,../../samples/taskbar/taskbar.bkl,../../samples/text/text.bkl,../../samples/thread/thread.bkl,../../samples/toolbar/toolbar.bkl,../../samples/treectrl/treectrl.bkl,../../samples/treelist/treelist.bkl,../../samples/typetest/typetest.bkl,../../samples/uiaction/uiaction.bkl,../../samples/validate/validate.bkl,../../samples/vscroll/vscroll.bkl,../../samples/webview/webview.bkl,../../samples/widgets/widgets.bkl,../../samples/wizard/wizard.bkl,../../samples/wrapsizer/wrapsizer.bkl,../../samples/xrc/xrcdemo.bkl,../../samples/xti/xti.bkl,../../tests/benchmarks/bench.bkl,../../tests/test.bkl,../../utils/emulator/src/emulator.bkl,../../utils/execmon/execmon.bkl,../../utils/helpview/src/helpview.bkl,../../utils/hhp2cached/hhp2cached.bkl,../../utils/ifacecheck/src/ifacecheck.bkl,../../utils/screenshotgen/src/screenshotgen.bkl,../../utils/wxrc/wxrc.bkl,wx.bkl] ###
++    COND_USE_WEBVIEW_WEBKIT2_1="#"
++    if test "x$USE_WEBVIEW_WEBKIT2" = "x1" ; then
++        COND_USE_WEBVIEW_WEBKIT2_1=""
++    fi
++    AC_SUBST(COND_USE_WEBVIEW_WEBKIT2_1)
+ dnl ### begin block 20_COND_USE_XRC_1[../../utils/execmon/execmon.bkl,../../utils/wxrc/wxrc.bkl,wx.bkl] ###
+     COND_USE_XRC_1="#"
+     if test "x$USE_XRC" = "x1" ; then
+diff --git a/build/bakefiles/common.bkl b/build/bakefiles/common.bkl
+index 09107e01aa..e8297d01ed 100644
+--- a/build/bakefiles/common.bkl
++++ b/build/bakefiles/common.bkl
+@@ -830,4 +830,9 @@ $(TAB)$(VC_COMPILER) /EP /nologo "$(DOLLAR)(InputPath)" > "$(SETUPHDIR)\wx\msw\r
+     <set var="VARS_DONT_ELIMINATE" append="1">top_srcdir</set>
+ 
+ 
++    <set var="webviewdll_ext_dir_define">
++        <if cond="FORMAT=='autoconf' and USE_WEBVIEW_WEBKIT2=='1'">WX_WEB_EXTENSIONS_DIRECTORY=\"$(PLUGINS_INST_DIR)/web-extensions\"</if>
++    </set>
++
++
+ </makefile>
+diff --git a/build/bakefiles/config.bkl b/build/bakefiles/config.bkl
+index a43afb4908..a95b405587 100644
+--- a/build/bakefiles/config.bkl
++++ b/build/bakefiles/config.bkl
+@@ -429,6 +429,7 @@ to run the tests, include CppUnit library here.
+         <option name="DYLIB_RPATH_INSTALL"/>
+         <option name="DYLIB_RPATH_POSTLINK"/>
+         <option name="SAMPLES_RPATH_FLAG"/>
++        <option name="USE_WEBVIEW_WEBKIT2"/>
+ 
+         <!-- see configure.in; it's required by some samples on Mac OS X -->
+         <option name="HEADER_PAD_OPTION"/>
+diff --git a/build/bakefiles/files.bkl b/build/bakefiles/files.bkl
+index 6c32a7bd22..c17234a2d4 100644
+--- a/build/bakefiles/files.bkl
++++ b/build/bakefiles/files.bkl
+@@ -3417,7 +3417,10 @@ IMPORTANT: please read docs/tech/tn0016.txt before modifying this file!
+ 
+ <set var="WEBVIEW_SRC_PLATFORM">
+     <if cond="TOOLKIT=='MSW'">src/msw/webview_ie.cpp</if>
+-    <if cond="TOOLKIT=='GTK'">src/gtk/webview_webkit.cpp</if>
++    <if cond="TOOLKIT=='GTK'">
++        src/gtk/webview_webkit.cpp
++        src/gtk/webview_webkit2.cpp
++    </if>
+     <if cond="PLATFORM_MACOSX=='1'">src/osx/webview_webkit.mm</if>
+ </set>
+ <set var="WEBVIEW_SRC" hints="files">
+@@ -3449,6 +3452,10 @@ IMPORTANT: please read docs/tech/tn0016.txt before modifying this file!
+     wx/webviewfshandler.h
+ </set>
+ 
++<set var="WEBVIEW_WEBKIT2_EXTENSION_SRC" hints="files">
++    src/gtk/webview_webkit2_extension.cpp
++</set>
++
+ <!-- ====================================================================== -->
+ <!--                                wxXRC                                   -->
+ <!-- ====================================================================== -->
+diff --git a/build/bakefiles/monolithic.bkl b/build/bakefiles/monolithic.bkl
+index ce82e63403..22c14f6ce1 100644
+--- a/build/bakefiles/monolithic.bkl
++++ b/build/bakefiles/monolithic.bkl
+@@ -22,6 +22,7 @@
+     <dll id="monodll" template="wx_dll,wx_monolib_or_dll"
+          cond="SHARED=='1' and MONOLITHIC=='1'">
+         <define>WXMAKINGDLL</define>
++        <define>$(webviewdll_ext_dir_define)</define>
+         <ldlibs>$(EXTRALIBS_XML)</ldlibs>
+         <ldlibs>$(EXTRALIBS_HTML)</ldlibs>
+         <ldlibs>$(EXTRALIBS_MEDIA)</ldlibs>
+@@ -32,6 +33,7 @@
+ 
+     <lib id="monolib" template="wx_lib,wx_monolib_or_dll"
+          cond="SHARED=='0' and MONOLITHIC=='1'">
++        <define>$(webviewdll_ext_dir_define)</define>
+         <if cond="FORMAT=='watcom'">
+             <set var="LIB_PAGESIZE" overwrite="1">8192</set>
+         </if>
+diff --git a/build/bakefiles/multilib.bkl b/build/bakefiles/multilib.bkl
+index cf2d4ebfd9..2e47671043 100644
+--- a/build/bakefiles/multilib.bkl
++++ b/build/bakefiles/multilib.bkl
+@@ -180,6 +180,7 @@
+          cond="SHARED=='1' and USE_GUI=='1' and USE_WEBVIEW=='1' and MONOLITHIC=='0'">
+         <define>WXUSINGDLL</define>
+         <define>WXMAKINGDLL_WEBVIEW</define>
++        <define>$(webviewdll_ext_dir_define)</define>
+         <sources>$(WEBVIEW_SRC)</sources>
+         <library>coredll</library>
+         <library>basedll</library>
+diff --git a/build/bakefiles/plugins.bkl b/build/bakefiles/plugins.bkl
+index 2034f8c389..b346903be1 100644
+--- a/build/bakefiles/plugins.bkl
++++ b/build/bakefiles/plugins.bkl
+@@ -11,5 +11,12 @@
+         <ldlibs>$(EXTRALIBS_SDL)</ldlibs>
+     </wx-base-plugin>
+ 
++    <if cond="FORMAT=='autoconf'">
++        <wx-base-plugin id="webkit2_ext" cond="USE_WEBVIEW_WEBKIT2=='1'">
++            <sources>$(WEBVIEW_WEBKIT2_EXTENSION_SRC)</sources>
++            <ldlibs>$(EXTRALIBS_WEBVIEW)</ldlibs>
++            <install-to>$(PLUGINS_INST_DIR)/web-extensions</install-to>
++        </wx-base-plugin>
++    </if>
+ 
+ </makefile>
+diff --git a/configure b/configure
+index 62895151ea..6d546b98a1 100755
+--- a/configure
++++ b/configure
+@@ -675,6 +675,7 @@ COND_WXUNIV_0
+ COND_WITH_PLUGIN_SDL_1
+ COND_WINDOWS_IMPLIB_1
+ COND_USE_XRC_1
++COND_USE_WEBVIEW_WEBKIT2_1
+ COND_USE_THREADS_1
+ COND_USE_THREADS_0
+ COND_USE_STC_1
+@@ -37295,12 +37296,95 @@ fi
+ 
+ if test "$wxUSE_WEBVIEW" = "yes"; then
+     USE_WEBVIEW_WEBKIT=0
++    USE_WEBVIEW_WEBKIT2=0
+     if test "$wxUSE_WEBVIEW_WEBKIT" = "yes"; then
+         if test "$wxUSE_GTK" = 1; then
+-            webkitgtk=webkit-1.0
+             if test "$WXGTK3" = 1; then
+-                webkitgtk=webkitgtk-3.0
++
++pkg_failed=no
++{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for WEBKIT" >&5
++$as_echo_n "checking for WEBKIT... " >&6; }
++
++if test -n "$PKG_CONFIG"; then
++    if test -n "$WEBKIT_CFLAGS"; then
++        pkg_cv_WEBKIT_CFLAGS="$WEBKIT_CFLAGS"
++    else
++        if test -n "$PKG_CONFIG" && \
++    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"webkit2gtk-4.0\""; } >&5
++  ($PKG_CONFIG --exists --print-errors "webkit2gtk-4.0") 2>&5
++  ac_status=$?
++  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
++  test $ac_status = 0; }; then
++  pkg_cv_WEBKIT_CFLAGS=`$PKG_CONFIG --cflags "webkit2gtk-4.0" 2>/dev/null`
++else
++  pkg_failed=yes
++fi
++    fi
++else
++	pkg_failed=untried
++fi
++if test -n "$PKG_CONFIG"; then
++    if test -n "$WEBKIT_LIBS"; then
++        pkg_cv_WEBKIT_LIBS="$WEBKIT_LIBS"
++    else
++        if test -n "$PKG_CONFIG" && \
++    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"webkit2gtk-4.0\""; } >&5
++  ($PKG_CONFIG --exists --print-errors "webkit2gtk-4.0") 2>&5
++  ac_status=$?
++  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
++  test $ac_status = 0; }; then
++  pkg_cv_WEBKIT_LIBS=`$PKG_CONFIG --libs "webkit2gtk-4.0" 2>/dev/null`
++else
++  pkg_failed=yes
++fi
++    fi
++else
++	pkg_failed=untried
++fi
++
++
++
++if test $pkg_failed = yes; then
++
++if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
++        _pkg_short_errors_supported=yes
++else
++        _pkg_short_errors_supported=no
++fi
++        if test $_pkg_short_errors_supported = yes; then
++	        WEBKIT_PKG_ERRORS=`$PKG_CONFIG --short-errors --errors-to-stdout --print-errors "webkit2gtk-4.0"`
++        else
++	        WEBKIT_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "webkit2gtk-4.0"`
++        fi
++	# Put the nasty error message in config.log where it belongs
++	echo "$WEBKIT_PKG_ERRORS" >&5
++
++
++                                    { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: webkit2gtk not found, falling back to webkitgtk" >&5
++$as_echo "$as_me: WARNING: webkit2gtk not found, falling back to webkitgtk" >&2;}
++
++elif test $pkg_failed = untried; then
++
++                                    { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: webkit2gtk not found, falling back to webkitgtk" >&5
++$as_echo "$as_me: WARNING: webkit2gtk not found, falling back to webkitgtk" >&2;}
++
++else
++	WEBKIT_CFLAGS=$pkg_cv_WEBKIT_CFLAGS
++	WEBKIT_LIBS=$pkg_cv_WEBKIT_LIBS
++        { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
++$as_echo "yes" >&6; }
++
++                                    USE_WEBVIEW_WEBKIT2=1
++                                    CPPFLAGS="$CPPFLAGS $WEBKIT_CFLAGS"
++                                    EXTRALIBS_WEBVIEW="$WEBKIT_LIBS"
++
++fi
+             fi
++            if test "$USE_WEBVIEW_WEBKIT2" = 0; then
++                webkitgtk=webkit-1.0
++                if test "$WXGTK3" = 1; then
++                    webkitgtk=webkitgtk-3.0
++                fi
+ 
+ pkg_failed=no
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for WEBKIT" >&5
+@@ -37361,12 +37445,12 @@ fi
+ 	echo "$WEBKIT_PKG_ERRORS" >&5
+ 
+ 
+-                                { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: webkitgtk not found." >&5
++                                    { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: webkitgtk not found." >&5
+ $as_echo "$as_me: WARNING: webkitgtk not found." >&2;}
+ 
+ elif test $pkg_failed = untried; then
+ 
+-                                { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: webkitgtk not found." >&5
++                                    { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: webkitgtk not found." >&5
+ $as_echo "$as_me: WARNING: webkitgtk not found." >&2;}
+ 
+ else
+@@ -37375,11 +37459,12 @@ else
+         { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
+ $as_echo "yes" >&6; }
+ 
+-                                USE_WEBVIEW_WEBKIT=1
+-                                CPPFLAGS="$CPPFLAGS $WEBKIT_CFLAGS"
+-                                EXTRALIBS_WEBVIEW="$WEBKIT_LIBS"
++                                    USE_WEBVIEW_WEBKIT=1
++                                    CPPFLAGS="$CPPFLAGS $WEBKIT_CFLAGS"
++                                    EXTRALIBS_WEBVIEW="$WEBKIT_LIBS"
+ 
+ fi
++            fi
+         elif test "$wxUSE_MAC" = 1 -a "$USE_DARWIN" = 1; then
+                                     old_CPPFLAGS="$CPPFLAGS"
+             CPPFLAGS="-x objective-c++ $CPPFLAGS"
+@@ -37411,6 +37496,10 @@ fi
+             wxUSE_WEBVIEW="yes"
+             $as_echo "#define wxUSE_WEBVIEW_WEBKIT 1" >>confdefs.h
+ 
++        elif test "$USE_WEBVIEW_WEBKIT2" = 1; then
++            wxUSE_WEBVIEW="yes"
++            $as_echo "#define wxUSE_WEBVIEW_WEBKIT2 1" >>confdefs.h
++
+         else
+             { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: WebKit not available, disabling wxWebView" >&5
+ $as_echo "$as_me: WARNING: WebKit not available, disabling wxWebView" >&2;}
+@@ -41665,6 +41754,11 @@ EOF
+         COND_USE_THREADS_1=""
+     fi
+ 
++    COND_USE_WEBVIEW_WEBKIT2_1="#"
++    if test "x$USE_WEBVIEW_WEBKIT2" = "x1" ; then
++        COND_USE_WEBVIEW_WEBKIT2_1=""
++    fi
++
+     COND_USE_XRC_1="#"
+     if test "x$USE_XRC" = "x1" ; then
+         COND_USE_XRC_1=""
+diff --git a/configure.in b/configure.in
+index 41eab41f04..498b077b10 100644
+--- a/configure.in
++++ b/configure.in
+@@ -7252,22 +7252,37 @@ fi
+ 
+ if test "$wxUSE_WEBVIEW" = "yes"; then
+     USE_WEBVIEW_WEBKIT=0
++    USE_WEBVIEW_WEBKIT2=0
+     if test "$wxUSE_WEBVIEW_WEBKIT" = "yes"; then
+         if test "$wxUSE_GTK" = 1; then
+-            webkitgtk=webkit-1.0
+             if test "$WXGTK3" = 1; then
+-                webkitgtk=webkitgtk-3.0
++                PKG_CHECK_MODULES([WEBKIT],
++                                  [webkit2gtk-4.0],
++                                  [
++                                    USE_WEBVIEW_WEBKIT2=1
++                                    CPPFLAGS="$CPPFLAGS $WEBKIT_CFLAGS"
++                                    EXTRALIBS_WEBVIEW="$WEBKIT_LIBS"
++                                  ],
++                                  [
++                                    AC_MSG_WARN([webkit2gtk not found, falling back to webkitgtk])
++                                  ])
++            fi
++            if test "$USE_WEBVIEW_WEBKIT2" = 0; then
++                webkitgtk=webkit-1.0
++                if test "$WXGTK3" = 1; then
++                    webkitgtk=webkitgtk-3.0
++                fi
++                PKG_CHECK_MODULES([WEBKIT],
++                                  [$webkitgtk >= 1.3.1],
++                                  [
++                                    USE_WEBVIEW_WEBKIT=1
++                                    CPPFLAGS="$CPPFLAGS $WEBKIT_CFLAGS"
++                                    EXTRALIBS_WEBVIEW="$WEBKIT_LIBS"
++                                  ],
++                                  [
++                                    AC_MSG_WARN([webkitgtk not found.])
++                                  ])
+             fi
+-            PKG_CHECK_MODULES([WEBKIT],
+-                              [$webkitgtk >= 1.3.1],
+-                              [
+-                                USE_WEBVIEW_WEBKIT=1
+-                                CPPFLAGS="$CPPFLAGS $WEBKIT_CFLAGS"
+-                                EXTRALIBS_WEBVIEW="$WEBKIT_LIBS"
+-                              ],
+-                              [
+-                                AC_MSG_WARN([webkitgtk not found.])
+-                              ])
+         elif test "$wxUSE_MAC" = 1 -a "$USE_DARWIN" = 1; then
+             dnl Under Mac we always have the libraries but check for the
+             dnl headers
+@@ -7294,6 +7309,9 @@ if test "$wxUSE_WEBVIEW" = "yes"; then
+         if test "$USE_WEBVIEW_WEBKIT" = 1; then
+             wxUSE_WEBVIEW="yes"
+             AC_DEFINE(wxUSE_WEBVIEW_WEBKIT)
++        elif test "$USE_WEBVIEW_WEBKIT2" = 1; then
++            wxUSE_WEBVIEW="yes"
++            AC_DEFINE(wxUSE_WEBVIEW_WEBKIT2)
+         else
+             AC_MSG_WARN([WebKit not available, disabling wxWebView])
+         fi
+diff --git a/include/wx/android/setup.h b/include/wx/android/setup.h
+index 3b9ab293b4..2bbbdaacc2 100644
+--- a/include/wx/android/setup.h
++++ b/include/wx/android/setup.h
+@@ -726,12 +726,23 @@
+ // Default is 1 on GTK and OSX
+ //
+ // Recommended setting: 1
+-#if defined(__WXGTK__) || defined(__WXOSX__)
++#if (defined(__WXGTK__) && !defined(__WXGTK3__)) || defined(__WXOSX__)
+ #define wxUSE_WEBVIEW_WEBKIT 1
+ #else
+ #define wxUSE_WEBVIEW_WEBKIT 0
+ #endif
+ 
++// Use the WebKit2 wxWebView backend
++//
++// Default is 1 on GTK3
++//
++// Recommended setting: 1
++#if defined(__WXGTK3__)
++#define wxUSE_WEBVIEW_WEBKIT2 1
++#else
++#define wxUSE_WEBVIEW_WEBKIT2 0
++#endif
++
+ // Enable the new wxGraphicsPath and wxGraphicsContext classes for an advanced
+ // 2D drawing API.  (Still somewhat experimental)
+ //
+diff --git a/include/wx/chkconf.h b/include/wx/chkconf.h
+index 47fa8ee467..0c7382333a 100644
+--- a/include/wx/chkconf.h
++++ b/include/wx/chkconf.h
+@@ -2190,7 +2190,7 @@
+ #   endif
+ #endif /* wxUSE_TREELISTCTRL */
+ 
+-#if wxUSE_WEBVIEW && !(wxUSE_WEBVIEW_WEBKIT || wxUSE_WEBVIEW_IE)
++#if wxUSE_WEBVIEW && !(wxUSE_WEBVIEW_WEBKIT || wxUSE_WEBVIEW_WEBKIT2 || wxUSE_WEBVIEW_IE)
+ #   ifdef wxABORT_ON_CONFIG_ERROR
+ #       error "wxUSE_WEBVIEW requires at least one backend"
+ #   else
+diff --git a/include/wx/gtk/private/webview_webkit2_extension.h b/include/wx/gtk/private/webview_webkit2_extension.h
+new file mode 100644
+index 0000000000..0fbf1df5cd
+--- /dev/null
++++ b/include/wx/gtk/private/webview_webkit2_extension.h
+@@ -0,0 +1,15 @@
++/////////////////////////////////////////////////////////////////////////////
++// Name:        include/wx/gtk/private/webview_webkit2_extension.h
++// Purpose:     Common elements for webview webkit2 extension
++// Author:      Scott Talbert
++// Copyright:   (c) 2017 Scott Talbert
++// Licence:     wxWindows licence
++/////////////////////////////////////////////////////////////////////////////
++
++#ifndef _WX_GTK_PRIVATE_WEBVIEW_WEBKIT2_EXTENSION_H_
++#define _WX_GTK_PRIVATE_WEBVIEW_WEBKIT2_EXTENSION_H_
++
++#define WXGTK_WEB_EXTENSION_OBJECT_PATH "/org/wxwidgets/wxGTK/WebExtension"
++#define WXGTK_WEB_EXTENSION_INTERFACE   "org.wxwidgets.wxGTK.WebExtension"
++
++#endif // _WX_GTK_PRIVATE_WEBVIEW_WEBKIT2_EXTENSION_H_
+diff --git a/include/wx/gtk/webview_webkit.h b/include/wx/gtk/webview_webkit.h
+index e1a01bf811..046554e88c 100644
+--- a/include/wx/gtk/webview_webkit.h
++++ b/include/wx/gtk/webview_webkit.h
+@@ -11,10 +11,15 @@
+ 
+ #include "wx/defs.h"
+ 
+-#if wxUSE_WEBVIEW && wxUSE_WEBVIEW_WEBKIT && defined(__WXGTK__)
++// NOTE: this header is used for both the WebKit1 and WebKit2 implementations
++#if wxUSE_WEBVIEW && (wxUSE_WEBVIEW_WEBKIT || wxUSE_WEBVIEW_WEBKIT2) && defined(__WXGTK__)
+ 
+ #include "wx/sharedptr.h"
+ #include "wx/webview.h"
++#if wxUSE_WEBVIEW_WEBKIT2
++#include <glib.h>
++#include <gio/gio.h>
++#endif
+ 
+ typedef struct _WebKitWebView WebKitWebView;
+ 
+@@ -152,6 +157,11 @@ private:
+     // focus event handler: calls GTKUpdateBitmap()
+     void GTKOnFocus(wxFocusEvent& event);
+ 
++#if wxUSE_WEBVIEW_WEBKIT2
++    bool CanExecuteEditingCommand(const gchar* command) const;
++    void SetupWebExtensionServer();
++#endif
++
+     WebKitWebView *m_web_view;
+     int m_historyLimit;
+ 
+@@ -163,6 +173,12 @@ private:
+     int m_findPosition;
+     int m_findCount;
+ 
++#if wxUSE_WEBVIEW_WEBKIT2
++    //Used for webkit2 extension
++    GDBusServer *m_dbusServer;
++    GDBusProxy *m_extension;
++#endif
++
+     wxDECLARE_DYNAMIC_CLASS(wxWebViewWebKit);
+ };
+ 
+diff --git a/include/wx/gtk/webviewhistoryitem_webkit.h b/include/wx/gtk/webviewhistoryitem_webkit.h
+index a798efdda6..3137b3ae83 100644
+--- a/include/wx/gtk/webviewhistoryitem_webkit.h
++++ b/include/wx/gtk/webviewhistoryitem_webkit.h
+@@ -11,7 +11,7 @@
+ 
+ #include "wx/setup.h"
+ 
+-#if wxUSE_WEBVIEW && wxUSE_WEBVIEW_WEBKIT && defined(__WXGTK__)
++#if wxUSE_WEBVIEW && (wxUSE_WEBVIEW_WEBKIT || wxUSE_WEBVIEW_WEBKIT2) && defined(__WXGTK__)
+ 
+ class WXDLLIMPEXP_WEBVIEW wxWebViewHistoryItem
+ {
+diff --git a/include/wx/msw/wince/setup.h b/include/wx/msw/wince/setup.h
+index 692445cb87..7044250c28 100644
+--- a/include/wx/msw/wince/setup.h
++++ b/include/wx/msw/wince/setup.h
+@@ -745,12 +745,23 @@
+ // Default is 1 on GTK and OSX
+ //
+ // Recommended setting: 1
+-#if defined(__WXGTK__) || defined(__WXOSX__)
++#if (defined(__WXGTK__) && !defined(__WXGTK3__)) || defined(__WXOSX__)
+ #define wxUSE_WEBVIEW_WEBKIT 1
+ #else
+ #define wxUSE_WEBVIEW_WEBKIT 0
+ #endif
+ 
++// Use the WebKit2 wxWebView backend
++//
++// Default is 1 on GTK3
++//
++// Recommended setting: 1
++#if defined(__WXGTK3__)
++#define wxUSE_WEBVIEW_WEBKIT2 1
++#else
++#define wxUSE_WEBVIEW_WEBKIT2 0
++#endif
++
+ // Enable the new wxGraphicsPath and wxGraphicsContext classes for an advanced
+ // 2D drawing API.  (Still somewhat experimental)
+ //
+diff --git a/include/wx/setup_inc.h b/include/wx/setup_inc.h
+index dbca6a4c70..f87b39d4fb 100644
+--- a/include/wx/setup_inc.h
++++ b/include/wx/setup_inc.h
+@@ -741,12 +741,23 @@
+ // Default is 1 on GTK and OSX
+ //
+ // Recommended setting: 1
+-#if defined(__WXGTK__) || defined(__WXOSX__)
++#if (defined(__WXGTK__) && !defined(__WXGTK3__)) || defined(__WXOSX__)
+ #define wxUSE_WEBVIEW_WEBKIT 1
+ #else
+ #define wxUSE_WEBVIEW_WEBKIT 0
+ #endif
+ 
++// Use the WebKit2 wxWebView backend
++//
++// Default is 1 on GTK3
++//
++// Recommended setting: 1
++#if defined(__WXGTK3__)
++#define wxUSE_WEBVIEW_WEBKIT2 1
++#else
++#define wxUSE_WEBVIEW_WEBKIT2 0
++#endif
++
+ // Enable the new wxGraphicsPath and wxGraphicsContext classes for an advanced
+ // 2D drawing API.  (Still somewhat experimental)
+ //
+diff --git a/interface/wx/webview.h b/interface/wx/webview.h
+index 694eba7854..e7ff2e9c36 100644
+--- a/interface/wx/webview.h
++++ b/interface/wx/webview.h
+@@ -571,11 +571,15 @@ public:
+ 
+     /**
+         Clear the history, this will also remove the visible page.
++
++        @note This is not implemented on the WebKit2GTK+ backend.
+     */
+     virtual void ClearHistory() = 0;
+ 
+     /**
+         Enable or disable the history. This will also clear the history.
++
++        @note This is not implemented on the WebKit2GTK+ backend.
+     */
+     virtual void EnableHistory(bool enable = true) = 0;
+ 
+diff --git a/samples/webview/webview.cpp b/samples/webview/webview.cpp
+index a1c6217d5f..0c135c7437 100644
+--- a/samples/webview/webview.cpp
++++ b/samples/webview/webview.cpp
+@@ -21,7 +21,7 @@
+     #include "wx/wx.h"
+ #endif
+ 
+-#if !wxUSE_WEBVIEW_WEBKIT && !wxUSE_WEBVIEW_IE
++#if !wxUSE_WEBVIEW_WEBKIT && !wxUSE_WEBVIEW_WEBKIT2 && !wxUSE_WEBVIEW_IE
+ #error "A wxWebView backend is required by this sample"
+ #endif
+ 
+diff --git a/setup.h.in b/setup.h.in
+index 86a162c562..b1c630b90b 100644
+--- a/setup.h.in
++++ b/setup.h.in
+@@ -340,12 +340,18 @@
+ #define wxUSE_WEBVIEW_IE 0
+ #endif
+ 
+-#if defined(__WXGTK__) || defined(__WXOSX__)
++#if (defined(__WXGTK__) && !defined(__WXGTK3__)) || defined(__WXOSX__)
+ #define wxUSE_WEBVIEW_WEBKIT 0
+ #else
+ #define wxUSE_WEBVIEW_WEBKIT 0
+ #endif
+ 
++#if defined(__WXGTK3__)
++#define wxUSE_WEBVIEW_WEBKIT2 0
++#else
++#define wxUSE_WEBVIEW_WEBKIT2 0
++#endif
++
+ 
+ #ifdef _MSC_VER
+ #   if _MSC_VER >= 1310
+diff --git a/src/generic/listbkg.cpp b/src/generic/listbkg.cpp
+index c9584d1ff3..45563fff45 100644
+--- a/src/generic/listbkg.cpp
++++ b/src/generic/listbkg.cpp
+@@ -240,6 +240,7 @@ int wxListbook::GetPageImage(size_t n) const
+ {
+     wxListItem item;
+     item.SetId(n);
++    item.SetMask(wxLIST_MASK_IMAGE);
+ 
+     if (GetListView()->GetItem(item))
+     {
+diff --git a/src/gtk/webview_webkit.cpp b/src/gtk/webview_webkit.cpp
+index e592331ed2..ff16c4f346 100644
+--- a/src/gtk/webview_webkit.cpp
++++ b/src/gtk/webview_webkit.cpp
+@@ -444,6 +444,7 @@ bool wxWebViewWebKit::Create(wxWindow *parent,
+                       long style,
+                       const wxString& name)
+ {
++    m_web_view = NULL;
+     m_busy = false;
+     m_guard = false;
+     m_creating = false;
+diff --git a/src/gtk/webview_webkit2.cpp b/src/gtk/webview_webkit2.cpp
+new file mode 100644
+index 0000000000..42f9387160
+--- /dev/null
++++ b/src/gtk/webview_webkit2.cpp
+@@ -0,0 +1,1262 @@
++/////////////////////////////////////////////////////////////////////////////
++// Name:        src/gtk/webview_webkit2.cpp
++// Purpose:     GTK WebKit2 backend for web view component
++// Author:      Scott Talbert
++// Copyright:   (c) 2017 Scott Talbert
++// Licence:     wxWindows licence
++/////////////////////////////////////////////////////////////////////////////
++
++// For compilers that support precompilation, includes "wx.h".
++#include "wx/wxprec.h"
++
++#if wxUSE_WEBVIEW && wxUSE_WEBVIEW_WEBKIT2
++
++#include "wx/stockitem.h"
++#include "wx/gtk/webview_webkit.h"
++#include "wx/gtk/control.h"
++#include "wx/gtk/private.h"
++#include "wx/filesys.h"
++#include "wx/base64.h"
++#include "wx/log.h"
++#include "wx/gtk/private/webview_webkit2_extension.h"
++#include <webkit2/webkit2.h>
++
++// ----------------------------------------------------------------------------
++// GTK callbacks
++// ----------------------------------------------------------------------------
++
++extern "C"
++{
++
++static void
++wxgtk_webview_webkit_load_changed(GtkWidget *,
++                                  WebKitLoadEvent load_event,
++                                  wxWebViewWebKit *webKitCtrl)
++{
++    wxString url = webKitCtrl->GetCurrentURL();
++
++    wxString target; // TODO: get target (if possible)
++
++    if (load_event == WEBKIT_LOAD_FINISHED)
++    {
++        webKitCtrl->m_busy = false;
++        wxWebViewEvent event(wxEVT_WEBVIEW_LOADED,
++                             webKitCtrl->GetId(),
++                             url, target);
++
++        if (webKitCtrl && webKitCtrl->GetEventHandler())
++            webKitCtrl->GetEventHandler()->ProcessEvent(event);
++    }
++    else if (load_event == WEBKIT_LOAD_COMMITTED)
++    {
++        webKitCtrl->m_busy = true;
++        wxWebViewEvent event(wxEVT_WEBVIEW_NAVIGATED,
++                             webKitCtrl->GetId(),
++                             url, target);
++
++        if (webKitCtrl && webKitCtrl->GetEventHandler())
++            webKitCtrl->GetEventHandler()->ProcessEvent(event);
++    }
++}
++
++static gboolean
++wxgtk_webview_webkit_navigation(WebKitWebView *web_view,
++                                WebKitPolicyDecision *decision,
++                                wxWebViewWebKit *webKitCtrl)
++{
++    WebKitNavigationPolicyDecision* navigation_decision = WEBKIT_NAVIGATION_POLICY_DECISION(decision);
++    WebKitNavigationAction* action = webkit_navigation_policy_decision_get_navigation_action(navigation_decision);
++    WebKitURIRequest* request = webkit_navigation_action_get_request(action);
++    const gchar* uri = webkit_uri_request_get_uri(request);
++    wxString target = webkit_navigation_policy_decision_get_frame_name(navigation_decision);
++    
++    //If m_creating is true then we are the result of a new window
++    //and so we need to send the event and veto the load
++    if(webKitCtrl->m_creating)
++    {
++        webKitCtrl->m_creating = false;
++        wxWebViewEvent event(wxEVT_WEBVIEW_NEWWINDOW,
++                             webKitCtrl->GetId(),
++                             wxString(uri, wxConvUTF8),
++                             target);
++
++        if(webKitCtrl && webKitCtrl->GetEventHandler())
++            webKitCtrl->GetEventHandler()->ProcessEvent(event);
++        
++        webkit_policy_decision_ignore(decision);
++        return TRUE;
++    }
++
++    if(webKitCtrl->m_guard)
++    {
++        webKitCtrl->m_guard = false;
++        //We set this to make sure that we don't try to load the page again from
++        //the resource request callback
++        webKitCtrl->m_vfsurl = webkit_web_view_get_uri(web_view);
++        webkit_policy_decision_use(decision);
++        return FALSE;
++    }
++
++    webKitCtrl->m_busy = true;
++
++    wxWebViewEvent event(wxEVT_WEBVIEW_NAVIGATING,
++                         webKitCtrl->GetId(),
++                         wxString( uri, wxConvUTF8 ),
++                         target);
++
++    if (webKitCtrl && webKitCtrl->GetEventHandler())
++        webKitCtrl->GetEventHandler()->ProcessEvent(event);
++
++    if (!event.IsAllowed())
++    {
++        webKitCtrl->m_busy = false;
++        webkit_policy_decision_ignore(decision);
++        return TRUE;
++    }
++    else
++    {
++        wxString wxuri = uri;
++        wxSharedPtr<wxWebViewHandler> handler;
++        wxVector<wxSharedPtr<wxWebViewHandler> > handlers = webKitCtrl->GetHandlers();
++        //We are not vetoed so see if we match one of the additional handlers
++        for(wxVector<wxSharedPtr<wxWebViewHandler> >::iterator it = handlers.begin();
++            it != handlers.end(); ++it)
++        {
++            if(wxuri.substr(0, (*it)->GetName().length()) == (*it)->GetName())
++            {
++                handler = (*it);
++            }
++        }
++        //If we found a handler we can then use it to load the file directly
++        //ourselves
++        if(handler)
++        {
++            webKitCtrl->m_guard = true;
++            wxFSFile* file = handler->GetFile(wxuri);
++            if(file)
++            {
++                webKitCtrl->SetPage(*file->GetStream(), wxuri);
++            }
++            //We need to throw some sort of error here if file is NULL
++            webkit_policy_decision_ignore(decision);
++            return TRUE;
++        }
++        return FALSE;
++    }
++}
++
++static gboolean
++wxgtk_webview_webkit_load_failed(WebKitWebView *,
++                                 WebKitLoadEvent,
++                                 gchar *uri,
++                                 GError *error,
++                                 wxWebViewWebKit* webKitWindow)
++{
++    webKitWindow->m_busy = false;
++    wxWebViewNavigationError type = wxWEBVIEW_NAV_ERR_OTHER;
++
++    wxString description(error->message, wxConvUTF8);
++
++    if (strcmp(g_quark_to_string(error->domain), "soup_http_error_quark") == 0)
++    {
++        switch (error->code)
++        {
++            case SOUP_STATUS_CANCELLED:
++                type = wxWEBVIEW_NAV_ERR_USER_CANCELLED;
++                break;
++
++            case SOUP_STATUS_CANT_RESOLVE:
++            case SOUP_STATUS_NOT_FOUND:
++                type = wxWEBVIEW_NAV_ERR_NOT_FOUND;
++                break;
++
++            case SOUP_STATUS_CANT_RESOLVE_PROXY:
++            case SOUP_STATUS_CANT_CONNECT:
++            case SOUP_STATUS_CANT_CONNECT_PROXY:
++            case SOUP_STATUS_SSL_FAILED:
++            case SOUP_STATUS_IO_ERROR:
++                type = wxWEBVIEW_NAV_ERR_CONNECTION;
++                break;
++
++            case SOUP_STATUS_MALFORMED:
++                type = wxWEBVIEW_NAV_ERR_REQUEST;
++                break;
++
++            case SOUP_STATUS_BAD_REQUEST:
++                type = wxWEBVIEW_NAV_ERR_REQUEST;
++                break;
++
++            case SOUP_STATUS_UNAUTHORIZED:
++            case SOUP_STATUS_FORBIDDEN:
++                type = wxWEBVIEW_NAV_ERR_AUTH;
++                break;
++
++            case SOUP_STATUS_METHOD_NOT_ALLOWED:
++            case SOUP_STATUS_NOT_ACCEPTABLE:
++                type = wxWEBVIEW_NAV_ERR_SECURITY;
++                break;
++
++            case SOUP_STATUS_PROXY_AUTHENTICATION_REQUIRED:
++                type = wxWEBVIEW_NAV_ERR_AUTH;
++                break;
++
++            case SOUP_STATUS_REQUEST_TIMEOUT:
++                type = wxWEBVIEW_NAV_ERR_CONNECTION;
++                break;
++
++            case SOUP_STATUS_REQUEST_ENTITY_TOO_LARGE:
++            case SOUP_STATUS_REQUEST_URI_TOO_LONG:
++            case SOUP_STATUS_UNSUPPORTED_MEDIA_TYPE:
++                type = wxWEBVIEW_NAV_ERR_REQUEST;
++                break;
++
++            case SOUP_STATUS_BAD_GATEWAY:
++            case SOUP_STATUS_SERVICE_UNAVAILABLE:
++            case SOUP_STATUS_GATEWAY_TIMEOUT:
++                type = wxWEBVIEW_NAV_ERR_CONNECTION;
++                break;
++
++            case SOUP_STATUS_HTTP_VERSION_NOT_SUPPORTED:
++                type = wxWEBVIEW_NAV_ERR_REQUEST;
++                break;
++        }
++    }
++    else if (strcmp(g_quark_to_string(error->domain),
++                    "webkit-network-error-quark") == 0)
++    {
++        switch (error->code)
++        {
++            case WEBKIT_NETWORK_ERROR_UNKNOWN_PROTOCOL:
++                type = wxWEBVIEW_NAV_ERR_REQUEST;
++                break;
++
++            case WEBKIT_NETWORK_ERROR_CANCELLED:
++                type = wxWEBVIEW_NAV_ERR_USER_CANCELLED;
++                break;
++
++            case WEBKIT_NETWORK_ERROR_FILE_DOES_NOT_EXIST:
++                type = wxWEBVIEW_NAV_ERR_NOT_FOUND;
++                break;
++        }
++    }
++    else if (strcmp(g_quark_to_string(error->domain),
++                    "webkit-policy-error-quark") == 0)
++    {
++        switch (error->code)
++        {
++            case WEBKIT_POLICY_ERROR_CANNOT_USE_RESTRICTED_PORT:
++                type = wxWEBVIEW_NAV_ERR_SECURITY;
++                break;
++        }
++    }
++
++    wxWebViewEvent event(wxEVT_WEBVIEW_ERROR,
++                         webKitWindow->GetId(),
++                         uri, "");
++    event.SetString(description);
++    event.SetInt(type);
++
++    if (webKitWindow && webKitWindow->GetEventHandler())
++    {
++        webKitWindow->GetEventHandler()->ProcessEvent(event);
++    }
++
++    return FALSE;
++}
++
++static gboolean
++wxgtk_webview_webkit_new_window(WebKitPolicyDecision *decision,
++                                wxWebViewWebKit *webKitCtrl)
++{
++    WebKitNavigationPolicyDecision* navigation_decision = WEBKIT_NAVIGATION_POLICY_DECISION(decision);
++    WebKitNavigationAction* action = webkit_navigation_policy_decision_get_navigation_action(navigation_decision);
++    WebKitURIRequest* request = webkit_navigation_action_get_request(action);
++    const gchar* uri = webkit_uri_request_get_uri(request);
++
++    wxString target = webkit_navigation_policy_decision_get_frame_name(navigation_decision);
++    wxWebViewEvent event(wxEVT_WEBVIEW_NEWWINDOW,
++                                       webKitCtrl->GetId(),
++                                       wxString( uri, wxConvUTF8 ),
++                                       target);
++
++    if (webKitCtrl && webKitCtrl->GetEventHandler())
++        webKitCtrl->GetEventHandler()->ProcessEvent(event);
++
++    //We always want the user to handle this themselves
++    webkit_policy_decision_ignore(decision);
++    return TRUE;
++}
++
++static gboolean
++wxgtk_webview_webkit_decide_policy(WebKitWebView *web_view,
++                                   WebKitPolicyDecision *decision,
++                                   WebKitPolicyDecisionType type,
++                                   wxWebViewWebKit *webKitCtrl)
++{
++    switch (type)
++    {
++        case WEBKIT_POLICY_DECISION_TYPE_NAVIGATION_ACTION:
++            return wxgtk_webview_webkit_navigation(web_view, decision, webKitCtrl);
++        case WEBKIT_POLICY_DECISION_TYPE_NEW_WINDOW_ACTION:
++            return wxgtk_webview_webkit_new_window(decision, webKitCtrl);
++        default:
++            return FALSE;
++    }
++}
++
++static void
++wxgtk_webview_webkit_title_changed(GtkWidget* widget,
++                                   GParamSpec *,
++                                   wxWebViewWebKit *webKitCtrl)
++{
++    gchar *title;
++    g_object_get(G_OBJECT(widget), "title", &title, NULL);
++
++    wxWebViewEvent event(wxEVT_WEBVIEW_TITLE_CHANGED,
++                         webKitCtrl->GetId(),
++                         webKitCtrl->GetCurrentURL(),
++                         "");
++    event.SetString(wxString(title, wxConvUTF8));
++
++    if (webKitCtrl && webKitCtrl->GetEventHandler())
++        webKitCtrl->GetEventHandler()->ProcessEvent(event);
++
++    g_free(title);
++}
++
++static void
++wxgtk_webview_webkit_resource_req(WebKitWebView *,
++                                  WebKitWebResource *,
++                                  WebKitURIRequest *request,
++                                  wxWebViewWebKit *webKitCtrl)
++{
++    wxString uri = webkit_uri_request_get_uri(request);
++
++    wxSharedPtr<wxWebViewHandler> handler;
++    wxVector<wxSharedPtr<wxWebViewHandler> > handlers = webKitCtrl->GetHandlers();
++
++    //We are not vetoed so see if we match one of the additional handlers
++    for(wxVector<wxSharedPtr<wxWebViewHandler> >::iterator it = handlers.begin();
++        it != handlers.end(); ++it)
++    {
++        if(uri.substr(0, (*it)->GetName().length()) == (*it)->GetName())
++        {
++            handler = (*it);
++        }
++    }
++    //If we found a handler we can then use it to load the file directly
++    //ourselves
++    if(handler)
++    {
++        //If it is requsting the page itself then return as we have already
++        //loaded it from the archive
++        if(webKitCtrl->m_vfsurl == uri)
++            return;
++
++        wxFSFile* file = handler->GetFile(uri);
++        if(file)
++        {
++            //We load the data into a data url to save it being written out again
++            size_t size = file->GetStream()->GetLength();
++            char *buffer = new char[size];
++            file->GetStream()->Read(buffer, size);
++            wxString data = wxBase64Encode(buffer, size);
++            delete[] buffer;
++            wxString mime = file->GetMimeType();
++            wxString path = "data:" + mime + ";base64," + data;
++            //Then we can redirect the call
++            webkit_uri_request_set_uri(request, path.utf8_str());
++        }
++
++    }
++}
++
++static gboolean
++wxgtk_webview_webkit_context_menu(WebKitWebView *,
++                                  WebKitContextMenu *,
++                                  GdkEvent *,
++                                  WebKitHitTestResult *,
++                                  wxWebViewWebKit *webKitCtrl)
++{
++    if(webKitCtrl->IsContextMenuEnabled())
++        return FALSE;
++    else
++        return TRUE;
++}
++
++static WebKitWebView*
++wxgtk_webview_webkit_create_webview(WebKitWebView *web_view,
++                                    WebKitNavigationAction *,
++                                    wxWebViewWebKit *webKitCtrl)
++{
++    //As we do not know the uri being loaded at this point allow the load to
++    //continue and catch it in navigation-policy-decision-requested
++    webKitCtrl->m_creating = true;
++    return web_view;
++}
++
++static void
++wxgtk_webview_webkit_counted_matches(WebKitFindController *,
++                                     guint match_count,
++                                     int *findCount)
++{
++    *findCount = match_count;
++}
++
++static void
++wxgtk_initialize_web_extensions(WebKitWebContext *context,
++                                GDBusServer *dbusServer)
++{
++    const char *address = g_dbus_server_get_client_address(dbusServer);
++    GVariant *user_data = g_variant_new("(s)", address);
++    webkit_web_context_set_web_extensions_directory(context,
++                                                    WX_WEB_EXTENSIONS_DIRECTORY);
++    webkit_web_context_set_web_extensions_initialization_user_data(context,
++                                                                   user_data);
++}
++
++static gboolean
++wxgtk_new_connection_cb(GDBusServer *,
++                        GDBusConnection *connection,
++                        GDBusProxy **proxy)
++{
++    GError *error = NULL;
++    GDBusProxyFlags flags = static_cast<GDBusProxyFlags>(static_cast<int>(G_DBUS_PROXY_FLAGS_DO_NOT_LOAD_PROPERTIES) | static_cast<int>(G_DBUS_PROXY_FLAGS_DO_NOT_CONNECT_SIGNALS));
++    *proxy = g_dbus_proxy_new_sync(connection,
++                                   flags,
++                                   NULL,
++                                   NULL,
++                                   WXGTK_WEB_EXTENSION_OBJECT_PATH,
++                                   WXGTK_WEB_EXTENSION_INTERFACE,
++                                   NULL,
++                                   &error);
++    if (error)
++    {
++        g_warning("Failed to create dbus proxy: %s", error->message);
++        g_error_free(error);
++    }
++
++    return TRUE;
++}
++
++gboolean
++wxgtk_dbus_peer_is_authorized(GCredentials *peer_credentials)
++{
++    static GCredentials *own_credentials = g_credentials_new();
++    GError *error = NULL;
++
++    if (peer_credentials && g_credentials_is_same_user(peer_credentials, own_credentials, &error))
++    {
++        return TRUE;
++    }
++
++    if (error)
++    {
++        g_warning("Failed to authorize web extension connection: %s", error->message);
++        g_error_free(error);
++    }
++    return FALSE;
++}
++
++static gboolean
++wxgtk_authorize_authenticated_peer_cb(GDBusAuthObserver *,
++                                      GIOStream *,
++                                      GCredentials *credentials,
++                                      wxWebViewWebKit *)
++{
++    return wxgtk_dbus_peer_is_authorized(credentials);
++}
++
++} // extern "C"
++
++//-----------------------------------------------------------------------------
++// wxWebViewWebKit
++//-----------------------------------------------------------------------------
++
++wxIMPLEMENT_DYNAMIC_CLASS(wxWebViewWebKit, wxWebView);
++
++wxWebViewWebKit::wxWebViewWebKit()
++{
++    m_web_view = NULL;
++    m_dbusServer = NULL;
++    m_extension = NULL;
++}
++
++bool wxWebViewWebKit::Create(wxWindow *parent,
++                      wxWindowID id,
++                      const wxString &url,
++                      const wxPoint& pos,
++                      const wxSize& size,
++                      long style,
++                      const wxString& name)
++{
++    m_web_view = NULL;
++    m_dbusServer = NULL;
++    m_extension = NULL;
++    m_busy = false;
++    m_guard = false;
++    m_creating = false;
++    FindClear();
++
++    // We currently unconditionally impose scrolling in both directions as it's
++    // necessary to show arbitrary pages.
++    style |= wxHSCROLL | wxVSCROLL;
++
++    if (!PreCreation( parent, pos, size ) ||
++        !CreateBase( parent, id, pos, size, style, wxDefaultValidator, name ))
++    {
++        wxFAIL_MSG( wxT("wxWebViewWebKit creation failed") );
++        return false;
++    }
++
++    SetupWebExtensionServer();
++    g_signal_connect_after(webkit_web_context_get_default(),
++                           "initialize-web-extensions",
++                           G_CALLBACK(wxgtk_initialize_web_extensions),
++                           m_dbusServer);
++
++    m_web_view = WEBKIT_WEB_VIEW(webkit_web_view_new());
++    GTKCreateScrolledWindowWith(GTK_WIDGET(m_web_view));
++    g_object_ref(m_widget);
++
++    g_signal_connect_after(m_web_view, "decide-policy",
++                           G_CALLBACK(wxgtk_webview_webkit_decide_policy),
++                           this);
++
++    g_signal_connect_after(m_web_view, "load-failed",
++                           G_CALLBACK(wxgtk_webview_webkit_load_failed), this);
++
++    g_signal_connect_after(m_web_view, "notify::title",
++                           G_CALLBACK(wxgtk_webview_webkit_title_changed), this);
++
++    g_signal_connect_after(m_web_view, "resource-load-started",
++                           G_CALLBACK(wxgtk_webview_webkit_resource_req), this);
++
++    g_signal_connect_after(m_web_view, "context-menu",
++                           G_CALLBACK(wxgtk_webview_webkit_context_menu), this);
++
++    g_signal_connect_after(m_web_view, "create",
++                           G_CALLBACK(wxgtk_webview_webkit_create_webview), this);
++
++    WebKitFindController* findctrl = webkit_web_view_get_find_controller(m_web_view);
++    g_signal_connect_after(findctrl, "counted-matches",
++                           G_CALLBACK(wxgtk_webview_webkit_counted_matches),
++                           &m_findCount);
++
++    m_parent->DoAddChild( this );
++
++    PostCreation(size);
++
++    /* Open a webpage */
++    webkit_web_view_load_uri(m_web_view, url.utf8_str());
++
++    // last to avoid getting signal too early
++    g_signal_connect_after(m_web_view, "load-changed",
++                           G_CALLBACK(wxgtk_webview_webkit_load_changed),
++                           this);
++
++    return true;
++}
++
++wxWebViewWebKit::~wxWebViewWebKit()
++{
++    if (m_web_view)
++        GTKDisconnect(m_web_view);
++    if (m_dbusServer)
++        g_dbus_server_stop(m_dbusServer);
++    g_clear_object(&m_dbusServer);
++    g_clear_object(&m_extension);
++}
++
++bool wxWebViewWebKit::Enable( bool enable )
++{
++    if (!wxControl::Enable(enable))
++        return false;
++
++    gtk_widget_set_sensitive(gtk_bin_get_child(GTK_BIN(m_widget)), enable);
++
++    return true;
++}
++
++GdkWindow*
++wxWebViewWebKit::GTKGetWindow(wxArrayGdkWindows& WXUNUSED(windows)) const
++{
++    GdkWindow* window = gtk_widget_get_parent_window(m_widget);
++    return window;
++}
++
++void wxWebViewWebKit::ZoomIn()
++{
++    SetWebkitZoom(GetWebkitZoom() + 0.1);
++}
++
++void wxWebViewWebKit::ZoomOut()
++{
++    SetWebkitZoom(GetWebkitZoom() - 0.1);
++}
++
++void wxWebViewWebKit::SetWebkitZoom(float level)
++{
++    webkit_web_view_set_zoom_level(m_web_view, level);
++}
++
++float wxWebViewWebKit::GetWebkitZoom() const
++{
++    return webkit_web_view_get_zoom_level(m_web_view);
++}
++
++void wxWebViewWebKit::Stop()
++{
++     webkit_web_view_stop_loading(m_web_view);
++}
++
++void wxWebViewWebKit::Reload(wxWebViewReloadFlags flags)
++{
++    if (flags & wxWEBVIEW_RELOAD_NO_CACHE)
++    {
++        webkit_web_view_reload_bypass_cache(m_web_view);
++    }
++    else
++    {
++        webkit_web_view_reload(m_web_view);
++    }
++}
++
++void wxWebViewWebKit::LoadURL(const wxString& url)
++{
++    webkit_web_view_load_uri(m_web_view, wxGTK_CONV(url));
++}
++
++
++void wxWebViewWebKit::GoBack()
++{
++    webkit_web_view_go_back(m_web_view);
++}
++
++void wxWebViewWebKit::GoForward()
++{
++    webkit_web_view_go_forward(m_web_view);
++}
++
++
++bool wxWebViewWebKit::CanGoBack() const
++{
++    return webkit_web_view_can_go_back(m_web_view);
++}
++
++
++bool wxWebViewWebKit::CanGoForward() const
++{
++    return webkit_web_view_can_go_forward(m_web_view);
++}
++
++void wxWebViewWebKit::ClearHistory()
++{
++    // In WebKit2GTK+, the BackForwardList can't be cleared so do nothing.
++}
++
++void wxWebViewWebKit::EnableHistory(bool)
++{
++    // In WebKit2GTK+, history can't be disabled so do nothing here.
++}
++
++wxVector<wxSharedPtr<wxWebViewHistoryItem> > wxWebViewWebKit::GetBackwardHistory()
++{
++    wxVector<wxSharedPtr<wxWebViewHistoryItem> > backhist;
++    WebKitBackForwardList* history =
++        webkit_web_view_get_back_forward_list(m_web_view);
++    GList* list = webkit_back_forward_list_get_back_list(history);
++    //We need to iterate in reverse to get the order we desire
++    for(int i = g_list_length(list) - 1; i >= 0 ; i--)
++    {
++        WebKitBackForwardListItem* gtkitem = (WebKitBackForwardListItem*)g_list_nth_data(list, i);
++        wxWebViewHistoryItem* wxitem = new wxWebViewHistoryItem(
++                              webkit_back_forward_list_item_get_uri(gtkitem),
++                              webkit_back_forward_list_item_get_title(gtkitem));
++        wxitem->m_histItem = gtkitem;
++        wxSharedPtr<wxWebViewHistoryItem> item(wxitem);
++        backhist.push_back(item);
++    }
++    return backhist;
++}
++
++wxVector<wxSharedPtr<wxWebViewHistoryItem> > wxWebViewWebKit::GetForwardHistory()
++{
++    wxVector<wxSharedPtr<wxWebViewHistoryItem> > forwardhist;
++    WebKitBackForwardList* history =
++        webkit_web_view_get_back_forward_list(m_web_view);
++    GList* list = webkit_back_forward_list_get_forward_list(history);
++    for(guint i = 0; i < g_list_length(list); i++)
++    {
++        WebKitBackForwardListItem* gtkitem = (WebKitBackForwardListItem*)g_list_nth_data(list, i);
++        wxWebViewHistoryItem* wxitem = new wxWebViewHistoryItem(
++                              webkit_back_forward_list_item_get_uri(gtkitem),
++                              webkit_back_forward_list_item_get_title(gtkitem));
++        wxitem->m_histItem = gtkitem;
++        wxSharedPtr<wxWebViewHistoryItem> item(wxitem);
++        forwardhist.push_back(item);
++    }
++    return forwardhist;
++}
++
++void wxWebViewWebKit::LoadHistoryItem(wxSharedPtr<wxWebViewHistoryItem> item)
++{
++    WebKitBackForwardListItem* gtkitem = (WebKitBackForwardListItem*)item->m_histItem;
++    if(gtkitem)
++    {
++        webkit_web_view_go_to_back_forward_list_item(m_web_view,
++                                                     WEBKIT_BACK_FORWARD_LIST_ITEM(gtkitem));
++    }
++}
++
++static void wxgtk_can_execute_editing_command_cb(WebKitWebView *,
++                                                 GAsyncResult *res,
++                                                 GAsyncResult **res_out)
++{
++    *res_out = (GAsyncResult*)g_object_ref(res);
++}
++
++bool wxWebViewWebKit::CanExecuteEditingCommand(const gchar* command) const
++{
++    GAsyncResult *result = NULL;
++    webkit_web_view_can_execute_editing_command(m_web_view,
++                                                command,
++                                                NULL,
++                                                (GAsyncReadyCallback)wxgtk_can_execute_editing_command_cb,
++                                                &result);
++
++    GMainContext *main_context = g_main_context_get_thread_default();
++    while (!result)
++    {
++        g_main_context_iteration(main_context, TRUE);
++    }
++
++    gboolean can_execute = webkit_web_view_can_execute_editing_command_finish(m_web_view,
++                                                                              result,
++                                                                              NULL);
++    g_object_unref(result);
++
++    return can_execute;
++}
++
++bool wxWebViewWebKit::CanCut() const
++{
++    return CanExecuteEditingCommand(WEBKIT_EDITING_COMMAND_CUT);
++}
++
++bool wxWebViewWebKit::CanCopy() const
++{
++    return CanExecuteEditingCommand(WEBKIT_EDITING_COMMAND_COPY);
++}
++
++bool wxWebViewWebKit::CanPaste() const
++{
++    return CanExecuteEditingCommand(WEBKIT_EDITING_COMMAND_PASTE);
++}
++
++void wxWebViewWebKit::Cut()
++{
++    webkit_web_view_execute_editing_command(m_web_view,
++                                            WEBKIT_EDITING_COMMAND_CUT);
++}
++
++void wxWebViewWebKit::Copy()
++{
++    webkit_web_view_execute_editing_command(m_web_view,
++                                            WEBKIT_EDITING_COMMAND_COPY);
++}
++
++void wxWebViewWebKit::Paste()
++{
++    webkit_web_view_execute_editing_command(m_web_view,
++                                            WEBKIT_EDITING_COMMAND_PASTE);
++}
++
++bool wxWebViewWebKit::CanUndo() const
++{
++    return CanExecuteEditingCommand(WEBKIT_EDITING_COMMAND_UNDO);
++}
++
++bool wxWebViewWebKit::CanRedo() const
++{
++    return CanExecuteEditingCommand(WEBKIT_EDITING_COMMAND_REDO);
++}
++
++void wxWebViewWebKit::Undo()
++{
++    webkit_web_view_execute_editing_command(m_web_view,
++                                            WEBKIT_EDITING_COMMAND_UNDO);
++}
++
++void wxWebViewWebKit::Redo()
++{
++    webkit_web_view_execute_editing_command(m_web_view,
++                                            WEBKIT_EDITING_COMMAND_REDO);
++}
++
++wxString wxWebViewWebKit::GetCurrentURL() const
++{
++    // FIXME: check which encoding the web kit control uses instead of
++    // assuming UTF8 (here and elsewhere too)
++    return wxString::FromUTF8(webkit_web_view_get_uri(m_web_view));
++}
++
++
++wxString wxWebViewWebKit::GetCurrentTitle() const
++{
++    return wxString::FromUTF8(webkit_web_view_get_title(m_web_view));
++}
++
++
++static void wxgtk_web_resource_get_data_cb(WebKitWebResource *,
++                                           GAsyncResult *res,
++                                           GAsyncResult **res_out)
++{
++    *res_out = (GAsyncResult*)g_object_ref(res);
++}
++
++wxString wxWebViewWebKit::GetPageSource() const
++{
++    WebKitWebResource *resource = webkit_web_view_get_main_resource(m_web_view);
++    if (!resource)
++    {
++        return wxString();
++    }
++
++    GAsyncResult *result = NULL;
++    webkit_web_resource_get_data(resource, NULL,
++                                 (GAsyncReadyCallback)wxgtk_web_resource_get_data_cb,
++                                 &result);
++
++    GMainContext *main_context = g_main_context_get_thread_default();
++    while (!result)
++    {
++        g_main_context_iteration(main_context, TRUE);
++    }
++
++    guchar *source = webkit_web_resource_get_data_finish(resource, result,
++                                                         NULL, NULL);
++    if (result)
++    {
++        g_object_unref(result);
++    }
++
++    if (source)
++    {
++        wxString wxs = wxString(source, wxConvUTF8);
++        free(source);
++        return wxs;
++    }
++    return wxString();
++}
++
++
++wxWebViewZoom wxWebViewWebKit::GetZoom() const
++{
++    float zoom = GetWebkitZoom();
++
++    // arbitrary way to map float zoom to our common zoom enum
++    if (zoom <= 0.65)
++    {
++        return wxWEBVIEW_ZOOM_TINY;
++    }
++    else if (zoom > 0.65 && zoom <= 0.90)
++    {
++        return wxWEBVIEW_ZOOM_SMALL;
++    }
++    else if (zoom > 0.90 && zoom <= 1.15)
++    {
++        return wxWEBVIEW_ZOOM_MEDIUM;
++    }
++    else if (zoom > 1.15 && zoom <= 1.45)
++    {
++        return wxWEBVIEW_ZOOM_LARGE;
++    }
++    else if (zoom > 1.45)
++    {
++        return wxWEBVIEW_ZOOM_LARGEST;
++    }
++
++    // to shut up compilers, this can never be reached logically
++    wxFAIL;
++    return wxWEBVIEW_ZOOM_MEDIUM;
++}
++
++
++void wxWebViewWebKit::SetZoom(wxWebViewZoom zoom)
++{
++    // arbitrary way to map our common zoom enum to float zoom
++    switch (zoom)
++    {
++        case wxWEBVIEW_ZOOM_TINY:
++            SetWebkitZoom(0.6f);
++            break;
++
++        case wxWEBVIEW_ZOOM_SMALL:
++            SetWebkitZoom(0.8f);
++            break;
++
++        case wxWEBVIEW_ZOOM_MEDIUM:
++            SetWebkitZoom(1.0f);
++            break;
++
++        case wxWEBVIEW_ZOOM_LARGE:
++            SetWebkitZoom(1.3);
++            break;
++
++        case wxWEBVIEW_ZOOM_LARGEST:
++            SetWebkitZoom(1.6);
++            break;
++
++        default:
++            wxFAIL;
++    }
++}
++
++void wxWebViewWebKit::SetZoomType(wxWebViewZoomType type)
++{
++    WebKitSettings* settings = webkit_web_view_get_settings(m_web_view);
++    webkit_settings_set_zoom_text_only(settings,
++                                       (type == wxWEBVIEW_ZOOM_TYPE_TEXT ?
++                                       TRUE : FALSE));
++}
++
++wxWebViewZoomType wxWebViewWebKit::GetZoomType() const
++{
++    WebKitSettings* settings = webkit_web_view_get_settings(m_web_view);
++    gboolean tozoom = webkit_settings_get_zoom_text_only(settings);
++
++    if (tozoom)
++        return wxWEBVIEW_ZOOM_TYPE_TEXT;
++    else
++        return wxWEBVIEW_ZOOM_TYPE_LAYOUT;
++}
++
++bool wxWebViewWebKit::CanSetZoomType(wxWebViewZoomType) const
++{
++    // this port supports all zoom types
++    return true;
++}
++
++void wxWebViewWebKit::DoSetPage(const wxString& html, const wxString& baseUri)
++{
++    webkit_web_view_load_html(m_web_view,
++                              html.mb_str(wxConvUTF8),
++                              baseUri.mb_str(wxConvUTF8));
++}
++
++void wxWebViewWebKit::Print()
++{
++    WebKitPrintOperation* printop = webkit_print_operation_new(m_web_view);
++    webkit_print_operation_run_dialog(printop, NULL);
++    g_object_unref(printop);
++}
++
++
++bool wxWebViewWebKit::IsBusy() const
++{
++    return m_busy;
++}
++
++void wxWebViewWebKit::SetEditable(bool enable)
++{
++    webkit_web_view_set_editable(m_web_view, enable);
++}
++
++bool wxWebViewWebKit::IsEditable() const
++{
++    gboolean editable;
++    g_object_get(m_web_view, "editable", &editable, NULL);
++    return editable;
++}
++
++void wxWebViewWebKit::DeleteSelection()
++{
++    if (m_extension)
++    {
++        guint64 page_id = webkit_web_view_get_page_id(m_web_view);
++        GVariant *retval = g_dbus_proxy_call_sync(m_extension,
++                                                  "DeleteSelection",
++                                                  g_variant_new("(t)", page_id),
++                                                  G_DBUS_CALL_FLAGS_NONE, -1,
++                                                  NULL, NULL);
++        if (retval)
++        {
++            g_variant_unref(retval);
++        }
++    }
++}
++
++bool wxWebViewWebKit::HasSelection() const
++{
++    if (m_extension)
++    {
++        guint64 page_id = webkit_web_view_get_page_id(m_web_view);
++        GVariant *retval = g_dbus_proxy_call_sync(m_extension,
++                                                  "HasSelection",
++                                                  g_variant_new("(t)", page_id),
++                                                  G_DBUS_CALL_FLAGS_NONE, -1,
++                                                  NULL, NULL);
++        if (retval)
++	{
++            gboolean has_selection = FALSE;
++            g_variant_get(retval, "(b)", &has_selection);
++            g_variant_unref(retval);
++            return has_selection;
++        }
++    }
++    return false;
++}
++
++void wxWebViewWebKit::SelectAll()
++{
++    webkit_web_view_execute_editing_command(m_web_view,
++                                            WEBKIT_EDITING_COMMAND_SELECT_ALL);
++}
++
++wxString wxWebViewWebKit::GetSelectedText() const
++{
++    if (m_extension)
++    {
++        guint64 page_id = webkit_web_view_get_page_id(m_web_view);
++        GVariant *retval = g_dbus_proxy_call_sync(m_extension,
++                                                  "GetSelectedText",
++                                                  g_variant_new("(t)", page_id),
++                                                  G_DBUS_CALL_FLAGS_NONE, -1,
++                                                  NULL, NULL);
++        if (retval)
++	{
++            char *text;
++            g_variant_get(retval, "(s)", &text);
++            g_variant_unref(retval);
++            return wxString(text, wxConvUTF8);
++        }
++    }
++    return wxString();
++}
++
++wxString wxWebViewWebKit::GetSelectedSource() const
++{
++    if (m_extension)
++    {
++        guint64 page_id = webkit_web_view_get_page_id(m_web_view);
++        GVariant *retval = g_dbus_proxy_call_sync(m_extension,
++                                                  "GetSelectedSource",
++                                                  g_variant_new("(t)", page_id),
++                                                  G_DBUS_CALL_FLAGS_NONE, -1,
++                                                  NULL, NULL);
++        if (retval)
++	{
++            char *source;
++            g_variant_get(retval, "(s)", &source);
++            g_variant_unref(retval);
++            return wxString(source, wxConvUTF8);
++        }
++    }
++    return wxString();
++}
++
++void wxWebViewWebKit::ClearSelection()
++{
++    if (m_extension)
++    {
++        guint64 page_id = webkit_web_view_get_page_id(m_web_view);
++        GVariant *retval = g_dbus_proxy_call_sync(m_extension,
++                                                  "ClearSelection",
++                                                  g_variant_new("(t)", page_id),
++                                                  G_DBUS_CALL_FLAGS_NONE, -1,
++                                                  NULL, NULL);
++        if (retval)
++        {
++            g_variant_unref(retval);
++        }
++    }
++}
++
++wxString wxWebViewWebKit::GetPageText() const
++{
++    if (m_extension)
++    {
++        guint64 page_id = webkit_web_view_get_page_id(m_web_view);
++        GVariant *retval = g_dbus_proxy_call_sync(m_extension,
++                                                  "GetPageText",
++                                                  g_variant_new("(t)", page_id),
++                                                  G_DBUS_CALL_FLAGS_NONE, -1,
++                                                  NULL, NULL);
++        if (retval)
++	{
++            char *text;
++            g_variant_get(retval, "(s)", &text);
++            g_variant_unref(retval);
++            return wxString(text, wxConvUTF8);
++        }
++    }
++    return wxString();
++}
++
++void wxWebViewWebKit::RunScript(const wxString& javascript)
++{
++    webkit_web_view_run_javascript(m_web_view,
++                                   javascript.mb_str(wxConvUTF8),
++                                   NULL,
++                                   NULL,
++                                   NULL);
++}
++
++void wxWebViewWebKit::RegisterHandler(wxSharedPtr<wxWebViewHandler> handler)
++{
++    m_handlerList.push_back(handler);
++}
++
++void wxWebViewWebKit::EnableContextMenu(bool enable)
++{
++    wxWebView::EnableContextMenu(enable);
++}
++
++long wxWebViewWebKit::Find(const wxString& text, int flags)
++{
++    WebKitFindController* findctrl = webkit_web_view_get_find_controller(m_web_view);
++    bool newSearch = false;
++    if(text != m_findText || 
++       (flags & wxWEBVIEW_FIND_MATCH_CASE) != (m_findFlags & wxWEBVIEW_FIND_MATCH_CASE))
++    {
++        newSearch = true;
++        //If it is a new search we need to clear existing highlights
++        webkit_find_controller_search_finish(findctrl);
++    }
++
++    m_findFlags = flags;
++    m_findText = text;
++
++    //If the search string is empty then we clear any selection and highlight
++    if(text.empty())
++    {
++        webkit_find_controller_search_finish(findctrl);
++        ClearSelection();
++        return wxNOT_FOUND;
++    }
++
++    bool wrap = false, forward = true;
++    guint32 options = WEBKIT_FIND_OPTIONS_NONE;
++    if(flags & wxWEBVIEW_FIND_WRAP)
++    {
++        wrap = true;
++        options |= WEBKIT_FIND_OPTIONS_WRAP_AROUND;
++    }
++    if(!(flags & wxWEBVIEW_FIND_MATCH_CASE))
++    {
++        options |= WEBKIT_FIND_OPTIONS_CASE_INSENSITIVE;
++    }
++    if(flags & wxWEBVIEW_FIND_BACKWARDS)
++    {
++        forward = false;
++        options |= WEBKIT_FIND_OPTIONS_BACKWARDS;
++    }
++
++    if(newSearch)
++    {
++        //Initially we count the matches to know how many we have
++        m_findCount = -1;
++        webkit_find_controller_count_matches(findctrl,
++                                             wxGTK_CONV(text),
++                                             options,
++                                             G_MAXUINT);
++        GMainContext *main_context = g_main_context_get_thread_default();
++        while (m_findCount == -1)
++        {
++            g_main_context_iteration(main_context, TRUE);
++        }
++        //Highlight them if needed
++        if(flags & wxWEBVIEW_FIND_HIGHLIGHT_RESULT)
++        {
++            webkit_find_controller_search(findctrl,
++                                          wxGTK_CONV(text),
++                                          options,
++                                          G_MAXUINT);
++        }
++        //In this case we return early to match IE behaviour
++        m_findPosition = -1;
++        return m_findCount;
++    }
++    else
++    {
++        if(forward)
++            m_findPosition++;
++        else
++            m_findPosition--;
++        if(m_findPosition < 0)
++            m_findPosition += m_findCount;
++        if(m_findPosition > m_findCount)
++            m_findPosition -= m_findCount;
++    }
++
++    if(forward)
++    {
++        webkit_find_controller_search_next(findctrl);
++        if(m_findPosition == m_findCount && !wrap)
++        {
++            return wxNOT_FOUND;
++        }
++    }
++    else
++    {
++        webkit_find_controller_search_previous(findctrl);
++        if(m_findPosition == -1 && !wrap)
++        {
++            return wxNOT_FOUND;
++        }
++    }
++
++    return newSearch ? m_findCount : m_findPosition;
++}
++
++void wxWebViewWebKit::FindClear()
++{
++    m_findCount = 0;
++    m_findFlags = 0;
++    m_findText.clear();
++    m_findPosition = -1;
++}
++
++// static
++wxVisualAttributes
++wxWebViewWebKit::GetClassDefaultAttributes(wxWindowVariant WXUNUSED(variant))
++{
++     return GetDefaultAttributesFromGTKWidget(webkit_web_view_new());
++}
++
++void wxWebViewWebKit::SetupWebExtensionServer()
++{
++    char *address = g_strdup_printf("unix:tmpdir=%s", g_get_tmp_dir());
++    char *guid = g_dbus_generate_guid();
++    GDBusAuthObserver *observer = g_dbus_auth_observer_new();
++    GError *error = NULL;
++
++    g_signal_connect(observer, "authorize-authenticated-peer",
++                     G_CALLBACK(wxgtk_authorize_authenticated_peer_cb), this);
++
++    m_dbusServer = g_dbus_server_new_sync(address,
++                                          G_DBUS_SERVER_FLAGS_NONE,
++                                          guid,
++                                          observer,
++                                          NULL,
++                                          &error);
++
++    if (error)
++    {
++        g_warning("Failed to start web extension server on %s: %s", address, error->message);
++        g_error_free(error);
++    }
++    else
++    {
++        g_signal_connect(m_dbusServer, "new-connection",
++                         G_CALLBACK(wxgtk_new_connection_cb), &m_extension);
++        g_dbus_server_start(m_dbusServer);
++    }
++
++    g_free(address);
++    g_free(guid);
++    g_object_unref(observer);
++}
++
++#endif // wxUSE_WEBVIEW && wxUSE_WEBVIEW_WEBKIT2
+diff --git a/src/gtk/webview_webkit2_extension.cpp b/src/gtk/webview_webkit2_extension.cpp
+new file mode 100644
+index 0000000000..3b54165e9a
+--- /dev/null
++++ b/src/gtk/webview_webkit2_extension.cpp
+@@ -0,0 +1,421 @@
++/////////////////////////////////////////////////////////////////////////////
++// Name:        src/gtk/webview_webkit2_extension.cpp
++// Purpose:     GTK WebKit2 extension for web view component
++// Author:      Scott Talbert
++// Copyright:   (c) 2017 Scott Talbert
++// Licence:     wxWindows licence
++/////////////////////////////////////////////////////////////////////////////
++
++#include "wx/defs.h"
++#include "wx/gtk/private/webview_webkit2_extension.h"
++#include <webkit2/webkit-web-extension.h>
++#define WEBKIT_DOM_USE_UNSTABLE_API
++#include <webkitdom/WebKitDOMDOMSelection.h>
++#include <webkitdom/WebKitDOMDOMWindowUnstable.h>
++
++static const char introspection_xml[] =
++  "<node>"
++  " <interface name='org.wxwidgets.wxGTK.WebExtension'>"
++  "  <method name='ClearSelection'>"
++  "   <arg type='t' name='page_id' direction='in'/>"
++  "  </method>"
++  "  <method name='DeleteSelection'>"
++  "   <arg type='t' name='page_id' direction='in'/>"
++  "  </method>"
++  "  <method name='GetPageSource'>"
++  "   <arg type='t' name='page_id' direction='in'/>"
++  "   <arg type='s' name='source' direction='out'/>"
++  "  </method>"
++  "  <method name='GetPageText'>"
++  "   <arg type='t' name='page_id' direction='in'/>"
++  "   <arg type='s' name='text' direction='out'/>"
++  "  </method>"
++  "  <method name='GetSelectedSource'>"
++  "   <arg type='t' name='page_id' direction='in'/>"
++  "   <arg type='s' name='source' direction='out'/>"
++  "  </method>"
++  "  <method name='GetSelectedText'>"
++  "   <arg type='t' name='page_id' direction='in'/>"
++  "   <arg type='s' name='text' direction='out'/>"
++  "  </method>"
++  "  <method name='HasSelection'>"
++  "   <arg type='t' name='page_id' direction='in'/>"
++  "   <arg type='b' name='has_selection' direction='out'/>"
++  "  </method>"
++  " </interface>"
++  "</node>";
++
++class wxWebViewWebKitExtension;
++
++static gboolean
++wxgtk_webview_authorize_authenticated_peer_cb(GDBusAuthObserver *observer,
++                                              GIOStream *stream,
++                                              GCredentials *credentials,
++                                              wxWebViewWebKitExtension *extension);
++static void
++wxgtk_webview_dbus_connection_created_cb(GObject *source_object,
++                                         GAsyncResult *result,
++                                         wxWebViewWebKitExtension *extension);
++
++static wxWebViewWebKitExtension *gs_extension = NULL;
++
++class wxWebViewWebKitExtension
++{
++public:
++    wxWebViewWebKitExtension(WebKitWebExtension *webkit_extension, const char* server_address);
++    void ClearSelection(GVariant *parameters, GDBusMethodInvocation *invocation);
++    void DeleteSelection(GVariant *parameters, GDBusMethodInvocation *invocation);
++    void GetPageSource(GVariant *parameters, GDBusMethodInvocation *invocation);
++    void GetPageText(GVariant *parameters, GDBusMethodInvocation *invocation);
++    void GetSelectedSource(GVariant *parameters, GDBusMethodInvocation *invocation);
++    void GetSelectedText(GVariant *parameters, GDBusMethodInvocation *invocation);
++    void HasSelection(GVariant *parameters, GDBusMethodInvocation *invocation);
++    void SetDBusConnection(GDBusConnection *dbusConnection);
++
++private:
++    WebKitWebPage* GetWebPageOrReturnError(GVariant *parameters, GDBusMethodInvocation *invocation);
++    void ReturnDBusStringValue(GDBusMethodInvocation *invocation, gchar *value);
++
++    GDBusConnection *m_dbusConnection;
++    WebKitWebExtension *m_webkitExtension;
++};
++
++wxWebViewWebKitExtension::wxWebViewWebKitExtension(WebKitWebExtension *extension, const char* server_address)
++{
++    m_webkitExtension = (WebKitWebExtension*)g_object_ref(extension);
++
++    GDBusAuthObserver *observer = g_dbus_auth_observer_new();
++    g_signal_connect(observer, "authorize-authenticated-peer",
++                     G_CALLBACK(wxgtk_webview_authorize_authenticated_peer_cb),
++                     this);
++
++    g_dbus_connection_new_for_address(server_address,
++                                      G_DBUS_CONNECTION_FLAGS_AUTHENTICATION_CLIENT,
++                                      observer,
++                                      NULL,
++                                      (GAsyncReadyCallback)wxgtk_webview_dbus_connection_created_cb,
++                                      this);
++    g_object_unref(observer);
++}
++
++WebKitWebPage* wxWebViewWebKitExtension::GetWebPageOrReturnError(GVariant *parameters, GDBusMethodInvocation *invocation)
++{
++    guint64 page_id;
++    g_variant_get(parameters, "(t)", &page_id);
++    WebKitWebPage *web_page = webkit_web_extension_get_page(m_webkitExtension,
++                                                            page_id);
++    if (!web_page)
++    {
++        g_dbus_method_invocation_return_error(invocation, G_DBUS_ERROR,
++                                              G_DBUS_ERROR_INVALID_ARGS,
++                                              "Invalid page ID: %" G_GUINT64_FORMAT, page_id);
++    }
++    return web_page;
++}
++
++void wxWebViewWebKitExtension::GetSelectedSource(GVariant *parameters,
++                                                 GDBusMethodInvocation *invocation)
++{
++    WebKitWebPage *web_page = GetWebPageOrReturnError(parameters, invocation);
++    if (!web_page)
++    {
++        return;
++    }
++
++    WebKitDOMDocument *doc = webkit_web_page_get_dom_document(web_page);
++    WebKitDOMDOMWindow *win = webkit_dom_document_get_default_view(doc);
++    WebKitDOMDOMSelection *sel = webkit_dom_dom_window_get_selection(win);
++    g_object_unref(win);
++    if (!sel)
++    {
++        ReturnDBusStringValue(invocation, NULL);
++        return;
++    }
++    WebKitDOMRange *range = webkit_dom_dom_selection_get_range_at(sel, 0, NULL);
++    if (!range)
++    {
++        ReturnDBusStringValue(invocation, NULL);
++        return;
++    }
++    WebKitDOMElement *div = webkit_dom_document_create_element(doc, "div",
++                                                               NULL);
++    WebKitDOMDocumentFragment *clone = webkit_dom_range_clone_contents(range,
++                                                                       NULL);
++    webkit_dom_node_append_child(&div->parent_instance,
++                                 &clone->parent_instance, NULL);
++    WebKitDOMElement *html = (WebKitDOMElement*)div;
++    gchar *text = webkit_dom_element_get_inner_html(html);
++    g_object_unref(range);
++
++    ReturnDBusStringValue(invocation, text);
++}
++
++void wxWebViewWebKitExtension::GetPageSource(GVariant *parameters,
++                                             GDBusMethodInvocation *invocation)
++{
++    WebKitWebPage *web_page = GetWebPageOrReturnError(parameters, invocation);
++    if (!web_page)
++    {
++        return;
++    }
++
++    WebKitDOMDocument *doc = webkit_web_page_get_dom_document(web_page);
++    WebKitDOMElement *body = webkit_dom_document_get_document_element(doc);
++    gchar *source = webkit_dom_element_get_outer_html(body);
++    g_dbus_method_invocation_return_value(invocation,
++                                          g_variant_new("(s)", source ? source : ""));
++}
++
++void wxWebViewWebKitExtension::GetPageText(GVariant *parameters,
++                                           GDBusMethodInvocation *invocation)
++{
++    WebKitWebPage *web_page = GetWebPageOrReturnError(parameters, invocation);
++    if (!web_page)
++    {
++        return;
++    }
++
++    WebKitDOMDocument *doc = webkit_web_page_get_dom_document(web_page);
++    WebKitDOMHTMLElement *body = webkit_dom_document_get_body(doc);
++    gchar *text = webkit_dom_html_element_get_inner_text(body);
++    g_dbus_method_invocation_return_value(invocation,
++                                          g_variant_new("(s)", text));
++}
++
++void wxWebViewWebKitExtension::GetSelectedText(GVariant *parameters,
++                                               GDBusMethodInvocation *invocation)
++{
++    WebKitWebPage *web_page = GetWebPageOrReturnError(parameters, invocation);
++    if (!web_page)
++    {
++        return;
++    }
++
++    WebKitDOMDocument *doc = webkit_web_page_get_dom_document(web_page);
++    WebKitDOMDOMWindow *win = webkit_dom_document_get_default_view(doc);
++    WebKitDOMDOMSelection *sel = webkit_dom_dom_window_get_selection(win);
++    g_object_unref(win);
++    if (!sel)
++    {
++        ReturnDBusStringValue(invocation, NULL);
++        return;
++    }
++    WebKitDOMRange *range = webkit_dom_dom_selection_get_range_at(sel, 0, NULL);
++    if (!range)
++    {
++        ReturnDBusStringValue(invocation, NULL);
++        return;
++    }
++    gchar *text = webkit_dom_range_get_text(range);
++    g_object_unref(range);
++
++    ReturnDBusStringValue(invocation, text);
++}
++
++void wxWebViewWebKitExtension::ClearSelection(GVariant *parameters,
++                                              GDBusMethodInvocation *invocation)
++{
++    WebKitWebPage *web_page = GetWebPageOrReturnError(parameters, invocation);
++    if (!web_page)
++    {
++        return;
++    }
++
++    WebKitDOMDocument *doc = webkit_web_page_get_dom_document(web_page);
++    WebKitDOMDOMWindow *win = webkit_dom_document_get_default_view(doc);
++    WebKitDOMDOMSelection *sel = webkit_dom_dom_window_get_selection(win);
++    g_object_unref(win);
++    if (sel)
++    {
++        webkit_dom_dom_selection_remove_all_ranges(sel);
++    }
++
++    g_dbus_method_invocation_return_value(invocation, NULL);
++}
++
++void wxWebViewWebKitExtension::HasSelection(GVariant *parameters,
++                                            GDBusMethodInvocation *invocation)
++{
++    WebKitWebPage *web_page = GetWebPageOrReturnError(parameters, invocation);
++    if (!web_page)
++    {
++        return;
++    }
++
++    WebKitDOMDocument *doc = webkit_web_page_get_dom_document(web_page);
++    WebKitDOMDOMWindow *win = webkit_dom_document_get_default_view(doc);
++    WebKitDOMDOMSelection *sel = webkit_dom_dom_window_get_selection(win);
++    g_object_unref(win);
++    gboolean has_selection = FALSE;
++    if (WEBKIT_DOM_IS_DOM_SELECTION(sel))
++    {
++        if (!webkit_dom_dom_selection_get_is_collapsed(sel))
++        {
++            has_selection = TRUE;
++        }
++    }
++    g_dbus_method_invocation_return_value(invocation,
++                                          g_variant_new("(b)", has_selection));
++}
++
++void wxWebViewWebKitExtension::DeleteSelection(GVariant *parameters,
++                                               GDBusMethodInvocation *invocation)
++{
++    WebKitWebPage *web_page = GetWebPageOrReturnError(parameters, invocation);
++    if (!web_page)
++    {
++        return;
++    }
++
++    WebKitDOMDocument *doc = webkit_web_page_get_dom_document(web_page);
++    WebKitDOMDOMWindow *win = webkit_dom_document_get_default_view(doc);
++    WebKitDOMDOMSelection *sel = webkit_dom_dom_window_get_selection(win);
++    g_object_unref(win);
++    if (sel)
++    {
++        webkit_dom_dom_selection_delete_from_document(sel);
++    }
++
++    g_dbus_method_invocation_return_value(invocation, NULL);
++}
++
++void wxWebViewWebKitExtension::ReturnDBusStringValue(GDBusMethodInvocation *invocation, gchar *value)
++{
++    g_dbus_method_invocation_return_value(invocation,
++                                          g_variant_new("(s)", value ? value : ""));
++}
++
++void wxWebViewWebKitExtension::SetDBusConnection(GDBusConnection *dbusConnection)
++{
++    m_dbusConnection = dbusConnection;
++}
++
++static void
++wxgtk_webview_handle_method_call(GDBusConnection *connection,
++                                 const char *sender,
++                                 const char *object_path,
++                                 const char *interface_name,
++                                 const char *method_name,
++                                 GVariant *parameters,
++                                 GDBusMethodInvocation *invocation,
++                                 gpointer user_data)
++{
++    if (g_strcmp0(interface_name, WXGTK_WEB_EXTENSION_INTERFACE) != 0)
++    {
++        return;
++    }
++
++    wxWebViewWebKitExtension *extension = (wxWebViewWebKitExtension*)user_data;
++
++    if (g_strcmp0(method_name, "ClearSelection") == 0)
++    {
++        extension->ClearSelection(parameters, invocation);
++    }
++    else if (g_strcmp0(method_name, "DeleteSelection") == 0)
++    {
++        extension->DeleteSelection(parameters, invocation);
++    }
++    else if (g_strcmp0(method_name, "GetPageSource") == 0)
++    {
++        extension->GetPageSource(parameters, invocation);
++    }
++    else if (g_strcmp0(method_name, "GetPageText") == 0)
++    {
++        extension->GetPageText(parameters, invocation);
++    }
++    else if (g_strcmp0(method_name, "GetSelectedSource") == 0)
++    {
++        extension->GetSelectedSource(parameters, invocation);
++    }
++    else if (g_strcmp0(method_name, "GetSelectedText") == 0)
++    {
++        extension->GetSelectedText(parameters, invocation);
++    }
++    else if (g_strcmp0(method_name, "HasSelection") == 0)
++    {
++        extension->HasSelection(parameters, invocation);
++    }
++}
++
++static const GDBusInterfaceVTable interface_vtable = {
++    wxgtk_webview_handle_method_call,
++    NULL,
++    NULL
++};
++
++gboolean
++wxgtk_webview_dbus_peer_is_authorized(GCredentials *peer_credentials)
++{
++    static GCredentials *own_credentials = g_credentials_new();
++    GError *error = NULL;
++
++    if (peer_credentials && g_credentials_is_same_user(peer_credentials, own_credentials, &error))
++    {
++        return TRUE;
++    }
++
++    if (error)
++    {
++        g_warning("Failed to authorize web extension connection: %s", error->message);
++        g_error_free(error);
++    }
++    return FALSE;
++}
++
++static gboolean
++wxgtk_webview_authorize_authenticated_peer_cb(GDBusAuthObserver *observer,
++                                              GIOStream *stream,
++                                              GCredentials *credentials,
++                                              wxWebViewWebKitExtension *extension)
++{
++    return wxgtk_webview_dbus_peer_is_authorized(credentials);
++}
++
++static void
++wxgtk_webview_dbus_connection_created_cb(GObject *source_object,
++                                         GAsyncResult *result,
++                                         wxWebViewWebKitExtension *extension)
++{
++    static GDBusNodeInfo *introspection_data =
++        g_dbus_node_info_new_for_xml(introspection_xml, NULL);
++
++    GError *error = NULL;
++    GDBusConnection *connection =
++        g_dbus_connection_new_for_address_finish(result, &error);
++    if (error)
++    {
++        g_warning("Failed to connect to UI process: %s", error->message);
++        g_error_free(error);
++        return;
++    }
++
++    guint registration_id =
++        g_dbus_connection_register_object(connection,
++                                          WXGTK_WEB_EXTENSION_OBJECT_PATH,
++                                          introspection_data->interfaces[0],
++                                          &interface_vtable,
++                                          extension,
++                                          NULL,
++                                          &error);
++    if (!registration_id)
++    {
++        g_warning ("Failed to register web extension object: %s\n", error->message);
++        g_error_free (error);
++        g_object_unref (connection);
++        return;
++    }
++
++    extension->SetDBusConnection(connection);
++}
++
++extern "C" WXEXPORT void
++webkit_web_extension_initialize_with_user_data (WebKitWebExtension *webkit_extension,
++                                                GVariant           *user_data)
++{
++    const char *server_address;
++
++    g_variant_get (user_data, "(&s)", &server_address);
++
++    gs_extension = new wxWebViewWebKitExtension(webkit_extension,
++                                                server_address);
++}
