@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~x86"
 IUSE="htmlreport pcre qt5"
 
 RDEPEND="

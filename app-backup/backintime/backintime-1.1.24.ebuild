@@ -1,19 +1,19 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-PYTHON_COMPAT=( python3_4 )
+PYTHON_COMPAT=( python3_{4,5} )
 
-inherit eutils python-single-r1
+inherit eutils python-single-r1 gnome2-utils
 
 DESCRIPTION="Backup system inspired by TimeVault and FlyBack, with a GUI for GNOME and KDE4"
-HOMEPAGE="http://backintime.le-web.org/"
-SRC_URI="http://${PN}.le-web.org/download/${PN}/${P}.tar.gz"
+HOMEPAGE="https://backintime.readthedocs.io/"
+SRC_URI="https://github.com/bit-team/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="qt4"
 
 DEPEND="${PYTHON_DEPS}
@@ -45,6 +45,8 @@ src_prepare() {
 			fi
 		done
 	fi
+
+	default
 }
 
 src_configure() {
@@ -74,4 +76,12 @@ src_install() {
 	fi
 
 	python_optimize "${D}"
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
 }
