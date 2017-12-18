@@ -3143,7 +3143,7 @@ dev-libs/libtubo 5.0.15: small and simple interprocess communication library
 dev-libs/libunicode 0.4-r1: Unicode library
 dev-libs/libunique 1.1.6-r2 3.0.2-r1: A library for writing single instance application
 dev-libs/libunistring 0.9.5 0.9.7: Library for manipulating Unicode and C strings according to Unicode standard
-dev-libs/libusb 1.0.19-r1: Userspace access to USB devices
+dev-libs/libusb 1.0.19-r1 1.0.21: Userspace access to USB devices
 dev-libs/libusb-compat 0.1.5-r2: Userspace access to USB devices (libusb-0.1 compat wrapper)
 dev-libs/libuv 1.10.2: Cross-platform asychronous I/O
 dev-libs/libverto 0.2.5 0.2.5-r1: Main event loop abstraction library
@@ -9699,7 +9699,7 @@ sys-apps/hotplug2stdout 1.2.1: A tool for reading kernel uevent(s) to stdout
 sys-apps/hponcfg 4.6.0.0: HP Lights-Out Online Configuration Utility (HPONCFG)
 sys-apps/hwdata-gentoo 0.4: Data for the hwsetup program
 sys-apps/hwids 20170328: Hardware (PCI, USB, OUI, IAB) IDs databases
-sys-apps/hwinfo 19.1 20.0 21.4: hardware detection tool used in SuSE Linux
+sys-apps/hwinfo 19.1 20.0 21.4 21.23: Hardware detection tool used in SuSE Linux
 sys-apps/hwloc 1.11.2-r1: displays the hardware topology in convenient formats
 sys-apps/hwsetup 1.2-r3: Hardware setup program from Knoppix - used only on LiveCD
 sys-apps/i2c-tools 3.1.1-r1: I2C tools for bus probing, chip dumping, EEPROM decoding, and more
@@ -9808,7 +9808,7 @@ sys-apps/usermode-utilities 20070815-r3: Tools for use with Usermode Linux virtu
 sys-apps/utempter 0.5.5.6: App that allows non-privileged apps to write utmp (login) info
 sys-apps/util-linux 2.30.2: Various useful Linux utilities
 sys-apps/vbetool 1.1: Run real-mode video BIOS code to alter hw state (i.e. reinitialize video card)
-sys-apps/watchdog 5.14: A software watchdog and /dev/watchdog daemon
+sys-apps/watchdog 5.14 5.15: A software watchdog and /dev/watchdog daemon
 sys-apps/which 2.21: Prints out location of specified executables that are in your path
 sys-apps/x86info 1.30: Dave Jones' handy, informative x86 CPU diagnostic utility
 sys-apps/xinetd 2.3.15-r2 2.3.15-r3: powerful replacement for inetd
