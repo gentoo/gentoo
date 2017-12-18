@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit eutils flag-o-matic fortran-2 java-pkg-opt-2 toolchain-funcs
 
@@ -35,9 +35,9 @@ pkg_setup() {
 }
 
 src_prepare() {
-	sed 's:strip:true:g' -i ../make/Makefile
-	[[ $(tc-getFC) =~ "ifort" ]] || epatch "${FILESDIR}"/${PV}-openmp.patch
-	cd .. && epatch "${FILESDIR}"/${P}-build.patch
+	sed 's:strip:true:g' -i ../make/Makefile || die
+	[[ $(tc-getFC) =~ "ifort" ]] && eapply "${FILESDIR}"/${PV}-openmp.patch
+	default
 }
 
 src_compile() {
@@ -75,7 +75,7 @@ src_compile() {
 	emake \
 		-f ../make/Makefile \
 		BINDIR="${S}"/../bin \
-		rename
+		rename_bin
 }
 
 src_test() {
