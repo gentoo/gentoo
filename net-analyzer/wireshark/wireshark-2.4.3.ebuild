@@ -52,7 +52,10 @@ CDEPEND="
 		dev-qt/qtmultimedia:5
 		dev-qt/qtprintsupport:5
 		dev-qt/qtwidgets:5
-		media-libs/speex
+		|| (
+			media-libs/speexdsp
+			<media-libs/speex-1.2.0
+		)
 		x11-misc/xdg-utils
 	)
 	sbc? ( media-libs/sbc )
