@@ -3,7 +3,7 @@
 
 EAPI=5
 
-NETSURF_BUILDSYSTEM=buildsystem-1.5
+NETSURF_BUILDSYSTEM=buildsystem-1.6
 inherit netsurf
 
 DESCRIPTION="CSS parser and selection engine, written in C"
@@ -22,7 +22,7 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	sed -e '1i#pragma GCC diagnostic ignored "-Wimplicit-fallthrough"' \
-		-i src/parse/parse.c || die
+		-i src/parse/parse.c src/select/arena_hash.h || die
 	sed -e '1i#pragma GCC diagnostic ignored "-Wmaybe-uninitialized"' \
 		-i src/parse/parse.c src/select/computed.c || die
 
