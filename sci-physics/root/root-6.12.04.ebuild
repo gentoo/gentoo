@@ -31,8 +31,6 @@ KEYWORDS="~amd64 ~x86"
 REQUIRED_USE="
 	!X? ( !asimage !opengl !qt4 !tiff )
 	python? ( ${PYTHON_REQUIRED_USE} )
-	pythia6? ( !pythia8 )
-	pythia8? ( !pythia6 )
 	tmva? ( math gsl )
 	davix? ( ssl )
 "
