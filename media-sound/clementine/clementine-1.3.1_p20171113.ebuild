@@ -74,8 +74,7 @@ DEPEND="${COMMON_DEPEND}
 		>=dev-cpp/gtest-1.8.0
 		dev-cpp/gmock
 	)
-	dev-libs/boost:=
-	dev-qt/qttest:4
+	dev-libs/boost
 	sys-devel/gettext
 	virtual/pkgconfig
 	box? ( dev-cpp/sparsehash )
@@ -84,8 +83,12 @@ DEPEND="${COMMON_DEPEND}
 	pulseaudio? ( media-sound/pulseaudio )
 	seafile? ( dev-cpp/sparsehash )
 	skydrive? ( dev-cpp/sparsehash )
-	test? ( gnome-base/gsettings-desktop-schemas )
+	test? (
+		dev-qt/qttest:4
+		gnome-base/gsettings-desktop-schemas
+	)
 "
+
 DOCS=( Changelog README.md )
 
 PATCHES=( "${FILESDIR}"/${PN}-1.3-fix-tokenizer.patch )
@@ -98,6 +101,9 @@ src_prepare() {
 	sed -i \
 		-e '/add_test_file(translations_test.cpp/d' \
 		tests/CMakeLists.txt || die
+
+	use test || cmake_comment_add_subdirectory tests
+	rm -r 3rdparty/{gmock,google-breakpad,libprojectm,taglib} || die
 }
 
 src_configure() {
@@ -114,10 +120,9 @@ src_configure() {
 		-DENABLE_GIO=ON
 		-DENABLE_SPOTIFY_BLOB=OFF
 		-DUSE_BUILTIN_TAGLIB=OFF
-		-DUSE_SYSTEM_GMOCK=ON
 		-DUSE_SYSTEM_PROJECTM=ON
 		-DBUNDLE_PROJECTM_PRESETS=OFF
-		-DLINGUAS=$(l10n_get_locales)
+		-DLINGUAS="$(l10n_get_locales)"
 		-DENABLE_BOX="$(usex box)"
 		-DENABLE_AUDIOCD="$(usex cdda)"
 		-DENABLE_DBUS="$(usex dbus)"
@@ -136,6 +141,7 @@ src_configure() {
 	)
 
 	use !debug && append-cppflags -DQT_NO_DEBUG_OUTPUT
+	use test && mycmakeargs+=( -DUSE_SYSTEM_GMOCK=ON )
 
 	cmake-utils_src_configure
 }
