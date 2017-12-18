@@ -10,13 +10,13 @@ HOMEPAGE="https://github.com/json-c/json-c/wiki"
 SRC_URI="https://s3.amazonaws.com/json-c_releases/releases/${P}.tar.gz"
 
 LICENSE="MIT"
-SLOT="0/2"
+SLOT="0/3"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="doc static-libs"
 
 src_prepare() {
 	default
-	sed -i -e "s:-Werror::" Makefile.am.inc || die
+	sed -i -e "s:-Werror::" configure.ac || die
 	eautoreconf
 
 	# tests break otherwise
