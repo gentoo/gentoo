@@ -39,8 +39,8 @@ LIB_DEPEND="
 	audit? ( sys-process/audit[static-libs(+)] )
 	ldns? (
 		net-libs/ldns[static-libs(+)]
-		!bindist? ( net-libs/ldns[ecdsa,ssl] )
-		bindist? ( net-libs/ldns[-ecdsa,ssl] )
+		!bindist? ( net-libs/ldns[ecdsa,ssl(+)] )
+		bindist? ( net-libs/ldns[-ecdsa,ssl(+)] )
 	)
 	libedit? ( dev-libs/libedit:=[static-libs(+)] )
 	sctp? ( net-misc/lksctp-tools[static-libs(+)] )
