@@ -1,7 +1,7 @@
 DEFINED_PHASES=configure install
 DEPEND=app-arch/bzip2 sys-libs/zlib
 DESCRIPTION=Recompress ZIP, PNG and MNG, considerably improving compression
-EAPI=5
+EAPI=6
 HOMEPAGE=http://www.advancemame.it/comp-readme.html
 IUSE=mng png test
 KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~x86-fbsd
@@ -9,6 +9,6 @@ LICENSE=GPL-3 LGPL-2
 RDEPEND=app-arch/bzip2 sys-libs/zlib
 RESTRICT=test
 SLOT=0
-SRC_URI=https://github.com/amadvance/advancecomp/releases/download/v1.20/advancecomp-1.20.tar.gz
+SRC_URI=https://github.com/amadvance/advancecomp/releases/download/v2.0/advancecomp-2.0.tar.gz
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=c2dd4ea1321ac358aefc4afaa181e7f1
+_md5_=0e5d1f06c20b6a654be77e97aed465eb
