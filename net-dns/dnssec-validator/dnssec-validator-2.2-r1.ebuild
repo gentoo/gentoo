@@ -12,9 +12,10 @@ SRC_URI="http://www.dnssec-tools.org/download/dnsval-${PV}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="ipv6 static-libs +threads"
+IUSE="ipv6 static-libs +threads +ecdsa-check"
 
 RDEPEND="dev-libs/openssl:0
+	ecdsa-check? ( dev-libs/openssl:0[-bindist] )
 	!<net-dns/dnssec-tools-1.13"
 DEPEND="${RDEPEND}"
 
@@ -28,7 +29,8 @@ src_configure() {
 		--with-nsec3 \
 		--with-dlv \
 		$(use_with ipv6) \
-		$(use_with threads)
+		$(use_with threads) \
+		$(use_enable ecdsa-check)
 }
 
 src_install() {
