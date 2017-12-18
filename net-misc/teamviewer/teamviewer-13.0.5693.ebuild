@@ -88,14 +88,14 @@ src_install() {
 	done
 
 	keepdir /etc/${MY_PN}
-	dosym /etc/${MY_PN} ${dst}/config
+	dosym ../../etc/${MY_PN} ${dst}/config
 
 	# Create directory and symlink for log files (NOTE: according to Team-
 	# Viewer devs, all paths are hard-coded in the binaries; therefore
 	# using the same path as the DEB/RPM archives, i.e. '/var/log/teamviewer
 	# <major-version>')
 	keepdir /var/log/${MY_PN}
-	dosym /var/log/${MY_PN} ${dst}/logfiles
+	dosym ../../var/log/${MY_PN} ${dst}/logfiles
 
 	dodir /opt/bin
 	dosym ${dst}/tv_bin/teamviewerd /opt/bin/teamviewerd${SLOT}
