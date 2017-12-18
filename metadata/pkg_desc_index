@@ -226,7 +226,7 @@ app-arch/zoo 2.10-r5: Manipulate archives of files in compressed form
 app-arch/zopfli 1.0.0_p20140705: Very good, but slow, deflate or zlib compression
 app-arch/zstd 1.1.3 1.3.2: zstd fast compression library
 app-backup/amanda 3.3.9: The Advanced Maryland Automatic Network Disk Archiver
-app-backup/backintime 1.1.8-r1 1.1.12: Backup system inspired by TimeVault and FlyBack, with a GUI for GNOME and KDE4
+app-backup/backintime 1.1.12: Backup system inspired by TimeVault and FlyBack, with a GUI for GNOME and KDE4
 app-backup/backup-manager 0.7.5 0.7.14: Backup Manager is a command line backup tool for GNU/Linux
 app-backup/backupninja 1.0.1: lightweight, extensible meta-backup system
 app-backup/backuppc 3.3.1-r5: High-performance backups to a server's disk
@@ -5004,7 +5004,7 @@ dev-python/meld3 1.0.2-r1: meld3 is an HTML/XML templating engine
 dev-python/mergedict 0.2.0: A Python 'dict' with a merge() method
 dev-python/micawber 0.3.3: A small library for extracting rich content from urls
 dev-python/microversion-parse 0.1.4: A simple parser for OpenStack microversion headers
-dev-python/mimeparse 0.1.4-r1: Basic functions for handling mime-types in python
+dev-python/mimeparse 0.1.4-r1 1.6.0: Basic functions for handling mime-types in python
 dev-python/mimerender 0.5.5 0.6.0: RESTful HTTP Content Negotiation for Flask, Bottle, web.py and webapp2
 dev-python/minidb 2.0.1-r1: Simple SQLite-based object store
 dev-python/minimock 1.2.8-r1: The simplest possible mock library
@@ -6064,7 +6064,7 @@ dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux,
 dev-util/cmocka 1.0.1: A unit testing framework for C
 dev-util/colorgcc 1.3.2-r7: Perl script to colorise the gcc output.
 dev-util/comparator 2.10: ESR's utility for making fast comparisons among large source trees
-dev-util/cppcheck 1.77: static analyzer of C/C++ code
+dev-util/cppcheck 1.77 1.81: static analyzer of C/C++ code
 dev-util/cppi 1.18: a cpp directive indenter
 dev-util/cpptest 1.1.2: Simple but powerful unit testing framework for C++
 dev-util/cppunit 1.13.1 1.13.2-r2 1.14.0: C++ port of the famous JUnit framework for unit testing
@@ -7448,7 +7448,7 @@ media-libs/liblrdf 0.5.0: A library for the manipulation of RDF file in LADSPA p
 media-libs/liblscp 0.5.5: a C++ library for the Linux Sampler control protocol
 media-libs/libmad 0.15.1b-r8: "M"peg "A"udio "D"ecoder library
 media-libs/libmatemixer 1.12.1-r1: Mixer library for MATE Desktop
-media-libs/libmatroska 1.4.5: Extensible multimedia container format based on EBML
+media-libs/libmatroska 1.4.5 1.4.8: Extensible multimedia container format based on EBML
 media-libs/libmediaart 1.9.1 1.9.4: Manages, extracts and handles media art caches
 media-libs/libmediainfo 0.7.99: MediaInfo libraries
 media-libs/libmetalink 0.1.0-r1 0.1.1 0.1.1-r1: Library for handling Metalink files
