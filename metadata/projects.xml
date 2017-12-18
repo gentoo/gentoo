@@ -2479,11 +2479,6 @@ developers and volunteer mentors.</description>
     <description>The Gentoo Overlays project is responsible for the administration of the overlays and the overlays.gentoo.org / repos.gentoo.org websites.</description>
     <subproject ref="repo-qa-checks@gentoo.org"/>
     <member>
-      <email>idl0r@gentoo.org</email>
-      <name>Christian Ruppert</name>
-      <role>Git, Infra liaison</role>
-    </member>
-    <member>
       <email>kensington@gentoo.org</email>
       <name>Michael Palimaka</name>
     </member>
@@ -2491,11 +2486,6 @@ developers and volunteer mentors.</description>
       <email>mgorny@gentoo.org</email>
       <name>Michał Górny</name>
       <role>Merging GitHub PRs, api.g.o updates</role>
-    </member>
-    <member>
-      <email>nicolasbock@gentoo.org</email>
-      <name>Nicolas Bock</name>
-      <role>Git</role>
     </member>
     <member>
       <email>NP-Hardass@gentoo.org</email>
@@ -2506,11 +2496,6 @@ developers and volunteer mentors.</description>
       <email>sping@gentoo.org</email>
       <name>Sebastian Pipping</name>
       <role>Git</role>
-    </member>
-    <member>
-      <email>tommy@gentoo.org</email>
-      <name>Thomas Sachau</name>
-      <role>Sunrise Passwords, Git</role>
     </member>
   </project>
   <project>
