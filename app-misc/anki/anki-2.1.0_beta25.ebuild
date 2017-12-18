@@ -1,12 +1,12 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
-PYTHON_COMPAT=( python3_4 python3_5 python3_6 )
+PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="sqlite"
 
-inherit eutils python-single-r1
+inherit eutils python-single-r1 xdg
 
 DESCRIPTION="A spaced-repetition memory training program (flash cards)"
 HOMEPAGE="https://apps.ankiweb.net"
@@ -25,6 +25,9 @@ RDEPEND="${PYTHON_DEPS}
 	dev-python/PyQt5[gui,svg,webkit,${PYTHON_USEDEP}]
 	>=dev-python/httplib2-0.7.4[${PYTHON_USEDEP}]
 	dev-python/beautifulsoup[${PYTHON_USEDEP}]
+	dev-python/decorator[${PYTHON_USEDEP}]
+	dev-python/markdown[${PYTHON_USEDEP}]
+	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/send2trash[${PYTHON_USEDEP}]
 	recording? (
 		media-sound/lame
@@ -37,22 +40,16 @@ RDEPEND="${PYTHON_DEPS}
 	)"
 DEPEND=""
 
+PATCHES=( "${FILESDIR}"/${P}-web-folder.patch )
+
 pkg_setup() {
 	python-single-r1_pkg_setup
 }
 
 src_prepare() {
+	default
 	sed -i -e "s/updates=True/updates=False/" \
 		aqt/profiles.py || die
-}
-
-# Nothing to configure or compile
-src_configure() {
-	:;
-}
-
-src_compile() {
-	:;
 }
 
 src_install() {
@@ -68,4 +65,9 @@ src_install() {
 	# Localization files go into the anki directory:
 	python_moduleinto anki
 	python_domodule locale
+
+	# not sure if this is correct, but
+	# site-packages/aqt/mediasrv.py wants the directory
+	python_moduleinto aqt
+	python_domodule web
 }
