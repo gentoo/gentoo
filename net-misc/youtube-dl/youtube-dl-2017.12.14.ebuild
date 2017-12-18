@@ -95,7 +95,9 @@ python_install_all() {
 
 	rm -r "${ED}"/usr/etc || die
 	rm -r "${ED}"/usr/share/doc/youtube_dl || die
+}
 
+pkg_postinst() {
 	elog "youtube-dl(1) / https://bugs.gentoo.org/355661 /"
 	elog "https://github.com/rg3/youtube-dl/blob/master/README.md#faq :"
 	elog
