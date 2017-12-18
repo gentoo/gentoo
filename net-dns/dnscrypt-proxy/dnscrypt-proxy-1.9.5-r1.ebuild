@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~arm ~x86"
 IUSE="hardened libressl +plugins ssl systemd"
 
 RDEPEND="
-	dev-libs/libsodium
+	dev-libs/libsodium:=
 	net-libs/ldns
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
