@@ -86,12 +86,21 @@ multilib_src_configure() {
 	fi
 
 	append-cppflags -DNDEBUG
+
+	# different flags for image/graphics magick (bug 552350)
+	myimagemagick="--without-imagemagick"
+	has_version media-gfx/imagemagick &&
+		myimagemagick="$(multilib_native_use_with imagemagick)"
+	mygraphicsmagick="--without-graphicsmagick"
+	has_version media-gfx/graphicsmagick &&
+		mygraphicsmagick="$(multilib_native_use_with imagemagick graphicsmagick)"
 	ECONF_SOURCE=${S} \
 	econf \
 		$(multilib_native_use_with java) \
 		$(use_with jpeg) \
 		$(use_with gtk) \
-		$(multilib_native_use_with imagemagick) \
+		${myimagemagick} \
+		${mygraphicsmagick} \
 		$(multilib_native_use_with python) \
 		$(use_with qt4 qt) \
 		$(use_enable static-libs static) \
