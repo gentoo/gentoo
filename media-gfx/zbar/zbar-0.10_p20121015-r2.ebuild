@@ -60,6 +60,10 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-0.10-python-crash.patch \
 		"${FILESDIR}"/${PN}-0.10-v4l2-uvcvideo.patch
 
+	# fix use of deprecated qt4 function, bug 572488
+	sed -e 's:numBytes:byteCount:g' \
+		-i "${S}"/include/zbar/QZBarImage.h || die
+
 	if has_version '>=media-gfx/imagemagick-7.0.1.0' ; then
 		eapply "${FILESDIR}/${P}-ImageMagick-7.diff"
 	fi
