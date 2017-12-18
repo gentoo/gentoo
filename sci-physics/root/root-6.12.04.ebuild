@@ -302,6 +302,7 @@ src_install() {
 	use emacs && elisp-install ${PN} "${BUILD_DIR}"/root-help.el
 
 	echo "PATH=${EPREFIX}/${MY_PREFIX}/bin" > 99root || die
+	echo "ROOTPATH=${EPREFIX}/${MY_PREFIX}/bin" > 99root || die
 	echo "LDPATH=${EPREFIX}/${MY_PREFIX}/$(get_libdir)" >> 99root || die
 
 	if use pythia8; then
