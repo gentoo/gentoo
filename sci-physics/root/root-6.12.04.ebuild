@@ -129,7 +129,8 @@ src_prepare() {
         "${FILESDIR}"/${PN}-5.32.00-chklib64.patch \
         "${FILESDIR}"/${PN}-6.00.01-dotfont.patch \
 		"${FILESDIR}"/${PN}-6.11.02-hsimple.patch \
-		"${FILESDIR}"/${PN}-6.11.02-no-ocaml.patch \
+		"${FILESDIR}"/${PN}-6.12.04-no-ocaml.patch \
+		"${FILESDIR}"/${PN}-6.12.04-find-oracle-12.patch \
 		"${FILESDIR}"/${PN}-6.12.04-z3.patch
 
 	# make sure we use system libs and headers
@@ -253,13 +254,6 @@ src_configure() {
 		-Dxrootd=$(usex xrootd) # default ON
 		${EXTRA_ECONF}
 	)
-
-	if use oracle ; then
-			mycmakeargs+=(
-				-DORACLE_PATH_INCLUDES="${ORACLE_HOME}/include"
-				-DORACLE_PATH_LIB="${ORACLE_HOME}/$(get_libdir)"
-			)
-	fi
 
 	cmake-utils_src_configure
 }
