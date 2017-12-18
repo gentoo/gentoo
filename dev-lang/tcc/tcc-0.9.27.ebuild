@@ -3,23 +3,15 @@
 
 EAPI="6"
 
+inherit toolchain-funcs
+
 DESCRIPTION="A very small C compiler for ix86/amd64"
 HOMEPAGE="http://bellard.org/tcc/"
-
-if [[ $PV == *9999* ]]; then
-	EGIT_REPO_URI="http://repo.or.cz/r/tinycc.git"
-	KEYWORDS=""
-	SRC_URI=""
-	scm_eclass=git-r3
-else
-	KEYWORDS="~amd64 ~x86 ~amd64-linux"
-	SRC_URI="http://download.savannah.gnu.org/releases/tinycc/${P}.tar.bz2"
-fi
-
-inherit toolchain-funcs ${scm_eclass}
+SRC_URI="http://download.savannah.gnu.org/releases/tinycc/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
+KEYWORDS="~amd64 ~x86 ~amd64-linux"
 
 DEPEND="dev-lang/perl" # doc generation
 # Both tendra and tinycc install /usr/bin/tcc
@@ -37,7 +29,7 @@ src_prepare() {
 	}' examples/ex*.c || die
 	sed -i -e '1s/$/ -lX11/' examples/ex4.c || die
 
-	# fix texi2html invocation
+	# Fix texi2html invocation
 	sed -i -e 's/-number//' Makefile || die
 	sed -i -e 's/--sections//' Makefile || die
 
