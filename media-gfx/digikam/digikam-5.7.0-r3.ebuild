@@ -110,6 +110,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-qt-5.9.3.patch
 	"${FILESDIR}"/${P}-mariadb-10.2-{1,2}.patch
 	"${FILESDIR}"/${P}-kreadconfig5.patch
+	"${FILESDIR}"/${P}-kcalcore-{1,2}.patch
 )
 
 pkg_pretend() {

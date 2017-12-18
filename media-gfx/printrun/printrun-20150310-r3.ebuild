@@ -9,26 +9,32 @@ inherit distutils-r1
 
 DESCRIPTION="GUI interface for 3D printing on RepRap and other printers"
 HOMEPAGE="https://github.com/kliment/Printrun"
-SRC_URI="https://github.com/kliment/Printrun/archive/${P}.tar.gz"
+SRC_URI="https://github.com/kliment/Printrun/archive/${P}.tar.gz
+	 https://dev.gentoo.org/~amynka/snap/${PN}-gtk3.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="dev-python/pyserial
-	dev-python/wxpython:*
-	dev-python/pyglet
-	dev-python/dbus-python
-	media-gfx/cairosvg"
+DEPEND="
+	app-text/psutils
+	dev-python/dbus-python[${PYTHON_USEDEP}]
+	dev-python/numpy[${PYTHON_USEDEP}]
+	dev-python/pycairo[${PYTHON_USEDEP}]
+	dev-python/pyglet[${PYTHON_USEDEP}]
+	dev-python/pyserial[${PYTHON_USEDEP}]
+	dev-python/wxpython:*[${PYTHON_USEDEP}]
+	media-gfx/cairosvg[${PYTHON_USEDEP}]"
+
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/Printrun-${P}"
 
 PATCHES=(
 	# https://bugzilla.redhat.com/show_bug.cgi?id=1231518
-	"${FILESDIR}"/${PN}-gtk3.patch
+	"${WORKDIR}/${PN}-gtk3.patch"
 
 	# https://github.com/kliment/Printrun/pull/790
-	"${FILESDIR}"/${PN}-x11.patch
+	"${FILESDIR}/${PN}-x11.patch"
 )
