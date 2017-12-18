@@ -1,18 +1,17 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
+
+MY_PN="NAMD"
 
 inherit eutils multilib toolchain-funcs flag-o-matic
 
 DESCRIPTION="A powerful and highly parallelized molecular dynamics code"
-LICENSE="namd"
 HOMEPAGE="http://www.ks.uiuc.edu/Research/namd/"
+SRC_URI="${MY_PN}_${PV}_Source.tar"
 
-MY_PN="NAMD"
-
-SRC_URI="${MY_PN}_${PV}_Source.tar.gz"
-
+LICENSE="namd"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
@@ -25,6 +24,7 @@ RDEPEND="
 	dev-lang/tcl:0="
 
 DEPEND="${RDEPEND}
+	virtual/pkgconfig
 	app-shells/tcsh"
 
 NAMD_ARCH="Linux-x86_64-g++"
@@ -32,6 +32,13 @@ NAMD_ARCH="Linux-x86_64-g++"
 NAMD_DOWNLOAD="http://www.ks.uiuc.edu/Development/Download/download.cgi?PackageName=NAMD"
 
 S="${WORKDIR}/${MY_PN}_${PV}_Source"
+
+PATCHES=(
+	# apply a few small fixes to make NAMD compile and
+	# link to the proper libraries
+	"${FILESDIR}"/namd-2.10-gentoo.patch
+	"${FILESDIR}"/namd-2.7-iml-dec.patch
+)
 
 pkg_nofetch() {
 	echo
@@ -46,16 +53,14 @@ pkg_nofetch() {
 src_prepare() {
 	CHARM_VERSION=$(best_version sys-cluster/charm | cut -d- -f3)
 
-	# apply a few small fixes to make NAMD compile and
-	# link to the proper libraries
-	epatch "${FILESDIR}"/namd-2.10-gentoo.patch
-	epatch "${FILESDIR}"/namd-2.7-iml-dec.patch
+	default
+
 	sed \
 		-e "/CHARMBASE =/s:= .*:= /usr/bin/charm-${CHARM_VERSION}:" \
 		-i Make.charm || die
 
 	# Remove charm distribution. We don't need it.
-	rm -f charm-*.tar
+	rm -f charm-*.tar || die
 
 	# proper compiler and cflags
 	sed \
@@ -80,13 +85,14 @@ src_configure() {
 
 src_compile() {
 	# build namd
-	cd "${S}/${NAMD_ARCH}"
-	emake
+	cd "${S}/${NAMD_ARCH}" || die
+	TCLLIB="$($(tc-getPKG_CONFIG) --libs tcl) -ldl -pthread" \
+		emake
 }
 
 src_install() {
 	dodoc announce.txt license.txt notes.txt
-	cd "${S}/${NAMD_ARCH}"
+	cd "${S}/${NAMD_ARCH}" || die
 
 	# the binaries
 	dobin ${PN}2 psfgen flipbinpdb flipdcd
