@@ -19,6 +19,7 @@ DEPEND="dev-db/sqlite:3
 	dev-libs/geoip
 	dev-libs/glib:2
 	dev-libs/hiredis
+	dev-libs/libsodium:=
 	dev-libs/libxml2
 	net-analyzer/rrdtool
 	net-libs/libpcap
