@@ -77,7 +77,7 @@ src_install() {
 	doins tv_bin/script/com.teamviewer.TeamViewer.policy
 
 	for size in 16 24 32 48 256; do
-		newicon -s ${size} tv_bin/desktop/teamviewer_${size}.png ${MY_PN}.png
+		newicon -s ${size} tv_bin/desktop/teamviewer_${size}.png TeamViewer.png
 	done
 
 	# Install documents (NOTE: using 'dodoc -r doc' instead of loop will
@@ -101,7 +101,7 @@ src_install() {
 	dosym ${dst}/tv_bin/teamviewerd /opt/bin/teamviewerd${SLOT}
 	dosym ${dst}/tv_bin/script/teamviewer /opt/bin/${MY_PN}
 
-	make_desktop_entry ${MY_PN} "TeamViewer ${SLOT}" ${MY_PN}
+	make_desktop_entry ${MY_PN} "TeamViewer ${SLOT}" TeamViewer
 }
 
 pkg_postinst() {
