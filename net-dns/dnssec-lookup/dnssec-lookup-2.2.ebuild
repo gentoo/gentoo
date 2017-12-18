@@ -22,6 +22,8 @@ DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${MY_P}
 
+PATCHES=( "${FILESDIR}"/${P}-unused-libs.patch )
+
 src_configure() {
 	eqmake4 ${MY_PN}.pro PREFIX=/usr
 }
