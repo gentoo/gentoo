@@ -94,7 +94,7 @@ DEPEND=""
 
 RDEPEND="
 	>=net-firewall/iptables-1.4.20
-	>=sys-apps/iproute2-3.8.0[-minimal]
+	>=sys-apps/iproute2-4.4.0[-minimal]
 	>=sys-devel/bc-1.06.95
 	ipv4? (
 		>=dev-lang/perl-5.16
@@ -174,6 +174,7 @@ src_prepare() {
 		cp "${FILESDIR}"/shorewall.initd-r2 "${S}"/${MY_PN_IPV4}/init.gentoo.sh || die "Copying shorewall.initd-r2 failed"
 		cp "${FILESDIR}"/shorewall.systemd "${S}"/${MY_PN_IPV4}/gentoo.service || die "Copying shorewall.systemd failed"
 		eend 0
+		eapply "${FILESDIR}"/shorewall-add-iproute2-4.13.0+-support.patch
 	fi
 
 	# shorewall6
