@@ -43,7 +43,10 @@ CDEPEND="
 	ao? ( media-libs/libao[alsa?,pulseaudio?] )
 	audiofile? ( media-libs/audiofile )
 	bzip2? ( app-arch/bzip2 )
-	cdio? ( dev-libs/libcdio-paranoia )
+	cdio? (
+		dev-libs/libcdio:=
+		dev-libs/libcdio-paranoia
+	)
 	curl? ( net-misc/curl )
 	expat? ( dev-libs/expat )
 	faad? ( media-libs/faad2 )
