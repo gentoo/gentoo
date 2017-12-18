@@ -17,7 +17,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="latex +recording +sound test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -43,7 +43,7 @@ DEPEND="${RDEPEND}
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )
 "
 
-PATCHES=( "${FILESDIR}"/${P}-web-folder.patch )
+PATCHES=( "${FILESDIR}"/${PN}-2.1.0_beta25-web-folder.patch )
 
 pkg_setup() {
 	python-single-r1_pkg_setup
