@@ -1,0 +1,48 @@
+ ParMGridGen/IMParMetis-2.0/ParMETISLib/util.c | 4 ++--
+ ParMGridGen/ParLib/util.c                     | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/ParMGridGen/IMParMetis-2.0/ParMETISLib/util.c b/ParMGridGen/IMParMetis-2.0/ParMETISLib/util.c
+index d0dfc91..941f68e 100644
+--- a/ParMGridGen/IMParMetis-2.0/ParMETISLib/util.c
++++ b/ParMGridGen/IMParMetis-2.0/ParMETISLib/util.c
+@@ -25,7 +25,7 @@ void errexit(char *f_str,...)
+ 
+   sprintf(out2, "Error! %s", out1);
+ 
+-  fprintf(stdout, out2);
++  fprintf(stdout, "%s", out2);
+   fflush(stdout);
+ 
+   abort();
+@@ -46,7 +46,7 @@ void myprintf(CtrlType *ctrl, char *f_str,...)
+ 
+   sprintf(out2, "[%2d] %s", ctrl->mype, out1);
+ 
+-  fprintf(stdout, out2);
++  fprintf(stdout, "%s", out2);
+   fflush(stdout);
+ 
+ }
+diff --git a/ParMGridGen/ParLib/util.c b/ParMGridGen/ParLib/util.c
+index 9b8290d..c212b60 100644
+--- a/ParMGridGen/ParLib/util.c
++++ b/ParMGridGen/ParLib/util.c
+@@ -25,7 +25,7 @@ void MGriderrexit(char *f_str,...)
+ 
+   sprintf(out2, "Error! %s", out1);
+ 
+-  fprintf(stdout, out2);
++  fprintf(stdout, "%s", out2);
+   fflush(stdout);
+ 
+   abort();
+@@ -46,7 +46,7 @@ void MGridmyprintf(MGridCtrlType *ctrl, char *f_str,...)
+ 
+   sprintf(out2, "[%2d] %s", ctrl->mype, out1);
+ 
+-  fprintf(stdout, out2);
++  fprintf(stdout, "%s", out2);
+   fflush(stdout);
+ 
+ }
