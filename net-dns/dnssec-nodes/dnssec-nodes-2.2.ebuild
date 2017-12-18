@@ -18,6 +18,8 @@ RDEPEND="=net-dns/dnssec-validator-${PV}-r1[threads]
 	dev-qt/qtcore:4"
 DEPEND="${RDEPEND}"
 
+PATCHES=( "${FILESDIR}"/${P}-unused-libs.patch )
+
 src_configure() {
 	eqmake4 ${PN}.pro PREFIX=/usr
 }
