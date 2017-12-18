@@ -36,8 +36,7 @@ PATCHES=(
 src_prepare() {
 	cmake-utils_src_prepare
 	# https://github.com/qingfengxia/qhexedit still bundled
-	# x11-libs/qscintilla[qt4?,qt5?] still bundled
-	find libs/{antlr-2.7.7,qcustomplot-source} -delete || die
+	find libs/{antlr-2.7.7,qcustomplot-source,qscintilla} -delete || die
 
 	sed -e "/^project/ s/\".*\"/sqlitebrowser/" -i CMakeLists.txt || die
 
