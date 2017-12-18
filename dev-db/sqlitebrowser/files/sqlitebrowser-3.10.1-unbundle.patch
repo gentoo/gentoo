@@ -57,3 +57,49 @@ index fdf5b4c..ffba6d7 100644
  find_package(Qt5Widgets REQUIRED)
  find_package(Qt5LinguistTools REQUIRED)
 
+--- sqlitebrowser-3.10.1/src/tests/CMakeLists.txt
++++ sqlitebrowser-3.10.1/src/tests/CMakeLists.txt
+@@ -49,9 +49,6 @@
+ else()
+     target_link_libraries(test-sqlobjects antlr)
+ endif()
+-link_directories("${CMAKE_CURRENT_BINARY_DIR}/${QSCINTILLA_DIR}")
+-add_dependencies(test-sqlobjects qscintilla2)
+-target_link_libraries(test-sqlobjects qscintilla2)
+ add_test(test-sqlobjects test-sqlobjects)
+ 
+ # test-import
+@@ -118,7 +118,4 @@
+ else()
+     target_link_libraries(test-regex antlr)
+ endif()
+-link_directories("${CMAKE_CURRENT_BINARY_DIR}/${QSCINTILLA_DIR}")
+-add_dependencies(test-regex qscintilla2)
+-target_link_libraries(test-regex qscintilla2)
+ add_test(test-regex test-regex)
+--- sqlitebrowser-3.10.1/src/src.pro
++++ sqlitebrowser-3.10.1/src/src.pro
+@@ -153,10 +150,7 @@
+     }
+ }
+ 
+ LIBPATH_QHEXEDIT=$$OUT_PWD/../libs/qhexedit
+-LIBPATH_ANTLR=$$OUT_PWD/../libs/antlr-2.7.7
+-LIBPATH_QCUSTOMPLOT=$$OUT_PWD/../libs/qcustomplot-source
+-LIBPATH_QSCINTILLA=$$OUT_PWD/../libs/qscintilla/Qt4Qt5
+ unix {
+     LIBS += -ldl
+ }
+@@ -197,9 +193,9 @@
+ }
+ 
+ UI_DIR = .ui
+-INCLUDEPATH += $$PWD/../libs/antlr-2.7.7 $$PWD/../libs/qhexedit $$PWD/../libs/qcustomplot-source $$PWD/../libs/qscintilla/Qt4Qt5 $$PWD/..
+-LIBS += -L$$LIBPATH_QHEXEDIT -L$$LIBPATH_ANTLR -L$$LIBPATH_QCUSTOMPLOT -L$$LIBPATH_QSCINTILLA -lantlr -lqhexedit -lqcustomplot -lqscintilla2
+-DEPENDPATH += $$PWD/../libs/antlr-2.7.7 $$PWD/../libs/qhexedit $$PWD/../libs/qcustomplot-source $$PWD/../libs/qscintilla/Qt4Qt5
++INCLUDEPATH += $$PWD/../libs/qhexedit $$PWD/..
++LIBS += -L$$LIBPATH_QHEXEDIT -L$$LIBPATH_ANTLR -L$$LIBPATH_QCUSTOMPLOT -L$$LIBPATH_QSCINTILLA -lantlr -lqhexedit -lqcustomplot -lqscintilla2_qt5
++DEPENDPATH += $$PWD/../libs/qhexedit
+ 
+ unix {
+     # The executable
