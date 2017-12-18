@@ -9,7 +9,7 @@ inherit eutils multilib toolchain-funcs flag-o-matic
 
 DESCRIPTION="A powerful and highly parallelized molecular dynamics code"
 HOMEPAGE="http://www.ks.uiuc.edu/Research/namd/"
-SRC_URI="${MY_PN}_${PV}_Source.tar"
+SRC_URI="${MY_PN}_${PV}_Source.tar.gz"
 
 LICENSE="namd"
 SLOT="0"
