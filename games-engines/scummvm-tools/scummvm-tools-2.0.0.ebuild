@@ -1,9 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 WX_GTK_VER=3.0
-inherit wxwidgets eutils flag-o-matic games
+inherit wxwidgets eutils flag-o-matic
 
 DESCRIPTION="utilities for the SCUMM game engine"
 HOMEPAGE="http://scummvm.sourceforge.net/"
@@ -15,34 +15,36 @@ KEYWORDS="~amd64 ~ppc64 ~x86 ~x86-fbsd"
 IUSE="flac iconv mad png vorbis"
 RESTRICT="test" # some tests require external files
 
-RDEPEND="png? ( media-libs/libpng:0 )
-	mad? ( media-libs/libmad )
-	flac? ( media-libs/flac )
-	vorbis? ( media-libs/libvorbis )
-	iconv? ( virtual/libiconv media-libs/freetype:2 )
+RDEPEND=">=dev-libs/boost-1.32
 	sys-libs/zlib
-	>=dev-libs/boost-1.32
-	x11-libs/wxGTK:${WX_GTK_VER}"
+	x11-libs/wxGTK:${WX_GTK_VER}
+	flac? ( media-libs/flac )
+	iconv? ( virtual/libiconv media-libs/freetype:2 )
+	mad? ( media-libs/libmad )
+	png? ( media-libs/libpng:0 )
+	vorbis? ( media-libs/libvorbis )"
 DEPEND="${RDEPEND}
 	app-arch/xz-utils
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.8.0-binprefix.patch"
+)
+
 src_prepare() {
+	default
+
 	need-wxwidgets unicode
-	rm -rf *.bat dists/win32
+	rm -rf *.bat dists/win32 || die
 	sed -ri -e '/^(CC|CXX)\b/d' Makefile || die
-	epatch "${FILESDIR}/${P}-binprefix.patch"
 }
 
 src_configure() {
 	# Not an autoconf script
 	./configure \
+		--disable-tremor \
 		--enable-verbose-build \
 		--mandir=/usr/share/man \
-		--prefix="${GAMES_PREFIX}" \
-		--libdir="${GAMES_PREFIX}/lib" \
-		--datadir="${GAMES_DATADIR}" \
-		--disable-tremor \
 		$(use_enable flac) \
 		$(use_enable iconv) \
 		$(use_enable iconv freetype) \
@@ -53,5 +55,4 @@ src_configure() {
 
 src_install() {
 	EXEPREFIX="${PN}-" default
-	prepgamesdirs
 }

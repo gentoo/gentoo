@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils flag-o-matic gnome2-utils toolchain-funcs
+inherit eutils flag-o-matic gnome2-utils toolchain-funcs xdg-utils
 
 DESCRIPTION="Reimplementation of the SCUMM game engine used in Lucasarts adventures"
 HOMEPAGE="http://scummvm.sourceforge.net/"
@@ -49,38 +49,33 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf
-
-	# bug #137547
-	use fluidsynth || myconf="${myconf} --disable-fluidsynth"
-
 	use x86 && append-ldflags -Wl,-z,noexecstack
 
 	# NOT AN AUTOCONF SCRIPT SO DONT CALL ECONF
 	SDL_CONFIG="sdl2-config" \
 	./configure \
 		--backend=sdl \
-		--host=$CHOST \
+		--host=${CHOST} \
 		--enable-verbose-build \
 		--prefix=/usr \
 		--libdir="/usr/$(get_libdir)" \
-		--enable-zlib \
-		$(use_enable debug) \
-		$(use_enable !debug release-mode) \
-		$(use_enable zlib) \
+		--opengl-mode=$(usex opengl auto none) \
 		$(use_enable aac faad) \
 		$(use_enable alsa) \
+		$(use_enable debug) \
+		$(use_enable !debug release-mode) \
+		$(use_enable flac) \
+		$(usex fluidsynth '' --disable-fluidsynth) \
 		$(use_enable jpeg) \
-		$(use_enable png) \
 		$(use_enable mp3 mad) \
 		$(use_enable mpeg2) \
-		$(use_enable flac) \
-		$(use_enable opengl) \
-		$(use_enable vorbis) \
+		$(use_enable png) \
 		$(use_enable theora theoradec) \
 		$(use_enable truetype freetype2) \
+		$(usex unsupported --enable-all-engines '') \
+		$(use_enable vorbis) \
+		$(use_enable zlib) \
 		$(use_enable x86 nasm) \
-		$(use unsupported && echo --enable-all-engines) \
 		${myconf} ${EXTRA_ECONF} || die
 }
 
@@ -91,7 +86,6 @@ src_compile() {
 src_install() {
 	default
 	doicon -s scalable icons/scummvm.svg
-	make_desktop_entry scummvm ScummVM scummvm "Game;AdventureGame"
 }
 
 pkg_preinst() {
@@ -100,8 +94,10 @@ pkg_preinst() {
 
 pkg_postinst() {
 	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }
 
 pkg_postrm() {
 	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }
