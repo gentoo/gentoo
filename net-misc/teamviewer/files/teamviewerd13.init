@@ -2,7 +2,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-command="/opt/teamviewer/tv_bin/teamviewerd"
+command="/opt/teamviewer13/tv_bin/teamviewerd"
 command_args="-d"
 description="Starts the TeamViewer remote control daemon"
 pidfile="/var/run/teamviewerd.pid"

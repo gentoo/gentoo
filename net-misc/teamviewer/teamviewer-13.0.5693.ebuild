@@ -3,17 +3,16 @@
 
 EAPI=6
 
-MV=${PV/\.*}
-MY_PN=${PN}${MV}
+MY_PN=${PN}${PV/\.*}
 inherit eutils gnome2-utils systemd
 
 DESCRIPTION="All-In-One Solution for Remote Access and Support over the Internet"
 HOMEPAGE="https://www.teamviewer.com"
-SRC_URI="amd64? ( https://dl.tvcdn.de/download/linux/version_${MV}x/${PN}_${PV}_amd64.tar.xz )
-		x86? ( https://dl.tvcdn.de/download/linux/version_${MV}x/${PN}_${PV}_i386.tar.xz )"
+SRC_URI="amd64? ( https://dl.tvcdn.de/download/linux/version_${PV/\.*}x/${PN}_${PV}_amd64.tar.xz )
+		x86? ( https://dl.tvcdn.de/download/linux/version_${PV/\.*}x/${PN}_${PV}_i386.tar.xz )"
 
 LICENSE="TeamViewer MIT"
-SLOT="${MV}"
+SLOT="${PV/\.*}"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
 
@@ -34,7 +33,7 @@ RDEPEND="
 RESTRICT="bindist mirror"
 
 # Silence QA messages
-QA_PREBUILT="opt/teamviewer/*"
+QA_PREBUILT="opt/${MY_PN}/*"
 
 S="${WORKDIR}"/teamviewer
 
@@ -42,11 +41,14 @@ src_prepare() {
 	default
 
 	# Switch operation mode from 'portable' to 'installed'
-	sed -i 's/TAR_NI/TAR_IN/g' tv_bin/script/tvw_config || die
+	sed -e "s/TAR_NI/TAR_IN/g" -i tv_bin/script/tvw_config || die
+
+	sed -e "/^ExecStart/s/${PN}/${MY_PN}/" \
+		-i tv_bin/script/teamviewerd.service || die
 }
 
 src_install() {
-	local dst="/opt/teamviewer" # install destination
+	local dst="/opt/${MY_PN}" # install destination
 
 	# Quirk:
 	# Remove Intel 80386 32-bit ELF binary 'libdepend' present in all
@@ -64,8 +66,8 @@ src_install() {
 		fperms 755 ${dst}/${exe}
 	done
 
-	newinitd "${FILESDIR}"/teamviewerd13.init teamviewerd
-	systemd_dounit tv_bin/script/teamviewerd.service
+	newinitd "${FILESDIR}"/teamviewerd13.init teamviewerd${SLOT}
+	systemd_newunit tv_bin/script/${PN}d.service ${PN}d${SLOT}.service
 
 	insinto /usr/share/dbus-1/services
 	doins tv_bin/script/com.teamviewer.TeamViewer.service
@@ -75,7 +77,7 @@ src_install() {
 	doins tv_bin/script/com.teamviewer.TeamViewer.policy
 
 	for size in 16 24 32 48 256; do
-		newicon -s ${size} tv_bin/desktop/teamviewer_${size}.png TeamViewer.png
+		newicon -s ${size} tv_bin/desktop/teamviewer_${size}.png ${MY_PN}.png
 	done
 
 	# Install documents (NOTE: using 'dodoc -r doc' instead of loop will
@@ -85,21 +87,21 @@ src_install() {
 		dodoc ${doc}
 	done
 
-	keepdir /etc/teamviewer
-	dosym /etc/teamviewer ${dst}/config
+	keepdir /etc/${MY_PN}
+	dosym /etc/${MY_PN} ${dst}/config
 
 	# Create directory and symlink for log files (NOTE: according to Team-
 	# Viewer devs, all paths are hard-coded in the binaries; therefore
 	# using the same path as the DEB/RPM archives, i.e. '/var/log/teamviewer
 	# <major-version>')
-	keepdir /var/log/teamviewer${MV}
-	dosym /var/log/teamviewer${MV} ${dst}/logfiles
+	keepdir /var/log/${MY_PN}
+	dosym /var/log/${MY_PN} ${dst}/logfiles
 
 	dodir /opt/bin
-	dosym ${dst}/tv_bin/teamviewerd /opt/bin/teamviewerd
-	dosym ${dst}/tv_bin/script/teamviewer /opt/bin/teamviewer
+	dosym ${dst}/tv_bin/teamviewerd /opt/bin/teamviewerd${SLOT}
+	dosym ${dst}/tv_bin/script/teamviewer /opt/bin/${MY_PN}
 
-	make_desktop_entry teamviewer "TeamViewer" TeamViewer
+	make_desktop_entry ${MY_PN} "TeamViewer ${SLOT}" ${MY_PN}
 }
 
 pkg_postinst() {
@@ -107,12 +109,12 @@ pkg_postinst() {
 
 	elog "Before using TeamViewer, you need to start its daemon:"
 	elog "OpenRC:"
-	elog "# /etc/init.d/teamviewerd start"
-	elog "# rc-update add teamviewerd default"
+	elog "# /etc/init.d/teamviewerd${SLOT} start"
+	elog "# rc-update add teamviewerd${SLOT} default"
 	elog
 	elog "Systemd:"
-	elog "# systemctl start teamviewerd.service"
-	elog "# systemctl enable teamviewerd.service"
+	elog "# systemctl start teamviewerd${SLOT}.service"
+	elog "# systemctl enable teamviewerd${SLOT}.service"
 	elog
 	elog "To display additional command line options simply run:"
 	elog "$ ${MY_PN} help"
