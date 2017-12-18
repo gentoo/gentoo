@@ -5,7 +5,7 @@
  def _getExportFolder():
      # running from source?
 -    srcFolder = os.path.join(os.path.dirname(__file__), "..")
-+    srcFolder = os.path.dirname(__file__)
++    srcFolder = os.path.join(os.path.dirname(__file__), "..", "..", "..", "..", "share", "anki")
      webInSrcFolder = os.path.abspath(os.path.join(srcFolder, "web"))
      if os.path.exists(webInSrcFolder):
          return webInSrcFolder

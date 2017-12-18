@@ -18,13 +18,13 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE="latex +recording +sound"
+IUSE="latex +recording +sound test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	dev-python/PyQt5[gui,svg,webkit,${PYTHON_USEDEP}]
 	>=dev-python/httplib2-0.7.4[${PYTHON_USEDEP}]
-	dev-python/beautifulsoup[${PYTHON_USEDEP}]
+	dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
 	dev-python/decorator[${PYTHON_USEDEP}]
 	dev-python/markdown[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
@@ -37,8 +37,11 @@ RDEPEND="${PYTHON_DEPS}
 	latex? (
 		app-text/texlive
 		app-text/dvipng
-	)"
-DEPEND=""
+	)
+"
+DEPEND="${RDEPEND}
+	test? ( dev-python/nose[${PYTHON_USEDEP}] )
+"
 
 PATCHES=( "${FILESDIR}"/${P}-web-folder.patch )
 
@@ -50,6 +53,16 @@ src_prepare() {
 	default
 	sed -i -e "s/updates=True/updates=False/" \
 		aqt/profiles.py || die
+}
+
+src_compile() {
+	:;
+}
+
+src_test() {
+	sed -e "s:nosetests:${EPYTHON} ${EROOT}usr/bin/nosetests:" \
+		-i tools/tests.sh || die
+	./tools/tests.sh || die
 }
 
 src_install() {
@@ -68,6 +81,6 @@ src_install() {
 
 	# not sure if this is correct, but
 	# site-packages/aqt/mediasrv.py wants the directory
-	python_moduleinto aqt
-	python_domodule web
+	insinto /usr/share/anki
+	doins -r web
 }
