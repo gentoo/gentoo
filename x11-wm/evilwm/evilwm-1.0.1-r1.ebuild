@@ -14,24 +14,26 @@ KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-
 IUSE=""
 
 RDEPEND="x11-libs/libXext
-	x11-libs/libXrandr
-	x11-libs/libX11"
+	x11-libs/libXrandr"
+
 DEPEND="${RDEPEND}
+	x11-proto/xextproto
 	x11-proto/xproto"
 
 src_prepare() {
 	default
 	sed -e 's/^#define DEF_FONT.*/#define DEF_FONT "fixed"/' \
 		-i evilwm.h || die "sed font failed"
-	sed -e '/Encoding/d' -i ${PN}.desktop || die
+	sed -i -e '/^CFLAGS/s/ -Os/ /' \
+		-e 's/install -s /install /' Makefile || die "sed opt failed"
 }
 
 src_compile() {
-	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}"
+	emake CC="$(tc-getCC)" prefix="\$(DESTDIR)/${EPREFIX}/usr" XROOT="${EPREFIX}/usr" LDPATH="-L${EPREFIX}/usr/$(get_libdir)"
 }
 
 src_install() {
-	emake DESTDIR="${D}" prefix="${EPREFIX}/usr" INSTALL_STRIP="" install
+	emake DESTDIR="${D}" prefix="\$(DESTDIR)/${EPREFIX}/usr" install
 
 	einstalldocs
 
