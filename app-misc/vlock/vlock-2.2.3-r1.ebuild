@@ -25,7 +25,10 @@ DEPEND="
 
 DOCS=( ChangeLog PLUGINS README README.X11 SECURITY STYLE TODO )
 
-RESTRICT="test"
+PATCHES=(
+	"${FILESDIR}/${PN}-2.2.2-asneeded.patch"
+	"${FILESDIR}/${PN}-2.2.2-test_process.patch"
+)
 
 pkg_setup() {
 	enewgroup "${PN}"
