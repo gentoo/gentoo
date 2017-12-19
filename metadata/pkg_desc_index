@@ -1271,7 +1271,7 @@ app-text/ansifilter 2.8.1: Handles text files containing ANSI terminal escape co
 app-text/antiword 0.37-r1: free MS Word reader
 app-text/apvlv 0.1.5-r1: Alf's PDF Viewer Like Vim
 app-text/asa 1.1-r1: ASA Carriage control conversion for ouput by Fortran programs
-app-text/asciidoc 8.6.9-r2: AsciiDoc is a plain text human readable/writable document format
+app-text/asciidoc 8.6.9-r2 8.6.10: AsciiDoc is a plain text human readable/writable document format
 app-text/aspell 0.60.6.1-r3 0.60.7_rc1: A spell checker replacement for ispell
 app-text/atril 1.12.2-r4: Atril document viewer for MATE
 app-text/barcode 0.98-r1: barcode generator
@@ -7590,7 +7590,8 @@ media-libs/smpeg 0.4.4-r10: SDL MPEG Player Library
 media-libs/smpeg2 2.0.0-r3: SDL MPEG Player Library
 media-libs/soxr 0.1.1 0.1.2: The SoX Resampler library
 media-libs/spandsp 0.0.6_pre12-r1: SpanDSP is a library of DSP functions for telephony
-media-libs/speex 1.2_rc1-r2: Audio compression format designed for speech
+media-libs/speex 1.2_rc1-r2 1.2.0-r1: Audio compression format designed for speech
+media-libs/speexdsp 1.2_rc3-r2: Audio compression format designed for speech -- DSP
 media-libs/sratom 0.4.6 0.6.0: Library for serialising LV2 atoms to/from RDF, particularly the Turtle syntax
 media-libs/stimg 0.1.0: Simple and tiny image loading library
 media-libs/stops 0.3.0: Organ stops for aeolus by Fons Adriaensen <fons.adriaensen@skynet.be>
@@ -10689,7 +10690,7 @@ x11-libs/libxcb 1.12-r2: X C-language Bindings library
 x11-libs/libxkbcommon 0.6.0 0.7.1: X.Org xkbcommon library
 x11-libs/libxkbfile 1.0.8 1.0.9: X.Org xkbfile library
 x11-libs/libxkbui 1.0.2-r1: X.Org xkbui library
-x11-libs/libxklavier 5.3: A library for the X Keyboard Extension (high-level API)
+x11-libs/libxklavier 5.3 5.4: A library for the X Keyboard Extension (high-level API)
 x11-libs/libxshmfence 1.1 1.2: Shared memory fences using futexes
 x11-libs/motif 2.2.3-r12 2.3.6-r1 2.3.7: The Motif user interface component toolkit
 x11-libs/mx 1.4.7-r2: A widget toolkit using Clutter
@@ -11142,7 +11143,7 @@ x11-themes/gtk-engines-unico 1.0.3_pre20121212 1.0.3_pre20140109: The Unico GTK+
 x11-themes/gtk-engines-xfce 3.2.0-r200 3.2.0-r300: A port of Xfce engine to GTK+ 3.x
 x11-themes/gtk-theme-switch 2.1.0: Utility to switch and preview GTK+ theme
 x11-themes/haematite-xcursors 1.0: A simple crispy dark-grey xcursor theme
-x11-themes/hicolor-icon-theme 0.15: Fallback theme for the freedesktop icon theme specification
+x11-themes/hicolor-icon-theme 0.15 0.17: Fallback theme for the freedesktop icon theme specification
 x11-themes/iceicons 0.10.0: IceWM Icons is a set of XPM 16x16, 32x32, and 48x48 XPM and PNG icons for IceWM
 x11-themes/icewm-themes 0.0.1-r1: Collection of IceWM themes
 x11-themes/kfaenza 0.8.9-r2: Faenza-Cupertino icon theme for KDE Plasma
@@ -11209,7 +11210,7 @@ x11-wm/fluxbox 1.3.6-r1 1.3.7-r2 1.3.7-r3: Fluxbox is an X11 window manager feat
 x11-wm/fvwm 2.6.5-r1: An extremely powerful ICCCM-compliant multiple virtual desktop window manager
 x11-wm/herbstluftwm 0.7.0: A manual tiling window manager for X
 x11-wm/i3 4.13-r1: An improved dynamic tiling window manager
-x11-wm/icewm 1.3.8 1.3.12-r1: Ice Window Manager with Themes
+x11-wm/icewm 1.3.8 1.3.12-r1 1.4.2: Ice Window Manager with Themes
 x11-wm/jwm 2.3.2: Very fast and lightweight still powerful window manager for X
 x11-wm/lumina 1.3.0_p1: Lumina desktop environment
 x11-wm/lwm 1.2.2: The ultimate lightweight window manager
