@@ -20,14 +20,13 @@ IUSE="test"
 
 RDEPEND=">=dev-python/flask-0.9[${PYTHON_USEDEP}]
 	>=dev-python/alembic-0.6[${PYTHON_USEDEP}]
-	>=dev-python/flask-sqlalchemy-1.0[${PYTHON_USEDEP}]
-	>=dev-python/flask-script-0.6[${PYTHON_USEDEP}]"
+	>=dev-python/flask-sqlalchemy-1.0[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
+	test? ( >=dev-python/flask-script-0.6[${PYTHON_USEDEP}] )"
 
 S="${WORKDIR}/${MY_P}"
 
 python_test() {
-	nosetests -v || die "Testing failed with ${EPYTHON}"
+	esetup.py test || die "Testing failed with ${EPYTHON}"
 }
