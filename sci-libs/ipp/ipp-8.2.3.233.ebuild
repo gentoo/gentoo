@@ -1,12 +1,13 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=5
 
 INTEL_DPN=parallel_studio_xe
-INTEL_DID=2872
-INTEL_DPV=2013_update1
+INTEL_DID=8470
+INTEL_DPV=2015_update6
 INTEL_SUBDIR=composerxe
+INTEL_SINGLE_ARCH=false
 
 inherit intel-sdp
 
@@ -16,10 +17,12 @@ HOMEPAGE="http://software.intel.com/en-us/articles/intel-ipp/"
 IUSE=""
 KEYWORDS="-* ~amd64 ~x86 ~amd64-linux ~x86-linux"
 
-RDEPEND=">=dev-libs/intel-common-13"
+RDEPEND=">=dev-libs/intel-common-15"
 DEPEND=""
 
-CHECKREQS_DISK_BUILD=3000M
+CHECKREQS_DISK_BUILD=6400M
 
-INTEL_BIN_RPMS="ipp ipp-devel"
-INTEL_DAT_RPMS="ipp-common"
+INTEL_BIN_RPMS=( ipp-{ac,di,gen,jp,mt,mt-devel,mx,rr,sc,st,st-devel,vc} )
+INTEL_DAT_RPMS=( ipp-common ipp-{ac,di,gen,jp,mx,rr,sc,st-devel,vc}-common )
+
+INTEL_SKIP_LICENSE=true
