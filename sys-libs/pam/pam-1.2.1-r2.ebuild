@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 inherit libtool multilib multilib-minimal eutils pam toolchain-funcs flag-o-matic db-use fcaps
 
@@ -11,12 +11,12 @@ MY_P="${MY_PN}-${PV}"
 DESCRIPTION="Linux-PAM (Pluggable Authentication Modules)"
 HOMEPAGE="http://www.linux-pam.org/ https://fedorahosted.org/linux-pam/"
 SRC_URI="http://www.linux-pam.org/library/${MY_P}.tar.bz2
-	http://www.linux-pam.org/library/${MY_P}-docs.tar.bz2"
+	http://www.linux-pam.org/documentation/${MY_PN}-1.2.0-docs.tar.bz2"
 
 LICENSE="|| ( BSD GPL-2 )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="audit berkdb cracklib debug nis nls +pie selinux test vim-syntax"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux"
+IUSE="audit berkdb cracklib debug nis nls +pie selinux test"
 
 RDEPEND="nls? ( >=virtual/libintl-0-r1[${MULTILIB_USEDEP}] )
 	cracklib? ( >=sys-libs/cracklib-2.9.1-r1[${MULTILIB_USEDEP}] )
@@ -24,17 +24,22 @@ RDEPEND="nls? ( >=virtual/libintl-0-r1[${MULTILIB_USEDEP}] )
 	selinux? ( >=sys-libs/libselinux-2.2.2-r4[${MULTILIB_USEDEP}] )
 	berkdb? ( >=sys-libs/db-4.8.30-r1:=[${MULTILIB_USEDEP}] )
 	nis? ( >=net-libs/libtirpc-0.2.4-r2[${MULTILIB_USEDEP}] )"
+
 DEPEND="${RDEPEND}
 	>=sys-devel/libtool-2
 	>=sys-devel/flex-2.5.39-r1[${MULTILIB_USEDEP}]
 	nls? ( sys-devel/gettext )
 	nis? ( >=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}] )"
-PDEPEND="sys-auth/pambase
-	vim-syntax? ( app-vim/pam-syntax )"
+PDEPEND="sys-auth/pambase"
+
 RDEPEND="${RDEPEND}
 	!<sys-apps/openrc-0.11.8
 	!sys-auth/openpam
-	!sys-auth/pam_userdb"
+	!sys-auth/pam_userdb
+	abi_x86_32? (
+		!<=app-emulation/emul-linux-x86-baselibs-20140508-r7
+		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
+	)"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -80,12 +85,16 @@ pkg_pretend() {
 	check_old_modules
 }
 
+src_unpack() {
+	# Upstream didn't release a new doc tarball (since nothing changed?).
+	unpack ${MY_PN}-1.2.0-docs.tar.bz2
+	# Update timestamps to avoid regenerating at build time. #569338
+	find -type f -exec touch -r "${T}" {} + || die
+	mv Linux-PAM-1.2.{0,1} || die
+	unpack ${MY_P}.tar.bz2
+}
+
 src_prepare() {
-	# Fix non-POSIX shell code.
-	# https://fedorahosted.org/linux-pam/ticket/60
-	sed -i \
-		-e '/ test /s:==:=:' \
-		configure || die
 	elibtoolize
 }
 
