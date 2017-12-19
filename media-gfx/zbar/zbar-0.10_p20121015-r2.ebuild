@@ -14,7 +14,7 @@ SRC_URI="https://dev.gentoo.org/~xmw/zbar-0.10_p20121015.zip"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE="gtk imagemagick java jpeg python qt4 static-libs test +threads v4l X xv"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
 	test? ( X ${PYTHON_REQUIRED_USE} )"
