@@ -33,13 +33,13 @@ RDEPEND="
 	spoof-source? ( net-libs/libnet:1.1 )
 	systemd? ( sys-apps/systemd )
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6 )
+	>=dev-libs/ivykis-0.36.1
 	>=dev-libs/libpcre-6.1
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
 	!dev-libs/eventlog
 	>=dev-libs/glib-2.10.1:2"
 DEPEND="${RDEPEND}
-	>=dev-libs/ivykis-0.36.1
 	sys-devel/flex
 	virtual/pkgconfig"
 
