@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ IUSE="json mongo redis"
 RDEPEND="
 	dev-libs/gmp:0
 	net-libs/libpcap
-	dev-libs/json-c
+	dev-libs/json-c:=
 	mongo? ( dev-db/mongodb )
 	redis? ( dev-libs/hiredis )"
 DEPEND="${RDEPEND}
