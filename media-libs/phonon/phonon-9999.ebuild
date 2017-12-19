@@ -49,6 +49,10 @@ PDEPEND="
 
 PATCHES=( "${FILESDIR}/${PN}-4.7.0-plugin-install.patch" )
 
+pkg_setup() {
+	MULTIBUILD_VARIANTS=( $(usev qt4) qt5 )
+}
+
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DPHONON_BUILD_DESIGNER_PLUGIN=$(usex designer)
