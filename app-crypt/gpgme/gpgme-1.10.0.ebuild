@@ -48,6 +48,15 @@ pkg_setup() {
 	addpredict /run/user/$(id -u)/gnupg
 }
 
+src_prepare() {
+	default
+
+	# Fix too long socket path for gpg-agent, this is mainly a problem
+	# for Prefix, where the builddir is deeper in the FS tree.
+	sed -i -e '/GNUPGHOME/s:$(abs_builddir):'"${T}"':' \
+		tests/gpg/Makefile.{am,in} || die
+}
+
 src_configure() {
 	local languages=()
 	use common-lisp && languages+=( "cl" )
@@ -57,21 +66,6 @@ src_configure() {
 		#use doc ||
 		export DOXYGEN=true
 		export MOC="$(qt5_get_bindir)/moc"
-	fi
-
-	if [[ ${CHOST} == *-darwin* ]] ; then
-		# FIXME: I don't know how to select on C++11 (libc++) here, but
-		# I do know all Darwin users are using C++11.  This should also
-		# apply to GCC 4.7+ with libc++, and basically anyone targetting
-		# it.
-
-		# The C-standard doesn't define strdup, and C++11 drops it
-		# resulting in an implicit declaration of strdup error.  Since
-		# it is in POSIX raise the feature set to that.
-		append-cxxflags -D_POSIX_C_SOURCE=200112L
-
-		# Work around bug 601834
-		use python && append-cflags -D_DARWIN_C_SOURCE
 	fi
 
 	econf \
