@@ -1,14 +1,14 @@
 DEFINED_PHASES=install
-DEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+DEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] !app-admin/radmind
 DESCRIPTION=Google tool for managing git, particularly multiple repos
 EAPI=6
 HOMEPAGE=https://android.googlesource.com/tools/repo
 IUSE=python_targets_python2_7
 KEYWORDS=~amd64 ~x86
 LICENSE=Apache-2.0
-RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] !app-admin/radmind
 REQUIRED_USE=|| ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~wizardedit/dist/repo-1.12.37.tar.gz
 _eclasses_=multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	python-r1	e9350ec46bb5c9f3504b4fbe8b8d8987	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=e0ea9c377817af0ea60650641d42f1c3
+_md5_=3916a31a98f6c7e1584097165f8b7680
