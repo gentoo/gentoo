@@ -19,26 +19,29 @@ SLOT="0"
 KEYWORDS="alpha amd64 ~arm hppa ia64 ~ppc ~ppc64 ~sh sparc x86 ~x86-fbsd"
 IUSE="encode mad vorbis"
 
-RDEPEND="virtual/cdrtools
+COMMON_DEPEND="
+	virtual/cdrtools
 	encode? ( >=media-sound/lame-3.99 )
 	mad? (
 		media-libs/libmad
 		media-libs/libao
-		)
+	)
 	vorbis? (
 		media-libs/libvorbis
 		media-libs/libao
-		)
+	)"
+DEPEND="${COMMON_DEPEND}
+	virtual/pkgconfig"
+RDEPEND="${COMMON_DEPEND}
 	!app-cdr/cue2toc
 	!dev-util/pccts"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}/${P}-glibc212.patch"
 	"${FILESDIR}/${P}-unsigned-char.patch"
 	"${FILESDIR}/${P}-ax_pthread.patch"
 	"${FILESDIR}/${P}-wformat-security.patch"
+	"${FILESDIR}/${P}-lame-3.100.patch"
 )
 
 S="${WORKDIR}/${P/_}"
