@@ -18,7 +18,7 @@ IUSE="+swaybg +swaybar +swaymsg swaygrab swaylock +gdk-pixbuf zsh-completion wal
 REQUIRED_USE="tray? ( swaybar )"
 
 RDEPEND="=dev-libs/wlc-9999[systemd=]
-	>=dev-libs/json-c-0.12.1
+	>=dev-libs/json-c-0.12.1:=
 	dev-libs/libpcre
 	dev-libs/libinput
 	x11-libs/libxkbcommon
