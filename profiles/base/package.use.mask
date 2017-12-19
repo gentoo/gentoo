@@ -493,10 +493,6 @@ dev-libs/elfutils threads
 # with upstream if there is something that can be done to fix the issue.
 media-libs/cogl gstreamer
 
-# Andrey Grozin <grozin@gentoo.org> (12 Nov 2013)
-# berkdb support works only for sys-libs/db-6.0 which is masked
-sci-physics/reduze berkdb
-
 # Michał Górny <mgorny@gentoo.org> (10 Nov 2013)
 # (on behalf of python@)
 # USE=sandbox is not done properly in Gentoo and results in crippled
