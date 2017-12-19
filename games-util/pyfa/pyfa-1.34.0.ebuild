@@ -18,14 +18,16 @@ if [[ ${PV} = 9999 ]]; then
 	KEYWORDS=""
 else
 	SRC_URI="https://github.com/pyfa-org/Pyfa/archive/v${PV}.tar.gz -> pyfa-${PV}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="~amd64 ~x86"
 fi
 IUSE="+graph"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="dev-python/python-dateutil[${PYTHON_USEDEP}]
-	dev-python/sqlalchemy[${PYTHON_USEDEP}]
+	>=dev-python/sqlalchemy-1.0.5[${PYTHON_USEDEP}]
 	dev-python/wxpython:3.0[${PYTHON_USEDEP}]
+	>=dev-python/logbook-1.0.0[${PYTHON_USEDEP}]
+	dev-python/requests[${PYTHON_USEDEP}]
 	graph? (
 		dev-python/matplotlib[wxwidgets,${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}] )
@@ -36,16 +38,13 @@ DEPEND="app-arch/zip"
 
 src_prepare() {
 	# get rid of CRLF line endings introduced in 1.1.10 so patches work
-	edos2unix config.py pyfa.py service/settings.py
+	edos2unix config.py pyfa.py gui/bitmapLoader.py service/settings.py
 
 	# load gameDB and images from separate staticdata directory
-	eapply "${FILESDIR}/${PN}-1.15.1-staticdata.patch"
-
-	# do not try to save exported html to python sitedir
-	eapply "${FILESDIR}/${PN}-1.20.2-html-export-path.patch"
+	eapply "${FILESDIR}/${PN}-1.33.1-staticdata.patch"
 
 	# fix import path in the main script for systemwide installation
-	eapply "${FILESDIR}/${PN}-1.15.1-import-pyfa.patch"
+	eapply "${FILESDIR}/${PN}-1.33.1-import-pyfa.patch"
 
 	eapply_user
 
@@ -84,10 +83,8 @@ src_install() {
 	popd > /dev/null || die
 
 	dodoc README.md
-	insinto /usr/share/icons/hicolor/32x32/apps
-	doins imgs/gui/pyfa.png
-	insinto /usr/share/icons/hicolor/64x64/apps
-	newins imgs/gui/pyfa64.png pyfa.png
+	doicon -s 32 imgs/gui/pyfa.png
+	newicon -s 64 imgs/gui/pyfa64.png pyfa.png
 	domenu "${FILESDIR}/${PN}.desktop"
 }
 
