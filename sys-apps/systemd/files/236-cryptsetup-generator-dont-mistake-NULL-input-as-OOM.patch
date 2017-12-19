@@ -1,0 +1,46 @@
+From f189bd8eacd32b38d9566a9e052b164c7ab25cd3 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
+Date: Sat, 16 Dec 2017 01:49:03 +0100
+Subject: [PATCH] cryptsetup-generator: Don't mistake NULL input as OOM
+
+Since systemd v236, several Arch users complained that
+systemd-cryptsetup-generator exits with an OOM error and that it
+prevents the boot from continuing.
+
+Investigating the diff of cryptsetup-generator between v235 and v236 I
+noticed that create_disk allowed for the `password` and `filtered`
+variables to be NULL (they're handled with `strempty()`) but not their
+`*_escaped` versions, and returned OOM errors in those cases.
+
+Fix this by checking that the input string is non-NULL before deciding
+that `specifier_escape` had an OOM error.
+
+I could not test this fix myself, but some users have reported success.
+
+Downstream bug: https://bugs.archlinux.org/task/56733
+---
+ src/cryptsetup/cryptsetup-generator.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/cryptsetup/cryptsetup-generator.c b/src/cryptsetup/cryptsetup-generator.c
+index 531edc6847..b41faed6ad 100644
+--- a/src/cryptsetup/cryptsetup-generator.c
++++ b/src/cryptsetup/cryptsetup-generator.c
+@@ -107,7 +107,7 @@ static int create_disk(
+                 return log_error_errno(r, "Failed to generate unit name: %m");
+ 
+         password_escaped = specifier_escape(password);
+-        if (!password_escaped)
++        if (password && !password_escaped)
+                 return log_oom();
+ 
+         r = generator_open_unit_file(arg_dest, NULL, n, &f);
+@@ -177,7 +177,7 @@ static int create_disk(
+                 return r;
+ 
+         filtered_escaped = specifier_escape(filtered);
+-        if (!filtered_escaped)
++        if (filtered && !filtered_escaped)
+                 return log_oom();
+ 
+         fprintf(f,
