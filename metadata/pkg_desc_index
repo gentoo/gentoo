@@ -1110,7 +1110,7 @@ app-misc/uptimed 0.4.0-r1: System uptime record daemon that keeps track of your 
 app-misc/utimer 0.4: A command line timer and stopwatch
 app-misc/vcp 2.2-r1: copy files/directories in a curses interface
 app-misc/vifm 0.7.2 0.9: Console file manager with vi(m)-like keybindings
-app-misc/vlock 2.2.3 2.2.3-r1: A console screen locker
+app-misc/vlock 2.2.3-r1: A console screen locker
 app-misc/wcd 5.2.7: Wherever Change Directory
 app-misc/webcomics-collector 0.7.3-r1: python script for downloading webcomics
 app-misc/when 1.1.36: Minimalistic personal calendar program
