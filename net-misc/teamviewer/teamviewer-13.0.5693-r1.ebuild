@@ -77,7 +77,7 @@ src_install() {
 	doins tv_bin/script/com.teamviewer.TeamViewer.policy
 
 	for size in 16 24 32 48 256; do
-		newicon -s ${size} tv_bin/desktop/teamviewer_${size}.png ${MY_PN}.png
+		newicon -s ${size} tv_bin/desktop/teamviewer_${size}.png TeamViewer.png
 	done
 
 	# Install documents (NOTE: using 'dodoc -r doc' instead of loop will
@@ -101,12 +101,15 @@ src_install() {
 	dosym ${dst}/tv_bin/teamviewerd /opt/bin/teamviewerd${SLOT}
 	dosym ${dst}/tv_bin/script/teamviewer /opt/bin/${MY_PN}
 
-	make_desktop_entry ${MY_PN} "TeamViewer ${SLOT}" ${MY_PN}
+	make_desktop_entry ${MY_PN} "TeamViewer ${SLOT}" TeamViewer
 }
 
 pkg_postinst() {
 	gnome2_icon_cache_update
 
+	elog "Please note that parallel installation of multiple versions of"
+	elog "TeamViewer is currently not supported at runtime. Bug #621818"
+	elog ""
 	elog "Before using TeamViewer, you need to start its daemon:"
 	elog "OpenRC:"
 	elog "# /etc/init.d/teamviewerd${SLOT} start"

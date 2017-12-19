@@ -29,10 +29,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Andreas Sturmlechner <asturm@gentoo.org> (18 Dec 2017)
-# Masked for testing. Bug 621818
-=net-misc/teamviewer-13.0.5693
-
 # James Le Cuirot <chewi@gentoo.org> (17 Dec 2017)
 # Java 9 is not yet fully supported on Gentoo. Packages cannot depend
 # on it so these virtuals are not yet required. If you wish to use
@@ -400,19 +396,9 @@ sci-mathematics/qtoctave
 dev-qt/qtwebkit:4
 
 # Andreas Sturmlechner <asturm@gentoo.org> (16 Nov 2017)
-# Depends on dead Qt4WebKit. Masked for removal in 30 days. Bug #620826
-<app-misc/anki-2.1
-
-# Andreas Sturmlechner <asturm@gentoo.org> (16 Nov 2017)
 # Depends on dead Qt4WebKit. Masked for removal in 30 days. Bug #620702
 <media-gfx/freecad-0.17
 =media-gfx/freecad-9999
-
-# Andreas Sturmlechner <asturm@gentoo.org> (16 Nov 2017)
-# Depends on dead Qt4WebKit. Masked for removal in 30 days. Bug #620736
-=net-misc/teamviewer-10*
-=net-misc/teamviewer-11*
-=net-misc/teamviewer-12*
 
 # Anthony G. Basile <blueness@gentoo.org> (13 Nov 2017)
 # Masked for removal in 30 days. Deprecated in favor of net-misc/nyx.

@@ -49,29 +49,26 @@ PDEPEND="
 
 PATCHES=( "${FILESDIR}/${PN}-4.7.0-plugin-install.patch" )
 
-pkg_setup() {
-	if use qt4 && [[ $(gcc-major-version) -lt 5 ]] ; then
-		ewarn "A GCC version older than 5 was detected. There may be trouble. See also Gentoo bug #595618"
-	fi
-
-	MULTIBUILD_VARIANTS=( $(usev qt4) qt5 )
-}
-
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DPHONON_BUILD_DESIGNER_PLUGIN=$(usex designer)
 		-DPHONON_INSTALL_QT_EXTENSIONS_INTO_SYSTEM_QT=TRUE
 		-DWITH_GLIB2=$(usex pulseaudio)
 		-DWITH_PulseAudio=$(usex pulseaudio)
-		-DWITH_QZeitgeist=OFF
 		-DQT_QMAKE_EXECUTABLE="$(${QT_MULTIBUILD_VARIANT}_get_bindir)"/qmake
 	)
 
 	if [[ ${QT_MULTIBUILD_VARIANT} = qt4 ]]; then
-		mycmakeargs+=( -DPHONON_BUILD_PHONON4QT5=OFF )
+		mycmakeargs+=(
+			-DPHONON_BUILD_PHONON4QT5=OFF
+			-DWITH_QZeitgeist=OFF
+		)
 	fi
 	if [[ ${QT_MULTIBUILD_VARIANT} = qt5 ]]; then
-		mycmakeargs+=( -DPHONON_BUILD_PHONON4QT5=ON )
+		mycmakeargs+=(
+			-DPHONON_BUILD_PHONON4QT5=ON
+			-DCMAKE_DISABLE_FIND_PACKAGE_Qt5Declarative=ON
+		)
 	fi
 
 	cmake-utils_src_configure
