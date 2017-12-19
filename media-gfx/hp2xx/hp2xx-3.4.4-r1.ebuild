@@ -1,17 +1,17 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
 
 inherit eutils base
 
-DESCRIPTION="Versatile tool to convert Hewlett-Packard's HP-GL plotter language into other graphics formats"
+DESCRIPTION="Convert Hewlett-Packard's HP-GL plotter language to other graphics formats"
 HOMEPAGE="https://www.gnu.org/software/hp2xx/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="X jpeg png tiff"
 
 RDEPEND="
