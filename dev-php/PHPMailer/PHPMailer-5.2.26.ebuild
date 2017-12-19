@@ -12,16 +12,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc +examples"
 
-RDEPEND="dev-lang/php:*"
+# The ctype and filter dependencies can be verified by grepping the
+# code... composer.json isn't always up-to-date.
+RDEPEND="dev-lang/php:*[ctype,filter]"
 DEPEND="${RDEPEND}
 	doc? ( dev-php/phpDocumentor )"
-
-src_prepare() {
-	default
-
-	# Bug 626060 (CVE-2017-11503) temporary workaround.
-	rm examples/code_generator.phps || die
-}
 
 src_compile(){
 	if use doc; then
