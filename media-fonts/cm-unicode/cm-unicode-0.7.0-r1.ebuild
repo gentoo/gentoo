@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}-ttf.tar.xz"
 
 LICENSE="OFL-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 FONT_SUFFIX="ttf"
