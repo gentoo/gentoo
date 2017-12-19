@@ -14,6 +14,7 @@ IUSE=""
 RDEPEND="
 	>=x11-base/xorg-server-1.8:=[-minimal]
 	x11-libs/libXcomposite
+	x11-libs/libpciaccess
 "
 DEPEND="
 	${RDEPEND}
@@ -21,5 +22,4 @@ DEPEND="
 	x11-proto/randrproto
 	x11-proto/renderproto
 	x11-proto/xextproto
-	x11-libs/libpciaccess
 "
