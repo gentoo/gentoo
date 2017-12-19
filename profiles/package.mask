@@ -749,12 +749,6 @@ net-wireless/cpyrit-cuda
 # and wxGTK-3.0.3 bump in tree
 >=net-ftp/filezilla-3.25.2-r1
 
-# Zac Medico <zmedico@gentoo.org> (01 May 2017)
-# Possible API incompatibilities, bug #617174.
-# http://aiohttp.readthedocs.io/en/latest/migration.html
->=dev-python/aiohttp-2
->=dev-python/yarl-0.10
-
 # Rick Farina <zerochaos@gentoo.org> (17 Apr 2017)
 # Masking old versions because upstream changed versioning
 # Please keep this mask for 1 year to ease upgrades for users
