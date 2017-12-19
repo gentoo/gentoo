@@ -102,6 +102,18 @@ DEPEND="${CDEPEND}
 RDEPEND="${CDEPEND}
 	xinetd? ( sys-apps/xinetd )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-5.28.00b-glibc212.patch
+	"${FILESDIR}"/${PN}-5.32.00-afs.patch
+	"${FILESDIR}"/${PN}-5.32.00-cfitsio.patch
+	"${FILESDIR}"/${PN}-5.32.00-chklib64.patch
+	"${FILESDIR}"/${PN}-6.00.01-dotfont.patch
+	"${FILESDIR}"/${PN}-6.11.02-hsimple.patch
+	"${FILESDIR}"/${PN}-6.12.04-no-ocaml.patch
+	"${FILESDIR}"/${PN}-6.12.04-find-oracle-12.patch
+	"${FILESDIR}"/${PN}-6.12.04-z3.patch
+)
+
 pkg_setup() {
 	use fortran && fortran-2_pkg_setup
 	use python && python-single-r1_pkg_setup
@@ -121,17 +133,6 @@ pkg_setup() {
 
 src_prepare() {
 	cmake-utils_src_prepare
-
-	epatch \
-        "${FILESDIR}"/${PN}-5.28.00b-glibc212.patch \
-        "${FILESDIR}"/${PN}-5.32.00-afs.patch \
-        "${FILESDIR}"/${PN}-5.32.00-cfitsio.patch \
-        "${FILESDIR}"/${PN}-5.32.00-chklib64.patch \
-        "${FILESDIR}"/${PN}-6.00.01-dotfont.patch \
-		"${FILESDIR}"/${PN}-6.11.02-hsimple.patch \
-		"${FILESDIR}"/${PN}-6.12.04-no-ocaml.patch \
-		"${FILESDIR}"/${PN}-6.12.04-find-oracle-12.patch \
-		"${FILESDIR}"/${PN}-6.12.04-z3.patch
 
 	# make sure we use system libs and headers
 	rm montecarlo/eg/inc/cfortran.h README/cfortran.doc || die
