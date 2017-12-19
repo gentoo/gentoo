@@ -6113,7 +6113,7 @@ dev-util/glade 3.20.0: A user interface designer for GTK+ and GNOME
 dev-util/global 6.3.1: tag system to find an object location in various sources
 dev-util/gnome-devel-docs 3.22.1: Documentation for developing for the GNOME desktop environment
 dev-util/gob 2.0.20: Preprocessor for making GTK+ objects with inline C code
-dev-util/google-perftools 1.8.3 2.0-r2 2.6.2: Fast, multi-threaded malloc() and nifty performance analysis tools
+dev-util/google-perftools 2.0-r2 2.6.2: Fast, multi-threaded malloc() and nifty performance analysis tools
 dev-util/gource 0.47: A software version control visualization tool
 dev-util/gperf 3.0.4: A perfect hash function generator
 dev-util/gtk-builder-convert 2.24.31-r1: Converts Glade files to GtkBuilder XML format
