@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools bash-completion-r1 eutils linux-info systemd udev xdg-utils
+inherit bash-completion-r1 eutils linux-info systemd udev xdg-utils
 
 DESCRIPTION="Daemon providing interfaces to work with storage devices"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/udisks"
@@ -46,12 +46,13 @@ DEPEND="${COMMON_DEPEND}
 	dev-libs/libxslt
 	>=dev-util/gdbus-codegen-2.32
 	>=dev-util/gtk-doc-am-1.3
-	gnome-base/gnome-common:3
-	sys-devel/autoconf-archive
 	>=sys-kernel/linux-headers-3.1
 	virtual/pkgconfig
 	nls? ( dev-util/intltool )
 "
+# If adding a eautoreconf, then these might be needed at buildtime:
+# gnome-base/gnome-common:3
+# sys-devel/autoconf-archive
 
 QA_MULTILIB_PATHS="usr/lib/udisks2/udisksd"
 
@@ -73,8 +74,6 @@ src_prepare() {
 	xdg_environment_reset
 
 	default
-
-	eautoreconf
 
 	if ! use systemd ; then
 		sed -i -e 's:libsystemd-login:&disable:' configure || die
