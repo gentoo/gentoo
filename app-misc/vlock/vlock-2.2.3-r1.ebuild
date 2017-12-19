@@ -5,9 +5,11 @@ EAPI=6
 
 inherit pam toolchain-funcs user
 
+COMMIT="f2afd55704bfe0a2d66e6b270d247e9b8a7b1664"
+
 DESCRIPTION="A console screen locker"
 HOMEPAGE="https://github.com/WorMzy/vlock"
-SRC_URI="https://github.com/WorMzy/vlock/archive/master.zip -> ${P}.zip"
+SRC_URI="https://github.com/WorMzy/vlock/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -22,8 +24,6 @@ DEPEND="
 	test? ( dev-util/cunit )"
 
 DOCS=( ChangeLog PLUGINS README README.X11 SECURITY STYLE TODO )
-
-S="${WORKDIR}/${PN}-master"
 
 RESTRICT="test"
 
