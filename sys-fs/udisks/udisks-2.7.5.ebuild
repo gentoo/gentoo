@@ -6,7 +6,7 @@ inherit autotools bash-completion-r1 eutils linux-info systemd udev xdg-utils
 
 DESCRIPTION="Daemon providing interfaces to work with storage devices"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/udisks"
-SRC_URI="https://github.com/storaged-project/${PN}/archive/${P}.tar.gz"
+SRC_URI="https://github.com/storaged-project/udisks/releases/download/${P}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="2"
@@ -45,15 +45,13 @@ DEPEND="${COMMON_DEPEND}
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt
 	>=dev-util/gdbus-codegen-2.32
-	>=dev-util/gtk-doc-1.3
+	>=dev-util/gtk-doc-am-1.3
 	gnome-base/gnome-common:3
 	sys-devel/autoconf-archive
 	>=sys-kernel/linux-headers-3.1
 	virtual/pkgconfig
 	nls? ( dev-util/intltool )
 "
-
-S="${WORKDIR}/${PN}-${P}"
 
 QA_MULTILIB_PATHS="usr/lib/udisks2/udisksd"
 

@@ -17,7 +17,8 @@ KEYWORDS=""
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="${PYTHON_DEPS}"
+RDEPEND="${PYTHON_DEPS}
+	sys-apps/portage[${PYTHON_USEDEP}]"
 
 src_install() {
 	python_doscript unsymlink-lib

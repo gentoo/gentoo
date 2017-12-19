@@ -11,7 +11,7 @@ SRC_URI="http://www.grigna.com/diego/linux/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~ia64 ~mips ~ppc ~ppc64 ~sparc x86"
 
 S="${WORKDIR}"/${P}/src
 
