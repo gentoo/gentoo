@@ -43,6 +43,10 @@ DEPEND="${RDEPEND}
 	sys-devel/flex
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/patches/${PN}-3.12.1-json-c-0.13+.patch
+)
+
 S=${WORKDIR}/${PN}-${MY_PV}
 
 pkg_setup() {
@@ -57,16 +61,8 @@ src_prepare() {
 	# remove bundled libs
 	rm -rv lib/ivykis modules/afmongodb/mongo-c-driver modules/afamqp/rabbitmq-c || die
 
-	# drop scl modules requiring json
-	if use !json; then
-		sed -i -r '/cim|ewmm|graylog2/d' scl/Makefile.am || die
-		eautoreconf
-	fi
-
-	# use gentoo default path
-	if use systemd; then
-		sed -e 's@/etc/syslog-ng.conf@/etc/syslog-ng/syslog-ng.conf@g;s@/var/run@/run@g' \
-			-i contrib/systemd/syslog-ng@default || die
+	if use !json ; then
+		sed -i -e '/cim/d' scl/Makefile.am || die
 	fi
 
 	for f in "${FILESDIR}"/*logrotate*.in ; do
@@ -74,12 +70,14 @@ src_prepare() {
 
 		sed \
 			-e "$(usex systemd \
-				's/@GENTOO_RESTART@/systemctl kill -s HUP syslog-ng@default/' \
+				's/@GENTOO_RESTART@/systemctl kill -s HUP syslog-ng/' \
 				's:@GENTOO_RESTART@:/etc/init.d/syslog-ng reload:')" \
 			"${f}" > "${T}/${bn/.in/}" || die
 	done
 
 	default
+
+	eautoreconf
 }
 
 src_configure() {
@@ -123,9 +121,6 @@ src_install() {
 		"${T}/syslog-ng.logrotate.hardened" "${FILESDIR}/README.hardened"
 
 	# Install default configuration
-	insinto /etc/default
-	doins contrib/systemd/syslog-ng@default
-
 	insinto /etc/syslog-ng
 	if use userland_BSD ; then
 		newins "${FILESDIR}/${MY_PV_MM}/syslog-ng.conf.gentoo.fbsd" syslog-ng.conf
@@ -154,14 +149,6 @@ pkg_postinst() {
 		elog "It is highly recommended that app-admin/logrotate be emerged to"
 		elog "manage the log files.  ${PN} installs a file in /etc/logrotate.d"
 		elog "for logrotate to use."
-		echo
-	fi
-
-	if use systemd; then
-		echo
-		ewarn "The service file for systemd has changed to support multiple instances."
-		ewarn "To start the default instance issue:"
-		ewarn "# systemctl start syslog-ng@default"
 		echo
 	fi
 }
