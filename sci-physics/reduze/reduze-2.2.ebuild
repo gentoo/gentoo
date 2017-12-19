@@ -22,6 +22,8 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
 
+PATCHES=( "${FILESDIR}"/${P}-db.patch )
+
 src_prepare() {
 	cmake-utils_src_prepare
 	# gentoo doc directory
