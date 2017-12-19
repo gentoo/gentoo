@@ -25,7 +25,7 @@ RDEPEND="
 	dbi? ( >=dev-db/libdbi-0.9.0 )
 	geoip? ( >=dev-libs/geoip-1.5.0 )
 	http? ( net-misc/curl )
-	json? ( >=dev-libs/json-c-0.9 )
+	json? ( >=dev-libs/json-c-0.9:= )
 	mongodb? ( >=dev-libs/mongo-c-driver-1.2.0 )
 	python? ( ${PYTHON_DEPS} )
 	redis? ( >=dev-libs/hiredis-0.11.0 )

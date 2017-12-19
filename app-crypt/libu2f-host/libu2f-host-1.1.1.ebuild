@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,7 +16,7 @@ IUSE="kernel_linux static-libs systemd"
 
 RDEPEND="
 	dev-libs/hidapi
-	dev-libs/json-c"
+	dev-libs/json-c:="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 RDEPEND="${RDEPEND}

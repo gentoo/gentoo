@@ -24,7 +24,7 @@ RDEPEND="
 			dev-db/postgresql:9.3[server]
 			dev-db/postgresql:9.2[server]
 		)
-		dev-libs/json-c
+		dev-libs/json-c:=
 		dev-libs/libxml2:2
 		>=sci-libs/geos-3.4.2
 		>=sci-libs/proj-4.6.0

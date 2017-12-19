@@ -16,7 +16,7 @@ IUSE="kernel_linux static-libs systemd"
 
 RDEPEND="
 	dev-libs/hidapi
-	dev-libs/json-c"
+	dev-libs/json-c:="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 RDEPEND="${RDEPEND}
