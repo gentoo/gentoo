@@ -29,7 +29,7 @@
 
 #--- END OF EXAMPLES ---
 
-# Andreas Sturmlechner <asturm@gentoo.org> (12 Dec 2017)
+# Andreas Sturmlechner <asturm@gentoo.org> (19 Dec 2017)
 # Dead upstream, depends on dead qt3support/qt4.
 # Bug #639246. Masked for removal in 30 days.
 app-i18n/kimera
