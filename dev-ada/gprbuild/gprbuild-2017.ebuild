@@ -36,6 +36,10 @@ src_prepare() {
 	fi
 	sed -e "s:@VER@:${GCC_PV}:g" "${FILESDIR}"/${P}.xml > gnat-${GCC_PV}.xml
 	default
+	sed -i \
+		-e "s:@GNATBIND@:gnatbind-${GCC_PV}:g" \
+		src/gprlib.adb \
+		|| die
 }
 
 src_configure() {

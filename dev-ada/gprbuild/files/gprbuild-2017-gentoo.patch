@@ -76,3 +76,30 @@
        Add_Name ("a");
        Add_Name ("b");
        Add_Name ("c");
+--- gprbuild-gpl-2017/src/gprlib.adb.old	2017-12-18 12:20:02.937317216 +0100
++++ gprbuild-gpl-2017/src/gprlib.adb	2017-12-18 12:21:36.519604590 +0100
+@@ -400,7 +400,7 @@
+ 
+    Driver_Name : Name_Id := No_Name;
+ 
+-   Gnatbind_Name : String_Access := new String'("gnatbind");
++   Gnatbind_Name : String_Access := new String'("@GNATBIND@");
+ 
+    Gnatbind_Path : String_Access;
+ 
+@@ -2237,13 +2237,13 @@
+                           and then Line (Last - 2 .. Last) = "gcc"
+                         then
+                            Gnatbind_Name :=
+-                             new String'(Line (1 .. Last - 3) & "gnatbind");
++                             new String'(Line (1 .. Last - 3) & "@GNATBIND@");
+ 
+                         elsif Last > 7
+                           and then Line (Last - 6 .. Last) = "gcc.exe"
+                         then
+                            Gnatbind_Name :=
+-                             new String'(Line (1 .. Last - 7) & "gnatbind");
++                             new String'(Line (1 .. Last - 7) & "@GNATBIND@");
+                         end if;
+                      end if;
+ 
