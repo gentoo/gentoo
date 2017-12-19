@@ -5,13 +5,15 @@ EAPI=6
 
 inherit pam toolchain-funcs user
 
+COMMIT="f2afd55704bfe0a2d66e6b270d247e9b8a7b1664"
+
 DESCRIPTION="A console screen locker"
 HOMEPAGE="https://github.com/WorMzy/vlock"
-SRC_URI="https://github.com/WorMzy/vlock/archive/master.zip -> ${P}.zip"
+SRC_URI="https://github.com/WorMzy/vlock/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ia64 ~mips ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="alpha amd64 ~arm hppa ia64 ~mips ppc ppc64 sparc x86"
 IUSE="pam test"
 
 RDEPEND="
@@ -23,9 +25,10 @@ DEPEND="
 
 DOCS=( ChangeLog PLUGINS README README.X11 SECURITY STYLE TODO )
 
-S="${WORKDIR}/${PN}-master"
-
-RESTRICT="test"
+PATCHES=(
+	"${FILESDIR}/${PN}-2.2.2-asneeded.patch"
+	"${FILESDIR}/${PN}-2.2.2-test_process.patch"
+)
 
 pkg_setup() {
 	enewgroup "${PN}"
