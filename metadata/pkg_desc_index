@@ -1551,7 +1551,7 @@ app-vim/enhancedcommentify 2.3-r1: vim plugin: enhanced comment creation
 app-vim/errsign 0.1-r1: vim plugin: display marks on lines with errors
 app-vim/eruby-syntax 2.0-r1: vim plugin: syntax highlighting for eruby
 app-vim/eselect-syntax 20070506: vim plugin: Eselect syntax highlighting, filetype and indent settings
-app-vim/extra-syntax 4-r1: vim plugin: metapackage for all extra syntax packages
+app-vim/extra-syntax 4-r2: vim plugin: metapackage for all extra syntax packages
 app-vim/fluxbox-syntax 1.5: vim plugin: fluxbox files syntax and indent
 app-vim/foldutil 3.0-r1: vim plugin: fold creation utility
 app-vim/fugitive 2.2: vim plugin: a git wrapper for vim
@@ -1589,7 +1589,6 @@ app-vim/nginx-syntax 0.3.3: vim plugin: Nginx configuration files syntax
 app-vim/notes 0.33.4: vim plugin: easy note taking in vim
 app-vim/ntp-syntax 20031001-r1: vim plugin: ntp.conf syntax highlighting
 app-vim/omnicppcomplete 0.41: vim plugin: C/C++ omni-completion with ctags database
-app-vim/pam-syntax 20060424: vim plugin: PAM configuration syntax highlighting
 app-vim/pathogen 2.4: vim plugin: manage your runtimepath
 app-vim/pdv 1.0.1-r1: vim plugin: PDV (phpDocumentor for Vim)
 app-vim/perl-support 5.3.2: vim plugin: Perl-IDE - Write and run Perl scripts using menus and hotkeys
@@ -10122,7 +10121,7 @@ sys-libs/ncurses 5.9-r101 6.0-r1: console display library
 sys-libs/nss_wrapper 1.1.3: A wrapper for the user, group and hosts NSS API
 sys-libs/ntdb 1.0-r1: A not-so trivial keyword/data database system
 sys-libs/openipmi 2.0.18-r1 2.0.22: Library interface to IPMI
-sys-libs/pam 1.2.1: Linux-PAM (Pluggable Authentication Modules)
+sys-libs/pam 1.2.1-r2: Linux-PAM (Pluggable Authentication Modules)
 sys-libs/pwdb 0.62-r1: Password database
 sys-libs/readline 4.3_p5 5.2_p14 6.3_p8-r3: Another cute console display library
 sys-libs/slang 2.3.0: Multi-platform library designed to allow a developer to create robust software
