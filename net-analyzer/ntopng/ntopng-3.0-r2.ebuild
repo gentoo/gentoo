@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 DEPEND="dev-db/sqlite:3
 	dev-python/pyzmq
 	dev-lang/luajit:2
-	dev-libs/json-c
+	dev-libs/json-c:=
 	dev-libs/geoip
 	dev-libs/glib:2
 	dev-libs/hiredis
