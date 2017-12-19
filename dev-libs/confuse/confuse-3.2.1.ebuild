@@ -6,8 +6,8 @@ EAPI=6
 inherit eutils multilib-minimal
 
 DESCRIPTION="a configuration file parser library"
-HOMEPAGE="http://www.nongnu.org/confuse/"
-SRC_URI="https://github.com/martinh/libconfuse/releases/download/v${PV}/${P}.tar.xz"
+HOMEPAGE="https://github.com/martinh/libconfuse"
+SRC_URI="${HOMEPAGE}/releases/download/v${PV}/${P}.tar.xz"
 
 LICENSE="ISC"
 SLOT="0/2.0.0"
