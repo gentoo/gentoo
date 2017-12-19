@@ -20,7 +20,7 @@ IUSE="gegl introspection nls openmp"
 
 CDEPEND="
 	dev-libs/glib:2
-	dev-libs/json-c
+	dev-libs/json-c:=
 	gegl? (
 		media-libs/babl
 		media-libs/gegl:0.3[introspection?]

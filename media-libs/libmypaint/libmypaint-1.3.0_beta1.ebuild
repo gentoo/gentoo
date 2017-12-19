@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ IUSE="gegl introspection nls openmp"
 
 CDEPEND="
 	dev-libs/glib:2
-	dev-libs/json-c
+	dev-libs/json-c:=
 	gegl? (
 		media-libs/babl
 		media-libs/gegl:0.3[introspection?]
