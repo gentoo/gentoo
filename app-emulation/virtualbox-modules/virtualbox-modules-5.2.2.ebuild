@@ -35,14 +35,10 @@ pkg_setup() {
 	linux-mod_pkg_setup
 
 	BUILD_PARAMS="KERN_DIR=${KV_DIR} O=${KV_OUT_DIR} V=1 KBUILD_VERBOSE=1"
+	BUILD_PARAMS="KERN_DIR=${KV_OUT_DIR} V=1 KBUILD_VERBOSE=1"
 }
 
 src_prepare() {
-	if kernel_is -ge 2 6 33 ; then
-		# evil patch for new kernels - header moved
-		grep -lR linux/autoconf.h *  | xargs sed -i -e 's:<linux/autoconf.h>:<generated/autoconf.h>:'
-	fi
-
 	if use pax_kernel && kernel_is -ge 3 0 0 ; then
 		epatch "${FILESDIR}"/${PN}-4.1.4-pax-const.patch
 	fi

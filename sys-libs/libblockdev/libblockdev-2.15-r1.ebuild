@@ -25,7 +25,7 @@ CDEPEND="
 	cryptsetup? (
 		>=dev-libs/nss-3.18.0
 		dev-libs/volume_key
-		>=sys-fs/cryptsetup-1.6.7
+		>=sys-fs/cryptsetup-1.6.7:=
 	)
 	dmraid? (
 		sys-fs/dmraid

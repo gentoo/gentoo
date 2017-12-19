@@ -10,7 +10,7 @@ MY_PV="${PV/beta/BETA}"
 MY_PV="${MY_PV/rc/RC}"
 MY_P=VirtualBox-${MY_PV}
 SRC_URI="http://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2
-	https://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-5.1.24-patches-01.tar.xz"
+	https://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-5.2.0-patches-01.tar.xz"
 S="${WORKDIR}/${MY_P}"
 
 DESCRIPTION="Family of powerful x86 virtualization products for enterprise and home use"
@@ -55,7 +55,7 @@ RDEPEND="!app-emulation/virtualbox-bin
 	udev? ( >=virtual/udev-171 )
 	vnc? ( >=net-libs/libvncserver-0.9.9 )"
 DEPEND="${RDEPEND}
-	>=dev-util/kbuild-0.1.9998_pre20131130-r1
+	>=dev-util/kbuild-0.1.9998.3127
 	>=dev-lang/yasm-0.6.2
 	sys-devel/bin86
 	sys-libs/libcap
