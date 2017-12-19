@@ -66,8 +66,9 @@ src_install() {
 		fperms 755 ${dst}/${exe}
 	done
 
-	newinitd "${FILESDIR}"/teamviewerd13.init teamviewerd${SLOT}
-	systemd_newunit tv_bin/script/${PN}d.service ${PN}d${SLOT}.service
+	# No slotting here, binary expects this service path
+	newinitd "${FILESDIR}"/teamviewerd13.init teamviewerd
+	systemd_dounit tv_bin/script/teamviewerd.service
 
 	insinto /usr/share/dbus-1/services
 	doins tv_bin/script/com.teamviewer.TeamViewer.service
@@ -98,10 +99,10 @@ src_install() {
 	dosym ../../var/log/${MY_PN} ${dst}/logfiles
 
 	dodir /opt/bin
-	dosym ${dst}/tv_bin/teamviewerd /opt/bin/teamviewerd${SLOT}
-	dosym ${dst}/tv_bin/script/teamviewer /opt/bin/${MY_PN}
+	dosym ${dst}/tv_bin/teamviewerd /opt/bin/teamviewerd
+	dosym ${dst}/tv_bin/script/teamviewer /opt/bin/teamviewer
 
-	make_desktop_entry ${MY_PN} "TeamViewer ${SLOT}" TeamViewer
+	make_desktop_entry teamviewer "TeamViewer ${SLOT}" TeamViewer
 }
 
 pkg_postinst() {
@@ -112,15 +113,15 @@ pkg_postinst() {
 	elog ""
 	elog "Before using TeamViewer, you need to start its daemon:"
 	elog "OpenRC:"
-	elog "# /etc/init.d/teamviewerd${SLOT} start"
-	elog "# rc-update add teamviewerd${SLOT} default"
+	elog "# /etc/init.d/teamviewerd start"
+	elog "# rc-update add teamviewerd default"
 	elog
 	elog "Systemd:"
-	elog "# systemctl start teamviewerd${SLOT}.service"
-	elog "# systemctl enable teamviewerd${SLOT}.service"
+	elog "# systemctl start teamviewerd.service"
+	elog "# systemctl enable teamviewerd.service"
 	elog
 	elog "To display additional command line options simply run:"
-	elog "$ ${MY_PN} help"
+	elog "$ teamviewer help"
 }
 
 pkg_postrm() {
