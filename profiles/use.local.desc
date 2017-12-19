@@ -1481,6 +1481,7 @@ dev-libs/libverto:glib - Support event loops using dev-libs/glib
 dev-libs/libverto:libev - Support event loops using dev-libs/libev
 dev-libs/libverto:libevent - Support event loops using dev-libs/libevent
 dev-libs/libverto:tevent - Support event loops using sys-libs/tevent
+dev-libs/libzia:ftdi - Enable support for FTDI USB chips
 dev-libs/link-grammar:aspell - Adds support for app-text/aspell spell checker
 dev-libs/link-grammar:hunspell - Adds support for app-text/hunspell spell checker
 dev-libs/m17n-lib:X - Build the Graphical User Interface API and utilities
@@ -2973,6 +2974,7 @@ media-plugins/vdr-streamdev:client - Compile the VDR plugin vdr-streamdev-client
 media-plugins/vdr-streamdev:server - Compile the VDR plugin vdr-streamdev-server that allows remote systems to access the DVB cards used for the local VDR
 media-radio/ax25-tools:X - Enable some X based configuration tools.
 media-radio/fldigi:hamlib - Enables support by the Hamlib amateur radio rig control library to get/set frequency and mode of the ham radio in use
+media-radio/tucnak:hamlib - Enables support by the Hamlib amateur radio rig control library to get/set frequency and mode of the ham radio
 media-radio/tucnak2:ftdi - Enable support for FTDI USB chips
 media-radio/tucnak2:hamlib - Enables support by the Hamlib amateur radio rig control library to get/set frequency and mode of the ham radio
 media-radio/unixcw:ncurses - Enables building the curses based morse code tutor program 'cwcp'.
