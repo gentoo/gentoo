@@ -43,6 +43,10 @@ DEPEND="${RDEPEND}
 	sys-devel/flex
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}/patches/${PN}-adaptions-for-json-c-v0.13.patch"
+)
+
 S=${WORKDIR}/${PN}-${MY_PV}
 
 pkg_setup() {
