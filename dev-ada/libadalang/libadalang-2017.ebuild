@@ -17,7 +17,7 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/591c45e2c7a447af2deed042
 LICENSE="GPL-3 gcc-runtime-library-exception-3.1"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="gnat_2016 gnat_2017"
+IUSE="gnat_2016 +gnat_2017"
 
 RDEPEND="dev-python/pyyaml
 	${PYTHON_DEPS}"
@@ -28,7 +28,8 @@ DEPEND="${RDEPEND}
 	dev-python/enum34
 	dev-python/quex
 	dev-python/funcy"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}
+	^^ ( gnat_2016 gnat_2017 )"
 
 S="${WORKDIR}"
 
@@ -41,10 +42,7 @@ src_prepare() {
 
 src_compile() {
 	cd ${PN}-gps-src
-	mkdir bin
-	ln -sf /usr/bin/gnatbind-4.9.4 bin/gnatbind
-	PATH=$PATH:${PWD}/bin \
-		PYTHONPATH=${PYTHONPATH}:"${WORKDIR}"/langkit-gps-src \
+	PYTHONPATH=${PYTHONPATH}:"${WORKDIR}"/langkit-gps-src \
 		GCC=${CHOST}-gcc-4.9.4 ada/manage.py make || die
 }
 
