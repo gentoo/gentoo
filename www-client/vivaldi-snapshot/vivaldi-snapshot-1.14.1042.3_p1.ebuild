@@ -28,15 +28,16 @@ DEPEND="
 	virtual/libiconv
 "
 RDEPEND="
+	>=dev-libs/openssl-1.0.1:0
 	dev-libs/expat
 	dev-libs/glib:2
 	dev-libs/nspr
 	dev-libs/nss
-	>=dev-libs/openssl-1.0.1:0
 	gnome-base/gconf:2
 	media-libs/alsa-lib
 	media-libs/fontconfig
 	media-libs/freetype
+	media-libs/speex
 	net-misc/curl
 	net-print/cups
 	sys-apps/dbus
