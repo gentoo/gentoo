@@ -22,4 +22,4 @@ dev-java/gcj-jdk
 # The following packages require pdftk and are therefore
 # masked in the 17.0 profiles.
 app-office/auto-multiple-choice
-app-office/impressive
+<app-office/impressive-0.11.2
