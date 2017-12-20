@@ -729,6 +729,10 @@
     <url>https://wiki.gentoo.org/wiki/Project:Cron</url>
     <description>The Gentoo Cron Project maintains cron-related packages.</description>
     <member>
+      <email>blueness@gentoo.org</email>
+      <name>Anthony G. Basile</name>
+    </member>
+    <member>
       <email>vapier@gentoo.org</email>
       <name>Mike Frysinger</name>
     </member>
