@@ -12,7 +12,7 @@ SRC_URI="https://dev.gentoo.org/~voyageur/distfiles/wmcube-1.0.2.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~mips ~ppc ~ppc64 ~sparc x86"
 IUSE=""
 
 RDEPEND="x11-libs/libX11
