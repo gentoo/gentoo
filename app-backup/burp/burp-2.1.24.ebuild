@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools systemd tmpfiles user versionator
+inherit autotools systemd user versionator
 
 DESCRIPTION="Network backup and restore client and server for Unix and Windows"
 HOMEPAGE="http://burp.grke.org/"
@@ -23,13 +23,14 @@ CDEPEND="dev-libs/uthash
 	acl? ( sys-apps/acl )
 	xattr? ( sys-apps/attr )"
 DEPEND="${CDEPEND}
+	virtual/pkgconfig
 	test? ( dev-libs/check )"
 RDEPEND="${CDEPEND}
 	virtual/logger"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.0.54-no_mkdir_run.patch
-	"${FILESDIR}"/${PN}-2.0.54-protocol1_by_default.patch
+	"${FILESDIR}"/${PN}-2.1.20-no_mkdir_run.patch
+	"${FILESDIR}"/${PN}-2.1.20-protocol1_by_default.patch
 	"${FILESDIR}"/${PN}-2.0.54-server_user.patch
 )
 
@@ -54,7 +55,7 @@ src_configure() {
 		$(use_enable xattr)
 	)
 	# --runstatedir option will only work from autoconf-2.70 onwards
-	runstatedir='/run/burp' \
+	runstatedir='/run' \
 		econf "${myeconfargs[@]}"
 }
 
@@ -69,15 +70,11 @@ src_install() {
 	fperms 0640 /etc/burp/burp-server.conf
 	fperms 0750 /etc/burp/clientconfdir
 
-	newinitd "${FILESDIR}"/${PN}2.initd ${PN}
+	newinitd "${FILESDIR}"/${PN}.initd ${PN}
 	systemd_dounit "${FILESDIR}"/${PN}.service
-
-	newtmpfiles "${FILESDIR}"/${PN}.tmpfiles ${PN}.conf
 }
 
 pkg_postinst() {
-	tmpfiles_process ${PN}.conf
-
 	elog "Burp ebuilds now support the autoupgrade mechanism in both"
 	elog "client and server mode. In both cases it is disabled by"
 	elog "default. You almost certainly do NOT want to enable it in"

@@ -4,7 +4,6 @@ After=network.target
 
 [Service]
 Type=simple
-PIDFile=/run/burp/burp.server.pid
 ExecStart=/usr/sbin/burp -F -c /etc/burp/burp-server.conf
 
 [Install]
