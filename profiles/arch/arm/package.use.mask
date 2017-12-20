@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (21 Dec 2017)
+# clang is not currently supported on Gentoo ARM profiles.
+sys-devel/llvm clang lldb
+
 # Andreas Sturmlechner <asturm@gentoo.org> (29 Nov 2017)
 # kde-plasma/plasma-vault is not keyworded, which depends on also
 # not yet keyworded sys-fs/{encfs,cryfs}: bugs #630486 and #633882
