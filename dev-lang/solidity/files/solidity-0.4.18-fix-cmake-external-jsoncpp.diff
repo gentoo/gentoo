@@ -1,0 +1,15 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 24bea3b3..4326927b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -18,7 +18,9 @@ include(EthCcache)
+ 
+ # Let's find our dependencies
+ include(EthDependencies)
+-include(jsoncpp)
++find_package(PkgConfig REQUIRED)
++pkg_check_modules(JSONCPP jsoncpp)
++include_directories("${JSONCPP_INCLUDE_DIRS}")
+ 
+ find_package(Threads)
+ 

@@ -45,6 +45,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-pulseaudio_dep.patch"
+)
+
 pkg_setup() {
 	if [[ ${ABI} == amd64 ]]; then
 		elog "You may want to add USE flag 'abi_x86_32' when running a 64bit system"
