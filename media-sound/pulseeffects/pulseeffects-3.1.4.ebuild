@@ -35,12 +35,13 @@ DEPEND="
 	>=x11-libs/gtk+-3.18:3
 	dev-python/numpy[${PYTHON_USEDEP}]
 	>=sci-libs/scipy-0.18[${PYTHON_USEDEP}]
-	media-libs/lilv
+	>=media-libs/lilv-0.24.2-r1
 	>=media-plugins/calf-0.90.0[lv2]
 	>=media-libs/gstreamer-1.12.0:1.0
 	>=media-libs/gst-plugins-good-1.12.0:1.0
 	>=media-libs/gst-plugins-bad-1.12.0:1.0
 	>=media-plugins/gst-plugins-ladspa-1.12.0:1.0
+	>=media-plugins/gst-plugins-lv2-1.12.0:1.0
 	>=media-plugins/gst-plugins-pulse-1.12.0:1.0
 "
 RDEPEND="${DEPEND}
