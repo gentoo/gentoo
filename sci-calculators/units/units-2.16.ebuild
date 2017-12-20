@@ -20,6 +20,7 @@ RDEPEND="
 	units_cur? (
 		${PYTHON_DEPS}
 		dev-python/future[${PYTHON_USEDEP}]
+		dev-python/requests[${PYTHON_USEDEP}]
 	)
 "
 DEPEND="
