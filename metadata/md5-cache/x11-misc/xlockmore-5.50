@@ -4,11 +4,11 @@ DESCRIPTION=Just another screensaver application for X
 EAPI=6
 HOMEPAGE=http://www.sillycycle.com/xlockmore.html
 IUSE=crypt debug gtk imagemagick motif nas opengl pam truetype xinerama xlockrc vtlock
-KEYWORDS=alpha amd64 ~arm hppa ppc ppc64 ~sparc x86
+KEYWORDS=alpha amd64 ~arm hppa ppc ppc64 sparc x86
 LICENSE=BSD GPL-2
 RDEPEND=gtk? ( x11-libs/gtk+:2 ) imagemagick? ( media-gfx/imagemagick:= ) motif? ( >=x11-libs/motif-2.3:0 ) nas? ( media-libs/nas ) opengl? ( virtual/opengl virtual/glu truetype? ( >=media-libs/ftgl-2.1.3_rc5 ) ) pam? ( virtual/pam ) truetype? ( media-libs/freetype:2 ) x11-libs/libX11 x11-libs/libXext x11-libs/libXmu x11-libs/libXpm x11-libs/libXt xinerama? ( x11-libs/libXinerama )
 REQUIRED_USE=|| ( crypt pam ) pam? ( !xlockrc ) xlockrc? ( !pam )
 SLOT=0
 SRC_URI=http://www.sillycycle.com/xlock/xlockmore-5.50.tar.xz
 _eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	flag-o-matic	02908f00f002f0f07c5b74783d778325	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	pam	3e788d86170dfcd5b06824d898315e18	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=4a8d8d32b355aca61e85e1cfa581ee5f
+_md5_=33a3c83d3e6ca9b7e097e322d25a2e64
