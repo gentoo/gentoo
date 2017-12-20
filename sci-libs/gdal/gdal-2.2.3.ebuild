@@ -71,6 +71,7 @@ REQUIRED_USE="mdb? ( java )
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.2.3-soname.patch"
+	"${FILESDIR}/${PN}-2.2.3-json-c-0.13.patch" # bug 641658
 )
 
 src_prepare() {
