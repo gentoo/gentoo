@@ -12,9 +12,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc +examples"
 
-# The ctype and filter dependencies can be verified by grepping the
-# code... composer.json isn't always up-to-date.
-RDEPEND="dev-lang/php:*[ctype,filter]"
+RDEPEND="dev-lang/php:*[ctype,filter,ssl]"
 DEPEND="${RDEPEND}
 	doc? ( dev-php/phpDocumentor )"
 
