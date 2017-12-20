@@ -38,7 +38,6 @@ RDEPEND="
 	media-libs/fontconfig
 	media-libs/freetype
 	media-libs/speex
-	net-misc/curl
 	net-print/cups
 	sys-apps/dbus
 	sys-libs/libcap
