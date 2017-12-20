@@ -7,7 +7,7 @@ MY_P="${P}a"
 
 DESCRIPTION="A s-lang based newsreader"
 HOMEPAGE="http://slrn.sourceforge.net/"
-SRC_URI="http://jedsoft.org/releases/${PN}/${MY_P}.tar.bz2"
+SRC_URI="https://jedsoft.org/releases/${PN}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
