@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 inherit eutils python-single-r1
 
 DESCRIPTION="Unit conversion program"
@@ -20,6 +20,7 @@ RDEPEND="
 	units_cur? (
 		${PYTHON_DEPS}
 		dev-python/future[${PYTHON_USEDEP}]
+		dev-python/requests[${PYTHON_USEDEP}]
 	)
 "
 DEPEND="
