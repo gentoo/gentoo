@@ -33,15 +33,19 @@ RDEPEND="
 	spoof-source? ( net-libs/libnet:1.1 )
 	systemd? ( sys-apps/systemd )
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6 )
+	>=dev-libs/ivykis-0.36.1
 	>=dev-libs/libpcre-6.1
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
 	!dev-libs/eventlog
 	>=dev-libs/glib-2.10.1:2"
 DEPEND="${RDEPEND}
-	>=dev-libs/ivykis-0.36.1
 	sys-devel/flex
 	virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}"/patches/${PN}-3.12.1-json-c-0.13+.patch
+)
 
 S=${WORKDIR}/${PN}-${MY_PV}
 
@@ -60,7 +64,6 @@ src_prepare() {
 	# drop scl modules requiring json
 	if use !json; then
 		sed -i -r '/cim|ewmm|graylog2/d' scl/Makefile.am || die
-		eautoreconf
 	fi
 
 	# use gentoo default path
@@ -80,6 +83,8 @@ src_prepare() {
 	done
 
 	default
+
+	eautoreconf
 }
 
 src_configure() {
