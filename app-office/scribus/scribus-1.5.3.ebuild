@@ -75,6 +75,7 @@ DEPEND="${COMMON_DEPEND}
 PATCHES=(
 	"${FILESDIR}"/${P}-docdir.patch
 	"${FILESDIR}"/${P}-fpic.patch
+	"${FILESDIR}"/${P}-cmake-openssl.patch
 )
 
 src_prepare() {
