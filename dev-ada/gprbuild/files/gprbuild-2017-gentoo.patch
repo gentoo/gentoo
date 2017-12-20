@@ -21,17 +21,6 @@
  
                          end if;
                       end if;
---- gprbuild-gpl-2016-src/gpr/src/gpr-env.adb.old	2017-11-13 22:16:53.349083426 +0100
-+++ gprbuild-gpl-2016-src/gpr/src/gpr-env.adb	2017-11-13 22:17:22.692590351 +0100
-@@ -1948,6 +1948,8 @@
- 
-       end if;
- 
-+      Add_Directories (Self, "/usr/share/gpr");
-+
-       if Gpr_Prj_Path.all /= "" then
-          Add_Directories (Self, Gpr_Prj_Path.all);
-       end if;
 --- gprbuild-gpl-2017-src/gpr/src/gpr-names.ads.old	2017-11-19 13:09:18.947527738 +0100
 +++ gprbuild-gpl-2017-src/gpr/src/gpr-names.ads	2017-11-19 13:10:08.125654595 +0100
 @@ -27,6 +27,8 @@
