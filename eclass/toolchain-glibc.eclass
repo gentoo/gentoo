@@ -815,6 +815,17 @@ glibc_do_configure() {
 		esac
 	fi
 
+	# Keep a whitelist of targets supporing IFUNC. glibc's ./configure
+	# is not robust enough to detect proper support:
+	#    https://bugs.gentoo.org/641216
+	#    https://sourceware.org/PR22634#c0
+	case $(tc-arch ${CTARGET}) in
+		# Keep whitelist of targets where autodetection mostly works.
+		amd64|x86|sparc|ppc|ppc64|arm|arm64|s390) ;;
+		# Blacklist everywhere else
+		*) myconf+=( libc_cv_ld_gnu_indirect_function=no ) ;;
+	esac
+
 	if version_is_at_least 2.25 ; then
 		myconf+=( --enable-stackguard-randomization )
 	else
