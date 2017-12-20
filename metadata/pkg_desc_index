@@ -8017,7 +8017,7 @@ media-sound/sound-juicer 3.22.1: CD ripper for GNOME
 media-sound/soundconverter 2.1.5-r1 2.1.6: A simple audiofile converter application for the GNOME environment
 media-sound/sox 14.4.2: The swiss army knife of sound processing programs
 media-sound/split2flac 122: sh script to split an APE/FLAC/WV/WAV audio image with CUE sheet into tracks
-media-sound/spotify 1.0.64: Spotify is a social music platform
+media-sound/spotify 1.0.69: Spotify is a social music platform
 media-sound/streamripper 1.64.6: Extracts and records individual MP3 file tracks from shoutcast streams
 media-sound/streamtranscoder 1.2.4 3.1.11: Commandline program to transcode shoutcast/icecast streams to different bitrates
 media-sound/synaesthesia 2.4: a nice graphical accompaniment to music
@@ -9920,7 +9920,7 @@ sys-cluster/libqb 0.17.1 0.17.2: Library providing high performance logging, tra
 sys-cluster/mpe2 1.0.6_p1-r2: MPI development tools
 sys-cluster/mpich 3.0.4 3.2-r1: A high performance and portable MPI implementation
 sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
-sys-cluster/neutron 10.0.4 11.0.1: A virtual network service for Openstack
+sys-cluster/neutron 10.0.4 11.0.2: A virtual network service for Openstack
 sys-cluster/nova 15.0.8 16.0.3: Cloud computing fabric controller (main part of an IaaS system) in Python
 sys-cluster/openais 1.1.4-r1: Open Application Interface Specification cluster framework
 sys-cluster/openmpi 1.4.3 2.0.2: A high-performance message passing library (MPI)
