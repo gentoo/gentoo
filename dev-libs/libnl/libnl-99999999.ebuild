@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 python3_{4,5} )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 DISTUTILS_OPTIONAL=1
 inherit autotools distutils-r1 eutils git-r3 libtool multilib multilib-minimal
 
