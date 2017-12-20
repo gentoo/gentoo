@@ -7,12 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="icarus">Build icarus library manager</flag>
-		<flag name="profile_accuracy">
-			Compile a binary optimized for accuracy</flag>
-		<flag name="profile_balanced">
-			Compile a binary with balanced optimization</flag>
-		<flag name="profile_performance">
-			Compile a binary optimized for performance</flag>
 		<flag name="udev">Enable udev based input</flag>
 	</use>
 </pkgmetadata>
