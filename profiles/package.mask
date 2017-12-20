@@ -387,11 +387,6 @@ net-analyzer/aimsniff
 # Masked for removal in 30 days. Bug #638432
 dev-perl/Mail-SPF-Query
 
-# Andreas Sturmlechner <asturm@gentoo.org> (21 Nov 2017)
-# Totally broken, depends on dead Qt4. Use sci-mathematics/octave[gui].
-# Masked for removal in 30 days. Bugs #598930, #615284, #614582, #631524
-sci-mathematics/qtoctave
-
 # Alice Ferrazzi <alicef@gentoo.org> (21 Nov 2017)
 # A regression in kernel 4.14.0
 # Data corruption issue that affects at minimum bcache. 
