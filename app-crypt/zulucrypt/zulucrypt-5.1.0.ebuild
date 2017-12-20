@@ -7,7 +7,7 @@ inherit cmake-utils
 
 DESCRIPTION="Front end to cryptsetup"
 HOMEPAGE="https://mhogomchungu.github.io/zuluCrypt/"
-SRC_URI="https://github.com/mhogomchungu/zuluCrypt/releases/download/${PV}/zuluCrypt-${PV}.tar.bz2"
+SRC_URI="https://github.com/mhogomchungu/zuluCrypt/releases/download/${PV}/zuluCrypt-${PV}.tar.bz2 -> ${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -18,8 +18,7 @@ REQUIRED_USE="kwallet? ( qt5 )"
 
 CDEPEND="
 	dev-libs/libgcrypt:0=
-	sys-apps/util-linux
-	sys-fs/cryptsetup
+	sys-fs/cryptsetup:=
 	gnome? ( app-crypt/libsecret )
 	qt5? (
 		dev-libs/libpwquality
@@ -36,6 +35,8 @@ DEPEND="${CDEPEND}
 	virtual/pkgconfig
 "
 
+S="${WORKDIR}/zuluCrypt-${PV}"
+
 src_configure() {
 	local mycmakeargs=(
 		-DLIB_SUFFIX="$(get_libdir)"
@@ -44,6 +45,5 @@ src_configure() {
 		-DNOGUI=$(usex !qt5)
 		-DUDEVSUPPORT=$(usex udev)
 	)
-
 	cmake-utils_src_configure
 }
