@@ -6,7 +6,9 @@ inherit toolchain-funcs
 
 DESCRIPTION="a dockapp cpu monitor with spinning 3d objects"
 HOMEPAGE="http://linux-bsd-unix.strefa.pl/index.en.html"
-SRC_URI="http://linux-bsd-unix.strefa.pl/${P}.tar.gz -> ${P}.tar"
+# Upstream: http://linux-bsd-unix.strefa.pl/${P}.tar.gz
+# Mirrored for bug #641686 (invalid gzip server config)
+SRC_URI="https://dev.gentoo.org/~voyageur/distfiles/wmcube-1.0.2.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
