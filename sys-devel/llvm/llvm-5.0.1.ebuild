@@ -13,8 +13,8 @@ inherit cmake-utils eapi7-ver flag-o-matic multilib-minimal \
 
 DESCRIPTION="Low Level Virtual Machine"
 HOMEPAGE="https://llvm.org/"
-SRC_URI="http://prereleases.llvm.org/${PV/_//}/${P/_/}.src.tar.xz"
-#	!doc? ( https://dev.gentoo.org/~mgorny/dist/llvm/llvm-manpages-${PV}.tar.bz2 )"
+SRC_URI="https://releases.llvm.org/${PV/_//}/${P/_/}.src.tar.xz
+	!doc? ( https://dev.gentoo.org/~mgorny/dist/llvm/${P}-manpages.tar.bz2 )"
 
 # Keep in sync with CMakeLists.txt
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
@@ -32,7 +32,7 @@ ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
 LICENSE="UoI-NCSA rc BSD public-domain
 	llvm_targets_ARM? ( LLVM-Grant )"
 SLOT="$(ver_cut 1)"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="debug doc gold libedit +libffi ncurses test
 	kernel_Darwin ${ALL_LLVM_TARGETS[*]}"
 
@@ -226,11 +226,11 @@ _EOF_
 	doenvd "${T}/10llvm-${revord}"
 
 	# install pre-generated manpages
-#	if ! use doc; then
-#		# (doman does not support custom paths)
-#		insinto "/usr/lib/llvm/${SLOT}/share/man/man1"
-#		doins "${WORKDIR}/llvm-manpages-${PV}/llvm"/*.1
-#	fi
+	if ! use doc; then
+		# (doman does not support custom paths)
+		insinto "/usr/lib/llvm/${SLOT}/share/man/man1"
+		doins "${WORKDIR}/${P}-manpages/llvm"/*.1
+	fi
 
 	docompress "/usr/lib/llvm/${SLOT}/share/man"
 }
