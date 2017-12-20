@@ -103,6 +103,11 @@ src_unpack() {
 			"${LLVM_P}"/utils/{lit,unittest} || die
 		mv "${LLVM_P}" "${WORKDIR}"/llvm || die
 	fi
+
+	if ! use doc; then
+		einfo "Unpacking llvm-${PV}-manpages.tar.bz2 ..."
+		tar -xf "${DISTDIR}/llvm-${PV}-manpages.tar.bz2" || die
+	fi
 }
 
 multilib_src_configure() {
