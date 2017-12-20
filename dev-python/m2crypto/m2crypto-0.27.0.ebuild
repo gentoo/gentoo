@@ -21,7 +21,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-li
 IUSE="libressl"
 
 RDEPEND="
-	!libressl? ( >=dev-libs/openssl-0.9.8:0= )
+	!libressl? ( >=dev-libs/openssl-0.9.8:0=[-bindist(-)] )
 	libressl? ( dev-libs/libressl:0= )
 	dev-python/typing[${PYTHON_USEDEP}]
 "
