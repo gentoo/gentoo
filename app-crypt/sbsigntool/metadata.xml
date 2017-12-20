@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>vapier@gentoo.org</email>
-		<description>do whatever</description>
-	</maintainer>
-	<maintainer type="person">
 		<email>tamiko@gentoo.org</email>
 		<description>yell at me if it breaks</description>
 	</maintainer>
