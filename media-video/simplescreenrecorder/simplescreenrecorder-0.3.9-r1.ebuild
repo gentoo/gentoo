@@ -88,7 +88,7 @@ multilib_src_configure() {
 	fi
 
 	if multilib_is_native_abi ; then
-		mymakeargs+=( -DWITH_QT5="true" )
+		mycmakeargs+=( -DWITH_QT5="true" )
 	else
 		mycmakeargs+=( -DWITH_SIMPLESCREENRECORDER="false" )
 	fi
