@@ -551,7 +551,7 @@ app-editors/gedit 3.22.0 3.22.1: A text editor for the GNOME desktop
 app-editors/gedit-plugins 3.22.0: Official plugins for gedit
 app-editors/ghex 3.18.3: GNOME hexadecimal editor
 app-editors/gummi 0.6.6: Simple LaTeX editor for GTK+ users
-app-editors/gvim 8.0.0386: GUI version of the Vim text editor
+app-editors/gvim 8.0.0386 8.0.1298: GUI version of the Vim text editor
 app-editors/hexcurse 1.55: ncurses based hex editor
 app-editors/hexedit 1.2.13: View and edit files in hex or ASCII
 app-editors/hteditor 2.1.0: A file viewer, editor and analyzer for text, binary, and executable files
@@ -587,8 +587,8 @@ app-editors/teco 1.00-r4: Classic TECO editor, Predecessor to EMACS
 app-editors/ted 2.23: X-based rich text editor
 app-editors/uemacs-pk 4.0.15_p20141208: uEmacs/PK is an enhanced version of MicroEMACS
 app-editors/vile 9.8r: VI Like Emacs -- yet another full-featured vi clone
-app-editors/vim 8.0.0386: Vim, an improved vi-style text editor
-app-editors/vim-core 8.0.0386: vim and gvim shared files
+app-editors/vim 8.0.0386 8.0.1298: Vim, an improved vi-style text editor
+app-editors/vim-core 8.0.0386 8.0.1298: vim and gvim shared files
 app-editors/xemacs 21.4.22-r4 21.4.24: highly customizable open source text editor and application development system
 app-editors/xvile 9.8r: VI Like Emacs -- yet another full-featured vi clone
 app-editors/yudit 2.9.2: Free (Y)unicode text editor for all unices
@@ -741,7 +741,7 @@ app-emulation/hercules 3.10: Hercules System/370, ESA/390 and zArchitecture Main
 app-emulation/libcacard 0.1.2 2.5.1: virtual Common Access Card (CAC) library emulator
 app-emulation/libvirt 3.8.0-r1: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 1.0.0 1.0.0-r1: GLib and GObject mappings for libvirt
-app-emulation/lxc 1.0.8 2.0.7: LinuX Containers userspace utilities
+app-emulation/lxc 1.0.8 2.0.7 2.0.9: LinuX Containers userspace utilities
 app-emulation/lxd 2.14-r1: Fast, dense and secure container management
 app-emulation/q4wine 1.3.5: Qt GUI configuration tool for Wine
 app-emulation/qemu 2.10.1: QEMU + Kernel-based Virtual Machine userland tools
@@ -1163,7 +1163,7 @@ app-office/lyx 2.0.8.1-r1 2.1.5-r1 2.2.3-r1: WYSIWYM frontend for LaTeX, DocBook
 app-office/mdbtools 0.7.1-r2: Set of libraries and utilities for reading Microsoft Access database (MDB) files
 app-office/odeskteam 3.6.1 3.12.9: Project collaboration and tracking software for oDesk.com
 app-office/ooextras 20060909: OOExtras: Extra Templates for OpenOffice.org!
-app-office/openoffice-bin 4.1.3: Apache OpenOffice productivity suite
+app-office/openoffice-bin 4.1.3 4.1.4: Apache OpenOffice productivity suite
 app-office/orage 4.12.1: A time managing application (and panel plug-in) for the Xfce desktop environment
 app-office/pinpoint 0.1.8: A tool for making hackers do excellent presentations
 app-office/planner 0.14.6_p20130520: Project manager for Gnome
@@ -2882,7 +2882,7 @@ dev-lang/php 5.6.32 7.0.25 7.1.11: The PHP language runtime engine
 dev-lang/python 2.7.14-r1 3.4.5-r1 3.5.4-r1 3.6.3-r1: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.4 2.4.5: Python script wrapper
 dev-lang/qu-prolog 10.0: Extended Prolog supporting quantifiers, object-variables and substitutions
-dev-lang/ruby 2.2.8: An object-oriented scripting language
+dev-lang/ruby 2.2.8 2.2.9: An object-oriented scripting language
 dev-lang/scala 2.11.4-r1: The Scala Programming Language
 dev-lang/scala-bin 2.11.8: The Scala Programming Language
 dev-lang/spidermonkey 1.7.0-r3 1.8.5-r6 17.0.0-r4 17.0.0-r5 24.2.0-r3 24.2.0-r4: Stand-alone JavaScript C library
@@ -10432,7 +10432,7 @@ www-apps/trac 1.0.9: Enhanced wiki and issue tracking system for software develo
 www-apps/venus 20100911-r1: A feed aggregator application
 www-apps/viewvc 1.1.26: ViewVC, a web interface to CVS and Subversion
 www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
-www-client/chromium 63.0.3239.84: Open-source version of Google Chrome web browser
+www-client/chromium 63.0.3239.84 63.0.3239.108: Open-source version of Google Chrome web browser
 www-client/conkeror 1.0_pre20140212: A Mozilla-based web browser whose design is inspired by GNU Emacs
 www-client/dillo 3.0.5: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r1: Advanced and well-established text-mode web browser
@@ -10928,7 +10928,7 @@ x11-plugins/astime 2.8-r2: Analogue clock utility for X Windows
 x11-plugins/bfm 0.6.4-r2: a dockapp and gkrellm plug-in combining timecop's bubblemon and wmfishtime
 x11-plugins/bubblemon 1.46-r2: A fun monitoring applet for your desktop, complete with swimming duck
 x11-plugins/docker 1.5: Openbox app which acts as a system tray for KDE and GNOME2
-x11-plugins/enigmail 1.9.6.1-r1 1.9.8.1 1.9.8.3-r1: Mozilla extension to provide GPG support in mail clients
+x11-plugins/enigmail 1.9.6.1-r1 1.9.8.1 1.9.8.3-r1 1.9.9: Mozilla extension to provide GPG support in mail clients
 x11-plugins/epplets 0.12 0.14: Base files for Enlightenment epplets and some epplets
 x11-plugins/fsviewer 0.2.6-r2: A file system viewer for Window Maker
 x11-plugins/gkrellaclock 0.3.4-r1: Nice analog clock for GKrellM2
