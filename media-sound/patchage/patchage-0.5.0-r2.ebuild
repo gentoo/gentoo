@@ -1,19 +1,19 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='threads(+)'
 
-inherit eutils flag-o-matic waf-utils python-any-r1
+inherit flag-o-matic gnome2-utils waf-utils python-any-r1
 
 DESCRIPTION="Modular patch bay for audio and MIDI systems"
-HOMEPAGE="http://wiki.drobilla.net/Patchage"
+HOMEPAGE="http://drobilla.net/software/patchage"
 SRC_URI="http://download.drobilla.net/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="alsa debug lash"
 
 RDEPEND=">=media-libs/raul-0.7.0
@@ -32,9 +32,9 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS README ChangeLog )
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-desktop.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-desktop.patch
+)
 
 src_configure() {
 	append-cxxflags -std=c++11
@@ -42,4 +42,12 @@ src_configure() {
 		$(use debug && echo "--debug") \
 		$(use alsa || echo "--no-alsa") \
 		$(use lash || echo "--no-lash")
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
 }
