@@ -3105,7 +3105,7 @@ dev-libs/liboobs 3.0.0: Liboobs is a wrapping library to the System Tools Backen
 dev-libs/liboop 1.0-r1: low-level event loop management library for POSIX-based operating systems
 dev-libs/liborcus 0.12.1: Standalone file import filter library for spreadsheet documents
 dev-libs/libotf 0.9.13: Library for handling OpenType fonts (OTF)
-dev-libs/libowfat 0.29 0.31-r1: reimplement libdjb - excellent libraries from Dan Bernstein
+dev-libs/libowfat 0.31-r1: reimplement libdjb - excellent libraries from Dan Bernstein
 dev-libs/libp11 0.4.4: Abstraction layer to simplify PKCS#11 API
 dev-libs/libparserutils 0.2.3: library for building efficient parsers, written in C
 dev-libs/libpcre 8.40-r1 8.41: Perl-compatible regular expression library
@@ -6272,8 +6272,8 @@ dev-vcs/tortoisehg 4.3.1: Set of graphical tools for Mercurial
 dev-vcs/vcsh 1.20151229.1: Manage config files in $HOME via fake bare git repositories
 games-action/supermariowar 2.0_beta1-r1: Fan-made multiplayer Super Mario Bros. style deathmatch game
 games-arcade/gnome-nibbles 3.22.2.2: Nibbles clone for Gnome
-games-arcade/gnome-robots 3.22.1 3.22.2: Avoid the robots and make them crash into each other
-games-board/four-in-a-row 3.22.1 3.22.2: Make lines of the same color to win
+games-arcade/gnome-robots 3.22.2: Avoid the robots and make them crash into each other
+games-board/four-in-a-row 3.22.2: Make lines of the same color to win
 games-board/gnome-chess 3.22.2: Play the classic two-player boardgame of chess
 games-board/gnome-mahjongg 3.22.0: Disassemble a pile of tiles by removing matching pairs
 games-board/gnome-mines 3.20.1 3.22.2: Clear hidden mines from a minefield
@@ -6295,11 +6295,11 @@ games-misc/games-envd 0: Environment file for gentoo games
 games-misc/xcowsay 1.3: configurable talking graphical cow (inspired by cowsay)
 games-mud/gnome-mud 0.11.2-r2: GNOME MUD client
 games-puzzle/five-or-more 3.22.2: Five or More Game for GNOME
-games-puzzle/gnome-klotski 3.22.1 3.22.2: Slide blocks to solve the puzzle
+games-puzzle/gnome-klotski 3.22.2: Slide blocks to solve the puzzle
 games-puzzle/gnome-sudoku 3.22.2: Test your logic skills in this number grid puzzle
 games-puzzle/gnome-taquin 3.22.0: Move tiles so that they reach their places
 games-puzzle/gnome-tetravex 3.22.0: Complete the puzzle by matching numbered tiles
-games-puzzle/hitori 3.22.3 3.22.4: Logic puzzle game for GNOME
+games-puzzle/hitori 3.22.4: Logic puzzle game for GNOME
 games-puzzle/lightsoff 3.22.2: Turn off all the lights
 games-puzzle/quadrapassel 3.22.0: Fit falling blocks together
 games-puzzle/swell-foop 3.22.2: Clear the screen by removing groups of colored and shaped tiles
@@ -6367,8 +6367,8 @@ gnome-extra/gnome-characters 3.22.0: Unicode character map viewer and library
 gnome-extra/gnome-clocks 3.22.1: Clocks application for GNOME
 gnome-extra/gnome-color-manager 3.22.2: Color profile manager for the GNOME desktop
 gnome-extra/gnome-commander 1.6.1 1.6.3: A graphical, full featured, twin-panel file manager
-gnome-extra/gnome-contacts 3.22.1 3.22.1-r1: GNOME contact management application
-gnome-extra/gnome-directory-thumbnailer 0.1.8 0.1.9: Thumbnail generator for directories
+gnome-extra/gnome-contacts 3.22.1-r1: GNOME contact management application
+gnome-extra/gnome-directory-thumbnailer 0.1.9: Thumbnail generator for directories
 gnome-extra/gnome-documents 3.22.5: A document manager application for GNOME
 gnome-extra/gnome-dvb-daemon 0.2.90: Setup your DVB devices, record and watch TV shows and browse EPG using GStreamer
 gnome-extra/gnome-getting-started-docs 3.22.0: Help a new user get started in GNOME
@@ -6377,7 +6377,7 @@ gnome-extra/gnome-logs 3.22.1: Log messages and event viewer
 gnome-extra/gnome-power-manager 3.22.2: GNOME power management service
 gnome-extra/gnome-search-tool 3.6.0: Search tool for GNOME 3
 gnome-extra/gnome-shell-extensions 3.22.2: JavaScript extensions for GNOME Shell
-gnome-extra/gnome-shell-extensions-topicons-plus 20 21: Moves legacy tray icons to top panel
+gnome-extra/gnome-shell-extensions-topicons-plus 21: Moves legacy tray icons to top panel
 gnome-extra/gnome-shell-frippery 3.18.2 3.20.0: Unofficial extension pack providing GNOME 2-like features for GNOME 3
 gnome-extra/gnome-system-monitor 3.22.2: The Gnome System Monitor
 gnome-extra/gnome-tweak-tool 3.22.0: Tool to customize GNOME 3 options
@@ -6393,7 +6393,7 @@ gnome-extra/libgsf 1.14.41-r1: The GNOME Structured File Library
 gnome-extra/mousetweaks 3.12.0: Mouse accessibility enhancements for the GNOME desktop
 gnome-extra/nautilus-actions 3.2.3 3.2.4: Configures programs to be launched when files are selected in Nautilus
 gnome-extra/nautilus-dropbox 1.6.2: Store, Sync and Share Files Online
-gnome-extra/nautilus-sendto 3.8.4 3.8.5: A nautilus extension for sending files to locations
+gnome-extra/nautilus-sendto 3.8.5: A nautilus extension for sending files to locations
 gnome-extra/nautilus-tracker-tags 1.10.5 1.12.3: Nautilus extension to tag files for Tracker
 gnome-extra/nemo 2.8.7 3.0.6: A file manager for Cinnamon, forked from Nautilus
 gnome-extra/nm-applet 1.4.6-r1 1.8.6: GNOME applet for NetworkManager
@@ -6405,7 +6405,7 @@ gnome-extra/synapse 0.2.99.2: A program launcher in the style of GNOME Do
 gnome-extra/yelp 3.22.0: Help browser for GNOME
 gnome-extra/yelp-xsl 3.20.1: XSL stylesheets for yelp
 gnome-extra/zeitgeist 0.9.16: Service to log activities and present to other apps
-gnome-extra/zeitgeist-explorer 0.2-r1 0.2-r2: Monitor and inspect Zeitgeist's log at a low level - developer tool
+gnome-extra/zeitgeist-explorer 0.2-r2: Monitor and inspect Zeitgeist's log at a low level - developer tool
 gnome-extra/zenity 3.22.0: Tool to display dialogs from the commandline and shell scripts
 gnustep-apps/aclock 0.4.0: Analog dockapp clock for GNUstep
 gnustep-apps/addresses 0.4.8: Addresses is a Apple Addressbook work alike (standalone and for GNUMail)
@@ -6854,7 +6854,7 @@ lxqt-base/lxqt-runner 0.11.0: LXQt quick launcher
 lxqt-base/lxqt-session 0.11.0: LXQT session manager
 lxqt-base/lxqt-sudo 0.11.0: LXQt GUI frontend for sudo
 mail-client/alpine 2.00-r7: alpine is an easy to use text-based based mail and news client
-mail-client/balsa 2.5.2-r1 2.5.3 2.5.3-r1: Email client for GNOME
+mail-client/balsa 2.5.2-r1 2.5.3-r1: Email client for GNOME
 mail-client/claws-mail 3.15.0-r2: An email client (and news reader) based on GTK+
 mail-client/clawsker 0.7.8: Applet to edit Claws Mail's hidden preferences
 mail-client/cone 0.92: CONE: COnsole News reader and Emailer
@@ -7175,7 +7175,7 @@ media-gfx/graphicsmagick 1.3.25 1.3.26 1.3.27: Collection of tools and libraries
 media-gfx/graphite2 1.3.10: Library providing rendering capabilities for complex non-Roman writing systems
 media-gfx/graphviz 2.38.0-r1: Open Source Graph Visualization Software
 media-gfx/grub-splashes 20091109: Collection of grub splashes
-media-gfx/gthumb 3.4.4.1 3.4.5: Image viewer and browser for Gnome
+media-gfx/gthumb 3.4.5: Image viewer and browser for Gnome
 media-gfx/gtkam 1.0: A frontend for gPhoto 2
 media-gfx/gtkimageview 1.6.4: A simple image viewer widget for GTK
 media-gfx/hugin 2016.2.0: GUI for the creation & processing of panoramic images
@@ -7297,7 +7297,7 @@ media-libs/celt 0.5.1.3 0.11.1-r1: CELT is a very low delay audio codec designed
 media-libs/chromaprint 1.2 1.4.2: A client-side library that implements a custom algorithm for extracting fingerprints
 media-libs/clutter 1.26.2: Clutter is a library for creating graphical user interfaces
 media-libs/clutter-gst 2.0.18 3.0.24: GStreamer integration library for Clutter
-media-libs/clutter-gtk 1.8.2 1.8.4: Library for embedding a Clutter canvas (stage) in GTK+
+media-libs/clutter-gtk 1.8.4: Library for embedding a Clutter canvas (stage) in GTK+
 media-libs/cogl 1.22.2: A library for using 3D graphics hardware to draw pretty pictures
 media-libs/coin 3.1.3-r2: A high-level 3D graphics toolkit, fully compatible with SGI Open Inventor 2.1
 media-libs/compface 1.5.2: Utilities and library to convert to/from X-Face format
@@ -7342,7 +7342,7 @@ media-libs/glu 9.0.0-r1: The OpenGL Utility Library
 media-libs/glyr 1.0.5: A music related metadata searchengine, both with commandline interface and C API
 media-libs/gmtk 1.0.8 1.0.9: GTK+ widget and function libraries for gnome-mplayer
 media-libs/gnonlin 0.10.17 1.4.0-r1: Set of GStreamer elements to ease the creation of non-linear multimedia editors
-media-libs/grilo 0.2.15 0.3.3 0.3.4: A framework for easy media discovery and browsing
+media-libs/grilo 0.2.15 0.3.4: A framework for easy media discovery and browsing
 media-libs/gsound 1.0.2-r1: Thin GObject wrapper around the libcanberra sound event library
 media-libs/gst-plugins-bad 0.10.23-r4 1.10.5 1.12.3: Less plugins for GStreamer
 media-libs/gst-plugins-base 0.10.36-r2 1.10.5 1.12.3: Basepack of plugins for gstreamer
@@ -7389,7 +7389,7 @@ media-libs/libcanberra 0.30-r4 0.30-r5: Portable sound event library
 media-libs/libcdaudio 0.99.12-r1: Library of cd audio related routines
 media-libs/libcddb 1.3.2 1.3.2-r1: A library for accessing a CDDB server
 media-libs/libcdr 0.1.4: Library parsing the Corel cdr documents
-media-libs/libchamplain 0.12.15 0.12.16: Clutter based world map renderer
+media-libs/libchamplain 0.12.16: Clutter based world map renderer
 media-libs/libclalsadrv 1.2.2 2.0.0: ALSA driver C++ access library
 media-libs/libclastfm 0.5: C API library to the last.fm web service (unofficial)
 media-libs/libclthreads 1.0.2 2.2.1 2.4.0-r1: An audio library by Fons Adriaensen <fons.adriaensen@skynet.be>
@@ -7450,7 +7450,7 @@ media-libs/liblscp 0.5.5: a C++ library for the Linux Sampler control protocol
 media-libs/libmad 0.15.1b-r8: "M"peg "A"udio "D"ecoder library
 media-libs/libmatemixer 1.12.1-r1: Mixer library for MATE Desktop
 media-libs/libmatroska 1.4.5 1.4.8: Extensible multimedia container format based on EBML
-media-libs/libmediaart 1.9.1 1.9.4: Manages, extracts and handles media art caches
+media-libs/libmediaart 1.9.4: Manages, extracts and handles media art caches
 media-libs/libmediainfo 0.7.99: MediaInfo libraries
 media-libs/libmetalink 0.1.0-r1 0.1.1 0.1.1-r1: Library for handling Metalink files
 media-libs/libmikmod 3.3.8: A library to play a wide range of module formats
@@ -10065,7 +10065,7 @@ sys-kernel/bliss-initramfs 6.8.3-r2 7.1.0: Boot your system's rootfs from ZFS, L
 sys-kernel/dracut 044-r1 045-r2: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.52.3 3.4.52.4-r2: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 66: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 3.10.107-r1 4.1.43-r1 4.4.87-r1 4.9.49-r1 4.12.12 4.14.7 4.14.8-r1: Full sources including the Gentoo patchset for the 4.14 kernel tree
+sys-kernel/gentoo-sources 3.10.107-r1 4.1.43-r1 4.4.87-r1 4.9.49-r1 4.12.12 4.14.8-r1: Full sources including the Gentoo patchset for the 4.14 kernel tree
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
 sys-kernel/linux-firmware 20170314: Linux firmware files
 sys-kernel/linux-headers 3.18 4.3 4.4: Linux system headers
