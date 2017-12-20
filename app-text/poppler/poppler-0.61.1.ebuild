@@ -65,6 +65,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.61.0-respect-cflags.patch"
 	"${FILESDIR}/${PN}-0.33.0-openjpeg2.patch"
 	"${FILESDIR}/${PN}-0.40-FindQt4.patch"
+	"${FILESDIR}/${PN}-0.57.0-disable-internal-jpx.patch"
 )
 
 src_prepare() {
