@@ -5,7 +5,7 @@ EAPI="6"
 
 inherit eutils toolchain-funcs multilib pam systemd
 
-IUSE="dane dcc +dkim dlfunc dmarc +dnsdb doc dovecot-sasl dsn exiscan-acl gnutls ipv6 ldap libressl lmtp maildir mbx mysql nis pam perl pkcs11 postgres +prdr proxy radius redis sasl selinux spf sqlite srs ssl syslog tcpd tpda X elibc_glibc"
+IUSE="dane dcc +dkim dlfunc dmarc +dnsdb doc dovecot-sasl dsn exiscan-acl gnutls ipv6 ldap libressl lmtp maildir mbx mysql nis pam perl pkcs11 postgres +prdr proxy radius redis sasl selinux spf sqlite srs ssl syslog tcpd +tpda X elibc_glibc"
 REQUIRED_USE="
 	dane? ( !gnutls )
 	dmarc? ( spf dkim )
@@ -95,9 +95,6 @@ src_prepare() {
 	epatch "${FILESDIR}"/exim-4.82-makefile-freebsd.patch # 235785
 	epatch "${FILESDIR}"/exim-4.89-as-needed-ldflags.patch # 352265, 391279
 	epatch "${FILESDIR}"/exim-4.76-crosscompile.patch # 266591
-	epatch "${FILESDIR}"/exim-4.89-CVE-2017-1000369.patch # 622212
-	epatch "${FILESDIR}"/${P}-transport-crash.patch # from git/in next release
-	epatch "${FILESDIR}"/${P}-address-expando-crash.patch # from git/in next release
 
 	if use maildir ; then
 		epatch "${FILESDIR}"/exim-4.20-maildir.patch
@@ -148,7 +145,8 @@ src_configure() {
 	EOC
 
 	# if we use libiconv, now is the time to tell so
-	use !elibc_glibc && use !elibc_musl && echo "EXTRALIBS_EXIM=-liconv" >> Makefile
+	use !elibc_glibc && use !elibc_musl && \
+		echo "EXTRALIBS_EXIM=-liconv" >> Makefile
 
 	# support for IPv6
 	if use ipv6; then
@@ -259,7 +257,6 @@ src_configure() {
 	if use exiscan-acl; then
 		cat >> Makefile <<- EOC
 			WITH_CONTENT_SCAN=yes
-			WITH_OLD_DEMIME=yes
 		EOC
 	fi
 
@@ -276,6 +273,14 @@ src_configure() {
 		# PRDR is enabled by default
 		cat >> Makefile <<- EOC
 			DISABLE_PRDR=yes
+		EOC
+	fi
+
+	# Transport post-delivery actions
+	if ! use tpda; then
+		# EVENT is enabled by default
+		cat >> Makefile <<- EOC
+			DISABLE_EVENT=yes
 		EOC
 	fi
 
@@ -378,17 +383,10 @@ src_configure() {
 		EOC
 	fi
 
-	# Transport post-delivery actions
-	if use tpda; then
-		cat >> Makefile <<- EOC
-			EXPERIMENTAL_EVENT=yes
-		EOC
-	fi
-
-	# Delivery Sender Notifications
+	# Delivery Sender Notifications extra information in fail message
 	if use dsn; then
 		cat >> Makefile <<- EOC
-			EXPERIMENTAL_DSN=yes
+			EXPERIMENTAL_DSN_INFO=yes
 		EOC
 	fi
 
@@ -524,8 +522,7 @@ pkg_postinst() {
 		einfo "configure DMARC, for usage see the documentation at "
 		einfo "experimental-spec.txt."
 	fi
-	use tpda && einfo "TPDA/EVENT support is experimental"
-	use dsn && einfo "DSN support is experimental"
+	use dsn && einfo "extra information in fail DSN message is experimental"
 	elog "The obsolete acl condition 'demime' is removed, the replacements"
 	elog "are the ACLs acl_smtp_mime and acl_not_smtp_mime"
 }
