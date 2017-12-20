@@ -739,6 +739,10 @@
     <url>https://wiki.gentoo.org/wiki/Project:Crossdev</url>
     <description>Subproject of toolchain for advanced wizards</description>
     <member>
+      <email>slyfox@gentoo.org</email>
+      <name>Sergei Trofimovich</name>
+    </member>
+    <member>
       <email>vapier@gentoo.org</email>
       <name>Mike Frysinger</name>
     </member>
