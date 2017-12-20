@@ -47,7 +47,7 @@ src_configure() {
 	econf \
 		$(use_with lash) \
 		$(use_with lv2 lv2) \
-		$(use_with lv2 lv2-dir /usr/$(get_libdir)/lv2) \
+		$(usex lv2 "--lv2-dir=/usr/$(get_libdir)/lv2" "") \
 		$(use_enable static-libs static) \
 		$(use_enable cpu_flags_x86_sse sse) \
 		$(use_enable experimental)
