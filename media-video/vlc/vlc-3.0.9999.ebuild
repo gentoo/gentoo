@@ -290,6 +290,8 @@ src_configure() {
 	# FIXME: Needs libresid-builder from libsidplay:2 which is in another directory...
 	append-ldflags "-L/usr/$(get_libdir)/sidplay/builders/"
 
+	xdg_environment_reset # bug 608256
+
 	if use truetype || use projectm ; then
 		local dejavu="/usr/share/fonts/dejavu/"
 		myconf="--with-default-font=${dejavu}/DejaVuSans.ttf \
