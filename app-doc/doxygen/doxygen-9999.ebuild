@@ -15,7 +15,6 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
 	S="${WORKDIR}/${PN}-Release_${PV//\./_}"
 fi
-SRC_URI+=" https://dev.gentoo.org/~xarthisius/distfiles/doxywizard.png"
 
 DESCRIPTION="Documentation system for most programming languages"
 HOMEPAGE="https://www.stack.nl/~dimitri/doxygen/"
@@ -85,12 +84,13 @@ src_prepare() {
 		doc/maintainers.txt || die
 
 	if is-flagq "-O3" ; then
-		echo
+		ewarn
 		ewarn "Compiling with -O3 is known to produce incorrectly"
 		ewarn "optimized code which breaks doxygen."
-		echo
+		ewarn
+		elog
 		elog "Continuing with -O2 instead ..."
-		echo
+		elog
 		replace-flags "-O3" "-O2"
 	fi
 }
@@ -119,7 +119,7 @@ src_compile() {
 				{Doxyfile,doc/Doxyfile} \
 				|| die "disabling dot failed"
 		fi
-		emake -C "${BUILD_DIR}" docs
+		cmake-utils_src_make -C "${BUILD_DIR}" docs
 	fi
 }
 

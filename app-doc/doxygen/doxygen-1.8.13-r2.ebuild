@@ -122,7 +122,7 @@ src_compile() {
 				{Doxyfile,doc/Doxyfile} \
 				|| die "disabling dot failed"
 		fi
-		emake -C "${BUILD_DIR}" docs
+		cmake-utils_src_make -C "${BUILD_DIR}" docs
 	fi
 }
 
