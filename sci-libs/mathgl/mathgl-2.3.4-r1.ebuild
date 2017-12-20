@@ -16,7 +16,7 @@ LICENSE="LGPL-3"
 SLOT="0/7.4.1"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc fltk gif glut gsl hdf hdf5 jpeg lua mpi octave opengl openmp pdf
-	png python qt4 qt5 static-libs threads wxwidgets zlib"
+	png python qt5 static-libs threads wxwidgets zlib"
 
 LANGS="ru"
 for l in ${LANGS}; do
@@ -40,7 +40,12 @@ RDEPEND="
 	pdf? ( media-libs/libharu )
 	png? ( media-libs/libpng:0 )
 	python? ( dev-python/numpy[${PYTHON_USEDEP}] ${PYTHON_DEPS} )
-	qt4? ( dev-qt/qtgui:4 )
+	qt5? (
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtprintsupport:5
+		dev-qt/qtwidgets:5
+	)
 	wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}[X] )
 	zlib? ( sys-libs/zlib )"
 
@@ -117,8 +122,9 @@ src_configure() {
 		$(cmake-utils_use openmp enable-openmp)
 		$(cmake-utils_use pdf enable-pdf)
 		$(cmake-utils_use png enable-png)
-		$(cmake-utils_use qt4 enable-qt4)
+		-Denable-qt4=OFF
 		$(cmake-utils_use qt5 enable-qt5)
+		$(cmake-utils_use qt5 enable-qt5asqt)
 		$(cmake-utils_use threads enable-pthread)
 		$(cmake-utils_use threads enable-pthr-widget)
 		$(cmake-utils_use python enable-python)
@@ -140,7 +146,7 @@ src_install() {
 	if ! use static-libs; then
 		rm "${ED}"/usr/$(get_libdir)/*.a || die
 	fi
-	if use qt4 ; then
+	if use qt5 ; then
 		local lang
 		insinto /usr/share/udav
 		for lang in ${LANGS} ; do
