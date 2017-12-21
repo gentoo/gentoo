@@ -878,6 +878,7 @@ app-i18n/man-pages-da 0.1.2: A somewhat comprehensive collection of Danish Linux
 app-i18n/man-pages-de 1.15: A somewhat comprehensive collection of Linux german man page translations
 app-i18n/man-pages-fr 3.40.1: A somewhat comprehensive collection of french Linux man pages
 app-i18n/man-pages-it 2.80-r1: A somewhat comprehensive collection of Italian Linux man pages
+app-i18n/man-pages-ja 20130215: A collection of manual pages translated into Japanese
 app-i18n/man-pages-nl 0.13.3: A somewhat comprehensive collection of Dutch Linux man pages
 app-i18n/man-pages-pl 0_pre20070628-r2: A collection of Polish translations of Linux manual pages
 app-i18n/man-pages-ro 0.2: A somewhat comprehensive collection of Romanian Linux man pages
