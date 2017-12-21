@@ -5,12 +5,12 @@ EAPI=6
 inherit autotools eutils flag-o-matic pam
 
 DESCRIPTION="Just another screensaver application for X"
-HOMEPAGE="http://www.tux.org/~bagleyd/xlockmore.html"
-SRC_URI="http://www.tux.org/~bagleyd/xlock/${P}.tar.xz"
+HOMEPAGE="http://www.sillycycle.com/xlockmore.html"
+SRC_URI="http://www.sillycycle.com/xlock/${P/_alpha/ALPHA}.tar.xz"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm hppa ppc ppc64 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="crypt debug gtk imagemagick motif nas opengl pam truetype xinerama xlockrc vtlock"
 
 REQUIRED_USE="
@@ -45,10 +45,11 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.46-freetype261.patch
-	"${FILESDIR}"/${PN}-5.47-_BSD_SOURCE.patch
 	"${FILESDIR}"/${PN}-5.47-CXX.patch
 	"${FILESDIR}"/${PN}-5.47-strip.patch
+	"${FILESDIR}"/${PN}-5.55-soundpath.patch
 )
+S=${WORKDIR}/${P/_alpha/ALPHA}
 
 src_prepare() {
 	default
@@ -65,31 +66,33 @@ src_configure() {
 			myconf=( --without-ftgl )
 	fi
 
-	econf \
-		$(use_enable pam) \
-		$(use_enable xlockrc) \
-		$(use_enable vtlock) \
-		$(use_with crypt) \
-		$(use_with debug editres) \
-		$(use_with gtk gtk2) \
-		$(use_with imagemagick magick) \
-		$(use_with motif) \
-		$(use_with nas) \
-		$(use_with opengl mesa) \
-		$(use_with opengl) \
-		$(use_with truetype freetype) \
-		$(use_with truetype ttf) \
-		$(use_with xinerama) \
-		--disable-mb \
-		--enable-appdefaultdir=/usr/share/X11/app-defaults \
-		--enable-syslog \
-		--enable-vtlock \
-		--without-esound \
-		--without-gtk \
-		${myconf[@]}
+	myconf+=(
+		$(use_enable pam)
+		$(use_enable xlockrc)
+		$(use_enable vtlock)
+		$(use_with crypt)
+		$(use_with debug editres)
+		$(use_with gtk gtk2)
+		$(use_with imagemagick magick)
+		$(use_with motif)
+		$(use_with nas)
+		$(use_with opengl mesa)
+		$(use_with opengl)
+		$(use_with truetype freetype)
+		$(use_with truetype ttf)
+		$(use_with xinerama)
+		--disable-mb
+		--enable-appdefaultdir=/usr/share/X11/app-defaults
+		--enable-syslog
+		--enable-vtlock
+		--without-esound
+		--without-gtk
+	)
+	econf "${myconf[@]}"
 }
 
 src_install() {
+	local DOCS=( README docs/{3d.howto,cell_automata,HACKERS.GUIDE,Purify,Revisions,TODO} )
 	default
 
 	pamd_mimic_system xlock auth
@@ -100,7 +103,6 @@ src_install() {
 		fperms 4755 /usr/bin/xlock
 	fi
 
-	dodoc README docs/{3d.howto,cell_automata,HACKERS.GUIDE,Purify,Revisions,TODO}
 	docinto html
 	dodoc docs/xlock.html
 }
