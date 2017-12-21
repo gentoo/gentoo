@@ -68,7 +68,7 @@ src_install() {
 
 	emake DESTDIR="${D}" install-configs
 	fowners -R root:${PN} /etc/burp
-	fperms 0775 /etc/burp
+	fperms 0750 /etc/burp
 	fperms 0640 /etc/burp/burp-server.conf
 	fperms 0750 /etc/burp/clientconfdir
 
