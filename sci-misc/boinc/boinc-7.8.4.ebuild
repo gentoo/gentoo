@@ -5,7 +5,7 @@ EAPI=6
 
 WX_GTK_VER=3.0-gtk3
 
-inherit autotools eutils linux-info systemd user versionator wxwidgets
+inherit autotools eutils gnome2-utils linux-info systemd user versionator wxwidgets
 
 MY_PV=$(get_version_component_range 1-2)
 
@@ -67,7 +67,7 @@ pkg_setup() {
 			ewarn "Can't check the linux kernel configuration."
 			ewarn "You might be missing vsyscall support."
 		elif kernel_is -ge 4 4 \
-		    && linux_chkconfig_present LEGACY_VSYSCALL_NONE; then
+			&& linux_chkconfig_present LEGACY_VSYSCALL_NONE; then
 			ewarn "You do not have vsyscall emulation enabled."
 			ewarn "This will prevent some boinc projects from running."
 			ewarn "Please enable vsyscall emulation:"
@@ -145,6 +145,8 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
+	gnome2_icon_cache_update
+
 	elog
 	elog "You are using the source compiled version of boinc."
 	use X && elog "The graphical manager can be found at /usr/bin/boincmgr"
@@ -178,4 +180,8 @@ pkg_postinst() {
 		elog "the correct OpenCL implementation for your graphic card."
 	fi
 	elog
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
 }
