@@ -878,7 +878,6 @@ app-i18n/man-pages-da 0.1.2: A somewhat comprehensive collection of Danish Linux
 app-i18n/man-pages-de 1.15: A somewhat comprehensive collection of Linux german man page translations
 app-i18n/man-pages-fr 3.40.1: A somewhat comprehensive collection of french Linux man pages
 app-i18n/man-pages-it 2.80-r1: A somewhat comprehensive collection of Italian Linux man pages
-app-i18n/man-pages-ja 20130215: A collection of manual pages translated into Japanese
 app-i18n/man-pages-nl 0.13.3: A somewhat comprehensive collection of Dutch Linux man pages
 app-i18n/man-pages-pl 0_pre20070628-r2: A collection of Polish translations of Linux manual pages
 app-i18n/man-pages-ro 0.2: A somewhat comprehensive collection of Romanian Linux man pages
@@ -7998,7 +7997,7 @@ media-sound/rexima 1.4-r1: A curses-based interactive mixer which can also be us
 media-sound/rhythmbox 3.4.1-r1: Music management and playback software for GNOME
 media-sound/rip 1.07: A command-line based audio CD ripper and mp3 encoder
 media-sound/ripperx 2.7.3: a GTK program to rip CD audio tracks and encode them to the Ogg, MP3, or FLAC formats
-media-sound/rosegarden 13.04 17.04: MIDI and audio sequencer and notation editor
+media-sound/rosegarden 17.04: MIDI and audio sequencer and notation editor
 media-sound/rplay 3.3.2-r1: Play sounds on remote Unix systems, without sending audio data over the network
 media-sound/saydate 0.3.0: A Linux shell program that talks the date and system uptime
 media-sound/schismtracker 20120105: Free implementation of Impulse Tracker, a tool used to create high quality music
@@ -10782,7 +10781,7 @@ x11-misc/idesk 0.7.5-r3: Utility to place icons on the root window
 x11-misc/idesk-extras 1.37-r2: Graphical configuration for iDesk plus icons
 x11-misc/imake 1.0.7: C preprocessor interface to the make utility
 x11-misc/imwheel 1.0.0_pre12: mouse tool for advanced features such as wheels and 3+ buttons
-x11-misc/kdocker 4.8-r2: Helper to dock any application into the system tray
+x11-misc/kdocker 5.0: Helper to dock any application into the system tray
 x11-misc/kronometer 2.1.5: Stopwatch application
 x11-misc/ktsuss 2.1: Graphical version of su written in C and GTK+ 2
 x11-misc/lightdm 1.18.3: A lightweight display manager
