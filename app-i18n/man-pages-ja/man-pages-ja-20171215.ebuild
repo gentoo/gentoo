@@ -63,7 +63,7 @@ src_install() {
 		pkg=
 	done
 
-	dodoc README || die
+	dodoc README
 
 	cd "${WORKDIR}"/${GENTOO_MAN_P}
 
@@ -77,7 +77,7 @@ src_install() {
 		fi
 	done
 
-	newdoc ChangeLog ChangeLog.GentooJP || die
+	newdoc ChangeLog ChangeLog.GentooJP
 
 }
 
