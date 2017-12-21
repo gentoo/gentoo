@@ -3,8 +3,8 @@ DESCRIPTION=Meta package to facilitate easy use of x11-themes/mate-themes
 EAPI=6
 HOMEPAGE=https://wiki.gentoo.org/wiki/No_homepage
 IUSE=gtk2-only
-KEYWORDS=amd64 ~arm x86
+KEYWORDS=amd64 ~arm ~arm64 x86
 LICENSE=metapackage
 RDEPEND=|| ( gtk2-only? ( !!x11-libs/gtk+:3 x11-themes/mate-themes:0 ) ( =x11-libs/gtk+-3.16*:3 =x11-themes/mate-themes-3.16*:0/3.16 ) ( =x11-libs/gtk+-3.18*:3 =x11-themes/mate-themes-3.18*:0/3.18 ) ( =x11-libs/gtk+-3.20*:3 =x11-themes/mate-themes-3.20*:0/3.20 ) ( =x11-libs/gtk+-3.22*:3 =x11-themes/mate-themes-3.22*:0/3.22 ) )
 SLOT=0
-_md5_=23ff94431bd04fc8db0f7f86d6298a96
+_md5_=c228ea863fe8eb844e6d07b30d874378
