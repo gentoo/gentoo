@@ -982,7 +982,7 @@ app-misc/editor-wrapper 4: Wrapper scripts that will execute EDITOR or PAGER
 app-misc/emelfm2 0.9.1-r1: A file manager that implements the popular two-pane design
 app-misc/empty 0.6.20b: Small shell utility, similar to expect(1)
 app-misc/esekeyd 1.2.7: Multimedia key daemon that uses the Linux event interface
-app-misc/evtest 1.29 1.30: test program for capturing input device events
+app-misc/evtest 1.30: test program for capturing input device events
 app-misc/fdupes 1.5.1: Identify/delete duplicate files residing within specified directories
 app-misc/figlet 2.2.5: program for making large letters out of ordinary text
 app-misc/freemind 1.0.1-r3: Mind-mapping software written in Java
@@ -1054,7 +1054,7 @@ app-misc/nut 20.1: Record what you eat and analyze your nutrient levels
 app-misc/ondir 0.2.2-r1: Automatically execute scripts as you traverse directories
 app-misc/oneko 1.2-r2: A cat, dog and others which chase the mouse or windows around the screen
 app-misc/pal 0.4.3-r2: Command-line calendar program
-app-misc/pax-utils 1.1.6 1.1.6-r1 1.1.7: ELF utils that can check files for security relevant properties
+app-misc/pax-utils 1.1.7: ELF utils that can check files for security relevant properties
 app-misc/pdfpc 3.1.1: Presenter console with multi-monitor support for PDF files
 app-misc/perltrash 0.3-r1: Command-line trash can emulation
 app-misc/pfm 2.12.3: A terminal-based file manager written in Perl
@@ -3079,7 +3079,7 @@ dev-libs/liblogging 1.0.5 1.0.6: Liblogging is an easy to use, portable, open so
 dev-libs/liblognorm 1.1.0 1.1.2-r1 2.0.1 2.0.2 2.0.3: Fast samples-based log normalization library
 dev-libs/liblouis 2.5.3: An open-source braille translator and back-translator
 dev-libs/libltdl 1.3.5 1.5.26 2.4.6: A shared library tool for developers
-dev-libs/liblzw 0.1.2 0.2: small C library for reading LZW compressed files (.Z)
+dev-libs/liblzw 0.2: small C library for reading LZW compressed files (.Z)
 dev-libs/libmaa 1.3.2: Library with low-level data structures which are helpful for writing compilers
 dev-libs/libmail 0.3-r3: A mail handling library
 dev-libs/libmateweather 1.12.2: MATE library to access weather information from online services
