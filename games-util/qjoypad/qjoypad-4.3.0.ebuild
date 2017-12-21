@@ -7,7 +7,7 @@ inherit cmake-utils desktop
 
 DESCRIPTION="Translate gamepad/joystick input into key strokes/mouse actions in X"
 HOMEPAGE="https://github.com/panzi/qjoypad"
-SRC_URI="https://github.com/panzi/qjoypad/archive/v${PV}.tar.gz"
+SRC_URI="https://github.com/panzi/qjoypad/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
