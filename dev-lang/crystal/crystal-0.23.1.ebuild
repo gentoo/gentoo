@@ -38,14 +38,14 @@ RDEPEND="${DEPEND}
 "
 
 PATCHES=(
-	"${WORKDIR}"/${P}-patchset/${PN}-0.23.0-verbose-LDFLAGS.patch
+	"${FILESDIR}"/${PN}-0.23.0-verbose-LDFLAGS.patch
 	"${WORKDIR}"/${P}-patchset/${PN}-0.23.1-llvm-5.patch
 )
 
 src_prepare() {
 	default
 
-	use blocking-stdio-hack && eapply "${WORKDIR}"/${P}-patchset/${PN}-0.22.0-blocking-stdio-hack.patch
+	use blocking-stdio-hack && eapply "${FILESDIR}"/"${PN}"-0.22.0-blocking-stdio-hack.patch
 }
 
 src_compile() {
