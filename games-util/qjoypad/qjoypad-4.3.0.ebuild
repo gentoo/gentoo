@@ -33,8 +33,7 @@ src_install() {
 	cmake-utils_src_install
 
 	local i
-	dodoc README.md
-	cd icons
+	cd icons || die
 	for i in *.png; do
 		newicon ${i} ${i/gamepad/qjoypad}
 	done
