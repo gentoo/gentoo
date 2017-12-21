@@ -10,7 +10,7 @@ else
 	inherit versionator
 	MATE_BRANCH="$(get_version_component_range 1-2)"
 	MATE_THEMES_V=3
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
 
 SRC_URI=""
