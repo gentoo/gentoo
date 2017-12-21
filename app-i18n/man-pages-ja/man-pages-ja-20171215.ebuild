@@ -1,17 +1,17 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="3"
+EAPI="6"
 GENTOO_MAN_P="portage-${PN}-20060415"
 
 DESCRIPTION="A collection of manual pages translated into Japanese"
-HOMEPAGE="http://linuxjm.sourceforge.jp/ http://www.gentoo.gr.jp/jpmain/translation.xml"
-SRC_URI="http://linuxjm.sourceforge.jp/${P}.tar.gz
+HOMEPAGE="http://linuxjm.osdn.jp/ https://github.com/hattya/portage-man-pages-ja"
+SRC_URI="http://linuxjm.osdn.jp/${P}.tar.gz
 	https://dev.gentoo.org/~hattya/distfiles/${GENTOO_MAN_P}.tar.gz"
 
 LICENSE="GPL-2+ GPL-2 LGPL-2+ LGPL-2 BSD MIT ISC HPND FDL-1.1+ LDP-1 LDP-1a man-pages Texinfo-manual"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 s390 sh sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE=""
 
 RDEPEND="virtual/man"
@@ -25,12 +25,14 @@ src_prepare() {
 	rm -f manual/*/man1/{chfn,chsh,newgrp,su,passwd,groups}.1 || die
 	rm -f manual/*/man8/{vigr,vipw}.8 || die
 	# - app-arch/rpm +nls
-	rm -f manual/rpm/man8/rpm*.8 || die
+	rm -rf manual/rpm || die
 
 	for f in manual/*/man8/ld{,-linux}.so.8 ; do
 		mv ${f} ${f/.so.8/.so.ja.8} || die
 	done
 	mv "${WORKDIR}"/${GENTOO_MAN_P}/portage/g-cpan.pl{,.ja}.1 || die
+
+	eapply_user
 }
 
 src_compile() {
@@ -61,7 +63,7 @@ src_install() {
 		pkg=
 	done
 
-	dodoc README || die
+	dodoc README
 
 	cd "${WORKDIR}"/${GENTOO_MAN_P}
 
@@ -75,17 +77,19 @@ src_install() {
 		fi
 	done
 
-	newdoc ChangeLog ChangeLog.GentooJP || die
+	newdoc ChangeLog ChangeLog.GentooJP
 
 }
 
 pkg_postinst() {
 
 	echo
+	elog "JM (Japanese Manual) project has used utf8 encoding"
+	elog "since 2012/04."
 	elog "You need to set appropriate LANG variables to use"
 	elog "Japanese manpages."
 	elog "e.g."
-	elog "\tLANG=\"ja_JP.eucJP\""
+	elog "\tLANG=\"ja_JP.utf8\""
 	elog "\texport LANG"
 	echo
 
