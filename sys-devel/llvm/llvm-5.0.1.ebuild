@@ -14,6 +14,7 @@ inherit cmake-utils eapi7-ver flag-o-matic multilib-minimal \
 DESCRIPTION="Low Level Virtual Machine"
 HOMEPAGE="https://llvm.org/"
 SRC_URI="https://releases.llvm.org/${PV/_//}/${P/_/}.src.tar.xz
+	https://dev.gentoo.org/~mgorny/dist/llvm/${P}-patchset.tar.bz2
 	!doc? ( https://dev.gentoo.org/~mgorny/dist/llvm/${P}-manpages.tar.bz2 )"
 
 # Keep in sync with CMakeLists.txt
@@ -75,9 +76,10 @@ src_prepare() {
 	# https://bugs.gentoo.org/show_bug.cgi?id=565358
 	eapply "${FILESDIR}"/9999/0007-llvm-config-Clean-up-exported-values-update-for-shar.patch
 
-	# Backport the fix for dlclose() causing option parser mess
-	# e.g. https://bugs.gentoo.org/617154
-	eapply "${FILESDIR}"/5.0.1/0001-cmake-Pass-Wl-z-nodelete-on-Linux-to-prevent-unloadi.patch
+	# Apply the backported patches
+	eapply "${WORKDIR}/${P}-patchset"
+	# Copy the new binary file (we don't support git binary patches)
+	cp {"${WORKDIR}/${P}-patchset",.}/test/tools/llvm-symbolizer/Inputs/print_context.o || die
 
 	# disable use of SDK on OSX, bug #568758
 	sed -i -e 's/xcrun/false/' utils/lit/lit/util.py || die
