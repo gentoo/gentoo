@@ -17,7 +17,7 @@ IUSE=""
 
 # 	portmidi? ( media-libs/portmidi[${PYTHON_USEDEP}] ) # bug 550820
 DEPEND="
-	dev-python/PyQt5[svg,${PYTHON_USEDEP}]
+	dev-python/PyQt5[printsupport,svg,${PYTHON_USEDEP}]
 	>=dev-python/python-ly-0.9.4[${PYTHON_USEDEP}]
 	dev-python/python-poppler-qt5[${PYTHON_USEDEP}]
 	>=media-sound/lilypond-2.14.2"
