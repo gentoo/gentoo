@@ -1,12 +1,12 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 PYTHON_REQ_USE='threads(+)'
 
-inherit base python-any-r1 waf-utils bash-completion-r1
+inherit python-any-r1 waf-utils bash-completion-r1 multilib-build multilib-minimal
 
 DESCRIPTION="Library to make the use of LV2 plugins as simple as possible for applications"
 HOMEPAGE="http://drobilla.net/software/lilv/"
@@ -17,37 +17,42 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="doc +dyn-manifest static-libs test"
 
-RDEPEND=">=media-libs/lv2-1.14.0
-	>=media-libs/sratom-0.4.0
-	>=dev-libs/serd-0.14.0
-	>=dev-libs/sord-0.13.0"
+RDEPEND=">=media-libs/lv2-1.14.0-r1[${MULTILIB_USEDEP}]
+	>=media-libs/sratom-0.6.0-r1[${MULTILIB_USEDEP}]
+	>=dev-libs/serd-0.28.0-r1[${MULTILIB_USEDEP}]
+	>=dev-libs/sord-0.16.0-r1[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	doc? ( app-doc/doxygen )
-	virtual/pkgconfig"
+	virtual/pkgconfig[${MULTILIB_USEDEP}]"
 
 DOCS=( "AUTHORS" "NEWS" "README" )
 
 src_prepare() {
 	epatch "${FILESDIR}/includedir.patch"
 	sed -i -e 's/^.*run_ldconfig/#\0/' wscript || die
+	default
+	multilib_copy_sources
 }
 
-src_configure() {
+multilib_src_configure() {
 	waf-utils_src_configure \
 		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
 		--no-bash-completion \
-		$(use test && echo "--test") \
-		$(use doc && echo "--docs") \
-		$(use static-libs && echo "--static") \
-		$(use dyn-manifest && echo "--dyn-manifest")
+		$(multilib_native_usex doc --docs "") \
+		$(usex test --test "") \
+		$(usex static-libs --static "") \
+		$(usex dyn-manifest --dyn-manifest "")
 }
 
-src_test() {
+multilib_src_test() {
 	./waf test || die
 }
 
-src_install() {
+multilib_src_install() {
 	waf-utils_src_install
+}
+
+multilib_src_install_all() {
 	newbashcomp utils/lilv.bash_completion ${PN}
 }
