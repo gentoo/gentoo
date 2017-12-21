@@ -44,7 +44,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.11.6-per-user.patch
 	"${FILESDIR}"/${PN}-1.11.6-respect-CXXFLAGS.patch
 	"${FILESDIR}"/${PN}-1.11.6-respect-LDFLAGS.patch
-	"${FILESDIR}"/${PN}-1.11.14-glibc-2.26.patch
 )
 
 DISABLE_AUTOFORMATTING=yes
