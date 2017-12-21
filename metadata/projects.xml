@@ -741,7 +741,7 @@
     <email>crossdev@gentoo.org</email>
     <name>Gentoo Crossdev maintainers</name>
     <url>https://wiki.gentoo.org/wiki/Project:Crossdev</url>
-    <description>Subproject of toolchain for advanced wizards</description>
+    <description>Crossdev is a small wrapper script around emerge to build cross-toolchains.</description>
     <member>
       <email>slyfox@gentoo.org</email>
       <name>Sergei Trofimovich</name>
