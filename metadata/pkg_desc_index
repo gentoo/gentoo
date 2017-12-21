@@ -744,7 +744,7 @@ app-emulation/libvirt-glib 1.0.0 1.0.0-r1: GLib and GObject mappings for libvirt
 app-emulation/lxc 1.0.8 2.0.7 2.0.9: LinuX Containers userspace utilities
 app-emulation/lxd 2.14-r1: Fast, dense and secure container management
 app-emulation/q4wine 1.3.5: Qt GUI configuration tool for Wine
-app-emulation/qemu 2.10.1: QEMU + Kernel-based Virtual Machine userland tools
+app-emulation/qemu 2.10.1-r1: QEMU + Kernel-based Virtual Machine userland tools
 app-emulation/qemu-guest-agent 2.5.0: QEMU Guest Agent (qemu-ga) for use when running inside a VM
 app-emulation/runc 1.0.0_rc2-r2: runc container cli tools
 app-emulation/simh 3.9.0-r1: a simulator for historical computers such as Vax, PDP-11 etc.)
