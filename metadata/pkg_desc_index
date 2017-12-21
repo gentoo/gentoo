@@ -10887,7 +10887,7 @@ x11-misc/xfractint 20.04_p12: A fractal generator
 x11-misc/xkbd 0.8.16-r1: onscreen soft keyboard for X11
 x11-misc/xkeyboard-config 2.20: X keyboard configuration database
 x11-misc/xkeycaps 2.47-r2: GUI frontend to xmodmap
-x11-misc/xlockmore 5.47 5.50: Just another screensaver application for X
+x11-misc/xlockmore 5.50: Just another screensaver application for X
 x11-misc/xmobar 0.23.1: A Minimalistic Text Based Status Bar
 x11-misc/xmountains 2.9-r1: Fractal terrains of snow-capped mountains near water
 x11-misc/xnee 3.19-r1: Program suite to record, replay and distribute user actions
