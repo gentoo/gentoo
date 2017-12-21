@@ -5,7 +5,6 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 PYTHON_REQ_USE='threads(+)'
-MULTILIB_COMPAT=( abi_x86_{32,64} )
 
 inherit python-single-r1 waf-utils multilib-build multilib-minimal
 

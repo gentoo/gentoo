@@ -10,7 +10,5 @@ DESCRIPTION="Ladspa elements for Gstreamer"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="
-	media-libs/ladspa-sdk
-"
+RDEPEND=">=media-libs/ladspa-sdk-1.13-r2[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
