@@ -148,18 +148,7 @@ src_configure() {
 		)
 	fi
 
-	if use python; then
-		mycmakeargs+=(
-			-DBINDINGS_GLOBAL_INSTALL=ON
-			-DWITH_PYSPATIALITE=ON
-			-DWITH_INTERNAL_DATEUTIL=OFF
-			-DWITH_INTERNAL_FUTURE=OFF
-			-DWITH_INTERNAL_MARKUPSAFE=OFF
-			-DWITH_INTERNAL_PYTZ=OFF
-			-DWITH_INTERNAL_SIX=OFF
-			-DWITH_INTERNAL_YAML=OFF
-		)
-	fi
+	use python && mycmakeargs+=( -DBINDINGS_GLOBAL_INSTALL=ON )
 
 	# bug 612956
 	addpredict /dev/dri/renderD128
