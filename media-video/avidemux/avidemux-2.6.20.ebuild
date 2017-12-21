@@ -5,7 +5,7 @@ EAPI=6
 
 PLOCALES="ca cs de el es fr it ja pt_BR ru sr sr@latin tr"
 
-inherit cmake-utils l10n xdg-utils
+inherit cmake-utils l10n qmake-utils xdg-utils
 
 DESCRIPTION="Video editor designed for simple cutting, filtering and encoding tasks"
 HOMEPAGE="http://fixounet.free.fr/${PN}"
@@ -94,7 +94,10 @@ src_configure() {
 	)
 
 	if use qt5 ; then
-		mycmakeargs+=( -DENABLE_QT5="$(usex qt5)" )
+		mycmakeargs+=(
+			-DENABLE_QT5="$(usex qt5)"
+			-DLRELEASE_EXECUTABLE="$(qt5_get_bindir)/lrelease"
+		)
 	fi
 
 	if use debug ; then
