@@ -245,6 +245,7 @@ PATCHES=(
 
 	# TODO: upstream
 	"${FILESDIR}/${PN}-5.2.5.1-glibc-2.24.patch"
+	"${FILESDIR}/${P}-gtk3-no-gtk-build.patch" # bug 641812
 )
 
 pkg_pretend() {
