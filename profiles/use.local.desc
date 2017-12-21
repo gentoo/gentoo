@@ -4863,7 +4863,7 @@ sci-geosciences/qgis:designer - Build custom widgets for dev-qt/designer
 sci-geosciences/qgis:georeferencer - Determines whether georeferencer plugin should be built
 sci-geosciences/qgis:grass - Add support for sci-geosciences/grass
 sci-geosciences/qgis:mapserver - Determines whether mapserver should be built
-sci-geosciences/qgis:touch - Enable support for touch input devices
+sci-geosciences/qgis:polar - Enable support for the polar coordinate system via x11-libs/qwtpolar
 sci-geosciences/xtide:gps - Use sci-geosciences/gpsd
 sci-libs/adolc:sparse - Add support for sparse matrix algebra with sci-libs/colpack
 sci-libs/armadillo:arpack - Link with sci-libs/arpack libraries for eigen decomposition
