@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/641912
+
+--- nfs-utils-2.3.1/utils/gssd/svcgssd.c
++++ nfs-utils-2.3.1/utils/gssd/svcgssd.c
+@@ -101,7 +101,7 @@
+ 	char *principal = NULL;
+ 	char *s;
+ 
+-	conf_init(NFS_CONFFILE); 
++	conf_init_file(NFS_CONFFILE); 
+ 
+ 	s = conf_get_str("svcgssd", "principal");
+ 	if (!s)
