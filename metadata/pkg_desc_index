@@ -7265,7 +7265,6 @@ media-gfx/tuxpaint-stamps 20090628: Set of 'Rubber Stamp' images which can be us
 media-gfx/ufraw 0.22 0.22-r1: RAW Image format viewer and GIMP plugin
 media-gfx/uniconvertor 2.0_pre379-r1 2.0_pre379-r2: Convert vector graphic file formats like .cdr, .svg, wmf and more.
 media-gfx/viewnior 1.6: Fast and simple image viewer
-media-gfx/wally 2.4.5: Qt4 wallpaper changer
 media-gfx/wings 1.1.1 2.1.5: Wings 3D is an advanced subdivision modeler
 media-gfx/xfig 3.2.5c: A menu-driven tool to draw and manipulate objects interactively in an X window
 media-gfx/xli 1.17.0-r5: X Load Image: view images or load them to root window
@@ -7985,7 +7984,7 @@ media-sound/qmidiroute 0.4.0: QMidiRoute is a filter/router for MIDI events
 media-sound/qmmp 1.1.7-r1: Qt5-based audio player with winamp/xmms skins support
 media-sound/qmpdclient 1.2.2-r3: QMPDClient with NBL additions, such as lyrics' display
 media-sound/qpitch 1.0.1-r1: A program to tune musical instruments using Qt4
-media-sound/qsynth 0.3.9 0.4.4: A Qt application to control FluidSynth
+media-sound/qsynth 0.4.4: A Qt application to control FluidSynth
 media-sound/qtagger 1.0.1-r2: Simple Qt4 ID3v2 tag editor
 media-sound/qtscrobbler 0.10: Updates a last.fm profile using information from a supported portable music player
 media-sound/quark 3.24: Quark is the Anti-GUI Music Player with a cool Docklet!
