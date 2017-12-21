@@ -21,7 +21,7 @@ IUSE="autoshutdown bidi debug mpris"
 
 COMMON_DEPEND="
 	dev-qt/qtcore:5
-	dev-qt/qtgui:5
+	dev-qt/qtgui:5=
 	dev-qt/qtnetwork:5[ssl]
 	dev-qt/qtscript:5
 	dev-qt/qtsingleapplication[X,qt5]
