@@ -31,6 +31,11 @@
 
 # Andreas Sturmlechner <asturm@gentoo.org> (21 Dec 2017)
 # Dead upstream, depends on dead Qt4.
+# Bug #629032. Masked for removal in 30 days.
+media-gfx/wally
+
+# Andreas Sturmlechner <asturm@gentoo.org> (21 Dec 2017)
+# Dead upstream, depends on dead Qt4.
 # Bug #637108. Masked for removal in 30 days.
 app-cdr/qpxtool
 
