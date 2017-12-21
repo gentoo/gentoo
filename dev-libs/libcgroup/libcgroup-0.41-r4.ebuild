@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
 inherit autotools eutils flag-o-matic linux-info pam
 
@@ -47,6 +47,7 @@ src_prepare() {
 		-i src/pam/Makefile.am || die "sed failed"
 	sed -e 's#/var/run#/run#g' -i configure.in || die "sed failed"
 
+	eapply_user
 	eautoreconf
 }
 
