@@ -12,14 +12,15 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	>=dev-lang/perl-5.8.0
-    >=dev-perl/Gtk2-1.200
-    >=dev-perl/Locale-gettext-1.05
-    >=mail-client/claws-mail-3.5.0"
+	>=dev-perl/Gtk2-1.200
+	>=dev-perl/Locale-gettext-1.05
+	>=mail-client/claws-mail-3.5.0
+	"
 
 src_compile() {
-    emake
+	emake
 }
 
 src_install() {
-    emake install DESTDIR="${D}" PREFIX=/usr
+	emake install DESTDIR="${D}" PREFIX=/usr
 }
