@@ -5733,7 +5733,7 @@ dev-ruby/httpclient 2.8.2.4: 'httpclient' gives something like the functionality
 dev-ruby/imagesize 0.1.1_p20100902-r1: Measure image size (GIF, PNG, JPEG, etc)
 dev-ruby/instantiator 0.0.6: Instantiate an arbitrary Ruby class
 dev-ruby/introspection 0.0.3: Dynamic inspection of the hierarchy of method definitions on a Ruby object
-dev-ruby/json 1.8.2-r1 1.8.3 1.8.6-r1: A JSON implementation as a Ruby extension
+dev-ruby/json 1.8.2-r1 1.8.6-r1: A JSON implementation as a Ruby extension
 dev-ruby/kirbybase 2.6.1-r2: A simple Ruby DBMS that stores data in plaintext files
 dev-ruby/libxml 2.9.0: Ruby libxml with a user friendly API, akin to REXML
 dev-ruby/listen 0.7.3-r2 1.3.1-r4: Listens to file modifications and notifies you about the changes
@@ -5834,8 +5834,8 @@ dev-ruby/ruby-vte 3.0.8: Ruby vte bindings
 dev-ruby/ruby-vte3 3.0.8-r1: Ruby VTE bindings
 dev-ruby/ruby-webkit2-gtk 3.0.8: Ruby WebKitGtk+ for Gtk 3.0 bindings
 dev-ruby/ruby-xslt 0.9.9-r3: A Ruby class for processing XSLT
-dev-ruby/ruby2ruby 2.3.0 2.3.2: Generates readable ruby from ParseTree
-dev-ruby/ruby_parser 3.8.2 3.9.0: A ruby parser written in pure ruby
+dev-ruby/ruby2ruby 2.3.2: Generates readable ruby from ParseTree
+dev-ruby/ruby_parser 3.9.0: A ruby parser written in pure ruby
 dev-ruby/rubygems 2.6.14: Centralized Ruby extension management system
 dev-ruby/rubypants 0.2.0-r5: A Ruby port of the SmartyPants PHP library
 dev-ruby/rubyzip 1.2.1: A ruby library for reading and writing zip files
@@ -5843,7 +5843,7 @@ dev-ruby/safe_yaml 1.0.4-r3: Parse YAML safely, alternative implementation of YA
 dev-ruby/sass 3.2.19-r2 3.4.24: An extension of CSS3, adding nested rules, variables, mixins, and more
 dev-ruby/serialport 1.3.1: a library for serial port (rs232) access in ruby
 dev-ruby/session 3.1.2 3.2.0: A set of classes to drive external programs via pipe
-dev-ruby/sexp_processor 4.7.0 4.9.0: Processor for s-expressions created as part of the ParseTree project
+dev-ruby/sexp_processor 4.9.0: Processor for s-expressions created as part of the ParseTree project
 dev-ruby/shorturl 1.0.0-r2: A very simple library to use URL shortening services such as TinyURL or RubyURL
 dev-ruby/shoulda 2.11.3-r2: Making tests easy on the fingers and eyes
 dev-ruby/simple-rss 1.3.1-r1: A simple, flexible, extensible, and liberal RSS and Atom reader for Ruby
