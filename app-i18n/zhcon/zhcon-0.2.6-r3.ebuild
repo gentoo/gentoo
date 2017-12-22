@@ -1,7 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="3"
+EAPI="6"
 WANT_AUTOMAKE="1.9"
 
 inherit autotools eutils
@@ -24,16 +24,20 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}.sysconfdir.patch
+	"${FILESDIR}"/${P}.configure.in.patch
+	"${FILESDIR}"/${P}+gcc-4.3.patch
+	"${FILESDIR}"/${P}+linux-headers-2.6.26.patch
+	"${FILESDIR}"/${P}-curses.patch
+	"${FILESDIR}"/${P}-amd64.patch
+	"${FILESDIR}"/${P}-automagic-fix.patch
+	"${FILESDIR}"/${P}.make-fix.patch
+)
+
 src_prepare() {
 	epatch "${DISTDIR}"/zhcon-0.2.5-to-0.2.6.diff.gz
-	epatch "${FILESDIR}"/${P}.sysconfdir.patch
-	epatch "${FILESDIR}"/${P}.configure.in.patch
-	epatch "${FILESDIR}"/${P}+gcc-4.3.patch
-	epatch "${FILESDIR}"/${P}+linux-headers-2.6.26.patch
-	epatch "${FILESDIR}"/${P}-curses.patch
-	epatch "${FILESDIR}"/${P}-amd64.patch
-	epatch "${FILESDIR}"/${P}-automagic-fix.patch
-	epatch "${FILESDIR}"/${P}.make-fix.patch
+	default
 	for f in $(grep -lir HAVE_GGI_LIB *); do
 		sed -i -e "s/HAVE_GGI_LIB/HAVE_LIBGGI/" "${f}" || die "sed failed"
 	done
@@ -42,12 +46,12 @@ src_prepare() {
 
 src_configure() {
 	econf $(use_with ggi) \
-		$(use_with gpm) || die
+		$(use_with gpm)
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die
+	emake DESTDIR="${D}" install
 
-	dodoc AUTHORS ChangeLog README NEWS TODO THANKS || die
-	dodoc README.BSD README.gpm README.utf8 || die
+	dodoc AUTHORS ChangeLog README NEWS TODO THANKS
+	dodoc README.BSD README.gpm README.utf8
 }
