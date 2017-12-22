@@ -7,10 +7,6 @@ inherit depend.apache eutils multilib pax-utils toolchain-funcs user versionator
 
 DESCRIPTION="Nagios Fork - Check daemon, CGIs, docs, IDOutils"
 HOMEPAGE="http://www.icinga.org/"
-#MY_PV=$(delete_version_separator 3)
-#SRC_URI="mirror://sourceforge/${PN}/${PN}-${MY_PV}.tar.gz"
-#S=${WORKDIR}/${PN}-${MY_PV}
-#SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 SRC_URI="https://github.com/${PN}/${PN}-core/archive/v${PV}/${P}.tar.gz"
 S="${WORKDIR}/${PN}-core-${PV}"
 
@@ -40,11 +36,6 @@ pkg_setup() {
 	enewgroup icinga
 	enewgroup nagios
 	enewuser icinga -1 -1 /var/lib/icinga "icinga,nagios"
-}
-
-src_prepare() {
-	epatch "${FILESDIR}/fix-prestripped-binaries-1.7.0.patch"
-	eapply_user
 }
 
 src_configure() {
