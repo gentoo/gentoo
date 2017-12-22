@@ -26,9 +26,9 @@ CDEPEND="dev-libs/glib:2
 		>=x11-libs/motif-2.3:0
 		dbus? ( sys-apps/dbus )
 		xrender? ( >=x11-libs/libXrender-0.9 ) ) )
-	nelma? ( >=media-libs/gd-2.0.23 )
+	nelma? ( >=media-libs/gd-2.0.23[png] )
 	opengl? ( virtual/opengl )
-	gcode? ( >=media-libs/gd-2.0.23 )
+	gcode? ( >=media-libs/gd-2.0.23[png] )
 	virtual/libintl
 	png? ( >=media-libs/gd-2.0.23[png] )
 	m4lib-png? ( >=media-libs/gd-2.0.23[png] )
