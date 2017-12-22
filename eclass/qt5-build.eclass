@@ -73,14 +73,26 @@ case ${PV} in
 	*_alpha*|*_beta*|*_rc*)
 		# development release
 		QT5_BUILD_TYPE="release"
-		MY_P=${QT5_MODULE}-opensource-src-${PV/_/-}
+
+		if [[ ${QT5_MINOR_VERSION} -ge 10 ]]; then
+			MY_P=${QT5_MODULE}-everywhere-src-${PV/_/-}
+		else
+			MY_P=${QT5_MODULE}-opensource-src-${PV/_/-}
+		fi
+
 		SRC_URI="https://download.qt.io/development_releases/qt/${PV%.*}/${PV/_/-}/submodules/${MY_P}.tar.xz"
 		S=${WORKDIR}/${MY_P}
 		;;
 	*)
 		# official stable release
 		QT5_BUILD_TYPE="release"
-		MY_P=${QT5_MODULE}-opensource-src-${PV}
+
+		if [[ ${QT5_MINOR_VERSION} -ge 10 ]]; then
+			MY_P=${QT5_MODULE}-everywhere-src-${PV}
+		else
+			MY_P=${QT5_MODULE}-opensource-src-${PV}
+		fi
+
 		SRC_URI="https://download.qt.io/official_releases/qt/${PV%.*}/${PV}/submodules/${MY_P}.tar.xz"
 		S=${WORKDIR}/${MY_P}
 		;;
@@ -620,8 +632,8 @@ qt5_base_configure() {
 		# supported; see also https://bugreports.qt.io/browse/QTBUG-36129
 		#-reduce-relocations
 
-		# let configure automatically detect if GNU gold is available
-		#-use-gold-linker
+		# use the system linker (gold will be selected automagically otherwise)
+		$(tc-ld-is-gold && echo -use-gold-linker || echo -no-use-gold-linker)
 
 		# disable all platform plugins by default, override in qtgui
 		-no-xcb -no-eglfs -no-kms -no-gbm -no-directfb -no-linuxfb -no-mirclient
