@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst
+DEPEND=ssl? ( idn? ( dev-lang/php:*[ctype,filter,intl,ssl,unicode] ) !idn? ( dev-lang/php:*[ctype,filter,ssl] ) ) !ssl? ( idn? ( dev-lang/php:*[ctype,filter,intl,unicode] ) !idn? ( dev-lang/php:*[ctype,filter] ) ) doc? ( dev-php/phpDocumentor )
+DESCRIPTION=Full-featured email creation and transfer class for PHP
+EAPI=6
+HOMEPAGE=https://github.com/PHPMailer/PHPMailer
+IUSE=doc examples idn ssl
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=ssl? ( idn? ( dev-lang/php:*[ctype,filter,intl,ssl,unicode] ) !idn? ( dev-lang/php:*[ctype,filter,ssl] ) ) !ssl? ( idn? ( dev-lang/php:*[ctype,filter,intl,unicode] ) !idn? ( dev-lang/php:*[ctype,filter] ) )
+SLOT=0
+SRC_URI=https://github.com/PHPMailer/PHPMailer/archive/v5.2.26.tar.gz -> PHPMailer-5.2.26.tar.gz
+_md5_=ddbf035dd28086d4754ef2da3f0ef177
