@@ -29,6 +29,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Alice Ferrazzi <alicef@gentoo.org> (22 Dec 2017)
+# Masked for removal in 30 days.
+# Linux kernel 4.13 can break various laptops.
+# (bug #642026)
+=sys-kernel/gentoo-sources-4.13.15
+=sys-kernel/gentoo-sources-4.13.16
+
 # Andreas Sturmlechner <asturm@gentoo.org> (21 Dec 2017)
 # Masked for testing
 =dev-libs/libical-3.0.1
