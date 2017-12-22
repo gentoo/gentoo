@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/marcandre/backports"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~ppc"
+KEYWORDS="~amd64 ~arm64 ~ia64 ~ppc"
 IUSE=""
 
 all_ruby_prepare() {
