@@ -920,7 +920,7 @@ app-laptop/batti 0.3.8-r4: A upower based battery monitor for the system tray, s
 app-laptop/hdaps-gl 0.0.5: OpenGL visualization for HDAPS data
 app-laptop/hdapsd 20141203: IBM ThinkPad Hard Drive Active Protection System (HDAPS) daemon
 app-laptop/i8kutils 1.33-r1: Dell Inspiron and Latitude utilities
-app-laptop/laptop-mode-tools 1.71: Linux kernel laptop_mode user-space utilities
+app-laptop/laptop-mode-tools 1.71-r1: Linux kernel laptop_mode user-space utilities
 app-laptop/nvidiabl 0.83: Linux driver for setting the backlight brightness on laptops using NVIDIA GPU
 app-laptop/pommed 1.39-r1: Manage screen and keyboard backlight on Apple MacBook Pro/PowerBook
 app-laptop/radeontool 1.6.3: Manage the backlight, external video output and registers of ATI Radeon cards
@@ -8927,7 +8927,7 @@ net-nds/ypbind 1.37.2-r1: Multithreaded NIS bind service (ypbind-mt)
 net-nds/ypserv 2.26-r1: Network Information Service server
 net-news/liferea 1.12_rc3: News Aggregator for RDF/RSS/CDF/Atom/Echo feeds
 net-news/newsbeuter 2.9-r3: A RSS/Atom feed reader for the text console
-net-news/quiterss 0.18.4: A Qt-based RSS/Atom feed reader
+net-news/quiterss 0.18.8: A Qt-based RSS/Atom feed reader
 net-news/rawdog 2.19: Rawdog - RSS Aggregator Without Delusions Of Grandeur
 net-news/rsstail 1.8: A tail-like RSS-reader
 net-news/rsstool 1.0.1_rc2: cmdline tool to read, parse, merge, and write RSS (and Atom) feeds
