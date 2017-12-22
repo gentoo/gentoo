@@ -22,6 +22,8 @@ LICENSE="|| ( UoI-NCSA MIT ) MIT LLVM-Grant"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="hwloc ompt test"
+# Restrict tests to avoid hanging, https://bugs.gentoo.org/638410
+RESTRICT="test"
 
 RDEPEND="hwloc? ( sys-apps/hwloc:0=[${MULTILIB_USEDEP}] )"
 # tests:
