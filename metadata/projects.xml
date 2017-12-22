@@ -1820,11 +1820,6 @@
       <name>Marc Schiffbauer</name>
       <role>Developer</role>
     </member>
-    <member>
-      <email>scarabeus@gentoo.org</email>
-      <name>Tomáš Chvátal</name>
-      <role>Developer</role>
-    </member>
   </project>
   <project>
     <email>kerberos@gentoo.org</email>
@@ -2387,11 +2382,6 @@ developers and volunteer mentors.</description>
     <member>
       <email>dilfridge@gentoo.org</email>
       <name>Andreas K. Hüttel</name>
-      <role>member</role>
-    </member>
-    <member>
-      <email>scarabeus@gentoo.org</email>
-      <name>Tomáš Chvátal</name>
       <role>member</role>
     </member>
   </project>
@@ -3568,11 +3558,6 @@ developers and volunteer mentors.</description>
     <member>
       <email>miska@gentoo.org</email>
       <name>Michal Hrušecký</name>
-      <role>Updates, Documentation</role>
-    </member>
-    <member>
-      <email>scarabeus@gentoo.org</email>
-      <name>Tomáš Chvátal</name>
       <role>Updates, Documentation</role>
     </member>
   </project>

@@ -6175,8 +6175,8 @@ dev-util/pkgconfig 0.28-r2 0.29.2: Package config system that manages compile/li
 dev-util/pmd 4.2.5: A Java source code analyzer
 dev-util/premake 3.7 4.3-r1: A makefile generation tool
 dev-util/pscan 20000721-r1: A limited problem scanner for C source files
-dev-util/pycharm-community 2017.2.3: Intelligent Python IDE with unique code assistance and analysis
-dev-util/pycharm-professional 2017.2.3: Intelligent Python IDE with unique code assistance and analysis
+dev-util/pycharm-community 2017.3: Intelligent Python IDE with unique code assistance and analysis
+dev-util/pycharm-professional 2017.3: Intelligent Python IDE with unique code assistance and analysis
 dev-util/qbs 1.8.1-r1: Modern build tool for software projects
 dev-util/qmtest 2.4.1-r1: CodeSourcery's test harness system
 dev-util/qstlink2 1.0.3: GUI and CLI ST-Link V2(Debugger/Programmer) client
@@ -10815,6 +10815,7 @@ x11-misc/pcmanfm-qt 0.11.1: Fast lightweight tabbed filemanager (Qt port)
 x11-misc/pypanel 2.4-r2: A lightweight panel/taskbar for X11 window managers
 x11-misc/qcomicbook 0.9.1: A viewer for comic book archives containing jpeg/png images
 x11-misc/qlipper 5.0.0: Lightweight and cross-platform clipboard history applet
+x11-misc/qps 1.10.17: Visual process manager - Qt version of ps/top
 x11-misc/qt5ct 0.31: Qt5 configuration tool, similar to qtconfig for Qt4
 x11-misc/qterm 0.7.1: A BBS client for Linux
 x11-misc/qtfm 5.5-r1: A small, lightweight file manager for desktops based on pure Qt
@@ -11174,7 +11175,7 @@ x11-themes/redhat-artwork 5.0.8-r4: RedHat's Bluecurve theme for GTK2, KDE, GDM,
 x11-themes/shiki-colors 4.6: Mixes the elegance of a dark theme with the usability of a light theme
 x11-themes/silver-xcursors 0.4: A high quality set of Xfree 4.3.0 animated mouse cursors
 x11-themes/slim-themes 1.2.3a-r7: SLiM (Simple Login Manager) themes pack
-x11-themes/smplayer-themes 15.12.0: Icon themes for smplayer
+x11-themes/smplayer-themes 17.3.0: Icon themes for smplayer
 x11-themes/solar-backgrounds 0.92.0.5-r1: Fedora official background artwork
 x11-themes/sound-theme-freedesktop 0.8: Default freedesktop.org sound theme following the XDG theming specification
 x11-themes/tactile3 3.1: The third evolution of Tactile theme series
