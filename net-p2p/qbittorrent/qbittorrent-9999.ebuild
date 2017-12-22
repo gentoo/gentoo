@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cmake-utils
+inherit cmake-utils gnome2-utils xdg-utils
 
 DESCRIPTION="BitTorrent client in C++ and Qt"
 HOMEPAGE="https://www.qbittorrent.org/"
@@ -34,6 +34,7 @@ RDEPEND="
 	dbus? ( dev-qt/qtdbus:5 )
 	X? (
 		dev-qt/qtgui:5
+		dev-qt/qtsvg:5
 		dev-qt/qtwidgets:5
 	)"
 DEPEND="${RDEPEND}
@@ -50,4 +51,14 @@ src_configure() {
 		-DWEBUI=$(usex webui)
 	)
 	cmake-utils_src_configure
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }
