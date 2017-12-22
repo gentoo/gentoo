@@ -4138,7 +4138,7 @@ dev-perl/Sys-SigAction 0.210.0: Perl extension for Consistent Signal Handling
 dev-perl/Sys-Statistics-Linux 0.660.0-r1: Collect linux system statistics
 dev-perl/Sys-Syscall 0.250.0-r2: Access system calls that Perl doesn't normally provide access to
 dev-perl/Sys-Virt 1.1.2: Sys::Virt provides an API for using the libvirt library from Perl
-dev-perl/TAP-Parser-SourceHandler-pgTAP 3.310.0: Stream TAP from pgTAP test scripts
+dev-perl/TAP-Parser-SourceHandler-pgTAP 3.310.0 3.330.0: Stream TAP from pgTAP test scripts
 dev-perl/Taint-Runtime 0.30.0-r1: Runtime enable taint checking
 dev-perl/Task-Weaken 1.40.0-r1: Ensure that a platform has weaken support
 dev-perl/Template-DBI 2.650.0-r1: DBI plugin for the Template Toolkit
@@ -4790,17 +4790,20 @@ dev-python/figleaf 0.6.1-r1: Code coverage tool
 dev-python/fixtures 1.4.0 3.0.0: Fixtures, reusable state for writing clean tests and more
 dev-python/flake8 2.0-r1 2.1.0 2.2.5 2.5.4: A wrapper around PyFlakes, pep8 & mccabe
 dev-python/flaky 3.1.1: Plugin for nose or py.test that automatically reruns flaky tests
-dev-python/flask 0.10.1-r1: A microframework based on Werkzeug, Jinja2 and good intentions
+dev-python/flask 0.10.1-r1 0.12.2: A microframework based on Werkzeug, Jinja2 and good intentions
 dev-python/flask-admin 1.0.6: Simple and extensible admin interface framework for Flask
-dev-python/flask-babel 0.9: i18n and l10n support for Flask based on Babel and pytz
+dev-python/flask-babel 0.9 0.11.2: i18n and l10n support for Flask based on Babel and pytz
 dev-python/flask-cors 2.1.0: A Flask extension for Cross Origin Resource Sharing (CORS)
 dev-python/flask-dashed 0.1b_p2: Admin app framework for flask
 dev-python/flask-evolution 0.5-r1: Simple migrations for Flask/SQLAlchemy projects
+dev-python/flask-gravatar 0.4.2: Small extension for Flask to make usage of Gravatar service easy
+dev-python/flask-htmlmin 1.2.1: Minimize your flask rendered html
 dev-python/flask-login 0.3.2-r1: Login session support for Flask
 dev-python/flask-mail 0.9.1-r1: Flask extension for sending email
-dev-python/flask-migrate 1.3.0: SQLAlchemy database migrations for Flask applications using Alembic
+dev-python/flask-migrate 1.3.0 2.1.1: SQLAlchemy database migrations for Flask applications using Alembic
 dev-python/flask-mongoengine 0.7.0: Flask support for MongoDB and with WTF model forms
 dev-python/flask-openid 1.2.4: OpenID support for Flask
+dev-python/flask-paranoid 0.1.0: Simple user session protection extension for Flask
 dev-python/flask-peewee 0.6.5: Flask integration layer for the Peewee ORM
 dev-python/flask-principal 0.4.0-r1: Identity management for flask
 dev-python/flask-pymongo 0.3.0: PyMongo support for Flask
@@ -4811,9 +4814,9 @@ dev-python/flask-security 1.7.4: Simple security for Flask apps
 dev-python/flask-sqlalchemy 2.1: SQLAlchemy support for Flask applications
 dev-python/flask-testing 0.4.2: Unit testing for Flask
 dev-python/flask-themes 0.1.3-r1: Infrastructure for theming support in Flask applications
-dev-python/flask-uploads 0.1.3: Flexible and efficient upload handling for Flask
+dev-python/flask-uploads 0.1.3 0.2.0-r1: Flexible and efficient upload handling for Flask
 dev-python/flask-whooshalchemy 0.5.6 0.8: Whoosh extension to Flask/SQLAlchemy
-dev-python/flask-wtf 0.10.3: Simple integration of Flask and WTForms, including CSRF, file upload and Recaptcha integration
+dev-python/flask-wtf 0.10.3 0.14.2: Simple integration of Flask and WTForms
 dev-python/flask-xml-rpc 0.1.2-r1: XML-RPC support for Flask applications
 dev-python/flexx 0.3.1: Pure Python toolkit for creating GUI's using web technology
 dev-python/flup 1.0.2-r1: Random assortment of WSGI servers
@@ -5156,7 +5159,7 @@ dev-python/progressbar 2.3-r2 2.3-r3: Text progressbar library for python
 dev-python/prometheus_client 0.0.21: Python client for the Prometheus monitoring system
 dev-python/prompt_toolkit 1.0.15: Building powerful interactive command lines in Python
 dev-python/protobuf-python 3.1.0: Google's Protocol Buffers - official Python bindings
-dev-python/psutil 5.2.2: Retrieve information on running processes and system utilization
+dev-python/psutil 5.2.2 5.4.1: Retrieve information on running processes and system utilization
 dev-python/psycopg 1.1.21-r1 2.5.3 2.6.2 2.7.3: PostgreSQL database adapter for Python
 dev-python/ptpython 0.33: Python REPL build on top of prompt_toolkit
 dev-python/ptyprocess 0.5 0.5.1: Run a subprocess in a pseudo terminal
@@ -7524,7 +7527,7 @@ media-libs/lilv 0.20.0 0.24.2: Library to make the use of LV2 plugins as simple 
 media-libs/lv2 1.10.0-r1 1.14.0: A simple but extensible successor of LADSPA
 media-libs/mediastreamer 2.7.3-r3 2.8.2 2.9.0 2.9.0-r1: Mediastreaming library for telephony application
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
-media-libs/mesa 17.1.10: OpenGL-like graphic library for Linux
+media-libs/mesa 17.1.10 17.2.7: OpenGL-like graphic library for Linux
 media-libs/ming 0.4.7 0.4.8-r1: An Open Source library for Flash movie generation
 media-libs/mlt 6.4.1-r2: Open source multimedia framework for television broadcasting
 media-libs/musicbrainz 3.0.3 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
@@ -10668,7 +10671,7 @@ x11-libs/libcryptui 3.12.2-r1: User interface components for OpenPGP
 x11-libs/libdesktop-agnostic 0.3.92-r1: A desktop-agnostic library for GLib-based projects
 x11-libs/libdmx 1.1.3: X.Org dmx library
 x11-libs/libdockapp 0.7.2: Window Maker Dock Applet Library
-x11-libs/libdrm 2.4.82: X.Org libdrm library
+x11-libs/libdrm 2.4.82 2.4.88: X.Org libdrm library
 x11-libs/libfakekey 0.1-r1: Helper library for the x11-misc/matchbox-keyboard package
 x11-libs/libfm 1.2.3-r1 1.2.4 1.2.5: A library for file management
 x11-libs/libfm-extra 1.2.3 1.2.4 1.2.5: A library for file management
