@@ -15,7 +15,7 @@ app-accessibility/flite 1.4-r4: Flite text to speech engine
 app-accessibility/freetts 1.2.1-r2: A speech synthesis system written entirely in Java
 app-accessibility/julius 4.2.2: Large Vocabulary Continuous Speech Recognition Engine
 app-accessibility/mbrola 3.0.1h-r6: Speech synthesizer based on the concatenation of diphones. Includes samples
-app-accessibility/nfbtrans 7.74-r1: braille translator from the National Federation of the Blind
+app-accessibility/nfbtrans 7.74-r1 7.74-r2: braille translator from the National Federation of the Blind
 app-accessibility/orca 3.22.2: Extensible screen reader that provides access to the desktop
 app-accessibility/perlbox-voice 0.09-r2: A voice enabled application to bring your desktop under your command
 app-accessibility/pocketsphinx 0.8: Speaker-independent large vocabulary with continuous speech recognizer
