@@ -5,7 +5,7 @@ EAPI=6
 
 # PyCObject_Check and PyCObject_AsVoidPtr vanished with python 3.3, and setup.py not python3.2 compat
 PYTHON_COMPAT=( python2_7 )
-inherit distutils-r1 eutils flag-o-matic user tmpfiles
+inherit distutils-r1 eutils flag-o-matic user tmpfiles xdg
 
 DESCRIPTION="X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy"
 HOMEPAGE="http://xpra.org/ http://xpra.org/src/"
@@ -92,6 +92,8 @@ PATCHES=( "${FILESDIR}"/${PN}-0.13.1-ignore-gentoo-no-compile.patch
 pkg_postinst() {
 	enewgroup ${PN}
 	tmpfiles_process /usr/lib/tmpfiles.d/xpra.conf
+
+	xdg_pkg_postinst
 }
 
 python_prepare_all() {

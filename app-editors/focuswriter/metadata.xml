@@ -5,4 +5,8 @@
 		<email>qt@gentoo.org</email>
 		<name>Gentoo Qt Project</name>
 	</maintainer>
+	<upstream>
+		<bugs-to>https://gottcode.org/focuswriter/bugs/</bugs-to>
+		<remote-id type="github">gottcode/focuswriter</remote-id>
+	</upstream>
 </pkgmetadata>

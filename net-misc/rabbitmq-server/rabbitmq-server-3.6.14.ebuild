@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
 PYTHON_COMPAT=( python2_7 )
 
@@ -61,7 +61,7 @@ src_install() {
 
 	# install documentation
 	dodoc deps/rabbit/docs/*.xml
-	dodoc deps/rabbit/README
+	dodoc deps/rabbit/README.md
 
 	# create the directory where our log file will go.
 	diropts -m 0770 -o rabbitmq -g rabbitmq
