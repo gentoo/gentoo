@@ -10,9 +10,26 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc +examples"
+IUSE="doc examples idn ssl"
 
-RDEPEND="dev-lang/php:*[ctype,filter,ssl]"
+# The ctype and filter extensions get used unconditionally, with no
+# fallback and no "extension missing" exception. All of the other
+# extensions are technically optional, depending on how you use
+# PHPMailer and whether or not you're willing to settle for fallback
+# implementations.
+#
+# The insane dependency string is to prevent the ctype and filter
+# extensions from being provided by one version (i.e. slot) of PHP,
+# while intl and unicode are provided by another.
+RDEPEND="
+	ssl? (
+		idn?  ( dev-lang/php:*[ctype,filter,intl,ssl,unicode] )
+		!idn? ( dev-lang/php:*[ctype,filter,ssl] )
+	)
+	!ssl? (
+		idn?  ( dev-lang/php:*[ctype,filter,intl,unicode] )
+		!idn? ( dev-lang/php:*[ctype,filter] )
+	)"
 DEPEND="${RDEPEND}
 	doc? ( dev-php/phpDocumentor )"
 
