@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-inherit autotools eutils fdo-mime gnome2-utils toolchain-funcs
+inherit autotools eutils xdg-utils gnome2-utils toolchain-funcs
 
 DESCRIPTION="GPL Electronic Design Automation: Printed Circuit Board editor"
 HOMEPAGE="http://www.gpleda.org/"
@@ -26,9 +26,9 @@ CDEPEND="dev-libs/glib:2
 		>=x11-libs/motif-2.3:0
 		dbus? ( sys-apps/dbus )
 		xrender? ( >=x11-libs/libXrender-0.9 ) ) )
-	nelma? ( >=media-libs/gd-2.0.23 )
+	nelma? ( >=media-libs/gd-2.0.23[png] )
 	opengl? ( virtual/opengl )
-	gcode? ( >=media-libs/gd-2.0.23 )
+	gcode? ( >=media-libs/gd-2.0.23[png] )
 	virtual/libintl
 	png? ( >=media-libs/gd-2.0.23[png] )
 	m4lib-png? ( >=media-libs/gd-2.0.23[png] )
@@ -136,13 +136,13 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	gnome2_icon_cache_update
 }
