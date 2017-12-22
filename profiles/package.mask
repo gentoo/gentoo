@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (22 Dec 2017)
+# Dead upstream. Requires dead Qt 4.
+# Masked for removal in 30 days.
+app-editors/znotes
+
 # Andreas Sturmlechner <asturm@gentoo.org> (21 Dec 2017)
 # Dead upstream, depends on dead Qt4.
 # Bug #629032. Masked for removal in 30 days.
