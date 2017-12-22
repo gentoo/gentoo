@@ -20,3 +20,5 @@ DEPEND="
 	dev-libs/cyrus-sasl
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}/${P}-ehlo-auth-fix.patch" )
