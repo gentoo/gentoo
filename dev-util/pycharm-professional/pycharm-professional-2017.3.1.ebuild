@@ -3,27 +3,31 @@
 
 EAPI=6
 
-inherit gnome2-utils xdg-utils readme.gentoo-r1
+inherit gnome2-utils readme.gentoo-r1 xdg
 
 DESCRIPTION="Intelligent Python IDE with unique code assistance and analysis"
 HOMEPAGE="http://www.jetbrains.com/pycharm/"
 SRC_URI="http://download.jetbrains.com/python/${P}.tar.gz"
 
-LICENSE="Apache-2.0 BSD CDDL MIT-with-advertising"
+LICENSE="PyCharm_Academic PyCharm_Classroom PyCharm PyCharm_OpenSource PyCharm_Preview"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND=">=virtual/jre-1.8"
+RDEPEND=">=virtual/jre-1.8
+	 dev-python/pip"
 DEPEND=""
 
 RESTRICT="mirror strip"
 
 QA_PREBUILT="opt/${PN}/bin/fsnotifier
 	opt/${PN}/bin/fsnotifier64
-	opt/${PN}/bin/fsnotifier-arm"
+	opt/${PN}/bin/fsnotifier-arm
+	opt/${PN}/bin/libyjpagent-linux.so
+	opt/${PN}/bin/libyjpagent-linux64.so"
 
-MY_PN=${PN/-community/}
+MY_PN=${PN/-professional/}
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 src_prepare() {
 	default
@@ -45,11 +49,11 @@ src_install() {
 }
 
 pkg_postinst() {
-	xdg_desktop_database_update
+	xdg_pkg_postinst
 	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
-	xdg_desktop_database_update
+	xdg_pkg_postrm
 	gnome2_icon_cache_update
 }
