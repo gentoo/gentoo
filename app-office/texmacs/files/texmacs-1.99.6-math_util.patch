@@ -1,0 +1,15 @@
+diff -r -U2 TeXmacs-1.99.6-src.orig/src/Graphics/Types/math_util.hpp TeXmacs-1.99.6-src/src/Graphics/Types/math_util.hpp
+--- TeXmacs-1.99.6-src.orig/src/Graphics/Types/math_util.hpp	2017-12-22 03:27:43.000000000 +0700
++++ TeXmacs-1.99.6-src/src/Graphics/Types/math_util.hpp	2017-12-22 16:44:35.052378917 +0700
+@@ -24,11 +24,4 @@
+ inline int    sign (double x) { return x>0?1:x<0?-1:0; } 
+ inline bool   fnull (double x, double approx) { return norm(x) <= approx; }
+-#ifndef __SUNPRO_CC
+-inline double pow (double x, int n) {
+-  double r= 1.0;
+-  while (n > 0) { r *= x; n--; }
+-  return r; }
+-#endif
+-
+ 
+ #endif // defined MATH_UTIL_H
