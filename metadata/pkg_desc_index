@@ -5856,7 +5856,7 @@ dev-ruby/stomp 1.4.3: Ruby bindings for the stomp messaging protocol
 dev-ruby/syntax 1.2.0-r1: Syntax highlighting for sourcecode and HTML
 dev-ruby/systemu 2.6.5: Universal capture of STDOUT and STDERR and handling of child process PID
 dev-ruby/tdiff 0.3.3-r1: Calculates the differences between two tree-like structures
-dev-ruby/term-ansicolor 1.2.2-r1 1.6.0: Small Ruby library that colors strings using ANSI escape sequences
+dev-ruby/term-ansicolor 1.6.0: Small Ruby library that colors strings using ANSI escape sequences
 dev-ruby/test-unit 1.2.3-r3 2.5.5-r2 3.1.9: An xUnit family unit testing framework for Ruby
 dev-ruby/test-unit-rr 1.0.3-r1 1.0.5: RR adapter for Test::Unit
 dev-ruby/text 1.3.1: A collection of text algorithms
@@ -5866,7 +5866,7 @@ dev-ruby/tidy-ext 0.1.14-r3: W3C HTML Tidy library implemented as a Ruby extensi
 dev-ruby/tidy_table 0.0.5-r4: Tool to convert an array of struct into an HTML table
 dev-ruby/tilt 1.4.1 2.0.5: Thin interface over template engines to make their usage as generic as possible
 dev-ruby/timecop 0.8.1: A gem providing 'time travel' and 'time freezing' capabilities
-dev-ruby/tins 1.6.0 1.14.0: All the stuff that isn't good enough for a real library
+dev-ruby/tins 1.14.0: All the stuff that isn't good enough for a real library
 dev-ruby/transaction-simple 1.4.0.2-r2: Provides transaction support at the object level
 dev-ruby/trollop 2.1.2: Trollop is a commandline option parser for Ruby
 dev-ruby/tzinfo 0.3.53: Daylight-savings aware timezone library
