@@ -5,4 +5,7 @@
 		<email>qt@gentoo.org</email>
 		<name>Gentoo Qt Project</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">QtDesktop/qps</remote-id>
+	</upstream>
 </pkgmetadata>
