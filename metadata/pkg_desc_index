@@ -7813,7 +7813,6 @@ media-radio/qsstv 9.2.4: Amateur radio SSTV software
 media-radio/svxlink 15.11: Multi Purpose Voice Services System, including Qtel for EchoLink
 media-radio/tlf 1.3.0: Console-mode amateur radio contest logger
 media-radio/tucnak 4.11: Amateur Radio VHF Contest Logbook
-media-radio/tucnak2 2.48: Amateur Radio VHF Contest Logbook
 media-radio/unixcw 3.5.1: A package of programs that fit together to form a morse code tutor program
 media-radio/xastir 2.0.6-r1 2.0.8-r1: X Amateur Station Tracking and Information Reporting
 media-radio/xdx 2.5.0: a GTK+ TCP/IP DX-cluster and ON4KST chat client
