@@ -32,7 +32,7 @@ DEPEND="${DEPEND}
 	>=x11-libs/cairo-1.2.0[svg]"
 
 ruby_add_bdepend "
-	>=dev-ruby/pkg-config-1.1.5
+	>=dev-ruby/pkg-config-1.2.2
 	dev-ruby/ruby-glib2
 	test? ( >=dev-ruby/test-unit-2.1.0-r1:2 )"
 
