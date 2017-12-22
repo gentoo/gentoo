@@ -118,7 +118,7 @@ TCL_LIBRARY=${my_sys_lib}/tcl$(grep TCL_VER /usr/include/tcl.h | sed 's/^.*"\(.*
 		-i configure.ac || die
 
 	# no longer needed https://tracker.dev.opencascade.org/view.php?id=28971
-	if has_version >=sys-libs/glibc-2.26 ; then
+	if has_version ">=sys-libs/glibc-2.26" ; then
 		sed -e '/#include <xlocale.h>/d' \
 			-i inc/Standard_CLocaleSentry.hxx || die
 	fi
