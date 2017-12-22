@@ -7237,7 +7237,7 @@ media-gfx/potrace 1.13 1.14 1.15: Transforming bitmaps into vector graphics
 media-gfx/povray 3.7.0.0 3.7.0.0-r1: The Persistence of Vision Raytracer
 media-gfx/povtree 1.5-r1: Tree generator for POVray based on TOMTREE macro
 media-gfx/pqiv 2.9: powerful GTK 3 based command-line image viewer with a minimal UI
-media-gfx/propaganda 1.0 1.0-r1: Propaganda Volume 1-14 + E. Tiling images for your desktop
+media-gfx/propaganda 1.0-r1: Propaganda Volume 1-14 + E. Tiling images for your desktop
 media-gfx/pstoedit 3.70-r1: Translate PostScript and PDF graphics into other vector formats
 media-gfx/qingy-themes 20050816: Collection of qingy themes
 media-gfx/qrencode 3.4.4-r1: C library for encoding data in a QR Code symbol
