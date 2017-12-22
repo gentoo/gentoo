@@ -8781,7 +8781,7 @@ net-misc/jrdesktop 0.3.1.0: Java Remote Desktop (jrdesktop) software for viewing
 net-misc/jwhois 3.2.3-r1 4.0 4.0-r1: Advanced Internet Whois client capable of recursive queries
 net-misc/keychain 2.8.1: manage ssh and GPG keys in a convenient and secure manner
 net-misc/knemo 0.8.0_pre20161211: Plasma Network Monitor
-net-misc/knock 0.6 0.7: A simple port-knocking daemon
+net-misc/knock 0.7: A simple port-knocking daemon
 net-misc/l7-protocols 2009.05.28: Protocol definitions of l7-filter kernel modules
 net-misc/libteam 1.22: Library and tools set for controlling team network device
 net-misc/linux-identd 1.3-r2: A real IDENT daemon for linux
