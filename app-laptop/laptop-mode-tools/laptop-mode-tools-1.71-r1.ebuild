@@ -29,6 +29,10 @@ DEPEND=""
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-wireless-power.patch"
+)
+
 src_prepare() {
 	default
 	# This should avoid conflict with pm-powersave wrt #327443 and #396703
