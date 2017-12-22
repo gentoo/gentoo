@@ -1,0 +1,9 @@
+--- a/window.c	2016-09-29 05:31:24.000000000 +0800
++++ b/window.c	2017-12-22 09:38:43.709617000 +0800
+@@ -981,7 +981,7 @@
+
+ 	input_parse(wp);
+
+-	wp->pipe_off = size;
++	wp->pipe_off = EVBUFFER_LENGTH(evb);
+ }
