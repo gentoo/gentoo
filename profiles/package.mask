@@ -39,6 +39,13 @@ media-gfx/wally
 # Bug #637108. Masked for removal in 30 days.
 app-cdr/qpxtool
 
+# Charles Nérot <charles@nerot.com> (20 Dec 2017)
+# alpha version of xdebug for php 7.2
+# have crash bug inside (https://xdebug.org/index.php)
+# Bug 640256 dev-php/xdebug-2.6.0_alpha: Version bump
+=dev-php/xdebug-2.6.0_alpha1
+=dev-php/xdebug-client-2.6.0_alpha1
+
 # Patrice Clement <monsieurp@gentoo.org> (19 Dec 2017)
 # A slightly better syntax file for PAM configuration files is shipped with Vim
 # since version 8.0. The one we package is old and out of date.
