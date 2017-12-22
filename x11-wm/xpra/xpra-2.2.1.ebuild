@@ -14,7 +14,7 @@ SRC_URI="http://xpra.org/src/${P}.tar.xz"
 LICENSE="GPL-2 BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="+client +clipboard csc cups dbus dec_avcodec2 enc_ffmpeg enc_x264 enc_x265 jpeg libav +lz4 lzo opengl pillow pulseaudio server sound test vpx webcam"
+IUSE="+client +clipboard csc cups dbus dec_avcodec2 enc_ffmpeg enc_x264 enc_x265 jpeg libav +lz4 lzo opengl pillow pulseaudio server sound test vpx webcam webp"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	clipboard? ( || ( server client ) )
@@ -58,7 +58,8 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	sound? ( media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
 		dev-python/gst-python:1.0 )
-	vpx? ( media-libs/libvpx virtual/ffmpeg )"
+	vpx? ( media-libs/libvpx virtual/ffmpeg )
+	webp? ( media-libs/libwebp )"
 
 RDEPEND="${COMMON_DEPEND}
 	dev-python/ipython[${PYTHON_USEDEP}]
@@ -133,6 +134,7 @@ python_configure_all() {
 		$(use_with vpx)
 		--with-warn
 		$(use_with webcam)
+		$(use_with webp)
 		--with-x11
 	)
 
