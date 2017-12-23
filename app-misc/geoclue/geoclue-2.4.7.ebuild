@@ -22,7 +22,7 @@ RDEPEND="
 	sys-apps/dbus
 	introspection? ( >=dev-libs/gobject-introspection-0.9.6:= )
 	modemmanager? ( >=net-misc/modemmanager-1 )
-	zeroconf? ( >=net-dns/avahi-0.6.10 )
+	zeroconf? ( >=net-dns/avahi-0.6.10[dbus] )
 	!<sci-geosciences/geocode-glib-3.10.0
 "
 DEPEND="${RDEPEND}
