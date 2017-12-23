@@ -67,6 +67,7 @@ COMMON_DEPEND="
 DEPEND="${COMMON_DEPEND}
 	dev-python/cython[${PYTHON_USEDEP}]
 	app-arch/cpio
+	dev-lang/yasm
 	virtual/pkgconfig
 	dev-python/sphinx
 	test? (
