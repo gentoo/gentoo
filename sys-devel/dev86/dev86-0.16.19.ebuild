@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -6,7 +6,7 @@ EAPI="4"
 inherit eutils multilib
 
 DESCRIPTION="Bruce's C compiler - Simple C compiler to generate 8086 code"
-HOMEPAGE="http://www.debath.co.uk/"
+HOMEPAGE="http://www.debath.co.uk/ https://github.com/lkundrak/dev86"
 SRC_URI="http://www.debath.co.uk/dev86/Dev86src-${PV}.tar.gz"
 
 LICENSE="GPL-2"

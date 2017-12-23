@@ -6,7 +6,7 @@ EAPI=6
 inherit toolchain-funcs
 
 DESCRIPTION="Bruce's C compiler - Simple C compiler to generate 8086 code"
-HOMEPAGE="http://v3.sk/~lkundrak/dev86/"
+HOMEPAGE="http://www.debath.co.uk/ https://github.com/lkundrak/dev86"
 SRC_URI="http://v3.sk/~lkundrak/dev86/Dev86src-${PV}.tar.gz"
 
 LICENSE="GPL-2"
