@@ -146,6 +146,9 @@ PATCHES=(
 	"${FILESDIR}/chromium-FORTIFY_SOURCE-r2.patch"
 	"${FILESDIR}/chromium-webrtc-r0.patch"
 	"${FILESDIR}/chromium-memcpy-r0.patch"
+	"${FILESDIR}/chromium-cups-r0.patch"
+	"${FILESDIR}/chromium-clang-r2.patch"
+	"${FILESDIR}/chromium-angle-r0.patch"
 )
 
 pre_build_checks() {
@@ -437,6 +440,9 @@ src_configure() {
 	# Do not use bundled clang.
 	# Trying to use gold results in linker crash.
 	myconf_gn+=" use_gold=false use_sysroot=false linux_use_bundled_binutils=false use_custom_libcxx=false"
+
+	# Disable forced lld, bug 641556
+	myconf_gn+=" use_lld=false"
 
 	ffmpeg_branding="$(usex proprietary-codecs Chrome Chromium)"
 	myconf_gn+=" proprietary_codecs=$(usex proprietary-codecs true false)"
