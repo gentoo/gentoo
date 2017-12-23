@@ -23,6 +23,7 @@ RDEPEND="
 	dev-libs/libappindicator:3
 	dev-libs/nss
 	x11-libs/libXtst
+	net-print/cups
 	"
 
 QA_PREBUILT="opt/Signal/signal-desktop
