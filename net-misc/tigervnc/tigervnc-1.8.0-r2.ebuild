@@ -1,13 +1,13 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
 CMAKE_IN_SOURCE_BUILD=1
 
 inherit autotools cmake-utils eutils flag-o-matic java-pkg-opt-2 systemd
 
-XSERVER_VERSION="1.19.1"
+XSERVER_VERSION="1.19.5"
 
 DESCRIPTION="Remote desktop viewer display system"
 HOMEPAGE="http://www.tigervnc.org"
@@ -17,8 +17,8 @@ SRC_URI="https://github.com/TigerVNC/tigervnc/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~sh sparc x86"
-IUSE="+drm gnutls nls java +opengl pam server systemd +xorgmodule"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86"
+IUSE="+drm gnutls nls java +opengl pam server +xorgmodule xinerama dri3"
 
 CDEPEND="virtual/jpeg:0
 	sys-libs/zlib
@@ -40,7 +40,10 @@ CDEPEND="virtual/jpeg:0
 		opengl? ( >=app-eselect/eselect-opengl-1.3.1-r1 )
 		xorgmodule? ( =x11-base/xorg-server-${XSERVER_VERSION%.*}* )
 		drm? ( x11-libs/libdrm )
-	)"
+	)
+	xinerama? ( x11-libs/libXinerama )
+	dri3? ( x11-proto/dri3proto )
+	"
 
 RDEPEND="${CDEPEND}
 	!net-misc/tightvnc
@@ -82,6 +85,7 @@ DEPEND="${CDEPEND}
 PATCHES=(
 	"${WORKDIR}"/patches/030_manpages.patch
 	"${WORKDIR}"/patches/055_xstartup.patch
+	"${FILESDIR}"/java-utf8.patch
 )
 
 src_prepare() {
@@ -120,7 +124,7 @@ src_configure() {
 			--disable-devel-docs \
 			--disable-dmx \
 			--disable-dri \
-			--disable-dri3 \
+			$(use_enable dri3) \
 			--disable-glamor \
 			--disable-kdrive \
 			--disable-libunwind \
@@ -132,7 +136,7 @@ src_configure() {
 			--disable-tslib \
 			--disable-unit-tests \
 			--disable-xephyr \
-			--disable-xinerama \
+			$(use_enable xinerama) \
 			--disable-xnest \
 			--disable-xorg \
 			--disable-xvfb \
@@ -152,7 +156,7 @@ src_compile() {
 	if use server; then
 		# deps of the vnc module and the module itself
 		local d subdirs=(
-			fb xfixes Xext dbe $(usex opengl glx "") randr render damageext miext Xi xkb
+			fb xfixes Xext dbe $(usex opengl glx "") $(usev dri3) randr render damageext miext Xi xkb
 			composite dix mi os hw/vnc
 		)
 		for d in "${subdirs[@]}"; do
@@ -173,11 +177,9 @@ src_install() {
 		fi
 
 		newconfd "${FILESDIR}"/${PN}.confd ${PN}
-		if use systemd; then
-			systemd_douserunit contrib/systemd/user/vncserver@.service
-		else
-			newinitd "${FILESDIR}"/${PN}.initd ${PN}
-		fi
+
+		systemd_douserunit contrib/systemd/user/vncserver@.service
+		newinitd "${FILESDIR}"/${PN}.initd ${PN}
 	else
 		local f
 		cd "${ED}" || die
