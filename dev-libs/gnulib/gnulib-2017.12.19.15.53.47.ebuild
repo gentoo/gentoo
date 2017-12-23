@@ -3,16 +3,18 @@
 
 EAPI=6
 
-inherit git-r3
+GIT_TAG="f583f328bec489dd59b54ecc1cc640843ea261cf"
 
-DESCRIPTION="Gnulib is a library of common routines intended to be shared at the source level"
+DESCRIPTION="Library of common routines intended to be shared"
 HOMEPAGE="https://www.gnu.org/software/gnulib"
+SRC_URI="https://git.savannah.gnu.org/cgit/${PN}.git/snapshot/${PN}-${GIT_TAG}.tar.gz"
 
-EGIT_REPO_URI="https://git.savannah.gnu.org/r/${PN}.git"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~ppc-aix ~x86-fbsd ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc"
+
+S="${WORKDIR}/${PN}-${GIT_TAG}"
 
 src_compile() {
 	if use doc; then
