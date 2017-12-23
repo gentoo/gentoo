@@ -6969,7 +6969,7 @@ media-fonts/bitstream-cyberbit 2.0: Cyberbit Unicode (including CJK) font
 media-fonts/cantarell 0.0.25: Default fontset for GNOME Shell
 media-fonts/cardo 1.04: Unicode font for classicists, medievalists and linguists
 media-fonts/cheapskatefonts 1.0: Dustismo's decorative font collection
-media-fonts/cm-unicode 0.7.0 0.7.0-r1: Computer Modern Unicode fonts
+media-fonts/cm-unicode 0.7.0-r1: Computer Modern Unicode fonts
 media-fonts/comic-neue 2.2: Typographically savvy casual script typeface
 media-fonts/corefonts 1-r7: Microsoft's TrueType core fonts
 media-fonts/cronyx-fonts 2.3.1-r2: Cronyx Cyrillic bitmap fonts for X
