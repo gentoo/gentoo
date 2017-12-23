@@ -13,13 +13,12 @@ SRC_URI="ftp://ftp.qualcomm.com/eudora/servers/unix/popper/${MY_P}.tar.gz"
 LICENSE="qpopper GPL-2 ISOC-rfc"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="debug drac gdbm mailbox pam ssl xinetd apop"
+IUSE="debug gdbm mailbox pam ssl xinetd apop"
 
 DEPEND="virtual/mta
 	>=net-mail/mailbase-0.00-r8
 	xinetd? ( virtual/inetd )
 	gdbm? ( sys-libs/gdbm )
-	drac? ( mail-client/drac )
 	pam? ( >=sys-libs/pam-0.72 )
 	ssl? ( dev-libs/openssl:0 )
 "
@@ -52,7 +51,7 @@ src_configure() {
 		$(use_with pam pam pop3)        \
 		$(use_enable apop apop /etc/pop.auth) \
 		$(use_enable mailbox home-dir-mail Mailbox) \
-		$(use_with drac) \
+		--disable-drac \
 		--enable-shy \
 		--enable-popuid=pop \
 		--enable-log-login \
