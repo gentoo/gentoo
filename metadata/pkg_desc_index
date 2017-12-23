@@ -5361,7 +5361,7 @@ dev-python/python-slip 0.6.5: Miscellaneous convenience, extension and workaroun
 dev-python/python-social-auth 0.1.26 0.2.10: Easy to setup social auth mechanism with support for several frameworks and auth providers
 dev-python/python-sqlparse 0.2.1 0.2.2 0.2.3: A non-validating SQL parser module for Python
 dev-python/python-swiftclient 3.0.0 3.1.0 3.3.0 3.4.0: Python bindings to the OpenStack Object Storage API
-dev-python/python-systemd 230 233: Python module for native access to the systemd facilities
+dev-python/python-systemd 233: Python module for native access to the systemd facilities
 dev-python/python-termstyle 0.1.10: console colouring for python
 dev-python/python-troveclient 2.5.0: A client for the OpenStack Trove API, a scalable relational database service
 dev-python/python-virtkey 0.60.0-r1: Python module to simulate keypresses and get current keyboard layout
@@ -8920,7 +8920,7 @@ net-misc/zsync 0.6.2-r1: Partial/differential file download client over HTTP whi
 net-nds/jxplorer 3.3.1: A fully functional ldap browser written in java
 net-nds/ldapvi 1.7-r1: Manage LDAP entries with a text editor
 net-nds/openldap 2.4.44: LDAP suite of application and development tools
-net-nds/portmap 6.0: daemon for implementing remote procedure calls between computer programs
+net-nds/rpcbind 0.2.3-r1 0.2.4 0.2.4-r1: portmap replacement which supports RPC over various protocols
 net-nds/smbldap-tools 0.9.8: Samba LDAP management tools
 net-nds/tac_plus 4.0.4.19-r3 4.0.4.19-r4: An updated version of Cisco's TACACS+ server
 net-nds/yp-tools 4.2.2-r1: Network Information Service tools
