@@ -540,7 +540,7 @@ src_configure() {
 	bootstrap_gn
 
 	einfo "Configuring Chromium..."
-	set -- out/Release/gn gen --args="${myconf_gn}" out/Release
+	set -- out/Release/gn gen --args="${myconf_gn} ${EXTRA_GN}" out/Release
 	echo "$@"
 	"$@" || die
 }
