@@ -49,7 +49,7 @@ src_install() {
 	newins "${FILESDIR}/${PN}.logrotated" "${PN}"
 	dodir /var/lib/${PN}
 	fowners ${PN}:${PN} /var/lib/${PN}
-	fperms 755 /var/lib/${PN}
+	fperms 0700 /var/lib/${PN}
 	dodir /var/log/${PN}
 	fowners ${PN}:${PN} /var/log/${PN}
 	fperms 755 /var/log/${PN}
