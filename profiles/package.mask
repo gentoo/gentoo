@@ -29,6 +29,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Beierlein <tomjbe@gentoo.org> (23 Dec 2017)
+# To adapt to changed version naming by upstream 
+# (pcb-yyyymmdd to pcb-x.y.z) we move the ebuild to
+# pcb-0_pyyyymmdd and mask >=pcb-20000000.
+# Do not remove the mask until newer version gets stable
+>=sci-electronics/pcb-20000000
+
 # Mike Gilbert <floppym@gentoo.org> (23 Dec 2017)
 # Fails to build without glibc rpc support, bug 630670.
 # Use net-nds/rpcbind instead.
