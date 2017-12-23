@@ -9194,7 +9194,7 @@ sci-electronics/klayout 0.24.10: Viewer and editor for GDS and OASIS integrated 
 sci-electronics/linsmith 0.99.30-r1: Smith charting program, mainly designed for educational use
 sci-electronics/magic 7.5.202-r1: The VLSI design CAD tool
 sci-electronics/oregano 0.69.1-r1: Application for the schematic capturing and simulation of electrical circuits
-sci-electronics/pcb 20140316-r1: GPL Electronic Design Automation: Printed Circuit Board editor
+sci-electronics/pcb 0_p20140316 20140316-r1: GPL Electronic Design Automation: Printed Circuit Board editor
 sci-electronics/plcedit 2.2.1: Qt4 notepad for PLC programming
 sci-electronics/qelectrotech 0.50: Qt5 application to design electric diagrams
 sci-electronics/spice 3.5.5-r1: general-purpose circuit simulation program
