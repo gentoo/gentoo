@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Gilbert <floppym@gentoo.org> (23 Dec 2017)
+# Fails to build without glibc rpc support, bug 641154.
+# Dead upstream.
+# Removal in 30 days.
+mail-client/drac
+
 # Thomas Beierlein <tomjbe@gentoo.org> (22 Dec 2017)
 # Development moved to another naming scheme.
 # Use media-radio/tucnak instead.
