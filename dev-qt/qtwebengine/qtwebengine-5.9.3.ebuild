@@ -29,6 +29,7 @@ RDEPEND="
 	dev-libs/libxml2
 	dev-libs/libxslt
 	dev-libs/protobuf:=
+	dev-libs/re2:=
 	media-libs/fontconfig
 	media-libs/freetype
 	media-libs/harfbuzz:=
