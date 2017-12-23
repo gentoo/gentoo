@@ -21,7 +21,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86"
 IUSE="+drm gnutls nls java +opengl pam server +xorgmodule xinerama dri3"
 
 CDEPEND="virtual/jpeg:0
-	sys-libs/zlib
+	sys-libs/zlib:=
 	>=x11-libs/libXtst-1.0.99.2
 	>=x11-libs/fltk-1.3.1
 	gnutls? ( net-libs/gnutls:= )
@@ -95,15 +95,17 @@ src_prepare() {
 
 	cmake-utils_src_prepare
 
-	if use server; then
+	if use server ; then
 		cd unix/xserver || die
-		eapply "${FILESDIR}/xserver119.patch"
+		eapply "${FILESDIR}"/xserver119.patch
 		eautoreconf
 	fi
 }
 
 src_configure() {
-	use arm || use hppa && append-flags "-fPIC"
+	if use arm || use hppa ; then
+		append-flags "-fPIC"
+	fi
 
 	local mycmakeargs=(
 		-DENABLE_GNUTLS=$(usex gnutls)
@@ -114,7 +116,7 @@ src_configure() {
 
 	cmake-utils_src_configure
 
-	if use server; then
+	if use server ; then
 		cd unix/xserver || die
 		econf \
 			$(use_enable opengl glx) \
@@ -153,7 +155,7 @@ src_configure() {
 src_compile() {
 	cmake-utils_src_compile
 
-	if use server; then
+	if use server ; then
 		# deps of the vnc module and the module itself
 		local d subdirs=(
 			fb xfixes Xext dbe $(usex opengl glx "") $(usev dri3) randr render damageext miext Xi xkb
@@ -168,7 +170,7 @@ src_compile() {
 src_install() {
 	cmake-utils_src_install
 
-	if use server; then
+	if use server ; then
 		emake -C unix/xserver/hw/vnc DESTDIR="${D}" install
 		if ! use xorgmodule; then
 			rm -rv "${ED%/}"/usr/$(get_libdir)/xorg || die
@@ -177,9 +179,9 @@ src_install() {
 		fi
 
 		newconfd "${FILESDIR}"/${PN}.confd ${PN}
+		newinitd "${FILESDIR}"/${PN}.initd ${PN}
 
 		systemd_douserunit contrib/systemd/user/vncserver@.service
-		newinitd "${FILESDIR}"/${PN}.initd ${PN}
 	else
 		local f
 		cd "${ED}" || die
