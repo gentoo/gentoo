@@ -439,15 +439,6 @@ net-analyzer/aimsniff
 # Masked for removal in 30 days. Bug #638432
 dev-perl/Mail-SPF-Query
 
-# Alice Ferrazzi <alicef@gentoo.org> (21 Nov 2017)
-# A regression in kernel 4.14.0
-# Data corruption issue that affects at minimum bcache. 
-# The hope is that this patch will make it to 4.14.1 Bug #638206
-=sys-kernel/vanilla-sources-4.14.1
-=sys-kernel/vanilla-sources-4.14.0
-=sys-kernel/gentoo-sources-4.14.0
-=sys-kernel/ck-sources-4.14.0
-
 # Andreas Sturmlechner <asturm@gentoo.org> (16 Nov 2017)
 # Qt4WebKit is ancient and full of security holes.
 # Masked for removal in 30 days. Bug #620684
