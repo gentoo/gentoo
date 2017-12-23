@@ -78,6 +78,8 @@ src_prepare() {
 
 	## remove hardcoded CXXFLAGS
 	sed -i -e 's/-O0 -g3//' ext/scintilla/gtk/CMakeLists.txt || die
+	## And avoid -Werror
+	sed -i -e 's/-Werror//' CMakeLists.txt || die
 
 	## package is very fragile...
 	strip-flags
