@@ -33,7 +33,7 @@
 # Fails to build without glibc rpc support, bug 630670.
 # Use net-nds/rpcbind instead.
 # Removal in 30 days.
-net-nds/rpcbind
+net-nds/portmap
 
 # Mike Gilbert <floppym@gentoo.org> (23 Dec 2017)
 # Fails to build without glibc rpc support, bug 641154.
