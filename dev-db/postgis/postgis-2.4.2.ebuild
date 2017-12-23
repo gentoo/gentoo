@@ -61,7 +61,8 @@ MAKEOPTS+=' -j1'
 QA_FLAGS_IGNORED="usr/lib(64)?/(rt)?postgis-${PGIS}\.so"
 
 src_prepare() {
-	eapply "${FILESDIR}/${PN}-2.2.0-arflags.patch"
+	eapply "${FILESDIR}/${PN}-2.2.0-arflags.patch" \
+		   "${FILESDIR}/postgis-2.4.2-jsonc_0.13.patch"
 
 	local AT_M4DIR="macros"
 	eautoreconf
