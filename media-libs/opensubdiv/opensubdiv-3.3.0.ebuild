@@ -12,7 +12,7 @@ SRC_URI="https://github.com/PixarAnimationStudios/OpenSubdiv/archive/v${MY_PV}.t
 LICENSE="ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="cuda doc examples opencl openmp ptex tbb tutorials"
+IUSE="cuda doc opencl openmp ptex tbb"
 
 RDEPEND="media-libs/glew:=
 	media-libs/glfw:=
@@ -54,8 +54,8 @@ src_configure() {
 		-DNO_OPENCL=$(usex !opencl)
 		-DNO_CUDA=$(usex !cuda)
 		-DNO_REGRESSION=1 # They don't work with certain settings
-		-DNO_EXAMPLES=$(usex !examples)
-		-DNO_TUTORIALS=$(usex !tutorials)
+		-DNO_EXAMPLES=1 # Not needed.
+		-DNO_TUTORIALS=1 # They install illegally. Need to find a better solution.
 		-DGLEW_LOCATION="${EPREFIX}/usr/$(get_libdir)"
 		-DGLFW_LOCATION="${EPREFIX}/usr/$(get_libdir)"
 		-DCMAKE_INSTALL_DOCDIR="share/doc/${PF}"
