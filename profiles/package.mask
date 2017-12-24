@@ -514,7 +514,6 @@ virtual/jre:1.7
 # Removal of the old versions in 30 days; please upgrade to
 # Audacious 3.9 (may require manual keywording since not
 # marked stable anymore).
-<media-plugins/audacious-plugins-3.9
 <x11-themes/audacious-themes-0.0.4-r1
 
 # Marc Schiffbauer <mschiff@gentoo.org> (01 Nov 2017)
