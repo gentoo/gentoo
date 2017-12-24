@@ -30,6 +30,8 @@ CDEPEND="
 	>=dev-cpp/yaml-cpp-0.5.1
 	!<app-admin/puppet-4.0.0"
 
+ruby_add_bdepend "test? ( dev-ruby/rake dev-ruby/rspec:2 dev-ruby/mocha:0.14 )"
+
 RDEPEND="${CDEPEND}"
 DEPEND="${BDEPEND}
 	${CDEPEND}"
@@ -43,6 +45,14 @@ src_prepare() {
 	sed -i "s/lib\")/$(get_libdir)\")/g" CMakeLists.txt || die
 	# make the require work
 	sed -i 's/\${LIBFACTER_INSTALL_DESTINATION}\///g' lib/facter.rb.in || die
+	# be explicit about the version of rspec we test with and use the
+	# correct lib directory for tests
+	sed -i -e '/libfacter.*specs/ s/rspec/rspec-2/' \
+		-e '/libfacter.*specs/ s/lib64/lib/' CMakeLists.txt || die
+	# be more lenient for software versions for tests
+	sed -i -e '/rake/ s/~> 10.1.0/>= 10/' \
+		-e '/rspec/ s/2.11.0/2.11/' \
+		-e '/mocha/ s/0.10.5/0.14.0/' lib/Gemfile || die
 	# patches
 	default
 	cmake-utils_src_prepare
