@@ -186,10 +186,6 @@ sys-boot/grub:2 test
 app-editors/emacs:25 xwidgets
 app-editors/emacs-vcs:25 xwidgets
 
-# Matt Turner <mattst88@gentoo.org> (26 Jan 2017)
-# x11-drivers/ati-drivers is masked for removal.
-media-libs/opensubdiv opencl
-
 # Ian Stakenvicius (25 Jan 2017)
 # rust on mozilla packages is experimental
 www-client/firefox rust
