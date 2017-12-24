@@ -72,6 +72,9 @@
 		<flag name="ndof">
 			Enable NDOF input devices (SpaceNavigator and friends).
 		</flag>
+		<flag name="opencl" restrict="&lt;=media-gfx/blender-2.79">
+			Allow OpenCL Graphics Acceleration. This may
+			require extra graphics card drivers.</flag>
 		<flag name="openimageio">Enable OpenImageIO Support</flag>
 		<flag name="opennl" restrict="&lt;=media-gfx/blender-2.73">
 			Enable use of Open Numerical Library
@@ -82,6 +85,9 @@
 		</flag>
 		<flag name="openvdb" restrict="&gt;=media-gfx/blender-2.77">
 			Add GPU preview rendering. Only works with nVidia cards.
+		</flag>
+		<flag name="osl" restrict="&gt;=media-gfx/blender-2.79">
+			Add support for OpenShadingLanguage scripting.
 		</flag>
 		<flag name="player">
 			Build the Blender Player. THis requires the Game engine.
