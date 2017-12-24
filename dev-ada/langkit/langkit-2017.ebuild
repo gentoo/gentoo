@@ -21,7 +21,7 @@ IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="${PYTHON_DEPS}
-	dev-ada/gnatcoll[gnat_2017,iconv]
+	dev-ada/gnatcoll[gnat_2017,iconv,shared]
 	dev-python/mako
 	dev-python/pyyaml
 	dev-python/enum34
