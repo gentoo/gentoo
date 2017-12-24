@@ -12,7 +12,7 @@ SRC_URI="https://github.com/PixarAnimationStudios/OpenSubdiv/archive/v${MY_PV}.t
 LICENSE="ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="cuda doc opencl openmp ptex tbb"
+IUSE="cuda doc examples opencl openmp ptex tbb tutorials"
 
 RDEPEND="media-libs/glew:=
 	media-libs/glfw:=
@@ -32,6 +32,7 @@ S="${WORKDIR}/OpenSubdiv-${MY_PV}"
 PATCHES=(
 	"${FILESDIR}/${P}-fix-quotes.patch"
 	"${FILESDIR}/${P}-use-gnuinstalldirs.patch"
+	"${FILESDIR}/${P}-add-CUDA9-compatibility.patch"
 )
 
 pkg_pretend() {
@@ -53,8 +54,8 @@ src_configure() {
 		-DNO_OPENCL=$(usex !opencl)
 		-DNO_CUDA=$(usex !cuda)
 		-DNO_REGRESSION=1 # They don't work with certain settings
-		-DNO_EXAMPLES=1 # Not needed.
-		-DNO_TUTORIALS=1 # They install illegally. Need to find a better solution.
+		-DNO_EXAMPLES=$(usex !examples)
+		-DNO_TUTORIALS=$(usex !tutorials)
 		-DGLEW_LOCATION="${EPREFIX}/usr/$(get_libdir)"
 		-DGLFW_LOCATION="${EPREFIX}/usr/$(get_libdir)"
 		-DCMAKE_INSTALL_DOCDIR="share/doc/${PF}"

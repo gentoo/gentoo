@@ -1,0 +1,25 @@
+From 7b9157bca7138480c387ef3d5b69b6cf1eb498e5 Mon Sep 17 00:00:00 2001
+From: "Daniel M. Weeks" <dan@danweeks.net>
+Date: Fri, 15 Dec 2017 22:45:55 -0500
+Subject: [PATCH] CUDA 9 compatible gpu-architecture default
+
+---
+ CMakeLists.txt | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4f3cd9d4..fa438b46 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -513,8 +513,10 @@ if(CUDA_FOUND)
+         if (NOT DEFINED OSD_CUDA_NVCC_FLAGS)
+             if (CUDA_VERSION_MAJOR LESS 6)
+                 set( OSD_CUDA_NVCC_FLAGS --gpu-architecture compute_11 )
+-            else()
++            elseif (CUDA_VERSION_MAJOR LESS 9)
+                 set( OSD_CUDA_NVCC_FLAGS --gpu-architecture compute_20 )
++            else()
++                set( OSD_CUDA_NVCC_FLAGS --gpu-architecture compute_30 )
+             endif()
+         endif()
+     endif()
