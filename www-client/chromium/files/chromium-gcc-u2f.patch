@@ -1,0 +1,45 @@
+From ee7f5ecc3b869660ded9882a9904cc7c6db7dc0d Mon Sep 17 00:00:00 2001
+From: Jose Dapena Paz <jose.dapena@lge.com>
+Date: Tue, 19 Dec 2017 19:25:00 +0000
+Subject: [PATCH] GCC build: workaround GCC bad "this" handling on lambda by
+ not using lambda.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This is a workaround for the bug in GCC "Inconsistent `this->`
+required when calling member function in a lambda
+capturing `this` through another function"
+https://gcc.gnu.org/bugzilla/show_bug.cgi?id=67274
+
+This fix just replaces the foreach call using lambda with a
+regular C++ for-each-like for (:) construct in u2f discovery.
+
+Change-Id: I9ddf212a7687e02cd7d2d2b43cf76e21dd5dada2
+Reviewed-on: https://chromium-review.googlesource.com/833886
+Reviewed-by: Jan Wilken Dörrie <jdoerrie@chromium.org>
+Commit-Queue: José Dapena Paz <jose.dapena@lge.com>
+Cr-Commit-Position: refs/heads/master@{#525104}
+---
+ device/u2f/u2f_hid_discovery.cc | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/device/u2f/u2f_hid_discovery.cc b/device/u2f/u2f_hid_discovery.cc
+index 0695778d2aab..6c4e71179ce7 100644
+--- a/device/u2f/u2f_hid_discovery.cc
++++ b/device/u2f/u2f_hid_discovery.cc
+@@ -55,9 +55,8 @@ void U2fHidDiscovery::DeviceRemoved(
+ 
+ void U2fHidDiscovery::OnGetDevices(
+     std::vector<device::mojom::HidDeviceInfoPtr> device_infos) {
+-  std::for_each(
+-      device_infos.begin(), device_infos.end(),
+-      [this](auto& device_info) { DeviceAdded(std::move(device_info)); });
++  for (auto& device_info : device_infos)
++    DeviceAdded(std::move(device_info));
+   NotifyDiscoveryStarted(true);
+ }
+ 
+-- 
+2.15.1
+
