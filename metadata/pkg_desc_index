@@ -4011,7 +4011,7 @@ dev-perl/PDL-Transform-Color 1.3.0: Useful color system conversions for PDL
 dev-perl/POE 1.367: A framework for creating multitasking programs in Perl
 dev-perl/POE-Test-Loops 1.360.0: Reusable tests for POE::Loop authors
 dev-perl/POSIX-strftime-Compiler 0.410.0: GNU C library compatible strftime for loggers and servers
-dev-perl/PPI 1.220 1.224.0: Parse, Analyze and Manipulate Perl (without perl)
+dev-perl/PPI 1.224.0: Parse, Analyze and Manipulate Perl (without perl)
 dev-perl/PPIx-Regexp 0.48.0: Represent a regular expression of some sort
 dev-perl/PPIx-Utilities 1.1.0-r1: Extensions to PPI
 dev-perl/Package-Constants 0.60.0: List all constants declared in a package
