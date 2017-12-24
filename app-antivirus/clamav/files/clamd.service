@@ -1,4 +1,4 @@
-.include /usr/lib/systemd/system/clamd@.service
+.include /lib/systemd/system/clamd@.service
 
 [Unit]
 Description=Generic ClamAV scanner daemon
