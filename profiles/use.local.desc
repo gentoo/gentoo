@@ -4506,7 +4506,8 @@ net-misc/spice-gtk:webdav - Support for folder-sharing between guest and client 
 net-misc/streamtuner:shout - Enable shoutcast plug-in.
 net-misc/streamtuner:xiph - Enable xiph.org plug-in.
 net-misc/stunnel:stunnel3 - Install the stunnel3 wrapper.
-net-misc/tigervnc:drm - build with DRM support
+net-misc/tigervnc:dri3 - Build with DRI3 support
+net-misc/tigervnc:drm - Build with DRM support
 net-misc/tigervnc:server - Build TigerVNC server
 net-misc/tigervnc:xorgmodule - Build the Xorg module
 net-misc/vde:pcap - Enable the pcap-based plugin that allows creating a switch against a real interface.
