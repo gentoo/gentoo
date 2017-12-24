@@ -55,6 +55,8 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	# >=x11-libs/wxGTK-3.0.2.0-r3 has webview removed, bug 587462
 	"${FILESDIR}"/fix_webview.patch
+	# xlocale.h was removed in modern glibc, bug 639108
+	"${FILESDIR}"/fix_xlocale.patch
 )
 
 S="${WORKDIR}/${PN}-client_release-${MY_PV}-${PV}"
