@@ -6,7 +6,7 @@ EAPI="6"
 inherit eutils
 
 DESCRIPTION="LXDE Session default configuration files and nuoveXT2 iconset"
-HOMEPAGE="http://lxde.org/"
+HOMEPAGE="https://wiki.lxde.org/en/LXDE_Common"
 SRC_URI="mirror://sourceforge/lxde/${P}.tar.xz"
 
 LICENSE="GPL-2"
