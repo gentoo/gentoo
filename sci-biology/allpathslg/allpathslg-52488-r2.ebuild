@@ -23,8 +23,9 @@ DEPEND="
 	dev-libs/boost:="
 
 PATCHES=(
-	"${WORKDIR}/${P}-patchset/${P}_fix-buildsystem.patch"
-	"${WORKDIR}/${P}-patchset/${P}_remove-namespace-std.patch"
+	"${WORKDIR}"/${P}-patchset/${P}_fix-buildsystem.patch
+	"${WORKDIR}"/${P}-patchset/${P}_remove-namespace-std.patch
+	"${FILESDIR}"/${P}-gcc7.patch
 )
 
 pkg_pretend() {
