@@ -25,7 +25,7 @@ RDEPEND="dev-qt/qtcore:5
 	dev-qt/qtprintsupport
 	virtual/libusb:1
 	media-libs/portaudio
-	sci-libs/fftw:3.0[threads]
+	sci-libs/fftw:3.0[threads,fortran]
 	virtual/fortran
 	app-text/asciidoc
 	doc? ( dev-ruby/asciidoctor )"
