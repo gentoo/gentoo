@@ -31,6 +31,8 @@ PATCHES=(
 	"${FILESDIR}"/${P}-flags.patch
 	"${FILESDIR}"/${P}-gcc6.patch
 	"${FILESDIR}"/${P}-boost-1.65-tr1-removal.patch
+	"${FILESDIR}"/${P}-gcc7.patch
+	"${FILESDIR}"/${P}-format-security.patch
 )
 
 src_prepare() {
