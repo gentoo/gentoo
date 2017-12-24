@@ -19,10 +19,13 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="ssl +system-capstone zsh-completion"
+IUSE="ssl libressl +system-capstone zsh-completion"
 
 RDEPEND="
-	ssl? ( dev-libs/openssl:0= )
+	ssl? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
+	)
 	system-capstone? ( dev-libs/capstone:0= )
 "
 DEPEND="${RDEPEND}
