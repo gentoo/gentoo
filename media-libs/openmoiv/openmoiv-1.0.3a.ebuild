@@ -19,14 +19,14 @@ DEPEND="${RDEPEND}"
 S="${WORKDIR}/OpenMOIV.src.${PV/a//}"
 
 src_prepare() {
-	default
+	cmake-utils_src_prepare
 	sed \
 		-e 's:$ENV{OIV_DIR}/include:/usr/include/coin:g' \
 		-i CMakeLists.txt || die
 }
 
 src_configure() {
-	mycmakeargs=(
+	local mycmakeargs=(
 		-Dshared:int=1
 		-Dcoin:int=1
 		-Dsys_fonts:int=1

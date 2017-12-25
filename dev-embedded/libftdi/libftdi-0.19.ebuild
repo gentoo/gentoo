@@ -1,11 +1,11 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
 
 if [[ ${PV} == 9999* ]] ; then
+	inherit git-r3 autotools
 	EGIT_REPO_URI="git://developer.intra2net.com/${PN}"
-	inherit git-2 autotools
 else
 	SRC_URI="http://www.intra2net.com/en/developer/${PN}/download/${P}.tar.gz"
 	KEYWORDS="amd64 arm ppc ppc64 sparc x86"

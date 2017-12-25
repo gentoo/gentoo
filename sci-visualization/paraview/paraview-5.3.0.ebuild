@@ -103,9 +103,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-
-	default
-	epatch "${PATCHES[@]}"
+	cmake-utils_src_prepare
 
 	# lib64 fixes
 	sed -i \
@@ -123,11 +121,11 @@ src_prepare() {
 		ParaViewCore/ClientServerCore/Core/vtkPVPluginTracker.cxx || die
 
 	# no proper switch
-	use nvcontrol || {
+	if ! use nvcontrol; then
 		sed -i \
 			-e '/VTK_USE_NVCONTROL/s#1#0#' \
 			VTK/Rendering/OpenGL/CMakeLists.txt || die
-	}
+	fi
 }
 
 src_configure() {
@@ -277,7 +275,7 @@ src_install() {
 	cmake-utils_src_install
 
 	# set up the environment
-	echo "LDPATH=${EPREFIX}/usr/${PVLIBDIR}" > "${T}"/40${PN}
+	echo "LDPATH=${EPREFIX}/usr/${PVLIBDIR}" > "${T}"/40${PN} || die
 
 	newicon "${S}"/Applications/ParaView/pvIcon-32x32.png paraview.png
 	make_desktop_entry paraview "Paraview" paraview

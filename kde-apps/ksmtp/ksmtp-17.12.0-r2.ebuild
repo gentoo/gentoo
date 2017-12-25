@@ -21,4 +21,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${P}-ehlo-auth-fix.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-ehlo-auth-fix.patch"
+	"${FILESDIR}/${P}-correct-hostname.patch"
+)
