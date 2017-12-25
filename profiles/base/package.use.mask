@@ -7,6 +7,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (25 Dec 2017)
+# We need to clean up obsolete packages a bit. Bug 628820.
+~app-text/texlive-core-2012 xetex
+~app-text/texlive-core-2013 xetex
+
 # James Le Cuirot <chewi@gentoo.org> (17 Dec 2017)
 # Java 9 is not yet fully supported on Gentoo. Having a masked
 # gentoo-vm flag allows us to provide it without it breaking Gentoo
