@@ -8753,7 +8753,7 @@ net-misc/dropbox-cli 1-r1 1.6.0: Cli interface for dropbox (python), part of nau
 net-misc/efax 0.9a-r4: A simple fax program for single-user systems
 net-misc/electrum 2.7.15: User friendly Bitcoin client
 net-misc/fakeidentd 2.6-r1: A static, secure identd. One source file only!
-net-misc/freerdp 1.2.1_pre20150326-r1 2.0.0_pre20160722 2.0.0_rc0: Free implementation of the Remote Desktop Protocol
+net-misc/freerdp 1.2.1_pre20150326-r1 2.0.0_rc0: Free implementation of the Remote Desktop Protocol
 net-misc/gcap 0.1.1-r1: Command line tool for downloading Youtube closed captions
 net-misc/geoipupdate 2.3.1: performs automatic updates of GeoIP2 and GeoIP Legacy binary databases
 net-misc/getdate 1.2-r1: Network Date/Time Query and Set Local Date/Time Utility
@@ -8859,7 +8859,7 @@ net-misc/rabbitmq-server 3.6.9: RabbitMQ is a high-performance AMQP-compliant me
 net-misc/radvd 2.14 2.17-r1: Linux IPv6 Router Advertisement Daemon
 net-misc/rdate 1.4-r3 1.4-r4: use TCP or UDP to retrieve the current time of another machine
 net-misc/rdesktop 1.8.3: A Remote Desktop Protocol Client
-net-misc/remmina 1.2.0_rc16-r1 1.2.0_rc24: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
+net-misc/remmina 1.2.0_rc24: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
 net-misc/rsync 3.1.2 3.1.2-r1 3.1.2-r2: File transfer program to keep remote files into sync
 net-misc/rygel 0.32.1: Rygel is an open source UPnP/DLNA MediaServer
