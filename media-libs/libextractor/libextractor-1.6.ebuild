@@ -57,6 +57,8 @@ RDEPEND="${COMMON_DEPEND}
 	!sci-biology/glimmer
 "
 
+PATCHES=( "${FILESDIR}/${P}-CVE-2017-17440.patch" )
+
 src_prepare() {
 	default
 
