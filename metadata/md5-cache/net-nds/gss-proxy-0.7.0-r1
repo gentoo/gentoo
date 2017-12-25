@@ -4,10 +4,10 @@ DESCRIPTION=daemon to proxy GSSAPI context establishment and channel handling
 EAPI=6
 HOMEPAGE=https://pagure.io/gssproxy
 IUSE=debug selinux systemd hardened
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc ~x86
+KEYWORDS=~alpha amd64 ~arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc ~x86
 LICENSE=BSD-1
 RDEPEND=>=dev-libs/libverto-0.2.2 >=dev-libs/ding-libs-0.5.0 virtual/krb5 selinux? ( sys-libs/libselinux ) selinux? ( sec-policy/selinux-gssproxy )
 RESTRICT=test
 SLOT=0
 SRC_URI=http://releases.pagure.org/gssproxy/gssproxy-0.7.0.tar.gz
-_md5_=1eb84e748885e28c6c94d2f42628ad61
+_md5_=8d40c12dbbfc725497a44ddc073dd162

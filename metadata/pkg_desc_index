@@ -1089,7 +1089,7 @@ app-misc/spacenavd 0.5-r5 0.6: The spacenavd daemon provides free alternative to
 app-misc/sphinx 2.0.10 2.1.9 2.2.11: Full-text search engine with support for MySQL and PostgreSQL
 app-misc/splitvt 1.6.6-r2: Splitting terminals into two shells
 app-misc/srm 1.2.11-r2 1.2.15: A command-line compatible rm which destroys file contents before unlinking
-app-misc/supercat 0.5.5-r1 0.5.5-r2: A text file colorizer using powerful regular expressions
+app-misc/supercat 0.5.5-r2: A text file colorizer using powerful regular expressions
 app-misc/symlinks 1.4-r3: Scans for and fixes broken or messy symlinks
 app-misc/tails-installer 4.4.11: A graphical tool to install or upgrade Tails on a USB stick from an ISO image
 app-misc/task 2.5.1-r1: Taskwarrior is a command-line todo list manager
@@ -2939,7 +2939,7 @@ dev-libs/darts 0.32: A C++ template library that implements Double-Array
 dev-libs/dbus-glib 0.102 0.108: D-Bus bindings for glib
 dev-libs/device-atlas-api-c 2.1 2.1.2_p1: API to detect devices based on the User-Agent HTTP header
 dev-libs/dietlibc 0.33_pre20110403 0.34_pre20140729: A libc optimized for small size
-dev-libs/ding-libs 0.4.0: Library set needed for build sssd
+dev-libs/ding-libs 0.4.0 0.6.0: set of utility libraries (mostly used by sssd)
 dev-libs/dmalloc 5.5.2-r4 5.5.2-r6: A Debug Malloc Library
 dev-libs/dotconf 1.3: dot.conf configuration file parser
 dev-libs/double-conversion 2.0.1: Binary-decimal and decimal-binary conversion routines for IEEE doubles
@@ -5641,7 +5641,7 @@ dev-qt/qtbearer 4.8.7: The network bearer plugins for the Qt toolkit
 dev-qt/qtbluetooth 5.7.1: Bluetooth support library for the Qt5 framework
 dev-qt/qtchooser 0_p20151008: Qt4/Qt5 version chooser
 dev-qt/qtconcurrent 5.7.1: Multi-threading concurrence support library for the Qt5 framework
-dev-qt/qtcore 4.8.7-r2 4.8.7-r3 5.7.1-r3: Cross-platform application development framework
+dev-qt/qtcore 4.8.7-r3 5.7.1-r3: Cross-platform application development framework
 dev-qt/qtdbus 4.8.7 5.7.1: Qt5 module for inter-process communication over the D-Bus protocol
 dev-qt/qtdeclarative 4.8.7 5.7.1 5.7.1-r1: The QML and Quick modules for the Qt5 framework
 dev-qt/qtdemo 4.8.7: Demonstration module and examples for the Qt toolkit
@@ -5682,8 +5682,10 @@ dev-ruby/abstract 1.0.0-r3: Library which enable you to define abstract method i
 dev-ruby/addressable 2.4.0-r1: A replacement for the URI implementation that is part of Ruby's standard library
 dev-ruby/allison 2.0.3-r3: A modern, pretty RDoc template
 dev-ruby/archive-tar-minitar 0.6.1: Provides POSIX tarchive management from Ruby programs
+dev-ruby/atomic 1.1.99: An atomic reference implementation for JRuby, Rubinius, and MRI
 dev-ruby/bacon 1.2.0-r2: Small RSpec clone weighing less than 350 LoC
 dev-ruby/bcat 0.6.2-r2: Pipe to browser utility for use at the shell and within editors
+dev-ruby/bcrypt-ruby 3.1.11-r1: An easy way to keep your users' passwords secure
 dev-ruby/blankslate 3.1.3: Base class with almost all of the methods from Object and Kernel being removed
 dev-ruby/bluecloth 2.2.0-r3: A Ruby implementation of Markdown
 dev-ruby/bsearch 1.5.0-r2: A binary search library for Ruby
@@ -5693,14 +5695,15 @@ dev-ruby/capistrano 2.15.5-r2: A distributed application deployment system
 dev-ruby/childprocess 0.6.3: Solution for controlling external programs running in the background
 dev-ruby/chronic 0.10.2: Chronic is a natural language date/time parser written in pure Ruby
 dev-ruby/cmdparse 2.0.6-r1: Advanced command line parser supporting commands
-dev-ruby/coderay 1.1.0-r2 1.1.2: A Ruby library for syntax highlighting
+dev-ruby/coderay 1.1.2: A Ruby library for syntax highlighting
 dev-ruby/coffee-script 2.4.1: Ruby CoffeeScript is a bridge to the official CoffeeScript compiler
 dev-ruby/coffee-script-source 1.9.3 1.12.2: Ruby CoffeeScript is a bridge to the official CoffeeScript compiler
 dev-ruby/color 1.8: Colour management with Ruby
+dev-ruby/concurrent-ruby 1.0.5: Modern concurrency tools including agents, futures, promises, thread pools, more
 dev-ruby/crack 0.4.2-r1: Really simple JSON and XML parsing, ripped from Merb and Rails
 dev-ruby/daemon_controller 1.2.0-r1: Library to start and stop specific daemons programmatically in a robust manner
 dev-ruby/daemons 1.2.3: Wrap existing ruby scripts to be run as a daemon
-dev-ruby/dbf 2.0.13 3.1.0: a small fast library for reading dBase, xBase, Clipper and FoxPro database files
+dev-ruby/dbf 3.1.0: a small fast library for reading dBase, xBase, Clipper and FoxPro database files
 dev-ruby/deep_merge 1.0.1: A simple set of utility functions for Hash
 dev-ruby/deprecated 3.0.1-r2: A Ruby library for handling deprecated code
 dev-ruby/diff-lcs 1.2.5-r1: Use the McIlroy-Hunt LCS algorithm to compute differences
@@ -5723,7 +5726,7 @@ dev-ruby/hashdiff 0.3.4 0.3.5: Simple Hash extension to make working with nested
 dev-ruby/hashie 2.1.2-r1: Hashie is a small collection of tools that make hashes more powerful
 dev-ruby/heredoc_unindent 1.2.0: Removes leading whitespace from Ruby heredocs
 dev-ruby/hiera 1.3.4-r1 3.2.2: A simple pluggable Hierarchical Database
-dev-ruby/highline 1.7.6 1.7.8: Highline is a high-level command-line IO library for ruby
+dev-ruby/highline 1.7.8: Highline is a high-level command-line IO library for ruby
 dev-ruby/hoe 3.13.0-r1 3.16.0: Hoe extends rake to provide full project automation
 dev-ruby/hoe-seattlerb 1.3.4: Hoe plugins providing tasks used by seattle.rb
 dev-ruby/hpricot 0.8.6-r5: A fast and liberal HTML parser for Ruby
@@ -5774,7 +5777,7 @@ dev-ruby/pkg-config 1.1.7 1.2.8: A pkg-config implementation by Ruby
 dev-ruby/power_assert 0.3.1: Shows each value of variables and method calls in the expression
 dev-ruby/puppetdb-termini 4.3.0 5.0.1 5.1.3: Library needed to connect puppet to puppetdb
 dev-ruby/racc 1.4.11: A LALR(1) parser generator for Ruby
-dev-ruby/rack 1.4.7 1.5.5 1.6.4 1.6.7: A modular Ruby webserver interface
+dev-ruby/rack 1.4.7 1.5.5 1.6.7: A modular Ruby webserver interface
 dev-ruby/rack-protection 1.5.3-r1: This gem protects against typical web attacks
 dev-ruby/rack-test 0.6.3: Rack::Test is a small, simple testing API for Rack apps
 dev-ruby/ragol 1.0.1-r2: Another implementation of an option processor
@@ -5839,6 +5842,7 @@ dev-ruby/ruby-vte3 3.0.8-r1: Ruby VTE bindings
 dev-ruby/ruby-webkit2-gtk 3.0.8: Ruby WebKitGtk+ for Gtk 3.0 bindings
 dev-ruby/ruby-xslt 0.9.9-r3: A Ruby class for processing XSLT
 dev-ruby/ruby2ruby 2.3.2: Generates readable ruby from ParseTree
+dev-ruby/ruby_dep 1.5.0: Creates a version constraint of supported Rubies,suitable for a gemspec file
 dev-ruby/ruby_parser 3.9.0: A ruby parser written in pure ruby
 dev-ruby/rubygems 2.6.14: Centralized Ruby extension management system
 dev-ruby/rubypants 0.2.0-r5: A Ruby port of the SmartyPants PHP library
@@ -5866,6 +5870,7 @@ dev-ruby/test-unit-rr 1.0.3-r1 1.0.5: RR adapter for Test::Unit
 dev-ruby/text 1.3.1: A collection of text algorithms
 dev-ruby/text-hyphen 1.4.1-r2: Hyphenates words according to the rules of the language the word is written in
 dev-ruby/thread_order 1.1.0: Test helper for ordering threaded code
+dev-ruby/thread_safe 0.3.6: A collection of thread-safe versions of common core Ruby classes
 dev-ruby/tidy-ext 0.1.14-r3: W3C HTML Tidy library implemented as a Ruby extension
 dev-ruby/tidy_table 0.0.5-r4: Tool to convert an array of struct into an HTML table
 dev-ruby/tilt 1.4.1 2.0.5: Thin interface over template engines to make their usage as generic as possible
@@ -5873,7 +5878,7 @@ dev-ruby/timecop 0.8.1: A gem providing 'time travel' and 'time freezing' capabi
 dev-ruby/tins 1.14.0: All the stuff that isn't good enough for a real library
 dev-ruby/transaction-simple 1.4.0.2-r2: Provides transaction support at the object level
 dev-ruby/trollop 2.1.2: Trollop is a commandline option parser for Ruby
-dev-ruby/tzinfo 0.3.53: Daylight-savings aware timezone library
+dev-ruby/tzinfo 0.3.53 1.2.4: Daylight-savings aware timezone library
 dev-ruby/unf 0.1.4: A wrapper library to bring Unicode Normalization Form support to Ruby/JRuby
 dev-ruby/unf_ext 0.0.7.4: Unicode Normalization Form support library for CRuby
 dev-ruby/unindent 1.0: Ruby method to unindent strings
@@ -6069,7 +6074,7 @@ dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux,
 dev-util/cmocka 1.0.1: A unit testing framework for C
 dev-util/colorgcc 1.3.2-r7: Perl script to colorise the gcc output.
 dev-util/comparator 2.10: ESR's utility for making fast comparisons among large source trees
-dev-util/cppcheck 1.77 1.81: static analyzer of C/C++ code
+dev-util/cppcheck 1.81: static analyzer of C/C++ code
 dev-util/cppi 1.18: a cpp directive indenter
 dev-util/cpptest 1.1.2: Simple but powerful unit testing framework for C++
 dev-util/cppunit 1.13.1 1.13.2-r2 1.14.0: C++ port of the famous JUnit framework for unit testing
@@ -8582,7 +8587,7 @@ net-libs/libqmi 1.12.6 1.16.2: Qualcomm MSM (Mobile Station Modem) Interface (QM
 net-libs/librouteros 1.1.2: Library for accessing MikroTik's RouterOS via its API
 net-libs/librpcsecgss 0.16: implementation of rpcsec_gss (RFC 2203) for secure rpc communication
 net-libs/librsync 0.9.7-r3 2.0.0 2.0.0-r1: Remote delta-compression library
-net-libs/libsignon-glib 1.13-r1: GLib binding for the D-Bus API provided by signond
+net-libs/libsignon-glib 1.14: GLib binding for the D-Bus API provided by signond
 net-libs/libsmi 0.4.8-r1: A Library to Access SMI MIB Information
 net-libs/libsoup 2.56.1: An HTTP library implementation in C
 net-libs/libsrtp 1.4.4-r1 1.4.4_p20121108 1.4.4_p20121108-r1 1.6.0: Open-source implementation of the Secure Real-time Transport Protocol (SRTP)
@@ -8620,7 +8625,7 @@ net-libs/serf 1.3.8: HTTP client library
 net-libs/shairplay 0_pre20170118: Apple airplay and raop protocol server
 net-libs/signon-oauth2 0.21-r1: OAuth2 plugin for Signon daemon
 net-libs/signon-ui 0.15: Signon UI
-net-libs/signond 8.58: Signon daemon for libaccounts-glib
+net-libs/signond 8.59: Signon daemon for libaccounts-glib
 net-libs/socket_wrapper 1.1.6 1.1.7: A library passing all socket communications through unix sockets
 net-libs/sofia-sip 1.12.11: RFC3261 compliant SIP User-Agent library
 net-libs/telepathy-accounts-signon 1.0: Mission control plugin for Telepathy to provide IM accounts and authentication
@@ -8918,6 +8923,7 @@ net-misc/youtube-viewer 3.1.9: A command line utility for viewing youtube-videos
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
 net-misc/zsync 0.6.2-r1: Partial/differential file download client over HTTP which uses the rsync algorithm
+net-nds/gss-proxy 0.7.0-r1: daemon to proxy GSSAPI context establishment and channel handling
 net-nds/jxplorer 3.3.1: A fully functional ldap browser written in java
 net-nds/ldapvi 1.7-r1: Manage LDAP entries with a text editor
 net-nds/openldap 2.4.44: LDAP suite of application and development tools
