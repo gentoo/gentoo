@@ -133,7 +133,7 @@ RDEPEND="
 	projectm? ( media-libs/libprojectm:0 media-fonts/dejavu:0 )
 	pulseaudio? ( >=media-sound/pulseaudio-1:0 )
 	qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 )
-	rdp? ( =net-misc/freerdp-1*:0=[client] )
+	rdp? ( >=net-misc/freerdp-2.0.0_rc0:0=[client] )
 	samba? ( >=net-fs/samba-4.0.0:0[client,-debug(-)] )
 	schroedinger? ( >=media-libs/schroedinger-1.0.10:0 )
 	sdl? ( >=media-libs/libsdl-1.2.10:0
@@ -213,6 +213,9 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.2.4-libav-11.7.patch
 
 	"${FILESDIR}"/${P}-libupnp-compat.patch
+
+	# Bug 590164
+	"${FILESDIR}"/${PN}-2.2.8-freerdp-2.patch
 )
 
 DOCS=( AUTHORS THANKS NEWS README doc/fortunes.txt doc/intf-vcd.txt )
