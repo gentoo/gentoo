@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc test"
 
-CDEPEND="
+RDEPEND="
 	>=dev-python/docutils-0.10[${PYTHON_USEDEP}]
 	>=dev-python/jmespath-0.7.1[${PYTHON_USEDEP}]
 	<dev-python/jmespath-1.0.0[${PYTHON_USEDEP}]
@@ -31,12 +31,11 @@ DEPEND="
 		<dev-python/sphinx-1.7[${PYTHON_USEDEP}]
 	)
 	test? (
-		${CDEPEND}
+		${RDEPEND}
 		~dev-python/mock-1.3.0[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
 	)
 "
-RDEPEND="${CDEPEND}"
 
 PATCHES=( "${FILESDIR}/1.8.6-tests-pass-all-env-vars-to-cmd-runner.patch" )
 
