@@ -215,7 +215,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-libupnp-compat.patch
 
 	# Bug 590164
-	"${FILESDIR}"/${PN}-2.2.8-freerdp-2.patch
+	"${FILESDIR}"/${P}-freerdp-2.patch
 )
 
 DOCS=( AUTHORS THANKS NEWS README doc/fortunes.txt doc/intf-vcd.txt )
@@ -225,7 +225,7 @@ S="${WORKDIR}/${MY_P}"
 src_prepare() {
 	default
 
-	has_version '>=net-libs/libupnp-1.8.0' && eapply "${FILESDIR}"/${PN}-2.2.8-libupnp-slot-1.8.patch
+	has_version '>=net-libs/libupnp-1.8.0' && eapply "${FILESDIR}"/${P}-libupnp-slot-1.8.patch
 
 	# Bootstrap when we are on a git checkout.
 	if [[ ${PV} = *9999 ]] ; then

@@ -165,7 +165,7 @@ RDEPEND="
 		dev-qt/qtwidgets:5
 		X? ( dev-qt/qtx11extras:5 )
 	)
-	rdp? ( =net-misc/freerdp-1*:0=[client] )
+	rdp? ( >=net-misc/freerdp-2.0.0_rc0:0=[client] )
 	samba? ( >=net-fs/samba-4.0.0:0[client,-debug(-)] )
 	schroedinger? ( >=media-libs/schroedinger-1.0.10:0 )
 	sdl-image? ( >=media-libs/sdl-image-1.2.10:0 )
@@ -237,11 +237,9 @@ DEPEND="${RDEPEND}
 "
 
 PATCHES=(
-	# Fix build system mistake.
-	"${FILESDIR}"/${PN}-2.1.0-fix-libtremor-libs.patch
-
-	# Bug #593460
-	"${FILESDIR}"/${PN}-2.2.4-libav-11.7.patch
+	"${FILESDIR}"/${PN}-2.1.0-fix-libtremor-libs.patch # build system
+	"${FILESDIR}"/${PN}-2.2.4-libav-11.7.patch # bug #593460
+	"${FILESDIR}"/${PN}-2.2.8-freerdp-2.patch # bug 590164
 )
 
 DOCS=( AUTHORS THANKS NEWS README doc/fortunes.txt )
