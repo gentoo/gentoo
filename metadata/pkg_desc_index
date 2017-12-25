@@ -1317,8 +1317,6 @@ app-text/docbook-xsl-stylesheets 1.79.1-r2: XSL Stylesheets for Docbook
 app-text/docbook2X 0.8.8-r4: Tools to convert docbook to man and info
 app-text/dos2unix 7.3.5: Convert DOS or MAC text files to UNIX format or vice versa
 app-text/duali 0.2.0-r1: Arabic dictionary based on the DICT protocol
-app-text/dvipdfm 0.13.2d-r1: DVI to PDF translator
-app-text/dvipdfmx 20110311-r1: DVI to PDF translator with multi-byte character support
 app-text/dvipng 1.15: Translate DVI files into PNG or GIF graphics
 app-text/dvipsk 5.992_p20120701 5.995_p20150521 5.996_p20160523 5.997_p20170524: DVI-to-PostScript translator
 app-text/dvisvgm 1.10 2.1.3: Converts DVI files to SVG
@@ -1485,7 +1483,6 @@ app-text/wv2 0.4.2-r2: Excellent MS Word filter lib, used in most Office suites
 app-text/xapian-omega 1.2.24 1.4.4: An application built on Xapian, consisting of indexers and a CGI search frontend
 app-text/xchm 1.23-r1: Utility for viewing Compiled HTML Help (CHM) files
 app-text/xdvik 22.87.03: DVI previewer for X Window System
-app-text/xdvipdfmx 0.7.8_p20120701: Extended dvipdfmx for use with XeTeX and other unicode TeXs
 app-text/xfbib 0.0.2-r1: a lightweight BibTeX editor
 app-text/xhtml1 20020801-r4: DTDs for the eXtensible HyperText Markup Language 1.0
 app-text/xindy 2.4: A Flexible Indexing System
