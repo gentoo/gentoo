@@ -1,6 +1,6 @@
 DEFINED_PHASES=install
 DESCRIPTION=Rules for Sagan log analyzer
-EAPI=4
+EAPI=6
 HOMEPAGE=http://sagan.softwink.com/
 IUSE=+lognorm
 KEYWORDS=amd64 x86
@@ -8,4 +8,4 @@ LICENSE=BSD
 PDEPEND=app-admin/sagan
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~maksbotan/sagan/sagan-rules-20130430.tar.gz
-_md5_=ae56d57606cb180c721eebb06e505649
+_md5_=f6b032b13609790492affb8cd5708371
