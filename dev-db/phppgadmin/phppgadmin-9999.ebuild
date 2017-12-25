@@ -3,7 +3,7 @@
 
 EAPI="2"
 
-inherit webapp git-2
+inherit webapp git-r3
 
 DESCRIPTION="Web-based administration for Postgres database in php"
 HOMEPAGE="http://phppgadmin.sourceforge.net/"
