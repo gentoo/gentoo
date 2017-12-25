@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python3_5 )
+PYTHON_COMPAT=( python{3_5,3_6} )
 
-inherit check-reqs cmake-utils fdo-mime flag-o-matic gnome2-utils \
+inherit check-reqs cmake-utils xdg-utils flag-o-matic gnome2-utils \
 	pax-utils python-single-r1 toolchain-funcs versionator
 
 DESCRIPTION="3D Creation/Animation/Publishing System"
@@ -19,29 +19,20 @@ MY_PV="$(get_version_component_range 1-2)"
 SLOT="0"
 LICENSE="|| ( GPL-2 BL )"
 KEYWORDS="~amd64 ~x86"
-IUSE="+boost +bullet +dds +elbeem +game-engine +openexr collada colorio \
+IUSE="+bullet +dds +elbeem +game-engine +openexr collada colorio \
 	cuda cycles debug doc ffmpeg fftw headless jack jemalloc jpeg2k libav \
-	llvm man ndof nls openal openimageio openmp opensubdiv openvdb \
-	player sdl sndfile test tiff valgrind"
+	llvm man ndof nls openal opencl openimageio openmp opensubdiv openvdb \
+	osl player sdl sndfile test tiff valgrind"
 
-# OpenCL and nVidia performance is rubbish with Blender
-# If you have nVidia, use CUDA.
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	player? ( game-engine !headless )
 	cuda? ( cycles )
-	cycles? ( boost openexr tiff openimageio )
-	colorio? ( boost )
-	openvdb? ( boost )
-	opensubdiv? ( cuda )
-	nls? ( boost )
-	openal? ( boost )
-	game-engine? ( boost )
-	?? ( ffmpeg libav )"
+	cycles? ( openexr tiff openimageio )
+	opencl? ( cycles )
+	osl? ( cycles llvm )"
 
-# Since not using OpenCL with nVidia, depend on ATI binary
-# blobs as Cycles with OpenCL does not work with any open
-# source drivers.
 RDEPEND="${PYTHON_DEPS}
+	>=dev-libs/boost-1.62:=[nls?,threads(+)]
 	dev-libs/lzo:2
 	>=dev-python/numpy-1.10.1[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
@@ -54,9 +45,8 @@ RDEPEND="${PYTHON_DEPS}
 	virtual/jpeg:0=
 	virtual/libintl
 	virtual/opengl
-	boost? ( >=dev-libs/boost-1.62:=[nls?,threads(+)] )
 	collada? ( >=media-libs/opencollada-1.6.18:= )
-	colorio? ( >=media-libs/opencolorio-1.0.9-r2 )
+	colorio? ( media-libs/opencolorio )
 	cuda? ( dev-util/nvidia-cuda-toolkit:= )
 	ffmpeg? ( media-video/ffmpeg:=[x264,mp3,encode,theora,jpeg2k?] )
 	libav? ( >=media-video/libav-11.3:=[x264,mp3,encode,theora,jpeg2k?] )
@@ -66,33 +56,36 @@ RDEPEND="${PYTHON_DEPS}
 		x11-libs/libXi
 		x11-libs/libXxf86vm
 	)
-	jack? ( media-sound/jack-audio-connection-kit )
+	jack? ( virtual/jack )
 	jemalloc? ( dev-libs/jemalloc:= )
 	jpeg2k? ( media-libs/openjpeg:0 )
-	llvm? ( sys-devel/llvm )
+	llvm? ( sys-devel/llvm:= )
 	ndof? (
 		app-misc/spacenavd
 		dev-libs/libspnav
 	)
 	nls? ( virtual/libiconv )
 	openal? ( media-libs/openal )
-	openimageio? ( >=media-libs/openimageio-1.6.9 )
+	opencl? ( virtual/opencl )
+	openimageio? ( >=media-libs/openimageio-1.7.0 )
 	openexr? (
 		>=media-libs/ilmbase-2.2.0:=
 		>=media-libs/openexr-2.2.0:=
 	)
-	opensubdiv? ( media-libs/opensubdiv[cuda=] )
+	opensubdiv? ( >=media-libs/opensubdiv-3.3.0:=[cuda=,opencl=] )
 	openvdb? (
 		media-gfx/openvdb[${PYTHON_USEDEP},abi3-compat(+),openvdb-compression(+)]
 		dev-cpp/tbb
 		>=dev-libs/c-blosc-1.5.2
 	)
+	osl? ( media-libs/osl:= )
 	sdl? ( media-libs/libsdl2[sound,joystick] )
 	sndfile? ( media-libs/libsndfile )
 	tiff? ( media-libs/tiff:0 )
 	valgrind? ( dev-util/valgrind )"
 
 DEPEND="${RDEPEND}
+	virtual/pkgconfig
 	>=dev-cpp/eigen-3.2.8:3
 	nls? ( sys-devel/gettext )
 	doc? (
@@ -100,9 +93,7 @@ DEPEND="${RDEPEND}
 		dev-python/sphinx[latex]
 	)"
 
-PATCHES=( "${FILESDIR}"/${P}-C++11-build-fix.patch
-	  "${FILESDIR}"/${PN}-fix-install-rules.patch
-	  "${FILESDIR}"/${P}-eigen-3.3.1.patch )
+PATCHES=( "${FILESDIR}/${PN}-fix-install-rules.patch" )
 
 blender_check_requirements() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
@@ -122,7 +113,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	default
+	cmake-utils_src_prepare
 
 	# we don't want static glew, but it's scattered across
 	# multiple files that differ from version to version
@@ -159,14 +150,14 @@ src_configure() {
 		-DWITH_SYSTEM_LZO=ON
 		-DWITH_C11=ON
 		-DWITH_CXX11=ON
-		-DWITH_BOOST=$(usex boost)
+		-DWITH_BOOST=ON
 		-DWITH_BULLET=$(usex bullet)
 		-DWITH_CODEC_FFMPEG=$(usex ffmpeg)
 		-DWITH_CODEC_SNDFILE=$(usex sndfile)
 		-DWITH_CUDA=$(usex cuda)
 		-DWITH_CYCLES_DEVICE_CUDA=$(usex cuda TRUE FALSE)
 		-DWITH_CYCLES=$(usex cycles)
-		-DWITH_CYCLES_OSL=OFF
+		-DWITH_CYCLES_OSL=$(usex osl)
 		-DWITH_LLVM=$(usex llvm)
 		-DWITH_FFTW3=$(usex fftw)
 		-DWITH_GAMEENGINE=$(usex game-engine)
@@ -182,8 +173,7 @@ src_configure() {
 		-DWITH_MOD_FLUID=$(usex elbeem)
 		-DWITH_MOD_OCEANSIM=$(usex fftw)
 		-DWITH_OPENAL=$(usex openal)
-		-DWITH_OPENCL=OFF
-		-DWITH_CYCLES_DEVICE_OPENCL=OFF
+		-DWITH_OPENCL=$(usex opencl)
 		-DWITH_OPENCOLORIO=$(usex colorio)
 		-DWITH_OPENCOLLADA=$(usex collada)
 		-DWITH_OPENIMAGEIO=$(usex openimageio)
@@ -209,6 +199,7 @@ src_compile() {
 	if use doc; then
 		# Workaround for binary drivers.
 		addpredict /dev/ati
+		addpredict /dev/dri
 		addpredict /dev/nvidiactl
 
 		einfo "Generating Blender C/C++ API docs ..."
@@ -281,12 +272,12 @@ pkg_postinst() {
 	ewarn "  https://developer.blender.org/"
 	ewarn
 	gnome2_icon_cache_update
-	fdo-mime_desktop_database_update
+	xdg_mimeinfo_database_update
 }
 
 pkg_postrm() {
 	gnome2_icon_cache_update
-	fdo-mime_desktop_database_update
+	xdg_mimeinfo_database_update
 
 	ewarn ""
 	ewarn "You may want to remove the following directory."
