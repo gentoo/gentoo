@@ -5,7 +5,7 @@ EAPI=6
 
 FORTRAN_NEEDED=fortran
 
-inherit eutils fortran-2 flag-o-matic toolchain-funcs multilib
+inherit eutils fortran-2 flag-o-matic toolchain-funcs
 
 MY_P=${PN}-${PV/_p/-patch}
 

@@ -5,7 +5,7 @@ EAPI=6
 
 FORTRAN_NEEDED=fortran
 
-inherit eutils fortran-2 flag-o-matic toolchain-funcs multilib versionator prefix
+inherit eutils fortran-2 flag-o-matic toolchain-funcs versionator prefix
 
 MY_P=${PN}-${PV/_p/-patch}
 MAJOR_P=${PN}-$(get_version_component_range 1-2 ${PV})
