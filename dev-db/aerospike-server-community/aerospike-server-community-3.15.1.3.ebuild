@@ -13,9 +13,9 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-RDEPEND="sys-libs/readline
+RDEPEND="sys-libs/readline:0
 	sys-libs/zlib
-	dev-libs/openssl
+	dev-libs/openssl:0
 	"
 DEPEND="${RDEPEND}"
 
