@@ -10,7 +10,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
-IUSE="+archive +bzip2 ffmpeg flac gif gsf gtk jpeg +magic midi mp4 mpeg tidy tiff vorbis +zlib" # test
+IUSE="+archive +bzip2 ffmpeg flac gif gsf gstreamer gtk jpeg +magic midi mp4 mpeg tidy tiff vorbis +zlib" # test
 
 RESTRICT="test"
 
@@ -30,6 +30,10 @@ COMMON_DEPEND="
 	)
 	gif? ( media-libs/giflib:= )
 	gsf? ( gnome-extra/libgsf:= )
+	gstreamer? (
+		media-libs/gstreamer:1.0
+		media-libs/gst-plugins-base:1.0
+	)
 	gtk? ( x11-libs/gtk+:3 )
 	jpeg? ( virtual/jpeg:0 )
 	magic? ( sys-apps/file )
@@ -90,14 +94,13 @@ src_configure() {
 	e_ac_cv lib_mp4v2_MP4ReadProvider=$(usex mp4)
 	e_ac_cv lib_smf_smf_load_from_memory=$(usex midi)
 
-	# gstreamer support is for 1.0, no 0.10 support
 	econf \
 		--disable-static \
 		--enable-experimental \
 		--enable-glib \
-		--without-gstreamer \
 		--disable-gsf-gnome \
 		$(use_enable gsf) \
+		$(use_with gstreamer) \
 		$(use_enable ffmpeg)
 }
 
