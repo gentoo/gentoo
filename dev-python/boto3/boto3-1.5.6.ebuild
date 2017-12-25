@@ -8,16 +8,20 @@ inherit distutils-r1 vcs-snapshot
 
 DESCRIPTION="The AWS SDK for Python"
 HOMEPAGE="https://github.com/boto/boto3"
-SRC_URI="https://github.com/boto/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc test"
+
+if [[ "${PV}" == "9999" ]]; then
+	EGIT_REPO_URI="https://github.com/boto/boto3"
+	inherit git-r3
+else
+	SRC_URI="https://github.com/boto/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+fi
 
 RDEPEND="
 	>=dev-python/botocore-1.8.20[${PYTHON_USEDEP}]
-	<dev-python/botocore-1.9.0[${PYTHON_USEDEP}]
 	>=dev-python/jmespath-0.7.1[${PYTHON_USEDEP}]
 	<dev-python/jmespath-1.0.0[${PYTHON_USEDEP}]
 	>=dev-python/s3transfer-0.1.10[${PYTHON_USEDEP}]
