@@ -10,7 +10,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
-IUSE="+archive +bzip2 ffmpeg flac gif gsf gstreamer gtk jpeg +magic midi mp4 mpeg tidy tiff vorbis +zlib" # test
+IUSE="apparmor +archive +bzip2 ffmpeg flac gif gsf gstreamer gtk jpeg +magic midi mp4 mpeg tidy tiff vorbis +zlib" # test
 
 RESTRICT="test"
 
@@ -21,6 +21,7 @@ COMMON_DEPEND="
 	sys-devel/libtool
 	virtual/libiconv
 	virtual/libintl
+	apparmor? ( sys-libs/libapparmor )
 	archive? ( app-arch/libarchive:= )
 	bzip2? ( app-arch/bzip2 )
 	ffmpeg? ( virtual/ffmpeg )
@@ -82,6 +83,7 @@ src_configure() {
 	e_ac_cv lib_FLAC_FLAC__stream_decoder_init_stream=$(usex flac)
 	e_ac_cv lib_FLAC_FLAC__stream_decoder_init_ogg_stream=$(usex flac)
 
+	e_ac_cv header_sys_apparmor_h=$(usex apparmor)
 	e_ac_cv header_archive_h=$(usex archive)
 	e_ac_cv header_bzlib_h=$(usex bzip2)
 	e_ac_cv header_gif_lib_h=$(usex gif)
