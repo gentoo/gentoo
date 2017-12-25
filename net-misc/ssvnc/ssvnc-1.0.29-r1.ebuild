@@ -1,7 +1,7 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="3"
+EAPI=6
 
 inherit eutils multilib toolchain-funcs
 
@@ -33,29 +33,31 @@ RDEPEND="sys-libs/zlib
 DEPEND="${RDEPEND}
 	java? ( virtual/jdk )"
 
+PATCHES=( "${FILESDIR}"/${PN}-1.0.29-build.patch )
+
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.0.29-build.patch
+	default
 
 	sed -i \
 		-e "/^LIB/s:lib/:$(get_libdir)/:" \
 		-e "$(use java || echo '/^JSRC/s:=.*:=:')" \
-		Makefile
+		Makefile || die
 	sed -i \
 		-e '/^CC/s:=.*:+= $(CFLAGS) $(CPPFLAGS) $(LDFLAGS):' \
-		vncstorepw/Makefile
+		vncstorepw/Makefile || die
 
-	cp "${FILESDIR}"/Makefile.libvncauth vnc_unixsrc/libvncauth/Makefile
-	cd "${S}"/vnc_unixsrc/vncviewer
-	sed -n '/^SRCS/,/^$/p' Imakefile > Makefile.in
-	cp "${FILESDIR}"/Makefile.vncviewer Makefile
+	cp "${FILESDIR}"/Makefile.libvncauth vnc_unixsrc/libvncauth/Makefile || die
+	cd "${S}"/vnc_unixsrc/vncviewer || die
+	sed -n '/^SRCS/,/^$/p' Imakefile > Makefile.in || die
+	cp "${FILESDIR}"/Makefile.vncviewer Makefile || die
 }
 
 src_compile() {
 	tc-export AR CC CXX RANLIB
-	emake all || die
+	emake all
 }
 
 src_install() {
-	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install || die
+	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install
 	dodoc README
 }
