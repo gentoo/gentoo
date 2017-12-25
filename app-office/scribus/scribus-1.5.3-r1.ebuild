@@ -8,10 +8,10 @@ PYTHON_REQ_USE="tk?"
 CMAKE_MAKEFILE_GENERATOR=ninja
 CMAKE_MIN_VERSION=3.2.0
 
-inherit cmake-utils eutils flag-o-matic gnome2 multilib python-single-r1 xdg-utils
+inherit cmake-utils eutils flag-o-matic gnome2 python-single-r1 xdg-utils
 
 DESCRIPTION="Desktop publishing (DTP) and layout program"
-HOMEPAGE="http://www.scribus.net/"
+HOMEPAGE="https://www.scribus.net/"
 SRC_URI="mirror://sourceforge/project/${PN}/${PN}-devel/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
@@ -50,6 +50,7 @@ COMMON_DEPEND="
 	>=media-libs/harfbuzz-0.9.42:0=[icu]
 	media-libs/lcms:2
 	media-libs/libcdr
+	media-libs/libfreehand
 	media-libs/libpagemaker
 	media-libs/libpng:0=
 	media-libs/libvisio
