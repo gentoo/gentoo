@@ -9091,11 +9091,9 @@ sci-biology/bioperl-run 1.6.9: Perl wrapper modules for key bioinformatics appli
 sci-biology/biopython 1.68: Python modules for computational molecular biology
 sci-biology/bioruby 1.4.3.0001-r1: An integrated environment for bioinformatics using the Ruby language
 sci-biology/biosql 1.0.1-r1: A generic bioinformatics relational database model
-sci-biology/bowtie 1.1.2 2.2.6: Popular short read aligner for Next-generation sequencing data
 sci-biology/clustal-omega 1.2.4: Scalable multiple alignment of protein sequences
 sci-biology/clustalw 1.83-r4 2.1-r1: General purpose multiple alignment program for DNA and proteins
 sci-biology/clustalx 2.1-r1: Graphical interface for the ClustalW multiple alignment program
-sci-biology/dialign-tx 1.0.2-r1: Greedy and progressive approaches for segment-based multiple sequence alignment
 sci-biology/eugene 4.1d: Prokaryotic and Eukaryotic gene predictor
 sci-biology/fasta 35.4.10: FASTA is a DNA and Protein sequence alignment software package
 sci-biology/fasttree 2.1.7: Fast inference of approximately-maximum-likelihood phylogenetic trees
@@ -9118,14 +9116,12 @@ sci-biology/phyml 2.4.5-r3: Estimation of large phylogenies by maximum likelihoo
 sci-biology/piler 1.0-r1: Analysis of repetitive DNA found in genome sequences
 sci-biology/pilercr 1.0-r1: Analysis of Clustered Regularly Interspaced Short Palindromic Repeats (CRISPRs)
 sci-biology/plink 1.07-r1: Whole genome association analysis toolset
-sci-biology/primer3 2.3.5 2.3.6: Primer Design for PCR reactions
 sci-biology/probcons 1.12-r1: Probabilistic Consistency-based Multiple Alignment of Amino Acid Sequences
 sci-biology/seaview 4.3.5 4.5.4: A graphical multiple sequence alignment editor
 sci-biology/seqan 1.4.2-r1: C++ Sequence Analysis Library
 sci-biology/shrimp 2.0.1: SHort Read Mapping Package
 sci-biology/sibsim4 0.20: A rewrite and improvement upon sim4, a DNA-mRNA aligner
 sci-biology/stride 20011129-r1: Protein secondary structure assignment from atomic coordinates
-sci-biology/t-coffee 9.03.1318-r1: A multiple sequence alignment package
 sci-biology/treeviewx 0.5.1-r3: A phylogenetic tree viewer
 sci-biology/trf 4.04-r1: Tandem Repeats Finder
 sci-biology/trnascan-se 1.31: tRNA detection in large-scale genome sequences
