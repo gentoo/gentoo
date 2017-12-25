@@ -10,7 +10,7 @@ inherit eutils multilib toolchain-funcs libtool multilib-minimal
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://git.tukaani.org/xz.git"
-	inherit git-2 autotools
+	inherit git-r3 autotools
 	SRC_URI=""
 	EXTRA_DEPEND="sys-devel/gettext dev-vcs/cvs >=sys-devel/libtool-2" #272880 286068
 else

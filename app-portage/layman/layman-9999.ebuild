@@ -6,11 +6,10 @@ EAPI="5"
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
 PYTHON_REQ_USE="xml(+),sqlite?"
 
-inherit eutils distutils-r1 git-2 linux-info prefix
+inherit eutils distutils-r1 git-r3 linux-info prefix
 
 DESCRIPTION="Tool to manage Gentoo overlays"
 HOMEPAGE="http://layman.sourceforge.net"
-SRC_URI=""
 EGIT_REPO_URI="git://anongit.gentoo.org/proj/layman.git"
 
 LICENSE="GPL-2"

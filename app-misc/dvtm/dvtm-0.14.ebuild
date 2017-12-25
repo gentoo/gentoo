@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,10 +8,9 @@ inherit savedconfig toolchain-funcs
 DESCRIPTION="Dynamic virtual terminal manager"
 HOMEPAGE="http://www.brain-dump.org/projects/dvtm/"
 
-if [[ ${PV} == 9999* ]]; then
-	inherit git-2
+if [[ ${PV} == *9999 ]]; then
+	inherit git-r3
 	EGIT_REPO_URI="git://repo.or.cz/dvtm.git"
-	KEYWORDS="arm"
 else
 	SRC_URI="http://www.brain-dump.org/projects/${PN}/${P}.tar.gz"
 	KEYWORDS="amd64 arm x86"
@@ -21,7 +20,7 @@ LICENSE="MIT"
 SLOT="0"
 IUSE="unicode"
 
-DEPEND="sys-libs/ncurses[unicode?]"
+DEPEND="sys-libs/ncurses:0=[unicode?]"
 RDEPEND=${DEPEND}
 
 src_prepare() {

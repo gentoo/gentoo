@@ -14,11 +14,8 @@ then
 	SRC_URI="https://fedorahosted.org/releases/o/p/${PN}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 else
-	inherit git-2 autotools
-	EGIT_REPO_URI="git://git.fedorahosted.org/git/openscap.git"
-	EGIT_SOURCEDIR="${WORKDIR}/openscap"
-	KEYWORDS=""
-	S="${WORKDIR}/${PN}"
+	inherit git-r3 autotools
+	EGIT_REPO_URI="https://github.com/OpenSCAP/openscap.git"
 fi
 
 LICENSE="LGPL-2.1+"
@@ -50,13 +47,6 @@ DEPEND="${RDEPEND}
 		dev-perl/XML-XPath
 		net-misc/ipcalc
 		sys-apps/grep )"
-
-src_unpack() {
-	if [[ "${PV}" == "9999" ]];
-	then
-		git-2_src_unpack
-	fi
-}
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
