@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -31,13 +31,14 @@ src_compile() {
 
 src_install() {
 	dobin jimsh
-	use static-libs && {
+
+	if use static-libs; then
 		dolib.a libjim.a
-	} || {
+	else
 		dolib.so libjim.so.${PV}
-		dosym /usr/$(get_libdir)/libjim.so.${PV} \
-			/usr/$(get_libdir)/libjim.so
-	}
+		dosym libjim.so.${PV} /usr/$(get_libdir)/libjim.so
+	fi
+
 	insinto /usr/include
 	doins jim.h jimautoconf.h jim-subcmd.h jim-signal.h
 	doins jim-win32compat.h jim-eventloop.h jim-config.h
