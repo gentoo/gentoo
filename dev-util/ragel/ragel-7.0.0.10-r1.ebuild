@@ -3,6 +3,8 @@
 
 EAPI=6
 
+inherit autotools
+
 DESCRIPTION="Compiles finite state machines from regular languages into executable code"
 HOMEPAGE="https://www.colm.net/open-source/ragel/"
 SRC_URI="https://www.colm.net/files/ragel/${P}.tar.gz"
@@ -15,6 +17,11 @@ IUSE="vim-syntax"
 DEPEND="~dev-util/colm-0.13.0.5"
 RDEPEND="${DEPEND}"
 PATCHES=( "${FILESDIR}/${P}-use-pkginclude.patch" )
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_test() {
 	cd "${S}"/test || die

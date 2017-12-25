@@ -28,7 +28,7 @@ if [[ ! ${_RUBY_UTILS} ]]; then
 # provide for a better first installation experience.
 
 # All RUBY_TARGETS
-RUBY_TARGETS_PREFERENCE="ruby22 ruby21 "
+RUBY_TARGETS_PREFERENCE="ruby22 "
 
 # All other active ruby targets
 RUBY_TARGETS_PREFERENCE+="ruby23 ruby24"
@@ -66,6 +66,10 @@ _ruby_implementation_depend() {
 		ruby24)
 			rubypn="dev-lang/ruby"
 			rubyslot=":2.4"
+			;;
+		ruby25)
+			rubypn="dev-lang/ruby"
+			rubyslot=":2.5"
 			;;
 		ree18)
 			rubypn="dev-lang/ruby-enterprise"

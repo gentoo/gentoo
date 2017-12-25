@@ -1,0 +1,24 @@
+--- a/source/Makefile
++++ b/source/Makefile
+@@ -1,4 +1,3 @@
+-CC=gcc
+ # debug
+ #CPPFLAGS=-g -O0 -Q -v -da
+ #CPPFLAGS=-g -O0 -fstack-check -Q -v -da
+@@ -8,7 +7,6 @@
+ # THIS IS FOR THE OPTIMIZED ONE
+ #CPPFLAGS=-g 
+ #CPPFLAGS=-O3 -march=i686 -funroll-loops
+-CPPFLAGS=-O3 -funroll-loops -march=i686 -mfpmath=sse -msse  -mmmx
+ #CPPFLAGS=-march=athlon-mp -g -O0 -Wall -D_USE_XOPEN -D__unix__
+ 
+ OBJ_DIR=.
+@@ -33,7 +31,7 @@
+ 
+ museq:	$(OBJ)
+ 	rm -f $(TARGET)/$@
+-	$(CC) -o $(TARGET)/$@ \
++	$(CC) $(LDFLAGS) -o $(TARGET)/$@ \
+ 	$(OBJ) \
+ 	-pipe -Wall -lm 
+ 	mv museq dialign-tx

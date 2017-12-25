@@ -32,6 +32,7 @@ S="${WORKDIR}/OpenSubdiv-${MY_PV}"
 PATCHES=(
 	"${FILESDIR}/${P}-fix-quotes.patch"
 	"${FILESDIR}/${P}-use-gnuinstalldirs.patch"
+	"${FILESDIR}/${P}-add-CUDA9-compatibility.patch"
 )
 
 pkg_pretend() {
