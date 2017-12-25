@@ -28,7 +28,7 @@ if [[ ! ${_RUBY_UTILS} ]]; then
 # provide for a better first installation experience.
 
 # All RUBY_TARGETS
-RUBY_TARGETS_PREFERENCE="ruby22 ruby21 "
+RUBY_TARGETS_PREFERENCE="ruby22 "
 
 # All other active ruby targets
 RUBY_TARGETS_PREFERENCE+="ruby23 ruby24"
