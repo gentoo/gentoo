@@ -11,7 +11,7 @@ CMAKE_MIN_VERSION=3.2.0
 inherit cmake-utils eutils flag-o-matic gnome2 python-single-r1 subversion xdg-utils
 
 DESCRIPTION="Desktop publishing (DTP) and layout program"
-HOMEPAGE="http://www.scribus.net/"
+HOMEPAGE="https://www.scribus.net/"
 SRC_URI=""
 ESVN_REPO_URI="svn://scribus.net/trunk/Scribus"
 ESVN_PROJECT=Scribus-1.5
