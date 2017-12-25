@@ -8,17 +8,15 @@ PYTHON_REQ_USE="tk?"
 CMAKE_MAKEFILE_GENERATOR=ninja
 CMAKE_MIN_VERSION=3.2.0
 
-inherit cmake-utils eutils flag-o-matic gnome2 multilib python-single-r1 subversion xdg-utils
+inherit cmake-utils eutils flag-o-matic gnome2 multilib python-single-r1 xdg-utils
 
 DESCRIPTION="Desktop publishing (DTP) and layout program"
 HOMEPAGE="http://www.scribus.net/"
-SRC_URI=""
-ESVN_REPO_URI="svn://scribus.net/trunk/Scribus"
-ESVN_PROJECT=Scribus-1.5
+SRC_URI="mirror://sourceforge/project/${PN}/${PN}-devel/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
 IUSE="+boost debug examples graphicsmagick hunspell +minimal osg +pdf scripts templates tk"
 
 #a=$((ls resources/translations/scribus.*ts | sed -e 's:\.: :g' | awk '{print $2}'; ls resources/loremipsum/*xml | sed -e 's:\.: :g' -e 's:loremipsum\/: :g'| awk '{print $2}'; ls resources/dicts/hyph*dic | sed -e 's:\.: :g' -e 's:hyph_: :g' | awk '{print $2}'; ls resources/dicts/README_*txt | sed -e 's:_hyph::g' -e 's:\.: :g' -e 's:README_: :g' | awk '{print $2}') | sort | uniq); echo $a
@@ -78,6 +76,7 @@ DEPEND="${COMMON_DEPEND}
 PATCHES=(
 	"${FILESDIR}"/${P}-docdir.patch
 	"${FILESDIR}"/${P}-fpic.patch
+	"${FILESDIR}"/${P}-cmake-openssl.patch
 )
 
 src_prepare() {
@@ -202,13 +201,13 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	fdo-xdg_desktop_database_update
+	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
 	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
-	fdo-xdg_desktop_database_update
+	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
 	gnome2_icon_cache_update
 }
