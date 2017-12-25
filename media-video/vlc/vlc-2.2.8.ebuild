@@ -37,7 +37,7 @@ IUSE="a52 aalib alsa altivec atmo +audioqueue +avcodec +avformat bidi bluray cdd
 	macosx-dialog-provider macosx-eyetv macosx-quartztext macosx-qtkit
 	matroska cpu_flags_x86_mmx modplug mp3 mpeg mtp musepack ncurses neon ogg
 	omxil opencv opengl optimisememory opus png postproc projectm pulseaudio
-	+qt5 rdp rtsp run-as-root samba schroedinger sdl sdl-image sftp shout
+	+qt5 rtsp run-as-root samba schroedinger sdl sdl-image sftp shout
 	sid skins speex cpu_flags_x86_sse svg +swscale taglib theora tremor truetype
 	twolame udev upnp vaapi v4l vcdx vdpau vlm vnc vorbis vpx wma-fixed +X
 	x264 x265 +xcb xml xv zeroconf zvbi
@@ -133,7 +133,6 @@ RDEPEND="
 	projectm? ( media-libs/libprojectm:0 media-fonts/dejavu:0 )
 	pulseaudio? ( >=media-sound/pulseaudio-1:0 )
 	qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 )
-	rdp? ( =net-misc/freerdp-1*:0=[client] )
 	samba? ( >=net-fs/samba-4.0.0:0[client,-debug(-)] )
 	schroedinger? ( >=media-libs/schroedinger-1.0.10:0 )
 	sdl? ( >=media-libs/libsdl-1.2.10:0
@@ -287,6 +286,7 @@ src_configure() {
 		--disable-dependency-tracking \
 		--disable-optimizations \
 		--disable-update-check \
+		--disable-freerdp \
 		--enable-fast-install \
 		--enable-screen \
 		$(use_enable a52) \
@@ -362,7 +362,6 @@ src_configure() {
 		$(use_enable postproc) \
 		$(use_enable projectm) \
 		$(use_enable pulseaudio pulse) \
-		$(use_enable rdp freerdp) \
 		$(use_enable rtsp realrtsp) \
 		$(use_enable run-as-root) \
 		$(use_enable samba smbclient) \
