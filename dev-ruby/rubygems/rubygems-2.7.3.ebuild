@@ -3,7 +3,7 @@
 
 EAPI=6
 
-USE_RUBY="ruby22 ruby23 ruby24"
+USE_RUBY="ruby22 ruby23 ruby24 ruby25"
 
 inherit ruby-ng prefix
 
@@ -21,6 +21,7 @@ PDEPEND="server? ( >=dev-ruby/builder-2.1 )"
 
 ruby_add_bdepend "
 	test? (
+		dev-ruby/json
 		>=dev-ruby/minitest-4:0
 		dev-ruby/rdoc
 	)"
@@ -67,8 +68,8 @@ each_ruby_test() {
 	#unset RUBYOPT
 
 	if [[ "${EUID}" -ne "0" ]]; then
-		RUBYLIB="$(pwd)/lib${RUBYLIB+:${RUBYLIB}}" ${RUBY} -I.:lib:test \
-			-e 'Dir["test/**/test_*.rb"].each { |tu| require tu }' || die "tests failed"
+		RUBYLIB="$(pwd)/lib${RUBYLIB+:${RUBYLIB}}" ${RUBY} --disable-gems -I.:lib:test:bundler/lib \
+			-e 'require "rubygems"; gem "minitest", "~>4.0"; Dir["test/**/test_*.rb"].each { |tu| require tu }' || die "tests failed"
 	else
 		ewarn "The userpriv feature must be enabled to run tests, bug 408951."
 		eerror "Testsuite will not be run."
