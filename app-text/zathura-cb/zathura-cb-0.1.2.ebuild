@@ -1,26 +1,24 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 inherit eutils toolchain-funcs
-[[ ${PV} == 9999* ]] && inherit git-2
+
+if [[ ${PV} == *9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://git.pwmt.org/pwmt/zathura-cb.git"
+	EGIT_BRANCH="develop"
+else
+	KEYWORDS="amd64 ~arm x86"
+	SRC_URI="http://pwmt.org/projects/zathura/plugins/download/${P}.tar.gz"
+fi
 
 DESCRIPTION="Comic book plug-in for zathura with 7zip, rar, tar and zip support"
 HOMEPAGE="http://pwmt.org/projects/zathura/"
-if ! [[ ${PV} == 9999* ]]; then
-SRC_URI="http://pwmt.org/projects/zathura/plugins/download/${P}.tar.gz"
-fi
-EGIT_REPO_URI="git://git.pwmt.org/${PN}.git"
-EGIT_BRANCH="develop"
 
 LICENSE="ZLIB"
 SLOT="0"
-if ! [[ ${PV} == 9999* ]]; then
-KEYWORDS="amd64 ~arm x86"
-else
-KEYWORDS=""
-fi
 IUSE=""
 
 COMMON_DEPEND=">=app-text/zathura-0.2.7
@@ -35,7 +33,7 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig"
 
-pkg_setup() {
+src_configure() {
 	myzathuraconf=(
 		CC="$(tc-getCC)"
 		LD="$(tc-getLD)"
