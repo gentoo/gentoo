@@ -279,8 +279,12 @@ src_configure() {
 	# Compatibility fix for Samba 4.
 	use samba && append-cppflags "-I/usr/include/samba-4.0"
 
-	# We need to disable -fstack-check if use >=gcc 4.8.0. bug #499996
-	use x86 && append-cflags $(test-flags-CC -fno-stack-check)
+	if use x86; then
+		# We need to disable -fstack-check if use >=gcc 4.8.0. bug #499996
+		append-cflags $(test-flags-CC -fno-stack-check)
+		# Bug 569774
+		replace-flags -Os -O2
+	fi
 
 	# VLC now requires C++11 after commit 4b1c9dcdda0bbff801e47505ff9dfd3f274eb0d8
 	append-cxxflags -std=c++11

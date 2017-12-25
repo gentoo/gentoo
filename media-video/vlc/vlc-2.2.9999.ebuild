@@ -261,8 +261,12 @@ src_configure() {
 	# Compatibility fix for Samba 4.
 	use samba && append-cppflags "-I/usr/include/samba-4.0"
 
-	# We need to disable -fstack-check if use >=gcc 4.8.0. bug #499996
-	use x86 && append-cflags $(test-flags-CC -fno-stack-check)
+	if use x86; then
+		# We need to disable -fstack-check if use >=gcc 4.8.0. bug #499996
+		append-cflags $(test-flags-CC -fno-stack-check)
+		# Bug 569774
+		replace-flags -Os -O2
+	fi
 
 	# FIXME: Needs libresid-builder from libsidplay:2 which is in another directory...
 	append-ldflags "-L/usr/$(get_libdir)/sidplay/builders/"
