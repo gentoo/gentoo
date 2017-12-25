@@ -8094,7 +8094,7 @@ media-video/cinelerra 2.3: The most advanced non-linear video editor and composi
 media-video/clive 2.3.0.1: Command line tool for extracting videos from various websites
 media-video/cpdvd 1.10-r1: transfer a DVD title to your harddisk with ease on Linux
 media-video/cpvts 1.2: raw copy title sets from a DVD to your harddisc
-media-video/dirac 1.0.2 1.0.2-r1: Open Source video codec
+media-video/dirac 1.0.2-r1: Open Source video codec
 media-video/dvbsnoop 1.4.50-r1: DVB/MPEG stream analyzer program
 media-video/dvd9to5 0.1.7: Perl script to backup the main feature of a DVD-9 on DVD-5
 media-video/dvdauthor 0.7.1-r1: Tools for generating DVD files to be played on standalone DVD players
