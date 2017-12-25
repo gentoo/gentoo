@@ -67,6 +67,10 @@ _ruby_implementation_depend() {
 			rubypn="dev-lang/ruby"
 			rubyslot=":2.4"
 			;;
+		ruby25)
+			rubypn="dev-lang/ruby"
+			rubyslot=":2.5"
+			;;
 		ree18)
 			rubypn="dev-lang/ruby-enterprise"
 			rubyslot=":1.8"
