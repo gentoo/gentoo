@@ -50,7 +50,6 @@ DEPEND="${COMMON_DEPEND}
 # test? ( app-forensics/zzuf )
 RDEPEND="${COMMON_DEPEND}
 	!sci-biology/glimmer
-	!sci-chemistry/pdb-extract
 "
 
 src_prepare() {
