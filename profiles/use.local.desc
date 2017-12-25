@@ -4184,6 +4184,7 @@ net-mail/cyrus-imapd:sieve - Enable sieve support
 net-mail/cyrus-imapd:sphinx - Enable Sphinx search engine support
 net-mail/cyrus-imapd:xapian - Enable Xapian search engine support
 net-mail/dbmail:sieve - Enable sieve filter support
+net-mail/dovecot:argon2 - Add support for ARGON2 password schemes
 net-mail/dovecot:cydir - Add cydir storage support
 net-mail/dovecot:imapc - Add imap client storage support
 net-mail/dovecot:lucene - Add lucene full text search (FTS) support using dev-cpp/clucene
