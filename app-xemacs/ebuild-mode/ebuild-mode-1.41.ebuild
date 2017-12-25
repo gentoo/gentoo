@@ -11,7 +11,7 @@ SRC_URI="https://dev.gentoo.org/~ulm/emacs/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 hppa x86"
+KEYWORDS="~amd64 ~hppa ~x86"
 
 RDEPEND=">=app-editors/xemacs-21.4.20-r5
 	app-xemacs/sh-script"
@@ -20,5 +20,6 @@ DEPEND="${RDEPEND}"
 src_compile() {
 	${XEMACS_BATCH_CLEAN} -eval "(add-to-list 'load-path \".\")" \
 		-f batch-byte-compile ebuild-mode.el gentoo-newsitem-mode.el || die
-	xemacs-elisp-make-autoload-file *.el || die
+	xemacs-elisp-make-autoload-file \
+		ebuild-mode.el gentoo-newsitem-mode.el || die
 }
