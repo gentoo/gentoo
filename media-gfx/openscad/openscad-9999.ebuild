@@ -41,6 +41,9 @@ src_prepare() {
 	default
 
 	sed -i "s/\/usr\/local/\/usr/g" ${PN}.pro || die
+
+	# tries to call ccache even if it's not present otherwise
+	sed -i '/CONFIG += ccache/d' ${PN}.pro || die
 }
 
 src_configure() {
