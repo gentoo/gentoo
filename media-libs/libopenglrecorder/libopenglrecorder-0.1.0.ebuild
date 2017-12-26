@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="openh264 sound vpx"
 
-DEPEND="media-libs/libjpeg-turbo[${MULTILIB_USEDEP}]
+RDEPEND="media-libs/libjpeg-turbo[${MULTILIB_USEDEP}]
 	openh264? ( media-libs/openh264[${MULTILIB_USEDEP}] )
 	sound? (
 		media-libs/libvorbis[${MULTILIB_USEDEP}]
@@ -22,7 +22,8 @@ DEPEND="media-libs/libjpeg-turbo[${MULTILIB_USEDEP}]
 	)
 	vpx? ( media-libs/libvpx:0=[${MULTILIB_USEDEP}] )"
 
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	virtual/pkgconfig"
 
 DOCS=(
 	CHANGELOG.md
