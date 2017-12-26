@@ -19,6 +19,7 @@ DEPEND=">=dev-libs/gmp-4.3.2[${MULTILIB_USEDEP},static-libs?]
 RDEPEND="${DEPEND}"
 
 src_prepare() {
+	epatch "${FILESDIR}"/${P}-mpfr-4.0.0.patch
 	elibtoolize #347317
 }
 
