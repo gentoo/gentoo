@@ -5837,7 +5837,7 @@ dev-ruby/ruby-termios 1.0.0-r1: A Ruby interface to termios
 dev-ruby/ruby-vte 3.0.8: Ruby vte bindings
 dev-ruby/ruby-vte3 3.0.8-r1: Ruby VTE bindings
 dev-ruby/ruby-webkit2-gtk 3.0.8: Ruby WebKitGtk+ for Gtk 3.0 bindings
-dev-ruby/ruby-xslt 0.9.9-r3: A Ruby class for processing XSLT
+dev-ruby/ruby-xslt 0.9.10: A Ruby class for processing XSLT
 dev-ruby/ruby2ruby 2.3.2: Generates readable ruby from ParseTree
 dev-ruby/ruby_dep 1.5.0: Creates a version constraint of supported Rubies,suitable for a gemspec file
 dev-ruby/ruby_parser 3.9.0: A ruby parser written in pure ruby
