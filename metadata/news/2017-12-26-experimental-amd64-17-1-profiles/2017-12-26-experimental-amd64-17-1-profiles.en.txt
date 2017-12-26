@@ -1,6 +1,6 @@
 Title: Experimental amd64 17.1 profiles up for testing
 Author: Michał Górny <mgorny@gentoo.org>
-Posted: 2017-12-xx
+Posted: 2017-12-26
 Revision: 1
 News-Item-Format: 2.0
 Display-If-Profile: default/linux/amd64/13.0
