@@ -10980,7 +10980,7 @@ x11-plugins/wmSpaceWeather 1.04_p19: dockapp showing weather at geosynchronous o
 x11-plugins/wmSun 1.05: dockapp which displays the rise/set time of the sun
 x11-plugins/wmacpi 2.3: DockApp ACPI status monitor for laptops
 x11-plugins/wmapm 3.1-r1: WindowMaker DockApp: Battery/Power status monitor for laptops
-x11-plugins/wmapmload 0.3.4 0.3.4-r1: dockapp that monitors your apm battery status
+x11-plugins/wmapmload 0.3.4-r1: dockapp that monitors your apm battery status
 x11-plugins/wmappl 0.71: Simple application launcher for the Window Maker dock
 x11-plugins/wmbattery 2.50: A dockable app to report APM, ACPI, or SPIC battery status
 x11-plugins/wmbiff 0.4.28: WMBiff is a dock applet for WindowMaker which can monitor up to 5 mailboxes
