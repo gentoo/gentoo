@@ -3,36 +3,41 @@
 
 EAPI=6
 
-inherit cmake-utils
+inherit cmake-multilib
 
-DESCRIPTION="A library allowing optional async readback OpenGL frame buffer with optional audio recording"
+DESCRIPTION="Library for asynchronous OpenGL recording with audio"
 HOMEPAGE="https://github.com/Benau/libopenglrecorder"
 SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="vpx openh264 -pulseaudio"
+IUSE="openh264 sound vpx"
 
-DEPEND="media-libs/libjpeg-turbo vpx? ( media-libs/libvpx ) openh264? ( media-libs/openh264 ) pulseaudio? ( media-sound/pulseaudio )"
+DEPEND="media-libs/libjpeg-turbo[${MULTILIB_USEDEP}]
+	openh264? ( media-libs/openh264[${MULTILIB_USEDEP}] )
+	sound? (
+		media-libs/libvorbis[${MULTILIB_USEDEP}]
+		media-sound/pulseaudio[${MULTILIB_USEDEP}]
+	)
+	vpx? ( media-libs/libvpx:0=[${MULTILIB_USEDEP}] )"
+
 RDEPEND="${DEPEND}"
 
-src_prepare() {
-	cmake-utils_src_prepare
-}
+DOCS=(
+	CHANGELOG.md
+	README.md
+	USAGE.md
+)
 
-src_configure() {
+multilib_src_configure() {
 	local mycmakeargs=(
+			-DBUILD_PULSE_WO_DL=ON
 			-DBUILD_SHARED_LIBS=ON
-			-DBUILD_WITH_VPX=$(usex vpx)
+			-DSTATIC_RUNTIME_LIBS=OFF
 			-DBUILD_WITH_H264=$(usex openh264)
-			-DBUILD_RECORDER_WITH_SOUND=$(usex pulseaudio)
-			-DCMAKE_INSTALL_PREFIX=${EPREFIX}/usr
-			-DCMAKE_BUILD_TYPE=Release
+			-DBUILD_RECORDER_WITH_SOUND=$(usex sound)
+			-DBUILD_WITH_VPX=$(usex vpx)
 	)
 	cmake-utils_src_configure
-}
-
-src_install() {
-	cmake-utils_src_install
 }
