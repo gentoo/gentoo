@@ -1,9 +1,0 @@
-# Some minimal Mutt settings, Gentoo-style.  Since mutt was installed
-# with USE=mbox, this file doesn't have any changes from the default
-# mutt settings, making it very minimal indeed...
-#
-# Please don't add settings to this file to change other user
-# preferences (such as colors), since those can be hard for a user to
-# undo if their preference doesn't match yours!  For example, it is
-# *impossible* currently in mutt to remove color settings from objects
-# other than the index.
