@@ -51,7 +51,6 @@ fix_PEAR_PV() {
 }
 
 # @ECLASS-VARIABLE: PEAR_PV
-# @DEFAULT: PV with _rc->RC, _beta->b, _alpha->a, _pre->pre, _p->p
 # @DESCRIPTION:
 # Set in ebuild if the eclass ${PV} mangling breaks SRC_URI for alpha/beta/rc versions
 [[ -z "${PEAR_PV}" ]] && fix_PEAR_PV
