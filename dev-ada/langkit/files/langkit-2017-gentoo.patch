@@ -34,3 +34,14 @@
                                     quex_file,
                                     "-o", "quex_lexer",
                                     "--buffer-element-size", "4",
+--- langkit-gps-src/langkit/templates/pkg_analysis_body_ada.mako.old	2017-12-26 20:47:28.461617512 +0100
++++ langkit-gps-src/langkit/templates/pkg_analysis_body_ada.mako	2017-12-26 20:47:58.912060490 +0100
+@@ -2196,7 +2196,7 @@
+    --  printing them.
+ 
+    function Hash (S : Lexical_Env) return Hash_Type is
+-     (Hash_Type (To_Integer (S.all'Address)));
++     (Hash_Type'Mod (To_Integer (S.all'Address)));
+ 
+    package Address_To_Id_Maps is new Ada.Containers.Hashed_Maps
+      (Lexical_Env, Integer, Hash, "=");
