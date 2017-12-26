@@ -65,7 +65,8 @@ python_install_all() {
 	# not FILESDIR
 	newconfd files/gentoo-confd ${PN}
 	newinitd files/gentoo-initd ${PN}
-	systemd_dounit files/${PN}.service
+	sed -e "s:@BINDIR@:${EPREFIX}/usr/bin:g" files/${PN}.service.in > "${T}/${PN}.service" || die
+	systemd_dounit "${T}/${PN}.service"
 	systemd_dotmpfilesd files/${PN}-tmpfiles.conf
 	doman man/*.{1,5}
 
