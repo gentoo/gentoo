@@ -50,3 +50,11 @@ multilib_src_install_all() {
 	rm "${ED}"/usr/share/doc/"${P}"/COPYING*
 	use static-libs || find "${ED}"/usr -name '*.la' -delete
 }
+
+pkg_preinst() {
+	preserve_old_lib /usr/$(get_libdir)/libmpfr$(get_libname 4)
+}
+
+pkg_postinst() {
+	preserve_old_lib_notify /usr/$(get_libdir)/libmpfr$(get_libname 4)
+}
