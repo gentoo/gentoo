@@ -15,7 +15,7 @@ app-accessibility/flite 1.4-r4: Flite text to speech engine
 app-accessibility/freetts 1.2.1-r2: A speech synthesis system written entirely in Java
 app-accessibility/julius 4.2.2: Large Vocabulary Continuous Speech Recognition Engine
 app-accessibility/mbrola 3.0.1h-r6: Speech synthesizer based on the concatenation of diphones. Includes samples
-app-accessibility/nfbtrans 7.74-r1 7.74-r2: braille translator from the National Federation of the Blind
+app-accessibility/nfbtrans 7.74-r2: braille translator from the National Federation of the Blind
 app-accessibility/orca 3.22.2: Extensible screen reader that provides access to the desktop
 app-accessibility/perlbox-voice 0.09-r2: A voice enabled application to bring your desktop under your command
 app-accessibility/pocketsphinx 0.8: Speaker-independent large vocabulary with continuous speech recognizer
@@ -10989,12 +10989,12 @@ x11-plugins/wmblob 1.0.3: a fancy but useless dockapp with moving blobs
 x11-plugins/wmbutton 0.7.0: a dockapp application that displays nine configurable buttons
 x11-plugins/wmcalc 0.6: A WindowMaker DockApp calculator
 x11-plugins/wmcliphist 2.1: Dockable clipboard history application for Window Maker
-x11-plugins/wmclock 1.0.13 1.0.16: a dockapp that displays time and date (same style as NEXTSTEP(tm) OS)
+x11-plugins/wmclock 1.0.16: a dockapp that displays time and date (same style as NEXTSTEP(tm) OS)
 x11-plugins/wmclockmon 0.8.1: a nice digital clock with 7 different styles either in LCD or LED style
 x11-plugins/wmcoincoin 2.6.2_p20140602: a dockapp for browsing dacode news and board sites
 x11-plugins/wmcp 1.2.8: A pager dockapp
 x11-plugins/wmcpuload 1.1.0_pre5: a dockapp for monitoring CPU usage with a LCD display
-x11-plugins/wmcube 0.98 1.0.2: a dockapp cpu monitor with spinning 3d objects
+x11-plugins/wmcube 1.0.2: a dockapp cpu monitor with spinning 3d objects
 x11-plugins/wmdots 0.2_beta: multishape 3d rotating dots
 x11-plugins/wmdrawer 0.10.5-r2: dockapp which provides a drawer (retractable button bar) to launch applications
 x11-plugins/wmfire 1.2.4-r2: Load monitoring dockapp displaying dancing flame
@@ -11030,7 +11030,7 @@ x11-plugins/wmswallow 0.6.1-r1: A dock applet to make any application dockable
 x11-plugins/wmsystray 0.1.1: Window Maker dock app that provides a system tray for GNOME/KDE applications
 x11-plugins/wmtimer 2.92-r2: Dockable clock which can run in alarm, countdown timer or chronograph mode
 x11-plugins/wmtop 0.85: dockapp for monitoring the top three processes using cpu or memory
-x11-plugins/wmtz 0.7 0.7_p20150816: dockapp that shows the time in multiple timezones
+x11-plugins/wmtz 0.7_p20150816: dockapp that shows the time in multiple timezones
 x11-plugins/wmudmount 2.2: A filesystem mounter that uses udisks to handle notification and mounting
 x11-plugins/wmweather 2.4.4: a dockable weather monitor for standard METAR stations using ICAO location
 x11-plugins/wmweather+ 2.13: A dockapp for displaying data collected from METAR, AVN, ETA, and MRF forecasts
