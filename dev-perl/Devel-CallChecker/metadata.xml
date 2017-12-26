@@ -6,7 +6,7 @@
     <name>Gentoo Perl Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="cpan">POSIX-strftime-Compiler</remote-id>
-    <remote-id type="cpan-module">POSIX::strftime::Compiler</remote-id>
+    <remote-id type="cpan">Devel-CallChecker</remote-id>
+    <remote-id type="cpan-module">Devel::CallChecker</remote-id>
   </upstream>
 </pkgmetadata>
