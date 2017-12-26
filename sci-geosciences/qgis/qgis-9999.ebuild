@@ -35,6 +35,7 @@ COMMON_DEPEND="
 	dev-db/sqlite:3
 	dev-libs/expat
 	dev-libs/libzip:=
+	dev-libs/qtkeychain[qt5(+)]
 	>=dev-qt/qtconcurrent-${QT_MIN_VER}:5
 	>=dev-qt/qtcore-${QT_MIN_VER}:5
 	>=dev-qt/qtgui-${QT_MIN_VER}:5
