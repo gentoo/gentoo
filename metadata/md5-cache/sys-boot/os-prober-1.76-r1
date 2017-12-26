@@ -1,10 +1,11 @@
 DEFINED_PHASES=compile install postinst prepare
 DESCRIPTION=Utility to detect other OSs on a set of drives
-EAPI=5
+EAPI=6
 HOMEPAGE=https://packages.debian.org/source/sid/os-prober
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
+RDEPEND=sys-boot/grub:2[mount]
 SLOT=0
 SRC_URI=mirror://debian/pool/main/o/os-prober/os-prober_1.76.tar.xz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
-_md5_=06041753e238effe26efca5fba998f71
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	readme.gentoo-r1	6f03e110529650f57fc7d1fb908b8986	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=60a6ab00d37591a26664f7ced0de5272
