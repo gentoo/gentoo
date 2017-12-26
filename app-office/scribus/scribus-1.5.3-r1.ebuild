@@ -6,7 +6,6 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="tk?"
 CMAKE_MAKEFILE_GENERATOR=ninja
-CMAKE_MIN_VERSION=3.2.0
 
 inherit cmake-utils eutils flag-o-matic gnome2 python-single-r1 xdg-utils
 
