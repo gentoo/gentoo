@@ -1,10 +1,8 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-#inherit eutils multilib toolchain-funcs
-inherit toolchain-funcs
+EAPI=6
+inherit readme.gentoo-r1 toolchain-funcs
 
 DESCRIPTION="Utility to detect other OSs on a set of drives"
 HOMEPAGE="https://packages.debian.org/source/sid/os-prober"
@@ -15,10 +13,23 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
+# grub-mount needed per bug #607518
+RDEPEND="sys-boot/grub:2[mount]"
+DEPEND=""
+
 # bug 594250
 QA_MULTILIB_PATHS="usr/lib/os-prober/.*"
 
+PATCHES=( "${FILESDIR}"/${PN}-1.76-exherbo.patch )
+
+DOC_CONTENTS="
+	If you intend for os-prober to detect versions of Windows installed on
+	NTFS-formatted partitions, your system must be capable of reading the
+	NTFS filesystem. One way to do this is by installing sys-fs/ntfs3g
+"
+
 src_prepare() {
+	default
 	# use default GNU rules
 	rm Makefile || die 'rm Makefile failed'
 }
@@ -64,11 +75,12 @@ src_install() {
 		doexe os-probes/mounted/powerpc/20macosx
 	fi
 
-	dodoc README TODO debian/changelog
+	einstalldocs
+	dodoc debian/changelog
+
+	readme.gentoo_create_doc
 }
 
 pkg_postinst() {
-	elog "If you intend for os-prober to detect versions of Windows installed on"
-	elog "NTFS-formatted partitions, your system must be capable of reading the"
-	elog "NTFS filesystem. One way to do this is by installing sys-fs/ntfs3g"
+	readme.gentoo_print_elog
 }
