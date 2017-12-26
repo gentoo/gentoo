@@ -6,11 +6,10 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<use>
-		<flag name="fribidi">Support for right-to-left languages</flag>
-		<flag name="recorder">Enable recording with <pkg>media-libs/libopenglrecorder</pkg></flag>
-		<flag name="wiimote">Support for wiimote input devices</flag>
+		<flag name="openh264">Enable H.264 support using <pkg>media-libs/openh264</pkg></flag>
+		<flag name="vpx">Enable VP8/VP9 codec support via <pkg>media-libs/libvpx</pkg></flag>
 	</use>
 	<upstream>
-		<remote-id type="sourceforge">supertuxkart</remote-id>
+		<remote-id type="github">Benau/libopenglrecorder</remote-id>
 	</upstream>
 </pkgmetadata>
