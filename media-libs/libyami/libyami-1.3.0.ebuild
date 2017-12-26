@@ -51,6 +51,7 @@ src_prepare() {
 
 multilib_src_configure() {
 	append-cppflags -I"${S}/" -I"${BUILD_DIR}/interface"
+	append-cxxflags -fpermissive
 	ECONF_SOURCE="${S}" econf \
 		$(use_enable debug) \
 		$(use_enable egl) \
