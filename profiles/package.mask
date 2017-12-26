@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Matthias Maier <tamiko@gentoo.org> (26 Dec 2017)
+# gcc depends on mpfr and this version changes soname. Spare users with
+# FEATURES=-preserve-libs from completely frying their system.
+>=dev-libs/mpfr-4.0.0
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (25 Dec 2017)
 # Provided (and blocked) by app-text/texlive-core
 # Removal in 30 days; bug 628820

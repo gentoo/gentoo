@@ -23,6 +23,8 @@ DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${MY_P}
 
+HTML_DOCS=( doc/FAQ.html )
+
 src_prepare() {
 	if [[ ${PLEVEL} != ${PV} ]] ; then
 		local i
@@ -45,10 +47,6 @@ multilib_src_configure() {
 }
 
 multilib_src_install_all() {
+	rm "${ED}"/usr/share/doc/"${P}"/COPYING*
 	use static-libs || find "${ED}"/usr -name '*.la' -delete
-
-	# clean up html/license install
-	pushd "${ED}"/usr/share/doc/${PF} >/dev/null || die
-	dohtml *.html && rm COPYING* *.html
-	popd >/dev/null || die
 }
