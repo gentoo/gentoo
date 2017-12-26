@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/${PN}/SuperTuxKart/${PV}/${P}-src.tar.xz
 LICENSE="GPL-2 GPL-3 CC-BY-SA-3.0 CC-BY-2.0 public-domain ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug fribidi wiimote openglrecorder"
+IUSE="debug fribidi recorder wiimote"
 
 # don't unbundle irrlicht and bullet
 # both are modified and system versions will break the game
@@ -34,8 +34,8 @@ RDEPEND="
 	x11-libs/libX11
 	x11-libs/libXxf86vm
 	fribidi? ( dev-libs/fribidi )
-	wiimote? ( net-wireless/bluez )
-	openglrecorder? ( media-libs/libopenglrecorder )"
+	recorder? ( media-libs/libopenglrecorder )
+	wiimote? ( net-wireless/bluez )"
 DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig"
@@ -62,8 +62,8 @@ src_configure() {
 		# to failed assert segfaults
 		-DUSE_SYSTEM_ANGELSCRIPT=OFF
 		-DUSE_FRIBIDI=$(usex fribidi)
+		-DBUILD_RECORDER=$(usex recorder)
 		-DUSE_WIIUSE=$(usex wiimote)
-		-DBUILD_RECORDER=$(usex openglrecorder)
 		-DSTK_INSTALL_BINARY_DIR=bin
 		-DSTK_INSTALL_DATA_DIR=share/${PN}
 	)
