@@ -1,0 +1,102 @@
+Title: Experimental amd64 17.1 profiles up for testing
+Author: Michał Górny <mgorny@gentoo.org>
+Posted: 2017-12-xx
+Revision: 1
+News-Item-Format: 2.0
+Display-If-Profile: default/linux/amd64/13.0
+Display-If-Profile: default/linux/amd64/13.0/selinux
+Display-If-Profile: default/linux/amd64/13.0/desktop
+Display-If-Profile: default/linux/amd64/13.0/desktop/gnome
+Display-If-Profile: default/linux/amd64/13.0/desktop/gnome/systemd
+Display-If-Profile: default/linux/amd64/13.0/desktop/plasma
+Display-If-Profile: default/linux/amd64/13.0/desktop/plasma/systemd
+Display-If-Profile: default/linux/amd64/13.0/developer
+Display-If-Profile: default/linux/amd64/13.0/no-multilib
+Display-If-Profile: default/linux/amd64/13.0/systemd
+Display-If-Profile: default/linux/amd64/17.0
+Display-If-Profile: default/linux/amd64/17.0/selinux
+Display-If-Profile: default/linux/amd64/17.0/hardened
+Display-If-Profile: default/linux/amd64/17.0/hardened/selinux
+Display-If-Profile: default/linux/amd64/17.0/desktop
+Display-If-Profile: default/linux/amd64/17.0/desktop/gnome
+Display-If-Profile: default/linux/amd64/17.0/desktop/gnome/systemd
+Display-If-Profile: default/linux/amd64/17.0/desktop/plasma
+Display-If-Profile: default/linux/amd64/17.0/desktop/plasma/systemd
+Display-If-Profile: default/linux/amd64/17.0/developer
+Display-If-Profile: default/linux/amd64/17.0/no-multilib
+Display-If-Profile: default/linux/amd64/17.0/no-multilib/hardened
+Display-If-Profile: default/linux/amd64/17.0/no-multilib/hardened/selinux
+Display-If-Profile: default/linux/amd64/17.0/systemd
+
+A new set of 17.1 amd64 profiles has been added to the Gentoo
+repository. Those profiles switch to a more standard 'no SYMLINK_LIB'
+multilib layout, and require explicit migration as described below. They
+are considered experimental at the moment, and have a fair risk
+of breaking your system. We would therefore like to ask our users to
+test them on their non-production ~amd64 systems.
+
+In those profiles, the lib->lib64 compatibility symlink is removed.
+The 'lib' directory becomes a separate directory, that is used
+for cross-arch and native non-library packages (gcc, clang) and 32-bit
+libraries on the multilib profile (for better compatibility with
+prebuilt x86 packages).
+
+Migration from both 13.0 and 17.0 profiles is supported. In case
+of the former, please read the news item for 17.0 upgrade first
+and enable gcc 6.4.0 or newer first as explained there.
+
+The migration is performed using app-portage/unsymlink-lib tool.
+The following steps can be used to upgrade your system:
+
+1. Sync and upgrade your system to the newest package versions
+   to reduce the risk of issues.
+
+2. Install the tool, e.g. via 'emerge -1v app-portage/unsymlink-lib'
+
+3. Run 'unsymlink-lib --analyze' and check the output for obvious
+   mistakes. If you need to perform any changes to the system, remember
+   to run 'unsymlink-lib --analyze' again afterwards.
+
+[past this point do not call emerge or modify /usr manually]
+
+4. This is a very good time to make a backup.
+
+5. Run 'unsymlink-lib --migrate'. You can add '--pretend' first to see
+   what is going to happen.
+
+6. Reboot your system and see if it still boots. Check if important
+   programs work. In particular, check if e.g. 'emerge --info' works
+   (but do not install anything). If you hit any serious problems,
+   you can use 'unsymlink-lib --rollback' to revert the changes
+   and return to step 3.
+
+7. Run 'unsymlink-lib --finish'. You can add '--pretend' first to see
+   what is going to happen but note that you're going to see a very long
+   list of files to remove.
+
+8. Switch the profile, e.g.:
+
+     eselect profile set --force default/linux/amd64/17.1/desktop
+
+[at this point you can start using emerge again]
+
+9. Rebuild sys-devel/gcc. If you are switching from 13.0 profiles,
+   rebuild sys-devel/binutils and sys-libs/glibc afterwards.
+
+10. If you are using a multilib profile, rebuild all 32-bit packages.
+    This can be done using:
+
+      emerge -1v /lib32 /usr/lib32
+
+    Alternatively, if you are switching from one of the 13.0 profiles
+    you can rebuild all packages as detailed in the 17.0 news item.
+
+11. Once the last 32-bit package is rebuilt, your package manager
+    should remove the orphaned /lib32 and /usr/lib32 symlinks. If that
+    does not happen, remove them manually.
+
+For known issues, please see bug #506276 [1]. If you have any problems
+with the new profiles or the migration procedure, please report a bug
+and make it block the tracker.
+
+[1]:https://bugs.gentoo.org/506276
