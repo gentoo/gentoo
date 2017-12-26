@@ -146,7 +146,7 @@ src_configure() {
 		-DWANT_GRAPHICSMAGICK="$(usex graphicsmagick)"
 		-DWANT_NOOSG="$(usex !osg)"
 		-DWANT_DEBUG="$(usex debug)"
-		-DWANT_NOHEADERINSTALL="$(usex minimal)"
+		-DWANT_HEADERINSTALL="$(usex !minimal)"
 		-DWANT_HUNSPELL="$(usex hunspell)"
 		-DWANT_NOEXAMPLES="$(usex !examples)"
 		-DWANT_NOTEMPLATES="$(usex !templates)"
