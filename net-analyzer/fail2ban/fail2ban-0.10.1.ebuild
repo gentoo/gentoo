@@ -46,6 +46,13 @@ python_prepare_all() {
 	distutils-r1_python_prepare_all
 }
 
+python_compile() {
+	if python_is_python3; then
+		./fail2ban-2to3 || die
+	fi
+	distutils-r1_python_compile
+}
+
 python_test() {
 	"${PYTHON}" "bin/${PN}-testcases" || die "tests failed with ${EPYTHON}"
 }
