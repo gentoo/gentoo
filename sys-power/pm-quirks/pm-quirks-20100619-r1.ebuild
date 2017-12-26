@@ -1,8 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=3
-inherit multilib
+EAPI=6
 
 DESCRIPTION="Video Quirks database for pm-utils"
 HOMEPAGE="https://pm-utils.freedesktop.org/"
@@ -13,9 +12,9 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm ~arm64 ia64 ~mips ppc ppc64 sparc x86"
 IUSE=""
 
-S=${WORKDIR}
+S="${WORKDIR}"
 
 src_install() {
 	insinto /usr/$(get_libdir)/pm-utils
-	doins -r video-quirks || die
+	doins -r video-quirks
 }
