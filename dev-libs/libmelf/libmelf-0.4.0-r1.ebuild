@@ -1,7 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=3
+EAPI=6
 inherit eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="libmelf is a library interface for manipulating ELF object files"
@@ -11,30 +11,34 @@ SRC_URI="http://www.hick.org/code/skape/${PN}/${P}.tar.gz"
 LICENSE="Artistic"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="static-libs"
 
 DEPEND=""
 RDEPEND="${DEPEND}"
 
-src_prepare() {
+PATCHES=(
 	# This patch was gained from the elfsign-0.2.2 release
-	epatch "${FILESDIR}"/${PN}-0.4.1-unfinal-release.patch
+	"${FILESDIR}"/${PN}-0.4.1-unfinal-release.patch
 	# Cleanup stuff
-	epatch "${FILESDIR}"/${PN}-0.4.0-r1-gcc-makefile-cleanup.patch
+	"${FILESDIR}"/${PN}-0.4.0-r1-gcc-makefile-cleanup.patch
+)
+
+src_configure() {
+	default
+	append-flags -fPIC
 }
 
 src_compile() {
-	append-flags -fPIC
-	emake CC="$(tc-getCC)" OPTFLAGS="${CFLAGS}" || die "emake failed"
+	emake CC="$(tc-getCC)" OPTFLAGS="${CFLAGS}"
 }
 
 src_install() {
 	into /usr
 	dobin tools/elfres
-	dolib.a libmelf.a
+	use static-libs && dolib.a libmelf.a
 	dolib.so libmelf.so
 	insinto /usr/include
 	doins melf.h stdelf.h
-	dodoc ChangeLog README
-	dohtml -r docs/html
+	HTML_DOCS=( docs/html/. )
+	einstalldocs
 }
