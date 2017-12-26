@@ -107,7 +107,7 @@ COMMON_DEPEND="${MODULAR_X_DEPEND}
 	dev-libs/zziplib
 	app-text/libpaper
 	dev-libs/gmp:0
-	dev-libs/mpfr:0
+	dev-libs/mpfr:0=
 	xetex? (
 		>=media-libs/harfbuzz-1.4.5[icu,graphite]
 		>=dev-libs/icu-50:=
