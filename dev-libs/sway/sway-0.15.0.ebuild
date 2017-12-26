@@ -34,6 +34,8 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	app-text/asciidoc"
 
+PATCHES=( "${FILESDIR}/sway-0.15.0-json-c-fixes.patch" )
+
 src_prepare() {
 	cmake-utils_src_prepare
 
