@@ -1,8 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=3
-inherit eutils flag-o-matic toolchain-funcs
+EAPI=6
+
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="libmelf is a library interface for manipulating ELF object files"
 HOMEPAGE="http://www.hick.org/code/skape/libmelf/"
@@ -11,30 +12,45 @@ SRC_URI="http://www.hick.org/code/skape/${PN}/${P}.tar.gz"
 LICENSE="Artistic"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="static-libs"
 
 DEPEND=""
 RDEPEND="${DEPEND}"
 
-src_prepare() {
+PATCHES=(
 	# This patch was gained from the elfsign-0.2.2 release
-	epatch "${FILESDIR}"/${PN}-0.4.1-unfinal-release.patch
+	"${FILESDIR}"/${PN}-0.4.1-unfinal-release.patch
 	# Cleanup stuff
-	epatch "${FILESDIR}"/${PN}-0.4.0-r1-gcc-makefile-cleanup.patch
+	"${FILESDIR}"/${PN}-0.4.0-r1-gcc-makefile-cleanup.patch
+)
+
+src_prepare() {
+	default
+
+	# * QA Notice: The following shared libraries lack a SONAME
+	# * /usr/lib64/libmelf.so
+	sed 's/\(-shared -fPIC\)/\1 -Wl,-soname,libmelf.so/' -i configure || die
+}
+
+src_configure() {
+	tc-export CC AR RANLIB
+	append-flags -fPIC
+	default
 }
 
 src_compile() {
-	append-flags -fPIC
-	emake CC="$(tc-getCC)" OPTFLAGS="${CFLAGS}" || die "emake failed"
+	emake OPTFLAGS="${CFLAGS}"
 }
 
 src_install() {
-	into /usr
 	dobin tools/elfres
-	dolib.a libmelf.a
+
 	dolib.so libmelf.so
+	use static-libs && dolib.a libmelf.a
+
 	insinto /usr/include
 	doins melf.h stdelf.h
-	dodoc ChangeLog README
-	dohtml -r docs/html
+
+	HTML_DOCS=( docs/html/. )
+	einstalldocs
 }
