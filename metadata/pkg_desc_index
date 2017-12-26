@@ -10146,7 +10146,7 @@ sys-power/ncpufreqd 2.4: Daemon controlling CPU speed and temperature
 sys-power/nut 2.6.5-r1 2.7.3: Network-UPS Tools
 sys-power/nvclock 0.8_p20110102-r2: NVIDIA Overclocking Utility
 sys-power/nvram-wakeup 1.0: read and write the WakeUp time in the BIOS
-sys-power/pm-quirks 20100619: Video Quirks database for pm-utils
+sys-power/pm-quirks 20100619-r1: Video Quirks database for pm-utils
 sys-power/pm-utils 1.4.1-r6 1.4.1-r7: Suspend and hibernation utilities
 sys-power/pmtools 20071116 20110323-r1: Collection of tools for ACPI and power management
 sys-power/powermgmt-base 1.31: Script to test whether computer is running on AC power
