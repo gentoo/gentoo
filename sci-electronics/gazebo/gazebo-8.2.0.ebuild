@@ -36,7 +36,7 @@ RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtopengl:5
 	dev-libs/boost:=[threads]
-	sci-libs/gdal
+	sci-libs/gdal:=
 	virtual/libusb:1
 	dev-libs/libspnav
 	media-libs/freeimage
