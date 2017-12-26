@@ -77,6 +77,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-docdir.patch
 	"${FILESDIR}"/${P}-fpic.patch
 	"${FILESDIR}"/${P}-cmake-openssl.patch
+	"${FILESDIR}"/${P}-poppler-0.58.patch
 )
 
 src_prepare() {
