@@ -99,4 +99,8 @@ For known issues, please see bug #506276 [1]. If you have any problems
 with the new profiles or the migration procedure, please report a bug
 and make it block the tracker.
 
+For more information on the layout, please see the wiki article
+on AMD64 multilib layouts [2].
+
 [1]:https://bugs.gentoo.org/506276
+[2]:https://wiki.gentoo.org/wiki/Project:AMD64/Multilib_layout
