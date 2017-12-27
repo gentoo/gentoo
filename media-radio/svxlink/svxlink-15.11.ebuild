@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit cmake-utils qt4-r2 user
+inherit cmake-utils eutils qt4-r2 user
 
 CMAKE_USE_DIR="${S}/src"
 
@@ -34,6 +34,9 @@ pkg_setup() {
 }
 
 src_prepare() {
+	# fix compilation problem with newer gcc bug #639592
+	epatch "${FILESDIR}"/${P}-gcc72.patch
+
 	cmake-utils_src_prepare
 	# drop deprecated desktop category (bug #475730)
 	sed -i -e "s:Categories=Application;:Categories=:g" src/qtel/qtel.desktop || die

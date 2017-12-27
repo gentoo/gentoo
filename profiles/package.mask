@@ -139,6 +139,7 @@ games-emulation/gxmame
 net-libs/ptlib
 net-libs/opal
 net-voip/openmcu
+net-libs/h323plus
 net-voip/ekiga
 
 # Alice Ferrazzi <alicef@gentoo.org> (27 Dec 2017)
