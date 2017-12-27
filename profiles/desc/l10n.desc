@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # This file contains descriptions of L10N USE_EXPAND flags.
@@ -82,7 +82,6 @@ gu - Gujarati
 gug - Paraguayan Guarani
 he - Hebrew
 hi - Hindi
-hne - Chhattisgarhi
 hr - Croatian
 hsb - Upper Sorbian
 hu - Hungarian
@@ -153,7 +152,6 @@ sr - Serbian
 sr-ijekavsk - Serbian (Ijekavian pronunciation)
 sr-Latn - Serbian (Latin script)
 sr-Latn-ijekavsk - Serbian (Latin script, Ijekavian pronunciation)
-sr-ME - Serbian (Montenegro)
 ss - Swati
 st - Southern Sotho
 sv - Swedish
@@ -173,9 +171,7 @@ ts - Tsonga
 tt - Tatar
 ug - Uyghur
 uk - Ukrainian
-ur-PK - Urdu (Pakistan)
 uz - Uzbek
-uz-Cyrl - Uzbek (Cyrillic script)
 ve - Venda
 vi - Vietnamese
 wa - Walloon
