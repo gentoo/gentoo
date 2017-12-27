@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit fdo-mime gnome2-utils prefix qmake-utils
+inherit gnome2-utils prefix qmake-utils xdg-utils
 
 DESCRIPTION="Free cross-platform LaTeX editor (fork from texmakerX)"
 HOMEPAGE="http://texstudio.sourceforge.net/"
@@ -81,11 +81,11 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
 	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
 	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }
