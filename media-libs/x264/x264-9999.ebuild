@@ -22,7 +22,7 @@ SONAME="152"
 SLOT="0/${SONAME}"
 
 LICENSE="GPL-2"
-IUSE="10bit altivec +interlaced opencl pic static-libs cpu_flags_x86_sse +threads"
+IUSE="altivec +interlaced opencl pic static-libs cpu_flags_x86_sse +threads"
 
 ASM_DEP=">=dev-lang/nasm-2.13"
 DEPEND="abi_x86_32? ( ${ASM_DEP} )
@@ -54,7 +54,6 @@ multilib_src_configure() {
 		--enable-pic \
 		--enable-shared \
 		--host="${CHOST}" \
-		$(usex 10bit "--bit-depth=10" "") \
 		$(usex interlaced "" "--disable-interlaced") \
 		$(usex opencl "" "--disable-opencl") \
 		$(usex static-libs "--enable-static" "") \
