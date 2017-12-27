@@ -23,7 +23,7 @@ USE="${USE} seccomp"
 # These USE flags were originally inserted here because of PHP
 # and were later removed by me. Reinserting the USE flags again because they are
 # global USE flags that may be expected to be set by other packages.
-USE="${USE} cli pcre session"
+USE="${USE} cli pcre"
 
 # 2006/03/07 - Donnie Berkholz <dberkholz@gentoo.org>
 # Modular X: Support direct rendering by default
