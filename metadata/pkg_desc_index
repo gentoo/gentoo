@@ -949,7 +949,7 @@ app-misc/byobu 5.123: A set of profiles for the GNU Screen console window manage
 app-misc/c_rehash 1.7-r1: c_rehash script from OpenSSL
 app-misc/ca-certificates 20161130.3.30.2: Common CA Certificates PEM files
 app-misc/calendar 0.9.1: Standard unix calendar program for Linux, ported from OpenBSD
-app-misc/cbrpager 0.9.20: a simple comic book pager
+app-misc/cbrpager 0.9.22: a simple comic book pager
 app-misc/cdargs 1.35-r2: Bookmarks and browser for the shell builtin cd command
 app-misc/cdcat 0.3: simple yet effective CD indexing program
 app-misc/cdctl 0.15: Utility to control your cd/dvd drive
