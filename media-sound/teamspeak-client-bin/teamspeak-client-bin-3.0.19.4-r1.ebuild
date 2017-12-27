@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils unpacker
+inherit desktop unpacker
 
 DESCRIPTION="TeamSpeak Client - Voice Communication Software"
 HOMEPAGE="https://www.teamspeak.com/"
