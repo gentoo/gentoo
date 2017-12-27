@@ -3,16 +3,14 @@
 
 EAPI=6
 
-inherit git-r3
-
 DESCRIPTION="Keybase Filesystem (KBFS)"
 HOMEPAGE="https://keybase.io/docs/kbfs"
 SRC_URI="https://github.com/keybase/kbfs/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
-IUSE="git"
+KEYWORDS="~amd64 ~x86"
+IUSE=""
 
 DEPEND="
 	>=dev-lang/go-1.6:0
