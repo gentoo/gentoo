@@ -98,21 +98,8 @@ src_configure() {
 
 src_install() {
 	emake DESTDIR="${D}" install
-
-	# A man-page is always handy, so fake one
-	if use !doc; then
-		emake -C doc neomuttrc.man
-		# make the fake slightly better, bug #413405
-		sed -e 's#@docdir@/manual.txt#http://www.neomutt.org/guide#' \
-			-e 's#in @docdir@,#at http://www.neomutt.org/,#' \
-			-e "s#@sysconfdir@#${EPREFIX}/etc/${PN}#" \
-			-e "s#@bindir@#${EPREFIX}/usr/bin#" \
-			doc/neomutt.man > neomutt.1 || die
-		cp doc/neomuttrc.man neomuttrc.5 || die
-		doman neomutt.1 neomuttrc.5
-	fi
-
 	dodoc COPYRIGHT LICENSE* ChangeLog* README*
+	doman doc/*.{1,5}
 }
 
 pkg_postinst() {
