@@ -30,6 +30,25 @@
 #--- END OF EXAMPLES ---
 
 # Pacho Ramos <pacho@gentoo.org> (27 Dec 2017)
+# Remove all Compiz related packages: they all need major work/bumps to fix
+# lots of pending issues and they need a dedicated maintainer (bug #339622
+# and many others). Removal in a month.
+x11-wm/compiz
+x11-apps/fusion-icon
+x11-libs/compizconfig-backend-gconf
+x11-libs/libcompizconfig
+dev-python/compizconfig-python
+x11-misc/ccsm
+x11-misc/simple-ccsm
+x11-plugins/compiz-plugins-extra
+x11-plugins/compiz-plugins-main
+x11-plugins/compiz-plugins-unsupported
+x11-wm/compiz-fusion
+x11-wm/emerald
+x11-themes/emerald-themes
+x11-libs/compiz-bcop
+
+# Pacho Ramos <pacho@gentoo.org> (27 Dec 2017)
 # Dead for ages, not needed, for java 1.5 (#638036). Removal in a month.
 dev-java/jikes
 
