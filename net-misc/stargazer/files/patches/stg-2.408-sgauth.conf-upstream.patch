@@ -1,5 +1,5 @@
---- projects/sgauth/sgauth.conf.org	2013-01-08 15:43:09.000000000 +0200
-+++ projects/sgauth/sgauth.conf	2013-01-09 13:41:53.000000000 +0200
+--- a/projects/sgauth/sgauth.conf
++++ b/projects/sgauth/sgauth.conf
 @@ -1,37 +1,72 @@
 -#Stargazer server ip
 -ServerName=192.168.1.2

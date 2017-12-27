@@ -1,5 +1,5 @@
---- projects/rscriptd/Makefile.org	2013-01-18 16:22:46.000000000 +0200
-+++ projects/rscriptd/Makefile	2013-01-18 16:25:08.000000000 +0200
+--- a/projects/rscriptd/Makefile
++++ b/projects/rscriptd/Makefile
 @@ -68,6 +68,13 @@
  	# Install etc
  	mkdir -m $(DIR_MODE) -p $(PREFIX)/etc/rscriptd

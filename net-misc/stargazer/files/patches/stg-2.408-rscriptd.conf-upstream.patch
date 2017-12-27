@@ -1,5 +1,5 @@
---- projects/rscriptd/rscriptd.conf.org	2013-01-12 15:44:46.000000000 +0200
-+++ projects/rscriptd/rscriptd.conf	2013-01-12 15:45:44.000000000 +0200
+--- a/projects/rscriptd/rscriptd.conf
++++ b/projects/rscriptd/rscriptd.conf
 @@ -1,8 +1,68 @@
 -LogFileName=/var/log/rscriptd.log
 -ExecutersNum=1
