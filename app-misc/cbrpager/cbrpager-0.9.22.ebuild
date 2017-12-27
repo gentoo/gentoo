@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=3
+EAPI=6
 
-inherit eutils base
+inherit desktop
 
 DESCRIPTION="a simple comic book pager"
 HOMEPAGE="http://cbrpager.sourceforge.net"
@@ -21,7 +21,8 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_install() {
-	base_src_install
-	dodoc AUTHORS ChangeLog CONTRIBUTORS NEWS README TODO || die
+	default
+	dodoc CONTRIBUTORS
+
 	make_desktop_entry ${PN} "CBR Pager" ${PN} "Graphics;Viewer;Amusement;GTK"
 }
