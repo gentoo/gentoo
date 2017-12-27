@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (27 Dec 2017)
+# Last release in 2005, crashes on use, EAPI 3 (#640262).
+# Removal in 30 days
+dev-vcs/archway
+
 # Pacho Ramos <pacho@gentoo.org> (27 Dec 2017)
 # Remove all Compiz related packages: they all need major work/bumps to fix
 # lots of pending issues and they need a dedicated maintainer (bug #339622
