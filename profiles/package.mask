@@ -29,6 +29,99 @@
 
 #--- END OF EXAMPLES ---
 
+# Pacho Ramos <pacho@gentoo.org> (27 Dec 2017)
+# Dead for ages, not needed, for java 1.5 (#638036). Removal in a month.
+dev-java/jikes
+
+# Pacho Ramos <pacho@gentoo.org> (27 Dec 2017)
+# Dead for ages, requires glibc with rpc (#371391). Removal in a month.
+net-misc/netkit-rusers
+
+# Pacho Ramos <pacho@gentoo.org> (27 Dec 2017)
+# Out ebuild is completely obsolete (#381073), download manually PPD is
+# preferred, current tarballs cannot be downloaded even (#635146). Removal
+# in a month.
+net-print/xerox-drivers
+
+# Pacho Ramos <pacho@gentoo.org> (27 Dec 2017)
+# Dead and broken for a long time (#427876), nothing requires this. Removal
+# in a month.
+dev-dotnet/gnome-sharp
+
+# Pacho Ramos <pacho@gentoo.org> (27 Dec 2017)
+# Dead and broken for a long time (#428354, #562772, #624956, #558120,
+# #585222, #585548, #605706, #612368), nothing requires this. Removal
+# in a month.
+# Mikhail Pukhlikov <cynede@gentoo.org> (20 Jul 2017)
+# Old mono/dotnet packages (used on GNOME2 stack)
+# also some deprecated forks used for monodevelop
+# awhile they are very unstable they will live in dotnet overlay
+gnome-extra/docky
+dev-dotnet/gnome-desktop-sharp
+dev-dotnet/gtksourceview-sharp
+dev-dotnet/rsvg-sharp
+dev-dotnet/vte-sharp
+dev-dotnet/wnck-sharp
+dev-dotnet/xdt-for-monodevelop
+dev-dotnet/nuget
+dev-dotnet/referenceassemblies-pcl
+
+# Pacho Ramos <pacho@gentoo.org> (27 Dec 2017)
+# Dead for ages, rely on deprecated/dead libs (#447466). Removal in a month.
+dev-vcs/bzr-gtk
+dev-vcs/bzr-explorer
+
+# Pacho Ramos <pacho@gentoo.org> (27 Dec 2017)
+# Completely broken for years (#514400, #596078, #598609, #640096, #641428).
+# Removal in a month.
+dev-cpp/pficommon
+
+# Pacho Ramos <pacho@gentoo.org> (27 Dec 2017)
+# Dead for a long time, failing tests (#526900), nothing requires it.
+# Removal in a month.
+net-misc/ytalk
+
+# Pacho Ramos <pacho@gentoo.org> (27 Dec 2017)
+# Upstream dead, SRC_URI dead, nothing requires it (#533812). Removal in a
+# month.
+media-video/replex
+
+# Pacho Ramos <pacho@gentoo.org> (27 Dec 2017)
+# Not compatible with mono-4 (#557588, #562546, #569252, #581920, #585860, #596652),
+# nothing requires them. Removal in a month.
+dev-dotnet/xsp
+dev-dotnet/nini
+dev-lang/mono-basic
+dev-util/jay
+
+# Pacho Ramos <pacho@gentoo.org> (27 Dec 2017)
+# python files installed in wrong path (#580328), relies on qt4 and cannot
+# be bumped (#585328), fails with gcc6 (#630332), fails to build (#641514).
+# Removal in a month.
+sci-visualization/qtiplot
+
+# Pacho Ramos <pacho@gentoo.org> (27 Dec 2017)
+# Dead upstream for a long time, relies on dead gnome-icon-theme and has
+# some crashes (#602144). Removal in a month.
+app-doc/podbrowser
+
+# Pacho Ramos <pacho@gentoo.org> (27 Dec 2017)
+# Dead upstream for a long time, relies on dead gnome-icon-theme and nothing
+# requires it (#602146). Removal in a month.
+games-emulation/gxmame
+
+# Pacho Ramos <pacho@gentoo.org> (27 Dec 2017)
+# All Ekiga set is dead and broken for years, it relies on obsolete
+# dead/libs that are also old and broken and upstream looks to not release
+# newer ekiga ever. To keep this please go ahead and take care of it *and
+# all the dependencies it also needs*. See bugs #626176, #460458, #589276,
+# #638122, #641990, #633670, #624578, #600398, #627868.
+# Removal in a month.
+net-libs/ptlib
+net-libs/opal
+net-voip/openmcu
+net-voip/ekiga
+
 # Alice Ferrazzi <alicef@gentoo.org> (27 Dec 2017)
 # Masked for removal in 30 days.
 # There are issue on this kernel version due to a heavy changeset.
@@ -718,20 +811,6 @@ app-xemacs/xemacs-packages-all
 # However, any existing packages should not use this version.
 # See: https://github.com/perl5-dbi/DBD-mysql/issues/117
 =dev-perl/DBD-mysql-4.42.0
-
-# Mikhail Pukhlikov <cynede@gentoo.org> (20 Jul 2017)
-# Old mono/dotnet packages (used on GNOME2 stack)
-# also some deprecated forks used for monodevelop
-# awhile they are very unstable they will live in dotnet overlay
-gnome-extra/docky
-dev-dotnet/gnome-desktop-sharp
-dev-dotnet/gtksourceview-sharp
-dev-dotnet/rsvg-sharp
-dev-dotnet/vte-sharp
-dev-dotnet/wnck-sharp
-dev-dotnet/xdt-for-monodevelop
-dev-dotnet/nuget
-dev-dotnet/referenceassemblies-pcl
 
 # Ian Stakenvicius <axs@gentoo.org> (19 Jul 2017)
 # Mask spidermonkey:52 as it is a self-rolled release, no official
