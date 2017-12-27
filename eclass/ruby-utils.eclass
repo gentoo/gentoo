@@ -31,7 +31,7 @@ if [[ ! ${_RUBY_UTILS} ]]; then
 RUBY_TARGETS_PREFERENCE="ruby22 "
 
 # All other active ruby targets
-RUBY_TARGETS_PREFERENCE+="ruby23 ruby24"
+RUBY_TARGETS_PREFERENCE+="ruby23 ruby24 ruby25"
 
 
 _ruby_implementation_depend() {
