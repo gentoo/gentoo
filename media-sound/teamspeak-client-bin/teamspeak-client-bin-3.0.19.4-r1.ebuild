@@ -1,12 +1,12 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
-inherit eutils unpacker
+inherit desktop unpacker
 
 DESCRIPTION="TeamSpeak Client - Voice Communication Software"
-HOMEPAGE="http://www.teamspeak.com/"
+HOMEPAGE="https://www.teamspeak.com/"
 SRC_URI="
 	amd64? ( http://ftp.4players.de/pub/hosted/ts3/releases/${PV}/TeamSpeak3-Client-linux_amd64-${PV/_/-}.run )
 	x86? ( http://ftp.4players.de/pub/hosted/ts3/releases/${PV}/TeamSpeak3-Client-linux_x86-${PV/_/-}.run )"
@@ -19,12 +19,12 @@ IUSE="alsa pulseaudio"
 REQUIRED_USE="|| ( alsa pulseaudio )"
 
 RDEPEND="
-	dev-libs/quazip[-qt4,qt5]
-	>=dev-qt/qtcore-5.5:5
-	>=dev-qt/qtgui-5.5:5[accessibility]
-	>=dev-qt/qtnetwork-5.5:5
-	>=dev-qt/qtsql-5.5:5[sqlite]
-	>=dev-qt/qtwidgets-5.5:5
+	>=dev-libs/quazip-0.7.3[-qt4(-),qt5(+)]
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5[accessibility]
+	dev-qt/qtnetwork:5
+	dev-qt/qtsql:5[sqlite]
+	dev-qt/qtwidgets:5
 	sys-libs/glibc
 	sys-libs/zlib
 	alsa? ( media-libs/alsa-lib )
@@ -41,6 +41,8 @@ pkg_nofetch() {
 }
 
 src_prepare() {
+	default
+
 	# Remove the qt-libraries as they just cause trouble with the system's Qt, see bug #328807.
 	rm libQt* || die "Couldn't remove bundled Qt libraries."
 

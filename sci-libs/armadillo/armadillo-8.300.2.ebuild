@@ -12,17 +12,19 @@ HOMEPAGE="http://arma.sourceforge.net/"
 SRC_URI="mirror://sourceforge/arma/${P}.tar.xz"
 
 LICENSE="Apache-2.0"
-SLOT="0/7"
+SLOT="0/8"
 KEYWORDS="~amd64 ~arm ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="arpack blas debug doc examples hdf5 lapack mkl superlu tbb test"
 REQUIRED_USE="test? ( lapack )"
+
+#	atlas? ( sci-libs/atlas[lapack] )
 
 RDEPEND="
 	dev-libs/boost
 	arpack? ( sci-libs/arpack )
 	blas? ( virtual/blas )
 	lapack? ( virtual/lapack )
-	superlu? ( >=sci-libs/superlu-5 )
+	superlu? ( >=sci-libs/superlu-5.2 )
 "
 
 DEPEND="${RDEPEND}
@@ -106,7 +108,8 @@ src_configure() {
 	if use superlu; then
 		mycmakeargs+=(
 			-DSuperLU_FOUND=ON
-			-DSuperLU_LIBRARIES="$($(tc-getPKG_CONFIG) --libs superlu)"
+			-DSuperLU_LIBRARY="$($(tc-getPKG_CONFIG) --libs superlu)"
+			-DSuperLU_INCLUDE_DIR="$($(tc-getPKG_CONFIG) --cflags-only-I superlu | awk '{print $1}' | sed 's/-I//')"
 		)
 	else
 		mycmakeargs+=(
@@ -120,10 +123,10 @@ src_configure() {
 src_test() {
 	pushd examples > /dev/null
 	emake \
+		CXX="$(tc-getCXX)" \
 		CXXFLAGS="-I../include ${CXXFLAGS} -DARMA_USE_BLAS -DARMA_USE_LAPACK" \
-		EXTRA_LIB_FLAGS="-L.. $($(tc-getPKG_CONFIG) --libs blas lapack)"
+		LIB_FLAGS="-L.. -larmadillo $($(tc-getPKG_CONFIG) --libs blas lapack)"
 	LD_LIBRARY_PATH="..:${LD_LIBRARY_PATH}" ./example1 || die
-	LD_LIBRARY_PATH="..:${LD_LIBRARY_PATH}" ./example2 || die
 	emake clean
 	popd > /dev/null
 }
@@ -131,14 +134,10 @@ src_test() {
 src_install() {
 	cmake-utils_src_install
 	dodoc README.txt
-
-	if use doc ; then
-		dodoc *pdf
-		dodoc *html
-	fi
-
+	use doc && dodoc *pdf *html
 	if use examples; then
 		insinto /usr/share/doc/${PF}/examples
 		doins -r examples/*
+		docompress -x /usr/share/doc/${PF}/examples
 	fi
 }

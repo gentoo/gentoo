@@ -37,6 +37,8 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=( "${FILESDIR}/${P}-qt58.patch" )
+
 pkg_setup() {
 	python-single-r1_pkg_setup
 	ruby-ng_pkg_setup
