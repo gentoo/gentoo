@@ -31,7 +31,7 @@ RDEPEND="
 	opencv? ( media-libs/opencv:=[-qt4(-)] )
 	raw? ( >=media-libs/libraw-0.14:= )
 	tiff? ( media-libs/tiff:0 )
-	zip? ( >=dev-libs/quazip-0.7.2[qt5] )
+	zip? ( >=dev-libs/quazip-0.7.2[qt5(+)] )
 "
 DEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5
