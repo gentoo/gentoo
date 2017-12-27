@@ -29,6 +29,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Jonas Stein <jstein@gentoo.org> (28 Dec 2017)
+# Upstream deleted all files more than 6 years ago and is inactive. 
+# See also bug #628960
+# Masked for removal on 2018-02-01
+app-doc/linux-gazette-base
+app-doc/linux-gazette-all
+app-doc/linux-gazette
+
 # Andreas Sturmlechner <asturm@gentoo.org> (27 Dec 2017)
 # Masked because no more USE=qt4 breaks rdeps, bug #642444
 >=app-text/poppler-0.62.0
