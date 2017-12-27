@@ -82,12 +82,6 @@ src_configure() {
 		$(use_with readline)
 }
 
-# These will need to be looked at some day:
-# --enable-adms
-# --enable-nodelimiting
-# --enable-predictor
-# --enable-newtrunc
-
 src_install() {
 	default
 
