@@ -7,7 +7,7 @@ inherit git-r3
 
 DESCRIPTION="Keybase Filesystem (KBFS)"
 HOMEPAGE="https://keybase.io/docs/kbfs"
-EGIT_REPO_URI="https://github.com/keybase/kbfs.git"
+SRC_URI="https://github.com/keybase/kbfs/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -16,7 +16,7 @@ IUSE="git"
 
 DEPEND="
 	>=dev-lang/go-1.6:0
-	>=app-crypt/keybase-1.0.17
+	>=app-crypt/keybase-1.0.36
 	"
 RDEPEND="
 	app-crypt/gnupg
@@ -26,9 +26,9 @@ RDEPEND="
 S="${WORKDIR}/src/github.com/keybase/kbfs"
 
 src_unpack() {
-	git-r3_src_unpack
+	unpack "${P}.tar.gz"
 	mkdir -p "$(dirname "${S}")" || die
-	ln -s "${WORKDIR}/${P}" "${S}" || die
+	mv "kbfs-${PV}" "${S}" || die
 }
 
 src_compile() {
