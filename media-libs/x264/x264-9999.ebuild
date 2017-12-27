@@ -8,7 +8,7 @@ inherit flag-o-matic multilib toolchain-funcs eutils multilib-minimal
 DESCRIPTION="A free library for encoding X264/AVC streams"
 HOMEPAGE="https://www.videolan.org/developers/x264.html"
 if [[ ${PV} == 9999 ]]; then
-	inherit git-2
+	inherit git-r3
 	EGIT_REPO_URI="https://git.videolan.org/git/x264.git"
 else
 	inherit versionator
