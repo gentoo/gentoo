@@ -4,12 +4,12 @@
 EAPI=5
 
 # ruby22, ruby23: fails due to minitest incompatabilities.
-USE_RUBY="ruby21 ruby22 ruby23 ruby24"
+USE_RUBY="ruby22 ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_TASK_TEST=""
 RUBY_FAKEGEM_TASK_DOC=""
 
-RUBY_FAKEGEM_EXTRADOC="README.textile"
+RUBY_FAKEGEM_EXTRADOC="README.md"
 
 inherit ruby-fakegem
 
@@ -20,16 +20,19 @@ RUBY_S="svenfuchs-test_declarative-*"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
 IUSE=""
 
+ruby_add_bdepend "test? ( dev-ruby/bundler dev-ruby/minitest:5 )"
+
+all_ruby_prepare() {
+	sed -i -e '/rake/ s/12.0.0/12/' Gemfile || die
+}
+
 each_ruby_test() {
-	case ${RUBY} in
-		*ruby22|*ruby23|*ruby24)
-			einfo "Tests do not work with ${RUBY}"
-			;;
-		*)
-			${RUBY} test/test_declarative_test.rb || die "Tests failed."
-			;;
-	esac
+	# There are other gemfiles but their setup seems broken atm.
+	for gemfile in Gemfile ; do
+		einfo "Running tests with ${gemfile}"
+		BUNDLE_GEMFILE=${gemfile} ${RUBY} -S bundle exec rake test || die
+	done
 }
