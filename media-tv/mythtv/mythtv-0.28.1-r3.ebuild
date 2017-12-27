@@ -23,7 +23,7 @@ KEYWORDS="~amd64 ~x86"
 SLOT="0/${PV}"
 
 IUSE_INPUT_DEVICES="input_devices_joystick"
-IUSE="alsa altivec autostart bluray cec crystalhd debug dvb dvd egl fftw +hls \
+IUSE="alsa altivec autostart bluray cec crystalhd debug dvd egl fftw +hls \
 ieee1394 jack lcd libass lirc +mythlogserver perl pulseaudio python systemd +theora \
 vaapi vdpau +vorbis +wrapper +xml xmltv +xvid zeroconf ${IUSE_INPUT_DEVICES}"
 
@@ -64,10 +64,6 @@ COMMON="
 		sys-fs/udisks:2
 	)
 	cec? ( dev-libs/libcec )
-	dvb? (
-		media-libs/libdvb
-		virtual/linuxtv-dvb-headers
-	)
 	dvd? (
 		dev-libs/libcdio:=
 		sys-fs/udisks:2
@@ -178,7 +174,7 @@ src_configure() {
 	use pulseaudio || myconf="${myconf} --disable-audio-pulseoutput"
 
 	use altivec    || myconf="${myconf} --disable-altivec"
-	myconf="${myconf} $(use_enable dvb)"
+	myconf="${myconf} --disable-dvb"
 	myconf="${myconf} $(use_enable ieee1394 firewire)"
 	myconf="${myconf} $(use_enable lirc)"
 	myconf="${myconf} $(use_enable xvid libxvid)"
