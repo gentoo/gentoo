@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (27 Dec 2017)
+# None of the supported LLVM versions have ARM keywords.
+<=media-libs/mesa-17.1.10 llvm
+
 # Michał Górny <mgorny@gentoo.org> (21 Dec 2017)
 # clang is not currently supported on Gentoo ARM profiles.
 sys-devel/llvm clang lldb
