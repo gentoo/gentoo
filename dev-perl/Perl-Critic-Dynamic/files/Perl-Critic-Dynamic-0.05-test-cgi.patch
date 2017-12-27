@@ -1,0 +1,70 @@
+From 42cd322ed7cc0b89692352ef5e78023bce71e865 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20P=C3=ADsa=C5=99?= <ppisar@redhat.com>
+Date: Thu, 9 Apr 2015 00:46:52 +1200
+Subject: Fix AUTOLOAD test
+
+CGI 4.14 stopped to use AUTOLOAD which caused failing tests. This patch
+provides private module with AUTOLOAD instead of relying on CGI.
+
+Bug: https://rt.cpan.org/Ticket/Display.html?id=103382
+---
+ t/Dynamic/ValidateAgainstSymbolTable.run | 11 ++++++-----
+ tlib/TestAutoload.pm                     | 12 ++++++++++++
+ 2 files changed, 18 insertions(+), 5 deletions(-)
+ create mode 100644 tlib/TestAutoload.pm
+
+diff --git a/t/Dynamic/ValidateAgainstSymbolTable.run b/t/Dynamic/ValidateAgainstSymbolTable.run
+index 493a9dd..5178922 100644
+--- a/t/Dynamic/ValidateAgainstSymbolTable.run
++++ b/t/Dynamic/ValidateAgainstSymbolTable.run
+@@ -336,23 +336,24 @@ use FooBar;
+ #-----------------------------------------------------------------------------
+ 
+ ## name AUTOLOADers ignored by default
++## parms { at_inc => 'tlib' }
+ ## failures 0
+ ## cut
+ 
+-use CGI;  # Has 'sub AUTOLOAD {...}'
++use TestAutoload;  # Has 'sub AUTOLOAD {...}'
+ 
+-CGI::FooBar();
++TestAutoload::FooBar();
+ 
+ #-----------------------------------------------------------------------------
+ 
+ ## name AUTOLOADers inspected on request
+-## parms { inspect_autoloaders => 1 }
++## parms { at_inc => 'tlib', inspect_autoloaders => 1 }
+ ## failures 1
+ ## cut
+ 
+-use CGI;  # Has 'sub AUTOLOAD {...}'
++use TestAutoload;  # Has 'sub AUTOLOAD {...}'
+ 
+-CGI::FooBar();
++TestAutoload::FooBar();
+ 
+ 
+ #-----------------------------------------------------------------------------
+diff --git a/tlib/TestAutoload.pm b/tlib/TestAutoload.pm
+new file mode 100644
+index 0000000..939f563
+--- /dev/null
++++ b/tlib/TestAutoload.pm
+@@ -0,0 +1,12 @@
++package TestAutoload;
++
++sub AUTOLOAD {
++    print "Autoloading <$AUTOLOAD>\n";
++    goto &foo;
++}   
++
++sub foo {
++    print "foo() called\n";
++}   
++
++1;
+-- 
+2.15.1
+
