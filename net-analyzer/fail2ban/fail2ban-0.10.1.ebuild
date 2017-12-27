@@ -5,15 +5,15 @@ EAPI=6
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
 DISTUTILS_SINGLE_IMPL=1
 
-inherit distutils-r1 eutils systemd git-r3
+inherit distutils-r1 eutils systemd vcs-snapshot
 
 DESCRIPTION="scans log files and bans IPs that show malicious signs"
 HOMEPAGE="http://www.fail2ban.org/"
-EGIT_REPO_URI="https://github.com/${PN}/${PN}"
+SRC_URI="https://github.com/${PN}/${PN}/tarball/${PV} -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE="selinux systemd"
 
 # TODO support ipfw and ipfilter
@@ -46,6 +46,13 @@ python_prepare_all() {
 	distutils-r1_python_prepare_all
 }
 
+python_compile() {
+	if python_is_python3; then
+		./fail2ban-2to3 || die
+	fi
+	distutils-r1_python_compile
+}
+
 python_test() {
 	"${PYTHON}" "bin/${PN}-testcases" || die "tests failed with ${EPYTHON}"
 }
@@ -58,9 +65,8 @@ python_install_all() {
 	# not FILESDIR
 	newconfd files/gentoo-confd ${PN}
 	newinitd files/gentoo-initd ${PN}
-	systemd_dounit files/${PN}.service
-	sed -e "s:@BINDIR@:${EPREFIX}/usr/bin:g" files/${PN}.service.in > "${T}"/${PN}.service || die
-	systemd_dounit "${T}"/${PN}.service
+	sed -e "s:@BINDIR@:${EPREFIX}/usr/bin:g" files/${PN}.service.in > "${T}/${PN}.service" || die
+	systemd_dounit "${T}/${PN}.service"
 	systemd_dotmpfilesd files/${PN}-tmpfiles.conf
 	doman man/*.{1,5}
 
