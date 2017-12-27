@@ -98,7 +98,7 @@ RDEPEND="
 	llvm? (
 		video_cards_radeonsi? (
 			virtual/libelf:0=[${MULTILIB_USEDEP}]
-			vulkan? ( >=sys-devel/llvm-3.9.0:=[${MULTILIB_USEDEP}] )
+			vulkan? ( >=sys-devel/llvm-3.9.0:0=[${MULTILIB_USEDEP}] )
 		)
 		video_cards_r600? (
 			virtual/libelf:0=[${MULTILIB_USEDEP}]
@@ -106,7 +106,7 @@ RDEPEND="
 		video_cards_radeon? (
 			virtual/libelf:0=[${MULTILIB_USEDEP}]
 		)
-		>=sys-devel/llvm-3.6.0:=[${MULTILIB_USEDEP}]
+		>=sys-devel/llvm-3.6.0:0=[${MULTILIB_USEDEP}]
 	)
 	opencl? (
 				app-eselect/eselect-opencl
@@ -144,13 +144,13 @@ DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	llvm? (
 		video_cards_radeonsi? ( || (
-			sys-devel/llvm[llvm_targets_AMDGPU]
-			sys-devel/llvm[video_cards_radeon]
+			sys-devel/llvm:0[llvm_targets_AMDGPU]
+			sys-devel/llvm:0[video_cards_radeon]
 		) )
 	)
 	opencl? (
-				>=sys-devel/llvm-3.6.0:=[${MULTILIB_USEDEP}]
-				>=sys-devel/clang-3.6.0:=[${MULTILIB_USEDEP}]
+				>=sys-devel/llvm-3.6.0:0=[${MULTILIB_USEDEP}]
+				>=sys-devel/clang-3.6.0:0=[${MULTILIB_USEDEP}]
 				>=sys-devel/gcc-4.6
 	)
 	sys-devel/gettext
@@ -188,7 +188,7 @@ x86? (
 
 pkg_setup() {
 	# warning message for bug 459306
-	if use llvm && has_version sys-devel/llvm[!debug=]; then
+	if use llvm && has_version "sys-devel/llvm:0[!debug=]"; then
 		ewarn "Mismatch between debug USE flags in media-libs/mesa and sys-devel/llvm"
 		ewarn "detected! This can cause problems. For details, see bug 459306."
 	fi
