@@ -3,17 +3,16 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
-EGIT_REPO_URI="https://github.com/dbcli/${PN}.git"
-inherit distutils-r1 git-r3
+PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
+inherit distutils-r1
 
 DESCRIPTION="Python helpers for common CLI tasks"
 
 HOMEPAGE="http://cli-helpers.rtfd.io/"
-SRC_URI=""
+SRC_URI="https://github.com/dbcli/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="
