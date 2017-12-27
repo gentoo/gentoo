@@ -55,6 +55,8 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	# >=x11-libs/wxGTK-3.0.2.0-r3 has webview removed, bug 587462
 	"${FILESDIR}"/fix_webview.patch
+	# xlocale.h was removed in modern glibc, bug 639108
+	"${FILESDIR}"/fix_xlocale.patch
 )
 
 S="${WORKDIR}/${PN}-client_release-${MY_PV}-${PV}"
@@ -134,6 +136,8 @@ src_install() {
 }
 
 pkg_preinst() {
+	gnome2_icon_savelist
+
 	enewgroup ${PN}
 	# note this works only for first install so we have to
 	# elog user about the need of being in video group
@@ -145,7 +149,9 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	if [[ -n ${GNOME2_ECLASS_ICONS} ]]; then
+		gnome2_icon_cache_update
+	fi
 
 	elog
 	elog "You are using the source compiled version of boinc."
@@ -183,5 +189,7 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	if [[ -n ${GNOME2_ECLASS_ICONS} ]]; then
+		gnome2_icon_cache_update
+	fi
 }
