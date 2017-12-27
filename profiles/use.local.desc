@@ -2024,8 +2024,6 @@ dev-util/suse-build:symlink - Provide compatibility symlinks with original openS
 dev-util/sysprof:systemd - Build the sysprofd daemon service, required to run the UI without root permissions. Relies on sys-apps/systemd running as the init system.
 dev-util/systemtap:libvirt - Support probing of libvirt domains.
 dev-vcs/bzr:sftp - Enable sftp support
-dev-vcs/bzr-gtk:gpg - Support signing with GnuPG.
-dev-vcs/bzr-gtk:nautilus - Integrate with Nautilus file manager
 dev-vcs/cssc:valgrind - Enable usage of dev-util/valgrind in tests
 dev-vcs/cvs:server - Enable server support
 dev-vcs/cvs2svn:bazaar - Support for dev-vcs/bzr
@@ -4112,46 +4110,9 @@ net-libs/nodejs:inspector - Enable V8 inspector
 net-libs/nodejs:npm - Enable NPM package manager
 net-libs/nodejs:snapshot - Enable snapshot creation for faster startup
 net-libs/nodejs:systemtap - Enable SystemTAP/DTrace tracing
-net-libs/opal:celt - Enable CELT ultra-low delay audio codec
-net-libs/opal:dtmf - Enable DTMF encoding/decoding support
-net-libs/opal:fax - Enable T.38 FAX protocol
-net-libs/opal:h224 - Enable H.224 real time control protocol
-net-libs/opal:h281 - Enable H.281 Far-End Camera Control protocol
-net-libs/opal:h323 - Enable H.323 protocol
-net-libs/opal:iax - Enable Inter-Asterisk eXchange protocol
-net-libs/opal:ilbc - Enable iLBC (RFC 3951) speech codec
-net-libs/opal:ivr - Enable Interactive Voice Response
-net-libs/opal:lid - Enable Line Interface Device
-net-libs/opal:plugins - Enable plugins support
-net-libs/opal:sbc - Enable the Bluetooth low-complexity, SubBand Codec
-net-libs/opal:sip - Enable Session Initiation Protocol
-net-libs/opal:sipim - Enable SIP Instant Messages session
-net-libs/opal:srtp - Enable Secure Real-time Transport Protocol
-net-libs/opal:stats - Enable statistic reporting
-net-libs/opal:swig - Use swig to generate bindings
-net-libs/opal:video - Enable video support
-net-libs/opal:vpb - Enable Voicetronics VPB card support
-net-libs/opal:vxml - Enable VXML support
-net-libs/opal:wav - Enable WAVFILE support
-net-libs/opal:x264-static - Install x264 plugin statically linked with x264
 net-libs/ortp:ntp-timestamp - Turn on NTP timestamping on received packet
 net-libs/ortp:srtp - Add support for Secure RTP
 net-libs/phodav:spice - Install the spice-webdavd guest agent
-net-libs/ptlib:asn - Enable ASN decoding/encoding support
-net-libs/ptlib:dtmf - Enable DTMF encoding/decoding support
-net-libs/ptlib:http - Enable HTTP support
-net-libs/ptlib:mail - Enable mail protocols (POP3/SMTP)
-net-libs/ptlib:qos - Enable QOS support
-net-libs/ptlib:remote - Enable remote connection support
-net-libs/ptlib:serial - Enable serial port support
-net-libs/ptlib:shmvideo - Enable shared memory video devices
-net-libs/ptlib:socks - Enable SOCKS protocol support
-net-libs/ptlib:stun - Enable STUN support
-net-libs/ptlib:telnet - Enable telnet protocol support
-net-libs/ptlib:tts - Enable Text-To-Speech server support
-net-libs/ptlib:video - Enable video support
-net-libs/ptlib:vxml - Enable VoiceXML support
-net-libs/ptlib:wav - Enable WAVFILE support
 net-libs/qxmpp:opus - Enable Opus codec support via media-libs/opus
 net-libs/qxmpp:vpx - Enable VP8 codec support via media-libs/libvpx
 net-libs/rabbitmq-c:tools - Builds cli tools to interact with brokers
@@ -4683,8 +4644,6 @@ net-proxy/tsocks:dns - Force DNS queries to use SOCKS server via tcp
 net-proxy/tsocks:envconf - Allow TSOCKS_CONF_FILE to specify configuration file
 net-proxy/tsocks:server-lookups - Allow hostname resolution _for_ SOCKS servers
 net-proxy/tsocks:tordns - Apply tordns patch which allows transparent TORification of the DNS queries
-net-voip/ekiga:h323 - Enable H.323 protocol
-net-voip/ekiga:shm - Enable the Shared Memory Extension from libXext
 net-voip/linphone:assistant - Turn on assistant compiling (needs gtk enabled)
 net-voip/linphone:gsm-nonstandard - Support non-standard GSM frequencies
 net-voip/linphone:sqlite - Turn on compilation of message storage

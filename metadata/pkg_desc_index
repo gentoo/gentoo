@@ -519,7 +519,6 @@ app-doc/php-docs 20101029-r1: HTML documentation for PHP
 app-doc/phrack 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68: A Hacker magazine by the community, for the community
 app-doc/phrack-all 68: Hacker magazine by the community, for the community (all issues)
 app-doc/pms 5_p20120920 6_p20170429: Gentoo Package Manager Specification
-app-doc/podbrowser 0.12-r3: PodBrowser is a documentation browser for Perl
 app-doc/root-docs 5.34.36: Documentation for ROOT Data Analysis Framework
 app-doc/selfhtml 8.1.2: "The" German HTML/XHTML/CSS/XML/DHTML/CGI/Perl/JavaScript Documentation
 app-doc/selflinux 0.13.0: german-language hypertext tutorial about Linux
@@ -1892,7 +1891,6 @@ dev-dotnet/flickrnet-bin 2.2-r1: A .Net Library for accessing the Flickr API - B
 dev-dotnet/gio-sharp 0.3-r1: GIO API C# binding
 dev-dotnet/gkeyfile-sharp 0.1-r1: C# binding for gkeyfile
 dev-dotnet/gnome-keyring-sharp 1.0.2-r2: C# implementation of gnome-keyring
-dev-dotnet/gnome-sharp 2.24.2-r1: gnome bindings for mono
 dev-dotnet/gsf-sharp 0.8.1: C# bindings for libgsf
 dev-dotnet/gtk-sharp 2.12.21: gtk bindings for mono
 dev-dotnet/ikvm-bin 7.1.4532.2: Java VM for .NET
@@ -1901,10 +1899,8 @@ dev-dotnet/log4net 1.2.11: tool to help the programmer output log statements to 
 dev-dotnet/mono-addins 0.6.2 1.0-r1: A generic framework for creating extensible applications
 dev-dotnet/ndesk-dbus 0.6.1a: Managed D-Bus Implementation for .NET
 dev-dotnet/ndesk-dbus-glib 0.4.1: glib integration for DBus-Sharp
-dev-dotnet/nini 1.1.0-r2: Nini - A configuration library for .NET
 dev-dotnet/notify-sharp 0.4.0_pre20090305-r1: a C# client implementation for Desktop Notifications
 dev-dotnet/pe-format 2.1.2 2.1.2-r1: Intelligent PE executable wrapper for binfmt_misc
-dev-dotnet/xsp 2.10.2-r2: XSP is a small web server that can host ASP.NET pages
 dev-embedded/arduino 1.0.5-r1: An open-source AVR electronics prototyping platform
 dev-embedded/avra 1.3.0: Atmel AVR Assembler
 dev-embedded/avrdude 6.3: AVR Downloader/UploaDEr
@@ -2608,7 +2604,6 @@ dev-java/jgroups 2.9.0: JGroups is a toolkit for reliable multicast communicatio
 dev-java/jibx 1.1.5-r3 1.2.6-r1: Bind XML to Java code
 dev-java/jibx-tools 1.1.5-r2: JiBX: Binding XML to Java Code - Generators
 dev-java/jid3 0.46-r2: ID3 Class Library Implementation
-dev-java/jikes 1.22-r13: IBM's open source, high performance Java compiler
 dev-java/jinklevel 0.1: Java binding for libinklevel
 dev-java/jisp 2.5.1-r3: Java Indexed Serialization Package: A small, embedded database engine
 dev-java/jlayer 1.0.1: MP3 decoder/player/converter library for Java
@@ -2870,7 +2865,6 @@ dev-lang/mercury 13.05.2: Mercury is a modern general-purpose logic/functional p
 dev-lang/mercury-extras 13.05.2: Additional libraries and tools that are not part of the Mercury standard library
 dev-lang/mmix 20131017: Donald Knuth's MMIX Assembler and Simulator
 dev-lang/mono 2.10.9-r2 4.4.1.0: Mono runtime and class libraries, a C# compiler/interpreter
-dev-lang/mono-basic 2.10: Visual Basic .NET Runtime and Class Libraries
 dev-lang/mujs 0_p20161202: lightweight Javascript interpreter
 dev-lang/nasm 2.11.08 2.12.01: groovy little assembler
 dev-lang/ocaml 4.04.2: Type-inferring functional programming language descended from the ML family
@@ -6137,7 +6131,6 @@ dev-util/huc 0.1-r1: HTML umlaut conversion tool
 dev-util/indent 2.2.11-r1: Indent program source files
 dev-util/intltool 0.51.0-r1 0.51.0-r2: Internationalization Tool Collection
 dev-util/itstool 2.0.2: Translation tool for XML documents that uses gettext files and ITS rules
-dev-util/jay 1.1.1-r2: A LALR(1) parser generator: Berkeley yacc retargeted to C# and Java
 dev-util/jconfig 2.8-r3 2.8.5: Utility that provides a simple API for the management of properties
 dev-util/kbuild 0.1.9998_pre20131130-r1: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kdevelop 5.1.2: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
@@ -6239,7 +6232,6 @@ dev-util/yacc 1.9.1-r6: Yacc: Yet Another Compiler-Compiler
 dev-vcs/bzr 2.5.1-r1: Bazaar is a next generation distributed version control system
 dev-vcs/bzr-fastimport 0.13.0: Plugin providing fast loading of revision control data into Bazaar
 dev-vcs/bzr-git 0.6.8-r1: Support for Git branches in Bazaar
-dev-vcs/bzr-gtk 0.104.0-r1: A GTK+ interfaces to most Bazaar operations
 dev-vcs/bzr-rewrite 0.6.3: Bazaar plugin that adds support for rebasing, similar to git rebase
 dev-vcs/bzr-xmloutput 0.8.8-r2: Bazaar plugin providing an option to generate XML output for builtin commands
 dev-vcs/bzrtools 2.5: bzrtools is a useful collection of utilities for bzr
@@ -8154,7 +8146,6 @@ media-video/pymp 1.1-r1: a lean, flexible frontend to mplayer written in python
 media-video/qt-recordmydesktop 0.3.8-r3: Qt4 interface for RecordMyDesktop
 media-video/qx11grab 0.4.12: X11 desktop video grabber tray
 media-video/recordmydesktop 0.3.8.1-r4: A desktop session recorder producing Ogg video/audio files
-media-video/replex 0.1.4: REPLEX remuxes MPEG-2 transport streams into program streams
 media-video/rovclock 0.6e: Overclocking utility for ATI Radeon cards
 media-video/rtmpdump 2.4_p20161210: RTMP client intended to stream audio or video flash content
 media-video/setpwc 1.3: Control various aspects of Philips (and compatible) webcams
@@ -8611,12 +8602,10 @@ net-libs/net6 1.3.14 1.3.14-r1 1.3.14-r2: Network access framework for IPv4/IPv6
 net-libs/nghttp2 1.10.0 1.19.0: HTTP/2 C Library
 net-libs/nodejs 0.12.17 4.8.5 6.9.4 6.11.5: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
-net-libs/opal 3.10.11-r1: C++ class library normalising numerous telephony protocols
 net-libs/openpgm 5.1.118-r1 5.2.122: Open source implementation of the Pragmatic General Multicast specification
 net-libs/openslp 1.2.1-r3 2.0.0-r4: An open-source implementation of Service Location Protocol
 net-libs/ortp 0.20.0 0.23.0-r1: Open Real-time Transport Protocol (RTP, RFC3550) stack
 net-libs/phodav 2.1: WebDav server implementation using libsoup
-net-libs/ptlib 2.10.11: Network focused portable C++ class library providing high level functions
 net-libs/qxmpp 0.8.0: A cross-platform C++ XMPP client library based on the Qt framework
 net-libs/rabbitmq-c 0.5.0 0.8.0: RabbitMQ C client
 net-libs/rest 0.8.1: Helper library for RESTful services
@@ -8921,7 +8910,6 @@ net-misc/yandex-disk 0.1.5.940_p1: CLI to access Yandex Disk file storage servic
 net-misc/you-get 0.4.536: utility to download media contents from the web
 net-misc/youtube-dl 2017.03.16 2017.11.15: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.9: A command line utility for viewing youtube-videos in Mplayer
-net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
 net-misc/zsync 0.6.2-r1: Partial/differential file download client over HTTP which uses the rsync algorithm
 net-nds/gss-proxy 0.7.0-r1: daemon to proxy GSSAPI context establishment and channel handling
@@ -9024,7 +9012,6 @@ net-proxy/tinyproxy 1.8.3-r4: A lightweight HTTP/SSL proxy
 net-proxy/torsocks 2.2.0: Use most socks-friendly applications with Tor
 net-proxy/tsocks 1.8_beta5-r8: Transparent SOCKS v4 proxying library
 net-proxy/wwwoffle 2.9i-r1: Web caching proxy suitable for non-permanent Internet connections
-net-voip/ekiga 4.0.1-r1: H.323 and SIP VoIP softphone
 net-voip/linphone 3.5.2: Video softphone based on the SIP protocol
 net-voip/telepathy-gabble 0.18.4: A XMPP connection manager, handles single and multi user chats and voice calls
 net-voip/telepathy-haze 0.8.0-r1 0.8.0-r2: Telepathy connection manager providing libpurple supported protocols
@@ -9376,7 +9363,6 @@ sci-visualization/gwyddion 2.44: Framework for Scanning Mode Microscopy data ana
 sci-visualization/mayavi 4.3.0: Enthought Tool Suite: Scientific data 3-dimensional visualizer
 sci-visualization/opendx 4.4.4-r5: 3D data visualization tool
 sci-visualization/pyxplot 0.9.2-r1: Gnuplot like graphing program publication-quality figures
-sci-visualization/qtiplot 0.9.8.9-r2 0.9.8.9-r3: Qt based clone of the Origin plotting package
 sci-visualization/quickplot 0.10.6: A fast interactive 2D plotter
 sci-visualization/veusz 1.25.1: Qt scientific plotting package with good Postscript output
 sci-visualization/zhu3d 4.2.4 4.2.6: Interactive 3D mathematical function viewer
