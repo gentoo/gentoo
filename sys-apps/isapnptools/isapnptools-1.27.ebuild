@@ -1,9 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="3"
-
-inherit eutils
+EAPI=6
 
 DESCRIPTION="Tools for configuring ISA PnP devices"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
@@ -14,18 +12,16 @@ SLOT="0"
 KEYWORDS="-* amd64 x86"
 IUSE=""
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-include.patch
-}
+PATCHES=( "${FILESDIR}"/${P}-include.patch )
 
 src_install() {
-	emake DESTDIR="${D}" install || die
-	dodir /sbin
-	mv "${D}"/usr/sbin/isapnp "${D}"/sbin/ || die
+	default
 
-	dodoc AUTHORS ChangeLog README NEWS
+	dodir /sbin
+	mv "${ED%/}"/{usr/sbin/isapnp,sbin/} || die
+
 	docinto txt
-	dodoc doc/README*  doc/*.txt test/*.txt
+	dodoc doc/{README*,*.txt} test/*.txt
 	dodoc etc/isapnp.*
 
 	newinitd "${FILESDIR}"/isapnp.rc isapnp
