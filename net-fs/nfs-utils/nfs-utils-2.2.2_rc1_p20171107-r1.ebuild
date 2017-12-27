@@ -8,15 +8,10 @@ inherit autotools flag-o-matic multilib systemd
 DESCRIPTION="NFS client and server daemons"
 HOMEPAGE="http://linux-nfs.org/"
 
-if [[ "${PV}" = *_rc* ]] ; then
-	inherit versionator
-	MY_PV="$(replace_all_version_separators -)"
-	SRC_URI="http://git.linux-nfs.org/?p=steved/nfs-utils.git;a=snapshot;h=refs/tags/${PN}-${MY_PV};sf=tgz -> ${P}.tar.gz"
-	S="${WORKDIR}/${PN}-${PN}-${MY_PV}"
-else
-	SRC_URI="mirror://sourceforge/nfs/${P}.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
-fi
+MY_COMMIT="8d9bf479441d9d7a44a86b69026a7e9d431d3ade"
+SRC_URI="http://git.linux-nfs.org/?p=steved/nfs-utils.git;a=snapshot;h=${MY_COMMIT};sf=tgz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-${MY_COMMIT:0:7}"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -83,6 +78,7 @@ src_configure() {
 		--with-statedir="${EPREFIX}"/var/lib/nfs
 		--enable-tirpc
 		--with-tirpcinclude="${EPREFIX}"/usr/include/tirpc/
+		--with-pluginpath="${EPREFIX}"/usr/$(get_libdir)/libnfsidmap
 		$(use_enable libmount libmount-mount)
 		$(use_with tcpd tcp-wrappers)
 		$(use_enable nfsdcld nfsdcltrack)

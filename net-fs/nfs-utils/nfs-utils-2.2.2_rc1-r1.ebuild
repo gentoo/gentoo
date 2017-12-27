@@ -83,7 +83,7 @@ src_configure() {
 		--with-statedir="${EPREFIX}"/var/lib/nfs
 		--enable-tirpc
 		--with-tirpcinclude="${EPREFIX}"/usr/include/tirpc/
-		$(use_enable ldap)
+		--with-pluginpath="${EPREFIX}"/usr/$(get_libdir)/libnfsidmap
 		$(use_enable libmount libmount-mount)
 		$(use_with tcpd tcp-wrappers)
 		$(use_enable nfsdcld nfsdcltrack)
