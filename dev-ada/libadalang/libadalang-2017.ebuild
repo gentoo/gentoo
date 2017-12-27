@@ -18,9 +18,9 @@ KEYWORDS="~amd64"
 IUSE="gnat_2016 +gnat_2017"
 
 RDEPEND="dev-python/pyyaml
+	dev-ada/gnatcoll[projects,shared,gnat_2016=,gnat_2017=]
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
-	dev-ada/gnatcoll[projects,shared,gnat_2016=,gnat_2017=]
 	dev-ada/langkit"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	^^ ( gnat_2016 gnat_2017 )"
@@ -31,24 +31,19 @@ PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 src_prepare() {
 	default
-	rm -r ada/testsuite/tests/{acats_parse,stylechecks} || die
+	rm -r ada/testsuite/tests/acats_parse || die
+}
+
+src_configure() {
+	ada/manage.py generate || die
 }
 
 src_compile() {
-	GCC=${CHOST}-gcc-4.9.4 ada/manage.py make || die
+	ada/manage.py build || die
 }
 
 src_test () {
-	local myDir="${WORKDIR}"/${PN}-gps-src
-	cd ada/testsuite
-	ln -sf "${myDir}"/build/include/libadalang.h c_support/libadalang.h
-	#./testsuite.py --show-error-output |& grep FAILED && die "Test failed"
-	GPR_PROJECT_PATH="${myDir}"/build/lib/gnat \
-		LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:"${myDir}"/build/lib/libadalang.relocatable \
-		PYTHONPATH="${myDir}"/build/python \
-		PATH=${PATH}:"${myDir}"/build/bin ./testsuite.py --show-error-output
-	rm c_support/libadalang.h
-	cd -
+	ada/manage.py test | grep FAILED && die
 }
 
 src_install () {
