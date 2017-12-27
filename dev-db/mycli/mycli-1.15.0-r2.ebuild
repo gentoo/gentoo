@@ -27,3 +27,5 @@ RDEPEND="
 	>=dev-python/python-sqlparse-0.2.2[${PYTHON_USEDEP}]
 	!>=dev-python/python-sqlparse-0.3.0
 "
+
+PATCHES=( "${FILESDIR}/remove-tasks.patch" )
