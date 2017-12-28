@@ -21,5 +21,6 @@ RDEPEND="
 	dev-ros/roscpp
 	dev-ros/rviz
 	dev-libs/boost:=
+	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}"
