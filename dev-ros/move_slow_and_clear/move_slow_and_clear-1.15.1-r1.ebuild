@@ -23,6 +23,7 @@ RDEPEND="
 	dev-libs/boost:=[threads]
 	dev-cpp/eigen:3
 	sci-libs/pcl
+	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}
 	dev-ros/cmake_modules
