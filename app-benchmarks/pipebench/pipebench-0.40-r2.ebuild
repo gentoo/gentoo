@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Measures the speed of stdin/stdout communication"
 HOMEPAGE="http://www.habets.pp.se/synscan/programs.php?prog=pipebench"
@@ -14,22 +14,9 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~x86 ~arm-linux ~x86-linux"
 IUSE=""
 
-src_prepare() {
-	sed -i Makefile \
-		-e 's:CFLAGS=-Wall:CFLAGS+= -Wall:' \
-		-e 's:$(CFLAGS) -o:$(LDFLAGS) &:g' \
-		-e "s:/usr/local/bin/:${ED}/usr/bin:" \
-		-e "s:/usr/local/man/man1/:${ED}/usr/share/man/man1:" \
-		|| die "sed Makefile"
-	default
-}
+PATCHES=( "${FILESDIR}"/${PN}-0.40-fix-build-system.patch )
 
-src_compile() {
-	emake CC=$(tc-getCC)
-}
-
-src_install() {
-	dodir /usr/{bin,share/man/man1}
-	emake install
-	dodoc README
+src_configure() {
+	append-cflags -Wall -w -pedantic
+	tc-export CC
 }
