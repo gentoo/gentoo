@@ -35,12 +35,6 @@
 media-libs/libdvb
 
 # Pacho Ramos <pacho@gentoo.org> (28 Dec 2017)
-# This was replaced by sys-cluster/drbd-utils (#590872), reverse deps were
-# already migrated to it, doesn't build with latest glibc (#616510). Removal
-# in a month.
-sys-cluster/drbd
-
-# Pacho Ramos <pacho@gentoo.org> (28 Dec 2017)
 # Fails to build (#595706), nothing requires it. Removal in a month.
 dev-lang/blassic
 
