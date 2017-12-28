@@ -19,10 +19,12 @@ RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtwidgets:5
 	>=dev-ros/pluginlib-1.9.23
+		dev-libs/tinyxml2:=
 	>=dev-ros/qt_gui-0.3.0[${PYTHON_USEDEP}]
 	dev-libs/tinyxml
 	>=dev-ros/python_qt_binding-0.3.0[${PYTHON_USEDEP}]
 	dev-libs/boost:=
+	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
