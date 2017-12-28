@@ -24,6 +24,7 @@ RDEPEND="
 	dev-ros/message_filters
 	dev-ros/nodelet
 	dev-ros/rosconsole
+	dev-libs/console_bridge:=
 	dev-ros/roscpp
 	dev-ros/stereo_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
