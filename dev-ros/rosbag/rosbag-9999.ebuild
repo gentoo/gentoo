@@ -27,6 +27,7 @@ RDEPEND="
 	dev-ros/roslib[${PYTHON_USEDEP}]
 	dev-ros/genpy[${PYTHON_USEDEP}]
 	dev-ros/rospy[${PYTHON_USEDEP}]
+	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}"
 RDEPEND="${RDEPEND}
