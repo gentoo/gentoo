@@ -22,6 +22,7 @@ RDEPEND="
 	dev-ros/dynamic_reconfigure[${PYTHON_USEDEP}]
 	>=dev-cpp/eigen-3.2.5:3
 	dev-ros/pluginlib
+	dev-libs/console_bridge:=
 	dev-ros/tf
 	dev-ros/tf2
 	dev-ros/tf2_ros
