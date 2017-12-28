@@ -1,8 +1,0 @@
---- wmload-0.9.2/Imakefile~	Sat Dec  1 21:53:52 2001
-+++ wmload-0.9.2/Imakefile	Sat Dec  1 21:53:52 2001
-@@ -14,4 +14,4 @@
- SRCS = wmload.c
- OBJS = wmload.o
- 
--ComplexProgramTarget(wmload)
-+ComplexProgramTargetNoMan(wmload)
