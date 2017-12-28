@@ -15,6 +15,7 @@ IUSE=""
 
 RDEPEND="
 	dev-ros/nodelet
+	dev-libs/console_bridge:=
 	dev-ros/roscpp
 	dev-ros/std_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-libs/boost:=
