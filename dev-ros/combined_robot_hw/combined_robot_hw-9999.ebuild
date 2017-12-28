@@ -19,5 +19,6 @@ RDEPEND="
 		dev-libs/tinyxml2:=
 	dev-ros/roscpp
 	dev-libs/boost:=
+	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}"
