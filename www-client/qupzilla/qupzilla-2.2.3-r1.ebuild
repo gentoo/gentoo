@@ -32,7 +32,7 @@ LICENSE="GPL-3"
 SLOT="0"
 IUSE="dbus debug gnome-keyring kwallet libressl nonblockdialogs"
 
-RDEPEND="
+COMMON_DEPEND="
 	>=dev-qt/qtcore-5.8:5
 	>=dev-qt/qtdeclarative-5.8:5[widgets]
 	>=dev-qt/qtgui-5.8:5
@@ -50,10 +50,13 @@ RDEPEND="
 	libressl? ( dev-libs/libressl:= )
 	!libressl? ( dev-libs/openssl:0= )
 "
-DEPEND="${RDEPEND}
+DEPEND="${COMMON_DEPEND}
 	>=dev-qt/linguist-tools-5.8:5
 	>=dev-qt/qtconcurrent-5.8:5
 	virtual/pkgconfig
+"
+RDEPEND="${COMMON_DEPEND}
+	>=dev-qt/qtsvg-5.8:5
 "
 
 DOCS=( AUTHORS BUILDING.md CHANGELOG FAQ README.md )
