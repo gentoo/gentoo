@@ -687,11 +687,6 @@ dev-python/whirlpool
 # Missing dependencies.
 >=dev-python/scrapy-1.4.0
 
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (23 Oct 2017)
-# Dropping suid breaks some use cases, bug #635102
-# Mask until they are fixed or properly documented, bug #450364
->=x11-base/xorg-server-1.19.5-r1
-
 # Agostino Sarubbo <ago@gentoo.org> (23 Oct 2017)
 # It was a fresmee RDEPENDS. Freesmee has been removed since a while
 # so it is not a depend of any package. No upstream releases
