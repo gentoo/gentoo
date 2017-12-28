@@ -1,0 +1,53 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -11,7 +11,7 @@
+ 
+ hdup:	
+ 	@echo hdup version: ${VERSION}
+-	@(cd src ; $(MAKE) all)
++	$(MAKE) -C src all
+ 	
+ clean: tarclean docclean
+ 	@rm -f Makefile
+@@ -32,7 +32,7 @@
+ 	@echo "done"
+ 
+ uninstall:
+-	@(cd src ; make uninstall )
++	$(MAKE) -C src uninstall
+ 
+ install: 
+-	@(cd src ; make install )
++	$(MAKE) -C src install
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -11,9 +11,9 @@
+ sysconfdir = @sysconfdir@
+ hdup_config = $(sysconfdir)/hdup/hdup.conf
+ 
+-GCC = @CC@
++CC = @CC@
+ GLIB_CFLAGS     = @GLIB_CFLAGS@
+-GLIB_LIBS       = @GLIB_LIBS@
++LDLIBS = @GLIB_LIBS@
+ CFLAGS =-Wall @CFLAGS@ @DEFS@ -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -Wpointer-arith -Wstrict-prototypes -DETCFILE=\"$(hdup_config)\"
+ INSTALL = ../install-sh -c
+ INSTALL_PROG = $(INSTALL) 
+@@ -22,14 +22,12 @@
+ ######################################
+ ######################################
+ .PHONY:	clean install all uninstall
+-%.o:    %.c ${HDR}
+-	${GCC} ${CFLAGS} ${GLIB_CFLAGS} -c $<
++.c.o:
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(GLIB_CFLAGS) -c $< -o $@
+ 
+ all:	hdup Makefile.in
+ 
+-hdup:	${OBJ} ${HDR} Makefile.in
+-	${GCC} ${GLIB_LIBS} ${OBJ} -o hdup
+-	${STRIP}
++hdup:	$(OBJ) 
+ 
+ hdup.h:	hdup.h.in Makefile.in
+ 	@(cd .. ; ./configure)
