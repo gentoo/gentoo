@@ -65,3 +65,10 @@ src_install() {
 	python_optimize
 	einstalldocs
 }
+
+pkg_postinst(){
+	if [[ -z "${REPLACING_VERSIONS}" ]]; then
+		elog "You might want to install dev-python/pyenchant"
+		elog "for spell checking."
+	fi
+}
