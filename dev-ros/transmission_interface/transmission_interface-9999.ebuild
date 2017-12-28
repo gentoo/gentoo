@@ -16,6 +16,8 @@ IUSE=""
 RDEPEND="
 	dev-ros/hardware_interface
 	dev-ros/pluginlib
+		dev-libs/tinyxml2:=
+	dev-libs/console_bridge:=
 	dev-ros/resource_retriever
 	dev-ros/roscpp
 	dev-libs/tinyxml
