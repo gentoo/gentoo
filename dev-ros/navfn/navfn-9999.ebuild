@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -30,6 +30,7 @@ RDEPEND="
 	x11-libs/fltk
 	media-libs/netpbm
 	dev-libs/boost:=[threads]
+	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}
 	test? ( dev-cpp/gtest )

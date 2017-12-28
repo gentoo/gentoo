@@ -30,6 +30,7 @@ RDEPEND="
 	x11-libs/fltk
 	media-libs/netpbm
 	dev-libs/boost:=[threads]
+	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}
 	test? ( dev-cpp/gtest )
