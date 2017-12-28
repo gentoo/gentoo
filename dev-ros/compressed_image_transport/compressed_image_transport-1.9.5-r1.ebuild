@@ -20,5 +20,6 @@ RDEPEND="
 	dev-ros/image_transport
 	media-libs/opencv:=
 	dev-libs/boost:=
+	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}"
