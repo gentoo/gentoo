@@ -27,5 +27,6 @@ RDEPEND="
 	dev-ros/urdf
 	dev-cpp/eigen:3
 	dev-libs/boost:=
+	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}"
