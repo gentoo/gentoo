@@ -77,6 +77,8 @@ src_prepare() {
 		if ! use gcode; then
 			sed -i '/^hid_gcode/d' tests/tests.list || die
 		fi
+		# fix wrong accounting of skipped and passed tests
+		epatch "${FILESDIR}"/${P}-tests.diff
 	fi
 
 	# fix bad syntax in Makefile.am and configure.ac before running eautoreconf
@@ -97,7 +99,7 @@ src_configure() {
 		myconf="--with-gui=batch --disable-xrender --disable-dbus"
 	fi
 
-	local exporters="bom gerber ps"
+	local exporters="bom gerber ps ipcd356"
 	if (use png || use jpeg || use gif) ; then
 		exporters="${exporters} png"
 	fi
