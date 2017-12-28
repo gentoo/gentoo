@@ -15,6 +15,7 @@ IUSE=""
 RDEPEND="
 	dev-ros/roscpp
 	dev-ros/rosconsole
+	dev-libs/console_bridge:=
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/pluginlib
 	dev-ros/nodelet
