@@ -17,5 +17,6 @@ RDEPEND="
 	dev-ros/hector_geotiff
 	dev-ros/hector_nav_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-libs/boost:=
+	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}"
