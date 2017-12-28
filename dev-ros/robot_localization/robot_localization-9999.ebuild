@@ -34,6 +34,7 @@ RDEPEND="
 	dev-libs/boost:=
 	dev-cpp/yaml-cpp
 	dev-ros/nodelet
+	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}
 	dev-ros/roslint
