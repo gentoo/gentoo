@@ -508,9 +508,6 @@ app-doc/kicad-doc 4.0.1 4.0.4: Electronic Schematic and PCB design tools manuals
 app-doc/lapack-docs 3.1.1: Documentation reference and man pages for lapack implementations
 app-doc/linkers-and-loaders 1: the Linkers and Loaders book
 app-doc/linux-device-drivers 2 3: howto write linux device drivers (updated for Linux 2.6)
-app-doc/linux-gazette 01 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 181 182: Sharing ideas and discoveries and Making Linux just a little more fun
-app-doc/linux-gazette-all 182: Linux Gazette - all issues
-app-doc/linux-gazette-base 182: Linux Gazette - common files
 app-doc/linux-kernel-in-a-nutshell 1: Linux Kernel in a Nutshell: A Desktop Quick Reference
 app-doc/linuxfromscratch 7.10: LFS documents building a Linux system entirely from source
 app-doc/mkdoxy 1.0.0: mkDoxy generates Doxygen-compatible HTML documentation for makefiles
@@ -10404,7 +10401,7 @@ www-apps/collectd-web 0.4.0: Collectd-web is a web-based front-end for RRD data 
 www-apps/curator 3.0_p20110120-r2: Gallery generator
 www-apps/dspam-web 3.10.1: Web based administration and user controls for dspam
 www-apps/groupoffice 3.7.52 4.0.97 4.1.7: Group-Office is a powerful modular Intranet application framework
-www-apps/icingaweb2 2.4.2: Icinga Web 2 - Frontend for icinga2
+www-apps/icingaweb2 2.4.2 2.5.0: Icinga Web 2 - Frontend for icinga2
 www-apps/icingaweb2-module-pnp4nagios 1.0.1: Icinga Web 2 plugin for pnp4nagios
 www-apps/ikiwiki 3.20170111: A wiki compiler
 www-apps/mediawiki 1.27.3: The MediaWiki wiki web application (as used on wikipedia.org)
