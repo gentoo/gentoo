@@ -31,7 +31,7 @@ all_ruby_prepare() {
 
 	# Avoid unneeded dependency on git and development dependencies.
 	sed -e '/git ls-files/ s:^:#:' \
-		-e '/\(wwtd\|bump\)/ s:^:#:' \
+		-e '/\(wwtd\|bump\|sqlite3\|activerecord\|i18n\)/ s:^:#:' \
 		-i fast_gettext.gemspec || die
 
 	# Avoid a test dependency on activerecord since this is now in the
