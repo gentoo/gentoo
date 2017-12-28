@@ -1,0 +1,12 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -461,6 +461,9 @@
+         AC_MSG_ERROR([Couldn't find BLT])
+     fi
+     rm -f conftest.tcl
++
++    AC_SEARCH_LIBS([Blt_GetVector], [BLT BLT24 BLT25],,
++        [AC_MSG_ERROR([Couldnt find BLT library.])])
+     
+     AC_CHECK_LIB([pthread], [pthread_create])
+     
