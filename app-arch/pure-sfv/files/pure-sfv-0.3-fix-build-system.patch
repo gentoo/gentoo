@@ -1,0 +1,22 @@
+--- a/Makefile
++++ b/Makefile
+@@ -54,18 +54,16 @@
+ 
+ VC_CRAP = pure-sfv.ncb pure-sfv.plg
+ 
+-CFLAGS +=	-Wall -Werror -O2 -g -Wno-unused
+ INSTALL_PREFIX = /usr/local
+ INSTALL_PROGRAM = /usr/bin/install -c
+ 
+ all: pure-sfv
+ 
+-CC = gcc
+ 
+ OBJ = ${SRCS:%.c=%.o}
+ 
+ pure-sfv: $(OBJ)
+-	$(CC) -lm -DVERSION=\"$(VERSION)\" $(CFLAGS) -o $(PROG) $(OBJ)
++	$(CC) -DVERSION=\"$(VERSION)\" $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o $(PROG) $(OBJ) -lm
+ 
+ PURIFY_OPTIONS=-follow-child-processes=yes -always-use-cache-dir=yes
+ PURIFY=purify
