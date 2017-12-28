@@ -9,7 +9,7 @@ PYTHON_REQ_USE="sqlite,xml"
 inherit python-single-r1
 
 DESCRIPTION="A full featured Python IDE using PyQt and QScintilla"
-HOMEPAGE="http://eric-ide.python-projects.org/"
+HOMEPAGE="https://eric-ide.python-projects.org/"
 LICENSE="GPL-3"
 SLOT="6"
 
