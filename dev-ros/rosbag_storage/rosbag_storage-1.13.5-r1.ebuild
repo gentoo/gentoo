@@ -23,5 +23,6 @@ RDEPEND="
 	dev-ros/roslz4
 	dev-libs/boost:=
 	app-arch/bzip2
+	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}"
