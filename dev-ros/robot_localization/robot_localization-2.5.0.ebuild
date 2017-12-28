@@ -32,6 +32,7 @@ RDEPEND="
 	dev-ros/tf2_ros
 	dev-ros/xmlrpcpp
 	dev-libs/boost:=
+	dev-cpp/yaml-cpp
 "
 DEPEND="${RDEPEND}
 	dev-ros/roslint
