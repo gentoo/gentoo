@@ -21,5 +21,6 @@ RDEPEND="
 	dev-ros/base_local_planner
 	dev-ros/pluginlib
 	dev-libs/boost:=
+	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}"
