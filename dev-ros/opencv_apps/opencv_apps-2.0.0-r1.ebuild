@@ -21,6 +21,7 @@ RDEPEND="
 	dev-ros/image_transport
 	dev-ros/std_srvs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/nodelet
+	dev-libs/console_bridge:=
 	dev-ros/roscpp
 	>=media-libs/opencv-3.3:0=[contrib]
 	dev-libs/boost:=
