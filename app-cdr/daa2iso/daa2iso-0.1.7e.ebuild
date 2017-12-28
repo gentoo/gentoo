@@ -1,8 +1,9 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
-inherit base toolchain-funcs
+EAPI=6
+
+inherit toolchain-funcs
 
 DESCRIPTION="Program for converting the DAA and GBI files to ISO"
 HOMEPAGE="http://aluigi.org/mytoolz.htm"
@@ -16,13 +17,14 @@ IUSE=""
 DEPEND="app-arch/unzip"
 RDEPEND=""
 
-S="${WORKDIR}/src"
+S=${WORKDIR}/src
 PATCHES=( "${FILESDIR}"/${P}-buildsystem.patch )
 
-src_compile() {
-	emake CC="$(tc-getCC)" || die "emake failed"
+src_configure() {
+	tc-export CC
 }
 
 src_install() {
-	emake PREFIX="${D}"/usr install || die "emake install failed"
+	emake PREFIX="${ED%/}"/usr install
+	einstalldocs
 }

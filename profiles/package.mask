@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (28 Dec 2017)
+# Last release in 2001, doesn't support amd64, EAPI 2.
+# Removal in 30 days
+app-crypt/nistp224
+
 # Jonas Stein <jstein@gentoo.org> (28 Dec 2017)
 # Upstream deleted all files more than 6 years ago and is inactive. 
 # See also bug #628960
