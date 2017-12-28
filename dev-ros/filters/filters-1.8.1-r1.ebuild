@@ -15,6 +15,7 @@ IUSE=""
 
 RDEPEND="dev-ros/roscpp
 	dev-libs/boost:=[threads]
+	dev-libs/console_bridge:=
 	dev-ros/pluginlib"
 DEPEND="${RDEPEND}
 	test? ( dev-ros/rostest dev-cpp/gtest )"
