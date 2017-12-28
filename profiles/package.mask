@@ -83,6 +83,7 @@ gnome-extra/gnome-activity-journal
 gnome-extra/zeitgeist-explorer
 gnome-extra/activity-log-manager
 gnome-extra/zeitgeist
+dev-libs/libzeitgeist
 
 # Pacho Ramos <pacho@gentoo.org> (28 Dec 2017)
 # Dead for ages, relies on old gnome2 python bindings (#640036). Removal in
