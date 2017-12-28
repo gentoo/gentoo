@@ -16,6 +16,6 @@ IUSE=""
 RDEPEND="
 	>=dev-ros/mavlink-gbp-release-2016.7.7
 	dev-libs/boost:=
-	dev-libs/console_bridge
+	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}"
