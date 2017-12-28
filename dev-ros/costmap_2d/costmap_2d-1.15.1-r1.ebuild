@@ -33,6 +33,7 @@ RDEPEND="
 	dev-cpp/eigen:3
 	sci-libs/pcl:=
 	dev-libs/boost:=[threads]
+	dev-libs/tinyxml2:=
 "
 DEPEND="${RDEPEND}
 	dev-ros/cmake_modules
