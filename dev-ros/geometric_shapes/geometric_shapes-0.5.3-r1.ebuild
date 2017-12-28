@@ -23,6 +23,7 @@ RDEPEND="
 	dev-ros/eigen_stl_containers
 	dev-ros/visualization_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/shape_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}
 	test? ( dev-cpp/gtest dev-ros/rosunit )
