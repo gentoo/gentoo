@@ -34,10 +34,12 @@ RDEPEND="
 	dev-ros/laser_geometry
 	dev-ros/message_filters
 	dev-ros/pluginlib
+		dev-libs/tinyxml2:=
 	>=dev-ros/python_qt_binding-0.3.0[${PYTHON_USEDEP}]
 	dev-ros/resource_retriever
 	dev-ros/rosbag[${PYTHON_USEDEP}]
 	dev-ros/rosconsole
+	dev-libs/console_bridge:=
 	dev-ros/roscpp
 	dev-ros/roslib[${PYTHON_USEDEP}]
 	dev-ros/rospy[${PYTHON_USEDEP}]
