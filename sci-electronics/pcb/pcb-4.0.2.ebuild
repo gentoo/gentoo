@@ -77,6 +77,8 @@ src_prepare() {
 		if ! use gcode; then
 			sed -i '/^hid_gcode/d' tests/tests.list || die
 		fi
+		# fix wrong accounting of skipped and passed tests
+		epatch "${FILESDIR}"/${P}-tests.diff
 	fi
 
 	# fix bad syntax in Makefile.am and configure.ac before running eautoreconf
