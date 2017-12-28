@@ -20,7 +20,9 @@ RDEPEND="
 	dev-ros/bondcpp
 	dev-ros/cmake_modules
 	dev-ros/pluginlib
+		dev-libs/tinyxml2:=
 	dev-ros/rosconsole
+		dev-libs/console_bridge:=
 	dev-ros/roscpp
 	dev-libs/boost:=
 	sys-apps/util-linux
