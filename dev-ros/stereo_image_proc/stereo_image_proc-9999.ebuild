@@ -26,5 +26,6 @@ RDEPEND="
 	dev-ros/stereo_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	media-libs/opencv:=
 	dev-libs/boost:=[threads]
+	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}"
