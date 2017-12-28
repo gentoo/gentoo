@@ -264,7 +264,7 @@ app-benchmarks/httperf 0.9.1_p20161228: A tool from HP for measuring web server 
 app-benchmarks/i7z 93_p20131012-r1: A better i7 (and now i3, i5) reporting tool for Linux
 app-benchmarks/iozone 3.397: Filesystem benchmarking program
 app-benchmarks/nbench 2.2.3-r1: Linux/Unix of release 2 of BYTE Magazine's BYTEmark benchmark
-app-benchmarks/pipebench 0.40: Measures the speed of stdin/stdout communication
+app-benchmarks/pipebench 0.40-r2: Measures the speed of stdin/stdout communication
 app-benchmarks/ramspeed 3.5.0-r2: Benchmarking for memory and cache
 app-benchmarks/siege 3.0.6: A HTTP regression testing and benchmarking utility
 app-benchmarks/spew 1.0.8 1.0.8-r1: Measures I/O performance and/or generates I/O load
@@ -2868,6 +2868,7 @@ dev-lang/python 2.7.14-r1 3.4.5-r1 3.5.4-r1 3.6.3-r1: An interpreted, interactiv
 dev-lang/python-exec 2.4.4 2.4.5: Python script wrapper
 dev-lang/qu-prolog 10.0: Extended Prolog supporting quantifiers, object-variables and substitutions
 dev-lang/ruby 2.2.8 2.2.9: An object-oriented scripting language
+dev-lang/sassc 3.4.7: A libsass command line driver
 dev-lang/scala 2.11.4-r1: The Scala Programming Language
 dev-lang/scala-bin 2.11.8: The Scala Programming Language
 dev-lang/spidermonkey 1.7.0-r3 1.8.5-r6 17.0.0-r4 17.0.0-r5 24.2.0-r3 24.2.0-r4: Stand-alone JavaScript C library
@@ -3109,6 +3110,7 @@ dev-libs/librep 0.92.6: Shared library implementing a Lisp dialect
 dev-libs/libreport 2.0.13-r1: Generic library for reporting software bugs
 dev-libs/libressl 2.6.0: Free version of the SSL/TLS protocol forked from OpenSSL
 dev-libs/librevenge 0.0.4-r1: A helper library for REVerse ENGineered formats filters
+dev-libs/libsass 3.4.7: A C/C++ implementation of a Sass CSS compiler
 dev-libs/libsecp256k1 0.0.0_pre20151118: Optimized C library for EC operations on curve secp256k1
 dev-libs/libserialport 0.1.1: Cross platform serial port access library
 dev-libs/libsigc++ 1.2.7 2.10.0: Typesafe callback system for standard C++
