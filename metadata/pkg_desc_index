@@ -255,7 +255,7 @@ app-backup/sarab 1.0.0: SaraB is a powerful and automated backup scheduling syst
 app-backup/spideroak-bin 6.3.0-r1: Secure free online backup, storage, and sharing system
 app-benchmarks/acovea 5.1.1 5.1.1-r1: Analysis of Compiler Options via Evolutionary Algorithm
 app-benchmarks/bashmark 0.6.2: Geno's cross platform benchmarking suite
-app-benchmarks/bonnie 2.0.6: Performance Test of Filesystem I/O using standard C library calls
+app-benchmarks/bonnie 2.0.6-r2: Performance Test of Filesystem I/O using standard C library calls
 app-benchmarks/bonnie++ 1.97.2 1.97.3: Hard drive bottleneck testing benchmark suite
 app-benchmarks/contest 0.61-r1: Test system responsiveness to compare different kernels
 app-benchmarks/cpuburn 1.4a 1.4a-r1: Designed to heavily load CPU chips [testing purposes]
@@ -1088,7 +1088,6 @@ app-misc/supercat 0.5.5-r2: A text file colorizer using powerful regular express
 app-misc/symlinks 1.4-r3: Scans for and fixes broken or messy symlinks
 app-misc/tails-installer 4.4.11: A graphical tool to install or upgrade Tails on a USB stick from an ISO image
 app-misc/task 2.5.1-r1: Taskwarrior is a command-line todo list manager
-app-misc/tasque 0.1.12: Simple task management app (TODO list) for the Linux Desktop
 app-misc/tdfsb 0.0.10: SDL based graphical file browser
 app-misc/tdl 1.5.2-r2: Command line To Do List manager
 app-misc/terminal-colors 2.2: A tool to display color charts for 8, 16, 88, and 256 color terminals
@@ -1390,7 +1389,6 @@ app-text/multitail 6.4.1: Tail with multiple windows
 app-text/mupdf 1.11-r1: a lightweight PDF viewer and toolkit written in portable C
 app-text/mythes 1.2.4: A simple thesaurus for Libreoffice
 app-text/namazu 2.0.21: Namazu is a full-text search engine
-app-text/nfoview 1.15.1: simple viewer for NFO files, which are ASCII art in the CP437 codepage
 app-text/noweb 2.11b-r4: a literate programming tool, lighter than web
 app-text/o3read 0.0.4: Converts OpenOffice formats to text or HTML
 app-text/ocrad 0.22: GNU Ocrad is an OCR (Optical Character Recognition) program
@@ -2837,7 +2835,6 @@ dev-java/zemberek 2.1.1: Zemberek NLP library
 dev-java/zeus-jscl 1.64-r1: Zeus Java Swing Components Library
 dev-lang/R 3.2.2: Language and environment for statistical computing and graphics
 dev-lang/bff 1.0.3.1: a brainfuck interpreter
-dev-lang/blassic 0.10.3: classic Basic interpreter
 dev-lang/cfortran 4.4-r2: Header file allowing to call Fortran routines from C and C++
 dev-lang/clojure 1.5.1 1.6.0 1.7.0 1.8.0: A dynamic programming language that targets the Java Virtual Machine
 dev-lang/coffee-script 1.9.3-r1: A little language that compiles into javascript
@@ -6254,7 +6251,6 @@ dev-vcs/hg-git 0.8.5 0.8.8: push to and pull from a Git repository using Mercuri
 dev-vcs/hgsubversion 1.8.5: hgsubversion is a Mercurial extension for working with Subversion repositories
 dev-vcs/kdesvn 2.0.0: A frontend to the subversion vcs
 dev-vcs/mercurial 3.8.4 4.3: Scalable distributed SCM
-dev-vcs/monotone 1.0-r4: Monotone Distributed Version Control System
 dev-vcs/mr 1.20170129: Multiple Repository management tool
 dev-vcs/qgit 2.7: Qt GUI for git repositories
 dev-vcs/rapidsvn 0.12.1-r3: Cross-platform GUI front-end for the Subversion revision system
@@ -6339,7 +6335,6 @@ gnome-base/libgtop 2.34.2: A library that provides top functionality to applicat
 gnome-base/librsvg 2.40.18: Scalable Vector Graphics (SVG) rendering library
 gnome-base/nautilus 3.20.4 3.22.3: A file manager for the GNOME desktop
 gnome-base/orbit 2.14.19-r5: ORBit2 is a high-performance CORBA ORB
-gnome-extra/activity-log-manager 0.9.7-r1: GUI which lets you easily control what gets logged by Zeitgeist
 gnome-extra/assogiate 0.2.1-r1: assoGiate is an editor of the file types database for GNOME
 gnome-extra/chrome-gnome-shell 8-r1: GNOME Shell integration for Chrome/Chromium, Firefox, Vivaldi, Opera browsers
 gnome-extra/cinnamon 3.0.7-r2: A fork of GNOME Shell with layout similar to GNOME 2
@@ -6355,7 +6350,6 @@ gnome-extra/eiciel 0.9.11 0.9.11-r1: ACL editor for GNOME, with Nautilus extensi
 gnome-extra/evolution-data-server 3.22.7: Evolution groupware backend
 gnome-extra/evolution-ews 3.22.6: Evolution module for connecting to Microsoft Exchange Web Services
 gnome-extra/gconf-editor 3.0.1-r1: An editor to the GNOME config system
-gnome-extra/gnome-activity-journal 0.8.0-r4 0.8.0-r5: Tool for easily browsing and finding files on your computer
 gnome-extra/gnome-boxes 3.22.4: Simple GNOME 3 application to access remote or virtual systems
 gnome-extra/gnome-builder 3.22.4: Builder attempts to be an IDE for writing software for GNOME
 gnome-extra/gnome-calculator 3.22.3: A calculator application for GNOME
@@ -6401,8 +6395,6 @@ gnome-extra/sushi 3.24.0: A quick previewer for Nautilus, the GNOME file manager
 gnome-extra/synapse 0.2.99.2: A program launcher in the style of GNOME Do
 gnome-extra/yelp 3.22.0: Help browser for GNOME
 gnome-extra/yelp-xsl 3.20.1: XSL stylesheets for yelp
-gnome-extra/zeitgeist 0.9.16: Service to log activities and present to other apps
-gnome-extra/zeitgeist-explorer 0.2-r2: Monitor and inspect Zeitgeist's log at a low level - developer tool
 gnome-extra/zenity 3.22.0: Tool to display dialogs from the commandline and shell scripts
 gnustep-apps/aclock 0.4.0: Analog dockapp clock for GNUstep
 gnustep-apps/addresses 0.4.8: Addresses is a Apple Addressbook work alike (standalone and for GNUMail)
@@ -7162,7 +7154,6 @@ media-gfx/gnome-font-viewer 3.22.0: Font viewer for GNOME
 media-gfx/gnome-photos 3.22.6: Access, organize and share your photos on GNOME
 media-gfx/gnome-raw-thumbnailer 3.0.0: A lightweight and fast raw image thumbnailer for GNOME
 media-gfx/gnome-screenshot 3.22.0: Screenshot utility for GNOME
-media-gfx/gnome-specimen 0.4-r1: Font preview application
 media-gfx/gozer 0.7-r2: tool for rendering arbitrary text as graphics, using ttfs and styles
 media-gfx/gphoto2 2.5.11 2.5.14: Free, redistributable digital camera software application
 media-gfx/gphotofs 0.5: FUSE file system for interfacing with digital cameras using gphoto2
@@ -7398,7 +7389,6 @@ media-libs/libde265 1.0.2: Open h.265 video codec implementation
 media-libs/libdiscid 0.6.1: Client library to create MusicBrainz enabled tagging applications
 media-libs/libdmtx 0.7.4: Barcode data matrix reading and writing library
 media-libs/libdv 1.0.0-r2 1.0.0-r3: Software codec for dv-format video (camcorders etc)
-media-libs/libdvb 0.5.5.1-r3: libdvb package with CAM library. libdvbmpegtools, and dvb-mpegtools
 media-libs/libdvbpsi 0.2.1 0.2.2 1.2.0 1.3.0-r1: library for MPEG TS/DVB PSI tables decoding and generation
 media-libs/libdvdcss 1.2.13 1.2.13-r1 1.3.0 1.4.0: A portable abstraction library for DVD decryption
 media-libs/libdvdnav 5.0.3: Library for DVD navigation tools
@@ -9753,7 +9743,6 @@ sys-apps/preload 0.6.4-r3: Adaptive readahead daemon
 sys-apps/progress 0.13: Coreutils Viewer: show progress for cp, rm, dd, and so forth
 sys-apps/proot 3.2.2-r1: User-space implementation of chroot, mount --bind, and binfmt_misc
 sys-apps/pv 1.6.0-r1: Pipe Viewer: a tool for monitoring the progress of data through a pipe
-sys-apps/pyrenamer 0.6.0-r2: Mass rename files
 sys-apps/qdiskusage 1.0.4: Qt4 Graphical Disk Usage Analyzer
 sys-apps/qingy 1.0.0-r2: a DirectFB getty replacement
 sys-apps/raidutils 0.0.6-r2: Utilities to manage i2o/dtp RAID controllers
@@ -9890,7 +9879,6 @@ sys-cluster/corosync 1.3.0 2.3.5: OSI Certified implementation of a complete clu
 sys-cluster/csync2 2.0: Cluster synchronization tool
 sys-cluster/dlm 2.03.09: General-purpose Distributed Lock Manager
 sys-cluster/dlm-lib 2.03.09: General-purpose Distributed Lock Manager
-sys-cluster/drbd 8.0.16 8.3.8.1 8.3.10 8.3.11-r1 8.3.13 8.4.2 8.4.3-r2: mirror/replicate block-devices across a network-connection
 sys-cluster/drbd-kernel 8.0.16 8.3.8.1: mirror/replicate block-devices across a network-connection
 sys-cluster/galera 25.3.20: Synchronous multi-master replication engine that provides the wsrep API
 sys-cluster/ganglia 3.7.1-r1: A scalable distributed monitoring system for clusters and grids
@@ -11068,7 +11056,6 @@ x11-terms/roxterm 2.9.3-r2 3.1.5-r1: A terminal emulator designed to integrate w
 x11-terms/rxvt-unicode 9.21: rxvt clone with xft and unicode support
 x11-terms/sakura 3.3.4: sakura is a terminal emulator based on GTK and VTE
 x11-terms/st 0.7: simple terminal implementation for X
-x11-terms/terminator 0.97-r1: Multiple GNOME terminals in one window
 x11-terms/terminology 0.9.1: Feature rich terminal emulator using the Enlightenment Foundation Libraries
 x11-terms/tilda 0.9.6: A drop down terminal, similar to the consoles found in first person shooters
 x11-terms/xfce4-terminal 0.6.3 0.8.5.1: A terminal emulator for the Xfce desktop environment
