@@ -21,5 +21,6 @@ RDEPEND="
 	dev-libs/urdfdom_headers
 	dev-libs/collada-dom
 	>=dev-ros/urdf-1.12.6
+	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}"
