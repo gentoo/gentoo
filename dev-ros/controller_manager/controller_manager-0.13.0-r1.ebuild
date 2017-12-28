@@ -20,6 +20,7 @@ RDEPEND="
 	>=dev-ros/hardware_interface-0.10.0
 	dev-ros/realtime_tools
 	dev-ros/pluginlib
+		dev-libs/tinyxml2:=
 	dev-ros/rospy[${PYTHON_USEDEP}]
 	dev-ros/roslib[${PYTHON_USEDEP}]
 	dev-ros/rosparam[${PYTHON_USEDEP}]
