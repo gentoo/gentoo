@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,12 +16,14 @@ IUSE=""
 RDEPEND="
 	dev-ros/diagnostic_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/pluginlib
+		dev-libs/tinyxml2:=
 	dev-ros/roscpp
 	dev-ros/rospy
 	dev-ros/rostest
 	dev-ros/xmlrpcpp
 	dev-ros/bondcpp
 	dev-libs/boost:=
+	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}
 	test? ( dev-ros/rostest )"
