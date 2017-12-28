@@ -3,13 +3,12 @@
 
 EAPI=6
 
-COMMIT=6618f5203f80a52e673cfad1a12dcee9154e2831
 KDE_HANDBOOK="forceoptional"
-inherit kde5 vcs-snapshot
+inherit kde5
 
 DESCRIPTION="Software to manage quotes and invoices in small enterprises"
 HOMEPAGE="http://www.volle-kraft-voraus.de/"
-SRC_URI="https://github.com/dragotin/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/dragotin/${PN}/archive/${PV/_/}.tar.gz -> ${P}.tar.gz"
 
 KEYWORDS="~amd64 ~x86"
 IUSE="pim"
@@ -38,7 +37,7 @@ RDEPEND="${DEPEND}
 
 DOCS=( AUTHORS Changes.txt README Releasenotes.txt TODO )
 
-PATCHES=( "${FILESDIR}/${P}-deps.patch" )
+S="${WORKDIR}/${PN}-${PV/_/}"
 
 src_configure() {
 	local mycmakeargs=(
