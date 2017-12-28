@@ -21,5 +21,6 @@ RDEPEND="
 	dev-ros/tf2_ros
 	dev-ros/tf2_sensor_msgs
 	dev-libs/boost:=
+	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}"
