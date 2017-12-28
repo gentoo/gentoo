@@ -6181,7 +6181,6 @@ dev-util/qmtest 2.4.1-r1: CodeSourcery's test harness system
 dev-util/qstlink2 1.0.3: GUI and CLI ST-Link V2(Debugger/Programmer) client
 dev-util/quilt 0.50: quilt patch manager
 dev-util/ragel 6.7-r1 6.10: Compiles finite state machines from regular languages into executable code
-dev-util/rats 2.1-r2: RATS - Rough Auditing Tool for Security
 dev-util/rbtools 0.7.10: Command line tools for use with Review Board
 dev-util/re2c 0.13.5-r1 0.16: tool for generating C-based recognizers from regular expressions
 dev-util/rebar 2.6.1: A sophisticated build-tool for Erlang projects that follows OTP principles
