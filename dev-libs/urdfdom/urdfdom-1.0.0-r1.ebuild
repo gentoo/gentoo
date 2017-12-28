@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -26,7 +26,7 @@ SLOT="0/1"
 IUSE=""
 
 RDEPEND=">=dev-libs/urdfdom_headers-1.0.0
-	>=dev-libs/console_bridge-0.3
+	>=dev-libs/console_bridge-0.3:=
 	dev-libs/tinyxml
 	dev-libs/boost:=[threads]"
 DEPEND="${RDEPEND}"
