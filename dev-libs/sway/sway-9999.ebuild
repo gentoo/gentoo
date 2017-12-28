@@ -14,26 +14,26 @@ EGIT_BRANCH="0.15"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
-IUSE="+swaybg +swaybar +swaymsg swaygrab swaylock +gdk-pixbuf zsh-completion wallpapers systemd +tray"
+IUSE="+gdk-pixbuf +swaybar +swaybg swaygrab swaylock +swaymsg systemd +tray wallpapers zsh-completion"
 
 REQUIRED_USE="tray? ( swaybar )"
 
 RDEPEND="=dev-libs/wlc-9999[systemd=]
-	>=dev-libs/json-c-0.12.1:=
+	dev-libs/json-c:0=
 	dev-libs/libpcre
 	dev-libs/libinput
-	x11-libs/libxkbcommon
 	dev-libs/wayland
 	sys-libs/libcap
-	x11-libs/pango
+	x11-libs/libxkbcommon
 	x11-libs/cairo
+	x11-libs/pango
+	gdk-pixbuf? ( x11-libs/gdk-pixbuf[jpeg] )
 	swaylock? ( virtual/pam )
-	tray? ( sys-apps/dbus )
-	gdk-pixbuf? ( x11-libs/gdk-pixbuf[jpeg] )"
+	tray? ( sys-apps/dbus )"
 
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	app-text/asciidoc"
+	app-text/asciidoc
+	virtual/pkgconfig"
 
 src_prepare() {
 	cmake-utils_src_prepare
