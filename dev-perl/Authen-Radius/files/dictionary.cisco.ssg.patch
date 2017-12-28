@@ -1,0 +1,14 @@
+--- /etc/raddb/dictionary.cisco	2010-02-10 01:04:00.000000000 +0200
++++ dictionary.cisco	2010-02-10 01:06:10.000000000 +0200
+@@ -118,3 +118,11 @@
+ VALUE           Cisco-Disconnect-Cause        Session-End-Callback    102
+ VALUE           Cisco-Disconnect-Cause        Invalid-Protocol        120
+ 
++#ISG Support http://www.cisco.com/en/US/docs/ios/12_2sb/isg/coa/guide/isgcaapa.html
++ATTRIBUTE       Cisco-Policy-Up         	37      string  Cisco
++ATTRIBUTE       Cisco-Policy-Down       	38      string  Cisco
++ATTRIBUTE	Cisco-SSG-Subscriber-Password	249	string	Cisco
++ATTRIBUTE	Cisco-SSG-Account-Info		250	string	Cisco
++ATTRIBUTE	Cisco-SSG-Service-Info		251	string	Cisco
++ATTRIBUTE       Cisco-SSG-Command-Code  	252     string  Cisco
++ATTRIBUTE	Cisco-SSG-Control-Info		253	string	Cisco
