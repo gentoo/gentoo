@@ -21,7 +21,7 @@ RDEPEND="
 	media-libs/openal
 	net-misc/curl
 	dev-libs/tinyxml
-	dev-libs/tinyxml2:=
+	>=dev-libs/tinyxml2-6:=
 	dev-libs/libtar
 	dev-cpp/tbb
 	>=dev-games/ogre-1.7.4[freeimage]
@@ -57,7 +57,7 @@ DEPEND="${RDEPEND}
 	test? ( dev-libs/libxslt )
 "
 CMAKE_BUILD_TYPE=RelWithDebInfo
-PATCHES=( "${FILESDIR}/qwt.patch" )
+PATCHES=( "${FILESDIR}/qwt.patch" "${FILESDIR}/tinyxml6.patch" )
 
 src_configure() {
 	# doesnt build without it
