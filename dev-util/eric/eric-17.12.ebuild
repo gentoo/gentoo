@@ -3,18 +3,17 @@
 
 EAPI=6
 
+MY_P=${PN}6-${PV}
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 PYTHON_REQ_USE="sqlite,xml"
-
-inherit python-single-r1
+inherit python-single-r1 xdg-utils
 
 DESCRIPTION="A full featured Python IDE using PyQt and QScintilla"
 HOMEPAGE="https://eric-ide.python-projects.org/"
+SRC_URI="mirror://sourceforge/eric-ide/${PN}6/stable/${PV}/${MY_P}.tar.gz"
+
 LICENSE="GPL-3"
 SLOT="6"
-
-MY_P=${PN}${SLOT}-${PV}
-SRC_URI="mirror://sourceforge/eric-ide/${PN}${SLOT}/stable/${PV}/${MY_P}.tar.gz"
 KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE=""
 
@@ -39,7 +38,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 S=${WORKDIR}/${MY_P}
 
-DOCS=(changelog README.rst THANKS)
+DOCS=( changelog README.rst THANKS )
 
 src_prepare() {
 	default
@@ -64,4 +63,17 @@ src_install() {
 
 	python_optimize
 	einstalldocs
+}
+
+pkg_postinst(){
+	xdg_desktop_database_update
+
+	if ! has_version dev-python/enchant; then
+		elog "You might want to install dev-python/pyenchant"
+		elog "for spell checking."
+	fi
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }
