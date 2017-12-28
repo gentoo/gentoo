@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,10 +16,12 @@ IUSE=""
 RDEPEND="
 	dev-ros/message_filters
 	dev-ros/pluginlib
+		dev-libs/tinyxml2:=
 	dev-ros/rosconsole
 	dev-ros/roscpp
 	dev-ros/roslib
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-libs/boost:=
+	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}"

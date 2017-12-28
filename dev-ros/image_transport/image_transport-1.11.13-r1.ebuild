@@ -16,10 +16,12 @@ IUSE=""
 RDEPEND="
 	dev-ros/message_filters
 	dev-ros/pluginlib
+		dev-libs/tinyxml2:=
 	dev-ros/rosconsole
 	dev-ros/roscpp
 	dev-ros/roslib
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-libs/boost:=
+	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}"
