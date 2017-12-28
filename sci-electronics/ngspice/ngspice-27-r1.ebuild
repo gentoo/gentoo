@@ -107,7 +107,6 @@ ngspice_configure() {
 	myconf="${myconf} \
 		--enable-xspice \
 		--enable-cider \
-		--enable-ndev \
 		--disable-xgraph \
 		--disable-dependency-tracking \
 		--disable-rpath \
