@@ -20,7 +20,9 @@ IUSE="valgrind"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="dev-libs/boost:="
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	valgrind? ( dev-util/valgrind )
+"
 
 PATCHES=( "${FILESDIR}/${P}-buildsystem.patch" )
 
