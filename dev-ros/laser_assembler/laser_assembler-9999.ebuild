@@ -21,6 +21,8 @@ RDEPEND="
 	dev-ros/tf
 	dev-ros/laser_geometry[${PYTHON_USEDEP}]
 	dev-ros/pluginlib
+	dev-libs/tinyxml2:=
+	dev-libs/console_bridge:=
 	dev-ros/message_filters[${PYTHON_USEDEP}]
 	dev-ros/filters
 "
