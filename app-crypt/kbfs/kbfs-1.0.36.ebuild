@@ -10,7 +10,7 @@ SRC_URI="https://github.com/keybase/kbfs/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="git"
 
 DEPEND="
 	>=dev-lang/go-1.6:0
