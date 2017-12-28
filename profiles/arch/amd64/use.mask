@@ -70,10 +70,6 @@
 # Unmask, works with v4l2, #350211
 -dxr3
 
-# Justin Lecher <jlec@gentoo.org> (04. Feb 2012)
-# Unmask because deps are keyworded
--zeitgeist
-
 # 2011/12/22 - Alexis Ballier <aballier@gentoo.org>
 # Unmask vdpau as its supported here
 -vdpau

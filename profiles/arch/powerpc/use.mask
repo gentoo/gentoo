@@ -158,9 +158,6 @@ nvtt
 cman
 clvm
 
-# for gnome 3.6 keywording
--zeitgeist
-
 # Pacho Ramos <pacho@gentoo.org> (08 Jan 2014)
 # Unmask systemd since it is keyworded here.
 -systemd

@@ -179,7 +179,6 @@ xine
 cman
 clvm
 
--zeitgeist
 template_haskell
 
 # toolkit for nvidia binary drivers

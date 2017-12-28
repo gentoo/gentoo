@@ -69,10 +69,6 @@
 # Unmasking vidix for x86 which is masked in base/use.mask for others
 -vidix
 
-# Justin Lecher <jlec@gentoo.org> (04 Feb 2012)
-# Unmask because deps are keyworded
--zeitgeist
-
 # This file masks out USE flags that are simply NOT allowed in the default
 # x86 profile.  This works, for example, if another architecture's
 # profile have a USE flag associated with (such as altivec, mmx, etc).

@@ -241,8 +241,6 @@ phonon
 cman
 clvm
 
--zeitgeist
-
 # nvidia toolkit for binary drivers
 cg
 
