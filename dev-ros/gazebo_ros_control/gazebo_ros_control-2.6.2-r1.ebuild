@@ -21,11 +21,13 @@ RDEPEND="
 	dev-ros/hardware_interface
 	dev-ros/transmission_interface
 	dev-ros/pluginlib
+		dev-libs/tinyxml2:=
 	>=dev-ros/joint_limits_interface-0.11.0
 	>=dev-ros/urdf-1.12.3-r1
 	dev-libs/urdfdom:=
 	sci-electronics/gazebo:=
 	dev-libs/boost:=[threads]
+	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}"
 PATCHES=( "${FILESDIR}/urdfdom1.patch" )
