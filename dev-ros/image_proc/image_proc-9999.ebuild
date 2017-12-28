@@ -20,6 +20,7 @@ RDEPEND="
 	dev-ros/image_geometry
 	dev-ros/image_transport
 	dev-ros/nodelet
+	dev-libs/console_bridge:=
 	dev-ros/roscpp
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	media-libs/opencv:=
