@@ -9,6 +9,7 @@ DESCRIPTION="i3-compatible Wayland window manager"
 HOMEPAGE="http://swaywm.org/"
 
 EGIT_REPO_URI="https://github.com/swaywm/sway.git"
+EGIT_BRANCH="0.15"
 
 LICENSE="MIT"
 SLOT="0"
@@ -33,8 +34,6 @@ RDEPEND="=dev-libs/wlc-9999[systemd=]
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	app-text/asciidoc"
-
-PATCHES=( "${FILESDIR}/sway-0.15.0-json-c-fixes.patch" )
 
 src_prepare() {
 	cmake-utils_src_prepare
