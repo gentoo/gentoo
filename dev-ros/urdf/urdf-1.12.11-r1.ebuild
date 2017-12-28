@@ -20,7 +20,9 @@ RDEPEND="
 	dev-libs/urdfdom_headers
 	dev-ros/urdf_parser_plugin
 	dev-ros/pluginlib
+		dev-libs/tinyxml2:=
 	dev-ros/rosconsole_bridge
+		dev-libs/console_bridge:=
 	dev-ros/roscpp
 	dev-libs/tinyxml
 "

@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -20,7 +20,9 @@ RDEPEND="
 	dev-libs/urdfdom_headers
 	dev-ros/urdf_parser_plugin
 	dev-ros/pluginlib
+		dev-libs/tinyxml2:=
 	dev-ros/rosconsole_bridge
+		dev-libs/console_bridge:=
 	dev-ros/roscpp
 	dev-libs/tinyxml
 "
