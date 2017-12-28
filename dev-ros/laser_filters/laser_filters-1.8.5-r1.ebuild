@@ -21,6 +21,8 @@ RDEPEND="
 	dev-ros/angles
 	dev-ros/filters
 	dev-ros/laser_geometry
+	dev-libs/tinyxml2:=
+	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}
 	test? ( dev-ros/rostest[${PYTHON_USEDEP}] )"
