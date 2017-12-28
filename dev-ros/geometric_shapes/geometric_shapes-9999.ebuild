@@ -28,3 +28,4 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? ( dev-cpp/gtest dev-ros/rosunit )
 "
+PATCHES=( "${FILESDIR}/logging.patch" )
