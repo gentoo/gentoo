@@ -16,5 +16,5 @@ IUSE=""
 RDEPEND="dev-libs/poco
 	dev-libs/boost:=[threads]
 	dev-ros/cmake_modules
-	dev-libs/console_bridge"
+	dev-libs/console_bridge:="
 DEPEND="${RDEPEND}"
