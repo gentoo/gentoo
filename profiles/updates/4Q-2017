@@ -4,3 +4,4 @@ move dev-perl/MARC-XML dev-perl/MARC-File-XML
 move dev-perl/MARC-file-XML dev-perl/MARC-File-XML
 move dev-util/gogland dev-util/goland
 move app-crypt/zuluCrypt app-crypt/zulucrypt
+move dev-perl/RadiusPerl dev-perl/Authen-Radius
