@@ -18,7 +18,7 @@ IUSE=""
 
 DEPEND=">=app-crypt/yubikey-manager-0.5.0[${PYTHON_USEDEP}]
 	dev-python/pyotherside[${PYTHON_USEDEP}]
-	dev-qt/qtsingleapplication[qt5]
+	dev-qt/qtsingleapplication[qt5,X]
 	dev-qt/qtdeclarative:5
 	dev-qt/qtquickcontrols:5[widgets]
 	dev-qt/qtwidgets:5"
