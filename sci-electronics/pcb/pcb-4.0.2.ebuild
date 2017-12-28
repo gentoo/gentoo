@@ -97,7 +97,7 @@ src_configure() {
 		myconf="--with-gui=batch --disable-xrender --disable-dbus"
 	fi
 
-	local exporters="bom gerber ps"
+	local exporters="bom gerber ps ipcd356"
 	if (use png || use jpeg || use gif) ; then
 		exporters="${exporters} png"
 	fi
