@@ -18,6 +18,8 @@ RDEPEND="
 	dev-ros/hector_nav_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/nav_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/pluginlib
+		dev-libs/tinyxml2:=
+	dev-libs/console_bridge:=
 	dev-ros/roscpp
 	dev-ros/std_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-qt/qtcore:4
