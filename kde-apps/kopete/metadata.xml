@@ -6,7 +6,6 @@
 		<flag name="addbookmarks">Automatically add incoming urls to bookmarks.</flag>
 		<flag name="autoreplace">Automatically replace selected text</flag>
 		<flag name="contactnotes">Enables writing personal notes for contacts.</flag>
-		<flag name="cryptography">Enable cryptography plugin</flag>
 		<flag name="highlight">Allows you to specify highlights on specific events.</flag>
 		<flag name="history">Enables saving chat history.</flag>
 		<flag name="latex">Embed latex formatted text into messages.</flag>
@@ -26,7 +25,6 @@
 		<flag name="irc">Enable the IRC protocol handler.</flag>
 		-->
 		<flag name="meanwhile">Enable the Sametime protocol handler.</flag>
-		<flag name="skype">Enable Skype protocol handler (not fully functional yet).</flag>
 		<!-- uncomment this when enabled in ebuild
 		<flag name="telepathy">Enable support for the real-time communication framework telepathy.</flag>
 		-->
