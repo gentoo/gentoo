@@ -18,6 +18,7 @@ RDEPEND="
 	>=dev-ros/costmap_2d-1.15.1
 	dev-ros/roscpp
 	dev-ros/pluginlib
+		dev-libs/tinyxml2:=
 	dev-ros/actionlib
 	dev-ros/base_local_planner
 	dev-ros/dynamic_reconfigure[${PYTHON_USEDEP}]
@@ -27,6 +28,7 @@ RDEPEND="
 	dev-ros/std_srvs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-cpp/eigen:3
 	dev-libs/boost:=
+	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}
 	dev-ros/cmake_modules"
