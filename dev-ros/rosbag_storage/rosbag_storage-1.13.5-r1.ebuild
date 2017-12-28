@@ -26,3 +26,4 @@ RDEPEND="
 	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}"
+PATCHES=( "${FILESDIR}/logging.patch" )

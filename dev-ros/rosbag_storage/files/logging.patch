@@ -1,0 +1,32 @@
+commit f7c7b3c28a09feeee643c10c6a8c4aff7684dda7
+Author: Mikael Arguedas <mikael@osrfoundation.org>
+Date:   Sat Nov 18 19:13:56 2017 -0800
+
+    use namespaced macros instead of deprecated macros (#1239)
+
+diff --git a/tools/rosbag_storage/src/bz2_stream.cpp b/tools/rosbag_storage/src/bz2_stream.cpp
+index 78e17538..53bc9d52 100644
+--- a/tools/rosbag_storage/src/bz2_stream.cpp
++++ b/tools/rosbag_storage/src/bz2_stream.cpp
+@@ -127,7 +127,7 @@ void BZ2Stream::read(void* ptr, size_t size) {
+     case BZ_OK: return;
+     case BZ_STREAM_END:
+         if (getUnused() || getUnusedLength() > 0)
+-            logError("unused data already available");
++            CONSOLE_BRIDGE_logError("unused data already available");
+         else {
+             char* unused;
+             int nUnused;
+diff --git a/tools/rosbag_storage/src/lz4_stream.cpp b/tools/rosbag_storage/src/lz4_stream.cpp
+index 297bcf7b..d13f241b 100644
+--- a/tools/rosbag_storage/src/lz4_stream.cpp
++++ b/tools/rosbag_storage/src/lz4_stream.cpp
+@@ -176,7 +176,7 @@ void LZ4Stream::read(void* ptr, size_t size) {
+     case ROSLZ4_OK: break;
+     case ROSLZ4_STREAM_END:
+         if (getUnused() || getUnusedLength() > 0)
+-            logError("unused data already available");
++            CONSOLE_BRIDGE_logError("unused data already available");
+         else {
+             setUnused(lz4s_.input_next);
+             setUnusedLength(lz4s_.input_left);
