@@ -33,6 +33,7 @@ RDEPEND="
 	dev-ros/xmlrpcpp
 	dev-libs/boost:=
 	dev-cpp/yaml-cpp
+	dev-ros/nodelet
 "
 DEPEND="${RDEPEND}
 	dev-ros/roslint
