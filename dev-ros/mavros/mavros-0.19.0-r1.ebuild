@@ -17,6 +17,7 @@ IUSE=""
 RDEPEND="
 	dev-ros/diagnostic_updater
 	dev-ros/pluginlib
+		dev-libs/tinyxml2:=
 	dev-ros/roscpp
 	dev-ros/tf
 	dev-ros/angles
@@ -32,5 +33,6 @@ RDEPEND="
 	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/nav_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	>=dev-ros/mavlink-gbp-release-2016.11.11
+	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}"
