@@ -17,7 +17,7 @@ if [[ ${PV} = 9999* ]]; then
 	EGIT_CHECKOUT_DIR=${WORKDIR}/all/${P}
 else
 	SRC_URI="http://www.klayout.org/downloads/source/${P}.tar.gz"
-#	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 DESCRIPTION="Viewer and editor for GDS and OASIS integrated circuit layouts"
@@ -37,7 +37,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}/${P}-qt58.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-qt58.patch"
+	"${FILESDIR}/${P}-qt59.patch"
+)
 
 pkg_setup() {
 	python-single-r1_pkg_setup
