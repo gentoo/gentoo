@@ -3,22 +3,20 @@
 
 EAPI=6
 
-inherit cmake-utils git-r3
+inherit cmake-utils
 
 DESCRIPTION="A versatile deduplicating backup tool"
 HOMEPAGE="http://zbackup.org/ https://github.com/zbackup/zbackup"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
+SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+-with-openssl-exception"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE="libressl tartool"
 
 DEPEND="app-arch/lzma
 	dev-libs/lzo:2
 	dev-libs/protobuf:0=
-	sys-libs/libunwind:7
 	sys-libs/zlib
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )"

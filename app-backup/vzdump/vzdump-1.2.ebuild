@@ -1,7 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
+EAPI=6
+
+inherit perl-functions
 
 DESCRIPTION="A utility to make consistent snapshots of running OpenVZ containers"
 HOMEPAGE="http://pve.proxmox.com/wiki/VZDump"
@@ -12,22 +14,21 @@ SLOT="0"
 KEYWORDS="~x86 ~amd64"
 IUSE=""
 
-RDEPEND="dev-lang/perl
-	dev-perl/LockFile-Simple
-	virtual/perl-Getopt-Long
-	sys-cluster/vzctl
-	net-misc/rsync
+DEPEND="dev-lang/perl:="
+RDEPEND="${DEPEND}
 	app-misc/cstream
+	dev-perl/LockFile-Simple
+	net-misc/rsync
+	sys-cluster/vzctl
+	sys-fs/lvm2
 	virtual/mta
-	sys-fs/lvm2"
+	virtual/perl-Getopt-Long"
 
 src_compile() {
-	:;
+	return
 }
 
 src_install() {
-	local installvendorlib
-	eval "$(perl -V:installvendorlib )"
-	make PERLLIBDIR="${installvendorlib}/PVE" DESTDIR="${D}" install || die "make install failed"
-	dodoc ChangeLog TODO
+	emake PERLLIBDIR="$(perl_get_vendorlib)/PVE" DESTDIR="${D}" install
+	einstalldocs
 }
