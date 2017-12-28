@@ -20,6 +20,7 @@ RDEPEND="
 	dev-ros/camera_info_manager
 	dev-ros/dynamic_reconfigure[${PYTHON_USEDEP}]
 	dev-ros/nodelet
+	dev-libs/console_bridge:=
 	dev-ros/roscpp
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-libs/OpenNI2
