@@ -12,6 +12,6 @@ LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-RDEPEND="dev-libs/console_bridge
+RDEPEND="dev-libs/console_bridge:=
 	dev-ros/rosconsole"
 DEPEND="${RDEPEND}"
