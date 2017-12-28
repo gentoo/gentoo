@@ -13,7 +13,7 @@ SRC_URI="http://www.bitkipper.net/bytes/debian/dists/unstable/source/${PN}_${PV}
 LICENSE="LGPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
-IUSE="qt4 gtk"
+IUSE="gtk"
 
 DEPEND=""
 RDEPEND="
@@ -21,11 +21,12 @@ RDEPEND="
 		dev-python/twisted[${PYTHON_USEDEP}]
 		dev-python/twisted-core[${PYTHON_USEDEP}]
 	)
-	gtk? ( dev-python/pygobject:2[${PYTHON_USEDEP}] )
-	qt4? ( dev-python/PyQt4[X,${PYTHON_USEDEP}] )"
+	gtk? ( dev-python/pygobject:2[${PYTHON_USEDEP}] )"
 
 python_prepare_all() {
-	use gtk || rm notifier/nf_gtk.py
-	use qt4 || rm notifier/nf_qt.py
+	if !use gtk; then
+		rm notifier/nf_gtk.py || die
+	fi
+	rm notifier/nf_qt.py || die
 	distutils-r1_python_prepare_all
 }
