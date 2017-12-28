@@ -23,5 +23,6 @@ RDEPEND="
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 	dev-qt/qtwidgets:5
 	dev-libs/boost:=
+	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}"
