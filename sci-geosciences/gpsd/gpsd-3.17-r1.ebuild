@@ -159,7 +159,7 @@ src_install() {
 	if use python ; then
 		distutils-r1_src_install
 		# Delete all X related packages if user doesn't want them
-		if ! use X ; then
+		if ! use X && [[ -f "${ED%/}"/usr/bin/xgps ]]; then
 			rm "${ED%/}"/usr/bin/xgps* || die
 		fi
 	fi
