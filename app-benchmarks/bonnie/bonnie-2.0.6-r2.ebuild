@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Performance Test of Filesystem I/O using standard C library calls"
 HOMEPAGE="http://www.textuality.com/bonnie/"
@@ -16,12 +16,14 @@ IUSE=""
 
 S=${WORKDIR}
 
-PATCHES=( "${FILESDIR}/bonnie_man.patch"
-	  "${FILESDIR}/Makefile.patch"
-	  "${FILESDIR}/${P}-includes.patch" )
+PATCHES=(
+	"${FILESDIR}"/bonnie_man.patch
+	"${FILESDIR}"/Makefile.patch
+	"${FILESDIR}"/${P}-includes.patch
+)
 
-src_compile() {
-	emake CC=$(tc-getCC) SYSFLAGS="${CFLAGS}"
+src_configure() {
+	tc-export CC
 }
 
 src_install() {
