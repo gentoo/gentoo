@@ -31,6 +31,7 @@ RDEPEND="
 	dev-ros/rospy[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	sci-libs/ViSP[opencv,X]
+	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}"
 if [ "${PV#9999}" = "${PV}" ] ; then
