@@ -1,0 +1,17 @@
+--- a/Makefile
++++ b/Makefile
+@@ -2,13 +2,10 @@
+ 
+ #CC      = gcc
+ PROF    = -g0 -O2
+-CFLAGS  = $(PROF) -Wall
+-LDFLAGS = $(PROF)
++CFLAGS += -Wall
+ TARGET  = ide-smart
+ OBJECTS = ide-smart.o
+ 		
+-ide-smart: $(OBJECTS)
+-	$(CC) $(LDFLAGS) -o $(TARGET) $(OBJECTS)
+ 
+ all: ide-smart
+ 
