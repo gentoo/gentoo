@@ -17,7 +17,10 @@ IUSE=""
 RDEPEND="app-arch/bzip2:="
 DEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}"/${PN}-2.1-darwin.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.1-darwin.patch
+	"${FILESDIR}"/${PN}-2.1-CVE-2017-8364.patch
+)
 
 src_prepare() {
 	default
