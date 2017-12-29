@@ -1480,7 +1480,7 @@ app-text/xdvik 22.87.03: DVI previewer for X Window System
 app-text/xfbib 0.0.2-r1: a lightweight BibTeX editor
 app-text/xhtml1 20020801-r4: DTDs for the eXtensible HyperText Markup Language 1.0
 app-text/xindy 2.4: A Flexible Indexing System
-app-text/xiphos 4.0.4: A bible study frontend for Sword (formerly known as GnomeSword)
+app-text/xiphos 4.0.4 4.0.6a: A bible study frontend for Sword (formerly known as GnomeSword)
 app-text/xlhtml 0.5.1_p6: Convert MS Excel and Powerpoint files to HTML
 app-text/xml2doc 20030510-r1: Tool to convert simple XML to a variety of formats (pdf, html, txt, manpage)
 app-text/xmldiff 0.6.10-r1: A tool that figures out the differences between two similar XML files
@@ -8484,7 +8484,7 @@ net-libs/accounts-qt 1.13: Qt5 bindings for libaccounts-glib
 net-libs/adns 1.4: Advanced, easy to use, asynchronous-capable DNS client library and utilities
 net-libs/aqbanking 5.0.25 5.6.10: Generic Online Banking Interface
 net-libs/axtls 1.5.3: Embedded client/server TLSv1 SSL library and small HTTP(S) server
-net-libs/biblesync 1.1.2: A multicast protocol to support Bible software shared co-navigation
+net-libs/biblesync 1.1.2 1.1.2-r2: A multicast protocol to support Bible software shared co-navigation
 net-libs/c-client 2007f-r6: UW IMAP c-client library
 net-libs/canlock 2b: A library for creating and verifying Usenet cancel locks
 net-libs/ccrtp 2.0.9: GNU ccRTP - Implementation of the IETF real-time transport protocol
