@@ -542,61 +542,6 @@ media-gfx/kpovmodeler
 # Masked for removal in 30 days, bug #625110
 dev-util/qfsm
 
-# Andreas Sturmlechner <asturm@gentoo.org> (30 Nov 2017)
-# Declared dead upstream. Masked for removal in 30 days. Bug #634138
-kde-apps/blogilo
-kde-apps/jovie
-kde-apps/kabcclient
-kde-apps/kaccessible
-kde-apps/kdepim-kresources
-kde-apps/kdepim-l10n
-kde-apps/kdepim-wizards
-kde-apps/kdepimlibs
-kde-apps/kdewebdev-meta
-kde-apps/kfilereplace
-kde-apps/kioclient
-kde-apps/klinkstatus
-kde-apps/knode
-kde-apps/knotify
-kde-apps/kppp
-kde-apps/kremotecontrol
-kde-apps/ktimetracker
-kde-apps/ktimezoned
-kde-apps/libkface
-kde-apps/libkpgp
-
-# Andreas Sturmlechner <asturm@gentoo.org> (30 Nov 2017)
-# Depends on dead kdepimlibs:4. KF5-based snapshot available.
-# Masked for removal in 30 days. Bug #634138
-app-office/kraft:4
-
-# Andreas Sturmlechner <asturm@gentoo.org> (30 Nov 2017)
-# Depends on dead kdepimlibs:4. KF5-based snapshot available.
-# Masked for removal in 30 days. Bug #634138
-kde-apps/kopete:4
-kde-misc/kopete-antispam
-kde-misc/kopete-thinklight
-
-# Andreas Sturmlechner <asturm@gentoo.org> (30 Nov 2017)
-# Dead upstream, depends on dead kdelibs4/Qt3Support/Qt4.
-# Masked for removal in 30 days. Bug #634324
-games-mud/kmuddy
-
-# Andreas Sturmlechner <asturm@gentoo.org> (30 Nov 2017)
-# Dead upstream, depends on dead kdelibs4/Qt3Support/Qt4.
-# Masked for removal in 30 days. Bug #629018
-kde-misc/krcstat
-
-# Andreas Sturmlechner <asturm@gentoo.org> (30 Nov 2017)
-# Dead upstream, depends on dead Qt3Support/Qt4.
-# Masked for removal in 30 days. Bug #639244
-net-dialup/qtwvdialer
-
-# Andreas Sturmlechner <asturm@gentoo.org> (30 Nov 2017)
-# Dead upstream, depends on dead kdelibs4/Qt3Support/Qt4.
-# Masked for removal in 30 days. Bug #629018
-x11-themes/bespin
-
 # Jonas Stein <jstein@gentoo.org> (29 Nov 2017)
 # The old yafaray-0.1.1 depends on qt4 and has bugs we can not fix. 
 # (bug #321169) and (bug #595684)
