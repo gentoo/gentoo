@@ -10,7 +10,7 @@ SRC_URI="https://imhangul.googlecode.com/files/${P}.tar.bz2"
 
 SLOT="0"
 LICENSE="LGPL-2.1"
-KEYWORDS="~amd64 ppc x86"
+KEYWORDS="amd64 ppc x86"
 IUSE=""
 
 RDEPEND="
