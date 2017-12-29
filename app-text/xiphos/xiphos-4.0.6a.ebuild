@@ -13,7 +13,7 @@ SRC_URI="https://github.com/crosswire/${PN}/releases/download/${PV}/${MY_P}.tar.
 
 LICENSE="GPL-2 FDL-1.1 LGPL-2 MIT MPL-1.1"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="dbus debug"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
