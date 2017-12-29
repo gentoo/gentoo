@@ -57,7 +57,7 @@ app-admin/emacs-updater 1.15: Rebuild Emacs packages
 app-admin/eselect 1.4.8: Gentoo's multi-purpose configuration and management tool
 app-admin/evtxtools 1.1.1-r1: Read, decode and dump Windows Vista/2008/7 event log file
 app-admin/fam 2.7.0-r7: FAM, the File Alteration Monitor
-app-admin/fetchlog 1.0: Displays the last new messages of a logfile
+app-admin/fetchlog 1.4-r1: Displays the last new messages of a logfile
 app-admin/filebeat 5.5.2: Lightweight log shipper for Logstash and Elasticsearch
 app-admin/gam-server 0.1.10-r2: Library providing the FAM File Alteration Monitor API
 app-admin/gamin 0.1.10-r1: Meta package providing the File Alteration Monitor API & Server
