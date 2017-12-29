@@ -1,9 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
+EAPI=6
 
-inherit autotools eutils
+inherit autotools
 
 DESCRIPTION="Compression program for large files"
 HOMEPAGE="https://rzip.samba.org/"
@@ -14,15 +14,15 @@ SLOT="0"
 KEYWORDS="amd64 hppa ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE=""
 
-DEPEND="app-arch/bzip2"
+RDEPEND="app-arch/bzip2:="
+DEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}"/${PN}-2.1-darwin.patch )
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-2.1-darwin.patch
+	default
+	mv configure.{in,ac} || die
 	eautoreconf
-}
-
-src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed."
 }
 
 pkg_postinst() {
