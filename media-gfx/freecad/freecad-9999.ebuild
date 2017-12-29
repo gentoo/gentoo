@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils eutils xdg-utils fortran-2 python-single-r1
+inherit cmake-utils eutils xdg-utils gnome2-utils fortran-2 python-single-r1
 
 DESCRIPTION="Qt based Computer Aided Design application"
 HOMEPAGE="https://www.freecadweb.org/"
@@ -80,9 +80,9 @@ src_configure() {
 	local mycmakeargs=(
 		-DOCC_INCLUDE_DIR="${CASROOT}"/inc
 		-DOCC_LIBRARY_DIR="${CASROOT}"/$(get_libdir)
-		-DCMAKE_INSTALL_DATADIR=share/${P}
-		-DCMAKE_INSTALL_DOCDIR=share/doc/${PF}
-		-DCMAKE_INSTALL_INCLUDEDIR=include/${P}
+		-DCMAKE_INSTALL_DATADIR=/usr/share/${P}
+		-DCMAKE_INSTALL_DOCDIR=/usr/share/doc/${PF}
+		-DCMAKE_INSTALL_INCLUDEDIR=/usr/include/${P}
 		-DFREECAD_USE_EXTERNAL_KDL="ON"
 	)
 
@@ -121,8 +121,14 @@ src_install() {
 
 pkg_postinst() {
 	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
+
+	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
 	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
+
+	gnome2_icon_cache_update
 }
