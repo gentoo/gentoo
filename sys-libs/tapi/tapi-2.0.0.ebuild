@@ -61,10 +61,7 @@ CLANG_S="${WORKDIR}"/${CLANG_P}.src
 
 APPLE_LLVM_S="${WORKDIR}/${APPLE_LLVM_P}"/src
 
-TAPI_S="${WORKDIR}"/${TAPI_P}
-
-# to avoid ebuild dying
-S=${WORKDIR}
+S="${WORKDIR}"/${TAPI_P}
 
 TAPI_BUILD="${WORKDIR}"/${P}_build
 
@@ -88,7 +85,7 @@ src_prepare() {
 	CMAKE_USE_DIR="${PWD}" \
 		cmake-utils_src_prepare
 
-	cd "${TAPI_S}" || die
+	cd "${S}" || die
 	eapply "${FILESDIR}"/${PN}-2.0.0-standalone.patch
 	CMAKE_USE_DIR="${PWD}" \
 		cmake-utils_src_prepare
@@ -147,7 +144,7 @@ src_configure() {
 		-DOBJCMETADATA_LIBRARY_DIRS="${OBJCMD_ROOT}"/lib
 	)
 
-	cd "${TAPI_S}" || die
+	cd "${S}" || die
 	BUILD_DIR="${TAPI_BUILD}/" \
 		CMAKE_USE_DIR="${PWD}" \
 		cmake-utils_src_configure
@@ -170,7 +167,7 @@ src_compile() {
 		${CMAKE_MAKEFILE_GENERATOR} install
 
 	# finally build tapi
-	cd "${TAPI_S}" || die
+	cd "${S}" || die
 	BUILD_DIR="${TAPI_BUILD}" \
 		CMAKE_USE_DIR="${PWD}" \
 		cmake-utils_src_compile

@@ -4,7 +4,7 @@
 EAPI=6
 
 DIST_AUTHOR=GUGOD
-DIST_VERSION=0.80
+DIST_VERSION=0.82
 inherit perl-module
 
 DESCRIPTION='Manage perl installations in your $HOME'
