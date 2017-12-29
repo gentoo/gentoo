@@ -31,7 +31,7 @@ app-admin/abrt 2.0.12-r2: Automatic bug detection and reporting tool
 app-admin/analog 6.0-r4: A webserver log analyzer
 app-admin/ansible 2.4.1.0-r1: Model-driven deployment, config management, and command execution framework
 app-admin/apache-tools 2.2.34 2.4.27: Useful Apache tools - htdigest, htpasswd, ab, htdbm
-app-admin/apachetop 0.12.6-r1 0.12.6-r2: A realtime Apache log analyzer
+app-admin/apachetop 0.12.6-r2: A realtime Apache log analyzer
 app-admin/apg 2.3.0b-r5: Another Password Generator
 app-admin/augeas 1.8.1 1.9.0: A library for changing configuration files
 app-admin/ccze 0.2.1-r3: A flexible and fast logfile colorizer
@@ -45,7 +45,7 @@ app-admin/collectd 5.6.2-r4: Collects system statistics and provides mechanisms 
 app-admin/conky 1.10.4: An advanced, highly configurable system monitor for X
 app-admin/conserver 8.1.18 8.1.18-r1: Serial Console Manager
 app-admin/cpulimit 1.8: Limits the CPU usage of a process
-app-admin/cronolog 1.6.2-r3 1.6.2-r4: Cronolog apache logfile rotator
+app-admin/cronolog 1.6.2-r5: Log rotation software
 app-admin/denyhosts 2.9 3.0 3.0-r1: DenyHosts is a utility to help sys admins thwart ssh hackers
 app-admin/diamond 4.0-r1: Python daemon that collects and publishes system metrics
 app-admin/diradm 2.9.7.1: A nearly complete nss/shadow suite for managing POSIX users/groups/data in LDAP
@@ -147,7 +147,7 @@ app-admin/webalizer 2.23.05: Webserver log file analyzer
 app-admin/webapp-config 1.52-r1 1.53-r2 1.55: Gentoo's installer for web-based applications
 app-admin/whowatch 1.8.5: Displays information about users currently logged on in real time
 app-admin/xstow 1.0.1: replacement for GNU stow with extensions
-app-admin/xtail 2.1 2.1-r1: Tail multiple logfiles at once, even if rotated
+app-admin/xtail 2.1-r1: Tail multiple logfiles at once, even if rotated
 app-admin/yaala 0.7.3-r1: Yet Another Log Analyzer
 app-antivirus/clamav 0.98.7 0.99 0.99.2-r1: Clam Anti-Virus Scanner
 app-antivirus/clamav-unofficial-sigs 3.7.2: Downloads and installs third-party clamav signatures

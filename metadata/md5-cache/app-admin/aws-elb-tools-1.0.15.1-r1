@@ -9,4 +9,4 @@ RDEPEND=virtual/jre
 RESTRICT=mirror
 SLOT=0
 SRC_URI=mirror://sabayon/app-admin/ElasticLoadBalancing-1.0.15.1.zip
-_md5_=42ac66001db0e3fe363031a9797ae762
+_md5_=72f77899636853606a4a8529cbaebda4
