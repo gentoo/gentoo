@@ -7,6 +7,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Andrey Utkin <andrey_utkin@gentoo.org> (29 Dec 2017)
+# This flag can be sensibly enabled only on macos.
+# Can be unmasked in prefix/darwin/macos profiles. Bug #637482
+media-video/ffmpeg appkit
+
 # Pacho Ramos <pacho@gentoo.org> (28 Dec 2017)
 # The whole zeitgeist stuck is dead (#629180)
 gnome-extra/synapse zeitgeist
