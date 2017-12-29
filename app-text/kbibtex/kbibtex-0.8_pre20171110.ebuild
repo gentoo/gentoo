@@ -60,6 +60,8 @@ RDEPEND="${DEPEND}
 	x11-misc/shared-mime-info
 "
 
+RESTRICT+=" test"
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package webengine Qt5WebEngineWidgets)
