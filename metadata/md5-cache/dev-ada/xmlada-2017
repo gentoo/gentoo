@@ -11,4 +11,4 @@ REQUIRED_USE=|| ( shared static static-pic ) ^^ ( gnat_2016 gnat_2017 )
 SLOT=0
 SRC_URI=http://mirrors.cdn.adacore.com/art/591aeb88c7a4473fcbb154f8 -> xmlada-gpl-2017-src.tar.gz
 _eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e
-_md5_=1047be1ceb8c22b4819c2af40b498563
+_md5_=4bd8fe5cc6a717abc1502f458ed20f22
