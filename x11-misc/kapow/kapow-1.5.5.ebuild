@@ -43,7 +43,7 @@ src_prepare() {
 
 	local lingua
 	if [[ -n "${LINGUAS}" ]]; then
-		for lingua in ${K_LINGUAS}; do 
+		for lingua in ${K_LINGUAS}; do
 			if ! use linguas_${lingua}; then
 				rm translations/${PN}_${lingua}.* || die
 			fi
