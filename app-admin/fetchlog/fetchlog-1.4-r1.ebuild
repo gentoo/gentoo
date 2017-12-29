@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/fetchlog/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~ppc64"
+KEYWORDS="amd64 ppc x86 ~ppc64"
 IUSE="snmp"
 
 RDEPEND="
