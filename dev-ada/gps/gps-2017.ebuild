@@ -20,12 +20,11 @@ KEYWORDS="~amd64"
 IUSE="doc"
 
 RDEPEND="${PYTHON_DEPS}
-	>=dev-ada/gnatcoll-2017[gtk,iconv,projects,pygobject,shared,sqlite,tools]
+	>=dev-ada/gnatcoll-2017[gtk,iconv,pygobject,sqlite,tools]
 	>=dev-ada/gtkada-2017
 	dev-ada/libadalang
 	dev-libs/gobject-introspection
 	dev-libs/libffi
-	sys-devel/llvm:=
 	sys-devel/clang:=
 	x11-themes/adwaita-icon-theme
 	x11-themes/hicolor-icon-theme
@@ -56,6 +55,11 @@ src_prepare() {
 		toolchains_editor/core/src/toolchains.adb \
 		|| die
 	eautoreconf
+}
+
+src_configure() {
+	econf \
+		--with-clang=$(llvm-config --libdir)
 }
 
 src_compile() {
