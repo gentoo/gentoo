@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools eutils libtool multilib-minimal
+inherit eutils libtool multilib-minimal
 
 DESCRIPTION="A library for multiprecision complex arithmetic with exact rounding"
 HOMEPAGE="http://mpc.multiprecision.org/"
@@ -26,7 +26,6 @@ PATCHES=(
 src_prepare() {
 	default
 
-	eautoreconf
 	elibtoolize #347317
 }
 

@@ -80,6 +80,50 @@ index 3c9c0a7..8c4afe4 100644
  
     mpc_set (z, rop, MPC_RNDNN);
     if (overlap)
+--- a/configure
++++ b/configure
+@@ -13835,6 +13835,41 @@ else
+ $as_echo "no" >&6; }
+         as_fn_error $? "libmpfr not found or uses a different ABI (including static vs shared)." "$LINENO" 5
+ 
++fi
++rm -f core conftest.err conftest.$ac_objext \
++    conftest$ac_exeext conftest.$ac_ext
++
++{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for mpfr_fmma" >&5
++$as_echo_n "checking for mpfr_fmma... " >&6; }
++LIBS="-lmpfr $LIBS"
++cat confdefs.h - <<_ACEOF >conftest.$ac_ext
++/* end confdefs.h.  */
++#include "mpfr.h"
++int
++main ()
++{
++mpfr_t x; mpfr_fmma (x, x, x, x, x, 0);
++
++  ;
++  return 0;
++}
++_ACEOF
++if ac_fn_c_try_link "$LINENO"; then :
++
++	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
++$as_echo "yes" >&6; }
++
++$as_echo "#define HAVE_MPFR_FMMA 1" >>confdefs.h
++
++
++else
++
++        { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
++$as_echo "no" >&6; }
++
++$as_echo "#define HAVE_MPFR_FMMA 0" >>confdefs.h
++
++
+ fi
+ rm -f core conftest.err conftest.$ac_objext \
+     conftest$ac_exeext conftest.$ac_ext
 -- 
 2.15.1
 
