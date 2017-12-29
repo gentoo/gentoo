@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit qmake-utils
+inherit gnome2-utils qmake-utils
 
 DESCRIPTION="A punch clock program designed to easily keep track of your hours"
 HOMEPAGE="https://gottcode.org/kapow/"
@@ -58,4 +58,12 @@ src_configure() {
 src_install() {
 	export INSTALL_ROOT="${D}"
 	default
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
 }
