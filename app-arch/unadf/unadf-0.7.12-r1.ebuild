@@ -17,6 +17,7 @@ KEYWORDS="~amd64 ~hppa ~ppc ~x86 ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solar
 IUSE="static-libs"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
+PATCHES=( "${FILESDIR}"/${PN}-0.7.12-CVE-2016-1243_CVE-2016-1244.patch )
 
 src_prepare() {
 	default
