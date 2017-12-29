@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils autotools
+inherit autotools
 
 DESCRIPTION="Log rotation software"
 HOMEPAGE="https://github.com/fordmason/cronolog"
@@ -19,10 +19,8 @@ PATCHES=(
 	"${FILESDIR}"/${P}-umask.patch
 )
 
-DOCS=( AUTHORS ChangeLog INSTALL NEWS README TODO )
-
 src_prepare() {
 	default
-	mv configure.in configure.ac || die
+	mv configure.{in,ac} || die
 	eautoreconf
 }
