@@ -856,7 +856,7 @@ app-i18n/ibus-qt 1.3.3: Qt IBus library and Qt input method plugin
 app-i18n/ibus-skk 1.4.1-r1: Japanese SKK engine for IBus
 app-i18n/ibus-table 1.5.0-r1: Tables engines for IBus
 app-i18n/im-freewnn 0.0.2-r2: Japanese FreeWnn input method module for GTK+2
-app-i18n/imhangul 2.0.0: Gtk+-2.0 Hangul Input Modules
+app-i18n/imhangul 2.1.0: Gtk+-2.0 Hangul Input Modules
 app-i18n/jfbterm 0.4.7-r4: The J Framebuffer Terminal/Multilingual Enhancement with UTF-8 support
 app-i18n/kakasi 2.3.4-r1: Converts Japanese text between kanji, kana, and romaji
 app-i18n/kanjipad 2.0.0: Japanese handwriting recognition tool
@@ -8132,7 +8132,7 @@ media-video/pymp 1.1-r1: a lean, flexible frontend to mplayer written in python
 media-video/qt-recordmydesktop 0.3.8-r3: Qt4 interface for RecordMyDesktop
 media-video/qx11grab 0.4.12: X11 desktop video grabber tray
 media-video/recordmydesktop 0.3.8.1-r4: A desktop session recorder producing Ogg video/audio files
-media-video/rovclock 0.6e: Overclocking utility for ATI Radeon cards
+media-video/rovclock 0.6e-r1: Overclocking utility for ATI Radeon cards
 media-video/rtmpdump 2.4_p20161210: RTMP client intended to stream audio or video flash content
 media-video/setpwc 1.3: Control various aspects of Philips (and compatible) webcams
 media-video/smplayer 17.11.2: Great Qt GUI front-end for mplayer/mpv
