@@ -4600,8 +4600,8 @@ dev-python/blockcanvas 4.0.3-r1: Enthought Tool Suite: Numerical modeling
 dev-python/blosc 1.2.8: High performance compressor optimized for binary data
 dev-python/bokeh 0.11.1: Statistical and novel interactive HTML plots for Python
 dev-python/boto 2.41.0: Amazon Web Services API
-dev-python/boto3 1.4.4: The AWS SDK for Python
-dev-python/botocore 1.5.90: Low-level, data-driven core of boto 3.
+dev-python/boto3 1.4.4 1.4.7: The AWS SDK for Python
+dev-python/botocore 1.5.90 1.7.39: Low-level, data-driven core of boto 3.
 dev-python/bottle 0.12.12: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 0.8.0 1.0.0: Fast NumPy array functions written in Cython
 dev-python/bpython 0.13.2 0.16: Syntax highlighting and autocompletion for the Python interpreter
@@ -9197,6 +9197,7 @@ sci-geosciences/libtcd 2.2.5_p2: Library for reading and writing Tide Constituen
 sci-geosciences/mapnik-world-boundaries 20090514: Mapnik World Boundaries
 sci-geosciences/mtkbabel 0.8.3.1-r1: MTKBabel is a Perl program to operate the i-Blue 747 GPS data logger
 sci-geosciences/osm-gps-map 1.1.0: A GTK+ widget for displaying OpenStreetMap tiles
+sci-geosciences/osm2pgsql 0.94.0: Converts OSM data to SQL and insert into PostgreSQL db
 sci-geosciences/qgis 2.18.12: User friendly Geographic Information System
 sci-geosciences/qmapshack 1.6.3: GPS mapping utility
 sci-geosciences/routino 3.1.1: Routing application based on openstreetmap data
@@ -10041,7 +10042,7 @@ sys-kernel/bliss-initramfs 6.8.3-r2 7.1.0: Boot your system's rootfs from ZFS, L
 sys-kernel/dracut 044-r1 045-r2: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.52.3 3.4.52.4-r2: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 66: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 3.10.107-r1 4.1.43-r1 4.4.87-r1 4.9.49-r1 4.12.12 4.14.8-r1: Full sources including the Gentoo patchset for the 4.14 kernel tree
+sys-kernel/gentoo-sources 3.10.107-r1 4.1.43-r1 4.4.87-r1 4.9.49-r1 4.12.12: Full sources including the Gentoo patchset for the 4.12 kernel tree
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
 sys-kernel/linux-firmware 20170314: Linux firmware files
 sys-kernel/linux-headers 3.18 4.3 4.4: Linux system headers
