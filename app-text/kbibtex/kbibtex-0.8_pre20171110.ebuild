@@ -6,6 +6,7 @@ EAPI=6
 COMMIT=4ce7c51f163508f293c3fd39a716770cbb14ef7d
 KDE_HANDBOOK="optional"
 KDE_TEST="true"
+VIRTUALX_REQUIRED="test"
 inherit kde5 vcs-snapshot
 
 DESCRIPTION="BibTeX editor to edit bibliographies used with LaTeX"
