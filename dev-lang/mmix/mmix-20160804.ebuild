@@ -15,7 +15,7 @@ RDEPEND=""
 
 SLOT="0"
 LICENSE="${PN}"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="doc"
 
 S="${WORKDIR}"
