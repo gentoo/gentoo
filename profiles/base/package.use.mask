@@ -424,11 +424,6 @@ dev-db/mysql cluster
 # is implemented. Masking for testing and evaluation.
 app-admin/clsync cluster mhash
 
-# Michał Górny <mgorny@gentoo.org> (30 Nov 2014)
-# Not supported at the moment. DirectFB lacks multilib support,
-# and we have to decide if we want it.
-x11-libs/cairo directfb
-
 # Brian Evans <grknight@gentoo.org> (29 Nov 2014)
 # Strongly recommened by upstream to disable lzo and zlib due to memory leaks
 # https://github.com/groonga/groonga/issues/6 (Japanese)
