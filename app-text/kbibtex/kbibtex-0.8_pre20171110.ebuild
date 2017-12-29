@@ -13,7 +13,7 @@ DESCRIPTION="BibTeX editor to edit bibliographies used with LaTeX"
 HOMEPAGE="https://userbase.kde.org/KBibTeX"
 if [[ ${KDE_BUILD_TYPE} != live ]]; then
 	SRC_URI="https://github.com/KDE/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 x86"
 fi
 
 LICENSE="GPL-2"
