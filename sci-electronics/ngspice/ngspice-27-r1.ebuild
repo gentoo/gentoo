@@ -15,9 +15,6 @@ SLOT="0"
 IUSE="X debug doc examples fftw openmp readline shared tcl"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86 ~x64-macos"
 
-# See bug #642460
-RESTRICT="test"
-
 DEPEND="sys-libs/ncurses:0=
 	X? ( x11-libs/libXaw
 		x11-libs/libXt
@@ -179,7 +176,14 @@ ngspice_install() {
 }
 
 src_test() {
-	multibuild_foreach_variant ngspice_test
+	if ! use debug; then
+		multibuild_foreach_variant ngspice_test
+	else
+		# https://sourceforge.net/p/ngspice/bugs/353/
+		ewarn
+		ewarn "Skipping tests because they are known to fail in debug mode"
+		ewarn
+	fi
 }
 
 ngspice_test() {
