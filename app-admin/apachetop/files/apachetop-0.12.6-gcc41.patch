@@ -1,5 +1,5 @@
---- src/resolver.h
-+++ src/resolver.h
+--- a/src/resolver.h
++++ b/src/resolver.h
 @@ -10,8 +10,8 @@
  class Resolver
  {
