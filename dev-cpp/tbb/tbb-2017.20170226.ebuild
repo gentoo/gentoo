@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils flag-o-matic multilib-minimal toolchain-funcs versionator
+inherit eutils flag-o-matic multilib-minimal multilib toolchain-funcs versionator
 
 PV1="$(get_version_component_range 1)"
 PV2=5
@@ -117,10 +117,10 @@ multilib_src_install() {
 	for bt in ${buildtypes}; do
 		cd "${BUILD_DIR}_${bt}" || die
 		local l
-		for l in $(find . -name lib\*.so.\*); do
+		for l in $(find . -name lib\*$(get_libname \*)); do
 			dolib.so ${l}
 			local bl=$(basename ${l})
-			dosym ${bl} /usr/$(get_libdir)/${bl%.*}
+			dosym ${bl} /usr/$(get_libdir)/${bl%%.*}$(get_libname)
 		done
 	done
 
