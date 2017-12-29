@@ -18,6 +18,7 @@ inherit enlightenment
 DESCRIPTION="Feature rich terminal emulator using the Enlightenment Foundation Libraries"
 HOMEPAGE="https://www.enlightenment.org/p.php?p=about/terminology"
 
-RDEPEND=">=dev-libs/efl-1.18"
+RDEPEND=">=dev-libs/efl-1.17
+         >=media-libs/elementary-1.17"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
