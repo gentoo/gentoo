@@ -11013,7 +11013,7 @@ x11-plugins/wmwifi 0.6: wireless network interface monitor dockapp
 x11-proto/bigreqsproto 1.1.2: X.Org BigReqs protocol headers
 x11-proto/compositeproto 0.4.2-r1: X.Org Composite protocol headers
 x11-proto/damageproto 1.2.1-r1: X.Org Damage protocol headers
-x11-proto/dmxproto 2.3.1: X.Org DMX protocol headers
+x11-proto/dmxproto 2.3.1-r1: X.Org DMX protocol headers
 x11-proto/dri2proto 2.8-r1: X.Org DRI2 protocol headers
 x11-proto/dri3proto 1.0: X.Org DRI3 protocol specification and Xlib/Xserver headers
 x11-proto/fixesproto 5.0 5.0-r1: X.Org Fixes protocol headers
