@@ -1363,20 +1363,20 @@ app-text/lcdf-typetools 2.106: Font utilities for eg manipulating OTF
 app-text/lesspipe 1.83: a preprocessor for less
 app-text/libabw 0.1.1: Library parsing abiword documents
 app-text/libebook 0.1.2-r1: Library parsing various ebook formats
-app-text/libetonyek 0.1.6 0.1.7: Library parsing Apple Keynote presentations
+app-text/libetonyek 0.1.7: Library parsing Apple Keynote presentations
 app-text/libexttextcat 3.4.4 3.4.5: Library implementing N-gram-based text categorization
 app-text/libgepub 0.4: GObject based library for handling and rendering epub documents
 app-text/libgxps 0.2.5 0.3.0: Library for handling and rendering XPS documents
 app-text/liblangtag 0.6.2: An interface library to access tags for identifying languages
 app-text/libmspub 0.1.2: Library parsing Microsoft Publisher documents
-app-text/libmwaw 0.3.12 0.3.13: Library parsing many pre-OSX MAC text formats
+app-text/libmwaw 0.3.13: Library parsing many pre-OSX MAC text formats
 app-text/libodfgen 0.1.6: Library to generate ODF documents from libwpd and libwpg
 app-text/libpaper 1.1.24-r2: Library for handling paper characteristics
 app-text/libspectre 0.2.7: A library for rendering Postscript documents
-app-text/libstaroffice 0.0.4 0.0.5: Import filter for old StarOffice documents
+app-text/libstaroffice 0.0.5: Import filter for old StarOffice documents
 app-text/libwpd 0.10.2: WordPerfect Document import/export library
 app-text/libwpg 0.3.2: C++ library to read and parse graphics in WPG
-app-text/libwps 0.4.7 0.4.8: Microsoft Works file word processor format import filter library
+app-text/libwps 0.4.8: Microsoft Works file word processor format import filter library
 app-text/linuxdoc-tools 0.9.72: A toolset for processing LinuxDoc DTD SGML files
 app-text/llpp 26b: graphical PDF viewer which aims to superficially resemble less(1)
 app-text/lout 3.40: High-level language for document formatting
@@ -6142,7 +6142,7 @@ dev-util/lttng-modules 2.7.1: LTTng Kernel Tracer Modules
 dev-util/lttng-tools 2.7.1: Linux Trace Toolkit - next generation
 dev-util/lttng-ust 2.7.1: Linux Trace Toolkit - UST library
 dev-util/makeheaders 0_p4: simple utility that will automatically generate header files
-dev-util/mdds 1.2.3 1.3.1: A collection of multi-dimensional data structure and indexing algorithm
+dev-util/mdds 1.3.1: A collection of multi-dimensional data structure and indexing algorithm
 dev-util/meld 3.18.0: A graphical diff and merge tool
 dev-util/memprof 0.6.2-r1: Profiling and leak detection tool
 dev-util/meson 0.41.2 0.43.0: Open source build system
@@ -7498,7 +7498,7 @@ media-libs/libtimidity 0.1.0-r2: MIDI to WAVE converter library
 media-libs/libtxc_dxtn 1.0.1-r1: Helper library for S3TC texture (de)compression
 media-libs/libuninameslist 20091231: Library of unicode annotation data
 media-libs/libv4l 1.6.2 1.10.1: Separate libraries ebuild from upstream v4l-utils package
-media-libs/libvisio 0.1.5-r1 0.1.6: Library parsing the visio documents
+media-libs/libvisio 0.1.6: Library parsing the visio documents
 media-libs/libvisual 0.4.0-r3: Libvisual is an abstraction library that comes between applications and audio visualisation plugins
 media-libs/libvorbis 1.3.5: The Ogg Vorbis sound file format library
 media-libs/libvpx 1.5.0: WebM VP8 Codec SDK
