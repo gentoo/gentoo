@@ -1,0 +1,62 @@
+--- a/switcher
++++ b/switcher
+@@ -67,7 +67,7 @@
+ 
+ ### load quickswitch package
+ $_SWITCHTO = '/usr/bin/switchto'; # default location
+-$CONF_FILE = '/etc/switchto.conf';
++$CONF_FILE = '/etc/quickswitch/switchto.conf';
+ $SWITCHTO = find_switchto($CONF_FILE);
+ $ENV{RUNNING_FROM_SWITCHER} = 1;
+ require $SWITCHTO;
+--- a/switchto
++++ b/switchto
+@@ -26,7 +26,7 @@
+ #
+ # Send bug-reports, comments, women to bugs@muthanna.com
+ #
+-# Also see /etc/switchto.conf for further docs.
++# Also see /etc/quickswitch/switchto.conf for further docs.
+ #
+ # Release: 0.16
+ #
+@@ -143,8 +143,8 @@
+ $AUTHOR    = "Mohit Muthanna, Paul Seamons";
+ $DATE      = '2002';
+ 
+-### I would suggest renaming this /etc/switchto.conf
+-$CONF_FILE = "/etc/switchto.conf";
++### I would suggest renaming this /etc/quickswitch/switchto.conf
++$CONF_FILE = "/etc/quickswitch/switchto.conf";
+ %DEFAULTS  = (
+               autoconfig      => 0,
+               device          => "eth0",
+@@ -165,7 +165,7 @@
+               nfsexportall    => "/usr/sbin/exportfs -a",
+               nfsexportsfile  => "/etc/exports",
+               niscommand      => "/bin/nisdomainname",
+-              servicefilename => "/etc/switchto.last",
++              servicefilename => "/etc/quickswitch/switchto.last",
+               execpre         => undef,
+               execpost        => undef,
+ 
+--- a/switchto.conf
++++ b/switchto.conf
+@@ -43,7 +43,7 @@
+ device=eth0
+ 
+ # Path to save last good known configuration...
+-servicefilename=/etc/switchto.last
++servicefilename=/etc/quickswitch/switchto.last
+ 
+ # Path and arguments to switchto. This is for the switcher GUI
+ # switchtopath=/usr/bin/switchto -b
+@@ -52,7 +52,7 @@
+ # Uncomment theses and change them if needed.
+ # ------------------------------------------
+ # ifconfig=/sbin/ifconfig
+-# iwconfig=/usr/local/sbin/iwconfig
++# iwconfig=/sbin/iwconfig
+ # netstat=/bin/netstat
+ # route=/sbin/route
+ # hostnamecmd=/bin/hostname
