@@ -1,8 +1,9 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
-inherit toolchain-funcs
+EAPI=6
+
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Makeself archive extractor"
 HOMEPAGE="http://www.freshports.org/archivers/unmakeself"
@@ -13,12 +14,21 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-DEPEND="app-arch/libarchive[bzip2,zlib]"
+RDEPEND="app-arch/libarchive:=[bzip2,zlib]"
+DEPEND="${RDEPEND}
+	virtual/pkgconfig"
+
+src_configure() {
+	append-cppflags $($(tc-getPKG_CONFIG) --cflags libarchive)
+	export LDLIBS=$($(tc-getPKG_CONFIG) --libs libarchive)
+
+	tc-export CC
+}
 
 src_compile() {
-	emake CC="$(tc-getCC)" LDLIBS=-larchive ${PN} || die "emake failed"
+	emake ${PN}
 }
 
 src_install() {
-	dobin unmakeself || die "dobin failed"
+	dobin unmakeself
 }

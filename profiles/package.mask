@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (29 Dec 2017)
+# Last release in 2003, EAPI 0, C++ extremely broken
+# Removal in 30 days
+app-admin/jinit
+
 # Pacho Ramos <pacho@gentoo.org> (28 Dec 2017)
 # Dead since 2005, nothing requires it, installs object files in
 # /usr/share/doc (#451792). Removal in a month.
