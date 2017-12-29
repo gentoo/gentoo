@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: l10n.eclass
@@ -12,8 +12,7 @@
 # conveniently handle localizations (translations) offered by packages.
 # These are meant to prevent code duplication for such boring tasks as
 # determining the cross-section between the user's set LINGUAS and what
-# is offered by the package; and generating the right list of linguas_*
-# USE flags.
+# is offered by the package.
 
 # @ECLASS-VARIABLE: PLOCALES
 # @DEFAULT_UNSET
@@ -32,11 +31,6 @@
 # default locale (usually 'en' or 'en_US') as backup.
 #
 # Example: PLOCALE_BACKUP="en_US"
-
-# Add linguas useflags
-for u in ${PLOCALES}; do
-	IUSE+=" linguas_${u}"
-done
 
 # @FUNCTION: l10n_for_each_locale_do
 # @USAGE: <function>
@@ -103,23 +97,31 @@ l10n_find_plocales_changes() {
 # @FUNCTION: l10n_get_locales
 # @USAGE: [disabled]
 # @DESCRIPTION:
-# Determine which LINGUAS USE flags the user has enabled that are offered
-# by the package, as listed in PLOCALES, and return them. In case no locales
-# are selected, fall back on PLOCALE_BACKUP. When the disabled argument is
-# given, return the disabled useflags instead of the enabled ones.
+# Determine which LINGUAS the user has enabled that are offered by the
+# package, as listed in PLOCALES, and return them.  In case no locales
+# are selected, fall back on PLOCALE_BACKUP.  When the disabled argument
+# is given, return the disabled locales instead of the enabled ones.
 l10n_get_locales() {
 	local disabled_locales enabled_locales loc locs
-	for loc in ${PLOCALES}; do
-		if use linguas_${loc}; then
-			enabled_locales+="${loc} "
-		else
-			disabled_locales+="${loc} "
-		fi
-	done
+	if [[ -z ${LINGUAS+set} ]]; then
+		# enable all if unset
+		enabled_locales=${PLOCALES}
+	elif [[ -z ${LINGUAS} ]]; then
+		# disable all if empty
+		disabled_locales=${PLOCALES}
+	else
+		for loc in ${PLOCALES}; do
+			if has ${loc} ${LINGUAS}; then
+				enabled_locales+="${loc} "
+			else
+				disabled_locales+="${loc} "
+			fi
+		done
+	fi
 	if [[ ${1} == disabled ]]; then
 		locs=${disabled_locales}
 	else
-		locs=${enabled_locales:-$PLOCALE_BACKUP}
+		locs=${enabled_locales:-${PLOCALE_BACKUP}}
 	fi
 	printf "%s" "${locs}"
 }
