@@ -28,9 +28,7 @@ move kde-base/ffmpegthumbs kde-apps/ffmpegthumbs
 move kde-base/filelight kde-apps/filelight
 move kde-base/granatier kde-apps/granatier
 move kde-base/gwenview kde-apps/gwenview
-move kde-base/jovie kde-apps/jovie
 move kde-base/juk kde-apps/juk
-move kde-base/kaccessible kde-apps/kaccessible
 move kde-base/kajongg kde-apps/kajongg
 move kde-base/kalgebra kde-apps/kalgebra
 move kde-base/kalzium kde-apps/kalzium
@@ -68,7 +66,6 @@ move kde-base/kdenetwork-meta kde-apps/kdenetwork-meta
 move kde-base/kdesdk-kioslaves kde-apps/kdesdk-kioslaves
 move kde-base/kdesdk-meta kde-apps/kdesdk-meta
 move kde-base/kdeutils-meta kde-apps/kdeutils-meta
-move kde-base/kdewebdev-meta kde-apps/kdewebdev-meta
 move kde-base/kdf kde-apps/kdf
 move kde-base/kdialog kde-apps/kdialog
 move kde-base/kdiamond kde-apps/kdiamond
@@ -86,14 +83,12 @@ move kde-base/kig kde-apps/kig
 move kde-base/kigo kde-apps/kigo
 move kde-base/killbots kde-apps/killbots
 move kde-base/kimagemapeditor kde-apps/kimagemapeditor
-move kde-base/kioclient kde-apps/kioclient
 move kde-base/kiriki kde-apps/kiriki
 move kde-base/kiten kde-apps/kiten
 move kde-base/kjumpingcube kde-apps/kjumpingcube
 move kde-base/klettres kde-apps/klettres
 move kde-base/klickety kde-apps/klickety
 move kde-base/klines kde-apps/klines
-move kde-base/klinkstatus kde-apps/klinkstatus
 move kde-base/kmag kde-apps/kmag
 move kde-base/kmahjongg kde-apps/kmahjongg
 move kde-base/kmines kde-apps/kmines
@@ -103,7 +98,6 @@ move kde-base/kmouth kde-apps/kmouth
 move kde-base/kmplot kde-apps/kmplot
 move kde-base/knavalbattle kde-apps/knavalbattle
 move kde-base/knetwalk kde-apps/knetwalk
-move kde-base/knotify kde-apps/knotify
 move kde-base/kolf kde-apps/kolf
 move kde-base/kollision kde-apps/kollision
 move kde-base/kolourpaint kde-apps/kolourpaint
@@ -113,10 +107,8 @@ move kde-base/konquest kde-apps/konquest
 move kde-base/konsole kde-apps/konsole
 move kde-base/kopete kde-apps/kopete
 move kde-base/kpat kde-apps/kpat
-move kde-base/kppp kde-apps/kppp
 move kde-base/kqtquickcharts kde-apps/kqtquickcharts
 move kde-base/krdc kde-apps/krdc
-move kde-base/kremotecontrol kde-apps/kremotecontrol
 move kde-base/kreversi kde-apps/kreversi
 move kde-base/krfb kde-apps/krfb
 move kde-base/kruler kde-apps/kruler
@@ -131,7 +123,6 @@ move kde-base/ksudoku kde-apps/ksudoku
 move kde-base/ksystemlog kde-apps/ksystemlog
 move kde-base/kteatime kde-apps/kteatime
 move kde-base/ktimer kde-apps/ktimer
-move kde-base/ktimezoned kde-apps/ktimezoned
 move kde-base/ktouch kde-apps/ktouch
 move kde-base/ktuberling kde-apps/ktuberling
 move kde-base/kturtle kde-apps/kturtle
