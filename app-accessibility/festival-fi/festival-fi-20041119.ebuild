@@ -1,8 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
-inherit eutils
+EAPI=6
 
 DESCRIPTION="Finnish diphones and text to speech script for festival"
 HOMEPAGE="http://www.ling.helsinki.fi/suopuhe"
@@ -15,29 +14,27 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="perl"
 
-RDEPEND=">=app-accessibility/festival-1.96_beta"
+RDEPEND="
+	>=app-accessibility/festival-1.96_beta
+	dev-lang/perl"
 DEPEND=""
 
-src_prepare(){
-	cd "${WORKDIR}/lavennin/bin"
-	epatch "${FILESDIR}/${P}_lavennin_path.patch"
-}
+S=${WORKDIR}
+PATCHES=( "${FILESDIR}"/${P}_lavennin_path.patch )
 
 src_install() {
-	cd "${WORKDIR}"
 	dodoc festival/lib/voices/finnish/hy_fi_mv_diphone/README.mv
-	rm festival/lib/voices/finnish/hy_fi_mv_diphone/{README.mv,LICENSE}
-	insinto /usr/share/festival/
-	cd festival/lib/
-	doins -r voices/
-	cd "${WORKDIR}/lavennin/"
+	rm festival/lib/voices/finnish/hy_fi_mv_diphone/{README.mv,LICENSE} || die
+
+	insinto /usr/share/festival
+	doins -r festival/lib/voices
+	cd "${WORKDIR}"/lavennin/ || die
 	newdoc README.txt README.lavennin
 	dodoc man/*.shtml
 
 	if use perl; then
-
 		newbin bin/lavennin suopuhe-lavennin
-		dodir /usr/share/suopuhe/data/
+
 		insinto /usr/share/suopuhe
 		doins -r data
 
