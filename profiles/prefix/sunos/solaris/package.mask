@@ -6,10 +6,6 @@
 # has multiple compilation issue, resolved for 1.1.8, bug #602990
 =app-misc/pax-utils-1.1.7
 
-# Fabian Groffen <grobian@gentoo.org> (13 Jun 2015)
-# Needs patching to compile (d_type and DT_REG), bug #551696
-=app-portage/portage-utils-0.56
-
 # Fabian Groffen <grobian@gentoo.org> (14 Jan 2014)
 # util-linux has no business on Solaris systems
 sys-apps/util-linux
