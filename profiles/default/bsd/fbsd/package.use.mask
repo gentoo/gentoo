@@ -32,9 +32,6 @@ sys-apps/openrc pam
 # app-admin/gkrellm may pull in hddtemp, which is not yet available here
 app-admin/gkrellm hddtemp
 
-# Somehow, check's tests are broken..
-dev-util/checkstyle test
-
 # PDA masked until we can do some testing on it
 mail-client/claws-mail pda
 
