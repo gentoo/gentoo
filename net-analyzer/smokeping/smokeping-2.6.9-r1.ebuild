@@ -12,7 +12,7 @@ LICENSE="GPL-2"
 SLOT="0"
 # dropping hppa and sparc because of way too may dependencies not having
 # keywords in those architectures.
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 # removing fcgi useflag as the configure script can't avoid it without patching
 IUSE="apache2 curl dig echoping ipv6 ldap radius ssh telnet"
@@ -28,7 +28,7 @@ DEPEND="
 	echoping? ( >=net-analyzer/echoping-6.0.2 )
 	ipv6? ( >=dev-perl/Socket6-0.20 )
 	ldap? ( dev-perl/perl-ldap )
-	radius? ( dev-perl/RadiusPerl )
+	radius? ( dev-perl/Authen-Radius )
 	ssh? ( dev-perl/Net-OpenSSH )
 	telnet? ( dev-perl/Net-Telnet )
 	|| ( dev-perl/CGI-Fast <dev-perl/CGI-4 )
@@ -55,6 +55,8 @@ pkg_setup() {
 
 src_prepare() {
 	rm -r lib/{BER.pm,SNMP_Session.pm,SNMP_util.pm} # dev-perl/SNMP_Session
+
+	epatch "${FILESDIR}"/${P}-pod.patch
 }
 
 src_configure() {
@@ -70,7 +72,7 @@ src_compile() {
 src_install() {
 	default
 
-	newinitd "${FILESDIR}"/${PN}.init.4 ${PN}
+	newinitd "${FILESDIR}/${PN}.init.3" ${PN}
 	systemd_dotmpfilesd "${FILESDIR}"/"${PN}".conf
 	systemd_dounit "${FILESDIR}"/"${PN}".service
 
@@ -118,6 +120,9 @@ src_install() {
 		insinto /etc/apache2/modules.d
 		doins "${FILESDIR}/79_${PN}.conf"
 	fi
+
+	dodir /var/cache/smokeping
+	keepdir /var/cache/smokeping
 
 	# Create the files in /var for rrd file storage
 	keepdir /var/lib/${PN}/.simg

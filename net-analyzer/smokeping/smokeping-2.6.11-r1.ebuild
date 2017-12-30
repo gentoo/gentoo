@@ -45,7 +45,7 @@ DEPEND="
 	dig? ( net-dns/bind-tools )
 	echoping? ( >=net-analyzer/echoping-6.0.2 )
 	ipv6? ( >=dev-perl/Socket6-0.20 )
-	radius? ( dev-perl/RadiusPerl )
+	radius? ( dev-perl/Authen-Radius )
 "
 
 RDEPEND="${DEPEND}"

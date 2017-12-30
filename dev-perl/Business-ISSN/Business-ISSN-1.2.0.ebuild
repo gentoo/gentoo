@@ -17,14 +17,12 @@ DEPEND="
 	test? ( virtual/perl-Test-Simple )
 "
 
-SRC_TEST=do
-
 src_install() {
 	perl-module_src_install
 	rm -rf "${ED}"/usr/share/man || die
 }
 
 src_test() {
-	perl_rm_files t/pod.t t/pod_coverage.t t/prereq.t
+	perl_rm_files t/pod.t t/pod_coverage.t
 	perl-module_src_test
 }
