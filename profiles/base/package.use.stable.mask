@@ -137,10 +137,6 @@ dev-lang/python-exec -python_targets_python3_6
 # bug #539212
 app-emulation/vice ffmpeg
 
-# Pacho Ramos <pacho@gentoo.org> (13 May 2015)
-# texinfo-5 cannot be stabilized yet
-=dev-lang/gnat-gcc-4.6* doc
-
 # Jeroen Roovers <jer@gentoo.org> (26 Apr 2015)
 # mongodb support is nice, but dev-libs/mongo-c-driver upstream is not ready
 # yet (bug #542210)
@@ -170,7 +166,7 @@ media-libs/opencv vtk
 
 # Mikle Kolyada <zlogene@gentoo.org> (16 Aug 2014)
 # Not yet stabilized dependency, need more testing
->=dev-perl/PDL-2.4.11 pdl2 pgplot plplot
+>=dev-perl/PDL-2.4.11 pdl2 pgplot
 
 # Samuli Suominen <ssuominen@gentoo.org> (01 Aug 2014)
 # Optional (not required by anything in gentoo-x86) and fragile (based on
