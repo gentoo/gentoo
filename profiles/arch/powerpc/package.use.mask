@@ -71,10 +71,6 @@ games-emulation/dosbox glide
 dev-db/mysql -numa
 dev-db/percona-server -numa
 
-# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
-# gnat-gpl is being removed, bug #514074
-mail-client/alpine topal
-
 # Davide Pesavento <pesa@gentoo.org> (28 Jul 2016)
 # The corresponding Qt5 modules are not keyworded on ppc, and we don't want to
 # keyword them solely because of PyQt5 while there are no other in-tree users.
@@ -248,7 +244,7 @@ sci-libs/gdal spatialite
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (31 Jan 2013)
 # remove mask when net-libs/libqmi is keyworded here
-net-misc/modemmanager qmi qmi-newest
+net-misc/modemmanager qmi
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (22 Jan 2013)
 # remove mask if/when media-gfx/argyllcms is keywored here.
@@ -301,10 +297,6 @@ sys-fs/dmraid dietlibc
 # Patrick McLean <chutzpah@gentoo.org> (07 Sep 2011)
 # missing keywords on dependencies
 media-video/x264-encoder ffmpegsource
-
-# Robin H. Johnson <robbat2@gentoo.org> (03 Sep 2011)
-# Remove this for your arch after you keyword dev-utils/google-perftools (bug #381737
-dev-libs/libmemcached tcmalloc
 
 # Kacper Kowalik <xarthisius@gentoo.org> (10 Aug 2011)
 # mask cuda dep for opencv bug 365451

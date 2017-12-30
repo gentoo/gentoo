@@ -9,10 +9,6 @@ app-misc/geoclue skyhook
 # unmask galera for dev-db/mariadb
 >=dev-db/mariadb-10.1.0 -galera
 
-# Agostino Sarubbo <ago@gentoo.org> (31 Jan 2012)
-# Mask because requires a lot of unstable depends not ready for the stabilization
-gnome-extra/nm-applet bluetooth
-
 # Brent Baude <ranger@gentoo.org> (06 Jan 2010)
 # masking toolame for mplayer bug 280281
 media-video/mplayer toolame
