@@ -316,9 +316,6 @@ ocamlopt
 fluidsynth
 
 # Mips USE flags
--ip27
--ip28
--ip30
 -fixed-point
 -loongson2f
 
