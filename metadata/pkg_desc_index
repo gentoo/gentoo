@@ -1480,7 +1480,7 @@ app-text/xdvik 22.87.03: DVI previewer for X Window System
 app-text/xfbib 0.0.2-r1: a lightweight BibTeX editor
 app-text/xhtml1 20020801-r4: DTDs for the eXtensible HyperText Markup Language 1.0
 app-text/xindy 2.4: A Flexible Indexing System
-app-text/xiphos 4.0.4 4.0.6a: A bible study frontend for Sword (formerly known as GnomeSword)
+app-text/xiphos 4.0.6a: A bible study frontend for Sword (formerly known as GnomeSword)
 app-text/xlhtml 0.5.1_p6: Convert MS Excel and Powerpoint files to HTML
 app-text/xml2doc 20030510-r1: Tool to convert simple XML to a variety of formats (pdf, html, txt, manpage)
 app-text/xmldiff 0.6.10-r1: A tool that figures out the differences between two similar XML files
@@ -3364,6 +3364,7 @@ dev-perl/Authen-DigestMD5 0.40.0-r1: SASL DIGEST-MD5 authentication (RFC2831)
 dev-perl/Authen-Htpasswd 0.171.0-r1: interface to read and modify Apache .htpasswd files
 dev-perl/Authen-NTLM 1.90.0-r1: An NTLM authentication module
 dev-perl/Authen-PAM 0.160.0-r1: Interface to PAM library
+dev-perl/Authen-Radius 0.220.0-r1: Communicate with a Radius server from Perl
 dev-perl/Authen-SASL 2.160.0-r1: A Perl SASL interface
 dev-perl/Authen-Simple 0.500.0: Simple Authentication
 dev-perl/Authen-Simple-Passwd 0.600.0: Simple Passwd authentication
@@ -4050,7 +4051,6 @@ dev-perl/Proc-Simple 1.320.0: Launch and control background processes
 dev-perl/Proc-Wait3 0.50.0: Perl extension for wait3 system call
 dev-perl/Proc-WaitStat 1.0.0-r1: Interpret and act on wait() status values
 dev-perl/RPC-XML 0.790.0: An implementation of XML-RPC
-dev-perl/RadiusPerl 0.220.0-r1: Communicate with a Radius server from Perl
 dev-perl/Readonly 2.0.0: Facility for creating read-only scalars, arrays, hashes
 dev-perl/Readonly-XS 1.50.0-r1: Companion module for Readonly.pm, to speed up read-only scalar variables
 dev-perl/Regexp-Common 2017060201.0.0: Provide commonly requested regular expressions
@@ -8277,7 +8277,7 @@ net-analyzer/scli 0.4.0-r1: SNMP Command Line Interface
 net-analyzer/sec 2.7.6-r1: Simple Event Correlator
 net-analyzer/sflowtool 3.34: sflowtool is a utility for collecting and processing sFlow data
 net-analyzer/slurm 0.3.3-r2: Realtime network interface monitor based on FreeBSD's pppstatus
-net-analyzer/smokeping 2.6.9: A powerful latency measurement tool
+net-analyzer/smokeping 2.6.9-r1: A powerful latency measurement tool
 net-analyzer/sniffit 0.3.7-r4: Interactive Packet Sniffer
 net-analyzer/snortsam 2.50-r1 2.70: Snort plugin that allows automated blocking of IP addresses on several firewalls
 net-analyzer/speedtest-cli 0.3.4-r1: Command line interface for testing internet bandwidth using speedtest.net
@@ -10385,7 +10385,7 @@ www-apache/passenger 5.1.6 5.1.11: Passenger makes deployment of Ruby on Rails a
 www-apps/Apache-Gallery 1.0_rc3-r1: Apache gallery for mod_perl
 www-apps/ampache 3.8.3: PHP-based tool for managing,updating and playing audio files via a web interface
 www-apps/b2evolution 4.1.7: Multilingual multiuser multi-blog engine
-www-apps/bugzilla 4.4.12-r1 5.0.3-r1: Bugzilla is the Bug-Tracking System from the Mozilla project
+www-apps/bugzilla 4.4.12-r2 5.0.3-r2: Bugzilla is the Bug-Tracking System from the Mozilla project
 www-apps/cgit 0.12: a fast web-interface for git repositories
 www-apps/collectd-web 0.4.0: Collectd-web is a web-based front-end for RRD data collected by collectd
 www-apps/curator 3.0_p20110120-r2: Gallery generator
