@@ -7,5 +7,6 @@ KEYWORDS=~amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/GD-2.300.0 >=dev-perl/Statistics-Descriptive-2.600.0 >=sci-biology/bioperl-1.5.9.1 dev-perl/CGI dev-lang/perl:=
 SLOT=0
+SRC_URI=mirror://cpan/authors/id/C/CJ/CJFIELDS/Bio-Graphics-2.40.tar.gz
 _eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
-_md5_=310acfb535a213c33d305dd4e64dc5b7
+_md5_=0000870fd3d50205d8da1eafb2e8f306
