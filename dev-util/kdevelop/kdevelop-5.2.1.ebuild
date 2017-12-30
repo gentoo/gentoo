@@ -13,7 +13,7 @@ inherit kde5
 DESCRIPTION="Integrated Development Environment, supporting KF5/Qt, C/C++ and much more"
 LICENSE="GPL-2 LGPL-2"
 IUSE="cvs +gdbui okteta +plasma +qmake reviewboard subversion webkit +welcomepage"
-[[ ${KDE_BUILD_TYPE} = release ]] && KEYWORDS="~amd64 ~x86"
+[[ ${KDE_BUILD_TYPE} = release ]] && KEYWORDS="~amd64 x86"
 
 REQUIRED_USE="test? ( welcomepage )"
 
