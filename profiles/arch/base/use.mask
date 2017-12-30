@@ -172,10 +172,6 @@ input_devices_wacom
 lcd_devices_svga
 lcd_devices_luise
 
-# Joseph Jezak <josejx@gentoo.org> (11 Mar 2007)
-# Only for x86 and amd64 (in pbbuttonsd)
-macbook
-
 # George Shapovalov <george@gentoo.org> (8 Apr 2007)
 # Ada is supported only on x86, amd64 and ppc at present
 ada
