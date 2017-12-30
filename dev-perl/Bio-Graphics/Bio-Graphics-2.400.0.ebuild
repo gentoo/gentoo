@@ -3,8 +3,8 @@
 
 EAPI=6
 
-MODULE_AUTHOR=CJFIELDS
-MODULE_VERSION=2.40
+DIST_AUTHOR=CJFIELDS
+DIST_VERSION=2.40
 inherit perl-module
 
 DESCRIPTION="Generate images from Bio::Seq objects for visualization purposes"
