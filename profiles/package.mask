@@ -29,6 +29,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Alice Ferrazzi <alicef@gentoo.org> (30 Dec 2017)
+# Masked for removal in 30 days.
+# Upstream is no more backporting security fixes for 4.12.
+# For a more stable kernel please downgrade to 4.9 
+# or move to 4.14(unstable) if it works for you.
+=sys-kernel/gentoo-sources-4.12.14
+=sys-kernel/gentoo-sources-4.12.13
+=sys-kernel/gentoo-sources-4.12.12
+
 # David Seifert <soap@gentoo.org> (29 Dec 2017)
 # Last release in 2003, EAPI 0, C++ extremely broken
 # Removal in 30 days
