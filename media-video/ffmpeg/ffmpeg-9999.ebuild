@@ -78,6 +78,7 @@ FFMPEG_FLAG_MAP=(
 		speex:libspeex svg:librsvg vorbis:libvorbis
 		vpx:libvpx zvbi:libzvbi
 		# libavfilter options
+		appkit
 		bs2b:libbs2b chromaprint flite:libflite frei0r
 		fribidi:libfribidi fontconfig ladspa libass truetype:libfreetype
 		rubberband:librubberband zeromq:libzmq zimg:libzimg
