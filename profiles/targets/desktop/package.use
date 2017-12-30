@@ -62,11 +62,6 @@ media-video/mpv lua luajit -sdl
 # Needed by x11-misc/xdg-utils.
 app-text/xmlto text
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (19 Feb 2015)
-# Set reasonable default toolkit for all desktops to prevent emerge error
-# when USE=tools
-x11-drivers/nvidia-drivers gtk2
-
 # Ben de Groot <yngwin@gentoo.org> (18 Feb 2015)
 # Enable sensible defaults for desktop users (bug #540046)
 dev-python/PyQt5 gui network printsupport widgets
@@ -93,7 +88,7 @@ media-libs/libpng apng
 # gudev, required by freedesktop.org udev helpers like udisks and upower
 # introspection, exception, enabled from here instead of ebuild to skip extra deps for a system package
 dev-libs/libgudev introspection
-sys-fs/eudev gudev introspection
+sys-fs/eudev introspection
 sys-fs/udev gudev introspection
 virtual/libgudev introspection
 
