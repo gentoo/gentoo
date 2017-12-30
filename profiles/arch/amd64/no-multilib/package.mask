@@ -17,7 +17,6 @@ mail-client/novell-groupwise-client
 # Mask packages that rely on amd64 multilib
 =app-editors/emacs-18*
 >=app-i18n/atokx3-3.0.0
-<games-roguelike/dwarf-fortress-0.43.0
 app-accessibility/mbrola
 app-accessibility/perlbox-voice
 app-arch/stuffit
@@ -27,13 +26,11 @@ app-emulation/playonlinux
 app-emulation/q4wine
 app-emulation/winetricks
 app-office/ooextras
-app-text/acroread
 dev-embedded/libftd2xx
 dev-embedded/openocd
 dev-lang/icc
 dev-lang/idb
 dev-lang/ifc
-dev-perl/Archive-Rar
 dev-util/android-ndk
 dev-util/android-sdk-update-manager
 dev-util/android-studio
@@ -134,7 +131,6 @@ games-strategy/heroes3-demo
 games-strategy/majesty-demo
 games-strategy/smac
 games-strategy/spaz
-media-fonts/acroread-asianfonts
 media-sound/aucdtect
 media-sound/ventrilo-server-bin
 media-video/binkplayer
@@ -150,7 +146,6 @@ sci-chemistry/mars
 sci-electronics/eagle
 sci-libs/ipp
 sys-libs/lib-compat-loki
-www-plugins/nspluginwrapper
 
 
 # AMD64 Team; <amd64@gentoo.org>
