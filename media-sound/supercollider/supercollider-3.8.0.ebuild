@@ -16,38 +16,51 @@ IUSE="avahi cpu_flags_x86_sse cpu_flags_x86_sse2 debug emacs +fftw gedit +gpl3 j
 REQUIRED_USE="^^ ( jack portaudio )"
 RESTRICT="mirror"
 
-# Both alsa and readline will be automatically checked in cmake but
-# there are no options for these. Thus the functionality cannot be
-# controlled through USE flags. Therefore hard-enabled.
 RDEPEND="
 	media-libs/alsa-lib
 	sys-libs/readline:0=
+	x11-libs/libX11
 	x11-libs/libXt
 	avahi? ( net-dns/avahi )
 	fftw? ( sci-libs/fftw:3.0= )
-	jack? ( media-sound/jack-audio-connection-kit )
+	jack? ( virtual/jack )
 	portaudio? ( media-libs/portaudio )
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
-		dev-qt/qtpositioning:5
-		dev-qt/qtsensors:5
+		dev-qt/qtnetwork:5
+		dev-qt/qtprintsupport:5
 		dev-qt/qtwebkit:5
+		dev-qt/qtwidgets:5
 	)
 	sndfile? ( media-libs/libsndfile )
-	wiimote? ( app-misc/cwiid )"
+	wiimote? ( app-misc/cwiid )
+	server? ( !app-admin/supernova )
+"
 DEPEND="${RDEPEND}
 	dev-libs/icu
 	virtual/pkgconfig
 	emacs? ( virtual/emacs )
 	gedit? ( app-editors/gedit )
-	vim? ( app-editors/vim )"
+	vim? ( app-editors/vim )
+	qt5? (
+		dev-qt/linguist-tools:5
+		dev-qt/qtdeclarative:5
+		dev-qt/qtconcurrent:5
+	)
+"
 
 S="${WORKDIR}/SuperCollider-Source"
 
+PATCHES=(
+	"${FILESDIR}"/${PV}-no-opengl.patch
+	"${FILESDIR}"/${PV}-no-qtsensors.patch
+	"${FILESDIR}"/${PV}-no-qtpositioning.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
-		AUDIOAPI=$(usex jack jack portaudio)
+		-DAUDIOAPI=$(usex jack jack portaudio)
 		-DINSTALL_HELP=ON
 		-DNATIVE=ON
 		-DSYSTEM_BOOST=OFF
@@ -58,6 +71,7 @@ src_configure() {
 		-DNO_LIBSNDFILE=$(usex !sndfile)
 		-DSC_QT=$(usex qt5)
 		-DSCLANG_SERVER=$(usex server)
+		-DSUPERNOVA=$(usex server)
 		-DLIBSCSYNTH=$(usex !static-libs)
 		-DSSE=$(usex cpu_flags_x86_sse)
 		-DSSE2=$(usex cpu_flags_x86_sse2)
