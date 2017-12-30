@@ -17,4 +17,3 @@ dev-vcs/git gpg
 
 # See bug #576928
 media-libs/mesa nptl
-x11-base/xorg-server nptl

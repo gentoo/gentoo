@@ -24,14 +24,6 @@ media-libs/mesa openmax
 # mask frost USE flag, broken with >=net-libs/polarssl-1.3.0, bug 489256
 net-p2p/fms frost
 
-# Markos Chandras <hwoarang@gentoo.org> (10 Nov 2013)
-# Does not build with polarssl in the tree.
-# see eg 9e36f0475f011912ee0897aa6487d7b9c190600e
-# in polarssl upstream.
-# The polarssl use flag may go away if the rtmpdump
-# upstream will not fix this problem soon
-media-video/rtmpdump polarssl
-
 # Diego Elio Pettenò (27 Aug 2012)
 # The libpci access is only used for linux.
 net-analyzer/net-snmp -pci
