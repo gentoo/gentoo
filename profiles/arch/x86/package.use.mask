@@ -3,6 +3,11 @@
 
 # This file requires >=portage-2.1.1
 
+# Michał Górny <mgorny@gentoo.org> (30 Dec 2017)
+# Moved from use.mask since it is a flag local to one package:
+# pbbuttonsd and macbook for KDE and pbuttonsd it
+app-laptop/pbbuttonsd -macbook
+
 # Hans de Graaff <graaff@gentoo.org> (8 Dec 2017)
 # Test dependencies are no longer keyworded due to dropped Rails
 # keyword.

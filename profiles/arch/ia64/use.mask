@@ -81,7 +81,6 @@ bs2b
 tokyocabinet
 schroedinger
 ots
-eclipse
 vaapi
 librtmp
 rtmp
@@ -113,10 +112,6 @@ ocamlopt
 # Raúl Porcel <armin76@gentoo.org> (23 Apr 2011)
 # Needs to be tested
 video_cards_nouveau
-
-# Matt Turner <mattst88@gmail.com> (06 May 2011)
-# media-sound/mumble not keyworded on ppc
-mumble
 
 # Samuli Suominen <ssuominen@gentoo.org> (02 Dec 2009)
 # This will need media-sound/musepack-tools

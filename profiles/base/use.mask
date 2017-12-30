@@ -12,7 +12,6 @@ input_devices_aiptek
 input_devices_fpit
 input_devices_hyperpen
 input_devices_mutouch
-input_devices_pentouch
 
 # Matt Turner <mattst88@gentoo.org> (23 Nov 2017)
 # For ancient hardware. Tired of maintaining. Masked for removal in 30 days.

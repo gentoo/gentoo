@@ -1,6 +1,12 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (30 Dec 2017)
+# Moved from use.mask since it is a flag local to one package:
+# Joseph Jezak <josejx@gentoo.org> (11 Mar 2007)
+# Only for x86 and amd64 (in pbbuttonsd)
+app-laptop/pbbuttonsd macbook
+
 # Amy Liffey <amynka@gentoo.org> (19 Sep 2017)
 # Requires [cuda] which is masked in most of the profiles.
 media-libs/opencv contrib_xfeatures2d

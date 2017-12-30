@@ -26,9 +26,6 @@
 -neon
 -armvfp
 
-# doomsday ebuild is not available on this architecture
-doomsday
-
 # Mart Raudsepp <leio@gentoo.org> (17 Feb 2017)
 # x11-misc/colord not tested on arm64 yet
 colord
@@ -101,7 +98,6 @@ R
 octave
 tracker
 xindy
-lyx
 mpi
 lasi
 schroedinger
@@ -166,7 +162,6 @@ aacplus
 devil
 gts
 anthy
-ace
 R
 sdl
 vim-syntax

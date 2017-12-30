@@ -27,7 +27,6 @@ R
 octave
 tracker
 xindy
-lyx
 mpi
 lasi
 lensfun
@@ -66,7 +65,6 @@ timidity
 fluidsynth
 mms
 sid
-autotrace
 lqr
 musepack
 authdaemond
@@ -126,7 +124,6 @@ dri
 
 # nspr isnt ported to SuperH which means no seamonkey/firefox/etc...
 nsplugin
-firefox
 nss
 seamonkey
 

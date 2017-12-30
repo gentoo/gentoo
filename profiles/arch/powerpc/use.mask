@@ -57,7 +57,6 @@ acpi
 lm_sensors
 rar
 hdf
-fmod
 xvmc
 # cg is only provided by nvidia's binary only cg toolkit
 cg
@@ -137,10 +136,6 @@ ios
 # Samuli Suominen <ssuominen@gentoo.org> (03 Nov 2010)
 # and it's also masked in arch/powerpc/ppc64/32ul/package.mask
 lirc
-
-# Matt Turner <mattst88@gmail.com> (06 May 2011)
-# media-sound/mumble not keyworded on ppc
-mumble
 
 # Kacper Kowalik <xarthisius@gentoo.org> (26 Jul 2011)
 # ppc keywords were dropped for dev-libs/prelude
