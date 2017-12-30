@@ -29,7 +29,7 @@ app-accessibility/sphinxbase 0.8: Support library required by the Sphinx Speech 
 app-accessibility/yasr 0.6.9-r1: general-purpose console screen reader
 app-admin/abrt 2.0.12-r2: Automatic bug detection and reporting tool
 app-admin/analog 6.0-r4: A webserver log analyzer
-app-admin/ansible 2.4.1.0-r1: Model-driven deployment, config management, and command execution framework
+app-admin/ansible 2.4.1.0-r1 2.4.2.0: Model-driven deployment, config management, and command execution framework
 app-admin/apache-tools 2.2.34 2.4.27: Useful Apache tools - htdigest, htpasswd, ab, htdbm
 app-admin/apachetop 0.12.6-r2: A realtime Apache log analyzer
 app-admin/apg 2.3.0b-r5: Another Password Generator
@@ -4615,7 +4615,7 @@ dev-python/cangjie 1.2-r1: The Python bindings to libcangjie
 dev-python/carbon 0.9.13: Backend data caching and persistence daemon for Graphite
 dev-python/carrot 0.10.7-r1: AMQP Messaging Framework for Python
 dev-python/case 1.5.2: Python unittest Utilities
-dev-python/castellan 0.4.0 0.12.0: Generic Key Manager interface for OpenStack
+dev-python/castellan 0.4.0 0.12.1: Generic Key Manager interface for OpenStack
 dev-python/casuarius 1.1: Cython wrapper for the Cassowary incremental constraint solver
 dev-python/cbor 1.0.0: RFC 7049 - Concise Binary Object Representation
 dev-python/cddb-py 1.4-r1: CDDB Module for Python
@@ -5065,7 +5065,7 @@ dev-python/os-vif 1.2.1 1.4.1 1.7.0: OpenStack Cinder brick library for managing
 dev-python/os-win 0.4.0 1.2.1 1.4.1 2.2.0: Windows / Hyper-V library for OpenStack projects.
 dev-python/os-xenapi 0.1.1 0.2.0: XenAPI library for OpenStack projects
 dev-python/osc-lib 1.1.0 1.3.0 1.7.0: A package of common support modules for writing OSC plugins.
-dev-python/oslo-cache 1.17.0 1.25.0: Oslo Caching around dogpile.cache
+dev-python/oslo-cache 1.17.0 1.25.1: Oslo Caching around dogpile.cache
 dev-python/oslo-concurrency 3.18.1 3.21.1: library for running multi-thread, multi-process applications
 dev-python/oslo-config 3.22.1 4.11.1: Oslo Configuration API
 dev-python/oslo-context 2.12.2 2.17.1: Helpers to maintain useful information about a request context
@@ -5075,16 +5075,16 @@ dev-python/oslo-log 3.20.1 3.30.1: OpenStack logging config library, configurati
 dev-python/oslo-messaging 5.17.2 5.30.1: Messaging API for RPC and notifications over different messaging transports
 dev-python/oslo-middleware 3.23.2 3.30.1: Components injected into wsgi pipelines to intercept request/response flows.
 dev-python/oslo-policy 1.18.0 1.25.2: Support for RBAC policy enforcement across all OpenStack services
-dev-python/oslo-privsep 1.16.0 1.22.0: OpenStack library for privilege separation.
-dev-python/oslo-reports 1.17.0 1.22.0: generified reports for openstack
+dev-python/oslo-privsep 1.16.0 1.22.1: OpenStack library for privilege separation.
+dev-python/oslo-reports 1.17.1 1.22.1: generified reports for openstack
 dev-python/oslo-rootwrap 5.4.2 5.9.2: Allows fine filtering of shell commands to run as root from OpenStack services
 dev-python/oslo-serialization 2.16.1 2.20.1: Oslo Serialization library
-dev-python/oslo-service 1.19.0 1.25.0: Library for running OpenStack services
+dev-python/oslo-service 1.19.1 1.25.1: Library for running OpenStack services
 dev-python/oslo-sphinx 4.7.0 4.15.2: OpenStack Sphinx Extensions and Theme
 dev-python/oslo-utils 3.22.1 3.28.1: Oslo Utility library
-dev-python/oslo-versionedobjects 1.21.1 1.26.0: A library that provides a generic versioned and RPC-friendly object model.
+dev-python/oslo-versionedobjects 1.21.1 1.26.1: A library that provides a generic versioned and RPC-friendly object model.
 dev-python/oslo-vmware 2.17.1 2.23.1: Oslo VMware library for OpenStack projects
-dev-python/oslotest 2.4.0: Oslo test framework
+dev-python/oslotest 2.4.0 2.17.1: Oslo test framework
 dev-python/osprofiler 1.2.0 1.4.0 1.5.0 1.11.0: OpenStack Profiler Library
 dev-python/ovs 2.4.0 2.6.1 2.7.0: OVS bindings for python.
 dev-python/ovsdbapp 0.4.0: A library for creating OVSDB applications
@@ -5332,7 +5332,7 @@ dev-python/python-magic 0.4.10: Access the libmagic file type identification lib
 dev-python/python-magnumclient 2.3.1: A client for the OpenStack Magnum API
 dev-python/python-manilaclient 1.11.0 1.14.0: A client for the OpenStack Manila API
 dev-python/python-memcached 1.53-r1 1.58: Pure python memcached client
-dev-python/python-mistralclient 3.0.2 3.1.3: A client for the OpenStack Mistral API
+dev-python/python-mistralclient 3.0.2 3.1.4: A client for the OpenStack Mistral API
 dev-python/python-monascaclient 1.5.1 1.7.0: A client for the OpenStack Monasca API
 dev-python/python-mpd 0.5.5: Python MPD client library
 dev-python/python-musicbrainz 0.7.4-r1: Python Bindings for the MusicBrainz XML Web Service
@@ -5357,7 +5357,7 @@ dev-python/python-virtkey 0.60.0-r1: Python module to simulate keypresses and ge
 dev-python/python-wpactrl 20081102-r1: A Python extension for wpa_supplicant/hostapd control interface access
 dev-python/python-xlib 0.15_rc1-r2: A fully functional X client library for Python, written in Python
 dev-python/python-zaqarclient 1.2.0: A client for the OpenStack Zaqar API
-dev-python/python-zunclient 0.4.0: A client for the OpenStack Zun API
+dev-python/python-zunclient 0.4.1: A client for the OpenStack Zun API
 dev-python/python3-openid 3.0.4_p1 3.1.0: Python 3 port of the python-openid library
 dev-python/pythondialog 3.2.2 3.3.0: A Python module for making simple text/console-mode user interfaces
 dev-python/pytidylib 0.2.4: Python wrapper for HTML Tidy (tidylib)
@@ -8205,7 +8205,7 @@ net-analyzer/gspoof 3.2-r2: A simple GTK/command line TCP/IP packet generator
 net-analyzer/hping 3_pre20051105-r6: A ping-like TCP/IP packet assembler/analyzer
 net-analyzer/httping 2.5: http protocol ping-like program
 net-analyzer/hydra 8.1: Advanced parallized login hacker
-net-analyzer/icinga 1.13.4 1.14.0: Nagios Fork - Check daemon, CGIs, docs, IDOutils
+net-analyzer/icinga 1.14.2: Nagios Fork - Check daemon, CGIs, docs, IDOutils
 net-analyzer/icinga2 2.7.0-r1 2.7.1-r1 2.8.0: Distributed, general purpose, network monitoring engine
 net-analyzer/ifstat 1.1-r2: Network interface bandwidth usage, with support for snmp targets
 net-analyzer/ifstatus 1.1.0-r1 1.1.0-r2: A simple CLI program for displaying network statistics in real time
