@@ -1,9 +1,6 @@
 # Unmask the flag which corresponds to ARCH.
 -nios2
 
-# doomsday ebuild is not available on this architecture
-doomsday
-
 # Markus Meier <maekke@gentoo.org> (22 Aug 2010)
 # net-wireless/wimax not tested
 wimax
@@ -51,7 +48,6 @@ R
 octave
 tracker
 xindy
-lyx
 mpi
 lasi
 schroedinger
@@ -121,7 +117,6 @@ aacplus
 devil
 gts
 anthy
-ace
 icu
 gtk
 qt4

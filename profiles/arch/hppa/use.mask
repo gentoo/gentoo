@@ -121,10 +121,6 @@ thunar
 # Webkit does not work on HPPA right now.
 webkit
 
-# Jeroen Roovers <jer@gentoo.org> (25 Oct 2010)
-# FFI does not work: "Unknown cpu type" (bug #337956)
-ffi
-
 # Jeroen Roovers <jer@gentoo.org> (20 Jul 2010)
 # Mask USE=gnome entirely (bug #324511)
 glade
@@ -239,7 +235,6 @@ video_cards_tdfx
 video_cards_tga
 video_cards_trident
 video_cards_tseng
-video_cards_v4l
 video_cards_vesa
 video_cards_voodoo
 
@@ -301,6 +296,3 @@ djbfft
 # media-sound/beep-media-player and remove if
 bmp
 3dfx
-
-# Adding h323 to mask. For more information see bug #115798
-h323

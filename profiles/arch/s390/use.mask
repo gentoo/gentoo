@@ -16,12 +16,10 @@ pbins
 R
 octave
 xindy
-lyx
 lasi
 kde
 mpi
 fuse
-autotrace
 lqr
 libproxy
 tokyocabinet
@@ -111,7 +109,6 @@ video_cards_i128
 video_cards_i740
 video_cards_mach64
 video_cards_mga
-video_cards_modesetting
 video_cards_neomagic
 video_cards_nouveau
 video_cards_nv

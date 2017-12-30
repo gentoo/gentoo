@@ -58,7 +58,6 @@ R
 octave
 tracker
 xindy
-lyx
 lasi
 hardened
 pdfannotextractor

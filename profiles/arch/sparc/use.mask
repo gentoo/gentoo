@@ -43,7 +43,6 @@ nagios-game
 
 # Samuli Suominen <ssuominen@gentoo.org> (07 May 2012)
 # Missing keywording in www-client/firefox wrt #360427
-firefox
 mozilla
 thunderbird
 
@@ -83,10 +82,6 @@ romio
 # They're borked
 dar32
 dar64
-
-# 2006/09/05 - Tupone Alfredo <tupone@gentoo.org>
-# doomsday ebuild is not available on this architecture
-doomsday
 
 # Needs java
 pdfannotextractor
@@ -161,10 +156,6 @@ ots
 frei0r
 prelude
 redis
-
-# Asterisk use flag masking
-zaptel
-
 
 # USE-flags from differents origins
 brltty

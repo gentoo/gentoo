@@ -121,9 +121,6 @@ vpopmail
 # We don't have any virtual/mpi (bug 111807)
 mpi
 
-# masks required for asterisk
-zaptel
-
 # Modular X: mask non-alpha cards
 video_cards_apm
 video_cards_ark
