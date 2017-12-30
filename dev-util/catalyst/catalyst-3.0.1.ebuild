@@ -16,7 +16,7 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
 fi
 
-PYTHON_COMPAT=( python{3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 inherit distutils-r1 multilib ${SRC_ECLASS}
 
@@ -32,7 +32,7 @@ DEPEND="
 	>=dev-python/snakeoil-0.6.5[${PYTHON_USEDEP}]
 "
 RDEPEND="
-	=dev-python/pydecomp-9999[${PYTHON_USEDEP}]
+	>=dev-python/pydecomp-0.2[${PYTHON_USEDEP}]
 	app-arch/lbzip2
 	app-crypt/shash
 	sys-fs/dosfstools
@@ -48,7 +48,6 @@ RDEPEND="
 python_prepare_all() {
 	echo VERSION="${PV}" "${PYTHON}" setup.py set_version
 	VERSION="${PV}" "${PYTHON}" setup.py set_version
-	distutils-r1_python_prepare_all
 }
 
 python_compile_all() {
