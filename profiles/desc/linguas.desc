@@ -1,11 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # This file contains descriptions of LINGUAS USE_EXPAND flags.
 
 # Keep it sorted.
 
-ach - Acoli locale
 af - Afrikaans locale
 af_ZA - Afrikaans locale for South Africa
 ak - Akan locale
@@ -28,7 +27,6 @@ bn_BD - Bengali locale for Bangladesh
 bn_IN - Bengali locale for India
 bo - Tibetan locale
 br - Breton locale
-brx - Bodo locale for India
 bs - Bosnian locale
 byn - Bilin (Bilen, Blin) locale
 ca - Catalan locale
@@ -50,17 +48,13 @@ de - German locale
 de@1901 - German locale with old spelling
 de_CH - German locale for Switzerland
 de_DE - German locale for Germany
-dgo - Dogri locale for India
-doi - Dogri locale
 dz - Dzongkha locale
-ee - Ewe locale
 el - Greek locale
 el_GR - Greek locale
 en - English locale
 en@shaw - Shavian locale
 en_AU - English locale for Australia
 en_CA - English locale for Canada
-en_EN - English locale
 en_GB - English locale for Britain
 en_US - English locale
 en_ZA - English locale for South Africa
@@ -95,23 +89,19 @@ fur - Friullian locale
 fy - Frisian locale
 fy_NL - Frisian language locale for the Netherlands
 ga - Irish locale
-ga_IE - Irish locale for Ireland
 gd - Gaelic locale
 gez - Ge'ez locale
 gl - Galician locale
 gl_ES - Galician locale for Spain
 gu - Gujarati locale
 gu_IN - Gujarati locale for India
-gug - Paraguayan (Guarani) locale
 haw - Hawaiian locale
 he - Hebrew locale
 he_IL - Hebrew locale for Israel
 hi - Hindi locale
 hi_IN - Hindi locale
-hne - Chhattisgarhi locale
 hr - Croatian locale
 hr_HR - Croatian locale
-hsb - Upper Sorbian locale
 hu - Hungarian locale
 hu_HU - Hungarian locale
 hy - Armenian locale
@@ -138,7 +128,6 @@ kn_IN - Kannada locale for India
 ko - Korean locale
 ko_KR - Korean locale
 kok - Konkani locale
-ks - Kashmiri locale
 ksw - S'gaw Karen locale
 ku - Kurdish (latin) locale
 ku_IQ - Kurdish (latin) locale for Iraq
@@ -161,7 +150,6 @@ mk - Macedonian locale
 mk_MK - Macedonian locale for Macedonia
 ml - Malayalam locale
 mn - Mongolian locale
-mni - Manipuri locale
 mr - Marathi locale
 ms - Malay locale
 ms_MY - Malay locale for Malaysia
@@ -173,20 +161,17 @@ nb_NO - Norwegian (Bokmal) locale for Norway
 nds - Low Saxon locale
 ne - Nepali locale
 nl - Dutch locale
-nl_BE - Dutch locale for Belgium (Flemish)
 nl_NL - Dutch locale for the Netherlands
 nn - Nynorsk locale
 nn_NO - Nynorsk locale for Norway
 no - Norwegian locale
 no_NO - Norwegian locale for Norway
 nqo - N'Ko locale
-nr - Ndebele (South) locale
 nso - Northern Sotho locale
 oc - Occitan locale
 om - Oromo locale
 or - Oriya locale
 pa - Punjabi locale for India
-pa_IN - Punjabi locale for India
 pam - Kapampangan locale
 pap - Papiamento locale
 pl - Polish locale
@@ -203,12 +188,8 @@ ru_RU - Russian locale for Russia
 rue - Rusyn locale
 rw - Kinyarwanda locale
 sa - Sanskrit locale
-sa_IN - Sanskrit locale for India
-sah - Sakha (Yakut) locale
-sat - Santali locale
 sc - Sardinian locale
 sco - Scots locale
-sd - Sindhi locale
 se - Northern Saami locale
 shn - Shan locale
 si - Sinhala locale
@@ -218,7 +199,6 @@ sk_SK - Slovak locale
 sl - Slovenian locale
 sl_SI - Slovenian locale
 so - Somali locale
-son - Songhai locale
 sq - Albanian locale
 sq_AL - Albanian locale
 sr - Serbian locale
@@ -229,19 +209,13 @@ sr@latin - Serbian (latin) locale
 sr_RS - Serbian locale for Serbia
 sr_RS@cyrillic - Serbian (cyrillic) locale for Serbia
 sr_RS@latin - Serbian (latin) locale for Serbia
-ss - Swati locale
-st - Southern Sotho locale
 sv - Swedish locale
 sv_SE - Swedish locale for Sweden
 sw - Swahili locale
-sw_TZ - Swahili locale for Tanzania
-syc - Syriac locale
 ta - Tamil locale
 ta_IN - Tamil locale
-ta_LK - Tamil locale for Sri Lanka
 te - Telugu locale
 tg - Tajik locale
-tg_TJ - Tajik locale Tajikistan
 th - Thai locale
 th_TH - Thai locale Thailand
 ti - Tigrinya locale
@@ -249,7 +223,6 @@ tig - Tigre locale
 tk - Turkmen locale
 tl - Tagalog locale
 tlh - Klingon locale
-tn - Tswana locale
 tpi - Tok Pisin locale
 tr - Turkish locale
 tr_TR - Turkish locale for Turkey

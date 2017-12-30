@@ -1,9 +1,8 @@
-# Copyright 1999-2006 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # This file contains descriptions of CROSSCOMPILE_OPTS USE_EXPAND flags.
 
 # Keep it sorted.
 
-bootstrap - Build only a bootstrap version of the toolchain.
 headers-only - Build the toolchain against cross-headers only.
