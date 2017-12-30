@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cmake-utils
+inherit cmake-utils toolchain-funcs flag-o-matic
 
 DESCRIPTION="A precise PDF to HTML converter"
 HOMEPAGE="http://coolwanglu.github.io/pdf2htmlEX/"
@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64"
 
 IUSE=""
 
@@ -30,3 +30,19 @@ RDEPEND="${CDEPEND}
 DEPEND="${CDEPEND}
 	virtual/pkgconfig
 "
+
+pkg_pretend() {
+	local ver=6.4.0
+	local msg="${P} needs at least GCC ${ver} set to compile."
+	if [[ ${MERGE_TYPE} != binary ]]; then
+		if ! version_is_at_least ${ver} $(gcc-fullversion); then
+			die ${msg}
+		fi
+	fi
+}
+
+src_configure() {
+	append-cflags -no-pie
+	append-cxxflags -no-pie
+	cmake-utils_src_configure
+}

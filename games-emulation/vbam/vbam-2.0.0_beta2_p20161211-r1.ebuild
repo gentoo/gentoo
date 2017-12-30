@@ -54,6 +54,7 @@ PATCHES=(
 )
 
 src_configure() {
+	use wxwidgets && setup-wxwidgets
 	local mycmakeargs=(
 		-DENABLE_CAIRO=$(usex cairo)
 		-DENABLE_FFMPEG=$(usex ffmpeg)
