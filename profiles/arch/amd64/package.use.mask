@@ -230,9 +230,6 @@ dev-qt/qtwebkit -jit
 # Masked in base, unmask for amd64/x86
 >=media-video/mplayer-1.0_rc4_p20101219 -bluray
 
-# doomsday doesn't work on amd64 so mask off things that pull it in.
-games-fps/doom-data doomsday
-
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (28 Nov 2010)
 # sys-devel/llvm is keyworded on amd64
 media-libs/mesa -llvm
