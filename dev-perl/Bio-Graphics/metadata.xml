@@ -93,6 +93,7 @@
     <remote-id type="cpan-module">Bio::Graphics::Glyph::three_letters</remote-id>
     <remote-id type="cpan-module">Bio::Graphics::Glyph::tic_tac_toe</remote-id>
     <remote-id type="cpan-module">Bio::Graphics::Glyph::toomany</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::topoview</remote-id>
     <remote-id type="cpan-module">Bio::Graphics::Glyph::trace</remote-id>
     <remote-id type="cpan-module">Bio::Graphics::Glyph::track</remote-id>
     <remote-id type="cpan-module">Bio::Graphics::Glyph::transcript</remote-id>
