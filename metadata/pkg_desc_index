@@ -10042,7 +10042,7 @@ sys-kernel/bliss-initramfs 6.8.3-r2 7.1.0: Boot your system's rootfs from ZFS, L
 sys-kernel/dracut 044-r1 045-r2: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.52.3 3.4.52.4-r2: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 66: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 3.10.107-r1 4.1.43-r1 4.4.87-r1 4.9.49-r1 4.12.12: Full sources including the Gentoo patchset for the 4.12 kernel tree
+sys-kernel/gentoo-sources 3.10.107-r1 4.1.43-r1 4.4.87-r1 4.9.49-r1: Full sources including the Gentoo patchset for the 4.9 kernel tree
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
 sys-kernel/linux-firmware 20170314: Linux firmware files
 sys-kernel/linux-headers 3.18 4.3 4.4: Linux system headers
