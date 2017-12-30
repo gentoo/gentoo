@@ -46,6 +46,7 @@ RDEPEND="
 "
 
 python_prepare_all() {
+	python_setup
 	echo VERSION="${PV}" "${PYTHON}" setup.py set_version
 	VERSION="${PV}" "${PYTHON}" setup.py set_version
 	distutils-r1_python_prepare_all
