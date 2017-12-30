@@ -271,4 +271,9 @@ pkg_postinst() {
 			ewarn "  only enable gpgme."
 		fi
 	fi
+	if use gpgme ; then
+		ewarn "Note: in order for Mutt to actually use the gpgme backend"
+		ewarn "      you MUST include 'set crypt_use_gpgme=yes' in .muttrc"
+		ewarn "      https://dev.mutt.org/doc/manual.html#crypt-use-gpgme"
+	fi
 }
