@@ -42,10 +42,6 @@ dev-vcs/git pcre-jit
 # Stack protector code is not ported to alpha (and may not ever be)
 >=sys-devel/gcc-6 ssp
 
-# Tobias Klausmann <klausman@gentoo.org> (08 May 2017)
-# USE=test requires valgrind, which will never be ported to alpha
-app-misc/jq test
-
 # Tobias Klausmann <klausman@gentoo.org> (02 Mar 2017)
 # libilbc has not been ported to alpha and likely never will be.
 media-video/ffmpeg libilbc
@@ -211,7 +207,6 @@ net-misc/networkmanager teamd
 # See bug #533420.
 media-libs/clutter egl wayland
 media-libs/clutter-gtk wayland
-x11-wm/mutter kms
 
 # Mark Wright <gienah@gentoo.org> (14-23 Dec 2014)
 # test dependencies need keywording
@@ -282,7 +277,7 @@ media-libs/gst-plugins-base ivorbis
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (31 Jan 2013)
 # remove mask when net-libs/libqmi is keyworded here
-net-misc/modemmanager qmi qmi-newest
+net-misc/modemmanager qmi
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (22 Jan 2013)
 # remove mask if/when media-gfx/argyllcms is keywored here.
@@ -338,10 +333,6 @@ app-text/asciidoc test
 # Patrick McLean <chutzpah@gentoo.org> (07 Sep 2011)
 # missing keywords on dependencies
 media-video/x264-encoder ffmpegsource
-
-# Robin H. Johnson <robbat2@gentoo.org> (03 Sep 2011)
-# Remove this for your arch after you keyword dev-utils/google-perftools (bug #381737)
-dev-libs/libmemcached tcmalloc
 
 # Alexey Shvetsov <alexxy@gentoo.org> (31 Aug 2011)
 # Mask numa use flag per bug #381313
