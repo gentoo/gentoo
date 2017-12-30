@@ -3176,7 +3176,7 @@ dev-libs/oniguruma 5.9.5 6.6.1: Regular expression library for different charact
 dev-libs/openct 0.6.20-r4: library for accessing smart card terminals
 dev-libs/openobex 1.7.1: Implementation of the OBEX protocol used for transferring data to mobile devices
 dev-libs/opensc 0.16.0: Libraries and applications to access smartcards
-dev-libs/openssl 0.9.8z_p8 1.0.2k 1.0.2l 1.0.2m 1.0.2n: full-strength general purpose cryptography library (including SSL and TLS)
+dev-libs/openssl 0.9.8z_p8 1.0.2n: full-strength general purpose cryptography library (including SSL and TLS)
 dev-libs/ossp-uuid 1.6.2-r4 1.6.2-r6: An ISO-C:1999 API with CLI for generating DCE, ISO/IEC and RFC compliant UUID
 dev-libs/pakchois 0.4-r2: PaKChoiS - PKCS #11 wrapper library
 dev-libs/pcre++ 0.9.5-r1: A C++ support library for libpcre
@@ -8380,7 +8380,7 @@ net-firewall/nfacct 1.0.1: Command line tool to create/retrieve/delete accountin
 net-firewall/pglinux 2.3.1: Privacy oriented firewall application
 net-firewall/psad 2.2.5: Port Scanning Attack Detection daemon
 net-firewall/rtsp-conntrack 3.7: RTSP conntrack module for Netfilter
-net-firewall/shorewall 5.1.9 5.1.9-r1: A high-level tool for configuring Netfilter
+net-firewall/shorewall 5.1.9-r1: A high-level tool for configuring Netfilter
 net-firewall/ufw 0.34_pre805-r2 0.35-r1: A program used to manage a netfilter firewall
 net-firewall/xtables-addons 2.13: iptables extensions not yet accepted in the main kernel
 net-fs/autofs 5.0.7-r4 5.1.1-r1 5.1.2: Kernel based automounter
