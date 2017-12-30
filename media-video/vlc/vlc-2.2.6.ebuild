@@ -20,7 +20,7 @@ MY_PV="${PV/_/-}"
 MY_PV="${MY_PV/-beta/-test}"
 MY_P="${PN}-${MY_PV}"
 
-DESCRIPTION="VLC media player - Video player and streamer"
+DESCRIPTION="Media player and framework with support for most multimedia files and streaming"
 HOMEPAGE="https://www.videolan.org/vlc/"
 if [[ ${PV} = *9999 ]] ; then # Live ebuild
 	SRC_URI=""

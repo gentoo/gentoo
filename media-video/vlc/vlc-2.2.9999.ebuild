@@ -23,7 +23,7 @@ else
 fi
 inherit autotools flag-o-matic gnome2-utils toolchain-funcs versionator virtualx xdg-utils ${SCM}
 
-DESCRIPTION="VLC media player - Video player and streamer"
+DESCRIPTION="Media player and framework with support for most multimedia files and streaming"
 HOMEPAGE="https://www.videolan.org/vlc/"
 
 LICENSE="LGPL-2.1 GPL-2"
