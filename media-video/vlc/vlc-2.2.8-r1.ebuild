@@ -23,14 +23,14 @@ else
 fi
 inherit autotools flag-o-matic gnome2-utils toolchain-funcs versionator virtualx xdg-utils ${SCM}
 
-DESCRIPTION="VLC media player - Video player and streamer"
+DESCRIPTION="Media player and framework with support for most multimedia files and streaming"
 HOMEPAGE="https://www.videolan.org/vlc/"
 
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/5-8" # vlc - vlccore
 
 IUSE="a52 aalib alsa altivec atmo +audioqueue +avcodec +avformat bidi bluray cdda
-	cddb chromaprint dbus dc1394 debug directfb directx dts dvb +dvbpsi dvd dxva2
+	cddb chromaprint dbus dc1394 debug directx dts dvb +dvbpsi dvd dxva2
 	elibc_glibc +encode faad fdk fluidsynth +ffmpeg flac fontconfig +gcrypt gme
 	gnome gnutls growl gstreamer httpd ieee1394 jack jpeg kate libass libav
 	libcaca libnotify +libsamplerate libtiger linsys libtar lirc live lua
@@ -85,7 +85,6 @@ RDEPEND="
 	chromaprint? ( >=media-libs/chromaprint-0.6:0 )
 	dbus? ( >=sys-apps/dbus-1.6:0 )
 	dc1394? ( >=sys-libs/libraw1394-2.0.1:0 >=media-libs/libdc1394-2.1:2 )
-	directfb? ( dev-libs/DirectFB:0 )
 	dts? ( >=media-libs/libdca-0.0.5:0 )
 	dvbpsi? ( >=media-libs/libdvbpsi-1.0.0:0= )
 	dvd? ( >=media-libs/libdvdread-4.9:0 >=media-libs/libdvdnav-4.9:0 )
@@ -310,7 +309,6 @@ src_configure() {
 		$(use_enable cddb libcddb) \
 		$(use_enable chromaprint) \
 		$(use_enable dbus) \
-		$(use_enable directfb) \
 		$(use_enable directx) \
 		$(use_enable dc1394) \
 		$(use_enable debug) \
@@ -414,6 +412,7 @@ src_configure() {
 		--disable-cprof \
 		--disable-crystalhd \
 		--disable-decklink \
+		--disable-directfb \
 		--disable-gles1 \
 		--disable-gles2 \
 		--disable-goom \
