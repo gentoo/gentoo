@@ -7137,7 +7137,7 @@ media-gfx/fbida 2.12: Image viewers for the framebuffer console (fbi) and X11 (i
 media-gfx/feh 2.18.3: A fast, lightweight imageviewer using imlib2
 media-gfx/flam3 3.0.1: Tools and a library for creating flame fractal images
 media-gfx/fondu 20060102-r1: Utilities for converting between and manipulating mac fonts and unix fonts
-media-gfx/fontforge 20170731-r2: postscript font editor and converter
+media-gfx/fontforge 20170731-r3: postscript font editor and converter
 media-gfx/fontypython 0.4.4-r3: Font preview application
 media-gfx/fotowall 1.0: Qt5 tool for creating wallpapers
 media-gfx/fotoxx 13.11.1: Program for improving image files made with a digital camera
@@ -9920,7 +9920,7 @@ sys-devel/automake-wrapper 10: wrapper for automake to manage multiple automake 
 sys-devel/bc 1.06.95-r1: Handy console-based calculator utility
 sys-devel/bin86 0.16.20-r2 0.16.21: Assembler and loader used to create kernel bootsector
 sys-devel/binutils 2.29.1-r1: Tools necessary to build programs
-sys-devel/binutils-config 5-r3: Utility to change the binutils version being used
+sys-devel/binutils-config 5-r4: Utility to change the binutils version being used
 sys-devel/bison 1.875d 2.4.3 2.7.1 3.0.4-r1: A general-purpose (yacc-compatible) parser generator
 sys-devel/boost-m4 0.4: Another set of autoconf macros for compiling against boost
 sys-devel/clang 3.7.1-r100 3.9.1-r100 4.0.1: C language family frontend for LLVM
