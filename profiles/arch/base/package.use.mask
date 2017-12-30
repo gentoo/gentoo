@@ -136,7 +136,7 @@ app-editors/gvim luajit racket
 # Kacper Kowalik <xarthisius@gentoo.org> (09 Aug 2013)
 # Doesn't work on most profiles. Easier to mask here and
 # unmask in particular profiles
-sys-apps/hwloc gl opencl
+sys-apps/hwloc gl
 
 # Christoph Junghans <junghans@gentoo.org> (26 Dec 2012)
 # mkl only works on x86/amd64
@@ -161,9 +161,7 @@ app-arch/zpaq jit
 # Arun Raghavan <ford_prefect@gentoo.org> (28 Mar 2012)
 # webrtc-audio-processing is only supported on x86/amd64. Possibly arm can be
 # added.
-# Arun Raghavan <ford_prefect@gentoo.org> (24 May 2012)
-# Mask xen USE flag by default, unmask on x86/amd64 where it is supported.
-media-sound/pulseaudio webrtc-aec xen
+media-sound/pulseaudio webrtc-aec
 
 # Christoph Junghans <junghans@gentoo.org> (04 Feb 2012)
 # mips only use flags

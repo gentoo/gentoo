@@ -17,7 +17,6 @@ app-emulation/libvirt firewalld
 gnome-base/gdm wayland
 net-firewall/fwknop firewalld
 www-servers/uwsgi uwsgi_plugins_systemd_logger
-x11-wm/mutter kms
 >=x11-wm/mutter-3.22 wayland
 x11-misc/xscreensaver gdm
 xfce-extra/xfswitch-plugin gdm

@@ -52,7 +52,6 @@ sci-astronomy/stellarium sound
 # Requires unkeyworded dev-qt/qtwebkit:5, which is a PITA to maintain on
 # minor arches and has been declared deprecated by upstream. So we'd like
 # to avoid keywording it, unless requested by users.
-app-office/texmaker qt5
 dev-qt/designer webkit
 net-irc/quassel webkit
 kde-plasma/libksysguard detailedmemory

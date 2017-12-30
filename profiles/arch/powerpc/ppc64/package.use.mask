@@ -62,10 +62,6 @@ dev-qt/qtwebkit webchannel
 # missing keywords
 media-sound/audacity midi soundtouch
 
-# Justin Lecher <jlec@gentoo.org> (16 June 2015)
-# Pending bug upstream, #550818
-=app-office/scribus-1.5.0-r1 osg
-
 # Gilles Dartiguelongue <eva@gentoo.org> (09 Jun 2015)
 # dev-lang/luajit lack ppc64 keyword, bug #551540
 dev-libs/libpeas jit
@@ -115,10 +111,6 @@ x11-misc/rss-glx quesoglc
 # Masking webkit from  libproxy due to TOC failure on webkit
 # and stupid 64bit toolchain.
 net-libs/libproxy webkit
-
-# Brent Baude <ranger@gentoo.org> (11 June 2008)
-# Masking webkit from gimp do to lame ppc64 toolchain and TOC
->=media-gfx/gimp-2.6.4 webkit
 
 # Brent Baude <ranger@gentoo.org> (11 June 2008)
 # Masking out passwdqc from pambase since passwdqc

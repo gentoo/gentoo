@@ -205,7 +205,6 @@ net-misc/networkmanager teamd
 # See bug #533420.
 media-libs/clutter egl wayland
 media-libs/clutter-gtk wayland
-x11-wm/mutter kms
 
 # Mark Wright <gienah@gentoo.org> (14-23 Dec 2014, 1 Apr 2015)
 # test dependencies need keywording
@@ -277,7 +276,7 @@ media-sound/rhythmbox upnp-av
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (31 Jan 2013)
 # remove mask when net-libs/libqmi is keyworded here
-net-misc/modemmanager qmi qmi-newest
+net-misc/modemmanager qmi
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (22 Jan 2013)
 # remove mask if/when media-gfx/argyllcms is keywored here.
@@ -329,10 +328,6 @@ app-text/asciidoc test
 # Patrick McLean <chutzpah@gentoo.org> (07 Sep 2011)
 # missing keywords on dependencies
 media-video/x264-encoder ffmpegsource
-
-# Robin H. Johnson <robbat2@gentoo.org> (03 Sep 2011)
-# Remove this for your arch after you keyword dev-utils/google-perftools (bug #381737
-dev-libs/libmemcached tcmalloc
 
 # Alexey Shvetsov <alexxy@gentoo.org> (31 Aug 2011)
 # Mask numa use flag per bug #381313
