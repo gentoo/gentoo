@@ -32,7 +32,7 @@ DESCRIPTION="Light, fast and simple C library focused on standards-conformance a
 HOMEPAGE="http://www.musl-libc.org/"
 LICENSE="MIT LGPL-2 GPL-2"
 SLOT="0"
-IUSE="crosscompile_opts_headers-only"
+IUSE="headers-only"
 
 QA_SONAME="/usr/lib/libc.so"
 QA_DT_NEEDED="/usr/lib/libc.so"
@@ -42,7 +42,7 @@ is_crosscompile() {
 }
 
 just_headers() {
-	use crosscompile_opts_headers-only && is_crosscompile
+	use headers-only && is_crosscompile
 }
 
 pkg_setup() {

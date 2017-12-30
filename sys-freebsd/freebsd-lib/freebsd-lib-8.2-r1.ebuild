@@ -51,7 +51,7 @@ if [ "${CTARGET}" = "${CHOST}" -a "${CATEGORY#*cross-}" != "${CATEGORY}" ]; then
 fi
 
 IUSE="atm bluetooth ssl hesiod ipv6 kerberos usb netware
-	build bootstrap crosscompile_opts_headers-only"
+	build bootstrap headers-only"
 
 pkg_setup() {
 	[ -c /dev/zero ] || \
@@ -193,7 +193,7 @@ src_compile() {
 	cd "${WORKDIR}/include"
 	$(freebsd_get_bmake) CC="$(tc-getCC)" || die "make include failed"
 
-	use crosscompile_opts_headers-only && return 0
+	use headers-only && return 0
 
 	# Bug #270098
 	append-flags $(test-flags -fno-strict-aliasing)
@@ -275,7 +275,7 @@ src_install() {
 		doins "${S}/msun/src/math.h"
 	fi
 
-	use crosscompile_opts_headers-only && return 0
+	use headers-only && return 0
 	local mylibdir=$(get_libdir)
 
 	if [ "${CTARGET}" != "${CHOST}" ]; then

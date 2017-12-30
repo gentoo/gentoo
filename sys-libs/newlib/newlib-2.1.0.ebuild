@@ -20,7 +20,7 @@ SRC_URI="ftp://sourceware.org/pub/newlib/${P}.tar.gz"
 LICENSE="NEWLIB LIBGLOSS GPL-2"
 SLOT="0"
 KEYWORDS="-* ~arm ~hppa ~m68k ~mips ~ppc ~ppc64 ~sh ~sparc ~x86"
-IUSE="nls threads unicode crosscompile_opts_headers-only"
+IUSE="nls threads unicode headers-only"
 RESTRICT="strip"
 
 NEWLIBBUILD="${WORKDIR}/build"
