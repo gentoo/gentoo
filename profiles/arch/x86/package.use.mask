@@ -175,9 +175,7 @@ app-arch/zpaq -jit
 # Arun Raghavan <ford_prefect@gentoo.org> (29 Mar 2012)
 # webrtc-audio-processing is only supported on x86/amd64. Possibly arm can be
 # added.
-# Arun Raghavan <ford_prefect@gentoo.org> (24 May 2012)
-# Mask xen USE flag by default, unmask on x86/amd64 where it is supported.
-media-sound/pulseaudio -webrtc-aec -xen
+media-sound/pulseaudio -webrtc-aec
 
 # Bernard Cafarelli <voyageur@gentoo.org> (27 Feb 2012)
 # Masked in base profile, supported on this arch
@@ -215,8 +213,7 @@ www-client/links -suid
 >=net-misc/ntp-4.2.6_p3-r1 -parse-clocks
 
 # Alexey Shvetsov <alexxy@gentoo.org> (1 Jul 2011)
-# Use mask infiniband for stable corosync and glusterfs
-=sys-cluster/glusterfs-3.1.2 infiniband
+# Use mask infiniband for stable corosync
 =sys-cluster/corosync-1.3.0 infiniband
 
 # Tim Harder <radhermit@gentoo.org> (13 Feb 2011)
