@@ -1,0 +1,56 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,16 +1,13 @@
+ cmake_minimum_required(VERSION 3.1.3)
+ 
++include(GNUInstallDirs)
++
+ set(CMAKE_BUILD_TYPE Debug CACHE STRING "Choose the type of build (Debug or Release)")
+-if ( NOT CMAKE_INSTALL_PREFIX )
+-    set(CMAKE_INSTALL_PREFIX "/usr")
+-endif()
+ 
+-project(slop)
++project(slop VERSION 6.3.46 LANGUAGES CXX)
+ 
+ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin/")
+ 
+-set( CMAKE_INSTALL_MANDIR "${CMAKE_INSTALL_PREFIX}/share/man" CACHE PATH "Directory where man pages reside. (/usr/share/man, /usr/local/share/man, etc.)" )
+-
+ set( CMAKE_COMPRESS_MAN TRUE CACHE BOOL "Whether or not to compress the man pages for install." )
+ 
+ if ( CMAKE_COMPRESS_MAN )
+@@ -21,7 +18,7 @@
+ 
+ include_directories("${PROJECT_BINARY_DIR}")
+ 
+-add_definitions(-DSLOP_VERSION="v6.3.46")
++add_definitions(-DSLOP_VERSION="v${PROJECT_VERSION}")
+ 
+ # The names have to be unique unfortunately.
+ set(EXECUTABLE_NAME "slop")
+@@ -43,11 +40,13 @@
+ 
+ set_property(TARGET ${LIBRARY_NAME} PROPERTY CXX_STANDARD_REQUIRED ON)
+ set_property(TARGET ${LIBRARY_NAME} PROPERTY CXX_STANDARD 11)
++set_property(TARGET ${LIBRARY_NAME} PROPERTY CXX_EXTENSIONS OFF)
+ 
+ add_executable(${EXECUTABLE_NAME} src/main.cpp)
+ 
+ set_property(TARGET ${EXECUTABLE_NAME} PROPERTY CXX_STANDARD_REQUIRED ON)
+ set_property(TARGET ${EXECUTABLE_NAME} PROPERTY CXX_STANDARD 11)
++set_property(TARGET ${EXECUTABLE_NAME} PROPERTY CXX_EXTENSIONS OFF)
+ 
+ set( CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/modules" )
+ 
+@@ -83,7 +82,7 @@
+     target_link_libraries(${EXECUTABLE_NAME} ${ICU_UC_LIBRARIES} )
+ endif()
+ 
+-install( TARGETS ${EXECUTABLE_NAME} DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" )
+-install( TARGETS ${LIBRARY_NAME} DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" )
+-install( FILES ${CMAKE_SOURCE_DIR}/src/slop.hpp DESTINATION "${CMAKE_INSTALL_PREFIX}/include" COMPONENT development )
++install( TARGETS ${EXECUTABLE_NAME} DESTINATION "${CMAKE_INSTALL_BINDIR}" )
++install( TARGETS ${LIBRARY_NAME} DESTINATION "${CMAKE_INSTALL_LIBDIR}" )
++install( FILES ${CMAKE_SOURCE_DIR}/src/slop.hpp DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}" COMPONENT development )
+ install( FILES "${CMAKE_SOURCE_DIR}/${MANTARGET}" DESTINATION  "${CMAKE_INSTALL_MANDIR}/man1" COMPONENT doc )
