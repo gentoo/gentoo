@@ -3,8 +3,8 @@
 
 EAPI=6
 
-MODULE_AUTHOR=BDFOY
-MODULE_VERSION=1.002
+DIST_AUTHOR=BDFOY
+DIST_VERSION=1.002
 inherit perl-module
 
 DESCRIPTION="Object and functions to work with International Standard Serial Numbers"
