@@ -19,6 +19,8 @@ SLOT="0"
 KEYWORDS="~alpha amd64 ~hppa ~ia64 ~ppc sparc x86"
 IUSE=""
 
+REQUIRED_USE="${POSTGRES_REQ_USE}"
+
 DEPEND="${POSTGRES_DEP}"
 
 RDEPEND="${DEPEND}"
