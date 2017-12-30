@@ -13,10 +13,6 @@
 # Dependencies not keyworded
 ayatana
 
-# Mike Frysinger <vapier@gentoo.org> (25 Feb 2013)
-# doomsday ebuild is not available on this architecture
-doomsday
-
 # Andrey Grozin <grozin@gentoo.org> (16 May 2014)
 # gcl keyworded ~arm, bug #509842
 -gcl
@@ -50,7 +46,6 @@ openexr
 gimp
 
 # No hardware to test by the team
-hdhomerun
 ios
 ipod
 
@@ -94,7 +89,6 @@ upnp
 devil
 gts
 anthy
-ace
 
 # Unmask ARM-only video-cards
 -video_cards_exynos

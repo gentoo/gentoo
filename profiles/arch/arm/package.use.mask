@@ -1,6 +1,12 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (30 Dec 2017)
+# Moved from use.mask since they are flags local to one package.
+dev-cpp/xsd ace
+games-fps/doom-data doomsday
+media-tv/tvheadend hdhomerun
+
 # Michał Górny <mgorny@gentoo.org> (21 Dec 2017)
 # clang is not currently supported on Gentoo ARM profiles.
 sys-devel/llvm clang lldb
