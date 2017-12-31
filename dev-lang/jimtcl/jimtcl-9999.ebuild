@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-inherit multiprocessing eutils
+inherit eutils
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="http://repo.or.cz/r/jimtcl.git"
@@ -40,15 +40,13 @@ src_prepare() {
 }
 
 src_configure() {
-	multijob_init
-	CCACHE=None multijob_child_init econf --with-jim-shared
+	CCACHE=None econf --with-jim-shared
 	if use static-libs ; then
 		# The build does not support doing both simultaneously.
 		mkdir static-libs
 		cd static-libs
-		CCACHE=None ECONF_SOURCE=${S} multijob_child_init econf
+		CCACHE=None ECONF_SOURCE=${S} econf
 	fi
-	multijob_finish
 }
 
 src_compile() {
