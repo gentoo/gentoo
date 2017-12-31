@@ -8,9 +8,9 @@ inherit cmake-utils toolchain-funcs flag-o-matic
 DESCRIPTION="A precise PDF to HTML converter"
 HOMEPAGE="http://coolwanglu.github.io/pdf2htmlEX/"
 SRC_URI="
-	https://github.com/coolwanglu/${PN}/archive/v${PV}.tar.gz -> ${P}.tgz
 	https://dev.gentoo.org/~dilfridge/distfiles/${P}.tgz
 "
+#	https://github.com/coolwanglu/${PN}/archive/v${PV}.tar.gz -> ${P}.tgz
 
 LICENSE="GPL-3+"
 SLOT="0"
@@ -21,7 +21,7 @@ IUSE=""
 CDEPEND="
 	>=app-text/poppler-0.61.1:=[jpeg,png]
 	app-text/poppler-data
-	media-gfx/fontforge
+	~media-gfx/fontforge-20170731
 	media-libs/freetype
 	x11-libs/cairo[svg]
 "
