@@ -20,7 +20,7 @@ SLOT="0"
 # be any other arch. See bug #620316#c5
 # Don't add more arches to KEYWORDS.
 KEYWORDS="amd64"
-IUSE="doc crosscompile_opts_headers-only"
+IUSE="doc headers-only"
 
 DEPEND=">=sys-devel/crossdev-0.9.1"
 [[ ${CATEGORY/cross-} != ${CATEGORY} ]] \

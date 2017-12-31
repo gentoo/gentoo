@@ -23,7 +23,7 @@ LICENSE="BSD"
 SLOT="0"
 # Collides with w32api-4.x
 #KEYWORDS="~amd64 ~ppc ~sparc ~x86"
-IUSE="crosscompile_opts_headers-only"
+IUSE="headers-only"
 RESTRICT="strip"
 
 DEPEND="app-arch/xz-utils"
@@ -35,7 +35,7 @@ is_crosscompile() {
 	[[ ${CHOST} != ${CTARGET} ]]
 }
 just_headers() {
-	use crosscompile_opts_headers-only && [[ ${CHOST} != ${CTARGET} ]]
+	use headers-only && [[ ${CHOST} != ${CTARGET} ]]
 }
 
 pkg_setup() {

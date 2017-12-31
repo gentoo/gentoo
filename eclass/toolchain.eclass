@@ -998,7 +998,7 @@ toolchain_src_configure() {
 					--disable-threads
 					--without-headers
 				)
-			elif built_with_use --hidden --missing false ${CATEGORY}/${needed_libc} crosscompile_opts_headers-only ; then
+			elif built_with_use --hidden --missing false ${CATEGORY}/${needed_libc} headers-only ; then
 				confgcc+=(
 					"${confgcc_no_libc[@]}"
 					--with-sysroot="${PREFIX}"/${CTARGET}

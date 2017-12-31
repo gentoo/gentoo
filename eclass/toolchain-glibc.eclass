@@ -398,7 +398,7 @@ foreach_abi() {
 }
 
 just_headers() {
-	is_crosscompile && use crosscompile_opts_headers-only
+	is_crosscompile && use headers-only
 }
 
 glibc_banner() {

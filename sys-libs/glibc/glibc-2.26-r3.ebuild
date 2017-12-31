@@ -32,7 +32,7 @@ PATCH_VER=4
 SRC_URI+=" https://dev.gentoo.org/~dilfridge/distfiles/${P}-patches-${PATCH_VER}.tar.bz2"
 SRC_URI+=" multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-${GCC_BOOTSTRAP_VER}-multilib-bootstrap.tar.bz2 )"
 
-IUSE="audit caps debug doc gd hardened multilib nscd selinux systemtap profile suid vanilla crosscompile_opts_headers-only"
+IUSE="audit caps debug doc gd hardened multilib nscd selinux systemtap profile suid vanilla headers-only"
 
 # Min kernel version glibc requires
 : ${NPTL_KERN_VER:="3.2.0"}
@@ -89,7 +89,7 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 if [[ ${CATEGORY} == cross-* ]] ; then
-	DEPEND+=" !crosscompile_opts_headers-only? (
+	DEPEND+=" !headers-only? (
 		>=${CATEGORY}/binutils-2.24
 		>=${CATEGORY}/gcc-4.9
 	)"

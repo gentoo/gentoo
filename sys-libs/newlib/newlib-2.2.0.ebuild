@@ -26,7 +26,7 @@ HOMEPAGE="https://sourceware.org/newlib/"
 
 LICENSE="NEWLIB LIBGLOSS GPL-2"
 SLOT="0"
-IUSE="nls threads unicode crosscompile_opts_headers-only"
+IUSE="nls threads unicode headers-only"
 RESTRICT="strip"
 
 # Handle the SLOT changes. #497344
