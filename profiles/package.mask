@@ -29,11 +29,6 @@
 
 #--- END OF EXAMPLES ---
 
-# David Seifert <soap@gentoo.org> (31 Dec 2017)
-# Dead upstream, broken use of GTK+, unmaintained.
-# Removal in 30 days
-app-i18n/scim-wijesekera
-
 # Alice Ferrazzi <alicef@gentoo.org> (30 Dec 2017)
 # Masked for removal in 30 days.
 # Upstream is no more backporting security fixes for 4.12.

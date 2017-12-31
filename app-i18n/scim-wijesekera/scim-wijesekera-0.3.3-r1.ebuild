@@ -1,9 +1,9 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
+EAPI=6
 
-inherit autotools eutils
+inherit autotools
 
 DESCRIPTION="Wijesekara keyboard for Sinhala input using scim"
 HOMEPAGE="http://sinhala.sourceforge.net/"
@@ -18,13 +18,20 @@ RDEPEND=">=app-i18n/scim-0.99.8[-gtk3]"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
+PATCHES=( "${FILESDIR}"/${P}-gcc43.patch )
+
 src_prepare() {
-	epatch "${FILESDIR}/${P}-gcc43.patch"
+	default
 	eautoreconf
 }
 
-src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed"
+src_configure() {
+	econf --disable-static
+}
 
-	dodoc AUTHORS ChangeLog NEWS README
+src_install() {
+	default
+
+	# plugin module, no point in .la files
+	find "${D}" -name '*.la' -delete || die
 }
