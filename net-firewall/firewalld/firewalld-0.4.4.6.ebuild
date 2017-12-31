@@ -39,7 +39,6 @@ src_prepare() {
 	eautoreconf
 }
 
-
 src_configure() {
 	python_setup
 
