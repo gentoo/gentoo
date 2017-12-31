@@ -30,7 +30,7 @@ src_unpack() {
 		git-2_src_unpack
 	else
 		default
-		cd "${WORKDIR}"/msteveb-jimtcl-*
+		cd "${WORKDIR}"/msteveb-jimtcl-* || die
 		S=${PWD}
 	fi
 }
@@ -43,8 +43,8 @@ src_configure() {
 	CCACHE=None econf --with-jim-shared
 	if use static-libs ; then
 		# The build does not support doing both simultaneously.
-		mkdir static-libs
-		cd static-libs
+		mkdir static-libs || die
+		cd static-libs || die
 		CCACHE=None ECONF_SOURCE=${S} econf
 	fi
 }
@@ -59,7 +59,7 @@ src_compile() {
 src_install() {
 	dobin jimsh
 	use static-libs && dolib.a static-libs/libjim.a
-	ln -sf libjim.so.* libjim.so
+	ln -sf libjim.so.* libjim.so || die
 	dolib.so libjim.so*
 	insinto /usr/include
 	doins jim.h jimautoconf.h jim-subcmd.h jim-signal.h \
