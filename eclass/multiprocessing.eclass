@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: multiprocessing.eclass
@@ -7,29 +7,20 @@
 # @AUTHOR:
 # Brian Harring <ferringb@gentoo.org>
 # Mike Frysinger <vapier@gentoo.org>
-# @BLURB: parallelization with bash (wtf?)
+# @BLURB: multiprocessing helper functions
 # @DESCRIPTION:
-# The multiprocessing eclass contains a suite of functions that allow ebuilds
-# to quickly run things in parallel using shell code.
+# The multiprocessing eclass contains a suite of utility functions
+# that could be helpful to controlling parallel multiple job execution.
+# The most common use is processing MAKEOPTS in order to obtain job
+# count.
 #
-# It has two modes: pre-fork and post-fork.  If you don't want to dive into any
-# more nuts & bolts, just use the pre-fork mode.  For main threads that mostly
-# spawn children and then wait for them to finish, use the pre-fork mode.  For
-# main threads that do a bit of processing themselves, use the post-fork mode.
-# You may mix & match them for longer computation loops.
 # @EXAMPLE:
 #
 # @CODE
-# # First initialize things:
-# multijob_init
-#
-# # Then hash a bunch of files in parallel:
-# for n in {0..20} ; do
-# 	multijob_child_init md5sum data.${n} > data.${n}
-# done
-#
-# # Then wait for all the children to finish:
-# multijob_finish
+# src_compile() {
+#   # custom build system that does not support most of MAKEOPTS
+#   ./mybs -j$(makeopts_jobs)
+# }
 # @CODE
 
 if [[ -z ${_MULTIPROCESSING_ECLASS} ]]; then
@@ -124,155 +115,6 @@ makeopts_loadavg() {
 		-e "s:.*[[:space:]](-[a-z]*l|--(load-average|max-load))[[:space:]].*:${2:-999}:p")
 	# Default to ${inf} since the default is to not use a load limit.
 	echo ${lavg:-${2:-999}}
-}
-
-# @FUNCTION: multijob_init
-# @USAGE: [${MAKEOPTS}]
-# @DESCRIPTION:
-# Setup the environment for executing code in parallel.
-# You must call this before any other multijob function.
-multijob_init() {
-	# When something goes wrong, try to wait for all the children so we
-	# don't leave any zombies around.
-	has wait ${EBUILD_DEATH_HOOKS} || EBUILD_DEATH_HOOKS+=" wait "
-
-	# Setup a pipe for children to write their pids to when they finish.
-	# We have to allocate two fd's because POSIX has undefined behavior
-	# when using one single fd for both read and write. #487056
-	# However, opening an fd for read or write only will block until the
-	# opposite end is opened as well. Thus we open the first fd for both
-	# read and write to not block ourselve, but use it for reading only.
-	# The second fd really is opened for write only, as Cygwin supports
-	# just one single read fd per FIFO. #583962
-	local pipe="${T}/multijob.pipe"
-	mkfifo -m 600 "${pipe}"
-	redirect_alloc_fd mj_read_fd "${pipe}"
-	redirect_alloc_fd mj_write_fd "${pipe}" '>'
-	rm -f "${pipe}"
-
-	# See how many children we can fork based on the user's settings.
-	mj_max_jobs=$(makeopts_jobs "$@")
-	mj_num_jobs=0
-}
-
-# @FUNCTION: multijob_child_init
-# @USAGE: [--pre|--post] [command to run in background]
-# @DESCRIPTION:
-# This function has two forms.  You can use it to execute a simple command
-# in the background (and it takes care of everything else), or you must
-# call this first thing in your forked child process.
-#
-# The --pre/--post options allow you to select the child generation mode.
-#
-# @CODE
-# # 1st form: pass the command line as arguments:
-# multijob_child_init ls /dev
-# # Or if you want to use pre/post fork modes:
-# multijob_child_init --pre ls /dev
-# multijob_child_init --post ls /dev
-#
-# # 2nd form: execute multiple stuff in the background (post fork):
-# (
-# multijob_child_init
-# out=`ls`
-# if echo "${out}" | grep foo ; then
-# 	echo "YEAH"
-# fi
-# ) &
-# multijob_post_fork
-#
-# # 2nd form: execute multiple stuff in the background (pre fork):
-# multijob_pre_fork
-# (
-# multijob_child_init
-# out=`ls`
-# if echo "${out}" | grep foo ; then
-# 	echo "YEAH"
-# fi
-# ) &
-# @CODE
-multijob_child_init() {
-	local mode="pre"
-	case $1 in
-	--pre)  mode="pre" ; shift ;;
-	--post) mode="post"; shift ;;
-	esac
-
-	if [[ $# -eq 0 ]] ; then
-		trap 'echo ${BASHPID:-$(bashpid)} $? >&'${mj_write_fd} EXIT
-		trap 'exit 1' INT TERM
-	else
-		local ret
-		[[ ${mode} == "pre" ]] && { multijob_pre_fork; ret=$?; }
-		( multijob_child_init ; "$@" ) &
-		[[ ${mode} == "post" ]] && { multijob_post_fork; ret=$?; }
-		return ${ret}
-	fi
-}
-
-# @FUNCTION: _multijob_fork
-# @INTERNAL
-# @DESCRIPTION:
-# Do the actual book keeping.
-_multijob_fork() {
-	[[ $# -eq 1 ]] || die "incorrect number of arguments"
-
-	local ret=0
-	[[ $1 == "post" ]] && : $(( ++mj_num_jobs ))
-	if [[ ${mj_num_jobs} -ge ${mj_max_jobs} ]] ; then
-		multijob_finish_one
-		ret=$?
-	fi
-	[[ $1 == "pre" ]] && : $(( ++mj_num_jobs ))
-	return ${ret}
-}
-
-# @FUNCTION: multijob_pre_fork
-# @DESCRIPTION:
-# You must call this in the parent process before forking a child process.
-# If the parallel limit has been hit, it will wait for one child to finish
-# and return its exit status.
-multijob_pre_fork() { _multijob_fork pre "$@" ; }
-
-# @FUNCTION: multijob_post_fork
-# @DESCRIPTION:
-# You must call this in the parent process after forking a child process.
-# If the parallel limit has been hit, it will wait for one child to finish
-# and return its exit status.
-multijob_post_fork() { _multijob_fork post "$@" ; }
-
-# @FUNCTION: multijob_finish_one
-# @DESCRIPTION:
-# Wait for a single process to exit and return its exit code.
-multijob_finish_one() {
-	[[ $# -eq 0 ]] || die "${FUNCNAME} takes no arguments"
-
-	local pid ret
-	read -r -u ${mj_read_fd} pid ret || die
-	: $(( --mj_num_jobs ))
-	return ${ret}
-}
-
-# @FUNCTION: multijob_finish
-# @DESCRIPTION:
-# Wait for all pending processes to exit and return the bitwise or
-# of all their exit codes.
-multijob_finish() {
-	local ret=0
-	while [[ ${mj_num_jobs} -gt 0 ]] ; do
-		multijob_finish_one
-		: $(( ret |= $? ))
-	done
-	# Let bash clean up its internal child tracking state.
-	wait
-
-	# Do this after reaping all the children.
-	[[ $# -eq 0 ]] || die "${FUNCNAME} takes no arguments"
-
-	# No need to hook anymore.
-	EBUILD_DEATH_HOOKS=${EBUILD_DEATH_HOOKS/ wait / }
-
-	return ${ret}
 }
 
 # @FUNCTION: redirect_alloc_fd
