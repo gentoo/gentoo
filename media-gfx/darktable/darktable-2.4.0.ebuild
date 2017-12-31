@@ -69,6 +69,8 @@ DEPEND="${CDEPEND}
 		>=sys-devel/llvm-4
 	)"
 
+PATCHES=( "${FILESDIR}"/"${PN}"-find-opencl-header.patch )
+
 S="${WORKDIR}/${P/_/~}"
 
 pkg_pretend() {
