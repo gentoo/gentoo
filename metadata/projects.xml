@@ -2932,10 +2932,10 @@ developers and volunteer mentors.</description>
       <name>Yixun Lan</name>
       <role>Member</role>
     </member>
-    <member is-lead="1">
+    <member>
       <email>jstein@gentoo.org</email>
       <name>Jonas Stein</name>
-      <role>Lead</role>
+      <role>Deputy lead</role>
     </member>
     <member>
       <email>kensington@gentoo.org</email>
@@ -2957,7 +2957,7 @@ developers and volunteer mentors.</description>
       <name>Marek Szuba</name>
       <role>Member</role>
     </member>
-    <member>
+    <member is-lead="1">
       <email>mgorny@gentoo.org</email>
       <name>Michał Górny</name>
       <role>Minor helper</role>
