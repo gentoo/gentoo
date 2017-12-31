@@ -9,7 +9,12 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<use>
+		<flag name="asm">Enable assembly for optimization</flag>
+		<flag name="knots">Build enhanced Bitcoin Knots version, rather than Bitcoin Core</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">bitcoin/bitcoin</remote-id>
+		<remote-id type="github">bitcoinknots/bitcoin</remote-id>
 	</upstream>
 </pkgmetadata>
