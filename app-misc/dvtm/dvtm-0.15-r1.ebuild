@@ -25,7 +25,7 @@ DEPEND="
 	virtual/pkgconfig
 "
 PATCHES=(
-	"${FILESDIR}"/${PN}-9999-gentoo.patch
+	"${FILESDIR}"/${PN}-0.15-gentoo.patch
 )
 
 src_prepare() {
