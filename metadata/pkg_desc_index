@@ -9314,7 +9314,7 @@ sci-mathematics/gmm 5.1: Generic C++ template library for sparse, dense and skyl
 sci-mathematics/jags 3.4.0 4.2.0: Just Another Gibbs Sampler for Bayesian MCMC simulation
 sci-mathematics/lpsolve 5.5.2.0: Mixed Integer Linear Programming (MILP) solver
 sci-mathematics/mathomatic 15.8.5: Automatic algebraic manipulator
-sci-mathematics/maxima 5.37.3-r4 5.38.1: Free computer algebra environment based on Macsyma
+sci-mathematics/maxima 5.38.1: Free computer algebra environment based on Macsyma
 sci-mathematics/nauty 2.5.9: Computing automorphism groups of graphs and digraphs
 sci-mathematics/normaliz 2.12.2 3.1.1 3.1.3: Tool for computations in affine monoids and more
 sci-mathematics/octave 4.2.1: High-level interactive language for numerical computations
