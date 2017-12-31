@@ -1,0 +1,22 @@
+--- a/configure.in
++++ b/configure.in
+@@ -4,7 +4,7 @@
+ AC_CONFIG_SRCDIR(src/pslib.c)
+ AM_INIT_AUTOMAKE(AC_PACKAGE_NAME, AC_PACKAGE_VERSION)
+ 
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS([config.h])
+ AM_MAINTAINER_MODE
+ 
+ AC_PROG_INTLTOOL
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -36,7 +36,7 @@
+ 	ps_fontenc.c \
+ 	ps_strbuf.c
+ 
+-libps_la_LIBADD = $(LIBHNJ_LIBS) $(PNG_LIBS) $(JPEG_LIBS) $(GIF_LIBS) $(TIFF_LIBS)
++libps_la_LIBADD = $(LIBHNJ_LIBS) $(PNG_LIBS) $(JPEG_LIBS) $(GIF_LIBS) $(TIFF_LIBS) -lm
+ 
+ BUILD_LIBS = -lm
+ 
