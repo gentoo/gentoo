@@ -205,6 +205,8 @@ multilib_src_configure() {
 		-Drootprefix="$(usex usrmerge "${EPREFIX}/usr" "${EPREFIX:-/}")"
 		-Dsysvinit-path=
 		-Dsysvrcnd-path=
+		# Avoid infinite exec recursion, bug 642724
+		-Dtelinit-path="${EPREFIX}/lib/sysvinit/telinit"
 		# no deps
 		-Defi=$(meson_multilib)
 		-Dima=true
