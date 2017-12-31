@@ -100,39 +100,4 @@ makeopts_loadavg() {
 	echo ${lavg:-${2:-999}}
 }
 
-# @FUNCTION: redirect_alloc_fd
-# @USAGE: <var> <file> [redirection]
-# @DESCRIPTION:
-# Find a free fd and redirect the specified file via it.  Store the new
-# fd in the specified variable.  Useful for the cases where we don't care
-# about the exact fd #.
-redirect_alloc_fd() {
-	local var=$1 file=$2 redir=${3:-"<>"}
-
-	# Make sure /dev/fd is sane on Linux hosts. #479656
-	if [[ ! -L /dev/fd && ${CBUILD} == *linux* ]] ; then
-		eerror "You're missing a /dev/fd symlink to /proc/self/fd."
-		eerror "Please fix the symlink and check your boot scripts (udev/etc...)."
-		die "/dev/fd is broken"
-	fi
-
-	if [[ $(( (BASH_VERSINFO[0] << 8) + BASH_VERSINFO[1] )) -ge $(( (4 << 8) + 1 )) ]] ; then
-		# Newer bash provides this functionality.
-		eval "exec {${var}}${redir}'${file}'"
-	else
-		# Need to provide the functionality ourselves.
-		local fd=10
-		while :; do
-			# Make sure the fd isn't open.  It could be a char device,
-			# or a symlink (possibly broken) to something else.
-			if [[ ! -e /dev/fd/${fd} ]] && [[ ! -L /dev/fd/${fd} ]] ; then
-				eval "exec ${fd}${redir}'${file}'" && break
-			fi
-			[[ ${fd} -gt 1024 ]] && die 'could not locate a free temp fd !?'
-			: $(( ++fd ))
-		done
-		: $(( ${var} = fd ))
-	fi
-}
-
 fi
