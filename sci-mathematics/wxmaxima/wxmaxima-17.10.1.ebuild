@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
+WX_GTK_VER="3.0"
 PLOCALES="ca cs da de el es fi fr gl hu it ja kab nb pl pt_BR ru tr uk zh_CN zh_TW"
-inherit cmake-utils l10n xdg-utils gnome2-utils
+inherit cmake-utils wxwidgets l10n xdg-utils gnome2-utils
 
 DESCRIPTION="Graphical frontend to Maxima, using the wxWidgets toolkit"
 HOMEPAGE="http://andrejv.github.io/wxmaxima/"
@@ -18,17 +18,14 @@ S="${WORKDIR}"/${PN}-Version-${PV}
 
 DEPEND="
 	dev-libs/libxml2:2
-	x11-libs/wxGTK:3.0"
+	x11-libs/wxGTK:${WX_GTK_VER}"
 RDEPEND="${DEPEND}
 	media-fonts/jsmath
 	sci-visualization/gnuplot[wxwidgets]
 	sci-mathematics/maxima"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-require-wxGTK-3.0.patch
-)
-
 src_prepare() {
+	setup-wxwidgets
 	cmake-utils_src_prepare
 
 	sed -e "s|share/doc/${PN}|share/doc/${PF}|g" -i "${S}"/info/CMakeLists.txt \
