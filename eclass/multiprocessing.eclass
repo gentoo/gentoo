@@ -26,23 +26,6 @@
 if [[ -z ${_MULTIPROCESSING_ECLASS} ]]; then
 _MULTIPROCESSING_ECLASS=1
 
-# @FUNCTION: bashpid
-# @DESCRIPTION:
-# Return the process id of the current sub shell.  This is to support bash
-# versions older than 4.0 that lack $BASHPID support natively.  Simply do:
-# echo ${BASHPID:-$(bashpid)}
-#
-# Note: Using this func in any other way than the one above is not supported.
-bashpid() {
-	# Running bashpid plainly will return incorrect results.  This func must
-	# be run in a subshell of the current subshell to get the right pid.
-	# i.e. This will show the wrong value:
-	#   bashpid
-	# But this will show the right value:
-	#   (bashpid)
-	sh -c 'echo ${PPID}'
-}
-
 # @FUNCTION: get_nproc
 # @USAGE: [${fallback:-1}]
 # @DESCRIPTION:
