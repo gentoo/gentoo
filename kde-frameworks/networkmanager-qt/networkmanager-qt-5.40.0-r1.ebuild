@@ -26,6 +26,8 @@ RDEPEND="${COMMON_DEPEND}
 	!net-libs/libnm-qt:5
 "
 
+PATCHES=( "${FILESDIR}"/${PN}-add_EAP-PWD.patch )
+
 src_test() {
 	# bug: 625276
 	local myctestargs=( -E "(managertest|settingstest|activeconnectiontest)" )

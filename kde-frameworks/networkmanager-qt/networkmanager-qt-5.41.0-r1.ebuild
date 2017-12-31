@@ -10,8 +10,6 @@ LICENSE="LGPL-2"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="teamd"
 
-PATCHES=( "${FILESDIR}"/${PN}-add_EAP-PWD.patch )
-
 COMMON_DEPEND="
 	$(add_qt_dep qtdbus)
 	$(add_qt_dep qtnetwork)
@@ -27,6 +25,8 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	!net-libs/libnm-qt:5
 "
+
+PATCHES=( "${FILESDIR}"/${PN}-add_EAP-PWD.patch )
 
 src_test() {
 	# bug: 625276
