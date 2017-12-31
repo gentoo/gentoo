@@ -9,7 +9,7 @@ DESCRIPTION="A precise PDF to HTML converter"
 HOMEPAGE="http://coolwanglu.github.io/pdf2htmlEX/"
 SRC_URI="
 	https://github.com/coolwanglu/${PN}/archive/v${PV}.tar.gz -> ${P}.tgz
-	https://dev.gentoo.org/~dilfrigde/distfiles/${P}.tgz
+	https://dev.gentoo.org/~dilfridge/distfiles/${P}.tgz
 "
 
 LICENSE="GPL-3+"
