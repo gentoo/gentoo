@@ -2,8 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+WX_GTK_VER="3.0"
 
-inherit cmake-utils
+inherit cmake-utils wxwidgets
 
 if [ "${PV}" == 9999 ]
 then
@@ -30,7 +31,7 @@ DEPEND="sys-libs/zlib
 	media-libs/libpng:0
 	virtual/jpeg:0
 	media-libs/freetype
-	wxwidgets? ( || ( x11-libs/wxGTK:3.0 x11-libs/wxGTK:2.8 ) )
+	wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER} )
 	!wxwidgets? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 )"
 RDEPEND="${DEPEND}
 	wxwidgets? ( || ( media-fonts/liberation-fonts media-fonts/corefonts ) )"
@@ -48,10 +49,7 @@ src_configure() {
 	CMAKE_USE_DIR="${S}"
 	CMAKE_BUILD_TYPE="Release"
 	if use wxwidgets; then
-		. "${ROOT}/var/lib/wxwidgets/current"
-		if [[ "${WXCONFIG}" -eq "none" ]]; then
-		   	die "The wxGTK profile should be selected!"
-		fi
+		setup-wxwidgets
 		local mycmakeargs=(-D GUI=WX)
 	else
 		local mycmakeargs=(-D GUI=QT5)
