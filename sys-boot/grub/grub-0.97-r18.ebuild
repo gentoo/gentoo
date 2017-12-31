@@ -17,7 +17,7 @@
 
 EAPI="6"
 
-inherit eutils mount-boot toolchain-funcs linux-info flag-o-matic autotools pax-utils multiprocessing
+inherit eutils mount-boot toolchain-funcs linux-info flag-o-matic autotools pax-utils
 
 PATCHVER="1.15" # Should match the revision ideally
 DESCRIPTION="GNU GRUB Legacy boot loader"
@@ -121,12 +121,8 @@ src_configure() {
 		fi
 	fi
 
-	multijob_init
-
 	# build the net-bootable grub first, but only if "netboot" is set
 	if use netboot ; then
-		(
-		multijob_child_init
 		mkdir -p "${WORKDIR}"/netboot
 		pushd "${WORKDIR}"/netboot >/dev/null
 		ECONF_SOURCE=${S} \
@@ -141,8 +137,6 @@ src_configure() {
 			--enable-{ne,ns8390,wd,otulip,rtl8139,sis900,sk-g16,smc9000,tiara} \
 			--enable-{tulip,via-rhine,w89c840}
 		popd >/dev/null
-		) &
-		multijob_post_fork
 	fi
 
 	# Now build the regular grub
@@ -156,8 +150,6 @@ src_configure() {
 
 	# sanity check due to common failure
 	use ncurses && ! grep -qs "HAVE_LIBCURSES.*1" config.h && die "USE=ncurses but curses not found"
-
-	multijob_finish
 }
 
 src_compile() {
