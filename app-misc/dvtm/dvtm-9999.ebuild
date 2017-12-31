@@ -42,7 +42,7 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" PREFIX="/usr" STRIP=true install
+	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" STRIP=true install
 
 	insinto /usr/share/${PN}
 	newins config.h ${PF}.config.h
