@@ -13,10 +13,14 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~spa
 IUSE=""
 
 src_prepare() {
+	default
 	sed -i Makefile.in \
 		-e '/--mode=link/s| -o | $(LDFLAGS)&|g' \
 		|| die "sed Makefile.in"
-	default
+}
+
+src_configure() {
+	econf --disable-static
 }
 
 src_test() {
@@ -24,11 +28,9 @@ src_test() {
 }
 
 src_install() {
-	emake install DESTDIR="${D}"
-	dodoc README ChangeLog INSTALL PORTING THANKS
-}
+	default
+	dodoc PORTING
 
-pkg_postinst() {
-	ewarn 'if you upgraded from mm-1.3 or earlier please run:'
-	ewarn "revdep-rebuild --library \"/usr/$(get_libdir)/libmm.so.13\""
+	# no static archive installed
+	find "${D}" -name '*.la' -delete || die
 }
