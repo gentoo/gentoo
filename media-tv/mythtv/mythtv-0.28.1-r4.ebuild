@@ -1,8 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
+EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
 # git diff --relative=mythtv v0.27.6.. > ~/mythtv-0.27.6/patches/mythtv.patch
@@ -10,7 +9,7 @@ BACKPORTS="03f44039848bd09444ff4baa8dc158bd61454079"
 MY_P=${P%_p*}
 MY_PV=${PV%_p*}
 
-inherit flag-o-matic multilib eutils python-single-r1 qmake-utils user systemd vcs-snapshot
+inherit flag-o-matic python-single-r1 qmake-utils user readme.gentoo-r1 systemd vcs-snapshot
 
 MYTHTV_BRANCH="fixes/0.28"
 
@@ -23,10 +22,9 @@ KEYWORDS="~amd64 ~x86"
 SLOT="0/${PV}"
 
 IUSE_INPUT_DEVICES="input_devices_joystick"
-IUSE="alsa altivec autostart bluray cec crystalhd debug dvd egl fftw +hls \
-ieee1394 jack lcd libass lirc +mythlogserver perl pulseaudio python systemd +theora \
-vaapi vdpau +vorbis +wrapper +xml xmltv +xvid zeroconf ${IUSE_INPUT_DEVICES}"
-
+IUSE="alsa altivec autostart bluray cec crystalhd debug dvb dvd egl fftw +hls \
+	ieee1394 jack lcd libass lirc +mythlogserver perl pulseaudio python systemd +theora \
+	vaapi vdpau +vorbis +wrapper +xml xmltv +xvid zeroconf ${IUSE_INPUT_DEVICES}"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	bluray? ( xml )
 	theora? ( vorbis )"
@@ -64,6 +62,9 @@ COMMON="
 		sys-fs/udisks:2
 	)
 	cec? ( dev-libs/libcec )
+	dvb? (
+		virtual/linuxtv-dvb-headers
+	)
 	dvd? (
 		dev-libs/libcdio:=
 		sys-fs/udisks:2
@@ -134,6 +135,23 @@ DEPEND="${COMMON}
 
 S="${WORKDIR}/${P}/mythtv"
 
+DISABLE_AUTOFORMATTING="yes"
+DOC_CONTENTS="
+To have this machine operate as recording host for MythTV,
+mythbackend must be running. Run the following:
+rc-update add mythbackend default
+
+Your recordings folder must be owned 'mythtv'. e.g.
+chown -R mythtv /var/lib/mythtv
+
+Want mythfrontend to start automatically?
+Set USE=autostart. Details can be found at:
+https://dev.gentoo.org/~cardoe/mythtv/autostart.html
+
+Note that the systemd unit now restarts by default and logs
+to journald via the console at the notice verbosity.
+"
+
 MYTHTV_GROUPS="video,audio,tty,uucp"
 
 pkg_setup() {
@@ -143,6 +161,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	default
+
 	# Perl bits need to go into vender_perl and not site_perl
 	sed -e "s:pure_install:pure_install INSTALLDIRS=vendor:" \
 		-i "${S}"/bindings/perl/Makefile
@@ -155,8 +175,7 @@ src_prepare() {
 
 	echo "setting.extra -= -ldconfig" >> "${S}"/programs/mythfrontend/mythfrontend.pro
 
-	epatch "${FILESDIR}/${P}-glibc225.patch"
-	epatch_user
+	eapply "${FILESDIR}/${P}-glibc225.patch"
 }
 
 src_configure() {
@@ -174,7 +193,7 @@ src_configure() {
 	use pulseaudio || myconf="${myconf} --disable-audio-pulseoutput"
 
 	use altivec    || myconf="${myconf} --disable-altivec"
-	myconf="${myconf} --disable-dvb"
+	myconf="${myconf} $(use_enable dvb)"
 	myconf="${myconf} $(use_enable ieee1394 firewire)"
 	myconf="${myconf} $(use_enable lirc)"
 	myconf="${myconf} $(use_enable xvid libxvid)"
@@ -216,7 +235,7 @@ src_configure() {
 	else
 		myconf="${myconf} --compile-type=release"
 		#myconf="${myconf} --enable-debug" does nothing per sphery
-		#myconf="${myconf} --disable-stripping" does nothing per sphery
+		myconf="${myconf} --disable-stripping" # FIXME: does not disable for all files, only for some
 	fi
 
 	# Video
@@ -265,8 +284,9 @@ src_configure() {
 }
 
 src_install() {
-	emake INSTALL_ROOT="${D}" install || die "install failed"
+	emake STRIP="true" INSTALL_ROOT="${D}" install
 	dodoc AUTHORS UPGRADING README
+	readme.gentoo_create_doc
 
 	insinto /usr/share/mythtv/database
 	doins database/*
@@ -331,19 +351,7 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	elog "To have this machine operate as recording host for MythTV, "
-	elog "mythbackend must be running. Run the following:"
-	elog "rc-update add mythbackend default"
-	elog
-	elog "Your recordings folder must be owned 'mythtv'. e.g."
-	elog "chown -R mythtv /var/lib/mythtv"
-
-	elog "Want mythfrontend to start automatically?"
-	elog "Set USE=autostart. Details can be found at:"
-	elog "https://dev.gentoo.org/~cardoe/mythtv/autostart.html"
-	elog
-	elog "Note that the systemd unit now restarts by default and logs"
-	elog "to journald via the console at the notice verbosity."
+	readme.gentoo_print_elog
 }
 
 pkg_info() {
