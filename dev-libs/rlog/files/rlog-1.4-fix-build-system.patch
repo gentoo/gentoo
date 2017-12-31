@@ -1,0 +1,59 @@
+--- a/docs/Makefile.am
++++ b/docs/Makefile.am
+@@ -1,15 +1,13 @@
+ 
+ SOURCES = index.dox channel.dox component.dox
+ 
+-docdir = $(datadir)/doc
+-pkgdocdir = $(docdir)/$(PACKAGE)
+ #pkghtmldir = $(pkgdocdir)/html
+ 
+ 
+ # have both html and html/index.html to force build of index.html if necessary
+ EXTRA_DIST = latex/refman.pdf html html/index.html $(SOURCES)
+ 
+-pkgdoc_DATA = \
++pdf_DATA = \
+     latex/refman.pdf
+ 
+ #pkghtml_DATA = \
+@@ -17,22 +15,21 @@
+ 
+ if BUILD_DOCS
+ latex/refman.pdf: html/index.html
+-	-cd latex && make
++	$(MAKE) -C latex
+ 
+ html/index.html: ../Doxyfile $(SOURCES)
+-	-rm -rf html
+-	-cd .. && @DOXYGEN@ Doxyfile
++	rm -rf html && $(DOXYGEN) Doxyfile
+ 
+ clean-local:
+-	-rm -rf html
+-	-rm -rf latex
++	rm -rf html
++	rm -rf latex
+ endif
+ 
+ all-local: html/index.html
+ 
+-install-data-local: all-local
+-	-echo installing to ${DESTDIR}${pkgdocdir}/html
+-	/bin/sh ../mkinstalldirs ${DESTDIR}${pkgdocdir}/html
+-	install html/* ${DESTDIR}${pkgdocdir}/html
++install-data-hook: all-local
++	-echo installing to $(DESTDIR)$(htmldir)
++	/bin/sh ../mkinstalldirs $(DESTDIR)$(htmldir)
++	install html/* $(DESTDIR)$(htmldir)
+ 
+ 
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -10,6 +10,3 @@
+ pkgconfigdir = $(libdir)/pkgconfig
+ pkgconfig_DATA = librlog.pc
+ 
+-documentation:
+-	cd docs && make
+-
