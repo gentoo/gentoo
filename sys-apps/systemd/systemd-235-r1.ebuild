@@ -156,11 +156,11 @@ src_prepare() {
 
 	if ! use vanilla; then
 		PATCHES+=(
-			"${FILESDIR}/218-Dont-enable-audit-by-default.patch"
-			"${FILESDIR}/228-noclean-tmp.patch"
-			"${FILESDIR}/233-systemd-user-pam.patch"
-			"${FILESDIR}/234-uucp-group.patch"
-			"${FILESDIR}/generator-path.patch"
+			"${FILESDIR}/gentoo-Dont-enable-audit-by-default.patch"
+			"${FILESDIR}/gentoo-noclean-tmp.patch"
+			"${FILESDIR}/gentoo-systemd-user-pam.patch"
+			"${FILESDIR}/gentoo-uucp-group-r0.patch"
+			"${FILESDIR}/gentoo-generator-path.patch"
 		)
 	fi
 
