@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit autotools elisp-common eutils
+inherit autotools elisp-common eutils xdg
 
 DESCRIPTION="Free computer algebra environment based on Macsyma"
 HOMEPAGE="http://maxima.sourceforge.net/"
@@ -194,6 +194,7 @@ src_install() {
 }
 
 pkg_postinst() {
+	xdg_mimeinfo_database_update
 	if use emacs; then
 		elisp-site-regen
 		mktexlsr
@@ -201,6 +202,7 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
+	xdg_mimeinfo_database_update
 	if use emacs; then
 		elisp-site-regen
 		mktexlsr
