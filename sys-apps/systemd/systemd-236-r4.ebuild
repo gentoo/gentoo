@@ -394,6 +394,7 @@ pkg_postinst() {
 
 	enewgroup input
 	enewgroup kvm 78
+	enewgroup render
 	enewgroup systemd-journal
 	newusergroup systemd-bus-proxy
 	newusergroup systemd-coredump
