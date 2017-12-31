@@ -164,6 +164,7 @@ src_prepare() {
 	ebegin "Applying Gentoo-specific changes to ${MY_P_CORE} ..."
 	ln -s ../shorewallrc.gentoo ${MY_PN_CORE}/shorewallrc.gentoo || die "Failed to symlink shorewallrc.gentoo"
 	eend 0
+	eapply "${FILESDIR}"/${PN}-5.1.10.1-fix-find.patch
 
 	# shorewall
 	if use ipv4; then
