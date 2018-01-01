@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: tmpfiles.eclass
@@ -17,9 +17,15 @@
 # https://www.freedesktop.org/software/systemd/man/tmpfiles.d.html
 #
 # The dotmpfiles and newtmpfiles functions are used to install
-# configuration files into /usr/lib/tmpfiles.d, then in pkg_postinst, the
-# tmpfiles_process function can be called to process the newly
+# configuration files into /usr/lib/tmpfiles.d, then in pkg_postinst,
+# the tmpfiles_process function must be called to process the newly
 # installed tmpfiles.d entries.
+#
+# The tmpfiles.d files can be used by service managers to recreate/clean
+# up temporary directories on boot or periodically. Additionally,
+# the pkg_postinst() call ensures that the directories are created
+# on systems that do not support tmpfiles.d natively, without a need
+# for explicit fallback.
 #
 # @EXAMPLE:
 # Typical usage of this eclass:
@@ -53,7 +59,7 @@ case "${EAPI}" in
 *) die "API is undefined for EAPI ${EAPI}" ;;
 esac
 
-RDEPEND="kernel_linux? ( virtual/tmpfiles )"
+RDEPEND="virtual/tmpfiles"
 
 # @FUNCTION: dotmpfiles
 # @USAGE: dotmpfiles <tmpfiles.d_file> ...
@@ -62,7 +68,6 @@ RDEPEND="kernel_linux? ( virtual/tmpfiles )"
 dotmpfiles() {
 	debug-print-function "${FUNCNAME}" "$@"
 
-	use kernel_linux || return 0
 	local f
 	for f; do
 		if [[ ${f} != *.conf ]]; then
@@ -83,7 +88,6 @@ dotmpfiles() {
 newtmpfiles() {
 	debug-print-function "${FUNCNAME}" "$@"
 
-	use kernel_linux || return 0
 	if [[ $2 != *.conf ]]; then
 		die "tmpfiles.d files must end with .conf"
 	fi
@@ -102,12 +106,22 @@ newtmpfiles() {
 tmpfiles_process() {
 	debug-print-function "${FUNCNAME}" "$@"
 
-	use kernel_linux || return 0
 	[[ ${EBUILD_PHASE} == postinst ]] || die "${FUNCNAME}: Only valid in pkg_postinst"
 	[[ ${#} -gt 0 ]] || die "${FUNCNAME}: Must specify at least one filename"
 
 	# Only process tmpfiles for the currently running system
-	[[ ${ROOT} == / ]] || return 0
+	if [[ ${ROOT} != / ]]; then
+		ewarn "Warning: tmpfiles.d not processed on ROOT != /. If you do not use"
+		ewarn "a service manager supporting tmpfiles.d, you need to run"
+		ewarn "the following command after booting (or chroot-ing with all"
+		ewarn "appropriate filesystems mounted) into the ROOT:"
+		ewarn
+		ewarn "  tmpfiles --create"
+		ewarn
+		ewarn "Failure to do so may result in missing runtime directories"
+		ewarn "and failures to run programs or start services."
+		return
+	fi
 
 	if type systemd-tmpfiles &> /dev/null; then
 		systemd-tmpfiles --create "$@"
