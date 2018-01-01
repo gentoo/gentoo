@@ -6,8 +6,7 @@
     <name>Anthony G. Basile</name>
   </maintainer>
   <upstream>
-    <remote-id type="pypi">pytest-cov</remote-id>
-    <remote-id type="bitbucket">memedough/pytest-cov</remote-id>
-    <remote-id type="github">pytest-dev/pytest-cov</remote-id>
+    <remote-id type="pypi">pytest-qt</remote-id>
+    <remote-id type="github">pytest-dev/pytest-qt</remote-id>
   </upstream>
 </pkgmetadata>
