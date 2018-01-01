@@ -59,7 +59,7 @@ src_configure() {
 	just_headers && export CC=true
 
 	local sysroot
-	is_crosscompile && sysroot="${EPREFIX}"/usr/${CTARGET}
+	is_crosscompile && sysroot=/usr/${CTARGET}
 	./configure \
 		--target=${CTARGET} \
 		--prefix=${sysroot}/usr \
@@ -88,7 +88,7 @@ src_install() {
 	# musl provides ldd via a sym link to its ld.so
 	local sysroot
 	is_crosscompile && sysroot=/usr/${CTARGET}
-	local ldso=$(basename "${ED}"${sysroot}/lib/ld-musl-*)
+	local ldso=$(basename "${D}"${sysroot}/lib/ld-musl-*)
 	dosym ${sysroot}/lib/${ldso} ${sysroot}/usr/bin/ldd
 
 	if [[ ${CATEGORY} != cross-* ]] ; then
