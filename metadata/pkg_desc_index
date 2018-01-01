@@ -5945,7 +5945,7 @@ dev-tex/dvi2tty 5.3.4: Preview dvi-files on text-only devices
 dev-tex/dvipost 1.1-r2: post processor for dvi files
 dev-tex/envlab 1.2-r1: A LaTeX module to format envelopes
 dev-tex/europecv 20060424-r2: LaTeX class for the standard model for curricula vitae as recommended by the EC
-dev-tex/feynmf 1.08-r5: Combined LaTeX/Metafont package for drawing of Feynman diagrams
+dev-tex/feynmf 1.08-r6: Combined LaTeX/Metafont package for drawing of Feynman diagrams
 dev-tex/foiltex 2.1.4b: LaTeX package used to create foils and slides
 dev-tex/frakturx 20070103: Collection of blackletter fonts for LaTeX
 dev-tex/g-brief 4.0.2: LaTeX styles for formless letters in German or English
