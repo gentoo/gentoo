@@ -22,6 +22,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
 IUSE=""
 
 DEPEND=">=net-libs/liblockfile-1.03
+	dev-libs/libbsd
 	virtual/mta
 	mail-client/mailx-support"
 
