@@ -1,9 +1,9 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=3
+EAPI=6
 
-inherit toolchain-funcs eutils
+inherit toolchain-funcs
 
 MY_P="${PN}-19980713"
 
@@ -21,16 +21,16 @@ RDEPEND=""
 
 S=${WORKDIR}/${MY_P}
 
-src_prepare() {
-	epatch "${FILESDIR}/${P}-flags.patch" \
-		"${FILESDIR}/${P}-decl.patch"
-}
+PATCHES=(
+	"${FILESDIR}/${P}-flags.patch"
+	"${FILESDIR}/${P}-decl.patch"
+)
 
 src_compile() {
-	emake CC="$(tc-getCC)" || die "make failed"
+	emake CC="$(tc-getCC)"
 }
 
 src_install() {
-	dobin csindex || die
+	dobin csindex
 	dodoc README
 }
