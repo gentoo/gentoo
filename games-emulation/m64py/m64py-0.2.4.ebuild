@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_{4,5} )
 
-inherit distutils-r1 versionator
+inherit distutils-r1 versionator xdg-utils
 
 DESCRIPTION="A frontend for Mupen64Plus"
 HOMEPAGE="http://m64py.sourceforge.net/"
@@ -32,6 +32,8 @@ _EOF_
 }
 
 pkg_postinst() {
+	xdg_desktop_database_update
+
 	local vr
 	for vr in ${REPLACING_VERSIONS}; do
 		if ! version_is_at_least 0.2.1-r1 ${vr}; then
@@ -59,4 +61,8 @@ pkg_postinst() {
 		elog "In order to gain 7z archive support, please install either app-arch/p7zip"
 		elog "or dev-python/pylzma."
 	fi
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }
