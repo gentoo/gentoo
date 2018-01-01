@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_{4,5} )
 
-inherit distutils-r1 versionator xdg-utils
+inherit distutils-r1 xdg-utils
 
 DESCRIPTION="A frontend for Mupen64Plus"
 HOMEPAGE="http://m64py.sourceforge.net/"
@@ -33,21 +33,6 @@ _EOF_
 
 pkg_postinst() {
 	xdg_desktop_database_update
-
-	local vr
-	for vr in ${REPLACING_VERSIONS}; do
-		if ! version_is_at_least 0.2.1-r1 ${vr}; then
-			ewarn
-			ewarn "Starting with mupen64plus-2.0-r1, the plugin install path has changed."
-			ewarn "In order for m64py to find mupen64plus, you will either need to set"
-			ewarn "new paths in configuration dialog or remove your configuration file."
-			ewarn "The new paths are:"
-			ewarn
-			ewarn " Library file:      /usr/$(get_libdir)/libmupen64plus.so.2.0.0"
-			ewarn " Plugins directory: /usr/$(get_libdir)/mupen64plus"
-			ewarn " Data directory:    /usr/share/mupen64plus"
-		fi
-	done
 
 	if ! type -P rar >/dev/null && ! type -P unrar >/dev/null; then
 		elog
