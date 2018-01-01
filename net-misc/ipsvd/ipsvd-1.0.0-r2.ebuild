@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=3
+EAPI=6
 
-inherit toolchain-funcs flag-o-matic eutils
+inherit toolchain-funcs flag-o-matic
 
 DESCRIPTION="ipsvd is a set of internet protocol service daemons for Unix"
 HOMEPAGE="http://smarden.org/ipsvd/"
@@ -19,10 +19,9 @@ RDEPEND=""
 
 S="${WORKDIR}/net/${P}"
 
-src_prepare() {
-	cd "${S}"/src
-	epatch "${FILESDIR}"/${P}-fix-parallel-make.diff
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-parallel-make.diff
+)
 
 src_configure() {
 	cd "${S}"/src
@@ -36,14 +35,16 @@ src_configure() {
 
 src_compile() {
 	cd "${S}"/src
-	emake || die "make failed"
+	emake
 }
 
 src_install() {
-	dobin src/{tcpsvd,udpsvd,ipsvd-cdb} || die "dobin"
+	dobin src/{tcpsvd,udpsvd,ipsvd-cdb}
 	dodoc package/{CHANGES,README}
 
-	dohtml doc/*.html
 	doman man/ipsvd-instruct.5 man/ipsvd.7 man/udpsvd.8 \
 		man/tcpsvd.8 man/ipsvd-cdb.8
+
+	insinto html
+	dohtml doc/*.html
 }
