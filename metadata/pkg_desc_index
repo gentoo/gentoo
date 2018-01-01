@@ -6752,7 +6752,7 @@ kde-frameworks/solid 5.40.0: Provider for platform independent hardware discover
 kde-frameworks/sonnet 5.40.0: Framework for providing spell-checking through abstraction of popular backends
 kde-frameworks/syntax-highlighting 5.40.0: Framework for syntax highlighting
 kde-frameworks/threadweaver 5.40.0: Framework for managing threads using job and queue-based interfaces
-kde-misc/basket 2.49a_p20170225: A DropDrawers clone. Multiple information organizer
+kde-misc/basket 2.49a_p20170225-r1: A DropDrawers clone. Multiple information organizer
 kde-misc/kanyremote 6.4: KDE frontend to Anyremote
 kde-misc/kdeconnect 1.2: Adds communication between KDE Plasma and your smartphone
 kde-misc/kdiff3 0.9.98_p20170219-r1: Frontend to diff3 based on Qt/KF5
