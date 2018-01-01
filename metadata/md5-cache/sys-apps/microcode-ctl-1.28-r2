@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install preinst
+DESCRIPTION=Intel processor microcode update utility
+EAPI=6
+HOMEPAGE=https://pagure.io/microcode_ctl
+IUSE=selinux
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=sys-firmware/intel-microcode-20090330[monolithic(+)] selinux? ( sec-policy/selinux-cpucontrol )
+SLOT=0
+SRC_URI=https://releases.pagure.org/microcode_ctl/microcode_ctl-1.28.tar.xz
+_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=9d9140813cf8d0b4f6205a71054c4524
