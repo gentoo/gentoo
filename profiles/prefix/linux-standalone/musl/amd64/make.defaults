@@ -1,0 +1,1 @@
+ACCEPT_KEYWORDS="~${ARCH} ~${ARCH}-linux"
