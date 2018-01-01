@@ -1480,7 +1480,7 @@ java-pkg_ensure-vm-version-sufficient() {
 	if ! java-pkg_is-vm-version-sufficient; then
 		debug-print "VM is not suffient"
 		eerror "Current Java VM cannot build this package"
-		einfo "Please use java-config -S to set the correct one"
+		einfo "Please use \"eselect java-vm set system\" to set the correct one"
 		die "Active Java VM cannot build this package"
 	fi
 }
@@ -1508,7 +1508,7 @@ java-pkg_ensure-vm-version-eq() {
 	if ! java-pkg_is-vm-version-eq $@ ; then
 		debug-print "VM is not suffient"
 		eerror "This package requires a Java VM version = $@"
-		einfo "Please use java-config -S to set the correct one"
+		einfo "Please use \"eselect java-vm set system\" to set the correct one"
 		die "Active Java VM too old"
 	fi
 }
@@ -1555,7 +1555,7 @@ java-pkg_ensure-vm-version-ge() {
 	if ! java-pkg_is-vm-version-ge "$@" ; then
 		debug-print "vm is not suffient"
 		eerror "This package requires a Java VM version >= $@"
-		einfo "Please use java-config -S to set the correct one"
+		einfo "Please use \"eselect java-vm set system\" to set the correct one"
 		die "Active Java VM too old"
 	fi
 }
