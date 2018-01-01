@@ -572,7 +572,7 @@ qt5_base_configure() {
 		-no-sql-psql -no-sql-sqlite -no-sql-sqlite2 -no-sql-tds
 
 		# ensure the QML debugging support (qmltooling) is built in qtdeclarative
-		-qml-debug
+		$([[ ${QT5_MINOR_VERSION} -lt 11 ]] && echo -qml-debug)
 
 		# MIPS DSP instruction set extensions
 		$(is-flagq -mno-dsp   && echo -no-mips_dsp)
