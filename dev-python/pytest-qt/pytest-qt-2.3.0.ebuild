@@ -10,7 +10,7 @@ DESCRIPTION="pytest plugin for PyQt4 or PyQt5 applications"
 HOMEPAGE="https://pypi.python.org/pypi/pytest-qt"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
-LICENSE=" MIT"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc"
@@ -30,6 +30,9 @@ RDEPEND="
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 "
+
+# Test make assumptions about Qt environment
+RESTRICT="test"
 
 python_compile_all() {
 	use doc && sphinx-build -b html docs _build/html
