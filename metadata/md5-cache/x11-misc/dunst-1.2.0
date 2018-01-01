@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=dev-libs/glib:2 dev-libs/libxdg-basedir sys-apps/dbus x11-libs/cairo[X,glib] x11-libs/gdk-pixbuf x11-libs/gtk+:2= x11-libs/libXScrnSaver x11-libs/libXft x11-libs/libXinerama x11-libs/pango[X] dunstify? ( x11-libs/libnotify )
 SLOT=0
 SRC_URI=https://github.com/dunst-project/dunst/archive/v1.2.0.tar.gz -> dunst-1.2.0.tar.gz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=d22546a71f0f67d5fae19f9bc11ef7d4

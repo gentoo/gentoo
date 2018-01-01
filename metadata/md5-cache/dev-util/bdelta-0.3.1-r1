@@ -6,5 +6,5 @@ KEYWORDS=~alpha ~amd64 ~ppc ~sparc ~x86 ~x86-linux
 LICENSE=MPL-2.0
 SLOT=0
 SRC_URI=https://github.com/jjwhitney/BDelta/tarball/v0.3.1 -> bdelta-0.3.1.tar.gz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	vcs-snapshot	03289f51c769cf409d200d2d628cdd6e
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	vcs-snapshot	03289f51c769cf409d200d2d628cdd6e
 _md5_=3e5575c4e0cf3d6bab822f8ad3a95377

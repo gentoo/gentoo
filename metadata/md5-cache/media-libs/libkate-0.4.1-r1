@@ -10,5 +10,5 @@ RDEPEND=media-libs/libogg:= media-libs/libpng:0= wxwidgets? ( python_targets_pyt
 REQUIRED_USE=wxwidgets? ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=https://libkate.googlecode.com/files/libkate-0.4.1.tar.gz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	317a2557b4d7319a7418225f65accf77	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	185a06792159ca143528e7010368e8af
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	317a2557b4d7319a7418225f65accf77	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=89fe8525f458df234f7dbeaa03df476e

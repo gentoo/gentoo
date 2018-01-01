@@ -9,5 +9,5 @@ RDEPEND=>=sys-libs/readline-4.3 >=sys-libs/gdbm-1.8.0
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/rhyme/rhyme-0.9.tar.gz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=428d953de7eb80e54fbc82190c5be3c7

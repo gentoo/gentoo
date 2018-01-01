@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=>=x11-libs/libdockapp-0.7:= x11-libs/libX11 x11-libs/libXext x11-libs/libXpm
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~voyageur/distfiles/wmtz-0.7_p20150816.tar.gz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=77b391a121a27295c5e2d9b060016030

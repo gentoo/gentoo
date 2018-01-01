@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=portaudio? ( >=media-libs/portaudio-19_pre20071207 ) pulseaudio? ( media-sound/pulseaudio ) media-sound/sox
 SLOT=0
 SRC_URI=mirror://sourceforge/espeak/espeak-1.48.04-source.zip
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=36d122f6e82fb2c7f977c103a031929a

@@ -9,5 +9,5 @@ LICENSE=MIT
 RDEPEND=!luajit? ( >=dev-lang/lua-5.1:= ) luajit? ( dev-lang/luajit:2 ) >=dev-lua/say-1.2_p1[luajit=]
 SLOT=0
 SRC_URI=https://github.com/Olivine-Labs/luassert/archive/v1.7.10.tar.gz -> luassert-1.7.10.tar.gz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=9665f86f826c038fb8538f15053d7b6b

@@ -8,5 +8,5 @@ LICENSE=LSI
 RESTRICT=mirror fetch
 SLOT=0
 SRC_URI=http://www.lsi.com/downloads/Public/MegaRAID%20Common%20Files/ut_linux_mgr_5.20.zip
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=13c2e0fddfe15940e36eb055be9d71f6

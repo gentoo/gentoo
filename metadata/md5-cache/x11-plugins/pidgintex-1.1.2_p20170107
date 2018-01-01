@@ -9,5 +9,5 @@ LICENSE=GPL-3+
 RDEPEND=net-im/pidgin[gtk] app-text/mathtex nls? ( virtual/libintl )
 SLOT=0
 SRC_URI=https://github.com/Micket/pidgintex/archive/a8f618cf1bf92279b43c7b737010fd7e42c8e5d3.tar.gz -> pidgintex-1.1.2_p20170107.tar.gz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	vcs-snapshot	03289f51c769cf409d200d2d628cdd6e
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	vcs-snapshot	03289f51c769cf409d200d2d628cdd6e
 _md5_=a0c3d881f59f3ed029f77871a3627557

@@ -8,5 +8,5 @@ KEYWORDS=amd64 x86
 LICENSE=GPL-3
 SLOT=0
 SRC_URI=https://stockfish.s3.amazonaws.com/stockfish-8-src.zip
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=fd2ab1d9a033354d7f2d9a577816a0e8

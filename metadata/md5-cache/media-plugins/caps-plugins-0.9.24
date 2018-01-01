@@ -8,5 +8,5 @@ KEYWORDS=amd64 x86
 LICENSE=GPL-3
 SLOT=0
 SRC_URI=http://quitte.de/dsp/caps_0.9.24.tar.bz2
-_eclasses_=multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	eed53a6313267c9fbcd35fc384bd0087	multilib-minimal	9139c3a57e077cb8e0d0f73ceb080b89	toolchain-funcs	185a06792159ca143528e7010368e8af
+_eclasses_=multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	eed53a6313267c9fbcd35fc384bd0087	multilib-minimal	9139c3a57e077cb8e0d0f73ceb080b89	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=9dffe4b480b60d7627067cf5beca5d3a

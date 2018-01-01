@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=net-im/pidgin-2.7[dbus] >=net-libs/telepathy-glib-0.15.1 >=dev-libs/glib-2.30:2 >=dev-libs/dbus-glib-0.73
 SLOT=0
 SRC_URI=https://telepathy.freedesktop.org/releases/telepathy-haze/telepathy-haze-0.8.0.tar.gz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	python-any-r1	27d7f9da7187d283b7f3eae8390b7b09	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	185a06792159ca143528e7010368e8af
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	python-any-r1	27d7f9da7187d283b7f3eae8390b7b09	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=ce54cf7b140c3c26a14397cbdae11385

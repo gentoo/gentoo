@@ -10,5 +10,5 @@ RDEPEND=!<sys-apps/microcode-ctl-1.17-r2
 REQUIRED_USE=|| ( initramfs monolithic split-ucode )
 SLOT=0
 SRC_URI=http://downloadmirror.intel.com/24661/eng/microcode-20150121.tgz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=1f9d3f19f6d94ff543a36f9f08713e35

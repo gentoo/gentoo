@@ -9,5 +9,5 @@ LICENSE=GPL-2+
 RDEPEND=sys-libs/zlib
 SLOT=0
 SRC_URI=mirror://gentoo/uif2iso-0.1.7c.zip test? ( https://yegortimoshenko.s3.amazonaws.com/uif2iso-test.iso https://yegortimoshenko.s3.amazonaws.com/uif2iso-test.uif )
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=edeab90569cb9f3d2847199c4dcab99c

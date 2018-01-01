@@ -8,5 +8,5 @@ LICENSE=MIT GPL-2+
 RDEPEND=x11-libs/gdk-pixbuf:2[X] x11-libs/gtk+:2 x11-libs/libX11 x11-libs/libXmu
 SLOT=0
 SRC_URI=https://github.com/sargon/trayer-srg/tarball/trayer-1.1.6 -> trayer-srg-1.1.6.tar.gz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	vcs-snapshot	03289f51c769cf409d200d2d628cdd6e
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	vcs-snapshot	03289f51c769cf409d200d2d628cdd6e
 _md5_=417643ada2bade3b315422480cc9932b

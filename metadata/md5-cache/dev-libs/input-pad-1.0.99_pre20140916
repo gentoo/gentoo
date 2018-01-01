@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1
 RDEPEND=dev-libs/glib:2 dev-libs/libxml2 x11-libs/gtk+:3 x11-libs/libX11 x11-libs/libxkbfile x11-libs/libxklavier virtual/libintl eekboard? ( dev-libs/eekboard ) introspection? ( dev-libs/gobject-introspection ) xtest? ( x11-libs/libXtst )
 SLOT=0
 SRC_URI=https://github.com/fujiwarat/input-pad/releases/download/1.0.99.20140916/input-pad-1.0.99.20140916.tar.gz
-_eclasses_=ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_eclasses_=ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
 _md5_=aaa7afde2404917cac3c61e4fba9bbe8
