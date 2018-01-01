@@ -439,7 +439,7 @@ sci-electronics/cirkuit
 # If you depend on this package, help test KF5-based simon-9999
 # to decide on a possible snapshot. Bugs #640846, 639960, 635816.
 # Masked for removal in 30 days.
-app-accessibility/simon:4
+app-accessibility/simon:0
 
 # Patrice Clement <monsieurp@gentoo.org> (12 Dec 2017)
 # Masked due to a hard dependency on an ancient versions of dev-libs/msgpack
