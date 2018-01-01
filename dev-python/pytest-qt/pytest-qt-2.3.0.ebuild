@@ -35,12 +35,6 @@ python_compile_all() {
 	use doc && sphinx-build -b html docs _build/html
 }
 
-python_test() {
-	PYTHONPATH="${S}/tests:${BUILD_DIR}/lib" \
-		PYTEST_PLUGINS=${PN/-/_} \
-		py.test -v -v -x || die "Tests failed under ${EPYTHON}"
-}
-
 python_install_all() {
 	use doc && HTML_DOCS=( _build/html/. )
 	distutils-r1_python_install_all
