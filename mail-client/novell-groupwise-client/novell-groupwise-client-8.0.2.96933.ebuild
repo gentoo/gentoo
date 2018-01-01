@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -36,7 +36,10 @@ RDEPEND="
 	>=media-libs/freetype-2.5.5[abi_x86_32(-)]
 "
 
-RESTRICT="binchecks fetch mirror strip"
+RESTRICT="fetch mirror strip"
+
+# we might as well list all files in all QA variables...
+QA_PREBUILT="*"
 
 src_unpack() {
 	unpack ${A}
@@ -62,7 +65,7 @@ src_install() {
 	mv "${WORKDIR}"/${PN}-${MY_PV}/opt "${D}"/ || die "mv opt failed"
 
 	dodir /opt/bin
-	dosym /opt/novell/groupwise/client/bin/groupwise /opt/bin/groupwise
+	dosym ../novell/groupwise/client/bin/groupwise /opt/bin/groupwise
 }
 
 pkg_nofetch() {
