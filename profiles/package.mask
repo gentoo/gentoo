@@ -605,19 +605,6 @@ x11-drivers/xf86-input-pentouch
 # Masked for removal on 2017-12-30
 dev-tex/notoccite
 
-# Bernard Cafarelli <voyageur@gentoo.org> (24 Nov 2017)
-# Upstream removed tarball, no separate release in 3 years
-# Merged in net-misc/owncloud-client since
-# Masked for removal in 30 days. Bug #501228
-net-misc/ocsync
-sys-auth/pam-csync
-
-# Bernard Cafarelli <voyageur@gentoo.org> (24 Nov 2017)
-# Dead upstream, source not available anymore
-# Last open-source update in 2011
-# Masked for removal in 30 days. Bug #638670
-www-apps/eyeos
-
 # Matt Turner <mattst88@gentoo.org> (23 Nov 2017)
 # The modesetting driver is part of the xorg-server package since version 1.17.
 # The separate xf86-video-modesetting package is no longer needed.
