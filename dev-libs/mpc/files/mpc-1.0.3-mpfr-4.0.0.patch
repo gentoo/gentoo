@@ -41,9 +41,9 @@ diff --git a/src/mul.c b/src/mul.c
 index 3c9c0a7..8c4afe4 100644
 --- a/src/mul.c
 +++ b/src/mul.c
-@@ -175,8 +175,9 @@ mul_imag (mpc_ptr z, mpc_srcptr x, mpc_srcptr y, mpc_rnd_t rnd)
- #define MPFR_EXP(x)       ((x)->_mpfr_exp)
- #define MPFR_LIMB_SIZE(x) ((MPFR_PREC (x) - 1) / GMP_NUMB_BITS + 1)
+@@ -171,8 +171,9 @@
+ }
+ 
  
 +#if HAVE_MPFR_FMMA == 0
  static int
@@ -52,15 +52,15 @@ index 3c9c0a7..8c4afe4 100644
             mpfr_srcptr d, int sign, mpfr_rnd_t rnd)
  {
     /* Computes z = ab+cd if sign >= 0, or z = ab-cd if sign < 0.
-@@ -359,6 +360,7 @@ mpfr_fmma (mpfr_ptr z, mpfr_srcptr a, mpfr_srcptr b, mpfr_srcptr c,
+@@ -319,6 +320,7 @@
+ 
     return inex;
  }
 +#endif
  
  
  int
- mpc_mul_naive (mpc_ptr z, mpc_srcptr x, mpc_srcptr y, mpc_rnd_t rnd)
-@@ -375,10 +377,17 @@ mpc_mul_naive (mpc_ptr z, mpc_srcptr x, mpc_srcptr y, mpc_rnd_t rnd)
+@@ -337,10 +339,17 @@
     else
        rop [0] = z [0];
  
