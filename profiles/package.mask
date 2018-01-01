@@ -262,9 +262,11 @@ net-voip/ekiga
 # Alice Ferrazzi <alicef@gentoo.org> (27 Dec 2017)
 # Masked for removal in 30 days.
 # This kernel doesn't boot on hardened profiles.
-# (bug #642268)
+# vanilla-sources also dosen't make prepare
+# (bug #642268) (bug #642664)
 =sys-kernel/gentoo-sources-4.14.9
 =sys-kernel/gentoo-sources-4.14.10
+=sys-kernel/vanilla-sources-4.14.10
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (27 Dec 2017)
 # Ancient. EAPI=3. (Nearly) no consumers. Needs to go.
