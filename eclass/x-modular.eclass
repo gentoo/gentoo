@@ -1,5 +1,8 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+# @DEAD
+# Removal on 2018-02-01.
 #
 # DEPRECATED
 # This eclass has been superseded by xorg-2
