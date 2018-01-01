@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=3
+EAPI=6
 
-inherit eutils prefix
+inherit prefix
 
 DESCRIPTION="A tool based on colorgcc to beautify cvs output"
 HOMEPAGE="https://packages.gentoo.org/package/dev-vcs/colorcvs"
@@ -17,21 +17,23 @@ IUSE=""
 DEPEND=""
 RDEPEND="
 	dev-lang/perl
-	dev-vcs/cvs"
+	dev-vcs/cvs
+"
 
 src_prepare() {
 	# fix typo
 	sed -i -e 's:compiler_pid:cvs_pid:' ${PN} || die "sed failed"
-	epatch "${FILESDIR}"/${P}-prefix.patch
+	eapply "${FILESDIR}"/${P}-prefix.patch
 	eprefixify colorcvs
+	default
 }
 
 src_install() {
 	insinto /etc/profile.d
-	doins "${FILESDIR}/${PN}-profile.sh" || die "doins failed"
+	doins "${FILESDIR}/${PN}-profile.sh"
 
-	dobin colorcvs || die "dobin failed"
-	dodoc colorcvsrc-sample || die "dodoc failed"
+	dobin colorcvs
+	dodoc colorcvsrc-sample
 }
 
 pkg_postinst() {
