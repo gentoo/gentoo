@@ -9070,7 +9070,6 @@ sci-biology/clustal-omega 1.2.4: Scalable multiple alignment of protein sequence
 sci-biology/clustalw 1.83-r4 2.1-r1: General purpose multiple alignment program for DNA and proteins
 sci-biology/clustalx 2.1-r1: Graphical interface for the ClustalW multiple alignment program
 sci-biology/eugene 4.1d: Prokaryotic and Eukaryotic gene predictor
-sci-biology/fasta 35.4.10: FASTA is a DNA and Protein sequence alignment software package
 sci-biology/fasttree 2.1.7: Fast inference of approximately-maximum-likelihood phylogenetic trees
 sci-biology/finchtv 1.3.1-r2: Graphical viewer for chromatogram files
 sci-biology/gibbs 3.1: Identify motifs, conserved regions, in DNA or protein sequences
