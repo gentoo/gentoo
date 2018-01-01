@@ -9018,7 +9018,7 @@ net-vpn/openconnect 7.06-r1 7.07-r1 7.07-r2 7.08: Free client for Cisco AnyConne
 net-vpn/openvpn 2.4.3 2.4.4: Robust and highly flexible tunneling application compatible with many OSes
 net-vpn/pptpd 1.4.0-r2: Linux Point-to-Point Tunnelling Protocol Server
 net-vpn/strongswan 5.5.3: IPsec-based VPN solution focused on security and ease of use, supporting IKEv1/IKEv2 and MOBIKE
-net-vpn/tor 0.3.1.7: Anonymizing overlay network for TCP
+net-vpn/tor 0.3.1.7 0.3.1.9-r1: Anonymizing overlay network for TCP
 net-vpn/vpnc 0.5.3_p550: Free client for Cisco VPN routing software
 net-vpn/vtun 3.0.3: Create tunnels over TCP/IP networks with shaping, encryption, and compression
 net-wireless/aircrack-ng 1.2_rc1-r1: WLAN tools for breaking 802.11 WEP/WPA keys
