@@ -38,6 +38,6 @@ python_install_all() {
 	find "${ED}" -name '*.pth' -delete || die
 }
 
-python_test(){
-	${EPYTHON} -m pytest tests/
+python_test() {
+	"${EPYTHON}" -m pytest tests/ || die "Tests fail with ${EPYTHON}"
 }
