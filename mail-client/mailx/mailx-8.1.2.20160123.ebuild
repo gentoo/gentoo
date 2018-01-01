@@ -1,20 +1,20 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 inherit eutils
 
-MX_MAJ_VER=${PV%.*}
-MX_MIN_VER=${PV##*.}
-MY_PV=${MX_MAJ_VER}-0.${MX_MIN_VER}cvs
-S=${WORKDIR}/${PN}-${MY_PV}.orig
-debian_patch=${PN}_${MY_PV}-1.diff.gz
+DP="bsd-${PN}_${PV%.*}-0.${PV##*.}cvs"
+DPT="${DP}.orig.tar.bz2"
+DPP="${DP}-4.debian.tar.xz"
 
-DESCRIPTION="The /bin/mail program, which is used to send mail via shell scripts"
+DESCRIPTION="The $ mail program, which is used to send mail via shell scripts"
 HOMEPAGE="http://www.debian.org/"
-SRC_URI="mirror://gentoo/mailx_${MY_PV}.orig.tar.gz
-	mirror://gentoo/${debian_patch}"
+SRC_URI="http://http.debian.net/debian/pool/main/b/bsd-${PN}/${DPT}
+	http://http.debian.net/debian/pool/main/b/bsd-${PN}/${DPP}"
+
+S="${WORKDIR}/${DP/_/-}.orig"
 
 LICENSE="BSD"
 SLOT="0"
@@ -30,11 +30,8 @@ RDEPEND="${DEPEND}
 	!net-mail/mailutils"
 
 src_prepare() {
-	epatch "${DISTDIR}/${debian_patch}"
-	epatch "${FILESDIR}/${P}-musl.patch"
-	epatch "${FILESDIR}/${P}-nostrip.patch"
-	sed -i -e "s: -O2: \$(EXTRAFLAGS):g" Makefile || die
-	epatch "${FILESDIR}/${P}-offsetof.patch"
+	eapply "${WORKDIR}/debian/patches"
+	eapply "${FILESDIR}/${PN}-8.1.2.20050715-offsetof.patch"
 	eapply_user
 }
 
