@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=Utility for creating Czech/Slovak-sorted LaTeX index-files
+EAPI=6
+HOMEPAGE=http://math.feld.cvut.cz/olsak/cstex/
+KEYWORDS=amd64 x86
+LICENSE=MakeIndex
+SLOT=0
+SRC_URI=ftp://math.feld.cvut.cz/pub/cstex/base/csindex-19980713.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_md5_=0fcd656b6919f944995114834b919330

@@ -5934,7 +5934,7 @@ dev-tex/cdcover 1.3b: LaTeX package used to create CD case covers
 dev-tex/chktex 1.7.1: Checks latex source for common mistakes
 dev-tex/cjk-latex 4.8.4: LaTeX package to use CJK (Chinese/Japanese/Korean) scripts in various encodings
 dev-tex/cpp2latex 2.3-r1 2.3-r2: A program to convert C++ code to LaTeX source
-dev-tex/csindex 2.11c-r1: Utility for creating Czech/Slovak-sorted LaTeX index-files
+dev-tex/csindex 2.11c-r2: Utility for creating Czech/Slovak-sorted LaTeX index-files
 dev-tex/culmus-latex 0.7: Culmus fonts support for latex
 dev-tex/currvita 0.9i-r1: A LaTeX package for typesetting a curriculum vitae
 dev-tex/curve 1.16: LaTeX style for a CV (curriculum vitae) with flavour option
@@ -6229,7 +6229,7 @@ dev-vcs/bzr-git 0.6.8-r1: Support for Git branches in Bazaar
 dev-vcs/bzr-rewrite 0.6.3: Bazaar plugin that adds support for rebasing, similar to git rebase
 dev-vcs/bzr-xmloutput 0.8.8-r2: Bazaar plugin providing an option to generate XML output for builtin commands
 dev-vcs/bzrtools 2.5: bzrtools is a useful collection of utilities for bzr
-dev-vcs/colorcvs 1.4-r1: A tool based on colorgcc to beautify cvs output
+dev-vcs/colorcvs 1.4-r2: A tool based on colorgcc to beautify cvs output
 dev-vcs/colorsvn 0.3.3: Subversion output colorizer
 dev-vcs/cssc 1.4.0: The GNU Project's replacement for SCCS
 dev-vcs/cvs 1.12.12-r11 1.12.12-r12: Concurrent Versions System - source code revision control tools
