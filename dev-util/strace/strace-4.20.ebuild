@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -64,6 +64,15 @@ src_configure() {
 	done
 
 	econf $(use_with unwind libunwind)
+}
+
+src_test() {
+	if has usersandbox $FEATURES ; then
+		ewarn "Test suite is known to fail with FEATURES=usersandbox -- skipping ..." #643044
+		return 0
+	fi
+
+	default
 }
 
 src_install() {
