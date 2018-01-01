@@ -8347,7 +8347,7 @@ net-dns/dnstop 20140915: Displays various tables of DNS traffic on your network
 net-dns/dnswalk 2.0.2: dnswalk is a DNS database debugger
 net-dns/hesiod 3.1.0: DNS functionality to access to DB of information that changes infrequently
 net-dns/idnkit 1.0-r2: Toolkit for Internationalized Domain Names (IDN)
-net-dns/ldns-utils 1.6.12 1.7.0 1.7.0-r1: Set of utilities to simplify various dns(sec) tasks
+net-dns/ldns-utils 1.7.0 1.7.0-r1: Set of utilities to simplify various dns(sec) tasks
 net-dns/libidn 1.33 1.33-r1: Internationalized Domain Names (IDN) implementation
 net-dns/libidn2 2.0.4: An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
 net-dns/maradns 2.0.09-r2: A security-aware DNS server
@@ -8690,7 +8690,7 @@ net-mail/vpopmail 5.4.33: A collection of programs to manage virtual email domai
 net-mail/yosucker 73: Downloads mail from a Yahoo! webmail account to a local mail spool, an mbox file, or to procmail
 net-mail/ytnef 1.9.2: Yeraze's TNEF Stream Reader - for winmail.dat files
 net-misc/adjtimex 1.29-r1: display or set the kernel time variables
-net-misc/aget 0.4.1-r1: multithreaded HTTP download accelerator
+net-misc/aget 0.4.1-r2: multithreaded HTTP download accelerator
 net-misc/aggregate 1.6: Take a list of prefixes and perform two optimisations to reduce the length of the prefix list
 net-misc/aggregate-flim 1.0.2: aggregate is a tool for aggregating CIDR networks
 net-misc/aria2 1.30.0: A download utility with segmented downloading with BitTorrent support
