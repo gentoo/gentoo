@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=media-libs/ming >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 sys-devel/m4 sys-devel/libtool php_targets_php5-6? ( dev-lang/php:5.6 ) php_targets_php7-0? ( dev-lang/php:7.0 ) php_targets_php7-1? ( dev-lang/php:7.1 ) php_targets_php7-2? ( dev-lang/php:7.2 )
+DESCRIPTION=PHP extension for the ming Flash movie generation library
+EAPI=6
+HOMEPAGE=http://ming.sourceforge.net/
+IUSE=php_targets_php5-6 php_targets_php7-0 php_targets_php7-1 php_targets_php7-2
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd
+LICENSE=LGPL-2.1
+RDEPEND=media-libs/ming php_targets_php5-6? ( dev-lang/php:5.6 ) php_targets_php7-0? ( dev-lang/php:7.0 ) php_targets_php7-1? ( dev-lang/php:7.1 ) php_targets_php7-2? ( dev-lang/php:7.2 )
+REQUIRED_USE=|| ( php_targets_php5-6 php_targets_php7-0 php_targets_php7-1 php_targets_php7-2 )
+SLOT=0
+SRC_URI=https://github.com/libming/libming/archive/ming-0_4_8.tar.gz
+_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	flag-o-matic	02908f00f002f0f07c5b74783d778325	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	php-ext-source-r3	02131d21ec5edc689a1ef97096214131	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=c322cf8b6a7ae4de290214d3e1159156
