@@ -115,8 +115,8 @@ read_ldso_conf() {
 sanitize() {
 	local drs=$@
 
-	repeated "/lib" $drs || drs="/lib $drs"
-	repeated "/usr/lib" $drs || drs="/usr/lib $drs"
+	repeated "@@EPREFIX@@/lib" $drs || drs="@@EPREFIX@@/lib $drs"
+	repeated "@@EPREFIX@@/usr/lib" $drs || drs="@@EPREFIX@@/usr/lib $drs"
 
 	echo $drs
 }
@@ -126,7 +126,7 @@ drs=$(read_ldso_conf "$LDSO_CONF")
 drs=$(sanitize $drs)
 
 ARCH=@@ARCH@@
-LDSO_PATH="/lib/ld-musl-${ARCH}.so.1"
+LDSO_PATH="@@EPREFIX@@/lib/ld-musl-${ARCH}.so.1"
 if [[ ! -e $LDSO_PATH ]]; then
 	echo "$LDSO_PATH not found" >&2
 	exit 1
@@ -134,7 +134,7 @@ fi
 
 LDSO_ARCH=$(basename $LDSO_PATH)
 LDSO_NAME=${LDSO_ARCH%.so.1}
-ETC_LDSO_PATH=/etc/${LDSO_NAME}.path
+ETC_LDSO_PATH=@@EPREFIX@@/etc/${LDSO_NAME}.path
 
 X=$(mktemp -p /tmp ${LDSO_NAME}.XXXXXX)
 for d in $drs; do
