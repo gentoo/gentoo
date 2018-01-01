@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit eutils latex-package
+inherit latex-package
 
 DESCRIPTION="Combined LaTeX/Metafont package for drawing of Feynman diagrams"
 HOMEPAGE="http://www.ctan.org/tex-archive/macros/latex/contrib/feynmf/"
@@ -22,11 +22,14 @@ DEPEND="${RDEPEND}
 	doc? ( dev-texlive/texlive-bibtexextra )"
 
 S="${WORKDIR}/${PN}"
+PATCHES=(
+	"${FILESDIR}"/${P}.patch
+	"${FILESDIR}"/${P}-tempfile.patch
+)
 
 src_prepare() {
 	rm -f phaip.bst				# use style from bibtexextra
-	epatch "${FILESDIR}/${P}.patch"
-	epatch "${FILESDIR}/${P}-tempfile.patch"
+	default
 }
 
 src_compile() {
