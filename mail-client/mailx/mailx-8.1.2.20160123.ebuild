@@ -10,7 +10,7 @@ DPT="${DP}.orig.tar.bz2"
 DPP="${DP}-4.debian.tar.xz"
 
 DESCRIPTION="The $ mail program, which is used to send mail via shell scripts"
-HOMEPAGE="http://www.debian.org/"
+HOMEPAGE="https://www.debian.org/"
 SRC_URI="http://http.debian.net/debian/pool/main/b/bsd-${PN}/${DPT}
 	http://http.debian.net/debian/pool/main/b/bsd-${PN}/${DPP}"
 
@@ -22,6 +22,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
 IUSE=""
 
 DEPEND=">=net-libs/liblockfile-1.03
+	dev-libs/libbsd
 	virtual/mta
 	mail-client/mailx-support"
 
