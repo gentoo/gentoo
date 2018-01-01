@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -30,6 +30,7 @@ RDEPEND="
 	>=dev-python/snowballstemmer-1.1[${PYTHON_USEDEP}]
 	>=dev-python/sphinx_rtd_theme-0.1[${PYTHON_USEDEP}]
 	<dev-python/sphinx_rtd_theme-2.0[${PYTHON_USEDEP}]
+	dev-python/sphinxcontrib-websupport[${PYTHON_USEDEP}]
 	dev-python/typing[${PYTHON_USEDEP}]
 	latex? (
 		dev-texlive/texlive-latexextra
@@ -40,7 +41,6 @@ RDEPEND="
 		>=dev-python/sqlalchemy-0.9[${PYTHON_USEDEP}]
 		>=dev-python/whoosh-2.0[${PYTHON_USEDEP}]
 	)"
-PDEPEND="dev-python/sphinxcontrib-websupport[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
