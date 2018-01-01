@@ -12,7 +12,7 @@ SRC_URI="http://download.gna.org/gnome-mastermind/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
 RDEPEND="

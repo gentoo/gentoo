@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 inherit toolchain-funcs python-r1 java-pkg-opt-2 java-ant-2 cmake-multilib
 
 DESCRIPTION="A collection of algorithms and sample code for various computer vision problems"
-HOMEPAGE="http://opencv.org"
+HOMEPAGE="https://opencv.org"
 
 SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~amynka/snap/imgcodecs-${P}.tar.gz

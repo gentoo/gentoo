@@ -13,7 +13,7 @@ SRC_URI="http://www.xevil.com/download/stable/xevilsrc${MY_PV}.zip
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 IUSE=""
 
 RDEPEND="x11-libs/libXpm"

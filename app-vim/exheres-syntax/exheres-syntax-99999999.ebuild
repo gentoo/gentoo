@@ -1,28 +1,22 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-inherit vim-plugin git-2
+EAPI=6
+
+inherit vim-plugin git-r3
 
 DESCRIPTION="vim plugin: exheres format highlighting"
 HOMEPAGE="http://www.exherbo.org/"
-EGIT_REPO_URI="git://git.exherbo.org/${PN}.git
-	http://git.exherbo.org/pub/scm/${PN}.git"
-unset SRC_URI
+EGIT_REPO_URI="https://git.exherbo.org/git/exheres-syntax.git"
 
 LICENSE="vim"
 SLOT="0"
 IUSE=""
-KEYWORDS=""
 
 VIM_PLUGIN_HELPFILES="exheres-syntax"
 VIM_PLUGIN_MESSAGES="filetype"
 
-src_unpack() {
-	git-2_src_unpack
-	cd "${S}"
-	rm .gitignore Makefile
-}
-
-src_compile() {
-	:
+src_prepare() {
+	default
+	rm .gitignore Makefile || die
 }

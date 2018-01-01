@@ -1,0 +1,51 @@
+commit 237d1b34166fea2e4cb0eb28098a5b2759548b86
+Author: Robin H. Johnson <robbat2@gentoo.org>
+Date:   Sun Nov 26 23:50:58 2017 -0800
+
+    Fix PORTAGE_QUIET quiet result.
+    
+    Having PORTAGE_QUIET set caused the quiet variable to be incremented,
+    but it did not also setup the warnout variable.
+    
+    Add a common setup function for warnout quiet, and use consistently.
+    
+    Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
+
+diff --git a/main.c b/main.c
+index d124695..dea03a8 100644
+--- a/main.c
++++ b/main.c
+@@ -78,6 +78,15 @@ no_colors(void)
+ 	setenv("NOCOLOR", "true", 1);
+ }
+ 
++static void
++setup_quiet(void)
++{
++	/* "e" for FD_CLOEXEC */
++	if (quiet == 0)
++		warnout = fopen("/dev/null", "we");
++	++quiet;
++}
++
+ /* include common applet defs */
+ #include "applets.h"
+ 
+@@ -102,7 +111,7 @@ no_colors(void)
+ #define COMMON_GETOPTS_CASES(applet) \
+ 	case 0x1: portroot = optarg; break; \
+ 	case 'v': ++verbose; break; \
+-	case 'q': if (quiet == 0) { warnout = fopen("/dev/null", "we"); } ++quiet; break; \
++	case 'q': setup_quiet(); break; \
+ 	case 'V': version_barf(); break; \
+ 	case 'h': applet ## _usage(EXIT_SUCCESS); break; \
+ 	case 'C': no_colors(); break; \
+@@ -952,7 +961,7 @@ initialize_portage_env(void)
+ 		xarraypush_str(overlays, main_overlay);
+ 
+ 	if (getenv("PORTAGE_QUIET") != NULL)
+-		quiet = 1;
++		setup_quiet();
+ 
+ 	if (nocolor)
+ 		no_colors();

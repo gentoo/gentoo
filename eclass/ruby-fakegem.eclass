@@ -18,18 +18,18 @@ inherit ruby-ng
 # @DESCRIPTION:
 # Sets the Gem name for the generated fake gemspec.
 # This variable MUST be set before inheriting the eclass.
-# RUBY_FAKEGEM_NAME="${PN}"
+RUBY_FAKEGEM_NAME="${RUBY_FAKEGEM_NAME:-${PN}}"
 
 # @ECLASS-VARIABLE: RUBY_FAKEGEM_VERSION
 # @DESCRIPTION:
 # Sets the Gem version for the generated fake gemspec.
 # This variable MUST be set before inheriting the eclass.
-# RUBY_FAKEGEM_VERSION="${PV}"
+RUBY_FAKEGEM_VERSION="${RUBY_FAKEGEM_VERSION:-${PV/_pre/.pre}}"
 
 # @ECLASS-VARIABLE: RUBY_FAKEGEM_TASK_DOC
 # @DESCRIPTION:
 # Specify the rake(1) task to run to generate documentation.
-# RUBY_FAKEGEM_TASK_DOC="rdoc"
+RUBY_FAKEGEM_TASK_DOC="${RUBY_FAKEGEM_TASK_DOC-rdoc}"
 
 # @ECLASS-VARIABLE: RUBY_FAKEGEM_RECIPE_TEST
 # @DESCRIPTION:
@@ -40,13 +40,13 @@ inherit ruby-ng
 #  - cucumber (calls ruby-ng_cucumber, adds dev-util/cucumber to the
 #    dependencies; does not work on JRuby).
 #  - none
-# RUBY_FAKEGEM_RECIPE_TEST="rake"
+RUBY_FAKEGEM_RECIPE_TEST="${RUBY_FAKEGEM_RECIPE_TEST-rake}"
 
 # @ECLASS-VARIABLE: RUBY_FAKEGEM_TASK_TEST
 # @DESCRIPTION:
 # Specify the rake(1) task used for executing tests. Only valid
 # if RUBY_FAKEGEM_RECIPE_TEST is set to "rake" (the default).
-# RUBY_FAKEGEM_TASK_TEST="test"
+RUBY_FAKEGEM_TASK_TEST="${RUBY_FAKEGEM_TASK_TEST-test}"
 
 # @ECLASS-VARIABLE: RUBY_FAKEGEM_RECIPE_DOC
 # @DESCRIPTION:
@@ -55,68 +55,58 @@ inherit ruby-ng
 #  - rdoc (calls `rdoc-2`, adds dev-ruby/rdoc to the dependencies);
 #  - yard (calls `yard`, adds dev-ruby/yard to the dependencies);
 #  - none
-# RUBY_FAKEGEM_RECIPE_DOC="rake"
+RUBY_FAKEGEM_RECIPE_DOC="${RUBY_FAKEGEM_RECIPE_DOC-rake}"
 
 # @ECLASS-VARIABLE: RUBY_FAKEGEM_DOCDIR
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Specify the directory under which the documentation is built;
 # if empty no documentation will be installed automatically.
 # Note: if RUBY_FAKEGEM_RECIPE_DOC is set to `rdoc`, this variable is
 # hardwired to `doc`.
-# RUBY_FAKEGEM_DOCDIR=""
 
 # @ECLASS-VARIABLE: RUBY_FAKEGEM_EXTRADOC
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Extra documentation to install (readme, changelogs, …).
-# RUBY_FAKEGEM_EXTRADOC=""
 
 # @ECLASS-VARIABLE: RUBY_FAKEGEM_DOC_SOURCES
 # @DESCRIPTION:
 # Allow settings defined sources to scan for documentation.
 # This only applies if RUBY_FAKEGEM_DOC_TASK is set to `rdoc`.
-# RUBY_FAKEGEM_DOC_SOURCES="lib"
+RUBY_FAKEGEM_DOC_SOURCES="${RUBY_FAKEGEM_DOC_SOURCES-lib}"
 
 # @ECLASS-VARIABLE: RUBY_FAKEGEM_BINWRAP
 # @DESCRIPTION:
 # Binaries to wrap around (relative to the RUBY_FAKEGEM_BINDIR directory)
-# RUBY_FAKEGEM_BINWRAP="*"
+RUBY_FAKEGEM_BINWRAP="${RUBY_FAKEGEM_BINWRAP-*}"
 
 # @ECLASS-VARIABLE: RUBY_FAKEGEM_BINDIR
 # @DESCRIPTION:
 # Path that contains binaries to be binwrapped. Equivalent to the
 # gemspec bindir option.
-# RUBY_FAKEGEM_BINDIR="bin"
+RUBY_FAKEGEM_BINDIR="${RUBY_FAKEGEM_BINDIR-bin}"
 
 # @ECLASS-VARIABLE: RUBY_FAKEGEM_REQUIRE_PATHS
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Extra require paths (beside lib) to add to the specification
-# RUBY_FAKEGEM_REQUIRE_PATHS=""
 
 # @ECLASS-VARIABLE: RUBY_FAKEGEM_GEMSPEC
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Filename of .gemspec file to install instead of generating a generic one.
-# RUBY_FAKEGEM_GEMSPEC=""
 
 # @ECLASS-VARIABLE: RUBY_FAKEGEM_EXTRAINSTALL
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # List of files and directories relative to the top directory that also
 # get installed. Some gems provide extra files such as version information,
 # Rails generators, or data that needs to be installed as well.
-# RUBY_FAKEGEM_EXTRAINSTALL=""
 
-RUBY_FAKEGEM_NAME="${RUBY_FAKEGEM_NAME:-${PN}}"
-RUBY_FAKEGEM_VERSION="${RUBY_FAKEGEM_VERSION:-${PV/_pre/.pre}}"
+
 RUBY_FAKEGEM_SUFFIX="${RUBY_FAKEGEM_SUFFIX:-}"
 
-RUBY_FAKEGEM_RECIPE_DOC="${RUBY_FAKEGEM_RECIPE_DOC-rake}"
-RUBY_FAKEGEM_TASK_DOC="${RUBY_FAKEGEM_TASK_DOC-rdoc}"
-RUBY_FAKEGEM_DOC_SOURCES="${RUBY_FAKEGEM_DOC_SOURCES-lib}"
-
-RUBY_FAKEGEM_RECIPE_TEST="${RUBY_FAKEGEM_RECIPE_TEST-rake}"
-RUBY_FAKEGEM_TASK_TEST="${RUBY_FAKEGEM_TASK_TEST-test}"
-
-RUBY_FAKEGEM_BINWRAP="${RUBY_FAKEGEM_BINWRAP-*}"
-RUBY_FAKEGEM_BINDIR="${RUBY_FAKEGEM_BINDIR-bin}"
 
 [[ ${RUBY_FAKEGEM_TASK_DOC} == "" ]] && RUBY_FAKEGEM_RECIPE_DOC="none"
 

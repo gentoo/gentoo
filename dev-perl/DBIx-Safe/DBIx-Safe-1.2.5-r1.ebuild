@@ -10,7 +10,7 @@ inherit perl-module eutils
 DESCRIPTION="Safer access to your database through a DBI database handle"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE=""
 LICENSE="BSD-2"
 

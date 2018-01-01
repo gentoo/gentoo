@@ -53,15 +53,15 @@ python_compile_all() {
 }
 
 python_test() {
-	cd greentest || die
+	cd src/greentest || die
 
 	GEVENT_RESOLVER=thread \
-		"${PYTHON}" testrunner.py --config ../known_failures.py || die
+		"${PYTHON}" testrunner.py --config known_failures.py || die
 	GEVENT_RESOLVER=ares GEVENTARES_SERVERS=8.8.8.8 \
-		"${PYTHON}" testrunner.py --config ../known_failures.py \
+		"${PYTHON}" testrunner.py --config known_failures.py \
 		--ignore tests_that_dont_use_resolver.txt || die
 	GEVENT_FILE=thread \
-		"${PYTHON}" testrunner.py --config ../known_failures.py $(grep -l subprocess test_*.py) || die
+		"${PYTHON}" testrunner.py --config known_failures.py $(grep -l subprocess test_*.py) || die
 }
 
 python_install_all() {

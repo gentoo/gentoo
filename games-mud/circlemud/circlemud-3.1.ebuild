@@ -10,7 +10,7 @@ SRC_URI="http://www.circlemud.org/pub/CircleMUD/3.x/circle-${PV}.tar.bz2"
 
 LICENSE="circlemud"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="dev-libs/openssl:0="

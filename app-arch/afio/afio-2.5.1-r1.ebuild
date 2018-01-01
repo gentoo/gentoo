@@ -5,18 +5,17 @@ EAPI=6
 
 inherit toolchain-funcs
 
-DESCRIPTION="cpio-format archives"
-HOMEPAGE="http://members.chello.nl/k.holtman/afio.html"
+DESCRIPTION="Afio creates cpio-format archives."
+HOMEPAGE="http://members.chello.nl/k.holtman/afio.html https://github.com/kholtman/afio"
 SRC_URI="http://members.chello.nl/k.holtman/${P}.tgz"
 
 LICENSE="Artistic LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ppc sparc x86"
 
-PATCHES=( "${FILESDIR}"/Makefile-r1.patch )
+PATCHES=( "${FILESDIR}"/${PN}-2.5.1-fix-build-system.patch )
 
-src_prepare() {
-	default
+src_configure() {
 	tc-export CC
 }
 
@@ -27,7 +26,7 @@ src_install() {
 
 	local i
 	for i in {1..4}; do
-		docinto "script$i"
-		dodoc "script$i"/*
+		docinto "script${i}"
+		dodoc -r "script${i}"/.
 	done
 }

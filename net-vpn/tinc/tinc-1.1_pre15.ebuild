@@ -8,7 +8,7 @@ MY_P=${PN}-${MY_PV}
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils multilib python-single-r1
+inherit eutils multilib python-single-r1 systemd
 
 DESCRIPTION="tinc is an easy to configure VPN implementation"
 HOMEPAGE="http://www.tinc-vpn.org/"
@@ -64,7 +64,7 @@ src_configure() {
 		--disable-silent-rules \
 		--enable-legacy-protocol \
 		--disable-tunemu  \
-		--with-systemd=/usr/$(get_libdir)/systemd/system \
+		--with-systemd="$(systemd_get_systemunitdir)" \
 		$(use_enable lzo) \
 		$(use_enable ncurses curses) \
 		$(use_enable readline) \

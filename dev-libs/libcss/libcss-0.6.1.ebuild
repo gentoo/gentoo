@@ -19,3 +19,12 @@ RDEPEND=">=dev-libs/libparserutils-0.2.1-r1[static-libs?,${MULTILIB_USEDEP}]
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	test? ( dev-lang/perl )"
+
+src_prepare() {
+	sed -e '1i#pragma GCC diagnostic ignored "-Wimplicit-fallthrough"' \
+		-i src/parse/parse.c || die
+	sed -e '1i#pragma GCC diagnostic ignored "-Wmaybe-uninitialized"' \
+		-i src/parse/parse.c src/select/computed.c || die
+
+	netsurf_src_prepare
+}

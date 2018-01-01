@@ -13,7 +13,7 @@ HOMEPAGE="http://www.excessiveplus.net/"
 SRC_URI="http://www.excessiveplus.net/files/release/xp-${PV}.zip"
 
 LICENSE="all-rights-reserved"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="dedicated opengl"
 
 src_prepare() {

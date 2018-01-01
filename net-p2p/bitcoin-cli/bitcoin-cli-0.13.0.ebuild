@@ -1,4 +1,4 @@
-# Copyright 2010-2016 Gentoo Foundation
+# Copyright 2010-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ BITCOINCORE_LJR_DATE="20160814"
 BITCOINCORE_IUSE="+ljr"
 inherit bash-completion-r1 bitcoincore
 
-DESCRIPTION="Command-line JSON-RPC client specifically designed for talking to Bitcoin Core Daemon"
+DESCRIPTION="Command-line JSON-RPC client for the communication with the Bitcoin Core Daemon"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~x86 ~amd64-linux ~x86-linux"

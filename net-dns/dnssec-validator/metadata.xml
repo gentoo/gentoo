@@ -5,4 +5,7 @@
 <email>xmw@gentoo.org</email>
 <name>Michael Weber</name>
 </maintainer>
+<use>
+	<flag name="ecdsa-check">Requires openssl[-bindist]</flag>
+</use>
 </pkgmetadata>

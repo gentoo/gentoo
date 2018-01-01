@@ -16,12 +16,12 @@ SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 
 IUSE="libressl"
 
 RDEPEND="
-	!libressl? ( >=dev-libs/openssl-0.9.8:0= )
+	!libressl? ( >=dev-libs/openssl-0.9.8:0=[-bindist(-)] )
 	libressl? ( dev-libs/libressl:0= )
 	dev-python/typing[${PYTHON_USEDEP}]
 "

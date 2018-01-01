@@ -1,0 +1,11 @@
+#!/sbin/openrc-run
+# Copyright 2016-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+description="Minio Object Storage Server"
+pidfile=${pidfile:-"/run/${SVCNAME}.pid"}
+command="/usr/bin/minio"
+command_args="${command_args:-server /var/lib/minio}"
+command_background="true"
+start_stop_daemon_args="--stdout /var/log/${SVCNAME}.log \
+	--stderr /var/log/${SVCNAME}.log"

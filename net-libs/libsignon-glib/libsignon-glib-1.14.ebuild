@@ -10,9 +10,9 @@ DESCRIPTION="GLib binding for the D-Bus API provided by signond"
 HOMEPAGE="https://01.org/gsso/"
 SRC_URI="https://gitlab.com/accounts-sso/libsignon-glib/repository/archive.tar.gz?ref=VERSION_${PV} -> ${P}.tar.gz"
 
-SLOT="0"
 LICENSE="LGPL-2.1"
-KEYWORDS="~amd64 ~x86"
+SLOT="0"
+KEYWORDS="amd64 x86"
 IUSE="debug doc +introspection python test"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} introspection )"

@@ -23,7 +23,7 @@ else
 	SRC_URI="https://download.fcitx-im.org/${PN}/${P}_dict.tar.xz"
 fi
 
-LICENSE="GPL-2+ LGPL-2+ MIT"
+LICENSE="BSD-1 GPL-2+ LGPL-2+ MIT"
 SLOT="4"
 KEYWORDS=""
 IUSE="+X +autostart +cairo debug +enchant gtk2 gtk3 +introspection lua nls opencc +pango qt4 static-libs +table test +xml"
@@ -134,6 +134,11 @@ pkg_postinst() {
 	xdg_mimeinfo_database_update
 	use gtk2 && gnome2_query_immodules_gtk2
 	use gtk3 && gnome2_query_immodules_gtk3
+
+	elog
+	elog "Quick Phrase Editor is provided by:"
+	elog "  app-i18n/fcitx-qt5:4"
+	elog
 }
 
 pkg_postrm() {

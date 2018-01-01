@@ -41,6 +41,7 @@ esac
 MYSQL_EXTRAS=""
 
 # @ECLASS-VARIABLE: MYSQL_EXTRAS_VER
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # The version of the MYSQL_EXTRAS repo to use to build mysql
 # Use "none" to disable it's use

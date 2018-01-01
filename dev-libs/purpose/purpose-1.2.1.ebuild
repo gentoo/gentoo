@@ -10,7 +10,7 @@ DESCRIPTION="Library for providing abstractions to get the developer's purposes 
 SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
 
 LICENSE="LGPL-2.1+"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="+kaccounts"
 
 DEPEND="

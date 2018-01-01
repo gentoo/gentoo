@@ -12,7 +12,7 @@ SRC_URI="amd64? ( dontstarve_x64_july21.tar.gz )
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 RESTRICT="fetch bindist splitdebug"
 

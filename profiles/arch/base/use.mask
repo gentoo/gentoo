@@ -136,11 +136,17 @@ video_cards_newport
 
 # not needed on non-x86, non-amd64 systems
 input_devices_vmmouse
+video_cards_ast
+video_cards_i915
+video_cards_i965
+video_cards_intel
 video_cards_nvidia
-video_cards_fglrx
 video_cards_via
 video_cards_vmware
 video_cards_virtualbox
+
+# not needed on non-x86, non-amd64, non-mips systems
+video_cards_siliconmotion
 
 # not needed on non-arm systems
 video_cards_exynos
@@ -165,10 +171,6 @@ input_devices_wacom
 # Only works on x86 or amd64
 lcd_devices_svga
 lcd_devices_luise
-
-# Joseph Jezak <josejx@gentoo.org> (11 Mar 2007)
-# Only for x86 and amd64 (in pbbuttonsd)
-macbook
 
 # George Shapovalov <george@gentoo.org> (8 Apr 2007)
 # Ada is supported only on x86, amd64 and ppc at present

@@ -10,10 +10,10 @@
 		<flag name="xfce">Add support for XFCE panel</flag>
 	</use>
 	<longdescription>
-  Workrave is a program that assists in the recovery and prevention
-  of Repetitive Strain Injury (RSI). The program frequently alerts
-  you to take micro-pauses, rest breaks and restricts you to your
-  daily limit.
+		Workrave is a program that assists in the recovery and prevention
+		of Repetitive Strain Injury (RSI). The program frequently alerts
+		you to take micro-pauses, rest breaks and restricts you to your
+		daily limit.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">rcaelers/workrave</remote-id>

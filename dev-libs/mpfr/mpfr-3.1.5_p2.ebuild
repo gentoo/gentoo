@@ -11,7 +11,8 @@ MY_P=${PN}-${MY_PV}
 PLEVEL=${PV/*p}
 DESCRIPTION="library for multiple-precision floating-point computations with exact rounding"
 HOMEPAGE="http://www.mpfr.org/"
-SRC_URI="http://www.mpfr.org/mpfr-${MY_PV}/${MY_P}.tar.xz"
+SRC_URI="http://www.mpfr.org/mpfr-${MY_PV}/${MY_P}.tar.xz
+	https://dev.gentoo.org/~mgorny/dist/${MY_P}-patchset.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/4" # libmpfr.so version
@@ -27,7 +28,7 @@ src_prepare() {
 	if [[ ${PLEVEL} != ${PV} ]] ; then
 		local i
 		for (( i = 1; i <= PLEVEL; ++i )) ; do
-			epatch "${FILESDIR}"/${MY_PV}/patch$(printf '%02d' ${i})
+			epatch "${WORKDIR}"/${MY_P}-patchset/patch$(printf '%02d' ${i})
 		done
 	fi
 	epatch_user

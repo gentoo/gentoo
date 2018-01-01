@@ -114,7 +114,6 @@ broker_module=${EPREFIX%/}/usr/$(get_libdir)/mk-livestatus/livestatus.o
 EOF
 	# same for icigna
 	cat <<EOF >"${T}"/icigna.cfg
-                cat << EOF > "${T}"/livestatus.cfg || die
 define module{
         module_name             mk-livestatus
         module_type             neb

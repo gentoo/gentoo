@@ -1,0 +1,27 @@
+From 3644486a9ee4fda7887fa0ecf224e66c4d12a0d2 Mon Sep 17 00:00:00 2001
+From: Ritesh Raj Sarraf <rrs@debian.org>
+Date: Fri, 10 Mar 2017 14:37:03 +0530
+Subject: [PATCH] Fix correct program invocation
+
+Thanks: Mathias Rav
+Closes: https://github.com/rickysarraf/laptop-mode-tools/issues/93
+---
+ usr/share/laptop-mode-tools/modules/wireless-power | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/usr/share/laptop-mode-tools/modules/wireless-power b/usr/share/laptop-mode-tools/modules/wireless-power
+index bd8277d..8800a89 100755
+--- a/usr/share/laptop-mode-tools/modules/wireless-power
++++ b/usr/share/laptop-mode-tools/modules/wireless-power
+@@ -76,7 +76,7 @@ setPowerSave() {
+                 if [ $ONOFF = "ON" ]; then
+                     $IWCONFIG $IF txpower auto
+                 else
+-                    $IW dev $IF txpower fixed
++                    $IWCONFIG $IF txpower fixed
+                 fi
+ 	fi
+ }
+-- 
+2.13.6
+

@@ -34,7 +34,6 @@ IUSE_VIDEO_CARDS="
 	video_cards_amdgpu
 	video_cards_ast
 	video_cards_dummy
-	video_cards_epson
 	video_cards_fbdev
 	video_cards_freedreno
 	video_cards_geode
@@ -59,7 +58,6 @@ IUSE_VIDEO_CARDS="
 	video_cards_virtualbox
 	video_cards_vmware
 	video_cards_voodoo
-	video_cards_fglrx
 	video_cards_nvidia
 "
 
@@ -100,7 +98,6 @@ PDEPEND="
 	video_cards_omap?          ( x11-drivers/xf86-video-omap )
 	video_cards_qxl?           ( x11-drivers/xf86-video-qxl )
 	video_cards_nvidia?        ( x11-drivers/nvidia-drivers )
-	video_cards_fglrx?         ( x11-drivers/ati-drivers )
 	video_cards_r128?          ( x11-drivers/xf86-video-r128 )
 	video_cards_radeon?        ( x11-drivers/xf86-video-ati )
 	video_cards_radeonsi?      ( x11-drivers/xf86-video-ati[glamor] )

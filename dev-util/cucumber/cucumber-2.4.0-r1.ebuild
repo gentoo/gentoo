@@ -17,13 +17,14 @@ DESCRIPTION="Executable feature scenarios"
 HOMEPAGE="https://github.com/aslakhellesoy/cucumber/wikis"
 LICENSE="Ruby"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ia64 ~ppc ~ppc64 sparc x86"
 SLOT="0"
 IUSE="examples test"
 
 ruby_add_bdepend "
 	test? (
 		dev-ruby/rspec:3
+		dev-ruby/bundler
 		>=dev-ruby/nokogiri-1.5.2
 		>=dev-ruby/syntax-1.0.0
 		>=dev-util/aruba-0.6.1 =dev-util/aruba-0.6*
@@ -54,12 +55,15 @@ all_ruby_prepare() {
 	sed -i -e '/converts the snapshot path to a relative path/,/end/ s:^:#:' \
 		spec/cucumber/formatter/html_spec.rb || die
 
+	# Avoid specs that fail due to changes in the ruby backtrace, 
+	# introduced in newer versions of dev-lang/ruby, bug 628580
+	rm -f features/docs/defining_steps/nested_steps.feature
+
 	# Avoid dependency on git
 	sed -i -e '/executables/ s/=.*/= ["cucumber"]/' \
 		-e '/git ls-files/d' cucumber.gemspec || die
 
-	sed -i -e '/pry/ s:^:#:' spec/spec_helper.rb || die
-
+	sed -i -e '/pry/ s:^:#:' cucumber.gemspec spec/spec_helper.rb || die
 }
 
 each_ruby_prepare() {

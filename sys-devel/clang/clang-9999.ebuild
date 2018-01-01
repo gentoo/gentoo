@@ -28,8 +28,9 @@ LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/?}
 LICENSE="UoI-NCSA"
 SLOT="6"
 KEYWORDS=""
-IUSE="debug default-compiler-rt default-libcxx +doc +static-analyzer
+IUSE="debug default-compiler-rt default-libcxx doc +static-analyzer
 	test xml z3 kernel_FreeBSD ${ALL_LLVM_TARGETS[*]}"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	~sys-devel/llvm-${PV}:${SLOT}=[debug=,${LLVM_TARGET_USEDEPS// /,},${MULTILIB_USEDEP}]
@@ -42,7 +43,6 @@ RDEPEND="
 # configparser-3.2 breaks the build (3.3 or none at all are fine)
 DEPEND="${RDEPEND}
 	doc? ( dev-python/sphinx )
-	test? ( ~dev-python/lit-${PV}[${PYTHON_USEDEP}] )
 	xml? ( virtual/pkgconfig )
 	!!<dev-python/configparser-3.3.0.2
 	${PYTHON_DEPS}"
@@ -97,7 +97,7 @@ src_unpack() {
 		"${S}"/tools/extra
 	if use test; then
 		git-r3_checkout https://llvm.org/git/llvm.git \
-			"${WORKDIR}"/llvm
+			"${WORKDIR}"/llvm '' utils/{lit,llvm-lit,unittest}
 	fi
 	git-r3_checkout "${EGIT_REPO_URI}" "${S}"
 }
@@ -137,7 +137,6 @@ multilib_src_configure() {
 	)
 	use test && mycmakeargs+=(
 		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
-		-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
 		-DLLVM_LIT_ARGS="-vv"
 	)
 

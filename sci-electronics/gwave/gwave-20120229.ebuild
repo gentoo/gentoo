@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -19,6 +19,7 @@ IUSE="gnuplot plotutils"
 SLOT="0"
 
 DEPEND=">=dev-scheme/guile-2[deprecated,networking]
+	<dev-scheme/guile-2.2
 	dev-scheme/guile-gnome-platform
 	x11-libs/guile-gtk"
 

@@ -20,11 +20,10 @@ HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
 
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0/2"
-IUSE="acl apparmor audit build cryptsetup curl elfutils +gcrypt gnuefi http
-	idn importd +kmod libidn2 +lz4 lzma nat pam policykit
-	qrcode +seccomp selinux ssl sysv-utils test vanilla xkb"
+IUSE="acl apparmor audit build cryptsetup curl elfutils +gcrypt gnuefi http idn importd +kmod libidn2 +lz4 lzma nat pam policykit qrcode +seccomp selinux ssl +sysv-utils test usrmerge vanilla xkb"
 
 REQUIRED_USE="importd? ( curl gcrypt lzma )"
+RESTRICT="!test? ( test )"
 
 MINKV="3.11"
 
@@ -58,9 +57,8 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.30:0=[${MULTILIB_USEDEP}]
 	qrcode? ( media-gfx/qrencode:0= )
 	seccomp? ( >=sys-libs/libseccomp-2.3.1:0= )
 	selinux? ( sys-libs/libselinux:0= )
-	sysv-utils? (
-		!sys-apps/systemd-sysv-utils
-		!sys-apps/sysvinit )
+	sysv-utils? ( !sys-apps/sysvinit )
+	!sysv-utils? ( sys-apps/sysvinit )
 	xkb? ( >=x11-libs/libxkbcommon-0.4.1:0= )
 	abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20130224-r9
 		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] )"
@@ -117,6 +115,7 @@ pkg_pretend() {
 		use seccomp && CONFIG_CHECK+=" ~SECCOMP ~SECCOMP_FILTER"
 		kernel_is -lt 3 7 && CONFIG_CHECK+=" ~HOTPLUG"
 		kernel_is -lt 4 7 && CONFIG_CHECK+=" ~DEVPTS_MULTIPLE_INSTANCES"
+		kernel_is -ge 4 10 && CONFIG_CHECK+=" ~CGROUP_BPF"
 
 		if linux_config_exists; then
 			local uevent_helper_path=$(linux_chkconfig_string UEVENT_HELPER_PATH)
@@ -152,11 +151,10 @@ src_prepare() {
 
 	if ! use vanilla; then
 		PATCHES+=(
-			"${FILESDIR}/218-Dont-enable-audit-by-default.patch"
-			"${FILESDIR}/228-noclean-tmp.patch"
-			"${FILESDIR}/233-systemd-user-pam.patch"
-			"${FILESDIR}/234-uucp-group.patch"
-			"${FILESDIR}/generator-path.patch"
+			"${FILESDIR}/gentoo-Dont-enable-audit-by-default.patch"
+			"${FILESDIR}/gentoo-systemd-user-pam.patch"
+			"${FILESDIR}/gentoo-uucp-group-r1.patch"
+			"${FILESDIR}/gentoo-generator-path.patch"
 		)
 	fi
 
@@ -200,11 +198,13 @@ multilib_src_configure() {
 		-Dpamlibdir="$(getpam_mod_dir)"
 		# avoid bash-completion dep
 		-Dbashcompletiondir="$(get_bashcompdir)"
-		# make sure we get /bin:/sbin in $PATH
-		-Dsplit-usr=true
-		-Drootprefix="${EPREFIX}${ROOTPREFIX}"
+		# make sure we get /bin:/sbin in PATH
+		-Dsplit-usr=$(usex usrmerge false true)
+		-Drootprefix="$(usex usrmerge "${EPREFIX}/usr" "${EPREFIX:-/}")"
 		-Dsysvinit-path=
 		-Dsysvrcnd-path=
+		# Avoid infinite exec recursion, bug 642724
+		-Dtelinit-path="${EPREFIX}/lib/sysvinit/telinit"
 		# no deps
 		-Defi=$(meson_multilib)
 		-Dima=true
@@ -217,7 +217,7 @@ multilib_src_configure() {
 		-Delfutils=$(meson_multilib_native_use elfutils)
 		-Dgcrypt=$(meson_use gcrypt)
 		-Dgnu-efi=$(meson_multilib_native_use gnuefi)
-		-Defi-libdir="/usr/$(get_libdir)"
+		-Defi-libdir="${EPREFIX}/usr/$(get_libdir)"
 		-Dmicrohttpd=$(meson_multilib_native_use http)
 		$(usex http -Dgnutls=$(meson_multilib_native_use ssl) -Dgnutls=false)
 		-Dimportd=$(meson_multilib_native_use importd)
@@ -299,10 +299,11 @@ multilib_src_install_all() {
 	dodoc "${FILESDIR}"/nsswitch.conf
 
 	if use sysv-utils; then
+		local app
 		for app in halt poweroff reboot runlevel shutdown telinit; do
-			dosym "${EPREFIX}${ROOTPREFIX%/}/bin/systemctl" /sbin/${app}
+			dosym ../bin/systemctl /sbin/${app}
 		done
-		dosym "${EPREFIX}${ROOTPREFIX%/}/lib/systemd/systemd" /sbin/init
+		dosym ../lib/systemd/systemd /sbin/init
 	else
 		# we just keep sysvinit tools, so no need for the mans
 		rm "${ED%/}"/usr/share/man/man8/{halt,poweroff,reboot,runlevel,shutdown,telinit}.8 \
@@ -328,12 +329,15 @@ multilib_src_install_all() {
 	rm -fr "${ED%/}"/etc/systemd/system/sockets.target.wants || die
 	rm -fr "${ED%/}"/etc/systemd/system/sysinit.target.wants || die
 
-	rm -r "${ED%/}${ROOTPREFIX%/}/lib/udev/hwdb.d" || die
+	local udevdir=/lib/udev
+	use usrmerge && udevdir=/usr/lib/udev
 
-	if [[ ! -e "${ED%/}"/usr/lib/systemd/systemd ]]; then
+	rm -r "${ED%/}${udevdir}/hwdb.d" || die
+
+	if ! use usrmerge; then
 		# Avoid breaking boot/reboot
-		dosym "../../..${ROOTPREFIX%/}/lib/systemd/systemd" /usr/lib/systemd/systemd
-		dosym "../../..${ROOTPREFIX%/}/lib/systemd/systemd-shutdown" /usr/lib/systemd/systemd-shutdown
+		dosym ../../../lib/systemd/systemd /usr/lib/systemd/systemd
+		dosym ../../../lib/systemd/systemd-shutdown /usr/lib/systemd/systemd-shutdown
 	fi
 }
 
@@ -381,19 +385,6 @@ migrate_locale() {
 	fi
 }
 
-pkg_preinst() {
-	# If /lib/systemd and /usr/lib/systemd are the same directory, remove the
-	# symlinks we created in src_install.
-	if [[ $(realpath "${EROOT%/}${ROOTPREFIX}/lib/systemd") == $(realpath "${EROOT%/}/usr/lib/systemd") ]]; then
-		if [[ -L ${ED%/}/usr/lib/systemd/systemd ]]; then
-			rm "${ED%/}/usr/lib/systemd/systemd" || die
-		fi
-		if [[ -L ${ED%/}/usr/lib/systemd/systemd-shutdown ]]; then
-			rm "${ED%/}/usr/lib/systemd/systemd-shutdown" || die
-		fi
-	fi
-}
-
 pkg_postinst() {
 	newusergroup() {
 		enewgroup "$1"
@@ -402,6 +393,7 @@ pkg_postinst() {
 
 	enewgroup input
 	enewgroup kvm 78
+	enewgroup render
 	enewgroup systemd-journal
 	newusergroup systemd-bus-proxy
 	newusergroup systemd-coredump

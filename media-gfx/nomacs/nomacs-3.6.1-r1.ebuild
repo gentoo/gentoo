@@ -34,7 +34,7 @@ RDEPEND="
 		dev-qt/qtimageformats:5
 		media-libs/tiff:0
 	)
-	zip? ( >=dev-libs/quazip-0.7.2[qt5] )
+	zip? ( >=dev-libs/quazip-0.7.2[qt5(+)] )
 "
 DEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5

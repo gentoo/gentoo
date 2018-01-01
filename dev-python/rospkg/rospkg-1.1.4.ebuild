@@ -31,6 +31,7 @@ IUSE="test"
 
 RDEPEND="dev-python/pyyaml[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/coverage[${PYTHON_USEDEP}]

@@ -11,7 +11,7 @@ SRC_URI="ftp://ftp.3drealms.com/share/3dduke13.zip"
 
 LICENSE="DUKE3D"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="app-arch/unzip"

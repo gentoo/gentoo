@@ -15,7 +15,7 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/591aeb88c7a4473fcbb154f8 ->
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="gnat_2016 gnat_2017 +shared static static-pic"
+IUSE="gnat_2016 +gnat_2017 +shared static static-pic"
 REQUIRED_USE="|| ( shared static static-pic )
 	^^ ( gnat_2016 gnat_2017 )"
 
@@ -26,30 +26,60 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}"/${MYP}-src
 
+PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
+
 src_configure () {
 	econf --prefix="${D}"/usr
 }
 
 src_compile () {
-	if use shared; then
-		gprbuild -j$(makeopts_jobs) -m -p -v -XLIBRARY_TYPE=relocatable \
+	build () {
+		gprbuild -j$(makeopts_jobs) -m -p -v -XLIBRARY_TYPE=$1 \
 			-XBUILD=Production -XPROCESSORS=$(makeopts_jobs) xmlada.gpr \
 			-cargs ${ADAFLAGS} || die "gprbuild failed"
+	}
+	if use shared; then
+		build relocatable
 	fi
 	for kind in static static-pic; do
 		if use ${kind}; then
-			gprbuild -j$(makeopts_jobs) -m -p -v -XLIBRARY_TYPE=${kind} \
-				-XBUILD=Production -XPROCESSORS=$(makeopts_jobs) xmlada.gpr \
-				-cargs ${ADAFLAGS} || die "gprbuild failed"
+			build ${kind}
 		fi
 	done
 }
 
+src_test() {
+	emake test
+	emake run_test | grep DIFF && die
+}
+
 src_install () {
+	local includedir=/usr/include/${PN}
+
+	fix_install () {
+		mv "${D}"${includedir}/$1.$2/* "${D}"${includedir}/$1/ || die
+		for file in "${D}"${includedir}/$1/*; do
+			dosym ../$1/$(basename ${file}) \
+				${includedir}/$1.$2/$(basename ${file})
+		done
+	}
+
 	for kind in shared static static-pic; do
 		if use ${kind}; then
 			emake PROCESSORS=$(makeopts_jobs) install-${kind}
 		fi
+	done
+	rm "${D}"/usr/lib/libxmlada_* || die
+	for dir in xmlada_{dom,input,sax,schema,unicode}; do
+		dodir /usr/include/${PN}/${dir}
+		if use shared; then
+			fix_install ${dir} relocatable
+		fi
+		for kind in static static-pic; do
+			if use ${kind}; then
+				fix_install ${dir} ${kind}
+			fi
+		done
 	done
 	einstalldocs
 	dodoc xmlada-roadmap.txt

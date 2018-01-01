@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 PYTHON_REQ_USE='threads(+)'
 
 inherit python-any-r1 qmake-utils waf-utils
@@ -23,7 +23,7 @@ RDEPEND="
 	>=media-libs/lilv-0.24.0
 	>=media-libs/lv2-1.6.0
 	>=media-libs/sratom-0.6.0
-	>=media-libs/suil-0.6.0
+	>=media-libs/suil-0.10.0
 	gtk? ( >=x11-libs/gtk+-3.0.0:3 )
 	gtk2? ( >=x11-libs/gtk+-2.18.0:2 )
 	gtkmm? ( >=dev-cpp/gtkmm-2.20.0:2.4 )

@@ -12,18 +12,12 @@ SRC_URI="https://dev.gentoo.org/~asturm/distfiles/${P}.tar.xz"
 LICENSE="GPL-2 LGPL-2"
 KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos ~x86-solaris"
 SLOT="0"
-IUSE="altivec cpu_flags_x86_3dnow cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 debug qt5"
+IUSE="altivec cpu_flags_x86_3dnow cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 debug"
 
 DEPEND="
-	qt5? (
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qtwidgets:5
-	)
-	!qt5? (
-		dev-qt/qtcore:4
-		dev-qt/qtgui:4
-	)
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtwidgets:5
 "
 RDEPEND="${DEPEND}"
 
@@ -31,7 +25,7 @@ PATCHES=( "${FILESDIR}/${P}-gcc.patch" )
 
 src_configure() {
 	local mycmakeargs=(
-		-DQT4_BUILD=$(usex !qt5)
+		-DQT4_BUILD=OFF
 		-DHAVE_3DNOW=$(usex cpu_flags_x86_3dnow)
 		-DHAVE_MMX=$(usex cpu_flags_x86_mmx)
 		-DHAVE_SSE=$(usex cpu_flags_x86_sse)

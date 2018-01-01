@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="3"
@@ -13,7 +13,7 @@ LICENSE="BSD GPL-2"
 
 SLOT="0"
 IUSE="X debug readline"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~amd64 ~ppc ~sparc ~x86 ~x64-macos"
 
 DEPEND="sys-libs/ncurses
 	readline? ( >=sys-libs/readline-5.0 )
@@ -25,9 +25,9 @@ DEPEND="sys-libs/ncurses
 RDEPEND="$DEPEND"
 
 src_prepare() {
+	epatch "${FILESDIR}"/${P}-respect-ldflags.patch
 	sed -e '/CFLAGS=/s: -s::' -i configure.ac || die "sed failed"
 	sed -e 's/_CFLAGS -O2/_CFLAGS/' -i configure.ac || die "sed failed"
-	sed -e 's/LDFLAGS =/LDFLAGS +=/' -i src/xspice/icm/makedefs.in || die "sed failed"
 	sed -e '/AM_INIT_AUTOMAKE/s:-Werror::' -i configure.ac || die "sed failed"
 	# builds also with ncurses[tinfo] (bug #458128)
 	sed -e 's/ncurses termcap/ncurses termcap tinfo/g' -i configure.ac || die

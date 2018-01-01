@@ -7,15 +7,15 @@
 	</maintainer>
 	<use>
 		<flag name="pcsc-lite">
-      Build a driver library for <pkg>sys-apps/pcsc-lite</pkg>,
-      providing PC/SC API access to devices supported by OpenCT.
-    </flag>
+			Build a driver library for <pkg>sys-apps/pcsc-lite</pkg>,
+			providing PC/SC API access to devices supported by OpenCT.
+		</flag>
 		<flag name="debug">
-      Add debug output to the driver library for pcsc-lite.
-    </flag>
+			Add debug output to the driver library for pcsc-lite.
+		</flag>
 		<flag name="udev">
-      Install rules for <pkg>sys-fs/udev</pkg> to auto-start openct.
-    </flag>
+			Install rules for <pkg>sys-fs/udev</pkg> to auto-start openct.
+		</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">OpenSC/openct</remote-id>

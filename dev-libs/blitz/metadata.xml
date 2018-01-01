@@ -10,15 +10,15 @@
 		<name>Gentoo C++ Project</name>
 	</maintainer>
 	<longdescription lang="en">
-  Blitz++ is a meta-template library for array
-  manipulation in C++ with a speed comparable to Fortran
-  implementations, while preserving an object-oriented
-  interface. These results are being obtained not through better
-  optimizing compilers, preprocessors, or language extensions, but
-  through the use of template techniques. By using templates cleverly,
-  optimizations such as loop fusion, unrolling, tiling, and algorithm
-  specialization can be performed automatically at compile time.
-</longdescription>
+		Blitz++ is a meta-template library for array
+		manipulation in C++ with a speed comparable to Fortran
+		implementations, while preserving an object-oriented
+		interface. These results are being obtained not through better
+		optimizing compilers, preprocessors, or language extensions, but
+		through the use of template techniques. By using templates cleverly,
+		optimizations such as loop fusion, unrolling, tiling, and algorithm
+		specialization can be performed automatically at compile time.
+	</longdescription>
 	<use>
 		<flag name="boost">Enable usage of boost::serialization</flag>
 	</use>

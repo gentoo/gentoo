@@ -3,7 +3,7 @@
 
 MY_P="${PN}-${PV:0:4}+dbg-${PV:5}"
 
-DESCRIPTION="patched version of GNU make that adds improved error reporting, tracing, and a debugger"
+DESCRIPTION="patched version of GNU make with improved error reporting, tracing and debugging"
 HOMEPAGE="http://bashdb.sourceforge.net/remake/"
 SRC_URI="mirror://sourceforge/bashdb/${MY_P}.tar.bz2"
 

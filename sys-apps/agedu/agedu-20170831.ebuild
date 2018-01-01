@@ -20,7 +20,6 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc ipv6"
 
 DEPEND="doc? ( app-doc/halibut )"
-RDEPEND="${DEPEND}"
 
 src_prepare() {
 	epatch "${FILESDIR}/${PN}-r9671-fix-automagic.patch"

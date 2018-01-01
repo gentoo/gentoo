@@ -1,0 +1,230 @@
+This patch creates a 'verbosity' flag to satisfy Gentoo packaging
+standards.
+
+Thanks to Felix Janda for reporting both this issue and other issues
+with the ebuild. Gentoo bug #634350
+
+Most of this patch was generated using:
+
+	sed -e 's:^\(\s\+\)@:\1\$(AT):' $(find -name *.mk)
+
+Verbosity can be activated by using `make V=1`.
+
+Patch authored by zlg, released under GPL3.
+--- a/Makefile
++++ b/Makefile
+@@ -3,6 +3,14 @@ CFG_DIR = $(BASE_DIR)/cfg
+ 
+ -include $(CFG_DIR)/global_vars.mk
+ 
++# Create V for verbosity. Defaults to 0.
++ifndef V
++	V := 0
++endif
++AT_0 := @
++AT_1 :=
++AT = $(AT_$(V))
++
+ LIBS = libtoxcore ncursesw libconfig libqrencode
+ 
+ CFLAGS = -std=gnu99 -pthread -Wall -g -fstack-protector-all
+@@ -59,20 +67,20 @@ OBJ := $(addprefix $(BUILD_DIR)/, $(OBJ))
+ all: $(BUILD_DIR)/toxic
+ 
+ $(BUILD_DIR)/toxic: $(OBJ)
+-	@echo "  LD    $(@:$(BUILD_DIR)/%=%)"
+-	@$(CC) $(CFLAGS) -o $(BUILD_DIR)/toxic $(OBJ) $(LDFLAGS)
++	$(AT)echo "  LD    $(@:$(BUILD_DIR)/%=%)"
++	$(AT)$(CC) $(CFLAGS) -o $(BUILD_DIR)/toxic $(OBJ) $(LDFLAGS)
+ 
+ $(BUILD_DIR)/osx_video.o: $(SRC_DIR)/$(OSX_VIDEO)
+-	@echo "  CC    $(@:$(BUILD_DIR)/)osx_video.o"
+-	@$(CC) $(CFLAGS) -o $(BUILD_DIR)/osx_video.o -c $(SRC_DIR)/$(OSX_VIDEO)
++	$(AT)echo "  CC    $(@:$(BUILD_DIR)/)osx_video.o"
++	$(AT)$(CC) $(CFLAGS) -o $(BUILD_DIR)/osx_video.o -c $(SRC_DIR)/$(OSX_VIDEO)
+ 
+ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
+-	@if [ ! -e $(BUILD_DIR) ]; then \
++	$(AT)if [ ! -e $(BUILD_DIR) ]; then \
+ 		mkdir -p $(BUILD_DIR) ;\
+ 	fi
+-	@echo "  CC    $(@:$(BUILD_DIR)/%=%)"
+-	@$(CC) $(CFLAGS) -o $(BUILD_DIR)/$*.o -c $(SRC_DIR)/$*.c
+-	@$(CC) -MM $(CFLAGS) $(SRC_DIR)/$*.c > $(BUILD_DIR)/$*.d
++	$(AT)echo "  CC    $(@:$(BUILD_DIR)/%=%)"
++	$(AT)$(CC) $(CFLAGS) -o $(BUILD_DIR)/$*.o -c $(SRC_DIR)/$*.c
++	$(AT)$(CC) -MM $(CFLAGS) $(SRC_DIR)/$*.c > $(BUILD_DIR)/$*.d
+ 
+ clean:
+ 	rm -f $(BUILD_DIR)/*.d $(BUILD_DIR)/*.o $(BUILD_DIR)/toxic
+--- a/apidoc/python/Makefile
++++ b/apidoc/python/Makefile
+@@ -1,6 +1,14 @@
+ # Minimal makefile for Sphinx documentation
+ #
+ 
++# Create V for verbosity. Defaults to 0.
++ifndef V
++	V := 0
++endif
++AT_0 := @
++AT_1 :=
++AT = $(AT_$(V))
++
+ # You can set these variables from the command line.
+ SPHINXOPTS    =
+ SPHINXBUILD   = sphinx-build
+@@ -10,11 +18,11 @@ BUILDDIR      = build
+ 
+ # Put it first so that "make" without argument is like "make help".
+ help:
+-	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
++	$(AT)$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+ 
+ .PHONY: help Makefile
+ 
+ # Catch-all target: route all unknown targets to Sphinx using the new
+ # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
+ %: Makefile
+-	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+\ No newline at end of file
++	$(AT)$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+--- a/cfg/targets/doc.mk
++++ b/cfg/targets/doc.mk
+@@ -2,8 +2,8 @@
+ doc: $(MANFILES:%=$(DOC_DIR)/%)
+ 	
+ $(DOC_DIR)/%: $(DOC_DIR)/%.asc
+-	@echo "  MAN   $(@F)"
+-	@a2x -f manpage -a revdate=$(shell git log -1 --date=short --format="%ad" $<) \
++	$(AT)echo "  MAN   $(@F)"
++	$(AT)a2x -f manpage -a revdate=$(shell git log -1 --date=short --format="%ad" $<) \
+ 		-a manmanual="Toxic Manual" -a mansource=toxic \
+ 		-a manversion=__VERSION__ -a datadir=__DATADIR__ $<
+ 	
+--- a/cfg/targets/help.mk
++++ b/cfg/targets/help.mk
+@@ -1,24 +1,24 @@
+ # Help target
+ help:
+-	@echo "-- Targets --"
+-	@echo "  all:       Build toxic and documentation [DEFAULT]"
+-	@echo "  toxic:     Build toxic"
+-	@echo "  doc:       Build documentation"
+-	@echo "  install:   Build toxic and install it in PREFIX (default PREFIX is \"$(abspath $(PREFIX))\")"
+-	@echo "  uninstall: Remove toxic from PREFIX (default PREFIX is \"$(abspath $(PREFIX))\")"
+-	@echo "  clean:     Remove built files"
+-	@echo "  help:      This help"
+-	@echo
+-	@echo "-- Variables --"
+-	@echo "  DISABLE_X11:            Set to \"1\" to force building without X11 support"
+-	@echo "  DISABLE_AV:             Set to \"1\" to force building without audio call support"
+-	@echo "  DISABLE_SOUND_NOTIFY:   Set to \"1\" to force building without sound notification support"
+-	@echo "  DISABLE_DESKTOP_NOTIFY: Set to \"1\" to force building without desktop notifications support"
+-	@echo "  DISABLE_QRPNG:          Set to \"1\" to force building without QR exported as PNG support"
+-	@echo "  ENABLE_PYTHON:          Set to \"1\" to enable building with Python scripting support"
+-	@echo "  USER_CFLAGS:            Add custom flags to default CFLAGS"
+-	@echo "  USER_LDFLAGS:           Add custom flags to default LDFLAGS"
+-	@echo "  PREFIX:                 Specify a prefix directory for binaries, data files,... (default is \"$(abspath $(PREFIX))\")"
+-	@echo "  DESTDIR:                Specify a directory where to store installed files (mainly for packaging purpose)"
++	$(AT)echo "-- Targets --"
++	$(AT)echo "  all:       Build toxic and documentation [DEFAULT]"
++	$(AT)echo "  toxic:     Build toxic"
++	$(AT)echo "  doc:       Build documentation"
++	$(AT)echo "  install:   Build toxic and install it in PREFIX (default PREFIX is \"$(abspath $(PREFIX))\")"
++	$(AT)echo "  uninstall: Remove toxic from PREFIX (default PREFIX is \"$(abspath $(PREFIX))\")"
++	$(AT)echo "  clean:     Remove built files"
++	$(AT)echo "  help:      This help"
++	$(AT)echo
++	$(AT)echo "-- Variables --"
++	$(AT)echo "  DISABLE_X11:            Set to \"1\" to force building without X11 support"
++	$(AT)echo "  DISABLE_AV:             Set to \"1\" to force building without audio call support"
++	$(AT)echo "  DISABLE_SOUND_NOTIFY:   Set to \"1\" to force building without sound notification support"
++	$(AT)echo "  DISABLE_DESKTOP_NOTIFY: Set to \"1\" to force building without desktop notifications support"
++	$(AT)echo "  DISABLE_QRPNG:          Set to \"1\" to force building without QR exported as PNG support"
++	$(AT)echo "  ENABLE_PYTHON:          Set to \"1\" to enable building with Python scripting support"
++	$(AT)echo "  USER_CFLAGS:            Add custom flags to default CFLAGS"
++	$(AT)echo "  USER_LDFLAGS:           Add custom flags to default LDFLAGS"
++	$(AT)echo "  PREFIX:                 Specify a prefix directory for binaries, data files,... (default is \"$(abspath $(PREFIX))\")"
++	$(AT)echo "  DESTDIR:                Specify a directory where to store installed files (mainly for packaging purpose)"
+ 
+ .PHONY: help
+--- a/cfg/targets/install.mk
++++ b/cfg/targets/install.mk
+@@ -1,29 +1,29 @@
+ # Install target
+ install: $(BUILD_DIR)/toxic
+-	@echo "Installing toxic executable"
+-	@mkdir -p $(abspath $(DESTDIR)/$(BINDIR))
+-	@install -m 0755 $(BUILD_DIR)/toxic $(abspath $(DESTDIR)/$(BINDIR)/toxic)
++	$(AT)echo "Installing toxic executable"
++	$(AT)mkdir -p $(abspath $(DESTDIR)/$(BINDIR))
++	$(AT)install -m 0755 $(BUILD_DIR)/toxic $(abspath $(DESTDIR)/$(BINDIR)/toxic)
+ 	
+-	@echo "Installing desktop file"
+-	@mkdir -p $(abspath $(DESTDIR)/$(APPDIR))
+-	@install -m 0644 $(MISC_DIR)/$(DESKFILE) $(abspath $(DESTDIR)/$(APPDIR)/$(DESKFILE))
++	$(AT)echo "Installing desktop file"
++	$(AT)mkdir -p $(abspath $(DESTDIR)/$(APPDIR))
++	$(AT)install -m 0644 $(MISC_DIR)/$(DESKFILE) $(abspath $(DESTDIR)/$(APPDIR)/$(DESKFILE))
+ 	
+-	@echo "Installing data files"
+-	@mkdir -p $(abspath $(DESTDIR)/$(DATADIR))
+-	@for f in $(DATAFILES) ; do \
++	$(AT)echo "Installing data files"
++	$(AT)mkdir -p $(abspath $(DESTDIR)/$(DATADIR))
++	$(AT)for f in $(DATAFILES) ; do \
+ 		install -m 0644 $(MISC_DIR)/$$f $(abspath $(DESTDIR)/$(DATADIR)/$$f) ;\
+ 		file=$(abspath $(DESTDIR)/$(DATADIR)/$$f) ;\
+ 		sed -e 's:__DATADIR__:'$(abspath $(DATADIR))':g' $$file > temp_file && \
+ 		mv temp_file $$file ;\
+ 	done
+-	@mkdir -p $(abspath $(DESTDIR)/$(DATADIR))/sounds
+-	@for f in $(SNDFILES) ; do \
++	$(AT)mkdir -p $(abspath $(DESTDIR)/$(DATADIR))/sounds
++	$(AT)for f in $(SNDFILES) ; do \
+ 		install -m 0644 $(SND_DIR)/$$f $(abspath $(DESTDIR)/$(DATADIR)/sounds/$$f) ;\
+ 	done
+ 	
+-	@echo "Installing man pages"
+-	@mkdir -p $(abspath $(DESTDIR)/$(MANDIR))
+-	@for f in $(MANFILES) ; do \
++	$(AT)echo "Installing man pages"
++	$(AT)mkdir -p $(abspath $(DESTDIR)/$(MANDIR))
++	$(AT)for f in $(MANFILES) ; do \
+ 		if [ ! -e "$(DOC_DIR)/$$f" ]; then \
+ 			continue ;\
+ 		fi ;\
+--- a/cfg/targets/uninstall.mk
++++ b/cfg/targets/uninstall.mk
+@@ -1,21 +1,21 @@
+ # Uninstall target
+ uninstall:
+-	@echo "Removing toxic executable"
+-	@rm -f $(abspath $(DESTDIR)/$(BINDIR)/toxic)
++	$(AT)echo "Removing toxic executable"
++	$(AT)rm -f $(abspath $(DESTDIR)/$(BINDIR)/toxic)
+ 	
+-	@echo "Removing desktop file"
+-	@rm -f $(abspath $(DESTDIR)/$(APPDIR)/$(DESKFILE))
++	$(AT)echo "Removing desktop file"
++	$(AT)rm -f $(abspath $(DESTDIR)/$(APPDIR)/$(DESKFILE))
+ 	
+-	@echo "Removing data files"
+-	@for f in $(DATAFILES) ; do \
++	$(AT)echo "Removing data files"
++	$(AT)for f in $(DATAFILES) ; do \
+ 		rm -f $(abspath $(DESTDIR)/$(DATADIR)/$$f) ;\
+ 	done
+-	@for f in $(SNDFILES) ; do \
++	$(AT)for f in $(SNDFILES) ; do \
+ 		rm -f $(abspath $(DESTDIR)/$(DATADIR)/sounds/$$f) ;\
+ 	done
+ 	
+-	@echo "Removing man pages"
+-	@for f in $(MANFILES) ; do \
++	$(AT)echo "Removing man pages"
++	$(AT)for f in $(MANFILES) ; do \
+ 		section=$(abspath $(DESTDIR)/$(MANDIR))/man`echo $$f | rev | cut -d "." -f 1` ;\
+ 		file=$$section/$$f ;\
+ 		rm -f $$file $$file.gz ;\

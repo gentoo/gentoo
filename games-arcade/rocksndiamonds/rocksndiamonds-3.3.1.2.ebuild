@@ -20,7 +20,7 @@ SRC_URI="http://www.artsoft.org/RELEASES/unix/rocksndiamonds/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="X sdl"
 
 RDEPEND="X? ( x11-libs/libX11 )

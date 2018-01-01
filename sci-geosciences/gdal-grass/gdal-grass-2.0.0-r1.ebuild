@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-libs/expat
-	dev-libs/json-c
+	dev-libs/json-c:=
 	virtual/jpeg
 	media-libs/tiff
 	sci-libs/libgeotiff

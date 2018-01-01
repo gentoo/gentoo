@@ -1,0 +1,41 @@
+Bug: https://bugs.gentoo.org/634220
+
+--- a/src/3rdparty/chromium/v8/BUILD.gn
++++ b/src/3rdparty/chromium/v8/BUILD.gn
+@@ -661,6 +661,7 @@ action("run_mksnapshot") {
+ 
+   deps = [
+     ":mksnapshot($v8_snapshot_toolchain)",
++    ":run_paxmark",
+   ]
+ 
+   script = "tools/run.py"
+@@ -706,6 +707,28 @@ action("run_mksnapshot") {
+     args += [ rebase_path(v8_embed_script, root_build_dir) ]
+   }
+ }
++action("run_paxmark") {
++  visibility = [ ":*" ]  # Only targets in this file can depend on this.
++
++  deps = [
++    ":mksnapshot($v8_snapshot_toolchain)",
++  ]
++
++  script = "/usr/sbin/pypaxctl"
++
++  sources = []
++
++  outputs = [
++     "$target_out_dir/mksnapshot",
++  ]
++
++  args = [
++    "-sm",
++    "./" + rebase_path(get_label_info(":mksnapshot($v8_snapshot_toolchain)",
++                                      "root_out_dir") + "/mksnapshot",
++                       root_build_dir),
++  ]
++}
+ 
+ action("run_mkpeephole") {
+   visibility = [ ":*" ]  # Only targets in this file can depend on this.

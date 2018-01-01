@@ -5,9 +5,6 @@
 		<email>floppym@gentoo.org</email>
 		<name>Mike Gilbert</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>vapier@gentoo.org</email>
-	</maintainer>
 	<use>
 		<flag name="multiuser">Allow renderer customization per-user.</flag>
 		<flag name="transcode">Install optional dependencies for transcoding support via media-video/mplayer</flag>

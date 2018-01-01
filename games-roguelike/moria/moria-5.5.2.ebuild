@@ -14,7 +14,7 @@ SRC_URI="ftp://ftp.greyhelm.com/pub/Games/Moria/source/um${PV}.tar.Z
 
 LICENSE="Moria"
 SLOT="0"
-KEYWORDS="amd64 x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~x86 ~x86-fbsd"
 IUSE=""
 
 RDEPEND=">=sys-libs/ncurses-5:0"

@@ -11,7 +11,7 @@ SRC_URI="${PN}_linux_installer.run"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE="bundled-libs +launcher"
 RESTRICT="fetch bindist splitdebug"
 

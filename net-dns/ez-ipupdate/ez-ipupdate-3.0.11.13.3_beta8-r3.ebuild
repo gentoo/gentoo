@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -9,7 +9,7 @@ MY_PATCH="$(get_version_component_range 4-5)"
 MY_PV="$(get_version_component_range 1-3)${MY_BETA/beta/b}"
 
 DESCRIPTION="Dynamic DNS client for lots of dynamic dns services"
-HOMEPAGE="http://ez-ipupdate.com/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="mirror://debian/pool/main/e/ez-ipupdate/${PN}_${MY_PV}.orig.tar.gz
 	mirror://debian/pool/main/e/ez-ipupdate/${PN}_${MY_PV}-${MY_PATCH}.diff.gz"
 
@@ -111,17 +111,13 @@ pkg_postinst() {
 	readme.gentoo_print_elog
 
 	if [ -f /etc/ez-ipupdate.conf ]; then
-		elog "!!! IMPORTANT UPDATE NOTICE !!!"
-		elog
 		elog "The ez-ipupdate init-script can now handle more"
 		elog "than one config file. New config file location is"
 		elog "/etc/ez-ipupdate/*.conf"
-		elog
 		if [ ! -f /etc/ez-ipupdate/default.conf ]; then
 			mv -f /etc/ez-ipupdate.conf /etc/ez-ipupdate/default.conf
 			elog "Your old configuration has been moved to"
 			elog "/etc/ez-ipupdate/default.conf"
-			elog
 		fi
 	fi
 }

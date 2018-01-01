@@ -11,7 +11,7 @@ SRC_URI="ftp://ftp.afterstep.org/apps/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
+KEYWORDS="alpha amd64 ~arm hppa ia64 ~mips ppc ppc64 ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
 IUSE="background cjk xgetdefault"
 
 RDEPEND="
@@ -31,6 +31,7 @@ src_prepare() {
 	# Security bug #219746
 	eapply "${FILESDIR}/${P}-display-security-issue.patch"
 	eapply "${FILESDIR}"/${P}-deadkeys.patch
+	eapply "${FILESDIR}/${P}-dpy.patch"
 
 	#fix pre-stripped files
 	sed -i -e "/INSTALL_PROGRAM/ s:-s::" autoconf/Make.common.in || die "sed Makefile failed"

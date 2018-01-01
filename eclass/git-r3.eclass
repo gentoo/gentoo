@@ -553,6 +553,7 @@ _git-r3_is_local_repo() {
 git-r3_fetch() {
 	debug-print-function ${FUNCNAME} "$@"
 
+	# process repos first since we create repo_name from it
 	local repos
 	if [[ ${1} ]]; then
 		repos=( ${1} )
@@ -561,12 +562,6 @@ git-r3_fetch() {
 	else
 		repos=( ${EGIT_REPO_URI} )
 	fi
-
-	local branch=${EGIT_BRANCH:+refs/heads/${EGIT_BRANCH}}
-	local remote_ref=${2:-${EGIT_COMMIT:-${branch:-HEAD}}}
-	local local_id=${3:-${CATEGORY}/${PN}/${SLOT%/*}}
-	local local_ref=refs/git-r3/${local_id}/__main__
-	local commit_date=${4:-${EGIT_COMMIT_DATE}}
 
 	[[ ${repos[@]} ]] || die "No URI provided and EGIT_REPO_URI unset"
 
@@ -590,6 +585,54 @@ git-r3_fetch() {
 			"${repos[@]}"
 		)
 	fi
+
+	# get the default values for the common variables and override them
+	local branch_name=${EGIT_BRANCH}
+	local commit_id=${2:-${EGIT_COMMIT}}
+	local commit_date=${4:-${EGIT_COMMIT_DATE}}
+
+	# support new override API for EAPI 6+
+	if ! has "${EAPI:-0}" 0 1 2 3 4 5; then
+		# get the name and do some more processing:
+		# 1) kill .git suffix,
+		# 2) underscore (remaining) non-variable characters,
+		# 3) add preceding underscore if it starts with a digit,
+		# 4) uppercase.
+		local override_name=${GIT_DIR##*/}
+		override_name=${override_name%.git}
+		override_name=${override_name//[^a-zA-Z0-9_]/_}
+		override_name=${override_name^^}
+
+		local varmap=(
+			REPO:repos
+			BRANCH:branch_name
+			COMMIT:commit_id
+			COMMIT_DATE:commit_date
+		)
+
+		local localvar livevar live_warn=
+		for localvar in "${varmap[@]}"; do
+			livevar=EGIT_OVERRIDE_${localvar%:*}_${override_name}
+			localvar=${localvar#*:}
+
+			if [[ -n ${!livevar} ]]; then
+				[[ ${localvar} == repos ]] && repos=()
+				live_warn=1
+				ewarn "Using ${livevar}=${!livevar}"
+				declare "${localvar}=${!livevar}"
+			fi
+		done
+
+		if [[ ${live_warn} ]]; then
+			ewarn "No support will be provided."
+		fi
+	fi
+
+	# set final variables after applying overrides
+	local branch=${branch_name:+refs/heads/${branch_name}}
+	local remote_ref=${commit_id:-${branch:-HEAD}}
+	local local_id=${3:-${CATEGORY}/${PN}/${SLOT%/*}}
+	local local_ref=refs/git-r3/${local_id}/__main__
 
 	# try to fetch from the remote
 	local success saved_umask
@@ -803,7 +846,7 @@ git-r3_fetch() {
 }
 
 # @FUNCTION: git-r3_checkout
-# @USAGE: [<repo-uri> [<checkout-path> [<local-id>]]]
+# @USAGE: [<repo-uri> [<checkout-path> [<local-id> [<checkout-paths>...]]]]
 # @DESCRIPTION:
 # Check the previously fetched tree to the working copy.
 #
@@ -818,6 +861,12 @@ git-r3_fetch() {
 #
 # <local-id> needs to specify the local identifier that was used
 # for respective git-r3_fetch.
+#
+# If <checkout-paths> are specified, then the specified paths are passed
+# to 'git checkout' to effect a partial checkout. Please note that such
+# checkout will not cause the repository to switch branches,
+# and submodules will be skipped at the moment. The submodules matching
+# those paths might be checked out in a future version of the eclass.
 #
 # The checkout operation will write to the working copy, and export
 # the repository state into the environment. If the repository contains
@@ -836,6 +885,7 @@ git-r3_checkout() {
 
 	local out_dir=${2:-${EGIT_CHECKOUT_DIR:-${WORKDIR}/${P}}}
 	local local_id=${3:-${CATEGORY}/${PN}/${SLOT%/*}}
+	local checkout_paths=( "${@:4}" )
 
 	local -x GIT_DIR
 	_git-r3_set_gitdir "${repos[0]}"
@@ -883,6 +933,9 @@ git-r3_checkout() {
 		else
 			set -- "${@}" "${new_commit_id}"
 		fi
+		if [[ ${checkout_paths[@]} ]]; then
+			set -- "${@}" -- "${checkout_paths[@]}"
+		fi
 		echo "${@}" >&2
 		"${@}" || die "git checkout ${remote_ref:-${new_commit_id}} failed"
 	}
@@ -905,8 +958,12 @@ git-r3_checkout() {
 			echo "   updating from commit:     ${old_commit_id}"
 			echo "   to commit:                ${new_commit_id}"
 
-			git --no-pager diff --stat \
+			set -- git --no-pager diff --stat \
 				${old_commit_id}..${new_commit_id}
+			if [[ ${checkout_paths[@]} ]]; then
+				set -- "${@}" -- "${checkout_paths[@]}"
+			fi
+			"${@}"
 		else
 			echo "   at the commit:            ${new_commit_id}"
 		fi
@@ -914,7 +971,7 @@ git-r3_checkout() {
 	git update-ref --no-deref refs/git-r3/"${local_id}"/{__old__,__main__} || die
 
 	# recursively checkout submodules
-	if [[ -f ${out_dir}/.gitmodules ]]; then
+	if [[ -f ${out_dir}/.gitmodules && ! ${checkout_paths} ]]; then
 		local submodules
 		_git-r3_set_submodules \
 			"$(<"${out_dir}"/.gitmodules)"

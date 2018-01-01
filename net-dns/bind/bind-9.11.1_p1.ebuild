@@ -73,7 +73,7 @@ DEPEND="
 	gssapi? ( virtual/krb5 )
 	gost? ( >=dev-libs/openssl-1.0.0:0[-bindist] )
 	seccomp? ( sys-libs/libseccomp )
-	json? ( dev-libs/json-c )
+	json? ( dev-libs/json-c:= )
 	lmdb? ( dev-db/lmdb )
 	zlib? ( sys-libs/zlib )
 	dnstap? ( dev-libs/fstrm dev-libs/protobuf-c )

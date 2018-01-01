@@ -20,6 +20,7 @@ LICENSE="UoI-NCSA"
 SLOT="0"
 KEYWORDS=""
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="~sys-devel/llvm-${PV}"
 DEPEND="${RDEPEND}
@@ -47,7 +48,7 @@ src_unpack() {
 
 	if use test; then
 		git-r3_checkout https://llvm.org/git/llvm.git \
-			"${WORKDIR}"/llvm
+			"${WORKDIR}"/llvm '' utils/{lit,unittest}
 	fi
 	git-r3_checkout
 }
@@ -57,8 +58,6 @@ src_configure() {
 		-DBUILD_SHARED_LIBS=ON
 
 		-DLLVM_INCLUDE_TESTS=$(usex test)
-		# TODO: fix detecting pthread upstream in stand-alone build
-		-DPTHREAD_LIB='-lpthread'
 	)
 	use test && mycmakeargs+=(
 		-DLLVM_BUILD_TESTS=ON

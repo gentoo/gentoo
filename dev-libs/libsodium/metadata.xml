@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>mrueg@gentoo.org</email>
-		<name>Manuel Rüger</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription>
 		NaCl (pronounced "salt") is a new easy-to-use high-speed software
 		library for network communication, encryption, decryption,

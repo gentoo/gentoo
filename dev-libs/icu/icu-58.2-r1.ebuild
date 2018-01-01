@@ -13,7 +13,7 @@ LICENSE="BSD"
 
 SLOT="0/${PV}"
 
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
 IUSE="debug doc examples static-libs"
 
 DEPEND="
@@ -34,6 +34,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-58.1-iterator.patch"
 	"${FILESDIR}/${PN}-58.2-CVE-2017-7867.patch"
 	"${FILESDIR}/${PN}-58.2-glibc226.patch"
+	"${FILESDIR}/${PN}-58.2-darwin.patch"
 )
 
 pkg_pretend() {
@@ -65,6 +66,12 @@ src_prepare() {
 	sed -i \
 		-e 's:icudefs.mk:icudefs.mk Doxyfile:' \
 		configure.ac || die
+
+	# Fix compilation on Solaris due to enabling of conflicting standards
+	if [[ ${CHOST} == *-solaris* ]] ; then
+		sed -i -e '/define _XOPEN_SOURCE_EXTENDED/s/_XOPEN/no_XOPEN/' \
+			common/uposixdefs.h || die
+	fi
 
 	eautoreconf
 }
@@ -115,6 +122,12 @@ multilib_src_configure() {
 
 	# icu tries to use clang by default
 	tc-export CC CXX
+
+	# make sure we configure with the same shell as we run icu-config
+	# with, or ECHO_N, ECHO_T and ECHO_C will be wrongly defined
+	export CONFIG_SHELL=${EPREFIX}/bin/sh
+	# probably have no /bin/sh in prefix-chain
+	[[ -x ${CONFIG_SHELL} ]] || CONFIG_SHELL=${BASH}
 
 	ECONF_SOURCE=${S} \
 	econf "${myeconfargs[@]}"

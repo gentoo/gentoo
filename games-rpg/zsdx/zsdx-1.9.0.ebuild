@@ -11,7 +11,7 @@ SRC_URI="http://www.zelda-solarus.com/downloads/${PN}/${P}.tar.gz"
 
 LICENSE="all-rights-reserved CC-BY-SA-3.0 GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 RESTRICT="mirror"
 

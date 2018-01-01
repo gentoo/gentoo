@@ -1,7 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
+
 inherit user
 
 DESCRIPTION="An authentication service for creating and validating credentials"
@@ -13,7 +14,8 @@ SLOT="0"
 KEYWORDS="alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86"
 IUSE="gcrypt"
 
-DEPEND="app-arch/bzip2
+DEPEND="
+	app-arch/bzip2
 	sys-libs/zlib
 	gcrypt? ( dev-libs/libgcrypt:0 )
 	!gcrypt? ( dev-libs/openssl )"

@@ -1,0 +1,30 @@
+diff --git a/config.pl b/config.pl
+index caf9c2d..caf2ed3 100644
+--- a/config.pl
++++ b/config.pl
+@@ -5,8 +5,8 @@
+ # To specify the compilation flags define the CFLAGS environment variable.
+ #
+ 
+-require "miscperl.pl";
+-require "conflib.pl";
++require "./miscperl.pl";
++require "./conflib.pl";
+ 
+ # This optimization is giving problems and current PCs are quite fast to
+ # make a real difference.
+diff --git a/confignt.pl b/confignt.pl
+index e185f49..9ff7ae6 100644
+--- a/confignt.pl
++++ b/confignt.pl
+@@ -3,8 +3,8 @@
+ # see copyrigh file for details
+ #
+ 
+-require "miscperl.pl";
+-require "conflib.pl";
++require "./miscperl.pl";
++require "./conflib.pl";
+ 
+ SeeCommandLine();
+ 

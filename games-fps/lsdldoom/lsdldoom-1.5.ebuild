@@ -10,7 +10,7 @@ SRC_URI="http://jesshaas.com/lsdldoom/src/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="arm x86"
+KEYWORDS="~arm ~x86"
 IUSE="+net +shareware freedoom"
 
 DEPEND="media-libs/libsdl[video]

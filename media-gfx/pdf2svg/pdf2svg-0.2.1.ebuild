@@ -1,11 +1,11 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit eutils
 
 DESCRIPTION="pdf2svg is based on poppler and cairo and can convert pdf to svg files"
-HOMEPAGE="http://www.cityinthesky.co.uk/pdf2svg.html"
+HOMEPAGE="http://www.cityinthesky.co.uk/opensource/pdf2svg/ https://github.com/dawbarton/pdf2svg/"
 SRC_URI="http://www.cityinthesky.co.uk/files/${P}.tar.gz"
 
 LICENSE="GPL-2"

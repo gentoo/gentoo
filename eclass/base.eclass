@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # DEPRECATED
@@ -41,18 +41,21 @@ esac
 EXPORT_FUNCTIONS ${BASE_EXPF}
 
 # @ECLASS-VARIABLE: DOCS
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Array containing documents passed to dodoc command.
 #
 # DOCS=( "${S}/doc/document.txt" "${S}/doc/doc_folder/" )
 
 # @ECLASS-VARIABLE: HTML_DOCS
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Array containing documents passed to dohtml command.
 #
 # HTML_DOCS=( "${S}/doc/document.html" "${S}/doc/html_folder/" )
 
 # @ECLASS-VARIABLE: PATCHES
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # PATCHES array variable containing all various patches to be applied.
 # This variable is expected to be defined in global scope of ebuild.

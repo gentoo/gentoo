@@ -7,8 +7,8 @@ inherit autotools multilib
 MY_P=${PN}-app-${PV}
 
 DESCRIPTION="A file system viewer for Window Maker"
-HOMEPAGE="http://www.bayernline.de/~gscholz/linux/fsviewer/"
-SRC_URI="http://www.bayernline.de/~gscholz/linux/${PN}/${MY_P}.tar.bz2"
+HOMEPAGE="http://wie-im-flug.net/linux/fsviewer/index.html"
+SRC_URI="http://wie-im-flug.net/linux/${PN}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -46,5 +46,5 @@ src_configure() {
 
 src_install() {
 	default
-	dosym /usr/$(get_libdir)/GNUstep/FSViewer.app/FSViewer /usr/bin/FSViewer
+	dosym ../$(get_libdir)/GNUstep/FSViewer.app/FSViewer /usr/bin/FSViewer
 }

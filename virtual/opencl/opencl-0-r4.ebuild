@@ -8,15 +8,13 @@ inherit multilib-build
 DESCRIPTION="Virtual for OpenCL implementations"
 SLOT="0"
 KEYWORDS="amd64 x86"
-CARDS=( fglrx nvidia )
+CARDS=( nvidia )
 IUSE="${CARDS[@]/#/video_cards_}"
 
 # intel-ocl-sdk is amd64-only
 RDEPEND="app-eselect/eselect-opencl
 	|| (
 		>=media-libs/mesa-9.1.6[opencl,${MULTILIB_USEDEP}]
-		video_cards_fglrx? (
-			>=x11-drivers/ati-drivers-12.1-r1 )
 		video_cards_nvidia? (
 			>=x11-drivers/nvidia-drivers-290.10-r2 )
 		abi_x86_64? ( !abi_x86_32? ( dev-util/intel-ocl-sdk ) )

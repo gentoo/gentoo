@@ -1,6 +1,13 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Robin H. Johnson <robbat2@gentoo.org> (10 Nov 2017)
+# Masked for dependencies:
+# - bug #438780: sys-firmware/ipxe not buildable on PPC without cross-compiler
+app-emulation/qemu qemu_softmmu_targets_i386 qemu_softmmu_targets_x86_64
+# - media-libs/virglrenderer: pending keywording
+app-emulation/qemu virgl
+
 # Michael Palimaka <kensington@gentoo.org> (30 Sep 2017)
 # Required dependencies are not keyworded.
 x11-themes/qtcurve plasma
@@ -64,10 +71,6 @@ games-emulation/dosbox glide
 dev-db/mysql -numa
 dev-db/percona-server -numa
 
-# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
-# gnat-gpl is being removed, bug #514074
-mail-client/alpine topal
-
 # Davide Pesavento <pesa@gentoo.org> (28 Jul 2016)
 # The corresponding Qt5 modules are not keyworded on ppc, and we don't want to
 # keyword them solely because of PyQt5 while there are no other in-tree users.
@@ -75,11 +78,11 @@ dev-python/PyQt5 bluetooth location webengine
 
 # Michael Palimaka <kensington@gentoo.org> (07 Jul 2016)
 # Requires unkeyworded dependencies
-app-misc/hachoir-metadata kde
 dev-vcs/subversion kwallet
 games-arcade/jumpnbump kde
 kde-apps/katepart handbook
 kde-frameworks/kdelibs handbook policykit
+net-irc/quassel kde
 net-libs/libproxy kde
 sys-auth/polkit kde
 sys-block/gparted kde
@@ -241,7 +244,7 @@ sci-libs/gdal spatialite
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (31 Jan 2013)
 # remove mask when net-libs/libqmi is keyworded here
-net-misc/modemmanager qmi qmi-newest
+net-misc/modemmanager qmi
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (22 Jan 2013)
 # remove mask if/when media-gfx/argyllcms is keywored here.
@@ -294,10 +297,6 @@ sys-fs/dmraid dietlibc
 # Patrick McLean <chutzpah@gentoo.org> (07 Sep 2011)
 # missing keywords on dependencies
 media-video/x264-encoder ffmpegsource
-
-# Robin H. Johnson <robbat2@gentoo.org> (03 Sep 2011)
-# Remove this for your arch after you keyword dev-utils/google-perftools (bug #381737
-dev-libs/libmemcached tcmalloc
 
 # Kacper Kowalik <xarthisius@gentoo.org> (10 Aug 2011)
 # mask cuda dep for opencv bug 365451

@@ -13,9 +13,9 @@ SRC_URI="ftp://xmlsoft.org/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="alpha ~amd64 ~arm ~arm64 ~hppa ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
-IUSE="crypt debug examples python static-libs"
+IUSE="crypt debug examples python static-libs elibc_Darwin"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
@@ -52,8 +52,8 @@ src_prepare() {
 	# https://bugs.gentoo.org/630784
 	eapply "${FILESDIR}"/1.1.30-unbreak-xslt-config.patch
 
-	# Fix build and headers with glibc-2.26, bug 632214
-	eapply "${FILESDIR}"/${PN}-1.1.30-glibc226.patch
+	# Fix build and headers with glibc-2.26, bug 632214, breaks Darwin
+	use elibc_Darwin || eapply "${FILESDIR}"/${PN}-1.1.30-glibc226.patch
 
 	mv configure.{in,ac} || die
 

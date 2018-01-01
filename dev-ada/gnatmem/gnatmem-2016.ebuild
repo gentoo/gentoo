@@ -14,10 +14,12 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/573995c8c7a447658e0affa2 -> ${MYP}.t
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="gnat_2016 gnat_2017"
+IUSE="+gnat_2016 gnat_2017"
 
 RDEPEND=""
 DEPEND="dev-ada/gprbuild[gnat_2016=,gnat_2017=]"
+
+REQUIRED_USE="^^ ( gnat_2016 gnat_2017 )"
 
 S="${WORKDIR}"/${MYP}
 

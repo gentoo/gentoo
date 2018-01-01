@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=3
@@ -6,8 +6,11 @@ EAPI=3
 inherit eutils autotools
 
 DESCRIPTION="A Flexible Indexing System"
-HOMEPAGE="http://www.xindy.org/"
-SRC_URI="http://www.xindy.org/xindy-2.4.tar.gz"
+HOMEPAGE="http://www.xindy.org/ https://github.com/jschrod/xindy.ctan"
+SRC_URI="http://www.xindy.org/${P}.tar.gz"
+
+# The latest development is now on the TeXlive SVN. 
+# The author jschrod backports it from time to time to his github repo.
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -12,7 +12,7 @@ HOMEPAGE="https://i3wm.org/"
 SRC_URI="https://i3wm.org/downloads/${P}.tar.bz2"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="doc debug test"
 
 CDEPEND="dev-libs/libev
@@ -26,6 +26,7 @@ CDEPEND="dev-libs/libev
 	x11-libs/xcb-util-keysyms
 	x11-libs/xcb-util-wm
 	x11-libs/xcb-util-xrm
+	x11-misc/xkeyboard-config
 	>=x11-libs/cairo-1.14.4[X,xcb]
 	>=x11-libs/pango-1.30.0[X]"
 DEPEND="${CDEPEND}

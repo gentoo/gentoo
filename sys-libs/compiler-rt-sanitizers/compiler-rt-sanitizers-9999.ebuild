@@ -21,6 +21,7 @@ LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="6.0.0"
 KEYWORDS=""
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 LLVM_SLOT=${SLOT%%.*}
 # llvm-4 needed for --cmakedir
@@ -63,7 +64,7 @@ src_unpack() {
 
 	if use test; then
 		git-r3_checkout https://llvm.org/git/llvm.git \
-			"${WORKDIR}"/llvm
+			"${WORKDIR}"/llvm '' utils/unittest
 	fi
 	git-r3_checkout
 }

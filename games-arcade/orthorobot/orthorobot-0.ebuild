@@ -5,13 +5,13 @@ EAPI="5"
 
 inherit eutils games
 
-DESCRIPTION="Nice perspective based puzzle game, where you flatten the view to move across gaps"
+DESCRIPTION="Perspective based puzzle game, where you flatten the view to move across gaps"
 HOMEPAGE="http://stabyourself.net/orthorobot/"
 SRC_URI="http://stabyourself.net/dl.php?file=${PN}/${PN}-source.zip -> ${P}.zip"
 
 LICENSE="CC-BY-NC-ND-3.0"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND=">=games-engines/love-0.8.0"
 DEPEND="${RDEPEND}

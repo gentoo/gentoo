@@ -137,6 +137,19 @@ _meson_create_cross_file() {
 	EOF
 }
 
+# @FUNCTION: meson_use
+# @USAGE: <USE flag> [option name]
+# @DESCRIPTION:
+# Given a USE flag and meson project option, outputs a string like:
+#
+#   -Doption=true
+#   -Doption=false
+#
+# If the project option is unspecified, it defaults to the USE flag.
+meson_use() {
+	usex "$1" "-D${2-$1}=true" "-D${2-$1}=false"
+}
+
 # @FUNCTION: meson_src_configure
 # @DESCRIPTION:
 # This is the meson_src_configure function.

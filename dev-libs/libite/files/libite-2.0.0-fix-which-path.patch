@@ -1,0 +1,25 @@
+diff --git a/tests/which.c b/tests/which.c
+index 46dcccf..cda57c6 100644
+--- a/tests/which.c
++++ b/tests/which.c
+@@ -11,13 +11,13 @@ int main(void)
+ 	int result = 0;
+ 	size_t i;
+ 	struct tc test[] = {
+-		{ "ls",          1 },
+-		{ "free",        1 },
+-		{ "modinfo",     1 },
+-		{ "useradd",     1 },
+-		{ "/bin/which",  1 },
+-		{ "/bin/ps aux", 1 },
+-		{ "/etc/passwd", 0 },
++		{ "ls",             1 },
++		{ "free",           1 },
++		{ "modinfo",        1 },
++		{ "useradd",        1 },
++		{ "/usr/bin/which", 1 },
++		{ "/bin/ps aux",    1 },
++		{ "/etc/passwd",    0 },
+ 		{ NULL, 0 }
+ 	};
+ 

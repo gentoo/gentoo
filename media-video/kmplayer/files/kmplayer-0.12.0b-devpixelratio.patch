@@ -1,0 +1,36 @@
+From 93fa2c2587fa8b2f1b0da4ab7f7f2978f105fac2 Mon Sep 17 00:00:00 2001
+From: Koos Vriezen <koos.vriezen@gmail.com>
+Date: Sun, 30 Oct 2016 12:58:05 +0100
+Subject: Update pixel_device_ratio before painting instead on app startup
+
+Only used for adding a few pixels to text bounds. So if dragging the app
+from a low res to a hires display, that could cause text being tuncated.
+---
+ src/viewarea.cpp | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/src/viewarea.cpp b/src/viewarea.cpp
+index e407c95..77a260f 100644
+--- a/src/viewarea.cpp
++++ b/src/viewarea.cpp
+@@ -1892,9 +1892,6 @@ KDE_NO_CDTOR_EXPORT ViewArea::ViewArea (QWidget *, View * view, bool paint_bg)
+    m_minimal (false),
+    m_updaters_enabled (true),
+    m_paint_background (paint_bg) {
+-#if QT_VERSION >= 0x050600
+-    pixel_device_ratio = devicePixelRatioF();
+-#endif
+     if (!paint_bg)
+         setAttribute (Qt::WA_NoSystemBackground, true);
+     QPalette palette;
+@@ -2030,6 +2027,7 @@ KDE_NO_EXPORT void ViewArea::mouseMoveEvent (QMouseEvent * e) {
+ 
+ KDE_NO_EXPORT void ViewArea::syncVisual () {
+ #if QT_VERSION >= 0x050600
++    pixel_device_ratio = devicePixelRatioF();
+     int w = (int)(width() * devicePixelRatioF());
+     int h = (int)(height() * devicePixelRatioF());
+ #else
+-- 
+cgit v0.11.2
+

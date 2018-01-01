@@ -3,6 +3,7 @@
 
 # Michael Haubenwallner <haubi@gentoo.org> (03 Mar 2017)
 # Only these versions have the patches for proper AIX support.
+# note: these ebuilds come from repo/proj/prefix.git
 ~sys-devel/gcc-4.2.4
 ~sys-devel/gcc-4.8.4
 

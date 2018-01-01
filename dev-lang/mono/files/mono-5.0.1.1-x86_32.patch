@@ -1,0 +1,21 @@
+Native toolchain can default to different ABI (amd64 in bug case).
+Set target to i386.
+https://bugs.gentoo.org/600664
+diff --git a/mono/mini/aot-compiler.c b/mono/mini/aot-compiler.c
+index 0656a57..690c96b 100644
+--- a/mono/mini/aot-compiler.c
++++ b/mono/mini/aot-compiler.c
+@@ -9926,4 +9926,6 @@ compile_asm (MonoAotCompile *acfg)
+ #ifdef TARGET_WIN32_MSVC
+ #define AS_OPTIONS "-c -x assembler"
++#elif defined(TARGET_X86) && !defined(TARGET_MACH)
++#define AS_OPTIONS "--32"
+ #elif defined(TARGET_AMD64) && !defined(TARGET_MACH)
+ #define AS_OPTIONS "--64"
+@@ -9981,4 +9983,6 @@ compile_asm (MonoAotCompile *acfg)
+ #elif defined(TARGET_POWERPC64)
+ #define LD_OPTIONS "-m elf64ppc"
++#elif defined(TARGET_X86)
++#define LD_OPTIONS "-m elf_i386"
+ #endif
+ 

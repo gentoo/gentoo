@@ -10,6 +10,7 @@
                 <name>Net-Mail</name>
         </maintainer>
   <use>
+    <flag name="argon2">Add support for ARGON2 password schemes</flag>
     <flag name="cydir">Add cydir storage support</flag>
     <flag name="managesieve">Add managesieve protocol support</flag>
     <flag name="mdbox">Add mdbox storage support</flag>

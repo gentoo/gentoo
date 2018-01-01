@@ -12,7 +12,7 @@ HOMEPAGE="http://www.moddb.com/mods/rocket-arena-3"
 SRC_URI="mirror://quakeunity/modifications/rocketarena3/ra3${PV/.}.zip"
 
 LICENSE="freedist"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="dedicated opengl"
 
 QA_PREBUILT="${INS_DIR:1}/${MOD_DIR}/*so"

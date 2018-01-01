@@ -1,0 +1,20 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -1016,7 +1016,7 @@
+         AC_CHECK_HEADERS([readline/readline.h readline/history.h],
+             [AC_DEFINE([HAVE_GNUREADLINE], [], [Define if we have GNU readline])],
+             [AC_MSG_ERROR([Couldn't find GNU readline headers.])])
+-        AC_SEARCH_LIBS([tputs], [ncurses termcap],
++        AC_SEARCH_LIBS([tputs], [ncurses termcap tinfo],
+             [AC_DEFINE([HAVE_TERMCAP], [], [Define if we have ncurses or termcap])],
+             [AC_MSG_ERROR([Found neither ncurses or termcap])])
+         AC_CHECK_LIB([readline], [readline],
+@@ -1036,7 +1036,7 @@
+     AC_CHECK_HEADERS([editline/readline.h],
+         [AC_DEFINE([HAVE_BSDEDITLINE], [1], [Define to enable BSD editline])],
+         [AC_MSG_ERROR([Couldn't find BSD editline headers.])])
+-    AC_SEARCH_LIBS([tputs], [ncurses termcap],
++    AC_SEARCH_LIBS([tputs], [ncurses termcap tinfo],
+         [AC_DEFINE([HAVE_TERMCAP], [], [Define if we have ncurses or termcap])],
+         [AC_MSG_ERROR([Found neither ncurses or termcap])])
+     AC_CHECK_LIB([edit], [readline],

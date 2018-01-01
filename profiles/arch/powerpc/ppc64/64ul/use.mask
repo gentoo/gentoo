@@ -46,7 +46,6 @@ dvb
 video_cards_chips
 video_cards_cirrus
 video_cards_glint
-video_cards_newport
 video_cards_s3
 video_cards_s3virge
 video_cards_savage

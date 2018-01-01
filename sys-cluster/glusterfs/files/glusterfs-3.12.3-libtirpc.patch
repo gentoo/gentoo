@@ -1,0 +1,45 @@
+From 6394d8d8e90d5400b49005bf3005523b2e306b2c Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Mon, 20 Nov 2017 20:44:45 +0000
+Subject: [PATCH] build: Allow libtirpc to be explicitly requested
+
+Some distributions like Gentoo no longer include the RPC stuff in
+their glibc packages.
+
+Signed-off-by: James Le Cuirot <chewi@gentoo.org>
+---
+ configure.ac | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/configure.ac b/configure.ac
+index ce689225c..90d2f98c8 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -291,6 +291,10 @@ else
+         CFLAGS="${CFLAGS} -g -rdynamic"
+ fi
+ 
++AC_ARG_WITH([libtirpc],
++        AS_HELP_STRING([--with-libtirpc], [Use libtirpc as RPC implementation (instead of sunrpc)]),
++        [], [with_libtirpc=no])
++
+ AC_ARG_ENABLE([privport_tracking],
+               AC_HELP_STRING([--disable-privport_tracking],
+                              [Disable internal tracking of privileged ports.]))
+@@ -1050,6 +1054,13 @@ AC_SUBST(GF_DISTRIBUTION)
+ GF_HOST_OS=""
+ GF_LDFLAGS="-rdynamic"
+ 
++if test "x$with_libtirpc" = "xyes" ; then
++    PKG_CHECK_MODULES([TIRPC], [libtirpc],
++       [GF_CFLAGS="$GF_CFLAGS $TIRPC_CFLAGS"; GF_LDFLAGS="$GF_LDFLAGS $TIRPC_LIBS";],
++       [AC_MSG_ERROR([libtirpc requested but library not found])]
++    )
++fi
++
+ dnl check for gcc -Werror=format-security
+ saved_CFLAGS=$CFLAGS
+ CFLAGS="-Wformat -Werror=format-security"
+-- 
+2.15.0
+

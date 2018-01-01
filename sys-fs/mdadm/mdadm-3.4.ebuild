@@ -4,7 +4,7 @@
 EAPI=5
 inherit eutils flag-o-matic multilib systemd toolchain-funcs udev
 
-DESCRIPTION="A useful tool for running RAID systems - it can be used as a replacement for the raidtools"
+DESCRIPTION="Tool for running RAID systems - replacement for the raidtools"
 HOMEPAGE="http://neil.brown.name/blog/mdadm"
 DEB_PR=1.1
 SRC_URI="mirror://kernel/linux/utils/raid/mdadm/${P}.tar.xz

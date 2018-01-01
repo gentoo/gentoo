@@ -1,0 +1,12 @@
+--- configure.ac.orig	2017-12-23 08:35:07.079096342 +0000
++++ configure.ac	2017-12-23 08:35:36.903643912 +0000
+@@ -7,6 +7,9 @@
+ AC_GNU_SOURCE
+ AC_CONFIG_HEADERS([config.h])
+ 
++# avoid rebuilding documentation
++AM_MAINTAINER_MODE
++
+ ##########################################################################
+ #
+ # Try to figure out if we are building from git sources.

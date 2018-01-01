@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (30 Dec 2017)
+# Moved from use.mask since they are flags local to one package.
+sys-kernel/mips-sources -ip27 -ip28 -ip30
+
 # Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
 # Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
 media-libs/mesa vulkan

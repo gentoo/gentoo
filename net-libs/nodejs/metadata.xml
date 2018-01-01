@@ -6,6 +6,7 @@
 		<name>Patrick Lauer</name>
 	</maintainer>
 	<use>
+	<flag name="inspector">Enable V8 inspector</flag>
 	<flag name="npm">Enable NPM package manager</flag>
 	<flag name="snapshot">Enable snapshot creation for faster startup</flag>
 	<flag name="systemtap">Enable SystemTAP/DTrace tracing</flag>

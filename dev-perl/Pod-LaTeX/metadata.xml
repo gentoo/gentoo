@@ -5,4 +5,8 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="cpan">Pod-LaTeX</remote-id>
+    <remote-id type="cpan-module">Pod::LaTeX</remote-id>
+  </upstream>
 </pkgmetadata>

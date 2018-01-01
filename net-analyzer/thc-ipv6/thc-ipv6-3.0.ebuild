@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -24,6 +24,9 @@ DEPEND="net-libs/libpcap
 	ssl? ( dev-libs/openssl:* )"
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}/${PN}-3.2-stdint.patch"
+	"${FILESDIR}"/${PN}-3.0-Makefile.patch )
+
 src_unpack() {
 	if [[ ${PV} != *9999 ]]; then
 		default_src_unpack
@@ -33,15 +36,13 @@ src_unpack() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-3.0-Makefile.patch
-	sed -i \
-		-e '/^CFLAGS=/s,CFLAGS=,CFLAGS?=,' \
-		Makefile
+	sed -e '/^CFLAGS=/s,CFLAGS=,CFLAGS?=,' \
+		-i Makefile || die
 	if ! use ssl ; then
 		sed -e '/^HAVE_SSL/s:^:#:' \
 			-i Makefile
 	fi
-	eapply_user
+	default
 }
 
 src_compile() {

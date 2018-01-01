@@ -16,11 +16,11 @@ SRC_URI="https://github.com/mypaint/libmypaint/releases/download/v${MY_PV}/${MY_
 LICENSE="ISC"
 SLOT="0/0"  # first soname component for subslot
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc64 ~x86"
-IUSE="gegl introspection nls openmp"
+IUSE="+gegl introspection nls openmp"
 
 CDEPEND="
 	dev-libs/glib:2
-	dev-libs/json-c
+	dev-libs/json-c:=
 	gegl? (
 		media-libs/babl
 		media-libs/gegl:0.3[introspection?]

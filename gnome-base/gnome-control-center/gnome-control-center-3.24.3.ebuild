@@ -9,6 +9,7 @@ inherit bash-completion-r1 gnome2
 
 DESCRIPTION="GNOME's main interface to configure various aspects of the desktop"
 HOMEPAGE="https://git.gnome.org/browse/gnome-control-center/"
+SRC_URI+=" https://dev.gentoo.org/~mgorny/dist/${PN}-3.24.2-patchset.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="2"
@@ -132,14 +133,14 @@ DEPEND="${COMMON_DEPEND}
 PATCHES=(
 	# Make some panels and dependencies optional; requires eautoreconf
 	# https://bugzilla.gnome.org/686840, 697478, 700145
-	"${FILESDIR}"/3.24.2-optional.patch
-	"${FILESDIR}"/3.24.2-optional-wayland.patch
-	"${FILESDIR}"/3.24.2-optional-networkmanager.patch
-	"${FILESDIR}"/3.24.2-optional-cups.patch
+	"${WORKDIR}"/${PN}-3.24.2-patchset/3.24.2-optional.patch
+	"${WORKDIR}"/${PN}-3.24.2-patchset/3.24.2-optional-wayland.patch
+	"${WORKDIR}"/${PN}-3.24.2-patchset/3.24.2-optional-networkmanager.patch
+	"${WORKDIR}"/${PN}-3.24.2-patchset/3.24.2-optional-cups.patch
 	# Fix some absolute paths to be appropriate for Gentoo
-	"${FILESDIR}"/3.24.2-gentoo-paths.patch
+	"${WORKDIR}"/${PN}-3.24.2-patchset/3.24.2-gentoo-paths.patch
 	# https://bugzilla.gnome.org/show_bug.cgi?id=780544
-	"${FILESDIR}"/3.24.2-fix-without-gdkwayland.patch
+	"${WORKDIR}"/${PN}-3.24.2-patchset/3.24.2-fix-without-gdkwayland.patch
 )
 
 src_configure() {

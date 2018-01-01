@@ -24,7 +24,7 @@ HOMEPAGE="http://www.exim.org/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="alpha amd64 ~arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~x86-solaris"
+KEYWORDS="sparc"
 
 COMMON_DEPEND=">=sys-apps/sed-4.0.5
 	>=sys-libs/db-3.2:=
@@ -59,6 +59,7 @@ COMMON_DEPEND=">=sys-apps/sed-4.0.5
 	sqlite? ( dev-db/sqlite )
 	radius? ( net-dialup/freeradius-client )
 	virtual/libiconv
+	elibc_glibc? ( net-libs/libnsl )
 	"
 	# added X check for #57206
 DEPEND="${COMMON_DEPEND}

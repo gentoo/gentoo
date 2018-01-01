@@ -1,28 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>ruby@gentoo.org</email>
-    <name>Gentoo Ruby Project</name>
-  </maintainer>
-  <use>
-    <flag name="rubytests">
-      Install ruby tests that can only be run after ruby is installed
-    </flag>
-    <flag name="readline">
-      Use the <pkg>sys-libs/readline</pkg> library to provide the
-      readline extension, used for instance by the irb tool. This flag
-      is meaningful only if the libedit USE flag is disabled.
+	<maintainer type="project">
+		<email>ruby@gentoo.org</email>
+		<name>Gentoo Ruby Project</name>
+	</maintainer>
+	<use>
+		<flag name="rubytests">Install ruby tests that can only be run after ruby is installed</flag>
+		<flag name="readline">
+			Use the <pkg>sys-libs/readline</pkg> library to provide the
+			readline extension, used for instance by the irb tool. This flag
+			is meaningful only if the libedit USE flag is disabled.
 
-      If neither libedit nor readline USE flags are enabled, the
-      readline extension will not be built (and irb will lose line
-      editing functionality).
-    </flag>
-    <flag name="rdoc">
-      Install <pkg>dev-ruby/rdoc</pkg> after installing Ruby.
-    </flag>
-    <flag name="jemalloc">
-	  Use <pkg>dev-libs/jemalloc</pkg> for memory allocation.
-	</flag>
-  </use>
+			If neither libedit nor readline USE flags are enabled, the
+			readline extension will not be built (and irb will lose line
+			editing functionality).
+		</flag>
+		<flag name="rdoc">Install <pkg>dev-ruby/rdoc</pkg> after installing Ruby.</flag>
+		<flag name="jemalloc">Use <pkg>dev-libs/jemalloc</pkg> for memory allocation.</flag>
+	</use>
 </pkgmetadata>

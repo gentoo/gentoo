@@ -12,7 +12,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
 
-IUSE="custom-cflags video_cards_nvidia video_cards_fglrx"
+IUSE="custom-cflags video_cards_nvidia"
 DEPEND="virtual/opencl"
 RDEPEND="${DEPEND}"
 
@@ -40,8 +40,6 @@ src_test() {
 			einfo "To run these tests, portage likely must be in the video group."
 			einfo "Please run \"gpasswd -a portage video\" if the tests will fail"
 		fi
-	elif use vidia_cards_fglrx; then
-		addwrite /dev/ati
 	fi
 	#this always exits with 255 despite success
 	#./hashcat -b -m 2500 || die "Test failed"

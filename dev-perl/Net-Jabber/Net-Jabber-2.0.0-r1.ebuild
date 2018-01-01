@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,5 +17,7 @@ RDEPEND="dev-perl/XML-Stream
 	dev-perl/Net-XMPP
 	dev-perl/Digest-SHA1"
 DEPEND="${RDEPEND}"
+
+PATCHES=( "${FILESDIR}/${PN}-2.0-no-dot-inc.patch" )
 
 SRC_TEST="do"

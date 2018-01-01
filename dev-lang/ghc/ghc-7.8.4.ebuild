@@ -243,21 +243,6 @@ relocate_ghc() {
 	# so it should point to current tree location
 	relocate_path "/usr" "${WORKDIR}/usr" "$gp_back"
 
-	if use prefix; then
-		# and insert LD_LIBRARY_PATH entry to EPREFIX dir tree
-		# TODO: add the same for darwin's CHOST and it's DYLD_
-		local new_ldpath='LD_LIBRARY_PATH="'${EPREFIX}/$(get_libdir):${EPREFIX}/usr/$(get_libdir)'${LD_LIBRARY_PATH:+:}${LD_LIBRARY_PATH}"\nexport LD_LIBRARY_PATH'
-		sed -i -e '2i'"$new_ldpath" \
-			"${WORKDIR}/usr/bin/ghc-${GHC_PV}" \
-			"${WORKDIR}/usr/bin/ghci-${GHC_PV}" \
-			"${WORKDIR}/usr/bin/ghc-pkg-${GHC_PV}" \
-			"${WORKDIR}/usr/bin/hsc2hs" \
-			"${WORKDIR}/usr/bin/runghc-${GHC_PV}" \
-			"$gp_back" \
-			"${WORKDIR}/usr/bin/hsc2hs" \
-			|| die "Adding LD_LIBRARY_PATH for wrappers failed"
-	fi
-
 	# regenerate the binary package cache
 	"$gp_back" recache || die "failed to update cache after relocation"
 	rm "$gp_back"

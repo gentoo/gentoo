@@ -2,10 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby22"
 
 RUBY_FAKEGEM_TASK_TEST="none"
-RUBY_FAKEGEM_TASK_DOC="none"
+RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 
 RUBY_FAKEGEM_EXTRADOC="Changelog.md README.md"
 
@@ -34,9 +34,6 @@ ruby_add_bdepend "test? (
 		>=dev-ruby/rspec-expectations-2.14.0:2
 		>=dev-ruby/rspec-mocks-2.12.0:2
 	)"
-
-# Skip yard for ruby21 for now since we can't bootstrap otherwise.
-USE_RUBY=${USE_RUBY/ruby21/} ruby_add_bdepend "doc? ( dev-ruby/yard )"
 
 all_ruby_prepare() {
 	# Don't set up bundler: it doesn't understand our setup.
@@ -70,12 +67,6 @@ all_ruby_prepare() {
 
 each_ruby_prepare() {
 	sed -i -e 's:ruby -e:'${RUBY}' -e:' spec/rspec/core_spec.rb || die
-}
-
-all_ruby_compile() {
-	if use doc ; then
-		yardoc || die
-	fi
 }
 
 each_ruby_test() {

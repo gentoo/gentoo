@@ -6,9 +6,9 @@ EAPI="5"
 inherit eutils flag-o-matic prefix systemd
 
 DESCRIPTION="File transfer program to keep remote files into sync"
-HOMEPAGE="http://rsync.samba.org/"
-SRC_URI="http://rsync.samba.org/ftp/rsync/src/${P}.tar.gz"
-[[ "${PV}" = *_pre* ]] && SRC_URI="http://rsync.samba.org/ftp/rsync/src-previews/${P/_/}.tar.gz"
+HOMEPAGE="https://rsync.samba.org/"
+SRC_URI="https://rsync.samba.org/ftp/rsync/src/${P}.tar.gz"
+[[ "${PV}" = *_pre* ]] && SRC_URI="https://rsync.samba.org/ftp/rsync/src-previews/${P/_/}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

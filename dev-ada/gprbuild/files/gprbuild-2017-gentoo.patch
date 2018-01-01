@@ -21,22 +21,74 @@
  
                          end if;
                       end if;
---- gprbuild-gpl-2016-src/gpr/src/gpr-conf.adb.old	2017-09-12 21:29:25.945747949 +0200
-+++ gprbuild-gpl-2016-src/gpr/src/gpr-conf.adb	2017-09-12 21:35:16.299101715 +0200
-@@ -1839,6 +1839,16 @@
-                end;
-             end if;
+--- gprbuild-gpl-2017-src/gpr/src/gpr-names.ads.old	2017-11-19 13:09:18.947527738 +0100
++++ gprbuild-gpl-2017-src/gpr/src/gpr-names.ads	2017-11-19 13:10:08.125654595 +0100
+@@ -27,6 +27,8 @@
+    Name_Buffer : String (1 .. 1_000_000);
+    Name_Len    : Natural := 0;
  
-+            Compiler_Root := First_Compiler_Root;
-+            while Compiler_Root.Next /= null loop
-+               Compiler_Root := Compiler_Root.Next;
-+            end loop;
-+            Compiler_Root.Next :=
-+              new Compiler_Root_Data'
-+                (Root => new String'("/usr"),
-+                 Runtimes => null,
-+                 Next => null);
++   Last_Id     : Name_Id := Name_Id'First;
 +
-             --  Now that the compiler roots are in a correct order, add the
-             --  directories corresponding to these compiler roots in the
-             --  project path.
+    procedure Get_Name_String (Id : Name_Id);
+    procedure Get_Name_String (Id : Unit_Name_Type);
+    procedure Get_Name_String (Id : File_Name_Type);
+--- gprbuild-gpl-2017-src/gpr/src/gpr-names.adb.old	2017-11-19 13:10:27.674316703 +0100
++++ gprbuild-gpl-2017-src/gpr/src/gpr-names.adb	2017-11-19 13:14:38.360963627 +0100
+@@ -354,6 +354,8 @@
+ 
+       Name_Chars.Append (ASCII.NUL);
+ 
++      Last_Id := Name_Entries.Last;
++
+       return Name_Entries.Last;
+    end Name_Enter;
+ 
+@@ -427,6 +429,8 @@
+ 
+       Name_Chars.Append (ASCII.NUL);
+ 
++      Last_Id := Name_Entries.Last;
++
+       return Name_Entries.Last;
+    end Name_Find;
+ 
+--- gprbuild-gpl-2017-src/gpr/src/gpr-snames.adb.old	2017-11-19 13:12:41.592995718 +0100
++++ gprbuild-gpl-2017-src/gpr/src/gpr-snames.adb	2017-11-19 13:16:31.980979696 +0100
+@@ -53,6 +53,10 @@
+          return;
+       end if;
+ 
++      if Last_Id = Name_Id'First then
++         Add_Name ("");
++      end if;
++
+       Add_Name ("a");
+       Add_Name ("b");
+       Add_Name ("c");
+--- gprbuild-gpl-2017/src/gprlib.adb.old	2017-12-18 12:20:02.937317216 +0100
++++ gprbuild-gpl-2017/src/gprlib.adb	2017-12-18 12:21:36.519604590 +0100
+@@ -400,7 +400,7 @@
+ 
+    Driver_Name : Name_Id := No_Name;
+ 
+-   Gnatbind_Name : String_Access := new String'("gnatbind");
++   Gnatbind_Name : String_Access := new String'("@GNATBIND@");
+ 
+    Gnatbind_Path : String_Access;
+ 
+@@ -2237,13 +2237,13 @@
+                           and then Line (Last - 2 .. Last) = "gcc"
+                         then
+                            Gnatbind_Name :=
+-                             new String'(Line (1 .. Last - 3) & "gnatbind");
++                             new String'(Line (1 .. Last - 3) & "@GNATBIND@");
+ 
+                         elsif Last > 7
+                           and then Line (Last - 6 .. Last) = "gcc.exe"
+                         then
+                            Gnatbind_Name :=
+-                             new String'(Line (1 .. Last - 7) & "gnatbind");
++                             new String'(Line (1 .. Last - 7) & "@GNATBIND@");
+                         end if;
+                      end if;
+ 

@@ -9,4 +9,8 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="cpan">Net-Whois-IP</remote-id>
+    <remote-id type="cpan-module">Net::Whois::IP</remote-id>
+  </upstream>
 </pkgmetadata>

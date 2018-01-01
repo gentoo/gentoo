@@ -6,6 +6,7 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
+		<flag name="fits">Enable support for NASA's <pkg>sci-libs/cfitsio</pkg> library</flag>
 		<flag name="kipi">Support for the KDE Image Plugin Interface</flag>
 	</use>
 </pkgmetadata>

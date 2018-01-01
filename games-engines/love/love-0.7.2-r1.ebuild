@@ -10,7 +10,7 @@ SRC_URI="https://www.bitbucket.org/rude/${PN}/downloads/${P}-linux-src.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0.7"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="dev-games/physfs

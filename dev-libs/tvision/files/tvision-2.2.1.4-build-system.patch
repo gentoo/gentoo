@@ -1,0 +1,31 @@
+diff --git a/config.pl b/config.pl
+index 6a7a8b3..4664baa 100644
+--- a/config.pl
++++ b/config.pl
+@@ -1188,7 +1188,7 @@ sub GenerateMakefile
+     $rep.="\t\$(MAKE) -C intl\n";
+    }
+  $text=~s/\@target_rules\@/$rep/g;
+- $rep="intl-dummy:\n\t\$(MAKE) -C intl/dummy\n";
++ $rep="intl-dummy:\n\t\$(MAKE) prefix=\$(prefix) -C intl/dummy\n";
+  $rep.="\tcp intl/dummy/libtvfintl.a $makeDir\n";
+  $rep.="\tranlib $makeDir/libtvfintl.a\n" if $conf{'UseRanLib'};
+  $text=~s/\@intl_dummy_rule\@/$rep/g;
+@@ -1273,7 +1273,7 @@ sub GenerateMakefile
+    }
+  if ($internac)
+    {
+-    $rep.="\ninstall-internac:\n\t\$(MAKE) -C intl install\n";
++    $rep.="\ninstall-internac:\n\t\$(MAKE) prefix=\$(prefix) -C intl install\n";
+    }
+  $text=~s/\@install_rules\@/$rep/g;
+ 
+@@ -1293,7 +1293,7 @@ sub GenerateMakefile
+  $rep.="\trm -f intl/dummy/*.lo\n";
+  $rep.="\trm -f intl/dummy/*.a\n";
+  $rep.="\t-\$(MAKE) -C examples clean\n";
+- $rep.="\t-\$(MAKE) -C intl clean\n";
++ $rep.="\t-\$(MAKE) prefix=\$(prefix) -C intl clean\n";
+  $rep.="\trm -f configure.cache\n";
+  $rep.="\trm -f rhtv-config\$(EXE_EXT)\n";
+  $text=~s/\@clean\@/$rep/g;

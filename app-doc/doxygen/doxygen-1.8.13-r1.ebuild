@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 inherit cmake-utils eutils fdo-mime flag-o-matic python-any-r1
 if [[ ${PV} = *9999* ]]; then
@@ -116,7 +116,7 @@ src_compile() {
 				{Doxyfile,doc/Doxyfile} \
 				|| die "disabling dot failed"
 		fi
-		emake -C "${BUILD_DIR}" docs
+		cmake-utils_src_make -C "${BUILD_DIR}" docs
 	fi
 }
 

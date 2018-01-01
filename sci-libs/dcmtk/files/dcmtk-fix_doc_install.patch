@@ -1,0 +1,16 @@
+diff --git a/doxygen/CMakeLists.txt b/doxygen/CMakeLists.txt
+index 6a0323f..4f18087 100644
+--- a/doxygen/CMakeLists.txt
++++ b/doxygen/CMakeLists.txt
+@@ -32,9 +32,9 @@ IF(DCMTK_WITH_DOXYGEN)
+   ENDIF(NOT WIN32)
+ 
+   # install html docs and manpages
+-  INSTALL(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/htmldocs/ DESTINATION ${CMAKE_INSTALL_PREFIX}${INSTALL_HTMDIR} PATTERN "CVS" EXCLUDE)
++  INSTALL(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/htmldocs/ DESTINATION ${INSTALL_HTMDIR} PATTERN "CVS" EXCLUDE)
+   IF(NOT WIN32)
+-    INSTALL(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/manpages/ DESTINATION ${CMAKE_INSTALL_PREFIX}${INSTALL_MANDIR} PATTERN "CVS" EXCLUDE)
++    INSTALL(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/manpages/ DESTINATION ${INSTALL_MANDIR} PATTERN "CVS" EXCLUDE)
+   ENDIF(NOT WIN32)
+ 
+   # cleanup created files on "make clean" - directories are not removed with CMake 2.4 :-/

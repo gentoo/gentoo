@@ -11,6 +11,7 @@
 	</maintainer>
 	<use>
 		<flag name="analyzer">Enable visual analyzer</flag>
+		<flag name="archive">Enable archiving plugin via <pkg>app-arch/libarchive</pkg>.</flag>
 		<flag name="bs2b">Enable Bauer stereophonic-to-binaural headphone filter</flag>
 		<flag name="cover">Enable album cover support</flag>
 		<flag name="crossfade">Enable crossfade effect when switching tracks</flag>
@@ -27,6 +28,7 @@
 		<flag name="qsui">Enable QMMP simple UI</flag>
 		<flag name="qtmedia">Enable playback via <pkg>dev-qt/qtmultimedia</pkg></flag>
 		<flag name="scrobbler">Enable audioscrobbler/last.fm support</flag>
+		<flag name="shout">Enable shoutcast plug-in via <pkg>media-libs/libshout</pkg>.</flag>
 		<flag name="sid">Build with SID (Commodore 64 Audio) support</flag>
 		<flag name="soxr">Use the SoX resampling library</flag>
 		<flag name="stereo">Enable stereo effect</flag>

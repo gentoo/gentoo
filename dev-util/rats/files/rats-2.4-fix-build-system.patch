@@ -1,0 +1,27 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -50,15 +50,15 @@
+ 	$(LEX) $(LEXFLAGS) -Pyyruby ruby-lex.l     
+ 
+ install:	$(BIN)
+-	./mkinstalldirs $(BINDIR) $(LIBDIR) $(MANDIR) $(MANDIR)/man1 $(SHAREDIR)
+-	$(INSTALL_PROGRAM) $(BIN) $(BINDIR)
+-	$(INSTALL_DATA) rats-python.xml $(SHAREDIR)
+-	$(INSTALL_DATA) rats-c.xml $(SHAREDIR)
+-	$(INSTALL_DATA) rats-perl.xml $(SHAREDIR)
+-	$(INSTALL_DATA) rats-php.xml $(SHAREDIR)
+-	$(INSTALL_DATA) rats-ruby.xml $(SHAREDIR)
+-	$(INSTALL_DATA) rats-openssl.xml $(SHAREDIR)
+-	$(INSTALL_DATA) rats.1	$(MANDIR)/man1
++	./mkinstalldirs $(DESTDIR)$(BINDIR) $(DESTDIR)$(MANDIR) $(DESTDIR)$(MANDIR)/man1 $(DESTDIR)$(SHAREDIR)
++	$(INSTALL_PROGRAM) $(BIN) $(DESTDIR)$(BINDIR)
++	$(INSTALL_DATA) rats-python.xml $(DESTDIR)$(SHAREDIR)
++	$(INSTALL_DATA) rats-c.xml $(DESTDIR)$(SHAREDIR)
++	$(INSTALL_DATA) rats-perl.xml $(DESTDIR)$(SHAREDIR)
++	$(INSTALL_DATA) rats-php.xml $(DESTDIR)$(SHAREDIR)
++	$(INSTALL_DATA) rats-ruby.xml $(DESTDIR)$(SHAREDIR)
++	$(INSTALL_DATA) rats-openssl.xml $(DESTDIR)$(SHAREDIR)
++	$(INSTALL_DATA) rats.1	$(DESTDIR)$(MANDIR)/man1
+ 
+ clean:
+ 	rm -f $(OBJ) *~ $(BIN) core

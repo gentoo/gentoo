@@ -7,8 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="pkg-config">Install as a replacement for dev-util/pkgconfig</flag>
-		<flag name="strict">Adhere to POSIX pkg-config specification. Useful for finding uses of
-non-standard pkg-config invocations</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">pkgconf/pkgconf</remote-id>

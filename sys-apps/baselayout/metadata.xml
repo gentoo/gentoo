@@ -9,4 +9,7 @@
 	<email>base-system@gentoo.org</email>
 	<name>Gentoo Base System</name>
 </maintainer>
+<use>
+	<flag name="usrmerge">Activate the /usr merge when stages are built</flag>
+</use>
 </pkgmetadata>

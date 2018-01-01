@@ -11,7 +11,7 @@ SRC_URI="http://www.olofson.net/kobodl/download/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ppc64 x86"
+KEYWORDS="~alpha ~amd64 ~ppc64 ~x86"
 IUSE="opengl"
 
 DEPEND="media-libs/libsdl

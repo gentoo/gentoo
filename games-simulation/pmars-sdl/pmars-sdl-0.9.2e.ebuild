@@ -14,7 +14,7 @@ SRC_URI="http://corewar.co.uk/pihlaja/pmars-sdl/${MY_P}.tar.gz"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="sdl X"
 
 DEPEND="sdl? ( x11-libs/libX11 media-libs/libsdl[video] )

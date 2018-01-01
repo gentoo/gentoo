@@ -41,12 +41,12 @@ REQUIRED_USE="
 
 COMMON_DEPEND="${PYTHON_DEPS}
 	airplay? (
-		app-pda/libplist
+		>=app-pda/libplist-2.0.0[python,${PYTHON_USEDEP}]
 		net-libs/shairplay
 	)
 	alsa? ( >=media-libs/alsa-lib-1.1.4.1 )
 	bluetooth? ( net-wireless/bluez )
-	bluray? ( >=media-libs/libbluray-1.0.1 )
+	bluray? ( >=media-libs/libbluray-1.0.2 )
 	caps? ( sys-libs/libcap )
 	dbus? ( sys-apps/dbus )
 	dev-db/sqlite
@@ -64,8 +64,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	gles? ( media-libs/mesa[gles2] )
 	lcms? ( media-libs/lcms:2 )
 	libusb? ( virtual/libusb:1 )
-	media-fonts/corefonts
-	>=media-fonts/noto-20160531
+	virtual/ttf-fonts
 	media-fonts/roboto
 	>=media-libs/fontconfig-2.12.4
 	>=media-libs/freetype-2.8
@@ -85,7 +84,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=sys-libs/zlib-1.2.11
 	udev? ( virtual/udev )
 	vaapi? (
-		x11-libs/libva[egl]
+		x11-libs/libva:=
 		opengl? ( x11-libs/libva[opengl] )
 		system-ffmpeg? ( media-video/ffmpeg[vaapi] )
 		vdpau? ( x11-libs/libva[vdpau] )
@@ -98,7 +97,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		system-ffmpeg? ( media-video/ffmpeg[vdpau] )
 	)
 	wayland? (
-		dev-cpp/waylandpp
+		>=dev-cpp/waylandpp-0.1.5
 		media-libs/mesa[wayland]
 		>=dev-libs/wayland-protocols-1.7
 		x11-libs/libxkbcommon
@@ -190,7 +189,7 @@ src_prepare() {
 	# avoid long delays when powerkit isn't running #348580
 	sed -i \
 		-e '/dbus_connection_send_with_reply_and_block/s:-1:3000:' \
-		xbmc/linux/*.cpp || die
+		xbmc/platform/linux/*.cpp || die
 
 	# Prepare tools and libs witch are configured with autotools during compile time
 	AUTOTOOLS_DIRS=(
@@ -299,18 +298,6 @@ src_install() {
 	rm "${ED%/}"/usr/share/doc/*/{LICENSE.GPL,copying.txt}* || die
 
 	newicon media/icon48x48.png kodi.png
-
-	# Replace bundled fonts with system ones.
-	rm "${ED%/}"/usr/share/kodi/addons/skin.estouchy/fonts/NotoSans-Regular.ttf || die
-	dosym ../../../../fonts/noto/NotoSans-Regular.ttf \
-		usr/share/kodi/addons/skin.estouchy/fonts/NotoSans-Regular.ttf
-
-	local f
-	for f in NotoMono-Regular.ttf NotoSans-Bold.ttf NotoSans-Regular.ttf ; do
-		rm "${ED%/}"/usr/share/kodi/addons/skin.estuary/fonts/"${f}" || die
-		dosym ../../../../fonts/noto/"${f}" \
-			usr/share/kodi/addons/skin.estuary/fonts/"${f}"
-	done
 
 	rm "${ED%/}"/usr/share/kodi/addons/skin.estuary/fonts/Roboto-Thin.ttf || die
 	dosym ../../../../fonts/roboto/Roboto-Thin.ttf \

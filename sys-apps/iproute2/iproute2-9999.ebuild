@@ -29,7 +29,7 @@ RDEPEND="!net-misc/arpd
 DEPEND="${RDEPEND}
 	app-arch/xz-utils
 	iptables? ( virtual/pkgconfig )
-	sys-devel/bison
+	>=sys-devel/bison-2.4
 	sys-devel/flex
 	>=sys-kernel/linux-headers-3.7
 	elibc_glibc? ( >=sys-libs/glibc-2.7 )"
@@ -48,7 +48,7 @@ src_prepare() {
 	default
 
 	sed -i \
-		-e '/^CC :=/d' \
+		-e '/^CC :\?=/d' \
 		-e "/^LIBDIR/s:=.*:=/$(get_libdir):" \
 		-e "s:-O2:${CFLAGS} ${CPPFLAGS}:" \
 		-e "/^HOSTCC/s:=.*:= $(tc-getBUILD_CC):" \
@@ -112,8 +112,6 @@ src_install() {
 		MANDIR="${EPREFIX%/}"/usr/share/man \
 		ARPDDIR="${EPREFIX%/}"/var/lib/arpd \
 		install
-
-	rm "${ED%/}"/usr/share/doc/${PF}/*.{sgml,tex} || die #455988
 
 	dodir /bin
 	mv "${ED%/}"/{s,}bin/ip || die #330115

@@ -37,5 +37,5 @@ src_install() {
 	doexe gnulib-tool
 
 	# create and install the wrapper
-	dosym /usr/share/${PN}/gnulib-tool /usr/bin/gnulib-tool
+	dosym ../share/${PN}/gnulib-tool /usr/bin/gnulib-tool
 }

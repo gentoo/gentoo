@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit elisp-common autotools python-single-r1 xdg-utils
 
 if [[ "${PV}" = "9999" ]]; then
-	EGIT_REPO_URI="git://git.sv.gnu.org/lilypond.git"
+	EGIT_REPO_URI="https://git.savannah.gnu.org/git/lilypond.git"
 else
 	SRC_URI="http://download.linuxaudio.org/lilypond/sources/v${PV:0:4}/${P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~x86"
@@ -85,7 +85,7 @@ src_prepare() {
 	done
 
 	# respect AR
-	sed -i "s/^AR=ar/AR=$(tc-getAR)/" stepmake/stepmake/library-vars.make || die
+	sed -i "s:^AR=ar:AR=$(tc-getAR):" stepmake/stepmake/library-vars.make || die
 
 	# remove bundled texinfo file (fixes bug #448560)
 	rm tex/texinfo.tex || die

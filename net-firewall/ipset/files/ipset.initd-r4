@@ -88,8 +88,7 @@ reload() {
 
 save() {
     ebegin "Saving ipset session"
-    touch "${IPSET_SAVE}"
-    chmod 0600 "${IPSET_SAVE}"
+    checkpath --file --mode 0600 "${IPSET_SAVE}"
     ipset save > "${IPSET_SAVE}"
     eend $?
 }

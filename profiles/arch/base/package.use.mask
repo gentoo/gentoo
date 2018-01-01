@@ -1,6 +1,12 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (30 Dec 2017)
+# Moved from use.mask since it is a flag local to one package:
+# Joseph Jezak <josejx@gentoo.org> (11 Mar 2007)
+# Only for x86 and amd64 (in pbbuttonsd)
+app-laptop/pbbuttonsd macbook
+
 # Amy Liffey <amynka@gentoo.org> (19 Sep 2017)
 # Requires [cuda] which is masked in most of the profiles.
 media-libs/opencv contrib_xfeatures2d
@@ -99,10 +105,6 @@ net-im/telepathy-connection-managers steam
 # Mask for all arches, can be unmasked on arm once keyworded there
 games-board/stockfish armv7
 
-# Tim Harder <radhermit@gentoo.org> (10 Oct 2014)
-# Masked since skype isn't stable
-net-im/bitlbee skype
-
 # Mike Frysinger <vapier@gentoo.org> (04 Aug 2014)
 # Mask flashrom drivers that only work on x86 due to in/out asm insns #454024
 sys-apps/flashrom atahpt nic3com nicnatsemi nicrealtek rayer_spi satamv
@@ -140,7 +142,7 @@ app-editors/gvim luajit racket
 # Kacper Kowalik <xarthisius@gentoo.org> (09 Aug 2013)
 # Doesn't work on most profiles. Easier to mask here and
 # unmask in particular profiles
-sys-apps/hwloc gl opencl
+sys-apps/hwloc gl
 
 # Christoph Junghans <junghans@gentoo.org> (26 Dec 2012)
 # mkl only works on x86/amd64
@@ -165,9 +167,7 @@ app-arch/zpaq jit
 # Arun Raghavan <ford_prefect@gentoo.org> (28 Mar 2012)
 # webrtc-audio-processing is only supported on x86/amd64. Possibly arm can be
 # added.
-# Arun Raghavan <ford_prefect@gentoo.org> (24 May 2012)
-# Mask xen USE flag by default, unmask on x86/amd64 where it is supported.
-media-sound/pulseaudio webrtc-aec xen
+media-sound/pulseaudio webrtc-aec
 
 # Christoph Junghans <junghans@gentoo.org> (04 Feb 2012)
 # mips only use flags

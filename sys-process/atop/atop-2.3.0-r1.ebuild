@@ -16,7 +16,7 @@ SRC_URI+=" https://github.com/Atoptool/atop/commit/5f101e656a24271726d1e9cd67263
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~mips ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm hppa ~mips ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND="
@@ -49,13 +49,13 @@ src_prepare() {
 	tc-export CC PKG_CONFIG
 	sed -i 's: root : :' atop.cronsysv || die #191926
 	# prefixify
-	sed -i "s:/\(usr\|etc\|var\):${EPREFIX}/\1:g" Makefile
+	sed -i "s:/\(usr\|etc\|var\):${EPREFIX}/\1:g" Makefile || die
 }
 
 src_install() {
 	emake DESTDIR="${D}" genericinstall
 	# useless -${PV} copies ?
-	rm -f "${ED%/}"/usr/bin/atop*-${PV}
+	rm "${ED%/}"/usr/bin/atop*-${PV} || die
 	newinitd "${FILESDIR}"/${PN}.rc-r2 ${PN}
 	newinitd "${FILESDIR}"/atopacct.rc atopacct
 	systemd_dounit "${FILESDIR}"/${PN}.service

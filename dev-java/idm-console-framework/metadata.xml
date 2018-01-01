@@ -8,13 +8,14 @@
 	</maintainer>
 	<maintainer type="person">
 		<email>wes@sol1.com.au</email>
-			<name>Wes</name>
-		    <description>Proxy maintainer.</description>
-		</maintainer>
-	<maintainer type="project">
-	    <email>proxy-maint@gentoo.org</email>
-	    <name>Proxy Maintainers</name>
+		<name>Wes</name>
+		<description>Proxy maintainer.</description>
 	</maintainer>
-<longdescription>A Java Management Console framework used for remote server
-	management.</longdescription> 
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		A Java Management Console framework used for remote server management.
+	</longdescription>
 </pkgmetadata>

@@ -1,5 +1,7 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=6
 
 DESCRIPTION="display misc information about your hardware"
 HOMEPAGE="http://syscriptor.sourceforge.net/"
@@ -11,8 +13,3 @@ KEYWORDS="~alpha amd64 ppc x86"
 IUSE=""
 
 S=${WORKDIR}/${PN}
-
-src_install () {
-	emake DESTDIR="${D}" install || die
-	dodoc AUTHORS CREDITS ChangeLog HISTORY NEWS README TODO
-}

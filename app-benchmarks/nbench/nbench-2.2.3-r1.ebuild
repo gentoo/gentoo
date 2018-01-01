@@ -1,11 +1,12 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
+EAPI=6
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 MY_P="${PN}-byte-${PV}"
+
 DESCRIPTION="Linux/Unix of release 2 of BYTE Magazine's BYTEmark benchmark"
 HOMEPAGE="http://www.tux.org/~mayer/linux/bmark.html"
 SRC_URI="http://www.tux.org/~mayer/linux/${MY_P}.tar.gz"
@@ -16,9 +17,11 @@ KEYWORDS="alpha amd64 arm hppa ~mips ppc ppc64 sh sparc x86"
 IUSE=""
 
 S=${WORKDIR}/${MY_P}
+PATCHES=( "${FILESDIR}/${P}-Makefile.patch" )
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-Makefile.patch"
+	default
+
 	sed \
 		-e 's:$compiler -v\( 2>&1 | sed -e "/version/!d"\|\):$compiler -dumpversion:' \
 		-i sysinfo.sh || die "patching sysinfo.sh failed"
@@ -26,13 +29,14 @@ src_prepare() {
 		-i nbench1.h || die "patching nbench1.h failed"
 }
 
-src_compile() {
-	emake LINKFLAGS="${LDFLAGS}" CC=$(tc-getCC) CFLAGS="${CFLAGS}" || die "make failed"
+src_configure() {
+	tc-export CC
 }
 
 src_install() {
 	dobin nbench
+	dodoc Changes README* bdoc.txt
+
 	insinto /usr/share/nbench
 	doins NNET.DAT
-	dodoc Changes README* bdoc.txt
 }

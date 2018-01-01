@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-DESCRIPTION="A library creating and utilizing caches to speed up freedesktop.org application menus"
+DESCRIPTION="Library to create and utilize caches to speed up freedesktop application menus"
 HOMEPAGE="http://lxde.sourceforge.net/"
 SRC_URI="mirror://sourceforge/lxde/${P}.tar.gz"
 

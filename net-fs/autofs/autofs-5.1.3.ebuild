@@ -21,7 +21,7 @@ SRC_URI="
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
-IUSE="-dmalloc hesiod ldap libtirpc mount-locking sasl"
+IUSE="-dmalloc hesiod ldap +libtirpc mount-locking sasl"
 
 # USE="sasl" adds SASL support to the LDAP module which will not be build. If
 # SASL support should be available, please add "ldap" to the USE flags.
@@ -39,11 +39,13 @@ RDEPEND=">=sys-apps/util-linux-2.20
 		)
 	)
 	libtirpc? ( net-libs/libtirpc )
-	!libtirpc? ( sys-libs/glibc[rpc(-)] )
+	!libtirpc? ( elibc_glibc? ( sys-libs/glibc[rpc(-)] ) )
 "
 DEPEND="${RDEPEND}
 	sys-devel/flex
-	virtual/yacc"
+	virtual/yacc
+	libtirpc? ( net-libs/rpcsvc-proto )
+"
 
 CONFIG_CHECK="~AUTOFS4_FS"
 

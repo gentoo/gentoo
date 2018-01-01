@@ -1,0 +1,34 @@
+From b00ac12f4045cd39ac9a436cf32d233d16bc3485 Mon Sep 17 00:00:00 2001
+From: Jason Dillaman <dillaman@redhat.com>
+Date: Tue, 5 Dec 2017 09:58:04 -0500
+Subject: [PATCH] ceph-dencoder: moved RBD types outside of RGW preprocessor
+ guard
+
+Fixes: http://tracker.ceph.com/issues/22321
+Signed-off-by: Jason Dillaman <dillaman@redhat.com>
+---
+ src/test/encoding/types.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/test/encoding/types.h b/src/test/encoding/types.h
+index c061e93bd58c..4cfcb15edff1 100644
+--- a/src/test/encoding/types.h
++++ b/src/test/encoding/types.h
+@@ -405,6 +405,8 @@ TYPE(rgw_data_sync_info)
+ TYPE(rgw_data_sync_marker)
+ TYPE(rgw_data_sync_status)
+ 
++#endif
++
+ #ifdef WITH_RBD
+ #include "cls/rbd/cls_rbd.h"
+ TYPE(cls_rbd_parent)
+@@ -416,8 +418,6 @@ TYPE(cls::rbd::MirrorImage)
+ TYPE(cls::rbd::MirrorImageMap)
+ #endif
+ 
+-#endif
+-
+ #include "cls/lock/cls_lock_types.h"
+ TYPE(rados::cls::lock::locker_id_t)
+ TYPE_FEATUREFUL(rados::cls::lock::locker_info_t)

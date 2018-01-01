@@ -7,7 +7,6 @@
   </maintainer>
   <use>
     <flag name="apop">Enables the pop.auth file in /etc/pop.auth</flag>
-    <flag name="drac">Enables DRAC support</flag>
     <flag name="mailbox">Enables mail spool file is in home directory ~/Mailbox</flag>
   </use>
 </pkgmetadata>

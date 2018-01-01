@@ -4,13 +4,13 @@
 EAPI=5
 inherit eutils games
 
-DESCRIPTION="A Sinclair Spectrum emulator, designed to work at full screen using the FrameBuffer"
+DESCRIPTION="Full Screen Sinclair Spectrum emulator"
 HOMEPAGE="https://github.com/rastersoft/fbzx"
 SRC_URI="https://github.com/rastersoft/fbzx/archive/3.0.0.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="media-libs/libsdl[video]

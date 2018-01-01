@@ -1,0 +1,26 @@
+From 75bc40f7a08e11fc115e4986bb45fc314d49632a Mon Sep 17 00:00:00 2001
+From: Thomas Bille <thomas.bille625@gmail.com>
+Date: Mon, 10 Jul 2017 14:33:41 +0200
+Subject: [PATCH] Destroy modal when closed
+
+Signed-off-by: Thomas Bille <contact@tbille.fr>
+---
+ core/js/jquery.ocdialog.js | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/core/js/jquery.ocdialog.js b/core/js/jquery.ocdialog.js
+index 555b35e59ff..f3a54119e78 100644
+--- a/core/js/jquery.ocdialog.js
++++ b/core/js/jquery.ocdialog.js
+@@ -212,8 +212,10 @@
+ 			// Ugly hack to catch remaining keyup events.
+ 			setTimeout(function() {
+ 				self._trigger('close', self);
+-				self.$dialog.hide();
+ 			}, 200);
++
++			self.$dialog.remove();
++			this.destroy();
+ 		},
+ 		destroy: function() {
+ 			if(this.$title) {

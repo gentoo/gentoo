@@ -10,7 +10,7 @@ SRC_URI="http://www.zeograd.com/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 IUSE=""
 
 RDEPEND="x11-libs/gtk+:2

@@ -1,0 +1,213 @@
+https://github.com/ros-planning/geometric_shapes/issues/71
+
+Index: geometric_shapes-0.5.3/src/bodies.cpp
+===================================================================
+--- geometric_shapes-0.5.3.orig/src/bodies.cpp
++++ geometric_shapes-0.5.3/src/bodies.cpp
+@@ -788,7 +788,7 @@ void bodies::ConvexMesh::useDimensions(c
+ 
+   if (exitcode != 0)
+   {
+-    logWarn("Convex hull creation failed");
++    CONSOLE_BRIDGE_logWarn("Convex hull creation failed");
+     qh_freeqhull (!qh_ALL);
+     int curlong, totlong;
+     qh_memfreeshort (&curlong, &totlong);
+@@ -1174,7 +1174,7 @@ void bodies::BodyVector::setPose(unsigne
+ {
+   if (i >= bodies_.size())
+   {
+-    logError("There is no body at index %u", i);
++    CONSOLE_BRIDGE_logError("There is no body at index %u", i);
+     return;
+   }
+ 
+@@ -1185,7 +1185,7 @@ const bodies::Body* bodies::BodyVector::
+ {
+   if (i >= bodies_.size())
+   {
+-    logError("There is no body at index %u", i);
++    CONSOLE_BRIDGE_logError("There is no body at index %u", i);
+     return NULL;
+   }
+   else
+Index: geometric_shapes-0.5.3/src/body_operations.cpp
+===================================================================
+--- geometric_shapes-0.5.3.orig/src/body_operations.cpp
++++ geometric_shapes-0.5.3/src/body_operations.cpp
+@@ -59,7 +59,7 @@ bodies::Body* bodies::createBodyFromShap
+       body = new bodies::ConvexMesh(shape);
+       break;
+     default:
+-      logError("Creating body from shape: Unknown shape type %d", (int)shape->type);
++      CONSOLE_BRIDGE_logError("Creating body from shape: Unknown shape type %d", (int)shape->type);
+       break;
+     }
+ 
+@@ -112,7 +112,7 @@ Body* constructBodyFromMsgHelper(const T
+       Eigen::Quaterniond q(pose.orientation.w, pose.orientation.x, pose.orientation.y, pose.orientation.z);
+       if (fabs(q.squaredNorm() - 1.0) > 1e-3)
+       {
+-        logError("Quaternion is not normalized. Assuming identity.");
++        CONSOLE_BRIDGE_logError("Quaternion is not normalized. Assuming identity.");
+         q = Eigen::Quaterniond(1.0, 0.0, 0.0, 0.0);
+       }
+       Eigen::Affine3d af(Eigen::Translation3d(pose.position.x, pose.position.y, pose.position.z) * q.toRotationMatrix());
+Index: geometric_shapes-0.5.3/src/mesh_operations.cpp
+===================================================================
+--- geometric_shapes-0.5.3.orig/src/mesh_operations.cpp
++++ geometric_shapes-0.5.3/src/mesh_operations.cpp
+@@ -133,7 +133,7 @@ Mesh* createMeshFromVertices(const Eigen
+     return NULL;
+ 
+   if (source.size() % 3 != 0)
+-    logError("The number of vertices to construct a mesh from is not divisible by 3. Probably constructed triangles will not make sense.");
++    CONSOLE_BRIDGE_logError("The number of vertices to construct a mesh from is not divisible by 3. Probably constructed triangles will not make sense.");
+ 
+   std::set<detail::LocalVertexType, detail::ltLocalVertexValue> vertices;
+   std::vector<unsigned int> triangles;
+@@ -220,7 +220,7 @@ Mesh* createMeshFromBinary(const char *b
+ {
+   if (!buffer || size < 1)
+   {
+-    logWarn("Cannot construct mesh from empty binary buffer");
++    CONSOLE_BRIDGE_logWarn("Cannot construct mesh from empty binary buffer");
+     return NULL;
+   }
+ 
+@@ -285,21 +285,21 @@ Mesh* createMeshFromResource(const std::
+   }
+   catch (resource_retriever::Exception& e)
+   {
+-    logError("%s", e.what());
++    CONSOLE_BRIDGE_logError("%s", e.what());
+     return NULL;
+   }
+ 
+   if (res.size == 0)
+   {
+-    logWarn("Retrieved empty mesh for resource '%s'", resource.c_str());
++    CONSOLE_BRIDGE_logWarn("Retrieved empty mesh for resource '%s'", resource.c_str());
+     return NULL;
+   }
+ 
+   Mesh *m = createMeshFromBinary(reinterpret_cast<const char*>(res.data.get()), res.size, scale, resource);
+   if (!m)
+   {
+-    logWarn("Assimp reports no scene in %s.", resource.c_str());
+-    logWarn("This could be because of a resource filename that is too long for the Assimp library, a known bug. As a workaround shorten the filename/path.");
++    CONSOLE_BRIDGE_logWarn("Assimp reports no scene in %s.", resource.c_str());
++    CONSOLE_BRIDGE_logWarn("This could be because of a resource filename that is too long for the Assimp library, a known bug. As a workaround shorten the filename/path.");
+   }
+   return m;
+ }
+@@ -344,7 +344,7 @@ Mesh* createMeshFromAsset(const aiScene*
+ {
+   if (!scene->HasMeshes())
+   {
+-    logWarn("Assimp reports scene in %s has no meshes", resource_name.c_str());
++    CONSOLE_BRIDGE_logWarn("Assimp reports scene in %s has no meshes", resource_name.c_str());
+     return NULL;
+   }
+   EigenSTL::vector_Vector3d vertices;
+@@ -352,12 +352,12 @@ Mesh* createMeshFromAsset(const aiScene*
+   extractMeshData(scene, scene->mRootNode, aiMatrix4x4(), scale, vertices, triangles);
+   if (vertices.empty())
+   {
+-    logWarn("There are no vertices in the scene %s", resource_name.c_str());
++    CONSOLE_BRIDGE_logWarn("There are no vertices in the scene %s", resource_name.c_str());
+     return NULL;
+   }
+   if (triangles.empty())
+   {
+-    logWarn("There are no triangles in the scene %s", resource_name.c_str());
++    CONSOLE_BRIDGE_logWarn("There are no triangles in the scene %s", resource_name.c_str());
+     return NULL;
+   }
+ 
+@@ -378,7 +378,7 @@ Mesh* createMeshFromShape(const Shape *s
+         if (shape->type == shapes::CONE)
+           return shapes::createMeshFromShape(static_cast<const shapes::Cone&>(*shape));
+         else
+-          logError("Conversion of shape of type '%s' to a mesh is not known", shapeStringName(shape).c_str());
++          CONSOLE_BRIDGE_logError("Conversion of shape of type '%s' to a mesh is not known", shapeStringName(shape).c_str());
+   return NULL;
+ }
+ 
+Index: geometric_shapes-0.5.3/src/shape_operations.cpp
+===================================================================
+--- geometric_shapes-0.5.3.orig/src/shape_operations.cpp
++++ geometric_shapes-0.5.3/src/shape_operations.cpp
+@@ -62,7 +62,7 @@ Shape* constructShapeFromMsg(const shape
+ {
+   if (shape_msg.triangles.empty() || shape_msg.vertices.empty())
+   {
+-    logWarn("Mesh definition is empty");
++    CONSOLE_BRIDGE_logWarn("Mesh definition is empty");
+     return NULL;
+   }
+   else
+@@ -117,7 +117,7 @@ Shape* constructShapeFromMsg(const shape
+                              shape_msg.dimensions[shape_msgs::SolidPrimitive::CONE_HEIGHT]);
+         }
+   if (shape == NULL)
+-    logError("Unable to construct shape corresponding to shape_msg of type %d", (int)shape_msg.type);
++    CONSOLE_BRIDGE_logError("Unable to construct shape corresponding to shape_msg of type %d", (int)shape_msg.type);
+ 
+   return shape;
+ }
+@@ -202,7 +202,7 @@ bool constructMarkerFromShape(const Shap
+     }
+     catch (std::runtime_error &ex)
+     {
+-      logError("%s", ex.what());
++      CONSOLE_BRIDGE_logError("%s", ex.what());
+     }
+     if (ok)
+       return true;
+@@ -451,7 +451,7 @@ bool constructMsgFromShape(const Shape*
+             }
+             else
+             {
+-              logError("Unable to construct shape message for shape of type %d", (int)shape->type);
++              CONSOLE_BRIDGE_logError("Unable to construct shape message for shape of type %d", (int)shape->type);
+               return false;
+             }
+ 
+@@ -512,7 +512,7 @@ void saveAsText(const Shape *shape, std:
+             }
+             else
+             {
+-              logError("Unable to save shape of type %d", (int)shape->type);
++              CONSOLE_BRIDGE_logError("Unable to save shape of type %d", (int)shape->type);
+             }
+ }
+ 
+@@ -580,7 +580,7 @@ Shape* constructShapeFromText(std::istre
+                   m->computeVertexNormals();
+                 }
+                 else
+-                  logError("Unknown shape type: '%s'", type.c_str());
++                  CONSOLE_BRIDGE_logError("Unknown shape type: '%s'", type.c_str());
+     }
+   }
+   return result;
+Index: geometric_shapes-0.5.3/src/shapes.cpp
+===================================================================
+--- geometric_shapes-0.5.3.orig/src/shapes.cpp
++++ geometric_shapes-0.5.3/src/shapes.cpp
+@@ -224,12 +224,12 @@ shapes::Shape* shapes::OcTree::clone() c
+ 
+ void shapes::OcTree::scaleAndPadd(double scale, double padd)
+ {
+-  logWarn("OcTrees cannot be scaled or padded");
++  CONSOLE_BRIDGE_logWarn("OcTrees cannot be scaled or padded");
+ }
+ 
+ void shapes::Plane::scaleAndPadd(double scale, double padding)
+ {
+-  logWarn("Planes cannot be scaled or padded");
++  CONSOLE_BRIDGE_logWarn("Planes cannot be scaled or padded");
+ }
+ 
+ void shapes::Shape::scale(double scale)

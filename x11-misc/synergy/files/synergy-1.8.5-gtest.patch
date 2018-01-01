@@ -1,5 +1,5 @@
---- a/src/lib/synergy/KeyMap.h	2016-11-09 13:21:52.000000000 -0600
-+++ b/src/lib/synergy/KeyMap.h	2016-11-09 13:22:17.484457330 -0600
+--- a/src/lib/synergy/KeyMap.h
++++ b/src/lib/synergy/KeyMap.h
 @@ -24,7 +24,9 @@
  #include "common/stdset.h"
  #include "common/stdvector.h"
@@ -26,8 +26,8 @@
  
  private:
  	//! Ways to synthesize a key
---- a/src/CMakeLists.txt	2016-11-09 13:31:26.000000000 -0600
-+++ b/src/CMakeLists.txt	2016-11-09 13:40:08.189421727 -0600
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
 @@ -50,6 +50,6 @@
  add_subdirectory(cmd)
  add_subdirectory(micro)

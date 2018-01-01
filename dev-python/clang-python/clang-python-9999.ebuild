@@ -16,6 +16,7 @@ LICENSE="UoI-NCSA"
 SLOT="0"
 KEYWORDS=""
 IUSE="test"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # The module is opening libclang.so directly, and doing some blasphemy
@@ -25,13 +26,17 @@ RDEPEND="
 	!sys-devel/llvm:0[clang(-),python(-)]
 	!sys-devel/clang:0[python(-)]
 	${PYTHON_DEPS}"
-DEPEND="${RDEPEND}
-	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
+DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${P}/bindings/python
 
+src_unpack() {
+	git-r3_fetch
+	git-r3_checkout '' '' '' bindings/python
+}
+
 src_test() {
-	python_foreach_impl nosetests -v || die
+	python_foreach_impl python -m unittest discover -v || die
 }
 
 src_install() {

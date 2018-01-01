@@ -25,6 +25,7 @@ DEPEND="${RDEPEND}
 		app-doc/doxygen
 		dev-python/sphinx
 	)
+	valgrind? ( dev-util/valgrind )
 "
 
 PATCHES=( "${FILESDIR}/${PN}-1.2.3-buildsystem.patch" )

@@ -1,33 +1,31 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=6
+
+DESCRIPTION="A (semi-)random e-mail signature rotator"
+HOMEPAGE="http://signify.sf.net/"
+SRC_URI="mirror://debian/pool/main/s/${PN}/${PN}_${PV}-1.tar.gz"
+
+LICENSE="public-domain"
+SLOT="0"
+KEYWORDS="ppc sparc x86 ~amd64"
+
+RDEPEND="dev-lang/perl"
+DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${PN}
 
-DESCRIPTION="A (semi-)random e-mail signature rotator"
-SRC_URI="mirror://debian/pool/main/s/${PN}/${PN}_${PV}-1.tar.gz"
-HOMEPAGE="http://signify.sf.net/"
-
-RDEPEND="dev-lang/perl"
-DEPEND="${RDEPEND}
-	>=sys-apps/sed-4"
-
-SLOT="0"
-LICENSE="public-domain"
-KEYWORDS="ppc sparc x86 ~amd64"
-IUSE=""
-
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-	sed -i 's/head -1/head -n1/' Makefile
-}
-src_compile() {
-	echo "Perl script!  Woohoo!  No need to compile!"
+src_prepare() {
+	default
+	sed -i 's/head -1/head -n1/' Makefile || die
 }
 
 src_install() {
-	make PREFIX=${D}/usr/ MANDIR=${D}/usr/share/man install || die
-	dodoc COPYING README
+	emake PREFIX="${ED%/}"/usr MANDIR="${ED%/}"/usr/share/man install
+	einstalldocs
+
 	docinto examples
 	dodoc examples/{Columned,Complex,Simple,SimpleOrColumned}
+	docompress -x /usr/share/doc/${PF}/examples
 }

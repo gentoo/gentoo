@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ruby-utils.eclass
@@ -19,6 +19,7 @@ if [[ ! ${_RUBY_UTILS} ]]; then
 
 
 # @ECLASS-VARIABLE: RUBY_TARGETS_PREFERENCE
+# @INTERNAL
 # @DESCRIPTION:
 # This variable lists all the known ruby targets in preference of use as
 # determined by the ruby team. By using this ordering rather than the
@@ -27,10 +28,10 @@ if [[ ! ${_RUBY_UTILS} ]]; then
 # provide for a better first installation experience.
 
 # All RUBY_TARGETS
-RUBY_TARGETS_PREFERENCE="ruby22 ruby21 "
+RUBY_TARGETS_PREFERENCE="ruby22 "
 
 # All other active ruby targets
-RUBY_TARGETS_PREFERENCE+="ruby23 ruby24"
+RUBY_TARGETS_PREFERENCE+="ruby23 ruby24 ruby25"
 
 
 _ruby_implementation_depend() {
@@ -65,6 +66,10 @@ _ruby_implementation_depend() {
 		ruby24)
 			rubypn="dev-lang/ruby"
 			rubyslot=":2.4"
+			;;
+		ruby25)
+			rubypn="dev-lang/ruby"
+			rubyslot=":2.5"
 			;;
 		ree18)
 			rubypn="dev-lang/ruby-enterprise"

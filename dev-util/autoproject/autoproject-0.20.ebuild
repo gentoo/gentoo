@@ -4,7 +4,7 @@
 inherit eutils
 
 DEB_VER=3
-DESCRIPTION="Used to start a programming project using autotools and a command line parser generator"
+DESCRIPTION="Start a programming project using autotools and a command line parser generator"
 HOMEPAGE="http://packages.debian.org/unstable/devel/autoproject"
 SRC_URI="mirror://debian/pool/main/a/autoproject/${PN}_${PV}.orig.tar.gz
 	mirror://debian/pool/main/a/autoproject/${PN}_${PV}-${DEB_VER}.diff.gz"

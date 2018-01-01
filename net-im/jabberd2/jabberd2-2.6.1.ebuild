@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools db-use eutils flag-o-matic pam
+inherit autotools db-use eutils flag-o-matic pam systemd
 
 DESCRIPTION="Open Source Jabber Server"
 HOMEPAGE="http://jabberd2.org"
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/jabberd2/jabberd2/releases/download/jabberd-${PV}/ja
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ~ppc ~sparc ~x86 ~x86-fbsd"
 IUSE="berkdb debug experimental ldap libressl memdebug mysql pam postgres sqlite ssl test websocket zlib"
 REQUIRED_USE="memdebug? ( debug )"
 
@@ -136,7 +136,9 @@ src_configure() {
 src_install() {
 	local i
 
-	default
+	# Fix systemd unit files installation path, bug #626026
+	emake systemddir="$(systemd_get_systemunitdir)" DESTDIR="${D}" install
+	einstalldocs
 	prune_libtool_files --modules
 
 	keepdir /var/spool/jabber/{fs,db}

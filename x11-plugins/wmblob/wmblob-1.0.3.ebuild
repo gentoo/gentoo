@@ -1,12 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit autotools multilib
 
 DESCRIPTION="a fancy but useless dockapp with moving blobs"
-HOMEPAGE="http://freshmeat.net/projects/wmblob"
-SRC_URI="mirror://debian/pool/main/w/${PN}/${PN}_${PV}.orig.tar.gz"
+HOMEPAGE="https://github.com/bbidulock/wmblob"
+SRC_URI="https://github.com/bbidulock/wmblob/releases/download/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

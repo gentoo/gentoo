@@ -1,0 +1,70 @@
+ ParMGridGen/ParLib/move.c          | 1 +
+ ParMGridGen/ParLib/parmgridgen.c   | 1 +
+ ParMGridGen/ParLib/util.c          | 2 +-
+ ParMGridGen/Programs/io.c          | 2 +-
+ ParMGridGen/Programs/parmgridgen.c | 2 +-
+ 5 files changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/ParMGridGen/ParLib/move.c b/ParMGridGen/ParLib/move.c
+index 881b1ad..b02b467 100644
+--- a/ParMGridGen/ParLib/move.c
++++ b/ParMGridGen/ParLib/move.c
+@@ -9,6 +9,7 @@
+  */
+ 
+ #include "parmgridgen.h"
++#include "IMlib.h"
+ 
+ /*************************************************************************
+ * This function moves the graph, and returns a new graph.
+diff --git a/ParMGridGen/ParLib/parmgridgen.c b/ParMGridGen/ParLib/parmgridgen.c
+index 6fd4aa3..262e05c 100644
+--- a/ParMGridGen/ParLib/parmgridgen.c
++++ b/ParMGridGen/ParLib/parmgridgen.c
+@@ -9,6 +9,7 @@
+  */
+ 
+ #include "parmgridgen.h"
++#include "IMlib.h"
+ 
+ /***********************************************************************************
+ * This function is the entry point of the parallel coarse grid construction.
+diff --git a/ParMGridGen/ParLib/util.c b/ParMGridGen/ParLib/util.c
+index 9b8290d..fa2e10a 100644
+--- a/ParMGridGen/ParLib/util.c
++++ b/ParMGridGen/ParLib/util.c
+@@ -9,7 +9,7 @@
+  */
+ 
+ #include "parmgridgen.h"
+-
++#include "IMlib.h"
+ 
+ /*************************************************************************
+ * This function prints an error message and exits
+diff --git a/ParMGridGen/Programs/io.c b/ParMGridGen/Programs/io.c
+index 318c8b4..ed5d495 100644
+--- a/ParMGridGen/Programs/io.c
++++ b/ParMGridGen/Programs/io.c
+@@ -9,7 +9,7 @@
+  */
+ 
+ #include "parmgridgen.h"
+-
++#include "IMlib.h"
+ 
+ /*************************************************************************
+ * This function reads the CSR matrix
+diff --git a/ParMGridGen/Programs/parmgridgen.c b/ParMGridGen/Programs/parmgridgen.c
+index 2c0d38c..e9956c5 100644
+--- a/ParMGridGen/Programs/parmgridgen.c
++++ b/ParMGridGen/Programs/parmgridgen.c
+@@ -9,7 +9,7 @@
+  */
+ 
+ #include "parmgridgen.h"
+-
++#include "IMlib.h"
+ 
+ /***********************************************************************************
+ * This function is the testing routine for the adaptive multilevel partitioning code.

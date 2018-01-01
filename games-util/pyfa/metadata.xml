@@ -2,8 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>tetromino@gentoo.org</email>
-    <name>Alexandre Rostovtsev</name>
+    <email>a.zuber@gmx.ch</email>
+    <name>Andreas Zuber</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
   </maintainer>
   <longdescription lang="en">
 Pyfa is the Python Fitting Assistant, a standalone application for creating

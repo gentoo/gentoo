@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -130,9 +130,9 @@ src_install() {
 
 	# Most of these now come from openrc.
 	for util in iscsid nfs nfsuserd rpc.statd rpc.lockd; do
-		newinitd "${FILESDIR}/"${util}.initd ${util} || die
+		newinitd "${FILESDIR}/"${util}.initd ${util}
 		if [[ -e "${FILESDIR}"/${util}.confd ]]; then \
-			newconfd "${FILESDIR}"/${util}.confd ${util} || die
+			newconfd "${FILESDIR}"/${util}.confd ${util}
 		fi
 	done
 
@@ -147,17 +147,17 @@ EOS
 
 	# Install the pw.conf file to let pw use Gentoo's skel location
 	insinto /etc
-	doins "${FILESDIR}/pw.conf" || die
+	doins "${FILESDIR}/pw.conf"
 
 	cd "${WORKDIR}/etc" || die
-	doins apmd.conf syslog.conf newsyslog.conf nscd.conf || die
+	doins apmd.conf syslog.conf newsyslog.conf nscd.conf
 
 	insinto /etc/ppp
-	doins ppp/ppp.conf || die
+	doins ppp/ppp.conf
 
 	if use bluetooth; then
 		insinto /etc/bluetooth
-		doins bluetooth/* || die
+		doins bluetooth/*
 		rm -f "${D}"/etc/bluetooth/Makefile
 	fi
 

@@ -11,7 +11,7 @@ inherit distutils-r1 versionator
 
 MY_PV="$(replace_version_separator 2 '-')"
 
-DESCRIPTION="Whitelist & Reports generation for Naxsi (Web Application Firewall module for Nginx)"
+DESCRIPTION="Whitelist & Reports generation for Naxsi (Web App Firewall module for Nginx)"
 HOMEPAGE="https://github.com/nbs-system/naxsi"
 # keep the name in sync with what's in the nginx ebuild to avoid duplication
 SRC_URI="https://github.com/nbs-system/naxsi/archive/${MY_PV}.tar.gz -> ngx_http_naxsi-${MY_PV}.tar.gz"

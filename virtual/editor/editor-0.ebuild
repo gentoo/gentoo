@@ -26,6 +26,7 @@ RDEPEND="|| ( app-editors/nano
 	app-editors/jed
 	app-editors/joe
 	app-editors/jove
+	app-editors/kakoune
 	app-editors/le
 	app-editors/levee
 	app-editors/lpe

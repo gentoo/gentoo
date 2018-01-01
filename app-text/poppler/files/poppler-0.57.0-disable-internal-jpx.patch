@@ -1,0 +1,25 @@
+Fix security issue [internal unmaintained JPX decoder] that is caused
+by building without system-jpeg libs. Fedora does not care because they
+always build with system-jpeg, however in Gentoo we allow the user to
+disable both options and poppler's buildsystem is making us believe
+there would be no JPX decoder built in that case, when in reality
+JPXStream.cc is built (even if it may not be used by the code).
+
+
+--- a/CMakeLists.txt	2017-11-24 23:12:41.953450442 +0100
++++ b/CMakeLists.txt	2017-11-24 23:16:09.441030669 +0100
+@@ -506,9 +508,11 @@
+   add_definitions(-DUSE_OPENJPEG2)
+   set(poppler_LIBS ${poppler_LIBS} ${LIBOPENJPEG2_LIBRARIES})
+ else ()
+-  set(poppler_SRCS ${poppler_SRCS}
+-    poppler/JPXStream.cc
+-  )
++  if(NOT WITH_OPENJPEG AND HAVE_JPX_DECODER)
++    set(poppler_SRCS ${poppler_SRCS}
++      poppler/JPXStream.cc
++    )
++  endif()
+ endif()
+ if(USE_CMS)
+   if(LCMS_FOUND)

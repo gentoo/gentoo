@@ -8,7 +8,7 @@ inherit autotools
 MY_PN=${PN/-/_}
 MY_P=${MY_PN}-${PV}
 
-DESCRIPTION="PAM module for executing scripts during authorization, password changes, and sessions"
+DESCRIPTION="PAM module for running scripts during authorization, password change and session"
 HOMEPAGE="https://github.com/jeroennijhof/pam_script/"
 SRC_URI="https://github.com/jeroennijhof/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 

@@ -15,7 +15,7 @@ S="${WORKDIR}"/${MY_P}
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="amd64 ~arm"
 IUSE="pam"
 
 RDEPEND="pam? ( virtual/pam )"

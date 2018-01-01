@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ruby-single.eclass
@@ -46,6 +46,7 @@ inherit ruby-utils
 
 
 # @ECLASS-VARIABLE: RUBY_DEPS
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 #
 # This is an eclass-generated Ruby dependency string for all

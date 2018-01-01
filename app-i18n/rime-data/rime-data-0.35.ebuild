@@ -12,7 +12,7 @@ SRC_URI="https://dl.bintray.com/lotem/rime/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ppc64 x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE=""
 
 DEPEND="app-i18n/librime"

@@ -119,10 +119,6 @@ media-libs/libbluray -bdplus
 # pidgin-opensteamworks is only available for amd64, ppc32 and x86
 net-im/telepathy-connection-managers -steam
 
-# Tim Harder <radhermit@gentoo.org> (11 Oct 2014)
-# Unmask skype support for unstable keywords
-net-im/bitlbee -skype
-
 # Mike Frysinger <vapier@gentoo.org> (04 Aug 2014)
 # Unmask flashrom drivers that only work on x86 due to in/out asm insns #454024
 sys-apps/flashrom -atahpt -nic3com -nicnatsemi -nicrealtek -rayer_spi -satamv
@@ -175,10 +171,6 @@ dev-python/pypy-bin cpu_flags_x86_sse2
 dev-python/pypy3 cpu_flags_x86_sse2
 dev-python/pypy3-bin cpu_flags_x86_sse2
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (30 Dec 2012)
-# chromium, mono work on this arch (masked in base)
-gnome-extra/zeitgeist-datasources -chromium
-
 # Christoph Junghans <junghans@gentoo.org> (26 Dec 2012)
 # cuda works on x86/amd64 (masked in base)
 sci-chemistry/gromacs -mkl
@@ -207,9 +199,7 @@ app-arch/zpaq -jit
 # Arun Raghavan <ford_prefect@gentoo.org> (29 Mar 2012)
 # webrtc-audio-processing is only supported on x86/amd64. Possibly arm can be
 # added.
-# Arun Raghavan <ford_prefect@gentoo.org> (24 May 2012)
-# Mask xen USE flag by default, unmask on x86/amd64 where it is supported.
-media-sound/pulseaudio -webrtc-aec -xen
+media-sound/pulseaudio -webrtc-aec
 
 # Bernard Cafarelli <voyageur@gentoo.org> (27 Feb 2012)
 # Masked in base profile, supported on this arch
@@ -233,16 +223,12 @@ dev-qt/qtwebkit -jit
 >=net-misc/ntp-4.2.6_p3-r1 -parse-clocks
 
 # Alexey Shvetsov <alexxy@gentoo.org> (1 Jul 2011)
-# Use mask infiniband for stable corosync and glusterfs
-=sys-cluster/glusterfs-3.1.2 infiniband
+# Use mask infiniband for stable corosync
 =sys-cluster/corosync-1.3.0 infiniband
 
 # Tim Harder <radhermit@gentoo.org> (13 Feb 2011)
 # Masked in base, unmask for amd64/x86
 >=media-video/mplayer-1.0_rc4_p20101219 -bluray
-
-# doomsday doesn't work on amd64 so mask off things that pull it in.
-games-fps/doom-data doomsday
 
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (28 Nov 2010)
 # sys-devel/llvm is keyworded on amd64
@@ -278,10 +264,6 @@ media-video/mplayer -cpudetection
 app-text/enchant -zemberek
 
 # assembler-section
-
-# Oct 23th 2006; blubb@gentoo.org
-# the asm is 64bit save, but it doesn't compile anyway
-games-emulation/visualboyadvance cpu_flags_x86_mmx
 
 # Oct 23th 2006; blubb@gentoo.org
 # upstream forces sse2 for amd64; mmx flag does nothing

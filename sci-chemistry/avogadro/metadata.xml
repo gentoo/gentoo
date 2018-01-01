@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>sci-chemistry@gentoo.org</email>
-    <name>Gentoo Chemistry Project</name>
-  </maintainer>
-  <longdescription>
-    Avogadro is an advanced molecular editor designed for cross-platform use in
-	computational chemistry, molecular modeling, bioinformatics, materials
-	science, and related areas. It offers flexible rendering and a powerful
-	plugin architecture.
-  </longdescription>
-  <use>
-    <flag name="glsl">Enable glsl features via GLEW.</flag>
-  </use>
-  <upstream>
-    <remote-id type="sourceforge">avogadro</remote-id>
-  </upstream>
+	<maintainer type="project">
+		<email>sci-chemistry@gentoo.org</email>
+		<name>Gentoo Chemistry Project</name>
+	</maintainer>
+	<longdescription>
+		Avogadro is an advanced molecular editor designed for cross-platform use in
+		computational chemistry, molecular modeling, bioinformatics, materials
+		science, and related areas. It offers flexible rendering and a powerful
+		plugin architecture.
+	</longdescription>
+	<use>
+		<flag name="glsl">Enable glsl features via GLEW.</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">avogadro</remote-id>
+	</upstream>
 </pkgmetadata>

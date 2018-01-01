@@ -4,7 +4,7 @@
 EAPI=6
 inherit eutils toolchain-funcs
 
-DESCRIPTION="This program will let your UNIX user experience the authentic Microsoft Windows experience"
+DESCRIPTION="This program will let you experience the authentic Microsoft Windows experience"
 HOMEPAGE="http://www.vanheusden.com/bsod/"
 SRC_URI="http://www.vanheusden.com/${PN}/${P}.tgz"
 

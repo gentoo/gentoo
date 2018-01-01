@@ -1,0 +1,14 @@
+Sadly the CMake side of openjpeg slotting in Gentoo is broken.
+To reliably find openjpeg:2 we need to use pkg-config.
+
+--- poppler-0.62.0/CMakeLists.txt
++++ poppler-0.62.0/CMakeLists.txt
+@@ -193,7 +193,7 @@
+ endif()
+ set(WITH_OPENJPEG FALSE)
+ if(ENABLE_LIBOPENJPEG STREQUAL "openjpeg2")
+-  find_package(LIBOPENJPEG2)
++  pkg_check_modules(LIBOPENJPEG2 libopenjp2)
+   set(WITH_OPENJPEG ${LIBOPENJPEG2_FOUND})
+   if(NOT LIBOPENJPEG2_FOUND)
+     message(FATAL_ERROR "Install libopenjpeg2 before trying to build poppler. You can also decide to use the internal unmaintained JPX decoder or none at all.")

@@ -1,9 +1,9 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
-inherit git-2
+inherit git-r3
 
 DESCRIPTION="Rules for Sagan log analyzer"
 HOMEPAGE="http://sagan.softwink.com/"
@@ -18,13 +18,11 @@ DEPEND=""
 RDEPEND="${DEPEND}"
 PDEPEND="app-admin/sagan"
 
-S="${WORKDIR}"/rules
-
 src_install() {
 	insinto /etc/sagan-rules
-	doins ./*.config
-	doins ./*rules
+	doins *.config
+	doins *rules
 	if use lognorm; then
-		doins ./*normalize.rulebase
+		doins *normalization.rulebase
 	fi
 }

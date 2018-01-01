@@ -1,0 +1,10 @@
+[Unit]
+Description=Dire Wolf
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/direwolf -l /var/log/direwolf -p
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

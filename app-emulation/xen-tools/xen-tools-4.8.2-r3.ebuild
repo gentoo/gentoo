@@ -179,10 +179,7 @@ src_prepare() {
 	# Upstream's patchset
 	if [[ -n ${UPSTREAM_VER} ]]; then
 		einfo "Try to apply Xen Upstream patch set"
-		EPATCH_SUFFIX="patch" \
-		EPATCH_FORCE="yes" \
-		EPATCH_OPTS="-p1" \
-			epatch "${WORKDIR}"/patches-upstream
+		eapply "${WORKDIR}"/patches-upstream
 	fi
 
 	# Security patchset
@@ -197,20 +194,20 @@ src_prepare() {
 		source "${WORKDIR}"/patches-security/${PV}.conf || die
 
 		for i in ${XEN_SECURITY_MAIN}; do
-			epatch "${WORKDIR}"/patches-security/xen/$i
+			eapply "${WORKDIR}"/patches-security/xen/$i
 		done
 
 		# apply qemu-xen/upstream patches
 		pushd "${S}"/tools/qemu-xen/ > /dev/null
 		for i in ${XEN_SECURITY_QEMUU}; do
-			epatch "${WORKDIR}"/patches-security/qemuu/$i
+			eapply "${WORKDIR}"/patches-security/qemuu/$i
 		done
 		popd > /dev/null
 
 		# apply qemu-traditional patches
 		pushd "${S}"/tools/qemu-xen-traditional/ > /dev/null
 		for i in ${XEN_SECURITY_QEMUT}; do
-			epatch "${WORKDIR}"/patches-security/qemut/$i
+			eapply "${WORKDIR}"/patches-security/qemut/$i
 		done
 		popd > /dev/null
 	fi
@@ -227,9 +224,7 @@ src_prepare() {
 		source "${FILESDIR}"/gentoo-patches.conf || die
 		_gpv=_gpv_${PN/-/_}_${PV//./}_${GENTOO_GPV}
 		for i in ${!_gpv}; do
-			EPATCH_SUFFIX="patch" \
-			EPATCH_FORCE="yes" \
-				epatch "${WORKDIR}"/patches-gentoo/$i
+			eapply "${WORKDIR}"/patches-gentoo/$i
 		done
 	fi
 
@@ -238,10 +233,7 @@ src_prepare() {
 		if [[ -n ${OVMF_VER} ]];then
 			einfo "Try to apply Ovmf patch set"
 			pushd "${WORKDIR}"/ovmf-*/ > /dev/null
-			EPATCH_SUFFIX="patch" \
-			EPATCH_FORCE="yes" \
-			EPATCH_OPTS="-p1" \
-				epatch "${WORKDIR}"/patches-ovmf
+			eapply "${WORKDIR}"/patches-ovmf
 			popd > /dev/null
 		fi
 		mv ../ovmf-${OVMF_PV} tools/firmware/ovmf-dir-remote || die

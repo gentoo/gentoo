@@ -13,11 +13,12 @@ inherit check-reqs cmake-utils flag-o-matic llvm python-any-r1
 DESCRIPTION="Compiler runtime libraries for clang (sanitizers & xray)"
 HOMEPAGE="https://llvm.org/"
 SRC_URI="https://releases.llvm.org/${PV/_//}/compiler-rt-${PV/_/}.src.tar.xz
+	https://dev.gentoo.org/~mgorny/dist/llvm/${P}-patchset.tar.xz
 	test? ( https://releases.llvm.org/${PV/_//}/llvm-${PV/_/}.src.tar.xz )"
 
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="${PV%_*}"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="test"
 
 LLVM_SLOT=${SLOT%%.*}
@@ -60,6 +61,11 @@ src_unpack() {
 	if use test; then
 		mv llvm-* llvm || die
 	fi
+}
+
+src_prepare() {
+	eapply "${WORKDIR}/${P}-patchset"
+	cmake-utils_src_prepare
 }
 
 src_configure() {

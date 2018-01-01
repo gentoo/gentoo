@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/lincity-ng.berlios/${P}.tar.bz2"
 
 LICENSE="GPL-2 BitstreamVera"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 RESTRICT=mirror
 

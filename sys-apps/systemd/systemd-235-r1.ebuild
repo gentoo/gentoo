@@ -25,6 +25,7 @@ IUSE="acl apparmor audit build cryptsetup curl elfutils +gcrypt gnuefi http
 	qrcode +seccomp selinux ssl sysv-utils test vanilla xkb"
 
 REQUIRED_USE="importd? ( curl gcrypt lzma )"
+RESTRICT="!test? ( test )"
 
 MINKV="3.11"
 
@@ -58,9 +59,8 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.30:0=[${MULTILIB_USEDEP}]
 	qrcode? ( media-gfx/qrencode:0= )
 	seccomp? ( >=sys-libs/libseccomp-2.3.1:0= )
 	selinux? ( sys-libs/libselinux:0= )
-	sysv-utils? (
-		!sys-apps/systemd-sysv-utils
-		!sys-apps/sysvinit )
+	sysv-utils? ( !sys-apps/sysvinit )
+	!sysv-utils? ( sys-apps/sysvinit )
 	xkb? ( >=x11-libs/libxkbcommon-0.4.1:0= )
 	abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20130224-r9
 		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] )"
@@ -117,6 +117,7 @@ pkg_pretend() {
 		use seccomp && CONFIG_CHECK+=" ~SECCOMP ~SECCOMP_FILTER"
 		kernel_is -lt 3 7 && CONFIG_CHECK+=" ~HOTPLUG"
 		kernel_is -lt 4 7 && CONFIG_CHECK+=" ~DEVPTS_MULTIPLE_INSTANCES"
+		kernel_is -ge 4 10 && CONFIG_CHECK+=" ~CGROUP_BPF"
 
 		if linux_config_exists; then
 			local uevent_helper_path=$(linux_chkconfig_string UEVENT_HELPER_PATH)
@@ -155,11 +156,11 @@ src_prepare() {
 
 	if ! use vanilla; then
 		PATCHES+=(
-			"${FILESDIR}/218-Dont-enable-audit-by-default.patch"
-			"${FILESDIR}/228-noclean-tmp.patch"
-			"${FILESDIR}/233-systemd-user-pam.patch"
-			"${FILESDIR}/234-uucp-group.patch"
-			"${FILESDIR}/generator-path.patch"
+			"${FILESDIR}/gentoo-Dont-enable-audit-by-default.patch"
+			"${FILESDIR}/gentoo-noclean-tmp.patch"
+			"${FILESDIR}/gentoo-systemd-user-pam.patch"
+			"${FILESDIR}/gentoo-uucp-group-r0.patch"
+			"${FILESDIR}/gentoo-generator-path.patch"
 		)
 	fi
 

@@ -1,13 +1,10 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type='person'>
-	<email>vapier@gentoo.org</email>
-</maintainer>
-<maintainer type='person'>
+<maintainer type="person">
 	<email>tomboy64@sina.cn</email>
 </maintainer>
-<maintainer type='project'>
+<maintainer type="project">
 	<email>proxy-maint@gentoo.org</email>
 	<name>Proxy Maintainers</name>
 </maintainer>
@@ -19,6 +16,6 @@
 	<flag name="python">Builds the Python implementation. This is not needed for Python support in protoc.</flag>
 </use>
 <upstream>
-	<remote-id type='github'>google/protobuf</remote-id>
+	<remote-id type="github">google/protobuf</remote-id>
 </upstream>
 </pkgmetadata>

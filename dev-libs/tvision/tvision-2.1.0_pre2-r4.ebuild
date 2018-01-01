@@ -28,6 +28,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-flags.patch"
 	"${FILESDIR}/${P}-gcc6.patch" # bug #594176
 	"${FILESDIR}/${P}-build-system.patch" # for EAPI=6
+	"${FILESDIR}/${P}-perl-INC.patch" # dot-in-INC
 )
 
 src_prepare() {

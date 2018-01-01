@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools user prefix
+inherit autotools user
 
 DESCRIPTION="An authentication service for creating and validating credentials"
 HOMEPAGE="https://github.com/dun/munge"

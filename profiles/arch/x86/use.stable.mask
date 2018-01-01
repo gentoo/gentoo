@@ -4,11 +4,6 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
-# Mike Gilbert <floppym@gentoo.org> (28 Oct 2017)
-# Mask python targets until dev-lang/python is stable.
-python_single_target_python3_6
-python_targets_python3_6
-
 # Michael Palimaka <kensington@gentoo.org> (03 Jun 2017)
 # Not yet stable.
 elogind

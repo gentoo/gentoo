@@ -16,7 +16,7 @@ SRC_URI="https://github.com/dxx-rebirth/dxx-rebirth/archive/0.58.1-d2x.tar.gz ->
 
 LICENSE="D1X GPL-2 public-domain"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="cdinstall debug demo ipv6 l10n_de +music opengl opl3-musicpack sc55-musicpack"
 REQUIRED_USE="?? ( opl3-musicpack sc55-musicpack )
 	opl3-musicpack? ( music )

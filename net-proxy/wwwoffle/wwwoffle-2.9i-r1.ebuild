@@ -1,12 +1,12 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit eutils user
 
 DESCRIPTION="Web caching proxy suitable for non-permanent Internet connections"
-HOMEPAGE="http://www.gedanken.org.uk/software/wwwoffle/"
-SRC_URI="http://www.gedanken.org.uk/software/${PN}/download/${P}.tgz"
+HOMEPAGE="https://www.gedanken.org.uk/software/wwwoffle/"
+SRC_URI="https://www.gedanken.org.uk/software/${PN}/download/${P}.tgz"
 
 KEYWORDS="amd64 ppc ppc64 sparc x86"
 SLOT="0"

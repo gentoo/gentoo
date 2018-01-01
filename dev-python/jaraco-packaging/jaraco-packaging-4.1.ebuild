@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ia64 ~mips ppc ppc64 sparc x86"
 IUSE="doc test"
 
 RDEPEND=">=dev-python/six-1.4[${PYTHON_USEDEP}]"
@@ -35,8 +35,9 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 python_compile_all() {
 	if use doc; then
-		sphinx-build docs html || die "docs failed to build"
-		HTML_DOCS=( html/. )
+		cd docs || die
+		sphinx-build . _build/html || die
+		HTML_DOCS=( docs/_build/html/. )
 	fi
 }
 

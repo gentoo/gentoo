@@ -34,6 +34,22 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS COPYRIGHT README )
 
+gcc_check() {
+	if tc-is-gcc && [[ $(gcc-major-version) -lt 6 ]] && use test; then
+		eerror "At least gcc-6 is required to run tests. Please switch to a newer"
+		eerror "compiler before proceeding."
+		die "gcc-6 required for tests"
+	fi
+}
+
+pkg_pretend() {
+	gcc_check
+}
+
+pkg_setup() {
+	gcc_check
+}
+
 src_prepare() {
 	cp "${FILESDIR}/Makefile" src/ || die
 	cp "${FILESDIR}/Makefile.test" test/Makefile || die

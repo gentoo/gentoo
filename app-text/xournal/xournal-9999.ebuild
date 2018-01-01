@@ -5,27 +5,25 @@ EAPI=5
 
 GCONF_DEBUG=no
 
+[[ ${PV} == *9999 ]] && GNOME2_EAUTORECONF=yes
+
 inherit gnome2
+
+if [[ ${PV} == *9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://git.code.sf.net/p/xournal/code"
+	unset SRC_URI
+else
+	KEYWORDS="~amd64 ~x86"
+	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+fi
 
 DESCRIPTION="An application for notetaking, sketching, and keeping a journal using a stylus"
 HOMEPAGE="http://xournal.sourceforge.net/"
 
 LICENSE="GPL-2"
-
 SLOT="0"
 IUSE="+pdf"
-
-if [[ "${PV}" != "9999" ]]; then
-	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
-else
-	inherit git-2 autotools
-	SRC_URI=""
-	KEYWORDS=""
-	EGIT_REPO_URI="git://git.code.sf.net/p/xournal/code"
-	EGIT_PROJECT="${PN}"
-	EGIT_BOOTSTRAP="autogen.sh"
-fi
 
 COMMONDEPEND="
 	app-text/poppler:=[cairo]

@@ -7,8 +7,8 @@
 	</maintainer>
 	<longdescription lang="en">
 		.NET Portable Class Library reference assemblies
-    </longdescription>
+	</longdescription>
 	<longdescription lang="ru">
-        переносимые библиотеки классов (PCL) собранные Microsoft-ом
-    </longdescription>
+		переносимые библиотеки классов (PCL) собранные Microsoft-ом
+	</longdescription>
 </pkgmetadata>

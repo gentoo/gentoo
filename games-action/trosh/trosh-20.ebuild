@@ -12,7 +12,7 @@ SRC_URI="http://stabyourself.net/dl.php?file=trosh/trosh-linux.zip -> ${P}.zip
 
 LICENSE="WTFPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND=">=games-engines/love-0.8.0
 	 media-libs/devil[png]"

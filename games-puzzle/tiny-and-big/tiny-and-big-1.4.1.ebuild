@@ -13,7 +13,7 @@ SRC_URI="tinyandbig_grandpasleftovers-retail-linux-${PV}_1370968537.tar.bz2"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE="bundled-libs"
 RESTRICT="bindist fetch bundled-libs? ( splitdebug )"
 

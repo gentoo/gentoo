@@ -6,8 +6,8 @@ EAPI=6
 inherit readme.gentoo-r1
 
 DESCRIPTION="fast compiler cache"
-HOMEPAGE="http://ccache.samba.org/"
-SRC_URI="https://samba.org/ftp/ccache/${P}.tar.xz"
+HOMEPAGE="https://ccache.samba.org/"
+SRC_URI="https://www.samba.org/ftp/ccache/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"

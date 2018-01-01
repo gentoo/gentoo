@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/sdlsas/SDLSasteroids-${PV}.tar.gz"
 
 LICENSE="GPL-2 freedist"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="virtual/opengl

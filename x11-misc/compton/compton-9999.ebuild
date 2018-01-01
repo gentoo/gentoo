@@ -19,7 +19,7 @@ IUSE="dbus +drm opengl +pcre xinerama"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 COMMON_DEPEND="${PYTHON_DEPS}
-	dev-libs/libconfig
+	dev-libs/libconfig:=
 	x11-libs/libX11
 	x11-libs/libXcomposite
 	x11-libs/libXdamage

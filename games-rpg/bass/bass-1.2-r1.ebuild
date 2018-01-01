@@ -1,9 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
 EAPI=5
 inherit eutils games
 
-DESCRIPTION="Beneath a Steel Sky: a science fiction thriller set in a bleak vision of the future"
+DESCRIPTION="Beneath a Steel Sky: a SciFi thriller set in a bleak vision of the future"
 #HOMEPAGE="http://www.revgames.com/_display.php?id=16"
 HOMEPAGE="http://en.wikipedia.org/wiki/Beneath_a_Steel_Sky"
 SRC_URI="mirror://sourceforge/scummvm/bass-cd-${PV}.zip
@@ -11,7 +12,7 @@ SRC_URI="mirror://sourceforge/scummvm/bass-cd-${PV}.zip
 
 LICENSE="bass"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64 x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE=""
 
 RDEPEND=">=games-engines/scummvm-0.5.0"

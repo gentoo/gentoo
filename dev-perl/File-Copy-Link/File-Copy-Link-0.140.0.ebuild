@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Perl extension for replacing a link by a copy of the linked file"
 
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc"
+KEYWORDS="~amd64 ~hppa ~ppc ~x86"
 IUSE="test"
 
 RDEPEND="

@@ -1,0 +1,27 @@
+From 7c9312607c5b0923447175480d696b34f47f0e03 Mon Sep 17 00:00:00 2001
+From: Milan Broz <gmazyland@gmail.com>
+Date: Sun, 17 Dec 2017 15:20:49 +0100
+Subject: [PATCH] Fix cryptsetup-reencrypt static build if pwquality is enabled.
+
+In static build we need to link also to pwquality.
+
+Fixes Issue#357.
+---
+ src/Makemodule.am | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/Makemodule.am b/src/Makemodule.am
+index 55a388d..b6889eb 100644
+--- a/src/Makemodule.am
++++ b/src/Makemodule.am
+@@ -112,6 +112,7 @@ cryptsetup_reencrypt_static_LDFLAGS = $(AM_LDFLAGS) -all-static
+ cryptsetup_reencrypt_static_LDADD =	\
+ 	$(cryptsetup_reencrypt_LDADD)	\
+ 	@CRYPTO_STATIC_LIBS@		\
++	@PWQUALITY_STATIC_LIBS@		\
+ 	@DEVMAPPER_STATIC_LIBS@
+ endif
+ endif
+--
+libgit2 0.26.0
+

@@ -1,0 +1,674 @@
+From d586b15f05e6135ff169714e38033cbeaf2c0b7e Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Sun, 26 Nov 2017 17:50:35 +1300
+Subject: Fix test failures due to '.' removal from @INC
+
+These tests fail on Perl 5.26+ when PERL_USE_UNSAFE_INC=0, and will
+be inescapably fatal on Perl 5.30
+
+Bug: https://bugs.gentoo.org/622998
+Bug: https://rt.cpan.org/Ticket/Display.html?id=12374
+---
+ t/iq.t                       | 2 +-
+ t/jid.t                      | 2 +-
+ t/message.t                  | 2 +-
+ t/oldadd.t                   | 2 +-
+ t/parse_x_data.t             | 2 +-
+ t/parse_x_delay.t            | 2 +-
+ t/presence.t                 | 2 +-
+ t/protocol_definenamespace.t | 2 +-
+ t/protocol_muc.t             | 2 +-
+ t/protocol_rpc.t             | 2 +-
+ t/query_agent.t              | 2 +-
+ t/query_agents.t             | 2 +-
+ t/query_autoupdate.t         | 2 +-
+ t/query_browse.t             | 2 +-
+ t/query_bytestreams.t        | 2 +-
+ t/query_commands.t           | 2 +-
+ t/query_conference.t         | 2 +-
+ t/query_disco_info.t         | 2 +-
+ t/query_disco_items.t        | 2 +-
+ t/query_featureneg.t         | 2 +-
+ t/query_filter.t             | 2 +-
+ t/query_gateway.t            | 2 +-
+ t/query_last.t               | 2 +-
+ t/query_muc_admin.t          | 2 +-
+ t/query_oob.t                | 2 +-
+ t/query_pass.t               | 2 +-
+ t/query_pubsub.t             | 2 +-
+ t/query_pubsub_event.t       | 2 +-
+ t/query_pubsub_owner.t       | 2 +-
+ t/query_rpc.t                | 2 +-
+ t/query_search.t             | 2 +-
+ t/query_si.t                 | 2 +-
+ t/query_si_filetrans.t       | 2 +-
+ t/query_time.t               | 2 +-
+ t/query_version.t            | 2 +-
+ t/rawxml.t                   | 2 +-
+ t/x_autoupdate.t             | 2 +-
+ t/x_conference.t             | 2 +-
+ t/x_data.t                   | 2 +-
+ t/x_delay.t                  | 2 +-
+ t/x_encrypted.t              | 2 +-
+ t/x_expire.t                 | 2 +-
+ t/x_muc.t                    | 2 +-
+ t/x_muc_user.t               | 2 +-
+ t/x_oob.t                    | 2 +-
+ t/x_roster.t                 | 2 +-
+ t/x_signed.t                 | 2 +-
+ 47 files changed, 47 insertions(+), 47 deletions(-)
+
+diff --git a/t/iq.t b/t/iq.t
+index 90333f4..8bf2533 100644
+--- a/t/iq.t
++++ b/t/iq.t
+@@ -3,7 +3,7 @@ use Test::More tests=>114;
+ 
+ BEGIN{ use_ok( "Net::Jabber" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $debug = new Net::XMPP::Debug(setdefault=>1,
+                                  level=>-1,
+diff --git a/t/jid.t b/t/jid.t
+index 524a28e..0ec809d 100644
+--- a/t/jid.t
++++ b/t/jid.t
+@@ -3,7 +3,7 @@ use Test::More tests=>15;
+ 
+ BEGIN{ use_ok( "Net::Jabber" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $jid = new Net::Jabber::JID('host.com/xxx@yyy.com/zzz');
+ ok( defined($jid), "new()" );
+diff --git a/t/message.t b/t/message.t
+index 87158fb..9d2ef30 100644
+--- a/t/message.t
++++ b/t/message.t
+@@ -3,7 +3,7 @@ use Test::More tests=>126;
+ 
+ BEGIN{ use_ok( "Net::Jabber" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $debug = new Net::XMPP::Debug(setdefault=>1,
+                                  level=>-1,
+diff --git a/t/oldadd.t b/t/oldadd.t
+index b9fc0fc..51765c3 100644
+--- a/t/oldadd.t
++++ b/t/oldadd.t
+@@ -3,7 +3,7 @@ use Test::More tests=>88;
+ 
+ BEGIN{ use_ok( "Net::Jabber" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $debug = new Net::XMPP::Debug(setdefault=>1,
+                                  level=>-1,
+diff --git a/t/parse_x_data.t b/t/parse_x_data.t
+index 578c0e1..30a6707 100644
+--- a/t/parse_x_data.t
++++ b/t/parse_x_data.t
+@@ -3,7 +3,7 @@ use Test::More tests=>28;
+ 
+ BEGIN{ use_ok( "Net::Jabber" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $message_node = new XML::Stream::Node("message");
+ ok( defined($message_node), "new()" );
+diff --git a/t/parse_x_delay.t b/t/parse_x_delay.t
+index 3a889a5..3e49218 100644
+--- a/t/parse_x_delay.t
++++ b/t/parse_x_delay.t
+@@ -3,7 +3,7 @@ use Test::More tests=>24;
+ 
+ BEGIN{ use_ok( "Net::Jabber" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $message_node = new XML::Stream::Node("message");
+ ok( defined($message_node), "new()");
+diff --git a/t/presence.t b/t/presence.t
+index d92fcde..f12d425 100644
+--- a/t/presence.t
++++ b/t/presence.t
+@@ -3,7 +3,7 @@ use Test::More tests=>117;
+ 
+ BEGIN{ use_ok( "Net::Jabber" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $debug = new Net::XMPP::Debug(setdefault=>1,
+                                  level=>-1,
+diff --git a/t/protocol_definenamespace.t b/t/protocol_definenamespace.t
+index f5e8073..762110f 100644
+--- a/t/protocol_definenamespace.t
++++ b/t/protocol_definenamespace.t
+@@ -3,7 +3,7 @@ use Test::More tests=>70;
+ 
+ BEGIN{ use_ok( "Net::Jabber" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $client = new Net::Jabber::Client();
+ ok( defined($client), "new()" );
+diff --git a/t/protocol_muc.t b/t/protocol_muc.t
+index 076c216..d9c6815 100644
+--- a/t/protocol_muc.t
++++ b/t/protocol_muc.t
+@@ -3,7 +3,7 @@ use Test::More tests=>4;
+ 
+ BEGIN{ use_ok( "Net::Jabber" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $client = new Net::Jabber::Client();
+ ok( defined($client), "new()" );
+diff --git a/t/protocol_rpc.t b/t/protocol_rpc.t
+index f04df47..02a0f63 100644
+--- a/t/protocol_rpc.t
++++ b/t/protocol_rpc.t
+@@ -3,7 +3,7 @@ use Test::More tests=>19;
+ 
+ BEGIN{ use_ok( "Net::Jabber" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $client = new Net::Jabber::Client();
+ ok( defined($client), "new()" );
+diff --git a/t/query_agent.t b/t/query_agent.t
+index eb87eb6..8764a3c 100644
+--- a/t/query_agent.t
++++ b/t/query_agent.t
+@@ -3,7 +3,7 @@ use Test::More tests=>91;
+ 
+ BEGIN{ use_ok( "Net::Jabber" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $query = new Net::Jabber::Stanza("query");
+ ok( defined($query), "new()" );
+diff --git a/t/query_agents.t b/t/query_agents.t
+index 1efb5cf..456ced3 100644
+--- a/t/query_agents.t
++++ b/t/query_agents.t
+@@ -3,7 +3,7 @@ use Test::More tests=>20;
+ 
+ BEGIN{ use_ok( "Net::Jabber" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $query = new Net::Jabber::Stanza("query");
+ ok( defined($query), "new()" );
+diff --git a/t/query_autoupdate.t b/t/query_autoupdate.t
+index 0f5a166..0dd15dd 100644
+--- a/t/query_autoupdate.t
++++ b/t/query_autoupdate.t
+@@ -3,7 +3,7 @@ use Test::More tests=>97;
+ 
+ BEGIN{ use_ok( "Net::Jabber" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $query = new Net::Jabber::Stanza("query");
+ ok( defined($query), "new()" );
+diff --git a/t/query_browse.t b/t/query_browse.t
+index 4367802..0f5f3bb 100644
+--- a/t/query_browse.t
++++ b/t/query_browse.t
+@@ -3,7 +3,7 @@ use Test::More tests=>167;
+ 
+ BEGIN{ use_ok( "Net::Jabber" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $query = new Net::Jabber::Stanza("item");
+ ok( defined($query), "new()" );
+diff --git a/t/query_bytestreams.t b/t/query_bytestreams.t
+index d28e6ad..e2f95f1 100644
+--- a/t/query_bytestreams.t
++++ b/t/query_bytestreams.t
+@@ -3,7 +3,7 @@ use Test::More tests=>89;
+ 
+ BEGIN{ use_ok( "Net::Jabber" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $query = new Net::Jabber::Stanza("query");
+ ok( defined($query), "new()" );
+diff --git a/t/query_commands.t b/t/query_commands.t
+index 4f496cb..fd8464d 100644
+--- a/t/query_commands.t
++++ b/t/query_commands.t
+@@ -3,7 +3,7 @@ use Test::More tests=>59;
+ 
+ BEGIN{ use_ok( "Net::Jabber" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $query = new Net::Jabber::Stanza("command");
+ ok( defined($query), "new()" );
+diff --git a/t/query_conference.t b/t/query_conference.t
+index f66bac6..d6004b2 100644
+--- a/t/query_conference.t
++++ b/t/query_conference.t
+@@ -3,7 +3,7 @@ use Test::More tests=>41;
+ 
+ BEGIN{ use_ok( "Net::Jabber" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $query = new Net::Jabber::Stanza("query");
+ ok( defined($query), "new()" );
+diff --git a/t/query_disco_info.t b/t/query_disco_info.t
+index 2bd0b22..4165181 100644
+--- a/t/query_disco_info.t
++++ b/t/query_disco_info.t
+@@ -3,7 +3,7 @@ use Test::More tests=>67;
+ 
+ BEGIN{ use_ok( "Net::Jabber" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $query = new Net::Jabber::Stanza("query");
+ ok( defined($query), "new()" );
+diff --git a/t/query_disco_items.t b/t/query_disco_items.t
+index 9209b72..ff63b13 100644
+--- a/t/query_disco_items.t
++++ b/t/query_disco_items.t
+@@ -3,7 +3,7 @@ use Test::More tests=>70;
+ 
+ BEGIN{ use_ok( "Net::Jabber" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $query = new Net::Jabber::Stanza("query");
+ ok( defined($query), "new()" );
+diff --git a/t/query_featureneg.t b/t/query_featureneg.t
+index 58b76a6..798a418 100644
+--- a/t/query_featureneg.t
++++ b/t/query_featureneg.t
+@@ -3,7 +3,7 @@ use Test::More tests=>22;
+ 
+ BEGIN{ use_ok( "Net::Jabber" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $query = new Net::Jabber::Stanza("feature");
+ ok( defined($query), "new()" );
+diff --git a/t/query_filter.t b/t/query_filter.t
+index c24018a..7d423f2 100644
+--- a/t/query_filter.t
++++ b/t/query_filter.t
+@@ -3,7 +3,7 @@ use Test::More tests=>93;
+ 
+ BEGIN{ use_ok( "Net::Jabber" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $query = new Net::Jabber::Stanza("query");
+ ok( defined($query), "new()" );
+diff --git a/t/query_gateway.t b/t/query_gateway.t
+index 1e3cf4b..bd36e18 100644
+--- a/t/query_gateway.t
++++ b/t/query_gateway.t
+@@ -3,7 +3,7 @@ use Test::More tests=>42;
+ 
+ BEGIN{ use_ok( "Net::Jabber" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $query = new Net::Jabber::Stanza("query");
+ ok( defined($query), "new()" );
+diff --git a/t/query_last.t b/t/query_last.t
+index 340f21a..04d12e6 100644
+--- a/t/query_last.t
++++ b/t/query_last.t
+@@ -3,7 +3,7 @@ use Test::More tests=>28;
+ 
+ BEGIN{ use_ok( "Net::Jabber" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $query = new Net::Jabber::Stanza("query");
+ ok( defined($query), "new()" );
+diff --git a/t/query_muc_admin.t b/t/query_muc_admin.t
+index 7c2ef5a..eb0e82b 100644
+--- a/t/query_muc_admin.t
++++ b/t/query_muc_admin.t
+@@ -3,7 +3,7 @@ use Test::More tests=>72;
+ 
+ BEGIN{ use_ok( "Net::Jabber" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $query = new Net::Jabber::Stanza("query");
+ ok( defined($query), "new()" );
+diff --git a/t/query_oob.t b/t/query_oob.t
+index 54ced43..b388d37 100644
+--- a/t/query_oob.t
++++ b/t/query_oob.t
+@@ -3,7 +3,7 @@ use Test::More tests=>25;
+ 
+ BEGIN{ use_ok( "Net::Jabber" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $query = new Net::Jabber::Stanza("query");
+ ok( defined($query), "new()" );
+diff --git a/t/query_pass.t b/t/query_pass.t
+index 41e929b..411452d 100644
+--- a/t/query_pass.t
++++ b/t/query_pass.t
+@@ -3,7 +3,7 @@ use Test::More tests=>62;
+ 
+ BEGIN{ use_ok( "Net::Jabber" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $query = new Net::Jabber::Stanza("query");
+ ok( defined($query), "new()" );
+diff --git a/t/query_pubsub.t b/t/query_pubsub.t
+index 35d67dc..4ca539d 100644
+--- a/t/query_pubsub.t
++++ b/t/query_pubsub.t
+@@ -3,7 +3,7 @@ use Test::More tests=>455;
+ 
+ BEGIN{ use_ok( "Net::Jabber" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $line = "-"x40;
+ 
+diff --git a/t/query_pubsub_event.t b/t/query_pubsub_event.t
+index fcf013d..dd39f64 100644
+--- a/t/query_pubsub_event.t
++++ b/t/query_pubsub_event.t
+@@ -3,7 +3,7 @@ use Test::More tests=>48;
+ 
+ BEGIN{ use_ok( "Net::Jabber" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $line = "-"x40;
+ 
+diff --git a/t/query_pubsub_owner.t b/t/query_pubsub_owner.t
+index 27d91d7..284c68d 100644
+--- a/t/query_pubsub_owner.t
++++ b/t/query_pubsub_owner.t
+@@ -3,7 +3,7 @@ use Test::More tests=>22;
+ 
+ BEGIN{ use_ok( "Net::Jabber" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $line = "-"x40;
+ 
+diff --git a/t/query_rpc.t b/t/query_rpc.t
+index 56ed937..ff4d5c5 100644
+--- a/t/query_rpc.t
++++ b/t/query_rpc.t
+@@ -3,7 +3,7 @@ use Test::More tests=>217;
+ 
+ BEGIN{ use_ok( "Net::Jabber" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $query = new Net::Jabber::Stanza("query");
+ ok( defined($query), "new()" );
+diff --git a/t/query_search.t b/t/query_search.t
+index 8fb8fea..edb8d28 100644
+--- a/t/query_search.t
++++ b/t/query_search.t
+@@ -3,7 +3,7 @@ use Test::More tests=>140;
+ 
+ BEGIN{ use_ok( "Net::Jabber" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $query = new Net::Jabber::Stanza("query");
+ ok( defined($query), "new()" );
+diff --git a/t/query_si.t b/t/query_si.t
+index b451a2f..d9b2bdf 100644
+--- a/t/query_si.t
++++ b/t/query_si.t
+@@ -3,7 +3,7 @@ use Test::More tests=>44;
+ 
+ BEGIN{ use_ok( "Net::Jabber" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $query = new Net::Jabber::Stanza("si");
+ ok( defined($query), "new()" );
+diff --git a/t/query_si_filetrans.t b/t/query_si_filetrans.t
+index 1fa1d2f..301ed97 100644
+--- a/t/query_si_filetrans.t
++++ b/t/query_si_filetrans.t
+@@ -3,7 +3,7 @@ use Test::More tests=>100;
+ 
+ BEGIN{ use_ok( "Net::Jabber" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $query = new Net::Jabber::Stanza("si");
+ ok( defined($query), "new()" );
+diff --git a/t/query_time.t b/t/query_time.t
+index 8c4efbe..01e1c96 100644
+--- a/t/query_time.t
++++ b/t/query_time.t
+@@ -3,7 +3,7 @@ use Test::More tests=>39;
+ 
+ BEGIN{ use_ok( "Net::Jabber" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $query = new Net::Jabber::Stanza("query");
+ ok( defined($query), "new()" );
+diff --git a/t/query_version.t b/t/query_version.t
+index 2af431b..ac414ea 100644
+--- a/t/query_version.t
++++ b/t/query_version.t
+@@ -3,7 +3,7 @@ use Test::More tests=>36;
+ 
+ BEGIN{ use_ok( "Net::Jabber" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $query = new Net::Jabber::Stanza("query");
+ ok( defined($query), "new()" );
+diff --git a/t/rawxml.t b/t/rawxml.t
+index 4624b86..14cdf01 100644
+--- a/t/rawxml.t
++++ b/t/rawxml.t
+@@ -3,7 +3,7 @@ use Test::More tests=>59;
+ 
+ BEGIN{ use_ok( "Net::Jabber" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $message = new Net::Jabber::Message();
+ ok( defined($message), "new()");
+diff --git a/t/x_autoupdate.t b/t/x_autoupdate.t
+index b1bf046..cda36a8 100644
+--- a/t/x_autoupdate.t
++++ b/t/x_autoupdate.t
+@@ -3,7 +3,7 @@ use Test::More tests=>32;
+ 
+ BEGIN{ use_ok( "Net::Jabber" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $x = new Net::Jabber::Stanza("x");
+ ok( defined($x), "new()" );
+diff --git a/t/x_conference.t b/t/x_conference.t
+index 9205afc..e488a76 100644
+--- a/t/x_conference.t
++++ b/t/x_conference.t
+@@ -3,7 +3,7 @@ use Test::More tests=>32;
+ 
+ BEGIN{ use_ok( "Net::Jabber" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $x = new Net::Jabber::Stanza("x");
+ ok( defined($x), "new()" );
+diff --git a/t/x_data.t b/t/x_data.t
+index 9d3a692..3061fa1 100644
+--- a/t/x_data.t
++++ b/t/x_data.t
+@@ -3,7 +3,7 @@ use Test::More tests=>155;
+ 
+ BEGIN{ use_ok( "Net::Jabber" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $x = new Net::Jabber::Stanza("x");
+ ok( defined($x), "new()" );
+diff --git a/t/x_delay.t b/t/x_delay.t
+index e9e9b9d..c5569c1 100644
+--- a/t/x_delay.t
++++ b/t/x_delay.t
+@@ -3,7 +3,7 @@ use Test::More tests=>43;
+ 
+ BEGIN{ use_ok( "Net::Jabber" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $x = new Net::Jabber::Stanza("x");
+ ok( defined($x), "new()" );
+diff --git a/t/x_encrypted.t b/t/x_encrypted.t
+index 277a82c..ef6d547 100644
+--- a/t/x_encrypted.t
++++ b/t/x_encrypted.t
+@@ -3,7 +3,7 @@ use Test::More tests=>19;
+ 
+ BEGIN{ use_ok( "Net::Jabber" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $x = new Net::Jabber::Stanza("x");
+ ok( defined($x), "new()" );
+diff --git a/t/x_expire.t b/t/x_expire.t
+index 33dbd5f..2f6ea87 100644
+--- a/t/x_expire.t
++++ b/t/x_expire.t
+@@ -3,7 +3,7 @@ use Test::More tests=>20;
+ 
+ BEGIN{ use_ok( "Net::Jabber" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $x = new Net::Jabber::Stanza("x");
+ ok( defined($x), "new()" );
+diff --git a/t/x_muc.t b/t/x_muc.t
+index 54effe9..5225684 100644
+--- a/t/x_muc.t
++++ b/t/x_muc.t
+@@ -3,7 +3,7 @@ use Test::More tests=>20;
+ 
+ BEGIN{ use_ok( "Net::Jabber" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $x = new Net::Jabber::Stanza("x");
+ ok( defined($x), "new()" );
+diff --git a/t/x_muc_user.t b/t/x_muc_user.t
+index b874b3c..c84ec5c 100644
+--- a/t/x_muc_user.t
++++ b/t/x_muc_user.t
+@@ -3,7 +3,7 @@ use Test::More tests=>129;
+ 
+ BEGIN{ use_ok( "Net::Jabber" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $x = new Net::Jabber::Stanza("x");
+ ok( defined($x), "new()" );
+diff --git a/t/x_oob.t b/t/x_oob.t
+index fe339b7..433bdcc 100644
+--- a/t/x_oob.t
++++ b/t/x_oob.t
+@@ -3,7 +3,7 @@ use Test::More tests=>25;
+ 
+ BEGIN{ use_ok( "Net::Jabber" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $x = new Net::Jabber::Stanza("x");
+ ok( defined($x), "new()" );
+diff --git a/t/x_roster.t b/t/x_roster.t
+index 2c2ee57..f4108f8 100644
+--- a/t/x_roster.t
++++ b/t/x_roster.t
+@@ -9,7 +9,7 @@ my $debug = new Net::XMPP::Debug(setdefault=>1,
+                                  header=>"test",
+                                 );
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $x = new Net::Jabber::Stanza("x");
+ ok( defined($x), "new()" );
+diff --git a/t/x_signed.t b/t/x_signed.t
+index 600ad96..d9b6145 100644
+--- a/t/x_signed.t
++++ b/t/x_signed.t
+@@ -3,7 +3,7 @@ use Test::More tests=>19;
+ 
+ BEGIN{ use_ok( "Net::Jabber" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $x = new Net::Jabber::Stanza("x");
+ ok( defined($x), "new()" );
+-- 
+2.14.3
+

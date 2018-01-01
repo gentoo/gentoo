@@ -16,8 +16,7 @@ KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 IUSE="bluetooth hddtemp opengl"
 
 DEPEND=""
-RDEPEND=">=app-shells/bash-3.0
-	sys-apps/pciutils
+RDEPEND="sys-apps/pciutils
 	sys-apps/usbutils
 	bluetooth? ( net-wireless/bluez )
 	hddtemp? ( app-admin/hddtemp )

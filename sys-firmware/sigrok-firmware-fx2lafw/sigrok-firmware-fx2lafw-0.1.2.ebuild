@@ -14,7 +14,7 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-DESCRIPTION="open-source firmware for Cypress FX2 chips which makes them usable as simple logic analyzer hardware"
+DESCRIPTION="Firmware for Cypress FX2 chips for use as simple logic analyzer hardware"
 HOMEPAGE="http://sigrok.org/wiki/Fx2lafw"
 
 LICENSE="GPL-2+"

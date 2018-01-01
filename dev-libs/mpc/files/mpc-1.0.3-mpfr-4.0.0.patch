@@ -1,0 +1,129 @@
+https://bugs.gentoo.org/642300
+
+From 36a84f43f326de14db888ba07936cc9621c23f19 Mon Sep 17 00:00:00 2001
+From: Paul Zimmermann <Paul.Zimmermann@inria.fr>
+Date: Sun, 10 Jan 2016 23:19:37 +0100
+Subject: [PATCH] use mpfr_fmma and mpfr_fmms if provided by mpfr
+
+---
+ configure.ac | 16 ++++++++++++++++
+ src/mul.c    | 15 ++++++++++++---
+ 2 files changed, 28 insertions(+), 3 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index b6fa199..bdb21ff 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -165,6 +165,22 @@ AC_LINK_IFELSE(
+         AC_MSG_ERROR([libmpfr not found or uses a different ABI (including static vs shared).])
+         ])
+ 
++AC_MSG_CHECKING(for mpfr_fmma)
++LIBS="-lmpfr $LIBS"
++AC_LINK_IFELSE(
++        [AC_LANG_PROGRAM(
++                [[#include "mpfr.h"]],
++                [[mpfr_t x; mpfr_fmma (x, x, x, x, x, 0);]]
++        )],
++        [
++	AC_MSG_RESULT(yes)
++	AC_DEFINE(HAVE_MPFR_FMMA, 1, [mpfr_fmma is present])
++	],
++        [
++        AC_MSG_RESULT(no)
++	AC_DEFINE(HAVE_MPFR_FMMA, 0, [mpfr_fmma	is not present])
++        ])
++
+ # Check for a recent GMP
+ # We only guarantee that with a *functional* and recent enough GMP version,
+ # MPC will compile; we do not guarantee that GMP will compile.
+diff --git a/src/mul.c b/src/mul.c
+index 3c9c0a7..8c4afe4 100644
+--- a/src/mul.c
++++ b/src/mul.c
+@@ -171,8 +171,9 @@
+ }
+ 
+ 
++#if HAVE_MPFR_FMMA == 0
+ static int
+-mpfr_fmma (mpfr_ptr z, mpfr_srcptr a, mpfr_srcptr b, mpfr_srcptr c,
++mpc_fmma (mpfr_ptr z, mpfr_srcptr a, mpfr_srcptr b, mpfr_srcptr c,
+            mpfr_srcptr d, int sign, mpfr_rnd_t rnd)
+ {
+    /* Computes z = ab+cd if sign >= 0, or z = ab-cd if sign < 0.
+@@ -319,6 +320,7 @@
+ 
+    return inex;
+ }
++#endif
+ 
+ 
+ int
+@@ -337,10 +339,17 @@
+    else
+       rop [0] = z [0];
+ 
+-   inex = MPC_INEX (mpfr_fmma (mpc_realref (rop), mpc_realref (x), mpc_realref (y), mpc_imagref (x),
+-                               mpc_imagref (y), -1, MPC_RND_RE (rnd)),
++#if HAVE_MPFR_FMMA
++   inex = MPC_INEX (mpfr_fmms (mpc_realref (rop), mpc_realref (x), mpc_realref (y), mpc_imagref (x),
++                               mpc_imagref (y), MPC_RND_RE (rnd)),
+                     mpfr_fmma (mpc_imagref (rop), mpc_realref (x), mpc_imagref (y), mpc_imagref (x),
++                               mpc_realref (y), MPC_RND_IM (rnd)));
++#else
++   inex = MPC_INEX (mpc_fmma (mpc_realref (rop), mpc_realref (x), mpc_realref (y), mpc_imagref (x),
++                               mpc_imagref (y), -1, MPC_RND_RE (rnd)),
++                    mpc_fmma (mpc_imagref (rop), mpc_realref (x), mpc_imagref (y), mpc_imagref (x),
+                                mpc_realref (y), +1, MPC_RND_IM (rnd)));
++#endif
+ 
+    mpc_set (z, rop, MPC_RNDNN);
+    if (overlap)
+--- a/configure
++++ b/configure
+@@ -13835,6 +13835,41 @@ else
+ $as_echo "no" >&6; }
+         as_fn_error $? "libmpfr not found or uses a different ABI (including static vs shared)." "$LINENO" 5
+ 
++fi
++rm -f core conftest.err conftest.$ac_objext \
++    conftest$ac_exeext conftest.$ac_ext
++
++{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for mpfr_fmma" >&5
++$as_echo_n "checking for mpfr_fmma... " >&6; }
++LIBS="-lmpfr $LIBS"
++cat confdefs.h - <<_ACEOF >conftest.$ac_ext
++/* end confdefs.h.  */
++#include "mpfr.h"
++int
++main ()
++{
++mpfr_t x; mpfr_fmma (x, x, x, x, x, 0);
++
++  ;
++  return 0;
++}
++_ACEOF
++if ac_fn_c_try_link "$LINENO"; then :
++
++	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
++$as_echo "yes" >&6; }
++
++$as_echo "#define HAVE_MPFR_FMMA 1" >>confdefs.h
++
++
++else
++
++        { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
++$as_echo "no" >&6; }
++
++$as_echo "#define HAVE_MPFR_FMMA 0" >>confdefs.h
++
++
+ fi
+ rm -f core conftest.err conftest.$ac_objext \
+     conftest$ac_exeext conftest.$ac_ext
+-- 
+2.15.1
+

@@ -136,7 +136,7 @@ index ee7f7fb..b6f0a37 100644
 +mp4ff_normalize_flawed_sample_rate (uint16_t samplerate)
 +{
 +	/* A list of common rates can be found at
-+	 * http://en.wikipedia.org/wiki/Sampling_rate */
++	 * https://en.wikipedia.org/wiki/Sampling_rate */
 +	uint32_t rates[] = {8000, 11025, 16000, 22050, 32000, 44056, 44100,
 +	                  47250, 48000, 50000, 50400, 88200, 96000, 176400,
 +	                  192000, 352800, 384000, 0};

@@ -5,4 +5,8 @@
                 <email>perl@gentoo.org</email>
                 <name>Gentoo Perl Project</name>
         </maintainer>
+        <upstream>
+                <remote-id type="cpan">PDL-Transform-Color</remote-id>
+                <remote-id type="cpan-module">PDL::Transform::Color</remote-id>
+        </upstream>
 </pkgmetadata>

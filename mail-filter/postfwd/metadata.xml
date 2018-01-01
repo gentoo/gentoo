@@ -10,14 +10,14 @@
 		<name>Marc Schiffbauer</name>
 	</maintainer>
 	<maintainer type="project">
-	    <email>proxy-maint@gentoo.org</email>
-	    <name>Proxy Maintainers</name>
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
-	    <maintainer status="active">
+		<maintainer status="active">
 			<email>info@postfwd.org</email>
 			<name>Jan Peter Kessler</name>
-	    </maintainer>
+		</maintainer>
 		<changelog>http://www.postfwd.org/postfwd2.CHANGELOG</changelog>
 	</upstream>
 	<longdescription lang="en">

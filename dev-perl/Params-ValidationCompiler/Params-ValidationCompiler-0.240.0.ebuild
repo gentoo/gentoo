@@ -10,7 +10,7 @@ inherit perl-module
 
 DESCRIPTION="Build an optimized subroutine parameter validator once, use it forever"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="test"
 
 RDEPEND="

@@ -15,7 +15,7 @@ else
 	KEYWORDS="~amd64 ~x86 ~amd64-linux"
 fi
 
-DESCRIPTION="an API for distributing embarrassingly parallel workloads using self-stabilization"
+DESCRIPTION="API for distributing embarrassingly parallel workloads using self-stabilization"
 HOMEPAGE="https://github.com/hpc/libcircle"
 
 SLOT="0"

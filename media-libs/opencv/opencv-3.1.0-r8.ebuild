@@ -9,7 +9,7 @@ inherit toolchain-funcs python-r1 java-pkg-opt-2 java-ant-2 \
 
 DESCRIPTION="A collection of algorithms and sample code for
 	various computer vision problems"
-HOMEPAGE="http://opencv.org"
+HOMEPAGE="https://opencv.org"
 
 BASE_URI="https://github.com/${PN}/${PN}"
 #commit from Thu, 02 Jun 2016

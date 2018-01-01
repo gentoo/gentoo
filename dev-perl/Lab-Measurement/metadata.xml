@@ -9,9 +9,6 @@
     <email>sci@gentoo.org</email>
     <name>Gentoo Science Project</name>
   </maintainer>
-  <use>
-    <flag name="xpression">Install the Xpression measurement framework</flag>
-  </use>
   <upstream>
     <remote-id type="cpan">Lab-Measurement</remote-id>
     <remote-id type="cpan-module">Lab::Bus</remote-id>

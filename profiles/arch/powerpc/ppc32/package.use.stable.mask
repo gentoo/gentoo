@@ -28,17 +28,11 @@ sci-libs/plplot ocaml
 
 # Pacho Ramos <pacho@gentoo.org> (02 Jul 2014)
 # Mask due Gnome3 not going to be stabilized on this arch
-app-misc/gramps webkit
 dev-java/swt webkit
 >=gnome-base/gnome-desktop-2.32.1-r2 license-docs
 gnome-base/gvfs google
 mail-client/balsa webkit
-media-gfx/gimp webkit
 >=net-libs/webkit-gtk-2.4 geoloc
 net-libs/libproxy webkit
 >=x11-libs/gtk+-3.12.2 cloudprint
 x11-libs/gksu gnome
-
-# Chí-Thanh Christopher Nguyễn (11 Jul 2016)
-# Requires unstable dev-qt/qtx11extras:5 (bug 585228)
-=x11-themes/qtcurve-1.8.18-r1 qt5

@@ -7,7 +7,7 @@ inherit qt4-build-multilib
 DESCRIPTION="Cross-platform application development framework"
 
 if [[ ${QT4_BUILD_TYPE} == release ]]; then
-	KEYWORDS="alpha amd64 ~arm ~arm64 ~hppa ia64 ~mips ~ppc ~ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd"
+	KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd"
 fi
 
 IUSE="+glib iconv icu libressl qt3support ssl"
@@ -16,7 +16,7 @@ DEPEND="
 	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 	glib? ( dev-libs/glib:2[${MULTILIB_USEDEP}] )
 	iconv? ( >=virtual/libiconv-0-r2[${MULTILIB_USEDEP}] )
-	icu? ( dev-libs/icu:=[${MULTILIB_USEDEP}] )
+	icu? ( <dev-libs/icu-59:=[${MULTILIB_USEDEP}] )
 	ssl? (
 		!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0[${MULTILIB_USEDEP}] )
 		libressl? ( dev-libs/libressl:=[${MULTILIB_USEDEP}] )

@@ -44,24 +44,24 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	ECONF_SOURCE=${S} \
-	econf \
-		--disable-examples \
-		--disable-failmalloc \
-		--disable-werror \
-		--without-cython \
-		--disable-python-bindings \
-		--without-spdylay \
-		$(use_enable cxx asio-lib) \
-		$(use_enable debug) \
-		$(multilib_native_use_enable hpack-tools) \
-		$(use_enable static-libs static) \
-		$(use_enable threads) \
-		$(multilib_native_use_enable utils app) \
-		$(multilib_native_use_with jemalloc) \
+	local myeconfargs=(
+		--disable-examples
+		--disable-failmalloc
+		--disable-werror
+		--without-cython
+		--disable-python-bindings
+		$(use_enable cxx asio-lib)
+		$(use_enable debug)
+		$(multilib_native_use_enable hpack-tools)
+		$(use_enable static-libs static)
+		$(use_enable threads)
+		$(multilib_native_use_enable utils app)
+		$(multilib_native_use_with jemalloc)
 		$(multilib_native_use_with xml libxml2)
+	)
+	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
 multilib_src_install_all() {
-	use static-libs || find "${ED}" -name '*.la' -delete
+	use static-libs || find "${ED%/}"/usr -name '*.la' -delete
 }

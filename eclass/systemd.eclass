@@ -45,6 +45,7 @@ _systemd_get_dir() {
 
 	if $(tc-getPKG_CONFIG) --exists systemd; then
 		d=$($(tc-getPKG_CONFIG) --variable="${variable}" systemd) || die
+		d=${d#${EPREFIX}}
 	else
 		d=${fallback}
 	fi
@@ -119,6 +120,26 @@ systemd_get_utildir() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	echo "${EPREFIX}$(_systemd_get_utildir)"
+}
+
+# @FUNCTION: _systemd_get_systemgeneratordir
+# @INTERNAL
+# @DESCRIPTION:
+# Get unprefixed systemgeneratordir.
+_systemd_get_systemgeneratordir() {
+	_systemd_get_dir systemdsystemgeneratordir /usr/lib/systemd/system-generators
+}
+
+# @FUNCTION: systemd_get_systemgeneratordir
+# @DESCRIPTION:
+# Output the path for the systemd system generator directory (not including
+# ${D}). This function always succeeds, even if systemd is not
+# installed.
+systemd_get_systemgeneratordir() {
+	has "${EAPI:-0}" 0 1 2 && ! use prefix && EPREFIX=
+	debug-print-function ${FUNCNAME} "${@}"
+
+	echo "${EPREFIX}$(_systemd_get_systemgeneratordir)"
 }
 
 # @FUNCTION: systemd_dounit

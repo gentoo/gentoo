@@ -1,0 +1,11 @@
+--- a/wscript	2017-12-19 20:47:08.288722501 -0600
++++ b/wscript	2017-12-19 20:46:46.932616417 -0600
+@@ -196,7 +196,7 @@
+ 
+ def build(bld):
+     # C/C++ Headers
++    includedir = '${INCLUDEDIR}/lilv'
+-    includedir = '${INCLUDEDIR}/lilv-%s/lilv' % LILV_MAJOR_VERSION
+     bld.install_files(includedir, bld.path.ant_glob('lilv/*.h'))
+     bld.install_files(includedir, bld.path.ant_glob('lilv/*.hpp'))
+ 

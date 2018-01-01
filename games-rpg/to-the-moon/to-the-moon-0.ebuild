@@ -8,13 +8,13 @@ EAPI=5
 inherit eutils unpacker gnome2-utils games
 
 MY_PN=ToTheMoon
-DESCRIPTION="Indie Adventure RPG, two doctors traversing the memories of a dying man to fulfill his last wish"
+DESCRIPTION="Two doctors traversing the memories of a dying man to fulfill his last wish"
 HOMEPAGE="http://freebirdgames.com/games/to-the-moon"
 SRC_URI="${MY_PN}_linux_1389114090.sh"
 
 LICENSE="all-rights-reserved bundled-libs? ( LGPL-2 LGPL-2.1 ZLIB )"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="bundled-libs"
 RESTRICT="fetch bindist splitdebug"
 

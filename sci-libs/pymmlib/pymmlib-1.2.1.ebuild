@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 
 inherit distutils-r1 multilib
 
-DESCRIPTION="Toolkit and library for the analysis and manipulation of macromolecular structural models"
+DESCRIPTION="Toolkit and library for the analysis and manipulation of macromolecular models"
 HOMEPAGE="http://pymmlib.sourceforge.net/"
 SRC_URI="mirror://github/masci/mmLib/${P}.tar.gz"
 

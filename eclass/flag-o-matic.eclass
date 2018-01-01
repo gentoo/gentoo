@@ -16,7 +16,7 @@ inherit eutils toolchain-funcs multilib
 
 # Return all the flag variables that our high level funcs operate on.
 all-flag-vars() {
-	echo {C,CPP,CXX,CCAS,F,FC,LD}FLAGS
+	echo {ADA,C,CPP,CXX,CCAS,F,FC,LD}FLAGS
 }
 
 # {C,CPP,CXX,CCAS,F,FC,LD}FLAGS that we allow in strip-flags
@@ -27,7 +27,7 @@ setup-allowed-flags() {
 		'-fstack-protector*' '-fsanitize*' '-fstack-check*' -fno-stack-check
 		-fbounds-check -fbounds-checking -fno-strict-overflow
 		-fno-PIE -fno-pie -nopie -no-pie -fno-unit-at-a-time
-		-g '-g[0-9]' -ggdb '-ggdb[0-9]' '-gdwarf-*' gstabs -gstabs+
+		-g '-g[0-9]' -ggdb '-ggdb[0-9]' '-gdwarf-*' gstabs -gstabs+ -gz
 		-fno-ident -fpermissive -frecord-gcc-switches
 		'-fdiagnostics*' '-fplugin*'
 		'-W*' -w

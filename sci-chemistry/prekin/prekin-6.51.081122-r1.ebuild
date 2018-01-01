@@ -7,7 +7,7 @@ inherit toolchain-funcs eutils multilib
 
 MY_P=${PN}.${PV}
 
-DESCRIPTION="Prepares molecular kinemages (input files for Mage & KiNG) from PDB-format coordinate files"
+DESCRIPTION="Prepares molecular kinemages from PDB-format coordinate files"
 HOMEPAGE="http://kinemage.biochem.duke.edu/software/prekin.php"
 SRC_URI="http://kinemage.biochem.duke.edu/downloads/software/${PN}/${MY_P}.src.tgz"
 

@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (21 Nov 2017)
+# Requires not yet stabilised media-libs/qtav
+media-gfx/digikam mediaplayer
+
 # Thomas Deutschmann <whissi@gentoo.org> (01 Oct 2017)
 # Stable mask dev-ruby/haml test till rails is stabilized.
 dev-ruby/haml test
@@ -54,10 +58,6 @@ dev-cpp/eigen test
 # Pacho Ramos <pacho@gentoo.org> (08 Mar 2015)
 # mayavi is broken, bug #500104
 dev-python/apptools test
-
-# Tim Harder <radhermit@gentoo.org> (11 Oct 2014)
-# Masked since skype isn't stable
-net-im/bitlbee skype
 
 # Michał Górny <mgorny@gentoo.org> (30 Mar 2014)
 # Don't apply stable masks to python-exec since we're forcing every

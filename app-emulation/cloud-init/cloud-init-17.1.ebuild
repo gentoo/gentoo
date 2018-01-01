@@ -16,11 +16,13 @@ KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="test"
 
+# remove pretytable in 17.2
 CDEPEND="
 	dev-python/jinja[${PYTHON_USEDEP}]
 	dev-python/oauthlib[${PYTHON_USEDEP}]
 	dev-python/pyserial[${PYTHON_USEDEP}]
 	>=dev-python/configobj-5.0.2[${PYTHON_USEDEP}]
+	>=dev-python/prettytable-0.7.2[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/jsonpatch[${PYTHON_USEDEP}]

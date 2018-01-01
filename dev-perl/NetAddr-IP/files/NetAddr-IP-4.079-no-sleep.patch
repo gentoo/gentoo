@@ -1,0 +1,57 @@
+From 67e9a07125c7f3ec8ec29ae9fc544340ffee5cf9 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Wed, 13 Dec 2017 20:36:20 +1300
+Subject: No sleeping
+
+---
+ Makefile.PL | 11 -----------
+ 1 file changed, 11 deletions(-)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index da50c62..0ecc5a0 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -2,13 +2,6 @@ use ExtUtils::MakeMaker;
+ # See lib/ExtUtils/MakeMaker.pm for details of how to influence
+ # the contents of the Makefile that is written.
+ 
+-my $check0 = 0;
+-my $check1 = 0;
+-my $now = time;
+-my $then = (stat('./Makefile.old'))[9];
+-# set number of seconds to view
+-my $view = $then +86400 < $now ? 5:0;
+-
+ my $pv = sprintf "%vd", $^V;
+ unless ($pv lt '5.8.0' || $pv gt '5.8.5') {
+   print
+@@ -24,7 +17,6 @@ qq(
+ #                                                              	# 
+ ################################################################# 
+ );
+-  sleep $view if $view;
+ }
+ 
+ unless (grep { m/-noxs/ } @ARGV) {
+@@ -36,10 +28,8 @@ not require compilation of XS code, can be used by invoking this as:
+   perl Makefile.PL -noxs
+ 
+ };
+-  sleep $view if $view;
+ }
+ 
+-sleep $view if $view && ($check0 || $check1);
+ 
+ print <<EOF;
+ 
+@@ -72,7 +62,6 @@ Use this method to create new objects from 'aton's
+ 
+ EOF
+     ;
+-sleep $view if $view;
+ 
+ my %makeparms = (
+ #	      (MM->can('signature_target') ? (SIGN => 1) : ()),
+-- 
+2.14.3
+

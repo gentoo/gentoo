@@ -1,8 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils gnome2-utils
+
+inherit eutils gnome2-utils toolchain-funcs
 
 DESCRIPTION="Worms and Scorched Earth-like game"
 HOMEPAGE="http://atanks.sourceforge.net/"
@@ -16,18 +17,27 @@ IUSE=""
 DEPEND="media-libs/allegro:0[X]"
 RDEPEND=${DEPEND}
 
+PATCHES=( "${FILESDIR}"/${PN}-6.4-fix-build-system.patch )
+
+src_configure() {
+	tc-export CXX
+}
+
 src_compile() {
 	emake \
-		INSTALLDIR="/usr/share/${PN}"
+		INSTALLDIR="${EPREFIX}/usr/share/${PN}"
 }
 
 src_install() {
 	dobin ${PN}
+	local DOCS=( Changelog README TODO )
+	einstalldocs
+
 	insinto /usr/share/${PN}
 	doins -r button misc missile sound stock tank tankgun text title unicode.dat *.txt
+
 	doicon -s 48 ${PN}.png
 	make_desktop_entry atanks "Atomic Tanks"
-	dodoc Changelog README TODO
 }
 
 pkg_preinst() {

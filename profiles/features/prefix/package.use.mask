@@ -20,10 +20,6 @@ sys-devel/gcc vanilla
 # (amd64-linux and x86-linux)
 sci-electronics/gtkwave judy
 
-# Jonathan Callen <abcd@gentoo.org> (22 Feb 2010)
-# ppp is not available in Prefix
-kde-apps/kdenetwork-meta ppp
-
 # Christian Faulhammer <fauli@gentoo.org> (09 Jan 2010)
 # hesiod and m17n-lib are not available in Prefix
 app-editors/emacs-vcs hesiod m17n-lib

@@ -1,6 +1,15 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Sergei Trofimovich <slyfox@gentoo.org> (20 Dec 2017)
+# Mask USE=rados for net-analyzer/rrdtool since sys-cluster/ceph is not
+# keyworded (bug #597174)
+net-analyzer/rrdtool rados
+
+# Sergei Trofimovich <slyfox@gentoo.org> (09 Nov 2017)
+# pulls in many dev-ruby/asciidoctor dependencies (bug #599048)
+net-misc/chrony html
+
 # Mart Raudsepp <leio@gentoo.org> (02 Sep 2017)
 # Failure to re-keyword ffmpeg/gst-plugins-libav in a timely
 # fashion; bugs #574786, #608868, #610810
@@ -196,7 +205,6 @@ net-misc/networkmanager teamd
 # See bug #533420.
 media-libs/clutter egl wayland
 media-libs/clutter-gtk wayland
-x11-wm/mutter kms
 
 # Mark Wright <gienah@gentoo.org> (14-23 Dec 2014, 1 Apr 2015)
 # test dependencies need keywording
@@ -268,7 +276,7 @@ media-sound/rhythmbox upnp-av
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (31 Jan 2013)
 # remove mask when net-libs/libqmi is keyworded here
-net-misc/modemmanager qmi qmi-newest
+net-misc/modemmanager qmi
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (22 Jan 2013)
 # remove mask if/when media-gfx/argyllcms is keywored here.
@@ -320,10 +328,6 @@ app-text/asciidoc test
 # Patrick McLean <chutzpah@gentoo.org> (07 Sep 2011)
 # missing keywords on dependencies
 media-video/x264-encoder ffmpegsource
-
-# Robin H. Johnson <robbat2@gentoo.org> (03 Sep 2011)
-# Remove this for your arch after you keyword dev-utils/google-perftools (bug #381737
-dev-libs/libmemcached tcmalloc
 
 # Alexey Shvetsov <alexxy@gentoo.org> (31 Aug 2011)
 # Mask numa use flag per bug #381313

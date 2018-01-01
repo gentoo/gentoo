@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # This file contains descriptions of XTABLES_ADDONS USE-EXPANDED variables.
@@ -6,7 +6,6 @@
 
 account - ACCOUNT target is a high performance accounting system for large local networks
 chaos - CHAOS target causes confusion on the other end by doing odd things with incoming packets
-checksum - CHECKSUM target computes and fills in the checksum in a packet that lacks a checksum
 condition - matches if a specific condition variable is (un)set
 delude - DELUDE target will reply to a SYN packet with SYN-ACK, and to all other packets with an RST
 dhcpmac - DHCPMAC target/match in conjunction with ebtables can be used to completely change all MAC addresses from and to a VMware-based virtual machine
@@ -25,8 +24,5 @@ lscan - match detects simple low-level scan attemps based upon the packet's cont
 quota2 - match implements a named counter which can be increased or decreased on a per-match basis
 pknock - match implements so-called "port knocking", a stealthy system for network authentication
 psd - match attempts to detect TCP and UDP port scans (derived from Solar Designer's scanlogd)
-rawnat - The RAWSNAT and RAWDNAT targets provide stateless network address translation
-steal - STEAL target is like DROP, but does not throw an error when used in the OUTPUT chain
 sysrq - SYSRQ target allows to remotely trigger sysrq on the local machine over the network
 tarpit - TARPIT target captures and holds incoming TCP connections using no local per-connection resources
-tee - TEE target will clone a packet and redirect this clone to another machine on the local network segment

@@ -129,9 +129,9 @@ src_install() {
 
 	# Most of these now come from openrc.
 	for util in iscsid nfs nfsuserd rpc.statd rpc.lockd; do
-		newinitd "${FILESDIR}/"${util}.initd ${util} || die
+		newinitd "${FILESDIR}/"${util}.initd ${util}
 		if [[ -e "${FILESDIR}"/${util}.confd ]]; then \
-			newconfd "${FILESDIR}"/${util}.confd ${util} || die
+			newconfd "${FILESDIR}"/${util}.confd ${util}
 		fi
 	done
 
@@ -146,20 +146,20 @@ EOS
 
 	# Install the pw.conf file to let pw use Gentoo's skel location
 	insinto /etc
-	doins "${FILESDIR}/pw.conf" || die
+	doins "${FILESDIR}/pw.conf"
 
 	cd "${WORKDIR}/etc" || die
-	doins apmd.conf syslog.conf newsyslog.conf nscd.conf || die
+	doins apmd.conf syslog.conf newsyslog.conf nscd.conf
 
 	if use bluetooth; then
 		insinto /etc/bluetooth
-		doins bluetooth/* || die
+		doins bluetooth/*
 		rm -f "${D}"/etc/bluetooth/Makefile
 	fi
 
 	cd "${S}"/ppp || die
 	insinto /etc/ppp
-	doins ppp.conf || die
+	doins ppp.conf
 
 	# Install the periodic stuff (needs probably to be ported in a more
 	# gentooish way)

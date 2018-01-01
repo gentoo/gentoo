@@ -18,7 +18,7 @@ HOMEPAGE="https://github.com/jarib/childprocess"
 
 LICENSE="MIT"
 SLOT="2"
-KEYWORDS="alpha amd64 arm ~hppa ~ia64 ppc ppc64 x86"
+KEYWORDS="alpha amd64 arm ~hppa ia64 ppc ppc64 sparc x86"
 IUSE=""
 
 ruby_add_bdepend "doc? ( dev-ruby/yard dev-ruby/rspec:3 )"

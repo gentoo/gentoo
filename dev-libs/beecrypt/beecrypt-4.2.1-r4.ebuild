@@ -38,6 +38,7 @@ PATCHES=(
 
 	# Fixes bug 596904
 	"${FILESDIR}"/${P}-c++11-allow-throw-in-destructors.patch
+	"${FILESDIR}"/${P}-cast-uchar.patch #618676
 )
 
 pkg_setup() {

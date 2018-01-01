@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Bernard Cafarelli <voyageur@gentoo.org> (27 Nov 2017)
+# Dependencies have no stable keyword
+app-backup/backup-manager s3
+
 # Brian Evans <grknight@gentoo.org (6 Nov 2017)
 # Requires stable phpunit
 dev-php/PEAR-Text_Password test
@@ -15,6 +19,8 @@ www-servers/uwsgi go pypy uwsgi_plugins_alarm_xmpp
 
 # Andreas Sturmlechner <asturm@gentoo.org> (11 Oct 2017)
 # Requires unstable dependency dev-qt/qtspeech.
+kde-apps/kanagram speech
+kde-apps/kdepim-runtime speech
 kde-apps/konqueror speech
 kde-apps/kpimtextedit speech
 kde-apps/ktp-text-ui speech
@@ -30,10 +36,6 @@ sci-libs/gdal mdb
 # Requires guile-2 which is still unstable.
 >=net-irc/weechat-1.7 guile
 
-# Andreas Sturmlechner <asturm@gentoo.org> (17 Aug 2017)
-# Unstable dependencies.
-kde-apps/kopete cryptography
-
 # Andreas Sturmlechner <asturm@gentoo.org> (12 Aug 2017)
 # Not operational, bug #619534
 >=kde-apps/cantor-17.04.3 R
@@ -41,10 +43,6 @@ kde-apps/kopete cryptography
 # Michael Palimaka <kensington@gentoo.org) (11 Aug 2017)
 # Unstable dependencies.
 dev-util/rpmdevtools emacs
-
-# Andreas Sturmlechner <asturm@gentoo.org> (06 Aug 2017)
-# Requires dev-lang/python-3.5 stabilisation
->=kde-apps/kdegames-meta-17.04.3 python
 
 # Patrick McLean <chutzpah@gentoo.org> (11 Jul 2017)
 # Requires >=net-dns/libidn2-2.0 stabilization
@@ -132,17 +130,12 @@ app-emulation/ganeti monitoring
 
 # Mike Gilbert <floppym@gentoo.org> (03 Oct 2015)
 # Unmask stable-masked implementations for python-exec
-dev-lang/python-exec -python_targets_python3_5
 dev-lang/python-exec -python_targets_python3_6
 
 # Pacho Ramos <pacho@gentoo.org> (15 May 2015)
 # Version compatible with current ffmpeg is not ready to be stabilized
 # bug #539212
 app-emulation/vice ffmpeg
-
-# Pacho Ramos <pacho@gentoo.org> (13 May 2015)
-# texinfo-5 cannot be stabilized yet
-=dev-lang/gnat-gcc-4.6* doc
 
 # Jeroen Roovers <jer@gentoo.org> (26 Apr 2015)
 # mongodb support is nice, but dev-libs/mongo-c-driver upstream is not ready
@@ -173,7 +166,7 @@ media-libs/opencv vtk
 
 # Mikle Kolyada <zlogene@gentoo.org> (16 Aug 2014)
 # Not yet stabilized dependency, need more testing
->=dev-perl/PDL-2.4.11 pdl2 pgplot plplot
+>=dev-perl/PDL-2.4.11 pdl2 pgplot
 
 # Samuli Suominen <ssuominen@gentoo.org> (01 Aug 2014)
 # Optional (not required by anything in gentoo-x86) and fragile (based on

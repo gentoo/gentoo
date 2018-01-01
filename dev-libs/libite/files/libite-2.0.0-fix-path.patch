@@ -1,0 +1,12 @@
+diff --git a/tests/which.c b/tests/which.c
+index cda57c6..3e74867 100644
+--- a/tests/which.c
++++ b/tests/which.c
+@@ -21,6 +21,7 @@ int main(void)
+ 		{ NULL, 0 }
+ 	};
+ 
++	setenv("PATH", "/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin", 1);
+ 	for (i = 0; test[i].cmd; i++) {
+ 		char *path;
+ 

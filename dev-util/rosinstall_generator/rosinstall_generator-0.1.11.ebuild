@@ -12,7 +12,7 @@ fi
 
 inherit ${SCM} distutils-r1
 
-DESCRIPTION="Generates rosinstall files containing information about repositories with ROS packages/stacks"
+DESCRIPTION="Generates rosinstall metadata about repositories with ROS packages/stacks"
 HOMEPAGE="http://wiki.ros.org/rosinstall_generator"
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""

@@ -6,12 +6,12 @@
 		<name>Python</name>
 	</maintainer>
 	<longdescription lang="en">
-  pyemf is a pure python module that provides a cross-platform ability
-  to generate enhanced metafiles (.emf files), a vector graphics
-  format defined by the ECMA-234 standard. Enhanced metafiles are a
-  natively supported image and scalable clip-art format in the
-  OpenOffice suite of tools and in Windows applications.
-</longdescription>
+		pyemf is a pure python module that provides a cross-platform ability
+		to generate enhanced metafiles (.emf files), a vector graphics
+		format defined by the ECMA-234 standard. Enhanced metafiles are a
+		natively supported image and scalable clip-art format in the
+		OpenOffice suite of tools and in Windows applications.
+	</longdescription>
 	<upstream>
 		<remote-id type="pypi">pyemf</remote-id>
 		<remote-id type="sourceforge">pyemf</remote-id>

@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="An eucJP-open mapping"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86"
 IUSE=""
 
 PERL_RM_FILES=( "t/pod.t" )

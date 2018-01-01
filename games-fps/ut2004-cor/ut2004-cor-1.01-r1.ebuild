@@ -14,7 +14,7 @@ SRC_URI="https://ut.rushbase.net/beyondunreal/mods/cor_beta_v1.0.zip
 	https://ut.rushbase.net/beyondunreal/mods/cor_patch_b1_to_b101.zip"
 
 LICENSE="freedist"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="dedicated opengl"
 
 src_prepare() {

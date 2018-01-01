@@ -5,7 +5,7 @@ EAPI="4"
 
 inherit autotools-utils user linux-info pam
 
-DESCRIPTION="Support for the UPEK/SGS Thomson Microelectronics fingerprint reader, often seen in Thinkpads"
+DESCRIPTION="Support for the UPEK/SGS Thomson fingerprint reader, common in Thinkpads"
 HOMEPAGE="http://thinkfinger.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 

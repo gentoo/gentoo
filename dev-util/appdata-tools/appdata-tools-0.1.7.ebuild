@@ -7,7 +7,7 @@ inherit autotools
 
 MY_P="${PN/-/_}_${PV//./_}"
 
-DESCRIPTION="CLI designed to validate AppData descriptions for standards compliance and to the style guide"
+DESCRIPTION="CLI designed to validate AppData descriptions for standards and style compliance"
 HOMEPAGE="https://github.com/hughsie/appdata-tools/"
 SRC_URI="https://github.com/hughsie/${PN}/archive/${MY_P}.tar.gz -> ${P}.tar.gz"
 

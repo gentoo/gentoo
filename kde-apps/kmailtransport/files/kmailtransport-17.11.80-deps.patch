@@ -1,0 +1,37 @@
+From 1e6ac475c2f591b93d3b1a10c75514d172bbbdf7 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date: Thu, 16 Nov 2017 16:11:11 +0100
+Subject: [PATCH] Drop obsolete dependencies
+
+---
+ CMakeLists.txt | 7 -------
+ 1 file changed, 7 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 53761c3..1df4b65 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -38,7 +38,6 @@ set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KF5MailTransport")
+ find_package(KF5KCMUtils ${KF5_VERSION} CONFIG REQUIRED)
+ find_package(KF5ConfigWidgets ${KF5_VERSION} CONFIG REQUIRED)
+ find_package(KF5Wallet ${KF5_VERSION} CONFIG REQUIRED)
+-find_package(KF5DocTools ${KF5_VERSION} CONFIG REQUIRED)
+ find_package(KF5I18n ${KF5_VERSION} CONFIG REQUIRED)
+ find_package(KF5KIO ${KF5_VERSION} CONFIG REQUIRED)
+ find_package(KF5Mime ${KMIME_LIB_VERSION} CONFIG REQUIRED)
+@@ -50,12 +49,6 @@ add_definitions("-DQT_NO_CAST_FROM_ASCII -DQT_NO_CAST_TO_ASCII")
+ add_definitions(-DQT_NO_NARROWING_CONVERSIONS_IN_CONNECT)
+ add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x060000)
+ add_definitions(-DQT_NO_URL_CAST_FROM_STRING)
+-find_package(Sasl2)
+-set_package_properties(Sasl2 PROPERTIES
+-                             DESCRIPTION "The Cyrus-sasl library"
+-                             URL "http://www.cyrussasl.org"
+-                             TYPE OPTIONAL
+-)
+ 
+ if(BUILD_TESTING)
+    add_definitions(-DBUILD_TESTING)
+-- 
+2.13.6
+

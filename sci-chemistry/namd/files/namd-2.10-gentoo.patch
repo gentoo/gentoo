@@ -22,7 +22,7 @@ diff -Naur NAMD_2.10_Source.orig/arch/Linux-x86_64.tcl NAMD_2.10_Source/arch/Lin
  TCLINCL=-I$(TCLDIR)/include
  #TCLLIB=-L$(TCLDIR)/lib -ltcl8.5 -ldl
 -TCLLIB=-L$(TCLDIR)/lib -ltcl8.5 -ldl -lpthread
-+TCLLIB=-L$(TCLDIR)/gentoo-libdir -ltcl8.5 -ldl -lpthread
++#TCLLIB=-L$(TCLDIR)/gentoo-libdir -ltcl8.5 -ldl -lpthread
  TCLFLAGS=-DNAMD_TCL
  TCL=$(TCLINCL) $(TCLFLAGS)
  

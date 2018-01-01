@@ -10,7 +10,7 @@ SRC_URI="http://xnc.jinr.ru/xwelltris/src/${P}.src.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="media-libs/libsdl[video]

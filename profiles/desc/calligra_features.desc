@@ -4,12 +4,7 @@
 # This file contains descriptions of CALLIGRA_FEATURES USE_EXPAND flags.
 
 # Keep it sorted.
-braindump - CALLIGRA_FEATURES option to build mindmap note collection application
-flow - CALLIGRA_FEATURES option to build flowcharting application
 karbon - CALLIGRA_FEATURES option to build vector image editor
-kexi - CALLIGRA_FEATURES option to build database manager
-krita - CALLIGRA_FEATURES option to build raster image editor
 plan - CALLIGRA_FEATURES option to build project planning component
 sheets - CALLIGRA_FEATURES option to build spreadsheet processor
-stage - CALLIGRA_FEATURES option to build presentation processor
 words - CALLIGRA_FEATURES option to build word processor

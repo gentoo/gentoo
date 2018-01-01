@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,7 +16,10 @@ IUSE="test"
 RDEPEND="sys-apps/tcp-wrappers"
 DEPEND="${RDEPEND}
 	dev-perl/Module-Build
-	test? ( virtual/perl-Test-Simple )
+	test? (
+		virtual/perl-Test-Simple
+		dev-perl/Test-Exception
+	)
 "
 
 SRC_TEST="do"

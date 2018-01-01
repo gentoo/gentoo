@@ -8,8 +8,9 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/systemd/systemd/archive/v${PV}.tar.gz -> ${P}.tar.gz
+		https://dev.gentoo.org/~floppym/dist/${P}-patches.tar.gz
 		!doc? ( https://dev.gentoo.org/~floppym/dist/${P}-man.tar.gz )"
-	KEYWORDS="alpha amd64 ~arm ~arm64 ia64 ppc ppc64 ~sparc x86"
+	KEYWORDS="alpha amd64 arm ~arm64 ia64 ppc ppc64 ~sparc x86"
 fi
 
 PYTHON_COMPAT=( python{3_4,3_5,3_6} )
@@ -56,9 +57,8 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.27.1:0=[${MULTILIB_USEDEP}]
 	qrcode? ( media-gfx/qrencode:0= )
 	seccomp? ( >=sys-libs/libseccomp-2.3.1:0= )
 	selinux? ( sys-libs/libselinux:0= )
-	sysv-utils? (
-		!sys-apps/systemd-sysv-utils
-		!sys-apps/sysvinit )
+	sysv-utils? ( !sys-apps/sysvinit )
+	!sysv-utils? ( sys-apps/sysvinit )
 	xkb? ( >=x11-libs/libxkbcommon-0.4.1:0= )
 	abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20130224-r9
 		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] )"
@@ -153,20 +153,14 @@ src_prepare() {
 	sed -i -e 's/GROUP="dialout"/GROUP="uucp"/' rules/*.rules || die
 
 	local PATCHES=(
-		"${FILESDIR}/233-0001-Avoid-strict-DM-interface-version-dependencies-5519.patch"
-		"${FILESDIR}/233-CVE-2017-9445.patch"
-		"${FILESDIR}/233-format-warnings.patch"
-		"${FILESDIR}/233-0002-core-load-fragment-refuse-units-with-errors-in-RootD.patch"
-		"${FILESDIR}/233-0003-core-load-fragment-refuse-units-with-errors-in-certa.patch"
 		"${FILESDIR}/CVE-2017-15908.patch"
-		"${FILESDIR}/CVE-2017-9217.patch"
 	)
 
 	if ! use vanilla; then
 		PATCHES+=(
-			"${FILESDIR}/218-Dont-enable-audit-by-default.patch"
-			"${FILESDIR}/228-noclean-tmp.patch"
-			"${FILESDIR}/233-systemd-user-pam.patch"
+			"${FILESDIR}/gentoo-Dont-enable-audit-by-default.patch"
+			"${FILESDIR}/gentoo-noclean-tmp.patch"
+			"${FILESDIR}/gentoo-systemd-user-pam.patch"
 		)
 	fi
 
@@ -362,11 +356,13 @@ multilib_src_install_all() {
 
 	# If we install these symlinks, there is no way for the sysadmin to remove them
 	# permanently.
-	rm "${D}"/etc/systemd/system/multi-user.target.wants/systemd-networkd.service || die
-	rm -f "${D}"/etc/systemd/system/multi-user.target.wants/systemd-resolved.service || die
-	rm -r "${D}"/etc/systemd/system/network-online.target.wants || die
-	rm -r "${D}"/etc/systemd/system/sockets.target.wants || die
-	rm -r "${D}"/etc/systemd/system/sysinit.target.wants || die
+	rm -f "${ED%/}"/etc/systemd/system/multi-user.target.wants/systemd-networkd.service || die
+	rm -f "${ED%/}"/etc/systemd/system/dbus-org.freedesktop.network1.service || die
+	rm -f "${ED%/}"/etc/systemd/system/multi-user.target.wants/systemd-resolved.service || die
+	rm -f "${ED%/}"/etc/systemd/system/dbus-org.freedesktop.resolve1.service || die
+	rm -fr "${ED%/}"/etc/systemd/system/network-online.target.wants || die
+	rm -fr "${ED%/}"/etc/systemd/system/sockets.target.wants || die
+	rm -fr "${ED%/}"/etc/systemd/system/sysinit.target.wants || die
 }
 
 migrate_locale() {

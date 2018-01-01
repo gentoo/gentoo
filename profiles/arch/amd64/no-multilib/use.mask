@@ -15,10 +15,6 @@ hvm
 # Mask multilib, since we cannot use it.
 multilib
 
-# 2009/05/11 Doug Goldstein <cardoe@gentoo.org>
-# Mask 32bit since this will always require emulation packages
-32bit
-
 # Michał Górny <mgorny@gentoo.org> (26 Jan 2013)
 # Mask the multilib flags back for non-multilib profile.
 abi_x86_32

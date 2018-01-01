@@ -13,7 +13,7 @@ I_TO_D_s3="unichrome"
 I_TO_D_sis="sis315"
 I_TO_D_via="cle266"
 # cyber5k davinci ep9x omap pxa3xx sh772x savage pvr2d
-IUSE_VIDEO_CARDS=" intel mach64 mga neomagic nsc nvidia r128 radeon s3 sis tdfx via vmware"
+IUSE_VIDEO_CARDS=" intel mach64 mga neomagic nvidia r128 radeon s3 sis tdfx via vmware"
 IUV=${IUSE_VIDEO_CARDS// / video_cards_}
 # echo `sed -n '/Possible inputdrivers are:/,/^$/{/\(Possible\|^input\)/d;s:\[ *::;s:\].*::;s:,::g;p}' configure.in`
 I_TO_D_elo2300="elo-input"

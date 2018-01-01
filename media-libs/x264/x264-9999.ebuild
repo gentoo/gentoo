@@ -8,8 +8,8 @@ inherit flag-o-matic multilib toolchain-funcs eutils multilib-minimal
 DESCRIPTION="A free library for encoding X264/AVC streams"
 HOMEPAGE="https://www.videolan.org/developers/x264.html"
 if [[ ${PV} == 9999 ]]; then
-	inherit git-2
-	EGIT_REPO_URI="git://git.videolan.org/x264.git"
+	inherit git-r3
+	EGIT_REPO_URI="https://git.videolan.org/git/x264.git"
 else
 	inherit versionator
 	MY_P="x264-snapshot-$(get_version_component_range 3)-2245"
@@ -22,7 +22,7 @@ SONAME="152"
 SLOT="0/${SONAME}"
 
 LICENSE="GPL-2"
-IUSE="10bit altivec +interlaced opencl pic static-libs cpu_flags_x86_sse +threads"
+IUSE="altivec +interlaced opencl pic static-libs cpu_flags_x86_sse +threads"
 
 ASM_DEP=">=dev-lang/nasm-2.13"
 DEPEND="abi_x86_32? ( ${ASM_DEP} )
@@ -54,7 +54,6 @@ multilib_src_configure() {
 		--enable-pic \
 		--enable-shared \
 		--host="${CHOST}" \
-		$(usex 10bit "--bit-depth=10" "") \
 		$(usex interlaced "" "--disable-interlaced") \
 		$(usex opencl "" "--disable-opencl") \
 		$(usex static-libs "--enable-static" "") \

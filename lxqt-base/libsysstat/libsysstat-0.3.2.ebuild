@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,7 +12,7 @@ if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="git://git.lxde.org/git/lxde/${PN}.git"
 else
 	SRC_URI="https://downloads.lxqt.org/${PN}/${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 x86"
 fi
 
 LICENSE="LGPL-2.1+"

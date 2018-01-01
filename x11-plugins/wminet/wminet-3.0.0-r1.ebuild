@@ -5,8 +5,8 @@ EAPI=5
 inherit eutils toolchain-funcs
 
 DESCRIPTION="dockapp for monitoring internet connections to and from your computer"
-HOMEPAGE="http://www.swanson.ukfsn.org/#wminet"
-SRC_URI="http://www.swanson.ukfsn.org/wmdock/${P}.tar.gz"
+HOMEPAGE="http://www.improbability.net/#wminet"
+SRC_URI="http://www.improbability.net/wmdock//${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

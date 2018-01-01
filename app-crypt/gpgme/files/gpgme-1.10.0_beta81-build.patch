@@ -1,0 +1,28 @@
+From 8ffc2c7809b47a87131cde38e14dc3941d13fa21 Mon Sep 17 00:00:00 2001
+From: Alon Bar-Lev <alon.barlev@gmail.com>
+Date: Wed, 29 Nov 2017 21:35:33 +0200
+Subject: [PATCH GPGME] tests: gpgsm: fix gpg-agent detection
+To: gnupg-devel@gnupg.org
+
+* tests/gpgsm/Makefile.am: set the GPG_AGENT var.
+
+Signed-off-by: Alon Bar-Lev <alon.barlev@gmail.com>
+---
+ tests/gpgsm/Makefile.am | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tests/gpgsm/Makefile.am b/tests/gpgsm/Makefile.am
+index 3774c5ff..4ab22833 100644
+--- a/tests/gpgsm/Makefile.am
++++ b/tests/gpgsm/Makefile.am
+@@ -20,6 +20,7 @@
+ ## Process this file with automake to produce Makefile.in
+ 
+ GPGSM = gpgsm
++GPG_AGENT = gpg-agent
+ 
+ TESTS_ENVIRONMENT = GNUPGHOME=$(abs_builddir) LC_ALL=C GPG_AGENT_INFO= \
+                     top_srcdir=$(top_srcdir)
+-- 
+2.13.6
+

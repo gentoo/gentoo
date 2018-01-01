@@ -58,6 +58,7 @@ S=${WORKDIR}/${PN}-$(get_version_component_range 1-3)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
+	setup-wxwidgets
 }
 
 src_configure() {

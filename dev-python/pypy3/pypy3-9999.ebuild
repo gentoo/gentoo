@@ -36,8 +36,16 @@ RDEPEND=">=sys-libs/zlib-1.1.3:0=
 	)
 	!dev-python/pypy3-bin:0"
 DEPEND="${RDEPEND}
-	low-memory? ( virtual/pypy:0 )
-	!low-memory? ( ${PYTHON_DEPS} )"
+	low-memory? ( virtual/pypy )
+	!low-memory? (
+		|| (
+			virtual/pypy
+			(
+				dev-lang/python:2.7
+				dev-python/pycparser[python_targets_python2_7(-),python_single_target_python2_7(+)]
+			)
+		)
+	)"
 #	doc? ( dev-python/sphinx )
 
 # Who would care about predictable directory names?
@@ -176,7 +184,7 @@ src_compile() {
 	einfo "Generating caches and CFFI modules ..."
 
 	# Generate Grammar and PatternGrammar pickles.
-	"${PYTHON}" -c "import lib2to3.pygram, lib2to3.patcomp; lib2to3.patcomp.PatternCompiler()" \
+	./pypy3-c -c "import lib2to3.pygram, lib2to3.patcomp; lib2to3.patcomp.PatternCompiler()" \
 		|| die "Generation of Grammar and PatternGrammar pickles failed"
 
 	# Generate cffi modules
@@ -229,6 +237,8 @@ src_install() {
 	doexe pypy3-c libpypy3-c.so
 	pax-mark m "${ED%/}${dest}/pypy3-c" "${ED%/}${dest}/libpypy3-c.so"
 	insinto "${dest}"
+	# preserve mtimes to avoid obsoleting caches
+	insopts -p
 	doins -r include lib_pypy lib-python
 	dosym ../$(get_libdir)/pypy3/pypy3-c /usr/bin/pypy3
 	dodoc README.rst

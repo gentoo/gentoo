@@ -4,7 +4,7 @@
 EAPI=2
 inherit eutils multilib toolchain-funcs
 
-DESCRIPTION="Low-level feature extraction plugins using Jamie Bullock's libxtract library to provide around 50 spectral and other features"
+DESCRIPTION="Vamp plugin encapsulating many of the functions of the LibXtract library"
 HOMEPAGE="http://www.vamp-plugins.org/"
 SRC_URI="http://code.soundsoftware.ac.uk/attachments/download/618/${P}.tar.gz"
 

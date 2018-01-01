@@ -1,11 +1,11 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit eutils
 
 DESCRIPTION="Window Maker dock app that provides a system tray for GNOME/KDE applications"
-SRC_URI="http://kai.vm.bytemark.co.uk/~arashi/wmsystray/release/${P}.tar.bz2"
-HOMEPAGE="http://kai.vm.bytemark.co.uk/~arashi/wmsystray/"
+HOMEPAGE="https://github.com/bbidulock/wmsystray"
+SRC_URI="https://github.com/bbidulock/wmsystray/releases/download/${PV}/${P}.tar.bz2"
 
 RDEPEND="x11-libs/libX11
 	x11-libs/libXpm"

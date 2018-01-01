@@ -13,5 +13,5 @@ HOMEPAGE="http://www.moddb.com/mods/bid-for-power"
 SRC_URI="mirror://quakeunity/modifications/bidforpower/bidforpower${PV/./-}.zip"
 
 LICENSE="freedist"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="dedicated opengl"

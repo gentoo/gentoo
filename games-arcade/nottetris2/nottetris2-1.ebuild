@@ -11,7 +11,7 @@ SRC_URI="http://stabyourself.net/dl.php?file=nottetris2/nottetris2-linux.zip -> 
 
 LICENSE="CC-BY-NC-SA-3.0"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 LVSLOT="0.7"
 RDEPEND=">=games-engines/love-0.7.2:${LVSLOT}

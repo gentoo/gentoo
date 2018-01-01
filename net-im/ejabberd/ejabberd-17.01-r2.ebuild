@@ -42,6 +42,7 @@ CDEPEND="
 	>=dev-erlang/stun-1.0.9
 	>=dev-erlang/xmpp-1.1.6
 	>=dev-lang/erlang-17.1[hipe?,odbc?,ssl]
+	!>=dev-lang/erlang-20.0
 	>=net-im/jabber-base-0.01
 	ldap? ( =net-nds/openldap-2* )
 	mysql? ( >=dev-erlang/p1_mysql-1.0.2 )

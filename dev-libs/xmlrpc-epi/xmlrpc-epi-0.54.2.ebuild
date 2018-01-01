@@ -1,9 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
-
-inherit multilib
+EAPI=6
 
 DESCRIPTION="Epinions implementation of XML-RPC protocol in C"
 HOMEPAGE="http://xmlrpc-epi.sourceforge.net/"
@@ -12,40 +10,32 @@ SRC_URI="mirror://sourceforge/xmlrpc-epi/${P}.tar.bz2"
 LICENSE="Epinions"
 SLOT="0"
 KEYWORDS="amd64 ~ppc ~x86"
-IUSE="examples static-libs"
+IUSE="static-libs"
 
-DEPEND="dev-libs/expat"
+DEPEND="dev-libs/expat:="
 RDEPEND="${DEPEND}"
 
-# NOTES:
-# to prevent conflict with xmlrpc-c, headers are installed in
-# 	/usr/include/${PN} instead of /usr/include (bug 274291)
-
-src_prepare() {
-	# do not build examples
-	sed -i -e "s:sample::" Makefile.in || die "sed failed"
-}
+PATCHES=( "${FILESDIR}"/${PN}-0.54.2-fix-build-system.patch )
 
 src_configure() {
+	# NOTES:
+	# to prevent conflict with xmlrpc-c, headers are installed in
+	# 	/usr/include/${PN} instead of /usr/include (bug 274291)
 	econf \
-		--includedir=/usr/include/${PN} \
-		--disable-dependency-tracking \
+		--includedir="${EPREFIX}"/usr/include/${PN} \
 		$(use_enable static-libs static)
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed"
+	default
 
 	if ! use static-libs; then
-		# remove useless la files
-		rm "${D}"/usr/$(get_libdir)/lib${PN}.la || die "rm failed"
+		# remove useless .la files
+		find "${D}" -name '*.la' -delete || die
 	fi
 
-	dodoc AUTHORS ChangeLog NEWS README || die "dodoc failed"
-
-	if use examples; then
-		insinto "/usr/share/doc/${PF}/examples"
-		doins sample/*.c sample/*.php || die "doins failed"
-		doins -r sample/tests || die "doins failed"
-	fi
+	docinto examples
+	docompress -x /usr/share/doc/${PF}/examples
+	dodoc sample/*.c sample/*.php
+	dodoc -r sample/tests
 }

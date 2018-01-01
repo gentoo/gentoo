@@ -1,11 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit eutils multilib toolchain-funcs
 
 DESCRIPTION="a dockapp showing fortune-mod messages"
-HOMEPAGE="http://dockapps.windowmaker.org/file.php/id/90"
-SRC_URI="http://dockapps.windowmaker.org/download.php/id/128/${P}.tar.gz"
+HOMEPAGE="http://www.dockapps.net/wmfortune"
+SRC_URI="http://www.dockapps.net/download/${P}.tar.gz"
 
 LICENSE="GPL-1"
 SLOT="0"

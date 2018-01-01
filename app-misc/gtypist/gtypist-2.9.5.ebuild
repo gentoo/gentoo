@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,7 +15,7 @@ KEYWORDS="amd64 ppc x86 ~amd64-linux"
 IUSE="nls emacs xemacs"
 
 DEPEND="
-	>=sys-libs/ncurses-5.2
+	>=sys-libs/ncurses-5.2:0=
 	emacs? ( virtual/emacs )
 	xemacs? ( !emacs? ( app-editors/xemacs app-xemacs/fsf-compat ) )
 "

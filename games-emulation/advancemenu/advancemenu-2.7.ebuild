@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/advancemame/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="alsa debug fbcon ncurses oss sdl slang truetype"
 
 RDEPEND="dev-libs/expat

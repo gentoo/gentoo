@@ -32,8 +32,8 @@ RDEPEND="
 	samba? ( >=gnome-base/gnome-vfs-2.0.0[samba] )
 	pdf? ( >=app-text/poppler-0.18 )
 	python? (
-            ${PYTHON_DEPS}
-            >=dev-python/gnome-vfs-python-2.0.0
+		${PYTHON_DEPS}
+		>=dev-python/gnome-vfs-python-2.0.0
 	)
 	taglib? ( >=media-libs/taglib-1.4 )
 "
@@ -46,7 +46,7 @@ DEPEND="
 "
 
 pkg_setup() {
-       use python && python-single-r1_pkg_setup
+	use python && python-single-r1_pkg_setup
 }
 
 src_configure() {

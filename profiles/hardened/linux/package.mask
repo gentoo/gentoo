@@ -6,13 +6,6 @@
 =sys-devel/gcc-4.1*
 =sys-devel/gcc-4.2*
 
-# Can't be used on hardened. See upstream,
-# http://developer.skype.com/jira/browse/SCL-616
-media-sound/skype-call-recorder
-net-im/skype
-net-im/skypetab-ng
-dev-python/skype4py
-
 # broken on hardened, use sys-apps/elfix to fix gnustack
 sys-devel/prelink
 # depends on prelink
@@ -22,7 +15,3 @@ app-crypt/hmaccalc
 # due to C99 struct init requirement by hardened kernels,
 # see bug 540196 comment 9.
 net-fs/openafs-kernel
-
-# broken on hardened bug #608788
-# localedef segfaults when running locale-gen
-=sys-libs/glibc-2.24-r1

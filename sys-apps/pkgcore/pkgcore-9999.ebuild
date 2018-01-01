@@ -26,10 +26,11 @@ if [[ ${PV} == *9999 ]] ; then
 else
 	SPHINX="doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
 fi
+RDEPEND="$(python_gen_cond_dep 'dev-python/pyblake2[${PYTHON_USEDEP}]' python{2_7,3_4,3_5})"
 if [[ ${PV} == *9999 ]]; then
-	RDEPEND="=dev-python/snakeoil-9999[${PYTHON_USEDEP}]"
+	RDEPEND+=" =dev-python/snakeoil-9999[${PYTHON_USEDEP}]"
 else
-	RDEPEND=">=dev-python/snakeoil-0.7.3[${PYTHON_USEDEP}]"
+	RDEPEND+=" >=dev-python/snakeoil-0.7.5[${PYTHON_USEDEP}]"
 fi
 DEPEND="${RDEPEND}
 	${SPHINX}

@@ -47,7 +47,7 @@ RDEPEND="
 	>=media-libs/taglib-1.7
 	media-libs/vamp-plugin-sdk
 	net-misc/curl
-	sci-libs/fftw:3.0
+	sci-libs/fftw:3.0[threads]
 	virtual/libusb:0
 	x11-libs/cairo
 	>=x11-libs/gtk+-2.8.1:2

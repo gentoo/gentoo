@@ -1,13 +1,7 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # Rick Farina <zerochaos@gentoo.org> (26 Nov 2012)
-# Newer then 300.00 is patched but we still have RWX in the libs.
-# We mask X for we still need to make the doc for revdep-pax else
-# hell will rule. Propogating change from amd64.
-# Bug 433121
-<=x11-drivers/nvidia-drivers-300.00
-#dev-util/nvidia-cuda-sdk
 # Need X
 media-video/nvidia-settings
 

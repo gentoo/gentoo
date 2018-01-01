@@ -10,7 +10,8 @@ inherit python-single-r1
 MY_PN=TeXamator
 
 DESCRIPTION="A program aimed at helping you making your exercise sheets"
-HOMEPAGE="http://snouffy.free.fr/blog-en/index.php/category/TeXamator"
+HOMEPAGE="http://alexisfles.ch/en/texamator/texamator.html
+	https://github.com/alexisflesch/texamator"
 SRC_URI="http://snouffy.free.fr/blog-en/public/${MY_PN}/${MY_PN}.v.${PV}.tar.gz"
 
 LICENSE="GPL-3"

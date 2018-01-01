@@ -23,7 +23,7 @@ IUSE="atm berkdb +iptables ipv6 minimal selinux"
 # We could make libmnl optional, but it's tiny, so eh
 RDEPEND="
 	!net-misc/arpd
-	!minimal? ( net-libs/libmnl )
+	!minimal? ( net-libs/libmnl virtual/libelf )
 	iptables? ( >=net-firewall/iptables-1.4.20:= )
 	berkdb? ( sys-libs/db:= )
 	atm? ( net-dialup/linux-atm )
@@ -34,7 +34,7 @@ DEPEND="
 	${RDEPEND}
 	app-arch/xz-utils
 	iptables? ( virtual/pkgconfig )
-	sys-devel/bison
+	>=sys-devel/bison-2.4
 	sys-devel/flex
 	>=sys-kernel/linux-headers-3.16
 	elibc_glibc? ( >=sys-libs/glibc-2.7 )
@@ -62,7 +62,7 @@ src_prepare() {
 	epatch "${PATCHES[@]}"
 
 	sed -i \
-		-e '/^CC :=/d' \
+		-e '/^CC :\?=/d' \
 		-e "/^LIBDIR/s:=.*:=/$(get_libdir):" \
 		-e "s:-O2:${CFLAGS} ${CPPFLAGS}:" \
 		-e "/^HOSTCC/s:=.*:= $(tc-getBUILD_CC):" \
@@ -103,6 +103,7 @@ src_configure() {
 	TC_CONFIG_IPSET := y
 	HAVE_BERKELEY_DB := $(usex berkdb y n)
 	HAVE_MNL      := $(usex minimal n y)
+	HAVE_ELF      := $(usex minimal n y)
 	HAVE_SELINUX  := $(usex selinux y n)
 	IP_CONFIG_SETNS := ${setns}
 	# Use correct iptables dir, #144265 #293709

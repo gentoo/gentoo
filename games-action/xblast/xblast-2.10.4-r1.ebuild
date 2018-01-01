@@ -54,7 +54,7 @@ src_install() {
 	cp -pPR "${WORKDIR}/${IMAGES}"/* "${D}/${IMAGE_INSTALL_DIR}" || die
 
 	# Levels
-	insinto "$/usr/share/${PN}/level"
+	insinto "/usr/share/${PN}/level"
 	doins "${WORKDIR}/${LEVELS}"/*
 
 	# Models

@@ -10,7 +10,7 @@ SRC_URI="http://rainemu.swishparty.co.uk/html/archive/raines-${PV}.tar.bz2"
 
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 IUSE=""
 
 RDEPEND="dev-cpp/muParser

@@ -44,8 +44,18 @@ src_compile() {
 }
 
 src_install() {
-	insinto /usr/share/${PN}
-	doins -r build/dist/{chrome,components,defaults,modules,wrappers,chrome.manifest,install.rdf}
+	local emid=$(sed -n '/<em:id>/!d; s/.*\({.*}\).*/\1/; p; q' build/dist/install.rdf)
+	[[ -n ${emid} ]] || die "Could not scrape EM:ID from install.rdf"
+
+	mv build/enigmail*.xpi build/"${emid}.xpi" || die 'Could not rename XPI to match EM:ID'
+
+	# thunderbird
+	insinto "/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}"
+	doins build/"${emid}.xpi"
+
+	# seamonkey
+	insinto "/usr/share/mozilla/extensions/{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}"
+	doins build/"${emid}.xpi"
 }
 
 pkg_postinst() {
@@ -57,4 +67,9 @@ pkg_postinst() {
 		ewarn "Please use 'eselect pinentry' to select either the gtk or qt front-end"
 		;;
 	esac
+	if [[ -n ${REPLACING_VERSIONS} ]]; then
+		elog
+		elog "Please restart thunderbird and/or seamonkey in order for them to use"
+		elog "the newly installed version of enigmail."
+	fi
 }

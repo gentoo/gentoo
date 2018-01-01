@@ -10,7 +10,7 @@ SRC_URI="http://www.nongnu.org/tong/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="media-libs/libsdl[sound,joystick,video]

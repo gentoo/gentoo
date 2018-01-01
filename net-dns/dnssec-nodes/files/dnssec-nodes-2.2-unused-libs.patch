@@ -1,0 +1,11 @@
+--- dnssec-nodes-2.2/dnssec-nodes.pro
++++ dnssec-nodes-2.2/dnssec-nodes.pro
+@@ -70,7 +70,7 @@
+ isEmpty(ANDROID_PLATFORM) {
+     QMAKE_LIBDIR     += ../../libval/.libs
+     QMAKE_LIBDIR     += ../../libsres/.libs
+-    LIBS        += -lval-threads -lsres -lnsl -lcrypto -lssl -lpthread
++    LIBS        += -lval-threads -lsres -lcrypto -lssl -lpthread
+     contains(MEEGO_EDITION,harmattan): {
+         QMAKE_LIBDIR += /scratchbox/users/hardaker/targets/HARMATTAN_ARMEL/usr/lib
+     } else:osx {

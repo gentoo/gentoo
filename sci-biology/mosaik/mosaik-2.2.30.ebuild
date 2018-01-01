@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,18 +11,15 @@ SRC_URI="https://github.com/wanpinglee/MOSAIK/archive/5c25216d3522d6a33e53875cd7
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE=""
 KEYWORDS="~amd64 ~x86"
-
-DEPEND=""
-RDEPEND=""
 
 S="${WORKDIR}/${P}/src"
 
 PATCHES=(
-	"${FILESDIR}/${P}-remove-platform-code.patch"
-	"${FILESDIR}/${P}-fix-build-system.patch"
-	"${FILESDIR}/${P}-Wformat-security.patch"
+	"${FILESDIR}"/${P}-remove-platform-code.patch
+	"${FILESDIR}"/${P}-fix-build-system.patch
+	"${FILESDIR}"/${P}-Wformat-security.patch
+	"${FILESDIR}"/${P}-gcc7.patch
 )
 
 src_configure() {

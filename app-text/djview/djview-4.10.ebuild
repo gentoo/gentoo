@@ -1,13 +1,13 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
 
-inherit autotools gnome2-utils fdo-mime flag-o-matic versionator toolchain-funcs multilib nsplugins
+inherit autotools gnome2-utils xdg-utils flag-o-matic versionator toolchain-funcs multilib nsplugins
 
 MY_P=${PN}-$(replace_version_separator 2 '-')
 
-DESCRIPTION="Portable DjVu viewer using Qt4"
+DESCRIPTION="Portable DjVu viewer using Qt"
 HOMEPAGE="http://djvu.sourceforge.net/djview4.html"
 SRC_URI="mirror://sourceforge/djvu/${MY_P}.tar.gz"
 
@@ -73,11 +73,11 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
 	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
 	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }

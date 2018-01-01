@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_4,3_5} pypy )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
 DISTUTILS_SINGLE_IMPL=1
 
 inherit distutils-r1 eutils systemd git-r3
@@ -59,6 +59,8 @@ python_install_all() {
 	newconfd files/gentoo-confd ${PN}
 	newinitd files/gentoo-initd ${PN}
 	systemd_dounit files/${PN}.service
+	sed -e "s:@BINDIR@:${EPREFIX}/usr/bin:g" files/${PN}.service.in > "${T}"/${PN}.service || die
+	systemd_dounit "${T}"/${PN}.service
 	systemd_dotmpfilesd files/${PN}-tmpfiles.conf
 	doman man/*.{1,5}
 
@@ -87,21 +89,19 @@ pkg_postinst() {
 		elog "http://www.fail2ban.org/wiki/index.php/HOWTO_Upgrade_from_0.6_to_0.8"
 	fi
 
-	if ! has_version ${CATEGORY}/${PN}; then
-		if ! has_version dev-python/pyinotify && ! has_version app-admin/gamin; then
-			elog "For most jail.conf configurations, it is recommended you install either"
-			elog "dev-python/pyinotify or app-admin/gamin (in order of preference)"
-			elog "to control how log file modifications are detected"
-		fi
+	if ! has_version dev-python/pyinotify && ! has_version app-admin/gamin; then
+		elog "For most jail.conf configurations, it is recommended you install either"
+		elog "dev-python/pyinotify or app-admin/gamin (in order of preference)"
+		elog "to control how log file modifications are detected"
+	fi
 
-		if ! has_version dev-lang/python[sqlite]; then
-			elog "If you want to use ${PN}'s persistent database, then reinstall"
-			elog "dev-lang/python with USE=sqlite"
-		fi
+	if ! has_version dev-lang/python[sqlite]; then
+		elog "If you want to use ${PN}'s persistent database, then reinstall"
+		elog "dev-lang/python with USE=sqlite"
+	fi
 
-		if has_version sys-apps/systemd[-python]; then
-			elog "If you want to track logins through sys-apps/systemd's"
-			elog "journal backend, then reinstall sys-apps/systemd with USE=python"
-		fi
+	if has_version sys-apps/systemd[-python]; then
+		elog "If you want to track logins through sys-apps/systemd's"
+		elog "journal backend, then reinstall sys-apps/systemd with USE=python"
 	fi
 }

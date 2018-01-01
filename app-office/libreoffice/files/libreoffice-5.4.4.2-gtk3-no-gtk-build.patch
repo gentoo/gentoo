@@ -1,0 +1,13 @@
+Fix build with USE="gtk3 -gtk"
+https://bugs.gentoo.org/641812
+
+--- a/vcl/unx/gtk3/gtk3gtkframe.cxx	2017-12-12 18:45:07.000000000 +0100
++++ b/vcl/unx/gtk3/gtk3gtkframe.cxx	2017-12-21 13:20:31.935843032 +0100
+@@ -21,6 +21,7 @@
+ #include <unx/gtk/gtkdata.hxx>
+ #include <unx/gtk/gtkinst.hxx>
+ #include <unx/gtk/gtkgdi.hxx>
++#include <unx/gtk/gtksalmenu.hxx>
+ #include <vcl/help.hxx>
+ #include <vcl/keycodes.hxx>
+ #include <vcl/layout.hxx>

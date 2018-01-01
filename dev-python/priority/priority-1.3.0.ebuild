@@ -12,12 +12,13 @@ SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ppc ppc64 x86"
+KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ppc ppc64 ~sparc x86"
 IUSE="test"
 
 RDEPEND=""
 
 DEPEND="
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		>=dev-python/pytest-2.9.2[${PYTHON_USEDEP}]
 		>=dev-python/pytest-cov-2.3.0[${PYTHON_USEDEP}]

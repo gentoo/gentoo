@@ -7,7 +7,8 @@ inherit cmake-utils
 
 DESCRIPTION="WYSIWYG Music Score Typesetter"
 HOMEPAGE="http://musescore.org/"
-SRC_URI="https://github.com/musescore/MuseScore/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/musescore/MuseScore/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://dev.gentoo.org/~mgorny/dist/${P}-fix-buildsystem.patch.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -41,7 +42,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	"
 PATCHES=(
-	"${FILESDIR}/${PN}-2.1.0-fix-buildsystem.patch"
+	"${WORKDIR}/${PN}-2.1.0-fix-buildsystem.patch"
 )
 S="${WORKDIR}/MuseScore-${PV}"
 

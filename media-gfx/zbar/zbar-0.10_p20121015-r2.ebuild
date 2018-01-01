@@ -14,7 +14,7 @@ SRC_URI="https://dev.gentoo.org/~xmw/zbar-0.10_p20121015.zip"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE="gtk imagemagick java jpeg python qt4 static-libs test +threads v4l X xv"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
 	test? ( X ${PYTHON_REQUIRED_USE} )"
@@ -36,7 +36,9 @@ CDEPEND="gtk? ( dev-libs/glib:2[${MULTILIB_USEDEP}]
 RDEPEND="${CDEPEND}
 	java? ( >=virtual/jre-1.4 )"
 DEPEND="${CDEPEND}
-	java? ( >=virtual/jdk-1.4 )
+	java? ( >=virtual/jdk-1.4
+		test? ( dev-java/junit:4
+			dev-java/hamcrest-core:1.3 ) )
 	test? ( ${PYTHON_DEPS} )
 	app-arch/unzip
 	sys-devel/gettext
@@ -60,6 +62,10 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-0.10-python-crash.patch \
 		"${FILESDIR}"/${PN}-0.10-v4l2-uvcvideo.patch
 
+	# fix use of deprecated qt4 function, bug 572488
+	sed -e 's:numBytes:byteCount:g' \
+		-i "${S}"/include/zbar/QZBarImage.h || die
+
 	if has_version '>=media-gfx/imagemagick-7.0.1.0' ; then
 		eapply "${FILESDIR}/${P}-ImageMagick-7.diff"
 	fi
@@ -79,15 +85,29 @@ multilib_src_configure() {
 	if multilib_is_native_abi && use java; then
 		export JAVACFLAGS="$(java-pkg_javac-args)"
 		export JAVA_CFLAGS="$(java-pkg_get-jni-cflags)"
+		if use test ; then # bug 629078
+			java-pkg_append_ CLASSPATH .
+			java-pkg_append_ CLASSPATH $(java-pkg_getjar --build-only junit-4 junit.jar)
+			java-pkg_append_ CLASSPATH $(java-pkg_getjar --build-only hamcrest-core-1.3 hamcrest-core.jar)
+		fi
 	fi
 
 	append-cppflags -DNDEBUG
+
+	# different flags for image/graphics magick (bug 552350)
+	myimagemagick="--without-imagemagick"
+	has_version media-gfx/imagemagick &&
+		myimagemagick="$(multilib_native_use_with imagemagick)"
+	mygraphicsmagick="--without-graphicsmagick"
+	has_version media-gfx/graphicsmagick &&
+		mygraphicsmagick="$(multilib_native_use_with imagemagick graphicsmagick)"
 	ECONF_SOURCE=${S} \
 	econf \
 		$(multilib_native_use_with java) \
 		$(use_with jpeg) \
 		$(use_with gtk) \
-		$(multilib_native_use_with imagemagick) \
+		${myimagemagick} \
+		${mygraphicsmagick} \
 		$(multilib_native_use_with python) \
 		$(use_with qt4 qt) \
 		$(use_enable static-libs static) \

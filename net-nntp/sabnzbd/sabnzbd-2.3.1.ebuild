@@ -40,13 +40,13 @@ IUSE="+7za +rar unzip"
 RDEPEND="
 	${PYTHON_DEPS}
 	>=app-arch/par2cmdline-0.4
-	>=dev-python/cheetah-2.0.1
-	dev-python/configobj
-	dev-python/cryptography
-	dev-python/feedparser
-	dev-python/gntp
-	dev-python/pythonutils
-	>=dev-python/sabyenc-3.3.1
+	>=dev-python/cheetah-2.0.1[${PYTHON_USEDEP}]
+	dev-python/configobj[${PYTHON_USEDEP}]
+	dev-python/cryptography[${PYTHON_USEDEP}]
+	dev-python/feedparser[${PYTHON_USEDEP}]
+	dev-python/gntp[${PYTHON_USEDEP}]
+	dev-python/pythonutils[${PYTHON_USEDEP}]
+	>=dev-python/sabyenc-3.3.1[${PYTHON_USEDEP}]
 	net-misc/wget
 	7za? ( app-arch/p7zip )
 	rar? ( || ( app-arch/unrar app-arch/rar ) )

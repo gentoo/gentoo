@@ -1,9 +1,9 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
+EAPI=6
 
-inherit eutils qt4-r2
+inherit desktop qmake-utils
 
 DESCRIPTION="Advanced file copying tool"
 HOMEPAGE="http://ultracopier.first-world.info/"
@@ -18,22 +18,25 @@ RDEPEND="dev-qt/qtgui:4"
 DEPEND="${RDEPEND}"
 
 src_prepare() {
-	local debugl=0
-	use debug && debugl=100
-	sed -i -e "s/\(DEBUG_ULTRACOPIER\) 0/\1 ${debugl}/" src/var.h || die
+	default
+	sed -i -e "s/\(DEBUG_ULTRACOPIER\) 0/\1 $(usex debug 100 0)/" src/var.h || die
+}
+
+src_configure() {
+	eqmake4
 }
 
 src_install() {
-	dodoc CHANGELOG README || die
+	einstalldocs
 
 	cd src || die
 	rm -f lang/en* lang/*.ts || die
 	rm -Rf styles/kde3 || die
 
-	dobin ${PN} || die
-	newicon other/${PN}-128x128.png ${PN}.png || die
-	domenu other/${PN}.desktop || die
+	dobin ${PN}
+	newicon other/${PN}-128x128.png ${PN}.png
+	domenu other/${PN}.desktop
 
 	insinto /usr/share/${PN}
-	doins -r lang styles || die
+	doins -r lang styles
 }

@@ -256,10 +256,12 @@ src_install() {
 
 	if use static-libs; then
 		dolib.a libdm/ioctl/libdevmapper.a
-		dolib.a libdaemon/client/libdaemonclient.a #462908
-		#gen_usr_ldscript libdevmapper.so
-		dolib.a daemons/dmeventd/libdevmapper-event.a
-		#gen_usr_ldscript libdevmapper-event.so
+		if use !device-mapper-only ; then
+			dolib.a libdaemon/client/libdaemonclient.a #462908
+			#gen_usr_ldscript libdevmapper.so
+			dolib.a daemons/dmeventd/libdevmapper-event.a
+			#gen_usr_ldscript libdevmapper-event.so
+		fi
 	else
 		rm -f "${ED}"usr/$(get_libdir)/{libdevmapper-event,liblvm2cmd,liblvm2app,libdevmapper}.a
 	fi

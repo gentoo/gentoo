@@ -13,13 +13,11 @@ fi
 
 DESCRIPTION="Accelerated Open Source driver for AMDGPU cards"
 
-IUSE="glamor"
-
 RDEPEND=">=x11-libs/libdrm-2.4.72[video_cards_amdgpu]
-	x11-base/xorg-server[glamor(-)?]"
+	x11-base/xorg-server[glamor(-)]"
 DEPEND="${RDEPEND}"
 
 src_configure() {
-	XORG_CONFIGURE_OPTIONS="$(use_enable glamor)"
+	XORG_CONFIGURE_OPTIONS="--enable-glamor"
 	xorg-2_src_configure
 }

@@ -1,0 +1,79 @@
+From dad750fadc926b62603cc9d64009ee5072a46d97 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Daniel=20Vr=C3=A1til?= <dvratil@kde.org>
+Date: Wed, 13 Sep 2017 16:51:14 +0200
+Subject: Adapt to KCalCore API changes
+
+This change supports both old (pre-QDateTime) and new version.
+
+Differential Revision: https://phabricator.kde.org/D7802
+
+* asturm: Incorporated fix from d204022e191d9377874689bfe4c89f7b83998188
+---
+ CMakeLists.txt                                      |  3 +++
+ app/utils/digikam_config.h.cmake.in                 |  3 +++
+ utilities/assistants/calendar/print/calsettings.cpp | 14 ++++++++++----
+ 3 files changed, 16 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3ad686d..e2f28a7 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -174,6 +174,9 @@ find_package(KF5 ${CALENDAR_MIN_VERSION} QUIET
+              OPTIONAL_COMPONENTS
+              CalendarCore           # For Calendar tool.
+ )
++if ("${KF5CalendarCore_VERSION}" VERSION_GREATER 5.6.40)
++    set(HAVE_KCALENDAR_QDATETIME TRUE)
++endif()
+ 
+ if(ENABLE_AKONADICONTACTSUPPORT AND NOT KF5AkonadiContact_FOUND)
+     set(ENABLE_KFILEMETADATASUPPORT OFF)
+diff --git a/app/utils/digikam_config.h.cmake.in b/app/utils/digikam_config.h.cmake.in
+index 8a2e8e5..ffd3a22 100644
+--- a/app/utils/digikam_config.h.cmake.in
++++ b/app/utils/digikam_config.h.cmake.in
+@@ -75,6 +75,9 @@
+ /* Define to 1 if you have KCalendar core shared libraries installed */
+ #cmakedefine HAVE_KCALENDAR 1
+ 
++/* Define to 1 if you have KCalendar core shared libraries with QDateTime support installed */
++#cmakedefine HAVE_KCALENDAR_QDATETIME 1
++
+ /* Define to 1 if Panorama tool is supported */
+ #cmakedefine HAVE_PANORAMA 1
+ 
+diff --git a/utilities/assistants/calendar/print/calsettings.cpp b/utilities/assistants/calendar/print/calsettings.cpp
+index 46e995d..c6554ef 100644
+--- a/utilities/assistants/calendar/print/calsettings.cpp
++++ b/utilities/assistants/calendar/print/calsettings.cpp
+@@ -295,7 +295,13 @@ void CalSettings::loadSpecial(const QUrl& url, const QColor& color)
+         return;
+     }
+ 
+-    KCalCore::MemoryCalendar::Ptr memCal(new KCalCore::MemoryCalendar(QTimeZone(0)));
++#ifdef HAVE_KCALENDAR_QDATETIME
++    KCalCore::MemoryCalendar::Ptr memCal(new KCalCore::MemoryCalendar(QTimeZone::utc()));
++    using DateTime = QDateTime;
++#else
++    KCalCore::MemoryCalendar::Ptr memCal(new KCalCore::MemoryCalendar(QString::fromLatin1("UTC")));
++    using DateTime = KDateTime;
++#endif
+     KCalCore::FileStorage::Ptr fileStorage(new KCalCore::FileStorage(memCal, url.toLocalFile(), new KCalCore::ICalFormat));
+ 
+     qCDebug(DIGIKAM_GENERAL_LOG) << "Loading calendar from file " << url.toLocalFile();
+@@ -313,9 +319,9 @@ void CalSettings::loadSpecial(const QUrl& url, const QColor& color)
+         qLast  = calSys.date(params.year + 1, 1, 1);
+         qLast  = qLast.addDays(-1);
+ 
+-        KDateTime dtFirst(qFirst);
+-        KDateTime dtLast(qLast);
+-        KDateTime dtCurrent;
++        DateTime dtFirst(qFirst, QTime(0, 0));
++        DateTime dtLast(qLast, QTime(0, 0));
++        DateTime dtCurrent;
+ 
+         int counter                = 0;
+         KCalCore::Event::List list = memCal->rawEvents(qFirst, qLast);
+-- 
+cgit v0.11.2
+

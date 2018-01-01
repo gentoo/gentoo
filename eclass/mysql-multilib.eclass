@@ -1,6 +1,7 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# @DEAD
 # @ECLASS: mysql-multilib.eclass
 # @MAINTAINER:
 # Maintainers:
@@ -17,6 +18,8 @@
 # It provides the src_unpack, src_prepare, src_configure, src_compile,
 # src_install, pkg_preinst, pkg_postinst, pkg_config and pkg_postrm
 # phase hooks.
+
+die "Please upgrade to mysql-multilib-r1.  This eclass is due to be removed."
 
 MYSQL_EXTRAS=""
 

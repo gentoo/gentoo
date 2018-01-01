@@ -18,5 +18,6 @@ nameserver performance.
 <use>
 	<flag name="luajit">Enable support for <pkg>dev-lang/luajit</pkg>.</flag>
 	<flag name="protobuf">Enable support for <pkg>dev-libs/protobuf</pkg>.</flag>
+	<flag name="sodium">Use <pkg>dev-libs/libsodium</pkg> for cryptography</flag>
 </use>
 </pkgmetadata>

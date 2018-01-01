@@ -1,0 +1,89 @@
+--- direwolf-1.4-orig/Makefile.linux
++++ direwolf-1.4/Makefile.linux
+@@ -484,11 +484,12 @@ direwolf.conf : generic.conf
+ # This is a step in the right direction but not sufficient to use /usr instead.
+ # Eventually I'd like to have targets here to build the .DEB and .RPM packages.
+ 
+-INSTALLDIR := /usr/local
++DESTDIR ?= /usr/local
++INSTALLDIR ?= $(DESTDIR)usr/
+ 
+ # Command to "install" to system directories.  Use "ginstall" for Mac.
+ 
+-INSTALL=install
++INSTALL=install 
+ 
+ # direwolf.desktop was previously handcrafted for the Raspberry Pi.
+ # It was hardcoded with lxterminal, /home/pi, and so on.
+@@ -554,56 +555,37 @@ install : $(APPS) direwolf.conf tocalls.txt symbols-new.txt symbolsX.txt dw-icon
+ #
+ # Misc. data such as "tocall" to system mapping.
+ #
+-	$(INSTALL) -D --mode=644 tocalls.txt /usr/share/direwolf/tocalls.txt
+-	$(INSTALL) -D --mode=644 symbols-new.txt /usr/share/direwolf/symbols-new.txt
+-	$(INSTALL) -D --mode=644 symbolsX.txt /usr/share/direwolf/symbolsX.txt
+-	$(INSTALL) -D --mode=644 dw-icon.png /usr/share/direwolf/dw-icon.png
+-	$(INSTALL) -D --mode=644 direwolf.desktop /usr/share/applications/direwolf.desktop
++	$(INSTALL) -D --mode=644 tocalls.txt $(INSTALLDIR)/share/direwolf/tocalls.txt
++	$(INSTALL) -D --mode=644 symbols-new.txt $(INSTALLDIR)/share/direwolf/symbols-new.txt
++	$(INSTALL) -D --mode=644 symbolsX.txt $(INSTALLDIR)/share/direwolf/symbolsX.txt
++	$(INSTALL) -D --mode=644 dw-icon.png $(INSTALLDIR)/share/direwolf/dw-icon.png
++	$(INSTALL) -D --mode=644 direwolf.desktop $(INSTALLDIR)/share/applications/direwolf.desktop
+ #
+ # Documentation.  Various plain text files and PDF.
+ #
+-	$(INSTALL) -D --mode=644 CHANGES.md $(INSTALLDIR)/share/doc/direwolf/CHANGES.md
+-	$(INSTALL) -D --mode=644 LICENSE-dire-wolf.txt $(INSTALLDIR)/share/doc/direwolf/LICENSE-dire-wolf.txt
+-	$(INSTALL) -D --mode=644 LICENSE-other.txt $(INSTALLDIR)/share/doc/direwolf/LICENSE-other.txt
+ #
+ # ./README.md is an overview for the project main page.
+ # doc/README.md contains an overview of the PDF file contents and is more useful here.
+ #
+-	$(INSTALL) -D --mode=644 doc/README.md $(INSTALLDIR)/share/doc/direwolf/README.md
+-	$(INSTALL) -D --mode=644 doc/User-Guide.pdf $(INSTALLDIR)/share/doc/direwolf/User-Guide.pdf
+-	$(INSTALL) -D --mode=644 doc/Raspberry-Pi-APRS.pdf $(INSTALLDIR)/share/doc/direwolf/Raspberry-Pi-APRS.pdf
+-	$(INSTALL) -D --mode=644 doc/Raspberry-Pi-APRS-Tracker.pdf $(INSTALLDIR)/share/doc/direwolf/Raspberry-Pi-APRS-Tracker.pdf
+-	$(INSTALL) -D --mode=644 doc/Raspberry-Pi-SDR-IGate.pdf $(INSTALLDIR)/share/doc/direwolf/Raspberry-Pi-SDR-IGate.pdf
+-	$(INSTALL) -D --mode=644 doc/APRStt-Implementation-Notes.pdf $(INSTALLDIR)/share/doc/direwolf/APRStt-Implementation-Notes.pdf
+-	$(INSTALL) -D --mode=644 doc/APRStt-interface-for-SARTrack.pdf $(INSTALLDIR)/share/doc/direwolf/APRStt-interface-for-SARTrack.pdf
+-	$(INSTALL) -D --mode=644 doc/APRS-Telemetry-Toolkit.pdf $(INSTALLDIR)/share/doc/direwolf/APRS-Telemetry-Toolkit.pdf
+-	$(INSTALL) -D --mode=644 doc/A-Better-APRS-Packet-Demodulator-Part-1-1200-baud.pdf $(INSTALLDIR)/share/doc/direwolf/A-Better-APRS-Packet-Demodulator-Part-1-1200-baud.pdf
+-	$(INSTALL) -D --mode=644 doc/A-Better-APRS-Packet-Demodulator-Part-2-9600-baud.pdf $(INSTALLDIR)/share/doc/direwolf/A-Better-APRS-Packet-Demodulator-Part-2-9600-baud.pdf
+ #
+ # Various sample config and other files go into examples under the doc directory.
+ # When building from source, these can be put in home directory with "make install-conf".
+ # When installed from .DEB or .RPM package, the user will need to copy these to
+ # the home directory or other desired location.
+ #
+-	$(INSTALL) -D --mode=644 direwolf.conf $(INSTALLDIR)/share/doc/direwolf/examples/direwolf.conf
+-	$(INSTALL) -D --mode=755 dw-start.sh $(INSTALLDIR)/share/doc/direwolf/examples/dw-start.sh
+-	$(INSTALL) -D --mode=644 sdr.conf $(INSTALLDIR)/share/doc/direwolf/examples/sdr.conf
+-	$(INSTALL) -D --mode=644 telemetry-toolkit/telem-m0xer-3.txt $(INSTALLDIR)/share/doc/direwolf/examples/telem-m0xer-3.txt
+-	$(INSTALL) -D --mode=644 telemetry-toolkit/telem-balloon.conf $(INSTALLDIR)/share/doc/direwolf/examples/telem-balloon.conf
+-	$(INSTALL) -D --mode=644 telemetry-toolkit/telem-volts.conf $(INSTALLDIR)/share/doc/direwolf/examples/telem-volts.conf
+ #
+ # "man" pages
+ #
+-	$(INSTALL) -D --mode=644 man1/aclients.1 $(INSTALLDIR)/man/man1/aclients.1
+-	$(INSTALL) -D --mode=644 man1/atest.1 $(INSTALLDIR)/man/man1/atest.1
+-	$(INSTALL) -D --mode=644 man1/decode_aprs.1 $(INSTALLDIR)/man/man1/decode_aprs.1
+-	$(INSTALL) -D --mode=644 man1/direwolf.1 $(INSTALLDIR)/man/man1/direwolf.1
+-	$(INSTALL) -D --mode=644 man1/gen_packets.1 $(INSTALLDIR)/man/man1/gen_packets.1
+-	$(INSTALL) -D --mode=644 man1/ll2utm.1 $(INSTALLDIR)/man/man1/ll2utm.1
+-	$(INSTALL) -D --mode=644 man1/log2gpx.1 $(INSTALLDIR)/man/man1/log2gpx.1
+-	$(INSTALL) -D --mode=644 man1/text2tt.1 $(INSTALLDIR)/man/man1/text2tt.1
+-	$(INSTALL) -D --mode=644 man1/tt2text.1 $(INSTALLDIR)/man/man1/tt2text.1
+-	$(INSTALL) -D --mode=644 man1/utm2ll.1 $(INSTALLDIR)/man/man1/utm2ll.1
++	$(INSTALL) -D --mode=644 man1/aclients.1 $(INSTALLDIR)/share/man/man1/aclients.1
++	$(INSTALL) -D --mode=644 man1/atest.1 $(INSTALLDIR)/share/man/man1/atest.1
++	$(INSTALL) -D --mode=644 man1/decode_aprs.1 $(INSTALLDIR)/share/man/man1/decode_aprs.1
++	$(INSTALL) -D --mode=644 man1/direwolf.1 $(INSTALLDIR)/share/man/man1/direwolf.1
++	$(INSTALL) -D --mode=644 man1/gen_packets.1 $(INSTALLDIR)/share/man/man1/gen_packets.1
++	$(INSTALL) -D --mode=644 man1/ll2utm.1 $(INSTALLDIR)/share/man/man1/ll2utm.1
++	$(INSTALL) -D --mode=644 man1/log2gpx.1 $(INSTALLDIR)/share/man/man1/log2gpx.1
++	$(INSTALL) -D --mode=644 man1/text2tt.1 $(INSTALLDIR)/share/man/man1/text2tt.1
++	$(INSTALL) -D --mode=644 man1/tt2text.1 $(INSTALLDIR)/share/man/man1/tt2text.1
++	$(INSTALL) -D --mode=644 man1/utm2ll.1 $(INSTALLDIR)/share/man/man1/utm2ll.1
+ #
+ 	@echo " "
+ 	@echo "If this is your first install, not an upgrade, type this to put a copy"

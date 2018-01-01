@@ -10,7 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">raoulh/moolticute</remote-id>
-		<bugs-to>https://github.com/raoulh/moolticute/issues</bugs-to>
+		<remote-id type="github">mooltipass/moolticute</remote-id>
+		<bugs-to>https://github.com/mooltipass/moolticute/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

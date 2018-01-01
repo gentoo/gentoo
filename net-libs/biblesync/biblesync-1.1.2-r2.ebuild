@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/gnomesword/${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="static"
 
 DEPEND="dev-util/cmake"

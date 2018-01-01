@@ -1,0 +1,47 @@
+From d34a898bb8d8bfd9cb4a85ff880826e4c7f2b0f7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Mon, 1 Jan 2018 12:31:52 +0100
+Subject: [PATCH 1/2] test: Always allow greater patch-version of SDL2
+
+Similarly to sdlimage_test, allow newer patch-version of other SDL2
+libraries. There is no technical reason to prevent people from upgrading
+libsdl2 while having old PySDL2 installed, and there is no reason to
+make tests fail every time libsdl2 happens to be upgraded.
+
+(backported for 0.9.6)
+
+Closes: https://github.com/marcusva/py-sdl2/issues/115
+---
+ sdl2/test/sdlmixer_test.py | 2 +-
+ sdl2/test/version_test.py  | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/sdl2/test/sdlmixer_test.py b/sdl2/test/sdlmixer_test.py
+index 00c2ca6..1cebe55 100644
+--- a/sdl2/test/sdlmixer_test.py
++++ b/sdl2/test/sdlmixer_test.py
+@@ -27,7 +27,7 @@ class SDLMixerTest(unittest.TestCase):
+         self.assertIsInstance(v.contents, version.SDL_version)
+         self.assertEqual(v.contents.major, 2)
+         self.assertEqual(v.contents.minor, 0)
+-        self.assertEqual(v.contents.patch, 1)
++        self.assertGreaterEqual(v.contents.patch, 1)
+ 
+ if __name__ == '__main__':
+     sys.exit(unittest.main())
+diff --git a/sdl2/test/version_test.py b/sdl2/test/version_test.py
+index 51b5065..60e5bcf 100644
+--- a/sdl2/test/version_test.py
++++ b/sdl2/test/version_test.py
+@@ -25,7 +25,7 @@ class SDLVersionTest(unittest.TestCase):
+         self.assertEqual(type(v), version.SDL_version)
+         self.assertEqual(v.major, 2)
+         self.assertEqual(v.minor, 0)
+-        self.assertEqual(v.patch, 6)
++        self.assertGreaterEqual(v.patch, 6)
+ 
+     def test_SDL_VERSIONNUM(self):
+         self.assertEqual(version.SDL_VERSIONNUM(1, 2, 3), 1203)
+-- 
+2.16.0.rc0
+

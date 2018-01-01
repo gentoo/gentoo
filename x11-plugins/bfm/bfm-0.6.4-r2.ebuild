@@ -1,12 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit eutils multilib toolchain-funcs
 
 DESCRIPTION="a dockapp and gkrellm plug-in combining timecop's bubblemon and wmfishtime"
-HOMEPAGE="http://www.jnrowe.ukfsn.org/projects/bfm.html"
-SRC_URI="http://www.jnrowe.ukfsn.org/files/${P}.tar.bz2"
+HOMEPAGE="https://github.com/JNRowe-retired/bfm"
+SRC_URI="https://github.com/JNRowe-retired/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

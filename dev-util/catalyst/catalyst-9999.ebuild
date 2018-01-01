@@ -16,7 +16,7 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
 fi
 
-PYTHON_COMPAT=( python{3_4,3_5} )
+PYTHON_COMPAT=( python{3_4,3_5,3_6} )
 
 inherit distutils-r1 multilib ${SRC_ECLASS}
 
@@ -35,18 +35,20 @@ RDEPEND="
 	=dev-python/pydecomp-9999[${PYTHON_USEDEP}]
 	app-arch/lbzip2
 	app-crypt/shash
-	app-arch/tar[xattr]
+	sys-fs/dosfstools
+	!kernel_FreeBSD? ( || ( app-arch/tar[xattr] app-arch/libarchive[xattr] ) )
+	kernel_FreeBSD? ( app-arch/libarchive[xattr] )
 	virtual/cdrtools
 	amd64? ( >=sys-boot/syslinux-3.72 )
-	ia64? ( sys-fs/dosfstools )
 	x86? ( >=sys-boot/syslinux-3.72 )
 	ccache? ( dev-util/ccache )
 	kernel_linux? ( app-misc/zisofs-tools >=sys-fs/squashfs-tools-2.1 )
 "
 
 python_prepare_all() {
+	python_setup
 	echo VERSION="${PV}" "${PYTHON}" setup.py set_version
-	VERSION="${PV}" "${PYTHON}" setup.py set_version
+	VERSION="${PV}" "${PYTHON}" setup.py set_version || die
 	distutils-r1_python_prepare_all
 }
 

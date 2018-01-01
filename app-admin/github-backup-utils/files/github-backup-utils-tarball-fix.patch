@@ -1,0 +1,39 @@
+commit ef6709b5e3510a7d0bcf0db91dbf5af5bc27b001
+Author: Austin English <austinenglish@gmail.com>
+Date:   Tue Nov 28 16:36:39 2017 -0600
+
+    test/test-ghe-backup.sh: skip test if not in a git checkout
+
+diff --git a/test/test-ghe-backup.sh b/test/test-ghe-backup.sh
+index 296429e..08bced2 100755
+--- a/test/test-ghe-backup.sh
++++ b/test/test-ghe-backup.sh
+@@ -475,14 +475,20 @@ begin_test "ghe-backup stores version when not run from a clone"
+   # Make sure this doesn't exist
+   rm -f "$GHE_REMOTE_DATA_USER_DIR/common/backup-utils-version"
+ 
+-  tmpdir=$(mktemp -d $TRASHDIR/foo.XXXXXX)
+-  git clone $ROOTDIR $tmpdir/backup-utils
+-  cd $tmpdir/backup-utils
+-  rm -rf .git
+-  ./bin/ghe-backup
+-
+-  # verify that ghe-backup wrote its version information to the host
+-  [ -f "$GHE_REMOTE_DATA_USER_DIR/common/backup-utils-version" ]
++  tmpdir=$(mktemp -d "$TRASHDIR/foo.XXXXXX")
++
++  # If user is running the tests extracted from a release tarball, git clone will fail.
++  if GIT_DIR="$ROOTDIR/.git" git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
++      git clone "$ROOTDIR" "$tmpdir/backup-utils"
++      cd "$tmpdir/backup-utils"
++      rm -rf .git
++      ./bin/ghe-backup
++
++      # Verify that ghe-backup wrote its version information to the host
++      [ -f "$GHE_REMOTE_DATA_USER_DIR/common/backup-utils-version" ]
++  else
++      echo ".git directory not found, skipping ghe-backup not from a clone test"
++  fi
+ )
+ end_test
+ 

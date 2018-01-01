@@ -7,7 +7,8 @@ inherit eutils flag-o-matic toolchain-funcs multilib
 
 DESCRIPTION="Computer-aided number theory C library and tools"
 HOMEPAGE="http://pari.math.u-bordeaux.fr/"
-SRC_URI="http://pari.math.u-bordeaux.fr/pub/${PN}/unix/${P}.tar.gz"
+SRC_URI="http://pari.math.u-bordeaux.fr/pub/${PN}/unix/${P}.tar.gz
+	https://dev.gentoo.org/~mgorny/dist/${P}-patchset.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0/4"
@@ -34,18 +35,18 @@ get_compile_dir() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-2.3.2-strip.patch
-	epatch "${FILESDIR}"/${PN}-2.3.2-ppc-powerpc-arch-fix.patch
+	epatch "${WORKDIR}"/${P}-patchset/${PN}-2.3.2-strip.patch
+	epatch "${WORKDIR}"/${P}-patchset/${PN}-2.3.2-ppc-powerpc-arch-fix.patch
 	# fix parallel make
-	epatch "${FILESDIR}"/${PN}-2.7.0-doc-make.patch
+	epatch "${WORKDIR}"/${P}-patchset/${PN}-2.7.0-doc-make.patch
 	# fix automagic
-	epatch "${FILESDIR}"/${PN}-2.7.0-no-automagic.patch
+	epatch "${WORKDIR}"/${P}-patchset/${PN}-2.7.0-no-automagic.patch
 	# sage-on-gentoo trac 15654: PARI discriminant speed depends on stack size
-	epatch "${FILESDIR}"/${PN}-2.7.0-slow-discriminant.patch
+	epatch "${WORKDIR}"/${P}-patchset/${PN}-2.7.0-slow-discriminant.patch
 	# Fix Perl 5.26
-	epatch "${FILESDIR}/"${PN}-2.7.0-no-dot-inc.patch
+	epatch "${WORKDIR}"/${P}-patchset/${PN}-2.7.0-no-dot-inc.patch
 	# fix building docs with perl-5.22
-	epatch "${FILESDIR}"/${PN}-2.7.1-perl-5.22-doc.patch
+	epatch "${WORKDIR}"/${P}-patchset/${PN}-2.7.1-perl-5.22-doc.patch
 
 	# disable default building of docs during install
 	sed -i \

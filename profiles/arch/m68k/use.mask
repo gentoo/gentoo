@@ -56,7 +56,6 @@ emf
 R
 octave
 bluetooth
-autotrace
 lqr
 policykit
 bash-completion

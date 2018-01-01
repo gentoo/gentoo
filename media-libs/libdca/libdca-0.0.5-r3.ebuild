@@ -5,8 +5,8 @@ EAPI=5
 inherit autotools eutils flag-o-matic multilib multilib-minimal
 
 DESCRIPTION="library for decoding DTS Coherent Acoustics streams used in DVD"
-HOMEPAGE="http://www.videolan.org/developers/libdca.html"
-SRC_URI="http://www.videolan.org/pub/videolan/${PN}/${PV}/${P}.tar.bz2
+HOMEPAGE="https://www.videolan.org/developers/libdca.html"
+SRC_URI="https://www.videolan.org/pub/videolan/${PN}/${PV}/${P}.tar.bz2
 	mirror://gentoo/${P}-constant.patch.bz2"
 
 LICENSE="GPL-2"

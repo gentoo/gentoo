@@ -12,7 +12,7 @@ HOMEPAGE="http://www.orangesmoothie.org/"
 SRC_URI="http://osp.dget.cc/orangesmoothie/downloads/osp-Quake3-${PV}_full.zip"
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="dedicated opengl"
 
 src_prepare() {

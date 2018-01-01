@@ -4,7 +4,7 @@
 EAPI=6
 inherit autotools eutils
 
-DESCRIPTION="GTK+ MUD client with ANSI color, macros, timers, triggers, variables, and an easy scripting language"
+DESCRIPTION="GTK+ MUD client with many features and an easy scripting language"
 HOMEPAGE="http://dw.nl.eu.org/mudix.html"
 SRC_URI="http://dw.nl.eu.org/gmudix/${P}.tar.gz"
 

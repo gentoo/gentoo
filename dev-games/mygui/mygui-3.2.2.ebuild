@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -36,17 +36,17 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/mygui-${MY_P}
 STATIC_BUILD=${WORKDIR}/${P}_build_static
 
+PATCHES=(
+	"${FILESDIR}"/${P}-underlinking.patch
+	"${FILESDIR}"/${P}-build.patch
+	"${FILESDIR}"/${P}-FHS.patch
+)
+
 pkg_setup() {
 	if use samples && use !ogre ; then
 		ewarn "Samples disabled, because they only work with ogre!"
 		ewarn "Enable ogre USE flag if you want to use samples."
 	fi
-}
-
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-underlinking.patch \
-		"${FILESDIR}"/${P}-build.patch \
-		"${FILESDIR}"/${P}-FHS.patch
 }
 
 src_configure() {
@@ -129,14 +129,14 @@ src_install() {
 	fperms o+w /etc/MYGUI
 
 	# test media not needed at runtime
-	rm -rf "${D}"/usr/share/MYGUI/Media/UnitTests
+	rm -rf "${ED%/}"/usr/share/MYGUI/Media/UnitTests || die
 	# wrapper not available for linux, remove related media
-	rm -rf "${D}"/usr/share/MYGUI/Media/Wrapper
+	rm -rf "${ED%/}"/usr/share/MYGUI/Media/Wrapper || die
 }
 
 pkg_postinst() {
-	einfo
+	elog
 	elog "ogre.cfg and Ogre.log are created as"
-	elog "/etc/MYGUI/mygui-ogre.cfg and /etc/MYGUI/mygui-Ogre.log"
-	einfo
+	elog "${EROOT%/}/etc/MYGUI/mygui-ogre.cfg and /etc/MYGUI/mygui-Ogre.log"
+	elog
 }

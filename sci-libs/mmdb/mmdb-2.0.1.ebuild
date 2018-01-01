@@ -7,7 +7,7 @@ inherit autotools-utils
 
 MY_P="${PN}2-${PV}"
 
-DESCRIPTION="The Coordinate Library, designed to assist CCP4 developers in working with coordinate files"
+DESCRIPTION="The Coordinate Library for working with CCP4 coordinate files"
 HOMEPAGE="https://launchpad.net/mmdb/"
 SRC_URI="ftp://ftp.ccp4.ac.uk/opensource/${MY_P}.tar.gz"
 

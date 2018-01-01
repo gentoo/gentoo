@@ -3,8 +3,8 @@
 
 EAPI=5
 
-MOD_DESC="Community Bonus Pack 2 volumes 1 and 2"
-MOD_NAME="Community Bonus Pack 2 volumes 1 and 2"
+MOD_DESC="Community Bonus Pack 2 Vol 1 and 2"
+MOD_NAME="Community Bonus Pack 2 Vol 1 and 2"
 
 inherit games games-mods
 
@@ -13,7 +13,7 @@ SRC_URI="https://ut.rushbase.net/beyondunreal/official/ut2004/cbp2-volume1_zip.z
 	https://ut.rushbase.net/beyondunreal/official/ut2004/cbp2-volume2_zip.zip"
 
 LICENSE="freedist"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="games-fps/ut2004-bonuspack-cbp1

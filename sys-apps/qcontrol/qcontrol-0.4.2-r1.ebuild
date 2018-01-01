@@ -3,7 +3,7 @@
 
 inherit eutils toolchain-funcs
 
-DESCRIPTION="Allows to send commands to some microcontrollers, for example to change leds or sound a buzzer"
+DESCRIPTION="Send commands to some microcontrollers, e.g., to change LEDs or sound a buzzer"
 HOMEPAGE="http://qnap.nas-central.org/index.php/PIC_Control_Software"
 SRC_URI="mirror://debian/pool/main/q/qcontrol/${P/-/_}.orig.tar.gz
 	mirror://debian/pool/main/q/qcontrol/${P/-/_}-6.diff.gz"

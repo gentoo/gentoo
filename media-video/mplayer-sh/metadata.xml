@@ -6,6 +6,6 @@
 		<name>Gentoo VDR Project</name>
 	</maintainer>
 	<longdescription lang="en">
-	  API script between Plugin vdr-mplayer and mplayer.
+		API script between Plugin vdr-mplayer and mplayer.
 	</longdescription>
 </pkgmetadata>

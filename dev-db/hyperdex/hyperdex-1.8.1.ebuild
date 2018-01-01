@@ -35,7 +35,7 @@ DEPEND="
 	>=dev-libs/replicant-0.8
 	>=dev-libs/libmacaroons-0.3
 	>=dev-libs/libtreadstone-0.2
-	dev-libs/json-c
+	dev-libs/json-c:=
 	python? ( ${PYTHON_DEPS} )"
 RDEPEND="${DEPEND}"
 

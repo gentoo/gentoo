@@ -6,6 +6,7 @@
 # qt@gentoo.org
 # @AUTHOR:
 # Davide Pesavento <pesa@gentoo.org>
+# @SUPPORTED_EAPIS: 6
 # @BLURB: Eclass for Qt5 split ebuilds.
 # @DESCRIPTION:
 # This eclass contains various functions that are used when building Qt5.
@@ -21,9 +22,10 @@ case ${EAPI} in
 esac
 
 # @ECLASS-VARIABLE: QT5_MODULE
+# @PRE_INHERIT
 # @DESCRIPTION:
 # The upstream name of the module this package belongs to. Used for
-# SRC_URI and EGIT_REPO_URI. Must be defined before inheriting the eclass.
+# SRC_URI and EGIT_REPO_URI. Must be set before inheriting the eclass.
 : ${QT5_MODULE:=${PN}}
 
 # @ECLASS-VARIABLE: QT5_TARGET_SUBDIRS
@@ -50,18 +52,12 @@ esac
 inherit estack flag-o-matic ltprune toolchain-funcs versionator virtualx
 
 HOMEPAGE="https://www.qt.io/"
+LICENSE="|| ( GPL-2 GPL-3 LGPL-3 ) FDL-1.3"
+SLOT=5/$(get_version_component_range 1-2)
 
 QT5_MINOR_VERSION=$(get_version_component_range 2)
 QT5_PATCH_VERSION=$(get_version_component_range 3)
 readonly QT5_MINOR_VERSION QT5_PATCH_VERSION
-
-if [[ ${QT5_MINOR_VERSION} -ge 7 ]]; then
-	LICENSE="|| ( GPL-2 GPL-3 LGPL-3 ) FDL-1.3"
-else
-	LICENSE="|| ( LGPL-2.1 LGPL-3 ) FDL-1.3"
-fi
-
-SLOT=5/$(get_version_component_range 1-2)
 
 case ${PV} in
 	5.9999)
@@ -77,14 +73,26 @@ case ${PV} in
 	*_alpha*|*_beta*|*_rc*)
 		# development release
 		QT5_BUILD_TYPE="release"
-		MY_P=${QT5_MODULE}-opensource-src-${PV/_/-}
+
+		if [[ ${QT5_MINOR_VERSION} -ge 10 ]]; then
+			MY_P=${QT5_MODULE}-everywhere-src-${PV/_/-}
+		else
+			MY_P=${QT5_MODULE}-opensource-src-${PV/_/-}
+		fi
+
 		SRC_URI="https://download.qt.io/development_releases/qt/${PV%.*}/${PV/_/-}/submodules/${MY_P}.tar.xz"
 		S=${WORKDIR}/${MY_P}
 		;;
 	*)
 		# official stable release
 		QT5_BUILD_TYPE="release"
-		MY_P=${QT5_MODULE}-opensource-src-${PV}
+
+		if [[ ${QT5_MINOR_VERSION} -ge 10 ]]; then
+			MY_P=${QT5_MODULE}-everywhere-src-${PV}
+		else
+			MY_P=${QT5_MODULE}-opensource-src-${PV}
+		fi
+
 		SRC_URI="https://download.qt.io/official_releases/qt/${PV%.*}/${PV}/submodules/${MY_P}.tar.xz"
 		S=${WORKDIR}/${MY_P}
 		;;
@@ -98,6 +106,7 @@ EGIT_REPO_URI=(
 [[ ${QT5_BUILD_TYPE} == live ]] && inherit git-r3
 
 # @ECLASS-VARIABLE: QT5_BUILD_DIR
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # Build directory for out-of-source builds.
 case ${QT5_BUILD_TYPE} in
@@ -131,10 +140,7 @@ EXPORT_FUNCTIONS src_unpack src_prepare src_configure src_compile src_install sr
 # Unpacks the sources.
 qt5-build_src_unpack() {
 	if tc-is-gcc; then
-		local min_gcc4_minor_version=5
-		if [[ ${QT5_MINOR_VERSION} -ge 7 || ${PN} == qtwebengine ]]; then
-			min_gcc4_minor_version=7
-		fi
+		local min_gcc4_minor_version=7
 		if [[ $(gcc-major-version) -lt 4 ]] || \
 		   [[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt ${min_gcc4_minor_version} ]]; then
 			eerror "GCC version 4.${min_gcc4_minor_version} or later is required to build this package"
@@ -268,21 +274,9 @@ qt5-build_src_install() {
 	if [[ ${PN} == qtcore ]]; then
 		pushd "${QT5_BUILD_DIR}" >/dev/null || die
 
-		local qmake_install_target=install_qmake
-		if [[ ${QT5_MINOR_VERSION} -ge 7 ]]; then
-			# qmake/qmake-aux.pro
-			qmake_install_target=sub-qmake-qmake-aux-pro-install_subtargets
-		fi
-
-		local global_docs_install_target=
-		if [[ ${QT5_MINOR_VERSION} -le 6 && ${QT5_PATCH_VERSION} -le 2 ]]; then
-			global_docs_install_target=install_global_docs
-		fi
-
 		set -- emake INSTALL_ROOT="${D}" \
-			${qmake_install_target} \
-			install_{syncqt,mkspecs} \
-			${global_docs_install_target}
+			sub-qmake-qmake-aux-pro-install_subtargets \
+			install_{syncqt,mkspecs}
 
 		einfo "Running $*"
 		"$@"
@@ -585,7 +579,7 @@ qt5_base_configure() {
 		# prefer system libraries (only common hard deps here)
 		-system-zlib
 		-system-pcre
-		$([[ ${QT5_MINOR_VERSION} -ge 7 ]] && echo -system-doubleconversion)
+		-system-doubleconversion
 
 		# disable everything to prevent automagic deps (part 1)
 		-no-mtdev
@@ -603,7 +597,7 @@ qt5_base_configure() {
 		-glib
 
 		# disable everything to prevent automagic deps (part 2)
-		$([[ ${QT5_MINOR_VERSION} -ge 7 ]] && echo -no-gtk || echo -no-gtkstyle)
+		-no-gtk
 		$([[ ${QT5_MINOR_VERSION} -lt 8 ]] && echo -no-pulseaudio -no-alsa)
 
 		# exclude examples and tests from default build
@@ -638,8 +632,8 @@ qt5_base_configure() {
 		# supported; see also https://bugreports.qt.io/browse/QTBUG-36129
 		#-reduce-relocations
 
-		# let configure automatically detect if GNU gold is available
-		#-use-gold-linker
+		# use the system linker (gold will be selected automagically otherwise)
+		$(tc-ld-is-gold && echo -use-gold-linker || echo -no-use-gold-linker)
 
 		# disable all platform plugins by default, override in qtgui
 		-no-xcb -no-eglfs -no-kms -no-gbm -no-directfb -no-linuxfb -no-mirclient

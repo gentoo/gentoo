@@ -8,7 +8,7 @@ EAPI=6
 CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-multilib python-any-r1
+inherit cmake-multilib linux-info python-any-r1
 
 DESCRIPTION="OpenMP runtime library for LLVM/clang compiler"
 HOMEPAGE="https://openmp.llvm.org"
@@ -20,8 +20,9 @@ SRC_URI="https://releases.llvm.org/${PV/_//}/openmp-${PV/_/}.src.tar.xz"
 
 LICENSE="|| ( UoI-NCSA MIT ) MIT LLVM-Grant"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="hwloc ompt test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="hwloc? ( sys-apps/hwloc:0=[${MULTILIB_USEDEP}] )"
 # tests:
@@ -41,11 +42,19 @@ S=${WORKDIR}/openmp-${PV/_/}.src
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
 
+CONFIG_CHECK="~!SCHED_PDS"
+ERROR_SCHED_PDS="PDS scheduler is not supported as it does not implement sched_yield()"
+
 python_check_deps() {
 	has_version "dev-python/lit[${PYTHON_USEDEP}]"
 }
 
+pkg_pretend() {
+	linux-info_pkg_setup
+}
+
 pkg_setup() {
+	linux-info_pkg_setup
 	use test && python-any-r1_pkg_setup
 }
 
@@ -53,7 +62,7 @@ src_prepare() {
 	# fix atomic tests with gcc
 	eapply "${FILESDIR}"/4.0.1/0001-test-Try-to-link-latomic-to-provide-atomics-when-ava.patch
 
-	eapply_user
+	cmake-utils_src_prepare
 }
 
 multilib_src_configure() {

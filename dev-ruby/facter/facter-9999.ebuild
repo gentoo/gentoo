@@ -1,11 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-USE_RUBY="ruby21 ruby22"
+EAPI=6
+USE_RUBY="ruby21 ruby22 ruby23 ruby24"
 
 # git-r3 goes after ruby-ng so that it overrides src_unpack properly
-inherit cmake-utils multilib ruby-ng git-r3
+inherit cmake-utils eutils multilib ruby-ng git-r3
 
 DESCRIPTION="A cross-platform ruby library for retrieving facts from operating systems"
 HOMEPAGE="http://www.puppetlabs.com/puppet/related-projects/facter/"
@@ -20,7 +20,7 @@ KEYWORDS=""
 
 BDEPEND="
 	>=sys-devel/gcc-4.8:*
-	>=dev-libs/leatherman-0.9.3
+	>=dev-libs/leatherman-1.0.0
 	dev-cpp/cpp-hocon"
 CDEPEND="
 	dev-libs/openssl:*
@@ -36,15 +36,17 @@ DEPEND="${BDEPEND}
 	${CDEPEND}"
 
 src_prepare() {
-	pwd
 	# Remove the code that installs facter.rb to the wrong directory.
 	sed -i '/install(.*facter\.rb/d' lib/CMakeLists.txt || die
 	sed -i '/install(.*facter\.jar/d' lib/CMakeLists.txt || die
 	# make it support multilib
 	sed -i "s/\ lib)/\ $(get_libdir))/g" lib/CMakeLists.txt || die
 	sed -i "s/lib\")/$(get_libdir)\")/g" CMakeLists.txt || die
+	# make the require work
+	sed -i 's/\${LIBFACTER_INSTALL_DESTINATION}\///g' lib/facter.rb.in || die
+	# patches
 	default
-	epatch "${FILESDIR}/facter-3.5.0-jar.patch"
+	cmake-utils_src_prepare
 }
 
 src_configure() {
@@ -80,10 +82,10 @@ src_test() {
 src_install() {
 	cmake-utils_src_install
 	ruby-ng_src_install
-	if [[ $(get_libdir) == lib64 ]]; then
-		dodir /usr/lib64
-		mv "${D}/usr/lib/"* "${D}/usr/lib64/"
-		rmdir "${D}/usr/lib"
-	fi
-	doenvd "${FILESDIR}"/00facterdir
+
+	# need a variable file in env.d :(
+	diropts -m0755
+	dodir /etc/env.d
+	echo -n "FACTERDIR=/usr/$(get_libdir)" > "${D}/etc/env.d/00facterdir"
+	fperms 0644 /etc/env.d/00facterdir
 }

@@ -10,7 +10,7 @@ SRC_URI="http://crimson.seul.org/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="test zlib"
 
 RDEPEND="media-libs/libsdl[sound,video]

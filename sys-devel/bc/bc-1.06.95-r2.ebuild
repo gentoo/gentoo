@@ -29,6 +29,8 @@ src_prepare() {
 }
 
 src_configure() {
+	export CONFIG_SHELL=${BASH}
+
 	local libedit
 	if use readline ; then
 		libedit="--without-libedit"

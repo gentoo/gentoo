@@ -5,7 +5,7 @@ EAPI="4"
 
 inherit user multilib flag-o-matic
 
-DESCRIPTION="Library that allows non-privileged apps to write utmp (login) info, which need root access"
+DESCRIPTION="Library that allows non-privileged apps to write utmp (login) info"
 HOMEPAGE="http://altlinux.org/index.php?module=sisyphus&package=libutempter"
 SRC_URI="ftp://ftp.altlinux.org/pub/people/ldv/${PN}/${P}.tar.bz2"
 

@@ -1,0 +1,30 @@
+diff --git a/config.pl b/config.pl
+index 53a7b50..784676b 100644
+--- a/config.pl
++++ b/config.pl
+@@ -5,8 +5,8 @@
+ # To specify the compilation flags define the CFLAGS environment variable.
+ #
+ 
+-require "miscperl.pl";
+-require "conflib.pl";
++require "./miscperl.pl";
++require "./conflib.pl";
+ 
+ # If the script is newer discard the cache.
+ #GetCache() unless (-M 'config.pl' < -M 'configure.cache');
+diff --git a/confignt.pl b/confignt.pl
+index e185f49..9ff7ae6 100644
+--- a/confignt.pl
++++ b/confignt.pl
+@@ -3,8 +3,8 @@
+ # see copyrigh file for details
+ #
+ 
+-require "miscperl.pl";
+-require "conflib.pl";
++require "./miscperl.pl";
++require "./conflib.pl";
+ 
+ SeeCommandLine();
+ 

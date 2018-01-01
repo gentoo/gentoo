@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby22 ruby23 ruby24"
+USE_RUBY="ruby22 ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_EXTRADOC="README.rdoc NEWS"
 
@@ -14,7 +14,7 @@ DESCRIPTION="A pkg-config implementation by Ruby"
 HOMEPAGE="https://github.com/rcairo/pkg-config"
 LICENSE="|| ( LGPL-2 LGPL-2.1 LGPL-3 )"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ia64 ppc ppc64 sparc x86"
 SLOT="0"
 IUSE="test"
 

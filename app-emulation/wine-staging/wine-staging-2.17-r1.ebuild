@@ -557,7 +557,7 @@ multilib_src_install_all() {
 	# respect LINGUAS when installing man pages, #469418
 	local l
 	for l in de fr pl; do
-		use linguas_${l} || rm -r "${D%/}${MY_MANDIR}"/${l}*
+		use linguas_${l} || rm -rf "${D%/}${MY_MANDIR}"/${l}*
 	done
 
 	eval "${glob_state}"

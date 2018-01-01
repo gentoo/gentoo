@@ -5,6 +5,10 @@
 		<email>polynomial-c@gentoo.org</email>
 		<name>Lars Wendler</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>blueness@gentoo.org</email>
+		<name>Anthony G. Basile</name>
+	</maintainer>
 <maintainer type="project">
 		<email>cron-bugs@gentoo.org</email>
 		<name>Gentoo Cron Project</name>

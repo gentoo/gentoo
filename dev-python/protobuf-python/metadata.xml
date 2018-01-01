@@ -1,10 +1,7 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type='person'>
-	<email>vapier@gentoo.org</email>
-</maintainer>
-<maintainer type='person'>
+<maintainer type="person">
 	<email>tomboy64@sina.cn</email>
 </maintainer>
 <maintainer type="project">
@@ -19,6 +16,6 @@
 	<subslots>soname major version number of protobuf</subslots>
 </slots>
 <upstream>
-	<remote-id type='github'>google/protobuf</remote-id>
+	<remote-id type="github">google/protobuf</remote-id>
 </upstream>
 </pkgmetadata>

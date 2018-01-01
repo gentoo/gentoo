@@ -3,7 +3,7 @@
 
 EAPI=6
 GNOME2_LA_PUNT="yes" # plugins are dlopened
-PYTHON_COMPAT=( python{3_4,3_5} )
+PYTHON_COMPAT=( python{3_4,3_5,3_6} )
 PYTHON_REQ_USE="threads"
 
 inherit autotools gnome2 python-single-r1

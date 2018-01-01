@@ -2,8 +2,8 @@ Listen on loopback only with the -l option
 
 patch by Mike Frysinger
 
---- mbmon.c
-+++ mbmon.c
+--- a/mbmon.c
++++ b/mbmon.c
 @@ -41,4 +41,5 @@
  static const char *MyName = "mbmon";
  int port = 0;

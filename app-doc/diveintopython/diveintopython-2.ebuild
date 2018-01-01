@@ -16,7 +16,7 @@ pdf? ( http://www.diveintopython.net/download/${PN}-pdf-${MY_PV}.zip -> ${P}-pdf
 LICENSE="FDL-1.1"
 SLOT="2"
 
-KEYWORDS="amd64 ppc64 ppc x86"
+KEYWORDS="*"
 IUSE="pdf"
 
 S="${WORKDIR}/${MY_P}"

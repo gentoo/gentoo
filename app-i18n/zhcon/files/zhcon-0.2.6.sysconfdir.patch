@@ -1,6 +1,6 @@
-diff -ruN zhcon-0.2.5/src/Makefile.am /tmp/zhcon-0.2.5/src/Makefile.am
---- a/zhcon-0.2.5/src/Makefile.am	2006-06-22 12:35:01.531885552 +0800
-+++ b/zhcon-0.2.5/src/Makefile.am	2006-06-22 12:31:44.000000000 +0800
+diff -ruN /src/Makefile.am /tmp/src/Makefile.am
+--- a/src/Makefile.am	2006-06-22 12:35:01.531885552 +0800
++++ b/src/Makefile.am	2006-06-22 12:31:44.000000000 +0800
 @@ -5,6 +5,8 @@
  
  zhcon_LDADD = display/libdisplay.a
@@ -10,9 +10,9 @@ diff -ruN zhcon-0.2.5/src/Makefile.am /tmp/zhcon-0.2.5/src/Makefile.am
  SUBDIRS = display
  
  install-exec-local:
-diff -ruN zhcon-0.2.5/src/zhcon.cpp /tmp/zhcon-0.2.5/src/zhcon.cpp
---- a/zhcon-0.2.5/src/zhcon.cpp	2006-06-22 12:35:01.398905768 +0800
-+++ b/zhcon-0.2.5/src/zhcon.cpp	2006-06-22 12:32:41.000000000 +0800
+diff -ruN src/zhcon.cpp /tmp/src/zhcon.cpp
+--- a/src/zhcon.cpp	2006-06-22 12:35:01.398905768 +0800
++++ b/src/zhcon.cpp	2006-06-22 12:32:41.000000000 +0800
 @@ -123,7 +123,7 @@
      string cfgfile = getenv("HOME");
      cfgfile += "/.zhconrc";

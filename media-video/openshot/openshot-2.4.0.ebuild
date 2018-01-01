@@ -18,7 +18,7 @@ SRC_URI="https://launchpad.net/${PN}/$(get_version_component_range 1-2)/${PV}/+d
 
 LICENSE="GPL-3+"
 SLOT="1"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="
 	dev-python/PyQt5[svg,webkit,${PYTHON_USEDEP}]

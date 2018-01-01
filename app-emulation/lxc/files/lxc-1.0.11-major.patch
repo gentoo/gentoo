@@ -1,0 +1,64 @@
+diff --git a/src/lxc/bdev.c b/src/lxc/bdev.c
+index 59eda7e4..44b71d4c 100644
+--- a/src/lxc/bdev.c
++++ b/src/lxc/bdev.c
+@@ -41,6 +41,7 @@
+ #include <libgen.h>
+ #include <linux/loop.h>
+ #include <dirent.h>
++#include <sys/sysmacros.h>
+ 
+ #include "lxc.h"
+ #include "config.h"
+@@ -58,9 +59,6 @@
+ #ifdef MAJOR_IN_MKDEV
+ #    include <sys/mkdev.h>
+ #endif
+-#ifdef MAJOR_IN_SYSMACROS
+-#    include <sys/sysmacros.h>
+-#endif
+ 
+ #ifndef BLKGETSIZE64
+ #define BLKGETSIZE64 _IOR(0x12,114,size_t)
+diff --git a/src/lxc/conf.c b/src/lxc/conf.c
+index 5d583d5f..d4217c27 100644
+--- a/src/lxc/conf.c
++++ b/src/lxc/conf.c
+@@ -36,14 +36,12 @@
+ #include <pwd.h>
+ #include <grp.h>
+ #include <time.h>
++#include <sys/sysmacros.h>
+ 
+ /* makedev() */
+ #ifdef MAJOR_IN_MKDEV
+ #    include <sys/mkdev.h>
+ #endif
+-#ifdef MAJOR_IN_SYSMACROS
+-#    include <sys/sysmacros.h>
+-#endif
+ 
+ #ifdef HAVE_STATVFS
+ #include <sys/statvfs.h>
+diff --git a/src/lxc/lxccontainer.c b/src/lxc/lxccontainer.c
+index 3963a3ee..30ac6733 100644
+--- a/src/lxc/lxccontainer.c
++++ b/src/lxc/lxccontainer.c
+@@ -36,6 +36,7 @@
+ #include <stdint.h>
+ #include <grp.h>
+ #include <sys/syscall.h>
++#include <sys/sysmacros.h>
+ 
+ #include <lxc/lxccontainer.h>
+ #include <lxc/version.h>
+@@ -60,9 +61,6 @@
+ #ifdef MAJOR_IN_MKDEV
+ #    include <sys/mkdev.h>
+ #endif
+-#ifdef MAJOR_IN_SYSMACROS
+-#    include <sys/sysmacros.h>
+-#endif
+ 
+ #if HAVE_IFADDRS_H
+ #include <ifaddrs.h>

@@ -9,7 +9,8 @@ DESCRIPTION="Algorithm for detecting SNPs, indels, and other polymorphisms"
 HOMEPAGE="http://www.broadinstitute.org/science/programs/genome-biology/crd/"
 SRC_URI="
 	ftp://ftp.broad.mit.edu/pub/crd/VAAL/latest_source_code/${P}.tar.gz
-	ftp://ftp.broad.mit.edu/pub/crd/VAAL/VAAL_manual.doc"
+	ftp://ftp.broad.mit.edu/pub/crd/VAAL/VAAL_manual.doc
+	https://dev.gentoo.org/~mgorny/dist/${P}_remove-namespace-std.patch.bz2"
 
 LICENSE="Whitehead-MIT"
 SLOT="0"
@@ -25,7 +26,7 @@ DEPEND="
 
 DOCS=( "${DISTDIR}/VAAL_manual.doc" )
 PATCHES=(
-	"${FILESDIR}/${P}_remove-namespace-std.patch"
+	"${WORKDIR}/${P}_remove-namespace-std.patch"
 )
 
 src_prepare() {

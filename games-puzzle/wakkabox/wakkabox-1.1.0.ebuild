@@ -10,7 +10,7 @@ SRC_URI="http://kenn.frap.net/wakkabox/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 IUSE=""
 
 DEPEND=">=media-libs/libsdl-1.0.1"

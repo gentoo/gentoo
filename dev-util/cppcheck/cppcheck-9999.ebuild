@@ -1,11 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
-inherit distutils-r1 eutils qt4-r2 toolchain-funcs flag-o-matic git-r3
+inherit distutils-r1 flag-o-matic qmake-utils toolchain-funcs git-r3
 
 DESCRIPTION="static analyzer of C/C++ code"
 HOMEPAGE="http://cppcheck.sourceforge.net"
@@ -14,39 +14,41 @@ EGIT_REPO_URI="https://github.com/danmar/cppcheck.git"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE="htmlreport pcre qt4"
+IUSE="htmlreport pcre qt5"
 
-RDEPEND="htmlreport? ( dev-python/pygments[${PYTHON_USEDEP}] )
+RDEPEND="
 	>=dev-libs/tinyxml2-2
-	qt4? ( dev-qt/qtgui:4 )
-	pcre? ( dev-libs/libpcre )"
+	htmlreport? ( dev-python/pygments[${PYTHON_USEDEP}] )
+	pcre? ( dev-libs/libpcre )
+	qt5? (
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtprintsupport:5
+	)
+"
 DEPEND="${RDEPEND}
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
+
+PATCHES=( "${FILESDIR}"/${PN}-1.75-tinyxml2.patch )
 
 src_prepare() {
+	default
 	append-cxxflags -std=c++0x
 
 	# Drop bundled libs, patch Makefile generator and re-run it
 	rm -r externals/tinyxml || die
-	epatch "${FILESDIR}"/${PN}-1.75-tinyxml2.patch
 	tc-export CXX
 	emake dmake
 	./dmake || die
-
-	epatch_user
 }
 
 src_configure() {
 	if use pcre ; then
 		sed -e '/HAVE_RULES=/s:=no:=yes:' \
 			-i Makefile
-	fi
-	if use qt4 ; then
-		pushd gui
-		qt4-r2_src_configure
-		popd
 	fi
 }
 
@@ -56,9 +58,10 @@ src_compile() {
 		CFGDIR="${EROOT}usr/share/${PN}/cfg" \
 		DB2MAN="${EROOT}usr/share/sgml/docbook/xsl-stylesheets/manpages/docbook.xsl"
 
-	if use qt4 ; then
+	if use qt5 ; then
 		pushd gui
-		qt4-r2_src_compile
+		eqmake5
+		emake
 		popd
 	fi
 	if use htmlreport ; then
@@ -87,7 +90,7 @@ src_install() {
 
 	insinto "/usr/share/${PN}/cfg"
 	doins cfg/*.cfg
-	if use qt4 ; then
+	if use qt5 ; then
 		dobin gui/${PN}-gui
 		dodoc gui/{projectfile.txt,gui.${PN}}
 	fi

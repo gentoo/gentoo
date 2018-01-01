@@ -2,36 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 
 
-# Fabian Groffen <grobian@gentoo.org> (31 Oct 2017)
-# glibc-2.26 patch breaks for us
-=dev-libs/libxslt-1.1.30-r2
-
 # Fabian Groffen <grobian@gentoo.org> (18 Dec 2016)
 # has multiple compilation issue, resolved for 1.1.8, bug #602990
 =app-misc/pax-utils-1.1.7
-
-# Fabian Groffen <grobian@gentoo.org> (10 Sep 2016)
-# revbump for adding libcxx dependency, which we already have, so avoid
-# the hassle
-=sys-devel/llvm-3.8.1-r2
 
 # Fabian Groffen <grobian@gentoo.org> (31 May 2015)
 # fails to compile due to some missing compilerrt stuff, hints at asan,
 # not sure what the problem actually is, 3.7 and 3.8 compile just fine
 =sys-devel/llvm-3.6*
 =sys-devel/clang-3.6*
-
-# Fabian Groffen <grobian@gentoo.org> (08 Feb 2015)
-# missing faccesstat (missing gnulib), bug #538502
-=sys-devel/patch-2.7.4
-
-# Fabian Groffen <grobian@gentoo.org> (19 Oct 2014)
-# Fails during bootstrap, has install_name problems for libstdbuf
-=sys-apps/coreutils-8.23
-
-# Fabian Groffen <grobian@gentoo.org> (12 Aug 2014)
-# Needs some patching, bug #513428
-~dev-libs/libffi-3.1
 
 # Fabian Groffen <grobian@gentoo.org> (14 Jan 2014)
 # util-linux has no business on Darwin systems
@@ -58,14 +37,6 @@ sys-apps/pciutils
 # state of mesa is probably not too good on OSX, opengl-apple is
 # preferred
 media-libs/mesa
-
-
-# Fabian Groffen <grobian@gentoo.org> (27 Oct 2009)
-# Fails compiling due to some missing dwarf symbols and internal
-# segfaults
-~sys-devel/gcc-4.4.2
-~sys-devel/gcc-4.4.3
-~sys-devel/gcc-4.4.4
 
 # Elias Pipping <pipping@gentoo.org> (09 Oct 2007)
 # darwin-miscutils are only available on darwin

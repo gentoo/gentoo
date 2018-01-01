@@ -1,0 +1,34 @@
+From 7aa8aacad80c75b40bb25bdeccc7cacce9a270ca Mon Sep 17 00:00:00 2001
+From: Guilherme Amadio <amadio@cern.ch>
+Date: Mon, 18 Dec 2017 13:32:06 +0100
+Subject: [PATCH] Fix FindOracle.cmake to find version 12.x
+
+---
+ cmake/modules/FindOracle.cmake | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/cmake/modules/FindOracle.cmake b/cmake/modules/FindOracle.cmake
+index 24031664a6..b7c8cfbb99 100644
+--- a/cmake/modules/FindOracle.cmake
++++ b/cmake/modules/FindOracle.cmake
+@@ -12,7 +12,7 @@ set(ORACLE_FOUND 0)
+ if(ORACLE_INCLUDE_DIR AND ORACLE_LIBRARY_OCCI)
+   set(ORACLE_FIND_QUIETLY 1)
+ endif()
+-set(ORACLE_HOME $ENV{ORACLE_DIR})
++set(ORACLE_HOME $ENV{ORACLE_HOME})
+ 
+ IF (ORACLE_PATH_INCLUDES)
+     SET (ORACLE_INCLUDES_LOCATION ${ORACLE_PATH_INCLUDES})
+@@ -55,7 +55,7 @@ FIND_LIBRARY(
+ )
+ FIND_LIBRARY(
+     ORACLE_LIBRARY_LNNZ
+-    NAMES libnnz10 nnz10 libnnz11 nnz11 ociw32
++    NAMES libnnz10 nnz10 libnnz11 nnz11 libnnz12 nnz12 ociw32
+     PATHS ${ORACLE_LIB_LOCATION}
+ )
+ 
+-- 
+2.15.1
+

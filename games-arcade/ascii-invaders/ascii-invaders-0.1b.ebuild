@@ -10,7 +10,7 @@ SRC_URI="mirror://gentoo/invaders${PV}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~mips ppc64 x86 ~x86-fbsd ~ppc-macos"
+KEYWORDS="~alpha ~amd64 ~mips ~ppc64 ~x86 ~x86-fbsd ~ppc-macos"
 IUSE=""
 
 RDEPEND="sys-libs/ncurses:0"

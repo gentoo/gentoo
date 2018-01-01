@@ -10,7 +10,7 @@ SRC_URI="http://www.teaser.fr/~amajorel/yadex/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 IUSE=""
 RESTRICT="test"
 

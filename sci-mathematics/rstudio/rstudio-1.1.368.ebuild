@@ -133,7 +133,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	default
+	cmake-utils_src_prepare
 	java-pkg-2_src_prepare
 	egit_clean
 

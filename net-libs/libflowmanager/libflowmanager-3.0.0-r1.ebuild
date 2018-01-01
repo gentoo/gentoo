@@ -19,6 +19,9 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 "
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.0.0-stdint_h.patch
+)
 
 src_configure() {
 	econf $(use_enable static-libs static)

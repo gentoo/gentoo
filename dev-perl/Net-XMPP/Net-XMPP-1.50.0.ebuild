@@ -1,10 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DIST_AUTHOR=DAPATRICK
 DIST_VERSION=1.05
+DIST_EXAMPLES=( "examples/*" )
 inherit perl-module
 
 DESCRIPTION="XMPP Perl Library"
@@ -12,7 +13,7 @@ DESCRIPTION="XMPP Perl Library"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="test examples"
+IUSE="test"
 
 RDEPEND="
 	>=dev-perl/Authen-SASL-2.120.0
@@ -28,16 +29,7 @@ DEPEND="${RDEPEND}
 		>=virtual/perl-Test-Simple-0.920.0
 	)
 "
-src_test() {
-	eapply "${FILESDIR}/${DIST_VERSION}-no-network-tests.patch"
-	perl-module_src_test
-}
-
-src_install() {
-	perl-module_src_install
-	if use examples; then
-		docompress -x /usr/share/doc/${PF}/examples
-		insinto /usr/share/doc/${PF}/examples
-		doins -r examples/*
-	fi
-}
+PATCHES=(
+	"${FILESDIR}/${DIST_VERSION}-no-network-tests.patch"
+	"${FILESDIR}/${DIST_VERSION}-no-dot-inc.patch"
+)

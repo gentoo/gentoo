@@ -33,7 +33,7 @@
  GKRELLM_OBJS = gkrellm-bfm.o
  GKRELLM_BFM = gkrellm-bfm.so
 -LDFLAGS = -shared -Wl
-+LDFLAGS += -shared -Wl
++LDFLAGS += -shared
  
 -STRIP = strip
 +STRIP = true

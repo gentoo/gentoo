@@ -17,7 +17,3 @@ pam
 
 # USE=udev just does not make sense in Gentoo Prefix. bug 293480
 udev
-
-# suid requires root privilege, which is not support by prefix in general
-# one example: bug 447340.
-suid

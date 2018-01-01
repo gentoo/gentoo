@@ -1,0 +1,35 @@
+diff -r -U2 getxbook-1.2.orig/Makefile getxbook-1.2/Makefile
+--- getxbook-1.2.orig/Makefile	2015-07-28 21:52:40.000000000 +0600
++++ getxbook-1.2/Makefile	2017-12-16 11:27:18.554822718 +0700
+@@ -1,4 +1,13 @@
+ # See COPYING file for copyright and license details.
+-include config.mk
++VERSION = 1.2
++RELDATE = 2015-07-28
++PREFIX = /usr
++MANPREFIX = $(PREFIX)/share/man
++CFLAGS += -std=c99 -pedantic -Wall -Wextra -Werror -g -D_POSIX_C_SOURCE=200112L \
++         -DVERSION=\"$(VERSION)\"
++CC ?= cc
++LD = $(CC)
++LIBS = -lssl -lcrypto
++LDFLAGS += $(LIBS)
+ 
+ NAME = getxbook
+@@ -21,13 +30,13 @@
+ .o:
+ 	@echo LD $@
+-	@$(LD) -o $@ $< util.a $(LDFLAGS)
++	$(LD) -o $@ $< util.a $(LDFLAGS)
+ 
+ .c.o:
+ 	@echo CC $<
+-	@$(CC) -c $(CFLAGS) $<
++	$(CC) -c $(CFLAGS) $<
+ 
+ util.a: $(LIB)
+ 	@echo AR $@
+-	@$(AR) -r -s -c $@ $(LIB)
++	$(AR) -r -s -c $@ $(LIB)
+ 
+ install: all

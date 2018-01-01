@@ -7,8 +7,8 @@ inherit eutils linux-info multilib pam toolchain-funcs
 
 PATCH_VER="5"
 DESCRIPTION="Point-to-Point Protocol (PPP)"
-HOMEPAGE="http://www.samba.org/ppp"
-SRC_URI="ftp://ftp.samba.org/pub/ppp/${P}.tar.gz
+HOMEPAGE="https://ppp.samba.org/"
+SRC_URI="https://download.samba.org/pub/ppp/${P}.tar.gz
 	https://dev.gentoo.org/~polynomial-c/${P}-patches-${PATCH_VER}.tar.xz
 	http://www.netservers.net.uk/gpl/ppp-dhcpc.tgz"
 

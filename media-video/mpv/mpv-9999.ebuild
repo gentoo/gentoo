@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 PYTHON_REQ_USE='threads(+)'
 
 WAF_PV=1.9.8
@@ -93,11 +93,12 @@ COMMON_DEPEND="
 	samba? ( net-fs/samba )
 	sdl? ( media-libs/libsdl2[sound,threads,video] )
 	v4l? ( media-libs/libv4l )
-	vaapi? ( x11-libs/libva[drm?,X?,wayland?] )
+	vaapi? ( x11-libs/libva:=[drm?,X?,wayland?] )
 	vdpau? ( x11-libs/libvdpau )
 	wayland? (
 		>=dev-libs/wayland-1.6.0
 		>=x11-libs/libxkbcommon-0.3.0
+		dev-libs/wayland-protocols
 	)
 	X? (
 		x11-libs/libX11
@@ -193,7 +194,6 @@ src_configure() {
 		--disable-vapoursynth-lazy
 		$(use_enable archive libarchive)
 
-		--enable-ffmpeg-upstream
 		--enable-libavdevice
 
 		# Audio outputs:
@@ -213,6 +213,8 @@ src_configure() {
 		$(use_enable aqua cocoa)
 		$(use_enable drm)
 		$(use_enable gbm)
+		$(use_enable wayland wayland-scanner)
+		$(use_enable wayland wayland-protocols)
 		$(use_enable wayland)
 		$(use_enable X x11)
 		$(use_enable xv)
@@ -233,8 +235,6 @@ src_configure() {
 		$(usex libmpv "$(use_enable opengl plain-gl)" '--disable-plain-gl')
 		--disable-mali-fbdev	# Only available in overlays.
 		$(usex opengl '' '--disable-gl')
-		--disable-vulkan		# Requires glslang and spirv-tools packaged.
-		--disable-shaderc		# Only available in overlays.
 
 		# HWaccels:
 		# Automagic Video Toolbox HW acceleration. See Gentoo bug 577332.

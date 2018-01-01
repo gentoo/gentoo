@@ -1,0 +1,38 @@
+From f765ad2c9f421eefcd3afc447ed45fa3fd2d17a0 Mon Sep 17 00:00:00 2001
+From: Graham Keeling <grke@grke.net>
+Date: Sun, 13 Aug 2017 11:50:54 +0000
+Subject: [PATCH] Drop privileges after main pidfile creation.
+
+Change-Id: I762541db55e7884531e4d869e1a86533df71b5b8
+---
+ src/prog.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/prog.c b/src/prog.c
+index 244590d3..b94df6d3 100644
+--- a/src/prog.c
++++ b/src/prog.c
+@@ -111,11 +111,6 @@ int reload(struct conf **confs, const char *conffile, bool firsttime)
+ 		setup_signals();
+ #endif
+ 
+-	// Do not try to change user or group after the first time.
+-	if(firsttime && chuser_and_or_chgrp(
+-		get_string(confs[OPT_USER]), get_string(confs[OPT_GROUP])))
+-			return -1;
+-
+ 	return 0;
+ }
+ 
+@@ -486,6 +481,11 @@ int real_main(int argc, char *argv[])
+ 		}
+ 	}
+ 
++	// Change privileges after having got the lock, for convenience.
++	if(chuser_and_or_chgrp(
++		get_string(confs[OPT_USER]), get_string(confs[OPT_GROUP])))
++			return -1;
++
+ 	set_int(confs[OPT_OVERWRITE], forceoverwrite);
+ 	set_int(confs[OPT_STRIP], strip);
+ 	set_int(confs[OPT_FORK], forking);

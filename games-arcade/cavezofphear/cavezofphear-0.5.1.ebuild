@@ -10,7 +10,7 @@ SRC_URI="http://www.x86.no/${PN}/${P/cavezof}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ppc64 x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc64 ~x86 ~x86-fbsd"
 IUSE=""
 
 RDEPEND=">=sys-libs/ncurses-5:0"

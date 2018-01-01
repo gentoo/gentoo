@@ -10,7 +10,7 @@ SRC_URI="ftp://ftp.i3d.net/Games/Enemy%20Territory%20Quake%20Wars/Patches/ETQW-c
 
 LICENSE="ETQW"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE="cdinstall"
 RESTRICT="strip"
 

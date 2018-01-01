@@ -11,7 +11,7 @@ SRC_URI="http://files3.bungie.org/trilogy/MarathonInfinity.zip
 
 LICENSE="bungie-marathon"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64 x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE=""
 RESTRICT="mirror"
 

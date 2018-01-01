@@ -1,6 +1,48 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (03 Dec 2017)
+# Integration for Qt4-based applications
+kde-plasma/plasma-desktop qt4
+kde-plasma/breeze qt4
+kde-plasma/oxygen qt4
+
+# Andreas Sturmlechner <asturm@gentoo.org> (03 Dec 2017)
+# Required by kde-frameworks/kdelibs
+app-crypt/qca qt4
+dev-libs/libdbusmenu-qt qt4
+media-libs/phonon qt4
+media-libs/phonon-vlc qt4
+sys-auth/polkit-qt qt4
+
+# Andreas Sturmlechner <asturm@gentoo.org> (30 Nov 2017)
+# Not required, but makes life easier with Qt; bug #457934
+app-arch/unzip natspec
+
+# Andreas Sturmlechner <asturm@gentoo.org> (30 Nov 2017)
+# Required by dev-qt/qtcore
+dev-libs/libpcre pcre16
+dev-libs/libpcre2 pcre16
+
+# Andreas Sturmlechner <asturm@gentoo.org> (30 Nov 2017)
+# Required by kde-frameworks/kcoreaddons
+dev-qt/qtcore:5 icu
+
+# Andreas Sturmlechner <asturm@gentoo.org> (30 Nov 2017)
+# Required by kde-frameworks/kwayland
+dev-qt/qtgui:5 egl libinput
+
+# Required by dev-qt/qtwebengine
+media-libs/libvpx svc
+
+# Andreas Sturmlechner <asturm@gentoo.org> (30 Nov 2017)
+# Avoid circular dependency when installing from scratch
+dev-util/cmake -qt5
+
+# Andreas Sturmlechner <asturm@gentoo.org> (19 Nov 2017)
+# Required by opengl, theora, v4l and X
+media-libs/mediastreamer video
+
 # Andreas Sturmlechner <asturm@gentoo.org> (04 Aug 2017)
 # Required by flac and mp3
 kde-apps/k3b taglib
@@ -19,11 +61,6 @@ media-video/mpv lua luajit -sdl
 # Mike Gilbert <floppym@gentoo.org> (04 Jan 2017)
 # Needed by x11-misc/xdg-utils.
 app-text/xmlto text
-
-# Alexandre Rostovtsev <tetromino@gentoo.org> (19 Feb 2015)
-# Set reasonable default toolkit for all desktops to prevent emerge error
-# when USE=tools
-x11-drivers/nvidia-drivers gtk2
 
 # Ben de Groot <yngwin@gentoo.org> (18 Feb 2015)
 # Enable sensible defaults for desktop users (bug #540046)
@@ -51,7 +88,7 @@ media-libs/libpng apng
 # gudev, required by freedesktop.org udev helpers like udisks and upower
 # introspection, exception, enabled from here instead of ebuild to skip extra deps for a system package
 dev-libs/libgudev introspection
-sys-fs/eudev gudev introspection
+sys-fs/eudev introspection
 sys-fs/udev gudev introspection
 virtual/libgudev introspection
 

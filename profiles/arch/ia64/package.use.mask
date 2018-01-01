@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Sergei Trofimovich <slyfox@gentoo.org> (25 Dec 2017)
+# net-firewall/nftables[doc] requires dblatex which is not keyworded
+net-firewall/nftables doc
+
 # Michał Górny <mgorny@gentoo.org> (10 Aug 2017)
 # Both USE=fluidsynth and USE=timidity are masked in this profile.
 media-libs/sdl-mixer midi
@@ -242,10 +246,6 @@ dev-haskell/dataenc test
 # Keywords pending, bug #476710
 >=gnome-base/gnome-extra-apps-3.8 games
 
-# Dirkjan Ochtman <djc@gentoo.org> (3 May 2013)
-# depends on net-libs/polarssl
->=net-vpn/openvpn-2.3.1 polarssl
-
 # Julian Ospald <hasufell@gentoo.org> (31 Mar 2013)
 # depends on mono/monodevelop
 >=net-irc/hexchat-2.9.4-r1 theme-manager
@@ -257,7 +257,7 @@ media-video/libav hardcoded-tables
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (31 Jan 2013)
 # remove mask when net-libs/libqmi is keyworded here
-net-misc/modemmanager qmi qmi-newest
+net-misc/modemmanager qmi
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (22 Jan 2013)
 # remove mask if/when media-gfx/argyllcms is keywored here.
@@ -293,10 +293,6 @@ sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_ope
 # Raúl Porcel <armin76@gentoo.org> (05 Nov 2011)
 # jit not supported on ia64
 dev-libs/libpcre jit
-
-# Robin H. Johnson <robbat2@gentoo.org> (03 Sep 2011)
-# Remove this for your arch after you keyword dev-utils/google-perftools (bug #381737
-dev-libs/libmemcached tcmalloc
 
 # Tomáš Chvátal <scarabeus@gentoo.org> (4 Apr 2011)
 # Needs sci-libs/umfpack keyworded. Bug #361947.

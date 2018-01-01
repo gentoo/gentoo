@@ -1,2 +1,0 @@
-[Service]
-Environment="SPAMD_OPTS=--max-children=5 --create-prefs --helper-home-dir"

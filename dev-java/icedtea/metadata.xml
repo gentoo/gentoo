@@ -26,7 +26,6 @@
   <flag name="headless-awt">Don't install the X backend for AWT, needed by some GUIs (used to be X flag)</flag>
   <flag name="jamvm">Use the JamVM virtual machine rather than HotSpot.</flag>
   <flag name="jbootstrap">If possible, recompile the final IcedTea executables with itself.</flag>
-  <flag name="nss">Enable NSS security provider support.</flag>
   <flag name="nsplugin">Enable browser plugin (NPPlugin), requires also the webstart flag to be enabled.</flag>
   <flag name="pax_kernel">Apply patch needed for pax enabled kernels.</flag>
   <flag name="shenandoah">Include the Shenandoah ultra-low pause time garbage collector (-XX:+UseShenandoahGC) (x86_64 only)</flag>

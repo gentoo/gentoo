@@ -12,13 +12,13 @@ dev-db/mariadb galera
 # Alexis Ballier <aballier@gentoo.org> (30 May 2017)
 # No stable fluidsynth yet
 media-libs/sdl-mixer fluidsynth
-<media-sound/mpd-0.20 fluidsynth
+media-sound/mpd fluidsynth
 <media-video/vlc-2.3 fluidsynth
 
 # Alexis Ballier <aballier@gentoo.org> (29 May 2017)
 # frei0r-plugins is not stable yet, mask it on stable versions
 <media-video/libav-12 frei0r
-<=media-video/ffmpeg-3.3.4 frei0r sofalizer
+<=media-video/ffmpeg-3.3.5 frei0r sofalizer
 
 # Alexis Ballier <aballier@gentoo.org> (26 May 2017)
 # toolame not stable yet
@@ -70,8 +70,6 @@ sys-fs/dmraid dietlibc klibc
 # Christoph Junghans <junghans@gentoo.org> (27 Nov 2016)
 # no stable mpi on arm yet, but maybe in the future
 <=app-crypt/johntheripper-1.7.9-r6 mpi
-<=dev-libs/boost-1.56.0-r1 mpi
-<=dev-util/valgrind-3.10.1 mpi
 <=sci-chemistry/gromacs-5.0.4 mpi
 <=sci-libs/fftw-3.3.4 mpi
 
@@ -89,7 +87,6 @@ net-misc/networkmanager teamd
 
 # Michael Palimaka <kensington@gentoo.org> (28 Oct 2015)
 # KDE is not stable on arm
-media-video/vlc kde
 virtual/notification-daemon kde
 
 # Pacho Ramos <pacho@gentoo.org> (03 Oct 2015)
@@ -116,7 +113,6 @@ www-client/qupzilla kwallet
 # Mask due Gnome3 not going to be stabilized on this arch
 >=gnome-base/gnome-desktop-2.32.1-r2 license-docs
 gnome-base/gvfs google
-media-gfx/gimp webkit
 net-libs/libproxy webkit
 >=net-libs/webkit-gtk-2.4 geoloc
 >=x11-libs/gtk+-3.12.2 cloudprint

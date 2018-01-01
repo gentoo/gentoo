@@ -14,7 +14,7 @@ SRC_URI="unwheel_r5.zip
 	unwheelcbpvol1.zip"
 
 LICENSE="GameFront"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="dedicated opengl"
 RESTRICT="fetch bindist"
 

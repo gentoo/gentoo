@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,8 +13,8 @@ fi
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit elisp-common eutils fdo-mime fortran-2 multilib python-single-r1 \
-	toolchain-funcs user versionator prefix
+inherit elisp-common eutils fortran-2 multilib prefix python-single-r1 \
+	toolchain-funcs user versionator xdg-utils
 
 DESCRIPTION="C++ data analysis framework and interpreter from CERN"
 HOMEPAGE="https://root.cern.ch"
@@ -433,9 +433,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }

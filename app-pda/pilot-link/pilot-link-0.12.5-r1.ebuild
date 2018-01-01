@@ -18,12 +18,12 @@ KEYWORDS="alpha amd64 ~arm hppa ia64 ppc ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-l
 IUSE="bluetooth debug java perl png python readline static-libs threads usb"
 
 COMMON_DEPEND="dev-libs/popt
-	>=sys-libs/ncurses-5.7-r7
+	>=sys-libs/ncurses-5.7-r7:0=
 	virtual/libiconv
 	bluetooth? ( net-wireless/bluez )
 	perl? ( >=dev-lang/perl-5.12 )
-	png? ( media-libs/libpng:0 )
-	readline? ( >=sys-libs/readline-6 )
+	png? ( media-libs/libpng:0= )
+	readline? ( >=sys-libs/readline-6:0= )
 	usb? ( virtual/libusb:0 )"
 DEPEND="${COMMON_DEPEND}
 	java? ( >=virtual/jdk-1.4 )"

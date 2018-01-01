@@ -1,16 +1,16 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-EGIT_REPO_URI="git://anongit.gentoo.org/proj/eselect.git"
+EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/eselect.git"
 
 inherit autotools git-r3 bash-completion-r1
 
 DESCRIPTION="Gentoo's multi-purpose configuration and management tool"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Eselect"
 
-LICENSE="GPL-2+ || ( GPL-2+ CC-BY-SA-2.5 )"
+LICENSE="GPL-2+ || ( GPL-2+ CC-BY-SA-3.0 )"
 SLOT="0"
 IUSE="doc emacs vim-syntax"
 
@@ -30,6 +30,7 @@ PDEPEND="emacs? ( app-emacs/eselect-mode )
 	vim-syntax? ( app-vim/eselect-syntax )"
 
 src_prepare() {
+	default
 	eautoreconf
 }
 
@@ -42,7 +43,10 @@ src_install() {
 	emake DESTDIR="${D}" install
 	newbashcomp misc/${PN}.bashcomp ${PN}
 	dodoc AUTHORS ChangeLog NEWS README TODO doc/*.txt
-	use doc && dohtml *.html doc/*
+	if use doc; then
+		docinto html
+		dodoc *.html doc/*.html doc/*.css
+	fi
 
 	# needed by news module
 	keepdir /var/lib/gentoo/news

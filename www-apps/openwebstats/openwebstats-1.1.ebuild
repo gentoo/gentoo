@@ -3,7 +3,7 @@
 
 inherit webapp
 
-DESCRIPTION="PHP stats application that reads Apache log files and imports the data to a MySQL database"
+DESCRIPTION="PHP stats app that reads Apache logs and imports the data into a MySQL database"
 HOMEPAGE="http://openwebstats.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 

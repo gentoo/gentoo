@@ -15,11 +15,12 @@ HOMEPAGE="http://quassel-irc.org/"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE="+breeze crypt +dbus debug kde monolithic oxygen postgres +server snorenotify +ssl syslog urlpreview X"
+IUSE="+breeze crypt +dbus debug kde ldap monolithic oxygen postgres +server snorenotify +ssl syslog urlpreview X"
 
 SERVER_RDEPEND="
 	dev-qt/qtscript:5
-	crypt? ( app-crypt/qca:2[qt5,ssl] )
+	crypt? ( app-crypt/qca:2[qt5(+),ssl] )
+	ldap? ( net-nds/openldap )
 	postgres? ( dev-qt/qtsql:5[postgres] )
 	!postgres? ( dev-qt/qtsql:5[sqlite] dev-db/sqlite:3[threadsafe(+),-secure-delete] )
 	syslog? ( virtual/logger )
@@ -50,9 +51,9 @@ GUI_RDEPEND="
 "
 
 RDEPEND="
-	sys-libs/zlib
 	dev-qt/qtcore:5
 	dev-qt/qtnetwork:5[ssl?]
+	sys-libs/zlib
 	monolithic? (
 		${SERVER_RDEPEND}
 		${GUI_RDEPEND}
@@ -73,6 +74,7 @@ REQUIRED_USE="
 	|| ( X server monolithic )
 	crypt? ( || ( server monolithic ) )
 	kde? ( || ( X monolithic ) )
+	ldap? ( || ( server monolithic ) )
 	monolithic? ( || ( breeze oxygen ) )
 	postgres? ( || ( server monolithic ) )
 	snorenotify? ( || ( X monolithic ) )
@@ -98,6 +100,7 @@ src_configure() {
 		-DWANT_MONO=$(usex monolithic)
 		-DWANT_QTCLIENT=$(usex X)
 		-DWITH_KDE=$(usex kde)
+		-DWITH_LDAP=$(usex ldap)
 		-DWITH_WEBKIT=OFF
 		-DWITH_WEBENGINE=$(usex urlpreview)
 		-DWITH_BREEZE=OFF

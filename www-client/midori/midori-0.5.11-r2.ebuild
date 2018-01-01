@@ -46,6 +46,8 @@ pkg_setup() {
 
 src_prepare() {
 	eapply "${FILESDIR}"/${P}-libsoup.patch #587448
+
+	cmake-utils_src_prepare
 	gnome2_src_prepare
 	vala_src_prepare
 	sed -i -e '/^install/s:COPYING:HACKING TODO TRANSLATE:' CMakeLists.txt || die

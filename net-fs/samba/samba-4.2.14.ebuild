@@ -19,7 +19,7 @@ SRC_URI="mirror://samba/${SRC_PATH}/${MY_P}.tar.gz
 KEYWORDS="alpha amd64 arm hppa ~ia64 ppc ppc64 ~sparc ~x86"
 
 DESCRIPTION="Samba Suite Version 4"
-HOMEPAGE="http://www.samba.org/"
+HOMEPAGE="https://www.samba.org/"
 LICENSE="GPL-3"
 
 SLOT="0"
@@ -91,6 +91,7 @@ S="${WORKDIR}/${MY_P}"
 PATCHES=(
 	"${FILESDIR}/${PN}-4.2.3-heimdal_compilefix.patch"
 	"${FILESDIR}/${PN}-4.2.7-pam.patch"
+	"${FILESDIR}/${PN}-glibc-2.26-no_rpc.patch" #637320
 )
 
 CONFDIR="${FILESDIR}/$(get_version_component_range 1-2)"
@@ -251,7 +252,7 @@ pkg_postinst() {
 	ewarn "controller work previously known as 'samba4'."
 
 	elog "For further information and migration steps make sure to read "
-	elog "http://samba.org/samba/history/${P}.html "
-	elog "http://samba.org/samba/history/${PN}-4.2.0.html and"
-	elog "http://wiki.samba.org/index.php/Samba4/HOWTO "
+	elog "https://www.samba.org/samba/history/${P}.html "
+	elog "https://www.samba.org/samba/history/${PN}-4.2.0.html and"
+	elog "https://wiki.samba.org/index.php/Samba4/HOWTO "
 }

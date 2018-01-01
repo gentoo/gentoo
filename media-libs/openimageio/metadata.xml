@@ -6,8 +6,20 @@
 		<name>Gentoo Graphics Project</name>
 	</maintainer>
 	<use>
+		<flag name="cpu_flags_x86_avx512f" restrict="&gt;=media-libs/openimageio-1.7.11">
+			SIMD Optimization
+		</flag>
+		<flag name="cpu_flags_x86_f16c" restrict="&gt;=media-libs/openimageio-1.7.11">
+			SIMD Optimization
+		</flag>
 		<flag name="colorio">Use <pkg>media-libs/opencolorio</pkg></flag>
+		<flag name="field3d" restrict="&gt;=media-libs/openimageio-1.6.18">
+			Use <pkg>media-libs/Field3D</pkg>
+		</flag>
 		<flag name="opencv">Use <pkg>media-libs/opencv</pkg></flag>
+		<flag name="ptex" restrict="&gt;=media-libs/openimageio-1.6.18">
+			Use <pkg>media-libs/ptex</pkg>
+		</flag>
 		<flag name="tbb">Use <pkg>dev-cpp/tbb</pkg></flag>
 	</use>
 	<upstream>

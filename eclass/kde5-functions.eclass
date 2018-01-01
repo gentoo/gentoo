@@ -4,6 +4,7 @@
 # @ECLASS: kde5-functions.eclass
 # @MAINTAINER:
 # kde@gentoo.org
+# @SUPPORTED_EAPIS: 6
 # @BLURB: Common ebuild functions for packages based on KDE Frameworks 5.
 # @DESCRIPTION:
 # This eclass contains functions shared by the other KDE eclasses and forms
@@ -16,9 +17,6 @@ _KDE5_FUNCTIONS_ECLASS=1
 
 inherit toolchain-funcs versionator
 
-# @ECLASS-VARIABLE: EAPI
-# @DESCRIPTION:
-# Currently EAPI 6 is supported.
 case ${EAPI} in
 	6) ;;
 	*) die "EAPI=${EAPI:-0} is not supported" ;;
@@ -28,10 +26,9 @@ esac
 # @DESCRIPTION:
 # If PV matches "*9999*", this is automatically set to "live".
 # Otherwise, this is automatically set to "release".
+KDE_BUILD_TYPE="release"
 if [[ ${PV} = *9999* ]]; then
 	KDE_BUILD_TYPE="live"
-else
-	KDE_BUILD_TYPE="release"
 fi
 export KDE_BUILD_TYPE
 
@@ -40,9 +37,14 @@ case ${CATEGORY} in
 		[[ ${KDE_BUILD_TYPE} = live ]] && : ${FRAMEWORKS_MINIMAL:=9999}
 		;;
 	kde-plasma)
-		[[ ${PV} = 5.11* ]] && : ${FRAMEWORKS_MINIMAL:=5.38.0}
 		if [[ ${KDE_BUILD_TYPE} = live ]]; then
+			: ${QT_MINIMAL:=5.9.1}
 			: ${FRAMEWORKS_MINIMAL:=9999}
+		fi
+		;;
+	kde-apps)
+		if [[ ${KDE_BUILD_TYPE} = live || ${PV} = 17.12* ]]; then
+			: ${QT_MINIMAL:=5.9.1}
 		fi
 		;;
 esac
@@ -55,7 +57,7 @@ esac
 # @ECLASS-VARIABLE: FRAMEWORKS_MINIMAL
 # @DESCRIPTION:
 # Minimum version of Frameworks to require. This affects add_frameworks_dep.
-: ${FRAMEWORKS_MINIMAL:=5.37.0}
+: ${FRAMEWORKS_MINIMAL:=5.40.0}
 
 # @ECLASS-VARIABLE: PLASMA_MINIMAL
 # @DESCRIPTION:
@@ -74,6 +76,7 @@ esac
 # kde5_pkg_pretend and kde5_pkg_setup.
 
 # @ECLASS-VARIABLE: KDEBASE
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # This gets set to a non-zero value when a package is considered a
 # kdevelop ebuild.

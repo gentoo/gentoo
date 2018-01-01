@@ -22,7 +22,7 @@ RDEPEND="
 	caps? ( sys-libs/libcap )
 	dbi? ( >=dev-db/libdbi-0.8.3 )
 	geoip? ( >=dev-libs/geoip-1.5.0 )
-	json? ( >=dev-libs/json-c-0.9 )
+	json? ( >=dev-libs/json-c-0.9:= )
 	python? ( ${PYTHON_DEPS} )
 	redis? ( dev-libs/hiredis )
 	smtp? ( net-libs/libesmtp )

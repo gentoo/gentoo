@@ -10,7 +10,7 @@ SRC_URI="http://www.linuxmotors.com/gljewel/downloads/SDL_jewels-${PV}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 RESTRICT="test"
 

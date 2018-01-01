@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="systemd rbd"
 
 RDEPEND="
-	dev-libs/json-c
+	dev-libs/json-c:=
 	dev-libs/libaio
 	dev-libs/userspace-rcu
 	>=sys-fs/lvm2-2.02.45

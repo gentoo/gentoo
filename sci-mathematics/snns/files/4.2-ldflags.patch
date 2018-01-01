@@ -2,8 +2,8 @@ Respect LDFLAGS
 
 https://bugs.gentoo.org/show_bug.cgi?id=332475
 
---- tools/sources/Makefile
-+++ tools/sources/Makefile
+--- a/tools/sources/Makefile
++++ b/tools/sources/Makefile
 @@ -147,19 +147,19 @@
  # Linking of single stand alone programs
  
@@ -29,8 +29,8 @@ https://bugs.gentoo.org/show_bug.cgi?id=332475
  
  
  # Make sure that kernel libs are available and up to date
---- xgui/sources/Makefile
-+++ xgui/sources/Makefile
+--- a/xgui/sources/Makefile
++++ b/xgui/sources/Makefile
 @@ -202,7 +202,7 @@
  # Linking of xgui
  

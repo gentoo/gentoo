@@ -23,7 +23,7 @@ REQUIRED_USE="static? ( !qt4 )"
 DEPEND="
 		static? (
 			sys-apps/util-linux[static-libs]
-			>=sys-libs/ncurses-5.2[static-libs]
+			>=sys-libs/ncurses-5.2:0[static-libs]
 			jpeg? ( virtual/jpeg:0[static-libs] )
 			ntfs? ( sys-fs/ntfs3g[static-libs] )
 			reiserfs? ( >=sys-fs/progsreiserfs-0.3.1_rc8[static-libs] )
@@ -33,7 +33,7 @@ DEPEND="
 			)
 		!static? (
 			sys-apps/util-linux
-			>=sys-libs/ncurses-5.2
+			>=sys-libs/ncurses-5.2:0=
 			jpeg? ( virtual/jpeg:0 )
 			ntfs? ( sys-fs/ntfs3g )
 			reiserfs? ( >=sys-fs/progsreiserfs-0.3.1_rc8 )
@@ -46,6 +46,8 @@ RDEPEND="!static? ( ${DEPEND} )"
 
 AUTOTOOLS_IN_SOURCE_BUILD=1
 DOCS=( )
+
+PATCHES=( "${FILESDIR}/${P}-qtbindir.patch" )
 
 src_configure() {
 	local myconf

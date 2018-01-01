@@ -3,6 +3,8 @@
 
 EAPI="5"
 
+inherit eutils
+
 DESCRIPTION="GNU macro processor"
 HOMEPAGE="https://www.gnu.org/software/m4/m4.html"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
@@ -15,6 +17,11 @@ IUSE="examples"
 # remember: cannot dep on autoconf since it needs us
 DEPEND="app-arch/xz-utils"
 RDEPEND=""
+
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-darwin17-printf-n.patch
+	default
+}
 
 src_configure() {
 	# Disable automagic dependency over libsigsegv; see bug #278026

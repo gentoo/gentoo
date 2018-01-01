@@ -12,7 +12,7 @@ MY_PN=SuperLU
 if [[ ${PV} != *9999* ]]; then
 	inherit versionator
 	SRC_URI="http://crd-legacy.lbl.gov/~xiaoye/SuperLU//${PN}_${PV}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 	SLOT="0/$(get_major_version)"
 	S="${WORKDIR}/SuperLU_${PV}"
 else
@@ -20,7 +20,7 @@ else
 	GIT_ECLASS="git-r3"
 	EGIT_REPO_URI="https://github.com/xiaoyeli/${PN}"
 	SLOT="0/9999"
-	KEYWORDS="~arm64 ~hppa ~ia64"
+	KEYWORDS="~arm64 ~hppa ~ia64 ~sparc"
 fi
 
 DESCRIPTION="Sparse LU factorization library"

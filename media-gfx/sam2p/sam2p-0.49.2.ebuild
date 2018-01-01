@@ -1,12 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
 inherit autotools eutils toolchain-funcs
 
 DESCRIPTION="Utility to convert raster images to EPS, PDF and many others"
-HOMEPAGE="https://code.google.com/p/sam2p/"
-SRC_URI="https://sam2p.googlecode.com/files/${P}.tar.gz"
+HOMEPAGE="https://github.com/pts/sam2p"
+SRC_URI="https://github.com/pts/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

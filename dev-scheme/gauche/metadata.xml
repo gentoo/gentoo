@@ -9,13 +9,13 @@
 		<name>Gentoo Scheme Project</name>
 	</maintainer>
 	<longdescription>
-    Gauche is an R5RS Scheme implementation developed to be a handy script
-    interpreter, which allows programmers and system administrators to write
-    small to large scripts for their daily chores. Quick startup, built-in
-    system interface, native multilingual support are some of my goals.
+		Gauche is an R5RS Scheme implementation developed to be a handy script
+		interpreter, which allows programmers and system administrators to write
+		small to large scripts for their daily chores. Quick startup, built-in
+		system interface, native multilingual support are some of my goals.
 
-    Gauche runs on several Unix-like platforms. 
-  </longdescription>
+		Gauche runs on several Unix-like platforms.
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">gauche</remote-id>
 	</upstream>

@@ -1,0 +1,12 @@
+On Solaris, getopt(3) is in stdio.h.
+
+--- a/atf-c/tp_test.c
++++ b/atf-c/tp_test.c
+@@ -25,6 +25,7 @@
+ 
+ #include "atf-c/tp.h"
+ 
++#include <stdio.h>
+ #include <string.h>
+ #include <unistd.h>
+ 

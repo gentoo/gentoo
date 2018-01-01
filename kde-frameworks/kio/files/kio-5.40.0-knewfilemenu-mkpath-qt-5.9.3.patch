@@ -1,0 +1,80 @@
+From 298c0e734efdd8a7b66a531959e3fb5357a6495d Mon Sep 17 00:00:00 2001
+From: Eike Hein <hein@kde.org>
+Date: Tue, 28 Nov 2017 19:42:46 +0900
+Subject: Fix creating a directory via KNewFileMenu+KIO::mkpath on Qt 5.9.3+
+
+Summary:
+f62768d04652 in qtbase.git introduced a behavior change in QUrl
+causing it to reject URLs with a path of "//foo" (note the double
+slash) as invalid.
+
+Both KNewFileMenu and KIO::mkpath contained code following this
+pattern:
+
+  url.path() + '/' + name
+
+This is a bad mix with forwarding slaves like kio_desktop, which
+translate a top-level path of / to some other URL:
+
+  (desktop:)/ + / + foo = //foo
+
+This patch addresses the two instances of this by wrapping the
+string building in QDir::cleanPath, which I think is the shortest
+and most readable way to go.
+
+2353119aae8f in kio.git (D8836) was another commit fixing fallout
+from this Qt change. Is unlikely this patch will be the last one.
+I suspect many other variations of this problem lurk about the
+codebase.
+
+BUG:387073
+
+Reviewers: dfaure, thiago, elvisangelaccio
+
+Subscribers: #frameworks
+
+Tags: #frameworks
+
+Differential Revision: https://phabricator.kde.org/D9029
+---
+ src/core/mkpathjob.cpp           | 3 ++-
+ src/filewidgets/knewfilemenu.cpp | 2 +-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/src/core/mkpathjob.cpp b/src/core/mkpathjob.cpp
+index c77a9fe..f67a489 100644
+--- a/src/core/mkpathjob.cpp
++++ b/src/core/mkpathjob.cpp
+@@ -25,6 +25,7 @@
+ #include "mkdirjob.h"
+ #include <QTimer>
+ #include <QDebug>
++#include <QDir>
+ #include <QFileInfo>
+ 
+ using namespace KIO;
+@@ -123,7 +124,7 @@ void MkpathJobPrivate::slotStart()
+     }
+ 
+     if (m_pathIterator != m_pathComponents.constEnd()) {
+-        m_url.setPath(m_url.path() + '/' + *m_pathIterator);
++        m_url.setPath(QDir::cleanPath(m_url.path() + '/' + *m_pathIterator));
+         KIO::Job* job = KIO::mkdir(m_url);
+         q->addSubjob(job);
+         q->setProcessedAmount(KJob::Directories, q->processedAmount(KJob::Directories) + 1);
+diff --git a/src/filewidgets/knewfilemenu.cpp b/src/filewidgets/knewfilemenu.cpp
+index 023eebd..98c9852 100644
+--- a/src/filewidgets/knewfilemenu.cpp
++++ b/src/filewidgets/knewfilemenu.cpp
+@@ -855,7 +855,7 @@ void KNewFileMenuPrivate::_k_slotCreateDirectory(bool writeHiddenDir)
+                 }
+             }
+             url = baseUrl;
+-            url.setPath(url.path() + '/' + name);
++            url.setPath(QDir::cleanPath(url.path() + '/' + name));
+         }
+     }
+ 
+-- 
+cgit v0.11.2
+

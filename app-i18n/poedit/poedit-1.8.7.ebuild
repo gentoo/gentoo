@@ -14,7 +14,7 @@ SRC_URI="https://github.com/vslavik/${PN}/releases/download/v${PV}-oss/${P}.tar.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
 # db/expat req for legacytm (backwards support for pre 1.6)
@@ -26,8 +26,8 @@ RDEPEND="
 	dev-libs/expat
 	dev-libs/icu:=
 	||	(
-		=sys-libs/db-5*[cxx]
-		=sys-libs/db-4*[cxx]
+		=sys-libs/db-5*:*[cxx]
+		=sys-libs/db-4*:*[cxx]
 		)
 	<sys-libs/db-6:=[cxx]
 	x11-libs/gtk+:3

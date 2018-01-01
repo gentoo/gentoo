@@ -14,7 +14,7 @@ SRC_URI="splice-linux-1353389454.tar.gz"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
 RESTRICT="bindist fetch splitdebug"
 

@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{4,5} )
 inherit python-single-r1
 
 DESCRIPTION="Educational tool for relational algebra"
-HOMEPAGE="http://ltworf.github.io/relational/"
+HOMEPAGE="https://ltworf.github.io/relational/"
 SRC_URI="https://github.com/ltworf/${PN}/releases/download/${PV}/${PN}_${PV}.orig.tar.gz"
 
 LICENSE="GPL-3"

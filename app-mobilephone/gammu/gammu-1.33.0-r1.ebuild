@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit eutils cmake-utils python-single-r1
 
 DESCRIPTION="A tool to handle your cellular phone"
-HOMEPAGE="https://www.wammu.eu/"
+HOMEPAGE="https://wammu.eu/gammu/"
 SRC_URI="http://dl.cihar.com/${PN}/releases/${P}.tar.bz2"
 
 LICENSE="GPL-2"

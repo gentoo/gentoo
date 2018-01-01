@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>dlan@gentoo.org</email>
-    <name>Yixun Lan</name>
-  </maintainer>
-  <use>
-    <flag name="openssl">Use <pkg>dev-libs/openssl</pkg> as crypto backend</flag>
-    <flag name="mbedtls">Use <pkg>net-libs/mbedtls</pkg> as crypto backend</flag>
-	<flag name="system-libs">Use system libraries instead of the ones included in the upstream distribution</flag>
-  </use>
-  <upstream>
-    <remote-id type="github">shadowsocks/shadowsocks-libev</remote-id>
-  </upstream>
+	<maintainer type="person">
+		<email>dlan@gentoo.org</email>
+		<name>Yixun Lan</name>
+	</maintainer>
+	<use>
+		<flag name="openssl">Use <pkg>dev-libs/openssl</pkg> as crypto backend</flag>
+		<flag name="mbedtls">Use <pkg>net-libs/mbedtls</pkg> as crypto backend</flag>
+		<flag name="system-libs">Use system libraries instead of the ones included in the upstream distribution</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">shadowsocks/shadowsocks-libev</remote-id>
+	</upstream>
 </pkgmetadata>

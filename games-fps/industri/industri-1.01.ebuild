@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/industri/industri_BIN-${PV}-src.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 IUSE="cdinstall"
 
 RDEPEND="virtual/opengl

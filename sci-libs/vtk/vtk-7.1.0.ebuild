@@ -89,6 +89,7 @@ RDEPEND="
 		dev-qt/qtopengl:5
 		dev-qt/qtsql:5
 		dev-qt/qtwebkit:5
+		dev-qt/qtx11extras:5
 		python? ( dev-python/PyQt5[${PYTHON_USEDEP}] )
 	)
 	R? ( dev-lang/R )
@@ -98,8 +99,9 @@ RDEPEND="
 	video_cards_nvidia? ( || ( x11-drivers/nvidia-drivers[tools,static-libs] media-video/nvidia-settings ) )
 	web? (
 		${WEBAPP_DEPEND}
+		dev-python/six[${PYTHON_USEDEP}]
 		dev-python/autobahn[${PYTHON_USEDEP}]
-		dev-python/twisted-core[${PYTHON_USEDEP}]
+		dev-python/twisted[${PYTHON_USEDEP}]
 		dev-python/zope-interface[${PYTHON_USEDEP}]
 	)
 	xdmf2? ( sci-libs/xdmf2 )
@@ -247,6 +249,7 @@ src_configure() {
 			-DVTK_PYTHON_INCLUDE_DIR="$(python_get_includedir)"
 			-DVTK_PYTHON_LIBRARY="$(python_get_library_path)"
 			-DVTK_PYTHON_SETUP_ARGS:STRING="--prefix=${EPREFIX} --root=${D}"
+			-DVTK_USE_SYSTEM_SIX=ON
 		)
 	fi
 

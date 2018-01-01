@@ -6,7 +6,6 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
-		<flag name="opengl">Enable OpenGL support for Plasma (GLApplet)</flag>
 		<flag name="qt3support">Enable kde3support/qt3support for very old applications</flag>
 	</use>
 </pkgmetadata>

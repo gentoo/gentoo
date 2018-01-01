@@ -32,7 +32,7 @@ SRC_URI="http://dukeworld.duke4.net/eduke32/synthesis/${MY_PV}-${MY_BUILD}/${PN}
 
 LICENSE="GPL-2 BUILDLIC textures? ( hrp_art )"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="cdinstall debug demo gtk offensive +opengl opl-musicpack +png samples sc55-musicpack +server textures tools +vpx"
 REQUIRED_USE="?? ( opl-musicpack sc55-musicpack )"
 

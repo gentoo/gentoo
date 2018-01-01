@@ -1,5 +1,5 @@
---- tests/test_process.c.old	2008-10-16 14:10:16.000000000 +0200
-+++ tests/test_process.c	2008-10-16 14:11:26.000000000 +0200
+--- a/tests/test_process.c	2008-10-16 14:10:16.000000000 +0200
++++ b/tests/test_process.c	2008-10-16 14:11:26.000000000 +0200
 @@ -12,6 +12,7 @@
  
  #include "test_process.h"

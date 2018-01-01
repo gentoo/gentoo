@@ -7,7 +7,7 @@ AUTOTOOLS_AUTORECONF=1
 AUTOTOOLS_IN_SOURCE_BUILD=1 # bug #474098
 inherit autotools-utils
 
-DESCRIPTION="template based math library, written in C++, for symbolic and numeric calculus applications"
+DESCRIPTION="C++ Template math library, for symbolic and numeric calculus applications"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 

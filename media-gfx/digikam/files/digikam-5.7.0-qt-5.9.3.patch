@@ -1,0 +1,32 @@
+From 855ba5b7d4bc6337234720a72ea824ddd3b32e5b Mon Sep 17 00:00:00 2001
+From: Maik Qualmann <metzpinguin@gmail.com>
+Date: Tue, 28 Nov 2017 21:29:00 +0100
+Subject: try to fix the Qt-5.9.3 empty album problem CCBUGS: 387373
+
+* asturm: Fix build w/ Qt-5.7
+---
+ libs/database/coredb/coredburl.cpp | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/libs/database/coredb/coredburl.cpp b/libs/database/coredb/coredburl.cpp
+index 2c0d0eb..b1bdf71 100644
+--- a/libs/database/coredb/coredburl.cpp
++++ b/libs/database/coredb/coredburl.cpp
+@@ -88,8 +88,13 @@ CoreDbUrl CoreDbUrl::fromAlbumAndName(const QString& name,
+                                       const DbEngineParameters& parameters)
+ {
+     CoreDbUrl url;
++    QString path(album);
+     url.setScheme(QLatin1String("digikamalbums"));
+-    url.setPath(QLatin1Char('/') + album + QLatin1Char('/') + name);
++
++    if (path != QLatin1String("/"))
++        path += QLatin1Char('/');
++
++    url.setPath(path + name);
+ 
+     QUrlQuery q(url);
+     q.addQueryItem(QLatin1String("albumRoot"),   albumRoot.adjusted(QUrl::StripTrailingSlash).toLocalFile());
+-- 
+cgit v0.11.2
+

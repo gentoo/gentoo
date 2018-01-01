@@ -5,4 +5,9 @@
 		<email>perl@gentoo.org</email>
 		<name>Gentoo Perl Project</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="cpan">PPI-HTML</remote-id>
+		<remote-id type="cpan-module">PPI::HTML</remote-id>
+		<remote-id type="cpan-module">PPI::HTML::Fragment</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -12,7 +12,7 @@ SRC_URI="http://www.braingames.getput.com/nether/sources.zip
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 IUSE=""
 RESTRICT="mirror bindist"
 

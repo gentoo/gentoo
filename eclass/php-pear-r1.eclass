@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: php-pear-r1.eclass
@@ -42,7 +42,7 @@ RDEPEND="${DEPEND}"
 [[ -z "${PHP_PEAR_PKG_NAME}" ]] && PHP_PEAR_PKG_NAME="${PN/PEAR-/}"
 
 fix_PEAR_PV() {
-	tmp="${PV}"
+	local tmp="${PV}"
 	tmp="${tmp/_/}"
 	tmp="${tmp/rc/RC}"
 	tmp="${tmp/beta/b}"

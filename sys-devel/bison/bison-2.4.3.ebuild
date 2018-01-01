@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
@@ -7,7 +7,8 @@ inherit flag-o-matic eutils
 
 DESCRIPTION="A yacc-compatible parser generator"
 HOMEPAGE="https://www.gnu.org/software/bison/bison.html"
-SRC_URI="mirror://gnu/bison/${P}.tar.bz2"
+SRC_URI="mirror://gnu/bison/${P}.tar.bz2
+	https://dev.gentoo.org/~mgorny/dist/${P}-patchset.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -19,8 +20,8 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-uclibc-sched_param-def.patch
-	epatch "${FILESDIR}"/${P}-no-gets.patch
+	epatch "${WORKDIR}"/${P}-patchset/${P}-uclibc-sched_param-def.patch
+	epatch "${WORKDIR}"/${P}-patchset/${P}-no-gets.patch
 }
 
 src_configure() {

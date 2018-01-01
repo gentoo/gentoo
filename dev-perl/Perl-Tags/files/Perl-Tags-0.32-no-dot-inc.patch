@@ -1,0 +1,25 @@
+From e2124dd7f4a0a43082248bdcfb26aa0c2832d1a2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Andreas=20K=2E=20H=C3=BCttel?= <dilfridge@gentoo.org>
+Date: Mon, 3 Jul 2017 03:15:36 +1200
+Subject: Fix build on Perl 5.26
+
+Bug: https://bugs.gentoo.org/623068
+---
+ Makefile.PL | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index ed5c5f7..0a01281 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -1,6 +1,6 @@
+ use strict;
+ use warnings;
+-use inc::Module::Install;
++use lib q[.]; use inc::Module::Install;
+ 
+ name        'Perl-Tags';
+ all_from    'lib/Perl/Tags.pm';
+-- 
+2.15.1
+

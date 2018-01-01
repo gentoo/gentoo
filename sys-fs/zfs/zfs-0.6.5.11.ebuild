@@ -32,7 +32,10 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 "
 
+# Adding glibc >= 2.25 blocker for ZFS versions lower
+# than 0.7.0, due to bug 617628.
 RDEPEND="${COMMON_DEPEND}
+	!>=sys-libs/glibc-2.25
 	!=sys-apps/grep-2.13*
 	!kernel-builtin? ( =sys-fs/zfs-kmod-${PV}* )
 	!sys-fs/zfs-fuse

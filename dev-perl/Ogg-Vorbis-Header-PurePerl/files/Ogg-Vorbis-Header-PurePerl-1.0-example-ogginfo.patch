@@ -1,0 +1,30 @@
+From 51fb5b08f1a5a12d1de0c87921c0eb9f1fad6aa5 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Wed, 20 Dec 2017 19:46:31 +1300
+Subject: Move ogginfo.pl to examples, not standard install
+
+---
+ MANIFEST                          | 2 +-
+ ogginfo.pl => examples/ogginfo.pl | 0
+ 2 files changed, 1 insertion(+), 1 deletion(-)
+ rename ogginfo.pl => examples/ogginfo.pl (100%)
+
+diff --git a/MANIFEST b/MANIFEST
+index f2d38fe..b87398a 100644
+--- a/MANIFEST
++++ b/MANIFEST
+@@ -5,6 +5,6 @@ PurePerl.pm
+ README
+ test.pl
+ test.ogg
+-ogginfo.pl
++examples/ogginfo.pl
+ LICENSE.GPL
+ META.yml                                 Module meta-data (added by MakeMaker)
+diff --git a/ogginfo.pl b/examples/ogginfo.pl
+similarity index 100%
+rename from ogginfo.pl
+rename to examples/ogginfo.pl
+-- 
+2.15.1
+

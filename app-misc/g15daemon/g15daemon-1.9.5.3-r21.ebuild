@@ -9,7 +9,7 @@ GENTOO_DEPEND_ON_PERL="no"
 inherit eutils linux-info perl-module python-r1 base
 
 DESCRIPTION="Takes control of the G15 keyboard, through the linux kernel uinput device driver"
-HOMEPAGE="http://g15daemon.sourceforge.net/"
+HOMEPAGE="https://sourceforge.net/projects/g15daemon/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

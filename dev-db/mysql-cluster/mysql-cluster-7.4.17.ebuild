@@ -2,21 +2,21 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-MY_EXTRAS_VER="20171108-2050Z"
+MY_EXTRAS_VER="20171121-1518Z"
 SUBSLOT="18"
 MYSQL_PV_MAJOR="5.6"
 #fails to build with ninja
 CMAKE_MAKEFILE_GENERATOR=emake
 
-inherit mysql-multilib-r1
+inherit java-utils-2 mysql-multilib-r1
 # only to make repoman happy. it is really set in the eclass
 IUSE="$IUSE numa"
 
 # REMEMBER: also update eclass/mysql*.eclass before committing!
 KEYWORDS="~amd64 ~x86"
-
-DEPEND="|| ( >=sys-devel/gcc-3.4.6 >=sys-devel/gcc-apple-4.0 ) numa? ( sys-process/numactl )"
-RDEPEND="!media-sound/amarok[embedded]  numa? ( sys-process/numactl )"
+COMMON_DEPEND="numa? ( sys-process/numactl ) dev-libs/libevent:0= ${JAVA_PKG_E_DEPEND}"
+DEPEND="${COMMON_DEPEND} || ( >=sys-devel/gcc-3.4.6 >=sys-devel/gcc-apple-4.0 ) >=virtual/jdk-1.6 test? ( dev-perl/JSON )"
+RDEPEND="${COMMON_DEPEND} !media-sound/amarok[embedded] >=virtual/jre-1.6"
 
 MY_PATCH_DIR="${WORKDIR}/mysql-extras-${MY_EXTRAS_VER}"
 
@@ -27,15 +27,24 @@ PATCHES=(
 	"${MY_PATCH_DIR}"/20009_all_mysql_myodbc_symbol_fix-5.6.patch
 #	"${MY_PATCH_DIR}"/20018_all_mysql-5.6.25-without-clientlibs-tools.patch
 	"${MY_PATCH_DIR}"/20027_all_mysql-5.5-perl5.26-includes.patch
+	"${MY_PATCH_DIR}"/20028_all_mysql-5.6-gcc7.patch
 	"${MY_PATCH_DIR}"/30000_all_mysql-cluster-multilib-property.patch
 )
+
+MULTILIB_WRAPPED_HEADERS+=( /usr/include/mysql/storage/ndb/ndb_types.h )
 
 # Please do not add a naive src_unpack to this ebuild
 # If you want to add a single patch, copy the ebuild to an overlay
 # and create your own mysql-extras tarball, looking at 000_index.txt
 
+pkg_setup() {
+	mysql-multilib-r1_pkg_setup
+	java-pkg_init
+}
+
 src_prepare() {
 	mysql-multilib-r1_src_prepare
+	java-utils-2_src_prepare
 	if use libressl ; then
 		sed -i 's/OPENSSL_MAJOR_VERSION STREQUAL "1"/OPENSSL_MAJOR_VERSION STREQUAL "2"/' \
 			"${S}/cmake/ssl.cmake" || die
@@ -45,8 +54,17 @@ src_prepare() {
 src_configure() {
 	# validate_password plugin uses exceptions when it shouldn't yet (until 5.7)
 	# disable until we see what happens with it
-	local MYSQL_CMAKE_NATIVE_DEFINES=( -DWITHOUT_VALIDATE_PASSWORD=1 -DWITH_NUMA=$(usex numa ON OFF) )
+	local MYSQL_CMAKE_NATIVE_DEFINES=(
+		-DWITHOUT_VALIDATE_PASSWORD=1
+		-DWITH_NUMA=$(usex numa ON OFF)
+		-DWITH_NDBCLUSTER=1 -DWITH_PARTITION_STORAGE_ENGINE=1
+		-DWITHOUT_PARTITION_STORAGE_ENGINE=0 )
 	mysql-multilib-r1_src_configure
+}
+
+pkg_preinst() {
+	java-utils-2_pkg_preinst
+	mysql-multilib-r1_pkg_preinst
 }
 
 # Official test instructions:
@@ -60,6 +78,14 @@ multilib_src_test() {
 		einfo "Server tests not available on non-native abi".
 		return 0;
 	fi
+
+	_disable_test() {
+		local rawtestname reason
+		rawtestname="${1}" ; shift
+		reason="${@}"
+		ewarn "test '${rawtestname}' disabled: '${reason}'"
+		echo ${rawtestname} : ${reason} >> "${T}/disabled.def"
+	}
 
 	local TESTDIR="${CMAKE_BUILD_DIR}/mysql-test"
 	local retstatus_unit
@@ -91,6 +117,7 @@ multilib_src_test() {
 		# create symlink for the tests to find mysql_tzinfo_to_sql
 		ln -s "${BUILD_DIR}/sql/mysql_tzinfo_to_sql" "${S}/sql/"
 
+		touch "${T}/disabled.def"
 		# These are failing in MySQL 5.5/5.6 for now and are believed to be
 		# false positives:
 		#
@@ -118,16 +145,16 @@ multilib_src_test() {
 			main.mysqlhotcopy_archive main.mysqlhotcopy_myisam \
 			perfschema.binlog_edge_mix \
 			perfschema.binlog_edge_stmt \
-			rpl.rpl_plugin_load ndb.ndb_tools_connect main.mysql \
-			main.mysql_upgrade unit_tests \
+			rpl.rpl_plugin_load main.mysql \
+			main.mysql_upgrade \
 		; do
-				mysql-multilib-r1_disable_test  "$t" "False positives in Gentoo"
+				_disable_test  "$t" "False positives in Gentoo"
 		done
 		# ndb.ndbinfo, ndb_binlog.ndb_binlog_index: latin1/utf8
 		for t in \
-			ndb.ndbinfo \
+			ndb.ndbinfo ndb.ndb_tools_connect \
 			ndb_binlog.ndb_binlog_index ; do
-				mysql-multilib-r1_disable_test  "$t" "False positives in Gentoo (NDB)"
+				_disable_test  "$t" "False positives in Gentoo (NDB) (Latin1/UTF8)"
 		done
 
 		# Set file limits higher so tests run
@@ -138,7 +165,8 @@ multilib_src_test() {
 
 		# run mysql-test tests
 		perl mysql-test-run.pl --force --vardir="${T}/var-tests" \
-			--suite-timeout=5000 --reorder
+			--suite-timeout=5000 --reorder --skip-test-list="${T}/disabled.def" \
+			--nounit-tests
 		retstatus_tests=$?
 
 		popd > /dev/null || die

@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -28,6 +28,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/pax-3.4-sysmacros.patch
 	sed -i configure.in \
 		-e 's|AM_CONFIG_HEADER|AC_CONFIG_HEADERS|g' \
+		-e 's|-Werror||g' \
 		-e '/AC_PROG_RANLIB/a AC_PROG_MKDIR_P' \
 		|| die
 	eautoreconf

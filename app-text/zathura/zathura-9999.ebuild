@@ -3,24 +3,22 @@
 
 EAPI=5
 
-inherit eutils fdo-mime multilib toolchain-funcs virtualx
-[[ ${PV} == 9999* ]] && inherit git-2
+inherit eutils multilib toolchain-funcs virtualx xdg-utils
+
+if [[ ${PV} == *9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://git.pwmt.org/pwmt/zathura.git"
+	EGIT_BRANCH="develop"
+else
+	KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
+	SRC_URI="http://pwmt.org/projects/${PN}/download/${P}.tar.gz"
+fi
 
 DESCRIPTION="A highly customizable and functional document viewer"
 HOMEPAGE="http://pwmt.org/projects/zathura/"
-if ! [[ ${PV} == 9999* ]]; then
-SRC_URI="http://pwmt.org/projects/${PN}/download/${P}.tar.gz"
-fi
-EGIT_REPO_URI="https://git.pwmt.org/pwmt/${PN}.git"
-EGIT_BRANCH="develop"
 
 LICENSE="ZLIB"
 SLOT="0"
-if ! [[ ${PV} == 9999* ]]; then
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
-else
-KEYWORDS=""
-fi
 IUSE="+magic sqlite synctex test"
 
 RDEPEND=">=dev-libs/girara-0.2.7:3=
@@ -35,7 +33,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	test? ( dev-libs/check )"
 
-pkg_setup() {
+src_configure() {
 	myzathuraconf=(
 		WITH_MAGIC=$(usex magic 1 0)
 		WITH_SQLITE=$(usex sqlite 1 0)
@@ -63,9 +61,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }

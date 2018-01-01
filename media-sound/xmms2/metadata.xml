@@ -13,22 +13,23 @@
 		your music.
 
 		List of features currently offered by XMMS2:
-		  Client-server model:
-		    * Allows XMMS2 to have various multiple interfaces (as clients).
-			o Command line interfaces
-			o GTK clients (matching GNOME &amp; XFCE4 look and feel)
-			o KDE clients (matching KDE look and feel)
-		    * Network transparency means you can run and control XMMS2 remotely, (e.g. run
-		      XMMS2 on your 'media box' and control it over network using a bluetooth-enabled
-		      PDA (TCP))
-		  Wide format support:
-		    * Can play FLAC, mp3, MOD, SID, speex, ogg vorbis, wave files.
-		    * Clean separation of transport and decoder subsystems
-		  Allows for more flexible access to media. (e.g. play mp3 files from a Samba
-		  share without having to mount it on the local filesystem)
+
+		Client-server model:
+		* Allows XMMS2 to have various multiple interfaces (as clients).
+		o Command line interfaces
+		o GTK clients (matching GNOME &amp; XFCE4 look and feel)
+		o KDE clients (matching KDE look and feel)
+		* Network transparency means you can run and control XMMS2 remotely, (e.g. run XMMS2 on your 'media box' and control it over network using a bluetooth-enabled PDA (TCP))
+
+		Wide format support:
+		* Can play FLAC, mp3, MOD, SID, speex, ogg vorbis, wave files.
+		* Clean separation of transport and decoder subsystems
+		Allows for more flexible access to media. (e.g. play mp3 files from a Samba
+		share without having to mount it on the local filesystem)
+
 		Medialib:
-		  Database-driven media library stores metadata about songs as they're played,
-		  so songs can be quickly recalled and new playlists easily made.
+		Database-driven media library stores metadata about songs as they're played,
+		so songs can be quickly recalled and new playlists easily made.
 	</longdescription>
 	<use>
 		<flag name="airplay">Support for airplay format</flag>

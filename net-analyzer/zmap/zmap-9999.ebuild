@@ -18,7 +18,7 @@ IUSE="mongo redis"
 RDEPEND="
 	dev-libs/gmp:0
 	net-libs/libpcap
-	dev-libs/json-c
+	dev-libs/json-c:=
 	mongo? ( dev-db/mongo )
 	redis? ( dev-libs/hiredis )"
 DEPEND="${RDEPEND}

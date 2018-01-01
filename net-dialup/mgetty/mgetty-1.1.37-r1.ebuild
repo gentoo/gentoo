@@ -1,14 +1,15 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils flag-o-matic toolchain-funcs user
+EAPI=6
+inherit flag-o-matic toolchain-funcs user
 
 DESCRIPTION="fax and voice modem programs"
 SRC_URI="ftp://mgetty.greenie.net/pub/mgetty/source/1.1/${PN}${PV}-Jun05.tar.gz"
 HOMEPAGE="http://mgetty.greenie.net/"
 
-DEPEND="doc? ( virtual/latex-base virtual/texi2dvi )
+DEPEND="
+	doc? ( virtual/latex-base virtual/texi2dvi )
 	>=sys-apps/sed-4
 	sys-apps/groff
 	dev-lang/perl
@@ -17,9 +18,11 @@ DEPEND="doc? ( virtual/latex-base virtual/texi2dvi )
 	fax? (
 		!net-misc/efax
 		!net-misc/hylafax
-	)"
+	)
+"
 RDEPEND="${DEPEND}
-	fax? ( media-libs/netpbm app-text/ghostscript-gpl )"
+	fax? ( media-libs/netpbm app-text/ghostscript-gpl )
+"
 
 SLOT="0"
 LICENSE="GPL-2"
@@ -32,12 +35,13 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-gentoo.patch"
-	epatch "${FILESDIR}/${P}-qa-fixes.patch"
-	epatch "${FILESDIR}/${PN}-1.1.36-callback.patch" # add callback install to Makefile
-	epatch "${FILESDIR}/Lucent.c.patch" # Lucent modem CallerID patch - bug #80366
-	use fax || epatch "${FILESDIR}/${P}-nofax.patch" # don't install fax related files - bug #195467
-	epatch "${FILESDIR}/${PN}-1.1.36-tmpfile.patch" # fix security bug 235806
+	eapply "${FILESDIR}/${P}-gentoo.patch"
+	eapply "${FILESDIR}/${P}-qa-fixes.patch"
+	eapply "${FILESDIR}/${PN}-1.1.36-callback.patch" # add callback install to Makefile
+	eapply "${FILESDIR}/Lucent.c.patch" # Lucent modem CallerID patch - bug #80366
+	use fax || eapply "${FILESDIR}/${P}-nofax.patch" # don't install fax related files - bug #195467
+	eapply "${FILESDIR}/${PN}-1.1.36-tmpfile.patch" # fix security bug 235806
+	eapply "${FILESDIR}/${P}-gcc7.patch"
 
 	sed -e 's:var/log/mgetty:var/log/mgetty/mgetty:' \
 		-e 's:var/log/sendfax:var/log/mgetty/sendfax:' \
@@ -60,6 +64,8 @@ src_prepare() {
 	# Support user's CFLAGS and LDFLAGS.
 	sed -e "s/\$(CFLAGS) -o newslock/${CFLAGS} ${LDFLAGS} -Wall -o newslock/" \
 		-e "s/\$(LDLAGS)/${LDFLAGS}/" -i {,fax/}Makefile || die
+
+	default
 }
 
 src_compile() {
@@ -157,7 +163,4 @@ pkg_postinst() {
 	elog
 	elog "If you want to grab voice messages from a remote location, you must save"
 	elog "the password in /var/spool/voice/.code file"
-	echo
-	ewarn "/var/spool/voice/.code and /var/spool/voice/messages/Index"
-	ewarn "are not longer created by this automatically!"
 }

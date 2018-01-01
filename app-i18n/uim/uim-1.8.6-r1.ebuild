@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -11,7 +11,7 @@ SRC_URI="https://uim.googlecode.com/files/${P}.tar.bz2"
 LICENSE="BSD GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 ~arm hppa ppc ppc64 x86"
-IUSE="+anthy canna curl eb emacs expat libffi gtk gtk3 kde libedit libnotify m17n-lib ncurses nls qt4 skk sqlite ssl static-libs test unicode X xft l10n_ja l10n_ko l10n_zh-CN l10n_zh-TW"
+IUSE="+anthy canna curl eb emacs expat libffi gtk gtk3 libedit libnotify m17n-lib ncurses nls qt4 skk sqlite ssl static-libs test unicode X xft l10n_ja l10n_ko l10n_zh-CN l10n_zh-TW"
 
 RESTRICT="test"
 
@@ -38,7 +38,6 @@ RDEPEND="X? (
 	libffi? ( virtual/libffi )
 	gtk? ( >=x11-libs/gtk+-2.4:2 )
 	gtk3? ( x11-libs/gtk+:3 )
-	kde? ( kde-frameworks/kdelibs:4 )
 	libedit? ( dev-libs/libedit )
 	libnotify? ( >=x11-libs/libnotify-0.4 )
 	m17n-lib? ( >=dev-libs/m17n-lib-1.3.1 )
@@ -56,7 +55,6 @@ DEPEND="${RDEPEND}
 	dev-util/intltool
 	virtual/pkgconfig
 	>=sys-devel/gettext-0.15
-	kde? ( dev-util/cmake )
 	X? (
 		x11-proto/xextproto
 		x11-proto/xproto
@@ -135,7 +133,7 @@ src_configure() {
 		$(use_with gtk3) \
 		$(use_with libedit) \
 		--disable-kde-applet \
-		$(use_enable kde kde4-applet) \
+		--disable-kde4-applet \
 		$(use_with m17n-lib m17nlib) \
 		$(use_enable ncurses fep) \
 		$(use_enable nls) \

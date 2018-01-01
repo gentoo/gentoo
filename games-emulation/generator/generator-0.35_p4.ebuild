@@ -11,7 +11,7 @@ SRC_URI="http://www.squish.net/generator/cbiere/generator/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="+sdlaudio"
 
 DEPEND="virtual/jpeg:0

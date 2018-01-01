@@ -13,7 +13,7 @@ SRC_URI="https://open-gram.googlecode.com/files/dict.utf8-${DICT_VERSION}.tar.bz
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ppc64 x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE=""
 
 DEPEND=">=app-i18n/sunpinyin-2.0.4_pre20130108"

@@ -1,5 +1,5 @@
---- Sources/Java/net/n3/nanoxml/XMLElement.java.orig	2016-03-04 09:21:07.908000000 +0000
-+++ Sources/Java/net/n3/nanoxml/XMLElement.java	2016-03-04 09:35:16.283000000 +0000
+--- a/Sources/Java/net/n3/nanoxml/XMLElement.java.orig	2016-03-04 09:21:07.908000000 +0000
++++ a/Sources/Java/net/n3/nanoxml/XMLElement.java	2016-03-04 09:35:16.283000000 +0000
 @@ -484,9 +484,9 @@
       * @return the child element, or null if no such child was found.
       */
@@ -130,8 +130,8 @@
              if (! elt.hasAttribute(attr.getName(), attr.getNamespace())) {
                  return false;
              }
---- Sources/Java/net/n3/nanoxml/NonValidator.java.orig	2016-03-04 09:36:05.247000000 +0000
-+++ Sources/Java/net/n3/nanoxml/NonValidator.java	2016-03-04 09:36:25.195000000 +0000
+--- a/Sources/Java/net/n3/nanoxml/NonValidator.java.orig	2016-03-04 09:36:05.247000000 +0000
++++ a/Sources/Java/net/n3/nanoxml/NonValidator.java	2016-03-04 09:36:25.195000000 +0000
 @@ -587,10 +587,10 @@
                                            int        lineNr)
     {
@@ -146,8 +146,8 @@
           extraAttributes.put(key, props.get(key));
        }
     }
---- Sources/Java/net/n3/nanoxml/XMLWriter.java.orig	2016-03-04 09:36:53.616000000 +0000
-+++ Sources/Java/net/n3/nanoxml/XMLWriter.java	2016-03-04 09:38:11.868000000 +0000
+--- a/Sources/Java/net/n3/nanoxml/XMLWriter.java.orig	2016-03-04 09:36:53.616000000 +0000
++++ a/Sources/Java/net/n3/nanoxml/XMLWriter.java	2016-03-04 09:38:11.868000000 +0000
 @@ -182,10 +182,10 @@
              }
           }
@@ -190,8 +190,8 @@
                 this.write(child, prettyPrint, indent + 4,
                            collapseEmptyElements);
              }
---- Sources/Java/net/n3/nanoxml/StdXMLParser.java.orig	2016-03-04 09:38:44.521000000 +0000
-+++ Sources/Java/net/n3/nanoxml/StdXMLParser.java	2016-03-04 09:39:08.028000000 +0000
+--- a/Sources/Java/net/n3/nanoxml/StdXMLParser.java.orig	2016-03-04 09:38:44.521000000 +0000
++++ a/Sources/Java/net/n3/nanoxml/StdXMLParser.java	2016-03-04 09:39:08.028000000 +0000
 @@ -492,10 +492,10 @@
                                                  extraAttributes,
                                                  this.reader.getSystemID(),

@@ -1,0 +1,9 @@
+--- acpi_call-1.1.0.orig/acpi_call.c	2017-11-24 22:30:59.000000000 +0100
++++ acpi_call-1.1.0/acpi_call.c	2017-11-24 22:30:01.000000000 +0100
+@@ -5,7 +5,6 @@
+ #include <linux/version.h>
+ #include <linux/proc_fs.h>
+ #include <linux/slab.h>
+-#include <asm/uaccess.h>
+ #include <linux/uaccess.h>
+ #include <linux/acpi.h>

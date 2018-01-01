@@ -7,25 +7,21 @@
 	</maintainer>
 	<upstream>
 		<maintainer status="active">
-                <email>ambrop7@gmail.com</email>
-                <name>Ambroz Bizjak</name>
-        </maintainer>
-        <doc lang="en">https://code.google.com/p/badvpn/w/list</doc>
+			<email>ambrop7@gmail.com</email>
+			<name>Ambroz Bizjak</name>
+		</maintainer>
+		<doc lang="en">https://code.google.com/p/badvpn/w/list</doc>
 		<bugs-to>https://github.com/ambrop72/badvpn/issues</bugs-to>
 		<remote-id type="github">ambrop72/badvpn</remote-id>
 		<remote-id type="google-code">badvpn</remote-id>
 	</upstream>
 	<use>
-		<flag name="client">Build the badvpn-client program, a daemon that
-			runs on endpoints of the VPN.</flag>
-		<flag name="server">Build the badvpn-server program, a central
-			server that manages the VPN network.</flag>
-		<flag name="ncd">Build NCD, a lightweight scripting language
-			especially suited for network configurations.</flag>
-		<flag name="tun2socks">Build tun2socks, a program which implements
-			a TUN device that forwards TCP traffic through a SOCKS5
-			server.</flag>
-        <flag name="udpgw">Build udpgw, a small daemon which allows tun2socks to forward UDP traffic.</flag>	</use>
+		<flag name="client">Build the badvpn-client program, a daemon that runs on endpoints of the VPN.</flag>
+		<flag name="server">Build the badvpn-server program, a central server that manages the VPN network.</flag>
+		<flag name="ncd">Build NCD, a lightweight scripting language especially suited for network configurations.</flag>
+		<flag name="tun2socks">Build tun2socks, a program which implements a TUN device that forwards TCP traffic through a SOCKS5 server.</flag>
+		<flag name="udpgw">Build udpgw, a small daemon which allows tun2socks to forward UDP traffic.</flag>
+	</use>
 	<longdescription lang="en">
 		BadVPN is an open-source peer-to-peer VPN system. It provides a
 		Layer 2 (Ethernet) network between the peers (VPN nodes). The peers

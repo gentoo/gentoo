@@ -5,7 +5,7 @@ EAPI=5
 
 inherit eutils fixheadtails flag-o-matic toolchain-funcs
 
-DESCRIPTION="program for applying patches that patch cannot apply because of conflicting changes"
+DESCRIPTION="tool for applying patches that patch cannot apply because of conflicting changes"
 HOMEPAGE="http://neil.brown.name/wiggle http://neil.brown.name/git?p=wiggle"
 SRC_URI="http://neil.brown.name/${PN}/${P}.tar.gz"
 

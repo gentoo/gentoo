@@ -10,9 +10,10 @@
         <name>Proxy Maintainers</name>
     </maintainer>
   <use>
-    <flag name="drm">build with DRM support</flag>
+    <flag name="drm">Build with DRM support</flag>
     <flag name="server">Build TigerVNC server</flag>
     <flag name="xorgmodule">Build the Xorg module</flag>
+    <flag name="dri3">Build with DRI3 support </flag>
   </use>
   <upstream>
     <remote-id type="github">TigerVNC/tigervnc</remote-id>

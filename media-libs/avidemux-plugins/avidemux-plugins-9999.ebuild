@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
@@ -13,7 +13,7 @@ HOMEPAGE="http://fixounet.free.fr/avidemux"
 # Multiple licenses because of all the bundled stuff.
 LICENSE="GPL-1 GPL-2 MIT PSF-2 public-domain"
 SLOT="2.6"
-IUSE="aac aften a52 alsa amr dcaenc debug dts fdk fontconfig fribidi jack lame libsamplerate cpu_flags_x86_mmx opengl nvenc opus oss pulseaudio qt4 qt5 vorbis truetype twolame xv xvid x264 x265 vdpau vpx"
+IUSE="aac aften a52 alsa amr dcaenc debug dts fdk fontconfig fribidi jack lame libsamplerate cpu_flags_x86_mmx opengl nvenc opus oss pulseaudio qt5 vorbis truetype twolame xv xvid x264 x265 vdpau vpx"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 if [[ ${PV} == *9999* ]] ; then
@@ -28,9 +28,9 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-RDEPEND="
+RDEPEND="${PYTHON_DEPS}
 	~media-libs/avidemux-core-${PV}:${SLOT}[vdpau?]
-	~media-video/avidemux-${PV}:${SLOT}[opengl?,qt4?,qt5?]
+	~media-video/avidemux-${PV}:${SLOT}[opengl?,qt5?]
 	>=dev-lang/spidermonkey-1.5-r2:0=
 	dev-libs/libxml2:2
 	media-libs/a52dec:0
@@ -40,7 +40,7 @@ RDEPEND="
 	media-libs/libpng:0=
 	virtual/libiconv:0
 	aac? (
-		media-libs/faac:0
+		>=media-libs/faac-1.29.9.2:0
 		media-libs/faad2:0
 	)
 	aften? ( media-libs/aften:0 )
@@ -70,8 +70,7 @@ RDEPEND="
 	)
 	xvid? ( media-libs/xvid:0 )
 	vorbis? ( media-libs/libvorbis:0 )
-	vpx? ( media-libs/libvpx:0 )
-	${PYTHON_DEPS}
+	vpx? ( media-libs/libvpx:0= )
 "
 DEPEND="${RDEPEND}
 	oss? ( virtual/os-headers:0 )"
@@ -88,7 +87,6 @@ src_prepare() {
 
 	processes="buildPluginsCommon:avidemux_plugins
 		buildPluginsCLI:avidemux_plugins"
-	use qt4 && processes+=" buildPluginsQt4:avidemux_plugins"
 
 	for process in ${processes} ; do
 		CMAKE_USE_DIR="${S}"/${process#*:} cmake-utils_src_prepare
@@ -126,7 +124,7 @@ src_configure() {
 			-DOPUS="$(usex opus)"
 			-DOSS="$(usex oss)"
 			-DPULSEAUDIOSIMPLE="$(usex pulseaudio)"
-			-DQT4="$(usex qt4)"
+			-DQT4=OFF
 			-DFREETYPE2="$(usex truetype)"
 			-DTWOLAME="$(usex twolame)"
 			-DX264="$(usex x264)"

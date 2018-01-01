@@ -11,7 +11,7 @@ SRC_URI="ftp://ftp.uglypunk.com/uglygs/current/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha hppa x86"
+KEYWORDS="~alpha ~hppa ~x86"
 IUSE=""
 
 DEPEND="net-analyzer/rrdtool[graph]

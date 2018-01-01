@@ -51,8 +51,7 @@ python_compile_all() {
 }
 
 python_test() {
-	# FIXME: for some reason, no-ops on PyPy
-	py.test -v || die "Testing failed with ${EPYTHON}"
+	TZ=UTC py.test -v || die "Testing failed with ${EPYTHON}" # Fixes bug #627530
 }
 
 python_install_all() {

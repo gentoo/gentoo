@@ -2,10 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		  <email>mpagano@gentoo.org</email>
+		<email>mpagano@gentoo.org</email>
 	</maintainer>
-<maintainer type="project">
-		  <email>suse@gentoo.org</email>
-		  <name>SUSE</name>
+	<maintainer type="project">
+		<email>suse@gentoo.org</email>
+		<name>SUSE</name>
 	</maintainer>
 </pkgmetadata>

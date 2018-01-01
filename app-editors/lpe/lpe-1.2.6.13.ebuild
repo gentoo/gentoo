@@ -14,7 +14,7 @@ KEYWORDS="amd64 ppc sparc x86 ~x86-linux"
 IUSE="nls"
 
 RDEPEND=">=sys-libs/slang-2.2.4
-	>=sys-libs/ncurses-5.7-r7"
+	>=sys-libs/ncurses-5.7-r7:0="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"

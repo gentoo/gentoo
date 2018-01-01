@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
 
-inherit toolchain-funcs
+inherit toolchain-funcs eutils
 
 DESCRIPTION="library required by reiser4progs"
 HOMEPAGE="https://sourceforge.net/projects/reiser4/"
@@ -23,6 +23,7 @@ src_prepare() {
 		-e "/^CFLAGS=/s:\"\":\"${CFLAGS}\":" \
 		configure || die "sed"
 	printf '#!/bin/sh\n:\n' > run-ldconfig
+	epatch "${FILESDIR}"/${PN}-1.0.6-glibc26.patch
 }
 
 src_configure() {

@@ -10,7 +10,7 @@ SRC_URI="http://www.ibiblio.org/pub/mirrors/gnu/ftp/savannah/files/${PN}/${P}.ta
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 x86"
+KEYWORDS="~alpha ~amd64 ~x86"
 IUSE="nls"
 
 RDEPEND="x11-libs/libX11

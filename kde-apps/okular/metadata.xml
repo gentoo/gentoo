@@ -7,11 +7,13 @@
 	</maintainer>
 	<use>
 		<flag name="chm">Enable support for Microsoft Compiled HTML Help files</flag>
-		<flag name="epub">Add E-Book support via <pkg>app-text/ebook-tools</pkg></flag>
+		<flag name="epub">Enable E-Book support via <pkg>app-text/ebook-tools</pkg></flag>
 		<flag name="image-backend">Enable image viewing support</flag>
-		<flag name="mobi">Add mobipocket support</flag>
+		<flag name="markdown">Enable Markdown support via <pkg>app-text/discount</pkg></flag>
+		<flag name="mobi">Enable mobipocket support</flag>
 		<flag name="mobile">Enable Plasma mobile support</flag>
 		<flag name="plucker">Enable Plucker E-Book for Palm OS devices support</flag>
+		<flag name="share">Enable support for a share menu using <pkg>dev-libs/purpose</pkg></flag>
 		<flag name="speech">Enable text-to-speech support</flag>
 	</use>
 </pkgmetadata>

@@ -22,7 +22,7 @@ IUSE="doc gtk static-libs test"
 
 RDEPEND="
 	${POSTGRES_DEP}
-	dev-libs/json-c
+	dev-libs/json-c:=
 	dev-libs/libxml2:2
 	>=sci-libs/geos-3.5.0
 	>=sci-libs/proj-4.6.0

@@ -1,0 +1,65 @@
+From 5199ed07428a03f1aa340da3ae99fcfa62ba2751 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Fri, 22 Dec 2017 22:32:49 +0100
+Subject: Send the correct hostname with the HELO/EHLO command
+
+Summary:
+It sent the server's hostname previously, which some reject.
+
+BUG: 387926
+
+Test Plan: Ran nc as smtp server, uses the right hostname for EHLO now.
+
+Reviewers: mlaurent, dvratil
+
+Subscribers: #kde_pim
+
+Tags: #kde_pim
+
+Differential Revision: https://phabricator.kde.org/D9485
+---
+ src/session.cpp | 14 +++++++++++++-
+ 1 file changed, 13 insertions(+), 1 deletion(-)
+
+diff --git a/src/session.cpp b/src/session.cpp
+index 4320adc..0be26a9 100644
+--- a/src/session.cpp
++++ b/src/session.cpp
+@@ -27,6 +27,7 @@
+ #include "ksmtp_debug.h"
+ 
+ #include <QHostAddress>
++#include <QHostInfo>
+ #include <QUrl>
+ #include <QEventLoop>
+ #include <QPointer>
+@@ -82,6 +83,18 @@ void SessionPrivate::setAuthenticationMethods(const QList<QByteArray> &authMetho
+ 
+ void SessionPrivate::startHandshake()
+ {
++    QString hostname = m_customHostname;
++
++    if (hostname.isEmpty()) {
++        // FIXME: QHostInfo::fromName can get a FQDN, but does a DNS lookup
++        hostname = QHostInfo::localHostName();
++        if (hostname.isEmpty()) {
++            hostname = QStringLiteral("localhost.invalid");
++        } else if (!hostname.contains(QLatin1Char('.'))) {
++            hostname += QStringLiteral(".localnet");
++        }
++    }
++
+     QByteArray cmd;
+     if (!m_ehloRejected) {
+          cmd = "EHLO ";
+@@ -89,7 +102,6 @@ void SessionPrivate::startHandshake()
+          cmd = "HELO ";
+     }
+     setState(Session::Handshake);
+-    const auto hostname = m_customHostname.isEmpty() ? m_thread->hostName() : m_customHostname;
+     sendData(cmd + QUrl::toAce(hostname));
+ }
+ 
+-- 
+cgit v0.11.2
+

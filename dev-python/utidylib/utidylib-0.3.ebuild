@@ -23,6 +23,7 @@ RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
 "

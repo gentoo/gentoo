@@ -14,9 +14,9 @@
 		<name>Openstack</name>
 	</maintainer>
 	<longdescription lang="en">
-    hacking is a set of flake8 plugins that test and enforce
-	the OpenStack Style Commandments, HACKING.rst
-  </longdescription>
+		hacking is a set of flake8 plugins that test and enforce
+		the OpenStack Style Commandments, HACKING.rst
+	</longdescription>
 	<upstream>
 		<remote-id type="pypi">hacking</remote-id>
 		<remote-id type="github">openstack-dev/hacking</remote-id>

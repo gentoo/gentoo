@@ -1,15 +1,14 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="3"
-inherit multilib
+EAPI=6
 
 DESCRIPTION="Gtk+-3.0 Hangul Input Modules"
 HOMEPAGE="https://code.google.com/p/imhangul/"
 SRC_URI="https://imhangul.googlecode.com/files/${P}.tar.bz2"
 
-SLOT="3"
 LICENSE="LGPL-2.1"
+SLOT="3"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
@@ -21,31 +20,32 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext"
 
 src_prepare() {
+	default
+
 	# Drop DEPRECATED flags, bug #387825
 	sed -i -e 's:-D[A-Z_]*DISABLE_DEPRECATED:$(NULL):g' Makefile.am Makefile.in || die
 }
 
 src_configure() {
-	econf --with-gtk-im-module-dir="${EPREFIX}/usr/$(get_libdir)/gtk-3.0/$(pkg-config gtk+-3.0 --variable=gtk_binary_version)/immodules" || die
+	econf --with-gtk-im-module-dir="${EPREFIX}/usr/$(get_libdir)/gtk-3.0/$(pkg-config gtk+-3.0 --variable=gtk_binary_version)/immodules"
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die
-
-	find "${ED}" -name "*.la" -type f -delete || die
+	default
+	dodoc imhangul.conf
 
 	insinto /etc/X11/xinit/xinput.d
-	newins "${FILESDIR}/xinput-imhangul2" imhangul2.conf || die
-	newins "${FILESDIR}/xinput-imhangul2y" imhangul2y.conf || die
-	newins "${FILESDIR}/xinput-imhangul32" imhangul32.conf || die
-	newins "${FILESDIR}/xinput-imhangul39" imhangul39.conf || die
-	newins "${FILESDIR}/xinput-imhangul3f" imhangul3f.conf || die
-	newins "${FILESDIR}/xinput-imhangul3s" imhangul3s.conf || die
-	newins "${FILESDIR}/xinput-imhangul3y" imhangul3y.conf || die
-	newins "${FILESDIR}/xinput-imhangulahn" imhangulahn.conf || die
-	newins "${FILESDIR}/xinput-imhangulro" imhangulro.conf || die
+	newins "${FILESDIR}/xinput-imhangul2" imhangul2.conf
+	newins "${FILESDIR}/xinput-imhangul2y" imhangul2y.conf
+	newins "${FILESDIR}/xinput-imhangul32" imhangul32.conf
+	newins "${FILESDIR}/xinput-imhangul39" imhangul39.conf
+	newins "${FILESDIR}/xinput-imhangul3f" imhangul3f.conf
+	newins "${FILESDIR}/xinput-imhangul3s" imhangul3s.conf
+	newins "${FILESDIR}/xinput-imhangul3y" imhangul3y.conf
+	newins "${FILESDIR}/xinput-imhangulahn" imhangulahn.conf
+	newins "${FILESDIR}/xinput-imhangulro" imhangulro.conf
 
-	dodoc AUTHORS ChangeLog NEWS README TODO imhangul.conf || die
+	find "${D}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {

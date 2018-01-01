@@ -13,7 +13,7 @@ SRC_URI="mirror://quakeunity/modifications/navyseals/nsco_beta19.zip
 	mirror://quakeunity/modifications/navyseals/nsco_beta193upd.zip"
 
 LICENSE="freedist"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="dedicated opengl"
 RESTRICT="strip mirror"
 

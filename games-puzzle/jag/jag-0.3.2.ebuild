@@ -11,7 +11,7 @@ SRC_URI="http://jag.xlabsoft.com/files/${P}-src.zip
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="editor"
 
 RDEPEND="dev-qt/qtcore:4

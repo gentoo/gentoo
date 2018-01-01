@@ -7,7 +7,8 @@ inherit autotools flag-o-matic
 
 DESCRIPTION="2D and 3D data visualization and analysis program"
 HOMEPAGE="http://nsweb.tn.tudelft.nl/~gsteele/spyview/"
-SRC_URI="https://github.com/gsteele13/spyview/archive/966012afae2fbb77262bd96a7e530e81b0ed3b90.tar.gz -> $P.tgz"
+SRC_URI="https://github.com/gsteele13/spyview/archive/966012afae2fbb77262bd96a7e530e81b0ed3b90.tar.gz -> $P.tgz
+	https://dev.gentoo.org/~mgorny/dist/${P}-patchset.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -29,8 +30,8 @@ RDEPEND="${COMMON_DEPEND}
 	sci-visualization/gnuplot"
 
 PATCHES=(
-	"${FILESDIR}/${P}"-gnuplot_interface_fix.patch
-	"${FILESDIR}/${P}"-gcc6cxx14-9.patch
+	"${WORKDIR}/${P}-patchset/${P}"-gnuplot_interface_fix.patch
+	"${WORKDIR}/${P}-patchset/${P}"-gcc6cxx14-9.patch
 )
 
 src_unpack() {

@@ -15,9 +15,6 @@
   support for cherry picking, reverting, merging, rebasing, and other common
   Git operations.
 </longdescription>
-<use>
-  <flag name="contrib">Install user-contributed files</flag>
-</use>
 <upstream>
   <remote-id type="github">magit/magit</remote-id>
 </upstream>

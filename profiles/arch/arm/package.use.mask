@@ -1,6 +1,29 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (30 Dec 2017)
+# Moved from use.mask since they are flags local to one package.
+dev-cpp/xsd ace
+games-fps/doom-data doomsday
+media-tv/tvheadend hdhomerun
+
+# Michał Górny <mgorny@gentoo.org> (21 Dec 2017)
+# clang is not currently supported on Gentoo ARM profiles.
+sys-devel/llvm clang lldb
+
+# Andreas Sturmlechner <asturm@gentoo.org> (29 Nov 2017)
+# kde-plasma/plasma-vault is not keyworded, which depends on also
+# not yet keyworded sys-fs/{encfs,cryfs}: bugs #630486 and #633882
+kde-plasma/plasma-meta crypt
+
+# Michał Górny <mgorny@gentoo.org> (29 Nov 2017)
+# All current clang versions are broken on ARM.
+app-doc/doxygen clang
+
+# Thomas Deutschmann <whissi@gentoo.org> (28 Nov 2017)
+# Requires dev-libs/mongo-c-driver which isn't keyworded
+>=app-admin/rsyslog-8.31 mongodb
+
 # Ulrich Müller <ulm@gentoo.org> (23 Oct 2017)
 # Needs net-mail/mailutils which is not keyworded, bug #635216.
 app-editors/emacs-vcs mailutils
@@ -123,12 +146,6 @@ dev-scheme/racket futures jit
 # Tests require dev-python/tox which isn't keyworded on arm
 sys-cluster/ceph test
 
-# Thomas Deutschmann <whissi@whissi.de> (25 Apr 2016), on behalf of
-# Ian Delaney <idella4@gentoo.org> (25 Apr 2016)
-# for the proxy-maintainers project
-# Unkeyworded deps, bug #581180
-app-admin/rsyslog grok
-
 # Thomas Deutschmann <whissi@whissi.de> (19 Mar 2016), on behalf of
 # Ian Delaney <idella4@gentoo.org> (19 Mar 2016)
 # for the proxy-maintainers project
@@ -235,7 +252,6 @@ app-i18n/scim-anthy kasumi
 # See bug #533420.
 media-libs/clutter egl wayland
 media-libs/clutter-gtk wayland
-x11-wm/mutter kms
 
 # Markus Meier <maekke@gentoo.org> (29 Nov 2014)
 # Unkeyworded deps, bug #518742
@@ -281,10 +297,6 @@ lxqt-base/lxqt-meta lximage
 # Markus Meier <maekke@gentoo.org> (04 May 2014)
 # Unkeyworded deps, bug #509082
 mail-filter/opendkim opendbx
-
-# Markus Meier <maekke@gentoo.org> (04 May 2014)
-# Unkeyworded deps, bug #507896
-dev-qt/qt-mobility messaging
 
 # S. Suominen <ssuominen@g.o> (17 Apr 2014)
 # First GTK+-3.x version of EasyTAG!
@@ -342,8 +354,7 @@ dev-python/ipython nbconvert
 
 # Sergey Popov <pinkbyte@gentoo.org> (06 Sep 2013)
 # sci-libs/hdf does not build properly on arm
-# sci-libs/plplot not keyworded
-dev-perl/PDL	hdf plplot
+dev-perl/PDL hdf
 
 # Michael Weber <xmw@gentoo.org> (23 Aug 2013)
 # Unkeyworded deps
@@ -374,10 +385,6 @@ sci-libs/linux-gpib firmware
 # unkeyworded deps for dev-python/ipython
 dev-python/ipython mongodb
 
-# Agostino Sarubbo <ago@gentoo.org> (05 May 2013)
-# dev-util/google-perftools is not keyworded for arm
->=dev-libs/libmemcached-0.50 tcmalloc
-
 # Christoph Junghans <junghans@gentoo.org> (29 Apr 2013)
 # MKL not available on this arch
 media-gfx/povray mkl
@@ -396,7 +403,7 @@ dev-libs/xapian-bindings java
 
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (20 Feb 2013)
 # Mask flags of calligra and dependencies due to lack of keywords
-app-office/calligra color-management openexr postgres spacenav vc
+app-office/calligra openexr spacenav
 media-gfx/pstoedit emf
 
 # Rick Farina <zerochaos@gentoo.org> (05 Feb 2013)
@@ -408,7 +415,6 @@ dev-libs/beecrypt java
 dev-libs/cyrus-sasl java
 dev-tex/tex4ht java
 dev-vcs/subversion java
-=media-gfx/graphviz-2.26.3-r4 java
 =media-libs/libcaca-0.99_beta18-r2 java
 media-libs/libjpeg-turbo java
 net-dns/libidn java
@@ -438,10 +444,8 @@ app-accessibility/speech-dispatcher flite
 # Markus Meier <maekke@gentoo.org> (23 Dec 2012)
 # mask kde-apps/* flags due to unkeyworded dependencies
 kde-apps/kalzium editor solver
-kde-apps/kopete jingle
 kde-apps/kstars indi
 kde-apps/kdeutils-meta floppy
-kde-apps/kdenetwork-meta ppp
 
 # Markus Meier <maekke@gentoo.org> (08 Dec 2012)
 # mask app-office/libreoffice java extensions
@@ -498,10 +502,6 @@ net-misc/mediatomb lastfm
 # Raúl Porcel <armin76@gentoo.org> (28 Mar 2010)
 # Needs kde-frameworks/kwallet and kde-frameworks/kdelibs stable
 dev-vcs/subversion kwallet
-
-# Markus Meier <maekke@gentoo.org> (27 Sep 2009)
-# mask media-gfx/imagemagick[autotrace] as autotrace is not keyworded
-media-gfx/imagemagick autotrace
 
 # Jim Ramsay <lack@gentoo.org> (5 Nov 2008)
 # app-admin/gkrellm may pull in net-libs/libntlm, which is not keyworded

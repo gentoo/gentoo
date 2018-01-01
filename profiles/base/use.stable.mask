@@ -8,10 +8,6 @@
 # Needs dev-lang/php:7.2 stable
 php_targets_php7-2
 
-# Brian Evans <grknight@gentoo.org> (06 Dec 2016)
-# Needs dev-lang/php:7.1 stable
-php_targets_php7-1
-
 # Zac Medico <zmedico@gentoo.org> (01 Sep 2016)
 # Needs virtual/pypy* stable
 python_targets_pypy
@@ -19,17 +15,11 @@ python_single_target_pypy
 python_targets_pypy3
 python_single_target_pypy3
 
-# Justin Lecher <jlec@gentoo.org> (30 Sep 2015)
-# No stable libressl yet
-# Addendum: also mask the USE_EXPAND flag,
-# Anthony G. Basile <blueness@gentoo.org> (26 Nov 2015)
-curl_ssl_libressl
-libressl
-
-# Hans de Graaff <graaff@gentoo.org> (25 Dec 2016)
+# Hans de Graaff <graaff@gentoo.org> (25 Dec 2017)
 # Currently in testing and not ready to go stable yet.
 ruby_targets_ruby23
 ruby_targets_ruby24
+ruby_targets_ruby25
 
 # Patrick Lauer <patrick@gentoo.org> (28 Apr 2015)
 # dependencies not stable yet

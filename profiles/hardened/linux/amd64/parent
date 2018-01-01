@@ -1,4 +1,4 @@
 ../../../base
 ../../../default/linux
-../../../arch/amd64
+../../../arch/amd64/lib32
 ..

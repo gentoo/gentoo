@@ -1,0 +1,21 @@
+--- a/src/lib/Libattr/req.cpp	2017-01-24 18:35:27.000000000 -0500
++++ b/src/lib/Libattr/req.cpp	2017-11-21 13:40:27.201964749 -0500
+@@ -1037,17 +1037,17 @@
+     error = "Bad tasks value: '";
+     error += submission_str;
+     error += "'";
+     return(PBSE_BAD_PARAMETER);
+     }
+ 
+   if (*current == ':')
+     current++;
+-  else if (current != '\0')
++  else if (*current != '\0')
+     {
+     error = "Invalid task specification";
+     return(PBSE_BAD_PARAMETER);
+     }
+ 
+   while ((current != NULL) && 
+          (*current != '\0'))
+     {

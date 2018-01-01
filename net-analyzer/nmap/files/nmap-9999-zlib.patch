@@ -1,0 +1,11 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -105,7 +105,7 @@
+ NSE_HDRS+=nse_libssh2.h
+ NSE_OBJS+=nse_libssh2.o
+ endif
+-ifneq (@LIBZLIB_LIBS@,)
++ifneq (@ZLIB_LIBS@,)
+ NSE_SRC+=nse_zlib.cc
+ NSE_HDRS+=nse_zlib.h
+ NSE_OBJS+=nse_zlib.o

@@ -32,6 +32,7 @@ DEPEND="${RDEPEND}
 		dev-python/pytest-fixture-config[${PYTHON_USEDEP}]
 		dev-python/pytest-virtualenv[${PYTHON_USEDEP}]
 		>=dev-python/backports-unittest-mock-1.2[${PYTHON_USEDEP}]
+		dev-python/wheel[${PYTHON_USEDEP}]
 	)
 "
 PDEPEND="

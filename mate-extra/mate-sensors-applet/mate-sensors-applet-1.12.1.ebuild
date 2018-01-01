@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ DESCRIPTION="MATE panel applet to display readings from hardware sensors"
 LICENSE="GPL-2"
 SLOT="0"
 
-IUSE="+dbus gtk3 hddtemp libnotify lm_sensors video_cards_fglrx video_cards_nvidia"
+IUSE="+dbus gtk3 hddtemp libnotify lm_sensors video_cards_nvidia"
 
 RDEPEND="app-text/rarian:0
 	>=dev-libs/glib-2.36:2
@@ -32,7 +32,6 @@ RDEPEND="app-text/rarian:0
 		!dbus? ( >=app-admin/hddtemp-0.3_beta13:0 ) )
 	libnotify? ( >=x11-libs/libnotify-0.7:0 )
 	lm_sensors? ( sys-apps/lm_sensors:0 )
-	video_cards_fglrx? ( x11-drivers/ati-drivers:* )
 	video_cards_nvidia? ( || (
 		>=x11-drivers/nvidia-drivers-100.14.09:0[static-libs,tools]
 		media-video/nvidia-settings:0
@@ -58,10 +57,10 @@ src_configure() {
 
 	mate_src_configure \
 		--disable-static \
+		--without-aticonfig \
 		--with-gtk=$(usex gtk3 3.0 2.0) \
 		$(use_enable libnotify) \
 		$(use_with lm_sensors libsensors) \
-		$(use_with video_cards_fglrx aticonfig) \
 		$(use_with video_cards_nvidia nvidia) \
 		${udisks}
 }

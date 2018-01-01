@@ -1,0 +1,12 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,9 +1,5 @@
+ VERSION=1.30
+ 
+-CFLAGS = -g -O2 -Werror -Wall -Wshadow -Wextra -Wmissing-declarations -Wdeclaration-after-statement -Wredundant-decls
+-LDFLAGS = -Wl,-z,relro,-z,now
+-CC = gcc
+-
+ SHELL = /bin/sh
+ 
+ all: x86info test lsmsr

@@ -1,0 +1,65 @@
+--- gprbuild-2017/gpr/gpr.gpr.old	2017-05-27 20:59:07.061135892 +0200
++++ gprbuild-2017/gpr/gpr.gpr	2017-05-27 20:59:38.022638398 +0200
+@@ -67,6 +67,7 @@
+             for Switches ("gpr*.ad?") use
+               Compiler'Default_Switches ("Ada") & ("-g1");
+       end case;
++      for Driver ("C") use External ("CC", "gcc");
+    end Compiler;
+ 
+ end GPR;
+--- gprbuild-gpl-2016-src/gpr/src/gpr-env.adb.old	2017-11-13 22:16:53.349083426 +0100
++++ gprbuild-gpl-2016-src/gpr/src/gpr-env.adb	2017-11-13 22:17:22.692590351 +0100
+@@ -1948,6 +1948,8 @@
+ 
+       end if;
+ 
++      Add_Directories (Self, "/usr/share/gpr");
++
+       if Gpr_Prj_Path.all /= "" then
+          Add_Directories (Self, Gpr_Prj_Path.all);
+       end if;
+--- gprbuild-gpl-2017-src/gpr/src/gpr-names.ads.old	2017-11-19 13:09:18.947527738 +0100
++++ gprbuild-gpl-2017-src/gpr/src/gpr-names.ads	2017-11-19 13:10:08.125654595 +0100
+@@ -27,6 +27,8 @@
+    Name_Buffer : String (1 .. 1_000_000);
+    Name_Len    : Natural := 0;
+ 
++   Last_Id     : Name_Id := Name_Id'First;
++
+    procedure Get_Name_String (Id : Name_Id);
+    procedure Get_Name_String (Id : Unit_Name_Type);
+    procedure Get_Name_String (Id : File_Name_Type);
+--- gprbuild-gpl-2017-src/gpr/src/gpr-names.adb.old	2017-11-19 13:10:27.674316703 +0100
++++ gprbuild-gpl-2017-src/gpr/src/gpr-names.adb	2017-11-19 13:14:38.360963627 +0100
+@@ -354,6 +354,8 @@
+ 
+       Name_Chars.Append (ASCII.NUL);
+ 
++      Last_Id := Name_Entries.Last;
++
+       return Name_Entries.Last;
+    end Name_Enter;
+ 
+@@ -427,6 +429,8 @@
+ 
+       Name_Chars.Append (ASCII.NUL);
+ 
++      Last_Id := Name_Entries.Last;
++
+       return Name_Entries.Last;
+    end Name_Find;
+ 
+--- gprbuild-gpl-2017-src/gpr/src/gpr-snames.adb.old	2017-11-19 13:12:41.592995718 +0100
++++ gprbuild-gpl-2017-src/gpr/src/gpr-snames.adb	2017-11-19 13:16:31.980979696 +0100
+@@ -53,6 +53,10 @@
+          return;
+       end if;
+ 
++      if Last_Id = Name_Id'First then
++         Add_Name ("");
++      end if;
++
+       Add_Name ("a");
+       Add_Name ("b");
+       Add_Name ("c");

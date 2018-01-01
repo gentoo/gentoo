@@ -6,7 +6,8 @@ inherit autotools eutils multilib flag-o-matic
 
 DESCRIPTION="The most advanced non-linear video editor and compositor"
 HOMEPAGE="http://www.cinelerra.org/"
-SRC_URI="https://cinelerra-cv.org/releases/CinelerraCV-${PV}.tar.xz"
+SRC_URI="https://cinelerra-cv.org/releases/CinelerraCV-${PV}.tar.xz
+	https://dev.gentoo.org/~mgorny/dist/${P}-patchset.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -58,22 +59,22 @@ S="${WORKDIR}/CinelerraCV-${PV}"
 
 src_prepare() {
 	epatch \
-		"${FILESDIR}"/${PN}-20140710-validate_desktop_entry.patch \
-		"${FILESDIR}"/${PN}-ffmpeg.patch \
-		"${FILESDIR}"/${PN}-20140710-underlinking.patch \
-		"${FILESDIR}"/${PN}-20140710-ffmpeg-0.11.patch \
-		"${FILESDIR}"/${PN}-libav9.patch \
-		"${FILESDIR}"/${PN}-pngtoh.patch \
-		"${FILESDIR}"/${PN}-putbits-gcc52.patch \
-		"${FILESDIR}"/${PN}-implicit_decls.patch \
-		"${FILESDIR}"/${PN}-includes.patch
+		"${WORKDIR}"/${P}-patchset/${PN}-20140710-validate_desktop_entry.patch \
+		"${WORKDIR}"/${P}-patchset/${PN}-ffmpeg.patch \
+		"${WORKDIR}"/${P}-patchset/${PN}-20140710-underlinking.patch \
+		"${WORKDIR}"/${P}-patchset/${PN}-20140710-ffmpeg-0.11.patch \
+		"${WORKDIR}"/${P}-patchset/${PN}-libav9.patch \
+		"${WORKDIR}"/${P}-patchset/${PN}-pngtoh.patch \
+		"${WORKDIR}"/${P}-patchset/${PN}-putbits-gcc52.patch \
+		"${WORKDIR}"/${P}-patchset/${PN}-implicit_decls.patch \
+		"${WORKDIR}"/${P}-patchset/${PN}-includes.patch
 
 	if has_version '>=media-video/ffmpeg-2' ; then
-		epatch "${FILESDIR}"/${PN}-ffmpeg2.patch
+		epatch "${WORKDIR}"/${P}-patchset/${PN}-ffmpeg2.patch
 	fi
 
 	if has_version '>=media-video/ffmpeg-2.9' ; then
-		epatch "${FILESDIR}"/${PN}-ffmpeg29.patch
+		epatch "${WORKDIR}"/${P}-patchset/${PN}-ffmpeg29.patch
 	fi
 
 	eautoreconf

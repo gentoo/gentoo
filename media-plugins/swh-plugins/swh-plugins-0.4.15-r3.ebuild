@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,8 @@ inherit eutils autotools multilib-minimal
 
 DESCRIPTION="Large collection of LADSPA audio plugins/effects"
 HOMEPAGE="http://plugin.org.uk"
-SRC_URI="http://plugin.org.uk/releases/${PV}/${P}.tar.gz"
+SRC_URI="http://plugin.org.uk/releases/${PV}/${P}.tar.gz
+	https://dev.gentoo.org/~mgorny/dist/${P}-patchset.tar.bz2"
 
 SLOT="0"
 LICENSE="GPL-2"
@@ -27,16 +28,16 @@ DEPEND="${RDEPEND}
 DOCS=( AUTHORS ChangeLog README TODO )
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-pic.patch"
-	epatch "${FILESDIR}/${P}-plugindir.patch"
-	epatch "${FILESDIR}/${P}-riceitdown.patch"
-	epatch "${FILESDIR}/${P}-gettext.patch"
-	epatch "${FILESDIR}/${P}-x86-asm-optional.patch"
-	epatch "${FILESDIR}/${P}-glibc-2.10.patch"
+	epatch "${WORKDIR}/${P}-patchset/${P}-pic.patch"
+	epatch "${WORKDIR}/${P}-patchset/${P}-plugindir.patch"
+	epatch "${WORKDIR}/${P}-patchset/${P}-riceitdown.patch"
+	epatch "${WORKDIR}/${P}-patchset/${P}-gettext.patch"
+	epatch "${WORKDIR}/${P}-patchset/${P}-x86-asm-optional.patch"
+	epatch "${WORKDIR}/${P}-patchset/${P}-glibc-2.10.patch"
 
 	# Use system libgsm, bug #252890
 	rm -rf gsm
-	epatch "${FILESDIR}/${P}-system_gsm.patch"
+	epatch "${WORKDIR}/${P}-patchset/${P}-system_gsm.patch"
 
 	# This is to update gettext macros, otherwise they are incompatible with
 	# recent libtools, bug #231767

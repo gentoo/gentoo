@@ -24,7 +24,7 @@ RDEPEND="${PYTHON_DEPS}
 	app-arch/p7zip
 	app-arch/unzip
 	app-crypt/gnupg
-	|| ( app-emulation/wine virtual/wine )
+	|| ( virtual/wine app-emulation/wine )
 	dev-python/wxpython:3.0[${PYTHON_USEDEP}]
 	net-misc/wget
 	x11-apps/mesa-progs

@@ -1,11 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
 PLOCALES="ca cs de el es fr it ja pt_BR ru sr sr@latin tr"
 
-inherit cmake-utils l10n xdg-utils
+inherit cmake-utils l10n qmake-utils xdg-utils
 
 DESCRIPTION="Video editor designed for simple cutting, filtering and encoding tasks"
 HOMEPAGE="http://fixounet.free.fr/${PN}"
@@ -13,7 +13,7 @@ HOMEPAGE="http://fixounet.free.fr/${PN}"
 # Multiple licenses because of all the bundled stuff.
 LICENSE="GPL-1 GPL-2 MIT PSF-2 public-domain"
 SLOT="2.6"
-IUSE="debug opengl nls nvenc qt4 qt5 sdl vaapi vdpau xv"
+IUSE="debug opengl nls nvenc qt5 sdl vaapi vdpau xv"
 
 if [[ ${PV} == *9999* ]] ; then
 	MY_P="${P}"
@@ -26,19 +26,20 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-DEPEND="
+COMMON_DEPEND="
 	~media-libs/avidemux-core-${PV}:${SLOT}[nls?,sdl?,vaapi?,vdpau?,xv?,nvenc?]
 	opengl? ( virtual/opengl:0 )
-	qt4? ( >=dev-qt/qtgui-4.8.3:4 )
 	qt5? ( dev-qt/qtgui:5 )
 	vaapi? ( x11-libs/libva:0 )
 	nvenc? ( amd64? ( media-video/nvidia_video_sdk:0 ) )
 "
-RDEPEND="
-	$DEPEND
+DEPEND="${COMMON_DEPEND}
+	qt5? ( dev-qt/linguist-tools:5 )
+"
+RDEPEND="${COMMON_DEPEND}
 	nls? ( virtual/libintl:0 )
 "
-PDEPEND="~media-libs/avidemux-plugins-${PV}:${SLOT}[opengl?,qt4?,qt5?]"
+PDEPEND="~media-libs/avidemux-plugins-${PV}:${SLOT}[opengl?,qt5?]"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -46,7 +47,7 @@ src_prepare() {
 	default
 
 	processes="buildCli:avidemux/cli"
-	if use qt4 || use qt5 ; then
+	if use qt5 ; then
 		processes+=" buildQt4:avidemux/qt4"
 	fi
 
@@ -95,7 +96,10 @@ src_configure() {
 	)
 
 	if use qt5 ; then
-		mycmakeargs+=( -DENABLE_QT5="$(usex qt5)" )
+		mycmakeargs+=(
+			-DENABLE_QT5="$(usex qt5)"
+			-DLRELEASE_EXECUTABLE="$(qt5_get_bindir)/lrelease"
+		)
 	fi
 
 	if use debug ; then
@@ -139,10 +143,6 @@ src_install() {
 	cd "${S}" || die "Can't enter source folder."
 	newicon ${PN}_icon.png ${PN}-2.6.png
 
-	if [[ -f "${ED}"/usr/bin/avidemux3_qt4 ]] ; then
-		fperms +x /usr/bin/avidemux3_qt4
-	fi
-
 	if [[ -f "${ED}"/usr/bin/avidemux3_qt5 ]] ; then
 		fperms +x /usr/bin/avidemux3_qt5
 	fi
@@ -151,7 +151,7 @@ src_install() {
 		fperms +x /usr/bin/avidemux3_jobs_qt5
 	fi
 
-	if use qt4 || use qt5 ; then
+	if use qt5 ; then
 		domenu ${PN}-2.6.desktop
 	fi
 }

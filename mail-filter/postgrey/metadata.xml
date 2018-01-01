@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-	<email>lists@xunil.at</email>
-	<name>Stefan Weichinger</name>
-  </maintainer>
-<maintainer type="project">
-	  <email>net-mail@gentoo.org</email>
-	  <name>Net-Mail</name>
-  </maintainer>
-<maintainer type="project">
-	  <email>proxy-maint@gentoo.org</email>
-	  <name>Proxy Maintainers</name>
-  </maintainer>
-<longdescription>Postgrey is a Postfix policy server implementing greylisting developed by David Schweikert at the ISG.EE.</longdescription>
-<use>
-	<flag name="targrey">Enables the targrey patch</flag>
-</use>
+	<maintainer type="person">
+		<email>lists@xunil.at</email>
+		<name>Stefan Weichinger</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>net-mail@gentoo.org</email>
+		<name>Net-Mail</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		Postgrey is a Postfix policy server implementing greylisting developed by David Schweikert at the ISG.EE.
+	</longdescription>
+	<use>
+		<flag name="targrey">Enables the targrey patch</flag>
+	</use>
 </pkgmetadata>

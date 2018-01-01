@@ -5,7 +5,7 @@ EAPI=5
 
 inherit multilib
 
-DESCRIPTION="PAM module for executing scripts during authorization, password changes, and sessions"
+DESCRIPTION="PAM module for running scripts during authorization, password change and session"
 HOMEPAGE="https://sourceforge.net/projects/pam-script/ https://github.com/jeroennijhof/pam_script/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 

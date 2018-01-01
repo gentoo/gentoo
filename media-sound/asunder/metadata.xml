@@ -2,11 +2,11 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
-  <email>sound@gentoo.org</email>
-  <name>Gentoo Sound project</name>
+		<email>sound@gentoo.org</email>
+		<name>Gentoo Sound project</name>
 	</maintainer>
-<use>
-  <flag name="mac">Support for creation of Monkey's Audio files (APE)</flag>
-  <flag name="opus">Support for creation of Opus files</flag>
-</use>
+	<use>
+		<flag name="mac">Support for creation of Monkey's Audio files (APE)</flag>
+		<flag name="opus">Support for creation of Opus files</flag>
+	</use>
 </pkgmetadata>

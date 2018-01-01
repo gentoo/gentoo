@@ -11,13 +11,13 @@ SRC_URI="https://www.musicpd.org/download/${PN}/${PV%.*}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sh ~x86 ~x86-fbsd ~x64-macos"
+KEYWORDS="alpha amd64 ~arm ~hppa ppc ppc64 ~sh x86 ~x86-fbsd ~x64-macos"
 IUSE="adplug +alsa ao audiofile bzip2 cdio +curl debug +eventfd expat faad
 	+fifo +ffmpeg flac fluidsynth gme +icu +id3tag +inotify +ipv6 jack
 	lame mms libav libmpdclient libsamplerate libsoxr +mad mikmod modplug
 	mpg123 musepack +network nfs ogg openal opus oss pipe pulseaudio recorder
 	samba selinux sid +signalfd sndfile soundcloud sqlite systemd tcpd twolame
-	unicode upnp vorbis wavpack wildmidi zeroconf zip zlib"
+	unicode upnp vorbis wavpack wildmidi zeroconf zip zlib webdav"
 
 OUTPUT_PLUGINS="alsa ao fifo jack network openal oss pipe pulseaudio recorder"
 DECODER_PLUGINS="adplug audiofile faad ffmpeg flac fluidsynth mad mikmod
@@ -31,6 +31,7 @@ REQUIRED_USE="
 	recorder? ( || ( ${ENCODER_PLUGINS} ) )
 	opus? ( ogg )
 	upnp? ( expat )
+	webdav? ( curl expat )
 "
 
 CDEPEND="!<sys-cluster/mpich2-1.4_rc2
@@ -59,6 +60,7 @@ CDEPEND="!<sys-cluster/mpich2-1.4_rc2
 	lame? ( network? ( media-sound/lame ) )
 	libmpdclient? ( media-libs/libmpdclient )
 	libsamplerate? ( media-libs/libsamplerate )
+	libsoxr? ( media-libs/soxr )
 	mad? ( media-libs/libmad )
 	mikmod? ( media-libs/libmikmod:0 )
 	mms? ( media-libs/libmms )
@@ -78,7 +80,6 @@ CDEPEND="!<sys-cluster/mpich2-1.4_rc2
 	sid? ( || ( media-libs/libsidplay:2 media-libs/libsidplayfp ) )
 	sndfile? ( media-libs/libsndfile )
 	soundcloud? ( >=dev-libs/yajl-2:= )
-	libsoxr? ( media-libs/soxr )
 	sqlite? ( dev-db/sqlite:3 )
 	systemd? ( sys-apps/systemd )
 	tcpd? ( sys-apps/tcp-wrappers )
@@ -220,6 +221,7 @@ src_configure() {
 		$(use_enable wildmidi)
 		$(use_enable zip zzip)
 		$(use_enable icu)
+		$(use_enable webdav)
 		$(use_enable faad aac)
 		$(use_with zeroconf zeroconf avahi)
 		--with-systemdsystemunitdir=$(systemd_get_systemunitdir)

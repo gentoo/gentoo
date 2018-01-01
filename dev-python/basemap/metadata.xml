@@ -10,9 +10,9 @@
 		<name>Gentoo Geosciences Project</name>
 	</maintainer>
 	<longdescription>
-  basemap is a matplotlib toolkit. It allows to plot data on map
-  projections (with continental and political boundaries).
-</longdescription>
+		basemap is a matplotlib toolkit. It allows to plot data on map
+		projections (with continental and political boundaries).
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">matplotlib</remote-id>
 	</upstream>

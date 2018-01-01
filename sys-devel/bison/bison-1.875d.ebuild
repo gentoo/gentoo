@@ -1,11 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit toolchain-funcs flag-o-matic eutils
 
 DESCRIPTION="A yacc-compatible parser generator"
 HOMEPAGE="https://www.gnu.org/software/bison/bison.html"
-SRC_URI="ftp://alpha.gnu.org/pub/gnu/bison/${P}.tar.bz2"
+SRC_URI="ftp://alpha.gnu.org/pub/gnu/bison/${P}.tar.bz2
+	https://dev.gentoo.org/~mgorny/dist/${P}-patchset.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -18,7 +19,7 @@ DEPEND="sys-devel/m4
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
-	epatch "${FILESDIR}"/${PN}-1.32-extfix.patch
+	epatch "${WORKDIR}"/${P}-patchset/${PN}-1.32-extfix.patch
 }
 
 src_compile() {

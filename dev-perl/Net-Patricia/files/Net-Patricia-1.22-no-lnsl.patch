@@ -1,0 +1,29 @@
+From d23c3d9ef60260ecfddf25111d28abd3296940cd Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Thu, 14 Dec 2017 18:11:17 +1300
+Subject: Don't link against libnsl
+
+No evidence this is actually used can be found, nothing uses RPC
+headers, and the compiled .so doesn't use any of its symbols or retain
+links in thier NEEDED sections.
+
+Bug: https://bugs.gentoo.org/638518
+---
+ Makefile.PL | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index acd0918..c023e43 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -5,7 +5,6 @@ use ExtUtils::MakeMaker;
+ WriteMakefile(
+     'NAME'	=> 'Net::Patricia',
+     'VERSION_FROM' => 'Patricia.pm', # finds $VERSION
+-    'LIBS'	=> ['-lnsl'],   # e.g., '-lm' 
+     'DEFINE'	=> '',     # e.g., '-DHAVE_SOMETHING' 
+     'INC'	=> '',     # e.g., '-I/usr/include/other' 
+     'MYEXTLIB'	=> 'libpatricia/libpatricia$(LIB_EXT)',     # e.g., '-I/usr/include/other' 
+-- 
+2.14.3
+

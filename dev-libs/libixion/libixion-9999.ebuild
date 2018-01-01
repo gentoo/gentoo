@@ -13,12 +13,12 @@ unset GITECLASS
 
 DESCRIPTION="General purpose formula parser & interpreter"
 HOMEPAGE="https://gitlab.com/ixion/ixion"
-[[ ${PV} == 9999 ]] || SRC_URI="http://kohei.us/files/ixion/src/${P}.tar.xz"
+[[ ${PV} == 9999 ]] || SRC_URI="https://kohei.us/files/ixion/src/${P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0/0.13" # based on SONAME of libixion.so
 [[ ${PV} == 9999 ]] || \
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
 IUSE="debug python static-libs +threads"
 
 RDEPEND="

@@ -8,7 +8,7 @@ DISTUTILS_SINGLE_IMPL=1
 
 inherit distutils-r1
 
-DESCRIPTION="Patch-like tool for applying diffs which can resolve common causes of patch rejects"
+DESCRIPTION="Patch-like tool which can resolve common causes of patch rejects when applying"
 HOMEPAGE="http://oss.oracle.com/~mason/mpatch/"
 SRC_URI="http://oss.oracle.com/~mason/mpatch/${P}.tar.bz2"
 

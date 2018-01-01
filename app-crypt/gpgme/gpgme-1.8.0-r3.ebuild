@@ -17,7 +17,7 @@ SLOT="1/11" # subslot = soname major version
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="common-lisp cxx python qt5 static-libs"
 
-COMMON_DEPEND="app-crypt/gnupg
+COMMON_DEPEND=">=app-crypt/gnupg-2
 	>=dev-libs/libassuan-2.0.2
 	>=dev-libs/libgpg-error-1.17
 	python? ( ${PYTHON_DEPS} )

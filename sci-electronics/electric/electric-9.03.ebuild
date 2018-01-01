@@ -3,7 +3,7 @@
 
 inherit eutils java-pkg-2
 
-DESCRIPTION="Complete Electronic Design Automation (EDA) system that can handle many forms of circuit design"
+DESCRIPTION="Complete Electronic Design Automation system for many forms of circuit design"
 HOMEPAGE="https://www.gnu.org/software/electric/electric.html"
 SRC_URI="mirror://gnu/electric/${PN}Binary-${PV}.jar"
 

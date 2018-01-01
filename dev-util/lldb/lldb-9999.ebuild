@@ -20,6 +20,7 @@ LICENSE="UoI-NCSA"
 SLOT="0"
 KEYWORDS=""
 IUSE="libedit ncurses python test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	libedit? ( dev-libs/libedit:0= )
@@ -56,7 +57,7 @@ src_unpack() {
 
 	if use test; then
 		git-r3_checkout https://llvm.org/git/llvm.git \
-			"${WORKDIR}"/llvm
+			"${WORKDIR}"/llvm '' lib/Testing/Support utils/unittest
 	fi
 	git-r3_checkout
 }
@@ -68,6 +69,7 @@ src_configure() {
 		-DLLDB_DISABLE_PYTHON=$(usex !python)
 		-DLLVM_ENABLE_TERMINFO=$(usex ncurses)
 
+		-DLLDB_INCLUDE_TESTS=$(usex test)
 		-DLLVM_BUILD_TESTS=$(usex test)
 		# compilers for lit tests
 		-DLLDB_TEST_C_COMPILER="$(type -P clang)"

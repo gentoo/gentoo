@@ -74,11 +74,13 @@ src_compile() {
 	MAKE_ARGS="${MAKE_ARGS}
 		LIBNAME=$(get_libdir)
 		LIBEXECDIR=${EPREFIX}/$(get_libdir)/rc
+		MKBASHCOMP=yes
 		MKNET=$(usex newnet)
 		MKSELINUX=$(usex selinux)
 		MKAUDIT=$(usex audit)
 		MKPAM=$(usev pam)
-		MKSTATICLIBS=$(usex static-libs)"
+		MKSTATICLIBS=$(usex static-libs)
+		MKZSHCOMP=yes"
 
 	local brand="Unknown"
 	if use kernel_linux ; then
@@ -248,6 +250,9 @@ EOF
 			ewarn "if you do not want this to happen."
 		fi
 	fi
+
+	has_version ">=sys-apps/openrc-0.35" || add_boot_init cgroups sysinit
+
 }
 
 # >=OpenRC-0.11.3 requires udev-mount to be in the sysinit runlevel with udev.

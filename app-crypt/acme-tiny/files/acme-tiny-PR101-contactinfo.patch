@@ -27,7 +27,7 @@ index 34a1863..bd79321 100644
 -    code, result = _send_signed_request(CA + "/acme/new-reg", {
 +    payload = {
          "resource": "new-reg",
-         "agreement": "https://letsencrypt.org/documents/LE-SA-v1.1.1-August-1-2016.pdf",
+         "agreement": json.loads(urlopen(CA + "/directory").read().decode('utf8'))['meta']['terms-of-service'],
 -    })
 +    }
 +    if account_email:
@@ -64,7 +64,7 @@ index bd79321..cea57ee 100644
 --- a/acme_tiny.py
 +++ b/acme_tiny.py
 @@ -85,7 +85,7 @@ def _send_signed_request(url, payload):
-         "agreement": "https://letsencrypt.org/documents/LE-SA-v1.0.1-July-27-2015.pdf",
+         "agreement": json.loads(urlopen(CA + "/directory").read().decode('utf8'))['meta']['terms-of-service'],
      }
      if account_email:
 -        payload["contact"] = ["mailto:"+account_email]

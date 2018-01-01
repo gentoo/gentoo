@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Useful color system conversions for PDL"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 RDEPEND="

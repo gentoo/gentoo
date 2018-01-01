@@ -40,5 +40,5 @@ src_install() {
 	dodoc CHANGES README USAGE
 
 	# Make a symbolic link: /sbin/bliss-initramfs
-	dosym "/opt/${PN}/${executable}" "/sbin/${PN}"
+	dosym "${EPREFIX}/opt/${PN}/${executable}" "/sbin/${PN}"
 }

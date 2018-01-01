@@ -1,0 +1,25 @@
+--- ffDiaporama.ori/src/ffDiaporama/ffDiaporama.pro	2014-05-04 10:33:56.000000000 +0200
++++ ffDiaporama/src/ffDiaporama/ffDiaporama.pro	2016-12-06 00:03:27.392114339 +0100
+@@ -26,19 +26,13 @@
+ 
+ greaterThan(QT_MAJOR_VERSION,4) {
+     # QT5 version
+-    QT += widgets concurrent help multimedia
++    QT += widgets concurrent help
+ } else {
+     # QT4 version
+-    CONFIG += help mobility
+-    MOBILITY = multimedia
+-
+-    unix {
+-        INCLUDEPATH += /usr/include/QtMultimediaKit
+-        INCLUDEPATH += /usr/include/QtMobility
+-    }
++    CONFIG += help multimedia
+ }
+ 
+-QT          += core gui xml network svg sql
++QT          += core gui xml multimedia network svg sql
+ QMAKE_STRIP  = echo
+ APPFOLDER    = ffDiaporama
+ TARGET       = ffDiaporama

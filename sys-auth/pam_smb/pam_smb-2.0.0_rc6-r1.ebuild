@@ -5,7 +5,7 @@ inherit eutils pam
 
 MY_P=${P/_rc/-rc}
 
-DESCRIPTION="The PAM SMB module, allows authentication against a SMB (such as the Win_x families) server"
+DESCRIPTION="PAM module for authenticating against an SMB (such as the Win_x families) server"
 HOMEPAGE="http://www.csn.ul.ie/~airlied/pam_smb/"
 SRC_URI="
 	mirror://samba/pam_smb/v2/${MY_P}.tar.gz

@@ -18,6 +18,10 @@ IUSE="test"
 RDEPEND=""
 DEPEND="test? ( >=dev-cpp/catch-1.11.0 )"
 
+PATCHES=(
+	"${FILESDIR}/${P}-use_system_catch-636828.patch"
+)
+
 src_configure() {
 	local mycmakeargs=( -DGSL_TEST=$(usex test) )
 	cmake-utils_src_configure

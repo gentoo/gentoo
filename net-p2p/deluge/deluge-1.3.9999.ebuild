@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -35,7 +35,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.3.5-disable_libtorrent_internal_copy.patch"
 )
 
-CDEPEND=">=net-libs/libtorrent-rasterbar-0.14.9[python,${PYTHON_USEDEP}]"
+CDEPEND="net-libs/libtorrent-rasterbar[python,${PYTHON_USEDEP}]"
 DEPEND="${CDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-util/intltool"
@@ -45,9 +45,12 @@ RDEPEND="${CDEPEND}
 	dev-python/pyxdg[${PYTHON_USEDEP}]
 	dev-python/setproctitle[${PYTHON_USEDEP}]
 	|| ( >=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
+		(
+		>=dev-python/twisted-core-13.0[${PYTHON_USEDEP}]
 		>=dev-python/twisted-web-13.0[${PYTHON_USEDEP}]
+		)
 	)
-	geoip? ( dev-libs/geoip )
+	geoip? ( dev-python/geoip-python[${PYTHON_USEDEP}] )
 	gtk? (
 		sound? ( dev-python/pygame[${PYTHON_USEDEP}] )
 		dev-python/pygobject:2[${PYTHON_USEDEP}]

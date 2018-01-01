@@ -7,7 +7,8 @@ inherit eutils toolchain-funcs versionator
 
 DESCRIPTION="Intelligent algorithms for DNA searches"
 HOMEPAGE="http://www.ebi.ac.uk/Wise2/"
-SRC_URI="ftp://ftp.ebi.ac.uk/pub/software/${PN}2/${PN}$(delete_version_separator 3).tar.gz"
+SRC_URI="ftp://ftp.ebi.ac.uk/pub/software/${PN}2/${PN}$(delete_version_separator 3).tar.gz
+	https://dev.gentoo.org/~mgorny/dist/${P}-patchset.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
@@ -25,12 +26,12 @@ S="${WORKDIR}"/${PN}$(delete_version_separator 3)
 
 src_prepare() {
 	epatch \
-		"${FILESDIR}"/${P}-glibc-2.10.patch \
-		"${FILESDIR}"/${P}-cflags.patch
+		"${WORKDIR}"/${P}-patchset/${P}-glibc-2.10.patch \
+		"${WORKDIR}"/${P}-patchset/${P}-cflags.patch
 	cd "${S}"/docs || die
 	cat "${S}"/src/models/*.tex "${S}"/src/dynlibsrc/*.tex | perl gettex.pl > temp.tex || die
 	cat wise2api.tex temp.tex apiend.tex > api.tex || die
-	epatch "${FILESDIR}"/${PN}-api.tex.patch
+	epatch "${WORKDIR}"/${P}-patchset/${PN}-api.tex.patch
 }
 
 src_compile() {
@@ -68,5 +69,5 @@ src_install() {
 		insinto /usr/share/doc/${PF}
 		doins "${S}"/docs/*.ps
 	fi
-	newenvd "${FILESDIR}"/${PN}-env 24wise || die "Failed to install env file"
+	newenvd "${WORKDIR}"/${P}-patchset/${PN}-env 24wise || die "Failed to install env file"
 }

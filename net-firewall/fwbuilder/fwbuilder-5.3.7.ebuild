@@ -11,7 +11,7 @@ SRC_URI="https://github.com/fwbuilder/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ppc ppc64 x86"
 IUSE=""
 
 DEPEND="
@@ -26,8 +26,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}/${P}-qtbindir.patch" )
+
 src_prepare() {
-	eapply_user
+	default
 
 	# bug 398743
 	sed -i -e '/dnl.*AM_INIT_AUTOMAKE/d' configure.in || die
@@ -47,9 +49,8 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--without-{ccache,distcc} # portage handles ccache/distcc itself
+		--without-{ccache,distcc} \
 		--with-docdir="/usr/share/doc/${PF}"
-		--with-qmake="$(qt5_get_bindir)/qmake" # use fully-qualified qmake, bug #599466
 
 	# yes, we really do need to run both econf and eqmake5...
 	eqmake5

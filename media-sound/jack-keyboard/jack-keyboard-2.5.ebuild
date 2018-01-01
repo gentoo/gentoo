@@ -1,7 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 DESCRIPTION="A virtual MIDI keyboard for JACK MIDI"
 HOMEPAGE="http://pin.if.uz.zgora.pl/~trasz/jack-keyboard/"
@@ -12,7 +12,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="lash X"
 
-RDEPEND=">=media-sound/jack-audio-connection-kit-0.103
+RDEPEND="virtual/jack
 	>=x11-libs/gtk+-2.12:2
 	>=dev-libs/glib-2.2:2
 	lash? ( media-sound/lash )

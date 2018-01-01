@@ -14,12 +14,14 @@ LICENSE="ISC openssl"
 # we'll try to use the max of either.  However, if either change between
 # versions, we have to change the subslot to trigger rebuild of consumers.
 SLOT="0/43"
-KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ~ia64 ~mips ppc ppc64 ~x86"
+KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~mips ppc ppc64 sparc x86"
 IUSE="+asm static-libs"
 
 RDEPEND="!dev-libs/openssl:0"
 DEPEND="${RDEPEND}"
 PDEPEND="app-misc/ca-certificates"
+
+RESTRICT="test" # bug #625266
 
 src_prepare() {
 	touch crypto/Makefile.in

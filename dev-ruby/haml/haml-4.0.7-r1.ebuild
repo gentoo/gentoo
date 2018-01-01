@@ -3,7 +3,7 @@
 
 EAPI=5
 
-USE_RUBY="ruby21 ruby22 ruby23"
+USE_RUBY="ruby22 ruby23"
 
 RUBY_FAKEGEM_TASK_TEST="test"
 RUBY_FAKEGEM_TASK_DOC="-Ilib doc"
@@ -18,7 +18,7 @@ HOMEPAGE="http://haml-lang.com/"
 
 LICENSE="MIT"
 SLOT="4"
-KEYWORDS="~amd64 arm ~arm64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~amd64 arm ~arm64 ppc ppc64 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
 IUSE="doc test"
 

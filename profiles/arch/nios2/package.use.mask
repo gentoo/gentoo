@@ -68,10 +68,6 @@ sci-libs/linux-gpib firmware
 # unkeyworded deps for dev-python/ipython
 dev-python/ipython mongodb
 
-# Agostino Sarubbo <ago@gentoo.org> (05 May 2013)
-# dev-util/google-perftools is not keyworded for arm
->=dev-libs/libmemcached-0.50 tcmalloc
-
 # Christoph Junghans <junghans@gentoo.org> (29 Apr 2013)
 # MKL not available on this arch
 media-gfx/povray mkl
@@ -86,7 +82,7 @@ net-misc/unison gtk
 
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (20 Feb 2013)
 # Mask flags of calligra and dependencies due to lack of keywords
-app-office/calligra color-management openexr postgres spacenav vc
+app-office/calligra openexr spacenav
 media-gfx/pstoedit emf
 
 # Michał Górny <mgorny@gentoo.org> (01 Feb 2013)
@@ -108,10 +104,6 @@ gnome-extra/sushi office
 dev-util/dbus-test-runner test
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (27 Dec 2012)
-# remove mask when app-text/yelp-tools is keyworded here
->=gnome-extra/zenity-3.6 test
-
-# Alexandre Rostovtsev <tetromino@gentoo.org> (27 Dec 2012)
 # remove mask when >=app-editors/gedit-3.6 is keyworded here
 dev-util/devhelp gedit
 
@@ -126,11 +118,9 @@ app-accessibility/speech-dispatcher flite
 # Markus Meier <maekke@gentoo.org> (23 Dec 2012)
 # mask kde-apps/* flags due to unkeyworded dependencies
 kde-apps/kalzium editor solver
-kde-apps/kopete jingle
 kde-apps/okular chm
 kde-apps/kstars indi
 kde-apps/kdeutils-meta floppy
-kde-apps/kdenetwork-meta ppp
 
 # Markus Meier <maekke@gentoo.org> (08 Dec 2012)
 # mask app-office/libreoffice java extensions
@@ -194,10 +184,6 @@ net-misc/mediatomb lastfm
 # Raúl Porcel <armin76@gentoo.org> (28 Mar 2010)
 # Needs kde-frameworks/kwallet and kde-frameworks/kdelibs stable
 dev-vcs/subversion kwallet
-
-# Markus Meier <maekke@gentoo.org> (27 Sep 2009)
-# mask media-gfx/imagemagick[autotrace] as autotrace is not keyworded
-media-gfx/imagemagick autotrace
 
 # Jim Ramsay <lack@gentoo.org> (5 Nov 2008)
 # app-admin/gkrellm may pull in net-libs/libntlm, which is not keyworded

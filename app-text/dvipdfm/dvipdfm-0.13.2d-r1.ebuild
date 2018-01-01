@@ -5,12 +5,13 @@ EAPI=3
 inherit eutils
 
 DESCRIPTION="DVI to PDF translator"
-SRC_URI="http://gaspra.kettering.edu/dvipdfm/${P}.tar.gz"
-HOMEPAGE="http://gaspra.kettering.edu/dvipdfm/"
-LICENSE="GPL-2"
+HOMEPAGE="https://ctan.org/pkg/dvipdfm"
+SRC_URI="http://mirrors.ctan.org/dviware/dvipdfm/${P}.tar.gz"
 
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+#the source has a GPL-2 COPYING file, CTAN lists as LPPL by mistake
+LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
 DEPEND="!>=app-text/tetex-2
@@ -31,7 +32,7 @@ src_install () {
 
 	# Install .map and .enc files to correct locations, bug #200956
 	dodir /usr/share/texmf/fonts/map/dvipdfm/base
-
+	local i
 	for i in cmr.map psbase14.map lw35urw.map lw35urwa.map t1fonts.map; do
 		mv "${ED}usr/share/texmf/dvipdfm/config/${i}" "${ED}usr/share/texmf/fonts/map/dvipdfm/base" || die "moving .map file failed"
 	done

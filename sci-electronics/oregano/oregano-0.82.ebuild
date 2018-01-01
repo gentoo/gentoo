@@ -5,7 +5,7 @@ EAPI="4"
 
 inherit autotools eutils fdo-mime vcs-snapshot gnome2-utils
 
-DESCRIPTION="Oregano is an application for schematic capture and simulation of electrical circuits"
+DESCRIPTION="Application for the schematic capturing and simulation of electrical circuits"
 HOMEPAGE="https://github.com/marc-lorber/oregano"
 SRC_URI="https://github.com/marc-lorber/${PN}/tarball/v${PV} -> ${P}.tar.gz"
 

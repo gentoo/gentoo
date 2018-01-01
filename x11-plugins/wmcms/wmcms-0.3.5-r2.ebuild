@@ -1,12 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit eutils
 
 DESCRIPTION="WindowMaker CPU and Memory Usage Monitor Dock App"
-SRC_URI="http://orbita.starmedia.com/~neofpo/files/${P}.tar.bz2"
-HOMEPAGE="http://orbita.starmedia.com/~neofpo/wmcms.html"
+HOMEPAGE="http://www.geocities.ws/neofpo/wmcms.html"
+SRC_URI="http://www.geocities.ws/neofpo/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

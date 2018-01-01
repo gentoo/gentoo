@@ -16,7 +16,7 @@ HOMEPAGE="https://github.com/pepijnve/asciimath"
 
 LICENSE="MIT"
 SLOT="1"
-KEYWORDS="~amd64 arm ~arm64 ppc ppc64 x86"
+KEYWORDS="~amd64 arm ~arm64 ppc ppc64 ~sparc x86"
 IUSE=""
 
 RUBY_PATCHES=( ${P}-backslashes.patch )

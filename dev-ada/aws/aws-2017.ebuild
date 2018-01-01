@@ -15,7 +15,7 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/591c45e2c7a447af2deed001
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="gnat_2016 gnat_2017"
+IUSE="gnat_2016 +gnat_2017"
 
 RDEPEND="dev-ada/xmlada[gnat_2016=,gnat_2017=,static]"
 DEPEND="${RDEPEND}
@@ -26,7 +26,7 @@ REQUIRED_USE="^^ ( gnat_2016 gnat_2017 )"
 
 S="${WORKDIR}"/${MY_P}
 
-PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
+PATCHES=( "${FILESDIR}"/${PN}-2016-gentoo.patch )
 
 src_configure() {
 	emake -j1 setup prefix=/usr

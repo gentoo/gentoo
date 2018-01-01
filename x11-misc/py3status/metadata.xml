@@ -5,8 +5,9 @@
 		<email>ultrabug@gentoo.org</email>
 		<name>Alexys Jacob</name>
 	</maintainer>
-	<longdescription lang="en">py3status is an extensible
- i3status wrapper written in python</longdescription>
+	<longdescription lang="en">
+		py3status is an extensible i3status wrapper written in python.
+	</longdescription>
 	<upstream>
 		<remote-id type="pypi">py3status</remote-id>
 		<remote-id type="github">ultrabug/py3status</remote-id>

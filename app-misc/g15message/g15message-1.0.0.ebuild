@@ -1,8 +1,8 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 DESCRIPTION="A simple message/alert client for G15daemon"
-HOMEPAGE="http://g15daemon.sourceforge.net/"
+HOMEPAGE="https://sourceforge.net/projects/g15daemon/"
 SRC_URI="mirror://sourceforge/g15daemon/${P}.tar.bz2"
 
 LICENSE="GPL-2"

@@ -11,12 +11,12 @@ SRC_URI="https://developers.yubico.com/${PN}/Releases/${P}.tar.xz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="kernel_linux static-libs systemd"
 
 RDEPEND="
 	dev-libs/hidapi
-	dev-libs/json-c"
+	dev-libs/json-c:="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 RDEPEND="${RDEPEND}

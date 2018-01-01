@@ -1,0 +1,117 @@
+From ba1ceda1448895009ba6524398ca42441695cc3e Mon Sep 17 00:00:00 2001
+From: Maik Qualmann <metzpinguin@gmail.com>
+Date: Wed, 6 Dec 2017 18:28:32 +0100
+Subject: workaround for QTBUG-63108 now works in all cases
+
+---
+ app/main/digikamapp.cpp                  |  2 ++
+ libs/album/albummanager.cpp              | 30 +++++++++++++++++++++---------
+ libs/album/albummanager.h                |  3 +++
+ libs/database/utils/dbsettingswidget.cpp |  3 +++
+ 4 files changed, 29 insertions(+), 9 deletions(-)
+
+diff --git a/app/main/digikamapp.cpp b/app/main/digikamapp.cpp
+index 4349271..935b786 100644
+--- a/app/main/digikamapp.cpp
++++ b/app/main/digikamapp.cpp
+@@ -383,6 +383,8 @@ DigikamApp::~DigikamApp()
+         DatabaseServerStarter::instance()->stopServerManagerProcess();
+     }
+ 
++    AlbumManager::instance()->removeFakeConnection();
++
+     m_instance = 0;
+ 
+     delete d->modelCollection;
+diff --git a/libs/album/albummanager.cpp b/libs/album/albummanager.cpp
+index 2ea40e9..92a8b37 100644
+--- a/libs/album/albummanager.cpp
++++ b/libs/album/albummanager.cpp
+@@ -393,11 +393,6 @@ void AlbumManager::cleanUp()
+         d->personListJob->cancel();
+         d->personListJob = 0;
+     }
+-
+-    if (d->dbFakeConnection)
+-    {
+-        QSqlDatabase::removeDatabase(QLatin1String("FakeConnection"));
+-    }
+ }
+ 
+ bool AlbumManager::databaseEqual(const DbEngineParameters& parameters) const
+@@ -734,11 +729,10 @@ bool AlbumManager::setDatabase(const DbEngineParameters& params, bool priority,
+     // ensure, embedded database is loaded
+     qCDebug(DIGIKAM_GENERAL_LOG) << params;
+ 
+-    // workaround for the problem mariaDB >= 10.2 and QTBUG-63108.
+-    if (params.isMySQL() && !d->dbFakeConnection)
++    // workaround for the problem mariaDB >= 10.2 and QTBUG-63108
++    if (params.isMySQL())
+     {
+-        QSqlDatabase::addDatabase(QLatin1String("QMYSQL"), QLatin1String("FakeConnection"));
+-        d->dbFakeConnection = true;
++        addFakeConnection();
+     }
+ 
+     if (params.internalServer)
+@@ -3558,4 +3552,22 @@ void AlbumManager::removeWatchedPAlbums(const PAlbum* const album)
+     d->albumWatch->removeWatchedPAlbums(album);
+ }
+ 
++void AlbumManager::addFakeConnection()
++{
++    if (!d->dbFakeConnection)
++    {
++        // workaround for the problem mariaDB >= 10.2 and QTBUG-63108
++        QSqlDatabase::addDatabase(QLatin1String("QMYSQL"), QLatin1String("FakeConnection"));
++        d->dbFakeConnection = true;
++    }
++}
++
++void AlbumManager::removeFakeConnection()
++{
++    if (d->dbFakeConnection)
++    {
++        QSqlDatabase::removeDatabase(QLatin1String("FakeConnection"));
++    }
++}
++
+ }  // namespace Digikam
+diff --git a/libs/album/albummanager.h b/libs/album/albummanager.h
+index bee58c4..5b24c8d 100644
+--- a/libs/album/albummanager.h
++++ b/libs/album/albummanager.h
+@@ -625,6 +625,9 @@ public:
+ 
+     void removeWatchedPAlbums(const PAlbum* const album);
+ 
++    void addFakeConnection();
++    void removeFakeConnection();
++
+     //@}
+ 
+ Q_SIGNALS:
+diff --git a/libs/database/utils/dbsettingswidget.cpp b/libs/database/utils/dbsettingswidget.cpp
+index ca95646..4f1e1a4 100644
+--- a/libs/database/utils/dbsettingswidget.cpp
++++ b/libs/database/utils/dbsettingswidget.cpp
+@@ -65,6 +65,7 @@
+ #include "dlayoutbox.h"
+ #include "mysqlinitbinary.h"
+ #include "mysqlservbinary.h"
++#include "albummanager.h"
+ 
+ namespace Digikam
+ {
+@@ -669,6 +670,8 @@ bool DatabaseSettingsWidget::checkMysqlServerConnection(QString& error)
+ 
+     qApp->setOverrideCursor(Qt::WaitCursor);
+ 
++    AlbumManager::instance()->addFakeConnection();
++
+     QString databaseID(QLatin1String("ConnectionTest"));
+     QSqlDatabase testDatabase = QSqlDatabase::addDatabase(databaseBackend(), databaseID);
+ 
+-- 
+cgit v0.11.2
+

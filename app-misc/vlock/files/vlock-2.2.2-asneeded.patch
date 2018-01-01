@@ -1,5 +1,5 @@
---- tests/Makefile.old	2008-10-16 13:48:37.000000000 +0200
-+++ tests/Makefile	2008-10-16 13:48:53.000000000 +0200
+--- a/tests/Makefile	2008-10-16 13:48:37.000000000 +0200
++++ b/tests/Makefile	2008-10-16 13:48:53.000000000 +0200
 @@ -16,7 +16,7 @@
  TEST_SOURCES = $(TESTED_SOURCES:%=test_%)
  TEST_OBJECTS = $(TEST_SOURCES:.c=.o)

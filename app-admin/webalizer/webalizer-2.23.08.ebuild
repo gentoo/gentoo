@@ -31,7 +31,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="bzip2 xtended geoip nls"
 SLOT="0"
 
-DEPEND=">=sys-libs/db-4.2
+DEPEND=">=sys-libs/db-4.2:*
 	>=sys-libs/zlib-1.1.4
 	>=media-libs/libpng-1.2:0=
 	>=media-libs/gd-1.8.3[png]

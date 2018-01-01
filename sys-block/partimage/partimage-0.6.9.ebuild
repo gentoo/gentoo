@@ -4,7 +4,7 @@
 EAPI=4
 inherit eutils flag-o-matic pam user
 
-DESCRIPTION="Console-based application to efficiently save raw partition data to an image file"
+DESCRIPTION="Console-based application to efficiently save raw partition data to image file"
 HOMEPAGE="http://www.partimage.org/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 

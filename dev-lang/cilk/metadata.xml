@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>sci@gentoo.org</email>
-	<name>Gentoo Science Project</name>
-</maintainer>
-<longdescription lang="en">
-  Cilk is a language for multithreaded parallel programming based on
-  ANSI C. Cilk is especially effective for exploiting dynamic, highly
-  asynchronous parallelism, which can be difficult to write in data-parallel or
-  message-passing style. Cilk provides an effective platform for
-  programming dense and sparse numerical algorithms, such as matrix
-  factorization and N-body simulations. Cilk is algorithmic, in that
-  the runtime system employs a scheduler that allows the performance
-  of programs to be estimated accurately based on abstract complexity
-  measures.
-</longdescription>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		Cilk is a language for multithreaded parallel programming based on
+		ANSI C. Cilk is especially effective for exploiting dynamic, highly
+		asynchronous parallelism, which can be difficult to write in data-parallel or
+		message-passing style. Cilk provides an effective platform for
+		programming dense and sparse numerical algorithms, such as matrix
+		factorization and N-body simulations. Cilk is algorithmic, in that
+		the runtime system employs a scheduler that allows the performance
+		of programs to be estimated accurately based on abstract complexity
+		measures.
+	</longdescription>
 </pkgmetadata>

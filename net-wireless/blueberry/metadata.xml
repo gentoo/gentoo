@@ -12,7 +12,7 @@
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
-    </maintainer>
+	</maintainer>
 	<upstream>
 		<remote-id type="github">linuxmint/blueberry</remote-id>
 	</upstream>

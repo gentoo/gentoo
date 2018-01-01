@@ -15,10 +15,10 @@ LICENSE="BSD"
 SLOT="0/${PV}"
 IUSE=""
 
-RDEPEND="dev-ros/genmsg[${PYTHON_USEDEP}]"
+RDEPEND="dev-ros/genmsg[${PYTHON_USEDEP}]
+		dev-python/pyyaml[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	test? (
-		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
 	)
 "

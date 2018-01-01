@@ -6,8 +6,17 @@
 		<name>Tupone Alfredo</name>
 	</maintainer>
 	<longdescription lang="en">
-		 GPS, the GNAT Programming Studio, is a cutting-edge Free Software IDE that streamlines the interaction between developers and their software. With its intuitive interface, GPS is easy to use, simplifying source navigation and highlighting the fundamental ideas in the program.
+		GPS, the GNAT Programming Studio, is a cutting-edge Free Software IDE
+		that streamlines the interaction between developers and their software.
+		With its intuitive interface, GPS is easy to use, simplifying source
+		navigation and highlighting the fundamental ideas in the program.
 
-By displaying core application structures, such as call graphs, program entity graphs, and project dependencies, GPS facilitates the development of systems. GPS helps construct reliable code while providing the same interface and behavior across a variety of platforms. Designed by programmers for programmers, GPS is a new kind of IDE that offers the experience of designing software in a uniquely comfortable environment.
+		By displaying core application structures, such as call graphs, program
+		entity graphs, and project dependencies, GPS facilitates the
+		development of systems. GPS helps construct reliable code while
+		providing the same interface and behavior across a variety of
+		platforms. Designed by programmers for programmers, GPS is a new kind
+		of IDE that offers the experience of designing software in a uniquely
+		comfortable environment.
 	</longdescription>
 </pkgmetadata>

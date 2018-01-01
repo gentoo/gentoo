@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-    <maintainer type="person">
-        <email>titanofold@gentoo.org</email>
-        <name>Aaron W. Swenson</name>
-    </maintainer>
-    <maintainer type="project">
-        <email>pgsql-bugs@gentoo.org</email>
-        <name>PostgreSQL and Related Package Development</name>
-    </maintainer>
-    <use>
-        <flag name="libevent">Use libevent 2.0+ and evdns as the DNS backend</flag>
-        <flag name="udns">Use udns as the DNS backend. Supports IPv4 only.</flag>
-    </use>
+	<maintainer type="project">
+		<email>pgsql-bugs@gentoo.org</email>
+		<name>PostgreSQL</name>
+	</maintainer>
+	<use>
+		<flag name="c-ares">
+			Use c-ares as the DNS backend instead of evdns (libevent).
+		</flag>
+		<flag name="libevent">Use libevent 2.0+ and evdns as the DNS backend</flag>
+		<flag name="udns">
+			Use udns as the DNS backend instead of evdns (libevent). Supports
+			IPv4 only.
+		</flag>
+	</use>
 </pkgmetadata>

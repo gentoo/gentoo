@@ -1,23 +1,192 @@
---- ParMGridGen-1.0-src/mgridgen.h	2001-11-09 00:41:22.000000000 +0100
-+++ ParMGridGen-1.0/mgridgen.h	1970-01-01 01:00:00.000000000 +0100
-@@ -1,7 +0,0 @@
--typedef int idxtype;
--typedef double realtype;
--
--
--void MGridGen(int, idxtype *, realtype *, realtype *, idxtype *, realtype *,
--              int, int, int *, int *, int *, idxtype *);
--
---- ParMGridGen-1.0-src/parmgridgen.h	2001-12-06 00:05:37.000000000 +0100
-+++ ParMGridGen-1.0/parmgridgen.h	1970-01-01 01:00:00.000000000 +0100
-@@ -1,5 +0,0 @@
--typedef int idxtype;
--typedef double realtype;
--
--void ParMGridGen(idxtype *, idxtype *, realtype *, realtype *, idxtype *,
--                 realtype *, int *, int, int, int *, idxtype *, MPI_Comm *);
---- ParMGridGen-1.0-src/acx_mpi.m4	1970-01-01 01:00:00.000000000 +0100
-+++ ParMGridGen-1.0/acx_mpi.m4	2008-07-19 22:10:53.000000000 +0200
+From bbed136f01cd384bc4083aaca1761be9ee2d2a79 Mon Sep 17 00:00:00 2001
+From: Justin Lecher <jlec@gentoo.org>
+Date: Mon, 18 Dec 2017 18:30:09 +0000
+Subject: [PATCH] autotools support
+
+Signed-off-by: Justin Lecher <jlec@gentoo.org>
+---
+ MGridGen/IMlib/Makefile.am                         |   8 +
+ MGridGen/Lib/Makefile.am                           |  10 ++
+ MGridGen/Makefile.am                               |   4 +
+ MGridGen/Programs/Makefile.am                      |   7 +
+ Makefile.am                                        |   7 +
+ ParMGridGen/IMParMetis-2.0/Makefile.am             |   4 +
+ ParMGridGen/IMParMetis-2.0/ParMETISLib/Makefile.am |   8 +
+ ParMGridGen/Makefile.am                            |   4 +
+ ParMGridGen/ParLib/Makefile.am                     |  10 ++
+ ParMGridGen/Programs/Makefile.am                   |  21 +++
+ acx_mpi.m4                                         | 181 +++++++++++++++++++++
+ configure.ac                                       |  24 +++
+ mgridgen.h                                         |   7 -
+ mgridgen.pc.in                                     |  10 ++
+ parmgridgen.h                                      |   5 -
+ parmgridgen.pc.in                                  |  10 ++
+ 16 files changed, 308 insertions(+), 12 deletions(-)
+ create mode 100644 MGridGen/IMlib/Makefile.am
+ create mode 100644 MGridGen/Lib/Makefile.am
+ create mode 100644 MGridGen/Makefile.am
+ create mode 100644 MGridGen/Programs/Makefile.am
+ create mode 100644 Makefile.am
+ create mode 100644 ParMGridGen/IMParMetis-2.0/Makefile.am
+ create mode 100644 ParMGridGen/IMParMetis-2.0/ParMETISLib/Makefile.am
+ create mode 100644 ParMGridGen/Makefile.am
+ create mode 100644 ParMGridGen/ParLib/Makefile.am
+ create mode 100644 ParMGridGen/Programs/Makefile.am
+ create mode 100644 acx_mpi.m4
+ create mode 100644 configure.ac
+ delete mode 100644 mgridgen.h
+ create mode 100644 mgridgen.pc.in
+ delete mode 100644 parmgridgen.h
+ create mode 100644 parmgridgen.pc.in
+
+diff --git a/MGridGen/IMlib/Makefile.am b/MGridGen/IMlib/Makefile.am
+new file mode 100644
+index 0000000..008c259
+--- /dev/null
++++ b/MGridGen/IMlib/Makefile.am
+@@ -0,0 +1,8 @@
++## Source directory
++
++pkginclude_HEADERS = IMlib.h
++pkgincludedir = $(includedir)/mgridgen
++
++lib_LTLIBRARIES = libIMlib.la
++libIMlib_la_SOURCES = blas.c  dfkeysort.c  dkeysort.c  file.c  ifkeysort.c  ifloatsort.c  iintsort.c  ikeysort.c  memory.c  sort.c  util.c
++libIMlib_la_LDFLAGS = -no-undefined -export-dynamic -version-info 1:0:0
+diff --git a/MGridGen/Lib/Makefile.am b/MGridGen/Lib/Makefile.am
+new file mode 100644
+index 0000000..39946b0
+--- /dev/null
++++ b/MGridGen/Lib/Makefile.am
+@@ -0,0 +1,10 @@
++## Source directory
++
++INCLUDES = -I../IMlib
++
++pkginclude_HEADERS = defs.h  macros.h  mgridgen.h  proto.h  struct.h
++pkgincludedir = $(includedir)/mgridgen
++
++lib_LTLIBRARIES = libMGridGen.la
++libMGridGen_la_SOURCES = aratio.c  coarsen.c  kwayfm.c  match.c  merge.c  mgridgen.c  refine.c  setup.c
++libMGridGen_la_LDFLAGS = -no-undefined -export-dynamic -version-info 1:0:0
+diff --git a/MGridGen/Makefile.am b/MGridGen/Makefile.am
+new file mode 100644
+index 0000000..040d716
+--- /dev/null
++++ b/MGridGen/Makefile.am
+@@ -0,0 +1,4 @@
++## middle directory
++
++#Build in these directories:
++SUBDIRS= IMlib Lib Programs
+diff --git a/MGridGen/Programs/Makefile.am b/MGridGen/Programs/Makefile.am
+new file mode 100644
+index 0000000..3fe9ba5
+--- /dev/null
++++ b/MGridGen/Programs/Makefile.am
+@@ -0,0 +1,7 @@
++## Source directory
++
++INCLUDES = -I../IMlib -I../Lib
++
++bin_PROGRAMS = mgridgen
++mgridgen_SOURCES = io.c mgridgen.c
++mgridgen_LDADD = ../IMlib/libIMlib.la ../Lib/libMGridGen.la -lm
+diff --git a/Makefile.am b/Makefile.am
+new file mode 100644
+index 0000000..f97504c
+--- /dev/null
++++ b/Makefile.am
+@@ -0,0 +1,7 @@
++## top directory
++
++SUBDIRS = MGridGen ParMGridGen
++EXTRA_DIST = VERSION mgridgen.pc.in parmgridgen.pc.in
++
++pkgconfigdir = $(libdir)/pkgconfig
++pkgconfig_DATA = mgridgen.pc parmgridgen.pc
+diff --git a/ParMGridGen/IMParMetis-2.0/Makefile.am b/ParMGridGen/IMParMetis-2.0/Makefile.am
+new file mode 100644
+index 0000000..3fa93db
+--- /dev/null
++++ b/ParMGridGen/IMParMetis-2.0/Makefile.am
+@@ -0,0 +1,4 @@
++## middle directory
++
++#Build in these directories:
++SUBDIRS= ParMETISLib
+diff --git a/ParMGridGen/IMParMetis-2.0/ParMETISLib/Makefile.am b/ParMGridGen/IMParMetis-2.0/ParMETISLib/Makefile.am
+new file mode 100644
+index 0000000..c4d6e33
+--- /dev/null
++++ b/ParMGridGen/IMParMetis-2.0/ParMETISLib/Makefile.am
+@@ -0,0 +1,8 @@
++## Source directory
++
++pkginclude_HEADERS = defs.h  macros.h  parmetis.h  proto.h  rename.h  struct.h
++pkgincludedir = $(includedir)/imparmetis
++
++lib_LTLIBRARIES = libIMparmetis.la
++libIMparmetis_la_SOURCES = coarsen.c  comm.c  debug.c  diffuse.c  drivers.c  edge_refine.c  fused.c  grsetup.c  iidxsort.c  ikeysort.c  memory.c  remap.c  setup.c  timer.c  util.c  var.c
++libIMparmetis_la_LDFLAGS = -no-undefined -export-dynamic -version-info 1:0:0
+diff --git a/ParMGridGen/Makefile.am b/ParMGridGen/Makefile.am
+new file mode 100644
+index 0000000..0743f65
+--- /dev/null
++++ b/ParMGridGen/Makefile.am
+@@ -0,0 +1,4 @@
++## middle directory
++
++#Build in these directories:
++SUBDIRS= IMParMetis-2.0 ParLib Programs
+diff --git a/ParMGridGen/ParLib/Makefile.am b/ParMGridGen/ParLib/Makefile.am
+new file mode 100644
+index 0000000..78d03d9
+--- /dev/null
++++ b/ParMGridGen/ParLib/Makefile.am
+@@ -0,0 +1,10 @@
++## Source directory
++
++INCLUDES = -I$(top_builddir)/MGridGen/IMlib
++
++pkginclude_HEADERS = defs.h  macros.h  parmgridgen.h  proto.h  rename.h  struct.h
++pkgincludedir = $(includedir)/parmgridgen
++
++lib_LTLIBRARIES = libParMGridGen.la
++libParMGridGen_la_SOURCES = comm.c  debug.c  grsetup.c  ikeysort.c  memory.c  move.c  parmgridgen.c  setup.c  util.c
++libParMGridGen_la_LDFLAGS = -no-undefined -export-dynamic -version-info 1:0:0
+diff --git a/ParMGridGen/Programs/Makefile.am b/ParMGridGen/Programs/Makefile.am
+new file mode 100644
+index 0000000..0d586ee
+--- /dev/null
++++ b/ParMGridGen/Programs/Makefile.am
+@@ -0,0 +1,21 @@
++## Source directory
++
++INCLUDES = -I../ParLib -I$(top_builddir)/MGridGen/IMlib
++
++bin_PROGRAMS = parmgridgen
++parmgridgen_SOURCES = io.c  main.c  parmgridgen.c
++parmgridgen_LDADD = ../IMParMetis-2.0/ParMETISLib/libIMparmetis.la ../ParLib/libParMGridGen.la \
++	$(top_builddir)/MGridGen/IMlib/libIMlib.la $(top_builddir)/MGridGen/Lib/libMGridGen.la @MPILIBS@
++
++# AM_CPPFLAGS = -I$(top_srcdir)/ParMETISLib
++# LDADD = $(top_builddir)/METISLib/libmetis.la \
++# 	$(top_builddir)/ParMETISLib/libparmetis.la
++
++# check_PROGRAMS = parmgridgen
++# parmgridgen_SOURCES = io.c  main.c  parmgridgen.c
++
++MPIRUN = mpirun -np 4
++
++check-local: $(check_PROGRAMS)
++	$(MPIRUN) parmgridgen $(top_builddir)/Graphs/M6.metis 3 4 6 1 4 128
++
+diff --git a/acx_mpi.m4 b/acx_mpi.m4
+new file mode 100644
+index 0000000..bb2cb31
+--- /dev/null
++++ b/acx_mpi.m4
 @@ -0,0 +1,181 @@
 +# ===========================================================================
 +#                http://autoconf-archive.cryp.to/acx_mpi.html
@@ -200,34 +369,11 @@
 +        :
 +fi
 +])dnl ACX_MPI
---- ParMGridGen-1.0-src/mgridgen.pc.in	1970-01-01 01:00:00.000000000 +0100
-+++ ParMGridGen-1.0/mgridgen.pc.in	2008-07-20 15:34:06.000000000 +0200
-@@ -0,0 +1,10 @@
-+prefix=@prefix@
-+exec_prefix=@exec_prefix@
-+libdir=@libdir@
-+includedir=@includedir@
-+
-+Name: MGridGen
-+Description: Software for generating coarse grids
-+Version: @VERSION@
-+Libs: -L${libdir} -lIMlib -lMGridGen
-+Cflags: -I${includedir}/mgridgen
---- ParMGridGen-1.0-src/parmgridgen.pc.in	1970-01-01 01:00:00.000000000 +0100
-+++ ParMGridGen-1.0/parmgridgen.pc.in	2008-07-20 15:49:53.000000000 +0200
-@@ -0,0 +1,10 @@
-+prefix=@prefix@
-+exec_prefix=@exec_prefix@
-+libdir=@libdir@
-+includedir=@includedir@
-+
-+Name: ParMGridGen
-+Description: Software for parallel (mpi) generating coarse grids
-+Version: @VERSION@
-+Libs: -L${libdir} -lIMparmetis -lParMGridGen
-+Cflags: -I${includedir}/imparmetis -I${includedir}/parmgridgen
---- ParMGridGen-1.0-src/configure.ac	1970-01-01 01:00:00.000000000 +0100
-+++ ParMGridGen-1.0/configure.ac	2008-07-20 16:05:45.000000000 +0200
+diff --git a/configure.ac b/configure.ac
+new file mode 100644
+index 0000000..daff95e
+--- /dev/null
++++ b/configure.ac
 @@ -0,0 +1,24 @@
 +# -*- Autoconf -*-
 +AC_PREREQ(2.61)
@@ -253,116 +399,62 @@
 +		 ParMGridGen/ParLib/Makefile
 +		 ParMGridGen/Programs/Makefile])
 +AC_OUTPUT
---- ParMGridGen-1.0-src/Makefile.am	1970-01-01 01:00:00.000000000 +0100
-+++ ParMGridGen-1.0/Makefile.am	2008-07-20 15:55:52.000000000 +0200
-@@ -0,0 +1,7 @@
-+## top directory
-+
-+SUBDIRS = MGridGen ParMGridGen
-+EXTRA_DIST = VERSION mgridgen.pc.in parmgridgen.pc.in
-+
-+pkgconfigdir = $(libdir)/pkgconfig
-+pkgconfig_DATA = mgridgen.pc parmgridgen.pc
---- ParMGridGen-1.0-src/MGridGen/Makefile.am	1970-01-01 01:00:00.000000000 +0100
-+++ ParMGridGen-1.0/MGridGen/Makefile.am	2008-07-19 22:53:47.000000000 +0200
-@@ -0,0 +1,4 @@
-+## middle directory
-+
-+#Build in these directories:
-+SUBDIRS= IMlib Lib Programs
---- ParMGridGen-1.0-src/MGridGen/IMlib/Makefile.am	1970-01-01 01:00:00.000000000 +0100
-+++ ParMGridGen-1.0/MGridGen/IMlib/Makefile.am	2008-07-19 22:48:10.000000000 +0200
-@@ -0,0 +1,8 @@
-+## Source directory
-+
-+pkginclude_HEADERS = IMlib.h
-+pkgincludedir = $(includedir)/mgridgen
-+
-+lib_LTLIBRARIES = libIMlib.la
-+libIMlib_la_SOURCES = blas.c  dfkeysort.c  dkeysort.c  file.c  ifkeysort.c  ifloatsort.c  iintsort.c  ikeysort.c  memory.c  sort.c  util.c
-+libIMlib_la_LDFLAGS = -no-undefined -export-dynamic -version-info 1:0:0
---- ParMGridGen-1.0-src/MGridGen/Lib/Makefile.am	1970-01-01 01:00:00.000000000 +0100
-+++ ParMGridGen-1.0/MGridGen/Lib/Makefile.am	2008-07-19 22:43:36.000000000 +0200
+diff --git a/mgridgen.h b/mgridgen.h
+deleted file mode 100644
+index e1bfa2e..0000000
+--- a/mgridgen.h
++++ /dev/null
+@@ -1,7 +0,0 @@
+-typedef int idxtype;
+-typedef double realtype;
+-
+-
+-void MGridGen(int, idxtype *, realtype *, realtype *, idxtype *, realtype *,
+-              int, int, int *, int *, int *, idxtype *);
+-
+diff --git a/mgridgen.pc.in b/mgridgen.pc.in
+new file mode 100644
+index 0000000..d84810c
+--- /dev/null
++++ b/mgridgen.pc.in
 @@ -0,0 +1,10 @@
-+## Source directory
++prefix=@prefix@
++exec_prefix=@exec_prefix@
++libdir=@libdir@
++includedir=@includedir@
 +
-+INCLUDES = -I../IMlib
-+
-+pkginclude_HEADERS = defs.h  macros.h  mgridgen.h  proto.h  struct.h
-+pkgincludedir = $(includedir)/mgridgen
-+
-+lib_LTLIBRARIES = libMGridGen.la
-+libMGridGen_la_SOURCES = aratio.c  coarsen.c  kwayfm.c  match.c  merge.c  mgridgen.c  refine.c  setup.c
-+libMGridGen_la_LDFLAGS = -no-undefined -export-dynamic -version-info 1:0:0
---- ParMGridGen-1.0-src/MGridGen/Programs/Makefile.am	1970-01-01 01:00:00.000000000 +0100
-+++ ParMGridGen-1.0/MGridGen/Programs/Makefile.am	2008-07-19 23:38:41.000000000 +0200
-@@ -0,0 +1,7 @@
-+## Source directory
-+
-+INCLUDES = -I../IMlib -I../Lib
-+
-+bin_PROGRAMS = mgridgen
-+mgridgen_SOURCES = io.c mgridgen.c
-+mgridgen_LDADD = ../IMlib/libIMlib.la ../Lib/libMGridGen.la -lm
---- ParMGridGen-1.0-src/ParMGridGen/Makefile.am	1970-01-01 01:00:00.000000000 +0100
-+++ ParMGridGen-1.0/ParMGridGen/Makefile.am	2008-07-20 16:04:31.000000000 +0200
-@@ -0,0 +1,4 @@
-+## middle directory
-+
-+#Build in these directories:
-+SUBDIRS= IMParMetis-2.0 ParLib Programs
---- ParMGridGen-1.0-src/ParMGridGen/IMParMetis-2.0/Makefile.am	1970-01-01 01:00:00.000000000 +0100
-+++ ParMGridGen-1.0/ParMGridGen/IMParMetis-2.0/Makefile.am	2008-07-20 15:24:55.000000000 +0200
-@@ -0,0 +1,4 @@
-+## middle directory
-+
-+#Build in these directories:
-+SUBDIRS= ParMETISLib
---- ParMGridGen-1.0-src/ParMGridGen/IMParMetis-2.0/ParMETISLib/Makefile.am	1970-01-01 01:00:00.000000000 +0100
-+++ ParMGridGen-1.0/ParMGridGen/IMParMetis-2.0/ParMETISLib/Makefile.am	2008-07-20 16:18:31.000000000 +0200
-@@ -0,0 +1,8 @@
-+## Source directory
-+
-+pkginclude_HEADERS = defs.h  macros.h  parmetis.h  proto.h  rename.h  struct.h
-+pkgincludedir = $(includedir)/imparmetis
-+
-+lib_LTLIBRARIES = libIMparmetis.la
-+libIMparmetis_la_SOURCES = coarsen.c  comm.c  debug.c  diffuse.c  drivers.c  edge_refine.c  fused.c  grsetup.c  iidxsort.c  ikeysort.c  memory.c  remap.c  setup.c  timer.c  util.c  var.c
-+libIMparmetis_la_LDFLAGS = -no-undefined -export-dynamic -version-info 1:0:0
---- ParMGridGen-1.0-src/ParMGridGen/ParLib/Makefile.am	1970-01-01 01:00:00.000000000 +0100
-+++ ParMGridGen-1.0/ParMGridGen/ParLib/Makefile.am	2008-07-20 15:53:06.000000000 +0200
++Name: MGridGen
++Description: Software for generating coarse grids
++Version: @VERSION@
++Libs: -L${libdir} -lIMlib -lMGridGen
++Cflags: -I${includedir}/mgridgen
+diff --git a/parmgridgen.h b/parmgridgen.h
+deleted file mode 100644
+index 6a1a637..0000000
+--- a/parmgridgen.h
++++ /dev/null
+@@ -1,5 +0,0 @@
+-typedef int idxtype;
+-typedef double realtype;
+-
+-void ParMGridGen(idxtype *, idxtype *, realtype *, realtype *, idxtype *,
+-                 realtype *, int *, int, int, int *, idxtype *, MPI_Comm *);
+diff --git a/parmgridgen.pc.in b/parmgridgen.pc.in
+new file mode 100644
+index 0000000..a11a597
+--- /dev/null
++++ b/parmgridgen.pc.in
 @@ -0,0 +1,10 @@
-+## Source directory
++prefix=@prefix@
++exec_prefix=@exec_prefix@
++libdir=@libdir@
++includedir=@includedir@
 +
-+INCLUDES = -I$(top_builddir)/MGridGen/IMlib
-+
-+pkginclude_HEADERS = defs.h  macros.h  parmgridgen.h  proto.h  rename.h  struct.h
-+pkgincludedir = $(includedir)/parmgridgen
-+
-+lib_LTLIBRARIES = libParMGridGen.la
-+libParMGridGen_la_SOURCES = comm.c  debug.c  grsetup.c  ikeysort.c  memory.c  move.c  parmgridgen.c  setup.c  util.c
-+libParMGridGen_la_LDFLAGS = -no-undefined -export-dynamic -version-info 1:0:0
---- ParMGridGen-1.0-src/ParMGridGen/Programs/Makefile.am	1970-01-01 01:00:00.000000000 +0100
-+++ ParMGridGen-1.0/ParMGridGen/Programs/Makefile.am	2008-07-20 16:24:19.000000000 +0200
-@@ -0,0 +1,21 @@
-+## Source directory
-+
-+INCLUDES = -I../ParLib -I$(top_builddir)/MGridGen/IMlib
-+
-+bin_PROGRAMS = parmgridgen
-+parmgridgen_SOURCES = io.c  main.c  parmgridgen.c
-+parmgridgen_LDADD = ../IMParMetis-2.0/ParMETISLib/libIMparmetis.la ../ParLib/libParMGridGen.la \
-+	$(top_builddir)/MGridGen/IMlib/libIMlib.la $(top_builddir)/MGridGen/Lib/libMGridGen.la @MPILIBS@
-+
-+# AM_CPPFLAGS = -I$(top_srcdir)/ParMETISLib
-+# LDADD = $(top_builddir)/METISLib/libmetis.la \
-+# 	$(top_builddir)/ParMETISLib/libparmetis.la
-+
-+# check_PROGRAMS = parmgridgen
-+# parmgridgen_SOURCES = io.c  main.c  parmgridgen.c
-+
-+MPIRUN = mpirun -np 4
-+
-+check-local: $(check_PROGRAMS)
-+	$(MPIRUN) parmgridgen $(top_builddir)/Graphs/M6.metis 3 4 6 1 4 128
-+
++Name: ParMGridGen
++Description: Software for parallel (mpi) generating coarse grids
++Version: @VERSION@
++Libs: -L${libdir} -lIMparmetis -lParMGridGen
++Cflags: -I${includedir}/imparmetis -I${includedir}/parmgridgen
+-- 
+2.15.1
+

@@ -30,7 +30,9 @@ RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )
 	perl? ( dev-lang/perl )"
 
 src_prepare() {
-	if epatch_user || [[ ! -e configure ]] ; then
+	epatch_user
+
+	if [[ ! -e configure ]] ; then
 		# git generation
 		./xlat/gen.sh || die
 		./generate_mpers_am.sh || die

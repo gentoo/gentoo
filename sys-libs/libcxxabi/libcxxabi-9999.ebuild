@@ -20,6 +20,7 @@ LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="0"
 KEYWORDS=""
 IUSE="+libunwind +static-libs test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	libunwind? (
@@ -54,7 +55,7 @@ src_unpack() {
 	git-r3_fetch
 
 	git-r3_checkout https://llvm.org/git/libcxx.git \
-		"${WORKDIR}"/libcxx
+		"${WORKDIR}"/libcxx '' include utils/libcxx
 	git-r3_checkout
 }
 

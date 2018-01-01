@@ -14,7 +14,7 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/57399112c7a447658d00e1cd -> ${MY_P}.
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="gnat_2016 gnat_2017"
+IUSE="+gnat_2016 gnat_2017"
 
 RDEPEND="dev-ada/xmlada[gnat_2016=,gnat_2017=,static]"
 DEPEND="${RDEPEND}

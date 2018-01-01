@@ -9,15 +9,13 @@ DESCRIPTION="Donald Knuth's MMIX Assembler and Simulator"
 HOMEPAGE="http://www-cs-faculty.stanford.edu/~knuth/mmix.html http://mmix.cs.hm.edu"
 SRC_URI="http://mmix.cs.hm.edu/src/${P}.tgz"
 
-RESTRICT="mirror"
-
 DEPEND="virtual/tex-base
 	doc? ( || ( dev-texlive/texlive-plaingeneric dev-texlive/texlive-genericrecommended ) )"
 RDEPEND=""
 
 SLOT="0"
 LICENSE="${PN}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc"
 
 S="${WORKDIR}"

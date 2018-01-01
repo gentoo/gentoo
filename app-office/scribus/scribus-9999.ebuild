@@ -8,10 +8,10 @@ PYTHON_REQ_USE="tk?"
 CMAKE_MAKEFILE_GENERATOR=ninja
 CMAKE_MIN_VERSION=3.2.0
 
-inherit cmake-utils eutils flag-o-matic gnome2 multilib python-single-r1 subversion xdg-utils
+inherit cmake-utils eutils flag-o-matic gnome2 python-single-r1 subversion xdg-utils
 
 DESCRIPTION="Desktop publishing (DTP) and layout program"
-HOMEPAGE="http://www.scribus.net/"
+HOMEPAGE="https://www.scribus.net/"
 SRC_URI=""
 ESVN_REPO_URI="svn://scribus.net/trunk/Scribus"
 ESVN_PROJECT=Scribus-1.5
@@ -52,6 +52,7 @@ COMMON_DEPEND="
 	>=media-libs/harfbuzz-0.9.42:0=[icu]
 	media-libs/lcms:2
 	media-libs/libcdr
+	media-libs/libfreehand
 	media-libs/libpagemaker
 	media-libs/libpng:0=
 	media-libs/libvisio
@@ -201,13 +202,13 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	fdo-xdg_desktop_database_update
+	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
 	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
-	fdo-xdg_desktop_database_update
+	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
 	gnome2_icon_cache_update
 }

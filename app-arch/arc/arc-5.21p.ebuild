@@ -1,9 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
+EAPI=6
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Create & extract files from DOS .ARC files"
 HOMEPAGE="http://arc.sourceforge.net"
@@ -14,17 +14,22 @@ SLOT="0"
 KEYWORDS="alpha amd64 hppa ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
 IUSE=""
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-5.21m-darwin.patch
+	"${FILESDIR}"/${PN}-5.21m-gentoo-fbsd.patch
+	"${FILESDIR}"/${PN}-5.21o-interix.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P/p/m}-darwin.patch \
-		"${FILESDIR}"/${P/p/m}-gentoo-fbsd.patch \
-		"${FILESDIR}"/${P/p/o}-interix.patch
+	default
+
 	sed -i Makefile \
 		-e 's/CFLAGS = $(OPT) $(SYSTEM)/CFLAGS += $(SYSTEM)/' \
 		|| die "sed Makefile"
 }
 
 src_compile() {
-	emake CC="$(tc-getCC)" OPT="${LDFLAGS}" || die "emake failed."
+	emake CC="$(tc-getCC)" OPT="${LDFLAGS}"
 }
 
 src_install() {

@@ -1,0 +1,46 @@
+--- /src/font.c
++++ /src/font.c
+@@ -1763,10 +1763,10 @@
+ 
+   if (format == Mx || format == Mnil)
+     result = xlfd_parse_name (name, font);
+-#ifdef HAVE_FONTCONFIG
++#if defined (HAVE_FONTCONFIG) && defined (HAVE_FREETYPE)
+   if (format == Mfontconfig || (result < 0 && format == Mnil))
+     result = mfont__ft_parse_name (name, font);
+-#endif /* HAVE_FONTCONFIG */
++#endif /* HAVE_FONTCONFIG && HAVE_FREETYPE*/
+   return result;
+ }
+ 
+@@ -2352,11 +2352,11 @@
+ 
+   if (format == Mx)
+     name = xlfd_unparse_name (font, 1);
+-#ifdef HAVE_FONTCONFIG
++#if defined (HAVE_FONTCONFIG) && defined (HAVE_FREETYPE)
+   else if (format == Mfontconfig)
+     name = mfont__ft_unparse_name (font);
+ 
+-#endif /* HAVE_FONTCONFIG */
++#endif /* HAVE_FONTCONFIG && HAVE_FREETYPE*/
+   else
+     MERROR (MERROR_FONT, NULL);
+   return name;
+--- /src/font.h
++++ /src/font.h
+@@ -307,10 +307,14 @@
+ 
+ extern void mfont__ft_fini ();
+ 
++#ifdef HAVE_FONTCONFIG
++
+ extern int mfont__ft_parse_name (const char *name, MFont *font);
+ 
+ extern char *mfont__ft_unparse_name (MFont *font);
+ 
++#endif /* HAVE_FONTCONFIG */
++
+ #ifdef HAVE_OTF
+ 
+ extern int mfont__ft_drive_otf (MGlyphString *gstring, int from, int to,

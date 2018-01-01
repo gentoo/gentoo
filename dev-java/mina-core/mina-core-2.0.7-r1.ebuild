@@ -10,7 +10,7 @@ inherit java-pkg-2 java-pkg-simple
 MY_P="apache-mina-${PV}"
 
 DESCRIPTION="Apache MINA Project"
-HOMEPAGE="http://mina.apache.org/"
+HOMEPAGE="https://mina.apache.org/"
 SRC_URI="mirror://apache/mina/mina/${PV}/${MY_P}-src.tar.bz2 -> ${P}.tar.bz2"
 KEYWORDS="~amd64 ~x86"
 LICENSE="Apache-2.0"

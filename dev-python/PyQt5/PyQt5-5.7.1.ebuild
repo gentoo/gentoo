@@ -51,41 +51,40 @@ REQUIRED_USE="
 	xmlpatterns? ( network )
 "
 
-# Minimal supported version of Qt.
-QT_PV="5.6.0:5"
+QT_PV=${PV}
 
 RDEPEND="
 	${PYTHON_DEPS}
 	>=dev-python/sip-4.19:=[${PYTHON_USEDEP}]
-	>=dev-qt/qtcore-${QT_PV}
-	>=dev-qt/qtxml-${QT_PV}
-	bluetooth? ( >=dev-qt/qtbluetooth-${QT_PV} )
+	~dev-qt/qtcore-${QT_PV}
+	~dev-qt/qtxml-${QT_PV}
+	bluetooth? ( ~dev-qt/qtbluetooth-${QT_PV} )
 	dbus? (
 		dev-python/dbus-python[${PYTHON_USEDEP}]
-		>=dev-qt/qtdbus-${QT_PV}
+		~dev-qt/qtdbus-${QT_PV}
 	)
-	declarative? ( >=dev-qt/qtdeclarative-${QT_PV}[widgets?] )
-	designer? ( >=dev-qt/designer-${QT_PV} )
-	gui? ( >=dev-qt/qtgui-${QT_PV}[gles2=] )
-	help? ( >=dev-qt/qthelp-${QT_PV} )
-	location? ( >=dev-qt/qtlocation-${QT_PV} )
-	multimedia? ( >=dev-qt/qtmultimedia-${QT_PV}[widgets?] )
-	network? ( >=dev-qt/qtnetwork-${QT_PV} )
-	opengl? ( >=dev-qt/qtopengl-${QT_PV} )
-	positioning? ( >=dev-qt/qtpositioning-${QT_PV} )
-	printsupport? ( >=dev-qt/qtprintsupport-${QT_PV} )
-	sensors? ( >=dev-qt/qtsensors-${QT_PV} )
-	serialport? ( >=dev-qt/qtserialport-${QT_PV} )
-	sql? ( >=dev-qt/qtsql-${QT_PV} )
-	svg? ( >=dev-qt/qtsvg-${QT_PV} )
-	testlib? ( >=dev-qt/qttest-${QT_PV} )
-	webchannel? ( >=dev-qt/qtwebchannel-${QT_PV} )
-	webengine? ( >=dev-qt/qtwebengine-${QT_PV}[widgets?] )
-	webkit? ( >=dev-qt/qtwebkit-${QT_PV}[printsupport] )
-	websockets? ( >=dev-qt/qtwebsockets-${QT_PV} )
-	widgets? ( >=dev-qt/qtwidgets-${QT_PV} )
-	x11extras? ( >=dev-qt/qtx11extras-${QT_PV} )
-	xmlpatterns? ( >=dev-qt/qtxmlpatterns-${QT_PV} )
+	declarative? ( ~dev-qt/qtdeclarative-${QT_PV}[widgets?] )
+	designer? ( ~dev-qt/designer-${QT_PV} )
+	gui? ( ~dev-qt/qtgui-${QT_PV}[gles2=] )
+	help? ( ~dev-qt/qthelp-${QT_PV} )
+	location? ( ~dev-qt/qtlocation-${QT_PV} )
+	multimedia? ( ~dev-qt/qtmultimedia-${QT_PV}[widgets?] )
+	network? ( ~dev-qt/qtnetwork-${QT_PV} )
+	opengl? ( ~dev-qt/qtopengl-${QT_PV} )
+	positioning? ( ~dev-qt/qtpositioning-${QT_PV} )
+	printsupport? ( ~dev-qt/qtprintsupport-${QT_PV} )
+	sensors? ( ~dev-qt/qtsensors-${QT_PV} )
+	serialport? ( ~dev-qt/qtserialport-${QT_PV} )
+	sql? ( ~dev-qt/qtsql-${QT_PV} )
+	svg? ( ~dev-qt/qtsvg-${QT_PV} )
+	testlib? ( ~dev-qt/qttest-${QT_PV} )
+	webchannel? ( ~dev-qt/qtwebchannel-${QT_PV} )
+	webengine? ( ~dev-qt/qtwebengine-${QT_PV}[widgets?] )
+	webkit? ( ~dev-qt/qtwebkit-${QT_PV}[printsupport] )
+	websockets? ( ~dev-qt/qtwebsockets-${QT_PV} )
+	widgets? ( ~dev-qt/qtwidgets-${QT_PV} )
+	x11extras? ( ~dev-qt/qtx11extras-${QT_PV} )
+	xmlpatterns? ( ~dev-qt/qtxmlpatterns-${QT_PV} )
 "
 DEPEND="${RDEPEND}
 	dbus? ( virtual/pkgconfig )

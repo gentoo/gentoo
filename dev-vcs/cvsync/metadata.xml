@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-	<email>vapier@gentoo.org</email>
-	<description>feel free to update</description>
-</maintainer>
+<!-- maintainer-needed -->
 <use>
 	<flag name="gcrypt">Use <pkg>dev-libs/libgcrypt</pkg> for hash functions.</flag>
 	<flag name="mhash">Use <pkg>app-crypt/mhash</pkg> for hash functions.</flag>

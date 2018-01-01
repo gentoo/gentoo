@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-  <email>base-system@gentoo.org</email>
-  <name>Gentoo Base System</name>
-</maintainer>
-<use>
-  <flag name="cacert">
-	Include root certificates from CAcert (http://www.cacert.org/) and Software
-	in the Public Interest (http://www.spi-inc.org/)
-  </flag>
-  <flag name="insecure_certs">
-	Install certificates which are known to be untrustworthy.
-  </flag>
-</use>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
+	<use>
+		<flag name="cacert">
+			Include root certificates from CAcert (http://www.cacert.org/) and Software
+			in the Public Interest (http://www.spi-inc.org/)
+		</flag>
+		<flag name="insecure_certs">
+			Install certificates which are known to be untrustworthy.
+		</flag>
+	</use>
 </pkgmetadata>

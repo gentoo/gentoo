@@ -9,10 +9,17 @@
 # packages is neither recommended nor supported in any way.
 <sys-devel/gcc-6
 
-# Andreas K. Huettel <dilfridge@gentoo.org> (27 May 2017)
-# We can unmask ICU 59 and later now we for sure have a recent GCC
-# Note: "and later" is safe here since the profiles/package.mask
-# still overrides.
-->=dev-libs/icu-59
-->=dev-libs/icu-layoutex-59
-->=net-libs/nodejs-9.0.0
+# Andreas K. Huettel <dilfridge@gentoo.org> (1 Dec 2017)
+# The following packages require GCC 5 or earlier and are therefore
+# masked in the 17.0 profiles.
+app-text/pdftk
+dev-java/ecj-gcj
+dev-java/gcj-jdk
+<dev-util/nvidia-cuda-toolkit-9
+<dev-util/nvidia-cuda-sdk-9
+
+# Andreas K. Huettel <dilfridge@gentoo.org> (1 Dec 2017)
+# The following packages require pdftk and are therefore
+# masked in the 17.0 profiles.
+app-office/auto-multiple-choice
+<app-office/impressive-0.11.2

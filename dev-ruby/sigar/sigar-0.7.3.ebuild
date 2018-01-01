@@ -23,7 +23,7 @@ all_ruby_prepare() {
 
 	# Fix compatibility with glibc 2.25
 	sed -i -e '26i#include <sys/sysmacros.h>' \
-		-e '27i#include <ctype.h>' bindings/ruby/rbsigar.c || die
+		-e '27i#include <ctype.h>' bindings/ruby/rbsigar.c src/os/linux/linux_sigar.c || die
 }
 
 each_ruby_configure() {

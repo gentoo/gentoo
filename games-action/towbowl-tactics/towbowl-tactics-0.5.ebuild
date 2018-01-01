@@ -10,7 +10,7 @@ SRC_URI="http://www.towbowltactics.com/download/tbt.${PV}.src.zip"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="dev-libs/libxml2

@@ -1,0 +1,15 @@
+diff -r -U2 reduze-2.2.orig/reduze/CMakeLists.txt reduze-2.2/reduze/CMakeLists.txt
+--- reduze-2.2.orig/reduze/CMakeLists.txt	2017-11-17 14:11:58.000000000 +0700
++++ reduze-2.2/reduze/CMakeLists.txt	2017-12-19 20:27:17.508528174 +0700
+@@ -84,9 +84,8 @@
+ 	message (STATUS "Building with Berkeley DB support")
+ 	find_path(DB_INCLUDE_PATH NAMES dbstl_common.h
+-	          PATHS /usr/local/include/db4 /usr/local/include
+-	                /usr/include/db4 /usr/include)
++	          PATHS /usr/include/db6.0)
+     # we also need db.h but just assume its in the same directory
+ 	find_library(DB_LIBRARY NAMES db_stl
+-	             PATHS /usr/lib /usr/local/lib)
++	             PATHS /usr/lib /usr/lib64)
+ 	if (NOT (DB_LIBRARY AND DB_INCLUDE_PATH))
+ 		message (FATAL_ERROR "Failed to find Berkeley DB or its STL interface"

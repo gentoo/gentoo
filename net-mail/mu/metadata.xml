@@ -2,15 +2,17 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-          <email>vikraman@gentoo.org</email>
-          <name>Vikraman Choudhury</name>
-        </maintainer>
+		<email>vikraman@gentoo.org</email>
+		<name>Vikraman Choudhury</name>
+	</maintainer>
 	<maintainer type="project">
-          <email>net-mail@gentoo.org</email>
-          <name>Net-Mail</name>
-        </maintainer>
-	<longdescription lang="en">'mu' is a set of command-line tools for Linux/Unix that enable you to quickly find the e-mails you
-are looking for, assuming that you store your e-mails in Maildirs.  It also includes an emacs based mail client mu4e.</longdescription>
+		<email>net-mail@gentoo.org</email>
+		<name>Net-Mail</name>
+	</maintainer>
+	<longdescription lang="en">
+		'mu' is a set of command-line tools for Linux/Unix that enable you to quickly find the e-mails you
+		are looking for, assuming that you store your e-mails in Maildirs.  It also includes an emacs based mail client mu4e.
+	</longdescription>
 	<use>
 		<flag name="gui">Build and install the experimental gui 'mug'.</flag>
 		<flag name="emacs">Install the mu4e mail client.</flag>

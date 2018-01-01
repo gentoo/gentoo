@@ -6,8 +6,8 @@ inherit libtool
 IUSE=""
 
 DESCRIPTION="A simple library designed for DVD-menu navigation"
-SRC_URI="http://www.videolan.org/pub/${PN}/${PV}/${P}.tar.bz2"
-HOMEPAGE="http://developers.videolan.org/libdvdplay/"
+SRC_URI="https://www.videolan.org/pub/${PN}/${PV}/${P}.tar.bz2"
+HOMEPAGE="https://developers.videolan.org/libdvdplay/"
 
 SLOT="0"
 LICENSE="GPL-2"

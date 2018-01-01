@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tupone@gentoo.org</email>
+		<name>Tupone Alfredo</name>
+	</maintainer>
+	<longdescription lang="en">
+		GPS is a lightweight, extensible IDE, intended to develop
+		high-integrity software in Ada and SPARK, with support for C and C++
+		as well.
+	</longdescription>
+</pkgmetadata>

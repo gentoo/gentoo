@@ -13,7 +13,7 @@ SRC_URI="mirror://quakeunity/modifications/threewavectf/threewave_16_full.zip
 	mirror://quakeunity/modifications/threewavectf/threewave_17_update.zip"
 
 LICENSE="freedist"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="dedicated opengl"
 
 src_unpack() {

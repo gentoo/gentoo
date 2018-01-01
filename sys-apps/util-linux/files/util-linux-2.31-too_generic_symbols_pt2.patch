@@ -1,0 +1,355 @@
+From 09a69dfc7720d5e0b7a646978a00a7c7a4411c37 Mon Sep 17 00:00:00 2001
+From: Karel Zak <kzak@redhat.com>
+Date: Tue, 12 Dec 2017 11:54:08 +0100
+Subject: [PATCH] lib/md5: use ul_/UL_ prefix
+
+The symbols names are too generic.
+
+Addresses: https://github.com/karelzak/util-linux/issues/548
+Signed-off-by: Karel Zak <kzak@redhat.com>
+---
+ disk-utils/mkfs.cramfs.c       | 13 +++++++------
+ include/md5.h                  | 25 ++++++++++---------------
+ lib/md5.c                      | 26 +++++++++++++-------------
+ libblkid/src/superblocks/hfs.c | 16 +++++++++-------
+ libuuid/src/gen_uuid.c         | 12 ++++++------
+ misc-utils/mcookie.c           | 14 +++++++-------
+ tests/helpers/test_md5.c       | 12 ++++++------
+ 7 files changed, 58 insertions(+), 60 deletions(-)
+
+diff --git a/disk-utils/mkfs.cramfs.c b/disk-utils/mkfs.cramfs.c
+index a3e9aa48c..729765078 100644
+--- a/disk-utils/mkfs.cramfs.c
++++ b/disk-utils/mkfs.cramfs.c
+@@ -98,7 +98,7 @@ struct entry {
+ 	/* stats */
+ 	unsigned char *name;
+ 	unsigned int mode, size, uid, gid;
+-	unsigned char md5sum[MD5LENGTH];
++	unsigned char md5sum[UL_MD5LENGTH];
+ 	unsigned char flags;	   /* CRAMFS_EFLAG_* */
+ 
+ 	/* FS data */
+@@ -194,16 +194,17 @@ do_munmap(char *start, unsigned int size, unsigned int mode){
+ /* compute md5sums, so that we do not have to compare every pair of files */
+ static void
+ mdfile(struct entry *e) {
+-	MD5_CTX ctx;
+ 	char *start;
+ 
+ 	start = do_mmap(e->path, e->size, e->mode);
+ 	if (start == NULL) {
+ 		e->flags |= CRAMFS_EFLAG_INVALID;
+ 	} else {
+-		MD5Init(&ctx);
+-		MD5Update(&ctx, (unsigned char *) start, e->size);
+-		MD5Final(e->md5sum, &ctx);
++		UL_MD5_CTX ctx;
++
++		ul_MD5Init(&ctx);
++		ul_MD5Update(&ctx, (unsigned char *) start, e->size);
++		ul_MD5Final(e->md5sum, &ctx);
+ 
+ 		do_munmap(start, e->size, e->mode);
+ 
+@@ -255,7 +256,7 @@ static int find_identical_file(struct entry *orig, struct entry *new, loff_t *fs
+ 
+ 		if ((orig->flags & CRAMFS_EFLAG_MD5) &&
+ 		    (new->flags & CRAMFS_EFLAG_MD5) &&
+-		    !memcmp(orig->md5sum, new->md5sum, MD5LENGTH) &&
++		    !memcmp(orig->md5sum, new->md5sum, UL_MD5LENGTH) &&
+ 		    identical_file(orig, new)) {
+ 			new->same = orig;
+ 			*fslen_ub -= new->size;
+diff --git a/include/md5.h b/include/md5.h
+index d997e379d..d6991e1fd 100644
+--- a/include/md5.h
++++ b/include/md5.h
+@@ -1,29 +1,24 @@
+-#ifndef MD5_H
+-#define MD5_H
++#ifndef UTIL_LINUX_MD5_H
++#define UTIL_LINUX_MD5_H
+ 
+-#ifdef HAVE_STDINT_H
+ #include <stdint.h>
+-#else
+-typedef unsigned int uint32_t;
+-#endif
+ 
+-#define MD5LENGTH 16
++#define UL_MD5LENGTH 16
+ 
+-struct MD5Context {
++struct UL_MD5Context {
+ 	uint32_t buf[4];
+ 	uint32_t bits[2];
+ 	unsigned char in[64];
+ };
+ 
+-void MD5Init(struct MD5Context *context);
+-void MD5Update(struct MD5Context *context, unsigned char const *buf,
+-	       unsigned len);
+-void MD5Final(unsigned char digest[MD5LENGTH], struct MD5Context *context);
+-void MD5Transform(uint32_t buf[4], uint32_t const in[16]);
++void ul_MD5Init(struct UL_MD5Context *context);
++void ul_MD5Update(struct UL_MD5Context *context, unsigned char const *buf, unsigned len);
++void ul_MD5Final(unsigned char digest[UL_MD5LENGTH], struct UL_MD5Context *context);
++void ul_MD5Transform(uint32_t buf[4], uint32_t const in[16]);
+ 
+ /*
+  * This is needed to make RSAREF happy on some MS-DOS compilers.
+  */
+-typedef struct MD5Context MD5_CTX;
++typedef struct UL_MD5Context UL_MD5_CTX;
+ 
+-#endif /* !MD5_H */
++#endif /* !UTIL_LINUX_MD5_H */
+diff --git a/lib/md5.c b/lib/md5.c
+index 282e2d22a..3765ab93e 100644
+--- a/lib/md5.c
++++ b/lib/md5.c
+@@ -19,7 +19,7 @@
+ #include "md5.h"
+ 
+ #if !defined(WORDS_BIGENDIAN)
+-#define byteReverse(buf, len)	/* Nothing */
++# define byteReverse(buf, len)	/* Nothing */
+ #else
+ static void byteReverse(unsigned char *buf, unsigned longs);
+ 
+@@ -37,14 +37,14 @@ static void byteReverse(unsigned char *buf, unsigned longs)
+ 	buf += 4;
+     } while (--longs);
+ }
+-#endif
+-#endif
++#endif /* !ASM_MD5 */
++#endif /* !WORDS_BIGENDIAN */
+ 
+ /*
+  * Start MD5 accumulation.  Set bit count to 0 and buffer to mysterious
+  * initialization constants.
+  */
+-void MD5Init(struct MD5Context *ctx)
++void ul_MD5Init(struct UL_MD5Context *ctx)
+ {
+     ctx->buf[0] = 0x67452301;
+     ctx->buf[1] = 0xefcdab89;
+@@ -59,7 +59,7 @@ void MD5Init(struct MD5Context *ctx)
+  * Update context to reflect the concatenation of another buffer full
+  * of bytes.
+  */
+-void MD5Update(struct MD5Context *ctx, unsigned char const *buf, unsigned len)
++void ul_MD5Update(struct UL_MD5Context *ctx, unsigned char const *buf, unsigned len)
+ {
+     uint32_t t;
+ 
+@@ -84,7 +84,7 @@ void MD5Update(struct MD5Context *ctx, unsigned char const *buf, unsigned len)
+ 	}
+ 	memcpy(p, buf, t);
+ 	byteReverse(ctx->in, 16);
+-	MD5Transform(ctx->buf, (uint32_t *) ctx->in);
++	ul_MD5Transform(ctx->buf, (uint32_t *) ctx->in);
+ 	buf += t;
+ 	len -= t;
+     }
+@@ -93,7 +93,7 @@ void MD5Update(struct MD5Context *ctx, unsigned char const *buf, unsigned len)
+     while (len >= 64) {
+ 	memcpy(ctx->in, buf, 64);
+ 	byteReverse(ctx->in, 16);
+-	MD5Transform(ctx->buf, (uint32_t *) ctx->in);
++	ul_MD5Transform(ctx->buf, (uint32_t *) ctx->in);
+ 	buf += 64;
+ 	len -= 64;
+     }
+@@ -104,10 +104,10 @@ void MD5Update(struct MD5Context *ctx, unsigned char const *buf, unsigned len)
+ }
+ 
+ /*
+- * Final wrapup - pad to 64-byte boundary with the bit pattern 
++ * Final wrapup - pad to 64-byte boundary with the bit pattern
+  * 1 0* (64-bit count of bits processed, MSB-first)
+  */
+-void MD5Final(unsigned char digest[MD5LENGTH], struct MD5Context *ctx)
++void ul_MD5Final(unsigned char digest[UL_MD5LENGTH], struct UL_MD5Context *ctx)
+ {
+     unsigned count;
+     unsigned char *p;
+@@ -128,7 +128,7 @@ void MD5Final(unsigned char digest[MD5LENGTH], struct MD5Context *ctx)
+ 	/* Two lots of padding:  Pad the first block to 64 bytes */
+ 	memset(p, 0, count);
+ 	byteReverse(ctx->in, 16);
+-	MD5Transform(ctx->buf, (uint32_t *) ctx->in);
++	ul_MD5Transform(ctx->buf, (uint32_t *) ctx->in);
+ 
+ 	/* Now fill the next block with 56 bytes */
+ 	memset(ctx->in, 0, 56);
+@@ -145,9 +145,9 @@ void MD5Final(unsigned char digest[MD5LENGTH], struct MD5Context *ctx)
+     memcpy(&ctx->in[14 * sizeof(uint32_t)], &ctx->bits[0], 4);
+     memcpy(&ctx->in[15 * sizeof(uint32_t)], &ctx->bits[1], 4);
+ 
+-    MD5Transform(ctx->buf, (uint32_t *) ctx->in);
++    ul_MD5Transform(ctx->buf, (uint32_t *) ctx->in);
+     byteReverse((unsigned char *) ctx->buf, 4);
+-    memcpy(digest, ctx->buf, MD5LENGTH);
++    memcpy(digest, ctx->buf, UL_MD5LENGTH);
+     memset(ctx, 0, sizeof(*ctx));	/* In case it's sensitive */
+ }
+ 
+@@ -170,7 +170,7 @@ void MD5Final(unsigned char digest[MD5LENGTH], struct MD5Context *ctx)
+  * reflect the addition of 16 longwords of new data.  MD5Update blocks
+  * the data and converts bytes into longwords for this routine.
+  */
+-void MD5Transform(uint32_t buf[4], uint32_t const in[16])
++void ul_MD5Transform(uint32_t buf[4], uint32_t const in[16])
+ {
+     register uint32_t a, b, c, d;
+ 
+diff --git a/libblkid/src/superblocks/hfs.c b/libblkid/src/superblocks/hfs.c
+index c2344114a..19f14ed0d 100644
+--- a/libblkid/src/superblocks/hfs.c
++++ b/libblkid/src/superblocks/hfs.c
+@@ -130,19 +130,21 @@ struct hfsplus_vol_header {
+ 
+ static int hfs_set_uuid(blkid_probe pr, unsigned char const *hfs_info, size_t len)
+ {
+-	static unsigned char const hash_init[MD5LENGTH] = {
++	static unsigned char const hash_init[UL_MD5LENGTH] = {
+ 		0xb3, 0xe2, 0x0f, 0x39, 0xf2, 0x92, 0x11, 0xd6,
+ 		0x97, 0xa4, 0x00, 0x30, 0x65, 0x43, 0xec, 0xac
+ 	};
+-	unsigned char uuid[MD5LENGTH];
+-	struct MD5Context md5c;
++	unsigned char uuid[UL_MD5LENGTH];
++	struct UL_MD5Context md5c;
+ 
+ 	if (memcmp(hfs_info, "\0\0\0\0\0\0\0\0", len) == 0)
+ 		return -1;
+-	MD5Init(&md5c);
+-	MD5Update(&md5c, hash_init, MD5LENGTH);
+-	MD5Update(&md5c, hfs_info, len);
+-	MD5Final(uuid, &md5c);
++
++	ul_MD5Init(&md5c);
++	ul_MD5Update(&md5c, hash_init, UL_MD5LENGTH);
++	ul_MD5Update(&md5c, hfs_info, len);
++	ul_MD5Final(uuid, &md5c);
++
+ 	uuid[6] = 0x30 | (uuid[6] & 0x0f);
+ 	uuid[8] = 0x80 | (uuid[8] & 0x3f);
+ 	return blkid_probe_set_uuid(pr, uuid);
+diff --git a/libuuid/src/gen_uuid.c b/libuuid/src/gen_uuid.c
+index 431bf2064..a374e75c9 100644
+--- a/libuuid/src/gen_uuid.c
++++ b/libuuid/src/gen_uuid.c
+@@ -564,15 +564,15 @@ void uuid_generate(uuid_t out)
+  */
+ void uuid_generate_md5(uuid_t out, const uuid_t ns, const char *name, size_t len)
+ {
+-	MD5_CTX ctx;
+-	char hash[MD5LENGTH];
++	UL_MD5_CTX ctx;
++	char hash[UL_MD5LENGTH];
+ 
+-	MD5Init(&ctx);
++	ul_MD5Init(&ctx);
+ 	/* hash concatenation of well-known UUID with name */
+-	MD5Update(&ctx, ns, sizeof(uuid_t));
+-	MD5Update(&ctx, (const unsigned char *)name, len);
++	ul_MD5Update(&ctx, ns, sizeof(uuid_t));
++	ul_MD5Update(&ctx, (const unsigned char *)name, len);
+ 
+-	MD5Final((unsigned char *)hash, &ctx);
++	ul_MD5Final((unsigned char *)hash, &ctx);
+ 
+ 	memcpy(out, hash, sizeof(uuid_t));
+ 
+diff --git a/misc-utils/mcookie.c b/misc-utils/mcookie.c
+index e6c799d24..fd4227a09 100644
+--- a/misc-utils/mcookie.c
++++ b/misc-utils/mcookie.c
+@@ -41,7 +41,7 @@ enum {
+ };
+ 
+ struct mcookie_control {
+-	struct	MD5Context ctx;
++	struct	UL_MD5Context ctx;
+ 	char	**files;
+ 	size_t	nfiles;
+ 	uint64_t maxsz;
+@@ -67,12 +67,12 @@ static uint64_t hash_file(struct mcookie_control *ctl, int fd)
+ 		r = read_all(fd, (char *) buf, rdsz);
+ 		if (r < 0)
+ 			break;
+-		MD5Update(&ctl->ctx, buf, r);
++		ul_MD5Update(&ctl->ctx, buf, r);
+ 		count += r;
+ 	}
+ 	/* Separate files with a null byte */
+ 	buf[0] = '\0';
+-	MD5Update(&ctl->ctx, buf, 1);
++	ul_MD5Update(&ctl->ctx, buf, 1);
+ 	return count;
+ }
+ 
+@@ -131,7 +131,7 @@ int main(int argc, char **argv)
+ {
+ 	struct mcookie_control ctl = { .verbose = 0 };
+ 	size_t i;
+-	unsigned char digest[MD5LENGTH];
++	unsigned char digest[UL_MD5LENGTH];
+ 	unsigned char buf[RAND_BYTES];
+ 	int c;
+ 
+@@ -180,14 +180,14 @@ int main(int argc, char **argv)
+ 	free(ctl.files);
+ 
+ 	random_get_bytes(&buf, RAND_BYTES);
+-	MD5Update(&ctl.ctx, buf, RAND_BYTES);
++	ul_MD5Update(&ctl.ctx, buf, RAND_BYTES);
+ 	if (ctl.verbose)
+ 		fprintf(stderr, P_("Got %d byte from %s\n",
+ 				   "Got %d bytes from %s\n", RAND_BYTES),
+ 				RAND_BYTES, random_tell_source());
+ 
+-	MD5Final(digest, &ctl.ctx);
+-	for (i = 0; i < MD5LENGTH; i++)
++	ul_MD5Final(digest, &ctl.ctx);
++	for (i = 0; i < UL_MD5LENGTH; i++)
+ 		printf("%02x", digest[i]);
+ 	putchar('\n');
+ 
+diff --git a/tests/helpers/test_md5.c b/tests/helpers/test_md5.c
+index 471580e12..6f8dec4aa 100644
+--- a/tests/helpers/test_md5.c
++++ b/tests/helpers/test_md5.c
+@@ -7,22 +7,22 @@
+ int main(void)
+ {
+ 	int i, ret;
+-	struct MD5Context ctx;
+-	unsigned char digest[MD5LENGTH];
++	struct UL_MD5Context ctx;
++	unsigned char digest[UL_MD5LENGTH];
+ 	unsigned char buf[BUFSIZ];
+ 
+-	MD5Init( &ctx );
++	ul_MD5Init( &ctx );
+ 
+ 	while(!feof(stdin) && !ferror(stdin)) {
+ 		ret = fread(buf, 1, sizeof(buf), stdin);
+ 		if (ret)
+-			MD5Update( &ctx, buf, ret );
++			ul_MD5Update( &ctx, buf, ret );
+ 	}
+ 
+ 	fclose(stdin);
+-	MD5Final( digest, &ctx );
++	ul_MD5Final( digest, &ctx );
+ 
+-	for (i = 0; i < MD5LENGTH; i++)
++	for (i = 0; i < UL_MD5LENGTH; i++)
+ 		printf( "%02x", digest[i] );
+ 	printf("\n");
+ 	return 0;

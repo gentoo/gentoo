@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -24,7 +24,7 @@ RDEPEND="dev-libs/libpcre
 	mysql? ( virtual/mysql )
 	lognorm? (
 		dev-libs/liblognorm
-		dev-libs/json-c
+		dev-libs/json-c:=
 		dev-libs/libee
 		dev-libs/libestr
 			)

@@ -39,6 +39,7 @@ DEPEND="${RDEPEND}
 	test? (
 		python_targets_python2_7? ( dev-python/mock[${PYTHON_USEDEP}] )
 		dev-python/tox[${PYTHON_USEDEP}]
+		sys-apps/checkpolicy
 	)"
 
 python_prepare_all() {

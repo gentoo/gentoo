@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 PLOCALES="de ru"
-inherit autotools bash-completion-r1 l10n systemd flag-o-matic
+inherit autotools bash-completion-r1 flag-o-matic l10n tmpfiles
 
 DESCRIPTION="Search and query ebuilds"
 HOMEPAGE="https://github.com/vaeth/eix/"
@@ -83,7 +83,7 @@ src_configure() {
 src_install() {
 	default
 	dobashcomp bash/eix
-	systemd_dotmpfilesd tmpfiles.d/eix.conf
+	dotmpfiles tmpfiles.d/eix.conf
 
 	rm -r "${ED%/}"/usr/bin/eix-functions.sh || die
 
@@ -94,7 +94,7 @@ pkg_postinst() {
 	if ! use prefix; then
 		# note: if this is done in src_install(), portage:portage
 		# ownership may be reset to root
-		chown portage:portage "${EROOT%/}"/var/cache/eix || die
+		tmpfiles_process eix.conf
 	fi
 
 	local obs=${EROOT%/}/var/cache/eix.previous

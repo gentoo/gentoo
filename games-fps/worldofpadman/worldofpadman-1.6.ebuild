@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/wop-1.5-unified.zip
 
 LICENSE="GPL-2 worldofpadman"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="+curl dedicated maps +openal +theora +vorbis"
 
 RDEPEND="sys-libs/zlib

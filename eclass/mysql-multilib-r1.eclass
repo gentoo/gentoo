@@ -20,20 +20,24 @@
 MYSQL_EXTRAS=""
 
 # @ECLASS-VARIABLE: MYSQL_EXTRAS_VER
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # The version of the MYSQL_EXTRAS repo to use to build mysql
 # Use "none" to disable it's use
 [[ ${MY_EXTRAS_VER} == "live" ]] && MYSQL_EXTRAS="git-r3"
 
 # @ECLASS-VARIABLE: MYSQL_CMAKE_NATIVE_DEFINES
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # An array of extra CMake arguments for native multilib builds
 
 # @ECLASS-VARIABLE: MYSQL_CMAKE_NONNATIVE_DEFINES
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # An array of extra CMake arguments for non-native multilib builds
 
 # @ECLASS-VARIABLE: MYSQL_CMAKE_EXTRA_DEFINES
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # An array of CMake arguments added to native and non-native
 

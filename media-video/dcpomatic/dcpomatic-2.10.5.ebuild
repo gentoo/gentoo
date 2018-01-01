@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_3 python3_4 python3_5 )
+PYTHON_COMPAT=( python2_7 python3_{3,4,5,6} )
 PYTHON_REQ_USE="threads(+)"
 inherit python-any-r1 waf-utils wxwidgets
 

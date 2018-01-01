@@ -10,6 +10,15 @@
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>
+  <maintainer type="person">
+    <email>henning@hennsch.de</email>
+    <name>Henning Schild</name>
+    <description>Proxied maintainer via NP-Hardass</description>
+  </maintainer>
+  <maintainer type="person">
+    <email>NP-Hardass@gentoo.org</email>
+    <name>NP-Hardass</name>
+  </maintainer>
   <upstream>
     <remote-id type="github">telegramdesktop/tdesktop</remote-id>
   </upstream>

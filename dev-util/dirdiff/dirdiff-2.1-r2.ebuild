@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,8 +6,8 @@ EAPI=5
 inherit eutils flag-o-matic multilib toolchain-funcs
 
 DESCRIPTION="A tool for differing and merging directories"
-SRC_URI="http://samba.org/ftp/paulus/${P}.tar.gz"
-HOMEPAGE="http://samba.org/ftp/paulus/"
+SRC_URI="https://www.samba.org/ftp/paulus/${P}.tar.gz"
+HOMEPAGE="https://www.samba.org/ftp/paulus/"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/portmedia/${PN}-src-${PV}.zip"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ~ia64 ~mips ~ppc x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~sparc x86"
 IUSE="debug doc java python static-libs test-programs"
 
 CDEPEND="media-libs/alsa-lib
@@ -37,17 +37,21 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 S=${WORKDIR}/${PN}
 
+PATCHES=(
+	# fix parallel make failures, fix java support, and allow optional
+	# components like test programs and static libs to be skipped
+	"${FILESDIR}"/${P}-cmake.patch
+
+	# add include directories and remove references to missing files
+	"${FILESDIR}"/${P}-python.patch
+)
+
 pkg_setup() {
 	use java && java-pkg-opt-2_pkg_setup
 }
 
 src_prepare() {
-	# fix parallel make failures, fix java support, and allow optional
-	# components like test programs and static libs to be skipped
-	epatch "${FILESDIR}"/${P}-cmake.patch
-
-	# add include directories and remove references to missing files
-	epatch "${FILESDIR}"/${P}-python.patch
+	cmake-utils_src_prepare
 
 	# install wrapper for pmdefaults
 	if use java ; then

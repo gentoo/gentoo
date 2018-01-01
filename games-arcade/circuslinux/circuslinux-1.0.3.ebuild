@@ -10,7 +10,7 @@ HOMEPAGE="http://www.newbreedsoftware.com/circus-linux/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 x86"
+KEYWORDS="~alpha ~amd64 ~x86"
 IUSE=""
 
 DEPEND="media-libs/libsdl

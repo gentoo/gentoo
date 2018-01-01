@@ -47,11 +47,8 @@ pkg_setup() {
 
 python_prepare_all() {
 	# Upstream's patchset
-	if [[ -n ${UPSTREAM_VER} ]]; then
-		EPATCH_SUFFIX="patch" \
-		EPATCH_FORCE="yes" \
-			epatch "${WORKDIR}"/patches-upstream
-	fi
+	[[ -n ${UPSTREAM_VER} ]] && \
+		eapply "${WORKDIR}"/patches-upstream
 
 	# this will be a noop, as we are working with a tarball,
 	# but throws git errors --> just get rid of it

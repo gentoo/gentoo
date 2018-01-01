@@ -14,7 +14,7 @@ fi
 
 inherit flag-o-matic linux-info linux-mod autotools-utils
 
-DESCRIPTION="The Solaris Porting Layer is a Linux kernel module which provides many of the Solaris kernel APIs"
+DESCRIPTION="The Solaris Porting Layer provides many of the Solaris kernel APIs"
 HOMEPAGE="http://zfsonlinux.org/"
 
 LICENSE="GPL-2"

@@ -3,6 +3,8 @@
 
 EAPI=6
 
+inherit gnome2-utils xdg-utils
+
 MY_P="${P/_/-}"
 S="${WORKDIR}/${MY_P}"
 
@@ -79,4 +81,14 @@ src_install() {
 	doins -r "${WORKDIR}"/gentoo_ice/.
 	docinto gentoo_ice
 	dodoc "${WORKDIR}"/README
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+	gnome2_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
+	gnome2_icon_cache_update
 }

@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit user
+inherit user systemd
 
 DESCRIPTION="Open source DMARC implementation "
 HOMEPAGE="http://www.trusteddomain.org/opendmarc/"
@@ -50,6 +50,7 @@ src_install() {
 
 	newinitd "${FILESDIR}"/opendmarc.initd opendmarc
 	newconfd "${FILESDIR}"/opendmarc.confd opendmarc
+	systemd_dounit "${FILESDIR}/${PN}.service"
 
 	dodir /etc/opendmarc
 

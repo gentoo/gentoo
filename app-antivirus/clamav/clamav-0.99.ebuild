@@ -17,7 +17,7 @@ IUSE="bzip2 clamdtop iconv ipv6 libressl milter metadata-analysis-api selinux st
 CDEPEND="bzip2? ( app-arch/bzip2 )
 	clamdtop? ( sys-libs/ncurses:0 )
 	iconv? ( virtual/libiconv )
-	metadata-analysis-api? ( dev-libs/json-c )
+	metadata-analysis-api? ( dev-libs/json-c:= )
 	milter? ( || ( mail-filter/libmilter mail-mta/sendmail ) )
 	dev-libs/libtommath
 	>=sys-libs/zlib-1.2.2

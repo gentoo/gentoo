@@ -16,8 +16,7 @@ KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 IUSE=""
 
 DEPEND=""
-RDEPEND=">=app-shells/bash-3.0
-	sys-apps/pciutils
+RDEPEND="sys-apps/pciutils
 	sys-apps/usbutils
 	"
 S="${WORKDIR}/smxi-${PN}-${MY_COMMIT:0:7}"

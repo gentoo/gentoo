@@ -1,0 +1,14 @@
+# Do not count skipped tests as failed (bug #642366)
+--- tests/run_tests.sh.orig	2017-12-28 16:40:57.657366187 +0100
++++ tests/run_tests.sh	2017-12-28 16:42:57.183392063 +0100
+@@ -842,8 +842,9 @@
+ show_sep
+ echo "Passed $pass, failed $fail, skipped $skip out of $tot tests."
+ 
++sum=`expr $skip + $pass`
+ rc=0
+-if test $pass -ne $tot ; then
++if test $sum -ne $tot ; then
+     rc=1
+ fi
+ 

@@ -10,7 +10,7 @@ SRC_URI="http://m.peponas.free.fr/gngb/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="opengl"
 
 DEPEND="media-libs/libsdl[sound,joystick,video]

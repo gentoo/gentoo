@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="Creates CD-Covers via LaTeX by fetching cd-info from freedb.org or local file"
-HOMEPAGE="http://www.vanhemert.co.uk/disc-cover.html"
+HOMEPAGE="https://web.archive.org/web/20151104062521/http://www.vanhemert.co.uk/disc-cover.html"
 SRC_URI="http://www.vanhemert.co.uk/files/${P}.tar.gz"
 
 LICENSE="GPL-2"

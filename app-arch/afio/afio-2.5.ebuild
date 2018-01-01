@@ -3,8 +3,8 @@
 
 inherit eutils toolchain-funcs
 
-DESCRIPTION="Makes cpio-format archives and deals gracefully with input data corruption"
-HOMEPAGE="http://freshmeat.net/projects/afio/"
+DESCRIPTION="Afio creates cpio-format archives."
+HOMEPAGE="http://members.chello.nl/k.holtman/afio.html https://github.com/kholtman/afio"
 SRC_URI="http://members.brabant.chello.nl/~k.holtman/${P}.tgz"
 
 LICENSE="Artistic LGPL-2"

@@ -19,7 +19,7 @@ SRC_URI="doc? ( mirror://sourceforge/scummvm/${PN}-manuals-en-highres.zip )
 
 LICENSE="Dreamweb"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc l10n_de l10n_en l10n_en-GB l10n_es l10n_fr l10n_it"
 
 RDEPEND=">=games-engines/scummvm-1.7[flac]"

@@ -268,7 +268,7 @@ openldap_upgrade_howto() {
 	d="$(date -u +%s)"
 	l="/root/ldapdump.${d}"
 	i="${l}.raw"
-	eerror " 1. /etc/init.d/slurpd stop ; /etc/init.d/slapd stop"
+	eerror " 1. /etc/init.d/slapd stop"
 	eerror " 2. slapcat -l ${i}"
 	eerror " 3. egrep -v '^(entry|context)CSN:' <${i} >${l}"
 	eerror " 4. mv /var/lib/openldap-data/ /var/lib/openldap-data-backup/"

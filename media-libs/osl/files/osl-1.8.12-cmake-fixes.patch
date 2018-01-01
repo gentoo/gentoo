@@ -1,0 +1,332 @@
+From cb34603cce0a8814dc66f76ecc5ceeb04a8d3791 Mon Sep 17 00:00:00 2001
+From: Jonathan Scruggs <j.scruggs@gmail.com>
+Date: Fri, 18 Aug 2017 13:37:54 +0100
+Subject: [PATCH] OpenShadingLanguage/RB-1.8: Change to GNUInstallDirs for
+ install paths
+
+The variables: BIN_INSTALL_DIR, LIB_INSTALL_DIR, INCLUDE_INSTALL_DIR,
+DOC_INSTALL_DIR, and MAN_INSTALL_DIR are defined but never used.
+Instead, hard coded paths to lib, include, and bin were used. This
+will cause difficulty on multi-lib systems or in cases where they
+are named differently. The existing variables were replaced by the
+GNUInstallDirs variables, which is compatible on all systems.
+
+The macro install_targets was defined, but never used in code,
+so all library installs were changed to use it.
+Thus all library installs now use GNUInstallDirs.
+
+INSTALL_DOCS variable is defined, so it's now controlling if
+the documentation is being installed.
+
+Signed-off by: Jonathan Scruggs <j.scruggs@gmail.com>
+---
+ CMakeLists.txt                 | 66 +++++++++---------------------------------
+ src/cmake/util_macros.cmake    |  6 ++--
+ src/doc/CMakeLists.txt         |  6 ++--
+ src/include/CMakeLists.txt     |  2 +-
+ src/liboslcomp/CMakeLists.txt  |  2 +-
+ src/liboslexec/CMakeLists.txt  |  2 +-
+ src/liboslnoise/CMakeLists.txt |  2 +-
+ src/liboslquery/CMakeLists.txt |  2 +-
+ src/osl.imageio/CMakeLists.txt | 19 +-----------
+ src/oslc/CMakeLists.txt        |  2 +-
+ src/oslinfo/CMakeLists.txt     |  2 +-
+ src/testrender/CMakeLists.txt  |  2 +-
+ src/testshade/CMakeLists.txt   |  6 ++--
+ 13 files changed, 32 insertions(+), 87 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 305047c0..da4635ab 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -248,6 +248,8 @@ set (OSL_BUILD_PLUGINS ON CACHE BOOL "Bool OSL plugins, for example OIIO plugin"
+ set (USE_CCACHE ON CACHE BOOL "Use ccache if found")
+ set (CODECOV OFF CACHE BOOL "Build code coverage tests")
+ option (USE_BOOST_WAVE "Use Boost Wave for C preprocessor (alternative is to use clang)" OFF)
++set (PLUGIN_SEARCH_PATH "" CACHE STRING "Default plugin search path")
++set (INSTALL_DOCS ON CACHE BOOL "Install documentation")
+ 
+ # Use ccache if found
+ find_program (CCACHE_FOUND ccache)
+@@ -349,6 +351,14 @@ if (OSL_NAMESPACE)
+ endif ()
+ message(STATUS "Setting Namespace to: ${OSL_NAMESPACE}")
+ 
++include (GNUInstallDirs)
++
++message (STATUS "CMAKE_INSTALL_PREFIX is ${CMAKE_INSTALL_PREFIX}")
++message (STATUS "CMAKE_INSTALL_LIBDIR is ${CMAKE_INSTALL_LIBDIR}")
++message (STATUS "CMAKE_INSTALL_BINDIR is ${CMAKE_INSTALL_BINDIR}")
++message (STATUS "CMAKE_INSTALL_DOCDIR is ${CMAKE_INSTALL_DOCDIR}")
++message (STATUS "CMAKE_INSTALL_INCLUDEDIR is ${CMAKE_INSTALL_INCLUDEDIR}")
++
+ set (CMAKE_MODULE_PATH
+      "${PROJECT_SOURCE_DIR}/src/cmake/modules"
+      "${PROJECT_SOURCE_DIR}/src/cmake")
+@@ -363,58 +373,6 @@ include_directories (
+   )
+ 
+ 
+-###########################################################################
+-# Paths for install tree customization.  Note that relative paths are relative
+-# to CMAKE_INSTALL_PREFIX.
+-set (DEFAULT_BIN_INSTALL_DIR   "bin")
+-set (DEFAULT_LIB_INSTALL_DIR   "lib")
+-set (DEFAULT_INCLUDE_INSTALL_DIR "include/OSL")
+-if (UNIX AND NOT SELF_CONTAINED_INSTALL_TREE)
+-    # Try to be well-behaved and install into reasonable places according to
+-    # the "standard" unix directory heirarchy
+-    # TODO: Figure out how to get the correct python directory
+-    set (DEFAULT_PYLIB_INSTALL_DIR "lib/python/site-packages")
+-    set (DEFAULT_PYLIB3_INSTALL_DIR "lib/python3/site-packages")
+-    set (DEFAULT_DOC_INSTALL_DIR "share/doc/OSL")
+-    set (DEFAULT_MAN_INSTALL_DIR "share/man/man1")
+-else ()
+-    # Here is the "self-contained install tree" case: the expectation here is
+-    # that everything OSL related will go into its own directory, not into
+-    # some standard system heirarchy.
+-    set (DEFAULT_PYLIB_INSTALL_DIR "python")
+-    set (DEFAULT_PYLIB3_INSTALL_DIR "python3")
+-    set (DEFAULT_DOC_INSTALL_DIR "doc")
+-    set (DEFAULT_MAN_INSTALL_DIR "doc/man")
+-endif ()
+-if (EXEC_INSTALL_PREFIX)
+-    # Tack on an extra prefix to support multi-arch builds.
+-    set (DEFAULT_BIN_INSTALL_DIR   "${EXEC_INSTALL_PREFIX}/${DEFAULT_BIN_INSTALL_DIR}")
+-    set (DEFAULT_LIB_INSTALL_DIR   "${EXEC_INSTALL_PREFIX}/${DEFAULT_LIB_INSTALL_DIR}")
+-    set (DEFAULT_PYLIB_INSTALL_DIR "${EXEC_INSTALL_PREFIX}/${DEFAULT_PYLIB_INSTALL_DIR}")
+-    set (DEFAULT_PYLIB3_INSTALL_DIR "${EXEC_INSTALL_PREFIX}/${DEFAULT_PYLIB3_INSTALL_DIR}")
+-endif ()
+-# Set up cmake cache variables corresponding to the defaults deduced above, so
+-# that the user can override them as desired:
+-set (BIN_INSTALL_DIR ${DEFAULT_BIN_INSTALL_DIR} CACHE STRING
+-     "Install location for binaries (relative to CMAKE_INSTALL_PREFIX or absolute)")
+-set (LIB_INSTALL_DIR ${DEFAULT_LIB_INSTALL_DIR} CACHE STRING
+-     "Install location for libraries (relative to CMAKE_INSTALL_PREFIX or absolute)")
+-set (PYLIB_INSTALL_DIR ${DEFAULT_PYLIB_INSTALL_DIR} CACHE STRING
+-     "Install location for python libraries (relative to CMAKE_INSTALL_PREFIX or absolute)")
+-set (PYLIB3_INSTALL_DIR ${DEFAULT_PYLIB3_INSTALL_DIR} CACHE STRING
+-     "Install location for python3 libraries (relative to CMAKE_INSTALL_PREFIX or absolute)")
+-set (INCLUDE_INSTALL_DIR ${DEFAULT_INCLUDE_INSTALL_DIR} CACHE STRING
+-     "Install location of header files (relative to CMAKE_INSTALL_PREFIX or absolute)")
+-set (DOC_INSTALL_DIR ${DEFAULT_DOC_INSTALL_DIR} CACHE STRING
+-     "Install location for documentation (relative to CMAKE_INSTALL_PREFIX or absolute)")
+-if (UNIX)
+-    set (MAN_INSTALL_DIR ${DEFAULT_MAN_INSTALL_DIR} CACHE STRING
+-         "Install location for manual pages (relative to CMAKE_INSTALL_PREFIX or absolute)")
+-endif()
+-set (PLUGIN_SEARCH_PATH "" CACHE STRING "Default plugin search path")
+-set (INSTALL_DOCS ON CACHE BOOL "Install documentation")
+-
+-
+ if (APPLE)
+     set (MACOSX_RPATH ON)
+ endif ()
+@@ -425,7 +383,7 @@ set (CMAKE_SKIP_BUILD_RPATH  FALSE)
+ # (but later on when installing)
+ set (CMAKE_BUILD_WITH_INSTALL_RPATH FALSE) 
+ # the RPATH to be used when installing
+-set (CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
++set (CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_FULL_LIBDIR}")
+ # add the automatically determined parts of the RPATH
+ # which point to directories outside the build tree to the install RPATH
+ set (CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+@@ -472,7 +430,9 @@ add_subdirectory (src/osl.imageio)
+ endif ()
+ 
+ add_subdirectory (src/include)
++if (INSTALL_DOCS)
+ add_subdirectory (src/doc)
++endif ()
+ 
+ 
+ 
+diff --git a/src/cmake/util_macros.cmake b/src/cmake/util_macros.cmake
+index 5691c925..fdaeb042 100644
+--- a/src/cmake/util_macros.cmake
++++ b/src/cmake/util_macros.cmake
+@@ -107,6 +107,8 @@ endmacro ()
+ #    install_targets (target1 [target2 ...])
+ #
+ macro (install_targets)
+-    install (TARGETS ${ARGN} RUNTIME DESTINATION bin
+-             LIBRARY DESTINATION lib  ARCHIVE DESTINATION lib)
++    install (TARGETS ${ARGN}
++             RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}" COMPONENT user
++             LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}" COMPONENT user
++             ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}" COMPONENT developer)
+ endmacro()
+diff --git a/src/doc/CMakeLists.txt b/src/doc/CMakeLists.txt
+index 9fefa26d..f90c6f00 100644
+--- a/src/doc/CMakeLists.txt
++++ b/src/doc/CMakeLists.txt
+@@ -3,15 +3,15 @@ set (public_docs osl-languagespec.pdf
+                  markdeep.min.js
+                  )
+ 
+-install (FILES ${public_docs} DESTINATION doc COMPONENT documentation)
++install (FILES ${public_docs} DESTINATION ${CMAKE_INSTALL_DOCDIR} COMPONENT documentation)
+ 
+ install ( FILES "${PROJECT_SOURCE_DIR}/LICENSE"
+                 "${PROJECT_SOURCE_DIR}/INSTALL.md"
+                 "${PROJECT_SOURCE_DIR}/CHANGES.md"
+                 "${PROJECT_SOURCE_DIR}/README.md"
+-          DESTINATION doc )
++          DESTINATION ${CMAKE_INSTALL_DOCDIR} )
+ 
+ 
+ file (GLOB testshade_figures "Figures/testshade/*.jpg")
+ install (FILES ${testshade_figures}
+-         DESTINATION doc/Figures/testshade )
++         DESTINATION ${CMAKE_INSTALL_DOCDIR}/Figures/testshade )
+diff --git a/src/include/CMakeLists.txt b/src/include/CMakeLists.txt
+index cf3747d1..4656ee78 100644
+--- a/src/include/CMakeLists.txt
++++ b/src/include/CMakeLists.txt
+@@ -6,4 +6,4 @@ set (OSL_BUILD_CPP14 ${USE_CPP14})
+ configure_file (OSL/oslversion.h.in "${CMAKE_BINARY_DIR}/include/OSL/oslversion.h" @ONLY)
+ list (APPEND public_headers "${CMAKE_BINARY_DIR}/include/OSL/oslversion.h")
+ 
+-INSTALL ( FILES ${public_headers} DESTINATION include/OSL )
++INSTALL ( FILES ${public_headers} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/OSL )
+diff --git a/src/liboslcomp/CMakeLists.txt b/src/liboslcomp/CMakeLists.txt
+index b6fa459d..6ad9172f 100644
+--- a/src/liboslcomp/CMakeLists.txt
++++ b/src/liboslcomp/CMakeLists.txt
+@@ -25,5 +25,5 @@ TARGET_LINK_LIBRARIES ( oslcomp ${OPENIMAGEIO_LIBRARIES} ${ILMBASE_LIBRARIES}
+                        ${CLANG_LIBRARIES} ${LLVM_LIBRARIES} ${LLVM_LDFLAGS}
+                        ${LLVM_SYSTEM_LIBRARIES})
+ 
+-INSTALL ( TARGETS oslcomp RUNTIME DESTINATION bin LIBRARY DESTINATION lib ARCHIVE DESTINATION lib )
++install_targets (oslcomp)
+ 
+diff --git a/src/liboslexec/CMakeLists.txt b/src/liboslexec/CMakeLists.txt
+index a0ffca5c..fa8a8728 100644
+--- a/src/liboslexec/CMakeLists.txt
++++ b/src/liboslexec/CMakeLists.txt
+@@ -157,7 +157,7 @@ TARGET_LINK_LIBRARIES ( oslexec
+                         ${LLVM_SYSTEM_LIBRARIES})
+ ADD_DEPENDENCIES (oslexec "${CMAKE_SOURCE_DIR}/src/build-scripts/hidesymbols.map")
+ 
+-INSTALL ( TARGETS oslexec RUNTIME DESTINATION bin LIBRARY DESTINATION lib ARCHIVE DESTINATION lib )
++install_targets (oslexec)
+ 
+ # Unit tests
+ if (OSL_BUILD_TESTS)
+diff --git a/src/liboslnoise/CMakeLists.txt b/src/liboslnoise/CMakeLists.txt
+index bc4c175c..2df16afe 100644
+--- a/src/liboslnoise/CMakeLists.txt
++++ b/src/liboslnoise/CMakeLists.txt
+@@ -11,7 +11,7 @@ endif ()
+ 
+ TARGET_LINK_LIBRARIES ( oslnoise ${OPENIMAGEIO_LIBRARY} ${ILMBASE_LIBRARIES} ${Boost_LIBRARIES} ${CMAKE_DL_LIBS} )
+ 
+-INSTALL ( TARGETS oslnoise RUNTIME DESTINATION bin LIBRARY DESTINATION lib ARCHIVE DESTINATION lib )
++install_targets (oslnoise)
+ 
+ 
+ if (OSL_BUILD_TESTS)
+diff --git a/src/liboslquery/CMakeLists.txt b/src/liboslquery/CMakeLists.txt
+index 328fa4bb..083d0d5a 100644
+--- a/src/liboslquery/CMakeLists.txt
++++ b/src/liboslquery/CMakeLists.txt
+@@ -14,4 +14,4 @@ endif ()
+ 
+ TARGET_LINK_LIBRARIES ( oslquery ${OPENIMAGEIO_LIBRARY} ${ILMBASE_LIBRARIES} ${Boost_LIBRARIES} )
+ 
+-INSTALL ( TARGETS oslquery RUNTIME DESTINATION bin LIBRARY DESTINATION lib ARCHIVE DESTINATION lib )
++install_targets (oslquery)
+diff --git a/src/osl.imageio/CMakeLists.txt b/src/osl.imageio/CMakeLists.txt
+index af612544..a8065e72 100644
+--- a/src/osl.imageio/CMakeLists.txt
++++ b/src/osl.imageio/CMakeLists.txt
+@@ -1,20 +1,3 @@
+-# Macro to install targets to the appropriate locations.  Use this instead of
+-# the install(TARGETS ...) signature.
+-#
+-# Note: the original is in OIIO's src/cmake/oiio_macros.cmake
+-#
+-# Usage:
+-#
+-#    oiio_install_targets (target1 [target2 ...])
+-#
+-macro (oiio_install_targets)
+-    install (TARGETS ${ARGN}
+-             RUNTIME DESTINATION "${BIN_INSTALL_DIR}" COMPONENT user
+-             LIBRARY DESTINATION "${LIB_INSTALL_DIR}" COMPONENT user
+-             ARCHIVE DESTINATION "${LIB_INSTALL_DIR}" COMPONENT developer)
+-endmacro ()
+-
+-
+ # Macro to add a build target for an IO plugin.
+ #
+ # Note: the original is in OIIO's src/cmake/oiio_macros.cmake
+@@ -37,7 +20,7 @@ macro (add_oiio_plugin)
+     add_library (${_target_name} SHARED ${_plugin_DEFAULT_ARGS})
+     target_link_libraries (${_target_name} ${OPENIMAGEIO_LIBRARY} ${_plugin_LINK_LIBRARIES})
+     set_target_properties (${_target_name} PROPERTIES PREFIX "" FOLDER "Plugins")
+-    oiio_install_targets (${_target_name})
++    install_targets (${_target_name})
+ endmacro ()
+ 
+ 
+diff --git a/src/oslc/CMakeLists.txt b/src/oslc/CMakeLists.txt
+index d57fc595..47b73611 100644
+--- a/src/oslc/CMakeLists.txt
++++ b/src/oslc/CMakeLists.txt
+@@ -9,5 +9,5 @@ endif ()
+ 
+ ADD_EXECUTABLE ( oslc ${oslc_srcs} )
+ TARGET_LINK_LIBRARIES ( oslc oslcomp ${OPENIMAGEIO_LIBRARY} ${Boost_LIBRARIES} ${CMAKE_DL_LIBS})
+-INSTALL ( TARGETS oslc RUNTIME DESTINATION bin )
++INSTALL ( TARGETS oslc RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} )
+ 
+diff --git a/src/oslinfo/CMakeLists.txt b/src/oslinfo/CMakeLists.txt
+index e67b4670..d3519033 100644
+--- a/src/oslinfo/CMakeLists.txt
++++ b/src/oslinfo/CMakeLists.txt
+@@ -1,4 +1,4 @@
+ SET ( oslinfo_srcs oslinfo.cpp )
+ ADD_EXECUTABLE ( oslinfo ${oslinfo_srcs} )
+ TARGET_LINK_LIBRARIES ( oslinfo oslquery ${OPENIMAGEIO_LIBRARY} ${Boost_LIBRARIES} ${CMAKE_DL_LIBS})
+-INSTALL ( TARGETS oslinfo RUNTIME DESTINATION bin )
++INSTALL ( TARGETS oslinfo RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} )
+diff --git a/src/testrender/CMakeLists.txt b/src/testrender/CMakeLists.txt
+index 6643e1ee..03197346 100644
+--- a/src/testrender/CMakeLists.txt
++++ b/src/testrender/CMakeLists.txt
+@@ -2,4 +2,4 @@
+ FILE(GLOB testrender_src *.cpp)
+ ADD_EXECUTABLE ( testrender ${testrender_src} )
+ TARGET_LINK_LIBRARIES ( testrender oslexec oslquery ${OPENIMAGEIO_LIBRARY} ${Boost_LIBRARIES} ${CMAKE_DL_LIBS})
+-INSTALL ( TARGETS testrender RUNTIME DESTINATION bin )
++INSTALL ( TARGETS testrender RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} )
+diff --git a/src/testshade/CMakeLists.txt b/src/testshade/CMakeLists.txt
+index ee2f12ce..638097d4 100644
+--- a/src/testshade/CMakeLists.txt
++++ b/src/testshade/CMakeLists.txt
+@@ -2,7 +2,7 @@
+ SET ( testshade_srcs testshade.cpp simplerend.cpp )
+ ADD_EXECUTABLE ( testshade ${testshade_srcs} testshademain.cpp )
+ TARGET_LINK_LIBRARIES ( testshade oslexec oslquery ${OPENIMAGEIO_LIBRARY} ${OPENEXR_LIBRARIES} ${Boost_LIBRARIES} ${CMAKE_DL_LIBS})
+-INSTALL ( TARGETS testshade RUNTIME DESTINATION bin )
++INSTALL ( TARGETS testshade RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} )
+ 
+ # The 'libtestshade' library
+ if (BUILDSTATIC)
+@@ -14,10 +14,10 @@ endif ()
+ TARGET_LINK_LIBRARIES (libtestshade oslexec oslquery ${OPENIMAGEIO_LIBRARY} ${OPENEXR_LIBRARIES} ${Boost_LIBRARIES} ${CMAKE_DL_LIBS} )
+ SET_TARGET_PROPERTIES (libtestshade PROPERTIES PREFIX "")
+ 
+-INSTALL ( TARGETS libtestshade RUNTIME DESTINATION bin LIBRARY DESTINATION lib ARCHIVE DESTINATION lib)
++install_targets (libtestshade)
+ 
+ # The 'testshade_dso' executable
+ ADD_EXECUTABLE ( testshade_dso testshade_dso.cpp )
+ TARGET_LINK_LIBRARIES ( testshade_dso ${OPENIMAGEIO_LIBRARY} ${OPENEXR_LIBRARIES} ${Boost_LIBRARIES} ${CMAKE_DL_LIBS} )
+-INSTALL ( TARGETS testshade_dso RUNTIME DESTINATION bin )
++INSTALL ( TARGETS testshade_dso RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} )
+ 
+-- 
+2.14.1
+

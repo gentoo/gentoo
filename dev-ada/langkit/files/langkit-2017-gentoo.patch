@@ -1,0 +1,47 @@
+--- langkit-gps-src/langkit/templates/project_file.mako.old	2017-07-11 14:19:12.841221846 +0200
++++ langkit-gps-src/langkit/templates/project_file.mako	2017-07-11 14:12:39.104981170 +0200
+@@ -82,9 +82,11 @@
+             for Default_Switches ("Ada") use
+                Common_Ada_Cargs & ("-g", "-O0", "-gnatwe", "-gnata");
+ 
+-            for Default_Switches ("C") use Common_C_Cargs & ("-g3", "-O0");
++            for Default_Switches ("C") use Common_C_Cargs &
++              ("-g3", "-O0", "-fPIC");
+ 
+-            for Switches ("quex_lexer.c") use Common_C_Cargs & ("-g0", "-O0");
++            for Switches ("quex_lexer.c") use Common_C_Cargs &
++              ("-g0", "-O0", "-fPIC");
+             --  This file is *huge* and the debugging information for it harms
+             --  Valgrind runs. We almost never have to debug this file so
+             --  this is acceptable.
+@@ -111,6 +111,7 @@
+                   --  ... and this prevents OOM on other platforms
+             end case;
+       end case;
++      for Driver ("C") use External ("GCC", "gcc");
+    end Compiler;
+ 
+    package Binder is
+--- langkit-gps-src/langkit/compile_context.py.old	2017-12-13 22:12:38.689143125 +0100
++++ langkit-gps-src/langkit/compile_context.py	2017-12-13 22:13:02.446737994 +0100
+@@ -1171,8 +1171,7 @@
+         # the Quex specification changed from last build.
+         if generate_lexer and self.cache.is_stale('quex_specification',
+                                                   quex_spec):
+-            quex_py_file = path.join(os.environ["QUEX_PATH"], "quex-exe.py")
+-            subprocess.check_call([sys.executable, quex_py_file, "-i",
++            subprocess.check_call(["quex", "-i",
+                                    quex_file,
+                                    "-o", "quex_lexer",
+                                    "--buffer-element-size", "4",
+--- langkit-gps-src/langkit/templates/pkg_analysis_body_ada.mako.old	2017-12-26 20:47:28.461617512 +0100
++++ langkit-gps-src/langkit/templates/pkg_analysis_body_ada.mako	2017-12-26 20:47:58.912060490 +0100
+@@ -2196,7 +2196,7 @@
+    --  printing them.
+ 
+    function Hash (S : Lexical_Env) return Hash_Type is
+-     (Hash_Type (To_Integer (S.all'Address)));
++     (Hash_Type'Mod (To_Integer (S.all'Address)));
+ 
+    package Address_To_Id_Maps is new Ada.Containers.Hashed_Maps
+      (Lexical_Env, Integer, Hash, "=");

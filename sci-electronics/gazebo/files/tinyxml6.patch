@@ -1,0 +1,20 @@
+Index: gazebo-8.2.0/gazebo/util/LogPlay.cc
+===================================================================
+--- gazebo-8.2.0.orig/gazebo/util/LogPlay.cc
++++ gazebo-8.2.0/gazebo/util/LogPlay.cc
+@@ -125,12 +125,9 @@ void LogPlay::Open(const std::string &_l
+   {
+     gzerr << "Unable to load file[" << _logFile << "]. "
+       << "Check the Gazebo server log file for more information.\n";
+-    const char *errorStr1 = this->dataPtr->xmlDoc.GetErrorStr1();
+-    const char *errorStr2 = this->dataPtr->xmlDoc.GetErrorStr2();
+-    if (errorStr1)
+-      gzlog << "Log Error 1:\n" << errorStr1 << std::endl;
+-    if (errorStr2)
+-      gzlog << "Log Error 2:\n" << errorStr2 << std::endl;
++    const char *errorStr = this->dataPtr->xmlDoc.ErrorStr();
++    if (errorStr)
++      gzlog << "Log Error:\n" << errorStr << std::endl;
+     gzthrow("Error parsing log file");
+   }
+ 

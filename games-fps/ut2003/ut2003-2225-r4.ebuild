@@ -11,7 +11,7 @@ SRC_URI="ftp://ftp.infogrames.net/misc/ut2003/ut2003lnx_patch2225.tar.tar"
 
 LICENSE="ut2003"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="dedicated"
 RESTRICT="strip"
 

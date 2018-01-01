@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -22,7 +22,7 @@ RDEPEND="dev-libs/libpcre
 	smtp? ( net-libs/libesmtp )
 	pcap? ( net-libs/libpcap )
 	mysql? ( virtual/mysql )
-	postgres? ( dev-db/postgresql )
+	postgres? ( dev-db/postgresql:* )
 	lognorm? ( dev-libs/liblognorm )
 	libdnet? ( dev-libs/libdnet )
 	snort? ( >=net-analyzer/snortsam-2.50 )

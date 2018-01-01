@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ EAPI=6
 CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-multilib git-r3 python-any-r1
+inherit cmake-multilib git-r3 linux-info python-any-r1
 
 DESCRIPTION="OpenMP runtime library for LLVM/clang compiler"
 HOMEPAGE="https://openmp.llvm.org"
@@ -24,6 +24,7 @@ LICENSE="|| ( UoI-NCSA MIT ) MIT LLVM-Grant"
 SLOT="0"
 KEYWORDS=""
 IUSE="hwloc ompt test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="hwloc? ( sys-apps/hwloc:0=[${MULTILIB_USEDEP}] )"
 # tests:
@@ -41,11 +42,19 @@ DEPEND="${RDEPEND}
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
 
+CONFIG_CHECK="~!SCHED_PDS"
+ERROR_SCHED_PDS="PDS scheduler is not supported as it does not implement sched_yield()"
+
 python_check_deps() {
 	has_version "dev-python/lit[${PYTHON_USEDEP}]"
 }
 
+pkg_pretend() {
+	linux-info_pkg_setup
+}
+
 pkg_setup() {
+	linux-info_pkg_setup
 	use test && python-any-r1_pkg_setup
 }
 
@@ -54,6 +63,7 @@ multilib_src_configure() {
 	local mycmakeargs=(
 		-DLIBOMP_LIBDIR_SUFFIX="${libdir#lib}"
 		-DLIBOMPTARGET_LIBDIR_SUFFIX="${libdir#lib}"
+
 		-DLIBOMP_USE_HWLOC=$(usex hwloc)
 		-DLIBOMP_OMPT_SUPPORT=$(usex ompt)
 		# do not install libgomp.so & libiomp5.so aliases

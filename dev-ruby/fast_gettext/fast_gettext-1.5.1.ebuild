@@ -18,10 +18,10 @@ SRC_URI="https://github.com/grosser/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc64"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64"
 IUSE=""
 
-ruby_add_bdepend "test? ( dev-ruby/activerecord[sqlite] dev-ruby/bundler )"
+ruby_add_bdepend "test? ( dev-ruby/bundler )"
 
 all_ruby_prepare() {
 	rm Gemfile.lock || die
@@ -31,8 +31,16 @@ all_ruby_prepare() {
 
 	# Avoid unneeded dependency on git and development dependencies.
 	sed -e '/git ls-files/ s:^:#:' \
-		-e '/\(wwtd\|bump\)/ s:^:#:' \
+		-e '/\(wwtd\|bump\|sqlite3\|activerecord\|i18n\)/ s:^:#:' \
 		-i fast_gettext.gemspec || die
+
+	# Avoid a test dependency on activerecord since this is now in the
+	# dependency tree for app-admin/puppet and many arches don't have
+	# rails keyworded.
+	sed -i -e '/active_record/ s:^:#:' spec/spec_helper.rb || die
+	rm -f spec/fast_gettext/translation_repository/db_spec.rb || die
+	sed -i -e '/works with DB repository/,/^    end/ s:^:#:' spec/fast_gettext/storage_spec.rb || die
+	sed -i -e '/with i18n loaded/,/^  end/ s:^:#:' spec/fast_gettext/vendor/string_spec.rb || die
 
 	# Don't run a test that requires safe mode which we can't provide
 	# due to insecure directory settings for the portage dir. This spec

@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
 inherit autotools
 
@@ -18,31 +18,30 @@ DEPEND="doc? ( >=app-doc/doxygen-1.3.5 )"
 RDEPEND=""
 
 src_prepare() {
-	sed -e '/^LDFLAGS/d' \
-		-e '/cd $(WEB_DIR) && $(MAKE)/d' -i Makefile.am || die
+	default
+	sed '/cd $(WEB_DIR) && $(MAKE)/d' -i Makefile.am || die
 	eautomake
 }
 
 src_configure() {
-	local myconf
-
-	# Fix wrt #113392
-	use sparc && myconf="${myconf} --disable-use-memalign"
-	econf ${myconf}
+	# Fix bug 113392
+	econf $(use_enable !sparc use-memalign)
 }
 
 src_compile() {
 	emake CFLAGS="${CFLAGS}"
+
 	if use doc; then
-		mkdir -p ../www/doxygen/${PV}
+		mkdir -p ../www/doxygen/${PV} || die
 		emake update-www
+		HTML_DOCS=( ../www/doxygen/${PV}/html/. )
+
+		# remove doxygen working files
+		find ../www/doxygen/${PV}/html \( -iname '*.map' -o -iname '*.md5' \) -delete || die
 	fi
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
-	dodoc AUTHORS TODO TROUBLESHOOTING debian/changelog
-	if use doc ; then
-		dohtml -r ../www/doxygen/${PV}/html/*
-	fi
+	default
+	dodoc TROUBLESHOOTING debian/changelog
 }

@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>vapier@gentoo.org</email>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription>
 Eterm is a color vt102 terminal emulator intended as a replacement for 
 xterm. It is designed with a Freedom of Choice philosophy, leaving as 

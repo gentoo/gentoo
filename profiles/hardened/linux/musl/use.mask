@@ -6,3 +6,12 @@ elibc_uclibc
 elibc_glibc
 
 -hardened
+
+# precompiled headers are not compat with ASLR.
+pch
+
+# prelink is masked for hardened
+prelink
+
+# profile are incompatible when linking with pie
+profile

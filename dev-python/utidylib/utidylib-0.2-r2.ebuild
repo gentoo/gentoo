@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -22,6 +22,7 @@ IUSE="doc test"
 RDEPEND="app-text/htmltidy"
 DEPEND="${RDEPEND}
 	app-arch/unzip
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/epydoc[${PYTHON_USEDEP}] )
 	test? ( dev-python/twisted-core[${PYTHON_USEDEP}] )"
 

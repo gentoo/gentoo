@@ -17,7 +17,7 @@ SRC_URI="https://garglk.googlecode.com/files/${P}-sources.zip"
 
 LICENSE="BSD GPL-2 MIT Hugo Glulxe"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="

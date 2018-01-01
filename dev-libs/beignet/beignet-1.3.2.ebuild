@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 CMAKE_BUILD_TYPE="Release"
 
 inherit python-any-r1 cmake-multilib flag-o-matic toolchain-funcs
@@ -25,12 +25,12 @@ else
 	S=${WORKDIR}/Beignet-${PV}-Source
 fi
 
-COMMON="media-libs/mesa
-	sys-devel/clang:=
-	sys-devel/llvm:=
-	>=x11-libs/libdrm-2.4.70[video_cards_intel]
-	x11-libs/libXext
-	x11-libs/libXfixes"
+COMMON="media-libs/mesa[${MULTILIB_USEDEP}]
+	sys-devel/clang:=[${MULTILIB_USEDEP}]
+	sys-devel/llvm:=[${MULTILIB_USEDEP}]
+	>=x11-libs/libdrm-2.4.70[video_cards_intel,${MULTILIB_USEDEP}]
+	x11-libs/libXext[${MULTILIB_USEDEP}]
+	x11-libs/libXfixes[${MULTILIB_USEDEP}]"
 RDEPEND="${COMMON}
 	app-eselect/eselect-opencl"
 DEPEND="${COMMON}
@@ -40,6 +40,7 @@ DEPEND="${COMMON}
 
 PATCHES=(
 	"${FILESDIR}"/no-debian-multiarch.patch
+	"${FILESDIR}"/${PN}-1.3.2_cmake-llvm-config-multilib.patch
 	"${FILESDIR}"/${PN}-1.3.1-oclicd_no_upstream_icdfile.patch
 	"${FILESDIR}"/${PN}-1.2.0_no-hardcoded-cflags.patch
 	"${FILESDIR}"/llvm-terminfo.patch

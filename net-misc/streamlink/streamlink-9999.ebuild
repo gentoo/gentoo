@@ -22,15 +22,20 @@ RDEPEND="dev-python/pycryptodome[${PYTHON_USEDEP}]
 	virtual/python-futures[${PYTHON_USEDEP}]
 	virtual/python-singledispatch[${PYTHON_USEDEP}]
 	dev-python/backports-shutil_which[$(python_gen_usedep 'python2*')]
-	dev-python/backports-shutil_get_terminal_size[$(python_gen_usedep 'python2*')]
+	$(python_gen_cond_dep 'dev-python/backports-shutil_get_terminal_size[${PYTHON_USEDEP}]' 'python2*')
 	dev-python/pycountry[${PYTHON_USEDEP}]
+	dev-python/websocket-client[${PYTHON_USEDEP}]
 	media-video/rtmpdump
 	virtual/ffmpeg"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}]
-		dev-python/docutils[${PYTHON_USEDEP}] )
-	test? ( dev-python/mock[$(python_gen_usedep 'python2*')]
-		${RDEPEND} )"
+	doc? (
+		dev-python/sphinx[${PYTHON_USEDEP}]
+		dev-python/docutils[${PYTHON_USEDEP}]
+	)
+	test? (
+		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' 'python2*')
+		${RDEPEND}
+	)"
 
 python_configure_all() {
 	# Avoid iso-639, iso3166 dependencies since we use pycountry.

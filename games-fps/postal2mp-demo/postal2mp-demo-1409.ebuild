@@ -12,7 +12,7 @@ SRC_URI="http://treefort.icculus.org/postal2/Postal2STP-FreeMP-linux.tar.bz2
 
 LICENSE="postal2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 RESTRICT="mirror strip"
 

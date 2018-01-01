@@ -10,7 +10,7 @@ SRC_URI="http://fms.komkon.org/MG/MG${PV/\./}-Linux-80x86-bin.tar.Z"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 IUSE=""
 RESTRICT="mirror bindist strip"
 

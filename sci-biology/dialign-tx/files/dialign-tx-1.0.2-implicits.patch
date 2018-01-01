@@ -1,5 +1,5 @@
---- source/museq.c
-+++ source/museq.c
+--- a/source/museq.c
++++ b/source/museq.c
 @@ -38,6 +38,7 @@
  //extern void calc_weight(struct diag* dg, struct scr_matrix* smatrix, 
  //		 struct prob_dist *pdist);

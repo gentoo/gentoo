@@ -1,5 +1,7 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=6
 
 DESCRIPTION="build a Linux distribution on a single floppy"
 HOMEPAGE="http://byld.sourceforge.net/"
@@ -16,8 +18,9 @@ RDEPEND="sys-apps/util-linux"
 src_install() {
 	dodoc BYLDING CREDITS README INSTALL FHS PAKING
 	rm MAKEDEV.8 BYLDING CREDITS README INSTALL FHS LICENSE PAKING
-	dodir /usr/lib/${PN}
-	cp -rf * ${D}/usr/lib/${PN}/
+
+	insinto /usr/lib/${PN}
+	doins -r .
 }
 
 pkg_postinst() {

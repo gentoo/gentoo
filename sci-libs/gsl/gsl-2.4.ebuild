@@ -7,7 +7,8 @@ inherit autotools eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="The GNU Scientific Library"
 HOMEPAGE="https://www.gnu.org/software/gsl/"
-SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
+SRC_URI="mirror://gnu/${PN}/${P}.tar.gz
+	https://dev.gentoo.org/~mgorny/dist/${PN}-2.3-cblas.patch.bz2"
 
 LICENSE="GPL-3"
 SLOT="0/23"
@@ -19,7 +20,7 @@ DEPEND="${RDEPEND}
 	app-eselect/eselect-cblas
 	virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}"/${PN}-2.3-cblas.patch )
+PATCHES=( "${WORKDIR}"/${PN}-2.3-cblas.patch )
 
 pkg_pretend() {
 	# prevent to use external cblas from a previously installed gsl

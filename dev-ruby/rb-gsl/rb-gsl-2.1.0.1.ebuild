@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby21 ruby22 ruby23"
+USE_RUBY="ruby22 ruby23"
 
 RUBY_FAKEGEM_NAME="gsl"
 inherit ruby-fakegem multilib
@@ -36,6 +36,7 @@ all_ruby_prepare() {
 
 each_ruby_configure() {
 	NARRAY=1 ${RUBY} -Cext/gsl_native extconf.rb || die
+	sed -i -e 's:-Wl,--no-undefined::' ext/gsl_native/Makefile || die
 }
 
 each_ruby_compile() {

@@ -5,7 +5,7 @@ inherit eutils toolchain-funcs versionator
 
 MY_PV=$(delete_version_separator _)
 
-DESCRIPTION="Jam is a powerful alternative to make.  FTJam is a 100% compatible enhanced Jam implementation"
+DESCRIPTION="FTJam is a 100% compatible, enhanced implementation of the make alternative Jam"
 HOMEPAGE="http://freetype.sourceforge.net/jam/index.html"
 SRC_URI="http://david.freetype.org/jam/ftjam-${MY_PV}.tar.bz2"
 

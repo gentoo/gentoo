@@ -1,0 +1,18 @@
+ source/initial.f | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/source/initial.f b/source/initial.f
+index ff6ed54..9769a81 100644
+--- a/initial.f
++++ b/initial.f
+@@ -85,8 +85,8 @@ c
+ c     Intel compiler extensions to OpenMP standard, 268435456 bytes is
+ c     2**28 bytes, or 256 MB; comment these lines for other compilers
+ c
+-c!$   call kmp_set_stacksize_s (268435456)
+-c!$   call kmp_set_blocktime (0)
++!$   call kmp_set_stacksize_s (268435456)
++!$   call kmp_set_blocktime (0)
+ c
+ c     values of machine precision constants
+ c

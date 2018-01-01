@@ -33,10 +33,10 @@ PATCH_VER="3"
 SRC_URI+=" https://dev.gentoo.org/~dilfridge/distfiles/${P}-patches-${PATCH_VER}.tar.bz2"
 SRC_URI+=" multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-${GCC_BOOTSTRAP_VER}-multilib-bootstrap.tar.bz2 )"
 
-IUSE="audit caps compile-locales debug gd hardened multilib nscd selinux systemtap profile suid vanilla crosscompile_opts_headers-only"
+IUSE="audit caps compile-locales debug doc gd hardened multilib nscd selinux systemtap profile suid vanilla crosscompile_opts_headers-only"
 
-# Min kernel version nptl requires
-: ${NPTL_KERN_VER:="2.6.32"}
+# Min kernel version glibc requires
+: ${NPTL_KERN_VER:="3.2.0"}
 
 # Here's how the cross-compile logic breaks down ...
 #  CTARGET - machine that will target the binaries
@@ -85,6 +85,7 @@ DEPEND="${COMMON_DEPEND}
 	>=app-misc/pax-utils-0.1.10
 	!<sys-apps/sandbox-1.6
 	!<sys-apps/portage-2.1.2
+	doc? ( sys-apps/texinfo )
 "
 RDEPEND="${COMMON_DEPEND}
 	!sys-kernel/ps3-sources
@@ -196,6 +197,21 @@ pkg_pretend() {
 			die "old __guard detected"
 		fi
 	fi
+
+	# Check for sanity of /etc/nsswitch.conf
+	if [[ -e ${EROOT}/etc/nsswitch.conf ]] ; then
+		local entry
+		for entry in passwd group shadow; do
+			if ! egrep -q "^[ \t]*${entry}:.*files" "${EROOT}"/etc/nsswitch.conf; then
+				eerror "Your ${EROOT}/etc/nsswitch.conf is out of date."
+				eerror "Please make sure you have 'files' entries for"
+				eerror "'passwd:', 'group:' and 'shadow:' databases."
+				eerror "For more details see:"
+				eerror "  https://wiki.gentoo.org/wiki/Project:Toolchain/nsswitch.conf_in_glibc-2.26"
+				die "nsswitch.conf has no 'files' provider in '${entry}'."
+			fi
+		done
+	fi
 }
 # todo: shouldn't most of these checks be called also in src_configure again?
 # (since consistency is not guaranteed between pkg_ and src_)
@@ -226,9 +242,9 @@ src_unpack() {
 
 src_prepare() {
 	if ! use vanilla ; then
-		elog "Applying Gentoo Glibc Patchset ${RELEASE_VER}-${PATCH_VER} ..."
+		elog "Applying Gentoo Glibc Patchset ${RELEASE_VER}-${PATCH_VER}"
 		eapply "${WORKDIR}"/patches
-		elog "Done."
+		einfo "Done."
 	fi
 
 	if just_headers ; then
@@ -283,8 +299,14 @@ glibc_do_configure() {
 
 	einfo "Configuring glibc for nptl"
 
+	if use doc ; then
+		export MAKEINFO=makeinfo
+	else
+		export MAKEINFO=/dev/null
+	fi
+
 	local v
-	for v in ABI CBUILD CHOST CTARGET CBUILD_OPT CTARGET_OPT CC CXX LD {AS,C,CPP,CXX,LD}FLAGS ; do
+	for v in ABI CBUILD CHOST CTARGET CBUILD_OPT CTARGET_OPT CC CXX LD {AS,C,CPP,CXX,LD}FLAGS MAKEINFO ; do
 		einfo " $(printf '%15s' ${v}:)   ${!v}"
 	done
 
@@ -301,6 +323,11 @@ glibc_do_configure() {
 	local myconf=()
 
 	case ${CTARGET} in
+		mips*)
+			# dlopen() detects stack smash on mips n32 ABI.
+			# Cause is unknown: https://bugs.gentoo.org/640130
+			myconf+=( --enable-stack-protector=no )
+			;;
 		powerpc-*)
 			# Currently gcc on powerpc32 generates invalid code for
 			# __builtin_return_address(0) calls. Normally programs
@@ -314,6 +341,17 @@ glibc_do_configure() {
 			;;
 	esac
 	myconf+=( --enable-stackguard-randomization )
+
+	# Keep a whitelist of targets supporing IFUNC. glibc's ./configure
+	# is not robust enough to detect proper support:
+	#    https://bugs.gentoo.org/641216
+	#    https://sourceware.org/PR22634#c0
+	case $(tc-arch ${CTARGET}) in
+		# Keep whitelist of targets where autodetection mostly works.
+		amd64|x86|sparc|ppc|ppc64|arm|arm64|s390) ;;
+		# Blacklist everywhere else
+		*) myconf+=( libc_cv_ld_gnu_indirect_function=no ) ;;
+	esac
 
 	[[ $(tc-is-softfloat) == "yes" ]] && myconf+=( --without-fp )
 
@@ -576,15 +614,18 @@ glibc_do_src_install() {
 	find "${D}" -name "libnsl.a" -delete
 	find "${D}" -name "libnsl.so" -delete
 
-	# Normally real_pv is ${PV}. Live ebuilds are exception, there we need
+	# Normally upstream_pv is ${PV}. Live ebuilds are exception, there we need
 	# to infer upstream version:
 	# '#define VERSION "2.26.90"' -> '2.26.90'
 	local upstream_pv=$(sed -n -r 's/#define VERSION "(.*)"/\1/p' "${S}"/version.h)
 
-	# Newer versions get fancy with libm linkage to include vectorized support.
-	# While we don't really need a ldscript here, portage QA checks get upset.
 	if [[ -e ${ED}$(alt_usrlibdir)/libm-${upstream_pv}.a ]] ; then
-		dosym ../../$(get_libdir)/libm-${upstream_pv}.so $(alt_usrlibdir)/libm-${upstream_pv}.so
+		# Move versioned .a file out of libdir to evade portage QA checks
+		# instead of using gen_usr_ldscript(). We fix ldscript as:
+		# "GROUP ( /usr/lib64/libm-<pv>.a ..." -> "GROUP ( /usr/lib64/glibc-<pv>/libm-<pv>.a ..."
+		sed -i "s@\(libm-${upstream_pv}.a\)@${P}/\1@" "${ED}"$(alt_usrlibdir)/libm.a || die
+		dodir $(alt_usrlibdir)/${P}
+		mv "${ED}"$(alt_usrlibdir)/libm-${upstream_pv}.a "${ED}"$(alt_usrlibdir)/${P}/libm-${upstream_pv}.a || die
 	fi
 
 	# We'll take care of the cache ourselves
@@ -769,7 +810,7 @@ pkg_preinst() {
 	# Default /etc/hosts.conf:multi to on for systems with small dbs.
 	if [[ $(wc -l < "${EROOT}"/etc/hosts) -lt 1000 ]] ; then
 		sed -i '/^multi off/s:off:on:' "${ED}"/etc/host.conf
-		elog "Defaulting /etc/host.conf:multi to on"
+		einfo "Defaulting /etc/host.conf:multi to on"
 	fi
 
 	[[ ${ROOT} != "/" ]] && return 0
@@ -792,5 +833,20 @@ pkg_postinst() {
 		/sbin/telinit U 2>/dev/null
 
 		use compile-locales || run_locale_gen "${EROOT}"
+	fi
+
+	# Check for sanity of /etc/nsswitch.conf, take 2
+	if [[ -e ${EROOT}/etc/nsswitch.conf ]] && ! has_version sys-auth/libnss-nis ; then
+		local entry
+		for entry in passwd group shadow; do
+			if egrep -q "^[ \t]*${entry}:.*nis" "${EROOT}"/etc/nsswitch.conf; then
+				ewarn ""
+				ewarn "Your ${EROOT}/etc/nsswitch.conf uses NIS. Support for that has been"
+				ewarn "removed from glibc and is now provided by the package"
+				ewarn "  sys-auth/libnss-nis"
+				ewarn "Install it now to keep your NIS setup working."
+				ewarn ""
+			fi
+		done
 	fi
 }

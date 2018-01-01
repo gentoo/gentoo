@@ -1,0 +1,27 @@
+From 96eb328e90fa272a66b2feb0bfb57c73154dbd9c Mon Sep 17 00:00:00 2001
+From: Matija Skala <mskala@gmx.com>
+Date: Wed, 15 Mar 2017 13:21:10 +0100
+Subject: [PATCH] fix includes
+
+linux/sockios.h is needed for the SIOCGSTAMPNS macro
+
+xlocale.h is included indirectly in glibc and doesn't even exist in
+other libcs
+---
+ src/basic/parse-util.c | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/src/basic/parse-util.c b/src/basic/parse-util.c
+index cfdb29aba..c38e14d96 100644
+--- a/src/basic/parse-util.c
++++ b/src/basic/parse-util.c
+@@ -23,9 +23,6 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+-#if defined(__GLIBC__)
+-#  include <xlocale.h>
+-#endif // defined(__GLIBC__)
+ 
+ #include "alloc-util.h"
+ //#include "extract-word.h"

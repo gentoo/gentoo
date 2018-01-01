@@ -14,7 +14,7 @@ SRC_URI="http://ut2004.ut-files.com/BonusPacks/${MY_P}
 	http://unrealmassdestruction.com/downloads/ut2k4/essentials/UT2004-ONSBonusMapPack.zip"
 
 LICENSE="ut2003"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 src_unpack() {

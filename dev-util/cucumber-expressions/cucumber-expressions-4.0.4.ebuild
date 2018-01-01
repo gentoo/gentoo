@@ -14,5 +14,5 @@ DESCRIPTION="a simpler alternative to Regular Expressions"
 HOMEPAGE="https://github.com/cucumber/cucumber-expressions-ruby#readme"
 LICENSE="MIT"
 
-KEYWORDS="~amd64 ~ia64 ~ppc"
+KEYWORDS="~amd64 ~arm64 ~ia64 ~ppc"
 SLOT="4.0"

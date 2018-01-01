@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -15,7 +15,7 @@ fi
 
 inherit flag-o-matic linux-info linux-mod autotools-utils
 
-DESCRIPTION="The Solaris Porting Layer is a Linux kernel module which provides many of the Solaris kernel APIs"
+DESCRIPTION="The Solaris Porting Layer provides many of the Solaris kernel APIs"
 HOMEPAGE="http://zfsonlinux.org/"
 
 LICENSE="GPL-2"

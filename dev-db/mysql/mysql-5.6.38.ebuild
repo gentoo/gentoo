@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-MY_EXTRAS_VER="20171018-1948Z"
+MY_EXTRAS_VER="20171121-1518Z"
 MY_PV="${PV//_alpha_pre/-m}"
 MY_PV="${MY_PV//_/-}"
 HAS_TOOLS_PATCH="1"
@@ -16,7 +16,7 @@ inherit mysql-multilib-r1
 IUSE="$IUSE numa"
 
 # REMEMBER: also update eclass/mysql*.eclass before committing!
-KEYWORDS="alpha amd64 ~arm ~hppa ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~hppa ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 
 DEPEND="|| ( >=sys-devel/gcc-3.4.6 >=sys-devel/gcc-apple-4.0 ) numa? ( sys-process/numactl )"
 RDEPEND="${RDEPEND}"
@@ -32,6 +32,7 @@ PATCHES=(
 	"${MY_PATCH_DIR}"/20009_all_mysql_myodbc_symbol_fix-5.6.patch
 	"${MY_PATCH_DIR}"/20018_all_mysql-5.6.25-without-clientlibs-tools.patch
 	"${MY_PATCH_DIR}"/20027_all_mysql-5.5-perl5.26-includes.patch
+	"${MY_PATCH_DIR}"/20028_all_mysql-5.6-gcc7.patch
 )
 
 # Please do not add a naive src_unpack to this ebuild

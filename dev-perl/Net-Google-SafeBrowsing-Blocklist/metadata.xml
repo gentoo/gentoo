@@ -11,5 +11,6 @@
   </maintainer>
   <upstream>
     <remote-id type="cpan">Net-Google-SafeBrowsing-Blocklist</remote-id>
+    <remote-id type="cpan-module">Net::Google::SafeBrowsing::Blocklist</remote-id>
   </upstream>
 </pkgmetadata>

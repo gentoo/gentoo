@@ -39,9 +39,12 @@ src_prepare() {
 		EPATCH_EXCLUDE+=" 10_all_default-fortify-source.patch"
 	fi
 
+	# Bug 638056
+	epatch "${FILESDIR}/${P}-bootstrap.patch"
+
 	toolchain_src_prepare
 
 	use vanilla && return 0
-	#Use -r1 for newer piepatchet that use DRIVER_SELF_SPECS for the hardened specs.
+	# Use -r1 for newer piepatchet that use DRIVER_SELF_SPECS for the hardened specs.
 	[[ ${CHOST} == ${CTARGET} ]] && epatch "${FILESDIR}"/gcc-spec-env-r1.patch
 }

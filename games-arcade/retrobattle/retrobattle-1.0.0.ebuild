@@ -11,7 +11,7 @@ SRC_URI="http://remar.se/andreas/retrobattle/files/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 # test is incomplete
 RESTRICT="test"

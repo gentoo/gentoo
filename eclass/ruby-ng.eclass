@@ -13,12 +13,7 @@
 # The Ruby eclass is designed to allow an easier installation of Ruby packages
 # and their incorporation into the Gentoo Linux system.
 #
-# Currently available targets are:
-#  * ruby21 - Ruby (MRI) 2.1.x
-#  * ruby22 - Ruby (MRI) 2.2.x
-#  * ruby23 - Ruby (MRI) 2.3.x
-#  * ruby24 - Ruby (MRI) 2.4.x
-#  * rbx    - Rubinius
+# Currently available targets are listed in ruby-utils.eclass
 #
 # This eclass does not define the implementation of the configure,
 # compile, test, or install phases. Instead, the default phases are
@@ -43,6 +38,7 @@
 # A String or Array of filenames of patches to apply to all implementations.
 
 # @ECLASS-VARIABLE: RUBY_OPTIONAL
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Set the value to "yes" to make the dependency on a Ruby interpreter
 # optional and then ruby_implementations_depend() to help populate

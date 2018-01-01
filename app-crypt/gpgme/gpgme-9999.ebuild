@@ -18,7 +18,7 @@ SLOT="1/11" # subslot = soname major version
 KEYWORDS=""
 IUSE="common-lisp static-libs cxx python qt5"
 
-COMMON_DEPEND="app-crypt/gnupg
+COMMON_DEPEND=">=app-crypt/gnupg-2
 	>=dev-libs/libassuan-2.0.2:=
 	>=dev-libs/libgpg-error-1.17:=
 	python? ( ${PYTHON_DEPS} )

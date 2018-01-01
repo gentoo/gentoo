@@ -25,10 +25,14 @@ RDEPEND="virtual/libusb:1
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
+# Fix bug #630932; >1.4.0 should render this obsolete
+PATCHES=( "${FILESDIR}/${PN}-1.4.0-add-LIB_INSTALL_DIR-flag-630932.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		-DSTLINK_UDEV_RULES_DIR="$(get_udevdir)"/rules.d
 		-DSTLINK_MODPROBED_DIR="${EPREFIX}/etc/modprobe.d"
+		-DLIB_INSTALL_DIR:PATH="$(get_libdir)"
 	)
 
 	cmake-utils_src_configure

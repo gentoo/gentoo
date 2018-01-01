@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=2
@@ -18,7 +18,10 @@ RDEPEND=""
 # This is a Linux specific app!
 DEPEND="${RDEPEND}
 		sys-kernel/linux-headers
-		doc? ( virtual/latex-base app-text/dvipdfm )
+		doc? (
+			virtual/latex-base
+			|| ( >=app-text/texlive-core-2014 app-text/dvipdfm )
+		)
 		dev-libs/libaio"
 S="${WORKDIR}/${MY_P}"
 

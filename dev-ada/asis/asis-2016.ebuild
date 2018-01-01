@@ -14,7 +14,7 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/57399029c7a447658e0aff71
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="gnat_2016 gnat_2017"
+IUSE="+gnat_2016 gnat_2017"
 
 DEPEND="dev-ada/gnat_util[gnat_2016=,gnat_2017=]
 	dev-ada/gnatcoll[gnat_2016=,gnat_2017=,projects,shared]

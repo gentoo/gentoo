@@ -17,4 +17,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-RDEPEND=">=dev-python/docutils-0.10[${PYTHON_USEDEP}]"
+COMMON_DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+RDEPEND=">=dev-python/docutils-0.10[${PYTHON_USEDEP}]
+	${COMMON_DEPEND}"
+DEPEND="${COMMON_DEPEND}"

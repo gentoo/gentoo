@@ -10,7 +10,7 @@ OFED_SUFFIX="1.gcbf2a35"
 
 inherit eutils openib
 
-DESCRIPTION="A library allowing programs to use InfiniBand 'verbs' for direct access to IB hardware"
+DESCRIPTION="A library to use InfiniBand 'verbs' for direct access to IB hardware"
 KEYWORDS="amd64 x86 ~amd64-linux"
 IUSE=""
 

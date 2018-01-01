@@ -23,7 +23,7 @@ else
 	S="${WORKDIR}/${MY_P}"
 fi
 
-DESCRIPTION="Weboob (Web Outside of Browsers) provides several applications to interact with a lot of websites"
+DESCRIPTION="Consume lots of websites without a browser (Web Outside Of Browsers)"
 HOMEPAGE="http://weboob.org/"
 
 LICENSE="AGPL-3"

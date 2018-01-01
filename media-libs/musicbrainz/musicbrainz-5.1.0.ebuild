@@ -6,7 +6,7 @@ EAPI=6
 inherit cmake-utils
 
 DESCRIPTION="Client Library for accessing the latest XML based MusicBrainz web service"
-HOMEPAGE="http://musicbrainz.org/doc/libmusicbrainz"
+HOMEPAGE="https://musicbrainz.org/doc/libmusicbrainz"
 SRC_URI="https://github.com/metabrainz/lib${PN}/releases/download/release-${PV}/lib${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
@@ -23,6 +23,11 @@ DEPEND="${RDEPEND}
 "
 
 S="${WORKDIR}/lib${P}"
+
+src_prepare() {
+	use test || cmake_comment_add_subdirectory tests
+	cmake-utils_src_prepare
+}
 
 src_install() {
 	cmake-utils_src_install

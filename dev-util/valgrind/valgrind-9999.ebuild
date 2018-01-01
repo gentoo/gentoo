@@ -31,9 +31,6 @@ src_prepare() {
 	# Respect CFLAGS, LDFLAGS
 	eapply "${FILESDIR}"/${PN}-3.7.0-respect-flags.patch
 
-	# Changing Makefile.all.am to disable SSP
-	eapply "${FILESDIR}"/${PN}-3.7.0-fno-stack-protector.patch
-
 	# Allow users to test their own patches
 	eapply_user
 
@@ -51,10 +48,15 @@ src_configure() {
 	#                       while compiling insn_sse.c in none/tests/x86
 	# -fstack-protector     more undefined references to __guard and __stack_smash_handler
 	#                       because valgrind doesn't link to glibc (bug #114347)
+	# -fstack-protector-all    Fails same way as -fstack-protector/-fstack-protector-strong.
+	#                          Note: -fstack-protector-explicit is a no-op for Valgrind, no need to strip it
+	# -fstack-protector-strong See -fstack-protector (bug #620402)
 	# -m64 -mx32			for multilib-portage, bug #398825
 	# -ggdb3                segmentation fault on startup
 	filter-flags -fomit-frame-pointer
 	filter-flags -fstack-protector
+	filter-flags -fstack-protector-all
+	filter-flags -fstack-protector-strong
 	filter-flags -m64 -mx32
 	replace-flags -ggdb3 -ggdb2
 

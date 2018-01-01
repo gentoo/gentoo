@@ -12,11 +12,9 @@ ast - VIDEO_CARDS setting to build driver for ASpeedTech video cards
 chips - VIDEO_CARDS setting to build driver for chips video cards
 cirrus - VIDEO_CARDS setting to build driver for cirrus video cards
 dummy - VIDEO_CARDS setting to build driver for dummy video cards
-epson - VIDEO_CARDS setting to build driver for epson video cards
 exynos - VIDEO_CARDS setting to build driver for Samsung Exynos video cards
 freedreno - VIDEO_CARDS setting to build reverse-engineered driver for Qualcomm Adreno cards
 fbdev - VIDEO_CARDS setting to build driver for fbdev video cards
-fglrx - VIDEO_CARDS setting to build driver for fglrx video cards
 geode - VIDEO_CARDS setting to build driver for AMD Geode GX and LX video cards
 glint - VIDEO_CARDS setting to build driver for glint video cards
 i128 - VIDEO_CARDS setting to build driver for Number 9 I128 video cards
@@ -27,11 +25,9 @@ imx - VIDEO_CARDS setting to build driver for Freescale i.MX video cards
 intel - VIDEO_CARDS setting to build driver for Intel video cards
 mach64 - VIDEO_CARDS setting to build driver for mach64 video cards
 mga - VIDEO_CARDS setting to build driver for mga video cards
-modesetting - VIDEO_CARDS setting to build driver for unaccelerated modesetting
 neomagic - VIDEO_CARDS setting to build driver for neomagic video cards
 newport - VIDEO_CARDS setting to build driver for newport video cards
 nouveau - VIDEO_CARDS setting to build reverse-engineered driver for nvidia cards
-nsc - VIDEO_CARDS setting to build driver for nsc video cards
 nvidia - VIDEO_CARDS setting to build driver for nvidia video cards
 nv - VIDEO_CARDS setting to build driver for nv video cards
 omap - VIDEO_CARDS setting to build DRM driver for TI OMAP video cards

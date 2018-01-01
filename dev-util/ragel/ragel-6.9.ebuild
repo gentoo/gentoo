@@ -20,6 +20,7 @@ RDEPEND=""
 # We need to get the txl language in Portage to have the tests :(
 RESTRICT=test
 
+PATCHES=( "${FILESDIR}"/${P}-gcc6.patch )
 DOCS=( ChangeLog CREDITS README TODO )
 
 src_test() {

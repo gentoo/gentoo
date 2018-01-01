@@ -11,8 +11,8 @@
 		housekeeping thread.
 	</longdescription>
 	<longdescription lang="de">
-                Das AutoSort-Plugin erweitert den VDR um die Fähigkeit, die
-                Kanalliste automatisch nach benutzerspezifischen Kriterien
-                zu sortieren.
+		Das AutoSort-Plugin erweitert den VDR um die Fähigkeit, die
+		Kanalliste automatisch nach benutzerspezifischen Kriterien
+		zu sortieren.
 	</longdescription>
 </pkgmetadata>

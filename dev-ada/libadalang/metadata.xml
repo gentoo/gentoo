@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tupone@gentoo.org</email>
+		<name>Tupone Alfredo</name>
+	</maintainer>
+	<use>
+		<flag name="gnat_2016">Compile with dev-lang/gnat-gpl-2016</flag>
+		<flag name="gnat_2017">Compile with dev-lang/gnat-gpl-2017</flag>
+	</use>
+	<longdescription lang="en">
+		Libadalang is a project to build a high performance semantic engine for
+		the Ada programming language. It is meant to provide a basis to write
+		Ada tooling, including tools working on potentially changing and
+		incorrect code, such as IDEs.
+	</longdescription>
+</pkgmetadata>

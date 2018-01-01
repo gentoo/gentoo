@@ -19,7 +19,7 @@ LICENSE="ZLIB
 	OAL-1.0.1
 	public-domain"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 src_install() {

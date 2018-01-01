@@ -15,7 +15,7 @@ SRC_URI="l10n_cs? ( ${BASE_URL}-cz-${PV}.zip )
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="l10n_cs l10n_de l10n_en l10n_pl"
 
 RDEPEND=">=games-engines/scummvm-1.1"

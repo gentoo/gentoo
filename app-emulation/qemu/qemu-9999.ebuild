@@ -78,7 +78,6 @@ ALL_DEPEND="
 # Dependencies required for qemu tools (qemu-nbd, qemu-img, qemu-io, ...)
 # softmmu targets (qemu-system-*).
 SOFTMMU_TOOLS_DEPEND="
-	>=x11-libs/pixman-0.28.0[static-libs(+)]
 	accessibility? (
 		app-accessibility/brltty[api]
 		app-accessibility/brltty[static-libs(+)]
@@ -89,7 +88,7 @@ SOFTMMU_TOOLS_DEPEND="
 	bzip2? ( app-arch/bzip2[static-libs(+)] )
 	caps? ( sys-libs/libcap-ng[static-libs(+)] )
 	curl? ( >=net-misc/curl-7.15.4[static-libs(+)] )
-	fdt? ( >=sys-apps/dtc-1.4.0[static-libs(+)] )
+	fdt? ( >=sys-apps/dtc-1.4.2[static-libs(+)] )
 	glusterfs? ( >=sys-cluster/glusterfs-3.4.0[static-libs(+)] )
 	gnutls? (
 		dev-libs/nettle:=[static-libs(+)]
@@ -164,6 +163,14 @@ X86_FIRMWARE_DEPEND="
 		>=sys-firmware/seabios-1.10.2[seavgabios]
 		sys-firmware/sgabios
 	)"
+PPC64_FIRMWARE_DEPEND="
+	pin-upstream-blobs? (
+		~sys-firmware/seabios-1.10.2[binary,seavgabios]
+	)
+	!pin-upstream-blobs? (
+		>=sys-firmware/seabios-1.10.2[seavgabios]
+	)
+"
 
 CDEPEND="
 	!static? (
@@ -171,7 +178,9 @@ CDEPEND="
 		${SOFTMMU_TOOLS_DEPEND//\[static-libs(+)]}
 	)
 	qemu_softmmu_targets_i386? ( ${X86_FIRMWARE_DEPEND} )
-	qemu_softmmu_targets_x86_64? ( ${X86_FIRMWARE_DEPEND} )"
+	qemu_softmmu_targets_x86_64? ( ${X86_FIRMWARE_DEPEND} )
+	qemu_softmmu_targets_ppc64? ( ${PPC64_FIRMWARE_DEPEND} )
+"
 DEPEND="${CDEPEND}
 	dev-lang/perl
 	=dev-lang/python-2*
@@ -274,7 +283,11 @@ pkg_pretend() {
 			ERROR_VHOST_NET+=" support"
 
 			if use amd64 || use x86 || use amd64-linux || use x86-linux; then
-				CONFIG_CHECK+=" ~KVM_AMD ~KVM_INTEL"
+				if grep -q AuthenticAMD /proc/cpuinfo; then
+					CONFIG_CHECK+=" ~KVM_AMD"
+				elif grep -q GenuineIntel /proc/cpuinfo; then
+					CONFIG_CHECK+=" ~KVM_INTEL"
+				fi
 			fi
 
 			use python && CONFIG_CHECK+=" ~DEBUG_FS"
@@ -360,6 +373,9 @@ src_prepare() {
 
 	# Run after we've applied all patches.
 	handle_locales
+
+	# Remove bundled copy of libfdt
+	rm -r dtc || die
 }
 
 ##
@@ -479,7 +495,6 @@ qemu_src_configure() {
 			--disable-linux-user
 			--enable-system
 			--disable-tools
-			--with-system-pixman
 		)
 		local static_flag="static"
 		;;
@@ -677,7 +692,6 @@ src_install() {
 	cd "${S}"
 	dodoc Changelog MAINTAINERS docs/specs/pci-ids.txt
 	newdoc pc-bios/README README.pc-bios
-	dodoc docs/qmp-*.txt
 
 	if [[ -n ${softmmu_targets} ]]; then
 		# Remove SeaBIOS since we're using the SeaBIOS packaged one
@@ -695,7 +709,8 @@ src_install() {
 		rm "${ED}/usr/share/qemu/vgabios-stdvga.bin"
 		rm "${ED}/usr/share/qemu/vgabios-virtio.bin"
 		rm "${ED}/usr/share/qemu/vgabios-vmware.bin"
-		if use qemu_softmmu_targets_x86_64 || use qemu_softmmu_targets_i386; then
+		# PPC64 loads vgabios-stdvga
+		if use qemu_softmmu_targets_x86_64 || use qemu_softmmu_targets_i386 || use qemu_softmmu_targets_ppc64; then
 			dosym ../seavgabios/vgabios-isavga.bin /usr/share/qemu/vgabios.bin
 			dosym ../seavgabios/vgabios-cirrus.bin /usr/share/qemu/vgabios-cirrus.bin
 			dosym ../seavgabios/vgabios-qxl.bin /usr/share/qemu/vgabios-qxl.bin
@@ -764,6 +779,12 @@ pkg_postinst() {
 pkg_info() {
 	echo "Using:"
 	echo "  $(best_version app-emulation/spice-protocol)"
+	echo "  $(best_version sys-firmware/edk2-ovmf)"
+	if has_version 'sys-firmware/edk2-ovmf[binary]'; then
+		echo "    USE=binary"
+	else
+		echo "    USE=''"
+	fi
 	echo "  $(best_version sys-firmware/ipxe)"
 	echo "  $(best_version sys-firmware/seabios)"
 	if has_version 'sys-firmware/seabios[binary]'; then
@@ -771,10 +792,5 @@ pkg_info() {
 	else
 		echo "    USE=''"
 	fi
-	echo "  $(best_version sys-firmware/edk2-ovmf)"
-	if has_version 'sys-firmware/edk2-ovmf[binary]'; then
-		echo "    USE=binary"
-	else
-		echo "    USE=''"
-	fi
+	echo "  $(best_version sys-firmware/sgabios)"
 }

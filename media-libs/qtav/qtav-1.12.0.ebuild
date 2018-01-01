@@ -14,7 +14,7 @@ https://dev.gentoo.org/~johu/distfiles/${P}-capi.h-${CAPI_HASH}.xz"
 
 LICENSE="GPL-3+ LGPL-2.1+"
 SLOT="0/1"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="gui libav opengl portaudio pulseaudio vaapi"
 REQUIRED_USE="gui? ( opengl )"
 

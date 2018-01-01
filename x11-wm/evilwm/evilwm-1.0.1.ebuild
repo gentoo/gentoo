@@ -5,8 +5,8 @@ EAPI=3
 inherit toolchain-funcs multilib
 
 DESCRIPTION="A minimalist, no frills window manager for X"
+HOMEPAGE="http://www.6809.org.uk/evilwm/"
 SRC_URI="http://www.6809.org.uk/evilwm/${P}.tar.gz"
-HOMEPAGE="http://evilwm.sourceforge.net"
 
 LICENSE="MIT 9wm"
 SLOT="0"

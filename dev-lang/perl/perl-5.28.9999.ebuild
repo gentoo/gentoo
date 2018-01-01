@@ -6,17 +6,17 @@ EAPI=6
 inherit eutils alternatives flag-o-matic toolchain-funcs multilib multiprocessing
 
 PATCH_VER=1
-CROSS_VER=1.1.7
-PATCH_BASE="perl-5.27.1-patches-${PATCH_VER}"
+CROSS_VER=1.1.8
+PATCH_BASE="perl-5.27.6-patches-${PATCH_VER}"
 
-DIST_AUTHOR=SHAY
+DIST_AUTHOR=BINGOS
 
 # Greatest first, don't include yourself
 # Devel point-releases are not ABI-intercompatible, but stable point releases are
 # BIN_OLDVERSEN is contains only C-ABI-intercompatible versions
 PERL_BIN_OLDVERSEN=""
 if [[ "${PV##*.}" == "9999" ]]; then
-	DIST_VERSION=5.27.5
+	DIST_VERSION=5.27.7
 else
 	DIST_VERSION="${PV/_rc/-RC}"
 fi
@@ -76,14 +76,14 @@ S="${WORKDIR}/${MY_P}"
 
 dual_scripts() {
 	src_remove_dual      perl-core/Archive-Tar        2.260.0       ptar ptardiff ptargrep
-	src_remove_dual      perl-core/CPAN               2.180.0       cpan
-	src_remove_dual      perl-core/Digest-SHA         5.960.0       shasum
+	src_remove_dual      perl-core/CPAN               2.200.0       cpan
+	src_remove_dual      perl-core/Digest-SHA         6.0.0         shasum
 	src_remove_dual      perl-core/Encode             2.930.0       enc2xs piconv
 	src_remove_dual      perl-core/ExtUtils-MakeMaker 7.300.0       instmodsh
-	src_remove_dual      perl-core/ExtUtils-ParseXS   3.350.0       xsubpp
+	src_remove_dual      perl-core/ExtUtils-ParseXS   3.360.0       xsubpp
 	src_remove_dual      perl-core/IO-Compress        2.74.0        zipdetails
-	src_remove_dual      perl-core/JSON-PP            2.940.0       json_pp
-	src_remove_dual      perl-core/Module-CoreList    5.201.710.200 corelist
+	src_remove_dual      perl-core/JSON-PP            2.970.0       json_pp
+	src_remove_dual      perl-core/Module-CoreList    5.201.712.200 corelist
 	src_remove_dual      perl-core/Pod-Parser         1.630.0       pod2usage podchecker podselect
 	src_remove_dual      perl-core/Pod-Perldoc        3.280.100     perldoc
 	src_remove_dual      perl-core/Test-Harness       3.390.0       prove
@@ -284,10 +284,6 @@ echo "${patchoutput}" >> "${S}/MANIFEST"
 
 src_prepare_perlcross() {
 	cp -a ../perl-cross-${CROSS_VER}/* . || die
-
-	sed -i \
-		-e 's/(15 + $CLEANUP)/(13 + $CLEANUP)/' \
-		cnf/diffs/perl5-${PV}/makemaker-test.patch || die
 
 	sed -i \
 		-e 's/MakeMaker\.pm .*/MakeMaker.pm bf9174c70a0e50ff2fee4552c7df89b37d292da1/' \

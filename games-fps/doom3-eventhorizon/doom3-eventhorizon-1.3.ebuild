@@ -13,7 +13,7 @@ HOMEPAGE="http://www.gamefront.com/files/10716974"
 SRC_URI="event_horizon_xv_${PV}.zip"
 
 LICENSE="all-rights-reserved"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="dedicated opengl"
 RESTRICT="fetch mirror"
 

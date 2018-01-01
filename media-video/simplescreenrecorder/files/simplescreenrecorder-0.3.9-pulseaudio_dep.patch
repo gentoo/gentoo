@@ -1,0 +1,18 @@
+https://github.com/MaartenBaert/ssr/issues/599
+https://bugs.gentoo.org/641680#c10
+
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -3,9 +3,11 @@
+ find_package(Threads REQUIRED)
+ find_package(ALSA REQUIRED)
+ find_package(FFmpeg REQUIRED)
+-find_package(PulseAudio REQUIRED)
+ find_package(X11 REQUIRED)
+ 
++if(WITH_PULSEAUDIO)
++	find_package(PulseAudio REQUIRED)
++endif()
+ if(WITH_JACK)
+ 	find_package(Jack REQUIRED)
+ endif()

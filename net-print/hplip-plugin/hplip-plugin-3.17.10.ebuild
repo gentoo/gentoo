@@ -7,8 +7,7 @@ inherit udev unpacker
 
 DESCRIPTION="Proprietary plugins and firmware for HPLIP"
 HOMEPAGE="http://hplipopensource.com/hplip-web/index.html"
-#SRC_URI="http://www.openprinting.org/download/printdriver/auxfiles/HP/plugins/hplip-${PV}-plugin.run"
-SRC_URI="http://hplipopensource.com/hplip-web/plugin/hplip-${PV}-plugin.run"
+SRC_URI="http://www.openprinting.org/download/printdriver/auxfiles/HP/plugins/hplip-${PV}-plugin.run"
 
 LICENSE="hplip-plugin"
 SLOT="0"

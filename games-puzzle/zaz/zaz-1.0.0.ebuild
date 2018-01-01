@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/zaz/${P}.tar.bz2"
 
 LICENSE="GPL-3 GPL-3+ CC-BY-SA-3.0 OFL"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="nls"
 
 RDEPEND="virtual/opengl

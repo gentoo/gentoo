@@ -10,7 +10,7 @@ OFED_SUFFIX="1.gcbf2a35"
 
 inherit openib multilib-minimal
 
-DESCRIPTION="A library allowing programs to use InfiniBand 'verbs' for direct access to IB hardware"
+DESCRIPTION="A library to use InfiniBand 'verbs' for direct access to IB hardware"
 
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux"
 IUSE="static-libs"

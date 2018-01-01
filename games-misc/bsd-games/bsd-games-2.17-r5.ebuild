@@ -12,7 +12,7 @@ SRC_URI="ftp://metalab.unc.edu/pub/Linux/games/${P}.tar.gz
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 x86"
+KEYWORDS="~alpha ~amd64 ~x86"
 IUSE=""
 
 RDEPEND="!games-misc/wtf

@@ -7,5 +7,6 @@
   </maintainer>
   <upstream>
     <remote-id type="github">pkgcore/snakeoil</remote-id>
+    <remote-id type="pypi">snakeoil</remote-id>
   </upstream>
 </pkgmetadata>

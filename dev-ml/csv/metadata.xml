@@ -8,7 +8,7 @@
 	<upstream>
 		<remote-id type="github">Chris00/ocaml-csv</remote-id>
 	</upstream>
-    <use>
+	<use>
 		<flag name="lwt">Enables the Lwt-based library for asynchronous operations.</flag>
 	</use>
 </pkgmetadata>

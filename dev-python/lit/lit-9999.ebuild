@@ -16,6 +16,7 @@ LICENSE="UoI-NCSA"
 SLOT="0"
 KEYWORDS=""
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 S=${WORKDIR}/${P}/utils/lit
 
@@ -27,6 +28,11 @@ DEPEND="
 		sys-devel/llvm )"
 
 # TODO: move the manpage generation here (from sys-devel/llvm)
+
+src_unpack() {
+	git-r3_fetch
+	git-r3_checkout '' '' '' utils/lit
+}
 
 python_test() {
 	./lit.py -vv tests || die

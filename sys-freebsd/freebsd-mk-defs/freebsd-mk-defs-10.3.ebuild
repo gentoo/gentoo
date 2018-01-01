@@ -5,7 +5,7 @@ EAPI=5
 
 inherit bsdmk freebsd
 
-DESCRIPTION="Makefiles definitions used for building and installing libraries and system files"
+DESCRIPTION="Makefile definitions used for building and installing libraries and system files"
 SLOT="0"
 
 IUSE="userland_GNU"

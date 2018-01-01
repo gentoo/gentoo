@@ -17,7 +17,7 @@ SRC_URI="mirror://gentoo/${P}.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="hppa x86"
+KEYWORDS="~hppa ~x86"
 IUSE="demo pic perl opengl"
 
 RDEPEND="media-libs/libsdl

@@ -26,14 +26,10 @@ app-emulation/wine -gstreamer
 # gnome-extra/hamster-applet-2.32 and x11-misc/alacarte-0.13
 dev-lang/python sqlite
 
-# REQUIRED_USE="?? ( pulseaudio gstreamer )", and we want pulse in gnome
-net-misc/spice-gtk -gstreamer
-
 # Required by app-accessibility/orca-3
 app-accessibility/speech-dispatcher python
 
 # gtk3 input method plugins required for gnome3; gnome-shell wants ibus[dconf]
-app-i18n/ibus gtk3
 app-i18n/uim gtk3
 
 # Pulled in by grilo-plugins which is needed for gnome-music
@@ -43,7 +39,7 @@ media-libs/grilo playlist
 media-libs/harfbuzz icu
 
 # Pulled in by tracker and grilo-plugins, has REQUIRED_USE="?? ( gtk qt4 qt5 )"
-media-libs/libmediaart gtk -qt4 -qt5
+media-libs/libmediaart gtk -qt5
 
 # Pulled in by net-im/telepathy-connection-managers[msn] (via dev-python/papyon
 # and net-voip/telepathy-butterfly)
@@ -68,4 +64,4 @@ x11-base/xorg-server kdrive
 # Alexandre Rostovtsev <tetromino@gentoo.org> (19 Feb 2015)
 # Set reasonable default toolkit for gnome users to prevent emerge error
 # when USE=tools
-x11-drivers/nvidia-drivers -gtk2 gtk3
+x11-drivers/nvidia-drivers gtk3

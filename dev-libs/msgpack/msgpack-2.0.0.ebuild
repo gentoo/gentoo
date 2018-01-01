@@ -9,7 +9,10 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/${PN}/${PN}-c.git"
 else
-	SRC_URI="https://github.com/${PN}/${PN}-c/releases/download/cpp-${PV}/${P}.tar.gz"
+	SRC_URI="
+	https://github.com/${PN}/${PN}-c/releases/download/cpp-${PV}/${P}.tar.gz
+	https://dev.gentoo.org/~monsieurp/dist/${P}-patchset.tar.bz2"
+
 	KEYWORDS="~amd64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 fi
 
@@ -30,7 +33,7 @@ DEPEND="
 DOCS=( README.md )
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.0.0-gcc7-implicit-fallthrough.patch
+	"${WORKDIR}"/patchset/${PN}-2.0.0-gcc7-implicit-fallthrough.patch
 )
 
 src_configure() {

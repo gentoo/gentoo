@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: elisp.eclass
@@ -68,11 +68,11 @@ inherit elisp-common
 
 case ${EAPI:-0} in
 	0|1)
-		inherit eutils
+		inherit epatch
 		EXPORT_FUNCTIONS src_{unpack,compile,install} \
 			pkg_{setup,postinst,postrm} ;;
 	2|3|4|5)
-		inherit eutils
+		inherit epatch
 		EXPORT_FUNCTIONS src_{unpack,prepare,configure,compile,install} \
 			pkg_{setup,postinst,postrm} ;;
 	6)

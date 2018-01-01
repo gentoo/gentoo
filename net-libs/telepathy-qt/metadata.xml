@@ -7,9 +7,9 @@
 		<description>Proxy maintainer</description>
 	</maintainer>
 	<maintainer type="project">
-                <email>proxy-maint@gentoo.org</email>
-                <name>Proxy Maintainers</name>
-        </maintainer>
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<maintainer type="project">
 		<email>qt@gentoo.org</email>
 		<name>Gentoo Qt Project</name>

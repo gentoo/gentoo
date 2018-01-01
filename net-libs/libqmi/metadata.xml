@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>vapier@gentoo.org</email>
-		<description>feel free to update</description>
-	</maintainer>
-	<maintainer type="person">
 		<email>chainsaw@gentoo.org</email>
 		<name>Tony Vroon</name>
 	</maintainer>

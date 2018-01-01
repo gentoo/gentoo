@@ -5,9 +5,6 @@
 <email>crossdev@gentoo.org</email>
 <name>Gentoo Crossdev Team</name>
 </maintainer>
-<maintainer type="person">
-<email>vapier@gentoo.org</email>
-</maintainer>
 <maintainer type="project">
 <email>embedded@gentoo.org</email>
 <name>Embedded Gentoo</name>

@@ -11,7 +11,7 @@ SRC_URI="nightskyhd-linux-1324519044.tar.gz"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE="bundled-libs"
 RESTRICT="bindist fetch splitdebug"
 

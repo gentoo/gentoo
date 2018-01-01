@@ -1,6 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# @DEAD
 # @ECLASS: php-lib-r1.eclass
 # @MAINTAINER:
 # Gentoo PHP team <php-bugs@gentoo.org>
@@ -37,6 +38,7 @@ RDEPEND="${DEPEND}"
 # You have to pass in a list of the PHP files to install.
 
 # @VARIABLE: DOCS
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Set in ebuild if you wish to install additional, package-specific documentation.
 

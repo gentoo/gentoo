@@ -6,7 +6,6 @@ EAPI=6
 CPPUNIT_REQUIRED="optional"
 DECLARATIVE_REQUIRED="always"
 KDE_HANDBOOK="optional"
-OPENGL_REQUIRED="optional"
 inherit kde4-base toolchain-funcs flag-o-matic xdg-utils
 
 APPS_VERSION="17.08.2" # Don't forget to bump this
@@ -22,7 +21,6 @@ libressl lzma cpu_flags_x86_mmx nls openexr plasma +policykit qt3support
 spell cpu_flags_x86_sse cpu_flags_x86_sse2 ssl +udev +udisks +upower zeroconf"
 
 REQUIRED_USE="
-	opengl? ( plasma )
 	udisks? ( udev )
 	upower? ( udev )
 "
@@ -134,11 +132,9 @@ src_prepare() {
 	sed -e 's|FILES[[:space:]]applications.menu|FILES applications.menu RENAME kde-4-applications.menu|g' \
 		-i kded/CMakeLists.txt || die "Sed on CMakeLists.txt for applications.menu failed."
 
-	if ! use opengl; then
-		sed -i -e "/if/ s/QT_QTOPENGL_FOUND/FALSE/" \
-			plasma/CMakeLists.txt plasma/tests/CMakeLists.txt includes/CMakeLists.txt \
-			|| die "failed to sed out QT_QTOPENGL_FOUND"
-	fi
+	sed -i -e "/if/ s/QT_QTOPENGL_FOUND/FALSE/" \
+		plasma/CMakeLists.txt plasma/tests/CMakeLists.txt includes/CMakeLists.txt \
+		|| die "failed to sed out QT_QTOPENGL_FOUND"
 }
 
 src_configure() {

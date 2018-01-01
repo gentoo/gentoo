@@ -9,8 +9,8 @@ PYTHON_REQ_USE="threads"
 inherit waf-utils python-single-r1 multilib multilib-minimal
 
 DESCRIPTION="Samba talloc library"
-HOMEPAGE="http://talloc.samba.org/"
-SRC_URI="http://samba.org/ftp/${PN}/${P}.tar.gz"
+HOMEPAGE="https://talloc.samba.org/"
+SRC_URI="https://www.samba.org/ftp/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3 LGPL-3+ LGPL-2"
 SLOT="0"

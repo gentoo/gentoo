@@ -3,7 +3,7 @@
 
 inherit eutils
 
-DESCRIPTION="Endpoint turns a Linux machine with one or more firewire cards into an SBP-2 device"
+DESCRIPTION="Endpoint turns a Linux machine with a firewire card into an SBP-2 device"
 HOMEPAGE="http://oss.oracle.com/projects/endpoint/"
 SRC_URI="http://oss.oracle.com/projects/endpoint/dist/files/${P}.tar.gz"
 

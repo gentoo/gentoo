@@ -1,0 +1,41 @@
+From 927f380272442ae803fdccfc001b55877f25e7dc Mon Sep 17 00:00:00 2001
+From: Adrian Thurston <thurston@colm.net>
+Date: Sat, 10 Dec 2016 15:41:30 -0500
+Subject: [PATCH] use pkginclude for the headers
+
+---
+ aapl/Makefile.am | 2 +-
+ src/Makefile.am  | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/aapl/Makefile.am b/aapl/Makefile.am
+index fd9f9cb0..80b972f1 100644
+--- a/aapl/Makefile.am
++++ b/aapl/Makefile.am
+@@ -1,4 +1,4 @@
+-include_HEADERS = \
++pkginclude_HEADERS = \
+ 	avlbasic.h avlimel.h avlmap.h bstcommon.h compare.h insertsort.h \
+ 	sbstset.h avlcommon.h avlimelkey.h avlmel.h bstmap.h dlcommon.h \
+ 	mergesort.h sbsttable.h avlibasic.h avliset.h avlmelkey.h bstset.h \
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 24a19a4b..60554a99 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -16,11 +16,11 @@ bin_PROGRAMS = ragel
+ 
+ endif
+ 
+-include_HEADERS = \
++pkginclude_HEADERS = \
+ 	action.h fsmgraph.h ragel.h common.h \
+ 	gendata.h redfsm.h dot.h
+ 
+-nodist_include_HEADERS = config.h
++nodist_pkginclude_HEADERS = config.h
+ 
+ ragel_CPPFLAGS = -I$(top_srcdir)/aapl -DBINDIR='"@bindir@"'
+ 
+-- 
+2.15.1
+

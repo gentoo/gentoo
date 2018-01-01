@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="alsa examples gtk +openal"
 
 RDEPEND="
@@ -21,7 +21,8 @@ RDEPEND="
 	alsa? ( media-libs/alsa-lib[alisp] )
 	gtk? ( x11-libs/gtk+:2 )
 	openal? ( media-libs/openal )"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-python/setuptools[${PYTHON_USEDEP}]"
 #	ffmpeg? ( media-libs/avbin-bin )
 
 # pyglet.gl.glx_info.GLXInfoException: pyglet requires an X server with GLX

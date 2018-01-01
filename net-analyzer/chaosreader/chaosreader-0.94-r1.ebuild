@@ -1,11 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
 
 inherit eutils
 
-DESCRIPTION="A tool to trace TCP/UDP/... sessions and fetch application data from snoop or tcpdump logs"
+DESCRIPTION="Trace TCP/UDP/... sessions and fetch application data."
 HOMEPAGE="http://chaosreader.sourceforge.net"
 SRC_URI="https://dev.gentoo.org/~spock/portage/distfiles/${P}.bz2"
 SLOT="0"

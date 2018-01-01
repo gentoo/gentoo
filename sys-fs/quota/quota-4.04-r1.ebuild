@@ -22,11 +22,9 @@ RDEPEND="
 	)
 	rpc? (
 		net-nds/rpcbind
-		|| (	sys-libs/glibc[rpc(-)]
-			(
-				net-libs/rpcsvc-proto
-			)
-		)
+		elibc_glibc? ( sys-libs/glibc[-rpc(-)] )
+		net-libs/libtirpc
+		net-libs/rpcsvc-proto
 	)
 	tcpd? ( sys-apps/tcp-wrappers )
 "

@@ -56,9 +56,7 @@ RDEPEND="
 	vala? ( $(vala_depend) )
 "
 # desktop-file-utils for desktop-file-validate check in configure for 3.22.4
-# mm-common due to not fully clean --disable-idemm behaviour, recheck on bump
 DEPEND="${RDEPEND}
-	dev-cpp/mm-common
 	dev-libs/appstream-glib
 	dev-util/desktop-file-utils
 	>=sys-devel/gettext-0.19.8

@@ -25,6 +25,8 @@ src_prepare() {
 }
 
 src_configure() {
+	export CONFIG_SHELL=${BASH}
+
 	local myconf
 	if use readline ; then
 		myconf="--with-readline --without-libedit"

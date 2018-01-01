@@ -4,7 +4,7 @@
 EAPI=5
 inherit eutils gnome2-utils flag-o-matic git-r3 games
 
-DESCRIPTION="A drawing puzzle game in the spirit of Crayon Physics using the same excellent Box2D engine"
+DESCRIPTION="Crayon Physics-like drawing puzzle game using the same excellent Box2D engine"
 HOMEPAGE="http://thp.io/2015/numptyphysics/"
 
 # This is only the SRC_URI for the user levels. The code is in git repo.

@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils cmake-utils fdo-mime
 
 DESCRIPTION="A fast text editor supporting folding, syntax highlighting, etc."
-HOMEPAGE="http://efte.sourceforge.net"
+HOMEPAGE="https://github.com/lanurmi/efte"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="|| ( GPL-2 Artistic )"
@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="gpm X"
 
-RDEPEND="sys-libs/ncurses
+RDEPEND="sys-libs/ncurses:0=
 	gpm? ( sys-libs/gpm )
 	X? (
 		x11-libs/libX11

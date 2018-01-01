@@ -57,7 +57,6 @@ acpi
 lm_sensors
 rar
 hdf
-fmod
 xvmc
 # cg is only provided by nvidia's binary only cg toolkit
 cg
@@ -113,26 +112,14 @@ lcd_devices_t6963
 # Modular X: mask for architectures on which they aren't available
 video_cards_apm
 video_cards_ark
-video_cards_ast
 video_cards_i128
 video_cards_i740
-video_cards_intel
 video_cards_neomagic
-video_cards_nsc
 video_cards_rendition
-video_cards_siliconmotion
 video_cards_sis
 video_cards_tga
 video_cards_tseng
 video_cards_vesa
-
-# Matt Turner <mattst88@gentoo.org>
-# Mask more VIDEO_CARDs added with mesa-8.0
-video_cards_i915
-video_cards_i965
-video_cards_ilo
-# vmware wasn't added with mesa-8.0, but it should still be masked
-video_cards_vmware
 
 # Intel Integrated Primitive (sci-libs/ipp) support
 ipp
@@ -150,10 +137,6 @@ ios
 # and it's also masked in arch/powerpc/ppc64/32ul/package.mask
 lirc
 
-# Matt Turner <mattst88@gmail.com> (06 May 2011)
-# media-sound/mumble not keyworded on ppc
-mumble
-
 # Kacper Kowalik <xarthisius@gentoo.org> (26 Jul 2011)
 # ppc keywords were dropped for dev-libs/prelude
 prelude
@@ -169,9 +152,6 @@ nvtt
 # libdlm and cman are not keyworded
 cman
 clvm
-
-# for gnome 3.6 keywording
--zeitgeist
 
 # Pacho Ramos <pacho@gentoo.org> (08 Jan 2014)
 # Unmask systemd since it is keyworded here.

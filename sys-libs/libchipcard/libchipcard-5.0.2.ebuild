@@ -3,7 +3,7 @@
 
 EAPI=2
 
-DESCRIPTION="Libchipcard is a library for easy access to chip cards via chip card readers (terminals)"
+DESCRIPTION="Library for accessing chip cards via chip card readers (terminals)"
 HOMEPAGE="http://www.aquamaniac.de/aqbanking/"
 SRC_URI="http://www.aquamaniac.de/sites/download/download.php?package=02&release=26&file=01&dummy=${P}.tar.gz -> ${P}.tar.gz"
 

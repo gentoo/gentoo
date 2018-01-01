@@ -8,6 +8,8 @@ inherit autotools gnome2 readme.gentoo-r1
 
 DESCRIPTION="The Gnome Terminal"
 HOMEPAGE="https://wiki.gnome.org/Apps/Terminal/"
+SRC_URI="${SRC_URI}
+	!vanilla? ( https://dev.gentoo.org/~mgorny/dist/gnome-terminal-3.22.0-transparency.patch.xz )"
 
 LICENSE="GPL-3+"
 SLOT="0"
@@ -45,7 +47,7 @@ src_prepare() {
 	if ! use vanilla; then
 		# OpenSuSE patches, https://bugzilla.gnome.org/show_bug.cgi?id=695371
 		# http://pkgs.fedoraproject.org/cgit/rpms/gnome-terminal.git/tree/gnome-terminal-transparency-notify.patch (first 3 parts)
-		eapply "${FILESDIR}"/${PN}-3.22.0-transparency.patch
+		eapply "${WORKDIR}"/${PN}-3.22.0-transparency.patch
 		eautoreconf
 	fi
 	gnome2_src_prepare

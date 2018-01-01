@@ -13,7 +13,7 @@ SRC_URI="https://releases.llvm.org/${PV/_//}/${MY_P}.src.tar.xz"
 
 LICENSE="UoI-NCSA"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="test"
 
 S=${WORKDIR}/${MY_P}.src/utils/lit
@@ -24,6 +24,9 @@ DEPEND="
 	test? (
 		dev-python/psutil[${PYTHON_USEDEP}]
 		sys-devel/llvm )"
+
+# Tests are broken in this version, fixed in 5.0+.
+RESTRICT="test"
 
 # TODO: move the manpage generation here (from sys-devel/llvm)
 

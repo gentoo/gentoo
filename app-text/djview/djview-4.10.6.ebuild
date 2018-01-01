@@ -3,15 +3,15 @@
 
 EAPI=4
 
-inherit autotools gnome2-utils fdo-mime flag-o-matic versionator toolchain-funcs multilib nsplugins
+inherit autotools gnome2-utils xdg-utils flag-o-matic versionator toolchain-funcs multilib nsplugins
 
-DESCRIPTION="Portable DjVu viewer using Qt4"
+DESCRIPTION="Portable DjVu viewer using Qt"
 HOMEPAGE="http://djvu.sourceforge.net/djview4.html"
 SRC_URI="mirror://sourceforge/djvu/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 x86"
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc ppc64 x86"
 IUSE="debug nsplugin"
 
 RDEPEND="
@@ -71,11 +71,11 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
 	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
 	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }

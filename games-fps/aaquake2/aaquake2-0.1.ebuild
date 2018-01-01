@@ -11,7 +11,7 @@ SRC_URI="mirror://idsoftware/source/q2source-3.21.zip
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 IUSE=""
 
 RDEPEND="media-libs/aalib"

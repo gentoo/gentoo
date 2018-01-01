@@ -45,6 +45,13 @@ DOCS=( AUTHORS Changelog CONTRIBUTING.md README.md TODO )
 
 PATCHES=( "${FILESDIR}/${P}-cmake.patch" )
 
+src_prepare() {
+	cmake-utils_src_prepare
+
+	# bug 641010
+	sed -i -e "s/-Werror //" cmake/Modules/MacroQbtCompilerSettings.cmake || die
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DSYSTEM_QTSINGLEAPPLICATION=ON

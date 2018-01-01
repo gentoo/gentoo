@@ -12,7 +12,7 @@ S="${WORKDIR}/${MY_P}"
 FONT_S="${S}/lib/fonts"
 FONT_SUFFIX="ttf"
 DESCRIPTION="WYSIWYM frontend for LaTeX, DocBook, etc."
-HOMEPAGE="http://www.lyx.org/"
+HOMEPAGE="https://www.lyx.org/"
 SRC_URI="ftp://ftp.lyx.org/pub/lyx/stable/2.2.x/${MY_P}.tar.xz
 	ftp://ftp.lyx.org/pub/lyx/devel/lyx-2.2/${MY_P}/${MY_P}.tar.xz"
 

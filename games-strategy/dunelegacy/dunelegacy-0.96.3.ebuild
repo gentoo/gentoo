@@ -15,7 +15,7 @@ SRC_URI="${SRC_URI} https://dev.gentoo.org/~hasufell/distfiles/${P}-no-autorecon
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="+alsa pulseaudio"
 
 RDEPEND="media-libs/libsdl[X,alsa?,sound,pulseaudio?,video]

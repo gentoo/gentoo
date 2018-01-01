@@ -51,6 +51,7 @@ DOCS=( BUGS ChangeLog{,.zoo} DEVEL-CVS FAQ HACKING MINOR-BUGS NEWS \
 	PROJECTS README TESTS TODO )
 
 src_prepare() {
+	export CONFIG_SHELL=${BASH}  # configure fails without
 	default
 	sed -i "/^AR/s:ar:$(tc-getAR):" diff/Makefile.in lib/Makefile.in || die
 }
