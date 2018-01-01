@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -59,10 +59,6 @@ src_prepare() {
 
 	# fix info file for category directory
 	if [[ ${PV} = *9999 ]]; then
-		sed -i -e
-			's/Texinfo documentation system/Libraries/' \
-			doc/fftw3."info" || die "failed to fix info file"
-
 		eautoreconf
 	fi
 }

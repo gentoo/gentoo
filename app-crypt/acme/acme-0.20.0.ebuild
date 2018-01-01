@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -31,6 +31,7 @@ RDEPEND="
 	dev-python/pytz[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.10[${PYTHON_USEDEP}]
 	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
+	!dev-python/josepy[${PYTHON_USEDEP}]
 "
 DEPEND="
 	test? (
