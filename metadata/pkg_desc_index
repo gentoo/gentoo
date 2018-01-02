@@ -179,7 +179,7 @@ app-arch/hardlink 0.2.0: A tool which replaces copies of a file with hardlinks
 app-arch/innoextract 1.4: A tool to unpack installers created by Inno Setup
 app-arch/lbzip2 2.3-r1 2.5: Parallel bzip2 utility
 app-arch/lha 114i-r7: Utility for creating and opening lzh archives
-app-arch/libarchive 3.2.2-r1 3.3.1: BSD tar command
+app-arch/libarchive 3.3.1: BSD tar command
 app-arch/libpar2 0.4: A library for par2, extracted from par2cmdline
 app-arch/lrzip 0.614 0.621: Long Range ZIP or Lzma RZIP optimized for compressing large files
 app-arch/lz4 0_p131 1.7.5-r1: Extremely Fast Compression algorithm
@@ -720,12 +720,12 @@ app-emacs/zenburn 20110907: Zenburn color theme for Emacs
 app-emacs/zenirc 2.112-r1: A full-featured scriptable IRC client for the Emacs text editor
 app-emulation/aqemu 0.9.2: Graphical interface for QEMU and KVM emulators, using Qt5
 app-emulation/cloud-init 0.7.6-r1 0.7.8-r2 0.7.9: cloud initialisation magic
-app-emulation/containerd 0.2.9_p20170605: A daemon to control runC
+app-emulation/containerd 0.2.9_p20170917: A daemon to control runC
 app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/diskimage-builder 1.28.0 2.9.0: Golden Disk Image builder.
-app-emulation/docker 17.06.2: The core functions you need to create Docker images and run Docker containers
-app-emulation/docker-proxy 0.8.0_p20161111: Docker container networking
-app-emulation/docker-runc 1.0.0_rc3_p20170706: runc container cli tools (docker fork)
+app-emulation/docker 17.09.1: The core functions you need to create Docker images and run Docker containers
+app-emulation/docker-proxy 0.8.0_p20161111 0.8.0_p20170917: Docker container networking
+app-emulation/docker-runc 1.0.0_rc4_p20170917: runc container cli tools (docker fork)
 app-emulation/dosemu 1.4.1_pre20130107-r5: DOS Emulator
 app-emulation/e-uae 0.8.29_rc4-r3: The Ubiquitous Amiga Emulator with an emulation core largely based on WinUAE
 app-emulation/free42 2.0.6: An HP-42S Calculator Simulator
