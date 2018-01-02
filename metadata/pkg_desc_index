@@ -10425,7 +10425,7 @@ www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/pybugz 0.12.1 0.13: Command line interface to (Gentoo) Bugzilla
 www-client/qupzilla 2.1.2: A cross-platform web browser using QtWebEngine
 www-client/ripe-atlas-cousteau 1.0.7 1.2: A Python wrapper around the RIPE Atlas API
-www-client/seamonkey 2.46-r1 2.48: Seamonkey Web Browser
+www-client/seamonkey 2.49.5.0_p0: Seamonkey Web Browser
 www-client/seamonkey-bin 2.48: Mozilla Application Suite - web browser, email, HTML editor, IRC
 www-client/surf 2.0: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
@@ -10907,7 +10907,7 @@ x11-plugins/astime 2.8-r2: Analogue clock utility for X Windows
 x11-plugins/bfm 0.6.4-r2: a dockapp and gkrellm plug-in combining timecop's bubblemon and wmfishtime
 x11-plugins/bubblemon 1.46-r2: A fun monitoring applet for your desktop, complete with swimming duck
 x11-plugins/docker 1.5: Openbox app which acts as a system tray for KDE and GNOME2
-x11-plugins/enigmail 1.9.6.1-r1 1.9.8.1 1.9.8.3-r1 1.9.9: Mozilla extension to provide GPG support in mail clients
+x11-plugins/enigmail 1.9.9: Mozilla extension to provide GPG support in mail clients
 x11-plugins/epplets 0.12 0.14: Base files for Enlightenment epplets and some epplets
 x11-plugins/fsviewer 0.2.6-r2: A file system viewer for Window Maker
 x11-plugins/gkrellaclock 0.3.4-r1: Nice analog clock for GKrellM2
