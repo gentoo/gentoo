@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 SCM=""
 [[ "${PV}" == 9999 ]] && SCM="git-r3"
-inherit autotools ${SCM}
+inherit cmake-utils ${SCM}
 unset SCM
 
 DESCRIPTION="A PulseAudio NCurses mixer"
@@ -17,7 +17,7 @@ IUSE="+unicode"
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/patroclos/PAmix.git"
 else
-	SRC_URI="https://github.com/patroclos/PAmix/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/patroclos/PAmix/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 	S="${WORKDIR}/PAmix-${PV}"
 fi
@@ -30,9 +30,15 @@ DEPEND="sys-devel/autoconf-archive
 
 src_prepare() {
 	default
-	eautoreconf
+
+	# ugly hackaround for split tinfo ncurses libs
+	sed '/link_libraries.*ncurses/s@\(")\)@" "tinfo\1@' \
+		-i CMakeLists.txt || die
 }
 
 src_configure() {
-	econf $(use_enable unicode)
+	local mycmakeargs=(
+		-DWITH_UNICODE="$(usex unicode)"
+	)
+	cmake-utils_src_configure
 }
