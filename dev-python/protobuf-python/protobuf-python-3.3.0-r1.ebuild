@@ -24,12 +24,12 @@ IUSE=""
 # In case of using the (linked) cpp implementation we should be fine with the same subslot.
 RDEPEND="${PYTHON_DEPS}
 	dev-python/namespace-google[${PYTHON_USEDEP}]
+	dev-python/six[${PYTHON_USEDEP}]
 	!<dev-libs/protobuf-3[python(-)]
 	~dev-libs/protobuf-${PV}"
 
 DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	dev-python/six[${PYTHON_USEDEP}]"
+	dev-python/setuptools[${PYTHON_USEDEP}]"
 
 PATCHES=( "${FILESDIR}/${PN}-3.0.0_beta3-link-against-installed-lib.patch" )
 
