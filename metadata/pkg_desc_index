@@ -8997,7 +8997,7 @@ net-proxy/squid 3.5.26: A full-featured web proxy cache
 net-proxy/squidclamav 6.8: HTTP Antivirus for Squid based on ClamAv and ICAP
 net-proxy/squidguard 1.5_beta-r2: Combined filter, redirector and access controller plugin for Squid
 net-proxy/sshuttle 0.78.3: Transparent proxy server that works as a poor man's VPN using ssh
-net-proxy/tayga 0.9.2: out-of-kernel stateless NAT64 implementation based on TUN
+net-proxy/tayga 0.9.2-r1: out-of-kernel stateless NAT64 implementation based on TUN
 net-proxy/tinyproxy 1.8.3-r4: A lightweight HTTP/SSL proxy
 net-proxy/torsocks 2.2.0: Use most socks-friendly applications with Tor
 net-proxy/tsocks 1.8_beta5-r8: Transparent SOCKS v4 proxying library
