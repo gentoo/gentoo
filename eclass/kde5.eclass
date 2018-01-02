@@ -204,21 +204,14 @@ case ${KDE_AUTODEPS} in
 			RDEPEND+=" || ( $(add_frameworks_dep breeze-icons) kde-frameworks/oxygen-icons:* )"
 		fi
 
-		case ${CATEGORY} in
-			kde-frameworks | \
-			kde-plasma)
-				RDEPEND+=" !<kde-apps/kde4-l10n-15.12.3-r1"
-				;;
-			kde-apps)
-				[[ ${KDE_BLOCK_SLOT4} = true ]] && RDEPEND+=" !kde-apps/${PN}:4"
-				[[ $(get_version_component_range 1) -ge 17 ]] && \
-					RDEPEND+="
-						!kde-apps/kde-l10n
-						!<kde-apps/kde4-l10n-16.12.0:4
-						!kde-apps/kdepim-l10n:5
-					"
-				;;
-		esac
+		if [[ ${CATEGORY} = kde-apps ]]; then
+			[[ ${KDE_BLOCK_SLOT4} = true ]] && RDEPEND+=" !kde-apps/${PN}:4"
+			RDEPEND+="
+				!kde-apps/kde-l10n
+				!<kde-apps/kde4-l10n-16.12.0:4
+				!kde-apps/kdepim-l10n:5
+			"
+		fi
 		;;
 esac
 
