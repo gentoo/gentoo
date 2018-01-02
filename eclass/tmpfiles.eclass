@@ -55,7 +55,7 @@ if [[ -z ${TMPFILES_ECLASS} ]]; then
 TMPFILES_ECLASS=1
 
 case "${EAPI}" in
-6) ;;
+5|6) ;;
 *) die "API is undefined for EAPI ${EAPI}" ;;
 esac
 

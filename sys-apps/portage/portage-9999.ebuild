@@ -10,7 +10,7 @@ PYTHON_COMPAT=(
 )
 PYTHON_REQ_USE='bzip2(+),threads(+)'
 
-inherit distutils-r1 git-r3
+inherit distutils-r1 git-r3 tmpfiles
 
 DESCRIPTION="Portage is the package management and distribution system for Gentoo"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage"
@@ -201,6 +201,8 @@ python_install_all() {
 	if [[ ${targets[@]} ]]; then
 		esetup.py "${targets[@]}"
 	fi
+
+	dotmpfiles "${FILESDIR}"/portage-ccache.conf
 
 	# Due to distutils/python-exec limitations
 	# they must be installed to /usr/bin.
