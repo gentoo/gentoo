@@ -1,0 +1,141 @@
+https://github.com/ThomasDickey/original-mawk/issues/49
+
+From ae3a324a5af1350aa1a6f648e10b9d6656d9fde4 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@chromium.org>
+Date: Tue, 7 Nov 2017 00:41:36 -0500
+Subject: [PATCH 1/2] add a -W sandbox mode
+
+This is like gawk's sandbox mode where arbitrary code execution and
+file redirection are locked down.  This way awk can be a more secure
+input/output mode.
+---
+ bi_funct.c | 3 +++
+ init.c     | 8 ++++++++
+ man/mawk.1 | 4 ++++
+ mawk.h     | 2 +-
+ scan.c     | 6 ++++++
+ 5 files changed, 22 insertions(+), 1 deletion(-)
+
+diff --git a/bi_funct.c b/bi_funct.c
+index 7742308c72a5..b524ac8dac8b 100644
+--- a/bi_funct.c
++++ b/bi_funct.c
+@@ -908,6 +908,9 @@ bi_system(CELL *sp GCC_UNUSED)
+ #ifdef HAVE_REAL_PIPES
+     int ret_val;
+ 
++    if (sandbox_flag)
++	rt_error("'system' function not allowed in sandbox mode");
++
+     TRACE_FUNC("bi_system", sp);
+ 
+     if (sp->type < C_STRING)
+diff --git a/init.c b/init.c
+index 0ab17b003f20..f7babb337e04 100644
+--- a/init.c
++++ b/init.c
+@@ -40,6 +40,7 @@ typedef enum {
+     W_RANDOM,
+     W_SPRINTF,
+     W_POSIX_SPACE,
++    W_SANDBOX,
+     W_USAGE
+ } W_OPTIONS;
+ 
+@@ -96,6 +97,7 @@ initialize(int argc, char **argv)
+ 
+ int dump_code_flag;		/* if on dump internal code */
+ short posix_space_flag;
++short sandbox_flag;
+ 
+ #ifdef	 DEBUG
+ int dump_RE = 1;		/* if on dump compiled REs  */
+@@ -153,6 +155,7 @@ usage(void)
+ 	"    -W random=number set initial random seed.",
+ 	"    -W sprintf=number adjust size of sprintf buffer.",
+ 	"    -W posix_space   do not consider \"\\n\" a space.",
++	"    -W sandbox       disable system() and I/O redirection.",
+ 	"    -W usage         show this message and exit.",
+     };
+     size_t n;
+@@ -255,6 +258,7 @@ parse_w_opt(char *source, char **next)
+ 	    DATA(RANDOM),
+ 	    DATA(SPRINTF),
+ 	    DATA(POSIX_SPACE),
++	    DATA(SANDBOX),
+ 	    DATA(USAGE)
+     };
+ #undef DATA
+@@ -389,6 +393,10 @@ process_cmdline(int argc, char **argv)
+ 		    posix_space_flag = 1;
+ 		    break;
+ 
++		case W_SANDBOX:
++		    sandbox_flag = 1;
++		    break;
++
+ 		case W_RANDOM:
+ 		    if (haveValue(optNext)) {
+ 			int x = atoi(optNext + 1);
+diff --git a/man/mawk.1 b/man/mawk.1
+index a3c794167dc9..0915d9d7ed5d 100644
+--- a/man/mawk.1
++++ b/man/mawk.1
+@@ -150,6 +150,10 @@ forces
+ \fB\*n\fP
+ not to consider '\en' to be space.
+ .TP
++\-\fBW \fRsandbox
++runs in a restricted mode where system(), input redirection (e.g. getline),
++output redirection (e.g. print and printf), and pipelines are disabled.
++.TP
+ \-\fBW \fRrandom=\fInum\fR
+ calls \fBsrand\fP with the given parameter
+ (and overrides the auto-seeding behavior).
+diff --git a/mawk.h b/mawk.h
+index 2d04be1adb34..a6ccc0071ecc 100644
+--- a/mawk.h
++++ b/mawk.h
+@@ -63,7 +63,7 @@ extern int dump_RE;
+ #define USE_BINMODE 0
+ #endif
+ 
+-extern short posix_space_flag, interactive_flag;
++extern short posix_space_flag, interactive_flag, sandbox_flag;
+ 
+ /*----------------
+  *  GLOBAL VARIABLES
+diff --git a/scan.c b/scan.c
+index 3a8fc9181ab8..c1833b8b7315 100644
+--- a/scan.c
++++ b/scan.c
+@@ -455,6 +455,8 @@ yylex(void)
+ 	    un_next();
+ 
+ 	if (getline_flag) {
++	    if (sandbox_flag)
++		rt_error("redirection not allowed in sandbox mode");
+ 	    getline_flag = 0;
+ 	    ct_ret(IO_IN);
+ 	} else
+@@ -462,6 +464,8 @@ yylex(void)
+ 
+     case SC_GT:		/* '>' */
+ 	if (print_flag && paren_cnt == 0) {
++	    if (sandbox_flag)
++		rt_error("redirection not allowed in sandbox mode");
+ 	    print_flag = 0;
+ 	    /* there are 3 types of IO_OUT
+ 	       -- build the error string in string_buff */
+@@ -488,6 +492,8 @@ yylex(void)
+ 	    un_next();
+ 
+ 	    if (print_flag && paren_cnt == 0) {
++		if (sandbox_flag)
++		    rt_error("pipe execution not allowed in sandbox mode");
+ 		print_flag = 0;
+ 		yylval.ival = PIPE_OUT;
+ 		string_buff[0] = '|';
+-- 
+2.13.5
+
