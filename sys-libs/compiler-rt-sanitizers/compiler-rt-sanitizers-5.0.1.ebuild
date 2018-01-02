@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -99,6 +99,13 @@ src_configure() {
 		CC=${EPREFIX}/usr/lib/llvm/${LLVM_SLOT}/bin/clang \
 		CXX=${EPREFIX}/usr/lib/llvm/${LLVM_SLOT}/bin/clang++ \
 		strip-unsupported-flags
+	fi
+
+	if use prefix && [[ "${CHOST}" == *-darwin* ]] ; then
+		mycmakeargs+=(
+			# disable use of SDK for the system itself
+			-DDARWIN_macosx_CACHED_SYSROOT=/
+		)
 	fi
 
 	cmake-utils_src_configure
