@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
-inherit eutils flag-o-matic
+inherit flag-o-matic
 
 DESCRIPTION="Ben Fennema's tools for packet writing and the UDF filesystem"
 HOMEPAGE="https://github.com/pali/udftools/ https://sourceforge.net/projects/linux-udf/"
@@ -16,6 +16,8 @@ IUSE=""
 
 RDEPEND="sys-libs/readline:0="
 DEPEND="${RDEPEND}"
+
+PATCHES=( "${FILESDIR}/${P}-sysmacros.patch" )
 
 src_install() {
 	default
