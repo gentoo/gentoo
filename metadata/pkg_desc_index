@@ -8750,7 +8750,7 @@ net-misc/htbinit 0.8.5-r7: Sets up Hierachical Token Bucket based traffic contro
 net-misc/htpdate 1.0.7: Synchronize local workstation with time offered by remote webservers
 net-misc/httptype 1.3.9-r1: Returns the http host software of a website
 net-misc/hylafaxplus 5.5.5: Enterprise client-server fax package for class 1 and 2 fax modems
-net-misc/icaclient 13.6.0.10243651: ICA Client for Citrix Presentation servers
+net-misc/icaclient 13.7.0.10276927: ICA Client for Citrix Presentation servers
 net-misc/icecast 2.4.3: Opensource alternative to shoutcast that supports mp3, ogg and aac streaming
 net-misc/ices 2.0.1-r1: Icecast OGG streaming client, supports on the fly re-encoding
 net-misc/ifenslave 1.1.0-r6: Attach and detach slave interfaces to a bonding device
