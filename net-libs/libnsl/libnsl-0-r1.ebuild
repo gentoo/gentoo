@@ -3,6 +3,9 @@
 
 EAPI=6
 
+# Used only to populate IUSE, bug 643058
+inherit multilib-build
+
 DESCRIPTION="Public client interface for NIS(YP) and NIS+ in a IPv6 ready version"
 HOMEPAGE="https://github.com/thkukuk/libnsl"
 
