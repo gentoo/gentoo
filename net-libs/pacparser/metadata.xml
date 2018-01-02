@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>bicatali@gentoo.org</email>
-  </maintainer>
+  <!-- maintainer-needed -->
   <longdescription>
   A library to parse proxy auto-config (PAC) files. Proxy auto-config
   files are a vastly used proxy configuration method these days. Web

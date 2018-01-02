@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>bicatali@gentoo.org</email>
-  </maintainer>
+  <!-- maintainer-needed -->
   <longdescription lang="en">
   The CernVM File System is a client-server file system developed to
   deliver software stacks onto virtual machines in a fast, scalable,
@@ -16,11 +14,11 @@
   SHA-1 keys.
   </longdescription>
   <use>
-    <flag name='aufs'>Use AUFS instead of OverlayFS for the server</flag>    
+    <flag name="aufs">Use AUFS instead of OverlayFS for the server</flag>    
     <flag name="client">Install the cvmfs client programs and init script</flag>
     <flag name="preload">Install the cvmfs cache preloader for distributed file systems</flag>    
     <flag name="server">Install the cvmfsd program and init script</flag>
-    <flag name='test-programs'>Install unit test programs</flag>    
+    <flag name="test-programs">Install unit test programs</flag>    
   </use>
   <upstream>
     <remote-id type="github">cvmfs/cvmfs</remote-id>
