@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -316,8 +316,10 @@ src_install() {
 	done
 	dosym ${vbox_inst_path}/VBoxTunctl /usr/bin/VBoxTunctl
 
-	# VRDPAuth only works with this (bug #351949)
-	dosym VBoxAuth.so ${vbox_inst_path}/VRDPAuth.so
+	if use pam ; then
+		# VRDPAuth only works with this (bug #351949)
+		dosym VBoxAuth.so ${vbox_inst_path}/VRDPAuth.so
+	fi
 
 	# set an env-variable for 3rd party tools
 	echo -n "VBOX_APP_HOME=${vbox_inst_path}" > "${T}/90virtualbox"
