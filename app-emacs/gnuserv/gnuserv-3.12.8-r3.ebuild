@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit elisp multilib desktop fdo-mime
+inherit elisp multilib desktop xdg-utils
 
 DESCRIPTION="Attach to an already running Emacs"
 HOMEPAGE="http://meltin.net/hacks/emacs/"
@@ -11,22 +11,18 @@ SRC_URI="http://meltin.net/hacks/emacs/src/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86 ~x86-linux ~ppc-macos"
+KEYWORDS="~amd64 ~ppc ~x86 ~x86-linux ~ppc-macos"
 IUSE="X"
 
 DEPEND=">=app-eselect/eselect-emacs-1.15
 	X? ( x11-libs/libXau )"
-RDEPEND="${DEPEND}
-	!!app-emacs/gnuserv-programs
-	!!<app-editors/xemacs-21.4.22-r3
-	!!~app-editors/xemacs-21.5.29 !!~app-editors/xemacs-21.5.30
-	!!~app-editors/xemacs-21.5.31 !!~app-editors/xemacs-21.5.33
-	!!=app-editors/xemacs-21.5.34 !!=app-editors/xemacs-21.5.34-r1"
+RDEPEND="${DEPEND}"
 
 SITEFILE="50${PN}-gentoo.el"
 
 src_prepare() {
 	sed -i -e 's/exec gnuclient/&-emacs/' gnudoit || die
+	eapply_user
 }
 
 src_configure() {
@@ -61,12 +57,12 @@ src_install() {
 
 pkg_postinst() {
 	elisp-site-regen
-	use X && fdo-mime_desktop_database_update
+	use X && xdg_desktop_database_update
 	eselect gnuclient update ifunset
 }
 
 pkg_postrm() {
 	elisp-site-regen
-	use X && fdo-mime_desktop_database_update
+	use X && xdg_desktop_database_update
 	eselect gnuclient update ifunset
 }
