@@ -9699,7 +9699,7 @@ sys-apps/kbd 1.15.5-r1 2.0.3: Keyboard and console utilities
 sys-apps/kexec-tools 2.0.4-r2 2.0.14: Load another kernel from the currently executing Linux kernel
 sys-apps/keyutils 1.5.9-r1: Linux Key Management Utilities
 sys-apps/kmod 23: library and tools for managing linux kernel modules
-sys-apps/less 487: Excellent text file viewer
+sys-apps/less 487 529: Excellent text file viewer
 sys-apps/lm_sensors 3.4.0_p20160725: Hardware Monitoring user-space utilities
 sys-apps/lnxhc 1.2-r1: Linux Health Checker
 sys-apps/logwatch 7.4.3: Analyzes and Reports on system logs
@@ -10448,7 +10448,7 @@ www-servers/apache 2.2.34 2.4.27-r1: The Apache Web Server
 www-servers/gunicorn 19.1.1 19.6.0: A WSGI HTTP Server for UNIX
 www-servers/lighttpd 1.4.42 1.4.45: Lightweight high-performance web server
 www-servers/monkeyd 1.6.9-r1: A small, fast, and scalable web server
-www-servers/nginx 1.12.1: Robust, small and high performance http and reverse proxy server
+www-servers/nginx 1.12.1 1.12.2-r1: Robust, small and high performance http and reverse proxy server
 www-servers/spawn-fcgi 1.6.3-r1: A FCGI spawner for lighttpd and cherokee and other webservers
 www-servers/thttpd 2.27.1: Fork of thttpd, a small, fast, multiplexing webserver
 www-servers/tomcat 7.0.82 8.0.47 8.5.23: Tomcat Servlet-3.1/JSP-2.3/EL-3.0/WebSocket-1.1/JASPIC-1.1 Container
