@@ -11,12 +11,13 @@ SRC_URI="http://www.geeqie.org/${P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="debug doc exif gpu-accel gtk3 jpeg lcms lirc lua map tiff xmp"
+IUSE="debug doc exif ffmpegthumbnailer gpu-accel gtk3 jpeg lcms lirc lua map tiff xmp"
 
 RDEPEND="gtk3? ( x11-libs/gtk+:3 )
 	!gtk3? ( x11-libs/gtk+:2 )
 	virtual/libintl
 	doc? ( app-text/gnome-doc-utils )
+	ffmpegthumbnailer? ( media-video/ffmpegthumbnailer )
 	gpu-accel? ( media-libs/clutter-gtk )
 	jpeg? ( virtual/jpeg:0 )
 	lcms? ( media-libs/lcms:2 )
@@ -47,6 +48,7 @@ src_configure() {
 	local myconf="--disable-dependency-tracking
 		--with-readmedir="${EPREFIX}"/usr/share/doc/${PF}
 		$(use_enable debug debug-log)
+		$(use_enable ffmpegthumbnailer)
 		$(use_enable gpu-accel)
 		$(use_enable gtk3)
 		$(use_enable jpeg)
