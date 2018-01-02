@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit elisp multilib fdo-mime
+inherit elisp multilib desktop fdo-mime
 
 DESCRIPTION="Attach to an already running Emacs"
 HOMEPAGE="http://meltin.net/hacks/emacs/"
