@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 WX_GTK_VER="3.0-gtk3"
 
-inherit autotools eutils flag-o-matic multilib wxwidgets
+inherit autotools eutils flag-o-matic gnome2-utils multilib wxwidgets
 
 MY_PV=${PV/_/-}
 MY_P="FileZilla_${MY_PV}"
@@ -65,4 +65,12 @@ src_configure() {
 	econf $(use_with dbus) $(use_enable nls locales) \
 		--with-pugixml=system \
 		--disable-autoupdatecheck
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
 }
