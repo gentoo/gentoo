@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,14 +27,6 @@ RDEPEND="media-sound/pulseaudio
 DEPEND="sys-devel/autoconf-archive
 	virtual/pkgconfig
 	${RDEPEND}"
-
-src_prepare() {
-	default
-
-	# ugly hackaround for split tinfo ncurses libs
-	sed '/link_libraries.*ncurses/s@\(")\)@" "tinfo\1@' \
-		-i CMakeLists.txt || die
-}
 
 src_configure() {
 	local mycmakeargs=(
