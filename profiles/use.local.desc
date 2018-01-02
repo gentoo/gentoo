@@ -2627,6 +2627,7 @@ media-gfx/fbida:ghostscript - Install the framebuffer ghostscript viewer "fbgs"
 media-gfx/fbida:webp - Enable support for the WebP image format
 media-gfx/fontforge:truetype-debugger - Enable truetype debugger in fontforge
 media-gfx/fotowall:webcam - Enable webcam support
+media-gfx/geeqie:ffmpegthumbnailer - Enable video thumbnail support with media-video/ffmpegthumbnailer
 media-gfx/geeqie:gpu-accel - Enable GPU acceleration support - experimental
 media-gfx/geeqie:gtk3 - Link against x11-libs/gtk+:3 instead of x11-libs/gtk+:2
 media-gfx/geeqie:map - Enable items map display - experimental
