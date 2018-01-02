@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -49,7 +49,7 @@ COMMON_DEPEND="
 	acl? ( sys-apps/acl )
 	apache2? ( || ( >=www-servers/apache-2.4[apache2_modules_unixd,threads=]
 		<www-servers/apache-2.4[threads=] ) )
-	argon2? ( app-crypt/argon2 )
+	argon2? ( app-crypt/argon2:= )
 	berkdb? ( || (	sys-libs/db:5.3
 					sys-libs/db:5.1
 					sys-libs/db:4.8
