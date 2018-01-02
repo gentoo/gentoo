@@ -1437,7 +1437,7 @@ app-text/scrollkeeper 9999-r1: Dummy scrollkeeper for testing rarian
 app-text/scrollkeeper-dtd 1.0: DTD from the Scrollkeeper package
 app-text/sdcv 0.5.0_beta2: Console version of Stardict program
 app-text/searchmonkey 2.0.0: Powerful text searches using regular expressions
-app-text/sgml-common 0.6.3-r5: Base ISO character entities and utilities for SGML
+app-text/sgml-common 0.6.3-r6: Base ISO character entities and utilities for SGML
 app-text/sgmltools-lite 3.0.3-r14: Python interface to SGML software in a DocBook/OpenJade env
 app-text/silvercity 0.9.7-r1: A lexical analyser for many languages
 app-text/sloccount 2.26-r3: Tools for counting Source Lines of Code (SLOC) for a large number of languages
@@ -3164,7 +3164,7 @@ dev-libs/mimetic 0.9.8: C++ MIME library designed to be easy to use and integrat
 dev-libs/mini-xml 2.10: Small XML parsing library to read XML and XML-like data files
 dev-libs/mm 1.4.2-r1: Shared Memory Abstraction Library
 dev-libs/mongo-c-driver 0.7.1-r1: C Driver for MongoDB
-dev-libs/mpc 1.0.1 1.0.2-r1 1.0.3: A library for multiprecision complex arithmetic with exact rounding
+dev-libs/mpc 1.0.2-r1 1.0.3: A library for multiprecision complex arithmetic with exact rounding
 dev-libs/mpfr 3.1.3_p4 3.1.6: library for multiple-precision floating-point computations with exact rounding
 dev-libs/nettle 3.3-r2: Low-level cryptographic library
 dev-libs/newt 0.52.15: Redhat's Newt windowing toolkit development files
