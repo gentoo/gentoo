@@ -28,17 +28,17 @@ IUSE="${IUSE}
 	${SAPIS/cli/+cli}
 	threads"
 
-IUSE="${IUSE} acl argon2 bcmath berkdb bzip2 calendar cdb cjk
-	coverage +ctype curl debug
+IUSE="${IUSE} acl bcmath berkdb bzip2 calendar cdb cjk
+	coverage crypt +ctype curl debug
 	enchant exif +fileinfo +filter firebird
 	flatfile ftp gd gdbm gmp +hash +iconv imap inifile
-	intl iodbc ipv6 +json kerberos ldap ldap-sasl libedit libressl lmdb
+	intl iodbc ipv6 +json kerberos ldap ldap-sasl libedit libressl
 	mhash mssql mysql mysqli nls
 	oci8-instant-client odbc +opcache pcntl pdo +phar +posix postgres qdbm
 	readline recode selinux +session sharedmem
-	+simplexml snmp soap sockets sodium spell sqlite ssl
-	sysvipc systemd test tidy +tokenizer tokyocabinet truetype unicode wddx webp
-	+xml xmlreader xmlwriter xmlrpc xpm xslt zip zip-encryption zlib"
+	+simplexml snmp soap sockets spell sqlite ssl
+	sysvipc systemd tidy +tokenizer truetype unicode wddx webp
+	+xml xmlreader xmlwriter xmlrpc xpm xslt zip zlib"
 
 # The supported (that is, autodetected) versions of BDB are listed in
 # the ./configure script. Other versions *work*, but we need to stick to
@@ -49,22 +49,32 @@ COMMON_DEPEND="
 	acl? ( sys-apps/acl )
 	apache2? ( || ( >=www-servers/apache-2.4[apache2_modules_unixd,threads=]
 		<www-servers/apache-2.4[threads=] ) )
-	argon2? ( app-crypt/argon2:= )
-	berkdb? ( || (	sys-libs/db:5.3
+	berkdb? ( || ( sys-libs/db:5.3
 					sys-libs/db:5.1
 					sys-libs/db:4.8
 					sys-libs/db:4.7
 					sys-libs/db:4.6
 					sys-libs/db:4.5 ) )
-	bzip2? ( app-arch/bzip2 )
+	bzip2? ( app-arch/bzip2:0= )
 	cdb? ( || ( dev-db/cdb dev-db/tinycdb ) )
+	cjk? ( !gd? (
+		virtual/jpeg:0
+		media-libs/libpng:0=
+		sys-libs/zlib:0=
+	) )
 	coverage? ( dev-util/lcov )
+	crypt? ( >=dev-libs/libmcrypt-2.4 )
 	curl? ( >=net-misc/curl-7.10.5 )
 	enchant? ( app-text/enchant )
+	exif? ( !gd? (
+		virtual/jpeg:0
+		media-libs/libpng:0=
+		sys-libs/zlib:0=
+	) )
 	firebird? ( dev-db/firebird )
-	gd? ( virtual/jpeg:0 media-libs/libpng:0= sys-libs/zlib )
-	gdbm? ( >=sys-libs/gdbm-1.8.0 )
-	gmp? ( dev-libs/gmp:0 )
+	gd? ( virtual/jpeg:0 media-libs/libpng:0= sys-libs/zlib:0= )
+	gdbm? ( >=sys-libs/gdbm-1.8.0:0= )
+	gmp? ( dev-libs/gmp:0= )
 	iconv? ( virtual/libiconv )
 	imap? ( virtual/imap-c-client[kerberos=,ssl=] )
 	intl? ( dev-libs/icu:= )
@@ -73,7 +83,6 @@ COMMON_DEPEND="
 	ldap? ( >=net-nds/openldap-1.2.11 )
 	ldap-sasl? ( dev-libs/cyrus-sasl >=net-nds/openldap-1.2.11 )
 	libedit? ( || ( sys-freebsd/freebsd-lib dev-libs/libedit ) )
-	lmdb? ( dev-db/lmdb:= )
 	mssql? ( dev-db/freetds[mssql] )
 	nls? ( sys-devel/gettext )
 	oci8-instant-client? ( dev-db/oracle-instantclient-basic )
@@ -86,28 +95,33 @@ COMMON_DEPEND="
 	simplexml? ( >=dev-libs/libxml2-2.6.8 )
 	snmp? ( >=net-analyzer/net-snmp-5.2 )
 	soap? ( >=dev-libs/libxml2-2.6.8 )
-	sodium? ( dev-libs/libsodium:= )
 	spell? ( >=app-text/aspell-0.50 )
 	sqlite? ( >=dev-db/sqlite-3.7.6.3 )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0 )
-		libressl? ( dev-libs/libressl )
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
 	)
-	tidy? ( || ( app-text/tidy-html5 app-text/htmltidy ) )
-	tokyocabinet? ( dev-db/tokyocabinet )
-	truetype? ( =media-libs/freetype-2* )
+	tidy? ( app-text/htmltidy )
+	truetype? (
+		=media-libs/freetype-2*
+		!gd? (
+			virtual/jpeg:0 media-libs/libpng:0= sys-libs/zlib:0= )
+	)
 	unicode? ( dev-libs/oniguruma:= )
 	wddx? ( >=dev-libs/libxml2-2.6.8 )
-	webp? ( media-libs/libwebp )
+	webp? ( media-libs/libwebp:0= )
 	xml? ( >=dev-libs/libxml2-2.6.8 )
 	xmlrpc? ( >=dev-libs/libxml2-2.6.8 virtual/libiconv )
 	xmlreader? ( >=dev-libs/libxml2-2.6.8 )
 	xmlwriter? ( >=dev-libs/libxml2-2.6.8 )
-	xpm? ( x11-libs/libXpm )
+	xpm? (
+		x11-libs/libXpm
+		virtual/jpeg:0
+		media-libs/libpng:0= sys-libs/zlib:0=
+	)
 	xslt? ( dev-libs/libxslt >=dev-libs/libxml2-2.6.8 )
-	zip? ( sys-libs/zlib )
-	zip-encryption? ( >=dev-libs/libzip-1.2.0:= )
-	zlib? ( sys-libs/zlib )
+	zip? ( sys-libs/zlib:0= )
+	zlib? ( sys-libs/zlib:0= )
 "
 
 RDEPEND="${COMMON_DEPEND}
@@ -116,12 +130,12 @@ RDEPEND="${COMMON_DEPEND}
 		selinux? ( sec-policy/selinux-phpfpm )
 		systemd? ( sys-apps/systemd ) )"
 
-# Bison isn't actually needed when building from a release tarball
-# However, the configure script will warn if it's absent or if you
-# have an incompatible version installed. See bug 593278.
 DEPEND="${COMMON_DEPEND}
 	app-arch/xz-utils
-	>=sys-devel/bison-3.0.1"
+	>=sys-devel/bison-3.0.1
+	sys-devel/flex
+	>=sys-devel/m4-1.4.3
+	>=sys-devel/libtool-1.5.18"
 
 # Without USE=readline or libedit, the interactive "php -a" CLI will hang.
 REQUIRED_USE="
@@ -147,7 +161,6 @@ REQUIRED_USE="
 	recode? ( !imap !mysqli !mysql )
 	sharedmem? ( !threads )
 	mysql? ( || ( mysqli pdo ) )
-	zip-encryption? ( zip )
 "
 
 PHP_MV="$(get_major_version)"
@@ -243,7 +256,6 @@ src_configure() {
 
 	our_conf+=(
 		$(use_with acl fpm-acl)
-		$(use_with argon2 password-argon2 "${EPREFIX}/usr")
 		$(use_enable bcmath bcmath)
 		$(use_with bzip2 bz2 "${EPREFIX}/usr")
 		$(use_enable calendar calendar)
@@ -269,6 +281,7 @@ src_configure() {
 		$(use_enable xml libxml)
 		$(use_with xml libxml-dir "${EPREFIX}/usr")
 		$(use_enable unicode mbstring)
+		$(use_with crypt mcrypt "${EPREFIX}/usr")
 		$(use_with unicode onig "${EPREFIX}/usr")
 		$(use_with ssl openssl "${EPREFIX}/usr")
 		$(use_with ssl openssl-dir "${EPREFIX}/usr")
@@ -285,7 +298,6 @@ src_configure() {
 		$(use_with snmp snmp "${EPREFIX}/usr")
 		$(use_enable soap soap)
 		$(use_enable sockets sockets)
-		$(use_with sodium sodium "${EPREFIX}/usr")
 		$(use_with sqlite sqlite3 "${EPREFIX}/usr")
 		$(use_enable sysvipc sysvmsg)
 		$(use_enable sysvipc sysvsem)
@@ -300,14 +312,13 @@ src_configure() {
 		$(use_with xmlrpc xmlrpc)
 		$(use_with xslt xsl "${EPREFIX}/usr")
 		$(use_enable zip zip)
-		$(use_with zip-encryption libzip "${EPREFIX}/usr")
 		$(use_with zlib zlib "${EPREFIX}/usr")
 		$(use_enable debug debug)
 	)
 
 	# DBA support
 	if use cdb || use berkdb || use flatfile || use gdbm || use inifile \
-		|| use qdbm || use lmdb || use tokyocabinet ; then
+		|| use qdbm ; then
 		our_conf+=( "--enable-dba${shared}" )
 	fi
 
@@ -319,7 +330,6 @@ src_configure() {
 		$(use_with gdbm gdbm "${EPREFIX}/usr")
 		$(use_enable inifile inifile)
 		$(use_with qdbm qdbm "${EPREFIX}/usr")
-		$(use_with lmdb lmdb "${EPREFIX}/usr")
 	)
 
 	# Support for the GD graphics library
@@ -407,13 +417,9 @@ src_configure() {
 	# we use the system copy of pcre
 	# --with-pcre-regex affects ext/pcre
 	# --with-pcre-dir affects ext/filter and ext/zip
-	# --with-pcre-valgrind cannot be enabled with system pcre
-	# Many arches don't support pcre-jit
 	our_conf+=(
 		--with-pcre-regex="${EPREFIX}/usr"
 		--with-pcre-dir="${EPREFIX}/usr"
-		--without-pcre-valgrind
-		--without-pcre-jit
 	)
 
 	# Catch CFLAGS problems
