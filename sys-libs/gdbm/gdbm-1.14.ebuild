@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit flag-o-matic libtool multilib multilib-minimal
+inherit autotools flag-o-matic multilib multilib-minimal
 
 EX_P="${PN}-1.8.3"
 DESCRIPTION="Standard GNU database libraries"
@@ -24,7 +24,8 @@ RDEPEND="${DEPEND}"
 EX_S="${WORKDIR}/${EX_P}"
 
 src_prepare() {
-	elibtoolize
+	default
+	eautoreconf
 }
 
 multilib_src_configure() {
@@ -59,14 +60,8 @@ multilib_src_compile() {
 multilib_src_install_all() {
 	einstalldocs
 
-	use static-libs || find "${ED}" -name '*.la' -delete
+	if ! use static-libs ; then
+		find "${ED}" -name '*.la' -delete || die
+	fi
 	mv "${ED%/}"/usr/include/gdbm/gdbm.h "${ED%/}"/usr/include/ || die
-}
-
-pkg_preinst() {
-	preserve_old_lib libgdbm{,_compat}.so.{2,3} #32510
-}
-
-pkg_postinst() {
-	preserve_old_lib_notify libgdbm{,_compat}.so.{2,3} #32510
 }

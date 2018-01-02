@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ else
 	else
 		MY_PV="$PV-ce"
 	fi
-	DOCKER_GITCOMMIT="afdb6d4"
+	DOCKER_GITCOMMIT="1caf76c"
 	EGIT_COMMIT="v${MY_PV}"
 	SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm"
@@ -60,9 +60,9 @@ RDEPEND="
 	sys-process/procps
 	>=dev-vcs/git-1.7
 	>=app-arch/xz-utils-4.9
-
-	~app-emulation/containerd-0.2.9_p20170917
-	~app-emulation/docker-runc-1.0.0_rc4_p20170917[apparmor?,seccomp?]
+	dev-libs/libltdl
+	~app-emulation/containerd-1.0.0
+	~app-emulation/docker-runc-1.0.0_rc4_p20171108[apparmor?,seccomp?]
 	>=app-emulation/docker-proxy-0.8.0_p20170917
 	container-init? ( >=sys-process/tini-0.16.1[static] )
 "
@@ -254,7 +254,7 @@ src_compile() {
 	./gen-manpages --root . --target ./man/man1 || die
 	./man/md2man-all.sh -q || die
 	rm gen-manpages || die
-	# see "components/cli/scripts/docs/generate-man.sh" (which also does "go get" for go-md2man) 
+	# see "components/cli/scripts/docs/generate-man.sh" (which also does "go get" for go-md2man)
 
 	popd || die # components/cli
 }
