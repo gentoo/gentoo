@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -28,7 +28,7 @@ LIB_DEPEND="
 	dev-libs/libgpg-error[static-libs(+)]
 	dev-libs/popt[static-libs(+)]
 	>=sys-apps/util-linux-2.31-r1[static-libs(+)]
-	argon2? ( app-crypt/argon2[static-libs(+)] )
+	argon2? ( app-crypt/argon2:=[static-libs(+)] )
 	gcrypt? ( dev-libs/libgcrypt:0=[static-libs(+)] )
 	nettle? ( >=dev-libs/nettle-2.4[static-libs(+)] )
 	openssl? (
