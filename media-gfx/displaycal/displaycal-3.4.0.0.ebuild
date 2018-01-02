@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1 xdg
+inherit distutils-r1 gnome2-utils xdg
 
 MY_PN="DisplayCAL"
 MY_P="${MY_PN}-${PV}"
@@ -51,4 +51,14 @@ src_prepare() {
 		-i misc/displaycal-vrml-to-x3d-converter.desktop || die
 
 	distutils-r1_src_prepare
+}
+
+pkg_postinst() {
+	xdg_pkg_postinst
+	gnome2_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_pkg_postrm
+	gnome2_icon_cache_update
 }
