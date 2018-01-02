@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
 inherit cmake-utils eapi7-ver flag-o-matic llvm \
-	multilib-minimal pax-utils python-single-r1 toolchain-funcs
+	multilib-minimal pax-utils prefix python-single-r1 toolchain-funcs
 
 MY_P=cfe-${PV/_/}.src
 EXTRA_P=clang-tools-extra-${PV/_/}.src
@@ -68,6 +68,8 @@ CMAKE_BUILD_TYPE=RelWithDebInfo
 PATCHES=(
 	# fix finding compiler-rt libs
 	"${FILESDIR}"/5.0.0/0001-Driver-Use-arch-type-to-find-compiler-rt-libraries-o.patch
+	# add Prefix include paths for Darwin
+	"${FILESDIR}"/5.0.0/darwin_prefix-include-paths.patch
 )
 
 # Multilib notes:
@@ -108,6 +110,11 @@ src_unpack() {
 		einfo "Unpacking llvm-${PV}-manpages.tar.bz2 ..."
 		tar -xf "${DISTDIR}/llvm-${PV}-manpages.tar.bz2" || die
 	fi
+}
+
+src_prepare() {
+	default
+	eprefixify lib/Frontend/InitHeaderSearch.cpp
 }
 
 multilib_src_configure() {

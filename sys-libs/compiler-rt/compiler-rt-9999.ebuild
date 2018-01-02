@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -80,6 +80,13 @@ src_configure() {
 		-DCOMPILER_RT_BUILD_SANITIZERS=OFF
 		-DCOMPILER_RT_BUILD_XRAY=OFF
 	)
+
+	if use prefix && [[ "${CHOST}" == *-darwin* ]] ; then
+		mycmakeargs+=(
+			# disable use of SDK for the system itself
+			-DDARWIN_macosx_CACHED_SYSROOT=/
+		)
+	fi
 
 	if use test; then
 		mycmakeargs+=(
