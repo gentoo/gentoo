@@ -5,43 +5,46 @@ EAPI=6
 
 # Ignore rudimentary et, uz@Latn, zh_TW translation(s).
 PLOCALES="cs cs_CZ de es es_MX fr gl hu it ja_JP lt nb nl pl pl_PL pt_BR pt_PT ro_RO ru sr sr@latin tr uk zh_CN"
+# Tests require lots of disk space
+CHECKREQS_DISK_BUILD=10G
 
-inherit cmake-utils eutils gnome2-utils l10n virtualx xdg-utils
+inherit check-reqs cmake-utils eutils gnome2-utils l10n virtualx xdg-utils
 
 DESCRIPTION="Extracts audio tracks from an audio CD image to separate tracks"
 HOMEPAGE="https://flacon.github.io/"
-SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/flacon/flacon/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="amd64 x86"
-IUSE="qt5 test"
+KEYWORDS="~amd64 ~x86"
+IUSE="test"
 
-COMMON_DEPEND="
+RDEPEND="
 	app-i18n/uchardet
-	!qt5? (
-		dev-qt/qtcore:4
-		dev-qt/qtgui:4
-	)
-	qt5? (
-		dev-qt/qtcore:5
-		dev-qt/qtnetwork:5
-		dev-qt/qtwidgets:5
-	)
+	dev-qt/qtcore:5
+	dev-qt/qtnetwork:5
+	dev-qt/qtwidgets:5
 "
-RDEPEND="${COMMON_DEPEND}
-	media-sound/shntool
-"
-DEPEND="${COMMON_DEPEND}
+DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	qt5? ( dev-qt/linguist-tools:5 )
+	dev-qt/linguist-tools:5
 	test? (
+		dev-qt/qttest:5
+		media-libs/flac
+		media-sound/mac
 		media-sound/shntool
-		virtual/ffmpeg
-		!qt5? ( dev-qt/qttest:4 )
-		qt5? ( dev-qt/qttest:5 )
+		media-sound/ttaenc
+		media-sound/wavpack
 	)
 "
+
+pkg_pretend() {
+	use test && check-reqs_pkg_pretend
+}
+
+pkg_setup() {
+	use test && check-reqs_pkg_setup
+}
 
 src_prepare() {
 	cmake-utils_src_prepare
@@ -60,20 +63,13 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DUSE_QT4="$(usex !qt5)"
-		-DUSE_QT5="$(usex qt5)"
-		-DTEST_DATA_DIR="${S}/tests/data/"
-		-DBUILD_TESTS="$(usex test 'Yes')"
+		-DBUILD_TESTS="$(usex test)"
 	)
 	cmake-utils_src_configure
 }
 
 src_test() {
 	virtx "${BUILD_DIR}/tests/${PN}_test"
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
 }
 
 pkg_postinst() {
