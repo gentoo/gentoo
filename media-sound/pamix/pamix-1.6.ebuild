@@ -28,13 +28,9 @@ DEPEND="sys-devel/autoconf-archive
 	virtual/pkgconfig
 	${RDEPEND}"
 
-src_prepare() {
-	default
-
-	# ugly hackaround for split tinfo ncurses libs
-	sed '/link_libraries.*ncurses/s@\(")\)@" "tinfo\1@' \
-		-i CMakeLists.txt || die
-}
+PATCHES=(
+	"${FILESDIR}/${P}-ncurses_pkgconfig.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(
