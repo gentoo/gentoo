@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,8 +12,8 @@ SRC_URI="amd64? ( linuxx64-${PV}.tar.gz )
 
 LICENSE="icaclient"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
-IUSE="gstreamer010 nsplugin linguas_de linguas_es linguas_fr linguas_ja linguas_zh_CN"
+KEYWORDS="-* ~amd64 ~x86"
+IUSE="nsplugin linguas_de linguas_es linguas_fr linguas_ja linguas_zh_CN"
 RESTRICT="mirror strip userpriv fetch"
 
 ICAROOT="/opt/Citrix/ICAClient"
@@ -40,7 +40,6 @@ RDEPEND="
 	media-libs/speex
 	net-dns/libidn
 	net-libs/libsoup:2.4
-	net-libs/webkit-gtk:2
 	sys-libs/e2fsprogs-libs
 	sys-libs/zlib
 	virtual/krb5
@@ -56,10 +55,6 @@ RDEPEND="
 	x11-libs/libXrender
 	x11-libs/libXt
 	x11-libs/pango
-	gstreamer010? (
-		media-libs/gst-plugins-base:0.10
-		media-libs/gstreamer:0.10
-	)
 "
 DEPEND=""
 
@@ -173,10 +168,6 @@ src_install() {
 	dosym /etc/ssl/certs "${ICAROOT}"/keystore/cacerts
 
 	exeinto "${ICAROOT}"/util
-	# echo_cmd, gst_aud_play and gst_aud_read still require gst-0.10
-	if use gstreamer010 ; then
-		doexe util/{echo_cmd,gst_aud_play,gst_aud_read,gst_play0.10,gst_read0.10,libgstflatstm0.10.so}
-	fi
 	doexe util/{configmgr,conncenter,gst_play1.0,gst_read1.0,hdxcheck.sh,icalicense.sh,libgstflatstm1.0.so}
 	doexe util/{lurdump,new_store,nslaunch,pnabrowse,storebrowse,sunraymac.sh,what,xcapture}
 
