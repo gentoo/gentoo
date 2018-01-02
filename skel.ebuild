@@ -13,9 +13,9 @@
 EAPI=6
 
 # inherit lists eclasses to inherit functions from. For example, an ebuild
-# that needs the epatch function from eutils.eclass won't work without the
-# following line:
-inherit eutils
+# that needs the eautoreconf function from autotools.eclass won't work
+# without the following line:
+#inherit autotools
 #
 # eclasses tend to list descriptions of how to use their functions properly.
 # take a look at /usr/portage/eclass/ for more examples.
@@ -46,7 +46,7 @@ LICENSE=""
 # of each SLOT and remove everything else.
 # Note that normal applications should use SLOT="0" if possible, since
 # there should only be exactly one version installed at a time.
-# DO NOT USE SLOT=""! This tells Portage to disable SLOTs for this package.
+# Do not use SLOT="", because the SLOT variable must not be empty.
 SLOT="0"
 
 # Using KEYWORDS, we can record masking information *inside* an ebuild
@@ -54,22 +54,21 @@ SLOT="0"
 # set the KEYWORDS variable for every ebuild so that it contains the names of
 # all the architectures with which the ebuild works.  All of the official
 # architectures can be found in the arch.list file which is in
-# /usr/portage/profiles/.  Usually you should just set this to "~x86".  The ~
-# in front of the architecture indicates that the package is new and should be
-# considered unstable until testing proves its stability.  So, if you've
-# confirmed that your ebuild works on x86 and ppc, you'd specify:
-# KEYWORDS="~x86 ~ppc"
+# /usr/portage/profiles/.  Usually you should just set this to "~amd64".
+# The ~ in front of the architecture indicates that the package is new and
+# should be considered unstable until testing proves its stability.  So, if
+# you've confirmed that your ebuild works on amd64 and ppc, you'd specify:
+# KEYWORDS="~amd64 ~ppc"
 # Once packages go stable, the ~ prefix is removed.
 # For binary packages, use -* and then list the archs the bin package
 # exists for.  If the package was for an x86 binary package, then
 # KEYWORDS would be set like this: KEYWORDS="-* x86"
-# DO NOT USE KEYWORDS="*".  This is deprecated and only for backward
-# compatibility reasons.
-KEYWORDS="~x86"
+# Do not use KEYWORDS="*"; this is not valid in an ebuild context.
+KEYWORDS="~amd64"
 
 # Comprehensive list of any and all USE flags leveraged in the ebuild,
-# with the exception of any ARCH specific flags, i.e. "ppc", "sparc",
-# "x86" and "alpha".  Not needed if the ebuild doesn't use any USE flags.
+# with some exceptions, e.g., ARCH specific flags like "amd64" or "ppc".
+# Not needed if the ebuild doesn't use any USE flags.
 IUSE="gnome X"
 
 # A space delimited list of portage features to restrict. man 5 ebuild
