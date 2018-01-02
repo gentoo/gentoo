@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,8 +6,8 @@ EAPI=6
 inherit cmake-multilib git-r3
 
 DESCRIPTION="Access a working SSH implementation by means of a library"
-HOMEPAGE="http://www.libssh.org/"
-EGIT_REPO_URI="git://git.libssh.org/projects/libssh.git"
+HOMEPAGE="https://www.libssh.org/"
+EGIT_REPO_URI="https://git.libssh.org/projects/libssh.git"
 
 LICENSE="LGPL-2.1"
 KEYWORDS=""
