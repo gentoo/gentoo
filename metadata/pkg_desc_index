@@ -1479,7 +1479,7 @@ app-text/xchm 1.23-r1: Utility for viewing Compiled HTML Help (CHM) files
 app-text/xdvik 22.87.03: DVI previewer for X Window System
 app-text/xfbib 0.0.2-r1: a lightweight BibTeX editor
 app-text/xhtml1 20020801-r4: DTDs for the eXtensible HyperText Markup Language 1.0
-app-text/xindy 2.4: A Flexible Indexing System
+app-text/xindy 2.4-r1: A Flexible Indexing System
 app-text/xiphos 4.0.6a: A bible study frontend for Sword (formerly known as GnomeSword)
 app-text/xlhtml 0.5.1_p6: Convert MS Excel and Powerpoint files to HTML
 app-text/xml2doc 20030510-r1: Tool to convert simple XML to a variety of formats (pdf, html, txt, manpage)
