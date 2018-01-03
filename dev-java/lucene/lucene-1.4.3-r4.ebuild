@@ -1,28 +1,30 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+EAPI=6
+
 JAVA_PKG_IUSE="doc examples source test"
+
 inherit java-pkg-2 java-ant-2
 
-DESCRIPTION="High-performance, full-featured text search engine written entirely in Java"
-HOMEPAGE="http://lucene.apache.org"
+DESCRIPTION="High-performance, full-featured Java text search engine"
+HOMEPAGE="https://lucene.apache.org"
 SRC_URI="mirror://apache/lucene/java/archive/${P}-src.tar.gz"
+
+KEYWORDS="amd64 x86 ~x86-fbsd"
 LICENSE="Apache-1.1"
 SLOT="1"
-KEYWORDS="amd64 x86 ~x86-fbsd"
-IUSE=""
-DEPEND=">=virtual/jdk-1.4
-	test? (
-		=dev-java/junit-3*
-		dev-java/ant-junit
-	)"
-RDEPEND=">=virtual/jdk-1.4"
 
-src_unpack() {
-	unpack ${A}
+DEPEND="
+	>=virtual/jdk-1.6
+	test? ( dev-java/ant-junit:0 )"
 
-	cd "${S}/lib" || die
-	rm -v *.jar || die
+RDEPEND="
+	>=virtual/jre-1.6"
+
+src_prepare() {
+	default
+	java-pkg_clean
 }
 
 src_compile() {
@@ -31,17 +33,20 @@ src_compile() {
 
 src_test() {
 	java-ant_rewrite-classpath build.xml
-	EANT_GENTOO_CLASSPATH="junit ant-core" ANT_TASKS="ant-junit" eant test
+	EANT_GENTOO_CLASSPATH="junit ant-core" \
+		ANT_TASKS="ant-junit" \
+		eant test
 }
 
 src_install() {
-	dodoc CHANGES.txt README.txt || die
+	einstalldocs
 	java-pkg_newjar build/lucene-1.5-rc1-dev.jar
 
 	if use doc; then
-		dohtml -r docs/*
+		dodoc -r docs/*
 		java-pkg_dojavadoc build/docs/api
 	fi
+
 	use examples && java-pkg_doexamples src/demo
 	use source && java-pkg_dosrc src/java/org
 }
