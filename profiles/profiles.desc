@@ -132,18 +132,18 @@ m68k            default/linux/m68k/17.0/desktop/gnome           exp
 m68k            default/linux/m68k/17.0/developer               exp
 
 # MIPS Profiles
-mips            default/linux/mips/13.0/o32                     dev
-mips            default/linux/mips/13.0/n32                     dev
-mips            default/linux/mips/13.0/n64                     exp
-mips            default/linux/mips/13.0/multilib/o32            dev
-mips            default/linux/mips/13.0/multilib/n32            dev
-mips            default/linux/mips/13.0/multilib/n64            exp
-mips            default/linux/mips/13.0/mipsel/o32              dev
-mips            default/linux/mips/13.0/mipsel/n32              dev
-mips            default/linux/mips/13.0/mipsel/n64              exp
-mips            default/linux/mips/13.0/mipsel/multilib/o32     dev
-mips            default/linux/mips/13.0/mipsel/multilib/n32     dev
-mips            default/linux/mips/13.0/mipsel/multilib/n64     exp
+mips            default/linux/mips/13.0/o32                     stable
+mips            default/linux/mips/13.0/n32                     stable
+mips            default/linux/mips/13.0/n64                     stable
+mips            default/linux/mips/13.0/multilib/o32            stable
+mips            default/linux/mips/13.0/multilib/n32            stable
+mips            default/linux/mips/13.0/multilib/n64            stable
+mips            default/linux/mips/13.0/mipsel/o32              stable
+mips            default/linux/mips/13.0/mipsel/n32              stable
+mips            default/linux/mips/13.0/mipsel/n64              stable
+mips            default/linux/mips/13.0/mipsel/multilib/o32     stable
+mips            default/linux/mips/13.0/mipsel/multilib/n32     stable
+mips            default/linux/mips/13.0/mipsel/multilib/n64     stable
 
 # Nios II Profiles
 nios2           default/linux/nios2/13.0                        exp
