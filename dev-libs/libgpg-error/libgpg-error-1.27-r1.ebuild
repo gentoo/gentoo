@@ -37,7 +37,7 @@ src_prepare() {
 
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf \
-		CC_FOR_BUILD=$(tc-getBUILD_CC) \
+		CC_FOR_BUILD="$(tc-getBUILD_CC)" \
 		--enable-threads \
 		$(use_enable nls) \
 		$(use_enable static-libs static) \
