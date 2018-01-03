@@ -1,82 +1,99 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-#
-# Original Author: Jim Ramsay <lack@gentoo.org>
-#
-# Purpose:
-#   Provides common methods used by (almost) all gkrellm plugins:
-#    - Sets up default dependencies
-#    - Adds pkg_setup check to ensure gkrellm was built with USE="X" (bug
-#      167227)
-#    - Provides utility routines in lieu of hard-coding the plugin directories.
-#    - Provides the most common src_install method to avoid code duplication.
-#
-# Utility Routines:
-#   gkrellm-plugin_dir - Returns the gkrellm-2 plugin directory
-#   gkrellm-plugin_server_dir - Returns the gkrellm-2 server plugin directory
-#
-# Environment:
-#   For src_install:
-#     PLUGIN_SO - The name of the plugin's .so file which will be installed in
-#       the plugin dir.  Defaults to "${PN}.so".
-#     PLUGIN_DOCS - An optional list of docs to be installed.  Defaults to
-#       unset.
-#     PLUGIN_SERVER_SO - The name of the plugin's server plugin .so portion.
-#       Defaults to unset.
-#       Important: This will also cause the pkg_setup check to be skipped, so
-#       you need to check 'build_with_use app-admin/gkrellm X' in your
-#       src_compile and only compile the GUI portion if that returns true.  (see
-#       x11-plugins/gkrelltop as an example)
+# @ECLASS: gkrellm-plugin.eclass
+# @MAINTAINER:
+# maintainer-needed@gentoo.org
+# @AUTHOR:
+# Original author: Jim Ramsay
+#   EAPI 6 author: David Seifert
+# @BLURB: Provides src_install used by (almost) all gkrellm plugins
+# @DESCRIPTION:
+# - Sets up default dependencies
+# - Provides a common src_install method to avoid code duplication
 #
 # Changelog:
+#   03 January 2018: David Seifert <soap@gentoo.org>
+#     - Port to EAPI 6, remove built_with_use, simplify a lot
 #   12 March 2007: Jim Ramsay <lack@gentoo.org>
 #     - Added server plugin support
 #   09 March 2007: Jim Ramsay <lack@gentoo.org>
 #     - Initial commit
 #
 
-inherit multilib eutils
+# @ECLASS-VARIABLE: PLUGIN_SO
+# @DESCRIPTION:
+# The name of the plugin's .so file which will be installed in
+# the plugin dir. Defaults to "${PN}$(get_modname)". Has to be a bash array.
 
-RDEPEND="=app-admin/gkrellm-2*"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+# @ECLASS-VARIABLE: PLUGIN_SERVER_SO
+# @DESCRIPTION:
+# The name of the plugin's server plugin $(get_modname) portion.
+# Unset by default. Has to be a bash array.
 
-gkrellm-plugin_dir() {
-	echo /usr/$(get_libdir)/gkrellm2/plugins
-}
+# @ECLASS-VARIABLE: PLUGIN_DOCS
+# @DESCRIPTION:
+# An optional list of docs to be installed, in addition to the default
+# DOCS variable which is respected too. Has to be a bash array.
 
-gkrellm-plugin_server_dir() {
-	echo /usr/$(get_libdir)/gkrellm2/plugins-gkrellmd
-}
+case ${EAPI:-0} in
+	[0-5])
+		die "${ECLASS} is banned in EAPI ${EAPI:-0}"
+		;;
+	6)
+		;;
+	*)
+		die "Unknown EAPI ${EAPI:-0}"
+		;;
+esac
 
-gkrellm-plugin_pkg_setup() {
-	if [[ -z "${PLUGIN_SERVER_SO}" ]] &&
-		! built_with_use app-admin/gkrellm X; then
-		eerror "This plugin requires the X frontend of gkrellm."
-		eerror "Please re-emerge app-admin/gkrellm with USE=\"X\""
-		die "Please re-emerge app-admin/gkrellm with USE=\"X\""
-	fi
-}
+inherit multilib
 
+EXPORT_FUNCTIONS src_install
+
+if [[ ! ${_GKRELLM_PLUGIN_R1} ]]; then
+
+DEPEND="virtual/pkgconfig"
+
+# @FUNCTION: gkrellm-plugin_src_install
+# @DESCRIPTION:
+# Install the plugins and call einstalldocs
 gkrellm-plugin_src_install() {
-	if built_with_use app-admin/gkrellm X; then
-		insinto $(gkrellm-plugin_dir)
-		doins ${PLUGIN_SO:-${PN}.so} || die "Plugin shared library was not installed"
+	exeinto /usr/$(get_libdir)/gkrellm2/plugins
+
+	if ! declare -p PLUGIN_SO >/dev/null 2>&1 ; then
+		doexe ${PN}$(get_modname)
+	elif declare -p PLUGIN_SO | grep -q "^declare -a " ; then
+		doexe "${PLUGIN_SO[@]}"
+	else
+		die "PLUGIN_SO has to be a bash array!"
 	fi
 
-	if [[ -n "${PLUGIN_SERVER_SO}" ]]; then
-		insinto $(gkrellm-plugin_server_dir)
-		doins ${PLUGIN_SERVER_SO} || die "Server plugin shared library was not installed"
+
+	if [[ -n ${PLUGIN_SERVER_SO} ]]; then
+		exeinto /usr/$(get_libdir)/gkrellm2/plugins-gkrellmd
+
+		if declare -p PLUGIN_SERVER_SO | grep -q "^declare -a " ; then
+			doexe "${PLUGIN_SERVER_SO[@]}"
+		else
+			die "PLUGIN_SERVER_SO has to be a bash array!"
+		fi
 	fi
 
-	DDOCS="README* Change* AUTHORS FAQ TODO INSTALL"
-
-	for doc in ${DDOCS}; do
-		[ -s "$doc" ] && dodoc $doc
+	einstalldocs
+	local d
+	for d in Changelog* ChangeLog*; do
+		[[ -s "${d}" ]] && dodoc "${d}"
 	done
 
-	[ -n "${PLUGIN_DOCS}" ] && dodoc ${PLUGIN_DOCS}
+	if [[ -n ${PLUGIN_DOCS} ]]; then
+		if declare -p PLUGIN_DOCS | grep -q "^declare -a " ; then
+			dodoc "${PLUGIN_DOCS[@]}"
+		else
+			die "PLUGIN_DOCS has to be a bash array!"
+		fi
+	fi
 }
 
-EXPORT_FUNCTIONS pkg_setup src_install
+_GKRELLM_PLUGIN_R1=1
+fi
