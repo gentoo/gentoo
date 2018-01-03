@@ -1,14 +1,14 @@
-DEFINED_PHASES=compile configure install prepare test
-DEPEND=dev-python/notify-python[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] gtk? ( dev-python/pygtk:2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) nls? ( sys-devel/gettext ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[sqlite(+)] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=gtk? ( dev-python/pygtk:2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) nls? ( sys-devel/gettext ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[sqlite(+)] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 DESCRIPTION=Clean junk to free disk space and to maintain privacy
 EAPI=6
 HOMEPAGE=https://www.bleachbit.org
 IUSE=+gtk nls python_targets_python2_7 linguas_ar linguas_ast linguas_be linguas_bg linguas_bn linguas_bs linguas_ca linguas_cs linguas_da linguas_de linguas_el linguas_en_AU linguas_en_CA linguas_en_GB linguas_eo linguas_es linguas_et linguas_eu linguas_fa linguas_fi linguas_fo linguas_fr linguas_gl linguas_he linguas_hi linguas_hr linguas_hu linguas_hy linguas_ia linguas_id linguas_it linguas_ja linguas_ko linguas_ku linguas_ky linguas_lt linguas_lv linguas_ms linguas_my linguas_nb linguas_nds linguas_nl linguas_nn linguas_pl linguas_pt linguas_pt_BR linguas_ro linguas_ru linguas_se linguas_si linguas_sk linguas_sl linguas_sq linguas_sr linguas_sv linguas_ta linguas_te linguas_th linguas_tr linguas_ug linguas_uk linguas_uz linguas_vi linguas_zh_CN linguas_zh_TW
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
-RDEPEND=dev-python/notify-python[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] gtk? ( dev-python/pygtk:2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[sqlite(+)] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+RDEPEND=gtk? ( dev-python/pygtk:2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[sqlite(+)] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 REQUIRED_USE=|| ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=https://github.com/bleachbit/bleachbit/archive/v1.19.tar.gz -> bleachbit-1.19.tar.gz
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	distutils-r1	372bbe39047c0a2550319a3a82f3e063	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	l10n	2c2e15383ba891d642f51896a7f0ecfe	ltprune	2770eed66a9b8ef944714cd0e968182e	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	python-r1	e9350ec46bb5c9f3504b4fbe8b8d8987	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=b437c8a74973f1c110fecefbc494ac43
+_md5_=e8aa1332d279988b8638ab83c0c6fa5f
