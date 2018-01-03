@@ -1,9 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-EGIT_BRANCH="dev_qt5"
 EGIT_REPO_URI="https://github.com/Vacuum-IM/vacuum-im.git"
 PLOCALES="de es pl ru uk"
 inherit cmake-utils git-r3 l10n
@@ -14,9 +13,9 @@ HOMEPAGE="http://www.vacuum-im.org/"
 LICENSE="GPL-3"
 SLOT="0/37" # subslot = libvacuumutils soname version
 KEYWORDS=""
-PLUGINS=( adiummessagestyle annotations autostatus avatars birthdayreminder bitsofbinary bookmarks captchaforms chatstates clientinfo commands compress console dataforms datastreamsmanager emoticons filemessagearchive filestreamsmanager filetransfer gateways inbandstreams iqauth jabbersearch messagearchiver messagecarbons multiuserchat pepmanager privacylists privatestorage recentcontacts registration remotecontrol rosteritemexchange rostersearch servermessagearchive servicediscovery sessionnegotiation shortcutmanager socksstreams urlprocessor vcard xmppuriqueries )
+PLUGINS=( annotations autostatus avatars birthdayreminder bitsofbinary bookmarks captchaforms chatstates clientinfo commands compress console dataforms datastreamsmanager emoticons filemessagearchive filestreamsmanager filetransfer gateways inbandstreams iqauth jabbersearch messagearchiver messagecarbons multiuserchat pepmanager privacylists privatestorage recentcontacts registration remotecontrol rosteritemexchange rostersearch servermessagearchive servicediscovery sessionnegotiation shortcutmanager socksstreams urlprocessor vcard xmppuriqueries )
 SPELLCHECKER_BACKENDS="aspell +enchant hunspell"
-IUSE="${PLUGINS[@]/#/+} ${SPELLCHECKER_BACKENDS} +spell"
+IUSE="adiummessagestyle ${PLUGINS[@]/#/+} ${SPELLCHECKER_BACKENDS} +spell"
 
 REQUIRED_USE="
 	annotations? ( privatestorage )
@@ -82,6 +81,8 @@ src_configure() {
 		-DNO_WEBKIT=$(usex !adiummessagestyle)
 		-DPLUGIN_spellchecker=$(usex spell)
 	)
+
+	use adiummessagestyle && mycmakeargs+=( -DPLUGIN_adiummessagestyle=ON )
 
 	for x in ${PLUGINS[@]}; do
 		mycmakeargs+=( -DPLUGIN_${x}=$(usex $x) )
