@@ -507,11 +507,6 @@ net-misc/mediatomb
 # Dead upstream, depending on dead qt3support/qt4. Bug #631788
 games-kids/crayon-physics
 
-# Michael Palimaka <kensington@gentoo.org> (02 Dec 2017)
-# Depends on dead Qt 4. Dead upstream.
-# Masked for removal in 30 days. Bug #639252.
-dev-vcs/qsvn
-
 # Alexey Shvetsov <alexxy@gentoo.org> (01 Dec 2017)
 # Mask beta gromacs version
 =sci-chemistry/gromacs-2018_beta*
