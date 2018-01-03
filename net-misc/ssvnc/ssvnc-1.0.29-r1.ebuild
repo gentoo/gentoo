@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,11 +15,11 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~arm-linux ~x86-linux"
 IUSE="java"
 
 RDEPEND="sys-libs/zlib
-	virtual/jpeg
-	dev-libs/openssl
-	dev-lang/tk
+	virtual/jpeg:0
+	dev-libs/openssl:0=
+	dev-lang/tk:0
 	net-misc/stunnel
-	java? ( virtual/jre )
+	java? ( virtual/jre:* )
 	x11-terms/xterm
 	x11-libs/libICE
 	x11-libs/libSM
