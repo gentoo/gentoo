@@ -37,7 +37,7 @@ DEPEND="${RDEPEND}
 	test? (
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]')
 		sys-devel/llvm
-		>=sys-devel/clang-3.9.0
+		>=sys-devel/clang-6
 	)"
 
 # least intrusive of all
