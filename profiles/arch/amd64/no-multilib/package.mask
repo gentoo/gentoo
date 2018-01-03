@@ -1,5 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+# David Seifert <soap@gentoo.org> (03 Jan 2018)
+# Requires 32-bit multilib compatibility
+sys-block/megamgr
 
 # James Le Cuirot <chewi@gentoo.org> (13 Aug 2016)
 # Steam requires amd64 multilib. These are steam-overlay packages.
