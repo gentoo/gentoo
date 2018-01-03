@@ -4605,7 +4605,7 @@ dev-python/boto3 1.4.4 1.4.7: The AWS SDK for Python
 dev-python/botocore 1.5.90 1.7.39: Low-level, data-driven core of boto 3.
 dev-python/bottle 0.12.12: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 0.8.0 1.0.0: Fast NumPy array functions written in Cython
-dev-python/bpython 0.13.2 0.16: Syntax highlighting and autocompletion for the Python interpreter
+dev-python/bpython 0.16: Syntax highlighting and autocompletion for the Python interpreter
 dev-python/brython 3.3.3: A Python 3 implementation for client-side web programming
 dev-python/bsddb3 6.1.1 6.2.4: Python bindings for Berkeley DB
 dev-python/buzhug 1.8-r1: Fast, pure-Python database engine
@@ -4624,22 +4624,22 @@ dev-python/celementtree 1.0.5-r2: The cElementTree module is a C implementation 
 dev-python/celery 3.1.24-r1: Asynchronous task queue/job queue based on distributed message passing
 dev-python/cement 2.0.2: CLI Application Framework for Python
 dev-python/certifi 2016.9.26 2017.1.23 2017.4.17: Python package for providing Mozilla's CA Bundle
-dev-python/cffi 1.5.2 1.9.1: Foreign Function Interface for Python calling C code
+dev-python/cffi 1.9.1: Foreign Function Interface for Python calling C code
 dev-python/cfgparse 1.3-r1: Config File parser for Python
 dev-python/cgkit 2.0.0-r1: Python library for creating 3D images
 dev-python/chaco 4.5.0: Enthought Tool Suite: Interactive plotting toolkit
-dev-python/chameleon 2.16 2.25: Fast HTML/XML template compiler for Python
-dev-python/characteristic 14.1.0 14.3.0-r1: Python attributes without the boilerplate
+dev-python/chameleon 2.25: Fast HTML/XML template compiler for Python
+dev-python/characteristic 14.3.0-r1: Python attributes without the boilerplate
 dev-python/chardet 3.0.4: Universal encoding detector
 dev-python/cheetah 2.4.4-r1: Python-powered template engine and code generator
 dev-python/cherrypy 3.8.0: CherryPy is a pythonic, object-oriented HTTP framework
 dev-python/cherrytemplate 1.0.0-r1: Easy and powerful templating module for Python
 dev-python/click 6.6 6.7: A Python package for creating beautiful command line interfaces
 dev-python/clientcookie 1.3.0-r1: Python module for handling HTTP cookies on the client side
-dev-python/cliff 2.4.0 2.8.0: Command Line Interface Formulation Framework
+dev-python/cliff 2.8.0: Command Line Interface Formulation Framework
 dev-python/cliff-tablib 1.1: Formatter extensions of JSON, YAML, and HTML output for the cliff framework
-dev-python/cloudpickle 0.2.1 0.3.1: Extended pickling support for Python objects
-dev-python/cmd2 0.6.7 0.7.5: Extra features for standard library's cmd module
+dev-python/cloudpickle 0.3.1: Extended pickling support for Python objects
+dev-python/cmd2 0.7.5: Extra features for standard library's cmd module
 dev-python/codetools 4.2.0: Enthought Tool Suite: Code analysis and execution tools
 dev-python/colander 1.3.1: A simple schema-based serialization and deserialization library
 dev-python/collectd-rabbitmq 1.19.0: Collectd plugin to gather statistics from RabbitMQ
@@ -4647,7 +4647,7 @@ dev-python/collective-checkdocs 0.2: Distutils command to view/validate packages
 dev-python/colorama 0.3.3: ANSI escape character sequences for colored terminal text & cursor positioning
 dev-python/colorlog 2.7.0: Log formatting with colors
 dev-python/columnize 0.3.5-r1: Format a simple (i.e. not nested) list into aligned columns
-dev-python/common 0.1.1 0.1.2: Common tools and data structures implemented in pure python
+dev-python/common 0.1.2: Common tools and data structures implemented in pure python
 dev-python/configargparse 0.11.0: Drop-in replacement for argparse supporting config files and env variables
 dev-python/configclass 0.1.0: A Python to class to hold configuration values
 dev-python/configobj 5.0.6: Simple config file reader and writer
@@ -4657,11 +4657,11 @@ dev-python/contextlib2 0.5.4 0.5.5: Backports and enhancements for the contextli
 dev-python/cosmolopy 0.1.104-r1: Cosmology routines built on NumPy/SciPy
 dev-python/couchdb-python 1.1: Python library for working with CouchDB
 dev-python/cov-core 1.15.0: plugin core for use by pytest-cov, nose-cov and nose2-cov
-dev-python/coverage 3.7.1 4.2: Code coverage measurement for Python
+dev-python/coverage 4.2: Code coverage measurement for Python
 dev-python/crcmod 1.7-r2: Python CRC Generator module
 dev-python/croniter 0.3.11 0.3.17: Python module to provide iteration for datetime object
 dev-python/crumbs 2.1.0: Generalized all-in-one parameters module
-dev-python/cryptography 1.7.1 2.0.2 2.0.2-r1: Library providing cryptographic recipes and primitives
+dev-python/cryptography 1.7.1 2.0.2-r1: Library providing cryptographic recipes and primitives
 dev-python/cryptography-vectors 1.7.1 2.0.2: Test vectors for the cryptography package
 dev-python/cssselect 0.9.1: parses CSS3 Selectors and translates them to XPath 1.0
 dev-python/cssutils 1.0.1: A CSS Cascading Style Sheets library
@@ -4669,7 +4669,7 @@ dev-python/ctypesgen 0_p72-r1: Python wrapper generator for ctypes
 dev-python/cursive 0.1.1 0.1.2: Cursive implements OpenStack-specific validation of digital signatures.
 dev-python/curtsies 0.2.10: Curses-like terminal wrapper, with colored strings
 dev-python/cx_Freeze 4.3.4: Create standalone executables from Python scripts
-dev-python/cython 0.22 0.24.1 0.25.2: A Python to C compiler
+dev-python/cython 0.25.2: A Python to C compiler
 dev-python/cytoolz 0.8.0: Cython implementation of Toolz: High performance functional utilities
 dev-python/d2to1 0.2.12_p1: Allows using distutils2-like setup.cfg files for a package metadata
 dev-python/dap 2.2.6.7-r1: Data Access Protocol client and server
@@ -4677,9 +4677,9 @@ dev-python/dask 0.10.2: Task scheduling and blocked algorithms for parallel proc
 dev-python/datashape 0.5.4: Language defining a data description protocol
 dev-python/dbus-python 1.2.0-r1 1.2.4: Python bindings for the D-Bus messagebus
 dev-python/dbutils 1.1-r1: Database connections for multi-threaded environments
-dev-python/ddt 1.1.0 1.1.1: A library to multiply test cases
+dev-python/ddt 1.1.1: A library to multiply test cases
 dev-python/debtcollector 1.11.0 1.17.1: Python deprecation patterns and strategies that collect technical debt
-dev-python/decorator 4.0.2 4.0.10 4.1.2: Simplifies the usage of decorators for the average programmer
+dev-python/decorator 4.1.2: Simplifies the usage of decorators for the average programmer
 dev-python/decoratortools 1.8-r1: Class, function, and metaclass decorators
 dev-python/deform 0.9.9: Another form generation library
 dev-python/defusedxml 0.4.1-r1 0.5.0: XML bomb protection for Python stdlib modules, an xml serialiser
@@ -4697,26 +4697,26 @@ dev-python/distlib 0.2.1: Distribution utilities
 dev-python/dj-database-url 0.4.2: Use Database URLs in your Django Application
 dev-python/django 1.8.18: High-level Python web framework
 dev-python/django-annoying 0.7.7: This is django application that try to eliminate annoying things in Django framework
-dev-python/django-appconf 0.6 1.0.1: A helper class for handling configuration defaults of packaged apps gracefully
+dev-python/django-appconf 1.0.1: A helper class for handling configuration defaults of packaged apps gracefully
 dev-python/django-auth-ldap 1.2.2: Django LDAP authentication backend
-dev-python/django-compressor 1.4 1.5: Compresses linked and inline javascript or CSS into a single cached file
-dev-python/django-debug-toolbar 1.3.2 1.5: A configurable set of panels that display debug information
+dev-python/django-compressor 1.5: Compresses linked and inline javascript or CSS into a single cached file
+dev-python/django-debug-toolbar 1.5: A configurable set of panels that display debug information
 dev-python/django-discover-runner 1.0: A Django test runner based on unittest2's test discovery
 dev-python/django-endless-pagination 2.0: Tools supporting ajax, multiple and lazy pagination, Twitter-style and Digg-style pagination
 dev-python/django-evolution 0.7.4: A Django application that will run cron jobs for other django apps
-dev-python/django-haystack 2.2.0 2.4.1: Pluggable search for Django
+dev-python/django-haystack 2.4.1: Pluggable search for Django
 dev-python/django-international 0.0.6: Country and currency data for Django projects
 dev-python/django-ldap-groups 0.1.3-r1: A reusable application for the Django web framework
 dev-python/django-ldapdb 0.3.2: An LDAP database backend for Django
-dev-python/django-nose 1.3 1.4.4: Django test runner that uses nose
+dev-python/django-nose 1.4.4: Django test runner that uses nose
 dev-python/django-openid-auth 0.5: A library that can be used to add OpenID support to Django applications
-dev-python/django-picklefield 0.3.1 0.3.2: Implementation of a pickled object field for django
-dev-python/django-pipeline 1.3.26 1.6.0: An asset packaging library for Django
+dev-python/django-picklefield 0.3.2: Implementation of a pickled object field for django
+dev-python/django-pipeline 1.6.0: An asset packaging library for Django
 dev-python/django-piston 0.2.3-r1: A mini-framework for Django for creating RESTful APIs
-dev-python/django-recaptcha 1.0.3 1.0.5: Django recaptcha form field/widget app
+dev-python/django-recaptcha 1.0.5: Django recaptcha form field/widget app
 dev-python/django-registration 1.0: An extensible user-registration application for Django
 dev-python/django-select2 4.2.2: A Django integration of Select2
-dev-python/django-setuptest 0.1.6 0.2.1: Simple test suite enabling Django app testing via setup.py
+dev-python/django-setuptest 0.2.1: Simple test suite enabling Django app testing via setup.py
 dev-python/django-social-auth 0.7.28: An easy to setup social authentication/authorization mechanism for Django projects
 dev-python/django-tastypie 0.9.15: A flexible and capable API layer for django utilising serialisers
 dev-python/django-xslt 0.4.5-r1: an XSLT template system for Django
@@ -5286,7 +5286,7 @@ dev-python/pytest 3.0.3 3.2.2: Simple powerful testing with Python
 dev-python/pytest-cache 1.0-r1: mechanisms for caching across test runs
 dev-python/pytest-capturelog 0.7: py.test plugin to capture log messages
 dev-python/pytest-catchlog 1.2.2: py.test plugin to catch log messages, fork of pytest-capturelog
-dev-python/pytest-cov 1.8.1 2.3.1: py.test plugin for coverage reporting
+dev-python/pytest-cov 2.3.1: py.test plugin for coverage reporting
 dev-python/pytest-fixture-config 1.2.11: Virtualenv fixture for py.test
 dev-python/pytest-httpbin 0.2.3: Easily test your HTTP library against a local copy of httpbin
 dev-python/pytest-localserver 0.3.7: Py.test plugin to test server connections locally
