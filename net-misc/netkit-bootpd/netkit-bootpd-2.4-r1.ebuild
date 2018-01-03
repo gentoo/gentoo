@@ -1,8 +1,9 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=3
-inherit eutils toolchain-funcs
+EAPI=6
+
+inherit toolchain-funcs
 
 MY_P=${P/netkit-}
 
@@ -17,20 +18,22 @@ IUSE=""
 
 S=${WORKDIR}/${MY_P}
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}.patch
+PATCHES=( "${FILESDIR}"/${P}.patch )
+
+src_configure() {
+	tc-export CC
 }
 
 src_compile() {
-	tc-export CC
-	emake linux || die
+	emake linux
 }
 
 src_install() {
-	dosbin bootp{d,ef,gw,test} || die
+	dosbin bootp{d,ef,gw,test}
 
+	local x
 	for x in d ef gw test; do
-		dosym bootp${x} /usr/sbin/in.bootp${x} || die
+		dosym bootp${x} /usr/sbin/in.bootp${x}
 	done
 
 	doman *.5 *.8
