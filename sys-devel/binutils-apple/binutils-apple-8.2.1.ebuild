@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -32,7 +32,7 @@ IUSE="lto tapi classic test"
 RDEPEND="sys-devel/binutils-config
 	lto? ( app-arch/xar )
 	tapi? ( sys-libs/tapi )
-	sys-devel/llvm
+	sys-devel/llvm:*
 	sys-libs/libcxx"
 DEPEND="${RDEPEND}
 	test? ( >=dev-lang/perl-5.8.8 )"
