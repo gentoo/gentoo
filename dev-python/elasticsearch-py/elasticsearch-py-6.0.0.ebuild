@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -86,8 +86,7 @@ python_test() {
 }
 
 python_compile_all() {
-	cd docs || die
-	emake man $(usex doc html "")
+	emake -C docs -j1 man $(usex doc html "")
 }
 
 python_install_all() {
