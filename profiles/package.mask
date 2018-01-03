@@ -578,11 +578,6 @@ dev-tex/notoccite
 # Bug #606132.
 x11-drivers/xf86-video-modesetting
 
-# Kent Fredric <kentnl@gentoo.org> (22 Nov 2017)
-# Long deprecated upstream in favour of dev-perl/Mail-SPF
-# Masked for removal in 30 days. Bug #638432
-dev-perl/Mail-SPF-Query
-
 # Andreas Sturmlechner <asturm@gentoo.org> (16 Nov 2017)
 # Qt4WebKit is ancient and full of security holes.
 # Masked for removal in 30 days. Bug #620684
