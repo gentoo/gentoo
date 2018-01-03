@@ -337,8 +337,8 @@ detect_version() {
 		KV_MINOR=$(get_version_component_range 2 ${OKV})
 		KV_PATCH=$(get_version_component_range 3 ${OKV})
 		if [[ ${KV_MAJOR}${KV_MINOR}${KV_PATCH} -ge 269 ]]; then
-	        KV_EXTRA=$(get_version_component_range 4- ${OKV})
-	        KV_EXTRA=${KV_EXTRA/[-_]*}
+			KV_EXTRA=$(get_version_component_range 4- ${OKV})
+			KV_EXTRA=${KV_EXTRA/[-_]*}
 		else
 			KV_PATCH=$(get_version_component_range 3- ${OKV})
 		fi
@@ -1243,7 +1243,7 @@ unipatch() {
 					UNIPATCH_DROP+=" 5000_enable-additional-cpu-optimizations-for-gcc.patch"
 				fi
 			fi
- 		fi
+		fi
 	done
 
 	#populate KPATCH_DIRS so we know where to look to remove the excludes
