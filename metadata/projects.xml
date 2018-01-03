@@ -1880,6 +1880,11 @@
       <role>Member (Kernel, gentoo-sources, genpatches)</role>
     </member>
     <member>
+      <email>whissi@gentoo.org</email>
+      <name>Thomas Deutschmann</name>
+      <role>Member (Kernel, gentoo-sources, genpatches)</role>
+    </member>
+    <member>
       <email>zorry@gentoo.org</email>
       <name>Magnus Granberg</name>
       <role>Member (Kernel, hardened)</role>
