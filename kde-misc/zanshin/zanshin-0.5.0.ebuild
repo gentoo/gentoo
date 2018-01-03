@@ -1,17 +1,16 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-COMMIT=6239128a6c6693e71def64e9782f31bdd9621d19
 KDE_APPS_MINIMAL="17.12.0"
 KDE_TEST="forceoptional"
 VIRTUALX_REQUIRED="test"
-inherit kde5 vcs-snapshot
+inherit kde5
 
 DESCRIPTION="Getting things done application by KDE"
 HOMEPAGE="https://zanshin.kde.org/"
-SRC_URI="https://github.com/KDE/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
 
 LICENSE="|| ( GPL-2 GPL-3 )"
 KEYWORDS="~amd64 ~x86"
