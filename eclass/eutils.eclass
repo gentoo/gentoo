@@ -164,14 +164,6 @@ strip-linguas() {
 	export LINGUAS=${newls:1}
 }
 
-# @FUNCTION: _eutils_eprefix_init
-# @INTERNAL
-# @DESCRIPTION:
-# Initialized prefix variables for EAPI<3.
-_eutils_eprefix_init() {
-	has "${EAPI:-0}" 0 1 2 && : ${ED:=${D}} ${EPREFIX:=} ${EROOT:=${ROOT}}
-}
-
 # @FUNCTION: built_with_use
 # @USAGE: [--hidden] [--missing <action>] [-a|-o] <DEPEND ATOM> <List of USE flags>
 # @DESCRIPTION:
@@ -194,7 +186,6 @@ _eutils_eprefix_init() {
 # Remember that this function isn't terribly intelligent so order of optional
 # flags matter.
 built_with_use() {
-	_eutils_eprefix_init
 	local hidden="no"
 	if [[ $1 == "--hidden" ]] ; then
 		hidden="yes"
@@ -218,6 +209,7 @@ built_with_use() {
 	[[ -z ${PKG} ]] && die "Unable to resolve $1 to an installed package"
 	shift
 
+	has "${EAPI:-0}" 0 1 2 && local EROOT=${ROOT}
 	local USEFILE=${EROOT}/var/db/pkg/${PKG}/USE
 	local IUSEFILE=${EROOT}/var/db/pkg/${PKG}/IUSE
 
@@ -272,9 +264,9 @@ built_with_use() {
 # first optionally setting LD_LIBRARY_PATH to the colon-delimited
 # libpaths followed by optionally changing directory to chdir.
 make_wrapper() {
-	_eutils_eprefix_init
 	local wrapper=$1 bin=$2 chdir=$3 libdir=$4 path=$5
 	local tmpwrapper=$(emktemp)
+	has "${EAPI:-0}" 0 1 2 && local EPREFIX=""
 
 	(
 	echo '#!/bin/sh'
