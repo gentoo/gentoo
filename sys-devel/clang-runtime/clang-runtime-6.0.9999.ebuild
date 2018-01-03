@@ -11,7 +11,7 @@ SRC_URI=""
 
 LICENSE="metapackage"
 # Note: keep it matching clang-9999 version
-SLOT="7.0.0"
+SLOT="6.0.0"
 KEYWORDS=""
 IUSE="+compiler-rt libcxx openmp +sanitize"
 
