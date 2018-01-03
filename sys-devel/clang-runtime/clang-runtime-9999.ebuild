@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI=""
 
 LICENSE="metapackage"
 # Note: keep it matching clang-9999 version
-SLOT="6.0.0"
+SLOT="7.0.0"
 KEYWORDS=""
 IUSE="+compiler-rt libcxx openmp +sanitize"
 
