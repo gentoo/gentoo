@@ -7208,7 +7208,7 @@ media-gfx/nvidia-texture-tools 2.0.8-r3: A set of cuda-enabled texture tools and
 media-gfx/opcion 1.1.1-r2: Free font viewer written in Java
 media-gfx/openclipart 0.20: Open Clip Art Library (openclipart.org)
 media-gfx/openexr_viewers 1.0.2 2.1.0: OpenEXR Viewers
-media-gfx/optipng 0.7.6-r1 0.7.6-r2: Compress PNG files without affecting image quality
+media-gfx/optipng 0.7.6-r2: Compress PNG files without affecting image quality
 media-gfx/pdf2svg 0.2.1: pdf2svg is based on poppler and cairo and can convert pdf to svg files
 media-gfx/peps 2.0: Preprocess and convert EPS files to bitmap with Ghostscript
 media-gfx/photopc 3.07: Utility to control digital cameras based on Sierra Imaging firmware
