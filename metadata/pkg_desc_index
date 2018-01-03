@@ -186,7 +186,7 @@ app-arch/lz4 0_p131 1.7.5-r1: Extremely Fast Compression algorithm
 app-arch/lzip 1.18: lossless data compressor based on the LZMA algorithm
 app-arch/lziprecover 1.17: Lziprecover is a data recovery tool and decompressor for lzip compressed files
 app-arch/lzop 1.03: Utility for fast (even real-time) compression/decompression
-app-arch/makeself 2.1.5-r2: shell script that generates a self-extractible tar.gz
+app-arch/makeself 2.2.0-r2: shell script that generates a self-extractible tar.gz
 app-arch/mscompress 0.3-r1: Microsoft compress.exe/expand.exe compatible (de)compressor
 app-arch/mt-st 1.3: control magnetic tape drive operation
 app-arch/ncompress 4.2.4.4: Another uncompressor for compatibility
