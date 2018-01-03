@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -38,6 +38,11 @@ src_prepare() {
 	elibtoolize
 
 	epatch "${FILESDIR}"/${PN}-6.1.0-noexecstack-detect.patch
+
+	# https://bugs.gentoo.org/536894
+	if [[ ${CHOST} == *-darwin* ]] ; then
+		epatch "${FILESDIR}"/${PN}-6.1.2-gcc-apple-4.0.1.patch
+	fi
 
 	# GMP uses the "ABI" env var during configure as does Gentoo (econf).
 	# So, to avoid patching the source constantly, wrap things up.
