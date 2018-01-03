@@ -3713,7 +3713,7 @@ dev-perl/GraphViz 2.240.0: Interface to AT&T's GraphViz
 dev-perl/Graphics-ColorNames 2.110.0-r1: Defines RGB values for common color names
 dev-perl/Graphics-ColorNames-WWW 1.130.0: WWW color names and equivalent RGB values
 dev-perl/Graphics-ColorObject 0.5.0-r1: convert between color spaces
-dev-perl/Gtk2 1.247.0 1.249.500 1.249.920: Perl bindings for GTK2
+dev-perl/Gtk2 1.249.920: Perl bindings for GTK2
 dev-perl/Gtk2-Ex-PodViewer 0.180.0-r1: a Gtk2 widget for displaying Plain old Documentation (POD)
 dev-perl/Gtk2-Ex-PrintDialog 0.30.0-r1: a simple, pure Perl dialog for printing PostScript data in GTK+ applications
 dev-perl/Gtk2-Ex-Simple-List 0.500.0-r1: A simple interface to Gtk2's complex MVC list widget
