@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: kernel-2.eclass
@@ -146,7 +146,7 @@
 # @DESCRIPTION:
 # This kernel was already deblobbed elsewhere.
 # If false, either optional deblobbing will be available
-# or the license will note the inclusion of freedist code.
+# or the license will note the inclusion of linux-firmware code.
 
 # @ECLASS-VARIABLE:  K_LONGTERM
 # @DEFAULT_UNSET
@@ -337,8 +337,8 @@ detect_version() {
 		KV_MINOR=$(get_version_component_range 2 ${OKV})
 		KV_PATCH=$(get_version_component_range 3 ${OKV})
 		if [[ ${KV_MAJOR}${KV_MINOR}${KV_PATCH} -ge 269 ]]; then
-	        KV_EXTRA=$(get_version_component_range 4- ${OKV})
-	        KV_EXTRA=${KV_EXTRA/[-_]*}
+			KV_EXTRA=$(get_version_component_range 4- ${OKV})
+			KV_EXTRA=${KV_EXTRA/[-_]*}
 		else
 			KV_PATCH=$(get_version_component_range 3- ${OKV})
 		fi
@@ -624,7 +624,7 @@ if [[ ${ETYPE} == sources ]]; then
 
 			# Reflect that kernels contain firmware blobs unless otherwise
 			# stripped
-			LICENSE="${LICENSE} !deblob? ( freedist )"
+			LICENSE="${LICENSE} !deblob? ( linux-firmware )"
 
 			DEPEND+=" deblob? ( ${PYTHON_DEPS} )"
 
@@ -661,7 +661,7 @@ if [[ ${ETYPE} == sources ]]; then
 		else
 			# We have no way to deblob older kernels, so just mark them as
 			# tainted with non-libre materials.
-			LICENSE="${LICENSE} freedist"
+			LICENSE="${LICENSE} linux-firmware"
 		fi
 	fi
 
@@ -1243,7 +1243,7 @@ unipatch() {
 					UNIPATCH_DROP+=" 5000_enable-additional-cpu-optimizations-for-gcc.patch"
 				fi
 			fi
- 		fi
+		fi
 	done
 
 	#populate KPATCH_DIRS so we know where to look to remove the excludes
