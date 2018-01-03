@@ -1,5 +1,5 @@
---- Makefile	2002-05-07 10:04:49.000000000 +0200
-+++ Makefile_new	2013-03-12 21:10:15.888656809 +0100
+--- a/Makefile
++++ b/Makefile
 @@ -3,11 +3,10 @@
  #
  # updated for gkrellm2.0
