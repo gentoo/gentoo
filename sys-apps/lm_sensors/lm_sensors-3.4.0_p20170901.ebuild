@@ -19,7 +19,7 @@ LICENSE="GPL-2+ LGPL-2.1"
 # SUBSLOT based on SONAME of libsensors.so
 SLOT="0/4.4.0"
 
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux"
 IUSE="contrib sensord static-libs"
 
 COMMON_DEPS="
