@@ -1820,6 +1820,7 @@ dev-cpp/tbb 4.3.20150611 2017.20161128: High level abstract threading library
 dev-cpp/tclap 1.2.1: Simple templatized C++ library for parsing command line arguments
 dev-cpp/tree 2.65-r1 2.81: An STL-like tree class
 dev-cpp/yaml-cpp 0.5.3: YAML parser and emitter in C++
+dev-db/bucardo 5.4.1: An asynchronous PostgreSQL replication system
 dev-db/cdb 0.75-r4: Fast, reliable, simple package for creating and reading constant databases
 dev-db/couchdb 1.7.1: Distributed, fault-tolerant and schema-free document-oriented database
 dev-db/db-je 3.3.75: A high performance, transactional storage engine written entirely in Java
@@ -1876,7 +1877,7 @@ dev-db/sqliteman 1.2.2-r4: Powerful GUI manager for the Sqlite3 database
 dev-db/sqliteodbc 0.96: ODBC driver to access local SQLite database files
 dev-db/tinycdb 0.77-r2: A very fast and simple package for creating and reading constant data bases
 dev-db/tokyocabinet 1.4.48 1.4.48-r1: A library of routines for managing a database
-dev-db/unixODBC 2.3.2-r1: A complete ODBC driver manager
+dev-db/unixODBC 2.3.2-r1 2.3.4-r1: A complete ODBC driver manager
 dev-db/vsqlite++ 0.3.13-r1: VSQLite++ - A welldesigned and portable SQLite3 Wrapper for C++
 dev-db/wxsqlite3 3.2.1-r1: C++ wrapper around the public domain SQLite 3.x database
 dev-db/xbase 3.1.2: xbase (i.e. dBase, FoxPro, etc.) compatible C++ class library
@@ -3518,6 +3519,7 @@ dev-perl/DBI 1.634.0 1.636.0: Database independent interface for Perl
 dev-perl/DBI-Shell 11.950.0-r1: Interactive command shell for the DBI
 dev-perl/DBIx-ContextualFetch 1.30.0-r1: Add contextual fetches to DBI
 dev-perl/DBIx-DBSchema 0.400.0-r1 0.450.0: Database-independent schema objects
+dev-perl/DBIx-Safe 1.2.5-r1: Safer access to your database through a DBI database handle
 dev-perl/DBIx-SearchBuilder 1.660.0-r1: Encapsulate SQL queries and rows in simple Perl objects
 dev-perl/Daemon-Generic 0.840.0: Framework to provide start/stop/reload for a daemon
 dev-perl/Danga-Socket 1.610.0-r1: A non-blocking socket object; uses epoll()
