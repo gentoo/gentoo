@@ -1048,7 +1048,7 @@ app-misc/mvcase 0.1-r1: A modified version of mv, used to convert filenames to l
 app-misc/neofetch 3.3.0: Simple information system script
 app-misc/note 1.3.3-r1: A note taking perl program
 app-misc/nut 20.1: Record what you eat and analyze your nutrient levels
-app-misc/ondir 0.2.2-r1: Automatically execute scripts as you traverse directories
+app-misc/ondir 0.2.2-r1 0.2.2-r2: Automatically execute scripts as you traverse directories
 app-misc/oneko 1.2-r2: A cat, dog and others which chase the mouse or windows around the screen
 app-misc/pal 0.4.3-r2: Command-line calendar program
 app-misc/pax-utils 1.1.7: ELF utils that can check files for security relevant properties
