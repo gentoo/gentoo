@@ -1048,7 +1048,7 @@ app-misc/mvcase 0.1-r1: A modified version of mv, used to convert filenames to l
 app-misc/neofetch 3.3.0: Simple information system script
 app-misc/note 1.3.3-r1: A note taking perl program
 app-misc/nut 20.1: Record what you eat and analyze your nutrient levels
-app-misc/ondir 0.2.2-r1 0.2.2-r2: Automatically execute scripts as you traverse directories
+app-misc/ondir 0.2.2-r2: Automatically execute scripts as you traverse directories
 app-misc/oneko 1.2-r2: A cat, dog and others which chase the mouse or windows around the screen
 app-misc/pal 0.4.3-r2: Command-line calendar program
 app-misc/pax-utils 1.1.7: ELF utils that can check files for security relevant properties
@@ -1083,7 +1083,7 @@ app-misc/socnetv 2.2: Qt Social Network Visualizer
 app-misc/solaar 0.9.2-r3: A Linux device manager for Logitech's Unifying Receiver peripherals
 app-misc/spacenavd 0.5-r5 0.6: The spacenavd daemon provides free alternative to the 3dxserv daemon
 app-misc/sphinx 2.0.10 2.1.9 2.2.11: Full-text search engine with support for MySQL and PostgreSQL
-app-misc/splitvt 1.6.6-r2: Splitting terminals into two shells
+app-misc/splitvt 1.6.6-r3: Splitting terminals into two shells
 app-misc/srm 1.2.11-r2 1.2.15: A command-line compatible rm which destroys file contents before unlinking
 app-misc/supercat 0.5.5-r2: A text file colorizer using powerful regular expressions
 app-misc/symlinks 1.4-r3: Scans for and fixes broken or messy symlinks
@@ -7633,7 +7633,7 @@ media-plugins/gmpc-libnotify 11.8.16: This plugin sends an announcement to the n
 media-plugins/gmpc-lyrics 11.8.16: This plugin fetches lyrics
 media-plugins/gmpc-lyricwiki 11.8.16: This plugin uses lyricwiki to fetch lyrics
 media-plugins/gmpc-magnatune 11.8.16: This plugin allows you to browse and preview available albums on magnatune.com
-media-plugins/gmpc-mdcover 0.20.0: This plugin fetches cover art, artist art, album and artist information from the file system
+media-plugins/gmpc-mdcover 0.20.0: Plugin for fetching cover art, artist art, album and artist information
 media-plugins/gmpc-mmkeys 11.8.16: Bind multimedia keys via gnome settings daemon
 media-plugins/gmpc-playlistsort 0.20.0: This plugin adds a dialog to sort the current playlist
 media-plugins/gmpc-shout 0.20.0: This plugin calls ogg123 and points it at mpd's shoutstream
@@ -8502,7 +8502,7 @@ net-libs/dleyna-connector-dbus 0.2.0: utility library for higher level dLeyna li
 net-libs/dleyna-core 0.5.0: utility library for higher level dLeyna libraries
 net-libs/dleyna-renderer 0.5.0: library implementing services that allow clients to discover and manipulate DLNA renderers
 net-libs/dslib 3.0-r1: Library to access Czech eGov system "Datove schranky"
-net-libs/enet 1.2.2 1.3.7 1.3.13: relatively thin, simple and robust network communication layer on top of UDP
+net-libs/enet 1.2.2-r1 1.3.7 1.3.13: relatively thin, simple and robust network communication layer on top of UDP
 net-libs/farstream 0.1.2-r2 0.2.8-r1: Audio/video conferencing framework specifically designed for instant messengers
 net-libs/glib-networking 2.50.0: Network-related giomodules for glib
 net-libs/gnet 2.0.8-r2: A simple network library
@@ -8680,7 +8680,7 @@ net-mail/relay-ctrl 3.1.1-r2: SMTP Relaying Control designed for qmail & tcpserv
 net-mail/ripmime 1.4.0.10: extract attachment files out of a MIME-encoded email pack
 net-mail/ripole 0.2.2: Program/library to pull out attachment from OLE2 data files
 net-mail/rss2email 2.71-r1: A python script that converts RSS/Atom newsfeeds to email
-net-mail/safecat 1.13: Safecat implements qmail's maildir algorithm, copying standard input safely to a specified directory
+net-mail/safecat 1.13: Safecat implements qmail's maildir algorithm, safely copying standard input
 net-mail/sendEmail 1.56-r1 1.56-r2: Command line based, SMTP email agent
 net-mail/smtptools 0.2.3: A collection of tools to send or receive mails with SMTP
 net-mail/swaks 20130209.0-r1: Swiss Army Knife SMTP; Command line SMTP testing, including TLS and AUTH
@@ -8699,7 +8699,7 @@ net-misc/aget 0.4.1-r2: multithreaded HTTP download accelerator
 net-misc/aggregate 1.6: Take a list of prefixes and perform two optimisations to reduce the length of the prefix list
 net-misc/aggregate-flim 1.0.2: aggregate is a tool for aggregating CIDR networks
 net-misc/aria2 1.30.0: A download utility with segmented downloading with BitTorrent support
-net-misc/arpd 0.2-r1: ARP server which claims all unassigned addresses (for network monitoring or simulation)
+net-misc/arpd 0.2-r1: ARP server claiming all unassigned addresses (for network monitoring/simulation)
 net-misc/asterisk 11.25.1 11.25.3: Asterisk: A Modular Open Source PBX System
 net-misc/asterisk-core-sounds 1.4.21-r1 1.4.22: Core sounds for asterisk
 net-misc/asterisk-extra-sounds 1.4.11: Extra sounds for asterisk
@@ -8866,7 +8866,6 @@ net-misc/ssh-askpass-fullscreen 1.0-r1: A small SSH Askpass replacement written 
 net-misc/sshpass 1.05: Tool for noninteractively performing password authentication with ssh
 net-misc/sslh 1.18-r2: Port multiplexer - accept both HTTPS and SSH connections on the same port
 net-misc/sstp-client 1.0.10-r1: A client implementation of Secure Socket Tunneling Protocol (SSTP)
-net-misc/ssvnc 1.0.28: VNC viewer that adds encryption security to VNC connections
 net-misc/stone 2.3e-r1: A simple TCP/IP packet repeater
 net-misc/streamtuner 0.99.99-r5: Stream directory browser for browsing internet radio streams
 net-misc/stunnel 5.36: TLS/SSL - Port Wrapper
