@@ -75,7 +75,6 @@ src_test() {
 	default
 }
 
-
 src_install() {
 	default
 	use perl || rm "${ED}"/usr/bin/strace-graph
