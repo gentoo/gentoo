@@ -8761,7 +8761,7 @@ net-misc/iperf 2.0.9 3.1.3: A TCP, UDP, and SCTP network bandwidth measurement t
 net-misc/iprange 1.0.3 1.0.4: iprange utility
 net-misc/ipsc 0.4.3.2-r2: IP Subnet Calculator
 net-misc/ipsorcery 2.0.9-r1: Ipsorcery allows you to generate IP, TCP, UDP, ICMP, and IGMP packets
-net-misc/iputils 20121221-r1 20151218: Network monitoring tools including ping and ping6
+net-misc/iputils 20121221-r1 20151218 20171016_pre: Network monitoring tools including ping and ping6
 net-misc/ipv6calc 0.97.4 0.99.2: IPv6 address calculator
 net-misc/ipx-utils 1.1-r4: The IPX Utilities
 net-misc/java-wakeonlan 1.0.0-r2: A wakeonlan commandline tool and Java library
@@ -9641,7 +9641,7 @@ sys-apps/daemonize 1.7.4: Runs a command as a Unix daemon
 sys-apps/daisydog 2014.05.30: A very simple /dev/watchdog daemon
 sys-apps/dbus 1.10.18: A message bus system, a simple way for applications to talk to each other
 sys-apps/dcfldd 1.3.4.1: enhanced dd with features for forensics and security
-sys-apps/debianutils 4.7: A selection of tools from Debian
+sys-apps/debianutils 4.7 4.8.3: A selection of tools from Debian
 sys-apps/diffutils 3.3 3.5: Tools to make diffs and compare files
 sys-apps/dmapi 2.2.12-r1: XFS data management API library
 sys-apps/dmidecode 2.12-r1 3.0: DMI (Desktop Management Interface) table related utilities
