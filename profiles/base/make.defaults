@@ -71,16 +71,6 @@ XTABLES_ADDONS="quota2 psd pknock lscan length2 ipv4options ipset ipp2p iface ge
 # Some common lcd devices
 LCD_DEVICES="bayrad cfontz cfontz633 glk hd44780 lb216 lcdm001 mtxorb ncurses text"
 
-# 2006/10/17 - Daniel Drake <dsd@gentoo.org>
-# cracklib is becoming optional in shadow (and removed from system) as of
-# today. However, cracklib is very standard across the Linux world so we
-# enable it by default.
-#
-# Diego Pettenò <flameeyes@gentoo.org> (14 Jul 2007)
-# Moved to base/ profile from default-linux/ so that it also applies to
-# embedded and hardened profiles.
-USE="cracklib"
-
 # Miroslav Šulc <fordfrog@gentoo.org> (19 Nov 2008)
 # Netbeans modules/clusters
 NETBEANS="apisupport cnd groovy gsf harness ide identity j2ee java mobility nb php profiler soa visualweb webcommon websvccommon xml"
