@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,9 +21,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+gtk nls"
 
-RDEPEND="
-	dev-python/notify-python[$PYTHON_USEDEP]
-	gtk? ( dev-python/pygtk:2[$PYTHON_USEDEP] )"
+RDEPEND="gtk? ( dev-python/pygtk:2[$PYTHON_USEDEP] )"
 
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
@@ -63,4 +61,10 @@ python_install_all() {
 
 	doicon ${PN}.png
 	domenu ${PN}.desktop
+}
+
+pkg_postinst() {
+	elog "Bleachbit has optional notification support. To enable, please install:"
+	elog ""
+	elog "  dev-python/notify-python"
 }
