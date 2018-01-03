@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="+blake2 bzip2 +gpg lzma +portage-postsync sha3 test"
 
+# pyliblzma installs an incompatible 'lzma' module (fixed properly in -9999)
+# https://bugs.gentoo.org/643254
 MODULE_RDEPEND="
+	$(python_gen_cond_dep '!!dev-python/pyliblzma' python2_7)
 	blake2? ( $(python_gen_cond_dep 'dev-python/pyblake2[${PYTHON_USEDEP}]' python{2_7,3_4,3_5} pypy{,3}) )
 	bzip2? ( $(python_gen_cond_dep 'dev-python/bz2file[${PYTHON_USEDEP}]' python2_7 pypy) )
 	gpg? ( app-crypt/gnupg )
