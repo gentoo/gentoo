@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,7 +22,8 @@ IUSE="test system-sqlite"
 # NB: Get min sqlite version from sqlite3.c
 RDEPEND="
 	system-sqlite? (
-		>=dev-db/sqlite-3.10.2[extensions(+)]
+		>=dev-db/sqlite-3.13.0[extensions(+)]
+		<dev-db/sqlite-3.21.0
 	)
 	>=dev-perl/DBI-1.570.0
 	!<dev-perl/DBD-SQLite-1
