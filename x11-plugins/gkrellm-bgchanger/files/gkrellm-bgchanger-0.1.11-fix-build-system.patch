@@ -1,0 +1,11 @@
+--- a/Makefile
++++ b/Makefile
+@@ -13,7 +13,7 @@
+ GTK_INCLUDE = `$(GTK_CONFIG) gtk+-2.0 --cflags`
+ GTK_LIB = `$(GTK_CONFIG) gtk+-2.0 --libs`
+ 
+-GKRELLM_INCLUDE= -I/usr/local/include
++GKRELLM_INCLUDE= -I/usr/include
+ 
+ INSTALL=install -c -m 755
+ 
