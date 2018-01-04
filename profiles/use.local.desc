@@ -520,7 +520,6 @@ app-i18n/uim:eb - Enable support for dev-libs/eb
 app-i18n/uim:gtk3 - Enable support for x11-libs/gtk+:3
 app-i18n/uim:skk - Enable support for app-i18n/skk-jisyo
 app-laptop/hdapsd:libconfig - Require dev-libs/libconfig to allow the daemon to read a configuration file at startup
-app-laptop/laptop-mode-tools:scsi - Adds dependency on sdparm to control non-SATA SCSI drivers
 app-laptop/thinkfan:atasmart - include libatasmart support to get disc temperature
 app-laptop/tp_smapi:hdaps - Install a compatible HDAPS module
 app-misc/bijiben:zeitgeist - Build the plugin to inject events to gnome-extra/zeitgeist

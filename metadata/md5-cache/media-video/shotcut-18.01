@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=dev-qt/qtcore:5 dev-qt/qtdeclarative:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5 dev-qt/qtnetwork:5 dev-qt/qtopengl:5 dev-qt/qtsql:5 dev-qt/qtwebkit:5 dev-qt/qtwebsockets:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 media-libs/ladspa-sdk media-libs/libsdl:0 media-libs/libvpx media-libs/mlt[ffmpeg,frei0r,qt5,sdl,xml] media-libs/x264 media-plugins/frei0r-plugins media-sound/lame media-video/ffmpeg virtual/jack dev-qt/linguist-tools:5
+DESCRIPTION=A free, open source, cross-platform video editor
+EAPI=6
+HOMEPAGE=https://www.shotcut.org/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-qt/qtcore:5 dev-qt/qtdeclarative:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5 dev-qt/qtnetwork:5 dev-qt/qtopengl:5 dev-qt/qtsql:5 dev-qt/qtwebkit:5 dev-qt/qtwebsockets:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 media-libs/ladspa-sdk media-libs/libsdl:0 media-libs/libvpx media-libs/mlt[ffmpeg,frei0r,qt5,sdl,xml] media-libs/x264 media-plugins/frei0r-plugins media-sound/lame media-video/ffmpeg virtual/jack
+SLOT=0
+SRC_URI=https://github.com/mltframework/shotcut/archive/v18.01.tar.gz -> shotcut-18.01.tar.gz
+_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_md5_=db6b75ecb5c5312855e89d6ea0968254

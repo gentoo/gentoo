@@ -6129,10 +6129,10 @@ dev-util/intltool 0.51.0-r1 0.51.0-r2: Internationalization Tool Collection
 dev-util/itstool 2.0.2: Translation tool for XML documents that uses gettext files and ITS rules
 dev-util/jconfig 2.8-r3 2.8.5: Utility that provides a simple API for the management of properties
 dev-util/kbuild 0.1.9998_pre20131130-r1: A makefile framework for writing simple makefiles for complex tasks
-dev-util/kdevelop 5.1.2: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
+dev-util/kdevelop 5.1.2 5.2.1: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
 dev-util/kdevelop-pg-qt 2.1.0: LL(1) parser generator used mainly by KDevelop language plugins
-dev-util/kdevelop-php 5.1.2: PHP plugin for KDevelop
-dev-util/kdevelop-python 5.1.2: Python plugin for KDevelop
+dev-util/kdevelop-php 5.1.2 5.2.1: PHP plugin for KDevelop
+dev-util/kdevelop-python 5.1.2 5.2.1: Python plugin for KDevelop
 dev-util/kdevplatform 5.1.2: KDE development support libraries and apps
 dev-util/kyua 0.13-r1: Testing framework for infrastructure software
 dev-util/lcov 1.9-r1 1.11: A graphical front-end for GCC's coverage testing tool gcov
@@ -7512,7 +7512,7 @@ media-libs/libzen 0.4.37: Shared library for libmediainfo and mediainfo
 media-libs/libzmf 0.0.2: Library for parsing Zoner Callisto/Draw documents
 media-libs/lilv 0.20.0 0.24.2: Library to make the use of LV2 plugins as simple as possible for applications
 media-libs/lv2 1.10.0-r1 1.14.0: A simple but extensible successor of LADSPA
-media-libs/mediastreamer 2.7.3-r3 2.8.2 2.9.0 2.9.0-r1: Mediastreaming library for telephony application
+media-libs/mediastreamer 2.7.3-r3 2.8.2 2.9.0 2.9.0-r1 2.9.0-r2: Mediastreaming library for telephony application
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
 media-libs/mesa 17.1.10 17.2.7: OpenGL-like graphic library for Linux
 media-libs/ming 0.4.7 0.4.8-r1: An Open Source library for Flash movie generation
