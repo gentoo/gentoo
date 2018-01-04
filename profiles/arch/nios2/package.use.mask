@@ -177,10 +177,6 @@ app-text/asciidoc test
 # kde-frameworks/kdelibs is not stable for arm
 net-libs/libproxy kde
 
-# Jeremy Olexa <darkside@gentoo.org> (04 Apr 2010)
-# mask net-misc/mediatomb[lastfm] as lastfmlib isn't keyworded
-net-misc/mediatomb lastfm
-
 # Raúl Porcel <armin76@gentoo.org> (28 Mar 2010)
 # Needs kde-frameworks/kwallet and kde-frameworks/kdelibs stable
 dev-vcs/subversion kwallet

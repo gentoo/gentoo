@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ inherit kde5
 DESCRIPTION="PHP plugin for KDevelop"
 LICENSE="GPL-2 LGPL-2"
 IUSE=""
-[[ ${KDE_BUILD_TYPE} = release ]] && KEYWORDS="~amd64 x86"
+[[ ${KDE_BUILD_TYPE} = release ]] && KEYWORDS="amd64 x86"
 
 COMMON_DEPEND="
 	$(add_frameworks_dep karchive)
