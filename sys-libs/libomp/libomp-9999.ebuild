@@ -36,7 +36,7 @@ DEPEND="${RDEPEND}
 	test? (
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]')
 		sys-devel/llvm
-		>=sys-devel/clang-3.9.0
+		>=sys-devel/clang-6
 	)"
 
 # least intrusive of all
@@ -61,8 +61,7 @@ pkg_setup() {
 multilib_src_configure() {
 	local libdir="$(get_libdir)"
 	local mycmakeargs=(
-		-DLIBOMP_LIBDIR_SUFFIX="${libdir#lib}"
-		-DLIBOMPTARGET_LIBDIR_SUFFIX="${libdir#lib}"
+		-DOPENMP_LIBDIR_SUFFIX="${libdir#lib}"
 
 		-DLIBOMP_USE_HWLOC=$(usex hwloc)
 		-DLIBOMP_OMPT_SUPPORT=$(usex ompt)
@@ -70,11 +69,13 @@ multilib_src_configure() {
 		-DLIBOMP_INSTALL_ALIASES=OFF
 		# disable unnecessary hack copying stuff back to srcdir
 		-DLIBOMP_COPY_EXPORTS=OFF
-		-DLIBOMP_TEST_COMPILER="$(type -P "${CHOST}-clang")"
 	)
 	use test && mycmakeargs+=(
 		-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
 		-DLLVM_LIT_ARGS="-vv"
+
+		-DOPENMP_TEST_C_COMPILER="$(type -P "${CHOST}-clang")"
+		-DOPENMP_TEST_CXX_COMPILER="$(type -P "${CHOST}-clang++")"
 	)
 	cmake-utils_src_configure
 }
