@@ -1,5 +1,5 @@
---- Makefile	2002-09-26 15:56:06.000000000 +0200
-+++ Makefile_new	2013-03-15 17:26:19.398383410 +0100
+--- a/Makefile
++++ b/Makefile
 @@ -4,21 +4,25 @@
  GTK_LIB = `pkg-config gtk+-2.0 --libs`
  

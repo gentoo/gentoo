@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -29,7 +29,7 @@ RDEPEND="
 		>=dev-libs/libpcre-3.9
 		static? ( >=dev-libs/libpcre-3.9[static-libs] )
 	)
-	gdbm? ( sys-libs/gdbm )
+	gdbm? ( sys-libs/gdbm:= )
 	!<sys-apps/baselayout-2.4.1
 "
 DEPEND="sys-apps/groff

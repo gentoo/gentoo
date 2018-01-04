@@ -82,6 +82,11 @@ src_unpack() {
 	S="${WORKDIR}/${ICAARCH}/${ICAARCH}.cor"
 }
 
+src_prepare() {
+	default
+	rm lib/UIDialogLibWebKit.so || die
+}
+
 src_install() {
 	local tmpl dest
 

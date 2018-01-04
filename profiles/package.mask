@@ -29,6 +29,162 @@
 
 #--- END OF EXAMPLES ---
 
+# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
+# Nobody bothered to bump it for ages, NPAPI is phased out (#468772).
+# Removal in a month.
+media-plugins/npapi-vlc
+
+# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
+# Fails to fetch (#597424). Removal in a month.
+sci-chemistry/platon
+
+# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
+# Multiple build issues (#423471, #529772, #558206, #574910, #603304,
+# #638602), problems with init.d scripts (#390231), major version bump
+# #pending to be done (#610744). Removal in a month.
+sys-fs/ocfs2-tools
+
+# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
+# Fails to build, a major version bump is needed but it's hard to bump
+# (#626050, #626052). Removal in a month.
+net-nds/ypserv
+net-nds/ypbind
+
+# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
+# Unmaintained, no server still usable for this software (#626676). Removal
+# in a month.
+app-text/antixls
+
+# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
+# Upstream is died, no server still usable for this (#626770). Removal in a
+# month.
+games-arcade/bloboats
+
+# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
+# Upstream dead, not compatible with latest mariadb, nothing requires this
+# in the tree (#628526, #629470, #629552, #629712, #629978, #630002,
+# #630098, #630650). Removal in a month.
+dev-db/lib_mysqludf_fPROJ4
+dev-db/lib_mysqludf_preg
+dev-db/lib_mysqludf_ta
+dev-db/lib_mysqludf_stat
+dev-db/lib_mysqludf_str
+dev-db/lib_mysqludf_udf
+dev-db/lib_mysqludf_sys
+dev-db/lib_mysqludf_json
+
+# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
+# Not properly mirrored, 14 years old and not really useful this days
+# (#629328). Removal in a month.
+x11-themes/lush
+
+# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
+# Fails multilib-strict check (#628836). Nothing requires it. Removal in a
+# month.
+dev-libs/dclog
+
+# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
+# Tries to install at pkg_postinst phase (#628804). Removal in a month.
+app-misc/misterhouse
+
+# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
+# Configure hangs (#628726), a major version bump is needed (#510050).
+# Removal in a month.
+app-forensics/autopsy
+
+# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
+# Multiple security issues, init scripts need a major rework (#629416,
+# #629412, #631068, #623806). Removal in a month.
+net-im/jabberd2
+net-im/mu-conference
+
+# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
+# Not compatible with current libmowgli, no reverse deps (#630030). Removal
+# in a month.
+dev-libs/libmcs
+
+# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
+# Upstream dead, QT4 consumer (#630550). Removal in a month.
+x11-libs/qwtplot3d
+
+# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
+# No reverse deps, fails to build (#630866). Removal in a month.
+dev-libs/libmowgli-glib
+
+# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
+# Deprecated tools replace by dev-python/awscli (#633374). Removal in a
+# month.
+app-admin/aws-as-tools
+app-admin/aws-cw-tools
+app-admin/aws-iam-tools
+app-admin/aws-rds-tools
+
+# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
+# Relies on obsolete code.google, nothing uses it at present time (#633984).
+# Removal in a month.
+net-misc/slimrat
+
+# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
+# Upstream dead, fails to fetch (#586504, #640546, #636466). Removal in a
+# month.
+games-emulation/xe
+
+# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
+# Fails to build (#637612). Removal in a month.
+net-vpn/htun
+
+# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
+# Unmaintained, fails to build (#638628). Removal in a month.
+media-sound/nted
+
+# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
+# Fails to build (#638634). Removal in a month.
+sys-apps/raidutils
+
+# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
+# Tries to download and compile other tools, build fails then (#639060).
+# Removal in a month.
+dev-lang/fsharp
+
+# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
+# Dead since 2007, fails to build (#639510). Removal in a month.
+net-irc/ultimate
+
+# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
+# Relies on dead gnome2 python bindings, seems dead since 2009 (#640028),
+# removal in a month.
+sys-power/phctool
+
+# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
+# Upstream stopped its development as recent Gnome versions don't need it,
+# it relies on gnome2 python bindings and many other dead libs (#640032).
+# Removal in a month.
+app-misc/specto
+
+# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
+# Upstream dead, relies on gnome2 python bindings and other dead libs
+# (#640070). Removal in a month.
+x11-plugins/thinkhdaps
+
+# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
+# Cannot be installed (#640414). Removal in a month.
+net-misc/asterisk-rate_engine
+
+# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
+# Dead for ages and replaced by app-admin/procinfo-ng (#641016). Removal in
+# a month.
+app-admin/procinfo
+
+# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
+# Upstream dead, fails to build, nothing requires it (#641750). Removal in a
+# month.
+net-misc/bti
+
+# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
+# Forces old versions of some dependencies, no reverse deps (#643152).
+# Removal in a month.
+dev-util/conan
+
 # Alice Ferrazzi <alicef@gentoo.org> (30 Dec 2017)
 # Masked for removal in 30 days.
 # Upstream is no more backporting security fixes for 4.12.

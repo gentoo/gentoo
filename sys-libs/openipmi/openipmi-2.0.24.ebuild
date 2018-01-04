@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,7 +22,7 @@ RESTRICT='test'
 
 RDEPEND="
 	dev-libs/glib:2
-	sys-libs/gdbm
+	sys-libs/gdbm:=
 	sys-libs/ncurses:0=
 	crypt? ( dev-libs/openssl:0= )
 	snmp? ( net-analyzer/net-snmp )
@@ -73,12 +73,19 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf=()
-	myconf+=( $(use_with snmp ucdsnmp yes) )
-	myconf+=( $(use_with crypt openssl yes) )
-	myconf+=( $(use_with perl perl yes) )
-	myconf+=( $(use_with tcl tcl yes) )
-	myconf+=( $(use_with python python yes) )
+	local myconf=(
+		# these binaries are for root!
+		--bindir=/usr/sbin
+		--with-glib
+		--with-glibver=2.0
+		--with-swig
+		--without-tkinter
+		$(use_with snmp ucdsnmp yes)
+		$(use_with crypt openssl yes)
+		$(use_with perl perl yes)
+		$(use_with tcl tcl yes)
+		$(use_with python python yes)
+	)
 
 	# GUI is broken
 	#use tk && use python && use !tcl && \
@@ -89,10 +96,7 @@ src_configure() {
 	#	myconf+=( --without-tkinter )
 	#fi
 
-	myconf+=( --without-tkinter )
-	myconf+=( --with-glib --with-glibver=2.0 --with-glib12=no --with-swig )
-	# these binaries are for root!
-	econf ${myconf[@]} --bindir=/usr/sbin
+	econf "${myconf[@]}"
 }
 
 src_install() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,30 +16,29 @@ SRC_URI="https://nodejs.org/dist/v${PV}/node-v${PV}.tar.xz"
 LICENSE="Apache-1.1 Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x64-macos"
-IUSE="cpu_flags_x86_sse2 debug doc icu inspector +npm +snapshot +ssl systemtap test"
+IUSE="cpu_flags_x86_sse2 debug doc icu inspector +npm +snapshot +ssl test"
 REQUIRED_USE="
-	${PYTHON_REQUIRED_USE}
 	inspector? ( icu ssl )
 "
 
 RDEPEND="
 	>=dev-libs/libuv-1.15.0:=
+	>=dev-libs/openssl-1.0.2n:0=[-bindist]
 	>=net-libs/http-parser-2.7.0:=
-	>=net-libs/nghttp2-1.25.0
 	sys-libs/zlib
-	icu? ( >=dev-libs/icu-59.1:= )
-	ssl? ( >=dev-libs/openssl-1.0.2n:0=[-bindist] )
+	icu? ( >=dev-libs/icu-58.2:= )
 "
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
 	${PYTHON_DEPS}
-	systemtap? ( dev-util/systemtap )
-	test? ( net-misc/curl )"
+	test? ( net-misc/curl )
+"
 
 S="${WORKDIR}/node-v${PV}"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 PATCHES=(
 	"${FILESDIR}"/gentoo-global-npm-config.patch
-	"${FILESDIR}"/nodejs-8.9.0-shared-nghttp2.patch
 )
 
 pkg_pretend() {
@@ -61,7 +60,7 @@ src_prepare() {
 
 	# make sure we use python2.* while using gyp
 	sed -i -e "s/python/${EPYTHON}/" deps/npm/node_modules/node-gyp/gyp/gyp || die
-	sed -i -e "s/|| 'python2'/|| '${EPYTHON}'/" deps/npm/node_modules/node-gyp/lib/configure.js || die
+	sed -i -e "s/|| 'python'/|| '${EPYTHON}'/" deps/npm/node_modules/node-gyp/lib/configure.js || die
 
 	# less verbose install output (stating the same as portage, basically)
 	sed -i -e "/print/d" tools/install.py || die
@@ -69,12 +68,11 @@ src_prepare() {
 	# proper libdir, hat tip @ryanpcmcquen https://github.com/iojs/io.js/issues/504
 	local LIBDIR=$(get_libdir)
 	sed -i -e "s|lib/|${LIBDIR}/|g" tools/install.py || die
-	sed -i -e "s/'lib'/'${LIBDIR}'/" lib/module.js deps/npm/lib/npm.js || die
+	sed -i -e "s/'lib'/'${LIBDIR}'/" lib/module.js || die
+	sed -i -e "s|\"lib\"|\"${LIBDIR}\"|" deps/npm/lib/npm.js || die
 
 	# Avoid writing a depfile, not useful
 	sed -i -e "/DEPFLAGS =/d" tools/gyp/pylib/gyp/generator/make.py || die
-
-	sed -i -e "/'-O3'/d" common.gypi deps/v8/gypfiles/toolchain.gypi || die
 
 	# Avoid a test that I've only been able to reproduce from emerge. It doesnt
 	# seem sandbox related either (invoking it from a sandbox works fine).
@@ -93,15 +91,15 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf=( --shared-http-parser --shared-libuv --shared-nghttp2 --shared-zlib )
+	local myarch=""
+	local myconf=( --shared-openssl --shared-libuv --shared-http-parser --shared-zlib )
 	use debug && myconf+=( --debug )
-	use icu && myconf+=( --with-intl=system-icu ) || myconf+=( --with-intl=none )
+	use icu && myconf+=( --with-intl=system-icu )
 	use inspector || myconf+=( --without-inspector )
 	use npm || myconf+=( --without-npm )
 	use snapshot && myconf+=( --with-snapshot )
-	use ssl && myconf+=( --shared-openssl ) || myconf+=( --without-ssl )
+	use ssl || myconf+=( --without-ssl )
 
-	local myarch=""
 	case ${ABI} in
 		amd64) myarch="x64";;
 		arm) myarch="arm";;
@@ -118,7 +116,7 @@ src_configure() {
 	"${PYTHON}" configure \
 		--prefix="${EPREFIX}"/usr \
 		--dest-cpu=${myarch} \
-		$(use_with systemtap dtrace) \
+		--without-dtrace \
 		"${myconf[@]}" || die
 }
 

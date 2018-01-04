@@ -1,8 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
 inherit toolchain-funcs
 
 DESCRIPTION="A Linux system call fuzz tester"
@@ -16,9 +15,8 @@ IUSE="examples"
 
 # We need newer headers to avoid compilation failures in the BPF stuff.
 DEPEND="app-arch/xz-utils
-	>=sys-kernel/linux-headers-4.8"
-
-PATCHES=( "${FILESDIR}/${P}-cflags.patch" )
+	>=sys-kernel/linux-headers-4.8
+"
 
 src_configure() {
 	tc-export CC
@@ -32,7 +30,8 @@ src_compile() {
 
 src_install() {
 	dobin "${PN}"
-	dodoc Documentation/* README
+	dodoc Documentation/*
+	einstalldocs
 
 	if use examples ; then
 		exeinto "/usr/share/doc/${PF}/scripts"
