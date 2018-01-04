@@ -667,11 +667,6 @@ x11-plugins/wmupmon
 x11-plugins/wmwave
 <=x11-plugins/wmsysmon-0.7.7
 
-# Ian Whyman <thev00d00@gentoo.org> (04 Dec 2017)
-# Declared dead upstream. Masked for removal in 30 days
-# Please see net-misc/gerbera for a replacement.
-net-misc/mediatomb
-
 # Andreas Sturmlechner <asturm@gentoo.org> (03 Dec 2017)
 # Dead upstream, depending on dead qt3support/qt4. Bug #631788
 games-kids/crayon-physics
