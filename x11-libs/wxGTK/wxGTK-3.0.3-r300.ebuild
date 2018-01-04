@@ -64,6 +64,10 @@ LICENSE="wxWinLL-3 GPL-2 doc? ( wxWinFDL-3 )"
 
 S="${WORKDIR}/wxWidgets-${PV}"
 
+PATCHES=(
+	"${FILESDIR}"/wxGTK-${SLOT}-translation-domain.patch
+)
+
 src_prepare() {
 	default
 
@@ -73,8 +77,8 @@ src_prepare() {
 		-e "s:\(WX_RELEASE_NODOT = \).*:\1${WXRELEASE_NODOT}:"\
 		-e "s:\(WX_VERSION = \).*:\1${WXVERSION}:"\
 		-e "s:aclocal):aclocal/wxwin${WXRELEASE_NODOT}.m4):" \
-		-e "s:wxstd.mo:wxstd${WXRELEASE_NODOT}:" \
-		-e "s:wxmsw.mo:wxmsw${WXRELEASE_NODOT}:" \
+		-e "s:wxstd.mo:wxstd${WXRELEASE_NODOT}.mo:" \
+		-e "s:wxmsw.mo:wxmsw${WXRELEASE_NODOT}.mo:" \
 		Makefile.in || die
 
 	sed -i \
