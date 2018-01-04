@@ -8,5 +8,5 @@ LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-perl/Image-Size >=dev-perl/Date-Calc-5.0 >=dev-perl/File-MMagic-1.17 >=dev-perl/MIME-Types-1.005 >=dev-perl/Regexp-Common-0.30.0 dev-perl/Email-Valid virtual/perl-File-Spec dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DF/DFARRELL/Data-FormValidator-4.86.tar.gz
-_eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
 _md5_=a9af15a4c5d9a86a164f3d4abbaf3f6b

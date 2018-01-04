@@ -9,5 +9,5 @@ LICENSE=GPL-3
 REQUIRED_USE=^^ ( gnat_2016 gnat_2017 )
 SLOT=0
 SRC_URI=http://mirrors.cdn.adacore.com/art/57399029c7a447658e0aff71 -> asis-gpl-2016-src.tar.gz
-_eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045
 _md5_=7c596c58dfa6c49221f76377e10654bb

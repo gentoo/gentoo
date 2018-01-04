@@ -10,5 +10,5 @@ RDEPEND=dev-ada/xmlada[gnat_2016=,gnat_2017=,static]
 REQUIRED_USE=^^ ( gnat_2016 gnat_2017 )
 SLOT=0
 SRC_URI=http://mirrors.cdn.adacore.com/art/591c45e2c7a447af2deed001 -> aws-gpl-2017-src.tar.gz
-_eclasses_=multiprocessing	6f5991c7101863d0b29df63990ad852e
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045
 _md5_=f6b75bbdefd2cc427a126048f5cacf2b

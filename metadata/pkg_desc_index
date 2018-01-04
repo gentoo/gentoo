@@ -2850,7 +2850,7 @@ dev-lang/go 1.9.1 1.9.2: A concurrent garbage collected and typesafe programming
 dev-lang/gprolog 1.4.4: A native Prolog compiler with constraint solving over finite domains (FD)
 dev-lang/icon 9.4.3-r5 9.5.0: very high level language
 dev-lang/inform 6.33.1_p2: design system for interactive fiction
-dev-lang/jimtcl 0.73 0.76: Small footprint implementation of Tcl programming language
+dev-lang/jimtcl 0.76: Small footprint implementation of Tcl programming language
 dev-lang/lazarus 1.0.12: Lazarus IDE is a feature rich visual programming environment emulating Delphi
 dev-lang/lua 5.1.5-r4: A powerful light-weight programming language designed for extending applications
 dev-lang/luajit 2.0.2 2.0.3-r1 2.0.4: Just-In-Time Compiler for the Lua programming language
@@ -4881,10 +4881,10 @@ dev-python/hypothesis 3.6.0-r1: A library for property based testing
 dev-python/icalendar 3.9.2: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/iconvcodec 1.1.2-r1: Python Codecs for Iconv Encodings
 dev-python/id3-py 1.2-r1: Module for manipulating ID3 tags in Python
-dev-python/idna 2.0 2.5: Internationalized Domain Names in Applications (IDNA)
+dev-python/idna 2.5: Internationalized Domain Names in Applications (IDNA)
 dev-python/ijson 2.3: Iterative JSON parser with a Pythonic interface
 dev-python/imagesize 0.7.1: Getting image size from png/jpeg/jpeg2000/gif file
-dev-python/imapclient 0.12 0.13: easy-to-use, pythonic, and complete IMAP client library
+dev-python/imapclient 0.13: easy-to-use, pythonic, and complete IMAP client library
 dev-python/importing 1.10: Import objects dynamically, lazily, weakly, and more
 dev-python/incremental 16.10.1: Incremental is a small library that versions your Python projects
 dev-python/inflect 0.2.5: Correctly inflect words and numbers
@@ -4895,7 +4895,7 @@ dev-python/ioflo 1.5.0: Automated Reasoning Engine and Flow Based Programming Fr
 dev-python/ipaddr 2.1.11-r1: Python IP address manipulation library
 dev-python/ipaddress 1.0.14 1.0.18: IPv4/IPv6 manipulation library, backport of the ipaddress module
 dev-python/ipcalc 1.1.3: IP subnet calculator
-dev-python/ipdb 0.10.1 0.10.3: IPython-enabled pdb
+dev-python/ipdb 0.10.3: IPython-enabled pdb
 dev-python/ipy 0.83: Class and tools for handling of IPv4 and IPv6 addresses and networks
 dev-python/ipython 3.2.1-r1: Advanced interactive shell for Python
 dev-python/ipython_genutils 0.1.0: Vestigial utilities from IPython
@@ -4917,9 +4917,9 @@ dev-python/jaraco-utils 10.0.2: General utility modules that supply commonly-use
 dev-python/jaxml 3.02-r1: XML generator written in Python
 dev-python/jdcal 1.0: Julian dates from proleptic Gregorian and Julian calendars
 dev-python/jedi 0.10.2: Autocompletion library for Python
-dev-python/jingo 0.7 0.9.0: An adapter for using Jinja2 templates with Django
-dev-python/jinja 2.8 2.9.5: A full-featured template engine for Python
-dev-python/jmespath 0.9.0 0.9.3: JSON Matching Expressions
+dev-python/jingo 0.9.0: An adapter for using Jinja2 templates with Django
+dev-python/jinja 2.9.5: A full-featured template engine for Python
+dev-python/jmespath 0.9.3: JSON Matching Expressions
 dev-python/joblib 0.10.0 0.11: Tools to provide lightweight pipelining in Python
 dev-python/jonpy 0.11: Powerful multi-threaded object-oriented CGI/FastCGI/mod_python/html-templating facilities
 dev-python/jpype 0.6.1: JPype is an effort to allow Python programs full access to Java class librairies
