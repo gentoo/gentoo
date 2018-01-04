@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 MY_P="QtPass-${PV}"
 
-inherit qmake-utils
+inherit qmake-utils desktop
 
 DESCRIPTION="multi-platform GUI for pass, the standard unix password manager"
 HOMEPAGE="https://qtpass.org/"
@@ -27,6 +27,12 @@ RDEPEND="app-admin/pass
 DEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5"
 
+src_prepare() {
+	default
+
+	sed -i 's/SUBDIRS += src tests main/SUBDIRS += src main/' "${S}"/qtpass.pro || die
+	sed -i '/main\.depends = tests/d' "${S}"/qtpass.pro || die
+}
 src_configure() {
 	eqmake5 PREFIX="${D}"/usr
 }
