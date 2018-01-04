@@ -151,7 +151,7 @@ app-admin/yaala 0.7.3-r1: Yet Another Log Analyzer
 app-antivirus/clamav 0.98.7 0.99 0.99.2-r1: Clam Anti-Virus Scanner
 app-antivirus/clamav-unofficial-sigs 3.7.2: Downloads and installs third-party clamav signatures
 app-arch/advancecomp 1.15: Recompress ZIP, PNG and MNG, considerably improving compression
-app-arch/afio 2.5: Afio creates cpio-format archives.
+app-arch/afio 2.5 2.5.1-r1: Afio creates cpio-format archives.
 app-arch/alien 8.95: Converts between the rpm, dpkg, stampede slp, and slackware tgz file formats
 app-arch/arc 5.21p: Create & extract files from DOS .ARC files
 app-arch/arj 3.10.22-r5: Utility for opening arj archives
@@ -763,7 +763,7 @@ app-emulation/wine-gecko 2.47-r1: A Mozilla Gecko based version of Internet Expl
 app-emulation/wine-mono 4.6.4: Wine Mono is a replacement for the .NET runtime and class libraries in Wine
 app-emulation/wine-vanilla 2.0-r1 2.0.1-r1 2.0.2-r1 2.0.3: Free implementation of Windows(tm) on Unix, without external patchsets
 app-emulation/winetricks 20170823: Easy way to install DLLs needed to work around problems in Wine
-app-emulation/x48 0.6.4: HP48 Calculator Emulator
+app-emulation/x48 0.6.4 0.6.4-r1: HP48 Calculator Emulator
 app-emulation/xen 4.8.2-r2: The Xen virtual machine monitor
 app-emulation/xen-pvgrub 4.8.2-r1: allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
 app-emulation/xen-tools 4.8.2-r3: Xen tools including QEMU and xl
@@ -1011,7 +1011,7 @@ app-misc/ignuit 2.24.3: Memorization aid based on the Leitner flashcard system
 app-misc/iguanaIR 1.0.1-r1: library for Irman control of Unix software
 app-misc/inputlircd 0.0.1_pre11: Inputlirc daemon to utilize /dev/input/event*
 app-misc/interceptty 0.6: a program that can sit between a serial port and an application
-app-misc/jail 2.0: Builds a chroot and configures all the required files, directories and libraries
+app-misc/jail 2.0 2.0-r1: Builds a chroot and configures all the required files, directories and libraries
 app-misc/jitac 0.3.0: An image to ASCII converter written in Java
 app-misc/jot 9.0-r1: Print out increasing, decreasing, random, or redundant data
 app-misc/joy2key 1.6.3-r1: An application that translates joystick events to keyboard events
@@ -1855,7 +1855,7 @@ dev-db/oracle-instantclient-sqlplus 10.2.0.3 11.2.0.3 11.2.0.3-r1 11.2.0.4: Orac
 dev-db/percona-toolkit 2.2.11: essential command-line utilities for MySQL
 dev-db/percona-xtrabackup 2.4.7 2.4.8: Hot backup utility for MySQL based servers
 dev-db/pg_top 3.7.0: 'top' for PostgreSQL
-dev-db/pgadmin3 1.22.1-r1: wxWidgets GUI for PostgreSQL
+dev-db/pgadmin3 1.22.1-r1 1.22.2: wxWidgets GUI for PostgreSQL
 dev-db/pgagent 3.4.0-r1: pgAgent is a job scheduler for PostgreSQL
 dev-db/pgbouncer 1.7.2: Lightweight connection pooler for PostgreSQL
 dev-db/pgtap 0.93.0: Unit testing for PostgreSQL
@@ -4826,7 +4826,7 @@ dev-python/gdata 2.0.18: Python client library for Google data APIs
 dev-python/genshi 0.7: Python toolkit for stream-based generation of output for the web
 dev-python/genty 1.3.2: Allows you to run a test with multiple data sets
 dev-python/geoip-python 1.3.2 1.3.2-r1: Python bindings for GeoIP
-dev-python/geopy 1.8.1 1.11.0: A Geocoding Toolbox for Python
+dev-python/geopy 1.11.0: A Geocoding Toolbox for Python
 dev-python/gevent 1.0.1 1.2.1: Coroutine-based network library
 dev-python/gevent-socketio 0.3.5_rc2-r1: SocketIO server based on the Gevent pywsgi server
 dev-python/gevent-websocket 0.9.3: Websocket handler for the gevent pywsgi server
@@ -4844,19 +4844,19 @@ dev-python/gnome-python-extras-base 2.25.3-r1: Provides python the base files fo
 dev-python/gnome-vfs-python 2.28.1-r1: Python bindings for the GnomeVFS library
 dev-python/gnuplot-py 1.8-r1: A python wrapper for Gnuplot
 dev-python/google-api-python-client 1.3.1 1.5.0 1.5.3 1.6.2: Google API Client for Python
-dev-python/google-apputils 0.4.0-r1 0.4.2-r2: Collection of utilities for building Python applications
+dev-python/google-apputils 0.4.2-r2: Collection of utilities for building Python applications
 dev-python/google-auth 1.0.1: Google Authentication Library
 dev-python/google-auth-httplib2 0.0.2: httplib2 Transport for Google Auth
 dev-python/graph-tool 2.19: An efficient python module for manipulation and statistical analysis of graphs
 dev-python/graphcanvas 4.0.2-r1: Enthought Tool Suite: Interactive Graph (network) Visualization
 dev-python/graphy 1.0-r1: Simple Chart Library for Python
-dev-python/greenlet 0.4.10 0.4.12: Lightweight in-process concurrent programming
+dev-python/greenlet 0.4.12: Lightweight in-process concurrent programming
 dev-python/gst-python 0.10.22-r1 1.10.5 1.12.3: A Python Interface to GStreamer
 dev-python/gtkspell-python 2.25.3-r1: GtkSpell bindings for Python
 dev-python/guessit 2.1.2-r1 2.1.3-r1 2.1.4: Python library for guessing information from video filenames
 dev-python/guppy 0.1.10-r1: Guppy-PE -- A Python Programming Environment
 dev-python/guzzle_sphinx_theme 0.7.11: Sphinx theme used by Guzzle
-dev-python/h5py 2.3.1 2.7.0: Simple Python interface to HDF5 files
+dev-python/h5py 2.7.0: Simple Python interface to HDF5 files
 dev-python/hachoir-core 1.3.3-r1: Core of Hachoir framework: parse and edit binary files
 dev-python/hachoir-parser 1.3.4-r1: Package of Hachoir parsers used to open binary files
 dev-python/hachoir-regex 1.0.5-r1: Manipulation of regular expressions (regex)
@@ -4873,7 +4873,7 @@ dev-python/html5lib 0.9999999: HTML parser based on the HTML5 specification
 dev-python/htmlgen 2.2.2-r1: HTMLgen - Python modules for the generation of HTML documents
 dev-python/http-parser 0.8.3: HTTP request/response parser for python in C
 dev-python/httpbin 0.4.1: HTTP Request and Response Service
-dev-python/httplib2 0.9.2-r2 0.10.3-r1: A comprehensive HTTP client library
+dev-python/httplib2 0.10.3-r1: A comprehensive HTTP client library
 dev-python/httpretty 0.8.0 0.8.10 0.8.14: HTTP client mock for Python
 dev-python/hyper-h2 2.5.1: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 4.0.1: HTTP/2 framing layer for Python
@@ -8374,9 +8374,10 @@ net-firewall/fwbuilder 5.0.1.3592-r1: A firewall GUI
 net-firewall/fwipsec 0.4.2-r1: Firewall scripts that control iptables, FreeS/WAN, and squid
 net-firewall/ipset 6.29: IPset tool for iptables, successor to ippool
 net-firewall/ipt_netflow 2.2-r2: Netflow iptables module
-net-firewall/iptables 1.4.21-r1: Linux kernel (2.4+) firewall, NAT and packet mangling tools
+net-firewall/iptables 1.4.21-r1 1.6.1-r2: Linux kernel (2.4+) firewall, NAT and packet mangling tools
 net-firewall/itval 1.2_p20121104: Iptables policy testing and validation tool
 net-firewall/nfacct 1.0.1: Command line tool to create/retrieve/delete accounting objects in NetFilter
+net-firewall/nftables 0.8-r3: Linux kernel (3.13+) firewall, NAT and packet mangling tools
 net-firewall/pglinux 2.3.1: Privacy oriented firewall application
 net-firewall/psad 2.2.5: Port Scanning Attack Detection daemon
 net-firewall/rtsp-conntrack 3.7: RTSP conntrack module for Netfilter
@@ -8540,14 +8541,14 @@ net-libs/libnatpmp 20130911: An alternative protocol to UPnP IGD specification
 net-libs/libndp 1.6-r1: Library for Neighbor Discovery Protocol
 net-libs/libnet 1.0.2a-r5 1.2_rc3-r1: library providing an API for commonly used low-level network functions
 net-libs/libnetfilter_acct 1.0.2: Userspace library providing interface to extended accounting infrastructure of NetFilter
-net-libs/libnetfilter_conntrack 1.0.4: programming interface (API) to the in-kernel connection tracking state table
+net-libs/libnetfilter_conntrack 1.0.4 1.0.6: programming interface (API) to the in-kernel connection tracking state table
 net-libs/libnetfilter_cthelper 1.0.0: userspace library that provides the programming interface to the user-space helper infrastructure
 net-libs/libnetfilter_cttimeout 1.0.0: netlink interface to the connection tracking timeout infrastructure in the kernel packet filter
 net-libs/libnetfilter_log 1.0.1: interface to packets that have been logged by the kernel packet filter
 net-libs/libnetfilter_queue 1.0.2: API to packets that have been queued by the kernel packet filter
 net-libs/libnfnetlink 1.0.1: the low-level library for netfilter related kernel/userspace communication
 net-libs/libnfsidmap 0.24: NFSv4 ID <-> name mapping library
-net-libs/libnftnl 1.0.6: Netlink API to the in-kernel nf_tables subsystem
+net-libs/libnftnl 1.0.6 1.0.8-r1: Netlink API to the in-kernel nf_tables subsystem
 net-libs/libnice 0.1.13: An implementation of the Interactice Connectivity Establishment standard (ICE)
 net-libs/libnids 1.24-r6: an implementation of an E-component of Network Intrusion Detection System
 net-libs/libnsl 0: Public client interface for NIS(YP) and NIS+ in a IPv6 ready version
