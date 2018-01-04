@@ -4779,9 +4779,9 @@ dev-python/figleaf 0.6.1-r1: Code coverage tool
 dev-python/fixtures 1.4.0 3.0.0: Fixtures, reusable state for writing clean tests and more
 dev-python/flake8 2.1.0 2.2.5 2.5.4: A wrapper around PyFlakes, pep8 & mccabe
 dev-python/flaky 3.1.1: Plugin for nose or py.test that automatically reruns flaky tests
-dev-python/flask 0.10.1-r1 0.12.2: A microframework based on Werkzeug, Jinja2 and good intentions
+dev-python/flask 0.12.2: A microframework based on Werkzeug, Jinja2 and good intentions
 dev-python/flask-admin 1.0.6: Simple and extensible admin interface framework for Flask
-dev-python/flask-babel 0.9 0.11.2: i18n and l10n support for Flask based on Babel and pytz
+dev-python/flask-babel 0.11.2: i18n and l10n support for Flask based on Babel and pytz
 dev-python/flask-cors 2.1.0: A Flask extension for Cross Origin Resource Sharing (CORS)
 dev-python/flask-dashed 0.1b_p2: Admin app framework for flask
 dev-python/flask-evolution 0.5-r1: Simple migrations for Flask/SQLAlchemy projects
@@ -4789,23 +4789,23 @@ dev-python/flask-gravatar 0.4.2: Small extension for Flask to make usage of Grav
 dev-python/flask-htmlmin 1.2.1: Minimize your flask rendered html
 dev-python/flask-login 0.3.2-r1: Login session support for Flask
 dev-python/flask-mail 0.9.1-r1: Flask extension for sending email
-dev-python/flask-migrate 1.3.0 2.1.1: SQLAlchemy database migrations for Flask applications using Alembic
-dev-python/flask-mongoengine 0.7.0 0.9.3: Flask support for MongoDB and with WTF model forms
+dev-python/flask-migrate 2.1.1: SQLAlchemy database migrations for Flask applications using Alembic
+dev-python/flask-mongoengine 0.9.3: Flask support for MongoDB and with WTF model forms
 dev-python/flask-openid 1.2.4: OpenID support for Flask
 dev-python/flask-paranoid 0.1.0: Simple user session protection extension for Flask
 dev-python/flask-peewee 0.6.5: Flask integration layer for the Peewee ORM
 dev-python/flask-principal 0.4.0-r1: Identity management for flask
 dev-python/flask-pymongo 0.3.0: PyMongo support for Flask
 dev-python/flask-restful 0.3.5-r1: Simple framework for creating REST APIs
-dev-python/flask-restless 0.15.0 0.17.0: Flask extension for easy ReSTful API generation
+dev-python/flask-restless 0.17.0: Flask extension for easy ReSTful API generation
 dev-python/flask-script 2.0.5-r1: Flask support for writing external scripts
-dev-python/flask-security 1.7.4 1.7.5-r1: Simple security for Flask apps
+dev-python/flask-security 1.7.5-r1: Simple security for Flask apps
 dev-python/flask-sqlalchemy 2.1: SQLAlchemy support for Flask applications
 dev-python/flask-testing 0.4.2: Unit testing for Flask
 dev-python/flask-themes 0.1.3-r1: Infrastructure for theming support in Flask applications
-dev-python/flask-uploads 0.1.3 0.2.0-r1: Flexible and efficient upload handling for Flask
-dev-python/flask-whooshalchemy 0.5.6 0.8: Whoosh extension to Flask/SQLAlchemy
-dev-python/flask-wtf 0.10.3 0.14.2: Simple integration of Flask and WTForms
+dev-python/flask-uploads 0.2.0-r1: Flexible and efficient upload handling for Flask
+dev-python/flask-whooshalchemy 0.8: Whoosh extension to Flask/SQLAlchemy
+dev-python/flask-wtf 0.14.2: Simple integration of Flask and WTForms
 dev-python/flask-xml-rpc 0.1.2-r1: XML-RPC support for Flask applications
 dev-python/flexx 0.3.1: Pure Python toolkit for creating GUI's using web technology
 dev-python/flup 1.0.2-r1: Random assortment of WSGI servers
@@ -4822,7 +4822,7 @@ dev-python/functools32 3.2.3: Backport of the functools module from Python 3
 dev-python/fuse-python 0.2.1-r1: Python FUSE bindings
 dev-python/fusil 1.5: Fusil the fuzzer is a Python library used to write fuzzing programs
 dev-python/future 0.15.2 0.16.0: Easy, clean, reliable Python 2/3 compatibility
-dev-python/futures 2.2.0 3.0.3 3.1.1: Backport of the concurrent.futures package from Python 3.2
+dev-python/futures 3.0.3 3.1.1: Backport of the concurrent.futures package from Python 3.2
 dev-python/futurist 1.3.1: Useful additions to futures, from the future
 dev-python/gconf-python 2.28.1-r1: Python bindings for the GConf library
 dev-python/gcs-oauth2-boto-plugin 1.8-r1: OAuth 2.0 plugin for Google Cloud Storage credentials in the Boto library
