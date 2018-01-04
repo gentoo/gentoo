@@ -1,13 +1,13 @@
-DEFINED_PHASES=compile install setup
-DEPEND=app-admin/gkrellm[X] media-libs/alsa-lib sci-libs/fftw:3.0= =app-admin/gkrellm-2* virtual/pkgconfig
+DEFINED_PHASES=compile install
+DEPEND=app-admin/gkrellm:2[X] media-libs/alsa-lib sci-libs/fftw:3.0= virtual/pkgconfig
 DESCRIPTION=A plugin for GKrellM2 that has a VU meter and a sound chart
 EAPI=6
 HOMEPAGE=http://members.dslextreme.com/users/billw/gkrellmss/gkrellmss.html
 IUSE=nls
 KEYWORDS=~alpha amd64 ~ppc ~sparc x86
 LICENSE=GPL-2
-RDEPEND=app-admin/gkrellm[X] media-libs/alsa-lib sci-libs/fftw:3.0= =app-admin/gkrellm-2*
+RDEPEND=app-admin/gkrellm:2[X] media-libs/alsa-lib sci-libs/fftw:3.0=
 SLOT=0
 SRC_URI=http://web.wt.net/~billw/gkrellmss/gkrellmss-2.6.tar.gz
-_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	gkrellm-plugin	0c6887ede1f3cc3067a1d1acb8aff2e9	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=7576c43a7b4cbe3bf287af8ab1599a1c
+_eclasses_=gkrellm-plugin	e3548dfd06a50087a45520f52934a39c	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_md5_=18267ad0b04763836afbe63572f008bc
