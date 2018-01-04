@@ -49,6 +49,7 @@ DEPEND="${RDEPEND}
 	app-text/docbook-xsl-stylesheets
 	app-text/po4a
 	test? ( dev-cpp/gtest )
+	qt5? ( app-text/cmark )
 "
 
 DOCS="AUTHORS NEWS.md README.md"
