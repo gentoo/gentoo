@@ -1,0 +1,55 @@
+From 2f1b9dfe03133c9b77ea450aed088d65128dc547 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Amadeusz=20S=C5=82awi=C5=84ski?= <amade@asmblr.net>
+Date: Tue, 5 Apr 2016 12:47:08 +0200
+Subject: [PATCH] check if we have ut_exit in utmpx struct
+
+---
+ acconfig.h   | 5 +++++
+ configure.ac | 4 ++++
+ utmp.c       | 2 ++
+ 3 files changed, 11 insertions(+)
+
+diff --git a/acconfig.h b/acconfig.h
+index 656e117..d173c9c 100644
+--- a/acconfig.h
++++ b/acconfig.h
+@@ -215,6 +215,11 @@
+ #undef HAVE_UTEMPTER
+ 
+ /*
++ * Define if your utmpx has ut_exit struct
++ */
++#undef HAVE_UT_EXIT
++
++/*
+  * If your system has the calls setreuid() and setregid(),
+  * define HAVE_SETREUID. Otherwise screen will use a forked process to
+  * safely create output files without retaining any special privileges.
+diff --git a/configure.ac b/configure.ac
+index 1a75020..8457619 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -374,6 +374,10 @@ if test "$have_utempter" = yes; then
+   AC_DEFINE(HAVE_UTEMPTER)
+   LIBS="$LIBS -lutempter"
+ fi
++AC_CHECKING(ut_exit)
++AC_TRY_COMPILE([
++#include <utmpx.h>
++],[struct utmpx u; u.ut_exit.e_exit;], AC_DEFINE(HAVE_UT_EXIT))
+ 
+ dnl
+ dnl    ****  signal handling  ****
+diff --git a/utmp.c b/utmp.c
+index da8d7ff..c864d07 100644
+--- a/utmp.c
++++ b/utmp.c
+@@ -381,7 +381,7 @@ static int pututslot(slot_t slot, struct utmpx *u, char *host, Window *win)
+ struct utmp *u;
+ {
+   u->ut_type = DEAD_PROCESS;
+-#if (!defined(linux) || defined(EMPTY)) && !defined(__CYGWIN__)
++#if defined(HAVE_UT_EXIT)
+   u->ut_exit.e_termination = 0;
+   u->ut_exit.e_exit = 0;
+ #endif
