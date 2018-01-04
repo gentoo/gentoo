@@ -7,6 +7,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
+# sys-apps/raidutils is going to be removed (#638634)
+net-analyzer/nagios-plugin-check_raid i2o
+
 # Andrey Utkin <andrey_utkin@gentoo.org> (29 Dec 2017)
 # This flag can be sensibly enabled only on macos.
 # Can be unmasked in prefix/darwin/macos profiles. Bug #637482
