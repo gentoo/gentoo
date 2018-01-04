@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 CHROMIUM_LANGS="
-	be bg bn ca cs da de el en-GB es-419 es fil fi fr-CA fr hi hr hu id it
-	ja ko lt lv ms nb nl pl pt-BR pt-PT ro ru sk sr sv sw ta te th tr uk vi
-	zh-CN zh-TW
+	be bg bn ca cs da de el en-GB es-419 es fil fi fr-CA fr hi hr hu id it ja
+	ko lt lv ms nb nl pl pt-BR pt-PT ro ru sk sr sv sw ta te th tr uk vi zh-CN
+	zh-TW
 "
 inherit chromium-2 gnome2-utils multilib unpacker xdg-utils
 
@@ -19,13 +19,11 @@ SRC_URI_BASE="
 	http://download3.operacdn.com/pub/
 	http://download4.operacdn.com/pub/
 "
-SRC_URI="amd64? ("
 for uri in ${SRC_URI_BASE}; do
 SRC_URI+="
-	"${uri}${PN}/${PV}/linux/${PN}_${PV}_amd64.deb"
+	"${uri}${PN}/desktop/${PV}/linux/${PN}-stable_${PV}_amd64.deb"
 "
 done
-SRC_URI+=")"
 KEYWORDS="~amd64"
 
 RDEPEND="
@@ -72,15 +70,12 @@ src_prepare() {
 			mv usr/lib/x86_64-linux-gnu usr/$(get_libdir) || die
 			rm -r usr/lib || die
 			;;
-		x86)
-			mv usr/lib/i386-linux-gnu/${PN} usr/$(get_libdir)/ || die
-			;;
 	esac
 
 	rm usr/bin/${PN} || die
 
-	rm usr/share/doc/${PN}/copyright || die
-	mv usr/share/doc/${PN} usr/share/doc/${PF} || die
+	rm usr/share/doc/${PN}-stable/copyright || die
+	mv usr/share/doc/${PN}-stable usr/share/doc/${PF} || die
 
 	pushd "${OPERA_HOME}/localization" > /dev/null || die
 	chromium_remove_language_paks
