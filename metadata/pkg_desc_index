@@ -3098,7 +3098,7 @@ dev-libs/libpcre2 10.22 10.30: Perl-compatible regular expression library
 dev-libs/libpeas 1.20.0-r1: A GObject plugins library
 dev-libs/libpipeline 1.4.0: a pipeline manipulation library
 dev-libs/libplatform 2.0.1: Platform support library used by libCEC and binary add-ons for Kodi
-dev-libs/libpqxx 4.0.1: Standard front end for writing C++ programs that use PostgreSQL
+dev-libs/libpqxx 4.0.1 5.1.0: Standard front-end for writing C++ programs that use PostgreSQL
 dev-libs/libproccpuinfo 0.0.8-r1: Architecture independent C API for reading /proc/cpuinfo
 dev-libs/libpthread-stubs 0.3-r1 0.4: Pthread functions stubs for platforms missing them
 dev-libs/libpwquality 1.3.0 1.4.0: Library for password quality checking and generating random passwords
@@ -8482,7 +8482,7 @@ net-irc/znc 1.6.3-r1 1.6.5: An advanced IRC Bouncer
 net-libs/accounts-qt 1.13: Qt5 bindings for libaccounts-glib
 net-libs/adns 1.4: Advanced, easy to use, asynchronous-capable DNS client library and utilities
 net-libs/aqbanking 5.0.25 5.6.10: Generic Online Banking Interface
-net-libs/axtls 1.5.3: Embedded client/server TLSv1 SSL library and small HTTP(S) server
+net-libs/axtls 1.5.3 2.1.3: Embedded client/server TLSv1 SSL library and small HTTP(S) server
 net-libs/biblesync 1.1.2 1.1.2-r2: A multicast protocol to support Bible software shared co-navigation
 net-libs/c-client 2007f-r6: UW IMAP c-client library
 net-libs/canlock 2b: A library for creating and verifying Usenet cancel locks
@@ -9233,7 +9233,7 @@ sci-libs/fftw 2.1.5-r9 3.3.6_p2: Fast C library for the Discrete Fourier Transfo
 sci-libs/galib 2.4.7-r1: Library for genetic algorithms in C++ programs
 sci-libs/gamer 1.5-r2: Geometry-preserving Adaptive MeshER
 sci-libs/gdal 2.0.2-r3 2.0.3: Translator library for raster geospatial data formats (includes OGR support)
-sci-libs/geos 3.6.1: Geometry engine library for Geographic Information Systems
+sci-libs/geos 3.6.1 3.6.2: Geometry engine library for Geographic Information Systems
 sci-libs/gsl 1.16: The GNU Scientific Library
 sci-libs/gts 20121130: GNU Triangulated Surface Library
 sci-libs/hdf 4.2.8: General purpose library and format for storing scientific data
