@@ -55,5 +55,5 @@ src_configure() {
 
 src_test() {
 	addwrite "/run/lock/LCK..bar"
-	MAKEOPTS+=" -j1" LD_LIBRARY_PATH="${BUILD_DIR}/libgammu" cmake-utils_src_test
+	LD_LIBRARY_PATH="${BUILD_DIR}/libgammu" cmake-utils_src_test -j1
 }
