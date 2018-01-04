@@ -35,11 +35,6 @@ DOCS=(
 	README.md
 )
 
-src_prepare() {
-	eapply "${FILESDIR}"/${P}-setup-py.patch
-	eapply_user
-}
-
 pkg_preinst() {
 	gnome2_icon_savelist
 }
