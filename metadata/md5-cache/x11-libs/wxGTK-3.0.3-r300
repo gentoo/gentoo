@@ -11,4 +11,4 @@ RDEPEND=dev-libs/expat[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n3
 SLOT=3.0-gtk3
 SRC_URI=https://github.com/wxWidgets/wxWidgets/releases/download/v3.0.3/wxWidgets-3.0.3.tar.bz2 https://dev.gentoo.org/~leio/distfiles/wxGTK-3.0.3_p20180104.tar.xz doc? ( https://github.com/wxWidgets/wxWidgets/releases/download/v3.0.3/wxWidgets-3.0.3-docs-html.tar.bz2 )
 _eclasses_=multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	8ffb5e2112a70fef5f37fcacad308726	multilib-minimal	9139c3a57e077cb8e0d0f73ceb080b89	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=f0e567c7348d731526a5831d93d0530a
+_md5_=7e0ec3689dcfea5efc934ef34fe799c9
