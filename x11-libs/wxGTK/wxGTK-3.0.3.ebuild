@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
-inherit eutils multilib-minimal
+inherit multilib-minimal
 
 DESCRIPTION="GTK+ version of wxWidgets, a cross-platform C++ GUI toolkit"
 HOMEPAGE="https://wxwidgets.org/"
@@ -17,8 +17,8 @@ SLOT="3.0"
 
 RDEPEND="
 	dev-libs/expat[${MULTILIB_USEDEP}]
-	sdl?    ( media-libs/libsdl[${MULTILIB_USEDEP}] )
-	X?  (
+	sdl? ( media-libs/libsdl[${MULTILIB_USEDEP}] )
+	X? (
 		>=dev-libs/glib-2.22:2[${MULTILIB_USEDEP}]
 		media-libs/libpng:0=[${MULTILIB_USEDEP}]
 		sys-libs/zlib[${MULTILIB_USEDEP}]
@@ -45,7 +45,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig[${MULTILIB_USEDEP}]
 	opengl? ( virtual/glu[${MULTILIB_USEDEP}] )
-	X?  (
+	X? (
 		x11-proto/xproto[${MULTILIB_USEDEP}]
 		x11-proto/xineramaproto[${MULTILIB_USEDEP}]
 		x11-proto/xf86vidmodeproto[${MULTILIB_USEDEP}]
@@ -53,16 +53,12 @@ DEPEND="${RDEPEND}
 
 PDEPEND=">=app-eselect/eselect-wxwidgets-20131230"
 
-LICENSE="wxWinLL-3
-		GPL-2
-		doc?	( wxWinFDL-3 )"
+LICENSE="wxWinLL-3 GPL-2 doc? ( wxWinFDL-3 )"
 
 S="${WORKDIR}/wxWidgets-${PV}"
-
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-3.0.0.0-collision.patch
-	epatch_user
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.0.0.0-collision.patch
+)
 
 multilib_src_configure() {
 	local myconf
