@@ -93,30 +93,22 @@ src_configure() {
 		-DENABLE_ZLIB=ON
 		-DENABLE_ZLIB_UNCOMPRESS=OFF
 		-DENABLE_XPDF_HEADERS=ON
-		-DENABLE_LIBCURL="$(usex curl)"
-		-DENABLE_CPP="$(usex cxx)"
-		-DENABLE_UTILS="$(usex utils)"
 		-DSPLASH_CMYK=OFF
 		-DUSE_FIXEDPOINT=OFF
 		-DUSE_FLOAT=OFF
-		-DWITH_Cairo="$(usex cairo)"
-		-DWITH_GObjectIntrospection="$(usex introspection)"
-		-DWITH_JPEG="$(usex jpeg)"
-		-DWITH_NSS3="$(usex nss)"
-		-DWITH_PNG="$(usex png)"
+		-DWITH_Cairo=$(usex cairo)
+		-DENABLE_LIBCURL=$(usex curl)
+		-DENABLE_CPP=$(usex cxx)
+		-DWITH_GObjectIntrospection=$(usex introspection)
+		-DWITH_JPEG=$(usex jpeg)
+		-DENABLE_DCTDECODER=$(usex jpeg libjpeg none)
+		-DENABLE_LIBOPENJPEG=$(usex jpeg2k openjpeg2 none)
+		-DWITH_NSS3=$(usex nss)
+		-DWITH_PNG=$(usex png)
 		$(cmake-utils_use_find_package qt5 Qt5Core)
-		-DWITH_TIFF="$(usex tiff)"
+		-DWITH_TIFF=$(usex tiff)
+		-DENABLE_UTILS=$(usex utils)
 	)
-	if use jpeg; then
-		mycmakeargs+=(-DENABLE_DCTDECODER=libjpeg)
-	else
-		mycmakeargs+=(-DENABLE_DCTDECODER=none)
-	fi
-	if use jpeg2k; then
-		mycmakeargs+=(-DENABLE_LIBOPENJPEG=openjpeg2)
-	else
-		mycmakeargs+=(-DENABLE_LIBOPENJPEG=none)
-	fi
 	if use lcms; then
 		mycmakeargs+=(-DENABLE_CMS=lcms2)
 	else
