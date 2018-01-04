@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cmake-utils toolchain-funcs xdg-utils
+inherit cmake-utils flag-o-matic toolchain-funcs xdg-utils
 
 if [[ "${PV}" == "9999" ]] ; then
 	inherit git-r3
@@ -79,10 +79,8 @@ src_prepare() {
 		einfo "policy(SET CMP0002 OLD) - workaround can be removed"
 	fi
 
-	if tc-is-clang && [[ ${CHOST} == *-darwin* ]] ; then
-		# we need to up the C++ version, bug #622526
-		export CXX="$(tc-getCXX) -std=c++11"
-	fi
+	# we need to up the C++ version, bug #622526, #643278
+	append-cxxflags -std=c++11
 }
 
 src_configure() {
