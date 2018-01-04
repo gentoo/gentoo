@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -41,6 +41,7 @@ src_configure() {
 	append-cppflags ${CXXFLAGS}
 	econf \
 		--without-rpath \
+		--without-qt \
 		--with-manip \
 		$(use_with X x) \
 		$(use_with jpeg) \
