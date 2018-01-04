@@ -11167,7 +11167,7 @@ x11-themes/zukitwo 2016.08.08: Transition package to zuki-themes
 x11-themes/zukitwo-shell 2016.08.08: Transition package to zuki-themes
 x11-wm/aewm 1.3.12: A minimalistic X11 window manager
 x11-wm/aewm++ 1.1.5-r2: A window manager with more modern features than aewm
-x11-wm/afterstep 2.2.9 2.2.12: A feature rich NeXTish window manager
+x11-wm/afterstep 2.2.12: A feature rich NeXTish window manager
 x11-wm/awesome 3.5.6-r2: A dynamic floating and tiling window manager
 x11-wm/blackbox 0.70.1-r1: A small, fast, full-featured window manager for X
 x11-wm/ctwm 3.7 3.8a-r1: A clean, light window manager
