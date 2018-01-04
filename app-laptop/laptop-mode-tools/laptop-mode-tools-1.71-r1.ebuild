@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,17 +14,14 @@ SRC_URI="https://github.com/rickysarraf/${PN}/releases/download/${PV}/${MY_P}.ta
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
-IUSE="+acpi apm bluetooth scsi"
+IUSE="+acpi apm bluetooth"
 
-RDEPEND="net-wireless/wireless-tools
-	sys-apps/iproute2
+RDEPEND="sys-apps/iproute2
 	sys-apps/ethtool
-	sys-apps/hdparm
 	sys-apps/which
 	acpi? ( sys-power/acpid )
 	apm? ( sys-apps/apmd )
-	bluetooth? ( net-wireless/bluez:= )
-	scsi? ( sys-apps/sdparm )"
+	bluetooth? ( net-wireless/bluez:= )"
 DEPEND=""
 
 S="${WORKDIR}/${MY_P}"
