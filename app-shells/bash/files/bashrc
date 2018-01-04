@@ -97,12 +97,8 @@ if ${use_color} ; then
 	alias egrep='egrep --colour=auto'
 	alias fgrep='fgrep --colour=auto'
 else
-	if [[ ${EUID} == 0 ]] ; then
-		# show root@ when we don't have colors
-		PS1+='\u@\h \w \$ '
-	else
-		PS1+='\u@\h \w \$ '
-	fi
+	# show root@ when we don't have colors
+	PS1+='\u@\h \w \$ '
 fi
 
 for sh in /etc/bash/bashrc.d/* ; do
