@@ -9693,7 +9693,7 @@ sys-apps/isapnptools 1.27: Tools for configuring ISA PnP devices
 sys-apps/iucode_tool 2.1.1: tool to manipulate Intel X86 and X86-64 processor microcode update collections
 sys-apps/kbd 1.15.5-r1 2.0.3: Keyboard and console utilities
 sys-apps/kexec-tools 2.0.4-r2 2.0.14: Load another kernel from the currently executing Linux kernel
-sys-apps/keyutils 1.5.9-r1: Linux Key Management Utilities
+sys-apps/keyutils 1.5.9-r1 1.5.9-r4: Linux Key Management Utilities
 sys-apps/kmod 23: library and tools for managing linux kernel modules
 sys-apps/less 487 529: Excellent text file viewer
 sys-apps/lm_sensors 3.4.0_p20160725 3.4.0_p20170901: Hardware Monitoring user-space utilities
