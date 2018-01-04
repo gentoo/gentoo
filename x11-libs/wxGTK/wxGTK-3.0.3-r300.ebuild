@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools multilib-minimal
+inherit multilib-minimal
 
 DESCRIPTION="GTK+ version of wxWidgets, a cross-platform C++ GUI toolkit"
 HOMEPAGE="https://wxwidgets.org/"
@@ -66,12 +66,6 @@ S="${WORKDIR}/wxWidgets-${PV}"
 
 src_prepare() {
 	default
-
-	local f
-	for f in $(find "${S}" -name configure.in); do
-		mv "${f}" "${f/in/ac}" || die
-	done
-	AT_M4DIR="${S}/build/aclocal" eautoreconf
 
 	# Versionating
 	sed -i \
