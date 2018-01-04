@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 PYTHON_COMPAT=( pypy3 python3_{4,5,6} )
-inherit eutils python-single-r1 systemd
+inherit python-single-r1 systemd
 
 DESCRIPTION="systemd units to create timers for cron directories and crontab"
 HOMEPAGE="https://github.com/systemd-cron/systemd-cron/"
@@ -14,14 +14,21 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="cron-boot etc-crontab-systemd minutely setgid test yearly"
 
-RDEPEND=">=sys-apps/systemd-217
-	     sys-apps/debianutils
-	     !etc-crontab-systemd? ( !sys-process/dcron )
-	     ${PYTHON_DEPS}
-		 sys-process/cronbase"
+CDEPEND="sys-process/cronbase"
 
-DEPEND="sys-process/cronbase
-	test? ( sys-apps/man-db dev-python/pyflakes )"
+RDEPEND="${CDEPEND}
+	>=sys-apps/systemd-217
+	sys-apps/debianutils
+	!etc-crontab-systemd? (
+		!sys-process/dcron
+	)
+	${PYTHON_DEPS}"
+
+DEPEND="${CDEPEND}
+	test? (
+		sys-apps/man-db
+		dev-python/pyflakes
+	)"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -46,8 +53,8 @@ src_prepare() {
 			"${S}/src/bin/systemd-crontab-generator.py" || die
 	fi
 
-	epatch "${FILESDIR}"/${P}-fix-generator-path.patch
-	epatch_user
+	eapply "${FILESDIR}"/${P}-fix-generator-path.patch
+	eapply_user
 }
 
 my_use_enable() {
@@ -60,17 +67,17 @@ my_use_enable() {
 
 src_configure() {
 	./configure \
+		--enable-persistent=yes \
 		--prefix="${EPREFIX}/usr" \
 		--confdir="${EPREFIX}/etc" \
 		--runparts="${EPREFIX}/bin/run-parts" \
 		--mandir="${EPREFIX}/usr/share/man" \
-		--unitdir="$(systemd_get_unitdir)" \
+		--unitdir="$(systemd_get_systemunitdir)" \
 		--generatordir="$(systemd_get_systemgeneratordir)" \
 		$(my_use_enable cron-boot boot) \
 		$(my_use_enable minutely) \
 		$(my_use_enable yearly) \
 		$(my_use_enable yearly quarterly) \
 		$(my_use_enable yearly semi_annually) \
-		$(my_use_enable setgid) \
-		--enable-persistent=yes
+		$(my_use_enable setgid)
 }
