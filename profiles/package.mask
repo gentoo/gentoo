@@ -29,6 +29,19 @@
 
 #--- END OF EXAMPLES ---
 
+# Alice Ferrazzi <alicef@gentoo.org> (05 Jan 2018)
+# kernel: Meltdown and Spectre - Processor flaw. (#643228)
+# Please upgrade for Intel processor flaw workaround, 
+# also excluding AMD from the fix as not affected.
+# Please unmask your kernel version if you want to
+# continue to use your kernel with AMD.
+# Removal in a month.
+=sys-kernel/gentoo-sources-4.14.8-r1
+=sys-kernel/gentoo-sources-4.14.9
+=sys-kernel/gentoo-sources-4.14.10
+=sys-kernel/gentoo-sources-4.14.10-r1
+=sys-kernel/gentoo-sources-4.14.11
+
 # Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
 # Nobody bothered to bump it for ages, NPAPI is phased out (#468772).
 # Removal in a month.
