@@ -103,17 +103,13 @@ src_configure() {
 		-DWITH_JPEG=$(usex jpeg)
 		-DENABLE_DCTDECODER=$(usex jpeg libjpeg none)
 		-DENABLE_LIBOPENJPEG=$(usex jpeg2k openjpeg2 none)
+		-DENABLE_CMS=$(usex lcms lcms2 none)
 		-DWITH_NSS3=$(usex nss)
 		-DWITH_PNG=$(usex png)
 		$(cmake-utils_use_find_package qt5 Qt5Core)
 		-DWITH_TIFF=$(usex tiff)
 		-DENABLE_UTILS=$(usex utils)
 	)
-	if use lcms; then
-		mycmakeargs+=(-DENABLE_CMS=lcms2)
-	else
-		mycmakeargs+=(-DENABLE_CMS=)
-	fi
 
 	cmake-utils_src_configure
 }
