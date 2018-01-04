@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,8 @@ SRC_URI="http://www.terminatorx.org/dist/${MY_P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="X alsa debug mad pulseaudio vorbis sox"
+# Making X optional fails when disabled: https://bugs.gentoo.org/636832
+IUSE="alsa debug mad pulseaudio vorbis sox"
 
 RDEPEND="
 	alsa? ( media-libs/alsa-lib )
@@ -25,12 +26,12 @@ RDEPEND="
 	x11-libs/gtk+:3
 	>=dev-libs/glib-2.2:2
 
-	X? (
-		x11-libs/libXi
-		x11-libs/libXxf86dga
-		x11-proto/xproto
-		x11-proto/inputproto
-		x11-proto/xf86dgaproto )
+	x11-libs/libXi
+	x11-libs/libXxf86dga
+	x11-proto/xproto
+	x11-proto/inputproto
+	x11-proto/xf86dgaproto
+
 	dev-libs/libxml2:2
 	media-libs/audiofile:=
 	media-libs/ladspa-sdk
@@ -52,11 +53,11 @@ PATCHES=(
 
 src_configure() {
 	gnome2_src_configure \
+		--enable-x11 \
 		$(use_enable alsa) \
 		$(use_enable debug) \
 		$(use_enable mad) \
 		$(use_enable pulseaudio pulse) \
 		$(use_enable vorbis) \
-		$(use_enable sox) \
-		$(use_enable X x11)
+		$(use_enable sox)
 }
