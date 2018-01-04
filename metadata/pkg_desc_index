@@ -325,7 +325,7 @@ app-crypt/gnupg 1.4.21 2.1.15 2.1.20-r1 2.2.0: The GNU Privacy Guard, a GPL Open
 app-crypt/gorilla 1.4-r1: Password Safe in secure way with GUI interface
 app-crypt/gpa 0.9.10: The GNU Privacy Assistant (GPA) is a graphical user interface for GnuPG
 app-crypt/gpg-ringmgr 1.12: GPG Keyring Manager to handle large GPG keyrings more easily
-app-crypt/gpgme 1.8.0-r2 1.8.0-r3: GnuPG Made Easy is a library for making GnuPG easier to use
+app-crypt/gpgme 1.8.0-r2 1.8.0-r3 1.10.0: GnuPG Made Easy is a library for making GnuPG easier to use
 app-crypt/hashalot 0.3-r2: CryptoAPI utils
 app-crypt/heimdal 7.4.0 7.5.0: Kerberos 5 implementation from KTH
 app-crypt/jacksum 1.7.0: Java utility for computing and verifying checksums: CRC*, MD*, etc.
@@ -556,7 +556,7 @@ app-editors/jedit 5.2.0-r1: Programmer's editor written in Java
 app-editors/jext 5.0-r2: A text editor written in Java
 app-editors/joe 4.2 4.3-r1 4.4: A free ASCII-Text Screen Editor for UNIX
 app-editors/jove 4.16.0.73: Jonathan's Own Version of Emacs, a light emacs-like editor without LISP bindings
-app-editors/kile 2.1.3-r3: A Latex Editor and TeX shell by KDE
+app-editors/kile 2.9.91_p20171209: Latex Editor and TeX shell based on KDE Frameworks
 app-editors/latexila 3.22.1: Integrated LaTeX environment for GNOME
 app-editors/le 1.14.3 1.16.3: Terminal text editor
 app-editors/leafpad 0.8.18.1: A simple GTK2 text editor
@@ -792,7 +792,7 @@ app-eselect/eselect-opencl 1.1.0-r1: Utility to change the OpenCL implementation
 app-eselect/eselect-opengl 1.3.1-r4: Utility to change the OpenGL interface being used
 app-eselect/eselect-package-manager 20110108-r1: Manages PACKAGE_MANAGER environment variable
 app-eselect/eselect-pdftex 0.3: pdftex module for eselect
-app-eselect/eselect-php 0.9.2: PHP eselect module
+app-eselect/eselect-php 0.9.2 0.9.4-r5: PHP eselect module
 app-eselect/eselect-pinentry 0.7: Manage /usr/bin/pinentry symlink
 app-eselect/eselect-postgresql 1.2.1 2.1 2.2: Utility to select the default PostgreSQL slot
 app-eselect/eselect-python 20160516: Eselect module for management of multiple Python versions
@@ -1860,7 +1860,7 @@ dev-db/pgagent 3.4.0-r1: pgAgent is a job scheduler for PostgreSQL
 dev-db/pgbouncer 1.7.2: Lightweight connection pooler for PostgreSQL
 dev-db/pgtap 0.93.0: Unit testing for PostgreSQL
 dev-db/phpmyadmin 4.0.10.20 4.7.0: Web-based administration for MySQL database in PHP
-dev-db/postgis 2.1.8-r1: Geographic Objects for PostgreSQL
+dev-db/postgis 2.1.8-r1 2.4.2: Geographic Objects for PostgreSQL
 dev-db/postgresql 9.2.19 9.2.22 9.2.24 9.3.15 9.3.18 9.3.20 9.4.10 9.4.13 9.4.15 9.5.5 9.5.8 9.5.10 9.6.4 9.6.6 10.1: PostgreSQL RDBMS
 dev-db/qdbm 1.8.78-r1: Quick Database Manager
 dev-db/redis 3.0.7 3.0.7-r1 3.2.5 3.2.8-r2 3.2.8-r5 4.0.2-r1: A persistent caching system, key-value and data structures database
@@ -6199,7 +6199,7 @@ dev-util/shtool 2.0.8-r1: Set of stable and portable shell scripts
 dev-util/shunit2 2.1.6-r1: Unit-test framework for Bourne-based shell scripts
 dev-util/source-highlight 3.1.7-r2 3.1.8: Generate highlighted source code as an (x)html document
 dev-util/splint 3.1.2-r1: Check C programs for vulnerabilities and programming mistakes
-dev-util/strace 4.16: A useful diagnostic, instructional, and debugging tool
+dev-util/strace 4.16 4.20: A useful diagnostic, instructional, and debugging tool
 dev-util/stubgen 2.08: a member function stub generator for C++
 dev-util/suse-build 2014.09.18 2015.11.05: Script to build SUSE Linux RPMs
 dev-util/sysprof 3.22.2: System-wide Linux Profiler
@@ -6767,7 +6767,7 @@ kde-misc/rsibreak 0.12.7: Small utility which bothers you at certain intervals
 kde-misc/skanlite 2.0.1: KDE image scanning application
 kde-misc/systemd-kcm 1.2.1: Plasma control module for systemd
 kde-misc/tellico 3.1: A collection manager based on KDE Frameworks
-kde-misc/wacomtablet 3.0.0_beta1: KControl module for Wacom tablets
+kde-misc/wacomtablet 3.0.0_beta1 3.0.0_beta2: KControl module for Wacom tablets
 kde-misc/yakuake 3.0.4: Quake-style terminal emulator based on konsole
 kde-misc/zanshin 0.4.1_p20170701: Getting things done application by KDE
 kde-plasma/bluedevil 5.10.5: Bluetooth stack for KDE Plasma
