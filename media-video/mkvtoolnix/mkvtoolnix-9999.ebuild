@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit toolchain-funcs versionator multiprocessing
+inherit toolchain-funcs versionator multiprocessing xdg-utils
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://gitlab.com/mbunkus/mkvtoolnix.git"
@@ -108,4 +108,14 @@ src_install() {
 
 	einstalldocs
 	doman doc/man/*.1
+}
+
+pkg_postrm() {
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
+}
+
+pkg_postinst() {
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
 }
