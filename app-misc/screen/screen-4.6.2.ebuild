@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -35,6 +35,7 @@ DEPEND="${CDEPEND}
 PATCHES=(
 	# Don't use utempter even if it is found on the system.
 	"${FILESDIR}"/${PN}-4.3.0-no-utempter.patch
+	"${FILESDIR}"/${P}-utmp-exit.patch
 )
 
 pkg_setup() {
