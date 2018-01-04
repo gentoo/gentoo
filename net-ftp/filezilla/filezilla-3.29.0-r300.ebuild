@@ -3,7 +3,7 @@
 
 EAPI=6
 
-WX_GTK_VER="3.0"
+WX_GTK_VER="3.0-gtk3"
 
 inherit autotools eutils flag-o-matic gnome2-utils multilib wxwidgets
 
@@ -16,18 +16,18 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}_src.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ia64 ~ppc x86"
+KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~x86"
 IUSE="dbus nls test"
 
 # pugixml 1.7 minimal dependency is for c++11 proper configuration
 RDEPEND=">=app-eselect/eselect-wxwidgets-0.7-r1
 	>=dev-libs/nettle-3.1:=
 	>=dev-db/sqlite-3.7
-	=dev-libs/libfilezilla-0.9*
+	>=dev-libs/libfilezilla-0.10.0
 	>=dev-libs/pugixml-1.7
 	net-dns/libidn
 	>=net-libs/gnutls-3.4.0
-	>=x11-libs/wxGTK-3.0.2.0-r1:3.0[X]
+	>=x11-libs/wxGTK-3.0.3:${WX_GTK_VER}[X]
 	x11-misc/xdg-utils
 	dbus? ( sys-apps/dbus )"
 DEPEND="${RDEPEND}
