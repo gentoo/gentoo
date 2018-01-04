@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,6 +11,7 @@ DESCRIPTION="A Python 3 implementation for client-side web programming"
 HOMEPAGE="http://www.brython.info"
 SRC_URI="https://github.com/${PN}-dev/${PN}/archive/${PV}.zip -> ${P}.zip"
 
+SLOT="0"
 LICENSE="BSD"
 KEYWORDS="amd64 ppc ppc64 x86"
 
