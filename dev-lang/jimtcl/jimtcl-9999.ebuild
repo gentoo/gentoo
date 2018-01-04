@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-inherit multiprocessing eutils
+inherit eutils
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="http://repo.or.cz/r/jimtcl.git"
@@ -30,7 +30,7 @@ src_unpack() {
 		git-2_src_unpack
 	else
 		default
-		cd "${WORKDIR}"/msteveb-jimtcl-*
+		cd "${WORKDIR}"/msteveb-jimtcl-* || die
 		S=${PWD}
 	fi
 }
@@ -40,15 +40,13 @@ src_prepare() {
 }
 
 src_configure() {
-	multijob_init
-	CCACHE=None multijob_child_init econf --with-jim-shared
+	CCACHE=None econf --with-jim-shared
 	if use static-libs ; then
 		# The build does not support doing both simultaneously.
-		mkdir static-libs
-		cd static-libs
-		CCACHE=None ECONF_SOURCE=${S} multijob_child_init econf
+		mkdir static-libs || die
+		cd static-libs || die
+		CCACHE=None ECONF_SOURCE=${S} econf
 	fi
-	multijob_finish
 }
 
 src_compile() {
@@ -61,7 +59,7 @@ src_compile() {
 src_install() {
 	dobin jimsh
 	use static-libs && dolib.a static-libs/libjim.a
-	ln -sf libjim.so.* libjim.so
+	ln -sf libjim.so.* libjim.so || die
 	dolib.so libjim.so*
 	insinto /usr/include
 	doins jim.h jimautoconf.h jim-subcmd.h jim-signal.h \
