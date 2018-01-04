@@ -125,9 +125,8 @@ multilib_src_install_all() {
 	newdoc base/readme.txt base_readme.txt
 	newdoc gtk/readme.txt gtk_readme.txt
 
-	if use doc; then
-		dodoc -r "${S}"/docs/doxygen/out/html
-	fi
+	use doc && HTML_DOCS="${WORKDIR}"/wxWidgets-${PV}-docs-html/.
+	einstalldocs
 
 	# Stray windows locale file, causes collisions
 	local wxmsw="${ED}usr/share/locale/it/LC_MESSAGES/wxmsw.mo"
