@@ -9852,7 +9852,7 @@ sys-block/storcli 1.19.04 1.20.15 1.21.06: MegaRAID StorCLI (successor of the Me
 sys-block/tapecat 1.0.0: tapecat is a tape utility used to describe the physical content of a tape
 sys-block/tgt 1.0.71 1.0.72: Linux SCSI target framework (tgt)
 sys-block/thin-provisioning-tools 0.4.1 0.7.0: A suite of tools for thin provisioning on Linux
-sys-block/tw_cli 9.2.1.1 9.4.1.2 9.5.2 10.2: 3ware SATA+PATA RAID controller Command Line Interface tool
+sys-block/tw_cli 9.2.1.1 9.4.1.2 9.5.2 10.2 10.2.2.1-r1: 3ware SATA/PATA/SAS RAID controller Command Line Interface tool
 sys-block/vblade 20: vblade exports a block device using AoE
 sys-block/viaideinfo 0.5: Query VIA IDE controllers for various information
 sys-boot/efibootmgr 14 15: User-space application to modify the EFI boot manager
