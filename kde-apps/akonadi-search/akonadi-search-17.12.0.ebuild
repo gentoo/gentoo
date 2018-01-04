@@ -1,8 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
+KDE_TEST="forceoptional-recursive"
+VIRTUALX_REQUIRED="test"
 inherit kde5
 
 DESCRIPTION="Libraries and daemons to implement searching in Akonadi"
@@ -33,6 +35,7 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}
 	dev-libs/boost
+	test? ( $(add_kdeapps_dep akonadi 'mysql,postgres,sqlite,tools') )
 "
 RDEPEND="${COMMON_DEPEND}
 	!kde-apps/kdepim-l10n
