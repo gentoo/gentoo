@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare test
+DEPEND=sys-libs/zlib media-libs/libpng:0 virtual/jpeg:0 media-libs/freetype wxwidgets? ( x11-libs/wxGTK:3.0 ) !wxwidgets? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 ) sys-devel/make >=dev-util/cmake-3.7.2 >=sys-apps/sed-4
+DESCRIPTION=CoolReader - reader of eBook files (fb2,epub,htm,rtf,txt)
+EAPI=6
+HOMEPAGE=https://sourceforge.net/projects/crengine/
+IUSE=wxwidgets l10n_bg l10n_cs l10n_de l10n_es l10n_hu l10n_pl l10n_ru l10n_uk linguas_bg linguas_cs linguas_de linguas_es linguas_hu linguas_pl linguas_ru linguas_uk
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=sys-libs/zlib media-libs/libpng:0 virtual/jpeg:0 media-libs/freetype wxwidgets? ( x11-libs/wxGTK:3.0 ) !wxwidgets? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 ) wxwidgets? ( || ( media-fonts/liberation-fonts media-fonts/corefonts ) )
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~grozin/coolreader-3.1.2.71.tar.bz2
+_eclasses_=cmake-utils	202a2becc86cb78ba14baad148d06759	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	flag-o-matic	02908f00f002f0f07c5b74783d778325	gnome2-utils	4d211d7614f303710fca59db6ec12c88	l10n	2c2e15383ba891d642f51896a7f0ecfe	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	versionator	c80ccf29e90adea7c5cae94b42eb76d0	wxwidgets	04e063b0eff26daaea83d859dd9d6e05	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=3a8c3e6c0ea63a52faff3f9d32264591
