@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r1 vcs-snapshot
 
 # Commit Date: 26th Apr 2016
 COMMIT="7c153e6a8f52573ff886ebf0786b64e17699443a"
@@ -25,5 +25,3 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
-
-S="${WORKDIR}/${PN}-${COMMIT}"
