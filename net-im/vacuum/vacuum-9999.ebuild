@@ -13,9 +13,9 @@ HOMEPAGE="http://www.vacuum-im.org/"
 LICENSE="GPL-3"
 SLOT="0/37" # subslot = libvacuumutils soname version
 KEYWORDS=""
-PLUGINS=( annotations autostatus avatars birthdayreminder bitsofbinary bookmarks captchaforms chatstates clientinfo commands compress console dataforms datastreamsmanager emoticons filemessagearchive filestreamsmanager filetransfer gateways inbandstreams iqauth jabbersearch messagearchiver messagecarbons multiuserchat pepmanager privacylists privatestorage recentcontacts registration remotecontrol rosteritemexchange rostersearch servermessagearchive servicediscovery sessionnegotiation shortcutmanager socksstreams urlprocessor vcard xmppuriqueries )
+PLUGINS=( adiummessagestyle annotations autostatus avatars birthdayreminder bitsofbinary bookmarks captchaforms chatstates clientinfo commands compress console dataforms datastreamsmanager emoticons filemessagearchive filestreamsmanager filetransfer gateways inbandstreams iqauth jabbersearch messagearchiver messagecarbons multiuserchat pepmanager privacylists privatestorage recentcontacts registration remotecontrol rosteritemexchange rostersearch servermessagearchive servicediscovery sessionnegotiation shortcutmanager socksstreams urlprocessor vcard xmppuriqueries )
 SPELLCHECKER_BACKENDS="aspell +enchant hunspell"
-IUSE="adiummessagestyle ${PLUGINS[@]/#/+} ${SPELLCHECKER_BACKENDS} +spell"
+IUSE="${PLUGINS[@]/#/+} ${SPELLCHECKER_BACKENDS} +spell"
 
 REQUIRED_USE="
 	annotations? ( privatestorage )
@@ -65,7 +65,11 @@ DOCS=( AUTHORS CHANGELOG README TRANSLATORS )
 
 src_prepare() {
 	# Force usage of system libraries
-	rm -rf src/thirdparty/{idn,hunspell,minizip,zlib}
+	rm -rf src/thirdparty/{hunspell,idn,minizip,qtlockedfile,zlib} || die
+
+	# Supress find thirdparty library in the system
+	sed -i -r -e "/find_library.+qxtglobalshortcut/d" \
+		CMakeLists.txt || die
 
 	cmake-utils_src_prepare
 }
@@ -78,11 +82,8 @@ src_configure() {
 		-DINSTALL_DOCS=OFF
 		-DFORCE_BUNDLED_MINIZIP=OFF
 		-DPLUGIN_statistics=OFF
-		-DNO_WEBKIT=$(usex !adiummessagestyle)
 		-DPLUGIN_spellchecker=$(usex spell)
 	)
-
-	use adiummessagestyle && mycmakeargs+=( -DPLUGIN_adiummessagestyle=ON )
 
 	for x in ${PLUGINS[@]}; do
 		mycmakeargs+=( -DPLUGIN_${x}=$(usex $x) )
