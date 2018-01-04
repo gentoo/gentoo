@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -24,7 +24,7 @@ RDEPEND="
 	>=dev-libs/apr-${APR_PV}:1
 	berkdb? ( >=sys-libs/db-4:= )
 	freetds? ( dev-db/freetds )
-	gdbm? ( sys-libs/gdbm )
+	gdbm? ( sys-libs/gdbm:= )
 	ldap? ( =net-nds/openldap-2* )
 	mysql? ( =virtual/mysql-5* )
 	nss? ( dev-libs/nss )
