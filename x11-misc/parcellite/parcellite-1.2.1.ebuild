@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,7 +16,8 @@ KEYWORDS="amd64 x86"
 IUSE="nls"
 
 RDEPEND=">=dev-libs/glib-2.14
-	>=x11-libs/gtk+-2.10:2"
+	>=x11-libs/gtk+-2.10:2
+	x11-misc/xdotool"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	nls? (
