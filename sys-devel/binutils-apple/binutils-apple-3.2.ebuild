@@ -106,6 +106,13 @@ src_prepare() {
 }
 
 src_configure() {
+	export CTARGET=${CTARGET:-${CHOST}}
+	if [[ ${CTARGET} == ${CHOST} ]] ; then
+		if [[ ${CATEGORY} == cross-* ]] ; then
+			export CTARGET=${CATEGORY#cross-}
+		fi
+	fi
+
 	LIBPATH=/usr/$(get_libdir)/binutils/${CTARGET}/${PV}
 	INCPATH=${LIBPATH}/include
 	DATAPATH=/usr/share/binutils-data/${CTARGET}/${PV}
@@ -175,7 +182,8 @@ install_cctools() {
 		BUILD_OBSOLETE_ARCH= \
 		DSTROOT=\"${D}\" \
 		USRBINDIR=\"${EPREFIX}\"${BINPATH} \
-		LIBDIR=\"${EPREFIX}\"${LIBPATH}
+		LIBDIR=\"${EPREFIX}\"${LIBPATH} \
+		LOCLIBDIR=\"${EPREFIX}\"${LIBPATH}
 
 	cd "${ED}"${BINPATH}
 	insinto ${DATAPATH}/man/man1
