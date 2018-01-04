@@ -6860,7 +6860,7 @@ mail-client/nail 12.4-r3: an enhanced mailx-compatible mail client
 mail-client/pinepgp 0.18.0-r1: Use GPG/PGP with Pine
 mail-client/roundcube 1.2.5 1.2.7: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/sylpheed 3.4.2 3.5.1: A lightweight email client and newsreader
-mail-client/thunderbird 45.8.0 52.2.0 52.3.0 52.4.0 52.5.0: Thunderbird Mail Client
+mail-client/thunderbird 45.8.0 52.5.0: Thunderbird Mail Client
 mail-client/thunderbird-bin 52.5.0: Thunderbird Mail Client
 mail-client/trojita 0.7-r2: A Qt IMAP e-mail client
 mail-filter/amavisd-milter 1.5.0 1.5.0-r1: sendmail milter for amavisd-new
