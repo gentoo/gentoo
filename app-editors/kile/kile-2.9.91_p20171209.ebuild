@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ HOMEPAGE="https://kile.sourceforge.io/"
 SRC_URI="https://github.com/KDE/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="FDL-1.2 GPL-2"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="+pdf +png"
 
 DEPEND="
