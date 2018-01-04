@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -22,7 +22,7 @@ HOMEPAGE="http://www.freerdp.com/"
 
 LICENSE="Apache-2.0"
 SLOT="0/2"
-IUSE="alsa +client cpu_flags_x86_ssse3 cups debug doc ffmpeg gstreamer jpeg libav libressl neon openh264 pulseaudio server smartcard systemd test usb wayland X xinerama xv"
+IUSE="alsa +client cups debug doc ffmpeg gstreamer jpeg libav libressl neon openh264 pulseaudio server smartcard systemd test usb wayland X xinerama xv"
 
 RDEPEND="
 	!libressl? ( dev-libs/openssl:0= )
@@ -107,8 +107,6 @@ src_configure() {
 		-DWITH_SERVER=$(usex server)
 		-DWITH_PCSC=$(usex smartcard)
 		-DWITH_LIBSYSTEMD=$(usex systemd)
-		# WITH_SSE2 actually enables code requiring SSSE3
-		-DWITH_SSE2=$(usex cpu_flags_x86_ssse3)
 		-DWITH_X11=$(usex X)
 		-DWITH_XINERAMA=$(usex xinerama)
 		-DWITH_XV=$(usex xv)
