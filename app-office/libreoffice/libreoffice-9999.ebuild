@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -64,7 +64,7 @@ unset ADDONS_SRC
 LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
 
 IUSE="bluetooth +branding coinmp +cups dbus debug eds firebird googledrive
-gstreamer +gtk gtk3 jemalloc kde libressl mysql odk pdfimport postgres qt4 qt5 test vlc
+gstreamer +gtk gtk3 kde libressl mysql odk pdfimport postgres qt4 qt5 test vlc
 $(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 
 LICENSE="|| ( LGPL-3 MPL-1.1 )"
@@ -157,7 +157,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		gnome-base/dconf
 		x11-libs/gtk+:3
 	)
-	jemalloc? ( dev-libs/jemalloc )
 	libreoffice_extensions_scripting-beanshell? ( dev-java/bsh )
 	libreoffice_extensions_scripting-javascript? ( dev-java/rhino:1.6 )
 	mysql? ( dev-db/mysql-connector-c++ )
@@ -413,7 +412,7 @@ src_configure() {
 		--disable-online-update
 		--disable-pdfium
 		--disable-report-builder
-		--with-alloc=$(use jemalloc && echo "jemalloc" || echo "system")
+		--with-alloc=system
 		--with-build-version="Gentoo official package"
 		--enable-extension-integration
 		--with-external-dict-dir="${EPREFIX}/usr/share/myspell"
