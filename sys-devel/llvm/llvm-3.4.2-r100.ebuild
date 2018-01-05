@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,7 +13,8 @@ SRC_URI="https://llvm.org/releases/${PV}/${P}.src.tar.gz
 	clang? ( https://llvm.org/releases/3.4/compiler-rt-3.4.src.tar.gz
 		https://llvm.org/releases/${PV}/cfe-${PV}.src.tar.gz )
 	https://dev.gentoo.org/~mgorny/dist/llvm/${PN}-3.4-manpages.tar.bz2
-	https://dev.gentoo.org/~mgorny/dist/llvm/${P}-patchset.tar.gz"
+	https://dev.gentoo.org/~mgorny/dist/llvm/${P}-patchset.tar.gz
+	https://dev.gentoo.org/~grobian/distfiles/${PN}-3.4-patchset-darwin-leopard.tar.gz"
 
 # Additional licenses:
 # 1. OpenBSD regex: Henry Spencer's license ('rc' in Gentoo) + BSD.
@@ -105,6 +106,11 @@ src_prepare() {
 		epatch "${WORKDIR}/${P}-patchset"/clang/gentoo-runtime-gcc-detection-v3.patch
 
 		epatch "${WORKDIR}/${P}-patchset"/clang/gentoo-install.patch
+
+		if [[ ${CHOST} == *-darwin8 ]] || [[ ${CHOST} == *-darwin9 ]] ; then
+			EPATCH_SOURCE="${WORKDIR}"/${PN}-3.4-patchset-darwin-leopard \
+				EPATCH_SUFFIX=patch EPATCH_FORCE=yes epatch
+		fi
 		epatch "${WORKDIR}/${P}-patchset"/clang/darwin_build_fix.patch
 		epatch "${WORKDIR}/${P}-patchset"/clang/darwin_prefix-include-paths.patch
 		eprefixify tools/clang/lib/Frontend/InitHeaderSearch.cpp
