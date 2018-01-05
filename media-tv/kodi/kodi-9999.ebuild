@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -100,7 +100,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		>=dev-cpp/waylandpp-0.1.5
 		media-libs/mesa[wayland]
 		>=dev-libs/wayland-protocols-1.7
-		x11-libs/libxkbcommon
+		>=x11-libs/libxkbcommon-0.4.1
 	)
 	webserver? ( >=net-libs/libmicrohttpd-0.9.55[messages] )
 	X? (
