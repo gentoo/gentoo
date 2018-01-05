@@ -6489,7 +6489,6 @@ kde-apps/kanagram 17.08.3: Game based on anagrams of words
 kde-apps/kapman 17.08.3: Pac-Man clone by KDE
 kde-apps/kapptemplate 17.08.3: A shell script to create the necessary framework to develop KDE applications
 kde-apps/kate 17.08.3: Kate is an advanced text editor
-kde-apps/katepart 4.14.3: Editor KPart by KDE
 kde-apps/katomic 17.08.3: KDE Atomic Entertainment Game
 kde-apps/kblackbox 17.08.3: KDE Blackbox Game
 kde-apps/kblocks 17.08.3: A single-player Tetris-like KDE game
@@ -6512,7 +6511,6 @@ kde-apps/kde-meta 17.08.3: Merge this to pull in all KDE Plasma and Applications
 kde-apps/kde4-l10n 17.08.3: KDE legacy internationalization package
 kde-apps/kdeaccessibility-meta 17.08.3: kdeaccessibility - merge this to pull in all kdeaccessiblity-derived packages
 kde-apps/kdeadmin-meta 17.08.3: KDE administration tools - merge this to pull in all kdeadmin-derived packages
-kde-apps/kdebase-data 16.04.3: Icons, localization data and various .desktop files from kdebase
 kde-apps/kdebase-meta 17.08.3: Transitional package to pull in plasma-meta plus basic applications
 kde-apps/kdebugsettings 17.08.3: Application to enable/disable qCDebug
 kde-apps/kdecore-meta 17.08.3: kdecore - merge this to pull in the most basic applications
@@ -6585,7 +6583,6 @@ kde-apps/konqueror 17.08.3: Web browser and file manager based on KDE Frameworks
 kde-apps/konquest 17.08.3: Galactic Strategy KDE Game
 kde-apps/konsole 17.08.3: KDE's terminal emulator
 kde-apps/konsolekalendar 17.08.3: Command line interface to KDE calendars
-kde-apps/konsolepart 4.14.3: X terminal kpart for use by konsole and other KDE applications
 kde-apps/kontact 17.08.3: Container application to unify several major PIM applications within one
 kde-apps/kontactinterface 17.08.3: Library for embedding KParts in a Kontact component
 kde-apps/korganizer 17.08.3: Organizational assistant, providing calendars and other similar functionality
@@ -6808,7 +6805,7 @@ kde-plasma/plasma-workspace-wallpapers 5.10.5: Additional wallpapers for the Pla
 kde-plasma/plymouth-kcm 5.10.5: KDE Plasma control module for Plymouth
 kde-plasma/polkit-kde-agent 5.10.5: PolKit agent module for KDE Plasma
 kde-plasma/powerdevil 5.10.5: Power management for KDE Plasma Shell
-kde-plasma/qguiplatformplugin_kde 4.11.22: Helps integration of pure Qt applications with KDE Plasma
+kde-plasma/qguiplatformplugin_kde 4.11.22: Helps integration of pure Qt4 applications with KDE Plasma
 kde-plasma/sddm-kcm 5.10.5: KDE Plasma control module for SDDM
 kde-plasma/systemsettings 5.10.5: System settings utility
 kde-plasma/user-manager 5.10.5: Simple system settings module to manage the users of your system
