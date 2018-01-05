@@ -844,7 +844,7 @@ app-i18n/fcitx-sunpinyin 0.4.2: Chinese SunPinyin input method for Fcitx
 app-i18n/fcitx-table-extra 0.3.8: Extra Chinese table input methods for Fcitx
 app-i18n/fcitx-unikey 0.2.6: Vietnamese Unikey input methods for Fcitx
 app-i18n/freewnn 1.1.1_alpha22: Network-Extensible Kana-to-Kanji Conversion System
-app-i18n/ibus 1.5.12: Intelligent Input Bus for Linux / Unix OS
+app-i18n/ibus 1.5.12 1.5.16: Intelligent Input Bus for Linux / Unix OS
 app-i18n/ibus-anthy 1.5.4: Japanese Anthy engine for IBus
 app-i18n/ibus-cangjie 2.4: The IBus engine for users of the Cangjie and Quick input methods
 app-i18n/ibus-handwrite 2.1.4-r1: Hand write recognition/input for IBus
@@ -907,7 +907,9 @@ app-i18n/tomoe-gtk 0.6.0-r4: Tomoe GTK+ interface widget library
 app-i18n/transifex-client 0.10: A command line interface for Transifex
 app-i18n/uchardet 0.0.6 0.0.6-r1: An encoding detector library
 app-i18n/uim 1.8.6-r1: Simple, secure and flexible input method library
+app-i18n/unicode-cldr 31.0.1: Unicode Common Locale Data Repository
 app-i18n/unicode-data 9.0.0: Unicode data from unicode.org
+app-i18n/unicode-emoji 5.0: UTR #51 Unicode Emoji
 app-i18n/xvnkb 0.2.9a-r1: Vietnamese input keyboard for X
 app-i18n/yaskkserv 1.1.0: Yet Another SKK server
 app-i18n/zinnia 0.06-r3: Zinnia - Online hand recognition system with machine learning
@@ -1838,7 +1840,7 @@ dev-db/m17n-db 1.6.3 1.6.4 1.7.0: Database for the m17n library
 dev-db/maatkit 7540-r1: essential command-line utilities for MySQL
 dev-db/mariadb 10.0.30-r1 10.0.32-r1 10.0.33 10.1.24-r1 10.1.26-r1 10.1.29: An enhanced, drop-in replacement for MySQL
 dev-db/metakit 2.4.9.7-r2: Embedded database library
-dev-db/mongodb 2.6.12 3.0.14: A high-performance, open source, schema-free document-oriented database
+dev-db/mongodb 3.0.14: A high-performance, open source, schema-free document-oriented database
 dev-db/myodbc 5.2.7-r1: ODBC driver for MySQL
 dev-db/mysql 5.6.36-r1 5.6.37-r1 5.6.38: A fast, multi-threaded, multi-user SQL database server
 dev-db/mysql++ 2.3.2 3.1.0 3.2.1: C++ API interface to the MySQL database
@@ -4604,8 +4606,8 @@ dev-python/blockcanvas 4.0.3-r1: Enthought Tool Suite: Numerical modeling
 dev-python/blosc 1.2.8: High performance compressor optimized for binary data
 dev-python/bokeh 0.11.1: Statistical and novel interactive HTML plots for Python
 dev-python/boto 2.41.0: Amazon Web Services API
-dev-python/boto3 1.4.4 1.4.7: The AWS SDK for Python
-dev-python/botocore 1.5.90 1.7.39: Low-level, data-driven core of boto 3.
+dev-python/boto3 1.4.7: The AWS SDK for Python
+dev-python/botocore 1.7.39: Low-level, data-driven core of boto 3.
 dev-python/bottle 0.12.12: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 0.8.0 1.0.0: Fast NumPy array functions written in Cython
 dev-python/bpython 0.16: Syntax highlighting and autocompletion for the Python interpreter
@@ -4848,7 +4850,7 @@ dev-python/gnome-python-desktop-base 2.32.0-r1: Provides python the base files f
 dev-python/gnome-python-extras-base 2.25.3-r1: Provides python the base files for the Gnome Python Desktop bindings
 dev-python/gnome-vfs-python 2.28.1-r1: Python bindings for the GnomeVFS library
 dev-python/gnuplot-py 1.8-r1: A python wrapper for Gnuplot
-dev-python/google-api-python-client 1.3.1 1.5.0 1.5.3 1.6.2: Google API Client for Python
+dev-python/google-api-python-client 1.5.3 1.6.2: Google API Client for Python
 dev-python/google-apputils 0.4.2-r2: Collection of utilities for building Python applications
 dev-python/google-auth 1.0.1: Google Authentication Library
 dev-python/google-auth-httplib2 0.0.2: httplib2 Transport for Google Auth
@@ -5033,10 +5035,10 @@ dev-python/nautilus-python 1.1-r2: Python bindings for the Nautilus file manager
 dev-python/ndg-httpsclient 0.4.0: Provides enhanced HTTPS support for httplib and urllib2 using PyOpenSSL
 dev-python/netaddr 0.7.12 0.7.18 0.7.19: Network address representation and manipulation library
 dev-python/netifaces 0.10.6: Portable network interface information
-dev-python/networkx 1.10-r1 1.11: Python tools to manipulate graphs and complex networks
+dev-python/networkx 1.11: Python tools to manipulate graphs and complex networks
 dev-python/neutron-lib 0.0.2 0.4.0 1.1.0 1.9.1: Neutron shared routines and utilities.
 dev-python/nevow 0.11.1: A web templating framework that provides LivePage, an automatic AJAX toolkit
-dev-python/nltk 3.0.3 3.2.3: Natural Language Toolkit
+dev-python/nltk 3.2.3: Natural Language Toolkit
 dev-python/nose 1.3.7-r1: Unittest extension with automatic test suite discovery and easy test authoring
 dev-python/nose-cover3 0.1.0-r1: Coverage 3.x support for Nose
 dev-python/nose-exclude 0.4.1: Exclude specific directories from nosetests runs
@@ -5050,9 +5052,9 @@ dev-python/numexpr 2.6.1: Fast numerical array expression evaluator for Python a
 dev-python/numpy 1.9.2 1.10.4: Fast array and numerical python library
 dev-python/numpydoc 0.6.0: Sphinx extension to support docstrings in Numpy format
 dev-python/oauth 1.0.1-r1: Python OAuth module
-dev-python/oauth2 1.9.0_p1 1.9.0_p1-r1: Library for OAuth version 1.0
-dev-python/oauth2client 1.5.2 2.0.1 4.1.2: Library for accessing resources protected by OAuth 2.0
-dev-python/oauthlib 2.0.1 2.0.2: Spec-compliant and thorough implementation of the OAuth request-signing logic
+dev-python/oauth2 1.9.0_p1-r1: Library for OAuth version 1.0
+dev-python/oauth2client 2.0.1 4.1.2: Library for accessing resources protected by OAuth 2.0
+dev-python/oauthlib 2.0.2: Spec-compliant and thorough implementation of the OAuth request-signing logic
 dev-python/oct2py 3.6.0: Python to GNU Octave bridge
 dev-python/odo 0.5.0: Data migration in python
 dev-python/openpyxl 2.3.0: Pure python reader and writer of Excel OpenXML files
@@ -5070,25 +5072,25 @@ dev-python/os-win 0.4.0 1.2.1 1.4.1 2.2.0: Windows / Hyper-V library for OpenSta
 dev-python/os-xenapi 0.1.1 0.2.0: XenAPI library for OpenStack projects
 dev-python/osc-lib 1.1.0 1.3.0 1.7.0: A package of common support modules for writing OSC plugins.
 dev-python/oslo-cache 1.17.0 1.25.1: Oslo Caching around dogpile.cache
-dev-python/oslo-concurrency 3.18.1 3.21.1: library for running multi-thread, multi-process applications
-dev-python/oslo-config 3.22.1 4.11.1: Oslo Configuration API
-dev-python/oslo-context 2.12.2 2.17.1: Helpers to maintain useful information about a request context
+dev-python/oslo-concurrency 3.21.1: library for running multi-thread, multi-process applications
+dev-python/oslo-config 4.11.1: Oslo Configuration API
+dev-python/oslo-context 2.17.1: Helpers to maintain useful information about a request context
 dev-python/oslo-db 4.17.1 4.25.1: OpenStack Common DB Code
 dev-python/oslo-i18n 3.12.0 3.17.1: Oslo i18n library
-dev-python/oslo-log 3.20.1 3.30.1: OpenStack logging config library, configuration for all openstack projects.
-dev-python/oslo-messaging 5.17.2 5.30.1: Messaging API for RPC and notifications over different messaging transports
-dev-python/oslo-middleware 3.23.2 3.30.1: Components injected into wsgi pipelines to intercept request/response flows.
-dev-python/oslo-policy 1.18.0 1.25.2: Support for RBAC policy enforcement across all OpenStack services
-dev-python/oslo-privsep 1.16.0 1.22.1: OpenStack library for privilege separation.
+dev-python/oslo-log 3.30.1: OpenStack logging config library, configuration for all openstack projects.
+dev-python/oslo-messaging 5.30.1: Messaging API for RPC and notifications over different messaging transports
+dev-python/oslo-middleware 3.30.1: Components injected into wsgi pipelines to intercept request/response flows.
+dev-python/oslo-policy 1.25.2: Support for RBAC policy enforcement across all OpenStack services
+dev-python/oslo-privsep 1.22.1: OpenStack library for privilege separation.
 dev-python/oslo-reports 1.17.1 1.22.1: generified reports for openstack
-dev-python/oslo-rootwrap 5.4.2 5.9.2: Allows fine filtering of shell commands to run as root from OpenStack services
+dev-python/oslo-rootwrap 5.9.2: Allows fine filtering of shell commands to run as root from OpenStack services
 dev-python/oslo-serialization 2.16.1 2.20.1: Oslo Serialization library
 dev-python/oslo-service 1.19.1 1.25.1: Library for running OpenStack services
 dev-python/oslo-sphinx 4.7.0 4.15.2: OpenStack Sphinx Extensions and Theme
 dev-python/oslo-utils 3.22.1 3.28.1: Oslo Utility library
 dev-python/oslo-versionedobjects 1.21.1 1.26.1: A library that provides a generic versioned and RPC-friendly object model.
-dev-python/oslo-vmware 2.17.1 2.23.1: Oslo VMware library for OpenStack projects
-dev-python/oslotest 2.4.0 2.17.1: Oslo test framework
+dev-python/oslo-vmware 2.23.1: Oslo VMware library for OpenStack projects
+dev-python/oslotest 2.17.1: Oslo test framework
 dev-python/osprofiler 1.2.0 1.4.0 1.5.0 1.11.0: OpenStack Profiler Library
 dev-python/ovs 2.4.0 2.6.1 2.7.0: OVS bindings for python.
 dev-python/ovsdbapp 0.4.0: A library for creating OVSDB applications
@@ -5096,7 +5098,7 @@ dev-python/packaging 16.8: Core utilities for Python packages
 dev-python/paho-mqtt 1.1: A client class with support for both MQTT v3.1 and v3.1.1 on Python 2.7 or 3.x.
 dev-python/paisley 0.3.1-r1: Paisley is a CouchDB client written in Python to be used within a Twisted application
 dev-python/pandas 0.16.2 0.19.1: Powerful data structures for data analysis and statistics
-dev-python/paramiko 1.16.0 2.1.2 2.2.1: SSH2 protocol library
+dev-python/paramiko 2.1.2 2.2.1: SSH2 protocol library
 dev-python/parsedatetime 2.4-r1: Parse human-readable date/time strings
 dev-python/partd 0.3.2: Appendable key-value storage
 dev-python/passlib 1.7.1-r1: Password hashing framework supporting over 20 schemes
