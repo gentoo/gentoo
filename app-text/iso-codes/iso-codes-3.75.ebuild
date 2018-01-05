@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -64,7 +64,7 @@ src_prepare() {
 		pushd "${std}" >/dev/null || die
 		mylinguas=()
 		for loc in *.po; do
-			if use "linguas_${loc%.po}"; then
+			if has ${loc%.po} ${LINGUAS-${loc%.po}}; then
 				mylinguas+=( "${loc}" )
 			fi
 		done
