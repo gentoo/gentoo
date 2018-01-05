@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="ldap"
 
-DEPEND="dev-qt/qtcore:5
+COMMON_DEPEND="dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5[ssl]
 	dev-qt/qtsvg:5
@@ -23,9 +23,10 @@ DEPEND="dev-qt/qtcore:5
 	>=net-libs/libssh-0.6.0_rc1
 	net-print/cups
 	x11-libs/libXpm
-	ldap? ( net-nds/openldap )
-"
-RDEPEND="${DEPEND}
+	ldap? ( net-nds/openldap )"
+DEPEND="${COMMON_DEPEND}
+	dev-qt/linguist-tools:5"
+RDEPEND="${COMMON_DEPEND}
 	net-misc/nx"
 
 CLIENT_BUILD="${WORKDIR}"/${P}.client_build
