@@ -10551,7 +10551,6 @@ x11-drivers/xf86-input-keyboard 1.9.0: Keyboard input driver
 x11-drivers/xf86-input-libinput 0.24.0 0.25.1: X.org input driver based on libinput
 x11-drivers/xf86-input-mouse 1.9.2: X.Org driver for mouse input devices
 x11-drivers/xf86-input-mtrack 0.3.0 0.3.1 0.4.1: Xorg Driver for Multitouch Trackpads
-x11-drivers/xf86-input-penmount 1.5.0: PenMount input driver
 x11-drivers/xf86-input-synaptics 1.9.0: Driver for Synaptics touchpads
 x11-drivers/xf86-input-tslib 0.0.6-r2 0.0.6-r3: xorg input driver for use of tslib based touchscreen devices
 x11-drivers/xf86-input-vmmouse 13.1.0-r1: VMWare mouse input driver
