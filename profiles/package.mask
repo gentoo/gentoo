@@ -706,16 +706,6 @@ app-emulation/wine
 # Masked for removal on 2017-12-30
 dev-tex/isotope
 
-# Matt Turner <mattst88@gentoo.org> (25 Nov 2017)
-# Unmaintained upstream. Masked for removal in 30 days.
-# Bug #606132.
-x11-drivers/xf86-input-acecad
-x11-drivers/xf86-input-aiptek
-x11-drivers/xf86-input-fpit
-x11-drivers/xf86-input-hyperpen
-x11-drivers/xf86-input-mutouch
-x11-drivers/xf86-input-pentouch
-
 # Michał Górny <mgorny@gentoo.org> (25 Nov 2017)
 # Testing branch GTK+3 release. Changes API, breaks xfce-base/xfdesktop.
 # Masked until the latter sees a new release.
