@@ -3751,7 +3751,7 @@ dev-perl/HTML-TableParser 0.420.0: Extract data from an HTML table
 dev-perl/HTML-Tagset 3.200.0-r1: Data tables useful in parsing HTML
 dev-perl/HTML-Template 2.950.0: A Perl module to use HTML Templates
 dev-perl/HTML-Template-Expr 0.70.0-r1: HTML::Template extension adding expression support
-dev-perl/HTML-Template-JIT 0.50.0-r1: a just-in-time compiler for HTML::Template
+dev-perl/HTML-Template-JIT 0.50.0-r3: a just-in-time compiler for HTML::Template
 dev-perl/HTML-TokeParser-Simple 3.160.0-r1: Easy to use HTML::TokeParser interface
 dev-perl/HTML-Tree 5.60.0: A library to manage HTML-Tree in PERL
 dev-perl/HTTP-Body 1.220.0: HTTP Body Parser
@@ -7939,7 +7939,7 @@ media-sound/mpg321 0.3.1-r1 0.3.2: A realtime MPEG 1.0/2.0/2.5 audio player for 
 media-sound/mserv 0.35-r1: Jukebox-style music server
 media-sound/mt-daapd 0.2.4.2: A multi-threaded implementation of Apple's DAAP server
 media-sound/multimux 0.2.5.2: combines up to 8 audio mono wave ch. into one big multi ch. wave file
-media-sound/mumble 1.2.17: Mumble is an open source, low-latency, high quality voice chat software
+media-sound/mumble 1.2.17 1.2.19: Mumble is an open source, low-latency, high quality voice chat software
 media-sound/mup 5.7: Program for printing music scores
 media-sound/murmur 1.2.17: Mumble is an open source, low-latency, high quality voice chat software
 media-sound/musepack-tools 465-r1: Musepack SV8 libraries and utilities
