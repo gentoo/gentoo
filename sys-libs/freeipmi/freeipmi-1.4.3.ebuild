@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -26,7 +26,7 @@ RDEPEND="${RDEPEND}
 		|| ( net-analyzer/icinga net-analyzer/nagios )
 		dev-lang/perl
 	)
-	sys-apps/openrc"
+"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-1.1.1-strictaliasing.patch
