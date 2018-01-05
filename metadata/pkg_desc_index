@@ -5102,9 +5102,9 @@ dev-python/paramiko 2.1.2 2.2.1: SSH2 protocol library
 dev-python/parsedatetime 2.4-r1: Parse human-readable date/time strings
 dev-python/partd 0.3.2: Appendable key-value storage
 dev-python/passlib 1.7.1-r1: Password hashing framework supporting over 20 schemes
-dev-python/paste 2.0.3 2.0.3-r1: Tools for using a Web Server Gateway Interface stack
+dev-python/paste 2.0.3-r1: Tools for using a Web Server Gateway Interface stack
 dev-python/pastedeploy 1.5.2 1.5.2-r1: Load, configure, and compose WSGI applications and servers
-dev-python/pastescript 2.0.2 2.0.2-r1: A pluggable command-line frontend, including commands to setup package file layouts
+dev-python/pastescript 2.0.2-r1: A pluggable command-line frontend, including commands to setup package file layouts
 dev-python/patch 1.16: Library to parse and apply unified diffs
 dev-python/path-py 8.1.2: A module wrapper for os.path
 dev-python/pathlib 1.0.1-r1: Object-oriented filesystem paths
@@ -5116,9 +5116,9 @@ dev-python/pbr 0.8.2-r1 1.10.0-r1 3.1.1: Inject some useful and sensible default
 dev-python/pdfrw 0.2: PDF file reader/writer library
 dev-python/pecan 1.0.4 1.1.2 1.2.1: A WSGI object-dispatching web framework, lean, fast, with few dependencies.
 dev-python/peewee 2.7.4: Small python ORM
-dev-python/pep8 1.4.5 1.5.6 1.5.7 1.7.0: Python style guide checker
+dev-python/pep8 1.5.6 1.5.7 1.7.0: Python style guide checker
 dev-python/peppercorn 0.5: A library for converting a token stream into a data structure for use in web form posts
-dev-python/pexpect 3.3 4.2.1: Python module for spawning child applications and responding to expected patterns
+dev-python/pexpect 4.2.1: Python module for spawning child applications and responding to expected patterns
 dev-python/pgasync 2.01-r1: An asynchronous API to PostgreSQL for twisted
 dev-python/pickleshare 0.7.3: A small 'shelve' like datastore with concurrency support
 dev-python/pid 2.1.1: Pidfile featuring stale detection and file-locking
@@ -5131,11 +5131,11 @@ dev-python/pip 7.1.2 9.0.1-r1: Installs python packages -- replacement for easy_
 dev-python/pkgconfig 1.2.2: Interface Python with pkg-config
 dev-python/pkginfo 1.2.1: Provides an API for querying the distutils metadata written in a PKG-INFO file
 dev-python/placefinder 0.3: Yahoo! BOSS PlaceFinder Python Client
-dev-python/pluggy 0.4.0 0.5.2: plugin and hook calling mechanisms for python
+dev-python/pluggy 0.5.2: plugin and hook calling mechanisms for python
 dev-python/plumbum 1.6.0: A library for shell script-like programs in python
 dev-python/ply 3.6-r1 3.9: Python Lex-Yacc library
 dev-python/plyr 1.0.6: A python wrapper for Glyr
-dev-python/pmw 1.3.3-r2 2.0.0-r2 2.0.1: Toolkit for building high-level compound widgets in Python using the Tkinter module
+dev-python/pmw 1.3.3-r2 2.0.1: Toolkit for building high-level compound widgets in Python using the Tkinter module
 dev-python/pocketlint 0.15: Shared code for running pylint against rhinstaller projects
 dev-python/polib 1.0.4 1.0.7: A library to manipulate gettext files (.po and .mo files)
 dev-python/polygon 2.0.6 3.0.7: Python package to handle polygonal shapes in 2D
@@ -5147,14 +5147,14 @@ dev-python/prettytable 0.7.1-r1 0.7.2: Easily displaying tabular data in a visua
 dev-python/priority 1.3.0: A pure-Python implementation of the HTTP/2 priority tree
 dev-python/process-tests 1.2.0: Tools for testing processes
 dev-python/progress 1.2: Easy to use progress bars
-dev-python/progressbar 2.3-r2 2.3-r3: Text progressbar library for python
+dev-python/progressbar 2.3-r3: Text progressbar library for python
 dev-python/prometheus_client 0.0.21: Python client for the Prometheus monitoring system
 dev-python/prompt_toolkit 1.0.15: Building powerful interactive command lines in Python
 dev-python/protobuf-python 3.1.0: Google's Protocol Buffers - official Python bindings
-dev-python/psutil 5.2.2 5.4.1: Retrieve information on running processes and system utilization
+dev-python/psutil 5.4.1: Retrieve information on running processes and system utilization
 dev-python/psycopg 1.1.21-r1 2.5.3 2.6.2 2.7.3: PostgreSQL database adapter for Python
 dev-python/ptpython 0.33: Python REPL build on top of prompt_toolkit
-dev-python/ptyprocess 0.5 0.5.1: Run a subprocess in a pseudo terminal
+dev-python/ptyprocess 0.5.1: Run a subprocess in a pseudo terminal
 dev-python/pudge 0.1.3-r1: A documentation generator for Python projects, using Restructured Text
 dev-python/pupynere 1.0.15-r1: Pupynere is a PUre PYthon NEtcdf REader
 dev-python/py 1.4.30 1.4.34: library with cross-python path, ini-parsing, io, code, log facilities
@@ -5170,14 +5170,14 @@ dev-python/pyaes 1.6.1: Pure-Python Implementation of the AES block-cipher and c
 dev-python/pyalsa 1.0.29: Python bindings for ALSA library
 dev-python/pyalsaaudio 0.7-r2 0.8.2: A Python wrapper for the ALSA API
 dev-python/pyao 0.82-r3: Python bindings for the libao library
-dev-python/pyasn1 0.1.8 0.2.3: ASN.1 library for Python
+dev-python/pyasn1 0.2.3: ASN.1 library for Python
 dev-python/pyasn1-modules 0.0.5-r1 0.0.8: pyasn1 modules
 dev-python/pyatspi 2.20.3: Python binding to at-spi library
-dev-python/pyaudio 0.2.8 0.2.11: Python bindings for PortAudio
+dev-python/pyaudio 0.2.11: Python bindings for PortAudio
 dev-python/pyblake2 0.9.3-r1 1.1.0: BLAKE2 hash function extension module
 dev-python/pybloomfiltermmap 0.3.11-r1: A Bloom filter (bloomfilter) for Python built on mmap
 dev-python/pybluez 0.18-r1: Python bindings for Bluez Bluetooth Stack
-dev-python/pycadf 2.5.0 2.6.0: python implementation of DMTF Cloud Audit (CADF) data model
+dev-python/pycadf 2.6.0: python implementation of DMTF Cloud Audit (CADF) data model
 dev-python/pycairo 1.10.0-r5 1.15.3: Python bindings for the cairo library
 dev-python/pycanberra 0_pre20130515: Basic Python wrapper for libcanberra
 dev-python/pychart 1.39-r1: Python library for creating charts
@@ -5193,21 +5193,21 @@ dev-python/pycups 1.9.72 1.9.73 1.9.73-r1: Python bindings for the CUPS API
 dev-python/pycurl 7.43.0: python binding for curl/libcurl
 dev-python/pycxx 6.2.6: Set of facilities to extend Python with C++
 dev-python/pydiff 0.2: Diffs two Python files at the bytecode level
-dev-python/pydns 2.3.6-r1 3.1.0 3.1.1: Python DNS (Domain Name System) library
+dev-python/pydns 2.3.6-r1 3.1.1: Python DNS (Domain Name System) library
 dev-python/pydot 1.0.28-r2: Python interface to Graphviz's Dot language
 dev-python/pyelftools 0.24: pure-Python library for analyzing ELF files and DWARF debugging information
 dev-python/pyemf 2.0.0: Pure Python Enhanced Metafile Library
 dev-python/pyenchant 1.6.6: Python bindings for the Enchant spellchecking system
-dev-python/pyev 0.8.1 0.9.0: Python libev interface, an event loop
+dev-python/pyev 0.9.0: Python libev interface, an event loop
 dev-python/pyface 4.4.0: Enthought Tool Suite: Traits-capable windowing framework
 dev-python/pyfits 3.3-r1: Provides an interface to FITS formatted files under python
-dev-python/pyflakes 0.7.2 0.8.1 1.2.3: Passive checker for Python programs
+dev-python/pyflakes 0.8.1 1.2.3: Passive checker for Python programs
 dev-python/pyfltk 1.3.3: Python interface to Fltk library
-dev-python/pyftpdlib 1.4.0 1.5.1: Python FTP server library
+dev-python/pyftpdlib 1.5.1: Python FTP server library
 dev-python/pygal 2.1.1: A python SVG charts generator
 dev-python/pygame 1.9.2_pre20120101-r2: Python bindings for SDL multimedia library
 dev-python/pygame_sdl2 6.99.12.4: Reimplementation of portions of the pygame API using SDL2
-dev-python/pyglet 1.1.4-r2 1.2.4: Cross-platform windowing and multimedia library for Python
+dev-python/pyglet 1.2.4: Cross-platform windowing and multimedia library for Python
 dev-python/pygments 2.1.1 2.2.0: Pygments is a syntax highlighting package written in Python
 dev-python/pygobject 2.28.6-r55 3.22.0: GLib's GObject library bindings for Python
 dev-python/pygoocanvas 0.14.1-r1: GooCanvas python bindings
@@ -5221,13 +5221,13 @@ dev-python/pygtkhelpers 0.4.3-r1: PyGTKHelpers is a library to assist the buildi
 dev-python/pygtksourceview 2.10.1-r1: GTK+2 bindings for Python
 dev-python/pyicu 1.9.5: Python bindings for dev-libs/icu
 dev-python/pyid3lib 0.5.1-r2: Module for manipulating ID3 tags in Python
-dev-python/pyinotify 0.9.4-r1 0.9.6: Python module used for monitoring filesystems events
-dev-python/pyjwt 1.4.0 1.5.2 1.5.3: JSON Web Token implementation in Python
+dev-python/pyinotify 0.9.6: Python module used for monitoring filesystems events
+dev-python/pyjwt 1.5.3: JSON Web Token implementation in Python
 dev-python/pykerberos 1.1.9: A high-level Python wrapper for Kerberos/GSSAPI operations
 dev-python/pylast 1.9.0: Python interface to last.fm and other api-compatible websites
-dev-python/pyldap 2.4.28 2.4.37: Various LDAP-related Python modules
+dev-python/pyldap 2.4.37: Various LDAP-related Python modules
 dev-python/pylibacl 0.5.0-r1: POSIX ACLs (Access Control Lists) for Python
-dev-python/pylibmc 1.5.0 1.5.1-r1: Libmemcached wrapper written as a Python extension
+dev-python/pylibmc 1.5.1-r1: Libmemcached wrapper written as a Python extension
 dev-python/pylibpcap 0.6.4-r1: Python interface to libpcap
 dev-python/pylint 1.6.5-r1: Python code static checker
 dev-python/pylirc 0.0.5-r1: lirc module for Python
@@ -5236,10 +5236,10 @@ dev-python/pymetar 0.21: Downloads, decodes and provides access to the weather r
 dev-python/pyminuit 1.2.1-r1: Minuit numerical function minimization in Python
 dev-python/pymongo 2.7.2 3.4.0: Python driver for MongoDB
 dev-python/pymountboot 0.2.2: Python extension module to (re)mount /boot
-dev-python/pympler 0.4.1 0.5: Memory profiling for Python applications
+dev-python/pympler 0.5: Memory profiling for Python applications
 dev-python/pymssql 1.0.2-r1: Simple MSSQL python extension module
 dev-python/pymtp 0.0.6: LibMTP bindings for Python
-dev-python/pymysql 0.7.6 0.7.11: Pure-Python MySQL Driver
+dev-python/pymysql 0.7.11: Pure-Python MySQL Driver
 dev-python/pynacl 1.1.2: Python binding to the Networking and Cryptography (NaCl) library
 dev-python/pyndex 0.3.2a-r1: Simple and fast Python full-text indexer (aka search engine) using Metakit as its back-end
 dev-python/pynotifier 0.7.0-r3: pyNotifier provides an implementation of a notifier/event scheduler
@@ -5248,14 +5248,14 @@ dev-python/pyodbc 3.0.7-r1: python ODBC module to connect to almost any database
 dev-python/pyode 1.2.0_p20100322-r1: Python bindings to the ODE physics engine
 dev-python/pyogg 1.3-r2: Python bindings for the ogg library
 dev-python/pyopenal 0.1.6-r1: OpenAL library port for Python
-dev-python/pyopencl 2014.1 2016.1: Python wrapper for OpenCL
+dev-python/pyopencl 2016.1: Python wrapper for OpenCL
 dev-python/pyopengl 3.1.0: Python OpenGL bindings
 dev-python/pyopengl_accelerate 3.1.0: Accelerate module for PyOpenGL
-dev-python/pyopenssl 0.15.1-r1 16.2.0 17.2.0: Python interface to the OpenSSL library
+dev-python/pyopenssl 16.2.0 17.2.0: Python interface to the OpenSSL library
 dev-python/pyorbit 2.24.0-r1: ORBit2 bindings for Python
 dev-python/pyosd 0.2.14-r1: Python module for displaying text on your X display, like the 'On Screen Displays' used on TVs
 dev-python/pypam 0.5.0-r3: Python Bindings for PAM (Pluggable Authentication Modules)
-dev-python/pyparsing 2.0.3 2.1.10 2.2.0: Easy-to-use Python module for text parsing
+dev-python/pyparsing 2.2.0: Easy-to-use Python module for text parsing
 dev-python/pyparted 3.10.7: Python bindings for sys-block/parted
 dev-python/pypax 0.9.2: Python module to get or set either PT_PAX and/or XATTR_PAX flags
 dev-python/pyperclip 1.5.27: A cross-platform clipboard module for Python.
