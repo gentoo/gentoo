@@ -52,8 +52,6 @@ DEPEND="${RDEPEND}
 	test? ( dev-cpp/gtest )
 "
 
-DOCS="AUTHORS NEWS.md README.md"
-
 pkg_pretend() {
 	# https://bugs.gentoo.org/419257
 	local ver=4.6
