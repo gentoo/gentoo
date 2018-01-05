@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -50,7 +50,7 @@ src_install() {
 	newinitd "${FILESDIR}"/keepalived.init keepalived
 	newconfd "${FILESDIR}"/keepalived.confd keepalived
 
-	use snmp && dodoc doc/KEEPALIVED-MIB
+	use snmp && dodoc doc/KEEPALIVED-MIB.txt
 
 	docinto genhash
 	dodoc genhash/README genhash/AUTHOR genhash/ChangeLog
