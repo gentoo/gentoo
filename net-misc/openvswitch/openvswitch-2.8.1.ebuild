@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,10 +18,6 @@ IUSE="debug modules monitor +ssl"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
-	|| (
-		>=sys-apps/openrc-0.10.5
-		sys-apps/systemd
-	)
 	ssl? ( dev-libs/openssl:0= )
 	${PYTHON_DEPS}
 	~dev-python/ovs-2.7.2[${PYTHON_USEDEP}]
