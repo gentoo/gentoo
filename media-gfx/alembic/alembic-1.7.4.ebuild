@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -38,6 +38,7 @@ DOCS=( ACKNOWLEDGEMENTS.txt FEEDBACK.txt NEWS.txt README.txt )
 PATCHES=(
 	"${FILESDIR}/${PN}-FindIlmBase-pkgconfig.patch"
 	"${FILESDIR}/${PN}-CMakeLists-fix_lib.patch"
+	"${FILESDIR}/${PN}-fix-importerror.patch"
 )
 
 pkg_setup() {
