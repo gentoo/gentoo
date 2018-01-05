@@ -729,12 +729,6 @@ x11-drivers/xf86-input-pentouch
 # Masked for removal on 2017-12-30
 dev-tex/notoccite
 
-# Matt Turner <mattst88@gentoo.org> (23 Nov 2017)
-# The modesetting driver is part of the xorg-server package since version 1.17.
-# The separate xf86-video-modesetting package is no longer needed.
-# Bug #606132.
-x11-drivers/xf86-video-modesetting
-
 # Andreas Sturmlechner <asturm@gentoo.org> (16 Nov 2017)
 # Qt4WebKit is ancient and full of security holes.
 # Masked for removal in 30 days. Bug #620684
