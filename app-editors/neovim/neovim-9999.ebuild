@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -32,12 +32,16 @@ CDEPEND=">=dev-libs/libuv-1.2.0
 	dev-libs/libvterm
 	dev-lua/lpeg[luajit=]
 	dev-lua/mpack[luajit=]
-	jemalloc? ( dev-libs/jemalloc )
-"
-DEPEND="${CDEPEND}
+	jemalloc? ( dev-libs/jemalloc )"
+
+DEPEND="
+	${CDEPEND}
+	dev-util/gperf
 	virtual/libiconv
 	virtual/libintl"
-RDEPEND="${CDEPEND}
+
+RDEPEND="
+	${CDEPEND}
 	python? ( dev-python/neovim-python-client )
 	ruby? ( dev-ruby/neovim-ruby-client )
 	clipboard? ( || ( x11-misc/xsel x11-misc/xclip ) )"
