@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,11 +19,6 @@ IUSE="debug doc libav lirc"
 IUSE_VIDEO_CARDS="
 	video_cards_nvidia"
 IUSE+="${IUSE_VIDEO_CARDS}"
-
-LANGS="en bg de fr ru zh_CN"
-for X in ${LANGS} ; do
-	IUSE+=" linguas_${X}"
-done
 
 RDEPEND=">=media-libs/glew-1.6.0:0=
 	>=media-libs/openal-1.15.1
