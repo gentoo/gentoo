@@ -153,6 +153,9 @@ src_configure() {
 		fi
 	fi
 
+	tc-export_build_env BUILD_CXX
+	export BUILDCXX=${BUILD_CXX}
+	export BUILDCXXFLAGS=${BUILD_CXXFLAGS}
 	tc-export CC AR
 
 	econf \
