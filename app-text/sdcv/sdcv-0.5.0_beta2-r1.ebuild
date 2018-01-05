@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -37,7 +37,7 @@ src_prepare() {
 	l10n_for_each_disabled_locale_do rm_loc
 
 	# do not install locale-specific man pages unless asked to
-	if ! use linguas_uk; then
+	if ! has uk ${LINGUAS-uk}; then
 		sed -ni '/share\/man\/uk/!p' CMakeLists.txt || die
 	fi
 
