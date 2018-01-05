@@ -11,7 +11,7 @@ SRC_URI="http://www.inf.puc-rio.br/~roberto/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 hppa ppc x86"
+KEYWORDS="amd64 arm arm64 hppa ppc ppc64 x86"
 IUSE="debug doc luajit"
 
 RDEPEND="
