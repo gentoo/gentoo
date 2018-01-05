@@ -3850,7 +3850,7 @@ dev-perl/List-UtilsBy 0.100.0: Higher-order list utility functions
 dev-perl/Locale-Maketext-Fuzzy 0.110.0-r1: Maketext from already interpolated strings
 dev-perl/Locale-Maketext-Lexicon 1.0.0: Use other catalog formats in Maketext
 dev-perl/Locale-PO 0.270.0: Perl module for manipulating .po entries from GNU gettext
-dev-perl/Locale-gettext 1.50.0-r1: A Perl module for accessing the GNU locale utilities
+dev-perl/Locale-gettext 1.70.0: A Perl module for accessing the GNU locale utilities
 dev-perl/LockFile-Simple 0.208.0-r1: File locking module for Perl
 dev-perl/Log-Agent 1.1.0: A general logging framework
 dev-perl/Log-Any 1.38.0: Bringing loggers and listeners together
