@@ -3,8 +3,7 @@
 
 EAPI=6
 
-PLOCALES="de ru"
-inherit autotools bash-completion-r1 flag-o-matic l10n tmpfiles
+inherit autotools bash-completion-r1 flag-o-matic tmpfiles
 
 DESCRIPTION="Search and query ebuilds"
 HOMEPAGE="https://github.com/vaeth/eix/"
