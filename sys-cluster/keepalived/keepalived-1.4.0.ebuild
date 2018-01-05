@@ -51,7 +51,7 @@ src_install() {
 	newinitd "${FILESDIR}"/keepalived.init keepalived
 	newconfd "${FILESDIR}"/keepalived.confd keepalived
 
-	use snmp && dodoc doc/KEEPALIVED-MIB
+	use snmp && dodoc doc/KEEPALIVED-MIB.txt
 
 	docinto genhash
 	dodoc genhash/README genhash/AUTHOR genhash/ChangeLog
