@@ -9,4 +9,7 @@
     <email>gokturk@gentoo.org</email>
     <name>Göktürk Yüksek</name>
   </maintainer>
+  <slots>
+    <subslots>Reflects ABI compatibility for libu2f-server.so</subslots>
+  </slots>
 </pkgmetadata>
