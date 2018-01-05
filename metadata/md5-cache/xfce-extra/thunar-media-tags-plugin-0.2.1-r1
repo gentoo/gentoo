@@ -3,9 +3,9 @@ DEPEND=>=media-libs/taglib-1.6 >=x11-libs/gtk+-2.12:2 >=xfce-base/exo-0.6 >=xfce
 DESCRIPTION=Adds special features for media files to the Thunar File Manager
 EAPI=6
 HOMEPAGE=https://goodies.xfce.org/projects/thunar-plugins/thunar-media-tags-plugin
-KEYWORDS=~amd64 ~x86 ~x86-fbsd
+KEYWORDS=amd64 ~x86 ~x86-fbsd
 LICENSE=GPL-2
 RDEPEND=>=media-libs/taglib-1.6 >=x11-libs/gtk+-2.12:2 >=xfce-base/exo-0.6 >=xfce-base/thunar-1.2
 SLOT=0
 SRC_URI=mirror://xfce/src/thunar-plugins/thunar-media-tags-plugin/0.2/thunar-media-tags-plugin-0.2.1.tar.bz2
-_md5_=ddfb35b15d4958396620986b76921301
+_md5_=0c9d10e84d0ac8f167dd97ce949c7a84
