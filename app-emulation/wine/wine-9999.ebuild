@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -549,7 +549,7 @@ multilib_src_install_all() {
 
 	# respect LINGUAS when installing man pages, #469418
 	for l in de fr pl; do
-		use linguas_${l} || rm -r "${D}"usr/share/man/${l}*
+		has ${l} ${LINGUAS-${l}} || rm -r "${D}"usr/share/man/${l}*
 	done
 }
 
