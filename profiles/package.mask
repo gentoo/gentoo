@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (05 Jan 2018)
+# Masked for removal in 30 days, no more rdeps, bug #642462
+kde-apps/katepart
+kde-apps/kdebase-data
+kde-apps/konsolepart
+
 # Alice Ferrazzi <alicef@gentoo.org> (05 Jan 2018)
 # kernel: Meltdown and Spectre - Processor flaw. (#643228)
 # Please upgrade for Intel processor flaw workaround, 
@@ -374,7 +380,6 @@ dev-dotnet/referenceassemblies-pcl
 # Pacho Ramos <pacho@gentoo.org> (27 Dec 2017)
 # Dead for ages, rely on deprecated/dead libs (#447466). Removal in a month.
 dev-vcs/bzr-gtk
-dev-vcs/bzr-explorer
 
 # Pacho Ramos <pacho@gentoo.org> (27 Dec 2017)
 # Completely broken for years (#514400, #596078, #598609, #640096, #641428).
@@ -636,12 +641,6 @@ net-ftp/oneclickftp
 # Dead upstream. Requires dead Qt4.
 # Masked for removal in 30 days. Bug #640138.
 dev-vcs/qct
-
-# Andreas Sturmlechner <asturm@gentoo.org> (06 Dec 2017)
-# No maintainer, depends on dead PyQt4/Qt4.
-# Masked for removal in 30 days. Bugs #480250, #640114
-dev-vcs/qbzr
-dev-vcs/bzr-explorer
 
 # Bernard Cafarelli <voyageur@gentoo.org> (05 Dec 2017)
 # Dead Window Maker dockapps, dead upstreams and download links

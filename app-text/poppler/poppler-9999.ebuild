@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit cmake-utils toolchain-funcs xdg-utils
+inherit cmake-utils flag-o-matic toolchain-funcs xdg-utils
 
 if [[ "${PV}" == "9999" ]] ; then
 	inherit git-r3
@@ -79,10 +79,8 @@ src_prepare() {
 		einfo "policy(SET CMP0002 OLD) - workaround can be removed"
 	fi
 
-	if tc-is-clang && [[ ${CHOST} == *-darwin* ]] ; then
-		# we need to up the C++ version, bug #622526
-		export CXX="$(tc-getCXX) -std=c++11"
-	fi
+	# we need to up the C++ version, bug #622526, #643278
+	append-cxxflags -std=c++11
 }
 
 src_configure() {
@@ -95,35 +93,23 @@ src_configure() {
 		-DENABLE_ZLIB=ON
 		-DENABLE_ZLIB_UNCOMPRESS=OFF
 		-DENABLE_XPDF_HEADERS=ON
-		-DENABLE_LIBCURL="$(usex curl)"
-		-DENABLE_CPP="$(usex cxx)"
-		-DENABLE_UTILS="$(usex utils)"
 		-DSPLASH_CMYK=OFF
 		-DUSE_FIXEDPOINT=OFF
 		-DUSE_FLOAT=OFF
-		-DWITH_Cairo="$(usex cairo)"
-		-DWITH_GObjectIntrospection="$(usex introspection)"
-		-DWITH_JPEG="$(usex jpeg)"
-		-DWITH_NSS3="$(usex nss)"
-		-DWITH_PNG="$(usex png)"
+		-DWITH_Cairo=$(usex cairo)
+		-DENABLE_LIBCURL=$(usex curl)
+		-DENABLE_CPP=$(usex cxx)
+		-DWITH_GObjectIntrospection=$(usex introspection)
+		-DWITH_JPEG=$(usex jpeg)
+		-DENABLE_DCTDECODER=$(usex jpeg libjpeg none)
+		-DENABLE_LIBOPENJPEG=$(usex jpeg2k openjpeg2 none)
+		-DENABLE_CMS=$(usex lcms lcms2 none)
+		-DWITH_NSS3=$(usex nss)
+		-DWITH_PNG=$(usex png)
 		$(cmake-utils_use_find_package qt5 Qt5Core)
-		-DWITH_TIFF="$(usex tiff)"
+		-DWITH_TIFF=$(usex tiff)
+		-DENABLE_UTILS=$(usex utils)
 	)
-	if use jpeg; then
-		mycmakeargs+=(-DENABLE_DCTDECODER=libjpeg)
-	else
-		mycmakeargs+=(-DENABLE_DCTDECODER=none)
-	fi
-	if use jpeg2k; then
-		mycmakeargs+=(-DENABLE_LIBOPENJPEG=openjpeg2)
-	else
-		mycmakeargs+=(-DENABLE_LIBOPENJPEG=none)
-	fi
-	if use lcms; then
-		mycmakeargs+=(-DENABLE_CMS=lcms2)
-	else
-		mycmakeargs+=(-DENABLE_CMS=)
-	fi
 
 	cmake-utils_src_configure
 }
