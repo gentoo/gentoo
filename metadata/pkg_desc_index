@@ -133,6 +133,7 @@ app-admin/syslog-summary 1.14-r1: Summarizes the contents of a syslog log file
 app-admin/sysstat 11.4.0: System performance tools for Linux
 app-admin/system-config-printer 1.4.8: GNOME frontend for a Red Hat's printer administration tool
 app-admin/system-tools-backends 2.10.2: Tools aimed to make easy the administration of UNIX systems
+app-admin/systemrescuecd-x86 5.1.2: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
 app-admin/tenshi 0.12: Log parsing and notification program
 app-admin/testdisk 7.0-r3: Checks and undeletes partitions + PhotoRec, signature based recovery tool
 app-admin/tmpreaper 1.6.13-r1: A utility for removing files based on when they were last accessed
@@ -6129,11 +6130,10 @@ dev-util/intltool 0.51.0-r1 0.51.0-r2: Internationalization Tool Collection
 dev-util/itstool 2.0.2: Translation tool for XML documents that uses gettext files and ITS rules
 dev-util/jconfig 2.8-r3 2.8.5: Utility that provides a simple API for the management of properties
 dev-util/kbuild 0.1.9998_pre20131130-r1: A makefile framework for writing simple makefiles for complex tasks
-dev-util/kdevelop 5.1.2 5.2.1: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
+dev-util/kdevelop 5.2.1: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
 dev-util/kdevelop-pg-qt 2.1.0: LL(1) parser generator used mainly by KDevelop language plugins
-dev-util/kdevelop-php 5.1.2 5.2.1: PHP plugin for KDevelop
-dev-util/kdevelop-python 5.1.2 5.2.1: Python plugin for KDevelop
-dev-util/kdevplatform 5.1.2: KDE development support libraries and apps
+dev-util/kdevelop-php 5.2.1: PHP plugin for KDevelop
+dev-util/kdevelop-python 5.2.1: Python plugin for KDevelop
 dev-util/kyua 0.13-r1: Testing framework for infrastructure software
 dev-util/lcov 1.9-r1 1.11: A graphical front-end for GCC's coverage testing tool gcov
 dev-util/linklint 2.3.5: A Perl program that checks links on web sites
