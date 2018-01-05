@@ -568,7 +568,7 @@ app-editors/lpe 1.2.6.13: a lightweight programmers editor
 app-editors/mg 20161005 20170828: MicroGnuEmacs, a port from the BSDs
 app-editors/moe 1.6: A powerful and user-friendly console text editor
 app-editors/mousepad 0.4.0: GTK+-based editor for the Xfce Desktop Environment
-app-editors/nano 2.7.5: GNU GPL'd Pico clone with more functionality
+app-editors/nano 2.7.5 2.8.7: GNU GPL'd Pico clone with more functionality
 app-editors/nedit 5.6-r1: Multi-purpose text editor for the X Window System
 app-editors/ng 1.5_beta1-r2: Emacs like micro editor Ng -- based on mg2a
 app-editors/nvi 1.81.6-r7: Vi clone
@@ -6281,7 +6281,7 @@ games-board/tali 3.22.0: Beat the odds in a poker-style dice game
 games-emulation/caps 20071115: Support library for accessing and using C.A.P.S. images
 games-emulation/dolphin 5.0: Gamecube and Wii game emulator
 games-emulation/dosbox 0.74_p20160629: DOS emulator
-games-emulation/mgba 0.5.2: A new Game Boy Advance emulator written in C.
+games-emulation/mgba 0.5.2 0.6.1: A new Game Boy Advance emulator written in C.
 games-emulation/pcsx2 1.4.0: A PlayStation 2 emulator
 games-emulation/vbam 2.0.0_beta2_p20161211-r1: Game Boy, GBC, and GBA emulator forked from VisualBoyAdvance
 games-engines/renpy 6.17.7 6.99.12.4-r3: Visual novel engine written in python
