@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -86,5 +86,5 @@ src_configure() {
 
 src_install() {
 	gnome2_src_install
-	mv "${D}"/etc/profile.d/vte{,-${SLOT}}.sh || die
+	mv "${ED}"/etc/profile.d/vte{,-${SLOT}}.sh || die
 }
