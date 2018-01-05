@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,9 +18,11 @@ IUSE="test"
 # Multiple test failures, need to investigate the exact problem
 RESTRICT="test"
 
+# completion collision with net-fs/mc
 RDEPEND=">=app-shells/bash-4.3_p30-r1
 	sys-apps/miscfiles
-	!app-eselect/eselect-bashcomp"
+	!app-eselect/eselect-bashcomp
+	!!net-fs/mc"
 DEPEND="app-arch/xz-utils
 	test? (
 		${RDEPEND}
