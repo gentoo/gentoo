@@ -5271,6 +5271,7 @@ sys-cluster/glusterfs:rsyslog - Install configuration snippet for app-admin/rsys
 sys-cluster/glusterfs:systemtap - Enable support for dev-util/systemtap
 sys-cluster/glusterfs:tiering - Enable support for data classification/tiering (requires dev-db/sqlite SLOT 3)
 sys-cluster/heat:memcached - Installs the memcached server
+sys-cluster/keepalived:json - compile with signal to dump configuration and stats as JSON.
 sys-cluster/mpich:mpi-threads - Enable MPI_THREAD_MULTIPLE
 sys-cluster/mpich:romio - Build the ROMIO MPI-IO component
 sys-cluster/mpich2:mpi-threads - Enable MPI_THREAD_MULTIPLE
