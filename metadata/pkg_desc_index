@@ -7296,7 +7296,7 @@ media-libs/elementary 1.17.0: Basic widget set, based on EFL for mobile touch-sc
 media-libs/elles_icc_profiles 20160501.0932: Elle Stone's well-behaved RGB and grey ICC profiles
 media-libs/esdl 1.0.1: Erlang bindings for the SDL library
 media-libs/exempi 2.2.1 2.4.2: Exempi is a port of the Adobe XMP SDK to work on UNIX
-media-libs/exiftool 10.64: Read and write meta information in image, audio and video files
+media-libs/exiftool 10.68: Read and write meta information in image, audio and video files
 media-libs/faac 1.28-r4: Free MPEG-4 audio codecs by AudioCoding.com
 media-libs/faad2 2.7-r3: AAC audio decoding library
 media-libs/ffmpegsource 2.23: A libav/ffmpeg based source library for easy frame accurate access
@@ -8820,7 +8820,7 @@ net-misc/pen 0.25.1: TCP Load Balancing Port Forwarder
 net-misc/pipes 1.16.1: Very versatile TCP pipes
 net-misc/portfwd 0.29-r1: Port Forwarding Daemon
 net-misc/pps-tools 0.0.20120407: User-space tools for LinuxPPS
-net-misc/proxychains 4.11: force any tcp connections to flow through a proxy (or proxy chain)
+net-misc/proxychains 4.12-r1: force any tcp connections to flow through a proxy (or proxy chain)
 net-misc/pssh 2.3.1-r1: PSSH provides parallel versions of OpenSSH and related tools
 net-misc/pump 0.8.24-r4: This is the DHCP/BOOTP client written by RedHat
 net-misc/putty 0.68: A Free Telnet/SSH Client
