@@ -181,6 +181,254 @@ libnotify - Enable desktop notification support
 libressl - Use dev-libs/libressl as SSL provider (might need ssl USE flag), packages should not depend on this USE flag
 libsamplerate - Build with support for converting sample rates using libsamplerate
 libwww - Add libwww support (General purpose WEB API)
+linguas_af - Afrikaans locale
+linguas_af_ZA - Afrikaans locale for South Africa
+linguas_ak - Akan locale
+linguas_am - Amharic locale
+linguas_an - Aragonese locale
+linguas_ar - Arabic locale
+linguas_ar_JO - Arabic locale for Jordan
+linguas_ar_SA - Arabic locale for Saudi-Arabia
+linguas_ar_SY - Arabic locale for Syria
+linguas_as - Assamese locale
+linguas_ast - Asturian locale
+linguas_az - Azeri locale
+linguas_be - Belarusian locale
+linguas_be@latin - Belarusian (latin) locale
+linguas_be_BY - Belarusian locale
+linguas_bg - Bulgarian locale
+linguas_bg_BG - Bulgarian locale
+linguas_bn - Bengali locale
+linguas_bn_BD - Bengali locale for Bangladesh
+linguas_bn_IN - Bengali locale for India
+linguas_bo - Tibetan locale
+linguas_br - Breton locale
+linguas_bs - Bosnian locale
+linguas_byn - Bilin (Bilen, Blin) locale
+linguas_ca - Catalan locale
+linguas_ca@valencia - Catalan locale (Valencia)
+linguas_ca_ES - Catalan locale for Spain
+linguas_ca_XV - Asturian and Catalan locale (Valencia)
+linguas_ckb - Kurdish (Sorani) locale
+linguas_cmn - Chinese (Mandarin) locale
+linguas_co - Corsican locale
+linguas_crh - Crimean Tatar (Crimean Turkish) locale
+linguas_cs - Czech locale
+linguas_cs_CZ - Czech locale for Czech Republic
+linguas_csb - Kashubian locale
+linguas_cy - Welsh locale
+linguas_cy_GB - Welsh locale
+linguas_da - Danish locale
+linguas_da_DK - Danish locale for Denmark
+linguas_de - German locale
+linguas_de@1901 - German locale with old spelling
+linguas_de_CH - German locale for Switzerland
+linguas_de_DE - German locale for Germany
+linguas_dz - Dzongkha locale
+linguas_el - Greek locale
+linguas_el_GR - Greek locale
+linguas_en - English locale
+linguas_en@shaw - Shavian locale
+linguas_en_AU - English locale for Australia
+linguas_en_CA - English locale for Canada
+linguas_en_GB - English locale for Britain
+linguas_en_US - English locale
+linguas_en_ZA - English locale for South Africa
+linguas_eo - Esperanto locale
+linguas_eo_UY - Esperanto locale for Uruguay
+linguas_es - Spanish locale
+linguas_es_419 - Latin American Spanish locale
+linguas_es_AR - Spanish locale for Argentina
+linguas_es_CL - Spanish locale for Chile
+linguas_es_CO - Spanish locale for Columbia
+linguas_es_DO - Spanish locale for Dominican Republic
+linguas_es_ES - Spanish locale for Spain
+linguas_es_LA - Spanish locale for Latin America
+linguas_es_MX - Spanish locale for Mexico
+linguas_es_UY - Spanish locale for Uruguay
+linguas_es_VE - Spanish locale for Venezuela
+linguas_et - Estonian locale
+linguas_et_EE - Estonian locale
+linguas_eu - Basque locale
+linguas_eu_ES - Basque locale for Spain
+linguas_fa - Persian locale
+linguas_fa_IR - Persian locale for Iran
+linguas_fi - Finnish locale
+linguas_fi_FI - Finnish locale
+linguas_fil - Filipino locale
+linguas_fo - Faroese locale
+linguas_fr - French locale
+linguas_fr_CA - French locale for Canada
+linguas_fr_FR - French locale for France
+linguas_frp - Franco-Provençal locale
+linguas_fur - Friullian locale
+linguas_fy - Frisian locale
+linguas_fy_NL - Frisian language locale for the Netherlands
+linguas_ga - Irish locale
+linguas_gd - Gaelic locale
+linguas_gez - Ge'ez locale
+linguas_gl - Galician locale
+linguas_gl_ES - Galician locale for Spain
+linguas_gu - Gujarati locale
+linguas_gu_IN - Gujarati locale for India
+linguas_haw - Hawaiian locale
+linguas_he - Hebrew locale
+linguas_he_IL - Hebrew locale for Israel
+linguas_hi - Hindi locale
+linguas_hi_IN - Hindi locale
+linguas_hr - Croatian locale
+linguas_hr_HR - Croatian locale
+linguas_hu - Hungarian locale
+linguas_hu_HU - Hungarian locale
+linguas_hy - Armenian locale
+linguas_hy_AM - Armenian locale
+linguas_ia - Interlingua locale
+linguas_id - Indonesian locale
+linguas_id_ID - Indonesian locale
+linguas_ii - Nousu locale
+linguas_is - Icelandic locale
+linguas_is_IS - Icelandic locale for Iceland
+linguas_it - Italian locale
+linguas_it_IT - Italian locale
+linguas_ja - Japanese locale
+linguas_ja_JP - Japanese locale
+linguas_jv - Javanese locale
+linguas_ka - Georgian locale
+linguas_ka_GE - Georgian locale
+linguas_kab - Kabyle locale
+linguas_kk - Kazakh locale
+linguas_kk_KZ - Kazakh (Kazakhstan) locale
+linguas_km - Khmer locale
+linguas_kn - Kannada locale
+linguas_kn_IN - Kannada locale for India
+linguas_ko - Korean locale
+linguas_ko_KR - Korean locale
+linguas_kok - Konkani locale
+linguas_ksw - S'gaw Karen locale
+linguas_ku - Kurdish (latin) locale
+linguas_ku_IQ - Kurdish (latin) locale for Iraq
+linguas_ky - Kyrgyz (Kirghiz) locale
+linguas_ky_KG -  Kyrgyz (Kirghiz) locale for Kyrgyzstan
+linguas_la - Latin locale
+linguas_lb - Luxembourgish locale
+linguas_lg - Ganda locale
+linguas_li - Limburgian locale
+linguas_lo - Lao locale
+linguas_lt - Lithuanian locale
+linguas_lt_LT - Lithuanian locale
+linguas_lv - Latvian locale
+linguas_lv_LV - Latvian locale for Latvia
+linguas_mai - Maithili locale
+linguas_me - Montenegrin (Crnogorski) locale
+linguas_mg - Malagasy locale
+linguas_mi - Maori locale
+linguas_mk - Macedonian locale
+linguas_mk_MK - Macedonian locale for Macedonia
+linguas_ml - Malayalam locale
+linguas_mn - Mongolian locale
+linguas_mr - Marathi locale
+linguas_ms - Malay locale
+linguas_ms_MY - Malay locale for Malaysia
+linguas_mt - Maltese locale
+linguas_my - Burmese locale
+linguas_nan - Min Nan locale
+linguas_nb - Norwegian (Bokmal) locale
+linguas_nb_NO - Norwegian (Bokmal) locale for Norway
+linguas_nds - Low Saxon locale
+linguas_ne - Nepali locale
+linguas_nl - Dutch locale
+linguas_nl_NL - Dutch locale for the Netherlands
+linguas_nn - Nynorsk locale
+linguas_nn_NO - Nynorsk locale for Norway
+linguas_no - Norwegian locale
+linguas_no_NO - Norwegian locale for Norway
+linguas_nqo - N'Ko locale
+linguas_nso - Northern Sotho locale
+linguas_oc - Occitan locale
+linguas_om - Oromo locale
+linguas_or - Oriya locale
+linguas_pa - Punjabi locale for India
+linguas_pam - Kapampangan locale
+linguas_pap - Papiamento locale
+linguas_pl - Polish locale
+linguas_pl_PL - Polish locale
+linguas_ps - Pushto locale
+linguas_pt - Portuguese locale
+linguas_pt_BR - Portuguese locale for Brasil
+linguas_pt_PT - Portuguese locale for Portugal
+linguas_rm - Romansh locale
+linguas_ro - Romanian locale
+linguas_ro_RO - Romanian locale for Romania
+linguas_ru - Russian locale
+linguas_ru_RU - Russian locale for Russia
+linguas_rue - Rusyn locale
+linguas_rw - Kinyarwanda locale
+linguas_sa - Sanskrit locale
+linguas_sc - Sardinian locale
+linguas_sco - Scots locale
+linguas_se - Northern Saami locale
+linguas_shn - Shan locale
+linguas_si - Sinhala locale
+linguas_si_LK - Sinhala locale
+linguas_sk - Slovak locale
+linguas_sk_SK - Slovak locale
+linguas_sl - Slovenian locale
+linguas_sl_SI - Slovenian locale
+linguas_so - Somali locale
+linguas_sq - Albanian locale
+linguas_sq_AL - Albanian locale
+linguas_sr - Serbian locale
+linguas_sr@Latn - Serbian (latin) locale
+linguas_sr@ijekavian - Serbian-Ijekavian locale
+linguas_sr@ijekavianlatin - Serbian-Ijekavian (latin) locale
+linguas_sr@latin - Serbian (latin) locale
+linguas_sr_RS - Serbian locale for Serbia
+linguas_sr_RS@cyrillic - Serbian (cyrillic) locale for Serbia
+linguas_sr_RS@latin - Serbian (latin) locale for Serbia
+linguas_sv - Swedish locale
+linguas_sv_SE - Swedish locale for Sweden
+linguas_sw - Swahili locale
+linguas_ta - Tamil locale
+linguas_ta_IN - Tamil locale
+linguas_te - Telugu locale
+linguas_tg - Tajik locale
+linguas_th - Thai locale
+linguas_th_TH - Thai locale Thailand
+linguas_ti - Tigrinya locale
+linguas_tig - Tigre locale
+linguas_tk - Turkmen locale
+linguas_tl - Tagalog locale
+linguas_tlh - Klingon locale
+linguas_tpi - Tok Pisin locale
+linguas_tr - Turkish locale
+linguas_tr_TR - Turkish locale for Turkey
+linguas_ts - Tsonga locale
+linguas_tt - Tatar locale
+linguas_tt@iqtelif - Tatar (iqtelif) locale
+linguas_tt_RU - Tatar language locale for Russia
+linguas_ug - Uighur locale
+linguas_uk - Ukrainian locale
+linguas_uk_UA - Ukrainian locale for Ukraine
+linguas_ur - Urdu locale
+linguas_ur_PK - Urdu language locale for Pakistan
+linguas_uz - Uzbek locale
+linguas_uz@Cyrl - Uzbek (Cyrillic) locale
+linguas_uz@Latn - Uzbek (latin) locale
+linguas_uz@cyrillic - Uzbek (cyrillic) locale
+linguas_uz_UZ - Uzbek locale for Uzbekistan
+linguas_ve - Venda locale
+linguas_vi - Vietnamese locale
+linguas_vi_VN - Vietnamese locale
+linguas_wa - Walloon locale
+linguas_wal - Wolaytta (Walamo) locale
+linguas_wo - Wolof locale
+linguas_xh - Xhosa locale
+linguas_yi - Yiddish locale
+linguas_zh - Chinese locale
+linguas_zh_CN - Chinese locale for Peoples Republic of China
+linguas_zh_HK - Chinese locale for Hong Kong
+linguas_zh_TW - Chinese locale for Taiwan
+linguas_zu - Zulu locale
 lirc - Add support for lirc (Linux's Infra-Red Remote Control)
 livecd - !!internal use only!! DO NOT SET THIS FLAG YOURSELF!, used during livecd building
 lm_sensors - Add linux lm_sensors (hardware sensors) support

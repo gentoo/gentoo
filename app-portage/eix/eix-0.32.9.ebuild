@@ -1,10 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PLOCALES="de ru"
-inherit autotools bash-completion-r1 l10n systemd flag-o-matic
+inherit autotools bash-completion-r1 systemd flag-o-matic
 
 DESCRIPTION="Search and query ebuilds"
 HOMEPAGE="https://github.com/vaeth/eix/"

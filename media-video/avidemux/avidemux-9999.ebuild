@@ -1,11 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PLOCALES="ca cs de el es fr it ja pt_BR ru sr sr@latin tr"
-
-inherit cmake-utils l10n qmake-utils xdg-utils
+inherit cmake-utils qmake-utils xdg-utils
 
 DESCRIPTION="Video editor designed for simple cutting, filtering and encoding tasks"
 HOMEPAGE="http://fixounet.free.fr/${PN}"
