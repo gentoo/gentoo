@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit toolchain-funcs versionator multiprocessing xdg-utils
+inherit toolchain-funcs versionator multiprocessing xdg-utils qmake-utils
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://gitlab.com/mbunkus/mkvtoolnix.git"
