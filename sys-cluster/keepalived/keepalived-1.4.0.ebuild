@@ -12,7 +12,7 @@ SRC_URI="http://www.keepalived.org/software/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
-IUSE="dbus debug ipv6 snmp"
+IUSE="dbus debug ipv6 -json snmp"
 
 RDEPEND="dev-libs/libnl:=
 	dev-libs/openssl:=
@@ -20,6 +20,7 @@ RDEPEND="dev-libs/libnl:=
 	net-libs/libnfnetlink
 	sys-apps/iproute2
 	dbus? ( sys-apps/dbus )
+	json? ( dev-libs/json-c )
 	snmp? ( net-analyzer/net-snmp )"
 DEPEND="${RDEPEND}
 	>=sys-kernel/linux-headers-4.4"
@@ -36,12 +37,12 @@ src_configure() {
 	STRIP=/bin/true \
 	econf \
 		--with-kernel-dir=/usr \
-		--enable-json \
 		--enable-sha1 \
 		--enable-vrrp \
 		$(use_enable dbus) \
 		$(use_enable dbus dbus-create-instance) \
 		$(use_enable debug) \
+		$(use_enable json) \
 		$(use_enable snmp)
 }
 
