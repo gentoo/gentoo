@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,8 +12,7 @@ SRC_URI="mirror://sourceforge/gnac/${P}.tar.bz2"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-LANGS=" cs da de en_GB es gl fr he hu it lt nb pt_BR pl ro ru sl sv te tr zh_CN"
-IUSE="aac flac libnotify mp3 nls wavpack ${LANGS// / linguas_}"
+IUSE="aac flac libnotify mp3 nls wavpack"
 
 RDEPEND="
 	x11-libs/gtk+:3
