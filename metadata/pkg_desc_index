@@ -3124,6 +3124,7 @@ dev-libs/libstroke 0.5.1: A Stroke and Gesture recognition Library
 dev-libs/libtar 1.2.20-r2 1.2.20-r3: C library for manipulating tar archives
 dev-libs/libtasn1 4.12-r1: ASN.1 library
 dev-libs/libtecla 1.6.1-r2: Tecla command-line editing library
+dev-libs/libtermkey 0.20: Library for easy processing of keyboard entry from terminal-based programs
 dev-libs/libtommath 0.42.0-r1: Optimized and portable routines for integer theoretic applications
 dev-libs/libtompoly 0.04: portable ISO C library for polynomial basis arithmetic
 dev-libs/libtubo 5.0.15: small and simple interprocess communication library
@@ -3135,6 +3136,7 @@ dev-libs/libusb-compat 0.1.5-r2: Userspace access to USB devices (libusb-0.1 com
 dev-libs/libuv 1.10.2: Cross-platform asychronous I/O
 dev-libs/libverto 0.2.5 0.2.5-r1: Main event loop abstraction library
 dev-libs/libvformat 1.13-r2: Library to read and write vcard files
+dev-libs/libvterm 0.0_pre20160305: An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
 dev-libs/libwacom 0.24 0.25: Library for identifying Wacom tablets and their model-specific features
 dev-libs/libwbxml 0.11.2: Library and tools to parse, encode and handle WBXML documents
 dev-libs/libx86 1.1-r2 1.1-r3: A hardware-independent library for executing real-mode x86 code
@@ -3221,6 +3223,7 @@ dev-libs/tvision 2.1.0_pre2-r4: Text User Interface that implements the well kno
 dev-libs/ucl 1.03-r1: the UCL Compression Library
 dev-libs/ucommon 6.0.3: Portable C++ runtime for threads and sockets
 dev-libs/udis86 1.7-r2: Disassembler library for the x86/-64 architecture sets
+dev-libs/unibilium 1.2.1: A very basic terminfo library
 dev-libs/unittest++ 2.0.0: A lightweight unit testing framework for C++
 dev-libs/univalue 1.0.2: C++ universal value object and JSON library
 dev-libs/uriparser 0.7.9 0.8.0: Uriparser is a strictly RFC 3986 compliant URI parsing library in C
@@ -3270,7 +3273,7 @@ dev-lua/busted 2.0_rc12_p1: Elegant Lua unit testing
 dev-lua/dkjson 2.5: David Kolf's JSON module for Lua
 dev-lua/lanes 3.10.0: lightweight, native, lazy evaluating multithreading library
 dev-lua/lgi 0.7.2 0.9.0: Lua bindings using gobject-introspection
-dev-lua/lpeg 0.12: Parsing Expression Grammars for Lua
+dev-lua/lpeg 1.0.1: Parsing Expression Grammars for Lua
 dev-lua/lua-term 0.3: Terminal functions for Lua
 dev-lua/lua-zlib 0.3 1.1: Lua bindings to zlib
 dev-lua/lua_cliargs 3.0_p1: A command-line argument parser.
@@ -3288,6 +3291,7 @@ dev-lua/luasystem 0.2.0_p0: platform independent system calls for lua
 dev-lua/lutok 0.4-r1: Lightweight C++ API library for Lua
 dev-lua/luvit 0.7.0: Takes node.js' architecture and dependencies and fits it in the Lua language
 dev-lua/mediator_lua 1.1.2_p0: Event handling through channels
+dev-lua/mpack 1.0.4: Lua bindings for libmpack
 dev-lua/penlight 1.3.2: Lua utility libraries loosely based on the Python standard libraries
 dev-lua/say 1.3_p1: Lua String Hashing/Indexing Library
 dev-lua/toluapp 1.0.93: A tool to integrate C/C++ code with Lua
@@ -11220,32 +11224,33 @@ xfce-extra/thunar-shares-plugin 0.2.0_p20101105: Thunar plugin to share files us
 xfce-extra/thunar-vcs-plugin 0.1.4 0.1.5-r1: Adds Subversion and GIT actions to the context menu of thunar
 xfce-extra/thunar-volman 0.8.1 0.8.1-r1: Daemon that enforces volume-related policies
 xfce-extra/transd 0_p20120503: A small daemon to watch for window creation and set window transparency values
-xfce-extra/tumbler 0.1.31-r1: A thumbnail service for the filemanager of Xfce desktop environment
-xfce-extra/xfce4-battery-plugin 1.0.5: A battery monitor panel plugin for the Xfce desktop environment
+xfce-extra/tumbler 0.1.31-r1 0.2.0: A thumbnail service for Thunar
+xfce-extra/xfce4-battery-plugin 1.0.5 1.1.0: A battery monitor panel plugin for the Xfce desktop environment
 xfce-extra/xfce4-cellmodem-plugin 0.0.5: A panel plug-in with monitoring support for GPRS/UMTS(3G)/HSDPA(3.5G) modems
-xfce-extra/xfce4-clipman-plugin 1.2.6: A clipboard manager plug-in for the Xfce panel
+xfce-extra/xfce4-clipman-plugin 1.2.6 1.4.2: A clipboard manager plug-in for the Xfce panel
 xfce-extra/xfce4-cpufreq-plugin 1.1.3: A panel plugin for showing information about cpufreq settings
 xfce-extra/xfce4-cpugraph-plugin 1.0.5: A system load plug-in for the Xfce panel
-xfce-extra/xfce4-datetime-plugin 0.6.2: A panel plug-in with date, time and embedded calender
-xfce-extra/xfce4-dict 0.7.2: A dict.org querying application and panel plug-in for the Xfce desktop
-xfce-extra/xfce4-diskperf-plugin 2.5.5: A panel plug-in for disk usage and performance statistics
+xfce-extra/xfce4-datetime-plugin 0.6.2 0.7.0: A panel plug-in with date, time and embedded calender
+xfce-extra/xfce4-dict 0.7.2 0.8.0: A dict.org querying application and panel plug-in for the Xfce desktop
+xfce-extra/xfce4-diskperf-plugin 2.5.5 2.6.1: A panel plug-in for disk usage and performance statistics
 xfce-extra/xfce4-embed-plugin 1.6.0: A plug-in for embedding arbitrary application windows into the Xfce panel
-xfce-extra/xfce4-equake-plugin 1.3.8: Panel plug-in that displays information about earthquakes at regular intervals
+xfce-extra/xfce4-equake-plugin 1.3.8 1.3.8.1: Panel plug-in that displays information about earthquakes at regular intervals
 xfce-extra/xfce4-eyes-plugin 4.4.5: A panel plug-in which adds classic eyes to your every step
-xfce-extra/xfce4-fsguard-plugin 1.0.2: A filesystem guard plug-in for the Xfce panel
-xfce-extra/xfce4-genmon-plugin 3.4.0: Cyclically spawned executable output on the panel
+xfce-extra/xfce4-fsguard-plugin 1.0.2 1.1.0: A filesystem guard plug-in for the Xfce panel
+xfce-extra/xfce4-genmon-plugin 3.4.0 4.0.1: Cyclically spawned executable output on the panel
+xfce-extra/xfce4-gvfs-mount 0.0.4-r1: A panel plug-in to mount remote filesystems for the Xfce desktop environment
 xfce-extra/xfce4-hdaps 0.0.9: A plugin to indicate the status of the IBM Hard Drive Active Protection System
 xfce-extra/xfce4-kbdleds-plugin 0.0.6: A panel plug-in to show state of Caps, Num and Scroll Lock keys
 xfce-extra/xfce4-linelight-plugin 0.1.7: A simple locate based search plug-in for the Xfce panel
 xfce-extra/xfce4-mailwatch-plugin 1.2.0: An mail notification panel plug-in for the Xfce desktop environment
 xfce-extra/xfce4-messenger-plugin 0.1.0: A plugin that listens DBus messages and displays received messages
 xfce-extra/xfce4-modemlights-plugin 0.1.3.99: A panel plug-in intended to simplify establishing a ppp connection
-xfce-extra/xfce4-mount-plugin 0.6.7: An mount plug-in for the Xfce panel
-xfce-extra/xfce4-mpc-plugin 0.4.5: Music Player Daemon (mpd) panel plugin
-xfce-extra/xfce4-netload-plugin 1.2.4: A network load plug-in for the Xfce panel
+xfce-extra/xfce4-mount-plugin 0.6.7 1.1.2: An mount plug-in for the Xfce panel
+xfce-extra/xfce4-mpc-plugin 0.4.5 0.5.0: Music Player Daemon (mpd) panel plugin
+xfce-extra/xfce4-netload-plugin 1.2.4 1.3.1: A network load plug-in for the Xfce panel
 xfce-extra/xfce4-netspeed-plugin 0.3.1: A network transfer rate monitor for the panel
 xfce-extra/xfce4-notes-plugin 1.8.1: Xfce4 panel sticky notes plugin
-xfce-extra/xfce4-notifyd 0.2.4: Notification daemon for the Xfce desktop environment
+xfce-extra/xfce4-notifyd 0.2.4 0.4.1: Notification daemon for the Xfce desktop environment
 xfce-extra/xfce4-places-plugin 1.7.0: A panel plug-in to provide quick access to files, folders and removable media
 xfce-extra/xfce4-playercontrol-plugin 0.3.0: Audacious and MPD panel plugins
 xfce-extra/xfce4-power-manager 1.6.0: Power manager for the Xfce desktop environment

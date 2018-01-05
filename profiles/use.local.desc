@@ -1479,6 +1479,7 @@ dev-libs/libsodium:asm - Enables assembly implementations
 dev-libs/libsodium:urandom - Use /dev/urandom instead of /dev/random
 dev-libs/libspt:libtirpc - Build against net-libs/libtirpc for RPC support
 dev-libs/libtasn1:valgrind - Enable usage of dev-util/valgrind in debug
+dev-libs/libtermkey:demos - Install demos, which pulls in dev-libs/glib
 dev-libs/libverto:glib - Support event loops using dev-libs/glib
 dev-libs/libverto:libev - Support event loops using dev-libs/libev
 dev-libs/libverto:libevent - Support event loops using dev-libs/libevent
@@ -1590,6 +1591,7 @@ dev-lua/luarocks:curl - Uses net-misc/curl for fetching lua packages instead of 
 dev-lua/luarocks:openssl - Uses dev-libs/openssl for verifying lua packages instead of md5sum.
 dev-lua/luassert:luajit - Use dev-lang/luajit instead of dev-lang/lua
 dev-lua/luvit:bundled-libs - Use bundled versions of some libraries.
+dev-lua/mpack:luajit - Use dev-lang/luajit instead of dev-lang/lua
 dev-lua/say:luajit - Use dev-lang/luajit instead of dev-lang/lua
 dev-ml/cairo-ocaml:pango - Enable support for x11-libs/pango
 dev-ml/lablgtk:glade - Enable libglade bindings compilation.
