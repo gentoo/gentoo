@@ -29,7 +29,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 else
 	PATCHES=( "${FILESDIR}"/${P}-no-rpath.patch )
-	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~amd64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 	SRC_URI="https://github.com/google/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
