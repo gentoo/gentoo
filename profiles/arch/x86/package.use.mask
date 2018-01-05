@@ -3,6 +3,10 @@
 
 # This file requires >=portage-2.1.1
 
+# Thomas Deutschmann <whissi@gentoo.org> (05 Jan 2018)
+# Requires dev-python/neovim-remote, which is not keyworded on x86.
+app-editors/neovim remote
+
 # Michał Górny <mgorny@gentoo.org> (30 Dec 2017)
 # Moved from use.mask since it is a flag local to one package:
 # pbbuttonsd and macbook for KDE and pbuttonsd it
