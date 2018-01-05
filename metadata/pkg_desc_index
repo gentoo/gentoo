@@ -3195,7 +3195,7 @@ dev-libs/pugixml 1.8: Light-weight, simple, and fast XML parser for C++ with XPa
 dev-libs/purpose 1.2.1: Library for providing abstractions to get the developer's purposes fulfilled
 dev-libs/qcustomplot 1.3.2: Qt C++ widget for plotting and data visualization
 dev-libs/qjson 0.9.0: Library for mapping JSON data to QVariant objects
-dev-libs/qoauth 1.0.1 2.0.1_pre20160315-r2: Qt-based library for OAuth support
+dev-libs/qoauth 2.0.1_pre20160315-r2: Qt-based library for OAuth support
 dev-libs/qof 0.8.8-r1: A Query Object Framework
 dev-libs/qqwing 1.3.3 1.3.4: Sudoku puzzle generator and solver
 dev-libs/qtkeychain 0.7.0: Qt API for storing passwords securely
@@ -10612,7 +10612,7 @@ x11-libs/libXaw 1.0.12 1.0.13: X.Org Xaw library
 x11-libs/libXaw3d 1.6.2: X.Org Xaw3d library
 x11-libs/libXaw3dXft 1.6.2c: Xaw3dXft library
 x11-libs/libXcomposite 0.4.4-r1: X.Org Xcomposite library
-x11-libs/libXcursor 1.1.14 1.1.15: X.Org Xcursor library
+x11-libs/libXcursor 1.1.15: X.Org Xcursor library
 x11-libs/libXdamage 1.1.4-r1: X.Org Xdamage library
 x11-libs/libXdmcp 1.1.2-r1: X.Org X Display Manager Control Protocol library
 x11-libs/libXext 1.3.2 1.3.3: X.Org Xext library
