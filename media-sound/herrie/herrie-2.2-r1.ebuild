@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,10 +13,6 @@ LICENSE="BSD-2 GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="ao +alsa pulseaudio oss http modplug mp3 sndfile vorbis xspf unicode nls"
-APP_LINGUAS="ca da de es fi ga nl pl pt_BR ru sv tr vi zh_CN"
-for X in ${APP_LINGUAS}; do
-	IUSE="${IUSE} linguas_${X}"
-done
 REQUIRED_USE="|| ( ao alsa pulseaudio oss )"
 
 RDEPEND="sys-libs/ncurses:0=[unicode?]
