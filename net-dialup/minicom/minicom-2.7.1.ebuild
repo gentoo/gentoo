@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,11 +22,6 @@ RDEPEND="${COMMON_DEPEND}
 
 DOCS="AUTHORS ChangeLog NEWS README doc/minicom.FAQ"
 S="${WORKDIR}/${PN}-2.7" # 2.7.1 specific
-
-# Supported languages and translated documentation
-# Be sure all languages are prefixed with a single space!
-MY_AVAILABLE_LINGUAS=" cs da de es fi fr hu id ja nb pl pt_BR ro ru rw sv vi zh_TW"
-IUSE="${IUSE} ${MY_AVAILABLE_LINGUAS// / linguas_}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.3-gentoo-runscript.patch

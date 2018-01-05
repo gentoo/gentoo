@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -38,19 +38,6 @@ DEPEND="${RDEPEND}
 	dev-qt/qttest:5
 	dev-qt/qtconcurrent:5
 	nls? ( dev-qt/linguist-tools:5 )"
-
-LANGS=(
-	af ak am ar as ast az be bg bn bo br bs ca cs
-	cy da de el en en_CA en_GB en_US eo es et eu fa fi fil fr
-	ga gd gl gu he hi hr hu hy ia id is it ja ka kk kn ko ky
-	la lb lo lt lv mk ml mn mr ms mt nan nb nl nn oc pa pl pt pt_BR ro
-	ru se si sk sl sq sr sv sw ta te tg th tl tr tt uk uz vi
-	zh_CN zh_HK zh_TW zu
-	)
-
-for X in "${LANGS[@]}" ; do
-	IUSE+=" linguas_${X}"
-done
 
 src_prepare() {
 	if [[ -n ${LINGUAS} ]] ; then

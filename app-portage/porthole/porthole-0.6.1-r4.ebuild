@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -17,7 +17,6 @@ SLOT="0"
 KEYWORDS="amd64 arm ppc ~ppc64 sparc x86 ~x86-fbsd"
 IUSE="nls"
 LANGS="de pl ru vi it fr tr"
-for X in $LANGS; do IUSE="${IUSE} linguas_${X}"; done
 
 RDEPEND=">=sys-apps/portage-2.1[${PYTHON_USEDEP}]
 	dev-python/pygtk:2[${PYTHON_USEDEP}]

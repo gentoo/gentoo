@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -57,13 +57,6 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( dev-python/epydoc[${PYTHON_USEDEP}] )
 "
-
-APP_LINGUAS="ar as bg bn_IN bn br bs ca cs cy da de el en_GB es et fa fi fr gu
-he hi hr hu hy id is it ja ka kn ko lo lv mai mk ml mr ms nb nl nn or pa pl
-pt_BR pt ro ru si sk sl sr@latin sr sv ta te th tr uk vi zh_CN zh_TW"
-for X in ${APP_LINGUAS}; do
-	IUSE="${IUSE} linguas_${X}"
-done
 
 # Bug 471472
 MAKEOPTS+=" -j1"

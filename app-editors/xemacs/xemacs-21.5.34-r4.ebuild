@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # Note: xemacs currently does not work with position independent code
@@ -6,7 +6,6 @@
 
 EAPI=5
 
-WANT_AUTOCONF="2.5"
 inherit eutils flag-o-matic multilib xdg-utils
 
 DESCRIPTION="highly customizable open source text editor and application development system"

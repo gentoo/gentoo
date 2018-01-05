@@ -1,16 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
 inherit autotools eutils
 
-LANGUAGES="linguas_ar linguas_be linguas_bn_BD linguas_cs linguas_da linguas_de
-	linguas_es linguas_fr linguas_hu linguas_id linguas_it linguas_ka_GE linguas_pl
-	linguas_pt_BR linguas_ru linguas_tr linguas_uk linguas_vi linguas_zh_CN
-	linguas_zh_TW"
-
-IUSE="aria2 +curl gnutls gstreamer hide-temp-files libnotify nls ${LANGUAGES}"
+IUSE="aria2 +curl gnutls gstreamer hide-temp-files libnotify nls"
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-2

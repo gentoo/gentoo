@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,10 +15,6 @@ KEYWORDS="amd64 x86"
 IUSE=""
 
 LANGS="ar ca cs da de el es fr hu it nl pl pt pt_BR ro ru sv zh_CN zh_TW"
-
-for X in ${LANGS} ; do
-	IUSE="${IUSE} linguas_${X}"
-done
 
 RDEPEND="
 	dev-libs/glib:2

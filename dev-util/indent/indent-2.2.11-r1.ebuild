@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -20,14 +20,6 @@ DEPEND="
 RDEPEND="
 	nls? ( virtual/libintl )
 "
-
-INDENT_LINGUAS="
-	ca da de eo et fi fr gl hu it ja ko nl pl pt_BR ru sk sv tr zh_TW
-"
-
-for indent_lingua in ${INDENT_LINGUAS}; do
-	IUSE+=" linguas_${indent_lingua}"
-done
 
 src_prepare() {
 	# Fix bug #94837

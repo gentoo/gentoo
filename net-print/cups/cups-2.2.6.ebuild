@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -32,11 +32,6 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="acl dbus debug java kerberos lprng-compat pam
 	python selinux +ssl static-libs systemd +threads usb X xinetd zeroconf"
-
-LANGS="ca cs de es fr it ja ru"
-for X in ${LANGS} ; do
-	IUSE="${IUSE} +linguas_${X}"
-done
 
 CDEPEND="
 	app-text/libpaper
@@ -156,7 +151,6 @@ src_prepare() {
 multilib_src_configure() {
 	export DSOFLAGS="${LDFLAGS}"
 
-	einfo LANGS=\"${LANGS}\"
 	einfo LINGUAS=\"${LINGUAS}\"
 
 	local myeconfargs=()
