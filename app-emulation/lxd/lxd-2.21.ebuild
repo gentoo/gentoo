@@ -162,6 +162,8 @@ src_test() {
 		cd "${S}/src/${EGO_PN}" || die "Failed to change to deep src dir"
 
 		emake check
+	else
+		einfo "No tests to run for client-only builds"
 	fi
 }
 
