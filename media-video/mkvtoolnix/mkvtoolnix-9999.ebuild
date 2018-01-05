@@ -73,10 +73,10 @@ src_configure() {
 	if use qt5 ; then
 		# ac/qt5.m4 finds default Qt version set by qtchooser, bug #532600
 		myconf+=(
-			--with-moc=/usr/$(get_libdir)/qt5/bin/moc
-			--with-uic=/usr/$(get_libdir)/qt5/bin/uic
-			--with-rcc=/usr/$(get_libdir)/qt5/bin/rcc
-			--with-qmake=/usr/$(get_libdir)/qt5/bin/qmake
+			--with-moc=$(qt5_get_bindir)/moc
+			--with-uic=$(qt5_get_bindir)/uic
+			--with-rcc=$(qt5_get_bindir)/rcc
+			--with-qmake=$(qt5_get_bindir)/qmake
 		)
 	fi
 
