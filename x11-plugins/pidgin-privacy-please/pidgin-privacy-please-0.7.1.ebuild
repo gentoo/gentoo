@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=2
@@ -12,7 +12,6 @@ SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64"
-IUSE="linguas_de linguas_pl linguas_ru"
 
 RDEPEND="<net-im/pidgin-3[gtk]"
 DEPEND="${RDEPEND}
