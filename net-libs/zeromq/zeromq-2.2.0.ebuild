@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # NOTES:
 # 1- use flag 'pgm' (OpenPGM support) must be masked by profiles for ARM archs;
 
 EAPI=4
-WANT_AUTOCONF="2.5"
+
 inherit autotools
 
 DESCRIPTION="ZeroMQ is a brokerless messaging kernel with extremely high performance"
