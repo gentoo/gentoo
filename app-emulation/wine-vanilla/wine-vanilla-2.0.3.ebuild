@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -479,7 +479,7 @@ multilib_src_install_all() {
 	# respect LINGUAS when installing man pages, #469418
 	local l
 	for l in de fr pl; do
-		use linguas_${l} || rm -rf "${D%/}${MY_MANDIR}"/${l}*
+		has ${l} ${LINGUAS} || rm -rf "${D%/}${MY_MANDIR}"/${l}*
 	done
 
 	eval "${glob_state}"
