@@ -3,12 +3,12 @@ DEPEND=dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtdeclarative:5 dev-qt/qtgui
 DESCRIPTION=A full featured webcam capture application
 EAPI=6
 HOMEPAGE=https://webcamoid.github.io
-IUSE=alsa coreaudio ffmpeg gstreamer jack libuvc oss pulseaudio qtaudio v4lutils videoeffects debug headers libav v4l linguas_ca linguas_de linguas_el linguas_es linguas_et linguas_fr linguas_gl linguas_it linguas_ja linguas_kab linguas_ko linguas_nl linguas_pt linguas_ru linguas_uk linguas_zh_CN linguas_zh_TW
+IUSE=alsa coreaudio ffmpeg gstreamer jack libuvc oss pulseaudio qtaudio v4lutils videoeffects debug headers libav v4l
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
 RDEPEND=dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtdeclarative:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtopengl:5 dev-qt/qtquickcontrols:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 ffmpeg? ( libav? ( media-video/libav:= ) !libav? ( media-video/ffmpeg:= ) ) gstreamer? ( >=media-libs/gstreamer-1.6.0 ) jack? ( virtual/jack ) libuvc? ( media-libs/libuvc ) pulseaudio? ( media-sound/pulseaudio ) qtaudio? ( dev-qt/qtmultimedia:5 ) v4l? ( media-libs/libv4l )
 REQUIRED_USE=libav? ( ffmpeg ) v4lutils? ( v4l )
 SLOT=0
 SRC_URI=https://github.com/webcamoid/webcamoid/archive/8.1.0.tar.gz -> webcamoid-8.1.0.tar.gz
-_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	l10n	2c2e15383ba891d642f51896a7f0ecfe	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	l10n	07318ed5f26525a9d302ca87d20b2865	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=f0e2749892858ad1ff949ade5fe45777

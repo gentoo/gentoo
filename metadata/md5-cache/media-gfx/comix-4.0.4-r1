@@ -3,12 +3,12 @@ DEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/p
 DESCRIPTION=A GTK image viewer specifically designed to handle comic books
 EAPI=5
 HOMEPAGE=http://comix.sourceforge.net
-IUSE=rar linguas_ca linguas_cs linguas_es linguas_fr linguas_hr linguas_hu linguas_id linguas_ja linguas_ko linguas_pl linguas_pt_BR linguas_ru linguas_sv linguas_zh_CN linguas_zh_TW python_targets_python2_7
+IUSE=rar python_targets_python2_7
 KEYWORDS=amd64 ppc x86 ~x86-fbsd
 LICENSE=GPL-2
 RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] dev-python/pillow[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] >=dev-python/pygtk-2.12[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] rar? ( || ( app-arch/unrar app-arch/rar ) )
 REQUIRED_USE=python_targets_python2_7
 SLOT=0
 SRC_URI=mirror://sourceforge/comix/comix-4.0.4.tar.gz
-_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	fdo-mime	995b19d3f30e956b4e1bc5a91fdc4ea7	gnome2-utils	4d211d7614f303710fca59db6ec12c88	l10n	2c2e15383ba891d642f51896a7f0ecfe	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	317a2557b4d7319a7418225f65accf77	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	fdo-mime	995b19d3f30e956b4e1bc5a91fdc4ea7	gnome2-utils	4d211d7614f303710fca59db6ec12c88	l10n	07318ed5f26525a9d302ca87d20b2865	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	317a2557b4d7319a7418225f65accf77	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
 _md5_=b6cfbe1247129ec7c1fcb6f0dd0e61bb

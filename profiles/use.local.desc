@@ -4534,9 +4534,6 @@ net-p2p/bitcoind:upnp - Enable Universal Plug and Play
 net-p2p/bitcoind:wallet - Enable wallet support
 net-p2p/bitcoind:zeromq - Report blocks and transactions via zeromq
 net-p2p/deluge:console - Enable default console UI
-net-p2p/deluge:linguas_iu - Inuktitut locale
-net-p2p/deluge:linguas_nap - Neapolitan locale
-net-p2p/deluge:linguas_pms - Piemontese locale
 net-p2p/deluge:webinterface - Install dependencies needed for the web interface
 net-p2p/ktorrent:bwscheduler - Schedule upload and download limits over a period of a week
 net-p2p/ktorrent:downloadorder - Specify the download order of a multi-file torrent
