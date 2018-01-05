@@ -11253,26 +11253,26 @@ xfce-extra/xfce4-notes-plugin 1.8.1: Xfce4 panel sticky notes plugin
 xfce-extra/xfce4-notifyd 0.2.4 0.4.1: Notification daemon for the Xfce desktop environment
 xfce-extra/xfce4-places-plugin 1.7.0: A panel plug-in to provide quick access to files, folders and removable media
 xfce-extra/xfce4-playercontrol-plugin 0.3.0: Audacious and MPD panel plugins
-xfce-extra/xfce4-power-manager 1.6.0: Power manager for the Xfce desktop environment
-xfce-extra/xfce4-pulseaudio-plugin 0.2.4: A panel plug-in for PulseAudio volume control
+xfce-extra/xfce4-power-manager 1.6.0 1.6.1: Power manager for the Xfce desktop environment
+xfce-extra/xfce4-pulseaudio-plugin 0.2.4 0.3.4: A panel plug-in for PulseAudio volume control
 xfce-extra/xfce4-quicklauncher-plugin 1.9.4-r1: A quicklauncher plug-in for the Xfce panel
 xfce-extra/xfce4-radio-plugin 0.5.1-r1: V4L radio device control plug-in for the Xfce desktop environment
 xfce-extra/xfce4-screenshooter 1.8.2: Xfce4 screenshooter application and panel plugin
 xfce-extra/xfce4-sensors-plugin 1.2.6: A panel plug-in for different sensors using acpi, lm_sensors and hddtemp
-xfce-extra/xfce4-smartbookmark-plugin 0.4.6: Smart bookmark plug-in for the Xfce desktop environment
+xfce-extra/xfce4-smartbookmark-plugin 0.4.6 0.5.0: Smart bookmark plug-in for the Xfce desktop environment
 xfce-extra/xfce4-soundmenu-plugin 0.7.0: A panel plug-in to control MPRIS2 compatible players like Pragha
-xfce-extra/xfce4-systemload-plugin 1.1.2: System load plug-in for Xfce panel
-xfce-extra/xfce4-taskmanager 1.0.1 1.1.0: Task Manager
+xfce-extra/xfce4-systemload-plugin 1.1.2 1.2.1: System load plug-in for Xfce panel
+xfce-extra/xfce4-taskmanager 1.0.1 1.1.0 1.2.0: Easy to use task manager
 xfce-extra/xfce4-time-out-plugin 1.0.2: A panel plug-in to take periodical breaks from the computer
 xfce-extra/xfce4-timer-plugin 1.6.0: A simple timer plug-in for the Xfce desktop environment
 xfce-extra/xfce4-vala 4.10.3-r3: Vala bindings for the Xfce desktop environment
 xfce-extra/xfce4-verve-plugin 1.1.0: A comfortable command line plugin for the Xfce panel
-xfce-extra/xfce4-volumed-pulse 0.2.0: Daemon to control volume up/down and mute keys for pulseaudio
-xfce-extra/xfce4-wavelan-plugin 0.5.12: A panel plug-in to display wireless interface statistics
-xfce-extra/xfce4-weather-plugin 0.8.8: A weather plug-in for the Xfce desktop environment
-xfce-extra/xfce4-whiskermenu-plugin 1.6.0: Alternate application launcher for Xfce
+xfce-extra/xfce4-volumed-pulse 0.2.0 0.2.2: Daemon to control volume up/down and mute keys for pulseaudio
+xfce-extra/xfce4-wavelan-plugin 0.5.12 0.6.0: A panel plug-in to display wireless interface statistics
+xfce-extra/xfce4-weather-plugin 0.8.8 0.8.10: A weather plug-in for the Xfce desktop environment
+xfce-extra/xfce4-whiskermenu-plugin 1.6.0 1.7.5: Alternate application launcher for Xfce
 xfce-extra/xfce4-windowck-plugin 0.2.4: Xfce plugin puts the maximized window title and windows buttons on the panel
 xfce-extra/xfce4-wmdock-plugin 0.6.0: a compatibility layer for running WindowMaker dockapps on Xfce4
-xfce-extra/xfce4-xkb-plugin 0.7.1-r1: XKB layout switching panel plug-in for the Xfce desktop environment
+xfce-extra/xfce4-xkb-plugin 0.7.1-r1 0.8.1: XKB layout switching panel plug-in for the Xfce desktop environment
 xfce-extra/xfdashboard 0.4.0: Maybe a GNOME shell like dashboard for the Xfce desktop environment
 xfce-extra/xfswitch-plugin 0.0.1-r2: A panel plug-in for user switching (using lightdm or gdm or ldm)
