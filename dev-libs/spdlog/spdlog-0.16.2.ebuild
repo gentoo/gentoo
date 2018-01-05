@@ -20,8 +20,12 @@ LICENSE="MIT"
 SLOT="0"
 IUSE="test"
 
-DEPEND=""
+DEPEND="
+	dev-libs/libfmt
+"
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}/${PN}-unbundle-fmt.patch" )
 
 src_configure() {
 	local mycmakeargs=(
