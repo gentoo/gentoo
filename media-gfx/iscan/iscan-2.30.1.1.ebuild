@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -41,9 +41,6 @@ LICENSE="GPL-2 AVASYS"
 SLOT="0"
 
 IUSE="X doc gimp jpeg png tiff l10n_ja"
-IUSE_LINGUAS="ar de es fr it ja ko nl pt zh_CN zh_TW"
-
-for X in ${IUSE_LINGUAS}; do IUSE="${IUSE} linguas_${X}"; done
 
 REQUIRED_USE="gimp? ( X )
 	jpeg? ( X )
