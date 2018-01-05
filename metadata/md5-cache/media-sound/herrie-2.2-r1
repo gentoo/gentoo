@@ -3,7 +3,7 @@ DEPEND=sys-libs/ncurses:0=[unicode?] >=dev-libs/glib-2:2 ao? ( media-libs/libao 
 DESCRIPTION=Herrie is a command line music player
 EAPI=6
 HOMEPAGE=http://herrie.info/
-IUSE=ao +alsa pulseaudio oss http modplug mp3 sndfile vorbis xspf unicode nls linguas_ca linguas_da linguas_de linguas_es linguas_fi linguas_ga linguas_nl linguas_pl linguas_pt_BR linguas_ru linguas_sv linguas_tr linguas_vi linguas_zh_CN
+IUSE=ao +alsa pulseaudio oss http modplug mp3 sndfile vorbis xspf unicode nls
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=BSD-2 GPL-2
 RDEPEND=sys-libs/ncurses:0=[unicode?] >=dev-libs/glib-2:2 ao? ( media-libs/libao ) alsa? ( media-libs/alsa-lib ) http? ( net-misc/curl ) modplug? ( media-libs/libmodplug ) mp3? ( media-libs/libmad media-libs/libid3tag ) pulseaudio? ( media-sound/pulseaudio ) sndfile? ( media-libs/libsndfile ) vorbis? ( media-libs/libvorbis ) xspf? ( >=media-libs/libxspf-1.2 )
@@ -11,4 +11,4 @@ REQUIRED_USE=|| ( ao alsa pulseaudio oss )
 SLOT=0
 SRC_URI=http://herrie.info/distfiles/herrie-2.2.tar.bz2
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=45aa359723a4716f4a9b051df8875437
+_md5_=ebcaa6e5cd2496e1ea37643f2e0d4661

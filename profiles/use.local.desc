@@ -3844,11 +3844,6 @@ net-ftp/proftpd:exec - Enable support for the mod_exec module. WARNING: this cou
 net-ftp/proftpd:ident - Enable support for the mod_ident module
 net-ftp/proftpd:ifsession - Enable support for the ifsession module
 net-ftp/proftpd:ifversion - Enable support for the mod_ifversion module
-net-ftp/proftpd:linguas_bg_BG - Language support for bg_BG
-net-ftp/proftpd:linguas_fr_FR - Language support for fr_FR
-net-ftp/proftpd:linguas_it_IT - Language support for it_IT
-net-ftp/proftpd:linguas_ja_JP - Language support for ja_JP
-net-ftp/proftpd:linguas_ru_RU - Language support for ru_RU
 net-ftp/proftpd:log_forensic - Enable support for the mod_log_forensic module, log only suspicious actions.
 net-ftp/proftpd:memcache - Enable support for the mod_memcache module, for using memcached servers
 net-ftp/proftpd:msg - Enable support for the mod_msg module, allows system users to send messages to connected clients via the ftpdctl program.

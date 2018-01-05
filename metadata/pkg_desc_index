@@ -8939,7 +8939,7 @@ net-p2p/gtk-gnutella 1.1.11: A GTK+ Gnutella client
 net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta files
 net-p2p/ktorrent 5.1.0: Powerful BitTorrent client based on KDE Frameworks
 net-p2p/mktorrent 1.0-r1: Simple command line utility to create BitTorrent metainfo files
-net-p2p/mldonkey 3.1.5-r1: A multi-network P2P application written in Ocaml, with its own Gtk GUI, web and telnet interface
+net-p2p/mldonkey 3.1.5-r1: Multi-network P2P application written in Ocaml, with Gtk, web & telnet interface
 net-p2p/ncdc 1.19.1: ncurses directconnect client
 net-p2p/nicotine+ 1.2.16-r1: A fork of nicotine, a Soulseek client in Python
 net-p2p/pybitmessage 0.4.2: P2P communications protocol
