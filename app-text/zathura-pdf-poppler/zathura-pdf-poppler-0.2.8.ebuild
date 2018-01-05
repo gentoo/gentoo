@@ -32,7 +32,6 @@ src_configure() {
 		CC="$(tc-getCC)"
 		LD="$(tc-getLD)"
 		VERBOSE=1
-		DESTDIR="${D}"
 	)
 }
 
@@ -41,6 +40,6 @@ src_compile() {
 }
 
 src_install() {
-	emake "${myzathuraconf[@]}" install
+	emake "${myzathuraconf[@]}" DESTDIR="${ED%/}" install
 	dodoc AUTHORS
 }
