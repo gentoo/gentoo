@@ -706,16 +706,6 @@ app-emulation/wine
 # Masked for removal on 2017-12-30
 dev-tex/isotope
 
-# Matt Turner <mattst88@gentoo.org> (25 Nov 2017)
-# Unmaintained upstream. Masked for removal in 30 days.
-# Bug #606132.
-x11-drivers/xf86-input-acecad
-x11-drivers/xf86-input-aiptek
-x11-drivers/xf86-input-fpit
-x11-drivers/xf86-input-hyperpen
-x11-drivers/xf86-input-mutouch
-x11-drivers/xf86-input-pentouch
-
 # Michał Górny <mgorny@gentoo.org> (25 Nov 2017)
 # Testing branch GTK+3 release. Changes API, breaks xfce-base/xfdesktop.
 # Masked until the latter sees a new release.
@@ -728,12 +718,6 @@ x11-drivers/xf86-input-pentouch
 # dev-texlive/texlive-latexextra
 # Masked for removal on 2017-12-30
 dev-tex/notoccite
-
-# Matt Turner <mattst88@gentoo.org> (23 Nov 2017)
-# The modesetting driver is part of the xorg-server package since version 1.17.
-# The separate xf86-video-modesetting package is no longer needed.
-# Bug #606132.
-x11-drivers/xf86-video-modesetting
 
 # Andreas Sturmlechner <asturm@gentoo.org> (16 Nov 2017)
 # Qt4WebKit is ancient and full of security holes.

@@ -20,7 +20,7 @@ RDEPEND="dev-libs/libnl:=
 	net-libs/libnfnetlink
 	sys-apps/iproute2
 	dbus? ( sys-apps/dbus )
-	json? ( dev-libs/json-c )
+	json? ( dev-libs/json-c:= )
 	snmp? ( net-analyzer/net-snmp )"
 DEPEND="${RDEPEND}
 	>=sys-kernel/linux-headers-4.4"
