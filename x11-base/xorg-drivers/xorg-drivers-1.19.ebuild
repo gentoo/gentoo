@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,18 +12,12 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux"
 
 IUSE_INPUT_DEVICES="
-	input_devices_acecad
-	input_devices_aiptek
 	input_devices_elographics
 	input_devices_evdev
-	input_devices_fpit
-	input_devices_hyperpen
 	input_devices_joystick
 	input_devices_keyboard
 	input_devices_libinput
 	input_devices_mouse
-	input_devices_mutouch
-	input_devices_penmount
 	input_devices_tslib
 	input_devices_vmmouse
 	input_devices_void
@@ -89,18 +83,12 @@ IUSE_VIDEO_CARDS="
 IUSE="${IUSE_VIDEO_CARDS} ${IUSE_INPUT_DEVICES}"
 
 PDEPEND="
-	input_devices_acecad?      ( x11-drivers/xf86-input-acecad )
-	input_devices_aiptek?      ( x11-drivers/xf86-input-aiptek )
 	input_devices_elographics? ( x11-drivers/xf86-input-elographics )
 	input_devices_evdev?       ( x11-drivers/xf86-input-evdev )
-	input_devices_fpit?        ( x11-drivers/xf86-input-fpit )
-	input_devices_hyperpen?    ( x11-drivers/xf86-input-hyperpen )
 	input_devices_joystick?    ( x11-drivers/xf86-input-joystick )
 	input_devices_keyboard?    ( x11-drivers/xf86-input-keyboard )
 	input_devices_libinput?    ( x11-drivers/xf86-input-libinput )
 	input_devices_mouse?       ( x11-drivers/xf86-input-mouse )
-	input_devices_mutouch?     ( x11-drivers/xf86-input-mutouch )
-	input_devices_penmount?    ( x11-drivers/xf86-input-penmount )
 	input_devices_tslib?       ( x11-drivers/xf86-input-tslib )
 	input_devices_vmmouse?     ( x11-drivers/xf86-input-vmmouse )
 	input_devices_void?        ( x11-drivers/xf86-input-void )
