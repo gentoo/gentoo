@@ -52,8 +52,6 @@ DEPEND="${RDEPEND}
 	qt5? ( app-text/cmark )
 "
 
-DOCS="AUTHORS NEWS.md README.md"
-
 pkg_pretend() {
 	# https://bugs.gentoo.org/419257
 	local ver=4.6
