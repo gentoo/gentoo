@@ -74,11 +74,6 @@ net-nds/ypserv
 net-nds/ypbind
 
 # Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
-# Unmaintained, no server still usable for this software (#626676). Removal
-# in a month.
-app-text/antixls
-
-# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
 # Upstream is died, no server still usable for this (#626770). Removal in a
 # month.
 games-arcade/bloboats
