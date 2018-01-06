@@ -186,7 +186,6 @@ linguas_af_ZA - Afrikaans locale for South Africa
 linguas_am - Amharic locale
 linguas_ar - Arabic locale
 linguas_ar_SA - Arabic locale for Saudi-Arabia
-linguas_as - Assamese locale
 linguas_ast - Asturian locale
 linguas_az - Azeri locale
 linguas_be - Belarusian locale
@@ -194,17 +193,13 @@ linguas_be_BY - Belarusian locale
 linguas_bg - Bulgarian locale
 linguas_bg_BG - Bulgarian locale
 linguas_bn - Bengali locale
-linguas_bn_IN - Bengali locale for India
 linguas_br - Breton locale
 linguas_bs - Bosnian locale
 linguas_ca - Catalan locale
 linguas_ca@valencia - Catalan locale (Valencia)
 linguas_ca_ES - Catalan locale for Spain
-linguas_ca_XV - Asturian and Catalan locale (Valencia)
-linguas_cmn - Chinese (Mandarin) locale
 linguas_cs - Czech locale
 linguas_cs_CZ - Czech locale for Czech Republic
-linguas_csb - Kashubian locale
 linguas_cy - Welsh locale
 linguas_cy_GB - Welsh locale
 linguas_da - Danish locale
@@ -213,7 +208,6 @@ linguas_de - German locale
 linguas_de@1901 - German locale with old spelling
 linguas_de_CH - German locale for Switzerland
 linguas_de_DE - German locale for Germany
-linguas_dz - Dzongkha locale
 linguas_el - Greek locale
 linguas_el_GR - Greek locale
 linguas_en - English locale
@@ -246,10 +240,8 @@ linguas_fr - French locale
 linguas_fr_CA - French locale for Canada
 linguas_fr_FR - French locale for France
 linguas_fy - Frisian locale
-linguas_ga - Irish locale
 linguas_gd - Gaelic locale
 linguas_gl - Galician locale
-linguas_gu - Gujarati locale
 linguas_gu_IN - Gujarati locale for India
 linguas_he - Hebrew locale
 linguas_he_IL - Hebrew locale for Israel
@@ -272,8 +264,6 @@ linguas_ka - Georgian locale
 linguas_kab - Kabyle locale
 linguas_kk - Kazakh locale
 linguas_kk_KZ - Kazakh (Kazakhstan) locale
-linguas_km - Khmer locale
-linguas_kn - Kannada locale
 linguas_kn_IN - Kannada locale for India
 linguas_ko - Korean locale
 linguas_ko_KR - Korean locale
@@ -291,14 +281,11 @@ linguas_mk - Macedonian locale
 linguas_mk_MK - Macedonian locale for Macedonia
 linguas_ml - Malayalam locale
 linguas_mn - Mongolian locale
-linguas_mr - Marathi locale
 linguas_ms - Malay locale
 linguas_ms_MY - Malay locale for Malaysia
-linguas_my - Burmese locale
 linguas_nan - Min Nan locale
 linguas_nb - Norwegian (Bokmal) locale
 linguas_nb_NO - Norwegian (Bokmal) locale for Norway
-linguas_nds - Low Saxon locale
 linguas_ne - Nepali locale
 linguas_nl - Dutch locale
 linguas_nl_NL - Dutch locale for the Netherlands
@@ -306,8 +293,6 @@ linguas_nn - Nynorsk locale
 linguas_nn_NO - Nynorsk locale for Norway
 linguas_no - Norwegian locale
 linguas_no_NO - Norwegian locale for Norway
-linguas_oc - Occitan locale
-linguas_or - Oriya locale
 linguas_pa - Punjabi locale for India
 linguas_pam - Kapampangan locale
 linguas_pl - Polish locale
@@ -319,7 +304,6 @@ linguas_ro - Romanian locale
 linguas_ro_RO - Romanian locale for Romania
 linguas_ru - Russian locale
 linguas_ru_RU - Russian locale for Russia
-linguas_rw - Kinyarwanda locale
 linguas_sa - Sanskrit locale
 linguas_si - Sinhala locale
 linguas_sk - Slovak locale
@@ -329,7 +313,6 @@ linguas_sl_SI - Slovenian locale
 linguas_so - Somali locale
 linguas_sq - Albanian locale
 linguas_sr - Serbian locale
-linguas_sr@Latn - Serbian (latin) locale
 linguas_sr@latin - Serbian (latin) locale
 linguas_sv - Swedish locale
 linguas_sv_SE - Swedish locale for Sweden
@@ -342,7 +325,6 @@ linguas_th_TH - Thai locale Thailand
 linguas_tl - Tagalog locale
 linguas_tr - Turkish locale
 linguas_tr_TR - Turkish locale for Turkey
-linguas_tt - Tatar locale
 linguas_ug - Uighur locale
 linguas_uk - Ukrainian locale
 linguas_uk_UA - Ukrainian locale for Ukraine
@@ -352,8 +334,6 @@ linguas_uz - Uzbek locale
 linguas_uz@Cyrl - Uzbek (Cyrillic) locale
 linguas_vi - Vietnamese locale
 linguas_vi_VN - Vietnamese locale
-linguas_xh - Xhosa locale
-linguas_yi - Yiddish locale
 linguas_zh - Chinese locale
 linguas_zh_CN - Chinese locale for Peoples Republic of China
 linguas_zh_HK - Chinese locale for Hong Kong

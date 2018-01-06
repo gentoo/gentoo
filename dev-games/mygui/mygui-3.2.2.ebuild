@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,7 +16,7 @@ SRC_URI="https://github.com/MyGUI/mygui/archive/${MY_P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="debug doc +ogre -opengl plugins samples static-libs test tools linguas_ru"
+IUSE="debug doc +ogre -opengl plugins samples static-libs test tools l10n_ru"
 REQUIRED_USE="ogre? ( !opengl )
 	opengl? ( !ogre )"
 
@@ -119,7 +119,7 @@ src_install() {
 	if use doc ; then
 		dohtml -r "${CMAKE_BUILD_DIR}"/Docs/html/*
 
-		if use linguas_ru ; then
+		if use l10n_ru ; then
 			docompress -x /usr/share/doc/${PF}/Papers
 			dodoc -r Docs/Papers
 		fi
