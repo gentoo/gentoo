@@ -15,7 +15,7 @@
 		<remote-id type="github">MyGUI/mygui</remote-id>
 	</upstream>
 	<use>
-		<flag name="linguas_ru">Install some additional russian docs if 'doc' useflag enabled</flag>
+		<flag name="l10n_ru">Install some additional russian docs if 'doc' useflag enabled</flag>
 		<flag name="opengl">Use the opengl render subsystem. (cannot combine with ogre)</flag>
 		<flag name="ogre">Use the ogre render subsystem. (cannot combine with opengl)</flag>
 		<flag name="plugins">Build MyGUI plugins</flag>
