@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # EAPI Version
@@ -7,7 +7,7 @@ EAPI="5"
 #//------------------------------------------------------------------------------
 
 # Version Data
-GITDATE="20170513"			# Date of diff between kernel.org and lmo GIT
+GITDATE="20161216"			# Date of diff between kernel.org and lmo GIT
 GENPATCHREV="1"				# Tarball revision for patches
 
 # Directories
@@ -19,7 +19,7 @@ K_SECURITY_UNSUPPORTED="yes"
 K_NOUSENAME="yes"
 K_NOSETEXTRAVERSION="yes"
 K_NOUSEPR="yes"
-K_BASE_VER="4.10"
+K_BASE_VER="4.8"
 K_FROM_GIT="yes"
 ETYPE="sources"
 
@@ -338,7 +338,7 @@ src_prepare() {
 
 	# Now go into the kernel source and patch it.
 	cd "${S}"
-	epatch -p1 "${WORKDIR}/${psym}"/*.patch
+	epatch "${WORKDIR}/${psym}"/*.patch
 }
 
 #//------------------------------------------------------------------------------
