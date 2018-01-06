@@ -13,7 +13,7 @@ SRC_URI="amd64? ( linuxx64-${PV}.tar.gz )"
 LICENSE="icaclient"
 SLOT="0"
 KEYWORDS="-* amd64"
-IUSE="gstreamer010 nsplugin linguas_de linguas_es linguas_fr linguas_ja linguas_zh_CN"
+IUSE="gstreamer010 nsplugin l10n_de l10n_es l10n_fr l10n_ja l10n_zh_CN"
 RESTRICT="mirror strip userpriv fetch"
 
 ICAROOT="/opt/Citrix/ICAClient"
@@ -134,11 +134,11 @@ src_install() {
 	doins config/usertemplate/*
 
 	LANGCODES="en"
-	use linguas_de && LANGCODES+=" de"
-	use linguas_es && LANGCODES+=" es"
-	use linguas_fr && LANGCODES+=" fr"
-	use linguas_ja && LANGCODES+=" ja"
-	use linguas_zh_CN && LANGCODES+=" zh_CN"
+	use l10n_de && LANGCODES+=" de"
+	use l10n_es && LANGCODES+=" es"
+	use l10n_fr && LANGCODES+=" fr"
+	use l10n_ja && LANGCODES+=" ja"
+	use l10n_zh_CN && LANGCODES+=" zh_CN"
 
 	for lang in ${LANGCODES} ; do
 		insinto "${ICAROOT}"/nls/${lang}
