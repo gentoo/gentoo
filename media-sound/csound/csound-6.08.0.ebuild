@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -26,7 +26,6 @@ portaudio portmidi pulseaudio python samples score static-libs stk tcl test
 +threads +utils vim-syntax websocket"
 
 LANGS=" de en_US es_CO fr it ro ru"
-IUSE+="${LANGS// / linguas_}"
 
 REQUIRED_USE="
 	csoundac? ( || ( lua python ) )
@@ -112,7 +111,7 @@ src_prepare() {
 
 	local lang
 	for lang in ${LANGS} ; do
-		if ! use linguas_${lang} ; then
+		if ! has ${lang} ${LINGUAS-${lang}} ; then
 			sed -i "/compile_po(${lang}/d" po/CMakeLists.txt || die
 		fi
 	done
