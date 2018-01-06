@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,14 +19,7 @@ SRC_URI="ftp://ftp.lyx.org/pub/lyx/stable/2.2.x/${MY_P}.tar.xz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x64-macos ~x86-macos"
-IUSE="aspell cups debug docbook dia dot enchant gnumeric html +hunspell +latex monolithic-build nls +qt5 rcs rtf subversion svg"
-
-LANGS="ar ca cs da de el en es eu fi fr gl he hu ia id it ja nb nn pl pt_BR pt_PT ro ru sk sr sv tr uk zh_CN zh_TW"
-
-for X in ${LANGS}; do
-	IUSE="${IUSE} linguas_${X}"
-done
-
+IUSE="aspell cups debug docbook dia dot enchant gnumeric html +hunspell +latex monolithic-build nls +qt5 rcs rtf subversion svg l10n_he"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
@@ -64,7 +57,7 @@ RDEPEND="${PYTHON_DEPS}
 			dev-tex/tth
 		)
 	)
-	linguas_he? ( dev-tex/culmus-latex )
+	l10n_he? ( dev-tex/culmus-latex )
 	!qt5? (
 		dev-qt/qtcore:4
 		dev-qt/qtgui:4
@@ -130,7 +123,7 @@ src_configure() {
 src_install() {
 	default
 
-	if use linguas_he ; then
+	if use l10n_he ; then
 		echo "\bind_file cua" > "${T}"/hebrew.bind
 		echo "\bind \"F12\" \"language hebrew\"" >> "${T}"/hebrew.bind
 
@@ -173,7 +166,7 @@ pkg_postinst() {
 	fi
 
 	# instructions for RTL support. See also bug 168331.
-	if use linguas_he || use linguas_ar; then
+	if use l10n_he || has he ${LINGUAS} || has ar ${LINGUAS} ; then
 		elog
 		elog "Enabling RTL support in LyX:"
 		elog "If you intend to use a RTL language (such as Hebrew or Arabic)"
