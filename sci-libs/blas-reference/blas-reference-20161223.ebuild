@@ -17,9 +17,10 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="doc"
 
-DEPEND="app-eselect/eselect-blas"
-RDEPEND="${DEPEND}
-	doc? ( app-doc/blas-docs )
+RDEPEND="
+	app-eselect/eselect-blas
+	doc? ( app-doc/blas-docs )"
+DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 S="${WORKDIR}/${LPN}-${LPV}"
