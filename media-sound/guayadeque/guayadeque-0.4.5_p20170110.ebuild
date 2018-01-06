@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -50,10 +50,6 @@ DEPEND="${RDEPEND}
 
 # echo $(cat po/CMakeLists.txt | grep ADD_SUBDIRECTORY | sed 's#ADD_SUBDIRECTORY( \(\w\+\) )#\1#')
 LANGS=( bg ca_ES cs de el es fr hr hu is it ja nb nl pl pt pt_BR ru sk sr sr@latin sv th tr uk )
-for l in "${LANGS[@]}"; do
-	IUSE+=" linguas_${l}"
-done
-unset l
 
 pkg_setup() {
 	setup-wxwidgets
@@ -69,7 +65,7 @@ src_prepare() {
 	cd po || die
 	local l
 	for l in "${LANGS[@]}"; do
-		! use linguas_${l} && cmake_comment_add_subdirectory ${l}
+		! has ${l} ${LINGUAS-${l}} && cmake_comment_add_subdirectory ${l}
 	done
 }
 
