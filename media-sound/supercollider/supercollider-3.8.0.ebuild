@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -56,6 +56,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-no-opengl.patch
 	"${FILESDIR}"/${P}-no-qtsensors.patch
 	"${FILESDIR}"/${P}-no-qtpositioning.patch
+	"${FILESDIR}"/${P}-multilib.patch
 )
 
 src_configure() {
