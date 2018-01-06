@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,10 +14,6 @@ IUSE="+rememberthemilk +sqlite hiveminder debug"
 
 LANGS="ca ca@valencia cs da de el en_GB eo es et fi fr gl hu id it ja lv nb nds nl pl
 	pt pt_BR ro ru sl sr sr@latin sv th tr zh_CN zh_TW"
-
-for lang in ${LANGS}; do
-	IUSE+=" linguas_${lang}"
-done
 
 REQUIRED_USE="|| ( rememberthemilk sqlite hiveminder )"
 
@@ -41,12 +37,15 @@ src_configure() {
 src_install() {
 	default
 	mv_command="cp -pPR" mono_multilib_comply
-	einfo "Cleaning up locales..."
-	for lang in ${LANGS}; do
-		use "linguas_${lang}" && {
-			einfo "- keeping ${lang}"
-			continue
-		}
-		rm -Rf "${D}"/usr/share/locale/"${lang}" || die
-	done
+
+	if [[ -n ${LINGUAS+set} ]]; then
+		einfo "Cleaning up locales..."
+		for lang in ${LANGS}; do
+			if has ${lang} ${LINGUAS}; then
+				einfo "- keeping ${lang}"
+			else
+				rm -Rf "${D}"/usr/share/locale/"${lang}" || die
+			fi
+		done
+	fi
 }
