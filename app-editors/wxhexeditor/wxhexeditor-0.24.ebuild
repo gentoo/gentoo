@@ -30,8 +30,11 @@ PATCHES=(
 )
 
 pkg_pretend() {
-	tc-has-openmp \
-		|| die "${PN} uses OpenMP libraries. Please use an OpenMP-capable compiler."
+	[[ ${MERGE_TYPE} != binary ]] && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && tc-check-openmp
 }
 
 src_prepare() {
