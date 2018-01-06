@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cmake-utils readme.gentoo-r1
+inherit cmake-utils readme.gentoo-r1 xdg-utils
 
 DESCRIPTION="An environment and a programming language for real time audio synthesis."
 HOMEPAGE="https://supercollider.github.io/"
@@ -108,4 +108,12 @@ pkg_postinst() {
 	einfo "successful and get you started with using SuperCollider is to take"
 	einfo "a look through ${EROOT%/}/usr/share/doc/${PF}/README.md.bz2"
 	einfo
+
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
 }
