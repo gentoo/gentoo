@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (6 Jan 2018)
+# Please unmask after newer dietlibc is finally stable on ia64
+sys-fs/dmraid dietlibc
+
 # Hans de Graaff <graaff@gentoo.org> (16 Apr 2016)
 # Mask tests on thin-provisioning-tools since the required
 # packages are no longer stable, bug 610088
