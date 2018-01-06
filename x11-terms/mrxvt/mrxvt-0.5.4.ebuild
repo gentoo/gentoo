@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -12,8 +12,8 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="alpha amd64 ~mips ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
-LINGUAS_IUSE="linguas_el linguas_ja linguas_ko linguas_th linguas_zh_CN linguas_zh_TW"
-IUSE="debug png jpeg session truetype menubar utempter xpm ${LINGUAS_IUSE}"
+L10N_IUSE="l10n_el l10n_ja l10n_ko l10n_th l10n_zh-CN l10n_zh-TW"
+IUSE="debug png jpeg session truetype menubar utempter xpm ${L10N_IUSE}"
 
 RDEPEND="png? ( media-libs/libpng )
 	utempter? ( sys-libs/libutempter )
@@ -46,24 +46,24 @@ src_configure() {
 	local myconf
 
 	# if you want to pass any other flags, use EXTRA_ECONF.
-	if use linguas_el ; then
+	if use l10n_el ; then
 		myconf="${myconf} --enable-greek"
 	fi
-	if use linguas_ja ; then
+	if use l10n_ja ; then
 		# --with-encoding=sjis
 		myconf="${myconf} --enable-kanji --with-encoding=eucj"
 	fi
-	if use linguas_ko ; then
+	if use l10n_ko ; then
 		myconf="${myconf} --enable-kr --with-encoding=kr"
 	fi
-	if use linguas_th ; then
+	if use l10n_th ; then
 		myconf="${myconf} --enable-thai"
 	fi
-	if use linguas_zh_CN ; then
+	if use l10n_zh-CN ; then
 		# --with-encoding=gbk
 		myconf="${myconf} --enable-gb --with-encoding=gb"
 	fi
-	if use linguas_zh_TW ; then
+	if use l10n_zh-TW ; then
 		myconf="${myconf} --enable-big5 --with-encoding=big5"
 	fi
 

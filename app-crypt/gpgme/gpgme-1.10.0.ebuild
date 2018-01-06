@@ -44,8 +44,24 @@ do_python() {
 	fi
 }
 
+pkg_pretend() {
+	local MAX_WORKDIR=66
+
+	[[ "${#WORKDIR}" -le "${MAX_WORKDIR}" ]] ||
+		die "Cannot build package as WORKDIR '${WORKDIR}' is longer than ${MAX_WORKDIR} which will fail build"
+}
+
 pkg_setup() {
 	addpredict /run/user/$(id -u)/gnupg
+}
+
+src_prepare() {
+	default
+
+	# Make best effort to allow longer PORTAGE_TMPDIR
+	# as usock limitation fails build/tests
+	ln -s "${P}" "${WORKDIR}/b"
+	S="${WORKDIR}/b"
 }
 
 src_configure() {

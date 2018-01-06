@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 MY_P=${PN}-src-${PV}
-inherit eutils multilib toolchain-funcs
+inherit eutils gnome2-utils multilib toolchain-funcs xdg-utils
 
 DESCRIPTION="A fork of Mupen64 Nintendo 64 emulator, console UI"
 HOMEPAGE="http://www.mupen64plus.org/"
@@ -28,6 +28,9 @@ src_prepare() {
 
 	# avoid implicitly appending CPU flags
 	sed -i -e 's:-mmmx::g' -e 's:-msse::g' projects/unix/Makefile || die
+
+	# avoid appending -fPIE/-fno-PIE
+	sed -i -e '/^if.*PIE/,/endif/d' projects/unix/Makefile || die
 }
 
 src_compile() {
@@ -74,4 +77,14 @@ src_compile() {
 src_install() {
 	emake "${MAKEARGS[@]}" DESTDIR="${D}" install
 	einstalldocs
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+	gnome2_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
+	gnome2_icon_cache_update
 }
