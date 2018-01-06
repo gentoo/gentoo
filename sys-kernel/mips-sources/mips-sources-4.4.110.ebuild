@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # EAPI Version
@@ -7,8 +7,8 @@ EAPI="5"
 #//------------------------------------------------------------------------------
 
 # Version Data
-GITDATE="20161216"			# Date of diff between kernel.org and lmo GIT
-GENPATCHREV="1"				# Tarball revision for patches
+GITDATE="20160123"			# Date of diff between kernel.org and lmo GIT
+GENPATCHREV="2"				# Tarball revision for patches
 
 # Directories
 S="${WORKDIR}/linux-${OKV}-${GITDATE}"
@@ -19,13 +19,17 @@ K_SECURITY_UNSUPPORTED="yes"
 K_NOUSENAME="yes"
 K_NOSETEXTRAVERSION="yes"
 K_NOUSEPR="yes"
-K_BASE_VER="4.8"
+K_BASE_VER="4.3"
 K_FROM_GIT="yes"
 ETYPE="sources"
 
 # Inherit Eclasses
 inherit kernel-2 eutils
 detect_version
+
+# EPATCH Vars
+# XXX: Required to properly apply Impact/Odyssey driver patches.
+EPATCH_OPTS="-F3"
 
 # Version Data
 F_KV="${PVR}"
