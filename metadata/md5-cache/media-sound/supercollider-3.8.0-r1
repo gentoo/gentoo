@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare test
+DEPEND=media-libs/alsa-lib sys-libs/readline:0= x11-libs/libX11 x11-libs/libXt avahi? ( net-dns/avahi ) fftw? ( sci-libs/fftw:3.0= ) jack? ( virtual/jack ) portaudio? ( media-libs/portaudio ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtwebkit:5 dev-qt/qtwidgets:5 ) server? ( !app-admin/supernova ) sndfile? ( media-libs/libsndfile ) wiimote? ( app-misc/cwiid ) dev-libs/icu virtual/pkgconfig emacs? ( virtual/emacs ) gedit? ( app-editors/gedit ) qt5? ( dev-qt/linguist-tools:5 dev-qt/qtdeclarative:5 dev-qt/qtconcurrent:5 ) vim? ( app-editors/vim ) sys-devel/make >=dev-util/cmake-3.7.2
+DESCRIPTION=An environment and a programming language for real time audio synthesis.
+EAPI=6
+HOMEPAGE=https://supercollider.github.io/
+IUSE=avahi cpu_flags_x86_sse cpu_flags_x86_sse2 debug emacs +fftw gedit +gpl3 jack +portaudio qt5 server +sndfile static-libs vim wiimote
+KEYWORDS=~x86 ~amd64
+LICENSE=GPL-2 gpl3? ( GPL-3 )
+RDEPEND=media-libs/alsa-lib sys-libs/readline:0= x11-libs/libX11 x11-libs/libXt avahi? ( net-dns/avahi ) fftw? ( sci-libs/fftw:3.0= ) jack? ( virtual/jack ) portaudio? ( media-libs/portaudio ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtwebkit:5 dev-qt/qtwidgets:5 ) server? ( !app-admin/supernova ) sndfile? ( media-libs/libsndfile ) wiimote? ( app-misc/cwiid )
+REQUIRED_USE=^^ ( jack portaudio )
+RESTRICT=mirror
+SLOT=0
+SRC_URI=https://github.com/supercollider/supercollider/releases/download/Version-3.8.0/SuperCollider-3.8.0-Source-linux.tar.bz2
+_eclasses_=cmake-utils	202a2becc86cb78ba14baad148d06759	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	flag-o-matic	02908f00f002f0f07c5b74783d778325	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	readme.gentoo-r1	6f03e110529650f57fc7d1fb908b8986	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	versionator	c80ccf29e90adea7c5cae94b42eb76d0	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=a11c1b16219404537afbb05f3b9b0114
