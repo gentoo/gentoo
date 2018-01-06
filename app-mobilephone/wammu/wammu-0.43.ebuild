@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,29 +27,18 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 # Supported languages and translated documentation
-# Be sure all languages are prefixed with a single space!
 MY_AVAILABLE_LINGUAS=" af ar bg bn ca cs da de el en_GB es et fi fr gl he hu id it ko nl pl pt_BR ro ru sk sv sw tr uk zh_CN zh_TW"
-IUSE="${IUSE} ${MY_AVAILABLE_LINGUAS// / linguas_}"
 
 # Required to source locale content out of the box
 DISTUTILS_IN_SOURCE_BUILD=1
 
 src_prepare() {
-	local lang support_linguas=no
+	local lang
 	for lang in ${MY_AVAILABLE_LINGUAS} ; do
-		if use linguas_${lang} ; then
-			support_linguas=yes
-			break
+		if ! has ${lang} ${LINGUAS-${lang}} ; then
+			rm -r locale/${lang} || die
 		fi
 	done
-	# install all languages when all selected LINGUAS aren't supported
-	if [ "${support_linguas}" = "yes" ]; then
-		for lang in ${MY_AVAILABLE_LINGUAS} ; do
-			if ! use linguas_${lang} ; then
-				rm -r locale/${lang} || die
-			fi
-		done
-	fi
 
 	distutils-r1_src_prepare
 }

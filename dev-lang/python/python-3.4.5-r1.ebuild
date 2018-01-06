@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -17,7 +17,8 @@ SRC_URI="https://www.python.org/ftp/python/${PV%_rc*}/${MY_P}.tar.xz
 LICENSE="PSF-2"
 SLOT="3.4/3.4m"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
-IUSE="build elibc_uclibc examples gdbm hardened ipv6 libressl +ncurses +readline sqlite +ssl +threads tk wininst +xml"
+IUSE="build elibc_uclibc examples gdbm hardened ipv6 libressl +ncurses +readline sqlite +ssl test +threads tk wininst +xml"
+RESTRICT="!test? ( test )"
 
 # Do not add a dependency on dev-lang/python to this ebuild.
 # If you need to apply a patch which requires python for bootstrapping, please
@@ -48,6 +49,7 @@ RDEPEND="app-arch/bzip2:0=
 	xml? ( >=dev-libs/expat-2.1:0= )
 	!!<sys-apps/sandbox-2.6-r1"
 DEPEND="${RDEPEND}
+	test? ( app-arch/xz-utils[extra-filters(+)] )
 	virtual/pkgconfig
 	>=sys-devel/autoconf-2.65
 	!sys-devel/gcc[libffi(-)]"
