@@ -5,7 +5,4 @@
 	<upstream>
 		<remote-id type="github">libical/libical</remote-id>
 	</upstream>
-	<use>
-		<flag name="glib">Enable <pkg>dev-libs/glib</pkg> GObject interface support</flag>
-	</use>
 </pkgmetadata>
