@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=2
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/pslib/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc ~ppc64 ~sparc ~x86"
-IUSE="debug jpeg linguas_de png tiff"
+IUSE="debug jpeg png tiff"
 
 RDEPEND="png? ( >=media-libs/libpng-1.2.43-r2:0 )
 	jpeg? ( virtual/jpeg )
@@ -45,5 +45,4 @@ src_configure() {
 src_install() {
 	emake DESTDIR="${D}" install || die
 	dodoc AUTHORS README
-	use linguas_de || rm -r "${D}/usr/share/locale/de"
 }
