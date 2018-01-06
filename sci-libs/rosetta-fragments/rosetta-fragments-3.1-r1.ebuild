@@ -1,7 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit eutils flag-o-matic prefix toolchain-funcs
 
@@ -24,15 +24,18 @@ RESTRICT="fetch"
 
 S="${WORKDIR}"/${PN/-/_}
 
+PATCHES=(
+	"${FILESDIR}"/${P}-nnmake.patch
+	"${FILESDIR}"/${P}-chemshift.patch
+)
+
 pkg_nofetch() {
 	einfo "Go to ${HOMEPAGE} and get ${PN}.tgz and rename it to ${A}"
 	einfo "which must be placed in ${DISTDIR}"
 }
 
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${P}-nnmake.patch \
-		"${FILESDIR}"/${P}-chemshift.patch
+	default
 	tc-export F77
 	eprefixify nnmake/*.pl
 }
@@ -52,5 +55,8 @@ src_install() {
 
 	insinto /usr/share/${PN}
 	doins -r *_database
-	dodoc fragments.README nnmake/{nnmake.README,vall/*.pl} chemshift/chemshift.README
+	dodoc \
+		fragments.README \
+		nnmake/{nnmake.README,vall/*.pl} \
+		chemshift/chemshift.README
 }
