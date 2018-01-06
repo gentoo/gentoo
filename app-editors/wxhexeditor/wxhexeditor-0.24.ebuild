@@ -30,11 +30,11 @@ PATCHES=(
 )
 
 pkg_pretend() {
-        [[ ${MERGE_TYPE} != binary ]] && tc-check-openmp
+	[[ ${MERGE_TYPE} != binary ]] && tc-check-openmp
 }
 
 pkg_setup() {
-        [[ ${MERGE_TYPE} != binary ]] && tc-check-openmp
+	[[ ${MERGE_TYPE} != binary ]] && tc-check-openmp
 }
 
 src_prepare() {
