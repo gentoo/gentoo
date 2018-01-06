@@ -701,12 +701,6 @@ net-misc/arm
 app-misc/activylircd
 media-plugins/vdr-alcd
 
-# Jonas Stein <jstein@gentoo.org> (10 Nov 2017)
-# sci-geosciences/gmapcatcher violates the license of several images.
-# The package is unmaintained. Upstream will not / can not fix this problem.
-# See also bug #624046. Masked for removal on 2017-12-12
-sci-geosciences/gmapcatcher
-
 # Mike Gilbert <floppym@gentoo.org> (05 Nov 2017)
 # Breaks several reverse dependencies.
 # https://bugs.gentoo.org/635934
