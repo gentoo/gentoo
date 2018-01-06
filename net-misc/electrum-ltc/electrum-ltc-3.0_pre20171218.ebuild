@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -72,7 +72,11 @@ src_prepare() {
 	# Prevent icon from being installed in the wrong location
 	sed -i '/icons/d' setup.py || die
 
-	pyrcc5 icons.qrc -o gui/qt/icons_rc.py || die
+	if use qt5; then
+		pyrcc5 icons.qrc -o gui/qt/icons_rc.py || die
+	else
+		sed "s|'electrum_ltc_gui.qt',||" -i setup.py || die
+	fi
 
 	local wordlist=
 	for wordlist in  \
