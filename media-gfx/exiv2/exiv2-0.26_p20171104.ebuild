@@ -1,9 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-LINGUAS="bs de es fi fr gl ms pl pt ru sk sv ug uk vi"
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 if [[ ${PV} = *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/Exiv2/exiv2.git"
@@ -21,7 +20,7 @@ HOMEPAGE="http://www.exiv2.org/"
 
 LICENSE="GPL-2"
 SLOT="0/26"
-IUSE="doc examples nls png webready xmp $(printf 'linguas_%s ' ${LINGUAS})"
+IUSE="doc examples nls png webready xmp"
 
 RDEPEND="
 	>=virtual/libiconv-0-r1[${MULTILIB_USEDEP}]
@@ -62,7 +61,8 @@ src_prepare() {
 			pushd po > /dev/null || die
 			local lang
 			for lang in *.po; do
-				if [[ -e ${lang} ]] && ! has ${lang/.po/} ${LINGUAS} ; then
+				if [[ -e ${lang} ]] \
+						&& ! has ${lang/.po/} ${LINGUAS-${lang/.po/}} ; then
 					case ${lang} in
 						CMakeLists.txt | \
 						${PN}.pot)      ;;
