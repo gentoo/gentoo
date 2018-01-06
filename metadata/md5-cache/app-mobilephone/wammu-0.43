@@ -3,7 +3,7 @@ DEPEND=>=app-mobilephone/gammu-1.36 dev-python/python-gammu >=dev-python/wxpytho
 DESCRIPTION=Front-end for gammu to access mobile phones easily
 EAPI=6
 HOMEPAGE=http://www.wammu.eu/
-IUSE=bluetooth gnome linguas_af linguas_ar linguas_bg linguas_bn linguas_ca linguas_cs linguas_da linguas_de linguas_el linguas_en_GB linguas_es linguas_et linguas_fi linguas_fr linguas_gl linguas_he linguas_hu linguas_id linguas_it linguas_ko linguas_nl linguas_pl linguas_pt_BR linguas_ro linguas_ru linguas_sk linguas_sv linguas_sw linguas_tr linguas_uk linguas_zh_CN linguas_zh_TW python_targets_python2_7
+IUSE=bluetooth gnome python_targets_python2_7
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=>=app-mobilephone/gammu-1.36 dev-python/python-gammu >=dev-python/wxpython-2.8:*[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] bluetooth? ( dev-python/pybluez[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] gnome? ( net-wireless/gnome-bluetooth ) ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
@@ -11,4 +11,4 @@ REQUIRED_USE=|| ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=http://dl.cihar.com/wammu/v0/wammu-0.43.tar.xz
 _eclasses_=distutils-r1	372bbe39047c0a2550319a3a82f3e063	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	e9350ec46bb5c9f3504b4fbe8b8d8987	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=7988ee85b0f18a3fe4f90d023acdf3b6
+_md5_=29d2e5a448d5a24fc02c4482fff6f1d0
