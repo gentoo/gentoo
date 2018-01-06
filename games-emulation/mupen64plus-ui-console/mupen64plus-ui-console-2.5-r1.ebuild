@@ -4,7 +4,7 @@
 EAPI=5
 
 MY_P=${PN}-src-${PV}
-inherit eutils multilib toolchain-funcs
+inherit eutils gnome2-utils multilib toolchain-funcs xdg-utils
 
 DESCRIPTION="A fork of Mupen64 Nintendo 64 emulator, console UI"
 HOMEPAGE="http://www.mupen64plus.org/"
@@ -77,4 +77,14 @@ src_compile() {
 src_install() {
 	emake "${MAKEARGS[@]}" DESTDIR="${D}" install
 	einstalldocs
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+	gnome2_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
+	gnome2_icon_cache_update
 }
