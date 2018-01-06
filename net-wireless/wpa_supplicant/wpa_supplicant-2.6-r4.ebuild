@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -174,16 +174,12 @@ src_configure() {
 	Kconfig_style_config EAP_LEAP
 	Kconfig_style_config EAP_MSCHAPV2
 	Kconfig_style_config EAP_PEAP
-	Kconfig_style_config EAP_PWD
 	Kconfig_style_config EAP_TLS
 	Kconfig_style_config EAP_TTLS
 
 	# Enabling background scanning.
 	Kconfig_style_config BGSCAN_SIMPLE
 	Kconfig_style_config BGSCAN_LEARN
-
-	# Enabling mesh networks.
-	Kconfig_style_config MESH
 
 	if use dbus ; then
 		Kconfig_style_config CTRL_IFACE_DBUS
@@ -239,6 +235,10 @@ src_configure() {
 			Kconfig_style_config GNUTLS_EXTRA
 		else
 			Kconfig_style_config TLS openssl
+			Kconfig_style_config EAP_PWD
+
+			# Enabling mesh networks.
+			Kconfig_style_config MESH
 		fi
 	else
 		Kconfig_style_config TLS internal
