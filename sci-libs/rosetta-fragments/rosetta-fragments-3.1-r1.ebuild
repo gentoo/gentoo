@@ -17,7 +17,7 @@ IUSE=""
 DEPEND=""
 RDEPEND="
 	sci-biology/ncbi-tools
-	|| ( sci-biology/update-blastdb sci-biology/ncbi-tools++ )
+	sci-biology/update-blastdb
 	sci-biology/psipred"
 
 RESTRICT="fetch"
