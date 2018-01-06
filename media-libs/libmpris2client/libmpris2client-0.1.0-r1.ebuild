@@ -10,7 +10,7 @@ SRC_URI="https://github.com/matiasdelellis/${PN}/releases/download/V${PV}/${P}.t
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND=">=dev-libs/glib-2

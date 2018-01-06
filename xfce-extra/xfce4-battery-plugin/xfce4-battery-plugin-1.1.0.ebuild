@@ -10,7 +10,7 @@ SRC_URI="mirror://xfce/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~mips ~ppc ~x86"
+KEYWORDS="amd64 ~arm ~mips ~ppc x86"
 IUSE="kernel_linux"
 
 RDEPEND=">=dev-libs/glib-2.24:2=
