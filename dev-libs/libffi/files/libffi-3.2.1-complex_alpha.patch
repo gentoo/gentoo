@@ -1,5 +1,5 @@
---- src/alpha/osf.S.orig	2015-01-16 10:46:15.000000000 +0100
-+++ src/alpha/osf.S	2015-01-16 10:46:24.000000000 +0100
+--- a/src/alpha/osf.S.orig	2015-01-16 10:46:15.000000000 +0100
++++ b/src/alpha/osf.S	2015-01-16 10:46:24.000000000 +0100
 @@ -279,6 +279,7 @@
  	.gprel32 $load_64	# FFI_TYPE_SINT64
  	.gprel32 $load_none	# FFI_TYPE_STRUCT
