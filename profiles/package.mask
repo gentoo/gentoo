@@ -742,12 +742,6 @@ sys-devel/autoconf:2.65
 sys-devel/autoconf:2.67
 sys-devel/autoconf:2.68
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (20 Oct 2017)
-# Doesn't build with glibc-2.25, doesn't build, needs a
-# version bump, needs a maintainer. Bugs 604364, 599004,
-# 627064. Removal in 30 days.
-app-crypt/zuluCrypt
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (18 Oct 2017)
 # sys-devel/automake versions 1.4, 1.5, 1.6, 1.7, 1.8
 # have known security vulnerabilities, are broken with
