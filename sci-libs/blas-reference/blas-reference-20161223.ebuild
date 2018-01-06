@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -52,6 +52,11 @@ src_configure() {
 
 src_compile() {
 	cmake-utils_src_compile -C BLAS
+}
+
+src_test() {
+	local BUILD_DIR="${WORKDIR}/${P}_build/BLAS"
+	cmake-utils_src_test
 }
 
 src_install() {
