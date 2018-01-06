@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -27,7 +27,7 @@ VM_LINGUAS=( as bg bn_IN bs ca cmn cs da de en_GB es fi fr gu hi hr hu is
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="gnome-keyring gtk policykit sasl ${VM_LINGUAS[@]/#/linguas_}"
+IUSE="gnome-keyring gtk policykit sasl"
 
 RDEPEND="!app-emulation/virtinst
 	dev-python/libvirt-python[${PYTHON_USEDEP}]
@@ -60,7 +60,7 @@ src_prepare() {
 
 	local lang
 	for lang in ${VM_LINGUAS[@]}; do
-		use linguas_${lang} || rm -v "po/${lang}.po" || die
+		has ${lang} ${LINGUAS-${lang}} || rm -v "po/${lang}.po" || die
 	done
 }
 
