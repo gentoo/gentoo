@@ -723,11 +723,6 @@ dev-java/icedtea-bin:7
 virtual/jdk:1.7
 virtual/jre:1.7
 
-# Marc Schiffbauer <mschiff@gentoo.org> (01 Nov 2017)
-# Upstream abandoned obnam as of the end of the year
-# Masked for removal in 30 days.
-app-backup/obnam
-
 # Patrice Clement <monsieurp@gentoo.org> (28 Oct 2017)
 # Missing dependencies.
 >=dev-python/scrapy-1.4.0
