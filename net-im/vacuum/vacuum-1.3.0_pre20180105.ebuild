@@ -3,16 +3,21 @@
 
 EAPI=6
 
-EGIT_REPO_URI="https://github.com/Vacuum-IM/vacuum-im.git"
 PLOCALES="de es pl ru uk"
-inherit cmake-utils git-r3 l10n
+
+inherit cmake-utils l10n
+
+MY_PN="${PN}-im"
+MY_PV="${PV/_pre/.}-Alpha"
+MY_P="${MY_PN}-${MY_PV}"
 
 DESCRIPTION="Qt Crossplatform Jabber client"
 HOMEPAGE="http://www.vacuum-im.org/"
+SRC_URI="https://github.com/Vacuum-IM/${MY_PN}/archive/${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0/37" # subslot = libvacuumutils soname version
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 PLUGINS=( adiummessagestyle annotations autostatus avatars birthdayreminder bitsofbinary bookmarks captchaforms chatstates clientinfo commands compress console dataforms datastreamsmanager emoticons filemessagearchive filestreamsmanager filetransfer gateways inbandstreams iqauth jabbersearch messagearchiver messagecarbons multiuserchat pepmanager privacylists privatestorage recentcontacts registration remotecontrol rosteritemexchange rostersearch servermessagearchive servicediscovery sessionnegotiation shortcutmanager socksstreams urlprocessor vcard xmppuriqueries )
 SPELLCHECKER_BACKENDS="aspell +enchant hunspell"
 IUSE="${PLUGINS[@]/#/+} ${SPELLCHECKER_BACKENDS} +spell"
@@ -62,6 +67,8 @@ RDEPEND="${DEPEND}
 "
 
 DOCS=( AUTHORS CHANGELOG README TRANSLATORS )
+
+S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	# Force usage of system libraries
