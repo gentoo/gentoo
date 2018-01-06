@@ -1,9 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-QT_MINIMAL="5.7.1"
 inherit cmake-utils gnome2-utils kde5-functions
 
 DESCRIPTION="Elegant dock, based on KDE Frameworks"
@@ -12,11 +11,10 @@ HOMEPAGE="https://store.kde.org/p/1169519/
 
 if [[ ${PV} = 9999 ]] ; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/psifidotos/Latte-Dock.git"
+	EGIT_REPO_URI="https://anongit.kde.org/${PN}.git"
 else
-	SRC_URI="https://github.com/psifidotos/Latte-Dock/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
 	KEYWORDS="~amd64 ~x86"
-	S="${WORKDIR}/Latte-Dock-${PV}"
 fi
 
 LICENSE="GPL-2+"
@@ -34,6 +32,7 @@ RDEPEND="
 	$(add_frameworks_dep kglobalaccel)
 	$(add_frameworks_dep ki18n)
 	$(add_frameworks_dep kiconthemes)
+	$(add_frameworks_dep knewstuff)
 	$(add_frameworks_dep knotifications)
 	$(add_frameworks_dep kpackage)
 	$(add_frameworks_dep kwayland)
@@ -56,10 +55,6 @@ DEPEND="${RDEPEND}
 "
 
 DOCS=( CHANGELOG.md README.md TRANSLATORS )
-
-pkg_preinst() {
-	gnome2_icon_savelist
-}
 
 pkg_postinst() {
 	gnome2_icon_cache_update
