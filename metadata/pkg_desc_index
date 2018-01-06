@@ -2866,7 +2866,7 @@ dev-lang/nasm 2.11.08 2.12.01: groovy little assembler
 dev-lang/ocaml 4.04.2: Type-inferring functional programming language descended from the ML family
 dev-lang/orc 0.4.27: The Oil Runtime Compiler, a just-in-time compiler for array operations
 dev-lang/perl 5.24.1-r2 5.24.3: Larry Wall's Practical Extraction and Report Language
-dev-lang/php 5.6.32 7.0.25 7.1.11: The PHP language runtime engine
+dev-lang/php 5.6.32 5.6.33 7.0.25 7.0.27 7.1.11 7.1.13: The PHP language runtime engine
 dev-lang/python 2.7.14-r1 3.4.5-r1 3.5.4-r1 3.6.3-r1: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.4 2.4.5: Python script wrapper
 dev-lang/qu-prolog 10.0: Extended Prolog supporting quantifiers, object-variables and substitutions
@@ -7152,7 +7152,7 @@ media-gfx/gif2png 2.5.8 2.5.9: Converts images from gif format to png format
 media-gfx/gifsicle 1.86: Create, manipulate, and optimize GIF images and animations
 media-gfx/gimageview 0.2.27-r4: Powerful GTK+ based image & movie viewer
 media-gfx/gimmage 0.2.3-r1: A slim GTK-based image browser
-media-gfx/gimp 2.8.22: GNU Image Manipulation Program
+media-gfx/gimp 2.8.22 2.8.22-r1: GNU Image Manipulation Program
 media-gfx/gimp-arrow-brushes 20120122: Brushes for GIMP including the styles arrow, handpointer, button arrow and cursor
 media-gfx/gliv 1.9.6 1.9.7: An image viewer that uses OpenGL
 media-gfx/gnofract4d 3.14-r1: A program for drawing beautiful mathematically-based images known as fractals
@@ -7176,7 +7176,7 @@ media-gfx/hugin 2016.2.0: GUI for the creation & processing of panoramic images
 media-gfx/icon-slicer 0.3: utility for generating icon themes and libXcursor cursor themes
 media-gfx/icoutils 0.31.0 0.32.0: Tools to extract and convert images in icon and cursor files (.ico, .cur)
 media-gfx/igal 2.0-r1: Static HTML image gallery generator
-media-gfx/imagemagick 6.9.9.0 6.9.9.20 6.9.9.26 7.0.7.14: A collection of tools and libraries for many image formats
+media-gfx/imagemagick 6.9.9.0 6.9.9.20 6.9.9.26 6.9.9.31 7.0.7.14 7.0.7.19: A collection of tools and libraries for many image formats
 media-gfx/imageworsener 1.3.1 1.3.2: Utility for image scaling and processing
 media-gfx/inkscape 0.91-r3: A SVG based generic vector-drawing program
 media-gfx/iscan 2.30.1.1 2.30.2.2: EPSON Image Scan! for Linux (including sane-epkowa backend)
@@ -9951,7 +9951,7 @@ sys-firmware/alsa-firmware 1.0.29: Advanced Linux Sound Architecture firmware
 sys-firmware/atmel-firmware 1.3-r1: Firmware and config for atmel and atmel_cs wlan drivers included in linux 2.6
 sys-firmware/bluez-firmware 1.2: Firmware for Broadcom BCM203x and STLC2300 Bluetooth chips
 sys-firmware/edk2-ovmf 2017_pre20170505: UEFI firmware for 64-bit x86 virtual machines
-sys-firmware/intel-microcode 20140430 20150121 20151106 20161104 20170511 20170707: Intel IA32/IA64 microcode update data
+sys-firmware/intel-microcode 20140430 20150121 20151106 20161104 20170511 20170707 20171117_p20171215: Intel IA32/IA64 microcode update data
 sys-firmware/ipw2100-firmware 1.3: Firmware for the Intel PRO/Wireless 2100 3B miniPCI adapter
 sys-firmware/ipw2200-firmware 3.1: Firmware for the Intel PRO/Wireless 2200BG/2915ABG miniPCI and 2225BG PCI
 sys-firmware/ipxe 1.0.0_p20130925 1.0.0_p20160620: Open source network boot (PXE) firmware
@@ -10042,7 +10042,7 @@ sys-kernel/genkernel 3.4.52.3 3.4.52.4-r2: Gentoo automatic kernel building scri
 sys-kernel/genkernel-next 66: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-sources 3.10.107-r1 4.1.43-r1 4.4.87-r1 4.9.49-r1 4.9.72: Full sources including the Gentoo patchset for the 4.9 kernel tree
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
-sys-kernel/linux-firmware 20170314: Linux firmware files
+sys-kernel/linux-firmware 20170314 20180103-r1: Linux firmware files
 sys-kernel/linux-headers 3.18 4.3 4.4 4.13: Linux system headers
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
 sys-libs/binutils-libs 2.25.1-r2 2.27 2.28.1 2.29.1-r1: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
