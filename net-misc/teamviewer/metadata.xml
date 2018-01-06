@@ -6,6 +6,6 @@
 		<name>Wolfram Schlich</name>		
 	</maintainer>
 	<use>
-		<flag name="system-wine">Use <pkg>app-emulation/wine</pkg> instead of bundled wine.</flag>
+		<flag name="system-wine">Use <pkg>virtual/wine</pkg> instead of bundled wine.</flag>
 	</use>
 </pkgmetadata>
