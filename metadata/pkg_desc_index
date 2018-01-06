@@ -10029,7 +10029,7 @@ sys-fs/traydevice 1.6.2-r1: A little desktop application displaying systray icon
 sys-fs/treesize 0.54.1: A disk consumption analyzing tool
 sys-fs/udev 216 225-r1 233: Linux dynamic and persistent device naming support (aka userspace devfs)
 sys-fs/udev-init-scripts 27 32: udev startup scripts for openrc
-sys-fs/udftools 1.1: Ben Fennema's tools for packet writing and the UDF filesystem
+sys-fs/udftools 1.1-r1: Ben Fennema's tools for packet writing and the UDF filesystem
 sys-fs/udiskie 0.6.2 1.1.1: An automatic disk mounting service using udisks
 sys-fs/udisks 1.0.5-r1 2.1.8 2.7.4: Daemon providing interfaces to work with storage devices
 sys-fs/vhba 20170610: Virtual (SCSI) Host Bus Adapter kernel module for the CDEmu suite
