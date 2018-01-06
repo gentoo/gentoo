@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -24,7 +24,7 @@ RDEPEND="${PYTHON_DEPS}
 	app-arch/p7zip
 	app-arch/unzip
 	app-crypt/gnupg
-	|| ( virtual/wine app-emulation/wine )
+	virtual/wine
 	dev-python/wxpython:3.0[${PYTHON_USEDEP}]
 	net-misc/wget
 	x11-apps/mesa-progs
