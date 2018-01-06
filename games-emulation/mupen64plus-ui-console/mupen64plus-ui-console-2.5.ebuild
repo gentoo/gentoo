@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -28,6 +28,9 @@ src_prepare() {
 
 	# avoid implicitly appending CPU flags
 	sed -i -e 's:-mmmx::g' -e 's:-msse::g' projects/unix/Makefile || die
+
+	# avoid appending -fPIE/-fno-PIE
+	sed -i -e '/^if.*PIE/,/endif/d' projects/unix/Makefile || die
 }
 
 src_compile() {
