@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -26,12 +26,11 @@ LICENSE="GPL-2+ GPL-3+ Boost-1.0"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="debug doc examples github i18n libressl minimal +python"
-LANGS="bg ca cs de el es fi fr hu it ja ko nl pl pt ru sk sl sv zh_CN"
+LANGS="bg ca cs de el es fi fr hu it ja ko nl pl pt ru sk sl sv zh-CN"
 for lang in ${LANGS} ; do
-	IUSE="${IUSE} linguas_${lang}"
+	IUSE="${IUSE} l10n_${lang}"
 done
 unset lang
-unset LANGS
 
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )"
@@ -104,10 +103,11 @@ src_prepare() {
 		ln -s "${WORKDIR}/${P}-i18n" "${S}/${PN}-i18n" || die
 		# Remove unused languages. Project generates only languages specified in the
 		# file in LINGUAS in the subproject folder. By default all languages are added
-		# so we sed out the unused ones based on the user linguas_* settings.
+		# so we sed out the unused ones based on the user l10n_* settings.
 		local lang
 		for lang in ${LANGS}; do
-			if ! use linguas_${lang}; then
+			if ! use l10n_${lang}; then
+				lang="${lang//-/_}"
 				sed "/${lang}/d" -i ${PN}-i18n/LINGUAS || die
 			fi
 		done
