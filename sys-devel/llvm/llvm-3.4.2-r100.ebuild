@@ -107,6 +107,11 @@ src_prepare() {
 
 		epatch "${WORKDIR}/${P}-patchset"/clang/gentoo-install.patch
 
+		if [[ ${CHOST} != *-darwin8 ]] ; then
+			# Darwin8/Tiger-only patch
+			rm "${WORKDIR}"/${PN}-3.4-patchset-darwin-leopard/0006-* || die
+		fi
+
 		if [[ ${CHOST} == *-darwin8 ]] || [[ ${CHOST} == *-darwin9 ]] ; then
 			EPATCH_SOURCE="${WORKDIR}"/${PN}-3.4-patchset-darwin-leopard \
 				EPATCH_SUFFIX=patch EPATCH_FORCE=yes epatch
