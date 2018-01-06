@@ -649,11 +649,6 @@ games-kids/crayon-physics
 # Mask beta gromacs version
 =sci-chemistry/gromacs-2018_beta*
 
-# Sergey Popov <pinkbyte@gentoo.org> (30 Nov 2017)
-# Depends on dead Qt4, no release in two years
-# Masked for removal in 30 days, bug #625110
-dev-util/qfsm
-
 # Jonas Stein <jstein@gentoo.org> (29 Nov 2017)
 # The old yafaray-0.1.1 depends on qt4 and has bugs we can not fix. 
 # (bug #321169) and (bug #595684)
