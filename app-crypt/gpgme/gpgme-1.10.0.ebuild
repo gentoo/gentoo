@@ -48,15 +48,6 @@ pkg_setup() {
 	addpredict /run/user/$(id -u)/gnupg
 }
 
-src_prepare() {
-	default
-
-	# Fix too long socket path for gpg-agent, this is mainly a problem
-	# for Prefix, where the builddir is deeper in the FS tree.
-	sed -i -e '/GNUPGHOME/s:$(abs_builddir):'"${T}"':' \
-		tests/gpg/Makefile.{am,in} || die
-}
-
 src_configure() {
 	local languages=()
 	use common-lisp && languages+=( "cl" )

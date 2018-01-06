@@ -20,19 +20,17 @@ LICENSE="MIT"
 SLOT="0"
 IUSE="test"
 
-DEPEND=""
+DEPEND="
+	dev-libs/libfmt
+"
 RDEPEND="${DEPEND}"
 
-src_prepare() {
-	# root CMakeLists.txt is CRLF line terminated, so...
-	cp "${FILESDIR}"/${P}-CMakeLists.txt CMakeLists.txt || die
-	cmake-utils_src_prepare
-}
+PATCHES=( "${FILESDIR}/${PN}-unbundle-fmt.patch" )
 
 src_configure() {
 	local mycmakeargs=(
-		-DSPDLOG_BUILD_EXAMPLES=no
-		-DSPDLOG_BUILD_TESTING=$(usex test)
+			-DSPDLOG_BUILD_EXAMPLES=no
+			-DSPDLOG_BUILD_TESTING=$(usex test)
 	)
 
 	cmake-utils_src_configure

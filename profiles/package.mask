@@ -641,30 +641,6 @@ net-ftp/oneclickftp
 # Masked for removal in 30 days. Bug #640138.
 dev-vcs/qct
 
-# Bernard Cafarelli <voyageur@gentoo.org> (05 Dec 2017)
-# Dead Window Maker dockapps, dead upstreams and download links
-# (no release for more than 10 years)
-# Masked for removal in 30 days. Bug #639914
-x11-plugins/monto
-x11-plugins/wmbluecpu
-x11-plugins/wmcpu
-x11-plugins/wmdate
-x11-plugins/wmdf
-x11-plugins/wmdl
-x11-plugins/wmjsql
-x11-plugins/wmlpq
-x11-plugins/wmmemfree
-x11-plugins/wmmemmon
-x11-plugins/wmmldonkey
-x11-plugins/wmmsg
-x11-plugins/wmnetselect
-x11-plugins/wmpiki
-x11-plugins/wmsound
-x11-plugins/wmsvencd
-x11-plugins/wmupmon
-x11-plugins/wmwave
-<=x11-plugins/wmsysmon-0.7.7
-
 # Andreas Sturmlechner <asturm@gentoo.org> (03 Dec 2017)
 # Dead upstream, depending on dead qt3support/qt4. Bug #631788
 games-kids/crayon-physics
