@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,7 +22,6 @@ KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~
 
 IUSE="ipv6 libressl +nse system-lua ncat ndiff nls nmap-update nping ssl zenmap"
 NMAP_LINGUAS=( de fr hi hr it ja pl pt_BR ru zh )
-IUSE+=" ${NMAP_LINGUAS[@]/#/linguas_}"
 
 REQUIRED_USE="
 	system-lua? ( nse )
@@ -82,10 +81,10 @@ src_prepare() {
 
 	default
 
+	local lingua
 	if use nls; then
-		local lingua=''
 		for lingua in ${NMAP_LINGUAS[@]}; do
-			if ! use linguas_${lingua}; then
+			if ! has ${linguas} ${LINGUAS-${lingua}}; then
 				rm -r zenmap/share/zenmap/locale/${lingua} || die
 				rm zenmap/share/zenmap/locale/${lingua}.po || die
 			fi
