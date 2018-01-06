@@ -21,9 +21,7 @@ _GTK_DEPEND=">=dev-libs/glib-2.4.7:2
 	x11-libs/cairo"
 
 RDEPEND=">=sci-libs/fftw-3.0.1
-	audacious? (
-		|| ( >=media-sound/audacious-3.7[gtk3]
-			( >=media-sound/audacious-3.6 <media-sound/audacious-3.7 ) )
+	audacious? ( >=media-sound/audacious-3.7[gtk3]
 		${_GTK_DEPEND}
 		media-libs/libsndfile )
 	jack? ( media-sound/jack-audio-connection-kit
