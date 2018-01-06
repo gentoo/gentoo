@@ -1,0 +1,529 @@
+
+# HG changeset patch
+# User Wouter Verhelst <wouter.verhelst@fedict.be>
+# Date 1503417578 -7200
+# Node ID 22374473d24f4b4877e50f0b49da3174a70f79ab
+# Parent  fcb1865dca35554b6d8e9afe017bc7b74c413c72
+Bug 1357391 - Implement a PKCS#11 management API r=kmag,zombie
+
+This WebExtensions API allows to install, remove, and query installed
+PKCS#11 modules as well as to query the the status of available PKCS#11
+"slots" for a given module.
+
+Reuses the native application manifests from the "Native Messaging" API,
+but using the "pkcs11" type rather than the "stdio" type.
+
+All calls expect an application name, which is not the PKCS#11 friendly
+name (the "description" field in the manifest file is used for that) but
+instead the application name in the manifest file.
+
+MozReview-Commit-ID: 8dHr5QfEaXv
+
+diff --git a/browser/components/extensions/ext-browser.json b/browser/components/extensions/ext-browser.json
+--- a/browser/components/extensions/ext-browser.json
++++ b/browser/components/extensions/ext-browser.json
+@@ -117,16 +117,24 @@
+     "url": "chrome://browser/content/ext-pageAction.js",
+     "schema": "chrome://browser/content/schemas/page_action.json",
+     "scopes": ["addon_parent"],
+     "manifest": ["page_action"],
+     "paths": [
+       ["pageAction"]
+     ]
+   },
++  "pkcs11": {
++    "url": "chrome://browser/content/ext-pkcs11.js",
++    "schema": "chrome://browser/content/schemas/pkcs11.json",
++    "scopes": ["addon_parent"],
++    "paths": [
++      ["pkcs11"]
++    ]
++  },
+   "geckoProfiler": {
+     "url": "chrome://browser/content/ext-geckoProfiler.js",
+     "schema": "chrome://browser/content/schemas/geckoProfiler.json",
+     "scopes": ["addon_parent"],
+     "paths": [
+       ["geckoProfiler"]
+     ]
+   },
+diff --git a/browser/components/extensions/ext-pkcs11.js b/browser/components/extensions/ext-pkcs11.js
+new file mode 100644
+--- /dev/null
++++ b/browser/components/extensions/ext-pkcs11.js
+@@ -0,0 +1,145 @@
++"use strict";
++
++XPCOMUtils.defineLazyModuleGetters(this, {
++  ctypes: "resource://gre/modules/ctypes.jsm",
++  NativeManifests: "resource://gre/modules/NativeManifests.jsm",
++  OS: "resource://gre/modules/osfile.jsm",
++});
++
++XPCOMUtils.defineLazyServiceGetter(this,
++  "pkcs11db",
++  "@mozilla.org/security/pkcs11moduledb;1",
++  "nsIPKCS11ModuleDB");
++
++var {DefaultMap} = ExtensionUtils;
++
++const findModuleByPath = function(path) {
++  let modules = pkcs11db.listModules();
++  for (let module of XPCOMUtils.IterSimpleEnumerator(modules, Ci.nsIPKCS11Module)) {
++    if (module && module.libName === path) {
++      return module;
++    }
++  }
++  return null;
++};
++
++this.pkcs11 = class extends ExtensionAPI {
++  getAPI(context) {
++    let manifestCache = new DefaultMap(async name => {
++      let hostInfo = await NativeManifests.lookupManifest("pkcs11", name, context);
++      if (hostInfo) {
++        if (AppConstants.platform === "win") {
++          hostInfo.manifest.path = OS.Path.join(OS.Path.dirname(hostInfo.path), hostInfo.manifest.path);
++        }
++        let manifestLib = OS.Path.basename(hostInfo.manifest.path);
++        if (AppConstants.platform !== "linux") {
++          manifestLib = manifestLib.toLowerCase(manifestLib);
++        }
++        if (manifestLib !== ctypes.libraryName("nssckbi")) {
++          return hostInfo.manifest;
++        }
++      }
++      return Promise.reject({message: `No such PKCS#11 module ${name}`});
++    });
++    return {
++      pkcs11: {
++        /**
++          * Verify whether a given PKCS#11 module is installed.
++          *
++          * @param {string} name The name of the module, as specified in
++          *                      the manifest file.
++          * @returns {Promise} A Promise that resolves to true if the package
++          *                    is installed, or false if it is not. May be
++          *                    rejected if the module could not be found.
++          */
++        async isModuleInstalled(name) {
++          let manifest = await manifestCache.get(name);
++          return findModuleByPath(manifest.path) !== null;
++        },
++        /**
++          * Install a PKCS#11 module
++          *
++          * @param {string} name The name of the module, as specified in
++          *                      the manifest file.
++          * @param {integer} [flags = 0] Any flags to be passed on to the
++          *                              nsIPKCS11ModuleDB.addModule method
++          * @returns {Promise} When the Promise resolves, the module will have
++          *                    been installed. When it is rejected, the module
++          *                    either is already installed or could not be
++          *                    installed for some reason.
++          */
++        async installModule(name, flags = 0) {
++          let manifest = await manifestCache.get(name);
++          if (!manifest.description) {
++            return Promise.reject({message: `The description field in the manifest for PKCS#11 module ${name} must have a value`});
++          }
++          pkcs11db.addModule(manifest.description, manifest.path, flags, 0);
++        },
++        /**
++          * Uninstall a PKCS#11 module
++          *
++          * @param {string} name The name of the module, as specified in
++          *                      the manifest file.
++          * @returns {Promise}. When the Promise resolves, the module will have
++          *                     been uninstalled. When it is rejected, the
++          *                     module either was not installed or could not be
++          *                     uninstalled for some reason.
++          */
++        async uninstallModule(name) {
++          let manifest = await manifestCache.get(name);
++          let module = findModuleByPath(manifest.path);
++          if (!module) {
++            return Promise.reject({message: `The PKCS#11 module ${name} is not loaded`});
++          }
++          pkcs11db.deleteModule(module.name);
++        },
++        /**
++         * Get a list of slots for a given PKCS#11 module, with
++         * information on the token (if any) in the slot.
++         *
++         * The PKCS#11 standard defines slots as an abstract concept
++         * that may or may not have at most one token. In practice, when
++         * using PKCS#11 for smartcards (the most likely use case of
++         * PKCS#11 for Firefox), a slot corresponds to a cardreader, and
++         * a token corresponds to a card.
++         *
++         * @param {string} name The name of the PKCS#11 module, as
++         *                 specified in the manifest file.
++         * @returns {Promise} A promise that resolves to an array of objects
++         *                    with two properties.  The `name` object contains
++         *                    the name of the slot; the `token` object is null
++         *                    if there is no token in the slot, or is an object
++         *                    describing various properties of the token if
++         *                    there is.
++         */
++        async getModuleSlots(name) {
++          let manifest = await manifestCache.get(name);
++          let module = findModuleByPath(manifest.path);
++          if (!module) {
++            return Promise.reject({message: `The module ${name} is not installed`});
++          }
++          let rv = [];
++          for (let slot of XPCOMUtils.IterSimpleEnumerator(module.listSlots(), Ci.nsIPKCS11Slot)) {
++            let token = slot.getToken();
++            let slotobj = {
++              name: slot.name,
++              token: null,
++            };
++            if (slot.status != 1 /* SLOT_NOT_PRESENT */) {
++              slotobj.token = {
++                name: token.tokenName,
++                manufacturer: token.tokenManID,
++                HWVersion: token.tokenHWVersion,
++                FWVersion: token.tokenFWVersion,
++                serial: token.tokenSerialNumber,
++                isLoggedIn: token.isLoggedIn(),
++              };
++            }
++            rv.push(slotobj);
++          }
++          return rv;
++        },
++      },
++    };
++  }
++};
+diff --git a/browser/components/extensions/jar.mn b/browser/components/extensions/jar.mn
+--- a/browser/components/extensions/jar.mn
++++ b/browser/components/extensions/jar.mn
+@@ -24,16 +24,17 @@ browser.jar:
+     content/browser/ext-devtools-network.js
+     content/browser/ext-devtools-panels.js
+     content/browser/ext-find.js
+     content/browser/ext-geckoProfiler.js
+     content/browser/ext-history.js
+     content/browser/ext-menus.js
+     content/browser/ext-omnibox.js
+     content/browser/ext-pageAction.js
++    content/browser/ext-pkcs11.js
+     content/browser/ext-sessions.js
+     content/browser/ext-sidebarAction.js
+     content/browser/ext-tabs.js
+     content/browser/ext-url-overrides.js
+     content/browser/ext-windows.js
+     content/browser/ext-c-browser.js
+     content/browser/ext-c-devtools-inspectedWindow.js
+     content/browser/ext-c-devtools-panels.js
+diff --git a/browser/components/extensions/schemas/jar.mn b/browser/components/extensions/schemas/jar.mn
+--- a/browser/components/extensions/schemas/jar.mn
++++ b/browser/components/extensions/schemas/jar.mn
+@@ -14,13 +14,14 @@ browser.jar:
+     content/browser/schemas/devtools_panels.json
+     content/browser/schemas/find.json
+     content/browser/schemas/geckoProfiler.json
+     content/browser/schemas/history.json
+     content/browser/schemas/menus.json
+     content/browser/schemas/menus_internal.json
+     content/browser/schemas/omnibox.json
+     content/browser/schemas/page_action.json
++    content/browser/schemas/pkcs11.json
+     content/browser/schemas/sessions.json
+     content/browser/schemas/sidebar_action.json
+     content/browser/schemas/tabs.json
+     content/browser/schemas/url_overrides.json
+     content/browser/schemas/windows.json
+diff --git a/browser/components/extensions/schemas/pkcs11.json b/browser/components/extensions/schemas/pkcs11.json
+new file mode 100644
+--- /dev/null
++++ b/browser/components/extensions/schemas/pkcs11.json
+@@ -0,0 +1,76 @@
++[
++  {
++    "namespace": "manifest",
++    "types": [
++      {
++        "$extend": "Permission",
++        "choices": [{
++          "type": "string",
++          "enum": [
++            "pkcs11"
++          ]
++        }]
++      }
++    ]
++  },
++  {
++    "namespace": "pkcs11",
++    "description": "PKCS#11 module management API",
++    "permissions": ["pkcs11"],
++    "functions": [
++      {
++        "name": "isModuleInstalled",
++        "type": "function",
++        "description": "checks whether a PKCS#11 module, given by name, is installed",
++        "async": true,
++        "parameters": [
++          {
++            "name": "name",
++            "type": "string"
++          }
++        ]
++      },
++      {
++        "name": "installModule",
++        "type": "function",
++        "description": "Install a PKCS#11 module with a given name",
++        "async": true,
++        "parameters": [
++          {
++            "name": "name",
++            "type": "string"
++          },
++          {
++            "name": "flags",
++            "type": "integer",
++            "optional": true
++          }
++        ]
++      },
++      {
++        "name": "uninstallModule",
++        "type": "function",
++        "description": "Remove an installed PKCS#11 module from firefox",
++        "async": true,
++        "parameters": [
++          {
++            "name": "name",
++            "type": "string"
++          }
++        ]
++      },
++      {
++        "name": "getModuleSlots",
++        "type": "function",
++        "description": "Enumerate a module's slots, each with their name and whether a token is present",
++        "async": true,
++        "parameters": [
++          {
++            "name": "name",
++            "type": "string"
++          }
++        ]
++      }
++    ]
++  }
++]
+diff --git a/browser/components/extensions/test/xpcshell/test_ext_pkcs11_management.js b/browser/components/extensions/test/xpcshell/test_ext_pkcs11_management.js
+new file mode 100644
+--- /dev/null
++++ b/browser/components/extensions/test/xpcshell/test_ext_pkcs11_management.js
+@@ -0,0 +1,168 @@
++"use strict";
++
++XPCOMUtils.defineLazyModuleGetters(this, {
++  ctypes: "resource://gre/modules/ctypes.jsm",
++  MockRegistry: "resource://testing-common/MockRegistry.jsm",
++  OS: "resource://gre/modules/osfile.jsm",
++});
++
++do_get_profile();
++let tmpDir = FileUtils.getDir("TmpD", ["PKCS11"]);
++let slug = AppConstants.platform === "linux" ? "pkcs11-modules" : "PKCS11Modules";
++tmpDir.createUnique(Ci.nsIFile.DIRECTORY_TYPE, FileUtils.PERMS_DIRECTORY);
++let baseDir = OS.Path.join(tmpDir.path, slug);
++OS.File.makeDir(baseDir);
++
++do_register_cleanup(() => {
++  tmpDir.remove(true);
++});
++
++function getPath(filename) {
++  return OS.Path.join(baseDir, filename);
++}
++
++const testmodule = "../../../../../security/manager/ssl/tests/unit/pkcs11testmodule/" + ctypes.libraryName("pkcs11testmodule");
++
++// This function was inspired by the native messaging test under
++// toolkit/components/extensions
++
++async function setupManifests(modules) {
++  async function writeManifest(module) {
++    let manifest = {
++      name: module.name,
++      description: module.description,
++      path: module.path,
++      type: "pkcs11",
++      allowed_extensions: [module.id],
++    };
++
++    let manifestPath = getPath(`${module.name}.json`);
++    await OS.File.writeAtomic(manifestPath, JSON.stringify(manifest));
++
++    return manifestPath;
++  }
++
++  switch (AppConstants.platform) {
++    case "macosx":
++    case "linux":
++      let dirProvider = {
++        getFile(property) {
++          if (property == "XREUserNativeManifests") {
++            return tmpDir.clone();
++          } else if (property == "XRESysNativeManifests") {
++            return tmpDir.clone();
++          }
++          return null;
++        },
++      };
++
++      Services.dirsvc.registerProvider(dirProvider);
++      do_register_cleanup(() => {
++        Services.dirsvc.unregisterProvider(dirProvider);
++      });
++
++      for (let module of modules) {
++        await writeManifest(module);
++      }
++      break;
++
++    case "win":
++      const REGKEY = String.raw`Software\Mozilla\PKCS11Modules`;
++
++      let registry = new MockRegistry();
++      do_register_cleanup(() => {
++        registry.shutdown();
++      });
++
++      for (let module of modules) {
++        if (!OS.Path.winIsAbsolute(module.path)) {
++          let cwd = await OS.File.getCurrentDirectory();
++          module.path = OS.Path.join(cwd, module.path);
++        }
++        let manifestPath = await writeManifest(module);
++        registry.setValue(Ci.nsIWindowsRegKey.ROOT_KEY_CURRENT_USER,
++                          `${REGKEY}\\${module.name}`, "", manifestPath);
++      }
++      break;
++
++    default:
++      ok(false, `Loading of PKCS#11 modules is not supported on ${AppConstants.platform}`);
++  }
++}
++
++add_task(async function test_pkcs11() {
++  async function background() {
++    try {
++      let isInstalled = await browser.pkcs11.isModuleInstalled("testmodule");
++      browser.test.assertFalse(isInstalled, "PKCS#11 module is not installed before we install it");
++      await browser.pkcs11.installModule("testmodule", 0);
++      isInstalled = browser.pkcs11.isModuleInstalled("testmodule");
++      browser.test.assertTrue(isInstalled, "PKCS#11 module is installed after we install it");
++      let slots = await browser.pkcs11.getModuleSlots("testmodule");
++      browser.test.assertEq("Test PKCS11 Slot", slots[0].name, "The first slot name matches the expected name");
++      browser.test.assertEq("Test PKCS11 Slot 二", slots[1].name, "The second slot name matches the expected name");
++      browser.test.assertTrue(slots[1].token, "The second slot has a token");
++      browser.test.assertEq("Test PKCS11 Tokeñ 2 Label", slots[1].token.name, "The token name matches the expected name");
++      browser.test.assertEq("Test PKCS11 Manufacturer ID", slots[1].token.manufacturer, "The token manufacturer matches the expected manufacturer");
++      browser.test.assertEq("0.0", slots[1].token.HWVersion, "The token hardware version matches the expected version");
++      browser.test.assertEq("0.0", slots[1].token.FWVersion, "The token firmware version matches the expected version");
++      browser.test.assertEq("", slots[1].token.serial, "The token has no serial number");
++      browser.test.assertFalse(slots[1].token.isLoggedIn, "The token is not logged in");
++      await browser.pkcs11.uninstallModule("testmodule");
++      isInstalled = await browser.pkcs11.isModuleInstalled("testmodule");
++      browser.test.assertFalse(isInstalled, "PKCS#11 module is no longer installed after we uninstall it");
++      await browser.pkcs11.installModule("testmodule");
++      isInstalled = await browser.pkcs11.isModuleInstalled("testmodule");
++      browser.test.assertTrue(isInstalled, "Installing the PKCS#11 module without flags parameter succeeds");
++      await browser.pkcs11.uninstallModule("testmodule");
++      await browser.test.assertRejects(
++        browser.pkcs11.isModuleInstalled("nonexistingmodule"),
++        /No such PKCS#11 module nonexistingmodule/,
++        "We cannot access modules if no JSON file exists");
++      await browser.test.assertRejects(
++        browser.pkcs11.isModuleInstalled("othermodule"),
++        /No such PKCS#11 module othermodule/,
++        "We cannot access modules if we're not listed in the module's manifest file's allowed_extensions key");
++      await browser.test.assertRejects(
++        browser.pkcs11.uninstallModule("internalmodule"),
++        /No such PKCS#11 module internalmodule/,
++        "We cannot uninstall the NSS Builtin Roots Module");
++      browser.test.notifyPass("pkcs11");
++    } catch (e) {
++      browser.test.fail(`Error: ${String(e)} :: ${e.stack}`);
++      browser.test.notifyFail("pkcs11 failed");
++    }
++  }
++
++  await setupManifests([
++    {
++      name: "testmodule",
++      description: "PKCS#11 Test Module",
++      path: testmodule,
++      id: "pkcs11@tests.mozilla.org",
++    },
++    {
++      name: "othermodule",
++      description: "PKCS#11 Test Module",
++      path: testmodule,
++      id: "other@tests.mozilla.org",
++    },
++    {
++      name: "internalmodule",
++      description: "Builtin Roots Module",
++      path: ctypes.libraryName("nssckbi"),
++      id: "pkcs11@tests.mozilla.org",
++    },
++  ]);
++
++  let extension = ExtensionTestUtils.loadExtension({
++    manifest: {
++      permissions: ["pkcs11"],
++      applications: {"gecko": {id: "pkcs11@tests.mozilla.org"}},
++    },
++    background: background,
++  });
++  await extension.startup();
++  await extension.awaitFinish("pkcs11");
++  await extension.unload();
++});
+diff --git a/browser/components/extensions/test/xpcshell/xpcshell.ini b/browser/components/extensions/test/xpcshell/xpcshell.ini
+--- a/browser/components/extensions/test/xpcshell/xpcshell.ini
++++ b/browser/components/extensions/test/xpcshell/xpcshell.ini
+@@ -15,10 +15,11 @@ dupe-manifest =
+ #    For tests which should run in all configurations.
+ #  - xpcshell-remote.ini
+ #    For tests which should only run with both remote extensions and remote content.
+ 
+ [test_ext_manifest_commands.js]
+ [test_ext_manifest_omnibox.js]
+ [test_ext_manifest_permissions.js]
+ [test_ext_geckoProfiler_schema.js]
++[test_ext_pkcs11_management.js]
+ 
+ [include:xpcshell-common.ini]
+diff --git a/browser/locales/en-US/chrome/browser/browser.properties b/browser/locales/en-US/chrome/browser/browser.properties
+--- a/browser/locales/en-US/chrome/browser/browser.properties
++++ b/browser/locales/en-US/chrome/browser/browser.properties
+@@ -106,16 +106,17 @@ webextPerms.description.downloads.open=O
+ webextPerms.description.find=Read the text of all open tabs
+ webextPerms.description.geolocation=Access your location
+ webextPerms.description.history=Access browsing history
+ webextPerms.description.management=Monitor extension usage and manage themes
+ # LOCALIZATION NOTE (webextPerms.description.nativeMessaging)
+ # %S will be replaced with the name of the application
+ webextPerms.description.nativeMessaging=Exchange messages with programs other than %S
+ webextPerms.description.notifications=Display notifications to you
++webextPerms.description.pkcs11=Provide cryptographic authentication services
+ webextPerms.description.privacy=Read and modify privacy settings
+ webextPerms.description.proxy=Control browser proxy settings
+ webextPerms.description.sessions=Access recently closed tabs
+ webextPerms.description.tabs=Access browser tabs
+ webextPerms.description.topSites=Access browsing history
+ webextPerms.description.unlimitedStorage=Store unlimited amount of client-side data
+ webextPerms.description.webNavigation=Access browser activity during navigation
+ 
+

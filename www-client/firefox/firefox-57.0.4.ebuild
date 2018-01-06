@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -123,6 +123,7 @@ src_unpack() {
 
 src_prepare() {
 	eapply "${WORKDIR}/firefox"
+	eapply "${FILESDIR}"/firefox-57.0-pkcs11-backport.patch
 
 	# Enable gnomebreakpad
 	if use debug ; then
