@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -21,8 +21,10 @@ IUSE="component-build cups gnome-keyring +hangouts kerberos neon pic +proprietar
 RESTRICT="!system-ffmpeg? ( proprietary-codecs? ( bindist ) )"
 
 COMMON_DEPEND="
+	app-accessibility/at-spi2-atk:2
 	app-arch/bzip2:=
 	cups? ( >=net-print/cups-1.3.11:= )
+	dev-libs/atk
 	dev-libs/expat:=
 	dev-libs/glib:2
 	system-icu? ( >=dev-libs/icu-59:= )
@@ -148,6 +150,7 @@ PATCHES=(
 	"${FILESDIR}/chromium-memcpy-r0.patch"
 	"${FILESDIR}/chromium-cups-r0.patch"
 	"${FILESDIR}/chromium-clang-r2.patch"
+	"${FILESDIR}/chromium-angle-r0.patch"
 )
 
 pre_build_checks() {
@@ -539,7 +542,7 @@ src_configure() {
 	bootstrap_gn
 
 	einfo "Configuring Chromium..."
-	set -- out/Release/gn gen --args="${myconf_gn}" out/Release
+	set -- out/Release/gn gen --args="${myconf_gn} ${EXTRA_GN}" out/Release
 	echo "$@"
 	"$@" || die
 }
