@@ -1,0 +1,10 @@
+--- a/editors/sc-ide/SuperColliderIDE.desktop	2016-08-22 11:12:21.000000000 +0300
++++ b/editors/sc-ide/SuperColliderIDE.desktop	2017-10-31 18:26:58.520164204 +0300
+@@ -5,6 +5,5 @@ 
+ Icon=sc_ide
+ Type=Application
+ Terminal=false
+-Patterns=*.scd;*.sc;*.schelp
+-Categories=Application;Multimedia;Audio;AudioVideo
++Categories=X-Multimedia;Audio;AudioVideo
+ MimeType=text/x-sc;

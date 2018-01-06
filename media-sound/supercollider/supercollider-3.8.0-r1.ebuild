@@ -58,6 +58,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-no-qtpositioning.patch
 	"${FILESDIR}"/${P}-multilib.patch
 	"${FILESDIR}"/${P}-gcc-7.patch
+	"${FILESDIR}"/${P}-desktop.patch
 )
 
 src_configure() {
