@@ -16,10 +16,6 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86 ~amd64-lin
 LANGS="am ar ast az be bg br ca ca@valencia cs csb da de dz el en_CA en_GB eo es et eu fa fi fr ga gl gu he hi hr hu id is it ja ka kk km kn ko lt lv mk ml ms my nb nds ne nl nn oc pa pl pt pt_BR ro ru rw si sk sl sr sr@latin sv ta te th tr tt uk vi xh yi zh_CN zh_HK zh_TW"
 IUSE="alsa aalib altivec aqua bzip2 curl dbus debug doc exif gnome postscript jpeg jpeg2k lcms cpu_flags_x86_mmx mng pdf png python smp cpu_flags_x86_sse svg tiff udev wmf xpm"
 
-for lang in ${LANGS}; do
-	IUSE+=" linguas_${lang}"
-done
-
 RDEPEND=">=dev-libs/glib-2.30.2:2
 	>=dev-libs/atk-2.2.0
 	>=x11-libs/gtk+-2.24.10:2
@@ -133,9 +129,10 @@ src_prepare() {
 }
 
 _clean_up_locales() {
+	[[ -z ${LINGUAS+set} ]] && return
 	einfo "Cleaning up locales..."
 	for lang in ${LANGS}; do
-		use "linguas_${lang}" && {
+		has ${lang} ${LINGUAS} && {
 			einfo "- keeping ${lang}"
 			continue
 		}

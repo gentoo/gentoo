@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,10 +16,6 @@ KEYWORDS=""
 
 LANGS="am ar ast az be bg br ca ca@valencia cs csb da de dz el en_CA en_GB eo es et eu fa fi fr ga gl gu he hi hr hu id is it ja ka kk km kn ko lt lv mk ml ms my nb nds ne nl nn oc pa pl pt pt_BR ro ru rw si sk sl sr sr@latin sv ta te th tr tt uk vi xh yi zh_CN zh_HK zh_TW"
 IUSE="alsa aalib altivec aqua debug doc openexr gnome postscript jpeg2k cpu_flags_x86_mmx mng pdf python smp cpu_flags_x86_sse udev vector-icons webp wmf xpm"
-
-for lang in ${LANGS}; do
-	IUSE+=" linguas_${lang}"
-done
 
 RDEPEND=">=dev-libs/glib-2.40.0:2
 	>=dev-libs/atk-2.2.0
@@ -102,7 +98,7 @@ src_prepare() {
 	sed -i -e 's:\$srcdir/configure:#:g' autogen.sh
 	local myconf
 	if ! use doc; then
-	    myconf="${myconf} --disable-gtk-doc"
+		myconf="${myconf} --disable-gtk-doc"
 	fi
 	./autogen.sh ${myconf} || die
 
@@ -167,9 +163,10 @@ src_compile() {
 }
 
 _clean_up_locales() {
+	[[ -z ${LINGUAS+set} ]] && return
 	einfo "Cleaning up locales..."
 	for lang in ${LANGS}; do
-		use "linguas_${lang}" && {
+		has ${lang} ${LINGUAS} && {
 			einfo "- keeping ${lang}"
 			continue
 		}
