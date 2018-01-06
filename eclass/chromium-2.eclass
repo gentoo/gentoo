@@ -71,10 +71,7 @@ chromium_remove_language_paks() {
 	# Look for missing pak files.
 	for lang in ${CHROMIUM_LANGS}; do
 		if [[ ! -e ${lang}.pak ]]; then
-			# https://bugs.gentoo.org/583762
-			if [[ ${lang} != sr-ME || ! -e me.pak  ]]; then
-				eqawarn "L10N warning: no .pak file for ${lang} (${lang}.pak not found)"
-			fi
+			eqawarn "L10N warning: no .pak file for ${lang} (${lang}.pak not found)"
 		fi
 	done
 
@@ -90,20 +87,11 @@ chromium_remove_language_paks() {
 			continue
 		fi
 
-		# https://bugs.gentoo.org/583762
-		if [[ ${lang} == me ]]; then
-			if ! has sr-ME ${CHROMIUM_LANGS}; then
-				eqawarn "L10N warning: no sr-ME in LANGS"
-			elif ! use l10n_sr-ME; then
-				rm "${pak}" || die
-			fi
-			continue
-		fi
-
 		if ! has ${lang} ${CHROMIUM_LANGS}; then
 			eqawarn "L10N warning: no ${lang} in LANGS"
 			continue
 		fi
+
 		if ! use l10n_${lang}; then
 			rm "${pak}" || die
 		fi
