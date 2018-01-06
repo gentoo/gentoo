@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -45,7 +45,7 @@ COMMON_DEPEND="
 	)
 	soundio? ( media-libs/libsoundio )
 	stk? ( media-libs/stk )
-	vst? ( || ( virtual/wine app-emulation/wine ) )
+	vst? ( virtual/wine )
 "
 DEPEND="${COMMON_DEPEND}
 	dev-qt/linguist-tools:5
