@@ -732,12 +732,6 @@ app-backup/obnam
 # Missing dependencies.
 >=dev-python/scrapy-1.4.0
 
-# Agostino Sarubbo <ago@gentoo.org> (23 Oct 2017)
-# It was a fresmee RDEPENDS. Freesmee has been removed since a while
-# so it is not a depend of any package. No upstream releases
-# Masked for removal in 30 days. Reference in bug #634536
-dev-util/ticpp
-
 # Robin H. Johnson <robbat2@gentoo.org> (22 Oct 2017)
 # Masking for testing, contains Fedora Hobbled-EC for USE=bindist
 =dev-libs/openssl-1.0.2l-r1

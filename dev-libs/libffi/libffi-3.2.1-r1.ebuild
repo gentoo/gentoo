@@ -54,7 +54,7 @@ src_prepare() {
 multilib_src_configure() {
 	use userland_BSD && export HOST="${CHOST}"
 	# python does not like miltilib-wrapped headers: bug #643582
-	# thus we install includes into different headers
+	# thus we install includes into ABI-specific paths
 	local includes="${EPREFIX}"/usr/$(get_libdir)/${P}/include/
 	econf \
 		$(use_enable static-libs static) \
