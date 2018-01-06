@@ -1,0 +1,75 @@
+From 1eaa3fb3afbbf4708695a25361527a70e2d7a02d Mon Sep 17 00:00:00 2001
+From: Brian Heim <brianlheim@gmail.com>
+Date: Tue, 4 Jul 2017 13:26:00 -0400
+Subject: [PATCH] DiskIO_UGens: include <functional>
+
+std::bind is in <functional> according to the C++ ISO standard, and
+gcc7.1 enforces this.
+---
+ server/plugins/DiskIO_UGens.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/server/plugins/DiskIO_UGens.cpp b/server/plugins/DiskIO_UGens.cpp
+index 47c91a139..d4bb1c51c 100644
+--- a/server/plugins/DiskIO_UGens.cpp
++++ b/server/plugins/DiskIO_UGens.cpp
+@@ -28,6 +28,7 @@
+ 
+ #include <atomic>
+ #include <new>
++#include <functional>
+ #include <SC_Lock.h>
+ 
+ #include <boost/lockfree/queue.hpp>
+-- 
+2.15.1
+
+From a891e7d5be4c4944970973cc8467485e8a4c0571 Mon Sep 17 00:00:00 2001
+From: Adrian Bunk <bunk@debian.org>
+Date: Thu, 7 Sep 2017 19:38:46 -0300
+Subject: [PATCH] PyrSched.cpp: #include <functional> to fix FTBFS
+
+Bug-Debian: https://bugs.debian.org/853671
+---
+ lang/LangPrimSource/PyrSched.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/lang/LangPrimSource/PyrSched.cpp b/lang/LangPrimSource/PyrSched.cpp
+index 02f0c6264..63487a58e 100644
+--- a/lang/LangPrimSource/PyrSched.cpp
++++ b/lang/LangPrimSource/PyrSched.cpp
+@@ -37,6 +37,7 @@
+ #include <string.h>
+ #include <math.h>
+ #include <limits>
++#include <functional>
+ 
+ #if defined(__APPLE__) || defined(__linux__)
+ # include <pthread.h>
+-- 
+2.15.1
+
+From c058e16ff215b0b318abb3aa9ab4d47c0eeac877 Mon Sep 17 00:00:00 2001
+From: hlolli <hlolli@gmail.com>
+Date: Mon, 10 Jul 2017 18:32:22 +0200
+Subject: [PATCH] adding functional header in PyrSerialPrim.cpp
+
+---
+ lang/LangPrimSource/PyrSerialPrim.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/lang/LangPrimSource/PyrSerialPrim.cpp b/lang/LangPrimSource/PyrSerialPrim.cpp
+index 3099598fe..5e2b40372 100644
+--- a/lang/LangPrimSource/PyrSerialPrim.cpp
++++ b/lang/LangPrimSource/PyrSerialPrim.cpp
+@@ -36,6 +36,7 @@
+ #include <termios.h>
+ #include <unistd.h>
+ #include <boost/atomic.hpp>
++#include <functional>
+ 
+ #include <stdexcept>
+ #include <sstream>
+-- 
+2.15.1
+

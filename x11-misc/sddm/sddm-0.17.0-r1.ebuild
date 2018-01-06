@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -65,6 +65,11 @@ src_configure() {
 		-DDBUS_CONFIG_FILENAME="org.freedesktop.sddm.conf"
 	)
 	cmake-utils_src_configure
+}
+
+src_install() {
+	cmake-utils_src_install
+	sed -i -e "/^InputMethod/s/qtvirtualkeyboard//" "${D}"/etc/sddm.conf || die
 }
 
 pkg_postinst() {
