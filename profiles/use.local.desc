@@ -1428,7 +1428,6 @@ dev-libs/libgit2:trace - Enable tracing support
 dev-libs/libgit2-glib:ssh - Enable SSH transport support
 dev-libs/libgpg-error:common-lisp - Install common-lisp files
 dev-libs/libgweather:glade - Installs catalog files for dev-util/glade
-dev-libs/libical:glib - Enable dev-libs/glib GObject interface support
 dev-libs/libisoburn:cdio - Enable EXPERIMENTAL use of libcdio as system adapter
 dev-libs/libisoburn:external-filters - Allow the use of external processes as file content filters (Note: this is a potential security risk)
 dev-libs/libisoburn:external-filters-setuid - Also allow the use of external setuid processes as file content filters (Note: this is a potential security risk)
