@@ -5320,7 +5320,7 @@ dev-python/python-designateclient 2.0.0 2.3.0 2.6.0 2.7.0: Python bindings to th
 dev-python/python-digest 1.7-r1: A Python library to aid in implementing HTTP Digest Authentication
 dev-python/python-discid 1.1.0 1.1.1: Python bindings for libdiscid
 dev-python/python-distutils-extra 2.38 2.39: Gettext support, themed icons and scrollkeeper-based documentation in distutils
-dev-python/python-docs 2.7.10 3.3.5-r1 3.4.3: HTML documentation for Python
+dev-python/python-docs 2.7.14 3.4.5 3.5.4 3.6.3: HTML documentation for Python
 dev-python/python-editor 0.4 1.0.3: Programmatically open an editor, capture the result.
 dev-python/python-efl 1.17.0: Python bindings for Enlightenment Fundation Libraries
 dev-python/python-fastimport 0.9.2-r1 0.9.6: Library for parsing the fastimport VCS serialization format
