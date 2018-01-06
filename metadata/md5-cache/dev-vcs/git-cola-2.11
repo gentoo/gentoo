@@ -10,5 +10,5 @@ RDEPEND=dev-python/pyinotify[python_targets_python2_7(-)?,python_targets_python3
 REQUIRED_USE=^^ ( python_single_target_python2_7 python_single_target_python3_4 python_single_target_python3_5 ) python_single_target_python2_7? ( python_targets_python2_7 ) python_single_target_python3_4? ( python_targets_python3_4 ) python_single_target_python3_5? ( python_targets_python3_5 )
 SLOT=0
 SRC_URI=https://github.com/git-cola/git-cola/archive/v2.11.tar.gz -> git-cola-2.11.tar.gz
-_eclasses_=distutils-r1	372bbe39047c0a2550319a3a82f3e063	multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	317a2557b4d7319a7418225f65accf77	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	readme.gentoo-r1	6f03e110529650f57fc7d1fb908b8986	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	virtualx	171580f737f5aaf18fcb456548588066	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_eclasses_=distutils-r1	372bbe39047c0a2550319a3a82f3e063	multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	317a2557b4d7319a7418225f65accf77	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	readme.gentoo-r1	6f03e110529650f57fc7d1fb908b8986	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	virtualx	3a3c4637ea6d5a2113707a644766337c	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
 _md5_=457e567e8ae0525bdd728d5e73752d57

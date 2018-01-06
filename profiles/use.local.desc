@@ -1772,7 +1772,6 @@ dev-python/pyudev:pyside - Install PySide bindings
 dev-python/pyudev:qt4 - Install PyQt4 bindings
 dev-python/pyudev:qt5 - Install PyQt5 bindings
 dev-python/pyyaml:libyaml - enable support for C implementation using libyaml
-dev-python/pyzmq:green - Enable gevent compatibility with zeromq
 dev-python/pyzor:gevent - Enable support for the gevent based handler
 dev-python/pyzor:mysql - Enables mysql support
 dev-python/pyzor:pyzord - enable support for pyzord
