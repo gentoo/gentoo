@@ -5268,7 +5268,7 @@ dev-python/pyqrcode 1.2.1: A pure Python QR code generator with SVG, EPS, PNG an
 dev-python/pyqtgraph 0.10.0: a pure-python graphics and GUI library built on PyQt/PySide and numpy
 dev-python/pyquery 1.2.13: A jQuery-like library for python
 dev-python/pyqwt 5.2.0-r2: Python bindings for the Qwt library
-dev-python/pyramid 1.5.1 1.5.8: A small open source Python web framework
+dev-python/pyramid 1.5.8: A small open source Python web framework
 dev-python/pyrex 0.9.9-r1: A language for writing Python extension modules
 dev-python/pyrfc3339 1.0: Generates and parses RFC 3339 timestamps
 dev-python/pyro 3.16-r1 4.41 4.56: Distributed object middleware for Python (RPC)
@@ -5276,12 +5276,12 @@ dev-python/pyroute2 0.4.12 0.4.21: A pure Python netlink and Linux network confi
 dev-python/pyrsistent 0.13.0: Persistent/Functional/Immutable data structures
 dev-python/pysaml2 4.0.2-r1 4.5.0: Python implementation of SAML Version 2 to be used in a WSGI environment
 dev-python/pysendfile 2.0.1: A python interface to sendfile(2) system call
-dev-python/pyserial 2.7-r1 3.2.1: Python Serial Port extension
+dev-python/pyserial 3.2.1: Python Serial Port extension
 dev-python/pyside 1.2.2-r1: Python bindings for the Qt framework
 dev-python/pyside-tools 0.2.15-r1: PySide development tools (lupdate, rcc, uic)
 dev-python/pysnmp 4.3.3: Python SNMP library
 dev-python/pysolr 3.3.2: Lightweight python wrapper for Apache Solr
-dev-python/pyspf 2.0.11 2.0.12: Python implementation of the Sender Policy Framework (SPF) protocol
+dev-python/pyspf 2.0.12: Python implementation of the Sender Policy Framework (SPF) protocol
 dev-python/pysrt 1.1.1: Python library used to edit or create SubRip files
 dev-python/pystache 0.5.4: Mustache for Python
 dev-python/pysvn 1.8.0: Object-oriented python bindings for subversion
@@ -5302,7 +5302,7 @@ dev-python/pytest-shutil 1.2.11: A goodie-bag of unix shell and environment tool
 dev-python/pytest-timeout 1.2.0: py.test plugin to abort hanging tests
 dev-python/pytest-virtualenv 1.2.11: Virtualenv fixture for py.test
 dev-python/pytest-xdist 1.15.0: Distributed testing and loop-on-failing modes
-dev-python/pytest-xprocess 0.9.1 0.12.1: Manage external processes across test runs
+dev-python/pytest-xprocess 0.12.1: Manage external processes across test runs
 dev-python/python-augeas 0.5.0: Python bindings for Augeas
 dev-python/python-barbicanclient 3.3.0 4.0.1 4.2.0 4.5.2: Client library for Barbican API.
 dev-python/python-bibtex 1.2.7-r1: A Python extension to parse BibTeX files
@@ -5318,7 +5318,7 @@ dev-python/python-dateutil 2.6.1: Extensions to the standard Python datetime mod
 dev-python/python-debian 0.1.28: Python modules to work with Debian-related data formats
 dev-python/python-designateclient 2.0.0 2.3.0 2.6.0 2.7.0: Python bindings to the Designate API.
 dev-python/python-digest 1.7-r1: A Python library to aid in implementing HTTP Digest Authentication
-dev-python/python-discid 1.1.0 1.1.1: Python bindings for libdiscid
+dev-python/python-discid 1.1.1: Python bindings for libdiscid
 dev-python/python-distutils-extra 2.38 2.39: Gettext support, themed icons and scrollkeeper-based documentation in distutils
 dev-python/python-docs 2.7.14 3.4.5 3.5.4 3.6.3: HTML documentation for Python
 dev-python/python-editor 0.4 1.0.3: Programmatically open an editor, capture the result.
@@ -10414,7 +10414,7 @@ www-client/elinks 0.12_pre6-r1: Advanced and well-established text-mode web brow
 www-client/epiphany 3.22.7: GNOME webbrowser based on Webkit
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 52.2.0 52.4.0 52.5.2: Firefox Web Browser
-www-client/firefox-bin 52.5.0-r1 52.5.2: Firefox Web Browser
+www-client/firefox-bin 52.5.3: Firefox Web Browser
 www-client/httrack 3.48.21-r1: HTTrack Website Copier, Open Source Offline Browser
 www-client/links 2.14: A fast and lightweight web browser running in both graphics and text mode
 www-client/lynx 2.8.9_pre11: An excellent console-based web browser with ssl support
