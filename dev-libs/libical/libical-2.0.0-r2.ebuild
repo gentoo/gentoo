@@ -27,7 +27,10 @@ DOCS=(
 	doc/{AddingOrModifyingComponents,UsingLibical}.txt
 )
 
-PATCHES=( "${FILESDIR}/fix-libdir-location.patch" )
+PATCHES=(
+	"${FILESDIR}/fix-libdir-location.patch"
+	"${FILESDIR}/${P}-tests.patch" #bug 532296
+)
 
 src_configure() {
 	# See above, introspection is disabled for v2.0.0 at least.

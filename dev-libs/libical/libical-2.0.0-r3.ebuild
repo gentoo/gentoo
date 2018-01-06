@@ -33,6 +33,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-libical.pc-icu-remove-full-paths.patch"
 	"${FILESDIR}/${P}-libical.pc-icu-move-to-requires.patch"
 	"${FILESDIR}/${P}-libical.pc-fix-libdir-location.patch"
+	"${FILESDIR}/${P}-tests.patch" #bug 532296
 )
 
 src_configure() {
