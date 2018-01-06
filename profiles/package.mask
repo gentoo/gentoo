@@ -792,11 +792,6 @@ app-editors/atom:beta
 # Gnome 3.26 package mask
 >=app-text/libgepub-0.5
 
-# Aaron Bauman <bman@gentoo.org> (1 Sep 2017)
-# vulnerable per bug #513818 and dead upstream
-# net-analyzer/ntopng is available
-net-analyzer/ntop
-
 # Anthony G. Basile <blueness@gentoo.org> (27 Aug 2017)
 # Upstream is no longer providing public patches
 sys-kernel/hardened-sources
