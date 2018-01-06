@@ -372,6 +372,11 @@
       <name>William Hubbs</name>
       <role>Misc stuff that needs to get done</role>
     </member>
+    <member>
+      <email>zlogene@gentoo.org</email>
+      <name>Mikle Kolyada</name>
+      <role>Minor stuff doer (bumps/security/stabilization)</role>
+    </member>
   </project>
   <project>
     <email>sci-biology@gentoo.org</email>
@@ -3184,11 +3189,6 @@ developers and volunteer mentors.</description>
       <email>pesa@gentoo.org</email>
       <name>Davide Pesavento</name>
       <role>Lead</role>
-    </member>
-    <member>
-      <email>zlogene@gentoo.org</email>
-      <name>Mikle Kolyada</name>
-      <role>Developer</role>
     </member>
   </project>
   <project>
