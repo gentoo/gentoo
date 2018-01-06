@@ -746,12 +746,6 @@ virtual/jre:1.7
 # Masked for removal in 30 days.
 app-backup/obnam
 
-# Mike Gilbert <floppym@gentoo.org> (28 Oct 2017)
-# Tests segfault, bug 635732.
-# No updates upstream since 2013.
-# Removal in 30 days.
-dev-python/whirlpool
-
 # Patrice Clement <monsieurp@gentoo.org> (28 Oct 2017)
 # Missing dependencies.
 >=dev-python/scrapy-1.4.0
