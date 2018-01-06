@@ -788,11 +788,6 @@ net-im/pyaim-t
 net-im/pork
 net-im/reaim
 
-# Aaron Bauman <bman@gentoo.org> (8 October 2017)
-# severely vulnerable and unmaintained sources.
-# Masked for removal in 30 days. Bug #627924
-sys-kernel/tuxonice-sources
-
 # Michał Górny <mgorny@gentoo.org> (05 Oct 2017)
 # (on behalf of QA)
 # Rogue version bumps that reintroduce QA violations that were fixed
