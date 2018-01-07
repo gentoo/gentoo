@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201801-03">
+  <title>Chromium, Google Chrome: Multiple vulnerabilities </title>
+  <synopsis>Multiple vulnerabilities have been found in Chromium and Google
+    Chrome, the worst of which could result in the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">chromium,google-chrome</product>
+  <announced>2018-01-07</announced>
+  <revised>2018-01-07: 1</revised>
+  <bug>640334</bug>
+  <bug>641376</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="www-client/chromium" auto="yes" arch="*">
+      <unaffected range="ge">63.0.3239.108</unaffected>
+      <vulnerable range="lt">63.0.3239.108</vulnerable>
+    </package>
+    <package name="www-client/google-chrome" auto="yes" arch="*">
+      <unaffected range="ge">63.0.3239.108</unaffected>
+      <vulnerable range="lt">63.0.3239.108</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Chromium is an open-source browser project that aims to build a safer,
+      faster, and more stable way for all users to experience the web.
+    </p>
+    
+    <p>Google Chrome is one fast, simple, and secure browser for all your
+      devices
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Chromium and Google
+      Chrome. Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, cause a Denial of Service condition, bypass
+      content security controls, or conduct URL spoofing.
+    </p>
+  </impact>
+  <workaround>
+    <p>There are no known workarounds at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Chromium users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-client/chromium-63.0.3239.108"
+    </code>
+    
+    <p>All Google Chrome users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-client/google-chrome-63.0.3239.108"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-15407">
+      CVE-2017-15407
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-15408">
+      CVE-2017-15408
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-15409">
+      CVE-2017-15409
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-15410">
+      CVE-2017-15410
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-15411">
+      CVE-2017-15411
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-15412">
+      CVE-2017-15412
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-15413">
+      CVE-2017-15413
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-15415">
+      CVE-2017-15415
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-15416">
+      CVE-2017-15416
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-15417">
+      CVE-2017-15417
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-15418">
+      CVE-2017-15418
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-15419">
+      CVE-2017-15419
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-15420">
+      CVE-2017-15420
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-15422">
+      CVE-2017-15422
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-15423">
+      CVE-2017-15423
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-15424">
+      CVE-2017-15424
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-15425">
+      CVE-2017-15425
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-15426">
+      CVE-2017-15426
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-15427">
+      CVE-2017-15427
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-15429">
+      CVE-2017-15429
+    </uri>
+    <uri link="https://chromereleases.googleblog.com/2017/12/stable-channel-update-for-desktop.html">
+      Google Chrome Release 20171206
+    </uri>
+    <uri link="https://chromereleases.googleblog.com/2017/12/stable-channel-update-for-desktop_14.html">
+      Google Chrome Release 20171214
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-01-05T05:50:33Z">jmbailey</metadata>
+  <metadata tag="submitter" timestamp="2018-01-07T23:22:12Z">jmbailey</metadata>
+</glsa>
