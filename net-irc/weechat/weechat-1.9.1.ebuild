@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,7 +25,7 @@ PLUGINS="+alias +buflist +charset +exec +fifo +logger +relay +scripts +spell +tr
 # dev-lang/v8 was dropped from Gentoo so we can't enable javascript support
 SCRIPT_LANGS="guile lua +perl +python ruby tcl"
 LANGS=" cs de es fr hu it ja pl pt pt_BR ru tr"
-IUSE="doc nls +ssl test ${LANGS// / linguas_} ${SCRIPT_LANGS} ${PLUGINS} ${INTERFACES} ${NETWORKS}"
+IUSE="doc nls +ssl test ${SCRIPT_LANGS} ${PLUGINS} ${INTERFACES} ${NETWORKS}"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
@@ -76,7 +76,7 @@ src_prepare() {
 	# install only required translations
 	local i
 	for i in ${LANGS} ; do
-		if ! use linguas_${i} ; then
+		if ! has ${i} ${LINGUAS-${i}} ; then
 			sed -i \
 				-e "/${i}.po/d" \
 				po/CMakeLists.txt || die
@@ -86,7 +86,7 @@ src_prepare() {
 	# install only required documentation ; en always
 	for i in $(grep add_subdirectory doc/CMakeLists.txt \
 			| sed -e 's/.*add_subdirectory(\(..\)).*/\1/' -e '/en/d'); do
-		if ! use linguas_${i} ; then
+		if ! has ${i} ${LINGUAS-${i}} ; then
 			sed -i \
 				-e '/add_subdirectory('${i}')/d' \
 				doc/CMakeLists.txt || die

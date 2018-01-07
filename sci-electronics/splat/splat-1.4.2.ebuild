@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ SRC_URI="http://www.qsl.net/kd2bd/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="doc hires linguas_es"
+IUSE="doc hires l10n_es"
 
 DEPEND="sys-libs/zlib
 	app-arch/bzip2"
@@ -61,7 +61,7 @@ src_compile() {
 
 src_install() {
 	local SPLAT_LANG="english"
-	use linguas_es && SPLAT_LANG="spanish"
+	use l10n_es && SPLAT_LANG="spanish"
 	# splat binary
 	dobin rfsplat
 	if use hires; then
