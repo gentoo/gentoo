@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -43,7 +43,7 @@ RDEPEND="
 	sci-libs/hdf5:=[cxx]
 	sys-apps/util-linux
 	media-gfx/graphviz
-	net-libs/ignition-msgs:=
+	net-libs/ignition-msgs:0=
 	>=sci-libs/ignition-math-2.3:3=
 	net-libs/ignition-transport:3=
 	x11-libs/qwt:6=[qt5]
