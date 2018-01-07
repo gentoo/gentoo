@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201801-05">
+  <title>OpenSSH: Permission issue</title>
+  <synopsis>A flaw has been discovered in OpenSSH which could allow a remote
+    attacker to create zero-length files.
+  </synopsis>
+  <product type="ebuild">OpenSSH</product>
+  <announced>2018-01-07</announced>
+  <revised>2018-01-07: 1</revised>
+  <bug>633428</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/openssh" auto="yes" arch="*">
+      <unaffected range="ge">7.5_p1-r3</unaffected>
+      <vulnerable range="lt">7.5_p1-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenSSH is a complete SSH protocol implementation that includes SFTP
+      client and server support.
+    </p>
+  </background>
+  <description>
+    <p>The process_open function in sftp-server.c in OpenSSH did not properly
+      prevent write operations in readonly mode.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could cause the creation of zero-length files.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OpenSSH users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/openssh-7.5_p1-r3"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-15906">
+      CVE-2017-15906
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-01-05T05:55:47Z">jmbailey</metadata>
+  <metadata tag="submitter" timestamp="2018-01-07T23:36:33Z">jmbailey</metadata>
+</glsa>
