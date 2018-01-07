@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201801-08">
+  <title>MiniUPnPc: Arbitrary code execution</title>
+  <synopsis>A vulnerability in MiniUPnPc might allow remote attackers to
+    execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">MiniUPnP</product>
+  <announced>2018-01-07</announced>
+  <revised>2018-01-07: 1</revised>
+  <bug>562684</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/miniupnpc" auto="yes" arch="*">
+      <unaffected range="ge">2.0.20170509</unaffected>
+      <vulnerable range="lt">2.0.20170509</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The client library, enabling applications to access the services
+      provided by an UPnP “Internet Gateway Device” present on the network.
+    </p>
+  </background>
+  <description>
+    <p>An exploitable buffer overflow vulnerability exists in the XML parser
+      functionality of the MiniUPnP library.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by enticing a user to connect to a malicious server,
+      could cause the execution of arbitrary code with the privileges of the
+      user running a MiniUPnPc linked application.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All MiniUPnPc users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/miniupnpc-2.0.20170509"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6031">
+      CVE-2015-6031
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-01-05T06:06:14Z">jmbailey</metadata>
+  <metadata tag="submitter" timestamp="2018-01-07T23:51:08Z">jmbailey</metadata>
+</glsa>
