@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,14 +12,14 @@ SRC_URI="https://dev.gentoo.org/~hasufell/distfiles/${P}.tar.xz
 LICENSE="SFI-SCLA"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="cdinstall editor zlib"
+IUSE="cdinstall editor ru-gold zlib"
 
 DEPEND="media-libs/libsdl[X,sound,video]
 	zlib? ( sys-libs/zlib )"
 RDEPEND="${DEPEND}
 	cdinstall? ( games-strategy/ja2-stracciatella-data )"
 
-LANGS="linguas_de +linguas_en linguas_fr linguas_it linguas_nl linguas_pl linguas_ru linguas_ru_gold"
+LANGS="l10n_de +l10n_en l10n_fr l10n_it l10n_nl l10n_pl l10n_ru"
 IUSE="$IUSE $LANGS"
 REQUIRED_USE="^^ ( ${LANGS//+/} )"
 
@@ -39,14 +39,13 @@ src_prepare() {
 src_compile() {
 	local myconf
 
-	case ${LINGUAS} in
+	case ${L10N} in
 		de) myconf="LNG=GERMAN" ;;
 		nl) myconf="LNG=DUTCH" ;;
 		fr) myconf="LNG=FRENCH" ;;
 		it) myconf="LNG=ITALIAN" ;;
 		pl) myconf="LNG=POLISH" ;;
-		ru) myconf="LNG=RUSSIAN" ;;
-		ru_gold) myconf="LNG=RUSSIAN_GOLD" ;;
+		ru) myconf="LNG=$(usex ru-gold RUSSIAN_GOLD RUSSIAN)" ;;
 		en) myconf="LNG=ENGLISH" ;;
 		*) die "wat" ;;
 	esac
