@@ -1,5 +1,7 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=6
 
 DESCRIPTION="PPD description files for (some) Kyocera Mita Printers"
 HOMEPAGE="http://www.kyoceramita.it/"
@@ -8,19 +10,14 @@ SRC_URI="Linux_PPDs_KSL${PV/\./_}.zip"
 LICENSE="kyocera-mita-ppds"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE_LINGUAS="en fr de it pt es"
-
-IUSE=""
-for lingua in $IUSE_LINGUAS; do
-	IUSE="${IUSE} linguas_$lingua"
-done
+IUSE="l10n_de +l10n_en l10n_es l10n_fr l10n_it l10n_pt"
+REQUIRED_USE="|| ( l10n_de l10n_en l10n_es l10n_fr l10n_it l10n_pt )"
+RESTRICT="fetch bindist"
 
 RDEPEND="net-print/cups"
 DEPEND="app-arch/unzip"
 
 S="${WORKDIR}/PPD's_KSL_${PV}"
-
-RESTRICT="fetch"
 
 pkg_nofetch() {
 	einfo "Please download ${A} from the following URL:"
@@ -30,21 +27,11 @@ pkg_nofetch() {
 	einfo "number of printers in six languages."
 }
 
-src_compile() { :; }
-
 src_install() {
 	insinto /usr/share/cups/model/KyoceraMita
 
-	local installall=yes
-	for lingua in $IUSE_LINGUAS; do
-		if use linguas_$lingua; then
-			installall=no
-			break;
-		fi
-	done
-
 	inslanguage() {
-		if [[ ${installall} == yes ]] || use linguas_$1; then
+		if use l10n_$1; then
 			doins $2/*.ppd || die "failed to install $2 ppds"
 		fi
 	}
@@ -56,5 +43,6 @@ src_install() {
 	inslanguage pt Portuguese
 	inslanguage es Spanish
 
-	dohtml ReadMe.htm || die
+	docinto html
+	dodoc ReadMe.htm
 }
