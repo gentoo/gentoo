@@ -257,11 +257,11 @@ src_install() {
 		pkgconfigdir="${EPREFIX}"/usr/$(get_libdir)/pkgconfig \
 		install
 
-	if use !examples; then
-		rm -r "${ED}"/usr/share/graphviz/demo || die
+	if ! use examples; then
+		rm -rf "${ED}"/usr/share/graphviz/demo || die
 	fi
 
-	if use !static-libs; then
+	if ! use static-libs; then
 		find "${ED}" -name '*.la' -delete || die
 	fi
 
