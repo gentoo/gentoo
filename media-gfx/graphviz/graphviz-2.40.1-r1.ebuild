@@ -257,9 +257,13 @@ src_install() {
 		pkgconfigdir="${EPREFIX}"/usr/$(get_libdir)/pkgconfig \
 		install
 
-	use examples || rm -rf "${ED}"/usr/share/graphviz/demo
+	if use !examples; then
+		rm -r "${ED}"/usr/share/graphviz/demo || die
+	fi
 
-	use static-libs || find "${ED}" -name '*.la' -exec rm -f {} +
+	if use !static-libs; then
+		find "${ED}" -name '*.la' -delete || die
+	fi
 
 	dodoc AUTHORS ChangeLog NEWS README
 
@@ -271,10 +275,10 @@ src_install() {
 pkg_postinst() {
 	# This actually works if --enable-ltdl is passed
 	# to configure
-	dot -c
+	dot -c || die
 }
 
 pkg_postrm() {
 	# Remove cruft, bug #547344
-	rm -f "${EROOT}usr/lib/graphviz/config{,6}"
+	rm -rf "${EROOT}"usr/lib/graphviz/config{,6} || die
 }
