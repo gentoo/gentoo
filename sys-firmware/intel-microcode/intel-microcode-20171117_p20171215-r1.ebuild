@@ -17,7 +17,7 @@ SRC_URI="mirror://gentoo/microcode-${PV}-r1.tgz
 
 LICENSE="intel-ucode"
 SLOT="0"
-KEYWORDS="-* amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 IUSE="initramfs +split-ucode"
 REQUIRED_USE="|| ( initramfs split-ucode )"
 
