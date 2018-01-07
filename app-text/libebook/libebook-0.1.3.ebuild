@@ -18,6 +18,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="doc test tools"
 
 RDEPEND="
+	app-text/liblangtag
 	dev-libs/icu:=
 	dev-libs/librevenge
 	dev-libs/libxml2
