@@ -44,15 +44,14 @@ do_python() {
 	fi
 }
 
-pkg_pretend() {
-	local MAX_WORKDIR=66
-
-	[[ "${#WORKDIR}" -le "${MAX_WORKDIR}" ]] ||
-		die "Cannot build package as WORKDIR '${WORKDIR}' is longer than ${MAX_WORKDIR} which will fail build"
-}
-
 pkg_setup() {
 	addpredict /run/user/$(id -u)/gnupg
+
+	local MAX_WORKDIR=66
+	if [[ "${#WORKDIR}" -gt "${MAX_WORKDIR}" ]]; then
+		ewarn "Disabling tests as WORKDIR '${WORKDIR}' is longer than ${MAX_WORKDIR} which will fail tests"
+		SKIP_TESTS=1
+	fi
 }
 
 src_prepare() {
@@ -76,6 +75,7 @@ src_configure() {
 	fi
 
 	econf \
+		$([[ -n "${SKIP_TESTS}" ]] && echo "--disable-gpg-test --disable-gpgsm-test") \
 		--enable-languages="${languages[*]}" \
 		$(use_enable static-libs static)
 
@@ -90,6 +90,8 @@ src_compile() {
 }
 
 src_test() {
+	[[ -z "${SKIP_TESTS}" ]] || return
+
 	default
 	if use python; then
 		test_python() {
