@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201801-04">
+  <title>LibXcursor: User-assisted execution of arbitrary code</title>
+  <synopsis>A vulnerability in LibXcursor might allow remote attackers to
+    execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">LibXcursor</product>
+  <announced>2018-01-07</announced>
+  <revised>2018-01-07: 1</revised>
+  <bug>639062</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="x11-libs/libXcursor" auto="yes" arch="*">
+      <unaffected range="ge">1.1.15</unaffected>
+      <vulnerable range="lt">1.1.15</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>X.Org X11 libXcursor runtime library.</p>
+  </background>
+  <description>
+    <p>It was discovered that libXcursor is prone to several heap overflows
+      when parsing malicious files.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by enticing a user to process a specially crafted
+      cursor file, could possibly execute arbitrary code with the privileges of
+      the process or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All LibXcursor users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-libs/libXcursor-1.1.15"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-16612">
+      CVE-2017-16612
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-01-05T05:33:40Z">jmbailey</metadata>
+  <metadata tag="submitter" timestamp="2018-01-07T23:27:33Z">jmbailey</metadata>
+</glsa>
