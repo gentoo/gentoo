@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -20,9 +20,9 @@ KEYWORDS="~alpha ~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-lin
 IUSE="aspell crypt idn modules otr spell ssl vim-syntax"
 
 LANGS="cs de fr it nl pl ru uk"
-# localized help versions are installed only, when LINGUAS var is set
+# localized help versions are installed only, when L10N var is set
 for i in ${LANGS}; do
-	IUSE="${IUSE} linguas_${i}"
+	IUSE="${IUSE} l10n_${i}"
 done;
 
 RDEPEND="crypt? ( >=app-crypt/gpgme-1.0.0 )
@@ -65,7 +65,7 @@ src_install() {
 
 	# clean unneeded language documentation
 	for i in ${LANGS}; do
-		use linguas_${i} || rm -rf "${ED}"/usr/share/${PN}/help/${i}
+		use l10n_${i} || rm -rf "${ED}"/usr/share/${PN}/help/${i}
 	done
 
 	# contrib themes
