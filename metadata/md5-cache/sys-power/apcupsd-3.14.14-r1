@@ -4,10 +4,10 @@ DESCRIPTION=APC UPS daemon with integrated tcp/ip remote shutdown
 EAPI=5
 HOMEPAGE=http://www.apcupsd.org/
 IUSE=snmp +usb +modbus cgi nls gnome kernel_linux
-KEYWORDS=~amd64 ~arm ~ppc x86 ~x86-fbsd
+KEYWORDS=~amd64 ~arm ppc x86 ~x86-fbsd
 LICENSE=GPL-2
 RDEPEND=|| ( >=sys-apps/util-linux-2.23[tty-helpers(-)] sys-freebsd/freebsd-ubin ) modbus? ( usb? ( virtual/libusb:0 ) ) cgi? ( >=media-libs/gd-1.8.4 ) nls? ( sys-devel/gettext ) snmp? ( >=net-analyzer/net-snmp-5.7.2 ) gnome? ( >=x11-libs/gtk+-2.4.0:2 dev-libs/glib:2 >=gnome-base/gconf-2.0 ) virtual/mailx
 SLOT=0
 SRC_URI=mirror://sourceforge/apcupsd/apcupsd-3.14.14.tar.gz
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	flag-o-matic	02908f00f002f0f07c5b74783d778325	linux-info	ca370deef9d44125d829f2eb6ebc83e0	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	8f5286f89e265842f5b5189666eae88b	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	udev	d91cac2c73b94629cad2daea66e0d182	versionator	c80ccf29e90adea7c5cae94b42eb76d0
-_md5_=c4ff1f3ee2c338774804f20ef826a1e9
+_md5_=d8ce8a961ca37a94e001d7037ba8f2ad
