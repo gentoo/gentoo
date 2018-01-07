@@ -127,7 +127,7 @@ app-admin/superadduser 1.0.9: Interactive adduser script from Slackware
 app-admin/supervisor 3.1.4: A system for controlling process state under UNIX
 app-admin/swatchdog 3.2.4-r1: Simple log watcher
 app-admin/sxid 4.2-r1: suid, sgid file and directory checking
-app-admin/sysklogd 1.5.1 1.5.1-r1: Standard log daemons
+app-admin/sysklogd 1.5.1-r1: Standard log daemons
 app-admin/syslog-ng 3.7.3: syslog replacement with advanced filtering features
 app-admin/syslog-summary 1.14-r1: Summarizes the contents of a syslog log file
 app-admin/sysstat 11.4.0: System performance tools for Linux
