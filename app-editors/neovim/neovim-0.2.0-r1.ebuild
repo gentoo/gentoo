@@ -64,6 +64,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DFEAT_TUI=$(usex tui)
 		-DENABLE_JEMALLOC=$(usex jemalloc)
+		-DPREFER_LUA=$(usex luajit no yes)
 	)
 	cmake-utils_src_configure
 }
