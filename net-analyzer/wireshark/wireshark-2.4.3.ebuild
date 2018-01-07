@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ SRC_URI="${HOMEPAGE}download/src/all-versions/${P/_/}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ia64 ppc ppc64 x86 ~x86-fbsd"
+KEYWORDS="amd64 arm ~arm64 ~hppa ia64 ppc ppc64 x86 ~x86-fbsd"
 IUSE="
 	adns androiddump +capinfos +caps +captype ciscodump cpu_flags_x86_sse4_2
 	+dftest doc doc-pdf +dumpcap +editcap geoip gtk kerberos libssh libxml2 lua
