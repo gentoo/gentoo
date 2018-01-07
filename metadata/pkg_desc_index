@@ -9713,7 +9713,7 @@ sys-apps/man-db 2.7.6.1-r2: a man replacement that utilizes berkdb instead of fl
 sys-apps/man-pages 4.13: A somewhat comprehensive collection of Linux man pages
 sys-apps/man-pages-posix 2013a: POSIX man-pages (0p, 1p, 3p)
 sys-apps/man2html 1.6g: Standard commands to read man pages
-sys-apps/mawk 1.3.4_p20150503: an (often faster than gawk) awk-interpreter
+sys-apps/mawk 1.3.4_p20150503 1.3.4_p20161120: an (often faster than gawk) awk-interpreter
 sys-apps/mcstrans 2.7: SELinux context translation to human readable names
 sys-apps/memtest86 4.3.7: A stand alone memory test for x86 computers
 sys-apps/memtest86+ 2.01 4.00 4.20-r1 5.01-r2: Memory tester based on memtest86
@@ -9951,7 +9951,7 @@ sys-firmware/alsa-firmware 1.0.29: Advanced Linux Sound Architecture firmware
 sys-firmware/atmel-firmware 1.3-r1: Firmware and config for atmel and atmel_cs wlan drivers included in linux 2.6
 sys-firmware/bluez-firmware 1.2: Firmware for Broadcom BCM203x and STLC2300 Bluetooth chips
 sys-firmware/edk2-ovmf 2017_pre20170505: UEFI firmware for 64-bit x86 virtual machines
-sys-firmware/intel-microcode 20140430 20150121 20151106 20161104 20170511 20170707 20171117_p20171215: Intel IA32/IA64 microcode update data
+sys-firmware/intel-microcode 20140430 20150121 20151106 20161104 20170511 20170707 20171117_p20171215 20171117_p20171215-r1: Intel IA32/IA64 microcode update data
 sys-firmware/ipw2100-firmware 1.3: Firmware for the Intel PRO/Wireless 2100 3B miniPCI adapter
 sys-firmware/ipw2200-firmware 3.1: Firmware for the Intel PRO/Wireless 2200BG/2915ABG miniPCI and 2225BG PCI
 sys-firmware/ipxe 1.0.0_p20130925 1.0.0_p20160620: Open source network boot (PXE) firmware
