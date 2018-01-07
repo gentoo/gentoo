@@ -3,7 +3,7 @@ DEPEND=>=dev-libs/glib-2.26:2 !gtk3? ( >=x11-libs/gtk+-2.12:2 ) gtk3? ( x11-libs
 DESCRIPTION=A file manager that implements the popular two-pane design
 EAPI=5
 HOMEPAGE=http://emelfm2.net/
-IUSE=acl ansi gimp gtk3 kernel_linux nls policykit spell udisks linguas_de linguas_fr linguas_ja linguas_pl linguas_ru linguas_zh_CN
+IUSE=acl ansi gimp gtk3 kernel_linux nls policykit spell udisks
 KEYWORDS=amd64 ~ppc ~ppc64 ~sparc x86
 LICENSE=GPL-3 LGPL-3
 RDEPEND=>=dev-libs/glib-2.26:2 !gtk3? ( >=x11-libs/gtk+-2.12:2 ) gtk3? ( x11-libs/gtk+:3 ) acl? ( sys-apps/acl ) gimp? ( media-gfx/gimp ) policykit? ( sys-auth/polkit ) spell? ( >=app-text/gtkspell-2.0.14:2 ) udisks? ( sys-fs/udisks:2 )
@@ -11,4 +11,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=http://emelfm2.net/rel/emelfm2-0.9.1.tar.bz2
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=e75a22244bb970fc2f81601fa717b068
+_md5_=7430063d83125200a840b7834c6f683c
