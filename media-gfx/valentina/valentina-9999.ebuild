@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,11 +15,10 @@ SLOT="0"
 KEYWORDS=""
 IUSE="gnome"
 
-# en_IN not supported in Gentoo so not added here
-LANGS="cs_CZ de_DE el_GR en_CA en_US es_ES fi_FI fr_FR he_IL id_ID it_IT nl_NL pt_BR ro_RO ru_RU uk_UA zh_CN"
+LANGS="cs de el en en es fi fr he id it nl pt-BR ro ru uk zh-CN"
 
 for LANG in ${LANGS}; do
-	IUSE="${IUSE} linguas_${LANG}"
+	IUSE="${IUSE} l10n_${LANG}"
 done
 
 CDEPEND="
@@ -39,8 +38,59 @@ src_configure() {
 	local locales=""
 
 	for LANG in ${LANGS}; do
-		if use linguas_${LANG}; then
-			locales="${locales} ${LANG}"
+		if use l10n_${LANG}; then
+			case ${LANG} in
+			"cs")
+				locale="cs_CZ"
+				;;
+			"de")
+				locale="de_DE"
+				;;
+			"el")
+				locale="el_GR"
+				;;
+			"en")
+				locale="en_CA en_IN en_US"
+				;;
+			"es")
+				locale="es_ES"
+				;;
+			"fi")
+				locale="fi_FI"
+				;;
+			"fr")
+				locale="fr_FR"
+				;;
+			"he")
+				locale="he_IL"
+				;;
+			"id")
+				locale="id_ID"
+				;;
+			"it")
+				locale="it_IT"
+				;;
+			"nl")
+				locale="nl_NL"
+				;;
+			"pt-BR")
+				locale="pt_BR"
+				;;
+			"ro")
+				locale="ro_RO"
+				;;
+			"ru")
+				locale="ru_RU"
+				;;
+			"uk")
+				locale="uk_UA"
+				;;
+			"zh-CN")
+				locale="zh_CN"
+				;;
+			esac
+
+			locales="${locales} ${locale}"
 		fi
 	done
 
