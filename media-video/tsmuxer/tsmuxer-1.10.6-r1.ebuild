@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,7 +13,7 @@ LICENSE="SmartLabs"
 SLOT="0"
 
 KEYWORDS="~amd64 ~x86"
-IUSE="qt4 linguas_ru"
+IUSE="qt4 l10n_ru"
 
 QA_FLAGS_IGNORED="opt/${PN}/bin/tsMuxeR opt/${PN}/bin/tsMuxerGUI"
 
@@ -73,5 +73,5 @@ src_install() {
 		make_desktop_entry tsMuxerGUI "tsMuxeR GUI" "${PN}" "Qt;AudioVideo;Video"
 	fi
 
-	use linguas_ru && dodoc readme.rus.txt
+	use l10n_ru && dodoc readme.rus.txt
 }
