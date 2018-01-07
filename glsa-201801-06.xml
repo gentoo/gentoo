@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201801-06">
+  <title>Back In Time: Command injection</title>
+  <synopsis>A command injection vulnerability in 'Back in Time' may allow for
+    the execution of arbitrary shell commands.
+  </synopsis>
+  <product type="ebuild">backintime</product>
+  <announced>2018-01-07</announced>
+  <revised>2018-01-07: 1</revised>
+  <bug>636974</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="app-backup/backintime" auto="yes" arch="*">
+      <unaffected range="ge">1.1.24</unaffected>
+      <vulnerable range="lt">1.1.24</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A simple backup tool for Linux, inspired by “flyback project”.</p>
+  </background>
+  <description>
+    <p>‘Back in Time’ did improper escaping/quoting of file paths used as
+      arguments to the ‘notify-send’ command leading to some parts of file
+      paths being executed as shell commands within an os.system call.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A context-dependent attacker could execute arbitrary shell commands via
+      a specially crafted file.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All ‘Back In Time’ users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-backup/backintime-1.1.24"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-16667">
+      CVE-2017-16667
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-01-05T05:36:24Z">jmbailey</metadata>
+  <metadata tag="submitter" timestamp="2018-01-07T23:41:27Z">jmbailey</metadata>
+</glsa>
