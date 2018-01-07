@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit flag-o-matic toolchain-funcs
@@ -15,8 +15,8 @@ W32API_BIN="3.12-1"
 MY_P="${PN}-${PV%.*}-${PV##*.}"
 DESCRIPTION="Linux-like environment for Windows"
 HOMEPAGE="http://cygwin.com/"
-SRC_URI="!crosscompile_opts_headers-only? ( ftp://sourceware.org/pub/cygwin/release/cygwin/${MY_P}-src.tar.bz2 )
-	crosscompile_opts_headers-only? (
+SRC_URI="!headers-only? ( ftp://sourceware.org/pub/cygwin/release/cygwin/${MY_P}-src.tar.bz2 )
+	headers-only? (
 		ftp://sourceware.org/pub/cygwin/release/w32api/w32api-${W32API_BIN}.tar.bz2
 		ftp://sourceware.org/pub/cygwin/release/cygwin/${MY_P}.tar.bz2
 	)"
@@ -24,7 +24,7 @@ SRC_URI="!crosscompile_opts_headers-only? ( ftp://sourceware.org/pub/cygwin/rele
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="crosscompile_opts_headers-only"
+IUSE="headers-only"
 RESTRICT="strip"
 
 DEPEND=""
@@ -32,7 +32,7 @@ DEPEND=""
 S=${WORKDIR}
 
 just_headers() {
-	use crosscompile_opts_headers-only && [[ ${CHOST} != ${CTARGET} ]]
+	use headers-only && [[ ${CHOST} != ${CTARGET} ]]
 }
 
 pkg_setup() {

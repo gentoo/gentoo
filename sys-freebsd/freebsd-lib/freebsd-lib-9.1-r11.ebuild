@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -54,7 +54,7 @@ if [ "${CTARGET}" = "${CHOST}" -a "${CATEGORY#*cross-}" != "${CATEGORY}" ]; then
 fi
 
 IUSE="atm bluetooth ssl hesiod ipv6 kerberos usb netware
-	build crosscompile_opts_headers-only zfs
+	build headers-only zfs
 	userland_GNU userland_BSD"
 
 QA_DT_NEEDED="lib/libc.so.7 usr/lib32/libc.so.7"
@@ -358,7 +358,7 @@ src_compile() {
 	cd "${WORKDIR}/include"
 	$(freebsd_get_bmake) CC="$(tc-getCC)" || die "make include failed"
 
-	use crosscompile_opts_headers-only && return 0
+	use headers-only && return 0
 
 	# Bug #270098
 	append-flags $(test-flags -fno-strict-aliasing)
@@ -485,7 +485,7 @@ do_install() {
 	CTARGET="${CHOST}" \
 		install_includes ${INCLUDEDIR}
 
-	is_crosscompile && use crosscompile_opts_headers-only && return 0
+	is_crosscompile && use headers-only && return 0
 
 	for i in $(get_subdirs) ; do
 		einfo "Installing in ${i}..."

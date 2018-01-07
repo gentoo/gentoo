@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -28,7 +28,7 @@ HOMEPAGE="https://sourceware.org/newlib/"
 
 LICENSE="NEWLIB LIBGLOSS GPL-2"
 SLOT="0"
-IUSE="nls threads unicode crosscompile_opts_headers-only"
+IUSE="nls threads unicode headers-only"
 RESTRICT="strip"
 
 NEWLIBBUILD="${WORKDIR}/build"

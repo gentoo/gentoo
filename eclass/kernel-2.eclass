@@ -667,7 +667,7 @@ if [[ ${ETYPE} == sources ]]; then
 
 elif [[ ${ETYPE} == headers ]]; then
 	DESCRIPTION="Linux system headers"
-	IUSE="crosscompile_opts_headers-only"
+	IUSE="headers-only"
 
 	# Since we should NOT honour KBUILD_OUTPUT in headers
 	# lets unset it here.
@@ -693,7 +693,7 @@ kernel_header_destdir() {
 # @DESCRIPTION:
 # set use if necessary for cross compile support
 cross_pre_c_headers() {
-	use crosscompile_opts_headers-only && [[ ${CHOST} != ${CTARGET} ]]
+	use headers-only && [[ ${CHOST} != ${CTARGET} ]]
 }
 
 # @FUNCTION: env_setup_xmakeopts
