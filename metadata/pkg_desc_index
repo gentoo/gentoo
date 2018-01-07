@@ -4768,7 +4768,7 @@ dev-python/et_xmlfile 1.0.1: An implementation of lxml.xmlfile for the standard 
 dev-python/etsdevtools 4.0.2-r1: Enthought Tool Suite: Tools to support Python development
 dev-python/etsproxy 0.1.2-r1: Enthought Tool Suite: Proxy modules for backwards compatibility
 dev-python/eunuchs 20050320.1-r1: Missing manly parts of UNIX API for Python
-dev-python/eventlet 0.20.1-r1: Highly concurrent networking library
+dev-python/eventlet 0.18.4 0.20.1-r1: Highly concurrent networking library
 dev-python/execnet 1.4.1: Rapid multi-Python deployment
 dev-python/extras 0.0.3: Useful extra bits for Python that should be in the standard library
 dev-python/extremes 1.1.1: Production-quality 'Min' and 'Max' objects
