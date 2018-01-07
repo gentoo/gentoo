@@ -12,7 +12,7 @@
 	</maintainer>
 	<use>
 		<flag name="github">Add github support into PCB editor</flag>
-		<flag name="i18n">Allow GUI internationalization through linguas_* use flags</flag>
+		<flag name="i18n">Allow GUI internationalization through l10n_* use flags</flag>
 		<flag name="minimal">Build only binaries without parts library and examples</flag>
 		<flag name="python">Enable python scripting support</flag>
 	</use>
