@@ -1,22 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit cmake-utils
-
-DESCRIPTION="Core libraries for a video editor designed for simple cutting, filtering and encoding tasks"
-HOMEPAGE="http://fixounet.free.fr/avidemux"
-
-# Multiple licenses because of all the bundled stuff.
-LICENSE="GPL-1 GPL-2 MIT PSF-2 public-domain"
-SLOT="2.6"
-IUSE="debug nls nvenc sdl system-ffmpeg vaapi vdpau xv"
-
 if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/mean00/avidemux2.git"
 	EGIT_CHECKOUT_DIR=${WORKDIR}
-
 	inherit git-r3
 else
 	MY_PN="${PN/-core/}"
@@ -24,6 +13,15 @@ else
 	SRC_URI="mirror://sourceforge/${MY_PN}/${MY_PN}/${PV}/${MY_P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
+inherit cmake-utils
+
+DESCRIPTION="Core libraries for simple video cutting, filtering and encoding tasks"
+HOMEPAGE="http://fixounet.free.fr/avidemux"
+
+# Multiple licenses because of all the bundled stuff.
+LICENSE="GPL-1 GPL-2 MIT PSF-2 public-domain"
+SLOT="2.6"
+IUSE="debug nls nvenc sdl system-ffmpeg vaapi vdpau xv"
 
 # Trying to use virtual; ffmpeg misses aac,cpudetection USE flags now though, are they needed?
 COMMON_DEPEND="
@@ -52,13 +50,16 @@ src_prepare() {
 	cmake-utils_src_prepare
 
 	if use system-ffmpeg ; then
-		# Preparations to support the system ffmpeg. Currently fails because it depends on files the system ffmpeg doesn't install.
-		local error="Failed to remove ffmpeg."
+		# Preparations to support the system ffmpeg. Currently fails because
+		# it depends on files the system ffmpeg doesn't install.
+		local error="Failed to remove bundled ffmpeg."
 
-		rm -rf cmake/admFFmpeg* cmake/ffmpeg* avidemux_core/ffmpeg_package buildCore/ffmpeg || die "${error}"
-		sed -i -e 's/include(admFFmpegUtil)//g' avidemux/commonCmakeApplication.cmake || die "${error}"
-		sed -i -e '/registerFFmpeg/d' avidemux/commonCmakeApplication.cmake || die "${error}"
-		sed -i -e 's/include(admFFmpegBuild)//g' avidemux_core/CMakeLists.txt || die "${error}"
+		rm -r cmake/admFFmpeg* cmake/ffmpeg* avidemux_core/ffmpeg_package \
+			buildCore/ffmpeg || die "${error}"
+		sed -e 's/include(admFFmpegUtil)//g' -e '/registerFFmpeg/d' \
+			-i avidemux/commonCmakeApplication.cmake || die "${error}"
+		sed -e 's/include(admFFmpegBuild)//g' \
+			-i avidemux_core/CMakeLists.txt || die "${error}"
 	fi
 }
 
