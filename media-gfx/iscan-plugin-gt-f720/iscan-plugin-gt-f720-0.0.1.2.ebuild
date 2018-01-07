@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -18,11 +18,6 @@ LICENSE="AVASYS"
 SLOT="0"
 KEYWORDS="-* amd64 x86"
 
-IUSE=""
-IUSE_LINGUAS="ja"
-
-for X in ${IUSE_LINGUAS}; do IUSE="${IUSE} linguas_${X}"; done
-
 DEPEND=">=media-gfx/iscan-2.21.0"
 RDEPEND="${DEPEND}"
 
@@ -36,13 +31,6 @@ src_install() {
 	# install scanner firmware
 	insinto /usr/share/esci
 	doins "${WORKDIR}/usr/share/esci/"*
-
-	# install docs
-	if use linguas_ja; then
-		dodoc usr/share/doc/*/AVASYSPL.ja.txt
-	 else
-		dodoc usr/share/doc/*/AVASYSPL.en.txt
-	fi
 
 	# install scanner plugins
 	insinto "${MY_LIB}/esci"
