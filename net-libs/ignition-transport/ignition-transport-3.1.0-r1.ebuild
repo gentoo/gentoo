@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,7 +15,7 @@ KEYWORDS="~amd64"
 IUSE=""
 
 DEPEND="
-	net-libs/ignition-msgs:=
+	net-libs/ignition-msgs:0=
 	dev-libs/protobuf:=
 	>=net-libs/zeromq-3.2.0:=
 	sys-apps/util-linux
