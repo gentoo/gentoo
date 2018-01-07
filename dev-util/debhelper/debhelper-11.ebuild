@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,11 +12,11 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux"
 IUSE="test"
-DH_LINGUAS=( de es fr )
-IUSE+=" ${DH_LINGUAS[@]/#/linguas_}"
+DH_LANGS=( de es fr )
+IUSE+=" ${DH_LANGS[@]/#/l10n_}"
 
 NLS_DEPEND=$(
-	printf "linguas_%s? ( >=app-text/po4a-0.24 )\n" ${DH_LINGUAS[@]}
+	printf "l10n_%s? ( >=app-text/po4a-0.24 )\n" ${DH_LANGS[@]}
 )
 
 RDEPEND="
@@ -39,10 +39,10 @@ S=${WORKDIR}/${PN}
 src_compile() {
 	tc-export CC
 
-	local LANGS="" USE_NLS=no lingua
-	for lingua in ${DH_LINGUAS[@]}; do
-		if use linguas_${lingua}; then
-			LANGS+=" ${lingua}"
+	local LANGS="" USE_NLS=no lang
+	for lang in ${DH_LANGS[@]}; do
+		if use l10n_${lang}; then
+			LANGS+=" ${lang}"
 			USE_NLS=yes
 		fi
 	done
@@ -55,14 +55,14 @@ src_install() {
 	dodoc doc/* debian/changelog
 	docinto examples
 	dodoc examples/*
-	local lingua
+	local lang
 	for manfile in *.1 *.7 ; do
-		for lingua in ${DH_LINGUAS[@]}; do
+		for lang in ${DH_LANGS[@]}; do
 			case ${manfile} in
-				*.${lingua}.?)
-					use linguas_${lingua} \
-						&& cp ${manfile} "${T}"/${manfile/.${lingua}/} \
-						&& doman -i18n=${lingua} "${T}"/${manfile/.${lingua}/}
+				*.${lang}.?)
+					use l10n_${lang} \
+						&& cp ${manfile} "${T}"/${manfile/.${lang}/} \
+						&& doman -i18n=${lang} "${T}"/${manfile/.${lang}/}
 					;;
 				*)
 					doman ${manfile}
