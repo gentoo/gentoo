@@ -9773,7 +9773,6 @@ sys-apps/tcp-wrappers 7.6.22-r1: TCP Wrappers
 sys-apps/texinfo 6.1 6.3: The GNU info program and utilities
 sys-apps/the_silver_searcher 2.0.0: A code-searching tool similar to ack, but faster
 sys-apps/timer_entropyd 0.2: A timer-based entropy generator
-sys-apps/tuxonice-userui 1.1-r2: User Interface for TuxOnIce
 sys-apps/uam 0.3.2: Simple udev-based automounter for removable USB media
 sys-apps/ucspi-ssl 0.94-r1: Command-line tools for building SSL client-server applications
 sys-apps/ucspi-tcp 0.88-r17: Collection of tools for managing UNIX services
