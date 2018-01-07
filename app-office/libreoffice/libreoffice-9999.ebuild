@@ -249,6 +249,7 @@ PATCHES=(
 
 	# TODO: upstream
 	"${FILESDIR}/${PN}-5.2.5.1-glibc-2.24.patch"
+	"${FILESDIR}/${PN}-6.0.0.1-poppler-0.62.patch" # bug 642602
 )
 
 pkg_pretend() {

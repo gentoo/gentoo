@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -15,7 +15,7 @@ IUSE=""
 
 DEPEND="dev-qt/qtgui:4
 	dev-qt/qtcore:4
-	app-text/poppler[qt4]"
+	<app-text/poppler-0.62.0[qt4]"
 RDEPEND="${DEPEND}
 	virtual/latex-base
 	dev-texlive/texlive-pstricks
