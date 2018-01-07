@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201801-02">
+  <title>OptiPNG: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in OptiPNG, the worst of
+    which may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">optipng</product>
+  <announced>2018-01-07</announced>
+  <revised>2018-01-07: 1</revised>
+  <bug>637936</bug>
+  <bug>639690</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/optipng" auto="yes" arch="*">
+      <unaffected range="ge">0.7.6-r2</unaffected>
+      <vulnerable range="lt">0.7.6-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OptiPNG is a PNG optimizer that re-compresses image files to a smaller
+      size, without losing any information.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in OptiPNG. Please review
+      the referenced CVE identifiers for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to process a specially crafted
+      image file, possibly resulting in execution of arbitrary code with the
+      privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OptiPNG users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-gfx/optipng-0.7.6-r2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-1000229">
+      CVE-2017-1000229
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-16938">
+      CVE-2017-16938
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-12-03T01:46:44Z">jmbailey</metadata>
+  <metadata tag="submitter" timestamp="2018-01-07T23:16:40Z">jmbailey</metadata>
+</glsa>
