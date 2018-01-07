@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201801-09">
+  <title>WebkitGTK+: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in WebkitGTK+, the worst
+    of which may lead to arbitrary code execution. 
+  </synopsis>
+  <product type="ebuild">WebkitGTK+</product>
+  <announced>2018-01-07</announced>
+  <revised>2018-01-07: 1</revised>
+  <bug>641752</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/webkit-gtk" auto="yes" arch="*">
+      <unaffected range="ge" slot="4">2.18.4</unaffected>
+      <vulnerable range="lt" slot="4">2.18.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>WebKitGTK+ is a full-featured port of the WebKit rendering engine.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in WebkitGTK+. Please
+      review the referenced CVE Identifiers for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker, by enticing a user to visit maliciously crafted web
+      content, may be able to execute arbitrary code or cause memory
+      corruption.
+    </p>
+  </impact>
+  <workaround>
+    <p>There are no known workarounds at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All WebkitGTK+ users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/webkit-gtk-2.18.4:4"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13856">
+      CVE-2017-13856
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13866">
+      CVE-2017-13866
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13870">
+      CVE-2017-13870
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7156">
+      CVE-2017-7156
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7157">
+      CVE-2017-7157
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-01-05T05:25:45Z">jmbailey</metadata>
+  <metadata tag="submitter" timestamp="2018-01-07T23:57:41Z">jmbailey</metadata>
+</glsa>
