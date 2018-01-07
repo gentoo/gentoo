@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,7 +14,6 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="acl ansi gimp gtk3 kernel_linux nls policykit spell udisks"
 
 EMELFM2_LINGUAS=( de fr ja pl ru zh_CN )
-IUSE+=" ${EMELFM2_LINGUAS[@]/#/linguas_}"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.26:2
@@ -46,7 +45,7 @@ src_prepare() {
 
 	local lingua
 	for lingua in ${EMELFM2_LINGUAS[@]}; do
-		use linguas_${lingua} || mv po/${lingua}.po{,.unwanted}
+		has ${lingua} ${LINGUAS-${lingua}} || mv po/${lingua}.po{,.unwanted}
 	done
 }
 
