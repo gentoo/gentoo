@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,7 @@ SRC_URI="https://github.com/cucumber/cucumber-ruby/archive/v${PV}.tar.gz -> ${P}
 RUBY_S="cucumber-ruby-${PV}"
 LICENSE="Ruby"
 
-KEYWORDS="~amd64 ~arm64 ~ia64 ~ppc"
+KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc"
 SLOT="0"
 IUSE="examples test"
 
