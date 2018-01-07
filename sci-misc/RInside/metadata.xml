@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>noreplay@gmail.com</email>
+		<name>cloc3</name>
+		<description>Rccp</description>
+		<description lang="it">---</description>
+	</maintainer>  
+	<upstream>
+		<changelog>https://github.com/RcppCore/Rcpp/blob/master/ChangeLog</changelog>
+	</upstream>
+</pkgmetadata>
