@@ -4,7 +4,6 @@
 EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
-
 inherit distutils-r1
 
 DESCRIPTION="Python client for Neovim"
@@ -19,20 +18,18 @@ IUSE="test"
 COMMON_DEPEND="
 	>=dev-python/msgpack-0.4.0[${PYTHON_USEDEP}]
 	virtual/python-greenlet[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/trollius[${PYTHON_USEDEP}]' python2_7)
-"
+	$(python_gen_cond_dep 'dev-python/trollius[${PYTHON_USEDEP}]' python2_7)"
 
 RDEPEND="
 	${COMMON_DEPEND}
-	>=app-editors/neovim-0.1.6
-"
+	>=app-editors/neovim-0.1.6"
+
 DEPEND="
 	${COMMON_DEPEND}
 	test? (
 		${RDEPEND}
 		dev-python/nose[${PYTHON_USEDEP}]
-	)
-"
+	)"
 
 S="${WORKDIR}/python-client-${PV}"
 

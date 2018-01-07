@@ -1,8 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+
+PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
 inherit distutils-r1
 
 DESCRIPTION="Python client for Neovim"
@@ -16,12 +17,10 @@ KEYWORDS="~amd64 ~x86"
 DEPEND="
 	>=dev-python/msgpack-0.4.0[${PYTHON_USEDEP}]
 	virtual/python-greenlet[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/trollius[${PYTHON_USEDEP}]' python{2_7,3_3})
-"
+	$(python_gen_cond_dep 'dev-python/trollius[${PYTHON_USEDEP}]' python{2_7,3_3})"
 
 RDEPEND="
 	${DEPEND}
-	>=app-editors/neovim-0.1.3
-"
+	>=app-editors/neovim-0.1.3"
 
 S="${WORKDIR}/python-client-${PV}"
