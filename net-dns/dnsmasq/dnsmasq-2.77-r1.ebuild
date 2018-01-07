@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,10 +17,6 @@ IUSE="auth-dns conntrack dbus +dhcp dhcp-tools dnssec +id idn libidn2 +inotify"
 IUSE+=" ipv6 lua nls script selinux static tftp"
 
 DM_LINGUAS=(de es fi fr id it no pl pt_BR ro)
-
-for dm_lingua in "${DM_LINGUAS[@]}"; do
-	IUSE+=" linguas_${dm_lingua}"
-done
 
 CDEPEND="dbus? ( sys-apps/dbus )
 	idn? (
@@ -147,7 +143,8 @@ src_install() {
 		install$(use nls && echo "-i18n")
 
 	for lingua in "${DM_LINGUAS[@]}"; do
-		use linguas_${lingua} || rm -rf "${D}"/usr/share/locale/${lingua}
+		has ${lingua} ${LINGUAS-${lingua}} \
+			|| rm -rf "${D}"/usr/share/locale/${lingua}
 	done
 	[[ -d "${D}"/usr/share/locale/ ]] && rmdir --ignore-fail-on-non-empty "${D}"/usr/share/locale/
 
