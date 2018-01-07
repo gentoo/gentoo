@@ -622,30 +622,6 @@ net-libs/polarssl
 # Bug #640884. Masked for removal in 30 days.
 sci-electronics/cirkuit
 
-# Andreas Sturmlechner <asturm@gentoo.org> (12 Dec 2017)
-# Depends on dead kdelibs4/qt4, unmaintained upstream. No port to
-# KF5 released.
-# Possible alternatives are media-sound/cantata (an awesome mpd client),
-# media-sound/clementine and media-sound/tomahawk (the latter also declared
-# unmaintained upstream).
-# Bug #635468. Masked for removal in 30 days.
-media-sound/amarok
-kde-apps/kdebase-kioslaves
-kde-apps/phonon-kde
-x11-libs/qtscriptgenerator
-
-# Andreas Sturmlechner <asturm@gentoo.org> (12 Dec 2017)
-# Depends on dead media-sound/amarok:4, dead upstream,
-# last release in 2006. Bug #635468. Masked for removal in 30 days.
-media-sound/vdramgw
-
-# Andreas Sturmlechner <asturm@gentoo.org> (12 Dec 2017)
-# Depends on dead kdelibs4/qt4, no port to KF5 released yet.
-# If you depend on this package, help test KF5-based simon-9999
-# to decide on a possible snapshot. Bugs #640846, 639960, 635816.
-# Masked for removal in 30 days.
-app-accessibility/simon:0
-
 # Patrice Clement <monsieurp@gentoo.org> (12 Dec 2017)
 # Masked due to a hard dependency on an ancient versions of dev-libs/msgpack
 # (<0.6) that have been punted from the tree.
