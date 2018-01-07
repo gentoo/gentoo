@@ -8374,7 +8374,7 @@ net-firewall/ebtables 2.0.10.4: Utility that enables basic Ethernet frame filter
 net-firewall/ferm 2.4: Command line util for managing firewall rules
 net-firewall/firehol 3.1.3 3.1.4: iptables firewall generator
 net-firewall/firewalld 0.4.3.3: A firewall daemon with D-BUS interface providing a dynamic firewall
-net-firewall/fwbuilder 5.0.1.3592-r1: A firewall GUI
+net-firewall/fwbuilder 5.3.7: A firewall GUI
 net-firewall/fwipsec 0.4.2-r1: Firewall scripts that control iptables, FreeS/WAN, and squid
 net-firewall/ipset 6.29: IPset tool for iptables, successor to ippool
 net-firewall/ipt_netflow 2.2-r2: Netflow iptables module
