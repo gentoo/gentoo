@@ -212,7 +212,6 @@ linguas_el - Greek locale
 linguas_el_GR - Greek locale
 linguas_en - English locale
 linguas_en_AU - English locale for Australia
-linguas_en_CA - English locale for Canada
 linguas_en_GB - English locale for Britain
 linguas_en_US - English locale for America
 linguas_eo - Esperanto locale
@@ -325,7 +324,6 @@ linguas_th_TH - Thai locale Thailand
 linguas_tl - Tagalog locale
 linguas_tr - Turkish locale
 linguas_tr_TR - Turkish locale for Turkey
-linguas_ug - Uighur locale
 linguas_uk - Ukrainian locale
 linguas_uk_UA - Ukrainian locale for Ukraine
 linguas_ur - Urdu locale
