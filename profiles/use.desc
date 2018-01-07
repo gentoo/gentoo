@@ -183,10 +183,8 @@ libsamplerate - Build with support for converting sample rates using libsamplera
 libwww - Add libwww support (General purpose WEB API)
 linguas_af - Afrikaans locale
 linguas_af_ZA - Afrikaans locale for South Africa
-linguas_am - Amharic locale
 linguas_ar - Arabic locale
 linguas_ar_SA - Arabic locale for Saudi-Arabia
-linguas_ast - Asturian locale
 linguas_az - Azeri locale
 linguas_be - Belarusian locale
 linguas_be_BY - Belarusian locale
@@ -234,7 +232,6 @@ linguas_fa - Persian locale
 linguas_fa_IR - Persian locale for Iran
 linguas_fi - Finnish locale
 linguas_fi_FI - Finnish locale
-linguas_fo - Faroese locale
 linguas_fr - French locale
 linguas_fr_CA - French locale for Canada
 linguas_fr_FR - French locale for France
@@ -278,11 +275,9 @@ linguas_lv_LV - Latvian locale for Latvia
 linguas_me - Montenegrin (Crnogorski) locale
 linguas_mk - Macedonian locale
 linguas_mk_MK - Macedonian locale for Macedonia
-linguas_ml - Malayalam locale
 linguas_mn - Mongolian locale
 linguas_ms - Malay locale
 linguas_ms_MY - Malay locale for Malaysia
-linguas_nan - Min Nan locale
 linguas_nb - Norwegian (Bokmal) locale
 linguas_nb_NO - Norwegian (Bokmal) locale for Norway
 linguas_ne - Nepali locale
@@ -304,7 +299,6 @@ linguas_ro_RO - Romanian locale for Romania
 linguas_ru - Russian locale
 linguas_ru_RU - Russian locale for Russia
 linguas_sa - Sanskrit locale
-linguas_si - Sinhala locale
 linguas_sk - Slovak locale
 linguas_sk_SK - Slovak locale
 linguas_sl - Slovenian locale
