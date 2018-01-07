@@ -13,13 +13,16 @@ SRC_URI="http://www.graphviz.org/pub/graphviz/stable/SOURCES/${P}.tar.gz"
 LICENSE="CPL-1.0"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris"
-IUSE="+cairo devil doc examples gdk-pixbuf gtk gts guile java lasi nls pdf perl postscript python qt5 ruby svg static-libs tcl X elibc_FreeBSD"
+IUSE="+cairo devil doc examples gdk-pixbuf gtk gts guile java lasi nls pdf perl postscript python qt5 ruby static-libs svg tcl X elibc_FreeBSD"
+
+REQUIRED_USE="
+	!cairo? ( !X !gtk !postscript !lasi )
+	python? ( ${PYTHON_REQUIRED_USE} )"
 
 # Requires ksh
 RESTRICT="test"
 
-RDEPEND="
-	sys-libs/zlib
+COMMON_DEPEND="
 	>=dev-libs/expat-2
 	>=dev-libs/glib-2.11.1:2
 	dev-libs/libltdl:0
@@ -27,27 +30,20 @@ RDEPEND="
 	>=media-libs/freetype-2.1.10
 	>=media-libs/gd-2.0.34:=[fontconfig,jpeg,png,truetype,zlib]
 	>=media-libs/libpng-1.2:0
-	!<=sci-chemistry/cluster-1.3.081231
+	sys-libs/zlib
 	virtual/jpeg:0
 	virtual/libiconv
-	X? (
-		x11-libs/libXaw
-		x11-libs/libX11
-		x11-libs/libXmu
-		x11-libs/libXpm
-		x11-libs/libXt
-	)
 	cairo?	(
-		>=x11-libs/pango-1.12
 		>=x11-libs/cairo-1.1.10[svg]
+		>=x11-libs/pango-1.12
 	)
 	devil?	( media-libs/devil[png,jpeg] )
-	postscript? ( app-text/ghostscript-gpl )
 	gtk?	( x11-libs/gtk+:2 )
 	gts?	( sci-libs/gts )
 	lasi?	( media-libs/lasi )
 	pdf?	( app-text/poppler )
 	perl?	( dev-lang/perl:= )
+	postscript? ( app-text/ghostscript-gpl )
 	python?	( ${PYTHON_DEPS} )
 	qt5?	(
 		dev-qt/qtcore:5
@@ -57,21 +53,27 @@ RDEPEND="
 	)
 	ruby?	( dev-lang/ruby:* )
 	svg?	( gnome-base/librsvg )
-	tcl?	( >=dev-lang/tcl-8.3:0= )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
+	tcl?	( >=dev-lang/tcl-8.3:0= )
+	X? (
+		x11-libs/libX11
+		x11-libs/libXaw
+		x11-libs/libXmu
+		x11-libs/libXpm
+		x11-libs/libXt
+	)"
+DEPEND="${COMMON_DEPEND}
 	sys-devel/flex
 	sys-devel/libtool
-	guile?	( dev-scheme/guile dev-lang/swig )
-	java?	( >=virtual/jdk-1.5 dev-lang/swig )
+	virtual/pkgconfig
+	guile?	( dev-lang/swig dev-scheme/guile )
+	java?	( dev-lang/swig >=virtual/jdk-1.5 )
 	nls?	( >=sys-devel/gettext-0.14.5 )
 	perl?	( dev-lang/swig )
 	python?	( dev-lang/swig )
 	ruby?	( dev-lang/swig )
 	tcl?	( dev-lang/swig )"
-REQUIRED_USE="
-	!cairo? ( !X !gtk !postscript !lasi )
-	python? ( ${PYTHON_REQUIRED_USE} )"
+RDEPEND="${COMMON_DEPEND}
+	!<=sci-chemistry/cluster-1.3.081231"
 
 # Dependency description / Maintainer-Info:
 
