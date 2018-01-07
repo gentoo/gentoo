@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,10 +18,6 @@ IUSE="spell aspell timezone translator shorturl nls figlet
 	fortune cal host toilet"
 ILINGUAS="zh_CN zh_TW ru nl de fi fr it ja"
 RUBY_S="${PN}-${GITHUB_COMMIT}"
-
-for lang in $ILINGUAS; do
-	IUSE="${IUSE} linguas_${lang}"
-done
 
 RUBY_PATCHES=( rbot-rakefile-gettext.patch )
 
@@ -118,7 +114,7 @@ all_ruby_compile() {
 	# need to add them later.
 	if use nls; then
 		strip-linguas ${ILINGUAS}
-		if [[ -n ${LINGUAS} ]]; then
+		if [[ -n ${LINGUAS+set} ]]; then
 			# As the the language name used by the rbot data files does
 			# not correspond to the ISO codes we usually use for LINGUAS,
 			# the following list of local varables will work as a
@@ -133,7 +129,7 @@ all_ruby_compile() {
 			local lang_rbot_ja="japanese"
 
 			for lang in ${ILINGUAS}; do
-				use linguas_${lang} && continue
+				has ${lang} ${LINGUAS} && continue
 
 				lang_varname="lang_rbot_${lang}"
 				lang_rbot=${!lang_varname}
