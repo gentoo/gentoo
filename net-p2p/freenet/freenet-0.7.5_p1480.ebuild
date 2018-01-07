@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-DATE=20150812
+DATE=20160521
 JAVA_PKG_IUSE="doc source"
 
 inherit eutils java-pkg-2 java-ant-2 multilib systemd user
@@ -12,7 +12,7 @@ DESCRIPTION="An encrypted network without censorship"
 HOMEPAGE="https://freenetproject.org/"
 SRC_URI="
 	https://github.com/${PN}/fred/archive/build0${PV#*p}.zip -> ${P}.zip
-	mirror://gentoo/seednodes-${DATE}.fref.bz2
+	https://github.com/${PN}/seedrefs/archive/build0${PV#*p}.zip -> seednodes-${PV}.zip
 	mirror://gentoo/freenet-ant-1.7.1.jar"
 
 LICENSE="GPL-2+ GPL-2 MIT BSD-2 Apache-2.0"
@@ -63,7 +63,7 @@ RESTRICT="test" # they're broken in the last release.
 
 MY_PATCHES=(
 	"${FILESDIR}"/0.7.5_p1321-ext.patch
-	"${FILESDIR}/${PV}-remove-git.patch"
+	"${FILESDIR}/"0.7.5_p1475-remove-git.patch
 )
 
 pkg_setup() {
@@ -79,13 +79,11 @@ pkg_setup() {
 }
 
 src_unpack() {
-	unpack ${P}.zip seednodes-${DATE}.fref.bz2
-
-	# See 603362.
-	# mv "${WORKDIR}"/freenet-fred-* "${S}" || die
+	unpack ${P}.zip seednodes-${PV}.zip
 }
 
 java_prepare() {
+	cat "${WORKDIR}"/seedrefs-build0${PV#*p}/* > "${S}"/seednodes.fref
 	cp "${FILESDIR}"/freenet-0.7.5_p1474-wrapper.conf freenet-wrapper.conf || die
 	cp "${FILESDIR}"/run.sh-20090501 run.sh || die
 
@@ -134,8 +132,7 @@ src_install() {
 	insinto /etc
 	doins freenet-wrapper.conf
 	insinto /var/freenet
-	doins run.sh
-	newins "${WORKDIR}"/seednodes-${DATE}.fref seednodes.fref
+	doins run.sh seednodes.fref
 	fperms +x /var/freenet/run.sh
 	dosym java-service-wrapper/libwrapper.so /usr/$(get_libdir)/libwrapper.so
 	use doc && java-pkg_dojavadoc javadoc
