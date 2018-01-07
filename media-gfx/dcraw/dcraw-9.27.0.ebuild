@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,7 +14,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
 LANGS=" ca cs de da eo es fr hu it nl pl pt ru sv zh_CN zh_TW"
-IUSE="nls gimp jpeg jpeg2k lcms ${LANGS// / linguas_}"
+IUSE="nls gimp jpeg jpeg2k lcms"
 
 COMMON_DEPEND="
 	jpeg? ( virtual/jpeg:0 )
@@ -76,7 +76,8 @@ src_compile() {
 
 	if use nls; then
 		for lang in ${LANGS}; do
-			use linguas_${lang} && run_build msgfmt -c -o dcraw_${lang}.mo dcraw_${lang}.po
+			has ${lang} ${LINGUAS-${lang}} \
+				&& run_build msgfmt -c -o dcraw_${lang}.mo dcraw_${lang}.po
 		done
 	fi
 }
@@ -96,7 +97,7 @@ src_install() {
 
 	if use nls; then
 		for lang in ${LANGS}; do
-			if use linguas_${lang}; then
+			if has ${lang} ${LINGUAS-${lang}}; then
 				[[ -f dcraw.${lang}.1 ]] && doman dcraw.${lang}.1
 				insinto /usr/share/locale/${lang}/LC_MESSAGES
 				newins dcraw_${lang}.mo dcraw.mo || die "failed to install dcraw_${lang}.mo"

@@ -637,7 +637,7 @@ app-arch/defluff
 media-radio/wspr
 
 # Andreas Sturmlechner <asturm@gentoo.org> (03 Dec 2017)
-# Dead upstream, depending on dead qt3support/qt4. Bug #631788
+# Depends on dead Qt4, upstream porting inquiry pending. Bug #631788
 games-kids/crayon-physics
 
 # Alexey Shvetsov <alexxy@gentoo.org> (01 Dec 2017)
