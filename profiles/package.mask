@@ -641,11 +641,6 @@ media-radio/wspr
 # Masked for removal in 30 days. Bug #640138.
 net-ftp/oneclickftp
 
-# Michael Palimaka <kensington@gentoo.org> (07 Dec 2017)
-# Dead upstream. Requires dead Qt4.
-# Masked for removal in 30 days. Bug #640138.
-dev-vcs/qct
-
 # Andreas Sturmlechner <asturm@gentoo.org> (03 Dec 2017)
 # Dead upstream, depending on dead qt3support/qt4. Bug #631788
 games-kids/crayon-physics
