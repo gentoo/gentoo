@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools eutils flag-o-matic java-pkg-opt-2 multilib python-single-r1 qmake-utils
+inherit autotools flag-o-matic java-pkg-opt-2 python-single-r1 qmake-utils
 
 DESCRIPTION="Open Source Graph Visualization Software"
 HOMEPAGE="http://www.graphviz.org/ https://gitlab.com/graphviz/graphviz/"
