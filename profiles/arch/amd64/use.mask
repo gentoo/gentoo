@@ -6,6 +6,12 @@
 
 # SECTION: Unmask
 
+# Michael Orlitzky <mjo@gentoo.org> (07 Jan 2018)
+# Oracle database stuff should work on amd64.
+-oci8
+-oci8-instant-client
+-oracle
+
 # Michael Palimaka <kensington@gentoo.org> (03 Jun 2017)
 # Unmask elogind since it is keyworded here.
 -elogind
@@ -96,11 +102,6 @@
 # Lilo works on amd64, so ...
 -lilo
 
-# 2007/08/19 - Christoph Mende <angelos@gentoo.org>
-# Unmask support for dev-db/oracle-instantclient-basic
--oci8-instant-client
--oracle
-
 # 2007/03/10 - Mike Frysinger <vapier@gentoo.org>
 # NVRAM works on x86/amd64 hosts
 -nvram
@@ -124,10 +125,6 @@
 -video_cards_virtualbox
 -video_cards_vmware
 -video_cards_qxl
-
-# Diego Pettenò <flameeyes@gentoo.org> (4 Jan 2007)
-# Unmask the flags for PHP that are available only on x86/amd64
--oci8
 
 # Feb 16th 2007; Simon Stelling <blubb@gentoo.org>
 # Since this profile forces >=portage-2.1.2, we can unmask all
