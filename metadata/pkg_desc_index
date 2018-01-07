@@ -546,7 +546,7 @@ app-editors/fte 20051115-r3: Lightweight text-mode editor
 app-editors/gedit 3.22.1: A text editor for the GNOME desktop
 app-editors/gedit-plugins 3.22.0: Official plugins for gedit
 app-editors/ghex 3.18.3: GNOME hexadecimal editor
-app-editors/gummi 0.6.6: Simple LaTeX editor for GTK+ users
+app-editors/gummi 0.6.6 0.6.6-r1: Simple LaTeX editor for GTK+ users
 app-editors/gvim 8.0.0386 8.0.1298: GUI version of the Vim text editor
 app-editors/hexcurse 1.55: ncurses based hex editor
 app-editors/hexedit 1.2.13: View and edit files in hex or ASCII
@@ -3789,7 +3789,7 @@ dev-perl/IO-Interactive 1.21.0: Utilities for interactive I/O
 dev-perl/IO-Interface 1.90.0: Perl extension for access to network card configuration information
 dev-perl/IO-LockedFile 0.230.0-r1: Supply object methods for locking files
 dev-perl/IO-Multiplex 1.160.0: Manage IO on many file handles
-dev-perl/IO-Pager 0.350.0: Select a pager, optionally pipe it output if destination is a TTY
+dev-perl/IO-Pager 0.350.0 0.390.0: Select a pager, optionally pipe it output if destination is a TTY
 dev-perl/IO-Pipely 0.005.0: Portably create pipe() or pipe-like handles, one way or another
 dev-perl/IO-SessionData 1.30.0: Session data support module for SOAP::Lite
 dev-perl/IO-Socket-INET6 2.720.0: Work with IO sockets in ipv6
@@ -8465,7 +8465,7 @@ net-irc/inspircd 2.0.23: Inspire IRCd - The Stable, High-Performance Modular IRC
 net-irc/ircii 20110228 20111115: An IRC and ICB client that runs under most UNIX platforms
 net-irc/ircservices 5.1.24: ChanServ, NickServ, and MemoServ with support for several IRC daemons
 net-irc/iroffer-dinoex 3.29: IRC fileserver using DCC
-net-irc/irssi 1.0.4 1.0.5: A modular textUI IRC client with IPv6 support
+net-irc/irssi 1.0.4 1.0.5 1.0.6: A modular textUI IRC client with IPv6 support
 net-irc/irssi-otr 1.0.0-r1: Off-The-Record messaging (OTR) for irssi
 net-irc/irssistats 0.75: Generates HTML IRC stats based on irssi logs
 net-irc/konversation 1.7.4: A user friendly IRC Client
@@ -9674,7 +9674,7 @@ sys-apps/groff 1.22.2: Text formatter used for man pages
 sys-apps/gscanbus 0.8: Bus scanning, testing and topology visualizing tool for Linux IEEE1394 subsystem
 sys-apps/gsmartcontrol 1.0.2: Hard disk drive health inspection tool
 sys-apps/haveged 1.9.1: A simple entropy daemon using the HAVEGE algorithm
-sys-apps/hdparm 9.51: Utility to change hard drive performance parameters
+sys-apps/hdparm 9.51 9.52: Utility to change hard drive performance parameters
 sys-apps/help2man 1.46.6 1.47.4: GNU utility to convert program --help output to a man page
 sys-apps/hexdump-esr 1.8: Eric Raymond's hex dumper
 sys-apps/hotplug2stdout 1.2.1: A tool for reading kernel uevent(s) to stdout
@@ -9764,7 +9764,7 @@ sys-apps/semodule-utils 2.7: SELinux policy module utilities
 sys-apps/setserial 2.17-r4: Configure your serial ports with it
 sys-apps/sg3_utils 1.40 1.42: Apps for querying the sg SCSI interface
 sys-apps/shadow 4.4-r2 4.5: Utilities to deal with user accounts
-sys-apps/smartmontools 6.4: Tools to monitor storage systems to provide advanced warning of disk degradation
+sys-apps/smartmontools 6.4 6.6: Tools to monitor storage systems to provide advanced warning of disk degradation
 sys-apps/syscriptor 1.5.15: display misc information about your hardware
 sys-apps/syslog-notify 0.2: Notifications for syslog entries via libnotify
 sys-apps/systemd 233-r6: System and service manager for Linux
@@ -10112,7 +10112,7 @@ sys-power/acpi 1.6: Displays information about ACPI devices
 sys-power/acpid 2.0.23 2.0.27 2.0.28: Daemon for Advanced Configuration and Power Interface
 sys-power/acpilight 1.0: Replacement for xbacklight that uses the ACPI interface to set brightness
 sys-power/acpitool 0.5.1-r1: A small command line application, intended to be a replacement for the apm tool
-sys-power/apcupsd 3.14.13: APC UPS daemon with integrated tcp/ip remote shutdown
+sys-power/apcupsd 3.14.13 3.14.14-r1: APC UPS daemon with integrated tcp/ip remote shutdown
 sys-power/bbswitch 0.8: Toggle discrete NVIDIA Optimus graphics card
 sys-power/cpupower 3.18 4.9.0-r1: Shows and sets processor power related values
 sys-power/hibernate-script 2.0-r6: Hibernate script supporting multiple suspend methods
