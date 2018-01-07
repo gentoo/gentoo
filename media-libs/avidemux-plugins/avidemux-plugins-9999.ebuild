@@ -1,10 +1,19 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
+if [[ ${PV} == *9999* ]] ; then
+	EGIT_REPO_URI="https://github.com/mean00/avidemux2.git"
+	EGIT_CHECKOUT_DIR=${WORKDIR}
+	inherit git-r3
+else
+	MY_PN="${PN/-plugins/}"
+	MY_P="${MY_PN}_${PV}"
+	SRC_URI="mirror://sourceforge/${MY_PN}/${MY_PN}/${PV}/${MY_P}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
+fi
 PYTHON_COMPAT=( python2_7 )
-
 inherit cmake-utils python-single-r1
 
 DESCRIPTION="Plugins for the video editor media-video/avidemux"
@@ -13,20 +22,8 @@ HOMEPAGE="http://fixounet.free.fr/avidemux"
 # Multiple licenses because of all the bundled stuff.
 LICENSE="GPL-1 GPL-2 MIT PSF-2 public-domain"
 SLOT="2.6"
-IUSE="aac aften a52 alsa amr dcaenc debug dts fdk fontconfig fribidi jack lame libsamplerate cpu_flags_x86_mmx opengl nvenc opus oss pulseaudio qt5 vorbis truetype twolame xv xvid x264 x265 vdpau vpx"
+IUSE="a52 aac aften alsa amr dcaenc debug dts fdk fontconfig fribidi jack lame libsamplerate cpu_flags_x86_mmx nvenc opengl opus oss pulseaudio qt5 truetype twolame vdpau vorbis vpx x264 x265 xv xvid"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-
-if [[ ${PV} == *9999* ]] ; then
-	EGIT_REPO_URI="https://github.com/mean00/avidemux2.git"
-	EGIT_CHECKOUT_DIR=${WORKDIR}
-
-	inherit git-r3
-else
-	MY_PN="${PN/-plugins/}"
-	MY_P="${MY_PN}_${PV}"
-	SRC_URI="mirror://sourceforge/${MY_PN}/${MY_PN}/${PV}/${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
-fi
 
 RDEPEND="${PYTHON_DEPS}
 	~media-libs/avidemux-core-${PV}:${SLOT}[vdpau?]
@@ -73,7 +70,8 @@ RDEPEND="${PYTHON_DEPS}
 	vpx? ( media-libs/libvpx:0= )
 "
 DEPEND="${RDEPEND}
-	oss? ( virtual/os-headers:0 )"
+	oss? ( virtual/os-headers:0 )
+"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -82,7 +80,7 @@ PATCHES=( "${FILESDIR}"/${PN}-2.6.20-optional-pulse.patch )
 src_prepare() {
 	default
 
-	#Don't reapply PATCHES during cmake-utils_src_prepare
+	# Don't reapply PATCHES during cmake-utils_src_prepare
 	unset PATCHES
 
 	processes="buildPluginsCommon:avidemux_plugins
