@@ -594,6 +594,13 @@ net-libs/polarssl
 
 # Andreas Sturmlechner <asturm@gentoo.org> (12 Dec 2017)
 # Depends on dead kdelibs4/qt4, unmaintained upstream. No port to
+# KF5 released. If you depend on this package, please help test the
+# KF5-based cirkuit-0.4.3_p201710115 snapshot.
+# Bug #640884. Masked for removal in 30 days.
+sci-electronics/cirkuit
+
+# Andreas Sturmlechner <asturm@gentoo.org> (12 Dec 2017)
+# Depends on dead kdelibs4/qt4, unmaintained upstream. No port to
 # KF5 released.
 # Possible alternatives are media-sound/cantata (an awesome mpd client),
 # media-sound/clementine and media-sound/tomahawk (the latter also declared
