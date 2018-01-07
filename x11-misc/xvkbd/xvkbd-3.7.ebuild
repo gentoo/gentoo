@@ -1,12 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit eutils multilib toolchain-funcs
 
 DESCRIPTION="virtual keyboard for X window system"
-HOMEPAGE="http://homepage3.nifty.com/tsato/xvkbd/"
-SRC_URI="http://homepage3.nifty.com/tsato/xvkbd/${P}.tar.gz"
+HOMEPAGE="http://t-sato.in.coocan.jp/xvkbd/"
+SRC_URI="${HOMEPAGE}${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
