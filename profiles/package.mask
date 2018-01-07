@@ -730,13 +730,6 @@ sys-devel/automake:1.8
 # See bug #634040
 <perl-core/Unicode-Collate-1.190.0-r99
 
-# Jonas Stein <jstein@gentoo.org> (10 Oct 2017)
-# Depends on the AIM service which will be discontinued on 2017-12-15.
-# See also bug #633914. Masked for removal on 2017-12-20
-net-im/pyaim-t
-net-im/pork
-net-im/reaim
-
 # Michał Górny <mgorny@gentoo.org> (05 Oct 2017)
 # (on behalf of QA)
 # Rogue version bumps that reintroduce QA violations that were fixed
