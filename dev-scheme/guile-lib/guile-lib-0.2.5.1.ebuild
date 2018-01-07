@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="An accumulation place for pure-scheme Guile modules"
 HOMEPAGE="http://www.nongnu.org/guile-lib/"
-SRC_URI="http://download.savannah.gnu.org/releases/${PN}/old/${P}.tar.gz"
+SRC_URI="http://download.savannah.gnu.org/releases/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

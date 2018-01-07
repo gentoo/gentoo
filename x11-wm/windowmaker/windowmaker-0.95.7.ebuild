@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ inherit eutils
 
 DESCRIPTION="The fast and light GNUstep window manager"
 HOMEPAGE="http://www.windowmaker.org/"
-SRC_URI=" http://windowmaker.org/pub/source/release/${P/windowm/WindowM}.tar.gz
+SRC_URI="http://windowmaker.org/pub/source/release/${P/windowm/WindowM}.tar.gz
 	http://www.windowmaker.org/pub/source/release/WindowMaker-extra-0.1.tar.gz"
 
 SLOT="0"
