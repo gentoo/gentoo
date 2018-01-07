@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=dev-libs/librevenge dev-libs/libxml2 sys-libs/zlib >=dev-libs/boost-1.46 sys-devel/libtool virtual/pkgconfig doc? ( app-doc/doxygen ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Library parsing abiword documents
+EAPI=6
+HOMEPAGE=https://wiki.documentfoundation.org/DLP/Libraries/libabw
+IUSE=doc static-libs
+KEYWORDS=~amd64 ~arm ~arm64 ~x86
+LICENSE=MPL-2.0
+RDEPEND=dev-libs/librevenge dev-libs/libxml2 sys-libs/zlib
+SLOT=0
+SRC_URI=https://dev-www.libreoffice.org/src/libabw/libabw-0.1.2.tar.xz
+_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_md5_=466924d66edee83275a339ec485e5635
