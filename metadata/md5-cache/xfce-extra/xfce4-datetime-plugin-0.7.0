@@ -3,10 +3,10 @@ DEPEND=>=xfce-base/libxfce4ui-4.12:=[gtk3(+)] >=xfce-base/xfce4-panel-4.12:= dev
 DESCRIPTION=A panel plug-in with date, time and embedded calender
 EAPI=6
 HOMEPAGE=https://goodies.xfce.org/projects/panel-plugins/xfce4-datetime-plugin
-KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux
+KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ppc64 ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux
 LICENSE=GPL-2
 RDEPEND=>=xfce-base/libxfce4ui-4.12:=[gtk3(+)] >=xfce-base/xfce4-panel-4.12:=
 SLOT=0
 SRC_URI=mirror://xfce/src/panel-plugins/xfce4-datetime-plugin/0.7/xfce4-datetime-plugin-0.7.0.tar.bz2
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	fdo-mime	995b19d3f30e956b4e1bc5a91fdc4ea7	gnome2-utils	4d211d7614f303710fca59db6ec12c88	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=ef721caa98d82cd6bb604fedd6e629e8
+_md5_=76c6f080e894a04e5c2c0c06f5980e45
