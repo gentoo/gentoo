@@ -320,10 +320,6 @@ app-doc/linux-gazette-base
 app-doc/linux-gazette-all
 app-doc/linux-gazette
 
-# Andreas Sturmlechner <asturm@gentoo.org> (27 Dec 2017)
-# Masked because no more USE=qt4 breaks rdeps, bug #642444
->=app-text/poppler-0.62.0
-
 # David Seifert <soap@gentoo.org> (27 Dec 2017)
 # Last release in 2005, crashes on use, EAPI 3 (#640262).
 # Removal in 30 days
