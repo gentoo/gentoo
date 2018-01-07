@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,10 +18,6 @@ UNBI_LINGUAS="
 	ja lt lv ml ms nan nb nl nn pl pt_BR pt ro ru si sk sl sr sv sw tr uk ur vi
 	zh_CN zh_TW
 "
-
-for lingua in ${UNBI_LINGUAS}; do
-	IUSE="${IUSE} linguas_${lingua}"
-done
 
 S=${WORKDIR}/${P}/src/${PN}
 
@@ -52,7 +48,7 @@ src_prepare() {
 	# Remove localisations
 	local lingua
 	for lingua in ${UNBI_LINGUAS}; do
-		if ! use linguas_${lingua}; then
+		if ! has ${lingua} ${LINGUAS-${lingua}}; then
 			sed -i ${PN}.pro -e "/\.*${PN}_${lingua}\.ts.*/d" || die
 			rm ${PN}_${lingua}.ts || die
 		fi
@@ -82,7 +78,7 @@ src_install() {
 
 	local lingua
 	for lingua in ${UNBI_LINGUAS}; do
-		if use linguas_${lingua}; then
+		if has ${lingua} ${LINGUAS-${lingua}}; then
 			insinto /usr/share/${PN}
 			doins ${PN}_${lingua}.qm
 		fi
