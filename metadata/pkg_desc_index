@@ -5941,7 +5941,7 @@ dev-tex/catdvi 0.14-r1: DVI to plain text translator
 dev-tex/cdcover 1.3b: LaTeX package used to create CD case covers
 dev-tex/chktex 1.7.1: Checks latex source for common mistakes
 dev-tex/cjk-latex 4.8.4: LaTeX package to use CJK (Chinese/Japanese/Korean) scripts in various encodings
-dev-tex/cpp2latex 2.3-r1 2.3-r2: A program to convert C++ code to LaTeX source
+dev-tex/cpp2latex 2.3-r2: A program to convert C++ code to LaTeX source
 dev-tex/csindex 2.11c-r2: Utility for creating Czech/Slovak-sorted LaTeX index-files
 dev-tex/culmus-latex 0.7: Culmus fonts support for latex
 dev-tex/currvita 0.9i-r1: A LaTeX package for typesetting a curriculum vitae
@@ -8087,7 +8087,7 @@ media-video/dvdauthor 0.7.1-r1: Tools for generating DVD files to be played on s
 media-video/dvdbackup 0.4.1 0.4.2: Backup content from DVD to hard disk
 media-video/dvdimagecmp 0.3-r1: Tool to compare a burned DVD with an image to check for errors
 media-video/dvdrip 0.98.11-r3: dvd::rip is a graphical frontend for transcode
-media-video/dvgrab 3.5 3.5-r1: Digital Video (DV) grabber for GNU/Linux
+media-video/dvgrab 3.5-r1: Digital Video (DV) grabber for GNU/Linux
 media-video/emovix 0.9.0: Micro Linux distro to boot from a CD and play every video file localized in the CD root
 media-video/ffdiaporama 2.1 2.1-r1: Movie creator from photos and video clips
 media-video/ffmpeg 3.2.6 3.3.3 3.3.4 3.3.5: Complete solution to record, convert and stream audio and video. Includes libavcodec
