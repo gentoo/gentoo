@@ -3,7 +3,7 @@
 
 EAPI=6
 
-COMMIT=9029d9d44a141d0a70ea34c1c82f6f80ff8e2b7a
+COMMIT=d9ff4c17d052c8d1bb648402e88d70d77897f847
 EGIT_BRANCH="frameworks"
 KDE_HANDBOOK="forceoptional"
 inherit kde5 vcs-snapshot
