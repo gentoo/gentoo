@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -23,7 +23,7 @@ fi
 
 LICENSE="LGPL-2"
 SLOT="0"
-IUSE="debug hardened iconv ipv6 rpc symlink-compat crosscompile_opts_headers-only"
+IUSE="debug hardened iconv ipv6 rpc symlink-compat headers-only"
 RESTRICT="strip"
 
 # 1) We can't upgrade from uclibc to uclibc-ng via a soft blocker since portage
@@ -59,7 +59,7 @@ alt_build_kprefix() {
 }
 
 just_headers() {
-	use crosscompile_opts_headers-only && is_crosscompile
+	use headers-only && is_crosscompile
 }
 
 uclibc_endian() {
