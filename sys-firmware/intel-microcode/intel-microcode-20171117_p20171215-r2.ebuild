@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit toolchain-funcs
+inherit tmpfiles toolchain-funcs
 
 # Find updates by searching and clicking the first link (hopefully it's the one):
 # http://www.intel.com/content/www/us/en/search.html?keyword=Processor+Microcode+Data+File
@@ -22,7 +22,8 @@ IUSE="initramfs +split-ucode"
 REQUIRED_USE="|| ( initramfs split-ucode )"
 
 DEPEND="initramfs? ( sys-apps/iucode_tool )"
-RDEPEND="!<sys-apps/microcode-ctl-1.17-r2" #268586
+RDEPEND="!<sys-apps/microcode-ctl-1.17-r2
+	sys-firmware/microcode-reload"
 
 S=${WORKDIR}
 
@@ -36,4 +37,8 @@ src_install() {
 	insinto /lib/firmware
 	use initramfs && doins microcode.cpio
 	use split-ucode && doins -r intel-ucode
+}
+
+pkg_postinst() {
+	tmpfiles_process microcode-reload.conf
 }
