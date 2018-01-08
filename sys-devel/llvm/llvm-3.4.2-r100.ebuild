@@ -119,11 +119,17 @@ src_prepare() {
 		epatch "${WORKDIR}/${P}-patchset"/clang/darwin_build_fix.patch
 		epatch "${WORKDIR}/${P}-patchset"/clang/darwin_prefix-include-paths.patch
 		eprefixify tools/clang/lib/Frontend/InitHeaderSearch.cpp
-	fi
 
-	if use prefix && use clang; then
-		sed -i -e "/^CFLAGS /s@-Werror@-I${EPREFIX}/usr/include@" \
-			projects/compiler-rt/make/platform/clang_*.mk || die
+		if use prefix ; then
+			sed -i -e "/^CFLAGS /s@-Werror@-I${EPREFIX}/usr/include@" \
+				projects/compiler-rt/make/platform/clang_*.mk || die
+		fi
+		if [[ ${CHOST} == powerpc*-apple-darwin* ]] ; then
+			# set ppc as arch for compiler_rt
+			local arch=${CHOST%%-*}
+			sed -i -e '/^UniversalArchs/s/:=.*$/:= '${arch/ower/}'/' \
+				projects/compiler-rt/make/platform/clang_darwin*.mk || die
+		fi
 	fi
 
 	local sub_files=(

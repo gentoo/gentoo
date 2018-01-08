@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -20,7 +20,7 @@ IUSE="doc fltk gif glut gsl hdf hdf5 jpeg lua mpi octave opengl openmp pdf
 
 LANGS="ru"
 for l in ${LANGS}; do
-	IUSE+=" linguas_${l}"
+	IUSE+=" l10n_${l}"
 done
 unset l
 
@@ -150,7 +150,7 @@ src_install() {
 		local lang
 		insinto /usr/share/udav
 		for lang in ${LANGS} ; do
-			use linguas_${lang} && doins udav/udav_${lang}.qm
+			use l10n_${lang} && doins udav/udav_${lang}.qm
 		done
 	fi
 	if use octave ; then

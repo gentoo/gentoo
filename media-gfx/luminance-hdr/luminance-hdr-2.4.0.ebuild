@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 inherit cmake-utils toolchain-funcs eutils flag-o-matic
 
 MY_P=${P/_/.}
-DESCRIPTION="Luminance HDR is a graphical user interface that provides a workflow for HDR imaging"
+DESCRIPTION="Graphical user interface that provides a workflow for HDR imaging"
 HOMEPAGE="http://qtpfsgui.sourceforge.net https://github.com/LuminanceHDR/LuminanceHDR"
 SRC_URI="mirror://sourceforge/qtpfsgui/${MY_P}.tar.bz2"
 
@@ -14,7 +14,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 LANGS=" cs de es fi fr hi hu id it pl ro ru sk tr zh"
-IUSE="cpu_flags_x86_sse2 fits openmp test ${LANGS// / linguas_}"
+IUSE="cpu_flags_x86_sse2 fits openmp test ${LANGS// / l10n_}"
 
 RDEPEND="
 	dev-libs/boost:0=
@@ -79,7 +79,7 @@ src_install() {
 	cmake-utils_src_install
 
 	for lang in ${LANGS} ; do
-		if ! use linguas_${lang} ; then
+		if ! use l10n_${lang} ; then
 			rm -f "${D}"/usr/share/${PN}/i18n/{lang,qt}_${lang}.qm || die
 		fi
 	done
