@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit savedconfig
+inherit savedconfig tmpfiles
 
 if [[ ${PV} == 99999999* ]]; then
 	inherit git-r3
@@ -25,7 +25,9 @@ SLOT="0"
 IUSE="savedconfig"
 
 DEPEND=""
-RDEPEND="!savedconfig? (
+RDEPEND="amd64? ( sys-firmware/microcode-reload )
+	x86? ( sys-firmware/microcode-reload )
+	!savedconfig? (
 		!sys-firmware/alsa-firmware[alsa_cards_ca0132]
 		!sys-firmware/alsa-firmware[alsa_cards_korg1212]
 		!sys-firmware/alsa-firmware[alsa_cards_maestro3]
@@ -116,4 +118,8 @@ pkg_preinst() {
 pkg_postinst() {
 	elog "If you are only interested in particular firmware files, edit the saved"
 	elog "configfile and remove those that you do not want."
+
+	if use amd64 || use x86; then
+		tmpfiles_process microcode-reload.conf
+	fi
 }
