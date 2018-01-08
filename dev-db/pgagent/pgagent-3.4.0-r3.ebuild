@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ inherit cmake-utils user wxwidgets
 
 MY_PN=${PN/a/A}
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 DESCRIPTION="${MY_PN} is a job scheduler for PostgreSQL"
 HOMEPAGE="http://www.pgadmin.org/download/pgagent.php"
