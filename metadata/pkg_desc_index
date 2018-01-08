@@ -202,7 +202,7 @@ app-arch/rpm 4.11.0.1: Red Hat Package Management Utils
 app-arch/rpm2targz 9.0.0.5g: Convert a .rpm file to a .tar.gz archive
 app-arch/rzip 2.1-r3: Compression program for large files
 app-arch/sharutils 4.14-r1: Tools to deal with shar archives
-app-arch/snappy 1.1.3-r1: A high-speed compression/decompression library by Google
+app-arch/snappy 1.1.3-r1 1.1.7: A high-speed compression/decompression library by Google
 app-arch/star 1.5.3: An enhanced (world's fastest) tar, as well as enhanced mt/rmt
 app-arch/stuffit 5.2.0.611: Aladdin Software's StuffIt and StuffIt Expander
 app-arch/tar 1.29-r1 1.29-r3: Use this to make tarballs :)
@@ -3520,7 +3520,7 @@ dev-perl/Cwd-Guard 0.40.0: Temporary changing working directory (chdir)
 dev-perl/DBD-Pg 3.5.3: PostgreSQL database driver for the DBI module
 dev-perl/DBD-SQLite 1.500.0: Self Contained RDBMS in a DBI Driver
 dev-perl/DBD-mysql 4.41.0: MySQL driver for the Perl5 Database Interface (DBI)
-dev-perl/DBI 1.634.0 1.636.0: Database independent interface for Perl
+dev-perl/DBI 1.634.0 1.636.0 1.637.0: Database independent interface for Perl
 dev-perl/DBI-Shell 11.950.0-r2: Interactive command shell for the DBI
 dev-perl/DBIx-ContextualFetch 1.30.0-r1: Add contextual fetches to DBI
 dev-perl/DBIx-DBSchema 0.400.0-r1 0.450.0: Database-independent schema objects
