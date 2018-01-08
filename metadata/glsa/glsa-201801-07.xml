@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">Emacs</product>
   <announced>2018-01-07</announced>
-  <revised>2018-01-07: 1</revised>
+  <revised>2018-01-08: 2</revised>
   <bug>630680</bug>
   <access>remote</access>
   <affected>
@@ -41,21 +41,21 @@
     
     <code>
       # emerge --sync
-      # emerge --ask --oneshot --verbose "&gt;=app-editors/emacs-23.4-r16"
+      # emerge --ask --oneshot --verbose "&gt;=app-editors/emacs-23.4-r16:23"
     </code>
     
     <p>All GNU Emacs 24.x users should upgrade to the latest version:</p>
     
     <code>
       # emerge --sync
-      # emerge --ask --oneshot --verbose "&gt;=app-editors/emacs-24.5-r4"
+      # emerge --ask --oneshot --verbose "&gt;=app-editors/emacs-24.5-r4:24"
     </code>
     
     <p>All GNU Emacs 25.x users should upgrade to the latest version:</p>
     
     <code>
       # emerge --sync
-      # emerge --ask --oneshot --verbose "&gt;=app-editors/emacs-,25.2-r1"
+      # emerge --ask --oneshot --verbose "&gt;=app-editors/emacs-25.2-r1:25"
     </code>
   </resolution>
   <references>
@@ -64,5 +64,5 @@
     </uri>
   </references>
   <metadata tag="requester" timestamp="2018-01-05T05:59:49Z">jmbailey</metadata>
-  <metadata tag="submitter" timestamp="2018-01-07T23:47:51Z">jmbailey</metadata>
+  <metadata tag="submitter" timestamp="2018-01-08T13:17:01Z">jmbailey</metadata>
 </glsa>
