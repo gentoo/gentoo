@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -25,8 +25,8 @@ fi
 
 LICENSE="BSD-1 GPL-2+ LGPL-2+ MIT"
 SLOT="4"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
-IUSE="+X +autostart +cairo debug +enchant gtk2 gtk3 +introspection lua nls opencc +pango qt4 static-libs +table test +xml"
+KEYWORDS="amd64 ~hppa ~ppc ~ppc64 x86"
+IUSE="+X +autostart +cairo debug +enchant gtk2 +gtk3 +introspection lua nls opencc +pango qt4 static-libs +table test +xml"
 REQUIRED_USE="cairo? ( X ) pango? ( cairo ) qt4? ( X )"
 
 RDEPEND="dev-libs/glib:2
