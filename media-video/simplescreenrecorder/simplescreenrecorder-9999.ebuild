@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -43,7 +43,9 @@ RDEPEND="
 	jack? ( virtual/jack )
 	pulseaudio? ( media-sound/pulseaudio )
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-qt/linguist-tools:5
+"
 
 pkg_setup() {
 	if [[ ${ABI} == amd64 ]]; then
@@ -84,7 +86,7 @@ multilib_src_configure() {
 	fi
 
 	if multilib_is_native_abi ; then
-		mymakeargs+=( -DWITH_QT5="true" )
+		mycmakeargs+=( -DWITH_QT5="true" )
 	else
 		mycmakeargs+=( -DWITH_SIMPLESCREENRECORDER="false" )
 	fi
