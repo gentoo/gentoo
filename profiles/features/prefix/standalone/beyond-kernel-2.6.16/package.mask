@@ -1,4 +1,5 @@
 # >=glibc-2.20 requires >=linux-2.6.32.
+# https://lwn.net/Articles/611162
 >=sys-libs/glibc-2.20
 
 # >=python-3.4 assumes F_DUPFD_CLOEXEC of fcntl,
