@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -16,11 +16,11 @@ SRC_URI="${SRC_URI} !vanilla? ( https://dev.gentoo.org/~leio/distfiles/gnome-ter
 
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux"
 
-# FIXME: automagic dependency on gtk+[X], just transitive but needs proper control
+# FIXME: automagic dependency on gtk+[X], just transitive but needs proper control, bug 624960
 # Needed vte in 3.24.2 is 0.48.2, but we add desktop notification patches in 0.48.3 that non-vanilla needs
 RDEPEND="
-	>=dev-libs/glib-2.42:2[dbus]
-	>=x11-libs/gtk+-3.20:3[X]
+	>=dev-libs/glib-2.42:2
+	>=x11-libs/gtk+-3.20:3
 	>=x11-libs/vte-0.48.3:2.91[!vanilla?]
 	>=dev-libs/libpcre2-10
 	>=gnome-base/dconf-0.14
