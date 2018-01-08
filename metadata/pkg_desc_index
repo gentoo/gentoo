@@ -174,7 +174,7 @@ app-arch/funzix 1.0: unpacker for the bogus ZIX format
 app-arch/gcab 0.7: Library and tool for working with Microsoft Cabinet (CAB) files
 app-arch/gnome-autoar 0.2.2: Automatic archives creating and extracting library
 app-arch/gtk-splitter 2.2.1-r1: Split files into smaller pieces and combine them back together
-app-arch/gzip 1.6 1.8: Standard GNU compressor
+app-arch/gzip 1.8: Standard GNU compressor
 app-arch/hardlink 0.2.0: A tool which replaces copies of a file with hardlinks
 app-arch/innoextract 1.4: A tool to unpack installers created by Inno Setup
 app-arch/lbzip2 2.3-r1 2.5: Parallel bzip2 utility
