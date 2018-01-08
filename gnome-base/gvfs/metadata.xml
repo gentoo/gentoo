@@ -16,6 +16,7 @@ applications not using gio to access the gvfs filesystems.
 	<flag name="afp">Enables support for accessing AFP (Apple Filing Protocol) network shares</flag>
 	<flag name="archive">Enables support for accessing files in archives transparently via <pkg>app-arch/libarchive</pkg></flag>
 	<flag name="bluray">Enable playback of Blu-ray filesystems using <pkg>media-libs/libbluray</pkg></flag>
+	<flag name="elogind">Use <pkg>sys-auth/elogind</pkg> for session tracking.</flag>
 	<flag name="fuse">Enables fuse mount points in $HOME/.gvfs for legacy application access</flag>
 	<flag name="gnome-online-accounts">Enable configuration panel for <pkg>net-libs/gnome-online-accounts</pkg> accounts</flag>
 	<flag name="google">Enables support for accessing Google accounts via <pkg>dev-libs/libgdata</pkg></flag>
