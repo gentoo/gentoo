@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -22,7 +22,8 @@ SLOT="0"
 IUSE="custom-cflags debug"
 RESTRICT="debug? ( strip ) test"
 
-COMMON_DEPEND="dev-lang/perl
+COMMON_DEPEND="
+	dev-lang/perl
 	virtual/awk"
 
 DEPEND="${COMMON_DEPEND}"
@@ -38,6 +39,7 @@ pkg_setup() {
 	linux-info_pkg_setup
 	CONFIG_CHECK="
 		!DEBUG_LOCK_ALLOC
+		!CONFIG_REISER4_FS
 		!GRKERNSEC_RANDSTRUCT
 		KALLSYMS
 		MODULES
