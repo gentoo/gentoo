@@ -1,13 +1,14 @@
 certificate version 0.1
-pusher 0BBEEA1FEA4843A4 1515447098 -0500
-pushee ssh://git.gentoo.org/repo/gentoo.git
-nonce 1515447098-f81b25b8c7f6197ffbe5
+pusher 0x1BDC0E5AC42EB5D6 1515448879 +0300
+pushee git+ssh://git.gentoo.org/repo/gentoo.git
+nonce 1515448875-f78b48b226544b3056cd
 
-66402fbfd4a38f0f82bc3001e96172725a97d62a a782f6268c8b946ab63ac834e9bb38844b610cfc refs/heads/master
+a782f6268c8b946ab63ac834e9bb38844b610cfc bd5b9080fa241bfc350006897e41574608a5861f refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABEIAB0WIQSC6+o3VgHHi7vNKkVHG+cz7ykaPwUCWlPjOgAKCRBHG+cz7yka
-PwahAP9FOCA/nZ7XSL3zhLuhwCRiur+NZ4xnA9JMD3sMbYtIBAEAsi3NU47Lo+tQ
-r2HF1QzCS9h4Yx9yVK8pOU3AP+INOWc=
-=mqQQ
+iLMEAAEIAB0WIQQ75Qy/x9/HSNkDtdMb3A5axC611gUCWlPqLwAKCRAb3A5axC61
+1hokA/9DG/q8DixyeFo+ZoecKaDKnmXl4/7/egW5UfYIQ7vkDisXhgaEGzAW8U3/
+KjZOuQe2UNyCR0JftYfN0PPzYSmtaNyPj4WFPDsDqjkzgvzd/F/Rnb9+zr6Onsqa
+i9laqAGmyx2UirEaU+fPATLuuW+Z7rYLc3TOcte/OtHeR/6N/g==
+=bvf6
 -----END PGP SIGNATURE-----
