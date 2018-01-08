@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -124,12 +124,6 @@ src_prepare() {
 		sed -i 's:\<getline\>:get_line:g' libiberty/testsuite/test-demangle.c
 	fi
 
-	# Fix po Makefile generators
-	sed -i \
-		-e '/^datadir = /s:$(prefix)/@DATADIRNAME@:@datadir@:' \
-		-e '/^gnulocaledir = /s:$(prefix)/share:$(datadir):' \
-		*/po/Make-in || die "sed po's failed"
-
 	# Apply things from PATCHES and user dirs
 	default
 
@@ -215,6 +209,7 @@ src_configure() {
 		--host=${CHOST}
 		--target=${CTARGET}
 		--datadir="${EPREFIX}"${DATAPATH}
+		--datarootdir="${EPREFIX}"${DATAPATH}
 		--infodir="${EPREFIX}"${DATAPATH}/info
 		--mandir="${EPREFIX}"${DATAPATH}/man
 		--bindir="${EPREFIX}"${BINPATH}
