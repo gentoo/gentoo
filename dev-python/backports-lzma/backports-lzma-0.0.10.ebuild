@@ -17,10 +17,12 @@ SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+IUSE="test"
 
-RDEPEND="app-arch/xz-utils
+RDEPEND="app-arch/xz-utils:0=
 	dev-python/backports[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	test? ( app-arch/xz-utils:0[extra-filters(+)] )"
 
 S=${WORKDIR}/${MY_P}
 
