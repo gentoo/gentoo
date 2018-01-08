@@ -50,7 +50,8 @@ kde-apps/konsolepart
 
 # Alice Ferrazzi <alicef@gentoo.org> (05 Jan 2018)
 # kernel: Meltdown and Spectre - Processor flaw. (#643228)
-# Please upgrade for Intel processor flaw workaround, 
+# Please upgrade for Intel processor flaw workaround
+# (currently KPTI patch are 64bit only), 
 # also excluding AMD from the fix as not affected.
 # Please unmask your kernel version if you want to
 # continue to use your kernel with AMD.
