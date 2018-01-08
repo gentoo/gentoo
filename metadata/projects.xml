@@ -130,6 +130,12 @@
     </member>
   </project>
   <project>
+    <email>arm64@gentoo.org</email>
+    <name>Gentoo Linux ARM64 development</name>
+    <url>https://wiki.gentoo.org/wiki/Project:ARM64</url>
+    <description>The ARM64 project is devoted to getting and keeping Gentoo in good shape on the ARM AArch64 architecture.</description>
+  </project>
+  <project>
     <email>accessibility@gentoo.org</email>
     <name>Gentoo Accessibility Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Accessibility</url>
