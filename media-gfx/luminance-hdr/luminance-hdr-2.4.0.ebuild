@@ -6,7 +6,7 @@ EAPI=5
 inherit cmake-utils toolchain-funcs eutils flag-o-matic
 
 MY_P=${P/_/.}
-DESCRIPTION="Luminance HDR is a graphical user interface that provides a workflow for HDR imaging"
+DESCRIPTION="Graphical user interface that provides a workflow for HDR imaging"
 HOMEPAGE="http://qtpfsgui.sourceforge.net https://github.com/LuminanceHDR/LuminanceHDR"
 SRC_URI="mirror://sourceforge/qtpfsgui/${MY_P}.tar.bz2"
 
