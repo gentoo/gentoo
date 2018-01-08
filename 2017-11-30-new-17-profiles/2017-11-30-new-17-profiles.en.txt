@@ -13,6 +13,36 @@ Display-If-Profile: default/linux/amd64/13.0/desktop/plasma/systemd
 Display-If-Profile: default/linux/amd64/13.0/developer
 Display-If-Profile: default/linux/amd64/13.0/no-multilib
 Display-If-Profile: default/linux/amd64/13.0/systemd
+Display-If-Profile: default/linux/ia64/13.0
+Display-If-Profile: default/linux/ia64/13.0/desktop
+Display-If-Profile: default/linux/ia64/13.0/desktop/gnome
+Display-If-Profile: default/linux/ia64/13.0/desktop/gnome/systemd
+Display-If-Profile: default/linux/ia64/13.0/developer
+Display-If-Profile: default/linux/powerpc/ppc32/13.0
+Display-If-Profile: default/linux/powerpc/ppc32/13.0/desktop
+Display-If-Profile: default/linux/powerpc/ppc32/13.0/desktop/gnome
+Display-If-Profile: default/linux/powerpc/ppc32/13.0/desktop/gnome/systemd
+Display-If-Profile: default/linux/powerpc/ppc32/13.0/developer
+Display-If-Profile: default/linux/powerpc/ppc64/13.0/32bit-userland
+Display-If-Profile: default/linux/powerpc/ppc64/13.0/32bit-userland/desktop
+Display-If-Profile: default/linux/powerpc/ppc64/13.0/32bit-userland/desktop/gnome
+Display-If-Profile: default/linux/powerpc/ppc64/13.0/32bit-userland/desktop/gnome/systemd
+Display-If-Profile: default/linux/powerpc/ppc64/13.0/32bit-userland/developer
+Display-If-Profile: default/linux/powerpc/ppc64/13.0/64bit-userland
+Display-If-Profile: default/linux/powerpc/ppc64/13.0/64bit-userland/desktop
+Display-If-Profile: default/linux/powerpc/ppc64/13.0/64bit-userland/desktop/gnome
+Display-If-Profile: default/linux/powerpc/ppc64/13.0/64bit-userland/desktop/gnome/systemd
+Display-If-Profile: default/linux/powerpc/ppc64/13.0/64bit-userland/developer
+Display-If-Profile: default/linux/x86/13.0
+Display-If-Profile: default/linux/x86/13.0/selinux
+Display-If-Profile: default/linux/x86/13.0/desktop
+Display-If-Profile: default/linux/x86/13.0/desktop/gnome
+Display-If-Profile: default/linux/x86/13.0/desktop/gnome/systemd
+Display-If-Profile: default/linux/x86/13.0/desktop/plasma
+Display-If-Profile: default/linux/x86/13.0/desktop/plasma/systemd
+Display-If-Profile: default/linux/x86/13.0/developer
+Display-If-Profile: default/linux/x86/13.0/no-multilib
+Display-If-Profile: default/linux/x86/13.0/systemd
 
 We have just added (for all arches except arm and mips, these follow
 later) a new set of profiles with release version 17.0 to the Gentoo 
