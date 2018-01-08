@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -16,13 +16,22 @@ SRC_URI="https://download.electrum.org/${PV}/${MY_P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-LINGUAS="ar_SA bg_BG cs_CZ da_DK de_DE el_GR eo_UY es_ES fr_FR hu_HU hy_AM id_ID it_IT ja_JP ko_KR ky_KG lv_LV nb_NO nl_NL no_NO pl_PL pt_BR pt_PT ro_RO ru_RU sk_SK sl_SI ta_IN th_TH tr_TR vi_VN zh_CN"
+MY_LANGS="ar_SA bg_BG cs_CZ da_DK de_DE el_GR eo_UY es_ES fr_FR hu_HU hy_AM id_ID it_IT ja_JP ko_KR ky_KG lv_LV nb_NO nl_NL no_NO pl_PL pt_BR pt_PT ro_RO ru_RU sk_SK sl_SI ta_IN th_TH tr_TR vi_VN zh_CN zh_TW"
+
+my_langs_to_l10n() {
+	# Map all except pt_* and zh_* to their generic codes
+	case $1 in
+		pt_*|zh_*) echo ${1/_/-} ;;
+		*) echo ${1%%_*} ;;
+	esac
+}
 
 IUSE="audio_modem cli cosign digitalbitbox email greenaddress_it ncurses qrcode +qt4 sync trustedcoin_com vkb"
 
-for lingua in ${LINGUAS}; do
-	IUSE+=" linguas_${lingua}"
+for lang in ${MY_LANGS}; do
+	IUSE+=" l10n_$(my_langs_to_l10n ${lang})"
 done
+unset lang
 
 REQUIRED_USE="
 	|| ( cli ncurses qt4 )
@@ -74,17 +83,18 @@ src_prepare() {
 	sed -i '/icons/d' setup.py || die
 
 	# Remove unrequested localization files:
-	for lang in ${LINGUAS}; do
-		use "linguas_${lang}" && continue
+	local lang
+	for lang in ${MY_LANGS}; do
+		use l10n_$(my_langs_to_l10n ${lang}) && continue
 		rm -r "lib/locale/${lang}" || die
 	done
 
 	local wordlist=
 	for wordlist in  \
-		$(usex linguas_ja_JP '' japanese) \
-		$(usex linguas_pt_BR '' $(usex linguas_pt_PT '' portuguese)) \
-		$(usex linguas_es_ES '' spanish) \
-		$(usex linguas_zh_CN '' chinese_simplified) \
+		$(usex l10n_ja    '' japanese) \
+		$(usex l10n_pt-BR '' $(usex l10n_pt-PT '' portuguese)) \
+		$(usex l10n_es    '' spanish) \
+		$(usex l10n_zh-CN '' chinese_simplified) \
 	; do
 		rm -f "lib/wordlist/${wordlist}.txt" || die
 		sed -i "/${wordlist}\\.txt/d" lib/mnemonic.py || die
