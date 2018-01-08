@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -32,6 +32,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PV}-week-grid-fixes.patch # from gnome-3-22 branch
+	"${FILESDIR}"/${PV}-libical3-compat.patch # from master branch, https://bugzilla.gnome.org/show_bug.cgi?id=790072
 )
 
 src_configure() {
