@@ -3,7 +3,16 @@ Author: Andreas K. Hüttel <dilfridge@gentoo.org>
 Posted: 2017-11-30
 Revision: 1
 News-Item-Format: 2.0
-Display-If-Installed: >=sys-devel/gcc-6.4.0
+Display-If-Profile: default/linux/amd64/13.0
+Display-If-Profile: default/linux/amd64/13.0/selinux
+Display-If-Profile: default/linux/amd64/13.0/desktop
+Display-If-Profile: default/linux/amd64/13.0/desktop/gnome
+Display-If-Profile: default/linux/amd64/13.0/desktop/gnome/systemd
+Display-If-Profile: default/linux/amd64/13.0/desktop/plasma
+Display-If-Profile: default/linux/amd64/13.0/desktop/plasma/systemd
+Display-If-Profile: default/linux/amd64/13.0/developer
+Display-If-Profile: default/linux/amd64/13.0/no-multilib
+Display-If-Profile: default/linux/amd64/13.0/systemd
 
 We have just added (for all arches except arm and mips, these follow
 later) a new set of profiles with release version 17.0 to the Gentoo 
