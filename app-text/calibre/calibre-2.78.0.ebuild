@@ -81,6 +81,14 @@ DEPEND="${COMMON_DEPEND}
 	>=virtual/podofo-build-0.8.2
 	virtual/pkgconfig"
 
+pkg_pretend() {
+	if [[ ${MERGE_TYPE} != binary && $(gcc-major-version) -lt 6 ]]; then
+		eerror "Calibre cannot be built with this version of gcc."
+		eerror "You need at least gcc-6.0"
+		die "Your C compiler is too old for this package."
+	fi
+}
+
 src_prepare() {
 	# no_updates: do not annoy user with "new version is availible all the time
 	# disable_plugins: walking sec-hole, wait for upstream to use GHNS interface
