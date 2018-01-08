@@ -52,7 +52,7 @@ src_install() {
 
 	keepdir /var/{lib,log}/${MY_PN}
 
-	newinitd "${FILESDIR}/elasticsearch.init.3" "${MY_PN}"
+	newinitd "${FILESDIR}/elasticsearch.init.1" "${MY_PN}"
 	newconfd "${FILESDIR}/${MY_PN}.conf.3" "${MY_PN}"
 	systemd_newunit "${FILESDIR}"/${PN}.service.2 "${PN}.service"
 }
