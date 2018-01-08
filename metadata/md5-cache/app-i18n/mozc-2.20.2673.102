@@ -11,4 +11,4 @@ REQUIRED_USE=|| ( emacs fcitx4 ibus ) gui? ( ^^ ( handwriting-tegaki handwriting
 SLOT=0
 SRC_URI=https://github.com/google/mozc/archive/280e38fe3d9db4df52f0713acf2ca65898cd697a.tar.gz -> mozc-2.20.2673.102.tar.gz https://github.com/hiroyuki-komatsu/japanese-usage-dictionary/archive/e5b3425575734c323e1d947009dd74709437b684.tar.gz -> japanese-usage-dictionary-20120416091336.tar.gz fcitx4? ( https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-2.18.2612.102.1.patch )
 _eclasses_=elisp-common	23f47b2e1de7abf387105eddd1318738	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-any-r1	27d7f9da7187d283b7f3eae8390b7b09	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=edc02d877dab8789744d5288275f5d74
+_md5_=34c13e5d0cfca23546a42062a1909af8

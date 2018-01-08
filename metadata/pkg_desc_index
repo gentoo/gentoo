@@ -829,20 +829,20 @@ app-i18n/canna 3.7_p3-r1: A client-server based Kana-Kanji conversion system
 app-i18n/cstools 3.42: A charset conversion tool cstocs and two Perl modules for Czech language
 app-i18n/dbskkd-cdb 2.00: SKK dictionary server based on cdb
 app-i18n/enca 1.19-r1: Detect and convert encoding of text files
-app-i18n/fcitx 4.2.9.4: Fcitx (Flexible Context-aware Input Tool with eXtension) input method framework
+app-i18n/fcitx 4.2.9.4 4.2.9.5: Fcitx (Flexible Context-aware Input Tool with eXtension) input method framework
 app-i18n/fcitx-anthy 0.2.3: Japanese Anthy input methods for Fcitx
 app-i18n/fcitx-chewing 0.2.3: Chinese Chewing input method for Fcitx
-app-i18n/fcitx-cloudpinyin 0.3.5: Internet look-up support for Chinese Pinyin input methods for Fcitx
+app-i18n/fcitx-cloudpinyin 0.3.5 0.3.6: Internet look-up support for Chinese Pinyin input methods for Fcitx
 app-i18n/fcitx-configtool 0.4.10: GTK+ GUI configuration tool for Fcitx
 app-i18n/fcitx-hangul 0.3.1: Korean Hangul input method for Fcitx
 app-i18n/fcitx-libpinyin 0.5.3: Chinese LibPinyin input methods for Fcitx
 app-i18n/fcitx-m17n 0.2.4: m17n-provided input methods for Fcitx
-app-i18n/fcitx-qt5 1.1.1: Fcitx input method module for Qt 5
+app-i18n/fcitx-qt5 1.1.1 1.2.1: Fcitx input method module for Qt 5
 app-i18n/fcitx-rime 0.3.2: Chinese RIME input method for Fcitx
 app-i18n/fcitx-sayura 0.1.2: Sinhala Sayura input method for Fcitx
 app-i18n/fcitx-sunpinyin 0.4.2: Chinese SunPinyin input method for Fcitx
 app-i18n/fcitx-table-extra 0.3.8: Extra Chinese table input methods for Fcitx
-app-i18n/fcitx-unikey 0.2.6: Vietnamese Unikey input methods for Fcitx
+app-i18n/fcitx-unikey 0.2.6 0.2.7: Vietnamese Unikey input methods for Fcitx
 app-i18n/freewnn 1.1.1_alpha22: Network-Extensible Kana-to-Kanji Conversion System
 app-i18n/ibus 1.5.12 1.5.16: Intelligent Input Bus for Linux / Unix OS
 app-i18n/ibus-anthy 1.5.4: Japanese Anthy engine for IBus
