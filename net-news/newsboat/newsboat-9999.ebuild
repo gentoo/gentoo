@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -29,6 +29,7 @@ RDEPEND="
 	sys-libs/ncurses:0=[unicode]
 "
 DEPEND="${RDEPEND}
+	app-text/asciidoc
 	dev-lang/perl
 	virtual/pkgconfig
 	sys-devel/gettext
@@ -37,7 +38,6 @@ DEPEND="${RDEPEND}
 		sys-devel/bc
 	)
 "
-[[ ${PV} == 9999 ]] && DEPEND+=" app-text/asciidoc"
 
 # tests require network access
 RESTRICT="test"
@@ -54,7 +54,6 @@ src_configure() {
 
 src_compile() {
 	emake prefix="/usr" CXX="$(tc-getCXX)" AR="$(tc-getAR)" RANLIB="$(tc-getRANLIB)"
-	[[ ${PV} == 9999 ]] && emake doc
 }
 
 src_test() {
