@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -21,7 +21,7 @@ RDEPEND="${DEPEND}"
 pkg_linguas=( ar cs de es fa_IR fi_FI fr hu id it nb nl pl pt ru sv th tr vi )
 IUSE+=" ${pkg_linguas[@]/#/linguas_}"
 
-PATCHES=( "${FILESDIR}"/${P}-*.patch )
+PATCHES=( "${FILESDIR}"/${P}-sqlite.patch )
 
 src_configure() {
 	# GUI linguae
