@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201801-10">
+  <title>LibXfont, LibXfont2: Arbitrary file access</title>
+  <synopsis>A vulnerability has been found in LibXfont and LibXfont2 which may
+    allow for arbitrary file access.
+  </synopsis>
+  <product type="ebuild">LibXfont, LibXfont2</product>
+  <announced>2018-01-08</announced>
+  <revised>2018-01-08: 1</revised>
+  <bug>639064</bug>
+  <access>local</access>
+  <affected>
+    <package name="x11-libs/libXfont" auto="yes" arch="*">
+      <unaffected range="ge">1.5.4</unaffected>
+      <vulnerable range="lt">1.5.4</vulnerable>
+    </package>
+    <package name="x11-libs/libXfont2" auto="yes" arch="*">
+      <unaffected range="ge">2.0.3</unaffected>
+      <vulnerable range="lt">2.0.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>X.Org Xfont library.</p>
+  </background>
+  <description>
+    <p>It was discovered that libXfont incorrectly followed symlinks when
+      opening font files.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local unprivileged user could use this flaw to cause the X server to
+      access arbitrary files, including special device files.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All LibXfont users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-libs/libXfont-1.5.4"
+    </code>
+    
+    <p>All LibXfont2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-libs/libXfont2-2.0.3"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-16611">
+      CVE-2017-16611
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-01-05T05:31:41Z">jmbailey</metadata>
+  <metadata tag="submitter" timestamp="2018-01-08T12:26:24Z">jmbailey</metadata>
+</glsa>
