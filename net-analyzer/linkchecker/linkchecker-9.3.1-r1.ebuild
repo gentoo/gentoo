@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,7 @@ IUSE="gnome sqlite X"
 
 RDEPEND="
 	virtual/python-dnspython[${PYTHON_USEDEP}]
-	<dev-python/requests-2.15.0[${PYTHON_USEDEP}]
+	dev-python/requests[${PYTHON_USEDEP}]
 	gnome? ( dev-python/pygtk:2[${PYTHON_USEDEP}] )
 	X? (
 		dev-python/PyQt4[X,help,${PYTHON_USEDEP}]
@@ -39,6 +39,7 @@ python_prepare_all() {
 		"${FILESDIR}/${PN}-9.3-bash-completion.patch"
 		"${FILESDIR}/${PN}-9.3-desktop.patch"
 		"${FILESDIR}/${PN}-9.3.1-build-fix.patch"
+		"${FILESDIR}/${PN}-9.3.1-requests.patch"
 	)
 
 	distutils-r1_python_prepare_all
