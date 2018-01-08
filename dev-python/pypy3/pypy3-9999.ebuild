@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -46,7 +46,6 @@ DEPEND="${RDEPEND}
 			)
 		)
 	)"
-#	doc? ( dev-python/sphinx )
 
 # Who would care about predictable directory names?
 S="${WORKDIR}/pypy3-v${PV%_*}-src"
@@ -179,8 +178,6 @@ src_compile() {
 	cp -p "${T}"/usession*-0/testing_1/{pypy3-c,libpypy3-c.so} . || die
 	pax-mark m pypy3-c libpypy3-c.so
 
-	#use doc && emake -C pypy/doc html
-
 	einfo "Generating caches and CFFI modules ..."
 
 	# Generate Grammar and PatternGrammar pickles.
@@ -257,9 +254,6 @@ src_install() {
 			"${ED%/}${dest}"/lib_pypy/_tkinter \
 			"${ED%/}${dest}"/lib-python/*3/test/test_{tcl,tk,ttk*}.py || die
 	fi
-
-	# Install docs
-	#use doc && dohtml -r pypy/doc/_build/html/
 
 	einfo "Generating caches and byte-compiling ..."
 

@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-# some random parts need python 2...
+# Test runner needs Python 2.
 PYTHON_COMPAT=( python2_7 pypy )
 inherit pax-utils python-any-r1 unpacker versionator
 
@@ -57,8 +57,6 @@ DEPEND="${RDEPEND}
 	app-arch/lzip
 	app-arch/xz-utils
 	test? ( ${PYTHON_DEPS} )"
-#	doc? ( ${PYTHON_DEPS}
-#		dev-python/sphinx )
 
 S=${WORKDIR}/${MY_P}-src
 
@@ -90,10 +88,7 @@ src_compile() {
 	mv pypy/module/cpyext/include/*.h include/ || die
 	mv pypy/module/cpyext/parse/*.h include/ || die
 
-	#use doc && emake -C pypy/doc/ html
 	pax-mark m pypy3-c libpypy3-c.so
-
-	#use doc && emake -C pypy/doc html
 
 	einfo "Generating caches and CFFI modules ..."
 
@@ -169,9 +164,6 @@ src_install() {
 			"${ED%/}${dest}"/lib_pypy/_tkinter \
 			"${ED%/}${dest}"/lib-python/*3/test/test_{tcl,tk,ttk*}.py || die
 	fi
-
-	# Install docs
-	#use doc && dodoc -r pypy/doc/_build/html
 
 	einfo "Generating caches and byte-compiling ..."
 
