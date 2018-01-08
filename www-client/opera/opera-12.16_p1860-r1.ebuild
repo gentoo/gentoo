@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,9 +21,9 @@ O_B="$(get_version_component_range 3)"   # Build number, i.e. 1156
 O_K="noserch" # The key to the snapshot URL
 
 O_LINGUAS="
-	af ar az be bg bn cs da de el en-GB es-ES es-LA et fa fi fr fr-CA fy gd he
-	hi hr hu id it ja ka kk ko lt lv me mk ms nb nl nn pa pl pt pt-BR ro ru sk
-	sr sv sw ta te th tl tr uk ur uz vi zh-CN zh-TW zu
+	af ar az be bg bn cnr cs da de el en-GB es-419 es-ES et fa fi fr fr-CA fy
+	gd he hi hr hu id it ja ka kk ko lt lv mk ms nb nl nn pa pl pt pt-BR ro ru
+	sk sr sv sw ta te th tl tr uk ur uz vi zh-CN zh-TW zu
 " # Supported linguas
 
 # == End of variables that often change ==
@@ -55,7 +55,7 @@ else							# release: _p
 fi
 
 for O_LINGUA in ${O_LINGUAS}; do
-	IUSE+=" linguas_${O_LINGUA/-/_}"
+	IUSE+=" l10n_${O_LINGUA}"
 done
 
 DEPEND="
@@ -113,7 +113,12 @@ src_prepare() {
 
 	# Remove unwanted linguas
 	for LINGUA in ${O_LINGUAS}; do
-		if ! use linguas_${LINGUA/-/_}; then
+		if ! use l10n_${LINGUA}; then
+			# Remap codes for Montenegrin and Spanish (Latin America)
+			case ${LINGUA} in
+				cnr) LINGUA=me ;;
+				es-419) LINGUA=es-LA ;;
+			esac
 			LINGUA=$(find "${LNGDIR}" -maxdepth 1 -type d -iname ${LINGUA/_/-})
 			rm -r "${LINGUA}" || die "The list of linguas needs to be fixed"
 		fi
