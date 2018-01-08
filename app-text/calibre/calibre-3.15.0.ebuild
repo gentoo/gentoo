@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite,ssl"
 
-inherit eutils fdo-mime bash-completion-r1 gnome2-utils multilib toolchain-funcs python-single-r1
+inherit eutils bash-completion-r1 gnome2-utils multilib toolchain-funcs python-single-r1 xdg-utils
 
 DESCRIPTION="Ebook management application"
 HOMEPAGE="http://calibre-ebook.com/"
@@ -68,6 +68,8 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-qt/qtdbus:5=
 	dev-qt/qtgui:5=
 	dev-qt/qtwidgets:5=
+	dev-util/desktop-file-utils
+	dev-util/gtk-update-icon-cache
 	media-fonts/liberation-fonts
 	media-libs/fontconfig:=
 	>=media-libs/freetype-2:=
@@ -81,6 +83,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	x11-libs/libX11:=
 	x11-libs/libXext:=
 	x11-libs/libXrender:=
+	x11-misc/shared-mime-info
 	>=x11-misc/xdg-utils-1.0.2-r2
 	ios? (
 		>=app-pda/usbmuxd-1.0.8
@@ -278,13 +281,13 @@ pkg_postinst() {
 			rm -rf "${x}"
 		fi
 	done
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	gnome2_icon_cache_update
 }
