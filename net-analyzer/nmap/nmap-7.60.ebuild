@@ -90,7 +90,7 @@ src_prepare() {
 	local lingua
 	if use nls; then
 		for lingua in ${NMAP_LINGUAS[@]}; do
-			if ! has ${linguas} ${LINGUAS-${lingua}}; then
+			if ! has ${lingua} ${LINGUAS-${lingua}}; then
 				rm -r zenmap/share/zenmap/locale/${lingua} || die
 				rm zenmap/share/zenmap/locale/${lingua}.po || die
 			fi
