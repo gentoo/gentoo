@@ -1,7 +1,7 @@
 http://bugs.gentoo.org/show_bug.cgi?id=302773
 
---- tailor.h.old	2010-01-29 11:13:02.000000000 +0000
-+++ tailor.h	2010-01-29 13:18:15.000000000 +0000
+--- a/tailor.h
++++ b/tailor.h
 @@ -69,9 +69,6 @@
  #  include <io.h>
  #  define OS_CODE  0x00
