@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{4,5,6} )
 
-inherit distutils-r1
+inherit distutils-r1 gnome2-utils
 
 DESCRIPTION="DevedeNG is a program to create video DVDs and CDs (VCD, sVCD or CVD)"
 HOMEPAGE="http://www.rastersoft.com/programas/devede.html"
@@ -28,3 +28,11 @@ RDEPEND="dev-python/pycairo[${PYTHON_USEDEP}]
 	|| ( app-cdr/brasero kde-apps/k3b )"
 
 DEPEND="${PYTHON_DEPS}"
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
+}
