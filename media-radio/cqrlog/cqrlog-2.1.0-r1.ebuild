@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ DEPEND=">=dev-lang/lazarus-1.6.4
 		>=dev-lang/fpc-3.0.2"
 
 RDEPEND="${DEPEND}
-		dev-db/mysql[embedded]
+		dev-db/mysql[server]
 		dev-libs/atk
 		dev-libs/glib
 		x11-libs/cairo
