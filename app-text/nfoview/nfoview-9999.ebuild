@@ -11,7 +11,7 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/otsaloma/nfoview.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/otsaloma/nfoview/archive/${PV}.tar.gz"
+	SRC_URI="https://github.com/otsaloma/nfoview/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
