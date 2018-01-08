@@ -35,7 +35,7 @@ RDEPEND="
 	dev-libs/expat
 	dev-libs/glib:2
 	dev-libs/nspr
-	dev-libs/nss
+	>=dev-libs/nss-3.26
 	gnome-base/gconf:2
 	media-libs/alsa-lib
 	media-libs/fontconfig

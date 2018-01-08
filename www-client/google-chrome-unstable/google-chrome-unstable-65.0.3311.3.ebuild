@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -37,7 +37,7 @@ RDEPEND="
 	dev-libs/expat
 	dev-libs/glib:2
 	dev-libs/nspr
-	dev-libs/nss
+	>=dev-libs/nss-3.26
 	media-libs/alsa-lib
 	media-libs/fontconfig
 	media-libs/freetype:2

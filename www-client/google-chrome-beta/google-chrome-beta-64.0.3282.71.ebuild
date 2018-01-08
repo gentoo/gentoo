@@ -37,7 +37,7 @@ RDEPEND="
 	dev-libs/expat
 	dev-libs/glib:2
 	dev-libs/nspr
-	dev-libs/nss
+	>=dev-libs/nss-3.26
 	media-libs/alsa-lib
 	media-libs/fontconfig
 	media-libs/freetype:2
