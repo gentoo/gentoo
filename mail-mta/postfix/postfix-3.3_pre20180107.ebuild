@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -234,14 +234,6 @@ src_install () {
 	dosbin bin/smtp-{source,sink} bin/qmqp-{source,sink}
 	doman man/man1/smtp-{source,sink}.1 man/man1/qmqp-{source,sink}.1
 
-	# Set proper permissions on required files/directories
-	dodir /var/lib/postfix
-	keepdir /var/lib/postfix
-	fowners -R postfix:postfix /var/lib/postfix
-	fperms 0750 /var/lib/postfix
-	fowners root:postdrop /usr/sbin/post{drop,queue}
-	fperms 02711 /usr/sbin/post{drop,queue}
-
 	keepdir /etc/postfix
 	if use mbox; then
 		mypostconf="mail_spool_directory=/var/spool/mail"
@@ -275,10 +267,6 @@ src_install () {
 	insinto /usr/include/postfix
 	doins include/*.h
 
-	# Keep config_dir clean
-	rm -f "${D}"/etc/postfix/{*LICENSE,access,aliases,canonical,generic}
-	rm -f "${D}"/etc/postfix/{header_checks,relocated,transport,virtual}
-
 	if has_version mail-mta/postfix; then
 		# let the sysadmin decide when to change the compatibility_level
 		sed -i -e /^compatibility_level/"s/^/#/" "${D}"/etc/postfix/main.cf || die
@@ -295,6 +283,9 @@ pkg_postinst() {
 		ewarn "work correctly without it."
 		ewarn
 	fi
+
+	# check and fix file permissions 
+	"${EROOT}"/usr/sbin/postfix set-permissions 2>/dev/null
 
 	# configure tls
 	if use ssl ; then
