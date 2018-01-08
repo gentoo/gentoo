@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Mart Raudsepp <leio@gentoo.org> (08 Jan 2018)
+# mail-client/evolution[ytnef] requires net-mail/ytnef which is not keyworded
+mail-client/evolution ytnef
+
 # Sergei Trofimovich <slyfox@gentoo.org> (25 Dec 2017)
 # net-firewall/nftables[doc] requires dblatex which is not keyworded
 net-firewall/nftables doc

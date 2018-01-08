@@ -13,7 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Evolution"
 LICENSE="|| ( LGPL-2 LGPL-3 ) CC-BY-SA-3.0 FDL-1.3+ OPENLDAP"
 SLOT="2.0"
 
-IUSE="archive +bogofilter crypt geolocation highlight ldap spamassassin spell ssl +weather"
+IUSE="archive +bogofilter crypt geolocation highlight ldap spamassassin spell ssl +weather ytnef"
 
 KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~x86"
 
@@ -66,6 +66,7 @@ COMMON_DEPEND="
 		>=dev-libs/nspr-4.6.1:=
 		>=dev-libs/nss-3.11:= )
 	weather? ( >=dev-libs/libgweather-3.10:2= )
+	ytnef? ( net-mail/ytnef )
 "
 DEPEND="${COMMON_DEPEND}
 	app-text/docbook-xml-dtd:4.1.2
@@ -127,6 +128,7 @@ src_configure() {
 		-DENABLE_TEXT_HIGHLIGHT=$(usex highlight)
 		-DENABLE_WEATHER=$(usex weather)
 		-DENABLE_CONTACT_MAPS=$(usex geolocation)
+		-DENABLE_YTNEF=$(usex ytnef)
 		-DENABLE_PST_IMPORT=OFF
 		-DWITH_GLADE_CATALOG=OFF
 	)
