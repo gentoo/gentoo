@@ -4379,7 +4379,7 @@ dev-perl/namespace-clean 0.270.0: Keep imports and functions out of your namespa
 dev-perl/perl-ldap 0.650.0: Perl modules which provide an object-oriented interface to LDAP servers
 dev-perl/prefork 1.40.0-r2: Optimized module loading for forking or non-forking processes
 dev-perl/rename 1.900.0: A filename renaming utility based on perl regular expression
-dev-perl/strictures 2.0.1 2.0.3: Turn on strict and make most warnings fatal
+dev-perl/strictures 2.0.3: Turn on strict and make most warnings fatal
 dev-php/File_Iterator 1.3.4 1.4.2: FilterIterator implementation that filters files based on criteria
 dev-php/PEAR-Archive_Tar 1.4.2-r2: Tar file management class
 dev-php/PEAR-Auth_SASL 1.1.0: Abstraction of various SASL mechanism responses
