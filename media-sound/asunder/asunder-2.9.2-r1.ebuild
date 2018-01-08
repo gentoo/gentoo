@@ -11,7 +11,7 @@ SRC_URI="http://littlesvr.ca/${PN}/releases/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="aac flac mac mp3 musepack opus vorbis wavpack"
 
 COMMON_DEPEND=">=media-libs/libcddb-0.9.5
