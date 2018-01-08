@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -13,7 +13,7 @@ if [ ${PV} == "9999" ]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/zfsonlinux/zfs/releases/download/zfs-${PV}/zfs-${PV}.tar.gz
-		https://dev.gentoo.org/~ryao/dist/zfs-${PV}-patches-p${PR#r}.tar.xz"
+		https://dev.gentoo.org/~ryao/dist/zfs-${PV}-patches-p1.tar.xz"
 	S="${WORKDIR}/zfs-${PV}"
 	KEYWORDS="~amd64 ~arm ~ppc ~ppc64"
 fi
@@ -46,7 +46,9 @@ DOCS=( AUTHORS COPYRIGHT DISCLAIMER README.markdown )
 
 pkg_setup() {
 	linux-info_pkg_setup
-	CONFIG_CHECK="!DEBUG_LOCK_ALLOC
+	CONFIG_CHECK="
+		!DEBUG_LOCK_ALLOC
+		!CONFIG_REISER4_FS
 		EFI_PARTITION
 		IOSCHED_NOOP
 		MODULES

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -14,7 +14,7 @@ if [ ${PV} == "9999" ] ; then
 	EGIT_REPO_URI="https://github.com/zfsonlinux/${PN}.git"
 else
 	SRC_URI="https://github.com/zfsonlinux/${PN}/releases/download/${P}/${P}.tar.gz
-		https://dev.gentoo.org/~ryao/dist/${P}-patches-p${PR#r}.tar.xz"
+		https://dev.gentoo.org/~ryao/dist/${P}-patches-p2.tar.xz"
 	KEYWORDS="~amd64 ~arm ~ppc ~ppc64"
 fi
 
@@ -29,6 +29,7 @@ IUSE="custom-cflags debug kernel-builtin +rootfs test-suite static-libs"
 RESTRICT="test"
 
 COMMON_DEPEND="
+	net-libs/libtirpc
 	sys-apps/util-linux[static-libs?]
 	sys-libs/zlib[static-libs(+)?]
 	virtual/awk
