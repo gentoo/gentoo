@@ -1257,7 +1257,7 @@ app-shells/scsh 0.6.7-r2: Unix shell embedded in Scheme
 app-shells/soapbox 0.3.1-r2: A preload (sandbox) library to restrict filesystem writes
 app-shells/tcsh 6.20.00: Enhanced version of the Berkeley C shell (csh)
 app-shells/zsh 5.2 5.3.1: UNIX Shell similar to the Korn shell
-app-shells/zsh-completions 0.26.0: Additional completion definitions for Zsh
+app-shells/zsh-completions 0.27.0: Additional completion definitions for Zsh
 app-text/XML-Schema-learner 1.0.1: Algorithmic inferencing of XML schema definitions and DTDs
 app-text/a2ps 4.14-r6: Any to PostScript filter
 app-text/agrep 2.04-r2: A tool for the fast searching of text allowing for errors in the search pattern
