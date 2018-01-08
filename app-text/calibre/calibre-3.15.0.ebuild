@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite,ssl"
 
-inherit eutils fdo-mime bash-completion-r1 multilib toolchain-funcs python-single-r1
+inherit eutils fdo-mime bash-completion-r1 gnome2-utils multilib toolchain-funcs python-single-r1
 
 DESCRIPTION="Ebook management application"
 HOMEPAGE="http://calibre-ebook.com/"
@@ -253,6 +253,7 @@ src_install() {
 }
 
 pkg_preinst() {
+	gnome2_icon_savelist
 	# Indentify stray directories from upstream's "Binary install"
 	# method (see bug 622728).
 	CALIBRE_LIB_DIR=/usr/$(get_libdir)/calibre
@@ -271,9 +272,11 @@ pkg_postinst() {
 	done
 	fdo-mime_desktop_database_update
 	fdo-mime_mime_database_update
+	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
 	fdo-mime_desktop_database_update
 	fdo-mime_mime_database_update
+	gnome2_icon_cache_update
 }
