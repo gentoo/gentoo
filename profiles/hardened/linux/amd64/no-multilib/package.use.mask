@@ -11,9 +11,5 @@ app-emulation/xen-tools ovmf
 # Requires sys-boot/grub:0 which is masked here.
 sys-apps/memtest86+ floppy
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (24 Jun 2012)
-# Disable 32-bit parts of wine, bug #351436
-app-emulation/wine mono
-
 # Intel Integrated Primitive (sci-libs/ipp) support
 media-libs/opencv ipp

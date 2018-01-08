@@ -41,6 +41,9 @@ src_prepare() {
 	# Missing from release tarball, and requires git tree to generate
 	sed -e "/readme_DATA/s/ChangeLog\(.html\)\?//g" -i Makefile.am || die
 
+	# Remove -Werror (gcc changes may add new warnings)
+	sed -e '/CFLAGS/s/-Werror //g' -i configure.in || die
+
 	eautoreconf
 }
 
