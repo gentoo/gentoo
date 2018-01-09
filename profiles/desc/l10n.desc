@@ -48,6 +48,8 @@ cy - Welsh
 da - Danish
 de - German
 de-1901 - German (traditional orthography)
+de-CH - German (Switzerland)
+de-DE - German (Germany)
 dgo - Dogri (individual language)
 doi - Dogri (macrolanguage)
 dsb - Lower Sorbian
@@ -154,6 +156,7 @@ sid - Sidamo
 sk - Slovak
 sl - Slovenian
 sn - Shona
+so - Somali
 son - Songhai languages
 sq - Albanian
 sr - Serbian
