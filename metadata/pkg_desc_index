@@ -8873,7 +8873,7 @@ net-misc/sstp-client 1.0.10-r1: A client implementation of Secure Socket Tunneli
 net-misc/stone 2.3e-r1: A simple TCP/IP packet repeater
 net-misc/streamtuner 0.99.99-r5: Stream directory browser for browsing internet radio streams
 net-misc/stunnel 5.36: TLS/SSL - Port Wrapper
-net-misc/suite3270 3.4_p10: Complete 3270 access package
+net-misc/suite3270 3.4_p10 3.5_p10: Complete 3270 access package
 net-misc/taylor-uucp 1.07-r2: Taylor UUCP
 net-misc/tcpsound 0.3.1-r1: Play sounds in response to network traffic
 net-misc/telnet-bsd 1.2-r1: Telnet and telnetd ported from OpenBSD with IPv6 support
