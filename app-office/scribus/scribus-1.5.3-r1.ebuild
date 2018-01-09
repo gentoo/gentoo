@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,8 +19,27 @@ KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
 IUSE="+boost debug examples graphicsmagick hunspell +minimal osg +pdf scripts templates tk"
 
 #a=$((ls resources/translations/scribus.*ts | sed -e 's:\.: :g' | awk '{print $2}'; ls resources/loremipsum/*xml | sed -e 's:\.: :g' -e 's:loremipsum\/: :g'| awk '{print $2}'; ls resources/dicts/hyph*dic | sed -e 's:\.: :g' -e 's:hyph_: :g' | awk '{print $2}'; ls resources/dicts/README_*txt | sed -e 's:_hyph::g' -e 's:\.: :g' -e 's:README_: :g' | awk '{print $2}') | sort | uniq); echo $a
-IUSE_LINGUAS=" af ar bg br ca ca_ES cs cs_CZ cy cy_GB da da_DK de de@1901 de_CH de_DE el en_AU en_GB en_US eo es es_ES et eu fa_IR fi fi_FI fr gl he he_IL hr hu hu_HU ia id id_ID is is_IS it ja kab kn_IN ko ku la lt lt_LT nb_NO nl nn_NO pl pl_PL pt pt_BR pt_PT ro ro_RO ru ru_RU sa sk sk_SK sl sl_SI so sq sr sv sv_SE te th_TH tr uk uk_UA zh_CN zh_TW"
-IUSE+=" ${IUSE_LINGUAS// / linguas_}"
+# Keep this sorted, otherwise eliminating of duplicates below won't work
+IUSE_L10N=" af ar bg br ca ca_ES cs cs_CZ cy cy_GB da da_DK de de_1901 de_CH de_DE el en_AU en_GB en_US eo es es_ES et eu fa_IR fi fi_FI fr gl he he_IL hr hu hu_HU ia id id_ID is is_IS it ja kab kn_IN ko ku la lt lt_LT nb_NO nl nn_NO pl pl_PL pt pt_BR pt_PT ro ro_RO ru ru_RU_0 sa sk sk_SK sl sl_SI so sq sr sv sv_SE te th_TH tr uk uk_UA zh_CN zh_TW"
+
+map_lang() {
+	local lang=${1/_/-}
+	case $1 in
+		# Retain the following, which have a specific subtag
+		de_*|en_*|pt_*|zh_*) ;;
+		# Consider all other xx_XX as duplicates of the generic xx tag
+		*_*) lang=${1%%_*} ;;
+	esac
+	echo ${lang}
+}
+
+prev_l=
+for l in ${IUSE_L10N}; do
+	l=$(map_lang ${l})
+	[[ ${l} != "${prev_l}" ]] && IUSE+=" l10n_${l}"
+	prev_l=${l}
+done
+unset l prev_l
 
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -109,9 +128,9 @@ src_configure() {
 	append-cppflags -DHAVE_MEMRCHR
 
 	local _lang lang langs
-	for lang in ${IUSE_LINGUAS}; do
-		_lang=$(translate_lang ${lang})
-		if use linguas_${lang} || [[ ${lang} == "en" ]]; then
+	for _lang in ${IUSE_L10N}; do
+		lang=$(map_lang ${_lang})
+		if use l10n_${lang}; then
 			# From the CMakeLists.txt
 			# "#Bit of a hack, preprocess all the filenames to generate our language string, needed for -DWANT_GUI_LANG=en_GB;de_DE , etc"
 			langs+=";${_lang}"
@@ -162,9 +181,9 @@ src_install() {
 
 	local lang _lang
 	# en_EN can be deleted always
-	for lang in ${IUSE_LINGUAS}; do
-		if ! use linguas_${lang}; then
-			_lang=$(translate_lang ${lang})
+	for _lang in ${IUSE_L10N}; do
+		lang=$(map_lang ${_lang})
+		if ! use l10n_${lang}; then
 			safe_delete "${ED%/}"/usr/share/man/${_lang}
 		fi
 	done
@@ -225,11 +244,4 @@ safe_delete () {
 			eend $?
 		fi
 	done
-}
-
-translate_lang() {
-	_lang=${1}
-	[[ ${1} == "ru_RU" ]] && _lang+=_0
-	[[ ${1} == "de@1901" ]] && _lang=de_1901
-	echo ${_lang}
 }
