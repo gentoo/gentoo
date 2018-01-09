@@ -43,9 +43,7 @@ src_prepare() {
 	sed \
 		-e "/# Optimisation/,/# Include/d" \
 		-i ${PN}.pro || die "optimisation sed failed"
-}
 
-src_configure() {
 	eqmake5 zhu3d.pro
 }
 
