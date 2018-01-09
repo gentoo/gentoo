@@ -6277,7 +6277,7 @@ dev-vcs/svn2cl 0.12: Create a GNU-style ChangeLog from subversion's svn log --xm
 dev-vcs/tig 2.2.2: text mode interface for git
 dev-vcs/tkcvs 8.2.2 8.2.3: Tcl/Tk-based graphical interface to CVS with Subversion support
 dev-vcs/topgit 0.9: A different patch queue manager
-dev-vcs/tortoisehg 4.3.1 4.4.1-r1: Set of graphical tools for Mercurial
+dev-vcs/tortoisehg 4.4.1-r1: Set of graphical tools for Mercurial
 dev-vcs/vcsh 1.20151229.1: Manage config files in $HOME via fake bare git repositories
 games-action/supermariowar 2.0_beta1-r1: Fan-made multiplayer Super Mario Bros. style deathmatch game
 games-arcade/gnome-nibbles 3.22.2.2: Nibbles clone for Gnome
