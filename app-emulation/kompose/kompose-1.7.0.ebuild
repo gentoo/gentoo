@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ inherit golang-build golang-vcs-snapshot
 
 EGO_PN="github.com/kubernetes/kompose"
 EGIT_COMMIT="v${PV}"
-KOMPOSE_COMMIT="999278f"
+KOMPOSE_COMMIT="767ab4b"
 ARCHIVE_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
 
