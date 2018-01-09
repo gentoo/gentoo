@@ -29,10 +29,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Ulrich Müller <ulm@gentoo.org> (09 Jan 2018)
-# Masked for testing (#643864).
-=app-admin/eselect-1.4.11
-
 # Andreas Sturmlechner <asturm@gentoo.org> (09 Jan 2018)
 # Dead upstream, depends on dead Qt4.
 # Bug #643976. Masked for removal in 30 days.

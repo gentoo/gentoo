@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,7 +16,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm hppa ~ppc ~s390 ~sparc x86"
 
-IUSE="bgpclassless caps fpm doc elibc_glibc ipv6 multipath nhrpd ospfapi pam protobuf +readline snmp tcp-zebra"
+IUSE="bgpclassless caps fpm doc elibc_glibc ipv6 multipath nhrpd ospfapi pam protobuf +readline snmp tcp-zebra test"
 
 COMMON_DEPEND="
 	caps? ( sys-libs/libcap )
@@ -30,7 +30,8 @@ COMMON_DEPEND="
 	!elibc_glibc? ( dev-libs/libpcre )"
 DEPEND="${COMMON_DEPEND}
 	sys-apps/gawk
-	sys-devel/libtool:2"
+	sys-devel/libtool:2
+	test? ( dev-util/dejagnu )"
 RDEPEND="${COMMON_DEPEND}
 	sys-apps/iproute2"
 
