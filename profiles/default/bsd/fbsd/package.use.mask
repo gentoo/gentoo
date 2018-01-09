@@ -75,11 +75,6 @@ gnome-base/nautilus tracker
 # cluster require ctdb, which doesn't support FreeBSD
 net-fs/samba ads cluster
 
-# Naohiro Aota <naota@gentoo.org> (08 Nov 2011)
-# capi require Linux features
-# hardened require prelink which depends on glibc
-app-emulation/wine capi
-
 # Naohiro Aota <naota@gentoo.org> (24 Nov 2011)
 # Masked because kerberos is masked
 net-dns/bind gssapi
