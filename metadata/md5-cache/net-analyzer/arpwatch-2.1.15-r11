@@ -10,4 +10,4 @@ RDEPEND=net-libs/libpcap sys-libs/ncurses:* selinux? ( sec-policy/selinux-arpwat
 SLOT=0
 SRC_URI=ftp://ftp.ee.lbl.gov/arpwatch-2.1a15.tar.gz https://dev.gentoo.org/~jer/arpwatch-patchset-0.8.tar.xz
 _eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	user	8bc2845510e2109af75e3eeac607ec81	versionator	ce21313503c41896ebcd7d58b0607e37
-_md5_=3cbf733b8fa343acb60ae6129656f597
+_md5_=e1e47678821961b1b299fdf27d169c0d
