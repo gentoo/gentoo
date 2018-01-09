@@ -1,7 +1,7 @@
 Title: Experimental amd64 17.1 profiles up for testing
 Author: Michał Górny <mgorny@gentoo.org>
 Posted: 2017-12-26
-Revision: 2
+Revision: 3
 News-Item-Format: 2.0
 Display-If-Profile: default/linux/amd64/13.0
 Display-If-Profile: default/linux/amd64/13.0/selinux
@@ -76,7 +76,7 @@ The following steps can be used to upgrade your system:
 
 8. Switch the profile, e.g.:
 
-     ln -snf /usr/portage/profiles/default/linux/amd64/17.1/desktop /etc/portage/make.profile
+     eselect profile set --force default/linux/amd64/17.1/desktop
 
 [at this point you can start using emerge again]
 
