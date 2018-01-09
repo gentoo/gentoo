@@ -1860,7 +1860,7 @@ dev-db/percona-toolkit 2.2.11: essential command-line utilities for MySQL
 dev-db/percona-xtrabackup 2.4.7 2.4.8: Hot backup utility for MySQL based servers
 dev-db/pg_top 3.7.0: 'top' for PostgreSQL
 dev-db/pgadmin3 1.22.1-r1 1.22.2: wxWidgets GUI for PostgreSQL
-dev-db/pgagent 3.4.0-r1: pgAgent is a job scheduler for PostgreSQL
+dev-db/pgagent 3.4.0-r1 3.4.0-r3: pgAgent is a job scheduler for PostgreSQL
 dev-db/pgbouncer 1.7.2: Lightweight connection pooler for PostgreSQL
 dev-db/pgpool2 3.7.0: Connection pool server for PostgreSQL
 dev-db/pgtap 0.93.0 0.98.0: Unit testing for PostgreSQL
@@ -3201,7 +3201,7 @@ dev-libs/qoauth 2.0.1_pre20160315-r2: Qt-based library for OAuth support
 dev-libs/qof 0.8.8-r1: A Query Object Framework
 dev-libs/qqwing 1.3.3 1.3.4: Sudoku puzzle generator and solver
 dev-libs/qtkeychain 0.7.0: Qt API for storing passwords securely
-dev-libs/quazip 0.7.2-r1: A simple C++ wrapper over Gilles Vollant's ZIP/UNZIP package
+dev-libs/quazip 0.7.2-r1 0.7.3-r1: Simple C++ wrapper over Gilles Vollant's ZIP/UNZIP package
 dev-libs/rasqal 0.9.29 0.9.32: library that handles Resource Description Framework (RDF)
 dev-libs/re2 0.2016.05.01: An efficent, principled regular expression library
 dev-libs/redland 1.0.15 1.0.16: High-level interface for the Resource Description Framework
@@ -3477,7 +3477,7 @@ dev-perl/Convert-ASCII-Armour 1.400.0-r1: Convert binary octets into ASCII armou
 dev-perl/Convert-ASN1 0.270.0: Standard en/decode of ASN.1 structures
 dev-perl/Convert-BER 1.320.0-r1: Class for encoding/decoding BER messages
 dev-perl/Convert-BinHex 1.123.0-r1 1.124.0: Extract data from Macintosh BinHex files
-dev-perl/Convert-Binary-C 0.770.0: Binary Data Conversion using C Types
+dev-perl/Convert-Binary-C 0.770.0 0.780.0-r1: Binary Data Conversion using C Types
 dev-perl/Convert-Color 0.110.0: Color space conversions and named lookups
 dev-perl/Convert-PEM 0.80.0-r1: Read/write encrypted ASN.1 PEM files
 dev-perl/Convert-TNEF 0.180.0-r2: A Perl module for reading TNEF files
@@ -10039,7 +10039,7 @@ sys-fs/vzquota 3.1: OpenVZ VPS disk quota utility
 sys-fs/xfsdump 3.1.6: xfs dump/restore utilities
 sys-fs/xfsprogs 4.5.0 4.9.0 4.14.0: xfs filesystem utilities
 sys-kernel/bliss-initramfs 7.1.2: Boot your system's rootfs from ZFS, LVM, RAID, or a variety of other configs.
-sys-kernel/dracut 044-r1 045-r2: Generic initramfs generation tool
+sys-kernel/dracut 044-r1 045-r2 046-r1: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.52.3 3.4.52.4-r2: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 66: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-sources 4.4.87-r1 4.9.49-r1 4.9.72: Full sources including the Gentoo patchset for the 4.9 kernel tree
