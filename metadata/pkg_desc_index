@@ -8293,7 +8293,7 @@ net-analyzer/speedtest-cli 0.3.4-r1: Command line interface for testing internet
 net-analyzer/squid-graph 3.2-r1: Squid logfile analyzer and traffic grapher
 net-analyzer/squidsites 1.01-r2: A tool that parses Squid access log file and generates a report of the most visited sites
 net-analyzer/ssldump 0.9_beta3: An SSLv3/TLS network protocol analyzer
-net-analyzer/sslscan 1.11.9: Fast SSL configuration scanner
+net-analyzer/sslscan 1.11.9 1.11.10: Fast SSL configuration scanner
 net-analyzer/ssmping 0.9.1: Tool for testing multicast connectivity
 net-analyzer/synscan 5.01: A fast asynchronous half-open TCP portscanner
 net-analyzer/tcpdump 4.9.2: A Tool for network monitoring and data acquisition
