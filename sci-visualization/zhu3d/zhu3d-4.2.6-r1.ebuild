@@ -12,7 +12,9 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE=""
+
+LANGS=(cs de es fr zh)
+IUSE="${LANGS[@]/#/l10n_}"
 
 DEPEND="
 	dev-qt/qtcore:5
@@ -24,9 +26,6 @@ DEPEND="
 	virtual/opengl
 "
 RDEPEND="${DEPEND}"
-
-DOCS=( {readme,src/changelog}.txt )
-HTML_DOCS=( doc/. )
 
 PATCHES=( "${FILESDIR}"/${P}-qt5.patch )
 
@@ -54,18 +53,17 @@ src_install() {
 	# not working: emake install INSTALL_ROOT="${D}" || die
 	dobin zhu3d
 
-	einstalldocs
+	dodoc readme.txt src/changelog.txt
+
+	docinto html
+	dodoc doc/*.png doc/${PN}_en.html
 
 	local lang
-	for lang in ${LANGS} ; do
-		if use linguas_${lang} ; then
-
-			insinto /usr/share/${PN}/system/languages
+	insinto /usr/share/${PN}/system/languages
+	for lang in "${LANGS[@]}" ; do
+		if use l10n_${lang} ; then
 			doins system/languages/${PN}_${lang}.qm
-
-			if [ -e doc/${PN}_${lang}.html ] ; then
-				dohtml doc/${PN}_${lang}.html
-			fi
+			[[ -e doc/${PN}_${lang}.html ]] && dodoc doc/${PN}_${lang}.html
 		fi
 	done
 
