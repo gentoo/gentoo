@@ -1098,7 +1098,7 @@ app-misc/tmux 2.2 2.3-r1: Terminal multiplexer
 app-misc/tmux-mem-cpu-load 2.2.1-r1: CPU, RAM memory, and load monitor for use with tmux
 app-misc/toilet 0.3: The Other Implementations letters. Figlet replacement
 app-misc/tpipe 1.6-r1: Command to duplicate standard input to more than one program
-app-misc/tracker 1.10.5 1.12.3: A tagging metadata database, search tool and indexer
+app-misc/tracker 1.12.3: A tagging metadata database, search tool and indexer
 app-misc/trash-cli 0.12.9.14-r2: Python scripts to manipulate trash cans via the command line
 app-misc/ttyrec 1.0.8-r2: ttyrec provides tools to record and replay a terminal session
 app-misc/unfoo 1.0.8: A simple bash driven frontend to simplify decompression of files
@@ -6401,7 +6401,7 @@ gnome-extra/mousetweaks 3.12.0: Mouse accessibility enhancements for the GNOME d
 gnome-extra/nautilus-actions 3.2.3 3.2.4: Configures programs to be launched when files are selected in Nautilus
 gnome-extra/nautilus-dropbox 1.6.2: Store, Sync and Share Files Online
 gnome-extra/nautilus-sendto 3.8.5: A nautilus extension for sending files to locations
-gnome-extra/nautilus-tracker-tags 1.10.5 1.12.3: Nautilus extension to tag files for Tracker
+gnome-extra/nautilus-tracker-tags 1.12.3: Nautilus extension to tag files for Tracker
 gnome-extra/nemo 2.8.7 3.0.6: A file manager for Cinnamon, forked from Nautilus
 gnome-extra/nm-applet 1.4.6-r1 1.8.6: GNOME applet for NetworkManager
 gnome-extra/office-runner 1.0.2: Lighthearted tool to temporarily inhibit GNOME's suspend on lid close behavior
