@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -61,9 +61,26 @@ src_install () {
 	doins duplicates.awk euppertolower.awk p.awk e.awk d.awk
 
 	diropts --group=arpwatch --mode=770
-	dodir /var/lib/arpwatch
+	keepdir /var/lib/arpwatch
 	dodoc README CHANGES
 
 	newinitd "${FILESDIR}"/arpwatch.initd-r1 arpwatch
 	newconfd "${FILESDIR}"/arpwatch.confd-r1 arpwatch
+}
+
+pkg_postinst() {
+	# Previous revisions installed /var/lib/arpwatch with the wrong
+	# ownership. Instead of the intended arpwatch:root, it was left as
+	# root:root. If we find any such mis-owned directories, we fix them,
+	# and then set the permission bits how we want them in *this*
+	# revision.
+	#
+	# The "--from" flag ensures that we only fix directories that need
+	# fixing, and the "&& chmod" ensures that we only adjust the
+	# permissions if the owner also needed fixing.
+	chown --from=root:root \
+		  --no-dereference \
+		  :arpwatch \
+		  "${ROOT}"/var/lib/arpwatch && \
+		chmod 770 "${ROOT}"/var/lib/arpwatch
 }
