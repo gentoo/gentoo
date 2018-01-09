@@ -3053,7 +3053,7 @@ dev-libs/libgpg-error 1.27-r1: Contains error handling functions used by GnuPG s
 dev-libs/libgudev 232: GObject bindings for libudev
 dev-libs/libgusb 0.2.11: GObject wrapper for libusb
 dev-libs/libgweather 3.20.4: Library to access weather information from online services
-dev-libs/libical 1.0.1 2.0.0-r2: An implementation of basic iCAL protocols
+dev-libs/libical 1.0.1 2.0.0-r2 2.0.0-r3: An implementation of basic iCAL protocols
 dev-libs/libiconv 1.14 1.14-r1: GNU charset conversion library for libc which doesn't implement it
 dev-libs/libindicate 12.10.1-r2: A library to raise flags on DBus for other components of the desktop
 dev-libs/libindicator 12.10.1-r201 12.10.1-r301: A set of symbols and convience functions that all indicators would like to use
