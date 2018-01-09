@@ -1,0 +1,34 @@
+From 7b434a7ad9333a3b2250d636a517c58d9a12bca2 Mon Sep 17 00:00:00 2001
+From: Pekka Vuorela <pekka.vuorela@jollamobile.com>
+Date: Fri, 15 Dec 2017 16:56:20 +0200
+Subject: Honor configuration for building glibc copy of strtok_r
+
+config.h didn't get included and HAVE_STRTOK_R was never defined.
+Now getting via glibc.h.
+---
+ goo/glibc_strtok_r.cc | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/goo/glibc_strtok_r.cc b/goo/glibc_strtok_r.cc
+index e779bf5..e323bc2 100644
+--- a/goo/glibc_strtok_r.cc
++++ b/goo/glibc_strtok_r.cc
+@@ -50,12 +50,15 @@
+ // Copyright (C) 2012 Alexey Pavlov <alexpux@gmail.com>
+ // Copyright (C) 2012 Albert Astals Cid <aacid@kde.org>
+ // Copyright (C) 2017 Adrian Johnson <ajohnson@redneon.com>
++// Copyright (C) 2017 Pekka Vuorela <pekka.vuorela@jollamobile.com>
+ //
+ // To see a description of the changes please see the Changelog file that
+ // came with your tarball or type make ChangeLog if you are building from git
+ //
+ //========================================================================
+ 
++#include "glibc.h"
++
+ #ifndef HAVE_STRTOK_R
+ 
+ #include <string.h>
+-- 
+cgit v1.1
+

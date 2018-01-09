@@ -61,6 +61,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.61.0-respect-cflags.patch"
 	"${FILESDIR}/${PN}-0.62.0-openjpeg2.patch"
 	"${FILESDIR}/${PN}-0.57.0-disable-internal-jpx.patch"
+	"${FILESDIR}/${P}-glibc.patch" # bug 643858
 )
 
 src_prepare() {
