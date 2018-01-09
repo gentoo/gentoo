@@ -5561,6 +5561,7 @@ sys-kernel/linux-firmware:savedconfig - Allows individual selection of firmware 
 sys-libs/binutils-libs:64-bit-bfd - Support 64-bit targets even on 32-bit hosts (is ignored on 64-bit hosts)
 sys-libs/binutils-libs:multitarget - Enable all possible targets in libbfd
 sys-libs/compiler-rt:clang - Force building using installed clang (rather than the default CC/CXX).
+sys-libs/compiler-rt-sanitizers:clang - Force building using installed clang (rather than the default CC/CXX).
 sys-libs/db:rpc - Enable rpc client/server
 sys-libs/freeipmi:nagios - Install a nagios plugin to check sensors' status.
 sys-libs/gdbm:berkdb - enable compatibility layer for UNIX-like dbm and ndbm interfaces
