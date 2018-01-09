@@ -1,4 +1,4 @@
-DEFINED_PHASES=configure install prepare
+DEFINED_PHASES=install prepare
 DEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtopengl:5 dev-qt/qtprintsupport:5 dev-qt/qtwidgets:5 virtual/glu virtual/opengl
 DESCRIPTION=Interactive 3D mathematical function viewer
 EAPI=6
@@ -10,4 +10,4 @@ RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtopengl:5 dev-qt/qtprintsupport:5
 SLOT=0
 SRC_URI=mirror://sourceforge/zhu3d/zhu3d-4.2.6.tar.gz
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=df2ad6ea3f686438910f6acb5e958888
+_md5_=79d9b531e4469b900d92fcf301f6c866
