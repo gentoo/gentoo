@@ -4515,6 +4515,95 @@ net-p2p/bitcoin-qt:bitcoin_policy_spamfilter - Enhanced spam filter policy: Noto
 net-p2p/bitcoin-qt:http - Enable support for the JSON-RPC and REST HTTP server (builtin net-p2p/bitcoind)
 net-p2p/bitcoin-qt:knots - Build enhanced Bitcoin Knots version, rather than Bitcoin Core
 net-p2p/bitcoin-qt:libevent - Use dev-libs/libevent
+net-p2p/bitcoin-qt:linguas_af - Afrikaans locale
+net-p2p/bitcoin-qt:linguas_af_ZA - Afrikaans locale for South Africa
+net-p2p/bitcoin-qt:linguas_ar - Arabic locale
+net-p2p/bitcoin-qt:linguas_be_BY - Belarusian locale for Belarus
+net-p2p/bitcoin-qt:linguas_bg - Bulgarian locale
+net-p2p/bitcoin-qt:linguas_bg_BG - Bulgarian locale for Bulgaria
+net-p2p/bitcoin-qt:linguas_bs - Bosnian locale
+net-p2p/bitcoin-qt:linguas_ca - Catalan locale
+net-p2p/bitcoin-qt:linguas_ca@valencia - Catalan (Valencian) locale
+net-p2p/bitcoin-qt:linguas_ca_ES - Catalan locale for Spain
+net-p2p/bitcoin-qt:linguas_cs - Czech locale
+net-p2p/bitcoin-qt:linguas_cs_CZ - Czech locale for Czech Republic
+net-p2p/bitcoin-qt:linguas_cy - Welsh locale
+net-p2p/bitcoin-qt:linguas_da - Danish locale
+net-p2p/bitcoin-qt:linguas_de - German locale
+net-p2p/bitcoin-qt:linguas_el - Modern Greek locale
+net-p2p/bitcoin-qt:linguas_el_GR - Modern Greek locale for Greece
+net-p2p/bitcoin-qt:linguas_en - English locale
+net-p2p/bitcoin-qt:linguas_en_GB - English locale for United Kingdom
+net-p2p/bitcoin-qt:linguas_eo - Esperanto locale
+net-p2p/bitcoin-qt:linguas_es - Spanish locale
+net-p2p/bitcoin-qt:linguas_es_AR - Spanish locale for Argentina
+net-p2p/bitcoin-qt:linguas_es_CL - Spanish locale for Chile
+net-p2p/bitcoin-qt:linguas_es_CO - Spanish locale for Colombia
+net-p2p/bitcoin-qt:linguas_es_DO - Spanish locale for Dominican Republic
+net-p2p/bitcoin-qt:linguas_es_ES - Spanish locale for Spain
+net-p2p/bitcoin-qt:linguas_es_MX - Spanish locale for Mexico
+net-p2p/bitcoin-qt:linguas_es_UY - Spanish locale for Uruguay
+net-p2p/bitcoin-qt:linguas_es_VE - Spanish locale for Venezuela
+net-p2p/bitcoin-qt:linguas_et - Estonian locale
+net-p2p/bitcoin-qt:linguas_et_EE - Estonian locale for Estonia
+net-p2p/bitcoin-qt:linguas_eu_ES - Basque locale for Spain
+net-p2p/bitcoin-qt:linguas_fa - Persian locale
+net-p2p/bitcoin-qt:linguas_fa_IR - Persian locale for Iran
+net-p2p/bitcoin-qt:linguas_fi - Finnish locale
+net-p2p/bitcoin-qt:linguas_fr - French locale
+net-p2p/bitcoin-qt:linguas_fr_CA - French locale for Canada
+net-p2p/bitcoin-qt:linguas_fr_FR - French locale for France
+net-p2p/bitcoin-qt:linguas_gl - Galician locale
+net-p2p/bitcoin-qt:linguas_he - Hebrew locale
+net-p2p/bitcoin-qt:linguas_hi_IN - Hindi locale for India
+net-p2p/bitcoin-qt:linguas_hr - Croatian locale
+net-p2p/bitcoin-qt:linguas_hu - Hungarian locale
+net-p2p/bitcoin-qt:linguas_id_ID - Indonesian locale for Indonesia
+net-p2p/bitcoin-qt:linguas_it - Italian locale
+net-p2p/bitcoin-qt:linguas_it_IT - Italian locale for Italy
+net-p2p/bitcoin-qt:linguas_ja - Japanese locale
+net-p2p/bitcoin-qt:linguas_ka - Georgian locale
+net-p2p/bitcoin-qt:linguas_kk_KZ - Kazakh locale for Kazakhstan
+net-p2p/bitcoin-qt:linguas_ko_KR - Korean locale for Republic of Korea
+net-p2p/bitcoin-qt:linguas_ku_IQ - Kurdish locale for Iraq
+net-p2p/bitcoin-qt:linguas_ky - Kirghiz locale
+net-p2p/bitcoin-qt:linguas_la - Latin locale
+net-p2p/bitcoin-qt:linguas_lt - Lithuanian locale
+net-p2p/bitcoin-qt:linguas_lv_LV - Latvian locale for Latvia
+net-p2p/bitcoin-qt:linguas_mk_MK - Macedonian locale for Macedonia
+net-p2p/bitcoin-qt:linguas_mn - Mongolian locale
+net-p2p/bitcoin-qt:linguas_ms_MY - Malay locale for Malaysia
+net-p2p/bitcoin-qt:linguas_nb - Norwegian Bokmål locale
+net-p2p/bitcoin-qt:linguas_ne - Nepali locale
+net-p2p/bitcoin-qt:linguas_nl - Dutch locale
+net-p2p/bitcoin-qt:linguas_nl_NL - Dutch locale for Netherlands
+net-p2p/bitcoin-qt:linguas_pam - Kapampangan locale
+net-p2p/bitcoin-qt:linguas_pl - Polish locale
+net-p2p/bitcoin-qt:linguas_pt_BR - Portuguese locale for Brazil
+net-p2p/bitcoin-qt:linguas_pt_PT - Portuguese locale for Portugal
+net-p2p/bitcoin-qt:linguas_ro - Romanian locale
+net-p2p/bitcoin-qt:linguas_ro_RO - Romanian locale for Romania
+net-p2p/bitcoin-qt:linguas_ru - Russian locale
+net-p2p/bitcoin-qt:linguas_ru_RU - Russian locale for Russia
+net-p2p/bitcoin-qt:linguas_sk - Slovak locale
+net-p2p/bitcoin-qt:linguas_sl_SI - Slovenian locale for Slovenia
+net-p2p/bitcoin-qt:linguas_sq - Albanian locale
+net-p2p/bitcoin-qt:linguas_sr - Serbian locale
+net-p2p/bitcoin-qt:linguas_sr@latin - Serbian (Latin) locale
+net-p2p/bitcoin-qt:linguas_sv - Swedish locale
+net-p2p/bitcoin-qt:linguas_ta - Tamil locale
+net-p2p/bitcoin-qt:linguas_th_TH - Thai locale for Thailand
+net-p2p/bitcoin-qt:linguas_tr - Turkish locale
+net-p2p/bitcoin-qt:linguas_tr_TR - Turkish locale for Turkey
+net-p2p/bitcoin-qt:linguas_uk - Ukrainian locale
+net-p2p/bitcoin-qt:linguas_ur_PK - Urdu locale for Pakistan
+net-p2p/bitcoin-qt:linguas_uz@Cyrl - Uzbek (Cyrillic) locale
+net-p2p/bitcoin-qt:linguas_vi - Vietnamese locale
+net-p2p/bitcoin-qt:linguas_vi_VN - Vietnamese locale for Vietnam
+net-p2p/bitcoin-qt:linguas_zh - Chinese locale
+net-p2p/bitcoin-qt:linguas_zh_CN - Chinese locale for China
+net-p2p/bitcoin-qt:linguas_zh_HK - Chinese locale for Hong Kong
+net-p2p/bitcoin-qt:linguas_zh_TW - Chinese locale for Taiwan
 net-p2p/bitcoin-qt:ljr - Enable Luke Dashjr's patches
 net-p2p/bitcoin-qt:qrcode - Enable generation of QR Codes for receiving payments
 net-p2p/bitcoin-qt:tor - Enable automatic configuration of a Tor hidden service
@@ -4970,6 +5059,11 @@ sci-visualization/veusz:emf - Add FITS format via dev-python/pyemf
 sci-visualization/veusz:fits - Add FITS format via dev-python/astropy
 sci-visualization/veusz:minuit - Use Minuit during fitting viadev-python/pyminuit
 sci-visualization/veusz:vo - Add Virtual Observatory tools via dev-python/astropy
+sci-visualization/zhu3d:linguas_cs - Czech locale
+sci-visualization/zhu3d:linguas_de - German locale
+sci-visualization/zhu3d:linguas_es - Spanish locale
+sci-visualization/zhu3d:linguas_fr - French locale
+sci-visualization/zhu3d:linguas_zh - Chinese locale
 sec-policy/selinux-base:open_perms - Enable the open permissions for file object classes (SELinux policy capability).
 sec-policy/selinux-base:peer_perms - Enable the labeled networking peer permissions (SELinux policy capability).
 sec-policy/selinux-base:ubac - Enable User Based Access Control (UBAC) in the SELinux policy
