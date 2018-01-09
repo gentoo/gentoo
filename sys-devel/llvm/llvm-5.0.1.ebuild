@@ -49,8 +49,10 @@ DEPEND="${RDEPEND}
 	|| ( >=sys-devel/gcc-3.0 >=sys-devel/llvm-3.5
 		( >=sys-freebsd/freebsd-lib-9.1-r10 sys-libs/libcxx )
 	)
-	|| ( >=sys-devel/binutils-2.18 >=sys-devel/binutils-apple-5.1 )
-	kernel_Darwin? ( <sys-libs/libcxx-$(ver_cut 1-3).9999 )
+	kernel_Darwin? (
+		<sys-libs/libcxx-$(ver_cut 1-3).9999
+		>=sys-devel/binutils-apple-5.1
+	)
 	doc? ( dev-python/sphinx )
 	gold? ( sys-libs/binutils-libs )
 	libffi? ( virtual/pkgconfig )
