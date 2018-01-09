@@ -19,10 +19,8 @@ EGIT_REPO_URI="https://git.llvm.org/git/clang.git
 EGIT_BRANCH="release_60"
 
 # Keep in sync with sys-devel/llvm
-ALL_LLVM_EXPERIMENTAL_TARGETS=( AVR Nios2 RISCV WebAssembly )
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
-	NVPTX PowerPC Sparc SystemZ X86 XCore
-	"${ALL_LLVM_EXPERIMENTAL_TARGETS[@]}" )
+	NVPTX PowerPC Sparc SystemZ X86 XCore )
 ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
 LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/?}
 

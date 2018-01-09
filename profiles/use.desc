@@ -188,7 +188,6 @@ linguas_ar - Arabic locale
 linguas_be_BY - Belarusian locale
 linguas_bg - Bulgarian locale
 linguas_bg_BG - Bulgarian locale
-linguas_br - Breton locale
 linguas_bs - Bosnian locale
 linguas_ca - Catalan locale
 linguas_ca@valencia - Catalan locale (Valencia)
@@ -196,19 +195,12 @@ linguas_ca_ES - Catalan locale for Spain
 linguas_cs - Czech locale
 linguas_cs_CZ - Czech locale for Czech Republic
 linguas_cy - Welsh locale
-linguas_cy_GB - Welsh locale
 linguas_da - Danish locale
-linguas_da_DK - Danish locale for Denmark
 linguas_de - German locale
-linguas_de@1901 - German locale with old spelling
-linguas_de_CH - German locale for Switzerland
-linguas_de_DE - German locale for Germany
 linguas_el - Greek locale
 linguas_el_GR - Greek locale
 linguas_en - English locale
-linguas_en_AU - English locale for Australia
 linguas_en_GB - English locale for Britain
-linguas_en_US - English locale for America
 linguas_eo - Esperanto locale
 linguas_es - Spanish locale
 linguas_es_AR - Spanish locale for Argentina
@@ -221,81 +213,57 @@ linguas_es_UY - Spanish locale for Uruguay
 linguas_es_VE - Spanish locale for Venezuela
 linguas_et - Estonian locale
 linguas_et_EE - Estonian locale
-linguas_eu - Basque locale
 linguas_eu_ES - Basque locale for Spain
 linguas_fa - Persian locale
 linguas_fa_IR - Persian locale for Iran
 linguas_fi - Finnish locale
-linguas_fi_FI - Finnish locale
 linguas_fr - French locale
 linguas_fr_CA - French locale for Canada
 linguas_fr_FR - French locale for France
 linguas_gl - Galician locale
 linguas_gu_IN - Gujarati locale for India
 linguas_he - Hebrew locale
-linguas_he_IL - Hebrew locale for Israel
 linguas_hi_IN - Hindi locale
 linguas_hr - Croatian locale
 linguas_hu - Hungarian locale
-linguas_hu_HU - Hungarian locale
-linguas_ia - Interlingua locale
-linguas_id - Indonesian locale
 linguas_id_ID - Indonesian locale
-linguas_is - Icelandic locale
-linguas_is_IS - Icelandic locale for Iceland
 linguas_it - Italian locale
 linguas_it_IT - Italian locale
 linguas_ja - Japanese locale
 linguas_ka - Georgian locale
-linguas_kab - Kabyle locale
 linguas_kk_KZ - Kazakh (Kazakhstan) locale
-linguas_kn_IN - Kannada locale for India
-linguas_ko - Korean locale
 linguas_ko_KR - Korean locale
-linguas_ku - Kurdish (latin) locale
 linguas_ku_IQ - Kurdish (latin) locale for Iraq
 linguas_ky - Kyrgyz (Kirghiz) locale
 linguas_la - Latin locale
 linguas_lt - Lithuanian locale
-linguas_lt_LT - Lithuanian locale
 linguas_lv_LV - Latvian locale for Latvia
 linguas_mk_MK - Macedonian locale for Macedonia
 linguas_mn - Mongolian locale
 linguas_ms_MY - Malay locale for Malaysia
 linguas_nb - Norwegian (Bokmal) locale
-linguas_nb_NO - Norwegian (Bokmal) locale for Norway
 linguas_ne - Nepali locale
 linguas_nl - Dutch locale
 linguas_nl_NL - Dutch locale for the Netherlands
-linguas_nn_NO - Nynorsk locale for Norway
 linguas_pam - Kapampangan locale
 linguas_pl - Polish locale
-linguas_pl_PL - Polish locale
-linguas_pt - Portuguese locale
 linguas_pt_BR - Portuguese locale for Brasil
 linguas_pt_PT - Portuguese locale for Portugal
 linguas_ro - Romanian locale
 linguas_ro_RO - Romanian locale for Romania
 linguas_ru - Russian locale
 linguas_ru_RU - Russian locale for Russia
-linguas_sa - Sanskrit locale
 linguas_sk - Slovak locale
-linguas_sk_SK - Slovak locale
-linguas_sl - Slovenian locale
 linguas_sl_SI - Slovenian locale
-linguas_so - Somali locale
 linguas_sq - Albanian locale
 linguas_sr - Serbian locale
 linguas_sr@latin - Serbian (latin) locale
 linguas_sv - Swedish locale
-linguas_sv_SE - Swedish locale for Sweden
 linguas_ta - Tamil locale
-linguas_te - Telugu locale
 linguas_th_TH - Thai locale Thailand
 linguas_tr - Turkish locale
 linguas_tr_TR - Turkish locale for Turkey
 linguas_uk - Ukrainian locale
-linguas_uk_UA - Ukrainian locale for Ukraine
 linguas_ur_PK - Urdu language locale for Pakistan
 linguas_uz@Cyrl - Uzbek (Cyrillic) locale
 linguas_vi - Vietnamese locale
