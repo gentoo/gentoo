@@ -3586,7 +3586,7 @@ dev-perl/Devel-LexAlias 0.50.0: Alias lexical variables
 dev-perl/Devel-OverloadInfo 0.4.0: Introspect overloaded operators
 dev-perl/Devel-PatchPerl 1.380.0 1.440.0: Patch perl source a la Devel::PPPort's buildperl.pl
 dev-perl/Devel-Size 0.800.0: Perl extension for finding the memory usage of Perl variables
-dev-perl/Devel-SmallProf 2.20.0-r2: Per-line Perl profiler
+dev-perl/Devel-SmallProf 2.20.0-r2 2.20.0-r3: Per-line Perl profiler
 dev-perl/Devel-StackTrace 2.0.0: An object representing a stack trace
 dev-perl/Devel-StackTrace-AsHTML 0.150.0: Displays stack trace in HTML
 dev-perl/Devel-Symdump 2.180.0: Dump symbol names or the symbol table
@@ -4618,7 +4618,7 @@ dev-python/bsddb3 6.1.1 6.2.4: Python bindings for Berkeley DB
 dev-python/buzhug 1.8-r1: Fast, pure-Python database engine
 dev-python/bytecodeassembler 0.6: Generate Python code objects by assembling bytecode
 dev-python/cachetools 1.1.5 2.0.0 2.0.1: Extensible memoizing collections and decorators
-dev-python/cairocffi 0.7.2: CFFI-based drop-in replacement for Pycairo
+dev-python/cairocffi 0.7.2 0.8.0: CFFI-based drop-in replacement for Pycairo
 dev-python/cangjie 1.2-r1: The Python bindings to libcangjie
 dev-python/carbon 0.9.13: Backend data caching and persistence daemon for Graphite
 dev-python/carrot 0.10.7-r1: AMQP Messaging Framework for Python
@@ -4653,6 +4653,7 @@ dev-python/collectd-rabbitmq 1.19.0: Collectd plugin to gather statistics from R
 dev-python/collective-checkdocs 0.2: Distutils command to view/validate packages's rst text long_descriptions.
 dev-python/colorama 0.3.3: ANSI escape character sequences for colored terminal text & cursor positioning
 dev-python/colorlog 2.7.0: Log formatting with colors
+dev-python/colorspacious 1.1.0: Powerful, accurate, and easy-to-use Python library for colorspace conversions
 dev-python/columnize 0.3.5-r1: Format a simple (i.e. not nested) list into aligned columns
 dev-python/common 0.1.2: Common tools and data structures implemented in pure python
 dev-python/configargparse 0.11.0: Drop-in replacement for argparse supporting config files and env variables
@@ -4676,6 +4677,7 @@ dev-python/ctypesgen 0_p72-r1: Python wrapper generator for ctypes
 dev-python/cursive 0.1.1 0.1.2: Cursive implements OpenStack-specific validation of digital signatures.
 dev-python/curtsies 0.2.10: Curses-like terminal wrapper, with colored strings
 dev-python/cx_Freeze 4.3.4: Create standalone executables from Python scripts
+dev-python/cycler 0.10.0: Composable style cycles
 dev-python/cython 0.25.2: A Python to C compiler
 dev-python/cytoolz 0.8.0: Cython implementation of Toolz: High performance functional utilities
 dev-python/d2to1 0.2.12_p1: Allows using distutils2-like setup.cfg files for a package metadata
@@ -4993,7 +4995,7 @@ dev-python/markdown 2.6.5 2.6.8: Python implementation of the markdown markup la
 dev-python/markdown2 2.3.0: Python Markdown language reimplementation
 dev-python/markups 2.0.0: A wrapper around various text markups
 dev-python/markupsafe 0.23: Implements a XML/HTML/XHTML Markup safe string for Python
-dev-python/matplotlib 1.4.3: Pure python plotting library with matlab like syntax
+dev-python/matplotlib 1.4.3 2.1.0-r1: Pure python plotting library with matlab like syntax
 dev-python/mccabe 0.2.1: A plugin for flake8
 dev-python/mecab-python 0.996: Python binding for MeCab
 dev-python/mechanize 0.2.5-r1: Stateful programmatic web browsing in Python
@@ -5494,6 +5496,7 @@ dev-python/stomper 0.3.0: Transport neutral client implementation of the STOMP p
 dev-python/strict-rfc3339 0.6: Strict, simple, lightweight RFC3339 functions
 dev-python/stsci-distutils 0.3.7: Utilities used to package some of STScI's Python projects
 dev-python/stsci-sphinxext 1.2.1: Tools and templates to customize Sphinx for STScI projects
+dev-python/subprocess32 3.2.7: A backport of the subprocess module from Python 3.2/3.3 for use on 2.x
 dev-python/subunit 1.2.0-r1: A streaming protocol for test results
 dev-python/subvertpy 0.9.1: Alternative Python bindings for Subversion
 dev-python/suds 0.6-r1: Lightweight SOAP client (Jurko's fork) (py3 support) (active development)
@@ -5569,6 +5572,7 @@ dev-python/utidylib 0.2-r2 0.3: TidyLib Python wrapper
 dev-python/vcrpy 1.10.3: Automatically mock your HTTP interactions to simplify and speed up testing
 dev-python/vcversioner 2.16.0.0: Use version control tags to discover version numbers
 dev-python/venusian 1.0: A library for deferring decorator actions
+dev-python/versioneer 0.16: Easy VCS-based management of project version strings
 dev-python/versiontools 1.9.1-r1: Smart replacement for plain tuple used in __version__
 dev-python/vertex 0.3.0-r1: An implementation of the Q2Q protocol
 dev-python/vine 1.1.3: Python Promises
@@ -5604,7 +5608,7 @@ dev-python/wsgiproxy2 0.4.2: HTTP proxying tools for WSGI apps
 dev-python/wstools 0.4.3: WSDL parsing services package for Web Services for Python
 dev-python/wtforms 2.1: Flexible forms validation and rendering library for python web development
 dev-python/wxpython 2.8.12.1-r2 3.0.2.0: A blending of the wxWindows C++ class library with Python
-dev-python/xcffib 0.4.0: A drop in replacement for xpyb, an XCB python binding
+dev-python/xcffib 0.4.0 0.5.1: A drop in replacement for xpyb, an XCB python binding
 dev-python/xlrd 0.9.4: Library for developers to extract data from Microsoft Excel (tm) spreadsheet files
 dev-python/xlsxwriter 0.7.8: Python module for creating Excel XLSX files
 dev-python/xlwt 1.0.0 1.2.0: Python library to create spreadsheet files compatible with Excel
@@ -6273,7 +6277,7 @@ dev-vcs/svn2cl 0.12: Create a GNU-style ChangeLog from subversion's svn log --xm
 dev-vcs/tig 2.2.2: text mode interface for git
 dev-vcs/tkcvs 8.2.2 8.2.3: Tcl/Tk-based graphical interface to CVS with Subversion support
 dev-vcs/topgit 0.9: A different patch queue manager
-dev-vcs/tortoisehg 4.3.1: Set of graphical tools for Mercurial
+dev-vcs/tortoisehg 4.3.1 4.4.1-r1: Set of graphical tools for Mercurial
 dev-vcs/vcsh 1.20151229.1: Manage config files in $HOME via fake bare git repositories
 games-action/supermariowar 2.0_beta1-r1: Fan-made multiplayer Super Mario Bros. style deathmatch game
 games-arcade/gnome-nibbles 3.22.2.2: Nibbles clone for Gnome
@@ -7548,7 +7552,7 @@ media-libs/plotutils 2.6-r1: Powerful C/C++ function library for exporting 2-D v
 media-libs/pnglite 0.1.17: Small and simple library for loading and writing PNG images
 media-libs/portaudio 19_pre20140130: A free, cross-platform, open-source, audio I/O library
 media-libs/portmidi 217-r1: A library for real time MIDI input and output
-media-libs/qhull 2012.1-r4: Geometry library
+media-libs/qhull 2012.1-r4 2015.2: Geometry library
 media-libs/qimageblitz 0.0.6_p20131029: Graphical effect and filter library by KDE
 media-libs/qt-gstreamer 1.2.0-r3: C++ bindings for GStreamer with a Qt-style API
 media-libs/qtav 1.12.0: Multimedia playback framework based on Qt + FFmpeg
