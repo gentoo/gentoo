@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Richard Freeman <rich0@gentoo.org> (09 Jan 2018)
+# Bug 644048 - temp QA mask until it can get sorted out
+>=sys-apps/attr-2.4.48
+
 # Andreas Sturmlechner <asturm@gentoo.org> (09 Jan 2018)
 # Dead upstream, depends on dead Qt4.
 # Bug #643976. Masked for removal in 30 days.
