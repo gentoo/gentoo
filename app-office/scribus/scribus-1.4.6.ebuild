@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,8 +18,27 @@ KEYWORDS="amd64 ~hppa ppc ppc64 ~sparc x86"
 IUSE="cairo debug examples hunspell +minimal +pdf scripts templates tk"
 
 # a=$(ls resources/translations/po/scribus.*ts | sed -e 's:\.: :g' | awk '{print $2}'); echo ${a}
-IUSE_LINGUAS=" af ar bg br ca cs_CZ cy da_DK de@1901 de_CH de el en_AU en_GB en_US eo es_ES et eu fi fr gl hu id it ja ko lt_LT nb_NO nl pl_PL pt_BR pt ru sa sk_SK sl sq sr sv th_TH tr uk zh_CN zh_TW"
-IUSE+=" ${IUSE_LINGUAS// / linguas_}"
+# Keep this sorted, otherwise eliminating of duplicates below won't work
+IUSE_L10N=" af ar bg br ca cs_CZ cy da_DK de_1901 de_CH de el en_AU en_GB en_US eo es_ES et eu fi fr gl hu id it ja ko lt_LT nb_NO nl pl_PL pt_BR pt ru sa sk_SK sl sq sr sv th_TH tr uk zh_CN zh_TW"
+
+map_lang() {
+	local lang=${1/_/-}
+	case $1 in
+		# Retain the following, which have a specific subtag
+		de_*|en_*|pt_*|zh_*) ;;
+		# Consider all other xx_XX as duplicates of the generic xx tag
+		*_*) lang=${1%%_*} ;;
+	esac
+	echo ${lang}
+}
+
+prev_l=
+for l in ${IUSE_L10N}; do
+	l=$(map_lang ${l})
+	[[ ${l} != "${prev_l}" ]] && IUSE+=" l10n_${l}"
+	prev_l=${l}
+done
+unset l prev_l
 
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -76,9 +95,9 @@ src_prepare() {
 
 src_configure() {
 	local _lang lang langs
-	for lang in ${IUSE_LINGUAS}; do
-		_lang=$(translate_lang ${lang})
-		if use linguas_${lang}; then
+	for _lang in ${IUSE_L10N}; do
+		lang=$(map_lang ${_lang})
+		if use l10n_${lang}; then
 			langs+=",${_lang}"
 		else
 			sed -e "/${_lang}/d" -i scribus/doc/CMakeLists.txt || die
@@ -110,10 +129,11 @@ src_configure() {
 src_install() {
 	cmake-utils_src_install
 
-	local lang file
-	for lang in ${IUSE_LINGUAS}; do
-		file="${ED}"/usr/share/scribus/translations/scribus.${lang}.qm
-		if ! use linguas_${lang} && [[ -f "${file}" ]]; then
+	local _lang lang file
+	for _lang in ${IUSE_L10N}; do
+		lang=$(map_lang ${_lang})
+		file="${ED}"/usr/share/scribus/translations/scribus.${_lang}.qm
+		if ! use l10n_${lang} && [[ -f "${file}" ]]; then
 			rm "${file}" || die
 		fi
 	done
@@ -148,11 +168,4 @@ pkg_postinst() {
 pkg_postrm() {
 	fdo-mime_desktop_database_update
 	fdo-mime_mime_database_update
-}
-
-translate_lang() {
-	_lang=${1}
-	[[ ${1} == "ru_RU" ]] && _lang+=_0
-	[[ ${1} == "de@1901" ]] && _lang=de_1901
-	echo ${_lang}
 }
