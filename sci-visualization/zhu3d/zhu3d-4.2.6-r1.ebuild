@@ -1,11 +1,9 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
-LANGS="cs de es fr zh"
-
-inherit eutils qt4-r2
+inherit desktop qmake-utils
 
 DESCRIPTION="Interactive 3D mathematical function viewer"
 HOMEPAGE="https://sourceforge.net/projects/zhu3d"
@@ -13,21 +11,27 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 DEPEND="
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtopengl:5
+	dev-qt/qtprintsupport:5
+	dev-qt/qtwidgets:5
 	virtual/glu
 	virtual/opengl
-	dev-qt/qtcore:4
-	dev-qt/qtgui:4
-	dev-qt/qtopengl:4"
+"
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${P}-gold.patch" )
+DOCS=( {readme,src/changelog}.txt )
+HTML_DOCS=( doc/. )
+
+PATCHES=( "${FILESDIR}"/${P}-qt5.patch )
 
 src_prepare() {
-	qt4-r2_src_prepare
+	default
 
 	local datadir=/usr/share/${PN}
 	sed \
@@ -39,15 +43,18 @@ src_prepare() {
 
 	sed \
 		-e "/# Optimisation/,/# Include/d" \
-		-i zhu3d.pro || die "optimisation sed failed"
+		-i ${PN}.pro || die "optimisation sed failed"
+}
+
+src_configure() {
+	eqmake5 zhu3d.pro
 }
 
 src_install() {
 	# not working: emake install INSTALL_ROOT="${D}" || die
 	dobin zhu3d
 
-	dodoc {readme,src/changelog}.txt
-	dohtml doc/*.png doc/${PN}_en.html
+	einstalldocs
 
 	local lang
 	for lang in ${LANGS} ; do
@@ -72,5 +79,6 @@ src_install() {
 	doins -r system/*.zhu system/icons
 
 	doicon system/icons/${PN}.png
-	make_desktop_entry ${PN} "Zhu3D Function Viewer" ${PN} "Education;Science;Math;Qt"
+	make_desktop_entry ${PN} "Zhu3D Function Viewer" \
+		${PN} "Education;Science;Math;Qt"
 }
