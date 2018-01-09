@@ -6,19 +6,19 @@ EAPI=6
 PYTHON_COMPAT=( python3_{4,5,6} )
 PYTHON_REQ_USE='xml'
 
-ESVN_REPO_URI="https://svn.code.sf.net/p/wapiti/code/trunk/"
-inherit distutils-r1 subversion
+inherit distutils-r1
 
 DESCRIPTION="Web-application vulnerability scanner"
 HOMEPAGE="http://wapiti.sourceforge.net/"
-SRC_URI=""
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="kerberos ntlm"
 
 DEPEND=""
+
 RDEPEND="dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]
 	dev-python/mako[${PYTHON_USEDEP}]

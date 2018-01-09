@@ -1,0 +1,16 @@
+--- a/CMakeLists.txt	2017-05-28 11:10:27.000000000 +0200
++++ b/CMakeLists.txt	2018-01-09 14:26:14.494922353 +0100
+@@ -155,11 +155,11 @@
+ 	set(ARCH_HPPA 1)
+ endif()
+ 
+-# We need to pass -fPIC to lib2geom on amd64, mips, mipsel, and hppa. See:
++# We need to pass -fPIC to lib2geom on amd64, mips, mipsel, hppa and x86. See:
+ # http://www.gentoo.org/proj/en/base/amd64/howtos/index.xml?part=1&chap=3 and
+ # http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=559133
+ 
+-if (ARCH_X86_64 EQUAL 1 OR ARCH_HPPA EQUAL 1 OR ARCH_MIPS EQUAL 1 OR ARCH_MIPS_64 EQUAL 1 OR ARCH_PPC_64 EQUAL 1)
++if (ARCH_X86 EQUAL 1 OR ARCH_X86_64 EQUAL 1 OR ARCH_HPPA EQUAL 1 OR ARCH_MIPS EQUAL 1 OR ARCH_MIPS_64 EQUAL 1 OR ARCH_PPC_64 EQUAL 1)
+ 	set(CMAKE_CXX_FLAGS_FPIC "-fPIC")
+ endif()
+ 
