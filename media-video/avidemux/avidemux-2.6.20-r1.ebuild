@@ -59,7 +59,10 @@ src_prepare() {
 	# The desktop file is broken. It uses avidemux2 instead of avidemux3
 	# so it will actually launch avidemux-2.5 if it is installed.
 	sed -i -e "/^Exec/ s:${PN}2:${PN}3:" ${PN}2.desktop || die "Desktop file fix failed."
-	sed -i -re '/^Exec/ s:(avidemux3_)gtk:\1qt'$(usex qt5 5 4)':' ${PN}2.desktop || die "Desktop file fix failed."
+	if use qt5; then
+		sed -i -re '/^Exec/ s:(avidemux3_)gtk:\1qt5:' ${PN}2.desktop || \
+			die "Desktop file fix failed."
+	fi
 
 	# Fix QA warnings that complain a trailing ; is missing and Application is deprecated.
 	sed -i -e 's/Application;AudioVideo/AudioVideo;/g' ${PN}2.desktop || die "Desktop file fix failed."
@@ -88,7 +91,7 @@ src_configure() {
 		-DAVIDEMUX_SOURCE_DIR='${S}'
 		-DGETTEXT="$(usex nls)"
 		-DSDL="$(usex sdl)"
-		-DLIBVA="$(usex vaapi)"
+		-DLibVA="$(usex vaapi)"
 		-DVDPAU="$(usex vdpau)"
 		-DXVIDEO="$(usex xv)"
 	)
