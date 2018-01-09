@@ -5,7 +5,7 @@ EAPI=6
 inherit multilib
 
 DESCRIPTION="A tool to monitor the traffic load on network-links"
-HOMEPAGE="http://oss.oetiker.ch/mrtg/"
+HOMEPAGE="https://oss.oetiker.ch/mrtg/"
 SRC_URI="${HOMEPAGE}pub/${P}.tar.gz"
 
 LICENSE="GPL-2"
