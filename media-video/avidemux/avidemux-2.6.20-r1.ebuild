@@ -91,7 +91,7 @@ src_configure() {
 		-DAVIDEMUX_SOURCE_DIR='${S}'
 		-DGETTEXT="$(usex nls)"
 		-DSDL="$(usex sdl)"
-		-DLIBVA="$(usex vaapi)"
+		-DLibVA="$(usex vaapi)"
 		-DVDPAU="$(usex vdpau)"
 		-DXVIDEO="$(usex xv)"
 	)
