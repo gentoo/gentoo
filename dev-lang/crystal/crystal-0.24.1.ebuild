@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -62,7 +62,7 @@ src_compile() {
 		CRYSTAL_PATH=src \
 		CRYSTAL_CONFIG_VERSION=${PV} \
 		CRYSTAL_CONFIG_PATH="lib:${EPREFIX}/usr/$(get_libdir)/crystal"
-	use doc && emake doc
+	use doc && emake docs
 }
 
 src_test() {
@@ -93,7 +93,7 @@ src_install() {
 
 	if use doc ; then
 		docinto api
-		dodoc -r doc/.
+		dodoc -r docs/.
 	fi
 
 	newbashcomp etc/completion.bash ${PN}
