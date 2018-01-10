@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,6 +22,7 @@ IUSE=""
 
 ruby_add_bdepend "
 	test? (
+		dev-ruby/concurrent-ruby:1
 		dev-ruby/test-unit:2
 		>=dev-ruby/minitest-5.4:5
 	)"
