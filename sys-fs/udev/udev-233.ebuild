@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -57,6 +57,7 @@ S=${WORKDIR}/systemd-${PV}
 
 PATCHES=(
 	"${FILESDIR}"/233-format-warnings.patch
+	"${FILESDIR}"/233-fix-includes.patch
 )
 
 check_default_rules() {
