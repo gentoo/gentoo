@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -8,10 +8,10 @@ KEYWORDS="~amd64 ~x86"
 HOMEPAGE="https://dev.gentoo.org/~mpagano/genpatches/
 	http://kernel.kolivas.org/"
 
-IUSE="experimental"
-
 K_WANT_GENPATCHES="base extras experimental"
-K_GENPATCHES_VER="19"
+K_EXP_GENPATCHES_PULL="1"
+K_EXP_GENPATCHES_NOUSE="1"
+K_GENPATCHES_VER="78"
 K_SECURITY_UNSUPPORTED="1"
 K_DEBLOB_AVAILABLE="1"
 
@@ -34,10 +34,20 @@ CK_BASE_URL="http://ck.kolivas.org/patches/4.0"
 CK_LVER_URL="${CK_BASE_URL}/${K_BRANCH_ID}/${K_BRANCH_ID}-ck${CK_VERSION}"
 CK_URI="${CK_LVER_URL}/${CK_FILE}"
 
-SRC_URI="${KERNEL_URI} ${GENPATCHES_URI} ${ARCH_URI} ${CK_URI}"
+# solves bug #606866 (Fix build for CONFIG_FREEZER disabled.x)
+FRZR_HASH="7de569950716147ed436b27936628ee3ab5b45cc"
+FRZR_FILE="${PN}-4.9-freezer-fix.patch"
+FRZR_URI="https://github.com/ckolivas/linux/commit/${FRZR_HASH}.patch -> ${FRZR_FILE}"
 
-UNIPATCH_LIST="${DISTDIR}/${CK_FILE}"
+SRC_URI="${KERNEL_URI} ${GENPATCHES_URI} ${ARCH_URI} ${CK_URI} ${FRZR_URI}"
+
+UNIPATCH_LIST="${DISTDIR}/${CK_FILE} ${DISTDIR}/${FRZR_FILE}"
 UNIPATCH_STRICTORDER="yes"
+
+# ck-patches already includes BFQ (similar version as genpatches "experimental" USE flag)
+# what's not included is: "additional cpu optimizations" (5010) from genpatches experimental
+
+K_EXP_GENPATCHES_LIST="5010_*.patch*"
 
 pkg_setup() {
 	use deblob && python-any-r1_pkg_setup
@@ -52,13 +62,4 @@ src_prepare() {
 	sed -i -e 's/\(^EXTRAVERSION :=.*$\)/# \1/' "${S}/Makefile" || die
 
 	kernel-2_src_prepare
-}
-
-pkg_postinst() {
-	elog "ck-sources previously enabled CPU optimizations by default."
-	elog "USE=\"experimental\" is now required to enable this patch."
-	elog "this can be set in /etc/portage/package.use (or make.conf)"
-
-	ewarn "kernel.org marked 4.13 branch EOL (end of life)"
-	ewarn "upgrading to a newer release is recommended."
 }
