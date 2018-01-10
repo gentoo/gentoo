@@ -1,15 +1,13 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=6
 
 inherit webapp eutils
 
 DESCRIPTION="ruTorrent is a front-end for the popular Bittorrent client rTorrent"
 HOMEPAGE="https://github.com/Novik/ruTorrent"
-SRC_URI="
-			https://rutorrent.googlecode.com/files/${P}.tar.gz
-			https://rutorrent.googlecode.com/files/plugins-${PV}.tar.gz"
+SRC_URI="https://github.com/Novik/ruTorrent/archive/v${PV}.zip -> ${P}.zip"
 
 LICENSE="GPL-2"
 KEYWORDS="~alpha ~amd64 ~ppc ~x86"
@@ -18,22 +16,25 @@ IUSE=""
 need_httpd_cgi
 
 DEPEND="
-	|| ( <dev-lang/php-7[xml,gd] <dev-lang/php-7[xml,gd-external] )
+	|| ( dev-lang/php[xml,gd] dev-lang/php[xml,gd-external] )
 "
-RDEPEND="<virtual/httpd-php-7"
+RDEPEND="virtual/httpd-php"
 
-S="${WORKDIR}"
+S="${WORKDIR}/ruTorrent-${PV}"
 
 pkg_setup() {
 	webapp_pkg_setup
+}
+
+src_prepare() {
+	default
+	find -name '\.gitignore' -type f -exec rm -rf {} \;
 }
 
 src_install() {
 	webapp_src_preinst
 
 	insinto "${MY_HTDOCSDIR}"
-	mv plugins rutorrent
-	cd rutorrent
 	doins -r .
 
 	chmod +x "${ED}${MY_HTDOCSDIR}"/plugins/*/*.sh \
