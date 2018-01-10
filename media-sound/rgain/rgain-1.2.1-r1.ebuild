@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -20,11 +20,7 @@ DEPEND=">=dev-python/docutils-0.9"
 RDEPEND="media-libs/mutagen
 	dev-python/pygobject:3[$PYTHON_USEDEP]
 	media-libs/gstreamer:1.0[introspection]
-	media-libs/gst-plugins-good:1.0
-	media-libs/gst-plugins-base:1.0[vorbis?]
-	flac? ( media-plugins/gst-plugins-flac:1.0 )
-	mp3? ( media-plugins/gst-plugins-mad:1.0 )
-	wavpack? ( media-plugins/gst-plugins-wavpack:1.0 )
+	media-plugins/gst-plugins-meta:1.0[flac?,mp3?,vorbis?,wavpack?]
 "
 
 src_install() {
