@@ -132,6 +132,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-6.7_p1-openssl-ignore-status.patch
 	epatch "${FILESDIR}"/${PN}-7.5_p1-cross-cache.patch
 	epatch "${FILESDIR}"/${PN}-7.5_p1-CVE-2017-15906.patch
+	epatch "${FILESDIR}"/${PN}-7.5_p1-s390-seccomp.patch
 	use X509 || epatch "${WORKDIR}"/${SCTP_PATCH%.*}
 	use X509 || epatch "${FILESDIR}"/${PN}-7.5_p1-x32-typo.patch
 	use abi_mips_n32 && epatch "${FILESDIR}"/${PN}-7.3-mips-seccomp-n32.patch
