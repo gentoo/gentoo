@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -96,8 +96,7 @@ DEPEND="${COMMON_DEPEND}
 "
 
 # TypeErrors with python3; weird test errors with python2; all in power component that was made required now
-RESTRICT="test"
-# RESTRICT="!test? ( test )"
+RESTRICT="!test? ( test )"
 
 PATCHES=(
 	# Make colord and wacom optional; requires eautoreconf

@@ -7,6 +7,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Mart Raudsepp <leio@gentoo.org> (10 Jan 2018)
+# Failing tests, with extra deps that aren't keyworded due to that
+>=gnome-base/gnome-settings-daemon-3.24 test
+
 # Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
 # sys-apps/raidutils is going to be removed (#638634)
 net-analyzer/nagios-plugin-check_raid i2o
