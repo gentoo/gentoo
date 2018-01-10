@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -42,8 +42,7 @@ PDEPEND="
 PATCHES=( "${FILESDIR}/${PN}-226.4-docs.patch" )
 
 pkg_setup() {
-	local CONFIG_CHECK="~CGROUPS ~EPOLL ~INOTIFY_USER ~SECURITY_SMACK
-		~SIGNALFD ~TIMERFD"
+	local CONFIG_CHECK="~CGROUPS ~EPOLL ~INOTIFY_USER ~SIGNALFD ~TIMERFD"
 
 	if use kernel_linux; then
 		linux-info_pkg_setup
