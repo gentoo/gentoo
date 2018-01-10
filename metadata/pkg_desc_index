@@ -9936,7 +9936,7 @@ sys-devel/gcc 5.4.0-r4 6.4.0: The GNU Compiler Collection
 sys-devel/gcc-config 1.8-r1: utility to manage compilers
 sys-devel/gdb 7.10.1 7.12.1: GNU debugger
 sys-devel/gettext 0.19.8.1: GNU locale utilities
-sys-devel/gnuconfig 20160402 20161104: Updated config.sub and config.guess file from GNU
+sys-devel/gnuconfig 20161104 20170101: Updated config.sub and config.guess file from GNU
 sys-devel/libtool 2.4.6-r2 2.4.6-r3: A shared library tool for developers
 sys-devel/llvm 3.7.1-r3 3.9.1-r1 4.0.1-r1: Low Level Virtual Machine
 sys-devel/llvm-common 4.0.1: Common files shared between multiple slots of LLVM
