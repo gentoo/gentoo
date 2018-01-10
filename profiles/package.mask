@@ -851,10 +851,10 @@ dev-lang/spidermonkey:52
 >=media-gfx/shotwell-0.27
 
 # Nicolas Bock <nicolasbock@gentoo.org> (31 Oct 2017)
-# There are multiple unresolved upstream issues with jabref-bin-4.0 (#636036).
+# There are multiple unresolved upstream issues with >=jabref-bin-4.0 (#636036).
 # If you still would like to use this version, please report any issues to
 # upstream.
-=app-text/jabref-bin-4.0
+>=app-text/jabref-bin-4.0
 
 # Nicolas Bock <nicolasbock@gentoo.org> (6 Dec 2017)
 # Development has ceased, the last commit to the upstream repository was
