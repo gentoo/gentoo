@@ -29,6 +29,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (10 Jan 2018)
+# The Fuzzer library is now installed as part of core LLVM. That's
+# sys-devel/llvm in LLVM 5, and sys-libs/compiler-rt-sanitizers
+# in LLVM 6 and newer. The separate ebuild was never approved by LLVM
+# maintainers or actually maintained, and is obsolete for a long time.
+# Removal in 30 days.
+dev-libs/libFuzzer
+
 # Richard Freeman <rich0@gentoo.org> (09 Jan 2018)
 # Bug 644048 - temp QA mask until it can get sorted out
 =sys-apps/attr-2.4.48
