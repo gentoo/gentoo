@@ -21,6 +21,10 @@ DEPEND="
 	sys-devel/gettext
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-perl-5.26.patch"
+)
+
 src_prepare() {
 	default
 	elibtoolize #580792
