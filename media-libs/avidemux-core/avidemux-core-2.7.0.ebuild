@@ -34,7 +34,8 @@ COMMON_DEPEND="
 	xv? ( x11-libs/libXv:0 )
 "
 RDEPEND="${COMMON_DEPEND}
-	!<media-video/avidemux-${PV}:${SLOT}
+	!<media-libs/avidemux-core-${PV}
+	!<media-video/avidemux-${PV}
 	nls? ( virtual/libintl:0 )
 "
 DEPEND="${COMMON_DEPEND}

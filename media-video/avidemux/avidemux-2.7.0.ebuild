@@ -39,6 +39,7 @@ DEPEND="${COMMON_DEPEND}
 "
 RDEPEND="${COMMON_DEPEND}
 	nls? ( virtual/libintl:0 )
+	!<media-video/avidemux-${PV}
 "
 PDEPEND="~media-libs/avidemux-plugins-${PV}:${SLOT}[opengl?,qt5?]"
 
