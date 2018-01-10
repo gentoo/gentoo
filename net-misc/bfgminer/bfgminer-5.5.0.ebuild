@@ -48,7 +48,7 @@ REQUIRED_USE='
 	minion? ( sha256d )
 	modminer? ( sha256d )
 	nanofury? ( sha256d bitfury )
-	scrypt? ( || ( cpumining dualminer gridseed opencl proxy zeusminer ) )
+	scrypt? ( || ( alchemist cpumining dualminer gridseed opencl proxy zeusminer ) )
 	sha256d? ( || ( avalon avalonmm bitmain bfx bifury bitforce bfsb bigpic bitfury cointerra cpumining drillbit dualminer hashbuster hashbuster2 hashfast icarus jingtian klondike littlefury metabank modminer nanofury opencl proxy rockminer twinfury x6500 ztex ) )
 	unicode? ( ncurses )
 	proxy? ( || ( proxy_getwork proxy_stratum ) )
