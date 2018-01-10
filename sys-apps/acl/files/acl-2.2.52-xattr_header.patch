@@ -1,0 +1,201 @@
+Backported from:
+http://git.savannah.nongnu.org/cgit/acl.git/commit/?id=79f563779b9b9ba89cc2352d70e3cdf27acff513
+
+--- acl-2.2.52/configure
++++ acl-2.2.52/configure
+@@ -12416,26 +12416,6 @@
+     fi
+ 
+ 
+- for ac_header in attr/xattr.h
+-do :
+-  ac_fn_c_check_header_mongrel "$LINENO" "attr/xattr.h" "ac_cv_header_attr_xattr_h" "$ac_includes_default"
+-if test "x$ac_cv_header_attr_xattr_h" = xyes; then :
+-  cat >>confdefs.h <<_ACEOF
+-#define HAVE_ATTR_XATTR_H 1
+-_ACEOF
+-
+-fi
+-
+-done
+-
+-    if test "$ac_cv_header_attr_xattr_h" != "yes"; then
+-        echo
+-        echo 'FATAL ERROR: attr/xattr.h does not exist.'
+-        echo 'Install the extended attributes (attr) development package.'
+-        echo 'Alternatively, run "make install-dev" from the attr source.'
+-        exit 1
+-    fi
+-
+  for ac_header in attr/error_context.h
+ do :
+   ac_fn_c_check_header_mongrel "$LINENO" "attr/error_context.h" "ac_cv_header_attr_error_context_h" "$ac_includes_default"
+--- acl-2.2.52/libacl/acl_delete_def_file.c
++++ acl-2.2.52/libacl/acl_delete_def_file.c
+@@ -20,11 +20,11 @@
+ */
+ 
+ #include <sys/types.h>
+-#include <attr/xattr.h>
++#include <sys/xattr.h>
+ #include "byteorder.h"
+ #include "acl_ea.h"
+ #include "config.h"
+-
++#include "libacl.h"
+ 
+ /* 23.4.8 */
+ int
+--- acl-2.2.52/libacl/acl_extended_fd.c
++++ acl-2.2.52/libacl/acl_extended_fd.c
+@@ -20,13 +20,12 @@
+ */
+ 
+ #include <unistd.h>
+-#include <attr/xattr.h>
++#include <sys/xattr.h>
+ #include "libacl.h"
+ 
+ #include "byteorder.h"
+ #include "acl_ea.h"
+ 
+-
+ int
+ acl_extended_fd(int fd)
+ {
+--- acl-2.2.52/libacl/__acl_extended_file.c
++++ acl-2.2.52/libacl/__acl_extended_file.c
+@@ -20,14 +20,13 @@
+ */
+ 
+ #include <unistd.h>
+-#include <attr/xattr.h>
++#include <sys/xattr.h>
+ #include "libacl.h"
+ 
+ #include "byteorder.h"
+ #include "acl_ea.h"
+ #include "__acl_extended_file.h"
+ 
+-
+ int
+ __acl_extended_file(const char *path_p,
+ 		    ssize_t (*fun)(const char *, const char *,
+--- acl-2.2.52/libacl/acl_extended_file.c
++++ acl-2.2.52/libacl/acl_extended_file.c
+@@ -20,7 +20,7 @@
+ */
+ 
+ #include <unistd.h>
+-#include <attr/xattr.h>
++#include <sys/xattr.h>
+ #include "libacl.h"
+ 
+ #include "__acl_extended_file.h"
+--- acl-2.2.52/libacl/acl_extended_file_nofollow.c
++++ acl-2.2.52/libacl/acl_extended_file_nofollow.c
+@@ -20,7 +20,7 @@
+ */
+ 
+ #include <unistd.h>
+-#include <attr/xattr.h>
++#include <sys/xattr.h>
+ #include "libacl.h"
+ 
+ #include "__acl_extended_file.h"
+--- acl-2.2.52/libacl/acl_get_fd.c
++++ acl-2.2.52/libacl/acl_get_fd.c
+@@ -23,7 +23,7 @@
+ #include <sys/stat.h>
+ #include <unistd.h>
+ #include <stdio.h>
+-#include <attr/xattr.h>
++#include <sys/xattr.h>
+ #include <acl/libacl.h>
+ #include "libacl.h"
+ #include "__acl_from_xattr.h"
+@@ -31,7 +31,6 @@
+ #include "byteorder.h"
+ #include "acl_ea.h"
+ 
+-
+ /* 23.4.15 */
+ acl_t
+ acl_get_fd(int fd)
+--- acl-2.2.52/libacl/acl_get_file.c
++++ acl-2.2.52/libacl/acl_get_file.c
+@@ -23,7 +23,7 @@
+ #include <sys/stat.h>
+ #include <unistd.h>
+ #include <stdio.h>
+-#include <attr/xattr.h>
++#include <sys/xattr.h>
+ #include <acl/libacl.h>
+ #include "libacl.h"
+ #include "__acl_from_xattr.h"
+@@ -31,7 +31,6 @@
+ #include "byteorder.h"
+ #include "acl_ea.h"
+ 
+-
+ /* 23.4.16 */
+ acl_t
+ acl_get_file(const char *path_p, acl_type_t type)
+--- acl-2.2.52/libacl/acl_set_fd.c
++++ acl-2.2.52/libacl/acl_set_fd.c
+@@ -20,7 +20,7 @@
+ */
+ 
+ #include <unistd.h>
+-#include <attr/xattr.h>
++#include <sys/xattr.h>
+ #include "libacl.h"
+ #include "__acl_to_xattr.h"
+ 
+--- acl-2.2.52/libacl/acl_set_file.c
++++ acl-2.2.52/libacl/acl_set_file.c
+@@ -22,7 +22,7 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <unistd.h>
+-#include <attr/xattr.h>
++#include <sys/xattr.h>
+ #include "libacl.h"
+ #include "__acl_to_xattr.h"
+ 
+--- acl-2.2.52/libacl/libacl.h
++++ acl-2.2.52/libacl/libacl.h
+@@ -17,8 +17,13 @@
+ 
+ #include <errno.h>
+ #include <sys/acl.h>
++#include <errno.h>
+ #include "libobj.h"
+ 
++#ifndef ENOATTR
++# define ENOATTR ENODATA
++#endif
++
+ typedef unsigned int permset_t;
+ 
+ #define ACL_PERM_NONE		(0x0000)
+--- acl-2.2.52/m4/package_attrdev.m4
++++ acl-2.2.52/m4/package_attrdev.m4
+@@ -12,17 +12,6 @@
+ dnl
+ dnl You should have received a copy of the GNU General Public License
+ dnl along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-AC_DEFUN([AC_PACKAGE_NEED_ATTR_XATTR_H],
+-  [ AC_CHECK_HEADERS([attr/xattr.h])
+-    if test "$ac_cv_header_attr_xattr_h" != "yes"; then
+-        echo
+-        echo 'FATAL ERROR: attr/xattr.h does not exist.'
+-        echo 'Install the extended attributes (attr) development package.'
+-        echo 'Alternatively, run "make install-dev" from the attr source.'
+-        exit 1
+-    fi
+-  ])
+-
+ AC_DEFUN([AC_PACKAGE_NEED_ATTR_ERROR_H],
+   [ AC_CHECK_HEADERS([attr/error_context.h])
+     if test "$ac_cv_header_attr_error_context_h" != "yes"; then
