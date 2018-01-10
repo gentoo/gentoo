@@ -31,6 +31,8 @@ multilib_src_configure() {
 	export OPTIMIZER=${CFLAGS}
 	export DEBUG=-DNDEBUG
 
+	tc-ld-disable-gold #644048
+
 	local myeconfargs=(
 		--bindir="${EPREFIX}"/bin
 		--enable-shared $(use_enable static-libs static)
