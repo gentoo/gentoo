@@ -1,35 +1,6 @@
 Backported from:
 http://git.savannah.nongnu.org/cgit/acl.git/commit/?id=79f563779b9b9ba89cc2352d70e3cdf27acff513
 
---- acl-2.2.52/configure
-+++ acl-2.2.52/configure
-@@ -12416,26 +12416,6 @@
-     fi
- 
- 
-- for ac_header in attr/xattr.h
--do :
--  ac_fn_c_check_header_mongrel "$LINENO" "attr/xattr.h" "ac_cv_header_attr_xattr_h" "$ac_includes_default"
--if test "x$ac_cv_header_attr_xattr_h" = xyes; then :
--  cat >>confdefs.h <<_ACEOF
--#define HAVE_ATTR_XATTR_H 1
--_ACEOF
--
--fi
--
--done
--
--    if test "$ac_cv_header_attr_xattr_h" != "yes"; then
--        echo
--        echo 'FATAL ERROR: attr/xattr.h does not exist.'
--        echo 'Install the extended attributes (attr) development package.'
--        echo 'Alternatively, run "make install-dev" from the attr source.'
--        exit 1
--    fi
--
-  for ac_header in attr/error_context.h
- do :
-   ac_fn_c_check_header_mongrel "$LINENO" "attr/error_context.h" "ac_cv_header_attr_error_context_h" "$ac_includes_default"
 --- acl-2.2.52/libacl/acl_delete_def_file.c
 +++ acl-2.2.52/libacl/acl_delete_def_file.c
 @@ -20,11 +20,11 @@
@@ -199,3 +170,32 @@ http://git.savannah.nongnu.org/cgit/acl.git/commit/?id=79f563779b9b9ba89cc2352d7
  AC_DEFUN([AC_PACKAGE_NEED_ATTR_ERROR_H],
    [ AC_CHECK_HEADERS([attr/error_context.h])
      if test "$ac_cv_header_attr_error_context_h" != "yes"; then
+--- acl-2.2.52/configure
++++ acl-2.2.52/configure
+@@ -12416,26 +12416,6 @@
+     fi
+ 
+ 
+- for ac_header in attr/xattr.h
+-do :
+-  ac_fn_c_check_header_mongrel "$LINENO" "attr/xattr.h" "ac_cv_header_attr_xattr_h" "$ac_includes_default"
+-if test "x$ac_cv_header_attr_xattr_h" = xyes; then :
+-  cat >>confdefs.h <<_ACEOF
+-#define HAVE_ATTR_XATTR_H 1
+-_ACEOF
+-
+-fi
+-
+-done
+-
+-    if test "$ac_cv_header_attr_xattr_h" != "yes"; then
+-        echo
+-        echo 'FATAL ERROR: attr/xattr.h does not exist.'
+-        echo 'Install the extended attributes (attr) development package.'
+-        echo 'Alternatively, run "make install-dev" from the attr source.'
+-        exit 1
+-    fi
+-
+  for ac_header in attr/error_context.h
+ do :
+   ac_fn_c_check_header_mongrel "$LINENO" "attr/error_context.h" "ac_cv_header_attr_error_context_h" "$ac_includes_default"
