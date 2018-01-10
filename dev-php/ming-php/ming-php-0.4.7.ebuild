@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -24,11 +24,15 @@ DEPEND="${RDEPEND}"
 S="${WORKDIR}/libming-${MY_P}"
 
 src_prepare() {
-	local slot orig_s="${PHP_EXT_S}"
+	local slot orig_s="${PHP_EXT_S}" libdir=$(get_libdir)
 	for slot in $(php_get_slots); do
 		cp "${FILESDIR}/php_ext-config.m4" "${WORKDIR}/${slot}/config.m4" || \
 			die "Failed to copy config.m4 to target"
 		rm "${WORKDIR}/${slot}/Makefile.am" || die "Failed to remove Makefile.am for ${slot}"
+		# Fix for SYMYLINK_LIB=no
+		[[ ${libdir} != 'lib' ]] && \
+		sed -i -e "s~PHP_LIBDIR=lib~PHP_LIBDIR=${libdir}~" "${WORKDIR}/${slot}/config.m4" \
+			|| die "Failed to update lib directory"
 		php_init_slot_env ${slot}
 		eapply -p0 "${FILESDIR}/ming-php-54.patch"
 		eapply_user
