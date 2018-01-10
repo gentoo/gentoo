@@ -39,7 +39,11 @@ dev-libs/libFuzzer
 
 # Richard Freeman <rich0@gentoo.org> (09 Jan 2018)
 # Bug 644048 - temp QA mask until it can get sorted out
-=sys-apps/attr-2.4.48
+~sys-apps/attr-2.4.48
+# Lars Wendler <polynomial-c@gentoo.org> (10 Jan 2018)
+# Mask followup bugfixes for =sys-apps/attr-2.4.48 as well until proper
+# testing has been conducted.
+=sys-apps/acl-2.2.52-r2
 
 # Andreas Sturmlechner <asturm@gentoo.org> (09 Jan 2018)
 # Dead upstream, depends on dead Qt4.
