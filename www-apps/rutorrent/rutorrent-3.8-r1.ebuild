@@ -29,6 +29,8 @@ pkg_setup() {
 src_prepare() {
 	default
 	find -name '\.gitignore' -type f -exec rm -rf {} \;
+	# The 3.8 release of ruTorrent includes an .htaccess file that defines a .htpasswd that doesn't exist
+	rm '.htaccess'
 }
 
 src_install() {
