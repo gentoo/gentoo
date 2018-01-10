@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -54,7 +54,7 @@ RDEPEND="
 	!sys-cluster/mpiexec
 	>=sys-apps/hwloc-1.3
 	dev-libs/libltdl:0
-	elibc_FreeBSD? ( dev-libs/libexecinfo )
+	elibc_FreeBSD? ( || ( dev-libs/libexecinfo >=sys-freebsd/freebsd-lib-10.0 ) )
 	openmpi_fabrics_dapl? ( sys-fabric/dapl )
 	openmpi_fabrics_ofed? ( sys-fabric/ofed )
 	openmpi_fabrics_knem? ( sys-cluster/knem )
