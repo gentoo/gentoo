@@ -626,12 +626,6 @@ net-misc/cocaine-core
 # Masked for removal on 2018-01-12
 app-arch/defluff
 
-# Thomas Beierlein <tomjbe@gentoo.org> (10 Dec 2017)
-# Development stopped, nasty build system.
-# Functionality superseded by media-radio/wsjtx.
-# Masked for removal in 30 days.
-media-radio/wspr
-
 # Andreas Sturmlechner <asturm@gentoo.org> (03 Dec 2017)
 # Depends on dead Qt4, upstream porting inquiry pending. Bug #631788
 games-kids/crayon-physics
