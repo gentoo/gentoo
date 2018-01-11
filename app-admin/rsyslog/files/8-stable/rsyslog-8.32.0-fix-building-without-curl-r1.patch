@@ -41,7 +41,7 @@ https://github.com/rsyslog/rsyslog/pull/2378
  		varFreeMembers(&r[0]);
 +#else
 +		LogError(0, RS_RET_INTERNAL_ERROR,
-+			"rainerscript: internal error: HTTP_Fetch not supported, not built with libcurl support\n");
++			"rainerscript: internal error: HTTP_Fetch not supported, not built with libcurl support");
 +#endif
  		break;
  	default:
