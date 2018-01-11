@@ -1,0 +1,535 @@
+diff -r -U2 fbreader-0.99.4.orig/fbreader/Makefile fbreader-0.99.4/fbreader/Makefile
+--- fbreader-0.99.4.orig/fbreader/Makefile	2012-11-30 19:41:25.000000000 +0700
++++ fbreader-0.99.4/fbreader/Makefile	2018-01-11 22:18:18.000208200 +0700
+@@ -23,5 +23,5 @@
+ 	done;
+ 	@echo -n 'Linking $(TARGET) ...'
+-	@$(LD) $(LDFLAGS) -o $(TARGET) `find src -name *.o` $(TEXT_LIBS) $(CORE_LIBS) $(ZLUI_LIB) -lsqlite3
++	@$(LD) -fuse-ld=bfd $(LDFLAGS) -o $(TARGET) `find src -name *.o` $(TEXT_LIBS) $(CORE_LIBS) $(ZLUI_LIB) -lsqlite3
+ 	@echo ' OK'
+ 
+diff -r -U2 fbreader-0.99.4.orig/fbreader/desktop/desktop fbreader-0.99.4/fbreader/desktop/desktop
+--- fbreader-0.99.4.orig/fbreader/desktop/desktop	2012-11-30 19:41:25.000000000 +0700
++++ fbreader-0.99.4/fbreader/desktop/desktop	2018-01-11 22:13:58.401219117 +0700
+@@ -22,2 +22,3 @@
+ Icon=FBReader
+ Categories=Office;Viewer;Literature;
++MimeType=application/epub+zip;application/rtf;application/x-fictionbook+xml;application/x-zip-compressed-fb2;application/x-mobipocket-ebook;application/xhtml+xml;text/html;text/plain;
+diff -r -U2 fbreader-0.99.4.orig/fbreader/src/formats/doc/OleStorage.cpp fbreader-0.99.4/fbreader/src/formats/doc/OleStorage.cpp
+--- fbreader-0.99.4.orig/fbreader/src/formats/doc/OleStorage.cpp	2012-11-30 19:41:25.000000000 +0700
++++ fbreader-0.99.4/fbreader/src/formats/doc/OleStorage.cpp	2018-01-11 22:18:33.000207569 +0700
+@@ -60,5 +60,5 @@
+ 		return false;
+ 	}
+-	static const char OLE_SIGN[] = {0xD0, 0xCF, 0x11, 0xE0, 0xA1, 0xB1, 0x1A, 0xE1, 0};
++	static const char OLE_SIGN[] = {(char)0xD0, (char)0xCF, (char)0x11, (char)0xE0, (char)0xA1, (char)0xB1, (char)0x1A, (char)0xE1, 0};
+ 	if (std::strncmp(oleBuf, OLE_SIGN, 8) != 0) {
+ 		clear();
+diff -r -U2 fbreader-0.99.4.orig/makefiles/arch/desktop.mk fbreader-0.99.4/makefiles/arch/desktop.mk
+--- fbreader-0.99.4.orig/makefiles/arch/desktop.mk	2012-11-30 19:41:25.000000000 +0700
++++ fbreader-0.99.4/makefiles/arch/desktop.mk	2018-01-11 22:18:40.119207269 +0700
+@@ -15,27 +15,9 @@
+ CFLAGS = -pipe -fno-exceptions -Wall -Wno-ctor-dtor-privacy -W -DLIBICONV_PLUG
+ LDFLAGS =
+-EXTERNAL_INCLUDE = $(shell pkg-config --cflags fribidi) 
++EXTERNAL_INCLUDE = $(shell pkg-config --cflags fribidi)
+ 
+-ifeq "$(UI_TYPE)" "qt"
+-  MOC = moc-qt3
+-  QTINCLUDE = -I /usr/include/qt3
+-else
+-  MOC = $(shell pkg-config QtCore --variable=moc_location)
+-  QTINCLUDE = -I $(shell pkg-config --cflags QtCore)
+-endif
+-
+-GTKINCLUDE = $(shell pkg-config --cflags gtk+-2.0 libpng xft)
+-
+-ifeq "$(UI_TYPE)" "qt"
+-  UILIBS = -lqt-mt
+-endif
+-
+-ifeq "$(UI_TYPE)" "qt4"
+-  UILIBS = $(shell pkg-config --libs QtCore QtGui QtNetwork)
+-endif
+-
+-ifeq "$(UI_TYPE)" "gtk"
+-  UILIBS = $(shell pkg-config --libs gtk+-2.0 gio-2.0) -lpng -ljpeg
+-endif
++MOC = "$(shell pkg-config --variable=host_bins Qt5Core)/moc"
++QTINCLUDE = $(shell pkg-config --cflags Qt5Gui Qt5Widgets Qt5Network)
++UILIBS = $(shell pkg-config --libs Qt5Gui Qt5Widgets Qt5Network)
+ 
+ RM = rm -rvf
+diff -r -U2 fbreader-0.99.4.orig/zlibrary/ui/src/qt4/application/LineEditParameter.cpp fbreader-0.99.4/zlibrary/ui/src/qt4/application/LineEditParameter.cpp
+--- fbreader-0.99.4.orig/zlibrary/ui/src/qt4/application/LineEditParameter.cpp	2012-11-30 19:41:25.000000000 +0700
++++ fbreader-0.99.4/zlibrary/ui/src/qt4/application/LineEditParameter.cpp	2018-01-11 22:18:40.120207269 +0700
+@@ -18,7 +18,7 @@
+  */
+ 
+-#include <QtGui/QBoxLayout>
+-#include <QtGui/QLineEdit>
+-#include <QtGui/QToolBar>
++#include <QtWidgets/QBoxLayout>
++#include <QtWidgets/QLineEdit>
++#include <QtWidgets/QToolBar>
+ #include <QtGui/QKeyEvent>
+ 
+diff -r -U2 fbreader-0.99.4.orig/zlibrary/ui/src/qt4/application/ZLQtApplicationWindow.cpp fbreader-0.99.4/zlibrary/ui/src/qt4/application/ZLQtApplicationWindow.cpp
+--- fbreader-0.99.4.orig/zlibrary/ui/src/qt4/application/ZLQtApplicationWindow.cpp	2012-11-30 19:41:25.000000000 +0700
++++ fbreader-0.99.4/zlibrary/ui/src/qt4/application/ZLQtApplicationWindow.cpp	2018-01-11 22:18:40.120207269 +0700
+@@ -18,15 +18,15 @@
+  */
+ 
+-#include <QtGui/QApplication>
++#include <QtWidgets/QApplication>
+ #include <QtGui/QPixmap>
+ #include <QtGui/QImage>
+ #include <QtGui/QIcon>
+-#include <QtGui/QToolBar>
+-#include <QtGui/QMenuBar>
+-#include <QtGui/QMenu>
+-#include <QtGui/QToolButton>
+-#include <QtGui/QLayout>
++#include <QtWidgets/QToolBar>
++#include <QtWidgets/QMenuBar>
++#include <QtWidgets/QMenu>
++#include <QtWidgets/QToolButton>
++#include <QtWidgets/QLayout>
+ #include <QtGui/QWheelEvent>
+-#include <QtGui/QDockWidget>
++#include <QtWidgets/QDockWidget>
+ #include <QtCore/QObjectList>
+ 
+diff -r -U2 fbreader-0.99.4.orig/zlibrary/ui/src/qt4/application/ZLQtApplicationWindow.h fbreader-0.99.4/zlibrary/ui/src/qt4/application/ZLQtApplicationWindow.h
+--- fbreader-0.99.4.orig/zlibrary/ui/src/qt4/application/ZLQtApplicationWindow.h	2012-11-30 19:41:25.000000000 +0700
++++ fbreader-0.99.4/zlibrary/ui/src/qt4/application/ZLQtApplicationWindow.h	2018-01-11 22:18:40.120207269 +0700
+@@ -23,6 +23,6 @@
+ #include <map>
+ 
+-#include <QtGui/QMainWindow>
+-#include <QtGui/QAction>
++#include <QtWidgets/QMainWindow>
++#include <QtWidgets/QAction>
+ #include <QtGui/QCursor>
+ 
+diff -r -U2 fbreader-0.99.4.orig/zlibrary/ui/src/qt4/dialogs/ZLQtDialog.cpp fbreader-0.99.4/zlibrary/ui/src/qt4/dialogs/ZLQtDialog.cpp
+--- fbreader-0.99.4.orig/zlibrary/ui/src/qt4/dialogs/ZLQtDialog.cpp	2012-11-30 19:41:25.000000000 +0700
++++ fbreader-0.99.4/zlibrary/ui/src/qt4/dialogs/ZLQtDialog.cpp	2018-01-11 22:18:40.120207269 +0700
+@@ -18,6 +18,6 @@
+  */
+ 
+-#include <QtGui/QApplication>
+-#include <QtGui/QPushButton>
++#include <QtWidgets/QApplication>
++#include <QtWidgets/QPushButton>
+ 
+ #include <ZLDialogManager.h>
+diff -r -U2 fbreader-0.99.4.orig/zlibrary/ui/src/qt4/dialogs/ZLQtDialog.h fbreader-0.99.4/zlibrary/ui/src/qt4/dialogs/ZLQtDialog.h
+--- fbreader-0.99.4.orig/zlibrary/ui/src/qt4/dialogs/ZLQtDialog.h	2012-11-30 19:41:25.000000000 +0700
++++ fbreader-0.99.4/zlibrary/ui/src/qt4/dialogs/ZLQtDialog.h	2018-01-11 22:18:40.120207269 +0700
+@@ -21,6 +21,6 @@
+ #define __ZLQTDIALOG_H__
+ 
+-#include <QtGui/QDialog>
+-#include <QtGui/QLayout>
++#include <QtWidgets/QDialog>
++#include <QtWidgets/QLayout>
+ 
+ #include <ZLDialog.h>
+diff -r -U2 fbreader-0.99.4.orig/zlibrary/ui/src/qt4/dialogs/ZLQtDialogContent.cpp fbreader-0.99.4/zlibrary/ui/src/qt4/dialogs/ZLQtDialogContent.cpp
+--- fbreader-0.99.4.orig/zlibrary/ui/src/qt4/dialogs/ZLQtDialogContent.cpp	2012-11-30 19:41:25.000000000 +0700
++++ fbreader-0.99.4/zlibrary/ui/src/qt4/dialogs/ZLQtDialogContent.cpp	2018-01-11 22:18:40.120207269 +0700
+@@ -18,8 +18,8 @@
+  */
+ 
+-#include <QtGui/QApplication>
+-#include <QtGui/QDesktopWidget>
+-#include <QtGui/QWidget>
+-#include <QtGui/QLayout>
++#include <QtWidgets/QApplication>
++#include <QtWidgets/QDesktopWidget>
++#include <QtWidgets/QWidget>
++#include <QtWidgets/QLayout>
+ 
+ #include "ZLQtDialogContent.h"
+diff -r -U2 fbreader-0.99.4.orig/zlibrary/ui/src/qt4/dialogs/ZLQtDialogManager.cpp fbreader-0.99.4/zlibrary/ui/src/qt4/dialogs/ZLQtDialogManager.cpp
+--- fbreader-0.99.4.orig/zlibrary/ui/src/qt4/dialogs/ZLQtDialogManager.cpp	2012-11-30 19:41:25.000000000 +0700
++++ fbreader-0.99.4/zlibrary/ui/src/qt4/dialogs/ZLQtDialogManager.cpp	2018-01-11 22:18:40.120207269 +0700
+@@ -18,9 +18,9 @@
+  */
+ 
+-#include <QtGui/QApplication>
+-#include <QtGui/QMessageBox>
+-#include <QtGui/QFileDialog>
++#include <QtWidgets/QApplication>
++#include <QtWidgets/QMessageBox>
++#include <QtWidgets/QFileDialog>
+ #include <QtGui/QClipboard>
+-#include <QtGui/QDesktopWidget>
++#include <QtWidgets/QDesktopWidget>
+ 
+ #include "ZLQtDialogManager.h"
+diff -r -U2 fbreader-0.99.4.orig/zlibrary/ui/src/qt4/dialogs/ZLQtOpenFileDialog.cpp fbreader-0.99.4/zlibrary/ui/src/qt4/dialogs/ZLQtOpenFileDialog.cpp
+--- fbreader-0.99.4.orig/zlibrary/ui/src/qt4/dialogs/ZLQtOpenFileDialog.cpp	2012-11-30 19:41:25.000000000 +0700
++++ fbreader-0.99.4/zlibrary/ui/src/qt4/dialogs/ZLQtOpenFileDialog.cpp	2018-01-11 22:18:40.120207269 +0700
+@@ -18,5 +18,5 @@
+  */
+ 
+-#include <QtGui/QFileDialog>
++#include <QtWidgets/QFileDialog>
+ 
+ #include "ZLQtOpenFileDialog.h"
+diff -r -U2 fbreader-0.99.4.orig/zlibrary/ui/src/qt4/dialogs/ZLQtOptionView.cpp fbreader-0.99.4/zlibrary/ui/src/qt4/dialogs/ZLQtOptionView.cpp
+--- fbreader-0.99.4.orig/zlibrary/ui/src/qt4/dialogs/ZLQtOptionView.cpp	2012-11-30 19:41:25.000000000 +0700
++++ fbreader-0.99.4/zlibrary/ui/src/qt4/dialogs/ZLQtOptionView.cpp	2018-01-11 22:18:40.121207269 +0700
+@@ -20,14 +20,14 @@
+ #include <cctype>
+ 
+-#include <QtGui/QCheckBox>
+-#include <QtGui/QComboBox>
+-#include <QtGui/QLabel>
+-#include <QtGui/QGroupBox>
+-#include <QtGui/QRadioButton>
+-#include <QtGui/QPushButton>
+-#include <QtGui/QSpinBox>
+-#include <QtGui/QLineEdit>
+-#include <QtGui/QSlider>
+-#include <QtGui/QLayout>
++#include <QtWidgets/QCheckBox>
++#include <QtWidgets/QComboBox>
++#include <QtWidgets/QLabel>
++#include <QtWidgets/QGroupBox>
++#include <QtWidgets/QRadioButton>
++#include <QtWidgets/QPushButton>
++#include <QtWidgets/QSpinBox>
++#include <QtWidgets/QLineEdit>
++#include <QtWidgets/QSlider>
++#include <QtWidgets/QLayout>
+ 
+ #include <ZLStringUtil.h>
+diff -r -U2 fbreader-0.99.4.orig/zlibrary/ui/src/qt4/dialogs/ZLQtOptionsDialog.cpp fbreader-0.99.4/zlibrary/ui/src/qt4/dialogs/ZLQtOptionsDialog.cpp
+--- fbreader-0.99.4.orig/zlibrary/ui/src/qt4/dialogs/ZLQtOptionsDialog.cpp	2012-11-30 19:41:25.000000000 +0700
++++ fbreader-0.99.4/zlibrary/ui/src/qt4/dialogs/ZLQtOptionsDialog.cpp	2018-01-11 22:18:40.121207269 +0700
+@@ -18,9 +18,9 @@
+  */
+ 
+-#include <QtGui/QApplication>
+-#include <QtGui/QDesktopWidget>
+-#include <QtGui/QLayout>
+-#include <QtGui/QPushButton>
+-#include <QtGui/QButtonGroup>
++#include <QtWidgets/QApplication>
++#include <QtWidgets/QDesktopWidget>
++#include <QtWidgets/QLayout>
++#include <QtWidgets/QPushButton>
++#include <QtWidgets/QButtonGroup>
+ #include <QtGui/QResizeEvent>
+ 
+diff -r -U2 fbreader-0.99.4.orig/zlibrary/ui/src/qt4/dialogs/ZLQtOptionsDialog.h fbreader-0.99.4/zlibrary/ui/src/qt4/dialogs/ZLQtOptionsDialog.h
+--- fbreader-0.99.4.orig/zlibrary/ui/src/qt4/dialogs/ZLQtOptionsDialog.h	2012-11-30 19:41:25.000000000 +0700
++++ fbreader-0.99.4/zlibrary/ui/src/qt4/dialogs/ZLQtOptionsDialog.h	2018-01-11 22:18:40.121207269 +0700
+@@ -21,7 +21,7 @@
+ #define __ZLQTOPTIONSDIALOG_H__
+ 
+-#include <QtGui/QWidget>
+-#include <QtGui/QTabWidget>
+-#include <QtGui/QDialog>
++#include <QtWidgets/QWidget>
++#include <QtWidgets/QTabWidget>
++#include <QtWidgets/QDialog>
+ 
+ #include "../../../../core/src/desktop/dialogs/ZLDesktopOptionsDialog.h"
+diff -r -U2 fbreader-0.99.4.orig/zlibrary/ui/src/qt4/dialogs/ZLQtProgressDialog.cpp fbreader-0.99.4/zlibrary/ui/src/qt4/dialogs/ZLQtProgressDialog.cpp
+--- fbreader-0.99.4.orig/zlibrary/ui/src/qt4/dialogs/ZLQtProgressDialog.cpp	2012-11-30 19:41:25.000000000 +0700
++++ fbreader-0.99.4/zlibrary/ui/src/qt4/dialogs/ZLQtProgressDialog.cpp	2018-01-11 22:18:40.121207269 +0700
+@@ -20,9 +20,9 @@
+ #include <unistd.h>
+ 
+-#include <QtGui/QApplication>
+-#include <QtGui/QDesktopWidget>
+-#include <QtGui/QWidget>
+-#include <QtGui/QLabel>
+-#include <QtGui/QLayout>
++#include <QtWidgets/QApplication>
++#include <QtWidgets/QDesktopWidget>
++#include <QtWidgets/QWidget>
++#include <QtWidgets/QLabel>
++#include <QtWidgets/QLayout>
+ #include <QtCore/QThreadPool>
+ 
+diff -r -U2 fbreader-0.99.4.orig/zlibrary/ui/src/qt4/dialogs/ZLQtProgressDialog.h fbreader-0.99.4/zlibrary/ui/src/qt4/dialogs/ZLQtProgressDialog.h
+--- fbreader-0.99.4.orig/zlibrary/ui/src/qt4/dialogs/ZLQtProgressDialog.h	2012-11-30 19:41:25.000000000 +0700
++++ fbreader-0.99.4/zlibrary/ui/src/qt4/dialogs/ZLQtProgressDialog.h	2018-01-11 22:18:40.121207269 +0700
+@@ -23,9 +23,9 @@
+ #include <string>
+ 
+-#include <QtGui/QWidget>
++#include <QtWidgets/QWidget>
+ #include <QtGui/QCursor>
+-#include <QtGui/QDialog>
+-#include <QtGui/QProgressBar>
+-#include <QtGui/QLabel>
++#include <QtWidgets/QDialog>
++#include <QtWidgets/QProgressBar>
++#include <QtWidgets/QLabel>
+ #include <QtCore/QRunnable>
+ 
+diff -r -U2 fbreader-0.99.4.orig/zlibrary/ui/src/qt4/dialogs/ZLQtTreeDialog.cpp fbreader-0.99.4/zlibrary/ui/src/qt4/dialogs/ZLQtTreeDialog.cpp
+--- fbreader-0.99.4.orig/zlibrary/ui/src/qt4/dialogs/ZLQtTreeDialog.cpp	2012-11-30 19:41:25.000000000 +0700
++++ fbreader-0.99.4/zlibrary/ui/src/qt4/dialogs/ZLQtTreeDialog.cpp	2018-01-11 22:18:40.120207269 +0700
+@@ -20,10 +20,10 @@
+ #include <algorithm>
+ 
+-#include <QtGui/QSplitter>
+-#include <QtGui/QVBoxLayout>
+-#include <QtGui/QHBoxLayout>
+-#include <QtGui/QScrollBar>
+ #include <QtGui/QResizeEvent>
+ #include <QtCore/QDebug>
++#include <QtWidgets/QSplitter>
++#include <QtWidgets/QVBoxLayout>
++#include <QtWidgets/QHBoxLayout>
++#include <QtWidgets/QScrollBar>
+ 
+ #include <ZLFile.h>
+diff -r -U2 fbreader-0.99.4.orig/zlibrary/ui/src/qt4/dialogs/ZLQtTreeDialog.h fbreader-0.99.4/zlibrary/ui/src/qt4/dialogs/ZLQtTreeDialog.h
+--- fbreader-0.99.4.orig/zlibrary/ui/src/qt4/dialogs/ZLQtTreeDialog.h	2012-11-30 19:41:25.000000000 +0700
++++ fbreader-0.99.4/zlibrary/ui/src/qt4/dialogs/ZLQtTreeDialog.h	2018-01-11 22:18:40.121207269 +0700
+@@ -25,10 +25,10 @@
+ #include <QtCore/QMap>
+ 
+-#include <QtGui/QDialog>
+-#include <QtGui/QScrollArea>
+-#include <QtGui/QPushButton>
+-#include <QtGui/QLabel>
+-#include <QtGui/QLineEdit>
+-#include <QtGui/QWidget>
++#include <QtWidgets/QDialog>
++#include <QtWidgets/QScrollArea>
++#include <QtWidgets/QPushButton>
++#include <QtWidgets/QLabel>
++#include <QtWidgets/QLineEdit>
++#include <QtWidgets/QWidget>
+ 
+ #include <ZLTreeDialog.h>
+diff -r -U2 fbreader-0.99.4.orig/zlibrary/ui/src/qt4/filesystem/ZLQtFSManager.cpp fbreader-0.99.4/zlibrary/ui/src/qt4/filesystem/ZLQtFSManager.cpp
+--- fbreader-0.99.4.orig/zlibrary/ui/src/qt4/filesystem/ZLQtFSManager.cpp	2012-11-30 19:41:25.000000000 +0700
++++ fbreader-0.99.4/zlibrary/ui/src/qt4/filesystem/ZLQtFSManager.cpp	2018-01-11 22:13:28.444220377 +0700
+@@ -49,3 +49,4 @@
+ 	  path = replacement + path.substr(1);
+ 	}
++	ZLUnixFSManager::normalizeRealPath(path);
+ }
+diff -r -U2 fbreader-0.99.4.orig/zlibrary/ui/src/qt4/library/ZLQApplication.h fbreader-0.99.4/zlibrary/ui/src/qt4/library/ZLQApplication.h
+--- fbreader-0.99.4.orig/zlibrary/ui/src/qt4/library/ZLQApplication.h	2012-11-30 19:41:25.000000000 +0700
++++ fbreader-0.99.4/zlibrary/ui/src/qt4/library/ZLQApplication.h	2018-01-11 22:18:40.121207269 +0700
+@@ -21,5 +21,5 @@
+ #define __ZLQAPPLICATION_H__
+ 
+-#include <QtGui/QApplication>
++#include <QtWidgets/QApplication>
+ 
+ class ZLQApplication : public QApplication {
+diff -r -U2 fbreader-0.99.4.orig/zlibrary/ui/src/qt4/library/ZLibrary.cpp fbreader-0.99.4/zlibrary/ui/src/qt4/library/ZLibrary.cpp
+--- fbreader-0.99.4.orig/zlibrary/ui/src/qt4/library/ZLibrary.cpp	2012-11-30 19:41:25.000000000 +0700
++++ fbreader-0.99.4/zlibrary/ui/src/qt4/library/ZLibrary.cpp	2018-01-11 22:18:40.121207269 +0700
+@@ -20,5 +20,5 @@
+ #include <QtCore/QTextCodec>
+ #include <QtCore/QFile>
+-#include <QtGui/QApplication>
++#include <QtWidgets/QApplication>
+ #include <QtGui/QFileOpenEvent>
+ 
+@@ -73,5 +73,5 @@
+ 	new ZLQApplication(argc, argv);
+ 
+-	QTextCodec::setCodecForCStrings(QTextCodec::codecForName("utf-8"));
++	QTextCodec::setCodecForLocale(QTextCodec::codecForName("utf-8"));
+ 
+ 	ZLibrary::parseArguments(argc, argv);
+diff -r -U2 fbreader-0.99.4.orig/zlibrary/ui/src/qt4/network/ZLQtNetworkManager.cpp fbreader-0.99.4/zlibrary/ui/src/qt4/network/ZLQtNetworkManager.cpp
+--- fbreader-0.99.4.orig/zlibrary/ui/src/qt4/network/ZLQtNetworkManager.cpp	2012-11-30 19:41:25.000000000 +0700
++++ fbreader-0.99.4/zlibrary/ui/src/qt4/network/ZLQtNetworkManager.cpp	2018-01-11 22:18:40.120207269 +0700
+@@ -25,5 +25,7 @@
+ #include <QtCore/QList>
+ #include <QtCore/QTimer>
++#include <QtCore/QUrlQuery>
+ 
++#include <QtNetwork/QNetworkCookie>
+ #include <QtNetwork/QNetworkRequest>
+ #include <QtNetwork/QNetworkReply>
+@@ -150,10 +152,10 @@
+ 	if (!scope.request->postParameters().empty()) {
+ 		QByteArray data;
+-		QUrl tmp;
++		QUrlQuery tmp;
+ 		typedef std::pair<std::string, std::string> string_pair;
+ 		foreach (const string_pair &pair, scope.request->postParameters()) {
+ 			tmp.addQueryItem(QString::fromStdString(pair.first), QString::fromStdString(pair.second));
+ 		}
+-		data = tmp.encodedQuery();
++		data = tmp.query(QUrl::FullyEncoded).toUtf8(); //encodedQuery();
+ 		reply = const_cast<QNetworkAccessManager&>(myManager).post(networkRequest, data);
+ 	} else {
+diff -r -U2 fbreader-0.99.4.orig/zlibrary/ui/src/qt4/tree/QtWaitingSpinner.cpp fbreader-0.99.4/zlibrary/ui/src/qt4/tree/QtWaitingSpinner.cpp
+--- fbreader-0.99.4.orig/zlibrary/ui/src/qt4/tree/QtWaitingSpinner.cpp	2012-11-30 19:41:25.000000000 +0700
++++ fbreader-0.99.4/zlibrary/ui/src/qt4/tree/QtWaitingSpinner.cpp	2018-01-11 22:13:39.639219906 +0700
+@@ -87,5 +87,5 @@
+ 
+ void QtWaitingSpinner::setRoundness(qreal roundness) {
+-	myRoundness = std::max(0.0, std::min(100.0, roundness));
++	myRoundness = std::max(static_cast<qreal>(0.0), std::min(static_cast<qreal>(100.0), roundness));
+ }
+ 
+@@ -149,5 +149,5 @@
+ 	qreal gradation = alphaDiff / (qreal)(distanceThreshold + 1);
+ 	qreal resultAlpha = color.alphaF() - gradation * distance;
+-	resultAlpha = std::min(1.0, std::max(0.0, resultAlpha)); //if alpha is out of bound, force it to bounds
++	resultAlpha = std::min(static_cast<qreal>(1.0), std::max(static_cast<qreal>(0.0), resultAlpha)); //if alpha is out of bound, force it to bounds
+ 	color.setAlphaF(resultAlpha);
+ 	return color;
+diff -r -U2 fbreader-0.99.4.orig/zlibrary/ui/src/qt4/tree/QtWaitingSpinner.h fbreader-0.99.4/zlibrary/ui/src/qt4/tree/QtWaitingSpinner.h
+--- fbreader-0.99.4.orig/zlibrary/ui/src/qt4/tree/QtWaitingSpinner.h	2012-11-30 19:41:25.000000000 +0700
++++ fbreader-0.99.4/zlibrary/ui/src/qt4/tree/QtWaitingSpinner.h	2018-01-11 22:18:40.121207269 +0700
+@@ -4,5 +4,5 @@
+ #include <QtCore/QTimer>
+ 
+-#include <QtGui/QWidget>
++#include <QtWidgets/QWidget>
+ #include <QtGui/QColor>
+ 
+diff -r -U2 fbreader-0.99.4.orig/zlibrary/ui/src/qt4/tree/ZLQtItemsListWidget.cpp fbreader-0.99.4/zlibrary/ui/src/qt4/tree/ZLQtItemsListWidget.cpp
+--- fbreader-0.99.4.orig/zlibrary/ui/src/qt4/tree/ZLQtItemsListWidget.cpp	2012-11-30 19:41:25.000000000 +0700
++++ fbreader-0.99.4/zlibrary/ui/src/qt4/tree/ZLQtItemsListWidget.cpp	2018-01-11 22:18:40.120207269 +0700
+@@ -18,12 +18,12 @@
+  */
+ 
+-#include <QtGui/QVBoxLayout>
+-#include <QtGui/QHBoxLayout>
+ #include <QtGui/QPixmap>
+ #include <QtGui/QPalette>
+ #include <QtGui/QPainter>
+ #include <QtGui/QPaintEvent>
+-#include <QtGui/QScrollBar>
+ #include <QtCore/QTimer>
++#include <QtWidgets/QVBoxLayout>
++#include <QtWidgets/QHBoxLayout>
++#include <QtWidgets/QScrollBar>
+ 
+ #include <QtCore/QDebug>
+diff -r -U2 fbreader-0.99.4.orig/zlibrary/ui/src/qt4/tree/ZLQtItemsListWidget.h fbreader-0.99.4/zlibrary/ui/src/qt4/tree/ZLQtItemsListWidget.h
+--- fbreader-0.99.4.orig/zlibrary/ui/src/qt4/tree/ZLQtItemsListWidget.h	2012-11-30 19:41:25.000000000 +0700
++++ fbreader-0.99.4/zlibrary/ui/src/qt4/tree/ZLQtItemsListWidget.h	2018-01-11 22:18:40.120207269 +0700
+@@ -21,10 +21,10 @@
+ #define __ZLQTITEMSLISTWIDGET_H__
+ 
+-#include <QtGui/QWidget>
+-#include <QtGui/QFrame>
+-#include <QtGui/QPushButton>
+-#include <QtGui/QLabel>
+-#include <QtGui/QVBoxLayout>
+-#include <QtGui/QScrollArea>
++#include <QtWidgets/QWidget>
++#include <QtWidgets/QFrame>
++#include <QtWidgets/QPushButton>
++#include <QtWidgets/QLabel>
++#include <QtWidgets/QVBoxLayout>
++#include <QtWidgets/QScrollArea>
+ 
+ #include <ZLTreeTitledNode.h>
+diff -r -U2 fbreader-0.99.4.orig/zlibrary/ui/src/qt4/tree/ZLQtPreviewWidget.cpp fbreader-0.99.4/zlibrary/ui/src/qt4/tree/ZLQtPreviewWidget.cpp
+--- fbreader-0.99.4.orig/zlibrary/ui/src/qt4/tree/ZLQtPreviewWidget.cpp	2012-11-30 19:41:25.000000000 +0700
++++ fbreader-0.99.4/zlibrary/ui/src/qt4/tree/ZLQtPreviewWidget.cpp	2018-01-11 22:18:40.120207269 +0700
+@@ -18,8 +18,8 @@
+  */
+ 
+-#include <QtGui/QVBoxLayout>
+-#include <QtGui/QHBoxLayout>
+-#include <QtGui/QScrollBar>
+-#include <QtGui/QGraphicsDropShadowEffect>
++#include <QtWidgets/QVBoxLayout>
++#include <QtWidgets/QHBoxLayout>
++#include <QtWidgets/QScrollBar>
++#include <QtWidgets/QGraphicsDropShadowEffect>
+ 
+ #include <QtCore/QDebug>
+diff -r -U2 fbreader-0.99.4.orig/zlibrary/ui/src/qt4/tree/ZLQtPreviewWidget.h fbreader-0.99.4/zlibrary/ui/src/qt4/tree/ZLQtPreviewWidget.h
+--- fbreader-0.99.4.orig/zlibrary/ui/src/qt4/tree/ZLQtPreviewWidget.h	2012-11-30 19:41:25.000000000 +0700
++++ fbreader-0.99.4/zlibrary/ui/src/qt4/tree/ZLQtPreviewWidget.h	2018-01-11 22:18:40.121207269 +0700
+@@ -21,9 +21,9 @@
+ #define __ZLQTPREVIEWWIDGET_H__
+ 
+-#include <QtGui/QWidget>
+-#include <QtGui/QPushButton>
+-#include <QtGui/QLabel>
+-#include <QtGui/QScrollArea>
+-#include <QtGui/QVBoxLayout>
++#include <QtWidgets/QWidget>
++#include <QtWidgets/QPushButton>
++#include <QtWidgets/QLabel>
++#include <QtWidgets/QScrollArea>
++#include <QtWidgets/QVBoxLayout>
+ #include <QtCore/QSet>
+ 
+diff -r -U2 fbreader-0.99.4.orig/zlibrary/ui/src/qt4/tree/ZLQtSearchField.cpp fbreader-0.99.4/zlibrary/ui/src/qt4/tree/ZLQtSearchField.cpp
+--- fbreader-0.99.4.orig/zlibrary/ui/src/qt4/tree/ZLQtSearchField.cpp	2012-11-30 19:41:25.000000000 +0700
++++ fbreader-0.99.4/zlibrary/ui/src/qt4/tree/ZLQtSearchField.cpp	2018-01-11 22:18:40.120207269 +0700
+@@ -19,7 +19,7 @@
+ 
+ #include <QtCore/QDebug>
+-#include <QtGui/QStyle>
+-#include <QtGui/QCompleter>
+-#include <QtGui/QStringListModel>
++#include <QtCore/QStringListModel>
++#include <QtWidgets/QStyle>
++#include <QtWidgets/QCompleter>
+ 
+ #include <ZLibrary.h>
+diff -r -U2 fbreader-0.99.4.orig/zlibrary/ui/src/qt4/tree/ZLQtSearchField.h fbreader-0.99.4/zlibrary/ui/src/qt4/tree/ZLQtSearchField.h
+--- fbreader-0.99.4.orig/zlibrary/ui/src/qt4/tree/ZLQtSearchField.h	2012-11-30 19:41:25.000000000 +0700
++++ fbreader-0.99.4/zlibrary/ui/src/qt4/tree/ZLQtSearchField.h	2018-01-11 22:18:40.121207269 +0700
+@@ -22,6 +22,6 @@
+ 
+ #include <QtCore/QSet>
+-#include <QtGui/QLabel>
+-#include <QtGui/QLineEdit>
++#include <QtWidgets/QLabel>
++#include <QtWidgets/QLineEdit>
+ 
+ #include "QtWaitingSpinner.h"
+diff -r -U2 fbreader-0.99.4.orig/zlibrary/ui/src/qt4/view/ZLQtViewWidget.cpp fbreader-0.99.4/zlibrary/ui/src/qt4/view/ZLQtViewWidget.cpp
+--- fbreader-0.99.4.orig/zlibrary/ui/src/qt4/view/ZLQtViewWidget.cpp	2012-11-30 19:41:25.000000000 +0700
++++ fbreader-0.99.4/zlibrary/ui/src/qt4/view/ZLQtViewWidget.cpp	2018-01-11 22:18:40.121207269 +0700
+@@ -20,6 +20,6 @@
+ #include <algorithm>
+ 
+-#include <QtGui/QLayout>
+-#include <QtGui/QScrollBar>
++#include <QtWidgets/QLayout>
++#include <QtWidgets/QScrollBar>
+ #include <QtGui/QPainter>
+ #include <QtGui/QPixmap>
+@@ -186,9 +186,9 @@
+ void ZLQtViewWidget::setScrollbarEnabled(ZLView::Direction direction, bool enabled) {
+ 	if (direction == ZLView::VERTICAL) {
+-		myRightScrollBar->setShown(enabled && myShowScrollBarAtRight);
+-		myLeftScrollBar->setShown(enabled && !myShowScrollBarAtRight);
++		myRightScrollBar->setVisible(enabled && myShowScrollBarAtRight);
++		myLeftScrollBar->setVisible(enabled && !myShowScrollBarAtRight);
+ 	} else {
+-		myBottomScrollBar->setShown(enabled && myShowScrollBarAtBottom);
+-		myTopScrollBar->setShown(enabled && !myShowScrollBarAtBottom);
++		myBottomScrollBar->setVisible(enabled && myShowScrollBarAtBottom);
++		myTopScrollBar->setVisible(enabled && !myShowScrollBarAtBottom);
+ 	}
+ }
+diff -r -U2 fbreader-0.99.4.orig/zlibrary/ui/src/qt4/view/ZLQtViewWidget.h fbreader-0.99.4/zlibrary/ui/src/qt4/view/ZLQtViewWidget.h
+--- fbreader-0.99.4.orig/zlibrary/ui/src/qt4/view/ZLQtViewWidget.h	2012-11-30 19:41:25.000000000 +0700
++++ fbreader-0.99.4/zlibrary/ui/src/qt4/view/ZLQtViewWidget.h	2018-01-11 22:18:40.121207269 +0700
+@@ -21,5 +21,5 @@
+ #define __ZLQTVIEWWIDGET_H__
+ 
+-#include <QtGui/QWidget>
++#include <QtWidgets/QWidget>
+ 
+ #include "../../../../core/src/view/ZLViewWidget.h"
