@@ -9634,6 +9634,7 @@ sys-apps/checkpolicy 2.6 2.7: SELinux policy compiler
 sys-apps/chname 1.0-r2: Run a command with a new system hostname
 sys-apps/clrngd 1.0.3: Clock randomness gathering daemon
 sys-apps/collectl 3.7.4: Performance monitoring tool capable of interactive reporting and logging to disk
+sys-apps/colorized-logs 2.1: Tools for logs with ANSI color
 sys-apps/conspy 1.10: Remote control for Linux virtual consoles
 sys-apps/coreutils 8.25 8.26 8.28-r1: Standard GNU utilities (chmod, cp, dd, ls, sort, tr, head, wc, who,...)
 sys-apps/cpuid 20170122: Utility to get detailed information about the CPU(s) using the CPUID instruction
