@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201801-12">
+  <title>icoutils: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in icoutils, the worst of
+    which may lead to arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">icoutils</product>
+  <announced>2018-01-11</announced>
+  <revised>2018-01-11: 1</revised>
+  <bug>605138</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="media-gfx/icoutils" auto="yes" arch="*">
+      <unaffected range="ge">0.32.0</unaffected>
+      <vulnerable range="lt">0.32.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A set of command-line programs for extracting and converting images in
+      Microsoft Windows(R) icon and cursor files.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in icoutils. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to process a specially crafted
+      file, possibly resulting in execution of arbitrary code with the
+      privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All icoutils users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-gfx/icoutils-0.32.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5208">
+      CVE-2017-5208
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6009">
+      CVE-2017-6009
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6010">
+      CVE-2017-6010
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-6011">
+      CVE-2017-6011
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-01-05T06:04:02Z">jmbailey</metadata>
+  <metadata tag="submitter" timestamp="2018-01-11T22:41:52Z">b-man</metadata>
+</glsa>
