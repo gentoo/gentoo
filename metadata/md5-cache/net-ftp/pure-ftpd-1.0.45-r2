@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst
+DEPEND=caps? ( sys-libs/libcap ) charconv? ( virtual/libiconv ) ldap? ( >=net-nds/openldap-2.0.25 ) mysql? ( virtual/mysql ) pam? ( virtual/pam ) postgres? ( dev-db/postgresql:= ) ssl? ( !libressl? ( >=dev-libs/openssl-0.9.6g:0=[-bindist] ) libressl? ( dev-libs/libressl:= ) ) sysquota? ( sys-fs/quota[-rpc] ) xinetd? ( virtual/inetd )
+DESCRIPTION=Fast, production-quality, standard-conformant FTP server
+EAPI=6
+HOMEPAGE=http://www.pureftpd.org/
+IUSE=anondel anonperm anonren anonres caps charconv implicittls ldap libressl mysql noiplog pam paranoidmsg postgres resolveids selinux ssl sysquota vchroot xinetd
+KEYWORDS=alpha amd64 arm hppa ia64 ppc ppc64 sparc x86
+LICENSE=BSD
+RDEPEND=caps? ( sys-libs/libcap ) charconv? ( virtual/libiconv ) ldap? ( >=net-nds/openldap-2.0.25 ) mysql? ( virtual/mysql ) pam? ( virtual/pam ) postgres? ( dev-db/postgresql:= ) ssl? ( !libressl? ( >=dev-libs/openssl-0.9.6g:0=[-bindist] ) libressl? ( dev-libs/libressl:= ) ) sysquota? ( sys-fs/quota[-rpc] ) xinetd? ( virtual/inetd ) dev-libs/libsodium:= net-ftp/ftpbase selinux? ( sec-policy/selinux-ftp )
+REQUIRED_USE=implicittls? ( ssl )
+SLOT=0
+SRC_URI=ftp://ftp.pureftpd.org/pub/pure-ftpd/releases/pure-ftpd-1.0.45.tar.bz2 http://download.pureftpd.org/pub/pure-ftpd/releases/pure-ftpd-1.0.45.tar.bz2
+_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e7258392d5eda499c1cfa94db650b61	flag-o-matic	02908f00f002f0f07c5b74783d778325	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_md5_=60d6a3c6dfd5e7dbde264843b84d82ad

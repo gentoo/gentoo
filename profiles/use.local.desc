@@ -4229,6 +4229,7 @@ net-misc/asterisk-moh-opsound:sln16 - Install the sounds files for the sln16 cod
 net-misc/asterisk-moh-opsound:ulaw - Install the sounds files for the ulaw codec.
 net-misc/asterisk-moh-opsound:wav - Install the sounds files for the wav codec.
 net-misc/bfgminer:adl - Enable support for controlling fans and overclocking on AMD cards with AMD Display Library
+net-misc/bfgminer:alchemist - Enable support for mining with AlcheMist
 net-misc/bfgminer:antminer - Enable support for mining with AntMiner U1 sticks
 net-misc/bfgminer:avalon - Enable support for mining with Avalon 1 ASIC modules
 net-misc/bfgminer:avalonmm - Enable support for mining with Avalon 2/3 ASIC modules
@@ -4238,6 +4239,7 @@ net-misc/bfgminer:bifury - Enable support for mining with Bi*fury USB sticks
 net-misc/bfgminer:bigpic - Enable support for mining with Big Picture Mining USB sticks (Red/BlueFury, BF1, etc)
 net-misc/bfgminer:bitforce - Enable support for mining with ButterFly Labs BitFORCE ASICs and/or FPGAs
 net-misc/bfgminer:bitfury - Enable support for mining with 55nm Bitfury-based devices
+net-misc/bfgminer:bitmain - Enable support for mining with Bitmain Antminer S* series
 net-misc/bfgminer:cointerra - Enable support for mining with CoinTerra TerraMiner.
 net-misc/bfgminer:cpumining - Enable support for mining with CPUs
 net-misc/bfgminer:drillbit - Enable support for mining with Drillbit boards

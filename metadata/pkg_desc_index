@@ -1863,7 +1863,7 @@ dev-db/pgadmin3 1.22.1-r1 1.22.2: wxWidgets GUI for PostgreSQL
 dev-db/pgagent 3.4.0-r1 3.4.0-r3: pgAgent is a job scheduler for PostgreSQL
 dev-db/pgbouncer 1.7.2: Lightweight connection pooler for PostgreSQL
 dev-db/pgpool2 3.7.0: Connection pool server for PostgreSQL
-dev-db/pgtap 0.93.0 0.98.0: Unit testing for PostgreSQL
+dev-db/pgtap 0.98.0: Unit testing for PostgreSQL
 dev-db/phpmyadmin 4.0.10.20 4.7.0: Web-based administration for MySQL database in PHP
 dev-db/postgis 2.4.2: Geographic Objects for PostgreSQL
 dev-db/postgresql 9.2.19 9.2.22 9.2.24 9.3.15 9.3.18 9.3.20 9.4.10 9.4.13 9.4.15 9.5.5 9.5.8 9.5.10 9.6.4 9.6.6 10.1: PostgreSQL RDBMS
@@ -4078,7 +4078,6 @@ dev-perl/SQL-Statement 1.412.0: Small SQL parser and engine
 dev-perl/SUPER 1.201.411.170: control superclass method dispatch
 dev-perl/SVG 2.640.0: Perl extension for generating Scalable Vector Graphics (SVG) documents
 dev-perl/SVG-Graph 0.20.0-r1: Visualize your data in Scalable Vector Graphics (SVG) format
-dev-perl/SVN-Simple 0.280.0-r1: SVN::Simple::Edit - Simple interface to SVN::Delta::Editor
 dev-perl/Safe-Hole 0.130.0-r1: Exec subs in the original package from Safe
 dev-perl/Safe-Isa 1.0.5: Call isa, can, does and DOES safely on things that may not be objects
 dev-perl/Sane 0.50.0-r1: The Sane module allows you to access SANE-compatible scanners in a Perl
@@ -8421,7 +8420,7 @@ net-ftp/ncftp 3.2.6: An extremely configurable ftp client
 net-ftp/netkit-ftpd 0.17-r9: The netkit FTP server with optional SSL support
 net-ftp/oftpd 0.3.7-r7: Secure, small, anonymous only ftpd
 net-ftp/proftpd 1.3.5e: An advanced and very configurable FTP server
-net-ftp/pure-ftpd 1.0.45-r1: Fast, production-quality, standard-conformant FTP server
+net-ftp/pure-ftpd 1.0.45-r2: Fast, production-quality, standard-conformant FTP server
 net-ftp/pureadmin 0.4-r1: GUI tool used to make the management of Pure-FTPd a little easier
 net-ftp/qshare 2.1.5-r1: FTP server with a service discovery feature
 net-ftp/scythia 0.9.3_p2: Just a small FTP client
