@@ -49,6 +49,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${P}-pulseaudio_dep.patch"
+	"${FILESDIR}/${P}-cmake.patch"
 )
 
 pkg_setup() {
