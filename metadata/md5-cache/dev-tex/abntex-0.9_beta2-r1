@@ -1,7 +1,7 @@
-DEFINED_PHASES=compile configure install postinst postrm prepare unpack
+DEFINED_PHASES=compile install postinst postrm prepare
 DEPEND=dev-texlive/texlive-latex dev-texlive/texlive-latexrecommended lyx? ( app-office/lyx ) virtual/latex-base >=sys-apps/texinfo-4.2-r5
 DESCRIPTION=LaTeX macros for writing documents following the ABNT norms
-EAPI=3
+EAPI=6
 HOMEPAGE=http://abntex.codigolivre.org.br/ http://abntex.sourceforge.net/
 IUSE=doc examples lyx
 KEYWORDS=~amd64 ~x86
@@ -9,5 +9,5 @@ LICENSE=LPPL-1.3c
 RDEPEND=dev-texlive/texlive-latex dev-texlive/texlive-latexrecommended lyx? ( app-office/lyx ) virtual/latex-base
 SLOT=0
 SRC_URI=mirror://sourceforge/abntex/abntex-0.9-beta2.tar.gz doc? ( mirror://sourceforge/abntex/abntex-doc-0.9-beta2.tar.gz )
-_eclasses_=base	983774947da124fb7d542ce25a218bb1	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e7258392d5eda499c1cfa94db650b61	latex-package	79acad19b9efeec616d0ad70cd117b03	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=1662ce979907ab0098582e72331bfc83
+_eclasses_=latex-package	79acad19b9efeec616d0ad70cd117b03
+_md5_=a2ddd450141688b4d2301c20a88f0be8
