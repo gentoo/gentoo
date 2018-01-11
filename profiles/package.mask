@@ -294,9 +294,10 @@ dev-vcs/monotone
 app-misc/tasque
 
 # Pacho Ramos <pacho@gentoo.org> (28 Dec 2017)
+# Sebastian Pipping <sping@gentoo.org> (12 Jan 2018)
 # Needs a major version bump and relies on lots of dead libs (#624160).
 # Removal in a month.
-x11-terms/terminator
+<x11-terms/terminator-1.91
 
 # Pacho Ramos <pacho@gentoo.org> (28 Dec 2017)
 # Requires dead gnome2 python bindings (#629180) and old gstreamer, also all
