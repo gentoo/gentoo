@@ -615,13 +615,6 @@ dev-python/pygui
 # not done yet.
 net-libs/polarssl
 
-# Andreas Sturmlechner <asturm@gentoo.org> (12 Dec 2017)
-# Depends on dead kdelibs4/qt4, unmaintained upstream. No port to
-# KF5 released. If you depend on this package, please help test the
-# KF5-based cirkuit-0.4.3_p201710115 snapshot.
-# Bug #640884. Masked for removal in 30 days.
-sci-electronics/cirkuit
-
 # Patrice Clement <monsieurp@gentoo.org> (12 Dec 2017)
 # Masked due to a hard dependency on an ancient versions of dev-libs/msgpack
 # (<0.6) that have been punted from the tree.
