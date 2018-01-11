@@ -8735,7 +8735,7 @@ net-misc/dropbear 2016.74: small SSH 2 client/server designed for small memory e
 net-misc/dropbox 40.3.44: Dropbox daemon (pretends to be GUI-less)
 net-misc/dropbox-cli 1-r1 1.6.0: Cli interface for dropbox (python), part of nautilus-dropbox
 net-misc/efax 0.9a-r4: A simple fax program for single-user systems
-net-misc/electrum 2.7.15: User friendly Bitcoin client
+net-misc/electrum 3.0.5: User friendly Bitcoin client
 net-misc/fakeidentd 2.6-r1: A static, secure identd. One source file only!
 net-misc/freerdp 1.2.1_pre20150326-r1 2.0.0_rc0: Free implementation of the Remote Desktop Protocol
 net-misc/gcap 0.1.1-r1: Command line tool for downloading Youtube closed captions
