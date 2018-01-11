@@ -27,6 +27,7 @@ DEPEND="${RDEPEND}
 		dev-python/backports-unittest-mock[${PYTHON_USEDEP}]
 		dev-python/path-py[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
+		dev-python/pytest-cov[${PYTHON_USEDEP}]
 	)"
 S="${WORKDIR}/${MY_P}"
 
