@@ -8,7 +8,6 @@ sys-devel/gcc -pie
 # Andreas K. Hüttel <dilfridge@gentoo.org> (7 June 2017)
 # Qt-4 will never work with >=icu-59, see bug 618638 and bug 618640
 dev-qt/qtcore:4 icu
-dev-qt/qtwebkit:4 icu
 
 # Ian Stakenvicius <axs@gentoo.org> (27 Sep 2017)
 # Remove system-icu masks (see base/package.use.mask)

@@ -52,7 +52,6 @@ move kde-base/kde-l10n kde-apps/kde4-l10n
 move kde-base/kdeaccessibility-meta kde-apps/kdeaccessibility-meta
 move kde-base/kdeadmin-meta kde-apps/kdeadmin-meta
 move kde-base/kdebase-data kde-apps/kdebase-data
-move kde-base/kdebase-kioslaves kde-apps/kdebase-kioslaves
 move kde-base/kdebase-meta kde-apps/kdebase-meta
 move kde-base/kde-dev-scripts kde-apps/kde-dev-scripts
 move kde-base/kde-dev-utils kde-apps/kde-dev-utils
@@ -147,7 +146,6 @@ move kde-base/okular kde-apps/okular
 move kde-base/oxygen-icons kde-frameworks/oxygen-icons
 move kde-base/palapeli kde-apps/palapeli
 move kde-base/parley kde-apps/parley
-move kde-base/phonon-kde kde-apps/phonon-kde
 move kde-base/picmi kde-apps/picmi
 move kde-base/poxml kde-apps/poxml
 move kde-base/print-manager kde-apps/print-manager

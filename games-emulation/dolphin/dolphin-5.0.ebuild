@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ PLOCALES="ar ca cs da_DK de el en es fa fr hr hu it ja ko ms_MY nb nl pl pt pt_B
 PLOCALE_BACKUP="en"
 WX_GTK_VER="3.0"
 
-inherit cmake-utils eutils l10n pax-utils toolchain-funcs versionator wxwidgets
+inherit cmake-utils desktop l10n pax-utils toolchain-funcs versionator wxwidgets
 
 SRC_URI="https://github.com/${PN}-emu/${PN}/archive/${PV}.zip -> ${P}.zip"
 KEYWORDS="amd64"
@@ -17,15 +17,15 @@ HOMEPAGE="https://www.dolphin-emu.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="alsa ao bluetooth doc egl +evdev ffmpeg llvm log lto openal +pch portaudio profile pulseaudio qt5 sdl upnp +wxwidgets"
+IUSE="alsa ao bluetooth doc egl +evdev ffmpeg libav llvm log lto openal +pch portaudio profile pulseaudio qt5 sdl upnp +wxwidgets"
 
-RDEPEND=">=media-libs/libsfml-2.1
+RDEPEND="
+	>=media-libs/libsfml-2.1
 	>net-libs/enet-1.3.7
 	>=net-libs/mbedtls-2.1.1
 	dev-libs/lzo
-	media-libs/libpng:=
-	sys-libs/glibc
-	sys-libs/readline:=
+	media-libs/libpng:0=
+	sys-libs/readline:0=
 	sys-libs/zlib
 	x11-libs/libXext
 	x11-libs/libXi
@@ -37,14 +37,17 @@ RDEPEND=">=media-libs/libsfml-2.1
 	bluetooth? ( net-wireless/bluez )
 	egl? ( media-libs/mesa[egl] )
 	evdev? (
-			dev-libs/libevdev
-			virtual/udev
+		dev-libs/libevdev
+		virtual/udev
 	)
-	ffmpeg? ( virtual/ffmpeg )
+	ffmpeg? (
+		libav? ( media-video/libav:= )
+		!libav? ( media-video/ffmpeg:= )
+	)
 	llvm? ( sys-devel/llvm )
 	openal? (
-			media-libs/openal
-			media-libs/libsoundtouch
+		media-libs/openal
+		media-libs/libsoundtouch
 	)
 	portaudio? ( media-libs/portaudio )
 	profile? ( dev-util/oprofile )
@@ -57,35 +60,20 @@ RDEPEND=">=media-libs/libsfml-2.1
 	sdl? ( media-libs/libsdl2[haptic,joystick] )
 	upnp? ( >=net-libs/miniupnpc-1.7 )
 	wxwidgets? (
-				dev-libs/glib:2
-				x11-libs/gtk+:2
-				x11-libs/wxGTK:${WX_GTK_VER}[opengl,X]
-	)
-	"
+		dev-libs/glib:2
+		x11-libs/gtk+:2
+		x11-libs/wxGTK:${WX_GTK_VER}[opengl,X]
+	)"
 DEPEND="${RDEPEND}
-	>=dev-util/cmake-2.8.8
-	>=sys-devel/gcc-4.9.0
 	app-arch/zip
 	media-libs/freetype
 	sys-devel/gettext
-	virtual/pkgconfig
-	"
+	virtual/pkgconfig"
 
-pkg_pretend() {
-
-	local ver=4.9.0
-	local msg="${PN} needs at least GCC ${ver} set to compile."
-
-	if [[ ${MERGE_TYPE} != binary ]]; then
-		if ! version_is_at_least ${ver} $(gcc-fullversion); then
-			eerror ${msg}
-			die ${msg}
-		fi
-	fi
-
-}
+PATCHES=( "${FILESDIR}"/${P}-CHAR_WIDTH-collision.patch )
 
 src_prepare() {
+	cmake-utils_src_prepare
 
 	# Remove automatic dependencies to prevent building without flags enabled.
 	if use !alsa; then
@@ -139,13 +127,12 @@ src_prepare() {
 }
 
 src_configure() {
-
 	if use wxwidgets; then
 		need-wxwidgets unicode
 	fi
 
 	local mycmakeargs=(
-		"-DUSE_SHARED_ENET=ON"
+		-DUSE_SHARED_ENET=ON
 		$( cmake-utils_use ffmpeg ENCODE_FRAMEDUMPS )
 		$( cmake-utils_use log FASTLOG )
 		$( cmake-utils_use profile OPROFILING )
@@ -162,12 +149,7 @@ src_configure() {
 	cmake-utils_src_configure
 }
 
-src_compile() {
-
-	cmake-utils_src_compile
-}
 src_install() {
-
 	cmake-utils_src_install
 
 	dodoc Readme.md

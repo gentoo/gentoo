@@ -5,4 +5,14 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="cpan">Syntax-Keyword-Junction</remote-id>
+    <remote-id type="cpan-module">Syntax::Feature::Junction</remote-id>
+    <remote-id type="cpan-module">Syntax::Keyword::Junction</remote-id>
+    <remote-id type="cpan-module">Syntax::Keyword::Junction::All</remote-id>
+    <remote-id type="cpan-module">Syntax::Keyword::Junction::Any</remote-id>
+    <remote-id type="cpan-module">Syntax::Keyword::Junction::Base</remote-id>
+    <remote-id type="cpan-module">Syntax::Keyword::Junction::None</remote-id>
+    <remote-id type="cpan-module">Syntax::Keyword::Junction::One</remote-id>
+  </upstream>
 </pkgmetadata>

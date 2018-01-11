@@ -29,9 +29,26 @@
 
 #--- END OF EXAMPLES ---
 
+# Kent Fredric <kentnl@gentoo.org> (10 Jan 2018)
+# Dead upstream, Broken since 2009.
+# Bug #644146. Removal in 30 days
+dev-perl/SVN-Simple
+
+# Michał Górny <mgorny@gentoo.org> (10 Jan 2018)
+# The Fuzzer library is now installed as part of core LLVM. That's
+# sys-devel/llvm in LLVM 5, and sys-libs/compiler-rt-sanitizers
+# in LLVM 6 and newer. The separate ebuild was never approved by LLVM
+# maintainers or actually maintained, and is obsolete for a long time.
+# Removal in 30 days.
+dev-libs/libFuzzer
+
 # Richard Freeman <rich0@gentoo.org> (09 Jan 2018)
 # Bug 644048 - temp QA mask until it can get sorted out
-=sys-apps/attr-2.4.48
+~sys-apps/attr-2.4.48
+# Lars Wendler <polynomial-c@gentoo.org> (10 Jan 2018)
+# Mask followup bugfixes for =sys-apps/attr-2.4.48 as well until proper
+# testing has been conducted.
+=sys-apps/acl-2.2.52-r2
 
 # Andreas Sturmlechner <asturm@gentoo.org> (09 Jan 2018)
 # Dead upstream, depends on dead Qt4.
@@ -598,37 +615,6 @@ dev-python/pygui
 # not done yet.
 net-libs/polarssl
 
-# Andreas Sturmlechner <asturm@gentoo.org> (12 Dec 2017)
-# Depends on dead kdelibs4/qt4, unmaintained upstream. No port to
-# KF5 released. If you depend on this package, please help test the
-# KF5-based cirkuit-0.4.3_p201710115 snapshot.
-# Bug #640884. Masked for removal in 30 days.
-sci-electronics/cirkuit
-
-# Andreas Sturmlechner <asturm@gentoo.org> (12 Dec 2017)
-# Depends on dead kdelibs4/qt4, unmaintained upstream. No port to
-# KF5 released.
-# Possible alternatives are media-sound/cantata (an awesome mpd client),
-# media-sound/clementine and media-sound/tomahawk (the latter also declared
-# unmaintained upstream).
-# Bug #635468. Masked for removal in 30 days.
-media-sound/amarok
-kde-apps/kdebase-kioslaves
-kde-apps/phonon-kde
-x11-libs/qtscriptgenerator
-
-# Andreas Sturmlechner <asturm@gentoo.org> (12 Dec 2017)
-# Depends on dead media-sound/amarok:4, dead upstream,
-# last release in 2006. Bug #635468. Masked for removal in 30 days.
-media-sound/vdramgw
-
-# Andreas Sturmlechner <asturm@gentoo.org> (12 Dec 2017)
-# Depends on dead kdelibs4/qt4, no port to KF5 released yet.
-# If you depend on this package, help test KF5-based simon-9999
-# to decide on a possible snapshot. Bugs #640846, 639960, 635816.
-# Masked for removal in 30 days.
-app-accessibility/simon:0
-
 # Patrice Clement <monsieurp@gentoo.org> (12 Dec 2017)
 # Masked due to a hard dependency on an ancient versions of dev-libs/msgpack
 # (<0.6) that have been punted from the tree.
@@ -839,10 +825,10 @@ dev-lang/spidermonkey:52
 >=media-gfx/shotwell-0.27
 
 # Nicolas Bock <nicolasbock@gentoo.org> (31 Oct 2017)
-# There are multiple unresolved upstream issues with jabref-bin-4.0 (#636036).
+# There are multiple unresolved upstream issues with >=jabref-bin-4.0 (#636036).
 # If you still would like to use this version, please report any issues to
 # upstream.
-=app-text/jabref-bin-4.0
+>=app-text/jabref-bin-4.0
 
 # Nicolas Bock <nicolasbock@gentoo.org> (6 Dec 2017)
 # Development has ceased, the last commit to the upstream repository was

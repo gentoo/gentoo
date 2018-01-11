@@ -3,14 +3,14 @@
 
 EAPI=6
 
-inherit bash-completion-r1 linux-info toolchain-funcs systemd
+inherit bash-completion-r1 eutils linux-info toolchain-funcs systemd
 
 DESCRIPTION="Generic initramfs generation tool"
 HOMEPAGE="https://dracut.wiki.kernel.org"
 SRC_URI="mirror://kernel/linux/utils/boot/${PN}/${P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm ia64 ~mips ~ppc ~ppc64 ~sparc x86"
 IUSE="debug selinux"
 
 RESTRICT="test"

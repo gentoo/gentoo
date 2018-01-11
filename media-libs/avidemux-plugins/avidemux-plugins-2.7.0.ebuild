@@ -78,7 +78,7 @@ DEPEND="${COMMON_DEPEND}
 	oss? ( virtual/os-headers:0 )
 "
 RDEPEND="${COMMON_DEPEND}
-	!<media-libs/avidemux-plugins-${PV}:${SLOT}
+	!<media-libs/avidemux-plugins-${PV}
 "
 
 S="${WORKDIR}/${MY_P}"
