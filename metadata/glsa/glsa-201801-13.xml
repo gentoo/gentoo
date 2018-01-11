@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201801-13">
+  <title>TigerVNC: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in TigerVNC, the worst of
+    which may lead to arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">tigervnc</product>
+  <announced>2018-01-11</announced>
+  <revised>2018-01-11: 1</revised>
+  <bug>614742</bug>
+  <bug>636396</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="net-misc/tigervnc" auto="yes" arch="*">
+      <unaffected range="ge">1.8.0</unaffected>
+      <vulnerable range="lt">1.8.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>TigerVNC is a high-performance VNC server/client.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in TigerVNC. Please review
+      the referenced CVE Identifiers for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could execute arbitrary code or cause a Denial of Service
+      condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All TigerVNC users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/tigervnc-1.8.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10207">
+      CVE-2016-10207
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7392">
+      CVE-2017-7392
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7393">
+      CVE-2017-7393
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7394">
+      CVE-2017-7394
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7395">
+      CVE-2017-7395
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7396">
+      CVE-2017-7396
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-11-24T22:29:53Z">chrisadr</metadata>
+  <metadata tag="submitter" timestamp="2018-01-11T22:42:09Z">b-man</metadata>
+</glsa>

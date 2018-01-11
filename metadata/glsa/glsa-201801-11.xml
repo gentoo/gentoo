@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201801-11">
+  <title>PySAML2: Security bypass</title>
+  <synopsis>A vulnerability in PySAML2 might allow remote attackers to bypass
+    authentication.
+  </synopsis>
+  <product type="ebuild">PySAML2</product>
+  <announced>2018-01-11</announced>
+  <revised>2018-01-11: 1</revised>
+  <bug>644016</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-python/pysaml2" auto="yes" arch="*">
+      <unaffected range="ge">4.5.0</unaffected>
+      <vulnerable range="lt">4.5.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>PySAML2 is a pure python implementation of SAML2</p>
+  </background>
+  <description>
+    <p>It was found that the PySAML2 relies on an assert statement to check the
+      user’s password. A python optimizations might remove this assertion.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could bypass security restrictions and access any
+      application which is using PySAML2 for authentication.
+    </p>
+  </impact>
+  <workaround>
+    <p>Disable python optimizations.</p>
+  </workaround>
+  <resolution>
+    <p>All PySAML2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-python/pysaml2-4.5.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-1000433">
+      CVE-2017-1000433
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-01-09T14:46:58Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2018-01-11T22:41:33Z">whissi</metadata>
+</glsa>
