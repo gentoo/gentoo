@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ inherit bash-completion-r1 distutils-r1 readme.gentoo-r1
 
 DESCRIPTION="Download videos from YouTube.com (and more sites...)"
 HOMEPAGE="https://rg3.github.com/youtube-dl/"
-SRC_URI="http://youtube-dl.org/downloads/${PV}/${P}.tar.gz"
+SRC_URI="https://youtube-dl.org/downloads/${PV}/${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
@@ -32,15 +32,14 @@ python_prepare_all() {
 		local xxx=(
 			alphaporno anysex behindkink camwithher chaturbate eporner
 			eroprofile extremetube foxgay goshgay hellporno hentaistigma
-			hornbunny keezmovies lovehomeporn mofosex motherless myvidster
-			porn91 porncom pornflip pornhd pornotube pornovoisines pornoxo
-			ruleporn sexu slutload spankbang spankwire sunporno thisav tube8
-			vporn watchindianporn xbef xnxx xtube xvideos xxxymovies youjizz
-			youporn
+			hornbunny keezmovies lovehomeporn mofosex myvidster porn91 porncom
+			pornflip pornhd pornotube pornovoisines pornoxo ruleporn sexu
+			slutload spankbang spankwire sunporno thisav tube8 vporn
+			watchindianporn xbef xnxx xtube xvideos xxxymovies youjizz youporn
 		)
 		# these have multi-line import statements
 		local mxxx=(
-			drtuber fourtube pornhub redtube tnaflix xhamster
+			drtuber fourtube motherless pornhub redtube tnaflix xhamster
 		)
 		# do single line imports
 		sed -i \
