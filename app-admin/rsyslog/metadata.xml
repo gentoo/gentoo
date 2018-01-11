@@ -4,9 +4,9 @@
 	<maintainer type="person">
 		<email>whissi@gentoo.org</email>
 		<name>Thomas Deutschmann</name>
-		<description>Primary Maintainer</description>
 	</maintainer>
 	<use>
+		<flag name="curl">Enable http_request() function in RainerScript (requires <pkg>net-misc/curl</pkg>)</flag>
 		<flag name="dbi">Build the general database output module (requires <pkg>dev-db/libdbi</pkg>)</flag>
 		<flag name="elasticsearch">Build the Elasticsearch output module (requires <pkg>net-misc/curl</pkg>)</flag>
 		<flag name="gcrypt">Add support for encrypted log files using <pkg>dev-libs/libgcrypt</pkg></flag>

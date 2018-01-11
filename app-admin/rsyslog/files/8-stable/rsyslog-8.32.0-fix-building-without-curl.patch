@@ -1,0 +1,90 @@
+https://github.com/rsyslog/rsyslog/pull/2378
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -454,6 +454,8 @@ if test "$enable_libcurl" = "yes"; then
+ 	)
+ fi
+ 
++AM_CONDITIONAL(ENABLE_LIBCURL, test "x${enable_libcurl}" = "xyes")
++
+ # klog
+ AC_ARG_ENABLE(klog,
+         [AS_HELP_STRING([--enable-klog],[Integrated klog functionality @<:@default=yes@:>@])],
+--- a/grammar/rainerscript.c
++++ b/grammar/rainerscript.c
+@@ -1935,6 +1935,7 @@ done:
+ 	return(estr);
+ }
+ 
++#ifdef HAVE_LIBCURL
+ /* curl callback for doFunc_http_request */
+ static size_t
+ curlResult(void *ptr, size_t size, size_t nmemb, void *userdata)
+@@ -2010,6 +2011,7 @@ finalize_it:
+ 	}
+ 	RETiRet;
+ }
++#endif
+ 
+ static int ATTR_NONNULL(1,3,4)
+ doFunc_is_time(const char *__restrict__ const str,
+@@ -2513,11 +2515,16 @@ doFuncCall(struct cnffunc *__restrict__ const func, struct svar *__restrict__ co
+ 		if(bMustFree2) free(str2);
+ 		break;
+ 	case CNFFUNC_HTTP_REQUEST:
++#ifdef HAVE_LIBCURL
+ 		cnfexprEval(func->expr[0], &r[0], usrptr, pWti);
+ 		str = (char*) var2CString(&r[0], &bMustFree);
+ 		doFunc_http_request(func, ret, str);
+ 		if(bMustFree) free(str);
+ 		varFreeMembers(&r[0]);
++#else
++		LogError(0, RS_RET_INTERNAL_ERROR,
++			"rainerscript: internal error: HTTP_Fetch not supported, not built with libcurl support\n");
++#endif
+ 		break;
+ 	default:
+ 		if(Debug) {
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -226,7 +226,6 @@ TESTS +=  \
+ 	rscript_contains.sh \
+ 	rscript_bare_var_root.sh \
+ 	rscript_bare_var_root-empty.sh \
+-	rscript_http_request.sh \
+ 	rscript_ipv42num.sh \
+ 	rscript_field.sh \
+ 	rscript_stop.sh \
+@@ -305,7 +304,11 @@ TESTS +=  \
+ 	lookup_table_rscript_reload.sh \
+ 	lookup_table_rscript_reload_without_stub.sh \
+ 	multiple_lookup_tables.sh
+-endif
++if ENABLE_LIBCURL
++TESTS +=  \
++	rscript_http_request.sh
++endif # ENABLE_LIBCURL
++endif # ENABLE_TESTBENCH2
+ 
+ if HAVE_VALGRIND
+ TESTS +=  \
+@@ -313,7 +316,6 @@ TESTS +=  \
+ 	mmexternal-InvldProg-vg.sh \
+ 	internal-errmsg-memleak-vg.sh \
+ 	rscript_set_memleak-vg.sh \
+-	rscript_http_request-vg.sh \
+ 	no-parser-vg.sh \
+ 	discard-rptdmsg-vg.sh \
+ 	discard-allmark-vg.sh \
+@@ -338,6 +340,10 @@ TESTS +=  \
+ 	multiple_lookup_tables-vg.sh \
+ 	fac_local0-vg.sh \
+ 	rscript_trim-vg.sh
++if ENABLE_LIBCURL
++TESTS +=  \
++	rscript_http_request-vg.sh
++endif # ENABLE_LIBCURL
+ endif # HAVE_VALGRIND
+ 
+ if ENABLE_ROOT_TESTS
