@@ -20,7 +20,7 @@ alpha           default/linux/alpha/17.0/developer              exp
 
 # AMD64 Profiles
 amd64           default/linux/amd64/13.0                                stable
-amd64           default/linux/amd64/13.0/selinux                        dev
+amd64           default/linux/amd64/13.0/selinux                        stable
 amd64           default/linux/amd64/13.0/desktop                        stable
 amd64           default/linux/amd64/13.0/desktop/gnome                  stable
 amd64           default/linux/amd64/13.0/desktop/gnome/systemd          stable
@@ -31,9 +31,9 @@ amd64           default/linux/amd64/13.0/no-multilib                    stable
 amd64           default/linux/amd64/13.0/systemd                        stable
 amd64           default/linux/amd64/13.0/x32                            exp
 amd64           default/linux/amd64/17.0                                stable
-amd64           default/linux/amd64/17.0/selinux                        dev
-amd64           default/linux/amd64/17.0/hardened                       dev
-amd64           default/linux/amd64/17.0/hardened/selinux               dev
+amd64           default/linux/amd64/17.0/selinux                        stable
+amd64           default/linux/amd64/17.0/hardened                       stable
+amd64           default/linux/amd64/17.0/hardened/selinux               stable
 amd64           default/linux/amd64/17.0/desktop                        stable
 amd64           default/linux/amd64/17.0/desktop/gnome                  stable
 amd64           default/linux/amd64/17.0/desktop/gnome/systemd          stable
@@ -41,8 +41,8 @@ amd64           default/linux/amd64/17.0/desktop/plasma                 stable
 amd64           default/linux/amd64/17.0/desktop/plasma/systemd         stable
 amd64           default/linux/amd64/17.0/developer                      stable
 amd64           default/linux/amd64/17.0/no-multilib                    stable
-amd64           default/linux/amd64/17.0/no-multilib/hardened           dev
-amd64           default/linux/amd64/17.0/no-multilib/hardened/selinux   dev
+amd64           default/linux/amd64/17.0/no-multilib/hardened           stable
+amd64           default/linux/amd64/17.0/no-multilib/hardened/selinux   stable
 amd64           default/linux/amd64/17.0/systemd                        stable
 amd64           default/linux/amd64/17.0/x32                            exp
 
@@ -64,30 +64,30 @@ amd64           default/linux/amd64/17.0/x32                            exp
 
 # ARM Profiles
 arm             default/linux/arm/13.0                          stable
-arm             default/linux/arm/13.0/desktop                  dev
-arm             default/linux/arm/13.0/desktop/gnome            dev
-arm             default/linux/arm/13.0/desktop/gnome/systemd    dev
-arm             default/linux/arm/13.0/developer                dev
-arm             default/linux/arm/13.0/armv4                    dev
-arm             default/linux/arm/13.0/armv4/desktop            dev
-arm             default/linux/arm/13.0/armv4/desktop/gnome      dev
-arm             default/linux/arm/13.0/armv4/developer          dev
-arm             default/linux/arm/13.0/armv4t                   dev
-arm             default/linux/arm/13.0/armv4t/desktop           dev
-arm             default/linux/arm/13.0/armv4t/desktop/gnome     dev
-arm             default/linux/arm/13.0/armv4t/developer         dev
-arm             default/linux/arm/13.0/armv5te                  dev
-arm             default/linux/arm/13.0/armv5te/desktop          dev
-arm             default/linux/arm/13.0/armv5te/desktop/gnome    dev
-arm             default/linux/arm/13.0/armv5te/developer        dev
-arm             default/linux/arm/13.0/armv6j                   dev
-arm             default/linux/arm/13.0/armv6j/desktop           dev
-arm             default/linux/arm/13.0/armv6j/desktop/gnome     dev
-arm             default/linux/arm/13.0/armv6j/developer         dev
-arm             default/linux/arm/13.0/armv7a                   dev
-arm             default/linux/arm/13.0/armv7a/desktop           dev
-arm             default/linux/arm/13.0/armv7a/desktop/gnome     dev
-arm             default/linux/arm/13.0/armv7a/developer         dev
+arm             default/linux/arm/13.0/desktop                  stable
+arm             default/linux/arm/13.0/desktop/gnome            stable
+arm             default/linux/arm/13.0/desktop/gnome/systemd    stable
+arm             default/linux/arm/13.0/developer                stable
+arm             default/linux/arm/13.0/armv4                    stable
+arm             default/linux/arm/13.0/armv4/desktop            stable
+arm             default/linux/arm/13.0/armv4/desktop/gnome      stable
+arm             default/linux/arm/13.0/armv4/developer          stable
+arm             default/linux/arm/13.0/armv4t                   stable
+arm             default/linux/arm/13.0/armv4t/desktop           stable
+arm             default/linux/arm/13.0/armv4t/desktop/gnome     stable
+arm             default/linux/arm/13.0/armv4t/developer         stable
+arm             default/linux/arm/13.0/armv5te                  stable
+arm             default/linux/arm/13.0/armv5te/desktop          stable
+arm             default/linux/arm/13.0/armv5te/desktop/gnome    stable
+arm             default/linux/arm/13.0/armv5te/developer        stable
+arm             default/linux/arm/13.0/armv6j                   stable
+arm             default/linux/arm/13.0/armv6j/desktop           stable
+arm             default/linux/arm/13.0/armv6j/desktop/gnome     stable
+arm             default/linux/arm/13.0/armv6j/developer         stable
+arm             default/linux/arm/13.0/armv7a                   stable
+arm             default/linux/arm/13.0/armv7a/desktop           stable
+arm             default/linux/arm/13.0/armv7a/desktop/gnome     stable
+arm             default/linux/arm/13.0/armv7a/developer         stable
 
 # ARM64 Profiles
 arm64           default/linux/arm64/13.0                        exp
@@ -103,8 +103,8 @@ arm64           default/linux/arm64/17.0/systemd                exp
 
 # HPPA Profiles
 hppa            default/linux/hppa/13.0                         stable
-hppa            default/linux/hppa/13.0/desktop                 dev
-hppa            default/linux/hppa/13.0/developer               dev
+hppa            default/linux/hppa/13.0/desktop                 stable
+hppa            default/linux/hppa/13.0/developer               stable
 hppa            default/linux/hppa/17.0                         exp
 hppa            default/linux/hppa/17.0/desktop                 exp
 hppa            default/linux/hppa/17.0/developer               exp
@@ -221,7 +221,7 @@ sparc           default/linux/sparc/17.0/developer              exp
 
 # x86 Profiles
 x86             default/linux/x86/13.0                          stable
-x86             default/linux/x86/13.0/selinux                  dev
+x86             default/linux/x86/13.0/selinux                  stable
 x86             default/linux/x86/13.0/desktop                  stable
 x86             default/linux/x86/13.0/desktop/gnome            stable
 x86             default/linux/x86/13.0/desktop/gnome/systemd    stable
@@ -230,7 +230,7 @@ x86             default/linux/x86/13.0/desktop/plasma/systemd   stable
 x86             default/linux/x86/13.0/developer                stable
 x86		default/linux/x86/13.0/systemd			stable
 x86             default/linux/x86/17.0                          stable
-x86             default/linux/x86/17.0/selinux                  dev
+x86             default/linux/x86/17.0/selinux                  stable
 x86             default/linux/x86/17.0/desktop                  stable
 x86             default/linux/x86/17.0/desktop/gnome            stable
 x86             default/linux/x86/17.0/desktop/gnome/systemd    stable
@@ -256,7 +256,7 @@ amd64		hardened/linux/amd64/no-multilib/selinux		stable
 amd64		hardened/linux/amd64/x32				exp
 arm		hardened/linux/arm/armv7a				exp
 arm		hardened/linux/arm/armv6j				exp
-ia64		hardened/linux/ia64					dev
+ia64		hardened/linux/ia64					stable
 mips		hardened/linux/mips/mipsel/multilib/n32			exp
 mips		hardened/linux/mips/mipsel/multilib/n64			exp
 mips		hardened/linux/mips/mipsel/n32				exp
@@ -265,7 +265,7 @@ mips		hardened/linux/mips/multilib/n32			exp
 mips		hardened/linux/mips/multilib/n64			exp
 mips		hardened/linux/mips/n32					exp
 mips		hardened/linux/mips/n64					exp
-ppc		hardened/linux/powerpc/ppc32				dev
+ppc		hardened/linux/powerpc/ppc32				stable
 ppc		hardened/linux/powerpc/ppc64/32bit-userland		exp
 ppc64		hardened/linux/powerpc/ppc64/64bit-userland		exp
 x86		hardened/linux/x86					stable
