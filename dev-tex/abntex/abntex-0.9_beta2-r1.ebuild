@@ -1,7 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=3
+EAPI=6
 
 inherit latex-package
 
@@ -30,30 +30,31 @@ src_prepare() {
 	# fix permissions
 	find . -type f -exec chmod 0644 "{}" + || die 'chmod 0644 failed.'
 	find . -type d -exec chmod 0755 "{}" + || die 'chmod 0755 failed.'
+	default
 }
 
 src_install() {
-	dobin bin/geratss || die 'dobin failed.'
+	dobin bin/geratss
 
 	if use examples; then
 		insinto /usr/share/doc/${PF}/examples
-		doins -r texmf/doc/* || die 'could not install examples.'
+		doins -r texmf/doc/*
 	fi
 
-	rm -rf texmf/doc
+	rm -rf texmf/doc || die
 
 	insinto /usr/share/texmf-site
-	doins -r texmf/* || die 'could not install texmf.'
+	doins -r texmf/*
 
 	if use lyx; then
 		insinto /usr/share/lyx
-		doins -r lyx/* || die 'could not install lyx files.'
+		doins -r lyx/*
 	fi
 
-	dodoc LEIAME || die 'could not install LEIAME'
+	dodoc LEIAME
 
 	if use doc; then
 		insinto /usr/share/doc/${PF}/docs
-		doins -r compiled.docs/* || die "could not install doc"
+		doins -r compiled.docs/*
 	fi
 }
