@@ -29,7 +29,7 @@ amd64           default/linux/amd64/13.0/desktop/plasma/systemd         stable
 amd64           default/linux/amd64/13.0/developer                      stable
 amd64           default/linux/amd64/13.0/no-multilib                    stable
 amd64           default/linux/amd64/13.0/systemd                        stable
-amd64           default/linux/amd64/13.0/x32                            dev
+amd64           default/linux/amd64/13.0/x32                            exp
 amd64           default/linux/amd64/17.0                                stable
 amd64           default/linux/amd64/17.0/selinux                        dev
 amd64           default/linux/amd64/17.0/hardened                       dev
@@ -44,7 +44,7 @@ amd64           default/linux/amd64/17.0/no-multilib                    stable
 amd64           default/linux/amd64/17.0/no-multilib/hardened           dev
 amd64           default/linux/amd64/17.0/no-multilib/hardened/selinux   dev
 amd64           default/linux/amd64/17.0/systemd                        stable
-amd64           default/linux/amd64/17.0/x32                            dev
+amd64           default/linux/amd64/17.0/x32                            exp
 
 # Experimental SYMLINK_LIB=no profiles
 # Run app-portage/unsymlink-lib *before* switching the profile.
@@ -253,9 +253,9 @@ amd64		hardened/linux/amd64					stable
 amd64		hardened/linux/amd64/selinux				stable
 amd64		hardened/linux/amd64/no-multilib			stable
 amd64		hardened/linux/amd64/no-multilib/selinux		stable
-amd64		hardened/linux/amd64/x32				dev
-arm		hardened/linux/arm/armv7a				dev
-arm		hardened/linux/arm/armv6j				dev
+amd64		hardened/linux/amd64/x32				exp
+arm		hardened/linux/arm/armv7a				exp
+arm		hardened/linux/arm/armv6j				exp
 ia64		hardened/linux/ia64					dev
 mips		hardened/linux/mips/mipsel/multilib/n32			exp
 mips		hardened/linux/mips/mipsel/multilib/n64			exp
@@ -266,8 +266,8 @@ mips		hardened/linux/mips/multilib/n64			exp
 mips		hardened/linux/mips/n32					exp
 mips		hardened/linux/mips/n64					exp
 ppc		hardened/linux/powerpc/ppc32				dev
-ppc		hardened/linux/powerpc/ppc64/32bit-userland		dev
-ppc64		hardened/linux/powerpc/ppc64/64bit-userland		dev
+ppc		hardened/linux/powerpc/ppc64/32bit-userland		exp
+ppc64		hardened/linux/powerpc/ppc64/64bit-userland		exp
 x86		hardened/linux/x86					stable
 x86		hardened/linux/x86/selinux				stable
 
