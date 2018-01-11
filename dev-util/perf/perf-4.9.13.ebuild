@@ -112,7 +112,9 @@ src_prepare() {
 	sed -i \
 		-e "s:\$(sysconfdir_SQ)/bash_completion.d:$(get_bashcompdir):" \
 		"${S}"/Makefile.perf || die
-	sed -i -e 's:-Werror::' "${S_K}"/tools/lib/api/Makefile || die
+	# A few places still use -Werror w/out $(WERROR) protection.
+	sed -i -e 's:-Werror::' \
+		"${S}"/Makefile.perf "${S_K}"/tools/lib/bpf/Makefile || die
 
 	# Avoid the call to make kernelversion
 	echo "#define PERF_VERSION \"${MY_PV}\"" > PERF-VERSION-FILE
