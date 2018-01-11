@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -111,6 +111,9 @@ src_prepare() {
 
 	# Update the init scripts for the new openrc, bug #594622
 	epatch "${FILESDIR}"/${PN}-0.6.32-openrc-0.21.7-fix-init-scripts.patch
+
+	# Don't pick up wrong moc based on qtchooser default, bug #587830
+	epatch "${FILESDIR}"/${PN}-0.6.32-mocqt4.patch
 
 	# Bug #525832
 	epatch_user
