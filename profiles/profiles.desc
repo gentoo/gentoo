@@ -90,14 +90,14 @@ arm             default/linux/arm/13.0/armv7a/desktop/gnome     dev
 arm             default/linux/arm/13.0/armv7a/developer         dev
 
 # ARM64 Profiles
-arm64           default/linux/arm64/13.0                        dev
+arm64           default/linux/arm64/13.0                        exp
 arm64           default/linux/arm64/13.0/desktop                exp
-arm64           default/linux/arm64/13.0/desktop/systemd        dev
+arm64           default/linux/arm64/13.0/desktop/systemd        exp
 arm64           default/linux/arm64/13.0/developer              exp
 arm64           default/linux/arm64/13.0/systemd                exp
-arm64           default/linux/arm64/17.0                        dev
+arm64           default/linux/arm64/17.0                        exp
 arm64           default/linux/arm64/17.0/desktop                exp
-arm64           default/linux/arm64/17.0/desktop/systemd        dev
+arm64           default/linux/arm64/17.0/desktop/systemd        exp
 arm64           default/linux/arm64/17.0/developer              exp
 arm64           default/linux/arm64/17.0/systemd                exp
 
@@ -132,17 +132,17 @@ m68k            default/linux/m68k/17.0/desktop/gnome           exp
 m68k            default/linux/m68k/17.0/developer               exp
 
 # MIPS Profiles
-mips            default/linux/mips/13.0/o32                     dev
-mips            default/linux/mips/13.0/n32                     dev
+mips            default/linux/mips/13.0/o32                     exp
+mips            default/linux/mips/13.0/n32                     exp
 mips            default/linux/mips/13.0/n64                     exp
-mips            default/linux/mips/13.0/multilib/o32            dev
-mips            default/linux/mips/13.0/multilib/n32            dev
+mips            default/linux/mips/13.0/multilib/o32            exp
+mips            default/linux/mips/13.0/multilib/n32            exp
 mips            default/linux/mips/13.0/multilib/n64            exp
-mips            default/linux/mips/13.0/mipsel/o32              dev
-mips            default/linux/mips/13.0/mipsel/n32              dev
+mips            default/linux/mips/13.0/mipsel/o32              exp
+mips            default/linux/mips/13.0/mipsel/n32              exp
 mips            default/linux/mips/13.0/mipsel/n64              exp
-mips            default/linux/mips/13.0/mipsel/multilib/o32     dev
-mips            default/linux/mips/13.0/mipsel/multilib/n32     dev
+mips            default/linux/mips/13.0/mipsel/multilib/o32     exp
+mips            default/linux/mips/13.0/mipsel/multilib/n32     exp
 mips            default/linux/mips/13.0/mipsel/multilib/n64     exp
 
 # Nios II Profiles
@@ -240,13 +240,13 @@ x86             default/linux/x86/17.0/developer                stable
 x86		default/linux/x86/17.0/systemd			stable
 
 # Gentoo/FreeBSD Profiles
-amd64-fbsd	default/bsd/fbsd/amd64/9.1			dev
-amd64-fbsd	default/bsd/fbsd/amd64/11.1			dev
+amd64-fbsd	default/bsd/fbsd/amd64/9.1			exp
+amd64-fbsd	default/bsd/fbsd/amd64/11.1			exp
 amd64-fbsd	default/bsd/fbsd/amd64/9.1/clang		exp
 amd64-fbsd	default/bsd/fbsd/amd64/11.1/clang		exp
 sparc-fbsd      default/bsd/fbsd/sparc/8.2                      exp
-x86-fbsd	default/bsd/fbsd/x86/9.1			dev
-x86-fbsd	default/bsd/fbsd/x86/11.1			dev
+x86-fbsd	default/bsd/fbsd/x86/9.1			exp
+x86-fbsd	default/bsd/fbsd/x86/11.1			exp
 
 # Hardened Profiles
 amd64		hardened/linux/amd64					stable
@@ -290,37 +290,37 @@ x86		default/linux/musl/x86					exp
 x86		hardened/linux/musl/x86					exp
 
 # Non-embedded uclibc profiles
-amd64		default/linux/uclibc/amd64				dev
-amd64		hardened/linux/uclibc/amd64				dev
-arm		default/linux/uclibc/arm/armv7a				dev
-arm		hardened/linux/uclibc/arm/armv7a			dev
-mips		default/linux/uclibc/mips				dev
-mips		hardened/linux/uclibc/mips				dev
-mips		default/linux/uclibc/mips/mipsel			dev
-mips		hardened/linux/uclibc/mips/mipsel			dev
-ppc		default/linux/uclibc/ppc				dev
-ppc		hardened/linux/uclibc/ppc				dev
-x86		default/linux/uclibc/x86				dev
-x86		hardened/linux/uclibc/x86				dev
+amd64		default/linux/uclibc/amd64				exp
+amd64		hardened/linux/uclibc/amd64				exp
+arm		default/linux/uclibc/arm/armv7a				exp
+arm		hardened/linux/uclibc/arm/armv7a			exp
+mips		default/linux/uclibc/mips				exp
+mips		hardened/linux/uclibc/mips				exp
+mips		default/linux/uclibc/mips/mipsel			exp
+mips		hardened/linux/uclibc/mips/mipsel			exp
+ppc		default/linux/uclibc/ppc				exp
+ppc		hardened/linux/uclibc/ppc				exp
+x86		default/linux/uclibc/x86				exp
+x86		hardened/linux/uclibc/x86				exp
 
 # uclibc/embedded multiarch profiles
-#amd64		uclibc/amd64					dev
-#arm		uclibc/arm					dev
-#arm		uclibc/arm/2.4					dev
-#mips		uclibc/mips					dev
-#mips		uclibc/mips/hardened				dev
-#ppc		uclibc/ppc					dev
-#ppc		uclibc/ppc/2.4					dev
-#ppc		uclibc/ppc/hardened				dev
-#ppc		uclibc/ppc/hardened/2.4				dev
-#sh		uclibc/sh					dev
-#sh		uclibc/sh/2.4					dev
-#x86		uclibc/x86					dev
-#x86		uclibc/x86/2.4					dev
-#x86		uclibc/x86/2005.1				dev
-#x86		uclibc/x86/2005.1/2.4				dev
-#x86		uclibc/x86/hardened				dev
-#x86		uclibc/x86/hardened/2.4				dev
+#amd64		uclibc/amd64					exp
+#arm		uclibc/arm					exp
+#arm		uclibc/arm/2.4					exp
+#mips		uclibc/mips					exp
+#mips		uclibc/mips/hardened				exp
+#ppc		uclibc/ppc					exp
+#ppc		uclibc/ppc/2.4					exp
+#ppc		uclibc/ppc/hardened				exp
+#ppc		uclibc/ppc/hardened/2.4				exp
+#sh		uclibc/sh					exp
+#sh		uclibc/sh/2.4					exp
+#x86		uclibc/x86					exp
+#x86		uclibc/x86/2.4					exp
+#x86		uclibc/x86/2005.1				exp
+#x86		uclibc/x86/2005.1/2.4				exp
+#x86		uclibc/x86/hardened				exp
+#x86		uclibc/x86/hardened/2.4				exp
 
 
 # These are Gentoo Prefix profiles, maintained by the Prefix team
