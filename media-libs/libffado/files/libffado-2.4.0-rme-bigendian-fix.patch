@@ -1,0 +1,50 @@
+------------------------------------------------------------------------
+r2724 | jwoithe | 2018-01-05 18:33:39 +0900 (Fri, 05 Jan 2018) | 8 lines
+
+RME: ensure byte swap macros are available for all components.
+
+The byte swap macros (ByteSwap32() in particular) are required on big-endian
+architectures for more than just the rme_avdevice module.  Including these
+in the RME device header file is a reasonable way to fix this.
+
+Patch from Orcan Ogetbil via the ffado-devel mailing list.
+
+
+Index: SConstruct
+===================================================================
+--- a/SConstruct	(revision 2723)
++++ b/SConstruct	(revision 2724)
+@@ -29,6 +29,7 @@
+ from subprocess import Popen, PIPE
+ import os
+ import re
++import sys
+ from string import Template
+ import imp
+ import distutils.sysconfig
+Index: src/rme/rme_avdevice.cpp
+===================================================================
+--- a/src/rme/rme_avdevice.cpp	(revision 2723)
++++ b/src/rme/rme_avdevice.cpp	(revision 2724)
+@@ -42,7 +42,6 @@
+ #include <stdint.h>
+ #include <assert.h>
+ #include <unistd.h>
+-#include "libutil/ByteSwap.h"
+ 
+ #include <iostream>
+ #include <sstream>
+Index: src/rme/rme_avdevice.h
+===================================================================
+--- a/src/rme/rme_avdevice.h	(revision 2723)
++++ b/src/rme/rme_avdevice.h	(revision 2724)
+@@ -31,6 +31,7 @@
+ #include "libavc/avc_definitions.h"
+ 
+ #include "libutil/Configuration.h"
++#include "libutil/ByteSwap.h"
+ 
+ #include "fireface_def.h"
+ #include "libstreaming/rme/RmeReceiveStreamProcessor.h"
+
+------------------------------------------------------------------------
