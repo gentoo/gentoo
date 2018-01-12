@@ -1,0 +1,26 @@
+From 5ab01641e72357065fa7b74ab583e346cf1b9c9a Mon Sep 17 00:00:00 2001
+From: "i.Dark_Templar" <darktemplar@dark-templar-archives.net>
+Date: Sat, 30 Sep 2017 18:34:54 +0300
+Subject: [PATCH] Use $XDG_CONFIG_HOME/mimeapps.list for mime data instead of
+ $XDG_DATA_HOME/applications/mimeapps.list
+
+---
+ lxqt-config-file-associations/mimetypeviewer.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lxqt-config-file-associations/mimetypeviewer.cpp b/lxqt-config-file-associations/mimetypeviewer.cpp
+index 3e35cec..6277517 100644
+--- a/lxqt-config-file-associations/mimetypeviewer.cpp
++++ b/lxqt-config-file-associations/mimetypeviewer.cpp
+@@ -107,7 +107,7 @@ MimetypeViewer::MimetypeViewer(QWidget *parent)
+     connect(widget.chooseApplicationsButton, SIGNAL(clicked()), this, SLOT(chooseApplication()));
+     connect(widget.dialogButtonBox, SIGNAL(clicked(QAbstractButton*)), this, SLOT(dialogButtonBoxClicked(QAbstractButton*)));
+ 
+-    QString mimeappsListPath(XdgDirs::dataHome(true) + "/applications/mimeapps.list");
++    QString mimeappsListPath(XdgDirs::configHome(true) + "/mimeapps.list");
+     mDefaultsList = new QSettings(mimeappsListPath, XdgDesktopFileCache::desktopFileSettingsFormat(), this);
+     mSettingsCache = new LXQt::SettingsCache(mDefaultsList);
+     mSettingsCache->loadFromSettings();
+-- 
+2.13.6
+

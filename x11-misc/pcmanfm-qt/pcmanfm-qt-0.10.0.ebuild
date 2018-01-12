@@ -7,9 +7,9 @@ inherit cmake-utils multilib readme.gentoo
 
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://git.lxde.org/git/lxde/${PN}"
+	EGIT_REPO_URI="https://github.com/lxde/${PN}.git"
 else
-	SRC_URI="https://downloads.lxqt.org/lxqt/${PV}/${P}.tar.xz"
+SRC_URI="https://github.com/lxde/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
 

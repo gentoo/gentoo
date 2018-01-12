@@ -10,6 +10,7 @@
     <flag name="colorpicker">Build colorpicker plugin</flag>
     <flag name="cpuload">Build cpuload plugin</flag>
     <flag name="desktopswitch">Build desktopswitch plugin</flag>
+    <flag name="directorymenu">Build directorymenu plugin</flag>
     <flag name="dom">Build dom plugin</flag>
     <flag name="kbindicator">Build kbindicator plugin</flag>
     <flag name="mainmenu">Build mainmenu plugin</flag>
@@ -18,6 +19,7 @@
     <flag name="quicklaunch">Build quicklaunch plugin</flag>
     <flag name="sensors">Build sensors plugin</flag>
     <flag name="showdesktop">Build showdesktop plugin</flag>
+    <flag name="spacer">Build spacer plugin</flag>
     <flag name="statusnotifier">Build statusnotifier plugin</flag>
     <flag name="sysstat">Build sysstat plugin</flag>
     <flag name="taskbar">Build taskbar plugin</flag>
