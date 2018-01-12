@@ -10,7 +10,7 @@ VIRTUALX_REQUIRED="test"
 inherit kde5 vcs-snapshot
 
 DESCRIPTION="A DropDrawers clone. Multiple information organizer"
-HOMEPAGE="http://basket.kde.org/ https://github.com/basket-notepads/basket"
+HOMEPAGE="https://github.com/basket-notepads/basket"
 SRC_URI="https://github.com/${PN}-notepads/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
