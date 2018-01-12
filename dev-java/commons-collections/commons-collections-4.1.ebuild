@@ -14,18 +14,21 @@ DESCRIPTION="Extends the JCF classes with new interfaces, implementations and ut
 HOMEPAGE="https://commons.apache.org/collections/"
 SRC_URI="mirror://apache/${PN/-//}/source/${MY_P}-src.tar.gz"
 LICENSE="Apache-2.0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ppc64 x86"
 IUSE="test"
 
-RDEPEND=">=virtual/jre-1.7"
-
-DEPEND=">=virtual/jdk-1.7
+DEPEND="
+	>=virtual/jdk-1.7
 	test? (
 		dev-java/easymock:3.2
 		dev-java/junit:4
 	)"
 
+RDEPEND="
+	>=virtual/jre-1.7"
+
 S="${WORKDIR}/${MY_P}-src"
+
 JAVA_SRC_DIR="src/main/java"
 
 src_install() {
