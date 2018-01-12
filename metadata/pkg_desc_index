@@ -9931,7 +9931,7 @@ sys-devel/crossdev 20171230: Gentoo Cross-toolchain generator
 sys-devel/dev86 0.16.19: Bruce's C compiler - Simple C compiler to generate 8086 code
 sys-devel/distcc 3.1-r10 3.2_rc1-r4: Distribute compilation of C code across several machines on a network
 sys-devel/flex 2.6.1 2.6.4-r1: The Fast Lexical Analyzer
-sys-devel/gcc 5.4.0-r4 6.4.0: The GNU Compiler Collection
+sys-devel/gcc 5.4.0-r4 6.4.0 6.4.0-r1: The GNU Compiler Collection
 sys-devel/gcc-config 1.8-r1: utility to manage compilers
 sys-devel/gdb 7.10.1 7.12.1: GNU debugger
 sys-devel/gettext 0.19.8.1: GNU locale utilities
