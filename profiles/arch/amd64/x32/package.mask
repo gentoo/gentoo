@@ -13,6 +13,7 @@ dev-ruby/autoprefixer-rails
 dev-ruby/coffee-rails
 dev-ruby/coffee-script
 dev-ruby/execjs
+dev-ruby/turbolinks
 dev-ruby/uglifier
 net-libs/nodejs
 www-client/chromium
