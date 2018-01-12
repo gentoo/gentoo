@@ -19,10 +19,17 @@ src_prepare() {
 	# The build system is too old, regenerate here to fix crossbuild and
 	# respect LDFLAGS and probably other problems too.
 	sed -i -e "/testsuite/d" configure.in || die
+	mv configure.{in,ac} || die
 	eautoreconf
 }
 
+src_configure() {
+	econf --disable-static
+}
+
 src_install() {
-	emake DESTDIR="${D}" install
-	dodoc AUTHORS ChangeLog NEWS README THANKS TODO
+	default
+
+	# no static libs installed
+	find "${D}" -name '*.la' -delete || die
 }
