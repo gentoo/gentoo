@@ -2,8 +2,8 @@ DEFINED_PHASES=-
 DESCRIPTION=Virtual for libelf.so.1 provider dev-libs/elfutils
 EAPI=6
 IUSE=abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
-KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~arm-linux ~x86-linux ~amd64-fbsd ~sparc-fbsd ~x86-fbsd
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux
 RDEPEND=|| ( >=dev-libs/elfutils-0.155-r1:0/0[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] >=sys-freebsd/freebsd-lib-9.2_rc1[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] )
 SLOT=0/1
 _eclasses_=multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	8ffb5e2112a70fef5f37fcacad308726	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=a4633bac8f917dd5510261709690102f
+_md5_=1b84b2e9e9e7e36b2afd74d1e57fde0e
