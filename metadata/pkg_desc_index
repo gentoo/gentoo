@@ -10210,7 +10210,7 @@ virtual/krb5 0 0-r1: Virtual for Kerberos V implementation
 virtual/lapack 3.0 3.1: Virtual for Linear Algebra Package FORTRAN 77 (LAPACK) implementation
 virtual/latex-base 1.0: Virtual for basic LaTeX binaries
 virtual/libc 0 1: Virtual for the C library
-virtual/libelf 0 1: Virtual for libelf.so.1 provider (dev-libs/elfutils)
+virtual/libelf 2 3: Virtual for libelf.so.1 provider dev-libs/elfutils
 virtual/libffi 3.0.10 3.0.11 3.0.13-r1: A virtual for the Foreign Function Interface implementation
 virtual/libgudev 215-r3 230: Virtual for libgudev providers
 virtual/libiconv 0 0-r1 0-r2: Virtual for the GNU conversion library
