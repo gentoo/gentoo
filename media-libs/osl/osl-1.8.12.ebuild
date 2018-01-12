@@ -28,7 +28,7 @@ RDEPEND=">=media-libs/openexr-2.2.0
 
 DEPEND="${RDEPEND}
 	>=dev-libs/boost-1.62
-	sys-devel/llvm[clang]
+	sys-devel/clang
 	sys-devel/bison
 	sys-devel/flex
 	virtual/pkgconfig"
