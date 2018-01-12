@@ -1,0 +1,6 @@
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# Michał Górny <mgorny@gentoo.org> (12 Jan 2018)
+# Requires USE=guile that is masked in this profile.
+net-libs/gnutls test-full
