@@ -34,7 +34,7 @@ src_prepare() {
 }
 
 src_compile() {
-	emake CC=$(tc-getCC)
+	emake CC="$(tc-getCC)"
 }
 
 src_install() {
