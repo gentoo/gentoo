@@ -9750,7 +9750,6 @@ sys-apps/preload 0.6.4-r3: Adaptive readahead daemon
 sys-apps/progress 0.13: Coreutils Viewer: show progress for cp, rm, dd, and so forth
 sys-apps/proot 3.2.2-r1: User-space implementation of chroot, mount --bind, and binfmt_misc
 sys-apps/pv 1.6.0-r1: Pipe Viewer: a tool for monitoring the progress of data through a pipe
-sys-apps/qdiskusage 1.0.4: Qt4 Graphical Disk Usage Analyzer
 sys-apps/qingy 1.0.0-r2: a DirectFB getty replacement
 sys-apps/readahead-list 1.20060421.1016 1.20060421.1016-r3: Preloads files into the page cache to accelerate program loading
 sys-apps/rename 1.3: tool for easily renaming files

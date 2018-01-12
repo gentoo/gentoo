@@ -11,4 +11,4 @@ REQUIRED_USE=|| ( initramfs split-ucode )
 SLOT=0
 SRC_URI=http://downloadmirror.intel.com/27431/eng/microcode-20180108.tgz
 _eclasses_=mount-boot	1e82d96b7a7dcb483b412497a90bb646	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=e2a25c5bf9f650ef0c636afff4ef43b5
+_md5_=7079bc244261be7555948b0d18b4a6f8
