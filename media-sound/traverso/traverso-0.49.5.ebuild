@@ -1,12 +1,13 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit cmake-utils eutils flag-o-matic gnome2-utils
+
+inherit cmake-utils desktop flag-o-matic gnome2-utils xdg-utils
 
 DESCRIPTION="Professional Audio Tools for GNU/Linux"
-HOMEPAGE="http://traverso-daw.org/"
-SRC_URI="http://traverso-daw.org/${P}.tar.gz"
+HOMEPAGE="https://traverso-daw.org/"
+SRC_URI="https://traverso-daw.org/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -14,8 +15,10 @@ KEYWORDS="~amd64 ~x86"
 IUSE="alsa debug jack lame lv2 mad pulseaudio"
 
 RDEPEND="
-	dev-qt/qtcore:4
-	dev-qt/qtgui:4
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtwidgets:5
+	dev-qt/qtxml:5
 	>=media-libs/flac-1.1.2
 	>=media-libs/libogg-1.1.2
 	media-libs/libsamplerate
@@ -34,10 +37,7 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS ChangeLog README resources/help.text )
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-0.49.2-desktop.patch
-	"${FILESDIR}"/${PN}-0.49.3-gcc6.patch
-)
+PATCHES=( "${FILESDIR}"/${PN}-0.49.2-desktop.patch )
 
 src_configure() {
 	use lv2 && append-cppflags "$($(tc-getPKG_CONFIG) --cflags slv2)" #415165
@@ -69,6 +69,14 @@ src_install() {
 	doins -r resources/themes
 }
 
-pkg_preinst() { gnome2_icon_savelist; }
-pkg_postinst() { gnome2_icon_cache_update; }
-pkg_postrm() { gnome2_icon_cache_update; }
+pkg_postinst() {
+	gnome2_icon_cache_update
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
+}

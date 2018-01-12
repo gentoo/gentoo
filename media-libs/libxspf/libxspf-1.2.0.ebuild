@@ -1,8 +1,9 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-inherit eutils
+EAPI=6
+
+inherit xdg-utils
 
 DESCRIPTION="Playlist handling library"
 HOMEPAGE="http://libspiff.sourceforge.net/"
@@ -11,38 +12,39 @@ SRC_URI="mirror://sourceforge/libspiff/${P}.tar.bz2"
 LICENSE="BSD LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
-IUSE="doc static-libs test"
+IUSE="static-libs test"
 
-RDEPEND=">=dev-libs/expat-2
+RDEPEND="
+	>=dev-libs/expat-2
 	>=dev-libs/uriparser-0.7.5"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	doc? (
-		>=app-doc/doxygen-1.5.8
-		media-gfx/graphviz
-		dev-qt/qthelp:4
-		)
 	test? ( >=dev-util/cpptest-1.1 )"
 
-DOCS="AUTHORS ChangeLog NEWS README THANKS"
+DOCS=( AUTHORS ChangeLog NEWS README THANKS )
+
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc44.patch
+	"${FILESDIR}"/${P}-gcc47.patch
+)
 
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${P}-gcc44.patch \
-		"${FILESDIR}"/${P}-gcc47.patch
+	default
+	xdg_environment_reset
+
+	# do not install missing files
+	sed -e 's/gif,//' -i doc/Makefile* \
+		-i bindings/c/doc/Makefile* || die "sed failed"
 }
 
 src_configure() {
-	export XDG_CONFIG_HOME="${T}" #398881#c2
-
 	econf \
-		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
+		--disable-doc \
 		$(use_enable static-libs static) \
-		$(use_enable test) \
-		$(use_enable doc)
+		$(use_enable test)
 }
 
 src_install() {
 	default
-	prune_libtool_files
+	find "${D}" -name '*.la' -delete || die
 }
