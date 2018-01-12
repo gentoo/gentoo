@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,7 +22,7 @@ DEPEND="
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	dev-qt/qtnetwork:5
-	kde-frameworks/kwindowsystem:5
+	kde-frameworks/kwindowsystem:5[X]
 	x11-libs/libxcb
 	x11-libs/libX11
 "

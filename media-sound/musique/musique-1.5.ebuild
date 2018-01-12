@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -6,7 +6,7 @@ EAPI="6"
 inherit gnome2-utils qmake-utils
 
 DESCRIPTION="Qt music player"
-HOMEPAGE="http://flavio.tordini.org/musique"
+HOMEPAGE="https://flavio.tordini.org/musique"
 SRC_URI="https://github.com/flaviotordini/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
