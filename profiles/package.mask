@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (12 Jan 2018)
+# Dead upstream, EAPI 2, depends on dead Qt4. kde-apps/filelight
+# is a possible alternative. Masked for removal in 30 days.
+sys-apps/qdiskusage
+
 # Kent Fredric <kentnl@gentoo.org> (10 Jan 2018)
 # Dead upstream, Broken since 2009.
 # Bug #644146. Removal in 30 days

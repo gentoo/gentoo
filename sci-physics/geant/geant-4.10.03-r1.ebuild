@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,19 +16,22 @@ LICENSE="geant4"
 SLOT="4"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="+data dawn doc examples gdml geant3 inventor motif opengl
-	raytracerx qt4 static-libs vrml zlib threads"
+	qt5 raytracerx static-libs threads vrml zlib"
 
 RDEPEND="
 	dev-libs/expat
 	>=sci-physics/clhep-2.3.3.0:2=
 	dawn? ( media-gfx/dawn )
 	gdml? ( dev-libs/xerces-c )
+	inventor? ( media-libs/SoXt )
 	motif? ( x11-libs/motif:0 )
 	opengl? ( virtual/opengl )
-	inventor? ( media-libs/SoXt )
-	qt4? (
-		dev-qt/qtgui:4
-		opengl? ( dev-qt/qtopengl:4 )
+	qt5? (
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtprintsupport:5
+		dev-qt/qtwidgets:5
+		opengl? ( dev-qt/qtopengl:5 )
 	)
 	raytracerx? (
 		x11-libs/libX11
@@ -56,17 +59,17 @@ src_configure() {
 	local mycmakeargs=(
 		-DGEANT4_USE_SYSTEM_CLHEP=ON
 		-DGEANT4_INSTALL_DATA=OFF
-		-DUSE_GEANT4_BUILD_MULTITHREADED=$(usex threads)
-		-DUSE_GEANT4_USE_NETWORKDAWN=$(usex dawn)
-		-DUSE_GEANT4_USE_GDML=$(usex gdml)
-		-DUSE_GEANT4_USE_G3TOG4=$(usex geant3)
-		-DUSE_GEANT4_USE_XM=$(usex motif)
-		-DUSE_GEANT4_USE_OPENGL_X11=$(usex opengl)
-		-DUSE_GEANT4_USE_INVENTOR=$(usex inventor)
-		-DUSE_GEANT4_USE_QT=$(usex qt4)
-		-DUSE_GEANT4_USE_RAYTRACER_X11=$(usex raytracerx)
-		-DUSE_GEANT4_USE_NETWORKVRML=$(usex vrml)
-		-DUSE_GEANT4_USE_SYSTEM_ZLIB=$(usex zlib)
+		-DGEANT4_BUILD_MULTITHREADED=$(usex threads)
+		-DGEANT4_USE_NETWORKDAWN=$(usex dawn)
+		-DGEANT4_USE_GDML=$(usex gdml)
+		-DGEANT4_USE_G3TOG4=$(usex geant3)
+		-DGEANT4_USE_XM=$(usex motif)
+		-DGEANT4_USE_OPENGL_X11=$(usex opengl)
+		-DGEANT4_USE_INVENTOR=$(usex inventor)
+		-DGEANT4_USE_QT=$(usex qt5)
+		-DGEANT4_USE_RAYTRACER_X11=$(usex raytracerx)
+		-DGEANT4_USE_NETWORKVRML=$(usex vrml)
+		-DGEANT4_USE_SYSTEM_ZLIB=$(usex zlib)
 		-DBUILD_STATIC_LIBS=$(usex static-libs)
 	)
 	if use inventor; then
