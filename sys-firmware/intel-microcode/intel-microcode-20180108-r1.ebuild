@@ -40,6 +40,7 @@ pkg_pretend() {
 		ewarn "MICROCODE_SIGNATURES is set!"
 		ewarn "The user has decided to install only a SUBSET of microcode."
 	fi
+	use initramfs && mount-boot_pkg_pretend
 }
 
 src_install() {
@@ -75,4 +76,20 @@ src_install() {
 		|| die "iucode_tool ${opts[@]} ${MICROCODE_SRC[@]}"
 
 	dodoc releasenote
+}
+
+pkg_preinst() {
+	use initramfs && mount-boot_pkg_preinst
+}
+
+pkg_prerm() {
+	use initramfs && mount-boot_pkg_prerm
+}
+
+pkg_postrm() {
+	use initramfs && mount-boot_pkg_postrm
+}
+
+pkg_postinst() {
+	use initramfs && mount-boot_pkg_postinst
 }
