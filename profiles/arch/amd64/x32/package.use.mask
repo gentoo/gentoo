@@ -4,6 +4,8 @@
 # Michał Górny <mgorny@gentoo.org> (12 Jan 2018)
 # Those packages require net-libs/nodejs.
 dev-python/nbdime webtools
+dev-ruby/jsobfu test
+dev-ruby/sprockets test
 media-libs/elementary javascript
 net-analyzer/netdata nodejs
 
