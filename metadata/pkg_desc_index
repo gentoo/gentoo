@@ -2434,7 +2434,7 @@ dev-java/commons-betwixt 0.8: Introspective Bean to XML mapper
 dev-java/commons-chain 1.2: API exposing the Chain of Responsability design pattern - by the ASF
 dev-java/commons-cli 1.3.1: A Java library for working with the command line arguments and options
 dev-java/commons-codec 1.7: Implementations of common encoders and decoders in Java
-dev-java/commons-collections 3.2.1-r1: Jakarta-Commons Collections Component
+dev-java/commons-collections 3.2.1-r1 4.1: Extends the JCF classes with new interfaces, implementations and utilities
 dev-java/commons-compress 1.10: Java API for working with archive files
 dev-java/commons-configuration 1.6-r2: Generic interface for reading configuration data from a variety of sources
 dev-java/commons-daemon 1.0.15: Tools to allow Java programs to run as UNIX daemons
