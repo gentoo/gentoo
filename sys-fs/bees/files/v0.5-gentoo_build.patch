@@ -1,0 +1,20 @@
+diff --git a/localconf b/localconf
+new file mode 100644
+index 0000000..7705cbb
+--- /dev/null
++++ b/localconf
+@@ -0,0 +1,2 @@
++PREFIX=/
++LIBEXEC_PREFIX=/usr/libexec
+diff --git a/makeflags b/makeflags
+index f5983cb..0348623 100644
+--- a/makeflags
++++ b/makeflags
+@@ -1,4 +1,3 @@
+-CCFLAGS  = -Wall -Wextra -Werror -O3 -march=native -I../include -ggdb -D_FILE_OFFSET_BITS=64
+-# CCFLAGS  = -Wall -Wextra -Werror -O0 -I../include -ggdb -fpic -D_FILE_OFFSET_BITS=64
+-CFLAGS   = $(CCFLAGS) -std=c99
+-CXXFLAGS = $(CCFLAGS) -std=c++11 -Wold-style-cast
++CCFLAGS  = -O3 -I../include -fpic -D_FILE_OFFSET_BITS=64
++CFLAGS   += $(CCFLAGS) -std=c99
++CXXFLAGS += $(CCFLAGS) -std=c++11 -Wold-style-cast
