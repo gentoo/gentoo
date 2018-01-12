@@ -1,5 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+# Michał Górny <mgorny@gentoo.org> (12 Jan 2018)
+# Requires USE=qt5 that is masked in this profile.
+media-video/vlc skins
 
 # Thomas Deutschmann <whissi@gentoo.org> (26 Oct 2017)
 # idn: Needs net-dns/libidn2 which is not keyworded
