@@ -770,12 +770,6 @@ sys-kernel/hardened-sources
 # Alternatives: app-arch/libarchive, app-arch/unar
 app-arch/unrar-gpl
 
-# Michał Górny <mgorny@gentoo.org> (20 Aug 2017)
-# Pre-release of a new incompatible version that breaks the only reverse
-# dependency in Gentoo. Masked until 2.0.0 proper is released, or
-# dev-cpp/libjson-rpc-cpp is fixed, whichever happens first.
->=dev-cpp/catch-2
-
 # Sébastien Fabbro <bicatali@gentoo.org> (19 Aug 2017)
 # ipython-6 is python-3 only and causes circular dependencies
 # Unset python_targets_python2_7 for ipykernel and ipyparallel if needed.
