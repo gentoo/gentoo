@@ -1,0 +1,12 @@
+--- a/data/terminator.desktop.in
++++ b/data/terminator.desktop.in
+@@ -9,8 +9,8 @@
+ StartupNotify=true
+ X-Ubuntu-Gettext-Domain=terminator
+ X-Ayatana-Desktop-Shortcuts=NewWindow;
+ Keywords=terminal;shell;prompt;command;commandline;
+-[NewWindow Shortcut Group]
++[X-NewWindow Shortcut Group]
+ Name=Open a New Window
+ Exec=terminator
+ TargetEnvironment=Unity
