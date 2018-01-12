@@ -6775,7 +6775,7 @@ kde-misc/rsibreak 0.12.7: Small utility which bothers you at certain intervals
 kde-misc/skanlite 2.0.1: KDE image scanning application
 kde-misc/systemd-kcm 1.2.1: Plasma control module for systemd
 kde-misc/tellico 3.1: A collection manager based on KDE Frameworks
-kde-misc/wacomtablet 3.0.0_beta1 3.0.0_beta2: KControl module for Wacom tablets
+kde-misc/wacomtablet 3.0.0_beta2: KControl module for Wacom tablets
 kde-misc/yakuake 3.0.4: Quake-style terminal emulator based on konsole
 kde-misc/zanshin 0.4.1_p20170701: Getting things done application by KDE
 kde-plasma/bluedevil 5.10.5: Bluetooth stack for KDE Plasma
