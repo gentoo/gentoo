@@ -299,7 +299,6 @@ src_prepare() {
 }
 
 git_emake() {
-	# bug #326625: PERL_PATH, PERL_MM_OPT
 	# bug #320647: PYTHON_PATH
 	PYTHON_PATH=""
 	use python && PYTHON_PATH="${PYTHON}"
@@ -313,13 +312,11 @@ git_emake() {
 		htmldir="${EPREFIX}"/usr/share/doc/${PF}/html \
 		sysconfdir="${EPREFIX}"/etc \
 		PYTHON_PATH="${PYTHON_PATH}" \
+		PERL_PATH="${EPREFIX}/usr/bin/perl" \
 		PERL_MM_OPT="" \
 		GIT_TEST_OPTS="--no-color" \
 		V=1 \
 		"$@"
-	# This is the fix for bug #326625, but it also causes breakage, see bug
-	# #352693.
-	# PERL_PATH="${EPREFIX}/usr/bin/env perl" \
 }
 
 src_configure() {
