@@ -8791,7 +8791,6 @@ net-misc/ndisc6 0.9.9: Recursive DNS Servers discovery Daemon (rdnssd) for IPv6
 net-misc/nemesis 1.4: A commandline-based, portable human IP stack for UNIX/Linux
 net-misc/netctl 1.9: Profile based network connection tool from Arch Linux
 net-misc/netdate 1.2: A Utility to synchronize the time with ntp-servers
-net-misc/netfleet 0.2.1-r2: Qt4 cross-platform multi-threaded download utility
 net-misc/netifrc 0.2.2 0.5.1: Gentoo Network Interface Management Scripts
 net-misc/netkit-bootparamd 0.17-r3: Netkit - bootparamd
 net-misc/netkit-bootpd 2.4-r1: Netkit - bootp
@@ -9751,7 +9750,7 @@ sys-apps/progress 0.13: Coreutils Viewer: show progress for cp, rm, dd, and so f
 sys-apps/proot 3.2.2-r1: User-space implementation of chroot, mount --bind, and binfmt_misc
 sys-apps/pv 1.6.0-r1: Pipe Viewer: a tool for monitoring the progress of data through a pipe
 sys-apps/qingy 1.0.0-r2: a DirectFB getty replacement
-sys-apps/readahead-list 1.20060421.1016 1.20060421.1016-r3: Preloads files into the page cache to accelerate program loading
+sys-apps/readahead-list 1.20060421.1016-r3: Preloads files into the page cache to accelerate program loading
 sys-apps/rename 1.3: tool for easily renaming files
 sys-apps/renameutils 0.12.0: Use your favorite text editor to rename files
 sys-apps/rescan-scsi-bus 1.29 1.57-r1: Script to rescan the SCSI bus without rebooting
