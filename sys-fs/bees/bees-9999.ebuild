@@ -38,7 +38,7 @@ RDEPEND="${COMMON_DEPEND}"
 DOCS="README.md COPYING"
 HTML_DOCS="README.html"
 
-src_prepare() {
+src_configure() {
 	default
-	echo LIBDIR=$(get_libdir) >>${S}/localconf
+	echo LIBDIR=$(get_libdir) >>${S}/localconf || die
 }
