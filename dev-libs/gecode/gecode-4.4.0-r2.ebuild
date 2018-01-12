@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,8 +16,10 @@ IUSE="doc examples gist gmp"
 
 RDEPEND="
 	gist? (
-		dev-qt/qtcore:4
-		dev-qt/qtgui:4
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtprintsupport:5
+		dev-qt/qtwidgets:5
 	)
 	gmp? (
 		dev-libs/gmp:0
@@ -38,8 +40,8 @@ src_prepare() {
 
 	sed -i gecode.m4 \
 		-e "s/-ggdb//" -e "s/-O3//" -e "s/-pipe//" \
-		-e "/AC_CHECK_PROGS(QMAKE/a AC_SUBST(QMAKE,$(qt4_get_bindir)/qmake)" \
-		-e "/AC_CHECK_PROGS(MOC/a AC_SUBST(MOC,$(qt4_get_bindir)/moc)" \
+		-e "/AC_CHECK_PROGS(QMAKE/a AC_SUBST(QMAKE,$(qt5_get_bindir)/qmake)" \
+		-e "/AC_CHECK_PROGS(MOC/a AC_SUBST(MOC,$(qt5_get_bindir)/moc)" \
 		|| die
 
 	eautoreconf
