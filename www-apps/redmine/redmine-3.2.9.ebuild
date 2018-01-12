@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -74,7 +74,7 @@ all_ruby_prepare() {
 	# remove ldap staff module if disabled to avoid #413779
 	use ldap || rm app/models/auth_source_ldap.rb || die
 
-	eapply "${FILESDIR}/${P}_requires.patch"
+	eapply "${FILESDIR}/${PN}-3.4.3_requires.patch"
 }
 
 all_ruby_install() {
