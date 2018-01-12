@@ -22,7 +22,7 @@ HOMEPAGE="https://github.com/google/googletest"
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="doc examples test"
+IUSE="doc examples source test"
 
 DEPEND="test? ( ${PYTHON_DEPS} )"
 RDEPEND="!dev-cpp/gmock"
@@ -72,5 +72,13 @@ multilib_src_install_all() {
 	if use examples; then
 		docinto examples
 		dodoc googletest/samples/*.{cc,h}
+	fi
+
+	if use source; then
+		insinto /usr/src/gtest/src
+		doins "${S}"/googletest/src/*
+
+		insinto /usr/src/gmock/src
+		doins "${S}"/googlemock/src/*
 	fi
 }

@@ -15,7 +15,7 @@ SRC_URI="https://github.com/google/googletest/archive/release-${PV}.tar.gz -> ${
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE="doc examples test"
+IUSE="doc examples source test"
 
 DEPEND="test? ( ${PYTHON_DEPS} )"
 RDEPEND="!dev-cpp/gmock"
@@ -64,5 +64,13 @@ multilib_src_install_all() {
 	if use examples; then
 		docinto examples
 		dodoc googletest/samples/*.{cc,h}
+	fi
+
+	if use source; then
+		insinto /usr/src/gtest/src
+		doins "${S}"/googletest/src/*
+
+		insinto /usr/src/gmock/src
+		doins "${S}"/googlemock/src/*
 	fi
 }
