@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SLOT="4"
 MY_P="${PN}${SLOT}-${PV}"
 
 DESCRIPTION="Extends the JCF classes with new interfaces, implementations and utilities"
-HOMEPAGE="http://commons.apache.org/collections/"
+HOMEPAGE="https://commons.apache.org/collections/"
 SRC_URI="mirror://apache/${PN/-//}/source/${MY_P}-src.tar.gz"
 LICENSE="Apache-2.0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
