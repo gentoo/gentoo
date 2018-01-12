@@ -14,6 +14,7 @@ sys-fs/udev
 
 # dev-libs/elfutils needs a port to musl, bug #602126
 dev-libs/elfutils
+>virtual/libelf-2
 
 # packages that unconditionally depend on dev-libs/elfutils
 <net-firewall/fwbuilder-5.3.7
