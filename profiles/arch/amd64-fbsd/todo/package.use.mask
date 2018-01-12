@@ -72,7 +72,7 @@ net-libs/glib-networking libproxy
 net-libs/neon pkcs11
 
 # app-text/texlive[extra]
-app-doc/doxygen latex
+app-doc/doxygen latex doc
 
 # x11-misc/colord
 x11-libs/gtk+ colord
@@ -118,7 +118,7 @@ media-video/mplayer nas
 net-misc/ntp openntpd
 
 # fails to build, need to investigate why
-net-libs/webkit-gtk introspection
+net-libs/webkit-gtk geolocation introspection
 
 # virtual/mysql
 sci-mathematics/glpk mysql

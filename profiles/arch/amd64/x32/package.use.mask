@@ -1,7 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# This file requires >=portage-2.1.1
+# Michał Górny <mgorny@gentoo.org> (12 Jan 2018)
+# Those packages require net-libs/nodejs.
+dev-python/nbdime webtools
+media-libs/elementary javascript
+net-analyzer/netdata nodejs
 
 # Davide Pesavento <pesa@gentoo.org> (30 Nov 2011)
 # The QML (V4) and JSC JITs do not work on x32.

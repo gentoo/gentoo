@@ -1,5 +1,14 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+# Michał Górny <mgorny@gentoo.org> (12 Jan 2018)
+# Requires USE=sdl that is masked in this profile.
+media-video/mjpegtools sdlgfx
+
+# Michał Górny <mgorny@gentoo.org> (12 Jan 2018)
+# Those require USE=doc that is masked in this profile.
+dev-python/python-glanceclient test
+dev-python/python-neutronclient test
 
 # NeddySeagoon <neddysegoon@gentoo.org> 24 Aug 2017
 # Support for g15daemon  still needs -9999 packages on all arches 

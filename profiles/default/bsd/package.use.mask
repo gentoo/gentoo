@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # Fabian Groffen <grobian@gentoo.org> (07 Dec 2016)
@@ -72,7 +72,7 @@ www-client/links livecd
 
 # needs udev
 kde-frameworks/kdelibs udisks upower
-media-libs/mesa gbm dri3
+media-libs/mesa gbm dri3 d3d9
 x11-base/xorg-drivers video_cards_radeonsi
 x11-drivers/xf86-video-ati glamor
 
