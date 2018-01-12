@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -132,7 +132,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-6.7_p1-openssl-ignore-status.patch
 	epatch "${FILESDIR}"/${PN}-7.5_p1-cross-cache.patch
 	epatch "${FILESDIR}"/${PN}-7.5_p1-CVE-2017-15906.patch
-	epatch "${FILESDIR}"/${PN}-7.5_p1-s390-seccomp.patch
+	use X509 || epatch "${FILESDIR}"/${PN}-7.5_p1-s390-seccomp.patch # already included in X509 patch set, #644252
 	use X509 || epatch "${WORKDIR}"/${SCTP_PATCH%.*}
 	use X509 || epatch "${FILESDIR}"/${PN}-7.5_p1-x32-typo.patch
 	use abi_mips_n32 && epatch "${FILESDIR}"/${PN}-7.3-mips-seccomp-n32.patch
