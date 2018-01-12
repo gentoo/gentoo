@@ -8,8 +8,8 @@ inherit cmake-utils
 MY_P=${PN^}2-${PV}
 
 DESCRIPTION="Modern C++ header-only framework for unit-tests"
-HOMEPAGE="https://github.com/philsquared/Catch"
-SRC_URI="https://github.com/philsquared/Catch/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
+HOMEPAGE="https://github.com/catchorg/Catch2"
+SRC_URI="https://github.com/catchorg/Catch2/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="Boost-1.0"
 SLOT="0"
