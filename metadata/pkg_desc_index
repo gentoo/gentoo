@@ -7855,7 +7855,7 @@ media-sound/daudio 0.3-r1: Distributed audio on the local network
 media-sound/dcadec 0.2.0: DTS Coherent Acoustics decoder with support for HD extensions
 media-sound/dcd 0.95: A simple command-line based CD Player
 media-sound/dir2ogg 0.11.6: Converts mp3, m4a, wma, and wav files to Ogg Vorbis format
-media-sound/drumstick 0.5.0 1.0.2: Qt/C++ wrapper for ALSA sequencer
+media-sound/drumstick 1.1.0: Qt/C++ wrapper for ALSA sequencer
 media-sound/easytag 2.1.8 2.4.3: GTK+ utility for editing MP2, MP3, MP4, FLAC, Ogg and other media tags
 media-sound/ecasound 2.6.0-r1: a package for multitrack audio processing
 media-sound/edna 0.6: Greg Stein's python streaming audio server for desktop or LAN use
@@ -9247,7 +9247,7 @@ sci-libs/gts 20121130: GNU Triangulated Surface Library
 sci-libs/hdf 4.2.8: General purpose library and format for storing scientific data
 sci-libs/hdf5 1.8.18: General purpose library and file format for storing scientific data
 sci-libs/inchi 1.04: Program and library for generating standard and non-standard InChI and InChIKeys
-sci-libs/indilib 1.3.1 1.4.1: INDI Astronomical Control Protocol library
+sci-libs/indilib 1.4.1: INDI Astronomical Control Protocol library
 sci-libs/io_lib 1.10.1: A general purpose trace and experiment file reading/writing interface
 sci-libs/itpp 4.3.1-r1: C++ library of mathematical, signal processing and communication
 sci-libs/lapack-reference 3.2.1-r4: FORTRAN reference implementation of LAPACK Linear Algebra PACKage
