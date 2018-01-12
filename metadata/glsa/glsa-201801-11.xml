@@ -7,12 +7,14 @@
   </synopsis>
   <product type="ebuild">PySAML2</product>
   <announced>2018-01-11</announced>
-  <revised>2018-01-11: 1</revised>
+  <revised>2018-01-12: 2</revised>
   <bug>644016</bug>
   <access>remote</access>
   <affected>
     <package name="dev-python/pysaml2" auto="yes" arch="*">
+      <unaffected range="ge">4.0.2-r3</unaffected>
       <unaffected range="ge">4.5.0</unaffected>
+      <vulnerable range="lt">4.0.2-r3</vulnerable>
       <vulnerable range="lt">4.5.0</vulnerable>
     </package>
   </affected>
@@ -33,7 +35,14 @@
     <p>Disable python optimizations.</p>
   </workaround>
   <resolution>
-    <p>All PySAML2 users should upgrade to the latest version:</p>
+    <p>All PySAML2 4.0 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-python/pysaml2-4.0.2-r3"
+    </code>
+    
+    <p>All PySAML2 4.5 users should upgrade to the latest version:</p>
     
     <code>
       # emerge --sync
@@ -47,5 +56,5 @@
     </uri>
   </references>
   <metadata tag="requester" timestamp="2018-01-09T14:46:58Z">whissi</metadata>
-  <metadata tag="submitter" timestamp="2018-01-11T22:41:33Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2018-01-12T01:23:24Z">whissi</metadata>
 </glsa>
