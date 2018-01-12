@@ -32,6 +32,11 @@
 # Andreas Sturmlechner <asturm@gentoo.org> (12 Jan 2018)
 # Dead upstream, depends on dead Qt4.
 # Masked for removal in 30 days.
+dev-util/beediff
+
+# Andreas Sturmlechner <asturm@gentoo.org> (12 Jan 2018)
+# Dead upstream, depends on dead Qt4.
+# Masked for removal in 30 days.
 net-misc/netfleet
 
 # Andreas Sturmlechner <asturm@gentoo.org> (12 Jan 2018)
