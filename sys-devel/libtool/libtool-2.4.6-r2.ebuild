@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -27,7 +27,8 @@ IUSE="vanilla"
 RDEPEND="sys-devel/gnuconfig
 	>=sys-devel/autoconf-2.69
 	>=sys-devel/automake-1.13
-	dev-libs/libltdl:0"
+	dev-libs/libltdl:0
+	!<sys-apps/sandbox-2.10-r4"
 DEPEND="${RDEPEND}
 	app-arch/xz-utils"
 [[ ${PV} == "9999" ]] && DEPEND+=" sys-apps/help2man"
