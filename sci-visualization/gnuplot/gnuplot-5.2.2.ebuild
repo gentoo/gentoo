@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -26,7 +26,7 @@ fi
 
 LICENSE="gnuplot bitmap? ( free-noncomm )"
 SLOT="0"
-IUSE="aqua bitmap cairo compat doc examples +gd ggi latex libcaca libcerf lua qt5 readline svga wxwidgets X"
+IUSE="aqua bitmap cairo compat doc examples +gd ggi latex libcaca libcerf lua qt5 readline regis svga wxwidgets X"
 
 RDEPEND="
 	cairo? (
@@ -73,6 +73,7 @@ TEXMF="${EPREFIX}/usr/share/texmf-site"
 src_prepare() {
 	eapply "${FILESDIR}"/${PN}-5.0.1-fix-underlinking.patch
 	eapply "${FILESDIR}"/${PN}-5.0.6-no-picins.patch
+	eapply "${FILESDIR}"/${PN}-5.2.2-regis.patch
 	eapply_user
 
 	if [[ -z ${PV%%*9999} ]]; then
@@ -138,6 +139,7 @@ src_configure() {
 		"$(use_with libcaca caca "${EPREFIX}/usr/$(get_libdir)")" \
 		$(use_with libcerf) \
 		$(use_with lua) \
+		$(use_with regis) \
 		$(use_with svga linux-vga) \
 		$(use_with X x) \
 		--enable-stats \
