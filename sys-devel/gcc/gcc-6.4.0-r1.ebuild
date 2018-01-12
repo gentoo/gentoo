@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-PATCH_VER="1.2"
+PATCH_VER="1.3"
 UCLIBC_VER="1.0"
 
 inherit toolchain
