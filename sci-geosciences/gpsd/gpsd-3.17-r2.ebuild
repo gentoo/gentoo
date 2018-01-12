@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -52,7 +52,7 @@ RDEPEND="
 	)
 	python? ( ${PYTHON_DEPS} )
 	usb? ( virtual/libusb:1 )
-	X? ( dev-python/pygtk:2[${PYTHON_USEDEP}] )"
+	X? ( dev-python/pygobject:3[cairo,${PYTHON_USEDEP}] )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	test? ( sys-devel/bc )"
@@ -114,7 +114,6 @@ src_configure() {
 		gpsd_user=gpsd
 		gpsd_group=uucp
 		nostrip=True
-		python=False
 		libgpsmm=True
 		manbuild=False
 		shared=$(usex !static True False)
@@ -126,12 +125,14 @@ src_configure() {
 		$(use_scons ncurses)
 		$(use_scons ntp ntpshm)
 		$(use_scons ntp pps)
+		$(use_scons X python)
 		$(use_scons qt5 libQgpsmm)
 		$(use_scons shm shm_export)
 		$(use_scons sockets socket_export)
 		$(use_scons usb)
 	)
 
+	use X && myesconsargs+=( xgps=1 )
 	use qt5 && myesconsargs+=( qt_versioned=5 )
 
 	# enable specified protocols
@@ -156,13 +157,7 @@ src_install() {
 	newconfd "${FILESDIR}"/gpsd.conf-2 gpsd
 	newinitd "${FILESDIR}"/gpsd.init-2 gpsd
 
-	if use python ; then
-		distutils-r1_src_install
-		# Delete all X related packages if user doesn't want them
-		if ! use X && [[ -f "${ED%/}"/usr/bin/xgps ]]; then
-			rm "${ED%/}"/usr/bin/xgps* || die
-		fi
-	fi
+	use python && distutils-r1_src_install
 }
 
 pkg_preinst() {
