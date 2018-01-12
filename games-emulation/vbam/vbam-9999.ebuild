@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 WX_GTK_VER="3.0"
-inherit cmake-utils wxwidgets gnome2-utils fdo-mime eutils
+inherit cmake-utils wxwidgets gnome2-utils eutils xdg-utils
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/visualboyadvance-m/visualboyadvance-m.git"
@@ -18,8 +18,8 @@ HOMEPAGE="https://github.com/visualboyadvance-m/visualboyadvance-m"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="cairo ffmpeg gtk link lirc nls openal +sdl wxwidgets"
-REQUIRED_USE="|| ( sdl gtk wxwidgets )"
+IUSE="ffmpeg link lirc nls openal +sdl wxwidgets"
+REQUIRED_USE="openal? ( wxwidgets ) || ( sdl wxwidgets )"
 
 RDEPEND=">=media-libs/libpng-1.4:0=
 	media-libs/libsdl2[joystick]
@@ -28,13 +28,9 @@ RDEPEND=">=media-libs/libpng-1.4:0=
 	virtual/glu
 	virtual/opengl
 	ffmpeg? ( virtual/ffmpeg[-libav] )
-	gtk? ( >=dev-cpp/glibmm-2.4.0:2
-		>=dev-cpp/gtkmm-2.4.0:2.4
-		>=dev-cpp/gtkglextmm-1.2.0 )
 	lirc? ( app-misc/lirc )
 	nls? ( virtual/libintl )
 	wxwidgets? (
-		cairo? ( x11-libs/cairo )
 		openal? ( media-libs/openal )
 		x11-libs/wxGTK:${WX_GTK_VER}[X,opengl]
 	)"
@@ -48,15 +44,13 @@ src_prepare() {
 	default
 
 	# fix desktop file QA warnings
-	edos2unix src/gtk/gvbam.desktop src/wx/wxvbam.desktop
+	edos2unix src/wx/wxvbam.desktop
 }
 
 src_configure() {
 	use wxwidgets && setup-wxwidgets
 	local mycmakeargs=(
-		-DENABLE_CAIRO=$(usex cairo)
 		-DENABLE_FFMPEG=$(usex ffmpeg)
-		-DENABLE_GTK=$(usex gtk)
 		-DENABLE_LINK=$(usex link)
 		-DENABLE_LIRC=$(usex lirc)
 		-DENABLE_NLS=$(usex nls)
@@ -79,28 +73,27 @@ src_install() {
 
 	if use sdl ; then
 		dodoc doc/ReadMe.SDL.txt
-		doman src/debian/vbam.1
+		doman src/debian/vbam.6
 	fi
-	use wxwidgets && doman src/debian/wxvbam.1
-	use gtk && doman src/debian/gvbam.1
+	use wxwidgets && doman src/debian/visualboyadvance-m.6
 }
 
 pkg_preinst() {
-	if use gtk || use wxwidgets ; then
+	if use wxwidgets ; then
 		gnome2_icon_savelist
 	fi
 }
 
 pkg_postinst() {
-	if use gtk || use wxwidgets ; then
+	if use wxwidgets ; then
 		gnome2_icon_cache_update
+		xdg_desktop_database_update
 	fi
-	use gtk && fdo-mime_desktop_database_update
 }
 
 pkg_postrm() {
-	if use gtk || use wxwidgets ; then
+	if use wxwidgets ; then
 		gnome2_icon_cache_update
+		xdg_desktop_database_update
 	fi
-	use gtk && fdo-mime_desktop_database_update
 }
