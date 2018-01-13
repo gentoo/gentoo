@@ -8096,7 +8096,7 @@ media-video/dvdrip 0.98.11-r3: dvd::rip is a graphical frontend for transcode
 media-video/dvgrab 3.5-r1: Digital Video (DV) grabber for GNU/Linux
 media-video/emovix 0.9.0: Micro Linux distro to boot from a CD and play every video file localized in the CD root
 media-video/ffdiaporama 2.1 2.1-r1: Movie creator from photos and video clips
-media-video/ffmpeg 3.2.6 3.3.3 3.3.4 3.3.5: Complete solution to record, convert and stream audio and video. Includes libavcodec
+media-video/ffmpeg 3.2.6 3.3.4 3.3.5: Complete solution to record, convert and stream audio and video. Includes libavcodec
 media-video/ffmpeg2theora 0.30: A simple converter to create Ogg Theora files
 media-video/ffmpegthumbnailer 2.2.0: Lightweight video thumbnailer that can be used by file managers
 media-video/flvstreamer 2.1c: Open source command-line RTMP client intended to stream audio or video flash content
