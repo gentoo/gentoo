@@ -34,3 +34,5 @@ DEPEND="
 RDEPEND="${DEPEND}
 	!media-gfx/kuickshow:4
 "
+
+PATCHES=( "${FILESDIR}/${P}-desktop-fix.patch" )
