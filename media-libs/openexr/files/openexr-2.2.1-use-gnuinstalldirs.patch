@@ -1,0 +1,481 @@
+--- a/CMakeLists.txt	2017-11-17 23:00:24.000000000 +0000
++++ b/CMakeLists.txt	2018-01-26 21:30:11.243091120 +0000
+@@ -4,7 +4,7 @@
+ 
+ SET(OPENEXR_VERSION_MAJOR "2")
+ SET(OPENEXR_VERSION_MINOR "2")
+-SET(OPENEXR_VERSION_PATCH "0")
++SET(OPENEXR_VERSION_PATCH "1")
+ 
+ SET(OPENEXR_VERSION ${OPENEXR_VERSION_MAJOR}.${OPENEXR_VERSION_MINOR}.${OPENEXR_VERSION_PATCH})
+ SET(OPENEXR_VERSION_API ${OPENEXR_VERSION_MAJOR}_${OPENEXR_VERSION_MINOR})
+@@ -25,8 +25,8 @@
+ set(CPACK_SOURCE_IGNORE_FILES
+   "/.git*;/.cvs*;${CPACK_SOURCE_IGNORE_FILES}")
+ INCLUDE ( CPack )
+-
+-
++INCLUDE ( GNUInstallDirs )
++find_package( PkgConfig QUIET )
+ 
+ # Allow the developer to select if Dynamic or Static libraries are built
+ OPTION (BUILD_SHARED_LIBS    "Build Shared Libraries" ON)
+@@ -57,8 +57,8 @@
+   SET ( PTHREAD_LIB pthread )
+ ENDIF()
+ 
+-INCLUDE_DIRECTORIES ( ${ILMBASE_PACKAGE_PREFIX}/include/OpenEXR )
+-LINK_DIRECTORIES ( ${ILMBASE_PACKAGE_PREFIX}/lib )
++INCLUDE_DIRECTORIES ( ${ILMBASE_PACKAGE_PREFIX}/${CMAKE_INSTALL_INCLUDEDIR}/OpenEXR )
++LINK_DIRECTORIES ( ${ILMBASE_PACKAGE_PREFIX}/${CMAKE_INSTALL_LIBDIR} )
+ MESSAGE ( "ILMBASE_PACKAGE_PREFIX = " ${ILMBASE_PACKAGE_PREFIX})
+ 
+ SET (LIB_TYPE STATIC)
+@@ -104,6 +104,19 @@
+     }
+     " HAVE_SYSCONF_NPROCESSORS_ONLN)
+ 
++MACRO(CREATE_LEGACY_SYMLINK _libname)
++   SET(_newname lib${_libname}-${OPENEXR_VERSION_API}.so)
++   SET(_legacyname lib${_libname}.so)
++   SET(_libpath ${PROJECT_BINARY_DIR}/${_libname})
++   INSTALL(
++      CODE "EXECUTE_PROCESS (
++         COMMAND ln -sf ${_newname} ${_legacyname}
++         WORKING_DIRECTORY ${_libpath}
++         )"
++   )
++   INSTALL( FILES ${_libpath}/${_legacyname} DESTINATION ${CMAKE_INSTALL_LIBDIR} )
++ENDMACRO(CREATE_LEGACY_SYMLINK)
++
+ 
+ ##########################
+ # OpenEXRConfig.h generation
+@@ -188,7 +201,12 @@
+   SOVERSION 23
+   OUTPUT_NAME "IlmImfUtil${OPENEXR_LIBSUFFIX}"
+   )
+-  
++
++IF ( NOT WIN32 AND NAMESPACE_VERSIONING )
++  CREATE_LEGACY_SYMLINK ( IlmImf )
++  CREATE_LEGACY_SYMLINK ( IlmImfUtil )
++ENDIF ()
++
+ ##########################
+ # Example Code
+ ##########################
+@@ -222,7 +240,7 @@
+ INSTALL ( FILES
+   ${CMAKE_CURRENT_BINARY_DIR}/config/OpenEXRConfig.h
+   DESTINATION
+-  ${CMAKE_INSTALL_PREFIX}/include/OpenEXR
++  ${CMAKE_INSTALL_INCLUDEDIR}/OpenEXR
+   )
+ 
+ # Documentation
+@@ -234,7 +252,7 @@
+   doc/InterpretingDeepPixels.pdf
+   doc/TheoryDeepPixels.pdf
+   DESTINATION
+-  ${CMAKE_INSTALL_PREFIX}/share/doc/OpenEXR-${OPENEXR_VERSION}
++  ${CMAKE_INSTALL_DOCDIR}
+   )
+ 
+ # Examples
+@@ -256,5 +274,10 @@
+   IlmImfExamples/previewImageExamples.h
+   IlmImfExamples/namespaceAlias.h
+   DESTINATION
+-  ${CMAKE_INSTALL_PREFIX}/share/doc/OpenEXR-${OPENEXR_VERSION}/examples
++  ${CMAKE_INSTALL_DOCDIR}/examples
+   )
++
++if ( PKG_CONFIG_FOUND )
++	configure_file(OpenEXR.pc.cmake "${PROJECT_BINARY_DIR}/OpenEXR.pc" @ONLY)
++	install( FILES "${PROJECT_BINARY_DIR}/OpenEXR.pc" DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig COMPONENT dev )
++endif()
+--- a/exrenvmap/CMakeLists.txt	2017-11-17 23:00:26.000000000 +0000
++++ b/exrenvmap/CMakeLists.txt	2018-01-26 21:28:48.095905683 +0000
+@@ -22,5 +22,5 @@
+ INSTALL ( TARGETS
+   exrenvmap
+   DESTINATION
+-  ${CMAKE_INSTALL_PREFIX}/bin
++  ${CMAKE_INSTALL_BINDIR}
+ )
+--- a/exrheader/CMakeLists.txt	2017-11-17 23:00:26.000000000 +0000
++++ b/exrheader/CMakeLists.txt	2018-01-26 21:28:48.095905683 +0000
+@@ -16,5 +16,5 @@
+ INSTALL ( TARGETS
+   exrheader
+   DESTINATION
+-  ${CMAKE_INSTALL_PREFIX}/bin
++  ${CMAKE_INSTALL_BINDIR}
+ )
+--- a/exrmakepreview/CMakeLists.txt	2017-11-17 23:00:26.000000000 +0000
++++ b/exrmakepreview/CMakeLists.txt	2018-01-26 21:28:48.096905686 +0000
+@@ -17,5 +17,5 @@
+ INSTALL ( TARGETS
+   exrmakepreview
+   DESTINATION
+-  ${CMAKE_INSTALL_PREFIX}/bin
++  ${CMAKE_INSTALL_BINDIR}
+ )
+--- a/exrmaketiled/CMakeLists.txt	2017-11-17 23:00:26.000000000 +0000
++++ b/exrmaketiled/CMakeLists.txt	2018-01-26 21:28:48.096905686 +0000
+@@ -18,5 +18,5 @@
+ INSTALL ( TARGETS
+   exrmaketiled
+   DESTINATION
+-  ${CMAKE_INSTALL_PREFIX}/bin
++  ${CMAKE_INSTALL_BINDIR}
+ )
+--- a/exrmultipart/CMakeLists.txt	2017-11-17 23:00:26.000000000 +0000
++++ b/exrmultipart/CMakeLists.txt	2018-01-26 21:28:48.096905686 +0000
+@@ -16,5 +16,5 @@
+ INSTALL ( TARGETS
+   exrmultipart
+   DESTINATION
+-  ${CMAKE_INSTALL_PREFIX}/bin
++  ${CMAKE_INSTALL_BINDIR}
+ )
+--- a/exrmultiview/CMakeLists.txt	2017-11-17 23:00:26.000000000 +0000
++++ b/exrmultiview/CMakeLists.txt	2018-01-26 21:28:48.096905686 +0000
+@@ -19,5 +19,5 @@
+ INSTALL ( TARGETS
+   exrmultiview
+   DESTINATION
+-  ${CMAKE_INSTALL_PREFIX}/bin
++  ${CMAKE_INSTALL_BINDIR}
+ )
+--- a/exrstdattr/CMakeLists.txt	2017-11-17 23:00:26.000000000 +0000
++++ b/exrstdattr/CMakeLists.txt	2018-01-26 21:28:48.097905687 +0000
+@@ -16,5 +16,5 @@
+ INSTALL ( TARGETS
+   exrstdattr
+   DESTINATION
+-  ${CMAKE_INSTALL_PREFIX}/bin
++  ${CMAKE_INSTALL_BINDIR}
+ )
+--- a/IlmImf/CMakeLists.txt	2017-11-17 23:00:24.000000000 +0000
++++ b/IlmImf/CMakeLists.txt	2018-01-26 21:28:48.097905687 +0000
+@@ -167,7 +167,7 @@
+ INSTALL ( TARGETS
+   IlmImf
+   DESTINATION
+-  ${CMAKE_INSTALL_PREFIX}/lib
++  ${CMAKE_INSTALL_LIBDIR}
+ )
+ 
+ # Headers
+@@ -260,6 +260,6 @@
+   ImfDeepImageStateAttribute.h
+   ImfFloatVectorAttribute.h
+   DESTINATION
+-  ${CMAKE_INSTALL_PREFIX}/include/OpenEXR
++  ${CMAKE_INSTALL_INCLUDEDIR}/OpenEXR
+ )
+ 
+--- a/IlmImf/CMakeLists.txt.orig	1970-01-01 01:00:00.000000000 +0100
++++ b/IlmImf/CMakeLists.txt.orig	2017-11-17 23:00:24.000000000 +0000
+@@ -0,0 +1,265 @@
++# yue.nicholas@gmail.com
++
++SET(CMAKE_INCLUDE_CURRENT_DIR 1)
++
++ADD_EXECUTABLE ( b44ExpLogTable
++  b44ExpLogTable.cpp
++)
++
++TARGET_LINK_LIBRARIES ( b44ExpLogTable
++  Half
++  Iex${ILMBASE_LIBSUFFIX}
++  IlmThread${ILMBASE_LIBSUFFIX}
++  ${PTHREAD_LIB}
++)
++
++ADD_CUSTOM_COMMAND (
++  OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/b44ExpLogTable.h
++  COMMAND ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_CFG_INTDIR}/b44ExpLogTable > ${CMAKE_CURRENT_BINARY_DIR}/b44ExpLogTable.h
++  DEPENDS b44ExpLogTable
++)
++
++ADD_EXECUTABLE ( dwaLookups
++  dwaLookups.cpp
++)
++
++TARGET_LINK_LIBRARIES ( dwaLookups
++  Half
++  Iex${ILMBASE_LIBSUFFIX}
++  IlmThread${ILMBASE_LIBSUFFIX}
++  ${PTHREAD_LIB}
++)
++
++ADD_CUSTOM_COMMAND (
++  OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/dwaLookups.h
++  COMMAND ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_CFG_INTDIR}/dwaLookups > ${CMAKE_CURRENT_BINARY_DIR}/dwaLookups.h
++  DEPENDS dwaLookups
++)
++
++SET ( ILMIMF_SRCS
++  ImfAttribute.cpp
++  ImfBoxAttribute.cpp
++  ImfCRgbaFile.cpp
++  ImfChannelList.cpp
++  ImfChannelListAttribute.cpp
++  ImfFloatAttribute.cpp
++  ImfFrameBuffer.cpp
++  ImfHeader.cpp
++  ImfIO.cpp
++  ImfInputFile.cpp
++  ImfIntAttribute.cpp
++  ImfLineOrderAttribute.cpp
++  ImfMatrixAttribute.cpp
++  ImfOpaqueAttribute.cpp
++  ImfOutputFile.cpp
++  ImfRgbaFile.cpp
++  ImfStringAttribute.cpp
++  ImfVecAttribute.cpp
++  ImfHuf.cpp
++  ImfThreading.cpp
++  ImfWav.cpp
++  ImfLut.cpp
++  ImfCompressor.cpp
++  ImfRleCompressor.cpp
++  ImfZipCompressor.cpp
++  ImfPizCompressor.cpp
++  ImfB44Compressor.cpp
++  ImfDwaCompressor.cpp
++  ImfMisc.cpp
++  ImfCompressionAttribute.cpp
++  ImfDoubleAttribute.cpp
++  ImfConvert.cpp
++  ImfPreviewImage.cpp
++  ImfPreviewImageAttribute.cpp
++  ImfVersion.cpp
++  ImfChromaticities.cpp
++  ImfChromaticitiesAttribute.cpp
++  ImfKeyCode.cpp
++  ImfKeyCodeAttribute.cpp
++  ImfTimeCode.cpp
++  ImfTimeCodeAttribute.cpp
++  ImfRational.cpp
++  ImfRationalAttribute.cpp
++  ImfFramesPerSecond.cpp
++  ImfStandardAttributes.cpp
++  ImfStdIO.cpp
++  ImfEnvmap.cpp
++  ImfEnvmapAttribute.cpp
++  ImfScanLineInputFile.cpp
++  ImfTiledInputFile.cpp
++  ImfTiledMisc.cpp
++  ImfTiledOutputFile.cpp
++  ImfTiledRgbaFile.cpp
++  ImfTileDescriptionAttribute.cpp
++  ImfTileOffsets.cpp
++  ImfRgbaYca.cpp
++  ImfPxr24Compressor.cpp
++  ImfTestFile.cpp
++  ImfStringVectorAttribute.cpp
++  ImfMultiView.cpp
++  ImfAcesFile.cpp
++  ImfMultiPartOutputFile.cpp
++  ImfGenericOutputFile.cpp
++  ImfOutputPartData.cpp
++  ImfMultiPartInputFile.cpp
++  ImfGenericInputFile.cpp
++  ImfPartType.cpp
++  ImfInputPartData.cpp
++  ImfOutputPart.cpp
++  ImfTiledOutputPart.cpp
++  ImfInputPart.cpp
++  ImfTiledInputPart.cpp
++  ImfDeepScanLineInputPart.cpp
++  ImfDeepScanLineOutputPart.cpp
++  ImfDeepScanLineInputFile.cpp
++  ImfDeepScanLineOutputFile.cpp
++  ImfDeepTiledInputPart.cpp
++  ImfDeepTiledOutputPart.cpp
++  ImfDeepTiledInputFile.cpp
++  ImfDeepTiledOutputFile.cpp
++  ImfDeepFrameBuffer.cpp
++  ImfDeepCompositing.cpp
++  ImfCompositeDeepScanLine.cpp
++  ImfDeepImageStateAttribute.cpp
++  ImfFastHuf.cpp
++  ImfFloatVectorAttribute.cpp
++  ImfRle.cpp
++  ImfSystemSpecific.cpp
++  ImfZip.cpp
++)
++
++IF (BUILD_SHARED_LIBS)
++    ADD_DEFINITIONS(-DILMIMF_EXPORTS)
++ENDIF()
++
++ADD_LIBRARY ( IlmImf ${LIB_TYPE}
++  ${ILMIMF_SRCS}
++)
++
++TARGET_LINK_LIBRARIES ( IlmImf 
++  Half 
++  Iex${ILMBASE_LIBSUFFIX}
++  Imath${ILMBASE_LIBSUFFIX}
++  IlmThread${ILMBASE_LIBSUFFIX}
++  ${PTHREAD_LIB} ${ZLIB_LIBRARIES}
++)
++
++
++ADD_DEPENDENCIES ( IlmImf b44ExpLogTable )
++
++SET_SOURCE_FILES_PROPERTIES (
++  ImfB44Compressor.cpp
++  PROPERTIES
++  OBJECT_DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/b44ExpLogTable.h
++)
++
++
++ADD_DEPENDENCIES ( IlmImf dwaLookups )
++
++SET_SOURCE_FILES_PROPERTIES (
++  ImfDwaCompressor.cpp
++  PROPERTIES
++  OBJECT_DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/dwaLookups.h
++)
++
++# Libraries
++
++INSTALL ( TARGETS
++  IlmImf
++  DESTINATION
++  ${CMAKE_INSTALL_PREFIX}/lib
++)
++
++# Headers
++INSTALL ( FILES
++  ImfForward.h
++  ImfExport.h
++  ImfAttribute.h
++  ImfBoxAttribute.h
++  ImfCRgbaFile.h
++  ImfChannelList.h
++  ImfChannelListAttribute.h
++  ImfCompressionAttribute.h
++  ImfDoubleAttribute.h
++  ImfFloatAttribute.h
++  ImfFrameBuffer.h
++  ImfHeader.h
++  ImfIO.h
++  ImfInputFile.h
++  ImfIntAttribute.h
++  ImfLineOrderAttribute.h
++  ImfMatrixAttribute.h
++  ImfOpaqueAttribute.h
++  ImfOutputFile.h
++  ImfRgbaFile.h
++  ImfStringAttribute.h
++  ImfVecAttribute.h
++  ImfHuf.h
++  ImfWav.h
++  ImfLut.h
++  ImfArray.h
++  ImfCompression.h
++  ImfLineOrder.h
++  ImfName.h
++  ImfPixelType.h
++  ImfVersion.h
++  ImfXdr.h
++  ImfConvert.h
++  ImfPreviewImage.h
++  ImfPreviewImageAttribute.h
++  ImfChromaticities.h
++  ImfChromaticitiesAttribute.h
++  ImfKeyCode.h
++  ImfKeyCodeAttribute.h
++  ImfTimeCode.h
++  ImfTimeCodeAttribute.h
++  ImfRational.h
++  ImfRationalAttribute.h
++  ImfFramesPerSecond.h
++  ImfStandardAttributes.h
++  ImfEnvmap.h
++  ImfEnvmapAttribute.h
++  ImfInt64.h
++  ImfRgba.h
++  ImfTileDescription.h
++  ImfTileDescriptionAttribute.h
++  ImfTiledInputFile.h
++  ImfTiledOutputFile.h
++  ImfTiledRgbaFile.h
++  ImfRgbaYca.h
++  ImfTestFile.h
++  ImfThreading.h
++  ImfB44Compressor.h
++  ImfStringVectorAttribute.h
++  ImfMultiView.h
++  ImfAcesFile.h
++  ImfMultiPartOutputFile.h
++  ImfGenericOutputFile.h
++  ImfMultiPartInputFile.h
++  ImfGenericInputFile.h
++  ImfPartType.h
++  ImfPartHelper.h
++  ImfOutputPart.h
++  ImfTiledOutputPart.h
++  ImfInputPart.h
++  ImfTiledInputPart.h
++  ImfDeepScanLineOutputFile.h
++  ImfDeepScanLineOutputPart.h
++  ImfDeepScanLineInputFile.h
++  ImfDeepScanLineInputPart.h
++  ImfDeepTiledInputFile.h
++  ImfDeepTiledInputPart.h
++  ImfDeepTiledOutputFile.h
++  ImfDeepTiledOutputPart.h
++  ImfDeepFrameBuffer.h
++  ImfDeepCompositing.h
++  ImfCompositeDeepScanLine.h
++  ImfNamespace.h
++  ImfMisc.h
++  ImfDeepImageState.h
++  ImfDeepImageStateAttribute.h
++  ImfFloatVectorAttribute.h
++  DESTINATION
++  ${CMAKE_INSTALL_PREFIX}/include/OpenEXR
++)
++
+--- a/IlmImfUtil/CMakeLists.txt	2017-11-17 23:00:26.000000000 +0000
++++ b/IlmImfUtil/CMakeLists.txt	2018-01-26 21:28:48.097905687 +0000
+@@ -41,7 +41,7 @@
+ INSTALL ( TARGETS
+   IlmImfUtil
+   DESTINATION
+-  ${CMAKE_INSTALL_PREFIX}/lib
++  ${CMAKE_INSTALL_LIBDIR}
+ )
+ 
+ # Headers
+@@ -62,6 +62,6 @@
+   ImfImageDataWindow.h
+   ImfImageChannelRenaming.h
+   DESTINATION
+-  ${CMAKE_INSTALL_PREFIX}/include/OpenEXR
++  ${CMAKE_INSTALL_INCLUDEDIR}/OpenEXR
+   )
+ 
+--- a/OpenEXR.pc.cmake	1970-01-01 01:00:00.000000000 +0100
++++ b/OpenEXR.pc.cmake	2018-01-26 21:28:48.098905690 +0000
+@@ -0,0 +1,12 @@
++libdir=@CMAKE_INSTALL_FULL_LIBDIR@
++includedir=@CMAKE_INSTALL_FULL_INCLUDEDIR@
++OpenEXR_includedir=@CMAKE_INSTALL_FULL_INCLUDEDIR@/OpenEXR
++
++Name: OpenEXR
++Description: OpenEXR image library
++Version: @OPENEXR_VERSION@
++
++Libs: -L${libdir} -lIlmImf@OPENEXR_LIBSUFFIX@ -lIlmImfUtil@OPENEXR_LIBSUFFIX@
++Cflags: -I${OpenEXR_includedir}
++Requires: IlmBase
++Libs.private: -lz
