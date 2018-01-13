@@ -14,6 +14,7 @@ IUSE=""
 
 RDEPEND="
 	sys-fs/quota[rpc]
+	net-libs/libtirpc
 "
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
@@ -24,8 +25,12 @@ DIST_TEST=skip
 
 src_prepare() {
 	default
-	export mymake="OPTIMIZE=$($(tc-getPKG_CONFIG) --cflags libtirpc)"
+	export mymake="INC=$($(tc-getPKG_CONFIG) --cflags libtirpc) OTHERLDFLAGS=$($(tc-getPKG_CONFIG) --libs libtirpc)"
 
 	# disable AFS completely for now, need somebody who can really test it
 	sed -i -e 's|-d "/afs"|0|' Makefile.PL || die "sed failed"
+}
+
+src_test() {
+	perl -Mblib -e 'use Quota' || die "Quota module not usable"
 }
