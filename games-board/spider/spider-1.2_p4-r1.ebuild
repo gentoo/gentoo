@@ -38,12 +38,10 @@ src_prepare() {
 }
 
 src_configure() {
-	imake \
-		-DUseInstalled \
+	xmkmf \
 		-DSmallCards=NO \
 		-DRoundCards \
 		$(use athena && echo "-DCompileXAW=YES" || echo "-DCompileXlibOnly=YES") \
-		-I/usr/lib/X11/config \
 		|| die "imake failed"
 	sed -i \
 		-e '/CC = /d' \
