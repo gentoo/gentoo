@@ -30,6 +30,17 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (13 Jan 2018)
+# Depends on dead Qt4, needs porting to Qt5.
+# Masked for removal in 30 days.
+sci-chemistry/xdsgui
+sci-visualization/xds-viewer
+
+# Andreas Sturmlechner <asturm@gentoo.org> (13 Jan 2018)
+# Dead upstream, depends on dead Qt4.
+# Masked for removal in 30 days.
+dev-db/dbmodel
+
+# Andreas Sturmlechner <asturm@gentoo.org> (13 Jan 2018)
 # Dead upstream, depends on dead Qt4.
 # Masked for removal in 30 days.
 media-sound/mp3diags
