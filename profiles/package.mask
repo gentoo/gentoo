@@ -30,6 +30,22 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (13 Jan 2018)
+# Dead upstream, depends on dead Qt4.
+# Masked for removal in 30 days.
+x11-misc/touchfreeze
+
+# Andreas Sturmlechner <asturm@gentoo.org> (13 Jan 2018)
+# Dead upstream, depends on dead Qt4.
+# Use sci-geosciences/gpsbabel[gui] instead.
+# Masked for removal in 30 days.
+sci-geosciences/gebabbel
+
+# Andreas Sturmlechner <asturm@gentoo.org> (13 Jan 2018)
+# Dead upstream, depends on dead Qt4, no port to Qt5.
+# Masked for removal in 30 days.
+app-editors/lfhex
+
+# Andreas Sturmlechner <asturm@gentoo.org> (13 Jan 2018)
 # Dead upstream, depends on dead Qt4, no port to Qt5.
 # Masked for removal in 30 days.
 app-text/tuxcards
