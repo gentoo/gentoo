@@ -1,11 +1,3 @@
-diff --git a/localconf b/localconf
-new file mode 100644
-index 0000000..7705cbb
---- /dev/null
-+++ b/localconf
-@@ -0,0 +1,2 @@
-+PREFIX=/
-+LIBEXEC_PREFIX=/usr/libexec
 diff --git a/makeflags b/makeflags
 index f5983cb..0348623 100644
 --- a/makeflags
