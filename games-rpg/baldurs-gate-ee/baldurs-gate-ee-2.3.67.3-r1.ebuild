@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ inherit eutils unpacker
 
 DESCRIPTION="Baldur's Gate: Enhanced Edition"
 HOMEPAGE="https://www.baldursgate.com/"
-SRC_URI="gog_baldur_s_gate_enhanced_edition_2.5.0.8.sh"
+SRC_URI="gog_baldur_s_gate_enhanced_edition_2.5.0.9.sh"
 
 LICENSE="GOG-EULA"
 SLOT="0"
