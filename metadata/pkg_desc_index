@@ -1822,7 +1822,6 @@ dev-db/bucardo 5.4.1: An asynchronous PostgreSQL replication system
 dev-db/cdb 0.75-r4: Fast, reliable, simple package for creating and reading constant databases
 dev-db/couchdb 1.7.1: Distributed, fault-tolerant and schema-free document-oriented database
 dev-db/db-je 3.3.75: A high performance, transactional storage engine written entirely in Java
-dev-db/dbmodel 0.3: Qt4 tool for drawing entity-relational diagrams
 dev-db/freetds 0.91 1.00.41: Tabular Datastream Library
 dev-db/henplus 0.9.8: Java-based multisession SQL shell for databases with JDBC support
 dev-db/hsqldb 1.8.1.3-r2: The leading SQL relational database engine written in Java
