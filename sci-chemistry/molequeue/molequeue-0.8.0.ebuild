@@ -28,8 +28,13 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )"
 
+PATCHES=( "${FILESDIR}"/${P}-cmake.patch )
+
 src_prepare() {
 	cmake-utils_src_prepare
+
+	rm cmake/{GenerateExportHeader.cmake,exportheader.cmake.in} || die
+
 	# delete bundled Qt5Json library
 	rm -r thirdparty || die
 }
