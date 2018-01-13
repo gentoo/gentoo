@@ -32,6 +32,11 @@
 # Andreas Sturmlechner <asturm@gentoo.org> (13 Jan 2018)
 # Dead upstream, depends on dead Qt4, no port to Qt5.
 # Masked for removal in 30 days.
+app-text/yagf
+
+# Andreas Sturmlechner <asturm@gentoo.org> (13 Jan 2018)
+# Dead upstream, depends on dead Qt4, no port to Qt5.
+# Masked for removal in 30 days.
 net-ftp/qshare
 
 # Andreas Sturmlechner <asturm@gentoo.org> (13 Jan 2018)
