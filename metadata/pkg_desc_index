@@ -796,6 +796,7 @@ app-eselect/eselect-pinentry 0.7: Manage /usr/bin/pinentry symlink
 app-eselect/eselect-postgresql 1.2.1 2.1 2.2: Utility to select the default PostgreSQL slot
 app-eselect/eselect-python 20160516: Eselect module for management of multiple Python versions
 app-eselect/eselect-qtgraphicssystem 1.1.1: Utility to change the active Qt Graphics System
+app-eselect/eselect-rails 0.23: Manages Ruby on Rails symlinks
 app-eselect/eselect-renpy 0.6 0.7: Manages renpy symlink
 app-eselect/eselect-ruby 20161226: Manages multiple Ruby versions
 app-eselect/eselect-rust 0.3_pre20150428: eselect module for rust
@@ -5749,9 +5750,11 @@ dev-ruby/locale 2.1.0-r2 2.1.2-r1: A pure ruby library which provides basic APIs
 dev-ruby/log4r 1.1.10-r2: A comprehensive and flexible logging library written in Ruby
 dev-ruby/logue 1.0.4: A module that adds logging/trace functionality
 dev-ruby/maruku 0.7.2-r1: A Markdown-superset interpreter written in Ruby
+dev-ruby/maxitest 2.4.0: Minitest + all the features you always wanted
 dev-ruby/mecab-ruby 0.996-r1: Ruby binding for MeCab
 dev-ruby/mechanize 2.7.3-r1 2.7.5: A Ruby library used for automating interaction with websites
 dev-ruby/metaclass 0.0.4: Adds a __metaclass__ method to all Ruby objects
+dev-ruby/method_source 0.9.0: Retrieve the source code for a method
 dev-ruby/mime-types 1.25.1 2.6.2 2.99.2: Provides a mailcap-like MIME Content-Type lookup for Ruby
 dev-ruby/minitest 4.7.5-r1 4.7.5-r2 5.3.3-r1 5.8.4 5.9.1: minitest/unit is a small and fast replacement for ruby's huge and slow test/unit
 dev-ruby/mocha 0.10.5-r2 0.11.4-r1 0.12.10-r1 0.13.3-r2 0.14.0 1.1.0: Mocking and stubbing using a syntax like that of JMock and SchMock
@@ -5778,7 +5781,8 @@ dev-ruby/pkg-config 1.1.7 1.2.8: A pkg-config implementation by Ruby
 dev-ruby/power_assert 0.3.1: Shows each value of variables and method calls in the expression
 dev-ruby/puppetdb-termini 4.3.0 5.0.1 5.1.3: Library needed to connect puppet to puppetdb
 dev-ruby/racc 1.4.11: A LALR(1) parser generator for Ruby
-dev-ruby/rack 1.4.7 1.5.5 1.6.7: A modular Ruby webserver interface
+dev-ruby/rack 1.4.7 1.5.5 1.6.7 2.0.3: A modular Ruby webserver interface
+dev-ruby/rack-cache 1.7.1: Enable HTTP caching for Rack-based applications that produce freshness info
 dev-ruby/rack-protection 1.5.3-r1: This gem protects against typical web attacks
 dev-ruby/rack-test 0.6.3: Rack::Test is a small, simple testing API for Rack apps
 dev-ruby/ragol 1.0.1-r2: Another implementation of an option processor
