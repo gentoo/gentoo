@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit cmake-utils multilib python-single-r1 versionator virtualx
 
 DESCRIPTION="Abstract, manage and coordinate execution of tasks"
-HOMEPAGE="http://www.openchemistry.org/OpenChemistry/project/molequeue.html"
+HOMEPAGE="https://www.openchemistry.org/projects/molequeue/"
 SRC_URI="https://github.com/OpenChemistry/molequeue/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
