@@ -150,9 +150,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "For detailed documentation please see the upstream website:"
-	elog "https://www.balabit.com/sites/default/files/documents/syslog-ng-ose-${MY_PV_MM}-guides/en/syslog-ng-ose-v${MY_PV_MM}-guide-admin/html/index.html"
-
 	# bug #355257
 	if ! has_version app-admin/logrotate ; then
 		echo
