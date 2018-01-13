@@ -32,6 +32,11 @@
 # Andreas Sturmlechner <asturm@gentoo.org> (13 Jan 2018)
 # Dead upstream, depends on dead Qt4.
 # Masked for removal in 30 days.
+x11-misc/ptbatterysystemtray
+
+# Andreas Sturmlechner <asturm@gentoo.org> (13 Jan 2018)
+# Dead upstream, depends on dead Qt4.
+# Masked for removal in 30 days.
 x11-misc/launchy
 
 # Andreas Sturmlechner <asturm@gentoo.org> (13 Jan 2018)
