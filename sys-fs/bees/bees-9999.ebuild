@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit git-r3 eutils multilib
+inherit multilib
 
 DESCRIPTION="Best-Effort Extent-Same, a btrfs dedup agent"
 HOMEPAGE="https://github.com/Zygo/bees"
@@ -11,6 +11,7 @@ HOMEPAGE="https://github.com/Zygo/bees"
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/kakra/bees.git"
 	EGIT_BRANCH="integration"
+	inherit git-r3
 else
 	SRC_URI="https://github.com/Zygo/bees/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 fi
