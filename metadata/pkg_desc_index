@@ -1457,7 +1457,6 @@ app-text/trang 20151127: Multi-format schema converter based on RELAX NG
 app-text/tree 1.7.0: Lists directories recursively, and produces an indented listing of files
 app-text/ttf2pk2 1.5_p20120701 2.0_p20140525 2.0_p20150521 2.0_p20160523: Freetype 2 based TrueType font to TeX's PK format converter
 app-text/ttf2pt1 3.4.4-r1: True Type Font to Postscript Type 1 Converter
-app-text/tuxcards 2.2.1-r1: A hierarchical notebook
 app-text/txt2man 1.5.6: Scripts to convert regular ASCII text to man pages
 app-text/txt2pdbdoc 1.4.4: Text/HTML to Doc file converter for the Palm Pilot
 app-text/txt2tags 2.6-r1: Generate marked up documents (HTML, etc.)from a plain text file with markup
