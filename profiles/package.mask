@@ -30,6 +30,26 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (13 Jan 2018)
+# Dead upstream, depends on dead Qt4.
+# Masked for removal in 30 days.
+x11-misc/ptbatterysystemtray
+
+# Andreas Sturmlechner <asturm@gentoo.org> (13 Jan 2018)
+# Dead upstream, depends on dead Qt4.
+# Masked for removal in 30 days.
+x11-misc/launchy
+
+# Andreas Sturmlechner <asturm@gentoo.org> (13 Jan 2018)
+# Dead upstream, depends on dead Qt4.
+# Masked for removal in 30 days.
+x11-misc/wmiface
+
+# Andreas Sturmlechner <asturm@gentoo.org> (13 Jan 2018)
+# Dead upstream, depends on dead Qt4.
+# Masked for removal in 30 days.
+x11-misc/appmenu-qt
+
+# Andreas Sturmlechner <asturm@gentoo.org> (13 Jan 2018)
 # Depends on dead Qt4, needs porting to Qt5.
 # Masked for removal in 30 days.
 sci-chemistry/xdsgui
