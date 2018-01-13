@@ -29,6 +29,21 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (13 Jan 2018)
+# Dead upstream, depends on dead Qt4, no port to Qt5.
+# Masked for removal in 30 days.
+net-ftp/qshare
+
+# Andreas Sturmlechner <asturm@gentoo.org> (13 Jan 2018)
+# Dead upstream, depends on dead Qt4, no port to Qt5.
+# Masked for removal in 30 days.
+net-ftp/scythia
+
+# Andreas Sturmlechner <asturm@gentoo.org> (13 Jan 2018)
+# Dead upstream, depends on dead Qt4, no port to Qt5.
+# Masked for removal in 30 days.
+app-dicts/qvortaro
+
 # Andreas Sturmlechner <asturm@gentoo.org> (12 Jan 2018)
 # Dead upstream, depends on dead Qt4, no port to Qt5.
 # Masked for removal in 30 days.
