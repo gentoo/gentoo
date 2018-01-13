@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -20,7 +20,7 @@ IUSE="debug libav +udev"
 COMMON_DEPEND="
 	>=app-cdr/dvd+rw-tools-7.1
 	media-libs/libexif:=
-	>=media-libs/wxsvg-1.5.9:=
+	>=media-libs/wxsvg-1.5.11:=
 	>=media-video/dvdauthor-0.7.1
 	>=media-video/xine-ui-0.99.7
 	virtual/cdrtools
