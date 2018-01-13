@@ -1,0 +1,372 @@
+--- a/cmake/FindNumPy.cmake	1970-01-01 01:00:00.000000000 +0100
++++ b/cmake/FindNumPy.cmake	2018-01-27 11:12:14.846734138 +0000
+@@ -0,0 +1,66 @@
++# - Try to find NumPy includes
++#
++# Uses find_package(PythonInterp), you can customize PYTHON_EXECUTABLE if
++# it picks the wrong python executable.
++#
++# Sets following variables:
++#    NUMPY_FOUND
++#    NUMPY_INCLUDE_DIRS
++#    NUMPY_VERSION
++#
++
++if(NumPy_FIND_REQUIRED)
++  find_package(PythonInterp REQUIRED)
++else()
++  find_package(PythonInterp)
++endif()
++
++if(NOT PYTHONINTERP_FOUND)
++  set(NUMPY_FOUND FALSE)
++  return()
++endif()
++
++execute_process(COMMAND "${PYTHON_EXECUTABLE}" "-c"
++  "import numpy as n; print(n.__version__);"
++  RESULT_VARIABLE _NUMPY_SUCCESS
++  OUTPUT_VARIABLE NUMPY_VERSION
++  ERROR_VARIABLE _NUMPY_ERROR
++  OUTPUT_STRIP_TRAILING_WHITESPACE)
++
++if(NOT _NUMPY_SUCCESS MATCHES 0)
++  if(NumPy_FIND_REQUIRED)
++    message(FATAL_ERROR
++      "import numpy failure:\n${_NUMPY_ERROR}")
++  endif()
++  set(NUMPY_FOUND FALSE)
++  return()
++endif()
++
++execute_process(COMMAND "${PYTHON_EXECUTABLE}" "-c"
++  "import numpy as n; print(n.get_include());"
++  RESULT_VARIABLE _NUMPY_SUCCESS
++  OUTPUT_VARIABLE NUMPY_INCLUDE_DIR
++  ERROR_VARIABLE _NUMPY_ERROR
++  OUTPUT_STRIP_TRAILING_WHITESPACE)
++
++if(NOT _NUMPY_SUCCESS MATCHES 0)
++  if(NumPy_FIND_REQUIRED)
++    message(FATAL_ERROR
++      "import numpy failure:\n${_NUMPY_ERROR}")
++  endif()
++  set(NUMPY_FOUND FALSE)
++  return()
++endif()
++
++unset(_NUMPY_SUCCESS)
++
++set(NUMPY_INCLUDE_DIRS ${NUMPY_INCLUDE_DIR})
++
++include(FindPackageHandleStandardArgs)
++
++find_package_handle_standard_args(NumPy
++    REQUIRED_VARS
++        NUMPY_INCLUDE_DIR
++    VERSION_VAR
++        NUMPY_VERSION
++)
+--- a/CMakeLists.txt	1970-01-01 01:00:00.000000000 +0100
++++ b/CMakeLists.txt	2018-01-27 12:04:46.101942552 +0000
+@@ -0,0 +1,115 @@
++CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
++
++PROJECT (pyilmbase)
++
++SET(ILMBASE_VERSION_MAJOR "2")
++SET(ILMBASE_VERSION_MINOR "2")
++SET(ILMBASE_VERSION_PATCH "1")
++
++SET(ILMBASE_VERSION ${ILMBASE_VERSION_MAJOR}.${ILMBASE_VERSION_MINOR}.${ILMBASE_VERSION_PATCH})
++SET(ILMBASE_VERSION_API ${ILMBASE_VERSION_MAJOR}_${ILMBASE_VERSION_MINOR})
++
++
++# enable the tests
++ENABLE_TESTING()
++
++
++# distro building 
++SET(CPACK_PACKAGE_VERSION_MAJOR "${ILMBASE_VERSION_MAJOR}")
++SET(CPACK_PACKAGE_VERSION_MINOR "${ILMBASE_VERSION_MINOR}")
++SET(CPACK_PACKAGE_VERSION_PATCH "${ILMBASE_VERSION_PATCH}")
++SET(CPACK_SOURCE_GENERATOR "TGZ")
++set(CPACK_SOURCE_PACKAGE_FILE_NAME
++    "${CMAKE_PROJECT_NAME}-${ILMBASE_VERSION}"
++  )
++set(CPACK_SOURCE_IGNORE_FILES
++  "/.git*;/.cvs*;${CPACK_SOURCE_IGNORE_FILES}")
++INCLUDE ( CPack )
++INCLUDE ( GNUInstallDirs )
++
++# Set this option to find the C++ libs with their namespaced versions
++# The python modules themselves are built without versioning
++OPTION (NAMESPACE_VERSIONING "Use Namespace Versioning" ON)
++
++# Setup osx rpathing
++SET (CMAKE_MACOSX_RPATH 1)
++SET (BUILD_WITH_INSTALL_RPATH 1)
++
++SET (LIB_TYPE SHARED)
++
++SET(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
++
++FIND_PACKAGE ( PythonLibs REQUIRED )
++FIND_PACKAGE ( PythonInterp REQUIRED )
++FIND_PACKAGE ( Boost COMPONENTS Python )
++FIND_PACKAGE ( NumPy )
++find_package( PkgConfig QUIET )
++
++SET (PYTHON_INSTALL_DIR
++  "${CMAKE_INSTALL_LIBDIR}/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/site-packages"
++  CACHE PATH "Python modules install dir")
++
++IF (WIN32 AND NOT CYGWIN)
++  SET (PYTHON_CEXTENSION ".pyd")
++ELSE ()
++  SET (PYTHON_CEXTENSION ".so")
++ENDIF()
++
++INCLUDE_DIRECTORIES (
++	${CMAKE_INSTALL_FULL_INCLUDEDIR}/OpenEXR
++	PyIex
++	PyImath
++	PyImathNumpy
++	${PYTHON_INCLUDE_PATH}
++	${Boost_INCLUDE_DIRS}
++)
++
++LINK_DIRECTORIES ( ${CMAKE_INSTALL_FULL_LIBDIR} )
++MESSAGE ( "ILMBASE_PACKAGE_PREFIX = " ${ILMBASE_PACKAGE_PREFIX})
++
++SET (ILMBASE_LIBSUFFIX "")
++IF (NAMESPACE_VERSIONING)
++  SET ( ILMBASE_LIBSUFFIX "-${ILMBASE_VERSION_API}" )
++ENDIF ()
++
++MACRO(CREATE_LEGACY_SYMLINK _libname)
++   SET(_newname lib${_libname}-${ILMBASE_VERSION_API}.so)
++   SET(_legacyname lib${_libname}.so)
++   SET(_libpath ${PROJECT_BINARY_DIR}/${_libname})
++   INSTALL(
++      CODE "EXECUTE_PROCESS (
++         COMMAND ln -sf ${_newname} ${_legacyname}
++         WORKING_DIRECTORY ${_libpath}
++         )"
++   )
++   INSTALL( FILES ${_libpath}/${_legacyname} DESTINATION ${CMAKE_INSTALL_LIBDIR} )
++ENDMACRO(CREATE_LEGACY_SYMLINK)
++
++##########################
++ADD_SUBDIRECTORY ( PyIex )
++ADD_SUBDIRECTORY ( PyImath )
++
++IF (NUMPY_FOUND)
++  ADD_SUBDIRECTORY ( PyImathNumpy )
++ENDIF ()
++
++SET_TARGET_PROPERTIES(PyImath PROPERTIES
++  VERSION 23.0.0
++  SOVERSION 23
++  OUTPUT_NAME "PyImath${ILMBASE_LIBSUFFIX}"
++)
++SET_TARGET_PROPERTIES(PyIex PROPERTIES
++  VERSION 23.0.0
++  SOVERSION 23
++  OUTPUT_NAME "PyIex${ILMBASE_LIBSUFFIX}"
++)
++
++IF ( NOT WIN32 AND NAMESPACE_VERSIONING )
++  CREATE_LEGACY_SYMLINK ( PyIex )
++  CREATE_LEGACY_SYMLINK ( PyImath )
++ENDIF ()
++  
++if ( PKG_CONFIG_FOUND )
++	configure_file(PyIlmBase.pc.cmake "${PROJECT_BINARY_DIR}/PyIlmBase.pc" @ONLY)
++	install( FILES "${PROJECT_BINARY_DIR}/PyIlmBase.pc" DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig COMPONENT dev )
++endif()
+--- a/PyIex/CMakeLists.txt	1970-01-01 01:00:00.000000000 +0100
++++ b/PyIex/CMakeLists.txt	2018-01-27 11:12:14.846734138 +0000
+@@ -0,0 +1,29 @@
++
++ADD_LIBRARY ( PyIex ${LIB_TYPE}
++	PyIex.cpp
++)
++
++TARGET_LINK_LIBRARIES ( PyIex
++	${PYTHON_LIBRARIES}
++	Iex${ILMBASE_LIBSUFFIX}
++	${Boost_LIBRARIES}
++)
++
++INSTALL ( TARGETS PyIex DESTINATION ${CMAKE_INSTALL_LIBDIR} )
++
++ADD_LIBRARY ( iexmodule ${LIB_TYPE}
++	iexmodule.cpp
++)
++
++SET_TARGET_PROPERTIES ( iexmodule
++	PROPERTIES PREFIX "" SUFFIX ${PYTHON_CEXTENSION} BUILD_WITH_INSTALL_RPATH ON
++)
++
++TARGET_LINK_LIBRARIES ( iexmodule
++	PyIex
++	Iex${ILMBASE_LIBSUFFIX}
++	${Boost_LIBRARIES}
++)
++
++INSTALL ( TARGETS iexmodule DESTINATION ${PYTHON_INSTALL_DIR} )
++
+--- a/PyIlmBase.pc.cmake	1970-01-01 01:00:00.000000000 +0100
++++ b/PyIlmBase.pc.cmake	2018-01-27 11:12:14.847734139 +0000
+@@ -0,0 +1,11 @@
++libdir=@CMAKE_INSTALL_FULL_LIBDIR@
++includedir=@CMAKE_INSTALL_FULL_INCLUDEDIR@
++OpenEXR_includedir=@CMAKE_INSTALL_FULL_INCLUDEDIR@/OpenEXR
++
++Name: PyIlmBase
++Description: Python bindings for the IlmBase libraries
++Version: @PYILMBASE_VERSION@
++
++Libs: -Libs: -L${libdir} -lPyImath -lPyIex
++Cflags: Cflags: -I${PyIlmBase_includedir}
++Requires: IlmBase
+--- a/PyImath/CMakeLists.txt	1970-01-01 01:00:00.000000000 +0100
++++ b/PyImath/CMakeLists.txt	2018-01-27 11:12:14.847734139 +0000
+@@ -0,0 +1,108 @@
++
++ADD_LIBRARY ( PyImath ${LIB_TYPE}
++    PyImath.cpp
++    PyImathAutovectorize.cpp
++    PyImathBox2Array.cpp
++    PyImathBox3Array.cpp
++    PyImathBox.cpp
++    PyImathColor3.cpp
++    PyImathColor4.cpp
++    PyImathEuler.cpp
++    PyImathFixedArray.cpp
++    PyImathFrustum.cpp
++    PyImathLine.cpp
++    PyImathMatrix33.cpp
++    PyImathMatrix44.cpp
++    PyImathPlane.cpp
++    PyImathQuat.cpp
++    PyImathRandom.cpp
++    PyImathShear.cpp
++    PyImathStringArray.cpp
++    PyImathStringTable.cpp
++    PyImathTask.cpp
++    PyImathUtil.cpp
++    PyImathFixedVArray.cpp
++    PyImathVec2fd.cpp
++    PyImathVec2si.cpp
++    PyImathVec3fd.cpp
++    PyImathVec3siArray.cpp
++    PyImathVec3si.cpp
++    PyImathVec4fd.cpp
++    PyImathVec4siArray.cpp
++    PyImathVec4si.cpp
++
++)
++
++TARGET_LINK_LIBRARIES ( PyImath
++	Iex${ILMBASE_LIBSUFFIX}
++	IexMath${ILMBASE_LIBSUFFIX}
++	Imath${ILMBASE_LIBSUFFIX}
++	${Boost_LIBRARIES}
++	${PYTHON_LIBRARIES}
++)
++
++INSTALL ( TARGETS PyImath
++	DESTINATION
++	${CMAKE_INSTALL_LIBDIR}
++)
++
++ADD_LIBRARY ( imathmodule ${LIB_TYPE}
++    imathmodule.cpp
++    PyImathFun.cpp
++    PyImathBasicTypes.cpp 
++)
++
++SET_TARGET_PROPERTIES ( imathmodule
++	PROPERTIES PREFIX "" SUFFIX ${PYTHON_CEXTENSION} BUILD_WITH_INSTALL_RPATH ON
++)
++
++TARGET_LINK_LIBRARIES ( imathmodule
++	PyImath
++	PyIex
++	Imath${ILMBASE_LIBSUFFIX}
++	Iex${ILMBASE_LIBSUFFIX}
++	${Boost_LIBRARIES}
++)
++
++INSTALL ( TARGETS imathmodule
++	DESTINATION ${PYTHON_INSTALL_DIR}
++)
++
++INSTALL ( FILES PyImath.h
++                PyImathAutovectorize.h
++                PyImathBoxArrayImpl.h
++                PyImathBox.h
++                PyImathColor3ArrayImpl.h
++                PyImathColor4Array2DImpl.h
++                PyImathColor4ArrayImpl.h
++                PyImathColor.h
++                PyImathDecorators.h
++                PyImathEuler.h
++                PyImathExport.h
++                PyImathFixedArray2D.h
++                PyImathFixedArray.h
++                PyImathFixedMatrix.h
++                PyImathFrustum.h
++                PyImathLine.h
++                PyImathMathExc.h
++                PyImathMatrix.h
++                PyImathOperators.h
++                PyImathPlane.h
++                PyImathQuat.h
++                PyImathRandom.h
++                PyImathShear.h
++                PyImathStringArray.h
++                PyImathStringArrayRegister.h
++                PyImathStringTable.h
++                PyImathTask.h
++                PyImathUtil.h
++                PyImathFixedVArray.h
++                PyImathVec2Impl.h
++                PyImathVec3ArrayImpl.h
++                PyImathVec3Impl.h
++                PyImathVec4ArrayImpl.h
++                PyImathVec4Impl.h
++                PyImathVec.h
++                PyImathVecOperators.h
++        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/OpenEXR
++        )
+--- a/PyImathNumpy/CMakeLists.txt	1970-01-01 01:00:00.000000000 +0100
++++ b/PyImathNumpy/CMakeLists.txt	2018-01-27 11:12:14.847734139 +0000
+@@ -0,0 +1,25 @@
++
++ADD_LIBRARY ( imathnumpymodule ${LIB_TYPE}
++    imathnumpymodule.cpp
++)
++
++SET_TARGET_PROPERTIES ( imathnumpymodule
++	PROPERTIES PREFIX "" SUFFIX ${PYTHON_CEXTENSION} BUILD_WITH_INSTALL_RPATH ON
++)
++
++INCLUDE_DIRECTORIES (
++	${NUMPY_INCLUDE_DIRS}
++)
++
++TARGET_LINK_LIBRARIES ( imathnumpymodule
++	PyImath
++	PyIex
++	Imath${ILMBASE_LIBSUFFIX}
++	Iex${ILMBASE_LIBSUFFIX}
++	${Boost_LIBRARIES}
++)
++
++INSTALL ( TARGETS imathnumpymodule
++	DESTINATION ${PYTHON_INSTALL_DIR}
++)
++
