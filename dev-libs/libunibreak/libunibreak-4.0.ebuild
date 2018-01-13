@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,6 +12,9 @@ LICENSE="ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~x86"
 IUSE="doc +man static-libs"
+
+# Tests require internet access to www.unicode.org
+RESTRICT="test"
 
 DEPEND="man? ( app-doc/doxygen )"
 RDEPEND="!dev-libs/liblinebreak"
