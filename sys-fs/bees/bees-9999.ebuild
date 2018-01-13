@@ -16,9 +16,7 @@ else
 	SRC_URI="https://github.com/Zygo/bees/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
-PATCHES="
-	${FILESDIR}/v0.5-gentoo_build.patch
-"
+PATCHES="${FILESDIR}/v0.5-gentoo_build.patch"
 
 LICENSE="GPL-3"
 SLOT="0"
