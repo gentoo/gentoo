@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # Note: xemacs currently does not work with position independent code
@@ -23,7 +23,7 @@ X_DEPEND="x11-libs/libXt x11-libs/libXmu x11-libs/libXext x11-misc/xbitmaps"
 
 RDEPEND="
 	berkdb? ( sys-libs/db:= )
-	gdbm? ( >=sys-libs/gdbm-1.8.3 )
+	gdbm? ( >=sys-libs/gdbm-1.8.3[berkdb] )
 	>=sys-libs/zlib-1.1.4
 	>=dev-libs/openssl-0.9.6:0
 	>=media-libs/audiofile-0.2.3
