@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -73,7 +73,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=media-libs/taglib-1.11.1
 	system-ffmpeg? (
 		>=media-video/ffmpeg-${FFMPEG_VERSION}:=[encode,openssl,postproc]
-		<media-video/ffmpeg-3.4
+		!~media-video/ffmpeg-3.4
 	)
 	mysql? ( virtual/mysql )
 	>=net-misc/curl-7.51.0
