@@ -26,145 +26,16 @@
 -neon
 -armvfp
 
-# Mart Raudsepp <leio@gentoo.org> (17 Feb 2017)
-# x11-misc/colord not tested on arm64 yet
-colord
-
-# Mart Raudsepp <leio@gentoo.org> (05 Feb 2017)
-# dev-libs/DirectFB not tested on arm64 (and we probably don't want it)
-directfb
-
-# Mart Raudsepp <leio@gentoo.org> (04 Feb 2017)
-# net-fs/samba not tested on arm64 yet
-samba
-
 # Mart Raudsepp <leio@gentoo.org> (01 Feb 2017)
 # Unmask systemd since it is keyworded here.
 -systemd
-
-# Mart Raudsepp <leio@gentoo.org> (28 Jan 2017)
-# dev-util/valgrind not tested on arm64 yet
-# Upstream seems to have architecture support, however
-valgrind
-
-# Mart Raudsepp <leio@gentoo.org> (28 Jan 2017)
-# media-libs/portaudio not tested on arm64 yet
-portaudio
-
-# Markus Meier <maekke@gentoo.org> (22 Aug 2010)
-# net-wireless/wimax not tested
-wimax
-
-# Markus Meier <maekke@gentoo.org> (21 Aug 2010)
-# app-antivirus/clamav not tested
-clamav
-
-# Kacper Kowalik <xarthisius@gentoo.org> (9 Aug 2010)
-# cblas-external as virtual/cblas is also masked
-cblas-external
-
-# Samuli Suominen <ssuominen@gentoo.org> (17 Oct 2009)
-# Required package: media-sound/musepack-tools
-musepack
-
-# Raúl Porcel <armin76@gentoo.org>
-# I've been told xfs is broken on ARM
-xfs
-
-# Raúl Porcel <armin76@gentoo.org>
-# Fails to build/work
-openexr
-
-# Samuli Suominen <drac@gentoo.org>
-# media-libs/amrnb and media-libs/amrwb not tested.
-amr
-
-# Samuli Suominen <drac@gentoo.org>
-# media-gfx/gimp not tested.
-gimp
-
-# No hardware to test by the team
-dvb
-ios
-ipod
 
 # Stuff that doesn't make sense on this arch
 3dfx
 dmi
 
 # Stuff we don't want
-fuse
-R
-octave
-tracker
-xindy
-mpi
-lasi
-schroedinger
 hardened
-frei0r
-pdfannotextractor
-prelude
-mssql
-
-# havent tested yet
-ruby
-ctypes-python
-sasl
-libproxy
-pkcs11
-bazaar
-darcs
-mercurial
-kerberos
-gpg
-gnome
-doc
-emacs
-gphoto2
-afs
-mono
-lirc
-lm_sensors
-xemacs
-rpm
-scanner
-zvbi
-ldap
-mysql
-fluidsynth
-sid
-mms
-mtp
-ieee1394
-sctp
-pm-utils
-darcs
-bs2b
-toolame
-ladspa
-ldns
-ggi
-nut
-dvd
-fits
-tokyocabinet
-rtmp
-vpx
-plotutils
-lpsol
-upnp
-quvi
-bluray
-libtar
-zvbi
-aacplus
-devil
-gts
-anthy
-R
-sdl
-vim-syntax
 
 # Unmask ARM-only video-cards
 # e.g. exynos5433
@@ -219,17 +90,3 @@ video_cards_r200
 video_cards_r300
 video_cards_r600
 video_cards_radeonsi
-
-# USE=audit masked prior to testing on alpha, arm, hppa, ppc64, s390, sh.
-# Bug #184563, 18 Sep 2007
-# Robin H. Johnson <robbat2@gentoo.org>
-audit
-
-# Alexandre Rostovtsev <tetromino@gentoo.org> (31 Dec 2012)
-# media-libs/xine-lib is not keyworded
-xine
-
-# Samuli Suominen <ssuominen@gentoo.org> (18 Jan 2013)
-# libdlm and cman are not keyworded
-cman
-clvm

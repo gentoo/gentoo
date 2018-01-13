@@ -18,19 +18,3 @@ python_targets_python3_5
 # Hans de Graaff <graaff@gentoo.org> (17 Apr 2017)
 # Temporary mask to support stable bug 615818
 ruby_targets_ruby22
-
-# Mart Raudsepp <leio@gentoo.org> (04 Feb 2017)
-# dev-vcs/subversion not marked stable yet
-subversion
-
-# Mart Raudsepp <leio@gentoo.org> (28 Jan 2017)
-# sys-apps/dbus not marked stable yet
-dbus
-
-# Mart Raudsepp <leio@gentoo.org> (28 Jan 2017)
-# sys-auth/skey not marked stable yet
-skey
-
-# Ben de Groot <yngwin@gentoo.org> (24 Aug 2015)
-# Not yet stable, bug #543326
-qt5
