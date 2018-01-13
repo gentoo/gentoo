@@ -4,7 +4,7 @@
 EAPI=6
 
 KDE_HANDBOOK="forceoptional"
-KDE_DOC_DIRS="doc doc-translations/%lingua"
+KDE_PO_DIRS="po doc-translations"
 inherit kde5
 
 DESCRIPTION="Image viewer based on KDE Frameworks"
