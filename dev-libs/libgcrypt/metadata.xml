@@ -9,4 +9,7 @@
 		<email>crypto@gentoo.org</email>
 		<name>Crypto</name>
 	</maintainer>
+<use>
+<flag name="o-flag-munging">Enable O-flag mangling during build</flag>
+</use>
 </pkgmetadata>
