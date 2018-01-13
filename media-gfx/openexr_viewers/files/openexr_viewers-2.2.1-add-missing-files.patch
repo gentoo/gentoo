@@ -1,0 +1,160 @@
+diff -urN a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	1970-01-01 01:00:00.000000000 +0100
++++ b/CMakeLists.txt	2018-01-26 22:03:31.763563609 +0000
+@@ -0,0 +1,76 @@
++CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
++
++PROJECT (openexr_viewers)
++
++SET(OPENEXR_VERSION_MAJOR "2")
++SET(OPENEXR_VERSION_MINOR "2")
++SET(OPENEXR_VERSION_PATCH "1")
++
++SET(OPENEXR_VERSION ${OPENEXR_VERSION_MAJOR}.${OPENEXR_VERSION_MINOR}.${OPENEXR_VERSION_PATCH})
++SET(OPENEXR_VERSION_API ${OPENEXR_VERSION_MAJOR}_${OPENEXR_VERSION_MINOR})
++
++
++# distro building 
++SET(CPACK_PACKAGE_VERSION_MAJOR "${OPENEXR_VERSION_MAJOR}")
++SET(CPACK_PACKAGE_VERSION_MINOR "${OPENEXR_VERSION_MINOR}")
++SET(CPACK_PACKAGE_VERSION_PATCH "${OPENEXR_VERSION_PATCH}")
++SET(CPACK_SOURCE_GENERATOR "TGZ")
++set(CPACK_SOURCE_PACKAGE_FILE_NAME
++    "${CMAKE_PROJECT_NAME}-${OPENEXR_VERSION}"
++  )
++set(CPACK_SOURCE_IGNORE_FILES
++  "/.git*;/.cvs*;${CPACK_SOURCE_IGNORE_FILES}")
++INCLUDE ( CPack )
++INCLUDE ( GNUInstallDirs )
++
++OPTION (NAMESPACE_VERSIONING "Use Namespace Versioning" ON)
++
++# Setup osx rpathing
++SET (CMAKE_MACOSX_RPATH 1)
++SET (BUILD_WITH_INSTALL_RPATH 1)
++
++ADD_DEFINITIONS ( -DHAVE_CONFIG_H )
++
++SET (FLTK_SKIP_FLUID 1)
++FIND_PACKAGE (OpenGL REQUIRED)
++FIND_PACKAGE (FLTK)
++FIND_PACKAGE (GLUT)
++FIND_PACKAGE (Cg)
++
++IF (NOT WIN32)
++  SET ( PTHREAD_LIB pthread )
++ENDIF()
++
++INCLUDE_DIRECTORIES ( ${OPENEXR_PACKAGE_PREFIX}/include/OpenEXR )
++LINK_DIRECTORIES ( ${OPENEXR_PACKAGE_PREFIX}/lib )
++MESSAGE ( "OPENEXR_PACKAGE_PREFIX = " ${OPENEXR_PACKAGE_PREFIX})
++
++SET (OPENEXR_LIBSUFFIX "")
++SET (ILMBASE_LIBSUFFIX "")
++IF (NAMESPACE_VERSIONING)
++  SET ( OPENEXR_LIBSUFFIX "-${OPENEXR_VERSION_API}" )
++  # assume same NAMESPACE_VERSION setting for IlmBase for now
++  SET ( ILMBASE_LIBSUFFIX "-${OPENEXR_VERSION_API}" )
++ENDIF ()
++
++##########################
++IF (FLTK_FOUND)
++  ADD_SUBDIRECTORY ( exrdisplay )
++ENDIF ()
++
++IF (CG_FOUND AND GLUT_FOUND)
++  ADD_SUBDIRECTORY ( playexr )
++  INCLUDE_DIRECTORIES ( playexr )
++ENDIF ()
++
++##########################
++# Installation
++##########################
++
++# Documentation
++INSTALL ( FILES
++  doc/OpenEXRViewers.pdf
++  DESTINATION
++  ${CMAKE_INSTALL_DOCDIR}
++  )
++
+diff -urN a/exrdisplay/CMakeLists.txt b/exrdisplay/CMakeLists.txt
+--- a/exrdisplay/CMakeLists.txt	1970-01-01 01:00:00.000000000 +0100
++++ b/exrdisplay/CMakeLists.txt	2018-01-26 21:58:14.220792055 +0000
+@@ -0,0 +1,32 @@
++
++ADD_EXECUTABLE ( exrdisplay
++	main.cpp 
++	ImageView.cpp
++	ImageView.h
++	loadImage.cpp
++	loadImage.h
++	scaleImage.cpp
++	scaleImage.h
++	applyCtl.cpp
++	applyCtl.h
++	GlWindow3d.h
++	GlWindow3d.cpp
++)
++
++INCLUDE_DIRECTORIES ( 
++	${FLTK_INCLUDE_DIR}
++)
++
++TARGET_LINK_LIBRARIES ( exrdisplay
++	IlmImf${OPENEXR_LIBSUFFIX}
++	Iex${ILMBASE_LIBSUFFIX}
++	Half
++	${FLTK_LIBRARIES}
++	${OPENGL_LIBRARIES}
++)
++
++INSTALL ( TARGETS
++	exrdisplay
++	DESTINATION
++	${CMAKE_INSTALL_BINDIR}
++)
+diff -urN a/playexr/CMakeLists.txt b/playexr/CMakeLists.txt
+--- a/playexr/CMakeLists.txt	1970-01-01 01:00:00.000000000 +0100
++++ b/playexr/CMakeLists.txt	2018-01-26 21:58:14.220792055 +0000
+@@ -0,0 +1,40 @@
++
++ADD_EXECUTABLE ( playexr
++	main.cpp 
++	playExr.cpp
++	playExr.h
++	fileNameForFrame.cpp
++	fileNameForFrame.h
++	FileReadingThread.cpp
++	FileReadingThread.h
++	ImageBuffers.cpp
++	ImageBuffers.h
++	Timer.cpp
++	Timer.h
++	ctlToLut.cpp
++	ctlToLut.h
++	osDependent.cpp
++	osDependent.h 
++)
++
++INCLUDE_DIRECTORIES ( 
++	${CG_INCLUDE_PATH}
++)
++
++TARGET_LINK_LIBRARIES ( playexr
++	IlmImf${OPENEXR_LIBSUFFIX}
++	Iex${ILMBASE_LIBSUFFIX}
++	IlmThread${ILMBASE_LIBSUFFIX}
++	Half
++	${CG_LIBRARY}
++	${CG_GL_LIBRARY}
++	${OPENGL_LIBRARIES}
++	${GLUT_LIBRARY}
++)
++
++INSTALL ( TARGETS
++	playexr
++	DESTINATION
++	${CMAKE_INSTALL_BINDIR}
++)
++
