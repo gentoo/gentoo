@@ -30,11 +30,11 @@ DEPEND="${RDEPEND}
 	test? ( dev-lang/perl )"
 if [[ ${PV} = *9999 ]]; then
 	DEPEND="${DEPEND}
-		dev-ml/ocamlbuild"
+		dev-ml/ocamlbuild
+		doc? ( media-gfx/transfig )"
 fi
 
 S=${WORKDIR}/${MY_P}
-HTML_DOCS=( doc/html/. )
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
@@ -146,7 +146,7 @@ src_configure() {
 }
 
 src_compile() {
-	multibuild_foreach_variant multilib-minimal_src_compile
+	multibuild_foreach_variant multilib-minimal_src_compile all $([[ ${PV} = *9999 ]] && usev doc)
 }
 
 multilib_src_test() {
@@ -164,6 +164,7 @@ src_test() {
 }
 
 src_install() {
+	use doc && HTML_DOCS=( doc/html/. )
 	multibuild_foreach_variant multilib-minimal_src_install
 	dodoc CONVENTIONS
 
@@ -171,8 +172,6 @@ src_install() {
 		dodoc doc/*.pdf
 		docinto faq
 		dodoc -r doc/FAQ/fftw-faq.html/.
-	else
-		rm -r "${ED%/}"/usr/share/doc/${PF}/html || die
 	fi
 
 	local x
