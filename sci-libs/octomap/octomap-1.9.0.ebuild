@@ -41,6 +41,8 @@ DEPEND="${RDEPEND}
 	)
 "
 
+PATCHES=( "${FILESDIR}/qglqt5.patch" )
+
 src_prepare() {
 	sed -e 's/DESTINATION lib/DESTINATION ${CMAKE_INSTALL_LIBDIR}/' \
 		-i */CMakeLists.txt \
