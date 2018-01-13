@@ -6,7 +6,7 @@ inherit eutils systemd unpacker user
 
 DESCRIPTION="general puppet client utils along with mcollective hiera and facter"
 HOMEPAGE="https://puppetlabs.com/"
-SRC_BASE="http://apt.puppetlabs.com/pool/jessie/puppet5/${PN:0:1}/${PN}/${PN}_${PV}-1jessie"
+SRC_BASE="http://apt.puppetlabs.com/pool/stretch/puppet5/${PN:0:1}/${PN}/${PN}_${PV}-1stretch"
 SRC_URI="
 	amd64? ( ${SRC_BASE}_amd64.deb )
 	x86?   ( ${SRC_BASE}_i386.deb )
