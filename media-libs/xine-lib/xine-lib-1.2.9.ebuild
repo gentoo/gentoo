@@ -3,11 +3,11 @@
 
 EAPI=6
 
-inherit autotools flag-o-matic libtool multilib eutils
+inherit flag-o-matic libtool multilib
 
 if [[ ${PV} == *9999* ]]; then
 	EHG_REPO_URI="http://hg.debian.org/hg/xine-lib/xine-lib-1.2"
-	inherit mercurial eutils
+	inherit autotools mercurial
 	unset NLS_IUSE
 	NLS_DEPEND="sys-devel/gettext"
 	NLS_RDEPEND="virtual/libintl"
@@ -30,11 +30,6 @@ RDEPEND="${NLS_RDEPEND}
 	dev-libs/libxdg-basedir
 	media-libs/libdvdnav
 	sys-libs/zlib
-	!libav? ( media-video/ffmpeg:0= )
-	libav? (
-		media-libs/libpostproc:0=
-		media-video/libav:0=
-	)
 	virtual/libiconv
 	a52? ( media-libs/a52dec )
 	aac? ( media-libs/faad2 )
@@ -51,6 +46,11 @@ RDEPEND="${NLS_RDEPEND}
 	imagemagick? ( virtual/imagemagick-tools )
 	jack? ( >=media-sound/jack-audio-connection-kit-0.100 )
 	jpeg? ( virtual/jpeg:0 )
+	!libav? ( media-video/ffmpeg:0= )
+	libav? (
+		media-libs/libpostproc:0=
+		media-video/libav:0=
+		)
 	libcaca? ( media-libs/libcaca )
 	mad? ( media-libs/libmad )
 	mng? ( media-libs/libmng )
@@ -124,7 +124,11 @@ src_prepare() {
 
 	sed -i -e '/define VDR_ABS_FIFO_DIR/s|".*"|"/var/vdr/xine"|' src/vdr/input_vdr.c || die
 
-	eautoreconf
+	if [[ "${PV}" = *9999* ]] ; then
+		eautoreconf
+	else
+		elibtoolize
+	fi
 
 	local x
 	for x in 0 1 2 3; do
@@ -142,70 +146,74 @@ src_configure() {
 		win32dir=/usr/$(get_libdir)/win32
 	fi
 
-	local myconf=()
-	[[ ${PV} == *9999* ]] || myconf=( $(use_enable nls) )
+	local myconf=(
+		--disable-gnomevfs
+		--disable-optimizations
+		--disable-real-codecs
+		--disable-v4l
+		--disable-w32dll
+		--with-external-dvdnav
+		--with-real-codecs-path=/usr/$(get_libdir)/codecs
+		--with-w32-path=${win32dir}
+		--with-xv-path=/usr/$(get_libdir)
+		--without-esound
+		$(use_enable a52 a52dec)
+		$(use_enable aac faad)
+		$(use_enable aalib)
+		$(use_enable altivec)
+		$(use_enable bluray)
+		$(use_enable directfb)
+		$(use_enable dts)
+		$(use_enable dvb)
+		$(use_enable dxr3)
+		$(use_enable fbcon fb)
+		$(use_enable gtk gdkpixbuf)
+		$(use_enable ipv6)
+		$(use_enable jpeg libjpeg)
+		$(use_enable mad)
+		$(use_enable mmap)
+		$(use_enable mng)
+		$(use_enable modplug)
+		$(use_enable musepack)
+		$(use_enable opengl)
+		$(use_enable opengl glu)
+		$(use_enable oss)
+		$(use_enable samba)
+		$(use_enable v4l libv4l)
+		$(use_enable v4l v4l2)
+		$(use_enable vaapi)
+		$(use_enable vdpau)
+		$(use_enable vis)
+		$(use_enable vidix)
+		$(use_enable xinerama)
+		$(use_enable xvmc)
+		$(use_enable vcd)
+		$(use_enable vdr)
+		$(use_enable vpx)
+		$(use_with alsa)
+		$(use_with flac libflac)
+		$(use_with fusionsound)
+		$(use_with imagemagick)
+		$(use_with jack)
+		$(use_with libcaca caca)
+		$(use_with pulseaudio)
+		$(use_with sdl)
+		$(use_with speex)
+		$(use_with theora)
+		$(use_with truetype fontconfig)
+		$(use_with truetype freetype)
+		$(use_with vorbis)
+		$(use_with wavpack)
+		$(use_with X x)
+		$(use_with xcb)
+	)
+	[[ ${PV} == *9999* ]] || myconf+=( $(use_enable nls) )
 
 	if ! use libav && has_version '>=media-video/ffmpeg-2.2:0'; then
 		myconf+=( --enable-avformat ) #507474
 	fi
 
-	econf \
-		$(use_enable ipv6) \
-		$(use_enable altivec) \
-		$(use_enable vis) \
-		--disable-optimizations \
-		$(use_enable mmap) \
-		$(use_enable oss) \
-		$(use_enable aalib) \
-		$(use_enable directfb) \
-		$(use_enable dxr3) \
-		$(use_enable fbcon fb) \
-		$(use_enable opengl) $(use_enable opengl glu) \
-		$(use_enable vidix) \
-		$(use_enable xinerama) \
-		$(use_enable xvmc) \
-		$(use_enable vdpau) \
-		$(use_enable vaapi) \
-		$(use_enable dvb) \
-		--disable-gnomevfs \
-		$(use_enable samba) \
-		--disable-v4l $(use_enable v4l v4l2) $(use_enable v4l libv4l) \
-		$(use_enable vcd) \
-		$(use_enable vdr) \
-		$(use_enable bluray) \
-		$(use_enable a52 a52dec) \
-		$(use_enable aac faad) \
-		$(use_enable gtk gdkpixbuf) \
-		$(use_enable jpeg libjpeg) \
-		$(use_enable dts) \
-		$(use_enable mad) \
-		$(use_enable modplug) \
-		$(use_enable musepack) \
-		$(use_enable mng) \
-		--disable-real-codecs \
-		--disable-w32dll \
-		$(use_enable vpx) \
-		$(use_with truetype freetype) $(use_with truetype fontconfig) \
-		$(use_with X x) \
-		$(use_with alsa) \
-		--without-esound \
-		$(use_with fusionsound) \
-		$(use_with jack) \
-		$(use_with pulseaudio) \
-		$(use_with libcaca caca) \
-		$(use_with sdl) \
-		$(use_with xcb) \
-		--with-xv-path=/usr/$(get_libdir) \
-		$(use_with imagemagick) \
-		--with-external-dvdnav \
-		$(use_with flac libflac) \
-		$(use_with speex) \
-		$(use_with theora) \
-		$(use_with vorbis) \
-		--with-real-codecs-path=/usr/$(get_libdir)/codecs \
-		--with-w32-path=${win32dir} \
-		$(use_with wavpack) \
-		"${myconf[@]}"
+	econf "${myconf[@]}"
 }
 
 src_compile() {
@@ -214,13 +222,9 @@ src_compile() {
 }
 
 src_install() {
-	emake \
-		DESTDIR="${D}" \
-		docdir="/usr/share/doc/${PF}" \
-		htmldir="/usr/share/doc/${PF}/html" \
-		install
+	emake DESTDIR="${D}" install
 
 	rm -f \
-		"${ED}"usr/lib*/libxine*.la \
-		"${ED}"usr/share/doc/${PF}/COPYING
+		"${ED%/}"usr/lib*/libxine*.la \
+		"${ED%/}"usr/share/doc/${PF}/COPYING
 }
