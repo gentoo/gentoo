@@ -1,0 +1,9 @@
+DEFINED_PHASES=-
+DESCRIPTION=Useful set of performance and usability-oriented extensions to C
+EAPI=6
+HOMEPAGE=http://atheme.org/projects/libmowgli.html
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+LICENSE=BSD-2
+SLOT=0
+SRC_URI=http://distfiles.atheme.org/libmowgli-1.0.0.tar.bz2
+_md5_=004f600990c72e8af3bfcd68d4519609
