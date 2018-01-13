@@ -1423,6 +1423,7 @@ dev-libs/libdynd:cuda - Enable NVIDIA CUDA toolkit support
 dev-libs/libdynd:mkl - Enable a plugin for Intel Math Kernel Library sci-libs/mkl
 dev-libs/libevent:debug - Support runtime debug mode and malloc hooks (for programmers)
 dev-libs/libffi:pax_kernel - Use PaX emulated trampolines, for we can't use PROT_EXEC
+dev-libs/libgcrypt:o-flag-munging - Enable O-flag mangling during build
 dev-libs/libgdata:gnome-online-accounts - Enable net-libs/gnome-online-accounts support
 dev-libs/libgit2:gssapi - Enable GSSAPI support for SPNEGO auth
 dev-libs/libgit2:ssh - Enable SSH transport support
