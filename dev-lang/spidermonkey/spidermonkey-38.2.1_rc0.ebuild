@@ -42,7 +42,8 @@ src_prepare() {
 		"${WORKDIR}"/sm38/mozjs38-fix-tracelogger.patch \
 		"${WORKDIR}"/sm38/mozjs38-copy-headers.patch \
 		"${WORKDIR}"/sm38/mozjs38-pkg-config-version.patch \
-		"${WORKDIR}"/sm38/mozilla_configure_regexp_esr38.patch
+		"${WORKDIR}"/sm38/mozilla_configure_regexp_esr38.patch \
+		"${FILESDIR}"/moz38-dont-hardcode-libc-soname.patch
 
 	eapply_user
 
