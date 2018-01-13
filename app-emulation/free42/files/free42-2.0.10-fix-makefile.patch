@@ -1,0 +1,58 @@
+diff -Nuar a/gtk/Makefile b/gtk/Makefile
+--- a/gtk/Makefile	2018-01-08 02:52:33.000000000 +0100
++++ b/gtk/Makefile	2018-01-13 19:40:49.059998446 +0100
+@@ -15,11 +15,11 @@
+ # along with this program; if not, see http://www.gnu.org/licenses/.
+ ###############################################################################
+ 
+-CFLAGS = -MMD \
++CFLAGS := -MMD \
+ 	 -Wall \
+ 	 -Wno-parentheses \
+ 	 -Wno-write-strings \
+-	 -g \
++	 -Wno-error=narrowing \
+ 	 -I/usr/X11R6/include \
+ 	 $(shell pkg-config --cflags gtk+-2.0) \
+ 	 -DVERSION="\"$(shell cat ../VERSION)\"" \
+@@ -27,21 +27,25 @@
+ 	 -DDECIMAL_GLOBAL_ROUNDING=1 \
+ 	 -DDECIMAL_GLOBAL_ROUNDING_ACCESS_FUNCTIONS=1 \
+ 	 -DDECIMAL_GLOBAL_EXCEPTION_FLAGS=1 \
+-	 -DDECIMAL_GLOBAL_EXCEPTION_FLAGS_ACCESS_FUNCTIONS=1
++	 -DDECIMAL_GLOBAL_EXCEPTION_FLAGS_ACCESS_FUNCTIONS=1 \
++	 ${CFLAGS}
+ 
+-CXXFLAGS = $(CFLAGS) \
++CXXFLAGS := $(CFLAGS) \
+ 	 -fno-exceptions \
+ 	 -fno-rtti \
+-	 -D_WCHAR_T_DEFINED
++	 -D_WCHAR_T_DEFINED \
++	 ${CXXFLAGS}
+ 
+-LDFLAGS = -L/usr/X11R6/lib
+-LIBS = gcc111libbid.a -lXmu $(shell pkg-config --libs gtk+-2.0)
++MYLDFLAGS = -L/usr/X11R6/lib
++LIBS = gcc111libbid.a -lX11 -ldl -lXmu $(shell pkg-config --libs gtk+-2.0)
+ 
+ ifeq "$(shell uname -s)" "Linux"
+-LDFLAGS += -Wl,--hash-style=both
++MYLDFLAGS += -Wl,--hash-style=both
+ LIBS += -lpthread
+ endif
+ 
++MYLDFLAGS += ${LDFLAGS}
++
+ SRCS = shell_main.cc shell_skin.cc skins.cc keymap.cc shell_loadimage.cc \
+ 	shell_spool.cc core_main.cc core_commands1.cc core_commands2.cc \
+ 	core_commands3.cc core_commands4.cc core_commands5.cc \
+@@ -83,7 +87,7 @@
+ endif
+ 
+ $(EXE): $(OBJS)
+-	$(CXX) -o $(EXE) $(LDFLAGS) $(OBJS) $(LIBS)
++	$(CXX) -o $(EXE) $(MYLDFLAGS) $(OBJS) $(LIBS)
+ 
+ $(SRCS) skin2cc.cc keymap2cc.cc skin2cc.conf: symlinks
+ 
