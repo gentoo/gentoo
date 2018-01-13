@@ -9,8 +9,9 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/visualboyadvance-m/visualboyadvance-m.git"
 	inherit git-r3
 else
-	SRC_URI="https://dev.gentoo.org/~radhermit/distfiles/${P}.tar.xz"
+	SRC_URI="https://github.com/visualboyadvance-m/visualboyadvance-m/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
+	S="${WORKDIR}/visualboyadvance-m-${PV}"
 fi
 
 DESCRIPTION="Game Boy, GBC, and GBA emulator forked from VisualBoyAdvance"
@@ -39,6 +40,11 @@ DEPEND="${RDEPEND}
 	x86? ( || ( dev-lang/nasm dev-lang/yasm ) )
 	nls? ( sys-devel/gettext )
 	virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}/${P}-changelog-update.patch"
+	"${FILESDIR}/${P}-read-version-from-changelog.patch"
+)
 
 src_prepare() {
 	default
