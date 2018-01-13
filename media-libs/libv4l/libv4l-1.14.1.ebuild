@@ -28,6 +28,8 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${MY_P}
 
+PATCHES=( "${FILESDIR}"/${PN}-1.14.1-sysmacros.patch ) #580910
+
 pkg_setup() {
 	CONFIG_CHECK="~SHMEM"
 	linux-info_pkg_setup
