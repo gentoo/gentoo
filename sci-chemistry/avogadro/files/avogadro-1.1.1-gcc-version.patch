@@ -1,0 +1,23 @@
+From a8bf7bcd7881147c3bcec97d247a2fa4160019d9 Mon Sep 17 00:00:00 2001
+From: Heiko Becker <heirecka@exherbo.org>
+Date: Tue, 5 Jul 2016 00:10:26 +0200
+Subject: [PATCH] Fix detection of gcc6's version number
+
+...and be safe for further new versions.
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1cbeb8f10..8d2958739 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -69,7 +69,7 @@ if (CMAKE_COMPILER_IS_GNUCXX)
+   # Now check if we can use visibility to selectively export symbols
+   # Get the GCC version - from KDE4 cmake files
+   exec_program(${CMAKE_C_COMPILER} ARGS --version OUTPUT_VARIABLE	_gcc_version_info)
+-  string (REGEX MATCH "[345]\\.[0-9]\\.[0-9]" _gcc_version "${_gcc_version_info}")
++  string (REGEX MATCH "[3-9]\\.[0-9]\\.[0-9]" _gcc_version "${_gcc_version_info}")
+   # gcc on mac just reports: "gcc (GCC) 3.3 20030304 ..." without the
+   # patch level, handle this here:
+   if (NOT _gcc_version)
