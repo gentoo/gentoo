@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ HOMEPAGE="https://github.com/guard/listen"
 
 LICENSE="MIT"
 SLOT="3"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64"
 IUSE="test"
 
 # Block on other packages trying to install a /usr/bin/listen
