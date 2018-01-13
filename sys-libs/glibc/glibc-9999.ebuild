@@ -4,16 +4,13 @@
 EAPI=6
 
 inherit prefix eutils versionator toolchain-funcs flag-o-matic gnuconfig \
-	multilib systemd unpacker multiprocessing
+	multilib systemd multiprocessing
 
 DESCRIPTION="GNU libc C library"
 HOMEPAGE="https://www.gnu.org/software/libc/"
-
 LICENSE="LGPL-2.1+ BSD HPND ISC inner-net rc PCRE"
 RESTRICT="strip" # Strip ourself #46186
-EMULTILIB_PKG="true"
-
-# Configuration variables
+SLOT="2.2"
 
 if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="https://sourceware.org/git/glibc.git"
@@ -36,8 +33,8 @@ SRC_URI+=" multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-${GCC_BOO
 
 IUSE="audit caps compile-locales debug doc gd hardened multilib nscd selinux systemtap profile suid vanilla headers-only"
 
-# Min kernel version glibc requires
-: ${NPTL_KERN_VER:="3.2.0"}
+# Minimum kernel version that glibc requires
+MIN_KERN_VER="3.2.0"
 
 # Here's how the cross-compile logic breaks down ...
 #  CTARGET - machine that will target the binaries
@@ -52,7 +49,7 @@ IUSE="audit caps compile-locales debug doc gd hardened multilib nscd selinux sys
 # For install paths:
 #  CHOST = CTARGET  - install into /
 #  CHOST != CTARGET - install into /usr/CTARGET/
-
+#
 export CBUILD=${CBUILD:-${CHOST}}
 export CTARGET=${CTARGET:-${CHOST}}
 if [[ ${CTARGET} == ${CHOST} ]] ; then
@@ -61,18 +58,8 @@ if [[ ${CTARGET} == ${CHOST} ]] ; then
 	fi
 fi
 
-is_crosscompile() {
-	[[ ${CHOST} != ${CTARGET} ]]
-}
-
-just_headers() {
-	is_crosscompile && use headers-only
-}
-
-SLOT="2.2"
-
-# General: We need a new-enough binutils/gcc to match upstream baseline.
-# arch: we need to make sure our binutils/gcc supports TLS.
+# We need a new-enough binutils/gcc to match upstream baseline.
+# Also we need to make sure our binutils/gcc supports TLS.
 COMMON_DEPEND="
 	nscd? ( selinux? (
 		audit? ( sys-process/audit )
@@ -89,8 +76,8 @@ DEPEND="${COMMON_DEPEND}
 	doc? ( sys-apps/texinfo )
 "
 RDEPEND="${COMMON_DEPEND}
-	!sys-kernel/ps3-sources
 	sys-apps/gentoo-functions
+	!sys-kernel/ps3-sources
 	!sys-libs/nss-db
 "
 
@@ -111,24 +98,28 @@ else
 fi
 
 #
-# helper functions
+# Small helper functions
 #
+
+is_crosscompile() {
+	[[ ${CHOST} != ${CTARGET} ]]
+}
+
+just_headers() {
+	is_crosscompile && use headers-only
+}
 
 alt_prefix() {
 	is_crosscompile && echo /usr/${CTARGET}
 }
 
-# This indirection is for binpkgs. #523332
-_nonfatal() { nonfatal "$@" ; }
-
-# We need to be able to set alternative headers for
-# compiling for non-native platform
-# Will also become useful for testing kernel-headers without screwing up
-# the whole system.
-# note: intentionally undocumented.
+# We need to be able to set alternative headers for compiling for non-native 
+# platform. Will also become useful for testing kernel-headers without screwing 
+# up the whole system.
 alt_headers() {
 	echo ${ALT_HEADERS:=$(alt_prefix)/usr/include}
 }
+
 alt_build_headers() {
 	if [[ -z ${ALT_BUILD_HEADERS} ]] ; then
 		ALT_BUILD_HEADERS="${EPREFIX}$(alt_headers)"
@@ -164,7 +155,7 @@ glibc_compile_test() {
 	rm -f glibc-test*
 	printf '%b' "$*" > glibc-test.c
 
-	_nonfatal emake -s glibc-test
+	nonfatal emake -s glibc-test
 	ret=$?
 
 	popd >/dev/null
@@ -347,7 +338,10 @@ setup_flags() {
 	# problems as possible.
 	strip-flags
 	strip-unsupported-flags
-	filter-flags -m32 -m64 -mabi=*
+	filter-flags -m32 -m64 '-mabi=*'
+
+	# glibc aborts if rpath is set by LDFLAGS
+	filter-ldflags '-Wl,-rpath=*'
 
 	# Bug 492892.
 	filter-flags -frecord-gcc-switches
@@ -366,24 +360,14 @@ setup_flags() {
 
 	# Lock glibc at -O2 -- linuxthreads needs it and we want to be
 	# conservative here.  -fno-strict-aliasing is to work around #155906
-	filter-flags -O?
+	filter-flags '-O?'
 	append-flags -O2 -fno-strict-aliasing
 
 	# Can't build glibc itself with fortify code.  Newer versions add
 	# this flag for us, so no need to do it manually.
 	version_is_at_least 2.16 ${PV} || append-cppflags -U_FORTIFY_SOURCE
 
-	# building glibc <2.25 with SSP is fraught with difficulty, especially
-	# due to __stack_chk_fail_local which would mean significant changes
-	# to the glibc build process. See bug #94325 #293721
-	# Note we have to handle both user-given CFLAGS and gcc defaults via
-	# spec rules here.  We can't simply add -fno-stack-protector as it gets
-	# added before user flags, and we can't just filter-flags because
-	# _filter_hardened doesn't support globs.
-	filter-flags -fstack-protector*
-	if ! version_is_at_least 2.25 ; then
-		tc-enables-ssp && append-flags $(test-flags -fno-stack-protector)
-	fi
+	filter-flags '-fstack-protector*'
 
 	if [[ $(gcc-major-version) -lt 6 ]]; then
 		# Starting with gcc-6 (and fully upstreamed pie patches) we control
@@ -400,21 +384,6 @@ setup_flags() {
 			filter-flags -fPIE
 		fi
 	fi
-}
-
-want_nptl() {
-	[[ -z ${LT_VER} ]] && return 0
-	want_tls || return 1
-	use nptl || return 1
-
-	# Older versions of glibc had incomplete arch support for nptl.
-	# But if you're building those now, you can handle USE=nptl yourself.
-	return 0
-}
-
-want_linuxthreads() {
-	[[ -z ${LT_VER} ]] && return 1
-	use linuxthreads
 }
 
 want_tls() {
@@ -518,10 +487,6 @@ foreach_abi() {
 	return ${ret}
 }
 
-just_headers() {
-	is_crosscompile && use headers-only
-}
-
 glibc_banner() {
 	local b="Gentoo ${PVR}"
 	[[ -n ${SNAP_VER} ]] && b+=" snapshot ${SNAP_VER}"
@@ -583,7 +548,7 @@ check_nptl_support() {
 	local run_kv build_kv want_kv
 	run_kv=$(int_to_KV $(get_KV))
 	build_kv=$(int_to_KV $(get_kheader_version))
-	want_kv=${NPTL_KERN_VER}
+	want_kv=${MIN_KERN_VER}
 
 	ebegin "Checking gcc for __thread support"
 	if ! eend $(want__thread ; echo $?) ; then
@@ -857,7 +822,7 @@ glibc_do_configure() {
 
 	[[ $(tc-is-softfloat) == "yes" ]] && myconf+=( --without-fp )
 
-	myconf+=( --enable-kernel=${NPTL_KERN_VER} )
+	myconf+=( --enable-kernel=${MIN_KERN_VER} )
 
 	# Since SELinux support is only required for nscd, only enable it if:
 	# 1. USE selinux
