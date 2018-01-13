@@ -1,11 +1,11 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils multilib python-single-r1 versionator virtualx
+inherit cmake-utils python-single-r1 versionator virtualx
 
 DESCRIPTION="Abstract, manage and coordinate execution of tasks"
 HOMEPAGE="https://www.openchemistry.org/projects/molequeue/"
@@ -22,6 +22,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 
 RDEPEND="${PYTHON_DEPS}
 	dev-qt/qtcore:5
+	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtwidgets:5
 	zeromq? ( net-libs/cppzmq:0= )"
@@ -41,13 +42,13 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_enable test TESTING)
-		$(cmake-utils_use_use zeromq ZERO_MQ)
-		$(cmake-utils_use_build doc DOCUMENTATION)
-		$(cmake-utils_use client MoleQueue_BUILD_CLIENT)
-		$(cmake-utils_use server MoleQueue_BUILD_APPLICATION)
+		-DBUILD_DOCUMENTATION=$(usex doc)
+		-DMoleQueue_BUILD_CLIENT=$(usex client)
+		-DoleQueue_BUILD_APPLICATION=$(usex server)
+		-DENABLE_TESTING=$(usex test)
+		-DUSE_ZERO_MQ=$(usex zeromq)
 		-DINSTALL_LIBRARY_DIR=$(get_libdir)
-		)
+	)
 	use zeromq && \
 		mycmakeargs+=( -DZeroMQ_ROOT_DIR=\"${EPREFIX}/usr\" )
 
