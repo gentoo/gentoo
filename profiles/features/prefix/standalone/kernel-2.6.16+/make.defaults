@@ -14,5 +14,5 @@ ac_cv_func_utimensat=no
 ac_cv_func_pipe2=no
 
 # >=python-3 is masked.
-PYTHON_TARGETS="-python3_*"
+PYTHON_TARGETS=python2_7
 PYTHON_SINGLE_TARGET=python2_7
