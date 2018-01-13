@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 inherit eutils elisp-common flag-o-matic autotools
 
 DESCRIPTION="Graphics Layout Engine"
@@ -30,8 +30,12 @@ RDEPEND="${DEPEND}
 
 S="${WORKDIR}"/${MY_P}
 
+PATCHES=( "${FILESDIR}"/${P}-parallel.patch
+		  "${FILESDIR}"/${P}-c++14.patch
+		)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-4.2.4b-parallel.patch
+	default
 	eaclocal
 	eautoconf
 }
