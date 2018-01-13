@@ -23,20 +23,11 @@ RDEPEND="sys-libs/zlib
 		!libav? ( media-video/ffmpeg:= )
 		libav? ( media-video/libav:= )
 	)
-	sdl? (
-		media-libs/libsdl
-		media-libs/libsdl2
-	)
+	sdl? ( media-libs/libsdl2 )
 	qt5? (
-		dev-db/sqlite
-		dev-qt/assistant:5
 		dev-qt/qtcore:5
-		dev-qt/qtdeclarative:5
 		dev-qt/qtgui:5
-		dev-qt/qtmultimedia:5
 		dev-qt/qtopengl:5
-		dev-qt/qtsvg:5
-		dev-qt/qtwebkit:5
 		dev-qt/qtwidgets:5
 	)"
 
