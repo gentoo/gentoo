@@ -7215,7 +7215,6 @@ media-gfx/pdf2svg 0.2.1: pdf2svg is based on poppler and cairo and can convert p
 media-gfx/peps 2.0: Preprocess and convert EPS files to bitmap with Ghostscript
 media-gfx/photopc 3.07: Utility to control digital cameras based on Sierra Imaging firmware
 media-gfx/photoqt 1.5.1-r1: Simple but powerful Qt-based image viewer
-media-gfx/pictureflow 0.1.0: Qt widget to display images with animated transition effect
 media-gfx/pinta 1.6-r2: Simple Painting for Gtk
 media-gfx/pixie 2.2.6-r1: RenderMan like photorealistic renderer
 media-gfx/pngcheck 2.3.0: verifies the integrity of PNG, JNG and MNG files with internal checksums
@@ -8875,7 +8874,7 @@ net-misc/tn5250 0.17.4-r1: Telnet client for the IBM AS/400 that emulates 5250 t
 net-misc/tokyotyrant 1.1.41-r1: A network interface to Tokyo Cabinet
 net-misc/ttytter 2.1.00: A multi-functional, console-based Twitter client
 net-misc/udpcast 20120424: Multicast file transfer tool
-net-misc/unison 2.48.3 2.48.4: Two-way cross-platform file synchronizer
+net-misc/unison 2.48.4: Two-way cross-platform file synchronizer
 net-misc/unix2tcp 0.8.2-r1: a connection forwarder that converts Unix sockets into TCP sockets
 net-misc/urlview 0.9: extracts urls from text and will send them to another app
 net-misc/vconfig 1.9: 802.1Q vlan control utility
