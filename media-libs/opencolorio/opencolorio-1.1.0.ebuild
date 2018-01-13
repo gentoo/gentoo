@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,8 +11,7 @@ inherit cmake-utils python-single-r1 vcs-snapshot
 DESCRIPTION="A color management framework for visual effects and animation"
 HOMEPAGE="http://opencolorio.org/"
 
-MY_GIT_COMMIT="7e7f10afce97254cdc1295a3594ddd5e6fb555d6"
-SRC_URI="https://github.com/imageworks/OpenColorIO/archive/${MY_GIT_COMMIT}.tar.gz \
+SRC_URI="https://github.com/imageworks/OpenColorIO/archive/v${PV}.tar.gz \
 		-> ${P}.tar.gz"
 
 LICENSE="BSD"
@@ -45,7 +44,7 @@ DEPEND="${RDEPEND}
 # Restricting tests, bugs #439790 and #447908
 RESTRICT="test"
 
-PATCHES=( "${FILESDIR}/${PN}-1.0.9-cmake-fixes-v1.patch" )
+PATCHES=( "${FILESDIR}/${P}-cmake-fixes.patch" )
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
