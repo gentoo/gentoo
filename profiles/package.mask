@@ -32,6 +32,11 @@
 # Andreas Sturmlechner <asturm@gentoo.org> (13 Jan 2018)
 # Dead upstream, depends on dead Qt4.
 # Masked for removal in 30 days.
+sys-kernel/kccmp
+
+# Andreas Sturmlechner <asturm@gentoo.org> (13 Jan 2018)
+# Dead upstream, depends on dead Qt4.
+# Masked for removal in 30 days.
 app-backup/qt4-fsarchiver
 
 # Andreas Sturmlechner <asturm@gentoo.org> (13 Jan 2018)
