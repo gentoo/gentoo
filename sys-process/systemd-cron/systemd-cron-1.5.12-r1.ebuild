@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -26,6 +26,8 @@ DEPEND="sys-process/cronbase
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 src_prepare() {
+	epatch "${FILESDIR}/1.5.12-generatordir.patch"
+
 	python_fix_shebang --force "${S}/src/bin"
 
 	sed -i \
