@@ -7,7 +7,7 @@ PLOCALES="ar ca cs da_DK de el en es fa fr hr hu it ja ko ms_MY nb nl pl pt pt_B
 PLOCALE_BACKUP="en"
 WX_GTK_VER="3.0"
 
-inherit cmake-utils desktop l10n pax-utils toolchain-funcs versionator wxwidgets
+inherit cmake-utils desktop gnome2-utils l10n pax-utils toolchain-funcs versionator wxwidgets
 
 if [[ ${PV} == *9999 ]]
 then
@@ -174,4 +174,10 @@ pkg_postinst() {
 		ewarn "If you want microphone capabilities in dolphin-emu, rebuild with"
 		ewarn "USE=\"portaudio\""
 	fi
+
+	gnome2_icon_cache_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
 }
