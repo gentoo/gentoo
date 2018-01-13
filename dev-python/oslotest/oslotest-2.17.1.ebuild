@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -59,8 +59,9 @@ python_test() {
 }
 
 python_install_all() {
-	doman doc/build/man/oslotest.1
-	use doc && local HTML_DOCS=( doc/build/html/. )
+	if use doc; then
+		doman doc/build/man/oslotest.1
+	fi
 
 	distutils-r1_python_install_all
 }
