@@ -563,7 +563,6 @@ app-editors/le 1.14.3 1.16.3: Terminal text editor
 app-editors/leafpad 0.8.18.1: A simple GTK2 text editor
 app-editors/leo 5.1: Leo: Literate Editor with Outlines
 app-editors/levee 3.5a: Really tiny vi clone, for things like rescue disks
-app-editors/lfhex 0.42: A fast hex-editor with support for large files and comparing binary files
 app-editors/lpe 1.2.6.13: a lightweight programmers editor
 app-editors/mg 20161005 20170828: MicroGnuEmacs, a port from the BSDs
 app-editors/moe 1.6: A powerful and user-friendly console text editor
@@ -10816,7 +10815,6 @@ x11-misc/synergy 1.6.3: Lets you easily share a single mouse and keyboard betwee
 x11-misc/tint2 0.12.12: tint2 is a lightweight panel/taskbar for Linux.
 x11-misc/tintwizard 0.3.4-r2: GUI wizard which generates config files for tint2 panels
 x11-misc/touchcal 0.80: Touchscreen calibration utility
-x11-misc/touchfreeze 0.2.5-r1: X11 touch pad driver configuration utility
 x11-misc/trayer 1.0-r2: Lightweight GTK+ based systray for UNIX desktop
 x11-misc/trayer-srg 1.1.6-r1: trayer fork with multi monitor support and cleaned up codebase
 x11-misc/treeline 1.4.1-r1 2.0.2: TreeLine is a structured information storage program
