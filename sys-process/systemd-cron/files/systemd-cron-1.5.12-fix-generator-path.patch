@@ -1,0 +1,21 @@
+--- ./src/bin/crontab.py	2018-01-04 12:49:44.941784330 +0100
++++ ./src/bin/crontab.py	2018-01-04 12:53:44.542976606 +0100
+@@ -333,7 +333,7 @@
+             'show': show,
+             }.get(args.action, replace)
+ 
+-    loader = importlib.machinery.SourceFileLoader('name', '@libdir@/systemd/system-generators/systemd-crontab-generator')
++    loader = importlib.machinery.SourceFileLoader('name', '@generatordir@/systemd-crontab-generator')
+     parser = loader.load_module()
+ 
+     action(cron_file, args)
+--- ./Makefile.in	2018-01-04 12:59:37.730545945 +0100
++++ ./Makefile.in	2018-01-04 13:02:03.473651437 +0100
+@@ -60,6 +60,7 @@
+ 		-e "s|\@bindir\@|$(bindir)|g" \
+ 		-e "s|\@libdir\@|$(libdir)|g" \
+ 		-e "s|\@unitdir\@|$(unitdir)|g" \
++		-e "s|\@generatordir\@|$(generatordir)|g" \
+ 		-e "s|\@runparts\@|$(runparts)|g" \
+ 		-e "s|\@version\@|$(version)|g" \
+ 		-e "s|\@persistent\@|$(persistent)|g" \
