@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">nagios-core</product>
   <announced>2009-07-19</announced>
-  <revised>2009-07-19: 01</revised>
+  <revised count="01">2009-07-19</revised>
   <bug>245887</bug>
   <bug>249876</bug>
   <bug>275288</bug>

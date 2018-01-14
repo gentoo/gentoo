@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">mantis</product>
   <announced>2008-03-03</announced>
-  <revised>2008-03-03: 01</revised>
+  <revised count="01">2008-03-03</revised>
   <bug>203791</bug>
   <access>remote</access>
   <affected>

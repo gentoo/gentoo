@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">graphite</product>
   <announced>2017-06-22</announced>
-  <revised>2017-06-22: 1</revised>
+  <revised count="1">2017-06-22</revised>
   <bug>616034</bug>
   <access>remote</access>
   <affected>

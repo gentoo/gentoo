@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">mcollective</product>
   <announced>2017-09-04</announced>
-  <revised>2017-09-04: 1</revised>
+  <revised count="1">2017-09-04</revised>
   <bug>624704</bug>
   <access>remote</access>
   <affected>

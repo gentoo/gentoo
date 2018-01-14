@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">mediawiki</product>
   <announced>2005-07-20</announced>
-  <revised>2005-08-11: 03</revised>
+  <revised count="03">2005-08-11</revised>
   <bug>99132</bug>
   <access>remote</access>
   <affected>

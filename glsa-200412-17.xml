@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">kfax</product>
   <announced>2004-12-19</announced>
-  <revised>2005-01-12: 04</revised>
+  <revised count="04">2005-01-12</revised>
   <bug>73795</bug>
   <access>remote</access>
   <affected>

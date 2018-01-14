@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">rsyslog</product>
   <announced>2014-12-24</announced>
-  <revised>2014-12-24: 1</revised>
+  <revised count="1">2014-12-24</revised>
   <bug>395709</bug>
   <bug>491856</bug>
   <bug>524058</bug>

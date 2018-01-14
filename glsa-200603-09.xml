@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">squirrelmail</product>
   <announced>2006-03-12</announced>
-  <revised>2006-03-12: 01</revised>
+  <revised count="01">2006-03-12</revised>
   <bug>123781</bug>
   <access>remote</access>
   <affected>

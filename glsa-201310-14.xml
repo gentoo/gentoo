@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">groff</product>
   <announced>2013-10-25</announced>
-  <revised>2013-10-25: 1</revised>
+  <revised count="1">2013-10-25</revised>
   <bug>386335</bug>
   <access>local, remote</access>
   <affected>

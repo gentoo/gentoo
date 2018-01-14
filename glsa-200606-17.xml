@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">net-nds/openldap</product>
   <announced>2006-06-15</announced>
-  <revised>2006-06-15: 01</revised>
+  <revised count="01">2006-06-15</revised>
   <bug>134010</bug>
   <access>local</access>
   <affected>

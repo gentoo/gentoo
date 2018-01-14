@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">net-misc/ssh</product>
   <announced>2007-03-14</announced>
-  <revised>2007-03-14: 01</revised>
+  <revised count="01">2007-03-14</revised>
   <bug>168584</bug>
   <access>remote</access>
   <affected>

@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">CUPS</product>
   <announced>2004-12-28</announced>
-  <revised>2005-01-12: 02</revised>
+  <revised count="02">2005-01-12</revised>
   <bug>74479</bug>
   <bug>75197</bug>
   <bug>77023</bug>

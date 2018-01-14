@@ -5,7 +5,7 @@
   <synopsis>A vulnerability in sudo allows local users to gain root privileges.</synopsis>
   <product type="ebuild">sudo</product>
   <announced>2017-10-08</announced>
-  <revised>2017-10-08: 1</revised>
+  <revised count="1">2017-10-08</revised>
   <bug>620482</bug>
   <access>local</access>
   <affected>

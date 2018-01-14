@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">mariadb,mysql</product>
   <announced>2017-11-10</announced>
-  <revised>2017-11-10: 1</revised>
+  <revised count="1">2017-11-10</revised>
   <bug>635704</bug>
   <bug>635706</bug>
   <access>remote</access>

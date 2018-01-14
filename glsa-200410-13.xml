@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">bnc</product>
   <announced>2004-10-15</announced>
-  <revised>2006-05-22: 02</revised>
+  <revised count="02">2006-05-22</revised>
   <bug>66912</bug>
   <access>remote</access>
   <affected>

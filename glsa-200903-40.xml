@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">analog</product>
   <announced>2009-03-29</announced>
-  <revised>2009-03-29: 01</revised>
+  <revised count="01">2009-03-29</revised>
   <bug>249140</bug>
   <access>local</access>
   <affected>

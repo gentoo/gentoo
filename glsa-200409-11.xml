@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">star</product>
   <announced>2004-09-07</announced>
-  <revised>2006-05-30: 03</revised>
+  <revised count="03">2006-05-30</revised>
   <bug>61797</bug>
   <access>local</access>
   <affected>

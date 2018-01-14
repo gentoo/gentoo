@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">GnomeVFS</product>
   <announced>2005-04-08</announced>
-  <revised>2005-04-13: 02</revised>
+  <revised count="02">2005-04-13</revised>
   <bug>84936</bug>
   <access>remote</access>
   <affected>

@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">SpamAssassin, Vipul's Razor</product>
   <announced>2005-06-21</announced>
-  <revised>2006-05-22: 03</revised>
+  <revised count="03">2006-05-22</revised>
   <bug>94722</bug>
   <bug>95492</bug>
   <bug>96776</bug>

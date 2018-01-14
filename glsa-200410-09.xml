@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">lesstif</product>
   <announced>2004-10-09</announced>
-  <revised>2004-10-09: 01</revised>
+  <revised count="01">2004-10-09</revised>
   <bug>66647</bug>
   <access>remote</access>
   <affected>

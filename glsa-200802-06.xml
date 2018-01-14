@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">scponly</product>
   <announced>2008-02-12</announced>
-  <revised>2008-02-13: 02</revised>
+  <revised count="02">2008-02-13</revised>
   <bug>201726</bug>
   <bug>203099</bug>
   <access>local</access>

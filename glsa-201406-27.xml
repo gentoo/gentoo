@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">polkit spice-gtk systemd hplip libvirt</product>
   <announced>2014-06-26</announced>
-  <revised>2014-06-26: 1</revised>
+  <revised count="1">2014-06-26</revised>
   <bug>484486</bug>
   <bug>484488</bug>
   <bug>485420</bug>

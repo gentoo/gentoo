@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">shadowircd</product>
   <announced>2014-05-18</announced>
-  <revised>2014-05-18: 1</revised>
+  <revised count="1">2014-05-18</revised>
   <bug>449544</bug>
   <bug>449790</bug>
   <access>remote</access>

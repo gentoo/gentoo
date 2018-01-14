@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">memcached</product>
   <announced>2014-06-15</announced>
-  <revised>2014-06-15: 1</revised>
+  <revised count="1">2014-06-15</revised>
   <bug>279386</bug>
   <bug>452098</bug>
   <bug>467962</bug>

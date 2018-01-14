@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">200402-02</product>
   <announced>2004-02-11</announced>
-  <revised>2004-02-11: 01</revised>
+  <revised count="01">2004-02-11</revised>
   <access>local</access>
   <affected>
     <package name="x11-base/xfree" auto="yes" arch="*">

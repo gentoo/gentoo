@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">heimdal</product>
   <announced>2005-06-29</announced>
-  <revised>2005-06-29: 01</revised>
+  <revised count="01">2005-06-29</revised>
   <bug>96727</bug>
   <access>remote</access>
   <affected>

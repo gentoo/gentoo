@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">win32codecs</product>
   <announced>2013-12-16</announced>
-  <revised>2013-12-16: 1</revised>
+  <revised count="1">2013-12-16</revised>
   <bug>232999</bug>
   <access>remote</access>
   <affected>

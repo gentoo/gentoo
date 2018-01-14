@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">libgadu</product>
   <announced>2015-08-15</announced>
-  <revised>2015-08-15: 1</revised>
+  <revised count="1">2015-08-15</revised>
   <bug>490238</bug>
   <bug>505558</bug>
   <bug>510714</bug>

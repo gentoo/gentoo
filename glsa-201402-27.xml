@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">pidgin-knotify</product>
   <announced>2014-02-26</announced>
-  <revised>2014-02-26: 1</revised>
+  <revised count="1">2014-02-26</revised>
   <bug>336916</bug>
   <access>remote</access>
   <affected>

@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">net-snmp</product>
   <announced>2014-09-01</announced>
-  <revised>2014-09-01: 1</revised>
+  <revised count="1">2014-09-01</revised>
   <bug>431752</bug>
   <bug>493296</bug>
   <bug>502968</bug>

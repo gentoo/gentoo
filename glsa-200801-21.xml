@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">xdg-utils</product>
   <announced>2008-01-30</announced>
-  <revised>2008-01-30: 01</revised>
+  <revised count="01">2008-01-30</revised>
   <bug>207331</bug>
   <access>remote</access>
   <affected>

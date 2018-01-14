@@ -5,7 +5,7 @@
   <synopsis>Multiple vulnerabilities were found in Apache HTTP Server.</synopsis>
   <product type="ebuild">apache</product>
   <announced>2012-06-24</announced>
-  <revised>2012-06-24: 1</revised>
+  <revised count="1">2012-06-24</revised>
   <bug>308049</bug>
   <bug>330195</bug>
   <bug>380475</bug>

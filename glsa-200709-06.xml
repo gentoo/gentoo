@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">flac123</product>
   <announced>2007-09-14</announced>
-  <revised>2007-09-14: 01</revised>
+  <revised count="01">2007-09-14</revised>
   <bug>186220</bug>
   <access>remote</access>
   <affected>

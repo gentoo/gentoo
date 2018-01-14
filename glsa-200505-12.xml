@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">postgresql</product>
   <announced>2005-05-15</announced>
-  <revised>2007-06-26: 04</revised>
+  <revised count="04">2007-06-26</revised>
   <bug>91231</bug>
   <access>remote</access>
   <affected>

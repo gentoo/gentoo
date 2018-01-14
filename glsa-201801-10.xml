@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">LibXfont, LibXfont2</product>
   <announced>2018-01-08</announced>
-  <revised>2018-01-08: 1</revised>
+  <revised count="1">2018-01-08</revised>
   <bug>639064</bug>
   <access>local</access>
   <affected>

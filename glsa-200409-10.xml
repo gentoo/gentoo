@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">multi-gnome-terminal</product>
   <announced>2004-09-06</announced>
-  <revised>2004-09-06: 01</revised>
+  <revised count="01">2004-09-06</revised>
   <bug>62322</bug>
   <access>local</access>
   <affected>

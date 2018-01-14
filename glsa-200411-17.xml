@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">mtink</product>
   <announced>2004-11-09</announced>
-  <revised>2006-05-22: 02</revised>
+  <revised count="02">2006-05-22</revised>
   <bug>70310</bug>
   <access>local</access>
   <affected>

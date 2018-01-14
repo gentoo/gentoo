@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">emul-linux-x86-qtlibs</product>
   <announced>2007-03-04</announced>
-  <revised>2007-03-04: 01</revised>
+  <revised count="01">2007-03-04</revised>
   <bug>153704</bug>
   <access>remote</access>
   <affected>

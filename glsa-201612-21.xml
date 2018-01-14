@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">sqlite</product>
   <announced>2016-12-08</announced>
-  <revised>2016-12-08: 1</revised>
+  <revised count="1">2016-12-08</revised>
   <bug>549258</bug>
   <bug>574420</bug>
   <access>remote</access>

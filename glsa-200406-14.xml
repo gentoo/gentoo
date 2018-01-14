@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">aspell</product>
   <announced>2004-06-17</announced>
-  <revised>2006-05-22: 03</revised>
+  <revised count="03">2006-05-22</revised>
   <bug>53389</bug>
   <access>local</access>
   <affected>

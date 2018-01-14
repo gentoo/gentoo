@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">bochs</product>
   <announced>2007-11-17</announced>
-  <revised>2007-11-17: 01</revised>
+  <revised count="01">2007-11-17</revised>
   <bug>188148</bug>
   <access>local</access>
   <affected>

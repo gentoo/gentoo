@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">nvidia-drivers</product>
   <announced>2012-06-23</announced>
-  <revised>2012-06-23: 1</revised>
+  <revised count="1">2012-06-23</revised>
   <bug>411617</bug>
   <access>local</access>
   <affected>

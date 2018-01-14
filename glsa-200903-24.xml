@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">shadow</product>
   <announced>2009-03-10</announced>
-  <revised>2009-03-10: 01</revised>
+  <revised count="01">2009-03-10</revised>
   <bug>251320</bug>
   <access>local</access>
   <affected>

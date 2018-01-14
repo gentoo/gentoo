@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">Exim</product>
   <announced>2014-01-27</announced>
-  <revised>2014-01-27: 3</revised>
+  <revised count="3">2014-01-27</revised>
   <bug>322665</bug>
   <bug>348249</bug>
   <bug>353352</bug>

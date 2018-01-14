@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">emacs</product>
   <announced>2014-03-20</announced>
-  <revised>2014-03-20: 1</revised>
+  <revised count="1">2014-03-20</revised>
   <bug>398239</bug>
   <bug>431178</bug>
   <access>remote</access>

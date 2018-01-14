@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">ebuild OpenTTD</product>
   <announced>2011-11-11</announced>
-  <revised>2011-11-11: 2</revised>
+  <revised count="2">2011-11-11</revised>
   <bug>381799</bug>
   <access>local, remote</access>
   <affected>

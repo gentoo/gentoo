@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">fwbuilder</product>
   <announced>2012-01-23</announced>
-  <revised>2012-01-23: 1</revised>
+  <revised count="1">2012-01-23</revised>
   <bug>235809</bug>
   <bug>285861</bug>
   <access>local</access>

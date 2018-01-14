@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">gedit</product>
   <announced>2009-03-30</announced>
-  <revised>2009-03-30: 01</revised>
+  <revised count="01">2009-03-30</revised>
   <bug>257004</bug>
   <access>local</access>
   <affected>

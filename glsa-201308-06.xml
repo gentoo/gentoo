@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">mysql</product>
   <announced>2013-08-29</announced>
-  <revised>2013-08-30: 2</revised>
+  <revised count="2">2013-08-30</revised>
   <bug>399375</bug>
   <bug>411503</bug>
   <bug>412889</bug>

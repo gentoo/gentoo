@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">SpamAssassin</product>
   <announced>2004-08-09</announced>
-  <revised>2006-05-22: 02</revised>
+  <revised count="02">2006-05-22</revised>
   <bug>59483</bug>
   <access>remote</access>
   <affected>

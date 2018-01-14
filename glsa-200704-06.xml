@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">evince</product>
   <announced>2007-04-06</announced>
-  <revised>2007-04-06: 01</revised>
+  <revised count="01">2007-04-06</revised>
   <bug>156573</bug>
   <access>remote</access>
   <affected>

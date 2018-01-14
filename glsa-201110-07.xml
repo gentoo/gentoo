@@ -5,7 +5,7 @@
   <synopsis>A Denial of Service vulnerability was found in vsftpd.</synopsis>
   <product type="ebuild">vsftpd</product>
   <announced>2011-10-10</announced>
-  <revised>2011-10-10: 1</revised>
+  <revised count="1">2011-10-10</revised>
   <bug>357001</bug>
   <access>remote</access>
   <affected>

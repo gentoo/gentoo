@@ -10,7 +10,7 @@
   </synopsis>
   <product type="ebuild">a2ps</product>
   <announced>2005-01-04</announced>
-  <revised>2006-05-22: 03</revised>
+  <revised count="03">2006-05-22</revised>
   <bug>75784</bug>
   <bug>61500</bug>
   <access>local and remote</access>

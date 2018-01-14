@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">asterisk</product>
   <announced>2014-01-21</announced>
-  <revised>2014-01-21: 1</revised>
+  <revised count="1">2014-01-21</revised>
   <bug>449828</bug>
   <bug>463622</bug>
   <bug>482776</bug>

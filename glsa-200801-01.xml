@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">remote</product>
   <announced>2008-01-09</announced>
-  <revised>2008-01-09: 01</revised>
+  <revised count="01">2008-01-09</revised>
   <bug>203106</bug>
   <access>remote</access>
   <affected>

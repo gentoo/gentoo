@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">evolution-data-server</product>
   <announced>2007-07-02</announced>
-  <revised>2007-07-02: 01</revised>
+  <revised count="01">2007-07-02</revised>
   <bug>182011</bug>
   <access>remote</access>
   <affected>

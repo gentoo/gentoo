@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">PDFlib</product>
   <announced>2004-12-05</announced>
-  <revised>2004-12-05: 01</revised>
+  <revised count="01">2004-12-05</revised>
   <bug>69043</bug>
   <access>remote</access>
   <affected>

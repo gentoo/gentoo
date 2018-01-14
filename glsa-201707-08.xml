@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">feh</product>
   <announced>2017-07-08</announced>
-  <revised>2017-08-06: 2</revised>
+  <revised count="2">2017-08-06</revised>
   <bug>616470</bug>
   <access>remote</access>
   <affected>

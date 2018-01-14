@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">openvswitch</product>
   <announced>2017-01-01</announced>
-  <revised>2017-01-01: 2</revised>
+  <revised count="2">2017-01-01</revised>
   <bug>577568</bug>
   <access>remote</access>
   <affected>

@@ -10,7 +10,7 @@
   </synopsis>
   <product type="ebuild">OpenSSL</product>
   <announced>2004-11-08</announced>
-  <revised>2006-08-23: 02</revised>
+  <revised count="02">2006-08-23</revised>
   <bug>68404</bug>
   <bug>68407</bug>
   <access>local</access>

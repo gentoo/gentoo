@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">nagios</product>
   <announced>2017-10-18</announced>
-  <revised>2017-10-18: 1</revised>
+  <revised count="1">2017-10-18</revised>
   <bug>602216</bug>
   <bug>628086</bug>
   <access>local, remote</access>

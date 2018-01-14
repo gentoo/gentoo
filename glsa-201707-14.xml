@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">gajim</product>
   <announced>2017-07-10</announced>
-  <revised>2017-07-10: 1</revised>
+  <revised count="1">2017-07-10</revised>
   <bug>620146</bug>
   <access>remote</access>
   <affected>

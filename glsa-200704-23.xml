@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">capi4k-utils</product>
   <announced>2007-04-27</announced>
-  <revised>2007-04-27: 01</revised>
+  <revised count="01">2007-04-27</revised>
   <bug>170870</bug>
   <access>local</access>
   <affected>

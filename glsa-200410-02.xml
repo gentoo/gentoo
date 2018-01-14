@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">Netpbm</product>
   <announced>2004-10-04</announced>
-  <revised>2004-10-04: 01</revised>
+  <revised count="01">2004-10-04</revised>
   <bug>65647</bug>
   <access>local</access>
   <affected>

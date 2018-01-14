@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">gtk+</product>
   <announced>2005-11-16</announced>
-  <revised>2005-11-16: 01</revised>
+  <revised count="01">2005-11-16</revised>
   <bug>112608</bug>
   <access>remote</access>
   <affected>

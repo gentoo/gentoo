@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">symfony</product>
   <announced>2014-05-18</announced>
-  <revised>2014-05-18: 1</revised>
+  <revised count="1">2014-05-18</revised>
   <bug>444696</bug>
   <access>remote</access>
   <affected>

@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">Proxytunnel</product>
   <announced>2004-11-03</announced>
-  <revised>2004-11-03: 01</revised>
+  <revised count="01">2004-11-03</revised>
   <bug>69379</bug>
   <access>remote</access>
   <affected>

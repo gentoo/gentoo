@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">bind</product>
   <announced>2014-01-29</announced>
-  <revised>2014-01-29: 1</revised>
+  <revised count="1">2014-01-29</revised>
   <bug>437828</bug>
   <bug>446094</bug>
   <bug>453974</bug>

@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">sun-jdk, sun-jre-bin, emul-linux-x86-java</product>
   <announced>2008-04-17</announced>
-  <revised>2010-03-05: 06</revised>
+  <revised count="06">2010-03-05</revised>
   <bug>178851</bug>
   <bug>178962</bug>
   <bug>183580</bug>

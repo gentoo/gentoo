@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">python-updater</product>
   <announced>2010-09-21</announced>
-  <revised>2010-09-21: 01</revised>
+  <revised count="01">2010-09-21</revised>
   <bug>288361</bug>
   <access>local</access>
   <affected>

@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">JasPer</product>
   <announced>2017-07-08</announced>
-  <revised>2017-08-06: 2</revised>
+  <revised count="2">2017-08-06</revised>
   <bug>559164</bug>
   <bug>559168</bug>
   <bug>571256</bug>

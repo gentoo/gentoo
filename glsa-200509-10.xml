@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">mailutils</product>
   <announced>2005-09-17</announced>
-  <revised>2006-05-22: 02</revised>
+  <revised count="02">2006-05-22</revised>
   <bug>105458</bug>
   <access>remote</access>
   <affected>

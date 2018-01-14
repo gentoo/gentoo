@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">Cheetah</product>
   <announced>2005-05-19</announced>
-  <revised>2006-05-17: 02</revised>
+  <revised count="02">2006-05-17</revised>
   <bug>92926</bug>
   <access>local</access>
   <affected>

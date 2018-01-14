@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">libgssglue</product>
   <announced>2012-09-28</announced>
-  <revised>2012-09-28: 1</revised>
+  <revised count="1">2012-09-28</revised>
   <bug>385321</bug>
   <access>local</access>
   <affected>

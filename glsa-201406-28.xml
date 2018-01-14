@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">libav</product>
   <announced>2014-06-26</announced>
-  <revised>2014-06-26: 1</revised>
+  <revised count="1">2014-06-26</revised>
   <bug>439052</bug>
   <bug>452202</bug>
   <bug>470734</bug>

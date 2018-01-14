@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">gv</product>
   <announced>2004-08-12</announced>
-  <revised>2004-08-12: 01</revised>
+  <revised count="01">2004-08-12</revised>
   <bug>59385</bug>
   <access>remote</access>
   <affected>

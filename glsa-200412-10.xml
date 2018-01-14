@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">vim</product>
   <announced>2004-12-15</announced>
-  <revised>2004-12-15: 01</revised>
+  <revised count="01">2004-12-15</revised>
   <bug>73715</bug>
   <access>local</access>
   <affected>

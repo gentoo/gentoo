@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">vmware-workstation vmware-player</product>
   <announced>2007-11-18</announced>
-  <revised>2008-04-16: 03</revised>
+  <revised count="03">2008-04-16</revised>
   <bug>193196</bug>
   <access>remote</access>
   <affected>

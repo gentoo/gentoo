@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">openoffice openoffice-bin</product>
   <announced>2008-05-14</announced>
-  <revised>2008-05-14: 02</revised>
+  <revised count="02">2008-05-14</revised>
   <bug>218080</bug>
   <access>remote</access>
   <affected>

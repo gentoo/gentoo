@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">madwifi-ng</product>
   <announced>2007-06-11</announced>
-  <revised>2007-06-11: 01</revised>
+  <revised count="01">2007-06-11</revised>
   <bug>179532</bug>
   <access>remote</access>
   <affected>

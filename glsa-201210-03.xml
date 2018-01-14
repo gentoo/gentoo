@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">rdesktop</product>
   <announced>2012-10-18</announced>
-  <revised>2012-10-18: 1</revised>
+  <revised count="1">2012-10-18</revised>
   <bug>364191</bug>
   <access>remote</access>
   <affected>

@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">thttpd</product>
   <announced>2007-01-31</announced>
-  <revised>2007-03-11: 02</revised>
+  <revised count="02">2007-03-11</revised>
   <bug>142047</bug>
   <access>remote</access>
   <affected>

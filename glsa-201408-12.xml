@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">apache,dos,ace</product>
   <announced>2014-08-29</announced>
-  <revised>2014-08-29: 1</revised>
+  <revised count="1">2014-08-29</revised>
   <bug>504990</bug>
   <bug>507866</bug>
   <bug>517298</bug>

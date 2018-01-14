@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">realplayer helixplayer</product>
   <announced>2005-10-07</announced>
-  <revised>2005-11-22: 02</revised>
+  <revised count="02">2005-11-22</revised>
   <bug>107309</bug>
   <access>remote</access>
   <affected>

@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">lcms</product>
   <announced>2014-12-26</announced>
-  <revised>2014-12-26: 1</revised>
+  <revised count="1">2014-12-26</revised>
   <bug>479874</bug>
   <bug>507788</bug>
   <access>remote</access>

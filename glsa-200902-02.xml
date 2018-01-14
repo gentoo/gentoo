@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">openssl</product>
   <announced>2009-02-12</announced>
-  <revised>2009-02-12: 01</revised>
+  <revised count="01">2009-02-12</revised>
   <bug>251346</bug>
   <access>remote</access>
   <affected>

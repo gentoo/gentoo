@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">bitlbee</product>
   <announced>2008-09-23</announced>
-  <revised>2008-09-23: 01</revised>
+  <revised count="01">2008-09-23</revised>
   <bug>236160</bug>
   <access>remote</access>
   <affected>

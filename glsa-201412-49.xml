@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">fish</product>
   <announced>2014-12-28</announced>
-  <revised>2014-12-28: 1</revised>
+  <revised count="1">2014-12-28</revised>
   <bug>509044</bug>
   <access>local, remote</access>
   <affected>

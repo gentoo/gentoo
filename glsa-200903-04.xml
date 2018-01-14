@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">devil</product>
   <announced>2009-03-06</announced>
-  <revised>2009-03-06: 01</revised>
+  <revised count="01">2009-03-06</revised>
   <bug>255217</bug>
   <access>remote</access>
   <affected>

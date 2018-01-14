@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">shoutcast</product>
   <announced>2006-07-09</announced>
-  <revised>2006-07-29: 03</revised>
+  <revised count="03">2006-07-29</revised>
   <bug>136721</bug>
   <bug>136221</bug>
   <access>remote</access>

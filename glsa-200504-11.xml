@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">junkbuster</product>
   <announced>2005-04-13</announced>
-  <revised>2005-04-21: 02</revised>
+  <revised count="02">2005-04-21</revised>
   <bug>88537</bug>
   <access>remote</access>
   <affected>

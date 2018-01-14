@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">mod_security</product>
   <announced>2007-05-17</announced>
-  <revised>2007-12-30: 02</revised>
+  <revised count="02">2007-12-30</revised>
   <bug>169778</bug>
   <access>remote</access>
   <affected>

@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">opera</product>
   <announced>2004-07-20</announced>
-  <revised>2004-07-20: 01</revised>
+  <revised count="01">2004-07-20</revised>
   <bug>56311</bug>
   <bug>56109</bug>
   <access>remote</access>

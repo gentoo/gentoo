@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">tigervnc</product>
   <announced>2014-11-05</announced>
-  <revised>2014-11-05: 1</revised>
+  <revised count="1">2014-11-05</revised>
   <bug>505170</bug>
   <access>remote</access>
   <affected>

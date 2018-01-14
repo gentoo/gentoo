@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">dcopidlng</product>
   <announced>2005-03-07</announced>
-  <revised>2005-03-07: 01</revised>
+  <revised count="01">2005-03-07</revised>
   <bug>81652</bug>
   <access>local</access>
   <affected>

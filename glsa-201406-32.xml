@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">icedtea-bin</product>
   <announced>2014-06-29</announced>
-  <revised>2016-04-19: 2</revised>
+  <revised count="2">2016-04-19</revised>
   <bug>312297</bug>
   <bug>330205</bug>
   <bug>340819</bug>

@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">nghttp2</product>
   <announced>2016-12-04</announced>
-  <revised>2016-12-04: 1</revised>
+  <revised count="1">2016-12-04</revised>
   <bug>569518</bug>
   <access>remote</access>
   <affected>

@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">lib3ds</product>
   <announced>2014-05-18</announced>
-  <revised>2014-12-10: 2</revised>
+  <revised count="2">2014-12-10</revised>
   <bug>308033</bug>
   <bug>519936</bug>
   <access>remote</access>

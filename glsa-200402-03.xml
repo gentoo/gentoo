@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">monkeyd</product>
   <announced>2004-02-11</announced>
-  <revised>2004-02-11: 01</revised>
+  <revised count="01">2004-02-11</revised>
   <bug>41156</bug>
   <access>remote</access>
   <affected>

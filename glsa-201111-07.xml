@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">TinTin++</product>
   <announced>2011-11-20</announced>
-  <revised>2011-11-20: 1</revised>
+  <revised count="1">2011-11-20</revised>
   <bug>209903</bug>
   <access>remote</access>
   <affected>

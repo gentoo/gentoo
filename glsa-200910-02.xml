@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">pidgin</product>
   <announced>2009-10-22</announced>
-  <revised>2009-10-22: 01</revised>
+  <revised count="01">2009-10-22</revised>
   <bug>276000</bug>
   <bug>281545</bug>
   <bug>283324</bug>

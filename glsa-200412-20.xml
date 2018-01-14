@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">NASM</product>
   <announced>2004-12-20</announced>
-  <revised>2004-12-20: 01</revised>
+  <revised count="01">2004-12-20</revised>
   <bug>74477</bug>
   <access>remote</access>
   <affected>

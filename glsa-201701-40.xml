@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">xdelta</product>
   <announced>2017-01-17</announced>
-  <revised>2017-01-17: 01</revised>
+  <revised count="01">2017-01-17</revised>
   <bug>574408</bug>
   <access>remote</access>
   <affected>

@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">kpdf, koffice</product>
   <announced>2005-01-11</announced>
-  <revised>2005-01-12: 02</revised>
+  <revised count="02">2005-01-12</revised>
   <bug>75203</bug>
   <bug>75204</bug>
   <access>remote</access>

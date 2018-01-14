@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">mbedtls</product>
   <announced>2017-06-20</announced>
-  <revised>2017-06-20: 1</revised>
+  <revised count="1">2017-06-20</revised>
   <bug>562608</bug>
   <bug>571102</bug>
   <bug>618824</bug>

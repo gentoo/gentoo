@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">MantisBT</product>
   <announced>2012-11-08</announced>
-  <revised>2012-11-08: 1</revised>
+  <revised count="1">2012-11-08</revised>
   <bug>348761</bug>
   <bug>381417</bug>
   <bug>386153</bug>

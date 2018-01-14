@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">tikiwiki</product>
   <announced>2006-06-29</announced>
-  <revised>2006-06-29: 01</revised>
+  <revised count="01">2006-06-29</revised>
   <bug>136723</bug>
   <bug>134483</bug>
   <access>remote</access>

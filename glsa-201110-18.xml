@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">rgmanager</product>
   <announced>2011-10-22</announced>
-  <revised>2011-10-22: 1</revised>
+  <revised count="1">2011-10-22</revised>
   <bug>352213</bug>
   <access>local</access>
   <affected>

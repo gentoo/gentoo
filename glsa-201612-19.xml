@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">mercurial</product>
   <announced>2016-12-07</announced>
-  <revised>2016-12-07: 1</revised>
+  <revised count="1">2016-12-07</revised>
   <bug>533008</bug>
   <bug>544332</bug>
   <bug>578546</bug>

@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">ZendFramework</product>
   <announced>2014-08-04</announced>
-  <revised>2014-08-04: 1</revised>
+  <revised count="1">2014-08-04</revised>
   <bug>369139</bug>
   <access>remote</access>
   <affected>

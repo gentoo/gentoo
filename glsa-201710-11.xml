@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">libtasn1</product>
   <announced>2017-10-13</announced>
-  <revised>2017-10-13: 1</revised>
+  <revised count="1">2017-10-13</revised>
   <bug>619686</bug>
   <bug>627014</bug>
   <access>remote</access>

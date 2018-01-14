@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild"/>
   <announced>2016-03-09</announced>
-  <revised>2016-03-09: 1</revised>
+  <revised count="1">2016-03-09</revised>
   <bug>521136</bug>
   <bug>522060</bug>
   <bug>528438</bug>

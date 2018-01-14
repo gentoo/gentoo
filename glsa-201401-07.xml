@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">libxslt</product>
   <announced>2014-01-10</announced>
-  <revised>2014-01-10: 1</revised>
+  <revised count="1">2014-01-10</revised>
   <bug>433603</bug>
   <bug>436284</bug>
   <bug>463236</bug>

@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">chromimu</product>
   <announced>2015-03-22</announced>
-  <revised>2015-03-22: 1</revised>
+  <revised count="1">2015-03-22</revised>
   <bug>542090</bug>
   <access>remote</access>
   <affected>

@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">tnef</product>
   <announced>2017-08-17</announced>
-  <revised>2017-08-17: 1</revised>
+  <revised count="1">2017-08-17</revised>
   <bug>611426</bug>
   <bug>618658</bug>
   <access>remote</access>

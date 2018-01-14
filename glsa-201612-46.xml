@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">xerces-c</product>
   <announced>2016-12-24</announced>
-  <revised>2016-12-24: 1</revised>
+  <revised count="1">2016-12-24</revised>
   <bug>575700</bug>
   <bug>584506</bug>
   <access>local, remote</access>

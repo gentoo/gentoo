@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">festival</product>
   <announced>2007-07-25</announced>
-  <revised>2007-07-25: 01</revised>
+  <revised count="01">2007-07-25</revised>
   <bug>170477</bug>
   <access>local</access>
   <affected>

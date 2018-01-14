@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">nginx</product>
   <announced>2009-09-18</announced>
-  <revised>2009-09-18: 01</revised>
+  <revised count="01">2009-09-18</revised>
   <bug>285162</bug>
   <access>remote</access>
   <affected>

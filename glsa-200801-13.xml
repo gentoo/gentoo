@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">ngircd</product>
   <announced>2008-01-27</announced>
-  <revised>2008-01-27: 02</revised>
+  <revised count="02">2008-01-27</revised>
   <bug>204834</bug>
   <access>remote</access>
   <affected>

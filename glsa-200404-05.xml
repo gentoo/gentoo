@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">ipsec-tools</product>
   <announced>2004-04-07</announced>
-  <revised>2004-04-07: 01</revised>
+  <revised count="01">2004-04-07</revised>
   <bug>47013</bug>
   <access>remote</access>
   <affected>

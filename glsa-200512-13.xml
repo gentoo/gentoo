@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">dropbear</product>
   <announced>2005-12-23</announced>
-  <revised>2005-12-23: 01</revised>
+  <revised count="01">2005-12-23</revised>
   <bug>116006</bug>
   <access>remote</access>
   <affected>

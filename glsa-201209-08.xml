@@ -5,7 +5,7 @@
   <synopsis>A vulnerability in SquidClamav may result in Denial of Service.</synopsis>
   <product type="ebuild">squidclamav</product>
   <announced>2012-09-24</announced>
-  <revised>2012-09-24: 1</revised>
+  <revised count="1">2012-09-24</revised>
   <bug>428778</bug>
   <access>remote</access>
   <affected>

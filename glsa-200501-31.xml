@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">teTeX</product>
   <announced>2005-01-23</announced>
-  <revised>2005-01-23: 01</revised>
+  <revised count="01">2005-01-23</revised>
   <bug>75801</bug>
   <access>remote and local</access>
   <affected>

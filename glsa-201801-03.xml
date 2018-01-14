@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">chromium,google-chrome</product>
   <announced>2018-01-07</announced>
-  <revised>2018-01-07: 1</revised>
+  <revised count="1">2018-01-07</revised>
   <bug>640334</bug>
   <bug>641376</bug>
   <access>local, remote</access>

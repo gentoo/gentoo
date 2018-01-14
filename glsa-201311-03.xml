@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">quassel</product>
   <announced>2013-11-07</announced>
-  <revised>2013-11-07: 1</revised>
+  <revised count="1">2013-11-07</revised>
   <bug>338879</bug>
   <bug>487632</bug>
   <access>remote</access>

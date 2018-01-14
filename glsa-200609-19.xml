@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">Firefox</product>
   <announced>2006-09-28</announced>
-  <revised>2006-09-28: 01</revised>
+  <revised count="01">2006-09-28</revised>
   <bug>147652</bug>
   <access>remote</access>
   <affected>

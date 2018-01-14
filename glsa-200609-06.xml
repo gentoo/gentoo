@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">adplug</product>
   <announced>2006-09-12</announced>
-  <revised>2006-09-12: 01</revised>
+  <revised count="01">2006-09-12</revised>
   <bug>139593</bug>
   <access>local</access>
   <affected>

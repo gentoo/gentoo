@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">openexr</product>
   <announced>2013-12-09</announced>
-  <revised>2013-12-09: 1</revised>
+  <revised count="1">2013-12-09</revised>
   <bug>277202</bug>
   <access>local, remote</access>
   <affected>

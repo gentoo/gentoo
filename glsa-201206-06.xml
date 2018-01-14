@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">OpenJPEG</product>
   <announced>2012-06-21</announced>
-  <revised>2012-06-21: 1</revised>
+  <revised count="1">2012-06-21</revised>
   <bug>409203</bug>
   <access>remote</access>
   <affected>

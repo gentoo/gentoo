@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">xfig</product>
   <announced>2013-12-27</announced>
-  <revised>2013-12-27: 1</revised>
+  <revised count="1">2013-12-27</revised>
   <bug>348344</bug>
   <access>remote</access>
   <affected>

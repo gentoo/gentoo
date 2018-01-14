@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">cube</product>
   <announced>2006-03-13</announced>
-  <revised>2006-03-13: 01</revised>
+  <revised count="01">2006-03-13</revised>
   <bug>125289</bug>
   <access>remote</access>
   <affected>

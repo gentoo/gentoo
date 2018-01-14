@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">xli</product>
   <announced>2005-03-02</announced>
-  <revised>2006-05-22: 02</revised>
+  <revised count="02">2006-05-22</revised>
   <bug>79762</bug>
   <access>remote</access>
   <affected>

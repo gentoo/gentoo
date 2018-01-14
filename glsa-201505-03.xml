@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">phpMyAdmin</product>
   <announced>2015-05-31</announced>
-  <revised>2016-05-14: 2</revised>
+  <revised count="2">2016-05-14</revised>
   <bug>517858</bug>
   <bug>522844</bug>
   <bug>530054</bug>

@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">busybox</product>
   <announced>2015-03-29</announced>
-  <revised>2015-03-29: 1</revised>
+  <revised count="1">2015-03-29</revised>
   <bug>515254</bug>
   <bug>537978</bug>
   <access>local, remote</access>

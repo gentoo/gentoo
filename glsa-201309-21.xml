@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">klibc</product>
   <announced>2013-09-26</announced>
-  <revised>2013-09-26: 1</revised>
+  <revised count="1">2013-09-26</revised>
   <bug>369075</bug>
   <access>remote</access>
   <affected>

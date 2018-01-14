@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">exim</product>
   <announced>2005-01-12</announced>
-  <revised>2005-01-12: 01</revised>
+  <revised count="01">2005-01-12</revised>
   <bug>76893</bug>
   <access>remote</access>
   <affected>

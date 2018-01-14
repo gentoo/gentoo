@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">libgsf</product>
   <announced>2006-12-12</announced>
-  <revised>2006-12-12: 01</revised>
+  <revised count="01">2006-12-12</revised>
   <bug>156693</bug>
   <access>remote</access>
   <affected>

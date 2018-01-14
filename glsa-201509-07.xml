@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">ACE,DoS,flash</product>
   <announced>2015-09-25</announced>
-  <revised>2015-09-25: 1</revised>
+  <revised count="1">2015-09-25</revised>
   <bug>561076</bug>
   <access>remote</access>
   <affected>

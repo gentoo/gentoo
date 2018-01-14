@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">ktsuss</product>
   <announced>2012-01-27</announced>
-  <revised>2012-01-27: 1</revised>
+  <revised count="1">2012-01-27</revised>
   <bug>381115</bug>
   <access>local</access>
   <affected>

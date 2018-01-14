@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">Netpbm</product>
   <announced>2005-10-20</announced>
-  <revised>2009-05-28: 06</revised>
+  <revised count="06">2009-05-28</revised>
   <bug>109705</bug>
   <access>remote</access>
   <affected>

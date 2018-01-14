@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">gettext</product>
   <announced>2004-10-10</announced>
-  <revised>2006-05-22: 04</revised>
+  <revised count="04">2006-05-22</revised>
   <bug>66355</bug>
   <bug>85766</bug>
   <access>local</access>

@@ -5,7 +5,7 @@
   <synopsis>A vulnerability in Exiv2 could lead to Denial of Service condition.</synopsis>
   <product type="ebuild">exiv2</product>
   <announced>2015-07-07</announced>
-  <revised>2015-07-07: 1</revised>
+  <revised count="1">2015-07-07</revised>
   <bug>534608</bug>
   <access>remote</access>
   <affected>

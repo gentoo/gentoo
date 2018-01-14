@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">mod_jk</product>
   <announced>2007-08-19</announced>
-  <revised>2007-08-19: 01</revised>
+  <revised count="01">2007-08-19</revised>
   <bug>186218</bug>
   <access>remote</access>
   <affected>

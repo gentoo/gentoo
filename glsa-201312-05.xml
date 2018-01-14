@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">swi-prolog</product>
   <announced>2013-12-06</announced>
-  <revised>2013-12-06: 1</revised>
+  <revised count="1">2013-12-06</revised>
   <bug>450284</bug>
   <access>remote</access>
   <affected>

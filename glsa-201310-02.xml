@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">isync</product>
   <announced>2013-10-05</announced>
-  <revised>2013-10-05: 1</revised>
+  <revised count="1">2013-10-05</revised>
   <bug>458420</bug>
   <access>remote</access>
   <affected>

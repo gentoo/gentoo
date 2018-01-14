@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">django</product>
   <announced>2014-06-26</announced>
-  <revised>2014-12-03: 2</revised>
+  <revised count="2">2014-12-03</revised>
   <bug>508514</bug>
   <bug>510382</bug>
   <access>remote</access>

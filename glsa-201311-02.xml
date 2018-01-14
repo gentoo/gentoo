@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">phpmyadmin</product>
   <announced>2013-11-04</announced>
-  <revised>2013-11-04: 1</revised>
+  <revised count="1">2013-11-04</revised>
   <bug>465420</bug>
   <bug>467080</bug>
   <bug>478696</bug>

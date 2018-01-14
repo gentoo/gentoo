@@ -5,7 +5,7 @@
   <synopsis>A vulnerability in CEDET could result in privilege escalation.</synopsis>
   <product type="ebuild">cedet</product>
   <announced>2014-01-27</announced>
-  <revised>2014-01-27: 2</revised>
+  <revised count="2">2014-01-27</revised>
   <bug>398227</bug>
   <access>local</access>
   <affected>

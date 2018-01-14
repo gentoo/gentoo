@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">up-imapproxy</product>
   <announced>2006-03-06</announced>
-  <revised>2006-03-06: 01</revised>
+  <revised count="01">2006-03-06</revised>
   <bug>107679</bug>
   <access>remote</access>
   <affected>

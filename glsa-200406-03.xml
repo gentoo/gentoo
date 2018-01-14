@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">sitecopy</product>
   <announced>2004-06-05</announced>
-  <revised>2004-08-15: 04</revised>
+  <revised count="04">2004-08-15</revised>
   <bug>51585</bug>
   <access>remote</access>
   <affected>

@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">camlimages</product>
   <announced>2010-06-01</announced>
-  <revised>2010-06-01: 01</revised>
+  <revised count="01">2010-06-01</revised>
   <bug>276235</bug>
   <bug>290222</bug>
   <access>remote</access>

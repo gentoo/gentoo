@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">Kernel</product>
   <announced>2004-03-05</announced>
-  <revised>2006-05-22: 03</revised>
+  <revised count="03">2006-05-22</revised>
   <bug>42024</bug>
   <access>local</access>
   <affected>

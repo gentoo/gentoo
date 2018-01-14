@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">xmonad-contrib</product>
   <announced>2014-05-28</announced>
-  <revised>2014-05-28: 1</revised>
+  <revised count="1">2014-05-28</revised>
   <bug>478288</bug>
   <access>remote</access>
   <affected>

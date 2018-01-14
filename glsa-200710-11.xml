@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">xfs</product>
   <announced>2007-10-12</announced>
-  <revised>2007-10-12: 01</revised>
+  <revised count="01">2007-10-12</revised>
   <bug>185660</bug>
   <bug>194606</bug>
   <access>local</access>

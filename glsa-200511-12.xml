@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">scorched3d</product>
   <announced>2005-11-15</announced>
-  <revised>2006-08-10: 03</revised>
+  <revised count="03">2006-08-10</revised>
   <bug>111421</bug>
   <access>remote</access>
   <affected>

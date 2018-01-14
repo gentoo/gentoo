@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">xterm</product>
   <announced>2009-02-12</announced>
-  <revised>2009-02-12: 01</revised>
+  <revised count="01">2009-02-12</revised>
   <bug>253155</bug>
   <access>remote</access>
   <affected>

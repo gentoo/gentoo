@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">polkit</product>
   <announced>2012-04-17</announced>
-  <revised>2012-04-17: 1</revised>
+  <revised count="1">2012-04-17</revised>
   <bug>314535</bug>
   <bug>364973</bug>
   <bug>401513</bug>

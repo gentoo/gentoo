@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">gimp</product>
   <announced>2016-03-06</announced>
-  <revised>2016-05-04: 2</revised>
+  <revised count="2">2016-05-04</revised>
   <bug>434582</bug>
   <bug>493372</bug>
   <access>remote</access>

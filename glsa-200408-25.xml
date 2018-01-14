@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">MoinMoin</product>
   <announced>2004-08-26</announced>
-  <revised>2006-05-22: 02</revised>
+  <revised count="02">2006-05-22</revised>
   <bug>57913</bug>
   <access>remote</access>
   <affected>

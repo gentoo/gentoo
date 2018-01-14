@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">icu</product>
   <announced>2015-03-14</announced>
-  <revised>2015-03-14: 1</revised>
+  <revised count="1">2015-03-14</revised>
   <bug>537560</bug>
   <bug>539108</bug>
   <access>remote</access>

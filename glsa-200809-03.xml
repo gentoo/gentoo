@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">realplayer</product>
   <announced>2008-09-04</announced>
-  <revised>2008-09-04: 01</revised>
+  <revised count="01">2008-09-04</revised>
   <bug>232997</bug>
   <access>remote</access>
   <affected>

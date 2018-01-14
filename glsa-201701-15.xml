@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">firefox, thunderbird</product>
   <announced>2017-01-03</announced>
-  <revised>2017-01-04: 2</revised>
+  <revised count="2">2017-01-04</revised>
   <bug>581326</bug>
   <bug>590330</bug>
   <bug>594616</bug>

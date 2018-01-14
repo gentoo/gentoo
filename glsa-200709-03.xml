@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">streamripper</product>
   <announced>2007-09-13</announced>
-  <revised>2007-09-13: 01</revised>
+  <revised count="01">2007-09-13</revised>
   <bug>188698</bug>
   <access>remote</access>
   <affected>

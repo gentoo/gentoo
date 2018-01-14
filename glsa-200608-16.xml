@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">warzone2100</product>
   <announced>2006-08-10</announced>
-  <revised>2006-09-04: 02</revised>
+  <revised count="02">2006-09-04</revised>
   <bug>142389</bug>
   <access>remote</access>
   <affected>

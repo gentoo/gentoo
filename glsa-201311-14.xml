@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">qt-core qt-gui</product>
   <announced>2013-11-22</announced>
-  <revised>2013-11-22: 1</revised>
+  <revised count="1">2013-11-22</revised>
   <bug>361401</bug>
   <bug>382171</bug>
   <bug>384103</bug>

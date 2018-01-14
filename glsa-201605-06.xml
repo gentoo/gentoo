@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">firefox</product>
   <announced>2016-05-31</announced>
-  <revised>2017-01-20: 4</revised>
+  <revised count="4">2017-01-20</revised>
   <bug>549356</bug>
   <bug>550288</bug>
   <bug>557590</bug>

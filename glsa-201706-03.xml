@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">qemu</product>
   <announced>2017-06-06</announced>
-  <revised>2017-06-06: 1</revised>
+  <revised count="1">2017-06-06</revised>
   <bug>614744</bug>
   <bug>615874</bug>
   <bug>616460</bug>

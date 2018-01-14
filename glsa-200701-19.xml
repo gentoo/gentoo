@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">openldap</product>
   <announced>2007-01-23</announced>
-  <revised>2007-03-11: 02</revised>
+  <revised count="02">2007-03-11</revised>
   <bug>159508</bug>
   <access>local</access>
   <affected>

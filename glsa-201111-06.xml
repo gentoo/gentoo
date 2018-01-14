@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">MaraDNS</product>
   <announced>2011-11-20</announced>
-  <revised>2011-11-20: 1</revised>
+  <revised count="1">2011-11-20</revised>
   <bug>352569</bug>
   <access>remote</access>
   <affected>

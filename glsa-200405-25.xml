@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">tla</product>
   <announced>2004-05-30</announced>
-  <revised>2004-06-02: 02</revised>
+  <revised count="02">2004-06-02</revised>
   <bug>51586</bug>
   <access>remote</access>
   <affected>

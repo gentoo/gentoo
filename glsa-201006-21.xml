@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">unrealircd</product>
   <announced>2010-06-14</announced>
-  <revised>2010-06-14: 02</revised>
+  <revised count="02">2010-06-14</revised>
   <bug>260806</bug>
   <bug>323691</bug>
   <access>remote</access>

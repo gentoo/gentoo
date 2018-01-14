@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">libx11</product>
   <announced>2007-05-05</announced>
-  <revised>2007-05-05: 01</revised>
+  <revised count="01">2007-05-05</revised>
   <bug>172752</bug>
   <access>remote</access>
   <affected>

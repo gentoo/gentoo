@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">libxml</product>
   <announced>2004-03-05</announced>
-  <revised>2004-03-05: 01</revised>
+  <revised count="01">2004-03-05</revised>
   <bug>42735</bug>
   <access>local and remote combination</access>
   <affected>

@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">tnftp</product>
   <announced>2005-01-14</announced>
-  <revised>2005-01-14: 01</revised>
+  <revised count="01">2005-01-14</revised>
   <bug>74704</bug>
   <access>remote</access>
   <affected>

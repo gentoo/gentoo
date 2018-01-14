@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">ibm-jdk-bin ibm-jre-bin</product>
   <announced>2008-06-25</announced>
-  <revised>2008-06-25: 01</revised>
+  <revised count="01">2008-06-25</revised>
   <bug>186277</bug>
   <bug>198644</bug>
   <bug>216112</bug>

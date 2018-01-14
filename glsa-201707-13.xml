@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">libcroco</product>
   <announced>2017-07-09</announced>
-  <revised>2017-08-06: 3</revised>
+  <revised count="3">2017-08-06</revised>
   <bug>618012</bug>
   <access>remote</access>
   <affected>

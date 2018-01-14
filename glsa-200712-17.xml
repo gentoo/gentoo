@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">exiftags</product>
   <announced>2007-12-29</announced>
-  <revised>2007-12-29: 01</revised>
+  <revised count="01">2007-12-29</revised>
   <bug>202354</bug>
   <access>remote</access>
   <affected>

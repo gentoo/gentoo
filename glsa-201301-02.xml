@@ -5,7 +5,7 @@
   <synopsis>A buffer overflow in HAProxy may allow execution of arbitrary code.</synopsis>
   <product type="ebuild">haproxy</product>
   <announced>2013-01-08</announced>
-  <revised>2013-01-08: 1</revised>
+  <revised count="1">2013-01-08</revised>
   <bug>417079</bug>
   <access>remote</access>
   <affected>

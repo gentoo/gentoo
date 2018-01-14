@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">noweb</product>
   <announced>2006-02-26</announced>
-  <revised>2006-02-26: 01</revised>
+  <revised count="01">2006-02-26</revised>
   <bug>122705</bug>
   <access>local</access>
   <affected>

@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">htmldoc</product>
   <announced>2009-09-12</announced>
-  <revised>2009-09-12: 01</revised>
+  <revised count="01">2009-09-12</revised>
   <bug>278186</bug>
   <access>remote</access>
   <affected>

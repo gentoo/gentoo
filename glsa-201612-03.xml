@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">libsndfile</product>
   <announced>2016-12-03</announced>
-  <revised>2016-12-03: 1</revised>
+  <revised count="1">2016-12-03</revised>
   <bug>533750</bug>
   <bug>566682</bug>
   <access>local, remote</access>

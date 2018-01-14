@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">python</product>
   <announced>2014-01-06</announced>
-  <revised>2015-06-17: 5</revised>
+  <revised count="5">2015-06-17</revised>
   <bug>325593</bug>
   <bug>355927</bug>
   <bug>358663</bug>

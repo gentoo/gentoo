@@ -5,7 +5,7 @@
   <synopsis>A vulnerability in grep could result in Denial of Service. </synopsis>
   <product type="ebuild">grep,dos</product>
   <announced>2015-02-25</announced>
-  <revised>2015-02-25: 1</revised>
+  <revised count="1">2015-02-25</revised>
   <bug>537046</bug>
   <access>local</access>
   <affected>

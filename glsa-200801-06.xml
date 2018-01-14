@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">xfce4-panel libxfcegui4</product>
   <announced>2008-01-09</announced>
-  <revised>2008-01-10: 03</revised>
+  <revised count="03">2008-01-10</revised>
   <bug>201292</bug>
   <bug>201293</bug>
   <access>remote</access>

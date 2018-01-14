@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">xorg-server libXfont</product>
   <announced>2008-01-20</announced>
-  <revised>2008-03-05: 03</revised>
+  <revised count="03">2008-03-05</revised>
   <bug>204362</bug>
   <bug>208343</bug>
   <access>remote, local</access>

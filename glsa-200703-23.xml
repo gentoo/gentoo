@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">wordpress</product>
   <announced>2007-03-20</announced>
-  <revised>2007-03-20: 01</revised>
+  <revised count="01">2007-03-20</revised>
   <bug>168529</bug>
   <access>remote</access>
   <affected>

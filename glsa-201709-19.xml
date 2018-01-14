@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">exim</product>
   <announced>2017-09-24</announced>
-  <revised>2017-09-24: 1</revised>
+  <revised count="1">2017-09-24</revised>
   <bug>622212</bug>
   <access>local</access>
   <affected>

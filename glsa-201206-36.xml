@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">logrotate</product>
   <announced>2012-06-25</announced>
-  <revised>2012-06-25: 1</revised>
+  <revised count="1">2012-06-25</revised>
   <bug>356811</bug>
   <bug>372973</bug>
   <access>local</access>

@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">opendchub</product>
   <announced>2013-11-20</announced>
-  <revised>2013-11-20: 1</revised>
+  <revised count="1">2013-11-20</revised>
   <bug>314551</bug>
   <access>remote</access>
   <affected>

@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">imagemagick</product>
   <announced>2004-11-06</announced>
-  <revised>2004-11-06: 01</revised>
+  <revised count="01">2004-11-06</revised>
   <bug>69825</bug>
   <access>remote</access>
   <affected>

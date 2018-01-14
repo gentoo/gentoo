@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">LutelWall</product>
   <announced>2005-06-11</announced>
-  <revised>2005-06-11: 01</revised>
+  <revised count="01">2005-06-11</revised>
   <bug>95378</bug>
   <access>local</access>
   <affected>

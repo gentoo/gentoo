@@ -5,7 +5,7 @@
   <synopsis>Multiple vulnerabilities in ZNC could lead to Denial of Service.</synopsis>
   <product type="ebuild">znc</product>
   <announced>2014-12-19</announced>
-  <revised>2014-12-19: 1</revised>
+  <revised count="1">2014-12-19</revised>
   <bug>471738</bug>
   <bug>507794</bug>
   <access>remote</access>

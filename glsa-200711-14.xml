@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">firefox seamonkey xulrunner</product>
   <announced>2007-11-12</announced>
-  <revised>2007-11-12: 01</revised>
+  <revised count="01">2007-11-12</revised>
   <bug>196480</bug>
   <access>remote</access>
   <affected>

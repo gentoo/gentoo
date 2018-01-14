@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">libwww-perl</product>
   <announced>2014-02-04</announced>
-  <revised>2014-02-04: 1</revised>
+  <revised count="1">2014-02-04</revised>
   <bug>329943</bug>
   <bug>386309</bug>
   <access>remote</access>

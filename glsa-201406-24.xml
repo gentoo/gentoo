@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">dnsmasq</product>
   <announced>2014-06-25</announced>
-  <revised>2014-06-25: 1</revised>
+  <revised count="1">2014-06-25</revised>
   <bug>436894</bug>
   <bug>453170</bug>
   <access>remote</access>

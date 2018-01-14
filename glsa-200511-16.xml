@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">GNUMP3d</product>
   <announced>2005-11-21</announced>
-  <revised>2007-08-21: 02</revised>
+  <revised count="02">2007-08-21</revised>
   <bug>111990</bug>
   <access>remote</access>
   <affected>

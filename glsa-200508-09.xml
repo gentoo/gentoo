@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">bluez-utils</product>
   <announced>2005-08-17</announced>
-  <revised>2005-08-17: 01</revised>
+  <revised count="01">2005-08-17</revised>
   <bug>101557</bug>
   <access>remote</access>
   <affected>

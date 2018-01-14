@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">libtheora</product>
   <announced>2013-12-03</announced>
-  <revised>2013-12-03: 1</revised>
+  <revised count="1">2013-12-03</revised>
   <bug>298039</bug>
   <access>remote</access>
   <affected>

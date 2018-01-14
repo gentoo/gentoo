@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">VLC</product>
   <announced>2014-11-05</announced>
-  <revised>2014-11-05: 1</revised>
+  <revised count="1">2014-11-05</revised>
   <bug>279340</bug>
   <bug>285370</bug>
   <bug>316709</bug>

@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">libvncserver</product>
   <announced>2015-07-07</announced>
-  <revised>2015-07-07: 1</revised>
+  <revised count="1">2015-07-07</revised>
   <bug>523590</bug>
   <access>remote</access>
   <affected>

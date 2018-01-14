@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">nginx</product>
   <announced>2017-01-11</announced>
-  <revised>2017-01-11: 1</revised>
+  <revised count="1">2017-01-11</revised>
   <bug>605008</bug>
   <access>local</access>
   <affected>

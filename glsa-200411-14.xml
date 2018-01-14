@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">kaffeine gxine</product>
   <announced>2004-11-07</announced>
-  <revised>2006-05-22: 02</revised>
+  <revised count="02">2006-05-22</revised>
   <bug>69663</bug>
   <bug>70055</bug>
   <access>remote</access>

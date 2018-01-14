@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">archive-tar-minitar</product>
   <announced>2017-02-22</announced>
-  <revised>2017-02-22: 1</revised>
+  <revised count="1">2017-02-22</revised>
   <bug>607110</bug>
   <access>remote</access>
   <affected>

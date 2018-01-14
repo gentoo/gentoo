@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">quagga</product>
   <announced>2017-01-21</announced>
-  <revised>2017-01-21: 1</revised>
+  <revised count="1">2017-01-21</revised>
   <bug>581526</bug>
   <bug>597410</bug>
   <access>remote</access>

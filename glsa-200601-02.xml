@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">kdegraphics, kpdf, koffice, kword</product>
   <announced>2006-01-04</announced>
-  <revised>2006-01-07: 03</revised>
+  <revised count="03">2006-01-07</revised>
   <bug>114429</bug>
   <bug>115851</bug>
   <access>remote</access>

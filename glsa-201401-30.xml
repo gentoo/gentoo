@@ -9,7 +9,7 @@
     emul-linux-x86-java
   </product>
   <announced>2014-01-27</announced>
-  <revised>2014-01-27: 1</revised>
+  <revised count="1">2014-01-27</revised>
   <bug>404071</bug>
   <bug>421073</bug>
   <bug>433094</bug>

@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">xpdf, gpdf, poppler,cups</product>
   <announced>2005-12-16</announced>
-  <revised>2005-12-17: 02</revised>
+  <revised count="02">2005-12-17</revised>
   <bug>114428</bug>
   <bug>115286</bug>
   <access>remote</access>

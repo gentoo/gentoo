@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">sun-jre-bin sun-jdk emul-linux-x86-java</product>
   <announced>2010-06-04</announced>
-  <revised>2010-06-04: 01</revised>
+  <revised count="01">2010-06-04</revised>
   <bug>306579</bug>
   <bug>314531</bug>
   <access>remote</access>

@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">Unreal Tournament</product>
   <announced>2004-07-19</announced>
-  <revised>2004-07-19: 01</revised>
+  <revised count="01">2004-07-19</revised>
   <bug>54726</bug>
   <access>remote</access>
   <affected>

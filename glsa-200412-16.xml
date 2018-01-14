@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">KDE</product>
   <announced>2004-12-19</announced>
-  <revised>2004-12-19: 01</revised>
+  <revised count="01">2004-12-19</revised>
   <bug>72804</bug>
   <bug>73869</bug>
   <access>remote and local</access>

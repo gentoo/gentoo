@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">mit-krb5</product>
   <announced>2013-12-16</announced>
-  <revised>2013-12-16: 1</revised>
+  <revised count="1">2013-12-16</revised>
   <bug>429324</bug>
   <bug>466268</bug>
   <bug>469752</bug>

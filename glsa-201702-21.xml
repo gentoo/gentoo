@@ -5,7 +5,7 @@
   <synopsis>A vulnerability in Opus could cause memory corruption.</synopsis>
   <product type="ebuild">opus</product>
   <announced>2017-02-20</announced>
-  <revised>2017-02-20: 1</revised>
+  <revised count="1">2017-02-20</revised>
   <bug>605894</bug>
   <access>remote</access>
   <affected>

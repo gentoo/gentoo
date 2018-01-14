@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">gstreamer,gst-plugins</product>
   <announced>2017-05-18</announced>
-  <revised>2017-05-18: 1</revised>
+  <revised count="1">2017-05-18</revised>
   <bug>600142</bug>
   <bug>601354</bug>
   <access>remote</access>

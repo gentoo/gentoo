@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">vzctl</product>
   <announced>2017-01-11</announced>
-  <revised>2017-01-11: 1</revised>
+  <revised count="1">2017-01-11</revised>
   <bug>560522</bug>
   <access>local, remote</access>
   <affected>

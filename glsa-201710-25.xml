@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">libpcre</product>
   <announced>2017-10-23</announced>
-  <revised>2017-10-23: 1</revised>
+  <revised count="1">2017-10-23</revised>
   <bug>614048</bug>
   <bug>614052</bug>
   <bug>614054</bug>

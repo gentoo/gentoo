@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">Gnumeric</product>
   <announced>2005-09-03</announced>
-  <revised>2005-09-03: 01</revised>
+  <revised count="01">2005-09-03</revised>
   <bug>104010</bug>
   <access>remote</access>
   <affected>

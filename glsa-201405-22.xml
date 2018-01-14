@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">pidgin</product>
   <announced>2014-05-18</announced>
-  <revised>2014-05-18: 1</revised>
+  <revised count="1">2014-05-18</revised>
   <bug>457580</bug>
   <bug>499596</bug>
   <access>remote</access>

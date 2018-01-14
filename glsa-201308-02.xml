@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">d-bus</product>
   <announced>2013-08-22</announced>
-  <revised>2013-08-22: 1</revised>
+  <revised count="1">2013-08-22</revised>
   <bug>473190</bug>
   <access>local</access>
   <affected>

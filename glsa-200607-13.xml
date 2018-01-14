@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">audacious</product>
   <announced>2006-07-29</announced>
-  <revised>2006-07-29: 01</revised>
+  <revised count="01">2006-07-29</revised>
   <bug>139957</bug>
   <access>remote</access>
   <affected>

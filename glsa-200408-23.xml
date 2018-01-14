@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">kdelibs</product>
   <announced>2004-08-24</announced>
-  <revised>2004-08-24: 01</revised>
+  <revised count="01">2004-08-24</revised>
   <bug>61389</bug>
   <access>remote</access>
   <affected>

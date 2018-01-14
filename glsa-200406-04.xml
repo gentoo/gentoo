@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">mailman</product>
   <announced>2004-06-09</announced>
-  <revised>2004-06-09: 01</revised>
+  <revised count="01">2004-06-09</revised>
   <bug>51671</bug>
   <access>remote  </access>
   <affected>

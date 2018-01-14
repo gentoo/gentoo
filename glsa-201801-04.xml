@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">LibXcursor</product>
   <announced>2018-01-07</announced>
-  <revised>2018-01-07: 1</revised>
+  <revised count="1">2018-01-07</revised>
   <bug>639062</bug>
   <access>local, remote</access>
   <affected>

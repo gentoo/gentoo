@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">giflib</product>
   <announced>2005-11-04</announced>
-  <revised>2005-11-04: 01</revised>
+  <revised count="01">2005-11-04</revised>
   <bug>109997</bug>
   <access>remote</access>
   <affected>

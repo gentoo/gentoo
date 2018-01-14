@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">xen</product>
   <announced>2015-04-11</announced>
-  <revised>2015-04-11: 1</revised>
+  <revised count="1">2015-04-11</revised>
   <bug>478280</bug>
   <bug>482138</bug>
   <bug>512294</bug>

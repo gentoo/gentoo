@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">tinyproxy</product>
   <announced>2013-12-23</announced>
-  <revised>2013-12-23: 1</revised>
+  <revised count="1">2013-12-23</revised>
   <bug>432046</bug>
   <access>remote</access>
   <affected>

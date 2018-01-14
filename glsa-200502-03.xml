@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">enscript</product>
   <announced>2005-02-02</announced>
-  <revised>2005-02-02: 01</revised>
+  <revised count="01">2005-02-02</revised>
   <bug>77408</bug>
   <access>remote</access>
   <affected>

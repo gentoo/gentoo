@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">rails</product>
   <announced>2009-12-20</announced>
-  <revised>2009-12-20: 01</revised>
+  <revised count="01">2009-12-20</revised>
   <bug>200159</bug>
   <bug>237385</bug>
   <bug>247549</bug>

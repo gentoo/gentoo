@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">ruby</product>
   <announced>2008-12-16</announced>
-  <revised>2008-12-16: 01</revised>
+  <revised count="01">2008-12-16</revised>
   <bug>225465</bug>
   <bug>236060</bug>
   <access>remote</access>

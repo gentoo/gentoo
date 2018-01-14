@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">FreeRADIUS</product>
   <announced>2003-11-23</announced>
-  <revised>2003-11-23: 01</revised>
+  <revised count="01">2003-11-23</revised>
   <bug>33989</bug>
   <access>remote</access>
   <affected>

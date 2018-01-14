@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">poppler</product>
   <announced>2008-07-08</announced>
-  <revised>2008-07-08: 01</revised>
+  <revised count="01">2008-07-08</revised>
   <bug>229931</bug>
   <access>remote</access>
   <affected>

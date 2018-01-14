@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">OpenCV</product>
   <announced>2017-12-14</announced>
-  <revised>2017-12-14: 1</revised>
+  <revised count="1">2017-12-14</revised>
   <bug>627230</bug>
   <bug>627958</bug>
   <access>remote</access>
@@ -44,46 +44,46 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12597">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12597">
       CVE-2017-12597
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12598">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12598">
       CVE-2017-12598
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12599">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12599">
       CVE-2017-12599
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12600">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12600">
       CVE-2017-12600
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12601">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12601">
       CVE-2017-12601
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12602">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12602">
       CVE-2017-12602
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12603">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12603">
       CVE-2017-12603
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12604">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12604">
       CVE-2017-12604
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12605">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12605">
       CVE-2017-12605
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12606">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12606">
       CVE-2017-12606
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12862">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12862">
       CVE-2017-12862
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12863">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12863">
       CVE-2017-12863
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12864">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12864">
       CVE-2017-12864
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-14136">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-14136">
       CVE-2017-14136
     </uri>
   </references>

@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">firejail</product>
   <announced>2017-02-09</announced>
-  <revised>2017-02-09: 1</revised>
+  <revised count="1">2017-02-09</revised>
   <bug>607382</bug>
   <access>local</access>
   <affected>

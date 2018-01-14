@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">poppler</product>
   <announced>2016-11-22</announced>
-  <revised>2016-11-22: 3</revised>
+  <revised count="3">2016-11-22</revised>
   <bug>542220</bug>
   <bug>579752</bug>
   <access>remote</access>

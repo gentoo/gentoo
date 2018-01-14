@@ -5,7 +5,7 @@
   <synopsis>A vulnerability in Ruby OpenID may lead to Denial of Service.</synopsis>
   <product type="ebuild">ruby-openid</product>
   <announced>2014-05-17</announced>
-  <revised>2014-05-17: 1</revised>
+  <revised count="1">2014-05-17</revised>
   <bug>460156</bug>
   <access>remote</access>
   <affected>

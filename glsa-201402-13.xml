@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">djvu</product>
   <announced>2014-02-09</announced>
-  <revised>2014-02-09: 1</revised>
+  <revised count="1">2014-02-09</revised>
   <bug>497088</bug>
   <access>remote</access>
   <affected>

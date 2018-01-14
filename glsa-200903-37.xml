@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">ghostscript-gpl ghostscript-esp ghostscript-gnu</product>
   <announced>2009-03-23</announced>
-  <revised>2009-03-23: 01</revised>
+  <revised count="01">2009-03-23</revised>
   <bug>261087</bug>
   <access>remote</access>
   <affected>

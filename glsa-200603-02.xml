@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">tetex</product>
   <announced>2006-03-04</announced>
-  <revised>2006-03-04: 01</revised>
+  <revised count="01">2006-03-04</revised>
   <bug>115775</bug>
   <access>remote</access>
   <affected>

@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">Adobe Flash Player</product>
   <announced>2011-10-13</announced>
-  <revised>2011-10-13: 1</revised>
+  <revised count="1">2011-10-13</revised>
   <bug>354207</bug>
   <bug>359019</bug>
   <bug>363179</bug>

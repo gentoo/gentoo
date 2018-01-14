@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">horde-kronolith</product>
   <announced>2007-01-16</announced>
-  <revised>2007-01-16: 01</revised>
+  <revised count="01">2007-01-16</revised>
   <bug>156627</bug>
   <access>remote</access>
   <affected>

@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">3proxy</product>
   <announced>2007-04-22</announced>
-  <revised>2007-04-22: 01</revised>
+  <revised count="01">2007-04-22</revised>
   <bug>174429</bug>
   <access>remote</access>
   <affected>

@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">libzrtpcpp</product>
   <announced>2013-09-24</announced>
-  <revised>2013-09-24: 1</revised>
+  <revised count="1">2013-09-24</revised>
   <bug>481228</bug>
   <access>remote</access>
   <affected>

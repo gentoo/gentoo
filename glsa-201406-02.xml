@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">libarchive</product>
   <announced>2014-06-01</announced>
-  <revised>2014-06-01: 1</revised>
+  <revised count="1">2014-06-01</revised>
   <bug>366687</bug>
   <bug>463632</bug>
   <access>remote</access>

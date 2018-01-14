@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">pam_krb5</product>
   <announced>2009-03-25</announced>
-  <revised>2009-03-25: 01</revised>
+  <revised count="01">2009-03-25</revised>
   <bug>257075</bug>
   <access>local</access>
   <affected>

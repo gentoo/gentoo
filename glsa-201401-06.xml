@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">git </product>
   <announced>2014-01-10</announced>
-  <revised>2014-01-10: 1</revised>
+  <revised count="1">2014-01-10</revised>
   <bug>335891</bug>
   <access>local</access>
   <affected>

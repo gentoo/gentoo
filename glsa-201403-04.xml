@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">qt-core</product>
   <announced>2014-03-13</announced>
-  <revised>2014-03-13: 1</revised>
+  <revised count="1">2014-03-13</revised>
   <bug>494728</bug>
   <access>remote</access>
   <affected>

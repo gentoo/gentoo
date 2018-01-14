@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">valgrind</product>
   <announced>2009-02-12</announced>
-  <revised>2009-02-12: 01</revised>
+  <revised count="01">2009-02-12</revised>
   <bug>245317</bug>
   <access>local</access>
   <affected>

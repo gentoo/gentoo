@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">ppp</product>
   <announced>2014-12-13</announced>
-  <revised>2014-12-13: 2</revised>
+  <revised count="2">2014-12-13</revised>
   <bug>519650</bug>
   <access>local</access>
   <affected>

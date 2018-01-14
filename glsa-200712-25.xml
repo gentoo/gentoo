@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">openoffice openoffice-bin hsqldb</product>
   <announced>2007-12-30</announced>
-  <revised>2007-12-30: 01</revised>
+  <revised count="01">2007-12-30</revised>
   <bug>200771</bug>
   <bug>201799</bug>
   <access>remote</access>

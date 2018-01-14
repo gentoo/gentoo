@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">mit-krb5-appl</product>
   <announced>2012-01-23</announced>
-  <revised>2012-01-23: 1</revised>
+  <revised count="1">2012-01-23</revised>
   <bug>374229</bug>
   <bug>396137</bug>
   <access>remote</access>

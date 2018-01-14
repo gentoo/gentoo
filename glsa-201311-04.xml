@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">vixie-cron</product>
   <announced>2013-11-07</announced>
-  <revised>2013-11-07: 1</revised>
+  <revised count="1">2013-11-07</revised>
   <bug>308055</bug>
   <access>local</access>
   <affected>

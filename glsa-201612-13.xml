@@ -5,7 +5,7 @@
   <synopsis>Nghttp2 is vulnerable to a Denial of Service attack.</synopsis>
   <product type="ebuild">nghttp2</product>
   <announced>2016-12-05</announced>
-  <revised>2016-12-05: 1</revised>
+  <revised count="1">2016-12-05</revised>
   <bug>574780</bug>
   <access>remote</access>
   <affected>

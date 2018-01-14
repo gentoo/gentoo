@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">Qt</product>
   <announced>2004-08-22</announced>
-  <revised>2006-05-22: 02</revised>
+  <revised count="02">2006-05-22</revised>
   <bug>60855</bug>
   <access>local</access>
   <affected>

@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">Libnids</product>
   <announced>2003-11-22</announced>
-  <revised>2003-11-22: 01</revised>
+  <revised count="01">2003-11-22</revised>
   <bug>32724</bug>
   <access>remote</access>
   <affected>

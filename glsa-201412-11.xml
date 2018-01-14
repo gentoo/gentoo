@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">emul-linux-x86-baselibs</product>
   <announced>2014-12-12</announced>
-  <revised>2014-12-12: 1</revised>
+  <revised count="1">2014-12-12</revised>
   <bug>196865</bug>
   <bug>335508</bug>
   <bug>483632</bug>

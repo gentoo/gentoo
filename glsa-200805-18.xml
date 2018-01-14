@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">mozilla-firefox mozilla-firefox-bin seamonkey seamonkey-bin mozilla-thunderbird mozilla-thunderbird-bin xulrunner</product>
   <announced>2008-05-20</announced>
-  <revised>2008-05-20: 01</revised>
+  <revised count="01">2008-05-20</revised>
   <bug>208128</bug>
   <bug>214816</bug>
   <bug>218065</bug>

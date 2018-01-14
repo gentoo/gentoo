@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">cyrus-imapd</product>
   <announced>2004-11-25</announced>
-  <revised>2004-11-25: 01</revised>
+  <revised count="01">2004-11-25</revised>
   <bug>72194</bug>
   <access>remote</access>
   <affected>

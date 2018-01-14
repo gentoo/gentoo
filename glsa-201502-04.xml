@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">mediawiki</product>
   <announced>2015-02-07</announced>
-  <revised>2015-02-07: 1</revised>
+  <revised count="1">2015-02-07</revised>
   <bug>498064</bug>
   <bug>499632</bug>
   <bug>503012</bug>

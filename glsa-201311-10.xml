@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">graphicsmagick</product>
   <announced>2013-11-19</announced>
-  <revised>2013-11-19: 1</revised>
+  <revised count="1">2013-11-19</revised>
   <bug>365769</bug>
   <bug>488050</bug>
   <access>remote</access>

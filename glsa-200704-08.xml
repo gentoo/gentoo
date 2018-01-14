@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">dokuwiki</product>
   <announced>2007-04-12</announced>
-  <revised>2007-04-12: 01</revised>
+  <revised count="01">2007-04-12</revised>
   <bug>163781</bug>
   <access>remote</access>
   <affected>

@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">hplip</product>
   <announced>2012-03-16</announced>
-  <revised>2012-03-16: 1</revised>
+  <revised count="1">2012-03-16</revised>
   <bug>352085</bug>
   <bug>388655</bug>
   <access>local, remote</access>

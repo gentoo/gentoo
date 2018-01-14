@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">webkit-gtk</product>
   <announced>2017-06-07</announced>
-  <revised>2017-06-07: 1</revised>
+  <revised count="1">2017-06-07</revised>
   <bug>543650</bug>
   <bug>573656</bug>
   <bug>577068</bug>

@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">Texinfo</product>
   <announced>2005-10-05</announced>
-  <revised>2005-10-05: 01</revised>
+  <revised count="01">2005-10-05</revised>
   <bug>106105</bug>
   <access>local</access>
   <affected>

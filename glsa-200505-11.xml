@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">mozilla</product>
   <announced>2005-05-15</announced>
-  <revised>2005-05-15: 01</revised>
+  <revised count="01">2005-05-15</revised>
   <bug>91859</bug>
   <bug>92393</bug>
   <bug>92394</bug>

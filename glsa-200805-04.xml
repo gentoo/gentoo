@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">egroupware</product>
   <announced>2008-05-07</announced>
-  <revised>2008-05-07: 01</revised>
+  <revised count="01">2008-05-07</revised>
   <bug>214212</bug>
   <bug>218625</bug>
   <access>remote</access>

@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">vlc</product>
   <announced>2008-04-23</announced>
-  <revised>2008-04-23: 01</revised>
+  <revised count="01">2008-04-23</revised>
   <bug>214277</bug>
   <bug>214627</bug>
   <access>remote</access>

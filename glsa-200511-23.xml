@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">chmlib kchmviewer</product>
   <announced>2005-11-28</announced>
-  <revised>2009-05-28: 03</revised>
+  <revised count="03">2009-05-28</revised>
   <bug>110557</bug>
   <access>remote</access>
   <affected>

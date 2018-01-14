@@ -5,7 +5,7 @@
   <synopsis>polkit is vulnerable to local privilege escalation.</synopsis>
   <product type="ebuild">polkit</product>
   <announced>2016-11-15</announced>
-  <revised>2016-11-15: 1</revised>
+  <revised count="1">2016-11-15</revised>
   <bug>555666</bug>
   <access>local</access>
   <affected>

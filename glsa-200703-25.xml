@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">ekiga</product>
   <announced>2007-03-29</announced>
-  <revised>2009-05-28: 02</revised>
+  <revised count="02">2009-05-28</revised>
   <bug>167643</bug>
   <access>remote</access>
   <affected>

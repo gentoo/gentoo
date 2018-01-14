@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">tor</product>
   <announced>2005-08-25</announced>
-  <revised>2005-08-25: 01</revised>
+  <revised count="01">2005-08-25</revised>
   <bug>102245</bug>
   <access>remote</access>
   <affected>

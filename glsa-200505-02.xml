@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">oops</product>
   <announced>2005-05-05</announced>
-  <revised>2005-05-05: 02</revised>
+  <revised count="02">2005-05-05</revised>
   <bug>91303</bug>
   <access>remote</access>
   <affected>

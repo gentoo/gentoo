@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">mount-cifs</product>
   <announced>2012-06-25</announced>
-  <revised>2014-02-02: 2</revised>
+  <revised count="2">2014-02-02</revised>
   <bug>308067</bug>
   <access>remote</access>
   <affected>

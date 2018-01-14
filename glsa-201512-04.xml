@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">openssh</product>
   <announced>2015-12-20</announced>
-  <revised>2015-12-21: 4</revised>
+  <revised count="4">2015-12-21</revised>
   <bug>553724</bug>
   <bug>555518</bug>
   <bug>557340</bug>

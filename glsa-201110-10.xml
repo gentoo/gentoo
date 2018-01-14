@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">Wget</product>
   <announced>2011-10-13</announced>
-  <revised>2011-10-13: 1</revised>
+  <revised count="1">2011-10-13</revised>
   <bug>329941</bug>
   <access>remote</access>
   <affected>

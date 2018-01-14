@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">icu</product>
   <announced>2012-09-24</announced>
-  <revised>2012-09-24: 1</revised>
+  <revised count="1">2012-09-24</revised>
   <bug>394201</bug>
   <access>remote</access>
   <affected>

@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">openswan</product>
   <announced>2014-01-18</announced>
-  <revised>2014-01-18: 1</revised>
+  <revised count="1">2014-01-18</revised>
   <bug>483204</bug>
   <access>remote</access>
   <affected>

@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">subversion</product>
   <announced>2017-09-17</announced>
-  <revised>2017-09-17: 1</revised>
+  <revised count="1">2017-09-17</revised>
   <bug>627480</bug>
   <access>remote</access>
   <affected>

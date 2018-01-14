@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">rack</product>
   <announced>2012-03-06</announced>
-  <revised>2012-03-06: 1</revised>
+  <revised count="1">2012-03-06</revised>
   <bug>396455</bug>
   <access>remote</access>
   <affected>

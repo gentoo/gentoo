@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">mpg123</product>
   <announced>2006-07-03</announced>
-  <revised>2006-07-29: 02</revised>
+  <revised count="02">2006-07-29</revised>
   <bug>133988</bug>
   <access>remote</access>
   <affected>

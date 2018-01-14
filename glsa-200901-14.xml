@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">scilab</product>
   <announced>2009-01-21</announced>
-  <revised>2009-01-21: 01</revised>
+  <revised count="01">2009-01-21</revised>
   <bug>245922</bug>
   <access>local</access>
   <affected>

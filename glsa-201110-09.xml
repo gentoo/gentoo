@@ -5,7 +5,7 @@
   <synopsis>A privilege escalation vulnerability was found in Conky.</synopsis>
   <product type="ebuild">Conky</product>
   <announced>2011-10-13</announced>
-  <revised>2011-10-13: 1</revised>
+  <revised count="1">2011-10-13</revised>
   <bug>354061</bug>
   <access>local</access>
   <affected>
