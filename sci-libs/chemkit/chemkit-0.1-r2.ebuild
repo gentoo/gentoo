@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
@@ -20,9 +20,9 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	test? ( python qt4 )"
 
 RDEPEND="
+	dev-cpp/eigen:3
 	dev-libs/boost
 	dev-libs/rapidxml
-	dev-cpp/eigen:3
 	media-libs/glu
 	sci-libs/inchi
 	sci-libs/lemon
@@ -56,20 +56,20 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DCHEMKIT_BUILD_EXAMPLES=$(usex examples)
+		-DCHEMKIT_BUILD_DEMOS=$(usex examples)
+		-DCHEMKIT_BUILD_BINDINGS_PYTHON=$(usex python)
 		-DCHEMKIT_BUILD_APPS=$(usex qt4)
 		-DCHEMKIT_BUILD_PLUGIN_BABEL=$(usex qt4)
 		-DCHEMKIT_BUILD_QT_DESIGNER_PLUGINS=$(usex qt4)
 		-DCHEMKIT_WITH_GRAPHICS=$(usex qt4)
 		-DCHEMKIT_WITH_GUI=$(usex qt4)
 		-DCHEMKIT_WITH_WEB=$(usex qt4)
+		-DCHEMKIT_BUILD_TESTS=$(usex test)
 		-DUSE_SYSTEM_INCHI=ON
 		-DUSE_SYSTEM_JSONCPP=OFF
 		-DUSE_SYSTEM_RAPIDXML=ON
 		-DUSE_SYSTEM_XDRF=OFF
-		$(cmake-utils_use examples CHEMKIT_BUILD_EXAMPLES)
-		$(cmake-utils_use examples CHEMKIT_BUILD_DEMOS)
-		$(cmake-utils_use python CHEMKIT_BUILD_BINDINGS_PYTHON)
-		$(cmake-utils_use test CHEMKIT_BUILD_TESTS)
 	)
 	cmake-utils_src_configure
 }
