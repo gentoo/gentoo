@@ -28,6 +28,8 @@ DEPEND="${RDEPEND}
 	test? ( ${PYTHON_DEPS} )
 "
 
+PATCHES=( "${FILESDIR}/${P}-xattr-header.patch" )
+
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
 	kde5_pkg_setup
