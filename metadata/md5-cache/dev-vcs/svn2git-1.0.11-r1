@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=dev-qt/qtcore:5 dev-vcs/subversion
+DESCRIPTION=Tool for one-time conversion from svn to git
+EAPI=6
+HOMEPAGE=https://github.com/svn-all-fast-export/svn2git
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-qt/qtcore:5 dev-vcs/subversion dev-vcs/git
+SLOT=0
+SRC_URI=https://github.com/svn-all-fast-export/svn2git/archive/1.0.11.tar.gz -> svn2git-1.0.11.tar.gz
+_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_md5_=cfd1659a95be5b5b2bd1d88d200afef4
