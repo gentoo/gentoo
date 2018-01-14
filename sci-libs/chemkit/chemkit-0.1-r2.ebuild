@@ -52,6 +52,10 @@ src_prepare() {
 	# xdrf != xdrfile
 	rm -rvf src/3rdparty/{inchi,khronos,lemon,rapidxml} || die
 	cmake-utils_src_prepare
+
+	# bug 640206
+	sed -e "/add_subdirectory(xtc/s/^/#DONT /" \
+		-i src/plugins/CMakeLists.txt || die "Failed to disable xtc"
 }
 
 src_configure() {
