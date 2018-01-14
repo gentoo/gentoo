@@ -1,0 +1,55 @@
+From 353219b1d808a8980af93eff5412ec2863557e35 Mon Sep 17 00:00:00 2001
+From: Jose Dapena Paz <jose.dapena@lge.com>
+Date: Wed, 10 Jan 2018 15:34:25 +0000
+Subject: [PATCH] GCC fixes: avoid symbol collision between Element::ComputedAccessibleNode and ComputedAccessibleNode.
+
+GCC at least fails to compile if the method has the same name of the class. To avoid
+this we rename the getter method to be prefixed with Get.
+
+Change-Id: I7f7ac2ecf0947718f72e78ccef019c3239c9b921
+Reviewed-on: https://chromium-review.googlesource.com/857716
+Reviewed-by: Daniel Cheng <dcheng@chromium.org>
+Reviewed-by: Hayato Ito <hayato@chromium.org>
+Commit-Queue: José Dapena Paz <jose.dapena@lge.com>
+Cr-Commit-Position: refs/heads/master@{#528322}
+---
+
+diff --git a/third_party/WebKit/Source/core/dom/Element.cpp b/third_party/WebKit/Source/core/dom/Element.cpp
+index 4f50b7d..d0fa7b1 100644
+--- a/third_party/WebKit/Source/core/dom/Element.cpp
++++ b/third_party/WebKit/Source/core/dom/Element.cpp
+@@ -1276,7 +1276,7 @@
+   return rare_data.EnsureAccessibleNode(this);
+ }
+ 
+-ComputedAccessibleNode* Element::ComputedAccessibleNode() {
++ComputedAccessibleNode* Element::GetComputedAccessibleNode() {
+   if (!RuntimeEnabledFeatures::AccessibilityObjectModelEnabled())
+     return nullptr;
+ 
+diff --git a/third_party/WebKit/Source/core/dom/Element.h b/third_party/WebKit/Source/core/dom/Element.h
+index 733596b..986e31a 100644
+--- a/third_party/WebKit/Source/core/dom/Element.h
++++ b/third_party/WebKit/Source/core/dom/Element.h
+@@ -295,7 +295,7 @@
+   AccessibleNode* ExistingAccessibleNode() const;
+   AccessibleNode* accessibleNode();
+ 
+-  ComputedAccessibleNode* ComputedAccessibleNode();
++  ComputedAccessibleNode* GetComputedAccessibleNode();
+ 
+   void DidMoveToNewDocument(Document&) override;
+ 
+diff --git a/third_party/WebKit/Source/core/frame/LocalDOMWindow.cpp b/third_party/WebKit/Source/core/frame/LocalDOMWindow.cpp
+index 642f55f..f6a8d8e 100644
+--- a/third_party/WebKit/Source/core/frame/LocalDOMWindow.cpp
++++ b/third_party/WebKit/Source/core/frame/LocalDOMWindow.cpp
+@@ -1110,7 +1110,7 @@
+     Element* element) {
+   DCHECK(element);
+   ComputedAccessibleNode* computed_accessible_node =
+-      element->ComputedAccessibleNode();
++      element->GetComputedAccessibleNode();
+   return computed_accessible_node->ComputePromiseProperty(script_state);
+ }
+ 

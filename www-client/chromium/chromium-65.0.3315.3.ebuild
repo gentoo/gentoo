@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -17,25 +17,27 @@ SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-IUSE="component-build cups gnome-keyring +hangouts kerberos neon pic +proprietary-codecs pulseaudio selinux +suid +system-ffmpeg +system-icu +system-libvpx +tcmalloc widevine"
+IUSE="component-build cups gnome-keyring +hangouts jumbo-build kerberos neon pic +proprietary-codecs pulseaudio selinux +suid +system-ffmpeg +system-icu +system-libvpx +tcmalloc widevine"
 RESTRICT="!system-ffmpeg? ( proprietary-codecs? ( bindist ) )"
 
 COMMON_DEPEND="
+	app-accessibility/at-spi2-atk:2
 	app-arch/bzip2:=
 	cups? ( >=net-print/cups-1.3.11:= )
+	dev-libs/atk
 	dev-libs/expat:=
 	dev-libs/glib:2
 	system-icu? ( >=dev-libs/icu-59:= )
 	>=dev-libs/libxml2-2.9.4-r3:=[icu]
 	dev-libs/libxslt:=
 	dev-libs/nspr:=
-	>=dev-libs/nss-3.14.3:=
+	>=dev-libs/nss-3.26:=
 	>=dev-libs/re2-0.2016.05.01:=
 	gnome-keyring? ( >=gnome-base/libgnome-keyring-3.12:= )
 	>=media-libs/alsa-lib-1.0.19:=
 	media-libs/fontconfig:=
 	media-libs/freetype:=
-	>=media-libs/harfbuzz-1.5.0:=[icu(-)]
+	>=media-libs/harfbuzz-1.6.0:=[icu(-)]
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
 	system-libvpx? ( media-libs/libvpx:=[postproc,svc] )
@@ -147,12 +149,14 @@ PATCHES=(
 	"${FILESDIR}/chromium-webrtc-r0.patch"
 	"${FILESDIR}/chromium-memcpy-r0.patch"
 	"${FILESDIR}/chromium-clang-r2.patch"
+	"${FILESDIR}/chromium-gn-r0.patch"
+	"${FILESDIR}/chromium-vulkan-r0.patch"
+	"${FILESDIR}/chromium-gcc-r0.patch"
 )
 
 pre_build_checks() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		local -x CPP="$(tc-getCXX) -E"
-		tc-is-clang || die "Build currently fails with gcc, please use clang"
 		if tc-is-clang && ! version_is_at_least "3.9.1" "$(clang-fullversion)"; then
 			# bugs: #601654
 			die "At least clang 3.9.1 is required"
@@ -376,13 +380,16 @@ src_configure() {
 	# for development and debugging.
 	myconf_gn+=" is_component_build=$(usex component-build true false)"
 
+	# https://chromium.googlesource.com/chromium/src/+/lkcr/docs/jumbo.md
+	myconf_gn+=" use_jumbo_build=$(usex jumbo-build true false)"
+
 	myconf_gn+=" use_allocator=$(usex tcmalloc \"tcmalloc\" \"none\")"
 
 	# Disable nacl, we can't build without pnacl (http://crbug.com/269560).
 	myconf_gn+=" enable_nacl=false"
 
 	# Use system-provided libraries.
-	# TODO: freetype (https://bugs.chromium.org/p/pdfium/issues/detail?id=733).
+	# TODO: freetype -- remove sources (https://bugs.chromium.org/p/pdfium/issues/detail?id=733).
 	# TODO: use_system_hunspell (upstream changes needed).
 	# TODO: use_system_libsrtp (bug #459932).
 	# TODO: use_system_protobuf (bug #525560).
@@ -392,8 +399,8 @@ src_configure() {
 	# libevent: https://bugs.gentoo.org/593458
 	local gn_system_libraries=(
 		flac
-		# https://chromium.googlesource.com/chromium/src/+/4f1a60552748d150783655ee6f7b6f7084e3af95
-		#fontconfig
+		fontconfig
+		freetype
 		# Need harfbuzz_from_pkgconfig target
 		#harfbuzz-ng
 		libdrm
@@ -426,7 +433,6 @@ src_configure() {
 	myconf_gn+=" enable_hangout_services_extension=$(usex hangouts true false)"
 	myconf_gn+=" enable_widevine=$(usex widevine true false)"
 	myconf_gn+=" use_cups=$(usex cups true false)"
-	myconf_gn+=" use_gconf=false"
 	myconf_gn+=" use_gnome_keyring=$(usex gnome-keyring true false)"
 	myconf_gn+=" use_kerberos=$(usex kerberos true false)"
 	myconf_gn+=" use_pulseaudio=$(usex pulseaudio true false)"

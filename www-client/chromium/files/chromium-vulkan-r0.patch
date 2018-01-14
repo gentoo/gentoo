@@ -1,0 +1,120 @@
+From 949b4f07fd1ef5b208136fe38327c28c95f18928 Mon Sep 17 00:00:00 2001
+From: Jamie Madill <jmadill@chromium.org>
+Date: Mon, 08 Jan 2018 11:15:38 -0500
+Subject: [PATCH] Vulkan: Allow for no .git directory in build.
+
+The SPIRV-Tools 'external revision generate' script is coded such that
+it assumes a .git folder is present. This causes a problem for the
+tarball build. We can fix this by using the same tooling we use for
+ANGLE's commit id script to check if the .git directory is present
+before running the generator. If it is missing, we insert a hard-coded
+dummy header. Also use the 'DEPS' file as a placeholder for .git/HEAD
+to check if the current revision needs updating.
+
+Bug: chromium:799620
+Bug: angleproject:2237
+Change-Id: Icea8e9c66f1600df7dca2aaa45fe449f687f5b55
+Reviewed-on: https://chromium-review.googlesource.com/854255
+Reviewed-by: Jamie Madill <jmadill@chromium.org>
+Commit-Queue: Jamie Madill <jmadill@chromium.org>
+---
+
+diff --git a/third_party/angle/src/commit_id.py b/third_party/angle/src/commit_id.py
+index bbdb810..57651a5 100644
+--- a/third_party/angle/src/commit_id.py
++++ b/third_party/angle/src/commit_id.py
+@@ -23,6 +23,9 @@
+         print("0")
+     sys.exit(0)
+ 
++if len(sys.argv) < 4 or operation != 'gen':
++    sys.exit(usage)
++
+ output_file = sys.argv[3]
+ commit_id_size = 12
+ 
+diff --git a/third_party/angle/src/vulkan_support/BUILD.gn b/third_party/angle/src/vulkan_support/BUILD.gn
+index fe61826..24f5a3a 100644
+--- a/third_party/angle/src/vulkan_support/BUILD.gn
++++ b/third_party/angle/src/vulkan_support/BUILD.gn
+@@ -145,21 +145,40 @@
+   }
+ }
+ 
+-# This could be generalized to a foreach if other revisions are added.
+-action("spirv_tools_external_revision_generate") {
+-  script = "$vulkan_layers_dir/scripts/external_revision_generator.py"
+-  inputs = [
+-    "$spirv_tools_dir/.git/HEAD",
+-    "$spirv_tools_dir/.git/index",
+-  ]
+-  outputs = [
+-    "$vulkan_gen_dir/spirv_tools_commit_id.h",
+-  ]
+-  args = [
+-    "$raw_spirv_tools_dir",
+-    "SPIRV_TOOLS_COMMIT_ID",
+-    "$raw_vulkan_gen_dir/spirv_tools_commit_id.h",
+-  ]
++spirv_git_is_present = exec_script("$angle_root/src/commit_id.py",
++                                   [
++                                     "check",
++                                     raw_spirv_tools_dir,
++                                   ],
++                                   "value")
++
++spirv_use_commit_id = spirv_git_is_present == 1
++
++if (spirv_use_commit_id) {
++  # This could be generalized to a foreach if other revisions are added.
++  action("spirv_tools_external_revision_generate") {
++    script = "$vulkan_layers_dir/scripts/external_revision_generator.py"
++    inputs = [
++      "$angle_root/DEPS",
++    ]
++    outputs = [
++      "$vulkan_gen_dir/spirv_tools_commit_id.h",
++    ]
++    args = [
++      "$raw_spirv_tools_dir",
++      "SPIRV_TOOLS_COMMIT_ID",
++      "$raw_vulkan_gen_dir/spirv_tools_commit_id.h",
++    ]
++  }
++} else {
++  copy("spirv_tools_external_revision_generate") {
++    sources = [
++      "dummy_spirv_tools_commit_id.h",
++    ]
++    outputs = [
++      "$vulkan_gen_dir/spirv_tools_commit_id.h",
++    ]
++  }
+ }
+ 
+ config("vulkan_generate_helper_files_config") {
+@@ -864,7 +883,7 @@
+       sources += [ "$vulkan_layers_dir/layers/VkLayer_$name.def" ]
+     }
+     if (is_linux) {
+-      ldflags =  [ "-Wl,-Bsymbolic,--exclude-libs,ALL" ]
++      ldflags = [ "-Wl,-Bsymbolic,--exclude-libs,ALL" ]
+     }
+   }
+ }
+diff --git a/third_party/angle/src/vulkan_support/dummy_spirv_tools_commit_id.h b/third_party/angle/src/vulkan_support/dummy_spirv_tools_commit_id.h
+new file mode 100644
+index 0000000..e1793bd
+--- /dev/null
++++ b/third_party/angle/src/vulkan_support/dummy_spirv_tools_commit_id.h
+@@ -0,0 +1,10 @@
++//
++// Copyright 2018 The ANGLE Project Authors. All rights reserved.
++// Use of this source code is governed by a BSD-style license that can be
++// found in the LICENSE file.
++//
++// This file is a dummy file to enable building SPIRV tools when git is absent.
++
++#pragma once
++
++#define SPIRV_TOOLS_COMMIT_ID "0000000000000000000000000000000000000000"
