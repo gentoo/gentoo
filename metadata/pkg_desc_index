@@ -5710,6 +5710,7 @@ dev-ruby/deprecated 3.0.1-r2: A Ruby library for handling deprecated code
 dev-ruby/diff-lcs 1.2.5-r1: Use the McIlroy-Hunt LCS algorithm to compute differences
 dev-ruby/domain_name 0.5.24 0.5.20170404: Domain Name manipulation library for Ruby
 dev-ruby/dust 0.1.7-r2: Descriptive block syntax definition for Test::Unit
+dev-ruby/erubi 1.7.0: a ERB template engine for ruby; a simplified fork of Erubis
 dev-ruby/erubis 2.7.0-r2: Erubis is an implementation of eRuby
 dev-ruby/eventmachine 1.0.9.1: EventMachine is a fast, simple event-processing library for Ruby programs
 dev-ruby/execjs 2.6.0: ExecJS lets you run JavaScript code from Ruby
