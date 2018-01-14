@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm
+DEPEND=|| ( >=app-editors/vim-7.1 >=app-editors/gvim-7.1 )
+DESCRIPTION=vim plugin: Provides IDE-like features for Haskell development
+EAPI=6
+HOMEPAGE=http://projects.haskell.org/haskellmode-vim
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=dev-lang/ghc[doc] net-misc/wget || ( >=app-editors/vim-7.1 >=app-editors/gvim-7.1 )
+SLOT=0
+SRC_URI=http://code.haskell.org/~wwolff/haskellmode/haskellmode-20101118.tar.bz2
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	vim-doc	af2c81a1feeb0a99e91bee3e20769edb	vim-plugin	3160d9cb05ef44497be1485db0fe7590
+_md5_=f63d0cec323bc2d2a4afaeb5e2065a25
