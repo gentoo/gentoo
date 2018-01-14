@@ -14,7 +14,7 @@ IUSE=""
 LICENSE="GPL-2"
 SLOT="0"
 
-DEPEND=">=sys-devel/binutils-2.14.90.0.8-r1"
+DEPEND=""
 RDEPEND=""
 
 src_prepare() {
