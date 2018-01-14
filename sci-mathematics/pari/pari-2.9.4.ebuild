@@ -77,7 +77,7 @@ src_configure() {
 		--with-ncurses-lib="${EPREFIX}"/usr/$(get_libdir) \
 		$(use_with fltk) \
 		$(use_with gmp) \
-		--without-qt4 \
+		--without-qt \
 		|| die "./Configure failed"
 }
 
