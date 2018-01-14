@@ -213,6 +213,11 @@ qt5-build_src_prepare() {
 		# Don't add -O3 to CXXFLAGS (bug 549140)
 		sed -i -e '/CONFIG\s*+=/ s/optimize_full//' \
 			src/{corelib/corelib,gui/gui}.pro || die "sed failed (optimize_full)"
+
+		# Respect build variables in configure tests (bug #639494)
+		if [[ ${QT5_MINOR_VERSION} -ge 9 ]]; then
+			sed -i -e "s|\"\$outpath/bin/qmake\" \"\$relpathMangled\" -- \"\$@\"|& $(qt5_qmake_args) |" configure || die
+		fi
 	fi
 
 	default
@@ -567,7 +572,7 @@ qt5_base_configure() {
 		-no-sql-psql -no-sql-sqlite -no-sql-sqlite2 -no-sql-tds
 
 		# ensure the QML debugging support (qmltooling) is built in qtdeclarative
-		-qml-debug
+		$([[ ${QT5_MINOR_VERSION} -lt 11 ]] && echo -qml-debug)
 
 		# MIPS DSP instruction set extensions
 		$(is-flagq -mno-dsp   && echo -no-mips_dsp)
@@ -687,6 +692,33 @@ qt5_base_configure() {
 
 	popd >/dev/null || die
 
+}
+
+# @FUNCTION: qt5_qmake_args
+# @INTERNAL
+# @DESCRIPTION:
+# Helper function to get the various toolchain-related variables.
+qt5_qmake_args() {
+	echo \
+		QMAKE_AR=\"$(tc-getAR)\" \
+		QMAKE_CC=\"$(tc-getCC)\" \
+		QMAKE_LINK_C=\"$(tc-getCC)\" \
+		QMAKE_LINK_C_SHLIB=\"$(tc-getCC)\" \
+		QMAKE_CXX=\"$(tc-getCXX)\" \
+		QMAKE_LINK=\"$(tc-getCXX)\" \
+		QMAKE_LINK_SHLIB=\"$(tc-getCXX)\" \
+		QMAKE_OBJCOPY=\"$(tc-getOBJCOPY)\" \
+		QMAKE_RANLIB= \
+		QMAKE_STRIP=\"$(tc-getSTRIP)\" \
+		QMAKE_CFLAGS=\"${CFLAGS}\" \
+		QMAKE_CFLAGS_RELEASE= \
+		QMAKE_CFLAGS_DEBUG= \
+		QMAKE_CXXFLAGS=\"${CXXFLAGS}\" \
+		QMAKE_CXXFLAGS_RELEASE= \
+		QMAKE_CXXFLAGS_DEBUG= \
+		QMAKE_LFLAGS=\"${LDFLAGS}\" \
+		QMAKE_LFLAGS_RELEASE= \
+		QMAKE_LFLAGS_DEBUG=
 }
 
 # @FUNCTION: qt5_qmake
