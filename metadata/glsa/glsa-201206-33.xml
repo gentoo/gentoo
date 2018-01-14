@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">Postfix</product>
   <announced>2012-06-25</announced>
-  <revised>2012-06-25: 1</revised>
+  <revised count="1">2012-06-25</revised>
   <bug>358085</bug>
   <bug>366605</bug>
   <access>remote</access>

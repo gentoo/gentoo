@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">libtasn1</product>
   <announced>2014-08-29</announced>
-  <revised>2014-08-29: 1</revised>
+  <revised count="1">2014-08-29</revised>
   <bug>511536</bug>
   <access>local, remote</access>
   <affected>

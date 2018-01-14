@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">goffice</product>
   <announced>2008-01-30</announced>
-  <revised>2008-01-30: 01</revised>
+  <revised count="01">2008-01-30</revised>
   <bug>198385</bug>
   <access>remote</access>
   <affected>

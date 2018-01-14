@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">gnupg</product>
   <announced>2006-02-18</announced>
-  <revised>2006-02-18: 01</revised>
+  <revised count="01">2006-02-18</revised>
   <bug>122721</bug>
   <access>remote</access>
   <affected>

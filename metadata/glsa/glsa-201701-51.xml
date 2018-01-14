@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">dbd,mysql</product>
   <announced>2017-01-23</announced>
-  <revised>2017-01-23: 2</revised>
+  <revised count="2">2017-01-23</revised>
   <bug>589818</bug>
   <bug>596424</bug>
   <bug>600180</bug>

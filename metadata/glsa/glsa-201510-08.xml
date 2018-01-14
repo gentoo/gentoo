@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">cups-filters</product>
   <announced>2015-10-31</announced>
-  <revised>2015-10-31: 1</revised>
+  <revised count="1">2015-10-31</revised>
   <bug>553644</bug>
   <bug>553836</bug>
   <access>remote</access>

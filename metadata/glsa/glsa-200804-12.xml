@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">gnome-screensaver</product>
   <announced>2008-04-11</announced>
-  <revised>2008-04-11: 01</revised>
+  <revised count="01">2008-04-11</revised>
   <bug>213940</bug>
   <access>local</access>
   <affected>

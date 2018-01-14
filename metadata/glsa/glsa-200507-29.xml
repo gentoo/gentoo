@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">pstotext</product>
   <announced>2005-07-31</announced>
-  <revised>2005-08-11: 02</revised>
+  <revised count="02">2005-08-11</revised>
   <bug>100245</bug>
   <access>remote</access>
   <affected>

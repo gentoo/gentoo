@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">ghostscript-gpl</product>
   <announced>2014-12-13</announced>
-  <revised>2014-12-13: 1</revised>
+  <revised count="1">2014-12-13</revised>
   <bug>264594</bug>
   <bug>300192</bug>
   <bug>332061</bug>

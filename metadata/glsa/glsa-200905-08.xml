@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">ntp</product>
   <announced>2009-05-26</announced>
-  <revised>2009-05-26: 01</revised>
+  <revised count="01">2009-05-26</revised>
   <bug>263033</bug>
   <bug>268962</bug>
   <access>remote</access>

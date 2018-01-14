@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">rsnapshot</product>
   <announced>2005-04-13</announced>
-  <revised>2007-12-30: 05</revised>
+  <revised count="05">2007-12-30</revised>
   <bug>88681</bug>
   <access>local</access>
   <affected>

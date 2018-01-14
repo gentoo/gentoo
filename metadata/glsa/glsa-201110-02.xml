@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">wireshark</product>
   <announced>2011-10-09</announced>
-  <revised>2011-10-09: 1</revised>
+  <revised count="1">2011-10-09</revised>
   <bug>323859</bug>
   <bug>330479</bug>
   <bug>339401</bug>

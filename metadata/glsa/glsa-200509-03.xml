@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">openttd</product>
   <announced>2005-09-05</announced>
-  <revised>2006-05-22: 02</revised>
+  <revised count="02">2006-05-22</revised>
   <bug>102631</bug>
   <access>remote</access>
   <affected>

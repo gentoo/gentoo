@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">icoutils</product>
   <announced>2018-01-11</announced>
-  <revised>2018-01-11: 1</revised>
+  <revised count="1">2018-01-11</revised>
   <bug>605138</bug>
   <access>local, remote</access>
   <affected>

@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">pgbouncer</product>
   <announced>2017-01-11</announced>
-  <revised>2017-01-11: 1</revised>
+  <revised count="1">2017-01-11</revised>
   <bug>550124</bug>
   <bug>600184</bug>
   <access>remote</access>

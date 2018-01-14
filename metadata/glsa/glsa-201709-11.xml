@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">gimps</product>
   <announced>2017-09-17</announced>
-  <revised>2017-09-17: 1</revised>
+  <revised count="1">2017-09-17</revised>
   <bug>603408</bug>
   <access>local</access>
   <affected>

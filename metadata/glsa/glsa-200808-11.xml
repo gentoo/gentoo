@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">nzbget uudeview</product>
   <announced>2008-08-11</announced>
-  <revised>2008-08-11: 01</revised>
+  <revised count="01">2008-08-11</revised>
   <bug>222275</bug>
   <bug>224193</bug>
   <access>local</access>

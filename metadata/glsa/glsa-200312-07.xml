@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">lftp</product>
   <announced>2003-12-13</announced>
-  <revised>2003-12-07: 2</revised>
+  <revised count="2">2003-12-07</revised>
   <bug>35866</bug>
   <access>remote</access>
   <affected>

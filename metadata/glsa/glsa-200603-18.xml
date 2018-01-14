@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">pngcrush</product>
   <announced>2006-03-21</announced>
-  <revised>2006-03-21: 01</revised>
+  <revised count="01">2006-03-21</revised>
   <bug>123286</bug>
   <access>remote</access>
   <affected>

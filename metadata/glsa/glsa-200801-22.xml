@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">peercast</product>
   <announced>2008-01-30</announced>
-  <revised>2008-01-30: 02</revised>
+  <revised count="02">2008-01-30</revised>
   <bug>202747</bug>
   <access>remote</access>
   <affected>

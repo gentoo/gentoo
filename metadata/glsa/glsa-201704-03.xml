@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">xorg-server</product>
   <announced>2017-04-10</announced>
-  <revised>2017-04-10: 1</revised>
+  <revised count="1">2017-04-10</revised>
   <bug>596182</bug>
   <bug>611350</bug>
   <bug>611352</bug>

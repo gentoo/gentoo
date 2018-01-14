@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">PCSC-Lite</product>
   <announced>2017-02-01</announced>
-  <revised>2017-02-01: 1</revised>
+  <revised count="1">2017-02-01</revised>
   <bug>604574</bug>
   <access>local</access>
   <affected>

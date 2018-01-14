@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">openfire</product>
   <announced>2014-06-30</announced>
-  <revised>2014-06-30: 1</revised>
+  <revised count="1">2014-06-30</revised>
   <bug>266129</bug>
   <bug>507242</bug>
   <access>remote</access>

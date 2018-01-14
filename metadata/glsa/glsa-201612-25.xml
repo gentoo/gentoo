@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">cracklib</product>
   <announced>2016-12-08</announced>
-  <revised>2016-12-08: 1</revised>
+  <revised count="1">2016-12-08</revised>
   <bug>591456</bug>
   <access>local</access>
   <affected>

@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">sun-jdk sun-jre-bin blackdown-jre blackdown-jdk</product>
   <announced>2005-06-19</announced>
-  <revised>2005-06-19: 01</revised>
+  <revised count="01">2005-06-19</revised>
   <bug>96092</bug>
   <bug>96229</bug>
   <access>remote</access>

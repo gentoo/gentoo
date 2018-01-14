@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">rar,unrar</product>
   <announced>2017-08-21</announced>
-  <revised>2017-08-21: 1</revised>
+  <revised count="1">2017-08-21</revised>
   <bug>622342</bug>
   <bug>622382</bug>
   <access>remote</access>

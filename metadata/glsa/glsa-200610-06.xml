@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">nss</product>
   <announced>2006-10-17</announced>
-  <revised>2006-10-17: 01</revised>
+  <revised count="01">2006-10-17</revised>
   <bug>148283</bug>
   <access>remote</access>
   <affected>

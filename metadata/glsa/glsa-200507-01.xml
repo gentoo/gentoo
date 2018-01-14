@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">pear-xml_rpc phpxmlrpc</product>
   <announced>2005-07-03</announced>
-  <revised>2005-07-03: 01</revised>
+  <revised count="01">2005-07-03</revised>
   <bug>97399</bug>
   <bug>97629</bug>
   <access>remote</access>

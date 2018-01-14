@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">libotr, pidgin-otr</product>
   <announced>2017-01-02</announced>
-  <revised>2017-01-02: 1</revised>
+  <revised count="1">2017-01-02</revised>
   <bug>576914</bug>
   <bug>576916</bug>
   <access>remote</access>

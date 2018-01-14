@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">scponly</product>
   <announced>2004-12-03</announced>
-  <revised>2006-05-22: 03</revised>
+  <revised count="03">2006-05-22</revised>
   <bug>72815</bug>
   <bug>72816</bug>
   <access>remote</access>

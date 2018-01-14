@@ -5,7 +5,7 @@
   <synopsis>NTP can be abused to amplify Denial of Service attack traffic.</synopsis>
   <product type="ebuild"/>
   <announced>2014-01-16</announced>
-  <revised>2014-01-16: 1</revised>
+  <revised count="1">2014-01-16</revised>
   <bug>496776</bug>
   <access>remote</access>
   <affected>

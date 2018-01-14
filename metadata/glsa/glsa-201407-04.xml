@@ -5,7 +5,7 @@
   <synopsis>A vulnerability in GnuPG can lead to a Denial of Service condition.</synopsis>
   <product type="ebuild">GnuPG. </product>
   <announced>2014-07-16</announced>
-  <revised>2014-07-16: 1</revised>
+  <revised count="1">2014-07-16</revised>
   <bug>514718</bug>
   <access>local, remote</access>
   <affected>

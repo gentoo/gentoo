@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">JasPer</product>
   <announced>2012-01-23</announced>
-  <revised>2012-01-23: 1</revised>
+  <revised count="1">2012-01-23</revised>
   <bug>394879</bug>
   <access>remote</access>
   <affected>

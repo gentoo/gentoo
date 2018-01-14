@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">gnump3d</product>
   <announced>2005-11-06</announced>
-  <revised>2007-08-21: 02</revised>
+  <revised count="02">2007-08-21</revised>
   <bug>109667</bug>
   <access>remote</access>
   <affected>

@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">oracle-jdk-bin,oracle-jre-bin,icedtea-bin</product>
   <announced>2017-09-24</announced>
-  <revised>2017-09-25: 2</revised>
+  <revised count="2">2017-09-25</revised>
   <bug>625602</bug>
   <bug>626088</bug>
   <bug>627682</bug>

@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">adobe-flash</product>
   <announced>2014-05-03</announced>
-  <revised>2014-05-03: 1</revised>
+  <revised count="1">2014-05-03</revised>
   <bug>501960</bug>
   <bug>504286</bug>
   <bug>507176</bug>

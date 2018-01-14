@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">CVS</product>
   <announced>2004-06-10</announced>
-  <revised>2004-06-10: 01</revised>
+  <revised count="01">2004-06-10</revised>
   <bug>53408</bug>
   <access>remote</access>
   <affected>

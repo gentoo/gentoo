@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">chicken</product>
   <announced>2016-12-31</announced>
-  <revised>2016-12-31: 1</revised>
+  <revised count="1">2016-12-31</revised>
   <bug>467966</bug>
   <bug>486350</bug>
   <bug>510712</bug>

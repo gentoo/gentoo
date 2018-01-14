@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">virtualbox</product>
   <announced>2017-02-14</announced>
-  <revised>2017-02-14: 1</revised>
+  <revised count="1">2017-02-14</revised>
   <bug>607674</bug>
   <access>local, remote</access>
   <affected>

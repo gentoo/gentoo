@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">libarchive</product>
   <announced>2017-01-01</announced>
-  <revised>2017-01-01: 1</revised>
+  <revised count="1">2017-01-01</revised>
   <bug>548110</bug>
   <bug>552646</bug>
   <bug>582526</bug>

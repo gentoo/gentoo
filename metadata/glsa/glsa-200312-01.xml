@@ -7,7 +7,7 @@
   </synopsis>
   <product type="infrastructure">rsync mirror</product>
   <announced>2003-12-02</announced>
-  <revised>2003-12-02: 01</revised>
+  <revised count="01">2003-12-02</revised>
   <affected>
     <service type="rsync" fixed="yes"/>
   </affected>

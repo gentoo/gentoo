@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">www-client/mozilla, www-client/mozilla-firefox, mail-client/mozilla-thunderbird, www-client/galeon, www-client/epiphany</product>
   <announced>2004-08-23</announced>
-  <revised>2007-12-30: 06</revised>
+  <revised count="06">2007-12-30</revised>
   <bug>57380</bug>
   <bug>59419</bug>
   <access>remote</access>

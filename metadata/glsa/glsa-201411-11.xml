@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">squid</product>
   <announced>2014-11-27</announced>
-  <revised>2014-11-27: 1</revised>
+  <revised count="1">2014-11-27</revised>
   <bug>504176</bug>
   <bug>522498</bug>
   <access>remote</access>

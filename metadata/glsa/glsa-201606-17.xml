@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">wpa_supplicant</product>
   <announced>2016-06-27</announced>
-  <revised>2016-06-27: 1</revised>
+  <revised count="1">2016-06-27</revised>
   <bug>524928</bug>
   <bug>547492</bug>
   <bug>548742</bug>

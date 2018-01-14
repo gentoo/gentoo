@@ -5,7 +5,7 @@
   <synopsis>A vulnerability in file could result in Denial of Service. </synopsis>
   <product type="ebuild">file</product>
   <announced>2014-08-26</announced>
-  <revised>2014-08-29: 6</revised>
+  <revised count="6">2014-08-29</revised>
   <bug>505534</bug>
   <access>local, remote</access>
   <affected>

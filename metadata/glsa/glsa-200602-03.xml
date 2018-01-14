@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">Apache</product>
   <announced>2006-02-06</announced>
-  <revised>2007-12-30: 03</revised>
+  <revised count="03">2007-12-30</revised>
   <bug>115324</bug>
   <bug>118875</bug>
   <access>remote</access>

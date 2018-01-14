@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">php</product>
   <announced>2007-10-07</announced>
-  <revised>2007-10-07: 01</revised>
+  <revised count="01">2007-10-07</revised>
   <bug>179158</bug>
   <bug>180556</bug>
   <bug>191034</bug>

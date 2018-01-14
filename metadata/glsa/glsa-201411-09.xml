@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">ansible</product>
   <announced>2014-11-23</announced>
-  <revised>2014-11-23: 1</revised>
+  <revised count="1">2014-11-23</revised>
   <bug>516564</bug>
   <bug>517770</bug>
   <access>local</access>

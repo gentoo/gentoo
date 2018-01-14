@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">Minitube</product>
   <announced>2012-03-16</announced>
-  <revised>2012-03-16: 1</revised>
+  <revised count="1">2012-03-16</revised>
   <bug>388867</bug>
   <access>local</access>
   <affected>

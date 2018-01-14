@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">sun-jdk,sun-jre-bin</product>
   <announced>2007-05-31</announced>
-  <revised>2009-05-28: 05</revised>
+  <revised count="05">2009-05-28</revised>
   <bug>176675</bug>
   <bug>178851</bug>
   <access>remote</access>

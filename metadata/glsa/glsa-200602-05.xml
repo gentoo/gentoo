@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">kdegraphics, kpdf</product>
   <announced>2006-02-12</announced>
-  <revised>2006-02-12: 01</revised>
+  <revised count="01">2006-02-12</revised>
   <bug>121375</bug>
   <access>remote</access>
   <affected>

@@ -5,7 +5,7 @@
   <synopsis>OSC is vulnerable to the remote execution of arbitrary code.</synopsis>
   <product type="ebuild"/>
   <announced>2016-03-06</announced>
-  <revised>2016-03-06: 1</revised>
+  <revised count="1">2016-03-06</revised>
   <bug>553606</bug>
   <access>remote</access>
   <affected>

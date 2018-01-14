@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">muttprint</product>
   <announced>2009-03-23</announced>
-  <revised>2009-03-23: 01</revised>
+  <revised count="01">2009-03-23</revised>
   <bug>250554</bug>
   <access>local</access>
   <affected>

@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">mono</product>
   <announced>2007-01-16</announced>
-  <revised>2007-01-17: 02</revised>
+  <revised count="02">2007-01-17</revised>
   <bug>159886</bug>
   <access>remote</access>
   <affected>

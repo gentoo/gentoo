@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">CenterICQ</product>
   <announced>2005-12-20</announced>
-  <revised>2005-12-20: 01</revised>
+  <revised count="01">2005-12-20</revised>
   <bug>100519</bug>
   <bug>114038</bug>
   <access>remote</access>

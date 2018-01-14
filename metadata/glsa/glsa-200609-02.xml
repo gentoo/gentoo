@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">GTetrinet</product>
   <announced>2006-09-06</announced>
-  <revised>2006-09-07: 02</revised>
+  <revised count="02">2006-09-07</revised>
   <bug>144867</bug>
   <access>remote</access>
   <affected>

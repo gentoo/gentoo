@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">xpdf kpdf gpdf</product>
   <announced>2005-08-16</announced>
-  <revised>2005-08-16: 01</revised>
+  <revised count="01">2005-08-16</revised>
   <bug>99769</bug>
   <bug>100263</bug>
   <bug>100265</bug>

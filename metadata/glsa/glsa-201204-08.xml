@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">DBD-Pg</product>
   <announced>2012-04-17</announced>
-  <revised>2012-04-17: 1</revised>
+  <revised count="1">2012-04-17</revised>
   <bug>407549</bug>
   <access>remote</access>
   <affected>

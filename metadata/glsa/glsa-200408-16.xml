@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">glibc</product>
   <announced>2004-08-16</announced>
-  <revised>2006-05-28: 04</revised>
+  <revised count="04">2006-05-28</revised>
   <bug>59526</bug>
   <access>local</access>
   <affected>

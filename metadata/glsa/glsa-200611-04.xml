@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">bugzilla</product>
   <announced>2006-11-09</announced>
-  <revised>2006-11-09: 01</revised>
+  <revised count="01">2006-11-09</revised>
   <bug>151563</bug>
   <access>remote</access>
   <affected>

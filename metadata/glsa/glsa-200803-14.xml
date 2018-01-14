@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">ghostscript</product>
   <announced>2008-03-08</announced>
-  <revised>2008-03-08: 01</revised>
+  <revised count="01">2008-03-08</revised>
   <bug>208999</bug>
   <access>remote</access>
   <affected>

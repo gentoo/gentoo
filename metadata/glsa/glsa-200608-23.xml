@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">heartbeat</product>
   <announced>2006-08-24</announced>
-  <revised>2006-09-22: 02</revised>
+  <revised count="02">2006-09-22</revised>
   <bug>141894</bug>
   <access>remote</access>
   <affected>

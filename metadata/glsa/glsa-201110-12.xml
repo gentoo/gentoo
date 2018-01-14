@@ -5,7 +5,7 @@
   <synopsis>Multiple Denial of Service vulnerabilities were found in Unbound.</synopsis>
   <product type="ebuild">unbound</product>
   <announced>2011-10-15</announced>
-  <revised>2011-10-15: 1</revised>
+  <revised count="1">2011-10-15</revised>
   <bug>309117</bug>
   <bug>368981</bug>
   <access>remote</access>

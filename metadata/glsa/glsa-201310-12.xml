@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">FFmpeg</product>
   <announced>2013-10-25</announced>
-  <revised>2013-10-25: 1</revised>
+  <revised count="1">2013-10-25</revised>
   <bug>285719</bug>
   <bug>307755</bug>
   <bug>339036</bug>

@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">tptest</product>
   <announced>2013-10-26</announced>
-  <revised>2013-10-26: 1</revised>
+  <revised count="1">2013-10-26</revised>
   <bug>261191</bug>
   <access>remote</access>
   <affected>

@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">mozilla, nss</product>
   <announced>2017-01-19</announced>
-  <revised>2017-01-19: 01</revised>
+  <revised count="01">2017-01-19</revised>
   <bug>550288</bug>
   <bug>571086</bug>
   <bug>604916</bug>

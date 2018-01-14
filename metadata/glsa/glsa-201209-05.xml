@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">libreoffice</product>
   <announced>2012-09-24</announced>
-  <revised>2012-09-24: 1</revised>
+  <revised count="1">2012-09-24</revised>
   <bug>386081</bug>
   <bug>409455</bug>
   <bug>416457</bug>

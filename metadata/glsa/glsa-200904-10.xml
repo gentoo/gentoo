@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">avahi</product>
   <announced>2009-04-08</announced>
-  <revised>2009-04-08: 01</revised>
+  <revised count="01">2009-04-08</revised>
   <bug>260971</bug>
   <access>remote</access>
   <affected>

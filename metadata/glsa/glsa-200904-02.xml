@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">glib</product>
   <announced>2009-04-03</announced>
-  <revised>2009-04-05: 02</revised>
+  <revised count="02">2009-04-05</revised>
   <bug>249214</bug>
   <access>remote</access>
   <affected>

@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">vmware-server vmware-player vmware-workstation</product>
   <announced>2012-09-29</announced>
-  <revised>2012-09-29: 2</revised>
+  <revised count="2">2012-09-29</revised>
   <bug>213548</bug>
   <bug>224637</bug>
   <bug>236167</bug>

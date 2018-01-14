@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">Perl Qt-UnixODBC CMake</product>
   <announced>2005-10-17</announced>
-  <revised>2006-05-22: 03</revised>
+  <revised count="03">2006-05-22</revised>
   <bug>105719</bug>
   <bug>105721</bug>
   <bug>106678</bug>

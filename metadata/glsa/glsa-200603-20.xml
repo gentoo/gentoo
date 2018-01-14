@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">Flash</product>
   <announced>2006-03-21</announced>
-  <revised>2009-05-28: 02</revised>
+  <revised count="02">2009-05-28</revised>
   <bug>102777</bug>
   <access>remote</access>
   <affected>

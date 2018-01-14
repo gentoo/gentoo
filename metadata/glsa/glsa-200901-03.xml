@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">pdnsd</product>
   <announced>2009-01-11</announced>
-  <revised>2009-01-11: 01</revised>
+  <revised count="01">2009-01-11</revised>
   <bug>231285</bug>
   <access>remote</access>
   <affected>

@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">asterisk</product>
   <announced>2006-10-30</announced>
-  <revised>2007-01-30: 02</revised>
+  <revised count="02">2007-01-30</revised>
   <bug>144941</bug>
   <bug>151881</bug>
   <access>remote</access>

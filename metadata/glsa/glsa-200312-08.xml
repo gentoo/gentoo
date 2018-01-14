@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">cvs</product>
   <announced>2003-12-28</announced>
-  <revised>2003-12-28: 01</revised>
+  <revised count="01">2003-12-28</revised>
   <bug>36142</bug>
   <access>unknown</access>
   <affected>

@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">fbida</product>
   <announced>2006-08-23</announced>
-  <revised>2006-08-23: 01</revised>
+  <revised count="01">2006-08-23</revised>
   <bug>141684</bug>
   <access>remote</access>
   <affected>

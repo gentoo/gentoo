@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">getmail</product>
   <announced>2014-12-28</announced>
-  <revised>2014-12-28: 1</revised>
+  <revised count="1">2014-12-28</revised>
   <bug>524684</bug>
   <access>remote</access>
   <affected>

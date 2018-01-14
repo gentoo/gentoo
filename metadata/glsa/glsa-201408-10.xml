@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">libgcrypt,side-channel,elgamal</product>
   <announced>2014-08-29</announced>
-  <revised>2014-08-29: 1</revised>
+  <revised count="1">2014-08-29</revised>
   <bug>519396</bug>
   <access>remote</access>
   <affected>

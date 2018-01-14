@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">acpid</product>
   <announced>2013-10-28</announced>
-  <revised>2013-10-28: 1</revised>
+  <revised count="1">2013-10-28</revised>
   <bug>434522</bug>
   <access>local</access>
   <affected>

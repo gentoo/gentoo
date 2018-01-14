@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">Inkscape</product>
   <announced>2005-11-28</announced>
-  <revised>2005-11-28: 01</revised>
+  <revised count="01">2005-11-28</revised>
   <bug>109993</bug>
   <access>remote</access>
   <affected>

@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">lha</product>
   <announced>2004-09-08</announced>
-  <revised>2006-10-20: 02</revised>
+  <revised count="02">2006-10-20</revised>
   <bug>62618</bug>
   <access>remote</access>
   <affected>

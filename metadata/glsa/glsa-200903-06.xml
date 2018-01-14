@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">nfs-utils</product>
   <announced>2009-03-07</announced>
-  <revised>2009-03-07: 01</revised>
+  <revised count="01">2009-03-07</revised>
   <bug>242696</bug>
   <access>remote</access>
   <affected>

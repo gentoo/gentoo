@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">wireshark ethereal</product>
   <announced>2006-07-25</announced>
-  <revised>2006-07-25: 01</revised>
+  <revised count="01">2006-07-25</revised>
   <bug>140856</bug>
   <access>remote</access>
   <affected>

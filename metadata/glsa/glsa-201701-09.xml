@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">xdg-utils</product>
   <announced>2017-01-01</announced>
-  <revised>2017-01-01: 1</revised>
+  <revised count="1">2017-01-01</revised>
   <bug>472888</bug>
   <access>local, remote</access>
   <affected>

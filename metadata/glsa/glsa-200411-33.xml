@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">www-apps/twiki</product>
   <announced>2004-11-24</announced>
-  <revised>2006-09-08: 02</revised>
+  <revised count="02">2006-09-08</revised>
   <bug>71035</bug>
   <access>remote</access>
   <affected>

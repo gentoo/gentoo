@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">VMware</product>
   <announced>2006-01-07</announced>
-  <revised>2006-05-25: 02</revised>
+  <revised count="02">2006-05-25</revised>
   <bug>116238</bug>
   <access>remote and local</access>
   <affected>

@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">tcpdump</product>
   <announced>2007-07-28</announced>
-  <revised>2007-07-28: 01</revised>
+  <revised count="01">2007-07-28</revised>
   <bug>184815</bug>
   <access>remote</access>
   <affected>

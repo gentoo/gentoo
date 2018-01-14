@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">Mozilla</product>
   <announced>2005-01-05</announced>
-  <revised>2007-12-30: 03</revised>
+  <revised count="03">2007-12-30</revised>
   <bug>76112</bug>
   <bug>68976</bug>
   <bug>70749</bug>

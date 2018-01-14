@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">Courier</product>
   <announced>2004-03-26</announced>
-  <revised>2004-03-26: 01</revised>
+  <revised count="01">2004-03-26</revised>
   <bug>45584</bug>
   <access>remote</access>
   <affected>

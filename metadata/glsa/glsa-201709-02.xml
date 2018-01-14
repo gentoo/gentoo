@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">binutils</product>
   <announced>2017-09-17</announced>
-  <revised>2017-09-17: 1</revised>
+  <revised count="1">2017-09-17</revised>
   <bug>618006</bug>
   <bug>618514</bug>
   <bug>618516</bug>

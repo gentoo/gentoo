@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">fail2ban</product>
   <announced>2007-02-16</announced>
-  <revised>2007-02-16: 01</revised>
+  <revised count="01">2007-02-16</revised>
   <bug>157166</bug>
   <access>remote</access>
   <affected>

@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">clamav</product>
   <announced>2009-09-09</announced>
-  <revised>2009-09-09: 01</revised>
+  <revised count="01">2009-09-09</revised>
   <bug>264834</bug>
   <bug>265545</bug>
   <access>remote</access>

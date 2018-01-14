@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">HAProxy</product>
   <announced>2013-07-11</announced>
-  <revised>2013-07-11: 1</revised>
+  <revised count="1">2013-07-11</revised>
   <bug>464340</bug>
   <bug>473674</bug>
   <access>remote</access>

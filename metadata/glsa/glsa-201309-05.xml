@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">pip</product>
   <announced>2013-09-12</announced>
-  <revised>2013-09-12: 1</revised>
+  <revised count="1">2013-09-12</revised>
   <bug>462616</bug>
   <bug>480202</bug>
   <access>local, remote</access>

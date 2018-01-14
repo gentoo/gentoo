@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">postfix</product>
   <announced>2008-08-14</announced>
-  <revised>2008-10-23: 02</revised>
+  <revised count="02">2008-10-23</revised>
   <bug>232642</bug>
   <access>local</access>
   <affected>

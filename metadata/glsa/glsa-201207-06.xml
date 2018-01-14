@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">jruby</product>
   <announced>2012-07-09</announced>
-  <revised>2012-07-09: 1</revised>
+  <revised count="1">2012-07-09</revised>
   <bug>396305</bug>
   <access>remote</access>
   <affected>

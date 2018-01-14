@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">mcrypt</product>
   <announced>2014-05-18</announced>
-  <revised>2014-05-18: 1</revised>
+  <revised count="1">2014-05-18</revised>
   <bug>434112</bug>
   <bug>440778</bug>
   <access>remote</access>

@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">dev-lang/ruby</product>
   <announced>2004-09-03</announced>
-  <revised>2004-09-03: 01</revised>
+  <revised count="01">2004-09-03</revised>
   <bug>60525</bug>
   <access>local</access>
   <affected>

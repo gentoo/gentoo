@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">lighttpd</product>
   <announced>2007-09-27</announced>
-  <revised>2007-09-27: 01</revised>
+  <revised count="01">2007-09-27</revised>
   <bug>191912</bug>
   <access>remote</access>
   <affected>

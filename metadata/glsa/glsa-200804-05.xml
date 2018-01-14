@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">nx, nxnode</product>
   <announced>2008-04-06</announced>
-  <revised>2008-04-06: 02</revised>
+  <revised count="02">2008-04-06</revised>
   <bug>210317</bug>
   <access>remote</access>
   <affected>

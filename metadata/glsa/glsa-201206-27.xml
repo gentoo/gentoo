@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">mini_httpd</product>
   <announced>2012-06-24</announced>
-  <revised>2012-06-24: 1</revised>
+  <revised count="1">2012-06-24</revised>
   <bug>303755</bug>
   <access>remote</access>
   <affected>

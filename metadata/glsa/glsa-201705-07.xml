@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">thunderbird,mozilla</product>
   <announced>2017-05-09</announced>
-  <revised>2017-05-09: 1</revised>
+  <revised count="1">2017-05-09</revised>
   <bug>611954</bug>
   <access>remote</access>
   <affected>

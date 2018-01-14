@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">flex</product>
   <announced>2017-01-11</announced>
-  <revised>2017-01-11: 1</revised>
+  <revised count="1">2017-01-11</revised>
   <bug>589820</bug>
   <access>remote</access>
   <affected>

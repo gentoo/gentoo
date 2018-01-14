@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">bugzilla</product>
   <announced>2011-10-10</announced>
-  <revised>2011-10-10: 1</revised>
+  <revised count="1">2011-10-10</revised>
   <bug>352781</bug>
   <bug>380255</bug>
   <bug>386203</bug>

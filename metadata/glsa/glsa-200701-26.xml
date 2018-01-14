@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">ksirc</product>
   <announced>2007-01-29</announced>
-  <revised>2007-01-30: 01</revised>
+  <revised count="01">2007-01-30</revised>
   <bug>159658</bug>
   <access>remote</access>
   <affected>

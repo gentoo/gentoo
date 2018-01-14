@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">tiff</product>
   <announced>2004-10-13</announced>
-  <revised>2004-10-13: 01</revised>
+  <revised count="01">2004-10-13</revised>
   <access>remote</access>
   <affected>
     <package name="media-libs/tiff" auto="yes" arch="*">

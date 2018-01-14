@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">fastjar</product>
   <announced>2012-09-28</announced>
-  <revised>2012-09-28: 1</revised>
+  <revised count="1">2012-09-28</revised>
   <bug>325557</bug>
   <access>remote</access>
   <affected>

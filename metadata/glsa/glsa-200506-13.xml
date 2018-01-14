@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">webapp-config</product>
   <announced>2005-06-17</announced>
-  <revised>2007-12-30: 03</revised>
+  <revised count="03">2007-12-30</revised>
   <bug>91785</bug>
   <access>local</access>
   <affected>

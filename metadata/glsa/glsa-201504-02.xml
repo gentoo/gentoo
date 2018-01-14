@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">sudo</product>
   <announced>2015-04-11</announced>
-  <revised>2015-04-11: 1</revised>
+  <revised count="1">2015-04-11</revised>
   <bug>539532</bug>
   <access>local</access>
   <affected>

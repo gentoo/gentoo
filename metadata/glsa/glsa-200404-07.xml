@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">clamav</product>
   <announced>2004-04-07</announced>
-  <revised>2006-05-22: 02</revised>
+  <revised count="02">2006-05-22</revised>
   <bug>45357</bug>
   <access>remote</access>
   <affected>

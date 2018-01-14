@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">ConnMan</product>
   <announced>2012-05-15</announced>
-  <revised>2012-05-15: 1</revised>
+  <revised count="1">2012-05-15</revised>
   <bug>415415</bug>
   <access>remote</access>
   <affected>

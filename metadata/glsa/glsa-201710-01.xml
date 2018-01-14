@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">rubygems</product>
   <announced>2017-10-08</announced>
-  <revised>2017-10-08: 1</revised>
+  <revised count="1">2017-10-08</revised>
   <bug>629230</bug>
   <access>remote</access>
   <affected>

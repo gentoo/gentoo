@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">torque</product>
   <announced>2006-11-20</announced>
-  <revised>2006-11-24: 03</revised>
+  <revised count="03">2006-11-24</revised>
   <bug>152104</bug>
   <access>local</access>
   <affected>

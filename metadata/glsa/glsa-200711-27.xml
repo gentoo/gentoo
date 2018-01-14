@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">link-grammar</product>
   <announced>2007-11-18</announced>
-  <revised>2007-11-18: 01</revised>
+  <revised count="01">2007-11-18</revised>
   <bug>196803</bug>
   <access>remote</access>
   <affected>

@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">screen</product>
   <announced>2006-11-03</announced>
-  <revised>2006-11-03: 01</revised>
+  <revised count="01">2006-11-03</revised>
   <bug>152770</bug>
   <access>remote</access>
   <affected>

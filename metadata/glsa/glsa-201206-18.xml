@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">GnuTLS</product>
   <announced>2012-06-23</announced>
-  <revised>2012-06-23: 1</revised>
+  <revised count="1">2012-06-23</revised>
   <bug>281224</bug>
   <bug>292025</bug>
   <bug>389947</bug>

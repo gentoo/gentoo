@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">eggdrop</product>
   <announced>2007-09-15</announced>
-  <revised>2007-09-26: 02</revised>
+  <revised count="02">2007-09-26</revised>
   <bug>179354</bug>
   <access>remote</access>
   <affected>

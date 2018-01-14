@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">xine</product>
   <announced>2004-04-27</announced>
-  <revised>2006-05-22: 02</revised>
+  <revised count="02">2006-05-22</revised>
   <bug>45448</bug>
   <bug>48107</bug>
   <bug>48108</bug>

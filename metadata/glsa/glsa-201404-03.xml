@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">optipng</product>
   <announced>2014-04-07</announced>
-  <revised>2014-04-07: 1</revised>
+  <revised count="1">2014-04-07</revised>
   <bug>435340</bug>
   <access>remote</access>
   <affected>

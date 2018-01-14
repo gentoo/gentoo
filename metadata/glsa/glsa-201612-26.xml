@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">openjpeg</product>
   <announced>2016-12-08</announced>
-  <revised>2016-12-08: 1</revised>
+  <revised count="1">2016-12-08</revised>
   <bug>560632</bug>
   <bug>572430</bug>
   <bug>577608</bug>

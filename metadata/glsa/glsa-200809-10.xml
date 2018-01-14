@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">mantisbt</product>
   <announced>2008-09-21</announced>
-  <revised>2008-11-26: 02</revised>
+  <revised count="02">2008-11-26</revised>
   <bug>222649</bug>
   <bug>233336</bug>
   <access>remote</access>

@@ -5,7 +5,7 @@
   <synopsis>A vulnerability in libuv could lead to privilege escalation.</synopsis>
   <product type="ebuild"/>
   <announced>2016-11-17</announced>
-  <revised>2016-11-17: 1</revised>
+  <revised count="1">2016-11-17</revised>
   <bug>540826</bug>
   <access>local, remote</access>
   <affected>

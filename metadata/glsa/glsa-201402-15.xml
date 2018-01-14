@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">roundcube</product>
   <announced>2014-02-11</announced>
-  <revised>2014-02-11: 1</revised>
+  <revised count="1">2014-02-11</revised>
   <bug>488954</bug>
   <access>remote</access>
   <affected>

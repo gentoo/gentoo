@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">Xpdf</product>
   <announced>2004-12-28</announced>
-  <revised>2004-12-28: 01</revised>
+  <revised count="01">2004-12-28</revised>
   <bug>75191</bug>
   <bug>75201</bug>
   <access>remote</access>

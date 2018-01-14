@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">flightgear, simgear</product>
   <announced>2016-03-12</announced>
-  <revised>2016-03-12: 1</revised>
+  <revised count="1">2016-03-12</revised>
   <bug>426502</bug>
   <bug>468106</bug>
   <access>remote</access>

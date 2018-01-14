@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">pdns</product>
   <announced>2012-02-22</announced>
-  <revised>2012-02-22: 1</revised>
+  <revised count="1">2012-02-22</revised>
   <bug>398403</bug>
   <access>remote</access>
   <affected>

@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">net-dns</product>
   <announced>2007-08-11</announced>
-  <revised>2007-08-11: 01</revised>
+  <revised count="01">2007-08-11</revised>
   <bug>184029</bug>
   <access>remote</access>
   <affected>

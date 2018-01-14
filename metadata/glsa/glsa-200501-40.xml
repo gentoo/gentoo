@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">ngIRCd</product>
   <announced>2005-01-28</announced>
-  <revised>2006-05-22: 02</revised>
+  <revised count="02">2006-05-22</revised>
   <bug>79705</bug>
   <access>remote</access>
   <affected>

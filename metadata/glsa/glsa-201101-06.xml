@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">IO::Socket::SSL</product>
   <announced>2011-01-16</announced>
-  <revised>2011-01-16: 01</revised>
+  <revised count="01">2011-01-16</revised>
   <bug>276360</bug>
   <access>remote</access>
   <affected>

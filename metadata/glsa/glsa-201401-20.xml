@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">cacti</product>
   <announced>2014-01-21</announced>
-  <revised>2014-01-21: 1</revised>
+  <revised count="1">2014-01-21</revised>
   <bug>324031</bug>
   <bug>480196</bug>
   <access>remote</access>

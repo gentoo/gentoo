@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">nethack slashem falconseye</product>
   <announced>2006-03-23</announced>
-  <revised>2006-03-30: 01</revised>
+  <revised count="01">2006-03-30</revised>
   <bug>125902</bug>
   <bug>122376</bug>
   <bug>127167</bug>

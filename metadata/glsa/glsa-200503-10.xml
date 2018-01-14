@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">Firefox</product>
   <announced>2005-03-04</announced>
-  <revised>2005-03-04: 01</revised>
+  <revised count="01">2005-03-04</revised>
   <bug>83267</bug>
   <access>remote and local</access>
   <affected>

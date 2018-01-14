@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">automake</product>
   <announced>2013-10-25</announced>
-  <revised>2013-10-25: 1</revised>
+  <revised count="1">2013-10-25</revised>
   <bug>295357</bug>
   <bug>426336</bug>
   <access>local</access>

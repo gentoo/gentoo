@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">glibc</product>
   <announced>2017-06-20</announced>
-  <revised>2017-06-20: 2</revised>
+  <revised count="2">2017-06-20</revised>
   <bug>608698</bug>
   <bug>608706</bug>
   <bug>622220</bug>

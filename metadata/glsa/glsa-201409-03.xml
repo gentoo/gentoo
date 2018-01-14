@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">dhcpcd</product>
   <announced>2014-09-03</announced>
-  <revised>2014-09-03: 1</revised>
+  <revised count="1">2014-09-03</revised>
   <bug>518596</bug>
   <access>remote</access>
   <affected>

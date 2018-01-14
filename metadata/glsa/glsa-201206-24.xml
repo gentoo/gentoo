@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">apache tomcat</product>
   <announced>2012-06-24</announced>
-  <revised>2016-03-20: 3</revised>
+  <revised count="3">2016-03-20</revised>
   <bug>272566</bug>
   <bug>273662</bug>
   <bug>303719</bug>

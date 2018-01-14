@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">nagios</product>
   <announced>2006-05-07</announced>
-  <revised>2006-05-25: 03</revised>
+  <revised count="03">2006-05-25</revised>
   <bug>132159</bug>
   <bug>133487</bug>
   <access>remote</access>

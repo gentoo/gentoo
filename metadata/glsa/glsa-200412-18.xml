@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">abcm2ps</product>
   <announced>2004-12-19</announced>
-  <revised>2004-12-19: 02</revised>
+  <revised count="02">2004-12-19</revised>
   <bug>74702</bug>
   <access>remote</access>
   <affected>

@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">littlecms</product>
   <announced>2009-04-19</announced>
-  <revised>2009-04-19: 01</revised>
+  <revised count="01">2009-04-19</revised>
   <bug>260269</bug>
   <bug>264604</bug>
   <access>remote</access>

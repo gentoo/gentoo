@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">nvidia-drivers</product>
   <announced>2006-11-07</announced>
-  <revised>2006-11-10: 02</revised>
+  <revised count="02">2006-11-10</revised>
   <bug>151635</bug>
   <access>remote, local</access>
   <affected>

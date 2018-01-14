@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">strongswan</product>
   <announced>2014-12-13</announced>
-  <revised>2014-12-13: 1</revised>
+  <revised count="1">2014-12-13</revised>
   <bug>507722</bug>
   <bug>509832</bug>
   <access>remote</access>

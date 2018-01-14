@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">libvirt</product>
   <announced>2013-09-25</announced>
-  <revised>2013-09-25: 1</revised>
+  <revised count="1">2013-09-25</revised>
   <bug>454588</bug>
   <bug>470096</bug>
   <access>remote</access>

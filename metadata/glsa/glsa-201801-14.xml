@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201801-14">
+  <title>Xen: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Xen, the worst of which
+    could allow for privilege escalation.
+  </synopsis>
+  <product type="ebuild">xen</product>
+  <announced>2018-01-14</announced>
+  <revised count="1">2018-01-14</revised>
+  <bug>627962</bug>
+  <bug>634668</bug>
+  <bug>637540</bug>
+  <bug>637542</bug>
+  <bug>639688</bug>
+  <bug>641566</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-emulation/xen" auto="yes" arch="*">
+      <unaffected range="ge">4.9.1-r1</unaffected>
+      <vulnerable range="lt">4.9.1-r1</vulnerable>
+    </package>
+    <package name="app-emulation/xen-tools" auto="yes" arch="*">
+      <unaffected range="ge">4.9.1-r1</unaffected>
+      <vulnerable range="lt">4.9.1-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Xen is a bare-metal hypervisor.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Xen. Please review the
+      referenced CVE identifiers for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A local attacker could potentially execute arbitrary code with the
+      privileges of the Xen (QEMU) process on the host, gain privileges on the
+      host system, or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Xen users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/xen-4.9.1-r1"
+    </code>
+    
+    <p>All Xen tools users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=app-emulation/xen-tools-4.9.1-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12134">
+      CVE-2017-12134
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12135">
+      CVE-2017-12135
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12136">
+      CVE-2017-12136
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-12137">
+      CVE-2017-12137
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-15588">
+      CVE-2017-15588
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-15589">
+      CVE-2017-15589
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-15590">
+      CVE-2017-15590
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-15591">
+      CVE-2017-15591
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-15592">
+      CVE-2017-15592
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-15593">
+      CVE-2017-15593
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-15594">
+      CVE-2017-15594
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-15595">
+      CVE-2017-15595
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-17044">
+      CVE-2017-17044
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-17045">
+      CVE-2017-17045
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-17046">
+      CVE-2017-17046
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-17563">
+      CVE-2017-17563
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-17564">
+      CVE-2017-17564
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-17565">
+      CVE-2017-17565
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-17566">
+      CVE-2017-17566
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-11-30T07:36:44Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2018-01-14T23:31:54Z">b-man</metadata>
+</glsa>

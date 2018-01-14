@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">MC</product>
   <announced>2004-05-26</announced>
-  <revised>2004-05-26: 01</revised>
+  <revised count="01">2004-05-26</revised>
   <bug>49990</bug>
   <access>local </access>
   <affected>

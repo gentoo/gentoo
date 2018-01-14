@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">phpcollab</product>
   <announced>2008-12-21</announced>
-  <revised>2008-12-21: 01</revised>
+  <revised count="01">2008-12-21</revised>
   <bug>235052</bug>
   <access>remote</access>
   <affected>

@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">libssh</product>
   <announced>2014-02-21</announced>
-  <revised>2014-02-21: 1</revised>
+  <revised count="1">2014-02-21</revised>
   <bug>444147</bug>
   <access>remote</access>
   <affected>

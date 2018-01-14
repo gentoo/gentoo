@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">deluge</product>
   <announced>2017-03-28</announced>
-  <revised>2017-03-28: 1</revised>
+  <revised count="1">2017-03-28</revised>
   <bug>612144</bug>
   <access>remote</access>
   <affected>

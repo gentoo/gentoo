@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">Samba</product>
   <announced>2004-12-17</announced>
-  <revised>2004-12-17: 01</revised>
+  <revised count="01">2004-12-17</revised>
   <bug>73943</bug>
   <access>remote</access>
   <affected>

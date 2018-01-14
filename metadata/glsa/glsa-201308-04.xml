@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">puppet</product>
   <announced>2013-08-23</announced>
-  <revised>2013-08-23: 1</revised>
+  <revised count="1">2013-08-23</revised>
   <bug>456002</bug>
   <bug>461656</bug>
   <bug>473720</bug>

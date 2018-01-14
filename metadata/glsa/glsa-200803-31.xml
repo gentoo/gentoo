@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">mit-krb5</product>
   <announced>2008-03-24</announced>
-  <revised>2008-03-24: 01</revised>
+  <revised count="01">2008-03-24</revised>
   <bug>199205</bug>
   <bug>212363</bug>
   <access>remote</access>

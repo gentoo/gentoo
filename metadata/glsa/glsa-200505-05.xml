@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">gzip</product>
   <announced>2005-05-09</announced>
-  <revised>2005-05-09: 01</revised>
+  <revised count="01">2005-05-09</revised>
   <bug>89946</bug>
   <bug>90626</bug>
   <access>local</access>

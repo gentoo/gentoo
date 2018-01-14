@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">aterm eterm rxvt mrxvt multi-aterm wterm rxvt-unicode</product>
   <announced>2008-05-07</announced>
-  <revised>2008-05-10: 02</revised>
+  <revised count="02">2008-05-10</revised>
   <bug>216833</bug>
   <bug>217819</bug>
   <bug>219746</bug>

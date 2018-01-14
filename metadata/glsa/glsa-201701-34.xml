@@ -5,7 +5,7 @@
   <synopsis>A vulnerability in runC could lead to privilege escalation.</synopsis>
   <product type="ebuild">runc</product>
   <announced>2017-01-12</announced>
-  <revised>2017-01-12: 1</revised>
+  <revised count="1">2017-01-12</revised>
   <bug>605378</bug>
   <access>remote</access>
   <affected>

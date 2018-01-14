@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">sandbox</product>
   <announced>2005-07-25</announced>
-  <revised>2005-08-11: 02</revised>
+  <revised count="02">2005-08-11</revised>
   <bug>96782</bug>
   <access>local</access>
   <affected>

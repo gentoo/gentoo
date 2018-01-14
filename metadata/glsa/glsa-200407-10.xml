@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">rsync</product>
   <announced>2004-07-12</announced>
-  <revised>2004-07-12: 01</revised>
+  <revised count="01">2004-07-12</revised>
   <bug>49534</bug>
   <access>remote</access>
   <affected>

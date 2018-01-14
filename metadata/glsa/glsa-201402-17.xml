@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">xpdf</product>
   <announced>2014-02-17</announced>
-  <revised>2014-02-17: 1</revised>
+  <revised count="1">2014-02-17</revised>
   <bug>386271</bug>
   <access>local, remote</access>
   <affected>

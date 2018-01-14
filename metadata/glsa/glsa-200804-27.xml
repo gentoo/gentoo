@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">silc-toolkit silc-client silc-server</product>
   <announced>2008-04-24</announced>
-  <revised>2008-04-24: 01</revised>
+  <revised count="01">2008-04-24</revised>
   <bug>212362</bug>
   <bug>214116</bug>
   <bug>214812</bug>

@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">e2fsprogs</product>
   <announced>2007-12-18</announced>
-  <revised>2007-12-18: 01</revised>
+  <revised count="01">2007-12-18</revised>
   <bug>201546</bug>
   <access>remote</access>
   <affected>

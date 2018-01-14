@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">elinks</product>
   <announced>2007-06-06</announced>
-  <revised>2007-06-06: 01</revised>
+  <revised count="01">2007-06-06</revised>
   <bug>177512</bug>
   <access>local</access>
   <affected>

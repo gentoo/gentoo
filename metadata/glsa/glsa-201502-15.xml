@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">samba</product>
   <announced>2015-02-25</announced>
-  <revised>2015-02-25: 1</revised>
+  <revised count="1">2015-02-25</revised>
   <bug>479868</bug>
   <bug>491070</bug>
   <bug>493664</bug>

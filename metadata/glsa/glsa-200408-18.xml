@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">xine-lib</product>
   <announced>2004-08-17</announced>
-  <revised>2006-05-22: 02</revised>
+  <revised count="02">2006-05-22</revised>
   <bug>59948</bug>
   <access>remote</access>
   <affected>

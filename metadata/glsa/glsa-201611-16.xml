@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">chromium</product>
   <announced>2016-11-22</announced>
-  <revised>2016-11-22: 3</revised>
+  <revised count="3">2016-11-22</revised>
   <bug>599416</bug>
   <access>remote</access>
   <affected>

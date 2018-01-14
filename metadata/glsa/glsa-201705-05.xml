@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">ffmpeg</product>
   <announced>2017-05-09</announced>
-  <revised>2017-05-09: 1</revised>
+  <revised count="1">2017-05-09</revised>
   <bug>608868</bug>
   <bug>610810</bug>
   <access>remote</access>

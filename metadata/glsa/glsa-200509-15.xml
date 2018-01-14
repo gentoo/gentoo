@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">util-linux</product>
   <announced>2005-09-20</announced>
-  <revised>2005-09-20: 01</revised>
+  <revised count="01">2005-09-20</revised>
   <bug>105805</bug>
   <access>local</access>
   <affected>

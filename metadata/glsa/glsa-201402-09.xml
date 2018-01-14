@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">mod_fcgid</product>
   <announced>2014-02-07</announced>
-  <revised>2014-02-07: 1</revised>
+  <revised count="1">2014-02-07</revised>
   <bug>487314</bug>
   <access>remote</access>
   <affected>

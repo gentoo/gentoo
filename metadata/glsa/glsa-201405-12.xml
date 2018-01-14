@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">ettercap</product>
   <announced>2014-05-17</announced>
-  <revised>2014-05-17: 1</revised>
+  <revised count="1">2014-05-17</revised>
   <bug>340897</bug>
   <bug>451198</bug>
   <access>remote</access>

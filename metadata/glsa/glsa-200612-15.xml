@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">vlnx</product>
   <announced>2006-12-14</announced>
-  <revised>2006-12-14: 01</revised>
+  <revised count="01">2006-12-14</revised>
   <bug>156989</bug>
   <access>remote</access>
   <affected>

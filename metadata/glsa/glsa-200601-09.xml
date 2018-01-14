@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">wine</product>
   <announced>2006-01-13</announced>
-  <revised>2007-02-26: 03</revised>
+  <revised count="03">2007-02-26</revised>
   <bug>118101</bug>
   <access>remote</access>
   <affected>

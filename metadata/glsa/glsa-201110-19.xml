@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">xorg-server</product>
   <announced>2011-10-22</announced>
-  <revised>2011-10-22: 2</revised>
+  <revised count="2">2011-10-22</revised>
   <bug>387069</bug>
   <access>local</access>
   <affected>

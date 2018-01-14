@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">openmotif</product>
   <announced>2005-12-28</announced>
-  <revised>2006-01-29: 03</revised>
+  <revised count="03">2006-01-29</revised>
   <bug>114234</bug>
   <bug>116481</bug>
   <access>remote</access>

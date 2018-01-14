@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">puppetagent</product>
   <announced>2017-10-13</announced>
-  <revised>2017-10-13: 1</revised>
+  <revised count="1">2017-10-13</revised>
   <bug>597684</bug>
   <access>remote</access>
   <affected>

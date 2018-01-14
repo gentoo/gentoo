@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">viewvc</product>
   <announced>2008-03-19</announced>
-  <revised>2009-04-01: 02</revised>
+  <revised count="02">2009-04-01</revised>
   <bug>212288</bug>
   <access>remote</access>
   <affected>

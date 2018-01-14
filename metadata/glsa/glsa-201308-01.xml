@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">putty</product>
   <announced>2013-08-21</announced>
-  <revised>2013-08-21: 2</revised>
+  <revised count="2">2013-08-21</revised>
   <bug>394429</bug>
   <bug>479872</bug>
   <access>local, remote</access>

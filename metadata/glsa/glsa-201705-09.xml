@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">tomcat</product>
   <announced>2017-05-18</announced>
-  <revised>2017-05-18: 1</revised>
+  <revised count="1">2017-05-18</revised>
   <bug>575796</bug>
   <bug>586966</bug>
   <bug>595978</bug>

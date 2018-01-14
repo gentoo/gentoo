@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">f-prot</product>
   <announced>2009-04-14</announced>
-  <revised>2009-04-17: 04</revised>
+  <revised count="04">2009-04-17</revised>
   <bug>232665</bug>
   <bug>253497</bug>
   <access>remote</access>

@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">maradns</product>
   <announced>2012-02-22</announced>
-  <revised>2012-02-22: 1</revised>
+  <revised count="1">2012-02-22</revised>
   <bug>397431</bug>
   <access>remote</access>
   <affected>

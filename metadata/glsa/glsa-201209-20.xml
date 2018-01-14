@@ -5,7 +5,7 @@
   <synopsis>A vulnerability in mod_rpaf may result in Denial of Service.</synopsis>
   <product type="ebuild">mod_rpaf</product>
   <announced>2012-09-27</announced>
-  <revised>2012-09-27: 1</revised>
+  <revised count="1">2012-09-27</revised>
   <bug>432406</bug>
   <access>remote</access>
   <affected>

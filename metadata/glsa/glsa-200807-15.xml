@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">pan</product>
   <announced>2008-07-31</announced>
-  <revised>2008-07-31: 01</revised>
+  <revised count="01">2008-07-31</revised>
   <bug>224051</bug>
   <access>remote</access>
   <affected>

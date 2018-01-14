@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">chrony</product>
   <announced>2015-07-05</announced>
-  <revised>2015-07-05: 1</revised>
+  <revised count="1">2015-07-05</revised>
   <bug>545918</bug>
   <access>remote</access>
   <affected>

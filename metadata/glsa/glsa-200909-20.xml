@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">curl</product>
   <announced>2009-09-25</announced>
-  <revised>2009-09-25: 01</revised>
+  <revised count="01">2009-09-25</revised>
   <bug>281515</bug>
   <access>remote</access>
   <affected>

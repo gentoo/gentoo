@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">freetype</product>
   <announced>2007-05-30</announced>
-  <revised>2007-05-30: 01</revised>
+  <revised count="01">2007-05-30</revised>
   <bug>179161</bug>
   <access>remote</access>
   <affected>

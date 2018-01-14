@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">GnuPG</product>
   <announced>2011-10-22</announced>
-  <revised>2011-10-22: 1</revised>
+  <revised count="1">2011-10-22</revised>
   <bug>329583</bug>
   <access>remote</access>
   <affected>

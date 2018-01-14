@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">xorg-x11,xorg-server,xtrans,xload,xinit,xterm,xf86dga,xdm,libX11</product>
   <announced>2006-08-28</announced>
-  <revised>2006-12-13: 02</revised>
+  <revised count="02">2006-12-13</revised>
   <bug>135974</bug>
   <access>local</access>
   <affected>

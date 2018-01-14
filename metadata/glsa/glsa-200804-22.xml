@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">pdns-recursor</product>
   <announced>2008-04-18</announced>
-  <revised>2008-08-21: 03</revised>
+  <revised count="03">2008-08-21</revised>
   <bug>215567</bug>
   <bug>231335</bug>
   <access>remote</access>

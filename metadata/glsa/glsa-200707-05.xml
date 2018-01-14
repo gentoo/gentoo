@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">webmin/usermin</product>
   <announced>2007-07-05</announced>
-  <revised>2007-07-05: 01</revised>
+  <revised count="01">2007-07-05</revised>
   <bug>181385</bug>
   <access>remote</access>
   <affected>

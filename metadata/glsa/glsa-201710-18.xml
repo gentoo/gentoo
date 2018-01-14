@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">ruby</product>
   <announced>2017-10-18</announced>
-  <revised>2017-10-18: 1</revised>
+  <revised count="1">2017-10-18</revised>
   <bug>605536</bug>
   <bug>629484</bug>
   <bug>631034</bug>

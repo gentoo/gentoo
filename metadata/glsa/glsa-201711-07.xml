@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">imagemagick</product>
   <announced>2017-11-11</announced>
-  <revised>2017-11-11: 1</revised>
+  <revised count="1">2017-11-11</revised>
   <bug>626454</bug>
   <bug>626906</bug>
   <bug>627036</bug>

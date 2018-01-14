@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">zabbix</product>
   <announced>2013-11-25</announced>
-  <revised>2013-11-25: 1</revised>
+  <revised count="1">2013-11-25</revised>
   <bug>312875</bug>
   <bug>394497</bug>
   <bug>428372</bug>

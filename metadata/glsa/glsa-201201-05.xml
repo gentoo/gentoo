@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">mDNSResponder</product>
   <announced>2012-01-22</announced>
-  <revised>2012-01-22: 1</revised>
+  <revised count="1">2012-01-22</revised>
   <bug>290822</bug>
   <access>local, remote</access>
   <affected>

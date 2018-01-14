@@ -5,7 +5,7 @@
   <synopsis>Kwalletd password stores are vulnerable to codebook attacks.</synopsis>
   <product type="ebuild">kwalletd</product>
   <announced>2016-06-27</announced>
-  <revised>2016-06-27: 1</revised>
+  <revised count="1">2016-06-27</revised>
   <bug>496768</bug>
   <access>local</access>
   <affected>

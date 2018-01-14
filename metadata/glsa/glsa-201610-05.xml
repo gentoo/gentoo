@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">subversion serf</product>
   <announced>2016-10-11</announced>
-  <revised>2016-10-11: 2</revised>
+  <revised count="2">2016-10-11</revised>
   <bug>500482</bug>
   <bug>518716</bug>
   <bug>519202</bug>

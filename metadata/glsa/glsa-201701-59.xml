@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">adodb</product>
   <announced>2017-01-24</announced>
-  <revised>2017-01-24: 1</revised>
+  <revised count="1">2017-01-24</revised>
   <bug>604714</bug>
   <access>remote</access>
   <affected>

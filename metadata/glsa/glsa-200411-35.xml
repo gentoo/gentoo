@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">phpwebsite</product>
   <announced>2004-11-26</announced>
-  <revised>2006-05-22: 03</revised>
+  <revised count="03">2006-05-22</revised>
   <bug>71502</bug>
   <access>remote</access>
   <affected>

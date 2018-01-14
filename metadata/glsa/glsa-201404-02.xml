@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">libproxy</product>
   <announced>2014-04-07</announced>
-  <revised>2014-04-07: 1</revised>
+  <revised count="1">2014-04-07</revised>
   <bug>438146</bug>
   <access>remote</access>
   <affected>

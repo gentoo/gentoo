@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">nagios-core</product>
   <announced>2014-12-13</announced>
-  <revised>2014-12-13: 1</revised>
+  <revised count="1">2014-12-13</revised>
   <bug>447802</bug>
   <bug>495132</bug>
   <bug>501200</bug>

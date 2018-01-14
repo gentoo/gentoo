@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">cscope</product>
   <announced>2004-12-16</announced>
-  <revised>2004-12-16: 01</revised>
+  <revised count="01">2004-12-16</revised>
   <bug>71595</bug>
   <access>local</access>
   <affected>

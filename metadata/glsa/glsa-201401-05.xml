@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">dhcp</product>
   <announced>2014-01-06</announced>
-  <revised>2014-01-06: 1</revised>
+  <revised count="1">2014-01-06</revised>
   <bug>463848</bug>
   <access>remote</access>
   <affected>

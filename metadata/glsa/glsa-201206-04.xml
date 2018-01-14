@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">argyllcms</product>
   <announced>2012-06-18</announced>
-  <revised>2012-06-18: 1</revised>
+  <revised count="1">2012-06-18</revised>
   <bug>416781</bug>
   <access>remote</access>
   <affected>

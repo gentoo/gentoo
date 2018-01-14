@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">D-Bus</product>
   <announced>2011-10-21</announced>
-  <revised>2011-10-21: 1</revised>
+  <revised count="1">2011-10-21</revised>
   <bug>348766</bug>
   <bug>371261</bug>
   <bug>372743</bug>

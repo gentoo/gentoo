@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">icecast</product>
   <announced>2015-08-15</announced>
-  <revised>2015-08-15: 1</revised>
+  <revised count="1">2015-08-15</revised>
   <bug>545968</bug>
   <access>remote</access>
   <affected>

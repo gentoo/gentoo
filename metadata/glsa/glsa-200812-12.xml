@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">honeyd</product>
   <announced>2008-12-12</announced>
-  <revised>2008-12-12: 01</revised>
+  <revised count="01">2008-12-12</revised>
   <bug>237481</bug>
   <access>local</access>
   <affected>

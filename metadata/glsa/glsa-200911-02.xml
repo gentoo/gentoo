@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">sun-jre-bin sun-jdk emul-linux-x86-java blackdown-jre blackdown-jdk</product>
   <announced>2009-11-17</announced>
-  <revised>2009-11-17: 01</revised>
+  <revised count="01">2009-11-17</revised>
   <bug>182824</bug>
   <bug>231337</bug>
   <bug>250012</bug>

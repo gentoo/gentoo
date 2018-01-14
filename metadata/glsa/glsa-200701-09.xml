@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">oftpd</product>
   <announced>2007-01-15</announced>
-  <revised>2007-01-15: 01</revised>
+  <revised count="01">2007-01-15</revised>
   <bug>159178</bug>
   <access>remote</access>
   <affected>

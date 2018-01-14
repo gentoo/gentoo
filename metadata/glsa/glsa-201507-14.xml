@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">oracle-jre oracle-jdk</product>
   <announced>2015-07-10</announced>
-  <revised>2015-07-11: 2</revised>
+  <revised count="2">2015-07-11</revised>
   <bug>537214</bug>
   <access>local, remote</access>
   <affected>

@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">policycoreutils</product>
   <announced>2014-12-26</announced>
-  <revised>2014-12-26: 1</revised>
+  <revised count="1">2014-12-26</revised>
   <bug>509896</bug>
   <access>local</access>
   <affected>

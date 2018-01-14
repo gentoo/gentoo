@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">Convert-UUlib</product>
   <announced>2005-04-26</announced>
-  <revised>2006-05-22: 02</revised>
+  <revised count="02">2006-05-22</revised>
   <bug>89501</bug>
   <access>remote</access>
   <affected>

@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">MPlayer</product>
   <announced>2005-09-01</announced>
-  <revised>2005-09-01: 01</revised>
+  <revised count="01">2005-09-01</revised>
   <bug>103555</bug>
   <access>remote</access>
   <affected>

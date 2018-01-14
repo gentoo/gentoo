@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">PySAML2</product>
   <announced>2018-01-11</announced>
-  <revised>2018-01-12: 2</revised>
+  <revised count="2">2018-01-12</revised>
   <bug>644016</bug>
   <access>remote</access>
   <affected>
@@ -51,7 +51,7 @@
     
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-1000433">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-1000433">
       CVE-2017-1000433
     </uri>
   </references>

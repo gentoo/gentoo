@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">ircservices</product>
   <announced>2007-12-13</announced>
-  <revised>2007-12-13: 01</revised>
+  <revised count="01">2007-12-13</revised>
   <bug>199897</bug>
   <access>remote</access>
   <affected>

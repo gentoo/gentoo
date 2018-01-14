@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">TeX Live</product>
   <announced>2012-06-25</announced>
-  <revised>2012-06-25: 1</revised>
+  <revised count="1">2012-06-25</revised>
   <bug>264598</bug>
   <bug>324019</bug>
   <access>remote</access>

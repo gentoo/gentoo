@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">awstats</product>
   <announced>2005-01-25</announced>
-  <revised>2009-05-28: 04</revised>
+  <revised count="04">2009-05-28</revised>
   <bug>77963</bug>
   <bug>81775</bug>
   <access>remote</access>

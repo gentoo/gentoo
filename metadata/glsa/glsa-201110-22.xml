@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">postgresql-server postgresql-base</product>
   <announced>2011-10-25</announced>
-  <revised>2012-03-05: 3</revised>
+  <revised count="3">2012-03-05</revised>
   <bug>261223</bug>
   <bug>284274</bug>
   <bug>297383</bug>

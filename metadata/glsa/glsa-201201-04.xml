@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">Logsurfer</product>
   <announced>2012-01-20</announced>
-  <revised>2012-01-20: 1</revised>
+  <revised count="1">2012-01-20</revised>
   <bug>387397</bug>
   <access>remote</access>
   <affected>

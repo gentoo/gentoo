@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">openoffice</product>
   <announced>2004-10-20</announced>
-  <revised>2004-10-20: 01</revised>
+  <revised count="01">2004-10-20</revised>
   <bug>63556</bug>
   <access>local</access>
   <affected>

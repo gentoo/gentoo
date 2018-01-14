@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">libwebp</product>
   <announced>2013-12-10</announced>
-  <revised>2013-12-10: 1</revised>
+  <revised count="1">2013-12-10</revised>
   <bug>442152</bug>
   <access>remote</access>
   <affected>

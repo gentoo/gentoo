@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">acroread</product>
   <announced>2009-07-12</announced>
-  <revised>2009-07-12: 01</revised>
+  <revised count="01">2009-07-12</revised>
   <bug>267846</bug>
   <bug>273908</bug>
   <access>remote</access>

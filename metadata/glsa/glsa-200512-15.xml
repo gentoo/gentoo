@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">rssh</product>
   <announced>2005-12-27</announced>
-  <revised>2005-12-27: 01</revised>
+  <revised count="01">2005-12-27</revised>
   <bug>115082</bug>
   <access>local</access>
   <affected>

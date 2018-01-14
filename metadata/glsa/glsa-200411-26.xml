@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">GIMPS,SETI@home,ChessBrain</product>
   <announced>2004-11-17</announced>
-  <revised>2006-05-22: 03</revised>
+  <revised count="03">2006-05-22</revised>
   <bug>69868</bug>
   <access>local</access>
   <affected>

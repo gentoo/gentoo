@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">websvn</product>
   <announced>2009-03-09</announced>
-  <revised>2009-03-09: 01</revised>
+  <revised count="01">2009-03-09</revised>
   <bug>243852</bug>
   <access>remote</access>
   <affected>

@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">mupdf</product>
   <announced>2014-12-26</announced>
-  <revised>2014-12-26: 1</revised>
+  <revised count="1">2014-12-26</revised>
   <bug>358029</bug>
   <bug>498876</bug>
   <access>remote</access>

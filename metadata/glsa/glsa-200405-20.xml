@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">MySQL</product>
   <announced>2004-05-25</announced>
-  <revised>2004-05-25: 01</revised>
+  <revised count="01">2004-05-25</revised>
   <bug>46242</bug>
   <access>local </access>
   <affected>

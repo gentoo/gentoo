@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">gdk-pixbuf</product>
   <announced>2015-12-21</announced>
-  <revised>2015-12-21: 1</revised>
+  <revised count="1">2015-12-21</revised>
   <bug>556314</bug>
   <bug>562878</bug>
   <bug>562880</bug>

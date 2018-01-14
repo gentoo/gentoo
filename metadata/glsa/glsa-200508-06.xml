@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">Gaim</product>
   <announced>2005-08-15</announced>
-  <revised>2005-08-15: 01</revised>
+  <revised count="01">2005-08-15</revised>
   <bug>102000</bug>
   <access>remote</access>
   <affected>

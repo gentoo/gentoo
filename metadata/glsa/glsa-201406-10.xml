@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">lighttpd</product>
   <announced>2014-06-13</announced>
-  <revised>2014-06-13: 1</revised>
+  <revised count="1">2014-06-13</revised>
   <bug>392581</bug>
   <bug>444179</bug>
   <bug>490432</bug>

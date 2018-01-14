@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">grep</product>
   <announced>2014-03-26</announced>
-  <revised>2014-03-26: 1</revised>
+  <revised count="1">2014-03-26</revised>
   <bug>448246</bug>
   <access>local, remote</access>
   <affected>

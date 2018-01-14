@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">dovecot</product>
   <announced>2008-12-14</announced>
-  <revised>2008-12-14: 01</revised>
+  <revised count="01">2008-12-14</revised>
   <bug>240409</bug>
   <bug>244962</bug>
   <bug>245316</bug>

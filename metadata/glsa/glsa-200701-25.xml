@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">X.Org</product>
   <announced>2007-01-27</announced>
-  <revised>2007-02-26: 02</revised>
+  <revised count="02">2007-02-26</revised>
   <bug>157421</bug>
   <access>local</access>
   <affected>

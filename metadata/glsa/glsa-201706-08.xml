@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">mupdf</product>
   <announced>2017-06-06</announced>
-  <revised>2017-06-06: 1</revised>
+  <revised count="1">2017-06-06</revised>
   <bug>611444</bug>
   <bug>614044</bug>
   <bug>614852</bug>

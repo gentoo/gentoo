@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">inspircd</product>
   <announced>2015-12-30</announced>
-  <revised>2015-12-30: 1</revised>
+  <revised count="1">2015-12-30</revised>
   <bug>545034</bug>
   <bug>570244</bug>
   <access>remote</access>

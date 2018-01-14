@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">nrpe</product>
   <announced>2014-08-30</announced>
-  <revised>2014-08-30: 1</revised>
+  <revised count="1">2014-08-30</revised>
   <bug>397603</bug>
   <bug>459870</bug>
   <bug>508122</bug>

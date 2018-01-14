@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">cdf</product>
   <announced>2008-05-13</announced>
-  <revised>2008-05-13: 01</revised>
+  <revised count="01">2008-05-13</revised>
   <bug>220391</bug>
   <access>remote</access>
   <affected>

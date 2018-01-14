@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">ethereal</product>
   <announced>2005-03-12</announced>
-  <revised>2006-05-22: 03</revised>
+  <revised count="03">2006-05-22</revised>
   <bug>84547</bug>
   <access>remote</access>
   <affected>

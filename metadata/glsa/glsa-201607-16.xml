@@ -5,7 +5,7 @@
   <synopsis>arpwatch is vulnerable to the escalation of privileges.</synopsis>
   <product type="ebuild"/>
   <announced>2016-07-20</announced>
-  <revised>2016-07-20: 1</revised>
+  <revised count="1">2016-07-20</revised>
   <bug>419375</bug>
   <access>local, remote</access>
   <affected>

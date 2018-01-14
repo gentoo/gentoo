@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">squashfs-tools</product>
   <announced>2016-12-13</announced>
-  <revised>2016-12-14: 3</revised>
+  <revised count="3">2016-12-14</revised>
   <bug>427356</bug>
   <access>remote</access>
   <affected>

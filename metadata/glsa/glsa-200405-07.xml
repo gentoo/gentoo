@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">Exim</product>
   <announced>2004-05-14</announced>
-  <revised>2004-05-14: 01</revised>
+  <revised count="01">2004-05-14</revised>
   <bug>50217</bug>
   <access>remote </access>
   <affected>

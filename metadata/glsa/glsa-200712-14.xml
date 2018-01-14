@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">cups</product>
   <announced>2007-12-18</announced>
-  <revised>2007-12-18: 01</revised>
+  <revised count="01">2007-12-18</revised>
   <bug>199195</bug>
   <bug>201042</bug>
   <bug>201570</bug>

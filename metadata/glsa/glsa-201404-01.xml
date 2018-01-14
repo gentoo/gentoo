@@ -5,7 +5,7 @@
   <synopsis>A vulnerability in CUPS may allow for arbitrary file access.</synopsis>
   <product type="ebuild">cups</product>
   <announced>2014-04-07</announced>
-  <revised>2014-04-07: 1</revised>
+  <revised count="1">2014-04-07</revised>
   <bug>442926</bug>
   <access>local</access>
   <affected>

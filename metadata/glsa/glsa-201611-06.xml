@@ -5,7 +5,7 @@
   <synopsis>A vulnerability in xinetd could lead to privilege escalation.</synopsis>
   <product type="ebuild">xinetd</product>
   <announced>2016-11-15</announced>
-  <revised>2016-11-15: 1</revised>
+  <revised count="1">2016-11-15</revised>
   <bug>488158</bug>
   <access>remote</access>
   <affected>

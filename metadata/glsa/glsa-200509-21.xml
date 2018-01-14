@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">hylafax</product>
   <announced>2005-09-30</announced>
-  <revised>2006-05-22: 02</revised>
+  <revised count="02">2006-05-22</revised>
   <bug>106882</bug>
   <access>local</access>
   <affected>

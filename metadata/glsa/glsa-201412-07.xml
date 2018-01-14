@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">flash,ACE</product>
   <announced>2014-12-11</announced>
-  <revised>2014-12-11: 1</revised>
+  <revised count="1">2014-12-11</revised>
   <bug>530692</bug>
   <bug>532074</bug>
   <access>remote</access>

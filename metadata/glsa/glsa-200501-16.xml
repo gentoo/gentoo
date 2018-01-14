@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">Konqueror, kde, kdelibs</product>
   <announced>2005-01-11</announced>
-  <revised>2005-01-12: 02</revised>
+  <revised count="02">2005-01-12</revised>
   <bug>72750</bug>
   <access>remote</access>
   <affected>

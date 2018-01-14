@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">rt2400 rt2500 rt2570 rt61 ralink-rt61</product>
   <announced>2009-07-12</announced>
-  <revised>2009-07-12: 01</revised>
+  <revised count="01">2009-07-12</revised>
   <bug>257023</bug>
   <access>remote</access>
   <affected>

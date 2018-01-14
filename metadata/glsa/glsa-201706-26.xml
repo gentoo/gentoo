@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">vim,gvim</product>
   <announced>2017-06-22</announced>
-  <revised>2017-06-22: 1</revised>
+  <revised count="1">2017-06-22</revised>
   <bug>609150</bug>
   <bug>611386</bug>
   <access>remote</access>

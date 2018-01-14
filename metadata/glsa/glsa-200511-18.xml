@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">phpsysinfo</product>
   <announced>2005-11-22</announced>
-  <revised>2005-11-22: 01</revised>
+  <revised count="01">2005-11-22</revised>
   <bug>112482</bug>
   <access>local and remote</access>
   <affected>

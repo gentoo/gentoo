@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">file,Dos</product>
   <announced>2015-03-16</announced>
-  <revised>2015-03-16: 1</revised>
+  <revised count="1">2015-03-16</revised>
   <bug>503582</bug>
   <bug>532768</bug>
   <access>local, remote</access>

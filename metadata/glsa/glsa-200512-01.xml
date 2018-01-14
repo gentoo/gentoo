@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">Perl</product>
   <announced>2005-12-07</announced>
-  <revised>2005-12-07: 01</revised>
+  <revised count="01">2005-12-07</revised>
   <bug>114113</bug>
   <access>remote and local</access>
   <affected>

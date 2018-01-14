@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">cpio</product>
   <announced>2015-02-15</announced>
-  <revised>2015-02-15: 1</revised>
+  <revised count="1">2015-02-15</revised>
   <bug>530512</bug>
   <bug>536010</bug>
   <access>remote</access>

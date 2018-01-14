@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">horde</product>
   <announced>2006-06-29</announced>
-  <revised>2006-06-29: 01</revised>
+  <revised count="01">2006-06-29</revised>
   <bug>136830</bug>
   <access>remote</access>
   <affected>

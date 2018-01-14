@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">gmime</product>
   <announced>2014-01-21</announced>
-  <revised>2014-01-21: 1</revised>
+  <revised count="1">2014-01-21</revised>
   <bug>308051</bug>
   <access>local, remote</access>
   <affected>

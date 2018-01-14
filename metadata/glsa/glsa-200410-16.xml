@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">PostgreSQL</product>
   <announced>2004-10-18</announced>
-  <revised>2009-05-28: 04</revised>
+  <revised count="04">2009-05-28</revised>
   <bug>66371</bug>
   <access>local</access>
   <affected>

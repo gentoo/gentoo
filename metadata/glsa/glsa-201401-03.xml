@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">nagstamon</product>
   <announced>2014-01-06</announced>
-  <revised>2014-01-06: 2</revised>
+  <revised count="2">2014-01-06</revised>
   <bug>476538</bug>
   <access>remote</access>
   <affected>

@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">libpng</product>
   <announced>2010-10-05</announced>
-  <revised>2017-01-03: 9</revised>
+  <revised count="9">2017-01-03</revised>
   <bug>307637</bug>
   <bug>324153</bug>
   <bug>335887</bug>

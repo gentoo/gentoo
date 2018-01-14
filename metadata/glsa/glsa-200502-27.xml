@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">gFTP</product>
   <announced>2005-02-19</announced>
-  <revised>2005-02-19: 01</revised>
+  <revised count="01">2005-02-19</revised>
   <bug>81994</bug>
   <access>remote</access>
   <affected>

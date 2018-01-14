@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">Python</product>
   <announced>2005-09-12</announced>
-  <revised>2005-09-12: 01</revised>
+  <revised count="01">2005-09-12</revised>
   <bug>104009</bug>
   <access>remote</access>
   <affected>

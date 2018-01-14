@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">kpathsea</product>
   <announced>2017-09-17</announced>
-  <revised>2017-09-17: 1</revised>
+  <revised count="1">2017-09-17</revised>
   <bug>612328</bug>
   <access>remote</access>
   <affected>

@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">bidwatcher</product>
   <announced>2005-03-03</announced>
-  <revised>2005-03-03: 01</revised>
+  <revised count="01">2005-03-03</revised>
   <bug>82460</bug>
   <access>remote</access>
   <affected>

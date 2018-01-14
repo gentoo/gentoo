@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">lha</product>
   <announced>2006-11-28</announced>
-  <revised>2006-11-28: 01</revised>
+  <revised count="01">2006-11-28</revised>
   <bug>151252</bug>
   <access>remote</access>
   <affected>

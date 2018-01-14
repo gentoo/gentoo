@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">gnustep-base</product>
   <announced>2014-12-13</announced>
-  <revised>2014-12-13: 1</revised>
+  <revised count="1">2014-12-13</revised>
   <bug>508370</bug>
   <access>remote</access>
   <affected>

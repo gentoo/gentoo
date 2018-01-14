@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">libraw</product>
   <announced>2017-01-24</announced>
-  <revised>2017-04-30: 2</revised>
+  <revised count="2">2017-04-30</revised>
   <bug>549338</bug>
   <bug>567254</bug>
   <access>local, remote</access>

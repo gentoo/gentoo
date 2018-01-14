@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">RPCBind,Libtirpc</product>
   <announced>2017-06-06</announced>
-  <revised>2017-06-06: 2</revised>
+  <revised count="2">2017-06-06</revised>
   <bug>617472</bug>
   <access>remote</access>
   <affected>

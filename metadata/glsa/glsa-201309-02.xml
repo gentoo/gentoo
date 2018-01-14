@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">strongswan</product>
   <announced>2013-09-01</announced>
-  <revised>2013-09-01: 1</revised>
+  <revised count="1">2013-09-01</revised>
   <bug>468504</bug>
   <bug>479396</bug>
   <bug>483202</bug>

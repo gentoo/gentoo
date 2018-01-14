@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">fetchmail</product>
   <announced>2005-11-06</announced>
-  <revised>2005-11-06: 01</revised>
+  <revised count="01">2005-11-06</revised>
   <bug>110366</bug>
   <access>local</access>
   <affected>

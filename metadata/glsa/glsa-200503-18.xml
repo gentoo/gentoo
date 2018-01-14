@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">ringtonetools</product>
   <announced>2005-03-15</announced>
-  <revised>2005-03-15: 01</revised>
+  <revised count="01">2005-03-15</revised>
   <bug>74700</bug>
   <access>remote</access>
   <affected>

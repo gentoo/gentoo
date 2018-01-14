@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">roundcube</product>
   <announced>2016-03-09</announced>
-  <revised>2016-03-09: 1</revised>
+  <revised count="1">2016-03-09</revised>
   <bug>554866</bug>
   <bug>564476</bug>
   <bug>570336</bug>

@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">Emacs</product>
   <announced>2018-01-07</announced>
-  <revised>2018-01-08: 2</revised>
+  <revised count="2">2018-01-08</revised>
   <bug>630680</bug>
   <access>remote</access>
   <affected>

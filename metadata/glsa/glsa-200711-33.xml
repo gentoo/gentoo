@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">nss_ldap</product>
   <announced>2007-11-25</announced>
-  <revised>2007-11-25: 01</revised>
+  <revised count="01">2007-11-25</revised>
   <bug>198390</bug>
   <access>remote</access>
   <affected>

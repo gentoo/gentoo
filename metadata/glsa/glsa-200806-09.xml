@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">libvorbis</product>
   <announced>2008-06-23</announced>
-  <revised>2008-06-23: 02</revised>
+  <revised count="02">2008-06-23</revised>
   <bug>222085</bug>
   <access>remote</access>
   <affected>

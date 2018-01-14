@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">amarok</product>
   <announced>2007-03-13</announced>
-  <revised>2007-03-13: 01</revised>
+  <revised count="01">2007-03-13</revised>
   <bug>166901</bug>
   <access>remote</access>
   <affected>

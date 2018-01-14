@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">openssh</product>
   <announced>2008-04-05</announced>
-  <revised>2008-04-05: 01</revised>
+  <revised count="01">2008-04-05</revised>
   <bug>214985</bug>
   <bug>215702</bug>
   <access>local</access>

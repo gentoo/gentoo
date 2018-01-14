@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">Perl</product>
   <announced>2005-01-26</announced>
-  <revised>2005-03-15: 03</revised>
+  <revised count="03">2005-03-15</revised>
   <bug>75696</bug>
   <bug>78634</bug>
   <bug>79685</bug>

@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">libxml2</product>
   <announced>2013-11-10</announced>
-  <revised>2013-11-10: 1</revised>
+  <revised count="1">2013-11-10</revised>
   <bug>434344</bug>
   <bug>444836</bug>
   <bug>458430</bug>

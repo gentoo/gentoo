@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">lynx</product>
   <announced>2009-09-12</announced>
-  <revised>2009-09-12: 01</revised>
+  <revised count="01">2009-09-12</revised>
   <bug>243058</bug>
   <access>remote</access>
   <affected>

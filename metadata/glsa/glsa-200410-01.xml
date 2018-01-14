@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">sharutils</product>
   <announced>2004-10-01</announced>
-  <revised>2006-05-22: 02</revised>
+  <revised count="02">2006-05-22</revised>
   <bug>65773</bug>
   <access>remote</access>
   <affected>

@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">libextractor</product>
   <announced>2006-05-21</announced>
-  <revised>2006-05-21: 01</revised>
+  <revised count="01">2006-05-21</revised>
   <bug>133570</bug>
   <access>remote</access>
   <affected>

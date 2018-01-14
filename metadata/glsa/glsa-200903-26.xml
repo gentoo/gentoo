@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">tmsnc</product>
   <announced>2009-03-12</announced>
-  <revised>2009-03-12: 01</revised>
+  <revised count="01">2009-03-12</revised>
   <bug>229157</bug>
   <access>remote</access>
   <affected>

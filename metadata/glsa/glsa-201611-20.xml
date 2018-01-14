@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">testdisk</product>
   <announced>2016-11-22</announced>
-  <revised>2016-11-22: 2</revised>
+  <revised count="2">2016-11-22</revised>
   <bug>548258</bug>
   <access>local, remote</access>
   <affected>

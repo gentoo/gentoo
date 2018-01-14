@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">gtkdiskfree</product>
   <announced>2005-10-03</announced>
-  <revised>2005-10-03: 01</revised>
+  <revised count="01">2005-10-03</revised>
   <bug>104565</bug>
   <access>local</access>
   <affected>

@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">net-server</product>
   <announced>2006-08-10</announced>
-  <revised>2006-08-10: 01</revised>
+  <revised count="01">2006-08-10</revised>
   <bug>142386</bug>
   <access>remote</access>
   <affected>

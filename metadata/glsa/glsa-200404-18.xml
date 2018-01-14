@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">ssmtp</product>
   <announced>2004-04-26</announced>
-  <revised>2004-04-26: 01</revised>
+  <revised count="01">2004-04-26</revised>
   <bug>47918</bug>
   <bug>48435</bug>
   <access>remote root </access>

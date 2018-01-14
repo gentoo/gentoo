@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">OpenSLP</product>
   <announced>2017-07-08</announced>
-  <revised>2017-08-06: 3</revised>
+  <revised count="3">2017-08-06</revised>
   <bug>360061</bug>
   <bug>434918</bug>
   <bug>583396</bug>

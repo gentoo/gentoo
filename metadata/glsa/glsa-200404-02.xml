@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">kde-base/kde</product>
   <announced>2004-04-06</announced>
-  <revised>2004-04-06: 01</revised>
+  <revised count="01">2004-04-06</revised>
   <bug>38256</bug>
   <access>remote</access>
   <affected>

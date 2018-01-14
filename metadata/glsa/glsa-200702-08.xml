@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">java</product>
   <announced>2007-02-17</announced>
-  <revised>2009-05-28: 02</revised>
+  <revised count="02">2009-05-28</revised>
   <bug>159547</bug>
   <access>remote</access>
   <affected>

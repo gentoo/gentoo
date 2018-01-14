@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">X.Org, XFree86</product>
   <announced>2004-11-19</announced>
-  <revised>2004-11-19: 01</revised>
+  <revised count="01">2004-11-19</revised>
   <bug>68544</bug>
   <access>remote</access>
   <affected>

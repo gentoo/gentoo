@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">emacs edit-utils</product>
   <announced>2009-02-23</announced>
-  <revised>2009-02-23: 01</revised>
+  <revised count="01">2009-02-23</revised>
   <bug>221197</bug>
   <bug>236498</bug>
   <access>remote</access>

@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">oracle,jdk,jre</product>
   <announced>2017-10-29</announced>
-  <revised>2017-10-29: 1</revised>
+  <revised count="1">2017-10-29</revised>
   <bug>635030</bug>
   <access>remote</access>
   <affected>

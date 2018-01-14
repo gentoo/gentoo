@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">feynmf</product>
   <announced>2007-11-20</announced>
-  <revised>2007-11-20: 01</revised>
+  <revised count="01">2007-11-20</revised>
   <bug>198231</bug>
   <access>local</access>
   <affected>

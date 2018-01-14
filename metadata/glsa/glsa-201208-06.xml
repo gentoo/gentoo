@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">libgdata</product>
   <announced>2012-08-14</announced>
-  <revised>2012-08-14: 1</revised>
+  <revised count="1">2012-08-14</revised>
   <bug>408245</bug>
   <access>remote</access>
   <affected>

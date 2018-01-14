@@ -5,7 +5,7 @@
   <synopsis>A vulnerability in libxml2 could result in Denial of Service.</synopsis>
   <product type="ebuild">libxml2</product>
   <announced>2014-12-10</announced>
-  <revised>2014-12-10: 1</revised>
+  <revised count="1">2014-12-10</revised>
   <bug>525656</bug>
   <access>local, remote</access>
   <affected>

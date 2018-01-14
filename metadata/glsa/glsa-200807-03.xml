@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">libpcre glib</product>
   <announced>2008-07-07</announced>
-  <revised>2008-07-07: 01</revised>
+  <revised count="01">2008-07-07</revised>
   <bug>228091</bug>
   <bug>230039</bug>
   <access>remote</access>

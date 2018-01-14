@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">phpgroupware</product>
   <announced>2005-01-06</announced>
-  <revised>2006-05-22: 04</revised>
+  <revised count="04">2006-05-22</revised>
   <bug>74487</bug>
   <access>remote</access>
   <affected>

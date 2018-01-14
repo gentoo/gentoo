@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">sylpheed sylpheed-claws</product>
   <announced>2005-11-15</announced>
-  <revised>2005-11-15: 01</revised>
+  <revised count="01">2005-11-15</revised>
   <bug>111853</bug>
   <access>remote</access>
   <affected>

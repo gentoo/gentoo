@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">sendmail</product>
   <announced>2012-06-25</announced>
-  <revised>2012-06-25: 1</revised>
+  <revised count="1">2012-06-25</revised>
   <bug>299120</bug>
   <access>remote</access>
   <affected>

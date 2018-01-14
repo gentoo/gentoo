@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">pear-auth</product>
   <announced>2006-03-17</announced>
-  <revised>2006-03-17: 01</revised>
+  <revised count="01">2006-03-17</revised>
   <bug>123832</bug>
   <access>remote</access>
   <affected>

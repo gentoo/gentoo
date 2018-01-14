@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">rsync</product>
   <announced>2004-08-17</announced>
-  <revised>2006-05-22: 02</revised>
+  <revised count="02">2006-05-22</revised>
   <bug>60309</bug>
   <access>remote</access>
   <affected>

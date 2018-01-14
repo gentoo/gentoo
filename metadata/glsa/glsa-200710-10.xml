@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">skktools</product>
   <announced>2007-10-12</announced>
-  <revised>2007-10-12: 01</revised>
+  <revised count="01">2007-10-12</revised>
   <bug>193121</bug>
   <access>local</access>
   <affected>

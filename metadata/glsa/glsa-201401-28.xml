@@ -5,7 +5,7 @@
   <synopsis>A vulnerability in Tomboy could result in privilege escalation.</synopsis>
   <product type="ebuild">tomboy</product>
   <announced>2014-01-26</announced>
-  <revised>2014-01-26: 1</revised>
+  <revised count="1">2014-01-26</revised>
   <bug>356583</bug>
   <access>local</access>
   <affected>

@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">xine-lib</product>
   <announced>2005-01-06</announced>
-  <revised>2005-01-06: 01</revised>
+  <revised count="01">2005-01-06</revised>
   <bug>74475</bug>
   <access>remote</access>
   <affected>

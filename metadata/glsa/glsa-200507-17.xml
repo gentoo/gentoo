@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">thunderbird</product>
   <announced>2005-07-18</announced>
-  <revised>2005-07-18: 01</revised>
+  <revised count="01">2005-07-18</revised>
   <bug>98855</bug>
   <access>remote</access>
   <affected>

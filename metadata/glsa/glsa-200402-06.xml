@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">Kernel</product>
   <announced>2004-02-17</announced>
-  <revised>2004-02-17: 01</revised>
+  <revised count="01">2004-02-17</revised>
   <access>local</access>
   <affected>
     <package name="sys-kernel/ck-sources" auto="yes" arch="amd64">

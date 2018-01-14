@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">pam</product>
   <announced>2012-06-25</announced>
-  <revised>2012-06-25: 1</revised>
+  <revised count="1">2012-06-25</revised>
   <bug>343399</bug>
   <bug>386273</bug>
   <bug>388431</bug>

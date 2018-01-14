@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">redis</product>
   <announced>2017-02-20</announced>
-  <revised>2017-02-20: 1</revised>
+  <revised count="1">2017-02-20</revised>
   <bug>551274</bug>
   <bug>565188</bug>
   <bug>595730</bug>

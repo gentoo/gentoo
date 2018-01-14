@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">gnutls</product>
   <announced>2009-01-14</announced>
-  <revised>2009-01-14: 01</revised>
+  <revised count="01">2009-01-14</revised>
   <bug>245850</bug>
   <access>remote</access>
   <affected>

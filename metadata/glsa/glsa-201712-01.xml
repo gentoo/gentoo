@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">WebkitGTK</product>
   <announced>2017-12-14</announced>
-  <revised>2017-12-14: 1</revised>
+  <revised count="1">2017-12-14</revised>
   <bug>637076</bug>
   <access>remote</access>
   <affected>
@@ -45,43 +45,43 @@
     </code>
   </resolution>
   <references>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13783">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13783">
       CVE-2017-13783
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13784">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13784">
       CVE-2017-13784
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13785">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13785">
       CVE-2017-13785
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13788">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13788">
       CVE-2017-13788
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13791">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13791">
       CVE-2017-13791
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13792">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13792">
       CVE-2017-13792
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13793">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13793">
       CVE-2017-13793
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13794">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13794">
       CVE-2017-13794
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13795">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13795">
       CVE-2017-13795
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13796">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13796">
       CVE-2017-13796
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13798">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13798">
       CVE-2017-13798
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13802">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13802">
       CVE-2017-13802
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13803">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-13803">
       CVE-2017-13803
     </uri>
   </references>

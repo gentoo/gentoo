@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">unace</product>
   <announced>2005-02-28</announced>
-  <revised>2014-05-19: 2</revised>
+  <revised count="2">2014-05-19</revised>
   <bug>81958</bug>
   <access>remote</access>
   <affected>

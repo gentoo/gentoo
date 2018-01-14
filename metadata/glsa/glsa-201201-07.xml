@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">NX Server NX Node</product>
   <announced>2012-01-23</announced>
-  <revised>2012-01-23: 1</revised>
+  <revised count="1">2012-01-23</revised>
   <bug>378345</bug>
   <access>local</access>
   <affected>

@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">chromium,google-chrome</product>
   <announced>2017-11-10</announced>
-  <revised>2017-11-10: 2</revised>
+  <revised count="2">2017-11-10</revised>
   <bug>635556</bug>
   <bug>636800</bug>
   <access>remote</access>
@@ -68,10 +68,10 @@
     <uri link="https://chromereleases.googleblog.com/2017/11/stable-channel-update-for-desktop.html">
       Google Chrome Releases
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-15398">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-15398">
       CVE-2017-15398
     </uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-15399">
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-15399">
       CVE-2017-15399
     </uri>
   </references>

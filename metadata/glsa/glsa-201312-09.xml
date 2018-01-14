@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">cabextract</product>
   <announced>2013-12-14</announced>
-  <revised>2013-12-14: 1</revised>
+  <revised count="1">2013-12-14</revised>
   <bug>329891</bug>
   <access>remote</access>
   <affected>

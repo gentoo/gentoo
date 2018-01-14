@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">smarty</product>
   <announced>2005-03-30</announced>
-  <revised>2006-05-22: 03</revised>
+  <revised count="03">2006-05-22</revised>
   <bug>86488</bug>
   <access>remote</access>
   <affected>

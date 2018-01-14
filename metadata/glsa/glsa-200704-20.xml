@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">NAS</product>
   <announced>2007-04-23</announced>
-  <revised>2007-04-23: 01</revised>
+  <revised count="01">2007-04-23</revised>
   <bug>171428</bug>
   <access>remote</access>
   <affected>

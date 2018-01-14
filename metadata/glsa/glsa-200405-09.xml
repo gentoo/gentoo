@@ -9,7 +9,7 @@
   </synopsis>
   <product type="ebuild">proftpd</product>
   <announced>2004-05-19</announced>
-  <revised>2004-05-19: 01</revised>
+  <revised count="01">2004-05-19</revised>
   <bug>49496</bug>
   <access>remote </access>
   <affected>
