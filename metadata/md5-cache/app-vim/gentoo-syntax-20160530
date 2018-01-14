@@ -1,6 +1,6 @@
 DEFINED_PHASES=install postinst postrm prepare
 DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
-DESCRIPTION=Gentoo and portage related syntax highlighting, filetype, and indent settings
+DESCRIPTION=vim plugin: Gentoo and Portage syntax highlighting
 EAPI=6
 HOMEPAGE=https://github.com/gentoo/gentoo-syntax
 IUSE=ignore-glep31
@@ -10,4 +10,4 @@ RDEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 SLOT=0
 SRC_URI=https://github.com/gentoo/gentoo-syntax/archive/20160530.tar.gz -> gentoo-syntax-20160530.tar.gz
 _eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	vim-doc	af2c81a1feeb0a99e91bee3e20769edb	vim-plugin	3160d9cb05ef44497be1485db0fe7590
-_md5_=7ed0364d4b7e4358a3491b375b6afbe5
+_md5_=d74bed9bb2a7043de346dea5e1ab3b5b
