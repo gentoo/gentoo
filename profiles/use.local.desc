@@ -5060,10 +5060,6 @@ sci-visualization/gwyddion:fits - Enable FITS image import via sci-libs/cfitsio
 sci-visualization/gwyddion:sourceview - Enable support for x11-libs/gtksourceview
 sci-visualization/opendx:cdf - Add support for sci-libs/cdf data exchange format
 sci-visualization/opendx:hdf - Add support for the Hierarchical Data Format (sci-libs/hdf)
-sci-visualization/veusz:emf - Add FITS format via dev-python/pyemf
-sci-visualization/veusz:fits - Add FITS format via dev-python/astropy
-sci-visualization/veusz:minuit - Use Minuit during fitting viadev-python/pyminuit
-sci-visualization/veusz:vo - Add Virtual Observatory tools via dev-python/astropy
 sci-visualization/zhu3d:linguas_cs - Czech locale
 sci-visualization/zhu3d:linguas_de - German locale
 sci-visualization/zhu3d:linguas_es - Spanish locale

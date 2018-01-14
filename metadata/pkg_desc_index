@@ -9359,7 +9359,6 @@ sci-visualization/mayavi 4.3.0: Enthought Tool Suite: Scientific data 3-dimensio
 sci-visualization/opendx 4.4.4-r5: 3D data visualization tool
 sci-visualization/pyxplot 0.9.2-r1: Gnuplot like graphing program publication-quality figures
 sci-visualization/quickplot 0.10.6: A fast interactive 2D plotter
-sci-visualization/veusz 1.25.1: Qt scientific plotting package with good Postscript output
 sci-visualization/zhu3d 4.2.6: Interactive 3D mathematical function viewer
 sec-policy/selinux-abrt 2.20170204-r2 2.20170204-r3 2.20170204-r4 2.20170805-r2 2.20170805-r3: SELinux policy for abrt
 sec-policy/selinux-accountsd 2.20170204-r2 2.20170204-r3 2.20170204-r4 2.20170805-r2 2.20170805-r3: SELinux policy for accountsd
