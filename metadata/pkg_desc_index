@@ -1155,7 +1155,6 @@ app-office/libreoffice-bin-debug 5.4.2.2 5.4.2.2-r1: LibreOffice, a full office 
 app-office/libreoffice-l10n 5.4.2.2: Translations for the Libreoffice suite
 app-office/lyx 2.0.8.1-r1 2.1.5-r1 2.2.3-r1: WYSIWYM frontend for LaTeX, DocBook, etc.
 app-office/mdbtools 0.7.1-r2: Set of libraries and utilities for reading Microsoft Access database (MDB) files
-app-office/odeskteam 3.6.1 3.12.9: Project collaboration and tracking software for oDesk.com
 app-office/ooextras 20060909: OOExtras: Extra Templates for OpenOffice.org!
 app-office/openoffice-bin 4.1.4: Apache OpenOffice productivity suite
 app-office/orage 4.12.1 4.12.1-r1: A time managing application (and panel plug-in) for the Xfce desktop environment
