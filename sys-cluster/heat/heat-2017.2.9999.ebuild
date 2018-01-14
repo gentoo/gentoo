@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5} )
 
 inherit distutils-r1 eutils git-r3 linux-info user
 
-DESCRIPTION="A CloudFormation-compatible openstack-native cloud orchistration engine."
+DESCRIPTION="A CloudFormation-compatible openstack-native cloud orchestration engine."
 HOMEPAGE="https://launchpad.net/heat"
 SRC_URI="https://dev.gentoo.org/~prometheanfire/dist/openstack/heat/heat.conf.sample.pike -> heat.conf.sample-${PV}"
 EGIT_REPO_URI="https://github.com/openstack/heat.git"
