@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python3_5 )
 PYTHON_REQ_USE="sqlite"
 QT_MIN_VER="5.9.1"
 
@@ -67,6 +67,7 @@ COMMON_DEPEND="
 		dev-python/httplib2[${PYTHON_USEDEP}]
 		dev-python/jinja[${PYTHON_USEDEP}]
 		dev-python/markupsafe[${PYTHON_USEDEP}]
+		dev-python/owslib[${PYTHON_USEDEP}]
 		dev-python/pygments[${PYTHON_USEDEP}]
 		dev-python/PyQt5[sql,svg,webkit?,${PYTHON_USEDEP}]
 		dev-python/python-dateutil[${PYTHON_USEDEP}]
