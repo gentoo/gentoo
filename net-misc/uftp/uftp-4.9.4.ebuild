@@ -1,25 +1,25 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Encrypted UDP based FTP with multicast"
-HOMEPAGE="http://www.tcnj.edu/~bush/uftp.html"
-SRC_URI="http://www.tcnj.edu/~bush/downloads/${P}.tar"
+HOMEPAGE="http://uftp-multicast.sourceforge.net/"
+SRC_URI="mirror://sourceforge/${PN}-multicast/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+server ssl"
 
-DEPEND="ssl? ( dev-libs/openssl )"
+DEPEND="ssl? ( dev-libs/openssl:0= )"
 RDEPEND="${DEPEND}"
 
-src_prepare() {
-	epatch "${FILESDIR}/${P}_makefile.patch"
-}
+PATCHES=(
+	"${FILESDIR}/${P}_makefile.patch"
+)
 
 src_compile() {
 	use ssl || local opt="NO_ENCRYPTION=1"
@@ -29,7 +29,7 @@ src_compile() {
 
 src_install() {
 	dobin uftp uftp_keymgt
-	dodoc ReadMe.txt
+	dodoc {Changes,protocol,ReadMe}.txt
 	doman uftp.1 uftp_keymgt.1
 
 	if use server ; then
@@ -41,5 +41,12 @@ src_install() {
 		doman uftpd.1 uftpproxyd.1
 		insinto /etc/logrotate.d
 		newins "${FILESDIR}/logrotate" uftpd
+	fi
+}
+
+pkg_postinst() {
+	if use server ; then
+		ewarn "Please note, uftpd 4.x server is not backward compatible with"
+		ewarn "uftp 3.x clients! Please upgrade clients before servers."
 	fi
 }
