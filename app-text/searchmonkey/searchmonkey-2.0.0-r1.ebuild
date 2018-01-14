@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils qmake-utils
+inherit desktop qmake-utils
 
 MY_PN=${PN}2
 MY_P=${PN}_v${PV}
@@ -31,8 +31,8 @@ PATCHES=(
 	"${FILESDIR}"/${P}-gcc6.patch
 )
 
-src_compile() {
-	eqmake4
+src_configure() {
+	eqmake4 searchmonkey_2_0.pro
 }
 
 src_install() {
