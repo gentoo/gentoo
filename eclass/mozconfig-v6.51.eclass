@@ -194,7 +194,6 @@ fi
 
 DEPEND="app-arch/zip
 	app-arch/unzip
-	>=sys-devel/binutils-2.16.1
 	sys-apps/findutils
 	${RDEPEND}"
 
