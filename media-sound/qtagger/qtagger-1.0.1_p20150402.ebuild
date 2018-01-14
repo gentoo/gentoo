@@ -7,7 +7,7 @@ CMAKE_MAKEFILE_GENERATOR="emake"
 COMMIT=0e74fe022ddbb689f7bae0460a21be303114029b
 inherit cmake-utils qmake-utils vcs-snapshot
 
-DESCRIPTION="Simple Qt4 ID3v2 tag editor"
+DESCRIPTION="Simple Qt5 ID3v2 tag editor"
 HOMEPAGE="https://github.com/DOOMer/qtagger"
 SRC_URI="https://github.com/DOOMer/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
