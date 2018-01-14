@@ -25,7 +25,7 @@ REQUIRED_USE="
 RDEPEND="
 	>=dev-libs/libuv-1.18.0:=
 	>=net-libs/http-parser-2.7.0:=
-	>=net-libs/nghttp2-1.25.0
+	>=net-libs/nghttp2-1.29.0
 	sys-libs/zlib
 	icu? ( >=dev-libs/icu-60.1:= )
 	ssl? ( >=dev-libs/openssl-1.0.2n:0=[-bindist] )
