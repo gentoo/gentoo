@@ -5272,7 +5272,7 @@ dev-python/pyrfc3339 1.0: Generates and parses RFC 3339 timestamps
 dev-python/pyro 3.16-r1 4.41 4.56: Distributed object middleware for Python (RPC)
 dev-python/pyroute2 0.4.12 0.4.21: A pure Python netlink and Linux network configuration library.
 dev-python/pyrsistent 0.13.0: Persistent/Functional/Immutable data structures
-dev-python/pysaml2 4.0.2-r1 4.0.2-r3 4.5.0: Python implementation of SAML Version 2 to be used in a WSGI environment
+dev-python/pysaml2 4.0.2-r3 4.5.0: Python implementation of SAML Version 2 to be used in a WSGI environment
 dev-python/pysendfile 2.0.1: A python interface to sendfile(2) system call
 dev-python/pyserial 3.2.1: Python Serial Port extension
 dev-python/pyside 1.2.2-r1: Python bindings for the Qt framework
