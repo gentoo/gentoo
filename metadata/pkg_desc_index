@@ -7991,7 +7991,6 @@ media-sound/qmmp 1.1.7-r1: Qt5-based audio player with winamp/xmms skins support
 media-sound/qmpdclient 1.2.2-r3: QMPDClient with NBL additions, such as lyrics' display
 media-sound/qpitch 1.0.1-r1: A program to tune musical instruments using Qt4
 media-sound/qsynth 0.4.4: A Qt application to control FluidSynth
-media-sound/qtagger 1.0.1-r2: Simple Qt4 ID3v2 tag editor
 media-sound/qtscrobbler 0.10: Updates a last.fm profile using information from a supported portable music player
 media-sound/quark 3.24: Quark is the Anti-GUI Music Player with a cool Docklet!
 media-sound/quimup 1.4.0: A Qt5 client for the music player daemon (MPD) written in C++
