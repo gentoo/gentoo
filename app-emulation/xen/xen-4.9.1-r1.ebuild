@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,11 +12,11 @@ MY_P=${PN}-${MY_PV}
 
 if [[ $PV == *9999 ]]; then
 	inherit git-r3
-	KEYWORDS=""
+	KEYWORDS="amd64"
 	EGIT_REPO_URI="git://xenbits.xen.org/xen.git"
 	SRC_URI=""
 else
-	KEYWORDS="~amd64 ~arm -x86"
+	KEYWORDS="amd64 ~arm -x86"
 	UPSTREAM_VER=1
 	SECURITY_VER=
 	GENTOO_VER=
