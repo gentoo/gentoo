@@ -4,7 +4,7 @@
 EAPI=6
 
 # ruby24 -> fails tests
-USE_RUBY="ruby21 ruby22 ruby23"
+USE_RUBY="ruby22 ruby23"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 

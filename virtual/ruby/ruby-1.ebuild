@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby19 ruby20 ruby21 ruby22 rbx"
+USE_RUBY="ruby22 rbx"
 
 inherit ruby-single
 

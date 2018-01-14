@@ -4,7 +4,7 @@
 EAPI=5
 
 # ruby24 -> code is not compatible
-USE_RUBY="ruby21 ruby22 ruby23"
+USE_RUBY="ruby22 ruby23"
 
 RUBY_FAKEGEM_TASK_TEST="test spec NO_CONNECTION=true"
 

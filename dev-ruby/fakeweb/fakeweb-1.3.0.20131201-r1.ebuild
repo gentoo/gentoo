@@ -4,7 +4,7 @@
 EAPI=5
 
 # ruby24 -> not compatible with Net::HTTP implementation
-USE_RUBY="ruby21 ruby22 ruby23"
+USE_RUBY="ruby22 ruby23"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG README.rdoc"

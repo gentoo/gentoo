@@ -3,7 +3,7 @@
 
 EAPI=6
 
-USE_RUBY="ruby21 ruby22 ruby23"
+USE_RUBY="ruby22 ruby23"
 
 # Specs are not provided in the gem
 RUBY_FAKEGEM_RECIPE_TEST="none"

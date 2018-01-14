@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby21 ruby22 ruby23 ruby24"
+USE_RUBY="ruby22 ruby23 ruby24"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
@@ -22,7 +22,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux"
 IUSE="doc"
 
-USE_RUBY="ruby21 ruby22 ruby23" ruby_add_bdepend "
+USE_RUBY="ruby22 ruby23" ruby_add_bdepend "
 	test? (
 		dev-ruby/childlabor
 		dev-ruby/webmock
