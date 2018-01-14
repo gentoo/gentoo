@@ -4,7 +4,7 @@ DESCRIPTION=Xen tools including QEMU and xl
 EAPI=6
 HOMEPAGE=https://www.xenproject.org
 IUSE=api custom-cflags debug doc flask hvm ocaml ovmf +pam pygrub python +qemu +qemu-traditional screen sdl static-libs system-qemu system-seabios python_targets_python2_7
-KEYWORDS=~amd64 ~arm ~arm64 ~x86
+KEYWORDS=amd64 ~arm ~arm64 ~x86
 LICENSE=GPL-2
 RDEPEND=sys-apps/pciutils dev-libs/lzo:2 dev-libs/glib:2 dev-libs/yajl dev-libs/libaio dev-libs/libgcrypt:0 sys-libs/zlib python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[ncurses,xml,threads] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] sys-apps/iproute2[-minimal] net-misc/bridge-utils screen? ( app-misc/screen app-admin/logrotate )
 REQUIRED_USE=python_targets_python2_7 pygrub? ( python ) ovmf? ( hvm ) ^^ ( qemu system-qemu )
@@ -12,4 +12,4 @@ RESTRICT=test
 SLOT=0/4.9
 SRC_URI=https://downloads.xenproject.org/release/xen/4.9.1/xen-4.9.1.tar.gz http://code.coreboot.org/p/seabios/downloads/get/seabios-1.10.0.tar.gz https://dev.gentoo.org/~dlan/distfiles/seabios-1.10.0.tar.gz ovmf? ( https://dev.gentoo.org/~dlan/distfiles/ovmf-20170321.tar.xz https://dev.gentoo.org/~dlan/distfiles/xen-ovmf-patches-3.tar.xz ) https://dev.gentoo.org/~dlan/distfiles/xen-4.9.1-upstream-patches-1.tar.xz https://dev.gentoo.org/~dlan/distfiles/xen-gentoo-patches-10.tar.xz
 _eclasses_=bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e7258392d5eda499c1cfa94db650b61	flag-o-matic	02908f00f002f0f07c5b74783d778325	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-single-r1	317a2557b4d7319a7418225f65accf77	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	versionator	ce21313503c41896ebcd7d58b0607e37
-_md5_=04a4d3b69d613b158030093c78c09cb6
+_md5_=5fb4b38ddc98249fe6e3a3ad79315ad7

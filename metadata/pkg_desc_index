@@ -763,9 +763,9 @@ app-emulation/wine-mono 4.6.4: Wine Mono is a replacement for the .NET runtime a
 app-emulation/wine-vanilla 2.0-r1 2.0.1-r1 2.0.2-r1 2.0.3: Free implementation of Windows(tm) on Unix, without external patchsets
 app-emulation/winetricks 20170823: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4 0.6.4-r1: HP48 Calculator Emulator
-app-emulation/xen 4.8.2-r2: The Xen virtual machine monitor
+app-emulation/xen 4.8.2-r2 4.9.1-r1: The Xen virtual machine monitor
 app-emulation/xen-pvgrub 4.8.2-r1: allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
-app-emulation/xen-tools 4.8.2-r3: Xen tools including QEMU and xl
+app-emulation/xen-tools 4.8.2-r3 4.9.1-r1: Xen tools including QEMU and xl
 app-emulation/xtrs 4.9d-r4: Radio Shack TRS-80 emulator
 app-eselect/eselect-awk 0.2: Manages the {,/usr}/bin/awk symlink
 app-eselect/eselect-blas 0.1: BLAS module for eselect
@@ -5272,7 +5272,7 @@ dev-python/pyrfc3339 1.0: Generates and parses RFC 3339 timestamps
 dev-python/pyro 3.16-r1 4.41 4.56: Distributed object middleware for Python (RPC)
 dev-python/pyroute2 0.4.12 0.4.21: A pure Python netlink and Linux network configuration library.
 dev-python/pyrsistent 0.13.0: Persistent/Functional/Immutable data structures
-dev-python/pysaml2 4.0.2-r1 4.5.0: Python implementation of SAML Version 2 to be used in a WSGI environment
+dev-python/pysaml2 4.0.2-r1 4.0.2-r3 4.5.0: Python implementation of SAML Version 2 to be used in a WSGI environment
 dev-python/pysendfile 2.0.1: A python interface to sendfile(2) system call
 dev-python/pyserial 3.2.1: Python Serial Port extension
 dev-python/pyside 1.2.2-r1: Python bindings for the Qt framework
@@ -7182,7 +7182,7 @@ media-gfx/gpicview 0.2.4 0.2.5: A Simple and Fast Image Viewer for X
 media-gfx/gqview 2.1.5-r1: A GTK-based image browser
 media-gfx/graphicsmagick 1.3.25 1.3.26 1.3.27: Collection of tools and libraries for many image formats
 media-gfx/graphite2 1.3.10: Library providing rendering capabilities for complex non-Roman writing systems
-media-gfx/graphviz 2.38.0-r1: Open Source Graph Visualization Software
+media-gfx/graphviz 2.38.0-r1 2.40.1-r1: Open Source Graph Visualization Software
 media-gfx/grub-splashes 20091109: Collection of grub splashes
 media-gfx/gthumb 3.4.5: Image viewer and browser for Gnome
 media-gfx/gtkam 1.0: A frontend for gPhoto 2
@@ -8624,7 +8624,7 @@ net-libs/telepathy-logger-qt 15.04.0 17.08.0: Qt bindings for the Telepathy logg
 net-libs/telepathy-qt 0.9.7-r1: Qt bindings for the Telepathy D-Bus protocol
 net-libs/udns 0.4: Async-capable DNS stub resolver library
 net-libs/uhttpmock 0.5.0 0.5.1: HTTP web service mocking library
-net-libs/webkit-gtk 2.4.11-r1 2.4.11-r200 2.18.4: Open source web browser engine
+net-libs/webkit-gtk 2.4.11-r1 2.4.11-r200 2.18.4 2.18.5: Open source web browser engine
 net-libs/wvstreams 4.6.1-r3: A network programming library in C++
 net-libs/xrootd 4.4.0: Extended ROOT remote file server
 net-libs/zeromq 2.2.0 3.2.3 3.2.5 4.1.1 4.1.6 4.2.1 4.2.2-r2: A brokerless kernel
