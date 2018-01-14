@@ -1,10 +1,10 @@
 DEFINED_PHASES=compile install postinst prepare
 DESCRIPTION=list executables
 EAPI=6
-HOMEPAGE=https://tools.suckless.org/lsx
+HOMEPAGE=https://web.archive.org/web/20160104002819/http://tools.suckless.org:80/lsx
 KEYWORDS=amd64 x86
 LICENSE=MIT
 SLOT=0
 SRC_URI=https://dl.suckless.org/tools/lsx-0.1.tar.gz
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=b2b7534bc23633029ef850ac5ebac4a8
+_md5_=65d36db04e3bba28fa950a377318b6b5
