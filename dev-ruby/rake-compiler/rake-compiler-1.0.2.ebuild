@@ -35,7 +35,7 @@ all_ruby_prepare() {
 each_ruby_test() {
 	# Skip cucumber for ruby23 (not ready yet)
 	case ${RUBY} in
-		*ruby21|*ruby22)
+		*ruby22)
 			ruby-ng_rspec
 			ruby-ng_cucumber
 			;;

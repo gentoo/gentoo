@@ -16,7 +16,7 @@
 # pull in the dependency on the requested ruby targets.
 #
 # @CODE
-# USE_RUBY="ruby21"
+# USE_RUBY="ruby22"
 # inherit ruby-single
 # RDEPEND="${RUBY_DEPS}"
 # @CODE
