@@ -25,8 +25,7 @@ DEPEND=">=dev-libs/elfutils-0.100[static-libs(+)]
 	selinux? ( sys-libs/libselinux[static-libs(+)] )
 	!dev-libs/libelf
 	>=sys-libs/glibc-2.8"
-RDEPEND="${DEPEND}
-	>=sys-devel/binutils-2.18"
+RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${PN}
 
