@@ -10,7 +10,7 @@ HOMEPAGE="http://pari.math.u-bordeaux.fr/"
 LICENSE="GPL-2"
 SLOT="0/5"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos ~x86-solaris"
-IUSE="data doc fltk gmp qt4 X"
+IUSE="data doc fltk gmp X"
 SRC_URI="http://pari.math.u-bordeaux.fr/pub/${PN}/unix/${P}.tar.gz"
 
 RDEPEND="
@@ -19,7 +19,6 @@ RDEPEND="
 	doc? ( X? ( x11-misc/xdg-utils ) )
 	fltk? ( x11-libs/fltk:1= )
 	gmp? ( dev-libs/gmp:0= )
-	qt4? ( dev-qt/qtgui:4= )
 	X? ( x11-libs/libX11:0= )"
 DEPEND="${RDEPEND}
 	doc? ( virtual/latex-base )"
@@ -78,7 +77,7 @@ src_configure() {
 		--with-ncurses-lib="${EPREFIX}"/usr/$(get_libdir) \
 		$(use_with fltk) \
 		$(use_with gmp) \
-		$(use_with qt4 qt) \
+		--without-qt4 \
 		|| die "./Configure failed"
 }
 

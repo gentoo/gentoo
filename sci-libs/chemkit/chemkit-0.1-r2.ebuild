@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
@@ -14,18 +14,15 @@ SRC_URI="mirror://sourceforge/project/${PN}/${P}.tar.gz"
 SLOT="0"
 LICENSE="BSD PSF-2.2"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="applications examples python test"
+IUSE="examples python qt4 test"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	test? ( applications python )"
+	test? ( python qt4 )"
 
 RDEPEND="
-	dev-libs/boost
-	dev-libs/rapidxml
 	dev-cpp/eigen:3
-	dev-qt/qtcore:4
-	dev-qt/qtgui:4
-	dev-qt/qtopengl:4
+	dev-libs/boost:=
+	dev-libs/rapidxml
 	media-libs/glu
 	sci-libs/inchi
 	sci-libs/lemon
@@ -35,6 +32,11 @@ RDEPEND="
 		x11-libs/libXext
 	)
 	python? ( ${PYTHON_DEPS} )
+	qt4? (
+		dev-qt/qtcore:4
+		dev-qt/qtgui:4
+		dev-qt/qtopengl:4
+	)
 "
 DEPEND="${RDEPEND}"
 
@@ -43,28 +45,35 @@ S="${WORKDIR}"/${PN}
 PATCHES=(
 	"${FILESDIR}"/${P}-multilib.patch
 	"${FILESDIR}"/${P}-unbundle.patch
-	)
+)
 
 src_prepare() {
 	# jsoncpp API change
 	# xdrf != xdrfile
 	rm -rvf src/3rdparty/{inchi,khronos,lemon,rapidxml} || die
 	cmake-utils_src_prepare
+
+	# bug 640206
+	sed -e "/add_subdirectory(xtc/s/^/#DONT /" \
+		-i src/plugins/CMakeLists.txt || die "Failed to disable xtc"
 }
 
 src_configure() {
 	local mycmakeargs=(
-		-DCHEMKIT_BUILD_PLUGIN_BABEL=on
+		-DCHEMKIT_BUILD_EXAMPLES=$(usex examples)
+		-DCHEMKIT_BUILD_DEMOS=$(usex examples)
+		-DCHEMKIT_BUILD_BINDINGS_PYTHON=$(usex python)
+		-DCHEMKIT_BUILD_APPS=$(usex qt4)
+		-DCHEMKIT_BUILD_PLUGIN_BABEL=$(usex qt4)
+		-DCHEMKIT_BUILD_QT_DESIGNER_PLUGINS=$(usex qt4)
+		-DCHEMKIT_WITH_GRAPHICS=$(usex qt4)
+		-DCHEMKIT_WITH_GUI=$(usex qt4)
+		-DCHEMKIT_WITH_WEB=$(usex qt4)
+		-DCHEMKIT_BUILD_TESTS=$(usex test)
 		-DUSE_SYSTEM_INCHI=ON
 		-DUSE_SYSTEM_JSONCPP=OFF
 		-DUSE_SYSTEM_RAPIDXML=ON
 		-DUSE_SYSTEM_XDRF=OFF
-		$(cmake-utils_use applications CHEMKIT_BUILD_APPS)
-		$(cmake-utils_use applications CHEMKIT_BUILD_QT_DESIGNER_PLUGINS)
-		$(cmake-utils_use examples CHEMKIT_BUILD_EXAMPLES)
-		$(cmake-utils_use examples CHEMKIT_BUILD_DEMOS)
-		$(cmake-utils_use python CHEMKIT_BUILD_BINDINGS_PYTHON)
-		$(cmake-utils_use test CHEMKIT_BUILD_TESTS)
 	)
 	cmake-utils_src_configure
 }
