@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit flag-o-matic toolchain-funcs
+inherit flag-o-matic toolchain-funcs xdg-utils
 
 DESCRIPTION="a lightweight PDF viewer and toolkit written in portable C"
 HOMEPAGE="http://mupdf.com/"
@@ -96,8 +96,8 @@ src_prepare() {
 		cp -a "${S}" "${S}"-static || die
 		#add missing Libs.private for xcb and freetype
 		sed -e 's:\(pkg-config --libs\):\1 --static:' \
-		    -e '/^SYS_X11_LIBS = /s:\(.*\):\1 -lpthread:' \
-		    -e '/^SYS_FREETYPE_LIBS = /s:\(.*\):\1 -lbz2:' \
+			-e '/^SYS_X11_LIBS = /s:\(.*\):\1 -lpthread:' \
+			-e '/^SYS_FREETYPE_LIBS = /s:\(.*\):\1 -lbz2:' \
 			-i "${S}"-static/Makerules || die
 	fi
 
@@ -149,4 +149,12 @@ src_install() {
 	doins platform/debian/${PN}.pc
 
 	dodoc README docs/*.{txt,c}
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }
