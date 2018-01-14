@@ -4,7 +4,7 @@
 EAPI=6
 
 DESCRIPTION="viewer/converter for CBR/CBZ comic book archives"
-HOMEPAGE="http://elvine.org/code/cbview/"
+HOMEPAGE="https://web.archive.org/web/20061108214126/http://elvine.org:80/code/cbview/"
 SRC_URI="http://elvine.org/code/cbview/${P}.tar.gz"
 
 LICENSE="GPL-2"
