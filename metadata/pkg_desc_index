@@ -10945,7 +10945,7 @@ x11-plugins/pidgin-opensteamworks 1.4: Steam protocol plugin for pidgin
 x11-plugins/pidgin-otr 4.0.2: (OTR) Messaging allows you to have private conversations over instant messaging
 x11-plugins/pidgin-privacy-please 0.7.1: pidgin plugin to stop spammers from annoying you
 x11-plugins/pidgin-rhythmbox 2.0: automatically update your pidgin profile with current info from Rhythmbox
-x11-plugins/pidgin-sipe 1.21.1 1.22.0: Pidgin Plug-in SIPE (Sip Exchange Protocol)
+x11-plugins/pidgin-sipe 1.22.0: Pidgin Plug-in SIPE (Sip Exchange Protocol)
 x11-plugins/pidgin-xmpp-receipts 0.6: Implementation of xmpp message delivery receipts (XEP-0184) for Pidgin
 x11-plugins/pidgintex 1.1.2_p20170107: Pidgin plugin to render LaTeX expressions in messages
 x11-plugins/purple-libnotify-plus 1.99.2: Provide libnotify interface to Pidgin and Finch
