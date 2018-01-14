@@ -290,18 +290,18 @@ x86		default/linux/musl/x86					exp
 x86		hardened/linux/musl/x86					exp
 
 # Non-embedded uclibc profiles
-amd64		default/linux/uclibc/amd64				dev
-amd64		hardened/linux/uclibc/amd64				dev
-arm		default/linux/uclibc/arm/armv7a				dev
-arm		hardened/linux/uclibc/arm/armv7a			dev
-mips		default/linux/uclibc/mips				dev
-mips		hardened/linux/uclibc/mips				dev
-mips		default/linux/uclibc/mips/mipsel			dev
-mips		hardened/linux/uclibc/mips/mipsel			dev
-ppc		default/linux/uclibc/ppc				dev
-ppc		hardened/linux/uclibc/ppc				dev
-x86		default/linux/uclibc/x86				dev
-x86		hardened/linux/uclibc/x86				dev
+amd64		default/linux/uclibc/amd64				exp
+amd64		hardened/linux/uclibc/amd64				exp
+arm		default/linux/uclibc/arm/armv7a				exp
+arm		hardened/linux/uclibc/arm/armv7a			exp
+mips		default/linux/uclibc/mips				exp
+mips		hardened/linux/uclibc/mips				exp
+mips		default/linux/uclibc/mips/mipsel			exp
+mips		hardened/linux/uclibc/mips/mipsel			exp
+ppc		default/linux/uclibc/ppc				exp
+ppc		hardened/linux/uclibc/ppc				exp
+x86		default/linux/uclibc/x86				exp
+x86		hardened/linux/uclibc/x86				exp
 
 # uclibc/embedded multiarch profiles
 #amd64		uclibc/amd64					dev
