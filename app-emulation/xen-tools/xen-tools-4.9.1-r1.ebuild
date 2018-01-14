@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,12 +13,12 @@ MAJOR_V="$(get_version_component_range 1-2)"
 
 if [[ $PV == *9999 ]]; then
 	inherit git-r3
-	KEYWORDS=""
+	KEYWORDS="amd64"
 	REPO="xen.git"
 	EGIT_REPO_URI="git://xenbits.xen.org/${REPO}"
 	S="${WORKDIR}/${REPO}"
 else
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~x86"
 	UPSTREAM_VER=1
 	SECURITY_VER=
 	# xen-tools's gentoo patches tarball
