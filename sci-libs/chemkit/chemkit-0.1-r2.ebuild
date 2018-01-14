@@ -21,7 +21,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 
 RDEPEND="
 	dev-cpp/eigen:3
-	dev-libs/boost
+	dev-libs/boost:=
 	dev-libs/rapidxml
 	media-libs/glu
 	sci-libs/inchi
