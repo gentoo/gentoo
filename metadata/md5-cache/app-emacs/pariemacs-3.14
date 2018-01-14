@@ -9,4 +9,4 @@ RDEPEND=sci-mathematics/pari >=virtual/emacs-23
 SLOT=0
 SRC_URI=http://iml.univ-mrs.fr/~ramare/ServeurPerso/GP-PARI/latest-pari-distrib/pariemacs-3.14.tar.gz
 _eclasses_=elisp	8a9eaaa38b2345593b1cbc5315dde83c	elisp-common	23f47b2e1de7abf387105eddd1318738
-_md5_=fa199660c494a5f91b96dc3b3f27663f
+_md5_=8ee143a7579375bbf2417a32b2dce359
