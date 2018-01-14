@@ -599,7 +599,6 @@ kernel_is_2_6() {
 if [[ ${ETYPE} == sources ]]; then
 	DEPEND="!build? (
 		sys-apps/sed
-		>=sys-devel/binutils-2.11.90.0.31
 	)"
 	RDEPEND="!build? (
 		>=sys-libs/ncurses-5.2
