@@ -47,6 +47,8 @@ RDEPEND="${DEPEND}
 
 REQUIRED_USE="( caps? ( daemon ) )"
 
+PATCHES=( "${FILESDIR}"/${P}-fix-build-on-musl.patch )
+
 src_prepare() {
 	default
 
