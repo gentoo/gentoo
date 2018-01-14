@@ -23,8 +23,13 @@ DOCS="README CHANGES"
 src_prepare() {
 	eapply "${FILESDIR}"/${P}-makefile.patch
 	eapply_user
-	cp /usr/share/doc/pari-*/pari.cfg.bz2 . || die "pari.cfg.bz2 not found"
-	bunzip2 pari.cfg.bz2
+	if [ -f /usr/share/doc/pari-*/pari.cfg ]; then
+		cp /usr/share/doc/pari-*/pari.cfg .
+	elif [ -f /usr/share/doc/pari-*/pari.cfg.bz2 ]; then
+		cp /usr/share/doc/pari-*/pari.cfg.bz2 .
+		bunzip2 pari.cfg.bz2
+	else die "pari.cfg not found"
+	fi
 }
 
 src_compile() {
