@@ -145,7 +145,7 @@ builddir() {
 	echo "${WORKDIR}/build-${ABI}-${CTARGET}-$1"
 }
 
-glibc_compile_test() {
+do_compile_test() {
 	local ret save_cflags=${CFLAGS}
 	CFLAGS+=" $1"
 	shift
@@ -164,14 +164,14 @@ glibc_compile_test() {
 	return ${ret}
 }
 
-glibc_run_test() {
+do_run_test() {
 	local ret
 
 	if [[ ${MERGE_TYPE} == "binary" ]] ; then
 		# ignore build failures when installing a binary package #324685
-		glibc_compile_test "" "$@" 2>/dev/null || return 0
+		do_compile_test "" "$@" 2>/dev/null || return 0
 	else
-		if ! glibc_compile_test "" "$@" ; then
+		if ! do_compile_test "" "$@" ; then
 			ewarn "Simple build failed ... assuming this is desired #324685"
 			return 0
 		fi
@@ -203,7 +203,7 @@ setup_target_flags() {
 			# We could change main to _start and pass -nostdlib here so that we
 			# only test the gcc code compilation.  Or we could do a compile and
 			# then look for the symbol via scanelf.
-			if ! glibc_compile_test "" 'void f(int i, void *p) {if (__sync_fetch_and_add(&i, 1)) f(i, p);}\nint main(){return 0;}\n' 2>/dev/null ; then
+			if ! do_compile_test "" 'void f(int i, void *p) {if (__sync_fetch_and_add(&i, 1)) f(i, p);}\nint main(){return 0;}\n' 2>/dev/null ; then
 				local t=${CTARGET_OPT:-${CTARGET}}
 				t=${t%%-*}
 				filter-flags '-march=*'
@@ -216,7 +216,7 @@ setup_target_flags() {
 			# Note: This test only matters when the x86 ABI is enabled, so we could
 			# optimize a bit and elide it.
 			# TODO: See cross-compile issues listed above for x86.
-			if ! glibc_compile_test "${CFLAGS_x86}" 'void f(int i, void *p) {if (__sync_fetch_and_add(&i, 1)) f(i, p);}\nint main(){return 0;}\n' 2>/dev/null ; then
+			if ! do_compile_test "${CFLAGS_x86}" 'void f(int i, void *p) {if (__sync_fetch_and_add(&i, 1)) f(i, p);}\nint main(){return 0;}\n' 2>/dev/null ; then
 				local t=${CTARGET_OPT:-${CTARGET}}
 				t=${t%%-*}
 				# Normally the target is x86_64-xxx, so turn that into the -march that
@@ -343,7 +343,7 @@ setup_flags() {
 	# glibc aborts if rpath is set by LDFLAGS
 	filter-ldflags '-Wl,-rpath=*'
 
-	# Bug 492892.
+	# #492892
 	filter-flags -frecord-gcc-switches
 
 	unset CBUILD_OPT CTARGET_OPT
@@ -358,22 +358,17 @@ setup_flags() {
 		CBUILD_OPT=${CTARGET_OPT}
 	fi
 
-	# Lock glibc at -O2 -- linuxthreads needs it and we want to be
-	# conservative here.  -fno-strict-aliasing is to work around #155906
+	# Lock glibc at -O2; we want to be conservative here.
+	# -fno-strict-aliasing is to work around #155906.
 	filter-flags '-O?'
 	append-flags -O2 -fno-strict-aliasing
 
-	# Can't build glibc itself with fortify code.  Newer versions add
-	# this flag for us, so no need to do it manually.
-	version_is_at_least 2.16 ${PV} || append-cppflags -U_FORTIFY_SOURCE
-
 	filter-flags '-fstack-protector*'
 
+	# Starting with gcc-6 (and fully upstreamed pie patches) we control
+	# default enabled/disabled pie via use flags. So nothing to do
+	# here then. #618160
 	if [[ $(gcc-major-version) -lt 6 ]]; then
-		# Starting with gcc-6 (and fully upstreamed pie patches) we control
-		# default enabled/disabled pie via use flags. So nothing to do
-		# here. #618160
-
 		if use hardened && tc-enables-pie ; then
 			# Force PIC macro definition for all compilations since they're all
 			# either -fPIC or -fPIE with the default-PIE compiler.
@@ -395,7 +390,6 @@ want_tls() {
 			return 1
 		;;
 	esac
-
 	return 0
 }
 
@@ -415,8 +409,8 @@ want__thread() {
 }
 
 use_multiarch() {
-	# Make sure binutils is new enough to support indirect functions #336792
-	# This funky sed supports gold and bfd linkers.
+	# Make sure binutils is new enough to support indirect functions,
+	# #336792. This funky sed supports gold and bfd linkers.
 	local bver nver
 	bver=$($(tc-getLD ${CTARGET}) -v | sed -n -r '1{s:[^0-9]*::;s:^([0-9.]*).*:\1:;p}')
 	case $(tc-arch ${CTARGET}) in
@@ -424,7 +418,8 @@ use_multiarch() {
 	arm)       nver="2.22" ;;
 	hppa)      nver="2.23" ;;
 	ppc|ppc64) nver="2.20" ;;
-	# ifunc was added in 2.23, but glibc also needs machinemode which is in 2.24.
+	# ifunc support was added in 2.23, but glibc also needs
+	# machinemode which is in 2.24.
 	s390)      nver="2.24" ;;
 	sparc)     nver="2.21" ;;
 	*)         return 1 ;;
@@ -432,8 +427,8 @@ use_multiarch() {
 	version_is_at_least ${nver} ${bver}
 }
 
-# Setup toolchain variables that had historically
-# been defined in the profiles for these archs.
+# Setup toolchain variables that had historically been defined in the
+# profiles for these archs.
 setup_env() {
 	# silly users
 	unset LD_RUN_PATH
@@ -489,8 +484,6 @@ foreach_abi() {
 
 glibc_banner() {
 	local b="Gentoo ${PVR}"
-	[[ -n ${SNAP_VER} ]] && b+=" snapshot ${SNAP_VER}"
-	[[ -n ${BRANCH_UPDATE} ]] && b+=" branch ${BRANCH_UPDATE}"
 	[[ -n ${PATCH_VER} ]] && ! use vanilla && b+=" p${PATCH_VER}"
 	echo "${b}"
 }
@@ -504,9 +497,6 @@ check_devpts() {
 	# Only sanity check when installing the native glibc.
 	[[ ${ROOT} != "/" ]] && return
 
-	# Older versions always installed setuid, so no need to check.
-	in_iuse suid || return
-
 	# If they're opting in to the old suid code, then no need to check.
 	use suid && return
 
@@ -515,10 +505,7 @@ check_devpts() {
 		eerror "you have devpts mounted at /dev/pts with the gid=5 option."
 		eerror "Openrc should do this for you, so you should check /etc/fstab"
 		eerror "and make sure you do not have any invalid settings there."
-		# Do not die on older kernels as devpts did not export these settings #489520.
-		if version_is_at_least 2.6.25 $(uname -r) ; then
-			die "mount & fix your /dev/pts settings"
-		fi
+		die "mount & fix your /dev/pts settings"
 	fi
 }
 
@@ -542,11 +529,14 @@ get_kheader_version() {
 }
 
 check_nptl_support() {
-	# don't care about the compiler here as we aren't using it
+	# We don't care about the compiler here as we aren't using it
 	just_headers && return
 
 	local run_kv build_kv want_kv
+
+	# TODO: this needs to be replaced somehow
 	run_kv=$(int_to_KV $(get_KV))
+
 	build_kv=$(int_to_KV $(get_kheader_version))
 	want_kv=${MIN_KERN_VER}
 
@@ -563,7 +553,7 @@ check_nptl_support() {
 		ebegin "Checking kernel version (${run_kv} >= ${want_kv})"
 		if ! eend_KV ${run_kv} ${want_kv} ; then
 			echo
-			eerror "You need a kernel of at least ${want_kv} for NPTL support!"
+			eerror "You need a kernel of at least ${want_kv}!"
 			die "Kernel version too low!"
 		fi
 	fi
@@ -571,7 +561,7 @@ check_nptl_support() {
 	ebegin "Checking linux-headers version (${build_kv} >= ${want_kv})"
 	if ! eend_KV ${build_kv} ${want_kv} ; then
 		echo
-		eerror "You need linux-headers of at least ${want_kv} for NPTL support!"
+		eerror "You need linux-headers of at least ${want_kv}!"
 		die "linux-headers version too low!"
 	fi
 }
@@ -591,31 +581,19 @@ pkg_pretend() {
 	   [[ ${ROOT} == "/" ]] && \
 	   [[ ${CBUILD} == ${CHOST} ]] && \
 	   [[ ${CHOST} == ${CTARGET} ]] ; then
-		# The high rev # is to allow people to downgrade between -r# versions.
-		# We want to block 2.20->2.19, but 2.20-r3->2.20-r2 should be fine.
-		# Hopefully we never actually use a r# this high.
+
+		# The high rev # is to allow people to downgrade between -r#
+		# versions. We want to block 2.20->2.19, but 2.20-r3->2.20-r2
+		# should be fine. Hopefully we never actually use a r# this
+		# high.
 		if has_version ">${CATEGORY}/${P}-r10000" ; then
 			eerror "Sanity check to keep you from breaking your system:"
-			eerror " Downgrading glibc is not supported and a sure way to destruction"
-			die "Aborting to save your system"
+			eerror " Downgrading glibc is not supported and a sure way to destruction."
+			die "Aborting to save your system."
 		fi
 
-		if ! glibc_run_test '#include <pwd.h>\nint main(){return getpwuid(0)==0;}\n'
-		then
-			eerror "Your patched vendor kernel is broken.  You need to get an"
-			eerror "update from whoever is providing the kernel to you."
-			eerror "https://sourceware.org/bugzilla/show_bug.cgi?id=5227"
-			eerror "https://bugs.gentoo.org/262698"
-			die "Keeping your system alive, say thank you"
-		fi
-
-		if ! glibc_run_test '#include <unistd.h>\n#include <sys/syscall.h>\nint main(){return syscall(1000)!=-1;}\n'
-		then
-			eerror "Your old kernel is broken.  You need to update it to"
-			eerror "a newer version as syscall(<bignum>) will break."
-			eerror "https://bugs.gentoo.org/279260"
-			die "Keeping your system alive, say thank you"
-		fi
+		# removed check for #262698 since it's about kernel 2.6.18 ...
+		# removed check for #279260 since it's about kernel <2.6.28 ...
 	fi
 
 	# Users have had a chance to phase themselves, time to give em the boot
