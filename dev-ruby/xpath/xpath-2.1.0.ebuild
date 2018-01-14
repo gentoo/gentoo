@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,7 +15,7 @@ DESCRIPTION="XPath is a Ruby DSL around a subset of XPath 1.0"
 HOMEPAGE="https://github.com/jnicklas/xpath"
 LICENSE="MIT"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~x86"
 SLOT="2"
 IUSE=""
 
