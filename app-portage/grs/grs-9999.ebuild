@@ -55,5 +55,5 @@ src_install() {
 	echo "CONFIG_PROTECT=\"/etc/grs/systems.conf\"" > "${T}"/20grs
 	doenvd "${T}"/20grs
 	mkdir ${D}/usr/share/${P}
-	cp "${DISTDIR}"/${ISO} ${D}/usr/share/${P}
+	use server && cp "${DISTDIR}"/${ISO} ${D}/usr/share/${P}
 }
