@@ -5,7 +5,7 @@ EAPI=6
 inherit eutils toolchain-funcs
 
 DESCRIPTION="Collection of programs that can be used to automate common tasks in debian/rules"
-HOMEPAGE="https://packages.qa.debian.org/d/debhelper.html"
+HOMEPAGE="https://tracker.debian.org/pkg/debhelper"
 SRC_URI="mirror://debian/pool/main/d/${PN}/${P/-/_}.tar.xz"
 
 LICENSE="GPL-2"
