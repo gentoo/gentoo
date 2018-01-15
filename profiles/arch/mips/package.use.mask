@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Brian Evans <grknight@gentoo.org> (15 Jan 2018)
+# app-arch/snappy is not tested
+dev-db/mariadb innodb-snappy
+
 # Michał Górny <mgorny@gentoo.org> (12 Jan 2018)
 # Requires dependency flags that are masked in this profile.
 media-libs/sdl-mixer midi
