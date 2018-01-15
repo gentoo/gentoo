@@ -24,11 +24,11 @@ RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtwidgets:5
-	dev-qt/qtconcurrent:5
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	dev-qt/linguist-tools:5
+	dev-qt/qtconcurrent:5
 	test? (
 		dev-qt/qttest:5
 		media-libs/flac
