@@ -7,7 +7,8 @@
 	</maintainer>
 	<longdescription lang="en">OpenColorIO (OCIO) is a complete color management solution geared towards motion picture production with an emphasis on visual effects and computer animation.</longdescription>
 	<use>
-		<flag name="pdf">Install extra documentation in PDF format</flag>
+		<flag name="pdf" restrict="&lt;=media-libs/opencolorio-1.1.0-r1">
+			Install extra documentation in PDF format</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">imageworks/OpenColorIO</remote-id>
