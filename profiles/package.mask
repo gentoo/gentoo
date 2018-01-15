@@ -385,10 +385,6 @@ media-libs/libdvb
 dev-lang/blassic
 
 # Pacho Ramos <pacho@gentoo.org> (28 Dec 2017)
-# Fails at runtime (#614314). Removal in a month.
-app-text/nfoview
-
-# Pacho Ramos <pacho@gentoo.org> (28 Dec 2017)
 # Needs to be migrated to pycryptodome, this was merged into paramiko
 # (#611616). Removal in a month.
 dev-python/ssh
