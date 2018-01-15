@@ -661,9 +661,11 @@ app-office/calligra:phonon - Build stage/eventplugins and videoshape plugin usin
 app-office/calligra:pim - Enable support for KDE PIM resources integration
 app-office/calligra:spacenav - Enable support for the 3Dconnexion spacenav input device via dev-libs/libspnav
 app-office/glabels:barcode - Enable barcode support through external libraries.
+app-office/gnucash:aqbanking - Connect to some internet banks via AqBanking
 app-office/gnucash:chipcard - Enable support for chipcard reading and processing.
 app-office/gnucash:hbci - Enable HBCI support, for connecting to some internet banks
 app-office/gnucash:quotes - Enable Online Stock Quote retrieval
+app-office/gnucash:register2 - Use the new register (Experimental)
 app-office/gnumeric:libgda - Enable database support through gnome-extra/libgda.
 app-office/gnumeric:perl - Enable perl plugin loader.
 app-office/gnumeric:python - Enable python plugin loader.
