@@ -1,38 +1,32 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit qt4-r2
+inherit cmake-utils
 
 DESCRIPTION="a fork of multimon, decodes multiple digital transmission modes"
 HOMEPAGE="https://github.com/EliasOenal/multimonNG"
 
 if [[ ${PV} == 9999* ]]; then
-	inherit git-2
+	inherit git-r3
 	EGIT_REPO_URI="https://github.com/EliasOenal/multimonNG.git"
 	KEYWORDS=""
 else
 	SRC_URI="https://github.com/EliasOenal/multimonNG/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}"/multimonNG-${PV}
 	KEYWORDS="~amd64 ~arm ~x86"
 fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="pulseaudio"
+IUSE="pulseaudio X"
 
 DEPEND="pulseaudio? ( media-sound/pulseaudio )
-	dev-qt/qtcore:4
-	x11-libs/libX11"
+		X? ( x11-libs/libX11 )"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-	if use !pulseaudio; then
-		sed -i -e 's/-lpulse-simple//' -e 's/-lpulse//' -e 's/PULSE/DUMMY/' ${PN}.pro || die
-	fi
-	qt4-r2_src_prepare
-}
-src_install() {
-	dobin ${PN}
+	use pulseaudio && sed -i '/find_package( PulseAudio )/d' CMakeLists.txt
+	use X && sed -i '/find_package( X11 )/d' CMakeLists.txt
+	cmake-utils_src_prepare
 }
