@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ FFMPEG_SUBSLOT=56.58.58
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SCM="git-r3"
-	EGIT_REPO_URI="git://source.ffmpeg.org/ffmpeg.git"
+	EGIT_REPO_URI="https://git.ffmpeg.org/ffmpeg.git"
 fi
 
 inherit eutils flag-o-matic multilib multilib-minimal toolchain-funcs ${SCM}
