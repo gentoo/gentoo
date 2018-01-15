@@ -6,11 +6,11 @@ EAPI=5
 inherit cmake-utils
 
 DESCRIPTION="a fork of multimon, decodes multiple digital transmission modes"
-HOMEPAGE="https://github.com/EliasOenal/multimonNG"
+HOMEPAGE="https://github.com/EliasOenal/multimon-ng"
 
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/EliasOenal/multimonNG.git"
+	EGIT_REPO_URI="https://github.com/EliasOenal/multimon-ng.git"
 	KEYWORDS=""
 else
 	SRC_URI="https://github.com/EliasOenal/multimonNG/archive/${PV}.tar.gz -> ${P}.tar.gz"
