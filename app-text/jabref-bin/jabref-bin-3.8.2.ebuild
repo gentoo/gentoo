@@ -17,7 +17,7 @@ SRC_URI="https://github.com/JabRef/jabref/releases/download/v${PV}/JabRef-${MY_P
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="app-arch/unzip"
 
