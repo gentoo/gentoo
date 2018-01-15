@@ -936,6 +936,7 @@ dev-db/postgis:topology - Build topology spatial types and functions
 dev-db/postgresql:pg_legacytimestamp - Use double precision floating-point numbers instead of 64-bit integers for timestamp storage.
 dev-db/postgresql:server - Disable to build and install the clients and libraries only.
 dev-db/postgresql:uuid - Enable server side UUID generation (via dev-libs/ossp-uuid).
+dev-db/psqlodbc:iodbc - Use dev-db/libiodbc. Disable to use dev-db/unixODBC.
 dev-db/redis:jemalloc - Use dev-libs/jemalloc for allocations.
 dev-db/redis:luajit - Use dev-lang/luajit instead of dev-lang/lua
 dev-db/redis:tcmalloc - Use tcmalloc from dev-util/google-perftools for allocations.
@@ -5350,6 +5351,9 @@ sys-cluster/corosync:infiniband - Enable Infiniband RDMA transport support
 sys-cluster/drbd:heartbeat - Enable Heartbeat integration
 sys-cluster/drbd:pacemaker - Enable Pacemaker integration
 sys-cluster/drbd:xen - Enable Xen integration
+sys-cluster/drbd-utils:heartbeat - Enable Heartbeat integration
+sys-cluster/drbd-utils:pacemaker - Enable Pacemaker integration
+sys-cluster/drbd-utils:xen - Enable Xen integration
 sys-cluster/galera:garbd - Install Galera Arbitrator - a stateless daemon which acts as a lightweight group member
 sys-cluster/glusterfs:bd-xlator - Enable the blockdevice translator (requires sys-fs/lvm2)
 sys-cluster/glusterfs:crypt-xlator - Enable the encryption translator

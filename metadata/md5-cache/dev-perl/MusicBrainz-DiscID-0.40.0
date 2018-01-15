@@ -4,10 +4,10 @@ DESCRIPTION=Perl interface for the MusicBrainz libdiscid library
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/MusicBrainz-DiscID/
 IUSE=test examples
-KEYWORDS=~amd64 ppc ppc64 x86
+KEYWORDS=amd64 ppc ppc64 x86
 LICENSE=GPL-2
 RDEPEND=>=media-libs/libdiscid-0.2.2 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/N/NJ/NJH/MusicBrainz-DiscID-0.04.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
-_md5_=f4911f0eba60b741c260c362d798a04f
+_md5_=4500c6c5862c3dab38277ddde6ecfe32
