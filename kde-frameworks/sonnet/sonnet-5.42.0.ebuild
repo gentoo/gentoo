@@ -3,6 +3,7 @@
 
 EAPI=6
 
+VIRTUALX_REQUIRED="test"
 inherit kde5
 
 DESCRIPTION="Framework for providing spell-checking through abstraction of popular backends"
