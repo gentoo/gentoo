@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201801-15">
+  <title>PolarSSL: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in PolarSSL, the worst of
+    which may allow remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">polarssl</product>
+  <announced>2018-01-15</announced>
+  <revised count="1">2018-01-15</revised>
+  <bug>537108</bug>
+  <bug>620504</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/polarssl" auto="yes" arch="*">
+      <vulnerable range="lt">1.3.9-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>PolarSSL is a cryptographic library for embedded systems.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in PolarSSL. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker might be able to execute arbitrary code, cause Denial
+      of Service condition or obtain sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>Gentoo has discontinued support for PolarSSL and recommends that users
+      unmerge the package:
+    </p>
+    
+    <code>
+      # emerge --unmerge "net-libs/polarssl"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1182">
+      CVE-2015-1182
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7575">
+      CVE-2015-7575
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-10-19T20:10:49Z">jmbailey</metadata>
+  <metadata tag="submitter" timestamp="2018-01-15T04:24:40Z">jmbailey</metadata>
+</glsa>
