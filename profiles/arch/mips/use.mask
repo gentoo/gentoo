@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -mips
 
+# Brian Evans <grknight@gentoo.org> (15 Jan 2018)
+# Mask tcmalloc as dev-util/google-perftools is unavailable
+tcmalloc
+
 # James Le Cuirot <chewi@gentoo.org> (29 Jun 2017)
 # Unmask as this profile is big endian.
 -big-endian
