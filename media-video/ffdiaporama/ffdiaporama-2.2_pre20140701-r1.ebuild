@@ -20,7 +20,7 @@ SRC_URI="http://download.tuxfamily.org/${PN}/Packages/Devel/${PN}_bin_${BIN_PV}.
 LICENSE="GPL-2
 	texturemate? ( CC-BY-3.0 )"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="libav openclipart texturemate"
 
 RDEPEND="
