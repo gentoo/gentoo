@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="efficient generation of subroutines via string eval"
 SLOT="0"
-KEYWORDS="amd64 ~arm hppa ppc ~ppc64 ~sparc x86"
+KEYWORDS="amd64 ~arm hppa ~ia64 ppc ~ppc64 ~sparc x86"
 IUSE="test minimal"
 
 RDEPEND="
