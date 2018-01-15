@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -57,7 +57,10 @@ multilib_src_compile() {
 multilib_src_install() {
 	emakecmd DESTDIR="${D}" install-shared
 
-	use utils && dobin h264{enc,dec}
+	if use utils ; then
+		newbin h264enc openh264enc
+		newbin h264dec openh264dec
+	fi
 
 	if use plugin; then
 		local plugpath="usr/$(get_libdir)/${PLUGINS_DIR}/gmp-gmp${PN}/system-installed"
@@ -90,6 +93,11 @@ pkg_postinst() {
 		elog "however even if it is not successful in doing so the profile-installed plugin"
 		elog "will not be used unless this package is removed.  This package will take precedence"
 		elog "over any gmp-gmpopenh264 that may be installed in a user's profile."
+		elog ""
+	fi
+	if use utils; then
+		elog "Utilities h264enc and h264dec are installed as openh264enc and openh264dec"
+		elog "to avoid file collisions with media-video/h264enc"
 		elog ""
 	fi
 }
