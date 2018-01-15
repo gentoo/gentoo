@@ -1387,6 +1387,7 @@ app-text/multitail 6.4.1: Tail with multiple windows
 app-text/mupdf 1.11-r1: a lightweight PDF viewer and toolkit written in portable C
 app-text/mythes 1.2.4: A simple thesaurus for Libreoffice
 app-text/namazu 2.0.21: Namazu is a full-text search engine
+app-text/nfoview 1.15.1: simple viewer for NFO files, which are ASCII art in the CP437 codepage
 app-text/noweb 2.11b-r4: a literate programming tool, lighter than web
 app-text/o3read 0.0.4: Converts OpenOffice formats to text or HTML
 app-text/ocrad 0.22: GNU Ocrad is an OCR (Optical Character Recognition) program
