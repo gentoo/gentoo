@@ -1,0 +1,49 @@
+From cd544890ced4192d07467c89e23adbb62d8cea5c Mon Sep 17 00:00:00 2001
+From: Milian Wolff <mail@milianw.de>
+Date: Mon, 18 Dec 2017 11:40:35 +0100
+Subject: Fix build with CMake 3.10
+
+Looks like a classic false-positive, but this makes the compile
+pass for me without making the code harder to read:
+
+AutoMoc error
+-------------
+  "/ssd/milian/projects/kf5/src/kde/workspace/kwin/kcmkwin/kwinscripts/main.cpp"
+The file contains a K_PLUGIN_FACTORY macro, but does not include "main.moc"!
+Consider to
+ - add #include "main.moc"
+ - enable SKIP_AUTOMOC for this file
+
+So we just add the include and then get rid of the duplicate
+definition of the plugin factory and the problem is resolved.
+---
+ kcmkwin/kwinscripts/main.cpp   | 2 ++
+ kcmkwin/kwinscripts/module.cpp | 2 --
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/kcmkwin/kwinscripts/main.cpp b/kcmkwin/kwinscripts/main.cpp
+index f5ee04b..baa5175 100644
+--- a/kcmkwin/kwinscripts/main.cpp
++++ b/kcmkwin/kwinscripts/main.cpp
+@@ -22,3 +22,5 @@
+ 
+ K_PLUGIN_FACTORY(KcmKWinScriptsFactory,
+                  registerPlugin<Module>("kwin-scripts");)
++
++#include "main.moc"
+diff --git a/kcmkwin/kwinscripts/module.cpp b/kcmkwin/kwinscripts/module.cpp
+index a0d698e..ccf7d41 100644
+--- a/kcmkwin/kwinscripts/module.cpp
++++ b/kcmkwin/kwinscripts/module.cpp
+@@ -40,8 +40,6 @@
+ 
+ #include "version.h"
+ 
+-K_PLUGIN_FACTORY_DECLARATION(KcmKWinScriptsFactory)
+-
+ Module::Module(QWidget *parent, const QVariantList &args) :
+     KCModule(parent, args),
+     ui(new Ui::Module),
+-- 
+cgit v0.11.2
+

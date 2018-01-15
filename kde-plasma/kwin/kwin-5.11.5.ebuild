@@ -84,7 +84,10 @@ DEPEND="${COMMON_DEPEND}
 
 RESTRICT+=" test"
 
-PATCHES=( "${FILESDIR}/${PN}-5.10.95-test-optional.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-5.10.95-test-optional.patch"
+	"${FILESDIR}/${PN}-5.11.5-cmake-3.10.patch"
+)
 
 src_prepare() {
 	kde5_src_prepare
