@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ inherit user golang-build golang-vcs-snapshot
 
 EGO_PN="github.com/prometheus/alertmanager"
 EGIT_COMMIT="v${PV/_rc/-rc.}"
-ALERTMANAGER_COMMIT="30dd042"
+ALERTMANAGER_COMMIT="fb713f6"
 ARCHIVE_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
 
