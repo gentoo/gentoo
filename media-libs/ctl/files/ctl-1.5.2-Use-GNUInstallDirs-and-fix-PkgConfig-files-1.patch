@@ -60,7 +60,7 @@ index 01f622c..35e9a48 100644
 -  set(DEF_INSTALL_CMAKE_DIR lib/CMake/CTL)
 -endif()
 -set(INSTALL_CMAKE_DIR ${DEF_INSTALL_CMAKE_DIR} CACHE PATH "Install directory for project CMake files" )
-+set(INSTALL_CMAKE_DIR ${CMAKE_INSTALL_FULL_LIBDIR}/CMake/CTL CACHE PATH "Install directory for project CMake files" )
++set(INSTALL_CMAKE_DIR ${CMAKE_INSTALL_FULL_LIBDIR}/cmake/CTL CACHE PATH "Install directory for project CMake files" )
  
  # use, i.e. don't skip the full RPATH for the build tree
  SET(CMAKE_SKIP_BUILD_RPATH  FALSE)

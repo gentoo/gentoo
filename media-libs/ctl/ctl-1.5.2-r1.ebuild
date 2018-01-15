@@ -22,6 +22,6 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/CTL-ctl-${PV}"
 
-PATCHES=( "${FILESDIR}/${P}-Use-GNUInstallDirs-and-fix-PkgConfig-files.patch" )
+PATCHES=( "${FILESDIR}/${P}-Use-GNUInstallDirs-and-fix-PkgConfig-files-1.patch" )
 
 mycmakeargs=( -DCMAKE_INSTALL_DOCDIR="share/doc/${PF}" )
