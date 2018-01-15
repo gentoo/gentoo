@@ -54,6 +54,6 @@ src_install() {
 	distutils-r1_src_install
 	echo "CONFIG_PROTECT=\"/etc/grs/systems.conf\"" > "${T}"/20grs
 	doenvd "${T}"/20grs
-	mkdir ${D}/usr/share/${P}
-	use server && cp "${DISTDIR}"/${ISO} ${D}/usr/share/${P}
+	mkdir ${D}/usr/share/${PN}
+	use server && cp "${DISTDIR}"/${ISO} ${D}/usr/share/${PN}
 }
