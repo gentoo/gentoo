@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit user golang-build golang-vcs-snapshot
+inherit fcaps user golang-build golang-vcs-snapshot
 
 EGO_PN="github.com/prometheus/blackbox_exporter"
 EGIT_COMMIT="v${PV/_rc/-rc.}"
@@ -18,6 +18,10 @@ SLOT="0"
 IUSE=""
 
 DEPEND="dev-util/promu"
+
+FILECAPS=(
+	cap_net_raw usr/bin/blackbox_exporter
+)
 
 pkg_setup() {
 	enewgroup ${PN}
