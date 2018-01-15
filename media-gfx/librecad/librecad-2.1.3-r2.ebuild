@@ -13,21 +13,18 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 
-IUSE="3d debug doc tools qt4 +qt5"
-REQUIRED_USE="qt5"
+IUSE="3d debug doc tools"
 
 DEPEND="
-	qt5? (
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qthelp:5
-		dev-qt/qtprintsupport:5
-		dev-qt/qtsvg:5
-		dev-qt/qtwidgets:5
-		dev-qt/qtxml:5
-	)
-	dev-libs/boost:=
 	dev-cpp/muParser
+	dev-libs/boost:=
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qthelp:5
+	dev-qt/qtprintsupport:5
+	dev-qt/qtsvg:5
+	dev-qt/qtwidgets:5
+	dev-qt/qtxml:5
 	media-libs/freetype:2"
 
 RDEPEND="${DEPEND}"

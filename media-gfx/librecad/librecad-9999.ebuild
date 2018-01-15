@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,29 +13,20 @@ EGIT_REPO_URI="https://github.com/LibreCAD/LibreCAD.git"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="3d debug doc tools qt4 +qt5"
-REQUIRED_USE="|| ( qt4 qt5 )"
+
+IUSE="3d debug doc tools"
 
 DEPEND="
-	qt4? (
-		dev-qt/qtcore:4
-		dev-qt/qtgui:4
-		dev-qt/qtsvg:4
-		dev-qt/qthelp:4
-	)
-	qt5? (
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qthelp:5
-		dev-qt/qtprintsupport:5
-		dev-qt/qtsvg:5
-		dev-qt/qtwidgets:5
-		dev-qt/qtxml:5
-	)
-
-	dev-libs/boost
 	dev-cpp/muParser
-	media-libs/freetype"
+	dev-libs/boost:=
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qthelp:5
+	dev-qt/qtprintsupport:5
+	dev-qt/qtsvg:5
+	dev-qt/qtwidgets:5
+	dev-qt/qtxml:5
+	media-libs/freetype:2"
 
 RDEPEND="${DEPEND}"
 S="${WORKDIR}/librecad-${PV}"
@@ -46,12 +37,7 @@ src_prepare() {
 }
 
 src_configure() {
-	if use qt4
-	then
-		eqmake4 -r
-	else
-		eqmake5 -r
-	fi
+	eqmake5 -r
 }
 
 src_install() {
@@ -61,7 +47,7 @@ src_install() {
 	doins -r unix/appdata
 	insinto /usr/share/${PN}
 	doins -r unix/resources/*
-	use doc && dohtml -r librecad/support/doc/*
+	use doc && insinto html && dodoc -r librecad/support/doc/*
 	insinto /usr/share/appdata
 	doins unix/appdata/librecad.appdata.xml
 	doicon librecad/res/main/${PN}.png
