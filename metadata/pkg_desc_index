@@ -8487,7 +8487,7 @@ net-irc/quassel 0.12.4: Qt/KDE IRC client supporting a remote daemon for 24/7 co
 net-irc/rhapsody 0.28b: IRC client intended to be displayed on a text console
 net-irc/savirc 1.99-r1: User friendly IRC client with unicode support and tcl/tk scripting
 net-irc/scrollz 2.1 2.2 2.2.1: Advanced IRC client based on ircII
-net-irc/shadowircd 6.3.3 6.3.3-r1: An IRCd based on charybdis that adds several useful features
+net-irc/shadowircd 6.3.3-r1: An IRCd based on charybdis that adds several useful features
 net-irc/sic 1.2: An extremly simple IRC client
 net-irc/telepathy-idle 0.2.0: Full-featured IRC connection manager for Telepathy
 net-irc/unrealircd 3.2.10.7: An advanced Internet Relay Chat daemon
