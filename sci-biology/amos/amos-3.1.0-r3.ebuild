@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools flag-o-matic python-single-r1
+inherit autotools flag-o-matic python-single-r1 qmake-utils
 
 DESCRIPTION="A Modular, Open-Source whole genome assembler"
 HOMEPAGE="http://amos.sourceforge.net/"
@@ -40,6 +40,11 @@ src_prepare() {
 	# prevent GCC 6 log pollution due
 	# to hash_map deprecation in C++11
 	append-cxxflags -Wno-cpp
+}
+
+src_configure() {
+	econf \
+		--with-qmake-qt4=$(usex qt4 $(qt4_get_bindir)/qmake no)
 }
 
 src_install() {
