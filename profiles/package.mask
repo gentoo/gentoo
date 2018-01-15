@@ -725,12 +725,6 @@ dev-python/pydb
 # Dead upstream, unclear license. Removal in 30 days.
 dev-python/pygui
 
-# Thomas Deutschmann <whissi@gentoo.org> (14 Dec 2017)
-# Unpatched security vulnerability per bug #537108
-# Removal in 30 days. Please migrate to net-libs/mbedtls if you have
-# not done yet.
-net-libs/polarssl
-
 # Patrice Clement <monsieurp@gentoo.org> (12 Dec 2017)
 # Masked due to a hard dependency on an ancient versions of dev-libs/msgpack
 # (<0.6) that have been punted from the tree.

@@ -20,10 +20,6 @@ net-dns/bind seccomp
 # media-libs/libomxil-bellagio keyworded on amd64/x86
 media-libs/mesa openmax
 
-# Thomas Sachau <tommy@gentoo.org> (25 Dez 2013)
-# mask frost USE flag, broken with >=net-libs/polarssl-1.3.0, bug 489256
-net-p2p/fms frost
-
 # Diego Elio Pettenò (27 Aug 2012)
 # The libpci access is only used for linux.
 net-analyzer/net-snmp -pci
