@@ -1,0 +1,31 @@
+Title: GnuCash 2.7+ Breaking Change
+Author: Aaron W. Swenson <titanofold@gentoo.org>
+Posted: 2018-01-14
+Revision: 1
+News-Item-Format: 2.0
+Display-If-Installed: <app-office/gnucash-4
+
+Along with changes to use modern libraries, GnuCash 2.7+ has changed the
+schema [1] it uses for both databases and files. GnuCash will
+automatically modify the file or database in place upon open.
+
+Therefore, it is imperative that you back up any files or databases
+before using GnuCash 2.7 in case you run into an issue and want or need
+to revert back to 2.6.
+
+Close any open session of GnuCash including remote sessions, then
+follow the relevant backup instructions as follows:
+
+For XML (plain files):
+$ cp /path/to/file.gnucash /path/to/file.gnucash.bak
+
+For MySQL:
+$ mysqldump gnucash_db | xz > gnucash-2.6.sql.xz
+
+For PostgreSQL:
+$ pg_dump -U gnucash_user -Z 5 gnucash_db > gnucash-2.6.sql.gz
+
+For SQLite:
+$ cp /path/to/sqlite.file.gnucash /path/to/sqlite.file.gnucash.bak
+
+[1] https://github.com/Gnucash/gnucash/releases/tag/2.7.0a
