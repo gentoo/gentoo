@@ -1,14 +1,13 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qthelp:5 dev-qt/qtprintsupport:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 ) dev-libs/boost:= dev-cpp/muParser media-libs/freetype:2
+DEPEND=dev-cpp/muParser dev-libs/boost:= dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qthelp:5 dev-qt/qtprintsupport:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 media-libs/freetype:2
 DESCRIPTION=Generic 2D CAD program
 EAPI=5
 HOMEPAGE=http://www.librecad.org/
-IUSE=3d debug doc tools qt4 +qt5
+IUSE=3d debug doc tools
 KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
-RDEPEND=qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qthelp:5 dev-qt/qtprintsupport:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 ) dev-libs/boost:= dev-cpp/muParser media-libs/freetype:2
-REQUIRED_USE=qt5
+RDEPEND=dev-cpp/muParser dev-libs/boost:= dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qthelp:5 dev-qt/qtprintsupport:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 media-libs/freetype:2
 SLOT=0
 SRC_URI=https://github.com/LibreCAD/LibreCAD/archive/2.1.3.zip -> librecad-2.1.3.zip
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e7258392d5eda499c1cfa94db650b61	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=d1f3e5cd894030c3c9e9d3c120d93eff
+_md5_=1e65756bed736b8c85ad140a6c86da43

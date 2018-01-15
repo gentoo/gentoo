@@ -1,12 +1,11 @@
 DEFINED_PHASES=configure install prepare unpack
-DEPEND=qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtsvg:4 dev-qt/qthelp:4 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qthelp:5 dev-qt/qtprintsupport:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 ) dev-libs/boost dev-cpp/muParser media-libs/freetype >=dev-vcs/git-1.8.2.1
+DEPEND=dev-cpp/muParser dev-libs/boost:= dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qthelp:5 dev-qt/qtprintsupport:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 media-libs/freetype:2 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=Generic 2D CAD program
 EAPI=5
 HOMEPAGE=http://www.librecad.org/
-IUSE=3d debug doc tools qt4 +qt5
+IUSE=3d debug doc tools
 LICENSE=GPL-2
-RDEPEND=qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtsvg:4 dev-qt/qthelp:4 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qthelp:5 dev-qt/qtprintsupport:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 ) dev-libs/boost dev-cpp/muParser media-libs/freetype
-REQUIRED_USE=|| ( qt4 qt5 )
+RDEPEND=dev-cpp/muParser dev-libs/boost:= dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qthelp:5 dev-qt/qtprintsupport:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 media-libs/freetype:2
 SLOT=0
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e7258392d5eda499c1cfa94db650b61	git-r3	fec09a83ae965b041b47f5ff7c8ba29a	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=985f17112034ce2a176418a0419ff6b0
+_md5_=20cdad17da8f8f7b11158aff09e6759e
