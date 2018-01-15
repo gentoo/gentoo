@@ -1,15 +1,16 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 AEVER=0.17
 
-inherit autotools virtualx
+inherit autotools out-of-source
 
 DESCRIPTION="An improved dynamic tiling window manager"
 HOMEPAGE="https://i3wm.org/"
 SRC_URI="https://i3wm.org/downloads/${P}.tar.bz2"
+
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
@@ -53,28 +54,9 @@ RDEPEND="${CDEPEND}
 # in type-punned pointers - which in turn causes test failures.
 REQUIRED_USE="test? ( debug )"
 
-DOCS=(
-	"RELEASE-NOTES-${PV}"
-	docs
-)
 PATCHES=(
 	"${FILESDIR}/${PN}-musl-GLOB_TILDE.patch"
 )
-
-# https://github.com/i3/i3/issues/3013
-RESTRICT="test"
-
-src_test() {
-	emake -C "${CBUILD}" \
-		test.commands_parser \
-		test.config_parser \
-		test.inject_randr15
-
-	virtx perl \
-		-I "${S}/testcases/lib" \
-		-I "${CBUILD}/testcases/lib" \
-		"${CBUILD}/testcases/complete-run.pl"
-}
 
 src_prepare() {
 	default
@@ -87,22 +69,19 @@ src_prepare() {
 	eautoreconf
 }
 
-src_configure() {
+my_src_configure() {
 	local myeconfargs=(
 		$(use_enable debug)
 	)
 	econf "${myeconfargs[@]}"
 }
 
-src_compile() {
-	emake -C "${CBUILD}"
-}
+my_src_install() {
+	emake install
+	doman man/*.1
 
-src_install() {
-	emake -C "${CBUILD}" DESTDIR="${D}" install
-	doman "${S}"/man/*.1
-
-	use doc && einstalldocs
+	einstalldocs
+	use docs && dodoc -r docs "RELEASE-NOTES-${PV}"
 
 	exeinto /etc/X11/Sessions
 	doexe "${T}/i3wm"
