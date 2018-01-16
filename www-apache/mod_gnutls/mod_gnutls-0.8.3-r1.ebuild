@@ -1,7 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+# WARNING! Don't switch to EAPI-6 without checking paths of installed files
+# carefully. The .so file might get installed into /
+EAPI=5
 inherit autotools apache-module
 
 DESCRIPTION="mod_gnutls uses GnuTLS for SSL/TLS encryption in Apache2 (compare to mod_ssl)"
