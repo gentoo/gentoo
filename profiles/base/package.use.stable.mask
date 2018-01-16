@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Andreas Sturmlechner <asturm@gentoo.org> (16 Jan 2018)
+# Requires x11-libs/wxGTK:3.0-gtk3 stabilisation
+sci-libs/plplot wxwidgets
+
 # Bernard Cafarelli <voyageur@gentoo.org> (27 Nov 2017)
 # Dependencies have no stable keyword
 app-backup/backup-manager s3
