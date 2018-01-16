@@ -14,7 +14,6 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
 
 RDEPEND="
 	>=gnome-base/libglade-2.0
-	>=gnome-base/libgnomeui-2.0
 	gnome-base/libgnomecanvas[glade]
 	net-libs/libpcap
 "
