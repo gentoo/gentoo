@@ -8857,7 +8857,7 @@ net-misc/rdate 1.4-r3 1.4-r4: use TCP or UDP to retrieve the current time of ano
 net-misc/rdesktop 1.8.3: A Remote Desktop Protocol Client
 net-misc/remmina 1.2.0_rc24: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
-net-misc/rsync 3.1.2-r1 3.1.2-r2: File transfer program to keep remote files into sync
+net-misc/rsync 3.1.2-r2: File transfer program to keep remote files into sync
 net-misc/rygel 0.32.1: Rygel is an open source UPnP/DLNA MediaServer
 net-misc/s3cmd 1.6.1: Command line client for Amazon S3
 net-misc/scponly 4.8-r5: A tiny pseudoshell which only permits scp and sftp
