@@ -1,0 +1,2 @@
+move app-portage/kuroo4 app-portage/kuroo
+slotmove app-portage/kuroo 4 0
