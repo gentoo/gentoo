@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,8 +15,10 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="sys-devel/llvm:4
-	sys-devel/clang:4
+LLVM_MAX_SLOT=4
+
+RDEPEND="sys-devel/llvm:${LLVM_MAX_SLOT}
+	sys-devel/clang:${LLVM_MAX_SLOT}
 	${PYTHON_DEPS}
 "
 DEPEND="${RDEPEND}"
@@ -46,7 +48,7 @@ src_configure() {
 		# 'clang' binary itself. See bug #625972
 		# Thus as a hack we install it to the same directory
 		# as llvm/clang itself.
-		-DCMAKE_INSTALL_PREFIX="$(get_llvm_prefix)"
+		-DCMAKE_INSTALL_PREFIX="$(get_llvm_prefix "${LLVM_MAX_SLOT}")"
 	)
 	cmake-utils_src_configure
 }

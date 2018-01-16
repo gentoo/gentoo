@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit bash-completion-r1 multiprocessing toolchain-funcs
+inherit bash-completion-r1 llvm multiprocessing toolchain-funcs
 
 BV=0.23.0-1
 BV_AMD64=${BV}-linux-x86_64
@@ -20,9 +20,11 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="doc debug examples blocking-stdio-hack +xml +yaml"
 
+LLVM_MAX_SLOT=5
+
 # dev-libs/boehm-gc[static-libs] dependency problem,  check the issue: https://github.com/manastech/crystal/issues/1382
 DEPEND="
-	sys-devel/llvm:5
+	sys-devel/llvm:${LLVM_MAX_SLOT}
 	dev-libs/boehm-gc[static-libs,threads]
 	dev-libs/libatomic_ops
 	dev-libs/libevent
