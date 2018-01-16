@@ -5,7 +5,7 @@ EAPI=6
 
 COMMIT=258105b4d8957e0245a341cdf1dc12c72234c833
 PYTHON_COMPAT=( python2_7 )
-inherit cmake-utils flag-o-matic python-single-r1 vcs-snapshot
+inherit cmake-utils flag-o-matic python-single-r1 vcs-snapshot xdg-utils
 
 DESCRIPTION="Advanced molecular editor that uses Qt4 and OpenGL"
 HOMEPAGE="http://avogadro.openmolecules.net/"
@@ -77,4 +77,14 @@ src_configure() {
 	)
 
 	QT_MKSPECS_RELATIVE=share/qt4/mkspecs cmake-utils_src_configure
+}
+
+pkg_postinst() {
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
 }
