@@ -76,12 +76,11 @@ my_src_configure() {
 	econf "${myeconfargs[@]}"
 }
 
-my_src_install() {
-	emake install
+my_src_install_all() {
 	doman man/*.1
 
 	einstalldocs
-	use docs && dodoc -r docs "RELEASE-NOTES-${PV}"
+	use doc && dodoc -r docs "RELEASE-NOTES-${PV}"
 
 	exeinto /etc/X11/Sessions
 	doexe "${T}/i3wm"
