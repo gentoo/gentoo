@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,8 +9,8 @@ MY_PV="${PV/beta/BETA}"
 MY_PV="${MY_PV/rc/RC}"
 MY_P=VirtualBox-${MY_PV}
 DESCRIPTION="VirtualBox kernel modules and user-space tools for Gentoo guests"
-HOMEPAGE="http://www.virtualbox.org/"
-SRC_URI="http://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2
+HOMEPAGE="https://www.virtualbox.org/"
+SRC_URI="https://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2
 	https://dev.gentoo.org/~polynomial-c/virtualbox/patchsets/virtualbox-5.1.30-patches-02.tar.xz"
 
 LICENSE="GPL-2"

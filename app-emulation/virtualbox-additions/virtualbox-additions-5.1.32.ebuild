@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,8 +11,8 @@ MY_PV="${MY_PV/rc/RC}"
 MY_P=${MY_PN}_${MY_PV}
 
 DESCRIPTION="CD image containing guest additions for VirtualBox"
-HOMEPAGE="http://www.virtualbox.org/"
-SRC_URI="http://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.iso"
+HOMEPAGE="https://www.virtualbox.org/"
+SRC_URI="https://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.iso"
 
 LICENSE="GPL-2+ LGPL-2.1+ MIT SGI-B-2.0 CDDL"
 SLOT="0"

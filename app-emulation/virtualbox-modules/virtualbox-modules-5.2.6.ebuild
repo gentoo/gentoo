@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # XXX: the tarball here is just the kernel modules split out of the binary
@@ -34,8 +34,7 @@ pkg_setup() {
 
 	linux-mod_pkg_setup
 
-	BUILD_PARAMS="KERN_DIR=${KV_DIR} O=${KV_OUT_DIR} V=1 KBUILD_VERBOSE=1"
-	BUILD_PARAMS="KERN_DIR=${KV_OUT_DIR} V=1 KBUILD_VERBOSE=1"
+	BUILD_PARAMS="KERN_DIR=${KV_DIR} KERN_VER=${KV_FULL} O=${KV_OUT_DIR} V=1 KBUILD_VERBOSE=1"
 }
 
 src_prepare() {

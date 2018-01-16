@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -27,10 +27,10 @@ SDK_PV="${VBOX_PV}"
 SDK_P="VirtualBoxSDK-${SDK_PV}"
 
 DESCRIPTION="Family of powerful x86 virtualization products for enterprise and home use"
-HOMEPAGE="http://www.virtualbox.org/"
-SRC_URI="amd64? ( http://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}_amd64.run )
-	x86? ( http://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}_x86.run )
-	http://download.virtualbox.org/virtualbox/${MY_PV}/${EXTP_P}.vbox-extpack -> ${EXTP_P}.tar.gz"
+HOMEPAGE="https://www.virtualbox.org/"
+SRC_URI="amd64? ( https://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}_amd64.run )
+	x86? ( https://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}_x86.run )
+	https://download.virtualbox.org/virtualbox/${MY_PV}/${EXTP_P}.vbox-extpack -> ${EXTP_P}.tar.gz"
 
 LICENSE="GPL-2 PUEL"
 SLOT="0"
@@ -40,7 +40,7 @@ RESTRICT="mirror"
 
 if [[ "${PV}" != *beta* ]] ; then
 	SRC_URI+="
-		sdk? ( http://download.virtualbox.org/virtualbox/${MY_PV}/${SDK_P}.zip )"
+		sdk? ( https://download.virtualbox.org/virtualbox/${MY_PV}/${SDK_P}.zip )"
 	IUSE+=" sdk"
 fi
 

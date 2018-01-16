@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,8 +20,8 @@ MY_PN="Oracle_VM_VirtualBox_Extension_Pack"
 MY_P="${MY_PN}-${MY_PV}-${VBOX_BUILD_ID}"
 
 DESCRIPTION="PUEL extensions for VirtualBox"
-HOMEPAGE="http://www.virtualbox.org/"
-SRC_URI="http://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.vbox-extpack -> ${MY_P}.tar.gz"
+HOMEPAGE="https://www.virtualbox.org/"
+SRC_URI="https://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.vbox-extpack -> ${MY_P}.tar.gz"
 
 LICENSE="PUEL"
 SLOT="0"

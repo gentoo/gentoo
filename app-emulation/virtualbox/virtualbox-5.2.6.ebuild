@@ -9,12 +9,11 @@ inherit eutils flag-o-matic java-pkg-opt-2 linux-info multilib pax-utils python-
 MY_PV="${PV/beta/BETA}"
 MY_PV="${MY_PV/rc/RC}"
 MY_P=VirtualBox-${MY_PV}
-SRC_URI="http://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2
-	https://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-5.2.0-patches-01.tar.xz"
-S="${WORKDIR}/${MY_P}"
 
 DESCRIPTION="Family of powerful x86 virtualization products for enterprise and home use"
 HOMEPAGE="http://www.virtualbox.org/"
+SRC_URI="https://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2
+	https://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-5.2.0-patches-01.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -111,6 +110,8 @@ QA_TEXTRELS_x86="usr/lib/virtualbox-ose/VBoxGuestPropSvc.so
 	usr/lib/virtualbox/VBoxOGLhostcrutil.so
 	usr/lib/virtualbox/VBoxNetDHCP.so
 	usr/lib/virtualbox/VBoxNetNAT.so"
+
+S="${WORKDIR}/${MY_P}"
 
 REQUIRED_USE="
 	java? ( sdk )
