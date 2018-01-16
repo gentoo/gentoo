@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit versionator
+inherit versionator toolchain-funcs
 
 MY_PV=$(replace_all_version_separators _ "$(get_version_component_range 2-)")
 MY_PN=df
