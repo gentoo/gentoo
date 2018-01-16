@@ -8,13 +8,6 @@
 # dev-libs/libressl not marked stable yet
 libressl
 
-# Mike Gilbert <floppym@gentoo.org> (28 Oct 2017)
-# Mask python targets until dev-lang/python is stable.
-python_single_target_python3_6
-python_targets_python3_6
-python_single_target_python3_5
-python_targets_python3_5
-
 # Hans de Graaff <graaff@gentoo.org> (17 Apr 2017)
 # Temporary mask to support stable bug 615818
 ruby_targets_ruby22
