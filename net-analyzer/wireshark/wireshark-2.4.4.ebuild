@@ -98,6 +98,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.1.0-sse4_2-r1.patch
 	"${FILESDIR}"/${PN}-2.4-androiddump.patch
 	"${FILESDIR}"/${PN}-99999999-androiddump.patch
+	"${FILESDIR}"/${PN}-2.4.3-libsmi.patch
 )
 
 pkg_setup() {
