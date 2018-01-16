@@ -10,5 +10,5 @@ RDEPEND=media-libs/glew:0 media-libs/libsdl[joystick,video] media-libs/sdl-image
 RESTRICT=strip
 SLOT=0
 SRC_URI=amd64? ( http://www.bay12games.com/dwarves/df_43_05_linux.tar.bz2 ) x86? ( http://www.bay12games.com/dwarves/df_43_05_linux32.tar.bz2 )
-_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	versionator	ce21313503c41896ebcd7d58b0607e37
-_md5_=e0fafeb32c01db415046715da64c202f
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	versionator	ce21313503c41896ebcd7d58b0607e37
+_md5_=102c5922c0c4cd66a46474ac37fbd2e6
