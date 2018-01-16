@@ -338,13 +338,6 @@ src_install() {
 		rm -r "${D}"${LIBPATH}/include/libffi || die
 	fi
 
-	# Now do the fun stripping stuff
-	env RESTRICT="" CHOST=${CHOST} prepstrip "${D}${BINPATH}"
-	env RESTRICT="" CHOST=${CTARGET} prepstrip "${D}${LIBPATH}"
-	# gcc used to install helper binaries in lib/ but then moved to libexec/
-	[[ -d ${ED}/usr/libexec/gcc ]] && \
-		env RESTRICT="" CHOST=${CHOST} prepstrip "${ED}/usr/libexec/gcc/${CTARGET}/${GCC_VERS}"
-
 	# prune empty dirs left behind
 	find "${ED}" -type d | xargs rmdir >& /dev/null
 
