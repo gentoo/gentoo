@@ -5,8 +5,9 @@
 # Please use the same syntax as in package.use.mask
 
 # Andreas Sturmlechner <asturm@gentoo.org> (16 Jan 2018)
-# Requires x11-libs/wxGTK:3.0-gtk3 stabilisation
->=sci-libs/plplot-5.12 wxwidgets
+# USE=wxwidgets Requires x11-libs/wxGTK:3.0-gtk3 stabilisation
+# USE=tcl does not build reliably, bug #624576
+>=sci-libs/plplot-5.12 tcl wxwidgets
 
 # Bernard Cafarelli <voyageur@gentoo.org> (27 Nov 2017)
 # Dependencies have no stable keyword
