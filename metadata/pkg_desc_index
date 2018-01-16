@@ -10056,7 +10056,7 @@ sys-kernel/bliss-initramfs 7.1.2: Boot your system's rootfs from ZFS, LVM, RAID,
 sys-kernel/dracut 044-r1 045-r2 046-r1: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.52.3 3.4.52.4-r2: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 66: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 4.4.87-r1 4.4.111 4.9.49-r1 4.9.72: Full sources including the Gentoo patchset for the 4.9 kernel tree
+sys-kernel/gentoo-sources 4.4.87-r1 4.4.111 4.4.111-r1 4.9.49-r1 4.9.72 4.9.76-r1: Full sources including the Gentoo patchset for the 4.9 kernel tree
 sys-kernel/linux-firmware 20170314 20180103-r1: Linux firmware files
 sys-kernel/linux-headers 3.18 4.3 4.4 4.13: Linux system headers
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
