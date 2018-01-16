@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -32,7 +32,7 @@ REQUIRED_USE="|| ( git mercurial )
 
 RDEPEND="
 	>=dev-python/click-2.0
-	=dev-python/docutils-0.11*
+	>=dev-python/docutils-0.11
 	>=dev-python/flask-0.10.1
 	>=dev-python/flask-babel-0.7
 	>=dev-python/frozen-flask-0.7
