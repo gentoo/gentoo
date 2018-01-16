@@ -24,12 +24,12 @@ esac
 case $(get_version_component_range 1-2) in
 	2.4)
 		DEFAULT_MPM_THREADED="event" #509922
-		RDEPEND=">=dev-libs/apr-1.5.1
+		RDEPEND=">=dev-libs/apr-1.5.1:=
 			!www-apache/mod_macro" #492578 #477702
 	;;
 	2.2)
 		DEFAULT_MPM_THREADED="worker"
-		RDEPEND=">=dev-libs/apr-1.4.5" #368651
+		RDEPEND=">=dev-libs/apr-1.4.5:=" #368651
 	;;
 	*)
 		die "Unknown MAJOR.MINOR apache version."
