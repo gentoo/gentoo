@@ -8,16 +8,12 @@ ROS_SUBDIR=${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="Interface for using ROS with the gazebo simulator"
-LICENSE="BSD"
+DESCRIPTION="Provides a cmake config for the default version of Gazebo for the ROS distribution."
+LICENSE="Apache-2.0"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/gazebo_dev
-	dev-ros/gazebo_msgs
-	dev-ros/gazebo_plugins
-	dev-ros/gazebo_ros
-	dev-ros/gazebo_ros_control
+	sci-electronics/gazebo
 "
 DEPEND="${RDEPEND}"
