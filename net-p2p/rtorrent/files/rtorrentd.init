@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 depend() {
@@ -21,6 +21,8 @@ start() {
 			--env HOME="${PWHOME:-/home/$USER}" \
 			--name rtorrent \
 			--exec /usr/bin/screen -- -D -m -S rtorrentd /usr/bin/rtorrent
+	# Because we've daemonized with screen, we need to replace the PID file with the real PID of rtorrent
+	pgrep -P $(cat /var/run/rtorrentd.pid) > /var/run/rtorrentd.pid
 	eend $?
 }
 
