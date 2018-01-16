@@ -39,7 +39,7 @@ PDEPEND="
 	policykit? ( sys-auth/polkit )
 "
 
-PATCHES=( "${FILESDIR}/${P}-docs.patch" )
+PATCHES=( "${FILESDIR}/${PN}-235.1-docs.patch" )
 
 pkg_setup() {
 	local CONFIG_CHECK="~CGROUPS ~EPOLL ~INOTIFY_USER ~SIGNALFD ~TIMERFD"
