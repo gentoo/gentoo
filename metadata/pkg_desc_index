@@ -9252,7 +9252,7 @@ sci-libs/fetk 1.5: The Finite Element ToolKit - Meta package
 sci-libs/fftw 2.1.5-r9 3.3.6_p2: Fast C library for the Discrete Fourier Transform
 sci-libs/galib 2.4.7-r1: Library for genetic algorithms in C++ programs
 sci-libs/gamer 1.5-r2: Geometry-preserving Adaptive MeshER
-sci-libs/gdal 2.0.2-r3 2.0.3: Translator library for raster geospatial data formats (includes OGR support)
+sci-libs/gdal 2.0.3: Translator library for raster geospatial data formats (includes OGR support)
 sci-libs/geos 3.6.1 3.6.2: Geometry engine library for Geographic Information Systems
 sci-libs/gsl 1.16: The GNU Scientific Library
 sci-libs/gts 20121130: GNU Triangulated Surface Library
