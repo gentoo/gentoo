@@ -83,6 +83,10 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${MY_P}
 [[ ${PV} == *9999 ]] && S=${S}/master
 
+#PATCHES=(
+#	"${FILESDIR}/${P}-buildbotworkerdocker.py.patch"
+#)
+
 pkg_setup() {
 	enewuser buildbot
 
