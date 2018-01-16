@@ -5,7 +5,7 @@ EAPI=6
 
 AEVER=0.17
 
-inherit autotools out-of-source
+inherit autotools out-of-source virtualx
 
 DESCRIPTION="An improved dynamic tiling window manager"
 HOMEPAGE="https://i3wm.org/"
@@ -58,6 +58,9 @@ PATCHES=(
 	"${FILESDIR}/${PN}-musl-GLOB_TILDE.patch"
 )
 
+# https://github.com/i3/i3/issues/3013
+RESTRICT="test"
+
 src_prepare() {
 	default
 
@@ -74,6 +77,18 @@ my_src_configure() {
 		$(use_enable debug)
 	)
 	econf "${myeconfargs[@]}"
+}
+
+my_src_test() {
+	emake \
+		test.commands_parser \
+		test.config_parser \
+		test.inject_randr15
+
+	virtx perl \
+		-I "${S}/testcases/lib" \
+		-I "${BUILD_DIR}/testcases/lib" \
+		testcases/complete-run.pl
 }
 
 my_src_install_all() {
