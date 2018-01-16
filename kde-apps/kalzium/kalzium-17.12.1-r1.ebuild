@@ -35,7 +35,7 @@ DEPEND="
 		$(add_frameworks_dep knewstuff)
 		dev-cpp/eigen:3
 		sci-chemistry/openbabel
-		|| ( sci-libs/avogadrolibs sci-chemistry/avogadro )
+		sci-libs/avogadrolibs
 	)
 	solver? ( dev-ml/facile[ocamlopt] )
 "
