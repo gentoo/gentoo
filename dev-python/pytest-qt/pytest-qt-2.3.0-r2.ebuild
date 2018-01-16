@@ -17,7 +17,7 @@ IUSE="doc"
 
 RDEPEND="
 	>=dev-python/pytest-2.7.0[${PYTHON_USEDEP}]
-	dev-python/PyQt5[gui]
+	dev-python/PyQt5[gui,testlib,${PYTHON_USEDEP}]
 	doc? (
 		dev-python/sphinx[${PYTHON_USEDEP}]
 		dev-python/sphinx-py3doc-enhanced-theme[${PYTHON_USEDEP}]
