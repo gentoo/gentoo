@@ -8,6 +8,9 @@
     <flag name="fuse">
       Use fuse libraries
     </flag>
+    <flag name="iso">
+      Install app-cdr/cdrtools in order to prepare iso images
+    </flag>
     <flag name="ntfs">
       Use libntfs-3g library from sys-fs/ntfs3g
     </flag>
