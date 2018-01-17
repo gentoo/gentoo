@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ SRC_URI="${MY_URI}/${MY_SRC}.tar.gz"
 
 LICENSE="IBM"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ia64 ~ppc ~ppc64 ~sh ~sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 arm ~hppa ia64 ~ppc ~ppc64 ~sh ~sparc x86 ~x86-fbsd"
 IUSE="+berkdb cdb doc dovecot-sasl +eai hardened ldap ldap-bind libressl lmdb memcached mbox mysql nis pam postgres sasl selinux sqlite ssl"
 
 DEPEND=">=dev-libs/libpcre-3.4
