@@ -9924,7 +9924,7 @@ sys-cluster/swift 2.13.1-r1 2.15.1-r1 2.16.0: A highly available, distributed, a
 sys-cluster/torque 2.5.13-r1 4.1.7-r1: Resource manager and queuing system based on OpenPBS
 sys-cluster/util-vserver 0.30.216_pre3120: Linux-VServer admin utilities
 sys-cluster/vzctl 4.9.4: OpenVZ ConTainers control utility
-sys-devel/autoconf 2.13 2.64 2.69 2.69-r4: Used to create autoconfiguration files
+sys-devel/autoconf 2.13 2.69-r4: Used to create autoconfiguration files
 sys-devel/autoconf-archive 2016.03.20-r1 2017.03.21: GNU Autoconf Macro Archive
 sys-devel/autoconf-wrapper 13: wrapper for autoconf to manage multiple autoconf versions
 sys-devel/autogen 5.18.4 5.18.4-r1: Program and text file generation
