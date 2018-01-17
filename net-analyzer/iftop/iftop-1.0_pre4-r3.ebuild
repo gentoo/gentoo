@@ -1,8 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
+EAPI=6
 inherit autotools eutils
 
 DESCRIPTION="display bandwidth usage on an interface"
@@ -11,25 +10,28 @@ HOMEPAGE="http://www.ex-parrot.com/pdw/iftop/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm hppa ia64 ~mips ppc ~ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
-IUSE=""
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 
 RDEPEND="
 	net-libs/libpcap
-	sys-libs/ncurses:0="
+	sys-libs/ncurses:0=
+"
 DEPEND="
 	${RDEPEND}
 	virtual/pkgconfig
 "
-
 S="${WORKDIR}"/${P/_/}
+PATCHES=(
+	"${FILESDIR}"/${P}-configure.ac.patch
+	"${FILESDIR}"/${P}-Makefile.am.patch
+	"${FILESDIR}"/${P}-tsent-set-but-not-used.patch
+	"${FILESDIR}"/${P}-ip6.arpa.patch
+)
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-tinfo.patch
-
+	default
 	# bug 490168
 	cat "${FILESDIR}"/ax_pthread.m4 >> "${S}"/acinclude.m4 || die
-	epatch "${FILESDIR}"/${P}-pthread.patch
 
 	eautoreconf
 }
