@@ -29,7 +29,10 @@ RDEPEND="
 	ntfs? ( sys-fs/ntfs3g )
 	fuse? ( sys-fs/fuse:0 )
 	openssl? ( dev-libs/openssl:0 )
-	iso? ( app-cdr/cdrtools )
+	iso? (
+		app-arch/cabextract
+		app-cdr/cdrtools
+	)
 "
 DEPEND="
 	${RDEPEND}
