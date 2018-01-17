@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201801-17">
+  <title>Poppler: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Poppler, the worst of
+    which could allow the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">poppler</product>
+  <announced>2018-01-17</announced>
+  <revised count="1">2018-01-17</revised>
+  <bug>619558</bug>
+  <bug>620198</bug>
+  <bug>622430</bug>
+  <bug>624708</bug>
+  <bug>627390</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/poppler" auto="yes" arch="*">
+      <unaffected range="ge">0.57.0-r1</unaffected>
+      <vulnerable range="lt">0.57.0-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Poppler is a PDF rendering library based on the xpdf-3.0 code base.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Poppler. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by enticing a user to open a specially crafted PDF,
+      could execute arbitrary code or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Poppler users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-text/poppler-0.57.0-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-2820">CVE-2017-2820</uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7511">
+      CVE-2017-7511
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-9083">
+      CVE-2017-9083
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-9406">
+      CVE-2017-9406
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-9408">
+      CVE-2017-9408
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-9865">
+      CVE-2017-9865
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-11-24T14:30:16Z">chrisadr</metadata>
+  <metadata tag="submitter" timestamp="2018-01-17T13:41:30Z">b-man</metadata>
+</glsa>

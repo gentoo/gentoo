@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201801-18">
+  <title>Newsbeuter: User-assisted execution of arbitrary code</title>
+  <synopsis>Insufficient input validation in Newsbeuter may allow remote
+    attackers to execute arbitrary shell commands.
+  </synopsis>
+  <product type="ebuild">newsbeuter</product>
+  <announced>2018-01-17</announced>
+  <revised count="1">2018-01-17</revised>
+  <bug>628796</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-news/newsbeuter" auto="yes" arch="*">
+      <unaffected range="ge">2.9-r3</unaffected>
+      <vulnerable range="lt">2.9-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Newsbeuter is a RSS/Atom feed reader for the text console.</p>
+  </background>
+  <description>
+    <p>Newsbeuter does not properly escape shell meta-characters in the title
+      and description of RSS feeds when bookmarking.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by enticing a user to open a feed with specially
+      crafted URLs, could possibly execute arbitrary shell commands with the
+      privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Newsbeuter users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-news/newsbeuter-2.9-r3"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-12904">CVE-2017-12904</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-09-12T02:38:59Z">chrisadr</metadata>
+  <metadata tag="submitter" timestamp="2018-01-17T13:45:37Z">b-man</metadata>
+</glsa>
