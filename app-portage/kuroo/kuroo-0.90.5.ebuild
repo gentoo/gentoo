@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/kuroo/${PN}4-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
-SLOT="4"
+SLOT="0"
 IUSE="debug"
 
 DEPEND="dev-db/sqlite:3"
