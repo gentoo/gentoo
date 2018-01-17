@@ -26,12 +26,12 @@ RELEASE_VER=${PV}
 GCC_BOOTSTRAP_VER="4.7.3-r1"
 
 # Gentoo patchset
-PATCH_VER=4
+PATCH_VER=5
 
 SRC_URI+=" https://dev.gentoo.org/~dilfridge/distfiles/${P}-patches-${PATCH_VER}.tar.bz2"
 SRC_URI+=" multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-${GCC_BOOTSTRAP_VER}-multilib-bootstrap.tar.bz2 )"
 
-IUSE="audit caps compile-locales debug doc gd hardened multilib nscd selinux systemtap profile suid vanilla headers-only"
+IUSE="audit caps compile-locales debug doc gd hardened headers-only multilib nscd profile selinux suid systemtap vanilla"
 
 # Minimum kernel version that glibc requires
 MIN_KERN_VER="3.2.0"

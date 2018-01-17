@@ -9,8 +9,7 @@ HOMEPAGE="https://puppetlabs.com/"
 SRC_BASE="http://apt.puppetlabs.com/pool/stretch/puppet5/${PN:0:1}/${PN}/${PN}_${PV}-1stretch"
 SRC_URI="
 	amd64? ( ${SRC_BASE}_amd64.deb )
-	x86?   ( ${SRC_BASE}_i386.deb )
-"
+	x86?   ( ${SRC_BASE}_i386.deb )"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -40,23 +39,6 @@ RDEPEND="${CDEPEND}
 	puppetdb? ( >=dev-ruby/puppetdb-termini-5.0.1 )"
 
 S=${WORKDIR}
-
-QA_PREBUILT="
-	/opt/puppetlabs/puppet
-	/opt/puppetlabs/puppet/lib/ruby/vendor_ruby/2.1.0/x86_64-linux/*
-	/opt/puppetlabs/puppet/lib/ruby/2.1.0/x86_64-linux/mathn/*
-	/opt/puppetlabs/puppet/lib/ruby/2.1.0/x86_64-linux/io/*
-	/opt/puppetlabs/puppet/lib/ruby/2.1.0/x86_64-linux/dl/*
-	/opt/puppetlabs/puppet/lib/ruby/2.1.0/x86_64-linux/racc/*
-	/opt/puppetlabs/puppet/lib/ruby/2.1.0/x86_64-linux/enc/*
-	/opt/puppetlabs/puppet/lib/ruby/2.1.0/x86_64-linux/json/ext/*
-	/opt/puppetlabs/puppet/lib/ruby/2.1.0/x86_64-linux/rbconfig/*
-	/opt/puppetlabs/puppet/lib/ruby/2.1.0/x86_64-linux/digest/*
-	/opt/puppetlabs/puppet/lib/ruby/2.1.0/x86_64-linux/*
-	/opt/puppetlabs/puppet/lib/engines/*
-	/opt/puppetlabs/puppet/lib/virt-what/*
-	/opt/puppetlabs/puppet/lib/*
-	/opt/puppetlabs/puppet/bin/*"
 
 pkg_setup() {
 	enewgroup puppet
