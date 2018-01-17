@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,27 +12,20 @@ MY_PV="${MY_PV/_beta/~beta}"
 MY_P="${PN}-${MY_PV}"
 SERIES="$(get_version_component_range 1-2)"
 
-if [[ ${PV} =~ [9]{4,} ]] ; then
-	EGIT_REPO_URI="git://git.ganeti.org/ganeti.git"
-	inherit git-2
-	KEYWORDS=""
-	PATCHES=()
-else
-	DEBIAN_PATCH=4
-	SRC_URI="
-	  http://downloads.ganeti.org/releases/${SERIES}/${MY_P}.tar.gz
-	  mirror://ubuntu/pool/universe/${PN:0:1}/${PN}/${PN}_${PV}-${DEBIAN_PATCH}.debian.tar.xz
-	"
-	KEYWORDS="~amd64 ~x86"
-	PATCHES=(
-	  "${WORKDIR}"/debian/patches/do-not-backup-export-dir.patch
-	  "${WORKDIR}"/debian/patches/Makefile.am-use-C.UTF-8
-	  "${WORKDIR}"/debian/patches/relax-deps
-	  "${WORKDIR}"/debian/patches/zlib-0.6-compatibility
-	  "${WORKDIR}"/debian/patches/fix_FTBFS_with_sphinx-1.3.5
-	  "${WORKDIR}"/debian/patches/fix_ftbfs_with_sphinx_1.4
-	)
-fi
+DEBIAN_PATCH=4
+SRC_URI="
+	http://downloads.ganeti.org/releases/${SERIES}/${MY_P}.tar.gz
+	mirror://ubuntu/pool/universe/${PN:0:1}/${PN}/${PN}_${PV}-${DEBIAN_PATCH}.debian.tar.xz
+"
+KEYWORDS="~amd64 ~x86"
+PATCHES=(
+	"${WORKDIR}"/debian/patches/do-not-backup-export-dir.patch
+	"${WORKDIR}"/debian/patches/Makefile.am-use-C.UTF-8
+	"${WORKDIR}"/debian/patches/relax-deps
+	"${WORKDIR}"/debian/patches/zlib-0.6-compatibility
+	"${WORKDIR}"/debian/patches/fix_FTBFS_with_sphinx-1.3.5
+	"${WORKDIR}"/debian/patches/fix_ftbfs_with_sphinx_1.4
+)
 
 DESCRIPTION="Ganeti is a virtual server management software tool"
 HOMEPAGE="http://www.ganeti.org/"
@@ -61,7 +54,10 @@ DEPEND="
 	dev-python/bitarray[${PYTHON_USEDEP}]
 	dev-python/docutils[${PYTHON_USEDEP}]
 	dev-python/fdsend[${PYTHON_USEDEP}]
-	net-analyzer/arping
+	|| (
+		net-misc/iputils[arping]
+		net-analyzer/arping
+	)
 	net-analyzer/fping
 	net-misc/bridge-utils
 	net-misc/curl[ssl]
