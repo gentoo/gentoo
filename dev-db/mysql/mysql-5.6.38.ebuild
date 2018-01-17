@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -18,8 +18,13 @@ IUSE="$IUSE numa"
 # REMEMBER: also update eclass/mysql*.eclass before committing!
 KEYWORDS="alpha amd64 arm ~hppa ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 
-DEPEND="|| ( >=sys-devel/gcc-3.4.6 >=sys-devel/gcc-apple-4.0 ) numa? ( sys-process/numactl )"
-RDEPEND="${RDEPEND}"
+COMMON_DEPEND="numa? ( sys-process/numactl:= )"
+
+DEPEND="${COMMON_DEPEND}
+	|| ( >=sys-devel/gcc-3.4.6 >=sys-devel/gcc-apple-4.0 )
+	test? ( dev-perl/JSON )"
+RDEPEND="${COMMON_DEPEND}"
+
 
 MY_PATCH_DIR="${WORKDIR}/mysql-extras-${MY_EXTRAS_VER}"
 
