@@ -1,15 +1,15 @@
 DEFINED_PHASES=compile configure prepare unpack
-DEPEND=dev-libs/libxml2:2 ntfs? ( sys-fs/ntfs3g ) fuse? ( sys-fs/fuse:0 ) openssl? ( dev-libs/openssl:0 ) cpu_flags_x86_ssse3? ( yasm? ( dev-lang/yasm ) !yasm? ( dev-lang/nasm ) ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=dev-libs/libxml2:2 ntfs? ( sys-fs/ntfs3g ) fuse? ( sys-fs/fuse:0 ) openssl? ( dev-libs/openssl:0 ) iso? ( app-cdr/cdrtools ) cpu_flags_x86_ssse3? ( yasm? ( dev-lang/yasm ) !yasm? ( dev-lang/nasm ) ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=The open source Windows Imaging (WIM) library
 EAPI=6
 HOMEPAGE=https://wimlib.net/
-IUSE=cpu_flags_x86_ssse3 fuse ntfs openssl threads yasm
+IUSE=cpu_flags_x86_ssse3 fuse iso ntfs openssl threads yasm
 KEYWORDS=~amd64 ~x86
 LICENSE=|| ( GPL-3+ LGPL-3+ ) CC0-1.0
-RDEPEND=dev-libs/libxml2:2 ntfs? ( sys-fs/ntfs3g ) fuse? ( sys-fs/fuse:0 ) openssl? ( dev-libs/openssl:0 )
+RDEPEND=dev-libs/libxml2:2 ntfs? ( sys-fs/ntfs3g ) fuse? ( sys-fs/fuse:0 ) openssl? ( dev-libs/openssl:0 ) iso? ( app-cdr/cdrtools )
 REQUIRED_USE=cpu_flags_x86_ssse3? ( !openssl )
 RESTRICT=primaryuri
 SLOT=0
 SRC_URI=https://wimlib.net/downloads/wimlib-1.12.0.tar.gz -> wimlib-1.12.0.tar.gz
 _eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	pax-utils	4f95120230a315c8caaabeb2307b7eee	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	vcs-snapshot	03289f51c769cf409d200d2d628cdd6e
-_md5_=99cd7c89ad58a5c306a5ffffc40ef2e9
+_md5_=04855b9d437917030cc1f7404a192195

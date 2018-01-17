@@ -7820,7 +7820,7 @@ media-radio/gpredict 1.3-r1: Real-time satellite tracking and orbit prediction a
 media-radio/grig 0.8.1: A tool for controlling amateur radios
 media-radio/ibp 0.21: Shows currently transmitting beacons of the International Beacon Project (IBP)
 media-radio/qrq 0.3.1 0.3.1-r1: Yet another CW trainer for Linux/Unix
-media-radio/qsstv 9.2.4 9.2.6: Amateur radio SSTV software
+media-radio/qsstv 9.2.6: Amateur radio SSTV software
 media-radio/svxlink 15.11: Multi Purpose Voice Services System, including Qtel for EchoLink
 media-radio/tlf 1.3.0: Console-mode amateur radio contest logger
 media-radio/tucnak 4.11: Amateur Radio VHF Contest Logbook
