@@ -1,28 +1,24 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit user golang-build golang-vcs-snapshot
+inherit golang-build golang-vcs-snapshot bash-completion-r1
 
 EGO_PN="k8s.io/kubernetes"
 ARCHIVE_URI="https://github.com/kubernetes/kubernetes/archive/v${PV}.tar.gz -> kubernetes-${PV}.tar.gz"
 KEYWORDS="~amd64"
 
-DESCRIPTION="Kubernetes API server"
+DESCRIPTION="CLI to run commands against Kubernetes clusters"
 HOMEPAGE="https://github.com/kubernetes/kubernetes https://kubernetes.io"
 SRC_URI="${ARCHIVE_URI}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
+IUSE=""
 
 DEPEND="dev-go/go-bindata"
 
 RESTRICT="test"
-
-pkg_setup() {
-	enewgroup ${PN}
-	enewuser ${PN} -1 -1 -1 ${PN}
-}
 
 src_prepare() {
 	default
@@ -33,16 +29,19 @@ src_prepare() {
 
 src_compile() {
 	LDFLAGS="" GOPATH="${WORKDIR}/${P}" emake -j1 -C src/${EGO_PN} WHAT=cmd/${PN} GOFLAGS=-v
+	pushd src/${EGO_PN} || die
+	_output/bin/${PN} completion bash > ${PN}.bash || die
+	_output/bin/${PN} completion zsh > ${PN}.zsh || die
+	popd || die
 }
 
 src_install() {
 	pushd src/${EGO_PN} || die
 	dobin _output/bin/${PN}
+
+	newbashcomp ${PN}.bash ${PN}
+	insinto /usr/share/zsh/site-functions
+	newins ${PN}.zsh _${PN}
+
 	popd || die
-	keepdir /var/log/${PN}
-	fowners ${PN}:${PN} /var/log/${PN}
-	newinitd "${FILESDIR}"/${PN}.initd ${PN}
-	newconfd "${FILESDIR}"/${PN}.confd ${PN}
-	insinto /etc/logrotate.d
-	newins "${FILESDIR}"/${PN}.logrotated ${PN}
 }
