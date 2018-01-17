@@ -10,4 +10,4 @@ RDEPEND=frontend? ( >=sys-libs/ncurses-5.7-r7:0= sndfile? ( >=media-libs/libsndf
 SLOT=0
 SRC_URI=mirror://sourceforge/lame/lame-3.100.tar.gz
 _eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	libtool	0081a71a261724730ec4c248494f044d	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	8ffb5e2112a70fef5f37fcacad308726	multilib-minimal	9139c3a57e077cb8e0d0f73ceb080b89	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=955334cb956764ccb944beb61c4d8512
+_md5_=68a774202f5e00d82e2c9dc6195cd331
