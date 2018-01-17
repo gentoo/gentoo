@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201801-16">
+  <title>rsync: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in rsync, the worst of
+    which could allow remote attackers to bypass access restrictions.
+  </synopsis>
+  <product type="ebuild">rsync</product>
+  <announced>2018-01-17</announced>
+  <revised count="3">2018-01-17</revised>
+  <bug>636714</bug>
+  <bug>640570</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/rsync" auto="yes" arch="*">
+      <unaffected range="ge">3.1.2-r2</unaffected>
+      <vulnerable range="lt">3.1.2-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>File transfer program to keep remote files into sync.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in rsync. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could bypass intended access restrictions or cause a
+      Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All rsync users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/rsync-3.1.2-r2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-16548">CVE-2017-16548</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-17433">CVE-2017-17433</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-17434">CVE-2017-17434</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-01-16T12:20:06Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2018-01-17T03:06:21Z">whissi</metadata>
+</glsa>
