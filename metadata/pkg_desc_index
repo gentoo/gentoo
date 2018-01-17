@@ -8231,7 +8231,7 @@ net-analyzer/icinga 1.14.2: Nagios Fork - Check daemon, CGIs, docs, IDOutils
 net-analyzer/icinga2 2.7.0-r1 2.7.1-r1 2.8.0: Distributed, general purpose, network monitoring engine
 net-analyzer/ifstat 1.1-r2: Network interface bandwidth usage, with support for snmp targets
 net-analyzer/ifstatus 1.1.0-r1 1.1.0-r2: A simple CLI program for displaying network statistics in real time
-net-analyzer/iftop 1.0_pre4 1.0_pre4-r2: display bandwidth usage on an interface
+net-analyzer/iftop 1.0_pre4-r2: display bandwidth usage on an interface
 net-analyzer/ipcad 3.7.3: IP Cisco Accounting Daemon
 net-analyzer/ippl 1.4.14-r3 1.4.14-r5: A daemon which logs TCP/UDP/ICMP packets
 net-analyzer/iptraf-ng 1.1.4-r1: A console-based network monitoring utility
@@ -9367,7 +9367,6 @@ sci-visualization/mayavi 4.3.0: Enthought Tool Suite: Scientific data 3-dimensio
 sci-visualization/opendx 4.4.4-r5: 3D data visualization tool
 sci-visualization/pyxplot 0.9.2-r1: Gnuplot like graphing program publication-quality figures
 sci-visualization/quickplot 0.10.6: A fast interactive 2D plotter
-sci-visualization/zhu3d 4.2.6: Interactive 3D mathematical function viewer
 sec-policy/selinux-abrt 2.20170204-r2 2.20170204-r3 2.20170204-r4 2.20170805-r2 2.20170805-r3: SELinux policy for abrt
 sec-policy/selinux-accountsd 2.20170204-r2 2.20170204-r3 2.20170204-r4 2.20170805-r2 2.20170805-r3: SELinux policy for accountsd
 sec-policy/selinux-acct 2.20170204-r2 2.20170204-r3 2.20170204-r4 2.20170805-r2 2.20170805-r3: SELinux policy for acct

@@ -5065,11 +5065,6 @@ sci-visualization/gwyddion:fits - Enable FITS image import via sci-libs/cfitsio
 sci-visualization/gwyddion:sourceview - Enable support for x11-libs/gtksourceview
 sci-visualization/opendx:cdf - Add support for sci-libs/cdf data exchange format
 sci-visualization/opendx:hdf - Add support for the Hierarchical Data Format (sci-libs/hdf)
-sci-visualization/zhu3d:linguas_cs - Czech locale
-sci-visualization/zhu3d:linguas_de - German locale
-sci-visualization/zhu3d:linguas_es - Spanish locale
-sci-visualization/zhu3d:linguas_fr - French locale
-sci-visualization/zhu3d:linguas_zh - Chinese locale
 sec-policy/selinux-base:open_perms - Enable the open permissions for file object classes (SELinux policy capability).
 sec-policy/selinux-base:peer_perms - Enable the labeled networking peer permissions (SELinux policy capability).
 sec-policy/selinux-base:ubac - Enable User Based Access Control (UBAC) in the SELinux policy
