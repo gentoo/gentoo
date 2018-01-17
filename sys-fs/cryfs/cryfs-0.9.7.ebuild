@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -37,6 +37,10 @@ DEPEND="${RDEPEND}
 	${PYTHON_DEPS}"
 
 PATCHES=( "${WORKDIR}/${P}-spdlog.patch" )
+
+# tests work, but let install fail
+# revisit with 0.9.8 version bump.
+RESTRICT="test"
 
 src_prepare() {
 	cmake-utils_src_prepare
