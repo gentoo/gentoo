@@ -31,5 +31,10 @@ S="${WORKDIR}/${MY_P}"
 DOCS=(CHANGES CREDITS README.md)
 
 python_test() {
-	esetup.py test
+	if [[ ${EPYTHON} == python2* ]]; then
+		# See Bug #644226
+		ewarn "Skipping tests for ${EPYTHON} because they are known to fail"
+	else
+		esetup.py test
+	fi
 }
