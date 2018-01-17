@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -73,7 +73,8 @@ multilib_src_install_all() {
 	dobin misc/mlame
 
 	dodoc API ChangeLog HACKING README STYLEGUIDE TODO USAGE
-	dohtml misc/lameGUI.html Dll/LameDLLInterface.htm
+	docinto html
+	dodoc misc/lameGUI.html Dll/LameDLLInterface.htm
 
 	find "${ED}" -name '*.la' -exec rm -f {} +
 }
