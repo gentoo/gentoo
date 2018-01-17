@@ -25,7 +25,6 @@ IUSE=""
 
 RDEPEND="
 	>=sys-apps/util-linux-2.30.2
-	>=sys-devel/gcc-4.9
 	>=sys-fs/btrfs-progs-4.1
 "
 DEPEND="$RDEPEND
