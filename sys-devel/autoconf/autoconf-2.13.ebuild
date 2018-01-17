@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
 inherit toolchain-autoconf
 
@@ -27,7 +27,8 @@ PATCHES=(
 )
 
 src_configure() {
-	touch configure # make sure configure is newer than configure.in
+	# make sure configure is newer than configure.in
+	touch configure || die
 
 	# need to include --exec-prefix and --bindir or our
 	# DESTDIR patch will trigger sandbox hate :(
