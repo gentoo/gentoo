@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ HOMEPAGE="https://bitbucket.org/Coin3D/simage"
 SRC_URI="https://bitbucket.org/Coin3D/coin/downloads/${P}.tar.gz"
 
 LICENSE="public-domain mpeg2enc"
-KEYWORDS="amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 x86"
 SLOT="0"
 IUSE="debug gif jpeg jpeg2k png sndfile static-libs tiff vorbis zlib"
 RESTRICT="mirror bindist" #465086
