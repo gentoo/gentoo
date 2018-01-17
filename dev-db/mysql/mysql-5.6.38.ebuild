@@ -25,7 +25,6 @@ DEPEND="${COMMON_DEPEND}
 	test? ( dev-perl/JSON )"
 RDEPEND="${COMMON_DEPEND}"
 
-
 MY_PATCH_DIR="${WORKDIR}/mysql-extras-${MY_EXTRAS_VER}"
 
 PATCHES=(
