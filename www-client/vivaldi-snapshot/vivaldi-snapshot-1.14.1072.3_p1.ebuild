@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -93,7 +93,8 @@ src_prepare() {
 	chromium_remove_language_paks
 	popd > /dev/null || die
 
-	epatch "${FILESDIR}"/vivaldi-snapshot-1.13.997.3_p1-libffmpeg.patch
+	epatch "${FILESDIR}"/vivaldi-snapshot-1.14.1072.3_p1-desktop.patch
+	epatch "${FILESDIR}"/vivaldi-snapshot-1.14.1072.3_p1-libffmpeg.patch
 
 	epatch_user
 }
