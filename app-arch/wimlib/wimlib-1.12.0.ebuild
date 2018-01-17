@@ -21,7 +21,7 @@ HOMEPAGE="https://wimlib.net/"
 
 LICENSE="|| ( GPL-3+ LGPL-3+ ) CC0-1.0"
 SLOT="0"
-IUSE="cpu_flags_x86_ssse3 fuse ntfs openssl threads yasm"
+IUSE="cpu_flags_x86_ssse3 fuse iso ntfs openssl threads yasm"
 REQUIRED_USE="cpu_flags_x86_ssse3? ( !openssl )"
 
 RDEPEND="
@@ -29,6 +29,7 @@ RDEPEND="
 	ntfs? ( sys-fs/ntfs3g )
 	fuse? ( sys-fs/fuse:0 )
 	openssl? ( dev-libs/openssl:0 )
+	iso? ( app-cdr/cdrtools )
 "
 DEPEND="
 	${RDEPEND}
