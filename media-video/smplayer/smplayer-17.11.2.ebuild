@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ he_IL hr hu id it ja ka ko ku lt mk ms_MY nl nn_NO pl pt_BR pt ro_RO ru_RU
 sk sl_SI sq_AL sr sv th tr uk_UA uz vi_VN zh_CN zh_TW"
 PLOCALE_BACKUP="en_US"
 
-inherit l10n qmake-utils xdg-utils
+inherit l10n qmake-utils xdg-utils gnome2-utils
 
 DESCRIPTION="Great Qt GUI front-end for mplayer/mpv"
 HOMEPAGE="http://www.smplayer.eu/"
@@ -123,8 +123,10 @@ src_install() {
 
 pkg_postinst() {
 	xdg_desktop_database_update
+	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
 	xdg_desktop_database_update
+	gnome2_icon_cache_update
 }
