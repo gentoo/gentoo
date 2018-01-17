@@ -1,0 +1,21 @@
+From c4ddab7660e2a26a6fdb333db8f4b5bb7aad66ca Mon Sep 17 00:00:00 2001
+From: Tomas Mozes <tmozes@sygic.com>
+Date: Wed, 17 Jan 2018 13:29:34 +0100
+Subject: [PATCH] Drop htmldir as it defaults to docdir if unset.
+
+---
+ doc/Makefile.am | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/doc/Makefile.am b/doc/Makefile.am
+index 100a4012..fe441467 100644
+--- a/doc/Makefile.am
++++ b/doc/Makefile.am
+@@ -4,7 +4,6 @@ XHTML_STYLESHEET=$(srcdir)/xsl/xhtml.xsl
+ CHUNK_XHTML_STYLESHEET=$(srcdir)/xsl/xhtml-chunk.xsl
+ XML_CATALOG_FILES=$(srcdir)/xsl/catalog.xml
+ 
+-htmldir = $(prefix)/share/doc/sysbench
+ dist_html_DATA = manual.html
+ 
+ EXTRA_DIST=manual.xml
