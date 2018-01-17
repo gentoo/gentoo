@@ -23,11 +23,9 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-RDEPEND="
-	>=sys-apps/util-linux-2.30.2
-	>=sys-fs/btrfs-progs-4.1
-"
+RDEPEND=">=sys-apps/util-linux-2.30.2"
 DEPEND="$RDEPEND
+	>=sys-fs/btrfs-progs-4.1
 	|| ( dev-python/markdown dev-python/markdown2 )
 "
 
