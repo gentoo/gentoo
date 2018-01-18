@@ -291,7 +291,7 @@ RESTRICT="
 S=${WORKDIR}/${P/_/-}
 
 PATCHES=(
-	"${FILESDIR}"/chromium.patch
+	"${FILESDIR}"/chromium-r1.patch
 )
 
 MULTILIB_WRAPPED_HEADERS=(
