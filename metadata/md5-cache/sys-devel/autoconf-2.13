@@ -1,7 +1,7 @@
 DEFINED_PHASES=configure install prepare
 DEPEND=>=sys-apps/texinfo-4.3 =sys-devel/m4-1.4* dev-lang/perl
 DESCRIPTION=Used to create autoconfiguration files
-EAPI=5
+EAPI=6
 HOMEPAGE=https://www.gnu.org/software/autoconf/autoconf.html
 IUSE=userland_BSD
 KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=sys-apps/texinfo-4.3 =sys-devel/m4-1.4* dev-lang/perl >=sys-devel/autoconf-wrapper-13
 SLOT=2.1
 SRC_URI=mirror://gnu/autoconf/autoconf-2.13.tar.gz
-_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e7258392d5eda499c1cfa94db650b61	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-autoconf	060906d07621f8c91c5ac52ede20858e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=ebc2ddaab88175f29ae4c52d76c18397
+_eclasses_=toolchain-autoconf	f81999e77b1ca74160d9370a7ce9c6cf
+_md5_=4cf28585a432579ceeb5f509e0529a94

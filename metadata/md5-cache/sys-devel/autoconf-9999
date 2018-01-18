@@ -1,12 +1,12 @@
 DEFINED_PHASES=configure install prepare unpack
-DEPEND=>=sys-devel/m4-1.4.16 >=dev-lang/perl-5.6 >=sys-apps/texinfo-4.3 dev-vcs/git
+DEPEND=>=sys-devel/m4-1.4.16 >=dev-lang/perl-5.6 >=sys-apps/texinfo-4.3 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=Used to create autoconfiguration files
-EAPI=5
+EAPI=6
 HOMEPAGE=https://www.gnu.org/software/autoconf/autoconf.html
 IUSE=emacs
 LICENSE=GPL-3
 PDEPEND=emacs? ( app-emacs/autoconf-mode )
 RDEPEND=>=sys-devel/m4-1.4.16 >=dev-lang/perl-5.6 !~sys-devel/autoconf-9999:2.5 >=sys-devel/autoconf-wrapper-13
 SLOT=9999
-_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e7258392d5eda499c1cfa94db650b61	git-2	195a672bfaf52d868442171c9469bbb6	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-autoconf	060906d07621f8c91c5ac52ede20858e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=905409ba95fe4d4cb00f2f601c0887e3
+_eclasses_=git-r3	fec09a83ae965b041b47f5ff7c8ba29a	toolchain-autoconf	f81999e77b1ca74160d9370a7ce9c6cf
+_md5_=ab5eec4a874023200a0e657299a87436
