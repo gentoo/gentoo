@@ -4,10 +4,7 @@
 EAPI=6
 
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="git://git.savannah.gnu.org/${PN}.git
-		http://git.savannah.gnu.org/r/${PN}.git"
-	# We need all the tags in order to figure out the right version.
-	# The git-r3 eclass doesn't support that, so have to stick to 2.
+	EGIT_REPO_URI="https://git.savannah.gnu.org/git/autoconf.git"
 	inherit git-r3
 else
 	SRC_URI="mirror://gnu/${PN}/${P}.tar.xz
@@ -42,5 +39,4 @@ src_prepare()   {
 		"${FILESDIR}"/${PN}-2.69-perl-5.26-2.patch
 	)
 	toolchain-autoconf_src_prepare
-	eapply_user
 }
