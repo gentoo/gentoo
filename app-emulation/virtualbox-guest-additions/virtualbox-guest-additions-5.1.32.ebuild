@@ -11,7 +11,7 @@ MY_P=VirtualBox-${MY_PV}
 DESCRIPTION="VirtualBox kernel modules and user-space tools for Gentoo guests"
 HOMEPAGE="https://www.virtualbox.org/"
 SRC_URI="https://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2
-	https://dev.gentoo.org/~polynomial-c/virtualbox/patchsets/virtualbox-5.1.30-patches-02.tar.xz"
+	https://dev.gentoo.org/~polynomial-c/virtualbox/patchsets/virtualbox-5.1.32-patches-01.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
