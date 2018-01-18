@@ -13,7 +13,7 @@ inherit autotools bash-completion-r1 db-use depend.apache distutils-r1 elisp-com
 
 MY_P="${P/_/-}"
 DESCRIPTION="Advanced version control system"
-HOMEPAGE="http://subversion.apache.org/"
+HOMEPAGE="https://subversion.apache.org/"
 SRC_URI="mirror://apache/${PN}/${MY_P}.tar.bz2
 	https://dev.gentoo.org/~mgorny/dist/${PN}-1.8.18-patchset.tar.bz2"
 S="${WORKDIR}/${MY_P}"
