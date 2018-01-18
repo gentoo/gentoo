@@ -692,11 +692,6 @@ app-cdr/qpxtool
 # Masked for removal in 30 days. See bug 578278.
 app-vim/pam-syntax
 
-# Andreas Sturmlechner <asturm@gentoo.org> (19 Dec 2017)
-# Dead upstream, depends on dead qt3support/qt4.
-# Bug #639246. Masked for removal in 30 days.
-app-i18n/kimera
-
 # James Le Cuirot <chewi@gentoo.org> (17 Dec 2017)
 # Java 9 is not yet fully supported on Gentoo. Packages cannot depend
 # on it so these virtuals are not yet required. If you wish to use
