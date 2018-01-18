@@ -723,10 +723,6 @@ net-misc/cocaine-core
 # Depends on dead Qt4, upstream porting inquiry pending. Bug #631788
 games-kids/crayon-physics
 
-# Alexey Shvetsov <alexxy@gentoo.org> (01 Dec 2017)
-# Mask beta gromacs version
-=sci-chemistry/gromacs-2018_beta*
-
 # Jonas Stein <jstein@gentoo.org> (29 Nov 2017)
 # The old yafaray-0.1.1 depends on qt4 and has bugs we can not fix.
 # (bug #321169) and (bug #595684)
