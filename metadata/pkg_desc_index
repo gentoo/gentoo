@@ -9931,7 +9931,7 @@ sys-devel/autoconf-wrapper 13: wrapper for autoconf to manage multiple autoconf 
 sys-devel/autogen 5.18.4 5.18.4-r1: Program and text file generation
 sys-devel/automake 1.9.6-r4 1.10.3-r2 1.11.6-r2 1.12.6 1.12.6-r1 1.13.4-r1 1.14.1-r1 1.15.1-r1: Used to generate Makefile.in from Makefile.am
 sys-devel/automake-wrapper 10: wrapper for automake to manage multiple automake versions
-sys-devel/bc 1.06.95-r1 1.06.95-r2: Handy console-based calculator utility
+sys-devel/bc 1.06.95-r2: Handy console-based calculator utility
 sys-devel/bin86 0.16.20-r2 0.16.21: Assembler and loader used to create kernel bootsector
 sys-devel/binutils 2.29.1-r1: Tools necessary to build programs
 sys-devel/binutils-config 5-r4: Utility to change the binutils version being used
