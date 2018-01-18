@@ -135,13 +135,13 @@
 inherit eutils linux-info multilib
 EXPORT_FUNCTIONS pkg_setup pkg_preinst pkg_postinst src_install src_compile pkg_postrm
 
-case ${EAPI:-0} in
-	0) die "EAPI=${EAPI} is not supported due to lack of IUSE defaults" ;;
-esac
-
 case ${MODULES_OPTIONAL_USE_IUSE_DEFAULT:-n} in
   [nNfF]*|[oO][fF]*|0|-) _modules_optional_use_iuse_default='' ;;
   *) _modules_optional_use_iuse_default='+' ;;
+esac
+
+[[ -n "${_modules_optional_use_iuse_default}" ]] && case ${EAPI:-0} in
+	0) die "EAPI=${EAPI} is not supported with MODULES_OPTIONAL_USE_IUSE_DEFAULT due to lack of IUSE defaults" ;;
 esac
 
 IUSE="kernel_linux ${MODULES_OPTIONAL_USE:+${_modules_optional_use_iuse_default}}${MODULES_OPTIONAL_USE}"
