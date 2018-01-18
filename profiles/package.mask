@@ -29,6 +29,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (18 Jan 2018)
+# Dead upstream, depends on dead Qt4/poppler-qt4.
+# Masked for removal in 30 days. Bug #641852
+dev-tex/pstplus
+
+# Andreas Sturmlechner <asturm@gentoo.org> (18 Jan 2018)
+# Depends on dead PyQt4/Qt4, upstream needs help w/ PyQt5.
+# Masked for removal in 30 days. Bug #634986
+dev-tex/texamator
+
 # Aaron W. Swenson <titanofold@gentoo.org> (14 Jan 2018)
 # Upstream is now Upwork. Use app-office/upwork instead.
 # Masked for removal in 30 days.
@@ -703,10 +713,6 @@ virtual/jre:9
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
 >=www-client/chromium-65
-
-# Andrey Grozin <grozin@gentoo.org> (15 Dec 2017)
-# Dead upstream. Removal in 30 days. Use bpython or ptpython instead.
-dev-python/dreampie
 
 # Andrey Grozin <grozin@gentoo.org> (15 Dec 2017)
 # Dead upstream. Removal in 30 days.

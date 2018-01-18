@@ -1,29 +1,18 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-CMAKE_REQUIRED="never"
-KDE_REQUIRED="never"
-inherit kde4-base
+EAPI=6
 
 DESCRIPTION="Environment setting required for all KDELibs4 apps to run"
+HOMEPAGE="https://www.kde.org/"
 SRC_URI=""
-ESVN_REPO_URI=""
 
 KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 LICENSE="GPL-2"
+SLOT="4/4.14"
 IUSE=""
 
-S=${WORKDIR}
-
-src_unpack() {
-	:
-}
-
-src_prepare() {
-	:
-}
+S="${WORKDIR}"
 
 src_install() {
 	# number goes down with version
@@ -41,12 +30,4 @@ if [ -z "\${XDG_MENU_PREFIX}" ] && [ "\${DESKTOP_SESSION}" = "KDE-4" ]; then
 	export XDG_MENU_PREFIX="kde-4-"
 fi
 EOF
-}
-
-pkg_preinst() {
-	:
-}
-
-src_test() {
-	:
 }
