@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (18 Jan 2018)
+# Depends on dead PyQt4/Qt4, upstream needs help w/ PyQt5.
+# Masked for removal in 30 days. Bug #634986
+dev-tex/texamator
+
 # Aaron W. Swenson <titanofold@gentoo.org> (14 Jan 2018)
 # Upstream is now Upwork. Use app-office/upwork instead.
 # Masked for removal in 30 days.
