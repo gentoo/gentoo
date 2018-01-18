@@ -1,24 +1,21 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-CPPUNIT_REQUIRED="optional"
-DECLARATIVE_REQUIRED="always"
-KDE_HANDBOOK="optional"
-inherit kde4-base toolchain-funcs flag-o-matic xdg-utils
-
-APPS_VERSION="17.08.2" # Don't forget to bump this
+QT_MINIMAL="4.8.7"
+inherit cmake-utils toolchain-funcs flag-o-matic gnome2-utils toolchain-funcs xdg-utils
 
 DESCRIPTION="Libraries needed for programs by KDE"
-[[ ${KDE_BUILD_TYPE} != live ]] && \
-SRC_URI="mirror://kde/stable/applications/${APPS_VERSION}/src/${P}.tar.xz"
+HOMEPAGE="https://www.kde.org/"
+SRC_URI="mirror://kde/stable/applications/17.08.2/src/${P}.tar.xz"
 
 KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 LICENSE="LGPL-2.1"
-IUSE="cpu_flags_x86_3dnow acl altivec +bzip2 debug doc fam jpeg2k kerberos
+SLOT="4/4.14"
+IUSE="cpu_flags_x86_3dnow acl altivec +bzip2 debug doc fam handbook jpeg2k kerberos
 libressl lzma cpu_flags_x86_mmx nls openexr plasma +policykit qt3support
-spell cpu_flags_x86_sse cpu_flags_x86_sse2 ssl +udev +udisks +upower zeroconf"
+spell test cpu_flags_x86_sse cpu_flags_x86_sse2 ssl +udev +udisks +upower zeroconf"
 
 REQUIRED_USE="
 	udisks? ( udev )
@@ -31,12 +28,19 @@ RESTRICT="test"
 COMMONDEPEND="
 	app-text/docbook-xml-dtd:4.2
 	app-text/docbook-xsl-stylesheets
+	dev-lang/perl
 	>=dev-libs/libattica-0.4.2
 	dev-libs/libdbusmenu-qt[qt4]
 	dev-libs/libpcre[unicode]
 	dev-libs/libxml2
 	dev-libs/libxslt
-	>=dev-qt/qtcore-${QT_MINIMAL}:4[qt3support?]
+	>=dev-qt/designer-${QT_MINIMAL}:4
+	>=dev-qt/qtcore-${QT_MINIMAL}:4[qt3support?,ssl]
+	>=dev-qt/qtdbus-${QT_MINIMAL}:4
+	>=dev-qt/qtdeclarative-${QT_MINIMAL}:4
+	>=dev-qt/qtgui-${QT_MINIMAL}:4[accessibility,dbus(+)]
+	>=dev-qt/qtscript-${QT_MINIMAL}:4
+	>=dev-qt/qtsvg-${QT_MINIMAL}:4
 	media-libs/fontconfig
 	media-libs/freetype:2
 	media-libs/giflib:=
@@ -86,13 +90,16 @@ COMMONDEPEND="
 "
 DEPEND="${COMMONDEPEND}
 	doc? ( app-doc/doxygen )
+	handbook? ( >=dev-qt/qttest-${QT_MINIMAL}:4 )
 	nls? ( virtual/libintl )
+	test? ( dev-util/cppunit )
 "
 RDEPEND="${COMMONDEPEND}
 	!dev-qt/qtphonon
 	>=app-crypt/gnupg-2.0.11
 	app-misc/ca-certificates
 	kde-frameworks/kdelibs-env:4
+	kde-frameworks/oxygen-icons
 	sys-apps/dbus[X]
 	x11-apps/iceauth
 	x11-apps/rgb
@@ -103,10 +110,16 @@ RDEPEND="${COMMONDEPEND}
 	upower? ( >=sys-power/upower-0.9.23 )
 "
 PDEPEND="
+	dev-util/automoc
+	virtual/pkgconfig
+	>=x11-libs/libXtst-1.1.0
 	x11-misc/xdg-utils
+	x11-proto/xf86vidmodeproto
 	handbook? ( kde-apps/khelpcenter:* )
 	policykit? ( kde-plasma/polkit-kde-agent )
 "
+
+DOCS=( AUTHORS README{,-WIN32.TXT} TODO )
 
 PATCHES=(
 	"${FILESDIR}/dist/01_gentoo_set_xdg_menu_prefix-1.patch"
@@ -126,7 +139,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	kde4-base_src_prepare
+	cmake-utils_src_prepare
 
 	# Rename applications.menu (needs 01_gentoo_set_xdg_menu_prefix-1.patch to work)
 	sed -e 's|FILES[[:space:]]applications.menu|FILES applications.menu RENAME kde-4-applications.menu|g' \
@@ -142,7 +155,10 @@ src_configure() {
 		-DWITH_HSPELL=OFF
 		-DWITH_ASPELL=OFF
 		-DKDE_DEFAULT_HOME=.kde4
+		-DKDE_DISTRIBUTION_TEXT=Gentoo
+		-DKDE4_BUILD_TESTS=OFF
 		-DKAUTH_BACKEND=POLKITQT-1
+		-DSYSCONF_INSTALL_DIR="${EPREFIX}"/etc
 		-DWITH_Soprano=OFF
 		-DWITH_SharedDesktopOntologies=OFF
 		-DCMAKE_DISABLE_FIND_PACKAGE_Strigi=ON
@@ -174,11 +190,25 @@ src_configure() {
 
 	use zeroconf || mycmakeargs+=( -DWITH_DNSSD=OFF )
 
-	kde4-base_src_configure
+	if use debug; then
+		# Set "real" debug mode
+		CMAKE_KDE_BUILD_TYPE="Debugfull"
+	else
+		# Handle common release builds
+		append-cppflags -DQT_NO_DEBUG
+	fi
+
+	tc-is-cross-compiler || cmakeargs+=( -DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr" )
+	#qmake -query QT_INSTALL_LIBS unavailable when cross-compiling
+	tc-is-cross-compiler && cmakeargs+=( -DQT_LIBRARY_DIR="${ROOT}"/usr/$(get_libdir)/qt4 )
+	#kde-config -path data unavailable when cross-compiling
+	tc-is-cross-compiler && cmakeargs+=( -DKDE4_DATA_DIR="${ROOT}"/usr/share/apps/ )
+
+	cmake-utils_src_configure
 }
 
 src_compile() {
-	kde4-base_src_compile
+	cmake-utils_src_compile
 
 	# The building of apidox is not managed anymore by the build system
 	if use doc; then
@@ -189,7 +219,16 @@ src_compile() {
 }
 
 src_install() {
-	kde4-base_src_install
+	for doc in "${S}"/*/{AUTHORS,ChangeLog*,README*,TODO}; do
+		[[ -f ${doc} && -s ${doc} ]] && newdoc "${doc}" "$(basename $(dirname ${doc})).$(basename ${doc})"
+	done
+
+	cmake-utils_src_install
+
+	# We don't want /usr/share/doc/HTML to be compressed,
+	# because then khelpcenter can't find the docs
+	[[ -d ${ED}/usr/share/doc/HTML ]] &&
+		docompress -x /usr/share/doc/HTML
 
 	# use system certificates
 	rm -f "${ED}"/usr/share/apps/kssl/ca-bundle.crt || die
@@ -199,7 +238,7 @@ src_install() {
 		einfo "Installing API documentation. This could take a bit of time."
 		cd "${S}"/doc/api/
 		docinto /HTML/en/kdelibs-apidox
-		dohtml -r ${P}-apidocs/*
+		dodoc -r ${P}-apidocs/*
 	fi
 
 	# We don't package it, so don't install headers
@@ -212,7 +251,12 @@ src_install() {
 	doenvd "${T}/77kde"
 }
 
+pkg_preinst() {
+	gnome2_icon_savelist
+}
+
 pkg_postinst() {
+	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
 
 	if use zeroconf; then
@@ -226,8 +270,6 @@ pkg_postinst() {
 		elog "	hosts: files mdns dns"
 		elog
 	fi
-
-	kde4-base_pkg_postinst
 }
 
 pkg_prerm() {
@@ -236,7 +278,6 @@ pkg_prerm() {
 }
 
 pkg_postrm() {
+	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
-
-	kde4-base_pkg_postrm
 }
