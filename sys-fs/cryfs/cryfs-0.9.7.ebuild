@@ -23,7 +23,7 @@ if [[ "${PV}" == 9999 ]] ; then
 else
 	SRC_URI="https://github.com/cryfs/cryfs/releases/download/${PV}/${P}.tar.xz
 	https://dev.gentoo.org/~johu/distfiles/${P}-spdlog.patch.xz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 	S="${WORKDIR}"
 fi
 
