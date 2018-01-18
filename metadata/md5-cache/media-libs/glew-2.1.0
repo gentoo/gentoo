@@ -10,4 +10,4 @@ RDEPEND=>=virtual/glu-9.0-r1[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_m
 SLOT=0/2.1
 SRC_URI=mirror://sourceforge/glew/glew-2.1.0.tgz
 _eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	8ffb5e2112a70fef5f37fcacad308726	multilib-minimal	9139c3a57e077cb8e0d0f73ceb080b89	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	versionator	ce21313503c41896ebcd7d58b0607e37
-_md5_=92ab2cb65656cbfa342da3c25ae7e91c
+_md5_=e5081f36ba51d971b21b95d69c40dd40
