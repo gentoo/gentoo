@@ -1340,7 +1340,7 @@ app-text/hnb 1.9.18-r1: A program to organize many kinds of data in one place
 app-text/htag 0.0.24-r1: random signature maker
 app-text/html-xml-utils 7.1: A number of simple utilities for manipulating HTML and XML files
 app-text/html2text 1.3.2a: A HTML to text converter
-app-text/html401 19991224-r2 19991224-r3: DTDs for the HyperText Markup Language 4.01
+app-text/html401 19991224-r3: DTDs for the HyperText Markup Language 4.01
 app-text/htmldoc 1.8.30: Convert HTML pages into a PDF document
 app-text/htmlmin 0.1.11_pre20170909: A configurable HTML Minifier with safety features
 app-text/htmltidy 20090325-r2: Tidy the layout and correct errors in HTML and XML documents
