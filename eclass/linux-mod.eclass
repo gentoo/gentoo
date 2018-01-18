@@ -22,6 +22,12 @@
 # A string containing the USE flag to use for making this eclass optional
 # The recommended non-empty value is 'modules'
 
+# @ECLASS-VARIABLE: MODULES_OPTIONAL_USE_IUSE_DEFAULT
+# @DESCRIPTION:
+# A boolean to control the IUSE default state for the MODULES_OPTIONAL_USE USE
+# flag. Default value is unset (false). True represented by 1 or 'on', other
+# values including unset treated as false.
+
 # @ECLASS-VARIABLE: KERNEL_DIR
 # @DESCRIPTION:
 # A string containing the directory of the target kernel sources. The default value is
@@ -129,7 +135,16 @@
 inherit eutils linux-info multilib
 EXPORT_FUNCTIONS pkg_setup pkg_preinst pkg_postinst src_install src_compile pkg_postrm
 
-IUSE="kernel_linux ${MODULES_OPTIONAL_USE}"
+case ${MODULES_OPTIONAL_USE_IUSE_DEFAULT:-n} in
+  [nNfF]*|[oO][fF]*|0|-) _modules_optional_use_iuse_default='' ;;
+  *) _modules_optional_use_iuse_default='+' ;;
+esac
+
+[[ -n "${_modules_optional_use_iuse_default}" ]] && case ${EAPI:-0} in
+	0) die "EAPI=${EAPI} is not supported with MODULES_OPTIONAL_USE_IUSE_DEFAULT due to lack of IUSE defaults" ;;
+esac
+
+IUSE="kernel_linux ${MODULES_OPTIONAL_USE:+${_modules_optional_use_iuse_default}}${MODULES_OPTIONAL_USE}"
 SLOT="0"
 RDEPEND="${MODULES_OPTIONAL_USE}${MODULES_OPTIONAL_USE:+? (} kernel_linux? ( virtual/modutils ) ${MODULES_OPTIONAL_USE:+)}"
 DEPEND="${RDEPEND}
