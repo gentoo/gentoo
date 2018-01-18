@@ -1,14 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="git://git.savannah.gnu.org/${PN}.git
-		http://git.savannah.gnu.org/r/${PN}.git"
-	# We need all the tags in order to figure out the right version.
-	# The git-r3 eclass doesn't support that, so have to stick to 2.
-	inherit git-2
+	EGIT_REPO_URI="https://git.savannah.gnu.org/git/autoconf.git"
+	inherit git-r3
 else
 	SRC_URI="mirror://gnu/${PN}/${P}.tar.xz
 		ftp://alpha.gnu.org/pub/gnu/${PN}/${P}.tar.xz"
@@ -36,7 +33,7 @@ src_prepare() {
 	# Avoid the "dirty" suffix in the git version by generating it
 	# before we run later stages which might modify source files.
 	local ver=$(./build-aux/git-version-gen .tarball-version)
-	echo "${ver}" > .tarball-version
+	echo "${ver}" > .tarball-version || die
 
 	autoreconf -f -i || die
 
