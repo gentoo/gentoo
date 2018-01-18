@@ -715,10 +715,6 @@ virtual/jre:9
 >=www-client/chromium-65
 
 # Andrey Grozin <grozin@gentoo.org> (15 Dec 2017)
-# Dead upstream. Removal in 30 days. Use bpython or ptpython instead.
-dev-python/dreampie
-
-# Andrey Grozin <grozin@gentoo.org> (15 Dec 2017)
 # Dead upstream. Removal in 30 days.
 dev-python/pydb
 
