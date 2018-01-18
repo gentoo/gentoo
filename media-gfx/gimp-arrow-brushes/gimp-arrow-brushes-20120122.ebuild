@@ -3,7 +3,7 @@
 
 EAPI=6
 
-DESCRIPTION="Brushes for GIMP including the styles arrow, handpointer, button arrow and cursor"
+DESCRIPTION="Brushes for GIMP with the styles arrow, handpointer, button arrow and cursor"
 HOMEPAGE="http://www.gimphelp.org/index.html"
 SRC_URI="
 	http://www.gimphelp.org/DL/arrow_brushes_color_1.tar.bz2
