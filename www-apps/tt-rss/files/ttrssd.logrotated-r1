@@ -1,4 +1,4 @@
-/var/log/ttrssd.log {
+/var/log/ttrssd/*.log {
 	daily
 	delaycompress
 	missingok

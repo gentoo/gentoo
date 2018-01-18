@@ -1,4 +1,4 @@
-Please read http://tt-rss.org/redmine/projects/tt-rss/wiki/InstallationNotes
+Please read https://tt-rss.org/wiki/InstallationNotes.
 
 Once you have configured TT-RSS, put the path to this instance into
 the INSTANCE_DIRS variable in /etc/conf.d/ttrssd. Make sure that
