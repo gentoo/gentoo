@@ -753,10 +753,10 @@ app-emulation/vice 2.4.22: The Versatile Commodore 8-bit Emulator
 app-emulation/virt-manager 1.4.0-r3 1.4.3: A graphical tool for administering virtual machines
 app-emulation/virt-viewer 4.0 5.0: Graphical console client for connecting to virtual machines
 app-emulation/virt-what 1.12 1.18: Detects if the current machine is running in a virtual machine
-app-emulation/virtualbox 5.1.30: Family of powerful x86 virtualization products for enterprise and home use
-app-emulation/virtualbox-additions 5.1.30: CD image containing guest additions for VirtualBox
-app-emulation/virtualbox-guest-additions 5.1.30: VirtualBox kernel modules and user-space tools for Gentoo guests
-app-emulation/virtualbox-modules 5.1.30: Kernel Modules for Virtualbox
+app-emulation/virtualbox 5.1.30 5.1.32: Family of powerful x86 virtualization products for enterprise and home use
+app-emulation/virtualbox-additions 5.1.30 5.1.32: CD image containing guest additions for VirtualBox
+app-emulation/virtualbox-guest-additions 5.1.30 5.1.32: VirtualBox kernel modules and user-space tools for Gentoo guests
+app-emulation/virtualbox-modules 5.1.30 5.1.32: Kernel Modules for Virtualbox
 app-emulation/wine-desktop-common 20150204: Various desktop menu items and icons for wine
 app-emulation/wine-gecko 2.47-r1: A Mozilla Gecko based version of Internet Explorer for Wine
 app-emulation/wine-mono 4.6.4: Wine Mono is a replacement for the .NET runtime and class libraries in Wine
@@ -2842,7 +2842,7 @@ dev-lang/bff 1.0.3.1: a brainfuck interpreter
 dev-lang/cfortran 4.4-r2: Header file allowing to call Fortran routines from C and C++
 dev-lang/clojure 1.5.1 1.6.0 1.7.0 1.8.0: A dynamic programming language that targets the Java Virtual Machine
 dev-lang/coffee-script 1.9.3-r1: A little language that compiles into javascript
-dev-lang/elixir 1.3.0-r1 1.4.5: Elixir programming language
+dev-lang/elixir 1.4.5: Elixir programming language
 dev-lang/erlang 18.3 19.1: Erlang programming language, runtime environment and libraries (OTP)
 dev-lang/execline 2.1.1.0: a non-interactive scripting language similar to SH
 dev-lang/f2c 20060507: Fortran to C converter
@@ -10589,7 +10589,7 @@ x11-drivers/xf86-video-r128 6.10.2: ATI Rage128 video driver
 x11-drivers/xf86-video-siliconmotion 1.7.9: Silicon Motion video driver
 x11-drivers/xf86-video-tdfx 1.4.7: 3Dfx video driver
 x11-drivers/xf86-video-vesa 2.3.3 2.3.4: Generic VESA video driver
-x11-drivers/xf86-video-virtualbox 5.1.30: VirtualBox X11 video driver for Gentoo guest
+x11-drivers/xf86-video-virtualbox 5.1.30 5.1.32: VirtualBox X11 video driver for Gentoo guest
 x11-drivers/xf86-video-vmware 13.0.1-r1 13.1.0 13.2.1: VMware SVGA video driver
 x11-drivers/xf86-video-voodoo 1.2.5: Voodoo video driver
 x11-libs/agg 2.5-r2: Anti-Grain Geometry - A High Quality Rendering Engine for C++

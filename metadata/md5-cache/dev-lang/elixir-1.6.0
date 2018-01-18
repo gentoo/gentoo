@@ -8,6 +8,6 @@ LICENSE=Apache-2.0 ErlPL-1.1
 RDEPEND=>=dev-lang/erlang-18[ssl]
 RESTRICT=test
 SLOT=0
-SRC_URI=https://github.com/elixir-lang/elixir/archive/v1.5.2.tar.gz -> elixir-1.5.2.tar.gz
+SRC_URI=https://github.com/elixir-lang/elixir/archive/v1.6.0.tar.gz -> elixir-1.6.0.tar.gz
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=500141243b39a55a329ba41f81a30bdb
+_md5_=e5645feb819ffcbdbd53b2ab4485f0a8
