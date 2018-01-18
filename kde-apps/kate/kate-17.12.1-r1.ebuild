@@ -38,7 +38,6 @@ DEPEND="
 	$(add_frameworks_dep kxmlgui)
 	$(add_qt_dep qtdbus)
 	$(add_qt_dep qtgui)
-	$(add_qt_dep qtscript)
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
 	addons? (
@@ -53,6 +52,8 @@ DEPEND="
 RDEPEND="${DEPEND}
 	!kde-misc/ktexteditorpreviewplugin
 "
+
+PATCHES=( "${FILESDIR}/${P}-deps.patch" )
 
 src_prepare() {
 	kde5_src_prepare

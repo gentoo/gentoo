@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 inherit eutils
 
 DESCRIPTION="A time-memory-trade-off-cracker"
@@ -15,11 +15,10 @@ IUSE="debug libressl qt4 +tables"
 
 CDEPEND="!libressl? ( dev-libs/openssl:0= )
 		 libressl? ( dev-libs/libressl:0= )
-		 net-libs/netwib
-		 qt4? ( dev-qt/qtgui:4 )"
+		 net-libs/netwib"
 DEPEND="app-arch/unzip
-		virtual/pkgconfig
-		${CDEPEND}"
+		 virtual/pkgconfig
+		 ${CDEPEND}"
 RDEPEND="tables? ( app-crypt/ophcrack-tables )
 		 ${CDEPEND}"
 
@@ -27,16 +26,11 @@ src_configure() {
 
 	local myconf
 
-	myconf="$(use_enable qt4 gui)"
-	myconf="${myconf} $(use_enable debug)"
+	myconf="${myconf} $(use_enable debug) --disable-gui"
 
 	econf ${myconf} || die "Failed to compile"
 }
 
 src_install() {
 	emake install DESTDIR="${D}" || die "Installation failed."
-
-	cd "${S}"
-	newicon src/gui/pixmaps/os.xpm ophcrack.xpm
-	make_desktop_entry "${PN}" OphCrack ophcrack
 }
