@@ -1,7 +1,7 @@
 app-accessibility/SphinxTrain 1.0.8: Speech Recognition (Training Module)
 app-accessibility/accerciser 3.22.0: Interactive Python accessibility explorer
-app-accessibility/at-spi2-atk 2.22.0: Gtk module for bridging AT-SPI to Atk
-app-accessibility/at-spi2-core 2.22.1: D-Bus accessibility specifications and registration daemon
+app-accessibility/at-spi2-atk 2.22.0 2.24.1: Gtk module for bridging AT-SPI to Atk
+app-accessibility/at-spi2-core 2.22.1 2.24.1: D-Bus accessibility specifications and registration daemon
 app-accessibility/brltty 5.2-r1: Daemon that provides access to the Linux/Unix console for a blind person
 app-accessibility/caribou 0.4.21: Input assistive technology intended for switch and pointer users
 app-accessibility/eflite 0.4.1-r3: A speech server that allows screen readers to interact with festival lite
@@ -16,11 +16,11 @@ app-accessibility/freetts 1.2.1-r2: A speech synthesis system written entirely i
 app-accessibility/julius 4.2.2: Large Vocabulary Continuous Speech Recognition Engine
 app-accessibility/mbrola 3.0.1h-r6: Speech synthesizer based on the concatenation of diphones. Includes samples
 app-accessibility/nfbtrans 7.74-r2: braille translator from the National Federation of the Blind
-app-accessibility/orca 3.22.2: Extensible screen reader that provides access to the desktop
+app-accessibility/orca 3.22.2 3.24.0: Extensible screen reader that provides access to the desktop
 app-accessibility/perlbox-voice 0.09-r2: A voice enabled application to bring your desktop under your command
 app-accessibility/pocketsphinx 0.8: Speaker-independent large vocabulary with continuous speech recognizer
 app-accessibility/powiedz 1.0-r2: Polish speech synthesizer based on rsynth
-app-accessibility/speech-dispatcher 0.8.1: Speech synthesis interface
+app-accessibility/speech-dispatcher 0.8.1 0.8.7: Speech synthesis interface
 app-accessibility/speech-tools 2.1-r2: Speech tools for Festival Text to Speech engine
 app-accessibility/speechd-el 2.5: Emacs speech support
 app-accessibility/sphinx2 0.6: CMU Speech Recognition-engine
@@ -96,7 +96,7 @@ app-admin/mongo-tools 3.0.14 3.2.17: A high-performance, open source, schema-fre
 app-admin/monit 5.23.0: Monitoring and managing daemons or similar programs running on a Unix system
 app-admin/newsyslog 1.1-r1: a highly configurable program for managing and archiving log files
 app-admin/openrc-settingsd 1.0.1: System settings D-Bus service for OpenRC
-app-admin/packagekit-base 1.0.11 1.1.5-r2: Manage packages in a secure way using a cross-distro and cross-architecture API
+app-admin/packagekit-base 1.0.11 1.1.5-r2 1.1.7: Manage packages in a secure way using a cross-distro and cross-architecture API
 app-admin/packagekit-qt 0.9.6: Qt PackageKit backend library
 app-admin/pass 1.7.1: Stores, retrieves, generates, and synchronizes passwords securely
 app-admin/passook 20121001: Password generator capable of generating pronounceable and/or secure passwords
@@ -168,7 +168,7 @@ app-arch/dpkg 1.17.26 1.18.18: Package maintenance system for Debian
 app-arch/dump 0.4.46: Dump/restore ext2fs backup utilities
 app-arch/engrampa 1.12.0-r1: Engrampa archive manager for MATE
 app-arch/fastjar 0.98-r2: A jar program written in C
-app-arch/file-roller 3.22.3: Archive manager for GNOME
+app-arch/file-roller 3.22.3 3.24.1: Archive manager for GNOME
 app-arch/freeze 2.5.0-r1: Freeze/unfreeze compression program
 app-arch/funzix 1.0: unpacker for the bogus ZIX format
 app-arch/gcab 0.7: Library and tool for working with Microsoft Cabinet (CAB) files
@@ -277,7 +277,7 @@ app-cdr/b5i2iso 0.2-r1: Convert CD images from b5i (BlindWrite) to iso
 app-cdr/bashburn 3.1.0: A shell script for burning optical media
 app-cdr/bchunk 1.2.0-r4: Convert CD images from bin/cue to iso+wav/cdr
 app-cdr/bin2iso 19b-r2: converts RAW format (.bin/.cue) files to ISO/WAV format
-app-cdr/brasero 3.12.2: CD/DVD burning application for the GNOME desktop
+app-cdr/brasero 3.12.2 3.12.2-r1: CD/DVD burning application for the GNOME desktop
 app-cdr/burn-cd 1.7.4 1.8.1: Smart console frontend for the cdrkit/cdrtools & dvd+rw-tools
 app-cdr/burncdda 1.8.3: Console app for copying burning audio cds
 app-cdr/ccd2iso 0.3: Convert CD images from ccd (CloneCD) to iso
@@ -421,7 +421,7 @@ app-dicts/dictd-vera 1.22: V.E.R.A. -- Virtual Entity of Relevant Acronyms for d
 app-dicts/dictd-web1913 1.4-r1: Webster's Revised Unabridged Dictionary (1913) for dict
 app-dicts/dictd-wn 3.0_p33: WordNet for dict
 app-dicts/duali-data 0.1b-r1: Dictionary data for the Arab dictionary project duali
-app-dicts/gnome-dictionary 3.20.0: Dictionary utility for GNOME
+app-dicts/gnome-dictionary 3.20.0 3.24.1: Dictionary utility for GNOME
 app-dicts/ipadic 2.7.0-r2: Japanese dictionary for ChaSen
 app-dicts/kasumi 2.5-r1: Anthy dictionary maintenance tool
 app-dicts/libydpdict 1.0.2: Library for handling the Collins Dictionary database
@@ -997,7 +997,7 @@ app-misc/gentoo 0.20.7: Graphical file manager for Unix-like systems, using GTK+
 app-misc/geoclue 0.12.99 2.4.7: A geoinformation D-Bus service
 app-misc/glcdprocdriver 0.0.6: Glue library for the glcdlib LCDproc driver based on GraphLCD
 app-misc/glimpse 4.18.6-r1: A index/query system to search a large set of files quickly
-app-misc/gnote 3.22.1: Desktop note-taking application
+app-misc/gnote 3.22.1 3.24.1: Desktop note-taking application
 app-misc/gnuit 4.9.5-r2: GNU Interactive Tools - increase speed and efficiency of most daily tasks
 app-misc/golly 2.7-r1: simulator for Conway's Game of Life and other cellular automata
 app-misc/gourmet 0.17.4-r2: Recipe Organizer and Shopping List Generator for Gnome
@@ -10222,7 +10222,7 @@ virtual/latex-base 1.0: Virtual for basic LaTeX binaries
 virtual/libc 0 1: Virtual for the C library
 virtual/libelf 2 3: Virtual for libelf.so.1 provider dev-libs/elfutils
 virtual/libffi 3.0.10 3.0.11 3.0.13-r1: A virtual for the Foreign Function Interface implementation
-virtual/libgudev 215-r3 230: Virtual for libgudev providers
+virtual/libgudev 215-r3 230 232: Virtual for libgudev providers
 virtual/libiconv 0 0-r1 0-r2: Virtual for the GNU conversion library
 virtual/libintl 0 0-r1 0-r2: Virtual for the GNU Internationalization Library
 virtual/libmysqlclient 18: Virtual for MySQL client libraries
