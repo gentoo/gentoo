@@ -20,7 +20,7 @@ DEPEND=">=dev-lang/lazarus-1.6.4
 		>=dev-lang/fpc-3.0.2"
 
 RDEPEND="${DEPEND}
-		dev-db/mysql[server]
+		virtual/mysql[server]
 		dev-libs/atk
 		dev-libs/glib
 		x11-libs/cairo
