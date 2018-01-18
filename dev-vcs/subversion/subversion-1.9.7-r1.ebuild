@@ -33,7 +33,11 @@ COMMON_DEPEND="
 	sys-libs/zlib
 	berkdb? ( >=sys-libs/db-4.0.14:= )
 	ctypes-python? ( ${PYTHON_DEPS} )
-	gnome-keyring? ( dev-libs/glib:2 sys-apps/dbus gnome-base/libgnome-keyring )
+	gnome-keyring? (
+		dev-libs/glib:2
+		gnome-base/libgnome-keyring
+		sys-apps/dbus
+	)
 	http? ( >=net-libs/serf-1.3.4 )
 	kwallet? (
 		dev-qt/qtcore:5
