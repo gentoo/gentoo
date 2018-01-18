@@ -1418,7 +1418,7 @@ app-text/pstotext 1.9-r4: Extract ASCII text from a PostScript or PDF file
 app-text/psutils 1.17-r3: PostScript Utilities
 app-text/pylize 1.3b-r1: Python HTML Slideshow Generator using HTML and CSS
 app-text/pytextile 2.1.8 2.3.3: A Python port of Textile, A humane web text generator
-app-text/qpdf 5.1.1-r1: Command-line tool for structural, content-preserving transformation of PDF files
+app-text/qpdf 5.1.1-r1 7.0.0: Command-line tool for structural, content-preserving transformation of PDF files
 app-text/qpdfview 0.4.16: A tabbed document viewer
 app-text/rarian 0.8.1-r3: A documentation metadata library
 app-text/recode 3.6_p20-r1: Convert files between various character sets
@@ -8974,7 +8974,7 @@ net-print/cndrvcups-common-lb 3.40: Common files for Canon drivers
 net-print/cndrvcups-lb 3.40: Canon UFR II / LIPSLX Printer Driver for Linux
 net-print/cups 2.1.4: The Common Unix Printing System
 net-print/cups-bjnp 2.0: CUPS backend for the canon printers using the proprietary USB over IP BJNP protocol
-net-print/cups-filters 1.16.4: Cups filters
+net-print/cups-filters 1.16.4 1.17.9: Cups filters
 net-print/cups-pdf 2.6.1: Provides a virtual printer for CUPS to produce PDF files
 net-print/cups-pk-helper 0.2.5 0.2.6: PolicyKit helper to configure cups with fine-grained privileges
 net-print/cups-windows 6.0-r1: CUPS PostScript Driver for Windows
