@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -23,11 +23,11 @@ HOMEPAGE="https://www.gentoo.org/proj/en/hardened/selinux/"
 LICENSE="GPL-2"
 SLOT="0"
 
-RDEPEND=">=sys-apps/policycoreutils-2.3
+RDEPEND=">=sys-apps/policycoreutils-2.7
 	virtual/udev"
 DEPEND="${RDEPEND}
 	sys-devel/m4
-	>=sys-apps/checkpolicy-2.3"
+	>=sys-apps/checkpolicy-2.7"
 
 S=${WORKDIR}/
 
