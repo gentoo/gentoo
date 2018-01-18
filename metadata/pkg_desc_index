@@ -3101,7 +3101,7 @@ dev-libs/libparserutils 0.2.3: library for building efficient parsers, written i
 dev-libs/libpcre 8.40-r1 8.41 8.41-r1: Perl-compatible regular expression library
 dev-libs/libpcre2 10.22 10.30: Perl-compatible regular expression library
 dev-libs/libpeas 1.20.0-r1: A GObject plugins library
-dev-libs/libpipeline 1.4.0: a pipeline manipulation library
+dev-libs/libpipeline 1.4.0 1.4.2: a pipeline manipulation library
 dev-libs/libplatform 2.0.1: Platform support library used by libCEC and binary add-ons for Kodi
 dev-libs/libpqxx 4.0.1 5.1.0: Standard front-end for writing C++ programs that use PostgreSQL
 dev-libs/libproccpuinfo 0.0.8-r1: Architecture independent C API for reading /proc/cpuinfo
