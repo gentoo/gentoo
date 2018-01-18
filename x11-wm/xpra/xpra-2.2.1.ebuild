@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 # PyCObject_Check and PyCObject_AsVoidPtr vanished with python 3.3
 PYTHON_COMPAT=( python2_7 )
-inherit distutils-r1 eutils flag-o-matic user tmpfiles xdg
+inherit xdg distutils-r1 eutils flag-o-matic user tmpfiles prefix
 
 DESCRIPTION="X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy"
 HOMEPAGE="http://xpra.org/ http://xpra.org/src/"
@@ -96,8 +96,9 @@ pkg_postinst() {
 }
 
 python_prepare_all() {
-	sed -e "s:/var/run/xpra:${EROOT}run/xpra:" \
-		-i tmpfiles.d/xpra.conf
+	hprefixify -w '/os.path/' setup.py
+	hprefixify tmpfiles.d/xpra.conf xpra/server/{server,socket}_util.py \
+		xpra/platform{/xposix,}/paths.py xpra/scripts/server.py
 
 	distutils-r1_python_prepare_all
 }
@@ -142,5 +143,5 @@ python_configure_all() {
 	# and http://trac.cython.org/ticket/395
 	append-cflags -fno-strict-aliasing
 
-	export XPRA_SOCKET_DIRS="${EROOT}run/xpra"
+	export XPRA_SOCKET_DIRS="${EPREFIX}/run/xpra"
 }
