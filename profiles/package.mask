@@ -714,10 +714,6 @@ virtual/jre:9
 # experimental features and accept a more unstable release.
 >=www-client/chromium-65
 
-# Andrey Grozin <grozin@gentoo.org> (15 Dec 2017)
-# Dead upstream. Removal in 30 days.
-dev-python/pydb
-
 # Patrice Clement <monsieurp@gentoo.org> (12 Dec 2017)
 # Masked due to a hard dependency on an ancient versions of dev-libs/msgpack
 # (<0.6) that have been punted from the tree.
