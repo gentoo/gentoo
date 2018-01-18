@@ -67,9 +67,9 @@ CMAKE_BUILD_TYPE=RelWithDebInfo
 
 PATCHES=(
 	# fix finding compiler-rt libs
-	"${FILESDIR}"/5.0.0/0001-Driver-Use-arch-type-to-find-compiler-rt-libraries-o.patch
+	"${FILESDIR}"/5.0.1/0001-Driver-Use-arch-type-to-find-compiler-rt-libraries-o.patch
 	# add Prefix include paths for Darwin
-	"${FILESDIR}"/5.0.0/darwin_prefix-include-paths.patch
+	"${FILESDIR}"/5.0.1/darwin_prefix-include-paths.patch
 )
 
 # Multilib notes:
