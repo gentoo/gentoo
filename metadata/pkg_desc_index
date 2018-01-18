@@ -7153,7 +7153,7 @@ media-gfx/dpic 20130310: Converts PIC plots into pstricks, PGF/TikZ, PostScript,
 media-gfx/duhdraw 2.8.13-r1: ASCII art editor
 media-gfx/ebdftopcf 2: ebdftopcf optimially generators PCF files from BDF files
 media-gfx/enblend 4.1.3-r1 4.2.0_p20161007-r1: Image Blending with Multiresolution Splines
-media-gfx/eog 3.20.5: The Eye of GNOME image viewer
+media-gfx/eog 3.20.5 3.24.1: The Eye of GNOME image viewer
 media-gfx/eog-plugins 3.16.6: Eye of GNOME plugins
 media-gfx/eom 1.12.2-r3: The MATE image viewer
 media-gfx/evoluspencil 2.0.5: A simple GUI prototyping tool to create mockups
@@ -7180,8 +7180,8 @@ media-gfx/gimp 2.8.22 2.8.22-r1: GNU Image Manipulation Program
 media-gfx/gimp-arrow-brushes 20120122: Brushes for GIMP including the styles arrow, handpointer, button arrow and cursor
 media-gfx/gliv 1.9.6 1.9.7: An image viewer that uses OpenGL
 media-gfx/gnofract4d 3.14-r1: A program for drawing beautiful mathematically-based images known as fractals
-media-gfx/gnome-font-viewer 3.22.0: Font viewer for GNOME
-media-gfx/gnome-photos 3.22.6: Access, organize and share your photos on GNOME
+media-gfx/gnome-font-viewer 3.22.0 3.24.0: Font viewer for GNOME
+media-gfx/gnome-photos 3.22.6 3.24.5: Access, organize and share your photos on GNOME
 media-gfx/gnome-raw-thumbnailer 3.0.0: A lightweight and fast raw image thumbnailer for GNOME
 media-gfx/gnome-screenshot 3.22.0: Screenshot utility for GNOME
 media-gfx/gozer 0.7-r2: tool for rendering arbitrary text as graphics, using ttfs and styles
@@ -7268,7 +7268,7 @@ media-gfx/scantailor 0.9.12.2: A interactive post-processing tool for scanned pa
 media-gfx/scrot 0.8_p13: Screen capture utility using imlib2 library
 media-gfx/sfftobmp 3.1.2-r1: sff to bmp converter
 media-gfx/shotwell 0.24.6: Open source photo manager for GNOME
-media-gfx/simple-scan 3.22.0.1: Simple document scanning utility
+media-gfx/simple-scan 3.22.0.1 3.24.1: Simple document scanning utility
 media-gfx/splash-themes-gentoo 20101212-r1: A collection of Gentoo themes for splashutils
 media-gfx/splash-themes-livecd 2004.3 2005.0 2005.1 2006.0 2006.1 2007.0-r3: Gentoo theme for gensplash consoles
 media-gfx/splashutils 1.5.4.4-r7: Framebuffer splash utilities
@@ -8095,7 +8095,7 @@ media-video/camorama 0.19-r2: A webcam application featuring various image filte
 media-video/ccextractor 0.59: Extract closed captioning subtitles from video to SRT
 media-video/cclive 0.9.3-r2: Command line tool for extracting videos from various websites
 media-video/chaplin 1.10-r2: This is a program to raw copy chapters from a dvd using libdvdread
-media-video/cheese 3.22.1: A cheesy program to take pictures and videos from your webcam
+media-video/cheese 3.22.1 3.24.0: A cheesy program to take pictures and videos from your webcam
 media-video/cinelerra 2.3: The most advanced non-linear video editor and compositor
 media-video/clive 2.3.0.1: Command line tool for extracting videos from various websites
 media-video/cpdvd 1.10-r1: transfer a DVD title to your harddisk with ease on Linux
@@ -8169,7 +8169,7 @@ media-video/subtitlecomposer 0.6.4: Text-based subtitles editor
 media-video/subtitleeditor 0.54.0: GTK+3 subtitle editing tool
 media-video/subtitleripper 0.3.4-r4: DVD Subtitle Ripper for Linux
 media-video/syncplay 1.4.0: Client/server to synchronize media playback
-media-video/totem 3.22.1-r1: Media player for GNOME
+media-video/totem 3.22.1-r1 3.24.0: Media player for GNOME
 media-video/tovid 0.35.2-r1: A collection of DVD authoring tools
 media-video/transcode 1.1.7-r3: A suite of utilities for transcoding video and audio codecs in different containers
 media-video/ttcut 0.19.6-r3 0.19.6_p1: Tool for cutting MPEG files especially for removing commercials
@@ -8522,7 +8522,7 @@ net-libs/enet 1.2.2-r1 1.3.7 1.3.13: relatively thin, simple and robust network 
 net-libs/farstream 0.1.2-r2 0.2.8-r1: Audio/video conferencing framework specifically designed for instant messengers
 net-libs/glib-networking 2.50.0: Network-related giomodules for glib
 net-libs/gnet 2.0.8-r2: A simple network library
-net-libs/gnome-online-accounts 3.22.7: GNOME framework for accessing online accounts
+net-libs/gnome-online-accounts 3.22.7 3.24.4: GNOME framework for accessing online accounts
 net-libs/gnutls 3.5.15: A TLS 1.2 and SSL 3.0 implementation for the GNU project
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
 net-libs/gsoap 2.8.51: A cross-platform open source C and C++ SDK for SOAP/XML Web services
@@ -8613,7 +8613,7 @@ net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/openpgm 5.1.118-r1 5.2.122: Open source implementation of the Pragmatic General Multicast specification
 net-libs/openslp 1.2.1-r3 2.0.0-r4: An open-source implementation of Service Location Protocol
 net-libs/ortp 0.20.0 0.23.0-r1: Open Real-time Transport Protocol (RTP, RFC3550) stack
-net-libs/phodav 2.1: WebDav server implementation using libsoup
+net-libs/phodav 2.1 2.2: WebDav server implementation using libsoup
 net-libs/qxmpp 0.8.0: A cross-platform C++ XMPP client library based on the Qt framework
 net-libs/rabbitmq-c 0.5.0 0.8.0: RabbitMQ C client
 net-libs/rest 0.8.1: Helper library for RESTful services
@@ -8755,7 +8755,7 @@ net-misc/freerdp 1.2.1_pre20150326-r1 2.0.0_rc0: Free implementation of the Remo
 net-misc/gcap 0.1.1-r1: Command line tool for downloading Youtube closed captions
 net-misc/geoipupdate 2.3.1: performs automatic updates of GeoIP2 and GeoIP Legacy binary databases
 net-misc/getdate 1.2-r1: Network Date/Time Query and Set Local Date/Time Utility
-net-misc/gnome-online-miners 3.22.0: Crawls through your online content
+net-misc/gnome-online-miners 3.22.0 3.24.0: Crawls through your online content
 net-misc/gofish 1.2: Gofish gopher server
 net-misc/grdesktop 0.23-r1: Gtk2 frontend for rdesktop
 net-misc/gsasl 1.8.0-r1: The GNU SASL client, server, and library
@@ -8859,7 +8859,7 @@ net-misc/rdesktop 1.8.3: A Remote Desktop Protocol Client
 net-misc/remmina 1.2.0_rc24: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
 net-misc/rsync 3.1.2-r2: File transfer program to keep remote files into sync
-net-misc/rygel 0.32.1: Rygel is an open source UPnP/DLNA MediaServer
+net-misc/rygel 0.32.1 0.34.0: Rygel is an open source UPnP/DLNA MediaServer
 net-misc/s3cmd 1.6.1: Command line client for Amazon S3
 net-misc/scponly 4.8-r5: A tiny pseudoshell which only permits scp and sftp
 net-misc/secpanel 0.6.1-r1: Graphical frontend for managing and running SSH and SCP connections
@@ -9198,9 +9198,9 @@ sci-electronics/xnec2c 3.5.1: A GTK+ graphical interactive version of nec2c
 sci-electronics/xoscope 2.0: Soundcard Oscilloscope for X
 sci-geosciences/congen 1.6.2: Calculate speeds, equilibrium arguments, node factors of tidal constituents
 sci-geosciences/foxtrotgps 1.2.0: Easy to use, fast and lightweight mapping application (fork of tangogps)
-sci-geosciences/geocode-glib 3.20.1: GLib geocoding library that uses the Yahoo! Place Finder service
+sci-geosciences/geocode-glib 3.20.1 3.24.0: GLib geocoding library that uses the Yahoo! Place Finder service
 sci-geosciences/gmt 4.5.6: Powerful map generator
-sci-geosciences/gnome-maps 3.22.2: A map application for GNOME
+sci-geosciences/gnome-maps 3.22.2 3.24.3: A map application for GNOME
 sci-geosciences/gpsbabel 1.5.4-r1: GPS waypoints, tracks and routes converter
 sci-geosciences/gpsd 3.10 3.16 3.17 3.17-r2: GPS daemon and library for USB/serial GPS devices and GPS/mapping clients
 sci-geosciences/gtk-g-rays2 2.05: GUI for accessing the Wintec WBT 201 / G-Rays 2 GPS device
@@ -9633,7 +9633,7 @@ sys-apps/apply-default-acl 0.0.6: Apply default POSIX ACLs to files and director
 sys-apps/arrayprobe 2.0-r2: Utility to report status of an HP (Compaq) array controller (both IDA & CCISS)
 sys-apps/attr 2.4.47-r2: Extended attributes tools
 sys-apps/audio-entropyd 2.0.3-r1: Audio-entropyd generates entropy-data for the /dev/random device
-sys-apps/baobab 3.22.1: Disk usage browser for GNOME
+sys-apps/baobab 3.22.1 3.24.0: Disk usage browser for GNOME
 sys-apps/bar 1.11.1: Console Progress Bar
 sys-apps/baselayout 2.3 2.4.1-r2: Filesystem baselayout and init scripts
 sys-apps/baselayout-java 0.1.0: Baselayout for Java
@@ -9681,7 +9681,7 @@ sys-apps/fxload 20081013-r1: USB firmware uploader
 sys-apps/gawk 3.1.8 4.0.2 4.1.3 4.1.4: GNU awk pattern-matching language
 sys-apps/gentoo-functions 0.12: base functions required by all Gentoo systems
 sys-apps/gentoo-systemd-integration 7: systemd integration files for Gentoo
-sys-apps/gnome-disk-utility 3.22.1: Disk Utility for GNOME using udisks
+sys-apps/gnome-disk-utility 3.22.1 3.24.1: Disk Utility for GNOME using udisks
 sys-apps/gptfdisk 1.0.1: GPT partition table manipulator for Linux
 sys-apps/gradm 3.1.201603152148 3.1.201607172312: Administrative interface for the grsecurity Role Based Access Control system
 sys-apps/grep 2.27-r1 3.0: GNU regular expression matcher
@@ -10426,7 +10426,7 @@ www-client/chromium 63.0.3239.108 63.0.3239.132: Open-source version of Google C
 www-client/conkeror 1.0_pre20140212: A Mozilla-based web browser whose design is inspired by GNU Emacs
 www-client/dillo 3.0.5: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r1: Advanced and well-established text-mode web browser
-www-client/epiphany 3.22.7: GNOME webbrowser based on Webkit
+www-client/epiphany 3.22.7 3.24.5: GNOME webbrowser based on Webkit
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 52.2.0 52.4.0 52.5.2: Firefox Web Browser
 www-client/firefox-bin 52.5.3-r1: Firefox Web Browser
@@ -11204,7 +11204,7 @@ x11-wm/lwm 1.2.2: The ultimate lightweight window manager
 x11-wm/marco 1.12.1: MATE default window manager
 x11-wm/muffin 2.8.5 3.0.5: Compositing window manager forked from Mutter for use with Cinnamon
 x11-wm/musca 0.9.24_p20100226-r3: A simple dynamic window manager, with features nicked from ratpoison and dwm
-x11-wm/mutter 3.22.4-r1: GNOME 3 compositing window manager based on Clutter
+x11-wm/mutter 3.22.4-r1 3.24.4: GNOME 3 compositing window manager based on Clutter
 x11-wm/openbox 3.5.2-r1 3.6.1: A standards compliant, fast, light-weight, extensible window manager
 x11-wm/oroborus 2.0.20: Small and fast window manager
 x11-wm/pekwm 0.1.17-r1: A lightweight window manager initially based on aewm++
