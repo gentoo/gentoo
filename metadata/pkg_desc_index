@@ -8080,7 +8080,7 @@ media-tv/plex-media-server 1.10.0: A free media library that is intended for use
 media-tv/shoutcast2vdr 0.0.8 0.0.8-r1: VDR script: generate shoutcast playlists
 media-tv/tvnamer 2.3: Automatic TV episode file renamer, data from thetvdb.com
 media-tv/v4l-dvb-saa716x 0.0.1_p20140322 0.0.1_p20170225: driver for saa716x based dvb cards like TT S2-6400 or Skystar 2 eXpress HD
-media-tv/v4l-utils 1.6.2 1.10.1: Separate utilities ebuild from upstream v4l-utils package
+media-tv/v4l-utils 1.10.1: Separate utilities ebuild from upstream v4l-utils package
 media-tv/w_scan 20141122: Scan for DVB-C/DVB-T/DVB-S channels without prior knowledge of frequencies and modulations
 media-tv/xmltv 0.5.57: Set of utilities to manage TV listings stored in the XMLTV format
 media-video/aacskeys 0.4.0c-r2: Decrypt keys from an AACS source (HD DVD / Blu-Ray)
