@@ -25,12 +25,19 @@ RDEPEND="dev-libs/libnl:=
 DEPEND="${RDEPEND}
 	>=sys-kernel/linux-headers-4.4"
 
-DOCS=( README CONTRIBUTORS INSTALL ChangeLog AUTHOR TODO
-	doc/keepalived.conf.SYNOPSIS doc/NOTE_vrrp_vmac.txt )
+DOCS=(
+	README CONTRIBUTORS INSTALL ChangeLog AUTHOR TODO
+	doc/keepalived.conf.SYNOPSIS doc/NOTE_vrrp_vmac.txt
+)
+
+PATCHES=(
+	"${FILESDIR}/${P}-fix-no-sorry-segfault.patch"
+)
 
 src_prepare() {
-	eautoreconf
 	default
+
+	eautoreconf
 }
 
 src_configure() {
@@ -60,7 +67,7 @@ src_install() {
 	newdoc INSTALL INSTALL+HOWTO
 
 	# Security risk to bundle SSL certs
-	rm -f "${ED}"/etc/keepalived/samples/*.pem
+	rm -v "${ED}"/etc/keepalived/samples/*.pem || die
 	# Clean up sysvinit files
-	rm -rf "${ED}"/etc/sysconfig "${ED}"/etc/rc.d/
+	rm -rv "${ED}"/etc/sysconfig || die
 }
