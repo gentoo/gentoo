@@ -21,7 +21,7 @@ PATCHES="${FILESDIR}/v0.5-gentoo_build.patch"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
+IUSE="tools test"
 
 RDEPEND=">=sys-apps/util-linux-2.30.2"
 DEPEND="$RDEPEND
@@ -34,7 +34,13 @@ HTML_DOCS="README.html"
 
 src_configure() {
 	default
-	echo PREFIX=/ >${S}/localconf || die
-	echo LIBEXEC_PREFIX=/usr/libexec >>${S}/localconf || die
-	echo LIBDIR=$(get_libdir) >>${S}/localconf || die
+	localconf=${S}/localconf
+	echo PREFIX=/ >${localconf} || die
+	echo LIBEXEC_PREFIX=/usr/libexec >>${localconf} || die
+	echo LIBDIR=$(get_libdir) >>${localconf} || die
+	echo DEFAULT_MAKE_TARGET=all >>${localconf} || die
+	if use tools; then
+		einfo "Building with support tools fiemap and fiewalk."
+		echo OPTIONAL_INSTALL_TARGETS=install_tools >>${localconf} || die
+	fi
 }
