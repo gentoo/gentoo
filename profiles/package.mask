@@ -704,16 +704,6 @@ x11-misc/qsynergy
 # Masked for removal in 30 days.
 app-editors/znotes
 
-# Andreas Sturmlechner <asturm@gentoo.org> (21 Dec 2017)
-# Dead upstream, depends on dead Qt4.
-# Bug #629032. Masked for removal in 30 days.
-media-gfx/wally
-
-# Andreas Sturmlechner <asturm@gentoo.org> (21 Dec 2017)
-# Dead upstream, depends on dead Qt4.
-# Bug #637108. Masked for removal in 30 days.
-app-cdr/qpxtool
-
 # Patrice Clement <monsieurp@gentoo.org> (19 Dec 2017)
 # A slightly better syntax file for PAM configuration files is shipped with Vim
 # since version 8.0. The one we package is old and out of date.
