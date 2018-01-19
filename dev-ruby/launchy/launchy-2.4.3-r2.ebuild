@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,7 +14,7 @@ HOMEPAGE="https://github.com/copiousfreetime/launchy"
 LICENSE="ISC"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64"
+KEYWORDS="amd64 ~arm ~arm64"
 IUSE=""
 
 # File collision conflict with x11-misc/launchy, bug 545170
