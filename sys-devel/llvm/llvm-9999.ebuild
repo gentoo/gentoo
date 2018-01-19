@@ -37,7 +37,7 @@ LICENSE="UoI-NCSA rc BSD public-domain
 	llvm_targets_ARM? ( LLVM-Grant )"
 SLOT="7"
 KEYWORDS=""
-IUSE="debug doc gold libedit +libffi ncurses test xml
+IUSE="debug doc gold libedit +libffi ncurses test xar xml
 	kernel_Darwin ${ALL_LLVM_TARGETS[*]}"
 RESTRICT="!test? ( test )"
 
@@ -47,6 +47,7 @@ RDEPEND="
 	libedit? ( dev-libs/libedit:0=[${MULTILIB_USEDEP}] )
 	libffi? ( >=virtual/libffi-3.0.13-r1:0=[${MULTILIB_USEDEP}] )
 	ncurses? ( >=sys-libs/ncurses-5.9-r3:0=[${MULTILIB_USEDEP}] )
+	xar? ( app-arch/xar )
 	xml? ( dev-libs/libxml2:2=[${MULTILIB_USEDEP}] )"
 # configparser-3.2 breaks the build (3.3 or none at all are fine)
 DEPEND="${RDEPEND}
@@ -124,6 +125,8 @@ multilib_src_configure() {
 
 		-DFFI_INCLUDE_DIR="${ffi_cflags#-I}"
 		-DFFI_LIBRARY_DIR="${ffi_ldflags#-L}"
+		# used only for llvm-objdump tool
+		-DHAVE_LIBXAR=$(multilib_native_usex xar 1 0)
 
 		# disable OCaml bindings (now in dev-ml/llvm-ocaml)
 		-DOCAMLFIND=NO
