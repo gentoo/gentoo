@@ -13,7 +13,7 @@ SRC_URI="mirror://kde/stable/applications/17.08.2/src/${P}.tar.xz"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 LICENSE="LGPL-2.1"
 SLOT="4/4.14"
-IUSE="cpu_flags_x86_3dnow acl altivec +bzip2 debug doc fam handbook jpeg2k kerberos
+IUSE="cpu_flags_x86_3dnow acl altivec +bzip2 debug doc fam +handbook jpeg2k kerberos
 libressl lzma cpu_flags_x86_mmx nls openexr plasma +policykit qt3support
 spell test cpu_flags_x86_sse cpu_flags_x86_sse2 ssl +udev +udisks +upower zeroconf"
 
