@@ -4,7 +4,7 @@
 EAPI=6
 
 inherit prefix eutils versionator toolchain-funcs flag-o-matic gnuconfig \
-	multilib systemd multiprocessing
+	multilib systemd multiprocessing linux-info
 
 DESCRIPTION="GNU libc C library"
 HOMEPAGE="https://www.gnu.org/software/libc/"
@@ -509,7 +509,46 @@ check_devpts() {
 	fi
 }
 
-int_to_KV() {
+# The following functions are copied from portage source and split a Kernel
+# version into its components.
+
+g_KV_major() {
+	[[ -z $1 ]] && return 1
+	local KV=$@
+	echo "${KV%%.*}"
+}
+
+g_KV_minor() {
+	[[ -z $1 ]] && return 1
+	local KV=$@
+	KV=${KV#*.}
+	echo "${KV%%.*}"
+}
+
+g_KV_micro() {
+	[[ -z $1 ]] && return 1
+	local KV=$@
+	KV=${KV#*.*.}
+	echo "${KV%%[^[:digit:]]*}"
+}
+
+g_KV_to_int() {
+    [[ -z $1 ]] && return 1
+	local KV_MAJOR=$(g_KV_major "$1")
+	local KV_MINOR=$(g_KV_minor "$1")
+	local KV_MICRO=$(g_KV_micro "$1")
+	local KV_int=$(( KV_MAJOR * 65536 + KV_MINOR * 256 + KV_MICRO ))
+
+	# We make version 2.2.0 the minimum version we will handle as
+	# a sanity check ... if its less, we fail ...
+	if [[ ${KV_int} -ge 131584 ]] ; then
+		echo "${KV_int}"
+		return 0
+	fi
+    return 1
+}
+
+g_int_to_KV() {
 	local version=$1 major minor micro
 	major=$((version / 65536))
 	minor=$(((version % 65536) / 256))
@@ -518,7 +557,7 @@ int_to_KV() {
 }
 
 eend_KV() {
-	[[ $(KV_to_int $1) -ge $(KV_to_int $2) ]]
+	[[ $(g_KV_to_int $1) -ge $(g_KV_to_int $2) ]]
 	eend $?
 }
 
@@ -534,10 +573,11 @@ check_nptl_support() {
 
 	local run_kv build_kv want_kv
 
-	# TODO: this needs to be replaced somehow
-	run_kv=$(int_to_KV $(get_KV))
+	# We get the running kernel version using linux-info.eclass
+	get_running_version
+	run_kv=${KV_MAJOR}.${KV_MINOR}.${KV_PATCH}
 
-	build_kv=$(int_to_KV $(get_kheader_version))
+	build_kv=$(g_int_to_KV $(get_kheader_version))
 	want_kv=${MIN_KERN_VER}
 
 	ebegin "Checking gcc for __thread support"
@@ -550,7 +590,7 @@ check_nptl_support() {
 
 	if ! is_crosscompile && ! tc-is-cross-compiler ; then
 		# Building fails on an non-supporting kernel
-		ebegin "Checking kernel version (${run_kv} >= ${want_kv})"
+		ebegin "Checking running kernel version (${run_kv} >= ${want_kv})"
 		if ! eend_KV ${run_kv} ${want_kv} ; then
 			echo
 			eerror "You need a kernel of at least ${want_kv}!"
