@@ -5684,6 +5684,9 @@ dev-qt/qtxml 5.7.1: Implementation of SAX and DOM for the Qt5 framework
 dev-qt/qtxmlpatterns 4.8.7 5.7.1: XPath, XQuery, XSLT, and XML Schema validation library for the Qt5 framework
 dev-ruby/GeoRuby 2.5.2: Ruby data holder for OGC Simple Features
 dev-ruby/abstract 1.0.0-r3: Library which enable you to define abstract method in Ruby
+dev-ruby/actionpack 5.1.4: Eases web-request routing, handling, and response
+dev-ruby/actionview 5.1.4: Simple, battle-tested conventions and helpers for building web pages
+dev-ruby/activemodel 5.1.4: Toolkit for building modeling frameworks like Active Record and Active Resource
 dev-ruby/activesupport 5.0.6 5.1.4: Utility Classes and Extension to the Standard Library
 dev-ruby/addressable 2.4.0-r1: A replacement for the URI implementation that is part of Ruby's standard library
 dev-ruby/allison 2.0.3-r3: A modern, pretty RDoc template
@@ -5698,6 +5701,7 @@ dev-ruby/bsearch 1.5.0-r2: A binary search library for Ruby
 dev-ruby/builder 3.2.2-r1: A builder to facilitate programatic generation of XML markup
 dev-ruby/bundler 1.12.5: An easy way to vendor gem dependencies
 dev-ruby/capistrano 2.15.5-r2: A distributed application deployment system
+dev-ruby/capybara 2.16.1: Capybara aims to simplify the process of integration testing Rack applications
 dev-ruby/childprocess 0.6.3: Solution for controlling external programs running in the background
 dev-ruby/chronic 0.10.2: Chronic is a natural language date/time parser written in pure Ruby
 dev-ruby/cmdparse 2.0.6-r1: Advanced command line parser supporting commands
@@ -5753,6 +5757,7 @@ dev-ruby/instantiator 0.0.6: Instantiate an arbitrary Ruby class
 dev-ruby/introspection 0.0.3: Dynamic inspection of the hierarchy of method definitions on a Ruby object
 dev-ruby/json 1.8.2-r1 1.8.6-r1: A JSON implementation as a Ruby extension
 dev-ruby/kirbybase 2.6.1-r2: A simple Ruby DBMS that stores data in plaintext files
+dev-ruby/launchy 2.4.3-r2: Helper class for launching cross-platform applications
 dev-ruby/libxml 2.9.0: Ruby libxml with a user friendly API, akin to REXML
 dev-ruby/listen 0.7.3-r2 1.3.1-r4 3.1.5-r1: Listens to file modifications and notifies you about the changes
 dev-ruby/locale 2.1.0-r2 2.1.2-r1: A pure ruby library which provides basic APIs for localization
@@ -5799,6 +5804,7 @@ dev-ruby/rack-test 0.6.3: Rack::Test is a small, simple testing API for Rack app
 dev-ruby/ragol 1.0.1-r2: Another implementation of an option processor
 dev-ruby/rails-dom-testing 2.0.3: Compare doms and assert certain elements exists in doms using Nokogiri
 dev-ruby/rails-html-sanitizer 1.0.3-r1: Sanitize HTML fragments in Rails applications
+dev-ruby/railties 5.1.4: Tools for creating, working with, and running Rails applications
 dev-ruby/rainbow 1.1.4-r1 2.2.2: Colorize printed text on ANSI terminals
 dev-ruby/rake 0.9.6-r1 10.5.0: Make-like scripting in Ruby
 dev-ruby/rake-compiler 1.0.2: Provide a standard and simplified way to build and package Ruby extensions
@@ -5867,6 +5873,7 @@ dev-ruby/rubypants 0.2.0-r5: A Ruby port of the SmartyPants PHP library
 dev-ruby/rubyzip 1.2.1: A ruby library for reading and writing zip files
 dev-ruby/safe_yaml 1.0.4-r3: Parse YAML safely, alternative implementation of YAML.load
 dev-ruby/sass 3.2.19-r2 3.4.24: An extension of CSS3, adding nested rules, variables, mixins, and more
+dev-ruby/selenium-webdriver 3.8.0: This gem provides Ruby bindings for WebDriver
 dev-ruby/serialport 1.3.1: a library for serial port (rs232) access in ruby
 dev-ruby/session 3.1.2 3.2.0: A set of classes to drive external programs via pipe
 dev-ruby/sexp_processor 4.9.0: Processor for s-expressions created as part of the ParseTree project
