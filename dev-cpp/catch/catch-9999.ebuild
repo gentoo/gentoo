@@ -3,26 +3,29 @@
 
 EAPI=6
 
-EGIT_REPO_URI="https://github.com/catchorg/Catch2.git"
-inherit cmake-utils git-r3
+inherit cmake-utils
+
+if [[ ${PV} == *9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/catchorg/Catch2.git"
+else
+	SRC_URI="https://github.com/catchorg/Catch2/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
+fi
 
 DESCRIPTION="Modern C++ header-only framework for unit-tests"
 HOMEPAGE="https://github.com/catchorg/Catch2"
-SRC_URI=""
 
 LICENSE="Boost-1.0"
 SLOT="0"
-KEYWORDS=""
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 src_configure() {
 	local mycmakeargs=(
-		-DNO_SELFTEST=$(usex !test)
+		-DCATCH_ENABLE_WERROR=OFF
+		-DBUILD_TESTING=$(usex test)
+		-DCMAKE_INSTALL_DOCDIR="share/doc/${PF}"
 	)
 	cmake-utils_src_configure
-}
-
-src_install() {
-	cmake-utils_src_install
-	dodoc -r docs/.
 }
