@@ -20,7 +20,7 @@ X86_CPU_FEATURES=(
 )
 CPU_FEATURES=( ${X86_CPU_FEATURES[@]/#/cpu_flags_x86_} )
 
-IUSE="colorio doc ffmpeg field3d gif jpeg2k opencv opengl ptex python qt4 raw ssl +truetype ${CPU_FEATURES[@]%:*}"
+IUSE="colorio doc ffmpeg field3d gif jpeg2k libressl opencv opengl ptex python raw ssl +truetype ${CPU_FEATURES[@]%:*}"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RESTRICT="test" #431412
@@ -33,7 +33,7 @@ RDEPEND=">=dev-libs/boost-1.62:=
 	>=media-libs/openexr-2.2.0-r2:=
 	media-libs/tiff:0=
 	sys-libs/zlib:=
-	virtual/jpeg:=
+	virtual/jpeg:0
 	colorio? ( media-libs/opencolorio:= )
 	ffmpeg? ( media-video/ffmpeg:= )
 	field3d? ( media-libs/Field3D:= )
@@ -49,14 +49,11 @@ RDEPEND=">=dev-libs/boost-1.62:=
 		${PYTHON_DEPS}
 		dev-libs/boost:=[python,${PYTHON_USEDEP}]
 	)
-	qt4? (
-		dev-qt/qtcore:4
-		dev-qt/qtgui:4
-		dev-qt/qtopengl:4
-		media-libs/glew:=
-	)
 	raw? ( media-libs/libraw:= )
-	ssl? ( dev-libs/openssl:0= )
+	ssl? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
+	)
 	truetype? ( media-libs/freetype:2= )"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen[latex] )"
@@ -105,8 +102,8 @@ src_configure() {
 		-DUSE_OPENSSL=$(usex ssl)
 		-DUSE_PTEX=$(usex ptex)
 		-DUSE_PYTHON=$(usex python)
-		-DUSE_QT=$(usex qt4)
-		-DUSE_SIMD="$(IFS=","; echo "${mysimd[*]}")"
+		-DUSE_QT=OFF # Deprecated
+		-DUSE_SIMD=$(local IFS=','; echo "${mysimd[*]}")
 	)
 
 	cmake-utils_src_configure
