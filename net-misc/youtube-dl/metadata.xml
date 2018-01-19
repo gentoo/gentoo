@@ -4,4 +4,7 @@
   <maintainer type="person">
     <email>jer@gentoo.org</email>
   </maintainer>
+  <use>
+    <flag name="rtmp">Enables Real Time Messaging Protocol support using media-video/rtmpdump.</flag>
+  </use>
 </pkgmetadata>
