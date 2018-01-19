@@ -103,6 +103,7 @@ S="${WORKDIR}/${MY_P}"
 PATCHES=(
 	"${FILESDIR}/${PN}-4.4.0-pam.patch"
 	"${FILESDIR}/${PN}-4.5.1-compile_et_fix.patch"
+	"${FILESDIR}/${PN}-glibc-2.26-no_rpc.patch" #637320
 )
 
 #CONFDIR="${FILESDIR}/$(get_version_component_range 1-2)"
