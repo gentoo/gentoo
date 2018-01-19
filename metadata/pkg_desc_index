@@ -3159,7 +3159,7 @@ dev-libs/log4cpp 1.1: C++ classes for flexible logging to files, syslog and othe
 dev-libs/log4sh 1.4.2: A flexible logging framework for shell scripts
 dev-libs/luise-bin 0.1.1: Programming interface for the Wallbraun LCD-USB-Interface
 dev-libs/lzo 2.09: An extremely fast compression and decompression library
-dev-libs/m17n-lib 1.5.2 1.6.4 1.7.0: Multilingual Library for Unix/Linux
+dev-libs/m17n-lib 1.6.4 1.7.0: Multilingual Library for Unix/Linux
 dev-libs/maloc 1.5-r1: Minimal Abstraction Layer for Object-oriented C/C++ programs
 dev-libs/mapm 4.9.5: Mike's Arbitrary Precision Math Library
 dev-libs/marisa 0.2.4: Matching Algorithm with Recursively Implemented StorAge

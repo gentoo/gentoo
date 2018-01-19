@@ -4530,7 +4530,6 @@ net-p2p/bitcoin-qt:linguas_ar - Arabic locale
 net-p2p/bitcoin-qt:linguas_be_BY - Belarusian locale for Belarus
 net-p2p/bitcoin-qt:linguas_bg - Bulgarian locale
 net-p2p/bitcoin-qt:linguas_bg_BG - Bulgarian locale for Bulgaria
-net-p2p/bitcoin-qt:linguas_bs - Bosnian locale
 net-p2p/bitcoin-qt:linguas_ca - Catalan locale
 net-p2p/bitcoin-qt:linguas_ca@valencia - Catalan (Valencian) locale
 net-p2p/bitcoin-qt:linguas_ca_ES - Catalan locale for Spain
