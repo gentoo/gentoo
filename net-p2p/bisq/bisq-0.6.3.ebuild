@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -45,36 +45,36 @@ REQUIRES_EXCLUDE="libgstreamer-lite.so"
 EMAVEN_VENDOR=(
 	"https://jitpack.io com/github/JesusMcCloud/jtorctl/0/jtorctl-0.jar"
 	"https://jitpack.io com/github/JesusMcCloud/jtorctl/0/jtorctl-0.pom"
-	"https://jitpack.io com/github/JesusMcCloud/netlayer/parent/e7195748/parent-e7195748.pom"
-	"https://jitpack.io com/github/JesusMcCloud/netlayer/tor/e7195748/tor-e7195748.jar"
-	"https://jitpack.io com/github/JesusMcCloud/netlayer/tor/e7195748/tor-e7195748.pom"
-	"https://jitpack.io com/github/JesusMcCloud/netlayer/tor.native/e7195748/tor.native-e7195748.jar"
-	"https://jitpack.io com/github/JesusMcCloud/netlayer/tor.native/e7195748/tor.native-e7195748.pom"
+	"https://jitpack.io com/github/JesusMcCloud/netlayer/parent/b3497f1d/parent-b3497f1d.pom"
+	"https://jitpack.io com/github/JesusMcCloud/netlayer/tor/b3497f1d/tor-b3497f1d.jar"
+	"https://jitpack.io com/github/JesusMcCloud/netlayer/tor/b3497f1d/tor-b3497f1d.pom"
+	"https://jitpack.io com/github/JesusMcCloud/netlayer/tor.native/b3497f1d/tor.native-b3497f1d.jar"
+	"https://jitpack.io com/github/JesusMcCloud/netlayer/tor.native/b3497f1d/tor.native-b3497f1d.pom"
 	"https://jitpack.io com/github/MicroUtils/kotlin-logging/3aedaa9310/kotlin-logging-3aedaa9310.jar"
 	"https://jitpack.io com/github/MicroUtils/kotlin-logging/3aedaa9310/kotlin-logging-3aedaa9310.pom"
-	"https://jitpack.io com/github/bisq-network/bitcoinj/bitcoinj-core/58de2b53/bitcoinj-core-58de2b53.jar"
-	"https://jitpack.io com/github/bisq-network/bitcoinj/bitcoinj-core/58de2b53/bitcoinj-core-58de2b53.pom"
-	"https://jitpack.io com/github/bisq-network/bitcoinj/bitcoinj-parent/58de2b53/bitcoinj-parent-58de2b53.pom"
+	"https://jitpack.io com/github/bisq-network/bitcoinj/bitcoinj-core/63c9a917/bitcoinj-core-63c9a917.jar"
+	"https://jitpack.io com/github/bisq-network/bitcoinj/bitcoinj-core/63c9a917/bitcoinj-core-63c9a917.pom"
+	"https://jitpack.io com/github/bisq-network/bitcoinj/bitcoinj-parent/63c9a917/bitcoinj-parent-63c9a917.pom"
 	"https://jitpack.io com/github/bisq-network/btcd-cli4j/btcd-cli4j-core/29f99be/btcd-cli4j-core-29f99be.jar"
 	"https://jitpack.io com/github/bisq-network/btcd-cli4j/btcd-cli4j-core/29f99be/btcd-cli4j-core-29f99be.pom"
 	"https://jitpack.io com/github/bisq-network/btcd-cli4j/btcd-cli4j-daemon/29f99be/btcd-cli4j-daemon-29f99be.jar"
 	"https://jitpack.io com/github/bisq-network/btcd-cli4j/btcd-cli4j-daemon/29f99be/btcd-cli4j-daemon-29f99be.pom"
 	"https://jitpack.io com/github/bisq-network/btcd-cli4j/btcd-cli4j-parent/29f99be/btcd-cli4j-parent-29f99be.pom"
-	"https://jitpack.io com/github/bisq-network/libdohj/libdohj-core/bba4088c/libdohj-core-bba4088c.jar"
-	"https://jitpack.io com/github/bisq-network/libdohj/libdohj-core/bba4088c/libdohj-core-bba4088c.pom"
+	"https://jitpack.io com/github/bisq-network/libdohj/libdohj-core/a83809f3/libdohj-core-a83809f3.jar"
+	"https://jitpack.io com/github/bisq-network/libdohj/libdohj-core/a83809f3/libdohj-core-a83809f3.pom"
 	"https://jitpack.io com/github/ravn/jsocks/567e1cd/jsocks-567e1cd.jar"
 	"https://jitpack.io com/github/ravn/jsocks/567e1cd/jsocks-567e1cd.pom"
-	"https://raw.githubusercontent.com/JesusMcCloud/tor-binary/b0c104e06f0ea97def02715aea60689808f3a987/release com/cedricwalter/tor-binary/7.0.7/tor-binary-7.0.7.pom"
-	"https://raw.githubusercontent.com/JesusMcCloud/tor-binary/b0c104e06f0ea97def02715aea60689808f3a987/release com/cedricwalter/tor-binary-geoip/7.0.7/tor-binary-geoip-7.0.7.jar"
-	"https://raw.githubusercontent.com/JesusMcCloud/tor-binary/b0c104e06f0ea97def02715aea60689808f3a987/release com/cedricwalter/tor-binary-geoip/7.0.7/tor-binary-geoip-7.0.7.pom"
-	"https://raw.githubusercontent.com/JesusMcCloud/tor-binary/b0c104e06f0ea97def02715aea60689808f3a987/release com/cedricwalter/tor-binary-linux32/7.0.7/tor-binary-linux32-7.0.7.jar"
-	"https://raw.githubusercontent.com/JesusMcCloud/tor-binary/b0c104e06f0ea97def02715aea60689808f3a987/release com/cedricwalter/tor-binary-linux32/7.0.7/tor-binary-linux32-7.0.7.pom"
-	"https://raw.githubusercontent.com/JesusMcCloud/tor-binary/b0c104e06f0ea97def02715aea60689808f3a987/release com/cedricwalter/tor-binary-linux64/7.0.7/tor-binary-linux64-7.0.7.jar"
-	"https://raw.githubusercontent.com/JesusMcCloud/tor-binary/b0c104e06f0ea97def02715aea60689808f3a987/release com/cedricwalter/tor-binary-linux64/7.0.7/tor-binary-linux64-7.0.7.pom"
-	"https://raw.githubusercontent.com/JesusMcCloud/tor-binary/b0c104e06f0ea97def02715aea60689808f3a987/release com/cedricwalter/tor-binary-macos/7.0.7/tor-binary-macos-7.0.7.jar"
-	"https://raw.githubusercontent.com/JesusMcCloud/tor-binary/b0c104e06f0ea97def02715aea60689808f3a987/release com/cedricwalter/tor-binary-macos/7.0.7/tor-binary-macos-7.0.7.pom"
-	"https://raw.githubusercontent.com/JesusMcCloud/tor-binary/b0c104e06f0ea97def02715aea60689808f3a987/release com/cedricwalter/tor-binary-windows/7.0.7/tor-binary-windows-7.0.7.jar"
-	"https://raw.githubusercontent.com/JesusMcCloud/tor-binary/b0c104e06f0ea97def02715aea60689808f3a987/release com/cedricwalter/tor-binary-windows/7.0.7/tor-binary-windows-7.0.7.pom"
+	"https://raw.githubusercontent.com/JesusMcCloud/tor-binary/testrelease/release com/cedricwalter/tor-binary/7.0.11/tor-binary-7.0.11.pom"
+	"https://raw.githubusercontent.com/JesusMcCloud/tor-binary/testrelease/release com/cedricwalter/tor-binary-geoip/7.0.11/tor-binary-geoip-7.0.11.jar"
+	"https://raw.githubusercontent.com/JesusMcCloud/tor-binary/testrelease/release com/cedricwalter/tor-binary-geoip/7.0.11/tor-binary-geoip-7.0.11.pom"
+	"https://raw.githubusercontent.com/JesusMcCloud/tor-binary/testrelease/release com/cedricwalter/tor-binary-linux32/7.0.11/tor-binary-linux32-7.0.11.jar"
+	"https://raw.githubusercontent.com/JesusMcCloud/tor-binary/testrelease/release com/cedricwalter/tor-binary-linux32/7.0.11/tor-binary-linux32-7.0.11.pom"
+	"https://raw.githubusercontent.com/JesusMcCloud/tor-binary/testrelease/release com/cedricwalter/tor-binary-linux64/7.0.11/tor-binary-linux64-7.0.11.jar"
+	"https://raw.githubusercontent.com/JesusMcCloud/tor-binary/testrelease/release com/cedricwalter/tor-binary-linux64/7.0.11/tor-binary-linux64-7.0.11.pom"
+	"https://raw.githubusercontent.com/JesusMcCloud/tor-binary/testrelease/release com/cedricwalter/tor-binary-macos/7.0.11/tor-binary-macos-7.0.11.jar"
+	"https://raw.githubusercontent.com/JesusMcCloud/tor-binary/testrelease/release com/cedricwalter/tor-binary-macos/7.0.11/tor-binary-macos-7.0.11.pom"
+	"https://raw.githubusercontent.com/JesusMcCloud/tor-binary/testrelease/release com/cedricwalter/tor-binary-windows/7.0.11/tor-binary-windows-7.0.11.jar"
+	"https://raw.githubusercontent.com/JesusMcCloud/tor-binary/testrelease/release com/cedricwalter/tor-binary-windows/7.0.11/tor-binary-windows-7.0.11.pom"
 	"https://repo.maven.apache.org/maven2 antlr/antlr/2.7.2/antlr-2.7.2.jar"
 	"https://repo.maven.apache.org/maven2 antlr/antlr/2.7.2/antlr-2.7.2.pom"
 	"https://repo.maven.apache.org/maven2 aopalliance/aopalliance/1.0/aopalliance-1.0.jar"
@@ -943,6 +943,7 @@ src_compile() {
 }
 
 src_install() {
+	local x
 	# The following command is derived from package/linux/64bitBuild.sh.
 	mkdir -p gui/deploy || die
 		"${JAVA_HOME}/bin/javapackager" \
@@ -970,7 +971,13 @@ src_install() {
 	# This procedure is derived from doc/install_on_unix*.sh:
 	printf "security.provider.10=org.bouncycastle.jce.provider.BouncyCastleProvider\n" >> \
 		gui/deploy/bundles/Bisq/runtime/lib/security/java.security || die
-	cp -p gui/target/lib/bcprov-jdk15on.jar gui/deploy/bundles/Bisq/runtime/lib/ext/ || die
+	# Also include bcpg-jdk15on.jar here due to
+	# https://github.com/bisq-network/exchange/issues/1067
+	# It may be related to org.bouncycastle excludes in the
+	# pom files, see 80aca142ffa1e8a34df25b7489ca2685d29dbdc4.
+	for x in bcprov-jdk15on.jar bcpg-jdk15on.jar; do
+		ln gui/deploy/bundles/Bisq/app/${x} gui/deploy/bundles/Bisq/runtime/lib/ext/${x} || die
+	done
 
 	dodir /opt
 	mv gui/deploy/bundles/Bisq "${ED}/opt/Bisq" || die
