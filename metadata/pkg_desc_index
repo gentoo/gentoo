@@ -1191,7 +1191,7 @@ app-portage/cfg-update 1.8.9: Easy to use GUI & CLI alternative for etc-update
 app-portage/conf-update 1.0.3-r1: conf-update is a ncurses-based config management utility
 app-portage/cpuid2cpuflags 1 5: Tool to guess CPU_FLAGS_X86 flags for the host
 app-portage/demerge 0.047-r2: demerge - revert to previous installation states
-app-portage/eclass-manpages 20170905 20180101: Collection of Gentoo eclass manpages
+app-portage/eclass-manpages 20170905 20180101 20180119: Collection of Gentoo eclass manpages
 app-portage/eix 0.32.9: Search and query ebuilds
 app-portage/elogv 0.7.6.1-r1: Curses based utility to parse the contents of elogs created by Portage
 app-portage/elogviewer 0.6.2-r3 2.1-r1 2.1-r2 2.6 2.6-r1 2.7: Elog viewer for Gentoo
