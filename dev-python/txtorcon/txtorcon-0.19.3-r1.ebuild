@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -42,6 +42,11 @@ PATCHES=(
 	"${FILESDIR}/txtorcon-0.19.3-Removeinstalldocs.patch"
 )
 
+python_prepare_all() {
+	sed -e "s/^ipaddress.*//" -i requirements.txt || die
+
+	distutils-r1_python_prepare_all
+}
 python_test() {
 	pushd "${TEST_DIR}" > /dev/null || die
 	/usr/bin/trial txtorcon || die "Tests failed with ${EPYTHON}"
