@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils gnome2-utils qmake-utils
+inherit gnome2-utils qmake-utils
 
 DESCRIPTION="A basic sudoku game"
 HOMEPAGE="https://gottcode.org/simsu/"
@@ -14,11 +14,17 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="dev-qt/qtgui:4"
-RDEPEND=${DEPEND}
+RDEPEND="
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtwidgets:5
+"
+DEPEND="${RDEPEND}
+	dev-qt/linguist-tools:5
+"
 
 src_configure() {
-	eqmake4
+	eqmake5
 }
 
 src_install() {
@@ -28,10 +34,6 @@ src_install() {
 	dodoc ChangeLog
 	doicon -s scalable icons/hicolor/scalable/apps/${PN}.svg
 	domenu icons/${PN}.desktop
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
 }
 
 pkg_postinst() {
