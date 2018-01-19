@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -47,7 +47,7 @@ src_install() {
 
 	einfo "Installing Erlang modules to ${targetdir}"
 	insinto "${targetdir}"
-	doins -r deps/rabbit/ebin deps/rabbit/include plugins
+	doins -r deps/rabbit/ebin deps/rabbit/escript deps/rabbit/include plugins
 
 	einfo "Installing server scripts to /usr/sbin"
 	for script in rabbitmq-env rabbitmq-server rabbitmqctl rabbitmq-defaults rabbitmq-plugins; do
