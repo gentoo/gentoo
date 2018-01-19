@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ KEYWORDS="amd64 ~arm ~arm64 hppa sparc x86"
 IUSE="htmlreport pcre qt5"
 
 RDEPEND="
-	>=dev-libs/tinyxml2-2
+	dev-libs/tinyxml2:=
 	htmlreport? ( dev-python/pygments[${PYTHON_USEDEP}] )
 	pcre? ( dev-libs/libpcre )
 	qt5? (
