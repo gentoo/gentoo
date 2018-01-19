@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -74,8 +74,6 @@ src_configure() {
 		# compilers for lit tests
 		-DLLDB_TEST_C_COMPILER="$(type -P clang)"
 		-DLLDB_TEST_CXX_COMPILER="$(type -P clang++)"
-		# compiler for ole' python tests
-		-DLLDB_TEST_COMPILER="$(type -P clang)"
 
 		# TODO: fix upstream to detect this properly
 		-DHAVE_LIBDL=ON
