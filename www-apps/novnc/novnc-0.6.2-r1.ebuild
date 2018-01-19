@@ -36,7 +36,7 @@ python_compile() {
 src_install() {
 	exeinto /usr/share/novnc/utils
 	for f in utils/*; do
-		[[ ! f = utils/README.md ]] && doexe $f
+		[[ ! $f = utils/README.md ]] && doexe $f
 	done
 
 	dodoc README.md LICENSE.txt
