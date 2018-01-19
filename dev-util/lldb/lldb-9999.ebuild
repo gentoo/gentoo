@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -67,15 +67,10 @@ src_configure() {
 		-DLLDB_DISABLE_CURSES=$(usex !ncurses)
 		-DLLDB_DISABLE_LIBEDIT=$(usex !libedit)
 		-DLLDB_DISABLE_PYTHON=$(usex !python)
+		-DLLDB_USE_SYSTEM_SIX=1
 		-DLLVM_ENABLE_TERMINFO=$(usex ncurses)
 
 		-DLLDB_INCLUDE_TESTS=$(usex test)
-		-DLLVM_BUILD_TESTS=$(usex test)
-		# compilers for lit tests
-		-DLLDB_TEST_C_COMPILER="$(type -P clang)"
-		-DLLDB_TEST_CXX_COMPILER="$(type -P clang++)"
-		# compiler for ole' python tests
-		-DLLDB_TEST_COMPILER="$(type -P clang)"
 
 		# TODO: fix upstream to detect this properly
 		-DHAVE_LIBDL=ON
@@ -88,6 +83,11 @@ src_configure() {
 		-DCURSES_NEED_NCURSES=ON
 	)
 	use test && mycmakeargs+=(
+		-DLLVM_BUILD_TESTS=$(usex test)
+		# compilers for lit tests
+		-DLLDB_TEST_C_COMPILER="$(type -P clang)"
+		-DLLDB_TEST_CXX_COMPILER="$(type -P clang++)"
+
 		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
 		-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
 		-DLLVM_LIT_ARGS="-vv"
@@ -106,9 +106,6 @@ src_install() {
 
 	# oh my...
 	if use python; then
-		# remove bundled six module
-		rm "${D}$(python_get_sitedir)/six.py" || die
-
 		# remove custom readline.so for now
 		# TODO: figure out how to deal with it
 		# upstream is basically building a custom readline.so with -ledit
