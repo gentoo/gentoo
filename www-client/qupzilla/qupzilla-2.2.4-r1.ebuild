@@ -12,7 +12,7 @@ PLOCALES="ar_SA bg_BG ca_ES cs_CZ da_DK de_DE el_GR es_419 es_ES es_MX es_VE
 PLUGINS_HASH="80fea7df7765fdf9c9c64fdb667052b25f1c0a22"
 PLUGINS_VERSION="2017.03.26" # if there are no updates, we can use the older archive
 
-inherit l10n qmake-utils xdg-utils
+inherit gnome2-utils l10n qmake-utils xdg-utils
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -111,8 +111,10 @@ src_install() {
 
 pkg_postinst() {
 	xdg_desktop_database_update
+	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
 	xdg_desktop_database_update
+	gnome2_icon_cache_update
 }
