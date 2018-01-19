@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit toolchain-funcs
+inherit toolchain-funcs xdg-utils gnome2-utils
 
 DESCRIPTION="A fast, lightweight imageviewer using imlib2"
 HOMEPAGE="https://feh.finalrewind.org/"
@@ -44,6 +44,16 @@ pkg_setup() {
 		xinerama=$(use_feh xinerama)
 		exif=$(use_feh exif)
 	)
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+	gnome2_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
+	gnome2_icon_cache_update
 }
 
 src_compile() {
