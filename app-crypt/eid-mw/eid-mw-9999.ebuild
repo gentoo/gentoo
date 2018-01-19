@@ -79,7 +79,7 @@ src_install() {
 			xpi_install "${ED}/usr/share/mozilla/extensions/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}/belgiumeid@eid.belgium.be"
 		fi
 	else
-		rm -r "${ED}"/usr/$(get_libdir)/mozilla || die
+		rm -r "${ED}"/usr/lib/mozilla || die
 	fi
 	rm -r "${ED}/usr/share/mozilla" "${ED}"/usr/$(get_libdir)/*.la || die
 
