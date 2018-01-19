@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit flag-o-matic ltprune
+inherit flag-o-matic multilib-minimal ltprune
 
 APPLE_PV=400
 DESCRIPTION="An easily extensible archive format"
@@ -16,12 +16,12 @@ IUSE="libressl kernel_Darwin"
 
 DEPEND="
 	!kernel_Darwin? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
+		!libressl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )
+		libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
 	)
-	app-arch/bzip2
-	sys-libs/zlib
-	dev-libs/libxml2
+	app-arch/bzip2[${MULTILIB_USEDEP}]
+	sys-libs/zlib[${MULTILIB_USEDEP}]
+	dev-libs/libxml2[${MULTILIB_USEDEP}]
 "
 RDEPEND="${DEPEND}"
 
@@ -34,13 +34,14 @@ src_prepare() {
 	sed -i -e 's/safe_dirname/xar_safe_dirname/' lib/linuxattr.c || die
 }
 
-src_configure() {
+multilib_src_configure() {
 	use kernel_Darwin || append-libs $(pkg-config --libs openssl)
+	ECONF_SOURCE=${S} \
 	econf \
 		--disable-static
 }
 
-src_install() {
+multilib_src_install() {
 	default
 	prune_libtool_files
 }
