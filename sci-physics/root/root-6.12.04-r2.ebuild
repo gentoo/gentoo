@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -299,7 +299,7 @@ src_install() {
 	use emacs && elisp-install ${PN} "${BUILD_DIR}"/root-help.el
 
 	echo "PATH=${EPREFIX}/${MY_PREFIX}/bin" > 99root || die
-	echo "ROOTPATH=${EPREFIX}/${MY_PREFIX}/bin" > 99root || die
+	echo "ROOTPATH=${EPREFIX}/${MY_PREFIX}/bin" >> 99root || die
 	echo "LDPATH=${EPREFIX}/${MY_PREFIX}/$(get_libdir)" >> 99root || die
 
 	if use pythia8; then
