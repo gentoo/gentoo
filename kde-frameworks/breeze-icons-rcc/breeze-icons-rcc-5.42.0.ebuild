@@ -24,6 +24,8 @@ DEPEND="
 "
 RDEPEND=""
 
+RESTRICT+=" test"
+
 src_configure() {
 	local mycmakeargs=(
 		-DBINARY_ICONS_RESOURCE=ON
