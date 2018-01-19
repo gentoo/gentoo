@@ -1,35 +1,19 @@
-diff -purN a/CMakeLists.txt b/CMakeLists.txt
---- a/CMakeLists.txt	2017-11-29 22:51:15.000000000 +0000
-+++ b/CMakeLists.txt	2017-12-27 16:49:51.461300828 +0000
-@@ -59,6 +59,7 @@ endif()
- include(ParseArguments)
- include(OCIOMacros)
- include(ExternalProject)
-+include(GNUInstallDirs)
+From 967369b36c9684d7ffb73a926c442d8991a3afef Mon Sep 17 00:00:00 2001
+From: Jonathan Scruggs <j.scruggs@gmail.com>
+Date: Mon, 15 Jan 2018 13:09:31 +0000
+Subject: [PATCH 3/3] Remove building of bundled programs
+
+---
+ docs/CMakeLists.txt | 98 ++---------------------------------------------------
+ 1 file changed, 3 insertions(+), 95 deletions(-)
+
+diff --git a/docs/CMakeLists.txt b/docs/CMakeLists.txt
+index a822a19..d588139 100644
+--- a/docs/CMakeLists.txt
++++ b/docs/CMakeLists.txt
+@@ -1,90 +1,4 @@
  
- enable_language(CXX)
- 
-@@ -531,7 +532,7 @@ endif()
- configure_file(${CMAKE_SOURCE_DIR}/share/ocio/setup_ocio.sh.in
-     ${CMAKE_CURRENT_BINARY_DIR}/share/ocio/setup_ocio.sh @ONLY)
- 
--INSTALL(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/share/ocio/setup_ocio.sh DESTINATION share/ocio/)
-+INSTALL(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/share/ocio/setup_ocio.sh DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/ocio/)
- 
- ###############################################################################
- ### CPACK ###
-@@ -646,4 +647,4 @@ file(WRITE "${CMAKE_BINARY_DIR}/OpenColo
-     message(STATUS OPENCOLORIO_FOUND=\${OPENCOLORIO_FOUND})
-     "
- )
--install(FILES "${CMAKE_BINARY_DIR}/OpenColorIOConfig.cmake" DESTINATION .)
-+install(FILES "${CMAKE_BINARY_DIR}/OpenColorIOConfig.cmake" DESTINATION ${CMAKE_INSTALL_LIBDIR}/CMake)
-diff -purN a/docs/CMakeLists.txt b/docs/CMakeLists.txt
---- a/docs/CMakeLists.txt	2017-11-29 22:51:15.000000000 +0000
-+++ b/docs/CMakeLists.txt	2017-12-27 16:53:28.976491353 +0000
-@@ -1,91 +1,5 @@
- 
- ###############################################################################
+-###############################################################################
 -### External Doc Apps ###
 -
 -if (WIN32)
@@ -115,10 +99,9 @@ diff -purN a/docs/CMakeLists.txt b/docs/CMakeLists.txt
 -    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Sphinx-prefix/src/Sphinx
 -)
 -
--###############################################################################
+ ###############################################################################
  ### Create Doc Targets ###
  
- message(STATUS "Create sphinx conf.py from conf.py.in")
 @@ -122,7 +36,7 @@ else()
  endif()
  
@@ -128,32 +111,30 @@ diff -purN a/docs/CMakeLists.txt b/docs/CMakeLists.txt
      DEPENDS
          ${DEPLIBS}
          ${CMAKE_BINARY_DIR}/docs/conf.py
-@@ -133,20 +47,18 @@ add_custom_target(doc ALL
+@@ -131,11 +45,7 @@ add_custom_target(doc ALL
+         developers/api/OpenColorTypes.rst
+         ${RSTDOC_OUTPUT}
      COMMENT "Building html docs"
      SOURCES ${DOCFILES})
- 
+-
 -# note: ExternalProject will not build when added to a add_custom_target this
 -# works around this problem. This seems to be fixed in the cmake ^HEAD
 -add_dependencies(doc Sphinx) 
--
- install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/build-html/
--        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/doc/OpenColorIO/html
-+        DESTINATION ${CMAKE_INSTALL_DOCDIR}/html
-         PATTERN .* EXCLUDE
- )
  
-+if(OCIO_BUILD_PDF_DOCS)
-+
+ install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/build-html/
+         DESTINATION ${CMAKE_INSTALL_DOCDIR}/html
+@@ -146,8 +56,8 @@ find_package(LATEX)
  find_package(LATEX)
  if(PDFLATEX_COMPILER)
      
-     add_custom_target(latex
+-    add_custom_target(latex
 -        COMMAND ${PYT_PRE_CMD} ${EXTDIST_BINPATH}/sphinx-build -b latex . ${CMAKE_CURRENT_BINARY_DIR}/build-latex
++    add_custom_target(latex ALL
 +        COMMAND sphinx-build -b latex . ${CMAKE_CURRENT_BINARY_DIR}/build-latex
          DEPENDS
              OpenColorIO
              ${CMAKE_BINARY_DIR}/docs/conf.py
-@@ -156,7 +68,6 @@ if(PDFLATEX_COMPILER)
+@@ -156,14 +66,12 @@ if(PDFLATEX_COMPILER)
              ${RSTDOC_OUTPUT}
          COMMENT "Building latex doc"
          SOURCES ${DOCFILES})
@@ -161,13 +142,13 @@ diff -purN a/docs/CMakeLists.txt b/docs/CMakeLists.txt
      
      add_custom_target(pdf ALL
          COMMAND ${PDFLATEX_COMPILER} OpenColorIO.tex
-@@ -166,6 +77,8 @@ if(PDFLATEX_COMPILER)
-     add_dependencies(pdf latex)
+         WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/build-latex
+         COMMENT "Building pdf doc"
+         SOURCES ${DOCFILES})
+-    add_dependencies(pdf latex)
      
      install(FILES ${CMAKE_CURRENT_BINARY_DIR}/build-latex/OpenColorIO.pdf
--            DESTINATION ${CMAKE_INSTALL_PREFIX}/share/doc/OpenColorIO/)
-+            DESTINATION ${CMAKE_INSTALL_DOCDIR})
-     
- endif()
-+
-+endif()
+             DESTINATION ${CMAKE_INSTALL_DOCDIR})
+-- 
+2.15.1
+
