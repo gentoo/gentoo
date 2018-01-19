@@ -8673,7 +8673,7 @@ net-mail/libpst 0.6.64-r1: Tools and library for reading Outlook files (.pst for
 net-mail/mailbase 1 1.1: MTA layout package
 net-mail/maildirtree 0.6-r1: A utility that prints trees of Courier-style Maildirs
 net-mail/mailgraph 1.14-r2: A mail statistics RRDtool frontend for Postfix
-net-mail/mailman 2.1.23 2.1.24: A python-based mailing list server with an extensive web interface
+net-mail/mailman 2.1.24: A python-based mailing list server with an extensive web interface
 net-mail/mailutils 3.1.1: A useful collection of mail servers, clients, and filters
 net-mail/mairix 0.23: Indexes and searches Maildir/MH folders
 net-mail/mess822 0.58-r2: Collection of utilities for parsing Internet mail messages
