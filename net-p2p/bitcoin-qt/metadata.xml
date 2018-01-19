@@ -29,7 +29,6 @@
 		<flag name="linguas_be_BY">Belarusian locale for Belarus</flag>
 		<flag name="linguas_bg">Bulgarian locale</flag>
 		<flag name="linguas_bg_BG">Bulgarian locale for Bulgaria</flag>
-		<flag name="linguas_bs">Bosnian locale</flag>
 		<flag name="linguas_ca">Catalan locale</flag>
 		<flag name="linguas_ca@valencia">Catalan (Valencian) locale</flag>
 		<flag name="linguas_ca_ES">Catalan locale for Spain</flag>
