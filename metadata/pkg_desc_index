@@ -2990,7 +2990,7 @@ dev-libs/kpathsea 6.2.2_p20160523 6.2.3_p20170524: Path searching library for Te
 dev-libs/kproperty 3.0.2: Property editing framework with editor widget similar to Qt Designer
 dev-libs/kreport 3.0.2: Framework for creation and generation of reports in multiple formats
 dev-libs/leatherman 0.10.1 1.2.1 1.3.0: A C++ toolkit
-dev-libs/legousbtower 0.5.4: The lego mindstorms usb tower headers and/or modules
+dev-libs/legousbtower 0.5.4-r1: The lego mindstorms usb tower headers and/or modules
 dev-libs/leveldb 1.9.0-r5 1.9.0-r6 1.15.0-r1 1.18-r2: a fast key-value storage library written at Google
 dev-libs/libIDL 0.8.14 0.8.14-r2: CORBA tree builder
 dev-libs/libaio 0.3.110: Asynchronous input/output library that uses the kernels native interface
