@@ -9896,7 +9896,7 @@ sys-boot/unetbootin 625: UNetbootin installs Linux/BSD distributions to a partit
 sys-boot/winusb 1.0.11: Creates windows installer on usb media from an iso image
 sys-cluster/ccs 2.03.09: cluster configuration system to manage the cluster config file
 sys-cluster/ceph 10.2.3-r2: Ceph distributed filesystem
-sys-cluster/cinder 9.1.4 10.0.6 11.0.1: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
+sys-cluster/cinder 9.1.4 10.0.6 11.0.2: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
 sys-cluster/cluster-glue 1.0.11 1.0.12: Library pack for Heartbeat / Pacemaker
 sys-cluster/cman-lib 2.03.09 2.03.09-r1: A library for cluster management common to the various pieces of Cluster Suite
 sys-cluster/corosync 1.3.0 2.3.5: OSI Certified implementation of a complete cluster engine
@@ -10968,7 +10968,7 @@ x11-plugins/pidgin-xmpp-receipts 0.6: Implementation of xmpp message delivery re
 x11-plugins/pidgintex 1.1.2_p20170107: Pidgin plugin to render LaTeX expressions in messages
 x11-plugins/purple-libnotify-plus 1.99.2: Provide libnotify interface to Pidgin and Finch
 x11-plugins/purple-plugin_pack 2.7.0-r1: A package with many different plugins for pidgin and libpurple
-x11-plugins/vicious 2.1.3: Modular widget library for x11-wm/awesome
+x11-plugins/vicious 2.1.3 2.3.1: Modular widget library for x11-wm/awesome
 x11-plugins/wmCalClock 1.25-r2: WMaker DockApp: A Calendar clock with antialiased text
 x11-plugins/wmMatrix 0.2-r1: WMaker DockApp: Slightly modified version of Jamie Zawinski's xmatrix screenhack
 x11-plugins/wmSMPmon 3.1-r1: SMP system monitor dockapp
