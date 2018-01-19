@@ -20,7 +20,6 @@
 		<flag name="ptex" restrict="&gt;=media-libs/openimageio-1.6.18">
 			Use <pkg>media-libs/ptex</pkg>
 		</flag>
-		<flag name="tbb">Use <pkg>dev-cpp/tbb</pkg></flag>
 	</use>
 	<upstream>
 		<remote-id type="github">OpenImageIO/oiio</remote-id>
