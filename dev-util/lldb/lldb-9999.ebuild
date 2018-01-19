@@ -70,10 +70,6 @@ src_configure() {
 		-DLLVM_ENABLE_TERMINFO=$(usex ncurses)
 
 		-DLLDB_INCLUDE_TESTS=$(usex test)
-		-DLLVM_BUILD_TESTS=$(usex test)
-		# compilers for lit tests
-		-DLLDB_TEST_C_COMPILER="$(type -P clang)"
-		-DLLDB_TEST_CXX_COMPILER="$(type -P clang++)"
 
 		# TODO: fix upstream to detect this properly
 		-DHAVE_LIBDL=ON
@@ -86,6 +82,11 @@ src_configure() {
 		-DCURSES_NEED_NCURSES=ON
 	)
 	use test && mycmakeargs+=(
+		-DLLVM_BUILD_TESTS=$(usex test)
+		# compilers for lit tests
+		-DLLDB_TEST_C_COMPILER="$(type -P clang)"
+		-DLLDB_TEST_CXX_COMPILER="$(type -P clang++)"
+
 		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
 		-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
 		-DLLVM_LIT_ARGS="-vv"
