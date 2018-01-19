@@ -13,13 +13,13 @@ SRC_URI="https://github.com/phw/peek/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
+IUSE="keybinder test"
 
 RDEPEND=">=dev-libs/glib-2.38:2
-	dev-libs/keybinder:3
 	media-video/ffmpeg[X,encode]
 	virtual/imagemagick-tools
-	>=x11-libs/gtk+-3.14:3"
+	>=x11-libs/gtk+-3.14:3
+	keybinder? ( dev-libs/keybinder:3 )"
 DEPEND="${RDEPEND}
 	$(vala_depend)
 	app-text/txt2man
@@ -34,6 +34,7 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DGSETTINGS_COMPILE=OFF
+		-DKEYBINDER_FOUND=$(usex keybinder 1 0)
 		-DVALA_EXECUTABLE="${VALAC}"
 	)
 
