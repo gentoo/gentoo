@@ -9920,7 +9920,7 @@ sys-cluster/mpe2 1.0.6_p1-r2: MPI development tools
 sys-cluster/mpich 3.0.4 3.2-r1: A high performance and portable MPI implementation
 sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
 sys-cluster/neutron 10.0.4 11.0.2: A virtual network service for Openstack
-sys-cluster/nova 15.0.8 16.0.3: Cloud computing fabric controller (main part of an IaaS system) in Python
+sys-cluster/nova 15.1.0 16.0.4: Cloud computing fabric controller (main part of an IaaS system) in Python
 sys-cluster/openais 1.1.4-r1: Open Application Interface Specification cluster framework
 sys-cluster/openmpi 1.4.3 2.0.2: A high-performance message passing library (MPI)
 sys-cluster/osc-mpiexec 0.83: replacement for mpirun, integrates MPI with PBS
