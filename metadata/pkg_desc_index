@@ -361,7 +361,7 @@ app-crypt/sign 1.0.7: File signing and signature verification utility
 app-crypt/signing-party 2.6: A collection of several tools related to OpenPGP
 app-crypt/ssh-multiadd 1.3.2-r1: Adds multiple ssh keys to the ssh authentication agent
 app-crypt/stan 0.4.1-r1: Stan analyzes binary streams and calculates statistical information
-app-crypt/stoken 0.90: Software Token for Linux/UNIX
+app-crypt/stoken 0.92: Software Token for Linux/UNIX
 app-crypt/tinyca 2.0.7.5-r3: Simple Perl/Tk GUI to manage a small certification authority
 app-crypt/tpm-tools 1.3.9: TrouSerS' support tools for the Trusted Platform Modules
 app-crypt/trousers 0.3.14-r1: An open-source TCG Software Stack (TSS) v1.1 implementation
