@@ -1,19 +1,19 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 SCM=""
 if [[ ${PV} == "9999" ]] ; then
-	SCM="git-r3"
-	EGIT_REPO_URI="https://git.kernel.org/cgit/linux/kernel/git/legion/kbd.git"
+	SCM="autotools git-r3"
+	EGIT_REPO_URI="https://git.kernel.org/pub/scm/linux/kernel/git/legion/kbd.git"
 	EGIT_BRANCH="master"
 else
 	SRC_URI="ftp://ftp.kernel.org/pub/linux/utils/kbd/${P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 fi
 
-inherit autotools eutils ${SCM}
+inherit eutils ${SCM}
 
 DESCRIPTION="Keyboard and console utilities"
 HOMEPAGE="http://kbd-project.org/"
@@ -22,7 +22,8 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="nls pam test"
 
-RDEPEND="pam? ( virtual/pam )"
+RDEPEND="pam? ( virtual/pam )
+	app-arch/gzip"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	test? ( dev-libs/check )"
@@ -44,18 +45,23 @@ src_unpack() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-2.0.0-tests.patch
-	eautoreconf
+	default
+	if [[ ${PV} == "9999" ]] ; then
+		eautoreconf
+	fi
 }
 
 src_configure() {
-	econf \
-		$(use_enable nls) \
-		$(use_enable pam vlock) \
+	local myeconfargs=(
+		$(use_enable nls)
+		$(use_enable pam vlock)
 		$(use_enable test tests)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
 	default
-	dohtml docs/doc/*.html
+	docinto html
+	dodoc docs/doc/*.html
 }
