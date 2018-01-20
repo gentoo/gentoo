@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -12,7 +12,7 @@ DESCRIPTION="A C++ crypto library"
 HOMEPAGE="http://botan.randombit.net/"
 SRC_URI="http://botan.randombit.net/releases/${MY_P}.tgz"
 
-KEYWORDS="amd64 ~arm hppa ~ia64 ppc ppc64 ~sparc x86 ~ppc-macos"
+KEYWORDS="amd64 ~arm ~hppa ~ia64 ppc ppc64 ~sparc x86 ~ppc-macos"
 SLOT="0"
 LICENSE="BSD"
 IUSE="bindist doc python bzip2 gmp libressl ssl static-libs threads zlib"
