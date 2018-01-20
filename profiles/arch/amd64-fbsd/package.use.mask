@@ -2,6 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Michał Górny <mgorny@gentoo.org> (20 Jan 2018)
+# Needs sys-libs/libomp which is not keyworded. Leaving the decision
+# whether sys-libs/libomp should eventually be keyworded to when new
+# LLVM is going to be keyworded.
+<sys-devel/clang-runtime-4 openmp
+
+# Michał Górny <mgorny@gentoo.org> (20 Jan 2018)
 # Needs dev-ml/ocaml-ctypes which is not keyworded. Newer versions
 # no longer have the flag, so no point in keywording it for old.
 sys-devel/llvm ocaml
