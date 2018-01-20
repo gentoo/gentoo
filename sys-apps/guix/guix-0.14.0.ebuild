@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,8 +8,9 @@ inherit autotools readme.gentoo-r1 user
 DESCRIPTION="GNU package manager (nix sibling)"
 HOMEPAGE="https://www.gnu.org/software/guix/"
 
-# taken from gnu/local.mk
+# taken from gnu/local.mk and build-aux/download.scm
 BOOT_GUILE=(
+	"aarch64-linux  20170217 guile-2.0.14.tar.xz"
 	"armhf-linux    20150101 guile-2.0.11.tar.xz"
 	"i686-linux     20131110 guile-2.0.9.tar.xz"
 	"mips64el-linux 20131110 guile-2.0.9.tar.xz"
@@ -51,8 +52,11 @@ RESTRICT=test # complains about size of config.log and refuses to start tests
 
 RDEPEND="
 	dev-libs/libgcrypt:0=
-	>=dev-scheme/guile-2[regex,networking,threads]
+	>=dev-scheme/guile-2:=[regex,networking,threads]
+	dev-scheme/bytestructures
+	dev-scheme/guile-git
 	dev-scheme/guile-json
+	net-libs/gnutls[guile]
 	sys-libs/zlib
 	app-arch/bzip2
 	dev-db/sqlite
@@ -61,12 +65,9 @@ RDEPEND="
 DEPEND="${RDEPEND}
 "
 
-QA_PREBUILT="usr/share/guile/site/2.0/gnu/packages/bootstrap/*"
+PATCHES=("${FILESDIR}"/${PN}-0.13.0-default-daemon.patch)
 
-PATCHES=(
-	"${FILESDIR}"/${P}-no-json-crate.patch
-	"${FILESDIR}"/${P}-AR.patch
-)
+QA_PREBUILT="usr/share/guile/site/*/gnu/packages/bootstrap/*"
 
 DISABLE_AUTOFORMATTING=yes
 DOC_CONTENTS="Quick start user guide on Gentoo:
@@ -97,18 +98,18 @@ pkg_setup() {
 	done
 }
 
-src_configure() {
-	# to be compatible with guix from /gnu/store
-	econf \
-		--localstatedir="${EPREFIX}"/var
-}
-
 src_prepare() {
 	copy_boot_guile_binaries
 
 	default
+	# build system is very eager to run automake itself: bug #625166
+	eautomake
+}
 
-	eautoreconf
+src_configure() {
+	# to be compatible with guix from /gnu/store
+	econf \
+		--localstatedir="${EPREFIX}"/var
 }
 
 src_compile() {
