@@ -612,6 +612,12 @@ sanity_prechecks() {
 		die "Please fix your CHOST"
 	fi
 
+	if ! do_run_test '#include <unistd.h>\n#include <sys/syscall.h>\nint main(){return syscall(1000)!=-1;}\n' ; then
+		eerror "Your old kernel is broken. You need to update it to a newer"
+		eerror "version as syscall(<bignum>) will break. See bug 279260."
+		die "Old and broken kernel."
+	fi
+
 	if [[ -e /proc/xen ]] && [[ $(tc-arch) == "x86" ]] && ! is-flag -mno-tls-direct-seg-refs ; then
 		ewarn "You are using Xen but don't have -mno-tls-direct-seg-refs in your CFLAGS."
 		ewarn "This will result in a 50% performance penalty when running with a 32bit"
