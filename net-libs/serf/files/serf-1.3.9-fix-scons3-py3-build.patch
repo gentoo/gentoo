@@ -1,0 +1,63 @@
+
+calling "print" as statement causes SyntaxError when SCons 3
+is installed, due to the use of python3's print function by
+said version of SCons.
+
+This change reformats print to be compatible both with py3
+and py2.
+
+Signed-off-by: Leonardo Sandoval <leonardo.sandoval.gonzalez@linux.intel.com>
+Signed-off-by: Jose Lamego <jose.a.lamego@linux.intel.com>
+---
+ SConstruct     | 2 +-
+ build/check.py | 8 ++++----
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/build/check.py b/build/check.py
+index 2dacb4c..11ba839 100755
+--- a/build/check.py
++++ b/build/check.py
+@@ -52,16 +52,16 @@ if __name__ == '__main__':
+ 
+   # Find test responses and run them one by one
+   for case in glob.glob(testdir + "/testcases/*.response"):
+-    print "== Testing %s ==" % (case)
++    print("== Testing %s ==" % (case))
+     try:
+       subprocess.check_call([SERF_RESPONSE_EXE, case])
+     except subprocess.CalledProcessError:
+-      print "ERROR: test case %s failed" % (case)
++      print("ERROR: test case %s failed" % (case))
+       sys.exit(1)
+ 
+-  print "== Running the unit tests =="
++  print("== Running the unit tests ==")
+   try:
+     subprocess.check_call(TEST_ALL_EXE)
+   except subprocess.CalledProcessError:
+-    print "ERROR: test(s) failed in test_all"
++    print("ERROR: test(s) failed in test_all")
+     sys.exit(1)
+-- 
+2.7.4
+
+--- serf/SConstruct	2017/09/21 08:55:11	1809132
++++ serf/SConstruct	2017/11/08 17:05:28	1814604
+@@ -182,7 +182,7 @@
+ match = re.search('SERF_MAJOR_VERSION ([0-9]+).*'
+                   'SERF_MINOR_VERSION ([0-9]+).*'
+                   'SERF_PATCH_VERSION ([0-9]+)',
+-                  env.File('serf.h').get_contents(),
++                  env.File('serf.h').get_contents().decode('utf-8'),
+                   re.DOTALL)
+ MAJOR, MINOR, PATCH = [int(x) for x in match.groups()]
+ env.Append(MAJOR=str(MAJOR))
+@@ -199,7 +199,7 @@
+ 
+ unknown = opts.UnknownVariables()
+ if unknown:
+-  print 'Warning: Used unknown variables:', ', '.join(unknown.keys())
++  print('Warning: Used unknown variables:', ', '.join(unknown.keys()))
+ 
+ apr = str(env['APR'])
+ apu = str(env['APU'])
