@@ -1,6 +1,11 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (20 Jan 2018)
+# Needs dev-ml/ocaml-ctypes which is not keyworded. Newer versions
+# no longer have the flag, so no point in keywording it for old.
+sys-devel/llvm ocaml
+
 # Michał Górny <mgorny@gentoo.org> (12 Jan 2018)
 # Requires USE=qt5 that is masked in this profile.
 media-video/vlc skins
