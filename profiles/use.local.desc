@@ -1285,7 +1285,8 @@ dev-lang/php:opcache - Enables built-in opcode cache, replacing pecl-apc et al.
 dev-lang/php:pdo - Enable the bundled PDO extensions
 dev-lang/php:phar - Enables the phar extension to provide phar archive support
 dev-lang/php:phpdbg - Enable the PHP Debug Command Line SAPI (like gdb for php)
-dev-lang/php:sodium - Enable support for crypto through libsodium
+dev-lang/php:session-mm - Include dev-libs/mm support for session storage
+dev-lang/php:sodium - Enable support for crypto through dev-libs/libsodium
 dev-lang/php:tokyocabinet - Enable support for dev-db/tokyocabinet db backend
 dev-lang/php:vpx - Enable webp support for GD in php-5.x
 dev-lang/php:webp - Enable webp support for GD in php-7.x
