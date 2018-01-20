@@ -744,7 +744,7 @@ app-emulation/qemu-guest-agent 2.5.0: QEMU Guest Agent (qemu-ga) for use when ru
 app-emulation/runc 1.0.0_rc2-r2: runc container cli tools
 app-emulation/simh 3.9.0-r1: a simulator for historical computers such as Vax, PDP-11 etc.)
 app-emulation/spectemu 0.99.3: 48k ZX Spectrum Emulator
-app-emulation/spice 0.13.3-r1 0.13.3-r2: SPICE server
+app-emulation/spice 0.13.3-r2: SPICE server
 app-emulation/spice-protocol 0.12.12: Headers defining the SPICE protocol
 app-emulation/spice-vdagent 0.17.0: SPICE VD Linux Guest Agent
 app-emulation/spim 8.0-r2: MIPS Simulator
@@ -7270,7 +7270,7 @@ media-gfx/recoverjpeg 2.0-r2 2.2.1-r1 2.2.3-r1: Recover JPEG pictures from a pos
 media-gfx/ristretto 0.8.0-r1 0.8.2_p20170821: A fast and lightweight picture viewer for Xfce
 media-gfx/rotoscope 0.2: Graphics program that can be used to give photos a cartoon-like appearance
 media-gfx/sam2p 0.49.1 0.49.3: Utility to convert raster images to EPS, PDF and many others
-media-gfx/sane-backends 1.0.25-r1 1.0.27: Scanner Access Now Easy - Backends
+media-gfx/sane-backends 1.0.27: Scanner Access Now Easy - Backends
 media-gfx/sane-frontends 1.0.14: Scanner Access Now Easy
 media-gfx/scantailor 0.9.12.2: A interactive post-processing tool for scanned pages
 media-gfx/scrot 0.8_p13: Screen capture utility using imlib2 library
