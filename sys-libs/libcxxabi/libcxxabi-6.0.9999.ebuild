@@ -30,9 +30,9 @@ RDEPEND="
 			>=sys-libs/llvm-libunwind-3.9.0-r1[static-libs?,${MULTILIB_USEDEP}]
 		)
 	)"
-# LLVM 4 required for llvm-config --cmakedir
+# llvm-6 for new lit options
 DEPEND="${RDEPEND}
-	>=sys-devel/llvm-4
+	>=sys-devel/llvm-6
 	test? ( >=sys-devel/clang-3.9.0
 		~sys-libs/libcxx-${PV}[libcxxabi(-)]
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]') )"

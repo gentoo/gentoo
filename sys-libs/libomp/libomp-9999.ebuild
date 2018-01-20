@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,19 +23,27 @@ EGIT_REPO_URI="https://git.llvm.org/git/openmp.git
 LICENSE="|| ( UoI-NCSA MIT ) MIT LLVM-Grant"
 SLOT="0"
 KEYWORDS=""
-IUSE="hwloc ompt test"
+IUSE="cuda hwloc offload ompt test"
+# CUDA works only with the x86_64 ABI
+REQUIRED_USE="offload? ( cuda? ( abi_x86_64 ) )"
 RESTRICT="!test? ( test )"
 
-RDEPEND="hwloc? ( sys-apps/hwloc:0=[${MULTILIB_USEDEP}] )"
+RDEPEND="
+	hwloc? ( sys-apps/hwloc:0=[${MULTILIB_USEDEP}] )
+	offload? (
+		virtual/libelf:=[${MULTILIB_USEDEP}]
+		virtual/libffi:=[${MULTILIB_USEDEP}]
+		cuda? ( dev-util/nvidia-cuda-sdk:= )
+	)"
 # tests:
 # - dev-python/lit provides the test runner
 # - sys-devel/llvm provide test utils (e.g. FileCheck)
 # - sys-devel/clang provides the compiler to run tests
 DEPEND="${RDEPEND}
 	dev-lang/perl
+	offload? ( virtual/pkgconfig[${MULTILIB_USEDEP}] )
 	test? (
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]')
-		sys-devel/llvm
 		>=sys-devel/clang-6
 	)"
 
@@ -68,14 +76,24 @@ multilib_src_configure() {
 
 		-DLIBOMP_USE_HWLOC=$(usex hwloc)
 		-DLIBOMP_OMPT_SUPPORT=$(usex ompt)
+
+		-DOPENMP_ENABLE_LIBOMPTARGET=$(usex offload)
+
 		# do not install libgomp.so & libiomp5.so aliases
 		-DLIBOMP_INSTALL_ALIASES=OFF
 		# disable unnecessary hack copying stuff back to srcdir
 		-DLIBOMP_COPY_EXPORTS=OFF
 	)
+	use offload && mycmakeargs+=(
+		# this is non-fatal and libomp checks for CUDA conditionally
+		# to ABI, so we can just ignore passing the wrong value
+		# on non-amd64 ABIs
+		-DCMAKE_DISABLE_FIND_PACKAGE_CUDA=$(usex !cuda)
+	)
 	use test && mycmakeargs+=(
-		-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
-		-DLLVM_LIT_ARGS="-vv"
+		# this project does not use standard LLVM cmake macros
+		-DOPENMP_LLVM_LIT_EXECUTABLE="${EPREFIX}/usr/bin/lit"
+		-DOPENMP_LIT_ARGS="-vv"
 
 		-DOPENMP_TEST_C_COMPILER="$(type -P "${CHOST}-clang")"
 		-DOPENMP_TEST_CXX_COMPILER="$(type -P "${CHOST}-clang++")"
