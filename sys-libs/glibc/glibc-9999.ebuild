@@ -575,8 +575,8 @@ get_kheader_version() {
 }
 
 # We collect all sanity checks here. Consistency is not guranteed between
-# pkg_ and src_ phases, so we can call this function both in pkg_pretend
-# and in src_configure.
+# pkg_ and src_ phases, so we call this function both in pkg_pretend and in
+# src_unpack.
 sanity_prechecks() {
 	# Make sure devpts is mounted correctly for use w/out setuid pt_chown
 	check_devpts
@@ -610,6 +610,12 @@ sanity_prechecks() {
 		eerror "Chances are you don't actually want/need i386."
 		eerror "Please read https://www.gentoo.org/doc/en/change-chost.xml"
 		die "Please fix your CHOST"
+	fi
+
+	if ! do_run_test '#include <unistd.h>\n#include <sys/syscall.h>\nint main(){return syscall(1000)!=-1;}\n' ; then
+		eerror "Your old kernel is broken. You need to update it to a newer"
+		eerror "version as syscall(<bignum>) will break. See bug 279260."
+		die "Old and broken kernel."
 	fi
 
 	if [[ -e /proc/xen ]] && [[ $(tc-arch) == "x86" ]] && ! is-flag -mno-tls-direct-seg-refs ; then
@@ -700,12 +706,13 @@ pkg_pretend() {
 	einfo "Checking general environment sanity."
 	sanity_prechecks
 }
-# todo: shouldn't most of these checks be called also in src_configure again?
-# (since consistency is not guaranteed between pkg_ and src_)
 
 # src_unpack
 
 src_unpack() {
+	# Consistency is not guaranteed between pkg_ and src_ ...
+	sanity_prechecks
+
 	use multilib && unpack gcc-${GCC_BOOTSTRAP_VER}-multilib-bootstrap.tar.bz2
 
 	setup_env
@@ -716,10 +723,10 @@ src_unpack() {
 		unpack ${P}.tar.xz
 	fi
 
-	cd "${S}"
-	touch locale/C-translit.h #185476 #218003
+	cd "${S}" || die
+	touch locale/C-translit.h || die #185476 #218003
 
-	cd "${WORKDIR}"
+	cd "${WORKDIR}" || die
 	unpack glibc-${RELEASE_VER}-patches-${PATCH_VER}.tar.bz2
 }
 
