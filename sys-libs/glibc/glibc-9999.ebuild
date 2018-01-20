@@ -575,8 +575,8 @@ get_kheader_version() {
 }
 
 # We collect all sanity checks here. Consistency is not guranteed between
-# pkg_ and src_ phases, so we can call this function both in pkg_pretend
-# and in src_configure.
+# pkg_ and src_ phases, so we call this function both in pkg_pretend and in
+# src_unpack.
 sanity_prechecks() {
 	# Make sure devpts is mounted correctly for use w/out setuid pt_chown
 	check_devpts
@@ -706,12 +706,13 @@ pkg_pretend() {
 	einfo "Checking general environment sanity."
 	sanity_prechecks
 }
-# todo: shouldn't most of these checks be called also in src_configure again?
-# (since consistency is not guaranteed between pkg_ and src_)
 
 # src_unpack
 
 src_unpack() {
+	# Consistency is not guaranteed between pkg_ and src_ ...
+	sanity_prechecks
+
 	use multilib && unpack gcc-${GCC_BOOTSTRAP_VER}-multilib-bootstrap.tar.bz2
 
 	setup_env
@@ -722,10 +723,10 @@ src_unpack() {
 		unpack ${P}.tar.xz
 	fi
 
-	cd "${S}"
-	touch locale/C-translit.h #185476 #218003
+	cd "${S}" || die
+	touch locale/C-translit.h || die #185476 #218003
 
-	cd "${WORKDIR}"
+	cd "${WORKDIR}" || die
 	unpack glibc-${RELEASE_VER}-patches-${PATCH_VER}.tar.bz2
 }
 
