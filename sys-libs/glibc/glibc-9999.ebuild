@@ -4,7 +4,7 @@
 EAPI=6
 
 inherit prefix eutils versionator toolchain-funcs flag-o-matic gnuconfig \
-	multilib systemd multiprocessing linux-info
+	multilib systemd multiprocessing
 
 DESCRIPTION="GNU libc C library"
 HOMEPAGE="https://www.gnu.org/software/libc/"
@@ -509,8 +509,15 @@ check_devpts() {
 	fi
 }
 
-# The following functions are copied from portage source and split a Kernel
-# version into its components.
+# The following Kernel version handling functions are mostly copied from portage
+# source. It's better not to use linux-info.eclass here since a) it adds too
+# much magic, see bug 326693 for some of the arguments, and b) some of the
+# functions are just not provided.
+
+g_get_running_KV() {
+        uname -r
+        return $?
+}
 
 g_KV_major() {
 	[[ -z $1 ]] && return 1
@@ -573,10 +580,7 @@ check_nptl_support() {
 
 	local run_kv build_kv want_kv
 
-	# We get the running kernel version using linux-info.eclass
-	get_running_version
-	run_kv=${KV_MAJOR}.${KV_MINOR}.${KV_PATCH}
-
+	run_kv=$(g_get_running_KV)
 	build_kv=$(g_int_to_KV $(get_kheader_version))
 	want_kv=${MIN_KERN_VER}
 
