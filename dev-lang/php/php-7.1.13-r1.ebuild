@@ -35,7 +35,7 @@ IUSE="${IUSE} acl bcmath berkdb bzip2 calendar cdb cjk
 	intl iodbc ipv6 +json kerberos ldap ldap-sasl libedit libressl
 	mhash mssql mysql mysqli nls
 	oci8-instant-client odbc +opcache pcntl pdo +phar +posix postgres qdbm
-	readline recode selinux +session sharedmem
+	readline recode selinux +session session-mm sharedmem
 	+simplexml snmp soap sockets spell sqlite ssl
 	sysvipc systemd test tidy +tokenizer truetype unicode wddx webp
 	+xml xmlreader xmlwriter xmlrpc xpm xslt zip zlib"
@@ -81,7 +81,7 @@ COMMON_DEPEND="
 	qdbm? ( dev-db/qdbm )
 	readline? ( sys-libs/readline:0= )
 	recode? ( app-text/recode )
-	sharedmem? ( dev-libs/mm )
+	session-mm? ( dev-libs/mm )
 	simplexml? ( >=dev-libs/libxml2-2.6.8 )
 	snmp? ( >=net-analyzer/net-snmp-5.2 )
 	soap? ( >=dev-libs/libxml2-2.6.8 )
@@ -141,7 +141,7 @@ REQUIRED_USE="
 	qdbm? ( !gdbm )
 	readline? ( !libedit )
 	recode? ( !imap !mysqli !mysql )
-	sharedmem? ( !threads )
+	session-mm? ( session !threads )
 	mysql? ( || ( mysqli pdo ) )
 "
 
@@ -388,7 +388,7 @@ src_configure() {
 
 	# Session support
 	if use session ; then
-		our_conf+=( $(use_with sharedmem mm "${EPREFIX}/usr") )
+		our_conf+=( $(use_with session-mm mm "${EPREFIX}/usr") )
 	else
 		our_conf+=( $(use_enable session session) )
 	fi
