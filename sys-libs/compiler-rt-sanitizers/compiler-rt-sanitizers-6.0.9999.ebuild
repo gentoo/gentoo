@@ -25,9 +25,9 @@ IUSE="+clang test"
 RESTRICT="!test? ( test ) !clang? ( test )"
 
 LLVM_SLOT=${SLOT%%.*}
-# llvm-4 needed for --cmakedir
+# llvm-6 for new lit options
 DEPEND="
-	>=sys-devel/llvm-4
+	>=sys-devel/llvm-6
 	clang? ( sys-devel/clang )
 	test? (
 		app-portage/unsandbox
