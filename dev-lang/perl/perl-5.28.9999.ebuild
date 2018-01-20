@@ -9,14 +9,14 @@ PATCH_VER=1
 CROSS_VER=1.1.8
 PATCH_BASE="perl-5.27.7-patches-${PATCH_VER}"
 
-DIST_AUTHOR=BINGOS
+DIST_AUTHOR=ABIGAIL
 
 # Greatest first, don't include yourself
 # Devel point-releases are not ABI-intercompatible, but stable point releases are
 # BIN_OLDVERSEN is contains only C-ABI-intercompatible versions
 PERL_BIN_OLDVERSEN=""
 if [[ "${PV##*.}" == "9999" ]]; then
-	DIST_VERSION=5.27.7
+	DIST_VERSION=5.27.8
 else
 	DIST_VERSION="${PV/_rc/-RC}"
 fi
@@ -77,18 +77,18 @@ S="${WORKDIR}/${MY_P}"
 dual_scripts() {
 	src_remove_dual      perl-core/Archive-Tar        2.260.0       ptar ptardiff ptargrep
 	src_remove_dual      perl-core/CPAN               2.200.0       cpan
-	src_remove_dual      perl-core/Digest-SHA         6.0.0         shasum
-	src_remove_dual      perl-core/Encode             2.930.0       enc2xs piconv
+	src_remove_dual      perl-core/Digest-SHA         6.10.0        shasum
+	src_remove_dual      perl-core/Encode             2.940.0       enc2xs piconv
 	src_remove_dual      perl-core/ExtUtils-MakeMaker 7.300.0       instmodsh
 	src_remove_dual      perl-core/ExtUtils-ParseXS   3.360.0       xsubpp
 	src_remove_dual      perl-core/IO-Compress        2.74.0        zipdetails
-	src_remove_dual      perl-core/JSON-PP            2.970.0       json_pp
-	src_remove_dual      perl-core/Module-CoreList    5.201.712.200 corelist
+	src_remove_dual      perl-core/JSON-PP            2.970.10      json_pp
+	src_remove_dual      perl-core/Module-CoreList    5.201.801.200 corelist
 	src_remove_dual      perl-core/Pod-Parser         1.630.0       pod2usage podchecker podselect
 	src_remove_dual      perl-core/Pod-Perldoc        3.280.100     perldoc
 	src_remove_dual      perl-core/Test-Harness       3.390.0       prove
-	src_remove_dual      perl-core/podlators          4.90.0        pod2man pod2text
-	src_remove_dual_man  perl-core/podlators          4.90.0        /usr/share/man/man1/perlpodstyle.1
+	src_remove_dual      perl-core/podlators          4.100.0        pod2man pod2text
+	src_remove_dual_man  perl-core/podlators          4.100.0        /usr/share/man/man1/perlpodstyle.1
 }
 
 check_rebuild() {
