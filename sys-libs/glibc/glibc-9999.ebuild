@@ -574,49 +574,10 @@ get_kheader_version() {
 	tail -n 1
 }
 
-check_nptl_support() {
-	# We don't care about the compiler here as we aren't using it
-	just_headers && return
-
-	local run_kv build_kv want_kv
-
-	run_kv=$(g_get_running_KV)
-	build_kv=$(g_int_to_KV $(get_kheader_version))
-	want_kv=${MIN_KERN_VER}
-
-	ebegin "Checking gcc for __thread support"
-	if ! eend $(want__thread ; echo $?) ; then
-		echo
-		eerror "Could not find a gcc that supports the __thread directive!"
-		eerror "Please update your binutils/gcc and try again."
-		die "No __thread support in gcc!"
-	fi
-
-	if ! is_crosscompile && ! tc-is-cross-compiler ; then
-		# Building fails on an non-supporting kernel
-		ebegin "Checking running kernel version (${run_kv} >= ${want_kv})"
-		if ! eend_KV ${run_kv} ${want_kv} ; then
-			echo
-			eerror "You need a kernel of at least ${want_kv}!"
-			die "Kernel version too low!"
-		fi
-	fi
-
-	ebegin "Checking linux-headers version (${build_kv} >= ${want_kv})"
-	if ! eend_KV ${build_kv} ${want_kv} ; then
-		echo
-		eerror "You need linux-headers of at least ${want_kv}!"
-		die "linux-headers version too low!"
-	fi
-}
-
-#
-# the phases
-#
-
-# pkg_pretend
-
-pkg_pretend() {
+# We collect all sanity checks here. Consistency is not guranteed between
+# pkg_ and src_ phases, so we can call this function both in pkg_pretend
+# and in src_configure.
+sanity_prechecks() {
 	# Make sure devpts is mounted correctly for use w/out setuid pt_chown
 	check_devpts
 
@@ -635,9 +596,6 @@ pkg_pretend() {
 			eerror " Downgrading glibc is not supported and a sure way to destruction."
 			die "Aborting to save your system."
 		fi
-
-		# removed check for #262698 since it's about kernel 2.6.18 ...
-		# removed check for #279260 since it's about kernel <2.6.28 ...
 	fi
 
 	# Users have had a chance to phase themselves, time to give em the boot
@@ -663,30 +621,6 @@ pkg_pretend() {
 	use hardened && ! tc-enables-pie && \
 		ewarn "PIE hardening not applied, as your compiler doesn't default to PIE"
 
-	# Make sure host system is up to date #394453
-	if has_version '<sys-libs/glibc-2.13' && \
-	   [[ -n $(scanelf -qys__guard -F'#s%F' "${EROOT}"/lib*/l*-*.so) ]]
-	then
-		ebegin "Scanning system for __guard to see if you need to rebuild first ..."
-		local files=$(
-			scanelf -qys__guard -F'#s%F' \
-				"${EROOT}"/*bin/ \
-				"${EROOT}"/lib* \
-				"${EROOT}"/usr/*bin/ \
-				"${EROOT}"/usr/lib* | \
-				egrep -v \
-					-e "^${EROOT}/lib.*/(libc|ld)-2.*.so$" \
-					-e "^${EROOT}/sbin/(ldconfig|sln)$"
-		)
-		[[ -z ${files} ]]
-		if ! eend $? ; then
-			eerror "Your system still has old SSP __guard symbols.  You need to"
-			eerror "rebuild all the packages that provide these files first:"
-			eerror "${files}"
-			die "old __guard detected"
-		fi
-	fi
-
 	# Check for sanity of /etc/nsswitch.conf
 	if [[ -e ${EROOT}/etc/nsswitch.conf ]] ; then
 		local entry
@@ -706,7 +640,7 @@ pkg_pretend() {
 	# we test for...
 	if ! is_crosscompile ; then
 
-		if use amd64 && use multilib ; then
+		if use amd64 && use multilib && [[ ${MERGE_TYPE} != "binary" ]] ; then
 			ebegin "Checking that IA32 emulation is enabled in the running kernel"
 			echo 'int main(){return 0;}' > "${T}/check-ia32-emulation.c"
 			"${CC-${CHOST}-gcc}" ${CFLAGS_x86} "${T}/check-ia32-emulation.c" -o "${T}/check-ia32-emulation.elf32"
@@ -718,6 +652,53 @@ pkg_pretend() {
 		fi
 
 	fi
+
+	# When we actually have to compile something...
+	if ! just_headers ; then
+		local run_kv build_kv want_kv
+
+		run_kv=$(g_get_running_KV)
+		build_kv=$(g_int_to_KV $(get_kheader_version))
+		want_kv=${MIN_KERN_VER}
+
+		ebegin "Checking gcc for __thread support"
+		if ! eend $(want__thread ; echo $?) ; then
+			echo
+			eerror "Could not find a gcc that supports the __thread directive!"
+			eerror "Please update your binutils/gcc and try again."
+			die "No __thread support in gcc!"
+		fi
+
+		if ! is_crosscompile && ! tc-is-cross-compiler ; then
+			# Building fails on an non-supporting kernel
+			ebegin "Checking running kernel version (${run_kv} >= ${want_kv})"
+			if ! eend_KV ${run_kv} ${want_kv} ; then
+				echo
+				eerror "You need a kernel of at least ${want_kv}!"
+				die "Kernel version too low!"
+			fi
+		fi
+
+		ebegin "Checking linux-headers version (${build_kv} >= ${want_kv})"
+		if ! eend_KV ${build_kv} ${want_kv} ; then
+			echo
+			eerror "You need linux-headers of at least ${want_kv}!"
+			die "linux-headers version too low!"
+		fi
+	fi
+}
+
+
+#
+# the phases
+#
+
+# pkg_pretend
+
+pkg_pretend() {
+	# All the checks...
+	einfo "Checking general environment sanity."
+	sanity_prechecks
 }
 # todo: shouldn't most of these checks be called also in src_configure again?
 # (since consistency is not guaranteed between pkg_ and src_)
@@ -728,10 +709,6 @@ src_unpack() {
 	use multilib && unpack gcc-${GCC_BOOTSTRAP_VER}-multilib-bootstrap.tar.bz2
 
 	setup_env
-
-	# Check NPTL support _before_ we unpack things to save some time
-	check_nptl_support
-	# todo: 1) move this to pkg_pretend? 2) use proper functions for kv
 
 	if [[ -n ${EGIT_REPO_URI} ]] ; then
 		git-r3_src_unpack
