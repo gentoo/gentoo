@@ -16,6 +16,7 @@ IUSE="libressl kernel_Darwin"
 
 DEPEND="
 	!kernel_Darwin? (
+		virtual/acl
 		!libressl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )
 		libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
 	)
@@ -25,14 +26,12 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}"/${PN}-1.6.1-ext2.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.6.1-ext2.patch
+	"${FILESDIR}"/${PN}-1.8-safe_dirname.patch
+)
 
 S=${WORKDIR}/${PN}-${APPLE_PV}/${PN}
-
-src_prepare() {
-	default
-	sed -i -e 's/safe_dirname/xar_safe_dirname/' lib/linuxattr.c || die
-}
 
 multilib_src_configure() {
 	use kernel_Darwin || append-libs $(pkg-config --libs openssl)
