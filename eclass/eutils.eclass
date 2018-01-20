@@ -362,12 +362,14 @@ case ${EAPI:-0} in
 
 # @FUNCTION: einstalldocs
 # @DESCRIPTION:
-# Install documentation using DOCS and HTML_DOCS.
+# Install documentation using DOCS and HTML_DOCS, in EAPIs that do not
+# provide this function.  When available (i.e., in EAPI 6 or later),
+# the package manager implementation should be used instead.
 #
 # If DOCS is declared and non-empty, all files listed in it are
-# installed. The files must exist, otherwise the function will fail.
-# In EAPI 4 and subsequent EAPIs DOCS may specify directories as well,
-# in other EAPIs using directories is unsupported.
+# installed.  The files must exist, otherwise the function will fail.
+# In EAPI 4 and 5, DOCS may specify directories as well; in earlier
+# EAPIs using directories is unsupported.
 #
 # If DOCS is not declared, the files matching patterns given
 # in the default EAPI implementation of src_install will be installed.
@@ -424,10 +426,11 @@ einstalldocs() {
 # @FUNCTION: in_iuse
 # @USAGE: <flag>
 # @DESCRIPTION:
-# Determines whether the given flag is in IUSE. Strips IUSE default prefixes
-# as necessary.
+# Determines whether the given flag is in IUSE.  Strips IUSE default
+# prefixes as necessary.  In EAPIs where it is available (i.e., EAPI 6
+# or later), the package manager implementation should be used instead.
 #
-# Note that this function should not be used in the global scope.
+# Note that this function must not be used in the global scope.
 in_iuse() {
 	debug-print-function ${FUNCNAME} "${@}"
 	[[ ${#} -eq 1 ]] || die "Invalid args to ${FUNCNAME}()"
