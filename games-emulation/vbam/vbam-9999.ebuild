@@ -2,15 +2,17 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-WX_GTK_VER="3.0"
-inherit cmake-utils wxwidgets gnome2-utils eutils xdg-utils
+
+WX_GTK_VER="3.0-gtk3"
+inherit eutils gnome2-utils wxwidgets xdg-utils cmake-utils
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/visualboyadvance-m/visualboyadvance-m.git"
 	inherit git-r3
 else
-	SRC_URI="https://dev.gentoo.org/~radhermit/distfiles/${P}.tar.xz"
+	SRC_URI="https://github.com/visualboyadvance-m/visualboyadvance-m/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
+	S="${WORKDIR}/visualboyadvance-m-${PV}"
 fi
 
 DESCRIPTION="Game Boy, GBC, and GBA emulator forked from VisualBoyAdvance"
@@ -21,13 +23,14 @@ SLOT="0"
 IUSE="ffmpeg link lirc nls openal +sdl wxwidgets"
 REQUIRED_USE="openal? ( wxwidgets ) || ( sdl wxwidgets )"
 
-RDEPEND=">=media-libs/libpng-1.4:0=
+RDEPEND="
+	>=media-libs/libpng-1.4:0=
 	media-libs/libsdl2[joystick]
 	link? ( >=media-libs/libsfml-2.0:= )
-	sys-libs/zlib
+	sys-libs/zlib:=
 	virtual/glu
 	virtual/opengl
-	ffmpeg? ( virtual/ffmpeg[-libav] )
+	ffmpeg? ( media-video/ffmpeg:= )
 	lirc? ( app-misc/lirc )
 	nls? ( virtual/libintl )
 	wxwidgets? (
@@ -35,13 +38,14 @@ RDEPEND=">=media-libs/libpng-1.4:0=
 		x11-libs/wxGTK:${WX_GTK_VER}[X,opengl]
 	)"
 DEPEND="${RDEPEND}
+	app-arch/zip
 	wxwidgets? ( virtual/imagemagick-tools )
 	x86? ( || ( dev-lang/nasm dev-lang/yasm ) )
 	nls? ( sys-devel/gettext )
 	virtual/pkgconfig"
 
 src_prepare() {
-	default
+	cmake-utils_src_prepare
 
 	# fix desktop file QA warnings
 	edos2unix src/wx/wxvbam.desktop
@@ -62,10 +66,6 @@ src_configure() {
 		-DCMAKE_SKIP_RPATH=ON
 	)
 	cmake-utils_src_configure
-}
-
-src_compile() {
-	cmake-utils_src_compile
 }
 
 src_install() {
