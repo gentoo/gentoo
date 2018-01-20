@@ -21,6 +21,6 @@
 		<flag name="sanitize">Build compiler-rt's sanitizers</flag>
 		<flag name="static-analyzer">Install the Clang static analyzer (requires USE=clang)</flag>
 		<flag name="xar">Support dumping LLVM bitcode sections in Mach-O files
-			(uses <pkg>app-arch/libxar</pkg>)</flag>
+			(uses <pkg>app-arch/xar</pkg>)</flag>
 	</use>
 </pkgmetadata>
