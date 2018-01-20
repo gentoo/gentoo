@@ -701,6 +701,23 @@ pkg_pretend() {
 			fi
 		done
 	fi
+
+	# ABI-specific checks follow here. Hey, we have a lot more specific conditions that
+	# we test for...
+	if ! is_crosscompile ; then
+
+		if use amd64 && use multilib ; then
+			ebegin "Checking that IA32 emulation is enabled in the running kernel"
+			echo 'int main(){return 0;}' > "${T}/check-ia32-emulation.c"
+			"${CC-${CHOST}-gcc}" ${CFLAGS_x86} "${T}/check-ia32-emulation.c" -o "${T}/check-ia32-emulation.elf32"
+			"${T}/check-ia32-emulation.elf32"
+			local STAT=$?
+			rm -f "${T}/check-ia32-emulation.elf32"
+			eend $STAT
+			[ $STAT -eq 0 ] || die "CONFIG_IA32_EMULATION must be enabled in the kernel to compile a multilib glibc."
+		fi
+
+	fi
 }
 # todo: shouldn't most of these checks be called also in src_configure again?
 # (since consistency is not guaranteed between pkg_ and src_)
