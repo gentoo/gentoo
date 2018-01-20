@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,7 +16,7 @@ SRC_URI="
 		-> xmlada-gpl-${PV}-src.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="gnat_2016 +gnat_2017"
 
 DEPEND="gnat_2016? ( dev-lang/gnat-gpl:4.9.4 )
