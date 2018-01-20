@@ -23,8 +23,9 @@ IUSE="debug +static-libs test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="!sys-libs/libunwind"
-# LLVM 4 required for llvm-config --cmakedir
-DEPEND=">=sys-devel/llvm-4
+# llvm-6 for new lit options
+DEPEND="
+	>=sys-devel/llvm-6
 	test? (
 		sys-libs/libcxx[${MULTILIB_USEDEP}]
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]') )"
