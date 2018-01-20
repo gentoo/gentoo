@@ -189,10 +189,6 @@ src_install() {
 	fi
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
 pkg_postinst() {
 	if use postgres; then
 		elog "If you don't intend to use an external PostGIS server"

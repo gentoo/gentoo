@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ SRC_URI="https://launchpad.net/${PN}/${TRUNK_VERSION}/${PV}/+download/${P}.tar.x
 LICENSE="GPL-3 LGPL-3"
 SLOT="0"
 KEYWORDS="amd64 arm ~arm64 ppc ppc64 x86"
-IUSE="audit +introspection qt4 qt5 +gnome"
+IUSE="audit +introspection qt5 +gnome"
 
 COMMON_DEPEND="audit? ( sys-process/audit )
 	>=dev-libs/glib-2.32.3:2
@@ -23,11 +23,6 @@ COMMON_DEPEND="audit? ( sys-process/audit )
 	x11-libs/libX11
 	>=x11-libs/libxklavier-5
 	introspection? ( >=dev-libs/gobject-introspection-1 )
-	qt4? (
-		dev-qt/qtcore:4
-		dev-qt/qtdbus:4
-		dev-qt/qtgui:4
-		)
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtdbus:5
@@ -94,7 +89,7 @@ src_configure() {
 		--disable-tests \
 		$(use_enable audit libaudit) \
 		$(use_enable introspection) \
-		$(use_enable qt4 liblightdm-qt) \
+		--disable-liblightdm-qt \
 		$(use_enable qt5 liblightdm-qt5) \
 		--with-user-session=${_session} \
 		--with-greeter-session=${_greeter} \
