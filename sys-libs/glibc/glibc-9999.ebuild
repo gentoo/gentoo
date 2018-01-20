@@ -935,16 +935,10 @@ glibc_do_configure() {
 	# is built with MULTILIB_ABIS="amd64 x86" but we want to
 	# add x32 to it, gcc/glibc don't yet support x32.
 	#
-	# This reqires net-libs/rpcsvc-proto now (which provides
-	# rpcgen) !!! Needs analysis how to best add to deps.
-	#
 	if [[ -n ${GCC_BOOTSTRAP_VER} ]] && use multilib ; then
 		echo 'main(){}' > "${T}"/test.c
 		if ! $(tc-getCC ${CTARGET}) ${CFLAGS} ${LDFLAGS} "${T}"/test.c -Wl,-emain -lgcc 2>/dev/null ; then
 			sed -i -e '/^CC = /s:$: -B$(objdir)/../'"gcc-${GCC_BOOTSTRAP_VER}/${ABI}:" config.make || die
-			mkdir -p sunrpc
-			cp $(which rpcgen) sunrpc/cross-rpcgen || die
-			touch -t 202001010101 sunrpc/cross-rpcgen || die
 		fi
 	fi
 }
