@@ -116,6 +116,8 @@ do_configure() {
 		# ncurses is dumb and doesn't install .pc files unless pkg-config
 		# is also installed.  Force the tests to go our way.  Note that it
 		# doesn't actually use pkg-config ... it just looks for set vars.
+		# This is fixed in newer versions:
+		# https://lists.gnu.org/archive/html/bug-ncurses/2015-08/msg00026.html
 		--enable-pc-files
 		--with-pkg-config="$(tc-getPKG_CONFIG)"
 		# This path is used to control where the .pc files are installed.
