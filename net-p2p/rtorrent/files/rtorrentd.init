@@ -21,13 +21,14 @@ start() {
 			--env HOME="${PWHOME:-/home/$USER}" \
 			--name rtorrent \
 			--exec /usr/bin/screen -- -D -m -S rtorrentd /usr/bin/rtorrent
-	# Because we've daemonized with screen, we need to replace the PID file with the real PID of rtorrent
-	pgrep -P $(cat /var/run/rtorrentd.pid) > /var/run/rtorrentd.pid
 	eend $?
 }
 
 stop() {
 	ebegin "Stopping rtorrent"
+	# Because we've daemonized with screen, we need to replace the PID file with the real PID of rtorrent
+	pgrep -P $(cat /var/run/rtorrentd.pid) > /var/run/rtorrentd.pid
+
 	start-stop-daemon --stop --signal 15 \
 			--pidfile /var/run/rtorrentd.pid
 	eend $?
