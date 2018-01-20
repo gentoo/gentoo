@@ -4,6 +4,10 @@
 	<maintainer type="project">
 		<email>wine@gentoo.org</email>
 		<name>Wine</name>
+		<description>
+			This package must be kept in sync with repo/proj/wine repository.
+			Any changes need to be run past the maintainer to ensure the two repositories are kept in sync.
+		</description>
 	</maintainer>
 	<maintainer type="person">
 		<description>Only CC on bugs that involve USE="d3d9"</description>
