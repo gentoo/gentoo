@@ -60,6 +60,10 @@ multilib_src_configure() {
 		-DLIBUNWIND_ENABLE_ASSERTIONS=$(usex debug)
 		-DLIBUNWIND_ENABLE_STATIC=$(usex static-libs)
 		-DLLVM_INCLUDE_TESTS=$(usex test)
+
+		# support non-native unwinding; given it's small enough,
+		# enable it unconditionally
+		-DLIBUNWIND_ENABLE_CROSS_UNWINDING=ON
 	)
 	if use test; then
 		mycmakeargs+=(
