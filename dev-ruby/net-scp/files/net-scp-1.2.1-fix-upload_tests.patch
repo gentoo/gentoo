@@ -1,0 +1,30 @@
+--- test/test_upload.rb	2018-01-20 18:35:08.964014750 +0100
++++ test/test_upload.rb.1	2018-01-20 18:36:37.256014961 +0100
+@@ -156,7 +156,9 @@
+       channel.gets_ok
+     end
+ 
+-    assert_raises(Net::SCP::Error) { scp.upload!("/path/to/local", "/path/to/remote") }
++    Net::SSH::Test::Extensions::IO.with_test_extension do
++      assert_raises(Net::SCP::Error) { scp.upload!("/path/to/local", "/path/to/remote") }
++    end
+   end
+ 
+   def test_upload_empty_directory_should_create_directory_and_finish
+@@ -266,4 +268,16 @@
+     story { |s| s.opens_channel(false) }
+     assert_scripted { scp.upload("/path/to/local.txt", "/path/to/remote.txt") }
+   end
++
++  def test_upload_should_raise_error_if_gets_not_ok
++    prepare_file("/path/to/local.txt", "")
++
++    expect_scp_session "-t /path/to/remote.txt" do |channel|
++      channel.gets_data "\1"
++    end
++    Net::SSH::Test::Extensions::IO.with_test_extension do
++      e = assert_raises(Net::SCP::Error) { scp.upload!("/path/to/local.txt", "/path/to/remote.txt") }
++      assert_equal("\1", e.message)
++    end
++  end
+ end

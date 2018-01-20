@@ -19,14 +19,17 @@ SLOT="4"
 KEYWORDS="~amd64"
 IUSE=""
 
+RUBY_PATCHES=( ${P}-fix-download_tests.patch  ${P}-fix-upload_tests.patch )
+
+
 ruby_add_bdepend "
-	doc? ( >=dev-ruby/net-ssh-2.6.5:4 )
+	doc? ( >=dev-ruby/net-ssh-4.0:4 )
 	test? (
-		>=dev-ruby/net-ssh-2.9.0:4
+		>=dev-ruby/net-ssh-4.0:4
 		dev-ruby/mocha
 	)"
 
-ruby_add_rdepend ">=dev-ruby/net-ssh-2.6.5:4"
+ruby_add_rdepend ">=dev-ruby/net-ssh-4.0:4"
 
 all_ruby_prepare() {
 	sed -i -e 's/>= 2.0.0/~> 2.0/' test/common.rb || die
