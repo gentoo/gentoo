@@ -1,7 +1,7 @@
 Title: systemd rootprefix migration
 Author: Mike Gilbert <floppym@gentoo.org>
 Posted: 2017-07-16
-Revision: 3
+Revision: 4
 News-Item-Format: 2.0
 Display-If-Installed: <sys-apps/systemd-234
 
@@ -19,7 +19,7 @@ initramfs should become corrupt or fail.
 Symlinks are provided for /usr/lib/systemd/systemd and
 /usr/lib/systemd/systemd-shutdown to avoid breaking bootloader configs
 and to allow the system to be shutdown/rebooted without issue. These
-symlinks will likely be removed in the 235 release, so please update
+symlinks will likely be removed in the 237 release, so please update
 your boot configuration to reference init=/lib/systemd/systemd.
 
 This change will be mostly transparent to typical users. You may notice
