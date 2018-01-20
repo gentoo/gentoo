@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,5 +18,5 @@ SRC_URI="https://github.com/sickill/rainbow/archive/v${PV}.tar.gz -> ${PN}-git-$
 
 LICENSE="MIT"
 SLOT="2"
-KEYWORDS="amd64 hppa ~ppc ~sparc x86"
+KEYWORDS="amd64 ~hppa ~ppc ~sparc x86"
 IUSE=""
