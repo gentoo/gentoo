@@ -20,7 +20,7 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	MAJOR_V=$(get_version_component_range 1)
 	SRC_URI="https://dl.winehq.org/wine/source/${MAJOR_V}.0/${MY_P}.tar.xz"
-	KEYWORDS="-* amd64 x86 ~x86-fbsd"
+	KEYWORDS="-* ~amd64 ~x86 ~x86-fbsd"
 fi
 S="${WORKDIR}/${MY_P}"
 
@@ -155,13 +155,9 @@ PATCHES=(
 	"${PATCHDIR}/patches/${MY_PN}-1.9.5-multilib-portage.patch" #395615
 	"${PATCHDIR}/patches/${MY_PN}-1.6-memset-O3.patch" #480508
 	"${PATCHDIR}/patches/${MY_PN}-2.0-multislot-apploader.patch" #310611
-	"${PATCHDIR}/patches/freetype-2.8.1-segfault.patch" #631676
-	"${PATCHDIR}/patches/freetype-2.8.1-drop-glyphs.patch" #631376
 	"${PATCHDIR}/patches/${MY_PN}-2.0-prevent-build-of-localized-manpages.patch" #469418 #617864
 )
-PATCHES_BIN=(
-	"${PATCHDIR}/patches/freetype-2.8.1-patch-fonts.patch" #631376
-)
+PATCHES_BIN=()
 
 # https://bugs.gentoo.org/show_bug.cgi?id=635222
 if [[ ${#PATCHES_BIN[@]} -ge 1 ]] || [[ ${PV} == 9999 ]]; then

@@ -20,7 +20,7 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	MAJOR_V=$(get_version_component_range 1)
 	SRC_URI="https://dl.winehq.org/wine/source/${MAJOR_V}.0/${MY_P}.tar.xz"
-	KEYWORDS="-* amd64 x86 ~x86-fbsd"
+	KEYWORDS="-* ~amd64 ~x86 ~x86-fbsd"
 fi
 S="${WORKDIR}/${MY_P}"
 
@@ -35,7 +35,7 @@ SRC_URI="${SRC_URI}
 
 LICENSE="LGPL-2.1"
 SLOT="${PV}"
-IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags dos elibc_glibc +fontconfig +gecko gphoto2 gsm gstreamer +jpeg kernel_FreeBSD +lcms ldap +mono mp3 ncurses netapi nls odbc openal opencl +opengl osmesa oss +perl pcap +png prelink pulseaudio +realtime +run-exes samba scanner selinux +ssl test +threads +truetype udev +udisks v4l +X +xcomposite xinerama +xml"
+IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags dos elibc_glibc +fontconfig +gecko gphoto2 gsm gstreamer +jpeg kerberos kernel_FreeBSD +lcms ldap +mono mp3 ncurses netapi nls odbc openal opencl +opengl osmesa oss +perl pcap +png prelink pulseaudio +realtime +run-exes samba scanner selinux +ssl test +threads +truetype udev +udisks v4l +X +xcomposite xinerama +xml"
 REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )
 	X? ( truetype )
 	elibc_glibc? ( threads )
@@ -50,6 +50,7 @@ COMMON_DEPEND="
 	X? (
 		x11-libs/libXcursor[${MULTILIB_USEDEP}]
 		x11-libs/libXext[${MULTILIB_USEDEP}]
+		x11-libs/libXfixes[${MULTILIB_USEDEP}]
 		x11-libs/libXrandr[${MULTILIB_USEDEP}]
 		x11-libs/libXi[${MULTILIB_USEDEP}]
 		x11-libs/libXxf86vm[${MULTILIB_USEDEP}]
@@ -65,6 +66,7 @@ COMMON_DEPEND="
 		media-plugins/gst-plugins-meta:1.0[${MULTILIB_USEDEP}]
 	)
 	jpeg? ( virtual/jpeg:0=[${MULTILIB_USEDEP}] )
+	kerberos? ( virtual/krb5[${MULTILIB_USEDEP}] )
 	lcms? ( media-libs/lcms:2=[${MULTILIB_USEDEP}] )
 	ldap? ( net-nds/openldap:=[${MULTILIB_USEDEP}] )
 	mp3? ( >=media-sound/mpg123-1.5.0[${MULTILIB_USEDEP}] )
@@ -117,7 +119,7 @@ RDEPEND="${COMMON_DEPEND}
 	!app-emulation/wine:0
 	dos? ( >=games-emulation/dosbox-0.74_p20160629 )
 	gecko? ( app-emulation/wine-gecko:2.47[abi_x86_32?,abi_x86_64?] )
-	mono? ( app-emulation/wine-mono:4.6.4 )
+	mono? ( app-emulation/wine-mono:4.7.1 )
 	perl? (
 		dev-lang/perl
 		dev-perl/XML-Simple
@@ -155,13 +157,9 @@ PATCHES=(
 	"${PATCHDIR}/patches/${MY_PN}-1.9.5-multilib-portage.patch" #395615
 	"${PATCHDIR}/patches/${MY_PN}-1.6-memset-O3.patch" #480508
 	"${PATCHDIR}/patches/${MY_PN}-2.0-multislot-apploader.patch" #310611
-	"${PATCHDIR}/patches/freetype-2.8.1-segfault.patch" #631676
-	"${PATCHDIR}/patches/freetype-2.8.1-drop-glyphs.patch" #631376
 	"${PATCHDIR}/patches/${MY_PN}-2.0-prevent-build-of-localized-manpages.patch" #469418 #617864
 )
-PATCHES_BIN=(
-	"${PATCHDIR}/patches/freetype-2.8.1-patch-fonts.patch" #631376
-)
+PATCHES_BIN=()
 
 # https://bugs.gentoo.org/show_bug.cgi?id=635222
 if [[ ${#PATCHES_BIN[@]} -ge 1 ]] || [[ ${PV} == 9999 ]]; then
@@ -400,6 +398,7 @@ multilib_src_configure() {
 		$(use_with gstreamer)
 		--without-hal
 		$(use_with jpeg)
+		$(use_with kerberos krb5)
 		$(use_with ldap)
 		$(use_enable mono mscoree)
 		$(use_with mp3 mpg123)
@@ -420,6 +419,7 @@ multilib_src_configure() {
 		$(use_with udev)
 		$(use_with v4l)
 		$(use_with X x)
+		$(use_with X xfixes)
 		$(use_with xcomposite)
 		$(use_with xinerama)
 		$(use_with xml)
