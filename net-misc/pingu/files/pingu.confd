@@ -1,0 +1,5 @@
+# Config file for /etc/init.d/pingu
+
+# Various options.
+# run `pingu -h` for valid cmdline options
+OPTS=""
