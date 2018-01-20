@@ -1,0 +1,10 @@
+#!/sbin/openrc-run
+
+description="Policy routing daemon"
+command=/usr/sbin/pingu
+command_args="-d ${OPTS}"
+pidfile=/run/pingu/pingu.pid
+
+depend() {
+	need net
+}

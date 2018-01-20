@@ -1,0 +1,11 @@
+--- a/src/icmp.c	2017-11-22 21:29:14.184502368 +0200
++++ b/src/icmp.c	2017-11-22 21:29:23.057502588 +0200
+@@ -258,7 +258,7 @@
+ 	icp->type = ICMP_DEST_UNREACH;
+ 	icp->code = ICMP_FRAG_NEEDED;
+ 	icp->checksum = 0;
+-	icp->un.frag.__unused = 0;
++	/*icp->un.frag.__unused = 0;*/
+ 	icp->un.frag.mtu = htons(newmtu);
+ 
+ 	/* copy ip header + 64-bits of original packet */
