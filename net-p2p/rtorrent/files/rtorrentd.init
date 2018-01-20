@@ -22,7 +22,8 @@ start() {
 			--name rtorrent \
 			--exec /usr/bin/screen -- -D -m -S rtorrentd /usr/bin/rtorrent
 	# Because we've daemonized with screen, we need to replace the PID file with the real PID of rtorrent
-	pgrep -P $(cat /var/run/rtorrentd.pid) > /var/run/rtorrentd.pid
+	# Sleep before we begin, to give s-s-d the chance to create the PID file
+	sleep .1 && pgrep -P $(cat /var/run/rtorrentd.pid) > /var/run/rtorrentd.pid
 	eend $?
 }
 
