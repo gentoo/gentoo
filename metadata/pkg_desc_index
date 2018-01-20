@@ -7193,7 +7193,7 @@ media-gfx/gnome-photos 3.22.6 3.24.5: Access, organize and share your photos on 
 media-gfx/gnome-raw-thumbnailer 3.0.0: A lightweight and fast raw image thumbnailer for GNOME
 media-gfx/gnome-screenshot 3.22.0: Screenshot utility for GNOME
 media-gfx/gozer 0.7-r2: tool for rendering arbitrary text as graphics, using ttfs and styles
-media-gfx/gphoto2 2.5.11 2.5.14: Free, redistributable digital camera software application
+media-gfx/gphoto2 2.5.14: Free, redistributable digital camera software application
 media-gfx/gphotofs 0.5: FUSE file system for interfacing with digital cameras using gphoto2
 media-gfx/gpicview 0.2.4 0.2.5: A Simple and Fast Image Viewer for X
 media-gfx/gqview 2.1.5-r1: A GTK-based image browser
@@ -7449,7 +7449,7 @@ media-libs/libggiwmh 0.3.2: Library for General Graphics Interface
 media-libs/libgig 3.3.0: a C++ library for loading Gigasampler files and DLS (Downloadable Sounds) Level 1/2 files
 media-libs/libgii 1.0.2-r1: Fast and safe graphics and drivers for about any graphics card to the Linux kernel (sometimes)
 media-libs/libgltf 0.1.0: C++ Library for rendering OpenGL models stored in glTF format
-media-libs/libgphoto2 2.5.12 2.5.14: Library that implements support for numerous digital cameras
+media-libs/libgphoto2 2.5.14: Library that implements support for numerous digital cameras
 media-libs/libgpod 0.8.3-r2: Shared library to access the contents of an iPod
 media-libs/libharu 2.3.0-r1: C/C++ library for PDF generation
 media-libs/libicns 0.7.1: A library for manipulating MacOS X .icns icon format
