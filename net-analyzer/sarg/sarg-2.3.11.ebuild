@@ -25,6 +25,7 @@ DOCS=( BETA-TESTERS CONTRIBUTORS DONATIONS README ChangeLog htaccess )
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.3.10-config.patch
 	"${FILESDIR}"/${PN}-2.3.11-configure.patch
+	"${FILESDIR}"/${PN}-2.3.11-format.patch
 )
 
 src_prepare() {
