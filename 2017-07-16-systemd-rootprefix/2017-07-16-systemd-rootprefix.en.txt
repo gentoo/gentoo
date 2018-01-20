@@ -1,9 +1,9 @@
 Title: systemd rootprefix migration
 Author: Mike Gilbert <floppym@gentoo.org>
 Posted: 2017-07-16
-Revision: 2
+Revision: 3
 News-Item-Format: 2.0
-Display-If-Installed: >=sys-apps/systemd-234
+Display-If-Installed: <sys-apps/systemd-234
 
 Starting with the 234 release, Gentoo's sys-apps/systemd package will
 be built with rootprefix=/. This means most of the included programs
