@@ -4,7 +4,7 @@
 EAPI=6
 inherit cmake-multilib
 
-MY_P="deviceatlas-enterprise-c-${PV/_p/_}"
+MY_P="deviceatlas-enterprise-c-${PV}"
 
 DESCRIPTION="API to detect devices based on the User-Agent HTTP header"
 HOMEPAGE="https://deviceatlas.com"
