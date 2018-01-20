@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,7 +21,7 @@ IUSE="jpeg png"
 DEPEND="
 	dev-python/pytz[${PYTHON_USEDEP}]
 	dev-python/pygtk:2[${PYTHON_USEDEP}]
-	dev-python/pycairo[svg,${PYTHON_USEDEP}]
+	dev-python/pycairo[svg(+),${PYTHON_USEDEP}]
 	dev-python/librsvg-python[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	dev-python/pyswisseph[${PYTHON_USEDEP}]
