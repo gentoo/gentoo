@@ -10,4 +10,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=mirror://gnu-alpha/guix/guix-0.14.0.tar.gz mirror://gnu-alpha/guix/bootstrap/aarch64-linux/20170217/guile-2.0.14.tar.xz -> guix-bootstrap-aarch64-linux-20170217-guile-2.0.14.tar.xz.bootstrap mirror://gnu-alpha/guix/bootstrap/armhf-linux/20150101/guile-2.0.11.tar.xz -> guix-bootstrap-armhf-linux-20150101-guile-2.0.11.tar.xz.bootstrap mirror://gnu-alpha/guix/bootstrap/i686-linux/20131110/guile-2.0.9.tar.xz -> guix-bootstrap-i686-linux-20131110-guile-2.0.9.tar.xz.bootstrap mirror://gnu-alpha/guix/bootstrap/mips64el-linux/20131110/guile-2.0.9.tar.xz -> guix-bootstrap-mips64el-linux-20131110-guile-2.0.9.tar.xz.bootstrap mirror://gnu-alpha/guix/bootstrap/x86_64-linux/20131110/guile-2.0.9.tar.xz -> guix-bootstrap-x86_64-linux-20131110-guile-2.0.9.tar.xz.bootstrap
 _eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	readme.gentoo-r1	6f03e110529650f57fc7d1fb908b8986	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	user	8bc2845510e2109af75e3eeac607ec81
-_md5_=96ab2f2b6fb7f394eb091c36d5699c1a
+_md5_=f64a12a0d1bfac83171748f5a4cf4299
