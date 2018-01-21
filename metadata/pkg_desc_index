@@ -5771,7 +5771,7 @@ dev-ruby/loofah 2.1.1: Library for manipulating and transforming HTML/XML docume
 dev-ruby/maruku 0.7.2-r1: A Markdown-superset interpreter written in Ruby
 dev-ruby/maxitest 2.4.0: Minitest + all the features you always wanted
 dev-ruby/mecab-ruby 0.996-r1: Ruby binding for MeCab
-dev-ruby/mechanize 2.7.3-r1 2.7.5: A Ruby library used for automating interaction with websites
+dev-ruby/mechanize 2.7.5 2.7.5-r2: A Ruby library used for automating interaction with websites
 dev-ruby/metaclass 0.0.4: Adds a __metaclass__ method to all Ruby objects
 dev-ruby/method_source 0.9.0: Retrieve the source code for a method
 dev-ruby/mime-types 1.25.1 2.6.2 2.99.2: Provides a mailcap-like MIME Content-Type lookup for Ruby
@@ -5854,7 +5854,7 @@ dev-ruby/ruby-gtk3 3.0.8: Ruby Gtk3 bindings
 dev-ruby/ruby-gtksourceview 3.0.8: Ruby bindings for gtksourceview
 dev-ruby/ruby-gtksourceview3 3.0.8: Ruby Gtk3 bindings
 dev-ruby/ruby-ldap 0.9.19: A Ruby interface to some LDAP libraries
-dev-ruby/ruby-oci8 2.1.8: A Ruby library for Oracle OCI8
+dev-ruby/ruby-oci8 2.2.4.1: A Ruby library for Oracle OCI8
 dev-ruby/ruby-odbc 0.99997-r1: RubyODBC - For accessing ODBC data sources from the Ruby language
 dev-ruby/ruby-opengl 0.10.0: OpenGL / GLUT bindings for ruby
 dev-ruby/ruby-openid 2.7.0: A robust library for verifying and serving OpenID identities
