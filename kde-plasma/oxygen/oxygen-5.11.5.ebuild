@@ -7,7 +7,7 @@ inherit flag-o-matic kde5 multibuild
 
 DESCRIPTION="Oxygen visual style for the Plasma desktop"
 HOMEPAGE="https://cgit.kde.org/oxygen.git"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="qt4 wayland"
 
 COMMON_DEPEND="
