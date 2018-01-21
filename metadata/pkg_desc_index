@@ -904,7 +904,7 @@ app-i18n/sunpinyin-data 20130220: Data sets for Sunpinyin
 app-i18n/tomoe 0.6.0-r2: Japanese handwriting recognition engine
 app-i18n/tomoe-gtk 0.6.0-r4: Tomoe GTK+ interface widget library
 app-i18n/transifex-client 0.10: A command line interface for Transifex
-app-i18n/uchardet 0.0.6 0.0.6-r1: An encoding detector library
+app-i18n/uchardet 0.0.6 0.0.6-r1 0.0.6-r2: An encoding detector library
 app-i18n/uim 1.8.6-r1: Simple, secure and flexible input method library
 app-i18n/unicode-cldr 31.0.1: Unicode Common Locale Data Repository
 app-i18n/unicode-data 9.0.0: Unicode data from unicode.org
@@ -2927,7 +2927,6 @@ dev-libs/cyrus-sasl 2.1.26-r9: The Cyrus SASL (Simple Authentication and Securit
 dev-libs/d0_blind_id 0.5: Blind-ID library for user identification using RSA blind signatures
 dev-libs/darts 0.32: A C++ template library that implements Double-Array
 dev-libs/dbus-glib 0.102 0.108: D-Bus bindings for glib
-dev-libs/device-atlas-api-c 2.1 2.1.2_p1: API to detect devices based on the User-Agent HTTP header
 dev-libs/dietlibc 0.33_pre20110403 0.34_pre20140729 0.34_pre20140729-r1: A libc optimized for small size
 dev-libs/ding-libs 0.4.0 0.6.0: set of utility libraries (mostly used by sssd)
 dev-libs/dmalloc 5.5.2-r4 5.5.2-r6: A Debug Malloc Library
