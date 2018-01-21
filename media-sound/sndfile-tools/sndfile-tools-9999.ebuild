@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ if [[ ${PV} == *9999 ]]; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="https://github.com/erikd/sndfile-tools.git"
 else
-	SRC_URI="http://www.mega-nerd.com/libsndfile/files/${P}.tar.gz"
+	SRC_URI="http://www.mega-nerd.com/libsndfile/files/${P}.tar.bz2"
 	KEYWORDS="~amd64"
 fi
 
@@ -30,7 +30,6 @@ DEPEND="
 
 src_prepare() {
 	default
-
 	[[ ${PV} == *9999 ]] && eautoreconf
 }
 
