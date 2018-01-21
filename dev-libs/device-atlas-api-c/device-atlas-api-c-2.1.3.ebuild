@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -30,20 +30,20 @@ PATCHES=(
 pkg_nofetch() {
 	eerror "Please go to https://deviceatlas.com/deviceatlas-haproxy-module"
 	eerror "And download DeviceAtlas C API"
-	eerror "Then place the file in ${DISTDIR}/${MY_P}.zip"
+	eerror "Then place the file in ${DISTDIR}/${MY_P}.tgz"
 }
 
 multilib_src_install_all() {
-	if use doc ; then
+	if use doc; then
 		local -a HTML_DOCS=( Documentation )
 	fi
 
-	if use examples ; then
-		insinto /usr/share/doc/${P}/examples
-		doins examples/daexutil.h
-		doins examples/example{0,1,2,3}.c
-		doins examples/util.c
-		doins examples/EXAMPLES.USAGE
+	if use examples; then
+		docinto examples
+		dodoc Examples/daexutil.h
+		dodoc Examples/example{0,1,2,3,4}.c
+		dodoc Examples/util.c
+		dodoc Examples/EXAMPLES.USAGE
 	fi
 
 	einstalldocs

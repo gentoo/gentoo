@@ -694,7 +694,6 @@ sanity_prechecks() {
 	fi
 }
 
-
 #
 # the phases
 #
