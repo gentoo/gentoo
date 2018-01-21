@@ -10408,7 +10408,7 @@ www-apache/mod_xml2enc 1.0.3: An Apache2 module to provide libxml2 encoding
 www-apache/mod_xsendfile 1.0_beta1: Apache module that processes X-SENDFILE headers registered by the output handler
 www-apache/modsecurity-crs 2.2.6-r1 2.2.7: Core Rule Set for ModSecurity
 www-apache/mpm_itk 2.4.7_p4-r1: Run virtual hosts under separate users/groups
-www-apache/passenger 5.1.6 5.1.11: Passenger makes deployment of Ruby on Rails applications a breeze
+www-apache/passenger 5.1.11: Passenger makes deployment of Ruby on Rails applications a breeze
 www-apps/Apache-Gallery 1.0_rc3-r1: Apache gallery for mod_perl
 www-apps/ampache 3.8.3: PHP-based tool for managing,updating and playing audio files via a web interface
 www-apps/b2evolution 4.1.7: Multilingual multiuser multi-blog engine
