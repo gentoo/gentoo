@@ -685,7 +685,7 @@ app-emacs/redo+ 1.19: Redo/undo system for Emacs
 app-emacs/regress 1.5.1: Regression test harness for Emacs Lisp code
 app-emacs/rfcview 0.13: An Emacs mode that reformats IETF RFCs for display
 app-emacs/riece 8.0.0 9.0.0: A redesign of Liece IRC client
-app-emacs/ruby-mode 2.0.0_p247 2.2.2: Emacs major mode for editing Ruby code
+app-emacs/ruby-mode 2.0.0_p247 2.2.2 2.3.0: Emacs major mode for editing Ruby code
 app-emacs/scala-mode 2.10.3: Scala mode for Emacs
 app-emacs/scheme-complete 0.8.10 0.8.11: Scheme tab-completion and word-completion for Emacs
 app-emacs/semi 1.14.6-r2: A library to provide MIME feature for GNU Emacs
@@ -798,7 +798,7 @@ app-eselect/eselect-python 20160516: Eselect module for management of multiple P
 app-eselect/eselect-qtgraphicssystem 1.1.1: Utility to change the active Qt Graphics System
 app-eselect/eselect-rails 0.23: Manages Ruby on Rails symlinks
 app-eselect/eselect-renpy 0.6 0.7: Manages renpy symlink
-app-eselect/eselect-ruby 20161226: Manages multiple Ruby versions
+app-eselect/eselect-ruby 20161226 20170723: Manages multiple Ruby versions
 app-eselect/eselect-rust 0.3_pre20150428: eselect module for rust
 app-eselect/eselect-scala 0.1.1: Manages multiple Scala versions
 app-eselect/eselect-sh 0.4-r2: Manages the /bin/sh (POSIX shell) symlink
@@ -2872,7 +2872,7 @@ dev-lang/php 5.6.32 5.6.33 7.0.25 7.0.27 7.1.13: The PHP language runtime engine
 dev-lang/python 2.7.14-r1 3.4.5-r1 3.5.4-r1 3.6.3-r1: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.4 2.4.5: Python script wrapper
 dev-lang/qu-prolog 10.0: Extended Prolog supporting quantifiers, object-variables and substitutions
-dev-lang/ruby 2.2.8 2.2.9: An object-oriented scripting language
+dev-lang/ruby 2.2.8 2.2.9 2.3.6: An object-oriented scripting language
 dev-lang/sassc 3.4.7: A libsass command line driver
 dev-lang/scala 2.11.4-r1: The Scala Programming Language
 dev-lang/scala-bin 2.11.8: The Scala Programming Language
@@ -5722,6 +5722,7 @@ dev-ruby/dalli 2.7.6: A high performance pure Ruby client for accessing memcache
 dev-ruby/dbf 3.1.0: a small fast library for reading dBase, xBase, Clipper and FoxPro database files
 dev-ruby/deep_merge 1.0.1: A simple set of utility functions for Hash
 dev-ruby/deprecated 3.0.1-r2: A Ruby library for handling deprecated code
+dev-ruby/did_you_mean 1.0.2: 'did you mean?'experience in Ruby
 dev-ruby/diff-lcs 1.2.5-r1: Use the McIlroy-Hunt LCS algorithm to compute differences
 dev-ruby/domain_name 0.5.24 0.5.20170404: Domain Name manipulation library for Ruby
 dev-ruby/dust 0.1.7-r2: Descriptive block syntax definition for Test::Unit
@@ -5789,6 +5790,7 @@ dev-ruby/net-scp 1.1.2-r1: A pure Ruby implementation of the SCP client protocol
 dev-ruby/net-sftp 2.1.2-r2: SFTP in pure Ruby
 dev-ruby/net-ssh 2.10.0: Non-interactive SSH processing in pure Ruby
 dev-ruby/net-ssh-gateway 1.2.0-r1: A simple library to assist in enabling tunneled Net::SSH connections
+dev-ruby/net-telnet 0.1.1-r1: Provides telnet client functionality
 dev-ruby/netrc 0.11.0: This library reads and writes .netrc files
 dev-ruby/nokogiri 1.6.8.1 1.8.1: Nokogiri is an HTML, XML, SAX, and Reader parser
 dev-ruby/nokogiri-diff 0.2.0-r2: Calculate the differences between two XML/HTML documents
@@ -5799,7 +5801,7 @@ dev-ruby/pg 0.17.1-r1 0.18.4-r1: Ruby extension library providing an API to Post
 dev-ruby/pkg-config 1.1.7 1.2.8: A pkg-config implementation by Ruby
 dev-ruby/power_assert 0.3.1: Shows each value of variables and method calls in the expression
 dev-ruby/puppetdb-termini 4.3.0 5.0.1 5.1.3: Library needed to connect puppet to puppetdb
-dev-ruby/racc 1.4.11: A LALR(1) parser generator for Ruby
+dev-ruby/racc 1.4.11 1.4.14: A LALR(1) parser generator for Ruby
 dev-ruby/rack 1.4.7 1.5.5 1.6.7 2.0.3: A modular Ruby webserver interface
 dev-ruby/rack-cache 1.7.1: Enable HTTP caching for Rack-based applications that produce freshness info
 dev-ruby/rack-protection 1.5.3-r1: This gem protects against typical web attacks
@@ -5814,7 +5816,7 @@ dev-ruby/rake-compiler 1.0.2: Provide a standard and simplified way to build and
 dev-ruby/rb-inotify 0.9.5-r1 0.9.10: A thorough inotify wrapper for Ruby using FFI
 dev-ruby/rcairo 1.15.10: Ruby bindings for cairo
 dev-ruby/rdiscount 2.1.8: Implementation of John Gruber's Markdown
-dev-ruby/rdoc 4.2.0: An extended version of the RDoc library from Ruby 1.8
+dev-ruby/rdoc 4.2.0 4.3.0: An extended version of the RDoc library from Ruby 1.8
 dev-ruby/rdtool 0.6.38-r2: A multipurpose documentation format for Ruby
 dev-ruby/redcloth 4.2.9-r4 4.3.2: A module for using Textile in Ruby
 dev-ruby/rest-client 1.8.0-r3: Simple Simple HTTP and REST client for Ruby
