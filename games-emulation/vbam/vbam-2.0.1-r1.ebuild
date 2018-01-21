@@ -4,7 +4,7 @@
 EAPI=6
 
 WX_GTK_VER="3.0-gtk3"
-inherit eutils gnome2-utils wxwidgets xdg-utils cmake-utils
+inherit gnome2-utils wxwidgets xdg-utils cmake-utils
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/visualboyadvance-m/visualboyadvance-m.git"
@@ -48,13 +48,6 @@ PATCHES=(
 	"${FILESDIR}"/${P}-changelog-update.patch
 	"${FILESDIR}"/${P}-read-version-from-changelog.patch
 )
-
-src_prepare() {
-	cmake-utils_src_prepare
-
-	# fix desktop file QA warnings
-	edos2unix src/wx/wxvbam.desktop
-}
 
 src_configure() {
 	use wxwidgets && setup-wxwidgets
