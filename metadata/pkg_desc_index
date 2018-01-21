@@ -8121,7 +8121,7 @@ media-video/dvdimagecmp 0.3-r1: Tool to compare a burned DVD with an image to ch
 media-video/dvdrip 0.98.11-r3: dvd::rip is a graphical frontend for transcode
 media-video/dvgrab 3.5-r1: Digital Video (DV) grabber for GNU/Linux
 media-video/emovix 0.9.0: Micro Linux distro to boot from a CD and play every video file localized in the CD root
-media-video/ffdiaporama 2.1 2.1-r1 2.2_pre20140701-r1: Movie creator from photos and video clips
+media-video/ffdiaporama 2.2_pre20140701-r1: Movie creator from photos and video clips
 media-video/ffmpeg 3.2.6 3.3.4 3.3.5 3.3.6: Complete solution to record, convert and stream audio and video. Includes libavcodec
 media-video/ffmpeg2theora 0.30: A simple converter to create Ogg Theora files
 media-video/ffmpegthumbnailer 2.2.0: Lightweight video thumbnailer that can be used by file managers
@@ -9139,7 +9139,7 @@ sci-calculators/hcalc 1.2-r1: DJ's Hex Calculator
 sci-calculators/hexcalc 1.11-r3: A simple hex calculator for X
 sci-calculators/pcalc 3-r1: the programmers calculator
 sci-calculators/qalculate-gtk 0.9.9: Modern multi-purpose calculator
-sci-calculators/speedcrunch 0.11-r2 0.12.0: Fast and usable calculator for power users
+sci-calculators/speedcrunch 0.12.0: Fast and usable calculator for power users
 sci-calculators/units 2.14-r1 2.16: Unit conversion program
 sci-calculators/wcalc 2.5: A flexible command-line scientific calculator
 sci-chemistry/apbs 1.4.1-r2: Evaluation of electrostatic properties of nanoscale biomolecular systems
@@ -10829,7 +10829,7 @@ x11-misc/revelation 0.4.14-r1: A password manager for GNOME
 x11-misc/rodent 5.3.16.3 5.3.16.3-r1: A fast, small and powerful file manager and graphical shell
 x11-misc/rofi 1.3.1: A window switcher, run dialog and dmenu replacement
 x11-misc/rss-glx 0.9.1 0.9.1-r1: Really Slick OpenGL Screensavers for XScreenSaver
-x11-misc/screengrab 1.2.1-r1 1.97: Qt application for getting screenshots
+x11-misc/screengrab 1.97: Qt application for getting screenshots
 x11-misc/sct 0.3: Set color temperature of the screen
 x11-misc/sddm 0.15.0 0.17.0-r1: Simple Desktop Display Manager
 x11-misc/shared-mime-info 1.4 1.8 1.9: The Shared MIME-info Database specification
