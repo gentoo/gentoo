@@ -18,8 +18,7 @@
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Variable listing the locales for which localizations are offered by
-# the package. Check profiles/desc/linguas.desc to see if the locales
-# are listed there. Add any missing ones there.
+# the package.
 #
 # Example: PLOCALES="cy de el_GR en_US pt_BR vi zh_CN"
 
