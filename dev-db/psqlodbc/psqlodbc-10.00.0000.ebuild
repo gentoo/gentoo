@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -8,7 +8,7 @@ HOMEPAGE="http://www.postgresql.org/"
 SRC_URI="mirror://postgresql/odbc/versions/src/${P}.tar.gz"
 SLOT="0"
 LICENSE="LGPL-2"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc iodbc ssl threads"
 
 DEPEND="dev-db/postgresql:*[ssl?]
