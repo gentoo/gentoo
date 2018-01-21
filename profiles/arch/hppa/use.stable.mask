@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Hans de Graaff <graaff@gentoo.org> (21 Jan 2018)
+# Temporary mask to support stable bug 639476
+ruby_targets_ruby23
+
 # Andreas Sturmlechner <asturm@gentoo.org> (20 Jan 2018)
 # Mask boost for stabilisation timeout, bug #624662
 boost
