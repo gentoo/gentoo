@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -10,7 +10,7 @@ HOMEPAGE="https://pgbouncer.github.io"
 SRC_URI="https://pgbouncer.github.io/downloads/files/${PV}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE="+c-ares debug doc pam ssl -udns"
 
 # At-most-one-of, one can be enabled but not both
