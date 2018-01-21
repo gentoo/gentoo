@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,15 +16,17 @@ IUSE="iconv idn nls"
 RESTRICT="test" #59327
 
 RDEPEND="iconv? ( virtual/libiconv )
-	idn? ( net-dns/libidn )
+	idn? ( net-dns/libidn2 )
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}
 	app-arch/xz-utils
 	>=dev-lang/perl-5
+	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.7.2-config-file.patch
+	"${FILESDIR}"/${PN}-5.3.0-libidn_automagic.patch
 )
 
 src_prepare() {
@@ -57,7 +59,7 @@ src_install() {
 	dodoc README debian/changelog
 
 	if [[ ${USERLAND} != "GNU" ]]; then
-		mv "${ED}"/usr/share/man/man1/{whois,mdwhois}.1 || die
-		mv "${ED}"/usr/bin/{whois,mdwhois} || die
+		mv "${ED%/}"/usr/share/man/man1/{whois,mdwhois}.1 || die
+		mv "${ED%/}"/usr/bin/{whois,mdwhois} || die
 	fi
 }

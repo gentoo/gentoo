@@ -81,8 +81,9 @@ NETBEANS="apisupport cnd groovy gsf harness ide identity j2ee java mobility nb p
 USE="${USE} modules"
 
 # Manuel Rüger <mrueg@gentoo.org> (09 Sep 2015)
-# Default Ruby build targets
-RUBY_TARGETS="ruby22"
+# Default Ruby build target
+# Updated to include ruby23 on 21 Jan 2018
+RUBY_TARGETS="ruby22 ruby23"
 
 # Samuli Suominen <ssuominen@gentoo.org> (03 Dec 2009)
 # Enable USE cxx by default so base-system and toolchain pkgs can start using USE cxx

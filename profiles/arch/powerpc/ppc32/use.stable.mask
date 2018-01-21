@@ -1,3 +1,7 @@
+# Hans de Graaff <graaff@gentoo.org> (21 Jan 2018)
+# Temporary mask to support stable bug 639476
+ruby_targets_ruby23
+
 # Andrey Grozin <grozin@gentoo.org> (25 Jun 2014)
 # no stable versions on ppc
 clisp

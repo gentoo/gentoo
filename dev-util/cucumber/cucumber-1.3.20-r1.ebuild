@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby22 ruby23"
 
 # Documentation task depends on sdoc which we currently don't have.
 RUBY_FAKEGEM_TASK_DOC=""
