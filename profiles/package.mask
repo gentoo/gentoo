@@ -42,10 +42,6 @@ net-p2p/primecoind
 # Masked for removal in 30 days. Bug #513564
 sci-physics/geant-python
 
-# Jeroen Roovers <jer@gentoo.org> (19 Jan 2018)
-# Breaks net-libs/nodejs (bug #645018)
-=dev-libs/libuv-1.19.0
-
 # Patrice Clement <monsieurp@gentoo.org> (18 Jan 2018)
 # mpv-0.28.0 requires changes currently only available in ffmpeg-9999.
 =media-video/mpv-0.28.0
