@@ -3,10 +3,9 @@
 
 EAPI=6
 
-inherit eutils java-vm-2 prefix versionator
+inherit desktop gnome2-utils java-vm-2 prefix versionator
 
-# This URI needs to be updated when bumping!
-JRE_URI="http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html"
+KEYWORDS="-* ~amd64 ~x86"
 
 if [[ "$(get_version_component_range 4)" == 0 ]] ; then
 	S_PV="$(get_version_component_range 1-3)"
@@ -17,20 +16,19 @@ fi
 
 MY_PV="$(get_version_component_range 2)${MY_PV_EXT}"
 
-AT_amd64="jre-${MY_PV}-linux-x64.tar.gz"
-AT_x86="jre-${MY_PV}-linux-i586.tar.gz"
+declare -A ARCH_FILES
+ARCH_FILES[amd64]="jre-${MY_PV}-linux-x64.tar.gz"
+ARCH_FILES[x86]="jre-${MY_PV}-linux-i586.tar.gz"
+
+for keyword in ${KEYWORDS//-\*} ; do
+	SRC_URI+=" ${keyword#\~}? ( ${ARCH_FILES[${keyword#\~}]} )"
+done
 
 DESCRIPTION="Oracle's Java SE Runtime Environment"
 HOMEPAGE="http://www.oracle.com/technetwork/java/javase/"
-SRC_URI="
-	amd64? ( ${AT_amd64} )
-	x86? ( ${AT_x86} )"
-
 LICENSE="Oracle-BCLA-JavaSE"
 SLOT="1.8"
-KEYWORDS="~amd64 ~x86"
 IUSE="alsa commercial cups +fontconfig headless-awt javafx jce nsplugin selinux"
-
 RESTRICT="fetch preserve-libs strip"
 QA_PREBUILT="*"
 
@@ -75,32 +73,19 @@ RDEPEND="!x64-macos? (
 
 DEPEND="app-arch/zip"
 
-S="${WORKDIR}/jre"
+S="${WORKDIR}/jre$(replace_version_separator 3 _  ${S_PV})"
 
 pkg_nofetch() {
-	local AT_ARCH="AT_${ARCH}"
-	local AT="${!AT_ARCH}"
-
-	einfo "Please download '${AT}' from:"
-	einfo "'${JRE_URI}'"
-	einfo "and move it to '${DISTDIR}'"
-
+	einfo "Please download ${ARCH_FILES[${ARCH}]} and move it to"
+	einfo "${DISTDIR}:"
 	einfo
-	einfo "If the above mentioned urls do not point to the correct version anymore,"
-	einfo "please download the files from Oracle's java download archive:"
+	einfo "  http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html"
 	einfo
-	einfo "   http://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase8-2177648.html#jre-${MY_PV}-oth-JPR"
+	einfo "If the above mentioned URL does not point to the correct version anymore,"
+	einfo "please download the file from Oracle's Java download archive:"
 	einfo
-
-}
-
-src_unpack() {
-	default
-
-	# Upstream is changing their versioning scheme every release around 1.8.0.*;
-	# to stop having to change it over and over again, just wildcard match and
-	# live a happy life instead of trying to get this new jre1.8.0_05 to work.
-	mv "${WORKDIR}"/jre* "${S}" || die
+	einfo "  http://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase8-2177648.html"
+	einfo
 }
 
 src_prepare() {
@@ -126,7 +111,7 @@ src_install() {
 		rm -vf lib/*/libjsoundalsa.* || die
 	fi
 
-	if ! use commercial; then
+	if ! use commercial ; then
 		rm -vfr lib/jfr* || die
 	fi
 
@@ -144,11 +129,34 @@ src_install() {
 		rm -vf lib/*/libnpjp2.* || die
 	else
 		local nsplugin=$(echo lib/*/libnpjp2.*)
+		local nsplugin_link=${nsplugin##*/}
+		nsplugin_link=${nsplugin_link/./-${PN}-${SLOT}.}
+		dosym "${dest}/${nsplugin}" "/usr/$(get_libdir)/nsbrowser/plugins/${nsplugin_link}"
 	fi
 
 	# Even though plugins linked against multiple ffmpeg versions are
 	# provided, they generally lag behind what Gentoo has available.
 	rm -vf lib/*/libavplugin* || die
+
+	# Prune all fontconfig files so that libfontconfig will be used.
+	rm -v lib/fontconfig.* || die
+
+	# Install desktop file for the Java Control Panel. Using
+	# ${PN}-${SLOT} to prevent file collision with JDK and other slots.
+	if [[ -d lib/desktop/icons ]] ; then
+		local icon
+		pushd lib/desktop/icons >/dev/null || die
+		for icon in */*/apps/sun-jcontrol.png ; do
+			insinto /usr/share/icons/"${icon%/*}"
+			newins "${icon}" sun-jcontrol-${PN}-${SLOT}.png
+		done
+		popd >/dev/null || die
+		make_desktop_entry \
+			"${dest}"/bin/jcontrol \
+			"Java Control Panel for Oracle JRE ${SLOT}" \
+			sun-jcontrol-${PN}-${SLOT} \
+			"Settings;Java;"
+	fi
 
 	dodoc COPYRIGHT
 	dodir "${dest}"
@@ -157,41 +165,17 @@ src_install() {
 	ln -s policy/$(usex jce unlimited limited)/{US_export,local}_policy.jar \
 		"${ddest}"/lib/security/ || die
 
-	if use nsplugin ; then
-		local nsplugin_link=${nsplugin##*/}
-		nsplugin_link=${nsplugin_link/./-${PN}-${SLOT}.}
-		dosym "${dest}/${nsplugin}" "/usr/$(get_libdir)/nsbrowser/plugins/${nsplugin_link}"
-	fi
-
-	# Install desktop file for the Java Control Panel.
-	# Using ${PN}-${SLOT} to prevent file collision with jre and or other slots.
-	# make_desktop_entry can't be used as ${P} would end up in filename.
-	newicon lib/desktop/icons/hicolor/48x48/apps/sun-jcontrol.png \
-		sun-jcontrol-${PN}-${SLOT}.png || die
-	sed -e "s#Name=.*#Name=Java Control Panel for Oracle JRE ${SLOT}#" \
-		-e "s#Exec=.*#Exec=/opt/${P}/bin/jcontrol#" \
-		-e "s#Icon=.*#Icon=sun-jcontrol-${PN}-${SLOT}#" \
-		-e "s#Application;##" \
-		-e "/Encoding/d" \
-		lib/desktop/applications/sun_java.desktop > \
-		"${T}"/jcontrol-${PN}-${SLOT}.desktop || die
-	domenu "${T}"/jcontrol-${PN}-${SLOT}.desktop
-
-	# Prune all fontconfig files so libfontconfig will be used and only install
-	# a Gentoo specific one if fontconfig is disabled.
-	# http://docs.oracle.com/javase/8/docs/technotes/guides/intl/fontconfig.html
-	rm "${ddest}"/lib/fontconfig.* || die
+	# Only install Gentoo-specific fontconfig if flag is disabled.
+	# https://docs.oracle.com/javase/8/docs/technotes/guides/intl/fontconfig.html
 	if ! use fontconfig ; then
-		cp "${FILESDIR}"/fontconfig.Gentoo.properties "${T}"/fontconfig.properties || die
-		eprefixify "${T}"/fontconfig.properties
 		insinto "${dest}"/lib/
-		doins "${T}"/fontconfig.properties
+		doins "$(prefixify_ro "${FILESDIR}"/fontconfig.Gentoo.properties)"
 	fi
 
-	# This needs to be done before CDS - #215225
+	# Needs to be done before CDS, bug #215225.
 	java-vm_set-pax-markings "${ddest}"
 
-	# see bug #207282
+	# See bug #207282.
 	einfo "Creating the Class Data Sharing archives"
 	case ${ARCH} in
 		arm|ia64)
@@ -216,11 +200,21 @@ src_install() {
 	java-vm_sandbox-predict /dev/random /proc/self/coredump_filter
 }
 
+pkg_preinst() {
+	gnome2_icon_savelist
+}
+
 pkg_postinst() {
+	gnome2_icon_cache_update
 	java-vm-2_pkg_postinst
 
-	if ! use headless-awt && ! use javafx; then
+	if ! use headless-awt && ! use javafx ; then
 		ewarn "You have disabled the javafx flag. Some modern desktop Java applications"
 		ewarn "require this and they may fail with a confusing error message."
 	fi
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
+	java-vm-2_pkg_postrm
 }
