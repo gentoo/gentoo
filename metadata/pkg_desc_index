@@ -5184,7 +5184,7 @@ dev-python/pyblake2 0.9.3-r1 1.1.0: BLAKE2 hash function extension module
 dev-python/pybloomfiltermmap 0.3.11-r1: A Bloom filter (bloomfilter) for Python built on mmap
 dev-python/pybluez 0.18-r1: Python bindings for Bluez Bluetooth Stack
 dev-python/pycadf 2.6.0: python implementation of DMTF Cloud Audit (CADF) data model
-dev-python/pycairo 1.10.0-r5 1.15.3: Python bindings for the cairo library
+dev-python/pycairo 1.15.3: Python bindings for the cairo library
 dev-python/pycanberra 0_pre20130515: Basic Python wrapper for libcanberra
 dev-python/pychart 1.39-r1: Python library for creating charts
 dev-python/pychecker 0.8.19-r1: Python source code checking tool
