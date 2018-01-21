@@ -12,7 +12,7 @@ SRC_URI="${MY_P}.zip"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="amd64 arm ppc x86"
+KEYWORDS="~amd64 ~arm ~ppc ~x86"
 IUSE="doc examples"
 
 RDEPEND="dev-libs/libpcre[${MULTILIB_USEDEP}]"
