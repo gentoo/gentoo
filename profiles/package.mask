@@ -707,11 +707,6 @@ x11-misc/okindd
 # Masked for removal in 30 days.
 x11-misc/qsynergy
 
-# Michael Palimaka <kensington@gentoo.org> (22 Dec 2017)
-# Dead upstream. Requires dead Qt 4.
-# Masked for removal in 30 days.
-app-editors/znotes
-
 # Patrice Clement <monsieurp@gentoo.org> (19 Dec 2017)
 # A slightly better syntax file for PAM configuration files is shipped with Vim
 # since version 8.0. The one we package is old and out of date.
