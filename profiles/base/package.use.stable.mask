@@ -4,6 +4,11 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Michał Górny <mgorny@gentoo.org> (20 Jan 2018)
+# Requires proprietary fetch-restricted package that is not suitable
+# for stabilization. Bug #645092.
+net-proxy/haproxy device-atlas
+
 # Andreas Sturmlechner <asturm@gentoo.org> (16 Jan 2018)
 # USE=wxwidgets Requires x11-libs/wxGTK:3.0-gtk3 stabilisation
 # USE=tcl does not build reliably, bug #624576
