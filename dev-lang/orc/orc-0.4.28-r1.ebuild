@@ -12,7 +12,7 @@ SRC_URI="https://gstreamer.freedesktop.org/src/${PN}/${P}.tar.xz"
 LICENSE="BSD BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="examples pax_kernel static-libs test"
+IUSE="examples pax_kernel static-libs"
 
 RDEPEND=""
 DEPEND="${RDEPEND}
@@ -39,8 +39,10 @@ multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf \
 		--disable-gtk-doc \
 		--enable-backend=all \
-		$(use_enable static-libs static) \
-		$(use_enable test tests)
+		$(use_enable static-libs static)
+		# TODO: bug #645232 - Not ready for this yet, as it installs some headers to live and gst-plugins-base:0.10 includes some
+		# Additionally it doesn't seem good that FEATURES=test would change what files are installed (headers + orctest.so + orc-bugreport)
+		# $(use_enable test tests)
 }
 
 multilib_src_install() {
