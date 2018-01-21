@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare
+DEPEND=x11-libs/gtk+:2 x11-libs/libX11 x11-libs/libXext icarus? ( x11-libs/gtksourceview:2.0 x11-libs/gtk+:2 x11-libs/pango dev-libs/atk x11-libs/cairo x11-libs/gdk-pixbuf dev-libs/glib:2 media-libs/fontconfig media-libs/freetype ) ao? ( media-libs/libao ) openal? ( media-libs/openal ) alsa? ( media-libs/alsa-lib ) pulseaudio? ( media-sound/pulseaudio ) xv? ( x11-libs/libXv ) opengl? ( virtual/opengl ) sdl? ( media-libs/libsdl[X,joystick,video] ) udev? ( virtual/udev ) app-arch/p7zip virtual/pkgconfig >=sys-apps/sed-4
+DESCRIPTION=A multi-system game emulator formerly known as bsnes
+EAPI=6
+HOMEPAGE=https://byuu.org/emulation/higan/ https://gitlab.com/higan/higan
+IUSE=ao +alsa +icarus openal opengl oss pulseaudio +sdl udev xv
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=x11-libs/gtk+:2 x11-libs/libX11 x11-libs/libXext icarus? ( x11-libs/gtksourceview:2.0 x11-libs/gtk+:2 x11-libs/pango dev-libs/atk x11-libs/cairo x11-libs/gdk-pixbuf dev-libs/glib:2 media-libs/fontconfig media-libs/freetype ) ao? ( media-libs/libao ) openal? ( media-libs/openal ) alsa? ( media-libs/alsa-lib ) pulseaudio? ( media-sound/pulseaudio ) xv? ( x11-libs/libXv ) opengl? ( virtual/opengl ) sdl? ( media-libs/libsdl[X,joystick,video] ) udev? ( virtual/udev )
+REQUIRED_USE=|| ( ao openal alsa pulseaudio oss ) || ( xv opengl sdl )
+SLOT=0
+SRC_URI=https://gitlab.com/higan/higan/repository/41efdba45afa770db99bc7484a8ad340ccc597d2/archive.tar.bz2 -> higan-106_p1.tar.bz2
+_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e7258392d5eda499c1cfa94db650b61	gnome2-utils	4d211d7614f303710fca59db6ec12c88	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=93291c13df037340e37f39aaec102469
