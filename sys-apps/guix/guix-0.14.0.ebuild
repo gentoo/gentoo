@@ -104,6 +104,16 @@ src_prepare() {
 	default
 	# build system is very eager to run automake itself: bug #625166
 	eautomake
+
+	# guile is trying to avoid recompilation by checking if file
+	#     /usr/lib64/guile/2.2/site-ccache/guix/modules.go
+	# is newer than
+	#     guix/modules.scm
+	# In case it is instead of using 'guix/modules.scm' guile
+	# loads system one (from potentially older version of guix).
+	# To work it around we bump last modification timestamp of
+	# '*.scm' files.
+	find "${S}" -name "*.scm" -exec touch {} + || die
 }
 
 src_configure() {
