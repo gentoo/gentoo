@@ -7,7 +7,7 @@ inherit flag-o-matic kde5 multibuild
 
 DESCRIPTION="Breeze visual style for the Plasma desktop"
 HOMEPAGE="https://cgit.kde.org/breeze.git"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="qt4 wayland X"
 
 REQUIRED_USE="qt4? ( X )"
