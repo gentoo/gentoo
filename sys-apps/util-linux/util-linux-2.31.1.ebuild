@@ -53,7 +53,6 @@ RDEPEND+="
 	!sys-process/schedutils
 	!sys-apps/setarch
 	!<sys-apps/sysvinit-2.88-r7
-	!sys-block/eject
 	!<sys-libs/e2fsprogs-libs-1.41.8
 	!<sys-fs/e2fsprogs-1.41.8
 	!<app-shells/bash-completion-2.7-r1
