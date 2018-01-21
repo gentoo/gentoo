@@ -1175,6 +1175,11 @@
       <role>Board Member</role>
     </member>
     <member>
+      <email>klondike@gentoo.org</email>
+      <name>Francisco Blas Izquierdo Riera</name>
+      <role>Board Member</role>
+    </member>
+    <member>
       <email>maffblaster@gentoo.org</email>
       <name>Matthew Marchese</name>
       <role>Foundation Wiki Editor</role>
@@ -1188,11 +1193,6 @@
       <email>robbat2@gentoo.org</email>
       <name>Robin Johnson</name>
       <role>Officer: Assistant Infra Liaison, Assistant Treasurer</role>
-    </member>
-    <member>
-      <email>zlg@gentoo.org</email>
-      <name>Daniel Campbell</name>
-      <role>Board Member, Treasurer</role>
     </member>
   </project>
   <project>
