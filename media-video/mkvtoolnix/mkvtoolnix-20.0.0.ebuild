@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit toolchain-funcs versionator multiprocessing
+inherit toolchain-funcs versionator multiprocessing xdg-utils qmake-utils
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://gitlab.com/mbunkus/mkvtoolnix.git"
@@ -75,10 +75,10 @@ src_configure() {
 	if use qt5 ; then
 		# ac/qt5.m4 finds default Qt version set by qtchooser, bug #532600
 		myconf+=(
-			--with-moc=/usr/$(get_libdir)/qt5/bin/moc
-			--with-uic=/usr/$(get_libdir)/qt5/bin/uic
-			--with-rcc=/usr/$(get_libdir)/qt5/bin/rcc
-			--with-qmake=/usr/$(get_libdir)/qt5/bin/qmake
+			--with-moc=$(qt5_get_bindir)/moc
+			--with-uic=$(qt5_get_bindir)/uic
+			--with-rcc=$(qt5_get_bindir)/rcc
+			--with-qmake=$(qt5_get_bindir)/qmake
 		)
 	fi
 
@@ -108,4 +108,14 @@ src_install() {
 
 	einstalldocs
 	doman doc/man/*.1
+}
+
+pkg_postrm() {
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
+}
+
+pkg_postinst() {
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
 }

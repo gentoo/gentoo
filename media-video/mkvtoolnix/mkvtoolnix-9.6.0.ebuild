@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,7 +21,7 @@ ruby_atom() {
 
 # hacks to avoid using the ruby eclasses since this requires something similar
 # to the python-any-r1 eclass for ruby which currently doesn't exist
-RUBY_IMPLS=( ruby24 ruby23 ruby22 ruby21 )
+RUBY_IMPLS=( ruby24 ruby23 ruby22 )
 RUBY_BDEPS="$(for ruby_impl in "${RUBY_IMPLS[@]}"; do
 	echo "( $(ruby_atom ${ruby_impl}) virtual/rubygems[ruby_targets_${ruby_impl}] )"; done)"
 
