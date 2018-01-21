@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,12 +9,12 @@ RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_DOCDIR="doc"
 RUBY_FAKEGEM_EXTRADOC="README.md"
 
-RUBY_FAKEGEM_EXTRAINSTALL="rails init.rb VERSION VERSION_NAME"
+RUBY_FAKEGEM_EXTRAINSTALL="rails init.rb VERSION VERSION_DATE VERSION_NAME"
 
 inherit ruby-fakegem versionator
 
 DESCRIPTION="An extension of CSS3, adding nested rules, variables, mixins, and more"
-HOMEPAGE="http://sass-lang.com/"
+HOMEPAGE="https://sass-lang.com/"
 LICENSE="MIT"
 
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~amd64-linux"
@@ -23,16 +23,19 @@ IUSE=""
 
 ruby_add_bdepend "doc? ( >=dev-ruby/yard-0.5.3 )"
 
-ruby_add_rdepend ">=dev-ruby/listen-1.3.1:1 !!<dev-ruby/haml-3.1 !!<dev-ruby/sass-3.2.19-r1:0 !!<dev-ruby/sass-3.3.14-r1:3.3
+ruby_add_rdepend "
+	!!<dev-ruby/sass-3.2.19-r1:0
+	!!<dev-ruby/sass-3.4.25-r1:3.4
 	dev-ruby/sass-listen:4"
 
 # tests could use `less` if we had it
 
 all_ruby_prepare() {
-	rm -rf vendor/listen || die
-
 	# Don't require maruku as markdown provider but let yard decide.
 	sed -i -e '/maruku/d' .yardopts || die
+
+	# Keep VERSION_DATE around since we don't create a new package
+	sed -i -e '/at_exit/,/end/ s:^:#:' Rakefile || die
 }
 
 each_ruby_test() {
