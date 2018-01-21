@@ -1915,6 +1915,7 @@ dev-qt/qtsql:exceptions - Add support for exceptions - like catching them inside
 dev-qt/qtsql:qt3support - Enable the Qt3Support libraries for Qt4
 dev-qt/qtsvg:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by upstream)
 dev-qt/qttest:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by upstream)
+dev-qt/qtvirtualkeyboard:handwriting - Adds handwriting recognition integration support
 dev-qt/qtwayland:libinput - Enable support for input devices via dev-libs/libinput
 dev-qt/qtwebchannel:qml - Build QML/QtQuick bindings and imports
 dev-qt/qtwebengine:geolocation - Enable physical position determination via dev-qt/qtpositioning
