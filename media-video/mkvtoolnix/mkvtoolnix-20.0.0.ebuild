@@ -1,19 +1,19 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit toolchain-funcs versionator multiprocessing
 
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="https://github.com/mbunkus/mkvtoolnix.git"
+	EGIT_REPO_URI="https://gitlab.com/mbunkus/mkvtoolnix.git"
 	inherit git-r3
 else
 	SRC_URI="https://mkvtoolnix.download/sources/${P}.tar.xz"
-	KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+	KEYWORDS="~amd64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 fi
 
 DESCRIPTION="Tools to create, alter, and inspect Matroska files"
-HOMEPAGE="https://mkvtoolnix.download/ https://github.com/mbunkus/mkvtoolnix"
+HOMEPAGE="https://mkvtoolnix.download/ https://gitlab.com/mbunkus/mkvtoolnix"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -39,6 +39,7 @@ RDEPEND="
 		dev-qt/qtwidgets:5
 		dev-qt/qtconcurrent:5
 		dev-qt/qtmultimedia:5
+		app-text/cmark
 	)
 "
 DEPEND="${RDEPEND}
