@@ -867,6 +867,8 @@ app-text/zathura:synctex - Use libsynctex to get latex codeline from pdf
 app-text/zathura-meta:cb - Install plug-in for ComicBook support
 app-vim/gentoo-syntax:ignore-glep31 - Remove GLEP 31 (UTF-8 file encodings) settings
 app-vim/vim-latex:html - Install HTML documentation
+dev-ada/gprbuild:gnat_2016 - Compile with dev-lang/gnat-gpl-2016
+dev-ada/gprbuild:gnat_2017 - Compile with dev-lang/gnat-gpl-2017
 dev-cpp/eigen:c++11 - Build using the C++11 standard
 dev-cpp/eigen:cuda - Build with cuda support
 dev-cpp/glog:gflags - Use dev-cpp/gflags for flag parsing
@@ -2082,7 +2084,6 @@ games-emulation/dolphin:llvm - Enable the LLVM-based disassembler for debugger m
 games-emulation/dolphin:log - Increase logging output
 games-emulation/dolphin:lto - Add support for link-time optimizations.
 games-emulation/dosbox:glide - Enable unofficial Glide emulation via media-libs/openglide
-games-emulation/vbam:link - Enable GBA linking functionality
 games-engines/renpy:development - Install IDE for game developers and an empty game template
 games-misc/xcowsay:fortune - Installs the fortune-mod xcow binary
 games-strategy/seven-kingdoms:network - Enable support for multiplayer via media-libs/sdl-net
@@ -2864,6 +2865,7 @@ media-libs/netpbm:rle - Build converters for the RLE format (utah raster toolkit
 media-libs/opencolorio:pdf - Install extra documentation in PDF format
 media-libs/opencv:contrib - Install user contributed scripts from opencv_contrib (Experimental!)
 media-libs/opencv:contrib_cvv - CVV module requires Qt5
+media-libs/opencv:contrib_dnn - DNN module contrib requires tiny dnn
 media-libs/opencv:contrib_hdf - HDF module requires sci-libs/hdf5
 media-libs/opencv:contrib_sfm - SFM module requires eigen, gflags, and glog
 media-libs/opencv:contrib_xfeatures2d - Enables xfeatures2d and autodownload of samples in contrib

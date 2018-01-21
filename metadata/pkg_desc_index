@@ -1083,7 +1083,7 @@ app-misc/solaar 0.9.2-r3: A Linux device manager for Logitech's Unifying Receive
 app-misc/spacenavd 0.5-r5 0.6: The spacenavd daemon provides free alternative to the 3dxserv daemon
 app-misc/sphinx 2.0.10 2.1.9 2.2.11: Full-text search engine with support for MySQL and PostgreSQL
 app-misc/splitvt 1.6.6-r3: Splitting terminals into two shells
-app-misc/srm 1.2.11-r2 1.2.15: A command-line compatible rm which destroys file contents before unlinking
+app-misc/srm 1.2.15: A command-line compatible rm which destroys file contents before unlinking
 app-misc/supercat 0.5.5-r2: A text file colorizer using powerful regular expressions
 app-misc/symlinks 1.4-r3: Scans for and fixes broken or messy symlinks
 app-misc/tails-installer 4.4.11: A graphical tool to install or upgrade Tails on a USB stick from an ISO image
@@ -1778,6 +1778,7 @@ app-xemacs/xlib 1.14: Emacs interface to X server
 app-xemacs/xslide 1.09: XSL editing support
 app-xemacs/xwem 1.22 1.23: X Emacs Window Manager
 app-xemacs/zenirc 1.16: ZENIRC IRC Client
+dev-ada/gprbuild 2017: Multi-Language Management
 dev-cpp/antlr-cpp 2.7.7: The ANTLR 2 C++ Runtime
 dev-cpp/asio 1.10.8: Asynchronous Network Library
 dev-cpp/atkmm 2.24.2: C++ interface for the ATK library
@@ -2904,7 +2905,7 @@ dev-libs/beignet 1.3.1: OpenCL implementation for Intel GPUs
 dev-libs/bglibs 1.041 1.106-r1: Bruce Guenters Libraries Collection
 dev-libs/bitset 2.8.3 2.8.4-r1: A compressed bitset with supporting data structures and algorithms
 dev-libs/boehm-gc 6.8 7.1-r1 7.2d 7.2d-r1 7.2e 7.4.2: The Boehm-Demers-Weiser conservative garbage collector
-dev-libs/boost 1.62.0-r1 1.63.0: Boost Libraries for C++
+dev-libs/boost 1.63.0: Boost Libraries for C++
 dev-libs/botan 1.10.17 2.3.0: A C++ crypto library
 dev-libs/btparser 0.24 0.25 0.26: Parser and analyzer for backtraces produced by GDB
 dev-libs/c-blosc 1.11.2: Blocking, shuffling and lossless compression library
@@ -3148,7 +3149,7 @@ dev-libs/libx86emu 1.1: A library for emulating x86
 dev-libs/libxdg-basedir 1.2.0-r1: Small library to access XDG Base Directories Specification paths
 dev-libs/libxdiff 0.23-r1: Library for creating diff files
 dev-libs/libxls 1.4.0-r1: A library which can read Excel (xls) files
-dev-libs/libxml2 2.9.4-r1 2.9.4-r3 2.9.6 2.9.7: Version 2 of the library to manipulate XML files
+dev-libs/libxml2 2.9.6 2.9.7: Version 2 of the library to manipulate XML files
 dev-libs/libxslt 1.1.30-r2: XSLT libraries and tools
 dev-libs/libyaml 0.1.7: YAML 1.1 parser and emitter written in C
 dev-libs/libzia 4.11: platform abstraction code for tucnak package
@@ -4623,7 +4624,7 @@ dev-python/cairocffi 0.7.2 0.8.0: CFFI-based drop-in replacement for Pycairo
 dev-python/cangjie 1.2-r1: The Python bindings to libcangjie
 dev-python/carbon 0.9.13: Backend data caching and persistence daemon for Graphite
 dev-python/carrot 0.10.7-r1: AMQP Messaging Framework for Python
-dev-python/case 1.5.2: Python unittest Utilities
+dev-python/case 1.5.2-r1: Python unittest Utilities
 dev-python/castellan 0.4.0 0.12.1: Generic Key Manager interface for OpenStack
 dev-python/casuarius 1.1: Cython wrapper for the Cassowary incremental constraint solver
 dev-python/cbor 1.0.0: RFC 7049 - Concise Binary Object Representation
@@ -5669,7 +5670,7 @@ dev-qt/qtscxml 5.7.1: State Chart XML (SCXML) support library for the Qt5 framew
 dev-qt/qtsensors 5.7.1: Hardware sensor access library for the Qt5 framework
 dev-qt/qtserialport 5.7.1: Serial port abstraction library for the Qt5 framework
 dev-qt/qtsingleapplication 2.6.1_p20150629: Qt library to start applications only once per user
-dev-qt/qtsql 4.8.7-r1 5.7.1 5.7.1-r1: SQL abstraction library for the Qt5 tooolkit
+dev-qt/qtsql 4.8.7-r1 5.7.1-r1: SQL abstraction library for the Qt5 tooolkit
 dev-qt/qtsvg 4.8.7 5.7.1: SVG rendering library for the Qt5 framework
 dev-qt/qttest 4.8.7 5.7.1: Unit testing library for the Qt5 framework
 dev-qt/qttranslations 4.8.7 5.7.1: Translation files for the Qt5 framework
@@ -5712,7 +5713,7 @@ dev-ruby/coffee-script-source 1.9.3 1.12.2: Ruby CoffeeScript is a bridge to the
 dev-ruby/color 1.8: Colour management with Ruby
 dev-ruby/concurrent-ruby 1.0.5: Modern concurrency tools including agents, futures, promises, thread pools, more
 dev-ruby/connection_pool 2.2.1: Generic connection pooling for Ruby
-dev-ruby/crack 0.4.2-r1: Really simple JSON and XML parsing, ripped from Merb and Rails
+dev-ruby/crack 0.4.2-r1 0.4.3-r1: Really simple JSON and XML parsing, ripped from Merb and Rails
 dev-ruby/crass 1.0.3: Ruby CSS parser that's fully compliant with the CSS Syntax Level 3 specification
 dev-ruby/daemon_controller 1.2.0-r1: Library to start and stop specific daemons programmatically in a robust manner
 dev-ruby/daemons 1.2.3: Wrap existing ruby scripts to be run as a daemon
@@ -5792,7 +5793,7 @@ dev-ruby/nokogiri 1.6.8.1 1.8.1: Nokogiri is an HTML, XML, SAX, and Reader parse
 dev-ruby/nokogiri-diff 0.2.0-r2: Calculate the differences between two XML/HTML documents
 dev-ruby/ntlm-http 0.1.1-r2: Ruby/NTLM HTTP provides NTLM authentication over http
 dev-ruby/ox 2.6.0: A fast XML parser and Object marshaller
-dev-ruby/patron 0.4.18-r2: Patron is a Ruby HTTP client library based on libcurl
+dev-ruby/patron 0.4.18-r2 0.10.0: Patron is a Ruby HTTP client library based on libcurl
 dev-ruby/pg 0.17.1-r1 0.18.4-r1: Ruby extension library providing an API to PostgreSQL
 dev-ruby/pkg-config 1.1.7 1.2.8: A pkg-config implementation by Ruby
 dev-ruby/power_assert 0.3.1: Shows each value of variables and method calls in the expression
@@ -5821,7 +5822,7 @@ dev-ruby/rgen 0.8.0: Ruby Modelling and Generator Framework
 dev-ruby/riel 1.2.0-r2: This library extends the core Ruby libraries
 dev-ruby/right_http_connection 1.3.0-r1 1.5.0: RightScale's robust HTTP/S connection module
 dev-ruby/rmagick 2.15.4: An interface between Ruby and the ImageMagick(TM) image processing library
-dev-ruby/rr 1.1.2-r1 1.2.1: A double framework featuring a selection of double techniques and a terse syntax
+dev-ruby/rr 1.2.1: A double framework featuring a selection of double techniques and a terse syntax
 dev-ruby/rrdtool-bindings 1.4.8 1.5.5 1.6.0: Ruby bindings for rrdtool
 dev-ruby/rspec 2.14.1-r1 2.99.0 3.5.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-core 2.14.8-r4 2.99.2-r2 3.5.4: A Behaviour Driven Development (BDD) framework for Ruby
@@ -5876,7 +5877,7 @@ dev-ruby/safe_yaml 1.0.4-r3: Parse YAML safely, alternative implementation of YA
 dev-ruby/sass 3.2.19-r2 3.4.24: An extension of CSS3, adding nested rules, variables, mixins, and more
 dev-ruby/selenium-webdriver 3.8.0: This gem provides Ruby bindings for WebDriver
 dev-ruby/serialport 1.3.1: a library for serial port (rs232) access in ruby
-dev-ruby/session 3.1.2 3.2.0: A set of classes to drive external programs via pipe
+dev-ruby/session 3.2.0: A set of classes to drive external programs via pipe
 dev-ruby/sexp_processor 4.9.0: Processor for s-expressions created as part of the ParseTree project
 dev-ruby/shorturl 1.0.0-r2: A very simple library to use URL shortening services such as TinyURL or RubyURL
 dev-ruby/shoulda 2.11.3-r2: Making tests easy on the fingers and eyes
@@ -6320,7 +6321,6 @@ games-emulation/dolphin 5.0: Gamecube and Wii game emulator
 games-emulation/dosbox 0.74_p20160629: DOS emulator
 games-emulation/mgba 0.5.2 0.6.1: A new Game Boy Advance emulator written in C.
 games-emulation/pcsx2 1.4.0: A PlayStation 2 emulator
-games-emulation/vbam 2.0.0_beta2_p20161211-r1: Game Boy, GBC, and GBA emulator forked from VisualBoyAdvance
 games-engines/renpy 6.17.7 6.99.12.4-r3: Visual novel engine written in python
 games-misc/fortune-mod 1.99.1-r2: The notorious fortune program
 games-misc/fortune-mod-gentoo-ru 0.26: Fortune database of quotes from gentoo.ru forum and gentoo@conference.gentoo.ru
@@ -7197,7 +7197,7 @@ media-gfx/gphoto2 2.5.14: Free, redistributable digital camera software applicat
 media-gfx/gphotofs 0.5: FUSE file system for interfacing with digital cameras using gphoto2
 media-gfx/gpicview 0.2.4 0.2.5: A Simple and Fast Image Viewer for X
 media-gfx/gqview 2.1.5-r1: A GTK-based image browser
-media-gfx/graphicsmagick 1.3.25 1.3.26 1.3.27: Collection of tools and libraries for many image formats
+media-gfx/graphicsmagick 1.3.26 1.3.27: Collection of tools and libraries for many image formats
 media-gfx/graphite2 1.3.10: Library providing rendering capabilities for complex non-Roman writing systems
 media-gfx/graphviz 2.38.0-r1 2.40.1-r1: Open Source Graph Visualization Software
 media-gfx/grub-splashes 20091109: Collection of grub splashes
@@ -7209,7 +7209,7 @@ media-gfx/icon-slicer 0.3: utility for generating icon themes and libXcursor cur
 media-gfx/icoutils 0.31.0 0.32.0: Tools to extract and convert images in icon and cursor files (.ico, .cur)
 media-gfx/igal 2.0-r1: Static HTML image gallery generator
 media-gfx/imagemagick 6.9.9.26 6.9.9.31 7.0.7.14 7.0.7.19: A collection of tools and libraries for many image formats
-media-gfx/imageworsener 1.3.1 1.3.2: Utility for image scaling and processing
+media-gfx/imageworsener 1.3.2: Utility for image scaling and processing
 media-gfx/inkscape 0.91-r3: A SVG based generic vector-drawing program
 media-gfx/iscan 2.30.2.2: EPSON Image Scan! for Linux (including sane-epkowa backend)
 media-gfx/iscan-data 1.22.0.1 1.36.0.1: Image Scan! for Linux data files
@@ -7548,8 +7548,8 @@ media-libs/lilv 0.20.0 0.24.2: Library to make the use of LV2 plugins as simple 
 media-libs/lv2 1.10.0-r1 1.14.0: A simple but extensible successor of LADSPA
 media-libs/mediastreamer 2.7.3-r3 2.8.2 2.9.0 2.9.0-r1 2.9.0-r2: Mediastreaming library for telephony application
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
-media-libs/mesa 17.1.10 17.2.7: OpenGL-like graphic library for Linux
-media-libs/ming 0.4.7 0.4.8-r1: An Open Source library for Flash movie generation
+media-libs/mesa 17.1.10 17.2.8: OpenGL-like graphic library for Linux
+media-libs/ming 0.4.8-r1: An Open Source library for Flash movie generation
 media-libs/mlt 6.4.1-r2: Open source multimedia framework for television broadcasting
 media-libs/musicbrainz 3.0.3 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
 media-libs/mutagen 1.35.1: Audio metadata tag reader and writer implemented in pure Python
@@ -10056,7 +10056,7 @@ sys-fs/udev 216 225-r1 233: Linux dynamic and persistent device naming support (
 sys-fs/udev-init-scripts 27 32: udev startup scripts for openrc
 sys-fs/udftools 1.1-r1: Ben Fennema's tools for packet writing and the UDF filesystem
 sys-fs/udiskie 0.6.2 1.1.1: An automatic disk mounting service using udisks
-sys-fs/udisks 1.0.5-r1 2.1.8 2.7.4: Daemon providing interfaces to work with storage devices
+sys-fs/udisks 1.0.5-r1 2.1.8 2.7.4-r1: Daemon providing interfaces to work with storage devices
 sys-fs/vhba 20170610: Virtual (SCSI) Host Bus Adapter kernel module for the CDEmu suite
 sys-fs/vzquota 3.1: OpenVZ VPS disk quota utility
 sys-fs/xfsdump 3.1.6: xfs dump/restore utilities
@@ -10783,7 +10783,7 @@ x11-misc/imwheel 1.0.0_pre12: mouse tool for advanced features such as wheels an
 x11-misc/kdocker 5.0: Helper to dock any application into the system tray
 x11-misc/kronometer 2.1.5: Stopwatch application
 x11-misc/ktsuss 2.1: Graphical version of su written in C and GTK+ 2
-x11-misc/lightdm 1.18.3: A lightweight display manager
+x11-misc/lightdm 1.18.3-r1: A lightweight display manager
 x11-misc/lightdm-gtk-greeter 2.0.1-r1: LightDM GTK+ Greeter
 x11-misc/lineak-defaultplugin 0.9.0-r1: Mute/unmute and other macros for LINEAK
 x11-misc/lineak-xosdplugin 0.9.0-r1: Xosd plugin for LINEAK
