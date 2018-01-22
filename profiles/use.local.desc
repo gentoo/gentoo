@@ -2889,7 +2889,6 @@ media-libs/openimageio:cpu_flags_x86_f16c - SIMD Optimization
 media-libs/openimageio:field3d - Use media-libs/Field3D
 media-libs/openimageio:opencv - Use media-libs/opencv
 media-libs/openimageio:ptex - Use media-libs/ptex
-media-libs/openimageio:tbb - Use dev-cpp/tbb
 media-libs/opus:ambisonics - Enable ambisonics support (experimental).
 media-libs/opus:custom-modes - Build with custom-modes.
 media-libs/opusfile:fixed-point - Enable fixed-point arithmetic operations
