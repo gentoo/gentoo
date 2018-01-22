@@ -1,0 +1,15 @@
+--- test/test_download.rb	2018-01-22 02:35:45.200017696 +0100
++++ test/test_download.rb.1	2018-01-22 02:38:40.000018113 +0100
+@@ -217,8 +217,10 @@
+       channel.gets_data "E\n"
+       channel.sends_ok
+     end
+-
+-    scp.download!("/path/to/remote", "/path/to/local", :recursive => true, :ssh => { :verbose => :debug })
++    
++    Net::SSH::Test::Extensions::IO.with_test_extension do
++      scp.download!("/path/to/remote", "/path/to/local", :recursive => true, :ssh => { :verbose => :debug })
++    end
+     assert_equal "a" * 1234, file.io.string
+   end
+ 

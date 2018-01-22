@@ -1,0 +1,21 @@
+--- test/test_download.rb	2018-01-22 02:08:00.000013728 +0100
++++ test/test_download.rb.1	2018-01-22 02:11:49.820014276 +0100
+@@ -70,12 +70,12 @@
+     end
+ 
+     error = nil
+-    assert_scripted do
+-      begin
+-        scp.download!("/path/to/remote.txt")
+-      rescue
+-        error = $!
+-      end
++    Net::SSH::Test::Extensions::IO.with_test_extension do
++    begin
++      scp.download!("/path/to/remote.txt")
++    rescue
++      error = $!
++    end
+     end
+     assert_equal Net::SCP::Error, error.class
+     assert_equal "SCP did not finish successfully (1): File not found: /path/to/remote.txt\n", error.message
