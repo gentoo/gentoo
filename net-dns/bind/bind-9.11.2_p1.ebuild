@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # Re dlz/mysql and threads, needs to be verified..
@@ -30,7 +30,7 @@ NSLINT_DIR="contrib/nslint-3.0a2/"
 
 DESCRIPTION="BIND - Berkeley Internet Name Domain - Name Server"
 HOMEPAGE="http://www.isc.org/software/bind"
-SRC_URI="ftp://ftp.isc.org/isc/bind9/${MY_PV}/${MY_P}.tar.gz
+SRC_URI="https://www.isc.org/downloads/file/${MY_P}/?version=tar-gz -> ${P}.tar.gz
 	doc? ( mirror://gentoo/dyndns-samples.tbz2 )"
 #	sdb-ldap? (
 #		http://ftp.disconnected-by-peer.at/pub/bind-sdb-ldap-${SDB_LDAP_VER}.patch.bz2
