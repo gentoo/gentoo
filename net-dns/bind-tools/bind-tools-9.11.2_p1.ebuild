@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -12,7 +12,7 @@ MY_P="${MY_PN}-${MY_PV}"
 
 DESCRIPTION="bind tools: dig, nslookup, host, nsupdate, dnssec-keygen"
 HOMEPAGE="http://www.isc.org/software/bind"
-SRC_URI="ftp://ftp.isc.org/isc/bind9/${MY_PV}/${MY_P}.tar.gz"
+SRC_URI="https://www.isc.org/downloads/file/${MY_P}/?version=tar-gz -> ${MY_PN}-${PV}.tar.gz"
 
 LICENSE="Apache-2.0 BSD BSD-2 GPL-2 HPND ISC MPL-2.0"
 SLOT="0"
