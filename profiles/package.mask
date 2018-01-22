@@ -671,12 +671,6 @@ net-nds/portmap
 # Removal in 30 days.
 mail-client/drac
 
-# Thomas Beierlein <tomjbe@gentoo.org> (22 Dec 2017)
-# Development moved to another naming scheme.
-# Use media-radio/tucnak instead.
-# Masked for removal in 30 days.
-media-radio/tucnak2
-
 # Alice Ferrazzi <alicef@gentoo.org> (22 Dec 2017)
 # Masked for removal in 30 days.
 # Linux kernel 4.13 can break various laptops.
