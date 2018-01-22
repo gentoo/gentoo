@@ -9305,7 +9305,6 @@ sci-libs/parmgridgen 1.0: Software for parallel (mpi) generating coarse grids
 sci-libs/pastix 5.2.2.22-r1: Parallel solver for very large sparse linear systems
 sci-libs/pgplot 5.2.2-r6: FORTRAN/C device-independent scientific graphic library
 sci-libs/plotmm 0.1.2: Plot widget for GTKmm
-sci-libs/plplot 5.11.1-r1: Multi-language scientific plotting library
 sci-libs/primegen 0.97-r1: Small, fast library to generate primes in order
 sci-libs/proj 4.8.0: Proj.4 cartographic projection software with updated NAD27 grids
 sci-libs/punc 1.5: Portable Understructure for Numerical Computing
@@ -10199,7 +10198,7 @@ sys-process/watchpid 0.1-r2: Watches a process for termination
 sys-process/xjobs 20151016: Reads commands line by line and executes them in parallel
 virtual/acl 0 0-r1 0-r2: Virtual for acl support (sys/acl.h)
 virtual/awk 0 1: Virtual for awk implementation
-virtual/bitcoin-leveldb 0-r1: Virtual for LevelDB versions known to be compatible with Bitcoin Core 0.9+
+virtual/bitcoin-leveldb 0-r2: Virtual for LevelDB versions known to be compatible with Bitcoin Core 0.9+
 virtual/blas 1.0: Virtual for FORTRAN 77 BLAS implementation
 virtual/cblas 1.0: Virtual for BLAS C implementation
 virtual/cdrtools 0: Virtual for command-line recorders cdrtools and cdrkit

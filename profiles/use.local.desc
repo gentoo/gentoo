@@ -4968,11 +4968,6 @@ sci-libs/openfoam:paraview - Enable support for paraview library
 sci-libs/openfoam:src - Install source files
 sci-libs/pastix:int64 - Build the 64 bits integer library
 sci-libs/pastix:starpu - Build and link with dev-libs/starpu
-sci-libs/plplot:dynamic - Build with dynamic drivers
-sci-libs/plplot:octave - Add bindings for sci-mathematics/octave
-sci-libs/plplot:pdl - Add bindings for dev-perl/PDL
-sci-libs/plplot:qhull - Add bindings for media-libs/qhull
-sci-libs/plplot:shapefile - Enable support for ESRI shapefiles
 sci-libs/scipy:sparse - Adds support for sparse solving with sci-libs/umfpack
 sci-libs/scotch:int64 - Build the 64 bits integer library (needed for > 2^31 vertices)
 sci-libs/scotch:tools - Build and install extra exec tools
