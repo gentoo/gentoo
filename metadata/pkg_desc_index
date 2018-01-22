@@ -6280,7 +6280,7 @@ dev-vcs/cvsd 1.0.7 1.0.17: CVS pserver daemon
 dev-vcs/cvsgraph 1.6.1 1.7.0: CVS/RCS repository grapher
 dev-vcs/cvsps 2.1-r1: Generates patchset information from a CVS repository
 dev-vcs/darcs 2.8.4-r6 2.12.0 2.12.5: a distributed, interactive, smart revision control system
-dev-vcs/fossil 1.35 2.4: Simple, high-reliability, source control management, and more
+dev-vcs/fossil 2.4: Simple, high-reliability, source control management, and more
 dev-vcs/giggle 0.7-r2: GTK+ Frontend for GIT
 dev-vcs/git 2.13.6: stupid content tracker: distributed VCS designed for speed and efficiency
 dev-vcs/git-bzr-ng 0_pre20120822-r2: Git subcommand providing a bidirectional bridge to Bazaar repositories
