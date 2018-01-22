@@ -14,10 +14,9 @@ SRC_URI="mirror://sourceforge/project/${PN}/${P}.tar.gz"
 SLOT="0"
 LICENSE="BSD PSF-2.2"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="examples python qt4 test"
+IUSE="examples python test"
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	test? ( python qt4 )"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	dev-cpp/eigen:3
@@ -32,13 +31,10 @@ RDEPEND="
 		x11-libs/libXext
 	)
 	python? ( ${PYTHON_DEPS} )
-	qt4? (
-		dev-qt/qtcore:4
-		dev-qt/qtgui:4
-		dev-qt/qtopengl:4
-	)
 "
 DEPEND="${RDEPEND}"
+
+RESTRICT="test" # requires disabled Qt4
 
 S="${WORKDIR}"/${PN}
 
@@ -63,12 +59,12 @@ src_configure() {
 		-DCHEMKIT_BUILD_EXAMPLES=$(usex examples)
 		-DCHEMKIT_BUILD_DEMOS=$(usex examples)
 		-DCHEMKIT_BUILD_BINDINGS_PYTHON=$(usex python)
-		-DCHEMKIT_BUILD_APPS=$(usex qt4)
-		-DCHEMKIT_BUILD_PLUGIN_BABEL=$(usex qt4)
-		-DCHEMKIT_BUILD_QT_DESIGNER_PLUGINS=$(usex qt4)
-		-DCHEMKIT_WITH_GRAPHICS=$(usex qt4)
-		-DCHEMKIT_WITH_GUI=$(usex qt4)
-		-DCHEMKIT_WITH_WEB=$(usex qt4)
+		-DCHEMKIT_BUILD_APPS=OFF
+		-DCHEMKIT_BUILD_PLUGIN_BABEL=OFF
+		-DCHEMKIT_BUILD_QT_DESIGNER_PLUGINS=OFF
+		-DCHEMKIT_WITH_GRAPHICS=OFF
+		-DCHEMKIT_WITH_GUI=OFF
+		-DCHEMKIT_WITH_WEB=OFF
 		-DCHEMKIT_BUILD_TESTS=$(usex test)
 		-DUSE_SYSTEM_INCHI=ON
 		-DUSE_SYSTEM_JSONCPP=OFF
