@@ -4534,7 +4534,7 @@ dev-python/PyECLib 1.5.0: Messaging API for RPC and notifications over different
 dev-python/PyFoam 0.5.4-r2: Tool to analyze and plot the residual files of OpenFOAM computations
 dev-python/PyGithub 1.28: Python library to access the Github API v3
 dev-python/PyPDF2 1.26.0: Python library to work with pdf files
-dev-python/PyQt4 4.12 4.12.1: Python bindings for the Qt framework
+dev-python/PyQt4 4.12.1: Python bindings for the Qt framework
 dev-python/PyQt5 5.7.1: Python bindings for the Qt framework
 dev-python/PyRSS2Gen 1.1: RSS feed generator written in Python
 dev-python/PySocks 1.6.7: SOCKS client module
@@ -5461,7 +5461,7 @@ dev-python/simplekv 0.9.2: A key-value storage for binary data, support many bac
 dev-python/simpleparse 2.1.1-r1: A Parser Generator for mxTextTools
 dev-python/simpy 3.0.8: Object-oriented, process-based discrete-event simulation language
 dev-python/singledispatch 3.4.0.3: A library to bring functools.singledispatch from Python 3.4 to Python 2.6-3.3
-dev-python/sip 4.19.1 4.19.3: Python extension module generator for C and C++ libraries
+dev-python/sip 4.19.3: Python extension module generator for C and C++ libraries
 dev-python/six 1.10.0: Python 2 and 3 compatibility library
 dev-python/slowaes 0.1-r2: AES implementation in pure Python
 dev-python/smmap 0.9.0: A pure git implementation of a sliding window memory map manager
