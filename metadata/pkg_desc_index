@@ -5406,7 +5406,7 @@ dev-python/regendoc 0.5: Check/update simple file/shell examples in documentatio
 dev-python/regex 2017.04.05: Alternative regular expression module to replace re
 dev-python/rencode 1.0.5: similar to bencode from the BitTorrent project
 dev-python/reno 2.2.1 2.5.0: Release notes manager, storing release notes in a git repo and building docs
-dev-python/reportlab 3.3.0-r1: Tools for generating printable PDF documents from any data source
+dev-python/reportlab 3.3.0-r2: Tools for generating printable PDF documents from any data source
 dev-python/repoze-lru 0.6-r2: A tiny LRU cache implementation and decorator
 dev-python/repoze-who 2.2: repoze.who is an identification and authentication framework for WSGI
 dev-python/requests 2.11.1 2.12.5 2.18.2-r1: HTTP library for human beings
@@ -10163,7 +10163,7 @@ sys-process/at 3.1.18-r1: Queues jobs for later execution
 sys-process/atop 2.3.0-r1: Resource-specific view of processes
 sys-process/audit 2.6.4: Userspace utilities for storing and processing auditing records
 sys-process/bcron 0.10: A new cron system designed with secure operations in mind by Bruce Guenter
-sys-process/criu 2.5: utility to checkpoint/restore a process tree
+sys-process/criu 2.5-r1: utility to checkpoint/restore a process tree
 sys-process/cronbase 0.3.7-r6: base for all cron ebuilds
 sys-process/cronie 1.5.0-r1: Cronie is a standard UNIX daemon cron based on the original vixie-cron
 sys-process/cronutils 1.9: Utilities to assist running batch processing jobs
