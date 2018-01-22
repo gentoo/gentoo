@@ -218,11 +218,6 @@ media-video/2mandvd
 # Masked for removal in 30 days, no more rdeps, bug #602816
 dev-python/python-poppler-qt4
 
-# Mikle Kolyada <zlogene@gentoo.org> (07 Jan 2018)
-# The package was suddenly forgotten during tuxonice-sources masking.
-# Mask for removal in 14 days as the sources package has already been removed.
-sys-apps/tuxonice-userui
-
 # Andreas Sturmlechner <asturm@gentoo.org> (05 Jan 2018)
 # Masked for removal in 30 days, merged into dev-util/kdevelop
 dev-util/kdevplatform

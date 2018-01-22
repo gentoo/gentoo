@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby22 ruby23 ruby24"
 
 RUBY_FAKEGEM_TASK_TEST="test:units"
 
@@ -37,7 +37,7 @@ all_ruby_compile() {
 }
 
 each_ruby_test() {
-	${RUBY} -Ilib -S testrb test/unit/* || die
+	${RUBY} -Ilib -S testrb-2 test/unit/* || die
 }
 
 all_ruby_install() {
