@@ -563,7 +563,7 @@ app-editors/leafpad 0.8.18.1: A simple GTK2 text editor
 app-editors/leo 5.1: Leo: Literate Editor with Outlines
 app-editors/levee 3.5a: Really tiny vi clone, for things like rescue disks
 app-editors/lpe 1.2.6.13: a lightweight programmers editor
-app-editors/mg 20161005 20170828: MicroGnuEmacs, a port from the BSDs
+app-editors/mg 20170828: MicroGnuEmacs, a port from the BSDs
 app-editors/moe 1.6: A powerful and user-friendly console text editor
 app-editors/mousepad 0.4.0 0.4.0-r1: GTK+-based editor for the Xfce Desktop Environment
 app-editors/nano 2.7.5 2.8.7: GNU GPL'd Pico clone with more functionality
@@ -10695,7 +10695,7 @@ x11-libs/libxkbfile 1.0.8 1.0.9: X.Org xkbfile library
 x11-libs/libxkbui 1.0.2-r1: X.Org xkbui library
 x11-libs/libxklavier 5.3 5.4: A library for the X Keyboard Extension (high-level API)
 x11-libs/libxshmfence 1.1 1.2: Shared memory fences using futexes
-x11-libs/motif 2.2.3-r12 2.3.6-r1 2.3.7: The Motif user interface component toolkit
+x11-libs/motif 2.2.3-r12 2.3.7: The Motif user interface component toolkit
 x11-libs/mx 1.4.7-r2: A widget toolkit using Clutter
 x11-libs/neXtaw 0.15.1-r1: Athena Widgets with N*XTSTEP appearance
 x11-libs/pango 1.40.3 1.40.12 1.40.14: Internationalized text layout and rendering library
