@@ -644,32 +644,12 @@ dev-python/apse
 # FEATURES=-preserve-libs from completely frying their system.
 >=dev-libs/mpfr-4.0.0
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (25 Dec 2017)
-# Provided (and blocked) by app-text/texlive-core
-# Removal in 30 days; bug 628820
-app-text/dvibook
-app-text/dvipdfm
-app-text/dvipdfmx
-app-text/xdvipdfmx
-
 # Thomas Beierlein <tomjbe@gentoo.org> (23 Dec 2017)
 # To adapt to changed version naming by upstream 
 # (pcb-yyyymmdd to pcb-x.y.z) we move the ebuild to
 # pcb-0_pyyyymmdd and mask >=pcb-20000000.
 # Do not remove the mask until newer version gets stable
 >=sci-electronics/pcb-20000000
-
-# Mike Gilbert <floppym@gentoo.org> (23 Dec 2017)
-# Fails to build without glibc rpc support, bug 630670.
-# Use net-nds/rpcbind instead.
-# Removal in 30 days.
-net-nds/portmap
-
-# Mike Gilbert <floppym@gentoo.org> (23 Dec 2017)
-# Fails to build without glibc rpc support, bug 641154.
-# Dead upstream.
-# Removal in 30 days.
-mail-client/drac
 
 # Alice Ferrazzi <alicef@gentoo.org> (22 Dec 2017)
 # Masked for removal in 30 days.
