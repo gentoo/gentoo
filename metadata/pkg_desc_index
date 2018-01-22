@@ -5779,7 +5779,7 @@ dev-ruby/minitest 4.7.5-r1 4.7.5-r2 5.3.3-r1 5.8.4 5.9.1: minitest/unit is a sma
 dev-ruby/mocha 0.10.5-r2 0.11.4-r1 0.12.10-r1 0.13.3-r2 0.14.0 1.1.0: Mocking and stubbing using a syntax like that of JMock and SchMock
 dev-ruby/multi_json 1.12.1: A gem to provide swappable JSON backends
 dev-ruby/multi_test 0.1.2: A uniform interface for Ruby testing libraries
-dev-ruby/multi_xml 0.5.4-r2 0.5.5: A generic swappable back-end for XML parsing
+dev-ruby/multi_xml 0.5.5: A generic swappable back-end for XML parsing
 dev-ruby/mustache 1.0.2: Mustache is a framework-agnostic way to render logic-free views
 dev-ruby/nanotest 0.9.4.1: Extremely mynymal test framework
 dev-ruby/narray 0.6.1.1: Numerical N-dimensional Array class
@@ -5795,7 +5795,7 @@ dev-ruby/nokogiri 1.6.8.1 1.8.1: Nokogiri is an HTML, XML, SAX, and Reader parse
 dev-ruby/nokogiri-diff 0.2.0-r2: Calculate the differences between two XML/HTML documents
 dev-ruby/ntlm-http 0.1.1-r2: Ruby/NTLM HTTP provides NTLM authentication over http
 dev-ruby/ox 2.6.0: A fast XML parser and Object marshaller
-dev-ruby/patron 0.4.18-r2 0.10.0: Patron is a Ruby HTTP client library based on libcurl
+dev-ruby/patron 0.10.0: Patron is a Ruby HTTP client library based on libcurl
 dev-ruby/pg 0.17.1-r1 0.18.4-r1: Ruby extension library providing an API to PostgreSQL
 dev-ruby/pkg-config 1.1.7 1.2.8: A pkg-config implementation by Ruby
 dev-ruby/power_assert 0.3.1: Shows each value of variables and method calls in the expression
