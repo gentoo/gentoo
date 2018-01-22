@@ -1,0 +1,32 @@
+--- src/include/Makefile.am.orig	2018-01-22 21:24:17.802100061 +0100
++++ src/include/Makefile.am	2018-01-22 21:24:30.080100801 +0100
+@@ -7,4 +7,5 @@
+ 		ndpi_protocol_ids.h \
+ 		ndpi_protocols.h \
+ 		ndpi_win32.h \
+-		ndpi_includes.h
++		ndpi_includes.h \
++		libcache.h
+--- src/include/ndpi_typedefs.h.orig	2018-01-22 21:27:35.994112009 +0100
++++ src/include/ndpi_typedefs.h	2018-01-22 21:27:47.463112701 +0100
+@@ -25,7 +25,7 @@
+ #define __NDPI_TYPEDEFS_H__
+ 
+ #include "ndpi_define.h"
+-#include "../lib/third_party/include/libcache.h"
++#include "libcache.h"
+ 
+ #define BT_ANNOUNCE
+ #define SNAP_EXT
+--- src/lib/Makefile.am.orig	2018-01-22 21:34:57.055138600 +0100
++++ src/lib/Makefile.am	2018-01-22 21:35:10.431139406 +0100
+@@ -12,7 +12,8 @@
+ 			     ../include/ndpi_includes.h \
+ 			     ../include/ndpi_protocol_ids.h \
+ 			     ../include/ndpi_protocols.h \
+-			     ../include/ndpi_typedefs.h
++			     ../include/ndpi_typedefs.h \
++			     ../include/libcache.h
+ 
+ libndpi_la_SOURCES = ndpi_content_match.c.inc \
+ 		     ndpi_main.c \

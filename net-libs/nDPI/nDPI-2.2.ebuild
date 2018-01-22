@@ -20,6 +20,9 @@ RDEPEND="${DEPEND}"
 src_prepare() {
 	sed -e "s/@NDPI_MAJOR@/$(get_version_component_range 1)/g;s/@NDPI_MINOR@/$(get_version_component_range 2)/g;s/@NDPI_PATCH@/$(get_version_component_range 3)/g;s/@NDPI_VERSION_SHORT@/${PV}/g" < "${S}/configure.seed" > "${S}/configure.ac" || die
 
+	mv "${S}/src/lib/third_party/include/libcache.h" "${S}/src/include"
+	epatch "${FILESDIR}/${P}-libcache-include.patch"
+
 	default
 	eautoreconf
 }
