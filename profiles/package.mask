@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (22 Jan 2018)
+# Depends on deprecated Qt4, no sign of upstream doing a port.
+# Masked for removal in 30 days.
+games-strategy/hedgewars
+
 # Eray Aslan <eras@gentoo.org> (22 Jan 2018)
 # Vulnerable - see https://bugs.gentoo.org/630684
 # Please migrate to cyrus-imapd-3.0 releases
