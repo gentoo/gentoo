@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ X86_CPU_FEATURES=(
 )
 CPU_FEATURES=( ${X86_CPU_FEATURES[@]/#/cpu_flags_x86_} )
 
-IUSE="colorio doc ffmpeg field3d gif jpeg2k libressl opencv opengl ptex python raw ssl +truetype ${CPU_FEATURES[@]%:*}"
+IUSE="colorio doc ffmpeg field3d gif jpeg2k libressl opencv opengl ptex python qt5 raw ssl +truetype ${CPU_FEATURES[@]%:*}"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RESTRICT="test" #431412
@@ -43,11 +43,18 @@ RDEPEND=">=dev-libs/boost-1.62:=
 	opengl? (
 		virtual/glu
 		virtual/opengl
+		media-libs/glew:=
 	)
 	ptex? ( media-libs/ptex:= )
 	python? (
 		${PYTHON_DEPS}
 		dev-libs/boost:=[python,${PYTHON_USEDEP}]
+	)
+	qt5? (
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtwidgets:5
+		opengl? ( dev-qt/qtopengl:5 )
 	)
 	raw? ( media-libs/libraw:= )
 	ssl? (
@@ -57,11 +64,6 @@ RDEPEND=">=dev-libs/boost-1.62:=
 	truetype? ( media-libs/freetype:2= )"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen[latex] )"
-
-PATCHES=(
-	"${FILESDIR}/${P}-use-gnuinstalldirs.patch"
-	"${FILESDIR}/${P}-make-python-and-boost-detection-more-generic.patch"
-)
 
 DOCS=( CHANGES.md CREDITS.md README.md src/doc/${PN}.pdf )
 
@@ -102,7 +104,7 @@ src_configure() {
 		-DUSE_OPENSSL=$(usex ssl)
 		-DUSE_PTEX=$(usex ptex)
 		-DUSE_PYTHON=$(usex python)
-		-DUSE_QT=OFF # Deprecated
+		-DUSE_QT=$(usex qt5)
 		-DUSE_SIMD=$(local IFS=','; echo "${mysimd[*]}")
 	)
 

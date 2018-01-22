@@ -7,7 +7,7 @@ inherit cmake-utils vcs-snapshot
 
 DESCRIPTION="Guideline Support Library implementation by Microsoft"
 HOMEPAGE="https://github.com/Microsoft/GSL"
-SRC_URI="https://github.com/Microsoft/${PN}/tarball/9d65e74400976b3509833f49b16d401600c7317d -> ${P}.tar.gz"
+SRC_URI="https://github.com/Microsoft/gsl/tarball/9d65e74400976b3509833f49b16d401600c7317d -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
