@@ -8658,7 +8658,7 @@ net-mail/bincimap 1.2.13: IMAP server for Maildir
 net-mail/checkpassword 0.90-r2: A uniform password checking interface for root applications
 net-mail/cmd5checkpw 0.30-r1: A checkpassword compatible authentication program that used CRAM-MD5 authentication mode
 net-mail/courier-imap 4.15-r2 4.16.2-r1 4.17.3: An IMAP daemon designed specifically for maildirs
-net-mail/cyrus-imapd 2.5.10 3.0.4: The Cyrus IMAP Server
+net-mail/cyrus-imapd 3.0.4: The Cyrus IMAP Server
 net-mail/dbmail 3.2.2 3.2.3-r1: Enables storage of mail messages in a relational database
 net-mail/dot-forward 0.71-r3: reads sendmail's .forward files under qmail
 net-mail/dovecot 2.2.29.1 2.2.32: An IMAP and POP3 server written with security primarily in mind
