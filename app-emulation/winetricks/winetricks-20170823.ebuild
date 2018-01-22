@@ -32,8 +32,8 @@ RDEPEND="app-arch/cabextract
 	app-arch/p7zip
 	app-arch/unzip
 	net-misc/wget
-	x11-misc/xdg-utils
 	virtual/wine
+	x11-misc/xdg-utils
 	gtk? ( gnome-extra/zenity )
 	kde? ( kde-apps/kdialog )
 	rar? ( app-arch/unrar )"
