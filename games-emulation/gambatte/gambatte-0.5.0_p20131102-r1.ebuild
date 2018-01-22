@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit scons-utils qt4-r2 games
+inherit scons-utils games
 
 DESCRIPTION="An accuracy-focused Gameboy / Gameboy Color emulator"
 HOMEPAGE="https://sourceforge.net/projects/gambatte"
@@ -12,22 +12,11 @@ SRC_URI="https://dev.gentoo.org/~hasufell/distfiles/${P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="qt4 +sdl"
-REQUIRED_USE="|| ( qt4 sdl )"
+IUSE=""
 
 RDEPEND="
-	sys-libs/zlib
-	qt4? (
-		dev-qt/qtcore:4
-		dev-qt/qtgui:4
-		dev-qt/qtopengl:4
-		media-libs/alsa-lib
-		x11-libs/libX11
-		x11-libs/libXext
-		x11-libs/libXrandr
-		x11-libs/libXv
-	)
-	sdl? ( media-libs/libsdl[X,sound,joystick,video] )"
+	media-libs/libsdl[X,sound,joystick,video]
+	sys-libs/zlib"
 DEPEND="${RDEPEND}
 	app-arch/xz-utils"
 
@@ -74,22 +63,12 @@ src_compile() {
 	escons
 
 	# build sdl frontend
-	if use sdl; then
-		cd "${S}"/gambatte_sdl || die
-		escons
-	fi
-
-	# build qt frontend
-	if use qt4; then
-		cd "${S}"/gambatte_qt || die
-		eqmake4 ${PN}_qt.pro
-		emake
-	fi
+	cd "${S}"/gambatte_sdl || die
+	escons
 }
 
 src_install() {
-	use sdl && dogamesbin gambatte_sdl/gambatte_sdl
-	use qt4 && dogamesbin gambatte_qt/bin/gambatte_qt
+	dogamesbin gambatte_sdl/gambatte_sdl
 
 	dodoc README changelog
 

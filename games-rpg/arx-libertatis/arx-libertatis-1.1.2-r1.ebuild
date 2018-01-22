@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -22,8 +22,10 @@ COMMON_DEPEND="
 	sys-libs/zlib
 	virtual/opengl
 	crash-reporter? (
-		dev-qt/qtcore:4[ssl]
-		dev-qt/qtgui:4
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtnetwork:5[ssl]
+		dev-qt/qtwidgets:5
 	)
 	!static? ( media-libs/glew )"
 RDEPEND="${COMMON_DEPEND}
@@ -35,9 +37,7 @@ DEPEND="${COMMON_DEPEND}
 
 DOCS=( README.md AUTHORS CHANGELOG )
 
-PATCHES=(
-	"${FILESDIR}"/${P}-cmake-3.5.patch
-)
+PATCHES=( "${FILESDIR}"/${P}-cmake-3.5.patch )
 
 src_prepare() {
 	cmake-utils_src_prepare
@@ -63,7 +63,7 @@ src_configure() {
 		-DUSE_OPENAL=ON
 		-DUSE_OPENGL=ON
 		-DUSE_SDL=ON
-		$(usex crash-reporter "-DUSE_QT5=OFF" "")
+		$(usex crash-reporter "-DUSE_QT5=ON" "")
 		$(cmake-utils_use_use static STATIC_LIBS)
 	)
 
