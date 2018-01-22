@@ -6,7 +6,7 @@ EAPI=6
 PLOCALES="ar bg ca cs da de el en en_US eo es fa fi fr he hi hr hu it ja ko lt ml nb_NO nl or pa pl pt_BR pt_PT rm ro ru sk sl sr_RS@cyrillic sr_RS@latin sv te th tr uk wa zh_CN zh_TW"
 PLOCALE_BACKUP="en"
 
-inherit autotools eutils flag-o-matic gnome2-utils l10n multilib multilib-minimal pax-utils toolchain-funcs virtualx versionator xdg-utils
+inherit autotools estack eutils flag-o-matic gnome2-utils l10n multilib multilib-minimal pax-utils toolchain-funcs virtualx versionator xdg-utils
 
 MY_PN="${PN%%-*}"
 MY_P="${MY_PN}-${PV}"
@@ -26,7 +26,7 @@ S="${WORKDIR}/${MY_P}"
 
 STAGING_P="wine-staging-${PV}"
 STAGING_DIR="${WORKDIR}/${STAGING_P}"
-GWP_V="20180119"
+GWP_V="20180120"
 PATCHDIR="${WORKDIR}/gentoo-wine-patches"
 
 DESCRIPTION="Free implementation of Windows(tm) on Unix, with Wine-Staging patchset"
@@ -182,7 +182,7 @@ PATCHES=(
 	"${PATCHDIR}/patches/${MY_PN}-2.0-multislot-apploader.patch" #310611
 	"${PATCHDIR}/patches/freetype-2.8.1-segfault.patch" #631676
 	"${PATCHDIR}/patches/freetype-2.8.1-drop-glyphs.patch" #631376
-	"${PATCHDIR}/patches/${MY_PN}-2.0-prevent-build-of-localized-manpages.patch" #469418 #617864
+	"${PATCHDIR}/patches/${MY_PN}-2.0-rearrange-manpages.patch" #469418 #617864
 )
 PATCHES_BIN=(
 	"${PATCHDIR}/patches/freetype-2.8.1-patch-fonts.patch" #631376
@@ -406,29 +406,30 @@ src_prepare() {
 	l10n_get_locales > po/LINGUAS || die # otherwise wine doesn't respect LINGUAS
 
 	# Fix manpage generation for locales #469418 and abi_x86_64 #617864
-	# Depends on wine-2.0-prevent-build-of-localized-manpages.patch"
-	# Duplicate manpages input for wine64
-	local man
-	for man in loader/*.man.in; do
-		cp ${man} ${man/wine/wine64} || die
+	# Requires wine-2.0-rearrange-manpages.patch
+
+	# Duplicate manpages input files for wine64
+	local f
+	for f in loader/*.man.in; do
+		cp ${f} ${f/wine/wine64} || die
 	done
-	# Add in proper manpages to Makefile
-	local search_text="wine.man.in"
+	# Add wine64 manpages to Makefile
 	if use abi_x86_64; then
-		sed -i "/${search_text}/i \
-			"$'\\\t'"wine64.man.in "$'\\\\' loader/Makefile.in || die
+		sed -i "/wine.man.in/i \
+			\\\twine64.man.in \\\\" loader/Makefile.in || die
+		sed -i -E 's/(.*wine)(.*\.UTF-8\.man\.in.*)/&\
+\164\2/' loader/Makefile.in || die
 	fi
-	local l
-	for l in de fr pl; do
-		if has ${l} ${LINGUAS-${l}}; then
-			sed -i "/${search_text}/i \
-				"$'\\\t'"wine.${l}.UTF-8.man.in "$'\\\\' loader/Makefile.in || die
-			if use abi_x86_64; then
-				sed -i "/${search_text}/i \
-					"$'\\\t'"wine64.${l}.UTF-8.man.in "$'\\\\' loader/Makefile.in || die
-			fi
-		fi
-	done
+
+	rm_man_file(){
+		local file="${1}"
+		loc=${2}
+		sed -i "/${loc}\.UTF-8\.man\.in/d" "${file}" || die
+	}
+
+	while read f; do
+		l10n_for_each_disabled_locale_do rm_man_file "${f}"
+	done < <(find -name "Makefile.in" -exec grep -q "UTF-8.man.in" "{}" \; -print)
 }
 
 src_configure() {
@@ -567,16 +568,15 @@ multilib_src_install_all() {
 		dosym wine64-preloader "${MY_PREFIX}"/bin/wine-preloader
 	fi
 
-	# Failglob for bin and man loops
-	local glob_state=$(shopt -p failglob)
-	shopt -s failglob
-
+	# Failglob for binloops, shouldn't be necessary, but including to stay safe
+	eshopts_push -s failglob #615218
 	# Make wrappers for binaries for handling multiple variants
 	# Note: wrappers instead of symlinks because some are shell which use basename
 	local b
 	for b in "${D%/}${MY_PREFIX}"/bin/*; do
 		make_wrapper "${b##*/}-${WINE_VARIANT}" "${MY_PREFIX}/bin/${b##*/}"
 	done
+	eshopts_pop
 }
 
 pkg_postinst() {
