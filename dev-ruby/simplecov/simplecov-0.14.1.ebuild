@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -21,7 +21,7 @@ IUSE="doc"
 
 ruby_add_rdepend ">=dev-ruby/json-1.8:0 <dev-ruby/json-3:0
 	dev-ruby/simplecov-html:0.10
-	>=dev-ruby/docile-1.1.0"
+	=dev-ruby/docile-1.1*"
 
 ruby_add_bdepend "test? (
 	dev-ruby/rspec:3
