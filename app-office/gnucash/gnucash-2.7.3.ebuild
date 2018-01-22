@@ -131,7 +131,9 @@ src_test() {
 }
 
 src_install() {
-	gnome2_src_install
+	# Parallel installation fails from time to time, bug #359123
+	# Usually reproducible after removing any gnucash installed copy
+	MAKEOPTS="${MAKEOPTS} -j1" gnome2_src_install
 
 	rm "${ED}"/usr/share/doc/${PF}/{COPYING,INSTALL,projects.html} || die
 	rm "${ED}"/usr/share/doc/${PF}/*win32-bin.txt || die
