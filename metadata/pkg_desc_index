@@ -8846,7 +8846,7 @@ net-misc/olsrd 0.9.6.1: An implementation of the Optimized Link State Routing pr
 net-misc/omniORB 4.1.4-r2: A robust, high-performance CORBA 2 ORB
 net-misc/openntpd 6.0_p1: Lightweight NTP server ported from OpenBSD
 net-misc/openrdate 1.2: use TCP or UDP to retrieve the current time of another machine
-net-misc/openssh 7.5_p1-r3: Port of OpenBSD's free SSH release
+net-misc/openssh 7.5_p1-r4: Port of OpenBSD's free SSH release
 net-misc/openssh-blacklist 0.4.1: Source files of vuln Debian keys
 net-misc/openvswitch 2.6.1 2.7.2 2.7.2-r1: Production quality, multilayer virtual switch
 net-misc/packETH 1.7.3: Packet generator tool for ethernet
@@ -10206,7 +10206,7 @@ virtual/checkpassword 0: Virtual for checkpassword compatible applications
 virtual/commonlisp 0: Virtual for Common Lisp
 virtual/cron 0 0-r1: Virtual for cron
 virtual/daemontools 0: Virtual for daemontools
-virtual/dev-manager 0: Virtual for the device filesystem manager
+virtual/dev-manager 0-r1: Virtual for the device filesystem manager
 virtual/editor 0: Virtual for editor
 virtual/eject 0-r1: Virtual for the eject command
 virtual/emacs 23 24 25: Virtual for GNU Emacs
