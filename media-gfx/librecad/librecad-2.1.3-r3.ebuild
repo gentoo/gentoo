@@ -3,16 +3,15 @@
 
 EAPI=5
 
-inherit eutils git-r3 qmake-utils
+inherit eutils qmake-utils
 
 DESCRIPTION="Generic 2D CAD program"
 HOMEPAGE="http://www.librecad.org/"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/LibreCAD/LibreCAD.git"
+SRC_URI="https://github.com/LibreCAD/LibreCAD/archive/${PV/_/}.zip -> ${P}.zip"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
 IUSE="3d debug doc tools"
 
@@ -29,11 +28,15 @@ DEPEND="
 	media-libs/freetype:2"
 
 RDEPEND="${DEPEND}"
-S="${WORKDIR}/librecad-${PV}"
+S="${WORKDIR}/LibreCAD-${PV}"
 
 src_prepare() {
+# 	epatch "${FILESDIR}/iota-fix-2.1.1.patch"
+
 	# currently RS_VECTOR3D causes an internal compiler error on GCC-4.8
-	use 3d || sed -i -e '/RS_VECTOR2D/ s/^#//' librecad/src/src.pro || die
+	if ! use 3d; then
+		sed -i -e '/RS_VECTOR2D/ s/^#//' librecad/src/src.pro || die
+	fi
 }
 
 src_configure() {
@@ -43,8 +46,6 @@ src_configure() {
 src_install() {
 	dobin unix/librecad
 	use tools && dobin unix/ttf2lff
-	insinto /usr/share
-	doins -r unix/appdata
 	insinto /usr/share/${PN}
 	doins -r unix/resources/*
 	use doc && docinto html && dodoc -r librecad/support/doc/*
