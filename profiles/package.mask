@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Eray Aslan <eras@gentoo.org> (22 Jan 2018)
+# Vulnerable - see https://bugs.gentoo.org/630684
+# Please migrate to cyrus-imapd-3.0 releases
+=net-mail/cyrus-imapd-2.5*
+
 # Andreas Sturmlechner <asturm@gentoo.org> (20 Jan 2018)
 # Outdated and broken for a long time, blocking cleanups.
 # Depends on deprecated LINGUAS/Qt4/kde4-functions.eclass.
