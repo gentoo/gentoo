@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils gnome2-utils linux-info systemd
 
 MY_P="pgl-${PV}"
+inherit eutils gnome2-utils linux-info systemd
 
 DESCRIPTION="Privacy oriented firewall application"
 HOMEPAGE="https://sourceforge.net/projects/peerguardian/"
@@ -25,7 +25,7 @@ COMMON_DEPEND="
 		dev-qt/qtcore:4
 		dev-qt/qtdbus:4
 		dev-qt/qtgui:4
-		|| ( kde-plasma/kde-cli-tools[kdesu] kde-apps/kdesu x11-misc/ktsuss )
+		|| ( kde-plasma/kde-cli-tools[kdesu] x11-misc/ktsuss )
 	)
 "
 DEPEND="${COMMON_DEPEND}
@@ -82,10 +82,6 @@ src_install() {
 	keepdir /var/{lib,log,spool}/pgl
 	rm -rf "${ED%/}"/tmp || die
 	prune_libtool_files --modules
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
 }
 
 pkg_postinst() {
