@@ -9,7 +9,8 @@ DESCRIPTION="Cloth patternmaking software"
 HOMEPAGE="https://valentinaproject.bitbucket.io/"
 SRC_URI="https://bitbucket.org/dismine/${PN}/get/v${PV}.zip -> ${P}.zip
 	https://bitbucket.org/dismine/${PN}/commits/d78ca13c4891ccf3542b0704a7d66af0f9b02938/raw -> valentina-4798.patch
-	https://bitbucket.org/dismine/${PN}/commits/98e869c4146204ef31822087fa826cfa1cd7e0f4/raw -> valentina-4802.patch"
+	https://bitbucket.org/dismine/${PN}/commits/98e869c4146204ef31822087fa826cfa1cd7e0f4/raw -> valentina-4802.patch
+	https://bitbucket.org/dismine/${PN}/commits/572fe909f75e013be310905c118e1afe4368db1c/raw -> valentina-5406.patch"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -40,7 +41,8 @@ S=${WORKDIR}/dismine-${PN}-31c95eadca8b
 
 src_prepare() {
 	epatch "${DISTDIR}/${PN}-4798.patch" \
-		"${DISTDIR}/${PN}-4802.patch"
+		"${DISTDIR}/${PN}-4802.patch" \
+		"${DISTDIR}/${PN}-5406.patch"
 
 	default
 }
