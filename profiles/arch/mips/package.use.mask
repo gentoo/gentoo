@@ -1,6 +1,14 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (23 Jan 2018)
+# USE=collab requires unkeyworded net-libs/loudmouth & dev-cpp/asio.
+# USE=grammar requires dev-libs/link-grammar.
+# USE=map requires media-libs/libchamplain.
+# Surprisingly, USE=redland requires dev-libs/redland. But also
+# dev-libs/rasqal. None of them keyworded here.
+app-office/abiword collab grammar map redland
+
 # Brian Evans <grknight@gentoo.org> (15 Jan 2018)
 # app-arch/snappy is not tested
 dev-db/mariadb innodb-snappy
