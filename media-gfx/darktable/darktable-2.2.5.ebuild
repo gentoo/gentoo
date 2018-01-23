@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -57,10 +57,7 @@ CDEPEND="
 	openexr? ( media-libs/openexr:0= )
 	webp? ( media-libs/libwebp:0= )"
 RDEPEND="${CDEPEND}
-	kwallet? ( || (
-		>=kde-frameworks/kwallet-5.34.0-r1
-		kde-apps/kwalletd:4
-	) )"
+	kwallet? ( >=kde-frameworks/kwallet-5.34.0-r1 )"
 DEPEND="${CDEPEND}
 	dev-util/intltool
 	virtual/pkgconfig
