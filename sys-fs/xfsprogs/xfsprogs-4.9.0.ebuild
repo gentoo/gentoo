@@ -7,7 +7,7 @@ inherit eutils toolchain-funcs multilib
 
 DESCRIPTION="xfs filesystem utilities"
 HOMEPAGE="http://oss.sgi.com/projects/xfs/"
-SRC_URI="ftp://ftp.kernel.org/pub/linux/utils/fs/xfs/${PN}/${P}.tar.xz"
+SRC_URI="https://www.kernel.org/pub/linux/utils/fs/xfs/${PN}/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
