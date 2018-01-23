@@ -5812,12 +5812,12 @@ dev-ruby/railties 5.1.4: Tools for creating, working with, and running Rails app
 dev-ruby/rainbow 1.1.4-r1 2.2.2: Colorize printed text on ANSI terminals
 dev-ruby/rake 10.5.0: Make-like scripting in Ruby
 dev-ruby/rake-compiler 1.0.2: Provide a standard and simplified way to build and package Ruby extensions
-dev-ruby/rb-inotify 0.9.5-r1 0.9.10: A thorough inotify wrapper for Ruby using FFI
+dev-ruby/rb-inotify 0.9.10: A thorough inotify wrapper for Ruby using FFI
 dev-ruby/rcairo 1.15.10: Ruby bindings for cairo
 dev-ruby/rdiscount 2.1.8: Implementation of John Gruber's Markdown
 dev-ruby/rdoc 4.2.0 4.3.0: An extended version of the RDoc library from Ruby 1.8
 dev-ruby/rdtool 0.6.38-r2: A multipurpose documentation format for Ruby
-dev-ruby/redcloth 4.2.9-r4 4.3.2: A module for using Textile in Ruby
+dev-ruby/redcloth 4.3.2: A module for using Textile in Ruby
 dev-ruby/rest-client 1.8.0-r3: Simple Simple HTTP and REST client for Ruby
 dev-ruby/rexical 1.0.5-r3: Rexical is a lexical scanner generator
 dev-ruby/rgen 0.8.0: Ruby Modelling and Generator Framework
