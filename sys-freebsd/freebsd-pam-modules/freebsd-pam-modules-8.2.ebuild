@@ -1,11 +1,11 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit bsdmk freebsd multilib pam
 
 DESCRIPTION="FreeBSD's PAM authentication modules"
 SLOT="0"
-KEYWORDS="~x86-fbsd ~sparc-fbsd"
+KEYWORDS="~x86-fbsd"
 
 IUSE="kerberos nis"
 

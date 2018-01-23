@@ -7,7 +7,7 @@ inherit bsdmk freebsd flag-o-matic multilib toolchain-funcs eutils
 
 DESCRIPTION="FreeBSD's base system libraries"
 SLOT="0"
-KEYWORDS="~sparc-fbsd ~x86-fbsd"
+KEYWORDS="~x86-fbsd"
 
 # Crypto is needed to have an internal OpenSSL header
 # sys is needed for libalias, probably we can just extract that instead of

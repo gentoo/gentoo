@@ -18,7 +18,7 @@ UPSTREAM_PATCHES=( "SA-17:08/ptrace.patch"
 	"EN-17:08/pf.patch" )
 
 if [[ ${PV} != *9999* ]]; then
-	KEYWORDS="~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+	KEYWORDS="~amd64-fbsd ~x86-fbsd"
 	SRC_URI="${SRC_URI}
 		$(freebsd_upstream_patches)"
 fi

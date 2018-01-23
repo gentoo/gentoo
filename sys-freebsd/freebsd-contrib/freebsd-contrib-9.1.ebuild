@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit bsdmk freebsd flag-o-matic multilib
@@ -9,7 +9,7 @@ SRC_URI="mirror://gentoo/${GNU}.tar.bz2
 
 LICENSE="BSD GPL-2+ libodialog"
 SLOT="0"
-KEYWORDS="~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="~amd64-fbsd ~x86-fbsd"
 IUSE=""
 
 RDEPEND=""
