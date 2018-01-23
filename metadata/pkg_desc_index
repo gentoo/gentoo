@@ -6896,7 +6896,7 @@ mail-client/mailx-support 20060102-r1 20060102-r2: Provides lockspool utility
 mail-client/mutt 1.7.2: A small but very powerful text-based mail client
 mail-client/nail 12.4-r3: an enhanced mailx-compatible mail client
 mail-client/pinepgp 0.18.0-r1: Use GPG/PGP with Pine
-mail-client/roundcube 1.2.5 1.2.7: A browser-based multilingual IMAP client with an application-like user interface
+mail-client/roundcube 1.2.7: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/sylpheed 3.4.2 3.5.1: A lightweight email client and newsreader
 mail-client/thunderbird 45.8.0 52.5.0 52.5.2: Thunderbird Mail Client
 mail-client/thunderbird-bin 52.5.2: Thunderbird Mail Client
