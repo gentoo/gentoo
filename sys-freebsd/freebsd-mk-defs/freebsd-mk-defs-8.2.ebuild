@@ -5,7 +5,7 @@ inherit bsdmk freebsd
 
 DESCRIPTION="Makefile definitions used for building and installing libraries and system files"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="~amd64 ~x86 ~x86-fbsd"
 
 IUSE=""
 
