@@ -87,10 +87,10 @@ pkg_postinst() {
 			eerror "Couldn't create ${ROOT}/usr/src/sys symlink."
 	fi
 
-	if use sparc-fbsd ; then
-		ewarn "WARNING: kldload currently causes kernel panics"
-		ewarn "on sparc64. This is probably a gcc-4.1 issue, but"
-		ewarn "we need gcc-4.1 to compile the kernel correctly :/"
-		ewarn "Please compile all modules you need into the kernel"
-	fi
+#	if use sparc-fbsd ; then
+#		ewarn "WARNING: kldload currently causes kernel panics"
+#		ewarn "on sparc64. This is probably a gcc-4.1 issue, but"
+#		ewarn "we need gcc-4.1 to compile the kernel correctly :/"
+#		ewarn "Please compile all modules you need into the kernel"
+#	fi
 }
