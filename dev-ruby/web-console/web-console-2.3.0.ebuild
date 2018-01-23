@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby21 ruby22 ruby23"
+USE_RUBY="ruby22 ruby23"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.markdown README.markdown"
@@ -29,7 +29,7 @@ ruby_add_rdepend "
 
 ruby_add_bdepend "test? (
 	dev-ruby/bundler
-	>=dev-ruby/rails-4.0
+	dev-ruby/rails:4.2
 	dev-ruby/sqlite3
 	dev-ruby/mocha
 	dev-ruby/simplecov
@@ -37,5 +37,8 @@ ruby_add_bdepend "test? (
 
 all_ruby_prepare() {
 	# Use an installed rails version rather than live source from github.
-	sed -i -e '/rails/ s/,/#/' Gemfile || die
+	sed -i -e "/'rails'/ s/,/, '~> 4.2' #/" \
+		-e "/'arel'/ s/,/#/" \
+		-e '/simplecov/ s:^:#:' Gemfile || die
+	sed -i -e '/simplecov/I s:^:#:' test/test_helper.rb || die
 }
