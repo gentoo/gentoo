@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (23 Jan 2018)
+# Depends on deprecated Qt4, no revdeps left.
+# Masked for removal in 30 days.
+dev-libs/libindicate-qt
+
 # Andreas Sturmlechner <asturm@gentoo.org> (22 Jan 2018)
 # Depends on deprecated Qt4, dead project.
 # Masked for removal in 30 days.
