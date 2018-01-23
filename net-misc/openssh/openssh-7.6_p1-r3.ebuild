@@ -18,7 +18,7 @@ DESCRIPTION="Port of OpenBSD's free SSH release"
 HOMEPAGE="http://www.openssh.org/"
 SRC_URI="mirror://openbsd/OpenSSH/portable/${PARCH}.tar.gz
 	${SCTP_PATCH:+https://dev.gentoo.org/~polynomial-c/${SCTP_PATCH}}
-	${HPN_PATCH:+hpn? ( mirror://gentoo/${HPN_PATCH} )}
+	${HPN_PATCH:+hpn? ( https://dev.gentoo.org/~chutzpah/${HPN_PATCH} )}
 	${LDAP_PATCH:+ldap? ( https://dev.gentoo.org/~polynomial-c/${LDAP_PATCH} )}
 	${X509_PATCH:+X509? ( https://dev.gentoo.org/~chutzpah/${X509_PATCH} )}
 	"
