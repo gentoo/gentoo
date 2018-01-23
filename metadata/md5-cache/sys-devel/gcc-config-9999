@@ -7,4 +7,4 @@ LICENSE=GPL-2
 RDEPEND=>=sys-apps/gentoo-functions-0.10
 SLOT=0
 _eclasses_=git-r3	fec09a83ae965b041b47f5ff7c8ba29a	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=14c1edda5535524755c7174189855bb9
+_md5_=fa16f4e1ccc7f37fd2e7063f4a12d654

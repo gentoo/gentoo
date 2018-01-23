@@ -3,10 +3,10 @@ DEPEND=>=app-text/aspell-0.60
 DESCRIPTION=Armenian language dictionary for aspell
 EAPI=6
 HOMEPAGE=http://aspell.net
-KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd
+KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd
 LICENSE=GPL-2
 RDEPEND=>=app-text/aspell-0.60
 SLOT=0
 SRC_URI=mirror://gnu/aspell/dict/hy/aspell6-hy-0.10.0-0.tar.bz2
 _eclasses_=aspell-dict-r1	340906f655106dec40252eccc43e3503
-_md5_=16a2d6502701f8b1abaafe4f7d287099
+_md5_=5e0c1cff544764a8a47f1e6943fd51c1

@@ -4,11 +4,11 @@ DESCRIPTION=PAM base configuration files
 EAPI=4
 HOMEPAGE=https://wiki.gentoo.org/wiki/Project:PAM
 IUSE=debug +cracklib passwdqc consolekit gnome-keyring selinux mktemp pam_ssh +sha512 pam_krb5 minimal
-KEYWORDS=alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux
+KEYWORDS=alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux
 LICENSE=GPL-2
 RDEPEND=|| ( >=sys-libs/pam-0.99.9.0-r1 ( sys-auth/openpam || ( sys-freebsd/freebsd-pam-modules sys-netbsd/netbsd-pam-modules ) ) ) cracklib? ( >=sys-libs/pam-0.99[cracklib] ) consolekit? ( >=sys-auth/consolekit-0.3[pam] ) gnome-keyring? ( >=gnome-base/gnome-keyring-2.20[pam] ) selinux? ( >=sys-libs/pam-0.99[selinux] ) passwdqc? ( >=sys-auth/pam_passwdqc-1.0.4 ) mktemp? ( sys-auth/pam_mktemp ) pam_ssh? ( sys-auth/pam_ssh ) sha512? ( >=sys-libs/pam-1.0.1 ) pam_krb5? ( || ( >=sys-libs/pam-1.1.0 sys-auth/openpam ) >=sys-auth/pam_krb5-4.3 ) !<sys-freebsd/freebsd-pam-modules-6.2-r1 !<sys-libs/pam-0.99.9.0-r1
 RESTRICT=binchecks
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~flameeyes/pambase/pambase-20101024.tar.bz2
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e7258392d5eda499c1cfa94db650b61	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=ed228c9b926eb343aed798a7721783ad
+_md5_=fb5b55737bda661de4803fc7fe504682

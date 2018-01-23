@@ -3,10 +3,10 @@ DESCRIPTION=An ultra-fast, ultra-compact key-value embedded data store
 EAPI=5
 HOMEPAGE=http://symas.com/mdb/
 IUSE=static-libs
-KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 ~sh sparc x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris
+KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 ~sh sparc x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris
 LICENSE=OPENLDAP
 RDEPEND=!=net-nds/openldap-2.4.40
 SLOT=0/0.9.18
 SRC_URI=https://github.com/LMDB/lmdb/archive/LMDB_0.9.18.tar.gz
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=d3e431fd2bee05b089a9eabbda470150
+_md5_=843501e219613125273d24b78c7e4623

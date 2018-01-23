@@ -7,4 +7,4 @@ LICENSE=GPL-2
 RDEPEND=app-shells/bash dev-lang/perl || ( ( sys-apps/portage app-portage/portage-utils ) sys-apps/pkgcore sys-apps/paludis )
 SLOT=0
 _eclasses_=git-r3	fec09a83ae965b041b47f5ff7c8ba29a	prefix	e51c7882b7b721e54e684f7eb143cbfe
-_md5_=92e938e8b473a0fe766b98c4724ef07f
+_md5_=ec9797d0a39ce1d4aba2dbc101ece0e0
