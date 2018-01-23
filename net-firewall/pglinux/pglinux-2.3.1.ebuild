@@ -84,10 +84,6 @@ src_install() {
 	prune_libtool_files --modules
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
 pkg_postinst() {
 	elog "optional dependencies:"
 	elog "  app-arch/p7zip (needed for blocklists packed as .7z)"
