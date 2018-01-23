@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ MY_PN="Bottleneck"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Fast NumPy array functions written in Cython"
-HOMEPAGE="http://berkeleyanalytics.com/bottleneck"
+HOMEPAGE="https://pypi.python.org/pypi/Bottleneck"
 SRC_URI="mirror://pypi/B/${MY_PN}/${MY_P}.tar.gz"
 
 SLOT="0"
