@@ -1,8 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -mips
+
+# Michał Górny <mgorny@gentoo.org> (23 Feb 2018)
+# sci-geosciences/gpsd is not keyworded here.
+gps
 
 # Brian Evans <grknight@gentoo.org> (15 Jan 2018)
 # Mask tcmalloc as dev-util/google-perftools is unavailable
