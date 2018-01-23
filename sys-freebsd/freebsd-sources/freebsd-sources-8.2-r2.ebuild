@@ -1,11 +1,11 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit bsdmk freebsd flag-o-matic
 
 DESCRIPTION="FreeBSD kernel sources"
 SLOT="${PVR}"
-KEYWORDS="~sparc-fbsd ~x86-fbsd"
+KEYWORDS="~x86-fbsd"
 
 IUSE="symlink"
 
@@ -99,10 +99,10 @@ pkg_postinst() {
 			eerror "Couldn't create ${ROOT}/usr/src/sys-${RV} symlink."
 	fi
 
-	if use sparc-fbsd ; then
-		ewarn "WARNING: kldload currently causes kernel panics"
-		ewarn "on sparc64. This is probably a gcc-4.1 issue, but"
-		ewarn "we need gcc-4.1 to compile the kernel correctly :/"
-		ewarn "Please compile all modules you need into the kernel"
-	fi
+#	if use sparc-fbsd ; then
+#		ewarn "WARNING: kldload currently causes kernel panics"
+#		ewarn "on sparc64. This is probably a gcc-4.1 issue, but"
+#		ewarn "we need gcc-4.1 to compile the kernel correctly :/"
+#		ewarn "Please compile all modules you need into the kernel"
+#	fi
 }

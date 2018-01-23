@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=2
@@ -6,7 +6,7 @@ EAPI=2
 inherit bsdmk freebsd
 
 DESCRIPTION="FreeBSD sbin utils"
-KEYWORDS="~sparc-fbsd ~x86-fbsd"
+KEYWORDS="~x86-fbsd"
 SLOT="0"
 
 SRC_URI="mirror://gentoo/${SBIN}.tar.bz2

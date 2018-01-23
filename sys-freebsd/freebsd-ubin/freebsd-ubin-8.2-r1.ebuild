@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=2
@@ -7,7 +7,7 @@ inherit bsdmk freebsd flag-o-matic pam
 
 DESCRIPTION="FreeBSD's base system source for /usr/bin"
 SLOT="0"
-KEYWORDS="~sparc-fbsd ~x86-fbsd"
+KEYWORDS="~x86-fbsd"
 IUSE="ar atm audit bluetooth ipv6 kerberos netware nis ssl usb build zfs"
 LICENSE="BSD zfs? ( CDDL )"
 
