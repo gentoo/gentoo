@@ -7840,7 +7840,7 @@ media-radio/tucnak 4.11: Amateur Radio VHF Contest Logbook
 media-radio/unixcw 3.5.1: A package of programs that fit together to form a morse code tutor program
 media-radio/xastir 2.0.6-r1 2.0.8-r1: X Amateur Station Tracking and Information Reporting
 media-radio/xdx 2.5.0: a GTK+ TCP/IP DX-cluster and ON4KST chat client
-media-radio/xlog 2.0.14 2.0.14-r1 2.0.15: An amateur radio logging program
+media-radio/xlog 2.0.15: An amateur radio logging program
 media-sound/SmarTagger 0.1-r2: Perl script for renaming and tagging mp3s
 media-sound/a2jmidid 8-r2: Daemon for exposing legacy ALSA sequencer applications in JACK MIDI system
 media-sound/aacgain 1.9-r2: AACGain normalizes the volume of music files using the Replay Gain algorithm
