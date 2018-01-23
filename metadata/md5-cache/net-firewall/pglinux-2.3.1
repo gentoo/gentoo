@@ -1,14 +1,14 @@
-DEFINED_PHASES=configure install postinst postrm preinst prepare setup
-DEPEND=net-libs/libnetfilter_queue net-libs/libnfnetlink dbus? ( sys-apps/dbus ) zlib? ( sys-libs/zlib ) qt4? ( sys-auth/polkit-qt[qt4] dev-qt/qtcore:4 dev-qt/qtdbus:4 dev-qt/qtgui:4 || ( kde-plasma/kde-cli-tools[kdesu] kde-apps/kdesu x11-misc/ktsuss ) ) virtual/pkgconfig sys-devel/libtool:2 >=sys-apps/sed-4 virtual/pkgconfig
+DEFINED_PHASES=configure install postinst postrm prepare setup
+DEPEND=net-libs/libnetfilter_queue net-libs/libnfnetlink dbus? ( sys-apps/dbus ) zlib? ( sys-libs/zlib ) qt4? ( sys-auth/polkit-qt[qt4] dev-qt/qtcore:4 dev-qt/qtdbus:4 dev-qt/qtgui:4 || ( kde-plasma/kde-cli-tools[kdesu] x11-misc/ktsuss ) ) virtual/pkgconfig sys-devel/libtool:2 >=sys-apps/sed-4 virtual/pkgconfig
 DESCRIPTION=Privacy oriented firewall application
 EAPI=6
 HOMEPAGE=https://sourceforge.net/projects/peerguardian/
 IUSE=cron dbus logrotate networkmanager qt4 zlib
 KEYWORDS=amd64 x86
 LICENSE=GPL-3
-RDEPEND=net-libs/libnetfilter_queue net-libs/libnfnetlink dbus? ( sys-apps/dbus ) zlib? ( sys-libs/zlib ) qt4? ( sys-auth/polkit-qt[qt4] dev-qt/qtcore:4 dev-qt/qtdbus:4 dev-qt/qtgui:4 || ( kde-plasma/kde-cli-tools[kdesu] kde-apps/kdesu x11-misc/ktsuss ) ) net-firewall/iptables sys-apps/sysvinit cron? ( virtual/cron ) logrotate? ( app-admin/logrotate ) networkmanager? ( net-misc/networkmanager:= )
+RDEPEND=net-libs/libnetfilter_queue net-libs/libnfnetlink dbus? ( sys-apps/dbus ) zlib? ( sys-libs/zlib ) qt4? ( sys-auth/polkit-qt[qt4] dev-qt/qtcore:4 dev-qt/qtdbus:4 dev-qt/qtgui:4 || ( kde-plasma/kde-cli-tools[kdesu] x11-misc/ktsuss ) ) net-firewall/iptables sys-apps/sysvinit cron? ( virtual/cron ) logrotate? ( app-admin/logrotate ) networkmanager? ( net-misc/networkmanager:= )
 REQUIRED_USE=qt4? ( dbus )
 SLOT=0
 SRC_URI=mirror://sourceforge/peerguardian/pgl-2.3.1.tar.gz
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e7258392d5eda499c1cfa94db650b61	gnome2-utils	4d211d7614f303710fca59db6ec12c88	linux-info	ca370deef9d44125d829f2eb6ebc83e0	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	systemd	8f5286f89e265842f5b5189666eae88b	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	versionator	ce21313503c41896ebcd7d58b0607e37	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=610478b3585c8b9ed213d4466acc3458
+_md5_=ce6b83bb1d86101e4e6c7c7015f259b7
