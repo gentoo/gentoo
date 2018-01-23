@@ -2,6 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Michał Górny <mgorny@gentoo.org> (23 Jan 2018)
+# USE=eds requires USE=gnome that is masked here.
+# USE=collada requires media-libs/opencollada.
+# USE=gltf requires media-libs/libgltf.
+# USE=postgres requires dev-db/postgresql[kerberos] (USE masked).
+app-office/libreoffice collada eds gltf postgres
+
+# Michał Górny <mgorny@gentoo.org> (23 Jan 2018)
 # Requires mail-client/thunderbird* that is not keyworded here.
 app-misc/tracker thunderbird
 
