@@ -5,6 +5,10 @@
 -mips
 
 # Michał Górny <mgorny@gentoo.org> (23 Feb 2018)
+# net-misc/networkmanager is not keyworded here.
+networkmanager
+
+# Michał Górny <mgorny@gentoo.org> (23 Feb 2018)
 # sci-geosciences/gpsd is not keyworded here.
 gps
 
