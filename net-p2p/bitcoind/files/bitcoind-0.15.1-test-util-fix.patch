@@ -1,0 +1,15 @@
+diff --git a/src/Makefile.test.include b/src/Makefile.test.include
+index 147add3eb5..308b1c88c0 100644
+--- a/src/Makefile.test.include
++++ b/src/Makefile.test.include
+@@ -151,8 +151,10 @@ bitcoin_test_clean : FORCE
+ 	rm -f $(CLEAN_BITCOIN_TEST) $(test_test_bitcoin_OBJECTS) $(TEST_BINARY)
+ 
+ check-local:
++if BUILD_BITCOIN_TX
+ 	@echo "Running test/util/bitcoin-util-test.py..."
+ 	$(PYTHON) $(top_builddir)/test/util/bitcoin-util-test.py
++endif
+ if EMBEDDED_LIBSECP256K1
+ 	$(AM_V_at)$(MAKE) $(AM_MAKEFLAGS) -C secp256k1 check
+ endif
