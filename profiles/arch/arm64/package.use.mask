@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Michał Górny <mgorny@gentoo.org> (23 Jan 2018)
+# Requires mail-client/thunderbird* that is not keyworded here.
+app-misc/tracker thunderbird
+
+# Michał Górny <mgorny@gentoo.org> (23 Jan 2018)
 # Requires app-accessibility/brltty that is not keyworded here.
 app-emulation/qemu accessibility
 
