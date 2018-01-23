@@ -134,7 +134,7 @@ app-admin/sysstat 11.4.0: System performance tools for Linux
 app-admin/system-config-printer 1.4.8: GNOME frontend for a Red Hat's printer administration tool
 app-admin/system-tools-backends 2.10.2: Tools aimed to make easy the administration of UNIX systems
 app-admin/systemrescuecd-x86 5.1.2: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
-app-admin/tenshi 0.12: Log parsing and notification program
+app-admin/tenshi 0.12 0.17: Log parsing and notification program
 app-admin/testdisk 7.0-r3: Checks and undeletes partitions + PhotoRec, signature based recovery tool
 app-admin/tmpreaper 1.6.13-r1: A utility for removing files based on when they were last accessed
 app-admin/tmpwatch 2.11-r2: Files which haven't been accessed are removed from specified directories
@@ -1859,7 +1859,7 @@ dev-db/pgadmin3 1.22.1-r1 1.22.2: wxWidgets GUI for PostgreSQL
 dev-db/pgadmin4 2.0-r1: GUI administration and development platform for PostgreSQL
 dev-db/pgagent 3.4.0-r1 3.4.0-r3: pgAgent is a job scheduler for PostgreSQL
 dev-db/pgbadger 9.2: pgBadger is a PostgreSQL log analyzer.
-dev-db/pgbouncer 1.7.2: Lightweight connection pooler for PostgreSQL
+dev-db/pgbouncer 1.7.2 1.8.1: Lightweight connection pooler for PostgreSQL
 dev-db/pgpool2 3.7.0: Connection pool server for PostgreSQL
 dev-db/pgtap 0.98.0: Unit testing for PostgreSQL
 dev-db/phpmyadmin 4.0.10.20 4.7.0: Web-based administration for MySQL database in PHP
@@ -8383,7 +8383,7 @@ net-dns/dnswalk 2.0.2: dnswalk is a DNS database debugger
 net-dns/hesiod 3.1.0: DNS functionality to access to DB of information that changes infrequently
 net-dns/idnkit 1.0-r2: Toolkit for Internationalized Domain Names (IDN)
 net-dns/ldns-utils 1.7.0 1.7.0-r1: Set of utilities to simplify various dns(sec) tasks
-net-dns/libidn 1.33 1.33-r1: Internationalized Domain Names (IDN) implementation
+net-dns/libidn 1.33 1.33-r1 1.33-r2: Internationalized Domain Names (IDN) implementation
 net-dns/libidn2 2.0.4: An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
 net-dns/maradns 2.0.09-r2: A security-aware DNS server
 net-dns/mydns 1.2.8.31-r1: A DNS-Server which gets its data from a MySQL-/PostgreSQL-database
@@ -9019,7 +9019,7 @@ net-proxy/http-replicator 3.0-r7: Proxy cache for Gentoo packages
 net-proxy/nylon 1.21-r2: A lightweight SOCKS proxy server
 net-proxy/polipo 1.1.1-r4: A caching web proxy
 net-proxy/privoxy 3.0.26: A web proxy with advanced filtering capabilities for enhancing privacy
-net-proxy/squid 3.5.26: A full-featured web proxy cache
+net-proxy/squid 3.5.26 3.5.27-r1: A full-featured web proxy cache
 net-proxy/squidclamav 6.8: HTTP Antivirus for Squid based on ClamAv and ICAP
 net-proxy/squidguard 1.5_beta-r2: Combined filter, redirector and access controller plugin for Squid
 net-proxy/sshuttle 0.78.3: Transparent proxy server that works as a poor man's VPN using ssh
@@ -9046,7 +9046,7 @@ net-vpn/nstx 1.1_beta6-r3: IP over DNS tunnel
 net-vpn/openconnect 7.06-r1 7.07-r1 7.07-r2 7.08: Free client for Cisco AnyConnect SSL VPN software
 net-vpn/openvpn 2.4.3 2.4.4: Robust and highly flexible tunneling application compatible with many OSes
 net-vpn/pptpd 1.4.0-r2: Linux Point-to-Point Tunnelling Protocol Server
-net-vpn/strongswan 5.5.3: IPsec-based VPN solution focused on security and ease of use, supporting IKEv1/IKEv2 and MOBIKE
+net-vpn/strongswan 5.5.3 5.6.0-r1: IPsec-based VPN solution focused on security and ease of use, supporting IKEv1/IKEv2 and MOBIKE
 net-vpn/tor 0.3.1.7 0.3.1.9-r1: Anonymizing overlay network for TCP
 net-vpn/vpnc 0.5.3_p550: Free client for Cisco VPN routing software
 net-vpn/vtun 3.0.3: Create tunnels over TCP/IP networks with shaping, encryption, and compression
