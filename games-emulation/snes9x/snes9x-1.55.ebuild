@@ -40,7 +40,10 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${P}/unix"
 
-PATCHES=( "${FILESDIR}"/${PN}-1.53-cross-compile.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.53-cross-compile.patch
+	"${FILESDIR}"/${PN}-1.55-build-system.patch
+)
 
 src_prepare() {
 	cd "${WORKDIR}"/${P} || die
