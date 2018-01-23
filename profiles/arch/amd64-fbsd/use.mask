@@ -33,6 +33,10 @@
 #-video_cards_vmware
 -input_devices_vmmouse
 
+# Michał Górny <mgorny@gentoo.org> (23 Feb 2018)
+# net-fs/samba is not keyworded here.
+samba
+
 # James Le Cuirot <chewi@gentoo.org> (19 May 2015)
 # icedtea needs testing and gcj isn't supported
 java
