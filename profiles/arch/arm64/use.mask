@@ -26,6 +26,10 @@
 -neon
 -armvfp
 
+# Michał Górny <mgorny@gentoo.org> (23 Feb 2018)
+# sci-geosciences/gpsd is not keyworded here.
+gps
+
 # Mart Raudsepp <leio@gentoo.org> (17 Feb 2017)
 # x11-misc/colord not tested on arm64 yet
 colord
