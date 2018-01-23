@@ -119,6 +119,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.5.1-compile_et_fix.patch"
 	"${FILESDIR}"/talloc-disable-python.patch
 	"${FILESDIR}/${PN}-glibc-2.26-no_rpc.patch" #637320
+	"${FILESDIR}/${PN}-4.7.3-krb-cross-compile.patch"
 	"${FILESDIR}/${P}-no_ads.patch"
 )
 
