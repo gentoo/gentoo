@@ -16,7 +16,7 @@ LICENSE="BSD GPL-2 zfs? ( CDDL )"
 # sys is needed for libalias, probably we can just extract that instead of
 # extracting the whole tarball
 if [[ ${PV} != *9999* ]]; then
-	KEYWORDS="~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+	KEYWORDS="~amd64-fbsd ~x86-fbsd"
 	SRC_URI="${SRC_URI}
 			$(freebsd_upstream_patches)"
 fi
