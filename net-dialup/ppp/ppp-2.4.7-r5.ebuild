@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit eutils linux-info multilib pam toolchain-funcs
+inherit linux-info multilib pam toolchain-funcs
 
 PATCH_VER="5"
 DESCRIPTION="Point-to-Point Protocol (PPP)"
@@ -32,9 +32,10 @@ PDEPEND="net-dialup/ppp-scripts"
 src_prepare() {
 	mv "${WORKDIR}/dhcp" "${S}/pppd/plugins" || die
 
-	use eap-tls || EPATCH_EXCLUDE+=" 8?_all_eaptls-*"
-	EPATCH_SUFFIX="patch" \
-	epatch "${WORKDIR}"/patch
+	if ! use eap-tls ; then
+		rm "${WORKDIR}"/patch/8?_all_eaptls-* || die
+	fi
+	eapply "${WORKDIR}"/patch
 
 	if use atm ; then
 		einfo "Enabling PPPoATM support"
@@ -55,6 +56,7 @@ src_prepare() {
 	if use ipv6 ; then
 		einfo "Enabling IPv6"
 		sed -i '/#HAVE_INET6/s:#::' pppd/Makefile.linux || die
+		echo "+ipv6" >> etc.ppp/options || die
 	fi
 
 	einfo "Enabling CBCP"
@@ -62,9 +64,9 @@ src_prepare() {
 
 	if use dhcp ; then
 		einfo "Adding ppp-dhcp plugin files"
-		sed -i \
+		sed \
 			-e '/^SUBDIRS :=/s:$: dhcp:' \
-				pppd/plugins/Makefile.linux || die
+			-i pppd/plugins/Makefile.linux || die
 	fi
 
 	# Set correct libdir
@@ -73,9 +75,9 @@ src_prepare() {
 
 	if use radius ; then
 		#set the right paths in radiusclient.conf
-		sed -i -e "s:/usr/local/etc:/etc:" \
+		sed -e "s:/usr/local/etc:/etc:" \
 			-e "s:/usr/local/sbin:/usr/sbin:" \
-				pppd/plugins/radius/etc/radiusclient.conf || die
+			-i pppd/plugins/radius/etc/radiusclient.conf || die
 		#set config dir to /etc/ppp/radius
 		sed -i -e "s:/etc/radiusclient:/etc/ppp/radius:g" \
 			pppd/plugins/radius/{*.8,*.c,*.h} \
@@ -85,7 +87,7 @@ src_prepare() {
 		sed -i -e '/+= radius/s:^:#:' pppd/plugins/Makefile.linux || die
 	fi
 
-	epatch_user # 549588
+	eapply_user #549588
 }
 
 src_compile() {
