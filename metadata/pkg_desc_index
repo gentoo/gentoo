@@ -10063,7 +10063,7 @@ sys-fs/udisks 1.0.5-r1 2.1.8 2.7.4-r1: Daemon providing interfaces to work with 
 sys-fs/vhba 20170610: Virtual (SCSI) Host Bus Adapter kernel module for the CDEmu suite
 sys-fs/vzquota 3.1: OpenVZ VPS disk quota utility
 sys-fs/xfsdump 3.1.6: xfs dump/restore utilities
-sys-fs/xfsprogs 4.5.0 4.9.0 4.14.0: xfs filesystem utilities
+sys-fs/xfsprogs 4.9.0 4.14.0: xfs filesystem utilities
 sys-kernel/bliss-initramfs 7.1.2: Boot your system's rootfs from ZFS, LVM, RAID, or a variety of other configs.
 sys-kernel/dracut 044-r1 045-r2 046-r1: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.52.3 3.4.52.4-r2: Gentoo automatic kernel building scripts
