@@ -5994,7 +5994,7 @@ dev-tex/g-brief 4.0.2: LaTeX styles for formless letters in German or English
 dev-tex/glossaries 3.04: Create glossaries and lists of acronyms
 dev-tex/harvard 2.0.5: The harvard family of bibliographic styles
 dev-tex/hevea 2.29: HeVeA is a quite complete and fast LaTeX to HTML translator
-dev-tex/hlatex 1.0.1: HLaTeX is a LaTeX package to use Hangul with LaTeX
+dev-tex/hlatex 1.0.1-r1: HLaTeX is a LaTeX package to use Hangul with LaTeX
 dev-tex/html2latex 1.1-r1: Perl script to convert HTML files into formatted LaTeX
 dev-tex/hyphen_show 20000425: Show hyphenations in DVI files
 dev-tex/ivritex 1.1.2: Hebrew support for TeX
