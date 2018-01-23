@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -6,12 +6,11 @@ JAVA_PKG_IUSE="source"
 
 inherit eutils java-pkg-2 java-ant-2
 
-MY_PV="${PV/_beta/}"
-MY_A="apache-${PN}-${MY_PV}-src"
+MY_A="apache-${PN}-${PV}-src"
 MY_P="${MY_A/-servlet-api/}"
 DESCRIPTION="Tomcat's Servlet API 4.0/JSP API 2.4?/EL API 3.1? implementation"
 HOMEPAGE="https://tomcat.apache.org/"
-SRC_URI="mirror://apache/tomcat/tomcat-9/v${MY_PV}/src/${MY_P}.tar.gz"
+SRC_URI="mirror://apache/tomcat/tomcat-9/v${PV}/src/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="4.0"
