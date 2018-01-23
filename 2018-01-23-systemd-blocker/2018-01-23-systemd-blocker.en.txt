@@ -1,0 +1,46 @@
+Title: systemd sysv-utils blocker resolution
+Author: Mike Gilbert <floppym@gentoo.org>
+Posted: 2018-01-23
+Revision: 1
+News-Item-Format: 2.0
+Display-If-Installed: sys-apps/systemd
+
+Starting with systemd-236, the sysv-utils USE flag is enabled by
+default.
+
+The sysv-utils USE flag controls installation of symlinks for several
+key commands:
+
+    /sbin/halt -> ../bin/systemctl
+    /sbin/init -> ../lib/systemd/systemd
+    /sbin/reboot -> ../bin/systemctl
+    /sbin/poweroff -> ../bin/systemctl
+    /sbin/runlevel -> ../bin/systemctl
+    /sbin/shutdown -> ../bin/systemctl
+    /sbin/telinit -> ../bin/systemctl
+
+These commands are otherwise provided by sys-apps/sysvinit. This package
+is blocked by systemd when the sysv-utils USE flag is enabled.
+
+Enabling sysv-utils should cause Portage to un-merge sysvinit and OpenRC
+if they are currently installed. emerge may emit a warning message
+before doing so; if you are booting with systemd, this message is safe
+to ignore.
+
+If you wish to keep sysvinit (and openrc) installed, you may disable the
+sysv-utils USE flag locally.
+
+If you run into unresolvable blockers with sysv-utils enabled, ensure
+that you do not have any reverse dependencies of sys-apps/sysvinit
+selected (in your world file).
+
+Common packages to look for:
+
+    sys-apps/sysvinit
+    sys-apps/openrc
+    net-misc/netifrc
+
+The equery command from gentoolkit may help track down installed
+packages that depend on openrc.
+
+    equery depends sys-apps/openrc
