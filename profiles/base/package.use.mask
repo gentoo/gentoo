@@ -7,6 +7,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Patrick McLean <chutzpah@gentoo.org> (22 Jan 2018)
+# Interoperability with some clients. bug #634594.
+>=net-misc/openssh-7.6_p1-r3 hpn
+
 # Andreas Sturmlechner <asturm@gentoo.org> (13 Jan 2018)
 # Depends on last-rited sci-visualization/xds-viewer
 sci-chemistry/xds-bin X
