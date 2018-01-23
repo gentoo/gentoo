@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools flag-o-matic gnome2-utils
+inherit autotools flag-o-matic gnome2-utils xdg-utils
 
 DESCRIPTION="Super Nintendo Entertainment System (SNES) emulator"
 HOMEPAGE="https://github.com/snes9xgit/snes9x"
@@ -113,9 +113,15 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	use gtk && gnome2_icon_cache_update
+	if use gtk ; then
+		gnome2_icon_cache_update
+		xdg_desktop_database_update
+	fi
 }
 
 pkg_postrm() {
-	use gtk && gnome2_icon_cache_update
+	if use gtk ; then
+		gnome2_icon_cache_update
+		xdg_desktop_database_update
+	fi
 }
