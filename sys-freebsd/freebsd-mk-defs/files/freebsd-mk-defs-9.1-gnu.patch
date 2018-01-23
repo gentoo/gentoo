@@ -1,0 +1,77 @@
+diff -Nur share.orig/mk/bsd.lib.mk share/mk/bsd.lib.mk
+--- share.orig/mk/bsd.lib.mk	2012-07-16 02:40:07.000000000 +0900
++++ share/mk/bsd.lib.mk	2012-07-16 02:41:40.000000000 +0900
+@@ -155,11 +155,7 @@
+ lib${LIB}.a: ${OBJS} ${STATICOBJS}
+ 	@${ECHO} building static ${LIB} library
+ 	@rm -f ${.TARGET}
+-.if !defined(NM)
+-	@${AR} cq ${.TARGET} `lorder ${OBJS} ${STATICOBJS} | tsort -q` ${ARADD}
+-.else
+-	@${AR} cq ${.TARGET} `NM='${NM}' lorder ${OBJS} ${STATICOBJS} | tsort -q` ${ARADD}
+-.endif
++	@${AR} cq ${.TARGET} ${OBJS} ${STATICOBJS} ${ARADD}
+ 	${RANLIB} ${.TARGET}
+ .endif
+ 
+@@ -172,11 +168,7 @@
+ lib${LIB}_p.a: ${POBJS}
+ 	@${ECHO} building profiled ${LIB} library
+ 	@rm -f ${.TARGET}
+-.if !defined(NM)
+-	@${AR} cq ${.TARGET} `lorder ${POBJS} | tsort -q` ${ARADD}
+-.else
+-	@${AR} cq ${.TARGET} `NM='${NM}' lorder ${POBJS} | tsort -q` ${ARADD}
+-.endif
++	@${AR} cq ${.TARGET} ${POBJS} ${ARADD}
+ 	${RANLIB} ${.TARGET}
+ .endif
+ 
+@@ -203,15 +195,9 @@
+ .if defined(SHLIB_LINK)
+ 	@ln -fs ${.TARGET} ${SHLIB_LINK}
+ .endif
+-.if !defined(NM)
+ 	@${CC} ${LDFLAGS} ${SSP_CFLAGS} ${SOLINKOPTS} \
+ 	    -o ${.TARGET} -Wl,-soname,${SONAME} \
+-	    `lorder ${SOBJS} | tsort -q` ${LDADD}
+-.else
+-	@${CC} ${LDFLAGS} ${SSP_CFLAGS} ${SOLINKOPTS} \
+-	    -o ${.TARGET} -Wl,-soname,${SONAME} \
+-	    `NM='${NM}' lorder ${SOBJS} | tsort -q` ${LDADD}
+-.endif
++	    `echo ${SOBJS} | xargs -n 1 echo | sort -u` ${LDADD}
+ 	@[ -z "${CTFMERGE}" -o -n "${NO_CTF}" ] || \
+ 		(${ECHO} ${CTFMERGE} ${CTFFLAGS} -o ${.TARGET} ${SOBJS} && \
+ 		${CTFMERGE} ${CTFFLAGS} -o ${.TARGET} ${SOBJS})
+@@ -259,13 +245,6 @@
+ 
+ .if !target(install)
+ 
+-.if defined(PRECIOUSLIB)
+-.if !defined(NO_FSCHG)
+-SHLINSTALLFLAGS+= -fschg
+-.endif
+-SHLINSTALLFLAGS+= -S
+-.endif
+-
+ _INSTALLFLAGS:=	${INSTALLFLAGS}
+ .for ie in ${INSTALLFLAGS_EDIT}
+ _INSTALLFLAGS:=	${_INSTALLFLAGS${ie}}
+diff -Nur share.orig/mk/bsd.prog.mk share/mk/bsd.prog.mk
+--- share.orig/mk/bsd.prog.mk	2012-07-16 02:40:07.000000000 +0900
++++ share/mk/bsd.prog.mk	2012-07-16 02:40:24.000000000 +0900
+@@ -134,13 +134,6 @@
+ 
+ .if !target(install)
+ 
+-.if defined(PRECIOUSPROG)
+-.if !defined(NO_FSCHG)
+-INSTALLFLAGS+= -fschg
+-.endif
+-INSTALLFLAGS+= -S
+-.endif
+-
+ _INSTALLFLAGS:=	${INSTALLFLAGS}
+ .for ie in ${INSTALLFLAGS_EDIT}
+ _INSTALLFLAGS:=	${_INSTALLFLAGS${ie}}
