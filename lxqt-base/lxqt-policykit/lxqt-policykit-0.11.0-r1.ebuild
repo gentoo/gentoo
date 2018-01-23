@@ -28,7 +28,7 @@ RDEPEND="
 	dev-qt/qtxml:5
 	~lxqt-base/liblxqt-${PV}
 	>=dev-libs/libqtxdg-1.0.0
-	sys-auth/polkit-qt[qt5(+)]"
+	>=sys-auth/polkit-qt-0.112.0_p20160416-r1"
 DEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5
 	virtual/pkgconfig"
