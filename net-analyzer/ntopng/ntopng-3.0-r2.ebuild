@@ -23,7 +23,7 @@ DEPEND="dev-db/sqlite:3
 	dev-libs/libxml2
 	net-analyzer/rrdtool
 	net-libs/libpcap
-	net-libs/nDPI
+	=net-libs/nDPI-2.0
 	net-misc/curl
 	sys-libs/binutils-libs
 	virtual/libmysqlclient"

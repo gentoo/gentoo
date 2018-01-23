@@ -40,8 +40,9 @@ dev-libs/libindicate-qt
 app-emulation/qtemu
 
 # Andreas Sturmlechner <asturm@gentoo.org> (22 Jan 2018)
-# Depends on deprecated Qt4, no sign of upstream doing a port.
-# Masked for removal in 30 days.
+# Depends on deprecated Qt4, upstream is slowly doing a qml port.
+# Masked for removal in 60 days. Revisit bug #645504 before deciding
+# eventual removal.
 games-strategy/hedgewars
 
 # Eray Aslan <eras@gentoo.org> (22 Jan 2018)

@@ -55,9 +55,6 @@ RDEPEND="${CDEPEND}
 DOC_CONTENTS="
 	If you want to control your bluetooth devices as a non-root user,
 	please remember to add you to plugdev group.
-
-	If you want to use rfcomm as a normal user, you need to add the user
-	to the uucp group.
 "
 
 PATCHES=(
@@ -133,9 +130,11 @@ multilib_src_configure() {
 		)
 	fi
 
+	# btpclient disabled because we don't have ell library in the tree
 	econf \
 		--localstatedir=/var \
 		--disable-android \
+		--disable-btpclient \
 		--enable-datafiles \
 		--enable-experimental \
 		--enable-optimization \
@@ -147,6 +146,7 @@ multilib_src_configure() {
 		--enable-manpages \
 		--enable-monitor \
 		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)" \
+		--with-systemduserunitdir="$(systemd_get_userunitdir)" \
 		$(multilib_native_use_enable alsa midi) \
 		$(multilib_native_use_enable cups) \
 		$(multilib_native_use_enable deprecated) \
@@ -243,7 +243,6 @@ multilib_src_install_all() {
 	doins src/main.conf
 
 	newinitd "${FILESDIR}"/bluetooth-init.d-r4 bluetooth
-	newinitd "${FILESDIR}"/rfcomm-init.d-r2 rfcomm
 
 	einstalldocs
 	use doc && dodoc doc/*.txt
