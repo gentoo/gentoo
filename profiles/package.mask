@@ -629,16 +629,6 @@ net-voip/ekiga
 =sys-kernel/gentoo-sources-4.14.10
 =sys-kernel/vanilla-sources-4.14.10
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (27 Dec 2017)
-# Ancient. EAPI=3. (Nearly) no consumers. Needs to go.
-# Removal in 30 days.
-dev-lang/swig:1
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (27 Dec 2017)
-# Last remaining consumer of dev-lang/swig:1, which needs
-# to go the way of the dinosaur. Removal in 30 days.
-dev-python/apse
-
 # Matthias Maier <tamiko@gentoo.org> (26 Dec 2017)
 # gcc depends on mpfr and this version changes soname. Spare users with
 # FEATURES=-preserve-libs from completely frying their system.
