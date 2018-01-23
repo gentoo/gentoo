@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
 inherit webapp
 
@@ -23,26 +23,50 @@ REQUIRED_USE="|| ( mysql postgres sqlite )"
 # this function only sets DEPEND so we need to include that in RDEPEND
 need_httpd_cgi
 
+# :TODO: Support "endriod/qrcode: ~1.6.5" dep (ebuild needed)
 RDEPEND="
 	${DEPEND}
-	>=dev-lang/php-5.3.7[crypt,filter,gd,iconv,json,ldap?,pdo,postgres?,session,sockets,sqlite?,ssl?,unicode,xml]
-	>=dev-php/PEAR-Auth_SASL-1.0.6
-	>=dev-php/PEAR-Mail_Mime-1.8.9
+	>=dev-lang/php-5.4.0[filter,gd,iconv,json,ldap?,pdo,postgres?,session,sockets,sqlite?,ssl?,unicode,xml]
+	>=dev-php/PEAR-Auth_SASL-1.1.0
+	>=dev-php/PEAR-Mail_Mime-1.10.0
 	>=dev-php/PEAR-Mail_mimeDecode-1.5.5
-	>=dev-php/PEAR-Net_IDNA2-0.1.1
-	>=dev-php/PEAR-Net_SMTP-1.6.2
+	>=dev-php/PEAR-Net_IDNA2-0.2.0
+	>=dev-php/PEAR-Net_SMTP-1.7.1
+	>=dev-php/PEAR-Net_Socket-1.2.1
+	dev-php/PEAR-Console_CommandLine
+	dev-php/PEAR-Console_Getopt
+	dev-php/PEAR-Exception
 	virtual/httpd-php
-	enigma? ( >=dev-php/PEAR-Crypt_GPG-1.4.0 app-crypt/gnupg )
-	ldap? ( >=dev-php/PEAR-Net_LDAP2-2.0.12 dev-php/PEAR-Net_LDAP3 )
-	managesieve? ( >=dev-php/PEAR-Net_Sieve-1.3.2 )
-	mysql? ( || ( dev-lang/php[mysql] dev-lang/php[mysqli] ) )
+	enigma? (
+		>=dev-php/PEAR-Crypt_GPG-1.6.0
+		app-crypt/gnupg
+	)
+	ldap? (
+		>=dev-php/PEAR-Net_LDAP2-2.2.0
+		dev-php/PEAR-Net_LDAP3
+	)
+	managesieve? ( >=dev-php/PEAR-Net_Sieve-1.4.0 )
+	mysql? (
+		|| (
+			dev-lang/php[mysql]
+			dev-lang/php[mysqli]
+		)
+	)
 	spell? ( dev-lang/php[curl,spell] )
 "
 
 S=${WORKDIR}/${MY_P}
 
+src_prepare() {
+	default
+
+	# Redundant. (Bug #644896)
+	rm -r vendor/pear || die
+}
+
 src_install() {
 	webapp_src_preinst
+
 	dodoc CHANGELOG INSTALL README.md UPGRADING
 
 	insinto "${MY_HTDOCSDIR}"
@@ -54,6 +78,7 @@ src_install() {
 
 	webapp_configfile "${MY_HTDOCSDIR}"/config/defaults.inc.php
 	webapp_postupgrade_txt en "${FILESDIR}/POST-UPGRADE.txt"
+
 	webapp_src_install
 }
 

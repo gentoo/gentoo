@@ -1,6 +1,14 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (23 Jan 2018)
+# Requires app-accessibility/brltty that is not keyworded here.
+app-emulation/qemu accessibility
+
+# Michał Górny <mgorny@gentoo.org> (23 Jan 2018)
+# Requires app-emulation/xen that is not keyworded here.
+app-emulation/libvirt xen
+
 # Michał Górny <mgorny@gentoo.org> (12 Jan 2018)
 # Requires USE=sdl that is masked in this profile.
 media-video/mjpegtools sdlgfx
