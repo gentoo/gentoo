@@ -262,7 +262,6 @@ amd64-fbsd	default/bsd/fbsd/amd64/9.1			exp
 amd64-fbsd	default/bsd/fbsd/amd64/11.1			dev
 amd64-fbsd	default/bsd/fbsd/amd64/9.1/clang		exp
 amd64-fbsd	default/bsd/fbsd/amd64/11.1/clang		exp
-sparc-fbsd      default/bsd/fbsd/sparc/8.2                      exp
 x86-fbsd	default/bsd/fbsd/x86/9.1			exp
 x86-fbsd	default/bsd/fbsd/x86/11.1			exp
 
