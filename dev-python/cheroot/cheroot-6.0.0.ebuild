@@ -12,7 +12,7 @@ SRC_URI="mirror://pypi/C/${PN/c/C}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ia64 ~ppc ~x86"
 IUSE="test"
 
 RDEPEND=">=dev-python/six-1.11.0[${PYTHON_USEDEP}]

@@ -3,7 +3,7 @@
 
 EAPI=6
 
-DESCRIPTION="Structured access to bytevector contents"
+DESCRIPTION="Guile bindings of git"
 HOMEPAGE="https://gitlab.com/guile-git/guile-git"
 SRC_URI="https://dev.gentoo.org/~slyfox/distfiles/${P}.tar.gz"
 
