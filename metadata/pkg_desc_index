@@ -5744,7 +5744,7 @@ dev-ruby/hashie 2.1.2-r1: Hashie is a small collection of tools that make hashes
 dev-ruby/heredoc_unindent 1.2.0: Removes leading whitespace from Ruby heredocs
 dev-ruby/hiera 1.3.4-r1 3.2.2: A simple pluggable Hierarchical Database
 dev-ruby/highline 1.7.8: Highline is a high-level command-line IO library for ruby
-dev-ruby/hoe 3.13.0-r1 3.16.0: Hoe extends rake to provide full project automation
+dev-ruby/hoe 3.16.0: Hoe extends rake to provide full project automation
 dev-ruby/hoe-seattlerb 1.3.4: Hoe plugins providing tasks used by seattle.rb
 dev-ruby/hpricot 0.8.6-r5: A fast and liberal HTML parser for Ruby
 dev-ruby/htmlentities 4.3.4: A simple library for encoding/decoding entities in (X)HTML documents
@@ -5770,7 +5770,7 @@ dev-ruby/loofah 2.1.1: Library for manipulating and transforming HTML/XML docume
 dev-ruby/maruku 0.7.2-r1: A Markdown-superset interpreter written in Ruby
 dev-ruby/maxitest 2.4.0: Minitest + all the features you always wanted
 dev-ruby/mecab-ruby 0.996-r1: Ruby binding for MeCab
-dev-ruby/mechanize 2.7.5 2.7.5-r2: A Ruby library used for automating interaction with websites
+dev-ruby/mechanize 2.7.5-r2: A Ruby library used for automating interaction with websites
 dev-ruby/metaclass 0.0.4: Adds a __metaclass__ method to all Ruby objects
 dev-ruby/method_source 0.9.0: Retrieve the source code for a method
 dev-ruby/mime-types 1.25.1 2.6.2 2.99.2: Provides a mailcap-like MIME Content-Type lookup for Ruby
@@ -5895,7 +5895,7 @@ dev-ruby/systemu 2.6.5: Universal capture of STDOUT and STDERR and handling of c
 dev-ruby/tdiff 0.3.3-r1: Calculates the differences between two tree-like structures
 dev-ruby/term-ansicolor 1.6.0: Small Ruby library that colors strings using ANSI escape sequences
 dev-ruby/test-unit 1.2.3-r3 3.1.9: An xUnit family unit testing framework for Ruby
-dev-ruby/test-unit-rr 1.0.3-r1 1.0.5: RR adapter for Test::Unit
+dev-ruby/test-unit-rr 1.0.5: RR adapter for Test::Unit
 dev-ruby/test_declarative 0.0.5-r2: Simply adds a declarative test method syntax to test/unit
 dev-ruby/text 1.3.1: A collection of text algorithms
 dev-ruby/text-hyphen 1.4.1-r2: Hyphenates words according to the rules of the language the word is written in
@@ -5915,7 +5915,7 @@ dev-ruby/unf_ext 0.0.7.4: Unicode Normalization Form support library for CRuby
 dev-ruby/unindent 1.0: Ruby method to unindent strings
 dev-ruby/uuidtools 2.1.5-r1: Simple library to generate UUIDs
 dev-ruby/webmock 1.20.3 1.24.6: Allows stubbing HTTP requests and setting expectations on HTTP requests
-dev-ruby/webrobots 0.1.1-r2 0.1.2: A library to help write robots.txt compliant web robots
+dev-ruby/webrobots 0.1.2: A library to help write robots.txt compliant web robots
 dev-ruby/wirble 0.1.3-r4: Wirble is a set of enhancements for Irb
 dev-ruby/xml-simple 1.1.5: Easy API to maintain XML. A Ruby port of Grant McLean's Perl module XML::Simple
 dev-ruby/xpath 2.1.0: XPath is a Ruby DSL around a subset of XPath 1.0

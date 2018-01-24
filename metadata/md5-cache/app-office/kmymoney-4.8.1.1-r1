@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=app-crypt/gpgme-1.7.0[cxx] <app-office/libalkimia-6.0.0 dev-libs/gmp:0= dev-libs/libgpg-error dev-qt/qtcore:4[ssl] dev-qt/qtdbus:4 dev-qt/qtgui:4 dev-qt/qtsql:4 dev-qt/qtsvg:4 kde-frameworks/kdelibs:4 x11-misc/shared-mime-info calendar? ( dev-libs/libical:= ) hbci? ( >=net-libs/aqbanking-5.5.1 >=sys-libs/gwenhywfar-4.15.3[qt4] ) ofx? ( >=dev-libs/libofx-0.9.4 ) weboob? ( www-client/weboob ) dev-libs/boost virtual/pkgconfig doc? ( app-doc/doxygen ) handbook? ( app-text/docbook-xml-dtd:4.2 app-text/docbook-xsl-stylesheets ) test? ( dev-qt/qttest:4 ) sys-devel/make >=dev-util/cmake-3.7.2 test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DESCRIPTION=Personal finance manager by KDE
+EAPI=6
+HOMEPAGE=https://kmymoney.org/
+IUSE=calendar debug doc +handbook hbci ofx quotes test weboob test
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=app-crypt/gpgme-1.7.0[cxx] <app-office/libalkimia-6.0.0 dev-libs/gmp:0= dev-libs/libgpg-error dev-qt/qtcore:4[ssl] dev-qt/qtdbus:4 dev-qt/qtgui:4 dev-qt/qtsql:4 dev-qt/qtsvg:4 kde-frameworks/kdelibs:4 x11-misc/shared-mime-info calendar? ( dev-libs/libical:= ) hbci? ( >=net-libs/aqbanking-5.5.1 >=sys-libs/gwenhywfar-4.15.3[qt4] ) ofx? ( >=dev-libs/libofx-0.9.4 ) weboob? ( www-client/weboob ) kde-frameworks/oxygen-icons:* handbook? ( kde-frameworks/kdelibs:4[handbook] ) quotes? ( dev-perl/Finance-Quote )
+SLOT=4
+SRC_URI=mirror://kde/stable/kmymoney/4.8.1.1/src/kmymoney-4.8.1.1.tar.xz
+_eclasses_=cmake-utils	202a2becc86cb78ba14baad148d06759	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e7258392d5eda499c1cfa94db650b61	flag-o-matic	02908f00f002f0f07c5b74783d778325	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	versionator	ce21313503c41896ebcd7d58b0607e37	virtualx	3a3c4637ea6d5a2113707a644766337c	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=7162093a2f60782be5c06e12cc82dbec
