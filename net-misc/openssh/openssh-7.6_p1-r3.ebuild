@@ -9,7 +9,7 @@ inherit user flag-o-matic multilib autotools pam systemd versionator
 # and _p? releases.
 PARCH=${P/_}
 
-HPN_PATCH="${PARCH}-hpnssh14v12.tar.xz"
+HPN_PATCH="${PARCH}-hpnssh14v12-r1.tar.xz"
 SCTP_PATCH="${PN}-7.6_p1-sctp.patch.xz"
 LDAP_PATCH="${PN}-lpk-7.6p1-0.3.14.patch.xz"
 X509_VER="11.1" X509_PATCH="${PN}-${PV/_}+x509-${X509_VER}.diff.gz"
@@ -18,7 +18,7 @@ DESCRIPTION="Port of OpenBSD's free SSH release"
 HOMEPAGE="http://www.openssh.org/"
 SRC_URI="mirror://openbsd/OpenSSH/portable/${PARCH}.tar.gz
 	${SCTP_PATCH:+https://dev.gentoo.org/~polynomial-c/${SCTP_PATCH}}
-	${HPN_PATCH:+hpn? ( mirror://gentoo/${HPN_PATCH} )}
+	${HPN_PATCH:+hpn? ( https://dev.gentoo.org/~chutzpah/${HPN_PATCH} )}
 	${LDAP_PATCH:+ldap? ( https://dev.gentoo.org/~polynomial-c/${LDAP_PATCH} )}
 	${X509_PATCH:+X509? ( https://dev.gentoo.org/~chutzpah/${X509_PATCH} )}
 	"
@@ -119,8 +119,8 @@ src_prepare() {
 			pushd "${WORKDIR}" >/dev/null
 			eapply "${FILESDIR}"/${P}-hpn-x509-${X509_VER}-glue.patch
 			popd >/dev/null
+			save_version X509
 		fi
-		save_version X509
 		eapply "${WORKDIR}"/${X509_PATCH%.*}
 	fi
 

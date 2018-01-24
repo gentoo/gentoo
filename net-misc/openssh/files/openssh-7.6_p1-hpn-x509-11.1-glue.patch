@@ -1,5 +1,5 @@
---- a/openssh-7.6p1-hpnssh14v12/0004-support-dynamically-sized-receive-buffers.patch	2017-10-11 15:02:11.850912525 -0700
-+++ b/openssh-7.6p1-hpnssh14v12/0004-support-dynamically-sized-receive-buffers.patch	2017-10-11 15:35:06.223424844 -0700
+--- a/openssh-7.6p1-hpnssh14v12-r1/0003-support-dynamically-sized-receive-buffers.patch	2017-10-11 15:02:11.850912525 -0700
++++ b/openssh-7.6p1-hpnssh14v12-r1/0003-support-dynamically-sized-receive-buffers.patch	2017-10-11 15:35:06.223424844 -0700
 @@ -907,9 +907,9 @@
  @@ -517,7 +544,7 @@ send_client_banner(int connection_out, int minor1)
   {
