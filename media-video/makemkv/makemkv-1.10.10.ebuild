@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit gnome2-utils flag-o-matic
+inherit gnome2-utils flag-o-matic linux-info
 
 MY_P=makemkv-oss-${PV}
 MY_PB=makemkv-bin-${PV}
@@ -37,6 +37,7 @@ DEPEND="
 RDEPEND="${DEPEND}
 	net-misc/wget"
 
+CONFIG_CHECK="~CHR_DEV_SG"
 S="${WORKDIR}/makemkv-oss-${PV}"
 PATCHES=( "${FILESDIR}"/${PN}-{wget,path}.patch )
 
