@@ -4,7 +4,7 @@ DESCRIPTION=bind tools: dig, nslookup, host, nsupdate, dnssec-keygen
 EAPI=5
 HOMEPAGE=http://www.isc.org/software/bind
 IUSE=doc gost gssapi idn ipv6 libressl readline seccomp ssl urandom xml
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~amd64-fbsd
+KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=Apache-2.0 BSD BSD-2 GPL-2 HPND ISC MPL-2.0
 RDEPEND=ssl? ( !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) ) gost? ( >=dev-libs/openssl-1.0.0:0[-bindist] ) xml? ( dev-libs/libxml2 ) idn? ( net-dns/idnkit ) gssapi? ( virtual/krb5 ) readline? ( sys-libs/readline:0= ) seccomp? ( sys-libs/libseccomp ) !<net-dns/bind-9.10.2
 REQUIRED_USE=gost? ( !libressl ssl )
@@ -12,4 +12,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://www.isc.org/downloads/file/bind-9.11.2-P1/?version=tar-gz -> bind-9.11.2_p1.tar.gz
 _eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e7258392d5eda499c1cfa94db650b61	flag-o-matic	02908f00f002f0f07c5b74783d778325	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=59f6a470c3e3dbdb6269f919d73bd21d
+_md5_=39301be4be1f77969b8e6cc4601a64d9

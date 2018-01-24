@@ -1,6 +1,6 @@
 DEFINED_PHASES=-
 DEPEND=>=dev-scheme/guile-2.0.11:= dev-scheme/bytestructures dev-libs/libgit2:=
-DESCRIPTION=Structured access to bytevector contents
+DESCRIPTION=Guile bindings of git
 EAPI=6
 HOMEPAGE=https://gitlab.com/guile-git/guile-git
 KEYWORDS=~amd64 ~x86
@@ -8,4 +8,4 @@ LICENSE=LGPL-3+
 RDEPEND=>=dev-scheme/guile-2.0.11:= dev-scheme/bytestructures dev-libs/libgit2:=
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~slyfox/distfiles/guile-git-0.0.20171110.tar.gz
-_md5_=8e261ee6b34c60b3051623a85383b04d
+_md5_=f9fab37e99e16c63f4db195dc7320d63
