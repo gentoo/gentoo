@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,13 +18,12 @@ LICENSE="MIT public-domain
 		 krl? ( GPL-2 )"
 SLOT="0"
 KEYWORDS="x86"
-IUSE="+awt echo2 +frontend jemacs krl +sax servlets +swing swt +xml xqtests"
+IUSE="+awt echo2 +frontend jemacs krl +sax servlets +swing +xml xqtests"
 
 CDEPEND="( >=virtual/jdk-1.6 )
 	frontend? ( sys-libs/readline:0 )
 	sax? ( dev-java/sax:0 )
 	echo2? ( dev-java/echo2 )
-	swt? ( dev-java/swt:3.5 )
 	servlets? ( java-virtuals/servlet-api:3.0 )"
 DEPEND="${CDEPEND}
 		xqtests? ( app-arch/unzip:0 )"
@@ -62,9 +61,6 @@ src_configure() {
 	fi
 	if use servlets; then
 		myconf="${myconf} --with-servlet=$(java-pkg_getjar servletapi-2.4 servlet-api.jar)"
-	fi
-	if use swt; then
-		myconf="${myconf} --with-swt=$(java-pkg_getjar swt-3.5 swt.jar)"
 	fi
 
 	econf ${myconf} $(use_enable frontend kawa-frontend) \
