@@ -89,12 +89,10 @@ COMMONDEPEND="
 	zeroconf? ( net-dns/avahi[mdnsresponder-compat] )
 "
 DEPEND="${COMMONDEPEND}
+	>=dev-qt/qttest-${QT_MINIMAL}:4
 	doc? ( app-doc/doxygen )
 	nls? ( virtual/libintl )
-	test? (
-		>=dev-qt/qttest-${QT_MINIMAL}:4
-		dev-util/cppunit
-	)
+	test? ( dev-util/cppunit )
 "
 RDEPEND="${COMMONDEPEND}
 	!dev-qt/qtphonon
