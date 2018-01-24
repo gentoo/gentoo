@@ -2781,7 +2781,7 @@ dev-java/super-csv 2.3.1: A fast, programmer-friendly, free CSV library for Java
 dev-java/svgsalamander 0.0-r2: a SVG engine for Java
 dev-java/swarmcache 1.0_pre20050106-r1: SwarmCache is a simple but effective distributed cache
 dev-java/swing-layout 1.0.4-r1: Professional cross platform layouts with Swing
-dev-java/swt 3.5.2 3.7.2-r1 3.8.2-r1: GTK based SWT Library
+dev-java/swt 3.7.2-r1 3.8.2-r1: GTK based SWT Library
 dev-java/tablelayout 1.0: Layout manager that makes creating user interfaces fast and easy
 dev-java/tagsoup 1.2.1: A SAX-compliant parser written in Java
 dev-java/tapestry 3.0.4-r2: Dynamic, robust, highly scalable web framework in Java
