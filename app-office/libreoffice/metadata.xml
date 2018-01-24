@@ -15,7 +15,8 @@ version</longdescription>
     <flag name="collada">Enable Collada for rendering 3D models stored in *.dae and *.kmz format</flag>
     <flag name="gltf">Use media-libs/libgltf for inserting 3D models in the glTF format into presentations</flag>
     <flag name="googledrive">Enable support for remote files on Google Drive</flag>
-    <flag name="gtk3">Enable highly experimental gtk3 frontend</flag>
+    <flag name="gtk2">Enable legacy gtk2 frontend</flag>
+    <flag name="gtk3">Enable experimental gtk3 frontend</flag>
     <flag name="jemalloc">Use <pkg>dev-libs/jemalloc</pkg> for allocations</flag>
     <flag name="odk">Build the Office Development Kit</flag>
     <flag name="pdfimport">Enable PDF import via the Poppler library</flag>

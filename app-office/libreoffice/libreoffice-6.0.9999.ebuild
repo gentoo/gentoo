@@ -64,7 +64,7 @@ unset ADDONS_SRC
 LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
 
 IUSE="bluetooth +branding coinmp +cups dbus debug eds firebird googledrive
-gstreamer +gtk gtk3 jemalloc kde libressl mysql odk pdfimport postgres test vlc
+gstreamer +gtk gtk2 jemalloc kde libressl mysql odk pdfimport postgres test vlc
 $(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 
 LICENSE="|| ( LGPL-3 MPL-1.1 )"
@@ -148,14 +148,14 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		media-libs/gst-plugins-base:1.0
 	)
 	gtk? (
-		x11-libs/gdk-pixbuf
-		>=x11-libs/gtk+-2.24:2
-	)
-	gtk3? (
 		dev-libs/glib:2
 		dev-libs/gobject-introspection
 		gnome-base/dconf
 		x11-libs/gtk+:3
+	)
+	gtk2? (
+		x11-libs/gdk-pixbuf
+		>=x11-libs/gtk+-2.24:2
 	)
 	jemalloc? ( dev-libs/jemalloc )
 	libreoffice_extensions_scripting-beanshell? ( dev-java/bsh )
@@ -426,8 +426,8 @@ src_configure() {
 		$(use_enable eds evolution2)
 		$(use_enable firebird firebird-sdbc)
 		$(use_enable gstreamer gstreamer-1-0)
-		$(use_enable gtk)
-		$(use_enable gtk3)
+		$(use_enable gtk gtk3)
+		$(use_enable gtk2 gtk)
 		$(use_enable mysql ext-mariadb-connector)
 		$(use_enable odk)
 		$(use_enable pdfimport)
@@ -442,7 +442,7 @@ src_configure() {
 		$(use_with odk doxygen)
 	)
 
-	if use eds || use gtk3; then
+	if use eds || use gtk; then
 		myeconfargs+=( --enable-dconf --enable-gio )
 	else
 		myeconfargs+=( --disable-dconf --disable-gio )
@@ -519,7 +519,7 @@ src_install() {
 	make DESTDIR="${D}" distro-pack-install -o build -o check || die
 
 	# bug 593514
-	if use gtk3; then
+	if use gtk; then
 		dosym libreoffice/program/liblibreofficekitgtk.so \
 			/usr/$(get_libdir)/liblibreofficekitgtk.so
 	fi
