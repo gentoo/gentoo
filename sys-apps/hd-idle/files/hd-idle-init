@@ -1,0 +1,12 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+description="Utility for spinning down hard disks after a period of idle time"
+
+command="/usr/sbin/hd-idle"
+command_args="${HD_IDLE_OPTS}"
+
+depend() {
+	after bootmisc
+}
