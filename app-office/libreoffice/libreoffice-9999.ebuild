@@ -159,8 +159,14 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	)
 	kde? (
 		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtx11extras:5
 		dev-qt/qtwidgets:5
+		kde-frameworks/kconfig:5
 		kde-frameworks/kcoreaddons:5
+		kde-frameworks/ki18n:5
+		kde-frameworks/kio:5
+		kde-frameworks/kwindowsystem:5
 	)
 	libreoffice_extensions_scripting-beanshell? ( dev-java/bsh )
 	libreoffice_extensions_scripting-javascript? ( dev-java/rhino:1.6 )
