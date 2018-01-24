@@ -28,7 +28,6 @@ DOCS=( AUTHORS ChangeLog THANKS )
 
 src_prepare() {
 	default
-	eapply_user
 	eautoreconf
 }
 
