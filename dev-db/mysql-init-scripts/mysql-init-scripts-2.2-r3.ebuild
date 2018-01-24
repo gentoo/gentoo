@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit systemd s6
 
@@ -31,12 +31,13 @@ src_install() {
 	# s6 init scripts
 	if use amd64 || use x86 ; then
 		newconfd "${FILESDIR}/conf.d-2.0" "mysql-s6"
-		newinitd "${FILESDIR}/init.d-s6" "mysql-s6"
+		newinitd "${FILESDIR}/init.d-s6-2.2" "mysql-s6"
 		s6_install_service mysql "${FILESDIR}/run-s6"
 		s6_install_service mysql/log "${FILESDIR}/log-s6"
 	fi
 
-	newinitd "${FILESDIR}/init.d-2.0" "mysql"
+	newinitd "${FILESDIR}/init.d-2.2" "mysql"
+	newinitd "${FILESDIR}/init.d-supervise" "mysql-supervise"
 
 	# systemd unit installation
 	exeinto /usr/libexec
@@ -51,12 +52,12 @@ src_install() {
 
 pkg_postinst() {
 	if use amd64 || use x86 ; then
-		einfo ""
+		elog ""
 		elog "To use the mysql-s6 script, you need to install the optional sys-apps/s6 package."
 		elog "If you wish to use s6 logging support, comment out the log-error setting in your my.cnf"
 	fi
 
-	einfo ""
+	elog ""
 	elog "Starting with version 10.1.8, MariaDB includes an improved systemd unit named mariadb.service"
 	elog "You should prefer that unit over this package's mysqld.service."
 	einfo ""
