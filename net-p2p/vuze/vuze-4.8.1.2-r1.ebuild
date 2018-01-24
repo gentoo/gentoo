@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -128,12 +128,6 @@ pkg_postinst() {
 	elog "modify this file, rather than the startup script."
 	elog "Using this config file you can start the console UI."
 	elog
-
-	if ! has_version dev-java/swt:3.7[webkit]; then
-		elog
-		elog "Your dev-java/swt:3.7 was built without webkit support. Features such as Vuze HD Network will not work."
-		elog "Rebuild swt with USE=webkit (needs net-libs/webkit-gtk:2) to use these features."
-	fi
 
 	fdo-mime_desktop_database_update
 }

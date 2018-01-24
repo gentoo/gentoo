@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,14 +14,13 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
-IUSE="gnome gtk qt4"
+IUSE="gnome gtk"
 
 RDEPEND="
 	>=dev-python/hachoir-core-1.3[${PYTHON_USEDEP}]
 	>=dev-python/hachoir-parser-1.3[${PYTHON_USEDEP}]
 	gtk? ( >=dev-python/pygtk-2.0[${PYTHON_USEDEP}] )
-	gnome? ( gnome-base/nautilus gnome-extra/zenity )
-	qt4? ( dev-python/PyQt4[${PYTHON_USEDEP}] )"
+	gnome? ( gnome-base/nautilus gnome-extra/zenity )"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
@@ -34,9 +33,7 @@ python_prepare_all() {
 }
 
 python_configure_all() {
-	mydistutilsargs=( --setuptools )
-
-	use qt4 || mydistutilsargs+=( --disable-qt )
+	mydistutilsargs=( --setuptools --disable-qt )
 }
 
 python_test() {

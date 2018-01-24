@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -21,7 +21,7 @@ SRC_URI="
 LICENSE="CPL-1.0 LGPL-2.1 MPL-1.1"
 SLOT="4.2"
 KEYWORDS="~amd64 ~ppc64 ~x86"
-IUSE="cairo gnome opengl webkit"
+IUSE="cairo gnome opengl"
 
 COMMON_DEP="
 	>=dev-libs/atk-1.10.2
@@ -37,8 +37,7 @@ COMMON_DEP="
 	opengl?	(
 		virtual/glu
 		virtual/opengl
-	)
-	webkit? ( >=net-libs/webkit-gtk-1.2:2 )"
+	)"
 DEPEND="${COMMON_DEP}
 	>=virtual/jdk-1.4
 	app-arch/unzip
@@ -139,12 +138,6 @@ src_compile() {
 		${make} make_glx
 	fi
 
-	if use webkit ; then
-		einfo "Building the WebKitGTK+ component"
-
-		${make} make_webkit
-	fi
-
 	einfo "Building JNI libraries"
 	eant compile
 
@@ -166,7 +159,7 @@ src_install() {
 	use cairo || sed -i -e "/ org.eclipse.swt.internal.cairo; x-internal:=true,/d" "MANIFEST_TMP.MF"
 	use gnome || sed -i -e "/ org.eclipse.swt.internal.gnome; x-internal:=true,/d" "MANIFEST_TMP.MF"
 	use opengl || sed -i -e "/ org.eclipse.swt.internal.opengl.glx; x-internal:=true,/d" "MANIFEST_TMP.MF"
-	use webkit || sed -i -e "/ org.eclipse.swt.internal.webkit; x-internal:=true,/d" "MANIFEST_TMP.MF"
+	sed -i -e "/ org.eclipse.swt.internal.webkit; x-internal:=true,/d" "MANIFEST_TMP.MF"
 	java-osgi_newjar-fromfile "swt.jar" "MANIFEST_TMP.MF" "Standard Widget Toolkit for GTK 2.0"
 
 	java-pkg_sointo /usr/$(get_libdir)
