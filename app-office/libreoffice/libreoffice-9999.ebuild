@@ -359,6 +359,7 @@ src_configure() {
 	export PYTHON_LIBS=$(python_get_LIBS)
 
 	if use kde; then
+		export QT_SELECT=5 # bug 639620 needs proper fix though
 		export QT5DIR="$(qt5_get_bindir)/../"
 		export MOC5="$(qt5_get_bindir)/moc"
 	fi
