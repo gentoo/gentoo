@@ -3,6 +3,8 @@
 
 EAPI=6
 
+inherit linux-info
+
 DESCRIPTION="Utility for spinning down hard disks after a period of idle time"
 HOMEPAGE="http://hd-idle.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tgz"
@@ -14,19 +16,10 @@ KEYWORDS="~amd64 ~x86"
 S=${WORKDIR}/${PN}
 
 DOCS=( debian/changelog README )
+CONFIG_CHECK="~PROC_FS"
 
 src_install() {
 	default_src_install
 	newinitd "${FILESDIR}"/hd-idle-init hd-idle
 	newconfd "${FILESDIR}"/hd-idle-conf hd-idle
-}
-
-pkg_postinst() {
-	if [[ ! -f /proc/diskstats ]]
-	then
-		ewarn "Please note that hd-idle uses /proc/diskstats to read disk"
-		ewarn "statistics. If this file is not present, hd-idle won't work."
-		ewarn "You should check your kernel configuration and make sure"
-		ewarn "it includes CONFIG_PROC_FS=y."
-	fi
 }
