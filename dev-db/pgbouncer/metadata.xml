@@ -9,7 +9,6 @@
 		<flag name="c-ares">
 			Use c-ares as the DNS backend instead of evdns (libevent).
 		</flag>
-		<flag name="libevent">Use libevent 2.0+ and evdns as the DNS backend</flag>
 		<flag name="udns">
 			Use udns as the DNS backend instead of evdns (libevent). Supports
 			IPv4 only.
