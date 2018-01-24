@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
-inherit eutils toolchain-funcs flag-o-matic
+inherit toolchain-funcs flag-o-matic
 
 code_ver=${PV}
 data_ver=${PV}
@@ -24,7 +24,7 @@ RDEPEND="${DEPEND}
 S=${WORKDIR}
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-2016g-makefile.patch
+	default
 	tc-is-cross-compiler && cp -pR "${S}" "${S}"-native
 }
 
@@ -51,37 +51,46 @@ src_configure() {
 
 _emake() {
 	emake \
-		TOPDIR="${EPREFIX}/usr" \
 		REDO=$(usex leaps_timezone posix_right posix_only) \
+		TZDATA_TEXT= \
+		TOPDIR="${EPREFIX}" \
+		ZICDIR='$(TOPDIR)/usr/bin' \
 		"$@"
 }
 
 src_compile() {
-	# TOPDIR is used in some utils when compiling.
 	_emake \
 		AR="$(tc-getAR)" \
-		CC="$(tc-getCC)" \
+		cc="$(tc-getCC)" \
 		RANLIB="$(tc-getRANLIB)" \
-		CFLAGS="${CFLAGS} -std=gnu99" \
+		CFLAGS="${CFLAGS} -std=gnu99 ${CPPFLAGS}" \
 		LDFLAGS="${LDFLAGS}" \
 		LDLIBS="${LDLIBS}"
 	if tc-is-cross-compiler ; then
 		_emake -C "${S}"-native \
-			CC="$(tc-getBUILD_CC)" \
-			CFLAGS="${BUILD_CFLAGS}" \
-			CPPFLAGS="${BUILD_CPPFLAGS}" \
+			AR="$(tc-getBUILD_AR)" \
+			cc="$(tc-getBUILD_CC)" \
+			RANLIB="$(tc-getBUILD_RANLIB)" \
+			CFLAGS="${BUILD_CFLAGS} ${BUILD_CPPFLAGS}" \
 			LDFLAGS="${BUILD_LDFLAGS}" \
 			LDLIBS="${LDLIBS}" \
 			zic
 	fi
 }
 
+src_test() {
+	# VALIDATE_ENV is used for extended/web based tests.  Punt on them.
+	emake check VALIDATE_ENV=true
+}
+
 src_install() {
 	local zic=""
 	tc-is-cross-compiler && zic="zic=${S}-native/zic"
-	_emake install ${zic} DESTDIR="${D}"
-	dodoc CONTRIBUTING README NEWS Theory
-	dohtml *.htm
+	_emake install ${zic} DESTDIR="${D}" LIBDIR="/nukeit"
+	rm -rf "${ED}/nukeit" "${ED}/etc" || die
+	# Delete man pages installed by man-pages package.
+	rm "${ED}"/usr/share/man/man5/tzfile.5* "${ED}"/usr/share/man/man8/{tzselect,zdump,zic}.8 || die
+	dodoc CONTRIBUTING README NEWS *.html
 }
 
 get_TIMEZONE() {
