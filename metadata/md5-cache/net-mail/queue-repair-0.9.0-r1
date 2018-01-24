@@ -11,4 +11,4 @@ REQUIRED_USE=python_targets_python2_7
 SLOT=0
 SRC_URI=http://pyropus.ca/software/queue-repair/queue-repair-0.9.0.tar.gz
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	317a2557b4d7319a7418225f65accf77	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=6fa8e1c3592f4f58725547484b15b524
+_md5_=2aa025e9fde010ef1a1d8cf14c23918d
