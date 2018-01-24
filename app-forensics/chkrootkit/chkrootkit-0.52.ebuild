@@ -1,24 +1,29 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
 inherit eutils toolchain-funcs
 
 DESCRIPTION="Tool to locally check for signs of a rootkit"
 HOMEPAGE="http://www.chkrootkit.org/"
-SRC_URI="ftp://ftp.pangeia.com.br/pub/seg/pac/${P}.tar.gz
-	https://dev.gentoo.org/~xmw/${P}-gentoo.diff.bz2"
+# Upstream named their *uncompressed* tarball .tar.gz (*sigh*)
+SRC_URI="ftp://ftp.pangeia.com.br/pub/seg/pac/${P}.tar.gz -> ${P}.tar
+	https://dev.gentoo.org/~polynomial-c/${PN}-0.51-gentoo.diff.xz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="+cron"
 
 RDEPEND="cron? ( virtual/cron )"
 
+PATCHES=(
+	"${WORKDIR}"/${PN}-0.51-gentoo.diff
+)
+
 src_prepare() {
-	epatch "${WORKDIR}"/${P}-gentoo.diff
+	default
 	sed -e 's:/var/adm/:/var/log/:g' \
 		-i chklastlog.c || die
 }

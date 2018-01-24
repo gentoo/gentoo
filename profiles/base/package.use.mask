@@ -323,10 +323,6 @@ www-client/firefox system-cairo
 mail-client/thunderbird system-cairo
 >=www-client/seamonkey-2.41 system-cairo
 
-# Michael Palimaka <kensington@gentoo.org> (17 Apr 2016)
-# Fails to build with recent doxygen. Bug #569776.
-dev-cpp/eigen:2 doc
-
 # James Le Cuirot <chewi@gentoo.org> (10 Apr 2016)
 # Slower and less reliable than HotSpot and we don't support Java on
 # any non-HotSpot platforms. Don't unmask these unless you know what

@@ -357,7 +357,6 @@ dev-python/PyQt4 multimedia
 # Ben de Groot <yngwin@gentoo.org> (11 Nov 2009)
 # Requires qthelp, which requires qtwebkit, bug 292838
 dev-libs/uriparser doc
-media-libs/libxspf doc
 
 # Raúl Porcel <armin76@gentoo.org>
 # Depends on dev-java/fop which requires java...

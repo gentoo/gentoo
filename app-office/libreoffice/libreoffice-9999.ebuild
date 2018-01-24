@@ -64,7 +64,7 @@ unset ADDONS_SRC
 LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
 
 IUSE="bluetooth +branding coinmp +cups dbus debug eds firebird googledrive
-gstreamer +gtk gtk3 kde libressl mysql odk pdfimport postgres qt4 qt5 test vlc
+gstreamer +gtk gtk2 kde libressl mysql odk pdfimport postgres test vlc
 $(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 
 LICENSE="|| ( LGPL-3 MPL-1.1 )"
@@ -96,7 +96,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	=dev-cpp/libcmis-0.5*
 	dev-db/unixODBC
 	dev-lang/perl
-	dev-libs/boost:=
+	>=dev-libs/boost-1.65.0:=
 	dev-libs/expat
 	dev-libs/hyphen
 	dev-libs/icu:=
@@ -148,30 +148,25 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		media-libs/gst-plugins-base:1.0
 	)
 	gtk? (
-		x11-libs/gdk-pixbuf
-		>=x11-libs/gtk+-2.24:2
-	)
-	gtk3? (
 		dev-libs/glib:2
 		dev-libs/gobject-introspection
 		gnome-base/dconf
 		x11-libs/gtk+:3
+	)
+	gtk2? (
+		x11-libs/gdk-pixbuf
+		>=x11-libs/gtk+-2.24:2
+	)
+	kde? (
+		dev-qt/qtcore:5
+		dev-qt/qtwidgets:5
+		kde-frameworks/kcoreaddons:5
 	)
 	libreoffice_extensions_scripting-beanshell? ( dev-java/bsh )
 	libreoffice_extensions_scripting-javascript? ( dev-java/rhino:1.6 )
 	mysql? ( dev-db/mysql-connector-c++ )
 	pdfimport? ( app-text/poppler:=[cxx] )
 	postgres? ( >=dev-db/postgresql-9.0:*[kerberos] )
-	qt4? (
-		dev-qt/qtcore:4
-		dev-qt/qtgui:4
-		kde-frameworks/kdelibs
-	)
-	qt5? (
-		dev-qt/qtcore:5
-		dev-qt/qtwidgets:5
-		kde-frameworks/kcoreaddons:5
-	)
 "
 
 RDEPEND="${COMMON_DEPEND}
@@ -234,12 +229,11 @@ DEPEND="${COMMON_DEPEND}
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	bluetooth? ( dbus )
-	kde? ( || ( qt4 qt5 ) )
+	kde? ( gtk )
 	libreoffice_extensions_nlpsolver? ( java )
 	libreoffice_extensions_scripting-beanshell? ( java )
 	libreoffice_extensions_scripting-javascript? ( java )
 	libreoffice_extensions_wiki-publisher? ( java )
-	qt4? ( kde )
 "
 
 PATCHES=(
@@ -252,9 +246,6 @@ PATCHES=(
 )
 
 pkg_pretend() {
-	use qt5 && \
-		ewarn "Qt5 is a work in progress. Do _NOT_ file bugs at bugs.gentoo.org related to Qt5 support!"
-
 	use java || \
 		ewarn "If you plan to use Base application you should enable java or you will get various crashes."
 
@@ -367,13 +358,8 @@ src_configure() {
 	export PYTHON_CFLAGS=$(python_get_CFLAGS)
 	export PYTHON_LIBS=$(python_get_LIBS)
 
-	if use qt4; then
-		# bug 544108, bug 599076
-		export QMAKE4="$(qt4_get_bindir)/qmake"
-		export MOCQT4="$(qt4_get_bindir)/moc"
-	fi
-
-	if use qt5; then
+	if use kde; then
+		export QT_SELECT=5 # bug 639620 needs proper fix though
 		export QT5DIR="$(qt5_get_bindir)/../"
 		export MOC5="$(qt5_get_bindir)/moc"
 	fi
@@ -438,14 +424,15 @@ src_configure() {
 		$(use_enable eds evolution2)
 		$(use_enable firebird firebird-sdbc)
 		$(use_enable gstreamer gstreamer-1-0)
-		$(use_enable gtk)
-		$(use_enable gtk3)
+		$(use_enable gtk gtk3)
+		$(use_enable gtk2 gtk)
+		$(use_enable kde qt5)
+		$(use_enable kde kde5)
+		$(use_enable kde gtk3-kde5)
 		$(use_enable mysql ext-mariadb-connector)
 		$(use_enable odk)
 		$(use_enable pdfimport)
 		$(use_enable postgres postgresql-sdbc)
-		$(use_enable qt4 kde4)
-		$(use_enable qt5)
 		$(use_enable vlc)
 		$(use_with coinmp system-coinmp)
 		$(use_with googledrive gdrive-client-id ${google_default_client_id})
@@ -455,7 +442,7 @@ src_configure() {
 		$(use_with odk doxygen)
 	)
 
-	if use eds || use gtk3; then
+	if use eds || use gtk; then
 		myeconfargs+=( --enable-dconf --enable-gio )
 	else
 		myeconfargs+=( --disable-dconf --disable-gio )
@@ -532,7 +519,7 @@ src_install() {
 	make DESTDIR="${D}" distro-pack-install -o build -o check || die
 
 	# bug 593514
-	if use gtk3; then
+	if use gtk; then
 		dosym libreoffice/program/liblibreofficekitgtk.so \
 			/usr/$(get_libdir)/liblibreofficekitgtk.so
 	fi
