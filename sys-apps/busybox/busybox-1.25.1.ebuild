@@ -139,6 +139,12 @@ src_configure() {
 	busybox_config_option systemd FEATURE_SYSTEMD
 	busybox_config_option math FEATURE_AWK_LIBM
 
+	# disable features that uClibc doesn't (yet?) provide.
+	if use elibc_uclibc; then
+		busybox_config_option n FEATURE_SYNC_FANCY #567598
+		busybox_config_option n NSENTER
+	fi
+
 	# all the debug options are compiler related, so punt them
 	busybox_config_option n DEBUG_SANITIZE
 	busybox_config_option n DEBUG
