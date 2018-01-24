@@ -52,6 +52,8 @@ src_install() {
 	newexe "${FILESDIR}/${PN}-1.3.cron" ${PN}
 
 	newbashcomp "${FILESDIR}/${PN}.bash-completion" ${PN}
+
+	dodir /var/lib/${PN}/tmp
 }
 
 pkg_postinst() {
