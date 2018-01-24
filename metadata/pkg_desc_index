@@ -5638,7 +5638,7 @@ dev-qt/pixeltool 4.8.7 5.7.1: Qt screen magnifier
 dev-qt/qdbus 5.7.1: Interface to Qt applications communicating over D-Bus
 dev-qt/qdbusviewer 4.8.7 5.7.1: Graphical tool that lets you introspect D-Bus objects and messages
 dev-qt/qdoc 5.7.1: Qt documentation generator
-dev-qt/qt-creator 4.3.1: Lightweight IDE for C++/QML development centering around Qt
+dev-qt/qt-creator 4.4.1: Lightweight IDE for C++/QML development centering around Qt
 dev-qt/qt-docs 5.7.1_p0: Documentation for Qt5, for use with Qt Creator and other tools
 dev-qt/qt-meta 4.8.6: Cross-platform application development framework (metapackage)
 dev-qt/qt3support 4.8.7: The Qt3Support module for the Qt toolkit
@@ -6216,7 +6216,7 @@ dev-util/premake 3.7 4.3-r1: A makefile generation tool
 dev-util/pscan 20000721-r1: A limited problem scanner for C source files
 dev-util/pycharm-community 2017.3: Intelligent Python IDE with unique code assistance and analysis
 dev-util/pycharm-professional 2017.3: Intelligent Python IDE with unique code assistance and analysis
-dev-util/qbs 1.8.1-r1: Modern build tool for software projects
+dev-util/qbs 1.9.1: Modern build tool for software projects
 dev-util/qmtest 2.4.1-r1: CodeSourcery's test harness system
 dev-util/qstlink2 1.0.3: GUI and CLI ST-Link V2(Debugger/Programmer) client
 dev-util/quilt 0.50: quilt patch manager
