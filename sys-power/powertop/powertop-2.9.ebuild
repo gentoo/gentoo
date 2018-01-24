@@ -38,6 +38,10 @@ RDEPEND="
 	virtual/libintl
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-libc++.patch
+)
+
 pkg_setup() {
 	CONFIG_CHECK="
 		~X86_MSR
