@@ -90,9 +90,11 @@ COMMONDEPEND="
 "
 DEPEND="${COMMONDEPEND}
 	doc? ( app-doc/doxygen )
-	handbook? ( >=dev-qt/qttest-${QT_MINIMAL}:4 )
 	nls? ( virtual/libintl )
-	test? ( dev-util/cppunit )
+	test? (
+		>=dev-qt/qttest-${QT_MINIMAL}:4
+		dev-util/cppunit
+	)
 "
 RDEPEND="${COMMONDEPEND}
 	!dev-qt/qtphonon
