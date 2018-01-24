@@ -1,0 +1,15 @@
+--- /usr/sbin/chkrootkit	2018-01-23 14:16:12.129713688 +0000
++++ /usr/sbin/chkrootkit	2018-01-23 14:16:44.708953781 +0000
+@@ -20,6 +20,12 @@
+ CHECK_WTMPX="/usr/sbin/check_wtmpx"
+ STRINGS="/usr/sbin/strings-static"
+
++#https://bugs.gentoo.org/509000 - Default to /root/ if $HOME is not set
++if [ -z "$HOME"]
++then
++	export HOME=/root/
++fi
++
+ ### workaround for some Bourne shell implementations
+ unalias login > /dev/null 2>&1
+ unalias ls > /dev/null 2>&1

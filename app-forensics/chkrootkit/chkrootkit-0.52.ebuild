@@ -19,7 +19,7 @@ IUSE="+cron"
 RDEPEND="cron? ( virtual/cron )"
 
 PATCHES=(
-	"${WORKDIR}"/${PN}-0.51-gentoo.diff
+	"${FILESDIR}"/${PN}-HOME.patch
 )
 
 src_prepare() {

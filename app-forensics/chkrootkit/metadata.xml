@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
-	<use>
+  <maintainer type="person">
+    <email>admin@jordyzomer.nl</email>
+    <name>Jordy Zomer</name>
+  </maintainer>
+  <use>
 		<flag name="cron">Install cron script for weekly rootkit scans</flag>
 	</use>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
 </pkgmetadata>
