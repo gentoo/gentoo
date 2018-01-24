@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/C/CherryPy/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ia64 ~ppc ~x86"
 IUSE="test"
 
 RDEPEND=">=dev-python/cheroot-5.9.1[${PYTHON_USEDEP}]
