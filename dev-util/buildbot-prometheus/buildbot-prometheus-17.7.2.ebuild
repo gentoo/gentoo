@@ -18,4 +18,5 @@ IUSE=""
 RDEPEND="dev-python/prometheus_client[${PYTHON_USEDEP}]
 	dev-util/buildbot[${PYTHON_USEDEP}]"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+	dev-python/pip[${PYTHON_USEDEP}]
 	${RDEPEND}"
