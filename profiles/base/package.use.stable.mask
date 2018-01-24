@@ -4,6 +4,11 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Andrey Grozin <grozin@gentoo.org> (24 Jan 2018)
+# Depends on unstable dev-python/sphinx-gallery.
+# Bug #643840.
+dev-python/matplotlib doc
+
 # Michał Górny <mgorny@gentoo.org> (20 Jan 2018)
 # Requires proprietary fetch-restricted package that is not suitable
 # for stabilization. Bug #645092.
