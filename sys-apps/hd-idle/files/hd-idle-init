@@ -2,18 +2,11 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+description="Utility for spinning down hard disks after a period of idle time"
+
+command="/usr/sbin/hd-idle"
+command_args="${HD_IDLE_OPTS}"
+
 depend() {
 	after bootmisc
-}
-
-start() {
-	ebegin "Starting hd-idle"
-	start-stop-daemon --start --exec /usr/sbin/hd-idle -- ${HD_IDLE_OPTS}
-	eend $?
-}
-
-stop() {
-	ebegin "Stopping hd-idle"
-	start-stop-daemon --stop --exec /usr/sbin/hd-idle
-	eend $?
 }

@@ -10,15 +10,15 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tgz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 S=${WORKDIR}/${PN}
 
+DOCS=( debian/changelog README )
+
 src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed"
-	newinitd "${FILESDIR}"/hd-idle-init hd-idle || die "newinitd failed"
-	newconfd "${FILESDIR}"/hd-idle-conf hd-idle || die "newconfd failed"
-	dodoc debian/changelog README
+	default_src_install
+	newinitd "${FILESDIR}"/hd-idle-init hd-idle
+	newconfd "${FILESDIR}"/hd-idle-conf hd-idle
 }
 
 pkg_postinst() {
