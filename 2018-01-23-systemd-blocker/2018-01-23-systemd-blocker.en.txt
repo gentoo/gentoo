@@ -1,9 +1,9 @@
 Title: systemd sysv-utils blocker resolution
 Author: Mike Gilbert <floppym@gentoo.org>
 Posted: 2018-01-23
-Revision: 1
+Revision: 2
 News-Item-Format: 2.0
-Display-If-Installed: sys-apps/systemd
+Display-If-Installed: <sys-apps/systemd-236-r4
 
 Starting with systemd-236, the sysv-utils USE flag is enabled by
 default.
