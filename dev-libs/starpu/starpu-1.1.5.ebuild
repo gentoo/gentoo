@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,7 +16,7 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~x86 ~amd64-linux ~x86-linux"
 
-IUSE="blas cuda debug doc examples fftw gcc-plugin mpi opencl opengl qt4
+IUSE="blas cuda debug doc examples fftw gcc-plugin mpi opencl opengl
 	static-libs test"
 
 RDEPEND="
@@ -29,11 +29,7 @@ RDEPEND="
 	fftw? ( sci-libs/fftw:3.0= )
 	mpi? ( virtual/mpi )
 	opencl? ( virtual/opencl )
-	opengl? ( media-libs/freeglut:0= )
-	qt4? (  >=dev-qt/qtgui-4.7:4
-			>=dev-qt/qtopengl-4.7:4
-			>=dev-qt/qtsql-4.7:4
-			x11-libs/qwt:5 )"
+	opengl? ( media-libs/freeglut:0= )"
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
@@ -53,6 +49,7 @@ src_configure() {
 
 	local myeconfargs=(
 		--disable-build-examples
+		--disable-starpu-top
 		$(use_enable cuda)
 		$(use_enable debug)
 		$(use_enable doc build-doc)
@@ -60,7 +57,6 @@ src_configure() {
 		$(use_enable gcc-plugin gcc-extensions)
 		$(use_enable opencl)
 		$(use_enable opengl opengl-render)
-		$(use_enable qt4 starpu-top)
 		$(use_with mpi mpicc "$(type -P mpicc)")
 		$(use cuda && use_enable blas magma)
 		$(use mpi && use_enable test mpi-check)
