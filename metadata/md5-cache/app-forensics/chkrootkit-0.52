@@ -1,12 +1,12 @@
 DEFINED_PHASES=compile install postinst prepare
 DESCRIPTION=Tool to locally check for signs of a rootkit
-EAPI=5
+EAPI=6
 HOMEPAGE=http://www.chkrootkit.org/
 IUSE=+cron
-KEYWORDS=alpha amd64 arm ~hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
 LICENSE=BSD-2
 RDEPEND=cron? ( virtual/cron )
 SLOT=0
-SRC_URI=ftp://ftp.pangeia.com.br/pub/seg/pac/chkrootkit-0.50.tar.gz https://dev.gentoo.org/~xmw/chkrootkit-0.50-gentoo.diff.bz2
+SRC_URI=ftp://ftp.pangeia.com.br/pub/seg/pac/chkrootkit-0.52.tar.gz -> chkrootkit-0.52.tar https://dev.gentoo.org/~polynomial-c/chkrootkit-0.51-gentoo.diff.xz
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e7258392d5eda499c1cfa94db650b61	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=7c08b89185d98a361ed842d95d56d25b
+_md5_=f56ce7644b9233e1420205f81689c465
