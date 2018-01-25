@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="+gnat_2016 gnat_2017"
 
-RDEPEND="dev-ada/xmlada[gnat_2016=,gnat_2017=,static]"
+RDEPEND="dev-ada/xmlada[gnat_2016=,gnat_2017=,static-libs]"
 DEPEND="${RDEPEND}
 	dev-ada/gnat_util[gnat_2016=,gnat_2017=,static]
 	dev-ada/asis[gnat_2016=,gnat_2017=]
