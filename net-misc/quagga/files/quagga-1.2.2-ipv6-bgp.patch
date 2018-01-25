@@ -1,0 +1,42 @@
+commit 1db1b9baea511995b67a9b282d5c97e87479fe5d
+Author: Mathieu Jadin <mathjadin@gmail.com>
+Date:   Thu Dec 14 17:53:53 2017 +0100
+
+    bgpd: Fix mistake in NHT of connected IPv6 next-hops preventing route advertisement
+    
+    Since quagga-1.2.0, the Next Hop validation for directly connected peers
+    using IPv6 does not work.
+    
+    In this setup, BGP updates contain two next hops: a global IPv6 address and
+    a link-local IPv6 address (a correct behavior according to RFC 2545).  This
+    means that the length of the next hop attribute is 32 and not 16.
+    
+    The problem comes from the function "make_prefix()" in "bgpd/bgp_nht.c".  It
+    refuses to build a prefix structure for a route when the length of the
+    [Anext hop attribute is different from 16, even if a valid global IPv6
+    address is available.
+    
+    The route is mistakenly considered invalid and thus, it is not installed in
+    the routing table.
+    
+    Details: "make_prefix()" was not modified in quagga-1.2.0 but its
+    interpretation was changed in commit
+    3dda6b3eccb9a2a88d607372c83c04c796e7daac.  Before this commit, the failure
+    of "make_prefix()" was interpreted as a successful validation of the next
+    hop.
+
+diff --git a/bgpd/bgp_nht.c b/bgpd/bgp_nht.c
+index 1158ab15..d734c201 100644
+--- a/bgpd/bgp_nht.c
++++ b/bgpd/bgp_nht.c
+@@ -409,8 +409,8 @@ make_prefix (int afi, struct bgp_info *ri, struct prefix *p)
+       break;
+ #ifdef HAVE_IPV6
+     case AFI_IP6:
+-      if (ri->attr->extra->mp_nexthop_len != 16
+-	  || IN6_IS_ADDR_LINKLOCAL (&ri->attr->extra->mp_nexthop_global))
++      if (ri->attr->extra->mp_nexthop_len == 16
++	  && IN6_IS_ADDR_LINKLOCAL (&ri->attr->extra->mp_nexthop_global))
+ 	return -1;
+ 
+       p->family = AF_INET6;
