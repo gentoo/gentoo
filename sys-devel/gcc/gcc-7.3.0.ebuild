@@ -3,11 +3,8 @@
 
 EAPI="5"
 
-PATCH_VER="1.1"
+PATCH_VER="1.0"
 #UCLIBC_VER="1.0"
-
-PATCH_GCC_VER="7.2.0"
-PIE_GCC_VER="7.2.0"
 
 inherit toolchain
 
@@ -24,7 +21,5 @@ if [[ ${CATEGORY} != cross-* ]] ; then
 fi
 
 src_prepare() {
-	EPATCH_EXCLUDE="95_all_static_override_pie.patch
-			96_all_powerpc_pie.patch"
 	toolchain_src_prepare
 }
