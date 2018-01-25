@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrice Clement <monsieurp@gentoo.org> (26 Jan 2018)
+# Has different symbols. Known to cause issues with i3bar/swaybar.
+media-fonts/fontawesome:0/5
+
 # Michael Palimaka <kensington@gentoo.org> (25 Jan 2018)
 # Requires dead Qt 4. Dead upstream.
 # Masked for removal in 30 days. Bug #644532.
