@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads"
 inherit autotools git-r3 python-any-r1
 
-EGIT_REPO_URI="git://repo.or.cz/elinks.git"
+EGIT_REPO_URI="https://github.com/rkd77/felinks"
 
 MY_P="${P/_/}"
 DESCRIPTION="Advanced and well-established text-mode web browser"
@@ -53,12 +53,6 @@ src_unpack() {
 src_prepare() {
 	default
 
-	# Regenerate acinclude.m4 - based on autogen.sh.
-	cat > acinclude.m4 <<- _EOF || die
-		dnl Automatically generated from config/m4/ files.
-		dnl Do not modify!
-	_EOF
-	cat config/m4/*.m4 >> acinclude.m4 || die
 	sed -i -e 's/-Werror//' configure* || die
 
 	eautoreconf
