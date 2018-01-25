@@ -9,7 +9,7 @@ USE_RUBY="ruby23"
 
 PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
 
-inherit eutils multilib toolchain-funcs python-single-r1 ruby-ng
+inherit toolchain-funcs python-single-r1 ruby-ng
 
 if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/klayoutmatthias/${PN}.git"
