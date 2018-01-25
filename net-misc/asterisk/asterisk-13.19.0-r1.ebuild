@@ -258,7 +258,7 @@ src_install() {
 
 	# install the upgrade documentation
 	#
-	dodoc README UPGRADE* BUGS CREDITS
+	dodoc UPGRADE* BUGS CREDITS
 
 	# install extra documentation
 	#
