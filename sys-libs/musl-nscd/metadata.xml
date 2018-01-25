@@ -5,6 +5,10 @@
 		<email>lejonet@gentoo.org</email>
 		<name>Daniel Kuehn</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>blueness@gentoo.org</email>
+		<name>Anthony G. Basile</name>
+	</maintainer>
 	<use>
 		<flag name="minimal">Only installs the header files</flag>
 	</use>
