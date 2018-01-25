@@ -18,6 +18,9 @@
 		a USB connection.
 	</longdescription>
 	<use>
+		<flag name="drm" restrict="&gt;=app-misc/ddcutil-0.8.5">
+			Use <pkg>x11-libs/libdrm</pkg> for more verbose diagnostics.
+		</flag>
 		<flag name="user-permissions">
 			Adds a udev rules to allow non-root users in the i2c group to
 			access the /dev/i2c-* devices. If usb-monitor is selected, users
