@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ RUBY_S="cucumber-ruby-core-${PV}"
 LICENSE="Ruby"
 
 KEYWORDS="~amd64 ~ia64 ~ppc"
-SLOT="3.0"
+SLOT="3.1"
 IUSE="test"
 
 ruby_add_bdepend "
