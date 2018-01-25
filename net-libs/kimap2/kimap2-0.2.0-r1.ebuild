@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,7 +16,7 @@ DEPEND="
 	$(add_frameworks_dep kcodecs)
 	$(add_frameworks_dep kcoreaddons)
 	$(add_kdeapps_dep kmime)
-	$(add_qt_dep qtnetwork)
+	$(add_qt_dep qtnetwork 'ssl')
 	dev-libs/cyrus-sasl:2
 "
 RDEPEND="${DEPEND}"
