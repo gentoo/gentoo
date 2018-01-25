@@ -149,7 +149,7 @@ app-admin/whowatch 1.8.5: Displays information about users currently logged on i
 app-admin/xstow 1.0.1: replacement for GNU stow with extensions
 app-admin/xtail 2.1-r1: Tail multiple logfiles at once, even if rotated
 app-admin/yaala 0.7.3-r1: Yet Another Log Analyzer
-app-antivirus/clamav 0.98.7 0.99 0.99.2-r1: Clam Anti-Virus Scanner
+app-antivirus/clamav 0.99.2-r1: Clam Anti-Virus Scanner
 app-antivirus/clamav-unofficial-sigs 3.7.2: Downloads and installs third-party clamav signatures
 app-arch/advancecomp 1.15: Recompress ZIP, PNG and MNG, considerably improving compression
 app-arch/afio 2.5 2.5.1-r1: Afio creates cpio-format archives.
@@ -8376,7 +8376,7 @@ net-dns/bind-tools 9.11.1_p3 9.11.2_p1: bind tools: dig, nslookup, host, nsupdat
 net-dns/c-ares 1.13.0: C library that resolves names asynchronously
 net-dns/ddclient 3.8.1-r5: Perl updater client for dynamic DNS services
 net-dns/djbdns 1.05-r32: Collection of DNS client/server software
-net-dns/dnsmasq 2.76 2.76-r1 2.77 2.77-r1 2.78: Small forwarding DNS server
+net-dns/dnsmasq 2.78: Small forwarding DNS server
 net-dns/dnssec-root 20150403: The DNSSEC root key(s)
 net-dns/dnstop 20140915: Displays various tables of DNS traffic on your network
 net-dns/dnswalk 2.0.2: dnswalk is a DNS database debugger
