@@ -18,7 +18,7 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage"
 LICENSE="GPL-2"
 KEYWORDS=""
 SLOT="0"
-IUSE="build doc epydoc +ipc +native-extensions selinux xattr"
+IUSE="build doc epydoc +ipc +native-extensions +rsync-verify selinux xattr"
 
 DEPEND="!build? ( $(python_gen_impl_dep 'ssl(+)') )
 	>=app-arch/tar-1.27
@@ -33,6 +33,8 @@ DEPEND="!build? ( $(python_gen_impl_dep 'ssl(+)') )
 # for now, don't pull in xattr deps for other kernels.
 # For whirlpool hash, require python[ssl] (bug #425046).
 # For compgen, require bash[readline] (bug #445576).
+# app-portage/gemato goes without PYTHON_USEDEP since we're calling
+# the executable.
 RDEPEND="
 	>=app-arch/tar-1.27
 	dev-lang/python-exec:2
@@ -48,6 +50,10 @@ RDEPEND="
 	elibc_musl? ( >=sys-apps/sandbox-2.2 )
 	elibc_uclibc? ( >=sys-apps/sandbox-2.2 )
 	>=app-misc/pax-utils-0.1.17
+	rsync-verify? (
+		>=app-portage/gemato-10
+		app-crypt/gentoo-keys
+	)
 	selinux? ( >=sys-libs/libselinux-2.0.94[python,${PYTHON_USEDEP}] )
 	xattr? ( kernel_linux? (
 		>=sys-apps/install-xattr-0.3
@@ -102,6 +108,11 @@ python_prepare_all() {
 		einfo "Adding FEATURES=xattr to make.globals ..."
 		echo -e '\nFEATURES="${FEATURES} xattr"' >> cnf/make.globals \
 			|| die "failed to append to make.globals"
+	fi
+
+	if ! use rsync-verify; then
+		sed -e '/^sync-rsync-verify-metamanifest/s|yes|no|' \
+			-i cnf/repos.conf || die "sed failed"
 	fi
 
 	if [[ -n ${EPREFIX} ]] ; then
