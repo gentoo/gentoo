@@ -67,6 +67,11 @@ src_test() {
 	virtx emake check
 }
 
+src_install() {
+	default
+	find "${D}" -name '*.la' -delete || die
+}
+
 pkg_postinst() {
 	xdg_desktop_database_update
 	gnome2_icon_cache_update
