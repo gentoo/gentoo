@@ -39,6 +39,9 @@ src_prepare() {
 	sed -i -e '/^INSTALLS/s/debianmenu //' luckybackup.pro \
 		|| die "sed installs failed"
 
+	# bogus dependency - bug #645732
+	sed -i -e '/QT += network/s/^/#/' luckybackup.pro || die
+
 	# remove text version - cannot remote HTML version
 	# as it's used within the application
 	rm license/gpl.txt || die "rm failed"
