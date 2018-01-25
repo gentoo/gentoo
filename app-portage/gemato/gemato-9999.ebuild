@@ -16,7 +16,7 @@ EGIT_REPO_URI="https://github.com/mgorny/gemato.git"
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="+blake2 bzip2 +gpg lzma +portage-postsync sha3 test"
+IUSE="+blake2 bzip2 +gpg lzma sha3 test"
 
 MODULE_RDEPEND="
 	blake2? ( $(python_gen_cond_dep 'dev-python/pyblake2[${PYTHON_USEDEP}]' python{2_7,3_4,3_5} pypy{,3}) )
@@ -26,20 +26,10 @@ MODULE_RDEPEND="
 	sha3? ( $(python_gen_cond_dep 'dev-python/pysha3[${PYTHON_USEDEP}]' python{2_7,3_4,3_5} pypy{,3}) )"
 
 RDEPEND="${MODULE_RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	portage-postsync? ( app-crypt/gentoo-keys )"
+	dev-python/setuptools[${PYTHON_USEDEP}]"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( ${MODULE_RDEPEND} )"
 
 python_test() {
 	esetup.py test
-}
-
-python_install_all() {
-	distutils-r1_python_install_all
-
-	if use portage-postsync; then
-		exeinto /etc/portage/repo.postsync.d
-		doexe utils/repo.postsync.d/00gemato
-	fi
 }
