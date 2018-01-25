@@ -4,7 +4,7 @@
 EAPI=6
 
 RUBY_OPTIONAL=no
-USE_RUBY="ruby22"
+USE_RUBY="ruby23"
 # note: define maximally ONE implementation here
 
 PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
@@ -30,7 +30,7 @@ RDEPEND="
 	dev-qt/designer:5
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
-	dev-qt/qtmultimedia:5
+	dev-qt/qtmultimedia:5[widgets]
 	dev-qt/qtnetwork:5
 	dev-qt/qtprintsupport:5
 	dev-qt/qtsql:5
@@ -43,6 +43,11 @@ RDEPEND="
 	$(ruby_implementations_depend)
 "
 DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}/${P}-qt58.patch"
+	"${FILESDIR}/${P}-qt59.patch"
+)
 
 pkg_setup() {
 	python-single-r1_pkg_setup
