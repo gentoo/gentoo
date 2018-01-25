@@ -28,9 +28,6 @@ media-libs/mesa egl wayland
 # Required by kde-apps/kdenlive
 >=media-libs/mlt-0.9.8-r2 ffmpeg kdenlive melt
 
-# Required by app-office/libreoffice
-media-libs/phonon designer
-
 # Required by kde-plasma/plasma-pa
 media-sound/pulseaudio gnome
 
