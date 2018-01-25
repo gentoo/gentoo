@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=>=dev-qt/qtcore-5.9.1:5 >=dev-qt/qtgui-5.9.1:5 >=dev-qt/qtsvg-5.9.1:5 >=dev-qt/qtwidgets-5.9.1:5 dev-util/radare2
+DESCRIPTION=A Qt and C++ GUI for radare2 reverse engineering framework
+EAPI=6
+HOMEPAGE=http://www.radare.org
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=>=dev-qt/qtcore-5.9.1:5 >=dev-qt/qtgui-5.9.1:5 >=dev-qt/qtsvg-5.9.1:5 >=dev-qt/qtwidgets-5.9.1:5 dev-util/radare2
+SLOT=0
+SRC_URI=https://github.com/radareorg/cutter/archive/v1.0.tar.gz -> cutter-1.0.tar.gz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_md5_=e3de6061f3cb8a4f50096652fd1f07ea
