@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ IUSE="imagemagick fastcgi ldap markdown passenger"
 
 ruby_add_rdepend "
 	dev-ruby/actionpack-action_caching
-	dev-ruby/actionpack-xml_parser:*
+	dev-ruby/actionpack-xml_parser:0
 	>=dev-ruby/builder-3.2.2:3.2
 	>=dev-ruby/coderay-1.1.0
 	dev-ruby/i18n:0.7
@@ -74,7 +74,7 @@ all_ruby_prepare() {
 	# remove ldap staff module if disabled to avoid #413779
 	use ldap || rm app/models/auth_source_ldap.rb || die
 
-	eapply "${FILESDIR}/${PN}-3.3.4_requires.patch"
+	eapply "${FILESDIR}/${PN}-3.4.3_requires.patch"
 }
 
 all_ruby_install() {
