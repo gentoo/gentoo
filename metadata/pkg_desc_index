@@ -1361,7 +1361,7 @@ app-text/lesspipe 1.83: a preprocessor for less
 app-text/libabw 0.1.1: Library parsing abiword documents
 app-text/libebook 0.1.2-r1: Library parsing various ebook formats
 app-text/libetonyek 0.1.7: Library parsing Apple Keynote presentations
-app-text/libexttextcat 3.4.4 3.4.5: Library implementing N-gram-based text categorization
+app-text/libexttextcat 3.4.5: Library implementing N-gram-based text categorization
 app-text/libgepub 0.4: GObject based library for handling and rendering epub documents
 app-text/libgxps 0.2.5 0.3.0: Library for handling and rendering XPS documents
 app-text/liblangtag 0.6.2: An interface library to access tags for identifying languages

@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=>=dev-qt/qtcore-5.7.1:5 >=dev-qt/qtserialport-5.7.1:5 gui? ( >=dev-qt/qtcharts-5.7.1:5 >=dev-qt/qtgui-5.7.1:5 >=dev-qt/qtwidgets-5.7.1:5 ) >=kde-frameworks/extra-cmake-modules-5.40.0 doc? ( app-doc/doxygen[dot] ) test? ( >=dev-qt/qttest-5.7.1:5 ) sys-devel/make >=dev-util/cmake-3.7.2
+DEPEND=>=dev-qt/qtcore-5.7.1:5 >=dev-qt/qtserialport-5.7.1:5 gui? ( >=dev-qt/qtcharts-5.7.1:5 >=dev-qt/qtgui-5.7.1:5 >=dev-qt/qtwidgets-5.7.1:5 ) >=kde-frameworks/extra-cmake-modules-5.40.0 >=dev-qt/linguist-tools-5.7.1:5 doc? ( app-doc/doxygen[dot] ) test? ( >=dev-qt/qttest-5.7.1:5 ) sys-devel/make >=dev-util/cmake-3.7.2
 DESCRIPTION=API to manage the serial connection between the computer and 3D Printers
 EAPI=6
 HOMEPAGE=https://atelier.kde.org/
@@ -10,4 +10,4 @@ RDEPEND=>=dev-qt/qtcore-5.7.1:5 >=dev-qt/qtserialport-5.7.1:5 gui? ( >=dev-qt/qt
 SLOT=0
 SRC_URI=mirror://kde/stable/atcore/1.0.0/atcore-1.0.0.tar.xz
 _eclasses_=cmake-utils	202a2becc86cb78ba14baad148d06759	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e7258392d5eda499c1cfa94db650b61	flag-o-matic	02908f00f002f0f07c5b74783d778325	kde5-functions	25992fae542d6ffb06a9da87653236e7	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	versionator	ce21313503c41896ebcd7d58b0607e37	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=902674d04d0d743c95a76d1a54402762
+_md5_=0421301772e3d1e0621937ae8a9493b2
