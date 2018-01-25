@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare prerm pretend
+DEPEND=dev-libs/popt >=sys-libs/efivar-32-r1 >=sys-libs/libsmbios-2.3.2 sys-boot/gnu-efi
+DESCRIPTION=Tools for using the ESRT and UpdateCapsule() to apply firmware updates
+EAPI=6
+HOMEPAGE=https://github.com/rhinstaller/fwupdate
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=dev-libs/popt >=sys-libs/efivar-32-r1 >=sys-libs/libsmbios-2.3.2
+SLOT=0
+SRC_URI=https://github.com/rhinstaller/fwupdate/archive/10.tar.gz -> fwupdate-10.tar.gz
+_eclasses_=mount-boot	1e82d96b7a7dcb483b412497a90bb646	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_md5_=0aef7863bf286d428f5f7f22f0e1f2cf
