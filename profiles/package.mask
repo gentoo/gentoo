@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (25 Jan 2018)
+# Requires dead Qt 4. Dead upstream.
+# Masked for removal in 30 days. Bug #644532.
+media-video/qx11grab
+
 # Hans de Graaff <graaff@gentoo.org> (24 Jan 2018)
 # Remove packages that are ruby22-only, and either cannot
 # be updated to ruby23, or are in old, obsolete, slots.
