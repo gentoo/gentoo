@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -92,7 +92,10 @@ src_unpack() {
 		S="${WORKDIR}/Contents/Home"
 		mkdir -p "${T}"/dmgmount || die
 		hdiutil attach "${DISTDIR}/${A}" -mountpoint "${T}"/dmgmount || die
-		xar -Oxf "${T}"/dmgmount/JDK\ ${PV}.pkg jdk${PV//.}.pkg/Payload | zcat | cpio -idv || die
+		( cd "${T}" &&
+		  xar -xf "${T}/dmgmount/JDK ${PV}.pkg" \
+		  jdk${PV//.}.pkg/Payload ) || die
+		zcat "${T}"/jdk${PV//.}.pkg/Payload | cpio -idv || die
 		hdiutil detach "${T}"/dmgmount || die
 	else
 		S="${WORKDIR}/jdk-${PV}"
