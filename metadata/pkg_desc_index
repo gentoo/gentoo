@@ -7931,7 +7931,7 @@ media-sound/jack-rack 1.4.7-r1 1.4.8_rc1: JACK Rack is an effects rack for the J
 media-sound/jamin 0.95.0-r2: JAMin is the JACK Audio Connection Kit (JACK) Audio Mastering interface
 media-sound/jtagger 1.0-r1: Powerful MP3 tag and filename editor
 media-sound/kaudiocreator 1.3_p20170806: CD ripper and audio encoder frontend based on KDE Frameworks
-media-sound/kid3 3.5.0: Simple tag editor based on Qt
+media-sound/kid3 3.5.1: Simple tag editor based on Qt
 media-sound/kmetronome 1.0.0: MIDI based metronome using ALSA sequencer
 media-sound/lame 3.99.5-r1 3.100: LAME Ain't an MP3 Encoder
 media-sound/lash 0.5.4-r3: LASH Audio Session Handler
@@ -8136,7 +8136,7 @@ media-video/gxine 0.5.907-r1: GTK+ Front-End for libxine
 media-video/hasciicam 1.1.1: a webcam software displaying ascii art using aalib
 media-video/isight-firmware-tools 1.6-r1: Extract, load or export firmware for the iSight webcams
 media-video/jubler 4.6.1-r3: Java subtitle editor
-media-video/kaffeine 2.0.13: Media player with digital TV support by KDE
+media-video/kaffeine 2.0.14: Media player with digital TV support by KDE
 media-video/kamerka 0.12_p20161002-r1: Simple photo taking application with fancy animated interface
 media-video/kino 1.3.4 1.3.4-r1: Kino is a non-linear DV editor for GNU/Linux
 media-video/kmplayer 0.12.0b-r1: Video player plugin for Konqueror and basic MPlayer frontend
