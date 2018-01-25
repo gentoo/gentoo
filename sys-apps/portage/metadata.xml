@@ -20,6 +20,10 @@
         This should only be temporarily disabled for some bootstrapping
         operations.  Cross-compilation is not supported.
     </flag>
+    <flag name="rsync-verify">
+        Enable full-tree cryptographic verification of Gentoo repository
+        rsync checkouts using <pkg>app-portage/gemato</pkg>.
+    </flag>
     <flag name="xattr">Preserve extended attributes (filesystem-stored metadata)
         when installing files. Usually only required for hardened systems.
     </flag>
