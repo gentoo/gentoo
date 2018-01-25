@@ -1,12 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 PLOCALES="de en fr it"
 PLOCALE_BACKUP="en"
 
-inherit eutils l10n toolchain-funcs user
+inherit l10n toolchain-funcs user
 
 DESCRIPTION="IRC fileserver using DCC"
 HOMEPAGE="http://iroffer.dinoex.net/"
@@ -31,8 +31,8 @@ RDEPEND="chroot? ( dev-libs/nss )
 	)
 	geoip? ( dev-libs/geoip )
 	gnutls? ( net-libs/gnutls )
-	ruby? ( dev-lang/ruby )
-	ssl? ( !gnutls? ( dev-libs/openssl ) )"
+	ruby? ( dev-lang/ruby:* )
+	ssl? ( !gnutls? ( dev-libs/openssl:0= ) )"
 
 DEPEND="${RDEPEND}"
 
@@ -42,9 +42,11 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-3.29-config.patch"\
-	       "${FILESDIR}/${PN}-Werror.patch"
-	epatch_user
+	eapply "${FILESDIR}/${PN}-3.29-config.patch"
+	eapply -p0 "${FILESDIR}/${PN}-Werror.patch"
+
+	eapply_user
+
 	l10n_find_plocales_changes "" 'help-admin-' '.txt'
 }
 
@@ -82,7 +84,7 @@ myloc() {
 	emake DESTDIR="${D}" install-${1}
 
 	dodoc help-admin-${1}.txt
-	use http && dohtml doc/INSTALL-linux-${1}.html
+	use http && dodoc doc/INSTALL-linux-${1}.html
 
 	insinto /etc/${PN}
 	case ${1} in
