@@ -47,13 +47,14 @@ src_install() {
 
 	einfo "Installing Erlang modules to ${targetdir}"
 	insinto "${targetdir}"
-	doins -r deps/rabbit/ebin deps/rabbit/escript deps/rabbit/include plugins
+	doins -r deps/rabbit/ebin deps/rabbit/escript deps/rabbit/include deps/rabbit/priv/schema plugins
 
 	einfo "Installing server scripts to /usr/sbin"
-	for script in rabbitmq-env rabbitmq-server rabbitmqctl rabbitmq-defaults rabbitmq-plugins; do
-		exeinto /usr/libexec/rabbitmq
-		doexe deps/rabbit/scripts/${script}
-		newsbin "${FILESDIR}"/rabbitmq-script-wrapper ${script}
+	rm -v deps/rabbit/scripts/*.bat
+	exeinto /usr/libexec/rabbitmq
+	for script in deps/rabbit/scripts/*; do
+		doexe ${script}
+		newsbin "${FILESDIR}"/rabbitmq-script-wrapper $(basename $script)
 	done
 
 	# install the init script
