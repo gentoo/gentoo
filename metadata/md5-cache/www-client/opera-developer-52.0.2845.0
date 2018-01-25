@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm preinst prepare setup unpack
+DEPEND=>=sys-apps/sed-4
+DESCRIPTION=A fast and secure web browser
+EAPI=5
+HOMEPAGE=http://www.opera.com/
+IUSE=+l10n_be +l10n_bg +l10n_bn +l10n_ca +l10n_cs +l10n_da +l10n_de +l10n_el +l10n_en-GB +l10n_es +l10n_es-419 +l10n_fi +l10n_fil +l10n_fr +l10n_fr-CA +l10n_hi +l10n_hr +l10n_hu +l10n_id +l10n_it +l10n_ja +l10n_ko +l10n_lt +l10n_lv +l10n_ms +l10n_nb +l10n_nl +l10n_pl +l10n_pt-BR +l10n_pt-PT +l10n_ro +l10n_ru +l10n_sk +l10n_sr +l10n_sv +l10n_sw +l10n_ta +l10n_te +l10n_th +l10n_tr +l10n_uk +l10n_vi +l10n_zh-CN +l10n_zh-TW
+KEYWORDS=~amd64
+LICENSE=OPERA-2014
+RDEPEND=dev-libs/expat dev-libs/glib:2 dev-libs/nspr dev-libs/nss gnome-base/gconf:2 media-libs/alsa-lib media-libs/fontconfig media-libs/freetype net-misc/curl net-print/cups sys-apps/dbus x11-libs/cairo x11-libs/gdk-pixbuf x11-libs/gtk+:3 x11-libs/libX11 x11-libs/libXScrnSaver x11-libs/libXcomposite x11-libs/libXcursor x11-libs/libXdamage x11-libs/libXext x11-libs/libXfixes x11-libs/libXi x11-libs/libXrandr x11-libs/libXrender x11-libs/libXtst x11-libs/libnotify x11-libs/pango[X]
+SLOT=0
+SRC_URI=amd64? ( http://download1.operacdn.com/pub/opera-developer/52.0.2845.0/linux/opera-developer_52.0.2845.0_amd64.deb http://download2.operacdn.com/pub/opera-developer/52.0.2845.0/linux/opera-developer_52.0.2845.0_amd64.deb http://download3.operacdn.com/pub/opera-developer/52.0.2845.0/linux/opera-developer_52.0.2845.0_amd64.deb http://download4.operacdn.com/pub/opera-developer/52.0.2845.0/linux/opera-developer_52.0.2845.0_amd64.deb )
+_eclasses_=chromium-2	bb47c729513f3f0fde655928a9904ab0	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e7258392d5eda499c1cfa94db650b61	gnome2-utils	4d211d7614f303710fca59db6ec12c88	linux-info	ca370deef9d44125d829f2eb6ebc83e0	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	unpacker	f40f7b4bd5aa88c2a4ba7b0d1e0ded70	versionator	ce21313503c41896ebcd7d58b0607e37	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=fa0a012555bec1bb5e09a23f4458261d
