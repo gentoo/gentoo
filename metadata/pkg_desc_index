@@ -9925,7 +9925,7 @@ sys-cluster/nova 15.1.0 16.0.4: Cloud computing fabric controller (main part of 
 sys-cluster/openais 1.1.4-r1: Open Application Interface Specification cluster framework
 sys-cluster/openmpi 1.4.3 2.0.2: A high-performance message passing library (MPI)
 sys-cluster/osc-mpiexec 0.83: replacement for mpirun, integrates MPI with PBS
-sys-cluster/pacemaker 1.1.12-r2 1.1.16: Pacemaker CRM
+sys-cluster/pacemaker 1.1.16: Pacemaker CRM
 sys-cluster/ploop 1.13.2: openvz tool and a library to control ploop block devices
 sys-cluster/polysh 0.4-r1: Aggregate several remote shells into one
 sys-cluster/resource-agents 3.9.6: Resources pack for Heartbeat / Pacemaker
