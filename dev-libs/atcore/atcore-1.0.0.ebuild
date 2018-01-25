@@ -25,6 +25,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	$(add_frameworks_dep extra-cmake-modules)
+	$(add_qt_dep linguist-tools)
 	doc? ( app-doc/doxygen[dot] )
 	test? ( $(add_qt_dep qttest) )
 "
