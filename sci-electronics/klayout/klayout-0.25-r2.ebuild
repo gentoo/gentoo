@@ -4,7 +4,7 @@
 EAPI=6
 
 RUBY_OPTIONAL=no
-USE_RUBY="ruby22"
+USE_RUBY="ruby23"
 # note: define maximally ONE implementation here
 
 PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
@@ -43,6 +43,11 @@ RDEPEND="
 	$(ruby_implementations_depend)
 "
 DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}/${P}-qt58.patch"
+	"${FILESDIR}/${P}-qt59.patch"
+)
 
 pkg_setup() {
 	python-single-r1_pkg_setup
