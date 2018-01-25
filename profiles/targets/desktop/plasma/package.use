@@ -1,5 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+# Required by app-office/libreoffice[kde]
+>=app-office/libreoffice-6.1 gtk
 
 # Required by kde-apps/okteta
 dev-qt/qtscript:5 scripttools
@@ -24,9 +27,6 @@ media-libs/mesa egl wayland
 
 # Required by kde-apps/kdenlive
 >=media-libs/mlt-0.9.8-r2 ffmpeg kdenlive melt
-
-# Required by app-office/libreoffice
-media-libs/phonon designer
 
 # Required by kde-plasma/plasma-pa
 media-sound/pulseaudio gnome
