@@ -19,7 +19,7 @@ SRC_URI="https://www.freedesktop.org/software/${MY_PN}/releases/${MY_P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0/18"
-KEYWORDS="~alpha amd64 ~arm ~mips ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha amd64 ~arm ~mips ~ppc ~ppc64 x86"
 IUSE="cron command-not-found elogind +introspection entropy systemd test vala"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
