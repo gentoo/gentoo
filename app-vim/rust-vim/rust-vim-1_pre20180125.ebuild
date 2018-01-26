@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit vim-plugin vcs-snapshot
 
 MY_PN="${PN/-/.}"
-REF="eed97e75117faaf210cb6103cf39a797fe21bfbe"
+REF="8e75da9834abb22f8d7ece3f4ca4324a14fa18a6"
 
 DESCRIPTION="Vim configuration for Rust"
 HOMEPAGE="http://www.rust-lang.org/"
