@@ -3,10 +3,10 @@
 
 EAPI="6"
 
-PYTHON_COMPAT=( python3_{4,5} )
+PYTHON_COMPAT=( python3_{4,5,6} )
 PYTHON_REQ_USE="ncurses?"
 
-inherit distutils-r1 gnome2-utils xdg-utils
+inherit desktop distutils-r1 gnome2-utils xdg-utils
 
 MY_P="Electrum-${PV}"
 DESCRIPTION="User friendly Bitcoin client"
@@ -46,7 +46,7 @@ REQUIRED_USE="
 	vkb? ( qt5 )
 "
 
-RDEPEND="
+RDEPEND="${PYTHON_DEPS}
 	dev-python/ecdsa[${PYTHON_USEDEP}]
 	dev-python/jsonrpclib[${PYTHON_USEDEP}]
 	dev-python/pbkdf2[${PYTHON_USEDEP}]
