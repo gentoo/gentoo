@@ -86,6 +86,10 @@ src_compile() {
 
 	mytoolkit="gtk"
 
+	# Needed for fluent audio (even on i5 hardware)
+	export CFLAGS="${CFLAGS} -O3"
+	export CXXFLAGS="${CXXFLAGS} -O3"
+
 	if use icarus; then
 		cd "${S}/icarus" || die
 		emake \
