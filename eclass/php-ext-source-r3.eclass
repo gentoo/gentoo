@@ -84,6 +84,22 @@ esac
 # @CODE@
 : ${PHP_INI_NAME:=${PHP_EXT_NAME}}
 
+# @ECLASS-VARIABLE: PHP_EXT_NEEDED_USE
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# A list of USE flags to append to each PHP target selected
+# as a valid USE-dependency string.  The value should be valid
+# for all targets so USE defaults may be necessary.
+# Example:
+# @CODE
+# PHP_EXT_NEEDED_USE="mysql?,pdo,pcre(+)"
+# @CODE
+#
+# The PHP dependencies will result in:
+# @CODE
+# php_targets_php7-0? ( dev-lang/php:7.0[mysql?,pdo,pcre(+)] )
+# @CODE
+
 
 # Make sure at least one target is installed. First, start a USE
 # conditional like "php?", but only when PHP_EXT_OPTIONAL_USE is
@@ -96,6 +112,9 @@ for _php_target in ${USE_PHP}; do
 	REQUIRED_USE+="php_targets_${_php_target} "
 	_php_slot=${_php_target/php}
 	_php_slot=${_php_slot/-/.}
+	if [[ ${PHP_EXT_NEEDED_USE} ]] ; then
+		_php_slot+=[${PHP_EXT_NEEDED_USE}]
+	fi
 	PHPDEPEND+=" php_targets_${_php_target}? ( dev-lang/php:${_php_slot} )"
 done
 
