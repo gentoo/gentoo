@@ -40,6 +40,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.99.2-tinfo.patch
 	"${FILESDIR}"/${PN}-0.99.2-bytecode_api.patch
 	"${FILESDIR}"/${PN}-0.99.2-pcre2-compile-erroffset.patch
+	"${FILESDIR}"/${PN}-0.99.3-fix-fd-leaks-in-cli_scanscript.patch
 )
 
 pkg_setup() {
