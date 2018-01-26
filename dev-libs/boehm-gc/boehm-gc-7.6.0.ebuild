@@ -33,11 +33,6 @@ multilib_src_configure() {
 	ECONF_SOURCE=${S} econf "${config[@]}"
 }
 
-multilib_src_compile() {
-	use sparc && emake src/sparc_mach_dep.lo
-	default
-}
-
 multilib_src_install_all() {
 	local HTML_DOCS=( doc/*.html )
 	einstalldocs
