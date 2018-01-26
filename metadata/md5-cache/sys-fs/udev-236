@@ -4,7 +4,7 @@ DESCRIPTION=Linux dynamic and persistent device naming support (aka userspace de
 EAPI=6
 HOMEPAGE=https://www.freedesktop.org/wiki/Software/systemd
 IUSE=acl +kmod selinux abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh sparc x86
+KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh sparc x86
 LICENSE=LGPL-2.1 MIT GPL-2
 PDEPEND=>=sys-apps/hwids-20140304[udev] >=sys-fs/udev-init-scripts-26
 RDEPEND=>=sys-apps/util-linux-2.30[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] sys-libs/libcap[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] acl? ( sys-apps/acl ) kmod? ( >=sys-apps/kmod-16 ) selinux? ( >=sys-libs/libselinux-2.1.9 ) !<sys-libs/glibc-2.11 !sys-apps/gentoo-systemd-integration !sys-apps/systemd abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20130224-r7 !app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] ) !<sys-fs/lvm2-2.02.103 !<sec-policy/selinux-base-2.20120725-r10
@@ -12,4 +12,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/systemd/systemd/archive/v236.tar.gz -> systemd-236.tar.gz
 _eclasses_=bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	estack	43ddf5aaffa7a8d0482df54d25a66a1f	linux-info	ca370deef9d44125d829f2eb6ebc83e0	meson	f8e09b2b2ac1e9bb0bd374b6ad77a90d	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	8ffb5e2112a70fef5f37fcacad308726	multilib-minimal	9139c3a57e077cb8e0d0f73ceb080b89	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	udev	d91cac2c73b94629cad2daea66e0d182	user	8bc2845510e2109af75e3eeac607ec81	versionator	ce21313503c41896ebcd7d58b0607e37
-_md5_=1070cfeada588ee57c2afbff003ceef3
+_md5_=bf7e6bcd37f6753319e3cb0627cdf78e
