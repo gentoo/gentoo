@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: php-ext-source-r3.eclass
@@ -72,6 +72,17 @@ esac
 # called PHPSAPILIST. The default includes every SAPI currently used in
 # the tree.
 [[ -z "${PHP_EXT_SAPIS}" ]] && PHP_EXT_SAPIS="apache2 cli cgi fpm embed phpdbg"
+
+# @ECLASS-VARIABLE: PHP_INI_NAME
+# @DESCRIPTION
+# An optional file name of the saved ini file minis the ini extension
+# This allows ordering of extensions such that one is loaded before
+# or after another.  Defaults to the PHP_EXT_NAME.
+# Example (produces 40-foo.ini file):
+# @CODE@
+# PHP_INI_NAME="40-foo"
+# @CODE@
+: ${PHP_INI_NAME:=${PHP_EXT_NAME}}
 
 
 # Make sure at least one target is installed. First, start a USE
@@ -295,7 +306,7 @@ php_slot_ini_files() {
 	local x
 	for x in ${PHP_EXT_SAPIS} ; do
 		if [[ -f "${EPREFIX}/etc/php/${x}-${1}/php.ini" ]] ; then
-			slot_ini_files+=" etc/php/${x}-${1}/ext/${PHP_EXT_NAME}.ini"
+			slot_ini_files+=" etc/php/${x}-${1}/ext/${PHP_INI_NAME}.ini"
 		fi
 	done
 
@@ -324,7 +335,7 @@ php-ext-source-r3_createinifiles() {
 				einfo "Added contents of ${FILESDIR}/${PHP_EXT_INIFILE}" \
 					  "to ${file}"
 			fi
-			inidir="${file/${PHP_EXT_NAME}.ini/}"
+			inidir="${file/${PHP_INI_NAME}.ini/}"
 			inidir="${inidir/ext/ext-active}"
 			dodir "/${inidir}"
 			dosym "/${file}" "/${file/ext/ext-active}"
