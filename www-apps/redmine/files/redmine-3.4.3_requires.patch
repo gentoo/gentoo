@@ -1,0 +1,73 @@
+diff -Nuar redmine-3.4.3-orig/app/controllers/application_controller.rb redmine-3.4.3/app/controllers/application_controller.rb
+--- redmine-3.4.3-orig/app/controllers/application_controller.rb	2017-12-11 20:55:04.942299001 +0500
++++ redmine-3.4.3/app/controllers/application_controller.rb	2017-12-11 20:55:17.285298402 +0500
+@@ -15,6 +15,7 @@
+ # along with this program; if not, write to the Free Software
+ # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ 
++require 'request_store'
+ require 'uri'
+ require 'cgi'
+ 
+diff -Nuar redmine-3.4.3-orig/app/controllers/welcome_controller.rb redmine-3.4.3/app/controllers/welcome_controller.rb
+--- redmine-3.4.3-orig/app/controllers/welcome_controller.rb	2017-12-11 20:55:04.942299001 +0500
++++ redmine-3.4.3/app/controllers/welcome_controller.rb	2017-12-11 20:55:17.286298402 +0500
+@@ -15,6 +15,9 @@
+ # along with this program; if not, write to the Free Software
+ # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ 
++require 'action_controller'
++require 'action_controller/action_caching'
++
+ class WelcomeController < ApplicationController
+   self.main_menu = false
+ 
+diff -Nuar redmine-3.4.3-orig/app/models/custom_field.rb redmine-3.4.3/app/models/custom_field.rb
+--- redmine-3.4.3-orig/app/models/custom_field.rb	2017-12-11 20:55:04.926299002 +0500
++++ redmine-3.4.3/app/models/custom_field.rb	2017-12-11 20:55:17.286298402 +0500
+@@ -15,6 +15,8 @@
+ # along with this program; if not, write to the Free Software
+ # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ 
++require 'protected_attributes'
++
+ class CustomField < ActiveRecord::Base
+   include Redmine::SafeAttributes
+   include Redmine::SubclassFactory
+diff -Nuar redmine-3.4.3-orig/app/models/mailer.rb redmine-3.4.3/app/models/mailer.rb
+--- redmine-3.4.3-orig/app/models/mailer.rb	2017-12-11 20:55:04.926299002 +0500
++++ redmine-3.4.3/app/models/mailer.rb	2017-12-11 20:55:17.286298402 +0500
+@@ -16,6 +16,7 @@
+ # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ 
+ require 'roadie'
++require 'roadie-rails'
+ 
+ class Mailer < ActionMailer::Base
+   layout 'mailer'
+diff -Nuar redmine-3.4.3-orig/bin/rails redmine-3.4.3/bin/rails
+--- redmine-3.4.3-orig/bin/rails	2017-12-11 20:55:04.986298999 +0500
++++ redmine-3.4.3/bin/rails	2017-12-11 20:58:40.247288555 +0500
+@@ -1,4 +1,6 @@
+ #!/usr/bin/env ruby
+ APP_PATH = File.expand_path('../../config/application',  __FILE__)
+ require_relative '../config/boot'
++
++gem 'rails', '~> 4.2'
+ require 'rails/commands'
+diff -Nuar redmine-3.4.3-orig/config/application.rb redmine-3.4.3/config/application.rb
+--- redmine-3.4.3-orig/config/application.rb	2017-12-11 20:55:04.971298999 +0500
++++ redmine-3.4.3/config/application.rb	2017-12-11 20:58:20.477289514 +0500
+@@ -1,8 +1,11 @@
+ require File.expand_path('../boot', __FILE__)
+ 
++gem 'rails', '~> 4.2'
++gem 'actionpack-xml_parser', '~> 1.0'
++
+ require 'rails/all'
++require 'action_dispatch/xml_params_parser'
+ 
+-Bundler.require(*Rails.groups)
+ 
+ module RedmineApp
+   class Application < Rails::Application

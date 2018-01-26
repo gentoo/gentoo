@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,8 +7,8 @@ USE_RUBY="ruby22 ruby23"
 inherit eutils depend.apache ruby-ng user
 
 DESCRIPTION="Flexible project management web application using the Ruby on Rails framework"
-HOMEPAGE="http://www.redmine.org/"
-SRC_URI="http://www.redmine.org/releases/${P}.tar.gz"
+HOMEPAGE="https://www.redmine.org/"
+SRC_URI="https://www.redmine.org/releases/${P}.tar.gz"
 
 KEYWORDS="~amd64"
 LICENSE="GPL-2"
@@ -74,7 +74,7 @@ all_ruby_prepare() {
 	# remove ldap staff module if disabled to avoid #413779
 	use ldap || rm app/models/auth_source_ldap.rb || die
 
-	eapply "${FILESDIR}/${P}_requires.patch"
+	eapply "${FILESDIR}/${PN}-3.4.3_requires.patch"
 }
 
 all_ruby_install() {
