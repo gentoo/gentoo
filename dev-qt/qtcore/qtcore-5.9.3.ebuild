@@ -11,7 +11,7 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
 fi
 
-IUSE="icu systemd"
+IUSE="icu libcxx libcxxabi systemd"
 
 DEPEND="
 	dev-libs/double-conversion:=
@@ -21,6 +21,11 @@ DEPEND="
 	icu? ( dev-libs/icu:= )
 	!icu? ( virtual/libiconv )
 	systemd? ( sys-apps/systemd:= )
+	libcxx? (
+		sys-devel/clang:=
+		sys-libs/libcxx:=
+		libcxxabi? ( sys-libs/libcxxabi:= )
+	)
 "
 RDEPEND="${DEPEND}"
 
@@ -37,10 +42,14 @@ QT5_TARGET_SUBDIRS=(
 )
 
 src_configure() {
+	if use libcxxabi; then
+		sed -i '/-stdlib=libc++/s/$/ -lc++abi/' ${WORKDIR}/qtbase-opensource-src-${PV}/mkspecs/linux-clang-libc++/qmake.conf
+	fi
 	local myconf=(
 		$(qt_use icu)
 		$(qt_use !icu iconv)
 		$(qt_use systemd journald)
+		$(usex libcxx "-platform linux-clang-libc++" "")
 	)
 	qt5-build_src_configure
 }

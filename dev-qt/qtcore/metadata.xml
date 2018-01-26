@@ -9,6 +9,8 @@
 		<flag name="exceptions">Add support for exceptions - like catching them
 			inside the event loop (recommended by upstream)</flag>
 		<flag name="glib">Enable <pkg>dev-libs/glib</pkg> eventloop support</flag>
+		<flag name="libcxx">Link with <pkg>sys-libs/libcxx</pkg> to avoid dependency on gcc.</flag>
+		<flag name="libcxxabi">Build on top of <pkg>sys-libs/libcxxabi</pkg> instead of gcc's libsupc++ (avoids gcc dependency).</flag>
 		<flag name="qt3support">Enable the Qt3Support libraries for Qt4. Note that
 			this does not mean you can compile pure Qt3 programs with Qt4.</flag>
 		<flag name="systemd">Enable native journald logging support</flag>
