@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit multilib-minimal
+inherit multilib-minimal libtool
 
 MY_P="gc-${PV}"
 
@@ -23,6 +23,11 @@ DEPEND="
 	virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}"
+
+src_prepare() {
+	default
+	elibtoolize #594754
+}
 
 multilib_src_configure() {
 	local config=(
