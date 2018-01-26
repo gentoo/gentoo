@@ -14,8 +14,8 @@ case ${P} in
 esac
 
 DESCRIPTION="Allows users or groups to run commands as other users"
-HOMEPAGE="http://www.sudo.ws/"
-SRC_URI="http://www.sudo.ws/sudo/dist/${uri_prefix}${MY_P}.tar.gz
+HOMEPAGE="https://www.sudo.ws/"
+SRC_URI="https://www.sudo.ws/sudo/dist/${uri_prefix}${MY_P}.tar.gz
 	ftp://ftp.sudo.ws/pub/sudo/${uri_prefix}${MY_P}.tar.gz"
 
 # Basic license is ISC-style as-is, some files are released under
