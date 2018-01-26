@@ -22,7 +22,7 @@ else
 fi
 
 DESCRIPTION="utils for managing LZMA compressed files"
-HOMEPAGE="http://tukaani.org/xz/"
+HOMEPAGE="https://tukaani.org/xz/"
 
 # See top-level COPYING file as it outlines the various pieces and their licenses.
 LICENSE="public-domain LGPL-2.1+ GPL-2+"
