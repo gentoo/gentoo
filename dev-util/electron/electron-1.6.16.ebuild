@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -8,7 +8,7 @@ CHROMIUM_LANGS="am ar bg bn ca cs da de el en-GB es es-419 et fa fi fil fr gu he
 	hi hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro ru sk sl sr
 	sv sw ta te th tr uk vi zh-CN zh-TW"
 
-inherit check-reqs chromium-2 eutils gnome2-utils flag-o-matic multilib \
+inherit check-reqs chromium-2 gnome2-utils flag-o-matic multilib \
 	multiprocessing pax-utils portability python-any-r1 toolchain-funcs \
 	versionator virtualx xdg-utils
 
@@ -259,7 +259,7 @@ _unnest_patches() {
 	| while read -r path; do
 		relpath="$(dirname ${path})"
 		out="${_s}/__${relpath////_}_$(basename ${path})"
-		sed -r -e "s|^([-+]{3}) [ab]/(.*)$|\1 ${relpath}/\2|g" \
+		sed -r -e "s|^([-+]{3}) ([ab])/(.*)$|\1 \2/${relpath}/\3|g" \
 			"${_s}/${path}" > "${out}" || die
 	done
 }
@@ -349,27 +349,15 @@ src_prepare() {
 	sed -i -e "s/'lib'/'${LIBDIR}'/" lib/module.js || die
 	sed -i -e "s|\"lib\"|\"${LIBDIR}\"|" deps/npm/lib/npm.js || die
 
-	cd "${CHROMIUM_S}" || die
-
 	# Apply libcc Chromium patches.
+	cd "${CHROMIUM_S}" || die
 	_unnest_patches "${LIBCC_S}/patches"
-
-	EPATCH_SOURCE="${LIBCC_S}/patches" \
-	EPATCH_SUFFIX="patch" \
-	EPATCH_FORCE="yes" \
-	EPATCH_MULTI_MSG="Applying libchromiumcontent patches..." \
-		epatch
-
-	cd "${S}" || die
+	eapply "${LIBCC_S}/patches"
 
 	# Apply Gentoo patches
+	cd "${S}" || die
 	_unnest_patches "${WORKDIR}/${PATCHES_P}/${PV}"
-
-	EPATCH_SOURCE="${WORKDIR}/${PATCHES_P}/${PV}" \
-	EPATCH_SUFFIX="patch" \
-	EPATCH_FORCE="yes" \
-	EPATCH_MULTI_MSG="Applying Gentoo patches..." \
-		epatch
+	eapply "${WORKDIR}/${PATCHES_P}/${PV}"
 
 	# Merge chromiumcontent component into chromium source tree.
 	mkdir -p "${CHROMIUM_S}/chromiumcontent" || die
