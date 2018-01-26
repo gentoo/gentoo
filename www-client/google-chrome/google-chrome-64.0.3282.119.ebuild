@@ -30,13 +30,14 @@ RESTRICT="bindist mirror strip"
 
 DEPEND=""
 RDEPEND="
+	app-accessibility/at-spi2-atk:2
 	app-arch/bzip2
 	app-misc/ca-certificates
+	dev-libs/atk
 	dev-libs/expat
 	dev-libs/glib:2
 	dev-libs/nspr
 	>=dev-libs/nss-3.26
-	gnome-base/gconf:2
 	media-libs/alsa-lib
 	media-libs/fontconfig
 	media-libs/freetype:2
