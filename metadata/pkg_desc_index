@@ -4397,6 +4397,7 @@ dev-php/PEAR-Crypt_RC4 1.0.3: Encryption class for RC4 encryption
 dev-php/PEAR-DB 1.9.2: Database abstraction layer for PHP
 dev-php/PEAR-DB_DataObject 1.11.3: A SQL Builder, Object Interface to Database Tables
 dev-php/PEAR-Date 1.5.0_alpha4-r1: Date and Time Zone classes
+dev-php/PEAR-Exception 1.0.0: The PEAR Exception base class
 dev-php/PEAR-File 1.4.1: Common file and directory routines
 dev-php/PEAR-File_Find 1.3.2: A class that facillitates the search of filesystems
 dev-php/PEAR-File_Gettext 0.4.2: GNU Gettext file parser
@@ -4452,7 +4453,7 @@ dev-php/PEAR-Net_URL2 2.0.5: Easy parsing of URLs (PHP5 port of PEAR-Net_URL pac
 dev-php/PEAR-Net_UserAgent_Detect 2.5.2-r1: Determines Web browser, version, and platform from an HTTP user agent string
 dev-php/PEAR-Numbers_Words 0.16.4: Provides methods for spelling numerals in words
 dev-php/PEAR-OLE 1.0.0_rc2-r1: Package for reading and writing OLE containers
-dev-php/PEAR-PEAR 1.10.1-r1: PEAR Base System
+dev-php/PEAR-PEAR 1.10.1-r1 1.10.5: PEAR Base System
 dev-php/PEAR-Pager 2.4.9: Data paging class
 dev-php/PEAR-Spreadsheet_Excel_Writer 0.9.3: Package for generating Excel spreadsheets
 dev-php/PEAR-Structures_DataGrid 0.9.3: A tabular structure that contains a record set of data for paging and sorting
