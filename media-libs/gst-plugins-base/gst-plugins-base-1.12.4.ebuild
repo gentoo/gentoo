@@ -4,7 +4,7 @@
 EAPI=6
 GST_ORG_MODULE="gst-plugins-base"
 
-inherit ltprune gstreamer
+inherit flag-o-matic ltprune gstreamer
 
 DESCRIPTION="Basepack of plugins for gstreamer"
 HOMEPAGE="https://gstreamer.freedesktop.org/"
@@ -47,6 +47,8 @@ DEPEND="${RDEPEND}
 RDEPEND+="!<media-libs/gst-plugins-bad-1.11.90:1.0" # rawparse move
 
 multilib_src_configure() {
+	filter-flags -mno-sse -mno-sse2 -mno-sse4.1 #610340
+
 	gstreamer_multilib_src_configure \
 		$(use_enable alsa) \
 		$(multilib_native_use_enable introspection) \
