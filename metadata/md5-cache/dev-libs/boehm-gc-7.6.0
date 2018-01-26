@@ -1,5 +1,5 @@
-DEFINED_PHASES=compile configure install test
-DEPEND=>=dev-libs/libatomic_ops-7.4[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] virtual/pkgconfig
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-libs/libatomic_ops-7.4[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] virtual/pkgconfig >=app-portage/elt-patches-20170422
 DESCRIPTION=The Boehm-Demers-Weiser conservative garbage collector
 EAPI=6
 HOMEPAGE=http://www.hboehm.info/gc/
@@ -8,5 +8,5 @@ KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x8
 LICENSE=boehm-gc
 SLOT=0
 SRC_URI=http://www.hboehm.info/gc/gc_source/gc-7.6.0.tar.gz
-_eclasses_=multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	8ffb5e2112a70fef5f37fcacad308726	multilib-minimal	9139c3a57e077cb8e0d0f73ceb080b89	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=6f06687df843687c9316e4996100bc55
+_eclasses_=libtool	0081a71a261724730ec4c248494f044d	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	8ffb5e2112a70fef5f37fcacad308726	multilib-minimal	9139c3a57e077cb8e0d0f73ceb080b89	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_md5_=37ff5b234e0c2708c1ff3d365074369d
