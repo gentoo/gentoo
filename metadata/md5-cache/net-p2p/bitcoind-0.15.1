@@ -4,10 +4,10 @@ DESCRIPTION=Original Bitcoin crypto-currency wallet for automated services
 EAPI=6
 HOMEPAGE=http://bitcoincore.org/ http://bitcoinknots.org/
 IUSE=+asm +bitcoin_policy_rbf examples knots libressl test upnp +wallet zeromq
-KEYWORDS=~amd64 ~amd64-linux ~arm ~arm64 ~mips ~ppc ~x86 ~x86-linux
+KEYWORDS=~amd64 ~arm ~arm64 ~mips ~ppc x86 ~amd64-linux ~x86-linux
 LICENSE=MIT
 RDEPEND=!libressl? ( dev-libs/openssl:0=[-bindist] ) libressl? ( dev-libs/libressl:0= ) dev-libs/libevent >=dev-libs/libsecp256k1-0.0.0_pre20151118[recovery] dev-libs/univalue >=dev-libs/boost-1.52.0:=[threads(+)] upnp? ( >=net-libs/miniupnpc-1.9.20150916 ) wallet? ( sys-libs/db:4.8[cxx] ) zeromq? ( net-libs/zeromq ) virtual/bitcoin-leveldb
 SLOT=0
 SRC_URI=https://github.com/bitcoin/bitcoin/archive/7b57bc998f334775b50ebc8ca5e78ca728db4c58.tar.gz -> bitcoin-v0.15.1.tar.gz http://bitcoinknots.org/files/0.15.x/0.15.1.knots20171111/bitcoin-0.15.1.knots20171111.patches.txz -> bitcoin-0.15.1.knots20171111.patches.tar.xz
 _eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	db-use	582140d1a711279e50ce284fc7b609f5	estack	43ddf5aaffa7a8d0482df54d25a66a1f	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	8f5286f89e265842f5b5189666eae88b	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	user	8bc2845510e2109af75e3eeac607ec81	versionator	ce21313503c41896ebcd7d58b0607e37
-_md5_=c4ced6793dd9960e91002f7de56ba2a1
+_md5_=45a4d7f3dd7b0b68dbeda2fea78134cb
