@@ -1,18 +1,17 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit versionator
 
 DESCRIPTION="Printer information files for foomatic-db-engine to generate ppds"
 HOMEPAGE="http://www.linuxprinting.org/foomatic.html"
-#SRC_URI="http://www.openprinting.org/download/foomatic/${PN}-$(replace_version_separator 2 -).tar.gz"
-SRC_URI="https://dev.gentoo.org/~dilfridge/distfiles/${PN}-$(replace_version_separator 2 -).tar.gz"
+SRC_URI="http://www.openprinting.org/download/foomatic/${PN}-$(replace_version_separator 2 -).tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
 IUSE=""
 
 DEPEND=""
@@ -25,6 +24,7 @@ S="${WORKDIR}/${PN}-$(get_version_component_range 3 ${PV})"
 src_prepare() {
 	# ppd files do not belong to this package
 	rm -r db/source/PPD || die
+	default
 }
 
 src_configure() {

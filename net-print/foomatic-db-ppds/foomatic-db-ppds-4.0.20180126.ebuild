@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit eutils versionator
 
@@ -19,8 +19,9 @@ IUSE=""
 S="${WORKDIR}/${PN/-ppds}-$(get_version_component_range 3 ${PV})"
 
 src_prepare() {
-	epatch "${FILESDIR}/Makefile.in-4.0.20120117.patch"
+	eapply "${FILESDIR}/Makefile.in-4.0.20120117.patch"
 	rm db/source/PPD/Kyocera/ReadMe.htm || die # bug #559008
+	default
 }
 
 src_install() {
