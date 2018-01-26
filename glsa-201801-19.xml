@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201801-19">
+  <title>ClamAV: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in ClamAV, the worst of
+    which may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">clamav</product>
+  <announced>2018-01-26</announced>
+  <revised count="1">2018-01-26</revised>
+  <bug>645794</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-antivirus/clamav" auto="yes" arch="*">
+      <unaffected range="ge">0.99.3</unaffected>
+      <vulnerable range="lt">0.99.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>ClamAV is a GPL virus scanner.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in ClamAV. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could cause ClamAV to scan a specially crafted file,
+      possibly resulting in execution of arbitrary code with the privileges of
+      the process or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All ClamAV users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-antivirus/clamav-0.99.3"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-12374">CVE-2017-12374</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-12375">CVE-2017-12375</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-12376">CVE-2017-12376</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-12377">CVE-2017-12377</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-12378">CVE-2017-12378</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-12379">CVE-2017-12379</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-12380">CVE-2017-12380</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-01-26T15:58:04Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2018-01-26T16:14:41Z">whissi</metadata>
+</glsa>
