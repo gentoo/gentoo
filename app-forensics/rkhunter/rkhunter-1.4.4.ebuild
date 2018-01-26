@@ -53,7 +53,7 @@ src_install() {
 
 	newbashcomp "${FILESDIR}/${PN}.bash-completion" ${PN}
 
-	dodir /var/lib/${PN}/tmp
+	keepdir /var/lib/${PN}/tmp
 }
 
 pkg_postinst() {
