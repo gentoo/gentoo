@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-libs/openssl:0 >=net-libs/libnatpmp-20130911 <=net-libs/libnatpmp-20140401-r1 >=net-libs/miniupnpc-1.8 sys-apps/file dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5[ssl] dev-qt/qtwidgets:5 dev-qt/qtsql:5[sqlite] dev-qt/qtmultimedia:5[widgets] dev-qt/qtprintsupport:5 media-libs/opus virtual/libintl dev-lang/tcl:= dev-lang/tk:= sys-libs/zlib sys-devel/gettext doc? ( app-doc/doxygen[dot] ) test? ( dev-libs/libgcrypt:0 dev-qt/qttest:5 sys-devel/gdb:0 ) test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DESCRIPTION=Program for displaying classified advertisement items
+EAPI=6
+HOMEPAGE=http://katiska.org/classified-ads/
+IUSE=doc test test
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=dev-libs/openssl:0 >=net-libs/libnatpmp-20130911 <=net-libs/libnatpmp-20140401-r1 >=net-libs/miniupnpc-1.8 sys-apps/file dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5[ssl] dev-qt/qtwidgets:5 dev-qt/qtsql:5[sqlite] dev-qt/qtmultimedia:5[widgets] dev-qt/qtprintsupport:5 media-libs/opus virtual/libintl dev-lang/tcl:= dev-lang/tk:= sys-libs/zlib
+SLOT=0
+SRC_URI=https://github.com/operatornormal/classified-ads/archive/0.12.tar.gz -> classified-ads-0.12.tar.gz https://github.com/operatornormal/classified-ads/blob/graphics/preprocessed.tar.gz?raw=true -> classified-ads-graphics-0.12.tar.gz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	l10n	97f2753e3f1f3753d53d856c7c0bbb0b	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	virtualx	3a3c4637ea6d5a2113707a644766337c
+_md5_=48ac9fedf0a44d46ec55edfcc2a12394
