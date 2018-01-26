@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python2_7 python3_5 )
 inherit eutils gnome2-utils pax-utils systemd python-single-r1
 
 DESCRIPTION="Dropbox daemon (pretends to be GUI-less)"
@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="CC-BY-ND-3.0 FTL MIT LGPL-2 openssl dropbox"
 SLOT="0"
-KEYWORDS="amd64 x86 ~x86-linux"
+KEYWORDS="~amd64 ~x86 ~x86-linux"
 IUSE="+librsync-bundled selinux X"
 RESTRICT="mirror strip"
 
@@ -75,22 +75,19 @@ src_unpack() {
 src_prepare() {
 	eapply_user
 
-	rm -vf libbz2* libpopt.so.0 libpng12.so.0 || die
-	rm -vf libdrm.so.2 libffi.so.6 libGL.so.1 libX11* || die
-	rm -vf libQt5* libicu* qt.conf || die
-	rm -vrf wmctrl plugins/ || die
+	rm -vf libGL.so.1 libX11* libdrm.so.2 libffi.so.6 libpopt.so.0 wmctrl || die
+	# tray icon doesnt load when removing libQt5* (bug 641416)
+	#rm -vrf libQt5* libicu* qt.conf plugins/ || die
 	if use X ; then
 		mv images/hicolor/16x16/status "${T}" || die
 	else
 		rm -vrf PyQt5* *pyqt5* images || die
 	fi
 	if use librsync-bundled ; then
-		patchelf --set-rpath '$ORIGIN' librsyncffi.compiled._librsyncffi.so* || die
+		patchelf --set-rpath '$ORIGIN' librsyncffi.compiled._librsyncffi*.so || die
 	else
 		rm -vf librsync.so.1 || die
 	fi
-	rm -rf *.egg library.zip || die
-	ln -s dropbox library.zip || die
 	pax-mark cm dropbox
 	mv README ACKNOWLEDGEMENTS "${T}" || die
 }
@@ -100,7 +97,7 @@ src_install() {
 
 	insinto "${targetdir}"
 	doins -r *
-	fperms a+x "${targetdir}"/{dropbox,dropboxd}
+	fperms a+x "${targetdir}"/{dropbox,dropbox_py3,dropboxd}
 	dosym "${targetdir}/dropboxd" "/opt/bin/dropbox"
 
 	use X && doicon -s 16 -c status "${T}"/status
