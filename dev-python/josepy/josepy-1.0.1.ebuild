@@ -16,10 +16,10 @@ KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
 IUSE=""
 
 DEPEND="
-	!<=app-crypt/acme-0.20.0[${PYTHON_USEDEP}]
 	>=dev-python/setuptools-1.0[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-0.8[${PYTHON_USEDEP}]
 	>=dev-python/pyopenssl-0.13[${PYTHON_USEDEP}]
 	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	!<=app-crypt/acme-0.20.0[${PYTHON_USEDEP}]"
