@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -28,6 +28,7 @@ DEPEND="
 	>=dev-perl/Date-Extract-0.02
 	>=dev-perl/DateTime-Format-Natural-0.67
 	>=dev-perl/Devel-StackTrace-1.19
+	>=dev-perl/Email-Address-1.908.0
 	>=dev-perl/HTML-FormatText-WithLinks-0.14
 	>=dev-perl/HTML-Mason-1.43
 	>=dev-perl/HTML-Scrubber-0.08
@@ -67,7 +68,6 @@ DEPEND="
 	dev-perl/Data-ICal
 	dev-perl/Date-Manip
 	dev-perl/Devel-GlobalDestruction
-	dev-perl/Email-Address
 	dev-perl/Email-Address-List
 	dev-perl/File-ShareDir
 	dev-perl/File-Which
@@ -283,12 +283,6 @@ src_install() {
 	insinto "${MY_HOSTROOTDIR}/${PF}"
 	doins -r etc/upgrade
 
-	if use lighttpd ; then
-		newinitd "${FILESDIR}"/${PN}.init.d.2 ${PN}
-		newconfd "${FILESDIR}"/${PN}.conf.d.2 ${PN}
-		sed -i -e "s/@@PF@@/${PF}/g" "${ED}"/etc/conf.d/${PN} || die
-	fi
-
 	# require the web server's permissions
 	webapp_serverowned "${MY_HOSTROOTDIR}"/${PF}/var
 	webapp_serverowned "${MY_HOSTROOTDIR}"/${PF}/var/mason_data/obj
@@ -297,4 +291,16 @@ src_install() {
 	webapp_hook_script "${FILESDIR}"/reconfig
 
 	webapp_src_install
+}
+
+pkg_postinst() {
+	webapp_pkg_postinst
+
+	if use lighttpd ; then
+		elog "We no longer install initscripts as Best Practical's recommended"
+		elog "implementation is to let Lighttpd manage the FastCGI instance."
+		elog
+		elog "You may find the following helpful:"
+		elog "   perldoc /usr/share/doc/${P}/web_deployment.pod"
+	fi
 }
