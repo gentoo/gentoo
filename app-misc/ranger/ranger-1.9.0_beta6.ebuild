@@ -7,6 +7,9 @@ PYTHON_REQ_USE="ncurses"
 
 inherit distutils-r1
 
+MY_PV=${PV/_beta/b}
+MY_P=${PN}-${MY_PV}
+
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/ranger/ranger.git"
 	inherit git-r3
@@ -23,6 +26,8 @@ IUSE="test"
 
 RDEPEND="virtual/pager"
 DEPEND="test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
+
+S=${WORKDIR}/${MY_P}
 
 src_prepare() {
 	# use versioned doc path
