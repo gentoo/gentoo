@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -195,6 +195,7 @@ multilib_src_install_all() {
 
 	insinto /etc/udev
 	doins src/udev/udev.conf
+	keepdir /etc/udev/{hwdb.d,rules.d}
 
 	insinto /lib/systemd/network
 	doins network/99-default.link
