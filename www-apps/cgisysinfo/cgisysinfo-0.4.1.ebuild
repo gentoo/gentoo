@@ -3,18 +3,22 @@
 
 EAPI="5"
 
+inherit autotools
+
 if [[ ${PV} = *9999* ]]; then
 	WANT_AUTOMAKE="1.10"
-	inherit autotools mercurial
-	EHG_REPO_URI="http://hg.rafaelmartins.eng.br/cgisysinfo/"
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/rafaelmartins/${PN}"
 	KEYWORDS=""
+	DOCS=( "README.md" "AUTHORS" "NEWS" )
 else
-	SRC_URI="http://distfiles.rafaelmartins.eng.br/${PN}/${P}.tar.bz2"
+	SRC_URI="https://github.com/rafaelmartins/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
+	DOCS=( "README" "AUTHORS" "NEWS" )
 fi
 
 DESCRIPTION="A small cgi utility to show basic system information"
-HOMEPAGE="http://projects.rafaelmartins.eng.br/cgisysinfo"
+HOMEPAGE="https://github.com/rafaelmartins/cgisysinfo"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -23,10 +27,8 @@ IUSE="fastcgi"
 DEPEND="fastcgi? ( dev-libs/fcgi )"
 RDEPEND="${DEPEND}"
 
-DOCS="README AUTHORS NEWS"
-
 src_prepare() {
-	[[ ${PV} = *9999* ]] && eautoreconf
+	eautoreconf
 }
 
 src_configure() {
