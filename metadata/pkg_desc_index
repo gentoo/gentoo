@@ -1242,7 +1242,7 @@ app-shells/hstr 1.23: Shell history suggest box
 app-shells/ksh 93.20140625: The Original Korn Shell, 1993 revision (ksh93)
 app-shells/localshell 1.3.4-r1: Localshell allows per-user/group local control of shell execution
 app-shells/mksh 52: MirBSD KSH Shell
-app-shells/mpv-bash-completion 3.3.12: Bash completion for the mpv video player
+app-shells/mpv-bash-completion 3.3.12 3.3.16: Bash completion for the mpv video player
 app-shells/pdmenu 1.3.4-r1: A simple console menu program
 app-shells/pdsh 2.18-r1: A high-performance, parallel remote shell utility
 app-shells/posh 0.12.6: Reimplementation of Bourne shell based on pdksh
@@ -3047,8 +3047,8 @@ dev-libs/libgamin 0.1.10-r5: Library providing the FAM File Alteration Monitor A
 dev-libs/libgcrypt 1.8.1: General purpose crypto library based on the code used in GnuPG
 dev-libs/libgdata 0.17.8 0.17.9-r1: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.8 0.20.0: GObject-based interfaces and classes for commonly used data structures
-dev-libs/libgit2 0.24.6: A linkable library for Git
-dev-libs/libgit2-glib 0.24.4: Git library for GLib
+dev-libs/libgit2 0.24.6 0.26.0: A linkable library for Git
+dev-libs/libgit2-glib 0.24.4 0.26.2: Git library for GLib
 dev-libs/libgnome-games-support 1.2.3: Library for code common to Gnome games
 dev-libs/libgpg-error 1.27-r1: Contains error handling functions used by GnuPG software
 dev-libs/libgudev 232: GObject bindings for libudev
@@ -5214,6 +5214,7 @@ dev-python/pyftpdlib 1.5.1: Python FTP server library
 dev-python/pygal 2.1.1: A python SVG charts generator
 dev-python/pygame 1.9.2_pre20120101-r2: Python bindings for SDL multimedia library
 dev-python/pygame_sdl2 6.99.12.4: Reimplementation of portions of the pygame API using SDL2
+dev-python/pygit2 0.26.3: Python bindings for libgit2
 dev-python/pyglet 1.2.4: Cross-platform windowing and multimedia library for Python
 dev-python/pygments 2.1.1 2.2.0: Pygments is a syntax highlighting package written in Python
 dev-python/pygobject 2.28.6-r55 3.22.0 3.24.1: GLib's GObject library bindings for Python
@@ -6242,7 +6243,7 @@ dev-util/splint 3.1.2-r1: Check C programs for vulnerabilities and programming m
 dev-util/strace 4.16 4.20: A useful diagnostic, instructional, and debugging tool
 dev-util/stubgen 2.08: a member function stub generator for C++
 dev-util/suse-build 2014.09.18 2015.11.05: Script to build SUSE Linux RPMs
-dev-util/sysprof 3.22.2: System-wide Linux Profiler
+dev-util/sysprof 3.22.2 3.24.1: System-wide Linux Profiler
 dev-util/systemtap 2.4-r1 3.1-r1: A linux trace/probe tool
 dev-util/tkdiff 4.2: Graphical front end to the diff program
 dev-util/tmake 2.12-r1: A Cross platform Makefile tool
@@ -6286,7 +6287,7 @@ dev-vcs/git 2.13.6: stupid content tracker: distributed VCS designed for speed a
 dev-vcs/git-bzr-ng 0_pre20120822-r2: Git subcommand providing a bidirectional bridge to Bazaar repositories
 dev-vcs/git-cola 2.2.1 2.11: The highly caffeinated git GUI
 dev-vcs/git-flow 1.10.2: Git extensions to provide high-level repository operations
-dev-vcs/gitg 3.22.0: git repository viewer for GNOME
+dev-vcs/gitg 3.22.0 3.26.0: git repository viewer for GNOME
 dev-vcs/gitolite 2.3.1-r1 3.6 3.6.3 3.6.6: Highly flexible server for git directory version tracker
 dev-vcs/gitolite-gentoo 2.3.1-r1: Highly flexible server for git directory version tracker, Gentoo fork
 dev-vcs/guilt 0.36: A series of bash scripts which add a quilt-like interface to git
@@ -6393,7 +6394,7 @@ gnome-extra/evolution-data-server 3.22.7 3.24.7: Evolution groupware backend
 gnome-extra/evolution-ews 3.22.6 3.24.6: Evolution module for connecting to Microsoft Exchange Web Services
 gnome-extra/gconf-editor 3.0.1-r1: An editor to the GNOME config system
 gnome-extra/gnome-boxes 3.22.4 3.24.0: Simple GNOME 3 application to access remote or virtual systems
-gnome-extra/gnome-builder 3.22.4: Builder attempts to be an IDE for writing software for GNOME
+gnome-extra/gnome-builder 3.22.4 3.24.2: Builder attempts to be an IDE for writing software for GNOME
 gnome-extra/gnome-calculator 3.22.3 3.24.0: A calculator application for GNOME
 gnome-extra/gnome-calendar 3.22.5 3.24.3: Manage your online calendars with simple and modern interface
 gnome-extra/gnome-characters 3.22.0 3.24.0: Unicode character map viewer and library
@@ -8917,7 +8918,7 @@ net-misc/vino 3.22.0: An integrated VNC server for GNOME
 net-misc/wakeonlan 0.41-r2: Client for Wake-On-LAN
 net-misc/wget 1.19.1-r2: Network utility to retrieve files from the WWW
 net-misc/whatmask 1.2-r1: little C program to compute different subnet mask notations
-net-misc/whois 5.2.12: improved Whois Client
+net-misc/whois 5.2.12 5.2.20: improved Whois Client
 net-misc/wicd 1.7.4-r3: A lightweight wired and wireless network manager for Linux
 net-misc/wol 0.7.1-r1: Wake up hardware that is Magic Packet compliant
 net-misc/wput 0.6.1: Tiny program like wget, to upload files/whole directories via FTP
