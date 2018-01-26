@@ -11,7 +11,7 @@ SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="4"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE="calendar debug doc +handbook hbci ofx quotes test weboob"
 
 COMMON_DEPEND="
