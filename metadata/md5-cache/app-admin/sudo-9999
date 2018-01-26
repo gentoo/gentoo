@@ -2,11 +2,11 @@ DEFINED_PHASES=configure install postinst prepare unpack
 DEPEND=sys-libs/zlib ldap? ( >=net-nds/openldap-2.1.30-r1 dev-libs/cyrus-sasl ) gcrypt? ( dev-libs/libgcrypt:= ) openssl? ( dev-libs/openssl:0= ) pam? ( virtual/pam ) sasl? ( dev-libs/cyrus-sasl ) skey? ( >=sys-auth/skey-1.1.5-r1 ) sys-devel/bison >=app-portage/elt-patches-20170422 dev-vcs/mercurial
 DESCRIPTION=Allows users or groups to run commands as other users
 EAPI=6
-HOMEPAGE=http://www.sudo.ws/
+HOMEPAGE=https://www.sudo.ws/
 IUSE=gcrypt ldap nls openssl offensive pam sasl selinux +sendmail skey
 LICENSE=ISC BSD
 RDEPEND=sys-libs/zlib ldap? ( >=net-nds/openldap-2.1.30-r1 dev-libs/cyrus-sasl ) gcrypt? ( dev-libs/libgcrypt:= ) openssl? ( dev-libs/openssl:0= ) pam? ( virtual/pam ) sasl? ( dev-libs/cyrus-sasl ) skey? ( >=sys-auth/skey-1.1.5-r1 ) >=app-misc/editor-wrapper-3 virtual/editor ldap? ( dev-lang/perl ) pam? ( sys-auth/pambase ) selinux? ( sec-policy/selinux-sudo ) sendmail? ( virtual/mta )
 REQUIRED_USE=pam? ( !skey ) skey? ( !pam ) ?? ( gcrypt openssl )
 SLOT=0
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e7258392d5eda499c1cfa94db650b61	flag-o-matic	02908f00f002f0f07c5b74783d778325	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	mercurial	0bdc9ce12272665fa3749c8408b4d389	multilib	97f470f374f2e94ccab04a2fb21d811e	pam	3e788d86170dfcd5b06824d898315e18	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=6d452c9ea7cdbae70447dc007abeb922
+_md5_=57097c51bcf8983ec437a1be8ade64d1
