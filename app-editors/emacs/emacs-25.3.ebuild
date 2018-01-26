@@ -12,7 +12,7 @@ SRC_URI="mirror://gnu/emacs/${P}.tar.xz"
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 SLOT="25"
 KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
-IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif gpm gsettings gtk +gtk3 gzip-el hesiod imagemagick +inotify jpeg kerberos libxml2 livecd m17n-lib motif pax_kernel png selinux sound source ssl svg tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm xwidgets zlib"
+IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif gpm gsettings gtk +gtk3 gzip-el hesiod imagemagick +inotify jpeg kerberos libxml2 livecd m17n-lib motif pax_kernel png selinux sound source ssl svg tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm zlib"
 REQUIRED_USE="?? ( aqua X )"
 
 RDEPEND="sys-libs/ncurses:0=
@@ -54,14 +54,8 @@ RDEPEND="sys-libs/ncurses:0=
 			)
 		)
 		gtk? (
-			xwidgets? (
-				x11-libs/gtk+:3
-				net-libs/webkit-gtk:3=
-			)
-			!xwidgets? (
-				gtk3? ( x11-libs/gtk+:3 )
-				!gtk3? ( x11-libs/gtk+:2 )
-			)
+			gtk3? ( x11-libs/gtk+:3 )
+			!gtk3? ( x11-libs/gtk+:2 )
 		)
 		!gtk? (
 			motif? ( >=x11-libs/motif-2.3:0 )
@@ -161,12 +155,12 @@ src_configure() {
 				recommended that you compile Emacs with the Athena/Lucid or the
 				Motif toolkit instead.
 			EOF
-			if use xwidgets; then
-				myconf+=" --with-x-toolkit=gtk3 --with-xwidgets"
-			else
+			#if use xwidgets; then
+			#	myconf+=" --with-x-toolkit=gtk3 --with-xwidgets"
+			#else
 				myconf+=" --with-x-toolkit=$(usex gtk3 gtk3 gtk2)"
 				myconf+=" --without-xwidgets"
-			fi
+			#fi
 			for f in motif Xaw3d athena; do
 				use ${f} && ewarn \
 					"USE flag \"${f}\" has no effect if \"gtk\" is set."
@@ -185,8 +179,8 @@ src_configure() {
 			einfo "Configuring to build with no toolkit"
 			myconf+=" --with-x-toolkit=no"
 		fi
-		! use gtk && use xwidgets && ewarn \
-			"USE flag \"xwidgets\" has no effect if \"gtk\" is not set."
+		#! use gtk && use xwidgets && ewarn \
+		#	"USE flag \"xwidgets\" has no effect if \"gtk\" is not set."
 	elif use aqua; then
 		einfo "Configuring to build with Nextstep (Cocoa) support"
 		myconf+=" --with-ns --disable-ns-self-contained"

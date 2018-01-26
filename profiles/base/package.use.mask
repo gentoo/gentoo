@@ -212,10 +212,6 @@ dev-vcs/rabbitvcs gedit
 # Multiple test failures.
 sys-boot/grub:2 test
 
-# Ulrich Müller <ulm@gentoo.org> (4 Feb 2017)
-# Uses old and vulnerable net-libs/webkit-gtk:3, bug #584156.
-app-editors/emacs:25 xwidgets
-
 # Ian Stakenvicius (25 Jan 2017)
 # rust on mozilla packages is experimental
 www-client/firefox rust
