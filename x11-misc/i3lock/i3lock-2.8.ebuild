@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,8 +6,8 @@ EAPI=5
 inherit eutils toolchain-funcs
 
 DESCRIPTION="Simple screen locker"
-HOMEPAGE="http://i3wm.org/i3lock/"
-SRC_URI="http://i3wm.org/${PN}/${P}.tar.bz2"
+HOMEPAGE="https://i3wm.org/i3lock/"
+SRC_URI="https://i3wm.org/${PN}/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
