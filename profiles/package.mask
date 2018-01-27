@@ -555,48 +555,11 @@ app-doc/linux-gazette-base
 app-doc/linux-gazette-all
 app-doc/linux-gazette
 
-# David Seifert <soap@gentoo.org> (27 Dec 2017)
-# Last release in 2005, crashes on use, EAPI 3 (#640262).
-# Removal in 30 days
-dev-vcs/archway
-
-# Pacho Ramos <pacho@gentoo.org> (27 Dec 2017)
-# Remove all Compiz related packages: they all need major work/bumps to fix
-# lots of pending issues and they need a dedicated maintainer (bug #339622
-# and many others). Removal in a month.
-x11-wm/compiz
-x11-apps/fusion-icon
-x11-libs/compizconfig-backend-gconf
-x11-libs/libcompizconfig
-dev-python/compizconfig-python
-x11-misc/ccsm
-x11-misc/simple-ccsm
-x11-plugins/compiz-plugins-extra
-x11-plugins/compiz-plugins-main
-x11-plugins/compiz-plugins-unsupported
-x11-wm/compiz-fusion
-x11-wm/emerald
-x11-themes/emerald-themes
-x11-libs/compiz-bcop
-
-# Pacho Ramos <pacho@gentoo.org> (27 Dec 2017)
-# Dead for ages, not needed, for java 1.5 (#638036). Removal in a month.
-dev-java/jikes
-
-# Pacho Ramos <pacho@gentoo.org> (27 Dec 2017)
-# Dead for ages, requires glibc with rpc (#371391). Removal in a month.
-net-misc/netkit-rusers
-
 # Pacho Ramos <pacho@gentoo.org> (27 Dec 2017)
 # Out ebuild is completely obsolete (#381073), download manually PPD is
 # preferred, current tarballs cannot be downloaded even (#635146). Removal
 # in a month.
 net-print/xerox-drivers
-
-# Pacho Ramos <pacho@gentoo.org> (27 Dec 2017)
-# Dead and broken for a long time (#427876), nothing requires this. Removal
-# in a month.
-dev-dotnet/gnome-sharp
 
 # Pacho Ramos <pacho@gentoo.org> (27 Dec 2017)
 # Dead and broken for a long time (#428354, #562772, #624956, #558120,
@@ -615,62 +578,6 @@ dev-dotnet/wnck-sharp
 dev-dotnet/xdt-for-monodevelop
 dev-dotnet/nuget
 dev-dotnet/referenceassemblies-pcl
-
-# Pacho Ramos <pacho@gentoo.org> (27 Dec 2017)
-# Dead for ages, rely on deprecated/dead libs (#447466). Removal in a month.
-dev-vcs/bzr-gtk
-
-# Pacho Ramos <pacho@gentoo.org> (27 Dec 2017)
-# Completely broken for years (#514400, #596078, #598609, #640096, #641428).
-# Removal in a month.
-dev-cpp/pficommon
-
-# Pacho Ramos <pacho@gentoo.org> (27 Dec 2017)
-# Dead for a long time, failing tests (#526900), nothing requires it.
-# Removal in a month.
-net-misc/ytalk
-
-# Pacho Ramos <pacho@gentoo.org> (27 Dec 2017)
-# Upstream dead, SRC_URI dead, nothing requires it (#533812). Removal in a
-# month.
-media-video/replex
-
-# Pacho Ramos <pacho@gentoo.org> (27 Dec 2017)
-# Not compatible with mono-4 (#557588, #562546, #569252, #581920, #585860, #596652),
-# nothing requires them. Removal in a month.
-dev-dotnet/xsp
-dev-dotnet/nini
-dev-lang/mono-basic
-dev-util/jay
-
-# Pacho Ramos <pacho@gentoo.org> (27 Dec 2017)
-# python files installed in wrong path (#580328), relies on qt4 and cannot
-# be bumped (#585328), fails with gcc6 (#630332), fails to build (#641514).
-# Removal in a month.
-sci-visualization/qtiplot
-
-# Pacho Ramos <pacho@gentoo.org> (27 Dec 2017)
-# Dead upstream for a long time, relies on dead gnome-icon-theme and has
-# some crashes (#602144). Removal in a month.
-app-doc/podbrowser
-
-# Pacho Ramos <pacho@gentoo.org> (27 Dec 2017)
-# Dead upstream for a long time, relies on dead gnome-icon-theme and nothing
-# requires it (#602146). Removal in a month.
-games-emulation/gxmame
-
-# Pacho Ramos <pacho@gentoo.org> (27 Dec 2017)
-# All Ekiga set is dead and broken for years, it relies on obsolete
-# dead/libs that are also old and broken and upstream looks to not release
-# newer ekiga ever. To keep this please go ahead and take care of it *and
-# all the dependencies it also needs*. See bugs #626176, #460458, #589276,
-# #638122, #641990, #633670, #624578, #600398, #627868.
-# Removal in a month.
-net-libs/ptlib
-net-libs/opal
-net-voip/openmcu
-net-libs/h323plus
-net-voip/ekiga
 
 # Alice Ferrazzi <alicef@gentoo.org> (27 Dec 2017)
 # Masked for removal in 30 days.
