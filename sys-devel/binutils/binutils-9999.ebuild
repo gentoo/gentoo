@@ -218,6 +218,7 @@ src_configure() {
 		--enable-obsolete
 		--enable-shared
 		--enable-threads
+		--enable-default-hash-style=gnu
 		# Newer versions (>=2.27) offer a configure flag now.
 		--enable-relro
 		# Newer versions (>=2.24) make this an explicit option. #497268
