@@ -561,24 +561,6 @@ app-doc/linux-gazette
 # in a month.
 net-print/xerox-drivers
 
-# Pacho Ramos <pacho@gentoo.org> (27 Dec 2017)
-# Dead and broken for a long time (#428354, #562772, #624956, #558120,
-# #585222, #585548, #605706, #612368), nothing requires this. Removal
-# in a month.
-# Mikhail Pukhlikov <cynede@gentoo.org> (20 Jul 2017)
-# Old mono/dotnet packages (used on GNOME2 stack)
-# also some deprecated forks used for monodevelop
-# awhile they are very unstable they will live in dotnet overlay
-gnome-extra/docky
-dev-dotnet/gnome-desktop-sharp
-dev-dotnet/gtksourceview-sharp
-dev-dotnet/rsvg-sharp
-dev-dotnet/vte-sharp
-dev-dotnet/wnck-sharp
-dev-dotnet/xdt-for-monodevelop
-dev-dotnet/nuget
-dev-dotnet/referenceassemblies-pcl
-
 # Alice Ferrazzi <alicef@gentoo.org> (27 Dec 2017)
 # Masked for removal in 30 days.
 # This kernel doesn't boot on hardened profiles.
