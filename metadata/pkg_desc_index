@@ -583,7 +583,7 @@ app-editors/uemacs-pk 4.0.15_p20141208: uEmacs/PK is an enhanced version of Micr
 app-editors/vile 9.8r: VI Like Emacs -- yet another full-featured vi clone
 app-editors/vim 8.0.0386 8.0.1298: Vim, an improved vi-style text editor
 app-editors/vim-core 8.0.0386 8.0.1298: vim and gvim shared files
-app-editors/xemacs 21.4.24: highly customizable open source text editor and application development system
+app-editors/xemacs 21.4.24 21.4.24-r1: highly customizable open source text editor and application development system
 app-editors/xvile 9.8r: VI Like Emacs -- yet another full-featured vi clone
 app-editors/yudit 2.9.2: Free (Y)unicode text editor for all unices
 app-editors/zile 2.3.24-r2 2.4.11: Zile is a small Emacs clone
@@ -8647,7 +8647,7 @@ net-libs/telepathy-logger-qt 15.04.0 17.08.0: Qt bindings for the Telepathy logg
 net-libs/telepathy-qt 0.9.7-r1: Qt bindings for the Telepathy D-Bus protocol
 net-libs/udns 0.4: Async-capable DNS stub resolver library
 net-libs/uhttpmock 0.5.0 0.5.1: HTTP web service mocking library
-net-libs/webkit-gtk 2.4.11-r1 2.4.11-r200 2.18.5: Open source web browser engine
+net-libs/webkit-gtk 2.4.11-r1 2.4.11-r200 2.18.5 2.18.6: Open source web browser engine
 net-libs/wvstreams 4.6.1-r3: A network programming library in C++
 net-libs/xrootd 4.4.0: Extended ROOT remote file server
 net-libs/zeromq 2.2.0 3.2.3 3.2.5 4.1.1 4.1.6 4.2.1 4.2.2-r2: A brokerless kernel
@@ -8748,7 +8748,7 @@ net-misc/chrony 2.3: NTP client and server programs
 net-misc/clockspeed 0.62-r6: A simple Network Time Protocol (NTP) client
 net-misc/clusterssh 4.03.03: Concurrent Multi-Server Terminal Access
 net-misc/connect 1.103: network connection relaying command (proxy)
-net-misc/connman 1.29: Provides a daemon for managing internet connections
+net-misc/connman 1.29 1.35-r1: Provides a daemon for managing internet connections
 net-misc/connman-gtk 1.1.1: GTK GUI for Connman
 net-misc/curl 7.57.0: A Client that groks URLs
 net-misc/dahdi 2.10.0.1 2.10.1 2.10.2-r2: Kernel modules for Digium compatible hardware (formerly known as Zaptel)
