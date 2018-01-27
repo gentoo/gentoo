@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -55,7 +55,6 @@ pkg_setup() {
 	if use amd64 || use arm || use ppc || use ppc64 || use x86; then
 		CONFIG_CHECK="~!IDE" #319829
 		CONFIG_CHECK+=" ~TMPFS_POSIX_ACL" #412377
-		CONFIG_CHECK+=" ~SWAP" # https://forums.gentoo.org/viewtopic-t-923640.html
 		CONFIG_CHECK+=" ~NLS_UTF8" #425562
 		kernel_is lt 3 10 && CONFIG_CHECK+=" ~USB_SUSPEND" #331065, #477278
 		linux-info_pkg_setup

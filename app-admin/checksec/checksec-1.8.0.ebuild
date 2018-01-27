@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -20,10 +20,17 @@ S="${WORKDIR}"/${MY_PN}-${PV}
 DOCS=( ChangeLog README.md )
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-path.patch
+	epatch "${FILESDIR}"/${PN}-1.7.2-path.patch
+	sed 's,^pkg_release=false,pkg_release=true,' -i ${PN} || die
 }
 
 src_install() {
 	default
+
+	doman extras/man/*
+
+	insinto /usr/share/zsh/site-functions
+	doins extras/zsh/_${PN}
+
 	dobin ${PN}
 }

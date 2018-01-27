@@ -24,7 +24,7 @@ SRC_URI="https://dl.google.com/linux/chrome/deb/pool/main/g/${MY_PN}/${MY_P}_amd
 
 LICENSE="google-chrome"
 SLOT="0"
-KEYWORDS="-* amd64"
+KEYWORDS="-* ~amd64"
 IUSE="+plugins"
 RESTRICT="bindist mirror strip"
 
@@ -38,6 +38,7 @@ RDEPEND="
 	dev-libs/glib:2
 	dev-libs/nspr
 	>=dev-libs/nss-3.26
+	gnome-base/gconf:2
 	media-libs/alsa-lib
 	media-libs/fontconfig
 	media-libs/freetype:2
@@ -132,7 +133,7 @@ src_install() {
 
 	local size
 	for size in 16 22 24 32 48 64 128 256 ; do
-		newicon -s ${size} "${CHROME_HOME}/product_logo_${size}.png" ${PN}.png
+		newicon -s ${size} "${CHROME_HOME}/product_logo_${size}_beta.png" ${PN}.png
 	done
 
 	pax-mark m "${CHROME_HOME}/chrome"

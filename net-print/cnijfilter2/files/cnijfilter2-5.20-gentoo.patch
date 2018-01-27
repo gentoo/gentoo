@@ -1,13 +1,13 @@
---- cnijfilter2-source-5.20-1/cmdtocanonij2/filter/Makefile.am.old	2018-01-14 18:14:20.645473030 +0100
-+++ cnijfilter2-source-5.20-1/cmdtocanonij2/filter/Makefile.am	2018-01-14 18:14:36.078219959 +0100
+--- a/cmdtocanonij2/filter/Makefile.am.old	2018-01-14 18:14:20.645473030 +0100
++++ b/cmdtocanonij2/filter/Makefile.am	2018-01-14 18:14:36.078219959 +0100
 @@ -1,4 +1,4 @@
 -filterdir=$(libdir)/cups/filter
 +filterdir=$(libexecdir)/cups/filter
  
  filter_PROGRAMS= cmdtocanonij2
  
---- cnijfilter2-source-5.20-1/cnijbe2/src/Makefile.am.old	2018-01-14 19:25:48.823470121 +0100
-+++ cnijfilter2-source-5.20-1/cnijbe2/src/Makefile.am	2018-01-14 19:25:59.316275741 +0100
+--- a/cnijbe2/src/Makefile.am.old	2018-01-14 19:25:48.823470121 +0100
++++ b/cnijbe2/src/Makefile.am	2018-01-14 19:25:59.316275741 +0100
 @@ -1,6 +1,6 @@
  ## Process this file with automake to produce Makefile.in
  
@@ -16,16 +16,16 @@
  backend_bin_PROGRAMS = cnijbe2
  transform = 
  
---- cnijfilter2-source-5.20-1/rastertocanonij/src/Makefile.am.old	2018-01-14 21:31:33.053307218 +0100
-+++ cnijfilter2-source-5.20-1/rastertocanonij/src/Makefile.am	2018-01-14 21:31:41.106166479 +0100
+--- a/rastertocanonij/src/Makefile.am.old	2018-01-14 21:31:33.053307218 +0100
++++ b/rastertocanonij/src/Makefile.am	2018-01-14 21:31:41.106166479 +0100
 @@ -1,4 +1,4 @@
 -filterdir=$(libdir)/cups/filter
 +filterdir=$(libexecdir)/cups/filter
  
  filter_PROGRAMS= rastertocanonij
  
---- cnijfilter2-source-5.20-1/tocanonij/src/Makefile.am.old	2018-01-15 22:38:14.236460663 +0100
-+++ cnijfilter2-source-5.20-1/tocanonij/src/Makefile.am	2018-01-15 22:38:39.184018933 +0100
+--- a/tocanonij/src/Makefile.am.old	2018-01-15 22:38:14.236460663 +0100
++++ b/tocanonij/src/Makefile.am	2018-01-15 22:38:39.184018933 +0100
 @@ -1,7 +1,8 @@
  INCLUDES = \
  	-I$(top_srcdir)/include/cncl
@@ -36,8 +36,8 @@
  
  tocanonij_SOURCES= \
  	main.c
---- cnijfilter2-source-5.20-1/tocnpwg/src/Makefile.am.old	2018-01-15 22:42:43.759703863 +0100
-+++ cnijfilter2-source-5.20-1/tocnpwg/src/Makefile.am	2018-01-15 22:43:10.442232986 +0100
+--- a/tocnpwg/src/Makefile.am.old	2018-01-15 22:42:43.759703863 +0100
++++ b/tocnpwg/src/Makefile.am	2018-01-15 22:43:10.442232986 +0100
 @@ -2,7 +2,8 @@
  INCLUDES = \
  	@XML_2_CFLAGS@
