@@ -29,10 +29,11 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
+	./configure \
+		--prefix="${EROOT}usr" \
 		$(use_enable ncurses curses) \
 		$(use_enable selinux) \
-		$(use_enable tre)
+		$(use_enable tre) || die
 }
 
 update_symlinks() {
