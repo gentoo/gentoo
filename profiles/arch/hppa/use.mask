@@ -206,16 +206,8 @@ dri
 # 2006/02/05 Donnie Berkholz <dberkholz@gentoo.org>
 # Modular X: mask for architectures on which they aren't available
 video_cards_amdgpu
-video_cards_apm
-video_cards_ark
-video_cards_chips
-video_cards_cirrus
 video_cards_glint
-video_cards_i128
-video_cards_i740
-video_cards_mach64
 video_cards_mga
-video_cards_neomagic
 video_cards_nouveau
 video_cards_nv
 video_cards_r100
@@ -225,16 +217,7 @@ video_cards_r300
 video_cards_r600
 video_cards_radeon
 video_cards_radeonsi
-video_cards_rendition
-video_cards_s3
-video_cards_s3virge
-video_cards_savage
-video_cards_sis
-video_cards_sisusb
 video_cards_tdfx
-video_cards_tga
-video_cards_trident
-video_cards_tseng
 video_cards_vesa
 video_cards_voodoo
 
