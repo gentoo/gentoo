@@ -16,7 +16,7 @@ https://dev.gentoo.org/~jstein/dist/inkscape-0.92.1-poppler.patch"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 x86"
 IUSE="cdr dia dbus exif gnome imagemagick openmp postscript inkjar jpeg latex"
 IUSE+=" lcms nls spell static-libs visio wpg"
 
