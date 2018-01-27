@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-libs/popt-1.5 selinux? ( sys-libs/libselinux ) acl? ( virtual/acl ) selinux? ( sec-policy/selinux-logrotate ) cron? ( virtual/cron )
 SLOT=0
 SRC_URI=https://github.com/logrotate/logrotate/releases/download/3.13.0/logrotate-3.13.0.tar.gz -> logrotate-3.13.0.tar.gz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	8f5286f89e265842f5b5189666eae88b	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	a31844b675f1a1fea87fbe1144aee5f5	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=cf2e6dc1c26df125198bc0e3dec26af6

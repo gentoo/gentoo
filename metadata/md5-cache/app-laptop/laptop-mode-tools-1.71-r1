@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=sys-apps/iproute2 sys-apps/ethtool sys-apps/which acpi? ( sys-power/acpid ) apm? ( sys-apps/apmd ) bluetooth? ( net-wireless/bluez:= )
 SLOT=0
 SRC_URI=https://github.com/rickysarraf/laptop-mode-tools/releases/download/1.71/laptop-mode-tools_1.71.tar.gz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	8f5286f89e265842f5b5189666eae88b	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	udev	d91cac2c73b94629cad2daea66e0d182
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	a31844b675f1a1fea87fbe1144aee5f5	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	udev	d91cac2c73b94629cad2daea66e0d182
 _md5_=a157f4fe131d9338dbc2d2642a6e5ca9

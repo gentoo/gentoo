@@ -9,5 +9,5 @@ LICENSE=GPL-2+
 RDEPEND=net-libs/gnutls:= ~dev-libs/libprelude-3.1.0 dbx? ( ~dev-libs/libpreludedb-3.1.0 ) tcpwrapper? ( sys-apps/tcp-wrappers ) xml? ( dev-libs/libxml2 ) geoip? ( dev-libs/libmaxminddb )
 SLOT=0
 SRC_URI=https://www.prelude-siem.org/pkg/src/3.1.0/prelude-manager-3.1.0.tar.gz
-_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	8f5286f89e265842f5b5189666eae88b	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	a31844b675f1a1fea87fbe1144aee5f5	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=bef2f737cbc35e4caf10bb3b66e51b73

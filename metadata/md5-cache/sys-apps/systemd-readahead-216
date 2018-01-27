@@ -8,5 +8,5 @@ LICENSE=LGPL-2.1 MIT
 RDEPEND=>=sys-apps/systemd-217:=
 SLOT=0
 SRC_URI=https://www.freedesktop.org/software/systemd/systemd-216.tar.xz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	8f5286f89e265842f5b5189666eae88b	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	udev	d91cac2c73b94629cad2daea66e0d182
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	a31844b675f1a1fea87fbe1144aee5f5	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	udev	d91cac2c73b94629cad2daea66e0d182
 _md5_=f68dfcc1e09501212ac6c2ad78d3b03b

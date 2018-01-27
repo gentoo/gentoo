@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=app-admin/eselect apache2? ( www-servers/apache[apache2_modules_dir] )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~mjo/distfiles/eselect-php-0.9.4.tar.xz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	8f5286f89e265842f5b5189666eae88b	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	a31844b675f1a1fea87fbe1144aee5f5	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=560567180e11ea4c8f3091a6f9c196d8

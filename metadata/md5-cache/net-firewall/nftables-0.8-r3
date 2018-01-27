@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=net-libs/libmnl-1.0.3:0= gmp? ( dev-libs/gmp:0= ) readline? ( sys-libs/readline:0= ) >=net-libs/libnftnl-1.0.8:0=
 SLOT=0
 SRC_URI=https://git.netfilter.org/nftables/snapshot/v0.8.tar.gz -> nftables-0.8.tar.gz
-_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	estack	43ddf5aaffa7a8d0482df54d25a66a1f	libtool	0081a71a261724730ec4c248494f044d	linux-info	ca370deef9d44125d829f2eb6ebc83e0	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	8f5286f89e265842f5b5189666eae88b	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	versionator	ce21313503c41896ebcd7d58b0607e37
+_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	estack	43ddf5aaffa7a8d0482df54d25a66a1f	libtool	0081a71a261724730ec4c248494f044d	linux-info	ca370deef9d44125d829f2eb6ebc83e0	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	a31844b675f1a1fea87fbe1144aee5f5	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	versionator	ce21313503c41896ebcd7d58b0607e37
 _md5_=1810713a19abd955284b0190fd837cce

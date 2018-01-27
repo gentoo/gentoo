@@ -9,5 +9,5 @@ LICENSE=GPL-2+ LGPL-2.1
 RDEPEND=sensord? ( net-analyzer/rrdtool virtual/logger ) dev-lang/perl !<sys-apps/openrc-0.21.7
 SLOT=0/4.4.0
 SRC_URI=https://github.com/groeck/lm-sensors/archive/83cafd29f28d463573750d897014ec7143217ae5.tar.gz -> lm_sensors-3.4.0_p20170901.tar.gz
-_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	linux-info	ca370deef9d44125d829f2eb6ebc83e0	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	8ffb5e2112a70fef5f37fcacad308726	multilib-minimal	9139c3a57e077cb8e0d0f73ceb080b89	systemd	8f5286f89e265842f5b5189666eae88b	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	versionator	ce21313503c41896ebcd7d58b0607e37
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	linux-info	ca370deef9d44125d829f2eb6ebc83e0	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	8ffb5e2112a70fef5f37fcacad308726	multilib-minimal	9139c3a57e077cb8e0d0f73ceb080b89	systemd	a31844b675f1a1fea87fbe1144aee5f5	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	versionator	ce21313503c41896ebcd7d58b0607e37
 _md5_=24af8b258810b993ed6fd6fe3ad91f74
