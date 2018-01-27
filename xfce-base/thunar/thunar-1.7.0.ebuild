@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ COMMON_DEPEND=">=dev-lang/perl-5.6
 	>=dev-libs/glib-2.30:=
 	>=x11-libs/gdk-pixbuf-2.14:=
 	>=x11-libs/gtk+-3.20:3=
-	>=xfce-base/exo-0.10:=
+	>=xfce-base/exo-0.11:=
 	>=xfce-base/libxfce4ui-4.12:=
 	>=xfce-base/libxfce4util-4.12:=
 	>=xfce-base/xfconf-4.12:=

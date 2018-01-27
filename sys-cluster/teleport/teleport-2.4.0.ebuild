@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,29 +18,22 @@ else
 	KEYWORDS="~amd64 ~arm"
 fi
 
-LICENSE="Apache-2.0"
-SLOT="0"
 IUSE=""
-RESTRICT="test"
+LICENSE="Apache-2.0"
+RESTRICT="test strip"
+SLOT="0"
 
 DEPEND="
 	app-arch/zip
 	>=dev-lang/go-1.8.3"
 RDEPEND=""
 
-PATCHES=( "${FILESDIR}"/${PN}-makefile-buildflags.patch )
-
 src_compile() {
-	BUILDFLAGS="" GOPATH="${S}" emake -C src/${EGO_PN%/*}
-	pushd src/${EGO_PN%/*}/web/dist >/dev/null || die
-	zip -qr "${S}/src/${EGO_PN%/*}/build/webassets.zip" . || die
-	popd >/dev/null || die
-	cat "${S}/src/${EGO_PN%/*}/build/webassets.zip" >> "src/${EGO_PN%/*}/build/${PN}" || die
-	zip -q -A "${S}/src/${EGO_PN%/*}/build/${PN}" || die
+	GOPATH="${S}" emake -j1 -C src/${EGO_PN%/*} full
 }
 
 src_install() {
-	dodir /var/lib/${PN} /etc/${PN}
+	keepdir /var/lib/${PN} /etc/${PN}
 	dobin src/${EGO_PN%/*}/build/{tsh,tctl,teleport}
 
 	insinto /etc/${PN}
@@ -54,5 +47,5 @@ src_install() {
 }
 
 src_test() {
-	GOPATH="${S}" emake -C src/${EGO_PN%/*} test
+	BUILDFLAGS="" GOPATH="${S}" emake -C src/${EGO_PN%/*} test
 }
