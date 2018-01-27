@@ -37,7 +37,7 @@ E_ECONF=()
 #
 #	live         $PV has a 9999 marker
 #		KEYWORDS ""
-#		SRC_URI  svn/etc... up
+#		SRC_URI  git/etc... up
 #		S        $WORKDIR/$E_S_APPEND
 #
 # Overrides:
@@ -45,8 +45,7 @@ E_ECONF=()
 #	SRC_URI     EURI_STATE
 #	S           EURI_STATE
 
-E_LIVE_SERVER_DEFAULT_SVN="http://svn.enlightenment.org/svn/e/trunk"
-E_LIVE_SERVER_DEFAULT_GIT="git://git.enlightenment.org"
+E_LIVE_SERVER_DEFAULT_GIT="https://git.enlightenment.org"
 
 E_STATE="release"
 if [[ ${PV} == *9999* ]] ; then
@@ -58,15 +57,6 @@ if [[ ${PV} == *9999* ]] ; then
 		E_S_APPEND=${EGIT_URI_APPEND}
 		E_LIVE_SOURCE="git"
 		inherit git-2
-	else
-		E_LIVE_SERVER=${E_LIVE_SERVER:-${E_LIVE_SERVER_DEFAULT_SVN}}
-
-		ESVN_URI_APPEND=${ESVN_URI_APPEND:-${PN}}
-		ESVN_PROJECT="enlightenment/${ESVN_SUB_PROJECT}"
-		ESVN_REPO_URI=${ESVN_SERVER:-${E_LIVE_SERVER_DEFAULT_SVN}}/${ESVN_SUB_PROJECT}/${ESVN_URI_APPEND}
-		E_S_APPEND=${ESVN_URI_APPEND}
-		E_LIVE_SOURCE="svn"
-		inherit subversion
 	fi
 	E_STATE="live"
 	WANT_AUTOTOOLS="yes"
@@ -98,8 +88,8 @@ case "${EAPI:-0}" in
 esac
 EXPORT_FUNCTIONS ${ENLIGHTENMENT_EXPF}
 
-DESCRIPTION="A DR17 production"
-HOMEPAGE="http://www.enlightenment.org/"
+DESCRIPTION="An Enlightenment Foundation production"
+HOMEPAGE="https://www.enlightenment.org"
 if [[ -z ${SRC_URI} ]] ; then
 	case ${EURI_STATE:-${E_STATE}} in
 	release) SRC_URI="mirror://sourceforge/enlightenment/${P}.tar.gz";;
@@ -126,7 +116,6 @@ esac
 enlightenment_src_unpack() {
 	if [[ ${E_STATE} == "live" ]] ; then
 		case ${E_LIVE_SOURCE} in
-			svn) subversion_src_unpack;;
 			git) git-2_src_unpack;;
 			*)   die "eek!";;
 		esac
@@ -147,7 +136,6 @@ enlightenment_src_prepare() {
 		# autotools require README, when README.in is around, but README
 		# is created later in configure step
 		[[ -f README.in ]] && touch README
-		export SVN_REPO_PATH=${ESVN_WC_PATH}
 		eautoreconf
 	fi
 	epunt_cxx
@@ -178,7 +166,7 @@ enlightenment_src_compile() {
 
 enlightenment_src_install() {
 	V=1 emake install DESTDIR="${D}" || die
-	find "${D}" '(' -name CVS -o -name .svn -o -name .git ')' -type d -exec rm -rf '{}' \; 2>/dev/null
+	find "${D}" '(' -name CVS -o -name -o -name .git ')' -type d -exec rm -rf '{}' \; 2>/dev/null
 	for d in AUTHORS ChangeLog NEWS README TODO ${EDOCS}; do
 		[[ -f ${d} ]] && dodoc ${d}
 	done
