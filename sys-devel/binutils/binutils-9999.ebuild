@@ -7,8 +7,8 @@ inherit eutils libtool flag-o-matic gnuconfig multilib versionator
 
 DESCRIPTION="Tools necessary to build programs"
 HOMEPAGE="https://sourceware.org/binutils/"
-LICENSE="|| ( GPL-3 LGPL-3 )"
-IUSE="cxx multitarget nls static-libs test"
+LICENSE="GPL-3+"
+IUSE="+cxx multitarget +nls static-libs test"
 
 # Variables that can be set here:
 # PATCH_VER          - the patchset version
@@ -86,12 +86,11 @@ src_unpack() {
 			;;
 	esac
 	mkdir -p "${MY_BUILDDIR}"
-	[[ -d ${WORKDIR}/patch ]] && mkdir "${WORKDIR}"/patch/skip
 }
 
 src_prepare() {
 	if [[ ! -z ${PATCH_VER} ]] ; then
-		elog "Applying binutils-${PATCH_BINUTILS_VER} patchset ${PATCH_VER}"
+		einfo "Applying binutils-${PATCH_BINUTILS_VER} patchset ${PATCH_VER}"
 		eapply "${WORKDIR}/patch"/*.patch
 	fi
 
@@ -132,7 +131,6 @@ src_prepare() {
 	elibtoolize --portage --no-uclibc
 }
 
-# Intended for ebuilds to override to set their own versioning information.
 toolchain-binutils_bugurl() {
 	printf "https://bugs.gentoo.org/"
 }
