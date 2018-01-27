@@ -1,14 +1,14 @@
 DEFINED_PHASES=configure install prepare setup test
-DEPEND=pbs? ( sys-cluster/torque ) vt? ( !dev-libs/libotf !app-text/lcdf-typetools ) elibc_FreeBSD? ( dev-libs/libexecinfo ) !sys-cluster/mpich !sys-cluster/mpich2 !sys-cluster/mpiexec fortran? ( virtual/fortran )
+DEPEND=pbs? ( sys-cluster/torque ) vt? ( !dev-libs/libotf !app-text/lcdf-typetools ) elibc_FreeBSD? ( || ( dev-libs/libexecinfo >=sys-freebsd/freebsd-lib-10.0 ) ) !sys-cluster/mpich !sys-cluster/mpich2 !sys-cluster/mpiexec fortran? ( virtual/fortran )
 DESCRIPTION=A high-performance message passing library (MPI)
 EAPI=5
 HOMEPAGE=http://www.open-mpi.org
 IUSE=+cxx elibc_FreeBSD fortran heterogeneous ipv6 mpi-threads pbs romio threads vt
 KEYWORDS=alpha amd64 ia64 ppc ppc64 sparc x86 ~x86-fbsd
 LICENSE=BSD
-RDEPEND=pbs? ( sys-cluster/torque ) vt? ( !dev-libs/libotf !app-text/lcdf-typetools ) elibc_FreeBSD? ( dev-libs/libexecinfo ) !sys-cluster/mpich !sys-cluster/mpich2 !sys-cluster/mpiexec fortran? ( virtual/fortran )
+RDEPEND=pbs? ( sys-cluster/torque ) vt? ( !dev-libs/libotf !app-text/lcdf-typetools ) elibc_FreeBSD? ( || ( dev-libs/libexecinfo >=sys-freebsd/freebsd-lib-10.0 ) ) !sys-cluster/mpich !sys-cluster/mpich2 !sys-cluster/mpiexec fortran? ( virtual/fortran )
 RESTRICT=mpi-threads? ( test )
 SLOT=0
 SRC_URI=http://www.open-mpi.org/software/ompi/v1.4/downloads/openmpi-1.4.3.tar.bz2
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e7258392d5eda499c1cfa94db650b61	flag-o-matic	02908f00f002f0f07c5b74783d778325	fortran-2	9e7f20c99213f0627ff7f873d4aaa25d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=ef00ecc012cf13d085b9a0a9e819bff4
+_md5_=a46d6b73c15eadf88331c0e196e6c664
