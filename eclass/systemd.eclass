@@ -58,7 +58,7 @@ _systemd_get_dir() {
 # @DESCRIPTION:
 # Get unprefixed unitdir.
 _systemd_get_systemunitdir() {
-	_systemd_get_dir systemdsystemunitdir /usr/lib/systemd/system
+	_systemd_get_dir systemdsystemunitdir /lib/systemd/system
 }
 
 # @FUNCTION: systemd_get_systemunitdir
@@ -107,7 +107,7 @@ systemd_get_userunitdir() {
 # @DESCRIPTION:
 # Get unprefixed utildir.
 _systemd_get_utildir() {
-	_systemd_get_dir systemdutildir /usr/lib/systemd
+	_systemd_get_dir systemdutildir /lib/systemd
 }
 
 # @FUNCTION: systemd_get_utildir
@@ -127,7 +127,7 @@ systemd_get_utildir() {
 # @DESCRIPTION:
 # Get unprefixed systemgeneratordir.
 _systemd_get_systemgeneratordir() {
-	_systemd_get_dir systemdsystemgeneratordir /usr/lib/systemd/system-generators
+	_systemd_get_dir systemdsystemgeneratordir /lib/systemd/system-generators
 }
 
 # @FUNCTION: systemd_get_systemgeneratordir
