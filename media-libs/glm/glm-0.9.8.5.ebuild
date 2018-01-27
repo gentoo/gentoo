@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,6 +15,10 @@ KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="test cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_avx cpu_flags_x86_avx2"
 
 RDEPEND="virtual/opengl"
+
+PATCHES=(
+	"${FILESDIR}/glm-gcc73.patch"
+)
 
 src_configure() {
 	if use test; then
