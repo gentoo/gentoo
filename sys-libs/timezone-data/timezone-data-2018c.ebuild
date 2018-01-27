@@ -87,7 +87,7 @@ src_install() {
 	local zic=""
 	tc-is-cross-compiler && zic="zic=${S}-native/zic"
 	_emake install ${zic} DESTDIR="${D}" LIBDIR="/nukeit"
-	rm -rf "${D}/nukeit" "${ED}/etc" || die
+	rm -rf "${ED}/nukeit" "${ED}/etc" || die
 	# Delete man pages installed by man-pages package.
 	rm "${ED}"/usr/share/man/man5/tzfile.5* "${ED}"/usr/share/man/man8/{tzselect,zdump,zic}.8 || die
 	dodoc CONTRIBUTING README NEWS *.html
