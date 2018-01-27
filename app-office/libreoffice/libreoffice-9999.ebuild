@@ -243,6 +243,8 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 "
 
 PATCHES=(
+	# "${WORKDIR}"/${PATCHSET/.tar.xz/}
+
 	# not upstreamable stuff
 	"${FILESDIR}/${PN}-5.4-system-pyuno.patch"
 	"${FILESDIR}/${PN}-5.3.4.2-kioclient5.patch"
@@ -289,13 +291,9 @@ pkg_setup() {
 }
 
 src_unpack() {
-	[[ -n ${PATCHSET} ]] && unpack ${PATCHSET}
-	use branding && unpack "${BRANDING}"
+	default
 
-	if [[ ${PV} != *9999* ]]; then
-		unpack "${P}.tar.xz"
-		unpack "${PN}-help-${PV}.tar.xz"
-	else
+	if [[ ${PV} = *9999* ]]; then
 		local base_uri branch mypv
 		base_uri="https://anongit.freedesktop.org/git"
 		branch="master"
@@ -310,7 +308,6 @@ src_unpack() {
 }
 
 src_prepare() {
-	[[ -n ${PATCHSET} ]] && eapply "${WORKDIR}/${PATCHSET/.tar.xz/}"
 	default
 
 	AT_M4DIR="m4" eautoreconf
@@ -425,8 +422,8 @@ src_configure() {
 		$(use_enable bluetooth sdremote-bluetooth)
 		$(use_enable coinmp)
 		$(use_enable cups)
-		$(use_enable debug)
 		$(use_enable dbus)
+		$(use_enable debug)
 		$(use_enable eds evolution2)
 		$(use_enable firebird firebird-sdbc)
 		$(use_enable gstreamer gstreamer-1-0)
