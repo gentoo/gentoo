@@ -122,15 +122,6 @@ oracle
 video_cards_geode
 video_cards_voodoo
 
-# not needed on non-sparc systems
-video_cards_sunbw2
-video_cards_suncg14
-video_cards_suncg3
-video_cards_suncg6
-video_cards_sunffb
-video_cards_sunleo
-video_cards_suntcx
-
 # not needed on non-mips systems
 video_cards_newport
 

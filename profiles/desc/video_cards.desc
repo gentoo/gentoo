@@ -6,26 +6,18 @@
 # Keep it sorted.
 
 amdgpu - VIDEO_CARDS setting to build driver for AMDGPU video cards
-apm - VIDEO_CARDS setting to build driver for apm video cards
-ark - VIDEO_CARDS setting to build driver for ark video cards
 ast - VIDEO_CARDS setting to build driver for ASpeedTech video cards
-chips - VIDEO_CARDS setting to build driver for chips video cards
-cirrus - VIDEO_CARDS setting to build driver for cirrus video cards
 dummy - VIDEO_CARDS setting to build driver for dummy video cards
 exynos - VIDEO_CARDS setting to build driver for Samsung Exynos video cards
 freedreno - VIDEO_CARDS setting to build reverse-engineered driver for Qualcomm Adreno cards
 fbdev - VIDEO_CARDS setting to build driver for fbdev video cards
 geode - VIDEO_CARDS setting to build driver for AMD Geode GX and LX video cards
 glint - VIDEO_CARDS setting to build driver for glint video cards
-i128 - VIDEO_CARDS setting to build driver for Number 9 I128 video cards
-i740 - VIDEO_CARDS setting to build driver for Intel i740 video cards
 i915 - VIDEO_CARDS setting to build driver for Intel i915 video cards
 i965 - VIDEO_CARDS setting to build driver for Intel i965 video cards
 imx - VIDEO_CARDS setting to build driver for Freescale i.MX video cards
 intel - VIDEO_CARDS setting to build driver for Intel video cards
-mach64 - VIDEO_CARDS setting to build driver for mach64 video cards
 mga - VIDEO_CARDS setting to build driver for mga video cards
-neomagic - VIDEO_CARDS setting to build driver for neomagic video cards
 newport - VIDEO_CARDS setting to build driver for newport video cards
 nouveau - VIDEO_CARDS setting to build reverse-engineered driver for nvidia cards
 nvidia - VIDEO_CARDS setting to build driver for nvidia video cards
@@ -39,25 +31,9 @@ r300 - VIDEO_CARDS setting to build only r300, r400 and r500 based chips code fo
 r600 - VIDEO_CARDS setting to build only r600, r700, Evergreen and Northern Islands based chips code for radeon
 radeon - VIDEO_CARDS setting to build driver for ATI radeon video cards
 radeonsi - VIDEO_CARDS setting to build only Southern Islands based chips code for radeon
-rendition - VIDEO_CARDS setting to build driver for rendition video cards
-s3 - VIDEO_CARDS setting to build driver for s3 video cards
-s3virge - VIDEO_CARDS setting to build driver for s3virge video cards
-savage - VIDEO_CARDS setting to build driver for savage video cards
 siliconmotion - VIDEO_CARDS setting to build driver for siliconmotion video cards
-sisusb - VIDEO_CARDS setting to build driver for SiS USB video cards
-sis - VIDEO_CARDS setting to build driver for SiS video cards
-sunbw2 - VIDEO_CARDS setting to build driver for sunbw2 video cards
-suncg14 - VIDEO_CARDS setting to build driver for suncg14 video cards
-suncg3 - VIDEO_CARDS setting to build driver for suncg3 video cards
-suncg6 - VIDEO_CARDS setting to build driver for suncg6 video cards
-sunffb - VIDEO_CARDS setting to build driver for sunffb video cards
-sunleo - VIDEO_CARDS setting to build driver for sunleo video cards
-suntcx - VIDEO_CARDS setting to build driver for suntcx video cards
 tdfx - VIDEO_CARDS setting to build driver for tdfx video cards
 tegra - VIDEO_CARDS setting to build driver for tegra video cards
-tga - VIDEO_CARDS setting to build driver for tga video cards
-trident - VIDEO_CARDS setting to build driver for trident video cards
-tseng - VIDEO_CARDS setting to build driver for tseng video cards
 vc4 - VIDEO_CARDS setting to build driver for vc4 video cards
 vesa - VIDEO_CARDS setting to build driver for vesa video cards
 via - VIDEO_CARDS setting to build driver for via video cards

@@ -14,7 +14,6 @@ keyboard - INPUT_DEVICES setting to build driver for keyboard input devices
 libinput - INPUT_DEVICES setting to build driver for libinput input devices
 lirc - INPUT_DEVICES setting to build driver for LIRC input devices (i.e. infra-red remote control)
 mouse - INPUT_DEVICES setting to build driver for mouse input devices
-mutouch - INPUT_DEVICES setting to build driver for mutouch input devices
 roccat_arvo - INPUT_DEVICES setting to build driver for Roccat Arvo input devices
 roccat_isku - INPUT_DEVICES setting to build driver for Roccat Isku input devices
 roccat_iskufx - INPUT_DEVICES setting to build driver for Roccat Isku Fx input devices

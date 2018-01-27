@@ -82,34 +82,20 @@ cman
 clvm
 
 # Many X drivers make no sense on this platform.
-input_devices_acecad
-input_devices_aiptek
 input_devices_elographics
 input_devices_evdev
-input_devices_fpit
-input_devices_hyperpen
 input_devices_joystick
 input_devices_keyboard
 input_devices_mouse
-input_devices_mutouch
-input_devices_penmount
 input_devices_vmmouse
 input_devices_synaptics
 input_devices_tslib
 input_devices_wacom
 video_cards_amdgpu
-video_cards_apm
-video_cards_ark
-video_cards_chips
-video_cards_cirrus
 video_cards_fbdev
 video_cards_geode
 video_cards_glint
-video_cards_i128
-video_cards_i740
-video_cards_mach64
 video_cards_mga
-video_cards_neomagic
 video_cards_nouveau
 video_cards_nv
 video_cards_r100
@@ -119,16 +105,7 @@ video_cards_r300
 video_cards_r600
 video_cards_radeon
 video_cards_radeonsi
-video_cards_rendition
-video_cards_s3
-video_cards_s3virge
-video_cards_savage
-video_cards_sis
-video_cards_sisusb
 video_cards_tdfx
-video_cards_tga
-video_cards_trident
-video_cards_tseng
 video_cards_vesa
 
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (22 Aug 2013)
