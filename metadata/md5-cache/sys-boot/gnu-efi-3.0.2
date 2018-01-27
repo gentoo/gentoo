@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile install
+DEFINED_PHASES=compile install prepare
 DEPEND=sys-apps/pciutils
 DESCRIPTION=Library for build EFI Applications
 EAPI=5
@@ -7,5 +7,5 @@ KEYWORDS=-* ~amd64 ia64 ~x86
 LICENSE=GPL-2+ BSD BSD-2
 SLOT=0
 SRC_URI=mirror://sourceforge/gnu-efi/gnu-efi-3.0.2.tar.bz2
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=9602fdfc8458d08e08b5c961643ace1e
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_md5_=0408b887dd8573ce9e3d2a4513ab5039

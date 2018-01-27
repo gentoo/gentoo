@@ -1,11 +1,11 @@
 DEFINED_PHASES=compile install test unpack
 DEPEND=>=app-arch/rpm2targz-9.0.0.3g
-DESCRIPTION=Fedora official background artwork
+DESCRIPTION=Fedora 10 official background artwork
 EAPI=6
-HOMEPAGE=https://fedoraproject.org/wiki/F11_Artwork
+HOMEPAGE=https://fedoraproject.org/wiki/Artwork/F10Themes/Solar
 KEYWORDS=amd64 x86
 LICENSE=CC-BY-SA-2.0
 SLOT=0
 SRC_URI=mirror://fedora-dev/development/15/source/SRPMS/solar-backgrounds-0.92.0-5.fc15.src.rpm
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e7258392d5eda499c1cfa94db650b61	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	rpm	f52cfa3a435468d86d3b49c357b9cb35	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	versionator	ce21313503c41896ebcd7d58b0607e37
-_md5_=b19747960928fb650c1ee6a949764997
+_md5_=a37513b74848fa546dcf53d880e5457a
