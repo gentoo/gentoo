@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -36,7 +36,7 @@ COMMON_DEPEND=">=dev-libs/dbus-glib-0.76
 	x11-libs/pango
 	x11-libs/xtrans
 	virtual/libintl
-	elibc_FreeBSD? ( dev-libs/libexecinfo )
+	elibc_FreeBSD? ( || ( dev-libs/libexecinfo >=sys-freebsd/freebsd-lib-10.0 ) )
 	!gtk3? ( >=x11-libs/gtk+-2.14:2 )
 	gtk3? ( >=x11-libs/gtk+-3.0:3 )
 	systemd? ( sys-apps/systemd )

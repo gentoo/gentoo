@@ -25,7 +25,7 @@ COMMON_DEPEND="
 	>=x11-libs/gtk+-3.18.0:3
 	>=dev-libs/json-glib-0.10
 	>=gnome-base/gnome-desktop-3.18:3=
-	elibc_FreeBSD? ( dev-libs/libexecinfo )
+	elibc_FreeBSD? ( || ( dev-libs/libexecinfo >=sys-freebsd/freebsd-lib-10.0 ) )
 
 	media-libs/mesa[egl,gles2]
 
