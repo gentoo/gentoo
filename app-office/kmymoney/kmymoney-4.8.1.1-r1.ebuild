@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cmake-utils flag-o-matic virtualx
+inherit cmake-utils flag-o-matic gnome2-utils virtualx xdg-utils
 
 DESCRIPTION="Personal finance manager by KDE"
 HOMEPAGE="https://kmymoney.org/"
@@ -11,7 +11,7 @@ SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="4"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="calendar debug doc +handbook hbci ofx quotes test weboob"
 
 COMMON_DEPEND="
@@ -144,4 +144,16 @@ src_install() {
 	# because then khelpcenter can't find the docs
 	[[ -d ${ED%/}/usr/share/doc/HTML ]] &&
 		docompress -x /usr/share/doc/HTML
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }
