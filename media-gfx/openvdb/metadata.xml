@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer restrict="&gt;=media-gfx/openvdb-3.1.0" type="person">
-		<email>j.scruggs@gmail.com</email>
+		<email>dracwyrm@gentoo.org</email>
 		<name>Jonathan Scruggs</name>
 	</maintainer>
 	<maintainer restrict="&gt;=media-gfx/openvdb-3.1.0" type="person">
