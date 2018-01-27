@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup
+DEPEND=>=app-eselect/eselect-rust-0.3_pre20150425 jemalloc? ( dev-libs/jemalloc ) || ( >=dev-lang/python-2.7.5-r2:2.7 ) || ( >=sys-devel/gcc-4.7 >=sys-devel/clang-3.5 ) dev-util/cmake
+DESCRIPTION=Systems programming language from Mozilla
+EAPI=6
+HOMEPAGE=http://www.rust-lang.org/
+IUSE=debug doc extended +jemalloc
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4 UoI-NCSA
+PDEPEND=!extended? ( >=dev-util/cargo-0.24.0 )
+RDEPEND=>=app-eselect/eselect-rust-0.3_pre20150425 jemalloc? ( dev-libs/jemalloc )
+SLOT=stable/1.23
+SRC_URI=https://static.rust-lang.org/dist/rustc-1.23.0-src.tar.gz -> rustc-1.23.0-src.tar.gz amd64? ( https://static.rust-lang.org/dist/rust-1.22.0-x86_64-unknown-linux-gnu.tar.gz ) x86? ( https://static.rust-lang.org/dist/rust-1.22.0-i686-unknown-linux-gnu.tar.gz )
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	python-any-r1	27d7f9da7187d283b7f3eae8390b7b09	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	versionator	ce21313503c41896ebcd7d58b0607e37
+_md5_=331d9f092e9b716f41398e5328d5561c
