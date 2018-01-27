@@ -6,7 +6,7 @@ inherit eutils games
 
 DESCRIPTION="Beneath a Steel Sky: a SciFi thriller set in a bleak vision of the future"
 #HOMEPAGE="http://www.revgames.com/_display.php?id=16"
-HOMEPAGE="http://en.wikipedia.org/wiki/Beneath_a_Steel_Sky"
+HOMEPAGE="https://en.wikipedia.org/wiki/Beneath_a_Steel_Sky"
 SRC_URI="mirror://sourceforge/scummvm/bass-cd-${PV}.zip
 	mirror://gentoo/${PN}.png"
 
