@@ -383,7 +383,7 @@ xemacs - Add support for XEmacs
 xface - Add xface support used to allow a small image of xface format to be included in an email via the header 'X-Face'
 xft - Build with support for XFT font renderer (x11-libs/libXft)
 xine - Add support for the XINE movie libraries
-xinerama - Add support for the (legacy) xinerama X11 extension
+xinerama - Add support for querying multi-monitor screen geometry through the Xinerama API
 xinetd - Add support for the xinetd super-server
 xml - Add support for XML files
 xmlrpc - Support for xml-rpc library
