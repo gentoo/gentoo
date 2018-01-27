@@ -21,7 +21,6 @@ sys-devel/llvm llvm_targets_X86
 
 # Michał Górny <mgorny@gentoo.org> (02 Sep 2013)
 # Packages with optional 64-bit variant.
-app-emulation/wine -abi_x86_64
 www-plugins/adobe-flash -abi_x86_64
 
 # Diego Elio Pettenò <flameeyes@gmail.com> (21 Apr 2011)
