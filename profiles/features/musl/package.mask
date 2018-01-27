@@ -1,0 +1,26 @@
+# Copyright 1999-2018 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+
+sys-libs/uclibc
+sys-libs/uclibc-ng
+sys-libs/glibc
+
+# Older versions of net-mail/mailutils fail on musl, bug #604212
+<net-mail/mailutils-3.2
+
+# We use eudev which is tested on both uclibc and musl
+sys-apps/systemd
+sys-fs/udev
+
+# dev-libs/elfutils needs a port to musl, bug #602126
+dev-libs/elfutils
+>virtual/libelf-2
+
+# packages that unconditionally depend on dev-libs/elfutils
+<net-firewall/fwbuilder-5.3.7
+
+# Ian Stakenvicius, 2017-06-14
+# on behalf of mozilla@gentoo.org
+# Mask firefox-54 and above as it requires rust
+# now, and rust reportedly will not build yet.
+>=www-client/firefox-54.0
