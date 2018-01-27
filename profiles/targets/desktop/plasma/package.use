@@ -1,9 +1,6 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Required by app-office/libreoffice[kde]
->=app-office/libreoffice-6.1 gtk
-
 # Required by kde-apps/okteta
 dev-qt/qtscript:5 scripttools
 
@@ -33,3 +30,6 @@ media-sound/pulseaudio gnome
 
 # Required by kde-frameworks/kactivities
 sys-libs/zlib minizip
+
+# Mitigate media-libs/phonon:4[designer] dep by USE=phonon in make.defaults
+dev-qt/designer:4 -phonon

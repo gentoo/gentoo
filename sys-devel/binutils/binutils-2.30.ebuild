@@ -19,6 +19,8 @@ IUSE="+cxx doc multitarget +nls static-libs test"
 #                      for the patchsets
 #                      Default: dilfridge :)
 
+PATCH_VER=1
+
 case ${PV} in
 	9999)
 		BVER="git"
@@ -29,10 +31,11 @@ case ${PV} in
 		;;
 	*)
 		BVER=${PV}
-		SRC_URI="mirror://gnu/binutils/binutils-${BVER}.tar.xz"
+		SRC_URI="mirror://gnu/binutils/binutils-${BVER}.tar.xz https://sourceware.org/pub/binutils/releases/binutils-${BVER}.tar.xz"
 		;;
 esac
 SLOT="${BVER}"
+#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
 
 #
 # The Gentoo patchset
