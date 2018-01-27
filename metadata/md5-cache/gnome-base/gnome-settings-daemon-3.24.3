@@ -4,7 +4,7 @@ DESCRIPTION=Gnome Settings Daemon
 EAPI=6
 HOMEPAGE=https://git.gnome.org/browse/gnome-settings-daemon
 IUSE=+colord +cups debug input_devices_wacom -openrc-force networkmanager policykit smartcard test +udev wayland test
-KEYWORDS=~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris
+KEYWORDS=~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris
 LICENSE=GPL-2+
 RDEPEND=>=dev-libs/glib-2.44.0:2[dbus] >=x11-libs/gtk+-3.15.3:3[X,wayland?] >=gnome-base/gnome-desktop-3.11.1:3= >=gnome-base/gsettings-desktop-schemas-3.23.3 >=gnome-base/librsvg-2.36.2:2 media-fonts/cantarell media-libs/alsa-lib media-libs/fontconfig media-libs/libcanberra[gtk3] >=media-sound/pulseaudio-2 >=sys-power/upower-0.99:= x11-libs/cairo x11-libs/gdk-pixbuf:2 >=x11-libs/libnotify-0.7.3:= x11-libs/libX11 x11-libs/libxkbfile x11-libs/libXi x11-libs/libXext x11-libs/libXfixes x11-libs/libXtst x11-libs/libXxf86misc x11-misc/xkeyboard-config >=app-misc/geoclue-2.3.1:2.0 >=dev-libs/libgweather-3.9.5:2= >=sci-geosciences/geocode-glib-3.10 >=sys-auth/polkit-0.103 colord? ( >=media-libs/lcms-2.2:2 >=x11-misc/colord-1.0.2:= ) cups? ( >=net-print/cups-1.4[dbus] ) input_devices_wacom? ( >=dev-libs/libwacom-0.7 >=x11-libs/pango-1.20 x11-drivers/xf86-input-wacom virtual/libgudev:= ) networkmanager? ( >=net-misc/networkmanager-1.0 ) smartcard? ( >=dev-libs/nss-3.11.2 ) udev? ( virtual/libgudev:= ) wayland? ( dev-libs/wayland ) gnome-base/dconf !openrc-force? ( sys-apps/systemd ) !<gnome-base/gnome-control-center-2.22 !<gnome-extra/gnome-color-manager-3.1.1 !<gnome-extra/gnome-power-manager-3.1.3 !<gnome-base/gnome-session-3.23.2
 REQUIRED_USE=input_devices_wacom? ( udev ) smartcard? ( udev ) wayland? ( udev )
@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://gnome/sources/gnome-settings-daemon/3.24/gnome-settings-daemon-3.24.3.tar.xz
 _eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e7258392d5eda499c1cfa94db650b61	gnome.org	5e4cc5af3f1b17bdee155bf02e8c2df4	gnome2	6e4acb9c9da2cfa25f2dfedb93bb4a43	gnome2-utils	4d211d7614f303710fca59db6ec12c88	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-any-r1	27d7f9da7187d283b7f3eae8390b7b09	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	systemd	8f5286f89e265842f5b5189666eae88b	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	udev	d91cac2c73b94629cad2daea66e0d182	versionator	ce21313503c41896ebcd7d58b0607e37	virtualx	3a3c4637ea6d5a2113707a644766337c	xdg	6cd76cc914c1a759dee032778487b57f	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=4195813f9dbd2f6d79339fa042e070cc
+_md5_=756fc381f4ac35c373718f199f998cca

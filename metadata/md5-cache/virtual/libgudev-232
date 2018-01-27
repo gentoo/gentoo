@@ -2,8 +2,8 @@ DEFINED_PHASES=-
 DESCRIPTION=Virtual for libgudev providers
 EAPI=6
 IUSE=introspection static-libs abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
-KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh sparc ~x86
+KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh sparc x86
 RDEPEND=>=dev-libs/libgudev-232:0/0[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?,introspection?,static-libs?]
 SLOT=0/0
 _eclasses_=multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	8ffb5e2112a70fef5f37fcacad308726	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=e0eba33b07152b9640abf0ecb384cbfe
+_md5_=59f12f5b713c340fa20a8b440170e37f
