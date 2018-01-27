@@ -31,12 +31,16 @@ src_prepare() {
 		fi
 	fi
 
+	sed -i 's|${DOCPREFIX}/vis|${DOCPREFIX}|' Makefile || die
+	sed -i 's|DOCUMENTATION = LICENSE|DOCUMENTATION =|' Makefile || die
+
 	default
 }
 
 src_configure() {
 	./configure \
 		--prefix="${EROOT}usr" \
+		--docdir="${EROOT}usr/share/doc/${PF}" \
 		$(use_enable ncurses curses) \
 		$(use_enable selinux) \
 		$(use_enable tre) || die
