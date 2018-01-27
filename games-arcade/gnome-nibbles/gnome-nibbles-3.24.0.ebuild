@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Nibbles"
 
 LICENSE="GPL-3+ CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="
