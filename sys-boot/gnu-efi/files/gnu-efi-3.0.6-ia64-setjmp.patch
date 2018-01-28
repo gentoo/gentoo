@@ -1,0 +1,163 @@
+https://sourceforge.net/p/gnu-efi/code/merge-requests/2/
+
+From 0e6995a96b0f5867c8d85fbd251cfbc295a3fc4d Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyfox@gentoo.org>
+Date: Sun, 28 Jan 2018 16:44:21 +0000
+Subject: [PATCH] gnu-efi: fix lib/ia64/setjmp.S IA-64 build failure
+
+The build failed as:
+  lib/ia64/setjmp.S:171: Error: Unknown opcode `ldf.nt1 f26=[r10],8'
+  lib/ia64/setjmp.S:178: Error: Operand 1 of `ldf.fill.nt1' should be a floating-point register
+
+The change syncs longjmp definition with
+    edk2/EdkCompatibilityPkg/Foundation/Library/EdkIIGlueLib/Library/BaseLib/Ipf/setjmp.s
+pulling in:
+- branch in the end of function
+- registers used wrong instruction for float restore
+
+Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+---
+ lib/ia64/setjmp.S | 61 +++++++++++++++++++++++++++----------------------------
+ 1 file changed, 30 insertions(+), 31 deletions(-)
+
+diff --git a/lib/ia64/setjmp.S b/lib/ia64/setjmp.S
+index c806fbc..bbb29d8 100644
+--- a/lib/ia64/setjmp.S
++++ b/lib/ia64/setjmp.S
+@@ -16,11 +16,11 @@ BASIS,
+ 	.globl	setjmp
+ 	.type	setjmp, @function
+ setjmp:
+-	alloc	loc = ar.pfs, 1, 2, 1, 0
++	alloc	loc0 = ar.pfs, 1, 2, 1, 0
+ 	;;
+ 	mov	r14 = ar.unat
+ 	mov	r15 = ar.bsp
+-	add	r10 = 0x10 * 20, in0
++	add	r10 = 0x10*20, in0
+ 	;;
+ 	stf.spill.nta	[in0] = f2, 0x10 
+ 	st8.spill.nta	[r10] = r4, 8
+@@ -98,29 +98,25 @@ setjmp:
+ 
+ 	.globl	longjmp
+ 	.type	longjmp, @function
+-	.regstk
++	.regstk 2, 0, 0, 0
+ longjmp:
+-	add		r10 = 0x10 * 20 + 8*14, in0
+-	movl		r2 = ~(((1<<14) - 1) << 16) | 3)
++	add		r10 = 0x10*20 + 8*14, in0
++	movl		r2  = ~((((1<<14) - 1) << 16) | 3)
+ 	;;
+ 	ld8.nt1		r14 = [r10], -8*2
+ 	mov		r15 = ar.bspstore
+ 	;;
+ 	ld8.nt1		r17 = [r10], -8
+ 	mov		r16 = ar.rsc
+-	cmp.leu		p6 = r14, r15
++	cmp.leu		p6  = r14, r15
+ 	;;
+ 	ld8.nt1		r18 = [r10], -8
+ 	ld8.nt1		r25 = [r10], -8
+-	and		r2 = r16, r2
++	and		r2  = r16, r2
+ 	;;
+-	ldf.fill.nt1	f2 = [in0], 0x10
++	ldf.fill.nt1	f2  = [in0], 0x10
+ 	ld8.nt1		r24 = [r10], -8
+-	mov		b5 = r25
+-	;;
+-	mov		ar.rsc = r2
+-	ld8.nt1		r23 = [r10], -8
+-	mov		b5 = r25
++	mov		b5  = r25
+ 	;;
+ 	mov		ar.rsc = r2
+ 	ld8.nt1		r23 = [r10], -8
+@@ -137,51 +133,51 @@ _skip_flushrs:
+ 	mov		r31 = ar.rnat
+ 	loadrs
+ 	;;
+-	ldf.fill.nt1	f4 = [in0], 0x10
++	ldf.fill.nt1	f4  = [in0], 0x10
+ 	ld8.nt1		r22 = [r10], -8
+-	dep		r2 = -1, r14, 3, 6
++	dep		r2  = -1, r14, 3, 6
+ 	;;
+-	ldf.fill.nt1	f5 = [in0], 0x10
+-	ld8.nt1		f21 = [r10], -8
+-	cmp		p6 = r2, r15
++	ldf.fill.nt1	f5  = [in0], 0x10
++	ld8.nt1		r21 = [r10], -8
++	cmp.ltu		p6  = r2, r15
+ 	;;
+ 	ld8.nt1		r20 = [r10], -0x10
+ (p6)	ld8.nta		r31 = [r2]
+-	mov		b3 = r23
++	mov		b3  = r23
+ 	;;
+ 	ldf.fill.nt1	f16 = [in0], 0x10
+-	ld8.fill.nt1	r7 = [r10], -8
+-	mov		b2 = r22
++	ld8.fill.nt1	r7  = [r10], -8
++	mov		b2  = r22
+ 	;;
+ 	ldf.fill.nt1	f17 = [in0], 0x10
+-	ld8.fill.nt1	r6 = [r10], -8
+-	mov		b1 = r21
++	ld8.fill.nt1	r6  = [r10], -8
++	mov		b1  = r21
+ 	;;
+ 	ldf.fill.nt1	f18 = [in0], 0x10
+-	ld8.fill.nt1	r5 = [r10], -8
+-	mov		b0 = r20
++	ld8.fill.nt1	r5  = [r10], -8
++	mov		b0  = r20
+ 	;;
+ 	ldf.fill.nt1	f19 = [in0], 0x10
+-	ld8.fill.nt1	r4 = [r10], 8*13
++	ld8.fill.nt1	r4  = [r10], 8*13
+ 	;;
+ 	ldf.fill.nt1	f20 = [in0], 0x10
+ 	ld8.nt1		r19 = [r10], 0x10
+ 	;;
+ 	ldf.fill.nt1	f21 = [in0], 0x10
+-	ldf.nt1		f26 = [r10], 8
++	ld8.nt1		r26 = [r10], 8
+ 	mov		ar.pfs = r19
+ 	;;
+ 	ldf.fill.nt1	f22 = [in0], 0x10
+ 	ld8.nt1		r27 = [r10], 8
+-	mov		pr = r26, -1
++	mov		pr  = r26, -1
+ 	;;
+-	ldf.fill.nt1	r23 = [in0], 0x10
++	ldf.fill.nt1	f23 = [in0], 0x10
+ 	ld8.nt1		r28 = [r10], -17*8 - 0x10
+ 	mov		ar.lc = r27
+ 	;;
+ 	ldf.fill.nt1	f24 = [in0], 0x10
+ 	ldf.fill.nt1	f25 = [in0], 0x10
+-	mov		r8 = in1
++	mov		r8  = in1
+ 	;;
+ 	ldf.fill.nt1	f26 = [in0], 0x10
+ 	ldf.fill.nt1	f31 = [r10], -0x10
+@@ -192,9 +188,12 @@ _skip_flushrs:
+ 	ldf.fill.nt1	f28 = [in0]
+ 	ldf.fill.nt1	f29 = [r10], 0x10*3 + 8*4
+ 	;;
+-	ld8.fill.nt1	sp = [r10]
++	ld8.fill.nt1	sp  = [r10]
+ 	mov		ar.unat = r18
+ 	;;
+ 	mov		ar.bspstore = r14
+ 	mov		ar.rnat = r31
+ 	;;
++	invala
++	mov		ar.rsc = r16
++	br.ret.sptk	b0
+-- 
+2.16.1
+
