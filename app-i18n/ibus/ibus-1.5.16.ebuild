@@ -13,7 +13,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ia64 ppc ppc64 ~sparc x86"
+KEYWORDS="amd64 arm ~arm64 ia64 ppc ppc64 ~sparc x86"
 IUSE="+X +emoji gconf +gtk +gtk2 +introspection kde +libnotify nls +python test vala wayland"
 REQUIRED_USE="emoji? ( gtk )
 	gtk2? ( gtk )
