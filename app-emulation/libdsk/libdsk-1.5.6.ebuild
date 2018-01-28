@@ -12,6 +12,11 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="doc"
 
+src_prepare() {
+	eapply "${FILESDIR}"/${P}-include-sysmacros.patch
+	eapply_user
+}
+
 src_install() {
 	emake DESTDIR="${D}" install
 	DOCS="doc/${PN}.txt doc/${PN}.pdf" einstalldocs
