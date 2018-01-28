@@ -2783,7 +2783,7 @@ dev-java/super-csv 2.3.1: A fast, programmer-friendly, free CSV library for Java
 dev-java/svgsalamander 0.0-r2: a SVG engine for Java
 dev-java/swarmcache 1.0_pre20050106-r1: SwarmCache is a simple but effective distributed cache
 dev-java/swing-layout 1.0.4-r1: Professional cross platform layouts with Swing
-dev-java/swt 3.7.2-r1 3.7.2-r2 3.8.2-r1 3.8.2-r2: GTK based SWT Library
+dev-java/swt 3.7.2-r2 3.8.2-r2: GTK based SWT Library
 dev-java/tablelayout 1.0: Layout manager that makes creating user interfaces fast and easy
 dev-java/tagsoup 1.2.1: A SAX-compliant parser written in Java
 dev-java/tapestry 3.0.4-r2: Dynamic, robust, highly scalable web framework in Java
@@ -8664,7 +8664,7 @@ net-mail/courier-imap 4.15-r2 4.16.2-r1 4.17.3: An IMAP daemon designed specific
 net-mail/cyrus-imapd 3.0.4: The Cyrus IMAP Server
 net-mail/dbmail 3.2.2 3.2.3-r1: Enables storage of mail messages in a relational database
 net-mail/dot-forward 0.71-r3: reads sendmail's .forward files under qmail
-net-mail/dovecot 2.2.29.1 2.2.32: An IMAP and POP3 server written with security primarily in mind
+net-mail/dovecot 2.2.29.1 2.2.32 2.2.33.2-r1: An IMAP and POP3 server written with security primarily in mind
 net-mail/email 2.5.0 3.1.3: Advanced CLI tool for sending email
 net-mail/ezmlm-idx 6.0.0: Simple yet powerful mailing list manager for qmail
 net-mail/fdm 1.7: fetch, filter and deliver mail
