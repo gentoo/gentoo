@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 CATKIN_HAS_MESSAGES=yes
 ROS_SUBDIR=${PN}
 
-inherit ros-catkin
+inherit ros-catkin eutils
 
 DESCRIPTION="ROS plugins that offer message and service publishers for interfacing with gazebo"
 LICENSE="Apache-2.0"
@@ -34,3 +34,12 @@ RDEPEND="
 	dev-ros/std_srvs[${CATKIN_MESSAGES_CXX_USEDEP},${CATKIN_MESSAGES_PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
+SRC_URI="${SRC_URI}
+	mirror://gentoo/gazebo-ros-2.7.3-patches-1.tar.bz2"
+
+src_prepare() {
+	pushd "${WORKDIR}/gazebo_ros_pkgs-${PV}" || die
+	EPATCH_FORCE=yes EPATCH_SUFFIX="patch" epatch "${WORKDIR}/patches"
+	popd || die
+	ros-catkin_src_prepare
+}
