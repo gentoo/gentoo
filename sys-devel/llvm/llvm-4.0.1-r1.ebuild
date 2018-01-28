@@ -60,7 +60,7 @@ DEPEND="${RDEPEND}
 RDEPEND="${RDEPEND}
 	!sys-devel/llvm:0"
 PDEPEND="sys-devel/llvm-common
-	gold? ( sys-devel/llvmgold )"
+	gold? ( >=sys-devel/llvmgold-${SLOT} )"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	|| ( ${ALL_LLVM_TARGETS[*]} )"
