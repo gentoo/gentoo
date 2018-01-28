@@ -8,6 +8,8 @@ RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
 
+RUBY_FAKEGEM_GEMSPEC="cucumber-core.gemspec"
+
 inherit ruby-fakegem
 
 DESCRIPTION="Executable feature scenarios"
