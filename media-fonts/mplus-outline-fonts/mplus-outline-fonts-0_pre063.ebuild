@@ -1,7 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
 inherit font
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge.jp/mplus-fonts/62344/${MY_P}.tar.xz"
 
 LICENSE="mplus-fonts ipafont? ( IPAfont )"
 SLOT="0"
-KEYWORDS="amd64 hppa ia64 ppc x86 ~ppc-macos ~x86-macos"
+KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~x86 ~ppc-macos ~x86-macos"
 IUSE="ipafont"
 RESTRICT="binchecks strip"
 
@@ -34,6 +34,7 @@ src_prepare() {
 	if use ipafont; then
 		cp -p "${IPAFONT_DIR}"/ipag.ttf "${S}" || die
 	fi
+	default
 }
 
 src_compile() {
