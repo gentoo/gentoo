@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -126,7 +126,7 @@ python_compile_all() {
 python_install_all() {
 	distutils-r1_python_install_all
 
-	newinitd "${FILESDIR}/glance.initd-2" glance-api
+	newinitd "${FILESDIR}/glance.initd" glance-api
 
 	diropts -m 0750 -o glance -g glance
 	dodir /var/log/glance /var/lib/glance/images /var/lib/glance/scrubber

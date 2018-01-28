@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -178,7 +178,7 @@ python_install_all() {
 	dodir /etc/cinder/rootwrap.d
 
 	for svc in api scheduler volume; do
-		newinitd "${FILESDIR}/cinder.initd-2" cinder-${svc}
+		newinitd "${FILESDIR}/cinder.initd" cinder-${svc}
 	done
 
 	insinto /etc/cinder

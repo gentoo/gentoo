@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -200,11 +200,11 @@ python_install_all() {
 
 	if use !compute-only; then
 		for svc in api conductor consoleauth network scheduler spicehtml5proxy xvpvncproxy; do
-			newinitd "${FILESDIR}/nova.initd-2" "nova-${svc}"
+			newinitd "${FILESDIR}/nova.initd" "nova-${svc}"
 		done
 	fi
-	use compute && newinitd "${FILESDIR}/nova.initd-2" "nova-compute"
-	use novncproxy && newinitd "${FILESDIR}/nova.initd-2" "nova-novncproxy"
+	use compute && newinitd "${FILESDIR}/nova.initd" "nova-compute"
+	use novncproxy && newinitd "${FILESDIR}/nova.initd" "nova-novncproxy"
 
 	diropts -m 0750 -o nova -g qemu
 	dodir /var/log/nova /var/lib/nova/instances
