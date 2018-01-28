@@ -64,7 +64,7 @@ app-admin/gamin 0.1.10-r1: Meta package providing the File Alteration Monitor AP
 app-admin/genromfs 0.5.2: Create space-efficient, small, read-only romfs filesystems
 app-admin/gentoo-rsync-mirror 1.0-r5: Ebuild for setting up a Gentoo rsync mirror
 app-admin/gkrellm 2.3.10-r1: Single process stack of various system monitors
-app-admin/glance 14.0.0 15.0.0: Services for discovering, registering, and retrieving VM images
+app-admin/glance 15.0.0: Services for discovering, registering, and retrieving VM images
 app-admin/gnome-system-log 3.9.90: System log viewer for GNOME
 app-admin/grubconfig 1.28-r2: Simple Tool to configure Grub-Bootloader
 app-admin/gtkdiskfree 2.0.1-r1: Graphical tool to show free disk space
@@ -5071,32 +5071,32 @@ dev-python/openstackdocstheme 1.16.1: Theme and extension support for Sphinx doc
 dev-python/openstacksdk 0.8.2 0.9.5 0.9.13 0.9.17: A collection of libraries for building applications to work with OpenStack.
 dev-python/optcomplete 1.2-r1: Shell completion self-generator for Python
 dev-python/ordereddict 1.1: A drop-in substitute for Py2.7's new collections.OrderedDict that works in Python 2.4-2.6.
-dev-python/os-brick 1.11.0 1.15.4: OpenStack Cinder brick library for managing local volume attaches
-dev-python/os-client-config 1.16.0 1.21.1 1.26.0 1.28.0: OpenStack Client Configuation Library
-dev-python/os-testr 0.6.0 0.8.0: A testr wrapper to provide functionality for OpenStack projects
+dev-python/os-brick 1.15.5: OpenStack Cinder brick library for managing local volume attaches
+dev-python/os-client-config 1.28.0: OpenStack Client Configuation Library
+dev-python/os-testr 0.8.0: A testr wrapper to provide functionality for OpenStack projects
 dev-python/os-traits 0.3.3: os-traits is a library containing standardized trait strings.
-dev-python/os-vif 1.2.1 1.4.1 1.7.0: OpenStack Cinder brick library for managing local volume attaches
-dev-python/os-win 0.4.0 1.2.1 1.4.1 2.2.0: Windows / Hyper-V library for OpenStack projects.
-dev-python/os-xenapi 0.1.1 0.2.0: XenAPI library for OpenStack projects
+dev-python/os-vif 1.7.0: OpenStack Cinder brick library for managing local volume attaches
+dev-python/os-win 2.2.0: Windows / Hyper-V library for OpenStack projects.
+dev-python/os-xenapi 0.2.0: XenAPI library for OpenStack projects
 dev-python/osc-lib 1.1.0 1.3.0 1.7.0: A package of common support modules for writing OSC plugins.
-dev-python/oslo-cache 1.17.0 1.25.1: Oslo Caching around dogpile.cache
+dev-python/oslo-cache 1.25.1: Oslo Caching around dogpile.cache
 dev-python/oslo-concurrency 3.21.1: library for running multi-thread, multi-process applications
 dev-python/oslo-config 4.11.1: Oslo Configuration API
 dev-python/oslo-context 2.17.1: Helpers to maintain useful information about a request context
-dev-python/oslo-db 4.17.1 4.25.1: OpenStack Common DB Code
-dev-python/oslo-i18n 3.12.0 3.17.1: Oslo i18n library
-dev-python/oslo-log 3.30.1: OpenStack logging config library, configuration for all openstack projects.
+dev-python/oslo-db 4.25.1: OpenStack Common DB Code
+dev-python/oslo-i18n 3.17.1: Oslo i18n library
+dev-python/oslo-log 3.30.2: OpenStack logging config library, configuration for all openstack projects.
 dev-python/oslo-messaging 5.30.2: Messaging API for RPC and notifications over different messaging transports
 dev-python/oslo-middleware 3.30.1: Components injected into wsgi pipelines to intercept request/response flows.
 dev-python/oslo-policy 1.25.2: Support for RBAC policy enforcement across all OpenStack services
 dev-python/oslo-privsep 1.22.1: OpenStack library for privilege separation.
-dev-python/oslo-reports 1.17.1 1.22.1: generified reports for openstack
+dev-python/oslo-reports 1.22.1: generified reports for openstack
 dev-python/oslo-rootwrap 5.9.2: Allows fine filtering of shell commands to run as root from OpenStack services
-dev-python/oslo-serialization 2.16.1 2.20.1: Oslo Serialization library
-dev-python/oslo-service 1.19.1 1.25.1: Library for running OpenStack services
-dev-python/oslo-sphinx 4.7.0 4.15.2: OpenStack Sphinx Extensions and Theme
-dev-python/oslo-utils 3.22.1 3.28.1: Oslo Utility library
-dev-python/oslo-versionedobjects 1.21.1 1.26.1: A library that provides a generic versioned and RPC-friendly object model.
+dev-python/oslo-serialization 2.20.2: Oslo Serialization library
+dev-python/oslo-service 1.25.1: Library for running OpenStack services
+dev-python/oslo-sphinx 4.15.2: OpenStack Sphinx Extensions and Theme
+dev-python/oslo-utils 3.28.1: Oslo Utility library
+dev-python/oslo-versionedobjects 1.26.1: A library that provides a generic versioned and RPC-friendly object model.
 dev-python/oslo-vmware 2.23.1: Oslo VMware library for OpenStack projects
 dev-python/oslotest 2.17.1: Oslo test framework
 dev-python/osprofiler 1.2.0 1.4.0 1.5.0 1.11.0: OpenStack Profiler Library
@@ -9822,7 +9822,7 @@ sys-apps/xmbmon 2.0.5-r1: Mother Board Monitor Program for X Window System
 sys-auth/bioapi 1.2.3-r2 1.2.4: Framework for biometric-based authentication
 sys-auth/consolekit 0.4.6 1.1.0-r1 1.1.2 1.2.0: Framework for defining and tracking users, login sessions and seats
 sys-auth/fprintd 0.5.0: D-Bus service to access fingerprint readers
-sys-auth/keystone 11.0.3 12.0.0: The Openstack authentication, authorization, and service catalog
+sys-auth/keystone 12.0.0: The Openstack authentication, authorization, and service catalog
 sys-auth/libfprint 0.4.0-r1 0.5.0-r2: library to add support for consumer fingerprint readers
 sys-auth/libnss-mysql 1.5_p20060915-r2: NSS MySQL Library
 sys-auth/munge 0.5.10-r2: An authentication service for creating and validating credentials
@@ -9901,7 +9901,7 @@ sys-boot/unetbootin 625: UNetbootin installs Linux/BSD distributions to a partit
 sys-boot/winusb 1.0.11: Creates windows installer on usb media from an iso image
 sys-cluster/ccs 2.03.09: cluster configuration system to manage the cluster config file
 sys-cluster/ceph 10.2.3-r2: Ceph distributed filesystem
-sys-cluster/cinder 9.1.4 10.0.6 11.0.2: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
+sys-cluster/cinder 11.0.2: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
 sys-cluster/cluster-glue 1.0.11 1.0.12: Library pack for Heartbeat / Pacemaker
 sys-cluster/cman-lib 2.03.09 2.03.09-r1: A library for cluster management common to the various pieces of Cluster Suite
 sys-cluster/corosync 1.3.0 2.3.5: OSI Certified implementation of a complete cluster engine
@@ -9916,7 +9916,7 @@ sys-cluster/ganglia 3.7.1-r1: A scalable distributed monitoring system for clust
 sys-cluster/ganglia-web 3.5.8-r1: Web frontend for sys-cluster/ganglia
 sys-cluster/glusterfs 3.12.3: GlusterFS is a powerful network/cluster filesystem
 sys-cluster/heartbeat 3.0.5-r3: Heartbeat high availability cluster manager
-sys-cluster/heat 8.0.6 9.0.2: A CloudFormation-compatible openstack-native cloud orchestration engine.
+sys-cluster/heat 9.0.2: A CloudFormation-compatible openstack-native cloud orchestration engine.
 sys-cluster/ipvsadm 1.24 1.26-r2 1.27-r1: utility to administer the IP virtual server services
 sys-cluster/keepalived 1.2.24 1.3.5: A strong & robust keepalive facility to the Linux Virtual Server project
 sys-cluster/libdlm 3.2.0: General-purpose Distributed Lock Manager Library
@@ -9924,8 +9924,8 @@ sys-cluster/libqb 0.17.1 0.17.2: Library providing high performance logging, tra
 sys-cluster/mpe2 1.0.6_p1-r2: MPI development tools
 sys-cluster/mpich 3.0.4 3.2-r1: A high performance and portable MPI implementation
 sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
-sys-cluster/neutron 10.0.4 11.0.2: A virtual network service for Openstack
-sys-cluster/nova 15.1.0 16.0.4: Cloud computing fabric controller (main part of an IaaS system) in Python
+sys-cluster/neutron 11.0.2: A virtual network service for Openstack
+sys-cluster/nova 16.0.4: Cloud computing fabric controller (main part of an IaaS system) in Python
 sys-cluster/openais 1.1.4-r1: Open Application Interface Specification cluster framework
 sys-cluster/openmpi 1.4.3 2.0.2: A high-performance message passing library (MPI)
 sys-cluster/osc-mpiexec 0.83: replacement for mpirun, integrates MPI with PBS
@@ -9934,7 +9934,7 @@ sys-cluster/ploop 1.13.2: openvz tool and a library to control ploop block devic
 sys-cluster/polysh 0.4-r1: Aggregate several remote shells into one
 sys-cluster/resource-agents 3.9.6: Resources pack for Heartbeat / Pacemaker
 sys-cluster/rgmanager 2.03.09 2.03.09-r1: Clustered resource group manager
-sys-cluster/swift 2.13.1-r1 2.15.1-r1 2.16.0: A highly available, distributed, and eventually consistent object/blob store
+sys-cluster/swift 2.15.1-r1 2.16.0: A highly available, distributed, and eventually consistent object/blob store
 sys-cluster/torque 2.5.13-r1 4.1.7-r1: Resource manager and queuing system based on OpenPBS
 sys-cluster/util-vserver 0.30.216_pre3120: Linux-VServer admin utilities
 sys-cluster/vzctl 4.9.4: OpenVZ ConTainers control utility
