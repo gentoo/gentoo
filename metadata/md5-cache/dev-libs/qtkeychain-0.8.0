@@ -1,14 +1,13 @@
-DEFINED_PHASES=compile configure install prepare setup test
-DEPEND=qt5? ( dev-qt/qtcore:5 dev-qt/qtdbus:5 ) qt4? ( dev-qt/qtcore:4 dev-qt/qtdbus:4 ) gnome-keyring? ( gnome-base/libgnome-keyring ) qt5? ( dev-qt/linguist-tools:5 ) sys-devel/make >=dev-util/cmake-3.7.2
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/linguist-tools:5 gnome-keyring? ( gnome-base/libgnome-keyring ) sys-devel/make >=dev-util/cmake-3.7.2
 DESCRIPTION=Qt API for storing passwords securely
 EAPI=6
 HOMEPAGE=https://github.com/frankosterfeld/qtkeychain
-IUSE=gnome-keyring qt4 +qt5
+IUSE=gnome-keyring
 KEYWORDS=~amd64 ~x86
 LICENSE=BSD
-RDEPEND=qt5? ( dev-qt/qtcore:5 dev-qt/qtdbus:5 ) qt4? ( dev-qt/qtcore:4 dev-qt/qtdbus:4 )
-REQUIRED_USE=|| ( qt4 qt5 )
+RDEPEND=dev-qt/qtcore:5 dev-qt/qtdbus:5
 SLOT=0/1
 SRC_URI=https://github.com/frankosterfeld/qtkeychain/archive/v0.8.0.tar.gz -> qtkeychain-0.8.0.tar.gz
-_eclasses_=cmake-utils	202a2becc86cb78ba14baad148d06759	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e7258392d5eda499c1cfa94db650b61	flag-o-matic	02908f00f002f0f07c5b74783d778325	ltprune	2770eed66a9b8ef944714cd0e968182e	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	versionator	ce21313503c41896ebcd7d58b0607e37	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=781ace7a74dc295e5296a1294d4cebef
+_eclasses_=cmake-utils	202a2becc86cb78ba14baad148d06759	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e7258392d5eda499c1cfa94db650b61	flag-o-matic	02908f00f002f0f07c5b74783d778325	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	versionator	ce21313503c41896ebcd7d58b0607e37	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=b0276b562a235dcc68ac95dbb73de026

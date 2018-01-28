@@ -4,10 +4,10 @@ DESCRIPTION=Clam Anti-Virus Scanner
 EAPI=6
 HOMEPAGE=http://www.clamav.net/
 IUSE=bzip2 clamdtop iconv ipv6 libressl milter metadata-analysis-api selinux static-libs uclibc
-KEYWORDS=~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris
+KEYWORDS=~alpha amd64 ~arm ~hppa ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris
 LICENSE=GPL-2
 RDEPEND=bzip2? ( app-arch/bzip2 ) clamdtop? ( sys-libs/ncurses:0 ) iconv? ( virtual/libiconv ) metadata-analysis-api? ( dev-libs/json-c:= ) milter? ( || ( mail-filter/libmilter mail-mta/sendmail ) ) dev-libs/libtommath >=sys-libs/zlib-1.2.2:= !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) sys-devel/libtool || ( dev-libs/libpcre2 >dev-libs/libpcre-6 ) !!<app-antivirus/clamav-0.99 selinux? ( sec-policy/selinux-clamav )
 SLOT=0
 SRC_URI=https://www.clamav.net/downloads/production/clamav-0.99.3.tar.gz
 _eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e7258392d5eda499c1cfa94db650b61	flag-o-matic	02908f00f002f0f07c5b74783d778325	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	systemd	a31844b675f1a1fea87fbe1144aee5f5	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	user	8bc2845510e2109af75e3eeac607ec81
-_md5_=c35d3865e75a2dcca7e4e409639cbecc
+_md5_=a6cf5a29c53633df3e8172f2bb0194ad
