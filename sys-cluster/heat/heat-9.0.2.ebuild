@@ -143,7 +143,7 @@ python_install_all() {
 	dodir /etc/heat/templates
 
 	for svc in api api-cfn engine; do
-		newinitd "${FILESDIR}/heat.initd-2" heat-${svc}
+		newinitd "${FILESDIR}/heat.initd" heat-${svc}
 	done
 
 	insinto /etc/heat
