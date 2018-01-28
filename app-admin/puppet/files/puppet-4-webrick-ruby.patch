@@ -1,0 +1,53 @@
+From a358d5ec01c6f87b39e5bfbab7a35582624fdbf7 Mon Sep 17 00:00:00 2001
+From: Josh Cooper <josh@puppet.com>
+Date: Fri, 12 Jan 2018 15:30:38 -0800
+Subject: [PATCH] (PUP-8297) Don't accept already connected socket
+
+Webrick's start method yields an already connected socket, so it is not
+necessary to call accept on the socket. In ruby versions prior to 2.3.6 and
+2.4.3, the accept call was a noop.
+
+In 2.3.6 and 2.4.3, it is an error, because ruby those versions use a
+non-blocking accept to handle clients that make an TCP connection, but
+are slow to negotiate the TLS handshake[1,2]. On these versions, puppet
+master would report:
+
+    SSL_accept returned=1 errno=0 state=unknown state: unexpected record
+
+Remove the call to Socket#accept.
+
+[1] https://bugs.ruby-lang.org/issues/14005
+[2] https://github.com/ruby/ruby/commit/2e728d51e70ed3756ad760c687a08b8487b0112f
+---
+ lib/puppet/network/http/webrick.rb     | 1 -
+ spec/unit/network/http/webrick_spec.rb | 5 +++++
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/lib/puppet/network/http/webrick.rb b/lib/puppet/network/http/webrick.rb
+index 9ebf1763be5..3ac2ff40650 100644
+--- a/lib/puppet/network/http/webrick.rb
++++ b/lib/puppet/network/http/webrick.rb
+@@ -29,7 +29,6 @@ def listen(address, port)
+         if ! IO.select([sock],nil,nil,timeout)
+           raise "Client did not send data within %.1f seconds of connecting" % timeout
+         end
+-        sock.accept
+         @server.run(sock)
+       end
+     end
+diff --git a/spec/unit/network/http/webrick_spec.rb b/spec/unit/network/http/webrick_spec.rb
+index a90fc3f3378..843b0d54c8a 100644
+--- a/spec/unit/network/http/webrick_spec.rb
++++ b/spec/unit/network/http/webrick_spec.rb
+@@ -92,6 +92,11 @@
+       expect(server).to be_listening
+     end
+ 
++    it "is passed an already connected socket" do
++      socket.expects(:accept).never
++      server.listen(address, port)
++    end
++
+     describe "when the REST protocol is requested" do
+       it "should register the REST handler at /" do
+         # We don't care about the options here.
