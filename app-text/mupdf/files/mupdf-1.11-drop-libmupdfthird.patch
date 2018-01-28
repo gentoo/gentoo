@@ -9,3 +9,14 @@
  THREAD_LIB = $(OUT)/libmuthreads.a
  
  MUPDF_OBJ := $(FITZ_OBJ) $(FONT_OBJ) $(PDF_OBJ) $(XPS_OBJ) $(SVG_OBJ) $(CBZ_OBJ) $(HTML_OBJ) $(GPRF_OBJ)
+--- mupdf-1.12.0-source/Makefile
++++ mupdf-1.12.0-source/Makefile
+@@ -343,7 +343,7 @@
+ 
+ THREAD_OBJ := $(THREAD_OBJ)
+ 
+-$(MUPDF_LIB) : $(MUPDF_OBJ)
++$(MUPDF_LIB) : $(MUPDF_OBJ) $(THIRD_OBJ)
+ $(THIRD_LIB) : $(THIRD_OBJ)
+ $(THREAD_LIB) : $(THREAD_OBJ)
+ 
