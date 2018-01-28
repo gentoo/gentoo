@@ -11,7 +11,7 @@ SRC_URI="http://www.conserver.com/${P}.tar.gz"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="alpha amd64 ia64 ~ppc ~ppc64 ~sparc x86"
 IUSE="kerberos libressl pam ssl tcpd debug"
 
 DEPEND="ssl? (
