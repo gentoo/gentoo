@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# It is necessary to run the binary from the root of the data directory
+# for the binary to properly locate its assets and load properly.
+# Upstream's original install procedure is doing the same thing.
+
+SERVER=/usr/bin/redeclipse_server_linux
+CLIENT=/usr/bin/redeclipse_linux
+cd /usr/share/redeclipse || exit 1
+[ "$0" = "redeclipse_server" ] && exec $SERVER || exec $CLIENT
