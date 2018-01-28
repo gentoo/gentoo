@@ -295,8 +295,12 @@ amd64		default/linux/musl/amd64				exp
 amd64		hardened/linux/musl/amd64				exp
 amd64		default/linux/musl/amd64/x32				exp
 amd64		hardened/linux/musl/amd64/x32				exp
+amd64		default/linux/amd64/17.0/musl				exp
+amd64		default/linux/amd64/17.0/musl/hardened			exp
 arm		default/linux/musl/arm/armv7a				exp
 arm		hardened/linux/musl/arm/armv7a				exp
+arm		default/linux/arm/17.0/musl/armv7a			exp
+arm		default/linux/arm/17.0/musl/armv7a/hardened		exp
 arm64		default/linux/musl/arm64 				exp
 arm64		hardened/linux/musl/arm64 				exp
 mips		default/linux/musl/mips					exp
@@ -307,6 +311,7 @@ ppc		default/linux/musl/ppc					exp
 ppc		hardened/linux/musl/ppc					exp
 x86		default/linux/musl/x86					exp
 x86		hardened/linux/musl/x86					exp
+x86		default/linux/x86/17.0/musl				exp
 
 # Non-embedded uclibc profiles
 # @MAINTAINER: uclibc@gentoo.org

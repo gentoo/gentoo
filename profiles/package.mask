@@ -473,59 +473,6 @@ dev-util/conan
 # Removal in 30 days
 app-admin/jinit
 
-# Pacho Ramos <pacho@gentoo.org> (28 Dec 2017)
-# Dead since 2005, nothing requires it, installs object files in
-# /usr/share/doc (#451792). Removal in a month.
-media-libs/libdvb
-
-# Pacho Ramos <pacho@gentoo.org> (28 Dec 2017)
-# Fails to build (#595706), nothing requires it. Removal in a month.
-dev-lang/blassic
-
-# Pacho Ramos <pacho@gentoo.org> (28 Dec 2017)
-# Needs to be migrated to pycryptodome, this was merged into paramiko
-# (#611616). Removal in a month.
-dev-python/ssh
-dev-python/starcluster
-
-# Pacho Ramos <pacho@gentoo.org> (28 Dec 2017)
-# Fails with recent boost (#617060, #598702). Removal in a month.
-media-gfx/aqsis
-
-# Pacho Ramos <pacho@gentoo.org> (28 Dec 2017)
-# A major version bump is needed (#412447), fails with multilib-strict
-# (#613542), not compatible with newer imagemagick (#619514), cannot be
-# downloaded (#635566). Removal in a month.
-media-libs/vips
-media-gfx/nip2
-
-# Pacho Ramos <pacho@gentoo.org> (28 Dec 2017)
-# Multiple build failures and bugs (#634316), fails with recent lua
-# (#434242), init script is buggy (#496724), bash completion files installed
-# wrongly (#526280), fails with newer botan (#537572). Removal in a month.
-dev-vcs/monotone
-
-# Pacho Ramos <pacho@gentoo.org> (28 Dec 2017)
-# Fails to build (#622110), upstream dead for years. Removal in a month.
-app-misc/tasque
-
-# Pacho Ramos <pacho@gentoo.org> (28 Dec 2017)
-# Sebastian Pipping <sping@gentoo.org> (12 Jan 2018)
-# Needs a major version bump and relies on lots of dead libs (#624160).
-# Removal in a month.
-<x11-terms/terminator-1.91
-
-# Pacho Ramos <pacho@gentoo.org> (28 Dec 2017)
-# Requires dead gnome2 python bindings (#629180) and old gstreamer, also all
-# zeitgeist stack has important bugs and upstream is gone (#629180#c2):
-# zeitgeist-explorer doesn't start (#622084), activity-log-manager fails to
-# build (#625140), 
-gnome-extra/gnome-activity-journal
-gnome-extra/zeitgeist-explorer
-gnome-extra/activity-log-manager
-gnome-extra/zeitgeist
-dev-libs/libzeitgeist
-
 # Pacho Ramos <pacho@gentoo.org> (27 Dec 2017)
 # Out ebuild is completely obsolete (#381073), download manually PPD is
 # preferred, current tarballs cannot be downloaded even (#635146). Removal
