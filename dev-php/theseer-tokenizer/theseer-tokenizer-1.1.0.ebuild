@@ -3,18 +3,16 @@
 
 EAPI=6
 
-MY_PN="tokenizer"
-
-DESCRIPTION="Library for converting tokenized PHP source code into XML and other formats"
+DESCRIPTION="Convert tokenized PHP source code into XML and other formats"
 HOMEPAGE="https://github.com/theseer/tokenizer"
-SRC_URI="https://github.com/theseer/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="${HOMEPAGE}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="test"
 
-S="${WORKDIR}/${MY_PN}-${PV}"
+S="${WORKDIR}/tokenizer-${PV}"
 
 RDEPEND="dev-php/fedora-autoloader
 	>=dev-lang/php-7.0:*[tokenizer,xmlwriter]"
@@ -28,7 +26,7 @@ src_prepare() {
 
 src_install() {
 	insinto /usr/share/php/TheSeer/Tokenizer
-	doins -r src/*
+	doins src/*.php
 	dodoc README.md
 }
 
