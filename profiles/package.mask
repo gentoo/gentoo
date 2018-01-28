@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (28 Jan 2018)
+# Dead upstream, depends on deprecated Qt4.
+# Masked for removal in 30 days. Bug #644558
+media-video/qgifer
+
 # Patrice Clement <monsieurp@gentoo.org> (26 Jan 2018)
 # Has different symbols. Known to cause issues with i3bar/swaybar.
 media-fonts/fontawesome:0/5
@@ -68,7 +73,6 @@ dev-ruby/test-unit:0
 dev-ruby/tilt:0
 virtual/ruby-minitest
 www-apps/jekyll-gist
-
 
 # Andreas Sturmlechner <asturm@gentoo.org> (23 Jan 2018)
 # Depends on deprecated Qt4, no revdeps left.
