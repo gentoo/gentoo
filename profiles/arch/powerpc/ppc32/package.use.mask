@@ -1,5 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+# Andreas Sturmlechner <asturm@gentoo.org> (29 Jan 2018)
+# Requires media-libs/libffado, which requires dev-python/PyQt5,
+# which is not keyworded.
+media-sound/jack2 ieee1394
 
 # Sergei Trofimovich <slyfox@gentoo.org> (3 Oct 2017)
 # Incomplete support, bug #605878.
