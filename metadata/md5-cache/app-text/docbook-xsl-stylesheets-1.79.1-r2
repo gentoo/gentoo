@@ -5,9 +5,9 @@ HOMEPAGE=https://github.com/docbook/wiki/wiki
 IUSE=ruby
 KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=BSD
-RDEPEND=>=app-text/build-docbook-catalog-1.1 ruby? ( || ( dev-lang/ruby:2.2 dev-lang/ruby:2.3 ) virtual/rubygems )
+RDEPEND=>=app-text/build-docbook-catalog-1.1 ruby? ( || ( dev-lang/ruby:2.3 dev-lang/ruby:2.2 ) virtual/rubygems )
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/docbook/docbook-xsl-1.79.1.tar.bz2
-_eclasses_=ruby-single	7435c1687c234eb8cf5b212756f6381e	ruby-utils	4ef362ae9cebac7c62680b608e2a675b
+_eclasses_=ruby-single	7435c1687c234eb8cf5b212756f6381e	ruby-utils	e5942a80e3c3b936c6b84d6dc4af9f9c
 _md5_=635ecc7e95bcbf73839349da39fe6fc7
