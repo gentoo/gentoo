@@ -17,6 +17,7 @@ IUSE="debug test"
 RDEPEND="
 	dev-libs/glib:2
 	dev-qt/qtcore:5
+	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
 	>=sys-auth/libyubikey-1.6
 	>=sys-auth/ykpers-1.14.0
