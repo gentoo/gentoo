@@ -2,12 +2,12 @@ DEFINED_PHASES=configure install prepare pretend
 DEPEND=!libressl? ( dev-libs/openssl:0=[-bindist] ) libressl? ( dev-libs/libressl:0= ) dev-libs/libevent dev-libs/univalue >=dev-libs/boost-1.52.0:=[threads(+)] >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Command-line JSON-RPC client specifically for interfacing with bitcoind
 EAPI=6
-HOMEPAGE=http://bitcoincore.org/ http://bitcoinknots.org/
+HOMEPAGE=https://bitcoincore.org/ https://bitcoinknots.org/
 IUSE=knots libressl
 KEYWORDS=~amd64 ~arm ~arm64 ~mips ~ppc x86 ~amd64-linux ~x86-linux
 LICENSE=MIT
 RDEPEND=!libressl? ( dev-libs/openssl:0=[-bindist] ) libressl? ( dev-libs/libressl:0= ) dev-libs/libevent dev-libs/univalue >=dev-libs/boost-1.52.0:=[threads(+)]
 SLOT=0
-SRC_URI=https://github.com/bitcoin/bitcoin/archive/7b57bc998f334775b50ebc8ca5e78ca728db4c58.tar.gz -> bitcoin-v0.15.1.tar.gz http://bitcoinknots.org/files/0.15.x/0.15.1.knots20171111/bitcoin-0.15.1.knots20171111.patches.txz -> bitcoin-0.15.1.knots20171111.patches.tar.xz
+SRC_URI=https://github.com/bitcoin/bitcoin/archive/7b57bc998f334775b50ebc8ca5e78ca728db4c58.tar.gz -> bitcoin-v0.15.1.tar.gz https://bitcoinknots.org/files/0.15.x/0.15.1.knots20171111/bitcoin-0.15.1.knots20171111.patches.txz -> bitcoin-0.15.1.knots20171111.patches.tar.xz
 _eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=002080c22c0b089cce6c751b0fa203e5
+_md5_=764a8508bbc9535853005b66fc946f90

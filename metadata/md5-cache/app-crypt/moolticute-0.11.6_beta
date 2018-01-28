@@ -7,6 +7,6 @@ KEYWORDS=~amd64 ~arm
 LICENSE=GPL-3
 RDEPEND=>=dev-libs/libusb-1.0.20 >=dev-qt/qtcore-5.6:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qttest:5 dev-qt/qtwebsockets:5 dev-qt/qtwidgets:5
 SLOT=0
-SRC_URI=https://github.com/mooltipass/moolticute/archive/v0.11.4-beta.tar.gz -> moolticute-0.11.4_beta.tar.gz
+SRC_URI=https://github.com/mooltipass/moolticute/archive/v0.11.6-beta.tar.gz -> moolticute-0.11.6_beta.tar.gz
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e7258392d5eda499c1cfa94db650b61	gnome2-utils	4d211d7614f303710fca59db6ec12c88	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	udev	d91cac2c73b94629cad2daea66e0d182	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=4094b0144eed372137d2b47d34055410
+_md5_=4e9ce8403a081e97fee544d363655a9e

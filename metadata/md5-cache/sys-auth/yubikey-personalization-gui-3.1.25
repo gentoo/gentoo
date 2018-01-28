@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=dev-libs/glib:2 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 >=sys-auth/libyubikey-1.6 >=sys-auth/ykpers-1.14.0 virtual/libusb:1 virtual/pkgconfig test? ( dev-qt/qttest:5 )
+DESCRIPTION=GUI for personalization of Yubico's YubiKey
+EAPI=6
+HOMEPAGE=https://github.com/Yubico/yubikey-personalization-gui
+IUSE=debug test
+KEYWORDS=~amd64
+LICENSE=BSD-2
+RDEPEND=dev-libs/glib:2 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 >=sys-auth/libyubikey-1.6 >=sys-auth/ykpers-1.14.0 virtual/libusb:1
+SLOT=0
+SRC_URI=https://github.com/Yubico/yubikey-personalization-gui/archive/yubikey-personalization-gui-3.1.25.tar.gz
+_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e7258392d5eda499c1cfa94db650b61	flag-o-matic	02908f00f002f0f07c5b74783d778325	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_md5_=bfa73ac67ce7e931b2393dae119e6e97

@@ -8,6 +8,6 @@ LICENSE=GPL-3
 RDEPEND=dev-perl/Config-General dev-perl/Date-Calc dev-perl/Data-UUID dev-perl/Filesys-Df dev-perl/glib-perl dev-perl/Goo-Canvas dev-perl/Gtk2-Ex-PodViewer dev-perl/Gtk2-Ex-Simple-List dev-perl/Gtk2-ImageView dev-perl/Gtk2 dev-perl/HTML-Parser dev-perl/Image-Sane dev-perl/Locale-gettext dev-perl/List-MoreUtils dev-perl/Log-Log4perl dev-perl/PDF-API2 dev-perl/Proc-ProcessTable dev-perl/Readonly dev-perl/Set-IntSpan dev-perl/Try-Tiny virtual/perl-Archive-Tar virtual/perl-Carp virtual/perl-Data-Dumper virtual/perl-File-Temp virtual/perl-Getopt-Long virtual/perl-threads virtual/perl-threads-shared media-gfx/gtkimageview media-gfx/imagemagick[png,tiff,perl] media-gfx/sane-backends media-libs/tiff dev-lang/perl:=
 RESTRICT=test
 SLOT=0
-SRC_URI=mirror://sourceforge/gscan2pdf/gscan2pdf-1.8.8.tar.xz
+SRC_URI=mirror://sourceforge/gscan2pdf/gscan2pdf-1.8.11.tar.xz
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e7258392d5eda499c1cfa94db650b61	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=148a7101560699cbe01deb70125216d3
+_md5_=9c7a40d0d5cb402114546f48a4957278
