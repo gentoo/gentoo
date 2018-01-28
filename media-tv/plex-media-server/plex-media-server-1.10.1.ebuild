@@ -21,7 +21,7 @@ SRC_URI="amd64? ( ${URI}/${_FULL_VERSION}/plexmediaserver_${_FULL_VERSION}_amd64
 SLOT="0"
 LICENSE="Plex"
 RESTRICT="bindist strip"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="
@@ -84,7 +84,8 @@ src_install() {
 	doinitd "${FILESDIR}/init.d/${PN}"
 	doconfd "${FILESDIR}/conf.d/${PN}"
 
-	_handle_multilib
+	# Disabling due to Bug 644694
+	#_handle_multilib
 
 	# Install systemd service file
 	local INIT_NAME="${PN}.service"
@@ -106,6 +107,10 @@ pkg_postinst() {
 	elog "Plex Media Server is now installed. Please check the configuration file in /etc/${_SHORTNAME}/${_APPNAME} to verify the default settings."
 	elog "To start the Plex Server, run 'rc-config start plex-media-server', you will then be able to access your library at http://<ip>:32400/web/"
 }
+
+# Bug 644694. We shouldn't register plex libraries in global
+# library path since this will cause other packages on the system
+# to break.
 
 # Finds out where the library directory is for this system
 # and handles ldflags as to not break library dependencies
