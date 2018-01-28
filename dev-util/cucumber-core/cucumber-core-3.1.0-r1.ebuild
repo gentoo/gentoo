@@ -8,6 +8,8 @@ RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
 
+RUBY_FAKEGEM_GEMSPEC="cucumber-core.gemspec"
+
 inherit ruby-fakegem
 
 DESCRIPTION="Executable feature scenarios"
@@ -16,7 +18,7 @@ SRC_URI="https://github.com/cucumber/cucumber-ruby-core/archive/v${PV}.tar.gz ->
 RUBY_S="cucumber-ruby-core-${PV}"
 LICENSE="Ruby"
 
-KEYWORDS="~amd64 ~ia64 ~ppc"
+KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~x86"
 SLOT="3.1"
 IUSE="test"
 
