@@ -33,6 +33,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	x11-libs/libXfixes
 	x11-libs/libXrandr
 	x11-libs/libXtst
+	x11-libs/libxkbfile
 	csc? (
 		!libav? ( >=media-video/ffmpeg-1.2.2:0= )
 		libav? ( media-video/libav:0= )
