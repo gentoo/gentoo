@@ -37,7 +37,7 @@ LICENSE="UoI-NCSA rc BSD public-domain
 	llvm_targets_ARM? ( LLVM-Grant )"
 SLOT="7"
 KEYWORDS=""
-IUSE="debug doc gold libedit +libffi ncurses test xar xml
+IUSE="debug doc gold libedit +libffi ncurses symlinks test xar xml
 	kernel_Darwin ${ALL_LLVM_TARGETS[*]}"
 RESTRICT="!test? ( test )"
 
@@ -47,6 +47,10 @@ RDEPEND="
 	libedit? ( dev-libs/libedit:0=[${MULTILIB_USEDEP}] )
 	libffi? ( >=virtual/libffi-3.0.13-r1:0=[${MULTILIB_USEDEP}] )
 	ncurses? ( >=sys-libs/ncurses-5.9-r3:0=[${MULTILIB_USEDEP}] )
+	symlinks? (
+		!sys-devel/binutils
+		!sys-devel/binutils-config
+	)
 	xar? ( app-arch/xar )
 	xml? ( dev-libs/libxml2:2=[${MULTILIB_USEDEP}] )"
 # configparser-3.2 breaks the build (3.3 or none at all are fine)
@@ -130,6 +134,11 @@ multilib_src_configure() {
 
 		# disable OCaml bindings (now in dev-ml/llvm-ocaml)
 		-DOCAMLFIND=NO
+	)
+
+	# create symlinks to locacations for binutils if wanted
+	use symlinks && mycmakeargs+=(
+		-DLLVM_INSTALL_BINUTILS_SYMLINKS=ON
 	)
 
 #	Note: go bindings have no CMake rules at the moment

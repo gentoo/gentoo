@@ -18,6 +18,7 @@
 		<flag name="lldb">Build the lldb debugger</flag>
 		<flag name="multitarget">Build all host targets (default: host only)</flag>
 		<flag name="ncurses">Support querying terminal properties using ncurses' terminfo</flag>
+		<flag name="symlinks">Create symlinks from llvm-binutils programs to their respective gnu-binutils programs</flag>
 		<flag name="sanitize">Build compiler-rt's sanitizers</flag>
 		<flag name="static-analyzer">Install the Clang static analyzer (requires USE=clang)</flag>
 		<flag name="xar">Support dumping LLVM bitcode sections in Mach-O files
