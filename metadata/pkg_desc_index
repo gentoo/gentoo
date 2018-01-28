@@ -117,7 +117,7 @@ app-admin/quickswitch 1.05: Utility to switch network profiles on the fly
 app-admin/radmind 1.14.1-r1: command-line tools and server to remotely administer multiple Unix filesystems
 app-admin/ranpwd 1.2: Generate random passwords using the in-kernel cryptographically
 app-admin/reportmagic 2.21: Makes usable statistics from your web site log file analysis
-app-admin/rsyslog 8.19.0 8.24.0-r2 8.26.0-r1 8.27.0-r1 8.28.0: An enhanced multi-threaded syslogd with database support and more
+app-admin/rsyslog 8.19.0 8.24.0-r2 8.26.0-r1 8.27.0-r1 8.28.0 8.32.0-r1: An enhanced multi-threaded syslogd with database support and more
 app-admin/sagan 0.2.3 1.0.0_rc3: Sagan is a multi-threaded, real time system and event log monitoring system
 app-admin/sagan-rules 20130430 20140617: Rules for Sagan log analyzer
 app-admin/setools 3.3.8-r7 4.0.1 4.1.1: Policy Analysis Tools for SELinux
@@ -1486,13 +1486,13 @@ app-text/xmlstarlet 1.4.2 1.5.0 1.6.1: A set of tools to transform, query, valid
 app-text/xmlto 0.0.26-r1: script for converting XML and DocBook documents to a variety of output formats
 app-text/xournal 0.4.8: An application for notetaking, sketching, and keeping a journal using a stylus
 app-text/yelp-tools 3.18.0: Collection of tools for building and converting documentation
-app-text/zathura 0.2.9 0.3.7: A highly customizable and functional document viewer
-app-text/zathura-cb 0.1.2 0.1.6: Comic book plug-in for zathura with 7zip, rar, tar and zip support
-app-text/zathura-djvu 0.2.3 0.2.6: DjVu plug-in for zathura
+app-text/zathura 0.3.7: A highly customizable and functional document viewer
+app-text/zathura-cb 0.1.6: Comic book plug-in for zathura with 7zip, rar, tar and zip support
+app-text/zathura-djvu 0.2.6: DjVu plug-in for zathura
 app-text/zathura-meta 0: Meta package for app-text/zathura plugins
 app-text/zathura-pdf-mupdf 0.3.1: PDF plug-in for zathura
-app-text/zathura-pdf-poppler 0.2.5 0.2.7: PDF plug-in for zathura
-app-text/zathura-ps 0.2.2 0.2.4: PostScript plug-in for zathura
+app-text/zathura-pdf-poppler 0.2.7: PDF plug-in for zathura
+app-text/zathura-ps 0.2.4: PostScript plug-in for zathura
 app-text/zemberek-server 0.7.1: A Turkish spell checker server based on Zemberek NLP library
 app-text/zpspell 0.4.3-r1: Zemberek-Pardus spell checker interface
 app-vim/ackvim 1.0.9-r1: vim plugin: run ack from vim
@@ -2952,7 +2952,7 @@ dev-libs/gdl 3.22.0: GNOME docking library
 dev-libs/geoip 1.6.9-r1 1.6.10: GeoIP Legacy C API
 dev-libs/gf-complete 0.0.0: A Comprehensive Open Source Library for Galois Field Arithmetic
 dev-libs/gf2x 1.0-r1: C/C++ routines for fast arithmetic in GF(2)[x]
-dev-libs/girara 0.2.2 0.2.7: UI library that focuses on simplicity and minimalism
+dev-libs/girara 0.2.7: UI library that focuses on simplicity and minimalism
 dev-libs/gjs 1.46.0 1.48.7: Javascript bindings for GNOME
 dev-libs/glib 2.50.3-r1 2.52.3: The GLib library of C routines
 dev-libs/gmime 2.6.23 3.0.5: Utilities for creating and parsing messages using MIME
@@ -3005,6 +3005,7 @@ dev-libs/libax25 0.0.12_rc4: AX.25 library for hamradio applications
 dev-libs/libbase58 0.1.4: C implementation of Bitcoin's base58 encoding
 dev-libs/libbrahe 1.1.0-r1: A Heterogenous C Library of Numeric Functions
 dev-libs/libbsd 0.8.3 0.8.6: An library to provide useful functions commonly found on BSD systems
+dev-libs/libbson 1.8.2: A BSON utility library
 dev-libs/libbulletml 0.0.6: A Library of Bullet Markup Language
 dev-libs/libburn 1.4.6 1.4.8-r1: Open-source library for reading, mastering and writing optical discs
 dev-libs/libbytesize 1.2-r1: Tiny library providing a C "class" for working with arbitrary big sizes in bytes
@@ -3038,7 +3039,7 @@ dev-libs/libevocosm 3.3.1-r1: A C++ framework for evolutionary computing
 dev-libs/libexplain 1.4: Library which may be used to explain Unix and Linux system call errors
 dev-libs/libezV24 0.1.1: library that provides an easy API to Linux serial ports
 dev-libs/libf2c 20110801-r4: Library that converts FORTRAN to C source
-dev-libs/libfastjson 0.99.2 0.99.4 0.99.6: Fork of the json-c library, which is optimized for liblognorm processing
+dev-libs/libfastjson 0.99.2 0.99.4 0.99.6 0.99.8: Fork of the json-c library, which is optimized for liblognorm processing
 dev-libs/libffi 3.2.1: a portable, high level programming interface to various calling conventions
 dev-libs/libfilezilla 0.9.1: C++ library offering some basic functionality for platform-independent programs
 dev-libs/libg15 1.2.7-r1: The libg15 library gives low-level access to the Logitech G15 keyboard
@@ -3069,7 +3070,7 @@ dev-libs/liblinear 210-r1: A Library for Large Linear Classification
 dev-libs/liblinebreak 2.1: Line breaking library
 dev-libs/liblist 2.4: Generic linked-list manipulation routines, plus queues and stacks
 dev-libs/liblogging 1.0.5 1.0.6: Liblogging is an easy to use, portable, open source library for system logging
-dev-libs/liblognorm 1.1.0 1.1.2-r1 2.0.1 2.0.2 2.0.3: Fast samples-based log normalization library
+dev-libs/liblognorm 1.1.0 1.1.2-r1 2.0.1 2.0.2 2.0.3 2.0.4: Fast samples-based log normalization library
 dev-libs/liblouis 2.5.3: An open-source braille translator and back-translator
 dev-libs/libltdl 1.3.5 1.5.26 2.4.6: A shared library tool for developers
 dev-libs/liblzw 0.2: small C library for reading LZW compressed files (.Z)
@@ -3110,7 +3111,7 @@ dev-libs/libproccpuinfo 0.0.8-r1: Architecture independent C API for reading /pr
 dev-libs/libpthread-stubs 0.3-r1 0.4: Pthread functions stubs for platforms missing them
 dev-libs/libpwquality 1.3.0 1.4.0: Library for password quality checking and generating random passwords
 dev-libs/libqtxdg 2.0.0: A Qt implementation of XDG standards
-dev-libs/librdkafka 0.9.2-r1 0.9.5: Apache Kafka C/C++ client library
+dev-libs/librdkafka 0.9.2-r1 0.9.5 0.11.3: Apache Kafka C/C++ client library
 dev-libs/librelp 1.2.12 1.2.13 1.2.14: An easy to use library for the RELP protocol
 dev-libs/librep 0.92.6: Shared library implementing a Lisp dialect
 dev-libs/libreport 2.0.13-r1: Generic library for reporting software bugs
@@ -3169,7 +3170,7 @@ dev-libs/mathjax 2.2: JavaScript display engine for LaTeX, MathML and AsciiMath
 dev-libs/mimetic 0.9.8: C++ MIME library designed to be easy to use and integrate, fast and efficient.
 dev-libs/mini-xml 2.10: Small XML parsing library to read XML and XML-like data files
 dev-libs/mm 1.4.2-r1: Shared Memory Abstraction Library
-dev-libs/mongo-c-driver 0.7.1-r1: C Driver for MongoDB
+dev-libs/mongo-c-driver 0.7.1-r1 1.8.2: A high-performance MongoDB driver for C
 dev-libs/mpc 1.0.2-r1 1.0.3: A library for multiprecision complex arithmetic with exact rounding
 dev-libs/mpfr 3.1.3_p4 3.1.6: library for multiple-precision floating-point computations with exact rounding
 dev-libs/nettle 3.3-r2: Low-level cryptographic library
@@ -6866,7 +6867,7 @@ lxde-base/lxrandr 0.1.2 0.3.1: LXDE GUI interface to RandR extention
 lxde-base/lxsession 0.5.2: LXDE session manager
 lxde-base/lxsession-edit 0.2.0: LXDE session autostart editor
 lxde-base/lxshortcut 0.1.2: LXDE tool to edit desktop entry files
-lxde-base/lxtask 0.1.6 0.1.7 0.1.8: LXDE Task manager
+lxde-base/lxtask 0.1.7 0.1.8: LXDE Task manager
 lxde-base/lxterminal 0.1.11: Lightweight vte-based tabbed terminal emulator for LXDE
 lxde-base/menu-cache 0.3.3 0.5.1 1.0.0-r1 1.0.1 1.0.2: Library to create and utilize caches to speed up freedesktop application menus
 lxqt-base/liblxqt 0.11.0-r1: Common base library for the LXQt desktop environment
