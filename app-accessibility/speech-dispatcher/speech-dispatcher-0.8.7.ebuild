@@ -36,6 +36,9 @@ RDEPEND="${COMMON_DEPEND}
 	dev-python/pyxdg"
 
 src_configure() {
+	# bug 573732
+	export GIT_CEILING_DIRECTORIES="${WORKDIR}"
+
 	local myeconfargs=(
 		--disable-python
 		$(use_enable static-libs static)
