@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (28 Jan 2018)
+# Masked for testing.
+# At least app-misc/mc is broken when using a 256color TERM setting.
+=sys-libs/ncurses-6.1
+
 # Patrice Clement <monsieurp@gentoo.org> (28 Jan 2018)
 # Duplicate of app-admin/clog. My apologies.
 # Masked for removal in 30 days.
