@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,5 +14,5 @@ DESCRIPTION="a simpler alternative to Regular Expressions"
 HOMEPAGE="https://github.com/cucumber/cucumber-expressions-ruby#readme"
 LICENSE="MIT"
 
-KEYWORDS="~amd64 ~ia64 ~ppc"
+KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~x86"
 SLOT="5.0"
