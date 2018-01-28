@@ -70,9 +70,13 @@ src_install() {
 	if ! use dedicated; then
 		dobin src/redeclipse_linux
 		newicon "src/install/nix/${PN}_x128.png" "${PN}.png"
-		make_desktop_entry "src/install/nix/${PN}.desktop"
+		domenu "src/install/nix/${PN}.desktop"
 		doman doc/man/redeclipse.6
 	fi
+
+	dobin "${FILESDIR}/redeclipse"
+	cd /usr/bin || die
+	dosym redeclipse redeclipse_server
 
 	doman doc/man/redeclipse-server.6
 	dodoc readme.txt doc/examples/servinit.cfg
