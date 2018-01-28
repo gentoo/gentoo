@@ -6,7 +6,7 @@ ROS_REPO_URI="https://github.com/ros-simulation/gazebo_ros_pkgs"
 KEYWORDS="~amd64"
 ROS_SUBDIR=${PN}
 
-inherit ros-catkin
+inherit ros-catkin eutils
 
 DESCRIPTION="ROS control plugins for gazebo"
 LICENSE="BSD"
@@ -31,3 +31,12 @@ RDEPEND="
 	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}"
+SRC_URI="${SRC_URI}
+	mirror://gentoo/gazebo-ros-2.7.3-patches-1.tar.bz2"
+
+src_prepare() {
+	pushd "${WORKDIR}/gazebo_ros_pkgs-${PV}" || die
+	EPATCH_FORCE=yes EPATCH_SUFFIX="patch" epatch "${WORKDIR}/patches"
+	popd || die
+	ros-catkin_src_prepare
+}
