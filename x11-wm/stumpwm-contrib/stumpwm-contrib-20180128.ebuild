@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,7 +22,7 @@ IUSE=""
 
 RDEPEND=">=x11-wm/stumpwm-1.0.0"
 
-CONTRIBCATEGORIES="media modeline minor-mode util"
+CONTRIBCATEGORIES="media minor-mode modeline util"
 
 src_install() {
 	common-lisp-install-sources -t all ${CONTRIBCATEGORIES}
