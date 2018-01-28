@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 CATKIN_HAS_MESSAGES=yes
 ROS_SUBDIR=${PN}
 
-inherit ros-catkin
+inherit ros-catkin eutils
 
 DESCRIPTION="Robot-independent Gazebo plugins for sensors, motors and dynamic reconfigurable components"
 LICENSE="BSD Apache-2.0"
@@ -51,3 +51,12 @@ RDEPEND="
 	dev-ros/roslib[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
+SRC_URI="${SRC_URI}
+	mirror://gentoo/gazebo-ros-2.7.3-patches-1.tar.bz2"
+
+src_prepare() {
+	pushd "${WORKDIR}/gazebo_ros_pkgs-${PV}" || die
+	EPATCH_FORCE=yes EPATCH_SUFFIX="patch" epatch "${WORKDIR}/patches"
+	popd || die
+	ros-catkin_src_prepare
+}
