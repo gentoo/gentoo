@@ -7,7 +7,7 @@ GST_ORG_MODULE=gst-plugins-ugly
 inherit gstreamer
 
 DESCRIPTION="MP3 decoder plugin for GStreamer"
-KEYWORDS="amd64 ~arm64 hppa ia64 ppc ppc64 x86"
+KEYWORDS="~alpha amd64 ~arm64 hppa ia64 ppc ppc64 x86"
 IUSE=""
 
 RDEPEND="
