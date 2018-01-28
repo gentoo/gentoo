@@ -17,7 +17,7 @@ DEV_URI="
 ADDONS_URI="https://dev-www.libreoffice.org/src/"
 
 BRANDING="${PN}-branding-gentoo-0.8.tar.xz"
-# PATCHSET="${P}-patchset-01.tar.xz"
+PATCHSET="${PN}-6.0.0.3-patchset-01.tar.xz"
 
 [[ ${PV} == *9999* ]] && SCM_ECLASS="git-r3"
 inherit multiprocessing autotools bash-completion-r1 check-reqs gnome2-utils java-pkg-opt-2 pax-utils python-single-r1 toolchain-funcs flag-o-matic versionator xdg-utils qmake-utils ${SCM_ECLASS}
@@ -26,7 +26,7 @@ unset SCM_ECLASS
 DESCRIPTION="A full office productivity suite"
 HOMEPAGE="https://www.libreoffice.org"
 SRC_URI="branding? ( https://dev.gentoo.org/~dilfridge/distfiles/${BRANDING} )"
-[[ -n ${PATCHSET} ]] && SRC_URI+=" http://dev.gentooexperimental.org/~scarabeus/${PATCHSET}"
+[[ -n ${PATCHSET} ]] && SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/${PATCHSET}"
 
 # Split modules following git/tarballs
 # Core MUST be first!
@@ -64,13 +64,14 @@ unset ADDONS_SRC
 LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
 
 IUSE="bluetooth +branding coinmp +cups dbus debug eds firebird googledrive
-gstreamer +gtk gtk2 kde libressl mysql odk pdfimport postgres test vlc
+gstreamer +gtk gtk2 jemalloc kde libressl mysql odk pdfimport postgres test vlc
 $(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 
 LICENSE="|| ( LGPL-3 MPL-1.1 )"
 SLOT="0"
 [[ ${PV} == *9999* ]] || \
-KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS=""
+# KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
 
 COMMON_DEPEND="${PYTHON_DEPS}
 	app-arch/unzip
@@ -168,6 +169,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		kde-frameworks/kio:5
 		kde-frameworks/kwindowsystem:5
 	)
+	jemalloc? ( dev-libs/jemalloc )
 	libreoffice_extensions_scripting-beanshell? ( dev-java/bsh )
 	libreoffice_extensions_scripting-javascript? ( dev-java/rhino:1.6 )
 	mysql? ( dev-db/mysql-connector-c++ )
@@ -243,14 +245,16 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 "
 
 PATCHES=(
-	# "${WORKDIR}"/${PATCHSET/.tar.xz/}
-
 	# not upstreamable stuff
 	"${FILESDIR}/${PN}-5.4-system-pyuno.patch"
 	"${FILESDIR}/${PN}-5.3.4.2-kioclient5.patch"
 
 	# TODO: upstream
 	"${FILESDIR}/${PN}-5.2.5.1-glibc-2.24.patch"
+	"${FILESDIR}/${PN}-6.0.0.1-poppler-0.62.patch" # bug 642602
+
+	# gtk3-kde5 vcl plugin backported from master
+	"${WORKDIR}"/${PATCHSET/.tar.xz/}
 )
 
 pkg_pretend() {
@@ -401,7 +405,7 @@ src_configure() {
 		--disable-online-update
 		--disable-pdfium
 		--disable-report-builder
-		--with-alloc=system
+		--with-alloc=$(use jemalloc && echo "jemalloc" || echo "system")
 		--with-build-version="Gentoo official package"
 		--enable-extension-integration
 		--with-external-dict-dir="${EPREFIX}/usr/share/myspell"
@@ -429,9 +433,8 @@ src_configure() {
 		$(use_enable gstreamer gstreamer-1-0)
 		$(use_enable gtk gtk3)
 		$(use_enable gtk2 gtk)
-		$(use_enable kde qt5)
-		$(use_enable kde kde5)
 		$(use_enable kde gtk3-kde5)
+		$(use_enable kde qt5)
 		$(use_enable mysql ext-mariadb-connector)
 		$(use_enable odk)
 		$(use_enable pdfimport)
