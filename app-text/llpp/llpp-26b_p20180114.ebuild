@@ -7,15 +7,14 @@ inherit eutils multilib toolchain-funcs vcs-snapshot
 
 DESCRIPTION="graphical PDF viewer which aims to superficially resemble less(1)"
 HOMEPAGE="http://repo.or.cz/w/llpp.git"
-SRC_URI="http://repo.or.cz/llpp.git/snapshot/606ca0f5b7d9c1f031e558c17d66591daa04e3a4.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://distfiles.gentoo.org/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="+ocamlopt static"
 
-LIB_DEPEND=">=app-text/mupdf-1.11:0=[static-libs]
-	<app-text/mupdf-1.12:0=[static-libs]
+LIB_DEPEND=">=app-text/mupdf-1.12.0:0=[static-libs]
 	media-libs/openjpeg:2[static-libs]
 	media-libs/fontconfig:1.0[static-libs]
 	media-libs/freetype:2[static-libs]
