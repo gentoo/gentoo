@@ -177,7 +177,7 @@ python_install_all() {
 	dodir /etc/cinder/rootwrap.d
 
 	for svc in api scheduler volume; do
-		newinitd "${FILESDIR}/cinder.initd-2" cinder-${svc}
+		newinitd "${FILESDIR}/cinder.initd" cinder-${svc}
 	done
 
 	insinto /etc/cinder
