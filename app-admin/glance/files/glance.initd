@@ -1,21 +1,15 @@
 #!/sbin/openrc-run
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 description="Starts ${SVCNAME} service for OpenStack"
 
-command=/usr/bin/${SVCNAME}
+command=/usr/bin/${RC_SVCNAME}
+command_user="${GLANCE_USER:-glance}"
 command_background=yes
-pidfile=/var/run/glance/${SVCNAME}.pid
-required_files=/etc/glance/${SVCNAME}.conf
-
-start_stop_daemon_args="--quiet --user ${GLANCE_USER:-glance}"
+pidfile=/run/${RC_SVCNAME}.pid
+required_files=/etc/glance/${RC_SVCNAME}.conf
 
 depend() {
 	need net
 }
-
-start_pre() {
-	checkpath --directory --owner ${GLANCE_USER:-glance}:${GLANCE_GROUP:-glance} --mode 0755 ${GLANCE_RUN:-/var/run/glance}
-}
-
