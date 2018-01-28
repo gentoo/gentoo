@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrice Clement <monsieurp@gentoo.org> (28 Jan 2018)
+# Duplicate of app-admin/clog. My apologies.
+# Masked for removal in 30 days.
+app-misc/clog
+
 # Andreas Sturmlechner <asturm@gentoo.org> (28 Jan 2018)
 # Dead upstream, depends on deprecated Qt4.
 # Masked for removal in 30 days. Bug #644558
