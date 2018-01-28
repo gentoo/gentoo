@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile postinst
+DEPEND=>=sys-devel/autoconf-2.58
+DESCRIPTION=dot.conf configuration file parser
+EAPI=6
+HOMEPAGE=https://github.com/williamh/dotconf
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux
+LICENSE=LGPL-2.1
+SLOT=0
+SRC_URI=mirror://gentoo/dotconf-1.3.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_md5_=889c1630aefb856c46966ce61dce382b
