@@ -157,6 +157,7 @@ app-arch/alien 8.95: Converts between the rpm, dpkg, stampede slp, and slackware
 app-arch/arc 5.21p: Create & extract files from DOS .ARC files
 app-arch/arj 3.10.22-r5: Utility for opening arj archives
 app-arch/atool 0.39.0: a script for managing file archives of various types
+app-arch/brotli 1.0.2: Generic-purpose lossless compression algorithm
 app-arch/bsdsfv 1.18-r2: all-in-one SFV checksum utility
 app-arch/bzip2 1.0.6-r8: A high-quality data compressor used extensively by Gentoo Linux
 app-arch/cabextract 1.6: Extracts files from Microsoft cabinet archive files
@@ -8750,7 +8751,7 @@ net-misc/clusterssh 4.03.03: Concurrent Multi-Server Terminal Access
 net-misc/connect 1.103: network connection relaying command (proxy)
 net-misc/connman 1.29 1.35-r1: Provides a daemon for managing internet connections
 net-misc/connman-gtk 1.1.1: GTK GUI for Connman
-net-misc/curl 7.57.0: A Client that groks URLs
+net-misc/curl 7.57.0 7.58.0: A Client that groks URLs
 net-misc/dahdi 2.10.0.1 2.10.1 2.10.2-r2: Kernel modules for Digium compatible hardware (formerly known as Zaptel)
 net-misc/dahdi-tools 2.6.2 2.8.0 2.9.0.1 2.10.0 2.10.1: Userspace tools to configure the kernel modules from net-misc/dahdi
 net-misc/dhcp 4.3.4 4.3.5: ISC Dynamic Host Configuration Protocol (DHCP) client/server
