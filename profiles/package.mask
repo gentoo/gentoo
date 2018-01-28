@@ -517,44 +517,6 @@ gnome-extra/activity-log-manager
 gnome-extra/zeitgeist
 dev-libs/libzeitgeist
 
-# Pacho Ramos <pacho@gentoo.org> (28 Dec 2017)
-# Dead for ages, relies on old gnome2 python bindings (#640036). Removal in
-# a month.
-gnome-extra/cameramonitor
-
-# Pacho Ramos <pacho@gentoo.org> (28 Dec 2017)
-# Upstream gone, relies on old gnome2 python bindings (#640042). Removal in
-# a month.
-media-gfx/gnome-specimen
-
-# Pacho Ramos <pacho@gentoo.org> (28 Dec 2017)
-# Upstream dead for ages, relies on old gnome2 python bindings (#640050).
-# Removal in a month.
-net-misc/polly
-
-# Pacho Ramos <pacho@gentoo.org> (28 Dec 2017)
-# Upstream gone, relies on old gnome2 python bindings (#640052). Removal in
-# a month.
-sys-apps/pyrenamer
-
-# Pacho Ramos <pacho@gentoo.org> (28 Dec 2017)
-# Upstream dead since 2006, relies on old gnome2 python bindings and many
-# other dead libs (#640068). Removal in a month.
-media-sound/ifp-gnome
-
-# David Seifert <soap@gentoo.org> (28 Dec 2017)
-# Last release in 2001, doesn't support amd64, EAPI 2.
-# Removal in 30 days
-app-crypt/nistp224
-
-# Jonas Stein <jstein@gentoo.org> (28 Dec 2017)
-# Upstream deleted all files more than 6 years ago and is inactive. 
-# See also bug #628960
-# Masked for removal on 2018-02-01
-app-doc/linux-gazette-base
-app-doc/linux-gazette-all
-app-doc/linux-gazette
-
 # Pacho Ramos <pacho@gentoo.org> (27 Dec 2017)
 # Out ebuild is completely obsolete (#381073), download manually PPD is
 # preferred, current tarballs cannot be downloaded even (#635146). Removal
