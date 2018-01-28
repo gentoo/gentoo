@@ -13,11 +13,10 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Videos"
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
-IUSE="debug +introspection lirc nautilus +python test zeitgeist"
+IUSE="debug +introspection lirc nautilus +python test"
 # see bug #359379
 REQUIRED_USE="
 	python? ( introspection ${PYTHON_REQUIRED_USE} )
-	zeitgeist? ( introspection )
 "
 
 KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 x86 ~x86-fbsd"
@@ -52,7 +51,6 @@ COMMON_DEPEND="
 	python? (
 		${PYTHON_DEPS}
 		>=dev-python/pygobject-2.90.3:3[${PYTHON_USEDEP}] )
-	zeitgeist? ( >=gnome-extra/zeitgeist-0.9.12 )
 "
 RDEPEND="${COMMON_DEPEND}
 	media-plugins/grilo-plugins:0.3
@@ -113,7 +111,6 @@ src_configure() {
 	use lirc && plugins+=",lirc"
 	use nautilus && plugins+=",save-file"
 	use python && plugins+=",dbusservice,pythonconsole,opensubtitles"
-	use zeitgeist && plugins+=",zeitgeist-dp"
 
 	# pylint is checked unconditionally, but is only used for make check
 	# appstream-util overriding necessary until upstream fixes their macro
