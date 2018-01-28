@@ -10,7 +10,7 @@ HOMEPAGE="https://www.gentoo.org"
 
 LICENSE="metapackage"
 SLOT="1.0"
-KEYWORDS="amd64 ~arm64 hppa ia64 ppc ppc64 x86"
+KEYWORDS="~alpha amd64 ~arm64 hppa ia64 ppc ppc64 x86"
 IUSE="aac a52 alsa cdda dts dv dvb dvd ffmpeg flac http jack lame libass libvisual mms mp3 modplug mpeg ogg opus oss pulseaudio taglib theora v4l vaapi vcd vorbis vpx wavpack X x264"
 REQUIRED_USE="opus? ( ogg ) theora? ( ogg ) vorbis? ( ogg )"
 
