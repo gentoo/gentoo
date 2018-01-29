@@ -4,9 +4,10 @@ DESCRIPTION=Tools necessary to build programs
 EAPI=6
 HOMEPAGE=https://sourceware.org/binutils/
 IUSE=+cxx doc multitarget +nls static-libs test
+KEYWORDS=-* ~hppa
 LICENSE=GPL-3+
 RDEPEND=>=sys-devel/binutils-config-3 sys-libs/zlib
 SLOT=2.30
 SRC_URI=mirror://gnu/binutils/binutils-2.30.tar.xz https://sourceware.org/pub/binutils/releases/binutils-2.30.tar.xz https://dev.gentoo.org/~dilfridge/distfiles/binutils-2.30-patches-1.tar.xz
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	flag-o-matic	02908f00f002f0f07c5b74783d778325	gnuconfig	b8ec1c34be4ff9dac7ad4034d277936b	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	versionator	ce21313503c41896ebcd7d58b0607e37
-_md5_=c1c66064716eed301208b18d78b503ab
+_md5_=7580977d535968e543b85d84555c8d2f
