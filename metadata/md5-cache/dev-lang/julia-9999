@@ -7,5 +7,5 @@ LICENSE=MIT
 RDEPEND=>=sys-devel/llvm-4.0.0:= >=sys-devel/clang-4.0.0:= dev-libs/double-conversion:0= dev-libs/gmp:0= dev-libs/libgit2:0= dev-libs/mpfr:0= dev-libs/openspecfun sci-libs/arpack:0= sci-libs/camd:0= sci-libs/cholmod:0= sci-libs/fftw:3.0=[threads] sci-libs/openlibm:0= sci-libs/spqr:0= >=dev-libs/libpcre2-10.23:0=[jit] sci-libs/umfpack:0= sci-mathematics/glpk:0= >=sys-libs/libunwind-1.1:7= sys-libs/readline:0= sys-libs/zlib:0= >=virtual/blas-3.6 virtual/lapack
 RESTRICT=test
 SLOT=0
-_eclasses_=git-r3	fec09a83ae965b041b47f5ff7c8ba29a	llvm	f9e74238f1b5743ea5d7214fcc7dbb36	multilib	97f470f374f2e94ccab04a2fb21d811e	pax-utils	4f95120230a315c8caaabeb2307b7eee	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=git-r3	fec09a83ae965b041b47f5ff7c8ba29a	llvm	f9e74238f1b5743ea5d7214fcc7dbb36	multilib	97f470f374f2e94ccab04a2fb21d811e	pax-utils	b963274a93e76570a88168c1f1db4cd7	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=dcbb3745fb7c6df2cdbbd8fbad737b31

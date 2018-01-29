@@ -9,5 +9,5 @@ RDEPEND=sys-devel/llvm:4= sys-devel/clang:4= dev-libs/double-conversion:0= dev-l
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/JuliaLang/julia/releases/download/v0.6.1/julia-0.6.1.tar.gz https://dev.gentoo.org/~tamiko/distfiles/julia-0.6.1-bundled.tar.gz
-_eclasses_=llvm	f9e74238f1b5743ea5d7214fcc7dbb36	multilib	97f470f374f2e94ccab04a2fb21d811e	pax-utils	4f95120230a315c8caaabeb2307b7eee	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=llvm	f9e74238f1b5743ea5d7214fcc7dbb36	multilib	97f470f374f2e94ccab04a2fb21d811e	pax-utils	b963274a93e76570a88168c1f1db4cd7	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=e0c5c56b9cb62f493eae8289c165cfb6
