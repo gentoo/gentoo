@@ -33,7 +33,7 @@ ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
 LICENSE="UoI-NCSA rc BSD public-domain
 	llvm_targets_ARM? ( LLVM-Grant )"
 SLOT="$(ver_cut 1)"
-KEYWORDS="amd64 ~arm ~arm64 ~x86 ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="amd64 ~arm ~arm64 x86 ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="debug doc gold libedit +libffi ncurses test
 	kernel_Darwin ${ALL_LLVM_TARGETS[*]}"
 
