@@ -3,10 +3,10 @@ DESCRIPTION=Meta-ebuild for clang runtime libraries
 EAPI=6
 HOMEPAGE=https://clang.llvm.org/
 IUSE=+compiler-rt libcxx openmp +sanitize abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
-KEYWORDS=amd64 ~arm64 ~x86 ~ppc-macos ~x64-macos ~x86-macos
+KEYWORDS=amd64 ~arm64 x86 ~ppc-macos ~x64-macos ~x86-macos
 LICENSE=metapackage
 RDEPEND=compiler-rt? ( ~sys-libs/compiler-rt-5.0.1:5.0.1 sanitize? ( ~sys-libs/compiler-rt-sanitizers-5.0.1:5.0.1 ) ) libcxx? ( >=sys-libs/libcxx-5.0.1[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) openmp? ( >=sys-libs/libomp-5.0.1[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] )
 REQUIRED_USE=sanitize? ( compiler-rt )
 SLOT=5.0.1
 _eclasses_=multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	8ffb5e2112a70fef5f37fcacad308726	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=320025c23302703958d6f31bfbd77c61
+_md5_=cda281dca22702146ed9996456b9adc8

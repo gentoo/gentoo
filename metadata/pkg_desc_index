@@ -6321,6 +6321,7 @@ games-board/gnuchess 6.2.4: Console based chess interface
 games-board/gnugo 3.9.1-r1: A Go-playing program
 games-board/iagno 3.22.0: Dominate the board in a classic version of Reversi
 games-board/stockfish 8: Free UCI chess engine, claimed to be the strongest in the world
+games-board/tablebase-syzygy 0_pre20131213 0_pre20131213-r100: Syzygy chess endgame tablebases for up to 6 pieces
 games-board/tali 3.22.0: Beat the odds in a poker-style dice game
 games-emulation/caps 20071115: Support library for accessing and using C.A.P.S. images
 games-emulation/dolphin 5.0: Gamecube and Wii game emulator
