@@ -7,6 +7,6 @@ KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64
 LICENSE=GPL-2+
 RDEPEND=>=virtual/emacs-23
 SLOT=0
-SRC_URI=https://dev.gentoo.org/~ulm/emacs/ebuild-mode-1.40.tar.xz
+SRC_URI=https://dev.gentoo.org/~ulm/emacs/ebuild-mode-1.42.tar.xz
 _eclasses_=elisp	8a9eaaa38b2345593b1cbc5315dde83c	elisp-common	23f47b2e1de7abf387105eddd1318738	readme.gentoo-r1	6f03e110529650f57fc7d1fb908b8986
-_md5_=c7fde3fff394b2c9da64a0efb80dfa12
+_md5_=aeaf408c6fac1832522d3d4aaba4326c
