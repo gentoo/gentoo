@@ -18,7 +18,7 @@ IUSE="snmp doc"
 need_httpd
 
 RDEPEND="
-	dev-lang/php[cli,mysql,session,sockets,xml]
+	dev-lang/php[cli,mysql,pdo,session,sockets,xml]
 	dev-php/adodb
 	net-analyzer/rrdtool[graph]
 	virtual/cron
