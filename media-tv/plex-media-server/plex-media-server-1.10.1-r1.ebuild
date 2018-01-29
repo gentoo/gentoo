@@ -87,6 +87,10 @@ src_install() {
 	# Disabling due to Bug 644694
 	#_handle_multilib
 
+	# Mask Plex libraries so that revdep-rebuild doesn't try to rebuild them.
+	# Plex has it's own precompiled libraries.
+	_mask_plex_libraries_revdep
+
 	# Install systemd service file
 	local INIT_NAME="${PN}.service"
 	local INIT="${FILESDIR}/systemd/${INIT_NAME}"
@@ -108,9 +112,10 @@ pkg_postinst() {
 	elog "To start the Plex Server, run 'rc-config start plex-media-server', you will then be able to access your library at http://<ip>:32400/web/"
 }
 
-# Bug 644694. We shouldn't register plex libraries in global
-# library path since this will cause other packages on the system
-# to break.
+# Disabling the follow function due to Bug 644694.
+# We shouldn't register plex libraries in global
+# library path since this will cause other packages
+# on the system to break.
 
 # Finds out where the library directory is for this system
 # and handles ldflags as to not break library dependencies
@@ -124,7 +129,15 @@ _handle_multilib() {
 	doenvd "${T}"/66plex
 }
 
-# Remove execstack flags from some libraries/executables so that it works in hardened setups.
+# Adds the precompiled plex libraries to the revdep-rebuild's mask list
+# so it doesn't try to rebuild libraries that can't be rebuilt.
+_mask_plex_libraries_revdep() {
+	dodir /etc/revdep-rebuild/
+	echo "SEARCH_DIRS_MASK=\"${EPREFIX}/usr/$(get_libdir)/plexmediaserver\"" > "${ED}"/etc/revdep-rebuild/80plexmediaserver
+}
+
+# Remove execstack flags from some libraries/executables
+# so that it works in hardened setups.
 _remove_execstack_markings() {
 	for f in "${EXECSTACKED_BINS[@]}"; do
 		# Unquoting 'f' so that expansion works.
