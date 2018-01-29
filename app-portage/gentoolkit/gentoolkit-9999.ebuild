@@ -8,7 +8,7 @@ PYTHON_REQ_USE="xml(+),threads(+)"
 
 inherit distutils-r1 git-r3
 
-EGIT_REPO_URI="git://anongit.gentoo.org/proj/gentoolkit.git"
+EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/gentoolkit.git"
 
 DESCRIPTION="Collection of administration scripts for Gentoo"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage-Tools"
