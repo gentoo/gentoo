@@ -19,6 +19,12 @@
 		lights, displacement, and pattern generation.
 	</longdescription>
 	<use>
+		<flag name="cpu_flags_x86_avx512f" restrict="&gt;=media-libs/osl-1.9.0">
+			SIMD Optimization
+		</flag>
+		<flag name="cpu_flags_x86_f16c" restrict="&gt;=media-libs/osl-1.9.0">
+			SIMD Optimization
+		</flag>
 		<flag name="partio">Use <pkg>media-libs/partio</pkg></flag>
 	</use>
 	<upstream>
