@@ -12,7 +12,7 @@ SRC_URI="https://github.com/ncopa/su-exec/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
+IUSE="static"
 
 src_prepare() {
 	default
@@ -20,10 +20,10 @@ src_prepare() {
 }
 
 src_compile() {
-	CC=$(tc-getCC) emake
+	CC=$(tc-getCC) emake $(usex static "${PN}-static" "")
 }
 
 src_install() {
-	dobin ${PN}
+	newbin ${PN}$(usex static "-static" "") ${PN}
 	dodoc README.md
 }
