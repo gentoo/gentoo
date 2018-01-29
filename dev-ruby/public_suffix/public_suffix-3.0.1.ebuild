@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -24,6 +24,7 @@ ruby_add_bdepend "test? ( dev-ruby/mocha )"
 
 all_ruby_prepare() {
 	sed -i -e '/rubocop/I s:^:#:' \
-		-e '/yardoc/,/CLOBBER.include/ s:^:#:' Rakefile || die
+		-e '/yardoc/,/CLOBBER.include/ s:^:#:' \
+		-e '/bundler/ s:^:#:' Rakefile || die
 	sed -i -e '/reporters/I s:^:#:' test/test_helper.rb || die
 }
