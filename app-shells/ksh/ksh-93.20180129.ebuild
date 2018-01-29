@@ -8,7 +8,7 @@ inherit meson prefix
 DESCRIPTION="The Original Korn Shell, 1993 revision (ksh93)"
 HOMEPAGE="http://www.kornshell.com/"
 
-COMMIT="0c8dbe3001d1bbef4f76673dc9c1629d90da9862"
+COMMIT="c266cbe4ecbc16adc66a2d5c9ea17fa4497284c8"
 SRC_URI="https://github.com/att/ast/archive/${COMMIT}/${P}.tar.gz"
 
 LICENSE="CPL-1.0 EPL-1.0"
