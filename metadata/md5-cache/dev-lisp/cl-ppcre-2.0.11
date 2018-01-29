@@ -8,5 +8,5 @@ PDEPEND=dev-lisp/cl-ppcre-unicode virtual/commonlisp
 RDEPEND=dev-lisp/flexi-streams
 SLOT=0
 SRC_URI=https://github.com/edicl/cl-ppcre/archive/v2.0.11.tar.gz -> cl-ppcre-2.0.11.tar.gz
-_eclasses_=common-lisp-3	8c4aaa6d66cd2daed8572bb60bf6fe07	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e7258392d5eda499c1cfa94db650b61	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=common-lisp-3	8c4aaa6d66cd2daed8572bb60bf6fe07	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=e15b6bcd65bdee2db0ae2101d607d833

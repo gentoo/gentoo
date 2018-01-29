@@ -9,5 +9,5 @@ LICENSE=|| ( GPL-2 FIPL-1.0 )
 RDEPEND=sys-libs/zlib jpeg? ( virtual/jpeg:0 ) jpeg2k? ( media-libs/openjpeg:0= ) mng? ( media-libs/libmng:= ) openexr? ( media-libs/openexr:= ) png? ( media-libs/libpng:0= ) raw? ( media-libs/libraw:= ) tiff? ( media-libs/ilmbase:= media-libs/tiff:0 )
 SLOT=0
 SRC_URI=mirror://sourceforge/freeimage/FreeImage3154.zip mirror://sourceforge/freeimage/FreeImage3154.pdf
-_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e7258392d5eda499c1cfa94db650b61	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=cd35a0d85dc453e1e3ac97570625ab8b

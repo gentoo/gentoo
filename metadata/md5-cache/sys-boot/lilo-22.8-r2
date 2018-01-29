@@ -9,5 +9,5 @@ LICENSE=BSD GPL-2
 RDEPEND=device-mapper? ( >=sys-fs/lvm2-2.02.45 )
 SLOT=0
 SRC_URI=http://home.san.rr.com/johninsd/pub/linux/lilo/lilo-22.8.src.tar.gz ftp://metalab.unc.edu/pub/Linux/system/boot/lilo/lilo-22.8.src.tar.gz ftp://metalab.unc.edu/pub/Linux/system/boot/lilo/obsolete/lilo-22.8.src.tar.gz mirror://gentoo/dolilo-0.5.tar.bz2
-_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e7258392d5eda499c1cfa94db650b61	flag-o-matic	02908f00f002f0f07c5b74783d778325	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	flag-o-matic	02908f00f002f0f07c5b74783d778325	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=f05c877cfbf2ca9a04757d4e88f385e9

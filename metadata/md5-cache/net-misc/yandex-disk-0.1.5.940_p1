@@ -8,5 +8,5 @@ LICENSE=YDSLA
 RDEPEND=sys-libs/zlib
 SLOT=0
 SRC_URI=amd64? ( http://repo.yandex.ru/yandex-disk/rpm/stable/x86_64/yandex-disk-0.1.5.940-1.fedora.x86_64.rpm ) x86? ( http://repo.yandex.ru/yandex-disk/rpm/stable/i386/yandex-disk-0.1.5.940-1.fedora.i386.rpm )
-_eclasses_=bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e7258392d5eda499c1cfa94db650b61	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	rpm	f52cfa3a435468d86d3b49c357b9cb35	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	rpm	f52cfa3a435468d86d3b49c357b9cb35	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=06bbd5da0d4b093b6b8ea0280279fe06
