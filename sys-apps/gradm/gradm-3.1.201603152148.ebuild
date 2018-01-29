@@ -7,7 +7,7 @@ inherit flag-o-matic toolchain-funcs versionator eutils udev
 MY_PV="$(replace_version_separator 2 -)"
 
 DESCRIPTION="Administrative interface for the grsecurity Role Based Access Control system"
-HOMEPAGE="http://www.grsecurity.net/"
+HOMEPAGE="https://www.grsecurity.net/"
 SRC_URI="https://dev.gentoo.org/~blueness/hardened-sources/gradm/${PN}-${MY_PV}.tar.gz"
 LICENSE="GPL-2"
 
