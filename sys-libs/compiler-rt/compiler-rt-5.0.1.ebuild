@@ -16,7 +16,7 @@ SRC_URI="https://releases.llvm.org/${PV/_//}/${P/_/}.src.tar.xz"
 
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="${PV%_*}"
-KEYWORDS="amd64 ~arm64 ~x86 ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="amd64 ~arm64 x86 ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="+clang test"
 
 LLVM_SLOT=${SLOT%%.*}
