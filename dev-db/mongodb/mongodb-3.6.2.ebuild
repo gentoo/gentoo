@@ -20,7 +20,7 @@ SRC_URI="https://fastdl.mongodb.org/src/${MY_P}.tar.gz"
 
 LICENSE="AGPL-3 Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="debug kerberos libressl mms-agent ssl test +tools"
 
 RDEPEND=">=app-arch/snappy-1.1.3
@@ -103,9 +103,6 @@ src_configure() {
 	use debug && scons_opts+=( --dbg=on )
 	use kerberos && scons_opts+=( --use-sasl-client )
 	use ssl && scons_opts+=( --ssl )
-
-	# wiredtiger not supported on 32bit platforms #572166
-	use x86 && scons_opts+=( --wiredtiger=off )
 
 	# respect mongoDB upstream's basic recommendations
 	# see bug #536688 and #526114
