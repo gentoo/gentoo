@@ -47,7 +47,7 @@ PAX_MARKINGS=${PAX_MARKINGS:="PT XT"}
 # @CODE
 #
 # Default flags are 'PeMRS', which are the most restrictive settings.  Refer
-# to http://pax.grsecurity.net/ for details on what these flags are all about.
+# to https://pax.grsecurity.net/ for details on what these flags are all about.
 #
 # Please confirm any relaxation of restrictions with the Gentoo Hardened team.
 # Either ask on the gentoo-hardened mailing list, or CC/assign hardened@g.o on
