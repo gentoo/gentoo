@@ -10,5 +10,5 @@ RDEPEND=perl? ( dev-lang/perl:= ) php? ( !dev-php/pecl-uuid ) php? ( php_targets
 REQUIRED_USE=php? ( || ( php_targets_php5-6 php_targets_php7-0 php_targets_php7-1 ) )
 SLOT=0
 SRC_URI=ftp://ftp.ossp.org/pkg/lib/uuid/uuid-1.6.2.tar.gz
-_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011	php-ext-source-r3	02131d21ec5edc689a1ef97096214131	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011	php-ext-source-r3	97265c6e4a9b8aa00715a3648b36875d	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=a796a3652b254109c15186a879664889

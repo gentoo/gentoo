@@ -10,5 +10,5 @@ RDEPEND=>=x11-libs/cairo-1.4[svg] php_targets_php5-6? ( dev-lang/php:5.6 )
 REQUIRED_USE=|| ( php_targets_php5-6 )
 SLOT=0
 SRC_URI=https://pecl.php.net/get/cairo-0.3.2.tgz
-_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	php-ext-pecl-r3	a59741d3df8ea9f17afcdcfb7edaee6d	php-ext-source-r3	02131d21ec5edc689a1ef97096214131	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	php-ext-pecl-r3	a59741d3df8ea9f17afcdcfb7edaee6d	php-ext-source-r3	97265c6e4a9b8aa00715a3648b36875d	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=f0151842677b14562272e2843503cabe
