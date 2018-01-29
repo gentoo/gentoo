@@ -14,7 +14,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd"
+KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd"
 IUSE="afs +berkdb caps hdb-ldap ipv6 libressl otp +pkinit selinux ssl static-libs test X"
 
 CDEPEND="
