@@ -1,6 +1,6 @@
 DEFINED_PHASES=compile install postinst postrm preinst prepare setup test unpack
 DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 ) deblob? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) )
-DESCRIPTION=Full Linux 4.13 kernel sources with the CONFIG_PREEMPT_RT patch
+DESCRIPTION=Full Linux 4.14 kernel sources with the CONFIG_PREEMPT_RT patch
 EAPI=6
 HOMEPAGE=https://www.kernel.org/ https://www.gentoo.org/ https://www.kernel.org/pub/linux/kernel/projects/rt/ http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags
 IUSE=symlink build deblob
@@ -8,7 +8,7 @@ KEYWORDS=~amd64
 LICENSE=GPL-2 !deblob? ( linux-firmware )
 RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make dev-lang/perl sys-devel/bc )
 RESTRICT=binchecks strip
-SLOT=4.13.10_p3
-SRC_URI=mirror://kernel/linux/kernel/v4.x/patch-4.13.10.xz mirror://kernel/linux/kernel/v4.x/linux-4.13.tar.xz deblob? ( http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/4.13-gnu/deblob-4.13 http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/4.13-gnu/deblob-check -> deblob-check-4.13 ) mirror://kernel/linux/kernel/projects/rt/4.13/patch-4.13.10-rt3.patch.xz mirror://kernel/linux/kernel/projects/rt/4.13/older/patch-4.13.10-rt3.patch.xz
+SLOT=4.14.15_p12
+SRC_URI=mirror://kernel/linux/kernel/v4.x/patch-4.14.15.xz mirror://kernel/linux/kernel/v4.x/linux-4.14.tar.xz deblob? ( http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/4.14-gnu/deblob-4.14 http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/4.14-gnu/deblob-check -> deblob-check-4.14 ) mirror://kernel/linux/kernel/projects/rt/4.14/patch-4.14.15-rt12.patch.xz mirror://kernel/linux/kernel/projects/rt/4.14/older/patch-4.14.15-rt12.patch.xz
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	kernel-2	7e15aacb412856eaa750db7b17a321b3	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-any-r1	27d7f9da7187d283b7f3eae8390b7b09	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	versionator	ce21313503c41896ebcd7d58b0607e37
-_md5_=003f54fe0756b0ba387ee77c54b5ea27
+_md5_=175fbf54f3a05c771dc5d3487a9f75e3
