@@ -6,9 +6,6 @@
 		<name>Lars Wendler</name>
 	</maintainer>
 	<use>
-		<flag name="gstreamer010">Enable audio support via
-			<pkg>media-libs/gstreamer</pkg> using SLOT 0.10
-		</flag>
 		<flag name="l10n_zh_CN">Install Chinese translation</flag>
 	</use>
 	<longdescription>

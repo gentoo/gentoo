@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,4 +19,4 @@ DOCS="ChangeLog keyword-generation.sh"
 ELISP_TEXINFO="${PN}.texi"
 SITEFILE="50${PN}-gentoo-1.39.el"
 DOC_CONTENTS="Some optional features may require installation of additional
-	packages, like app-portage/gentoolkit-dev for echangelog."
+	packages, like dev-python/docutils-glep for glep."
