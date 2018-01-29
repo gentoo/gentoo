@@ -40,7 +40,7 @@ unset i j k m tb345
 
 LICENSE="public-domain" # machine-generated tables
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="6-pieces"
 
 # there is no use-conditional mirror restriction,

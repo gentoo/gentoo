@@ -34,7 +34,7 @@ unset i j k l m tb6
 
 LICENSE="public-domain" # machine-generated tables
 SLOT="nofetch"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 RESTRICT="fetch"
 
 RDEPEND="~${CATEGORY}/${P}:0"
