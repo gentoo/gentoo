@@ -3,26 +3,17 @@
 
 EAPI=6
 
-if [[ ${PV} = *9999* ]]; then
-	EGIT_REPO_URI="https://github.com/MidnightCommander/mc.git git://repo.or.cz/midnight-commander.git"
-	LIVE_ECLASSES="git-r3 autotools"
-	LIVE_EBUILD=yes
-fi
-
-inherit flag-o-matic ${LIVE_ECLASSES}
+inherit autotools flag-o-matic
 
 MY_P=${P/_/-}
 
-if [[ -z ${LIVE_EBUILD} ]]; then
-	SRC_URI="http://ftp.midnight-commander.org/${MY_P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x86-solaris"
-fi
-
 DESCRIPTION="GNU Midnight Commander is a text based file manager"
 HOMEPAGE="https://www.midnight-commander.org"
+SRC_URI="http://ftp.midnight-commander.org/${MY_P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x86-solaris"
 IUSE="+edit gpm mclib nls samba sftp +slang spell test unicode X +xdg"
 
 REQUIRED_USE="spell? ( edit )"
@@ -47,6 +38,13 @@ DEPEND="${RDEPEND}
 	test? ( dev-libs/check )
 	"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.8.13-tinfo.patch
+	"${FILESDIR}"/${PN}-4.8.19-selected-size.patch
+)
+
+S=${WORKDIR}/${MY_P}
+
 pkg_pretend() {
 	if use slang && use unicode ; then
 		ewarn "\"unicode\" USE flag only takes effect when the \"slang\" USE flag is disabled."
@@ -54,9 +52,10 @@ pkg_pretend() {
 }
 
 src_prepare() {
-	default
-
 	[[ -n ${LIVE_EBUILD} ]] && ./autogen.sh
+
+	default
+	eautoreconf
 }
 
 src_configure() {
@@ -85,7 +84,7 @@ src_configure() {
 
 src_install() {
 	emake DESTDIR="${D}" install
-	dodoc AUTHORS doc/{FAQ,NEWS,README}
+	dodoc AUTHORS README NEWS
 
 	# fix bug #334383
 	if use kernel_linux && [[ ${EUID} == 0 ]] ; then
