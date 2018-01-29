@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: php-ext-source-r3.eclass
@@ -73,6 +73,33 @@ esac
 # the tree.
 [[ -z "${PHP_EXT_SAPIS}" ]] && PHP_EXT_SAPIS="apache2 cli cgi fpm embed phpdbg"
 
+# @ECLASS-VARIABLE: PHP_INI_NAME
+# @DESCRIPTION
+# An optional file name of the saved ini file minis the ini extension
+# This allows ordering of extensions such that one is loaded before
+# or after another.  Defaults to the PHP_EXT_NAME.
+# Example (produces 40-foo.ini file):
+# @CODE@
+# PHP_INI_NAME="40-foo"
+# @CODE@
+: ${PHP_INI_NAME:=${PHP_EXT_NAME}}
+
+# @ECLASS-VARIABLE: PHP_EXT_NEEDED_USE
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# A list of USE flags to append to each PHP target selected
+# as a valid USE-dependency string.  The value should be valid
+# for all targets so USE defaults may be necessary.
+# Example:
+# @CODE
+# PHP_EXT_NEEDED_USE="mysql?,pdo,pcre(+)"
+# @CODE
+#
+# The PHP dependencies will result in:
+# @CODE
+# php_targets_php7-0? ( dev-lang/php:7.0[mysql?,pdo,pcre(+)] )
+# @CODE
+
 
 # Make sure at least one target is installed. First, start a USE
 # conditional like "php?", but only when PHP_EXT_OPTIONAL_USE is
@@ -85,6 +112,9 @@ for _php_target in ${USE_PHP}; do
 	REQUIRED_USE+="php_targets_${_php_target} "
 	_php_slot=${_php_target/php}
 	_php_slot=${_php_slot/-/.}
+	if [[ ${PHP_EXT_NEEDED_USE} ]] ; then
+		_php_slot+=[${PHP_EXT_NEEDED_USE}]
+	fi
 	PHPDEPEND+=" php_targets_${_php_target}? ( dev-lang/php:${_php_slot} )"
 done
 
@@ -295,7 +325,7 @@ php_slot_ini_files() {
 	local x
 	for x in ${PHP_EXT_SAPIS} ; do
 		if [[ -f "${EPREFIX}/etc/php/${x}-${1}/php.ini" ]] ; then
-			slot_ini_files+=" etc/php/${x}-${1}/ext/${PHP_EXT_NAME}.ini"
+			slot_ini_files+=" etc/php/${x}-${1}/ext/${PHP_INI_NAME}.ini"
 		fi
 	done
 
@@ -324,7 +354,7 @@ php-ext-source-r3_createinifiles() {
 				einfo "Added contents of ${FILESDIR}/${PHP_EXT_INIFILE}" \
 					  "to ${file}"
 			fi
-			inidir="${file/${PHP_EXT_NAME}.ini/}"
+			inidir="${file/${PHP_INI_NAME}.ini/}"
 			inidir="${inidir/ext/ext-active}"
 			dodir "/${inidir}"
 			dosym "/${file}" "/${file/ext/ext-active}"
