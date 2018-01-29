@@ -3,21 +3,23 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{4,5,6} pypy3 )
+PYTHON_COMPAT=( python2_7 pypy )
 
 inherit distutils-r1
 
 DESCRIPTION="A Python module for making simple text/console-mode user interfaces"
-HOMEPAGE="http://pythondialog.sourceforge.net/"
-SRC_URI="mirror://sourceforge/pythondialog//${PV}/python3-${P}.tar.bz2"
+HOMEPAGE="http://pythondialog.sourceforge.net/ https://pypi.python.org/pypi/python2-pythondialog"
+SRC_URI="mirror://pypi/${PN:0:1}/python2-${PN}/python2-${P}.tar.gz"
 
 LICENSE="LGPL-2"
-SLOT="0"
+SLOT="python-2"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~sparc ~x86"
 IUSE="doc examples"
 
 RDEPEND="dev-util/dialog"
 DEPEND="doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
+
+S="${WORKDIR}/python2-${P}"
 
 python_prepare_all() {
 	sed -e "/^    'sphinx.ext.intersphinx',/d" -i doc/conf.py || die
