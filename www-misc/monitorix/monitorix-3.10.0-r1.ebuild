@@ -12,7 +12,7 @@ SRC_URI="https://github.com/mikaku/Monitorix/archive/v${PV}.tar.gz -> ${P}.tar.g
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="apcupsd hddtemp httpd lm_sensors postfix"
+IUSE=""
 S="${WORKDIR}/Monitorix-${PV}"
 
 RDEPEND="dev-perl/Config-General
@@ -23,12 +23,7 @@ RDEPEND="dev-perl/Config-General
 	dev-perl/MIME-Lite
 	dev-perl/XML-Simple
 	net-analyzer/rrdtool[graph,perl]
-	dev-perl/CGI
-	apcupsd? ( sys-power/apcupsd )
-	hddtemp? ( app-admin/hddtemp )
-	httpd? ( virtual/httpd-cgi )
-	lm_sensors? ( sys-apps/lm_sensors )
-	postfix? ( net-mail/pflogsumm dev-perl/MailTools )"
+	dev-perl/CGI"
 
 pkg_setup() {
 	enewgroup ${PN}
@@ -84,18 +79,26 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "WARNING: ${PN} has changed its config format twice, in versions"
-	elog "3.0.0 and 3.4.0; this format may be incompatible with your existing"
-	elog "config file. Please take care if upgrading from an old version."
-	elog ""
-
-	elog "${PN} includes its own web server as of version 3.0.0."
-	elog "For this reason, the dependency on the webapp framework"
-	elog "has been removed. If you wish to use your own web server,"
-	elog "the ${PN} web data can be found at:"
-	elog "${EROOT%/}/var/lib/${PN}/www/"
-
-	elog ""
-	elog "If you are not using monitorix built-in web server, please set"
-	elog "the correct user and group ownership of ${EROOT%/}/var/lib/${PN}/www/imgs/"
+	if has_version '<=www-misc/monitorix-3.5.1' ; then
+		ewarn "WARNING: ${PN} has changed its config format twice, in versions"
+		ewarn "3.0.0 and 3.4.0; this format may be incompatible with your existing"
+		ewarn "config file. Please take care if upgrading from an old version."
+		ewarn
+		elog "${PN} includes its own web server as of version 3.0.0."
+		elog "For this reason, the dependency on the webapp framework"
+		elog "has been removed."
+		elog
+	fi
+	elog "Optional dependencies:"
+	elog "  app-admin/hddtemp   (disk drive temperatures and health)"
+	elog "  mail-mta/postfix    (email reports/statics)"
+	elog "  mail-mta/sendmail   (email reports/statics)"
+	elog "  sys-apps/lm_sensors (lm_sensors and GPU temperatures)"
+	elog "  sys-power/apcupsd   (APC UPS statistics)"
+	elog "  sys-power/nut       (Network UPS Tools statistics)"
+	elog
+	elog "If you wish to use your own web server:"
+	elog "  Web data can be found at: ${EROOT%/}/var/lib/${PN}/www/"
+	elog "  Also please check the correct user and group ownership"
+	elog "  of ${EROOT%/}/var/lib/${PN}/www/imgs/"
 }
