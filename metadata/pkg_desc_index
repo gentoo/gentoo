@@ -87,7 +87,7 @@ app-admin/logsurfer+ 1.8-r3: Real Time Log Monitoring and Alerting
 app-admin/lsat 0.9.7.1-r2: The Linux Security Auditing Tool
 app-admin/lsyncd 2.2.0: Live Syncing (Mirror) Daemon
 app-admin/makepasswd 1.10: Random password generator
-app-admin/mcelog 149 154: A tool to log and decode Machine Check Exceptions
+app-admin/mcelog 154: A tool to log and decode Machine Check Exceptions
 app-admin/mcollective 2.11.3 2.11.4: Framework to build server orchestration or parallel job execution systems
 app-admin/metalog 3-r2: A highly configurable replacement for syslogd/klogd
 app-admin/mktwpol 0.2.6 1.0.0: Bash scripts to install tripwire and generate tripwire policy files
