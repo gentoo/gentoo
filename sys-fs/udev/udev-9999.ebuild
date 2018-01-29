@@ -120,6 +120,16 @@ multilib_src_configure() {
 		-Dselinux=$(meson_multilib_native_use selinux)
 		-Dlink-udev-shared=false
 		-Dsplit-usr=true
+
+		# Prevent automagic deps
+		-Dgcrypt=false
+		-Dlibcryptsetup=false
+		-Dlibidn=false
+		-Dlibidn2=false
+		-Dlibiptc=false
+		-Dseccomp=false
+		-Dlz4=false
+		-Dxz=false
 	)
 	meson_src_configure
 }
