@@ -4,10 +4,10 @@ DESCRIPTION=IPsec implementation for Linux, fork of Openswan
 EAPI=6
 HOMEPAGE=https://libreswan.org/
 IUSE=caps curl dnssec ldap pam seccomp selinux systemd test
-KEYWORDS=~amd64 ~ppc x86
+KEYWORDS=amd64 ~ppc x86
 LICENSE=GPL-2 BSD-4 RSA DES
 RDEPEND=dev-libs/gmp:0= dev-libs/libevent:0= dev-libs/nspr caps? ( sys-libs/libcap-ng ) curl? ( net-misc/curl ) dnssec? ( net-dns/unbound net-libs/ldns ) ldap? ( net-nds/openldap ) pam? ( sys-libs/pam ) seccomp? ( sys-libs/libseccomp ) selinux? ( sys-libs/libselinux ) systemd? ( sys-apps/systemd:0= ) dev-libs/nss[utils(+)] sys-apps/iproute2 !net-misc/openswan !net-vpn/strongswan selinux? ( sec-policy/selinux-ipsec )
 SLOT=0
 SRC_URI=https://download.libreswan.org/libreswan-3.22.tar.gz
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	a31844b675f1a1fea87fbe1144aee5f5	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=86c1b785b3a36b1ec43cb0c7c7322771
+_md5_=a0f7b833860a03bbac66471d14e1a3f9
