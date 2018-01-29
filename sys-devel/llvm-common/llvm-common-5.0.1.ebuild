@@ -10,7 +10,7 @@ SRC_URI="https://releases.llvm.org/${PV/_//}/${MY_P}.tar.xz"
 
 LICENSE="UoI-NCSA"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~x86 ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="amd64 ~arm ~arm64 x86 ~ppc-macos ~x64-macos ~x86-macos"
 IUSE=""
 
 RDEPEND="!sys-devel/llvm:0"

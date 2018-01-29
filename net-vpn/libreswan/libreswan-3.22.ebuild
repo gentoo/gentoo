@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit systemd toolchain-funcs
 
 SRC_URI="https://download.libreswan.org/${P}.tar.gz"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc x86"
 
 DESCRIPTION="IPsec implementation for Linux, fork of Openswan"
 HOMEPAGE="https://libreswan.org/"

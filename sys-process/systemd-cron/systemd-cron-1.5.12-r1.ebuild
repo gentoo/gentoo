@@ -11,7 +11,7 @@ SRC_URI="https://github.com/systemd-cron/${PN}/archive/v${PV}.tar.gz -> systemd-
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="cron-boot etc-crontab-systemd minutely setgid test yearly"
 
 RDEPEND=">=sys-apps/systemd-217
