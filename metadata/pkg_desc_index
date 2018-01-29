@@ -8094,7 +8094,7 @@ media-tv/gentoo-vdr-scripts 2.0.0 2.5 2.7 2.7.3: Scripts necessary for use of vd
 media-tv/ivtv-utils 1.4.1: IVTV utilities for Hauppauge PVR PCI cards
 media-tv/kodi 17.3-r1: Kodi is a free and open source media-player and entertainment hub
 media-tv/linuxtv-dvb-apps 1.1.1.20100223-r1: Small utils for DVB to scan, zap, view signal strength, ...
-media-tv/plex-media-server 1.10.1: A free media library that is intended for use with a plex client.
+media-tv/plex-media-server 1.10.1-r1: A free media library that is intended for use with a plex client.
 media-tv/shoutcast2vdr 0.0.8 0.0.8-r1: VDR script: generate shoutcast playlists
 media-tv/tvnamer 2.3: Automatic TV episode file renamer, data from thetvdb.com
 media-tv/v4l-dvb-saa716x 0.0.1_p20140322 0.0.1_p20170225: driver for saa716x based dvb cards like TT S2-6400 or Skystar 2 eXpress HD
