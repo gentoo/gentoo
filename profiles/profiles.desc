@@ -248,6 +248,7 @@ x86             default/linux/x86/13.0/developer                stable
 x86		default/linux/x86/13.0/systemd			stable
 x86             default/linux/x86/17.0                          stable
 x86             default/linux/x86/17.0/selinux                  dev
+x86             default/linux/x86/17.0/hardened                 dev
 x86             default/linux/x86/17.0/desktop                  stable
 x86             default/linux/x86/17.0/desktop/gnome            stable
 x86             default/linux/x86/17.0/desktop/gnome/systemd    stable
