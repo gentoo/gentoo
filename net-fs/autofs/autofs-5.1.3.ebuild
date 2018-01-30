@@ -1,12 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-AUTOTOOLS_AUTORECONF=true
-AUTOTOOLS_IN_SOURCE_BUILD=true
-
-inherit autotools-utils linux-info multilib systemd toolchain-funcs
+inherit linux-info multilib systemd toolchain-funcs
 
 PATCH_VER=
 [[ -n ${PATCH_VER} ]] && \
@@ -56,7 +53,7 @@ src_prepare() {
 	fi
 
 	sed -i -e "s:/usr/bin/kill:/bin/kill:" samples/autofs.service.in || die #bug #479492
-	autotools-utils_src_prepare
+	default
 }
 
 src_configure() {
@@ -77,18 +74,14 @@ src_configure() {
 		--enable-sloppy-mount # bug #453778
 		--enable-force-shutdown
 		--enable-ignore-busy
-		--with-systemd="$(systemd_get_unitdir)" #bug #479492
+		--with-systemd="$(systemd_get_systemunitdir)" #bug #479492
 		RANLIB="$(type -P $(tc-getRANLIB))" # bug #483716
 	)
-	autotools-utils_src_configure
-}
-
-src_compile() {
-	autotools-utils_src_compile DONTSTRIP=1
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
-	autotools-utils_src_install
+	default
 
 	if kernel_is -lt 2 6 30; then
 		# kernel patches
