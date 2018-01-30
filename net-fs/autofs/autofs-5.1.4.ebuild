@@ -1,26 +1,24 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-AUTOTOOLS_AUTORECONF=true
+inherit linux-info multilib systemd toolchain-funcs
 
-inherit autotools-utils linux-info multilib systemd toolchain-funcs
-
-PATCH_VER=3
+PATCH_VER=
 [[ -n ${PATCH_VER} ]] && \
 	PATCHSET_URI="https://dev.gentoo.org/~jlec/distfiles/${P}-patches-${PATCH_VER}.tar.lzma"
 
 DESCRIPTION="Kernel based automounter"
 HOMEPAGE="http://www.linux-consulting.com/Amd_AutoFS/autofs.html"
 SRC_URI="
-	mirror://kernel/linux/daemons/${PN}/v5/${P}.tar.bz2
+	mirror://kernel/linux/daemons/${PN}/v5/${P}.tar.xz
 	${PATCHSET_URI}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
-IUSE="-dmalloc hesiod ldap +libtirpc mount-locking sasl"
+IUSE="-dmalloc ldap +libtirpc mount-locking sasl"
 
 # USE="sasl" adds SASL support to the LDAP module which will not be build. If
 # SASL support should be available, please add "ldap" to the USE flags.
@@ -29,7 +27,6 @@ REQUIRED_USE="sasl? ( ldap )"
 # currently, sasl code assumes the presence of kerberosV
 RDEPEND=">=sys-apps/util-linux-2.20
 	dmalloc? ( dev-libs/dmalloc[threads] )
-	hesiod? ( net-dns/hesiod )
 	ldap? ( >=net-nds/openldap-2.0
 		sasl? (
 			dev-libs/cyrus-sasl
@@ -40,36 +37,13 @@ RDEPEND=">=sys-apps/util-linux-2.20
 	libtirpc? ( net-libs/libtirpc )
 	!libtirpc? ( elibc_glibc? ( sys-libs/glibc[rpc(-)] ) )
 "
-
 DEPEND="${RDEPEND}
 	sys-devel/flex
-	virtual/yacc"
+	virtual/yacc
+	libtirpc? ( net-libs/rpcsvc-proto )
+"
 
 CONFIG_CHECK="~AUTOFS4_FS"
-
-PATCHES=(
-	# Fix for bug #210762
-	# Upstream reference: http://thread.gmane.org/gmane.linux.kernel.autofs/4203
-	"${FILESDIR}"/${PN}-5.0.3-heimdal.patch
-
-	# Accumulated fixes for bugs
-	#    #154797: Respect CC and CFLAGS
-	#    #253412: Respect LDFLAGS
-	#    #247969: Link order for --as-needed
-	"${FILESDIR}"/${PN}-5.0.7-respect-user-flags-and-fix-asneeded-r3.patch
-
-	# Upstream reference: http://thread.gmane.org/gmane.linux.kernel.autofs/5371
-	"${FILESDIR}"/${PN}-5.0.5-fix-install-deadlink.patch
-
-	"${FILESDIR}"/${P}-add-missing-endif-HAVE_SASL-in-modules-lookup_ldap.c.patch #361899, #468606
-	"${FILESDIR}"/${PN}-5.0.6-revert-ldap.patch #381315
-	"${FILESDIR}"/${PN}-5.0.7-sasl-def.patch #469324
-	"${FILESDIR}"/${PN}-5.0.7-libtirpc-link.patch #464120
-	"${FILESDIR}"/${PN}-5.0.7-parallel-make.patch
-	"${FILESDIR}"/${PN}-5.0.7-sloppy-mount.patch #545258
-	)
-
-AUTOTOOLS_IN_SOURCE_BUILD=1
 
 src_prepare() {
 	# Upstream's patchset
@@ -77,8 +51,9 @@ src_prepare() {
 		EPATCH_SUFFIX="patch" \
 			epatch "${WORKDIR}"/patches
 	fi
+
 	sed -i -e "s:/usr/bin/kill:/bin/kill:" samples/autofs.service.in || die #bug #479492
-	autotools-utils_src_prepare
+	default
 }
 
 src_configure() {
@@ -93,21 +68,20 @@ src_configure() {
 		$(use_with ldap openldap)
 		$(use_with libtirpc)
 		$(use_with sasl)
-		$(use_with hesiod)
 		$(use_enable mount-locking)
+		--without-hesiod
 		--disable-ext-env
 		--enable-sloppy-mount # bug #453778
-		--enable-forced-shutdown
+		--enable-force-shutdown
 		--enable-ignore-busy
-		--with-systemd
-		systemddir="$(systemd_get_unitdir)" #bug #479492
+		--with-systemd="$(systemd_get_systemunitdir)" #bug #479492
 		RANLIB="$(type -P $(tc-getRANLIB))" # bug #483716
 	)
-	autotools-utils_src_configure
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
-	autotools-utils_src_install
+	default
 
 	if kernel_is -lt 2 6 30; then
 		# kernel patches
