@@ -3,8 +3,8 @@
 
 EAPI=6
 
-# pyblake2 & pysha3 are broken with pypy*
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+# pyblake2 & pysha3 are broken with pypy3
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
 inherit distutils-r1
 
 DESCRIPTION="Stand-alone Manifest generation & verification tool"
