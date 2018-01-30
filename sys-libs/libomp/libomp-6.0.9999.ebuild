@@ -53,7 +53,7 @@ CMAKE_BUILD_TYPE=RelWithDebInfo
 
 CONFIG_CHECK="~!SCHED_PDS"
 ERROR_SCHED_PDS="PDS scheduler versions >= 0.98c < 0.98i (e.g. used in kernels
->= 4.13-pf11, no fixed release yet) do not implement sched_yield() call which
+>= 4.13-pf11 < 4.14-pf9) do not implement sched_yield() call which
 may result in horrible performance problems with libomp. If you are using one
 of the specified kernel versions, you may want to disable the PDS scheduler."
 
