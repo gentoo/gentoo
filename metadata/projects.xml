@@ -363,19 +363,22 @@
       <name>Markos Chandras</name>
     </member>
     <member>
+      <email>lu_zero@gentoo.org</email>
+      <name>Luca Barbato</name>
+    </member>
+    <member is-lead="1">
       <email>polynomial-c@gentoo.org</email>
       <name>Lars Wendler</name>
-      <role>Version bumps and security stabilisations</role>
+      <role>base-system team lead</role>
     </member>
     <member>
       <email>robbat2@gentoo.org</email>
       <name>Robin Johnson</name>
       <role>Specialized block devices and lots of other miscellaneous stuff</role>
     </member>
-    <member is-lead="1">
+    <member>
       <email>vapier@gentoo.org</email>
       <name>Mike Frysinger</name>
-      <role>base-system team lead</role>
     </member>
     <member>
       <email>whissi@gentoo.org</email>
