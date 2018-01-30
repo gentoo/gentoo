@@ -53,6 +53,7 @@ RDEPEND="
 	rsync-verify? (
 		>=app-portage/gemato-10
 		app-crypt/gentoo-keys
+		app-crypt/gnupg
 	)
 	selinux? ( >=sys-libs/libselinux-2.0.94[python,${PYTHON_USEDEP}] )
 	xattr? ( kernel_linux? (
