@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools eutils user linux-info systemd readme.gentoo-r1
+inherit autotools eutils user linux-info systemd readme.gentoo-r1 bash-completion-r1
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
@@ -354,6 +354,9 @@ src_install() {
 
 	newconfd "${FILESDIR}/libvirtd.confd-r5" libvirtd || die
 	newconfd "${FILESDIR}/libvirt-guests.confd" libvirt-guests || die
+
+	newbashcomp "${S}/tools/bash-completion/vsh" vsh
+	bashcomp_alias vsh virsh virt-admin
 
 	DOC_CONTENTS=$(<"${FILESDIR}/README.gentoo-r2")
 	DISABLE_AUTOFORMATTING=true

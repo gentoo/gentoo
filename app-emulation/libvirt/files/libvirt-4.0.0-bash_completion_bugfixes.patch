@@ -1,0 +1,42 @@
+https://www.redhat.com/archives/libvir-list/2018-January/msg00903.html
+https://www.redhat.com/archives/libvir-list/2018-January/msg00904.html
+
+diff --git a/tools/virsh-completer.c b/tools/virsh-completer.c
+index e216d9076..e3b8234b4 100644
+--- a/tools/virsh-completer.c
++++ b/tools/virsh-completer.c
+@@ -45,18 +45,11 @@ virshDomainNameCompleter(vshControl *ctl,
+ 
+     virCheckFlags(VIR_CONNECT_LIST_DOMAINS_ACTIVE |
+                   VIR_CONNECT_LIST_DOMAINS_INACTIVE |
++                  VIR_CONNECT_LIST_DOMAINS_OTHER |
++                  VIR_CONNECT_LIST_DOMAINS_PAUSED |
+                   VIR_CONNECT_LIST_DOMAINS_PERSISTENT |
+-                  VIR_CONNECT_LIST_DOMAINS_TRANSIENT |
+                   VIR_CONNECT_LIST_DOMAINS_RUNNING |
+-                  VIR_CONNECT_LIST_DOMAINS_PAUSED |
+-                  VIR_CONNECT_LIST_DOMAINS_SHUTOFF |
+-                  VIR_CONNECT_LIST_DOMAINS_OTHER |
+-                  VIR_CONNECT_LIST_DOMAINS_MANAGEDSAVE |
+-                  VIR_CONNECT_LIST_DOMAINS_NO_MANAGEDSAVE |
+-                  VIR_CONNECT_LIST_DOMAINS_AUTOSTART |
+-                  VIR_CONNECT_LIST_DOMAINS_NO_AUTOSTART |
+-                  VIR_CONNECT_LIST_DOMAINS_HAS_SNAPSHOT |
+-                  VIR_CONNECT_LIST_DOMAINS_NO_SNAPSHOT,
++                  VIR_CONNECT_LIST_DOMAINS_SHUTOFF,
+                   NULL);
+ 
+     if (!priv->conn || virConnectIsAlive(priv->conn) <= 0)
+diff --git a/tools/virsh-domain.c b/tools/virsh-domain.c
+index 0f329d6d7..5a0e0c1b2 100644
+--- a/tools/virsh-domain.c
++++ b/tools/virsh-domain.c
+@@ -1037,7 +1037,7 @@ static const vshCmdInfo info_autostart[] = {
+ };
+ 
+ static const vshCmdOptDef opts_autostart[] = {
+-    VIRSH_COMMON_OPT_DOMAIN_FULL(0),
++    VIRSH_COMMON_OPT_DOMAIN_FULL(VIR_CONNECT_LIST_DOMAINS_PERSISTENT),
+     {.name = "disable",
+      .type = VSH_OT_BOOL,
+      .help = N_("disable autostarting")
