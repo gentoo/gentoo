@@ -8185,7 +8185,6 @@ media-video/subliminal 2.0.5-r1: Python library to search and download subtitles
 media-video/subtitlecomposer 0.6.4: Text-based subtitles editor
 media-video/subtitleeditor 0.54.0: GTK+3 subtitle editing tool
 media-video/subtitleripper 0.3.4-r4: DVD Subtitle Ripper for Linux
-media-video/syncplay 1.4.0: Client/server to synchronize media playback
 media-video/totem 3.22.1-r1 3.24.0: Media player for GNOME
 media-video/tovid 0.35.2-r1: A collection of DVD authoring tools
 media-video/transcode 1.1.7-r3: A suite of utilities for transcoding video and audio codecs in different containers
