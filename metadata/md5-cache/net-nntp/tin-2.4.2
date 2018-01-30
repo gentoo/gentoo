@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install
+DEPEND=dev-libs/libpcre dev-libs/uulib gpg? ( app-crypt/gnupg ) idn? ( net-dns/libidn ) mime? ( net-mail/metamail ) nls? ( sys-devel/gettext ) sasl? ( virtual/gsasl ) socks5? ( net-proxy/dante ) sys-libs/ncurses:0[unicode?] unicode? ( dev-libs/icu:= ) app-arch/xz-utils virtual/pkgconfig
+DESCRIPTION=A threaded NNTP and spool based UseNet newsreader
+EAPI=6
+HOMEPAGE=http://www.tin.org/
+IUSE=cancel-locks debug doc +etiquette gpg idn ipv6 mime nls sasl socks5 spell unicode
+KEYWORDS=~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=GPL-2
+RDEPEND=dev-libs/libpcre dev-libs/uulib gpg? ( app-crypt/gnupg ) idn? ( net-dns/libidn ) mime? ( net-mail/metamail ) nls? ( sys-devel/gettext ) sasl? ( virtual/gsasl ) socks5? ( net-proxy/dante ) sys-libs/ncurses:0[unicode?] unicode? ( dev-libs/icu:= )
+SLOT=0
+SRC_URI=ftp://ftp.tin.org/pub/news/clients/tin/stable/tin-2.4.2.tar.xz
+_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_md5_=7d3a728decb20c174aff58c39f8e4a07
