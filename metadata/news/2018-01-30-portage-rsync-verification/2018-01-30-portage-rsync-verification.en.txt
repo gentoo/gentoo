@@ -1,0 +1,50 @@
+Title: Portage rsync tree verification
+Author: Michał Górny <mgorny@gentoo.org>
+Posted: 2018-01-30
+Revision: 1
+News-Item-Format: 2.0
+Display-If-Installed: sys-apps/portage
+
+Starting with sys-apps/portage-2.3.21, Portage will verify the Gentoo
+repository after rsync by default.
+
+The new verification is intended for users who are syncing via rsync.
+Users syncing via git or other methods are not affected, and complete
+verification for them will be provided in the future.
+
+The verification is implemented via app-portage/gemato. Currently,
+the whole repository is verified after syncing. On systems with slow
+hard drives, this could take around 2 minutes. If you wish to disable
+it, you can disable the 'rsync-verify' USE flag on sys-apps/portage
+or set 'sync-rsync-verify-metamanifest = no' in your repos.conf.
+
+Please note that the verification currently does not prevent Portage
+from using the repository after syncing. If 'emerge --sync' fails,
+do not install any packages and retry syncing. In case of prolonged
+or frequent verification failures, please make sure to report a bug
+including the failing mirror addresses (found in emerge.log).
+
+The verification uses information from the binary keyring provided
+by the app-crypt/gentoo-keys package. The keys are refreshed
+from the keyserver before every use in order to check for revocation.
+The post-sync verification ensures that the authenticity of the key
+package itself is verified. However, manual verification is required
+before the first use.
+
+On Gentoo installations created using installation media that included
+portage-2.3.22, the keys will already be covered by the installation
+media signatures. On existing installations, you need to manually
+compare the primary key fingerprint (reported by gemato on every sync)
+against the official Gentoo keys [1]. An example gemato output is:
+
+  INFO:root:Valid OpenPGP signature found:
+  INFO:root:- primary key: 1234567890ABCDEF1234567890ABCDEF12345678
+  INFO:root:- subkey: FEDCBA0987654321FEDCBA0987654321FEDCBA09
+
+Please note that the above snippet does not include the real key id
+on purpose. The primary key actually printed by gemato must match
+the 'Gentoo Portage Snapshot Signing Key' on the website. Please make
+sure to also check the certificate used for the secure connection
+to the site!
+
+[1]:https://www.gentoo.org/downloads/signatures/
