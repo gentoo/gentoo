@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite?"
 
 EGIT_REPO_URI="https://github.com/linkcheck/linkchecker.git"
-inherit bash-completion-r1 distutils-r1 eutils git-r3 multilib
+inherit bash-completion-r1 distutils-r1 eutils git-r3
 
 DESCRIPTION="Check websites for broken links"
 HOMEPAGE="https://github.com/linkcheck/linkchecker"
