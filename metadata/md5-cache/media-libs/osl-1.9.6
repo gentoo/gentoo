@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=media-libs/openexr-2.2.0 >=media-libs/openimageio-1.8.0 dev-libs/pugixml sys-libs/zlib:= partio? ( media-libs/partio ) >=dev-libs/boost-1.62 sys-devel/clang sys-devel/bison sys-devel/flex virtual/pkgconfig sys-devel/make >=dev-util/cmake-3.7.2
+DESCRIPTION=Advanced shading language for production GI renderers
+EAPI=6
+HOMEPAGE=http://opensource.imageworks.com/?p=osl
+IUSE=doc partio test cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_ssse3 cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_avx512f cpu_flags_x86_f16c
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=>=media-libs/openexr-2.2.0 >=media-libs/openimageio-1.8.0 dev-libs/pugixml sys-libs/zlib:= partio? ( media-libs/partio )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/imageworks/OpenShadingLanguage/archive/Release-1.9.6.tar.gz -> osl-1.9.6.tar.gz
+_eclasses_=cmake-utils	202a2becc86cb78ba14baad148d06759	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	flag-o-matic	02908f00f002f0f07c5b74783d778325	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	versionator	ce21313503c41896ebcd7d58b0607e37	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=ac840a319bb8ab848dc46e461f4be630
