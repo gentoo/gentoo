@@ -60,6 +60,9 @@ python_install_all() {
 	docinto html
 	dodoc doc/html/*
 	newbashcomp config/linkchecker-completion ${PN}
+}
+
+pkg_postinst() {
 	optfeature "bash-completion support" dev-python/argcomplete[${PYTHON_USEDEP}]
 	optfeature "Virus scanning" app-antivirus/clamav
 	optfeature "Geo IP support" dev-python/geoip-python[${PYTHON_USEDEP}]
