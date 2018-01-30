@@ -29,6 +29,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (27 Apr 2018)
+# No longer supported upstream. Use ruby23 instead.
+# Masked for removal in 30 days. Bug #642258.
+dev-lang/ruby:2.2
+virtual/ruby
+dev-ruby/tzinfo:0
+
 # Andreas Sturmlechner <asturm@gentoo.org> (26 Apr 2018)
 # Package version depends on Qt-5.10 that was/is/will not be in tree.
 >=sci-misc/mendeleydesktop-1.18
