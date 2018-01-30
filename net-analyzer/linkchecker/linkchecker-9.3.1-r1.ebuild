@@ -18,8 +18,8 @@ KEYWORDS="~amd64 ~x86 ~ppc-macos ~x64-solaris"
 IUSE="gnome sqlite"
 
 RDEPEND="
-	virtual/python-dnspython[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
+	virtual/python-dnspython[${PYTHON_USEDEP}]
 	gnome? ( dev-python/pygtk:2[${PYTHON_USEDEP}] )
 "
 DEPEND=""
