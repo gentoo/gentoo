@@ -567,7 +567,7 @@ app-editors/lpe 1.2.6.13: a lightweight programmers editor
 app-editors/mg 20170828: MicroGnuEmacs, a port from the BSDs
 app-editors/moe 1.6: A powerful and user-friendly console text editor
 app-editors/mousepad 0.4.0 0.4.0-r1: GTK+-based editor for the Xfce Desktop Environment
-app-editors/nano 2.7.5 2.8.7: GNU GPL'd Pico clone with more functionality
+app-editors/nano 2.8.7: GNU GPL'd Pico clone with more functionality
 app-editors/nedit 5.6-r1: Multi-purpose text editor for the X Window System
 app-editors/ng 1.5_beta1-r2: Emacs like micro editor Ng -- based on mg2a
 app-editors/nvi 1.81.6-r7: Vi clone
