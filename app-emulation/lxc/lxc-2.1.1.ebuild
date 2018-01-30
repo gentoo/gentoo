@@ -1,36 +1,36 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
-PYTHON_COMPAT=( python{3_4,3_5} )
+PYTHON_COMPAT=( python3_{4,5,6} )
 DISTUTILS_OPTIONAL=1
 
-inherit autotools bash-completion-r1 distutils-r1 linux-info versionator flag-o-matic systemd
-
+inherit autotools bash-completion-r1 distutils-r1 linux-info versionator flag-o-matic systemd readme.gentoo-r1
 DESCRIPTION="LinuX Containers userspace utilities"
 HOMEPAGE="https://linuxcontainers.org/"
 SRC_URI="https://linuxcontainers.org/downloads/lxc/${P}.tar.gz"
 
-KEYWORDS="~amd64 ~arm ~arm64"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
 LICENSE="LGPL-3"
 SLOT="0"
-IUSE="cgmanager doc examples lua python seccomp"
+IUSE="cgmanager examples lua python seccomp selinux"
 
-RDEPEND="net-libs/gnutls
+RDEPEND="
+	net-libs/gnutls
 	sys-libs/libcap
 	cgmanager? ( app-admin/cgmanager )
 	lua? ( >=dev-lang/lua-5.1:= )
 	python? ( ${PYTHON_DEPS} )
-	seccomp? ( sys-libs/libseccomp )"
+	seccomp? ( sys-libs/libseccomp )
+	selinux? ( sys-libs/libselinux )"
 
 DEPEND="${RDEPEND}
-	doc? ( app-text/docbook-sgml-utils )
+	app-text/docbook-sgml-utils
 	>=sys-kernel/linux-headers-3.2"
 
 RDEPEND="${RDEPEND}
-	sys-process/criu
 	sys-apps/util-linux
 	app-misc/pax-utils
 	virtual/awk"
@@ -123,6 +123,9 @@ src_configure() {
 	# /var/lib/lxc is probably more appropriate than
 	# /usr/lib/lxc.
 	# Note by holgersson: Why is apparmor disabled?
+
+	# --enable-doc is for manpages which is why we don't link it to a "doc"
+	# USE flag. We always want man pages.
 	econf \
 		--localstatedir=/var \
 		--bindir=/usr/bin \
@@ -133,12 +136,13 @@ src_configure() {
 		--with-runtime-path=/run \
 		--disable-apparmor \
 		--disable-werror \
+		--enable-doc \
 		$(use_enable cgmanager) \
-		$(use_enable doc) \
 		$(use_enable examples) \
 		$(use_enable lua) \
 		$(use_enable python) \
-		$(use_enable seccomp)
+		$(use_enable seccomp) \
+		$(use_enable selinux)
 }
 
 python_compile() {
@@ -182,20 +186,29 @@ src_install() {
 	# Remember to compare our systemd unit file with the upstream one
 	# config/init/systemd/lxc.service.in
 	systemd_newunit "${FILESDIR}"/${PN}_at.service.4 "lxc@.service"
+
+	DOC_CONTENTS="
+	Starting from version ${PN}-1.1.0-r3, the default lxc path has been
+	moved from /etc/lxc to /var/lib/lxc. If you still want to use /etc/lxc
+	please add the following to your /etc/lxc/lxc.conf
+
+	  lxc.lxcpath = /etc/lxc
+
+	For openrc, there is an init script provided with the package.
+	You _should_ only need to symlink /etc/init.d/lxc to
+	/etc/init.d/lxc.configname to start the container defined in
+	/etc/lxc/configname.conf.
+
+	Correspondingly, for systemd a service file lxc@.service is installed.
+	Enable and start lxc@configname in order to start the container defined
+	in /etc/lxc/configname.conf.
+
+	If you want checkpoint/restore functionality, please install criu
+	(sys-process/criu)."
+	DISABLE_AUTOFORMATTING=true
+	readme.gentoo_create_doc
 }
 
 pkg_postinst() {
-	elog ""
-	elog "Starting from version ${PN}-1.1.0-r3, the default lxc path has been"
-	elog "moved from /etc/lxc to /var/lib/lxc. If you still want to use /etc/lxc"
-	elog "please add the following to your /etc/lxc/default.conf"
-	elog "lxc.lxcpath = /etc/lxc"
-	elog ""
-	elog "There is an init script provided with the package now; no documentation"
-	elog "is currently available though, so please check out /etc/init.d/lxc ."
-	elog "You _should_ only need to symlink it to /etc/init.d/lxc.configname"
-	elog "to start the container defined into /etc/lxc/configname.conf ."
-	elog "For further information about LXC development see"
-	elog "http://blog.flameeyes.eu/tag/lxc" # remove once proper doc is available
-	elog ""
+	readme.gentoo_print_elog
 }
