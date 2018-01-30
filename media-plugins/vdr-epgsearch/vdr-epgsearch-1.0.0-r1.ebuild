@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -22,7 +22,7 @@ esac
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="pcre tre linguas_de"
+IUSE="pcre tre l10n_de"
 
 DEPEND=">=media-video/vdr-1.3.45
 	pcre? ( dev-libs/libpcre )
@@ -85,7 +85,7 @@ src_install() {
 
 	doman man/en/*.gz
 
-	if use linguas_de; then
+	if use l10n_de; then
 		doman -i18n=de man/de/*.gz
 	fi
 }

@@ -1,0 +1,31 @@
+commit adda534f95ec87206c9dfd1b3bae05221dc29730
+Author: Rolf Eike Beer <eike@sf-mail.de>
+Date:   Mon Dec 4 18:36:21 2017 +0100
+
+    bgpd: fix SIGBUS
+    
+    There is one test failure in the testsuite on sparc:
+    
+    Running ./bgpd.tests/testbgpcap.exp ...
+    failed: testbgpcap ORF: ORF, simple, single entry, single tuple -- testbgpcap  aborted!
+    
+    The error is a SIGBUS in bgp_capability_mp_data() because of an unaligned
+    memory access.  Use memcpy() instead of direct assignments.  Compilers on
+    platforms that support unaligned accesses should be clever enough to
+    optimize the function call away and do the direct store, so this should not
+    hurt there.
+
+diff --git a/bgpd/bgp_open.c b/bgpd/bgp_open.c
+index 28004230..d9ec4bef 100644
+--- a/bgpd/bgp_open.c
++++ b/bgpd/bgp_open.c
+@@ -120,7 +120,8 @@ bgp_capability_vty_out (struct vty *vty, struct peer *peer)
+ static void 
+ bgp_capability_mp_data (struct stream *s, struct capability_mp_data *mpc)
+ {
+-  mpc->afi = stream_getw (s);
++  afi_t afi = stream_getw (s);
++  memcpy(&mpc->afi, &afi, sizeof(mpc->afi));
+   mpc->reserved = stream_getc (s);
+   mpc->safi = stream_getc (s);
+ }

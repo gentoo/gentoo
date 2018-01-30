@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,7 @@ else
 	else
 		SRC_URI="https://download.videolan.org/pub/videolan/testing/${MY_P}/${MY_P}.tar.xz"
 	fi
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 -sparc ~x86 ~x86-fbsd"
+	KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 -sparc x86 ~x86-fbsd"
 fi
 inherit autotools flag-o-matic gnome2-utils toolchain-funcs versionator virtualx xdg-utils ${SCM}
 
@@ -241,6 +241,10 @@ src_prepare() {
 	if ! use dbus ; then
 		sed -i 's/ --started-from-file//' share/vlc.desktop.in || die
 	fi
+
+	# Disable running of vlc-cache-gen, we do that in pkg_postinst
+	sed -e "/test.*build.*host/s/\$(host)/nothanks/" \
+		-i Makefile.am -i bin/Makefile.am || die "Failed to disable vlc-cache-gen"
 
 	eautoreconf
 
@@ -466,6 +470,10 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
+	if [[ -e /usr/lib64/vlc/plugins/plugins.dat ]]; then
+		rm /usr/lib64/vlc/plugins/plugins.dat || die "Failed to rm plugins.dat"
+	fi
+
 	gnome2_icon_cache_update
 	xdg_mimeinfo_database_update
 	xdg_desktop_database_update

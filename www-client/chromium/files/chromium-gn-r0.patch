@@ -1,0 +1,33 @@
+From 47b25a1f83f8166c6cd5cf1f13bf6dcce125511a Mon Sep 17 00:00:00 2001
+From: Tom Anderson <thomasanderson@chromium.org>
+Date: Tue, 9 Jan 2018 15:23:14 -0800
+Subject: [PATCH] Fix gn bootstrap
+
+BUG=800553
+R=dpranke@chromium.org
+
+Change-Id: I5c1cfeb7542bf990c59451aabcae7c120cbf09c0
+Reviewed-on: https://chromium-review.googlesource.com/858276
+Reviewed-by: Dirk Pranke <dpranke@chromium.org>
+Commit-Queue: Thomas Anderson <thomasanderson@chromium.org>
+Cr-Commit-Position: refs/heads/master@{#528197}
+---
+ tools/gn/bootstrap/bootstrap.py | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/tools/gn/bootstrap/bootstrap.py b/tools/gn/bootstrap/bootstrap.py
+index a0f32ad31df0..5376c6253a32 100755
+--- a/tools/gn/bootstrap/bootstrap.py
++++ b/tools/gn/bootstrap/bootstrap.py
+@@ -178,6 +178,11 @@ def build_gn_with_ninja_manually(tempdir, options):
+   root_gen_dir = os.path.join(tempdir, 'gen')
+   mkdir_p(root_gen_dir)
+ 
++  write_buildflag_header_manually(
++      root_gen_dir,
++      'base/synchronization/synchronization_flags.h',
++      {'ENABLE_MUTEX_PRIORITY_INHERITANCE': 'false'})
++
+   write_buildflag_header_manually(root_gen_dir, 'base/allocator/features.h',
+       {'USE_ALLOCATOR_SHIM': 'true' if is_linux else 'false'})
+ 

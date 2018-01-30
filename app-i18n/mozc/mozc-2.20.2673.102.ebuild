@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -15,9 +15,8 @@ else
 	MOZC_GIT_REVISION="280e38fe3d9db4df52f0713acf2ca65898cd697a"
 	JAPANESE_USAGE_DICTIONARY_GIT_REVISION="e5b3425575734c323e1d947009dd74709437b684"
 	JAPANESE_USAGE_DICTIONARY_DATE="20120416091336"
+	FCITX_PATCH_VERSION="2.18.2612.102.1"
 fi
-
-FCITX_PATCH_VERSION="2.18.2612.102.1"
 
 DESCRIPTION="Mozc - Japanese input method editor"
 HOMEPAGE="https://github.com/google/mozc"
@@ -25,9 +24,9 @@ if [[ "${PV}" == "9999" ]]; then
 	SRC_URI=""
 else
 	SRC_URI="https://github.com/google/${PN}/archive/${MOZC_GIT_REVISION}.tar.gz -> ${P}.tar.gz
-		https://github.com/hiroyuki-komatsu/japanese-usage-dictionary/archive/${JAPANESE_USAGE_DICTIONARY_GIT_REVISION}.tar.gz -> japanese-usage-dictionary-${JAPANESE_USAGE_DICTIONARY_DATE}.tar.gz"
+		https://github.com/hiroyuki-komatsu/japanese-usage-dictionary/archive/${JAPANESE_USAGE_DICTIONARY_GIT_REVISION}.tar.gz -> japanese-usage-dictionary-${JAPANESE_USAGE_DICTIONARY_DATE}.tar.gz
+		fcitx4? ( https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-${FCITX_PATCH_VERSION}.patch )"
 fi
-SRC_URI+=" fcitx4? ( https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-${FCITX_PATCH_VERSION}.patch )"
 
 # Mozc: BSD
 # src/data/dictionary_oss: ipadic, public-domain
@@ -83,6 +82,12 @@ execute() {
 src_unpack() {
 	if [[ "${PV}" == "9999" ]]; then
 		git-r3_src_unpack
+
+		if use fcitx4; then
+			local EGIT_SUBMODULES=()
+			git-r3_fetch https://github.com/fcitx/mozc refs/heads/fcitx
+			git-r3_checkout https://github.com/fcitx/mozc "${WORKDIR}/fcitx-mozc"
+		fi
 	else
 		unpack ${P}.tar.gz
 		mv mozc-${MOZC_GIT_REVISION} ${P} || die
@@ -99,7 +104,11 @@ src_prepare() {
 	eapply -p2 "${FILESDIR}/${PN}-2.20.2673.102-tests_skipping.patch"
 
 	if use fcitx4; then
-		eapply -p2 "${DISTDIR}/fcitx-mozc-${FCITX_PATCH_VERSION}.patch"
+		if [[ "${PV}" == "9999" ]]; then
+			cp -pr "${WORKDIR}/fcitx-mozc/src/unix/fcitx" unix || die
+		else
+			eapply -p2 "${DISTDIR}/fcitx-mozc-${FCITX_PATCH_VERSION}.patch"
+		fi
 	fi
 
 	eapply_user

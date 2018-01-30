@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ inherit eutils alternatives flag-o-matic toolchain-funcs multilib multiprocessin
 
 PATCH_VER=1
 CROSS_VER=1.1.7
-PATCH_BASE="perl-5.25.11-patches-${PATCH_VER}"
+PATCH_BASE="perl-5.26.1-patches-${PATCH_VER}"
 
 DIST_AUTHOR=SHAY
 

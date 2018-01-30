@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -188,7 +188,13 @@ src_prepare() {
 		gunzip $man_file || die
 	done
 
-	use tools && eapply "${FILESDIR}"/${P}-linker.patch
+	if use tools; then
+		cp "${FILESDIR}"/nvidia-settings-linker.patch "${WORKDIR}" || die
+		sed -i \
+			-e "s:@PV@:${PV}:g" \
+			"${WORKDIR}"/nvidia-settings-linker.patch || die
+		eapply "${WORKDIR}"/nvidia-settings-linker.patch
+	fi
 
 	default
 

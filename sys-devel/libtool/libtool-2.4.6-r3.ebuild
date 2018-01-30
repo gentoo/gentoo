@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -13,7 +13,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-2
 else
 	SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
-	KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+	KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd"
 fi
 
 DESCRIPTION="A shared library tool for developers"
@@ -27,7 +27,8 @@ IUSE="vanilla"
 RDEPEND="sys-devel/gnuconfig
 	>=sys-devel/autoconf-2.69
 	>=sys-devel/automake-1.13
-	dev-libs/libltdl:0"
+	dev-libs/libltdl:0
+	!<sys-apps/sandbox-2.10-r4"
 DEPEND="${RDEPEND}
 	app-arch/xz-utils"
 [[ ${PV} == "9999" ]] && DEPEND+=" sys-apps/help2man"

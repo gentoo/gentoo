@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,9 +17,6 @@ KEYWORDS="amd64 x86"
 IUSE=""
 
 LANGS="cs de en_CA en_GB es fr hu id it ja ko nb nn_NO pl pt_BR ro ru sl sv uk zh_CN zh_TW"
-for x in ${LANGS}; do
-	IUSE+="linguas_${x} "
-done
 
 RDEPEND="
 	dev-python/pygtk:2[${PYTHON_USEDEP}]

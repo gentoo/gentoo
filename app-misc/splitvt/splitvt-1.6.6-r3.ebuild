@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,14 +9,14 @@ MY_P="${P/-/_}"
 DEB_PL="7"
 
 DESCRIPTION="Splitting terminals into two shells"
-HOMEPAGE="http://www.devolution.com/~slouken/projects/splitvt"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="
-	http://www.devolution.com/~slouken/projects/${PN}/${P}.tar.gz
+	https://slouken.libsdl.org/projects/splitvt/${P}.tar.gz
 	mirror://debian/pool/main/s/splitvt/${MY_P}-${DEB_PL}.diff.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ia64 ppc sparc x86"
 
 DEPEND="sys-libs/ncurses:0="
 RDEPEND="${DEPEND}"

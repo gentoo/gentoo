@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,7 +14,7 @@ SRC_URI="mirror://github/fuzzyray/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="linguas_fr linguas_it"
+IUSE="l10n_fr l10n_it"
 
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris"
 
@@ -41,13 +41,13 @@ python_install_all() {
 	distutils-r1_python_install_all
 	dodoc eupdatedb.cron || die "dodoc failed"
 
-	# Remove unused man pages according to the linguas flags
-	if ! use linguas_fr ; then
+	# Remove unused man pages according to the l10n flags
+	if ! use l10n_fr ; then
 		rm -rf "${ED}"/usr/share/man/fr \
 			|| die "rm failed to remove ${ED}/usr/share/man/fr"
 	fi
 
-	if ! use linguas_it ; then
+	if ! use l10n_it ; then
 		rm -rf "${ED}"/usr/share/man/it \
 			|| die "rm failed to remove ${ED}/usr/share/man/it"
 	fi

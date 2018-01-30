@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # Required by kde-apps/okteta
@@ -25,11 +25,11 @@ media-libs/mesa egl wayland
 # Required by kde-apps/kdenlive
 >=media-libs/mlt-0.9.8-r2 ffmpeg kdenlive melt
 
-# Required by app-office/libreoffice
-media-libs/phonon designer
-
 # Required by kde-plasma/plasma-pa
 media-sound/pulseaudio gnome
 
 # Required by kde-frameworks/kactivities
 sys-libs/zlib minizip
+
+# Mitigate media-libs/phonon:4[designer] dep by USE=phonon in make.defaults
+dev-qt/designer:4 -phonon

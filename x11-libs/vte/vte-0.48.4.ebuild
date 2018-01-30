@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -13,7 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/action/show/Apps/Terminal/VTE"
 LICENSE="LGPL-2+"
 SLOT="2.91"
 IUSE="+crypt debug glade +introspection vala vanilla"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~x64-solaris ~x86-solaris"
 REQUIRED_USE="vala? ( introspection )"
 
 SRC_URI="${SRC_URI} !vanilla? ( https://dev.gentoo.org/~eva/distfiles/${PN}/${P}-command-notify.patch.xz )"
@@ -86,5 +86,5 @@ src_configure() {
 
 src_install() {
 	gnome2_src_install
-	mv "${D}"/etc/profile.d/vte{,-${SLOT}}.sh || die
+	mv "${ED}"/etc/profile.d/vte{,-${SLOT}}.sh || die
 }

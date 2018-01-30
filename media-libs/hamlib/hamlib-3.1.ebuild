@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -21,7 +21,7 @@ RESTRICT="test"
 RDEPEND="
 	=virtual/libusb-0*
 	dev-libs/libxml2
-	sys-libs/readline:0
+	sys-libs/readline:0=
 	perl? ( dev-lang/perl )
 	python? ( ${PYTHON_DEPS} )
 	tcl? ( dev-lang/tcl:0= )"

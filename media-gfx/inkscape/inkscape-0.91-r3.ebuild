@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -33,7 +33,7 @@ COMMON_DEPEND="
 	>=dev-cpp/glibmm-2.48
 	>=dev-cpp/gtkmm-2.18.0:2.4
 	>=dev-cpp/cairomm-1.9.8
-	>=dev-libs/boehm-gc-7.1
+	>=dev-libs/boehm-gc-7.1:=
 	>=dev-libs/glib-2.28
 	>=dev-libs/libsigc++-2.0.12
 	>=dev-libs/libxml2-2.6.20

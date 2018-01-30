@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -71,5 +71,6 @@ src_configure() {
 }
 
 src_test() {
-	virtx emake check
+	"${EROOT}${GLIB_COMPILE_SCHEMAS}" --allow-any-name "${S}/data" || die
+	GSETTINGS_SCHEMA_DIR="${S}/data" virtx emake check
 }

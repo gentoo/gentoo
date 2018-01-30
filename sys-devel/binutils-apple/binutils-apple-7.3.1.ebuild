@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -35,7 +35,7 @@ IUSE="lto test multitarget"
 # -Wa,-Q but since it's default we make llvm a static runtime dependency.
 RDEPEND="sys-devel/binutils-config
 	lto? ( app-arch/xar )
-	sys-devel/llvm
+	sys-devel/llvm:*
 	sys-libs/libcxx"
 DEPEND="${RDEPEND}
 	test? ( >=dev-lang/perl-5.8.8 )"

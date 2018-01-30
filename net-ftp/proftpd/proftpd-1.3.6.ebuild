@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -28,8 +28,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE="acl authfile ban +caps case clamav copy ctrls deflate diskuse doc dso dynmasq exec ifsession ifversion ident ipv6
-	kerberos ldap libressl linguas_bg_BG linguas_en_US linguas_fr_FR linguas_it_IT linguas_ja_JP linguas_ko_KR
-	linguas_ru_RU linguas_zh_CN linguas_zh_TW log_forensic memcache msg mysql ncurses nls pam +pcre postgres qos radius
+	kerberos ldap libressl log_forensic memcache msg mysql ncurses nls pam +pcre postgres qos radius
 	ratio readme rewrite selinux sftp shaper sitemisc snmp softquota sqlite ssl tcpd test unique_id vroot xinetd"
 # TODO: geoip
 REQUIRED_USE="ban? ( ctrls )
@@ -234,7 +233,7 @@ src_test() {
 
 src_install() {
 	default
-	[[ -z ${LINGUAS} ]] && rm -r "${ED}"/usr/share/locale
+	[[ -z ${LINGUAS-set} ]] && rm -r "${ED}"/usr/share/locale
 	rm -rf "${ED}"/var/run
 
 	newinitd "${FILESDIR}"/proftpd.initd proftpd

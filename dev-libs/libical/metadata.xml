@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>asturm@gentoo.org</email>
+		<name>Andreas Sturmlechner</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="github">libical/libical</remote-id>
 	</upstream>
-	<use>
-		<flag name="glib">Enable <pkg>dev-libs/glib</pkg> GObject interface support</flag>
-	</use>
 </pkgmetadata>

@@ -4,42 +4,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
-# Matt Turner <mattst88@gentoo.org> (25 Nov 2017)
-# Unmaintained upstream. Masked for removal in 30 days.
-# Bug #606132.
-input_devices_acecad
-input_devices_aiptek
-input_devices_fpit
-input_devices_hyperpen
-input_devices_mutouch
-
 # Matt Turner <mattst88@gentoo.org> (23 Nov 2017)
 # For ancient hardware. Tired of maintaining. Masked for removal in 30 days.
 # Bug #606132.
-video_cards_apm
-video_cards_ark
-video_cards_chips
-video_cards_cirrus
-video_cards_i128
-video_cards_i740
-video_cards_mach64
-video_cards_neomagic
-video_cards_rendition
-video_cards_s3
-video_cards_s3virge
-video_cards_savage
-video_cards_sis
-video_cards_sisusb
-video_cards_suncg14
-video_cards_suncg3
-video_cards_suncg6
-video_cards_sunffb
-video_cards_sunleo
-video_cards_suntcx
 video_cards_tdfx
-video_cards_tga
-video_cards_trident
-video_cards_tseng
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (04 Nov 2017)
 # ... since audacious is being last-rited ... bug 632513

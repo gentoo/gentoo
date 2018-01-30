@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: kde5.eclass
@@ -94,6 +94,11 @@ EXPORT_FUNCTIONS pkg_setup pkg_nofetch src_unpack src_prepare src_configure src_
 # @DESCRIPTION:
 # Specifies the location of the KDE handbook if not the default.
 : ${KDE_DOC_DIR:=doc}
+
+# @ECLASS-VARIABLE: KDE_PO_DIRS
+# @DESCRIPTION:
+# Specifies the possible locations of KDE l10n files if not the default.
+: ${KDE_PO_DIRS:="po poqm"}
 
 # @ECLASS-VARIABLE: KDE_QTHELP
 # @DESCRIPTION:
@@ -199,21 +204,14 @@ case ${KDE_AUTODEPS} in
 			RDEPEND+=" || ( $(add_frameworks_dep breeze-icons) kde-frameworks/oxygen-icons:* )"
 		fi
 
-		case ${CATEGORY} in
-			kde-frameworks | \
-			kde-plasma)
-				RDEPEND+=" !<kde-apps/kde4-l10n-15.12.3-r1"
-				;;
-			kde-apps)
-				[[ ${KDE_BLOCK_SLOT4} = true ]] && RDEPEND+=" !kde-apps/${PN}:4"
-				[[ $(get_version_component_range 1) -ge 17 ]] && \
-					RDEPEND+="
-						!kde-apps/kde-l10n
-						!<kde-apps/kde4-l10n-16.12.0:4
-						!kde-apps/kdepim-l10n:5
-					"
-				;;
-		esac
+		if [[ ${CATEGORY} = kde-apps ]]; then
+			[[ ${KDE_BLOCK_SLOT4} = true ]] && RDEPEND+=" !kde-apps/${PN}:4"
+			RDEPEND+="
+				!kde-apps/kde-l10n
+				!<kde-apps/kde4-l10n-16.12.0:4
+				!kde-apps/kdepim-l10n:5
+			"
+		fi
 		;;
 esac
 
@@ -523,18 +521,18 @@ kde5_src_prepare() {
 
 	# drop translations when nls is not wanted
 	if in_iuse nls && ! use nls ; then
-		if [[ -d po ]] ; then
-			rm -r po || die
-		fi
-		if [[ -d poqm ]] ; then
-			rm -r poqm || die
-		fi
+		local po
+		for po in ${KDE_PO_DIRS}; do
+			if [[ -d ${po} ]] ; then
+				rm -r ${po} || die
+			fi
+		done
 	fi
 
 	# enable only the requested translations when required
 	if [[ -v LINGUAS ]] ; then
 		local po
-		for po in po poqm; do
+		for po in ${KDE_PO_DIRS}; do
 		if [[ -d ${po} ]] ; then
 			pushd ${po} > /dev/null || die
 			local lang

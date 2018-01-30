@@ -1,6 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
 
+# Requires >=icu-60, which is not available in 13.0 based profiles.
+# Please migrate to one of the new hardened profiles.
+>=app-office/libreoffice-bin-5.4.4
+>=app-office/libreoffice-bin-debug-5.4.4
+
 # Hardened versions of gcc-4.0* through gcc-4.2* are not available.
 =sys-devel/gcc-4.0*
 =sys-devel/gcc-4.1*

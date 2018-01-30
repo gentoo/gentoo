@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -54,7 +54,7 @@ multilib_src_configure() {
 	mycmakeargs+=(
 		-DMYSQL_CXX_LINKAGE=0
 		-DWITH_UNIXODBC=1
-		-DMYSQLCLIENT_LIB_NAME="libmysqlclient_r.so"
+		-DMYSQLCLIENT_LIB_NAME="libmysqlclient.so"
 		-DWITH_DOCUMENTATION_INSTALL_PATH=/usr/share/doc/${PF}
 		-DMYSQL_LIB_DIR="${ROOT}/usr/$(get_libdir)"
 		-DLIB_SUBDIR="$(get_libdir)"

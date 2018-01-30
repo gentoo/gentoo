@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,7 +16,7 @@ SRC_URI="https://releases.llvm.org/${PV/_//}/${P/_/}.src.tar.xz"
 
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="${PV%_*}"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86 ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="+clang test"
 
 LLVM_SLOT=${SLOT%%.*}
@@ -76,6 +76,13 @@ src_configure() {
 		-DCOMPILER_RT_BUILD_SANITIZERS=OFF
 		-DCOMPILER_RT_BUILD_XRAY=OFF
 	)
+
+	if use prefix && [[ "${CHOST}" == *-darwin* ]] ; then
+		mycmakeargs+=(
+			# disable use of SDK for the system itself
+			-DDARWIN_macosx_CACHED_SYSROOT=/
+		)
+	fi
 
 	if use test; then
 		mycmakeargs+=(

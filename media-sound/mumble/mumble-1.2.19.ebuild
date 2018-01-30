@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ SRC_URI="https://mumble.info/snapshot/${MY_P}.tar.gz"
 
 LICENSE="BSD MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="+alsa +dbus debug g15 libressl oss pch portaudio pulseaudio speech zeroconf"
 
 RDEPEND=">=dev-libs/boost-1.41.0

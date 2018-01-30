@@ -41,14 +41,14 @@ RDEPEND="
 	libcxxabi? ( ~sys-libs/libcxxabi-${PV}[libunwind=,static-libs?,${MULTILIB_USEDEP}] )
 	libcxxrt? ( sys-libs/libcxxrt[libunwind=,static-libs?,${MULTILIB_USEDEP}] )
 	!libcxxabi? ( !libcxxrt? ( >=sys-devel/gcc-4.7:=[cxx] ) )"
-# LLVM 4 required for llvm-config --cmakedir
+# llvm-6 for new lit options
 # clang-3.9.0 installs necessary target symlinks unconditionally
 # which removes the need for MULTILIB_USEDEP
 DEPEND="${RDEPEND}
 	test? ( >=sys-devel/clang-3.9.0
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]') )
 	app-arch/xz-utils
-	>=sys-devel/llvm-4"
+	>=sys-devel/llvm-6"
 
 DOCS=( CREDITS.TXT )
 

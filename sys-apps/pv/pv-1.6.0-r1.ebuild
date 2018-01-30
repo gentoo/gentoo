@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,7 +14,6 @@ KEYWORDS="alpha amd64 arm arm64 hppa ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86
 IUSE="debug nls"
 
 PV_LINGUAS=( de fr pl pt )
-IUSE+=" ${PV_LINGUAS[@]/#/linguas_}"
 
 DOCS=( README doc/NEWS doc/TODO )
 
@@ -38,7 +37,7 @@ src_configure() {
 	tc-export AR
 	local lingua
 	for lingua in ${PV_LINGUAS[@]}; do
-		if ! use linguas_${lingua}; then
+		if ! has ${lingua} ${LINGUAS-${lingua}}; then
 			sed -i configure -e "/ALL_LINGUAS=/s:${lingua}::g" || die
 		fi
 	done

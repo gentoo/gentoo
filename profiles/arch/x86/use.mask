@@ -4,6 +4,12 @@
 # Unmask the flag which corresponds to ARCH.
 -x86
 
+# Michael Orlitzky <mjo@gentoo.org> (13 Jan 2018)
+# Oracle database stuff should work on x86.
+-oci8
+-oci8-instant-client
+-oracle
+
 # Michael Palimaka <kensington@gentoo.org> (03 Jun 2017)
 # Unmask elogind since it is keyworded here.
 -elogind
@@ -120,10 +126,6 @@
 # Unmask nvidia XvMC support
 -nvidia
 
-# Unmask dev-db/oracle-instantclient-basic support
--oci8-instant-client
--oracle
-
 # Modular X: unmask for architectures on which they are available
 -input_devices_synaptics
 -input_devices_vmmouse
@@ -139,12 +141,6 @@
 -video_cards_via
 -video_cards_virtualbox
 -video_cards_qxl
-
-# Diego Pettenò <flameeyes@gentoo.org> (4 Jan 2007)
-# Unmask the flags for PHP that are available only on x86
-#
-# Shared with amd64
--oci8
 
 # Robert Buchholz <rbu@gentoo.org> (03 Jun 2007)
 # Unmask as it works on x86

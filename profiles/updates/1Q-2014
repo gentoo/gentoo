@@ -1,5 +1,3 @@
-move games-board/capitalism games-board/capicity
-move games-board/CapiCity games-board/capicity
 move net-misc/mirall net-misc/owncloud-client
 slotmove sys-block/kvpm 0 4
 move media-sound/audio-entropyd sys-apps/audio-entropyd

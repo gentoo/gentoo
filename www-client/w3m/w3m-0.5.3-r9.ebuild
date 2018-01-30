@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ IUSE="X fbcon gpm gtk imlib libressl lynxkeymap nls nntp ssl unicode xface l10n_
 # allow us to build w/o X, so we have to give up framebuffer w3mimg....
 RDEPEND=">=sys-libs/ncurses-5.2-r3:0=
 	>=sys-libs/zlib-1.1.3-r2
-	>=dev-libs/boehm-gc-6.2
+	>=dev-libs/boehm-gc-6.2:=
 	X? ( x11-libs/libXext x11-libs/libXdmcp )
 	gtk? ( x11-libs/gdk-pixbuf )
 	!gtk? ( imlib? ( >=media-libs/imlib2-1.1.0[X] ) )

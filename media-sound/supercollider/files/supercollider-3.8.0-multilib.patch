@@ -1,0 +1,89 @@
+From 547a18c14dd45a22361f2ab495d14625862499e5 Mon Sep 17 00:00:00 2001
+From: Ferdinand Thiessen <rpm@fthiessen.de>
+Date: Sun, 5 Mar 2017 16:16:19 +0100
+Subject: [PATCH] cmake / linux: Allow setting LIB_SUFFIX to install libraries
+ into lib64 etc.
+
+---
+ editors/sced/CMakeLists.txt      | 6 +++---
+ server/plugins/CMakeLists.txt    | 2 +-
+ server/scsynth/CMakeLists.txt    | 4 ++--
+ server/supernova/server/main.cpp | 1 +
+ 4 files changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/editors/sced/CMakeLists.txt b/editors/sced/CMakeLists.txt
+index 286d625fb..b304d4c07 100644
+--- a/editors/sced/CMakeLists.txt
++++ b/editors/sced/CMakeLists.txt
+@@ -14,10 +14,10 @@ if(NOT WIN32 AND SC_ED EQUAL 2)
+             DESTINATION share/gtksourceview-2.0/language-specs)
+ 
+     install(FILES data/sced.gedit-plugin
+-            DESTINATION lib/gedit-2/plugins)
++            DESTINATION lib${LIB_SUFFIX}/gedit-2/plugins)
+ 
+     install(DIRECTORY sced
+-            DESTINATION lib/gedit-2/plugins)
++            DESTINATION lib${LIB_SUFFIX}/gedit-2/plugins)
+ 
+ elseif(NOT WIN32 AND SC_ED EQUAL 3)
+ 
+@@ -29,7 +29,7 @@ elseif(NOT WIN32 AND SC_ED EQUAL 3)
+             DESTINATION share/gtksourceview-3.0/language-specs)
+ 
+     install(FILES ${CMAKE_CURRENT_BINARY_DIR}/sced3/supercollider.plugin sced3/supercollider.py
+-            DESTINATION lib/gedit/plugins)
++            DESTINATION lib${LIB_SUFFIX}/gedit/plugins)
+ 
+ elseif(WIN32)
+ 
+diff --git a/server/plugins/CMakeLists.txt b/server/plugins/CMakeLists.txt
+index 52accc332..570f2e50b 100644
+--- a/server/plugins/CMakeLists.txt
++++ b/server/plugins/CMakeLists.txt
+@@ -301,7 +301,7 @@ elseif(APPLE)
+ 
+ else()
+ 	install(TARGETS ${plugins} ${supernova_plugins}
+-			DESTINATION "lib/SuperCollider/plugins"
++			DESTINATION "lib${LIB_SUFFIX}/SuperCollider/plugins"
+ 			PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
+ endif()
+ 
+diff --git a/server/scsynth/CMakeLists.txt b/server/scsynth/CMakeLists.txt
+index 1d99cad80..dbb92749b 100644
+--- a/server/scsynth/CMakeLists.txt
++++ b/server/scsynth/CMakeLists.txt
+@@ -150,7 +150,7 @@ elseif(NOT NO_LIBSNDFILE)
+ endif(SNDFILE_FOUND)
+ 
+ if(UNIX AND NOT APPLE)
+-	target_compile_definitions(libscsynth PUBLIC "SC_PLUGIN_DIR=\"${CMAKE_INSTALL_PREFIX}/lib/SuperCollider/plugins\"")
++	target_compile_definitions(libscsynth PUBLIC "SC_PLUGIN_DIR=\"${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}/SuperCollider/plugins\"")
+ endif()
+ 
+ 
+@@ -284,7 +284,7 @@ elseif(WIN32)
+ else()
+ 	install(TARGETS ${INSTALL_TARGETS}
+ 			RUNTIME DESTINATION "bin"
+-			LIBRARY DESTINATION "lib"
++			LIBRARY DESTINATION "lib${LIB_SUFFIX}"
+ 			PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
+ endif()
+ 
+diff --git a/server/supernova/server/main.cpp b/server/supernova/server/main.cpp
+index c0f603471..453355523 100644
+--- a/server/supernova/server/main.cpp
++++ b/server/supernova/server/main.cpp
+@@ -245,6 +245,7 @@ void set_plugin_paths(server_arguments const & args, nova::sc_ugen_factory * fac
+         const path home = resolve_home();
+         std::vector<path> folders = { "/usr/local/lib/SuperCollider/plugins",
+                                       "/usr/lib/SuperCollider/plugins",
++                                      "/usr/lib64/SuperCollider/plugins",
+                                       home / "/.local/share/SuperCollider/Extensions",
+                                       home / "share/SuperCollider/plugins" };
+ 
+-- 
+2.15.1
+

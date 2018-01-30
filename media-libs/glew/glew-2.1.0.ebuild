@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -78,6 +78,7 @@ set_opts() {
 multilib_src_compile() {
 	set_opts
 	emake \
+		GLEW_PREFIX="${EPREFIX}/usr" \
 		GLEW_DEST="${EPREFIX}/usr" \
 		LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
 		"${myglewopts[@]}"

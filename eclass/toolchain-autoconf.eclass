@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: toolchain-autoconf.eclass
@@ -9,16 +9,24 @@
 # This eclass contains the common phase functions migrated from
 # sys-devel/autoconf eblits.
 
-if [[ -z ${_TOOLCHAIN_AUTOCONF_ECLASS} ]]; then
+case ${EAPI:-0} in
+	[0-5])
+		die "${ECLASS} is banned in EAPI ${EAPI:-0}"
+		;;
+	6)
+		;;
+	*)
+		die "Unknown EAPI ${EAPI:-0}"
+		;;
+esac
 
-inherit eutils
+if [[ -z ${_TOOLCHAIN_AUTOCONF_ECLASS} ]]; then
 
 EXPORT_FUNCTIONS src_prepare src_configure src_install
 
 toolchain-autoconf_src_prepare() {
 	find -name Makefile.in -exec sed -i '/^pkgdatadir/s:$:-@VERSION@:' {} + || die
-
-	[[ ${#PATCHES[@]} -gt 0 ]] && epatch "${PATCHES[@]}"
+	default
 }
 
 toolchain-autoconf_src_configure() {

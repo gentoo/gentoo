@@ -11,6 +11,7 @@ sys-fs/udev
 
 # Working on it, bug #470884
 dev-libs/elfutils
+>virtual/libelf-2
 
 # packages that unconditionally depend on dev-libs/elfutils
 <net-firewall/fwbuilder-5.3.7

@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit multilib-minimal
+inherit multilib-minimal libtool
 
 MY_P="gc-${PV}"
 
@@ -22,6 +22,11 @@ DEPEND="
 
 S="${WORKDIR}/${MY_P}"
 
+src_prepare() {
+	default
+	elibtoolize #594754
+}
+
 multilib_src_configure() {
 	local config=(
 		--with-libatomic-ops
@@ -31,11 +36,6 @@ multilib_src_configure() {
 	)
 
 	ECONF_SOURCE=${S} econf "${config[@]}"
-}
-
-multilib_src_compile() {
-	use sparc && emake src/sparc_mach_dep.lo
-	default
 }
 
 multilib_src_install_all() {

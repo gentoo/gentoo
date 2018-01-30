@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,7 +16,7 @@ LICENSE="BSD GPL-2 zfs? ( CDDL )"
 # sys is needed for libalias, probably we can just extract that instead of
 # extracting the whole tarball
 if [[ ${PV} != *9999* ]]; then
-	KEYWORDS="~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+	KEYWORDS="~amd64-fbsd ~x86-fbsd"
 	SRC_URI="${SRC_URI}
 			$(freebsd_upstream_patches)"
 fi
@@ -72,7 +72,7 @@ if [ "${CTARGET}" = "${CHOST}" -a "${CATEGORY#*cross-}" != "${CATEGORY}" ]; then
 fi
 
 IUSE="atm bluetooth ssl hesiod ipv6 kerberos usb netware
-	build crosscompile_opts_headers-only zfs pam xinetd
+	build headers-only zfs pam xinetd
 	userland_GNU userland_BSD"
 
 QA_DT_NEEDED="lib/libc.so.7 usr/lib32/libc.so.7"
@@ -416,7 +416,7 @@ src_compile() {
 	cd "${WORKDIR}/include"
 	$(freebsd_get_bmake) CC="$(tc-getCC)" SRCTOP="${WORKDIR}" || die "make include failed"
 
-	use crosscompile_opts_headers-only && return 0
+	use headers-only && return 0
 
 	# Bug #270098
 	append-flags $(test-flags -fno-strict-aliasing)
@@ -547,7 +547,7 @@ do_install() {
 	CTARGET="${CHOST}" \
 		install_includes ${INCLUDEDIR}
 
-	is_crosscompile && use crosscompile_opts_headers-only && return 0
+	is_crosscompile && use headers-only && return 0
 
 	# Install a libusb.pc for better compat with Linux's libusb
 	if use usb ; then

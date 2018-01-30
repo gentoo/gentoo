@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ SRC_URI="https://releases.llvm.org/${PV/_//}/openmp-${PV/_/}.src.tar.xz"
 
 LICENSE="|| ( UoI-NCSA MIT ) MIT LLVM-Grant"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="hwloc ompt test"
 RESTRICT="!test? ( test )"
 
@@ -43,7 +43,10 @@ S=${WORKDIR}/openmp-${PV/_/}.src
 CMAKE_BUILD_TYPE=RelWithDebInfo
 
 CONFIG_CHECK="~!SCHED_PDS"
-ERROR_SCHED_PDS="PDS scheduler is not supported as it does not implement sched_yield()"
+ERROR_SCHED_PDS="PDS scheduler versions >= 0.98c < 0.98i (e.g. used in kernels
+>= 4.13-pf11 < 4.14-pf9) do not implement sched_yield() call which
+may result in horrible performance problems with libomp. If you are using one
+of the specified kernel versions, you may want to disable the PDS scheduler."
 
 python_check_deps() {
 	has_version "dev-python/lit[${PYTHON_USEDEP}]"

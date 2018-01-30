@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,7 +17,7 @@ HOMEPAGE="http://www.puppetlabs.com/puppet/related-projects/facter/"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="+dmi +pciutils +virt"
-KEYWORDS="amd64 hppa ppc ppc64 ~sparc x86"
+KEYWORDS="amd64 ~hppa ppc ppc64 ~sparc x86"
 
 CDEPEND="
 	app-emulation/virt-what

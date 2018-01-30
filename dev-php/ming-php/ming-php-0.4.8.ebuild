@@ -26,11 +26,15 @@ S="${WORKDIR}/libming-${MY_P}"
 DOCS=( )
 
 src_prepare() {
-	local slot orig_s="${PHP_EXT_S}"
+	local slot orig_s="${PHP_EXT_S}" libdir=$(get_libdir)
 	for slot in $(php_get_slots); do
 		cp "${FILESDIR}/php_ext-config.m4" "${WORKDIR}/${slot}/config.m4" || \
 			die "Failed to copy config.m4 to target"
 		rm "${WORKDIR}/${slot}/Makefile.am" || die "Failed to remove Makefile.am for ${slot}"
+		# Fix for SYMYLINK_LIB=no
+		[[ ${libdir} != 'lib' ]] && \
+		sed -i -e "s~PHP_LIBDIR=lib~PHP_LIBDIR=${libdir}~" "${WORKDIR}/${slot}/config.m4" \
+			|| die "Failed to update lib directory"
 		php_init_slot_env ${slot}
 		eapply_user
 		php-ext-source-r3_phpize

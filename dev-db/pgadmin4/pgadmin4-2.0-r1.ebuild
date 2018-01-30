@@ -13,7 +13,7 @@ HOMEPAGE="http://www.pgadmin.org/"
 SRC_URI="mirror://postgresql/pgadmin/${PN}/v${PV}/source/${P}.tar.gz"
 
 LICENSE="POSTGRESQL"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 SLOT="0"
 IUSE="doc"
 

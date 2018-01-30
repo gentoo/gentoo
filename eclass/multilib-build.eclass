@@ -497,8 +497,8 @@ multilib_prepare_wrappers() {
 #	else
 #       error "abi_s390_32 not supported by the package."
 #	endif
-#elif defined(__powerpc__)
-#	if defined(__powerpc64__)
+#elif defined(__powerpc__) || defined(__ppc__)
+#	if defined(__powerpc64__) || defined(__ppc64__)
 #       error "abi_ppc_64 not supported by the package."
 #	else
 #       error "abi_ppc_32 not supported by the package."

@@ -1,0 +1,30 @@
+------------------------------------------------------------------------
+r2725 | jwoithe | 2018-01-05 18:40:19 +0900 (Fri, 05 Jan 2018) | 11 lines
+
+SCons: fix detection of dbus on PyQt5 systems.
+
+The detection of the dbus python modules was qualified on the presence of
+pyuic4.  On systems with only PyQt5 this would obviously fail.  Patch from
+Orcan Ogetbil via the ffado-devel mailing list.
+
+r2724 inadvertently included a change to SConstruct to import sys.  This is
+needed since sys.stdout is referenced in some situations (in particular, if
+jack is not installed in the build environment).  This patch was also from
+Orcan Ogetbil, via the ffado-devel mailing list.
+
+
+Index: SConstruct
+===================================================================
+--- a/SConstruct	(revision 2724)
++++ b/SConstruct	(revision 2725)
+@@ -396,7 +396,7 @@
+ 
+ # PyQT checks
+ if env['BUILD_MIXER'] != 'false':
+-    have_dbus = (conf.CheckForApp( 'which pyuic4' ) and conf.CheckForPyModule( 'dbus.mainloop.qt' ))
++    have_dbus = ((conf.CheckForApp( 'which pyuic4' ) and conf.CheckForPyModule( 'dbus.mainloop.qt' )) or (conf.CheckForApp( 'which pyuic5' ) and conf.CheckForPyModule( 'dbus.mainloop.pyqt5' )))
+     have_pyqt4 = (conf.CheckForApp( 'which pyuic4' ) and conf.CheckForPyModule( 'PyQt4' ))
+     have_pyqt5 = (conf.CheckForApp( 'which pyuic5' ) and conf.CheckForPyModule( 'PyQt5' ))
+     if ((have_pyqt4 or have_pyqt5) and have_dbus):
+
+------------------------------------------------------------------------

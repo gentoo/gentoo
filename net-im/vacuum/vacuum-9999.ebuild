@@ -1,9 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-EGIT_BRANCH="dev_qt5"
 EGIT_REPO_URI="https://github.com/Vacuum-IM/vacuum-im.git"
 PLOCALES="de es pl ru uk"
 inherit cmake-utils git-r3 l10n
@@ -66,7 +65,11 @@ DOCS=( AUTHORS CHANGELOG README TRANSLATORS )
 
 src_prepare() {
 	# Force usage of system libraries
-	rm -rf src/thirdparty/{idn,hunspell,minizip,zlib}
+	rm -rf src/thirdparty/{hunspell,idn,minizip,qtlockedfile,zlib} || die
+
+	# Supress find thirdparty library in the system
+	sed -i -r -e "/find_library.+qxtglobalshortcut/d" \
+		CMakeLists.txt || die
 
 	cmake-utils_src_prepare
 }
@@ -79,7 +82,6 @@ src_configure() {
 		-DINSTALL_DOCS=OFF
 		-DFORCE_BUNDLED_MINIZIP=OFF
 		-DPLUGIN_statistics=OFF
-		-DNO_WEBKIT=$(usex !adiummessagestyle)
 		-DPLUGIN_spellchecker=$(usex spell)
 	)
 

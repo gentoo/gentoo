@@ -1,0 +1,10 @@
+# Copyright 1999-2018 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+
+# This file lists extra packages needed to build for
+# a stage 1 based on this profile.
+
+dev-util/pkgconf
+sys-apps/attr
+sys-apps/sandbox
+dev-python/pyxattr

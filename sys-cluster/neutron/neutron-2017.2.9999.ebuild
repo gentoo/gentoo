@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -178,30 +178,30 @@ src_prepare() {
 python_install_all() {
 	distutils-r1_python_install_all
 	if use server; then
-		newinitd "${FILESDIR}/neutron.initd-2" "neutron-server"
+		newinitd "${FILESDIR}/neutron.initd" "neutron-server"
 		newconfd "${FILESDIR}/neutron-server.confd" "neutron-server"
 		dosym /etc/neutron/plugin.ini /etc/neutron/plugins/ml2/ml2_conf.ini
 	fi
 	if use dhcp; then
-		newinitd "${FILESDIR}/neutron.initd-2" "neutron-dhcp-agent"
+		newinitd "${FILESDIR}/neutron.initd" "neutron-dhcp-agent"
 		newconfd "${FILESDIR}/neutron-dhcp-agent.confd" "neutron-dhcp-agent"
 	fi
 	if use l3; then
-		newinitd "${FILESDIR}/neutron.initd-2" "neutron-l3-agent"
+		newinitd "${FILESDIR}/neutron.initd" "neutron-l3-agent"
 		newconfd "${FILESDIR}/neutron-l3-agent.confd" "neutron-l3-agent"
 	fi
 	if use metadata; then
-		newinitd "${FILESDIR}/neutron.initd-2" "neutron-metadata-agent"
+		newinitd "${FILESDIR}/neutron.initd" "neutron-metadata-agent"
 		newconfd "${FILESDIR}/neutron-metadata-agent.confd" "neutron-metadata-agent"
 	fi
 	if use openvswitch; then
-		newinitd "${FILESDIR}/neutron.initd-2" "neutron-openvswitch-agent"
+		newinitd "${FILESDIR}/neutron.initd" "neutron-openvswitch-agent"
 		newconfd "${FILESDIR}/neutron-openvswitch-agent.confd" "neutron-openvswitch-agent"
-		newinitd "${FILESDIR}/neutron.initd-2" "neutron-ovs-cleanup"
+		newinitd "${FILESDIR}/neutron.initd" "neutron-ovs-cleanup"
 		newconfd "${FILESDIR}/neutron-openvswitch-agent.confd" "neutron-ovs-cleanup"
 	fi
 	if use linuxbridge; then
-		newinitd "${FILESDIR}/neutron.initd-2" "neutron-linuxbridge-agent"
+		newinitd "${FILESDIR}/neutron.initd" "neutron-linuxbridge-agent"
 		newconfd "${FILESDIR}/neutron-linuxbridge-agent.confd" "neutron-linuxbridge-agent"
 	fi
 	diropts -m 755 -o neutron -g neutron

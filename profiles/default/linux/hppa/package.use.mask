@@ -19,13 +19,12 @@ dev-qt/qtcore pch
 dev-qt/qtdbus pch
 dev-qt/qtdemo pch
 dev-qt/qtgui pch
-dev-qt/qthelp pch 
+dev-qt/qthelp pch
 dev-qt/qtopengl pch
 dev-qt/qtscript pch
 dev-qt/qtsql pch
 dev-qt/qtsvg pch
 dev-qt/qttest pch
-dev-qt/qtwebkit pch
 dev-qt/qtxmlpatterns pch
 
 # DON'T TOUCH THIS FILE. Instead, file a bug and assign it to <hppa@gentoo.org>.

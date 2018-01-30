@@ -1,27 +1,36 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI="6"
 
 # Python is required for tests and some build tasks.
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
 
-inherit git-r3 python-any-r1 cmake-multilib
+inherit python-any-r1 cmake-multilib
+
+if [[ ${PV} == "9999" ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/google/googletest"
+else
+	SRC_URI="https://github.com/google/googletest/archive/release-${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos"
+	S="${WORKDIR}"/googletest-release-${PV}
+fi
 
 DESCRIPTION="Google C++ Testing Framework"
 HOMEPAGE="https://github.com/google/googletest"
-EGIT_REPO_URI="https://github.com/google/googletest.git"
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="examples test"
+IUSE="doc examples test"
 
 DEPEND="test? ( ${PYTHON_DEPS} )"
 RDEPEND="!dev-cpp/gmock"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-fix-py-tests.patch
-	"${FILESDIR}"/${P}-fix-gcc6-undefined-behavior.patch
+	"${FILESDIR}"/${PN}-9999-fix-gcc6-undefined-behavior.patch
+	"${FILESDIR}"/${PN}-1.8.0-increase-clone-stack-size.patch
+	"${FILESDIR}"/${PN}-1.8.0-fix-doublefree.patch
 )
 
 pkg_setup() {
@@ -52,6 +61,13 @@ multilib_src_configure() {
 
 multilib_src_install_all() {
 	einstalldocs
+
+	if use doc; then
+		docinto googletest
+		dodoc -r googletest/docs/*
+		docinto googlemock
+		dodoc -r googlemock/docs/*
+	fi
 
 	if use examples; then
 		docinto examples

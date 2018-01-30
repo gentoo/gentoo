@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,9 +17,10 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="doc"
 
-DEPEND="app-eselect/eselect-blas"
-RDEPEND="${DEPEND}
-	doc? ( app-doc/blas-docs )
+RDEPEND="
+	app-eselect/eselect-blas
+	doc? ( app-doc/blas-docs )"
+DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 S="${WORKDIR}/${LPN}-${LPV}"
@@ -52,6 +53,11 @@ src_configure() {
 
 src_compile() {
 	cmake-utils_src_compile -C BLAS
+}
+
+src_test() {
+	local BUILD_DIR="${WORKDIR}/${P}_build/BLAS"
+	cmake-utils_src_test
 }
 
 src_install() {

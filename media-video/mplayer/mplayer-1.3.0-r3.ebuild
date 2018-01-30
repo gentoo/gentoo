@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,7 +19,7 @@ radio rar rtc rtmp samba selinux +shm sdl speex cpu_flags_x86_sse cpu_flags_x86_
 tga theora tremor +truetype toolame twolame +unicode v4l vcd vdpau vidix
 vorbis +X x264 xinerama +xscreensaver +xv xvid xvmc yuv4mpeg zoran"
 
-VIDEO_CARDS="s3virge mga tdfx"
+VIDEO_CARDS="mga tdfx"
 for x in ${VIDEO_CARDS}; do
 	IUSE+=" video_cards_${x}"
 done
@@ -424,7 +424,6 @@ src_configure() {
 	done
 	use aalib || myconf+=" --disable-aa"
 	use fbcon || myconf+=" --disable-fbdev"
-	use fbcon && use video_cards_s3virge && myconf+=" --enable-s3fb"
 	use libcaca || myconf+=" --disable-caca"
 	use zoran || myconf+=" --disable-zr"
 

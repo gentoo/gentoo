@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 RDEPEND="
-	net-libs/libnsl:0=[${MULTILIB_USEDEP}]
+	>net-libs/libnsl-0:0=[${MULTILIB_USEDEP}]
 	net-libs/libtirpc:0=[${MULTILIB_USEDEP}]
 	!<sys-libs/glibc-2.26
 "

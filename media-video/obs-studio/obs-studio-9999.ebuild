@@ -3,6 +3,8 @@
 
 EAPI=6
 
+CMAKE_MIN_VERSION=3.9.6
+
 inherit cmake-utils gnome2-utils
 
 if [[ ${PV} == *9999 ]]; then
@@ -49,17 +51,7 @@ COMMON_DEPEND="
 	)
 	v4l? ( media-libs/libv4l )
 "
-DEPEND="${COMMON_DEPEND}
-	imagemagick? (
-		|| (
-			<media-gfx/imagemagick-7
-			(
-				>=media-gfx/imagemagick-7
-				>=dev-util/cmake-3.9
-			)
-		)
-	)
-"
+DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
 
 CMAKE_REMOVE_MODULES_LIST=( FindFreetype )

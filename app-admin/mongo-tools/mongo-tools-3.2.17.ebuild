@@ -12,7 +12,7 @@ SRC_URI="https://github.com/mongodb/mongo-tools/archive/r${MY_PV}.tar.gz -> mong
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="sasl ssl"
 
 RDEPEND="!<dev-db/mongodb-3.0.0"

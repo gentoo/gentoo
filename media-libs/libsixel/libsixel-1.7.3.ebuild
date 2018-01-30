@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit bash-completion-r1
+inherit bash-completion-r1 ltprune
 
 DESCRIPTION="A lightweight, fast implementation of DEC SIXEL graphics codec"
 HOMEPAGE="https://github.com/saitoha/libsixel"
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/saitoha/libsixel/archive/v${PV}.tar.gz -> ${P}.tar.g
 LICENSE="MIT public-domain"
 SLOT="0"
 KEYWORDS="amd64 ia64 x86"
-IUSE="curl gd gtk jpeg png"
+IUSE="curl gd gtk jpeg png static-libs"
 
 RDEPEND="curl? ( net-misc/curl )
 	gd? ( media-libs/gd )
@@ -29,6 +29,7 @@ src_configure() {
 		$(use_with gtk gdk-pixbuf2) \
 		$(use_with jpeg) \
 		$(use_with png) \
+		$(use_enable static-libs static) \
 		--with-bashcompletiondir=$(get_bashcompdir) \
 		--disable-python
 }
@@ -39,6 +40,7 @@ src_test() {
 
 src_install() {
 	default
+	prune_libtool_files
 
 	cd images
 	docompress -x /usr/share/doc/${PF}/images

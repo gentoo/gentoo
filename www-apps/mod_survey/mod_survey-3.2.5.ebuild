@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit depend.apache webapp
@@ -17,11 +17,6 @@ LICENSE="GPL-2"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="doc mysql nls postgres"
 
-LANGS="en de fr it sv"
-for i in ${LANGS}; do
-	IUSE="${IUSE} linguas_${i}"
-done
-
 DEPEND=">=dev-lang/perl-5.6.1"
 RDEPEND="${DEPEND}
 	>=www-apache/mod_perl-1.99
@@ -36,28 +31,9 @@ pkg_setup() {
 	has_apache
 
 	if use nls; then
-		for i in ${LINGUAS}; do
-			if has linguas_${i} ${IUSE}; then
-				if use linguas_${i}; then
-					locallang="${i}"
-					ewarn "${i} from the LINGUAS variable has been set as the"
-					ewarn "default language. This can be overriden on a"
-					ewarn "per-survey basis, or changed in"
-					ewarn "${APACHE_MODULES_CONFDIR}/98_${PN}.conf"
-					ewarn
-					break
-				fi
-			else
-				einfo "LINGUAS=${i} is not supported by ${P}"
-				shift
-			fi
-		done
-	fi
-
-	if [[ -z ${locallang} ]]; then
-		[[ -n "${LINGUAS}" ]] && ewarn "None of ${LINGUAS} supported."
-		use nls && ewarn "Will use English as default language."
-		locallang="en"
+		ewarn "English will be set as the default language."
+		ewarn "This can be overriden on a per-survey basis, or changed in"
+		ewarn "${APACHE_MODULES_CONFDIR}/98_${PN}.conf"
 	fi
 }
 
@@ -66,7 +42,6 @@ src_unpack() {
 	cd "${S}"
 
 	sed -i \
-		-e "s|\$lang = \"en\"|\$lang = \"${locallang}\"|" \
 		-e "s|/usr/local/mod_survey/|${D}/usr/lib/mod_survey/|g" \
 		installer.pl
 

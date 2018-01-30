@@ -17,7 +17,6 @@ IUSE="test"
 
 CDEPEND="
 	>=dev-python/botocore-1.3.0[${PYTHON_USEDEP}]
-	<dev-python/botocore-2.0.0[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '>=dev-python/futures-2.2.0[${PYTHON_USEDEP}]' 'python2_7')
 	$(python_gen_cond_dep '<dev-python/futures-4.0.0[${PYTHON_USEDEP}]' 'python2_7')
 "

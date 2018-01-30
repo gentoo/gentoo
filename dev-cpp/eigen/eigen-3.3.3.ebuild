@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -32,7 +32,6 @@ DEPEND="
 		sci-libs/scotch
 		sci-libs/spqr
 		sci-libs/superlu
-		dev-qt/qtcore:4
 		virtual/opengl
 		virtual/pkgconfig
 		cuda? ( dev-util/nvidia-cuda-toolkit )
@@ -77,6 +76,7 @@ src_compile() {
 
 src_test() {
 	local mycmakeargs=(
+		-DEIGEN_TEST_NOQT=ON
 		-DEIGEN_TEST_ALTIVEC="$(usex altivec)"
 		-DEIGEN_TEST_CXX11="$(usex c++11)"
 		-DEIGEN_TEST_CUDA="$(usex cuda)"

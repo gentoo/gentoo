@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ LICENSE="MIT"
 # pypy -c 'import sysconfig; print sysconfig.get_config_var("SOABI")'
 SLOT="0/41"
 KEYWORDS=""
-IUSE="bzip2 doc gdbm +jit libressl low-memory ncurses sandbox sqlite cpu_flags_x86_sse2 test tk"
+IUSE="bzip2 gdbm +jit libressl low-memory ncurses sandbox sqlite cpu_flags_x86_sse2 test tk"
 
 RDEPEND=">=sys-libs/zlib-1.1.3:0=
 	virtual/libffi:0=
@@ -40,7 +40,6 @@ RDEPEND=">=sys-libs/zlib-1.1.3:0=
 # don't enforce the dep on pypy with USE=low-memory since it's going
 # to cause either collisions or circular dep on itself
 DEPEND="${RDEPEND}
-	doc? ( dev-python/sphinx )
 	!low-memory? (
 		|| (
 			dev-python/pypy
@@ -194,8 +193,6 @@ src_compile() {
 	cp -p "${T}"/usession*-0/testing_1/{pypy-c,libpypy-c.so} . || die
 	pax-mark m pypy-c libpypy-c.so
 
-	use doc && emake -C pypy/doc html
-
 	einfo "Generating caches and CFFI modules ..."
 
 	# Generate Grammar and PatternGrammar pickles.
@@ -267,9 +264,6 @@ src_install() {
 			"${ED%/}${dest}"/lib_pypy/_tkinter \
 			"${ED%/}${dest}"/lib-python/*2.7/test/test_{tcl,tk,ttk*}.py || die
 	fi
-
-	# Install docs
-	use doc && dodoc -r pypy/doc/_build/html
 
 	local -x PYTHON=${ED%/}${dest}/pypy-c
 	# we can't use eclass function since PyPy is dumb and always gives

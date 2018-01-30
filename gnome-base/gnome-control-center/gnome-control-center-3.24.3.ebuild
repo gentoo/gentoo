@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ SRC_URI+=" https://dev.gentoo.org/~mgorny/dist/${PN}-3.24.2-patchset.tar.xz"
 LICENSE="GPL-2+"
 SLOT="2"
 IUSE="+bluetooth +colord +cups debug +gnome-online-accounts +ibus input_devices_wacom kerberos networkmanager v4l wayland"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sh ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sh x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
 
 # False positives caused by nested configure scripts
 QA_CONFIGURE_OPTIONS=".*"
@@ -24,7 +24,7 @@ QA_CONFIGURE_OPTIONS=".*"
 # kerberos unfortunately means mit-krb5; build fails with heimdal
 # udev could be made optional, only conditions gsd-device-panel
 # (mouse, keyboards, touchscreen, etc)
-# display panel requires colord
+# display panel requires colord and gnome-settings-daemon[colord]
 # printer panel requires cups and smbclient (the latter is not patch yet to be separately optional)
 COMMON_DEPEND="
 	>=dev-libs/glib-2.44.0:2[dbus]
@@ -32,7 +32,7 @@ COMMON_DEPEND="
 	>=x11-libs/gtk+-3.22.0:3[X,wayland?]
 	>=gnome-base/gsettings-desktop-schemas-3.21.4
 	>=gnome-base/gnome-desktop-3.21.2:3=
-	>=gnome-base/gnome-settings-daemon-3.23.90[colord?,policykit]
+	>=gnome-base/gnome-settings-daemon-3.23.90[colord,policykit]
 	>=x11-misc/colord-0.1.34:0=
 
 	>=dev-libs/libpwquality-1.2.2
@@ -59,7 +59,7 @@ COMMON_DEPEND="
 		>=x11-misc/colord-0.1.34:0=
 		>=x11-libs/colord-gtk-0.1.24 )
 	cups? (
-		>=net-print/cups-1.4[dbus]
+		>=net-print/cups-1.7[dbus]
 		>=net-fs/samba-4.0.0[client]
 	)
 	gnome-online-accounts? (

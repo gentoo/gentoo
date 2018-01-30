@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -30,13 +30,13 @@ SRC_URI="amd64? ( "${FILEPATH}"/Apache_OpenOffice_${PV}_Linux_x86-64_install-rpm
 	x86? ( "${FILEPATH}"/Apache_OpenOffice_${PV}_Linux_x86_install-rpm_en-US.tar.gz )"
 
 # TODO: supports ca_XR (Valencian RACV) locale too
-LANGS="ast eu bg ca ca_XV zh_CN zh_TW cs da nl en_GB fi fr gd gl de el he hi hu it ja km ko lt nb pl pt_BR pt ru sr sk sl es sv ta th tr vi"
+LANGS="ast eu bg ca ca-valencia zh-CN zh-TW cs da nl en-GB fi fr gd gl de el he hi hu it ja km ko lt nb pl pt-BR pt ru sr sk sl es sv ta th tr vi"
 
 for X in ${LANGS} ; do
-	[[ ${X} != "en" ]] && SRC_URI="${SRC_URI} linguas_${X}? (
-		amd64? ( "${FILEPATH}"/Apache_OpenOffice_${PV}_Linux_x86-64_langpack-rpm_${X/_/-}.tar.gz )
-		x86? ( "${FILEPATH}"/Apache_OpenOffice_${PV}_Linux_x86_langpack-rpm_${X/_/-}.tar.gz ) )"
-	IUSE="${IUSE} linguas_${X}"
+	IUSE="${IUSE} l10n_${X}"
+	SRC_URI+=" l10n_${X}? (
+		amd64? ( "${FILEPATH}"/Apache_OpenOffice_${PV}_Linux_x86-64_langpack-rpm_${X/ca-valencia/ca-XV}.tar.gz )
+		x86? ( "${FILEPATH}"/Apache_OpenOffice_${PV}_Linux_x86_langpack-rpm_${X/ca-valencia/ca-XV}.tar.gz ) )"
 done
 
 LICENSE="Apache-2.0"
@@ -97,10 +97,13 @@ src_unpack() {
 	done
 
 	# Localization
-	strip-linguas ${LANGS}
-	for l in ${LINGUAS}; do
-		m="${l/_/-}"
-		if [[ ${m} != "en" ]] ; then
+	for l in ${LANGS}; do
+		if use l10n_${l}; then
+			# Map ca-valencia to ca-XV used by upstream
+			case ${l} in
+				ca-valencia) m=ca-XV ;;
+				*) m=${l} ;;
+			esac
 			LANGDIR="${m}/RPMS/"
 			rpm_unpack "./${LANGDIR}/${NM}-${m}-${BVER}.${XARCH}.rpm"
 			rpm_unpack "./${LANGDIR}/${NM1}-${m}-${BVER}.${XARCH}.rpm"

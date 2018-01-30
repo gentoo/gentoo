@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ if [[ ${PV} == 9999* ]] ; then
 	inherit git-r3 autotools
 	EGIT_REPO_URI="git://git.code.sf.net/p/zsh/code"
 else
-	KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 	SRC_URI="http://www.zsh.org/pub/${P}.tar.xz
 		doc? ( http://www.zsh.org/pub/${P}-doc.tar.xz )"
 fi
@@ -29,7 +29,7 @@ RDEPEND="
 		>=dev-libs/libpcre-3.9
 		static? ( >=dev-libs/libpcre-3.9[static-libs] )
 	)
-	gdbm? ( sys-libs/gdbm )
+	gdbm? ( sys-libs/gdbm:= )
 "
 DEPEND="sys-apps/groff
 	${RDEPEND}"

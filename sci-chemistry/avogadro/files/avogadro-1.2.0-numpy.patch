@@ -1,0 +1,13 @@
+diff --git a/cmake/modules/FindNumpy.cmake b/cmake/modules/FindNumpy.cmake
+index b348418..49ba206 100644
+--- a/cmake/modules/FindNumpy.cmake
++++ b/cmake/modules/FindNumpy.cmake
+@@ -10,7 +10,7 @@
+ #endif (NUMPY_INCLUDE_DIR)
+ 
+ EXECUTE_PROCESS(COMMAND ${PYTHON_EXECUTABLE} -c 
+-    "import numpy; print numpy.get_include()"
++	"import numpy; print (numpy.get_include())"
+     OUTPUT_VARIABLE NUMPY_INCLUDE_DIR
+     OUTPUT_STRIP_TRAILING_WHITESPACE)
+ 

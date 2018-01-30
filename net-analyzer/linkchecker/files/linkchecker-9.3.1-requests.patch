@@ -1,0 +1,46 @@
+From 9b12b5d66fa9b832f4d9e19a0b9dcb92607ee3e5 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Antoine=20Beaupr=C3=A9?= <anarcat@debian.org>
+Date: Mon, 2 Oct 2017 20:18:54 -0400
+Subject: [PATCH] workaround new limitation in requests
+
+newer requests do not expose the internal SSL socket object so we
+cannot verify certificates. there was work to allow custom
+verification routines which we could use, but this never finished:
+
+https://github.com/shazow/urllib3/pull/257
+
+so right now, just treat missing socket information as if the cert was
+missing.
+
+Closes: #76
+---
+ linkcheck/checker/httpurl.py | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/linkcheck/checker/httpurl.py b/linkcheck/checker/httpurl.py
+index 161619c5..bde77c70 100644
+--- a/linkcheck/checker/httpurl.py
++++ b/linkcheck/checker/httpurl.py
+@@ -194,6 +194,10 @@ def _get_ssl_sock(self):
+         """Get raw SSL socket."""
+         assert self.scheme == u"https", self
+         raw_connection = self.url_connection.raw._connection
++        if not raw_connection:
++            # this happens with newer requests versions:
++            # https://github.com/linkcheck/linkchecker/issues/76
++            return None
+         if raw_connection.sock is None:
+             # sometimes the socket is not yet connected
+             # see https://github.com/kennethreitz/requests/issues/1966
+@@ -204,7 +208,10 @@ def _add_ssl_info(self):
+         """Add SSL cipher info."""
+         if self.scheme == u'https':
+             sock = self._get_ssl_sock()
+-            if hasattr(sock, 'cipher'):
++            if not sock:
++                log.debug(LOG_CHECK, "cannot extract SSL certificate from connection")
++                self.ssl_cert = None
++            elif hasattr(sock, 'cipher'):
+                 self.ssl_cert = sock.getpeercert()
+             else:
+                 # using pyopenssl

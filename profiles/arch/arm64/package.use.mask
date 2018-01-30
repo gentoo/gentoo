@@ -1,5 +1,37 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+# Michał Górny <mgorny@gentoo.org> (23 Jan 2018)
+# Requires dev-libs/efl that is not keyworded.
+dev-libs/dbus-c++ ecore
+
+# Michał Górny <mgorny@gentoo.org> (23 Jan 2018)
+# USE=eds requires USE=gnome that is masked here.
+# USE=collada requires media-libs/opencollada.
+# USE=gltf requires media-libs/libgltf.
+# USE=postgres requires dev-db/postgresql[kerberos] (USE masked).
+app-office/libreoffice collada eds gltf postgres
+
+# Michał Górny <mgorny@gentoo.org> (23 Jan 2018)
+# Requires mail-client/thunderbird* that is not keyworded here.
+app-misc/tracker thunderbird
+
+# Michał Górny <mgorny@gentoo.org> (23 Jan 2018)
+# Requires app-accessibility/brltty that is not keyworded here.
+app-emulation/qemu accessibility
+
+# Michał Górny <mgorny@gentoo.org> (23 Jan 2018)
+# Requires app-emulation/xen that is not keyworded here.
+app-emulation/libvirt xen
+
+# Michał Górny <mgorny@gentoo.org> (12 Jan 2018)
+# Requires USE=sdl that is masked in this profile.
+media-video/mjpegtools sdlgfx
+
+# Michał Górny <mgorny@gentoo.org> (12 Jan 2018)
+# Those require USE=doc that is masked in this profile.
+dev-python/python-glanceclient test
+dev-python/python-neutronclient test
 
 # NeddySeagoon <neddysegoon@gentoo.org> 24 Aug 2017
 # Support for g15daemon  still needs -9999 packages on all arches 
@@ -352,10 +384,6 @@ app-text/asciidoc test
 # Michael Weber <xmw@gentoo.org> (10 Feb 2011)
 # kde-frameworks/kdelibs is not stable for arm
 net-libs/libproxy kde
-
-# Jeremy Olexa <darkside@gentoo.org> (04 Apr 2010)
-# mask net-misc/mediatomb[lastfm] as lastfmlib isn't keyworded
-net-misc/mediatomb lastfm
 
 # Raúl Porcel <armin76@gentoo.org> (28 Mar 2010)
 # Needs kde-frameworks/kwallet and kde-frameworks/kdelibs stable

@@ -1,12 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit eutils toolchain-funcs
 
 DESCRIPTION="Snownews, a text-mode RSS/RDF newsreader"
-HOMEPAGE="http://snownews.kcore.de/"
-SRC_URI="http://home.kcore.de/~kiza/software/snownews/download/${P}.tar.gz"
+HOMEPAGE="https://kiza.eu/software/snownews/"
+SRC_URI="https://kiza.eu/media/software/snownews/${P}.tar.gz"
 LICENSE="GPL-2"
 
 SLOT="0"

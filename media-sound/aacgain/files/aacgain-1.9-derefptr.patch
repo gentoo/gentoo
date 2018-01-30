@@ -1,0 +1,11 @@
+--- aacgain-1.9/mp4v2/src/rtphint.cpp	2017-07-14 17:54:58.230117921 +0200
++++ aacgain-1.9/mp4v2/src/rtphint.cpp	2017-07-14 17:58:57.441883719 +0200
+@@ -345,7 +345,7 @@
+                 pSlash = strchr(pSlash, '/');
+                 if (pSlash != NULL) {
+                     pSlash++;
+-                    if (pSlash != '\0') {
++                    if (*pSlash != '\0') {
+                         length = strlen(pRtpMap) - (pSlash - pRtpMap);
+                         *ppEncodingParams = (char *)MP4Calloc(length + 1);
+                         strncpy(*ppEncodingParams, pSlash, length);

@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>bicatali@gentoo.org</email>
-    <name>Sébastien Fabbro</name>
+    <email>candrews@gentoo.org</email>
+    <name>Craig Andrews</name>
   </maintainer>
   <longdescription>
     Brotli is a generic-purpose lossless compression algorithm that

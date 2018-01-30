@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # Maintainer: Toolchain Ninjas <toolchain@gentoo.org>
@@ -23,14 +23,13 @@ fi
 
 FEATURES=${FEATURES/multilib-strict/}
 
-EXPORTED_FUNCTIONS="pkg_setup src_unpack src_compile src_test src_install pkg_postinst pkg_postrm"
 case ${EAPI:-0} in
-	0|1)    die "Need to upgrade to at least EAPI=2";;
-	2|3)    EXPORTED_FUNCTIONS+=" src_prepare src_configure" ;;
-	4*|5*)  EXPORTED_FUNCTIONS+=" pkg_pretend src_prepare src_configure" ;;
-	*)      die "I don't speak EAPI ${EAPI}."
+	0|1|2|3) die "Need to upgrade to at least EAPI=4" ;;
+	4*|5*)   ;;
+	*)       die "I don't speak EAPI ${EAPI}." ;;
 esac
-EXPORT_FUNCTIONS ${EXPORTED_FUNCTIONS}
+EXPORT_FUNCTIONS pkg_pretend pkg_setup src_unpack src_prepare src_configure \
+	src_compile src_test src_install pkg_postinst pkg_postrm
 
 #---->> globals <<----
 
@@ -317,7 +316,11 @@ get_gcc_src_uri() {
 	elif [[ -n ${PRERELEASE} ]] ; then
 		GCC_SRC_URI="ftp://gcc.gnu.org/pub/gcc/prerelease-${PRERELEASE}/gcc-${PRERELEASE}.tar.bz2"
 	elif [[ -n ${SNAPSHOT} ]] ; then
-		GCC_SRC_URI="ftp://gcc.gnu.org/pub/gcc/snapshots/${SNAPSHOT}/gcc-${SNAPSHOT}.tar.bz2"
+		if tc_version_is_between 5.5 6 || tc_version_is_between 6.4 7 || tc_version_is_at_least 7.2 ; then
+			GCC_SRC_URI="ftp://gcc.gnu.org/pub/gcc/snapshots/${SNAPSHOT}/gcc-${SNAPSHOT}.tar.xz"
+		else
+			GCC_SRC_URI="ftp://gcc.gnu.org/pub/gcc/snapshots/${SNAPSHOT}/gcc-${SNAPSHOT}.tar.bz2"
+		fi
 	else
 		if tc_version_is_between 5.5 6 || tc_version_is_between 6.4 7 || tc_version_is_at_least 7.2 ; then
 			GCC_SRC_URI="mirror://gnu/gcc/gcc-${GCC_PV}/gcc-${GCC_RELEASE_VER}.tar.xz"
@@ -390,10 +393,6 @@ toolchain_pkg_pretend() {
 #---->> pkg_setup <<----
 
 toolchain_pkg_setup() {
-	case ${EAPI} in
-	2|3) toolchain_pkg_pretend ;;
-	esac
-
 	# we dont want to use the installed compiler's specs to build gcc
 	unset GCC_SPECS
 	unset LANGUAGES #265283
@@ -422,7 +421,11 @@ gcc_quick_unpack() {
 	elif [[ -n ${PRERELEASE} ]] ; then
 		unpack gcc-${PRERELEASE}.tar.bz2
 	elif [[ -n ${SNAPSHOT} ]] ; then
-		unpack gcc-${SNAPSHOT}.tar.bz2
+		if tc_version_is_between 5.5 6 || tc_version_is_between 6.4 7 || tc_version_is_at_least 7.2 ; then
+			unpack gcc-${SNAPSHOT}.tar.xz
+		else
+			unpack gcc-${SNAPSHOT}.tar.bz2
+		fi
 	elif [[ ${PV} != *9999* ]] ; then
 		if tc_version_is_between 5.5 6 || tc_version_is_between 6.4 7 || tc_version_is_at_least 7.2 ; then
 			unpack gcc-${GCC_RELEASE_VER}.tar.xz
@@ -998,7 +1001,7 @@ toolchain_src_configure() {
 					--disable-threads
 					--without-headers
 				)
-			elif built_with_use --hidden --missing false ${CATEGORY}/${needed_libc} crosscompile_opts_headers-only ; then
+			elif has_version "${CATEGORY}/${needed_libc}[headers-only(-)]" ; then
 				confgcc+=(
 					"${confgcc_no_libc[@]}"
 					--with-sysroot="${PREFIX}"/${CTARGET}

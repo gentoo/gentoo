@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ inherit bsdmk freebsd pam multilib multibuild multilib-build
 
 DESCRIPTION="FreeBSD libexec things"
 SLOT="0"
-KEYWORDS="~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="~amd64-fbsd ~x86-fbsd"
 
 SRC_URI="mirror://gentoo/${LIBEXEC}.tar.bz2
 	mirror://gentoo/${UBIN}.tar.bz2

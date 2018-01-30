@@ -14,5 +14,4 @@ media-video/nvidia-settings
 # See bug 426764.
 sci-physics/cernlib
 sci-physics/cernlib-montecarlo
-sci-physics/geant:3
 sci-physics/paw

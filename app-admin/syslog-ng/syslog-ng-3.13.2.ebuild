@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python2_7 )
 
 inherit autotools python-single-r1 eutils multilib systemd versionator
 
@@ -150,9 +150,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "For detailed documentation please see the upstream website:"
-	elog "https://www.balabit.com/sites/default/files/documents/syslog-ng-ose-${MY_PV_MM}-guides/en/syslog-ng-ose-v${MY_PV_MM}-guide-admin/html/index.html"
-
 	# bug #355257
 	if ! has_version app-admin/logrotate ; then
 		echo

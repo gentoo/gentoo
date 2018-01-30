@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ SRC_URI="https://dev.gentoo.org/~prometheanfire/dist/openstack/nova/pike/nova.co
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="+compute compute-only iscsi +memcached mysql +novncproxy openvswitch postgres +rabbitmq sqlite"
 REQUIRED_USE="
 	!compute-only? ( || ( mysql postgres sqlite ) )
@@ -199,11 +199,11 @@ python_install_all() {
 
 	if use !compute-only; then
 		for svc in api conductor consoleauth network scheduler spicehtml5proxy xvpvncproxy; do
-			newinitd "${FILESDIR}/nova.initd-2" "nova-${svc}"
+			newinitd "${FILESDIR}/nova.initd" "nova-${svc}"
 		done
 	fi
-	use compute && newinitd "${FILESDIR}/nova.initd-2" "nova-compute"
-	use novncproxy && newinitd "${FILESDIR}/nova.initd-2" "nova-novncproxy"
+	use compute && newinitd "${FILESDIR}/nova.initd" "nova-compute"
+	use novncproxy && newinitd "${FILESDIR}/nova.initd" "nova-novncproxy"
 
 	diropts -m 0750 -o nova -g qemu
 	dodir /var/log/nova /var/lib/nova/instances

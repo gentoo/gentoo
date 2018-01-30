@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>chewi@gentoo.org</email>
+		<name>James Le Cuirot</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="sourceforge">munt</remote-id>
+		<remote-id type="github">munt/munt</remote-id>
+	</upstream>
+	<longdescription lang="en">
+		A multi-platform software synthesiser emulating (currently inaccurately) pre-GM MIDI devices such as the Roland MT-32, CM-32L, CM-64 and LAPC-I. In no way endorsed by or affiliated with Roland Corp.
+	</longdescription>
+</pkgmetadata>

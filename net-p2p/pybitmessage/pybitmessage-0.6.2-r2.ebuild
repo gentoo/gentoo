@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,7 +21,7 @@ SRC_URI="https://github.com/Bitmessage/${MY_PN}/archive/v${PV}.tar.gz
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="libressl ncurses opencl qt4 sound"
+IUSE="libressl ncurses opencl sound"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="${PYTHON_DEPS}"
@@ -42,7 +42,6 @@ RDEPEND="${DEPEND}
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/pyopencl[${PYTHON_USEDEP}]
 	)
-	qt4? ( dev-python/PyQt4[${PYTHON_USEDEP}] )
 	sound? ( || (
 		media-sound/gst123
 		media-sound/alsa-utils
@@ -58,12 +57,6 @@ src_install () {
 	dodoc README.md
 
 	# The man page is not installed because it's basically empty.
-
-	if use qt4 ; then
-		newicon -s 24 desktop/icon24.png "${PN}.png"
-		newicon -s scalable desktop/can-icon.svg "${PN}.svg"
-		domenu "desktop/${PN}.desktop"
-	fi
 }
 
 pkg_preinst() {

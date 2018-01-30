@@ -1,16 +1,16 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit eutils
 
-LANGUAGES="linguas_en"
+LANGUAGES="l10n_en"
 DIALOG_URL_BASE=http://files.bioware.com/neverwinternights/dialog/
 
 DESCRIPTION="Neverwinter Nights Dedicated server"
 HOMEPAGE="http://nwn.bioware.com/downloads/standaloneserver.html"
 SRC_URI="http://files.bioware.com/neverwinternights/updates/windows/server/NWNDedicatedServer${PV}.zip
-	linguas_en? ( ${DIALOG_URL_BASE}/english/NWNEnglish${PV}dialog.zip )"
+	l10n_en? ( ${DIALOG_URL_BASE}/english/NWNEnglish${PV}dialog.zip )"
 
 LICENSE="NWN-EULA"
 SLOT="0"

@@ -7,6 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="editor">Adds necessary file to run the editor</flag>
-		<flag name="linguas_ru_gold">Support for russian gold ja2 version</flag>
+		<flag name="ru-gold">Support for russian gold ja2 version</flag>
 	</use>
 </pkgmetadata>

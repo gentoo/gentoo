@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -183,10 +183,6 @@ src_install() {
 	if use grass; then
 		python_fix_shebang "${ED%/}"/usr/share/qgis/grass/scripts
 	fi
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
 }
 
 pkg_postinst() {

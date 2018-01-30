@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -25,7 +25,7 @@ RDEPEND="
 		!dev-libs/libotf
 		!app-text/lcdf-typetools
 	)
-	elibc_FreeBSD? ( dev-libs/libexecinfo )
+	elibc_FreeBSD? ( || ( dev-libs/libexecinfo >=sys-freebsd/freebsd-lib-10.0 ) )
 	!sys-cluster/mpich
 	!sys-cluster/mpich2
 	!sys-cluster/mpiexec"

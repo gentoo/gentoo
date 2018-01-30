@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -39,7 +39,6 @@ COMMON_DEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5[ssl]
 	dev-qt/qtsql:5[sqlite]
-	dev-qt/qtwebkit:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	dev-qt/qtxml:5
@@ -52,7 +51,7 @@ COMMON_DEPEND="
 	virtual/glu
 	virtual/opengl
 	x11-libs/libX11
-	cdda? ( dev-libs/libcdio )
+	cdda? ( dev-libs/libcdio:= )
 	dbus? ( dev-qt/qtdbus:5 )
 	ipod? ( >=media-libs/libgpod-0.8.0 )
 	lastfm? ( >=media-libs/liblastfm-1[qt5] )
@@ -138,7 +137,7 @@ src_configure() {
 		-DUSE_SYSTEM_GMOCK=ON
 		-DUSE_SYSTEM_PROJECTM=ON
 		-DBUNDLE_PROJECTM_PRESETS=OFF
-		-DLINGUAS=$(l10n_get_locales)
+		-DLINGUAS="$(l10n_get_locales)"
 		-DENABLE_BOX="$(usex box)"
 		-DENABLE_AUDIOCD="$(usex cdda)"
 		-DENABLE_DBUS="$(usex dbus)"

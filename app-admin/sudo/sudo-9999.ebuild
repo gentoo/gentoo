@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 inherit eutils pam multilib libtool
 if [[ ${PV} == "9999" ]] ; then
-	EHG_REPO_URI="http://www.sudo.ws/repos/sudo"
+	EHG_REPO_URI="https://www.sudo.ws/repos/sudo"
 	inherit mercurial
 fi
 
@@ -18,12 +18,12 @@ case ${P} in
 esac
 
 DESCRIPTION="Allows users or groups to run commands as other users"
-HOMEPAGE="http://www.sudo.ws/"
+HOMEPAGE="https://www.sudo.ws/"
 if [[ ${PV} != "9999" ]] ; then
-	SRC_URI="http://www.sudo.ws/sudo/dist/${uri_prefix}${MY_P}.tar.gz
+	SRC_URI="https://www.sudo.ws/sudo/dist/${uri_prefix}${MY_P}.tar.gz
 		ftp://ftp.sudo.ws/pub/sudo/${uri_prefix}${MY_P}.tar.gz"
 	if [[ ${PV} != *_beta* ]] && [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~sparc-solaris"
+		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~sparc-solaris"
 	fi
 fi
 

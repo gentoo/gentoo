@@ -11,7 +11,7 @@ SRC_URI="http://download.boulder.ibm.com/ibmdl/pub/software/dw/linux390/ht_src/$
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* ~s390"
+KEYWORDS="-* s390"
 IUSE="fuse ncurses pfm snmp zlib"
 
 RDEPEND="fuse? ( sys-fs/fuse )

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ SRC_URI="http://xpra.org/src/${P}.tar.xz"
 
 LICENSE="GPL-2 BSD"
 SLOT="0"
-KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="+client +clipboard csc cups dbus dec_avcodec2 enc_ffmpeg enc_x264 enc_x265 libav +lz4 lzo opengl pillow pulseaudio server sound test vpx webcam webp"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
@@ -33,6 +33,7 @@ COMMON_DEPEND=""${PYTHON_DEPS}"
 	x11-libs/libXfixes
 	x11-libs/libXrandr
 	x11-libs/libXtst
+	x11-libs/libxkbfile
 	csc? (
 		!libav? ( >=media-video/ffmpeg-1.2.2:0= )
 		libav? ( media-video/libav:0= )

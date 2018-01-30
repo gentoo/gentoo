@@ -1,17 +1,17 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit cmake-utils virtualx
 
 DESCRIPTION="A Qt implementation of XDG standards"
-HOMEPAGE="http://lxqt.org/"
+HOMEPAGE="https://lxqt.org/"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://git.lxde.org/git/lxde/${PN}.git"
+	EGIT_REPO_URI="https://github.com/lxde/${PN}.git"
 else
-	SRC_URI="http://downloads.lxqt.org/${PN}/${PV}/${P}.tar.xz"
+	SRC_URI="https://downloads.lxqt.org/${PN}/${PV}/${P}.tar.xz"
 	KEYWORDS="amd64 ~arm ~arm64 x86"
 fi
 

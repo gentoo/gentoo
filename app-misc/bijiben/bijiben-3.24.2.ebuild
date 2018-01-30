@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Bijiben"
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="zeitgeist"
+IUSE=""
 
 # XXX: raise glib dependency when Gnome 3.26 enters tree
 RDEPEND="
@@ -22,7 +22,6 @@ RDEPEND="
 	dev-libs/libxml2
 	>=app-misc/tracker-1:=
 	sys-apps/util-linux
-	zeitgeist? ( gnome-extra/zeitgeist )
 "
 DEPEND="${RDEPEND}
 	app-text/yelp-tools
@@ -32,9 +31,3 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig
 "
-# Needed if eautoreconf:
-# sys-devel/autoconf-archive
-
-src_configure() {
-	gnome2_src_configure $(use_enable zeitgeist)
-}

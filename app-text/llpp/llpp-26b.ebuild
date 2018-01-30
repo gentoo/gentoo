@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,6 +15,7 @@ KEYWORDS="amd64 ppc x86"
 IUSE="+ocamlopt static"
 
 LIB_DEPEND=">=app-text/mupdf-1.11:0=[static-libs]
+	<app-text/mupdf-1.12:0=[static-libs]
 	media-libs/openjpeg:2[static-libs]
 	media-libs/fontconfig:1.0[static-libs]
 	media-libs/freetype:2[static-libs]

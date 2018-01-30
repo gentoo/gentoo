@@ -1,0 +1,9 @@
+diff -r -U2 pari-2.9.4.orig/config/arch-osname pari-2.9.4/config/arch-osname
+--- pari-2.9.4.orig/config/arch-osname	2011-09-23 03:02:11.000000000 +0700
++++ pari-2.9.4/config/arch-osname	2018-01-13 16:22:39.623382825 +0700
+@@ -40,4 +40,5 @@
+   linux)    arch=`uname -m`
+ 	    case $arch in
++		ppc) arch=powerpc;;
+ 		sparc64) arch=sparcv9;;
+ 		parisc*) arch=hppa;;

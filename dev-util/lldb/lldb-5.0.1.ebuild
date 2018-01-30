@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -67,6 +67,7 @@ src_configure() {
 		-DLLDB_DISABLE_CURSES=$(usex !ncurses)
 		-DLLDB_DISABLE_LIBEDIT=$(usex !libedit)
 		-DLLDB_DISABLE_PYTHON=$(usex !python)
+		-DLLDB_USE_SYSTEM_SIX=1
 		-DLLVM_ENABLE_TERMINFO=$(usex ncurses)
 
 		-DLLVM_BUILD_TESTS=$(usex test)
@@ -104,9 +105,6 @@ src_install() {
 
 	# oh my...
 	if use python; then
-		# remove bundled six module
-		rm "${D}$(python_get_sitedir)/six.py" || die
-
 		# remove custom readline.so for now
 		# TODO: figure out how to deal with it
 		# upstream is basically building a custom readline.so with -ledit

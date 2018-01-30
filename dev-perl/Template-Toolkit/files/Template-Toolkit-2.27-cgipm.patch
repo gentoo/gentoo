@@ -1,0 +1,66 @@
+From e723aeecf60ece32f6a1381f5c026ae08cae9913 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Sat, 13 Jan 2018 13:48:31 +1300
+Subject: Fix tests warning w/ CGI.pm
+
+This currently seems like an intractable problem with the syntax of
+Template::Toolkit forcing list context by default on called functions.
+
+The only real way around this is to either:
+
+A) always use Template::Plugin::Scalar to enforce scalar context
+B) abuse cgi.multi_param to simply silence the warning and being an
+   adult about the fact "yes, this returns a list, make sure you do the
+   right thing with that"
+
+Bug: https://rt.cpan.org/Ticket/Display.html?id=100503
+---
+ t/cgi.t | 16 ++++++++++------
+ 1 file changed, 10 insertions(+), 6 deletions(-)
+
+diff --git a/t/cgi.t b/t/cgi.t
+index 023ab5ab..6086e145 100644
+--- a/t/cgi.t
++++ b/t/cgi.t
+@@ -49,28 +49,32 @@ sub barf {
+ 
+ __END__
+ -- test --
++[% USE scalar -%]
+ [% USE cgi = CGI('id=abw&name=Andy+Wardley'); global.cgi = cgi -%]
+-name: [% global.cgi.param('name') %]
++name: [% global.cgi.scalar.param('name') %]
+ -- expect --
+ name: Andy Wardley
+ 
+ -- test --
+-name: [% global.cgi.param('name') %]
++[% USE scalar -%]
++name: [% global.cgi.scalar.param('name') %]
+ 
+ -- expect --
+ name: Andy Wardley
+ 
+ -- test --
+-[% FOREACH key = global.cgi.param.sort -%]
+-   * [% key %] : [% global.cgi.param(key) %]
++[% USE scalar -%]
++[% FOREACH key = global.cgi.multi_param.sort -%]
++   * [% key %] : [% global.cgi.scalar.param(key) %]
+ [% END %]
+ -- expect --
+    * id : abw
+    * name : Andy Wardley
+ 
+ -- test --
+-[% FOREACH key = global.cgi.param().sort -%]
+-   * [% key %] : [% global.cgi.param(key) %]
++[% USE scalar -%]
++[% FOREACH key = global.cgi.multi_param().sort -%]
++   * [% key %] : [% global.cgi.scalar.param(key) %]
+ [% END %]
+ -- expect --
+    * id : abw
+-- 
+2.15.1
+

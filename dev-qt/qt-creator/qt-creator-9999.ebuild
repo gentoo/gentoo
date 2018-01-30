@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PLOCALES="cs de fr ja pl ru sl uk zh_CN zh_TW"
+PLOCALES="cs de fr ja pl ru sl uk zh-CN zh-TW"
 
-inherit l10n llvm qmake-utils toolchain-funcs virtualx xdg
+inherit llvm qmake-utils toolchain-funcs virtualx xdg
 
 DESCRIPTION="Lightweight IDE for C++/QML development centering around Qt"
 HOMEPAGE="https://doc.qt.io/qtcreator/"
@@ -81,7 +81,8 @@ RDEPEND="${CDEPEND}
 "
 # qt translations must also be installed or qt-creator translations won't be loaded
 for x in ${PLOCALES}; do
-	RDEPEND+=" linguas_${x}? ( >=dev-qt/qttranslations-${QT_PV} )"
+	IUSE+=" l10n_${x}"
+	RDEPEND+=" l10n_${x}? ( >=dev-qt/qttranslations-${QT_PV} )"
 done
 unset x
 
@@ -145,7 +146,11 @@ src_prepare() {
 	sed -i -e "/^CLANG_RESOURCE_DIR\s*=/ s:\$\${LLVM_LIBDIR}:${EPREFIX}/usr/lib:" src/shared/clang/clang_defines.pri || die
 
 	# fix translations
-	sed -i -e "/^LANGUAGES\s*=/ s:=.*:= $(l10n_get_locales):" share/qtcreator/translations/translations.pro || die
+	local lang languages=
+	for lang in ${PLOCALES}; do
+		use l10n_${lang} && languages+=" ${lang/-/_}"
+	done
+	sed -i -e "/^LANGUAGES\s*=/ s:=.*:=${languages}:" share/qtcreator/translations/translations.pro || die
 
 	# remove bundled qbs
 	rm -rf src/shared/qbs || die

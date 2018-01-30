@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -24,5 +24,5 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	)"
 
 python_test() {
-	nosetests --with-cov --cover-package=ddt -v || die
+	nosetests --with-coverage --cover-package=ddt -v || die
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -31,7 +31,7 @@ IUSE="lto tapi classic test"
 RDEPEND="sys-devel/binutils-config
 	lto? ( app-arch/xar )
 	tapi? ( sys-libs/tapi )
-	sys-devel/llvm
+	sys-devel/llvm:*
 	sys-libs/libcxx"
 DEPEND="${RDEPEND}
 	test? ( >=dev-lang/perl-5.8.8 )"
@@ -200,7 +200,7 @@ compile_ld64() {
 		LTO_INCDIR=${LLVM_INCDIR} \
 		LTO_LIBDIR=${LLVM_LIBDIR} \
 		TAPI=$(use tapi && echo 1 || echo 0) \
-		TAPI_LIBDIR=${EPREFIX}/usr/lib \
+		TAPI_LIBDIR="${EPREFIX}"/usr/lib \
 		|| die "emake failed for ld64"
 	use test && emake build_test
 }

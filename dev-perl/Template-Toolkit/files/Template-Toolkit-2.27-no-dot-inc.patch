@@ -1,0 +1,54 @@
+From 65e7f0e980e64dd0525eda058330cea06379c332 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Sat, 13 Jan 2018 13:05:52 +1300
+Subject: Fix relative path handling in templates on Perl 5.26+
+
+NB: It doesn't seem like the value of "$compiled" is very useful in the
+failure case, as the expectation is that'd have been a falsey value at
+best, or a literal "undef" at worst, yeilding additional warnings.
+
+Bug: https://rt.cpan.org/Ticket/Display.html?id=121171
+Bug: https://bugs.gentoo.org/615704
+---
+ lib/Template/Provider.pm | 20 ++++++++++++++++++--
+ 1 file changed, 18 insertions(+), 2 deletions(-)
+
+diff --git a/lib/Template/Provider.pm b/lib/Template/Provider.pm
+index 6ecb2453..61c3469c 100644
+--- a/lib/Template/Provider.pm
++++ b/lib/Template/Provider.pm
+@@ -562,13 +562,29 @@ sub _compiled_filename {
+ 
+ sub _load_compiled {
+     my ($self, $file) = @_;
++
++    # Implicitly Relative paths are not supported
++    # by "require" and invoke @INC traversal, where relative
++    # paths only traditionally worked prior to Perl 5.26
++    # due to the presence of '.' in @INC
++    #
++    # Given load_compiled never wants to traverse @INC, forcing
++    # an absolute path for the loaded file and the INC key is
++    # sensible.
++    #
++    # NB: %INC Keys are always identical to their respective
++    # "require" invocations regardless of OS, and the only time
++    # one needs to care about slash direction is when dealing
++    # with Module::Name -> Module/Name.pm translation.
++    my $fpath = File::Spec->rel2abs( $file );
++
+     my $compiled;
+ 
+     # load compiled template via require();  we zap any
+     # %INC entry to ensure it is reloaded (we don't
+     # want 1 returned by require() to say it's in memory)
+-    delete $INC{ $file };
+-    eval { $compiled = require $file; };
++    delete $INC{ $fpath };
++    eval { $compiled = require $fpath; };
+     return $@
+         ? $self->error("compiled template $compiled: $@")
+         : $compiled;
+-- 
+2.15.1
+

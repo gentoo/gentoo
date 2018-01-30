@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -24,6 +24,7 @@ RDEPEND="~app-text/paperwork-backend-${PV}[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	dev-python/pyinsane:2[${PYTHON_USEDEP}]
 	>=dev-python/pyocr-0.3.0[${PYTHON_USEDEP}]
+	dev-python/pyxdg[${PYTHON_USEDEP}]
 	dev-python/simplebayes[${PYTHON_USEDEP}]
 	x11-libs/gtk+:3[introspection]
 	x11-libs/libnotify[introspection]"

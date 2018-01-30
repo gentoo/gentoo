@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ LICENSE="GPL-3 FDL-1.3"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~hppa x86"
 LANGS=" ca cs da de el eo es fi fr it ja nl ru sv tr uk vi zh_TW"
-IUSE="debug emacs profile vim-syntax ${LANGS// / linguas_}"
+IUSE="debug emacs profile vim-syntax"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND=">=app-text/ghostscript-gpl-8.15
@@ -76,7 +76,7 @@ src_prepare() {
 	sed -i 's/OPTIMIZE -g/OPTIMIZE/' aclocal.m4 || die
 
 	for lang in ${LANGS}; do
-		use linguas_${lang} || rm po/${lang}.po || die
+		has ${lang} ${LINGUAS-${lang}} || rm po/${lang}.po || die
 	done
 
 	# respect AR

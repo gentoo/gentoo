@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -9,7 +9,7 @@ DESCRIPTION="GNU libc6 (also called glibc2) C library"
 HOMEPAGE="https://www.gnu.org/software/libc/libc.html"
 
 LICENSE="LGPL-2.1+ BSD HPND ISC inner-net rc PCRE"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 RESTRICT="strip" # strip ourself #46186
 EMULTILIB_PKG="true"
 
@@ -32,7 +32,7 @@ PATCH_VER="13"                                  # Gentoo patchset
 
 GLIBC_PATCH_EXCLUDE+=" 0005_all_sys-types.h-drop-sys-sysmacros.h-include.patch"
 
-IUSE="audit caps debug gd hardened multilib nscd +rpc selinux systemtap profile suid vanilla crosscompile_opts_headers-only"
+IUSE="audit caps debug gd hardened multilib nscd +rpc selinux systemtap profile suid vanilla headers-only"
 
 # Here's how the cross-compile logic breaks down ...
 #  CTARGET - machine that will target the binaries
@@ -85,7 +85,7 @@ RDEPEND="${COMMON_DEPEND}
 	!sys-libs/nss-db"
 
 if [[ ${CATEGORY} == cross-* ]] ; then
-	DEPEND+=" !crosscompile_opts_headers-only? (
+	DEPEND+=" !headers-only? (
 		>=${CATEGORY}/binutils-2.24
 		>=${CATEGORY}/gcc-4.7
 	)"

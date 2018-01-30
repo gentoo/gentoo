@@ -1,0 +1,40 @@
+Index: psycopg2-2.7.3/setup.py
+===================================================================
+--- psycopg2-2.7.3.orig/setup.py
++++ psycopg2-2.7.3/setup.py
+@@ -527,20 +527,21 @@ have_pydatetime = True
+ have_mxdatetime = False
+ use_pydatetime = int(parser.get('build_ext', 'use_pydatetime'))
+ 
+-# check for mx package
+-mxincludedir = ''
+-if parser.has_option('build_ext', 'mx_include_dir'):
+-    mxincludedir = parser.get('build_ext', 'mx_include_dir')
+-if not mxincludedir:
+-    mxincludedir = os.path.join(get_python_inc(plat_specific=1), "mx")
+-if mxincludedir.strip() and os.path.exists(mxincludedir):
+-    # Build the support for mx: we will check at runtime if it can be imported
+-    include_dirs.append(mxincludedir)
+-    define_macros.append(('HAVE_MXDATETIME', '1'))
+-    sources.append('adapter_mxdatetime.c')
+-    depends.extend(['adapter_mxdatetime.h', 'typecast_mxdatetime.c'])
+-    have_mxdatetime = True
+-    version_flags.append('mx')
++if not use_pydatetime:
++    # check for mx package
++    mxincludedir = ''
++    if parser.has_option('build_ext', 'mx_include_dir'):
++        mxincludedir = parser.get('build_ext', 'mx_include_dir')
++    if not mxincludedir:
++        mxincludedir = os.path.join(get_python_inc(plat_specific=1), "mx")
++    if mxincludedir.strip() and os.path.exists(mxincludedir):
++        # Build the support for mx: we will check at runtime if it can be imported
++        include_dirs.append(mxincludedir)
++        define_macros.append(('HAVE_MXDATETIME', '1'))
++        sources.append('adapter_mxdatetime.c')
++        depends.extend(['adapter_mxdatetime.h', 'typecast_mxdatetime.c'])
++        have_mxdatetime = True
++        version_flags.append('mx')
+ 
+ # now decide which package will be the default for date/time typecasts
+ if have_pydatetime and (use_pydatetime or not have_mxdatetime):

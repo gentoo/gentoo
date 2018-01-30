@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -17,19 +17,21 @@ SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-IUSE="component-build cups gnome-keyring +hangouts kerberos neon pic +proprietary-codecs pulseaudio selinux +suid +system-ffmpeg +system-icu +system-libvpx +tcmalloc widevine"
+IUSE="component-build cups gnome-keyring +hangouts jumbo-build kerberos neon pic +proprietary-codecs pulseaudio selinux +suid +system-ffmpeg +system-icu +system-libvpx +tcmalloc widevine"
 RESTRICT="!system-ffmpeg? ( proprietary-codecs? ( bindist ) )"
 
 COMMON_DEPEND="
+	app-accessibility/at-spi2-atk:2
 	app-arch/bzip2:=
 	cups? ( >=net-print/cups-1.3.11:= )
+	dev-libs/atk
 	dev-libs/expat:=
 	dev-libs/glib:2
 	system-icu? ( >=dev-libs/icu-59:= )
 	>=dev-libs/libxml2-2.9.4-r3:=[icu]
 	dev-libs/libxslt:=
 	dev-libs/nspr:=
-	>=dev-libs/nss-3.14.3:=
+	>=dev-libs/nss-3.26:=
 	>=dev-libs/re2-0.2016.05.01:=
 	gnome-keyring? ( >=gnome-base/libgnome-keyring-3.12:= )
 	>=media-libs/alsa-lib-1.0.19:=
@@ -376,6 +378,9 @@ src_configure() {
 	# for development and debugging.
 	myconf_gn+=" is_component_build=$(usex component-build true false)"
 
+	# https://chromium.googlesource.com/chromium/src/+/lkcr/docs/jumbo.md
+	myconf_gn+=" use_jumbo_build=$(usex jumbo-build true false)"
+
 	myconf_gn+=" use_allocator=$(usex tcmalloc \"tcmalloc\" \"none\")"
 
 	# Disable nacl, we can't build without pnacl (http://crbug.com/269560).
@@ -627,8 +632,10 @@ src_install() {
 	doins -r out/Release/locales
 	doins -r out/Release/resources
 
-	insinto "${CHROMIUM_HOME}/swiftshader"
-	doins out/Release/swiftshader/*.so
+	if [[ -d out/Release/swiftshader ]]; then
+		insinto "${CHROMIUM_HOME}/swiftshader"
+		doins out/Release/swiftshader/*.so
+	fi
 
 	# Install icons and desktop entry.
 	local branding size

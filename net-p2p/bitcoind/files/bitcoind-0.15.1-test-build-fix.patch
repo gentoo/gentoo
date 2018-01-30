@@ -1,0 +1,24 @@
+commit 91976ef251bbb693db8c4e36b62ceca1f6417413 (HEAD)
+Author: Luke Dashjr <luke-jr+git@utopios.org>
+Date:   Tue Jan 23 03:37:10 2018 +0000
+
+    Bugfix: script_tests: Only define debugger_cbs if HAVE_CONSENSUS_LIB
+
+diff --git a/src/test/script_tests.cpp b/src/test/script_tests.cpp
+index 7826cdc1b3..013846811b 100644
+--- a/src/test/script_tests.cpp
++++ b/src/test/script_tests.cpp
+@@ -186,11 +186,13 @@ static void script_tests_debugger_ScriptEOF(void *userdata, struct bitcoinconsen
+     ++data->eof;
+ }
+ 
++#if defined(HAVE_CONSENSUS_LIB)
+ static const struct bitcoinconsensus_script_debugger_callbacks debugger_cbs = {
+     .ScriptBegin = script_tests_debugger_ScriptBegin,
+     .ScriptPreStep = script_tests_debugger_ScriptPreStep,
+     .ScriptEOF = script_tests_debugger_ScriptEOF,
+ };
++#endif
+ 
+ void DoTest(const CScript& scriptPubKey, const CScript& scriptSig, const CScriptWitness& scriptWitness, int flags, const std::string& message, int scriptError, CAmount nValue = 0)
+ {

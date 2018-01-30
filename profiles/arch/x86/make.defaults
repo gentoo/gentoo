@@ -42,3 +42,7 @@ IUSE_IMPLICIT="abi_x86_32"
 # Michał Górny <mgorny@gentoo.org> (01 Jul 2014)
 # Default to abi_x86_32 for packages that don't have it forced.
 ABI_X86="32"
+
+# Hans de Graaff <graaff@gentoo.org> (21 Jan 2018)
+# Temporary entry to support stable bug 639476
+RUBY_TARGETS="ruby22"

@@ -15,4 +15,7 @@
 		<email>johu@gentoo.org</email>
 		<name>Johannes Huber</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">hughsie/PackageKit-Qt</remote-id>
+	</upstream>
 </pkgmetadata>

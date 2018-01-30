@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -35,9 +35,7 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--bindir="${EPREFIX}"/sbin \
 		--with-statedir="${EPREFIX}"/run/${PN} \
-		--with-rpcuser=root \
 		--with-systemdsystemunitdir=$(usex systemd "$(systemd_get_unitdir)" "no") \
 		$(use_enable tcpd libwrap) \
 		$(use_enable debug) \

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ inherit versionator gnome2-utils eutils autotools #vala
 
 DESCRIPTION="A graph based image processing framework"
 HOMEPAGE="http://www.gegl.org/"
-SRC_URI="ftp://ftp.gimp.org/pub/${PN}/${PV:0:3}/${P}.tar.bz2"
+SRC_URI="https://download.gimp.org/pub/${PN}/${PV:0:3}/${P}.tar.bz2"
 
 LICENSE="|| ( GPL-3 LGPL-3 )"
 SLOT="0"
@@ -76,6 +76,7 @@ src_prepare() {
 	# https://bugs.gentoo.org/show_bug.cgi?id=617430
 	epatch "${FILESDIR}"/${P}-underlinking.patch
 	epatch "${FILESDIR}"/${P}-libopenraw-0.1.patch  # bug 639834
+	epatch "${FILESDIR}"/${P}-fix-without-exiv2.patch  # bug 641872
 
 	eapply_user
 	eautoreconf

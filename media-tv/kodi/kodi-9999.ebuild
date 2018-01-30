@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ inherit autotools cmake-utils eutils linux-info pax-utils python-single-r1
 LIBDVDCSS_COMMIT="2f12236bc1c92f73c21e973363f79eb300de603f"
 LIBDVDREAD_COMMIT="17d99db97e7b8f23077b342369d3c22a6250affd"
 LIBDVDNAV_COMMIT="43b5f81f5fe30bceae3b7cecf2b0ca57fc930dac"
-FFMPEG_VERSION="3.4"
+FFMPEG_VERSION="3.4.1"
 CODENAME="Leia"
 FFMPEG_KODI_VERSION="Alpha-1"
 SRC_URI="https://github.com/xbmc/libdvdcss/archive/${LIBDVDCSS_COMMIT}.tar.gz -> libdvdcss-${LIBDVDCSS_COMMIT}.tar.gz
@@ -100,7 +100,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		>=dev-cpp/waylandpp-0.1.5
 		media-libs/mesa[wayland]
 		>=dev-libs/wayland-protocols-1.7
-		x11-libs/libxkbcommon
+		>=x11-libs/libxkbcommon-0.4.1
 	)
 	webserver? ( >=net-libs/libmicrohttpd-0.9.55[messages] )
 	X? (

@@ -1,11 +1,11 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="3"
+EAPI=6
 
-inherit fixheadtails eutils toolchain-funcs flag-o-matic
+inherit toolchain-funcs
 
-DESCRIPTION="Safecat implements qmail's maildir algorithm, copying standard input safely to a specified directory"
+DESCRIPTION="Safecat implements qmail's maildir algorithm, safely copying standard input"
 HOMEPAGE="http://www.jeenyus.net/linux/software/safecat.html"
 SRC_URI="http://www.jeenyus.net/linux/software/${PN}/${P}.tar.gz"
 
@@ -18,35 +18,32 @@ RESTRICT="test"
 DEPEND="sys-apps/groff"
 RDEPEND=""
 
-src_prepare() {
+PATCHES=(
 	# applying maildir-patch
-	epatch "${FILESDIR}"/safecat-1.11-gentoo.patch
-
+	"${FILESDIR}"/safecat-1.11-gentoo.patch
 	# Fix parallel make errors
-	epatch "${FILESDIR}"/${P}-makefile.patch
+	"${FILESDIR}"/${P}-makefile.patch
+	# Fix POSIX head/tail syntax
+	"${FILESDIR}"/${P}-head-tail-POSIX.patch
+)
 
-	ht_fix_file Makefile make-compile.sh
+src_prepare() {
+	default
 
-	sed -ni '/man\|doc/!p' hier.c
+	sed -ni '/man\|doc/!p' hier.c || die
 
 	# Fix implicit decleration
-	sed -i -e '/include <signal.h>/ a #include <stdlib.h>' \
-		safecat.c
+	sed '/include <signal.h>/ a #include <stdlib.h>' -i safecat.c || die
 }
 
 src_configure() {
-	# safecat segfaults on gcc-4.0 x86 with -Os, seems to be okay with -O2
-	if [[ $(gcc-major-version).$(gcc-minor-version) == 4.0 ]]; then
-		replace-flags -Os -O2
-	fi
-
-	echo "${D}/usr" > conf-root
-	echo "$(tc-getCC) ${CFLAGS}" > conf-cc
-	echo "$(tc-getCC) ${LDFLAGS}" > conf-ld
+	echo "${D}/usr" > conf-root || die
+	echo "$(tc-getCC) ${CFLAGS}" > conf-cc || die
+	echo "$(tc-getCC) ${LDFLAGS}" > conf-ld || die
 }
 
 src_install() {
-	emake setup check || die
-	dodoc CHANGES README
+	emake setup check
+	einstalldocs
 	doman maildir.1 safecat.1
 }

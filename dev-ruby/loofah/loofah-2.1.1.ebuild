@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ HOMEPAGE="https://github.com/flavorjones/loofah"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux"
+KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux"
 IUSE=""
 
 ruby_add_rdepend "=dev-ruby/crass-1.0* >=dev-ruby/crass-1.0.2 >=dev-ruby/nokogiri-1.5.9"

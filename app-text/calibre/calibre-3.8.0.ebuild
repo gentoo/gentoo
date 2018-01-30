@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite,ssl"
 
-inherit eutils fdo-mime bash-completion-r1 multilib toolchain-funcs python-single-r1
+inherit eutils bash-completion-r1 gnome2-utils multilib toolchain-funcs python-single-r1 xdg-utils
 
 DESCRIPTION="Ebook management application"
 HOMEPAGE="http://calibre-ebook.com/"
@@ -66,6 +66,8 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
+	dev-util/desktop-file-utils
+	dev-util/gtk-update-icon-cache
 	media-fonts/liberation-fonts
 	>=media-gfx/imagemagick-6.5.9[jpeg,png]
 	media-libs/fontconfig
@@ -79,6 +81,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXrender
+	x11-misc/shared-mime-info
 	>=x11-misc/xdg-utils-1.0.2-r2
 	ios? (
 		>=app-pda/usbmuxd-1.0.8
@@ -91,6 +94,14 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-python/setuptools-23.1.0[${PYTHON_USEDEP}]
 	>=virtual/podofo-build-0.9.4
 	virtual/pkgconfig"
+
+pkg_pretend() {
+	if [[ ${MERGE_TYPE} != binary && $(gcc-major-version) -lt 6 ]]; then
+		eerror "Calibre cannot be built with this version of gcc."
+		eerror "You need at least gcc-6.0"
+		die "Your C compiler is too old for this package."
+	fi
+}
 
 src_prepare() {
 	# no_updates: do not annoy user with "new version is availible all the time
@@ -251,6 +262,7 @@ src_install() {
 }
 
 pkg_preinst() {
+	gnome2_icon_savelist
 	# Indentify stray directories from upstream's "Binary install"
 	# method (see bug 622728).
 	CALIBRE_LIB_DIR=/usr/$(get_libdir)/calibre
@@ -267,11 +279,13 @@ pkg_postinst() {
 			rm -rf "${x}"
 		fi
 	done
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
+	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
+	gnome2_icon_cache_update
 }

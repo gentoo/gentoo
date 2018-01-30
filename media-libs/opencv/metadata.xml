@@ -25,6 +25,7 @@ Face Recognition; Gesture Recognition; Motion Tracking, Ego Motion, Motion Under
 		<flag name="ipp">Enable Intel Integrated Primitive support</flag>
 		<flag restrict="&gt;=media-libs/opencv-3.1.0" name="contrib_xfeatures2d">Enables xfeatures2d and autodownload of samples in contrib</flag>
 		<flag restrict="&gt;=media-libs/opencv-3.1.0" name="contrib_cvv">CVV module requires Qt5</flag>
+		<flag restrict="&gt;=media-libs/opencv-3.3.0" name="contrib_dnn">DNN module contrib requires tiny dnn</flag>
 		<flag restrict="&gt;=media-libs/opencv-3.1.0" name="contrib_hdf">HDF module requires <pkg>sci-libs/hdf5</pkg></flag>
 		<flag restrict="&gt;=media-libs/opencv-3.1.0" name="contrib_sfm">SFM module requires eigen, gflags, and glog</flag>
 		<flag name="opencl">Add support for OpenCL</flag>

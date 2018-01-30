@@ -11,7 +11,6 @@
   </maintainer>
   <use>
     <flag name="daap">Build the local network music sharing plugin which uses the DAAP protocol using <pkg>net-libs/libdmapsharing</pkg></flag>
-    <flag name="zeitgeist">Build the plugin to inject events to <pkg>gnome-extra/zeitgeist</pkg></flag>
     <flag name="visualizer">Enable support for visualizations using <pkg>media-plugins/gst-plugins-libvisual</pkg></flag>
   </use>
 </pkgmetadata>

@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit cmake-utils toolchain-funcs xdg-utils
+inherit cmake-utils flag-o-matic toolchain-funcs xdg-utils
 
 if [[ "${PV}" == "9999" ]] ; then
 	inherit git-r3
@@ -11,7 +11,7 @@ if [[ "${PV}" == "9999" ]] ; then
 	SLOT="0/9999"
 else
 	SRC_URI="https://poppler.freedesktop.org/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 	SLOT="0/72"   # CHECK THIS WHEN BUMPING!!! SUBSLOT IS libpoppler.so SOVERSION
 fi
 
@@ -84,10 +84,8 @@ src_prepare() {
 		einfo "policy(SET CMP0002 OLD) - workaround can be removed"
 	fi
 
-	if tc-is-clang && [[ ${CHOST} == *-darwin* ]] ; then
-		# we need to up the C++ version, bug #622526
-		export CXX="$(tc-getCXX) -std=c++11"
-	fi
+	# we need to up the C++ version, bug #622526, #643278
+	append-cxxflags -std=c++11
 }
 
 src_configure() {

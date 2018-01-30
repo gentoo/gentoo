@@ -1,0 +1,66 @@
+diff -r -U2 pari-2.9.4.orig/config/Makefile.SH pari-2.9.4/config/Makefile.SH
+--- pari-2.9.4.orig/config/Makefile.SH	2017-11-09 16:26:14.000000000 +0700
++++ pari-2.9.4/config/Makefile.SH	2018-01-13 17:31:02.404210285 +0700
+@@ -80,10 +80,10 @@
+   graph=plotQt;;
+ Qt4)
+-  PLOTCFLAGS='-D__FANCY_WIN__ -I$(QTDIR)/include'
+-  PLOTLIBS="-L\$(QTDIR)/lib $QTLIB"
++  PLOTCFLAGS='-D__FANCY_WIN__ `pkg-config --cflags QtGui`'
++  PLOTLIBS="`pkg-config --libs QtGui`"
+   graph=plotQt4;;
+ fltk)
+-  PLOTCFLAGS=
+-  PLOTLIBS="$FLTK_LIBS"
++  PLOTCFLAGS="`fltk-config --cxxflags` $X11_INC"
++  PLOTLIBS="`fltk-config --ldflags`"
+   postconfig='fltk-config --post '
+   graph=plotfltk;;
+@@ -277,5 +277,5 @@
+ # Graphic library.
+ QTDIR      = "$QTDIR"
+-MOC        = \$(QTDIR)/bin/moc
++MOC        = "`which moc`"
+ PLOTCFLAGS = $PLOTCFLAGS
+ PLOTLIBS   = $PLOTLIBS
+diff -r -U2 pari-2.9.4.orig/config/get_Qt pari-2.9.4/config/get_Qt
+--- pari-2.9.4.orig/config/get_Qt	2017-05-12 16:45:12.000000000 +0700
++++ pari-2.9.4/config/get_Qt	2018-01-13 17:35:49.481198212 +0700
+@@ -6,5 +6,5 @@
+ yes)
+    pth="/usr/local/lib /usr/local/share /usr/lib /usr/share"
+-   QTDIR=`locatedir qt4/bin $pth`
++   QTDIR=`locatedir qt4 $pth`
+    if test -n "$QTDIR"; then
+      QTLIB="-lQtCore -lQtGui"
+diff -r -U2 pari-2.9.4.orig/config/get_config_options pari-2.9.4/config/get_config_options
+--- pari-2.9.4.orig/config/get_config_options	2017-11-09 16:26:14.000000000 +0700
++++ pari-2.9.4/config/get_config_options	2018-01-13 17:38:39.264191072 +0700
+@@ -87,8 +87,10 @@
+       with_ncurses_lib=`echo "$1" | sed -e 's/[-a-z]*=//'` ;;
+ 
++  --without-qt|--with-qt=no) without_qt=yes ;;
+   --with-qt) with_qt=yes ;;
+   --with-qt=*)
+       with_qt=`echo "$1" | sed -e 's/[-a-z]*=//'` ;;
+ 
++  --without-fltk|--with-fltk=no) without_fltk=yes ;;
+   --with-fltk) with_fltk=yes ;;
+   --with-fltk=*)
+@@ -168,5 +170,7 @@
+ 
+   --with-qt[=DIR]        use the Qt graphical library [prefix for Qt dir.]
++  --without-qt           do not try to use the Qt lib
+   --with-fltk            use the FLTK graphical library [need fltk-config]
++  --without-fltk         do not try to use the FLTK lib
+ 
+ Miscellaneous
+diff -r -U2 pari-2.9.4.orig/config/get_graphic_lib pari-2.9.4/config/get_graphic_lib
+--- pari-2.9.4.orig/config/get_graphic_lib	2017-11-09 16:26:14.000000000 +0700
++++ pari-2.9.4/config/get_graphic_lib	2018-01-13 17:42:45.760180706 +0700
+@@ -8,4 +8,5 @@
+ if test -n "$with_fltk"; then which_graphic_lib=fltk; fi
+ if test -n "$with_qt";   then which_graphic_lib=Qt; fi
++if test -n "$without_fltk" -a -n "$without_qt"; then which_graphic_lib=none; fi
+ if test "$fastread" != yes; then
+   cat << EOT

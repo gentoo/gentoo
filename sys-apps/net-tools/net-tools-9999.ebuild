@@ -1,14 +1,13 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
 inherit flag-o-matic toolchain-funcs
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://git.code.sf.net/p/net-tools/code"
-	EGIT_PROJECT="${PN}"
-	inherit git-2
+	inherit git-r3
 else
 	SRC_URI="mirror://gentoo/${P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
@@ -43,7 +42,7 @@ maint_pkg_create() {
 	pushd "${T}" >/dev/null
 	emake -C "${p}/po" dist
 	sed -i "/^RELEASE/s:=.*:=${pv}:" */Makefile || die
-	tar cf - ${p}/ | xz > ${p}.tar.xz
+	tar --exclude-vcs cf - ${p}/ | xz > ${p}.tar.xz
 	popd >/dev/null
 
 	du -b "${T}"/*.tar.xz

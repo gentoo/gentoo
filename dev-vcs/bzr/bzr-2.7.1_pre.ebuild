@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,14 +14,14 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~spa
 IUSE="curl doc +sftp test"
 PLOCALES="ar ast bs ca cs de el en_AU en_GB es fa fo fr gl he id it ja ko ms my nb nl oc pl pt_BR ro ru sco si sk sr sv tr ug uk vi zh_CN"
 
-inherit bash-completion-r1 distutils-r1 eutils flag-o-matic versionator l10n
-SERIES=$(get_version_component_range 1-2)
+inherit bash-completion-r1 distutils-r1 flag-o-matic l10n
+#SERIES=$(get_version_component_range 1-2)
 SRC_URI="https://dev.gentoo.org/~grozin/${P}.tar.gz"
 
 RDEPEND="curl? ( dev-python/pycurl[${PYTHON_USEDEP}] )
 	sftp? ( dev-python/paramiko[${PYTHON_USEDEP}] )"
 
-DEPEND="|| ( dev-python/cython dev-python/pyrex )
+DEPEND="|| ( dev-python/cython[${PYTHON_USEDEP}] dev-python/pyrex[${PYTHON_USEDEP}] )
 	test? ( ${RDEPEND}
 		>=dev-python/pyftpdlib-0.7.0[${PYTHON_USEDEP}]
 		dev-python/subunit
@@ -77,10 +77,10 @@ python_install_all() {
 
 	if use doc; then
 		docinto developers
-		dodoc -r doc/developers/* || die
+		dodoc -r doc/developers/*
 		for doc in mini-tutorial tutorials user-{guide,reference}; do
 			docinto ${doc}
-			dodoc -r doc/en/${doc}/* || die
+			dodoc -r doc/en/${doc}/*
 		done
 	fi
 

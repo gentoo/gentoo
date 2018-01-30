@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -44,7 +44,7 @@ COMMON_DEPEND="
 	virtual/glu
 	virtual/opengl
 	x11-libs/libX11
-	cdda? ( dev-libs/libcdio )
+	cdda? ( dev-libs/libcdio:= )
 	dbus? ( dev-qt/qtdbus:4 )
 	ipod? ( >=media-libs/libgpod-0.8.0 )
 	lastfm? ( >=media-libs/liblastfm-1[qt4(+)] )

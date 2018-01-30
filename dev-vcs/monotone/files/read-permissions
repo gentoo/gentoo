@@ -1,7 +1,0 @@
-pattern "net.example.project.{private,security}*"
-allow "joe@example.net"
-allow "jim@example.net"
-
-comment "everyone can read these branches"
-pattern "net.example.{public,project}*"
-allow "*"

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/leethomason/${PN}/archive/${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="ZLIB"
 SLOT="0/3"
-KEYWORDS="~amd64 ~arm ~hppa ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~hppa ~sparc ~x86"
 IUSE="static-libs test"
 
 src_configure() {

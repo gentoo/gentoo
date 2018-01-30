@@ -1,0 +1,23 @@
+... to fix test-suite failure with perl-5.26.0
+
+Bug: https://bugzilla.redhat.com/1473853
+Upstream: http://lists.nongnu.org/archive/html/acl-devel/2017-07/msg00001.html
+---
+ test/run | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/run b/test/run
+index 4b1f8d0..07e916c 100755
+--- a/test/run
++++ b/test/run
+@@ -106,7 +106,7 @@ for (;;) {
+   if (defined $line) {
+     # Substitute %VAR and %{VAR} with environment variables.
+     $line =~ s[%(\w+)][$ENV{$1}]eg;
+-    $line =~ s[%{(\w+)}][$ENV{$1}]eg;
++    $line =~ s[%\{(\w+)}][$ENV{$1}]eg;
+   }
+   if (defined $line) {
+     if ($line =~ s/^\s*< ?//) {
+-- 
+2.13.0

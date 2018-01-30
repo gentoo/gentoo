@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ inherit eutils games
 
 DESCRIPTION="Play as an amorphous ball of tar that rolls and squishes around"
 HOMEPAGE="http://www.chroniclogic.com/gish.htm"
-SRC_URI="http://s159260531.onlinehome.us/demos/gishdemo.tar.gz -> ${P}.tar.gz"
+SRC_URI="http://www.chroniclogic.com/demos/gishdemo.tar.gz -> ${P}.tar.gz"
 
 LICENSE="all-rights-reserved"
 SLOT="0"

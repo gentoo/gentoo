@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=3
@@ -6,8 +6,10 @@ EAPI=3
 inherit eutils toolchain-funcs elisp-common
 
 DESCRIPTION="a literate programming tool, lighter than web"
-HOMEPAGE="http://www.eecs.harvard.edu/~nr/noweb/"
-SRC_URI="http://www.eecs.harvard.edu/~nr/noweb/dist/${P}.tgz"
+HOMEPAGE="https://www.cs.tufts.edu/~nr/noweb/"
+#SRC_URI="ftp://www.eecs.harvard.edu/pub/nr/${P}.tgz"
+SRC_URI="https://dev.gentoo.org/~jstein/dist/${P}.tgz"
+#put on devspace, because no-passive-ftp is required on havard.edu.
 
 LICENSE="noweb emacs? ( GPL-2 )"
 SLOT="0"

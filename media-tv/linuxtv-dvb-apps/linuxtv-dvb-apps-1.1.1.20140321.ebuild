@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -36,6 +36,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.1.1.20100223-ldflags.patch
 	"${FILESDIR}"/${PN}-1.1.1.20100223-alevt.patch
 	"${FILESDIR}"/${PN}-1.1.1.20100223-perl526.patch
+	"${FILESDIR}"/${PN}-no-ca_set_pid.patch
 )
 
 src_prepare() {

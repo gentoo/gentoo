@@ -7,7 +7,7 @@
 	</maintainer>
 	<longdescription lang="en">
 		Script that should be run regularly on systems running software RAID (mdadm) to
-		perform "scrubbing" (http://en.wikipedia.org/wiki/Data_scrubbing#In_RAID)
+		perform "scrubbing" (https://en.wikipedia.org/wiki/Data_scrubbing#In_RAID)
 	</longdescription>
 	<upstream>
 		<remote-id type="github">fukawi2/raid-check</remote-id>

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ if [[ ${PV} = *9999* ]]; then
 	LIVE_EBUILD=yes
 fi
 
-inherit eutils flag-o-matic ${LIVE_ECLASSES}
+inherit flag-o-matic ${LIVE_ECLASSES}
 
 MY_P=${P/_/-}
 
@@ -23,7 +23,7 @@ HOMEPAGE="https://www.midnight-commander.org"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="+edit gpm mclib nls samba sftp +slang spell test X +xdg"
+IUSE="+edit gpm mclib nls samba sftp +slang spell test unicode X +xdg"
 
 REQUIRED_USE="spell? ( edit )"
 
@@ -33,7 +33,7 @@ RDEPEND=">=dev-libs/glib-2.26.0:2
 	samba? ( net-fs/samba )
 	sftp? ( net-libs/libssh2 )
 	slang? ( >=sys-libs/slang-2 )
-	!slang? ( sys-libs/ncurses:0= )
+	!slang? ( sys-libs/ncurses:0=[unicode?] )
 	spell? ( app-text/aspell )
 	X? ( x11-libs/libX11
 		x11-libs/libICE
@@ -47,6 +47,12 @@ DEPEND="${RDEPEND}
 	test? ( dev-libs/check )
 	"
 
+pkg_pretend() {
+	if use slang && use unicode ; then
+		ewarn "\"unicode\" USE flag only takes effect when the \"slang\" USE flag is disabled."
+	fi
+}
+
 src_prepare() {
 	default
 
@@ -54,30 +60,27 @@ src_prepare() {
 }
 
 src_configure() {
-	local myscreen=ncurses
-	use slang && myscreen=slang
 	[[ ${CHOST} == *-solaris* ]] && append-ldflags "-lnsl -lsocket"
 
-	local homedir=".mc"
-	use xdg && homedir="XDG"
-
-	econf \
-		--disable-silent-rules \
-		--disable-dependency-tracking \
-		$(use_enable nls) \
-		--enable-vfs \
-		$(use_enable kernel_linux vfs-undelfs) \
-		--enable-charset \
-		$(use_with X x) \
-		$(use_enable samba vfs-smb) \
-		$(use_enable sftp vfs-sftp) \
-		$(use_enable spell aspell) \
-		$(use_with gpm gpm-mouse) \
-		--with-screen=${myscreen} \
-		$(use_with edit internal-edit) \
-		$(use_enable mclib) \
-		$(use_enable test tests) \
-		--with-homedir=${homedir}
+	local myeconfargs=(
+		--disable-dependency-tracking
+		--disable-silent-rules
+		--enable-charset
+		--enable-vfs
+		--with-homedir=$(usex xdg 'XDG' '.mc')
+		--with-screen=$(usex slang 'slang' "ncurses$(usex unicode 'w')")
+		$(use_enable kernel_linux vfs-undelfs)
+		$(use_enable mclib)
+		$(use_enable nls)
+		$(use_enable samba vfs-smb)
+		$(use_enable sftp vfs-sftp)
+		$(use_enable spell aspell)
+		$(use_enable test tests)
+		$(use_with gpm gpm-mouse)
+		$(use_with X x)
+		$(use_with edit internal-edit)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
@@ -92,7 +95,7 @@ src_install() {
 
 	if ! use xdg ; then
 		sed 's@MC_XDG_OPEN="xdg-open"@MC_XDG_OPEN="/bin/false"@' \
-			-i "${ED}"/usr/libexec/mc/ext.d/*.sh || die
+			-i "${ED%/}"/usr/libexec/mc/ext.d/*.sh || die
 	fi
 }
 

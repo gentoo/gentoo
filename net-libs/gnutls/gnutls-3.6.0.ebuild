@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,8 +12,7 @@ SRC_URI="mirror://gnupg/gnutls/v$(get_version_component_range 1-2)/${P}.tar.xz"
 LICENSE="GPL-3 LGPL-2.1"
 SLOT="0/30" # libgnutls.so number
 KEYWORDS=""
-IUSE_LINGUAS=" en cs de fi fr it ms nl pl sv uk vi zh_CN"
-IUSE="+cxx dane doc examples guile +idn nls +openssl pkcs11 seccomp sslv2 sslv3 static-libs test test-full +tls-heartbeat tools valgrind ${IUSE_LINGUAS// / linguas_}"
+IUSE="+cxx dane doc examples guile +idn nls +openssl pkcs11 seccomp sslv2 sslv3 static-libs test test-full +tls-heartbeat tools valgrind"
 
 REQUIRED_USE="
 	test-full? ( cxx dane doc examples guile idn nls openssl pkcs11 seccomp tls-heartbeat tools )"

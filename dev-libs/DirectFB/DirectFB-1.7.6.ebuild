@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,18 +9,16 @@ inherit autotools eutils toolchain-funcs
 I_TO_D_intel="i810,i830"
 I_TO_D_mga="matrox"
 I_TO_D_r128="ati128"
-I_TO_D_s3="unichrome"
-I_TO_D_sis="sis315"
 I_TO_D_via="cle266"
 # cyber5k davinci ep9x omap pxa3xx sh772x savage pvr2d
-IUSE_VIDEO_CARDS=" intel mach64 mga neomagic nvidia r128 radeon s3 sis tdfx via vmware"
+IUSE_VIDEO_CARDS=" intel mga nvidia r128 radeon tdfx via vmware"
 IUV=${IUSE_VIDEO_CARDS// / video_cards_}
 # echo `sed -n '/Possible inputdrivers are:/,/^$/{/\(Possible\|^input\)/d;s:\[ *::;s:\].*::;s:,::g;p}' configure.in`
 I_TO_D_elo2300="elo-input"
 I_TO_D_evdev="linuxinput"
 I_TO_D_mouse="ps2mouse,serialmouse"
 # dbox2remote dreamboxremote gunze h3600_ts penmount sonypijogdial ucb1x00 wm97xx zytronic
-IUSE_INPUT_DEVICES=" dynapro elo2300 evdev joystick keyboard lirc mouse mutouch tslib"
+IUSE_INPUT_DEVICES=" dynapro elo2300 evdev joystick keyboard lirc mouse tslib"
 IUD=${IUSE_INPUT_DEVICES// / input_devices_}
 
 DESCRIPTION="Thin library on top of the Linux framebuffer devices"

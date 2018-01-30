@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -16,13 +16,8 @@ SRC_URI="https://github.com/fyookball/electrum/archive/${PV}.tar.gz -> ${P}.tar.
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-LINGUAS="es_ES ja_JP pt_BR pt_PT zh_CN"
-
-IUSE="audio_modem cli cosign digitalbitbox email ncurses qrcode +qt5 sync vkb"
-
-for lingua in ${LINGUAS}; do
-	IUSE+=" linguas_${lingua}"
-done
+IUSE="audio_modem cli cosign digitalbitbox email ncurses qrcode +qt5 sync vkb
+	l10n_es l10n_ja l10n_pt l10n_zh-CN"
 
 REQUIRED_USE="
 	|| ( cli ncurses qt5 )
@@ -68,14 +63,18 @@ src_prepare() {
 	# Prevent icon from being installed in the wrong location
 	sed -i '/icons/d' setup.py || die
 
-	pyrcc5 icons.qrc -o gui/qt/icons_rc.py || die
+	if use qt5; then
+		pyrcc5 icons.qrc -o gui/qt/icons_rc.py || die
+	else
+		sed "s|'electroncash_gui.qt',||" -i setup.py || die
+	fi
 
 	local wordlist=
 	for wordlist in  \
-		$(usex linguas_ja_JP '' japanese) \
-		$(usex linguas_pt_BR '' $(usex linguas_pt_PT '' portuguese)) \
-		$(usex linguas_es_ES '' spanish) \
-		$(usex linguas_zh_CN '' chinese_simplified) \
+		$(usex l10n_ja '' japanese) \
+		$(usex l10n_pt '' portuguese) \
+		$(usex l10n_es '' spanish) \
+		$(usex l10n_zh-CN '' chinese_simplified) \
 	; do
 		rm -f "lib/wordlist/${wordlist}.txt" || die
 		sed -i "/${wordlist}\\.txt/d" lib/mnemonic.py || die

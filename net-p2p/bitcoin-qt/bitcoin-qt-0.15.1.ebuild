@@ -1,4 +1,4 @@
-# Copyright 2010-2017 Gentoo Foundation
+# Copyright 2010-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,17 +18,17 @@ LANGS="af af:af_ZA am ar be:be_BY bg bg:bg_BG bn bs ca ca@valencia ca:ca_ES cs c
 KNOTS_LANGS="am hu_HU is ms pl_PL pt sn"
 
 DESCRIPTION="An end-user Qt GUI for the Bitcoin crypto-currency"
-HOMEPAGE="http://bitcoincore.org/ http://bitcoinknots.org/"
+HOMEPAGE="https://bitcoincore.org/ https://bitcoinknots.org/"
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~amd64-linux ~arm ~arm64 ~mips ~ppc ~x86 ~x86-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc x86 ~amd64-linux ~x86-linux"
 
 SRC_URI="
 	https://github.com/${MyPN}/${MyPN}/archive/${BITCOINCORE_COMMITHASH}.tar.gz -> ${MyPN}-v${PV}.tar.gz
-	http://bitcoinknots.org/files/0.15.x/${KNOTS_PV}/${KNOTS_P}.patches.txz -> ${KNOTS_P}.patches.tar.xz
+	https://bitcoinknots.org/files/0.15.x/${KNOTS_PV}/${KNOTS_P}.patches.txz -> ${KNOTS_P}.patches.tar.xz
 "
 CORE_DESC="https://bitcoincore.org/en/2017/11/11/release-${PV}/"
-KNOTS_DESC="http://bitcoinknots.org/files/0.15.x/${KNOTS_PV}/${KNOTS_P}.desc.html"
+KNOTS_DESC="https://bitcoinknots.org/files/0.15.x/${KNOTS_PV}/${KNOTS_P}.desc.html"
 
 RDEPEND="
 	!libressl? ( dev-libs/openssl:0=[-bindist] )
@@ -124,11 +124,13 @@ src_prepare() {
 	sed -i 's/^\(complete -F _bitcoind \)bitcoind \(bitcoin-qt\)$/\1\2/' contrib/bitcoind.bash-completion || die
 
 	eapply "$(KNOTS_PATCH syslibs)"
+	eapply "${FILESDIR}/${PN}-0.15.1-test-util-fix.patch"
 
 	if use knots; then
 		eapply "$(KNOTS_PATCH f)"
 		eapply "$(KNOTS_PATCH branding)"
 		eapply "$(KNOTS_PATCH ts)"
+		eapply "${FILESDIR}/${PN}-0.15.1-test-build-fix.patch"
 	fi
 
 	eapply_user

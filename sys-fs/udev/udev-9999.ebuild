@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ if [[ ${PV} = 9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/systemd/systemd/archive/v${PV}.tar.gz -> systemd-${PV}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 fi
 
 DESCRIPTION="Linux dynamic and persistent device naming support (aka userspace devfs)"
@@ -120,6 +120,16 @@ multilib_src_configure() {
 		-Dselinux=$(meson_multilib_native_use selinux)
 		-Dlink-udev-shared=false
 		-Dsplit-usr=true
+
+		# Prevent automagic deps
+		-Dgcrypt=false
+		-Dlibcryptsetup=false
+		-Dlibidn=false
+		-Dlibidn2=false
+		-Dlibiptc=false
+		-Dseccomp=false
+		-Dlz4=false
+		-Dxz=false
 	)
 	meson_src_configure
 }
@@ -195,6 +205,7 @@ multilib_src_install_all() {
 
 	insinto /etc/udev
 	doins src/udev/udev.conf
+	keepdir /etc/udev/{hwdb.d,rules.d}
 
 	insinto /lib/systemd/network
 	doins network/99-default.link

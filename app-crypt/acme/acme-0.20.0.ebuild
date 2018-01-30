@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ if [[ ${PV} == 9999* ]]; then
 	S=${WORKDIR}/${P}/${PN}
 else
 	SRC_URI="https://github.com/certbot/certbot/archive/v${PV}.tar.gz -> certbot-${PV}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm ~ppc64 x86"
 	S=${WORKDIR}/certbot-${PV}/acme
 fi
 
@@ -31,6 +31,7 @@ RDEPEND="
 	dev-python/pytz[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.10[${PYTHON_USEDEP}]
 	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
+	!dev-python/josepy[${PYTHON_USEDEP}]
 "
 DEPEND="
 	test? (

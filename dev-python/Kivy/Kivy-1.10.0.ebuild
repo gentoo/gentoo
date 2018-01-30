@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -37,6 +37,10 @@ DEPEND="${RDEPEND}
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
 
 S="${WORKDIR}/${P,,}"
+
+PATCHES=(
+	"${FILESDIR}/modplug-fix.patch"
+)
 
 python_prepare_all() {
 # 	sed -e '/data_files=/d' -i "${S}/setup.py" || die

@@ -5,9 +5,6 @@
     <email>sci-chemistry@gentoo.org</email>
     <name>Gentoo Chemistry Project</name>
   </maintainer>
-  <use>
-    <flag name="applications">Build also applications not only the libraries</flag>
-  </use>
   <upstream>
     <remote-id type="sourceforge">chemkit</remote-id>
   </upstream>

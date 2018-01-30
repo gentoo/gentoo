@@ -153,7 +153,14 @@ src_configure() {
 		fi
 	fi
 
+	tc-export_build_env BUILD_CXX
+	export BUILDCXX=${BUILD_CXX}
+	export BUILDCXXFLAGS=${BUILD_CXXFLAGS}
 	tc-export CC AR
+
+	# Should be able to drop this workaround with newer versions.
+	# https://bugs.squid-cache.org/show_bug.cgi?id=4224
+	tc-is-cross-compiler && export squid_cv_gnu_atomics=no
 
 	econf \
 		--sysconfdir=/etc/squid \
@@ -179,6 +186,7 @@ src_configure() {
 		--enable-icmp \
 		--enable-follow-x-forwarded-for \
 		--with-large-files \
+		--with-build-environment=default \
 		--disable-strict-error-checking \
 		--disable-arch-native \
 		--with-ltdl-includedir=/usr/include \

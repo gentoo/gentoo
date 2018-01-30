@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,7 +18,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~arm64 ia64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm ~arm64 ia64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
 
 IUSE="X compat dbus debug declarative designer doc examples help multimedia
 	opengl phonon script scripttools sql svg testlib webkit xmlpatterns"

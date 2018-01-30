@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -30,12 +30,12 @@ SRC_URI="mirror://ruby/${SLOT}/${MY_P}.tar.xz
 		 https://dev.gentoo.org/~flameeyes/ruby-team/${PN}-patches-${PATCHSET}.tar.bz2"
 
 LICENSE="|| ( Ruby-BSD BSD-2 )"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="berkdb debug doc examples gdbm ipv6 jemalloc libressl +rdoc rubytests socks5 ssl tk xemacs ncurses +readline"
 
 RDEPEND="
 	berkdb? ( sys-libs/db:= )
-	gdbm? ( sys-libs/gdbm )
+	gdbm? ( sys-libs/gdbm:= )
 	jemalloc? ( dev-libs/jemalloc )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )

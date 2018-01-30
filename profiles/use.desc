@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # Keep them sorted
@@ -135,6 +135,7 @@ handbook - Enable handbooks generation for packages by KDE
 hardened - Activate default security enhancements for toolchain (gcc, glibc, binutils)
 hddtemp - Enable monitoring of hdd temperature (app-admin/hddtemp)
 hdf5 - Add support for the Hierarchical Data Format v5
+headers-only - Install only C headers instead of whole package. Mainly used by sys-devel/crossdev for toolchain bootstrap.
 hscolour - Include coloured haskell sources to generated documentation (dev-haskell/hscolour)
 ibm - Add support for IBM ppc64 specific systems
 iconv - Enable support for the iconv character set conversion library
@@ -382,7 +383,7 @@ xemacs - Add support for XEmacs
 xface - Add xface support used to allow a small image of xface format to be included in an email via the header 'X-Face'
 xft - Build with support for XFT font renderer (x11-libs/libXft)
 xine - Add support for the XINE movie libraries
-xinerama - Add support for the xinerama X11 extension, which is mandatory if you work in multiple monitors setup
+xinerama - Add support for querying multi-monitor screen geometry through the Xinerama API
 xinetd - Add support for the xinetd super-server
 xml - Add support for XML files
 xmlrpc - Support for xml-rpc library

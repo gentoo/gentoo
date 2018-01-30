@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="
@@ -38,6 +38,9 @@ src_prepare() {
 	# causes empty directory to be installed
 	sed -i -e '/^INSTALLS/s/debianmenu //' luckybackup.pro \
 		|| die "sed installs failed"
+
+	# bogus dependency - bug #645732
+	sed -i -e '/QT += network/s/^/#/' luckybackup.pro || die
 
 	# remove text version - cannot remote HTML version
 	# as it's used within the application

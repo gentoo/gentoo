@@ -21,11 +21,11 @@ RDEPEND="
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
 	sys-apps/util-linux
+	sys-libs/efivar
 "
 DEPEND="${RDEPEND}
 	sys-apps/help2man
 	sys-boot/gnu-efi
-	sys-libs/efivar
 	virtual/pkgconfig
 "
 

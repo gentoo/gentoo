@@ -7,5 +7,6 @@
   </maintainer>
   <upstream>
     <remote-id type="cpan">Sphinx-Search</remote-id>
+    <remote-id type="cpan-module">Sphinx::Search</remote-id>
   </upstream>
 </pkgmetadata>

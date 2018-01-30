@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (21 Jan 2018)
+# systemtap is not yet stable on arm64
+sys-libs/glibc systemtap
+
 # Thomas Deutschmann <whissi@gentoo.org> (26 Oct 2017)
 # idn: Needs net-dns/libidn2 which is not stabilized yet on arm64
 # gnutls: Needs net-libs/gnutls which is not stabilized yet on arm64

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,10 +11,7 @@ EGIT_REPO_URI="https://github.com/lavv17/lftp"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-
 IUSE="convert-mozilla-cookies +gnutls idn ipv6 libressl nls socks5 +ssl verify-file"
-LFTP_LINGUAS=( cs de es fr it ja ko pl pt_BR ru uk zh_CN zh_HK zh_TW )
-IUSE+=" ${LFTP_LINGUAS[@]/#/linguas_}"
 
 RDEPEND="
 	>=sys-libs/ncurses-5.1:=

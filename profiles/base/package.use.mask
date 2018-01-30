@@ -7,6 +7,18 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (13 Jan 2018)
+# Depends on last-rited sci-visualization/xds-viewer
+sci-chemistry/xds-bin X
+
+# Mart Raudsepp <leio@gentoo.org> (10 Jan 2018)
+# Failing tests, with extra deps that aren't keyworded due to that
+>=gnome-base/gnome-settings-daemon-3.24 test
+
+# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
+# sys-apps/raidutils is going to be removed (#638634)
+net-analyzer/nagios-plugin-check_raid i2o
+
 # Andrey Utkin <andrey_utkin@gentoo.org> (29 Dec 2017)
 # This flag can be sensibly enabled only on macos.
 # Can be unmasked in prefix/darwin/macos profiles. Bug #637482
@@ -200,10 +212,6 @@ dev-vcs/rabbitvcs gedit
 # Multiple test failures.
 sys-boot/grub:2 test
 
-# Ulrich Müller <ulm@gentoo.org> (4 Feb 2017)
-# Uses old and vulnerable net-libs/webkit-gtk:3, bug #584156.
-app-editors/emacs:25 xwidgets
-
 # Ian Stakenvicius (25 Jan 2017)
 # rust on mozilla packages is experimental
 www-client/firefox rust
@@ -310,10 +318,6 @@ dev-lang/moarvm asan
 www-client/firefox system-cairo
 mail-client/thunderbird system-cairo
 >=www-client/seamonkey-2.41 system-cairo
-
-# Michael Palimaka <kensington@gentoo.org> (17 Apr 2016)
-# Fails to build with recent doxygen. Bug #569776.
-dev-cpp/eigen:2 doc
 
 # James Le Cuirot <chewi@gentoo.org> (10 Apr 2016)
 # Slower and less reliable than HotSpot and we don't support Java on

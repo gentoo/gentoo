@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,7 +14,6 @@ SLOT="0"
 LICENSE="GPL-2"
 IUSE="nls"
 MY_AVAILABLE_LINGUAS=" be bg cs da de es fi fr gl id is it lt ms nl pl pt_BR pt ru sv tr uk"
-IUSE="${IUSE} ${MY_AVAILABLE_LINGUAS// / linguas_}"
 
 RDEPEND="
 	sys-libs/ncurses:0
@@ -29,7 +28,7 @@ src_prepare() {
 		"${FILESDIR}"/${P}-makefile.patch \
 		"${FILESDIR}"/${P}-nls.patch
 	for lang in ${MY_AVAILABLE_LINGUAS}; do
-		if ! use linguas_${lang}; then
+		if ! has ${lang} ${LINGUAS-${lang}}; then
 			einfo "Cleaning translation for ${lang}"
 			rm po/${lang}.po || die
 		fi

@@ -1,0 +1,25 @@
+--- libcec-libcec-4.0.2/src/cec-client/CMakeLists.txt
++++ libcec-libcec-4.0.2/src/cec-client/CMakeLists.txt
+@@ -27,8 +27,12 @@ set(cecclient_SOURCES cec-client.cpp)
+ check_library_exists(curses initscr "" HAVE_CURSES_API)
+ if (HAVE_CURSES_API)
+   list(APPEND cecclient_SOURCES curses/CursesControl.cpp)
++
++  # tinfo
++  find_library(HAVE_CURSES_TINFO tinfo)
+ endif()
+ 
++
+ add_executable(cec-client ${cecclient_SOURCES})
+ set_target_properties(cec-client PROPERTIES VERSION ${LIBCEC_VERSION_MAJOR}.${LIBCEC_VERSION_MINOR}.${LIBCEC_VERSION_PATCH})
+ target_link_libraries(cec-client ${p8-platform_LIBRARIES})
+@@ -44,6 +48,9 @@ if (NOT WIN32)
+   # curses
+   if (HAVE_CURSES_API)
+     target_link_libraries(cec-client curses)
++    if (HAVE_CURSES_TINFO)
++      target_link_libraries(cec-client tinfo)
++    endif()
+   endif()
+ 
+   # rt

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,14 +6,14 @@ PYTHON_COMPAT=( python2_7 python3_{4,5} )
 
 inherit distutils-r1 eutils linux-info user
 
-DESCRIPTION="A CloudFormation-compatible openstack-native cloud orchistration engine."
+DESCRIPTION="A CloudFormation-compatible openstack-native cloud orchestration engine."
 HOMEPAGE="https://launchpad.net/heat"
 SRC_URI="https://dev.gentoo.org/~prometheanfire/dist/openstack/heat/heat.conf.sample.pike -> heat.conf.sample-${PV}
 	https://tarballs.openstack.org/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="+mysql +memcached postgres sqlite"
 REQUIRED_USE="|| ( mysql postgres sqlite )"
 
@@ -143,7 +143,7 @@ python_install_all() {
 	dodir /etc/heat/templates
 
 	for svc in api api-cfn engine; do
-		newinitd "${FILESDIR}/heat.initd-2" heat-${svc}
+		newinitd "${FILESDIR}/heat.initd" heat-${svc}
 	done
 
 	insinto /etc/heat

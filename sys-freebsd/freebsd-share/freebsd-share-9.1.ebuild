@@ -1,11 +1,11 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit bsdmk freebsd
 
 DESCRIPTION="FreeBSD shared tools/files"
 SLOT="0"
-KEYWORDS="~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="~amd64-fbsd ~x86-fbsd"
 
 IUSE="doc"
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -42,6 +42,7 @@ SITEFILE=50${PN}-gentoo.el
 
 src_prepare() {
 	epatch "${FILESDIR}"/18.2.1-wx3.0.patch
+	epatch "${FILESDIR}"/${P}-libressl-2.6.1.patch
 
 	use odbc || sed -i 's: odbc : :' lib/Makefile
 

@@ -1,0 +1,90 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 52d2953..d132d26 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -80,6 +80,7 @@ install(
+ install(
+     DIRECTORY "${HEADER_BASE}/${PROJECT_NAME}"
+     DESTINATION "${include_install_dir}"
++    PATTERN "bundled*" EXCLUDE
+ )
+ 
+ # install project version file
+diff --git a/include/spdlog/fmt/fmt.h b/include/spdlog/fmt/fmt.h
+index 92ca4e5..55f1fa8 100644
+--- a/include/spdlog/fmt/fmt.h
++++ b/include/spdlog/fmt/fmt.h
+@@ -10,25 +10,7 @@
+ // By default spdlog include its own copy.
+ //
+ 
+-#if !defined(SPDLOG_FMT_EXTERNAL)
+-
+-#ifndef FMT_HEADER_ONLY
+-#define FMT_HEADER_ONLY
+-#endif
+-#ifndef FMT_USE_WINDOWS_H
+-#define FMT_USE_WINDOWS_H 0
+-#endif
+-#include "bundled/format.h"
+-#if defined(SPDLOG_FMT_PRINTF)
+-#include "bundled/printf.h"
+-#endif
+-
+-#else //external fmtlib
+-
+ #include <fmt/format.h>
+ #if defined(SPDLOG_FMT_PRINTF)
+ #include <fmt/printf.h>
+ #endif
+-
+-#endif
+-
+diff --git a/include/spdlog/fmt/ostr.h b/include/spdlog/fmt/ostr.h
+index 5cdd5cd..d70c6b3 100644
+--- a/include/spdlog/fmt/ostr.h
++++ b/include/spdlog/fmt/ostr.h
+@@ -7,11 +7,6 @@
+ 
+ // include external or bundled copy of fmtlib's ostream support
+ //
+-#if !defined(SPDLOG_FMT_EXTERNAL)
+-#include "fmt.h"
+-#include "bundled/ostream.h"
+-#else
+ #include <fmt/ostream.h>
+-#endif
+ 
+ 
+diff --git a/include/spdlog/tweakme.h b/include/spdlog/tweakme.h
+index ad01a09..9a1bec4 100644
+--- a/include/spdlog/tweakme.h
++++ b/include/spdlog/tweakme.h
+@@ -98,14 +98,6 @@
+ ///////////////////////////////////////////////////////////////////////////////
+ 
+ 
+-///////////////////////////////////////////////////////////////////////////////
+-// Uncomment to use your own copy of the fmt library instead of spdlog's copy.
+-// In this case spdlog will try to include <fmt/format.h> so set your -I flag accordingly.
+-//
+-// #define SPDLOG_FMT_EXTERNAL
+-///////////////////////////////////////////////////////////////////////////////
+-
+-
+ ///////////////////////////////////////////////////////////////////////////////
+ // Uncomment to use printf-style messages in your logs instead of the usual
+ // format-style used by default.
+diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
+index 22329b4..44dad86 100644
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -13,7 +13,7 @@ target_include_directories(catch INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
+ file(GLOB catch_tests LIST_DIRECTORIES false RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} *.cpp *.h *.hpp)
+ 
+ add_executable(catch_tests ${catch_tests})
+-target_link_libraries(catch_tests spdlog ${CMAKE_THREAD_LIBS_INIT})
++target_link_libraries(catch_tests spdlog fmt ${CMAKE_THREAD_LIBS_INIT})
+ add_test(NAME catch_tests COMMAND catch_tests)
+ file(MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/logs")
+ 

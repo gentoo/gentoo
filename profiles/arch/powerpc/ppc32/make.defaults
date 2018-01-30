@@ -35,3 +35,7 @@ IUSE_IMPLICIT="abi_ppc_32"
 
 # Enable abi_ppc_32 for packages that don't have it forced.
 ABI_PPC="32"
+
+# Hans de Graaff <graaff@gentoo.org> (21 Jan 2018)
+# Temporary entry to support stable bug 639476
+RUBY_TARGETS="ruby22"

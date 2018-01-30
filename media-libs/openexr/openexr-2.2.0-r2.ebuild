@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="http://download.savannah.gnu.org/releases/openexr/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/22" # based on SONAME
-KEYWORDS="~amd64 -arm ~hppa ~ia64 ~ppc ~ppc64 sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="amd64 -arm ~hppa ~ia64 ~ppc ~ppc64 sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="cpu_flags_x86_avx examples static-libs"
 
 RDEPEND="

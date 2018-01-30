@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -57,8 +57,6 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.30:0=[${MULTILIB_USEDEP}]
 	qrcode? ( media-gfx/qrencode:0= )
 	seccomp? ( >=sys-libs/libseccomp-2.3.1:0= )
 	selinux? ( sys-libs/libselinux:0= )
-	sysv-utils? ( !sys-apps/sysvinit )
-	!sysv-utils? ( sys-apps/sysvinit )
 	xkb? ( >=x11-libs/libxkbcommon-0.4.1:0= )
 	abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20130224-r9
 		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] )"
@@ -67,6 +65,8 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.30:0=[${MULTILIB_USEDEP}]
 RDEPEND="${COMMON_DEPEND}
 	>=sys-apps/baselayout-2.2
 	selinux? ( sec-policy/selinux-base-policy[systemd] )
+	sysv-utils? ( !sys-apps/sysvinit )
+	!sysv-utils? ( sys-apps/sysvinit )
 	!build? ( || (
 		sys-apps/util-linux[kill(-)]
 		sys-process/procps[kill(+)]
@@ -108,7 +108,7 @@ pkg_pretend() {
 			~INOTIFY_USER ~IPV6 ~NET ~NET_NS ~PROC_FS ~SIGNALFD ~SYSFS
 			~TIMERFD ~TMPFS_XATTR ~UNIX
 			~CRYPTO_HMAC ~CRYPTO_SHA256 ~CRYPTO_USER_API_HASH
-			~!FW_LOADER_USER_HELPER ~!GRKERNSEC_PROC ~!IDE ~!SYSFS_DEPRECATED
+			~!FW_LOADER_USER_HELPER_FALLBACK ~!GRKERNSEC_PROC ~!IDE ~!SYSFS_DEPRECATED
 			~!SYSFS_DEPRECATED_V2"
 
 		use acl && CONFIG_CHECK+=" ~TMPFS_POSIX_ACL"
@@ -312,9 +312,10 @@ multilib_src_install_all() {
 	fi
 
 	# Preserve empty dirs in /etc & /var, bug #437008
-	keepdir /etc/binfmt.d /etc/modules-load.d /etc/tmpfiles.d \
-		/etc/systemd/ntp-units.d /etc/systemd/user /var/lib/systemd \
-		/var/log/journal/remote
+	keepdir /etc/{binfmt.d,modules-load.d,tmpfiles.d}
+	keepdir /etc/systemd/{ntp-units.d,user} /var/lib/systemd
+	keepdir /etc/udev/{hwdb.d,rules.d}
+	keepdir /var/log/journal/remote
 
 	# Symlink /etc/sysctl.conf for easy migration.
 	dosym ../sysctl.conf /etc/sysctl.d/99-sysctl.conf

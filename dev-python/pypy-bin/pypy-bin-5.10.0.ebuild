@@ -1,10 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 pypy )
-inherit pax-utils python-any-r1 unpacker versionator
+inherit pax-utils python-utils-r1 unpacker versionator
 
 BINHOST="https://dev.gentoo.org/~mgorny/dist/pypy-bin/${PV}"
 CPY_PATCHSET_VERSION="2.7.14-0"
@@ -52,7 +51,7 @@ LICENSE="MIT"
 # pypy -c 'import sysconfig; print sysconfig.get_config_var("SOABI")'
 SLOT="0/41"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc gdbm +jit libressl sqlite cpu_flags_x86_sse2 test tk"
+IUSE="gdbm +jit libressl sqlite cpu_flags_x86_sse2 test tk"
 
 RDEPEND="
 	app-arch/bzip2:0/1
@@ -73,21 +72,13 @@ RDEPEND="
 	!dev-python/pypy:0"
 DEPEND="${RDEPEND}
 	app-arch/lzip
-	app-arch/xz-utils
-	doc? ( ${PYTHON_DEPS}
-		dev-python/sphinx )"
+	app-arch/xz-utils"
 
 S=${WORKDIR}/${MY_P}-src
 
 QA_PREBUILT="
 	usr/lib*/pypy/pypy-c
 	usr/lib*/pypy/libpypy-c.so"
-
-pkg_setup() {
-	if [[ ${MERGE_TYPE} != binary ]]; then
-		use doc && python-any-r1_pkg_setup
-	fi
-}
 
 src_prepare() {
 	eapply "${FILESDIR}/4.0.0-gentoo-path.patch"
@@ -118,8 +109,6 @@ src_compile() {
 	mv pypy/module/cpyext/parse/*.h include/ || die
 
 	pax-mark m pypy-c libpypy-c.so
-
-	use doc && emake -C pypy/doc html
 
 	einfo "Generating caches and CFFI modules ..."
 
@@ -191,9 +180,6 @@ src_install() {
 			"${ED%/}${dest}"/lib_pypy/_tkinter \
 			"${ED%/}${dest}"/lib-python/*2.7/test/test_{tcl,tk,ttk*}.py || die
 	fi
-
-	# Install docs
-	use doc && dodoc -r pypy/doc/_build/html
 
 	local -x PYTHON=${ED%/}${dest}/pypy-c
 	# we can't use eclass function since PyPy is dumb and always gives

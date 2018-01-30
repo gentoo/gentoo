@@ -1,0 +1,160 @@
+From d197da690b5140f2276d6f577ad6e87a90ae8d47 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Thu, 11 Jan 2018 10:44:57 +1300
+Subject: Fix tests for '.' in @INC
+
+This is the smallest change that can be made that preserves original
+semantics
+
+Bug: https://bugs.gentoo.org/614342
+Bug: https://github.com/tokuhirom/Test-TCP/issues/58
+Bug: https://github.com/tokuhirom/Test-TCP/pull/62
+---
+ t/01_simple.t                 | 2 +-
+ t/02_abrt.t                   | 2 +-
+ t/03_return_when_sigterm.t    | 5 ++++-
+ t/04_die.t                    | 2 +-
+ t/06_nest.t                   | 2 +-
+ t/08_exit.t                   | 2 +-
+ t/09_fork.t                   | 2 +-
+ t/10_oo.t                     | 2 +-
+ t/12_pass_wait_port_options.t | 2 +-
+ t/13_undef_port.t             | 2 +-
+ 10 files changed, 13 insertions(+), 10 deletions(-)
+
+diff --git a/t/01_simple.t b/t/01_simple.t
+index ff29244..dd8f801 100644
+--- a/t/01_simple.t
++++ b/t/01_simple.t
+@@ -4,7 +4,7 @@ use Test::More;
+ use Test::TCP;
+ use Net::EmptyPort qw(can_bind);
+ use IO::Socket::IP;
+-use t::Server;
++BEGIN { require './t/Server.pm' }
+ 
+ sub doit {
+     my $host = shift;
+diff --git a/t/02_abrt.t b/t/02_abrt.t
+index 10d0996..94e21c2 100644
+--- a/t/02_abrt.t
++++ b/t/02_abrt.t
+@@ -4,7 +4,7 @@ use Test::TCP;
+ use Test::More;
+ use Socket;
+ use IO::Socket::INET;
+-use t::Server;
++BEGIN { require './t/Server.pm' }
+ 
+ plan skip_all => "win32 doesn't support embedded function named dump()" if $^O eq 'MSWin32';
+ plan tests => 2;
+diff --git a/t/03_return_when_sigterm.t b/t/03_return_when_sigterm.t
+index 228fd2a..6751492 100644
+--- a/t/03_return_when_sigterm.t
++++ b/t/03_return_when_sigterm.t
+@@ -2,7 +2,10 @@ use warnings;
+ use strict;
+ use Test::More tests => 2;
+ use Test::TCP;
+-use t::Server;
++BEGIN {
++  require './t/Server.pm';
++  t::Server->import();
++}
+ 
+ # ABOUT: some tcp server related software returns control when received SIGTERM instead of exit.
+ # This test emulate it's situation.
+diff --git a/t/04_die.t b/t/04_die.t
+index f393d51..e745e2e 100644
+--- a/t/04_die.t
++++ b/t/04_die.t
+@@ -3,7 +3,7 @@ use strict;
+ use Test::More tests => 9;
+ use Test::TCP;
+ use IO::Socket::INET;
+-use t::Server;
++BEGIN { require './t/Server.pm' }
+ 
+ my $child_pid;
+ eval {
+diff --git a/t/06_nest.t b/t/06_nest.t
+index 18edfab..8240a98 100644
+--- a/t/06_nest.t
++++ b/t/06_nest.t
+@@ -2,7 +2,7 @@ use strict;
+ use warnings;
+ use Test::TCP;
+ use Test::More tests => 1;
+-use t::Server;
++BEGIN { require './t/Server.pm' }
+ 
+ test_tcp(
+     client => sub {
+diff --git a/t/08_exit.t b/t/08_exit.t
+index 5aaeac4..2f05126 100644
+--- a/t/08_exit.t
++++ b/t/08_exit.t
+@@ -4,7 +4,7 @@ use Test::More tests => 5;
+ use Test::TCP;
+ use File::Temp ();
+ use Fcntl qw/:seek/;
+-use t::Server;
++BEGIN { require './t/Server.pm' }
+ use POSIX;
+ 
+ my $tmp = File::Temp->new();
+diff --git a/t/09_fork.t b/t/09_fork.t
+index 82f8a4c..eea84b2 100644
+--- a/t/09_fork.t
++++ b/t/09_fork.t
+@@ -1,7 +1,7 @@
+ use strict;
+ use Test::More tests => 6;
+ use Test::TCP;
+-use t::Server;
++BEGIN { require './t/Server.pm' }
+ 
+ test_tcp 
+     client => sub {
+diff --git a/t/10_oo.t b/t/10_oo.t
+index 237e430..29149a6 100644
+--- a/t/10_oo.t
++++ b/t/10_oo.t
+@@ -3,7 +3,7 @@ use strict;
+ use Test::More tests => 24;
+ use Test::TCP;
+ use IO::Socket::INET;
+-use t::Server;
++BEGIN { require './t/Server.pm' }
+ 
+ my $server = Test::TCP->new(
+     code => sub {
+diff --git a/t/12_pass_wait_port_options.t b/t/12_pass_wait_port_options.t
+index 24891f6..fe2927b 100644
+--- a/t/12_pass_wait_port_options.t
++++ b/t/12_pass_wait_port_options.t
+@@ -4,7 +4,7 @@ use utf8;
+ use Test::More;
+ use Test::TCP;
+ use IO::Socket::INET;
+-use t::Server;
++BEGIN { require './t/Server.pm' }
+ 
+ my %wait_port_args;
+ my $old = \&Net::EmptyPort::wait_port;
+diff --git a/t/13_undef_port.t b/t/13_undef_port.t
+index 5a7cce3..7e9f21b 100644
+--- a/t/13_undef_port.t
++++ b/t/13_undef_port.t
+@@ -3,7 +3,7 @@ use strict;
+ use Test::More tests => 22;
+ use Test::TCP;
+ use IO::Socket::INET;
+-use t::Server;
++BEGIN { require './t/Server.pm' }
+ 
+ test_tcp(
+     client => sub {
+-- 
+2.15.1
+

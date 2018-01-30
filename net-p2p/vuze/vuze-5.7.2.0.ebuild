@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -35,14 +35,6 @@ DEPEND="${RDEPEND}
 	>=virtual/jdk-1.6:*"
 
 PDEPEND="~net-p2p/vuze-coreplugins-${PV}"
-
-pkg_pretend() {
-	if ! has_version dev-java/swt:3.8[webkit]; then
-		echo
-		ewarn "dev-java/swt:3.8 was built without webkit support."
-		ewarn "Web features such as Vuze HD Network will be disabled."
-	fi
-}
 
 src_unpack() {
 	mkdir -p "${S}" && cd "${S}"

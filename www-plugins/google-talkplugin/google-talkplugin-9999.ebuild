@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -61,10 +61,6 @@ S="${WORKDIR}"
 LANGS="ar cs en et fr hu lt ms pl ru sv tl vi bg da fa gu id ja lv nl
 sk ta tr bn de es fi hi is kn ml no sl te uk ca el fil hr it ko mr or
 ro sr th ur"
-
-for X in ${LANGS} ; do
-	IUSE="${IUSE} linguas_${X}"
-done
 
 # nofetch means upstream bumped and thus needs version bump
 pkg_nofetch() {

@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 2016-2017 Gentoo Foundation
+# Copyright 2016-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 description="Prometheus monitoring system and time series database"
@@ -14,6 +14,15 @@ start_stop_daemon_args="--user ${user} --group ${group} \
 	--stdout /var/log/${RC_SVCNAME}/${RC_SVCNAME}.log \
 	--stderr /var/log/${RC_SVCNAME}/${RC_SVCNAME}.log"
 
+extra_started_commands="reload"
+
 depend() {
 	after net
 }
+
+reload() {
+        ebegin "Reloading ${SVCNAME}"
+        start-stop-daemon --signal HUP --pidfile "${pidfile}"
+        eend $? "Failed to stop ${SVCNAME}"
+}
+

@@ -18,6 +18,7 @@
 		<flag name="apache2_modules_authn_core">Provides core authentication capabilities common to all authentication providers (functionality provided by authn_alias in previous versions).</flag>
 		<flag name="apache2_modules_authz_core">Provides core authorization capabilities to various authorization/authorization modules, such as authn_file and authz_user.</flag>
 		<flag name="apache2_modules_authz_dbd">Provides authorization capabilities via SQL database so that authenticated users can be allowed or denied access to portions of the web site by group membership.</flag>
+		<flag name="apache2_modules_brotli">Enable brotli compression support</flag>
 		<flag name="apache2_modules_cache_disk">Disk based storage module for the HTTP caching filter (similar to mem_cache in previous versions).</flag>
 		<flag name="apache2_modules_cache_socache">Shared object cache (socache) based storage module for the HTTP caching filter.</flag>
 		<flag name="apache2_modules_proxy_html">Module to rewrite links in html pages behind a reverse proxy</flag>

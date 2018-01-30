@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,11 +23,11 @@ DEPEND="
 	${RDEPEND}
 	dev-qt/linguist-tools:5
 "
-K_LINGUAS="
+K_LANGS="
 	ar bg cs da de el en es fr it lt nl no pl pt_BR ro ru sv tr uk
 "
-for K_LINGUA in ${K_LINGUAS}; do
-	IUSE+=" linguas_${K_LINGUA}"
+for K_LANG in ${K_LANGS}; do
+	IUSE+=" l10n_${K_LANG/_/-}"
 done
 DOCS=( ChangeLog README )
 
@@ -35,20 +35,18 @@ src_prepare() {
 	default
 
 	count() { echo ${#}; }
-	local lingua_count=$(count ${K_LINGUAS})
+	local lang_count=$(count ${K_LANGS})
 	local locale_count=$(count translations/${PN}_*.ts)
-	[[ ${lingua_count} = ${locale_count} ]] \
-		|| die "Number of LINGUAS does not match number of locales"
+	[[ ${lang_count} = ${locale_count} ]] \
+		|| die "Number of LANGS does not match number of locales"
 	unset count
 
-	local lingua
-	if [[ -n "${LINGUAS}" ]]; then
-		for lingua in ${K_LINGUAS}; do
-			if ! use linguas_${lingua}; then
-				rm translations/${PN}_${lingua}.* || die
-			fi
-		done
-	fi
+	local lang
+	for lang in ${K_LANGS}; do
+		if ! use l10n_${lang/_/-}; then
+			rm translations/${PN}_${lang}.* || die
+		fi
+	done
 }
 
 src_configure() {

@@ -24,7 +24,6 @@
   <flag name="servlets">Build support for generating servlets with
     <pkg>dev-java/servletapi</pkg></flag>
   <flag name="swing">Assume Swing is available</flag>
-  <flag name="swt">Assume SWT is available with <pkg>dev-java/swt</pkg></flag>
   <flag name="xqtests">Support XQuery Test Suite</flag>
 </use>
 </pkgmetadata>

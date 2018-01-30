@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ SRC_URI="https://github.com/ggreer/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux"
 IUSE="lzma test zlib"
 
 RDEPEND="dev-libs/libpcre
@@ -21,6 +21,8 @@ DEPEND="${RDEPEND}
 	test? ( dev-util/cram )"
 
 DOCS="README.md"
+
+PATCHES=( "${FILESDIR}"/${PN}-2.1.0-lzma.patch )
 
 src_prepare() {
 	sed '/^dist_bashcomp/d' -i Makefile.am || die

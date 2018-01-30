@@ -6,8 +6,8 @@ EAPI="6"
 inherit eutils multilib toolchain-funcs
 
 DESCRIPTION="PaX regression test suite"
-HOMEPAGE="http://pax.grsecurity.net"
-SRC_URI="http://grsecurity.net/~spender/${P}.tar.gz"
+HOMEPAGE="https://pax.grsecurity.net"
+SRC_URI="https://grsecurity.net/~spender/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

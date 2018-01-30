@@ -4,9 +4,6 @@
 	<maintainer type="person">
 		<email>zmedico@gentoo.org</email>
 	</maintainer>
-	<maintainer type="person">
-		<email>bicatali@gentoo.org</email>
-	</maintainer>
 	<upstream>
 		<remote-id type="github">bazelbuild/bazel</remote-id>
 	</upstream>

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,7 +18,7 @@ SLOT="0"
 # matplotlib/backends/qt4_editor: MIT
 # Fonts: BitstreamVera, OFL-1.1
 LICENSE="BitstreamVera BSD matplotlib MIT OFL-1.1"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="cairo doc excel examples gtk2 gtk3 latex pyside qt5 test tk wxwidgets"
 
 PY2_FLAGS="|| ( $(python_gen_useflags python2_7) )"
@@ -34,18 +34,19 @@ REQUIRED_USE="
 
 # #456704 -- a lot of py2-only deps
 PY2_USEDEP=$(python_gen_usedep python2_7)
+PY2_DEPEND="
+	$(python_gen_cond_dep 'dev-python/functools32[${PYTHON_USEDEP}]' python2_7)
+	$(python_gen_cond_dep 'dev-python/subprocess32[${PYTHON_USEDEP}]' python2_7)
+	$(python_gen_cond_dep 'dev-python/backports-functools-lru-cache[${PYTHON_USEDEP}]' python2_7)"
 COMMON_DEPEND="
 	dev-python/cycler[${PYTHON_USEDEP}]
-	dev-python/functools32[${PY2_USEDEP}]
 	>=dev-python/numpy-1.7.1[${PYTHON_USEDEP}]
 	dev-python/python-dateutil:0[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
 	>=dev-python/six-1.10[${PYTHON_USEDEP}]
-	dev-python/subprocess32[${PY2_USEDEP}]
 	media-fonts/stix-fonts
 	media-libs/freetype:2
 	media-libs/libpng:0
-	python_targets_python2_7? ( dev-python/backports-functools-lru-cache[${PY2_USEDEP}] )
 	>=media-libs/qhull-2013
 	cairo? ( dev-python/cairocffi[${PYTHON_USEDEP}] )
 	gtk2? (
@@ -59,6 +60,7 @@ COMMON_DEPEND="
 #	dev-python/pycxx
 
 DEPEND="${COMMON_DEPEND}
+	${PY2_DEPEND}
 	dev-python/versioneer[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	virtual/pkgconfig
@@ -82,6 +84,7 @@ DEPEND="${COMMON_DEPEND}
 		)"
 
 RDEPEND="${COMMON_DEPEND}
+	${PY2_DEPEND}
 	>=dev-python/pyparsing-1.5.6[${PYTHON_USEDEP}]
 	excel? ( dev-python/xlwt[${PYTHON_USEDEP}] )
 	gtk3? (

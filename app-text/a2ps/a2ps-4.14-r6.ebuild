@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,12 +7,12 @@ inherit autotools elisp-common flag-o-matic
 DESCRIPTION="Any to PostScript filter"
 HOMEPAGE="https://www.gnu.org/software/a2ps/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz
-	linguas_ja? ( mirror://gentoo/${P}-ja_nls.patch.gz )"
+	cjk? ( mirror://gentoo/${P}-ja_nls.patch.gz )"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
-IUSE="emacs latex linguas_ja nls static-libs userland_BSD userland_GNU vanilla"
+IUSE="cjk emacs latex nls static-libs userland_BSD userland_GNU vanilla"
 
 RESTRICT=test
 
@@ -39,7 +39,7 @@ src_prepare() {
 
 	eapply "${FILESDIR}"/${PN}-4.13c-locale-gentoo.diff
 	use vanilla || eapply -p0 "${FILESDIR}"/${PN}-4.13-stdout.diff
-	if use linguas_ja; then
+	if use cjk; then
 		eapply "${WORKDIR}"/${P}-ja_nls.patch
 		# bug #335803
 		eapply -p0 "${FILESDIR}"/${P}-ja-cleanup.patch

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="https://www.hartwork.org/public/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 _IUSE_INSTRUCTION_SETS="cpu_flags_x86_3dnow cpu_flags_x86_avx cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_sse4_1"
 IUSE="${_IUSE_INSTRUCTION_SETS} audacious forcefpu jack openmp plugdouble threads"
 
@@ -21,9 +21,7 @@ _GTK_DEPEND=">=dev-libs/glib-2.4.7:2
 	x11-libs/cairo"
 
 RDEPEND=">=sci-libs/fftw-3.0.1
-	audacious? (
-		|| ( >=media-sound/audacious-3.7[gtk3]
-			( >=media-sound/audacious-3.6 <media-sound/audacious-3.7 ) )
+	audacious? ( >=media-sound/audacious-3.7[gtk3]
 		${_GTK_DEPEND}
 		media-libs/libsndfile )
 	jack? ( media-sound/jack-audio-connection-kit

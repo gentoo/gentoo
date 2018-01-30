@@ -1,5 +1,5 @@
---- a/Makefile.in	2010-09-20 12:12:25.000000000 +0200
-+++ b/Makefile.in	2010-09-20 12:12:26.000000000 +0200
+--- a/Makefile.in
++++ b/Makefile.in
 @@ -16,7 +16,7 @@
  mandir		= @mandir@
  

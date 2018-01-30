@@ -1,0 +1,25 @@
+From 550229e422cd88fe39473f41cebe6cef12f6c8fb Mon Sep 17 00:00:00 2001
+From: monsta <monsta@inbox.ru>
+Date: Tue, 14 Mar 2017 15:08:47 +0300
+Subject: [PATCH] mate-dictionary: include correct header to fix occasional
+ FTBFS
+
+taken from:
+https://git.gnome.org/browse/gnome-dictionary/commit/?id=d529e2dd056f05cb1115c2f68bb6f773b4b14948
+---
+ mate-dictionary/libgdict/gdict-client-context.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mate-dictionary/libgdict/gdict-client-context.h b/mate-dictionary/libgdict/gdict-client-context.h
+index 2854fed..c52bbb4 100644
+--- a/mate-dictionary/libgdict/gdict-client-context.h
++++ b/mate-dictionary/libgdict/gdict-client-context.h
+@@ -20,7 +20,7 @@
+ #ifndef __GDICT_CLIENT_CONTEXT_H__
+ #define __GDICT_CLIENT_CONTEXT_H__
+ 
+-#include <glib-object.h>
++#include "gdict-context.h"
+ 
+ #define GDICT_TYPE_CLIENT_CONTEXT		(gdict_client_context_get_type ())
+ #define GDICT_CLIENT_CONTEXT(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GDICT_TYPE_CLIENT_CONTEXT, GdictClientContext))

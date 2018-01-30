@@ -21,15 +21,6 @@ seamonkey
 
 # 2006/03/20 - Donnie Berkholz <dberkholz@gentoo.org>
 # Modular X: mask for architectures on which they aren't available
-video_cards_apm
-video_cards_ark
-video_cards_i128
-video_cards_i740
-video_cards_neomagic
-video_cards_rendition
-video_cards_sis
-video_cards_tga
-video_cards_tseng
 video_cards_vesa
 video_cards_via
 

@@ -1,5 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+# Amy Liffey <amynka@gentoo.org (21 Jan 2018)
+# dev-libs/cereal not keyworded for arm
+media-libs/opencv contrib_dnn
 
 # Michał Górny <mgorny@gentoo.org> (30 Dec 2017)
 # Moved from use.mask since they are flags local to one package.
@@ -494,10 +498,6 @@ app-text/asciidoc test
 # Michael Weber <xmw@gentoo.org> (10 Feb 2011)
 # kde-frameworks/kdelibs is not stable for arm
 net-libs/libproxy kde
-
-# Jeremy Olexa <darkside@gentoo.org> (04 Apr 2010)
-# mask net-misc/mediatomb[lastfm] as lastfmlib isn't keyworded
-net-misc/mediatomb lastfm
 
 # Raúl Porcel <armin76@gentoo.org> (28 Mar 2010)
 # Needs kde-frameworks/kwallet and kde-frameworks/kdelibs stable

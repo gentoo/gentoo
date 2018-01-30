@@ -1,0 +1,8 @@
+# Copyright 1999-2018 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+
+CHOST="armv7a-hardfloat-linux-musleabi"
+CFLAGS="-O2 -pipe -march=armv7-a -mfpu=vfpv3-d16 -mfloat-abi=hard"
+CXXFLAGS="${CFLAGS}"
+FFLAGS="${CFLAGS}"
+FCFLAGS="${CFLAGS}"

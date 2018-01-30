@@ -1,0 +1,11 @@
+--- mupdf-1.12.0-source/Makerules
++++ mupdf-1.12.0-source/Makerules
+@@ -22,8 +22,6 @@
+ endif
+ 
+ ifeq "$(build)" "debug"
+-CFLAGS += -pipe -g
+-LDFLAGS += -g
+ else ifeq "$(build)" "release"
+ CFLAGS += -pipe -O2 -DNDEBUG -fomit-frame-pointer
+ LDFLAGS += $(LDREMOVEUNREACH) -Wl,-s
