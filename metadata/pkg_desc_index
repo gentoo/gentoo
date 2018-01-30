@@ -3481,7 +3481,7 @@ dev-perl/Convert-ASCII-Armour 1.400.0-r1: Convert binary octets into ASCII armou
 dev-perl/Convert-ASN1 0.270.0: Standard en/decode of ASN.1 structures
 dev-perl/Convert-BER 1.320.0-r1: Class for encoding/decoding BER messages
 dev-perl/Convert-BinHex 1.123.0-r1 1.124.0: Extract data from Macintosh BinHex files
-dev-perl/Convert-Binary-C 0.770.0 0.780.0-r1: Binary Data Conversion using C Types
+dev-perl/Convert-Binary-C 0.780.0-r1: Binary Data Conversion using C Types
 dev-perl/Convert-Color 0.110.0: Color space conversions and named lookups
 dev-perl/Convert-PEM 0.80.0-r1: Read/write encrypted ASN.1 PEM files
 dev-perl/Convert-TNEF 0.180.0-r2: A Perl module for reading TNEF files
@@ -3524,7 +3524,7 @@ dev-perl/Cwd-Guard 0.40.0: Temporary changing working directory (chdir)
 dev-perl/DBD-Pg 3.5.3: PostgreSQL database driver for the DBI module
 dev-perl/DBD-SQLite 1.500.0: Self Contained RDBMS in a DBI Driver
 dev-perl/DBD-mysql 4.41.0: MySQL driver for the Perl5 Database Interface (DBI)
-dev-perl/DBI 1.634.0 1.636.0 1.637.0: Database independent interface for Perl
+dev-perl/DBI 1.637.0: Database independent interface for Perl
 dev-perl/DBI-Shell 11.950.0-r2: Interactive command shell for the DBI
 dev-perl/DBIx-ContextualFetch 1.30.0-r1: Add contextual fetches to DBI
 dev-perl/DBIx-DBSchema 0.400.0-r1 0.450.0: Database-independent schema objects
@@ -3590,7 +3590,7 @@ dev-perl/Devel-LexAlias 0.50.0: Alias lexical variables
 dev-perl/Devel-OverloadInfo 0.4.0: Introspect overloaded operators
 dev-perl/Devel-PatchPerl 1.380.0 1.440.0: Patch perl source a la Devel::PPPort's buildperl.pl
 dev-perl/Devel-Size 0.800.0: Perl extension for finding the memory usage of Perl variables
-dev-perl/Devel-SmallProf 2.20.0-r2 2.20.0-r3: Per-line Perl profiler
+dev-perl/Devel-SmallProf 2.20.0-r3: Per-line Perl profiler
 dev-perl/Devel-StackTrace 2.0.0: An object representing a stack trace
 dev-perl/Devel-StackTrace-AsHTML 0.150.0: Displays stack trace in HTML
 dev-perl/Devel-Symdump 2.180.0: Dump symbol names or the symbol table
@@ -3675,7 +3675,7 @@ dev-perl/File-Path-Expand 1.20.0-r1: Expand filenames
 dev-perl/File-ReadBackwards 1.50.0-r1: The Perl File-ReadBackwards Module
 dev-perl/File-Remove 1.570.0: Remove files and directories
 dev-perl/File-RsyncP 0.740.0: An rsync perl module
-dev-perl/File-ShareDir 1.102.0 1.104.0: Locate per-dist and per-module shared files
+dev-perl/File-ShareDir 1.104.0: Locate per-dist and per-module shared files
 dev-perl/File-ShareDir-Install 0.110.0: Install shared files
 dev-perl/File-Slurp 9999.190.0-r1: Efficient Reading/Writing of Complete Files
 dev-perl/File-Slurp-Tiny 0.4.0: A simple, sane and efficient file slurper
@@ -3794,7 +3794,7 @@ dev-perl/IO-Interactive 1.21.0: Utilities for interactive I/O
 dev-perl/IO-Interface 1.90.0: Perl extension for access to network card configuration information
 dev-perl/IO-LockedFile 0.230.0-r1: Supply object methods for locking files
 dev-perl/IO-Multiplex 1.160.0: Manage IO on many file handles
-dev-perl/IO-Pager 0.350.0 0.390.0: Select a pager, optionally pipe it output if destination is a TTY
+dev-perl/IO-Pager 0.390.0: Select a pager, optionally pipe it output if destination is a TTY
 dev-perl/IO-Pipely 0.005.0: Portably create pipe() or pipe-like handles, one way or another
 dev-perl/IO-SessionData 1.30.0: Session data support module for SOAP::Lite
 dev-perl/IO-Socket-INET6 2.720.0: Work with IO sockets in ipv6
@@ -3837,7 +3837,7 @@ dev-perl/LaTeX-Encode 0.91.6-r1: Encode characters for LaTeX formatting
 dev-perl/LaTeX-Table 1.0.6: Perl extension for the automatic generation of LaTeX tables
 dev-perl/Lab-Measurement 3.600.0: Measurement control and automation with Perl
 dev-perl/Lchown 1.10.0-r1: Use the lchown(2) system call from Perl
-dev-perl/Lexical-SealRequireHints 0.10.0 0.11.0: Prevent leakage of lexical hints
+dev-perl/Lexical-SealRequireHints 0.11.0: Prevent leakage of lexical hints
 dev-perl/Lingua-EN-Inflect 1.899.0: Perl module to pluralize English words
 dev-perl/Lingua-EN-NameParse 1.330.0: routines for manipulating a person's name
 dev-perl/Lingua-EN-Numbers-Ordinate 1.40.0: Convert cardinal numbers(3) to ordinal numbers(3rd)
@@ -3942,7 +3942,7 @@ dev-perl/MooseX-Types 0.460.0: Organise your Moose types in libraries
 dev-perl/Mouse 2.4.9: Moose minus the antlers
 dev-perl/MouseX-Types 0.60.0: Organize your Mouse types in libraries
 dev-perl/Mozilla-CA 20999999: Mozilla's CA cert bundle in PEM format (Gentoo stub)
-dev-perl/MusicBrainz-DiscID 0.30.0-r1 0.40.0: Perl interface for the MusicBrainz libdiscid library
+dev-perl/MusicBrainz-DiscID 0.40.0: Perl interface for the MusicBrainz libdiscid library
 dev-perl/Net-Amazon 0.620.0: Framework for accessing amazon.com via SOAP and XML/HTTP
 dev-perl/Net-CIDR 0.180.0: Manipulate netblock lists in CIDR notation
 dev-perl/Net-CIDR-Lite 0.210.0: Perl extension for merging IPv4 or IPv6 CIDR addresses
@@ -3984,7 +3984,7 @@ dev-perl/Net-SSH-Any 0.40.0: Use any SSH module
 dev-perl/Net-SSH-AuthorizedKeysFile 0.170.0: Read and modify ssh's authorized_keys files
 dev-perl/Net-SSH-Perl 1.360.0-r1: Perl client Interface to SSH
 dev-perl/Net-SSLeay 1.810.0 1.820.0: Perl extension for using OpenSSL
-dev-perl/Net-Server 2.8.0 2.9.0: Extensible, general Perl server engine
+dev-perl/Net-Server 2.9.0: Extensible, general Perl server engine
 dev-perl/Net-Server-Mail 0.230.0: Class to easily create a mail server
 dev-perl/Net-Telnet 3.40.0: interact with TELNET port or other TCP ports in Perl
 dev-perl/Net-Telnet-Cisco 1.100.0-r1: Automate telnet sessions w/ routers&switches
@@ -4361,7 +4361,7 @@ dev-perl/common-sense 3.740.0: Save a tree AND a kitten, use common::sense!
 dev-perl/frontier-rpc 0.07_beta4-r1: Perform remote procedure calls using extensible markup language
 dev-perl/glib-perl 1.325.0: Glib - Perl wrappers for the GLib utility and Object libraries
 dev-perl/gnome2-canvas 1.2.0-r1: Perl interface to the Gnome Canvas
-dev-perl/gnome2-perl 1.45.0 1.46.0: Perl interface to the 2.x series of the Gnome libraries
+dev-perl/gnome2-perl 1.46.0: Perl interface to the 2.x series of the Gnome libraries
 dev-perl/gnome2-vfs-perl 1.81.0-r1: Perl interface to the 2.x series of the Gnome Virtual File System libraries
 dev-perl/gnome2-wnck 0.160.0-r1: Perl interface to the Window Navigator Construction Kit
 dev-perl/gtk2-ex-formfactory 0.670.0-r1: Gtk2 FormFactory
