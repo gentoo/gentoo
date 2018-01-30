@@ -1,5 +1,5 @@
 diff --git a/examples/Makefile.am b/examples/Makefile.am
-index ef2f79d..d8cdb9b 100644
+index ef2f79db3..d8cdb9b3f 100644
 --- a/examples/Makefile.am
 +++ b/examples/Makefile.am
 @@ -23,7 +23,7 @@ EXTRA_DIST = \
@@ -21,7 +21,7 @@ index ef2f79d..d8cdb9b 100644
  	$(NULL)
  
 diff --git a/examples/apparmor/libvirt-qemu b/examples/apparmor/libvirt-qemu
-index d4fad85..0b22009 100644
+index d4fad85a1..0b22009e5 100644
 --- a/examples/apparmor/libvirt-qemu
 +++ b/examples/apparmor/libvirt-qemu
 @@ -86,6 +86,8 @@
@@ -33,74 +33,33 @@ index d4fad85..0b22009 100644
  
    # access PKI infrastructure
    /etc/pki/libvirt-vnc/** r,
-diff --git a/examples/apparmor/usr.lib.libvirt.virt-aa-helper b/examples/apparmor/usr.lib.libvirt.virt-aa-helper
-deleted file mode 100644
-index bd6181d..0000000
+diff --git a/examples/apparmor/usr.lib.libvirt.virt-aa-helper b/examples/apparmor/usr.libexec.virt-aa-helper
+similarity index 92%
+rename from examples/apparmor/usr.lib.libvirt.virt-aa-helper
+rename to examples/apparmor/usr.libexec.virt-aa-helper
+index bd6181d00..4086f140a 100644
 --- a/examples/apparmor/usr.lib.libvirt.virt-aa-helper
-+++ /dev/null
-@@ -1,60 +0,0 @@
--# Last Modified: Mon Apr  5 15:10:27 2010
--#include <tunables/global>
--
++++ b/examples/apparmor/usr.libexec.virt-aa-helper
+@@ -1,7 +1,7 @@
+ # Last Modified: Mon Apr  5 15:10:27 2010
+ #include <tunables/global>
+ 
 -profile virt-aa-helper /usr/{lib,lib64}/libvirt/virt-aa-helper {
--  #include <abstractions/base>
--
--  # needed for searching directories
--  capability dac_override,
--  capability dac_read_search,
--
--  # needed for when disk is on a network filesystem
--  network inet,
--  network inet6,
--
--  deny @{PROC}/[0-9]*/mounts r,
--  @{PROC}/[0-9]*/net/psched r,
--  owner @{PROC}/[0-9]*/status r,
--  @{PROC}/filesystems r,
--
--  /etc/libnl-3/classid r,
--
--  # for hostdev
--  /sys/devices/ r,
--  /sys/devices/** r,
--  deny /dev/sd* r,
--  deny /dev/vd* r,
--  deny /dev/dm-* r,
--  deny /dev/drbd[0-9]* r,
--  deny /dev/dasd* r,
--  deny /dev/nvme* r,
--  deny /dev/zd[0-9]* r,
--  deny /dev/mapper/ r,
--  deny /dev/mapper/* r,
--
++profile virt-aa-helper /usr/libexec/virt-aa-helper {
+   #include <abstractions/base>
+ 
+   # needed for searching directories
+@@ -32,7 +32,7 @@ profile virt-aa-helper /usr/{lib,lib64}/libvirt/virt-aa-helper {
+   deny /dev/mapper/ r,
+   deny /dev/mapper/* r,
+ 
 -  /usr/{lib,lib64}/libvirt/virt-aa-helper mr,
--  /{usr/,}sbin/apparmor_parser Ux,
--
--  /etc/apparmor.d/libvirt/* r,
--  /etc/apparmor.d/libvirt/libvirt-[0-9a-f]*-[0-9a-f]*-[0-9a-f]*-[0-9a-f]*-[0-9a-f]* rw,
--
--  # for backingstore -- allow access to non-hidden files in @{HOME} as well
--  # as storage pools
--  audit deny @{HOME}/.* mrwkl,
--  audit deny @{HOME}/.*/ rw,
--  audit deny @{HOME}/.*/** mrwkl,
--  audit deny @{HOME}/bin/ rw,
--  audit deny @{HOME}/bin/** mrwkl,
--  @{HOME}/ r,
--  @{HOME}/** r,
--  /var/lib/libvirt/images/ r,
--  /var/lib/libvirt/images/** r,
--  /{media,mnt,opt,srv}/** r,
--
--  /**.img r,
--  /**.qcow{,2} r,
--  /**.qed r,
--  /**.vmdk r,
--  /**.[iI][sS][oO] r,
--  /**/disk{,.*} r,
--}
++  /usr/libexec/virt-aa-helper mr,
+   /{usr/,}sbin/apparmor_parser Ux,
+ 
+   /etc/apparmor.d/libvirt/* r,
 diff --git a/examples/apparmor/usr.sbin.libvirtd b/examples/apparmor/usr.sbin.libvirtd
-index 8d61d15..656a559 100644
+index 8d61d154e..656a5595b 100644
 --- a/examples/apparmor/usr.sbin.libvirtd
 +++ b/examples/apparmor/usr.sbin.libvirtd
 @@ -84,8 +84,10 @@
