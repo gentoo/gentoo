@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -42,20 +42,13 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.0-mtu.patch #291907
+	"${FILESDIR}"/${PN}-4.14.1-configure-nomagic.patch # bug 643722
 )
 
 src_prepare() {
 	if ! use ipv6 ; then
 		PATCHES+=(
 			"${FILESDIR}"/${PN}-4.11.0-no-ipv6.patch #326849
-		)
-	fi
-
-	# Local uclibc-ng compat fix until uclibc-ng upstream can sync
-	# netinet/in.h with glibc.  Resolves #626546.
-	if use elibc_uclibc ; then
-		PATCHES+=(
-			"${FILESDIR}"/${PN}-4.12.0-uclibc-ng-add-ipproto_mh.patch
 		)
 	fi
 
@@ -95,7 +88,12 @@ src_configure() {
 	${CC} ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} test.c -lresolv >&/dev/null || sed -i '/^LDLIBS/s:-lresolv::' "${S}"/Makefile
 	popd >/dev/null
 
-	cat <<-EOF > Config
+	# run "configure" script first which will create "config.mk"...
+	econf
+
+	# ...now switch on/off requested features via USE flags
+	# this is only useful if the test did not set other things, per bug #643722
+	cat <<-EOF >> config.mk
 	TC_CONFIG_ATM := $(usex atm y n)
 	TC_CONFIG_XT  := $(usex iptables y n)
 	TC_CONFIG_NO_XT := $(usex iptables n y)
@@ -109,6 +107,10 @@ src_configure() {
 	# Use correct iptables dir, #144265 #293709
 	IPT_LIB_DIR := $(use iptables && ${PKG_CONFIG} xtables --variable=xtlibdir)
 	EOF
+}
+
+src_compile() {
+	emake V=1
 }
 
 src_install() {
