@@ -15,6 +15,7 @@ LICENSE="GPL-2 MPL-1.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE=""
+RESTRICT="test"
 
 RDEPEND=">=dev-lang/erlang-19.3[ssl]"
 DEPEND="${RDEPEND}
