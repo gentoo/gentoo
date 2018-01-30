@@ -1,10 +1,10 @@
-DEFINED_PHASES=install prepare
+DEFINED_PHASES=install
 DESCRIPTION='Dive Into Python' by Mark Pilgrim - Python 3
 EAPI=6
 HOMEPAGE=http://www.diveintopython3.net/
 IUSE=pdf
-KEYWORDS=*
+KEYWORDS=amd64 ppc ppc64 x86
 LICENSE=CC-BY-SA-3.0
 SLOT=3
 SRC_URI=https://dev.gentoo.org/~monsieurp/packages/diveintopython-3.tar.gz pdf? ( https://dev.gentoo.org/~monsieurp/packages/diveintopython-3-pdf.tar.gz )
-_md5_=667b25561e6590957e230982c5c8fc14
+_md5_=0b40a9f8b2ca1c1f7daa364bb492622a
