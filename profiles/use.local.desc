@@ -3788,7 +3788,6 @@ net-firewall/shorewall:ipv6 - Adds the capability to create a full IPv6 firewall
 net-firewall/shorewall:lite4 - Installs everything needed to just *run* an IPv4 compiled firewall script created with net-firewall/shorewall ipv4 USE flag
 net-firewall/shorewall:lite6 - Installs everything needed to just *run* an IPv6 compiled firewall script created with net-firewall/shorewall ipv6 USE flag
 net-fs/autofs:dmalloc - Enable debugging with the dmalloc library
-net-fs/autofs:hesiod - Install hesiod module
 net-fs/autofs:ldap - Install LDAP module
 net-fs/autofs:libtirpc - Use TiRPC library instead of SunRPC
 net-fs/autofs:mount-locking - Enable locking to prevent corruption of /etc/mtab in the presence of concurrent auto-mounting. If enabled, recursive auto-mounting (eg. using autofs to bind or loop mount a filesystem which is itself auto-mounted) is not possible.
