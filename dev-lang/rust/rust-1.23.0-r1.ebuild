@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-any-r1 versionator toolchain-funcs
+inherit multiprocessing python-any-r1 versionator toolchain-funcs
 
 if [[ ${PV} = *beta* ]]; then
 	betaver=${PV//*beta}
@@ -119,7 +119,7 @@ src_configure() {
 }
 
 src_compile() {
-	./x.py build --verbose --config="${S}"/config.toml "${MAKEOPTS}" || die
+	./x.py build --verbose --config="${S}"/config.toml -j$(makeopts_jobs) || die
 }
 
 src_install() {
