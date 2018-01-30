@@ -21,7 +21,7 @@ SRC_URI="https://releases.llvm.org/${PV/_//}/openmp-${PV/_/}.src.tar.xz"
 LICENSE="|| ( UoI-NCSA MIT ) MIT LLVM-Grant"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 x86"
-IUSE="hwloc ompt test"
+IUSE="hwloc kernel_linux ompt test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="hwloc? ( sys-apps/hwloc:0=[${MULTILIB_USEDEP}] )"
@@ -42,22 +42,28 @@ S=${WORKDIR}/openmp-${PV/_/}.src
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
 
-CONFIG_CHECK="~!SCHED_PDS"
-ERROR_SCHED_PDS="PDS scheduler versions >= 0.98c < 0.98i (e.g. used in kernels
->= 4.13-pf11 < 4.14-pf9) do not implement sched_yield() call which
-may result in horrible performance problems with libomp. If you are using one
-of the specified kernel versions, you may want to disable the PDS scheduler."
-
 python_check_deps() {
 	has_version "dev-python/lit[${PYTHON_USEDEP}]"
 }
 
+kernel_pds_check() {
+	if use kernel_linux && kernel_is -lt 4 15 && kernel_is -ge 4 13; then
+		local CONFIG_CHECK="~!SCHED_PDS"
+		local ERROR_SCHED_PDS="\
+PDS scheduler versions >= 0.98c < 0.98i (e.g. used in kernels >= 4.13-pf11
+< 4.14-pf9) do not implement sched_yield() call which may result in horrible
+performance problems with libomp. If you are using one of the specified
+kernel versions, you may want to disable the PDS scheduler."
+
+		check_extra_config
+	fi
+}
+
 pkg_pretend() {
-	linux-info_pkg_setup
+	kernel_pds_check
 }
 
 pkg_setup() {
-	linux-info_pkg_setup
 	use test && python-any-r1_pkg_setup
 }
 
