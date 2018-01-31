@@ -324,11 +324,6 @@ dev-libs/libFuzzer
 # testing has been conducted.
 =sys-apps/acl-2.2.52-r2
 
-# Andreas Sturmlechner <asturm@gentoo.org> (09 Jan 2018)
-# Dead upstream, depends on dead Qt4.
-# Bug #643976. Masked for removal in 30 days.
-media-video/2mandvd
-
 # Alice Ferrazzi <alicef@gentoo.org> (05 Jan 2018)
 # kernel: Meltdown and Spectre - Processor flaw. (#643228)
 # Please upgrade for Intel processor flaw workaround
