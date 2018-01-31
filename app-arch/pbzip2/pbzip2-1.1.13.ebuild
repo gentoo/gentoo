@@ -22,6 +22,8 @@ DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )"
 
 src_prepare() {
+	# https://bugs.launchpad.net/pbzip2/+bug/1746369
+	sed -i 's:"PRIuMAX":" PRIuMAX ":g' *.cpp || die
 	epatch "${FILESDIR}"/${PN}-1.1.10-makefile.patch
 	tc-export CXX
 	use static && append-ldflags -static
