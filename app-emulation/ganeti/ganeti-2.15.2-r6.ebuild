@@ -177,6 +177,7 @@ PATCHES+=(
 	"${FILESDIR}/${PN}-2.15-noded-must-run-as-root.patch"
 	"${FILESDIR}/${PN}-2.15-kvmd-run-as-daemon-user.patch"
 	"${FILESDIR}/${PN}-2.15-dont-invert-return-values-for-man-warnings.patch"
+	"${FILESDIR}/${PN}-2.15-respect-HFLAGS.patch"
 )
 
 S="${WORKDIR}/${MY_P}"

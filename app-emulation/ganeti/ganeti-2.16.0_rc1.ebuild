@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -183,6 +183,7 @@ PATCHES+=(
 	"${FILESDIR}/${PN}-2.16-kvmd-run-as-daemon-user.patch"
 	"${FILESDIR}/${PN}-2.15-dont-invert-return-values-for-man-warnings.patch"
 	"${FILESDIR}/fix_ftbfs_with_sphinx_1.4"
+	"${FILESDIR}/${PN}-2.15-respect-HFLAGS.patch"
 )
 
 S="${WORKDIR}/${MY_P}"
