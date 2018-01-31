@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PATCHVER=1
+PATCH_VER=1
 
 inherit eutils toolchain-funcs multilib-minimal
 
@@ -15,7 +15,7 @@ PATCH_DEV=${PATCH_DEV:-dilfridge}
 DESCRIPTION="Core binutils libraries (libbfd, libopcodes, libiberty) for external packages"
 HOMEPAGE="https://sourceware.org/binutils/"
 SRC_URI="mirror://gnu/binutils/${MY_P}.tar.xz
-	mirror://gentoo/${MY_PN}-${PATCH_BINUTILS_VER}-patches-${PATCHVER}.tar.xz"
+	mirror://gentoo/${MY_PN}-${PATCH_BINUTILS_VER}-patches-${PATCH_VER}.tar.xz"
 
 LICENSE="|| ( GPL-3 LGPL-3 )"
 # The shared lib SONAMEs use the ${PV} in them.
