@@ -30,6 +30,5 @@ move kde-base/kactivities kde-frameworks/kactivities
 move kde-base/plasma-workspace kde-plasma/plasma-workspace
 move dev-perl/extutils-pkgconfig dev-perl/ExtUtils-PkgConfig
 move kde-base/krosspython kde-apps/kross-interpreters
-move kde-base/katepart kde-apps/katepart
 move kde-base/kde-env kde-frameworks/kdelibs-env
 move kde-base/kdelibs kde-frameworks/kdelibs

@@ -51,7 +51,6 @@ move kde-base/kcron kde-apps/kcron
 move kde-base/kde-l10n kde-apps/kde4-l10n
 move kde-base/kdeaccessibility-meta kde-apps/kdeaccessibility-meta
 move kde-base/kdeadmin-meta kde-apps/kdeadmin-meta
-move kde-base/kdebase-data kde-apps/kdebase-data
 move kde-base/kdebase-meta kde-apps/kdebase-meta
 move kde-base/kde-dev-scripts kde-apps/kde-dev-scripts
 move kde-base/kde-dev-utils kde-apps/kde-dev-utils
