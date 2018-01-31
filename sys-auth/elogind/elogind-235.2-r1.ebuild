@@ -58,10 +58,8 @@ src_prepare() {
 }
 
 src_configure() {
-	local emesonargs cgroupmode rccgroupmode
-
-	rccgroupmode="$(grep rc_cgroup_mode /etc/rc.conf | cut -d '"' -f 2)"
-	cgroupmode="legacy"
+	local rccgroupmode="$(grep rc_cgroup_mode /etc/rc.conf | cut -d '"' -f 2)"
+	local cgroupmode="legacy"
 
 	if [[ "xhybrid" = "x${rccgroupmode}" ]] ; then
 		cgroupmode="hybrid"
@@ -69,28 +67,29 @@ src_configure() {
 		cgroupmode="unified"
 	fi
 
-	emesonargs=(
-		-Ddocdir="${EPREFIX}/usr/share/doc/${P}" \
-		-Dhtmldir="${EPREFIX}/usr/share/doc/${P}/html" \
-		-Dpamlibdir=$(getpam_mod_dir) \
-		-Dudevrulesdir="$(get_udevdir)"/rules.d \
-		--libdir="${EPREFIX}"/usr/$(get_libdir) \
-		-Drootlibdir="${EPREFIX}"/$(get_libdir) \
-		-Drootlibexecdir="${EPREFIX}"/$(get_libdir)/elogind \
-		-Drootprefix="${EPREFIX}/" \
-		-Dsmack=true \
-		-Dman=auto \
-		-Dhtml=$(usex doc auto false) \
-		-Dcgroup-controller=openrc \
-		-Ddefault-hierarchy=${cgroupmode} \
-		-Ddebug=$(usex debug elogind false) \
-		--buildtype $(usex debug debug release) \
-		-Dacl=$(usex acl true false) \
-		-Dpam=$(usex pam true false) \
-		-Dselinux=$(usex selinux true false) \
-		-Dbashcompletiondir="${EPREFIX}/usr/share/bash-completion/completions" \
+	local emesonargs=(
+		-Ddocdir="${EPREFIX}/usr/share/doc/${P}"
+		-Dhtmldir="${EPREFIX}/usr/share/doc/${P}/html"
+		-Dpamlibdir=$(getpam_mod_dir)
+		-Dudevrulesdir="$(get_udevdir)"/rules.d
+		--libdir="${EPREFIX}"/usr/$(get_libdir)
+		-Drootlibdir="${EPREFIX}"/$(get_libdir)
+		-Drootlibexecdir="${EPREFIX}"/$(get_libdir)/elogind
+		-Drootprefix="${EPREFIX}/"
+		-Dsmack=true
+		-Dman=auto
+		-Dhtml=$(usex doc auto false)
+		-Dcgroup-controller=openrc
+		-Ddefault-hierarchy=${cgroupmode}
+		-Ddebug=$(usex debug elogind false)
+		--buildtype $(usex debug debug release)
+		-Dacl=$(usex acl true false)
+		-Dpam=$(usex pam true false)
+		-Dselinux=$(usex selinux true false)
+		-Dbashcompletiondir="${EPREFIX}/usr/share/bash-completion/completions"
 		-Dzsh-completion="${EPREFIX}/usr/share/zsh/site-functions"
 	)
+
 	meson_src_configure
 }
 
@@ -104,9 +103,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	if [ "$(rc-config list boot | grep elogind)" != "" ]; then
+	if [[ "$(rc-config list boot | grep elogind)" != "" ]]; then
 		ewarn "elogind is currently started from boot runlevel."
-	elif [ "$(rc-config list default | grep elogind)" != "" ]; then
+	elif [[ "$(rc-config list default | grep elogind)" != "" ]]; then
 		ewarn "elogind is currently started from default runlevel."
 		ewarn "Please remove elogind from the default runlevel and"
 		ewarn "add it to the boot runlevel by:"
