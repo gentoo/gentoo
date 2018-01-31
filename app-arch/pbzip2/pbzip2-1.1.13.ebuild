@@ -30,7 +30,7 @@ src_prepare() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
+	emake DESTDIR="${ED}" install
 	dodoc AUTHORS ChangeLog README
 
 	if use symlink ; then
