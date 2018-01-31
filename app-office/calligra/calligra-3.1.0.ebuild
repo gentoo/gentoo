@@ -188,30 +188,19 @@ src_configure() {
 
 	# applications
 	for cal_ft in ${CAL_FTS[@]}; do
-		if use calligra_features_${cal_ft} ; then
-			myproducts+=( "${cal_ft^^}" )
-		fi
+		use calligra_features_${cal_ft} && myproducts+=( "${cal_ft^^}" )
 	done
 
-	[[ ${KDE_BUILD_TYPE} == release ]] && \
-		use calligra_experimental_features_stage && \
-			myproducts+=( CALLIGRA_FEATURES_STAGE )
+	use calligra_experimental_features_stage && myproducts+=( STAGE )
 
 	use lcms && myproducts+=( PLUGIN_COLORENGINES )
 	use spacenav && myproducts+=( PLUGIN_SPACENAVIGATOR )
 
-	local mycmakeargs=( -DPRODUCTSET="${myproducts[*]}" )
-
-	if [[ ${KDE_BUILD_TYPE} == release ]] ; then
-		mycmakeargs+=(
-			-DRELEASE_BUILD=ON
-			-DBUILD_UNMAINTAINED=$(usex calligra_experimental_features_stage)
-		)
-	fi
-
-	mycmakeargs+=(
+	local mycmakeargs=(
 		-DPACKAGERS_BUILD=OFF
+		-DRELEASE_BUILD=ON
 		-DWITH_Iconv=ON
+		-DPRODUCTSET="${myproducts[*]}"
 		$(cmake-utils_use_find_package activities KF5Activities)
 		-DWITH_Qca-qt5=$(usex crypt)
 		-DWITH_Fontconfig=$(usex fontconfig)
@@ -233,6 +222,7 @@ src_configure() {
 		-DWITH_OpenEXR=$(usex openexr)
 		-DWITH_Poppler=$(usex pdf)
 		-DWITH_Eigen3=$(usex calligra_features_sheets)
+		-DBUILD_UNMAINTAINED=$(usex calligra_experimental_features_stage)
 		-ENABLE_CSTESTER_TESTING=$(usex test)
 		-DWITH_Freetype=$(usex truetype)
 	)
