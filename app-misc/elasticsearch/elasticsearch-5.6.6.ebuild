@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,9 +20,9 @@ pkg_setup() {
 }
 
 src_prepare() {
-	rm -v bin/*.{bat,exe} LICENSE.txt || die
-
 	default
+
+	rm -v bin/*.{bat,exe} LICENSE.txt || die
 }
 
 src_install() {
@@ -30,11 +30,11 @@ src_install() {
 	keepdir /etc/${PN}/scripts
 
 	insinto /etc/${PN}
-	doins config/*
+	doins -r config/.
 	rm -rv config || die
 
 	insinto /usr/share/${PN}
-	doins -r ./*
+	doins -r .
 
 	exeinto /usr/share/${PN}/bin
 	doexe "${FILESDIR}/elasticsearch-systemd-pre-exec"
@@ -42,16 +42,18 @@ src_install() {
 	chmod +x "${ED}"/usr/share/${PN}/bin/* || die
 
 	keepdir /var/{lib,log}/${PN}
+	fowners ${PN}:${PN} /var/{lib,log}/${PN}
+	fperms 0750 /var/{lib,log}/${PN}
 	dodir /usr/share/${PN}/plugins
 
-	systemd_newtmpfilesd "${FILESDIR}/${PN}.tmpfiles.d" "${PN}.conf"
-
 	insinto /etc/sysctl.d
-	newins "${FILESDIR}/${PN}.sysctl.d" "${PN}.conf"
+	newins "${FILESDIR}/${PN}.sysctl.d" ${PN}.conf
 
-	newinitd "${FILESDIR}/${PN}.init" "${PN}"
-	newconfd "${FILESDIR}/${PN}.conf" "${PN}"
-	systemd_newunit "${FILESDIR}"/${PN}.service "${PN}.service"
+	newconfd "${FILESDIR}/${PN}.conf.2" ${PN}
+	newinitd "${FILESDIR}/${PN}.init.2" ${PN}
+
+	systemd_newtmpfilesd "${FILESDIR}/${PN}.tmpfiles.d" ${PN}.conf
+	systemd_newunit "${FILESDIR}"/${PN}.service ${PN}.service
 }
 
 pkg_postinst() {
