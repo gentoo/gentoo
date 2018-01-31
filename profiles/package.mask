@@ -39,11 +39,6 @@ media-sound/qtagconvert
 # Masked for removal in 30 days. Bug #644516
 media-sound/qpitch
 
-# Andreas Sturmlechner <asturm@gentoo.org> (31 Jan 2018)
-# No homepage, depends on deprecated Qt4.
-# Masked for removal in 30 days.
-app-dicts/qvortaro
-
 # Lars Wendler <polynomial-c@gentoo.org> (28 Jan 2018)
 # Masked for testing.
 # At least app-misc/mc is broken when using a 256color TERM setting.
