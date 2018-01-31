@@ -31,6 +31,11 @@
 
 # Andreas Sturmlechner <asturm@gentoo.org> (31 Jan 2018)
 # Dead upstream, depends on deprecated Qt4.
+# Masked for removal in 30 days. Bug #646182
+media-sound/qtagconvert
+
+# Andreas Sturmlechner <asturm@gentoo.org> (31 Jan 2018)
+# Dead upstream, depends on deprecated Qt4.
 # Masked for removal in 30 days. Bug #644516
 media-sound/qpitch
 
