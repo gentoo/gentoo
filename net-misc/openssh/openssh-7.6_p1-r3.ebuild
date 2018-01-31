@@ -118,6 +118,7 @@ src_prepare() {
 		if use hpn ; then
 			pushd "${WORKDIR}" >/dev/null
 			eapply "${FILESDIR}"/${P}-hpn-x509-${X509_VER}-glue.patch
+			eapply "${FILESDIR}"/${P}-x509-${X509_VER}-libressl.patch
 			popd >/dev/null
 			save_version X509
 		fi
