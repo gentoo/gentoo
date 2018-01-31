@@ -15,7 +15,7 @@ IUSE="ncurses"
 RDEPEND="
 	>=net-libs/libnet-1.1.1
 	net-libs/libpcap
-	ncurses? ( >=sys-libs/ncurses-5.4 )
+	ncurses? ( >=sys-libs/ncurses-5.4:= )
 "
 DEPEND="
 	${RDEPEND}
