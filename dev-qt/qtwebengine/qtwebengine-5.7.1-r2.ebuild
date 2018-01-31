@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="amd64 ~arm ~arm64 x86"
 fi
 
-IUSE="alsa bindist geolocation pax_kernel pulseaudio +system-ffmpeg +system-icu widgets"
+IUSE="alsa bindist geolocation pax_kernel pulseaudio +system-ffmpeg system-icu widgets"
 
 RDEPEND="
 	app-arch/snappy:=
@@ -59,7 +59,7 @@ RDEPEND="
 	geolocation? ( ~dev-qt/qtpositioning-${PV} )
 	pulseaudio? ( media-sound/pulseaudio:= )
 	system-ffmpeg? ( media-video/ffmpeg:0= )
-	system-icu? ( dev-libs/icu:= )
+	system-icu? ( <dev-libs/icu-59:= )
 	widgets? ( ~dev-qt/qtwidgets-${PV} )
 "
 DEPEND="${RDEPEND}
