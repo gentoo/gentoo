@@ -1,6 +1,6 @@
-From 32d596b8c64c1c963b053788feeee67ef012b836 Mon Sep 17 00:00:00 2001
+From 099fc991b85e91aa4bbfd20ba005f0c3a0002f97 Mon Sep 17 00:00:00 2001
 From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
-Date: Sat, 2 Dec 2017 19:04:10 +0100
+Date: Wed, 31 Jan 2018 15:32:46 +0100
 Subject: [PATCH] Make sure to search for Qt5-based qmlplugindump
 
 Summary:
@@ -11,28 +11,65 @@ Test Plan: ecm_find_qmlmodule now works properly for e.g. kirigami.
 
 Reviewers: apol
 
-Subscribers: #frameworks, #build_system
+Subscribers: aacid, dfaure, cgiboudeaux, #frameworks, #build_system
 
 Tags: #frameworks, #build_system
 
 Differential Revision: https://phabricator.kde.org/D9116
 ---
- modules/ECMFindQMLModule.cmake.in | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ modules/ECMFindQMLModule.cmake.in | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/modules/ECMFindQMLModule.cmake.in b/modules/ECMFindQMLModule.cmake.in
-index 428d60a..d72c52b 100644
+index 428d60a..8109ab8 100644
 --- a/modules/ECMFindQMLModule.cmake.in
 +++ b/modules/ECMFindQMLModule.cmake.in
-@@ -27,7 +27,7 @@
+@@ -26,8 +26,11 @@
+ #=============================================================================
  
  include(FindPackageHandleStandardArgs)
++include("${ECM_MODULE_DIR}/ECMQueryQmake.cmake")
  
 -find_program(QMLPLUGINDUMP_PROGRAM qmlplugindump)
-+find_program(QMLPLUGINDUMP_PROGRAM NAMES qmlplugindump HINTS /usr/lib/${CMAKE_LIBRARY_ARCHITECTURE}/qt5/bin/)
++query_qmake(qt_binaries_dir QT_INSTALL_BINS)
++
++find_program(QMLPLUGINDUMP_PROGRAM NAMES qmlplugindump HINTS ${qt_binaries_dir})
  if(NOT QMLPLUGINDUMP_PROGRAM)
      message(WARNING "Could not find qmlplugindump. It is necessary to look up qml module dependencies.")
  endif()
 -- 
-2.15.1
+2.16.1
+
+From 3e3ac52aef1bbe22d293a05253c69b755f59428c Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date: Wed, 31 Jan 2018 15:58:10 +0100
+Subject: [PATCH] FindQtWaylandScanner.cmake: Use qmake-query for HINT
+
+Instead of hardcoded /usr/lib, same solution as in D9116
+---
+ find-modules/FindQtWaylandScanner.cmake | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/find-modules/FindQtWaylandScanner.cmake b/find-modules/FindQtWaylandScanner.cmake
+index 79a1b05..37ebbdb 100644
+--- a/find-modules/FindQtWaylandScanner.cmake
++++ b/find-modules/FindQtWaylandScanner.cmake
+@@ -86,11 +86,14 @@
+ #=============================================================================
+ 
+ include(${CMAKE_CURRENT_LIST_DIR}/ECMFindModuleHelpersStub.cmake)
++include("${ECM_MODULE_DIR}/ECMQueryQmake.cmake")
+ 
+ ecm_find_package_version_check(QtWaylandScanner)
+ 
++query_qmake(qt_binaries_dir QT_INSTALL_BINS)
++
+ # Find qtwaylandscanner
+-find_program(QtWaylandScanner_EXECUTABLE NAMES qtwaylandscanner HINTS /usr/lib/${CMAKE_LIBRARY_ARCHITECTURE}/qt5/bin/)
++find_program(QtWaylandScanner_EXECUTABLE NAMES qtwaylandscanner HINTS ${qt_binaries_dir})
+ 
+ include(FindPackageHandleStandardArgs)
+ find_package_handle_standard_args(QtWaylandScanner
+-- 
+2.16.1
 

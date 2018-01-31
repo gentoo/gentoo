@@ -212,9 +212,6 @@ mozconfig_init() {
 		append-cxxflags -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns2
 	fi
 
-	# Go a little faster; use less RAM
-	append-flags "$MAKEEDIT_FLAGS"
-
 	# Use the MOZILLA_FIVE_HOME for the rpath
 	append-ldflags -Wl,-rpath="${MOZILLA_FIVE_HOME}",--enable-new-dtags
 	# Set MOZILLA_FIVE_HOME in mozconfig
