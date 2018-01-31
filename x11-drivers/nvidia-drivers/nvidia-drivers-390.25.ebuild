@@ -90,11 +90,11 @@ nvidia_drivers_versions_check() {
 		die "Unexpected \${DEFAULT_ABI} = ${DEFAULT_ABI}"
 	fi
 
-	if use kernel_linux && kernel_is ge 4 15; then
+	if use kernel_linux && kernel_is ge 4 16; then
 		ewarn "Gentoo supports kernels which are supported by NVIDIA"
 		ewarn "which are limited to the following kernels:"
-		ewarn "<sys-kernel/gentoo-sources-4.15"
-		ewarn "<sys-kernel/vanilla-sources-4.15"
+		ewarn "<sys-kernel/gentoo-sources-4.16"
+		ewarn "<sys-kernel/vanilla-sources-4.16"
 		ewarn ""
 		ewarn "You are free to utilize epatch_user to provide whatever"
 		ewarn "support you feel is appropriate, but will not receive"
