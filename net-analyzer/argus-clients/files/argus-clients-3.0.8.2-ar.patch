@@ -1,0 +1,31 @@
+--- a/common/Makefile.in
++++ b/common/Makefile.in
+@@ -113,23 +113,23 @@
+ all: $(LIBS)
+ 
+ @INSTALL_LIB@/argus_common.a: $(COMMONOBJ)
+-	rm -f $@; ar qc $@ $(COMMONOBJ)
++	rm -f $@; $(AR) qc $@ $(COMMONOBJ)
+ 	-$(RANLIB) $@
+ 
+ @INSTALL_LIB@/argus_parse.a: $(PARSEOBJ)
+-	rm -f $@; ar qc $@ $(PARSEOBJ)
++	rm -f $@; $(AR) qc $@ $(PARSEOBJ)
+ 	-$(RANLIB) $@
+ 
+ @INSTALL_LIB@/argus_client.a: $(CLIENTOBJ)
+-	rm -f $@; ar qc $@ $(CLIENTOBJ)
++	rm -f $@; $(AR) qc $@ $(CLIENTOBJ)
+ 	-$(RANLIB) $@
+ 
+ @INSTALL_LIB@/argus_output.a: $(OUTPUTOBJ)
+-	rm -f $@; ar qc $@ $(OUTPUTOBJ)
++	rm -f $@; $(AR) qc $@ $(OUTPUTOBJ)
+ 	-$(RANLIB) $@
+ 
+ @INSTALL_LIB@/argus_event.a: $(EVENTOBJ)
+-	rm -f $@; ar qc $@ $(EVENTOBJ)
++	rm -f $@; $(AR) qc $@ $(EVENTOBJ)
+ 	-$(RANLIB) $@
+ 
+ scanner.c: scanner.l
