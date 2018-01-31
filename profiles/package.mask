@@ -30,6 +30,11 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (31 Jan 2018)
+# Dead upstream, depends on deprecated Qt4.
+# Masked for removal in 30 days. Bug #644516
+media-sound/qpitch
+
+# Andreas Sturmlechner <asturm@gentoo.org> (31 Jan 2018)
 # No homepage, depends on deprecated Qt4.
 # Masked for removal in 30 days.
 app-dicts/qvortaro
