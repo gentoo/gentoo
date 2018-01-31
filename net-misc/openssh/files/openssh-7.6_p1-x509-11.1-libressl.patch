@@ -1,0 +1,11 @@
+--- a/openssh-7.6p1+x509-11.1.diff	2017-11-06 17:16:28.334140140 -0800
++++ b/openssh-7.6p1+x509-11.1.diff	2017-11-06 17:16:55.338223563 -0800
+@@ -54732,7 +54732,7 @@
+ +int/*bool*/ ssh_x509store_addlocations(const X509StoreOptions *locations);
+ +
+ +typedef char SSHXSTOREPATH;
+-+#if OPENSSL_VERSION_NUMBER < 0x10100000L
+++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+ +DECLARE_STACK_OF(SSHXSTOREPATH)
+ +# define sk_SSHXSTOREPATH_new_null()	SKM_sk_new_null(SSHXSTOREPATH)
+ +# define sk_SSHXSTOREPATH_num(st)	SKM_sk_num(SSHXSTOREPATH, (st))
