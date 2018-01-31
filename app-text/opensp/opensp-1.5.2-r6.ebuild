@@ -34,6 +34,7 @@ S=${WORKDIR}/${MY_P}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-fix-segfault.patch
+	epatch "${FILESDIR}"/${P}-c11-using.patch
 	use prefix && eautoreconf
 }
 
