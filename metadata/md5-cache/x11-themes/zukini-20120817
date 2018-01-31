@@ -1,12 +1,12 @@
 DEFINED_PHASES=install unpack
 DEPEND=app-arch/unzip
 DESCRIPTION=Unified look for GTK+ 2.x, GTK+ 3.x, gnome-shell, metacity and more
-EAPI=4
+EAPI=6
 HOMEPAGE=http://lassekongo83.deviantart.com/#/d4ic1u2
-KEYWORDS=amd64 ~ppc ~ppc64 x86
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
 LICENSE=GPL-3
 RDEPEND=>=x11-themes/gtk-engines-murrine-0.98.2 >=x11-themes/gtk-engines-unico-1.0.2
 RESTRICT=binchecks strip
 SLOT=0
-SRC_URI=https://dev.gentoo.org/~sping/distfiles/zukini-20120806.zip
-_md5_=0c67e4e4f948e07d2ad3a216f562ea3b
+SRC_URI=https://dev.gentoo.org/~sping/distfiles/zukini-20120817.zip
+_md5_=9a1a13cad0583f9e75e8c73818165cc5
