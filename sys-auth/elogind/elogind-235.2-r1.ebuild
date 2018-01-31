@@ -42,6 +42,7 @@ PDEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-235.1-docs.patch"
 	"${FILESDIR}/${P}-legacy-cgroupmode.patch"
+	"${FILESDIR}/${P}-drop-logintest.patch" # bug 645156
 )
 
 pkg_setup() {
