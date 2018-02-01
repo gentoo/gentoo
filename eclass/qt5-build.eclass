@@ -804,10 +804,11 @@ qt5_install_module_qconfigs() {
 		doins "${T}"/${PN}-qconfig.pri
 	)
 
-	if [[ ${PN} == qtcore && ${QT5_MINOR_VERSION} -ge 9 ]]; then
+	# install also the original qconfig.pri
+	[[ ${PN} == qtcore && ${QT5_MINOR_VERSION} -ge 9 ]] && (
 		insinto "${QT5_ARCHDATADIR#${EPREFIX}}"/mkspecs/gentoo
 		newins "${D}${QT5_ARCHDATADIR#${EPREFIX}}"/mkspecs/qconfig.pri qconfig-qtcore.pri
-	fi
+	)
 }
 
 # @FUNCTION: qt5_regenerate_global_qconfigs
