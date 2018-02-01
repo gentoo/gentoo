@@ -14,7 +14,7 @@ SRC_URI="https://github.com/linkcheck/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~ppc-macos ~x64-solaris"
+KEYWORDS="~amd64 x86 ~ppc-macos ~x64-solaris"
 IUSE="gnome sqlite"
 
 RDEPEND="
