@@ -16,15 +16,15 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 
-DEPEND="
+RDEPEND="
 	>=dev-python/flake8-3.0.0[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/pew-0.1.26[${PYTHON_USEDEP}]
 	>=dev-python/pip-9.0.1[${PYTHON_USEDEP}]
 	>dev-python/requests-2.18.0[${PYTHON_USEDEP}]
-	>=dev-python/urllib3-1.21.1[${PYTHON_USEDEP}]
+	>=dev-python/urllib3-1.21.1[${PYTHON_USEDEP}]"
+DEPEND="${RDEPEND}
 	test? (
-		dev-python/flake8[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
 	)"
 
