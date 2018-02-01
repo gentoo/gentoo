@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst prerm setup
+DEPEND=|| ( virtual/httpd-cgi virtual/httpd-fastcgi ) >=app-admin/webapp-config-1.50.15
+DESCRIPTION=A Python 3 implementation for client-side web programming
+EAPI=6
+HOMEPAGE=http://www.brython.info
+IUSE=vhosts python_targets_python2_7 python_targets_python3_4 python_targets_python3_5 python_targets_python3_6 python_single_target_python2_7 python_single_target_python3_4 python_single_target_python3_5 python_single_target_python3_6
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=BSD
+RDEPEND=>=app-admin/webapp-config-1.50.15
+REQUIRED_USE=^^ ( python_single_target_python2_7 python_single_target_python3_4 python_single_target_python3_5 python_single_target_python3_6 ) python_single_target_python2_7? ( python_targets_python2_7 ) python_single_target_python3_4? ( python_targets_python3_4 ) python_single_target_python3_5? ( python_targets_python3_5 ) python_single_target_python3_6? ( python_targets_python3_6 )
+SLOT=3.3.4
+SRC_URI=https://github.com/brython-dev/brython/archive/3.3.4.zip -> brython-3.3.4.zip
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	317a2557b4d7319a7418225f65accf77	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	webapp	a76ebd3cb5649737496e8238992dd7ca
+_md5_=a385364f55ef07654c5448fdbccf8a89
