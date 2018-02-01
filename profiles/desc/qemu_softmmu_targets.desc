@@ -9,6 +9,7 @@ aarch64 - ARM64 system emulation target
 alpha - system emulation target
 arm - system emulation target
 cris - system emulation target
+hppa - system emulation target
 i386 - system emulation target
 lm32 - LatticeMico32 system emulation target
 m68k - system emulation target
