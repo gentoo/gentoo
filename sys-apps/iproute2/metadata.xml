@@ -7,6 +7,7 @@
 </maintainer>
 <use>
 	<flag name="berkdb">build programs that use berkdb (just arpd)</flag>
+	<flag name="elf">support loading eBPF programs from ELFs (e.g. LLVM's eBPF backend)</flag>
 	<flag name="iptables">include support for iptables filtering</flag>
 	<flag name="minimal">only install ip and tc programs, without eBPF support</flag>
 </use>
