@@ -1,14 +1,14 @@
 DEFINED_PHASES=install postinst prerm setup
 DEPEND=>=app-admin/webapp-config-1.50.15
-DESCRIPTION=Web-based storage application where all your data is under your own control
+DESCRIPTION=Personal cloud that runs on your own server
 EAPI=6
-HOMEPAGE=http://owncloud.org
+HOMEPAGE=http://nextcloud.com
 IUSE=+curl mysql postgres +sqlite vhosts
 KEYWORDS=~amd64 ~arm ~x86
 LICENSE=AGPL-3
-RDEPEND=<dev-lang/php-7.1[curl?,filter,gd,hash,json,mysql?,pdo,posix,postgres?,session,simplexml,sqlite?,xmlreader,xmlwriter,zip] <virtual/httpd-php-7.1 >=app-admin/webapp-config-1.50.15
+RDEPEND=<dev-lang/php-7.2[curl?,filter,gd,hash,json,mysql?,pdo,posix,postgres?,session,simplexml,sqlite?,xmlreader,xmlwriter,zip] <virtual/httpd-php-7.2 >=app-admin/webapp-config-1.50.15
 REQUIRED_USE=|| ( mysql postgres sqlite )
-SLOT=9.1.6
-SRC_URI=http://download.owncloud.org/community/owncloud-9.1.6.tar.bz2 -> owncloud-9.1.6.tar.bz2
+SLOT=12.0.5
+SRC_URI=http://download.nextcloud.com/server/releases/nextcloud-12.0.5.tar.bz2
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	webapp	a76ebd3cb5649737496e8238992dd7ca
-_md5_=c5e90877ef273e6907bbc03cf5ec84e9
+_md5_=7cf468114efe2c404282baf2ffcbd299
