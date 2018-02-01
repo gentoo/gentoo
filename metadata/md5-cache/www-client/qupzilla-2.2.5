@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst postrm prepare unpack
+DEPEND=>=dev-qt/qtcore-5.8:5 >=dev-qt/qtdeclarative-5.8:5[widgets] >=dev-qt/qtgui-5.8:5 >=dev-qt/qtnetwork-5.8:5[ssl] >=dev-qt/qtprintsupport-5.8:5 >=dev-qt/qtsql-5.8:5[sqlite] >=dev-qt/qtwebchannel-5.8:5 >=dev-qt/qtwebengine-5.8:5[widgets] >=dev-qt/qtwidgets-5.8:5 >=dev-qt/qtx11extras-5.8:5 x11-libs/libxcb:= dbus? ( >=dev-qt/qtdbus-5.8:5 ) gnome-keyring? ( gnome-base/gnome-keyring ) kwallet? ( kde-frameworks/kwallet:5 ) libressl? ( dev-libs/libressl:= ) !libressl? ( dev-libs/openssl:0= ) >=dev-qt/linguist-tools-5.8:5 >=dev-qt/qtconcurrent-5.8:5 virtual/pkgconfig >=sys-apps/sed-4
+DESCRIPTION=A cross-platform web browser using QtWebEngine
+EAPI=6
+HOMEPAGE=https://www.qupzilla.com/
+IUSE=dbus debug gnome-keyring kwallet libressl nonblockdialogs
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GPL-3
+RDEPEND=>=dev-qt/qtcore-5.8:5 >=dev-qt/qtdeclarative-5.8:5[widgets] >=dev-qt/qtgui-5.8:5 >=dev-qt/qtnetwork-5.8:5[ssl] >=dev-qt/qtprintsupport-5.8:5 >=dev-qt/qtsql-5.8:5[sqlite] >=dev-qt/qtwebchannel-5.8:5 >=dev-qt/qtwebengine-5.8:5[widgets] >=dev-qt/qtwidgets-5.8:5 >=dev-qt/qtx11extras-5.8:5 x11-libs/libxcb:= dbus? ( >=dev-qt/qtdbus-5.8:5 ) gnome-keyring? ( gnome-base/gnome-keyring ) kwallet? ( kde-frameworks/kwallet:5 ) libressl? ( dev-libs/libressl:= ) !libressl? ( dev-libs/openssl:0= ) >=dev-qt/qtsvg-5.8:5
+SLOT=0
+SRC_URI=https://github.com/QupZilla/qupzilla/releases/download/v2.2.5/QupZilla-2.2.5.tar.xz https://github.com/QupZilla/qupzilla-plugins/archive/80fea7df7765fdf9c9c64fdb667052b25f1c0a22.tar.gz -> qupzilla-plugins-2017.03.26.tar.gz
+_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	gnome2-utils	4d211d7614f303710fca59db6ec12c88	l10n	97f2753e3f1f3753d53d856c7c0bbb0b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=670d2a486b41366c0ba76317152d82f3
