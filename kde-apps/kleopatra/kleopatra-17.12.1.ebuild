@@ -47,3 +47,6 @@ RDEPEND="${DEPEND}
 	>=app-crypt/gnupg-2.1
 	app-crypt/paperkey
 "
+
+# tests completely broken, bug #641720
+RESTRICT+=" test"
