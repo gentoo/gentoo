@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
-# TODO: QtNfc
+# TODO: QtNetworkAuth, QtNfc
 IUSE="bluetooth dbus debug declarative designer examples gles2 gui help location
 	multimedia network opengl positioning printsupport sensors serialport sql svg
 	testlib webchannel webengine webkit websockets widgets x11extras xmlpatterns"
@@ -52,11 +52,11 @@ REQUIRED_USE="
 "
 
 # Minimal supported version of Qt.
-QT_PV="5.6.0:5"
+QT_PV="5.9.3:5"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	>=dev-python/sip-4.19.6_pre:=[${PYTHON_USEDEP}]
+	>=dev-python/sip-4.19.6:=[${PYTHON_USEDEP}]
 	>=dev-qt/qtcore-${QT_PV}
 	>=dev-qt/qtxml-${QT_PV}
 	bluetooth? ( >=dev-qt/qtbluetooth-${QT_PV} )
@@ -81,7 +81,7 @@ RDEPEND="
 	testlib? ( >=dev-qt/qttest-${QT_PV} )
 	webchannel? ( >=dev-qt/qtwebchannel-${QT_PV} )
 	webengine? ( >=dev-qt/qtwebengine-${QT_PV}[widgets?] )
-	webkit? ( >=dev-qt/qtwebkit-${QT_PV}[printsupport] )
+	webkit? ( >=dev-qt/qtwebkit-5.9:5[printsupport] )
 	websockets? ( >=dev-qt/qtwebsockets-${QT_PV} )
 	widgets? ( >=dev-qt/qtwidgets-${QT_PV} )
 	x11extras? ( >=dev-qt/qtx11extras-${QT_PV} )
@@ -108,9 +108,6 @@ pyqt_use_enable() {
 
 src_configure() {
 	configuration() {
-		# Fix out-of-source build
-		ln -s "${S}"/config-tests || die
-
 		local myconf=(
 			"${PYTHON}"
 			"${S}"/configure.py
