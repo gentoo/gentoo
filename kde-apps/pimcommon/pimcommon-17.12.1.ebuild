@@ -52,3 +52,12 @@ RDEPEND="${COMMON_DEPEND}
 	!kde-apps/kdepim-common-libs:4
 	!kde-apps/kdepim-l10n
 "
+
+src_test() {
+	# bug 641730
+	local myctestargs=(
+		-E "(autocorrectiontest)"
+	)
+
+	kde5_src_test
+}
