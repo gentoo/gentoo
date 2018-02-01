@@ -93,8 +93,9 @@ src_configure() {
 
 src_test() {
 	# mainshelltest hangs, chmgeneratortest fails, bug #603116
+	# parttest hangs, bug #641728
 	local myctestargs=(
-		-E "(mainshelltest|chmgeneratortest)"
+		-E "(mainshelltest|chmgeneratortest|parttest)"
 	)
 
 	kde5_src_test
