@@ -4,10 +4,10 @@ DESCRIPTION=Gentoo automatic kernel building scripts, reloaded
 EAPI=6
 HOMEPAGE=https://www.gentoo.org/
 IUSE=cryptsetup dmraid gpg iscsi mdadm plymouth selinux
-KEYWORDS=~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~x86
+KEYWORDS=~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 x86
 LICENSE=GPL-2
 RDEPEND=app-text/asciidoc sys-fs/e2fsprogs !sys-fs/eudev[-kmod,modutils] selinux? ( sys-libs/libselinux ) !sys-kernel/genkernel cryptsetup? ( sys-fs/cryptsetup ) dmraid? ( >=sys-fs/dmraid-1.0.0_rc16 ) gpg? ( app-crypt/gnupg ) iscsi? ( sys-block/open-iscsi ) mdadm? ( sys-fs/mdadm ) plymouth? ( sys-boot/plymouth ) app-portage/portage-utils app-arch/cpio >=app-misc/pax-utils-0.6 !<sys-apps/openrc-0.9.9 sys-apps/util-linux sys-block/thin-provisioning-tools sys-fs/lvm2
 SLOT=0
 SRC_URI=https://github.com/Sabayon/genkernel-next/archive/v68.tar.gz -> genkernel-next-68.tar.gz
 _eclasses_=bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=0ccbad70427903f55820eacb53208243
+_md5_=250777613442aefad701b8175345762e
