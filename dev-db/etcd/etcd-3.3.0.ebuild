@@ -7,13 +7,14 @@ inherit user systemd golang-vcs-snapshot
 
 KEYWORDS="~amd64"
 EGO_PN="github.com/coreos/etcd"
+MY_PV="${PV/_rc/-rc.}"
 DESCRIPTION="Highly-available key value store for shared configuration and service discovery"
 HOMEPAGE="https://github.com/coreos/etcd"
-SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://${EGO_PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="doc"
-DEPEND=">=dev-lang/go-1.8:="
+DEPEND=">=dev-lang/go-1.9:="
 RDEPEND="!dev-db/etcdctl"
 
 src_prepare() {
@@ -47,10 +48,10 @@ src_install() {
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}/${PN}.logrotated" "${PN}"
-	dodir /var/lib/${PN}
+	keepdir /var/lib/${PN}
 	fowners ${PN}:${PN} /var/lib/${PN}
 	fperms 0700 /var/lib/${PN}
-	dodir /var/log/${PN}
+	keepdir /var/log/${PN}
 	fowners ${PN}:${PN} /var/log/${PN}
 	fperms 755 /var/log/${PN}
 	popd || die
