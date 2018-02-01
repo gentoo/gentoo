@@ -1,12 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
-
-# Michael Palimaka <kensington@gentoo.org> (03 Jun 2017)
-# Not yet stable.
-elogind
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (26 May 2017)
 # dev-db/firebird is keyworded ~amd64
