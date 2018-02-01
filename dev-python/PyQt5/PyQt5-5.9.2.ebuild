@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -52,7 +52,7 @@ REQUIRED_USE="
 "
 
 # Minimal supported version of Qt.
-QT_PV="5.7.1:5"
+QT_PV="5.9.3:5"
 
 RDEPEND="
 	${PYTHON_DEPS}
@@ -81,7 +81,7 @@ RDEPEND="
 	testlib? ( >=dev-qt/qttest-${QT_PV} )
 	webchannel? ( >=dev-qt/qtwebchannel-${QT_PV} )
 	webengine? ( >=dev-qt/qtwebengine-${QT_PV}[widgets?] )
-	webkit? ( >=dev-qt/qtwebkit-${QT_PV}[printsupport] )
+	webkit? ( >=dev-qt/qtwebkit-5.9:5[printsupport] )
 	websockets? ( >=dev-qt/qtwebsockets-${QT_PV} )
 	widgets? ( >=dev-qt/qtwidgets-${QT_PV} )
 	x11extras? ( >=dev-qt/qtx11extras-${QT_PV} )
