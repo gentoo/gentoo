@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,16 +14,16 @@ SRC_URI="https://updates.signal.org/desktop/apt/pool/main/s/${MY_PN}/${MY_PN}_${
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
+IUSE="ayatana"
 
 RESTRICT="bindist mirror"
 
 RDEPEND="
 	gnome-base/gconf:2
-	dev-libs/libappindicator:3
 	dev-libs/nss
 	x11-libs/libXtst
 	net-print/cups
+	ayatana? ( dev-libs/libappindicator:3 )
 	"
 
 QA_PREBUILT="opt/Signal/signal-desktop
