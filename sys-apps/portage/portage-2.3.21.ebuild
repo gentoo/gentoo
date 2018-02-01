@@ -144,6 +144,7 @@ python_prepare_all() {
 
 		einfo "Adjusting repos.conf ..."
 		sed -e "s|^\(location = \)\(/usr/portage\)|\\1${EPREFIX}\\2|" \
+			-e "s|^\(sync-rsync-openpgp-key-path = \)\(.*\)|\\1${EPREFIX}\\2|" \
 			-i cnf/repos.conf || die "sed failed"
 		if use prefix-guest ; then
 			sed -e "s|^\(main-repo = \).*|\\1gentoo_prefix|" \
