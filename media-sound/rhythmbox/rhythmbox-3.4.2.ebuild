@@ -114,7 +114,8 @@ src_configure() {
 
 src_test() {
 	unset SESSION_MANAGER
-	virtx emake check CK_DEFAULT_TIMEOUT=60
+	"${EROOT}${GLIB_COMPILE_SCHEMAS}" --allow-any-name "${S}/data" || die
+	GSETTINGS_SCHEMA_DIR="${S}/data" virtx emake check CK_DEFAULT_TIMEOUT=60
 }
 
 src_install() {
