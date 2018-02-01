@@ -48,7 +48,7 @@ src_install() {
 
 	einfo "Installing Erlang modules to ${targetdir}"
 	insinto "${targetdir}"
-	doins -r deps/rabbit/ebin deps/rabbit/escript deps/rabbit/include deps/rabbit/priv/schema plugins
+	doins -r deps/rabbit/ebin deps/rabbit/escript deps/rabbit/include deps/rabbit/priv plugins
 
 	einfo "Installing server scripts to /usr/sbin"
 	rm -v deps/rabbit/scripts/*.bat
