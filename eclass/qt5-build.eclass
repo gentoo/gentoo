@@ -675,6 +675,10 @@ qt5_base_configure() {
 		# do not build with -Werror
 		-no-warnings-are-errors
 
+		# correct mkspec if we are using clang
+		$(tc-is-clang && [[ ${QT5_MINOR_VERSION} -ge 10 ]] && \
+			echo -platform $(qt5_get_clang_mkspec))
+
 		# module-specific options
 		"${myconf[@]}"
 	)
@@ -692,6 +696,25 @@ qt5_base_configure() {
 
 	popd >/dev/null || die
 
+}
+
+# @FUNCTION: qt5_get_clang_mkspec
+# @INTERNAL:
+# @DESCRIPTION:
+# Returns the correct mkspec because the compiler is clang
+qt5_get_clang_mkspec() {
+	local spec=
+
+	case ${CHOST} in
+		*-linux*)
+			spec=linux-clang ;;
+		*-freebsd*)
+			spec=freebsd-clang ;;
+		*)
+			die "qt5-build.eclass: '${CHOST}' has no clang mkspec " ;;
+	esac
+
+	echo ${spec}
 }
 
 # @FUNCTION: qt5_qmake_args
