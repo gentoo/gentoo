@@ -26,7 +26,7 @@ RELEASE_VER=${PV}
 GCC_BOOTSTRAP_VER="4.7.3-r1"
 
 # Gentoo patchset
-PATCH_VER=5
+PATCH_VER=1
 
 SRC_URI+=" https://dev.gentoo.org/~dilfridge/distfiles/${P}-patches-${PATCH_VER}.tar.bz2"
 SRC_URI+=" multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-${GCC_BOOTSTRAP_VER}-multilib-bootstrap.tar.bz2 )"
