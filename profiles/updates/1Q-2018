@@ -2,3 +2,4 @@ move app-portage/kuroo4 app-portage/kuroo
 slotmove app-portage/kuroo 4 0
 move dev-cpp/gsl dev-cpp/ms-gsl
 slotmove =dev-util/cucumber-3.1.0 3.0 3.1
+move app-admin/restart_services app-admin/restart-services
