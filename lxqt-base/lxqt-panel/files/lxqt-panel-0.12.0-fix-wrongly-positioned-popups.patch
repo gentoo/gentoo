@@ -1,0 +1,35 @@
+From 7391172f5c60bfdb62c71f832c4ee4a4477366a2 Mon Sep 17 00:00:00 2001
+From: Palo Kisa <palo.kisa@gmail.com>
+Date: Tue, 14 Nov 2017 09:12:34 +0100
+Subject: [PATCH] lxqtpanel: Fix wrongly positioned popups
+
+..by avoiding of usage the QWidget::mapToGlobal(), which is unreliable
+sometimes.
+---
+ panel/lxqtpanel.cpp | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/panel/lxqtpanel.cpp b/panel/lxqtpanel.cpp
+index 24a27155..7a33e05d 100644
+--- a/panel/lxqtpanel.cpp
++++ b/panel/lxqtpanel.cpp
+@@ -987,7 +987,8 @@ void LXQtPanel::setReserveSpace(bool reserveSpace, bool save)
+  ************************************************/
+ QRect LXQtPanel::globalGometry() const
+ {
+-    return QRect(mapToGlobal(QPoint(0, 0)), this->size());
++    // panel is the the top-most widget/window, no calculation needed
++    return geometry();
+ }
+ 
+ 
+@@ -1204,7 +1205,8 @@ QRect LXQtPanel::calculatePopupWindowPos(const ILXQtPanelPlugin *plugin, const Q
+         return QRect();
+     }
+ 
+-    return calculatePopupWindowPos(panel_plugin->mapToGlobal(QPoint(0, 0)), windowSize);
++    // Note: assuming there are not contentMargins around the "BackgroundWidget" (LXQtPanelWidget)
++    return calculatePopupWindowPos(globalGometry().topLeft() + panel_plugin->geometry().topLeft(), windowSize);
+ }
+ 
+ 
