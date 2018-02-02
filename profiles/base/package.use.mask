@@ -7,6 +7,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2 Feb 2018)
+# This feature is not ready yet, see bug 146882 comment 26
+sys-libs/glibc compile-locales
+
 # Andreas Sturmlechner <asturm@gentoo.org> (13 Jan 2018)
 # Depends on last-rited sci-visualization/xds-viewer
 sci-chemistry/xds-bin X
