@@ -60,7 +60,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.2.2-dhclient-stdin-conf.patch"
 	"${FILESDIR}/${PN}-4.3.6-nogateway.patch" #265531
 	"${FILESDIR}/${PN}-4.3.6-quieter-ping.patch" #296921
-	"${FILESDIR}/${PN}-4.2.4-always-accept-4.patch" #437108
+	"${FILESDIR}/${PN}-4.4.0-always-accept-4.patch" #437108
 	"${FILESDIR}/${PN}-4.3.6-iproute2-path.patch" #480636
 	"${FILESDIR}/${PN}-4.2.5-bindtodevice-inet6.patch" #471142
 	"${FILESDIR}/${PN}-4.3.3-ldap-ipv6-client-id.patch" #559832
@@ -120,9 +120,11 @@ src_prepare() {
 	binddir=${binddir}
 	GMAKE=${MAKE:-gmake}
 	EOF
-	eapply -p2 "${FILESDIR}"/${PN}-4.3.4-bind-disable.patch
-	cd bind-*/ || die
-	eapply -p2 "${FILESDIR}"/${PN}-4.2.2-bind-parallel-build.patch #380717
+	eapply -p2 "${FILESDIR}"/${PN}-4.4.0-bind-disable.patch
+	# Only use the relevant subdirs now that ISC
+	#removed the lib/export structure in bind.
+	sed '/^SUBDIRS/s@=.*$@= isc dns isccfg irs samples@' \
+		-i bind-*/lib/Makefile.in || die
 }
 
 src_configure() {
@@ -167,14 +169,14 @@ src_configure() {
 	# perl and we don't want to require that #383837.
 	cd bind/bind-*/ || die
 	eval econf \
-		$(sed -n '/^bindconfig =/,/^$/{:a;N;$!ba;s,^[^-]*,,;s,\\\s*\n\s*--,--,g;s, @[[:upper:]]\+@,,g;P;D}' ../Makefile.in) \
+		$(for el in $(awk '/^bindconfig/,/^$/ {print}' ../Makefile.in) ; do if [[ ${el} =~ ^-- ]] ; then printf ' %s' ${el}; fi; done | sed 's,@\([[:alpha:]]\+\)dir@,${binddir}/\1,g') \
 		--disable-symtable \
 		--without-make-clean
 }
 
 src_compile() {
 	# build local bind cruft first
-	emake -C bind/bind-*/lib/export install
+	emake -C bind/bind-*/lib install
 	# then build standard dhcp code
 	emake AR="$(tc-getAR)"
 }
