@@ -1,17 +1,22 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit cmake-utils git-r3 gnome2-utils
+inherit cmake-utils gnome2-utils versionator
+
+if [[ ${PV} = *9999* ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/lxde/${PN}.git"
+else
+	SRC_URI="https://github.com/lxde/${PN}/releases/download/${PV}/${P}.tar.xz"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+fi
 
 DESCRIPTION="Qt-based multitab terminal emulator"
 HOMEPAGE="https://github.com/lxde/qterminal"
-EGIT_REPO_URI="https://github.com/lxde/qterminal.git"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS=""
-IUSE=""
 
 RDEPEND="
 	dev-qt/qtcore:5
@@ -19,10 +24,10 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	x11-libs/libX11
-	~x11-libs/qtermwidget-${PV}
+	=x11-libs/qtermwidget-$(get_version_component_range 1-2)*
 "
 DEPEND="${RDEPEND}
-	dev-util/lxqt-build-tools
+	>=dev-util/lxqt-build-tools-0.4.0
 "
 
 PATCHES=( "${FILESDIR}/${P}-nofetch.patch" )
