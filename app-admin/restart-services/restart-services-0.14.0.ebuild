@@ -50,12 +50,12 @@ pkg_postinst() {
 		if [[ $MAJOR -eq 0 && $MINOR -lt 14 ]]; then
 			einfo "Migrating config"
 			if [[ -e /etc/restart-services.d ]]; then
-				error "/etc/restart-services.d alrayd exists?!"
-				die
+				ewarn "/etc/restart-services.d already exists?!"
+				return
 			fi
 			if [[ -e /etc/restart-services.conf ]]; then
-				error "/etc/restart-services.conf alrayd exists?!"
-				die
+				ewarn "/etc/restart-services.conf already exists?!"
+				return
 			fi
 
 			if [[ -f /etc/restart_services.d/00-local.conf ]]; then
