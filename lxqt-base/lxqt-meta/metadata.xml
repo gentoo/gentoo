@@ -1,29 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>lxqt@gentoo.org</email>
-    <name>LXQt</name>
-  </maintainer>
-  <use>
-    <flag name="about">Install <pkg>lxqt-base/lxqt-about</pkg></flag>
-    <flag name="admin">Install <pkg>lxqt-base/lxqt-admin</pkg></flag>
-    <flag name="filemanager">Install <pkg>x11-misc/pcmanfm-qt</pkg>
-    file manager</flag>
-    <flag name="icons">Install an icon theme</flag>
-    <flag name="lightdm">Install <pkg>x11-misc/lightdm</pkg>
-    display manager</flag>
-    <flag name="lximage">Install <pkg>media-gfx/lximage-qt</pkg>
-    image viewer</flag>
-    <flag name="minimal">Do not install <pkg>x11-wm/openbox</pkg>
-    window manager</flag>
-    <flag name="oxygen">Prefer <pkg>kde-frameworks/oxygen-icons</pkg> (default)</flag>
-    <flag name="powermanagement">Install
-    <pkg>lxqt-base/lxqt-powermanagement</pkg> package</flag>
-    <flag name="sddm">Install <pkg>x11-misc/sddm</pkg>
-    display manager</flag>
-    <flag name="ssh-askpass">Install <pkg>lxqt-base/lxqt-openssh-askpass</pkg>
-    user password prompt tool</flag>
-    <flag name="sudo">Install <pkg>lxqt-base/lxqt-sudo</pkg></flag>
-  </use>
+	<maintainer type="project">
+		<email>lxqt@gentoo.org</email>
+		<name>LXQt</name>
+	</maintainer>
+	<use>
+		<flag name="about">Install <pkg>lxqt-base/lxqt-about</pkg></flag>
+		<flag name="admin">Install <pkg>lxqt-base/lxqt-admin</pkg></flag>
+		<flag name="filemanager">Install <pkg>x11-misc/pcmanfm-qt</pkg>
+		file manager</flag>
+		<flag name="icons">Install an icon theme</flag>
+		<flag name="lightdm">Install <pkg>x11-misc/lightdm</pkg>
+		display manager</flag>
+		<flag name="lximage">Install <pkg>media-gfx/lximage-qt</pkg>
+		image viewer</flag>
+		<flag name="l10n">Pull in localization files (default)</flag>
+		<flag name="minimal">Do not install <pkg>x11-wm/openbox</pkg>
+		window manager</flag>
+		<flag name="oxygen">Prefer <pkg>kde-frameworks/oxygen-icons</pkg> (default)</flag>
+		<flag name="powermanagement">Install
+		<pkg>lxqt-base/lxqt-powermanagement</pkg> package</flag>
+		<flag name="sddm">Install <pkg>x11-misc/sddm</pkg>
+		display manager</flag>
+		<flag name="ssh-askpass">Install <pkg>lxqt-base/lxqt-openssh-askpass</pkg>
+		user password prompt tool</flag>
+		<flag name="sudo">Install <pkg>lxqt-base/lxqt-sudo</pkg></flag>
+	</use>
 </pkgmetadata>
