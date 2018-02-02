@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
 DESCRIPTION="Utility for examining and tuning ethernet-based network interfaces"
 HOMEPAGE="https://www.kernel.org/pub/software/network/ethtool/"
