@@ -345,6 +345,7 @@ app-crypt/mhash 0.9.9.9-r2: library providing a uniform interface to a large num
 app-crypt/mit-krb5 1.15.2 1.15.2-r1: MIT Kerberos V
 app-crypt/mit-krb5-appl 1.0.3: Kerberized applications split from the main MIT Kerberos V distribution
 app-crypt/monkeysphere 0.37: Leverage the OpenPGP web of trust for OpenSSH and Web authentication
+app-crypt/openpgp-keys-gentoo-mirror 20180203: OpenPGP key used to sign gentoo-mirror commits
 app-crypt/openssl-blacklist 0.5.3: Detection of weak ssl keys produced by certain debian versions in 2006-2008
 app-crypt/p11-kit 0.23.2: Provides a standard configuration setup for installing PKCS#11
 app-crypt/paperkey 1.4: OpenPGP key archiver
@@ -1152,10 +1153,10 @@ app-office/kexi 3.0.2: Visual database applications creator
 app-office/kmymoney 4.8.1.1-r1: Personal finance manager by KDE
 app-office/ledger 3.1.1: A double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 5.0.0: Library with common classes and functionality used by KDE finance applications
-app-office/libreoffice 5.4.2.2: A full office productivity suite
+app-office/libreoffice 5.4.2.2 5.4.4.2: A full office productivity suite
 app-office/libreoffice-bin 5.4.2.2 5.4.2.2-r1: A full office productivity suite. Binary package
 app-office/libreoffice-bin-debug 5.4.2.2 5.4.2.2-r1: LibreOffice, a full office productivity suite. Binary package, debug info
-app-office/libreoffice-l10n 5.4.2.2: Translations for the Libreoffice suite
+app-office/libreoffice-l10n 5.4.2.2 5.4.4.2: Translations for the Libreoffice suite
 app-office/lyx 2.0.8.1-r1 2.1.5-r1 2.2.3-r1: WYSIWYM frontend for LaTeX, DocBook, etc.
 app-office/mdbtools 0.7.1-r2: Set of libraries and utilities for reading Microsoft Access database (MDB) files
 app-office/ooextras 20060909: OOExtras: Extra Templates for OpenOffice.org!
@@ -1412,7 +1413,7 @@ app-text/pelican 3.6.0 3.7.0: A tool to generate a static blog, with restructure
 app-text/pinfo 0.6.10-r5: Hypertext info and man viewer based on (n)curses
 app-text/po4a 0.45-r3 0.47-r1: Tools for helping translation of documentation
 app-text/podofo 0.9.6_pre20170508-r1: PoDoFo is a C++ library to work with the PDF file format
-app-text/poppler 0.57.0-r1: PDF rendering library based on the xpdf-3.0 code base
+app-text/poppler 0.57.0-r1 0.62.0-r1: PDF rendering library based on the xpdf-3.0 code base
 app-text/poppler-data 0.4.7: Data files for poppler to support uncommon encodings without xpdfrc
 app-text/ps2eps 1.68: Generate Encapsulated Postscript Format files from one-page Postscript documents
 app-text/ps2pkm 1.5_p20120701 1.7_p20150521 1.8_p20160523 1.8_p20170524: Tool that converts a PostScript type1 font into a corresponding TeX PK font
@@ -2908,7 +2909,7 @@ dev-libs/beignet 1.3.1: OpenCL implementation for Intel GPUs
 dev-libs/bglibs 1.041 1.106-r1: Bruce Guenters Libraries Collection
 dev-libs/bitset 2.8.3 2.8.4-r1: A compressed bitset with supporting data structures and algorithms
 dev-libs/boehm-gc 6.8 7.1-r1 7.2d 7.2d-r1 7.2e 7.4.2: The Boehm-Demers-Weiser conservative garbage collector
-dev-libs/boost 1.63.0: Boost Libraries for C++
+dev-libs/boost 1.63.0 1.65.0: Boost Libraries for C++
 dev-libs/botan 1.10.17 2.3.0: A C++ crypto library
 dev-libs/btparser 0.24 0.25 0.26: Parser and analyzer for backtraces produced by GDB
 dev-libs/c-blosc 1.11.2: Blocking, shuffling and lossless compression library
@@ -6090,7 +6091,7 @@ dev-util/bbe 0.2.2: Sed-like editor for binary files
 dev-util/bcpp 20150811-r1: Indents C/C++ source code
 dev-util/biew 6.1.0-r3: A portable viewer of binary files, hexadecimal and disassembler modes
 dev-util/bluej 3.1.1: An integrated Java environment for introductory teaching
-dev-util/boost-build 1.62.0-r1 1.63.0: A system for large project software construction, simple to use and powerful
+dev-util/boost-build 1.62.0-r1 1.63.0 1.65.0: A system for large project software construction, simple to use and powerful
 dev-util/bsdiff 4.3-r3: bsdiff: Binary Differencer using a suffix alg
 dev-util/buildbot 0.8.12-r3: BuildBot build automation system
 dev-util/buildbot-slave 0.8.12: BuildBot Slave Daemon
