@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -44,17 +44,14 @@ src_prepare(){
 	default_src_prepare
 }
 
-src_configure(){
-	local conf_speex
-	local conf_theora
-	local conf_vpx
-
-	use opus && conf_opus="QXMPP_USE_OPUS=1"
-	use speex && conf_speex="QXMPP_USE_SPEEX=1"
-	use theora && conf_theora="QXMPP_USE_THEORA=1"
-	use vpx && conf_vpx="QXMPP_USE_VPX=1"
-
-	eqmake5 "${S}"/qxmpp.pro "PREFIX=${EPREFIX}/usr" "LIBDIR=$(get_libdir)" "${conf_opus}" "${conf_speex}" "${conf_theora}" "${conf_vpx}"
+src_configure() {
+	eqmake5 "${S}"/qxmpp.pro \
+		PREFIX="${EPREFIX}/usr" \
+		LIBDIR="$(get_libdir)" \
+		QXMPP_USE_OPUS=$(usex opus 1 0) \
+		QXMPP_USE_SPEEX=$(usex speex 1 0) \
+		QXMPP_USE_THEORA=$(usex theora 1 0) \
+		QXMPP_USE_VPX=$(usex vpx 1 0)
 }
 
 src_install() {
