@@ -71,13 +71,6 @@ sci-geosciences/qgis grass
 # This is stable masked as g-sorcery is being not actively developed.
 app-portage/layman g-sorcery
 
-# Mart Raudsepp <leio@gentoo.org> (13 Feb 2017)
-# No stable multilib supporting sys-libs/libunwind yet,
-# temporarily masked to let stabilization #601354 proceed.
-# The feature provided by this is also only useful for a
-# leak tracer, which is mostly useful for upstream CI testing.
-media-libs/gstreamer unwind
-
 # David Seifert <soap@gentoo.org> (12 Feb 2017)
 # Unknown future, stable deps are hopelessly
 # broken, only allow for unstable keywords
