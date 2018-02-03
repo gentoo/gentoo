@@ -1,0 +1,46 @@
+From 84d7f43cdd051f4dbc626db07d564d730f0487f1 Mon Sep 17 00:00:00 2001
+From: Kai Krakow <kai@kaishome.de>
+Date: Sat, 3 Feb 2018 19:13:22 +0100
+Subject: [PATCH 1/2] Gentoo: Remove building README.html
+
+Signed-off-by: Kai Krakow <kai@kaishome.de>
+---
+ Makefile | 8 +-------
+ 1 file changed, 1 insertion(+), 7 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 852a29b..f1dc8be 100644
+--- a/Makefile
++++ b/Makefile
+@@ -7,8 +7,6 @@ LIBEXEC_PREFIX ?= $(LIB_PREFIX)/bees
+ 
+ SYSTEMD_SYSTEM_UNIT_DIR ?= $(shell pkg-config systemd --variable=systemdsystemunitdir)
+ 
+-MARKDOWN := $(firstword $(shell which markdown markdown2 markdown_py 2>/dev/null || echo markdown))
+-
+ # allow local configuration to override above variables
+ -include localconf
+ 
+@@ -22,7 +20,7 @@ include Defines.mk
+ 
+ default: $(DEFAULT_MAKE_TARGET)
+ 
+-all: lib src scripts README.html
++all: lib src scripts
+ reallyall: all test
+ 
+ release: NEWS
+@@ -56,10 +54,6 @@ scripts/%: scripts/%.in
+ 
+ scripts: scripts/beesd scripts/beesd@.service scripts/beestop
+ 
+-README.html: README.md
+-	$(MARKDOWN) README.md > README.html.new
+-	mv -f README.html.new README.html
+-
+ install_libs: lib
+ 	install -Dm644 lib/libcrucible.so $(DESTDIR)$(LIB_PREFIX)/libcrucible.so
+ 
+-- 
+2.13.6
+

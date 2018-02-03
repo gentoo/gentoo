@@ -17,38 +17,40 @@ else
 	KEYWORDS="~amd64"
 fi
 
-PATCHES="${FILESDIR}/v0.5-gentoo_build.patch"
+PATCHES=(
+	"${FILESDIR}/v0.5-0001-Gentoo-Remove-building-README.html.patch"
+	"${FILESDIR}/v0.5-0002-Gentoo-use-system-provided-cflags.patch"
+)
 
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="tools test"
 
 RDEPEND=">=sys-apps/util-linux-2.30.2"
-DEPEND="$RDEPEND
-	>=sys-fs/btrfs-progs-4.1
-	|| ( dev-python/markdown dev-python/markdown2 )
-"
+DEPEND="$RDEPEND >=sys-fs/btrfs-progs-4.1"
 
 DOCS="README.md COPYING"
-HTML_DOCS="README.html"
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != buildonly ]]; then
-		kernel_is -lt 4 4 3 && ewarn "Kernel versions below 4.4.3 lack support for bees, it won't work."
-		kernel_is -lt 4 11 && ewarn "With kernel versions below 4.11, bees may severely degrade system performance\nand responsiveness."
-		kernel_is -lt 4 11 && ewarn "The kernel may deadlock while bees is running, it's recommended to run at\nleast kernel 4.11."
-		einfo "Bees recommends to run the latest current kernel for performance and\nreliability reasons, see README.html."
+		if kernel_is -lt 4 4 3; then
+			ewarn "Kernel versions below 4.4.3 lack support for bees, it won't work."
+		fi
+		if kernel_is -lt 4 11; then
+			ewarn "With kernel versions below 4.11, bees may severely degrade system performance"
+			ewarn "and responsiveness. Especially, the kernel may deadlock while bees is"
+			ewarn "running, it's recommended to run at least kernel 4.11."
+		fi
+		elog "Bees recommends to run the latest current kernel for performance and"
+		elog "reliability reasons, see README.md."
 	fi
 }
 
 src_configure() {
-	default
-	localconf=${S}/localconf
-	echo LIBEXEC_PREFIX=/usr/libexec >>${localconf} || die
-	echo LIBDIR=$(get_libdir) >>${localconf} || die
-	echo DEFAULT_MAKE_TARGET=all >>${localconf} || die
-	if use tools; then
-		einfo "Building with support tools fiemap and fiewalk."
-		echo OPTIONAL_INSTALL_TARGETS=install_tools >>${localconf} || die
-	fi
+	cat >localconf <<-EOF || die
+		LIBEXEC_PREFIX=/usr/libexec
+		LIBDIR=$(get_libdir)
+		DEFAULT_MAKE_TARGET=all
+	EOF
+	use tools && echo OPTIONAL_INSTALL_TARGETS=install_tools >>localconf || die
 }
