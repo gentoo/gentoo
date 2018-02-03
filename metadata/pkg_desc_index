@@ -5746,7 +5746,7 @@ dev-ruby/flexmock 2.3.5: Simple mock object library for Ruby unit testing
 dev-ruby/gherkin 2.12.0-r3 2.12.2 4.1.3: Fast Gherkin lexer and parser
 dev-ruby/git 1.3.0: Library for using Git in Ruby
 dev-ruby/gruff 0.6.0: Beautiful graphs for one or multiple datasets
-dev-ruby/hashdiff 0.3.4 0.3.5: Simple Hash extension to make working with nested hashes easier
+dev-ruby/hashdiff 0.3.5: Simple Hash extension to make working with nested hashes easier
 dev-ruby/hashie 2.1.2-r1: Hashie is a small collection of tools that make hashes more powerful
 dev-ruby/heredoc_unindent 1.2.0: Removes leading whitespace from Ruby heredocs
 dev-ruby/hiera 1.3.4-r1 3.2.2: A simple pluggable Hierarchical Database
