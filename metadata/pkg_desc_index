@@ -6397,11 +6397,11 @@ gnome-extra/cinnamon-translations 2.8.3 3.0.3: Translation data for Cinnamon
 gnome-extra/cjs 3.0.1: Linux Mint's fork of gjs for Cinnamon
 gnome-extra/eiciel 0.9.11 0.9.11-r1: ACL editor for GNOME, with Nautilus extension
 gnome-extra/evolution-data-server 3.22.7 3.24.7: Evolution groupware backend
-gnome-extra/evolution-ews 3.22.6 3.24.6: Evolution module for connecting to Microsoft Exchange Web Services
+gnome-extra/evolution-ews 3.24.6: Evolution module for connecting to Microsoft Exchange Web Services
 gnome-extra/gconf-editor 3.0.1-r1: An editor to the GNOME config system
-gnome-extra/gnome-boxes 3.22.4 3.24.0: Simple GNOME 3 application to access remote or virtual systems
+gnome-extra/gnome-boxes 3.24.0: Simple GNOME 3 application to access remote or virtual systems
 gnome-extra/gnome-builder 3.22.4 3.24.2: Builder attempts to be an IDE for writing software for GNOME
-gnome-extra/gnome-calculator 3.22.3 3.24.0: A calculator application for GNOME
+gnome-extra/gnome-calculator 3.24.0: A calculator application for GNOME
 gnome-extra/gnome-calendar 3.22.5 3.24.3: Manage your online calendars with simple and modern interface
 gnome-extra/gnome-characters 3.22.0 3.24.0: Unicode character map viewer and library
 gnome-extra/gnome-clocks 3.22.1 3.24.0: Clocks application for GNOME
@@ -6895,7 +6895,7 @@ mail-client/balsa 2.5.2-r1 2.5.3-r1: Email client for GNOME
 mail-client/claws-mail 3.15.0-r2: An email client (and news reader) based on GTK+
 mail-client/clawsker 0.7.8: Applet to edit Claws Mail's hidden preferences
 mail-client/cone 0.92: CONE: COnsole News reader and Emailer
-mail-client/evolution 3.22.6 3.24.6: Integrated mail, addressbook and calendaring functionality
+mail-client/evolution 3.24.6: Integrated mail, addressbook and calendaring functionality
 mail-client/geary 0.11.3 0.12.0: A lightweight, easy-to-use, feature-rich email client
 mail-client/mail-notification 5.4-r10: Status icon informing about new mail
 mail-client/mailx 8.1.2.20050715-r6: The /bin/mail program, which is used to send mail via shell scripts
