@@ -3,9 +3,11 @@ DEPEND=sys-libs/ncurses:0=[unicode?] sys-libs/readline:0= app-text/asciidoc app-
 DESCRIPTION=text mode interface for git
 EAPI=6
 HOMEPAGE=https://jonas.github.io/tig/
-IUSE=unicode
+IUSE=test unicode
 LICENSE=GPL-2
 RDEPEND=sys-libs/ncurses:0=[unicode?] sys-libs/readline:0= dev-vcs/git
+REQUIRED_USE=test? ( unicode )
+RESTRICT=test
 SLOT=0
 _eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	git-r3	fec09a83ae965b041b47f5ff7c8ba29a	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=7ddd662f250c6c5ce38296db9f88fdba
+_md5_=c2b2664aea7f68768327f9ea72977ffe

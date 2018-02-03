@@ -3,9 +3,9 @@ DEPEND=dev-lang/perl:= dev-perl/Devel-Size virtual/perl-Data-Dumper virtual/perl
 DESCRIPTION=A shell tool for executing jobs in parallel locally or on remote machines
 EAPI=6
 HOMEPAGE=https://www.gnu.org/software/parallel/
-KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-3
 RDEPEND=dev-lang/perl:= dev-perl/Devel-Size virtual/perl-Data-Dumper virtual/perl-File-Temp virtual/perl-IO
 SLOT=0
 SRC_URI=mirror://gnu/parallel/parallel-20171222.tar.bz2
-_md5_=218d2e29557fd1c18099e3e1d2906ace
+_md5_=4f19bd728b2220436998f7b8de8452ec

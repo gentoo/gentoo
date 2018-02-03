@@ -4,10 +4,10 @@ DESCRIPTION=Simple (or small or suckless) X Image Viewer
 EAPI=6
 HOMEPAGE=https://github.com/muennich/sxiv/
 IUSE=exif gif savedconfig
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-2
 RDEPEND=exif? ( media-libs/libexif ) gif? ( media-libs/giflib:0= ) media-libs/imlib2[X,gif?] x11-libs/libX11 x11-libs/libXft
 SLOT=0
 SRC_URI=https://github.com/muennich/sxiv/archive/v24.tar.gz -> sxiv-24.tar.gz
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	gnome2-utils	4d211d7614f303710fca59db6ec12c88	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	portability	2b88d3ecc35035a3b8ab628b49cafb0e	preserve-libs	ef207dc62baddfddfd39a164d9797648	savedconfig	e6948c872ff47e15a10e5ad1be15c18e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=a8bec5c1bb444a128042228fbc6c6f9c
+_md5_=51e948687e383489b0fae72266e63e4f
