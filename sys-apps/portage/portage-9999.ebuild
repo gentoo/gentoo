@@ -18,7 +18,7 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage"
 LICENSE="GPL-2"
 KEYWORDS=""
 SLOT="0"
-IUSE="build doc epydoc +ipc +native-extensions +rsync-verify selinux xattr"
+IUSE="build doc epydoc gentoo-dev +ipc +native-extensions +rsync-verify selinux xattr"
 
 DEPEND="!build? ( $(python_gen_impl_dep 'ssl(+)') )
 	>=app-arch/tar-1.27
@@ -92,6 +92,13 @@ pkg_setup() {
 
 python_prepare_all() {
 	distutils-r1_python_prepare_all
+
+	if use gentoo-dev; then
+		einfo "Disabling --dynamic-deps by default for gentoo-dev..."
+		sed -e 's:\("--dynamic-deps", \)\("y"\):\1"n":' \
+			-i pym/_emerge/create_depgraph_params.py || \
+			die "failed to patch create_depgraph_params.py"
+	fi
 
 	if use native-extensions; then
 		printf "[build_ext]\nportage-ext-modules=true\n" >> \
