@@ -1,12 +1,12 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
 # Force users doing their own patches to install their own tools
 AUTOTOOLS_AUTO_DEPEND=no
 
-inherit eutils multilib systemd toolchain-funcs autotools flag-o-matic
+inherit ltprune multilib systemd toolchain-funcs autotools flag-o-matic
 
 DESCRIPTION="Linux kernel (2.4+) firewall, NAT and packet mangling tools"
 HOMEPAGE="http://www.netfilter.org/projects/iptables/"
@@ -15,16 +15,16 @@ SRC_URI="http://www.netfilter.org/projects/iptables/files/${P}.tar.bz2"
 LICENSE="GPL-2"
 # Subslot tracks libxtables as that's the one other packages generally link
 # against and iptables changes.  Will have to revisit if other sonames change.
-SLOT="0/11"
+SLOT="0/12"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="conntrack ipv6 netlink nftables pcap static-libs"
 
 RDEPEND="
-	conntrack? ( net-libs/libnetfilter_conntrack )
+	conntrack? ( >=net-libs/libnetfilter_conntrack-1.0.6 )
 	netlink? ( net-libs/libnfnetlink )
 	nftables? (
-		>=net-libs/libmnl-1.0
-		>=net-libs/libnftnl-1.0.5
+		>=net-libs/libmnl-1.0:0=
+		>=net-libs/libnftnl-1.0.5:0=
 	)
 	pcap? ( net-libs/libpcap )
 "
@@ -42,7 +42,7 @@ src_prepare() {
 	rm -f include/linux/{kernel,types}.h
 
 	# Only run autotools if user patched something
-	epatch_user && eautoreconf || elibtoolize
+	eapply_user && eautoreconf || elibtoolize
 }
 
 src_configure() {
@@ -57,16 +57,18 @@ src_configure() {
 		-e "/nfconntrack=[01]/s:=[01]:=$(usex conntrack 1 0):" \
 		configure || die
 
-	econf \
-		--sbindir="${EPREFIX}/sbin" \
-		--libexecdir="${EPREFIX}/$(get_libdir)" \
-		--enable-devel \
-		--enable-shared \
-		$(use_enable nftables) \
-		$(use_enable pcap bpf-compiler) \
-		$(use_enable pcap nfsynproxy) \
-		$(use_enable static-libs static) \
+	local myeconfargs=(
+		--sbindir="${EPREFIX}/sbin"
+		--libexecdir="${EPREFIX}/$(get_libdir)"
+		--enable-devel
+		--enable-shared
+		$(use_enable nftables)
+		$(use_enable pcap bpf-compiler)
+		$(use_enable pcap nfsynproxy)
+		$(use_enable static-libs static)
 		$(use_enable ipv6)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_compile() {

@@ -1,9 +1,11 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit autotools eutils multilib autotools-utils
+AT_M4DIR="config"
+
+inherit eutils multilib
 
 DESCRIPTION="Provides Remote-Console and System Management Software as per IPMI v1.5/2.0"
 HOMEPAGE="https://www.gnu.org/software/freeipmi/"
@@ -15,24 +17,18 @@ SRC_URI="mirror://gnu${ALPHA}/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="~amd64 ~hppa ~x86"
 IUSE="debug nagios"
 
 RDEPEND="dev-libs/libgcrypt:0"
 DEPEND="${RDEPEND}
-		virtual/os-headers"
+	virtual/os-headers"
 RDEPEND="${RDEPEND}
 	nagios? (
 		|| ( net-analyzer/icinga net-analyzer/nagios )
 		dev-lang/perl
 	)
 "
-
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.1.1-strictaliasing.patch
-
-	AT_M4DIR="config" eautoreconf
-}
 
 src_configure() {
 	local myeconfargs=(
@@ -42,14 +38,14 @@ src_configure() {
 		--localstatedir=/var
 	)
 
-	autotools-utils_src_configure
+	econf "${myeconfargs[@]}"
 }
 
 # There are no tests
 src_test() { :; }
 
 src_install() {
-	autotools-utils_src_install
+	default
 
 	# freeipmi by defaults install _all_ commands to /usr/sbin, but
 	# quite a few can be run remotely as standard user, so move them
