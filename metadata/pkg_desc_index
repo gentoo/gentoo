@@ -1153,10 +1153,10 @@ app-office/kexi 3.0.2: Visual database applications creator
 app-office/kmymoney 4.8.1.1-r1: Personal finance manager by KDE
 app-office/ledger 3.1.1: A double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 5.0.0: Library with common classes and functionality used by KDE finance applications
-app-office/libreoffice 5.4.2.2 5.4.4.2: A full office productivity suite
+app-office/libreoffice 5.4.4.2: A full office productivity suite
 app-office/libreoffice-bin 5.4.2.2 5.4.2.2-r1: A full office productivity suite. Binary package
 app-office/libreoffice-bin-debug 5.4.2.2 5.4.2.2-r1: LibreOffice, a full office productivity suite. Binary package, debug info
-app-office/libreoffice-l10n 5.4.2.2 5.4.4.2: Translations for the Libreoffice suite
+app-office/libreoffice-l10n 5.4.4.2: Translations for the Libreoffice suite
 app-office/lyx 2.0.8.1-r1 2.1.5-r1 2.2.3-r1: WYSIWYM frontend for LaTeX, DocBook, etc.
 app-office/mdbtools 0.7.1-r2: Set of libraries and utilities for reading Microsoft Access database (MDB) files
 app-office/ooextras 20060909: OOExtras: Extra Templates for OpenOffice.org!
@@ -3057,7 +3057,7 @@ dev-libs/libgnome-games-support 1.2.3: Library for code common to Gnome games
 dev-libs/libgpg-error 1.27-r1: Contains error handling functions used by GnuPG software
 dev-libs/libgudev 232: GObject bindings for libudev
 dev-libs/libgusb 0.2.11: GObject wrapper for libusb
-dev-libs/libgweather 3.20.4 3.24.1: Library to access weather information from online services
+dev-libs/libgweather 3.24.1: Library to access weather information from online services
 dev-libs/libical 1.0.1 2.0.0-r2 2.0.0-r3: An implementation of basic iCAL protocols
 dev-libs/libiconv 1.14 1.14-r1: GNU charset conversion library for libc which doesn't implement it
 dev-libs/libindicate 12.10.1-r2: A library to raise flags on DBus for other components of the desktop
@@ -5184,7 +5184,7 @@ dev-python/pyalsaaudio 0.7-r2 0.8.2: A Python wrapper for the ALSA API
 dev-python/pyao 0.82-r3: Python bindings for the libao library
 dev-python/pyasn1 0.2.3: ASN.1 library for Python
 dev-python/pyasn1-modules 0.0.5-r1 0.0.8: pyasn1 modules
-dev-python/pyatspi 2.20.3 2.24.0: Python binding to at-spi library
+dev-python/pyatspi 2.24.0: Python binding to at-spi library
 dev-python/pyaudio 0.2.11: Python bindings for PortAudio
 dev-python/pyblake2 0.9.3-r1 1.1.0: BLAKE2 hash function extension module
 dev-python/pybloomfiltermmap 0.3.11-r1: A Bloom filter (bloomfilter) for Python built on mmap
@@ -6134,7 +6134,7 @@ dev-util/debootstrap 1.0.87 1.0.89: Debian/Ubuntu bootstrap scripts
 dev-util/debugedit 5.3.5-r1: standalone debugedit taken from rpm
 dev-util/dejagnu 1.4.4-r3: framework for testing other programs
 dev-util/desktop-file-utils 0.23: Command line utilities to work with desktop menu entries
-dev-util/devhelp 3.22.0 3.24.0: An API documentation browser for GNOME
+dev-util/devhelp 3.24.0: An API documentation browser for GNOME
 dev-util/dialog 1.3.20160828 1.3.20170131: tool to display dialog boxes from a shell
 dev-util/diffball 1.0.1: Delta compression suite for using/generating binary patches
 dev-util/difffilter 0.3.3: Filter files out of unified diffs using POSIX extended regular expressions
@@ -6313,12 +6313,12 @@ dev-vcs/topgit 0.9: A different patch queue manager
 dev-vcs/tortoisehg 4.4.1-r1: Set of graphical tools for Mercurial
 dev-vcs/vcsh 1.20151229.1: Manage config files in $HOME via fake bare git repositories
 games-action/supermariowar 2.0_beta1-r1: Fan-made multiplayer Super Mario Bros. style deathmatch game
-games-arcade/gnome-nibbles 3.22.2.2 3.24.0: Nibbles clone for Gnome
+games-arcade/gnome-nibbles 3.24.0: Nibbles clone for Gnome
 games-arcade/gnome-robots 3.22.2: Avoid the robots and make them crash into each other
 games-board/four-in-a-row 3.22.2: Make lines of the same color to win
-games-board/gnome-chess 3.22.2 3.24.1: Play the classic two-player boardgame of chess
+games-board/gnome-chess 3.24.1: Play the classic two-player boardgame of chess
 games-board/gnome-mahjongg 3.22.0: Disassemble a pile of tiles by removing matching pairs
-games-board/gnome-mines 3.20.1 3.22.2 3.24.0: Clear hidden mines from a minefield
+games-board/gnome-mines 3.20.1 3.24.0: Clear hidden mines from a minefield
 games-board/gnuchess 6.2.4: Console based chess interface
 games-board/gnugo 3.9.1-r1: A Go-playing program
 games-board/iagno 3.22.0: Dominate the board in a classic version of Reversi
@@ -6338,13 +6338,13 @@ games-misc/xcowsay 1.3: configurable talking graphical cow (inspired by cowsay)
 games-mud/gnome-mud 0.11.2-r2: GNOME MUD client
 games-puzzle/five-or-more 3.22.2: Five or More Game for GNOME
 games-puzzle/gnome-klotski 3.22.2: Slide blocks to solve the puzzle
-games-puzzle/gnome-sudoku 3.22.2 3.24.0: Test your logic skills in this number grid puzzle
+games-puzzle/gnome-sudoku 3.24.0: Test your logic skills in this number grid puzzle
 games-puzzle/gnome-taquin 3.22.0: Move tiles so that they reach their places
 games-puzzle/gnome-tetravex 3.22.0: Complete the puzzle by matching numbered tiles
 games-puzzle/hitori 3.22.4: Logic puzzle game for GNOME
-games-puzzle/lightsoff 3.22.2 3.24.0: Turn off all the lights
+games-puzzle/lightsoff 3.24.0: Turn off all the lights
 games-puzzle/quadrapassel 3.22.0: Fit falling blocks together
-games-puzzle/swell-foop 3.22.2 3.24.0: Clear the screen by removing groups of colored and shaped tiles
+games-puzzle/swell-foop 3.24.0: Clear the screen by removing groups of colored and shaped tiles
 games-strategy/seven-kingdoms 2.14.4: Seven Kingdoms: Ancient Adversaries
 games-util/pogo-manager-bin 0.1.6: Pokemon Go manager
 games-util/qstat 2.11: Server statics collector supporting many FPS games
