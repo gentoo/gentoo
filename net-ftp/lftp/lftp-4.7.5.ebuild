@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils libtool
+inherit autotools eutils libtool multilib
 
 DESCRIPTION="A sophisticated ftp/sftp/http/https/torrent client and file transfer program"
 HOMEPAGE="https://lftp.tech/"
@@ -76,6 +76,7 @@ src_configure() {
 		$(usex ssl "$(use_with !gnutls openssl ${EPREFIX}/usr)" '--without-openssl') \
 		$(usex ssl "$(use_with gnutls)" '--without-gnutls') \
 		--enable-packager-mode \
+		--libdir="${EPREFIX}/usr/$(get_libdir)" \
 		--sysconfdir="${EPREFIX}"/etc/${PN} \
 		--with-modules \
 		--with-readline="${EPREFIX}"/usr \
