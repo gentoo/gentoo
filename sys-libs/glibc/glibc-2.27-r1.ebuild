@@ -657,7 +657,7 @@ sanity_prechecks() {
 			local STAT=$?
 			rm -f "${T}/check-ia32-emulation.elf32"
 			eend $STAT
-			[ $STAT -eq 0 ] || die "CONFIG_IA32_EMULATION must be enabled in the kernel to compile a multilib glibc."
+			[[ $STAT -eq 0 ]] || die "CONFIG_IA32_EMULATION must be enabled in the kernel to compile a multilib glibc."
 		fi
 
 	fi
