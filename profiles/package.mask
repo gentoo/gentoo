@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (03 Feb 2018)
+# Depends on deprecated Qt4, unmaintained, no one bothers to bump.
+# Masked for removal in 30 days. Bug #464658
+sys-apps/ultracopier
+
 # Andreas Sturmlechner <asturm@gentoo.org> (31 Jan 2018)
 # Dead upstream, depends on deprecated Qt4.
 # Masked for removal in 30 days. Bug #646182
