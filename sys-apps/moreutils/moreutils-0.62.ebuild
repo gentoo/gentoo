@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="https://dev.gentoo.org/~radhermit/dist/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 hppa ~ppc ~ppc64 x86 ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~x86 ~x86-linux"
 IUSE="+doc +perl"
 
 RDEPEND="
@@ -45,7 +45,7 @@ src_prepare() {
 
 src_compile() {
 	tc-export CC
-	emake CFLAGS="${CFLAGS}" DOCBOOK2XMAN=docbook2man.pl PREFIX="${EPREFIX}/usr"
+	emake CFLAGS="${CFLAGS}" DOCBOOKXSL=/usr/share/sgml/docbook/xsl-stylesheets PREFIX="${EPREFIX}/usr"
 }
 
 src_install() {
