@@ -1156,7 +1156,7 @@ app-office/libalkimia 5.0.0: Library with common classes and functionality used 
 app-office/libreoffice 5.4.4.2: A full office productivity suite
 app-office/libreoffice-bin 5.4.2.2 5.4.2.2-r1: A full office productivity suite. Binary package
 app-office/libreoffice-bin-debug 5.4.2.2 5.4.2.2-r1: LibreOffice, a full office productivity suite. Binary package, debug info
-app-office/libreoffice-l10n 5.4.4.2: Translations for the Libreoffice suite
+app-office/libreoffice-l10n 5.4.2.2 5.4.4.2: Translations for the Libreoffice suite
 app-office/lyx 2.0.8.1-r1 2.1.5-r1 2.2.3-r1: WYSIWYM frontend for LaTeX, DocBook, etc.
 app-office/mdbtools 0.7.1-r2: Set of libraries and utilities for reading Microsoft Access database (MDB) files
 app-office/ooextras 20060909: OOExtras: Extra Templates for OpenOffice.org!
