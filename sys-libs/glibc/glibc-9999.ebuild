@@ -12,6 +12,8 @@ LICENSE="LGPL-2.1+ BSD HPND ISC inner-net rc PCRE"
 RESTRICT="strip" # Strip ourself #46186
 SLOT="2.2"
 
+EMULTILIB_PKG="true"
+
 if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="https://sourceware.org/git/glibc.git"
 	inherit git-r3
