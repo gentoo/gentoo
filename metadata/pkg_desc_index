@@ -8540,7 +8540,7 @@ net-libs/enet 1.2.2-r1 1.3.7 1.3.13: relatively thin, simple and robust network 
 net-libs/farstream 0.1.2-r2 0.2.8-r1: Audio/video conferencing framework specifically designed for instant messengers
 net-libs/glib-networking 2.50.0: Network-related giomodules for glib
 net-libs/gnet 2.0.8-r2: A simple network library
-net-libs/gnome-online-accounts 3.22.7 3.24.4: GNOME framework for accessing online accounts
+net-libs/gnome-online-accounts 3.24.4: GNOME framework for accessing online accounts
 net-libs/gnutls 3.5.15: A TLS 1.2 and SSL 3.0 implementation for the GNU project
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
 net-libs/gsoap 2.8.51: A cross-platform open source C and C++ SDK for SOAP/XML Web services
@@ -8773,7 +8773,7 @@ net-misc/freerdp 1.2.1_pre20150326-r1 2.0.0_rc0: Free implementation of the Remo
 net-misc/gcap 0.1.1-r1: Command line tool for downloading Youtube closed captions
 net-misc/geoipupdate 2.3.1: performs automatic updates of GeoIP2 and GeoIP Legacy binary databases
 net-misc/getdate 1.2-r1: Network Date/Time Query and Set Local Date/Time Utility
-net-misc/gnome-online-miners 3.22.0 3.24.0: Crawls through your online content
+net-misc/gnome-online-miners 3.24.0: Crawls through your online content
 net-misc/gofish 1.2: Gofish gopher server
 net-misc/grdesktop 0.23-r1: Gtk2 frontend for rdesktop
 net-misc/gsasl 1.8.0-r1: The GNU SASL client, server, and library
@@ -8877,7 +8877,7 @@ net-misc/rdesktop 1.8.3: A Remote Desktop Protocol Client
 net-misc/remmina 1.2.0_rc24: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
 net-misc/rsync 3.1.2-r2: File transfer program to keep remote files into sync
-net-misc/rygel 0.32.1 0.34.0: Rygel is an open source UPnP/DLNA MediaServer
+net-misc/rygel 0.34.0: Rygel is an open source UPnP/DLNA MediaServer
 net-misc/s3cmd 1.6.1: Command line client for Amazon S3
 net-misc/scponly 4.8-r5: A tiny pseudoshell which only permits scp and sftp
 net-misc/secpanel 0.6.1-r1: Graphical frontend for managing and running SSH and SCP connections
@@ -9038,7 +9038,7 @@ net-voip/linphone 3.5.2: Video softphone based on the SIP protocol
 net-voip/telepathy-gabble 0.18.4: A XMPP connection manager, handles single and multi user chats and voice calls
 net-voip/telepathy-haze 0.8.0-r1 0.8.0-r2: Telepathy connection manager providing libpurple supported protocols
 net-voip/telepathy-rakia 0.8.0: A SIP connection manager for Telepathy based around the Sofia-SIP library
-net-voip/telepathy-salut 0.8.1 0.8.1-r1: A link-local XMPP connection manager for Telepathy
+net-voip/telepathy-salut 0.8.1-r1: A link-local XMPP connection manager for Telepathy
 net-vpn/6tunnel 0.12: TCP proxy for applications that don't speak IPv6
 net-vpn/aiccu 2007.01.15-r5: AICCU Client to configure an IPv6 tunnel to SixXS
 net-vpn/badvpn 1.999.127 1.999.129: Peer-to-peer VPN, NCD scripting language, tun2socks proxifier
@@ -9216,9 +9216,9 @@ sci-electronics/xnec2c 3.5.1: A GTK+ graphical interactive version of nec2c
 sci-electronics/xoscope 2.0: Soundcard Oscilloscope for X
 sci-geosciences/congen 1.6.2: Calculate speeds, equilibrium arguments, node factors of tidal constituents
 sci-geosciences/foxtrotgps 1.2.0: Easy to use, fast and lightweight mapping application (fork of tangogps)
-sci-geosciences/geocode-glib 3.20.1 3.24.0: GLib geocoding library that uses the Yahoo! Place Finder service
+sci-geosciences/geocode-glib 3.24.0: GLib geocoding library that uses the Yahoo! Place Finder service
 sci-geosciences/gmt 4.5.6: Powerful map generator
-sci-geosciences/gnome-maps 3.22.2 3.24.3: A map application for GNOME
+sci-geosciences/gnome-maps 3.24.3: A map application for GNOME
 sci-geosciences/gpsbabel 1.5.4-r1: GPS waypoints, tracks and routes converter
 sci-geosciences/gpsd 3.10 3.16 3.17 3.17-r2: GPS daemon and library for USB/serial GPS devices and GPS/mapping clients
 sci-geosciences/gtk-g-rays2 2.05: GUI for accessing the Wintec WBT 201 / G-Rays 2 GPS device
