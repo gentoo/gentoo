@@ -15,8 +15,5 @@ sys-devel/llvm sanitize
 sys-devel/gettext nls
 sys-fs/e2fsprogs nls
 
-# Broken
-dev-vcs/git gpg
-
 # See bug #576928
 media-libs/mesa nptl
