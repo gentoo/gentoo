@@ -7171,7 +7171,7 @@ media-gfx/dpic 20130310: Converts PIC plots into pstricks, PGF/TikZ, PostScript,
 media-gfx/duhdraw 2.8.13-r1: ASCII art editor
 media-gfx/ebdftopcf 2: ebdftopcf optimially generators PCF files from BDF files
 media-gfx/enblend 4.1.3-r1 4.2.0_p20161007-r1: Image Blending with Multiresolution Splines
-media-gfx/eog 3.20.5 3.24.1: The Eye of GNOME image viewer
+media-gfx/eog 3.24.1: The Eye of GNOME image viewer
 media-gfx/eog-plugins 3.16.6: Eye of GNOME plugins
 media-gfx/eom 1.12.2-r3: The MATE image viewer
 media-gfx/evoluspencil 2.0.5: A simple GUI prototyping tool to create mockups
@@ -7198,8 +7198,8 @@ media-gfx/gimp 2.8.22 2.8.22-r1: GNU Image Manipulation Program
 media-gfx/gimp-arrow-brushes 20120122: Brushes for GIMP with the styles arrow, handpointer, button arrow and cursor
 media-gfx/gliv 1.9.6 1.9.7: An image viewer that uses OpenGL
 media-gfx/gnofract4d 3.14-r1: A program for drawing beautiful mathematically-based images known as fractals
-media-gfx/gnome-font-viewer 3.22.0 3.24.0: Font viewer for GNOME
-media-gfx/gnome-photos 3.22.6 3.24.5: Access, organize and share your photos on GNOME
+media-gfx/gnome-font-viewer 3.24.0: Font viewer for GNOME
+media-gfx/gnome-photos 3.24.5: Access, organize and share your photos on GNOME
 media-gfx/gnome-raw-thumbnailer 3.0.0: A lightweight and fast raw image thumbnailer for GNOME
 media-gfx/gnome-screenshot 3.22.0: Screenshot utility for GNOME
 media-gfx/gozer 0.7-r2: tool for rendering arbitrary text as graphics, using ttfs and styles
@@ -7287,7 +7287,7 @@ media-gfx/scour 0.36: Take an SVG file and produce a cleaner and more concise fi
 media-gfx/scrot 0.8_p13: Screen capture utility using imlib2 library
 media-gfx/sfftobmp 3.1.2-r1: sff to bmp converter
 media-gfx/shotwell 0.24.6: Open source photo manager for GNOME
-media-gfx/simple-scan 3.22.0.1 3.24.1: Simple document scanning utility
+media-gfx/simple-scan 3.24.1: Simple document scanning utility
 media-gfx/splash-themes-gentoo 20101212-r1: A collection of Gentoo themes for splashutils
 media-gfx/splash-themes-livecd 2004.3 2005.0 2005.1 2006.0 2006.1 2007.0-r3: Gentoo theme for gensplash consoles
 media-gfx/splashutils 1.5.4.4-r7: Framebuffer splash utilities
@@ -7915,8 +7915,8 @@ media-sound/gmorgan 0.79-r1: Opensource software rhythm station
 media-sound/gmpc 11.8.16-r1: A GTK+2 client for the Music Player Daemon
 media-sound/gmusicbrowser 1.1.15-r3: An open-source jukebox for large collections of mp3/ogg/flac files
 media-sound/gnomad 2.9.6: A GTK+ music manager and swiss army knife for the Portable Digital Entertainment (PDE) protocol
-media-sound/gnome-music 3.22.2-r1 3.24.2: Music management for Gnome
-media-sound/gnome-sound-recorder 3.21.92 3.24.0.1: Simple sound recorder
+media-sound/gnome-music 3.24.2: Music management for Gnome
+media-sound/gnome-sound-recorder 3.24.0.1: Simple sound recorder
 media-sound/gnump3d 3.0-r1: A streaming server for MP3, OGG vorbis and other streamable files
 media-sound/gom 0.29.103-r1: Console Mixer Program for OSS
 media-sound/gramofile 1.6-r1: Transfer sound from gramophone records to CD
@@ -8043,7 +8043,7 @@ media-sound/sidplay 2.0.9: C64 SID player
 media-sound/smixer 1.0.4: command-line tool for setting and viewing mixer settings
 media-sound/solfege 3.22.2: GNU Solfege is a program written to help you practice ear training
 media-sound/sonata 1.6.2.1-r1: An elegant GTK+ music client for the Music Player Daemon (MPD)
-media-sound/sound-juicer 3.22.1 3.24.0: CD ripper for GNOME
+media-sound/sound-juicer 3.24.0: CD ripper for GNOME
 media-sound/soundconverter 2.1.6: A simple audiofile converter application for the GNOME environment
 media-sound/sox 14.4.2: The swiss army knife of sound processing programs
 media-sound/split2flac 122: sh script to split an APE/FLAC/WV/WAV audio image with CUE sheet into tracks
@@ -8114,7 +8114,7 @@ media-video/camorama 0.19-r2: A webcam application featuring various image filte
 media-video/ccextractor 0.59: Extract closed captioning subtitles from video to SRT
 media-video/cclive 0.9.3-r2: Command line tool for extracting videos from various websites
 media-video/chaplin 1.10-r2: This is a program to raw copy chapters from a dvd using libdvdread
-media-video/cheese 3.22.1 3.24.0: A cheesy program to take pictures and videos from your webcam
+media-video/cheese 3.24.0: A cheesy program to take pictures and videos from your webcam
 media-video/cinelerra 2.3: The most advanced non-linear video editor and compositor
 media-video/clive 2.3.0.1: Command line tool for extracting videos from various websites
 media-video/cpdvd 1.10-r1: transfer a DVD title to your harddisk with ease on Linux
@@ -8186,7 +8186,7 @@ media-video/subliminal 2.0.5-r1: Python library to search and download subtitles
 media-video/subtitlecomposer 0.6.4: Text-based subtitles editor
 media-video/subtitleeditor 0.54.0: GTK+3 subtitle editing tool
 media-video/subtitleripper 0.3.4-r4: DVD Subtitle Ripper for Linux
-media-video/totem 3.22.1-r1 3.24.0: Media player for GNOME
+media-video/totem 3.24.0: Media player for GNOME
 media-video/tovid 0.35.2-r1: A collection of DVD authoring tools
 media-video/transcode 1.1.7-r3: A suite of utilities for transcoding video and audio codecs in different containers
 media-video/ttcut 0.19.6-r3 0.19.6_p1: Tool for cutting MPEG files especially for removing commercials
@@ -8508,7 +8508,7 @@ net-irc/kvirc 5.0_pre20171001143427: Advanced IRC Client
 net-irc/ngircd 23-r1 24: An IRC server written from scratch
 net-irc/ninja 1.5.9_pre14-r1: Ninja IRC Client
 net-irc/pisg 0.73-r1: Perl IRC Statistics Generator
-net-irc/polari 3.22.2 3.24.2: An IRC client for Gnome
+net-irc/polari 3.24.2: An IRC client for Gnome
 net-irc/quassel 0.12.4: Qt/KDE IRC client supporting a remote daemon for 24/7 connectivity
 net-irc/rhapsody 0.28b: IRC client intended to be displayed on a text console
 net-irc/savirc 1.99-r1: User friendly IRC client with unicode support and tcl/tk scripting
