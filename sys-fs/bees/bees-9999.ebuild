@@ -26,15 +26,16 @@ LICENSE="GPL-3"
 SLOT="0"
 IUSE="tools test"
 
-RDEPEND=">=sys-apps/util-linux-2.30.2"
-DEPEND="$RDEPEND >=sys-fs/btrfs-progs-4.1"
-
-DOCS="README.md COPYING"
+DEPEND="
+	>=sys-apps/util-linux-2.30.2
+	>=sys-fs/btrfs-progs-4.1
+"
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != buildonly ]]; then
 		if kernel_is -lt 4 4 3; then
-			ewarn "Kernel versions below 4.4.3 lack support for bees, it won't work."
+			ewarn "Kernel versions below 4.4.3 lack critical features needed for bees to"
+			ewarn "properly operate, so it won't work."
 		fi
 		if kernel_is -lt 4 11; then
 			ewarn "With kernel versions below 4.11, bees may severely degrade system performance"
@@ -52,5 +53,7 @@ src_configure() {
 		LIBDIR=$(get_libdir)
 		DEFAULT_MAKE_TARGET=all
 	EOF
-	use tools && echo OPTIONAL_INSTALL_TARGETS=install_tools >>localconf || die
+	if use tools; then
+		echo OPTIONAL_INSTALL_TARGETS=install_tools >>localconf || die
+	fi
 }
