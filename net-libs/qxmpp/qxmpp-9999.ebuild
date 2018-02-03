@@ -28,21 +28,25 @@ DEPEND="${RDEPEND}
 	test? ( dev-qt/qttest:5 )
 "
 
-src_prepare(){
+src_prepare() {
+	default
+
 	if ! use doc; then
-		sed -i \
-			-e '/SUBDIRS/s/doc//' \
+		sed -e '/SUBDIRS/s/doc//' \
 			-e '/INSTALLS/d' \
-			qxmpp.pro || die "sed for removing docs failed"
+			-i qxmpp.pro || die "failed to remove docs"
 	fi
 	if ! use test; then
-		sed -i -e '/SUBDIRS/s/tests//' \
-			qxmpp.pro || die "sed for removing tests failed"
+		sed -e '/SUBDIRS/s/tests//' \
+			-i qxmpp.pro || die "failed to remove tests"
+	else
+		# requires network connection, bug #623708
+		sed -e "/qxmppiceconnection/d" \
+			-i tests/tests.pro || die "failed to drop single test"
 	fi
 	# There is no point in building examples. Also, they require dev-qt/qtgui
-	sed -i -e '/SUBDIRS/s/examples//' \
-			qxmpp.pro || die "sed for removing examples failed"
-	default_src_prepare
+	sed -e '/SUBDIRS/s/examples//' \
+		-i qxmpp.pro || die "sed for removing examples failed"
 }
 
 src_configure() {
