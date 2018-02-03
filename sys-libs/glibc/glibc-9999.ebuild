@@ -648,16 +648,22 @@ sanity_prechecks() {
 	# ABI-specific checks follow here. Hey, we have a lot more specific conditions that
 	# we test for...
 	if ! is_crosscompile ; then
-
 		if use amd64 && use multilib && [[ ${MERGE_TYPE} != "binary" ]] ; then
 			ebegin "Checking that IA32 emulation is enabled in the running kernel"
 			echo 'int main(){return 0;}' > "${T}/check-ia32-emulation.c"
-			"${CC-${CHOST}-gcc}" ${CFLAGS_x86} "${T}/check-ia32-emulation.c" -o "${T}/check-ia32-emulation.elf32"
-			"${T}/check-ia32-emulation.elf32"
-			local STAT=$?
+			local STAT
+			if "${CC-${CHOST}-gcc}" ${CFLAGS_x86} "${T}/check-ia32-emulation.c" -o "${T}/check-ia32-emulation.elf32"; then
+				"${T}/check-ia32-emulation.elf32"
+				STAT=$?
+			else
+				# Don't fail here to allow single->multi ABI switch
+				# or recover from breakage like bug #646424
+				ewarn "Failed to compile the ABI test. Broken host glibc?"
+				STAT=0
+			fi
 			rm -f "${T}/check-ia32-emulation.elf32"
 			eend $STAT
-			[ $STAT -eq 0 ] || die "CONFIG_IA32_EMULATION must be enabled in the kernel to compile a multilib glibc."
+			[[ $STAT -eq 0 ]] || die "CONFIG_IA32_EMULATION must be enabled in the kernel to compile a multilib glibc."
 		fi
 
 	fi
