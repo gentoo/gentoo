@@ -35,7 +35,6 @@ HTML_DOCS="README.html"
 src_configure() {
 	default
 	localconf=${S}/localconf
-	echo PREFIX=/ >${localconf} || die
 	echo LIBEXEC_PREFIX=/usr/libexec >>${localconf} || die
 	echo LIBDIR=$(get_libdir) >>${localconf} || die
 	echo DEFAULT_MAKE_TARGET=all >>${localconf} || die
