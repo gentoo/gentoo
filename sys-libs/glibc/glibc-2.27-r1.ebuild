@@ -704,8 +704,6 @@ sanity_prechecks() {
 # pkg_pretend
 
 pkg_pretend() {
-	die "DONT TRY TO USE; BROKEN ON AMD64 MULTILIB."
-
 	# All the checks...
 	einfo "Checking general environment sanity."
 	sanity_prechecks
