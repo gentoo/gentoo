@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare
+DEPEND=dev-libs/glib:2= >=media-gfx/exiv2-0.11:0= media-libs/lcms:2= >=media-libs/lensfun-0.2.5:= media-libs/libpng:0= media-libs/tiff:0= virtual/jpeg:0= fits? ( sci-libs/cfitsio:0= ) gimp? ( >=media-gfx/gimp-2 ) gnome? ( >=gnome-base/gconf-2 ) gtk? ( >=media-gfx/gtkimageview-1.5 >=x11-libs/gtk+-2.6:2 ) jpeg2k? ( media-libs/jasper:= ) virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4
+DESCRIPTION=RAW Image format viewer and GIMP plugin
+EAPI=6
+HOMEPAGE=http://ufraw.sourceforge.net/
+IUSE=contrast fits gimp gnome gtk jpeg2k openmp timezone
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris
+LICENSE=GPL-2
+RDEPEND=dev-libs/glib:2= >=media-gfx/exiv2-0.11:0= media-libs/lcms:2= >=media-libs/lensfun-0.2.5:= media-libs/libpng:0= media-libs/tiff:0= virtual/jpeg:0= fits? ( sci-libs/cfitsio:0= ) gimp? ( >=media-gfx/gimp-2 ) gnome? ( >=gnome-base/gconf-2 ) gtk? ( >=media-gfx/gtkimageview-1.5 >=x11-libs/gtk+-2.6:2 ) jpeg2k? ( media-libs/jasper:= )
+REQUIRED_USE=gimp? ( gtk )
+SLOT=0
+SRC_URI=mirror://sourceforge/ufraw/ufraw-0.22.tar.gz
+_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	gnome2-utils	4d211d7614f303710fca59db6ec12c88	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=cafb12d2f98d28f3ef3bec65e02b82d2
