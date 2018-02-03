@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit cmake-utils
 
 DESCRIPTION="BitTorrent client in C++ and Qt"
-HOMEPAGE="http://www.qbittorrent.org/"
+HOMEPAGE="https://www.qbittorrent.org/"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
