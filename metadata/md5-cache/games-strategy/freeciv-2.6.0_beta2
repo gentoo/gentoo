@@ -7,6 +7,6 @@ IUSE=auth aimodules dedicated +gtk ipv6 mapimg modpack mysql nls qt5 readline sd
 LICENSE=GPL-2+
 RDEPEND=app-arch/bzip2 app-arch/xz-utils net-misc/curl sys-libs/zlib auth? ( mysql? ( virtual/mysql ) sqlite? ( dev-db/sqlite:3 ) !mysql? ( ( !sqlite? ( virtual/mysql ) ) ) ) readline? ( sys-libs/readline:0= ) dedicated? ( aimodules? ( dev-libs/libltdl:0 ) ) !dedicated? ( media-libs/libpng:0 gtk? ( x11-libs/gtk+:2 ) mapimg? ( media-gfx/imagemagick:= ) modpack? ( x11-libs/gtk+:2 ) nls? ( virtual/libintl ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 ) sdl? ( media-libs/libsdl2[video] media-libs/sdl2-gfx media-libs/sdl2-image[png] media-libs/sdl2-ttf ) server? ( aimodules? ( sys-devel/libtool:2 ) ) sound? ( media-libs/libsdl2[sound] media-libs/sdl2-mixer[vorbis] ) !sdl? ( !gtk? ( x11-libs/gtk+:2 ) ) ) system-lua? ( >=dev-lang/lua-5.3 )
 SLOT=0
-SRC_URI=mirror://sourceforge/freeciv/freeciv-2.6.0-beta1.tar.bz2
+SRC_URI=mirror://sourceforge/freeciv/freeciv-2.6.0-beta2.tar.bz2
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	flag-o-matic	02908f00f002f0f07c5b74783d778325	gnome2-utils	4d211d7614f303710fca59db6ec12c88	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=69c941d3881b7e56e95b39826a923ca0
+_md5_=6d32ae42e2c8a477de189dc5a86d559a
