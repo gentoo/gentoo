@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,8 +6,8 @@ EAPI=6
 inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="a lightweight PDF viewer and toolkit written in portable C"
-HOMEPAGE="http://mupdf.com/"
-SRC_URI="http://mupdf.com/downloads/${P}-source.tar.gz"
+HOMEPAGE="https://mupdf.com/"
+SRC_URI="https://mupdf.com/downloads/${P}-source.tar.gz"
 
 LICENSE="AGPL-3"
 SLOT="0/${PV}"
@@ -96,8 +96,8 @@ src_prepare() {
 		cp -a "${S}" "${S}"-static || die
 		#add missing Libs.private for xcb and freetype
 		sed -e 's:\(pkg-config --libs\):\1 --static:' \
-		    -e '/^SYS_X11_LIBS = /s:\(.*\):\1 -lpthread:' \
-		    -e '/^SYS_FREETYPE_LIBS = /s:\(.*\):\1 -lbz2:' \
+			-e '/^SYS_X11_LIBS = /s:\(.*\):\1 -lpthread:' \
+			-e '/^SYS_FREETYPE_LIBS = /s:\(.*\):\1 -lbz2:' \
 			-i "${S}"-static/Makerules || die
 	fi
 
