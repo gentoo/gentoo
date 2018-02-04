@@ -8,4 +8,4 @@ LICENSE=GPL-2
 PDEPEND=unconfined? ( sec-policy/selinux-unconfined )
 SLOT=0
 _eclasses_=git-r3	fec09a83ae965b041b47f5ff7c8ba29a
-_md5_=c557bdd20e8a3139c6f4f2452281aedb
+_md5_=6f790b3ecba41f2c537e2ffa0aeeb79c

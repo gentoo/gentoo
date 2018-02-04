@@ -4,9 +4,9 @@ DESCRIPTION=Gentoo base policy for SELinux
 EAPI=6
 HOMEPAGE=https://www.gentoo.org/proj/en/hardened/selinux/
 IUSE=doc +open_perms +peer_perms systemd +ubac +unconfined
-KEYWORDS=~amd64 -arm ~arm64 ~mips ~x86
+KEYWORDS=amd64 -arm ~arm64 ~mips x86
 LICENSE=GPL-2
 RDEPEND=>=sys-apps/policycoreutils-2.7 virtual/udev
 SLOT=0
 SRC_URI=https://raw.githubusercontent.com/wiki/TresysTechnology/refpolicy/files/refpolicy-2.20180114.tar.bz2 https://dev.gentoo.org/~swift/patches/selinux-base-policy/patchbundle-selinux-base-policy-2.20180114-r1.tar.bz2
-_md5_=3cf31ae8114d14f69870f0b6fc7ac855
+_md5_=e00a4283ee57318b42379c7cb2861817

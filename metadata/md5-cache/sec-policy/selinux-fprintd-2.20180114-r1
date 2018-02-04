@@ -3,10 +3,10 @@ DEPEND=sec-policy/selinux-dbus >=sys-apps/policycoreutils-2.0.82 >=sec-policy/se
 DESCRIPTION=SELinux policy for fprintd
 EAPI=6
 HOMEPAGE=https://wiki.gentoo.org/wiki/Project:SELinux
-KEYWORDS=~amd64 -arm ~arm64 ~mips ~x86
+KEYWORDS=amd64 -arm ~arm64 ~mips x86
 LICENSE=GPL-2
 RDEPEND=sec-policy/selinux-dbus >=sys-apps/policycoreutils-2.0.82 >=sec-policy/selinux-base-policy-2.20180114-r1
 SLOT=0
 SRC_URI=https://raw.githubusercontent.com/wiki/TresysTechnology/refpolicy/files/refpolicy-2.20180114.tar.bz2 https://dev.gentoo.org/~swift/patches/selinux-base-policy/patchbundle-selinux-base-policy-2.20180114-r1.tar.bz2
 _eclasses_=selinux-policy-2	426dde83b8cbb78f4bf8e9edf7715355
-_md5_=9d0c5b63e5707d085809b28c19c55ecb
+_md5_=a05891ee3959752ca36a9d0894577a57

@@ -9,4 +9,4 @@ LICENSE=GPL-2
 PDEPEND=unconfined? ( sec-policy/selinux-unconfined )
 SLOT=0
 SRC_URI=https://raw.githubusercontent.com/wiki/TresysTechnology/refpolicy/files/refpolicy-2.20170805.tar.bz2 https://dev.gentoo.org/~swift/patches/selinux-base-policy/patchbundle-selinux-base-policy-2.20170805-r4.tar.bz2
-_md5_=9f877a91032bc051ba67ec6a7a2b1540
+_md5_=6f790b3ecba41f2c537e2ffa0aeeb79c
