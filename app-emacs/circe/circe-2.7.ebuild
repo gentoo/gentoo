@@ -8,7 +8,7 @@ inherit elisp
 
 DESCRIPTION="A great IRC client for Emacs"
 HOMEPAGE="https://github.com/jorgenschaefer/circe
-	http://www.emacswiki.org/emacs/Circe"
+	https://www.emacswiki.org/emacs/Circe"
 SRC_URI="https://github.com/jorgenschaefer/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
