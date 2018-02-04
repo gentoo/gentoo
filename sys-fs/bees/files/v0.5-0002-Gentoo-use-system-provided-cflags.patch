@@ -12,11 +12,11 @@ index 250ebee..1fdb71a 100644
 --- a/makeflags
 +++ b/makeflags
 @@ -1,4 +1,3 @@
--CCFLAGS  = -Wall -Wextra -Werror -O3 -march=native -I../include -ggdb -flto -D_FILE_OFFSET_BITS=64
--# CCFLAGS  = -Wall -Wextra -Werror -O0 -I../include -ggdb -D_FILE_OFFSET_BITS=64
+-CCFLAGS  = -Wall -Wextra -Werror -O3 -march=native -I../include -ggdb -D_FILE_OFFSET_BITS=64
+-# CCFLAGS  = -Wall -Wextra -Werror -O0 -I../include -ggdb -fpic -D_FILE_OFFSET_BITS=64
 -CFLAGS   = $(CCFLAGS) -std=c99
 -CXXFLAGS = $(CCFLAGS) -std=c++11 -Wold-style-cast
-+CCFLAGS  = -flto -I../include -D_FILE_OFFSET_BITS=64
++CCFLAGS  = -I../include -fpic -D_FILE_OFFSET_BITS=64
 +CFLAGS   += $(CCFLAGS) -std=c99
 +CXXFLAGS += $(CCFLAGS) -std=c++11 -Wold-style-cast
 -- 

@@ -6,6 +6,7 @@
 	<name>Kai Krakow</name>
 </maintainer>
 <use>
+	<flag name="lto">Adds support for link time optimization</flag>
 	<flag name="tools">Build extra tools useful for debugging (fiemap, feiwalk, beestop)</flag>
 </use>
 <upstream>

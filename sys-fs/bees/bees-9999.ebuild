@@ -24,7 +24,7 @@ PATCHES=(
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="tools test"
+IUSE="lto tools test"
 
 DEPEND="
 	>=sys-apps/util-linux-2.30.2
@@ -56,5 +56,8 @@ src_configure() {
 	EOF
 	if use tools; then
 		echo OPTIONAL_INSTALL_TARGETS=install_tools >>localconf || die
+	fi
+	if use lto; then
+		sed -e's/^CCFLAGS.*/\0 -flto/' -i makeflags
 	fi
 }
