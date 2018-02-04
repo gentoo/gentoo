@@ -30,14 +30,15 @@ DEPEND="
 	>=sys-apps/util-linux-2.30.2
 	>=sys-fs/btrfs-progs-4.1
 "
+RDEPEND="${DEPEND}"
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != buildonly ]]; then
 		if kernel_is -lt 4 4 3; then
 			ewarn "Kernel versions below 4.4.3 lack critical features needed for bees to"
-			ewarn "properly operate, so it won't work."
-		fi
-		if kernel_is -lt 4 11; then
+			ewarn "properly operate, so it won't work. It's recommended to run at least"
+			ewarn "kernel version 4.11 for best performance and reliability."
+		elif kernel_is -lt 4 11; then
 			ewarn "With kernel versions below 4.11, bees may severely degrade system performance"
 			ewarn "and responsiveness. Especially, the kernel may deadlock while bees is"
 			ewarn "running, it's recommended to run at least kernel 4.11."
