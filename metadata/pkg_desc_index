@@ -7920,7 +7920,7 @@ media-sound/gnome-sound-recorder 3.24.0.1: Simple sound recorder
 media-sound/gnump3d 3.0-r1: A streaming server for MP3, OGG vorbis and other streamable files
 media-sound/gom 0.29.103-r1: Console Mixer Program for OSS
 media-sound/gramofile 1.6-r1: Transfer sound from gramophone records to CD
-media-sound/grip 3.3.1-r3 3.4.3: GTK+ based Audio CD Player/Ripper
+media-sound/grip 3.4.3: GTK+ based Audio CD Player/Ripper
 media-sound/gsm 1.0.13-r1: Lossy speech compression library and tool
 media-sound/gstreamripper 0.2: A GTK+ toolkit based frontend for streamripper
 media-sound/gtick 0.5.0: a metronome application supporting different meters and speeds ranging
