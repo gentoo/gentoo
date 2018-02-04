@@ -304,16 +304,6 @@ media-video/2mandvd
 # Masked for removal in 30 days, no more rdeps, bug #602816
 dev-python/python-poppler-qt4
 
-# Andreas Sturmlechner <asturm@gentoo.org> (05 Jan 2018)
-# Masked for removal in 30 days, merged into dev-util/kdevelop
-dev-util/kdevplatform
-
-# Andreas Sturmlechner <asturm@gentoo.org> (05 Jan 2018)
-# Masked for removal in 30 days, no more rdeps, bug #642462
-kde-apps/katepart
-kde-apps/kdebase-data
-kde-apps/konsolepart
-
 # Alice Ferrazzi <alicef@gentoo.org> (05 Jan 2018)
 # kernel: Meltdown and Spectre - Processor flaw. (#643228)
 # Please upgrade for Intel processor flaw workaround
