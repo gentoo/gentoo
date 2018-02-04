@@ -15,10 +15,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test vies"
 
-RDEPEND="vies? ( dev-python/suds )"
+RDEPEND="vies? ( dev-python/suds[${PYTHON_USEDEP}] )"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/suds )"
+	test? ( dev-python/suds[${PYTHON_USEDEP}] )"
 
 PARCHES=( "${FILESDIR}"/${P}-skiptest.patch )
 
