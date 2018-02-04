@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare unpack
-DEPEND=dev-libs/librevenge sys-libs/zlib dev-libs/icu:= dev-util/gperf media-libs/lcms sys-devel/libtool virtual/pkgconfig doc? ( app-doc/doxygen ) test? ( dev-util/cppunit ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
+DEPEND=dev-libs/librevenge sys-libs/zlib dev-libs/boost dev-libs/icu dev-util/gperf media-libs/lcms sys-devel/libtool virtual/pkgconfig doc? ( app-doc/doxygen ) test? ( dev-util/cppunit ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=Library for import of FreeHand drawings
 EAPI=6
 HOMEPAGE=https://wiki.documentfoundation.org/DLP/Libraries/libfreehand
@@ -8,4 +8,4 @@ LICENSE=MPL-2.0
 RDEPEND=dev-libs/librevenge sys-libs/zlib
 SLOT=0
 _eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	git-r3	fec09a83ae965b041b47f5ff7c8ba29a	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=1f76caf3245c297c1ba84e15cadbf387
+_md5_=239d6eaf56730f77b51fbb088df907f8
