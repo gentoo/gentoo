@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cmake-utils kde5-functions multilib
+inherit cmake-utils kde5-functions
 
 QT_MINIMAL="5.3"
 
