@@ -1,0 +1,41 @@
+From 5184506ffddca982f22eede24cffad64ff3576e3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Caol=C3=A1n=20McNamara?= <caolanm@redhat.com>
+Date: Sat, 3 Feb 2018 16:39:12 +0000
+Subject: tdf#115416 allow build with classic libjpeg
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Change-Id: I96252e1a78dbc52d21095e11b7bdb0807e5d76b6
+Reviewed-on: https://gerrit.libreoffice.org/49187
+Tested-by: Jenkins <ci@libreoffice.org>
+Reviewed-by: Caolán McNamara <caolanm@redhat.com>
+Tested-by: Caolán McNamara <caolanm@redhat.com>
+---
+ vcl/source/filter/jpeg/jpegc.cxx | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/vcl/source/filter/jpeg/jpegc.cxx b/vcl/source/filter/jpeg/jpegc.cxx
+index 570c036..059ec20 100644
+--- a/vcl/source/filter/jpeg/jpegc.cxx
++++ b/vcl/source/filter/jpeg/jpegc.cxx
+@@ -244,6 +244,7 @@ void ReadJPEG(JpegStuff& rContext, JPEGReader* pJPEGReader, void* pInputStream,
+                 eScanlineFormat = ScanlineFormat::N8BitPal;
+                 nPixelSize = 1;
+             }
++#if defined(JCS_EXTENSIONS)
+             else if (eFinalFormat == ScanlineFormat::N32BitTcBgra)
+             {
+                 best_out_color_space = JCS_EXT_BGRA;
+@@ -262,7 +263,7 @@ void ReadJPEG(JpegStuff& rContext, JPEGReader* pJPEGReader, void* pInputStream,
+                 eScanlineFormat = eFinalFormat;
+                 nPixelSize = 4;
+             }
+-
++#endif
+             if (rContext.cinfo.jpeg_color_space == JCS_YCCK)
+                 rContext.cinfo.out_color_space = JCS_CMYK;
+ 
+-- 
+cgit v1.1
+
