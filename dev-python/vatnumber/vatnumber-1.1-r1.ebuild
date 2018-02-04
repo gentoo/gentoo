@@ -20,7 +20,7 @@ DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/suds[${PYTHON_USEDEP}] )"
 
-PARCHES=( "${FILESDIR}"/${P}-skiptest.patch )
+PATCHES=( "${FILESDIR}"/${P}-skiptest.patch )
 
 python_test() {
 	esetup.py test
