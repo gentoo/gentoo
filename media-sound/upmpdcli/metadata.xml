@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<email>stasibear@gentoo.org</email>
+	<description>Primary maintainer</description>
+</maintainer>
+<longdescription>
+	UPnP Media Renderer front-end for MPD, the Music Player Daemon
+</longdescription>
+<use>
+	<flag name="thirdparty">
+		Enable streaming from Qobuz and Tidal external services
+	</flag>
+</use>
+</pkgmetadata>

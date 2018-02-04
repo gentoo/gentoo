@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<email>stasibear@gentoo.org</email>
+	<description>Primary maintainer</description>
+</maintainer>
+<longdescription>Implements the SongCast protocol for use by upmpdcli and mpd</longdescription>
+</pkgmetadata>
