@@ -258,8 +258,8 @@ pkg_pretend() {
 		ewarn "If you plan to use Base application you should enable java or you will get various crashes."
 
 	if has_version "<app-office/libreoffice-5.3.0[firebird]"; then
-		ewarn "Firebird has been upgraded to version 3.0.0. It is unable to read back Firebird 2.5 data,"
-		ewarn "so embedded firebird odb files created in LibreOffice pre-5.3 cannot be opened with LibreOffice 5.3."
+		ewarn "Firebird has been upgraded to version 3. It is unable to read back Firebird 2.5 data, so"
+		ewarn "embedded firebird odb files created in LibreOffice pre-5.3 can't be opened with this version."
 		ewarn "See also: https://wiki.documentfoundation.org/ReleaseNotes/5.3#Base"
 	fi
 
