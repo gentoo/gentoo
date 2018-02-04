@@ -10,7 +10,7 @@ EGIT_REPO_URI="https://git.tasktools.org/scm/ut/${PN}.git"
 inherit cmake-utils bash-completion-r1
 
 DESCRIPTION="A colorized log tail utility"
-HOMEPAGE="http://tasktools.org/projects/clog.html"
+HOMEPAGE="https://taskwarrior.org/docs/clog/"
 [[ ${PV} == *9999* ]] || \
 	SRC_URI="http://taskwarrior.org/download/${P}.tar.gz"
 
