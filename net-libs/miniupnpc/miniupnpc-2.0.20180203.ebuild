@@ -22,6 +22,8 @@ src_prepare() {
 
 	# These bins are not installed, upnpc-static requires building static lib
 	sed -i -e '/EXECUTABLES =/s/ upnpc-static listdevices//' Makefile || die
+	# Prevent gzipping manpage.
+	sed -i -e '/gzip/d' Makefile || die
 
 	if ! use static-libs; then
 		sed -i \
