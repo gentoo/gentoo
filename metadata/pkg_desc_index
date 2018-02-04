@@ -600,7 +600,7 @@ app-emacs/binclock 1.7-r1: Display the current time using a binary clock
 app-emacs/bm 1.32_p20140214: Visible bookmarks in buffer
 app-emacs/boxquote 1.23: Quote text with a semi-box
 app-emacs/bubblet 0.74-r1: A bubble-popping game
-app-emacs/chess 2.0_beta6-r2 2.0.4: A chess client and library for Emacs
+app-emacs/chess 2.0.4: A chess client and library for Emacs
 app-emacs/circe 1.3: A great IRC client for Emacs
 app-emacs/cldoc 1.16: Show Common Lisp operators and variables information in echo area
 app-emacs/cmail 2.62-r1: A simple mail management system for Emacs
