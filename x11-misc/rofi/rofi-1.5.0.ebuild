@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -39,6 +39,10 @@ PATCHES=(
 )
 
 src_prepare() {
+	if use test; then
+		sed -i -e 's|"/tmp/rofi-test.pid"|"'"$T"'/rofi-test.pid"|g' test/helper-pidfile.c || die
+	fi
+
 	default
 
 	eautoreconf

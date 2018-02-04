@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils user systemd
+EAPI=6
+inherit autotools eutils multilib user systemd
 
 DESCRIPTION="A powerful latency measurement tool"
 HOMEPAGE="http://oss.oetiker.ch/smokeping/"
@@ -15,9 +15,28 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 # removing fcgi useflag as the configure script can't avoid it without patching
-IUSE="apache2 curl dig echoping ipv6 ldap radius ssh telnet"
+IUSE="apache2 curl dig echoping ipv6 radius"
 
 DEPEND="
+	>=dev-lang/perl-5.8.8-r8
+	>=dev-perl/SNMP_Session-1.13
+	>=net-analyzer/fping-2.4_beta2-r2[suid]
+	>=net-analyzer/rrdtool-1.2[graph,perl]
+	dev-perl/CGI
+	dev-perl/CGI-Session
+	dev-perl/Config-Grammar
+	dev-perl/Digest-HMAC
+	dev-perl/FCGI
+	dev-perl/IO-Socket-SSL
+	dev-perl/IO-Tty
+	dev-perl/Net-DNS
+	dev-perl/Net-OpenSSH
+	dev-perl/Net-SNMP
+	dev-perl/Net-Telnet
+	dev-perl/libwww-perl
+	dev-perl/perl-ldap
+	virtual/perl-libnet
+	|| ( dev-perl/CGI-Fast <dev-perl/CGI-4 )
 	!apache2? ( virtual/httpd-cgi )
 	apache2? (
 		>=www-apache/mod_perl-2.0.1
@@ -27,23 +46,7 @@ DEPEND="
 	dig? ( net-dns/bind-tools )
 	echoping? ( >=net-analyzer/echoping-6.0.2 )
 	ipv6? ( >=dev-perl/Socket6-0.20 )
-	ldap? ( dev-perl/perl-ldap )
 	radius? ( dev-perl/Authen-Radius )
-	ssh? ( dev-perl/Net-OpenSSH )
-	telnet? ( dev-perl/Net-Telnet )
-	|| ( dev-perl/CGI-Fast <dev-perl/CGI-4 )
-	>=dev-lang/perl-5.8.8-r8
-	>=dev-perl/SNMP_Session-1.13
-	>=net-analyzer/fping-2.4_beta2-r2[suid]
-	>=net-analyzer/rrdtool-1.2[graph,perl]
-	dev-perl/CGI-Session
-	dev-perl/Config-Grammar
-	dev-perl/Digest-HMAC
-	dev-perl/FCGI
-	dev-perl/IO-Socket-SSL
-	dev-perl/Net-DNS
-	dev-perl/libwww-perl
-	virtual/perl-libnet
 "
 
 RDEPEND="${DEPEND}"
@@ -54,7 +57,14 @@ pkg_setup() {
 }
 
 src_prepare() {
-	rm -r lib/{BER.pm,SNMP_Session.pm,SNMP_util.pm} # dev-perl/SNMP_Session
+	default
+
+	sed -i -e '/^SUBDIRS = / s|thirdparty||g' Makefile.am || die
+	sed -i -e '/^perllibdir = / s|= .*|= $(libdir)|g' lib/Makefile.am || die
+	rm -r lib/{BER.pm,SNMP_Session.pm,SNMP_util.pm} || die # dev-perl/SNMP_Session
+	echo ${PV} > VERSION
+
+	eautoreconf
 }
 
 src_configure() {
@@ -68,6 +78,7 @@ src_compile() {
 }
 
 src_install() {
+	dodir /usr/$(get_libdir)
 	default
 
 	newinitd "${FILESDIR}"/${PN}.init.4 ${PN}
@@ -85,7 +96,7 @@ src_install() {
 		-e '/^imgurl/{s:\(^imgurl[ \t]*=\).*:\1 ../.simg:}' \
 		-e '/^datadir/{s:\(^datadir[ \t]*=\).*:\1 /var/lib/smokeping:}' \
 		-e '/^piddir/{s:\(^piddir[ \t]*=\).*:\1 /run/smokeping:}' \
-	    -e '/^cgiurl/{s#\(^cgiurl[ \t]*=\).*#\1 http://some.place.xyz/perl/smokeping.pl#}' \
+		-e '/^cgiurl/{s#\(^cgiurl[ \t]*=\).*#\1 http://some.place.xyz/perl/smokeping.pl#}' \
 		-e '/^smokemail/{s:\(^smokemail[ \t]*=\).*:\1 /etc/smokeping/smokemail:}' \
 		-e '/^tmail/{s:\(^tmail[ \t]*=\).*:\1 /etc/smokeping/tmail:}' \
 		-e '/^secrets/{s:\(^secrets[ \t]*=\).*:\1 /etc/smokeping/smokeping_secrets:}' \
