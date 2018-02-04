@@ -4,10 +4,10 @@ DESCRIPTION=The Persistence of Vision Raytracer
 EAPI=6
 HOMEPAGE=http://www.povray.org/
 IUSE=debug +io-restrictions openexr static-libs tiff X test
-KEYWORDS=alpha amd64 ~arm hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
+KEYWORDS=alpha amd64 ~arm ~hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
 LICENSE=AGPL-3
 RDEPEND=>=dev-libs/boost-1.50.0:=[threads(+)] media-libs/libpng:0 sys-libs/zlib virtual/jpeg:0 openexr? ( media-libs/ilmbase media-libs/openexr ) tiff? ( media-libs/tiff:0 ) X? ( media-libs/libsdl )
 SLOT=0
 SRC_URI=https://github.com/POV-Ray/povray/archive/v3.7.0.0.tar.gz -> povray-3.7.0.0.tar.gz https://dev.gentoo.org/~soap/distfiles/povray-3.7.0.0_p20160914-fix-c++14.patch.bz2
 _eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	flag-o-matic	02908f00f002f0f07c5b74783d778325	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	versionator	ce21313503c41896ebcd7d58b0607e37	virtualx	3a3c4637ea6d5a2113707a644766337c
-_md5_=76dbc01557839822187594665df1dc7c
+_md5_=aa917a95fb43a20e215f83097049b676

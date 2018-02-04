@@ -3081,7 +3081,6 @@ media-sound/mpd:eventfd - Use the eventfd function in MPD's event loop
 media-sound/mpd:faad - Use external faad library for AAC decoding
 media-sound/mpd:fifo - Support writing audio to a FIFO
 media-sound/mpd:fluidsynth - Enables Fluidsynth MIDI software synthesis (discouraged)
-media-sound/mpd:glib - Enable GLib usage
 media-sound/mpd:gme - Enables support for media-libs/game-music-emu for playing various video game music formats.
 media-sound/mpd:id3tag - Support for ID3 tags
 media-sound/mpd:inotify - Use the Linux kernel inotify subsystem to notice changes to mpd music library

@@ -7972,7 +7972,7 @@ media-sound/mp3splt 2.6.1a: a command line utility to split mp3 and ogg files wi
 media-sound/mp3splt-gtk 0.9.2 0.9.2-r1: a GTK+ based utility to split mp3 and ogg files without decoding
 media-sound/mp3wrap 0.5: Command-line utility that wraps quickly two or more mp3 files in one single large playable mp3
 media-sound/mpc 0.27 0.28: A commandline client for Music Player Daemon (media-sound/mpd)
-media-sound/mpd 0.19.19 0.20.10: The Music Player Daemon (mpd)
+media-sound/mpd 0.20.10: The Music Player Daemon (mpd)
 media-sound/mpdas 0.4.0-r1: An AudioScrobbler client for MPD written in C++
 media-sound/mpdscribble 0.22: An MPD client that submits information to Audioscrobbler
 media-sound/mpfc 1.3.7-r1: Music Player For Console
@@ -8613,7 +8613,7 @@ net-libs/libssh 0.7.4: Access a working SSH implementation by means of a library
 net-libs/libssh2 1.7.0: Library implementing the SSH2 protocol
 net-libs/libtirpc 1.0.1-r1 1.0.2-r1: Transport Independent RPC library (SunRPC replacement)
 net-libs/libtorrent 0.13.6 0.13.6-r1: BitTorrent library written in C++ for *nix
-net-libs/libtorrent-rasterbar 1.0.11-r1 1.1.5-r1: C++ BitTorrent implementation focusing on efficiency and scalability
+net-libs/libtorrent-rasterbar 1.1.5-r1: C++ BitTorrent implementation focusing on efficiency and scalability
 net-libs/libupnp 1.6.21: An Portable Open Source UPnP Development Kit
 net-libs/libvncserver 0.9.11-r1: library for creating vnc servers
 net-libs/libwebsockets 2.1.1: canonical libwebsockets.org websocket library
@@ -8978,7 +8978,7 @@ net-p2p/mldonkey 3.1.5-r1: Multi-network P2P application written in Ocaml, with 
 net-p2p/ncdc 1.19.1: ncurses directconnect client
 net-p2p/nicotine+ 1.2.16-r1: A fork of nicotine, a Soulseek client in Python
 net-p2p/pybitmessage 0.4.2: P2P communications protocol
-net-p2p/qbittorrent 3.3.10 3.3.16: BitTorrent client in C++ and Qt
+net-p2p/qbittorrent 3.3.16: BitTorrent client in C++ and Qt
 net-p2p/retroshare 0.6.2: P2P private sharing application
 net-p2p/rtorrent 0.9.6 0.9.6-r1: BitTorrent Client using libtorrent
 net-p2p/syncthing 0.14.38: Open Source Continuous File Synchronization
