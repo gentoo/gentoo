@@ -49,6 +49,11 @@ net-print/cups-filters pdf
 # MPI does not have stable keywords on hppa
 sci-libs/fftw mpi
 
+# Andreas Sturmlechner <asturm@gentoo.org> (03 Sep 2017)
+# Mask mpi support so Boost stabilization can go ahead
+# Boost 1.63 (bug 624662), Boost 1.62 (bug 590244)
+dev-libs/boost mpi
+
 # Andreas Sturmlechner <asturm@gentoo.org> (19 Aug 2017)
 # Mask net-libs/libssh rdeps for stabilisation timeout
 # (bug 618916)
