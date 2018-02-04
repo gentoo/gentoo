@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (04 Feb 2018)
+# Depends on not yet keyworded dev-python/geoip-python. Bug #636860
+net-p2p/deluge geoip
+
 # Amy Liffey <amynka@gentoo.org (21 Jan 2018)
 # dev-libs/cereal not keyworded for arm
 media-libs/opencv contrib_dnn

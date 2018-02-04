@@ -1,0 +1,62 @@
+--- a/libs/python/build/Jamfile.v2
++++ b/libs/python/build/Jamfile.v2
+@@ -39,23 +39,6 @@
+     PYTHON_ID = [ regex.replace $(python-id) "[*\\/:\"\']" "_" ] ;
+ }
+ 
+-
+-rule find-py3-version
+-{
+-    local versions = [ feature.values python ] ;
+-    local py3ver ;
+-    for local v in $(versions)
+-    {
+-        if $(v) >= 3.0
+-        {
+-            py3ver = $(v) ;
+-        }
+-    }
+-    return $(py3ver) ;
+-}
+-
+-py3-version = [ find-py3-version ] ;
+-
+ project boost/python
+   : source-location ../src
+   : requirements
+@@ -82,7 +65,7 @@
+ rule cond ( test ? : yes * : no * ) { if $(test) { return $(yes) ; } else { return $(no) ; } }
+ rule unless ( test ? : yes * : no * ) { if ! $(test) { return $(yes) ; } else { return $(no) ; } }
+ 
+-rule lib_boost_python ( is-py3 ? )
++rule lib_boost_python
+ {
+ 
+     local python_major_version = [ MATCH "^([^.]+)" : [ feature.values python ] ] ;
+@@ -91,7 +74,7 @@
+     {
+         python2 = true ;
+     }
+-    lib [ cond $(is-py3) : boost_python3 : boost_python ]
++    lib boost_python
+         : # sources
+         numeric.cpp
+         list.cpp
+@@ -148,7 +131,6 @@
+             <dependency>config-warning
+ 
+             <python-debugging>on:<define>BOOST_DEBUG_PYTHON
+-            [ cond $(is-py3) : <python>$(py3-version) ]
+         :   # default build
+             <link>shared
+         :   # usage requirements
+@@ -160,9 +142,3 @@
+ 
+ lib_boost_python ;
+ boost-install boost_python ;
+-
+-if $(py3-version)
+-{
+-    lib_boost_python yes ;
+-    boost-install boost_python3 ;
+-}

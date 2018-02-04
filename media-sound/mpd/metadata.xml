@@ -17,7 +17,6 @@
     <flag name="faad">Use external faad library for AAC decoding</flag>
     <flag name="fifo">Support writing audio to a FIFO</flag>
     <flag name="fluidsynth">Enables Fluidsynth MIDI software synthesis (discouraged)</flag>
-    <flag name="glib">Enable GLib usage</flag>
     <flag name="gme">Enables support for <pkg>media-libs/game-music-emu</pkg> for playing various video game music formats.</flag>
     <flag name="id3tag">Support for ID3 tags</flag>
     <flag name="inotify">Use the Linux kernel inotify subsystem to notice changes to mpd music library</flag>
