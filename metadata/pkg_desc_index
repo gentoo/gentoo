@@ -4741,7 +4741,7 @@ dev-python/dnspython 1.15.0-r1: DNS toolkit for Python
 dev-python/doc8 0.6.0: Style checker for Sphinx (or other) RST documentation
 dev-python/docker-py 2.4.2: Python client for Docker
 dev-python/docker-pycreds 0.2.1: Python bindings for the docker credentials store API
-dev-python/docopt 0.6.2-r1: Pythonic argument parser, that will make you smile
+dev-python/docopt 0.6.2-r2: Pythonic argument parser, that will make you smile
 dev-python/doctest-ignore-unicode 0.1.2: Add flag to ignore unicode literal prefixes in doctests
 dev-python/docutils 0.12 0.13.1: Python Documentation Utilities
 dev-python/docutils-glep 0.4-r1: Gentoo GLEP support for docutils
@@ -9650,7 +9650,7 @@ sys-apps/apply-default-acl 0.0.6: Apply default POSIX ACLs to files and director
 sys-apps/arrayprobe 2.0-r2: Utility to report status of an HP (Compaq) array controller (both IDA & CCISS)
 sys-apps/attr 2.4.47-r2: Extended attributes tools
 sys-apps/audio-entropyd 2.0.3-r1: Audio-entropyd generates entropy-data for the /dev/random device
-sys-apps/baobab 3.22.1 3.24.0: Disk usage browser for GNOME
+sys-apps/baobab 3.24.0: Disk usage browser for GNOME
 sys-apps/bar 1.11.1: Console Progress Bar
 sys-apps/baselayout 2.3 2.4.1-r2: Filesystem baselayout and init scripts
 sys-apps/baselayout-java 0.1.0: Baselayout for Java
@@ -9698,7 +9698,7 @@ sys-apps/fxload 20081013-r1: USB firmware uploader
 sys-apps/gawk 3.1.8 4.0.2 4.1.3 4.1.4: GNU awk pattern-matching language
 sys-apps/gentoo-functions 0.12: base functions required by all Gentoo systems
 sys-apps/gentoo-systemd-integration 7: systemd integration files for Gentoo
-sys-apps/gnome-disk-utility 3.22.1 3.24.1: Disk Utility for GNOME using udisks
+sys-apps/gnome-disk-utility 3.24.1: Disk Utility for GNOME using udisks
 sys-apps/gptfdisk 1.0.1: GPT partition table manipulator for Linux
 sys-apps/gradm 3.1.201603152148 3.1.201607172312: Administrative interface for the grsecurity Role Based Access Control system
 sys-apps/grep 2.27-r1 3.0: GNU regular expression matcher
@@ -10444,7 +10444,7 @@ www-client/chromium 63.0.3239.108 63.0.3239.132: Open-source version of Google C
 www-client/conkeror 1.0_pre20140212: A Mozilla-based web browser whose design is inspired by GNU Emacs
 www-client/dillo 3.0.5: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r1: Advanced and well-established text-mode web browser
-www-client/epiphany 3.22.7 3.24.5: GNOME webbrowser based on Webkit
+www-client/epiphany 3.24.5: GNOME webbrowser based on Webkit
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 52.4.0 52.6.0: Firefox Web Browser
 www-client/firefox-bin 52.6.0: Firefox Web Browser
@@ -11075,7 +11075,7 @@ x11-proto/xineramaproto 1.2.1-r1: X.Org Xinerama protocol headers
 x11-proto/xproto 7.0.31: X.Org xproto protocol headers
 x11-terms/aterm 1.0.1-r3: rxvt compatible terminal emulator with transparency support
 x11-terms/eterm 0.9.5: A vt102 terminal emulator for X
-x11-terms/gnome-terminal 3.22.2 3.24.2: The Gnome Terminal
+x11-terms/gnome-terminal 3.24.2: The Gnome Terminal
 x11-terms/guake 0.8.8: Drop-down terminal for GTK+ desktops
 x11-terms/kterm 6.2.0-r5: Japanese Kanji X Terminal
 x11-terms/mate-terminal 1.12.1: The MATE Terminal
@@ -11125,7 +11125,7 @@ x11-themes/gentoo-xcursors 0.3.1: A high quality set of animated mouse cursors
 x11-themes/gentoo10-backgrounds 20110309: Gentoo - 10 Years Compiling Background Artwork
 x11-themes/geramik 0.27-r1: GTK+1 and GTK+2 Geramik Themes
 x11-themes/gkrellm-themes 0.1: A pack of ~200 themes for GKrellM
-x11-themes/gnome-backgrounds 3.22.1 3.24.0: A set of backgrounds packaged with the GNOME desktop
+x11-themes/gnome-backgrounds 3.24.0: A set of backgrounds packaged with the GNOME desktop
 x11-themes/gnome-colors-common 5.5.1-r1: Colorized icons shared between all gnome-colors iconsets
 x11-themes/gnome-colors-themes 5.5.1: Some gnome-colors iconsets including a Gentoo one
 x11-themes/gnome-icon-theme 3.12.0-r1: GNOME default icon theme
@@ -11198,7 +11198,7 @@ x11-themes/wm-icons 0.4.0_pre1-r1: A Large Assortment of Beutiful Themed Icons, 
 x11-themes/xcursor-themes 1.0.4: X.Org cursor themes: whiteglass, redglass and handhelds
 x11-themes/xfce-gant-icon-theme 3.9_p6 3.9_p6-r1: Xfce Gant Icon Theme
 x11-themes/xfwm4-themes 4.10.0 4.10.0-r1: Additional themes for the Xfce window manager
-x11-themes/zuki-themes 3.20 3.24.3: Zuki themes for GTK, gnome-shell and more
+x11-themes/zuki-themes 3.24.3: Zuki themes for GTK, gnome-shell and more
 x11-themes/zukini 20120806: Unified look for GTK+ 2.x, GTK+ 3.x, gnome-shell, metacity and more
 x11-themes/zukitwo 2016.08.08: Transition package to zuki-themes
 x11-themes/zukitwo-shell 2016.08.08: Transition package to zuki-themes
