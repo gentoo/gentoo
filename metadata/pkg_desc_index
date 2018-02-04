@@ -4630,7 +4630,7 @@ dev-python/cangjie 1.2-r1: The Python bindings to libcangjie
 dev-python/carbon 0.9.13: Backend data caching and persistence daemon for Graphite
 dev-python/carrot 0.10.7-r1: AMQP Messaging Framework for Python
 dev-python/case 1.5.2-r1: Python unittest Utilities
-dev-python/castellan 0.4.0 0.12.1: Generic Key Manager interface for OpenStack
+dev-python/castellan 0.12.2: Generic Key Manager interface for OpenStack
 dev-python/casuarius 1.1: Cython wrapper for the Cassowary incremental constraint solver
 dev-python/cbor 1.0.0: RFC 7049 - Concise Binary Object Representation
 dev-python/cddb-py 1.4-r1: CDDB Module for Python
@@ -4956,7 +4956,7 @@ dev-python/kaa-imlib2 0.2.3-r2: Imlib2 wrapper for Python
 dev-python/kaa-metadata 0.7.7-r1: Powerful media metadata parser for media files in Python, successor of MMPython
 dev-python/kazoo 2.2.1: A high-level Python library that makes it easier to use Apache Zookeeper
 dev-python/keyczar 0.715: Toolkit for safe and simple cryptography
-dev-python/keyring 10.3.3 10.4.0 10.5.0 10.5.1: Provides access to the system keyring service
+dev-python/keyring 10.6.0: Provides access to the system keyring service
 dev-python/keystoneauth 2.4.1 2.4.2 2.12.3 2.18.0 3.1.0: This package contains tools for authenticating to an OpenStack-based cloud.
 dev-python/keystonemiddleware 4.4.1 4.9.1 4.14.0 4.17.0: A middleware for the OpenStack Keystone API
 dev-python/kid 0.9.6-r1: A simple and Pythonic XML template language
@@ -9887,7 +9887,7 @@ sys-block/scsiping 0.0.1: SCSIPing pings a host on the SCSI-chain
 sys-block/seekwatcher 0.12_p20091015-r1: generates graphs from blktrace to help visualize IO patterns and performance
 sys-block/storcli 1.19.04 1.20.15 1.21.06: MegaRAID StorCLI (successor of the MegaCLI)
 sys-block/tapecat 1.0.0: tapecat is a tape utility used to describe the physical content of a tape
-sys-block/tgt 1.0.71 1.0.72: Linux SCSI target framework (tgt)
+sys-block/tgt 1.0.72 1.0.73: Linux SCSI target framework (tgt)
 sys-block/thin-provisioning-tools 0.4.1 0.7.0: A suite of tools for thin provisioning on Linux
 sys-block/tw_cli 9.2.1.1 9.4.1.2 9.5.2 10.2 10.2.2.1-r1: 3ware SATA/PATA/SAS RAID controller Command Line Interface tool
 sys-block/vblade 20: vblade exports a block device using AoE
