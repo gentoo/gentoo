@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare
+DEPEND=>=net-firewall/iptables-1.4.6:0=[ipv6?] net-libs/libnfnetlink:= net-libs/libmnl:= dev-libs/gmp:0= sys-apps/util-linux dev-libs/openssl:0= sys-apps/lsb-release
+DESCRIPTION=MiniUPnP IGD Daemon
+EAPI=6
+HOMEPAGE=http://miniupnp.free.fr/
+IUSE=+leasefile igd2 ipv6 pcp-peer portinuse strict
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=BSD
+RDEPEND=>=net-firewall/iptables-1.4.6:0=[ipv6?] net-libs/libnfnetlink:= net-libs/libmnl:= dev-libs/gmp:0= sys-apps/util-linux dev-libs/openssl:0=
+SLOT=0
+SRC_URI=http://miniupnp.free.fr/files/miniupnpd-2.0.20180203.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_md5_=347d4254f733ab1583c67e072ef51faf
