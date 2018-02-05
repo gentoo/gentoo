@@ -36,6 +36,7 @@ DEPEND="
 "
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.15.12-Werror.patch
+	"${FILESDIR}"/${PN}-1.5.0-gtk-settings-test.patch
 )
 
 src_prepare() {
