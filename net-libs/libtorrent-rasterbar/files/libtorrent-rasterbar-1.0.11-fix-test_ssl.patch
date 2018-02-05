@@ -1,0 +1,21 @@
+From 7f060e4a70b21974bcf154cf1a93c7b68c5a9aa8 Mon Sep 17 00:00:00 2001
+From: Alden Torres <aldenml@gmail.com>
+Date: Sat, 8 Oct 2016 01:12:15 -0400
+Subject: [PATCH] fix openssl compilation with boost 1.62 (#1193)
+
+---
+ test/test_ssl.cpp | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/test/test_ssl.cpp b/test/test_ssl.cpp
+index 659973c..5aa6b15 100644
+--- a/test/test_ssl.cpp
++++ b/test/test_ssl.cpp
+@@ -47,7 +47,6 @@ POSSIBILITY OF SUCH DAMAGE.
+ #include <boost/asio/connect.hpp>
+ 
+ #ifdef TORRENT_USE_OPENSSL
+-#include <boost/asio/ssl/error.hpp> // for asio::error::get_ssl_category()
+ #include <boost/asio/ssl.hpp>
+ 
+ using namespace libtorrent;
