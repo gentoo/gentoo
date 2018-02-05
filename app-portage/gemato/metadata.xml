@@ -10,8 +10,6 @@
 			functions</flag>
 		<flag name='gpg'>Install dependencies needed for OpenPGP
 			signature verification support</flag>
-		<flag name='portage-postsync'>Install a Portage hook to verify
-			the repository after fetching via rsync</flag>
 		<flag name='sha3'>Install dependencies needed for SHA3 hash
 			functions</flag>
 	</use>
