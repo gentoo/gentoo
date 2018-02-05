@@ -11,9 +11,7 @@ MY_PN="python-${PN}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Basic functions for handling mime-types in python"
-HOMEPAGE="
-	https://code.google.com/p/mimeparse
-	https://github.com/dbtsai/python-mimeparse"
+HOMEPAGE="https://github.com/dbtsai/python-mimeparse"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"

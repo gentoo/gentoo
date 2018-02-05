@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -10,7 +10,7 @@ inherit distutils-r1
 MY_P=${P/pywebdav/PyWebDAV}
 
 DESCRIPTION="WebDAV server written in Python"
-HOMEPAGE="https://code.google.com/p/pywebdav/ https://pypi.python.org/pypi/PyWebDAV"
+HOMEPAGE="https://pypi.python.org/pypi/PyWebDAV"
 SRC_URI="https://pywebdav.googlecode.com/files/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2"
