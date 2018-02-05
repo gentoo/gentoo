@@ -182,11 +182,6 @@ media-gfx/nvidia-texture-tools cuda
 # Mask ruby20-only compatible packages
 =media-libs/libcaca-0.99_beta19 ruby
 
-# Michael Orlitzky <mjo@gentoo.org> (14 May 2017)
-# This version experiences random build failures with USE=jit.
-# Since USE=futures needs USE=jit, we have to mask that too.
-=dev-scheme/racket-6.9 futures jit
-
 # Matthias Maier <tamiko@gentoo.org> (11 May 2017)
 # Globally mask pie use flag. Selectively unmask on specific profiles.
 sys-devel/gcc pie
