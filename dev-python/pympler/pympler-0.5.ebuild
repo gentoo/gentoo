@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ MY_PN="Pympler"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Memory profiling for Python applications"
-HOMEPAGE="https://code.google.com/p/pympler/ https://pypi.python.org/pypi/Pympler https://github.com/pympler/pympler"
+HOMEPAGE="https://pypi.python.org/pypi/Pympler https://github.com/pympler/pympler"
 SRC_URI="https://github.com/pympler/pympler/archive/${PV}.tar.gz -> ${P}.tar.gz"
 # The PyPi tarball is missing the documentation
 #SRC_URI="mirror://pypi/P/${MY_PN}/${MY_P}.tar.gz"
