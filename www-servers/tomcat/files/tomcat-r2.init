@@ -1,0 +1,55 @@
+#!@GENTOO_PORTAGE_EPREFIX@/sbin/runscript
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+extra_commands="forcestop"
+
+PIDFILE=@GENTOO_PORTAGE_EPREFIX@/var/run/${RC_SVCNAME}.pid
+
+: ${CATALINA_INSTANCE:=${RC_SVCNAME##*.}}
+: ${CATALINA_USER:=tomcat}
+: ${CATALINA_GROUP:=tomcat}
+: ${CATALINA_TMPDIR:=@GENTOO_PORTAGE_EPREFIX@/var/cache/tomcat-@SLOT@/tmp}
+
+depend() {
+	use dns logger net
+}
+
+start()	{
+	ebegin "Starting ${RC_SVCNAME}"
+
+	start-stop-daemon  --start \
+		--quiet --background \
+		--chdir "${CATALINA_TMPDIR}" \
+		--user ${CATALINA_USER}:${CATALINA_GROUP} \
+		--make-pidfile --pidfile ${PIDFILE} \
+		--exec @GENTOO_PORTAGE_EPREFIX@/usr/libexec/tomcat/server-@SLOT@ -- start
+
+	eend $?
+}
+
+stop()	{
+	ebegin "Stopping '${RC_SVCNAME}'"
+
+	start-stop-daemon --stop \
+		--quiet --retry=60 \
+		--pidfile ${PIDFILE} \
+		--exec @GENTOO_PORTAGE_EPREFIX@/usr/libexec/tomcat/server-@SLOT@ -- stop
+
+	eend $?
+}
+
+forcestop()	{
+	ebegin "Forcing '${RC_SVCNAME}' to stop"
+
+	start-stop-daemon --stop \
+		--quiet --retry=60 \
+		--pidfile ${PIDFILE} \
+		--signal=9
+
+	if service_started "${RC_SVCNAME}"; then
+		mark_service_stopped "${RC_SVCNAME}"
+	fi
+
+	eend $?
+}
