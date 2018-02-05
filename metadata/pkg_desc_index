@@ -10180,7 +10180,7 @@ sys-process/dcron 4.5-r1: A cute little cron from Matt Dillon
 sys-process/fcron 3.2.1-r1: A command scheduler with extended capabilities over cron and anacron
 sys-process/ftop 1.0: Monitor open files and filesystems
 sys-process/glances 2.7.1: CLI curses based monitoring tool
-sys-process/htop 1.0.3 2.0.2: interactive process viewer
+sys-process/htop 2.0.2: interactive process viewer
 sys-process/incron 0.5.10-r1: inotify based cron daemon
 sys-process/iotop 0.6: Top-like UI used to show which process is using the I/O
 sys-process/latencytop 0.5: tool for identifying where in the system latency is happening
