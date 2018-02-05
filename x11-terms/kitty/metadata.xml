@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>radhermit@gentoo.org</email>
+		<name>Tim Harder</name>
+	</maintainer>
+	<use>
+		<flag name="imagemagick">Support displaying images in the terminal with icat</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">kovidgoyal/kitty</remote-id>
+	</upstream>
+</pkgmetadata>

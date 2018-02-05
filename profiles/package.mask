@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Tim Harder <radhermit@gentoo.org> (05 Feb 2018)
+# Unmaintained, replaced by newsboat fork.
+# Masked for removal in 30 days.
+net-news/newsbeuter
+
 # Andreas Sturmlechner <asturm@gentoo.org> (03 Feb 2018)
 # Dead upstream, depends on deprecated Qt4.
 # Masked for removal in 30 days. Bug #644370
