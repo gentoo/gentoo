@@ -24,7 +24,7 @@ PATCHES=(
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="tools test"
+IUSE="tools"
 
 DEPEND="
 	>=sys-apps/util-linux-2.30.2
