@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils libtool multilib
+inherit autotools eutils libtool
 
 DESCRIPTION="A sophisticated ftp/sftp/http/https/torrent client and file transfer program"
 HOMEPAGE="https://lftp.tech/"
@@ -55,6 +55,13 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.0.2.91-lafile.patch
 	"${FILESDIR}"/${PN}-4.5.5-am_config_header.patch
 	"${FILESDIR}"/${PN}-4.7.0-gettext.patch
+	"${FILESDIR}"/${PN}-4.7.5-libdir-additional.patch
+	"${FILESDIR}"/${PN}-4.7.5-libdir-configure.patch
+	"${FILESDIR}"/${PN}-4.7.5-libdir-expat.patch
+	"${FILESDIR}"/${PN}-4.7.5-libdir-libidn.patch
+	"${FILESDIR}"/${PN}-4.7.5-libdir-openssl.patch
+	"${FILESDIR}"/${PN}-4.7.5-libdir-readline.patch
+	"${FILESDIR}"/${PN}-4.7.5-libdir-zlib.patch
 )
 
 src_prepare() {
@@ -76,7 +83,6 @@ src_configure() {
 		$(usex ssl "$(use_with !gnutls openssl ${EPREFIX}/usr)" '--without-openssl') \
 		$(usex ssl "$(use_with gnutls)" '--without-gnutls') \
 		--enable-packager-mode \
-		--libdir="${EPREFIX}/usr/$(get_libdir)" \
 		--sysconfdir="${EPREFIX}"/etc/${PN} \
 		--with-modules \
 		--with-readline="${EPREFIX}"/usr \

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils git-r3 libtool multilib
+inherit autotools eutils git-r3 libtool
 
 DESCRIPTION="A sophisticated ftp/sftp/http/https/torrent client and file transfer program"
 HOMEPAGE="https://lftp.tech/"
@@ -19,7 +19,7 @@ RDEPEND="
 	dev-libs/expat
 	sys-libs/zlib
 	convert-mozilla-cookies? ( dev-perl/DBI )
-	idn? ( net-dns/libidn )
+	idn? ( net-dns/libidn2 )
 	socks5? (
 		>=net-proxy/dante-1.1.12
 		virtual/pam
@@ -52,6 +52,12 @@ DOCS=(
 )
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.5.5-am_config_header.patch
+	"${FILESDIR}"/${PN}-4.7.5-libdir-expat.patch
+	"${FILESDIR}"/${PN}-4.7.5-libdir-readline.patch
+	"${FILESDIR}"/${PN}-4.8.2-libdir-configure.patch
+	"${FILESDIR}"/${PN}-4.8.2-libdir-libidn2.patch
+	"${FILESDIR}"/${PN}-4.8.2-libdir-openssl.patch
+	"${FILESDIR}"/${PN}-4.8.2-libdir-zlib.patch
 )
 
 src_prepare() {
@@ -69,12 +75,11 @@ src_configure() {
 	econf \
 		$(use_enable ipv6) \
 		$(use_enable nls) \
-		$(use_with idn libidn) \
+		$(use_with idn libidn2) \
 		$(use_with socks5 socksdante "${EPREFIX}"/usr) \
 		$(usex ssl "$(use_with !gnutls openssl ${EPREFIX}/usr)" '--without-openssl') \
 		$(usex ssl "$(use_with gnutls)" '--without-gnutls') \
 		--enable-packager-mode \
-		--libdir="${EPREFIX}/usr/$(get_libdir)" \
 		--sysconfdir="${EPREFIX}"/etc/${PN} \
 		--with-modules \
 		--with-readline="${EPREFIX}"/usr \
