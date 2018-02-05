@@ -66,7 +66,7 @@ COMMON_DEPEND="
 		$(add_frameworks_dep plasma)
 	)
 	qmake? ( dev-util/kdevelop-pg-qt:5 )
-	reviewboard? ( dev-libs/purpose )
+	reviewboard? ( kde-frameworks/purpose )
 	subversion? (
 		dev-libs/apr:1
 		dev-libs/apr-util:1
