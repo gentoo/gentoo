@@ -38,7 +38,7 @@ SRC_URI="https://www.isc.org/downloads/file/${MY_P}/?version=tar-gz -> ${P}.tar.
 
 LICENSE="Apache-2.0 BSD BSD-2 GPL-2 HPND ISC MPL-2.0"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ia64 ~mips ppc ~ppc64 ~s390 ~sh ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm ~hppa ia64 ~mips ppc ~ppc64 ~s390 ~sh ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 # -berkdb by default re bug 602682
 IUSE="-berkdb +caps dlz dnstap doc filter-aaaa fixed-rrset geoip gost gssapi idn ipv6
 json ldap libressl lmdb mysql nslint odbc postgres python rpz seccomp selinux ssl static-libs
