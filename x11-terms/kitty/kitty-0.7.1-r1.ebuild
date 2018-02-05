@@ -26,7 +26,7 @@ COMMON_DEPS="
 	x11-libs/libXcursor
 	x11-libs/libXrandr
 	x11-libs/libXinerama
-	x11-libs/libxkbcommon
+	x11-libs/libxkbcommon[X]
 	wayland? (
 		dev-libs/wayland
 		>=dev-libs/wayland-protocols-1.12
