@@ -1,15 +1,15 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-any-r1 toolchain-funcs
+inherit python-any-r1 toolchain-funcs flag-o-matic
 
 DESCRIPTION="A tool to create DjVu files from PDF files"
 HOMEPAGE="http://jwilk.net/software/pdf2djvu"
-SRC_URI="https://bitbucket.org/jwilk/${PN}/downloads/${P}.tar.xz"
+SRC_URI="https://github.com/jwilk/${PN}/releases/download/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -35,8 +35,18 @@ DEPEND="${RDEPEND}
 
 REQUIRED_USE="test? ( graphicsmagick ${PYTHON_REQUIRED_USE} )"
 
+DOCS=(
+	doc/{changelog,credits,djvudigital,README}
+)
+
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
+}
+
+src_prepare() {
+	# bug 626874, poppler headers require C++11
+	append-cxxflags -std=c++11
+	default
 }
 
 src_configure() {
@@ -47,9 +57,4 @@ src_configure() {
 		${openmp} \
 		$(use_enable nls) \
 		$(use_with graphicsmagick)
-}
-
-src_install() {
-	default
-	dodoc doc/{changelog,{cjk,credits,djvudigital}.txt}
 }
