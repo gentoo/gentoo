@@ -5437,7 +5437,7 @@ dev-python/rpy 2.6.2: Python interface to the R Programming Language
 dev-python/rpyc 3.3.0: Remote Python Call (RPyC), a transparent and symmetric RPC library
 dev-python/rsa 3.2.3-r1: Pure-Python RSA implementation
 dev-python/rst-linker 1.7 1.9-r1: Sphinx plugin to add links and timestamps to the changelog
-dev-python/rst2pdf 0.93-r2: Tool for transforming reStructuredText to PDF using ReportLab
+dev-python/rst2pdf 0.93-r3: Tool for transforming reStructuredText to PDF using ReportLab
 dev-python/rtslib-fb 2.1.57 2.1.58 2.1.62: A Python object API for managing the Linux LIO kernel target
 dev-python/ryu 4.0 4.5 4.10 4.14: Component-based Software-defined Networking Framework
 dev-python/s3transfer 0.1.11: An Amazon S3 Transfer Manager
