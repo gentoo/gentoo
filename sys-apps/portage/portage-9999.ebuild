@@ -51,7 +51,7 @@ RDEPEND="
 	elibc_uclibc? ( >=sys-apps/sandbox-2.2 )
 	>=app-misc/pax-utils-0.1.17
 	rsync-verify? (
-		>=app-portage/gemato-10
+		>=app-portage/gemato-11
 		app-crypt/gentoo-keys
 		app-crypt/gnupg[ssl(-)]
 	)
