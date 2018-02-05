@@ -8945,7 +8945,7 @@ net-nds/smbldap-tools 0.9.8: Samba LDAP management tools
 net-nds/tac_plus 4.0.4.19-r3 4.0.4.19-r4: An updated version of Cisco's TACACS+ server
 net-nds/yp-tools 4.2.2-r1: Network Information Service tools
 net-news/liferea 1.12_rc3: News Aggregator for RDF/RSS/CDF/Atom/Echo feeds
-net-news/newsbeuter 2.9-r3: A RSS/Atom feed reader for the text console
+net-news/newsboat 2.10.2: An RSS/Atom feed reader for text terminals
 net-news/quiterss 0.18.8: A Qt-based RSS/Atom feed reader
 net-news/rawdog 2.19: Rawdog - RSS Aggregator Without Delusions Of Grandeur
 net-news/rsstail 1.8: A tail-like RSS-reader
