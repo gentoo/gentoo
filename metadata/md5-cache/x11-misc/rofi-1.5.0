@@ -10,4 +10,4 @@ RDEPEND=dev-libs/glib:2 media-libs/freetype x11-libs/cairo[xcb] x11-libs/libXft 
 SLOT=0
 SRC_URI=https://github.com/DaveDavenport/rofi//releases/download/1.5.0/rofi-1.5.0.tar.xz
 _eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=9e1c4d6b4abe296e969a582741cfe3e9
+_md5_=1366ca142152f3c604c71e34d6be5613
