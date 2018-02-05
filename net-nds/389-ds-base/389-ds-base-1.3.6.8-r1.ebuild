@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -52,6 +52,8 @@ pkg_setup() {
 src_prepare() {
 	# as per 389 documentation, when 64bit, export USE_64
 	use amd64 && export USE_64=1
+
+	epatch "${FILESDIR}/389-ds-base-1.3.6-backport-invalid-password-mig.patch"
 
 	eautoreconf
 
