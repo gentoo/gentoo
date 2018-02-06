@@ -1,0 +1,13 @@
+Index: ros_environment-9999/env-hooks/1.ros_package_path.sh.em
+===================================================================
+--- ros_environment-9999.orig/env-hooks/1.ros_package_path.sh.em
++++ ros_environment-9999/env-hooks/1.ros_package_path.sh.em
+@@ -4,7 +4,7 @@
+ PYTHON_CODE_BUILD_ROS_PACKAGE_PATH=$(cat <<EOF
+ from __future__ import print_function
+ import os
+-env_name = 'CMAKE_PREFIX_PATH'
++env_name = 'CATKIN_PREFIX_PATH'
+ paths = [path for path in os.environ[env_name].split(os.pathsep)] if env_name in os.environ and os.environ[env_name] != '' else []
+ workspaces = [path for path in paths if os.path.exists(os.path.join(path, '.catkin'))]
+ paths = []
