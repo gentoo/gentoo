@@ -15,7 +15,7 @@ SRC_URI="https://downloads.slack-edge.com/linux_releases/${MY_PN}-desktop-${PV}-
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64 -*"
-IUSE="pax_kernel"
+IUSE="ayatana pax_kernel"
 RESTRICT="bindist mirror"
 
 RDEPEND="app-crypt/libsecret:0[${MULTILIB_USEDEP}]
@@ -47,7 +47,8 @@ RDEPEND="app-crypt/libsecret:0[${MULTILIB_USEDEP}]
 	x11-libs/libXrender:0[${MULTILIB_USEDEP}]
 	x11-libs/libXScrnSaver:0[${MULTILIB_USEDEP}]
 	x11-libs/libXtst:0[${MULTILIB_USEDEP}]
-	x11-libs/pango:0[${MULTILIB_USEDEP}]"
+	x11-libs/pango:0[${MULTILIB_USEDEP}]
+	ayatana? ( dev-libs/libappindicator:2[${MULTILIB_USEDEP}] )"
 
 QA_PREBUILT="opt/slack/slack
 	opt/slack/resources/app.asar.unpacked/node_modules/*
@@ -56,6 +57,16 @@ QA_PREBUILT="opt/slack/slack
 	opt/slack/libCallsCore.so"
 
 S="${WORKDIR}"
+
+src_prepare() {
+	default
+
+	if use ayatana ; then
+		sed -i '/Exec/s|=|=env XDG_CURRENT_DESKTOP=Unity |' \
+			usr/share/applications/slack.desktop \
+			|| die "sed failed for slack.desktop"
+	fi
+}
 
 src_install() {
 	insinto /usr/share/pixmaps
