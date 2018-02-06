@@ -599,6 +599,12 @@ sanity_prechecks() {
 			eerror " Downgrading glibc is not supported and a sure way to destruction."
 			die "Aborting to save your system."
 		fi
+
+		if ! do_run_test '#include <unistd.h>\n#include <sys/syscall.h>\nint main(){return syscall(1000)!=-1;}\n' ; then
+			eerror "Your old kernel is broken. You need to update it to a newer"
+			eerror "version as syscall(<bignum>) will break. See bug 279260."
+			die "Old and broken kernel."
+		fi
 	fi
 
 	# Users have had a chance to phase themselves, time to give em the boot
@@ -613,12 +619,6 @@ sanity_prechecks() {
 		eerror "Chances are you don't actually want/need i386."
 		eerror "Please read https://www.gentoo.org/doc/en/change-chost.xml"
 		die "Please fix your CHOST"
-	fi
-
-	if ! do_run_test '#include <unistd.h>\n#include <sys/syscall.h>\nint main(){return syscall(1000)!=-1;}\n' ; then
-		eerror "Your old kernel is broken. You need to update it to a newer"
-		eerror "version as syscall(<bignum>) will break. See bug 279260."
-		die "Old and broken kernel."
 	fi
 
 	if [[ -e /proc/xen ]] && [[ $(tc-arch) == "x86" ]] && ! is-flag -mno-tls-direct-seg-refs ; then
