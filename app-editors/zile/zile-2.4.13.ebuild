@@ -13,7 +13,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~ppc ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux 
 IUSE="acl test"
 
 RDEPEND=">=dev-libs/boehm-gc-7.2:=
-	sys-libs/ncurses:0
+	sys-libs/ncurses:0=
 	acl? ( virtual/acl )"
 
 DEPEND="${RDEPEND}
