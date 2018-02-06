@@ -31,6 +31,8 @@ DEPEND="
 
 CONFIG_CHECK="~NETFILTER_XT_TARGET_HL ~IP_NF_TARGET_REDIRECT ~IP_NF_MATCH_TTL ~NF_NAT"
 
+PATCHES=( "${FILESDIR}"/${P}-remote-python.patch )
+
 python_prepare_all() {
 	# don't run tests via setup.py pytest
 	sed -i "/setup_requires=/s/'pytest-runner'//" setup.py || die
