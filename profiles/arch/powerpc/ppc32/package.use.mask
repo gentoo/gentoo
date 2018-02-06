@@ -76,12 +76,6 @@ net-analyzer/wireshark doc-pdf
 # no ppc support in media-libs/glfw
 app-text/mupdf opengl
 
-# Ian Delaney <idella4@gentoo.org> (04 Jan 2016)
-# on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
-# media-libs/libsdl2 lacked ppc32 keyword at the time. See bug #508226.
-# Ready for the next stable mpv version after the one below.
-=media-video/mpv-0.18.0-r1 sdl
-
 # Anthony G. Basile <blueness@gentoo.org> (26 Oct 2015)
 # Mask x265 on vlc for bug #564138
 media-video/vlc x265
