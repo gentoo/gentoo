@@ -1,0 +1,45 @@
+From c693c0d6c41e777def51984035710779697d1989 Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Tue, 6 Feb 2018 14:41:22 +0100
+Subject: [PATCH] Change libseccomp logic to not be automagic only.
+
+Introduce --with-libseccomp configure option so that users can disable
+seccomp even if libseccomp is available on the system.
+The default is unchanged to before this patch. If no --with(out)-libseccomp
+has been given on command line, the macro looks for presence of libseccomp
+and uses that if found.
+---
+ m4/man-libseccomp.m4 | 19 ++++++++++++++-----
+ 1 file changed, 14 insertions(+), 5 deletions(-)
+
+diff --git a/m4/man-libseccomp.m4 b/m4/man-libseccomp.m4
+index a9377317..17a52f72 100644
+--- a/m4/man-libseccomp.m4
++++ b/m4/man-libseccomp.m4
+@@ -1,9 +1,18 @@
+ # man-libseccomp.m4 serial 1
+ dnl MAN_LIBSECCOMP
+-dnl Check for the libseccomp library.
++dnl Add a --with-libseccomp option.
+ AC_DEFUN([MAN_LIBSECCOMP],
+-[PKG_CHECK_MODULES([libseccomp], [libseccomp],
+-	[AC_DEFINE([HAVE_LIBSECCOMP], [1],
+-		[Define to 1 if you have the `libseccomp' library.])],
+-	[:])
++	[AC_ARG_WITH([libseccomp],
++		[AS_HELP_STRING([--with-libseccomp],
++			       [use libseccomp to do most subprocessing])],
++		[],
++		[with_libseccomp=check])
++	if test "x$with_libseccomp" != "xno"; then
++		PKG_CHECK_MODULES([libseccomp], [libseccomp],
++			[AC_DEFINE([HAVE_LIBSECCOMP], [1],
++				[Define to 1 if you have the `libseccomp' library.])],
++			[if test "xyes" = "x$with_libseccomp"; then
++				AC_MSG_ERROR(--with-libseccomp given but cannot find libseccomp)
++			 fi])
++	fi
+ ]) # MAN_LIBSECCOMP
+-- 
+2.16.1
+
