@@ -1,13 +1,70 @@
-Check for more generic remote python versions.
+From 9b7ce2811ec3ef35b9b7f7dfc157127bc46ece47 Mon Sep 17 00:00:00 2001
+From: vieira <vieira@yubo.be>
+Date: Fri, 20 Oct 2017 22:52:06 +0000
+Subject: [PATCH] Use versions of python3 greater than 3.5 when available (e.g.
+ 3.6)
 
---- sshuttle-0.78.3/sshuttle/ssh.py
-+++ sshuttle-0.78.3/sshuttle/ssh.py
-@@ -116,7 +116,7 @@
+Some Linux distros, like Alpine, Arch, etc and some BSDs, like FreeBSD, are
+now shipping with python3.6 as the default python3. Both the client and the
+server are failing to run in this distros, because we are specifically looking
+for python3.5.
+
+These changes make the run shell script use python3 if the version is greater
+than 3.5, otherwise falling back as usual.
+
+On the server any version of python3 will do, use it before falling back to
+python, as the server code can run with any version of python3.
+---
+ run             | 28 +++++++++++++++++-----------
+ sshuttle/ssh.py |  2 +-
+ 2 files changed, 18 insertions(+), 12 deletions(-)
+
+diff --git a/run b/run
+index ec2d3f0..a14d831 100755
+--- a/run
++++ b/run
+@@ -1,11 +1,17 @@
+-#!/bin/sh
+-source_dir="$(dirname $0)"
+-(cd "$source_dir" && "$source_dir/setup.py" --version > /dev/null)
+-export PYTHONPATH="$source_dir:$PYTHONPATH"
+-if python3.5 -V >/dev/null 2>&1; then
+-	exec python3.5 -m "sshuttle" "$@"
+-elif python2.7 -V >/dev/null 2>&1; then
+-	exec python2.7 -m "sshuttle" "$@"
+-else
+-	exec python -m "sshuttle" "$@"
+-fi
++#!/usr/bin/env sh
++set -e
++export PYTHONPATH="$(dirname $0):$PYTHONPATH"
++
++python_best_version() {
++  if [ -x "$(command -v python3)" ]; then
++    if python3 -c "import sys; sys.exit(not sys.version_info > (3, 5))"; then
++      exec python3 "$@"
++    fi
++  elif [ -x "$(command -v python2.7)" ]; then
++    exec python2.7 "$@"
++  else
++    exec python "$@"
++  fi
++}
++
++python_best_version -m "sshuttle" "$@"
+diff --git a/sshuttle/ssh.py b/sshuttle/ssh.py
+index f4c84cc..a1f2997 100644
+--- a/sshuttle/ssh.py
++++ b/sshuttle/ssh.py
+@@ -116,7 +116,7 @@ def connect(ssh_cmd, rhostport, python, stderr, options):
          if python:
              pycmd = "'%s' -c '%s'" % (python, pyscript)
          else:
 -            pycmd = ("P=python3.5; $P -V 2>/dev/null || P=python; "
-+            pycmd = ("P=python3; $P -V 2>/dev/null || P=python2; $P -V 2>/dev/null || P=python; "
++            pycmd = ("P=python3; $P -V 2>/dev/null || P=python; "
                       "exec \"$P\" -c %s") % quote(pyscript)
              pycmd = ("exec /bin/sh -c %s" % quote(pycmd))
          argv = (sshl +
+-- 
+2.16.1
+
