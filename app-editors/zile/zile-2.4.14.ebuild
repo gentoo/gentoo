@@ -26,6 +26,7 @@ src_configure() {
 	econf \
 		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
 		--without-emacs \
+		--disable-valgrind-tests \
 		$(use_enable acl)
 }
 
