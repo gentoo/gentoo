@@ -34,6 +34,7 @@ QT5_TARGET_SUBDIRS=(
 
 QT5_GENTOO_CONFIG=(
 	gtk:gtk3:
+	::widgets
 	!:no-widgets:
 )
 
