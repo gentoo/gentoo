@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=2
@@ -9,7 +9,7 @@ SRC_URI="http://www.aquamaniac.de/sites/download/download.php?package=02&release
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 hppa ppc ~ppc64 ~sparc x86"
+KEYWORDS="amd64 ~hppa ppc ~ppc64 ~sparc x86"
 IUSE="doc examples"
 
 RDEPEND=">=sys-libs/gwenhywfar-4.2.1
