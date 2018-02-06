@@ -10,4 +10,4 @@ RDEPEND=!dedicated? ( media-libs/freetype:2 media-libs/libsdl:0[opengl] media-li
 SLOT=0
 SRC_URI=https://github.com/red-eclipse/base/releases/download/v1.6.0/redeclipse_1.6.0_nix.tar.bz2
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6
-_md5_=65d0c5a192eb0f3deba02541013e7254
+_md5_=778ac26f0e497fd87fca7b3a5f4f45c4
