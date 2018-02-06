@@ -49,6 +49,7 @@ src_prepare() {
 
 	# respect libdir
 	sed -i "/libdir =/s/'lib'/'$(get_libdir)'/" setup.py || die
+	sed -i "s#/../lib/kitty#/../$(get_libdir)/kitty#" linux-launcher.c || die
 
 	# disable wayland as required
 	if ! use wayland; then
