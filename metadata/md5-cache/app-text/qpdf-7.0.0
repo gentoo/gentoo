@@ -4,9 +4,9 @@ DESCRIPTION=Command-line tool for structural, content-preserving transformation 
 EAPI=6
 HOMEPAGE=http://qpdf.sourceforge.net/
 IUSE=doc examples perl static-libs test
-KEYWORDS=alpha amd64 ~arm ~arm64 ~hppa ia64 ~mips ppc ~ppc64 ~s390 sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~m68k-mint ~sparc-solaris
+KEYWORDS=alpha amd64 ~arm ~arm64 hppa ia64 ~mips ppc ~ppc64 ~s390 sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~m68k-mint ~sparc-solaris
 LICENSE=|| ( Apache-2.0 Artistic-2 )
 RDEPEND=sys-libs/zlib virtual/jpeg:0= perl? ( >=dev-lang/perl-5.8 )
 SLOT=0/18
 SRC_URI=mirror://sourceforge/qpdf/qpdf-7.0.0.tar.gz
-_md5_=8049972b17d9b24db5f29fb09c7288e3
+_md5_=cf3cc7a480c93079ac4e51a752eaaaef
