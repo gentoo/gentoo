@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ LICENSE="GPL-2"
 SRC_URI="https://github.com/bbidulock/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 ppc sparc x86"
 IUSE="bidi debug doc minimal nls truetype uclibc xinerama"
 
 # Tests broken in all versions, patches welcome, bug #323907, #389533
