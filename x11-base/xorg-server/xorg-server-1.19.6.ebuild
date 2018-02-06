@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -101,7 +101,6 @@ DEPEND="${CDEPEND}
 	>=x11-proto/xcmiscproto-1.2.0
 	>=x11-proto/xextproto-7.2.99.901
 	>=x11-proto/xf86dgaproto-2.0.99.1
-	>=x11-proto/xf86rushproto-1.1.2
 	>=x11-proto/xf86vidmodeproto-2.2.99.1
 	>=x11-proto/xineramaproto-1.1.3
 	>=x11-proto/xproto-7.0.31
