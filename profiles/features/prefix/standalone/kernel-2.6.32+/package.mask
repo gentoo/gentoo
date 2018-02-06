@@ -5,3 +5,6 @@
 
 # we just use a universal glibc-2.24 on all ARCHes for simplicity.
 >=sys-libs/glibc-2.24
+
+# libnsl is a split-off from glibc-2.26
+>net-libs/libnsl-0
