@@ -1535,7 +1535,6 @@ dev-libs/poco:zip - Add support for the zip & gz archive formats
 dev-libs/ppl:lpsol - Build the ppl_lpsol linear programming problem solver
 dev-libs/protobuf:java - Builds the Java implementation. This is not needed for Java support in protoc.
 dev-libs/protobuf:python - Builds the Python implementation. This is not needed for Python support in protoc.
-dev-libs/purpose:kaccounts - Enable support for system-wide defined KAccounts
 dev-libs/starpu:cuda - Enable NVIDIA CUDA toolkit support
 dev-libs/starpu:gcc-plugin - Enable GCC extension plugin (experimental)
 dev-libs/starpu:opencl - Enable OpenCL support
@@ -2272,6 +2271,7 @@ kde-frameworks/kwallet:man - Build and install man pages
 kde-frameworks/kxmlgui:attica - Enable support for kde-frameworks/attica
 kde-frameworks/networkmanager-qt:teamd - Enable Teamd control support
 kde-frameworks/plasma:gles2 - Use GLES 2.0 or later instead of full OpenGL
+kde-frameworks/purpose:kaccounts - Enable support for system-wide defined KAccounts
 kde-frameworks/sonnet:aspell - Enable the app-text/aspell spell-checking backend
 kde-frameworks/sonnet:hunspell - Enable the app-text/hunspell spell-checking backend
 kde-misc/kdeconnect:app - Enable experimental kcapp frontend
