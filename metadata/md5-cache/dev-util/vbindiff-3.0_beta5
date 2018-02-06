@@ -3,9 +3,9 @@ DEPEND=sys-libs/ncurses:0=
 DESCRIPTION=Visual binary diff utility
 EAPI=6
 HOMEPAGE=https://www.cjmweb.net/vbindiff/
-KEYWORDS=amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd
+KEYWORDS=amd64 ~arm ~ppc ~ppc64 x86 ~x86-fbsd
 LICENSE=GPL-2
 RDEPEND=sys-libs/ncurses:0=
 SLOT=0
 SRC_URI=https://github.com/mrdudz/vbindiff/releases/download/3.0_beta5/vbindiff-3.0_beta5.tar.gz
-_md5_=d0ece30309100482f829027fea14579a
+_md5_=4d74496b814b082dd5c357eb5df0f650

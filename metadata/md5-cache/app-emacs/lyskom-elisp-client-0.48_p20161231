@@ -4,10 +4,10 @@ DESCRIPTION=Elisp client for the LysKOM conference system
 EAPI=6
 HOMEPAGE=http://www.lysator.liu.se/lyskom/klienter/emacslisp/index.en.html
 IUSE=l10n_sv
-KEYWORDS=amd64 ~sparc ~x86
+KEYWORDS=amd64 ~sparc x86
 LICENSE=GPL-2+
 RDEPEND=>=virtual/emacs-23
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/lyskom-elisp-client-0.48_p20161231.tar.xz
 _eclasses_=elisp	8a9eaaa38b2345593b1cbc5315dde83c	elisp-common	23f47b2e1de7abf387105eddd1318738	readme.gentoo-r1	6f03e110529650f57fc7d1fb908b8986
-_md5_=6993195d61da0d0dac2a302387e53c46
+_md5_=fb4b47d61f1b02648354ebe2ce153ca3
