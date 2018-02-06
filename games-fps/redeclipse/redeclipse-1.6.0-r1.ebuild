@@ -74,10 +74,10 @@ src_install() {
 		doman doc/man/redeclipse.6
 	fi
 
+	doman doc/man/redeclipse-server.6
+	dodoc readme.txt doc/examples/servinit.cfg
+
 	dobin "${FILESDIR}/redeclipse"
 	cd /usr/bin || die
 	dosym redeclipse redeclipse_server
-
-	doman doc/man/redeclipse-server.6
-	dodoc readme.txt doc/examples/servinit.cfg
 }
