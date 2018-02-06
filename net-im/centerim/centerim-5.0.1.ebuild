@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -10,7 +10,7 @@ SRC_URI="http://www.centerim.org/download/cim5/${MY_P}.tar.gz"
 HOMEPAGE="http://www.centerim.org/"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~x86 ~x86-fbsd"
+KEYWORDS="amd64 x86 ~x86-fbsd"
 IUSE="debug nls"
 
 DEPEND=">=sys-libs/ncurses-5.2:=
