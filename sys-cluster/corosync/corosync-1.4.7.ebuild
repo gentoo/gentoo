@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -13,7 +13,7 @@ SRC_URI="http://build.clusterlabs.org/corosync/releases/${P}.tar.gz"
 
 LICENSE="BSD-2 public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~hppa ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~arm64 ~hppa x86 ~x86-fbsd"
 IUSE="doc infiniband ssl static-libs"
 
 RDEPEND="!sys-cluster/heartbeat
