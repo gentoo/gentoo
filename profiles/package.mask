@@ -29,6 +29,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (06 Feb 2018)
+# Dead and unused
+# Masked for removal in 30 days. Bug #646838
+x11-libs/libXCalibrate
+x11-libs/libXfontcache
+x11-misc/xtscal
+x11-proto/fontcacheproto
+x11-proto/xcalibrateproto
+x11-proto/xf86rushproto
+
 # Tim Harder <radhermit@gentoo.org> (05 Feb 2018)
 # Unmaintained, replaced by newsboat fork.
 # Masked for removal in 30 days.
