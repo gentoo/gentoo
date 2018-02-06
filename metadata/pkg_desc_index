@@ -1054,7 +1054,7 @@ app-misc/nut 20.1: Record what you eat and analyze your nutrient levels
 app-misc/ondir 0.2.2-r2: Automatically execute scripts as you traverse directories
 app-misc/oneko 1.2-r2: A cat, dog and others which chase the mouse or windows around the screen
 app-misc/pal 0.4.3-r2: Command-line calendar program
-app-misc/pax-utils 1.1.7: ELF utils that can check files for security relevant properties
+app-misc/pax-utils 1.1.7 1.2.2-r2: ELF utils that can check files for security relevant properties
 app-misc/pdfpc 3.1.1: Presenter console with multi-monitor support for PDF files
 app-misc/perltrash 0.3-r1: Command-line trash can emulation
 app-misc/pfm 2.12.3: A terminal-based file manager written in Perl

@@ -4,10 +4,10 @@ DESCRIPTION=Really Slick OpenGL Screensavers for XScreenSaver
 EAPI=6
 HOMEPAGE=http://rss-glx.sourceforge.net
 IUSE=+bzip2 openal quesoglc
-KEYWORDS=~alpha amd64 ppc ~ppc64 ~sparc ~x86
+KEYWORDS=~alpha amd64 ppc ~ppc64 ~sparc x86
 LICENSE=GPL-2
 RDEPEND=x11-libs/libX11 x11-libs/libXext >=media-libs/glew-1.5.1:= media-libs/mesa >=media-gfx/imagemagick-6.4:= >=x11-misc/xscreensaver-5.08-r2 bzip2? ( app-arch/bzip2 ) openal? ( >=media-libs/freealut-1.1.0-r1 ) quesoglc? ( media-libs/quesoglc )
 SLOT=0
 SRC_URI=mirror://sourceforge/rss-glx/rss-glx_0.9.1.tar.bz2
 _eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=d7725f23ac47152f1607ef41e4a175a2
+_md5_=551323aa958e813c56bdac57a8f17d8c
