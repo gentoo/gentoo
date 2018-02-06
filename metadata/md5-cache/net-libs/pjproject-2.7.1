@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=alsa? ( media-libs/alsa-lib ) oss? ( media-libs/portaudio[oss] ) portaudio? ( media-libs/portaudio ) amr? ( media-libs/opencore-amr ) gsm? ( media-sound/gsm ) ilbc? ( dev-libs/ilbc-rfc3951 ) opus? ( media-libs/opus ) speex? ( media-libs/speex ) ffmpeg? ( virtual/ffmpeg:= ) sdl? ( media-libs/libsdl ) openh264? ( media-libs/openh264 ) resample? ( media-libs/libsamplerate ) ssl? ( dev-libs/openssl:= ) net-libs/libsrtp:0 virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Open source SIP, Media, and NAT Traversal Library
+EAPI=6
+HOMEPAGE=http://www.pjsip.org/
+IUSE=amr debug doc epoll examples ipv6 opus resample silk ssl static-libs webrtc g711 g722 g7221 gsm ilbc speex l16 sdl ffmpeg v4l2 openh264 libyuv alsa oss portaudio
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=alsa? ( media-libs/alsa-lib ) oss? ( media-libs/portaudio[oss] ) portaudio? ( media-libs/portaudio ) amr? ( media-libs/opencore-amr ) gsm? ( media-sound/gsm ) ilbc? ( dev-libs/ilbc-rfc3951 ) opus? ( media-libs/opus ) speex? ( media-libs/speex ) ffmpeg? ( virtual/ffmpeg:= ) sdl? ( media-libs/libsdl ) openh264? ( media-libs/openh264 ) resample? ( media-libs/libsamplerate ) ssl? ( dev-libs/openssl:= ) net-libs/libsrtp:0
+REQUIRED_USE=?? ( alsa oss portaudio )
+SLOT=0
+SRC_URI=http://www.pjsip.org/release/2.7.1/pjproject-2.7.1.tar.bz2
+_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	flag-o-matic	02908f00f002f0f07c5b74783d778325	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_md5_=204bd43f6a58d112d49383a0920f3d48
