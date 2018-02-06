@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python3_{5,6} )
 
 inherit python-single-r1 toolchain-funcs
 
-DESCRIPTION="a cross-platform, fast, featureful, GPU-based terminal emulator"
+DESCRIPTION="A modern, hackable, featureful, OpenGL-based terminal emulator"
 HOMEPAGE="https://github.com/kovidgoyal/kitty"
 SRC_URI="https://github.com/kovidgoyal/kitty/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
@@ -42,13 +42,15 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${P}-flags.patch
-	"${FILESDIR}"/${P}-svg-icon.patch)
+	"${FILESDIR}"/${P}-svg-icon.patch
+)
 
 src_prepare() {
 	default
 
 	# respect libdir
 	sed -i "/libdir =/s/'lib'/'$(get_libdir)'/" setup.py || die
+	sed -i "s#/../lib/kitty#/../$(get_libdir)/kitty#" linux-launcher.c || die
 
 	# disable wayland as required
 	if ! use wayland; then
