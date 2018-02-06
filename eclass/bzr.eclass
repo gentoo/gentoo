@@ -27,11 +27,11 @@ case "${EAPI:-0}" in
 	*)   EXPORT_FUNCTIONS src_unpack src_prepare ;;
 esac
 
-DEPEND=">=dev-vcs/bzr-2.0.1"
+DEPEND=">=dev-vcs/bzr-2.6.0"
 case "${EAPI:-0}" in
 	0|1) ;;
 	*) [[ ${EBZR_REPO_URI%%:*} = sftp ]] \
-		&& DEPEND=">=dev-vcs/bzr-2.0.1[sftp]" ;;
+		&& DEPEND=">=dev-vcs/bzr-2.6.0[sftp]" ;;
 esac
 
 # @ECLASS-VARIABLE: EBZR_STORE_DIR
@@ -57,7 +57,7 @@ esac
 # @ECLASS-VARIABLE: EBZR_UPDATE_CMD
 # @DESCRIPTION:
 # The Bazaar command to update the sources.
-: ${EBZR_UPDATE_CMD:="bzr pull"}
+: ${EBZR_UPDATE_CMD:="bzr pull --overwrite-tags"}
 
 # @ECLASS-VARIABLE: EBZR_EXPORT_CMD
 # @DESCRIPTION:
