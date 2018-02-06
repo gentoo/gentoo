@@ -3,19 +3,29 @@
 
 EAPI=6
 
+KDE_AUTODEPS="false"
+KDE_QTHELP="false"
 KDE_TEST="true"
 inherit kde5
 
 DESCRIPTION="Library to determine holidays and other special events for a geographical region"
+SRC_URI="mirror://kde/stable/applications/${PV}/src/${P}.tar.xz"
+
 LICENSE="LGPL-2.1+"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="nls"
 
-RDEPEND="
+COMMON_DEPEND="
+	$(add_qt_dep qtcore)
 	$(add_qt_dep qtdeclarative)
 "
-DEPEND="${RDEPEND}
+DEPEND="${COMMON_DEPEND}
+	$(add_frameworks_dep extra-cmake-modules '' 5.40.0)
 	nls? ( $(add_qt_dep linguist-tools) )
+"
+RDEPEND="${COMMON_DEPEND}
+	>=kde-frameworks/kf-env-4
+	|| ( $(add_frameworks_dep breeze-icons '' 5.40.0) kde-frameworks/oxygen-icons:* )
 "
 
 src_test() {

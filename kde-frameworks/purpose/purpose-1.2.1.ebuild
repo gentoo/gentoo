@@ -1,8 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
+KDE_AUTODEPS="false"
+KDE_QTHELP="false"
 KDE_TEST="forceoptional"
 inherit kde5
 
@@ -13,10 +15,11 @@ LICENSE="LGPL-2.1+"
 KEYWORDS="amd64 ~arm x86"
 IUSE="+kaccounts"
 
-DEPEND="
-	$(add_frameworks_dep kcoreaddons)
-	$(add_frameworks_dep ki18n)
-	$(add_frameworks_dep kio)
+COMMON_DEPEND="
+	$(add_frameworks_dep kcoreaddons '' 5.40.0)
+	$(add_frameworks_dep ki18n '' 5.40.0)
+	$(add_frameworks_dep kio '' 5.40.0)
+	$(add_qt_dep qtcore)
 	$(add_qt_dep qtdeclarative)
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtnetwork)
@@ -26,7 +29,13 @@ DEPEND="
 		net-libs/accounts-qt
 	)
 "
-RDEPEND="${DEPEND}"
+DEPEND="${COMMON_DEPEND}
+	$(add_frameworks_dep extra-cmake-modules '' 5.40.0)
+"
+RDEPEND="${COMMON_DEPEND}
+	>=kde-frameworks/kf-env-4
+	|| ( $(add_frameworks_dep breeze-icons '' 5.40.0) kde-frameworks/oxygen-icons:* )
+"
 
 # requires running environment
 RESTRICT+=" test"
