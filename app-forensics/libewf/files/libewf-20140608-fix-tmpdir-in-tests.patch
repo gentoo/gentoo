@@ -1,0 +1,33 @@
+--- a/tests/test_read_write.sh
++++ b/tests/test_read_write.sh
+@@ -25,7 +25,7 @@ EXIT_FAILURE=1;
+ EXIT_IGNORE=77;
+ 
+ INPUT="input";
+-TMP="tmp";
++TMP=$(mktemp -ut);
+ 
+ LS="ls";
+ TR="tr";
+--- a/tests/test_read_write_delta.sh
++++ b/tests/test_read_write_delta.sh
+@@ -25,7 +25,7 @@ EXIT_FAILURE=1;
+ EXIT_IGNORE=77;
+ 
+ INPUT="input";
+-TMP="tmp";
++TMP=$(mktemp -ut);
+ 
+ AWK="awk";
+ CUT="cut";
+--- a/tests/test_write.sh
++++ b/tests/test_write.sh
+@@ -24,7 +24,7 @@ EXIT_SUCCESS=0;
+ EXIT_FAILURE=1;
+ EXIT_IGNORE=77;
+ 
+-TMP="tmp";
++TMP=$(mktemp -ut);
+ 
+ CUT="cut";
+ 
