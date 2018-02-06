@@ -2,13 +2,13 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=>=sys-fs/fuse-2.9.7 python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_4? ( dev-lang/python:3.4 ) python_targets_python3_5? ( dev-lang/python:3.5 ) python_targets_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-)]
 DESCRIPTION=Python FUSE bindings using ctypes
 EAPI=6
-HOMEPAGE=https://github.com/terencehonles/fusepy
+HOMEPAGE=https://github.com/fusepy/fusepy
 IUSE=python_targets_python2_7 python_targets_python3_4 python_targets_python3_5 python_targets_python3_6
 KEYWORDS=~amd64 ~x86
 LICENSE=BSD
 RDEPEND=>=sys-fs/fuse-2.9.7 !dev-python/fuse-python python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_4? ( dev-lang/python:3.4 ) python_targets_python3_5? ( dev-lang/python:3.5 ) python_targets_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-)]
 REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_4 python_targets_python3_5 python_targets_python3_6 )
 SLOT=0
-SRC_URI=https://github.com/terencehonles/fusepy/archive/v2.0.4.tar.gz -> fusepy-2.0.4.tar.gz
+SRC_URI=https://github.com/fusepy/fusepy/archive/v2.0.4.tar.gz -> fusepy-2.0.4.tar.gz
 _eclasses_=distutils-r1	372bbe39047c0a2550319a3a82f3e063	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	e9350ec46bb5c9f3504b4fbe8b8d8987	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=6aa60c57b689fc7b3d86fc06920de79a
+_md5_=36a6c13233e3302fd2044973c4cd8fbb
