@@ -10639,7 +10639,6 @@ x11-libs/libGLw 8.0.0: Mesa GLw library
 x11-libs/libICE 1.0.9-r1: X.Org Inter-Client Exchange library
 x11-libs/libSM 1.2.2-r1: X.Org Session Management library
 x11-libs/libX11 1.6.5: X.Org X11 library
-x11-libs/libXCalibrate 0.1_pre20081207-r1: X.Org Calibrate client-side protocol library
 x11-libs/libXScrnSaver 1.2.2-r1: X.Org XScrnSaver library
 x11-libs/libXTrap 1.0.1: X.Org XTrap library
 x11-libs/libXau 1.0.8: X.Org X authorization library
@@ -10654,7 +10653,6 @@ x11-libs/libXext 1.3.2 1.3.3: X.Org Xext library
 x11-libs/libXfixes 5.0.3: X.Org Xfixes library
 x11-libs/libXfont 1.5.4: X.Org Xfont library
 x11-libs/libXfont2 2.0.3: X.Org Xfont library
-x11-libs/libXfontcache 1.0.5-r1: X.Org Xfontcache library
 x11-libs/libXft 2.3.1-r1 2.3.2: X.Org Xft library
 x11-libs/libXi 1.7.9: X.Org Xi library
 x11-libs/libXinerama 1.1.3: X.Org Xinerama library
@@ -10921,7 +10919,6 @@ x11-misc/xtermcontrol 3.3: xtermcontrol enables dynamic control of XFree86 xterm
 x11-misc/xtitle 1.0.4: Set window title and icon name for an X11 terminal window
 x11-misc/xtoolwait 1.3-r2: Xtoolwait notably decreases the startup time of an X session
 x11-misc/xtrlock 2.8: A simplistic screen locking program for X
-x11-misc/xtscal 0.6.3-r1: Touchscreen calibration utility
 x11-misc/xvkbd 3.7: virtual keyboard for X window system
 x11-misc/xwrits 2.26-r1: Reminds you to take wrist breaks to help you prevent repetitive stress injury
 x11-misc/xxkb 1.11.1: eXtended XKB - assign different keymaps to different windows
@@ -11048,7 +11045,6 @@ x11-proto/dmxproto 2.3.1-r1: X.Org DMX protocol headers
 x11-proto/dri2proto 2.8-r1: X.Org DRI2 protocol headers
 x11-proto/dri3proto 1.0: X.Org DRI3 protocol specification and Xlib/Xserver headers
 x11-proto/fixesproto 5.0 5.0-r1: X.Org Fixes protocol headers
-x11-proto/fontcacheproto 0.1.3: X.Org Fontcache protocol headers
 x11-proto/fontsproto 2.1.2 2.1.3: X.Org Fonts protocol headers
 x11-proto/glproto 1.4.17-r1: X.Org GL protocol headers
 x11-proto/inputproto 2.3 2.3.1 2.3.2: X.Org Input protocol headers
@@ -11062,7 +11058,6 @@ x11-proto/resourceproto 1.2.0: X.Org Resource protocol headers
 x11-proto/scrnsaverproto 1.2.2-r1: X.Org ScrnSaver protocol headers
 x11-proto/trapproto 3.4.3: X.Org Trap protocol headers
 x11-proto/videoproto 2.3.2 2.3.3: X.Org Video protocol headers
-x11-proto/xcalibrateproto 0.1_pre20081210: Touchscreen calibration protocol
 x11-proto/xcb-proto 1.12-r2: X C-language Bindings protocol headers
 x11-proto/xcmiscproto 1.2.2: X.Org XCMisc protocol headers
 x11-proto/xextproto 7.3.0: X.Org XExt protocol headers
@@ -11070,7 +11065,6 @@ x11-proto/xf86bigfontproto 1.2.0-r1: X.Org XF86BigFont protocol headers
 x11-proto/xf86dgaproto 2.1-r2: X.Org XF86DGA protocol headers
 x11-proto/xf86driproto 2.1.1-r1: X.Org XF86DRI protocol headers
 x11-proto/xf86miscproto 0.9.3: X.Org XF86Misc protocol headers
-x11-proto/xf86rushproto 1.1.2-r1: X.Org XF86Rush protocol headers
 x11-proto/xf86vidmodeproto 2.3.1-r1: X.Org XF86VidMode protocol headers
 x11-proto/xineramaproto 1.2.1-r1: X.Org Xinerama protocol headers
 x11-proto/xproto 7.0.31: X.Org xproto protocol headers
