@@ -11,4 +11,4 @@ REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_4 python_targe
 SLOT=0
 SRC_URI=mirror://sourceforge/pyqt/PyQt5_gpl-5.10.tar.gz
 _eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	python-r1	e9350ec46bb5c9f3504b4fbe8b8d8987	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=10f51231f894eed368812e1eea5dde9e
+_md5_=64fab067f47f710cf90094b26926f1dd
