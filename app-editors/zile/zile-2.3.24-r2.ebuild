@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,10 @@ DEPEND="${RDEPEND}
 PATCHES=("${FILESDIR}"/${P}-{userhome,gets}.patch)
 
 src_configure() {
-	econf $(use test && use_with valgrind || echo "--without-valgrind")
+	# --without-emacs to suppress tests for GNU Emacs #630652
+	econf \
+		--without-emacs \
+		$(use test && use_with valgrind || echo "--without-valgrind")
 }
 
 src_install() {
