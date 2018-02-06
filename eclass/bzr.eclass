@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 #
 # @ECLASS: bzr.eclass
 # @MAINTAINER:
-# No maintainer <maintainer-needed@gentoo.org>
+# Ulrich Müller <ulm@gentoo.org>
 # @AUTHOR:
 # Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
 # Mark Lee <bzr-gentoo-overlay@lazymalevolence.com>
