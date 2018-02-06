@@ -305,10 +305,6 @@ dev-libs/libFuzzer
 # Bug #643976. Masked for removal in 30 days.
 media-video/2mandvd
 
-# Andreas Sturmlechner <asturm@gentoo.org> (07 Jan 2018)
-# Masked for removal in 30 days, no more rdeps, bug #602816
-dev-python/python-poppler-qt4
-
 # Alice Ferrazzi <alicef@gentoo.org> (05 Jan 2018)
 # kernel: Meltdown and Spectre - Processor flaw. (#643228)
 # Please upgrade for Intel processor flaw workaround
