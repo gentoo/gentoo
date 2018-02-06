@@ -1,5 +1,5 @@
---- projects/rscriptd/rscriptd.conf.org	2013-01-08 18:19:34.000000000 +0200
-+++ projects/rscriptd/rscriptd.conf	2013-01-08 18:20:52.000000000 +0200
+--- a/projects/rscriptd/rscriptd.conf
++++ b/projects/rscriptd/rscriptd.conf
 @@ -6,7 +6,7 @@
  # Parameter: optional
  # Value: file path
@@ -34,8 +34,8 @@
  
  ################################################################################
 \ No newline at end of file
---- projects/sgconv/sgconv.conf.org	2012-12-18 21:56:33.578221904 +0200
-+++ projects/sgconv/sgconv.conf	2012-12-18 21:58:22.355217059 +0200
+--- a/projects/sgconv/sgconv.conf
++++ b/projects/sgconv/sgconv.conf
 @@ -18,27 +18,27 @@
      # Working server directory, provides data on tariffs, users, administrators.
      # Parameter: required
@@ -80,8 +80,8 @@
  
      # Database username
      # Parameter: required
---- projects/stargazer/inst/linux/etc/stargazer/stargazer.conf.org	2012-12-30 14:35:22.000000000 +0200
-+++ projects/stargazer/inst/linux/etc/stargazer/stargazer.conf	2012-12-30 14:36:37.000000000 +0200
+--- a/projects/stargazer/inst/linux/etc/stargazer/stargazer.conf
++++ b/projects/stargazer/inst/linux/etc/stargazer/stargazer.conf
 @@ -6,7 +6,7 @@
  # Parameter: required
  # Value: file path
@@ -100,8 +100,8 @@
  
  # Defines message maximum lifetime
  # Note: 0 - unlimited
---- projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_remote_script.conf.org	2012-12-25 14:03:49.000000000 +0200
-+++ projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_remote_script.conf	2012-12-25 14:04:00.000000000 +0200
+--- a/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_remote_script.conf
++++ b/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_remote_script.conf
 @@ -16,7 +16,7 @@
      # Parametr: required
      # Values: filename
@@ -111,8 +111,8 @@
  
      # The password to encrypt packets between the stg-server and remote server
      # Parameter: required
---- projects/stargazer/inst/linux/etc/stargazer/conf-available.d/store_files.conf.org	2012-12-25 13:31:01.000000000 +0200
-+++ projects/stargazer/inst/linux/etc/stargazer/conf-available.d/store_files.conf	2012-12-25 13:31:43.000000000 +0200
+--- a/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/store_files.conf
++++ b/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/store_files.conf
 @@ -5,27 +5,27 @@
      # Working server directory, provides data on tariffs, users, administrators.
      # Parameter: required
@@ -148,8 +148,8 @@
      UserLogMode = 640
  
  </StoreModule>
---- projects/stargazer/inst/linux/etc/stargazer/conf-available.d/store_firebird.conf.org	2012-12-25 13:39:00.000000000 +0200
-+++ projects/stargazer/inst/linux/etc/stargazer/conf-available.d/store_firebird.conf	2012-12-25 13:39:28.000000000 +0200
+--- a/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/store_firebird.conf
++++ b/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/store_firebird.conf
 @@ -9,7 +9,7 @@
      # Parameter: required
      # Value: file path
@@ -159,8 +159,8 @@
  
      # Database username
      # Parameter: required
---- projects/stargazer/plugins/configuration/rpcconfig/rpcconfig.cpp.org	2012-12-31 11:08:26.000000000 +0200
-+++ projects/stargazer/plugins/configuration/rpcconfig/rpcconfig.cpp	2012-12-31 11:08:41.000000000 +0200
+--- a/projects/stargazer/plugins/configuration/rpcconfig/rpcconfig.cpp
++++ b/projects/stargazer/plugins/configuration/rpcconfig/rpcconfig.cpp
 @@ -169,7 +169,7 @@
  rpcServer = new xmlrpc_c::serverAbyss(
          xmlrpc_c::serverAbyss::constrOpt()
@@ -170,8 +170,8 @@
          .socketFd(fd)
          );
  
---- projects/stargazer/inst/var/00-base-00.sql.org	2013-01-02 16:22:28.000000000 +0200
-+++ projects/stargazer/inst/var/00-base-00.sql	2013-01-02 16:22:52.000000000 +0200
+--- a/projects/stargazer/inst/var/00-base-00.sql
++++ b/projects/stargazer/inst/var/00-base-00.sql
 @@ -50,9 +50,9 @@
  /*
   * CONNECT 'localhost:/var/stg/stargazer.fdb' USER 'stg' PASSWORD '123456';

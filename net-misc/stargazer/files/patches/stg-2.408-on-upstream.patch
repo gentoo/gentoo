@@ -1,5 +1,5 @@
---- projects/stargazer/inst/linux/etc/stargazer/OnChange.org	2013-01-09 14:30:32.000000000 +0200
-+++ projects/stargazer/inst/linux/etc/stargazer/OnChange	2013-01-09 15:50:01.000000000 +0200
+--- a/projects/stargazer/inst/linux/etc/stargazer/OnChange
++++ b/projects/stargazer/inst/linux/etc/stargazer/OnChange
 @@ -1,8 +1,20 @@
  #! /bin/sh
  
@@ -28,8 +28,8 @@
 +# Usage examples:
 +#echo "User: '$LOGIN'. Parameter $PARAMETER changed from '$OLDVALUE' to '$NEWVALUE'" >> /var/stargazer/user.change.log
 \ No newline at end of file
---- projects/stargazer/inst/linux/etc/stargazer/OnConnect.org	2013-01-09 14:39:51.000000000 +0200
-+++ projects/stargazer/inst/linux/etc/stargazer/OnConnect	2013-01-09 15:11:49.000000000 +0200
+--- a/projects/stargazer/inst/linux/etc/stargazer/OnConnect
++++ b/projects/stargazer/inst/linux/etc/stargazer/OnConnect
 @@ -1,24 +1,23 @@
  #! /bin/sh
  
@@ -66,8 +66,8 @@
 +# Usage examples:
 +#echo "Connected `date +%Y.%m.%d-%H.%M.%S` $IP $CASH" >> /var/stargazer/users/$LOGIN/connect.log
 \ No newline at end of file
---- projects/stargazer/inst/linux/etc/stargazer/OnDisconnect.org	2013-01-09 14:54:36.000000000 +0200
-+++ projects/stargazer/inst/linux/etc/stargazer/OnDisconnect	2013-01-09 15:11:33.000000000 +0200
+--- a/projects/stargazer/inst/linux/etc/stargazer/OnDisconnect
++++ b/projects/stargazer/inst/linux/etc/stargazer/OnDisconnect
 @@ -1,24 +1,23 @@
  #! /bin/sh
  
@@ -104,8 +104,8 @@
 +# Usage examples:
 +#echo "Disconnected `date +%Y.%m.%d-%H.%M.%S` $IP $CASH" >> /var/stargazer/users/$LOGIN/connect.log
 \ No newline at end of file
---- projects/stargazer/inst/linux/etc/stargazer/OnUserAdd.org	2013-01-09 15:01:57.000000000 +0200
-+++ projects/stargazer/inst/linux/etc/stargazer/OnUserAdd	2013-01-09 15:10:55.000000000 +0200
+--- a/projects/stargazer/inst/linux/etc/stargazer/OnUserAdd
++++ b/projects/stargazer/inst/linux/etc/stargazer/OnUserAdd
 @@ -1,14 +1,12 @@
  #! /bin/sh
  
@@ -130,8 +130,8 @@
 +# Usage examples:
 +#echo "Added user $login" >> /var/stargazer/add_del.log
 \ No newline at end of file
---- projects/stargazer/inst/linux/etc/stargazer/OnUserDel.org	2013-01-09 15:12:32.000000000 +0200
-+++ projects/stargazer/inst/linux/etc/stargazer/OnUserDel	2013-01-09 15:14:10.000000000 +0200
+--- a/projects/stargazer/inst/linux/etc/stargazer/OnUserDel
++++ b/projects/stargazer/inst/linux/etc/stargazer/OnUserDel
 @@ -1,7 +1,13 @@
  #! /bin/sh
  

@@ -1,5 +1,5 @@
---- projects/rlm_stg/build.org	2013-01-15 15:25:59.000000000 +0200
-+++ projects/rlm_stg/build	2013-01-15 19:48:13.000000000 +0200
+--- a/projects/rlm_stg/build
++++ b/projects/rlm_stg/build
 @@ -16,21 +16,15 @@
  DIR_MODE=0755
  OWNER=root
@@ -30,8 +30,8 @@
  fi
  
  CXXFLAGS="$CXXFLAGS -I/usr/local/include"
---- projects/rscriptd/build.org	2013-01-15 18:28:32.000000000 +0200
-+++ projects/rscriptd/build	2013-01-15 18:38:13.000000000 +0200
+--- a/projects/rscriptd/build
++++ b/projects/rscriptd/build
 @@ -16,21 +16,15 @@
  DIR_MODE=0755
  OWNER=root
@@ -61,8 +61,8 @@
  fi
  
  CXXFLAGS="$CXXFLAGS -I/usr/local/include"
---- projects/sgauth/build.org	2013-01-15 18:29:20.000000000 +0200
-+++ projects/sgauth/build	2013-01-15 18:36:33.000000000 +0200
+--- a/projects/sgauth/build
++++ b/projects/sgauth/build
 @@ -16,21 +16,15 @@
  DIR_MODE=0755
  OWNER=root
@@ -92,8 +92,8 @@
  fi
  
  CXXFLAGS="$CXXFLAGS -I/usr/local/include"
---- projects/sgconf/build.org	2013-01-15 18:29:59.000000000 +0200
-+++ projects/sgconf/build	2013-01-15 18:35:41.000000000 +0200
+--- a/projects/sgconf/build
++++ b/projects/sgconf/build
 @@ -16,21 +16,15 @@
  DIR_MODE=0755
  OWNER=root
@@ -123,8 +123,8 @@
  fi
  
  CXXFLAGS="$CXXFLAGS -I/usr/local/include"
---- projects/sgconf_xml/build.org	2013-01-15 18:30:26.000000000 +0200
-+++ projects/sgconf_xml/build	2013-01-15 18:34:53.000000000 +0200
+--- a/projects/sgconf_xml/build
++++ b/projects/sgconf_xml/build
 @@ -16,21 +16,15 @@
  DIR_MODE=0755
  OWNER=root
@@ -154,8 +154,8 @@
  fi
  
  CXXFLAGS="$CXXFLAGS -I/usr/local/include"
---- projects/sgconv/build.org	2013-01-15 18:31:01.000000000 +0200
-+++ projects/sgconv/build	2013-01-15 18:32:46.000000000 +0200
+--- a/projects/sgconv/build
++++ b/projects/sgconv/build
 @@ -16,11 +16,20 @@
  DIR_MODE=0755
  OWNER=root
@@ -180,8 +180,8 @@
  
  if [ "$sys" = "Linux" ]
  then
---- projects/stargazer/build.org	2013-01-15 19:48:54.000000000 +0200
-+++ projects/stargazer/build	2013-01-15 19:51:13.000000000 +0200
+--- a/projects/stargazer/build
++++ b/projects/stargazer/build
 @@ -35,23 +35,15 @@
  XMLRPC_FEATURES="c++2 abyss-server"
  

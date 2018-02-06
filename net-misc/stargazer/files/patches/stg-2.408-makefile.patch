@@ -1,5 +1,5 @@
---- projects/sgauth/Makefile.org	2013-01-05 23:47:38.000000000 +0200
-+++ projects/sgauth/Makefile	2013-01-05 23:48:34.000000000 +0200
+--- a/projects/sgauth/Makefile
++++ b/projects/sgauth/Makefile
 @@ -67,8 +67,8 @@
  
  install-data:
@@ -11,8 +11,8 @@
  
  uninstall: uninstall-bin uninstall-data
  
---- projects/stargazer/Makefile.org	2013-01-05 22:53:26.000000000 +0200
-+++ projects/stargazer/Makefile	2013-01-05 22:54:52.000000000 +0200
+--- a/projects/stargazer/Makefile
++++ b/projects/stargazer/Makefile
 @@ -92,30 +92,8 @@
  	mkdir -m $(DIR_MODE) -p $(PREFIX)/etc/stargazer/conf-available.d
  	mkdir -m $(DIR_MODE) -p $(PREFIX)/etc/stargazer/conf-enabled.d
@@ -44,8 +44,8 @@
  
  uninstall: uninstall-bin uninstall-data
  
---- projects/rscriptd/Makefile.org	2013-01-19 17:03:42.000000000 +0200
-+++ projects/rscriptd/Makefile	2013-01-19 17:04:25.000000000 +0200
+--- a/projects/rscriptd/Makefile
++++ b/projects/rscriptd/Makefile
 @@ -65,15 +65,13 @@
  	$(MAKE) -C $(DIR_LIBSRC) install
  
@@ -67,8 +67,8 @@
  endif
  
  uninstall: uninstall-bin uninstall-data
---- projects/rlm_stg/Makefile.org	2013-02-03 14:02:58.000000000 +0200
-+++ projects/rlm_stg/Makefile	2013-02-03 14:05:43.000000000 +0200
+--- a/projects/rlm_stg/Makefile
++++ b/projects/rlm_stg/Makefile
 @@ -56,19 +56,11 @@
  install: install-bin
  
@@ -89,8 +89,8 @@
  	$(MAKE) -C $(DIR_LIBSRC) install
  
  uninstall: uninstall-bin
---- projects/rscriptd/Makefile.org	2013-02-03 14:17:01.000000000 +0200
-+++ projects/rscriptd/Makefile	2013-02-03 14:17:32.000000000 +0200
+--- a/projects/rscriptd/Makefile
++++ b/projects/rscriptd/Makefile
 @@ -57,11 +57,7 @@
  install: install-bin install-data
  
@@ -103,8 +103,8 @@
  	$(MAKE) -C $(DIR_LIBSRC) install
  
  install-data:
---- projects/sgauth/Makefile.org	2013-02-03 14:18:37.000000000 +0200
-+++ projects/sgauth/Makefile	2013-02-03 14:18:48.000000000 +0200
+--- a/projects/sgauth/Makefile
++++ b/projects/sgauth/Makefile
 @@ -58,11 +58,7 @@
  install: install-bin install-data
  
@@ -117,8 +117,8 @@
  	$(MAKE) -C $(DIR_LIBSRC) install
  
  install-data:
---- projects/sgconf/Makefile.org	2013-02-03 14:19:18.000000000 +0200
-+++ projects/sgconf/Makefile	2013-02-03 14:19:28.000000000 +0200
+--- a/projects/sgconf/Makefile
++++ b/projects/sgconf/Makefile
 @@ -66,11 +66,7 @@
  install: install-bin
  
@@ -131,8 +131,8 @@
  	$(MAKE) -C $(DIR_LIBSRC) install
  
  uninstall: uninstall-bin
---- projects/sgconf_xml/Makefile.org	2013-02-03 14:19:53.000000000 +0200
-+++ projects/sgconf_xml/Makefile	2013-02-03 14:19:59.000000000 +0200
+--- a/projects/sgconf_xml/Makefile
++++ b/projects/sgconf_xml/Makefile
 @@ -66,11 +66,7 @@
  install: install-bin install-data
  
@@ -145,8 +145,8 @@
  	$(MAKE) -C $(DIR_LIBSRC) install
  
  uninstall: uninstall-bin uninstall-data
---- projects/sgconv/Makefile.org	2013-02-03 14:20:24.000000000 +0200
-+++ projects/sgconv/Makefile	2013-02-03 14:20:33.000000000 +0200
+--- a/projects/sgconv/Makefile
++++ b/projects/sgconv/Makefile
 @@ -61,11 +61,7 @@
  install: install-bin
  
@@ -159,8 +159,8 @@
  	$(MAKE) -C $(DIR_PLUGINS) install
  
  uninstall: uninstall-bin
---- projects/stargazer/Makefile.org	2013-02-03 14:20:56.000000000 +0200
-+++ projects/stargazer/Makefile	2013-02-03 14:21:30.000000000 +0200
+--- a/projects/stargazer/Makefile
++++ b/projects/stargazer/Makefile
 @@ -77,11 +77,7 @@
  install: install-bin install-data
  
@@ -173,8 +173,8 @@
  	$(MAKE) -C $(DIR_INCLUDE) install
  	$(MAKE) -C $(DIR_LIBSRC) install
  	$(MAKE) -C $(DIR_PLUGINS) install
---- stglibs/Makefile.in.org	2013-02-03 14:53:02.000000000 +0200
-+++ stglibs/Makefile.in	2013-02-03 14:53:11.000000000 +0200
+--- a/stglibs/Makefile.in
++++ b/stglibs/Makefile.in
 @@ -35,11 +35,7 @@
  	rm -f deps $(PROG) *.o *.a *.so tags *.*~ 
  
@@ -187,8 +187,8 @@
  	mkdir -m $(DIR_MODE) -p $(PREFIX)/usr/include/stg
  	install -m $(DATA_MODE) -o $(OWNER) $(addprefix include/stg/,$(INCS)) $(PREFIX)/usr/include/stg/
  
---- projects/stargazer/plugins/Makefile.in.org	2013-02-03 15:38:41.000000000 +0200
-+++ projects/stargazer/plugins/Makefile.in	2013-02-03 15:38:51.000000000 +0200
+--- a/projects/stargazer/plugins/Makefile.in
++++ b/projects/stargazer/plugins/Makefile.in
 @@ -28,11 +28,7 @@
  
  install: $(PROG)
