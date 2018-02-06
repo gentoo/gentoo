@@ -8521,7 +8521,7 @@ net-irc/weechat 1.9.1: Portable and multi-interface IRC client
 net-irc/znc 1.6.3-r1 1.6.5: An advanced IRC Bouncer
 net-libs/accounts-qt 1.15: Qt5 bindings for libaccounts-glib
 net-libs/adns 1.4: Advanced, easy to use, asynchronous-capable DNS client library and utilities
-net-libs/aqbanking 5.0.25 5.6.10: Generic Online Banking Interface
+net-libs/aqbanking 5.6.10: Generic Online Banking Interface
 net-libs/axtls 1.5.3 2.1.3: Embedded client/server TLSv1 SSL library and small HTTP(S) server
 net-libs/biblesync 1.1.2 1.1.2-r2: A multicast protocol to support Bible software shared co-navigation
 net-libs/c-client 2007f-r6: UW IMAP c-client library
@@ -9220,7 +9220,7 @@ sci-geosciences/geocode-glib 3.24.0: GLib geocoding library that uses the Yahoo!
 sci-geosciences/gmt 4.5.6: Powerful map generator
 sci-geosciences/gnome-maps 3.24.3: A map application for GNOME
 sci-geosciences/gpsbabel 1.5.4-r1: GPS waypoints, tracks and routes converter
-sci-geosciences/gpsd 3.10 3.16 3.17 3.17-r2: GPS daemon and library for USB/serial GPS devices and GPS/mapping clients
+sci-geosciences/gpsd 3.17-r2: GPS daemon and library for USB/serial GPS devices and GPS/mapping clients
 sci-geosciences/gtk-g-rays2 2.05: GUI for accessing the Wintec WBT 201 / G-Rays 2 GPS device
 sci-geosciences/harmonics-dwf-free 20121224: Tidal harmonics database for libtcd
 sci-geosciences/harmonics-dwf-free-noncomm 20111230-r1: Tidal harmonics database for libtcd
@@ -10092,7 +10092,7 @@ sys-libs/fts-standalone 0.2-r1: Standalone fts library for use with musl
 sys-libs/gdbm 1.11 1.13-r2: Standard GNU database libraries
 sys-libs/glibc 2.25-r9: GNU libc6 (also called glibc2) C library
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
-sys-libs/gwenhywfar 4.3.3 4.15.3: A multi-platform helper library for other libraries
+sys-libs/gwenhywfar 4.15.3: A multi-platform helper library for other libraries
 sys-libs/kpmcore 3.2.1: Library for managing partitions
 sys-libs/ldb 1.1.26 1.1.29-r1: An LDAP-like embedded database
 sys-libs/libaal 1.0.6: library required by reiser4progs
