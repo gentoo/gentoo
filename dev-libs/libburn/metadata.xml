@@ -12,6 +12,5 @@ discs.
 <use>
 <flag name="track-src-odirect">Read track input with O_DIRECT (see man 2 open), 
 this may deliver a better write performance in some situations</flag>
-<flag name="cdio">Enable EXPERIMENTAL use of libcdio as system adapter</flag>
 </use>
 </pkgmetadata>
