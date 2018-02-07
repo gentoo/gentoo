@@ -47,7 +47,7 @@ RDEPEND="
 		rsync-verify? (
 			>=app-portage/gemato-10
 			app-crypt/gentoo-keys
-			app-crypt/gnupg[ssl(-)]
+			>=app-crypt/gnupg-2.2.4-r2[ssl(-)]
 		)
 	)
 	elibc_FreeBSD? ( sys-freebsd/freebsd-bin )
