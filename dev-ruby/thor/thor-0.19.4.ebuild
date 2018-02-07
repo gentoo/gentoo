@@ -19,7 +19,7 @@ SRC_URI="https://github.com/erikhuda/${PN}/archive/v${PV}.tar.gz -> ${PN}-git-${
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~amd64-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux"
 IUSE="doc"
 
 all_ruby_prepare() {
