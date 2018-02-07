@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst postrm preinst prerm pretend
+DEPEND=sys-apps/iucode_tool
+DESCRIPTION=Intel IA32/IA64 microcode update data
+EAPI=6
+HOMEPAGE=http://inertiawar.com/microcode/ https://downloadcenter.intel.com/Detail_Desc.aspx?DwnldID=27337
+IUSE=initramfs +split-ucode
+KEYWORDS=-* amd64 x86
+LICENSE=intel-ucode
+RDEPEND=!<sys-apps/microcode-ctl-1.17-r2
+REQUIRED_USE=|| ( initramfs split-ucode )
+SLOT=0
+SRC_URI=http://downloadmirror.intel.com/27337/eng/microcode-20171117.tgz
+_eclasses_=mount-boot	1e82d96b7a7dcb483b412497a90bb646	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_md5_=1de88fad5949018acaaae4a7b412a3c2
