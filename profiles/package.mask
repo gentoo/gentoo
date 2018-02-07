@@ -30,6 +30,11 @@
 #--- END OF EXAMPLES ---
 
 # Matt Turner <mattst88@gentoo.org> (06 Feb 2018)
+# New package with subsuming lots of existing packages. Lots of reverse
+# dependencies will need to be updated.
+x11-proto/xorgproto
+
+# Matt Turner <mattst88@gentoo.org> (06 Feb 2018)
 # Dead and unused
 # Masked for removal in 30 days. Bug #646838
 x11-libs/libXCalibrate
