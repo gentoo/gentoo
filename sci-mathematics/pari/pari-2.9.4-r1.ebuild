@@ -32,8 +32,9 @@ get_compile_dir() {
 }
 
 PATCHES=( "${FILESDIR}"/${P}-strip.patch
-		  "${FILESDIR}"/${P}-ppc.patch
-		  "${FILESDIR}"/${P}-no-automagic.patch
+		"${FILESDIR}"/${P}-ppc.patch
+		"${FILESDIR}"/${P}-no-automagic.patch
+		"${FILESDIR}"/${P}-fltk-detection.patch
 		)
 
 src_prepare() {
