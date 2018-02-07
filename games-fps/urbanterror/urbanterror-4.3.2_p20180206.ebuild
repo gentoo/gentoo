@@ -12,7 +12,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/mickael9/ioq3.git"
 	EGIT_BRANCH="urt"
 else
-	COMMIT_ID="36ac852bc7ecfb3b847b021305b14a363f7c7f9c"
+	COMMIT_ID="11a2b7462574a913e8960014cfc504f37903a3d6"
 	SRC_URI="https://github.com/mickael9/ioq3/archive/${COMMIT_ID}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/ioq3-${COMMIT_ID}"
 	KEYWORDS="~amd64 ~x86"
@@ -129,6 +129,9 @@ pkg_postinst() {
 			elog "You might need to set:"
 			elog "  seta r_altgamma \"1\""
 			elog "in your ~/.q3a/q3ut4/q3config.cfg for altgamma to work."
+			elog "Be aware that altgamme works on a global scale, so external"
+			elog "applications like redshift can cause trouble. Disabling"
+			elog "these while playing is a usable workaround."
 		fi
 
 		if ! use altgamma; then
