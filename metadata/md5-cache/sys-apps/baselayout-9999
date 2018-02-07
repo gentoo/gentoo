@@ -3,8 +3,8 @@ DEPEND=>=dev-vcs/git-1.8.2.1
 DESCRIPTION=Filesystem baselayout and init scripts
 EAPI=6
 HOMEPAGE=https://www.gentoo.org/
-IUSE=build usrmerge kernel_linux
+IUSE=usrmerge kernel_linux
 LICENSE=GPL-2
 SLOT=0
 _eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	git-r3	fec09a83ae965b041b47f5ff7c8ba29a	multilib	97f470f374f2e94ccab04a2fb21d811e	prefix	e51c7882b7b721e54e684f7eb143cbfe	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	versionator	ce21313503c41896ebcd7d58b0607e37
-_md5_=62a88a91d7a29087029c487d95ac5883
+_md5_=193c498738c24217d27706fdcb3aefbf
