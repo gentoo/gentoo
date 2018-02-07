@@ -1,0 +1,109 @@
+From bf09c7a1493c01a65ee0f110b37a04e653edc08e Mon Sep 17 00:00:00 2001
+From: David Edmundson <davidedmundson@kde.org>
+Date: Wed, 3 Jan 2018 19:18:42 +0000
+Subject: [PATCH] Don't recreate hidden egl surfaces
+
+QWaylandEglWindow deletes surfaces when a window changes from hidden to
+visible, presumably as a result of us not having a valid wl_surface
+object. By extension it doesn't make sense to create a surface whilst a
+window is still hidden.
+
+This fixes a crash where a QQuickWindow hides and then is destroyed. In
+QQuickWindow destruction we have to create a valid context in order to
+delete any textures/assets owned by the scene graph; as the wl_surface
+has gone this causes an error in the EGL libs when we create an EGL
+surface.
+
+Task-number: QTBUG-65553
+Change-Id: I9b37a86326bf2cd7737c4e839c1aa8c74cf08116
+Reviewed-by: Johan Helsing <johan.helsing@qt.io>
+---
+ .../client/wayland-egl/qwaylandglcontext.cpp       |  2 +-
+ tests/auto/client/client/tst_client.cpp            | 37 ++++++++++++++++++++++
+ 2 files changed, 38 insertions(+), 1 deletion(-)
+
+diff --git a/src/hardwareintegration/client/wayland-egl/qwaylandglcontext.cpp b/src/hardwareintegration/client/wayland-egl/qwaylandglcontext.cpp
+index 2a9e39e..f4dd6f4 100644
+--- a/src/hardwareintegration/client/wayland-egl/qwaylandglcontext.cpp
++++ b/src/hardwareintegration/client/wayland-egl/qwaylandglcontext.cpp
+@@ -407,7 +407,7 @@ bool QWaylandGLContext::makeCurrent(QPlatformSurface *surface)
+         window->createDecoration();
+ 
+     if (eglSurface == EGL_NO_SURFACE) {
+-        window->updateSurface(true);
++        window->updateSurface(window->isExposed());
+         eglSurface = window->eglSurface();
+     }
+ 
+diff --git a/tests/auto/client/client/tst_client.cpp b/tests/auto/client/client/tst_client.cpp
+index 3897bd3..aed601d 100644
+--- a/tests/auto/client/client/tst_client.cpp
++++ b/tests/auto/client/client/tst_client.cpp
+@@ -35,6 +35,8 @@
+ #include <QMimeData>
+ #include <QPixmap>
+ #include <QDrag>
++#include <QWindow>
++#include <QOpenGLWindow>
+ 
+ #include <QtTest/QtTest>
+ #include <QtWaylandClient/private/qwaylandintegration_p.h>
+@@ -112,6 +114,25 @@ public:
+     QPoint mousePressPos;
+ };
+ 
++class TestGlWindow : public QOpenGLWindow
++{
++    Q_OBJECT
++
++public:
++    TestGlWindow();
++
++protected:
++    void paintGL() override;
++};
++
++TestGlWindow::TestGlWindow()
++{}
++
++void TestGlWindow::paintGL()
++{
++    glClear(GL_COLOR_BUFFER_BIT);
++}
++
+ class tst_WaylandClient : public QObject
+ {
+     Q_OBJECT
+@@ -149,6 +170,7 @@ private slots:
+     void dontCrashOnMultipleCommits();
+     void hiddenTransientParent();
+     void hiddenPopupParent();
++    void glWindow();
+ 
+ private:
+     MockCompositor *compositor;
+@@ -409,6 +431,21 @@ void tst_WaylandClient::hiddenPopupParent()
+     QTRY_VERIFY(compositor->surface());
+ }
+ 
++void tst_WaylandClient::glWindow()
++{
++    QSKIP("Skipping GL tests, as not supported by all CI systems: See https://bugreports.qt.io/browse/QTBUG-65802");
++
++    QScopedPointer<TestGlWindow> testWindow(new TestGlWindow);
++    testWindow->show();
++    QSharedPointer<MockSurface> surface;
++    QTRY_VERIFY(surface = compositor->surface());
++
++    //confirm we don't crash when we delete an already hidden GL window
++    //QTBUG-65553
++    testWindow->setVisible(false);
++    QTRY_VERIFY(!compositor->surface());
++}
++
+ int main(int argc, char **argv)
+ {
+     setenv("XDG_RUNTIME_DIR", ".", 1);
+-- 
+2.7.4
+
