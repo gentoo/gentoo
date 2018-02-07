@@ -13,7 +13,7 @@ inherit ruby-fakegem
 DESCRIPTION="Parse and decompose a domain name into top level domain, domain and subdomains"
 HOMEPAGE="https://simonecarletti.com/code/publicsuffix-ruby/"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 LICENSE="MIT"
 SLOT="2"
 IUSE=""
