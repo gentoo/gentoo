@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=app-crypt/gnupg dev-go/twofactor:= dev-go/zglob:= >=dev-lang/go-1.8
+DESCRIPTION=WebExtension host binary for pass, a UNIX password manager
+EAPI=6
+HOMEPAGE=https://github.com/dannyvankooten/browserpass
+KEYWORDS=~amd64
+LICENSE=MIT
+RDEPEND=app-crypt/gnupg
+SLOT=0
+SRC_URI=https://github.com/dannyvankooten/browserpass/archive/2.0.11.tar.gz -> browserpass-2.0.11.tar.gz
+_eclasses_=golang-base	51a1f13e065f1cff4507685d9cc268c7	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	913580335becddd3ebecefe852e47536
+_md5_=1ca4fed78c0dd5a3f20194308a0b0358
