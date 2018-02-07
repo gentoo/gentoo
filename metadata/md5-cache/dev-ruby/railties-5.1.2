@@ -4,7 +4,7 @@ DESCRIPTION=Tools for creating, working with, and running Rails applications
 EAPI=6
 HOMEPAGE=https://github.com/rails/rails
 IUSE=test elibc_FreeBSD ruby_targets_ruby22 ruby_targets_ruby23 ruby_targets_ruby24 test test
-KEYWORDS=~amd64 ~arm ~arm64 ~amd64-linux
+KEYWORDS=~amd64 ~arm ~arm64 ~x86 ~amd64-linux
 LICENSE=MIT
 RDEPEND=>=app-eselect/eselect-rails-0.23 ruby_targets_ruby22? ( ~dev-ruby/activesupport-5.1.2[ruby_targets_ruby22] ~dev-ruby/actionpack-5.1.2[ruby_targets_ruby22] >=dev-ruby/thor-0.18.1[ruby_targets_ruby22] >=dev-ruby/rake-0.8.7[ruby_targets_ruby22] dev-ruby/method_source[ruby_targets_ruby22] ) ruby_targets_ruby23? ( ~dev-ruby/activesupport-5.1.2[ruby_targets_ruby23] ~dev-ruby/actionpack-5.1.2[ruby_targets_ruby23] >=dev-ruby/thor-0.18.1[ruby_targets_ruby23] >=dev-ruby/rake-0.8.7[ruby_targets_ruby23] dev-ruby/method_source[ruby_targets_ruby23] ) ruby_targets_ruby24? ( ~dev-ruby/activesupport-5.1.2[ruby_targets_ruby24] ~dev-ruby/actionpack-5.1.2[ruby_targets_ruby24] >=dev-ruby/thor-0.18.1[ruby_targets_ruby24] >=dev-ruby/rake-0.8.7[ruby_targets_ruby24] dev-ruby/method_source[ruby_targets_ruby24] ) ruby_targets_ruby22? ( dev-lang/ruby:2.2 ) ruby_targets_ruby23? ( dev-lang/ruby:2.3 ) ruby_targets_ruby24? ( dev-lang/ruby:2.4 ) ruby_targets_ruby22? ( virtual/rubygems[ruby_targets_ruby22] ) ruby_targets_ruby23? ( virtual/rubygems[ruby_targets_ruby23] ) ruby_targets_ruby24? ( virtual/rubygems[ruby_targets_ruby24] )
 REQUIRED_USE=|| ( ruby_targets_ruby22 ruby_targets_ruby23 ruby_targets_ruby24 )
@@ -12,4 +12,4 @@ RESTRICT=test
 SLOT=5.1
 SRC_URI=https://github.com/rails/rails/archive/v5.1.2.tar.gz -> rails-5.1.2.tgz
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	java-utils-2	0ee72667014428e01a01df2345244cf3	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	ruby-fakegem	cf1343b57e8029745950b4b147ff4d3a	ruby-ng	2da44d50080e3d54e1a4ac7d91d149f8	ruby-utils	e5942a80e3c3b936c6b84d6dc4af9f9c	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	versionator	ce21313503c41896ebcd7d58b0607e37
-_md5_=ea4931cf3dda1de32b77a7c2093bae61
+_md5_=5596836109719a3cf1b1ebcd2d84631f

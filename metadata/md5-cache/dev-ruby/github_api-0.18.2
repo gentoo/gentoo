@@ -4,11 +4,11 @@ DESCRIPTION=A Ruby wrapper for the GitHub REST API v3
 EAPI=6
 HOMEPAGE=https://github.com/peter-murach/github
 IUSE=test elibc_FreeBSD ruby_targets_ruby22 ruby_targets_ruby23 doc test test
-KEYWORDS=~amd64
+KEYWORDS=~amd64 ~x86
 LICENSE=MIT
 RDEPEND=ruby_targets_ruby22? ( >=dev-ruby/addressable-2.4[ruby_targets_ruby22] =dev-ruby/addressable-2.4*[ruby_targets_ruby22] >=dev-ruby/descendants_tracker-0.0.4[ruby_targets_ruby22] =dev-ruby/descendants_tracker-0.0*[ruby_targets_ruby22] >=dev-ruby/faraday-0.8:0[ruby_targets_ruby22] >=dev-ruby/hashie-3.5:3[ruby_targets_ruby22] =dev-ruby/oauth2-1*[ruby_targets_ruby22] ) ruby_targets_ruby23? ( >=dev-ruby/addressable-2.4[ruby_targets_ruby23] =dev-ruby/addressable-2.4*[ruby_targets_ruby23] >=dev-ruby/descendants_tracker-0.0.4[ruby_targets_ruby23] =dev-ruby/descendants_tracker-0.0*[ruby_targets_ruby23] >=dev-ruby/faraday-0.8:0[ruby_targets_ruby23] >=dev-ruby/hashie-3.5:3[ruby_targets_ruby23] =dev-ruby/oauth2-1*[ruby_targets_ruby23] ) ruby_targets_ruby22? ( dev-lang/ruby:2.2 ) ruby_targets_ruby23? ( dev-lang/ruby:2.3 ) ruby_targets_ruby22? ( virtual/rubygems[ruby_targets_ruby22] ) ruby_targets_ruby23? ( virtual/rubygems[ruby_targets_ruby23] )
 REQUIRED_USE=|| ( ruby_targets_ruby22 ruby_targets_ruby23 )
 SLOT=0
 SRC_URI=https://github.com/peter-murach/github/archive/v0.18.2.tar.gz -> github_api-0.18.2.tar.gz
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	java-utils-2	0ee72667014428e01a01df2345244cf3	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	ruby-fakegem	cf1343b57e8029745950b4b147ff4d3a	ruby-ng	2da44d50080e3d54e1a4ac7d91d149f8	ruby-utils	e5942a80e3c3b936c6b84d6dc4af9f9c	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	versionator	ce21313503c41896ebcd7d58b0607e37
-_md5_=3f98c9269d89f901d94eb0fc5f077538
+_md5_=b141209ab8ced02b597e9e5bf17e13e8
