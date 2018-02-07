@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -92,6 +92,7 @@ DOCS=( AUTHORS.txt ChangeLog NEWS.txt )
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.4.0-cmake.patch
 	"${FILESDIR}"/${P}-ffmpeg-3.patch
+	"${FILESDIR}"/${P}-jpeg-9.patch
 )
 
 src_configure() {
