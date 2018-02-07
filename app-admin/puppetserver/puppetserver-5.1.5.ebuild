@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit multilib systemd user
+inherit multilib systemd tmpfiles user
 
 DESCRIPTION="Puppet Server is the next-generation application for managing Puppet agents."
 HOMEPAGE="http://docs.puppetlabs.com/puppetserver/"
@@ -13,10 +13,10 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="puppetdb"
 # will need the same keywords as puppet
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND+="
-		>=virtual/jdk-1.7.0
+		>=virtual/jdk-1.8.0
 		app-admin/puppet-agent[puppetdb?]"
 DEPEND+=""
 
@@ -26,9 +26,9 @@ pkg_setup() {
 }
 
 src_prepare() {
-	sed -i 's/sysconfig\/puppetserver/systemd\/system\/puppetserver\.service\.d\/gentoo\.conf/g' ext/redhat/puppetserver.service || die
-	sed -i 's/sysconfig\/puppetserver/systemd\/system\/puppetserver\.service\.d\/gentoo\.conf/g' ext/bin/puppetserver || die
-	sed -i 's/sysconfig\/puppetserver/systemd\/system\/puppetserver\.service\.d\/gentoo\.conf/g' install.sh || die
+	sed -i 's/sysconfig\/puppetserver/default\/puppetserver/g' ext/redhat/puppetserver.service || die
+	sed -i 's/sysconfig\/puppetserver/default\/puppetserver/g' ext/bin/puppetserver || die
+	sed -i 's/sysconfig\/puppetserver/default\/puppetserver/g' install.sh || die
 	sed -i 's/var\/run/run/g' ext/config/conf.d/puppetserver.conf || die
 	sed -i 's/var\/run/run/g' ext/redhat/puppetserver.service || die
 	sed -i 's/var\/run/run/g' install.sh || die
@@ -46,6 +46,8 @@ src_install() {
 	insopts -m0644
 	doins ext/ezbake.manifest
 	doins puppet-server-release.jar
+	doins jruby-9k.jar
+	doins jruby-1_7.jar
 	insinto /etc/puppetlabs/puppetserver
 	doins ext/config/logback.xml
 	doins ext/config/request-logging.xml
@@ -57,6 +59,7 @@ src_install() {
 	doins ext/config/conf.d/auth.conf
 	doins ext/config/conf.d/global.conf
 	doins ext/config/conf.d/web-routes.conf
+	doins ext/config/conf.d/metrics.conf
 	doins ext/config/conf.d/webserver.conf
 	insopts -m0755
 	insinto /opt/puppetlabs/server/apps/puppetserver/scripts
@@ -69,6 +72,8 @@ src_install() {
 	doins ext/cli/reload
 	doins ext/cli/start
 	doins ext/cli/stop
+	insinto /opt/puppetlabs/server/apps/puppetserver/cli
+	doins ext/cli_defaults/cli-defaults.sh
 	insinto /opt/puppetlabs/server/apps/puppetserver/bin
 	doins ext/bin/puppetserver
 	insopts -m0644
@@ -85,13 +90,14 @@ src_install() {
 	dodir /etc/puppetlabs/puppet/ssl
 	fowners -R puppet:puppet /etc/puppetlabs/puppet/ssl
 	fperms -R 771 /etc/puppetlabs/puppet/ssl
-	# init type tasks
-	newconfd ext/default puppetserver
-	newinitd "${FILESDIR}/puppetserver.initd" puppetserver
 	# systemd type things
 	insinto /etc/systemd/system/puppetserver.service.d/
-	newins ext/default gentoo.conf
 	systemd_dounit ext/redhat/puppetserver.service
+	insinto /etc/default
+	newins ext/default puppetserver
+	# normal init type tasks
+	dosym ../default/puppetserver /etc/conf.d/puppetserver
+	newinitd "${FILESDIR}/puppetserver.init" puppetserver
 	# misc
 	insinto /etc/logrotate.d
 	newins ext/puppetserver.logrotate.conf puppetserver
@@ -100,6 +106,9 @@ src_install() {
 	fowners -R puppet:puppet /opt/puppetlabs/server/data
 	fperms -R 775 /opt/puppetlabs/server/data/puppetserver
 	fperms -R 700 /var/log/puppetlabs/puppetserver
+	insinto /opt/puppetlabs/server/data
+	newins ext/build-scripts/gem-list.txt puppetserver-gem-list.txt
+	newtmpfiles ext/puppetserver.tmpfiles.conf puppetserver.conf
 }
 
 pkg_postinst() {
@@ -110,4 +119,12 @@ pkg_postinst() {
 	elog "puppet config set --section master rundir  /run/puppetlabs/puppetserver"
 	elog "puppet config set --section master pidfile /run/puppetlabs/puppetserver/puppetserver.pid"
 	elog "puppet config set --section master codedir /etc/puppetlabs/code"
+	elog
+	elog "# install puppetserver gems"
+	elog "cd /opt/puppetlabs/server/apps/puppetserver"
+	elog "echo "jruby-puppet: { gem-home: ${DESTDIR}/opt/puppetlabs/server/data/puppetserver/vendored-jruby-gems }" > jruby.conf"
+	elog "while read LINE"
+	elog "do"
+	elog "	java -cp puppet-server-release.jar:jruby-1_7.jar clojure.main -m puppetlabs.puppetserver.cli.gem --config jruby.conf -- install \$(echo \$LINE |awk '{print \$1}') --version \$(echo \$LINE |awk '{print \$2}')"
+	elog "done < /opt/puppetlabs/server/data/puppetserver-gem-list.txt"
 }
