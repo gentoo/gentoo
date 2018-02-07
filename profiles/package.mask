@@ -29,6 +29,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Deutschmann <whissi@gentoo.org> (07 Feb 2018)
+# Intel recommends to pull these versions because they could
+# cause higher than expected reboots and other unpredictable
+# system behavior. Bug #646646
+=sys-firmware/intel-microcode-20171117_p20171215
+=sys-firmware/intel-microcode-20171117_p20171215-r1
+=sys-firmware/intel-microcode-20180108
+=sys-firmware/intel-microcode-20180108-r1
+
 # Matt Turner <mattst88@gentoo.org> (06 Feb 2018)
 # New package with subsuming lots of existing packages. Lots of reverse
 # dependencies will need to be updated.
