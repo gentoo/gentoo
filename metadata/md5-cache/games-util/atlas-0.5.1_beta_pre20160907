@@ -9,4 +9,4 @@ RDEPEND=media-libs/freeglut media-libs/glew:0= media-libs/libpng:0= net-misc/cur
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~reavertm/atlas-hgcode-e183e3b3a0412b504edcb3664445b3e04fd484a2.zip
 _eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=c76d23f06d35b5cb87c2805934cd7140
+_md5_=b31d708d941ba0bac26d9b1d766e8157
