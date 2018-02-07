@@ -3,6 +3,8 @@
 
 EAPI=6
 
+inherit toolchain-funcs
+
 DESCRIPTION="Zile is a small Emacs clone"
 HOMEPAGE="https://www.gnu.org/software/zile/"
 SRC_URI="mirror://gnu/zile/${P}.tar.gz"
@@ -17,6 +19,7 @@ RDEPEND=">=dev-libs/boehm-gc-7.2:=
 	acl? ( virtual/acl )"
 
 DEPEND="${RDEPEND}
+	virtual/pkgconfig
 	test? ( dev-lang/perl )"
 
 QA_AM_MAINTAINER_MODE=".*help2man.*" #450278
@@ -27,7 +30,8 @@ src_configure() {
 		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
 		--without-emacs \
 		--disable-valgrind-tests \
-		$(use_enable acl)
+		$(use_enable acl) \
+		CURSES_LIB="$("$(tc-getPKG_CONFIG)" --libs ncurses)"
 }
 
 src_install() {

@@ -3,6 +3,8 @@
 
 EAPI=6
 
+inherit toolchain-funcs
+
 DESCRIPTION="Zile is a small Emacs clone"
 HOMEPAGE="https://www.gnu.org/software/zile/"
 SRC_URI="mirror://gnu/zile/${P}.tar.gz"
@@ -14,6 +16,7 @@ IUSE="test valgrind"
 
 RDEPEND="sys-libs/ncurses:0="
 DEPEND="${RDEPEND}
+	virtual/pkgconfig
 	test? ( valgrind? ( dev-util/valgrind ) )"
 
 PATCHES=("${FILESDIR}"/${P}-{userhome,gets}.patch)
@@ -22,7 +25,8 @@ src_configure() {
 	# --without-emacs to suppress tests for GNU Emacs #630652
 	econf \
 		--without-emacs \
-		$(use test && use_with valgrind || echo "--without-valgrind")
+		$(use test && use_with valgrind || echo "--without-valgrind") \
+		CURSES_LIB="$("$(tc-getPKG_CONFIG)" --libs ncurses)"
 }
 
 src_install() {
