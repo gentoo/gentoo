@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install
-DEPEND=>=dev-libs/boehm-gc-7.2:= sys-libs/ncurses:0= acl? ( virtual/acl ) test? ( dev-lang/perl )
+DEPEND=>=dev-libs/boehm-gc-7.2:= sys-libs/ncurses:0= acl? ( virtual/acl ) virtual/pkgconfig test? ( dev-lang/perl )
 DESCRIPTION=Zile is a small Emacs clone
 EAPI=6
 HOMEPAGE=https://www.gnu.org/software/zile/
@@ -9,4 +9,5 @@ LICENSE=GPL-3+
 RDEPEND=>=dev-libs/boehm-gc-7.2:= sys-libs/ncurses:0= acl? ( virtual/acl )
 SLOT=0
 SRC_URI=mirror://gnu/zile/zile-2.4.13.tar.gz
-_md5_=9f4110288820be2672238c26e35a76ea
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_md5_=111276eceede0e6bbd662bbff4898d2e

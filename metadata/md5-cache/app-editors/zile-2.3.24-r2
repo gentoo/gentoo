@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install
-DEPEND=sys-libs/ncurses:0= test? ( valgrind? ( dev-util/valgrind ) )
+DEPEND=sys-libs/ncurses:0= virtual/pkgconfig test? ( valgrind? ( dev-util/valgrind ) )
 DESCRIPTION=Zile is a small Emacs clone
 EAPI=6
 HOMEPAGE=https://www.gnu.org/software/zile/
@@ -9,4 +9,5 @@ LICENSE=GPL-3+
 RDEPEND=sys-libs/ncurses:0=
 SLOT=0
 SRC_URI=mirror://gnu/zile/zile-2.3.24.tar.gz
-_md5_=682cf9b728ad9b05dd6bcbfe05118f37
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_md5_=ca802450e6eb57deb5ca0f64973f016c
