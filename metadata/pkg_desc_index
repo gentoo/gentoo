@@ -7238,7 +7238,7 @@ media-gfx/llgal 0.13.17-r2: Command-line static web gallery generator
 media-gfx/luminance-hdr 2.4.0: Graphical user interface that provides a workflow for HDR imaging
 media-gfx/lximage-qt 0.5.0: LXImage Image Viewer - GPicView replacement
 media-gfx/mcomix 1.2.1: A fork of comix, a GTK image viewer for comic book archives
-media-gfx/metapixel 1.0.2 1.0.2-r1: a program for generating photomosaics
+media-gfx/metapixel 1.0.2-r1: a program for generating photomosaics
 media-gfx/mirage 0.9.5.2-r1: A fast and simple image viewer based on python and GTK+
 media-gfx/mkgallery 1.1: Creates thumbnails and a HTML index file for a directory of jpg files
 media-gfx/monica 3.7: Monica is a Monitor Calibration Tool
