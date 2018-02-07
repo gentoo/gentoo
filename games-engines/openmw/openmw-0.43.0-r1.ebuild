@@ -15,8 +15,14 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc devtools +qt5"
 
 RDEPEND="
-	>=dev-games/openscenegraph-3.3.4[ffmpeg,jpeg,png,qt5,sdl,svg,truetype,zlib]
 	dev-games/mygui
+	|| (
+		(
+			>=dev-games/openscenegraph-3.5.5[ffmpeg,jpeg,png,sdl,svg,truetype,zlib]
+			dev-games/openscenegraph-qt
+		)
+		<dev-games/openscenegraph-3.5.5[ffmpeg,jpeg,png,qt5,sdl,svg,truetype,zlib]
+	)
 	dev-libs/boost:=[threads]
 	dev-libs/tinyxml[stl]
 	media-libs/libsdl2[joystick,opengl,video,X]
@@ -32,7 +38,6 @@ RDEPEND="
 		dev-qt/qtwidgets:5
 	)
 "
-
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen[doc] dev-python/sphinx )"
