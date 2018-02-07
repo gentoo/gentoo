@@ -14,7 +14,7 @@ HOMEPAGE="https://github.com/copiousfreetime/launchy"
 LICENSE="ISC"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64"
+KEYWORDS="amd64 ~arm ~arm64 ~x86"
 IUSE=""
 
 # File collision conflict with x11-misc/launchy, bug 545170
