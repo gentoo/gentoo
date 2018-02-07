@@ -6104,7 +6104,7 @@ dev-util/cgdb 0.6.6 0.6.7 0.6.8: A curses front-end for GDB, the GNU debugger
 dev-util/cgvg 1.6.2: A tiny version of cscope that is much more useful in certian instances
 dev-util/checkbashisms 2.17.10: Perl script to check for commonly used bash features not defined by POSIX
 dev-util/checkstyle 7.2: Development tool to help write Java code that adheres to a coding standard
-dev-util/cloc 1.64 1.70 1.72: Count Lines of Code
+dev-util/cloc 1.72: Count Lines of Code
 dev-util/cmake 3.8.2 3.9.6: Cross platform Make
 dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
 dev-util/cmocka 1.0.1: A unit testing framework for C
@@ -9290,7 +9290,7 @@ sci-libs/libghemical 3.0.0: Chemical quantum mechanics and molecular mechanics
 sci-libs/libint 1.1.6: Matrix elements (integrals) evaluation over Cartesian Gaussian functions
 sci-libs/libnova 0.12.3: Celestial Mechanics and Astronomical Calculation Library
 sci-libs/liborigin 20110829: Library for reading OriginLab OPJ project files
-sci-libs/libqalculate 0.9.7-r1 0.9.9: A modern multi-purpose calculator library
+sci-libs/libqalculate 0.9.9: A modern multi-purpose calculator library
 sci-libs/libsigrok 0.3.0: basic hardware drivers for logic analyzers and input/output file format support
 sci-libs/libspatialindex 1.8.1: General framework for developing spatial indices
 sci-libs/libsvm 3.21: Library for Support Vector Machines
@@ -10041,7 +10041,7 @@ sys-fs/lvm2 2.02.116 2.02.116-r4 2.02.145-r2: User-land utilities for LVM2 (devi
 sys-fs/mac-fdisk 0.1-r7: Mac/PowerMac disk partitioning utility
 sys-fs/mdadm 3.3.1-r2 3.4: Tool for running RAID systems - replacement for the raidtools
 sys-fs/mhddfs 0.1.39: Fuse multi harddrive filesystem
-sys-fs/mp3fs 0.32 0.91: a read-only FUSE filesystem which transcodes FLAC audio files to MP3 when read
+sys-fs/mp3fs 0.91: a read-only FUSE filesystem which transcodes FLAC audio files to MP3 when read
 sys-fs/mtd-utils 1.5.2: MTD userspace tools (NFTL, JFFS2, NAND, FTL, UBI)
 sys-fs/mtools 4.0.15: utilities to access MS-DOS disks from Unix without mounting them
 sys-fs/mtpfs 1.0: A FUSE filesystem providing access to MTP devices
