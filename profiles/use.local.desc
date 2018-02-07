@@ -3647,8 +3647,9 @@ net-analyzer/tcpdump:smi - Build with net-libs/libsmi to load MIBs on the fly to
 net-analyzer/tcpreplay:pcapnav - Enable if you want the jump to byte offset feature via net-libs/libpcapnav
 net-analyzer/tcpreplay:tcpdump - Use net-analyzer/tcpdump for packet decoding feature
 net-analyzer/testssl:bundled-openssl - Install precompiled versions of OpenSSL for greater testing coverage
-net-analyzer/wireshark:adns - Use the GNU net-dns/c-ares library to resolve DNS names
+net-analyzer/wireshark:adns - Use net-dns/c-ares to resolve DNS names
 net-analyzer/wireshark:androiddump - Install androiddump, an extcap interface to capture from Android devices
+net-analyzer/wireshark:bcg729 - Use media-plugins/mediastreamer-bcg729 to play G.729 codec
 net-analyzer/wireshark:capinfos - Install capinfos, to print information about capture files
 net-analyzer/wireshark:captype - Install captype, to print the file types of capture files
 net-analyzer/wireshark:ciscodump - Install ciscodump, extcap interface to capture from a remote Cisco router
