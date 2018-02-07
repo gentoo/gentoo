@@ -27,7 +27,7 @@ RDEPEND="alsa? ( media-libs/alsa-lib )
 	gsm? ( media-sound/gsm )
 	ilbc? ( dev-libs/ilbc-rfc3951 )
 	opus? ( media-libs/opus )
-	speex? ( media-libs/speex )
+	speex? ( media-libs/speexdsp )
 
 	ffmpeg? ( virtual/ffmpeg:= )
 	sdl? ( media-libs/libsdl )
