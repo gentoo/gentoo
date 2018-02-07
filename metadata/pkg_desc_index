@@ -1251,7 +1251,7 @@ app-shells/pdsh 2.18-r1: A high-performance, parallel remote shell utility
 app-shells/posh 0.12.6: Reimplementation of Bourne shell based on pdksh
 app-shells/push 2.0-r1: A POSIX shell function to treat a variable like an array, quoting args
 app-shells/quoter 3.0_p2-r1: Quote arguments or standard input for usage in POSIX shell by eval
-app-shells/rrs 1.70-r1: Reverse Remote Shell
+app-shells/rrs 1.70-r2: Reverse Remote Shell
 app-shells/rssh 2.3.4: Restricted shell for SSHd
 app-shells/sash 3.8: A small (static) UNIX Shell
 app-shells/scsh 0.6.7-r2: Unix shell embedded in Scheme
