@@ -11,4 +11,4 @@ REQUIRED_USE=^^ ( python_single_target_python3_5 python_single_target_python3_6 
 SLOT=0
 SRC_URI=https://github.com/kovidgoyal/kitty/archive/v0.7.1.tar.gz -> kitty-0.7.1.tar.gz
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	317a2557b4d7319a7418225f65accf77	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=7d9285c0930d9f608ff1dfb753d97183
+_md5_=0ca82c6a030a3c97f54061430c73eb7b
