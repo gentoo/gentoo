@@ -44,6 +44,11 @@ RDEPEND="
 		>=app-admin/eselect-1.2
 		$(python_gen_cond_dep 'dev-python/pyblake2[${PYTHON_USEDEP}]' \
 			python{2_7,3_4,3_5} pypy)
+		rsync-verify? (
+			>=app-portage/gemato-10
+			app-crypt/gentoo-keys
+			app-crypt/gnupg[ssl(-)]
+		)
 	)
 	elibc_FreeBSD? ( sys-freebsd/freebsd-bin )
 	elibc_glibc? ( >=sys-apps/sandbox-2.2 )
@@ -122,7 +127,7 @@ python_prepare_all() {
 			|| die "failed to append to make.globals"
 	fi
 
-	if ! use rsync-verify; then
+	if use build || ! use rsync-verify; then
 		sed -e '/^sync-rsync-verify-metamanifest/s|yes|no|' \
 			-i cnf/repos.conf || die "sed failed"
 	fi
