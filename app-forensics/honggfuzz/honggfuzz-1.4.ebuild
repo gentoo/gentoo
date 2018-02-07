@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,16 +21,19 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.0-no-error.patch
-)
-
 DOCS=(
 	CHANGELOG
 	COPYING
 	CONTRIBUTING
 	README.md
 )
+
+src_prepare() {
+	default
+	if has_version ">=sys-libs/binutils-libs-2.29"; then
+		eapply "${FILESDIR}"/${PN}-1.1-binutils-2.29.patch
+	fi
+}
 
 src_compile() {
 	CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" emake
