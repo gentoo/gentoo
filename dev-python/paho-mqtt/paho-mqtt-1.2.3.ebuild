@@ -14,6 +14,9 @@ LICENSE="EPL-1.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
+RDEPEND=""
+DEPEND="dev-python/setuptools[${MULTILIB_USEDEP}]"
+
 S="${WORKDIR}/paho.mqtt.python-${PV}"
 
 python_prepare() {
