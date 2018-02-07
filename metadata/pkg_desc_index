@@ -1861,7 +1861,7 @@ dev-db/percona-xtrabackup 2.4.7 2.4.8: Hot backup utility for MySQL based server
 dev-db/pg_top 3.7.0: 'top' for PostgreSQL
 dev-db/pgadmin3 1.22.1-r1 1.22.2: wxWidgets GUI for PostgreSQL
 dev-db/pgadmin4 2.0-r1: GUI administration and development platform for PostgreSQL
-dev-db/pgagent 3.4.0-r1 3.4.0-r3: pgAgent is a job scheduler for PostgreSQL
+dev-db/pgagent 3.4.0-r3: pgAgent is a job scheduler for PostgreSQL
 dev-db/pgbadger 9.2: pgBadger is a PostgreSQL log analyzer.
 dev-db/pgbouncer 1.8.1: Lightweight connection pooler for PostgreSQL
 dev-db/pgpool2 3.7.0: Connection pool server for PostgreSQL
@@ -4491,7 +4491,7 @@ dev-php/pecl-apcu 4.0.11 5.1.8: Stripped down version of APC supporting only use
 dev-php/pecl-apcu_bc 1.0.3-r1: Provides APC backwards compatibility functions via APCu
 dev-php/pecl-crack 0.4-r6: PHP interface to the cracklib libraries
 dev-php/pecl-event 2.2.1: PHP wrapper for libevent2
-dev-php/pecl-geoip 1.1.1-r2 1.1.1-r3: PHP extension to map IP address to geographic places
+dev-php/pecl-geoip 1.1.1-r3: PHP extension to map IP address to geographic places
 dev-php/pecl-http 2.6.0 3.1.0: Extended HTTP Support for PHP
 dev-php/pecl-imagick 3.4.3: PHP wrapper for the ImageMagick library
 dev-php/pecl-mailparse 2.1.6-r4 3.0.2: PHP extension for parsing and working with RFC822 and MIME compliant messages
