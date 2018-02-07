@@ -821,11 +821,6 @@ dev-ruby/poltergeist
 <dev-util/nvidia-cuda-toolkit-8
 net-wireless/cpyrit-cuda
 
-# Maciej Mrozowski <reavertm@gentoo.org> (18 May 2017)
-# Experimental, most consumers does not support it yet
->=dev-games/openscenegraph-3.5.5
->=dev-games/openscenegraph-qt-3.5.5
-
 # Bernard Cafarelli <voyageur@gentoo.org> (8 May 2017)
 # Coordinated conversion to wxGTK:3.0-gtk3
 # Drop mask after migration of existing wxGTK:3.0 users
