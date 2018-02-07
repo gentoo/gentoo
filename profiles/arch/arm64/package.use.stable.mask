@@ -1,8 +1,13 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+# Michał Górny <mgorny@gentoo.org> (07 Feb 2018)
+# sys-libs/tevent is not stable here.
+dev-libs/libverto tevent
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (21 Jan 2018)
 # systemtap is not yet stable on arm64
+dev-libs/glib systemtap
 sys-libs/glibc systemtap
 
 # Thomas Deutschmann <whissi@gentoo.org> (26 Oct 2017)
