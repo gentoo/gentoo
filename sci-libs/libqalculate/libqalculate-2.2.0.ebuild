@@ -1,17 +1,15 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-inherit eutils
+EAPI=6
 
 DESCRIPTION="A modern multi-purpose calculator library"
-HOMEPAGE="http://qalculate.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${P/lib}/${P}.tar.gz"
+HOMEPAGE="https://qalculate.github.io/"
+SRC_URI="https://github.com/Qalculate/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS="alpha amd64 ~arm hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
+SLOT="0/7"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="gnuplot readline static-libs"
 
 COMMON_DEPEND="
@@ -29,6 +27,8 @@ RDEPEND="${COMMON_DEPEND}
 	gnuplot? ( >=sci-visualization/gnuplot-3.7 )"
 
 src_prepare() {
+	default
+
 	cat >po/POTFILES.skip <<-EOF
 	# Required by make check
 	data/currencies.xml.in
@@ -52,10 +52,10 @@ src_install() {
 	# docs/reference/Makefile.am -> referencedir=
 	emake \
 		DESTDIR="${D}" \
-		referencedir="${EPREFIX}/usr/share/doc/${PF}/html/reference" \
+		referencedir="${EPREFIX}/usr/share/doc/${PF}/html" \
 		install
 
 	dodoc AUTHORS ChangeLog NEWS README* TODO
 
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }
