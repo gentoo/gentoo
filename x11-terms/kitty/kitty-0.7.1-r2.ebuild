@@ -70,6 +70,7 @@ src_compile() {
 }
 
 src_test() {
+	export KITTY_CONFIG_DIRECTORY=${T}
 	"${EPYTHON}" test.py || die
 }
 
