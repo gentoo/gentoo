@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils user systemd
+EAPI=6
+inherit autotools eutils multilib user systemd
 
 DESCRIPTION="A powerful latency measurement tool"
 HOMEPAGE="http://oss.oetiker.ch/smokeping/"
@@ -10,11 +10,8 @@ SRC_URI="http://oss.oetiker.ch/smokeping/pub/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-# dropping hppa and sparc because of way too may dependencies not having
-# keywords in those architectures.
 KEYWORDS="~amd64 ~x86"
 
-# removing fcgi useflag as the configure script can't avoid it without patching
 IUSE="apache2 curl dig echoping ipv6 radius"
 
 DEPEND="
@@ -22,6 +19,7 @@ DEPEND="
 	>=dev-perl/SNMP_Session-1.13
 	>=net-analyzer/fping-2.4_beta2-r2[suid]
 	>=net-analyzer/rrdtool-1.2[graph,perl]
+	dev-perl/CGI
 	dev-perl/CGI-Session
 	dev-perl/Config-Grammar
 	dev-perl/Digest-HMAC
@@ -56,7 +54,14 @@ pkg_setup() {
 }
 
 src_prepare() {
-	rm -r lib/{BER.pm,SNMP_Session.pm,SNMP_util.pm} # dev-perl/SNMP_Session
+	default
+
+	sed -i -e '/^SUBDIRS = / s|thirdparty||g' Makefile.am || die
+	sed -i -e '/^perllibdir = / s|= .*|= $(libdir)|g' lib/Makefile.am || die
+	rm -r lib/{BER.pm,SNMP_Session.pm,SNMP_util.pm} || die # dev-perl/SNMP_Session
+	echo ${PV} > VERSION
+
+	eautoreconf
 }
 
 src_configure() {
@@ -70,9 +75,10 @@ src_compile() {
 }
 
 src_install() {
+	dodir /usr/$(get_libdir)
 	default
 
-	newinitd "${FILESDIR}"/${PN}.init.4 ${PN}
+	newinitd "${FILESDIR}"/${PN}.init.5 ${PN}
 	systemd_dotmpfilesd "${FILESDIR}"/"${PN}".conf
 	systemd_dounit "${FILESDIR}"/"${PN}".service
 
