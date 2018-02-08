@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit autotools
 
 DESCRIPTION="A realtime Apache log analyzer"
-HOMEPAGE="http://www.webta.org/projects/apachetop"
+HOMEPAGE="https://github.com/tessus/apachetop"
 SRC_URI="http://www.webta.org/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
