@@ -1,42 +1,107 @@
-From c693c0d6c41e777def51984035710779697d1989 Mon Sep 17 00:00:00 2001
+From 3d4ab15670079aa8e898f80a650b3be941230486 Mon Sep 17 00:00:00 2001
 From: Lars Wendler <polynomial-c@gentoo.org>
-Date: Tue, 6 Feb 2018 14:41:22 +0100
-Subject: [PATCH] Change libseccomp logic to not be automagic only.
+Date: Tue, 6 Feb 2018 15:30:21 +0100
+Subject: [PATCH] Change libseccomp logic to not be automagic only
 
-Introduce --with-libseccomp configure option so that users can disable
-seccomp even if libseccomp is available on the system.
-The default is unchanged to before this patch. If no --with(out)-libseccomp
-has been given on command line, the macro looks for presence of libseccomp
-and uses that if found.
+Introduce --without-libseccomp configure option so that users can
+disable seccomp even if libseccomp is available on the system.
+
+The default is unchanged from before this patch.  If no
+--with(out)-libseccomp has been given on the command line, the macro
+looks for presence of libseccomp and uses that if found.
+
+* m4/man-libseccomp.m4: Guard pkg-config test with a command-line
+option.
 ---
- m4/man-libseccomp.m4 | 19 ++++++++++++++-----
- 1 file changed, 14 insertions(+), 5 deletions(-)
 
+diff --git a/configure b/configure
+index 3f949306..8eaca64e 100755
+--- a/configure
++++ b/configure
+@@ -1718,6 +1718,7 @@ with_included_regex
+ enable_nls
+ with_libiconv_prefix
+ with_libintl_prefix
++with_libseccomp
+ '
+       ac_precious_vars='build_alias
+ host_alias
+@@ -2459,6 +2460,7 @@ Optional Packages:
+   --without-libiconv-prefix     don't search for libiconv in includedir and libdir
+   --with-libintl-prefix[=DIR]  search for libintl in DIR/include and DIR/lib
+   --without-libintl-prefix     don't search for libintl in includedir and libdir
++  --without-libseccomp    do not confine subprocesses using seccomp
+ 
+ Some influential environment variables:
+   CC          C compiler command
+@@ -47295,6 +47297,15 @@ fi
+ 
+ # Check for libseccomp library.
+ 
++# Check whether --with-libseccomp was given.
++if test "${with_libseccomp+set}" = set; then :
++  withval=$with_libseccomp;
++else
++  with_libseccomp=check
++fi
++
++	if test "x$with_libseccomp" != "xno"; then
++
+ pkg_failed=no
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for libseccomp" >&5
+ $as_echo_n "checking for libseccomp... " >&6; }
+@@ -47353,11 +47364,15 @@ fi
+ 	# Put the nasty error message in config.log where it belongs
+ 	echo "$libseccomp_PKG_ERRORS" >&5
+ 
+-	:
++	if test "x$with_libseccomp" = "xyes"; then
++				as_fn_error $? "--with-libseccomp given but cannot find libseccomp" "$LINENO" 5
++			 fi
+ elif test $pkg_failed = untried; then
+      	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+ $as_echo "no" >&6; }
+-	:
++	if test "x$with_libseccomp" = "xyes"; then
++				as_fn_error $? "--with-libseccomp given but cannot find libseccomp" "$LINENO" 5
++			 fi
+ else
+ 	libseccomp_CFLAGS=$pkg_cv_libseccomp_CFLAGS
+ 	libseccomp_LIBS=$pkg_cv_libseccomp_LIBS
+@@ -47367,6 +47382,7 @@ $as_echo "yes" >&6; }
+ $as_echo "#define HAVE_LIBSECCOMP 1" >>confdefs.h
+ 
+ fi
++	fi
+ 
+ 
+ { $as_echo "$as_me:${as_lineno-$LINENO}: default CC = \"$CC\"" >&5
 diff --git a/m4/man-libseccomp.m4 b/m4/man-libseccomp.m4
-index a9377317..17a52f72 100644
+index a9377317..c90e3aa4 100644
 --- a/m4/man-libseccomp.m4
 +++ b/m4/man-libseccomp.m4
 @@ -1,9 +1,18 @@
- # man-libseccomp.m4 serial 1
+-# man-libseccomp.m4 serial 1
++# man-libseccomp.m4 serial 2
  dnl MAN_LIBSECCOMP
 -dnl Check for the libseccomp library.
-+dnl Add a --with-libseccomp option.
++dnl Add a --without-libseccomp option; check for the libseccomp library.
  AC_DEFUN([MAN_LIBSECCOMP],
 -[PKG_CHECK_MODULES([libseccomp], [libseccomp],
 -	[AC_DEFINE([HAVE_LIBSECCOMP], [1],
 -		[Define to 1 if you have the `libseccomp' library.])],
 -	[:])
 +	[AC_ARG_WITH([libseccomp],
-+		[AS_HELP_STRING([--with-libseccomp],
-+			       [use libseccomp to do most subprocessing])],
++		[AS_HELP_STRING([--without-libseccomp],
++				[do not confine subprocesses using seccomp])],
 +		[],
 +		[with_libseccomp=check])
 +	if test "x$with_libseccomp" != "xno"; then
 +		PKG_CHECK_MODULES([libseccomp], [libseccomp],
 +			[AC_DEFINE([HAVE_LIBSECCOMP], [1],
 +				[Define to 1 if you have the `libseccomp' library.])],
-+			[if test "xyes" = "x$with_libseccomp"; then
-+				AC_MSG_ERROR(--with-libseccomp given but cannot find libseccomp)
++			[if test "x$with_libseccomp" = "xyes"; then
++				AC_MSG_ERROR([--with-libseccomp given but cannot find libseccomp])
 +			 fi])
 +	fi
  ]) # MAN_LIBSECCOMP
