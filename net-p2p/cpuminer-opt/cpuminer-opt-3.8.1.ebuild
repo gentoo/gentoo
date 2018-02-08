@@ -7,7 +7,7 @@ inherit autotools flag-o-matic systemd
 
 DESCRIPTION="Optimized multi algo CPU miner"
 HOMEPAGE="https://github.com/JayDDee/cpuminer-opt"
-IUSE="cpu_flags_x86_avx2 cpu_flags_x86_sse2 curl libressl"
+IUSE="cpu_flags_x86_sse2 curl libressl"
 LICENSE="GPL-2"
 SLOT="0"
 REQUIRED_USE="cpu_flags_x86_sse2"
@@ -35,7 +35,6 @@ src_prepare() {
 
 src_configure() {
 	append-ldflags -Wl,-z,noexecstack
-	use cpu_flags_x86_avx2 && append-cflags "-DFOUR_WAY"
 	econf --with-crypto $(use_with curl)
 }
 
