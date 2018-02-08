@@ -55,11 +55,6 @@ RDEPEND="
 	elibc_musl? ( >=sys-apps/sandbox-2.2 )
 	elibc_uclibc? ( >=sys-apps/sandbox-2.2 )
 	>=app-misc/pax-utils-0.1.17
-	rsync-verify? (
-		>=app-portage/gemato-11
-		app-crypt/gentoo-keys
-		app-crypt/gnupg[ssl(-)]
-	)
 	selinux? ( >=sys-libs/libselinux-2.0.94[python,${PYTHON_USEDEP}] )
 	xattr? ( kernel_linux? (
 		>=sys-apps/install-xattr-0.3
