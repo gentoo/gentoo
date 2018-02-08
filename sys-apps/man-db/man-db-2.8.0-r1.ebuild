@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools ltprune user versionator
+inherit ltprune user versionator
 
 DESCRIPTION="a man replacement that utilizes berkdb instead of flat files"
 HOMEPAGE="http://www.nongnu.org/man-db/"
@@ -12,7 +12,7 @@ SRC_URI="mirror://nongnu/${PN}/${P}.tar.xz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux"
-IUSE="berkdb +gdbm +manpager nls selinux static-libs zlib"
+IUSE="berkdb +gdbm +manpager nls seccomp selinux static-libs zlib"
 
 CDEPEND="
 	!sys-apps/man
@@ -21,6 +21,7 @@ CDEPEND="
 	berkdb? ( sys-libs/db:= )
 	gdbm? ( sys-libs/gdbm:= )
 	!berkdb? ( !gdbm? ( sys-libs/gdbm:= ) )
+	seccomp? ( sys-libs/libseccomp )
 	zlib? ( sys-libs/zlib )
 "
 DEPEND="
@@ -39,7 +40,9 @@ RDEPEND="
 PDEPEND="manpager? ( app-text/manpager )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-2.8.0-libseccomp_automagic.patch"
+	"${FILESDIR}/${P}-refactor_drop_privs.patch"
+	"${FILESDIR}/${P}-seccomp_suid.patch"
+	"${FILESDIR}/${P}-libseccomp_automagic.patch"
 )
 
 pkg_setup() {
@@ -52,11 +55,6 @@ pkg_setup() {
 	fi
 }
 
-src_prepare() {
-	default
-	eautoreconf
-}
-
 src_configure() {
 	export ac_cv_lib_z_gzopen=$(usex zlib)
 	local myeconfargs=(
@@ -67,10 +65,7 @@ src_configure() {
 		--with-sections="1 1p 8 2 3 3p 4 5 6 7 9 0p tcl n l p o 1x 2x 3x 4x 5x 6x 7x 8x"
 		$(use_enable nls)
 		$(use_enable static-libs static)
-		# fails to show any man page with this error message:
-		# man: /usr/libexec/man-db/manconv -f UTF-8:ISO-8859-1 -t UTF-8//IGNORE: Bad system call
-		# This will be made optional or hard enabled once the issue has been resolved.
-		--without-libseccomp
+		$(use_with seccomp libseccomp)
 		--with-db=$(usex gdbm gdbm $(usex berkdb db gdbm))
 	)
 	econf "${myeconfargs[@]}"
