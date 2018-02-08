@@ -2,7 +2,7 @@ DEFINED_PHASES=configure install postinst postrm prepare unpack
 DEPEND=>=dev-libs/dbus-glib-0.60 >=dev-libs/glib-2.28 >=x11-libs/cairo-1.2.6 >=x11-libs/pango-1.8.0 virtual/freedesktop-icon-theme gtk? ( x11-libs/gtk+:2 ) gtk3? ( x11-libs/gtk+:3 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 ) virtual/pkgconfig nls? ( dev-util/intltool ) >=sys-apps/sed-4 >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=Audacious Player - Your music, your way, no exceptions
 EAPI=6
-HOMEPAGE=http://audacious-media-player.org/
+HOMEPAGE=https://audacious-media-player.org/
 IUSE=gtk gtk3 nls qt5
 LICENSE=BSD-2
 PDEPEND=~media-plugins/audacious-plugins-9999
@@ -11,4 +11,4 @@ REQUIRED_USE=^^ ( gtk gtk3 qt5 )
 SLOT=0
 SRC_URI=mirror://gentoo/gentoo_ice-xmms-0.2.tar.bz2
 _eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	git-r3	fec09a83ae965b041b47f5ff7c8ba29a	gnome2-utils	4d211d7614f303710fca59db6ec12c88	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=48df685128d70718189f4b3269e18940
+_md5_=0026d2bea18eb535014b455faa7a93ed
