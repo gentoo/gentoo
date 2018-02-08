@@ -17,7 +17,7 @@ IUSE="ssl"
 DEPEND="ssl? ( dev-libs/openssl:0= )"
 RDEPEND="${DEPEND}"
 
-PATCH=( "${FILESDIR}"/"${P}"-asneeded.patch )
+PATCHES=( "${FILESDIR}"/"${P}"-asneeded.patch )
 
 src_prepare() {
 	default
