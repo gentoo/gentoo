@@ -83,7 +83,7 @@ SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	${EGO_VENDOR_URI}"
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="hardened"
+IUSE=""
 
 RDEPEND="net-misc/cni-plugins"
 
