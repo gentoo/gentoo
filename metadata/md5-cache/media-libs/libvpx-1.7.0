@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install test
+DEPEND=abi_x86_32? ( dev-lang/yasm ) abi_x86_64? ( dev-lang/yasm ) abi_x86_x32? ( dev-lang/yasm ) x86-fbsd? ( dev-lang/yasm ) amd64-fbsd? ( dev-lang/yasm ) doc? ( app-doc/doxygen dev-lang/php )
+DESCRIPTION=WebM VP8 and VP9 Codec SDK
+EAPI=6
+HOMEPAGE=http://www.webmproject.org
+IUSE=cpu_flags_x86_avx cpu_flags_x86_avx2 doc cpu_flags_x86_mmx postproc cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_ssse3 cpu_flags_x86_sse4_1 +highbitdepth static-libs svc test +threads abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux
+LICENSE=BSD
+RDEPEND=abi_x86_32? ( !app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)] )
+REQUIRED_USE=cpu_flags_x86_sse2? ( cpu_flags_x86_mmx ) cpu_flags_x86_ssse3? ( cpu_flags_x86_sse2 ) test? ( threads )
+RESTRICT=!test? ( test )
+SLOT=0/5
+SRC_URI=https://github.com/webmproject/libvpx/archive/v1.7.0.tar.gz -> libvpx-1.7.0.tar.gz test? ( mirror://gentoo/libvpx-testdata-1.7.0.tar.xz )
+_eclasses_=multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	8ffb5e2112a70fef5f37fcacad308726	multilib-minimal	9139c3a57e077cb8e0d0f73ceb080b89	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_md5_=2233a3ae701088f31398081b9350c10f
