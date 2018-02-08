@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (08 Feb 2018)
+# 4.4.0 server does not properly write lease changes to the lease file
+# in some cases:
+# https://lists.isc.org/pipermail/dhcp-users/2018-February/021164.html
+=net-misc/dhcp-4.4.0
+
 # Eray Aslan <eras@gentoo.org> (08 Feb 2018)
 # Mask experimental software
 =mail-mta/postfix-3.4*

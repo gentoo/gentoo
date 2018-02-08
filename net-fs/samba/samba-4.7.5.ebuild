@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -118,8 +118,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.4.0-pam.patch"
 	"${FILESDIR}/${PN}-4.5.1-compile_et_fix.patch"
 	"${FILESDIR}"/talloc-disable-python.patch
-	"${FILESDIR}/${PN}-glibc-2.26-no_rpc.patch" #637320
 	"${FILESDIR}/${PN}-4.7.3-krb-cross-compile.patch"
+	"${FILESDIR}/${PN}-4.7.4-no_ads.patch"
 )
 
 #CONFDIR="${FILESDIR}/$(get_version_component_range 1-2)"
