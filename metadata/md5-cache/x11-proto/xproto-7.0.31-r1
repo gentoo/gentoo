@@ -1,0 +1,9 @@
+DEFINED_PHASES=-
+DEPEND=x11-proto/xorgproto
+DESCRIPTION=X.Org xproto protocol headers
+EAPI=6
+HOMEPAGE=https://www.x.org/wiki/
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+LICENSE=MIT
+SLOT=0
+_md5_=bb4c7f53f18de10a6873bce3b824d40d
