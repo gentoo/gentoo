@@ -13,7 +13,7 @@ KEYWORDS="~amd64 x86"
 IUSE="debug ldap"
 
 RDEPEND=">=net-libs/libetpan-0.35
-	sys-libs/ncurses
+	sys-libs/ncurses:=
 	ldap? ( net-nds/openldap )"
 DEPEND="${RDEPEND}
 	virtual/yacc"
