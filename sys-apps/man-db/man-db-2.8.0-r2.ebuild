@@ -12,7 +12,7 @@ SRC_URI="mirror://nongnu/${PN}/${P}.tar.xz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux"
-IUSE="berkdb +gdbm +manpager nls seccomp selinux static-libs zlib"
+IUSE="berkdb +gdbm +manpager nls selinux static-libs zlib"
 
 CDEPEND="
 	!sys-apps/man
@@ -21,7 +21,6 @@ CDEPEND="
 	berkdb? ( sys-libs/db:= )
 	gdbm? ( sys-libs/gdbm:= )
 	!berkdb? ( !gdbm? ( sys-libs/gdbm:= ) )
-	seccomp? ( sys-libs/libseccomp )
 	zlib? ( sys-libs/zlib )
 "
 DEPEND="
@@ -40,8 +39,6 @@ RDEPEND="
 PDEPEND="manpager? ( app-text/manpager )"
 
 PATCHES=(
-	"${FILESDIR}/${P}-refactor_drop_privs.patch"
-	"${FILESDIR}/${P}-seccomp_suid.patch"
 	"${FILESDIR}/${P}-libseccomp_automagic.patch"
 )
 
@@ -65,7 +62,7 @@ src_configure() {
 		--with-sections="1 1p 8 2 3 3p 4 5 6 7 9 0p tcl n l p o 1x 2x 3x 4x 5x 6x 7x 8x"
 		$(use_enable nls)
 		$(use_enable static-libs static)
-		$(use_with seccomp libseccomp)
+		--without-libseccomp
 		--with-db=$(usex gdbm gdbm $(usex berkdb db gdbm))
 	)
 	econf "${myeconfargs[@]}"
