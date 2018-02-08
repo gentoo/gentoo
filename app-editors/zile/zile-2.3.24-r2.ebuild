@@ -29,6 +29,17 @@ src_configure() {
 		CURSES_LIB="$("$(tc-getPKG_CONFIG)" --libs ncurses)"
 }
 
+src_test() {
+	if tput cup 0 0 >/dev/null || tput cuu1 >/dev/null; then
+		# We have a sane terminal that can move the cursor
+		emake check
+	else
+		ewarn "Terminal type \"${TERM}\" is too stupid to run zile"
+		ewarn "Running the tests with TERM=vt100 instead"
+		TERM=vt100 emake check
+	fi
+}
+
 src_install() {
 	emake DESTDIR="${D}" install
 
