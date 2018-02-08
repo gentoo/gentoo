@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_{4,5}} )
 inherit distutils-r1
 
 DESCRIPTION="A dockerized approach to test a Gentoo package within a clean stage3"
-HOMEPAGE="https://github.com/nicolasbock/gentoo-test-package"
+HOMEPAGE="https://github.com/nicolasbock/ebuildtester"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
