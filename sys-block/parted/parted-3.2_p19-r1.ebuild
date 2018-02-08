@@ -40,6 +40,7 @@ S=${WORKDIR}/${P/_p*/}
 
 src_prepare() {
 	default
+	sed -i -e '/atari\.patch/d' "${WORKDIR}"/debian/patches/series || die
 	for patch in $(< "${WORKDIR}"/debian/patches/series); do
 		eapply "${WORKDIR}/debian/patches/$patch"
 	done
