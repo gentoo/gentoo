@@ -10,7 +10,7 @@ SRC_URI="${HOMEPAGE}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~x86"
+KEYWORDS="~amd64 ~hppa ~ia64 ~x86"
 IUSE="static-libs"
 RDEPEND="
 	!media-plugins/mediastreamer-bcg729
