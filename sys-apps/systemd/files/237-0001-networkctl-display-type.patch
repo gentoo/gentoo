@@ -1,0 +1,266 @@
+From a18461bc7d446f8e130e9276de4397d00059267f Mon Sep 17 00:00:00 2001
+From: "Jason A. Donenfeld" <Jason@zx2c4.com>
+Date: Mon, 29 Jan 2018 20:58:24 +0100
+Subject: [PATCH 1/4] networkd: display wireguard devtype
+
+It's not useful to simply show "none", when we have more interesting
+information to display.
+
+Signed-off-by: Jason A. Donenfeld <Jason@zx2c4.com>
+---
+ src/network/networkctl.c | 22 +++++++++++++++-------
+ 1 file changed, 15 insertions(+), 7 deletions(-)
+
+diff --git a/src/network/networkctl.c b/src/network/networkctl.c
+index 59ce098cd1..6ce00dff6d 100644
+--- a/src/network/networkctl.c
++++ b/src/network/networkctl.c
+@@ -62,18 +62,26 @@ static int link_get_type_string(unsigned short iftype, sd_device *d, char **ret)
+ 
+         assert(ret);
+ 
+-        if (iftype == ARPHRD_ETHER && d) {
++        if (d) {
+                 const char *devtype = NULL, *id = NULL;
++
++                (void) sd_device_get_devtype(d, &devtype);
++
+                 /* WLANs have iftype ARPHRD_ETHER, but we want
+                  * to show a more useful type string for
+                  * them */
++                if (iftype == ARPHRD_ETHER) {
++                        if (streq_ptr(devtype, "wlan"))
++                                id = "wlan";
++                        else if (streq_ptr(devtype, "wwan"))
++                                id = "wwan";
++                }
+ 
+-                (void) sd_device_get_devtype(d, &devtype);
+-
+-                if (streq_ptr(devtype, "wlan"))
+-                        id = "wlan";
+-                else if (streq_ptr(devtype, "wwan"))
+-                        id = "wwan";
++                /* Likewise, WireGuard has iftype ARPHRD_NONE,
++                 * since it's layer 3, but we of course want
++                 * something more useful than that. */
++                if (iftype == ARPHRD_NONE && streq_ptr(devtype, "wireguard"))
++                        id = "wireguard";
+ 
+                 if (id) {
+                         p = strdup(id);
+
+From f119082e7a1ccfbf50c30a99819b6e303cdf09a1 Mon Sep 17 00:00:00 2001
+From: "Jason A. Donenfeld" <Jason@zx2c4.com>
+Date: Mon, 29 Jan 2018 21:01:46 +0100
+Subject: [PATCH 2/4] networkd: simplify and display all devtypes
+
+Every place the kernel actually calls SET_NETDEV_DEVTYPE, it's adding a
+piece of information that looks useful and relevant for us to use. So
+let's use it when it's there.
+
+The previous matching based on the corresponding ARPHRD didn't really
+make much sense. The more sensible logic for getting a textual
+representation of the link type is to see if the kernel supplies a
+devtype. If it does, great. If not, then we can fall back on the ARPHRD,
+as before.
+
+Signed-off-by: Jason A. Donenfeld <Jason@zx2c4.com>
+---
+ src/network/networkctl.c | 23 +++--------------------
+ 1 file changed, 3 insertions(+), 20 deletions(-)
+
+diff --git a/src/network/networkctl.c b/src/network/networkctl.c
+index 6ce00dff6d..8a08304240 100644
+--- a/src/network/networkctl.c
++++ b/src/network/networkctl.c
+@@ -63,28 +63,11 @@ static int link_get_type_string(unsigned short iftype, sd_device *d, char **ret)
+         assert(ret);
+ 
+         if (d) {
+-                const char *devtype = NULL, *id = NULL;
++                const char *devtype = NULL;
+ 
+                 (void) sd_device_get_devtype(d, &devtype);
+-
+-                /* WLANs have iftype ARPHRD_ETHER, but we want
+-                 * to show a more useful type string for
+-                 * them */
+-                if (iftype == ARPHRD_ETHER) {
+-                        if (streq_ptr(devtype, "wlan"))
+-                                id = "wlan";
+-                        else if (streq_ptr(devtype, "wwan"))
+-                                id = "wwan";
+-                }
+-
+-                /* Likewise, WireGuard has iftype ARPHRD_NONE,
+-                 * since it's layer 3, but we of course want
+-                 * something more useful than that. */
+-                if (iftype == ARPHRD_NONE && streq_ptr(devtype, "wireguard"))
+-                        id = "wireguard";
+-
+-                if (id) {
+-                        p = strdup(id);
++                if (!isempty(devtype)) {
++                        p = strdup(devtype);
+                         if (!p)
+                                 return -ENOMEM;
+ 
+
+From fdce7817b9a27a370c01b7dd9da6a84fcae1038e Mon Sep 17 00:00:00 2001
+From: "Jason A. Donenfeld" <Jason@zx2c4.com>
+Date: Mon, 29 Jan 2018 21:05:36 +0100
+Subject: [PATCH 3/4] networkd: clean up link_get_type_string
+
+The return value is always ignored, so get rid of it.
+
+Signed-off-by: Jason A. Donenfeld <Jason@zx2c4.com>
+---
+ src/network/networkctl.c | 16 +++++++---------
+ 1 file changed, 7 insertions(+), 9 deletions(-)
+
+diff --git a/src/network/networkctl.c b/src/network/networkctl.c
+index 8a08304240..7b33e0db17 100644
+--- a/src/network/networkctl.c
++++ b/src/network/networkctl.c
+@@ -56,7 +56,7 @@ static bool arg_no_pager = false;
+ static bool arg_legend = true;
+ static bool arg_all = false;
+ 
+-static int link_get_type_string(unsigned short iftype, sd_device *d, char **ret) {
++static void link_get_type_string(unsigned short iftype, sd_device *d, char **ret) {
+         const char *t;
+         char *p;
+ 
+@@ -69,27 +69,25 @@ static int link_get_type_string(unsigned short iftype, sd_device *d, char **ret)
+                 if (!isempty(devtype)) {
+                         p = strdup(devtype);
+                         if (!p)
+-                                return -ENOMEM;
++                                return;
+ 
+                         *ret = p;
+-                        return 1;
++                        return;
+                 }
+         }
+ 
+         t = arphrd_to_name(iftype);
+         if (!t) {
+                 *ret = NULL;
+-                return 0;
++                return;
+         }
+ 
+         p = strdup(t);
+         if (!p)
+-                return -ENOMEM;
++                return;
+ 
+         ascii_strlower(p);
+         *ret = p;
+-
+-        return 0;
+ }
+ 
+ static void operational_state_to_color(const char *state, const char **on, const char **off) {
+@@ -314,7 +312,7 @@ static int list_links(int argc, char *argv[], void *userdata) {
+                 xsprintf(devid, "n%i", links[i].ifindex);
+                 (void) sd_device_new_from_device_id(&d, devid);
+ 
+-                (void) link_get_type_string(links[i].iftype, d, &t);
++                link_get_type_string(links[i].iftype, d, &t);
+ 
+                 printf("%3i %-16s %-18s %s%-11s%s %s%-10s%s\n",
+                        links[i].ifindex, links[i].name, strna(t),
+@@ -807,7 +805,7 @@ static int link_status_one(
+                         (void) sd_device_get_property_value(d, "ID_MODEL", &model);
+         }
+ 
+-        (void) link_get_type_string(info->iftype, d, &t);
++        link_get_type_string(info->iftype, d, &t);
+ 
+         (void) sd_network_link_get_network_file(info->ifindex, &network);
+ 
+
+From b55822c349d3e0559c1efc7475fd0f74cf086453 Mon Sep 17 00:00:00 2001
+From: "Jason A. Donenfeld" <Jason@zx2c4.com>
+Date: Mon, 29 Jan 2018 21:08:39 +0100
+Subject: [PATCH 4/4] networkd: clean up link_get_type_string returns
+
+It's cleaner and more consistent to actually return what we were
+planning on returning.
+
+Signed-off-by: Jason A. Donenfeld <Jason@zx2c4.com>
+---
+ src/network/networkctl.c | 28 +++++++++-------------------
+ 1 file changed, 9 insertions(+), 19 deletions(-)
+
+diff --git a/src/network/networkctl.c b/src/network/networkctl.c
+index 7b33e0db17..14d8ecb03f 100644
+--- a/src/network/networkctl.c
++++ b/src/network/networkctl.c
+@@ -56,38 +56,28 @@ static bool arg_no_pager = false;
+ static bool arg_legend = true;
+ static bool arg_all = false;
+ 
+-static void link_get_type_string(unsigned short iftype, sd_device *d, char **ret) {
++static char *link_get_type_string(unsigned short iftype, sd_device *d) {
+         const char *t;
+         char *p;
+ 
+-        assert(ret);
+-
+         if (d) {
+                 const char *devtype = NULL;
+ 
+                 (void) sd_device_get_devtype(d, &devtype);
+-                if (!isempty(devtype)) {
+-                        p = strdup(devtype);
+-                        if (!p)
+-                                return;
+-
+-                        *ret = p;
+-                        return;
+-                }
++                if (!isempty(devtype))
++                        return strdup(devtype);
+         }
+ 
+         t = arphrd_to_name(iftype);
+-        if (!t) {
+-                *ret = NULL;
+-                return;
+-        }
++        if (!t)
++                return NULL;
+ 
+         p = strdup(t);
+         if (!p)
+-                return;
++                return NULL;
+ 
+         ascii_strlower(p);
+-        *ret = p;
++        return p;
+ }
+ 
+ static void operational_state_to_color(const char *state, const char **on, const char **off) {
+@@ -312,7 +302,7 @@ static int list_links(int argc, char *argv[], void *userdata) {
+                 xsprintf(devid, "n%i", links[i].ifindex);
+                 (void) sd_device_new_from_device_id(&d, devid);
+ 
+-                link_get_type_string(links[i].iftype, d, &t);
++                t = link_get_type_string(links[i].iftype, d);
+ 
+                 printf("%3i %-16s %-18s %s%-11s%s %s%-10s%s\n",
+                        links[i].ifindex, links[i].name, strna(t),
+@@ -805,7 +795,7 @@ static int link_status_one(
+                         (void) sd_device_get_property_value(d, "ID_MODEL", &model);
+         }
+ 
+-        link_get_type_string(info->iftype, d, &t);
++        t = link_get_type_string(info->iftype, d);
+ 
+         (void) sd_network_link_get_network_file(info->ifindex, &network);
+ 
