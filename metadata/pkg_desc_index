@@ -1966,7 +1966,7 @@ dev-games/guichan 0.8.2: a portable C++ GUI library designed for games using All
 dev-games/hawknl 1.68-r2: A cross-platform network library designed for games
 dev-games/hdl_dump 0.8.6.20060901: game installer for playstation 2 HD Loader
 dev-games/higan-ananke 094: A higan helper library needed for extra rom load options
-dev-games/irrlicht 1.8.1-r1 1.8.4: open source high performance realtime 3D engine written in C++
+dev-games/irrlicht 1.8.4: open source high performance realtime 3D engine written in C++
 dev-games/libmaitretarot 0.1.98: backend library for the maitretarot games
 dev-games/libmt_client 0.1.98: backend library for the maitretarot clients
 dev-games/libnw 1.30.02: Tools and libraries for NWN file manipulation
@@ -10617,7 +10617,7 @@ x11-libs/colord-gtk 0.1.25 0.1.26: GTK support library for colord
 x11-libs/dnd 1.1-r1: OffiX' Drag'n'drop library
 x11-libs/flowcanvas 0.7.1-r1 0.7.1-r2: Gtkmm/Gnomecanvasmm widget for boxes and lines environments
 x11-libs/fltk 1.3.3-r3: C++ user interface toolkit for X and OpenGL
-x11-libs/fox 1.6.49 1.7.49 1.7.54: C++ Toolkit for developing Graphical User Interfaces easily and effectively
+x11-libs/fox 1.6.49 1.7.54: C++ Toolkit for developing Graphical User Interfaces easily and effectively
 x11-libs/fox-wrapper 2 3: wrapper for fox-config to manage multiple versions
 x11-libs/gdk-pixbuf 2.36.10-r2 2.36.11: Image loading library for GTK+
 x11-libs/gksu 2.0.2-r1 2.0.2-r2: A gtk+ frontend for libgksu
