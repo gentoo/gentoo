@@ -1,7 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-inherit eutils autotools
+EAPI=6
+inherit autotools
 
 DESCRIPTION="etPan is a console mail client that is based on libEtPan"
 HOMEPAGE="http://www.etpan.org/other.html"
@@ -16,11 +17,13 @@ RDEPEND=">=net-libs/libetpan-0.35
 	ldap? ( net-nds/openldap )"
 DEPEND="${RDEPEND}
 	virtual/yacc"
+PATCHES=(
+	"${FILESDIR}"/${P}-as-needed.patch
+	"${FILESDIR}"/${P}-tinfo.patch
+)
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}/${P}-as-needed.patch"
+src_prepare() {
+	default
 	eautoreconf
 }
 
