@@ -6786,7 +6786,7 @@ kde-frameworks/kwindowsystem 5.40.0: Framework providing access to properties an
 kde-frameworks/kxmlgui 5.40.0: Framework for managing menu and toolbar actions in an abstract way
 kde-frameworks/kxmlrpcclient 5.40.0: Framework providing client-side support for the XML-RPC protocol
 kde-frameworks/modemmanager-qt 5.40.0: ModemManager bindings for Qt
-kde-frameworks/networkmanager-qt 5.40.0 5.40.0-r1: NetworkManager bindings for Qt
+kde-frameworks/networkmanager-qt 5.40.0-r1: NetworkManager bindings for Qt
 kde-frameworks/oxygen-icons 5.40.0: Oxygen SVG icon theme
 kde-frameworks/plasma 5.40.0: Plasma framework
 kde-frameworks/prison 5.40.0: QRCode and data matrix barcode library
