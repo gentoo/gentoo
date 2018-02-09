@@ -2,11 +2,11 @@ DEFINED_PHASES=install postinst postrm setup
 DEPEND=fontforge? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) media-gfx/fontforge dev-python/fonttools ) X? ( x11-apps/mkfontdir media-fonts/encodings )
 DESCRIPTION=A Helvetica/Times/Courier replacement TrueType font set, courtesy of Red Hat
 EAPI=5
-HOMEPAGE=https://fedorahosted.org/liberation-fonts
+HOMEPAGE=https://pagure.io/liberation-fonts
 IUSE=fontforge X X
 KEYWORDS=~amd64 ~arm ~arm64 ~ia64 ~ppc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~x64-solaris
 LICENSE=OFL-1.1
 SLOT=0
-SRC_URI=!fontforge? ( https://fedorahosted.org/releases/l/i/liberation-fonts/liberation-fonts-ttf-2.00.1.tar.gz ) fontforge? ( https://fedorahosted.org/releases/l/i/liberation-fonts/liberation-fonts-2.00.1.tar.gz )
+SRC_URI=!fontforge? ( https://releases.pagure.org/liberation-fonts/liberation-fonts/liberation-fonts-ttf-2.00.1.tar.gz ) fontforge? ( https://releases.pagure.org/liberation-fonts/liberation-fonts/liberation-fonts-2.00.1.tar.gz )
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	font	82836641e7d4639329d8c195234ad0e3	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-any-r1	27d7f9da7187d283b7f3eae8390b7b09	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=57e746750d49cb84787f850b299466c6
+_md5_=f416139bb2932c0b9e70c2f9213904c2

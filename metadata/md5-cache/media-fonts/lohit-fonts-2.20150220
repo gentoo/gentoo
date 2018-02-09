@@ -1,9 +1,9 @@
 DEFINED_PHASES=-
 DESCRIPTION=Meta ebuild for the Lohit family of Indic fonts
 EAPI=5
-HOMEPAGE=https://fedorahosted.org/lohit
+HOMEPAGE=https://pagure.io/lohit
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~ppc-macos ~x86-macos
 LICENSE=OFL-1.1
 RDEPEND==media-fonts/lohit-assamese-2* =media-fonts/lohit-bengali-2* =media-fonts/lohit-devanagari-2* =media-fonts/lohit-gujarati-2* =media-fonts/lohit-gurmukhi-2* =media-fonts/lohit-kannada-2* =media-fonts/lohit-malayalam-2* =media-fonts/lohit-marathi-2* =media-fonts/lohit-nepali-2* =media-fonts/lohit-odia-2* =media-fonts/lohit-tamil-2* =media-fonts/lohit-tamil-classical-2* =media-fonts/lohit-telugu-2*
 SLOT=0
-_md5_=3cd6194956ca4770cb25ab3287cddbc5
+_md5_=1474b468d07311a3b62526c3ff7dd4da
