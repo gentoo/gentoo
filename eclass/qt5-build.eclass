@@ -170,7 +170,7 @@ qt5-build_src_unpack() {
 	fi
 
 	case ${QT5_BUILD_TYPE} in
-		live)    git-r3_src_unpack ;;
+		live)    git-r3_src_unpack ;&
 		release) default ;;
 	esac
 }
