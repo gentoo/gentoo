@@ -1,0 +1,8 @@
+--- a/systemd/dnscrypt-proxy.service	2018-02-09 11:04:36.424058868 +0100
++++ b/systemd/dnscrypt-proxy.service	2018-02-09 11:05:51.209593944 +0100
+@@ -15,4 +15,4 @@
+ NonBlocking=true
+ 
+ # Change this
+-ExecStart=/opt/dnscrypt-proxy/dnscrypt-proxy
++ExecStart=/usr/sbin/dnscrypt-proxy --config /etc/dnscrypt-proxy/dnscrypt-proxy.toml
