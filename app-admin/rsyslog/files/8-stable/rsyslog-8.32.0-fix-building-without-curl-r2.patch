@@ -1,19 +1,10 @@
-https://github.com/rsyslog/rsyslog/pull/2378
+https://github.com/rsyslog/rsyslog/commit/d9475f133e3c79875a7c4ccd92038b7123c1f155
+https://github.com/rsyslog/rsyslog/commit/468eeb79b8da91fb71dfef6bfb25476b2a37f446
+https://github.com/rsyslog/rsyslog/commit/50205ced0fc22e74f26f2a07b557b69c5d30e168
 
---- a/configure.ac
-+++ b/configure.ac
-@@ -454,6 +454,8 @@ if test "$enable_libcurl" = "yes"; then
- 	)
- fi
- 
-+AM_CONDITIONAL(ENABLE_LIBCURL, test "x${enable_libcurl}" = "xyes")
-+
- # klog
- AC_ARG_ENABLE(klog,
-         [AS_HELP_STRING([--enable-klog],[Integrated klog functionality @<:@default=yes@:>@])],
 --- a/grammar/rainerscript.c
 +++ b/grammar/rainerscript.c
-@@ -1935,6 +1935,7 @@ done:
+@@ -1935,6 +1935,7 @@ num2ipv4(struct svar *__restrict__ const sourceVal) {
  	return(estr);
  }
  
@@ -21,7 +12,7 @@ https://github.com/rsyslog/rsyslog/pull/2378
  /* curl callback for doFunc_http_request */
  static size_t
  curlResult(void *ptr, size_t size, size_t nmemb, void *userdata)
-@@ -2010,6 +2011,7 @@ finalize_it:
+@@ -2010,6 +2011,7 @@ doFunc_http_request(struct cnffunc *__restrict__ const func,
  	}
  	RETiRet;
  }
@@ -46,6 +37,19 @@ https://github.com/rsyslog/rsyslog/pull/2378
  		break;
  	default:
  		if(Debug) {
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -454,6 +454,8 @@ if test "$enable_libcurl" = "yes"; then
+ 	)
+ fi
+ 
++AM_CONDITIONAL(ENABLE_LIBCURL, test "x${enable_libcurl}" = "xyes")
++
+ # klog
+ AC_ARG_ENABLE(klog,
+         [AS_HELP_STRING([--enable-klog],[Integrated klog functionality @<:@default=yes@:>@])],
+
 --- a/tests/Makefile.am
 +++ b/tests/Makefile.am
 @@ -226,7 +226,6 @@ TESTS +=  \
@@ -88,3 +92,32 @@ https://github.com/rsyslog/rsyslog/pull/2378
  endif # HAVE_VALGRIND
  
  if ENABLE_ROOT_TESTS
+
+--- a/grammar/Makefile.am
++++ b/grammar/Makefile.am
+@@ -12,8 +12,11 @@ libgrammar_la_SOURCES = \
+ 	parserif.h \
+ 	grammar.h
+ libgrammar_la_CPPFLAGS =  $(RSRT_CFLAGS) $(LIBLOGGING_STDLOG_CFLAGS)
+-#libgrammar_la_LIBADD = $(CURL_LIBS) $(RSRT_LIBS) $(SOL_LIBS)
+-libgrammar_la_LIBADD = $(CURL_LIBS)
++libgrammar_la_LIBADD =
++if ENABLE_LIBCURL
++libgrammar_la_CPPFLAGS += $(CURL_CFLAGS)
++libgrammar_la_LIBADD += $(CURL_LIBS)
++endif
+ 
+ #testdriver_SOURCES = testdriver.c libgrammar.la
+ #testdriver_CPPFLAGS =  $(RSRT_CFLAGS)
+
+--- a/plugins/omelasticsearch/Makefile.am
++++ b/plugins/omelasticsearch/Makefile.am
+@@ -1,7 +1,7 @@
+ pkglib_LTLIBRARIES = omelasticsearch.la
+ 
+ omelasticsearch_la_SOURCES = omelasticsearch.c
+-omelasticsearch_la_CPPFLAGS =  $(RSRT_CFLAGS) $(PTHREADS_CFLAGS)
++omelasticsearch_la_CPPFLAGS = $(RSRT_CFLAGS) $(PTHREADS_CFLAGS) $(CURL_CFLAGS)
+ omelasticsearch_la_LDFLAGS = -module -avoid-version
+ omelasticsearch_la_LIBADD =  $(CURL_LIBS) $(LIBM)
+ 

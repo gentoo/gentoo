@@ -48,7 +48,7 @@ else
 		doc? ( http://www.rsyslog.com/files/download/${PN}/${MY_URL_PREFIX}${PN}-doc-${MY_PV}.tar.gz -> ${MY_FILENAME_DOCS} )
 	"
 
-	PATCHES=( "${FILESDIR}"/8-stable/${PN}-8.32.0-fix-building-without-curl-r1.patch )
+	PATCHES=( "${FILESDIR}"/8-stable/${PN}-8.32.0-fix-building-without-curl-r2.patch )
 fi
 
 LICENSE="GPL-3 LGPL-3 Apache-2.0"
