@@ -75,7 +75,7 @@ xpi_install() {
 	emid="$(sed -n -e '/install-manifest/,$ { /em:id/!d; s/.*[\">]\([^\"<>]*\)[\"<].*/\1/; p; q }' "${x}"/install.rdf)" \
 		|| die "failed to determine extension id from install.rdf"
 	elif [[ -f "${x}"/manifest.json ]]; then
-		emid="$( sed -n 's/.*"id": "\(.*\)",/\1/p' "${x}"/manifest.json )" \
+		emid="$(sed -n -re '/"gecko": \{/,/ +\},/{/"id": /{s/^ +"id": "(.*)", *$/\1/p; q}}' "${x}"/manifest.json)" \
 			|| die "failed to determine extension id from manifest.json"
 	else
 		die "failed to determine extension id"
