@@ -7,13 +7,15 @@ EAPI=6
 # (needed due to CMAKE_BUILD_TYPE != Gentoo)
 CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
-inherit cmake-multilib git-r3 llvm python-any-r1
+inherit cmake-multilib llvm python-any-r1
+
+MY_P=libunwind-${PV/_/}.src
+LIBCXX_P=libcxx-${PV/_/}.src
 
 DESCRIPTION="C++ runtime stack unwinder from LLVM"
 HOMEPAGE="https://github.com/llvm-mirror/libunwind"
-SRC_URI=""
-EGIT_REPO_URI="https://git.llvm.org/git/libunwind.git
-	https://github.com/llvm-mirror/libunwind.git"
+SRC_URI="http://prereleases.llvm.org/${PV/_//}/${MY_P}.tar.xz
+	test? ( http://prereleases.llvm.org/${PV/_//}/${LIBCXX_P}.tar.xz )"
 
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="0"
@@ -29,6 +31,8 @@ DEPEND="
 		sys-libs/libcxx[${MULTILIB_USEDEP}]
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]') )"
 
+S=${WORKDIR}/${MY_P}
+
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
 
@@ -41,15 +45,14 @@ pkg_setup() {
 }
 
 src_unpack() {
-	# we need headers & test utilities
-	git-r3_fetch "https://git.llvm.org/git/libcxx.git
-		https://github.com/llvm-mirror/libcxx.git"
-	git-r3_fetch
+	einfo "Unpacking ${MY_P}.tar.xz ..."
+	tar -xf "${DISTDIR}/${MY_P}.tar.xz" || die
 
 	if use test; then
-		git-r3_checkout https://llvm.org/git/libcxx.git \
-			"${WORKDIR}"/libcxx '' include utils/libcxx
-		git-r3_checkout
+		einfo "Unpacking parts of ${LIBCXX_P}.tar.xz ..."
+		tar -xf "${DISTDIR}/${LIBCXX_P}.tar.xz" \
+			"${LIBCXX_P}"/{include,utils/libcxx} || die
+		mv "${LIBCXX_P}" libcxx || die
 	fi
 }
 

@@ -8,14 +8,15 @@ EAPI=6
 CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils git-r3 llvm python-single-r1 toolchain-funcs
+inherit cmake-utils llvm python-single-r1 toolchain-funcs
+
+MY_P=${P/_/}.src
+LLVM_P=llvm-${PV/_/}.src
 
 DESCRIPTION="The LLVM debugger"
 HOMEPAGE="https://llvm.org/"
-SRC_URI=""
-EGIT_REPO_URI="https://git.llvm.org/git/lldb.git
-	https://github.com/llvm-mirror/lldb.git"
-EGIT_BRANCH="release_60"
+SRC_URI="http://prereleases.llvm.org/${PV/_//}/${MY_P}.tar.xz
+	test? ( http://prereleases.llvm.org/${PV/_//}/${LLVM_P}.tar.xz )"
 
 LICENSE="UoI-NCSA"
 SLOT="0"
@@ -40,6 +41,8 @@ DEPEND="${RDEPEND}
 
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
+S=${WORKDIR}/${MY_P}
+
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
 
@@ -49,18 +52,15 @@ pkg_setup() {
 }
 
 src_unpack() {
-	if use test; then
-		# needed for patched gtest
-		git-r3_fetch "https://git.llvm.org/git/llvm.git
-			https://github.com/llvm-mirror/llvm.git"
-	fi
-	git-r3_fetch
+	einfo "Unpacking ${MY_P}.tar.xz ..."
+	tar -xf "${DISTDIR}/${MY_P}.tar.xz" || die
 
 	if use test; then
-		git-r3_checkout https://llvm.org/git/llvm.git \
-			"${WORKDIR}"/llvm '' lib/Testing/Support utils/unittest
+		einfo "Unpacking parts of ${LLVM_P}.tar.xz ..."
+		tar -xf "${DISTDIR}/${LLVM_P}.tar.xz" \
+			"${LLVM_P}"/{lib/Testing/Support,utils/unittest} || die
+		mv "${LLVM_P}" llvm || die
 	fi
-	git-r3_checkout
 }
 
 src_configure() {
