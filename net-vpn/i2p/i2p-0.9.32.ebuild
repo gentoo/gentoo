@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -14,7 +14,7 @@ SLOT="0"
 
 # Until the deps reach other arches
 KEYWORDS="~amd64 ~x86"
-IUSE="nls"
+IUSE="+ecdsa nls"
 
 # dev-java/ant-core is automatically added due to java-ant-2.eclass
 CP_DEPEND="dev-java/bcprov:1.50
@@ -31,14 +31,15 @@ DEPEND="${CP_DEPEND}
 	>=virtual/jdk-1.7"
 
 RDEPEND="${CP_DEPEND}
-	|| (
-		dev-java/icedtea:7[-sunec]
-		dev-java/icedtea:8[-sunec]
-		dev-java/icedtea-bin:7
-		dev-java/icedtea-bin:8
-		dev-java/oracle-jre-bin
-		dev-java/oracle-jdk-bin
-	)"
+	ecdsa? (
+		|| (
+			dev-java/icedtea:8[-sunec]
+			dev-java/icedtea-bin:8
+			dev-java/oracle-jre-bin
+			dev-java/oracle-jdk-bin
+		)
+	)
+	!ecdsa? ( >=virtual/jre-1.7 )"
 
 EANT_BUILD_TARGET="pkg"
 JAVA_ANT_ENCODING="UTF-8"
@@ -48,10 +49,6 @@ I2P_CONFIG_HOME='/var/lib/i2p'
 I2P_CONFIG_DIR="${I2P_CONFIG_HOME}/.i2p"
 
 RES_DIR='installer/resources'
-
-PATCHES=(
-	"${FILESDIR}/${P}-add_libs.patch"
-)
 
 pkg_setup() {
 	java-pkg-2_pkg_setup
@@ -79,6 +76,20 @@ src_prepare() {
 	sed -i 's|clientApp.4.startOnLoad=true|clientApp.4.startOnLoad=false|' \
 		"${RES_DIR}/clients.config" || die
 
+	# generate classpath, keeping the default to be replaced later
+	local lib cp i=2
+	for lib in $(echo "$CP_DEPEND" | cut -d / -f 2 | sed 's|:0$||')
+	do
+		cp+="wrapper.java.classpath.$((i++))=$(java-pkg_getjars $lib)\n"
+	done
+	sed -e "s|\(wrapper\.java\.classpath\.1=.*\)|\1\n$cp|" \
+		-i "${RES_DIR}/wrapper.config" || die
+
+	# wrapper specific fixes
+	sed -e "s|\(wrapper\.java\.command\)=.*|\1=/etc/java-config-2/current-system-vm/bin/java|" \
+		-e "s|\(wrapper\.java\.library\.path\.1\)=.*|\1=/usr/lib/java-service-wrapper|" \
+		-i "${RES_DIR}/wrapper.config" || die
+
 	# we do it now so we can resolve path after
 	default
 
@@ -102,12 +113,11 @@ src_install() {
 	local i
 	for i in BOB commons-el commons-logging i2p i2psnark i2ptunnel \
 		jasper-compiler jasper-runtime javax.servlet jbigi jetty* mstreaming org.mortbay.* router* \
-		sam standard streaming systray; do
+		sam standard streaming systray addressbook; do
 		java-pkg_dojar lib/${i}.jar
 	done
 
 	# Set up symlinks for binaries
-	dosym /usr/bin/wrapper "${I2P_ROOT}/i2psvc"
 	dosym "${I2P_ROOT}/i2prouter" /usr/bin/i2prouter
 	dosym "${I2P_ROOT}/eepget" /usr/bin/eepget
 
@@ -136,14 +146,14 @@ src_install() {
 pkg_postinst() {
 	elog "Custom configuration belongs in ${I2P_CONFIG_DIR} to avoid being overwritten."
 	elog 'I2P can be configured through the web interface at http://localhost:7657/console'
-	elog
 
-	ewarn "The router will migrate the jetty.xml for each Jetty website to the new Jetty 9 setup during startup."
-	ewarn "This should work for recent, unmodified configurations but may not work for modified or"
-	ewarn "very old setups. Verify that your Jetty website works after upgrading, and contact i2p"
-	ewarn "developers on IRC if you need assistance"
-	ewarn
-	ewarn "Several plugins are not compatible with Jetty 9 and must be updated if you use them."
-	ewarn "New updated version avaliable: i2pbote 0.4.6, zzzot 0.15.0."
-	ewarn "No new version so far: BwSchedule 0.0.36, i2pcontrol 0.11."
+	if use !ecdsa
+	then
+		ewarn 'Currently, the i2p team does not enforce to use ECDSA keys. But it is more and'
+		ewarn 'more pushed. To help the network, you are recommended to have the ecdsa USE.'
+		ewarn
+		ewarn "This is purely a run-time issue. You're free to build i2p with any JDK, as long as"
+		ewarn 'the JVM you run it with is one of the above listed and from the same or a newer generation'
+		ewarn 'as the one you built with.'
+	fi
 }
