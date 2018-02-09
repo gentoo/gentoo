@@ -83,6 +83,11 @@ DEPEND="${CDEPEND}
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt
 	virtual/pkgconfig
+	net-libs/libtirpc
+	|| (
+		net-libs/rpcsvc-proto
+		<sys-libs/glibc-2.26[rpc(+)]
+	)
 	test? (
 		!system-mitkrb5? (
 			>=sys-libs/nss_wrapper-1.1.3
