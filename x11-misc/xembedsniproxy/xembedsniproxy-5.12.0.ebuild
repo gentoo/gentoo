@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit cmake-utils
 
 DESCRIPTION="A program to use legacy Xembed tray icons with SNI-only trays"
-HOMEPAGE="https://kde.org"
+HOMEPAGE="https://cgit.kde.org/plasma-workspace.git/tree/xembed-sni-proxy/Readme.md"
 SRC_URI="mirror://kde/stable/plasma/${PV}/plasma-workspace-${PV}.tar.xz"
 
 LICENSE="GPL-2"
