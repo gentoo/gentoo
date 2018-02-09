@@ -3876,10 +3876,6 @@ net-im/bitlbee:otr - Enable support for encrypted conversations
 net-im/bitlbee:plugins - Enable support for plugins
 net-im/bitlbee:purple - Use libpurple instead of the built-in IM protocol support
 net-im/bitlbee:twitter - Enable Twitter protocol support
-net-im/centerim:gadu - Enable support for the Gadu-Gadu protocol
-net-im/centerim:irc - Enable support for the IRC protocol
-net-im/centerim:lj - Enable support for the LiveJournal weblog system
-net-im/centerim:otr - Enable encrypted conversations
 net-im/choqok:attica - Build Open Collaboration Services plugin using dev-libs/libattica
 net-im/choqok:konqueror - Build Konqueror Choqok plugin
 net-im/choqok:telepathy - Enable support for the real-time communication framework telepathy
