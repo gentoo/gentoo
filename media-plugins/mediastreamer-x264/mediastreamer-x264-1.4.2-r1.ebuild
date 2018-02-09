@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 MY_P="msx264-${PV}"
 
 DESCRIPTION="mediastreamer plugin: add H264 support"
-HOMEPAGE="http://www.linphone.org/"
+HOMEPAGE="https://www.linphone.org/"
 SRC_URI="mirror://nongnu/linphone/plugins/sources/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
