@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm
+DESCRIPTION=Master PDF Editor is a complete solution for viewing and editing PDF files
+EAPI=6
+HOMEPAGE=https://code-industry.net/free-pdf-editor/
+KEYWORDS=~amd64
+LICENSE=master-pdf-editor
+RDEPEND=app-arch/bzip2 dev-libs/double-conversion dev-libs/glib dev-libs/icu dev-libs/openssl media-gfx/graphite2 media-gfx/sane-backends media-libs/freetype media-libs/harfbuzz media-libs/libjpeg-turbo media-libs/libpng media-libs/tiff x11-libs/libX11 x11-libs/libXau x11-libs/libxcb x11-libs/libXdmcp x11-libs/libXext >=dev-qt/qtsvg-5.4:5 >=dev-qt/qtnetwork-5.4:5 >=dev-qt/qtgui-5.4:5 >=dev-qt/qtprintsupport-5.4:5
+RESTRICT=mirror
+SLOT=0
+SRC_URI=http://get.code-industry.net/public/master-pdf-editor-4.3.82_qt5.amd64.tar.gz
+_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=0491a6959b432ce7072f5c2d60b53d38
