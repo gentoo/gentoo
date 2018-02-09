@@ -3,6 +3,8 @@
 
 EAPI=6
 
+inherit user
+
 DESCRIPTION="UPnP Media Renderer front-end for MPD, the Music Player Daemon"
 HOMEPAGE="https://www.lesbonscomptes.com/upmpdcli/index.html"
 LICENSE="GPL-2"
