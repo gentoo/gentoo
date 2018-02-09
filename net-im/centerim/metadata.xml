@@ -5,10 +5,4 @@
 	<email>swegener@gentoo.org</email>
 	<description>Primary Maintainer</description>
 </maintainer>
-<use>
-	<flag name="gadu">Enable support for the Gadu-Gadu protocol</flag>
-	<flag name="irc">Enable support for the IRC protocol</flag>
-	<flag name="lj">Enable support for the LiveJournal weblog system</flag>
-	<flag name="otr">Enable encrypted conversations</flag>
-</use>
 </pkgmetadata>
