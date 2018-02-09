@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,8 +7,8 @@ FONTDIR="/usr/share/fonts/indic/${PN}"
 FONT_SUFFIX="ttf"
 
 DESCRIPTION="The Lohit Nepali font"
-HOMEPAGE="https://fedorahosted.org/lohit"
-SRC_URI="https://fedorahosted.org/releases/l/o/lohit/${PN}-${FONT_SUFFIX}-${PV}.tar.gz"
+HOMEPAGE="https://pagure.io/lohit"
+SRC_URI="https://releases.pagure.org/lohit/${PN}-${FONT_SUFFIX}-${PV}.tar.gz"
 
 LICENSE="OFL-1.1"
 SLOT="0"
