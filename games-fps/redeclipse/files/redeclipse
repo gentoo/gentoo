@@ -7,4 +7,4 @@
 SERVER=/usr/bin/redeclipse_server_linux
 CLIENT=/usr/bin/redeclipse_linux
 cd /usr/share/redeclipse || exit 1
-[ "$0" = "redeclipse_server" ] && exec $SERVER || exec $CLIENT
+[ "${0##*/}" = "redeclipse_server" ] && exec "${SERVER}" || exec "${CLIENT}"

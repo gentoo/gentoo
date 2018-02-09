@@ -78,6 +78,5 @@ src_install() {
 	dodoc readme.txt doc/examples/servinit.cfg
 
 	dobin "${FILESDIR}/redeclipse"
-	cd /usr/bin || die
-	dosym redeclipse redeclipse_server
+	dosym redeclipse /usr/bin/redeclipse_server
 }
