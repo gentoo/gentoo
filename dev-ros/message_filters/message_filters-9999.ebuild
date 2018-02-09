@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,7 +18,6 @@ IUSE=""
 RDEPEND="
 	dev-ros/rosconsole
 	dev-ros/roscpp
-	dev-ros/xmlrpcpp
 	dev-libs/boost:=[threads]
 	dev-ros/genpy[${PYTHON_USEDEP}]
 	dev-ros/roslib[${PYTHON_USEDEP}]
