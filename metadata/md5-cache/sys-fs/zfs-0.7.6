@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup test
+DEPEND=net-libs/libtirpc sys-apps/util-linux[static-libs?] sys-libs/zlib[static-libs(+)?] virtual/awk virtual/pkgconfig >=app-portage/elt-patches-20170422 virtual/pkgconfig virtual/pkgconfig
+DESCRIPTION=Userland utilities for ZFS Linux kernel module
+EAPI=5
+HOMEPAGE=http://zfsonlinux.org/
+IUSE=custom-cflags debug kernel-builtin +rootfs test-suite static-libs python_targets_python2_7 python_targets_python3_4 python_targets_python3_5
+KEYWORDS=~amd64
+LICENSE=BSD-2 CDDL MIT
+RDEPEND=net-libs/libtirpc sys-apps/util-linux[static-libs?] sys-libs/zlib[static-libs(+)?] virtual/awk !=sys-apps/grep-2.13* !kernel-builtin? ( =sys-fs/zfs-kmod-0.7.6* ) !sys-fs/zfs-fuse !prefix? ( virtual/udev ) test-suite? ( sys-apps/util-linux sys-devel/bc sys-block/parted sys-fs/lsscsi sys-fs/mdadm sys-process/procps virtual/modutils ) rootfs? ( app-arch/cpio app-misc/pax-utils !<sys-boot/grub-2.00-r2:2 !<sys-kernel/genkernel-3.5.1.1 !<sys-kernel/genkernel-next-67 !<sys-kernel/bliss-initramfs-7.1.0 !<sys-kernel/dracut-044-r1 ) sys-fs/udev-init-scripts
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.6/zfs-0.7.6.tar.gz
+_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	autotools-utils	5a4611dfba155b1659528663fad4cd5e	bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	flag-o-matic	02908f00f002f0f07c5b74783d778325	libtool	0081a71a261724730ec4c248494f044d	linux-info	ca370deef9d44125d829f2eb6ebc83e0	ltprune	2770eed66a9b8ef944714cd0e968182e	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-r1	e9350ec46bb5c9f3504b4fbe8b8d8987	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	systemd	a31844b675f1a1fea87fbe1144aee5f5	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	udev	d91cac2c73b94629cad2daea66e0d182	versionator	ce21313503c41896ebcd7d58b0607e37
+_md5_=ba31279e1b12027bdca1ea66ffa4da6f
