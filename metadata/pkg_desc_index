@@ -7557,7 +7557,7 @@ media-libs/libzen 0.4.37: Shared library for libmediainfo and mediainfo
 media-libs/libzmf 0.0.2: Library for parsing Zoner Callisto/Draw documents
 media-libs/lilv 0.20.0 0.24.2: Library to make the use of LV2 plugins as simple as possible for applications
 media-libs/lv2 1.10.0-r1 1.14.0: A simple but extensible successor of LADSPA
-media-libs/mediastreamer 2.7.3-r3 2.8.2 2.9.0 2.9.0-r1 2.9.0-r2: Mediastreaming library for telephony application
+media-libs/mediastreamer 2.8.2 2.9.0-r1 2.9.0-r2: Mediastreaming library for telephony application
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
 media-libs/mesa 17.1.10 17.2.8: OpenGL-like graphic library for Linux
 media-libs/ming 0.4.8-r1: An Open Source library for Flash movie generation
