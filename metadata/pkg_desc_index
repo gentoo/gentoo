@@ -4751,7 +4751,7 @@ dev-python/doit-py 0.4.0: doit tasks for python stuff
 dev-python/dominate 2.2.1: Library for creating and manipulating HTML documents using an elegant DOM API
 dev-python/dpkt 1.8-r1: Fast, simple packet creation / parsing
 dev-python/drpython 3.11.4: A powerful cross-platform IDE for Python
-dev-python/dugong 3.7: Python library for communicating with HTTP 1.1 servers
+dev-python/dugong 3.7.1: Python library for communicating with HTTP 1.1 servers
 dev-python/dulwich 0.18.5: Pure-Python implementation of the Git file formats and protocols
 dev-python/dynd-python 0.6.5 0.7.2-r1: Python exposure of multidimensionnal array library libdynd
 dev-python/ecdsa 0.13: ECDSA cryptographic signature library in pure Python
