@@ -96,7 +96,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	=dev-cpp/libcmis-0.5*
 	dev-db/unixODBC
 	dev-lang/perl
-	dev-libs/boost:=
+	dev-libs/boost:=[nls]
 	dev-libs/expat
 	dev-libs/hyphen
 	dev-libs/icu:=
@@ -250,13 +250,9 @@ PATCHES=(
 
 	# TODO: upstream
 	"${FILESDIR}/${PN}-5.2.5.1-glibc-2.24.patch"
-	"${FILESDIR}/${PN}-6.0.0.1-poppler-0.62.patch" # bug 642602
 
 	# gtk3-kde5 vcl plugin backported from master
 	"${WORKDIR}"/${PATCHSET/.tar.xz/}
-
-	# 6.1 branch
-	"${FILESDIR}/${P}-jpeg-9.patch"
 )
 
 pkg_pretend() {
