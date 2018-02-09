@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile configure test unpack
+DESCRIPTION=Run arbitrary commands when files change
+EAPI=6
+HOMEPAGE=http://entrproject.org
+IUSE=test
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86 ~amd64-fbsd
+LICENSE=ISC
+SLOT=0
+SRC_URI=http://entrproject.org/code/entr-4.0.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	vcs-snapshot	03289f51c769cf409d200d2d628cdd6e
+_md5_=9e85ef5aefa662a0bbf7fab013ad350b
