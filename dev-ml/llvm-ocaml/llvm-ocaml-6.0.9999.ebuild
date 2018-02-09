@@ -49,7 +49,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 CMAKE_BUILD_TYPE=RelWithDebInfo
 
 pkg_setup() {
-	llvm_pkg_setup
+	LLVM_MAX_SLOT=${PV%%.*} llvm_pkg_setup
 	python-any-r1_pkg_setup
 }
 
