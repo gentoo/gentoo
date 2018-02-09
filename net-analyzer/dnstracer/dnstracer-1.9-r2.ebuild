@@ -9,7 +9,7 @@ SRC_URI="http://www.mavetju.org/download/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux"
+KEYWORDS="amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux"
 IUSE="ipv6"
 
 DOCS=( CHANGES README )
