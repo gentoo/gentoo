@@ -1,0 +1,73 @@
+# HG changeset patch
+# User Kevin Bullock <kbullock@ringworld.org>
+# Date 1517928348 21600
+# Node ID e326b349eba6b6ee57ac8df221727f79c313d04a
+# Parent  89303af1c4aa76b37e6d16f99f6279012eda7100
+compat: extract function for memfilectx signature variants
+
+diff --git a/hggit/compat.py b/hggit/compat.py
+--- a/hggit/compat.py
++++ b/hggit/compat.py
+@@ -1,4 +1,5 @@
+ from mercurial import (
++    context,
+     url,
+     util as hgutil,
+ )
+@@ -96,6 +97,26 @@
+         return refs, set(server_capabilities)
+ 
+ 
++def memfilectx(repo, changectx, path, data, islink=False,
++               isexec=False, copied=None):
++    # Different versions of mercurial have different parameters to
++    # memfilectx.  Try them from newest to oldest.
++    args_to_try = (
++        (repo, changectx, path, data),  # hg 4.5+
++        (repo, path, data),             # hg 3.1 - 4.5
++        (path, data),                   # hg < 3.1
++    )
++    for args in args_to_try:
++        try:
++            return context.memfilectx(*args,
++                                      islink=islink,
++                                      isexec=isexec,
++                                      copied=copied)
++        except TypeError as ex:
++            last_ex = ex
++    raise last_ex
++
++
+ CONFIG_DEFAULTS = {
+     'git': {
+         'authors': None,
+diff --git a/hggit/git_handler.py b/hggit/git_handler.py
+--- a/hggit/git_handler.py
++++ b/hggit/git_handler.py
+@@ -985,22 +985,10 @@
+                 if copied:
+                     copied_path = copied[0]
+ 
+-            # Different versions of mercurial have different parameters to
+-            # memfilectx.  Try them from newest to oldest.
+-            args_to_try = (
+-                (self.repo, memctx, f, data),   # hg 4.5+
+-                (self.repo, f, data),           # hg 3.1 - 4.5
+-                (f, data),                      # hg < 3.1
+-            )
+-            for args in args_to_try:
+-                try:
+-                    return context.memfilectx(*args,
+-                                              islink='l' in e,
+-                                              isexec='x' in e,
+-                                              copied=copied_path)
+-                except TypeError as ex:
+-                    last_ex = ex
+-            raise last_ex
++            return compat.memfilectx(self.repo, memctx, f, data,
++                                     islink='l' in e,
++                                     isexec='x' in e,
++                                     copied=copied_path)
+ 
+         p1, p2 = (nullid, nullid)
+         octopus = False
