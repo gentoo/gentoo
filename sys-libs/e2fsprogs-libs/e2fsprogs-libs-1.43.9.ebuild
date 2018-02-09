@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -38,7 +38,11 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	local myconf=()
+	local myconf=(
+		$(tc-is-static-only || echo --enable-elf-shlibs)
+		$(tc-has-tls || echo --disable-tls)
+		$(use_enable nls)
+	)
 	# we use blkid/uuid from util-linux now
 	if use kernel_linux ; then
 		export ac_cv_lib_{uuid_uuid_generate,blkid_blkid_get_cache}=yes
@@ -49,11 +53,7 @@ multilib_src_configure() {
 	CC="$(tc-getCC)" \
 	BUILD_CC="$(tc-getBUILD_CC)" \
 	BUILD_LD="$(tc-getBUILD_LD)" \
-	econf \
-		$(tc-is-static-only || echo --enable-elf-shlibs) \
-		$(tc-has-tls || echo --disable-tls) \
-		$(use_enable nls) \
-		"${myconf[@]}"
+	econf "${myconf[@]}"
 }
 
 multilib_src_compile() {
@@ -64,5 +64,7 @@ multilib_src_install() {
 	emake V=1 STRIP=: DESTDIR="${D}" install || die
 	gen_usr_ldscript -a com_err ss $(usex kernel_linux '' 'uuid blkid')
 	# configure doesn't have an option to disable static libs :/
-	use static-libs || find "${ED}" -name '*.a' -delete
+	if ! use static-libs ; then
+		find "${ED}" -name '*.a' -delete || die
+	fi
 }

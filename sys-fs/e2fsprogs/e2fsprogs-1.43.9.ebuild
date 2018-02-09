@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -119,7 +119,9 @@ src_install() {
 	# /usr/lib/, and install linker scripts to /usr/lib/.
 	gen_usr_ldscript -a e2p ext2fs
 	# configure doesn't have an option to disable static libs :/
-	use static-libs || find "${D}" -name '*.a' -delete
+	if ! use static-libs ; then
+		find "${D}" -name '*.a' -delete || die
+	fi
 
 	if use elibc_FreeBSD ; then
 		# Install helpers for us
