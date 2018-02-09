@@ -93,7 +93,6 @@ src_prepare() {
 	chromium_remove_language_paks
 	popd > /dev/null || die
 
-	epatch "${FILESDIR}"/vivaldi-snapshot-1.14.1072.3_p1-desktop.patch
 	epatch "${FILESDIR}"/vivaldi-snapshot-1.14.1072.3_p1-libffmpeg.patch
 
 	epatch_user
