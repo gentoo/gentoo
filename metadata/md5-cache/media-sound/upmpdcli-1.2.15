@@ -9,4 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/jsoncpp media-libs/libmpdclient net-libs/libmicrohttpd net-libs/libupnpp thirdparty? ( dev-python/requests ) media-sound/mpd
 SLOT=0
 SRC_URI=https://www.lesbonscomptes.com/upmpdcli/downloads/upmpdcli-1.2.15.tar.gz
-_md5_=aa12941c2c8c5bba4880dfc080c0f53c
+_eclasses_=user	8bc2845510e2109af75e3eeac607ec81
+_md5_=76e009f29f5e24218894211ff35ca999
