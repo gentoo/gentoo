@@ -113,7 +113,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	default
+	cmake-utils_src_prepare
 	eprefixify lib/Frontend/InitHeaderSearch.cpp
 }
 
