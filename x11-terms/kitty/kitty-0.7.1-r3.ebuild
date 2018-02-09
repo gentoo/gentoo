@@ -77,6 +77,7 @@ src_test() {
 src_install() {
 	mkdir -p "${ED}"usr || die
 	cp -r linux-package/* "${ED}usr" || die
+	python_fix_shebang "${ED}"
 
 	dodoc CHANGELOG.rst *.asciidoc
 }
