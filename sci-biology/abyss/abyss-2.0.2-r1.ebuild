@@ -64,6 +64,7 @@ src_configure() {
 	if ! use mpi; then
 		myconf="${myconf} --without-mpi"
 	fi
+	# bug #646478
 	#  --enable-mpich          use MPICH (default is to use Open MPI)
 	#  --enable-lammpi         use LAM/MPI (default is to use Open MPI)
 	econf $(use_enable openmp) --enable-maxk=128 ${myconf}
