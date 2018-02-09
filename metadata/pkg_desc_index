@@ -191,10 +191,10 @@ app-arch/makeself 2.2.0-r2: shell script that generates a self-extractible tar.g
 app-arch/mscompress 0.3-r1: Microsoft compress.exe/expand.exe compatible (de)compressor
 app-arch/mt-st 1.3: control magnetic tape drive operation
 app-arch/ncompress 4.2.4.4: Another uncompressor for compatibility
-app-arch/p7zip 16.02-r1: Port of 7-Zip archiver for Unix
+app-arch/p7zip 16.02-r1 16.02-r2: Port of 7-Zip archiver for Unix
 app-arch/par 1.1: Parchive archive fixing tool
 app-arch/par2cmdline 0.7.3: A PAR-2.0 file verification and repair tool
-app-arch/pax 3.4.12.16: pax (Portable Archive eXchange) is the POSIX standard archive tool
+app-arch/pax 3.4.12.16 20161104: pax (Portable Archive eXchange) is the POSIX standard archive tool
 app-arch/pbzip2 1.1.12: Parallel bzip2 (de)compressor using libbz2
 app-arch/pigz 2.3.4: A parallel implementation of gzip
 app-arch/pure-sfv 0.3-r1: utility to test and create .sfv files and create .par files
@@ -1866,7 +1866,7 @@ dev-db/pgbadger 9.2: pgBadger is a PostgreSQL log analyzer.
 dev-db/pgbouncer 1.8.1: Lightweight connection pooler for PostgreSQL
 dev-db/pgpool2 3.7.0: Connection pool server for PostgreSQL
 dev-db/pgtap 0.98.0: Unit testing for PostgreSQL
-dev-db/phpmyadmin 4.0.10.20 4.7.0: Web-based administration for MySQL database in PHP
+dev-db/phpmyadmin 4.0.10.20 4.7.0 4.7.7-r1: Web-based administration for MySQL database in PHP
 dev-db/postgis 2.4.2: Geographic Objects for PostgreSQL
 dev-db/postgresql 9.2.19 9.2.22 9.2.24 9.3.15 9.3.18 9.3.20 9.4.10 9.4.13 9.4.15 9.5.5 9.5.8 9.5.10 9.6.4 9.6.6 10.1: PostgreSQL RDBMS
 dev-db/pspg 0.8.0: A better pager for psql and mysql
@@ -7449,7 +7449,7 @@ media-libs/libeot 0.01: Library for parsing Embedded OpenType files (Microsoft e
 media-libs/libepoxy 1.4.1 1.4.2: Epoxy is a library for handling OpenGL function pointer management for you
 media-libs/libexif 0.6.21 0.6.21-r1: Library for parsing, editing, and saving EXIF data
 media-libs/libexif-gtk 0.3.5-r2: GTK+ frontend to the libexif library (parsing, editing, and saving EXIF data)
-media-libs/libextractor 1.3-r1: Library to extract metadata from files of arbitrary type
+media-libs/libextractor 1.3-r1 1.6: Library to extract metadata from files of arbitrary type
 media-libs/libfame 0.9.1-r1 0.9.1-r2: MPEG-1 and MPEG-4 video encoding library
 media-libs/libfishsound 1.0.0: Simple programming interface for decoding and encoding audio data using vorbis or speex
 media-libs/libfpx 1.3.1_p6 1.3.1_p10: A library for manipulating FlashPIX images
@@ -8226,7 +8226,7 @@ net-analyzer/cryptcat 1.2.1-r1 1.2.1-r2: netcat clone extended with twofish encr
 net-analyzer/cutter 1.03-r1: TCP/IP Connection cutting on Linux Firewalls and Routers
 net-analyzer/darkstat 3.0.719: Network traffic analyzer with cute web interface
 net-analyzer/dhcpdump 1.8: DHCP Packet Analyzer/tcpdump postprocessor
-net-analyzer/dnstracer 1.9-r1: Determines where a given nameserver gets its information from
+net-analyzer/dnstracer 1.9-r1 1.9-r2: Determines where a given nameserver gets its information from
 net-analyzer/driftnet 0.1.6_p20090401-r1: A program which listens to network traffic and picks out images from TCP streams it observes
 net-analyzer/dsniff 2.4_beta1-r4: A collection of tools for network auditing and penetration testing
 net-analyzer/echoping 6.0.2_p434-r2: Small program to test performances of remote servers
@@ -8876,7 +8876,7 @@ net-misc/rdate 1.4-r3 1.4-r4: use TCP or UDP to retrieve the current time of ano
 net-misc/rdesktop 1.8.3: A Remote Desktop Protocol Client
 net-misc/remmina 1.2.0_rc24: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
-net-misc/rsync 3.1.2-r2: File transfer program to keep remote files into sync
+net-misc/rsync 3.1.2-r2 3.1.3: File transfer program to keep remote files into sync
 net-misc/rygel 0.34.0: Rygel is an open source UPnP/DLNA MediaServer
 net-misc/s3cmd 1.6.1: Command line client for Amazon S3
 net-misc/scponly 4.8-r5: A tiny pseudoshell which only permits scp and sftp
