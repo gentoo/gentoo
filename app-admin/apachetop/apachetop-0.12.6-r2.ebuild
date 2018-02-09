@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="A realtime Apache log analyzer"
 HOMEPAGE="https://github.com/tessus/apachetop"
-SRC_URI="http://www.webta.org/${PN}/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~jstein/dist/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
