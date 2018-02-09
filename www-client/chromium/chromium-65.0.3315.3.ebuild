@@ -152,6 +152,7 @@ PATCHES=(
 	"${FILESDIR}/chromium-gn-r0.patch"
 	"${FILESDIR}/chromium-vulkan-r0.patch"
 	"${FILESDIR}/chromium-gcc-r0.patch"
+	"${FILESDIR}/chromium-ffmpeg-r0.patch"
 )
 
 pre_build_checks() {

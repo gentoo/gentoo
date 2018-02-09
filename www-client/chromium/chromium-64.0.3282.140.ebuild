@@ -151,6 +151,7 @@ PATCHES=(
 	"${FILESDIR}/chromium-cups-r0.patch"
 	"${FILESDIR}/chromium-clang-r2.patch"
 	"${FILESDIR}/chromium-angle-r0.patch"
+	"${FILESDIR}/chromium-ffmpeg-r0.patch"
 )
 
 pre_build_checks() {
