@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-MY_EXTRAS_VER="20170926-1321Z"
+MY_EXTRAS_VER="20180209-2142Z"
 # The wsrep API version must match between upstream WSREP and sys-cluster/galera major number
 WSREP_REVISION="25"
 SUBSLOT="18"
@@ -15,7 +15,7 @@ inherit toolchain-funcs java-pkg-opt-2 mysql-multilib-r1
 HOMEPAGE="http://mariadb.org/"
 DESCRIPTION="An enhanced, drop-in replacement for MySQL"
 
-IUSE="+backup bindist cracklib galera kerberos innodb-lz4 innodb-lzo innodb-snappy jdbc mroonga odbc oqgraph pam sphinx sst-rsync sst-mariabackup sst-xtrabackup tokudb systemd xml"
+IUSE="+backup bindist cracklib galera kerberos innodb-lz4 innodb-lzo innodb-snappy jdbc mroonga numa odbc oqgraph pam sphinx sst-rsync sst-mariabackup sst-xtrabackup tokudb systemd xml"
 RESTRICT="!bindist? ( bindist )"
 
 REQUIRED_USE="jdbc? ( extraengine server !static ) server? ( tokudb? ( jemalloc !tcmalloc ) ) static? ( !pam )"
@@ -31,6 +31,7 @@ PATCHES=(
 	"${MY_PATCH_DIR}"/20015_all_mariadb-pkgconfig-location.patch
 	"${MY_PATCH_DIR}"/20018_all_mariadb-10.1.16-without-clientlibs-tools.patch
 	"${MY_PATCH_DIR}"/20025_all_mariadb-10.1.26-gssapi-detect.patch
+	"${MY_PATCH_DIR}"/20029_all_mariadb-10.1.31-enable-numa.patch
 )
 
 COMMON_DEPEND="
@@ -51,6 +52,7 @@ COMMON_DEPEND="
 		innodb-lz4? ( app-arch/lz4 )
 		innodb-lzo? ( dev-libs/lzo )
 		innodb-snappy? ( app-arch/snappy )
+		numa? ( sys-process/numactl )
 		oqgraph? ( >=dev-libs/boost-1.40.0:0= dev-libs/judy:0= )
 		pam? ( virtual/pam:0= )
 		systemd? ( sys-apps/systemd:= )
@@ -141,6 +143,7 @@ src_configure(){
 			-DPLUGIN_AUTH_GSSAPI=$(usex kerberos YES NO)
 			-DWITH_MARIABACKUP=$(usex backup ON OFF)
 			-DWITH_LIBARCHIVE=$(usex backup ON OFF)
+			-DWITH_NUMA=$(usex numa ON OFF)
 		)
 	fi
 	mysql-multilib-r1_src_configure
