@@ -79,7 +79,7 @@ src_configure() {
 pkg_postinst() {
 	kde5_pkg_postinst
 
-	if ! has_version "kde-misc/kregexpeditor" ; then
+	if [[ ${KDE_BUILD_TYPE} = live ]] && ! has_version "kde-misc/kregexpeditor" ; then
 		elog "${PN} Sieve editor plugin can make use of kde-misc/kregexpeditor if installed."
 	fi
 }
