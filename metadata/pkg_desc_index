@@ -1782,6 +1782,7 @@ app-xemacs/xslide 1.09: XSL editing support
 app-xemacs/xwem 1.22 1.23: X Emacs Window Manager
 app-xemacs/zenirc 1.16: ZENIRC IRC Client
 dev-ada/gprbuild 2017: Multi-Language Management
+dev-ada/xmlada 2017: Set of modules that provide a simple manipulation of XML streams
 dev-cpp/antlr-cpp 2.7.7: The ANTLR 2 C++ Runtime
 dev-cpp/asio 1.10.8: Asynchronous Network Library
 dev-cpp/atkmm 2.24.2: C++ interface for the ATK library
