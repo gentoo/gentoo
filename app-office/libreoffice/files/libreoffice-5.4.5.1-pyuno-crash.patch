@@ -1,0 +1,87 @@
+From 42e2c4af310deb7660b07c6307459c9d2a42bb8b Mon Sep 17 00:00:00 2001
+From: Michael Stahl <mstahl@redhat.com>
+Date: Thu, 1 Feb 2018 13:52:00 +0100
+Subject: tdf#114815 pyuno: avoid 2 threads initing python in parallel
+
+According to the crash reports, it's possible for the grammar checking
+thread to call GetGrammarChecker, instantiating lightproof, at the same
+time as the main thread instantiates LngSvcMgr, which also instantiates
+(some?) (all?) grammar checkers.
+
+Ensure that pyuno_loader::CreateInstance() initialises Python only
+once with a C++11 thread safe static.
+
+For the backport, use rtl::Static instead, because on the 5.4 branch
+MSVC does not have HAVE_THREADSAFE_STATICS enabled.
+
+Change-Id: I5b1faba9107355c508831a078366e4a29fdbfadf
+(cherry picked from commit 5357ca82846ea7147ad61e9340f25647a5934eb0)
+Reviewed-on: https://gerrit.libreoffice.org/49116
+Tested-by: Jenkins <ci@libreoffice.org>
+Reviewed-by: Stephan Bergmann <sbergman@redhat.com>
+(cherry picked from commit 362b0c521c1c58dc8ea5e87ecbb482d5bdc073f4)
+Reviewed-on: https://gerrit.libreoffice.org/49298
+Reviewed-by: Michael Meeks <michael.meeks@collabora.com>
+Tested-by: Markus Mohrhard <markus.mohrhard@googlemail.com>
+Reviewed-by: Markus Mohrhard <markus.mohrhard@googlemail.com>
+---
+ pyuno/source/loader/pyuno_loader.cxx | 25 +++++++++++++++++++++----
+ 1 file changed, 21 insertions(+), 4 deletions(-)
+
+diff --git a/pyuno/source/loader/pyuno_loader.cxx b/pyuno/source/loader/pyuno_loader.cxx
+index adbf6c8..0408af0 100644
+--- a/pyuno/source/loader/pyuno_loader.cxx
++++ b/pyuno/source/loader/pyuno_loader.cxx
+@@ -31,6 +31,7 @@
+ #include <rtl/ustrbuf.hxx>
+ #include <rtl/strbuf.hxx>
+ #include <rtl/bootstrap.hxx>
++#include <rtl/instance.hxx>
+ 
+ #include <cppuhelper/implementationentry.hxx>
+ #include <cppuhelper/factory.hxx>
+@@ -176,11 +177,10 @@ static void prependPythonPath( const OUString & pythonPathBootstrap )
+     osl_setEnvironment(envVar.pData, envValue.pData);
+ }
+ 
+-Reference< XInterface > CreateInstance( const Reference< XComponentContext > & ctx )
++struct PythonInit
+ {
+-    Reference< XInterface > ret;
+-
+-    if( ! Py_IsInitialized() )
++PythonInit() {
++    if (! Py_IsInitialized()) // may be inited by getComponentContext() already
+     {
+         OUString pythonPath;
+         OUString pythonHome;
+@@ -236,9 +236,26 @@ Reference< XInterface > CreateInstance( const Reference< XComponentContext > & c
+         // PyThreadAttach below.
+         PyThreadState_Delete(tstate);
+     }
++}
++};
++
++namespace {
++    struct thePythonInit : public rtl::Static<PythonInit, thePythonInit> {};
++}
++
++Reference<XInterface> CreateInstance(const Reference<XComponentContext> & ctx)
++{
++    // tdf#114815 thread-safe static to init python only once
++    thePythonInit::get();
++
++    Reference< XInterface > ret;
+ 
+     PyThreadAttach attach( PyInterpreterState_Head() );
+     {
++        // note: this can't race against getComponentContext() because
++        // either (in soffice.bin) CreateInstance() must be called before
++        // getComponentContext() can be called, or (in python.bin) the other
++        // way around
+         if( ! Runtime::isInitialized() )
+         {
+             Runtime::initialize( ctx );
+-- 
+cgit v1.1
+
