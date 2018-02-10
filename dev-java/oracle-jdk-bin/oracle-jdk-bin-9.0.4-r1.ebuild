@@ -67,11 +67,14 @@ RDEPEND="!x64-macos? (
 			)
 		)
 	)
+	!prefix? (
+		dev-libs/elfutils
+		sys-libs/glibc:*
+	)
 	alsa? ( media-libs/alsa-lib )
 	cups? ( net-print/cups )
 	doc? ( dev-java/java-sdk-docs:${SLOT} )
 	fontconfig? ( media-libs/fontconfig:1.0 )
-	!prefix? ( sys-libs/glibc:* )
 	selinux? ( sec-policy/selinux-java )"
 
 pkg_nofetch() {
