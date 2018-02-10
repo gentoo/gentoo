@@ -8,13 +8,13 @@ if [[ ${PV} == 99999999* ]]; then
 	inherit git-r3
 	SRC_URI=""
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/linux/kernel/git/firmware/${PN}.git"
-	KEYWORDS="amd64 arm hppa ia64 ppc ppc64 x86"
+	KEYWORDS="amd64 arm hppa ia64 ppc ppc64 sparc x86"
 else
 	GIT_COMMIT="2eefafb2e9dcbafdf4b83d8c43fcd6b75fd4ac78"
 	SRC_URI="https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/snapshot/linux-firmware-${GIT_COMMIT}.tar.gz -> ${P}.tar.gz
 		mirror://gentoo/microcode_amd_fam17h.tar.gz
 		https://dev.gentoo.org/~whissi/dist/${PN}/microcode_amd_fam17h.tar.gz"
-	KEYWORDS="~alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc x86"
+	KEYWORDS="~alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86"
 fi
 
 DESCRIPTION="Linux firmware files"
