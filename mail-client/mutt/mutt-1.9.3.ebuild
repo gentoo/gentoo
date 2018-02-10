@@ -114,8 +114,7 @@ src_prepare() {
 
 	# the configure script contains some "cleverness" whether or not to setgid
 	# the dotlock program, resulting in bugs like #278332
-	sed -i -e 's/@DOTLOCK_GROUP@//' \
-		Makefile.in || die "sed failed"
+	sed -i -e 's/@DOTLOCK_GROUP@//' Makefile.in || die "sed failed"
 }
 
 src_configure() {
@@ -229,8 +228,8 @@ src_install() {
 			-e 's#in @docdir@,#at http://www.mutt.org/,#' \
 			-e "s#@sysconfdir@#${EPREFIX}/etc/${PN}#" \
 			-e "s#@bindir@#${EPREFIX}/usr/bin#" \
-			doc/mutt.man > mutt.1
-		cp doc/muttrc.man muttrc.5
+			doc/mutt.man > mutt.1 || die
+		cp doc/muttrc.man muttrc.5 || die
 		doman mutt.1 muttrc.5
 	else
 		# nuke manpages that should be provided by an MTA, bug #177605
