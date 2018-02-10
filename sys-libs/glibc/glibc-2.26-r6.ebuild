@@ -567,7 +567,7 @@ src_compile() {
 
 glibc_src_test() {
 	cd "$(builddir $1)"
-	emake -j1 check
+	emake check
 }
 
 do_src_test() {
