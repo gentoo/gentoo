@@ -4,11 +4,11 @@ DESCRIPTION=A C++ crypto library
 EAPI=6
 HOMEPAGE=http://botan.randombit.net/
 IUSE=bindist doc python bzip2 gmp libressl ssl static-libs threads zlib python_targets_python2_7 python_targets_python3_4 python_targets_python3_5
-KEYWORDS=amd64 ~arm ~hppa ~ia64 ppc ppc64 ~sparc x86 ~ppc-macos
+KEYWORDS=amd64 ~arm hppa ~ia64 ppc ppc64 ~sparc x86 ~ppc-macos
 LICENSE=BSD
 RDEPEND=bzip2? ( >=app-arch/bzip2-1.0.5 ) zlib? ( >=sys-libs/zlib-1.2.3 ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_4? ( dev-lang/python:3.4 ) python_targets_python3_5? ( dev-lang/python:3.5 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)] >=dev-libs/boost-1.48[python,python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)] ) gmp? ( >=dev-libs/gmp-4.2.2:* ) ssl? ( !libressl? ( <dev-libs/openssl-1.1:0=[bindist=] ) libressl? ( dev-libs/libressl:0= ) )
 REQUIRED_USE=python? ( || ( python_targets_python2_7 python_targets_python3_4 python_targets_python3_5 ) )
 SLOT=0
 SRC_URI=http://botan.randombit.net/releases/Botan-1.10.17.tgz
 _eclasses_=multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	python-r1	e9350ec46bb5c9f3504b4fbe8b8d8987	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=1e47bb1e59a38865633060a9d9683e4b
+_md5_=83f29be0e913258fd1106fc6ac858e4d
