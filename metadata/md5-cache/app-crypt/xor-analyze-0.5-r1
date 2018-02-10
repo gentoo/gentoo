@@ -2,9 +2,9 @@ DEFINED_PHASES=compile install
 DESCRIPTION=program for cryptanalyzing xor 'encryption' with variable key length
 EAPI=6
 HOMEPAGE=http://www.habets.pp.se/synscan/programs.php?prog=xor-analyze
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://www.habets.pp.se/synscan/files/xor-analyze-0.5.tar.gz
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=8ff7d4695858689e5a71b637faa8c894
+_md5_=0952c0c569adcacd5616d8571dd4eec7
