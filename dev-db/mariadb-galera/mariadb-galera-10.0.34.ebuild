@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-MY_EXTRAS_VER="20160629-1442Z"
+MY_EXTRAS_VER="20170926-1321Z"
 # The wsrep API version must match between upstream WSREP and sys-cluster/galera major number
 WSREP_REVISION="25"
 SUBSLOT="18"
@@ -22,13 +22,12 @@ RESTRICT="!bindist? ( bindist )"
 
 REQUIRED_USE="server? ( tokudb? ( jemalloc !tcmalloc ) ) static? ( !pam )"
 
-# REMEMBER: also update eclass/mysql*.eclass before committing!
 KEYWORDS="~amd64 ~x86"
 
 MY_PATCH_DIR="${WORKDIR}/mysql-extras-${MY_EXTRAS_VER}"
 PATCHES=(
 	"${MY_PATCH_DIR}/01050_all_mariadb_mysql_config_cleanup-5.5.41.patch"
-	"${MY_PATCH_DIR}/20006_all_cmake_elib-mariadb-10.0.26.patch"
+	"${MY_PATCH_DIR}/20006_all_cmake_elib-mariadb-10.0.33.patch"
 	"${MY_PATCH_DIR}/20009_all_mariadb_myodbc_symbol_fix-5.5.38.patch"
 	"${MY_PATCH_DIR}/20018_all_mariadb-galera-10.0.20-without-clientlibs-tools.patch"
 )
@@ -115,7 +114,7 @@ src_configure(){
 }
 
 # Official test instructions:
-# USE='embedded extraengine perl server openssl static-libs' \
+# USE='extraengine perl server openssl static-libs' \
 # FEATURES='test userpriv -usersandbox' \
 # ebuild mariadb-X.X.XX.ebuild \
 # digest clean package
@@ -161,6 +160,9 @@ multilib_src_test() {
 
 	# Run mysql tests
 	pushd "${TESTDIR}" || die
+
+	mysql-multilib-r1_disable_test galera.galera_defaults \
+		"Test may vary by library defaults"
 
 	# run mysql-test tests
 	perl mysql-test-run.pl --force --vardir="${T}/var-tests" --reorder
