@@ -7,6 +7,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (10 Feb 2018)
+# Depends on unreleased media-libs/libaom, and 9999 is currently broken
+media-video/vlc aom
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2 Feb 2018)
 # This feature is not ready yet, see bug 146882 comment 26
 sys-libs/glibc compile-locales
