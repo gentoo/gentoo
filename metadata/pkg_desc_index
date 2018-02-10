@@ -117,7 +117,7 @@ app-admin/quickswitch 1.05: Utility to switch network profiles on the fly
 app-admin/radmind 1.14.1-r1: command-line tools and server to remotely administer multiple Unix filesystems
 app-admin/ranpwd 1.2: Generate random passwords using the in-kernel cryptographically
 app-admin/reportmagic 2.21: Makes usable statistics from your web site log file analysis
-app-admin/rsyslog 8.19.0 8.24.0-r2 8.26.0-r1 8.27.0-r1 8.28.0 8.32.0-r2: An enhanced multi-threaded syslogd with database support and more
+app-admin/rsyslog 8.19.0 8.24.0-r2 8.26.0-r1 8.27.0-r1 8.28.0 8.32.0-r3: An enhanced multi-threaded syslogd with database support and more
 app-admin/sagan 0.2.3 1.0.0_rc3: Sagan is a multi-threaded, real time system and event log monitoring system
 app-admin/sagan-rules 20130430 20140617: Rules for Sagan log analyzer
 app-admin/setools 3.3.8-r7 4.0.1 4.1.1: Policy Analysis Tools for SELinux
