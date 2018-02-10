@@ -1,0 +1,34 @@
+--- uhd-release_003_009_006/host/utils/latency/CMakeLists.txt.orig	2017-05-11 19:44:54.824946672 +0300
++++ uhd-release_003_009_006/host/utils/latency/CMakeLists.txt	2017-05-11 19:45:08.498880360 +0300
+@@ -35,7 +35,8 @@
+         GET_FILENAME_COMPONENT(name ${source} NAME_WE)
+         ADD_EXECUTABLE(${name} ${source} ${latency_lib_path})
+     	LIBUHD_APPEND_SOURCES(${name})
+-        TARGET_LINK_LIBRARIES(${name} uhd ${Boost_LIBRARIES} ${CURSES_LIBRARIES})
++        TARGET_LINK_LIBRARIES(${name} uhd ${Boost_LIBRARIES}
++            ${CURSES_LIBRARIES} tinfo)
+     	UHD_INSTALL(TARGETS ${name} RUNTIME DESTINATION ${latency_comp_dest} COMPONENT ${latency_comp_name})
+     ENDFOREACH(source)
+ 
+--- uhd-release_003_009_006/host/examples/CMakeLists.txt.orig	2017-05-11 19:41:02.322302577 +0300
++++ uhd-release_003_009_006/host/examples/CMakeLists.txt	2017-05-11 19:44:32.604066325 +0300
+@@ -59,7 +59,7 @@
+ IF(CURSES_FOUND)
+     INCLUDE_DIRECTORIES(${CURSES_INCLUDE_DIR})
+     ADD_EXECUTABLE(rx_ascii_art_dft rx_ascii_art_dft.cpp)
+-    TARGET_LINK_LIBRARIES(rx_ascii_art_dft uhd ${CURSES_LIBRARIES} ${Boost_LIBRARIES})
++    TARGET_LINK_LIBRARIES(rx_ascii_art_dft uhd ${CURSES_LIBRARIES} tinfo ${Boost_LIBRARIES})
+     UHD_INSTALL(TARGETS rx_ascii_art_dft RUNTIME DESTINATION ${PKG_LIB_DIR}/examples COMPONENT examples)
+ ENDIF(CURSES_FOUND)
+ 
+--- uhd-release_003_009_006/host/CMakeLists.txt.orig	2017-05-11 19:36:38.944798634 +0300
++++ uhd-release_003_009_006/host/CMakeLists.txt	2017-05-11 19:36:40.819788408 +0300
+@@ -436,6 +436,8 @@
+     LIST(APPEND UHD_LINK_LIST_STATIC "usb-1.0")
+ ENDIF(ENABLE_USB)
+ 
++LIST(APPEND UHD_LINK_LIST_STATIC "tinfo")
++
+ CONFIGURE_FILE(
+     ${CMAKE_SOURCE_DIR}/cmake/Modules/UHDConfigVersion.cmake.in
+     ${CMAKE_BINARY_DIR}/cmake/Modules/UHDConfigVersion.cmake

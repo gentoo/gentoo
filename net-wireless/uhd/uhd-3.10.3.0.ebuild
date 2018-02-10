@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
@@ -10,8 +10,8 @@ inherit versionator python-single-r1 gnome2-utils cmake-utils multilib
 DESCRIPTION="Universal Software Radio Peripheral (USRP) Hardware Driver"
 HOMEPAGE="http://code.ettus.com/redmine/ettus/projects/uhd/wiki"
 
-image_version=uhd-images_00$(get_version_component_range 1).00$(get_version_component_range 2).00$(get_version_component_range 3)-release
-SRC_URI="https://github.com/EttusResearch/uhd/archive/release_00$(get_version_component_range 1)_00$(get_version_component_range 2)_00$(get_version_component_range 3).tar.gz -> EttusResearch-UHD-$(get_version_component_range 1).$(get_version_component_range 2).$(get_version_component_range 3).tar.gz \
+image_version=uhd-images_00$(get_version_component_range 1).0$(get_version_component_range 2).00$(get_version_component_range 3).00$(get_version_component_range 4)-release
+SRC_URI="https://github.com/EttusResearch/uhd/archive/release_00$(get_version_component_range 1)_0$(get_version_component_range 2)_00$(get_version_component_range 3)_00$(get_version_component_range 4).tar.gz -> EttusResearch-UHD-$(get_version_component_range 1).$(get_version_component_range 2).$(get_version_component_range 3).$(get_version_component_range 4).tar.gz \
 	http://files.ettus.com/binaries/images/${image_version}.zip"
 #https://github.com/EttusResearch/UHD-Mirror/tags
 #http://files.ettus.com/binaries/images/
@@ -26,15 +26,18 @@ RDEPEND="${PYTHON_DEPS}
 	virtual/libusb:1
 	dev-lang/orc
 	dev-libs/boost:=
-	sys-libs/ncurses:0[-tinfo]
-	"
+	sys-libs/ncurses:0[tinfo]
+"
+
 DEPEND="${RDEPEND}
+	dev-python/mako
 	dev-python/cheetah
-	app-arch/unzip"
+	app-arch/unzip
+"
 
-S="${WORKDIR}"/uhd-release_00$(get_version_component_range 1)_00$(get_version_component_range 2)_00$(get_version_component_range 3)/host
+PATCHES=( "${FILESDIR}/${P}-tinfo.patch" )
 
-PATCHES=( "${FILESDIR}"/${P}-gcc6.patch )
+S="${WORKDIR}"/uhd-release_00$(get_version_component_range 1)_0$(get_version_component_range 2)_00$(get_version_component_range 3)_00$(get_version_component_range 4)/host
 
 src_prepare() {
 	cmake-utils_src_prepare
