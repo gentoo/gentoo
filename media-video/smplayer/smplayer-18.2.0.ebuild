@@ -8,7 +8,7 @@ he_IL hr hu id it ja ka ko ku lt mk ms_MY nl nn_NO pl pt_BR pt ro_RO ru_RU
 sk sl_SI sq_AL sr sv th tr uk_UA uz vi_VN zh_CN zh_TW"
 PLOCALE_BACKUP="en_US"
 
-inherit gnome2-utils l10n qmake-utils xdg-utils
+inherit gnome2-utils l10n qmake-utils toolchain-funcs xdg-utils
 
 DESCRIPTION="Great Qt GUI front-end for mplayer/mpv"
 HOMEPAGE="http://www.smplayer.eu/"
@@ -106,7 +106,7 @@ gen_translation() {
 }
 
 src_compile() {
-	default
+	emake CC="$(tc-getCC)"
 
 	cd src/translations || die
 	l10n_for_each_locale_do gen_translation
