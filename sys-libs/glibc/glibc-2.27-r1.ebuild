@@ -1057,7 +1057,7 @@ src_compile() {
 
 glibc_src_test() {
 	cd "$(builddir nptl)"
-	emake -j1 check
+	emake check
 }
 
 do_src_test() {
