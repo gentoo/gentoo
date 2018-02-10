@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit autotools flag-o-matic libtool gnome2-utils
 
 DESCRIPTION="Chinese chess with gtkmm and c++"
-HOMEPAGE="https://code.google.com/p/gmchess/"
+HOMEPAGE="https://github.com/lerosua/gmchess"
 SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.bz2"
 RESTRICT="test"
 
