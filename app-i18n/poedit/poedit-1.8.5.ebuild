@@ -14,7 +14,7 @@ SRC_URI="https://github.com/vslavik/${PN}/releases/download/v${PV}-oss/${P}.tar.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~ppc ppc64 sparc x86"
+KEYWORDS="amd64 hppa ~ppc ppc64 sparc x86"
 IUSE=""
 
 # db/expat req for legacytm (backwards support for pre 1.6)
