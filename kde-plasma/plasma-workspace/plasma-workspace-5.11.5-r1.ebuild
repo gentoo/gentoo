@@ -77,7 +77,7 @@ COMMON_DEPEND="
 	x11-libs/xcb-util
 	x11-libs/xcb-util-image
 	appstream? ( dev-libs/appstream[qt5] )
-	calendar? ( $(add_kdeapps_dep kholidays) )
+	calendar? ( || ( $(add_frameworks_dep kholidays) $(add_kdeapps_dep kholidays) ) )
 	geolocation? ( $(add_frameworks_dep networkmanager-qt) )
 	gps? ( sci-geosciences/gpsd )
 	prison? ( $(add_frameworks_dep prison) )
