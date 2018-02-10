@@ -21,7 +21,7 @@ RESTRICT="binchecks"
 
 # Block packages that used to install colliding man pages #341953 #548900 #612640 #617462
 RDEPEND="virtual/man
-	!<sys-apps/keyutils-1.5.9-r3
+	!<sys-apps/keyutils-1.5.9-r4
 	!<sys-apps/attr-2.4.47-r2
 	!<dev-libs/libaio-0.3.109-r2
 	!<dev-libs/libbsd-0.8.3-r1"
