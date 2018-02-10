@@ -11,6 +11,9 @@
 		and some other kind of 3D fractals like Mandelbox, Bulbbox, Juliabulb, 
 		Menger Sponge.
 	</longdescription>
+	<use>
+		<flag name="opencl">Enable GPU rendering support using OpenCL</flag>
+	</use>
 	<upstream>
 		<remote-id type="sourceforge">mandelbulber</remote-id>
 	</upstream>
