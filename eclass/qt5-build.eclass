@@ -843,7 +843,7 @@ qt5_install_module_config() {
 		)
 	fi
 
-	# install also the original qconfig.pri
+	# install the original {qconfig,qmodule}.pri from qtcore
 	[[ ${PN} == qtcore && ${QT5_MINOR_VERSION} -ge 9 ]] && (
 		insinto "${QT5_ARCHDATADIR#${EPREFIX}}"/mkspecs/gentoo
 		newins "${D}${QT5_ARCHDATADIR}"/mkspecs/qconfig.pri qconfig-qtcore.pri
