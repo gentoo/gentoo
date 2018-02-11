@@ -4,7 +4,6 @@
 <maintainer type="person">
 	<email>wschlich@gentoo.org</email>
 	<name>Wolfram Schlich</name>
-	<description>Primary maintainer</description>
 </maintainer>
 <longdescription>
 gwhois is a generic whois client which can be used as a commandline
