@@ -22,7 +22,8 @@ RDEPEND="dev-lang/gnat-gpl:6.3.0
 	${PYTHON_DEPS}
 	gmp? ( dev-libs/gmp:* )
 	gtk? (
-		dev-ada/gtkada[gnat_2017,shared?,static?]
+		dev-ada/gtkada[gnat_2017,shared?]
+		static? ( dev-ada/gtkada[static-libs] )
 		dev-libs/atk
 		dev-libs/glib
 		x11-libs/cairo
