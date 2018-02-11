@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-inherit eutils java-pkg-2 java-ant-2 systemd user
+inherit java-pkg-2 java-ant-2 systemd user
 
-DESCRIPTION="A privacy-centric, anonymous network."
+DESCRIPTION="A privacy-centric, anonymous network"
 HOMEPAGE="https://geti2p.net"
 SRC_URI="https://download.i2p2.de/releases/${PV}/i2psource_${PV}.tar.bz2"
 
@@ -33,9 +33,7 @@ DEPEND="${CP_DEPEND}
 RDEPEND="${CP_DEPEND}
 	ecdsa? (
 		|| (
-			dev-java/icedtea:7[-sunec]
 			dev-java/icedtea:8[-sunec]
-			dev-java/icedtea-bin:7
 			dev-java/icedtea-bin:8
 			dev-java/oracle-jre-bin
 			dev-java/oracle-jdk-bin
@@ -46,30 +44,19 @@ RDEPEND="${CP_DEPEND}
 EANT_BUILD_TARGET="pkg"
 JAVA_ANT_ENCODING="UTF-8"
 
-I2P_ROOT='/usr/share/i2p'
-I2P_CONFIG_HOME='/var/lib/i2p'
-I2P_CONFIG_DIR="${I2P_CONFIG_HOME}/.i2p"
-
-RES_DIR='installer/resources'
-
-PATCHES=(
-	"${FILESDIR}/${P}-add_libs.patch"
-)
-
 pkg_setup() {
 	java-pkg-2_pkg_setup
 
 	enewgroup i2p
-	enewuser i2p -1 -1 "${I2P_CONFIG_HOME}" i2p
-}
-
-src_unpack() {
-	unpack ${A}
-	cd "${S}" || die
-	java-ant_rewrite-classpath
+	enewuser i2p -1 -1 "${EPREFIX}/var/lib/i2p" i2p
 }
 
 src_prepare() {
+	# as early as possible to allow generic patches to be applied
+	default
+
+	java-ant_rewrite-classpath
+
 	java-pkg-2_src_prepare
 
 	# We're on GNU/Linux, we don't need .exe files
@@ -80,43 +67,48 @@ src_prepare() {
 
 	# avoid auto starting browser
 	sed -i 's|clientApp.4.startOnLoad=true|clientApp.4.startOnLoad=false|' \
-		"${RES_DIR}/clients.config" || die
+		'installer/resources/clients.config' || die
 
-	# we do it now so we can resolve path after
-	default
+	# generate wrapper classpath, keeping the default to be replaced later
+	i2p_cp='' # global forced by java-pkg_gen-cp
+	java-pkg_gen-cp i2p_cp
+	local lib cp i=2
+	for lib in ${i2p_cp//,/ }
+	do
+		cp+="wrapper.java.classpath.$((i++))=$(java-pkg_getjars ${lib})\n"
+	done
+
+	# add generated cp and hardcode system VM
+	sed -e "s|\(wrapper\.java\.classpath\.1=.*\)|\1\n${cp}|" \
+		-e "s|\(wrapper\.java\.command\)=.*|\1=/etc/java-config-2/current-system-vm/bin/java|" \
+		-e "s|\(wrapper\.java\.library\.path\.1\)=.*|\1=/usr/lib/java-service-wrapper|" \
+		-i 'installer/resources/wrapper.config' || die
 
 	# replace paths as the installer would
-	sed -i "s|%INSTALL_PATH|${I2P_ROOT}|" \
-		"${RES_DIR}/"{eepget,i2prouter,runplain.sh}  || die
-	sed -i "s|\$INSTALL_PATH|${I2P_ROOT}|" "${RES_DIR}/wrapper.config" || die
-	sed -i "s|%SYSTEM_java_io_tmpdir|${I2P_CONFIG_DIR}|" \
-		"${RES_DIR}/"{i2prouter,runplain.sh} || die
-	sed -i "s|%USER_HOME|${I2P_CONFIG_HOME}|" "${RES_DIR}/i2prouter" || die
+	sed -e "s|[\$%]INSTALL_PATH|${EPREFIX}/usr/share/i2p|" \
+		-e "s|%SYSTEM_java_io_tmpdir|${EPREFIX}/var/lib/i2p/.i2p|" \
+		-e "s|%USER_HOME|${EPREFIX}/var/lib/i2p|" \
+		-i 'installer/resources/'{eepget,i2prouter,runplain.sh,wrapper.config} || die
 }
 
 src_install() {
 	# cd into pkg-temp.
 	cd "${S}/pkg-temp" || die
 
-	# This is ugly, but to satisfy all non-system .jar dependencies, jetty
-	# would need to be packaged. It would be too large a task
-	# for an unseasoned developer. This seems to be the most pragmatic solution
-	java-pkg_jarinto "${I2P_ROOT}/lib"
-	local i
-	for i in BOB commons-el commons-logging i2p i2psnark i2ptunnel \
-		jasper-compiler jasper-runtime javax.servlet jbigi jetty* mstreaming org.mortbay.* router* \
-		sam standard streaming systray addressbook; do
-		java-pkg_dojar lib/${i}.jar
-	done
+	# we remove system installed jar and install the others
+	rm lib/{jrobin.jar,wrapper.jar} || \
+		die 'unable to remove locally built jar already found in system'
+	java-pkg_dojar lib/*.jar
 
 	# Set up symlinks for binaries
-	dosym /usr/bin/wrapper "${I2P_ROOT}/i2psvc"
-	dosym "${I2P_ROOT}/i2prouter" /usr/bin/i2prouter
-	dosym "${I2P_ROOT}/eepget" /usr/bin/eepget
+	dodir /usr/bin
+	# workaround portage absolute symlink limitation
+	dosym '../share/i2p/i2prouter' '/usr/bin/i2prouter'
+	dosym '../share/i2p/eepget' '/usr/bin/eepget'
 
 	# Install main files and basic documentation
-	exeinto "${I2P_ROOT}"
-	insinto "${I2P_ROOT}"
+	exeinto '/usr/share/i2p'
+	insinto '/usr/share/i2p'
 	doins blocklist.txt hosts.txt *.config
 	doexe eepget i2prouter runplain.sh
 	dodoc history.txt INSTALL-headless.txt LICENSE.txt
@@ -124,20 +116,19 @@ src_install() {
 
 	# Install other directories
 	doins -r certificates docs eepsite geoip scripts
-	dodoc -r licenses
 	java-pkg_dowar webapps/*.war
 
 	# Install daemon files
-	newinitd "${FILESDIR}/${P}.initd" i2p
-	systemd_newunit "${FILESDIR}/${P}.service" i2p.service
+	newinitd "${FILESDIR}/i2p.init" i2p
+	systemd_dounit "${FILESDIR}/i2p.service"
 
 	# setup user
-	keepdir "${I2P_CONFIG_DIR}"
-	fowners -R i2p:i2p "${I2P_CONFIG_DIR}"
+	keepdir '/var/lib/i2p/.i2p'
+	fowners i2p:i2p '/var/lib/i2p/.i2p'
 }
 
 pkg_postinst() {
-	elog "Custom configuration belongs in ${I2P_CONFIG_DIR} to avoid being overwritten."
+	elog "Custom configuration belongs in ${EPREFIX}/var/lib/i2p/.i2p to avoid being overwritten."
 	elog 'I2P can be configured through the web interface at http://localhost:7657/console'
 
 	if use !ecdsa

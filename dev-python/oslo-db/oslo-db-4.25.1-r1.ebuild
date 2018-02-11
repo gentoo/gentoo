@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -41,7 +41,10 @@ RDEPEND="
 		!~dev-python/sqlalchemy-1.1.8[sqlite,${PYTHON_USEDEP}]
 	)
 	mysql? (
-		dev-python/mysql-python
+		|| (
+			dev-python/pymysql[${PYTHON_USEDEP}]
+			dev-python/mysql-python[$(python_gen_usedep 'python2_7')]
+		)
 		>=dev-python/sqlalchemy-1.0.10[${PYTHON_USEDEP}]
 		!~dev-python/sqlalchemy-1.1.5[${PYTHON_USEDEP}]
 		!~dev-python/sqlalchemy-1.1.6[${PYTHON_USEDEP}]
@@ -49,7 +52,7 @@ RDEPEND="
 		!~dev-python/sqlalchemy-1.1.8[${PYTHON_USEDEP}]
 	)
 	postgres? (
-		dev-python/psycopg:2
+		dev-python/psycopg:2[${PYTHON_USEDEP}]
 		>=dev-python/sqlalchemy-1.0.10[${PYTHON_USEDEP}]
 		!~dev-python/sqlalchemy-1.1.5[${PYTHON_USEDEP}]
 		!~dev-python/sqlalchemy-1.1.6[${PYTHON_USEDEP}]
