@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201802-01">
+  <title>VirtualBox: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in VirtualBox, the worst
+    of which could allow an attacker to take control of VirtualBox.
+  </synopsis>
+  <product type="ebuild">virtualbox,virtualbox-bin</product>
+  <announced>2018-02-11</announced>
+  <revised count="1">2018-02-11</revised>
+  <bug>644894</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="app-emulation/virtualbox" auto="yes" arch="*">
+      <unaffected range="ge">5.1.32</unaffected>
+      <vulnerable range="lt">5.1.32</vulnerable>
+    </package>
+    <package name="app-emulation/virtualbox-bin" auto="yes" arch="*">
+      <unaffected range="ge">5.1.32.120294</unaffected>
+      <vulnerable range="lt">5.1.32.120294</vulnerable>
+    </package>
+    <package name="app-emulation/virtualbox-guest-additions" auto="yes" arch="*">
+      <unaffected range="ge">5.1.32</unaffected>
+      <vulnerable range="lt">5.1.32</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>VirtualBox is a powerful virtualization product from Oracle.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in VirtualBox. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>An attacker could take control of VirtualBox resulting in the execution
+      of arbitrary code with the privileges of the process, a Denial of Service
+      condition, or other unspecified impacts.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All VirtualBox users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/virtualbox-5.1.32"
+    </code>
+    
+    <p>All VirtualBox Binary users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=app-emulation/virtualbox-bin-5.1.32.120294"
+    </code>
+    
+    <p>All VirtualBox Guest Additions users should upgrade to the latest
+      version:
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=app-emulation/virtualbox-guest-additions-5.1.32"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2676">CVE-2018-2676</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2685">CVE-2018-2685</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2686">CVE-2018-2686</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2687">CVE-2018-2687</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2688">CVE-2018-2688</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2689">CVE-2018-2689</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2690">CVE-2018-2690</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2693">CVE-2018-2693</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2694">CVE-2018-2694</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2698">CVE-2018-2698</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-01-23T02:04:52Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2018-02-11T22:35:40Z">b-man</metadata>
+</glsa>
