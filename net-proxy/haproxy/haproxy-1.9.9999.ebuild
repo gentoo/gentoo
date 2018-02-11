@@ -9,7 +9,7 @@ inherit user versionator toolchain-funcs flag-o-matic systemd linux-info $SCM
 MY_P="${PN}-${PV/_beta/-dev}"
 
 DESCRIPTION="A TCP/HTTP reverse proxy for high availability environments"
-HOMEPAGE="http://haproxy.1wt.eu"
+HOMEPAGE="http://www.haproxy.org"
 if [[ ${PV} != *9999 ]]; then
 	SRC_URI="http://haproxy.1wt.eu/download/$(get_version_component_range 1-2)/src/${MY_P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~ppc ~x86"
@@ -110,7 +110,7 @@ src_compile() {
 
 src_install() {
 	dosbin haproxy
-	dosym /usr/sbin/haproxy /usr/bin/haproxy
+	dosym ../sbin/haproxy /usr/bin/haproxy
 
 	newconfd "${FILESDIR}/${PN}.confd" $PN
 	newinitd "${FILESDIR}/${PN}.initd-r6" $PN
