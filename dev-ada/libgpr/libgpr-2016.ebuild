@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,18 +14,15 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/57399662c7a447658e0affa8
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="+gnat_2016 gnat_2017 +shared static static-pic"
+IUSE="+gnat_2016 gnat_2017 +shared static-libs static-pic"
 
-RDEPEND="dev-ada/xmlada[gnat_2016=,gnat_2017=]
-	gnat_2016? ( dev-lang/gnat-gpl:4.9.4 )
-	gnat_2017? ( dev-lang/gnat-gpl:6.3.0 )"
+RDEPEND="dev-ada/xmlada[gnat_2016=,gnat_2017=]"
 DEPEND="${RDEPEND}
-	dev-ada/gprbuild"
+	dev-ada/gprbuild[gnat_2016=,gnat_2017=]"
 
 S="${WORKDIR}"/${MYP}-src
 
-REQUIRED_USE="|| ( shared static static-pic )
-	^^ ( gnat_2016 gnat_2017 )"
+REQUIRED_USE="|| ( shared static-libs static-pic )"
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 src_compile() {
@@ -35,7 +32,10 @@ src_compile() {
 		GCC_PV=6.3.0
 	fi
 	GCC=${CHOST}-gcc-${GCC_PV}
-	for kind in shared static static-pic; do
+	if use static-libs; then
+		emake PROCESSORS=$(makeopts_jobs) libgpr.build.static
+	fi
+	for kind in shared static-pic; do
 		if use ${kind}; then
 			emake PROCESSORS=$(makeopts_jobs) libgpr.build.${kind}
 		fi
@@ -43,7 +43,10 @@ src_compile() {
 }
 
 src_install() {
-	for kind in shared static static-pic; do
+	if use static-libs; then
+		emake DESTDIR="${D}" libgpr.install.static
+	fi
+	for kind in shared static-pic; do
 		if use ${kind}; then
 			emake DESTDIR="${D}" libgpr.install.${kind}
 		fi
