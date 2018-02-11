@@ -7945,7 +7945,6 @@ media-sound/kid3 3.5.1: Simple tag editor based on Qt
 media-sound/kmetronome 1.0.0: MIDI based metronome using ALSA sequencer
 media-sound/lame 3.99.5-r1 3.100: LAME Ain't an MP3 Encoder
 media-sound/lash 0.5.4-r3: LASH Audio Session Handler
-media-sound/lastfmplayer 1.5.4.27091-r3: A player for last.fm radio streams
 media-sound/lilypond 2.18.2-r3: GNU Music Typesetter
 media-sound/lyvi 2.0.0: A simple command-line lyrics viewer
 media-sound/mac 4.11.4.5.7: Monkey's Audio Codecs

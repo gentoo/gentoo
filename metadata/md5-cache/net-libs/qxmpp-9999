@@ -1,11 +1,11 @@
 DEFINED_PHASES=configure install prepare test unpack
-DEPEND=dev-qt/qtcore:5 dev-qt/qtnetwork:5[ssl] dev-qt/qtxml:5 opus? ( media-libs/opus ) speex? ( media-libs/speex ) theora? ( media-libs/libtheora ) vpx? ( media-libs/libvpx ) test? ( dev-qt/qttest:5 ) >=dev-vcs/git-1.8.2.1
+DEPEND=dev-qt/qtcore:5 dev-qt/qtnetwork:5[ssl] dev-qt/qtxml:5 opus? ( media-libs/opus ) speex? ( media-libs/speex ) theora? ( media-libs/libtheora ) vpx? ( media-libs/libvpx:= ) test? ( dev-qt/qttest:5 ) >=dev-vcs/git-1.8.2.1
 DESCRIPTION=A cross-platform C++ XMPP client library based on the Qt framework
 EAPI=6
 HOMEPAGE=https://github.com/qxmpp-project/qxmpp/
 IUSE=debug doc opus +speex test theora vpx
 LICENSE=LGPL-2.1
-RDEPEND=dev-qt/qtcore:5 dev-qt/qtnetwork:5[ssl] dev-qt/qtxml:5 opus? ( media-libs/opus ) speex? ( media-libs/speex ) theora? ( media-libs/libtheora ) vpx? ( media-libs/libvpx )
+RDEPEND=dev-qt/qtcore:5 dev-qt/qtnetwork:5[ssl] dev-qt/qtxml:5 opus? ( media-libs/opus ) speex? ( media-libs/speex ) theora? ( media-libs/libtheora ) vpx? ( media-libs/libvpx:= )
 SLOT=0
 _eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	git-r3	fec09a83ae965b041b47f5ff7c8ba29a	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=8958775b1eb4370043aabd766661a824
+_md5_=b621ad300e9f1acd42b7fd63c40cd11a
