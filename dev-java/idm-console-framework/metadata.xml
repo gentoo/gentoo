@@ -4,12 +4,10 @@
 	<maintainer type="person">
 		<email>wibrown@redhat.com</email>
 		<name>William Brown</name>
-		<description>Proxy maintainer. Part of the 389-ds core team.</description>
 	</maintainer>
 	<maintainer type="person">
 		<email>wes@sol1.com.au</email>
 		<name>Wes</name>
-		<description>Proxy maintainer.</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
