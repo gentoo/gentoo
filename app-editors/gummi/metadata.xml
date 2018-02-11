@@ -4,12 +4,10 @@
 	<maintainer type="person">
 		<email>hwoarang@gentoo.org</email>
 		<name>Markos Chandras</name>
-		<description>Proxy maintainer.</description>
 	</maintainer>
 	<maintainer type="person">
 		<email>christian.tietz@mailbox.org</email>
 		<name>Christian Tietz</name>
-		<description>Proxy maintainer.</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
