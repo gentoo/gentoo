@@ -4,12 +4,10 @@
   <maintainer type="person">
     <email>chutzpah@gentoo.org</email>
     <name>Patrick McLean</name>
-    <description>Co Maintainer</description>
   </maintainer>
   <maintainer type="person">
     <email>dlan@gentoo.org</email>
     <name>Yixun Lan</name>
-    <description>Co Maintainer</description>
   </maintainer>
   <maintainer type="project">
     <email>cluster@gentoo.org</email>
