@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -71,7 +71,8 @@ src_configure() {
 
 src_compile() {
 	# Do not use the sandbox, or the dumped Emacs will be twice as large
-	SANDBOX_ON=0 LD_PRELOAD="" emake --jobs=1 \
+	export SANDBOX_ON=0
+	emake --jobs=1 \
 		CC="$(tc-getCC)" CFLAGS="${CFLAGS} -Demacs" \
 		LD="$(tc-getCC) -nostdlib" LDFLAGS="${LDFLAGS}"
 }
