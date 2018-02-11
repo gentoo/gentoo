@@ -6,11 +6,12 @@
 # Keep it sorted.
 
 aarch64 - ARM64 userspace emulation target
+aarch64_be - ARM64 big endian userspace emulation target
 alpha - userspace emulation target
 arm - ARM (little endian) userspace emulation target
 armeb - ARM (big endian) userspace emulation target
 cris - userspace emulation target
-hppa - usersparce emulation target
+hppa - userspace emulation target
 i386 - userspace emulation target
 m68k - userspace emulation target
 microblazeel - userspace emulation target
