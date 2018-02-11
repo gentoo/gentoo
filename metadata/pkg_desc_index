@@ -9972,7 +9972,7 @@ sys-devel/llvm 3.7.1-r3 3.9.1-r1 4.0.1-r1 5.0.1: Low Level Virtual Machine
 sys-devel/llvm-common 4.0.1 5.0.1: Common files shared between multiple slots of LLVM
 sys-devel/llvmgold 4 5: LLVMgold plugin symlink for autoloading
 sys-devel/m4 1.4.17: GNU macro processor
-sys-devel/make 3.80-r4 3.81-r2 3.82-r4 4.0-r1 4.1-r1 4.2.1: Standard tool to compile source trees
+sys-devel/make 4.0-r1 4.1-r1 4.2.1: Standard tool to compile source trees
 sys-devel/patch 2.7.5: Utility to apply diffs to files
 sys-devel/pmake 1.111.3.1 1.111.3.3: BSD build tool to create programs in parallel. Debian's version of NetBSD's make
 sys-devel/prelink 20130503: Modifies ELFs to avoid runtime symbol resolutions resulting in faster load times
