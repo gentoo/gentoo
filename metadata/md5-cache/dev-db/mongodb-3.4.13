@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst preinst pretend setup test
+DEPEND=>=app-arch/snappy-1.1.3 >=dev-cpp/yaml-cpp-0.5.3 >=dev-libs/boost-1.60:=[threads(+)] >=dev-libs/libpcre-8.41[cxx] dev-libs/snowball-stemmer net-libs/libpcap >=sys-libs/zlib-1.2.8:= mms-agent? ( app-admin/mms-agent ) ssl? ( !libressl? ( >=dev-libs/openssl-1.0.1g:0= ) libressl? ( dev-libs/libressl:0= ) ) =dev-lang/python-2* <dev-util/scons-3 >=sys-devel/gcc-5.3.0:* sys-libs/ncurses sys-libs/readline debug? ( dev-util/valgrind ) kerberos? ( dev-libs/cyrus-sasl[kerberos] ) test? ( dev-python/pymongo dev-python/pyyaml ) >=dev-util/scons-2.3.0 virtual/pkgconfig
+DESCRIPTION=A high-performance, open source, schema-free document-oriented database
+EAPI=6
+HOMEPAGE=http://www.mongodb.org
+IUSE=debug kerberos libressl mms-agent ssl test +tools
+KEYWORDS=~amd64
+LICENSE=AGPL-3 Apache-2.0
+PDEPEND=tools? ( >=app-admin/mongo-tools-3.4.13 )
+RDEPEND=>=app-arch/snappy-1.1.3 >=dev-cpp/yaml-cpp-0.5.3 >=dev-libs/boost-1.60:=[threads(+)] >=dev-libs/libpcre-8.41[cxx] dev-libs/snowball-stemmer net-libs/libpcap >=sys-libs/zlib-1.2.8:= mms-agent? ( app-admin/mms-agent ) ssl? ( !libressl? ( >=dev-libs/openssl-1.0.1g:0= ) libressl? ( dev-libs/libressl:0= ) )
+SLOT=0
+SRC_URI=https://fastdl.mongodb.org/src/mongodb-src-r3.4.13.tar.gz
+_eclasses_=check-reqs	fd05cf75484aa28d307cf4ee6e1db056	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	flag-o-matic	02908f00f002f0f07c5b74783d778325	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	pax-utils	b963274a93e76570a88168c1f1db4cd7	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-any-r1	27d7f9da7187d283b7f3eae8390b7b09	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	scons-utils	fcace052aef60e6b0eb3023c26aa585a	systemd	a31844b675f1a1fea87fbe1144aee5f5	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	user	8bc2845510e2109af75e3eeac607ec81	versionator	ce21313503c41896ebcd7d58b0607e37
+_md5_=005c59a00f7428fa310941f61f9306cf
