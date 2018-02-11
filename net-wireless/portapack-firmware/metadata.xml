@@ -4,7 +4,6 @@
 	<maintainer type="person">
 		<email>zerochaos@gentoo.org</email>
 		<name>Rick Farina</name>
-		<description>maintainer</description>
 	</maintainer>
 	<upstream>
 		<remote-id type="github">sharebrained/portapack-hackrf</remote-id>
