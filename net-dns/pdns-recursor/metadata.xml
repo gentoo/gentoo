@@ -4,7 +4,6 @@
 <maintainer type="person">
 	<email>swegener@gentoo.org</email>
 	<name>Sven Wegener</name>
-	<description>Primary Maintainer</description>
 </maintainer>
 <longdescription>
 With a small codebase, the PowerDNS Recursor is an advanced recursor currently
