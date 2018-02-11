@@ -4,7 +4,6 @@
 	<maintainer type="person">
 		<email>rhill@gentoo.org</email>
 		<name>Ryan Hill</name>
-		<description>Maintainer</description>
 	</maintainer>
 	<longdescription>
 	Fast, free, validating XML editor.

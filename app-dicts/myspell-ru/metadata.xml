@@ -4,9 +4,8 @@
 	<maintainer type="person">
 		<email>perfect007gentleman@gmail.com</email>
 		<name>Perfect Gentleman</name>
-		<description>Proxied maintainer; set to assignee in all bugs</description>
 	</maintainer>
-<maintainer type="project">
+	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>

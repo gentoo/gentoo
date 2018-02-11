@@ -3,7 +3,6 @@
 <pkgmetadata>
   <maintainer type="person">
     <email>jlec@gentoo.org</email>
-    <description>Primary maintainer</description>
   </maintainer>
   <use>
     <flag name="boost">Enable support for Boost based enhancement</flag>

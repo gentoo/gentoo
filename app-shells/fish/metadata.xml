@@ -4,11 +4,9 @@
 	<maintainer type="person">
 		<email>ya@sysdump.net</email>
 		<name>Georgy Yakovlev</name>
-		<description>Proxied maintainer. Please assign bugs to him.</description>
 	</maintainer>
 	<maintainer type="person">
 		<email>polynomial-c@gentoo.org</email>
 		<name>Lars Wendler</name>
-		<description>Proxy maintainer of Georgy. Please CC on bugs.</description>
 	</maintainer>
 </pkgmetadata>

@@ -3,13 +3,11 @@
 <pkgmetadata>
 	<maintainer type="person">
 		<email>robbat2@gentoo.org</email>
-		<description>Primary maintainer</description>
 		<name>Robin H. Johnson</name>
 	</maintainer>
 	<maintainer type="person">
 		<email>lists@xunil.at</email>
 		<name>Stefan G. Weichinger</name>
-		<description>Proxied developer</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>

@@ -4,11 +4,16 @@
 # Unmask the flag which corresponds to ARCH.
 -mips
 
-# Michał Górny <mgorny@gentoo.org> (23 Feb 2018)
+# Mart Raudsepp <leio@gentoo.org> (11 Feb 2018)
+# dev-util/valgrind is not keyworded here yet,
+# though the MIPS platform is supported upstream
+valgrind
+
+# Michał Górny <mgorny@gentoo.org> (23 Jan 2018)
 # net-misc/networkmanager is not keyworded here.
 networkmanager
 
-# Michał Górny <mgorny@gentoo.org> (23 Feb 2018)
+# Michał Górny <mgorny@gentoo.org> (23 Jan 2018)
 # sci-geosciences/gpsd is not keyworded here.
 gps
 
