@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,6 +23,7 @@ SLOT="0"
 IUSE="autotype debug http test yubikey"
 
 RDEPEND="
+	app-crypt/argon2:=
 	dev-libs/libgcrypt:=
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
@@ -59,6 +60,8 @@ src_configure() {
 		-DWITH_TESTS="$(usex test)"
 		-DWITH_XC_AUTOTYPE="$(usex autotype)"
 		-DWITH_XC_HTTP="$(usex http)"
+		-DWITH_XC_NETWORKING="$(usex network)"
+		-DWITH_XC_BROWSER="$(usex browser)"
 		-DWITH_XC_YUBIKEY="$(usex yubikey)"
 	)
 	cmake-utils_src_configure
