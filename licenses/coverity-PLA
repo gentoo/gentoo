@@ -1,0 +1,356 @@
+COVERITY PRODUCT LICENSE AGREEMENT
+
+Version 2012.1
+
+IMPORTANT INFORMATION - READ CAREFULLY
+
+UNLESS YOU HAVE OBTAINED PERMISSION TO USE THE SOFTWARE UNDER A SEPARATE, DULY SIGNED
+LICENSE AGREEMENT OR AN EVALUATION LICENSE WITH COVERITY OR AN AUTHORIZED DISTRIBUTOR,
+THE ACCOMPANYING SOFTWARE IS PROVIDED UNDER THE FOLLOWING TERMS AND CONDITIONS AND
+ANY SUPPLEMENTAL TERMS REFERENCED BELOW AND YOUR RIGHT TO USE THE SOFTWARE IS
+CONDITIONED UPON YOUR ACCEPTANCE OF THIS AGREEMENT.
+
+IF YOU DO NOT ACCEPT THESE TERMS AND CONDITIONS AND YOU DO NOT HAVE A SEPARATE LICENSE
+AGREEMENT AS REFERENCED ABOVE, YOU MAY NOT USE OR COPY THE SOFTWARE AND YOU MUST
+DELETE ANY COPIES OF IT FROM YOUR SYSTEMS. IF YOU HAVE PAID A LICENSE FEE FOR USE OF THE
+SOFTWARE AND DO NOT AGREE TO THESE TERMS AND CONDITIONS, YOU MAY, WITHIN TEN (10) DAYS OF
+YOUR INITIAL PURCHASE, REQUEST A REFUND FOR THE SOFTWARE, PROVIDED THAT YOU CERTIFY THAT
+YOU HAVE NOT AND WILL NOT USE THE SOFTWARE AND THAT YOU HAVE DESTROYED ALL COPIES OF THE
+SOFTWARE FROM YOUR SYSTEMS.
+
+1. SCOPE AND KEY TERMS.
+
+This is a legal agreement concerning your use of the Software described below. The rights granted to the Software are
+expressly conditioned upon acceptance of these Terms and Conditions by the legal entity or person acquiring the license
+and, if applicable, responsible for payment. If you are using the Software as an employee, the legal entity that employs
+you is the "licensee." Your employer may have already accepted a version of these Terms and Conditions by signing an
+Order Schedule referencing them. In all other circumstances, you are binding your employer, and yourself personally as an
+employee, to these Terms and Conditions by using the Software. References below to "you" or "your" refer to the licensee
+of the Software. Coverity is the "licensor," regardless of whether you received the Software from Coverity directly or an
+authorized distributor.
+
+The Software is the proprietary information of Coverity or its suppliers who retain exclusive title to their intellectual
+property rights in the Software. Your rights to the Software are limited to those expressly granted below and Coverity
+reserves all rights not expressly granted in this Agreement.
+
+1.1 Order Schedules. The Terms and Conditions set forth in this Coverity Product License Agreement and the Order
+Schedule(s) accepted by both you and Coverity contain all terms and conditions applicable to your use of the Software
+(collectively, the "Agreement"). An "Order Schedule" is a document from Coverity or its authorized distributor which
+references the applicable Coverity Product License Agreement and identifies the specific Software and rights being
+licensed to you under those terms, including the License Type, quantity, license term, territory and the Code Base. The
+Order Schedule also sets forth the fees and payment terms for the Software licenses (the "license transaction"). You must
+refer to a copy of the applicable Order Schedule to determine these conditions of the Agreement. If you do not receive any
+other document executed by Coverity referencing the license transaction, a Coverity invoice referencing this Agreement
+and issued in response to your correct purchase order shall be Coverity’s acceptance of the license transaction.
+Additionally, the license term and/or maintenance and support term for specific Software identified in an Order Schedule
+may be renewed by issuance of Coverity invoice referencing this Agreement and the applicable Order Schedule in response
+to a correct Customer purchase order for such renewal. Additional or different terms on your purchase order shall not
+apply.
+
+1.2 "Authorized User" means a party’s, and its wholly-owned subsidiaries’, employee or authorized contractor: (a)
+whose duties require access to or use of the Software or Confidential Information for the benefit of that party; and (b)
+whose legal obligations to protect confidential and proprietary information require protection of the Software and
+Confidential Information to at least the same extent as set out in this Agreement. For clarity, the Customer shall not
+appoint a third party licensor of portions of the Code Base identified in an applicable Order Schedule as an Authorized
+User.
+
+1.3 "Code Base" means those portions of your software identified in an applicable Order Schedule by reference to
+the name of the product, project or package and a number of lines of code, if applicable.
+
+1.4 "Documentation" means the user documentation, in written, electronic or other format, which describes the
+Software and its operation and which Coverity makes generally available to its licensed customers for use with the
+Software.
+
+1.5 "License Type" means the usage rights purchased under the applicable Order Schedule. License Types offered by
+Coverity from time to time can be found at www.coverity.com/licensetype.html.
+
+1.6 "Software" means the specific products provided by Coverity and listed in an Order Schedule and (a) all related
+Documentation, and (b) all updates, modifications and maintenance services provided to you.
+
+2. LICENSE.
+
+2.1 License Grant and Applicable Fees and Delivery. Subject to your compliance with the terms and conditions of
+this Agreement, Coverity grants you a nonexclusive, non-transferable license, solely during the license term and in the
+territory set out in the applicable Order Schedule, to (a) use and operate the Software to the extent permitted by your
+payment of applicable fees for the License Type purchased, solely for the purpose of developing, analyzing, building or
+testing the Code Base, and (b) copy the Software as reasonably necessary to exercise the license rights granted in
+subsection (a), including making a reasonable number of copies for backup and archival purposes. All applicable fees are
+owed upon the effective date of the applicable Order Schedule, are non-refundable upon such date, and are payable in
+accordance with the payment schedule set out in the applicable Order Schedule. Fees payable are net amounts, without
+deduction for taxes or duties. Customer will pay taxes and duties (including but not limited to sales, use and withholding
+taxes) associated with its purchases under this Order Schedule, except for Coverity’s net income taxes. Where practical,
+Coverity will deliver Software electronically and delivery will be deemed to occur upon the Software being available for
+electronic download. Delivery of any tangible media will be made F.O.B. point of shipment.
+
+2.2 Conditions. The rights granted to you above are conditional upon your compliance with the following
+obligations:
+
+a. You will not copy Coverity’s software products or documentation, in whole or in part, except as
+expressly authorized in this Agreement.
+
+b. You will not transfer, assign, lease, lend or rent Coverity’s software products or documentation, use
+them to provide service bureau, time-sharing or other services, or otherwise provide or make the
+functionality thereof available to third parties except as expressly authorized in this Agreement.
+
+c. You will not disassemble, decompile, reverse engineer, modify or create derivative works of Coverity’s
+software products or documentation nor permit any third party to do so, except to the extent such
+restrictions are prohibited by applicable mandatory local law.
+
+d. You will not allow access or use of the Software by, and will not display the Software’s user interfaces
+to, anyone other than the Authorized Users, without Coverity’s prior express written consent.
+
+e. You will not disclose to any third party any comparison of the results of operation of Coverity’s
+software products with other products.
+
+f. You will not delete or in any manner alter the copyright, trademark or other proprietary rights notices
+appearing on the Software as delivered by Coverity. You will reproduce such notices on all copies you are
+authorized to make of the Software.
+
+g. Your use of the Software is time-limited to the licensed term set out in the applicable Order Schedule,
+and such use and access may be monitored and regulated through a license management tool (a "License
+Manager"). The License Manager will report such data (collectively, “Use and Compliance Data”) to
+Coverity. You will not install or use the Software in a manner that circumvents or interferes with the
+operation of the License Manager or any other technological measure that controls access to the Software.
+Some configurations may require the License Manager to be installed only on designated servers. For
+those configurations, Coverity will support two changes to the designated servers during any twelve
+month period upon prior written notice.
+
+2.3. Offsite Contractors. You may allow Authorized Users that are offsite contractors to access and use the Software solely
+for your benefit in accordance with this Agreement provided that: (a) you are responsible for the acts and omissions of its
+offsite contractors with respect to Software licensed under this Agreement; (b) you ensure that the Software is completely
+and irretrievably uninstalled from any offsite contractor’s equipment and premises (except for those modules necessary to
+view results and other data generated from using the Software) immediately upon completion of the offsite contractor’s
+services requiring use of the Software; and (c) you have an agreement in place with the offsite contractor requiring that the
+offsite contractor protect Coverity’s Software, Confidential Information and intellectual property at least to the same
+extent as set forth in this Agreement. You acknowledge that Coverity has no warranty or other obligations to your offsite
+contractors.
+
+2.4. Special Terms for Third Party Software. The Software may contain open source or community source software
+("Open Source Software") provided under separate license terms (the "Open Source License Terms"). The applicable Open
+Source License Terms are identified in a directory named "Licenses" provided with the delivery of the Software. Your use
+of the Open Source Software in conjunction with the Software in a manner consistent with the terms of this Agreement is
+permitted, however, you may have broader rights under the applicable Open Source License Terms and nothing in this
+Agreement is intended to impose further restrictions on your use of the Open Source Software.
+
+2.5. Feedback and Analytics. You may choose to, but are not required to, provide suggestions, data, feedback and other
+information to Coverity, its subcontractors or authorized distributors regarding possible improvements in the operation,
+functionality or use of Coverity’s software products. You hereby grant to Coverity, its subcontractors and authorized
+distributors, without charge, the right to use, copy, modify and create derivative works of any such suggestions, data,
+feedback and information solely for the purpose of (i) improving the operation, functionality or use of its existing and
+future product offerings and commercializing such offerings; and (ii) publishing aggregated statistics about software
+quality, provided that no data in any such publication can be used to specifically identify you, your employer or your
+software code.
+
+3. CONFIDENTIALITY.
+
+3.1. Confidential Information. "Confidential Information" means: (a) each party’s software products, in byte code or
+source code form; (b) any authorization keys and passwords delivered in order to operate such products; (c)
+Documentation, product road maps and development plans, and product pricing information; (d) any business, technical
+or training information of a party that, if disclosed in writing, is marked "confidential" or "proprietary" at the time of
+disclosure, or, if disclosed orally, is identified as "confidential" or "proprietary" at the time of disclosure, and is
+summarized in a writing sent by the disclosing party to the other party within thirty (30) days of such disclosure; and
+(e) the specific business terms and pricing set forth in any quotation, Order Schedule or this Agreement.
+
+3.2. Exclusions. Confidential Information does not include information that: (a) is or becomes generally known or
+available to the public through no act or omission of the party receiving Confidential Information ("Receiving Party");
+(b) is rightfully known by the Receiving Party prior to receiving such information from the other party ("Disclosing
+Party") and without restriction as to use or disclosure; (c) is independently developed by the Receiving Party without use
+of the Disclosing Party’s Confidential Information and without breach of this Agreement; or (d) is rightfully received by
+the Receiving Party from a third party without restriction on use or disclosure. The existence of this Agreement and the
+nature of the business relationship between the parties are not considered Confidential Information.
+
+3.3. Use and Disclosure Restrictions. Receiving Party will not use the Disclosing Party’s Confidential Information
+except as necessary to exercise the rights granted under this Agreement or to evaluate opportunities to license additional
+Software pursuant to this Agreement, and will not disclose such Confidential Information to any person or entity except to
+its Authorized Users. The foregoing obligations will not restrict either party from disclosing Confidential Information of
+the other party: (a) pursuant to the order or requirement of a court, administrative agency, or other governmental body,
+provided that the party required to make such a disclosure gives reasonable notice to the other party to contest such order
+or requirement; and (b) on a confidential basis to its legal or financial advisors that need to know in order to provide
+business advice to such party. In addition, each party may disclose the terms and conditions of this Agreement: (i) as
+required under applicable securities regulations; and (ii) on a confidential basis to present or future providers of venture
+capital and potential private investors in or acquirers of such party.
+
+3.4. Right of Equitable Relief. The parties acknowledge that violations of the covenants and obligations of this
+Agreement may cause the non-breaching party irreparable injury for which an adequate remedy at law may not be available.
+Therefore, the non-breaching party shall be entitled to seek all remedies that may be available under equity, including
+immediate injunctive relief, in addition to whatever remedies may be available at law.
+
+4. WARRANTY.
+
+4.1. Limited Software Warranty. Subject to the remainder of this Section 4, for a period of forty-five (45) days from the
+earlier of the date that the Software is first made available to You for download or Your receipt of the Software pursuant to
+an Order Schedule, Coverity represents and warrants that, (a) the media on which the Software is delivered will be free of
+defects in material and workmanship, (b) the Software will substantially conform to the functional specifications set forth
+in the applicable Documentation, and (c) it has used commercially available virus-detection software to scan the Software,
+and it has not knowingly introduced into the Software any virus, Trojan horse, trap door, or other code that is intended to
+cause harm to your Code Base or other systems.
+
+4.2. Sole Remedy. If, during the warranty period set forth in Section 4.1, Coverity receives written notice from you of non-
+conformity of the Software with the warranty set forth in Section 4.1, Coverity will, as your sole and exclusive remedy and
+Coverity’s entire liability for such non-conformity: (a) deliver a correction or workaround for the non-conformity; or
+(b) if Coverity is unable to deliver such a correction or workaround, provide written notice to you and, upon your return or
+confirmed destruction of all copies of the non-conforming Software to Coverity, refund the license fees paid by you for
+such non-conforming Software. THE FOREGOING STATES YOUR SOLE AND EXCLUSIVE REMEDY FOR WARRANTY
+CLAIMS RELATED TO THE SOFTWARE.
+
+4.3. Disclaimer. Coverity does not warrant that the Software will meet your requirements, that the Software will operate in
+combinations with equipment, devices, software or systems provided by persons other than Coverity, that the operation of
+the Software will be error-free or uninterrupted, or that the Software will discover all errors and vulnerabilities that may
+reside in the Code Base. EXCEPT AS EXPRESSLY SET FORTH IN THIS AGREEMENT, COVERITY AND ITS SUPPLIERS
+DISCLAIM ALL OTHER WARRANTIES, CONDITIONS AND REPRESENTATIONS, EXPRESS, IMPLIED OR STATUTORY,
+INCLUDING THOSE RELATED TO MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, SATISFACTORY
+QUALITY, ACCURACY OR COMPLETENESS OF RESULTS, CONFORMANCE WITH DESCRIPTION, AND NONINFRINGEMENT.
+COVERITY AND ITS SUPPLIERS SPECIFICALLY DISCLAIM ALL IMPLIED WARRANTIES,
+CONDITIONS AND REPRESENTATIONS ARISING OUT OF COURSE OF DEALING, USAGE OR TRADE.
+
+5. INDEMNIFICATION.
+
+5.1. Infringement Indemnity. Coverity will defend or settle any action brought against you by paying all costs, damages
+and reasonable attorneys’ fees that are finally awarded against you to the extent those amounts are based upon a third
+party claim that the Software, as provided by Coverity to you under this Agreement and used in accordance with this
+Agreement, directly infringes any U.S. patent or any copyright or misappropriates any trade secret. However, Coverity’s
+obligations under this section are subject to the following conditions: (a) you must promptly notify Coverity in writing
+of the action; (b) you grant Coverity sole control of the defense and settlement of the action; and (c) you must provide
+Coverity, at Coverity’s expense, with all assistance, information and authority reasonably requested for the defense and
+settlement of the action. Coverity will not be responsible for any compromise made or expense incurred without its
+consent. If use of any of the Software is, or in Coverity’s reasonable opinion is likely to be, the subject of an action
+specified in this Section 5.1, Coverity may, at its sole option and at no additional charge: (i) procure for you the right to
+continue using such Software; (ii) replace or modify such Software so that it is non-infringing and substantially
+equivalent in function to the original Software; or (iii) if options (i) and (ii) above are not accomplished despite
+Coverity’s reasonable efforts, terminate your rights and Coverity’s obligations hereunder with respect to such Software
+and refund the unamortized portion of the license fees paid for such Software, based upon a straight-line depreciation over
+the term of the license commencing as of the date you received such Software.
+
+5.2. Exclusions. Notwithstanding the terms of Section 5.1, Coverity will have no liability for any infringement or
+misappropriation action or claim of any kind to the extent that it results from: (a) modifications to the Software made by a
+party other than Coverity, if the infringement or misappropriation would not have occurred but for such modifications;
+(b) the combination, operation or use of the Software with equipment, devices, software, systems or data not supplied by
+Coverity, if the infringement or misappropriation would not have occurred but for such combination, operation or use;
+(c) your failure to use updated or modified Software provided by Coverity to avoid infringement or misappropriation;
+(d) Coverity’s compliance with any designs or specifications provided by you; (e) your use of the Software other than as
+authorized by this Agreement.
+
+5.3. Sole Remedy. THE PROVISIONS OF THIS SECTION 5 SET FORTH COVERITY’S SOLE AND EXCLUSIVE
+OBLIGATIONS, AND YOUR SOLE AND EXCLUSIVE REMEDIES, WITH RESPECT TO INFRINGEMENT OR
+MISAPPROPRIATION OF INTELLECTUAL PROPERTY RIGHTS OF ANY KIND. EXCEPT AS SET FORTH ABOVE,
+COVERITY AND ITS SUPPLIERS DISCLAIM ALL IMPLIED OBLIGATIONS WITH RESPECT TO INTELLECTUAL
+PROPERTY INDEMNIFICATION.
+
+6. LIMITATION OF LIABILITY.
+
+6.1 Exclusion of Damages. Notwithstanding anything to the contrary, this Agreement does not limit liability due to
+death or personal injury caused by gross negligence, or liability due to fraudulent misrepresentations or willful
+misconduct, or liability arising from breaches of confidentiality obligations or license grants or conditions hereunder.
+SUBJECT TO THE FOREGOING SENTENCE, IN NO EVENT WILL EITHER PARTY, OR ITS SUPPLIERS, BE LIABLE TO THE
+OTHER FOR ANY SPECIAL, INCIDENTAL, PUNITIVE, INDIRECT OR CONSEQUENTIAL DAMAGES (INCLUDING LOSS OF
+USE, DATA, BUSINESS OR PROFITS, REVENUE, GOODWILL, ANTICIPATED SAVINGS) OR FOR the cost of procuring
+substitute products OR SERVICES ARISING OUT OF THIS AGREEMENT, WHETHER BASED UPON CONTRACT,
+WARRANTY, TORT (INCLUDING NEGLIGENCE), FAILURE OF A REMEDY TO ACCOMPLISH ITS PURPOSE, STRICT
+LIABILITY OR OTHERWISE, AND EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. You may have other
+rights under applicable mandatory local laws. This Agreement does not change your rights under applicable mandatory
+local laws if such laws do not permit it to do so.
+
+6.2 Cap on Liability. IN NO EVENT WILL COVERITY OR ITS SUPPLIERS’ AGGREGATE LIABILITY UNDER THIS
+AGREEMENT, OR RELATING TO ITS SUBJECT MATTER, EXCEED, FOR THE SOFTWARE, THE AMOUNT PAID BY YOU
+FOR THE SOFTWARE GIVING RISE TO THE CLAIM, AND WITH RESPECT TO SERVICES, THE AMOUNT PAID BY YOU
+FOR THE SERVICES GIVING RISE TO THE CLAIM.
+
+7. EXPIRATION AND TERMINATION.
+
+7.1. Termination for Breach. Either party will have the right to terminate this Agreement or any Order Schedule if the
+other party breaches any material term of the Agreement or Order Schedule, as the case may be, and if such breach is capable
+of cure, the breaching party fails to cure such breach within thirty (30) days after receiving written notice thereof. Either
+party will have the right to terminate this Agreement if the other becomes insolvent or makes an assignment for the benefit
+of creditors, or a trustee or receiver is appointed for such other party or for a substantial part of its assets, or bankruptcy,
+reorganization or insolvency proceedings shall be instituted by or against such other party. Termination of this
+Agreement under this section terminates all Order Schedules and Software licenses granted hereunder.
+
+7.2. Effect of Termination or Expiration. Upon termination or expiration of this Agreement or an Order Schedule, all
+Software licenses and rights to use Confidential Information that are granted thereunder shall terminate. Upon termination
+of this Agreement or expiration of the license term in any Order Schedule, you will: (a) promptly return to Coverity or
+destroy the applicable Software and Confidential Information and all copies and portions thereof, in all forms and types of
+media; and (b) promptly pay all fees owing up to the date of termination.
+
+7.3. Survival. Sections 1, 2.2, 2.4, 2.5, 3, 4.3, 5.3, 6, 7.2, 7.3 and 8, will survive the termination or expiration of this
+Agreement or of any Order Schedule.
+
+8. GENERAL.
+
+8.1. Promotion. Unless otherwise provided in the Order Schedule, you agree that Coverity may use your name and logo
+(in a form you approve) to identify you as a customer on Coverity’s website or in marketing or publicity materials or in
+any filings made in connection with state or federal securities laws. Additionally, upon acceptance of this Agreement, the
+parties will use commercially reasonable efforts to issue mutually agreed upon joint press releases or other public
+communications announcing Customer’s entry into this Agreement.
+
+8.2. Services. If Coverity provides any onsite support services to Customer (the “Services”), the Services shall be
+governed by the Coverity Onsite Support Services Terms attached to this Agreement. In the event that the Coverity Onsite
+Support Services Terms are not included herein (as an addendum hereto or otherwise), the terms for Onsite Support
+Services, are hereby incorporated herein by reference, and are available at http://www.coverity.com/html/
+onsite_support_services_terms.html, or as otherwise indicated in the Order Schedule.
+
+8.3. Export Control. You agree to comply fully with all relevant export laws and regulations, including those of the
+United States and the Member States of the European Union. These laws include restrictions on destinations, end-users
+and end use. you will ensure that neither the Software, nor any direct product thereof are: (a) exported or re-exported
+directly or indirectly in violation of applicable export laws; or (b) used for any purposes prohibited by applicable export
+laws, including but not limited to nuclear, chemical, or biological weapons proliferation. You will, at Coverity’s request,
+demonstrate compliance with all such applicable export laws, restrictions, and regulations.
+
+8.4. Assignment. You may not assign this Agreement, in whole or in part, by operation of law or otherwise. Any attempt to
+assign this Agreement without such consent will be void and of no effect. Subject to the foregoing, this Agreement will
+bind and inure to the benefit of each party’s permitted successors and assigns.
+
+8.5. Governing Law and Jurisdiction. This Agreement will be governed by and construed in accordance with the laws of
+the State of California excluding that body of laws known as conflicts of law. The parties expressly agree that the United
+Nations Convention on Contracts for the International Sale of Goods will not apply. Any legal action or proceeding
+arising under this Agreement will be brought exclusively in the federal or state courts located in the Northern District of
+California and you and Coverity irrevocably consent to the personal jurisdiction and venue therein.
+
+8.6. Verification and Audit. In addition to the Use and Compliance Data collected by the License Manager, Customer will
+monitor and track access to and use of the Software. At Coverity’s written request, you will furnish Coverity with (a) a
+certification signed by an officer of your company providing user or access information that identifies whether the
+Software is being used in accordance with the terms of this Agreement and the applicable Order Schedules, and (b) log files
+from any License Manager that regulates access to the Software. Upon at least thirty (30) days prior written notice,
+Coverity may engage, at its expense, an independent auditor to audit your use of the Software to ensure that you are in
+compliance with the terms of this Agreement and the applicable Order Schedules. Any such audit will be conducted during
+regular business hours at your facilities and will not unreasonably interfere with your business activities. You will
+provide the auditor with access to the relevant records and facilities. If an audit reveals that you have underpaid fees to
+Coverity during the period audited, then Coverity will invoice you, and you will promptly pay Coverity for such
+underpaid fees based on Coverity’s price list in effect at the time the audit is completed. If the underpaid fees exceed five
+percent (5%) of the license fees paid by you for the Software, then you will also pay Coverity’s costs of conducting the
+audit.
+
+8.7. Nonexclusive Remedy. Except as expressly set forth in this Agreement, the exercise by either party of any of its
+remedies under this Agreement will be without prejudice to its other remedies under this Agreement or otherwise.
+
+8.8. Force Majeure. Neither party will be responsible for any failure or delay in its performance under this Agreement
+(except for any payment obligations) due to causes beyond its reasonable control, including, but not limited to, labor
+disputes, strikes, lockouts, shortages of or inability to obtain labor, energy, raw materials or supplies, war, terrorism, riot,
+natural disasters or governmental action.
+
+8.9. Notices. All notices required or permitted under this Agreement will be in writing. Notices will be effective upon
+delivery if delivered in person and upon mailing if delivered by courier service, overnight delivery services or by a form
+of certified or express mail. Notices affecting this Agreement as a whole will be sent to the address set forth above, if any,
+or to such other address of a party as such a party may identify in writing; notices related to a particular transaction will be
+sent to the primary corporate addresses set forth in the Order Schedule or to such other address as you or Coverity may
+notify the other party in writing.
+
+8.10. Entire Agreement; Modification; Interpretation. This Agreement, including any Addendums hereto and any
+Statements of Work attached thereto, and all accepted Order Schedules referencing this Agreement, constitute the complete
+and exclusive understanding and agreement between you and Coverity regarding its subject matter and supersedes all
+prior or contemporaneous agreements or understandings, written or oral, relating to its subject matter. You agree that
+additional or different terms on your purchase order shall not apply. Failure to enforce any provision of this Agreement
+will not constitute a waiver of future enforcement of that or any other provision. Any waiver, modification or amendment
+of this Agreement will be effective only if in writing and signed by you and an authorized representative of Coverity. If
+for any reason a court of competent jurisdiction finds any provision of this Agreement invalid or unenforceable, that
+provision will be enforced to the maximum extent permissible and the other provisions of this Agreement will remain in
+full force and effect. The word "including" when used in this Agreement will mean including without limitation of the
+generality of any description, definition, term or phrase preceding that word.
+
+8.11. U.S. Government Restricted Rights. The Software is “Commercial Computer Software” as defined under FAR
+252.227-7014.  For Customers subject to the Defense Federal Acquisition Resolutions (DFAR), the Commercial Computer
+Software and associated documentation are sold pursuant to Coverity's standard commercial license pursuant to DFARS
+227.7202-1.Commercial Products.   For all other government customers, use, duplication, or disclosure by the U.S.
+Government is subject to restrictions set forth in subparagraph (b)(2) of Commercial Computer Software License 48 CFR
+52.227-19, as applicable.
+
+END OF TERMS
