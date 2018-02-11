@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/bin/dnscrypt-proxy"
+command_args="${DNSCRYPT_OPTS:---config /etc/dnscrypt-proxy/dnscrypt-proxy.toml}"
+command_user="${DNSCRYPT_USER:-dnscrypt}:${DNSCRYPT_GROUP:-dnscrypt}"
+pidfile="/run/${SVCNAME}.pid"
+start_stop_daemon_args="--background --make-pidfile"
+
+depend() {
+	use net logger
+	provide dns
+}
+
+start_pre() {
+	checkpath -q -d -m 0775 -o "${command_user}" /var/cache/"${SVCNAME}"
+	checkpath -q -d -m 0775 -o "${command_user}" /var/log/"${SVCNAME}"
+}
