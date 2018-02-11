@@ -1868,7 +1868,7 @@ dev-db/pgpool2 3.7.0: Connection pool server for PostgreSQL
 dev-db/pgtap 0.98.0: Unit testing for PostgreSQL
 dev-db/phpmyadmin 4.0.10.20 4.7.0 4.7.7-r1: Web-based administration for MySQL database in PHP
 dev-db/postgis 2.4.2: Geographic Objects for PostgreSQL
-dev-db/postgresql 9.3.20 9.4.15 9.5.10 9.6.6 10.1: PostgreSQL RDBMS
+dev-db/postgresql 9.3.20 9.3.21 9.4.15 9.4.16 9.5.10 9.5.11 9.6.6 9.6.7 10.1 10.2: PostgreSQL RDBMS
 dev-db/pspg 0.8.0: A better pager for psql and mysql
 dev-db/psqlodbc 10.00.0000: Official ODBC driver for PostgreSQL
 dev-db/qdbm 1.8.78-r1: Quick Database Manager
@@ -5086,7 +5086,7 @@ dev-python/oslo-cache 1.25.1: Oslo Caching around dogpile.cache
 dev-python/oslo-concurrency 3.21.1: library for running multi-thread, multi-process applications
 dev-python/oslo-config 4.11.1: Oslo Configuration API
 dev-python/oslo-context 2.17.1: Helpers to maintain useful information about a request context
-dev-python/oslo-db 4.25.1: OpenStack Common DB Code
+dev-python/oslo-db 4.25.1-r1: OpenStack Common DB Code
 dev-python/oslo-i18n 3.17.1: Oslo i18n library
 dev-python/oslo-log 3.30.2: OpenStack logging config library, configuration for all openstack projects.
 dev-python/oslo-messaging 5.30.2: Messaging API for RPC and notifications over different messaging transports
