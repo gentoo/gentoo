@@ -4,12 +4,10 @@
 	<maintainer type="person">
 		<email>ps@twin.jikos.cz</email>
 		<name>Pavel Sanda</name>
-		<description>Primary Maintainer, Assign bugs</description>
 	</maintainer>
 	<maintainer type="person">
 		<email>aballier@gentoo.org</email>
 		<name>Alexis Ballier</name>
-		<description>Proxy Maintainer, CC bugs</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>tex@gentoo.org</email>
