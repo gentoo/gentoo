@@ -3,16 +3,15 @@
 
 EAPI=6
 
-EGIT_REPO_URI="https://github.com/qxmpp-project/qxmpp"
-
-inherit git-r3 qmake-utils
+inherit qmake-utils
 
 DESCRIPTION="A cross-platform C++ XMPP client library based on the Qt framework"
 HOMEPAGE="https://github.com/qxmpp-project/qxmpp/"
+SRC_URI="https://github.com/${PN}-project/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86 ~amd64-linux"
 IUSE="debug doc opus +speex test theora vpx"
 
 RDEPEND="
