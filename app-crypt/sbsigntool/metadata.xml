@@ -3,7 +3,6 @@
 <pkgmetadata>
 	<maintainer type="person">
 		<email>tamiko@gentoo.org</email>
-		<description>yell at me if it breaks</description>
 	</maintainer>
 	<upstream>
 		<remote-id type="launchpad">ubuntu</remote-id>
