@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Kristian Fiskerstrand <k_f@gentoo.org> (11 Feb 2018)
+# Lastrite: app-crypt/monkeysign . Please use caff from 
+# app-crypt/signing-party instead. Removal in 30 days.
+# Bug: #647352
+app-crypt/monkeysign
+
 # Michael Palimamka <kensington@gentoo.org> (11 Feb 2018
 # Fails to build (bug #538400). Requires dead Qt 4 (bug #637014).
 # Dead upstream. Masked for removal in 30 days.
