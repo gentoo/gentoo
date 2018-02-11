@@ -46,6 +46,12 @@ src_configure() {
 	kde5_src_configure
 }
 
+src_test() {
+	# FIXME: bug 644650, fails on tmpfs (but not for everyone)
+	local myctestargs=( -E "(usermetadatawritertest)" )
+	kde5_src_test
+}
+
 pkg_postinst() {
 	kde5_pkg_postinst
 
