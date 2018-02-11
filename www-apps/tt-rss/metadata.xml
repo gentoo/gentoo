@@ -4,7 +4,6 @@
 	<maintainer type="person">
 		<email>chewi@gentoo.org</email>
 		<name>James Le Cuirot</name>
-		<description>Maintainer</description>
 	</maintainer>
 	<use>
 		<flag name="daemon">Install additional init scripts for automated RSS updates</flag>
