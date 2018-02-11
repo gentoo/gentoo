@@ -34,6 +34,7 @@ RDEPEND="
 	tiff? ( media-libs/tiff:0 )
 "
 DEPEND="${RDEPEND}
+	dev-qt/designer:5
 	virtual/pkgconfig
 "
 
