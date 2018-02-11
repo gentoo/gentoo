@@ -9,24 +9,20 @@ MYP=gprbuild-gpl-${PV}
 
 DESCRIPTION="Ada library to handle GPRbuild project files"
 HOMEPAGE="http://libre.adacore.com/"
-SRC_URI="
-	http://mirrors.cdn.adacore.com/art/591c45e2c7a447af2deecff7
+SRC_URI="http://mirrors.cdn.adacore.com/art/591c45e2c7a447af2deecff7
 		-> ${MYP}-src.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="gnat_2016 +gnat_2017 +shared static static-pic"
+IUSE="gnat_2016 +gnat_2017 +shared static-libs static-pic"
 
-RDEPEND="dev-ada/xmlada[static-libs,gnat_2016=,gnat_2017=]
-	gnat_2016? ( dev-lang/gnat-gpl:4.9.4 )
-	gnat_2017? ( dev-lang/gnat-gpl:6.3.0 )"
+RDEPEND="dev-ada/xmlada[static-libs,gnat_2016=,gnat_2017=]"
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild"
 
 S="${WORKDIR}"/${MYP}-src
 
-REQUIRED_USE="|| ( shared static static-pic )
-	^^ ( gnat_2016 gnat_2017 )"
+REQUIRED_USE="|| ( shared static-libs static-pic )"
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 src_configure() {
@@ -34,6 +30,11 @@ src_configure() {
 }
 
 src_compile() {
+	build () {
+		gprbuild -p -m -j$(makeopts_jobs) -XBUILD=production -v \
+			-XLIBRARY_TYPE=$1 -XXMLADA_BUILD=$1 \
+			gpr/gpr.gpr -cargs:C ${CFLAGS} -cargs:Ada ${ADAFLAGS} || die
+	}
 	if use gnat_2016; then
 		GCC_PV=4.9.4
 	else
@@ -41,21 +42,21 @@ src_compile() {
 	fi
 	GCC=${CHOST}-gcc-${GCC_PV}
 	if use shared; then
-		gprbuild -p -m -j$(makeopts_jobs) -XBUILD=production -v \
-			-XLIBRARY_TYPE=relocatable -XXMLADA_BUILD=relocatable \
-			gpr/gpr.gpr -cargs:C ${CFLAGS} -cargs:Ada ${ADAFLAGS} || die
+		build relocatable
 	fi
-	for kind in static static-pic; do
-		if use ${kind}; then
-			gprbuild -p -m -j$(makeopts_jobs) -XBUILD=production -v \
-				-XLIBRARY_TYPE=${kind} -XXMLADA_BUILD=${kind} gpr/gpr.gpr \
-				-cargs:C ${CFLAGS} -cargs:Ada ${ADAFLAGS} || die
-		fi
-	done
+	if use static-libs; then
+		build static
+	fi
+	if use static-pic; then
+		build static-pic
+	fi
 }
 
 src_install() {
-	for kind in shared static static-pic; do
+	if use static-libs; then
+		emake DESTDIR="${D}" libgpr.install.static
+	fi
+	for kind in shared static-pic; do
 		if use ${kind}; then
 			emake DESTDIR="${D}" libgpr.install.${kind}
 		fi
