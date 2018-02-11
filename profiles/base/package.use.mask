@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # This file requires >=portage-2.1.1
@@ -523,7 +523,6 @@ gnustep-apps/cynthiune flac
 
 # Richard Freeman <rich0@gentoo.org> (24 Mar 2013)
 # Dependency is masked for buffer overflows for now
-app-text/yagf cuneiform
 dev-python/pyocr cuneiform
 
 # Tom Wijsman <TomWij@gentoo.org> (10 Mar 2013)

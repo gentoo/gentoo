@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # These are broken as reported by Halcy0n, Aug, 23, 2011
@@ -141,7 +141,6 @@ sci-electronics/eagle
 sci-chemistry/cara-bin
 sci-chemistry/cyana
 sci-chemistry/mars
-sci-chemistry/xdsgui
 sci-chemistry/xdsstat-bin
 sci-libs/ipp
 sys-libs/lib-compat-loki
