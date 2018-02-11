@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install postinst postrm prepare
+DEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 sys-apps/file app-arch/unzip dev-qt/linguist-tools:5
+DESCRIPTION=A small, lightweight file manager for desktops based on pure Qt
+EAPI=6
+HOMEPAGE=http://www.qtfm.org/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 sys-apps/file
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~jer/qtfm-5.9.zip
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=25657922fb1c54cf3359d43864bd32c0
