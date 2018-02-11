@@ -33,11 +33,15 @@
 #-video_cards_vmware
 -input_devices_vmmouse
 
-# Michał Górny <mgorny@gentoo.org> (23 Feb 2018)
+# Mart Raudsepp <leio@gentoo.org> (11 Feb 2018)
+# dev-util/valgrind is not keyworded here.
+valgrind
+
+# Michał Górny <mgorny@gentoo.org> (23 Jan 2018)
 # sys-libs/libseccomp is not keyworded here.
 seccomp
 
-# Michał Górny <mgorny@gentoo.org> (23 Feb 2018)
+# Michał Górny <mgorny@gentoo.org> (23 Jan 2018)
 # net-fs/samba is not keyworded here.
 samba
 
