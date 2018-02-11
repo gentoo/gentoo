@@ -13,7 +13,7 @@ S="${WORKDIR}/oslo.db-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="+sqlite mysql postgres"
 REQUIRED_USE="|| ( mysql postgres sqlite )"
 
@@ -52,7 +52,7 @@ RDEPEND="
 		!~dev-python/sqlalchemy-1.1.8[${PYTHON_USEDEP}]
 	)
 	postgres? (
-		dev-python/psycopg:2
+		dev-python/psycopg:2[${PYTHON_USEDEP}]
 		>=dev-python/sqlalchemy-1.0.10[${PYTHON_USEDEP}]
 		!~dev-python/sqlalchemy-1.1.5[${PYTHON_USEDEP}]
 		!~dev-python/sqlalchemy-1.1.6[${PYTHON_USEDEP}]
