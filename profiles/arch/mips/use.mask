@@ -4,11 +4,11 @@
 # Unmask the flag which corresponds to ARCH.
 -mips
 
-# Michał Górny <mgorny@gentoo.org> (23 Feb 2018)
+# Michał Górny <mgorny@gentoo.org> (23 Jan 2018)
 # net-misc/networkmanager is not keyworded here.
 networkmanager
 
-# Michał Górny <mgorny@gentoo.org> (23 Feb 2018)
+# Michał Górny <mgorny@gentoo.org> (23 Jan 2018)
 # sci-geosciences/gpsd is not keyworded here.
 gps
 
