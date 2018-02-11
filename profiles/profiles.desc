@@ -154,11 +154,6 @@ mips            default/linux/mips/13.0/mipsel/multilib/o32     dev
 mips            default/linux/mips/13.0/mipsel/multilib/n32     dev
 mips            default/linux/mips/13.0/mipsel/multilib/n64     exp
 
-# Nios II Profiles
-# @MAINTAINER: ?
-nios2           default/linux/nios2/13.0                        exp
-nios2           default/linux/nios2/17.0                        exp
-
 # PPC32 Profiles
 # @MAINTAINER: ppc@gentoo.org
 ppc             default/linux/powerpc/ppc32/13.0                       stable
@@ -198,11 +193,6 @@ ppc64           default/linux/powerpc/ppc64/17.0/64bit-userland/desktop/gnome/sy
 ppc64           default/linux/powerpc/ppc64/17.0/64bit-userland/developer               stable
 ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/little-endian		exp
 ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/little-endian/systemd	exp
-
-# RISC-V Profiles
-# @MAINTAINER: ?
-riscv           default/linux/riscv/13.0                        exp
-riscv           default/linux/riscv/17.0                        exp
 
 # S390 Profiles
 # @MAINTAINER: s390@gentoo.org
