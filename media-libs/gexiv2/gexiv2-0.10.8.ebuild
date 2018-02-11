@@ -31,6 +31,7 @@ RDEPEND="${PYTHON_DEPS}
 	vala? ( $(vala_depend) )
 "
 DEPEND="${RDEPEND}
+	dev-libs/gobject-introspection-common
 	virtual/pkgconfig"
 
 src_prepare() {
