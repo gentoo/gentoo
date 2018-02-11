@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimamka <kensington@gentoo.org> (11 Feb 2018
+# Fails to build (bug #538400). Requires dead Qt 4 (bug #637014).
+# Dead upstream. Masked for removal in 30 days.
+media-sound/lastfmplayer
+
 # Aaron W. Swenson <titanofold@gentoo.org> (10 Feb 2018)
 # The 9.2 branch of PostgreSQL is past EOL. Removal in 30 days (12 Mar 2018).
 <dev-db/postgresql-9.3
