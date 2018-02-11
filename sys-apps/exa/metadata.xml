@@ -8,7 +8,6 @@
 	<maintainer type="person">
 		<email>polynomial-c@gentoo.org</email>
 		<name>Lars Wendler</name>
-		<description>Proxy maintainer. Please CC on bugs.</description>
 	</maintainer>	
 	<longdescription lang="en">
 		exa is a modern replacement for ls.

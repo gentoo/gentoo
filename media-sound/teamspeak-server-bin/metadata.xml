@@ -4,7 +4,6 @@
 	<maintainer type="person">
 		<email>ck+gentoo@bl4ckb0x.de</email>
 		<name>Conrad Kostecki</name>
-		<description>Proxy maintainer, assign bugs to him</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
