@@ -4843,6 +4843,7 @@ sci-biology/bioperl:run - Install sci-biology/bioperl-run
 sci-biology/fasttree:double-precision - use double precision instead of single-precision floating point (2x memroy required)
 sci-biology/plink:R - add support R language
 sci-biology/plink:webcheck - add support for online update checking every time the program starts
+sci-biology/seqan:tools - Build and install SeqAn commandline tools, such as the Yara aligner
 sci-calculators/units:units_cur - Install the units_cur python script that updates currencies
 sci-chemistry/apbs:fast - APBS fast mode (experimental)
 sci-chemistry/apbs:fetk - Include support for FeTK
