@@ -33,3 +33,16 @@ src_configure() {
 
 	kde5_src_configure
 }
+
+src_test() {
+	local myctestargs
+
+	# bug: 634426
+	if ! has_version >=dev-qt/qtcore-5.9.4; then
+		myctestargs+=(
+			-E "(kimageformats-read-xcf)"
+		)
+	fi
+
+	kde5_src_test
+}
