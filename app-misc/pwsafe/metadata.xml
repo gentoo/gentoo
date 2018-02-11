@@ -4,7 +4,6 @@
 	<maintainer type="person">
 		<email>chead@chead.ca</email>
 		<name>Christopher Head</name>
-		<description>Proxy maintainer, assign bugs</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
