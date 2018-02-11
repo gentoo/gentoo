@@ -8,7 +8,6 @@
 	<maintainer type="person">
 		<email>titanofold@gentoo.org</email>
 		<name>Aaron W. Swenson</name>
-		<description>Co-Maintainer</description>
 	</maintainer>
 	<use>
 		<flag name="fusefs">Enable the Fuse Filesystem</flag>
