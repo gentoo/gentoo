@@ -11,4 +11,4 @@ REQUIRED_USE=?? ( aqua X )
 SLOT=23
 SRC_URI=mirror://gnu/emacs/emacs-23.4.tar.bz2 https://dev.gentoo.org/~ulm/emacs/emacs-23.4-patches-21.tar.xz
 _eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	flag-o-matic	02908f00f002f0f07c5b74783d778325	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	readme.gentoo-r1	6f03e110529650f57fc7d1fb908b8986	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=9b98d6e8cd6c1e20a6bed8b80553f8e2
+_md5_=a227cd09339414dd4da35a7d01062097
