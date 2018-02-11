@@ -8,13 +8,12 @@
 	<maintainer type="person">
 		<email>ccx@volny.cz</email>
 		<name>Jan Pobrislo</name>
-		<description>Proxied Maintainer</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-<longdescription>
+	<longdescription>
 		util-vserver is a Linux virtual server utility framework,
 		allowing an administrator to set up multiple, isolated
 		virtual servers. It can be used to run various services
