@@ -224,9 +224,8 @@ src_configure() {
 }
 
 src_compile() {
-	# Disable the sandbox. For the unbelievers, see bug #131505
-	SANDBOX_ON=0 LD_PRELOAD="" emake \
-		CC="$(tc-getCC)" \
+	export SANDBOX_ON=0			# for the unbelievers, see Bug #131505
+	emake CC="$(tc-getCC)" \
 		AR="$(tc-getAR) cq" \
 		RANLIB="$(tc-getRANLIB)"
 }
