@@ -21,8 +21,12 @@ RDEPEND="dev-libs/libxml2:=
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
-python_test() {
+src_prepare() {
 	# Soup is not used when lxml is available.
 	rm test/soup.py || die
+	distutils-r1_src_prepare
+}
+
+python_test() {
 	esetup.py test || die "Tests failed under ${EPYTHON}"
 }
