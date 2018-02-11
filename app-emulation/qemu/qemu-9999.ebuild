@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -78,6 +78,7 @@ ALL_DEPEND="
 # Dependencies required for qemu tools (qemu-nbd, qemu-img, qemu-io, ...)
 # softmmu targets (qemu-system-*).
 SOFTMMU_TOOLS_DEPEND="
+	>=x11-libs/pixman-0.28.0[static-libs(+)]
 	accessibility? (
 		app-accessibility/brltty[api]
 		app-accessibility/brltty[static-libs(+)]
@@ -112,7 +113,7 @@ SOFTMMU_TOOLS_DEPEND="
 		sys-libs/ncurses:0=[unicode]
 		sys-libs/ncurses:0=[static-libs(+)]
 	)
-	nfs? ( >=net-fs/libnfs-1.9.3[static-libs(+)] )
+	nfs? ( >=net-fs/libnfs-1.9.3:=[static-libs(+)] )
 	numa? ( sys-process/numactl[static-libs(+)] )
 	opengl? (
 		virtual/opengl
