@@ -3234,7 +3234,7 @@ dev-libs/udis86 1.7-r2: Disassembler library for the x86/-64 architecture sets
 dev-libs/unibilium 1.2.1: A very basic terminfo library
 dev-libs/unittest++ 2.0.0: A lightweight unit testing framework for C++
 dev-libs/univalue 1.0.2: C++ universal value object and JSON library
-dev-libs/uriparser 0.8.0: Uriparser is a strictly RFC 3986 compliant URI parsing library in C
+dev-libs/uriparser 0.8.4-r1: Uriparser is a strictly RFC 3986 compliant URI parsing library in C
 dev-libs/userspace-rcu 0.9.1: userspace RCU (read-copy-update) library
 dev-libs/ustr 1.0.4-r5 1.0.4-r8: Low-overhead managed string library for C
 dev-libs/utfcpp 2.3.4: A portable and lightweight generic library for handling UTF-8 strings
@@ -7232,7 +7232,7 @@ media-gfx/jpeginfo 1.6.1: Prints information and tests integrity of JPEG/JFIF fi
 media-gfx/jpegoptim 1.4.3: Utility to optimize JPEG files
 media-gfx/jpegpixi 1.1.1: almost lossless JPEG pixel interpolator, for correcting digital camera defects
 media-gfx/kphotoalbum 5.2: Tool for indexing, searching, and viewing images
-media-gfx/krita 3.3.2.1: Free digital painting application. Digital Painting, Creative Freedom!
+media-gfx/krita 3.3.3: Free digital painting application. Digital Painting, Creative Freedom!
 media-gfx/librecad 2.1.3-r2: Generic 2D CAD program
 media-gfx/llgal 0.13.17-r2: Command-line static web gallery generator
 media-gfx/luminance-hdr 2.4.0: Graphical user interface that provides a workflow for HDR imaging
