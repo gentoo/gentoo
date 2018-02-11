@@ -4,12 +4,10 @@
 	<maintainer type="person">
 		<email>patrick@gentoo.org</email>
 		<name>Patrick Lauer</name>
-		<description>Maintainer</description>
 	</maintainer>
 	<maintainer type="person">
 		<email>ikelos@gentoo.org</email>
 		<name>Mike Auty</name>
-		<description>Maintainer</description>
 	</maintainer>
 	<maintainer type="person">
 		<email>slyfox@gentoo.org</email>
