@@ -43,7 +43,3 @@ virtual/package-manager
 virtual/pkgconfig
 virtual/shadow
 sys-apps/which
-
-# This was added too soon.
-# The new udev version needs to stabled first
-#sys-apps/kmod
