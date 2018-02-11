@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 DESCRIPTION="Online command-line translator"
 HOMEPAGE="https://www.soimort.org/translate-shell/"
@@ -27,6 +27,10 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? ( app-editors/emacs )
 	"
+
+PATCHES=(
+	"${FILESDIR}/${P}-remove-online-tests.patch"
+)
 
 src_install() {
 	emake PREFIX="${D}/usr" install

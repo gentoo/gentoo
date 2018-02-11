@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
-PYTHON_COMPAT=( python{2_7,3_{4,5}} )
+PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
 
 inherit eutils toolchain-funcs python-any-r1
 
@@ -14,20 +14,17 @@ inherit eutils toolchain-funcs python-any-r1
 
 if [[ ${PV} == *9999* || -n "${EGIT_COMMIT}" ]] ; then
 	EGIT_REPO_URI="git://git.seabios.org/seabios.git"
-	inherit git-2
+	inherit git-r3
 else
-	KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd"
-	# Upstream hasn't released a new binary.  We snipe ours from Fedora for now.
-	# https://code.coreboot.org/p/seabios/downloads/get/bios.bin-${PV}.gz
-	# http://fedora.mirror.lstn.net/
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
+
+	# Binary versions taken from fedora:
 	# http://download.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/Packages/s/
-	#   seabios-bin-1.10.1-1.fc26.noarch.rpm
-	#   seavgabios-bin-1.10.1-1.fc26.noarch.rpm
-	SRC_URI="!binary? ( https://code.coreboot.org/p/seabios/downloads/get/${P}.tar.gz )
-		binary? (
-			mirror://gentoo/bios.bin-${PV}.xz
-			seavgabios? ( mirror://gentoo/seavgabios-bin-${PV}.tar.xz )
-		)"
+	#   seabios-bin-1.10.2-1.fc27.noarch.rpm
+	#   seavgabios-bin-1.10.2-1.fc27.noarch.rpm
+	SRC_URI="
+		!binary? ( https://code.coreboot.org/p/seabios/downloads/get/${P}.tar.gz )
+		binary? ( https://dev.gentoo.org/~tamiko/distfiles/${P}-bin.tar.xz )"
 fi
 
 DESCRIPTION="Open Source implementation of a 16-bit x86 BIOS"
@@ -75,12 +72,6 @@ src_unpack() {
 	mkdir -p "${S}"
 }
 
-src_prepare() {
-	use binary && return
-
-	epatch_user
-}
-
 src_configure() {
 	use binary && return
 
@@ -109,8 +100,10 @@ _emake() {
 src_compile() {
 	use binary && return
 
+	cp "${FILESDIR}/seabios/config.seabios-256k" .config || die
+	_emake oldnoconfig
 	_emake out/bios.bin
-	mv out/bios.bin ../bios.bin
+	mv out/bios.bin ../bios-256k.bin || die
 
 	if use seavgabios ; then
 		local config t targets=(
@@ -132,8 +125,10 @@ src_compile() {
 }
 
 src_install() {
+
 	insinto /usr/share/seabios
-	newins ../bios.bin* bios.bin
+	use binary && doins ../bios.bin
+	doins ../bios-256k.bin
 
 	if use seavgabios ; then
 		insinto /usr/share/seavgabios
