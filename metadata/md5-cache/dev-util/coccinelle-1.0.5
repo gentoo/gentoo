@@ -4,11 +4,11 @@ DESCRIPTION=Program matching and transformation engine
 EAPI=5
 HOMEPAGE=http://coccinelle.lip6.fr/
 IUSE=doc emacs ocaml +ocamlopt pcre python test vim-syntax python_targets_python2_7
-KEYWORDS=~amd64
+KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=>=dev-lang/ocaml-3.12:=[ocamlopt?] dev-ml/sexplib:=[ocamlopt(+)?] dev-ml/menhir:=[ocamlopt?] dev-ml/camlp4:=[ocamlopt?] dev-ml/parmap:=[ocamlopt?] emacs? ( virtual/emacs ) ocaml? ( dev-ml/findlib:= ) pcre? ( dev-ml/pcre-ocaml:=[ocamlopt(+)?] ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] ) vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )
 REQUIRED_USE=python_targets_python2_7
 SLOT=0
 SRC_URI=http://coccinelle.lip6.fr/distrib/coccinelle-1.0.5.tgz
 _eclasses_=bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-single-r1	317a2557b4d7319a7418225f65accf77	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=fcc63bb31b045e156c3f16a451163ce8
+_md5_=8a031fd88c63b44dc98000061e103fe6
