@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,10 +16,13 @@ KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
 RDEPEND="dev-libs/libxml2:=
+	dev-python/chardet[${PYTHON_USEDEP}]
 	>=dev-python/lxml-3.8.0[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
 python_test() {
+	# Soup is not used when lxml is available.
+	rm test/soup.py || die
 	esetup.py test || die "Tests failed under ${EPYTHON}"
 }
