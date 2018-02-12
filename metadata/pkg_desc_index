@@ -9985,7 +9985,7 @@ sys-fabric/librdmacm 1.0.18: OpenIB userspace RDMA CM library
 sys-firmware/alsa-firmware 1.0.29: Advanced Linux Sound Architecture firmware
 sys-firmware/atmel-firmware 1.3-r1: Firmware and config for atmel and atmel_cs wlan drivers included in linux 2.6
 sys-firmware/bluez-firmware 1.2: Firmware for Broadcom BCM203x and STLC2300 Bluetooth chips
-sys-firmware/edk2-ovmf 2017_pre20170505: UEFI firmware for 64-bit x86 virtual machines
+sys-firmware/edk2-ovmf 2017_pre20170505-r1: UEFI firmware for 64-bit x86 virtual machines
 sys-firmware/intel-microcode 20140430 20150121 20151106 20161104 20170511 20170707 20171117-r1: Intel IA32/IA64 microcode update data
 sys-firmware/ipw2100-firmware 1.3: Firmware for the Intel PRO/Wireless 2100 3B miniPCI adapter
 sys-firmware/ipw2200-firmware 3.1: Firmware for the Intel PRO/Wireless 2200BG/2915ABG miniPCI and 2225BG PCI
