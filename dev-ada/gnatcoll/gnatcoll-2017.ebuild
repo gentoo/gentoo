@@ -16,14 +16,13 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="gmp gnat_2016 +gnat_2017 gtk iconv postgres pygobject projects readline
-	+shared sqlite static syslog tools"
+	+shared sqlite static-libs syslog tools"
 
 RDEPEND="dev-lang/gnat-gpl:6.3.0
 	${PYTHON_DEPS}
 	gmp? ( dev-libs/gmp:* )
 	gtk? (
-		dev-ada/gtkada[gnat_2017,shared?]
-		static? ( dev-ada/gtkada[static-libs] )
+		dev-ada/gtkada[gnat_2017,shared?,static-libs?]
 		dev-libs/atk
 		dev-libs/glib
 		x11-libs/cairo
@@ -35,8 +34,7 @@ RDEPEND="dev-lang/gnat-gpl:6.3.0
 	postgres? ( dev-db/postgresql:* )
 	sqlite? ( dev-db/sqlite )
 	projects? (
-		>=dev-ada/libgpr-2017[gnat_2017,shared?]
-		static? ( dev-ada/libgpr[static-libs] )
+		>=dev-ada/libgpr-2017[gnat_2017,shared?,static-libs?]
 	)"
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[gnat_2017]"
@@ -99,7 +97,7 @@ src_compile() {
 		emake PROCESSORS=$(makeopts_jobs) GPRBUILD_OPTIONS=-v GCC=${GCC} \
 			build_library_type/relocatable
 	fi
-	if use static; then
+	if use static-libs; then
 		emake PROCESSORS=$(makeopts_jobs) GPRBUILD_OPTIONS=-v GCC=${GCC} \
 			build_library_type/static
 	fi
@@ -114,7 +112,7 @@ src_install() {
 	if use shared; then
 		emake prefix="${D}usr" install_library_type/relocatable
 	fi
-	if use static; then
+	if use static-libs; then
 		emake prefix="${D}usr" install_library_type/static
 	fi
 	if use tools; then
