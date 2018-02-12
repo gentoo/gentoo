@@ -4,6 +4,10 @@
 <maintainer type="person">
 	<email>tomboy64@sina.cn</email>
 </maintainer>
+<maintainer type="person">
+	<email>arfrever.fta@gmail.com</email>
+	<name>Arfrever Frehtes Taifersar Arahesis</name>
+</maintainer>
 <maintainer type="project">
 	<email>java@gentoo.org</email>
 	<name>Gentoo Java Project</name>
