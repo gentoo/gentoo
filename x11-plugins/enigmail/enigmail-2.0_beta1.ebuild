@@ -35,7 +35,10 @@ RDEPEND="|| (
 			)
 		)
 		=app-crypt/gnupg-1.4*
-	)"
+	)
+	!<mail-client/thunderbird-52.5.0
+	!<www-client/seamonkey-2.49.5.0_p0
+"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	app-arch/zip
