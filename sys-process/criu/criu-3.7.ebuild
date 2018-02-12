@@ -14,14 +14,17 @@ SRC_URI="http://download.openvz.org/criu/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64"
-IUSE="python setproctitle"
+IUSE="python selinux setproctitle static-libs"
+
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-RDEPEND="dev-libs/protobuf-c
+RDEPEND="
+	dev-libs/protobuf-c
 	dev-libs/libnl:3
 	net-libs/libnet:1.1
 	sys-libs/libcap
 	python? ( ${PYTHON_DEPS} )
+	selinux? ( sys-libs/libselinux )
 	setproctitle? ( dev-libs/libbsd )"
 DEPEND="${RDEPEND}
 	app-text/asciidoc
@@ -54,6 +57,16 @@ criu_arch() {
 	arm64) echo "aarch64";;
 	*)     echo "${ARCH}";;
 	esac
+}
+
+src_prepare() {
+	default
+
+	if ! use selinux; then
+		sed \
+			-e 's:libselinux:no_libselinux:g' \
+			-i Makefile.config || die
+	fi
 }
 
 src_compile() {
@@ -94,5 +107,9 @@ src_install() {
 	if use python ; then
 		cd lib
 		python_foreach_impl install_crit
+	fi
+
+	if ! use static-libs; then
+		find "${D}" -name "*.a" -delete || die
 	fi
 }
