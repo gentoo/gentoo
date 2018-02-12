@@ -10,27 +10,36 @@ GIT_SHORT=${GIT_REV:0:7}
 
 DESCRIPTION="Open source network boot (PXE) firmware"
 HOMEPAGE="http://ipxe.org/"
-SRC_URI="https://git.ipxe.org/ipxe.git/snapshot/${GIT_REV}.tar.bz2 -> ${P}-${GIT_SHORT}.tar.bz2"
+SRC_URI="
+	!binary? ( https://git.ipxe.org/ipxe.git/snapshot/${GIT_REV}.tar.bz2 -> ${P}-${GIT_SHORT}.tar.bz2 )
+	binary? ( https://dev.gentoo.org/~tamiko/distfiles/${P}-${GIT_SHORT}-bin.tar.xz )"
 
 LICENSE="GPL-2"
 SLOT="0"
-# TODO: Add arm/arm64 once figure out how to build w/out including
-# all the x86-specific drivers (that use I/O insns).
-KEYWORDS="-* ~amd64 ~x86"
-IUSE="efi ipv6 iso lkrn +qemu undi usb vmware"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~x86"
+IUSE="+binary efi ipv6 iso lkrn +qemu undi usb vmware"
 
-DEPEND="app-arch/xz-utils
+REQUIRED_USE="!amd64? ( !x86? ( binary ) )"
+
+SOURCE_DEPEND="app-arch/xz-utils
 	dev-lang/perl
 	sys-libs/zlib
 	iso? (
 		sys-boot/syslinux
 		virtual/cdrtools
 	)"
+DEPEND="
+	!binary? (
+		amd64? ( ${SOURCE_DEPEND} )
+		x86? ( ${SOURCE_DEPEND} )
+	)"
 RDEPEND=""
 
 S="${WORKDIR}/ipxe-${GIT_SHORT}/src"
 
 src_configure() {
+	use binary && return
+
 	cat <<-EOF > "${S}"/config/local/general.h
 #undef BANNER_TIMEOUT
 #define BANNER_TIMEOUT 0
@@ -66,6 +75,8 @@ ipxemake() {
 }
 
 src_compile() {
+	use binary && return
+
 	export NO_WERROR=1
 	if use qemu; then
 		ipxemake bin/808610de.rom # pxe-e1000.rom (old)
