@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit readme.gentoo
 
-DESCRIPTION="Configuration to be used in conjunction with the freetype-infinality subpixel hinting"
+DESCRIPTION="Configuration for freetype-infinality subpixel hinting"
 HOMEPAGE="http://www.infinality.net/blog/infinality-freetype-patches/"
 SRC_URI="https://dev.gentoo.org/~yngwin/distfiles/${P}.tar.xz
 	nyx? ( https://dev.gentoo.org/~yngwin/distfiles/fontconfig-nyx-2.tar.xz )"
