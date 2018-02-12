@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,13 +14,15 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="debug selinux systemd hardened"
 
-RDEPEND=">=dev-libs/libverto-0.2.2
-	>=dev-libs/ding-libs-0.5.0
+COMMON_DEPEND=">=dev-libs/libverto-0.2.2
+	>=dev-libs/ding-libs-0.6.1
 	virtual/krb5
 	selinux? ( sys-libs/libselinux )"
+RDEPEND="${COMMON_DEPEND}
+	selinux? ( sec-policy/selinux-gssproxy )"
 # We need xml stuff to build the man pages, and people really want/need
 # the man pages for this package :). #585200
-DEPEND="${RDEPEND}
+DEPEND="${COMMON_DEPEND}
 	app-text/docbook-xml-dtd:4.4
 	dev-libs/libxslt
 	virtual/pkgconfig"
