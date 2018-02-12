@@ -17,6 +17,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (12 Feb 2018)
+# dev-libs/ical stabilisation timeout, bug #621724
+app-mobilephone/gnokii ical
+net-mail/cyrus-imapd http
+net-wireless/bluez obex
+
 # Andreas Sturmlechner <asturm@gentoo.org> (20 Jan 2018)
 # revdeps on dev-libs/boost which is no longer stable.
 dev-db/mariadb oqgraph
