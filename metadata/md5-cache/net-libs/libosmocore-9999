@@ -1,11 +1,11 @@
-DEFINED_PHASES=configure install prepare unpack
-DEPEND=embedded? ( sys-libs/talloc ) pcsc-lite? ( sys-apps/pcsc-lite ) app-doc/doxygen >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 dev-vcs/git
+DEFINED_PHASES=configure prepare unpack
+DEPEND=sys-libs/talloc pcsc-lite? ( sys-apps/pcsc-lite ) app-doc/doxygen >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=Utility functions for OsmocomBB, OpenBSC and related projects
-EAPI=5
+EAPI=6
 HOMEPAGE=http://bb.osmocom.org/trac/wiki/libosmocore
-IUSE=embedded pcsc-lite
+IUSE=pcsc-lite
 LICENSE=GPL-2 LGPL-3
-RDEPEND=embedded? ( sys-libs/talloc ) pcsc-lite? ( sys-apps/pcsc-lite )
+RDEPEND=sys-libs/talloc pcsc-lite? ( sys-apps/pcsc-lite )
 SLOT=0
-_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	git-2	195a672bfaf52d868442171c9469bbb6	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=9134ccf16b818730caf70e9aa3de8662
+_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	git-r3	fec09a83ae965b041b47f5ff7c8ba29a	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_md5_=bd7b4911389965f31896146130dda882
