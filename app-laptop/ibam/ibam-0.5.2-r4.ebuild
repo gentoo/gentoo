@@ -1,11 +1,11 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI="6"
 
-PATCH_LEVEL=2
+PATCH_LEVEL="2.1"
 
-inherit eutils multilib toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Intelligent Battery Monitor"
 HOMEPAGE="http://ibam.sourceforge.net/"
@@ -28,14 +28,15 @@ DEPEND="
 	gkrellm? ( virtual/pkgconfig )"
 
 src_prepare() {
-	epatch \
+	eapply \
 		"${FILESDIR}"/${P}-build.patch \
 		"${WORKDIR}"/${PN}_${PV}-${PATCH_LEVEL}.diff
 
-	local f
-	for f in $(find . -name '*.dpatch'); do
-		epatch "${f}"
-	done
+	eapply debian/patches/02*.dpatch
+	eapply debian/patches/03*.dpatch
+	eapply debian/patches/05*.dpatch
+
+	eapply_user
 }
 
 src_compile() {

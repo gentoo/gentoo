@@ -10,7 +10,7 @@ SRC_URI="http://files.libburnia-project.org/releases/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 sparc x86"
-IUSE="debug static-libs track-src-odirect"
+IUSE="debug static-libs"
 
 RDEPEND=""
 DEPEND="$RDEPEND
@@ -19,7 +19,6 @@ DEPEND="$RDEPEND
 src_configure() {
 	econf \
 	$(use_enable static-libs static) \
-	$(use_enable track-src-odirect) \
 	--disable-ldconfig-at-install \
 	$(use_enable debug)
 }

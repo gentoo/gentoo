@@ -19,7 +19,7 @@ IUSE="gnat_2016 +gnat_2017"
 
 RDEPEND="dev-ada/xmlada[gnat_2016=,gnat_2017=,static-libs]"
 DEPEND="${RDEPEND}
-	dev-ada/gnat_util[gnat_2016=,gnat_2017=,static]
+	dev-ada/gnat_util[gnat_2016=,gnat_2017=,static-libs]
 	dev-ada/asis[gnat_2016=,gnat_2017=]
 	dev-ada/gprbuild[gnat_2016=,gnat_2017=]"
 REQUIRED_USE="^^ ( gnat_2016 gnat_2017 )"

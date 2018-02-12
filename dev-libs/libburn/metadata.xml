@@ -9,8 +9,4 @@
 Libburn is an open-source library for reading, mastering and writing optical
 discs.
 </longdescription>
-<use>
-<flag name="track-src-odirect">Read track input with O_DIRECT (see man 2 open), 
-this may deliver a better write performance in some situations</flag>
-</use>
 </pkgmetadata>

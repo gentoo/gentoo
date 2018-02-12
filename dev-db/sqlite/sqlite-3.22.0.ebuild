@@ -11,18 +11,19 @@ DOC_PV="${SRC_PV}"
 
 DESCRIPTION="A SQL Database Engine in a C Library"
 HOMEPAGE="https://sqlite.org/"
-SRC_URI="doc? ( https://sqlite.org/2017/${PN}-doc-${DOC_PV}.zip )
-	tcl? ( https://sqlite.org/2017/${PN}-src-${SRC_PV}.zip )
-	test? ( https://sqlite.org/2017/${PN}-src-${SRC_PV}.zip )
-	tools? ( https://sqlite.org/2017/${PN}-src-${SRC_PV}.zip )
-	!tcl? ( !test? ( !tools? ( https://sqlite.org/2017/${PN}-autoconf-${SRC_PV}.tar.gz ) ) )"
+SRC_URI="doc? ( https://sqlite.org/2018/${PN}-doc-${DOC_PV}.zip )
+	tcl? ( https://sqlite.org/2018/${PN}-src-${SRC_PV}.zip )
+	test? ( https://sqlite.org/2018/${PN}-src-${SRC_PV}.zip )
+	tools? ( https://sqlite.org/2018/${PN}-src-${SRC_PV}.zip )
+	!tcl? ( !test? ( !tools? ( https://sqlite.org/2018/${PN}-autoconf-${SRC_PV}.tar.gz ) ) )"
 
 LICENSE="public-domain"
 SLOT="3"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="debug doc icu +readline secure-delete static-libs tcl test tools"
 
-RDEPEND="icu? ( dev-libs/icu:0=[${MULTILIB_USEDEP}] )
+RDEPEND="sys-libs/zlib:0=[${MULTILIB_USEDEP}]
+	icu? ( dev-libs/icu:0=[${MULTILIB_USEDEP}] )
 	readline? ( sys-libs/readline:0=[${MULTILIB_USEDEP}] )
 	tcl? ( dev-lang/tcl:0=[${MULTILIB_USEDEP}] )
 	tools? ( dev-lang/tcl:0=[${MULTILIB_USEDEP}] )"
@@ -49,18 +50,18 @@ pkg_setup() {
 
 src_prepare() {
 	if full_archive; then
-		eapply "${FILESDIR}/${PN}-3.21.0-full_archive-build.patch"
+		eapply "${FILESDIR}/${PN}-3.22.0-full_archive-build.patch"
+		eapply "${FILESDIR}/${PN}-3.22.0-full_archive-headers.patch"
+		eapply "${FILESDIR}/${PN}-3.22.0-full_archive-tests.patch"
 
 		eapply_user
 
 		# Fix AC_CHECK_FUNCS.
 		# https://mailinglists.sqlite.org/cgi-bin/mailman/private/sqlite-dev/2016-March/002762.html
 		sed -e "s/AC_CHECK_FUNCS(.*)/AC_CHECK_FUNCS([fdatasync fullfsync gmtime_r isnan localtime_r localtime_s malloc_usable_size posix_fallocate pread pread64 pwrite pwrite64 strchrnul usleep utime])/" -i configure.ac || die "sed failed"
-
-		# https://sqlite.org/src/info/bf09fa683ea42b75
-		sed -e "s:cp tsrc/shell\.c tsrc/sqlite3ext\.h \.:cp tsrc/sqlite3ext.h .:" -i Makefile.in || die "sed failed"
 	else
 		eapply "${FILESDIR}/${PN}-3.21.0-nonfull_archive-build.patch"
+		eapply -p2 "${FILESDIR}/${PN}-3.22.0-full_archive-headers.patch"
 
 		eapply_user
 
@@ -125,6 +126,14 @@ multilib_src_configure() {
 	# https://sqlite.org/malloc.html#memsys5
 	append-cppflags -DSQLITE_ENABLE_MEMSYS5
 
+	# Support sqlite_offset() function.
+	# https://sqlite.org/lang_corefunc.html#sqlite_offset
+	append-cppflags -DSQLITE_ENABLE_OFFSET_SQL_FUNC
+
+	# Support pre-update hook functions.
+	# https://sqlite.org/c3ref/preupdate_count.html
+	append-cppflags -DSQLITE_ENABLE_PREUPDATE_HOOK
+
 	# Support Resumable Bulk Update extension.
 	# https://sqlite.org/rbu.html
 	append-cppflags -DSQLITE_ENABLE_RBU
@@ -157,6 +166,12 @@ multilib_src_configure() {
 	# Support LIMIT and ORDER BY clauses on DELETE and UPDATE statements.
 	# https://sqlite.org/compile.html#enable_update_delete_limit
 	append-cppflags -DSQLITE_ENABLE_UPDATE_DELETE_LIMIT
+
+	# Support PRAGMA function_list, PRAGMA module_list and PRAGMA pragma_list statements.
+	# https://sqlite.org/pragma.html#pragma_function_list
+	# https://sqlite.org/pragma.html#pragma_module_list
+	# https://sqlite.org/pragma.html#pragma_pragma_list
+	append-cppflags -DSQLITE_INTROSPECTION_PRAGMAS
 
 	# Support soundex() function.
 	# https://sqlite.org/lang_corefunc.html#soundex
@@ -228,7 +243,7 @@ multilib_src_compile() {
 	emake HAVE_TCL="$(usex tcl 1 "")" TCLLIBDIR="${EPREFIX}/usr/$(get_libdir)/${P}"
 
 	if use tools && multilib_is_native_abi; then
-		emake changeset dbdump dbhash rbu scrub showdb showjournal showstat4 showwal sqldiff sqlite3_analyzer
+		emake changeset dbdump dbhash rbu scrub showdb showjournal showshm showstat4 showwal sqldiff sqlite3_analyzer sqlite3_checker sqlite3_expert sqltclsh
 	fi
 }
 
@@ -260,10 +275,14 @@ multilib_src_install() {
 		install_tool scrub sqlite3-scrub
 		install_tool showdb sqlite3-show-db
 		install_tool showjournal sqlite3-show-journal
+		install_tool showshm sqlite3-show-shm
 		install_tool showstat4 sqlite3-show-stat4
 		install_tool showwal sqlite3-show-wal
 		install_tool sqldiff sqlite3-diff
 		install_tool sqlite3_analyzer sqlite3-analyzer
+		install_tool sqlite3_checker sqlite3-checker
+		install_tool sqlite3_expert sqlite3-expert
+		install_tool sqltclsh sqlite3-tclsh
 
 		unset -f install_tool
 	fi
