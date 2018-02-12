@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -26,20 +26,21 @@ SLOT="0"
 IUSE="gnome-keyring gtk policykit sasl"
 
 RDEPEND="!app-emulation/virtinst
-	dev-python/libvirt-python[${PYTHON_USEDEP}]
-	>=app-emulation/libvirt-glib-1.0.0[introspection]
 	${PYTHON_DEPS}
+	>=app-emulation/libvirt-glib-1.0.0[introspection]
 	dev-libs/libxml2[python,${PYTHON_USEDEP}]
+	dev-python/configparser[${PYTHON_USEDEP}]
 	dev-python/ipaddr[${PYTHON_USEDEP}]
+	dev-python/libvirt-python[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	>=sys-libs/libosinfo-0.2.10[introspection]
 	gtk? (
-		x11-libs/gtk+:3[introspection]
 		gnome-base/dconf
 		>=net-libs/gtk-vnc-0.3.8[gtk3,introspection,python,${PYTHON_USEDEP}]
 		net-misc/spice-gtk[usbredir,gtk3,introspection,sasl?]
 		net-misc/x11-ssh-askpass
+		x11-libs/gtk+:3[introspection]
 		x11-libs/vte:2.91[introspection]
 		gnome-keyring? ( gnome-base/libgnome-keyring )
 		policykit? ( sys-auth/polkit[introspection] )
