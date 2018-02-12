@@ -14,7 +14,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
-IUSE="debug designer doc fox gtk qml qt5 sensors serialport test webkit"
+IUSE="debug designer doc fox gtk libressl qml qt5 sensors serialport test webkit"
 
 REQUIRED_USE="designer? ( qt5 ) qml? ( qt5 ) sensors? ( qt5 ) serialport? ( qt5 ) webkit? ( qt5 )"
 
@@ -23,7 +23,8 @@ REQUIRED_USE="designer? ( qt5 ) qml? ( qt5 ) sensors? ( qt5 ) serialport? ( qt5 
 RDEPEND="
 	dev-libs/libgcrypt:0=
 	dev-libs/libgpg-error
-	dev-libs/openssl:0=
+	libressl? ( dev-libs/libressl:0= )
+	!libressl? ( dev-libs/openssl:0= )
 	net-libs/gnutls:=
 	virtual/libiconv
 	virtual/libintl
