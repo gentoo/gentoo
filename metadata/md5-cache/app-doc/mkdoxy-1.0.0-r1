@@ -3,8 +3,8 @@ DEPEND=app-doc/doxygen >=dev-lang/perl-5
 DESCRIPTION=mkDoxy generates Doxygen-compatible HTML documentation for makefiles
 EAPI=6
 HOMEPAGE=https://sourceforge.net/projects/mkdoxy/
-KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~sparc ~x86
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~sparc x86
 LICENSE=BSD
 SLOT=0
 SRC_URI=mirror://sourceforge/mkdoxy/mkdoxy-1.0.0.tar.gz
-_md5_=f9379527ba307d85c72f91ec2582b81b
+_md5_=d1f5beb031d1ae5553c1d2160e1415f3
