@@ -19,7 +19,7 @@ if [[ ${PV} = *9999* ]]; then
 	SRC_URI=""
 else
 	SRC_URI="http://wiki.qemu-project.org/download/${P}.tar.bz2"
-	KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
+	KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 x86 ~x86-fbsd"
 
 	# Gentoo specific patchsets:
 	SRC_URI+=" https://dev.gentoo.org/~tamiko/distfiles/${P}-patches-r0.tar.xz"
