@@ -1,11 +1,11 @@
-DEFINED_PHASES=install
+DEFINED_PHASES=-
 DEPEND=>=dev-scheme/guile-1.6
 DESCRIPTION=Small process-control library for Guile
-EAPI=0
+EAPI=6
 HOMEPAGE=http://arglist.com/guile/
 KEYWORDS=~amd64 ppc x86
 LICENSE=GPL-2
 RDEPEND=>=dev-scheme/guile-1.6
 SLOT=0
 SRC_URI=http://arglist.com/guile/goosh-1.3/goosh-1.3.tar.gz
-_md5_=e9bbe878b6fd67ed0a90ef6ec2af3bfd
+_md5_=bd8b9d497a2120498ae5d7a2e6e6aaf1
