@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install postinst setup
+DEPEND=|| ( ( >=app-crypt/gnupg-2.0 || ( app-crypt/pinentry[gtk(-)] app-crypt/pinentry[qt4(-)] app-crypt/pinentry[qt5(-)] ) ) =app-crypt/gnupg-1.4* ) !<mail-client/thunderbird-52.5.0 !<www-client/seamonkey-2.49.5.0_p0 || ( >=dev-lang/python-2.7.5-r2:2.7 ) app-arch/zip dev-lang/perl
+DESCRIPTION=Mozilla extension to provide GPG support in mail clients
+EAPI=6
+HOMEPAGE=http://www.enigmail.net/
+LICENSE=MPL-2.0 GPL-3
+RDEPEND=|| ( ( >=app-crypt/gnupg-2.0 || ( app-crypt/pinentry[gtk(-)] app-crypt/pinentry[qt4(-)] app-crypt/pinentry[qt5(-)] ) ) =app-crypt/gnupg-1.4* ) !<mail-client/thunderbird-52.5.0 !<www-client/seamonkey-2.49.5.0_p0
+SLOT=0
+SRC_URI=http://www.enigmail.net/download/beta/enigmail-2.0-beta1.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	python-any-r1	27d7f9da7187d283b7f3eae8390b7b09	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_md5_=f5513e8258e634026f1a988f350dfc31
