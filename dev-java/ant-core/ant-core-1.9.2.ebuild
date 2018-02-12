@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -16,7 +16,7 @@ MY_P="apache-ant-${PV}"
 
 DESCRIPTION="Java-based build tool similar to 'make' that uses XML configuration files"
 HOMEPAGE="http://ant.apache.org/"
-SRC_URI="mirror://apache/ant/source/${MY_P}-src.tar.bz2
+SRC_URI="https://archive.apache.org/dist/ant/source/${MY_P}-src.tar.bz2
 	https://dev.gentoo.org/~tomwij/files/dist/ant-${PV}-gentoo.tar.bz2"
 
 LICENSE="Apache-2.0"
