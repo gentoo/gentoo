@@ -2,10 +2,10 @@ DEFINED_PHASES=-
 DEPEND=sys-libs/ncurses:0=[unicode] virtual/pkgconfig
 DESCRIPTION=NCurses Disk Usage
 EAPI=6
-HOMEPAGE=http://dev.yorhel.nl/ncdu/
+HOMEPAGE=https://dev.yorhel.nl/ncdu/
 KEYWORDS=alpha amd64 arm arm64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~x64-macos
 LICENSE=MIT
 RDEPEND=sys-libs/ncurses:0=[unicode]
 SLOT=0
-SRC_URI=http://dev.yorhel.nl/download/ncdu-1.12.tar.gz
-_md5_=7251a1f32672c5e90baa1f9119dedb6d
+SRC_URI=https://dev.yorhel.nl/download/ncdu-1.12.tar.gz
+_md5_=98f38d5c64e0f271a2cf583ff0e37c50
