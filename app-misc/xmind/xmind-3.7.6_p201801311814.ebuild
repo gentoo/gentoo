@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils multilib gnome2-utils font
+inherit gnome2-utils font
 
-MY_PV="8-update2"
+MY_PV="8-update7"
 MY_P="${PN}-${MY_PV}-linux"
 
 DESCRIPTION="A brainstorming and mind mapping software tool"
