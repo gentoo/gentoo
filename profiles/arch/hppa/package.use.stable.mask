@@ -17,12 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
-# Andreas Sturmlechner <asturm@gentoo.org> (20 Jan 2018)
-# revdeps on dev-libs/boost which is no longer stable.
-dev-db/mariadb oqgraph
-dev-libs/libsigc++ test
-media-libs/chromaprint test
-media-libs/gegl raw
+# Andreas Sturmlechner <asturm@gentoo.org> (12 Feb 2018)
+# dev-libs/libical stabilisation timeout, bug #621724
+app-mobilephone/gnokii ical
+net-mail/cyrus-imapd http
+net-wireless/bluez obex
 
 # Hans de Graaff <graaff@gentoo.org> (26 Nov 2017)
 # Several packages no longer have stable keywords due
