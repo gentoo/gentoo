@@ -87,9 +87,6 @@ pkg_setup() {
 		--use-system-zlib
 	)
 
-	# wiredtiger not supported on 32bit platforms #572166
-	use x86 && scons_opts+=( --wiredtiger=off )
-
 	if use debug; then
 		scons_opts+=( --dbg=on )
 	fi

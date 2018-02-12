@@ -104,9 +104,6 @@ src_configure() {
 	use kerberos && scons_opts+=( --use-sasl-client )
 	use ssl && scons_opts+=( --ssl )
 
-	# wiredtiger not supported on 32bit platforms #572166
-	use x86 && scons_opts+=( --wiredtiger=off )
-
 	# respect mongoDB upstream's basic recommendations
 	# see bug #536688 and #526114
 	if ! use debug; then
