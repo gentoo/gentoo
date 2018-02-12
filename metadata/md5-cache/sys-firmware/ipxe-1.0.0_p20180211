@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst
+DEPEND=!binary? ( amd64? ( app-arch/xz-utils dev-lang/perl sys-libs/zlib iso? ( sys-boot/syslinux virtual/cdrtools ) ) x86? ( app-arch/xz-utils dev-lang/perl sys-libs/zlib iso? ( sys-boot/syslinux virtual/cdrtools ) ) )
+DESCRIPTION=Open source network boot (PXE) firmware
+EAPI=6
+HOMEPAGE=http://ipxe.org/
+IUSE=+binary efi ipv6 iso lkrn +qemu undi usb vmware savedconfig
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~x86
+LICENSE=GPL-2
+REQUIRED_USE=!amd64? ( !x86? ( binary ) )
+SLOT=0
+SRC_URI=!binary? ( https://git.ipxe.org/ipxe.git/snapshot/546dd51de8459d4d09958891f426fa2c73ff090d.tar.bz2 -> ipxe-1.0.0_p20180211-546dd51.tar.bz2 ) binary? ( https://dev.gentoo.org/~tamiko/distfiles/ipxe-1.0.0_p20180211-546dd51-bin.tar.xz )
+_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	portability	2b88d3ecc35035a3b8ab628b49cafb0e	preserve-libs	ef207dc62baddfddfd39a164d9797648	savedconfig	e6948c872ff47e15a10e5ad1be15c18e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_md5_=7cc33431b5d522a470cc2e171208c664
