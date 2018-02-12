@@ -18,6 +18,8 @@ RDEPEND="xattr? ( sys-apps/attr )"
 DEPEND="${RDEPEND}
 	test? ( sys-apps/ed )"
 
+PATCHES=( "${FILESDIR}"/${P}-fix-test-suite.patch )
+
 src_configure() {
 	use static && append-ldflags -static
 
