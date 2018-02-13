@@ -5573,7 +5573,12 @@ sys-libs/glibc:nscd - Build, and enable support for, the Name Service Cache Daem
 sys-libs/glibc:rpc - Enable obsolete RPC/NIS layers
 sys-libs/glibc:suid - Make internal pt_chown helper setuid -- not needed if using Linux and have /dev/pts mounted with gid=5
 sys-libs/glibc:systemtap - enable systemtap static probe points
+sys-libs/gwenhywfar:designer - Build plugins for dev-qt/designer
 sys-libs/gwenhywfar:fox - Use x11-libs/fox graphical toolkit
+sys-libs/gwenhywfar:qml - Enable support for plugins using QML
+sys-libs/gwenhywfar:sensors - Enable support for dev-qt/qtsensors module
+sys-libs/gwenhywfar:serialport - Enable support for dev-qt/qtserialport module
+sys-libs/gwenhywfar:webkit - Enable support for dev-qt/qtwebkit
 sys-libs/libblockdev:bcache - Enable block device cache support.
 sys-libs/libblockdev:cryptsetup - Enable sys-fs/cryptsetup support
 sys-libs/libblockdev:dmraid - Support for dmraid devices, also known as ATA-RAID, or Fake RAID.
