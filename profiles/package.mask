@@ -270,11 +270,6 @@ dev-libs/libFuzzer
 =sys-kernel/gentoo-sources-4.14.11
 
 # Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
-# Nobody bothered to bump it for ages, NPAPI is phased out (#468772).
-# Removal in a month.
-media-plugins/npapi-vlc
-
-# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
 # Fails to fetch (#597424). Removal in a month.
 sci-chemistry/platon
 
@@ -309,11 +304,6 @@ dev-db/lib_mysqludf_sys
 dev-db/lib_mysqludf_json
 
 # Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
-# Not properly mirrored, 14 years old and not really useful this days
-# (#629328). Removal in a month.
-x11-themes/lush
-
-# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
 # Fails multilib-strict check (#628836). Nothing requires it. Removal in a
 # month.
 dev-libs/dclog
@@ -337,10 +327,6 @@ net-im/mu-conference
 # Not compatible with current libmowgli, no reverse deps (#630030). Removal
 # in a month.
 dev-libs/libmcs
-
-# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
-# Upstream dead, QT4 consumer (#630550). Removal in a month.
-x11-libs/qwtplot3d
 
 # Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
 # No reverse deps, fails to build (#630866). Removal in a month.

@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit fdo-mime font gnome2-utils unpacker versionator
+inherit font gnome2-utils unpacker versionator xdg
 
 MY_PV="$(get_version_component_range 1-4)"
 MY_V="$(get_version_component_range 5)"
@@ -41,71 +41,56 @@ RESTRICT="strip mirror" # mirror as explained at bug #547372
 LICENSE="WPS-EULA"
 IUSE="+sharedfonts"
 
-UNBUNDLED_LIBS="
-	media-libs/phonon
-"
-# Not fully unbundled: media-libs/phonon , libkso.so needs system copy, but
-# wpp fails to run if bundled one is not present due to invalid symbols
-#	media-libs/phonon
-#	media-libs/tiff:3
-#	dev-qt/qtwebkit:4
-#	dev-qt/qtcore:4
-#	dev-qt/qtdbus:4
-
-NATIVE_DEPEND="
-	app-arch/bzip2
-	dev-libs/expat
-	dev-libs/glib:2
-	dev-libs/libffi
-	dev-libs/libxml2:2
-	media-libs/fontconfig:1.0
-	media-libs/freetype:2
-	media-libs/glu
-	media-libs/gst-plugins-base:0.10
-	media-libs/gstreamer:0.10
-	media-libs/libpng:1.2
-	virtual/opengl
-	media-libs/tiff:3
-	sys-apps/util-linux
-	sys-libs/zlib
-	x11-libs/libdrm
+# Deps got from this (listed in order):
+# rpm -qpR wps-office-10.1.0.5707-1.a21.x86_64.rpm
+# ldd /opt/kingsoft/wps-office/office6/wps
+# ldd /opt/kingsoft/wps-office/office6/wpp
+RDEPEND="
 	x11-libs/libICE
 	x11-libs/libSM
 	x11-libs/libX11
-	x11-libs/libXau
-	x11-libs/libxcb
-	x11-libs/libXdamage
-	x11-libs/libXdmcp
 	x11-libs/libXext
-	x11-libs/libXfixes
 	x11-libs/libXrender
-	x11-libs/libXxf86vm
-	media-libs/libmng
+	x11-libs/libxcb
+	sys-devel/gcc
+	sys-libs/glibc
+	media-libs/fontconfig:1.0
+	media-libs/freetype:2
+	dev-libs/glib:2
+	sys-libs/zlib:0
 	net-print/cups
-"
-RDEPEND="
-	${UNBUNDLED_LIBS}
-	${NATIVE_DEPEND}
-	net-nds/openldap
-	dev-db/sqlite:3
+	media-libs/libpng:1.2
+	virtual/glu
+
+	dev-libs/libpcre:3
+	dev-libs/libffi
+	media-sound/pulseaudio
+	app-arch/bzip2:0
+	media-libs/libpng:0
+	dev-libs/expat
+	sys-apps/util-linux
+	dev-libs/libbsd
+	x11-libs/libXau
+	x11-libs/libXdmcp
+	sys-apps/dbus
+	x11-libs/libXtst
+	sys-apps/systemd
+	sys-apps/tcp-wrappers
+	media-libs/libsndfile
+	net-libs/libasyncns
+	dev-libs/libgcrypt:0
+	app-arch/xz-utils
+	app-arch/lz4
+	sys-libs/libcap
+	media-libs/flac
+	media-libs/libogg
+	media-libs/libvorbis
+	dev-libs/libgpg-error
+	sys-apps/attr
 "
 DEPEND=""
 
 S="${WORKDIR}"
-
-#src_prepare() {
-#	default
-
-	# Remove bundled libs and rely on system versions if possible
-	# Commented lines are about the libs that cannot be unbundled yet.
-#	cd "${S}"/opt/kingsoft/wps-office/office6/
-#	rm -f libQtCore.so* || die
-#	rm -f libQtDBus.so* || die
-#	rm -f libQtNetwork.so || die
-#	rm -f libQtWebKit.so* || die
-#	rm -f libphonon.so*
-#	rm -f libtiff.so.4* || die
-#}
 
 src_install() {
 	exeinto /usr/bin
@@ -129,17 +114,17 @@ src_install() {
 }
 
 pkg_preinst() {
+	xdg_pkg_preinst
 	gnome2_icon_savelist
 }
 
 pkg_postinst() {
 	use sharedfonts && font_pkg_postinst
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_pkg_postinst
 	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
+	xdg_pkg_postrm
 	gnome2_icon_cache_update
 }
