@@ -13,10 +13,11 @@ SRC_URI=""
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
+IUSE="test"
 
 RDEPEND=">=net-dns/avahi-0.6.31-r2[${MULTILIB_USEDEP}]"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	test? ( >=dev-libs/check-0.11 )"
 
 src_prepare() {
 	default
