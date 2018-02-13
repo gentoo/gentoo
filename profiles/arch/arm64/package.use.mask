@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Matthew Thode <prometheanfire@gentoo.org> (13 Feb 2018)
+# USE=mercurial requires dev-vcs/mercurial, which is not keyworded yet
+dev-python/setuptools_scm mercurial
+
+# Matthew Thode <prometheanfire@gentoo.org> (13 Feb 2018)
 # USE=scipy requires scipy, which is not keyworded yet
 dev-python/networkx scipy
 
