@@ -339,10 +339,6 @@ net-im/mu-conference
 dev-libs/libmcs
 
 # Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
-# Upstream dead, QT4 consumer (#630550). Removal in a month.
-x11-libs/qwtplot3d
-
-# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
 # No reverse deps, fails to build (#630866). Removal in a month.
 dev-libs/libmowgli-glib
 
