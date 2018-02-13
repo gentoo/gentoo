@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install setup
+DEPEND=media-libs/imlib2[X] >=media-libs/libpng-1.2:0= x11-libs/libX11 curl? ( net-misc/curl ) exif? ( media-libs/libexif ) xinerama? ( x11-libs/libXinerama ) x11-libs/libXt x11-proto/xproto test? ( >=dev-lang/perl-5.10 dev-perl/Test-Command )
+DESCRIPTION=A fast, lightweight imageviewer using imlib2
+EAPI=6
+HOMEPAGE=https://feh.finalrewind.org/
+IUSE=debug curl exif test xinerama
+KEYWORDS=~amd64 ~arm ~mips ~ppc ~ppc64 ~x86
+LICENSE=feh
+RDEPEND=media-libs/imlib2[X] >=media-libs/libpng-1.2:0= x11-libs/libX11 curl? ( net-misc/curl ) exif? ( media-libs/libexif ) xinerama? ( x11-libs/libXinerama ) virtual/jpeg:0
+SLOT=0
+SRC_URI=https://feh.finalrewind.org/feh-2.23.2.tar.bz2
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_md5_=2d525eeb59c8c016ee2286e5fd951ee2
