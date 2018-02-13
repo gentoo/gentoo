@@ -216,8 +216,8 @@ net-p2p/primecoind
 sci-physics/geant-python
 
 # Patrice Clement <monsieurp@gentoo.org> (18 Jan 2018)
-# mpv-0.28.0 requires changes currently only available in ffmpeg-9999.
-=media-video/mpv-0.28.0
+# mpv >= 0.28.0 requires changes currently only available in ffmpeg-9999.
+>=media-video/mpv-0.28.0
 
 # Andreas Sturmlechner <asturm@gentoo.org> (18 Jan 2018)
 # Broken by >=kde-apps/kcalcore-17.12.0, but also merged into
