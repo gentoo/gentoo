@@ -9,8 +9,8 @@ PYTHON_REQ_USE="xml(+)"
 inherit distutils-r1
 
 DESCRIPTION="Library for manipulating TrueType, OpenType, AFM and Type1 fonts"
-HOMEPAGE="https://github.com/behdad/fonttools/"
-SRC_URI="https://github.com/behdad/fonttools/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/fonttools/fonttools/"
+SRC_URI="https://github.com/fonttools/fonttools/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
