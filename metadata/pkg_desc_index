@@ -1798,7 +1798,7 @@ dev-cpp/glog 0.3.3-r1 0.3.4-r1: Google's C++ logging library
 dev-cpp/gmock 1.7.0-r1: Google's C++ mocking framework
 dev-cpp/gnome-vfsmm 2.26.0-r1: C++ bindings for gnome-vfs
 dev-cpp/gstreamermm 0.10.11 1.10.0: C++ interface for GStreamer
-dev-cpp/gtest 1.7.0-r1: Google C++ Testing Framework
+dev-cpp/gtest 1.7.0-r1 1.8.0-r1: Google C++ Testing Framework
 dev-cpp/gtkglextmm 1.2.0-r1 1.2.0-r2: C++ bindings for gtkglext
 dev-cpp/gtkmm 2.24.5 3.22.2: C++ interface for GTK+
 dev-cpp/gtksourceviewmm 2.10.3-r1 3.18.0: C++ bindings for gtksourceview
@@ -5926,7 +5926,7 @@ dev-ruby/yard 0.9.11: Documentation generation tool for the Ruby programming lan
 dev-ruby/zentest 4.11.0: Testing tools: zentest, unit_diff, autotest, multiruby, and Test::Rails
 dev-scheme/chicken 4.10.0-r1: Chicken is a Scheme interpreter and native Scheme to C compiler
 dev-scheme/greg 2.0.0-r1: Testing-Framework for guile
-dev-scheme/guile 1.8.8-r3: Scheme interpreter
+dev-scheme/guile 1.8.8-r3 2.0.14-r3: GNU Ubiquitous Intelligent Language for Extensions
 dev-scheme/guile-cairo 1.4.0: Wraps the Cairo graphics library for Guile Scheme
 dev-scheme/guile-gnome-platform 2.16.1: Guile Scheme code that wraps the GNOME developer platform
 dev-scheme/guile-lib 0.1.9: An accumulation place for pure-scheme Guile modules
