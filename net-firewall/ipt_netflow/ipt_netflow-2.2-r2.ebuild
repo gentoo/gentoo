@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,10 @@ MY_P="${MY_PN}-${PV}"
 inherit linux-info linux-mod toolchain-funcs
 
 DESCRIPTION="Netflow iptables module"
-HOMEPAGE="https://sourceforge.net/projects/ipt-netflow"
+HOMEPAGE="
+	https://sourceforge.net/projects/ipt-netflow
+	https://github.com/aabc/ipt-netflow
+"
 SRC_URI="mirror://sourceforge/${MY_PN}/${MY_P}.tgz"
 
 LICENSE="GPL-2"

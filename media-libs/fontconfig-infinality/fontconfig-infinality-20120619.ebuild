@@ -5,8 +5,8 @@ EAPI="4"
 
 DESCRIPTION="Configuration for freetype-infinality subpixel hinting"
 HOMEPAGE="http://www.infinality.net/blog/infinality-freetype-patches/"
-SRC_URI="https://dev.gentoo.org/~yngwin/distfiles/${P}.tar.xz
-	nyx? ( https://dev.gentoo.org/~yngwin/distfiles/fontconfig-nyx-1.tar.xz )"
+SRC_URI="https://dev.gentoo.org/~jstein/dist/${P}.tar.xz
+	nyx? ( https://dev.gentoo.org/~jstein/dist/fontconfig-nyx-1.tar.xz )"
 
 LICENSE="MIT"
 SLOT="0"
