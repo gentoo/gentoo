@@ -10,4 +10,4 @@ RDEPEND=dev-lang/php:*[crypt,hash] >=dev-php/pear-1.8.1
 SLOT=0
 SRC_URI=https://pear.php.net/get/Crypt_CHAP-1.5.0.tgz
 _eclasses_=php-pear-r2	eb6928c33771db74564e814c5ca6c1b3
-_md5_=c454a25786f7e15ab313cd79291d8dae
+_md5_=05ea73ff7099c66c2af5a2e26927af5c
