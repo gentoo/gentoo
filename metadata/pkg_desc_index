@@ -7066,7 +7066,7 @@ media-fonts/fs-fonts 0.1_alpha3: Japanese TrueType fonts designed for screen and
 media-fonts/gidole 2.0.2: Open source modern DIN fonts
 media-fonts/hack 2.020: A typeface designed for source code
 media-fonts/hunkyfonts 0.3.1: Free TrueType fonts based on Bitstream's Vera fonts with additional letters
-media-fonts/inconsolata 20140821: A beautiful sans-serif monotype font designed for code listings
+media-fonts/inconsolata 20140821: A sans-serif monotype font for code listings
 media-fonts/intlfonts 1.2.1: International X11 fixed fonts
 media-fonts/ipaex 002.01: Japanese IPA extended TrueType fonts
 media-fonts/ipamonafont 1.0.8: Hacked version of IPA fonts, which is suitable for browsing 2ch
