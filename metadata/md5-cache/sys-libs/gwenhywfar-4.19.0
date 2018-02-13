@@ -1,5 +1,5 @@
-DEFINED_PHASES=compile configure install prepare
-DEPEND=dev-libs/libgcrypt:0= dev-libs/libgpg-error libressl? ( dev-libs/libressl:0= ) !libressl? ( dev-libs/openssl:0= ) net-libs/gnutls:= virtual/libiconv virtual/libintl virtual/opengl designer? ( dev-qt/designer:5 ) fox? ( x11-libs/fox:1.6 ) gtk? ( x11-libs/gtk+:2 ) qml? ( dev-qt/qtdeclarative:5 ) qt5? ( dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qthelp:5 dev-qt/qtmultimedia:5[widgets] dev-qt/qtnetwork:5 dev-qt/qtopengl:5 dev-qt/qtprintsupport:5 dev-qt/qtscript:5 dev-qt/qtsql:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 dev-qt/qtxml:5 dev-qt/qtxmlpatterns:5 ) sensors? ( dev-qt/qtsensors:5 ) serialport? ( dev-qt/qtserialport:5 ) test? ( dev-qt/qttest:5 ) webkit? ( dev-qt/qtwebkit:5 ) sys-devel/gettext virtual/pkgconfig doc? ( app-doc/doxygen ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=compile configure install
+DEPEND=dev-libs/libgcrypt:0= dev-libs/libgpg-error libressl? ( dev-libs/libressl:0= ) !libressl? ( dev-libs/openssl:0= ) net-libs/gnutls:= virtual/libiconv virtual/libintl virtual/opengl designer? ( dev-qt/designer:5 ) fox? ( x11-libs/fox:1.6 ) gtk? ( x11-libs/gtk+:2 ) qml? ( dev-qt/qtdeclarative:5 ) qt5? ( dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qthelp:5 dev-qt/qtmultimedia:5[widgets] dev-qt/qtnetwork:5 dev-qt/qtopengl:5 dev-qt/qtprintsupport:5 dev-qt/qtscript:5 dev-qt/qtsql:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 dev-qt/qtxml:5 dev-qt/qtxmlpatterns:5 ) sensors? ( dev-qt/qtsensors:5 ) serialport? ( dev-qt/qtserialport:5 ) test? ( dev-qt/qttest:5 ) webkit? ( dev-qt/qtwebkit:5 ) sys-devel/gettext virtual/pkgconfig doc? ( app-doc/doxygen )
 DESCRIPTION=A multi-platform helper library for other libraries
 EAPI=6
 HOMEPAGE=https://www.aquamaniac.de/aqbanking/
@@ -11,5 +11,5 @@ REQUIRED_USE=designer? ( qt5 ) qml? ( qt5 ) sensors? ( qt5 ) serialport? ( qt5 )
 RESTRICT=test
 SLOT=0
 SRC_URI=https://www.aquamaniac.de/sites/download/download.php?package=01&release=207&file=01&dummy=gwenhywfar-4.19.0.tar.gz -> gwenhywfar-4.19.0.tar.gz
-_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	estack	43ddf5aaffa7a8d0482df54d25a66a1f	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=d30f08659fbd1a8e662337a56e69ff3d
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_md5_=d9c30792a179178b1f30c2dd3575994d
