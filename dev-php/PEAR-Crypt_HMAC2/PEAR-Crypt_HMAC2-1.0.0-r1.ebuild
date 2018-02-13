@@ -1,21 +1,20 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=6
 
-inherit php-pear-r1
+inherit php-pear-r2
 
 DESCRIPTION="Implementation of Hashed Message Authentication Code for PHP5"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="test"
+DEPEND="test? ( dev-php/PEAR-PEAR dev-php/phpunit )"
+HTML_DOCS=( docs/intro.xml )
 
-src_install() {
-	php-pear-r1_src_install
-
-	#Useless file that often conflicts with other packages
-	rm "${D}/usr/share/php/generate_package_xml.php"
+src_test() {
+	phpunit tests || die
 }
 
 pkg_postinst() {
