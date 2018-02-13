@@ -4,7 +4,7 @@
 # Matthew Thode <prometheanfire@gentoo.org> (13 Feb 2018)
 # USE=mongodb requires dev-python/pymongo
 # which requires dev-db/mongodb which are both not keyworded yet.
-dev-python/kombu mogodb
+dev-python/kombu mongodb
 
 # Mart Raudsepp <leio@gentoo.org> (13 Feb 2018)
 # USE=dmraid requires sys-fs/dmraid that is not keyworded yet.
