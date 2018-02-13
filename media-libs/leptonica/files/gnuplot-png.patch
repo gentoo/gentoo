@@ -1,0 +1,29 @@
+From 1b3c9b64ee204b3f9371cea624c959b3177c9c1d Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@aura-online.co.uk>
+Date: Tue, 13 Feb 2018 14:37:32 +0000
+Subject: [PATCH] Skip gnuplot tests if it is missing PNG support
+
+---
+ prog/reg_wrapper.sh | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/prog/reg_wrapper.sh b/prog/reg_wrapper.sh
+index bc60c82..4afdc08 100755
+--- a/prog/reg_wrapper.sh
++++ b/prog/reg_wrapper.sh
+@@ -32,7 +32,11 @@ TEST_NAME="${TEST_NAME%_reg*}"
+ 
+ case "${TEST_NAME}" in
+     baseline|boxa1|colormask|colorspace|dna|enhance|extrema|fpix1|italic|kernel|nearline|projection|rankbin|rankhisto|wordboxes)
+-        which gnuplot > /dev/null || which wgnuplot > /dev/null || exec ${@%${TEST}} /bin/sh -c "exit 77" ;;
++        GNUPLOT=$(type -P gnuplot wgnuplot)
++
++        if [ -z "${GNUPLOT}" ] || ! "${GNUPLOT}" -e "set terminal png" 2>/dev/null ; then
++            exec ${@%${TEST}} /bin/sh -c "exit 77"
++        fi
+ esac
+ 
+ exec ${@%${TEST}} /bin/sh -c "cd \"${srcdir}\" && \"${PWD}/\"${TEST} generate && \"${PWD}/\"${TEST} compare"
+-- 
+2.16.1
+

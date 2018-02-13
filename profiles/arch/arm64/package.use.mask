@@ -2,6 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Mart Raudsepp <leio@gentoo.org> (13 Feb 2018)
+# USE=dmraid requires sys-fs/dmraid that is not keyworded yet.
+sys-libs/libblockdev dmraid
+
+# Mart Raudsepp <leio@gentoo.org> (13 Feb 2018)
+# USE=smartcard requires net-libs/gnutls-3[pkcs11] that is use.masked.
+net-libs/glib-networking smartcard
+
+# Mart Raudsepp <leio@gentoo.org> (13 Feb 2018)
 # USE=sofalizer requires sci-libs/netcdf that is not keyworded yet.
 media-video/ffmpeg sofalizer
 
