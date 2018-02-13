@@ -32,7 +32,7 @@ SLOT="0/5-9" # vlc - vlccore
 IUSE="a52 aalib alsa altivec aom archive +avcodec +avformat bidi bluray cddb
 	chromaprint chromecast dbus dc1394 debug directx dts dvb +dvbpsi dvd
 	dxva2 elibc_glibc +encode faad fdk fluidsynth +ffmpeg flac fontconfig +gcrypt
-	gme gnutls gstreamer ieee1394 jack jpeg kate libass libav libcaca
+	gme gnome-keyring gnutls gstreamer ieee1394 jack jpeg kate libass libav libcaca
 	libnotify +libsamplerate libtiger linsys libtar lirc live lua
 	macosx-notifications macosx-qtkit matroska cpu_flags_x86_mmx modplug mp3
 	mpeg mtp musepack ncurses neon nfs ogg omxil opencv opengl optimisememory opus
@@ -103,6 +103,7 @@ RDEPEND="
 	fontconfig? ( media-libs/fontconfig:1.0 )
 	gcrypt? ( >=dev-libs/libgcrypt-1.6.0:0= )
 	gme? ( media-libs/game-music-emu:0 )
+	gnome-keyring? ( app-crypt/libsecret )
 	gnutls? ( net-libs/gnutls:0 )
 	gstreamer? ( >=media-libs/gst-plugins-base-1.4.5:1.0 )
 	ieee1394? (
@@ -348,6 +349,7 @@ src_configure() {
 		$(use_enable fontconfig) \
 		$(use_enable gcrypt libgcrypt) \
 		$(use_enable gme) \
+		$(use_enable gnome-keyring secret) \
 		$(use_enable gnutls) \
 		$(use_enable gstreamer gst-decode) \
 		$(use_enable ieee1394 dv1394) \
