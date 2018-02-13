@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergey Popov <pinkbyte@gentoo.org> (13 Feb 2018)
+# Requires dead Qt4 (bug #645420). Removal in 30 days
+media-gfx/qiviewer
+
 # Kristian Fiskerstrand <k_f@gentoo.org> (11 Feb 2018)
 # Lastrite: app-crypt/monkeysign . Please use caff from 
 # app-crypt/signing-party instead. Removal in 30 days.
