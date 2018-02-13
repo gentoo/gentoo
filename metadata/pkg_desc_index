@@ -5931,7 +5931,7 @@ dev-scheme/guile-cairo 1.4.0: Wraps the Cairo graphics library for Guile Scheme
 dev-scheme/guile-gnome-platform 2.16.1: Guile Scheme code that wraps the GNOME developer platform
 dev-scheme/guile-lib 0.1.9: An accumulation place for pure-scheme Guile modules
 dev-scheme/guile-www 2.34: Guile Scheme modules to facilitate HTTP, URL and CGI programming
-dev-scheme/net-http 0.3.1 0.3.1-r1: Library for doing HTTP client-side programming in Guile
+dev-scheme/net-http 0.3.1-r1: Library for doing HTTP client-side programming in Guile
 dev-scheme/racket 5.3.6 6.7: General purpose, multi-paradigm programming language in the Lisp-Scheme family.
 dev-scheme/slib 3.2.2: library providing functions for Scheme implementations
 dev-scheme/tinyscheme 1.41: Lightweight scheme interpreter
