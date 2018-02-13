@@ -270,11 +270,6 @@ dev-libs/libFuzzer
 =sys-kernel/gentoo-sources-4.14.11
 
 # Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
-# Nobody bothered to bump it for ages, NPAPI is phased out (#468772).
-# Removal in a month.
-media-plugins/npapi-vlc
-
-# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
 # Fails to fetch (#597424). Removal in a month.
 sci-chemistry/platon
 
