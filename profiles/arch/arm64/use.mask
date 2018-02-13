@@ -26,6 +26,10 @@
 -neon
 -armvfp
 
+# Mart Raudsepp <leio@gentoo.org> (13 Feb 2018)
+# net-libs/libsmi not tested on arm64 yet
+smi
+
 # Michał Górny <mgorny@gentoo.org> (23 Jan 2018)
 # sci-geosciences/gpsd is not keyworded here.
 gps

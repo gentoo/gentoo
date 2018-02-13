@@ -2,6 +2,22 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Mart Raudsepp <leio@gentoo.org> (13 Feb 2018)
+# USE=sofalizer requires sci-libs/netcdf that is not keyworded yet.
+media-video/ffmpeg sofalizer
+
+# Mart Raudsepp <leio@gentoo.org> (13 Feb 2018)
+# USE=rdp requires net-misc/freerdp that is not keyworded yet.
+media-video/vlc rdp
+
+# Mart Raudsepp <leio@gentoo.org> (13 Feb 2018)
+# USE=upnp-av requires net-misc/dleyna-server that is not keyworded yet.
+>=media-plugins/grilo-plugins-0.3.5 upnp-av
+
+# Mart Raudsepp <leio@gentoo.org> (13 Feb 2018)
+# USE=vtk requires sci-libs/vtk that is not keyworded yet.
+media-libs/opencv vtk
+
+# Mart Raudsepp <leio@gentoo.org> (13 Feb 2018)
 # USE=lua requires dev-lua/lgi that is not keyworded yet.
 # USE=lua,jit required dev-lang/luajit that is not keyworded yet.
 dev-libs/libpeas lua jit
