@@ -37,7 +37,7 @@ DEPEND="
 	)
 	test? (
 		${RDEPEND}
-		~dev-python/mock-1.3.0[${PYTHON_USEDEP}]
+		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
 	)
 "
