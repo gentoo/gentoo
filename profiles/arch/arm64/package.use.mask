@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Mart Raudsepp <leio@gentoo.org> (13 Feb 2018)
+# USE=sofalizer requires sci-libs/netcdf that is not keyworded yet.
+media-video/ffmpeg sofalizer
+
+# Mart Raudsepp <leio@gentoo.org> (13 Feb 2018)
 # USE=rdp requires net-misc/freerdp that is not keyworded yet.
 media-video/vlc rdp
 
