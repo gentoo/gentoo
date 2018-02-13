@@ -39,6 +39,7 @@ DEPEND="
 		${RDEPEND}
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
+		dev-python/jsonschema[${PYTHON_USEDEP}]
 	)
 "
 
