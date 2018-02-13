@@ -254,7 +254,8 @@ S="${WORKDIR}/${MY_P}"
 src_prepare() {
 	default
 
-	has_version '>=net-libs/libupnp-1.8.0' && eapply "${FILESDIR}"/${P}-libupnp-slot-1.8.patch
+	has_version '>=net-libs/libupnp-1.8.0' && \
+		eapply "${FILESDIR}"/${P}-libupnp-slot-1.8.patch
 
 	# Bootstrap when we are on a git checkout.
 	if [[ ${PV} = *9999 ]] ; then
@@ -458,8 +459,8 @@ src_configure() {
 	econf ${myeconfargs[@]}
 
 	# _FORTIFY_SOURCE is set to 2 in config.h, which is also the default value on Gentoo.
-	# Other values of _FORTIFY_SOURCE may break the build (bug 523144), so definition should not be removed from config.h.
-	# To prevent redefinition warnings, we undefine _FORTIFY_SOURCE at the very start of config.h file
+	# Other values may break the build (bug 523144), so definition should not be removed.
+	# To prevent redefinition warnings, we undefine _FORTIFY_SOURCE at the start of config.h
 	sed -i '1i#undef _FORTIFY_SOURCE' config.h || die
 }
 
