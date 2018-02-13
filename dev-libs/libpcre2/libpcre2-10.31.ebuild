@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils libtool flag-o-matic toolchain-funcs multilib-minimal
+inherit flag-o-matic libtool ltprune multilib-minimal toolchain-funcs
 
 DESCRIPTION="Perl-compatible regular expression library"
 HOMEPAGE="http://www.pcre.org/"
@@ -30,7 +30,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	userland_GNU? ( >=sys-apps/findutils-4.4.0 )"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
 MULTILIB_CHOST_TOOLS=(
 	/usr/bin/pcre2-config
@@ -43,20 +43,23 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	ECONF_SOURCE="${S}" econf \
-		--with-match-limit-recursion=$(usex recursion-limit 8192 MATCH_LIMIT) \
-		$(multilib_native_use_enable bzip2 pcre2grep-libbz2) \
-		$(use_enable jit) $(use_enable jit pcre2grep-jit) \
-		$(use_enable pcre16 pcre2-16) \
-		$(use_enable pcre32 pcre2-32) \
-		$(multilib_native_use_enable libedit pcre2test-libedit) \
-		$(multilib_native_use_enable readline pcre2test-libreadline) \
-		$(use_enable static-libs static) \
-		$(use_enable unicode) \
-		$(multilib_native_use_enable zlib pcre2grep-libz) \
-		--enable-pcre2-8 \
-		--enable-shared \
+	local myeconfargs=(
+		--enable-pcre2-8
+		--enable-shared
 		--htmldir="${EPREFIX}"/usr/share/doc/${PF}/html
+		--with-match-limit-depth=$(usex recursion-limit 8192 MATCH_LIMIT)
+		$(multilib_native_use_enable bzip2 pcre2grep-libbz2)
+		$(multilib_native_use_enable libedit pcre2test-libedit)
+		$(multilib_native_use_enable readline pcre2test-libreadline)
+		$(multilib_native_use_enable zlib pcre2grep-libz)
+		$(use_enable jit)
+		$(use_enable jit pcre2grep-jit)
+		$(use_enable pcre16 pcre2-16)
+		$(use_enable pcre32 pcre2-32)
+		$(use_enable static-libs static)
+		$(use_enable unicode)
+	)
+	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
 multilib_src_compile() {
