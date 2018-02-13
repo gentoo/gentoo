@@ -1,6 +1,11 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Mart Raudsepp <leio@gentoo.org> (13 Feb 2018)
+# USE=lua requires dev-lua/lgi that is not keyworded yet.
+# USE=lua,jit required dev-lang/luajit that is not keyworded yet.
+dev-libs/libpeas lua jit
+
 # Michał Górny <mgorny@gentoo.org> (23 Jan 2018)
 # Requires dev-libs/efl that is not keyworded.
 dev-libs/dbus-c++ ecore
