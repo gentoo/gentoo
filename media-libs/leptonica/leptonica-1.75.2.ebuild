@@ -26,11 +26,9 @@ RDEPEND="gif? ( >=media-libs/giflib-5.1.3:=[${MULTILIB_USEDEP}] )
 	zlib? ( sys-libs/zlib:=[${MULTILIB_USEDEP}] )"
 
 DEPEND="${RDEPEND}
-	test? (
-		media-libs/tiff:0[zlib]
-		sci-visualization/gnuplot[cairo]
-	)"
+	test? ( media-libs/tiff:0[zlib] )"
 
+PATCHES=( "${FILESDIR}"/gnuplot-png.patch )
 ECONF_SOURCE="${S}"
 DOCS=( README version-notes )
 
