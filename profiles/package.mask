@@ -309,11 +309,6 @@ dev-db/lib_mysqludf_sys
 dev-db/lib_mysqludf_json
 
 # Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
-# Not properly mirrored, 14 years old and not really useful this days
-# (#629328). Removal in a month.
-x11-themes/lush
-
-# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
 # Fails multilib-strict check (#628836). Nothing requires it. Removal in a
 # month.
 dev-libs/dclog
