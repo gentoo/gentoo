@@ -20,7 +20,7 @@ IUSE="introspection python static-libs test vala"
 
 REQUIRED_USE="
 	python? ( introspection ${PYTHON_REQUIRED_USE} )
-	test? ( python )
+	test? ( python introspection )
 	vala? ( introspection )
 "
 
@@ -31,6 +31,10 @@ RDEPEND="${PYTHON_DEPS}
 	vala? ( $(vala_depend) )
 "
 DEPEND="${RDEPEND}
+	test? (
+		dev-python/pygobject
+		media-gfx/exiv2[xmp]
+	)
 	dev-libs/gobject-introspection-common
 	virtual/pkgconfig"
 
