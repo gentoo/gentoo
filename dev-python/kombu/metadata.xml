@@ -12,6 +12,9 @@
 	<use>
 		<flag name="amqplib">Enable amqplib support</flag>
 		<flag name="sqs">Enables Amazon SQS transport module for Kombu</flag>
+		<flag name="mongodb">Enables MongoDB backend</flag>
 		<flag name="msgpack">Enables MessagePack (de)serializer for Python</flag>
+		<flag name="redis">Enables Redis backend</flag>
+		<flag name="yaml">Enables yaml backend</flag>
 	</use>
 </pkgmetadata>

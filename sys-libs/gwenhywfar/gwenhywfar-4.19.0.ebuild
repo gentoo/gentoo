@@ -4,7 +4,7 @@
 EAPI=6
 
 MY_P="${P/_beta/beta}"
-inherit autotools qmake-utils
+inherit qmake-utils
 
 DESCRIPTION="A multi-platform helper library for other libraries"
 HOMEPAGE="https://www.aquamaniac.de/aqbanking/"
@@ -66,15 +66,13 @@ RESTRICT="test"
 
 S="${WORKDIR}/${MY_P}"
 
-src_prepare() {
+src_configure() {
 	disableQtModule() {
 		local module
 		for module in ${@}; do
-			sed -e "/qtHaveModule(${module})/s/^/#DONT/" -i m4/ax_have_qt.m4 || die
+			sed -e "/qtHaveModule(${module})/s|^|#DONT|" -i configure || die
 		done
 	}
-
-	default
 
 	use designer || disableQtModule designer uitools
 	use qml || disableQtModule qml qmltest
@@ -83,10 +81,6 @@ src_prepare() {
 	use test || disableQtModule testlib
 	use webkit || disableQtModule webkit webkitwidgets
 
-	eautoreconf
-}
-
-src_configure() {
 	local guis=()
 	use fox && guis+=( fox16 )
 	use gtk && guis+=( gtk2 )

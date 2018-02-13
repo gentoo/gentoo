@@ -1,6 +1,11 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Matthew Thode <prometheanfire@gentoo.org> (13 Feb 2018)
+# USE=mongodb requires dev-python/pymongo
+# which requires dev-db/mongodb which are both not keyworded yet.
+dev-python/kombu mongodb
+
 # Mart Raudsepp <leio@gentoo.org> (13 Feb 2018)
 # USE=dmraid requires sys-fs/dmraid that is not keyworded yet.
 sys-libs/libblockdev dmraid

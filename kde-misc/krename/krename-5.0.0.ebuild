@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="Powerful batch file renamer"
 HOMEPAGE="http://www.krename.net/"
-SRC_URI="mirror://kde/unstable/${PN}/${PV}/${P}.tar.xz"
+SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
