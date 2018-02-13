@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,8 @@ MYP=${PN}-gpl-${PV}-src
 
 DESCRIPTION="Monitors dynamic allocation and deallocation activity in a program"
 HOMEPAGE="http://libre.adacore.com/"
-SRC_URI="http://mirrors.cdn.adacore.com/art/591c45e2c7a447af2deed033 -> ${MYP}.tar.gz"
+SRC_URI="http://mirrors.cdn.adacore.com/art/591c45e2c7a447af2deed033 ->
+	${MYP}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
