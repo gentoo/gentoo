@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm test
+DEPEND=test? ( dev-php/PEAR-PEAR dev-php/phpunit )
+DESCRIPTION=Implementation of Hashed Message Authentication Code for PHP5
+EAPI=6
+HOMEPAGE=https://pear.php.net/package/Crypt_HMAC2
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=>=dev-php/pear-1.8.1
+SLOT=0
+SRC_URI=https://pear.php.net/get/Crypt_HMAC2-1.0.0.tgz
+_eclasses_=php-pear-r2	eb6928c33771db74564e814c5ca6c1b3
+_md5_=55f186496b38544a65d963b26304b138
