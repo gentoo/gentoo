@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Mart Raudsepp <leio@gentoo.org> (13 Feb 2018)
+# USE=upnp-av requires net-misc/dleyna-server that is not keyworded yet.
+>=media-plugins/grilo-plugins-0.3.5 upnp-av
+
+# Mart Raudsepp <leio@gentoo.org> (13 Feb 2018)
 # USE=vtk requires sci-libs/vtk that is not keyworded yet.
 media-libs/opencv vtk
 
