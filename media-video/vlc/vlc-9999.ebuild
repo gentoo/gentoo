@@ -39,7 +39,7 @@ IUSE="a52 aalib alsa altivec aom archive +avcodec +avformat bidi bluray cddb
 	png postproc projectm pulseaudio +qt5 rdp rtsp run-as-root samba
 	schroedinger sdl-image sftp shout sid skins speex cpu_flags_x86_sse svg
 	+swscale taglib theora tremor truetype twolame udev upnp vaapi v4l vcd vdpau
-	vlm vnc vorbis vpx wma-fixed +X x264 x265 +xcb xml xv zeroconf zvbi
+	vlm vnc vorbis vpx wayland wma-fixed +X x264 x265 +xcb xml xv zeroconf zvbi
 "
 REQUIRED_USE="
 	aalib? ( X )
@@ -202,7 +202,7 @@ RDEPEND="
 	upnp? ( net-libs/libupnp:= )
 	v4l? ( media-libs/libv4l:0 )
 	vaapi? (
-		x11-libs/libva:0=[X,drm]
+		x11-libs/libva:0=[drm,wayland?,X?]
 		!libav? ( >=media-video/ffmpeg-3.1.3:0=[vaapi] )
 		libav? ( media-video/libav:0=[vaapi] )
 	)
@@ -215,6 +215,10 @@ RDEPEND="
 	vnc? ( >=net-libs/libvncserver-0.9.9:0 )
 	vorbis? ( media-libs/libvorbis:0 )
 	vpx? ( media-libs/libvpx:0= )
+	wayland? (
+		dev-libs/wayland
+		dev-libs/wayland-protocols
+	)
 	X? ( x11-libs/libX11:0 )
 	x264? ( media-libs/x264:0= )
 	x265? ( media-libs/x265:0= )
@@ -411,6 +415,7 @@ src_configure() {
 		$(use_enable vnc) \
 		$(use_enable vorbis) \
 		$(use_enable vpx) \
+		$(use_enable wayland) \
 		$(use_enable wma-fixed) \
 		$(use_with X x) \
 		$(use_enable x264) \
