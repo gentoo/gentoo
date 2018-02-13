@@ -4736,7 +4736,7 @@ dev-python/django-tastypie 0.9.15: A flexible and capable API layer for django u
 dev-python/django-xslt 0.4.5-r1: an XSLT template system for Django
 dev-python/dnspython 1.15.0-r1: DNS toolkit for Python
 dev-python/doc8 0.6.0: Style checker for Sphinx (or other) RST documentation
-dev-python/docker-py 2.4.2: Python client for Docker
+dev-python/docker-py 2.4.2 2.7.0: Python client for Docker
 dev-python/docker-pycreds 0.2.1: Python bindings for the docker credentials store API
 dev-python/docopt 0.6.2-r2: Pythonic argument parser, that will make you smile
 dev-python/doctest-ignore-unicode 0.1.2: Add flag to ignore unicode literal prefixes in doctests
