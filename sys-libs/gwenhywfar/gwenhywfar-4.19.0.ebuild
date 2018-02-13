@@ -3,13 +3,12 @@
 
 EAPI=6
 
-inherit qmake-utils
-
 MY_P="${P/_beta/beta}"
+inherit autotools qmake-utils
+
 DESCRIPTION="A multi-platform helper library for other libraries"
 HOMEPAGE="https://www.aquamaniac.de/aqbanking/"
 SRC_URI="https://www.aquamaniac.de/sites/download/download.php?package=01&release=207&file=01&dummy=${MY_P}.tar.gz -> ${MY_P}.tar.gz"
-S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
@@ -19,7 +18,7 @@ IUSE="debug designer doc fox gtk libressl qml qt5 sensors serialport test webkit
 REQUIRED_USE="designer? ( qt5 ) qml? ( qt5 ) sensors? ( qt5 ) serialport? ( qt5 ) webkit? ( qt5 )"
 
 # TODO: not yet required by any revdep. Switch gtk when gnucash is ported.
-# 	gtk3? ( x11-libs/gtk+:3 )
+# gtk3? ( x11-libs/gtk+:3 )
 RDEPEND="
 	dev-libs/libgcrypt:0=
 	dev-libs/libgpg-error
@@ -65,6 +64,8 @@ DEPEND="${RDEPEND}
 # broken upstream, reported but got no reply
 RESTRICT="test"
 
+S="${WORKDIR}/${MY_P}"
+
 src_prepare() {
 	disableQtModule() {
 		local module
@@ -81,6 +82,8 @@ src_prepare() {
 	use serialport || disableQtModule serialport
 	use test || disableQtModule testlib
 	use webkit || disableQtModule webkit webkitwidgets
+
+	eautoreconf
 }
 
 src_configure() {
