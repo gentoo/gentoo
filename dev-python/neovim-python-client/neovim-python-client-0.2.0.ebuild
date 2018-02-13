@@ -15,12 +15,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 DEPEND="
-	>=dev-python/msgpack-0.4.0[${PYTHON_USEDEP}]
+	<dev-python/msgpack-0.5.2:0[${PYTHON_USEDEP}]
+	>=dev-python/msgpack-0.4.0:0[${PYTHON_USEDEP}]
 	virtual/python-greenlet[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/trollius[${PYTHON_USEDEP}]' python{2_7,3_3})"
+	$(python_gen_cond_dep 'dev-python/trollius[${PYTHON_USEDEP}]' python2_7)"
 
 RDEPEND="
 	${DEPEND}
-	app-editors/neovim"
+	>=app-editors/neovim-0.2.1"
 
 S="${WORKDIR}/python-client-${PV}"
