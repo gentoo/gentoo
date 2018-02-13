@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -9,7 +9,7 @@ RUBY_FAKEGEM_GEMSPEC="vagrant.gemspec"
 RUBY_FAKEGEM_EXTRAINSTALL="keys plugins templates version.txt"
 RUBY_FAKEGEM_TASK_DOC=""
 
-inherit bash-completion-r1 ruby-fakegem eutils
+inherit bash-completion-r1 ruby-fakegem
 
 DESCRIPTION="A tool for building and distributing development environments"
 HOMEPAGE="http://vagrantup.com/"
@@ -19,6 +19,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="+virtualbox"
+RESTRICT="test"
 
 RDEPEND="${RDEPEND}
 	app-arch/libarchive
@@ -30,9 +31,9 @@ ruby_add_rdepend "
 	>=dev-ruby/erubis-2.7.0
 	<dev-ruby/i18n-0.8.0:*
 	>=dev-ruby/listen-3.1.5
-	>=dev-ruby/hashicorp-checkpoint-0.1.1
+	>=dev-ruby/hashicorp-checkpoint-0.1.5
 	>=dev-ruby/log4r-1.1.9 <dev-ruby/log4r-1.1.11
-	>=dev-ruby/net-ssh-4.1.0:*
+	>=dev-ruby/net-ssh-4.2.0:*
 	>=dev-ruby/net-sftp-2.1
 	>=dev-ruby/net-scp-1.2.0
 	|| ( dev-ruby/rest-client:2 >=dev-ruby/rest-client-1.6.0:0 )
@@ -62,10 +63,7 @@ all_ruby_prepare() {
 	sed -e '/rb-kqueue/d' \
 		-i ${PN}.gemspec || die
 
-	# disable embedded CA certs and use system ones
-	epatch "${FILESDIR}"/${PN}-1.8.1-disable-embedded-cacert.patch
-
-	sed -e "s/@VAGRANT_VERSION@/${PV}/g" "${FILESDIR}/${PN}.in" > "${PN}" || die
+	sed -e "s/@VAGRANT_VERSION@/${PV}/g" "${FILESDIR}/${PN}.in-r1" > "${PN}" || die
 }
 
 all_ruby_install() {
@@ -77,5 +75,5 @@ all_ruby_install() {
 	dobin "${PN}"
 
 	# directory for plugins.json
-	dodir /var/lib/vagrant
+	keepdir /var/lib/vagrant
 }
