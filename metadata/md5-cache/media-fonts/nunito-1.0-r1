@@ -1,12 +1,12 @@
 DEFINED_PHASES=install postinst postrm setup
 DEPEND=X? ( x11-apps/mkfontdir media-fonts/encodings )
-DESCRIPTION=A well balanced Sans Serif with rounded terminals
-EAPI=4
-HOMEPAGE=https://www.google.com/webfonts/specimen/Nunito https://code.google.com/p/googlefontdirectory/source/browse/nunito
+DESCRIPTION=A Sans Serif font with rounded terminals
+EAPI=6
+HOMEPAGE=https://www.google.com/webfonts/specimen/Nunito https://github.com/vernnobile/NunitoFont
 IUSE=X
 KEYWORDS=~amd64 ~x86
 LICENSE=OFL-1.1
 SLOT=0
-SRC_URI=https://dev.gentoo.org/~yngwin/distfiles/nunito-1.0.tar.xz
+SRC_URI=https://dev.gentoo.org/~jstein/dist/nunito-1.0.tar.xz
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	font	82836641e7d4639329d8c195234ad0e3	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=7a13159d8a1e336bb887cc9abc844c51
+_md5_=f5999cfaed84c9c9469b7024159076aa
