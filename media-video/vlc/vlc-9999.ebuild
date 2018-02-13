@@ -32,14 +32,14 @@ SLOT="0/5-9" # vlc - vlccore
 IUSE="a52 aalib alsa altivec aom archive +avcodec +avformat bidi bluray cddb
 	chromaprint chromecast dbus dc1394 debug directx dts dvb +dvbpsi dvd
 	dxva2 elibc_glibc +encode faad fdk fluidsynth +ffmpeg flac fontconfig +gcrypt
-	gme gnutls gstreamer ieee1394 jack jpeg kate libass libav libcaca
+	gme gnome-keyring gnutls gstreamer ieee1394 jack jpeg kate libass libav libcaca
 	libnotify +libsamplerate libtiger linsys libtar lirc live lua
 	macosx-notifications macosx-qtkit matroska cpu_flags_x86_mmx modplug mp3
 	mpeg mtp musepack ncurses neon nfs ogg omxil opencv opengl optimisememory opus
 	png postproc projectm pulseaudio +qt5 rdp rtsp run-as-root samba
 	schroedinger sdl-image sftp shout sid skins speex cpu_flags_x86_sse svg
 	+swscale taglib theora tremor truetype twolame udev upnp vaapi v4l vcd vdpau
-	vlm vnc vorbis vpx wma-fixed +X x264 x265 +xcb xml xv zeroconf zvbi
+	vlm vnc vorbis vpx wayland wma-fixed +X x264 x265 +xcb xml xv zeroconf zvbi
 "
 REQUIRED_USE="
 	aalib? ( X )
@@ -103,6 +103,7 @@ RDEPEND="
 	fontconfig? ( media-libs/fontconfig:1.0 )
 	gcrypt? ( >=dev-libs/libgcrypt-1.6.0:0= )
 	gme? ( media-libs/game-music-emu:0 )
+	gnome-keyring? ( app-crypt/libsecret )
 	gnutls? ( net-libs/gnutls:0 )
 	gstreamer? ( >=media-libs/gst-plugins-base-1.4.5:1.0 )
 	ieee1394? (
@@ -202,7 +203,7 @@ RDEPEND="
 	upnp? ( net-libs/libupnp:= )
 	v4l? ( media-libs/libv4l:0 )
 	vaapi? (
-		x11-libs/libva:0=[X,drm]
+		x11-libs/libva:0=[drm,wayland?,X?]
 		!libav? ( >=media-video/ffmpeg-3.1.3:0=[vaapi] )
 		libav? ( media-video/libav:0=[vaapi] )
 	)
@@ -215,6 +216,10 @@ RDEPEND="
 	vnc? ( >=net-libs/libvncserver-0.9.9:0 )
 	vorbis? ( media-libs/libvorbis:0 )
 	vpx? ( media-libs/libvpx:0= )
+	wayland? (
+		dev-libs/wayland
+		dev-libs/wayland-protocols
+	)
 	X? ( x11-libs/libX11:0 )
 	x264? ( media-libs/x264:0= )
 	x265? ( media-libs/x265:0= )
@@ -249,7 +254,8 @@ S="${WORKDIR}/${MY_P}"
 src_prepare() {
 	default
 
-	has_version '>=net-libs/libupnp-1.8.0' && eapply "${FILESDIR}"/${P}-libupnp-slot-1.8.patch
+	has_version '>=net-libs/libupnp-1.8.0' && \
+		eapply "${FILESDIR}"/${P}-libupnp-slot-1.8.patch
 
 	# Bootstrap when we are on a git checkout.
 	if [[ ${PV} = *9999 ]] ; then
@@ -278,7 +284,149 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf
+	local myeconfargs=(
+		--enable-vlc
+		--docdir=/usr/share/doc/${PF}
+		--disable-dependency-tracking
+		--disable-optimizations
+		--disable-update-check
+		--enable-fast-install
+		--enable-screen
+		$(use_enable a52)
+		$(use_enable aalib aa)
+		$(use_enable alsa)
+		$(use_enable altivec)
+		$(use_enable aom)
+		$(use_enable archive)
+		$(use_enable avcodec)
+		$(use_enable avformat)
+		$(use_enable bidi fribidi)
+		$(use_enable bluray)
+		$(use_enable cddb libcddb)
+		$(use_enable chromaprint)
+		$(use_enable chromecast)
+		$(use_enable dbus)
+		$(use_enable dbus kwallet)
+		$(use_enable directx)
+		$(use_enable dc1394)
+		$(use_enable debug)
+		$(use_enable dts dca)
+		$(use_enable dvbpsi)
+		$(use_enable dvd dvdnav)
+		$(use_enable dvd dvdread)
+		$(use_enable dxva2)
+		$(use_enable encode sout)
+		$(use_enable faad)
+		$(use_enable fdk fdkaac)
+		$(use_enable flac)
+		$(use_enable fluidsynth)
+		$(use_enable fontconfig)
+		$(use_enable gcrypt libgcrypt)
+		$(use_enable gme)
+		$(use_enable gnome-keyring secret)
+		$(use_enable gnutls)
+		$(use_enable gstreamer gst-decode)
+		$(use_enable ieee1394 dv1394)
+		$(use_enable jack)
+		$(use_enable jpeg)
+		$(use_enable kate)
+		$(use_enable libass)
+		$(use_enable libcaca caca)
+		$(use_enable libnotify notify)
+		$(use_enable libsamplerate samplerate)
+		$(use_enable libtar)
+		$(use_enable libtiger tiger)
+		$(use_enable linsys)
+		$(use_enable lirc)
+		$(use_enable live live555)
+		$(use_enable lua)
+		$(use_enable macosx-notifications osx-notifications)
+		$(use_enable macosx-qtkit)
+		$(use_enable cpu_flags_x86_mmx mmx)
+		$(use_enable modplug mod)
+		$(use_enable mp3 mad)
+		$(use_enable mpeg libmpeg2)
+		$(use_enable mtp)
+		$(use_enable musepack mpc)
+		$(use_enable ncurses)
+		$(use_enable neon)
+		$(use_enable ogg) $(use_enable ogg)
+		$(use_enable omxil)
+		$(use_enable omxil omxil-vout)
+		$(use_enable opencv)
+		$(use_enable opus)
+		$(use_enable optimisememory optimize-memory)
+		$(use_enable png)
+		$(use_enable postproc)
+		$(use_enable projectm)
+		$(use_enable pulseaudio pulse)
+		$(use_enable qt5 qt)
+		$(use_enable rdp freerdp)
+		$(use_enable rtsp realrtsp)
+		$(use_enable run-as-root)
+		$(use_enable samba smbclient)
+		$(use_enable schroedinger)
+		$(use_enable sdl-image)
+		$(use_enable sid)
+		$(use_enable sftp)
+		$(use_enable shout)
+		$(use_enable skins skins2)
+		$(use_enable speex)
+		$(use_enable cpu_flags_x86_sse sse)
+		$(use_enable svg)
+		$(use_enable svg svgdec)
+		$(use_enable swscale)
+		$(use_enable taglib)
+		$(use_enable theora)
+		$(use_enable tremor)
+		$(use_enable truetype freetype)
+		$(use_enable twolame)
+		$(use_enable udev)
+		$(use_enable upnp)
+		$(use_enable v4l v4l2)
+		$(use_enable vaapi libva)
+		$(use_enable vcd)
+		$(use_enable vdpau)
+		$(use_enable vlm)
+		$(use_enable vnc)
+		$(use_enable vorbis)
+		$(use_enable vpx)
+		$(use_enable wayland)
+		$(use_enable wma-fixed)
+		$(use_with X x)
+		$(use_enable x264)
+		$(use_enable xcb)
+		$(use_enable xml libxml2)
+		$(use_enable xv xvideo)
+		$(use_enable x265)
+		$(use_enable zeroconf avahi)
+		$(use_enable zvbi)
+		$(use_enable !zvbi telx)
+		--disable-asdcp
+		--disable-coverage
+		--disable-cprof
+		--disable-crystalhd
+		--disable-decklink
+		--disable-gles2
+		--disable-goom
+		--disable-kai
+		--disable-kva
+		--disable-libplacebo
+		--disable-maintainer-mode
+		--disable-merge-ffmpeg
+		--disable-mfx
+		--disable-mmal
+		--disable-opensles
+		--disable-oss
+		--disable-rpi-omxil
+		--disable-shine
+		--disable-sndio
+		--disable-spatialaudio
+		--disable-srt
+		--disable-vsxu
+		--disable-wasapi
+	)
+	# ^ We don't have these disabled libraries in the Portage tree yet.
 
 	# Compatibility fix for Samba 4.
 	use samba && append-cppflags "-I/usr/include/samba-4.0"
@@ -300,156 +448,20 @@ src_configure() {
 
 	if use truetype || use projectm ; then
 		local dejavu="/usr/share/fonts/dejavu/"
-		myconf="--with-default-font=${dejavu}/DejaVuSans.ttf \
-				--with-default-font-family=Sans \
-				--with-default-monospace-font=${dejavu}/DejaVuSansMono.ttf
-				--with-default-monospace-font-family=Monospace"
+		myeconfargs+=(
+			--with-default-font=${dejavu}/DejaVuSans.ttf
+			--with-default-font-family=Sans
+			--with-default-monospace-font=${dejavu}/DejaVuSansMono.ttf
+			--with-default-monospace-font-family=Monospace
+		)
 	fi
 
-	econf \
-		${myconf} \
-		--enable-vlc \
-		--docdir=/usr/share/doc/${PF} \
-		--disable-dependency-tracking \
-		--disable-optimizations \
-		--disable-update-check \
-		--enable-fast-install \
-		--enable-screen \
-		$(use_enable a52) \
-		$(use_enable aalib aa) \
-		$(use_enable alsa) \
-		$(use_enable altivec) \
-		$(use_enable aom) \
-		$(use_enable archive) \
-		$(use_enable avcodec) \
-		$(use_enable avformat) \
-		$(use_enable bidi fribidi) \
-		$(use_enable bluray) \
-		$(use_enable cddb libcddb) \
-		$(use_enable chromaprint) \
-		$(use_enable chromecast) \
-		$(use_enable dbus) \
-		$(use_enable directx) \
-		$(use_enable dc1394) \
-		$(use_enable debug) \
-		$(use_enable dts dca) \
-		$(use_enable dvbpsi) \
-		$(use_enable dvd dvdread) $(use_enable dvd dvdnav) \
-		$(use_enable dxva2) \
-		$(use_enable encode sout) \
-		$(use_enable faad) \
-		$(use_enable fdk fdkaac) \
-		$(use_enable flac) \
-		$(use_enable fluidsynth) \
-		$(use_enable fontconfig) \
-		$(use_enable gcrypt libgcrypt) \
-		$(use_enable gme) \
-		$(use_enable gnutls) \
-		$(use_enable gstreamer gst-decode) \
-		$(use_enable ieee1394 dv1394) \
-		$(use_enable jack) \
-		$(use_enable jpeg) \
-		$(use_enable kate) \
-		$(use_enable libass) \
-		$(use_enable libcaca caca) \
-		$(use_enable libnotify notify) \
-		$(use_enable libsamplerate samplerate) \
-		$(use_enable libtar) \
-		$(use_enable libtiger tiger) \
-		$(use_enable linsys) \
-		$(use_enable lirc) \
-		$(use_enable live live555) \
-		$(use_enable lua) \
-		$(use_enable macosx-notifications osx-notifications) \
-		$(use_enable macosx-qtkit) \
-		$(use_enable cpu_flags_x86_mmx mmx) \
-		$(use_enable modplug mod) \
-		$(use_enable mp3 mad) \
-		$(use_enable mpeg libmpeg2) \
-		$(use_enable mtp) \
-		$(use_enable musepack mpc) \
-		$(use_enable ncurses) \
-		$(use_enable neon) \
-		$(use_enable ogg) $(use_enable ogg) \
-		$(use_enable omxil) \
-		$(use_enable omxil omxil-vout) \
-		$(use_enable opencv) \
-		$(use_enable opus) \
-		$(use_enable optimisememory optimize-memory) \
-		$(use_enable png) \
-		$(use_enable postproc) \
-		$(use_enable projectm) \
-		$(use_enable pulseaudio pulse) \
-		$(use_enable qt5 qt) \
-		$(use_enable rdp freerdp) \
-		$(use_enable rtsp realrtsp) \
-		$(use_enable run-as-root) \
-		$(use_enable samba smbclient) \
-		$(use_enable schroedinger) \
-		$(use_enable sdl-image) \
-		$(use_enable sid) \
-		$(use_enable sftp) \
-		$(use_enable shout) \
-		$(use_enable skins skins2) \
-		$(use_enable speex) \
-		$(use_enable cpu_flags_x86_sse sse) \
-		$(use_enable svg) \
-		$(use_enable svg svgdec) \
-		$(use_enable swscale) \
-		$(use_enable taglib) \
-		$(use_enable theora) \
-		$(use_enable tremor) \
-		$(use_enable truetype freetype) \
-		$(use_enable twolame) \
-		$(use_enable udev) \
-		$(use_enable upnp) \
-		$(use_enable v4l v4l2) \
-		$(use_enable vaapi libva) \
-		$(use_enable vcd) \
-		$(use_enable vdpau) \
-		$(use_enable vlm) \
-		$(use_enable vnc) \
-		$(use_enable vorbis) \
-		$(use_enable vpx) \
-		$(use_enable wma-fixed) \
-		$(use_with X x) \
-		$(use_enable x264) \
-		$(use_enable xcb) \
-		$(use_enable xml libxml2) \
-		$(use_enable xv xvideo) \
-		$(use_enable x265) \
-		$(use_enable zeroconf avahi) \
-		$(use_enable zvbi) $(use_enable !zvbi telx) \
-		--disable-asdcp \
-		--disable-coverage \
-		--disable-cprof \
-		--disable-crystalhd \
-		--disable-decklink \
-		--disable-gles2 \
-		--disable-goom \
-		--disable-kai \
-		--disable-kva \
-		--disable-libplacebo \
-		--disable-maintainer-mode \
-		--disable-merge-ffmpeg \
-		--disable-mfx \
-		--disable-mmal \
-		--disable-opensles \
-		--disable-oss \
-		--disable-rpi-omxil \
-		--disable-shine \
-		--disable-sndio \
-		--disable-spatialaudio \
-		--disable-srt \
-		--disable-vsxu \
-		--disable-wasapi
-
-		# ^ We don't have these disabled libraries in the Portage tree yet.
+	econf ${myeconfargs[@]}
 
 	# _FORTIFY_SOURCE is set to 2 in config.h, which is also the default value on Gentoo.
-	# Other values of _FORTIFY_SOURCE may break the build (bug 523144), so definition should not be removed from config.h.
-	# To prevent redefinition warnings, we undefine _FORTIFY_SOURCE at the very start of config.h file
-	sed -i '1i#undef _FORTIFY_SOURCE' "${S}"/config.h || die
+	# Other values may break the build (bug 523144), so definition should not be removed.
+	# To prevent redefinition warnings, we undefine _FORTIFY_SOURCE at the start of config.h
+	sed -i '1i#undef _FORTIFY_SOURCE' config.h || die
 }
 
 src_test() {
