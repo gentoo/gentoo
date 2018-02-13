@@ -334,6 +334,7 @@ src_configure() {
 		$(use_enable chromaprint) \
 		$(use_enable chromecast) \
 		$(use_enable dbus) \
+		$(use_enable dbus kwallet) \
 		$(use_enable directx) \
 		$(use_enable dc1394) \
 		$(use_enable debug) \
