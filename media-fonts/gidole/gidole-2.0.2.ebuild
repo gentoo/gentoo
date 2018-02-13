@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ inherit font
 
 DESCRIPTION="Open source modern DIN fonts"
 HOMEPAGE="http://gidole.github.io/"
-SRC_URI="https://dev.gentoo.org/~yngwin/distfiles/${P}.zip"
+SRC_URI="https://dev.gentoo.org/~jstein/dist/${P}.zip"
 
 LICENSE="OFL-1.1"
 SLOT="0"
