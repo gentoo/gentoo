@@ -1,11 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils
+EAPI=6
 
 MY_P=${PN}-3.0-${PV}
-
 DESCRIPTION="A library for registering global keyboard shortcuts"
 HOMEPAGE="https://github.com/engla/keybinder"
 SRC_URI="https://github.com/engla/keybinder/releases/download/${PN}-3.0-v${PV}/${MY_P}.tar.gz"
@@ -23,18 +21,19 @@ RDEPEND="x11-libs/gtk+:3
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-DOCS="AUTHORS NEWS README"
-
 S=${WORKDIR}/${MY_P}
 
 src_configure() {
-	econf \
+	local myconf=(
 		$(use_enable introspection)
+	)
+
+	econf "${myconf[@]}"
 }
 
 src_install() {
 	default
-	prune_libtool_files --all
+	find "${D}" -name '*.la' -delete || die
 }
 
 pkg_preinst() {
