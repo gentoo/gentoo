@@ -1,20 +1,14 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
-
-ES_VERSION="5.6.4"
+ES_VERSION="6.1.3"
 
 inherit distutils-r1
 
-# tests fail in chroot
-# https://github.com/elastic/elasticsearch/issues/12018
-RESTRICT="test"
-
 MY_PN=${PN/-py/}
-
 DESCRIPTION="official Python low-level client for Elasticsearch"
 HOMEPAGE="https://github.com/elastic/elasticsearch-py"
 SRC_URI="https://github.com/elasticsearch/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
@@ -25,8 +19,12 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="examples doc test"
 
+# tests fail in chroot
+# https://github.com/elastic/elasticsearch/issues/12018
+RESTRICT="test"
+
 RDEPEND=">=dev-python/urllib3-1.21.1[${PYTHON_USEDEP}]
-	<dev-python/urllib3-1.22[${PYTHON_USEDEP}]"
+	<dev-python/urllib3-1.23[${PYTHON_USEDEP}]"
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/sphinx-1.3.1-r1[${PYTHON_USEDEP}]
@@ -39,6 +37,17 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 		dev-python/pretty-yaml[${PYTHON_USEDEP}]
 		dev-python/nosexcover[${PYTHON_USEDEP}]
 		virtual/jre:1.8 )"
+
+python_prepare_all() {
+	# 643684
+	sed -i -e /urllib3/d setup.py || die
+
+	distutils-r1_python_prepare_all
+}
+
+python_compile_all() {
+	emake -C docs -j1 man $(usex doc html "")
+}
 
 # FEATURES="test -usersandbox" emerge dev-python/elasticsearch-py
 python_test() {
@@ -83,11 +92,6 @@ python_test() {
 	esetup.py test || die
 
 	pkill -F ${PID}
-}
-
-python_compile_all() {
-	cd docs || die
-	emake man $(usex doc html "")
 }
 
 python_install_all() {

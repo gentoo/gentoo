@@ -87,6 +87,12 @@ src_prepare() {
 		-e "s|/sbin/parted|/usr/sbin/parted|" \
 		-i scripts/common.sh.in
 
+	if use kernel-builtin
+	then
+		einfo "kernel-builtin enabled, removing module loading from"
+		einfo "systemd units."
+		sed -i -e '/modprobe\ zfs/d' etc/systemd/system/*.service.in || die
+	fi
 	autotools-utils_src_prepare
 }
 
@@ -114,6 +120,10 @@ src_configure() {
 		sed -e "s:@sbindir@:${EPREFIX}/sbin:g" \
 			-e "s:@sysconfdir@:${EPREFIX}/etc:g" \
 		> "${T}/zfs-init.sh" || die
+	if use kernel-builtin
+	then
+		sed -i -e '/modprobe\ zfs/d' "${T}/zfs.service" || die
+	fi
 }
 
 src_install() {
