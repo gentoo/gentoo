@@ -20,7 +20,7 @@ SRC_URI="https://github.com/Bitmessage/${MY_PN}/archive/v${PV}.tar.gz
 	-> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE="libressl ncurses opencl sound"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
