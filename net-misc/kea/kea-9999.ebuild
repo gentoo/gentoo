@@ -18,7 +18,7 @@ if [[ ${PV} = 9999* ]] ; then
 else
 	SRC_URI="ftp://ftp.isc.org/isc/kea/${MY_P}.tar.gz
 		ftp://ftp.isc.org/isc/kea/${MY_PV}/${MY_P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="ISC BSD SSLeay GPL-2" # GPL-2 only for init script
