@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,6 @@ KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 sh sparc x86 ~amd64-f
 
 RDEPEND="|| (
 	x11-themes/adwaita-icon-theme
-	x11-themes/gnome-icon-theme
 	x11-themes/faenza-icon-theme
 	lxde-base/lxde-icon-theme
 	x11-themes/tango-icon-theme

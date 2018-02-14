@@ -88,7 +88,7 @@ to install additional packages to get icons on the Downloads page.
 For KDE, the required package is kde-frameworks/oxygen-icons.
 
 For other desktop environments, try one of the following:
-- x11-themes/gnome-icon-theme
+- x11-themes/adwaita-icon-theme
 - x11-themes/tango-icon-theme
 
 Please notice the bundled flash player (PepperFlash).
