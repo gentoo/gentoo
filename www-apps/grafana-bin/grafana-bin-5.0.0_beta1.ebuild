@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,15 +6,16 @@ EAPI=5
 inherit user systemd
 
 MY_PN=${PN/-bin/}
-S=${WORKDIR}/${MY_PN}-${PV}
+MY_SRC="${MY_PN}-${PV/_/-}.linux-x64.tar.gz"
+S=${WORKDIR}/${MY_PN}-${PV/_/-}
 
 DESCRIPTION="Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB"
 HOMEPAGE="http://grafana.org"
-SRC_URI="https://s3-us-west-2.amazonaws.com/grafana-releases/release/${MY_PN}-${PV}.linux-x64.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://s3-us-west-2.amazonaws.com/grafana-releases/release/${MY_SRC} -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS=""
 
 DEPEND=""
 RDEPEND="${DEPEND}"
@@ -35,7 +36,7 @@ src_install() {
 
 	# Frontend assets
 	insinto /usr/share/${MY_PN}
-	doins -r public conf vendor
+	doins -r public conf
 
 	dobin bin/grafana-cli
 	dobin bin/grafana-server
