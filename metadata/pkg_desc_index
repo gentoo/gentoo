@@ -8259,7 +8259,7 @@ net-analyzer/jnettop 0.13.0-r1: A top like console network traffic visualiser
 net-analyzer/knocker 0.7.1-r2 0.7.1-r3: Knocker is an easy to use security port scanner written in C
 net-analyzer/labrea 2.5-r2: 'Sticky' Honeypot and IDS
 net-analyzer/lft 3.77: Layer Four Traceroute (LFT) and WhoB
-net-analyzer/linkchecker 9.3-r2 9.3.1-r1: Check websites for broken links
+net-analyzer/linkchecker 9.3.1-r1: Check websites for broken links
 net-analyzer/macchanger 1.7.0: Utility for viewing/manipulating the MAC address of network interfaces
 net-analyzer/mate-netspeed 1.12.0: Applet showing network traffic for MATE
 net-analyzer/mbrowse 0.4.3: MBrowse is a graphical MIB browser
