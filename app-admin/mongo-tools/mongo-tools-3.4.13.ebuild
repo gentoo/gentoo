@@ -3,8 +3,6 @@
 
 EAPI=6
 
-inherit eutils
-
 MY_PV=${PV/_rc/-rc}
 MY_P=${PN}-r${MY_PV}
 
@@ -27,6 +25,8 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${MY_P}
 
 src_prepare() {
+	default
+
 	# do not substitute version because it uses git
 	sed -i '/^sed/,+3d' build.sh || die
 	sed -i '/^mv/d' build.sh || die
@@ -39,8 +39,6 @@ src_prepare() {
 
 	# ensure we use bash wrt #582906
 	sed -i 's@/bin/sh@/bin/bash@g' build.sh || die
-
-	default
 }
 
 src_compile() {
