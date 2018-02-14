@@ -91,7 +91,6 @@ src_configure() {
 		--enable-ssl
 		$(use_enable debug)
 		$(use_enable doc full-doc)
-		--with-guis="${guis[@]}"
 		--with-docpath="${EPREFIX}/usr/share/doc/${PF}/apidoc"
 	)
 	use qt5 && myeconfargs+=(
@@ -99,7 +98,8 @@ src_configure() {
 		--with-qt5-qmake="$(qt5_get_bindir)/qmake"
 	)
 
-	econf ${myeconfargs[@]}
+	guis_config="--with-guis=${guis[@]}"
+	econf ${myeconfargs[@]} "${guis_config}"
 }
 
 src_compile() {
