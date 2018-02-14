@@ -1,17 +1,19 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
-inherit flag-o-matic eutils toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="git://git.code.sf.net/p/strace/code"
-	EGIT_PROJECT="${PN}"
-	inherit git-2 autotools
+	#EGIT_REPO_URI="git://git.code.sf.net/p/strace/code"
+	#EGIT_PROJECT="${PN}"
+	EGIT_REPO_URI="https://github.com/strace/strace.git"
+	inherit git-r3 autotools
 else
-	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
-	KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~arm-linux ~x86-linux"
+	#SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
+	SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.xz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux"
 fi
 
 DESCRIPTION="A useful diagnostic, instructional, and debugging tool"
@@ -23,14 +25,18 @@ IUSE="aio perl static unwind"
 
 LIB_DEPEND="unwind? ( sys-libs/libunwind[static-libs(+)] )"
 # strace only uses the header from libaio to decode structs
-DEPEND="static? ( ${LIB_DEPEND} )
+DEPEND="
+	static? ( ${LIB_DEPEND} )
 	aio? ( >=dev-libs/libaio-0.3.106 )
-	sys-kernel/linux-headers"
-RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )
-	perl? ( dev-lang/perl )"
+	sys-kernel/linux-headers
+"
+RDEPEND="
+	!static? ( ${LIB_DEPEND//\[static-libs(+)]} )
+	perl? ( dev-lang/perl )
+"
 
 src_prepare() {
-	epatch_user
+	default
 
 	if [[ ! -e configure ]] ; then
 		# git generation
@@ -60,6 +66,15 @@ src_configure() {
 	done
 
 	econf $(use_with unwind libunwind)
+}
+
+src_test() {
+	if has usersandbox $FEATURES ; then
+		ewarn "Test suite is known to fail with FEATURES=usersandbox -- skipping ..." #643044
+		return 0
+	fi
+
+	default
 }
 
 src_install() {
