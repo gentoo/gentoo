@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,18 +12,17 @@ SRC_URI="https://gstreamer.freedesktop.org/src/${MY_PN}/${MY_PN}-${PV}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="1.0"
-KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~mips ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="libav +orc"
 
 # XXX: bzip2/lzma are automagic
-# Move back to ${PV} deps of gstreamer/gst-plugins-base later; 1.10.4 had it reduced for lone security stabilization
 RDEPEND="
 	app-arch/bzip2
 	app-arch/xz-utils
 	>=dev-libs/glib-2.40.0:2[${MULTILIB_USEDEP}]
-	>=media-libs/gstreamer-1.10.3:1.0[${MULTILIB_USEDEP}]
-	>=media-libs/gst-plugins-base-1.10.3:1.0[${MULTILIB_USEDEP}]
-	!libav? ( >=media-video/ffmpeg-3.2.4:0=[${MULTILIB_USEDEP}] )
+	>=media-libs/gstreamer-${PV}:1.0[${MULTILIB_USEDEP}]
+	>=media-libs/gst-plugins-base-${PV}:1.0[${MULTILIB_USEDEP}]
+	!libav? ( >=media-video/ffmpeg-3.2.6:0=[${MULTILIB_USEDEP}] )
 	orc? ( >=dev-lang/orc-0.4.17[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}
