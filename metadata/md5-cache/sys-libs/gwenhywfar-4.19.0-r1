@@ -12,4 +12,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://www.aquamaniac.de/sites/download/download.php?package=01&release=207&file=01&dummy=gwenhywfar-4.19.0.tar.gz -> gwenhywfar-4.19.0.tar.gz
 _eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=d9c30792a179178b1f30c2dd3575994d
+_md5_=ab26077ca20cdfe1844121db9d15e6da
