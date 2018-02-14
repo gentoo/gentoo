@@ -9,4 +9,4 @@ RDEPEND=>=virtual/emacs-23
 SLOT=0
 SRC_URI=http://www.physik.fu-berlin.de/%7Edhansen/mldonkey/files/mldonkey-el-0.0.4b.tar.gz
 _eclasses_=elisp	8a9eaaa38b2345593b1cbc5315dde83c	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f
-_md5_=fbc0af7cd83f314e85ffedc1569c1bad
+_md5_=2a3c1766da79f8e26f63e26555c31aaa

@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=>=media-libs/taglib-1.6 >=x11-libs/gtk+-3.22:3 >=xfce-base/exo-0.11:= >=xfce-base/thunar-1.7:= dev-util/intltool virtual/pkgconfig
+DESCRIPTION=Adds special features for media files to the Thunar File Manager
+EAPI=6
+HOMEPAGE=https://goodies.xfce.org/projects/thunar-plugins/thunar-media-tags-plugin
+KEYWORDS=~amd64 ~x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=>=media-libs/taglib-1.6 >=x11-libs/gtk+-3.22:3 >=xfce-base/exo-0.11:= >=xfce-base/thunar-1.7:=
+SLOT=0
+SRC_URI=mirror://xfce/src/thunar-plugins/thunar-media-tags-plugin/0.3/thunar-media-tags-plugin-0.3.0.tar.bz2
+_md5_=f8bffaa7e3d402666bd23a015483a67a
