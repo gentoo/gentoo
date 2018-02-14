@@ -478,8 +478,6 @@ qt4_multilib_src_install() {
 			# convenience symlinks
 			dosym qt4-"${CHOST}".conf /etc/xdg/qtchooser/4.conf
 			dosym qt4-"${CHOST}".conf /etc/xdg/qtchooser/qt4.conf
-			# TODO bug 522646: write an eselect module to manage default.conf
-			dosym qt4.conf /etc/xdg/qtchooser/default.conf
 		fi
 	fi
 
