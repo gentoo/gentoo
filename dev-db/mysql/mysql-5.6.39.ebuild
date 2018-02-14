@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-MY_EXTRAS_VER="20171121-1518Z"
+MY_EXTRAS_VER="20180214-0024Z"
 MY_PV="${PV//_alpha_pre/-m}"
 MY_PV="${MY_PV//_/-}"
 HAS_TOOLS_PATCH="1"
@@ -37,6 +37,7 @@ PATCHES=(
 	"${MY_PATCH_DIR}"/20018_all_mysql-5.6.25-without-clientlibs-tools.patch
 	"${MY_PATCH_DIR}"/20027_all_mysql-5.5-perl5.26-includes.patch
 	"${MY_PATCH_DIR}"/20028_all_mysql-5.6-gcc7.patch
+	"${MY_PATCH_DIR}"/20031_all_mysql-5.6-fix-monitor.test.patch
 )
 
 # Please do not add a naive src_unpack to this ebuild
