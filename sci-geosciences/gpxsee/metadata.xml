@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>grozin@gentoo.org</email>
+    <name>Andrey Grozin</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    GPXSee is a GPS log file viewer and analyzer that supports GPX, TCX, KML, FIT, IGC and NMEA files.
+  </longdescription>
+  <upstream>
+    <remote-id type="sourceforge">gpxsee</remote-id>
+  </upstream>
+</pkgmetadata>
