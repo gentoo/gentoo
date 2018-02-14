@@ -6387,7 +6387,7 @@ gnome-base/orbit 2.14.19-r5: ORBit2 is a high-performance CORBA ORB
 gnome-extra/assogiate 0.2.1-r1: assoGiate is an editor of the file types database for GNOME
 gnome-extra/chrome-gnome-shell 8-r1: GNOME Shell integration for Chrome/Chromium, Firefox, Vivaldi, Opera browsers
 gnome-extra/cinnamon 3.0.7-r2: A fork of GNOME Shell with layout similar to GNOME 2
-gnome-extra/cinnamon-control-center 2.8.1 3.0.1: Cinnamons's main interface to configure various aspects of the desktop
+gnome-extra/cinnamon-control-center 3.0.1: Cinnamons's main interface to configure various aspects of the desktop
 gnome-extra/cinnamon-desktop 2.8.1 3.0.2: A collection of libraries and utilites used by Cinnamon
 gnome-extra/cinnamon-menus 2.8.0 3.0.2: Cinnamon's library for the Desktop Menu fd.o specification
 gnome-extra/cinnamon-screensaver 2.8.0-r1 3.0.1: Screensaver for Cinnamon
@@ -10223,7 +10223,7 @@ virtual/emacs-flim 0: Virtual for FLIM (library for message representation in Em
 virtual/fam 0-r1: A virtual package to choose between gamin and fam
 virtual/ffmpeg 9-r2: Virtual package for FFmpeg executable implementation
 virtual/fortran 0: Virtual for Fortran Compiler
-virtual/freedesktop-icon-theme 0-r2: A virtual to choose between different icon themes
+virtual/freedesktop-icon-theme 0-r3: A virtual to choose between different icon themes
 virtual/glu 9.0 9.0-r1: Virtual for OpenGL utility library
 virtual/gnustep-back 0.25.0: Virtual for back-end component for the GNUstep GUI Library
 virtual/gsasl 2: Virtual for the GNU SASL library
