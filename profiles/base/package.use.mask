@@ -63,10 +63,6 @@ dev-java/oracle-jre-bin:9 gentoo-vm
 # Requires audacious, which is masked. Bug 632513
 =media-libs/freeverb3-3.1.2_pre20151102-r1 jack
 
-# Andreas Sturmlechner <asturm@gentoo.org> (29 Oct 2017)
-# Depends on deprecated x11-libs/qscintilla[qt4]/qt4, bug #634972
-net-analyzer/linkchecker X
-
 # Andreas Sturmlechner <asturm@gentoo.org> (16 Oct 2017)
 # USE=qt4 depends on masked dev-qt/qtwebkit:4, bug #620754
 sci-physics/root qt4

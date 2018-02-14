@@ -8,13 +8,16 @@ PYTHON_REQ_USE='threads(+)'
 
 WAF_PV=1.9.8
 
-inherit gnome2-utils pax-utils python-r1 toolchain-funcs versionator waf-utils xdg-utils
+inherit flag-o-matic gnome2-utils pax-utils python-r1 toolchain-funcs versionator waf-utils xdg-utils
 
 DESCRIPTION="Media player based on MPlayer and mplayer2"
 HOMEPAGE="https://mpv.io/"
 
 if [[ ${PV} != *9999* ]]; then
-	SRC_URI="https://github.com/mpv-player/mpv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="
+		https://github.com/mpv-player/mpv/archive/v${PV}.tar.gz -> ${P}.tar.gz
+		https://dev.gentoo.org/~kensington/distfiles/${P}-patches-${PR}.tar.xz
+	"
 	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux"
 	DOCS=( RELEASE_NOTES )
 else
@@ -142,6 +145,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.19.0-make-ffmpeg-version-check-non-fatal.patch"
 	"${FILESDIR}/${PN}-0.23.0-make-libavdevice-check-accept-libav.patch"
 	"${FILESDIR}/${PN}-0.25.0-fix-float-comparisons-in-tests.patch"
+	"${FILESDIR}/${PN}-0.27.0-add-missing-link-flags-for-rpi.patch"
 )
 
 pkg_setup() {
@@ -151,17 +155,16 @@ pkg_setup() {
 src_prepare() {
 	cp "${DISTDIR}/waf-${WAF_PV}" "${S}"/waf || die
 	chmod +x "${S}"/waf || die
-	eapply "${FILESDIR}/${PV}"
+	eapply "${WORKDIR}/${PV}"
 	default_src_prepare
 }
 
 src_configure() {
 	tc-export CC PKG_CONFIG AR
 
-	if tc-is-cross-compiler && use raspberry-pi; then
-		export EXTRA_PKG_CONFIG_LIBDIR="${SYSROOT%/}${EPREFIX}/opt/vc/lib/pkgconfig"
-		# Drop next line when Gentoo bug 607344 is fixed or if you fixed it locally.
-		die "${PN} can't be cross built with raspberry-pi USE enabled. See Gentoo bug 607344."
+	if use raspberry-pi; then
+		append-cflags -I"${SYSROOT%/}${EPREFIX}/opt/vc/include"
+		append-ldflags -L"${SYSROOT%/}${EPREFIX}/opt/vc/lib"
 	fi
 
 	local mywafargs=(
