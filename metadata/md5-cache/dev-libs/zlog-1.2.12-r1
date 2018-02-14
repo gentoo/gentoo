@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install test
+DESCRIPTION=A reliable, thread safe, clear-model, pure C logging library.
+EAPI=6
+HOMEPAGE=http://hardysimpson.github.io/zlog/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2
+SLOT=0
+SRC_URI=https://github.com/HardySimpson/zlog/archive/1.2.12.tar.gz -> zlog-v1.2.12.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_md5_=12d15f9bc9c4b3ade5565328ef699788

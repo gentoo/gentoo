@@ -7097,6 +7097,7 @@ media-fonts/nepali-fonts 1-r1: a collection of fonts for Nepali users
 media-fonts/noto 20170403: Google's font family that aims to support all the world's languages
 media-fonts/noto-cjk 20150615: Google's font family that aims to support all the world's languages
 media-fonts/oldstandard 2.2: Old Standard - font with wide range of Latin, Greek and Cyrillic characters
+media-fonts/open-sans 1: Clean and modern sans-serif typeface designed for legibility across interfaces
 media-fonts/opendesktop-fonts 1.4.2: Chinese TrueType Fonts
 media-fonts/oto 0.5: Open Type Organizer
 media-fonts/pcf2bdf 1.04-r1: Converts PCF fonts to BDF fonts
