@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,7 +23,10 @@ CDEPEND="dev-python/blinker[${PYTHON_USEDEP}]
 	dev-python/pilkit[${PYTHON_USEDEP}]"
 DEPEND="${CDEPEND}
 	s3? ( dev-python/boto[${PYTHON_USEDEP}] )
-	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
+	test? (
+		dev-python/boto[${PYTHON_USEDEP}]
+		dev-python/pytest[${PYTHON_USEDEP}]
+	)"
 RDEPEND="${CDEPEND}"
 
 DOCS="README.rst"
