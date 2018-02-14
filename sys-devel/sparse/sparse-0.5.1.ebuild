@@ -1,44 +1,45 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=6
 
 inherit eutils multilib toolchain-funcs
-if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="git://git.kernel.org/pub/scm/devel/sparse/sparse.git"
-	inherit git-2
-fi
 
 DESCRIPTION="C semantic parser"
 HOMEPAGE="https://sparse.wiki.kernel.org/index.php/Main_Page"
 
 if [[ ${PV} == "9999" ]] ; then
-	SRC_URI=""
-	#KEYWORDS=""
+	inherit git-r3
+	EGIT_REPO_URI="https://git.kernel.org/pub/scm/devel/${PN}/${PN}.git"
+	KEYWORDS=""
 else
-	SRC_URI="mirror://kernel/software/devel/sparse/dist/${P}.tar.bz2"
+	SRC_URI="https://git.kernel.org/pub/scm/devel/${PN}/${PN}.git/snapshot/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 fi
 
-LICENSE="OSL-1.1"
+LICENSE="MIT"
 SLOT="0"
-IUSE="gtk test xml"
+IUSE="gtk llvm test xml"
 
 RDEPEND="gtk? ( x11-libs/gtk+:2 )
+	llvm? ( >=sys-devel/llvm-3.0 )
 	xml? ( dev-libs/libxml2 )"
 DEPEND="${RDEPEND}
 	gtk? ( virtual/pkgconfig )
 	xml? ( virtual/pkgconfig )"
+
+PATCHES=( "${FILESDIR}/${PN}-0.5.1-cmdline-include.patch" )
 
 src_prepare() {
 	tc-export AR CC PKG_CONFIG
 	sed -i \
 		-e '/^PREFIX=/s:=.*:=/usr:' \
 		-e "/^LIBDIR=/s:/lib:/$(get_libdir):" \
-		-e '/^CFLAGS =/{s:=:+= $(CPPFLAGS):;s:-O2 -finline-functions::}' \
+		-e '/^COMMON_CFLAGS =/{s:=:= $(CPPFLAGS):;s:-O2 -finline-functions -fno-strict-aliasing -g:-fno-strict-aliasing:}' \
 		-e "s:pkg-config:${PKG_CONFIG}:" \
 		Makefile || die
-	export MAKEOPTS+=" V=1 AR=${AR} CC=${CC} HAVE_GTK2=$(usex gtk) HAVE_LIBXML=$(usex xml)"
+	export MAKEOPTS+=" V=1 AR=${AR} CC=${CC} HAVE_GTK2=$(usex gtk) HAVE_LLVM=$(usex llvm) HAVE_LIBXML=$(usex xml)"
+	default
 }
 
 src_compile() {

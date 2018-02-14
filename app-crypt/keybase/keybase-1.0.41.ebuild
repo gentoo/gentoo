@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -39,6 +39,7 @@ src_compile() {
 
 src_install() {
 	dobin "${T}/keybase"
+	dobin "${S}/packaging/linux/run_keybase"
 }
 
 pkg_postinst() {
