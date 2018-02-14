@@ -14,7 +14,7 @@ SRC_URI="https://github.com/balabit/syslog-ng/releases/download/${P}/${P}.tar.gz
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="amqp caps dbi geoip http ipv6 json libressl mongodb pacct python redis smtp spoof-source systemd tcpd"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="test"
