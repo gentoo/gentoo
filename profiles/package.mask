@@ -501,6 +501,7 @@ games-kids/crayon-physics
 >=dev-python/thunarx-python-0.4.0
 >=xfce-base/thunar-1.7
 >=xfce-extra/thunar-archive-plugin-0.4.0
+>=xfce-extra/thunar-media-tags-plugin-0.3.0
 
 # Andreas Sturmlechner <asturm@gentoo.org> (16 Nov 2017)
 # Qt4WebKit is ancient and full of security holes.
