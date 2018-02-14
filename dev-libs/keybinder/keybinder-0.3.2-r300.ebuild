@@ -29,12 +29,18 @@ S=${WORKDIR}/${MY_P}
 
 src_configure() {
 	econf \
-		$(use_enable introspection) \
-		--with-html-dir="${EPREFIX}/usr/share/doc/${PF}/html"
+		$(use_enable introspection)
 }
 
 src_install() {
 	default
 	prune_libtool_files --all
-	dosym /usr/share/doc/${PF}/html/${PN}-3.0 /usr/share/gtk-doc/html/${PN}-3.0
+}
+
+pkg_preinst() {
+	# remove old symlink as otherwise the files will be installed
+	# in the wrong directory
+	if [[ -h ${EROOT%/}/usr/share/gtk-doc/html/keybinder-3.0 ]]; then
+		rm "${EROOT%/}/usr/share/gtk-doc/html/keybinder-3.0" || die
+	fi
 }
