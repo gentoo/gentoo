@@ -9289,7 +9289,6 @@ sci-libs/libgeotiff 1.4.0: Library for reading TIFF files with embedded tags for
 sci-libs/libghemical 3.0.0: Chemical quantum mechanics and molecular mechanics
 sci-libs/libint 1.1.6: Matrix elements (integrals) evaluation over Cartesian Gaussian functions
 sci-libs/libnova 0.12.3: Celestial Mechanics and Astronomical Calculation Library
-sci-libs/liborigin 20110829: Library for reading OriginLab OPJ project files
 sci-libs/libqalculate 0.9.9: A modern multi-purpose calculator library
 sci-libs/libsigrok 0.3.0: basic hardware drivers for logic analyzers and input/output file format support
 sci-libs/libspatialindex 1.8.1: General framework for developing spatial indices
