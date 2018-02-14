@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst postrm prepare
+DESCRIPTION=Simple OO wrapper interface for the Subversion command-line client
+EAPI=6
+HOMEPAGE=https://pear.php.net/package/VersionControl_SVN
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=BSD
+RDEPEND=>=dev-php/pear-1.8.1
+SLOT=0
+SRC_URI=https://pear.php.net/get/VersionControl_SVN-0.5.2.tgz
+_eclasses_=php-pear-r2	eb6928c33771db74564e814c5ca6c1b3
+_md5_=21e64be16a43d80fce2383d335e333cc
