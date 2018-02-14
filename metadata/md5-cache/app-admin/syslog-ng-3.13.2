@@ -4,7 +4,7 @@ DESCRIPTION=syslog replacement with advanced filtering features
 EAPI=6
 HOMEPAGE=http://www.balabit.com/network-security/syslog-ng
 IUSE=amqp caps dbi geoip http ipv6 json libressl mongodb pacct python redis smtp spoof-source systemd tcpd python_targets_python2_7
-KEYWORDS=~amd64 x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-2+ LGPL-2.1+
 RDEPEND=amqp? ( >=net-libs/rabbitmq-c-0.8.0 ) caps? ( sys-libs/libcap ) dbi? ( >=dev-db/libdbi-0.9.0 ) geoip? ( >=dev-libs/geoip-1.5.0 ) http? ( net-misc/curl ) json? ( >=dev-libs/json-c-0.9:= ) mongodb? ( >=dev-libs/mongo-c-driver-1.2.0 ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] ) redis? ( >=dev-libs/hiredis-0.11.0 ) smtp? ( net-libs/libesmtp ) spoof-source? ( net-libs/libnet:1.1 ) systemd? ( sys-apps/systemd ) tcpd? ( >=sys-apps/tcp-wrappers-7.6 ) >=dev-libs/ivykis-0.36.1 >=dev-libs/libpcre-6.1 !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) !dev-libs/eventlog >=dev-libs/glib-2.10.1:2
 REQUIRED_USE=python? ( python_targets_python2_7 )
@@ -12,4 +12,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/balabit/syslog-ng/releases/download/syslog-ng-3.13.2/syslog-ng-3.13.2.tar.gz
 _eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-single-r1	317a2557b4d7319a7418225f65accf77	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	systemd	a31844b675f1a1fea87fbe1144aee5f5	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	versionator	ce21313503c41896ebcd7d58b0607e37
-_md5_=498cc7f24d5455980adf48f8c22c219c
+_md5_=8c24e931041d89d6600ba25a3dc73d45
