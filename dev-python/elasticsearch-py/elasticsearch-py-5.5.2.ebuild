@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
-ES_VERSION="6.0.1"
+ES_VERSION="5.6.7"
 
 inherit distutils-r1
 
