@@ -16,7 +16,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="P2P communications protocol"
 HOMEPAGE="https://bitmessage.org/"
-SRC_URI="https://github.com/Bitmessage/${MY_PN}/archive/v${PV}.tar.gz
+SRC_URI="https://github.com/Bitmessage/${MY_PN}/archive/${PV}.tar.gz
 	-> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
@@ -50,17 +50,11 @@ RDEPEND="${DEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=( "${FILESDIR}/noninteractive-build.patch")
-
 src_install () {
 	distutils-r1_src_install
 	dodoc README.md
 
 	# The man page is not installed because it's basically empty.
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
 }
 
 pkg_postinst() {
