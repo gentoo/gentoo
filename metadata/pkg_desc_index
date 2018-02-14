@@ -4466,7 +4466,7 @@ dev-php/PEAR-System_Command 1.0.8-r1: PHP command-line execution interface
 dev-php/PEAR-Text_CAPTCHA 0.5.0: Generation of CAPTCHAs
 dev-php/PEAR-Text_Figlet 1.0.2-r1: Render text using FIGlet fonts
 dev-php/PEAR-Text_Password 1.2.1: Creating passwords with PHP
-dev-php/PEAR-Text_Wiki 1.2.2: Abstracts parsing and rendering rules for Wiki markup in structured plain text
+dev-php/PEAR-Text_Wiki 1.2.2_p20170904: Abstracts parsing and rendering rules for Wiki markup in structured plain text
 dev-php/PEAR-Validate 0.8.5: Validation class
 dev-php/PEAR-VersionControl_SVN 0.5.2: Simple OO wrapper interface for the Subversion command-line client
 dev-php/PEAR-XML_Beautifier 1.2.2-r1: Formats XML and makes it easier to read

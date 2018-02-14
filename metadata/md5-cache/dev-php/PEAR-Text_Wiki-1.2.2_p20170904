@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm test unpack
+DEPEND=test? ( dev-php/phpunit dev-php/PEAR-PEAR )
+DESCRIPTION=Abstracts parsing and rendering rules for Wiki markup in structured plain text
+EAPI=6
+HOMEPAGE=https://pear.php.net/package/Text_Wiki
+IUSE=test
+KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86
+LICENSE=LGPL-2.1
+RDEPEND=>=dev-php/pear-1.8.1
+SLOT=0
+SRC_URI=https://github.com/pear/Text_Wiki/archive/32fd5f483f34645f4efd96d385d8950ea26d4a2a.tar.gz -> Text_Wiki-1.2.2_p20170904.tar.gz
+_eclasses_=php-pear-r2	eb6928c33771db74564e814c5ca6c1b3	vcs-snapshot	03289f51c769cf409d200d2d628cdd6e
+_md5_=adc191a0b325f7b85b6e5003e5ea76e9
