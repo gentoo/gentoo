@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 WX_GTK_VER="3.0"
 
-inherit eutils autotools wxwidgets
+inherit eutils gnome2-utils xdg-utils autotools wxwidgets
 
 DESCRIPTION="MediaInfo supplies technical and tag information about media files"
 HOMEPAGE="https://mediaarea.net/mediainfo/ https://github.com/MediaArea/MediaInfo"
@@ -63,9 +63,15 @@ src_install() {
 		cd "${S}"/Project/GNU/${target}
 		default
 		dodoc "${S}"/History_${target}.txt
-		if [[ ${target} == "GUI" ]]; then
-			newicon "${S}"/Source/Resource/Image/MediaInfo.png ${PN}.png
-			make_desktop_entry ${PN}-gui MediaInfo ${PN} "AudioVideo;GTK"
-		fi
 	done
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }
