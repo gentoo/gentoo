@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,7 +14,7 @@ SLOT="0"
 IUSE="rad1 usrp1 uhd +bladerf cpu_flags_x86_sse3 cpu_flags_x86_sse4_1"
 
 RDEPEND="
-	=net-voip/yate-5.4.0-r1:=[gsm]
+	=net-voip/yate-${PV}:=[gsm]
 	bladerf? ( net-wireless/bladerf:= )
 	uhd? ( net-wireless/uhd )
 	virtual/libusb:1"
@@ -26,14 +26,14 @@ if [[ ${PV} == "9999" ]] ; then
 	KEYWORDS=""
 else
 	KEYWORDS="~amd64 ~arm ~x86"
-	SRC_URI="http://yate.null.ro/tarballs/${PN}4/yate-bts-${PV}-1.tar.gz"
+	SRC_URI="http://yate.null.ro/tarballs/${PN}6/yate-bts-${PV}-1.tar.gz"
 	S="${WORKDIR}/yate-bts"
 fi
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-dont-mess-with-cflags.patch
+	#we need more patches or configure flags because things install in really wrong places per FHS
 	epatch "${FILESDIR}"/${PN}-sgsnggsn-inetutils-hostname-fix.diff
-	epatch "${FILESDIR}"/${PN}-bladeRF-transceiver_revert_init_order.patch
+	epatch "${FILESDIR}"/${PN}-5.0.0-gcc6.patch
 	eautoreconf
 }
 
