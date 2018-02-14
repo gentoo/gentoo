@@ -321,7 +321,7 @@ app-crypt/certbot-nginx 0.19.0 0.20.0: Nginx plugin for certbot (Let's Encrypt C
 app-crypt/easy-rsa 3.0.1-r1: Small RSA key management package, based on OpenSSL
 app-crypt/gcr 3.20.0: Libraries for cryptographic UIs and accessing PKCS#11 modules
 app-crypt/gentoo-keys 201607021514: A Openpgp/gpg keyring of official Gentoo release media gpg keys
-app-crypt/gnupg 1.4.21 2.1.15 2.1.20-r1 2.2.0 2.2.4: The GNU Privacy Guard, a GPL OpenPGP implementation
+app-crypt/gnupg 1.4.21 2.1.15 2.1.20-r1 2.2.0 2.2.4 2.2.4-r2: The GNU Privacy Guard, a GPL OpenPGP implementation
 app-crypt/gorilla 1.4-r1: Password Safe in secure way with GUI interface
 app-crypt/gpa 0.9.10: The GNU Privacy Assistant (GPA) is a graphical user interface for GnuPG
 app-crypt/gpg-ringmgr 1.12: GPG Keyring Manager to handle large GPG keyrings more easily
@@ -753,7 +753,7 @@ app-emulation/spim 8.0-r2: MIPS Simulator
 app-emulation/uade 2.13: Unix Amiga Delitracker Emulator - plays old Amiga tunes through UAE emulation
 app-emulation/vice 2.4.22: The Versatile Commodore 8-bit Emulator
 app-emulation/virt-manager 1.4.3: A graphical tool for administering virtual machines
-app-emulation/virt-viewer 5.0: Graphical console client for connecting to virtual machines
+app-emulation/virt-viewer 5.0 6.0: Graphical console client for connecting to virtual machines
 app-emulation/virt-what 1.12 1.18: Detects if the current machine is running in a virtual machine
 app-emulation/virtualbox 5.1.32: Family of powerful x86 virtualization products for enterprise and home use
 app-emulation/virtualbox-additions 5.1.32: CD image containing guest additions for VirtualBox
@@ -8756,7 +8756,7 @@ net-misc/curl 7.57.0 7.58.0: A Client that groks URLs
 net-misc/dahdi 2.10.0.1 2.10.1 2.10.2-r2: Kernel modules for Digium compatible hardware (formerly known as Zaptel)
 net-misc/dahdi-tools 2.6.2 2.8.0 2.9.0.1 2.10.0 2.10.1: Userspace tools to configure the kernel modules from net-misc/dahdi
 net-misc/dhcp 4.3.4 4.3.5: ISC Dynamic Host Configuration Protocol (DHCP) client/server
-net-misc/dhcpcd 6.11.3: A fully featured, yet light weight RFC2131 compliant DHCP client
+net-misc/dhcpcd 6.11.3 6.11.5: A fully featured, yet light weight RFC2131 compliant DHCP client
 net-misc/dhcpcd-ui 0.7.5-r1: Desktop notification and configuration for dhcpcd
 net-misc/dhcping 1.2: Utility for sending a dhcp request to a dhcp server to see if it is responding
 net-misc/dibbler 1.0.1: Portable DHCPv6 implementation (server, client and relay)
@@ -9958,7 +9958,7 @@ sys-devel/boost-m4 0.4: Another set of autoconf macros for compiling against boo
 sys-devel/clang 3.7.1-r100 3.9.1-r100 4.0.1 5.0.1: C language family frontend for LLVM
 sys-devel/clang-runtime 3.9.1 4.0.1 5.0.1: Meta-ebuild for clang runtime libraries
 sys-devel/crossdev 20171230: Gentoo Cross-toolchain generator
-sys-devel/dev86 0.16.19: Bruce's C compiler - Simple C compiler to generate 8086 code
+sys-devel/dev86 0.16.21-r2: Bruce's C compiler - Simple C compiler to generate 8086 code
 sys-devel/distcc 3.1-r10 3.2_rc1-r4: Distribute compilation of C code across several machines on a network
 sys-devel/flex 2.6.1 2.6.4-r1: The Fast Lexical Analyzer
 sys-devel/gcc 5.4.0-r4 6.4.0 6.4.0-r1: The GNU Compiler Collection
@@ -9972,7 +9972,7 @@ sys-devel/llvm-common 4.0.1 5.0.1: Common files shared between multiple slots of
 sys-devel/llvmgold 4 5: LLVMgold plugin symlink for autoloading
 sys-devel/m4 1.4.17: GNU macro processor
 sys-devel/make 4.0-r1 4.1-r1 4.2.1: Standard tool to compile source trees
-sys-devel/patch 2.7.5: Utility to apply diffs to files
+sys-devel/patch 2.7.5 2.7.6-r1: Utility to apply diffs to files
 sys-devel/pmake 1.111.3.1 1.111.3.3: BSD build tool to create programs in parallel. Debian's version of NetBSD's make
 sys-devel/prelink 20130503: Modifies ELFs to avoid runtime symbol resolutions resulting in faster load times
 sys-devel/qconf 2.3: ./configure like generator for qmake-based projects
@@ -10019,13 +10019,13 @@ sys-fs/e2fsprogs 1.43.3-r1 1.43.6: Standard EXT2/EXT3/EXT4 filesystem utilities
 sys-fs/e4rat 0.2.4_pre20141201: Toolset to accelerate the boot process and application startup
 sys-fs/encfs 1.7.5 1.8.1 1.9.2: An implementation of encrypted filesystem in user-space using FUSE
 sys-fs/eudev 3.1.5 3.2.5: Linux dynamic and persistent device naming support (aka userspace devfs)
-sys-fs/exfat-utils 1.2.4: exFAT filesystem utilities
+sys-fs/exfat-utils 1.2.4 1.2.8: exFAT filesystem utilities
 sys-fs/ext4magic 0.3.2: Tool for recovery of deleted or overwritten files on ext3/ext4 filesystems
 sys-fs/extundelete 0.2.0-r1 0.2.4: A utility to undelete files from an ext3 or ext4 partition
 sys-fs/f2fs-tools 1.6.1: Tools for Flash-Friendly File System (F2FS)
 sys-fs/fatsort 1.4.2: Sorts files on FAT16/32 partitions, ideal for basic audio players
 sys-fs/fuse 2.9.7: An interface for filesystems implemented in userspace
-sys-fs/fuse-exfat 1.2.4: exFAT filesystem FUSE module
+sys-fs/fuse-exfat 1.2.4 1.2.8: exFAT filesystem FUSE module
 sys-fs/fuseiso 20070708-r1: Fuse module to mount ISO9660
 sys-fs/genext2fs 1.4.1: generate ext2 file systems
 sys-fs/growpart 0.0.1 0.0.30: A script that can grow your rootfs on first boot
