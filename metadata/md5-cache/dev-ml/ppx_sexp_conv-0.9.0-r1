@@ -3,10 +3,10 @@ DEPEND=dev-ml/ppx_core:= dev-ml/ppx_driver:= dev-ml/ppx_type_conv:= dev-ml/ppx_m
 DESCRIPTION=Support Library for type-driven code generators
 EAPI=6
 HOMEPAGE=https://github.com/janestreet/ppx_sexp_conv
-KEYWORDS=~amd64 ~ppc
+KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=Apache-2.0
 RDEPEND=dev-ml/ppx_core:= dev-ml/ppx_driver:= dev-ml/ppx_type_conv:= dev-ml/ppx_metaquot:= dev-ml/ppx_optcomp:= dev-ml/sexplib:= dev-ml/ocaml-migrate-parsetree:= dev-ml/ppx_traverse_builtins:= >=dev-lang/ocaml-4:=
 SLOT=0/0.9.0
 SRC_URI=https://github.com/janestreet/ppx_sexp_conv/archive/v0.9.0.tar.gz -> ppx_sexp_conv-0.9.0.tar.gz
 _eclasses_=opam	24b4a2529c1fd12f1304856d6c5a690d
-_md5_=cac7cadf8f0d3ddbe48d78f79fcf4aae
+_md5_=e35c4add784e5c4d871a691fc4cd8ead

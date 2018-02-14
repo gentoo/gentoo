@@ -3,10 +3,10 @@ DEPEND=dev-ml/jbuilder >=dev-lang/ocaml-4:= dev-ml/opam
 DESCRIPTION=Shared [@@deriving] plugin registry
 EAPI=6
 HOMEPAGE=https://github.com/diml/ppx_derivers
-KEYWORDS=~amd64 ~ppc
+KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=BSD
 RDEPEND=>=dev-lang/ocaml-4:=
 SLOT=0/1.0
 SRC_URI=https://github.com/diml/ppx_derivers/archive/1.0.tar.gz -> ppx_derivers-1.0.tar.gz
 _eclasses_=opam	24b4a2529c1fd12f1304856d6c5a690d
-_md5_=a5583cb14f29bff67299dfabcb97ff64
+_md5_=db65d659fb2c39bbe68597337ed82d5d

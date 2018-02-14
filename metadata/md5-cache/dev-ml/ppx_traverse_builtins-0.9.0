@@ -3,10 +3,10 @@ DEPEND=dev-ml/jbuilder >=dev-lang/ocaml-4:= dev-ml/opam
 DESCRIPTION=Builtins for ppx_traverse
 EAPI=6
 HOMEPAGE=https://github.com/janestreet/ppx_traverse_builtins
-KEYWORDS=~amd64 ~ppc
+KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=Apache-2.0
 RDEPEND=>=dev-lang/ocaml-4:=
 SLOT=0/0.9.0
 SRC_URI=https://github.com/janestreet/ppx_traverse_builtins/archive/v0.9.0.tar.gz -> ppx_traverse_builtins-0.9.0.tar.gz
 _eclasses_=opam	24b4a2529c1fd12f1304856d6c5a690d
-_md5_=7ad61c9fd6af702c159c45f66fb63afa
+_md5_=53f213a132b85b86d9c2c24544a9f989

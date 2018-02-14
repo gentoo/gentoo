@@ -3,10 +3,10 @@ DEPEND=dev-ml/base:= dev-ml/sexplib:= dev-ml/jbuilder >=dev-lang/ocaml-4:= dev-m
 DESCRIPTION=Standard IO Library for OCaml
 EAPI=6
 HOMEPAGE=https://github.com/janestreet/stdio
-KEYWORDS=~amd64 ~ppc
+KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=Apache-2.0
 RDEPEND=dev-ml/base:= dev-ml/sexplib:= >=dev-lang/ocaml-4:=
 SLOT=0/0.9.0
 SRC_URI=https://github.com/janestreet/stdio/archive/v0.9.0.tar.gz -> stdio-0.9.0.tar.gz
 _eclasses_=opam	24b4a2529c1fd12f1304856d6c5a690d
-_md5_=5375624b1d04e1386135809c492607c3
+_md5_=e2dfb45e87ff0a6207348a54312c9e2f

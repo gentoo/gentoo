@@ -3,10 +3,10 @@ DEPEND=dev-ml/ppx_core:= dev-ml/ppx_driver:= dev-ml/ppx_metaquot:= dev-ml/ppx_ty
 DESCRIPTION=Generate a list containing all values of a finite type
 EAPI=6
 HOMEPAGE=https://github.com/janestreet/ppx_enumerate
-KEYWORDS=~amd64 ~ppc
+KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=Apache-2.0
 RDEPEND=dev-ml/ppx_core:= dev-ml/ppx_driver:= dev-ml/ppx_metaquot:= dev-ml/ppx_type_conv:= dev-ml/ocaml-migrate-parsetree:= >=dev-lang/ocaml-4:=
 SLOT=0/0.9.0
 SRC_URI=https://github.com/janestreet/ppx_enumerate/archive/v0.9.0.tar.gz -> ppx_enumerate-0.9.0.tar.gz
 _eclasses_=opam	24b4a2529c1fd12f1304856d6c5a690d
-_md5_=ee3abdd66abd44cb6e863ee39149a899
+_md5_=5d2b37c4d7c7350ca9bfee645c938f02

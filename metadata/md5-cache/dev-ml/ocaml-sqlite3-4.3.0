@@ -3,10 +3,10 @@ DEPEND=>=dev-db/sqlite-3.3.3 dev-ml/jbuilder dev-ml/base dev-ml/stdio dev-ml/con
 DESCRIPTION=A package for ocaml that provides access to SQLite databases
 EAPI=5
 HOMEPAGE=http://mmottl.github.io/sqlite3-ocaml/
-KEYWORDS=~amd64 ~ppc ~x86-fbsd
+KEYWORDS=~amd64 ~ppc ~x86 ~x86-fbsd
 LICENSE=MIT
 RDEPEND=>=dev-db/sqlite-3.3.3 >=dev-lang/ocaml-4:=
 SLOT=0/4.3.0
 SRC_URI=https://github.com/mmottl/sqlite3-ocaml/releases/download/4.3.0/sqlite3-4.3.0.tbz
 _eclasses_=opam	24b4a2529c1fd12f1304856d6c5a690d
-_md5_=3151202785656ee90b34ed6925efbcdd
+_md5_=450d9c798a78265f250486f3434cfcd2

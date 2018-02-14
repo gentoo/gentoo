@@ -4,10 +4,10 @@ DESCRIPTION=Type-driven code generation for OCaml
 EAPI=5
 HOMEPAGE=https://github.com/ocaml-ppx/ppx_deriving
 IUSE=doc +ocamlopt test
-KEYWORDS=~amd64 ~ppc
+KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=MIT
 RDEPEND=dev-ml/ppx_tools:= dev-ml/ocaml-migrate-parsetree:= dev-ml/ppx_derivers:= dev-ml/result:= >=dev-lang/ocaml-4:=
 SLOT=0/4.2
 SRC_URI=https://github.com/ocaml-ppx/ppx_deriving/archive/v4.2.tar.gz -> ppx_deriving-4.2.tar.gz
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	findlib	45d6030075064a68da8d7143726a1150	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	opam	24b4a2529c1fd12f1304856d6c5a690d	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=85e78e6c3b1dc0765e0496ba674040d1
+_md5_=bbdb709ad564fae109ed33a00089b2a9

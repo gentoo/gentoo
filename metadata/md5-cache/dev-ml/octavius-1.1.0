@@ -3,10 +3,10 @@ DEPEND=dev-ml/jbuilder dev-ml/ocamlbuild >=dev-ml/findlib-1.0.4-r1 >=dev-lang/oc
 DESCRIPTION=ocamldoc comment syntax parser
 EAPI=6
 HOMEPAGE=https://github.com/ocaml-doc/octavius
-KEYWORDS=~amd64 ~ppc
+KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=ISC
 RDEPEND=>=dev-lang/ocaml-4:=
 SLOT=0/1.1.0
 SRC_URI=https://github.com/ocaml-doc/octavius/archive/v1.1.0.tar.gz -> octavius-1.1.0.tar.gz
 _eclasses_=findlib	45d6030075064a68da8d7143726a1150	opam	24b4a2529c1fd12f1304856d6c5a690d
-_md5_=7e580a7f262ac28d1e85e67a5392040f
+_md5_=cbcb5b3732af72b5c28797739eaf0f15

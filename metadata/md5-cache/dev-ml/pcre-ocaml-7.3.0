@@ -4,10 +4,10 @@ DESCRIPTION=Perl Compatibility Regular Expressions for O'Caml
 EAPI=5
 HOMEPAGE=http://mmottl.github.io/pcre-ocaml/ https://github.com/mmottl/pcre-ocaml
 IUSE=examples
-KEYWORDS=~amd64 ~ppc ~x86-fbsd
+KEYWORDS=~amd64 ~ppc ~x86 ~x86-fbsd
 LICENSE=LGPL-2.1-with-linking-exception
 RDEPEND=>=dev-libs/libpcre-4.5 >=dev-lang/ocaml-4:=
 SLOT=0/7.3.0
 SRC_URI=https://github.com/mmottl/pcre-ocaml/releases/download/7.3.0/pcre-7.3.0.tbz -> pcre-ocaml-7.3.0.tbz
 _eclasses_=opam	24b4a2529c1fd12f1304856d6c5a690d
-_md5_=8d340d10c285485541fa018abe0be3d7
+_md5_=cdd1c35b287d7ea819942b36346cf6d8
