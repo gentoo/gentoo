@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python2_7 python3_{4,5} )
 
 inherit distutils-r1
 
@@ -21,9 +21,9 @@ RDEPEND="
 	dev-python/flask[${PYTHON_USEDEP}]
 	dev-python/werkzeug[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]
-	dev-python/peewee[${PYTHON_USEDEP}]
+	<dev-python/peewee-3[${PYTHON_USEDEP}]
 	dev-python/wtforms[${PYTHON_USEDEP}]
-	dev-python/wtf-peewee[${PYTHON_USEDEP}]"
+	<dev-python/wtf-peewee-3[${PYTHON_USEDEP}]"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
