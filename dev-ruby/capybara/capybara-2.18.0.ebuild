@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby21 ruby22 ruby23"
+USE_RUBY="ruby22 ruby23 ruby24"
 
 RUBY_FAKEGEM_EXTRADOC="History.md README.md"
 
@@ -16,7 +16,7 @@ DESCRIPTION="Capybara aims to simplify the process of integration testing Rack a
 HOMEPAGE="https://github.com/jnicklas/capybara"
 LICENSE="MIT"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 SLOT="2"
 IUSE="test"
 
@@ -26,11 +26,11 @@ ruby_add_bdepend "test? ( dev-ruby/rspec:3 dev-ruby/launchy >=dev-ruby/selenium-
 
 ruby_add_rdepend "
 	dev-ruby/addressable
-	>=dev-ruby/mime-types-1.16:*
+	>=dev-ruby/mini_mime-0.1.3
 	>=dev-ruby/nokogiri-1.3.3
 	>=dev-ruby/rack-1.0.0:*
-	>=dev-ruby/rack-test-0.5.4
-	>=dev-ruby/xpath-2.0.0:2"
+	>=dev-ruby/rack-test-0.5.4:*
+	|| ( dev-ruby/xpath:3 dev-ruby/xpath:2 )"
 
 all_ruby_prepare() {
 	sed -i -e '/bundler/d' -e '/pry/d' -e '1igem "sinatra"' spec/spec_helper.rb || die
@@ -40,6 +40,9 @@ all_ruby_prepare() {
 
 	# Avoid spec that requires unpackaged geckodriver
 	sed -i -e '/register_server/,/^  end/ s:^:#:' spec/capybara_spec.rb || die
+
+	# Avoid test dependency on puma server for now
+	sed -i -e '/should have :puma registered/,/^    end/ s:^:#:' spec/capybara_spec.rb || die
 }
 
 each_ruby_test() {
