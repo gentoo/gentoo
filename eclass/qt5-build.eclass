@@ -325,6 +325,8 @@ qt5-build_src_install() {
 		# convenience symlinks
 		dosym qt5-"${CHOST}".conf /etc/xdg/qtchooser/5.conf
 		dosym qt5-"${CHOST}".conf /etc/xdg/qtchooser/qt5.conf
+		# TODO bug 522646: write an eselect module to manage default.conf
+		dosym qt5.conf /etc/xdg/qtchooser/default.conf
 	fi
 
 	qt5_install_module_config
