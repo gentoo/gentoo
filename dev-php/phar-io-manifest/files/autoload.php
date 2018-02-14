@@ -1,6 +1,6 @@
 <?php
-/* Autoloader for dev-php/phar-io-manifest */
-require_once '/usr/share/php/Fedora/Autoloader/autoload.php';
+
+require_once 'Fedora/Autoloader/autoload.php';
 
 \Fedora\Autoloader\Autoload::addClassMap(
    [
