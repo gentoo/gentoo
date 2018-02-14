@@ -117,6 +117,10 @@ REQUIRED_USE="vidix? ( || ( X fbcon ) )
 src_prepare() {
 	default
 
+	if has_version '>=media-gfx/imagemagick-7.0.1.0' ; then
+		eapply "${FILESDIR}/${PN}-1.2.6-imagemagick7.patch"
+	fi
+
 	sed -i -e '/define VDR_ABS_FIFO_DIR/s|".*"|"/var/vdr/xine"|' src/vdr/input_vdr.c || die
 
 	if [[ "${PV}" = *9999* ]] ; then
