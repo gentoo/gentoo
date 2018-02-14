@@ -6,7 +6,7 @@ inherit golang-build golang-vcs-snapshot
 
 EGO_PN="github.com/kubernetes/kompose"
 EGIT_COMMIT="v${PV}"
-KOMPOSE_COMMIT="767ab4b"
+KOMPOSE_COMMIT="093c756"
 ARCHIVE_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
 
