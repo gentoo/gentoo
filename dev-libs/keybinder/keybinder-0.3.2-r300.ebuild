@@ -13,7 +13,7 @@ SLOT="3"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~x86"
 IUSE="+introspection"
 
-RDEPEND="x11-libs/gtk+:3
+RDEPEND="x11-libs/gtk+:3[X]
 	x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXrender
