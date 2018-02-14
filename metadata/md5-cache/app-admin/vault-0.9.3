@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst prepare setup unpack
+DEPEND=>=dev-lang/go-1.9:= dev-go/gox filecaps? ( sys-libs/libcap ) >=dev-lang/go-1.8 virtual/pkgconfig
+DESCRIPTION=A tool for managing secrets
+EAPI=6
+HOMEPAGE=https://vaultproject.io/
+IUSE=+filecaps
+KEYWORDS=~amd64
+LICENSE=MPL-2.0
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/hashicorp/vault/archive/v0.9.3.tar.gz -> vault-0.9.3.tar.gz
+_eclasses_=fcaps	e80204189039ecc03f24151c518375f0	golang-base	51a1f13e065f1cff4507685d9cc268c7	golang-vcs-snapshot	913580335becddd3ebecefe852e47536	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	a31844b675f1a1fea87fbe1144aee5f5	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	user	8bc2845510e2109af75e3eeac607ec81
+_md5_=021cd6ec2fdba0fe1d171a9fb812376f
