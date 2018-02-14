@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="amd64 ppc x86"
 
 S="${WORKDIR}/${MY_P}"
-ELISP_PATCHES="${P}-vd.patch"
+ELISP_PATCHES="${P}-vd.patch ${P}-emacs-26.patch"
 SITEFILE="50${PN}-gentoo.el"
 
 src_compile() {
