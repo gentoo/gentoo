@@ -2,10 +2,10 @@ DEFINED_PHASES=install postinst postrm
 DESCRIPTION=Class that makes it easy to build console style tables
 EAPI=6
 HOMEPAGE=https://pear.php.net/package/Console_Table
-KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 ~sparc x86
+KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86
 LICENSE=BSD
 RDEPEND=>=dev-php/pear-1.8.1
 SLOT=0
 SRC_URI=https://pear.php.net/get/Console_Table-1.3.0.tgz
 _eclasses_=php-pear-r2	eb6928c33771db74564e814c5ca6c1b3
-_md5_=b1550faeef251daf8326e75067e1ace3
+_md5_=3624c607cde5cdc27d72b669ab720e31

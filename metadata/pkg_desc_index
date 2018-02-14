@@ -117,6 +117,7 @@ app-admin/quickswitch 1.05: Utility to switch network profiles on the fly
 app-admin/radmind 1.14.1-r1: command-line tools and server to remotely administer multiple Unix filesystems
 app-admin/ranpwd 1.2: Generate random passwords using the in-kernel cryptographically
 app-admin/reportmagic 2.21: Makes usable statistics from your web site log file analysis
+app-admin/restart-services 0.14.1: Tool to manage OpenRC services that need to be restarted
 app-admin/rsyslog 8.19.0 8.24.0-r2 8.26.0-r1 8.27.0-r1 8.28.0 8.32.0-r3: An enhanced multi-threaded syslogd with database support and more
 app-admin/sagan 0.2.3 1.0.0_rc3: Sagan is a multi-threaded, real time system and event log monitoring system
 app-admin/sagan-rules 20130430 20140617: Rules for Sagan log analyzer
@@ -1096,7 +1097,7 @@ app-misc/tdl 1.5.2-r2: Command line To Do List manager
 app-misc/terminal-colors 2.2: A tool to display color charts for 8, 16, 88, and 256 color terminals
 app-misc/timestamp 1.1: A text filtering pipe that marks each line with a timestamp
 app-misc/tkpasman 2.2b: A useful and reliable personal password manager, written in Tcl/Tk
-app-misc/tmux 2.2 2.3-r1: Terminal multiplexer
+app-misc/tmux 2.2 2.3-r1 2.6: Terminal multiplexer
 app-misc/tmux-mem-cpu-load 2.2.1-r1: CPU, RAM memory, and load monitor for use with tmux
 app-misc/toilet 0.3: The Other Implementations letters. Figlet replacement
 app-misc/tpipe 1.6-r1: Command to duplicate standard input to more than one program
@@ -3185,7 +3186,7 @@ dev-libs/oniguruma 5.9.5 6.6.1: Regular expression library for different charact
 dev-libs/openct 0.6.20-r4: library for accessing smart card terminals
 dev-libs/openobex 1.7.1: Implementation of the OBEX protocol used for transferring data to mobile devices
 dev-libs/opensc 0.16.0: Libraries and applications to access smartcards
-dev-libs/openssl 0.9.8z_p8 1.0.2n: full-strength general purpose cryptography library (including SSL and TLS)
+dev-libs/openssl 0.9.8z_p8 0.9.8z_p8-r1 1.0.2n: full-strength general purpose cryptography library (including SSL and TLS)
 dev-libs/ossp-uuid 1.6.2-r4 1.6.2-r6: An ISO-C:1999 API with CLI for generating DCE, ISO/IEC and RFC compliant UUID
 dev-libs/pakchois 0.4-r2: PaKChoiS - PKCS #11 wrapper library
 dev-libs/pcre++ 0.9.5-r1: A C++ support library for libpcre
@@ -4392,7 +4393,7 @@ dev-php/PEAR-Cache 1.5.6-r2: Framework for caching of arbitrary data
 dev-php/PEAR-Cache_Lite 1.7.16: Fast and safe little cache system
 dev-php/PEAR-Console_CommandLine 1.2.2: A full-featured command-line options and arguments parser
 dev-php/PEAR-Console_Getopt 1.4.1-r1: Command-line option parser
-dev-php/PEAR-Console_Table 1.1.6 1.3.0-r1: Class that makes it easy to build console style tables
+dev-php/PEAR-Console_Table 1.3.0-r1: Class that makes it easy to build console style tables
 dev-php/PEAR-Crypt_CHAP 1.5.0: Generating CHAP packets
 dev-php/PEAR-Crypt_GPG 1.3.2 1.4.2 1.6.0_beta3: PHP interface to the GNU Privacy Guard (GnuPG)
 dev-php/PEAR-Crypt_RC4 1.0.3: Encryption class for RC4 encryption
@@ -4454,7 +4455,7 @@ dev-php/PEAR-Net_Traceroute 0.21.3-r1: OS independet wrapper class for executing
 dev-php/PEAR-Net_URL 1.0.15-r1: Easy parsing of URLs
 dev-php/PEAR-Net_URL2 2.0.5: Easy parsing of URLs (PHP5 port of PEAR-Net_URL package)
 dev-php/PEAR-Net_UserAgent_Detect 2.5.2-r1: Determines Web browser, version, and platform from an HTTP user agent string
-dev-php/PEAR-Numbers_Words 0.16.4 0.18.1-r1: Provides methods for spelling numerals in words
+dev-php/PEAR-Numbers_Words 0.18.1-r1: Provides methods for spelling numerals in words
 dev-php/PEAR-OLE 1.0.0_rc2-r1: Package for reading and writing OLE containers
 dev-php/PEAR-PEAR 1.10.5: PEAR Base System
 dev-php/PEAR-Pager 2.4.9: Data paging class
@@ -8258,7 +8259,7 @@ net-analyzer/jnettop 0.13.0-r1: A top like console network traffic visualiser
 net-analyzer/knocker 0.7.1-r2 0.7.1-r3: Knocker is an easy to use security port scanner written in C
 net-analyzer/labrea 2.5-r2: 'Sticky' Honeypot and IDS
 net-analyzer/lft 3.77: Layer Four Traceroute (LFT) and WhoB
-net-analyzer/linkchecker 9.3-r2: Check websites for broken links
+net-analyzer/linkchecker 9.3-r2 9.3.1-r1: Check websites for broken links
 net-analyzer/macchanger 1.7.0: Utility for viewing/manipulating the MAC address of network interfaces
 net-analyzer/mate-netspeed 1.12.0: Applet showing network traffic for MATE
 net-analyzer/mbrowse 0.4.3: MBrowse is a graphical MIB browser
@@ -10487,7 +10488,7 @@ www-servers/spawn-fcgi 1.6.3-r1: A FCGI spawner for lighttpd and cherokee and ot
 www-servers/thttpd 2.27.1: Fork of thttpd, a small, fast, multiplexing webserver
 www-servers/tomcat 7.0.82 8.0.48 8.5.24: Tomcat Servlet-3.1/JSP-2.3/EL-3.0/WebSocket-1.1/JASPIC-1.1 Container
 www-servers/tornado 4.4.2-r1: Python web framework and asynchronous networking library
-www-servers/uwsgi 2.0.15: uWSGI server for Python web applications
+www-servers/uwsgi 2.0.15 2.0.15-r2: uWSGI server for Python web applications
 www-servers/varnish 4.0.5 4.1.8 5.1.3: Varnish is a state-of-the-art, high-performance HTTP accelerator
 x11-apps/amlc 0.5.1: Another Modeline Calculator, generates quality X11 display configs easily
 x11-apps/appres 1.0.4: list X application resource database
@@ -10612,7 +10613,7 @@ x11-drivers/xf86-video-vmware 13.0.1-r1 13.1.0 13.2.1: VMware SVGA video driver
 x11-drivers/xf86-video-voodoo 1.2.5: Voodoo video driver
 x11-libs/agg 2.5-r2: Anti-Grain Geometry - A High Quality Rendering Engine for C++
 x11-libs/c++-gtk-utils 2.0.27 2.2.10: A number of classes and functions for programming GTK+ programs using C++
-x11-libs/cairo 1.14.8: A vector graphics library with cross-device output support
+x11-libs/cairo 1.14.8 1.14.12: A vector graphics library with cross-device output support
 x11-libs/colord-gtk 0.1.25 0.1.26: GTK support library for colord
 x11-libs/dnd 1.1-r1: OffiX' Drag'n'drop library
 x11-libs/flowcanvas 0.7.1-r1 0.7.1-r2: Gtkmm/Gnomecanvasmm widget for boxes and lines environments
