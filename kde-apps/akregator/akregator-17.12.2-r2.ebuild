@@ -56,5 +56,6 @@ RDEPEND="${COMMON_DEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${P}-crashfix.patch"
+	"${FILESDIR}/${P}-feedlist-corruption.patch"
 	"${FILESDIR}/${P}-slotSaveFeedList-not-twice.patch"
 )
