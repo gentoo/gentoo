@@ -34,7 +34,7 @@ amd64           default/linux/amd64/13.0/systemd                        stable
 amd64           default/linux/amd64/13.0/x32                            dev
 amd64           default/linux/amd64/17.0                                stable
 amd64           default/linux/amd64/17.0/selinux                        dev
-amd64           default/linux/amd64/17.0/hardened                       dev
+amd64           default/linux/amd64/17.0/hardened                       stable
 amd64           default/linux/amd64/17.0/hardened/selinux               dev
 amd64           default/linux/amd64/17.0/desktop                        stable
 amd64           default/linux/amd64/17.0/desktop/gnome                  stable
@@ -43,7 +43,7 @@ amd64           default/linux/amd64/17.0/desktop/plasma                 stable
 amd64           default/linux/amd64/17.0/desktop/plasma/systemd         stable
 amd64           default/linux/amd64/17.0/developer                      stable
 amd64           default/linux/amd64/17.0/no-multilib                    stable
-amd64           default/linux/amd64/17.0/no-multilib/hardened           dev
+amd64           default/linux/amd64/17.0/no-multilib/hardened           stable
 amd64           default/linux/amd64/17.0/no-multilib/hardened/selinux   dev
 amd64           default/linux/amd64/17.0/systemd                        stable
 amd64           default/linux/amd64/17.0/x32                            dev
@@ -238,7 +238,7 @@ x86             default/linux/x86/13.0/developer                stable
 x86		default/linux/x86/13.0/systemd			stable
 x86             default/linux/x86/17.0                          stable
 x86             default/linux/x86/17.0/selinux                  dev
-x86             default/linux/x86/17.0/hardened                 dev
+x86             default/linux/x86/17.0/hardened                 stable
 x86             default/linux/x86/17.0/desktop                  stable
 x86             default/linux/x86/17.0/desktop/gnome            stable
 x86             default/linux/x86/17.0/desktop/gnome/systemd    stable
