@@ -68,6 +68,7 @@ app-emulation/libvirt xen
 
 # Michał Górny <mgorny@gentoo.org> (12 Jan 2018)
 # Requires USE=sdl that is masked in this profile.
+app-emulation/qemu sdl2
 media-video/mjpegtools sdlgfx
 
 # Michał Górny <mgorny@gentoo.org> (12 Jan 2018)
