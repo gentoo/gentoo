@@ -118,7 +118,7 @@ media-video/mplayer nas
 net-misc/ntp openntpd
 
 # fails to build, need to investigate why
-net-libs/webkit-gtk geolocation introspection
+net-libs/webkit-gtk geoloc geolocation introspection
 
 # virtual/mysql
 sci-mathematics/glpk mysql

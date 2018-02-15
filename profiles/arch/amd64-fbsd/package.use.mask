@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (15 Feb 2018)
+# Requires USE=seccomp that is masked in this profile.
+net-libs/gnutls test-full
+
 # Michał Górny <mgorny@gentoo.org> (20 Jan 2018)
 # Needs sys-libs/libomp which is not keyworded. Leaving the decision
 # whether sys-libs/libomp should eventually be keyworded to when new
