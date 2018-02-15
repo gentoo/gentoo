@@ -63,6 +63,8 @@ pkg_pretend() {
 		ewarn "To upgrade from a version earlier than the 3.4-series, you must"
 		ewarn "successively upgrade major releases until you have upgraded"
 		ewarn "to 3.4-series. Then upgrade to 3.6 series."
+	elif [[ -n ${REPLACING_VERSIONS} ]]; then
+		ewarn "Be sure to set featureCompatibilityVersion to 3.4 before upgrading."
 	fi
 }
 
@@ -84,9 +86,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# https://github.com/mongodb/mongo/wiki/Build-Mongodb-From-Source
 	# --use-system-icu fails tests
 	# --use-system-tcmalloc is strongly NOT recommended:
-	# https://www.mongodb.org/about/contributors/tutorial/build-mongodb-from-source/
 	scons_opts=(
 		CC="$(tc-getCC)"
 		CXX="$(tc-getCXX)"
