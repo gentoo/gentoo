@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="A GNU Emacs Major Mode for editing SGML and XML coded documents"
 HOMEPAGE="https://sourceforge.net/projects/psgml/
-	http://www.emacswiki.org/emacs/PsgmlMode"
+	https://www.emacswiki.org/emacs/PsgmlMode"
 SRC_URI="http://www.fsavigny.de/gpled-software/${P}.tar.gz"
 
 LICENSE="GPL-2+ Texinfo-manual"
