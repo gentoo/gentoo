@@ -6,7 +6,7 @@ EAPI=5
 inherit elisp
 
 DESCRIPTION="Handle all sorts of compressed and encrypted files"
-HOMEPAGE="http://www.emacswiki.org/emacs/CryptPlusPlus"
+HOMEPAGE="https://www.emacswiki.org/emacs/CryptPlusPlus"
 SRC_URI="mirror://debian/pool/main/c/crypt++el/crypt++el_${PV}.orig.tar.gz"
 
 LICENSE="GPL-2"
