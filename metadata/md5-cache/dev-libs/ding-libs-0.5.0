@@ -2,11 +2,11 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=virtual/pkgconfig test? ( dev-libs/check ) >=app-portage/elt-patches-20170422
 DESCRIPTION=set of utility libraries (mostly used by sssd)
 EAPI=5
-HOMEPAGE=https://fedorahosted.org/sssd
+HOMEPAGE=https://pagure.io/SSSD/ding-libs
 IUSE=test static-libs abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux
 LICENSE=LGPL-3 GPL-3
 SLOT=0
-SRC_URI=https://fedorahosted.org/released/ding-libs/ding-libs-0.5.0.tar.gz
+SRC_URI=https://releases.pagure.org/SSSD/ding-libs/ding-libs-0.5.0.tar.gz
 _eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	autotools-multilib	f4848d9634439c7203cb7dd3b9650fff	autotools-utils	5a4611dfba155b1659528663fad4cd5e	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	8ffb5e2112a70fef5f37fcacad308726	multilib-minimal	9139c3a57e077cb8e0d0f73ceb080b89	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=4ed14b8a33481298533b16ad016953b2
+_md5_=3f433abe8c9af6a9274dbb88e8b895dd
