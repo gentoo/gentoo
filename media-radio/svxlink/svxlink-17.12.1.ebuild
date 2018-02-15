@@ -28,6 +28,7 @@ RDEPEND="dev-lang/tcl:0
 	dev-libs/libsigc++:2
 	dev-libs/popt"
 DEPEND="${RDEPEND}
+	dev-qt/linguist-tools:5
 	virtual/pkgconfig"
 
 pkg_setup() {
