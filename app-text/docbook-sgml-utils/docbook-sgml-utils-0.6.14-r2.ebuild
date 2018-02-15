@@ -29,6 +29,8 @@ DEPEND=">=dev-lang/perl-5
 	~app-text/docbook-sgml-dtd-3.1
 	~app-text/docbook-sgml-dtd-4.0
 	~app-text/docbook-sgml-dtd-4.1
+	~app-text/docbook-sgml-dtd-4.2
+	~app-text/docbook-sgml-dtd-4.4
 	jadetex? ( app-text/jadetex )
 	userland_GNU? ( sys-apps/which )
 	|| (
