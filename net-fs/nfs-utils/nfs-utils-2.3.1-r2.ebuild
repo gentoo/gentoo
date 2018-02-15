@@ -115,7 +115,7 @@ src_install() {
 	# Don't overwrite existing xtab/etab, install the original
 	# versions somewhere safe...  more info in pkg_postinst
 	keepdir /var/lib/nfs/{,sm,sm.bak}
-	mv "${ED%/}"/var/lib "${ED%/}"/usr/$(get_libdir) || die
+	mv "${ED%/}"/var/lib/nfs "${ED%/}"/usr/$(get_libdir)/ || die
 
 	# Install some client-side binaries in /sbin
 	dodir /sbin
