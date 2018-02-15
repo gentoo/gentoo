@@ -6,7 +6,7 @@ EAPI=5
 inherit readme.gentoo elisp
 
 DESCRIPTION="Split customizations into different files"
-HOMEPAGE="http://www.emacswiki.org/emacs/InitSplit"
+HOMEPAGE="https://www.emacswiki.org/emacs/InitSplit"
 # taken from https://github.com/dabrahams/${PN}
 SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"
 
