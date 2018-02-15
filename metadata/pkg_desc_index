@@ -6077,7 +6077,7 @@ dev-texlive/texlive-publishers 2015 2016 2017: TeXLive Publisher styles, theses,
 dev-texlive/texlive-science 2012-r1 2014 2015: TeXLive Natural and computer sciences
 dev-texlive/texlive-xetex 2015 2016 2017: TeXLive XeTeX and packages
 dev-util/alleyoop 0.9.8: A Gtk+ front-end to the Valgrind memory checker
-dev-util/android-studio 2.3.3.0.162.4069837 3.0.0.18.171.4408382: A new Android development environment based on IntelliJ IDEA
+dev-util/android-studio 3.0.1.0.171.4443003: A new Android development environment based on IntelliJ IDEA
 dev-util/android-tools 5.1.1_p13 6.0.1_p79: Android platform tools (adb, fastboot, and mkbootimg)
 dev-util/anjuta 3.22.0: A versatile IDE for GNOME
 dev-util/antlrworks 1.2.3: A novel grammar development environment for ANTLR v3 grammars
