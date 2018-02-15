@@ -29,6 +29,27 @@
 
 #--- END OF EXAMPLES ---
 
+# Brian Evans <grknight@gentoo.org (15 Feb 2018)
+# These PEAR packages are unmaintained upstream and
+# are difficult to test or have no tests.
+# PHP team no longer wants to maintain these for PHP7 and beyond
+# Removal in 30 days - Bug 647768
+dev-php/PEAR-Benchmark
+dev-php/PEAR-Calendar
+dev-php/PEAR-Console_Color
+dev-php/PEAR-Crypt_Blowfish
+dev-php/PEAR-Crypt_RC4
+dev-php/PEAR-XML_Beautifier
+dev-php/PEAR-XML_Feed_Parser
+dev-php/PEAR-Structures_DataGrid
+dev-php/PEAR-PHP_CompatInfo
+dev-php/PEAR-Net_Server
+dev-php/PEAR-Net_LMTP
+dev-php/PEAR-Net_IMAP
+dev-php/PEAR-Net_FTP
+dev-php/PEAR-Net_DIME
+dev-php/PEAR-Math_Stats
+
 # Sergey Popov <pinkbyte@gentoo.org> (13 Feb 2018)
 # Requires dead Qt4 (bug #645420). Removal in 30 days
 media-gfx/qiviewer
