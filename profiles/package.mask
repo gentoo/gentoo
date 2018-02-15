@@ -234,11 +234,6 @@ dev-tex/pstplus
 # Masked for removal in 30 days. Bug #634986
 dev-tex/texamator
 
-# Kent Fredric <kentnl@gentoo.org> (10 Jan 2018)
-# Dead upstream, Broken since 2009.
-# Bug #644146. Removal in 30 days
-dev-perl/SVN-Simple
-
 # Michał Górny <mgorny@gentoo.org> (10 Jan 2018)
 # The Fuzzer library is now installed as part of core LLVM. That's
 # sys-devel/llvm in LLVM 5, and sys-libs/compiler-rt-sanitizers
