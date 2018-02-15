@@ -17,10 +17,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="colorhug dell doc gpg +man systemd test uefi uefi_labels"
 REQUIRED_USE="
-	uefi_labels? ( ${PYTHON_REQUIRED_USE} )
+	${PYTHON_REQUIRED_USE}
 "
 
 RDEPEND="
+	${PYTHON_DEPS}
 	app-crypt/gpgme
 	dev-db/sqlite
 	>=dev-libs/appstream-glib-0.6.13[introspection]
@@ -28,6 +29,9 @@ RDEPEND="
 	dev-libs/libgpg-error
 	dev-libs/libgudev
 	>=dev-libs/libgusb-0.2.9[introspection]
+	dev-python/pillow[${PYTHON_USEDEP}]
+	dev-python/pycairo[${PYTHON_USEDEP}]
+	dev-python/pygobject:3[cairo,${PYTHON_USEDEP}]
 	>=net-libs/libsoup-2.51.92:2.4
 	>=sys-auth/polkit-0.103
 	virtual/libelf:0=
@@ -44,10 +48,6 @@ RDEPEND="
 	!systemd? ( >=sys-auth/consolekit-1.0.0 )
 	uefi? ( >=sys-apps/fwupdate-5 )
 	uefi_labels? (
-		${PYTHON_DEPS}
-		dev-python/pycairo[${PYTHON_USEDEP}]
-		dev-python/pygobject:3[cairo,${PYTHON_USEDEP}]
-		dev-python/pillow[${PYTHON_USEDEP}]
 		x11-libs/pango
 		x11-libs/cairo
 		media-libs/freetype
