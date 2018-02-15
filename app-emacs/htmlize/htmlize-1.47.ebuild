@@ -6,7 +6,7 @@ EAPI=5
 inherit elisp
 
 DESCRIPTION="HTML-ize font-lock buffers in Emacs"
-HOMEPAGE="http://emacswiki.org/emacs/Htmlize
+HOMEPAGE="https://www.emacswiki.org/emacs/Htmlize
 	http://fly.srk.fer.hr/~hniksic/emacs/"
 SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"
 
