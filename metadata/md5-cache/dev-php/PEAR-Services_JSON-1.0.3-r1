@@ -8,4 +8,4 @@ RDEPEND=>=dev-php/pear-1.8.1
 SLOT=0
 SRC_URI=https://pear.php.net/get/Services_JSON-1.0.3.tgz
 _eclasses_=php-pear-r2	eb6928c33771db74564e814c5ca6c1b3
-_md5_=f7c6257102fa147d112b9bfb6d248ed4
+_md5_=d362b32fa8cc6660460d33c348409050
