@@ -11147,7 +11147,7 @@ x11-themes/gtk-engines-xfce 3.2.0-r200 3.2.0-r300: A port of Xfce engine to GTK+
 x11-themes/gtk-theme-switch 2.1.0: Utility to switch and preview GTK+ theme
 x11-themes/haematite-xcursors 1.0: A simple crispy dark-grey xcursor theme
 x11-themes/hicolor-icon-theme 0.15 0.17: Fallback theme for the freedesktop icon theme specification
-x11-themes/iceicons 0.10.0: IceWM Icons is a set of XPM 16x16, 32x32, and 48x48 XPM and PNG icons for IceWM
+x11-themes/iceicons 0.10.0-r1: IceWM Icons is a set of XPM 16x16, 32x32, and 48x48 XPM and PNG icons for IceWM
 x11-themes/icewm-themes 0.0.1-r1: Collection of IceWM themes
 x11-themes/kfaenza 0.8.9-r2: Faenza-Cupertino icon theme for KDE Plasma
 x11-themes/korilla 1.3.5: Kool Gorilla Icon Set for KDE
