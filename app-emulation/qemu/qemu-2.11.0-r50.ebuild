@@ -26,7 +26,6 @@ else
 	SRC_URI+=" https://dev.gentoo.org/~tamiko/distfiles/${P}-patches-r0.tar.xz"
 fi
 
-
 DESCRIPTION="QEMU + Kernel-based Virtual Machine userland tools"
 HOMEPAGE="http://www.qemu.org http://www.linux-kvm.org"
 
