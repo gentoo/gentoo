@@ -70,11 +70,11 @@ RDEPEND="
 	archive? ( app-arch/libarchive:= )
 	avcodec? (
 		!libav? ( media-video/ffmpeg:0= )
-		libav? ( media-video/libav:0= )
+		libav? ( >=media-video/libav-11.8:0= )
 	)
 	avformat? (
 		!libav? ( media-video/ffmpeg:0= )
-		libav? ( media-video/libav:0= )
+		libav? ( >=media-video/libav-11.8:0= )
 	)
 	bidi? ( dev-libs/fribidi:0 )
 	bluray? ( >=media-libs/libbluray-0.6.2:0= )
