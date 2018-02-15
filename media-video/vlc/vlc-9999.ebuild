@@ -29,32 +29,31 @@ HOMEPAGE="https://www.videolan.org/vlc/"
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/5-9" # vlc - vlccore
 
-IUSE="a52 aalib alsa altivec aom archive +avcodec +avformat bidi bluray cddb
+IUSE="a52 aalib alsa altivec aom archive bidi bluray cddb
 	chromaprint chromecast dbus dc1394 debug directx dts dvb +dvbpsi dvd
-	dxva2 elibc_glibc +encode faad fdk fluidsynth +ffmpeg flac fontconfig +gcrypt
+	dxva2 elibc_glibc +encode faad fdk +ffmpeg flac fluidsynth fontconfig +gcrypt
 	gme gnome-keyring gnutls gstreamer ieee1394 jack jpeg kate libass libav libcaca
 	libnotify +libsamplerate libtiger linsys libtar lirc live lua
 	macosx-notifications macosx-qtkit matroska cpu_flags_x86_mmx modplug mp3
 	mpeg mtp musepack ncurses neon nfs ogg omxil opencv opengl optimisememory opus
 	png postproc projectm pulseaudio +qt5 rdp rtsp run-as-root samba
 	schroedinger sdl-image sftp shout sid skins speex cpu_flags_x86_sse svg
-	+swscale taglib theora tremor truetype twolame udev upnp vaapi v4l vcd vdpau
+	taglib theora tremor truetype twolame udev upnp vaapi v4l vcd vdpau
 	vlm vnc vorbis vpx wayland wma-fixed +X x264 x265 +xcb xml xv zeroconf zvbi
 "
 REQUIRED_USE="
 	aalib? ( X )
 	bidi? ( truetype )
 	dvb? ( dvbpsi )
-	dxva2? ( avcodec )
-	ffmpeg? ( avcodec avformat swscale )
+	dxva2? ( ffmpeg )
 	fontconfig? ( truetype )
 	gnutls? ( gcrypt )
 	libcaca? ( X )
 	libtar? ( skins )
 	libtiger? ( kate )
 	skins? ( qt5 truetype X xml )
-	vaapi? ( avcodec X )
-	vdpau? ( X )
+	vaapi? ( ffmpeg X )
+	vdpau? ( ffmpeg X )
 	vlm? ( encode )
 	xv? ( xcb )
 "
@@ -68,14 +67,6 @@ RDEPEND="
 	alsa? ( >=media-libs/alsa-lib-1.0.24:0 )
 	aom? ( media-libs/libaom:= )
 	archive? ( app-arch/libarchive:= )
-	avcodec? (
-		!libav? ( media-video/ffmpeg:0= )
-		libav? ( >=media-video/libav-11.8:0= )
-	)
-	avformat? (
-		!libav? ( media-video/ffmpeg:0= )
-		libav? ( >=media-video/libav-11.8:0= )
-	)
 	bidi? ( dev-libs/fribidi:0 )
 	bluray? ( >=media-libs/libbluray-0.6.2:0= )
 	cddb? ( >=media-libs/libcddb-1.2:0 )
@@ -95,6 +86,10 @@ RDEPEND="
 	elibc_glibc? ( >=sys-libs/glibc-2.8:2.2 )
 	faad? ( >=media-libs/faad2-2.6.1:0 )
 	fdk? ( media-libs/fdk-aac:0 )
+	ffmpeg? (
+		!libav? ( >=media-video/ffmpeg-3.1.3:0=[vaapi?] )
+		libav? ( >=media-video/libav-11.8:0=[vaapi?] )
+	)
 	flac? (
 		>=media-libs/flac-1.1.2:0
 		>=media-libs/libogg-1:0
@@ -186,10 +181,6 @@ RDEPEND="
 		>=gnome-base/librsvg-2.9:2
 		>=x11-libs/cairo-1.13.1:0
 	)
-	swscale? (
-		!libav? ( media-video/ffmpeg:0= )
-		libav? ( media-video/libav:0= )
-	)
 	taglib? ( >=media-libs/taglib-1.9:0 )
 	theora? ( media-libs/libtheora:0 )
 	tremor? ( media-libs/tremor:0 )
@@ -202,17 +193,9 @@ RDEPEND="
 	udev? ( virtual/udev:0 )
 	upnp? ( net-libs/libupnp:= )
 	v4l? ( media-libs/libv4l:0 )
-	vaapi? (
-		x11-libs/libva:0=[drm,wayland?,X?]
-		!libav? ( >=media-video/ffmpeg-3.1.3:0=[vaapi] )
-		libav? ( media-video/libav:0=[vaapi] )
-	)
+	vaapi? ( x11-libs/libva:0=[drm,wayland?,X?] )
 	vcd? ( >=dev-libs/libcdio-0.78.2:0 )
-	vdpau? (
-		x11-libs/libvdpau:0
-		!libav? ( media-video/ffmpeg:0= )
-		libav? ( >=media-video/libav-10:0= )
-	)
+	vdpau? ( x11-libs/libvdpau:0 )
 	vnc? ( >=net-libs/libvncserver-0.9.9:0 )
 	vorbis? ( media-libs/libvorbis:0 )
 	vpx? ( media-libs/libvpx:0= )
@@ -298,8 +281,6 @@ src_configure() {
 		$(use_enable altivec)
 		$(use_enable aom)
 		$(use_enable archive)
-		$(use_enable avcodec)
-		$(use_enable avformat)
 		$(use_enable bidi fribidi)
 		$(use_enable bluray)
 		$(use_enable cddb libcddb)
@@ -307,9 +288,9 @@ src_configure() {
 		$(use_enable chromecast)
 		$(use_enable dbus)
 		$(use_enable dbus kwallet)
-		$(use_enable directx)
 		$(use_enable dc1394)
 		$(use_enable debug)
+		$(use_enable directx)
 		$(use_enable dts dca)
 		$(use_enable dvbpsi)
 		$(use_enable dvd dvdnav)
@@ -318,6 +299,9 @@ src_configure() {
 		$(use_enable encode sout)
 		$(use_enable faad)
 		$(use_enable fdk fdkaac)
+		$(use_enable ffmpeg avcodec)
+		$(use_enable ffmpeg avformat)
+		$(use_enable ffmpeg swscale)
 		$(use_enable flac)
 		$(use_enable fluidsynth)
 		$(use_enable fontconfig)
@@ -375,7 +359,6 @@ src_configure() {
 		$(use_enable cpu_flags_x86_sse sse)
 		$(use_enable svg)
 		$(use_enable svg svgdec)
-		$(use_enable swscale)
 		$(use_enable taglib)
 		$(use_enable theora)
 		$(use_enable tremor)
