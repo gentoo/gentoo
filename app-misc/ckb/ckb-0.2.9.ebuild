@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-DEPEND=">=dev-libs/quazip-0.7.2[qt5]
+DEPEND=">=dev-libs/quazip-0.7.2[qt5(+)]
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5

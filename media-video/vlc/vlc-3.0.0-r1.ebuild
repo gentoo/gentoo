@@ -80,7 +80,7 @@ RDEPEND="
 	bluray? ( >=media-libs/libbluray-0.6.2:0= )
 	cddb? ( >=media-libs/libcddb-1.2:0 )
 	chromaprint? ( >=media-libs/chromaprint-0.6:0 )
-	chromecast? ( >=dev-libs/protobuf-2.5.0 )
+	chromecast? ( >=dev-libs/protobuf-2.5.0:= )
 	dbus? ( >=sys-apps/dbus-1.6:0 )
 	dc1394? (
 		>=media-libs/libdc1394-2.1:2
