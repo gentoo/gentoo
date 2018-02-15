@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="A major mode for editing Inform programs"
 HOMEPAGE="https://www.rupert-lane.org/inform-mode/
-	http://www.emacswiki.org/emacs/InformMode"
+	https://www.emacswiki.org/emacs/InformMode"
 SRC_URI="http://rupert-lane.org/${PN}/releases/${P}.tar.gz"
 
 LICENSE="GPL-3+"
