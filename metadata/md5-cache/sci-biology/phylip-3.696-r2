@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=x11-libs/libXaw !!dev-lang/elixir x11-proto/xproto
+DESCRIPTION=The PHYLogeny Inference Package
+EAPI=5
+HOMEPAGE=http://evolution.genetics.washington.edu/phylip.html
+KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=BSD-2
+RDEPEND=x11-libs/libXaw !!dev-lang/elixir
+SLOT=0
+SRC_URI=http://evolution.gs.washington.edu/phylip/download/phylip-3.696.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_md5_=5200e46211c78c881415665a01613d54

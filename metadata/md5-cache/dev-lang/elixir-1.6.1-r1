@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install
+DEPEND=>=dev-lang/erlang-18[ssl]
+DESCRIPTION=Elixir programming language
+EAPI=6
+HOMEPAGE=https://elixir-lang.org
+KEYWORDS=~amd64 ~arm ~ia64 ~ppc ~sparc ~x86
+LICENSE=Apache-2.0 ErlPL-1.1
+RDEPEND=>=dev-lang/erlang-18[ssl] !!sci-biology/phylip
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/elixir-lang/elixir/archive/v1.6.1.tar.gz -> elixir-1.6.1.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_md5_=5c88b76e3d1795c17db88571ef0e02b2
