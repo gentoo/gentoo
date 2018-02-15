@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/urlget/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~ppc ~x86"
 IUSE="aria2 ayatana control-socket +gnutls gstreamer libnotify nls openssl rss"
 REQUIRED_USE="^^ ( gnutls openssl )"
 
