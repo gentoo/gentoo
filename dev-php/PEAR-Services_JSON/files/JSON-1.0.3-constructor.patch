@@ -35,7 +35,7 @@ diff -aurN a/JSON.php b/JSON.php
 +        function __construct($message = 'unknown error', $code = null,
 +                                     $mode = null, $options = null, $userinfo = null)
 +        {
-+
++            return;
 +        }
          function Services_JSON_Error($message = 'unknown error', $code = null,
                                       $mode = null, $options = null, $userinfo = null)
