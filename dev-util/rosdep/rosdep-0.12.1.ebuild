@@ -38,6 +38,7 @@ DEPEND="${RDEPEND}
 	test? (
 		dev-python/coverage[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/flake8[${PYTHON_USEDEP}]
 	)
 "
 

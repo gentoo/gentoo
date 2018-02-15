@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,18 +7,18 @@ SCM=""
 if [ "${PV%9999}" != "${PV}" ] ; then # Live ebuild
 	SCM=git-r3
 	EGIT_BRANCH=master
-	EGIT_REPO_URI="https://github.com/01org/intel-vaapi-driver.git"
+	EGIT_REPO_URI="https://github.com/intel/intel-vaapi-driver"
 fi
 
 AUTOTOOLS_AUTORECONF="yes"
 inherit autotools-multilib ${SCM}
 
 DESCRIPTION="HW video decode support for Intel integrated graphics"
-HOMEPAGE="https://github.com/01org/intel-vaapi-driver"
+HOMEPAGE="https://github.com/intel/intel-vaapi-driver"
 if [ "${PV%9999}" != "${PV}" ] ; then # Live ebuild
 	SRC_URI=""
 else
-	SRC_URI="https://github.com/01org/intel-vaapi-driver/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/intel/intel-vaapi-driver/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/intel-vaapi-driver-${PV}"
 fi
 

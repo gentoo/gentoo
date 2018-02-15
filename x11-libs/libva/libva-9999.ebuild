@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ SCM=""
 if [ "${PV%9999}" != "${PV}" ] ; then # Live ebuild
 	SCM=git-r3
 	EGIT_BRANCH=master
-	EGIT_REPO_URI="https://github.com/01org/libva"
+	EGIT_REPO_URI="https://github.com/intel/libva"
 fi
 
 AUTOTOOLS_AUTORECONF="yes"
@@ -18,7 +18,7 @@ HOMEPAGE="https://01.org/linuxmedia/vaapi"
 if [ "${PV%9999}" != "${PV}" ] ; then # Live ebuild
 	SRC_URI=""
 else
-	SRC_URI="https://github.com/01org/libva/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/intel/libva/archive/${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
 LICENSE="MIT"
