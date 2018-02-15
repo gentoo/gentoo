@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=sys-libs/gdbm:= ssl? ( dev-libs/openssl:0= ) sys-libs/db perl? ( dev-lang/perl ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Grab news from a remote NNTP server and feed them to another
+EAPI=6
+HOMEPAGE=https://lazarus-pkgs.github.io/lazarus-pkgs/suck.html
+IUSE=perl ssl
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=public-domain
+RDEPEND=sys-libs/gdbm:= ssl? ( dev-libs/openssl:0= ) net-nntp/inn
+SLOT=0
+SRC_URI=https://github.com/lazarus-pkgs/suck/archive/4.3.3.tar.gz -> suck-4.3.3.tar.gz
+_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_md5_=9fb4728b26c809fc4f33c62a4566bb89
