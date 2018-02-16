@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>witold.pilat@gmail.com</email>
-		<name>Witold Piłat</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
+<!-- maintainer-needed -->	
 	<longdescription>Lyvi is a lyrics, artist info and guitar tabs
 	viewer. On supported terminals, Lyvi can also show artist photos and
 	cover images.
