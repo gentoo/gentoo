@@ -9995,7 +9995,7 @@ sys-fs/aufs-util 4.0_p20150420: Utilities are always necessary for aufs
 sys-fs/aufs3 3_p20160219: An entirely re-designed and re-implemented Unionfs
 sys-fs/avfs 1.0.4: AVFS is a virtual filesystem that allows browsing of compressed files
 sys-fs/bashmount 3.2.0: Bash script that uses udisks to mount removable devices without GUI
-sys-fs/btrfs-progs 3.14.2 4.0.1 4.3.1 4.4.1 4.6.1 4.10.2: Btrfs filesystem utilities
+sys-fs/btrfs-progs 4.4.1 4.10.2: Btrfs filesystem utilities
 sys-fs/btrfsmaintenance 0.3.1: Scripts for btrfs maintenance tasks like periodic scrub, balance, trim or defrag
 sys-fs/cachefilesd 0.10.5-r4 0.10.9: Provides a caching directory on an already mounted filesystem
 sys-fs/cramfs 1.1: Linux filesystem designed to be simple, small, and to compress things well

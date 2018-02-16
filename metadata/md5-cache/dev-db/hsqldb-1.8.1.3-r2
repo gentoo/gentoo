@@ -4,10 +4,10 @@ DESCRIPTION=The leading SQL relational database engine written in Java
 EAPI=5
 HOMEPAGE=http://hsqldb.org
 IUSE=elibc_FreeBSD doc source test elibc_FreeBSD
-KEYWORDS=amd64 ~arm ppc64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=amd64 ~arm ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris
 LICENSE=BSD GPL-2
 RDEPEND=java-virtuals/servlet-api:2.5 >=virtual/jre-1.5 >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip )
 SLOT=0
 SRC_URI=mirror://sourceforge/hsqldb/hsqldb_1_8_1_3.zip
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	java-ant-2	4e2b30d918dda38a51839a4d45282b62	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	0ee72667014428e01a01df2345244cf3	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	user	8bc2845510e2109af75e3eeac607ec81	versionator	ce21313503c41896ebcd7d58b0607e37
-_md5_=d31183944efec2b89d3a191a0710b86f
+_md5_=5265d69c55f5ffe2539f15456695c4b9
