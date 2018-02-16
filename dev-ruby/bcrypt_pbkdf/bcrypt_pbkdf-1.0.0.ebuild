@@ -23,6 +23,9 @@ ruby_add_bdepend "test? ( dev-ruby/rbnacl )"
 all_ruby_prepare() {
 	# Don't use a ruby-bundled version of libsodium
 	sed -i -e '/rbnacl\/libsodium/ s:^:#:' test/bcrypt_pnkdf/engine_test.rb || die
+
+	# Avoid unneeded rake-compiler dependency
+	sed -i -e '/extensiontask/ s:^:#:' -e '/ExtensionTask/,/^end/ s:^:#:' Rakefile || die
 }
 
 each_ruby_configure() {
