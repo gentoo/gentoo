@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install postinst postrm prepare
-DEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtwebkit:5 dev-qt/qtwidgets:5
+DEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtwebkit:5 dev-qt/qtwidgets:5 dev-qt/qtsvg:5
 DESCRIPTION=Notepad++-like editor for Linux
 EAPI=6
 HOMEPAGE=http://notepadqq.altervista.org
@@ -9,4 +9,4 @@ RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:
 SLOT=0
 SRC_URI=https://github.com/notepadqq/notepadqq/archive/v1.2.0.tar.gz -> notepadqq-1.2.0.tar.gz
 _eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=e5cb6a60bcb7b6c7d032162ed682bab1
+_md5_=8d82fa39276a276e7a59943a1fd2a753
