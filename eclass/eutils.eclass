@@ -44,8 +44,8 @@ fi
 # internal CVS directories.  Defaults to $PWD.
 ecvs_clean() {
 	[[ $# -eq 0 ]] && set -- .
-	find "$@" -type d -name 'CVS' -prune -print0 | xargs -0 rm -rf
-	find "$@" -type f -name '.cvs*' -print0 | xargs -0 rm -rf
+	find "$@" '(' -type d -name 'CVS' -prune -o -type f -name '.cvs*' ')' \
+		-exec rm -rf '{}' +
 }
 
 # @FUNCTION: esvn_clean
@@ -55,7 +55,7 @@ ecvs_clean() {
 # internal Subversion directories.  Defaults to $PWD.
 esvn_clean() {
 	[[ $# -eq 0 ]] && set -- .
-	find "$@" -type d -name '.svn' -prune -print0 | xargs -0 rm -rf
+	find "$@" -type d -name '.svn' -prune -exec rm -rf '{}' +
 }
 
 # @FUNCTION: egit_clean
@@ -65,7 +65,7 @@ esvn_clean() {
 # contains internal Git directories.  Defaults to $PWD.
 egit_clean() {
 	[[ $# -eq 0 ]] && set -- .
-	find "$@" -type d -name '.git*' -prune -print0 | xargs -0 rm -rf
+	find "$@" -type d -name '.git*' -prune -exec rm -rf '{}' +
 }
 
 # @FUNCTION: emktemp
