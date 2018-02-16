@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (16 Feb 2018)
+# USE=test-full requires USE=pkcs11 that is use.masked.
+net-libs/gnutls test-full
+
 # Matthew Thode <prometheanfire@gentoo.org> (13 Feb 2018)
 # USE=mercurial requires dev-vcs/mercurial, which is not keyworded yet
 dev-python/setuptools_scm mercurial
