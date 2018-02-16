@@ -43,20 +43,18 @@
 		<flag name="mpeg">Add libmpeg2 support for mpeg-1 and mpeg-2 video streams</flag>
 		<flag name="nfs">Enables support for nfs protocol via <pkg>net-fs/libnfs</pkg></flag>
 		<flag name="omxil">Enables OpenMAX Integration Layer codec module.</flag>
-		<flag name="optimisememory">Enable optimisation for memory rather than performance.</flag>
 		<flag name="opencv">Enabled OpenCV (computer vision) filter module.</flag>
+		<flag name="optimisememory">Enable optimisation for memory rather than performance.</flag>
 		<flag name="opus">Support opus decoding via libopus.</flag>
 		<flag name="postproc">Enables image post-processing via libpostproc (part of FFmpeg).</flag>
 		<flag name="projectm">Enables the projectM visualization plugin.</flag>
-		<flag name="qt4" restrict="&gt;=media-video/vlc-0.9">Builds a Qt4 based frontend, a graphical interface.</flag>
-		<flag name="qt5" restrict="&gt;=media-video/vlc-2.2">Builds a Qt5 based frontend, a graphical interface (overrides qt4).</flag>
 		<flag name="rtsp">Enables real audio and RTSP modules.</flag>
 		<flag name="run-as-root">Allows vlc to start for root. Don't enable this unless you have a very specific (e.g. embedded) need for it!</flag>
 		<flag name="schroedinger">Enable Dirac video support (an advanced royalty-free video compression format) via libschroedinger (high-speed implementation in C of the Dirac codec).</flag>
-		<flag name="sid">Adds support for playing C64 SID files through <pkg>media-libs/libsidplay</pkg>:2.</flag>
 		<flag name="sdl-image">Enables sdl image video decoder (depends on sdl)</flag>
 		<flag name="sftp">Enables libssh2 to support SFTP file transfer.</flag>
 		<flag name="shout">Enables libshout output.</flag>
+		<flag name="sid">Adds support for playing C64 SID files through <pkg>media-libs/libsidplay</pkg>:2.</flag>
 		<flag name="skins">Enables support for the skins2 interface.</flag>
 		<flag name="swscale">Enables image scaling and conversion via libswscale (part of FFmpeg).</flag>
 		<flag name="tremor">Enables tremor, a fixed-point version of the Ogg Vorbis decoder.</flag>
@@ -67,8 +65,8 @@
 		<flag name="vpx">Enables the decoder(s) from the WebM VP8 / VP9 Codec SDK.</flag>
 		<flag name="wma-fixed">Enables fixed point WMA decoder.</flag>
 		<flag name="X">Enables support for, e.g., fullscreen mode via the X Window System. By itself, this flag does not build a graphical interface.</flag>
-		<flag name="xcb">Support the X C-language Binding, a replacement for Xlib; !!! you will need this option to be able to integrate video in the Qt interface, see bug #500678.</flag>
 		<flag name="x265">Support X265 Encoder.</flag>
+		<flag name="xcb">Support the X C-language Binding, a replacement for Xlib; !!! you will need this option to be able to integrate video in the Qt interface, see bug #500678.</flag>
 		<flag name="zeroconf">Enables support for zero-configuration networking via avahi.</flag>
 		<flag name="zvbi">Enables support for teletext subtitles via the zvbi library.</flag>
 	</use>
