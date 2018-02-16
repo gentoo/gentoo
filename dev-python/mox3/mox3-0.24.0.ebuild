@@ -38,7 +38,7 @@ RDEPEND="
 	${CRDEPEND}
 "
 
-PATCHES=( "${FILESDIR}"/${P}-RegexTest-python3.6.patch )
+PATCHES=( "${FILESDIR}"/${PN}-0.12.0-RegexTest-python3.6.patch )
 
 python_compile_all() {
 	use doc && esetup.py build_sphinx
