@@ -34,28 +34,22 @@ DEPEND="
 
 S="${WORKDIR}/${P}-src"
 
-JAVA_ANT_IGNORE_SYSTEM_CLASSES="yes"
-JAVA_ANT_REWRITE_CLASSPATH="yes"
 EANT_BUILD_TARGET="compile"
-EANT_DOC_TARGET=""
-
-PATCH=(
-	# patch to make the build.xml respect no servletapi
-	"${FILESDIR}/${P}-servletapi.patch"
-	"${FILESDIR}/${P}-gentoo.patch"
-)
+JAVA_ANT_REWRITE_CLASSPATH="yes"
+JAVA_ANT_IGNORE_SYSTEM_CLASSES="yes"
 
 DOCS=( RELEASE-NOTES.txt PROPOSAL.html )
 
 src_prepare() {
 	default
 
+	epatch "${FILESDIR}/${P}-gentoo.patch"
+	# patch to make the build.xml respect no servletapi
+	epatch "${FILESDIR}/${P}-servletapi.patch"
+
 	# bug #208098
 	echo "jdk.1.4.present=true" > build.properties || die
 
-	if use servletapi; then
-		echo "servletapi.jar=$(java-pkg_getjar --virtual servlet-api-3.1 servlet-api.jar)" >> build.properties || die
-	fi
 	if use avalon-framework; then
 		echo "avalon-framework.jar=$(java-pkg_getjars avalon-framework-4.2)" >> build.properties || die
 	fi
@@ -65,22 +59,20 @@ src_prepare() {
 	if use log4j; then
 		echo "log4j12.jar=$(java-pkg_getjars log4j)" >> build.properties || die
 	fi
-}
 
-src_compile() {
-	java-pkg-2_src_compile
-	if use doc; then
-		ejavadoc -d api -sourcepath src/main/java -subpackages org || die
+	if use servletapi; then
+		echo "servletapi.jar=$(java-pkg_getjar --virtual servlet-api-3.1 servlet-api.jar)" >> build.properties || die
 	fi
 }
 
 src_install() {
-	local pkg="org.apache.commons.logging"
+	local pkg=org.apache.commons.logging
 	java-osgi_newjar "target/${P}.jar" "${pkg}" "Apache Commons Logging" "${pkg};version=\"${PV}\", ${pkg}.impl;version=\"${PV}\""
 	java-pkg_newjar target/${PN}-api-${PV}.jar ${PN}-api.jar
 	java-pkg_newjar target/${PN}-adapters-${PV}.jar ${PN}-adapters.jar
 
-	use doc && java-pkg_dojavadoc api
+	einstalldocs
+	use doc && java-pkg_dojavadoc target/docs/
 	use source && java-pkg_dosrc src/main/java/org
 }
 
