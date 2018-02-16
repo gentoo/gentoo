@@ -30,7 +30,7 @@ LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/5-9" # vlc - vlccore
 
 IUSE="a52 aalib alsa altivec aom archive bidi bluray cddb chromaprint chromecast dbus dc1394
-	debug directx dts dvb +dvbpsi dvd dxva2 elibc_glibc +encode faad fdk +ffmpeg flac fluidsynth
+	debug directx dts dvb +dvbpsi dvd elibc_glibc +encode faad fdk +ffmpeg flac fluidsynth
 	fontconfig +gcrypt gme gnome-keyring gnutls gstreamer ieee1394 jack jpeg kate libass libav
 	libcaca libnotify +libsamplerate libtar libtiger linsys lirc live lua macosx-notifications
 	macosx-qtkit matroska modplug mp3 mpeg mtp musepack ncurses neon nfs ogg omxil opencv opengl
@@ -42,8 +42,8 @@ IUSE="a52 aalib alsa altivec aom archive bidi bluray cddb chromaprint chromecast
 REQUIRED_USE="
 	aalib? ( X )
 	bidi? ( truetype )
+	directx? ( ffmpeg )
 	dvb? ( dvbpsi )
-	dxva2? ( ffmpeg )
 	fontconfig? ( truetype )
 	gnutls? ( gcrypt )
 	libcaca? ( X )
@@ -291,11 +291,12 @@ src_configure() {
 		$(use_enable dc1394)
 		$(use_enable debug)
 		$(use_enable directx)
+		$(use_enable directx d3d11va)
+		$(use_enable directx dxva2)
 		$(use_enable dts dca)
 		$(use_enable dvbpsi)
 		$(use_enable dvd dvdnav)
 		$(use_enable dvd dvdread)
-		$(use_enable dxva2)
 		$(use_enable encode sout)
 		$(use_enable faad)
 		$(use_enable fdk fdkaac)
