@@ -1,19 +1,20 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=6
 
-inherit eutils flag-o-matic toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
-MY_P=${P/-/_}
+MY_P="${P/-/_}"
 DESCRIPTION="Lists open files for running Unix processes"
 HOMEPAGE="ftp://lsof.itap.purdue.edu/pub/tools/unix/lsof/"
 SRC_URI="ftp://lsof.itap.purdue.edu/pub/tools/unix/lsof/${MY_P}.tar.bz2
-	ftp://lsof.itap.purdue.edu/pub/tools/unix/lsof/OLD/${MY_P}.tar.bz2"
+	ftp://lsof.itap.purdue.edu/pub/tools/unix/lsof/OLD/${MY_P}.tar.bz2
+	http://www.mirrorservice.org/sites/lsof.itap.purdue.edu/pub/tools/unix/lsof/${MY_P}.tar.bz2"
 
 LICENSE="lsof"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~ppc-aix ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="examples ipv6 rpc selinux static"
 
 RDEPEND="rpc? ( net-libs/libtirpc )
@@ -21,19 +22,30 @@ RDEPEND="rpc? ( net-libs/libtirpc )
 DEPEND="${RDEPEND}
 	rpc? ( virtual/pkgconfig )"
 
-S=${WORKDIR}/${MY_P}/${MY_P}_src
+S="${WORKDIR}/${MY_P}/${MY_P}_src"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.85-cross.patch #432120
+)
 
 src_unpack() {
 	unpack ${A}
-	cd ${MY_P}
+	cd ${MY_P} || die
 	unpack ./${MY_P}_src.tar
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-4.85-cross.patch #432120
-	# convert `test -r header.h` into a compile test
-	sed -i -r \
-		-e 's:test -r \$\{LSOF_INCLUDE\}/([[:alnum:]/._]*):echo "#include <\1>" | ${LSOF_CC} ${LSOF_CFGF} -E - >/dev/null 2>\&1:' \
+	default
+	# fix POSIX compliance with `echo`
+	sed -i \
+		-e 's:echo -n:printf:' \
+		AFSConfig Configure Customize Inventory tests/CkTestDB || die
+	# Convert `test -r header.h` into a compile test.
+	# Make sure we convert `test ... -a ...` into two `test` commands
+	# so we can then convert both over into a compile test. #601432
+	sed -i -E \
+		-e '/if test .* -a /s: -a : \&\& test :g' \
+		-e '/test -r/s:test -r \$\{LSOF_INCLUDE\}/([[:alnum:]/._]*):echo "#include <\1>" | ${LSOF_CC} ${LSOF_CFGF} -E - >/dev/null 2>\&1:g' \
 		-e 's:grep (.*) \$\{LSOF_INCLUDE\}/([[:alnum:]/._]*):echo "#include <\2>" | ${LSOF_CC} ${LSOF_CFGF} -E -P -dD - 2>/dev/null | grep \1:' \
 		Configure || die
 }
@@ -53,6 +65,7 @@ src_configure() {
 
 	append-cppflags $(use rpc && $(tc-getPKG_CONFIG) libtirpc --cflags || echo "-DHASNOTRPC -DHASNORPC_H")
 	append-cppflags $(usex ipv6 -{D,U}HASIPv6)
+	[[ ${CHOST} == *-solaris2.11 ]] && append-cppflags -DHAS_PAD_MUTEX
 
 	export LSOF_CFGL="${CFLAGS} ${LDFLAGS} \
 		$(use rpc && $(tc-getPKG_CONFIG) libtirpc --libs)"
