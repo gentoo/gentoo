@@ -39,7 +39,7 @@ pkg_setup() {
 
 src_prepare() {
 	if use pax_kernel && kernel_is -ge 3 0 0 ; then
-		epatch "${FILESDIR}"/${PN}-4.1.4-pax-const.patch
+		eapply "${FILESDIR}"/${PN}-4.1.4-pax-const.patch
 	fi
 
 	default

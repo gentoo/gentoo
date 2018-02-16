@@ -44,11 +44,11 @@ src_prepare() {
 	fi
 
 	if use pax_kernel && kernel_is -ge 3 0 0 ; then
-		epatch "${FILESDIR}"/${PN}-4.1.4-pax-const.patch
+		eapply "${FILESDIR}"/${PN}-4.1.4-pax-const.patch
 	fi
 
 	if kernel_is -ge 4 14 0 ; then
-		epatch "${FILESDIR}"/${PN}-5.1.30-udp.patch
+		eapply "${FILESDIR}"/${PN}-5.1.30-udp.patch
 	fi
 
 	default
