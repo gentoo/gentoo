@@ -1,0 +1,15 @@
+diff --git a/programs/pluto/kernel_netlink.c
+b/programs/pluto/kernel_netlink.c
+index 8cec3a2..a2500f4 100644
+--- a/programs/pluto/kernel_netlink.c
++++ b/programs/pluto/kernel_netlink.c
+@@ -51,8 +51,8 @@
+ #include <linux/if_addr.h>
+ #include <linux/if_link.h>
+
+-#include "libreswan.h" /* before xfrm.h otherwise break on F22 */
+ #include "linux/xfrm.h" /* local (if configured) or system copy */
++#include "libreswan.h" /* before xfrm.h otherwise break on F22 */
+
+ #include "libreswan/pfkeyv2.h"
+ #include "libreswan/pfkey.h"
