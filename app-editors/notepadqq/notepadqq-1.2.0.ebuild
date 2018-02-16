@@ -1,11 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 inherit qmake-utils xdg-utils
-
-CM_PV="5.18.2"
 
 DESCRIPTION="Notepad++-like editor for Linux"
 HOMEPAGE="http://notepadqq.altervista.org"
