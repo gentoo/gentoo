@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure postinst postrm test
+DEPEND=>=dev-lang/perl-5.6 >=dev-libs/glib-2.30:= >=x11-libs/gdk-pixbuf-2.14:= >=x11-libs/gtk+-2.24:2= >=xfce-base/exo-0.10:= >=xfce-base/libxfce4ui-4.10:= >=xfce-base/libxfce4util-4.10.1:= >=xfce-base/xfconf-4.10:= dbus? ( >=dev-libs/dbus-glib-0.100:= ) exif? ( >=media-libs/libexif-0.6.19:= ) libnotify? ( >=x11-libs/libnotify-0.7:= ) pcre? ( >=dev-libs/libpcre-6:= ) trash-panel-plugin? ( >=xfce-base/xfce4-panel-4.10:= ) udisks? ( virtual/libgudev:= ) dev-util/intltool sys-devel/gettext virtual/pkgconfig >=sys-apps/sed-4 test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DESCRIPTION=File manager for the Xfce desktop environment
+EAPI=6
+HOMEPAGE=https://www.xfce.org/projects/ https://docs.xfce.org/xfce/thunar/start
+IUSE=+dbus exif libnotify pcre test +trash-panel-plugin udisks test
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris
+LICENSE=GPL-2 LGPL-2
+RDEPEND=>=dev-lang/perl-5.6 >=dev-libs/glib-2.30:= >=x11-libs/gdk-pixbuf-2.14:= >=x11-libs/gtk+-2.24:2= >=xfce-base/exo-0.10:= >=xfce-base/libxfce4ui-4.10:= >=xfce-base/libxfce4util-4.10.1:= >=xfce-base/xfconf-4.10:= dbus? ( >=dev-libs/dbus-glib-0.100:= ) exif? ( >=media-libs/libexif-0.6.19:= ) libnotify? ( >=x11-libs/libnotify-0.7:= ) pcre? ( >=dev-libs/libpcre-6:= ) trash-panel-plugin? ( >=xfce-base/xfce4-panel-4.10:= ) udisks? ( virtual/libgudev:= ) >=dev-util/desktop-file-utils-0.20-r1 x11-misc/shared-mime-info dbus? ( >=gnome-base/gvfs-1.18.3 ) trash-panel-plugin? ( >=gnome-base/gvfs-1.18.3 ) udisks? ( virtual/udev >=gnome-base/gvfs-1.18.3[udisks,udev] )
+REQUIRED_USE=trash-panel-plugin? ( dbus )
+SLOT=0
+SRC_URI=mirror://xfce/src/xfce/thunar/1.6/Thunar-1.6.14.tar.bz2
+_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	gnome2-utils	4d211d7614f303710fca59db6ec12c88	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	virtualx	3a3c4637ea6d5a2113707a644766337c	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=131e245cbabecb319170128b2c6c98c6
