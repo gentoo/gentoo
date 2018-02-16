@@ -193,6 +193,7 @@ src_prepare() {
 	fi
 
 	eapply "${WORKDIR}/patches"
+	eapply "${FILESDIR}/${PN}-detect-usb-fix.patch"
 
 	eapply_user
 }
@@ -203,21 +204,26 @@ src_configure() {
 		--with-g++="$(tc-getCXX)"
 		--disable-dbus
 		--disable-kmods
+		$(usex alsa '' --disable-alsa)
+		$(usex debug --build-debug '')
+		$(usex doc '' --disable-docs)
+		$(usex java '' --disable-java)
+		$(usex lvm '' --disable-devmapper)
+		$(usex pulseaudio '' --disable-pulse)
+		$(usex python '' --disable-python)
+		$(usex vboxwebsrv --enable-webservice '')
+		$(usex vnc --enable-vnc '')
 	)
-	use alsa       || myconf+=( --disable-alsa )
-	use debug      && myconf+=( --build-debug )
-	use doc        || myconf+=( --disable-docs )
-	use java       || myconf+=( --disable-java )
-	use lvm        || myconf+=( --disable-devmapper )
-	use opengl     || myconf+=( --disable-opengl )
-	use pulseaudio || myconf+=( --disable-pulse )
-	use python     || myconf+=( --disable-python )
-	use vboxwebsrv && myconf+=( --enable-webservice )
-	use vnc        && myconf+=( --enable-vnc )
 	if ! use headless ; then
-		use qt5 || myconf+=( --disable-qt )
+		myconf+=(
+			$(usex opengl '' --disable-opengl)
+			$(usex qt5 '' --disable-qt)
+		)
 	else
-		myconf+=( --build-headless --disable-opengl )
+		myconf+=(
+			--build-headless
+			--disable-opengl
+		)
 	fi
 	if use amd64 && ! has_multilib_profile ; then
 		myconf+=( --disable-vmmraw )
