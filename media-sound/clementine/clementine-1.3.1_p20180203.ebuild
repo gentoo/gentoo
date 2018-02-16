@@ -11,11 +11,11 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/clementine-player/Clementine.git"
 	GIT_ECLASS="git-r3"
 else
-	SRC_URI="https://github.com/clementine-player/Clementine/archive/${PV/_}.tar.gz -> ${P}.tar.gz"
+	COMMIT=b04367937a3160e15543a07631e36213db7b6048
+	SRC_URI="https://github.com/${PN}-player/${PN^}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
-	S="${WORKDIR}/${MY_P^}"
 fi
-inherit cmake-utils flag-o-matic gnome2-utils l10n virtualx xdg-utils ${GIT_ECLASS}
+inherit cmake-utils flag-o-matic gnome2-utils l10n virtualx xdg-utils ${GIT_ECLASS} vcs-snapshot
 unset GIT_ECLASS
 
 DESCRIPTION="Modern music player and library organizer based on Amarok 1.4 and Qt"
