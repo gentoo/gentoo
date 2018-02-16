@@ -1,0 +1,24 @@
+Patch by Maciej S. Szmigiero to make the script work even if no USB device was
+plugged in before virtualbox got started.
+
+https://bugs.gentoo.org/639352
+
+--- a/src/VBox/Installer/linux/VBoxCreateUSBNode.sh
++++ b/src/VBox/Installer/linux/VBoxCreateUSBNode.sh
+@@ -32,13 +32,13 @@
+ devpath="`printf "/dev/vboxusb/%.3d/%.3d" $bus $device`"
+ case "$do_remove" in
+   0)
++  case "$group" in "") group="vboxusers";; esac
++  mkdir /dev/vboxusb -m 0750 2>/dev/null
++  chown root:$group /dev/vboxusb 2>/dev/null
+   if test -n "$class" -a "$class" -eq "$usb_class_hub"
+   then
+       exit 0
+   fi
+-  case "$group" in "") group="vboxusers";; esac
+-  mkdir /dev/vboxusb -m 0750 2>/dev/null
+-  chown root:$group /dev/vboxusb 2>/dev/null
+   mkdir "$devdir" -m 0750 2>/dev/null
+   chown root:$group "$devdir" 2>/dev/null
+   mknod "$devpath" c $1 $2 -m 0660 2>/dev/null

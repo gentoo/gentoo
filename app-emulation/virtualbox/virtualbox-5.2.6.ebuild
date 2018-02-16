@@ -193,6 +193,7 @@ src_prepare() {
 	fi
 
 	eapply "${WORKDIR}/patches"
+	eapply "${FILESDIR}/${PN}-detect-usb-fix.patch"
 
 	eapply_user
 }
