@@ -4401,7 +4401,7 @@ dev-php/PEAR-Date 1.5.0_alpha4-r1: Date and Time Zone classes
 dev-php/PEAR-Exception 1.0.0: The PEAR Exception base class
 dev-php/PEAR-File 1.4.1: Common file and directory routines
 dev-php/PEAR-File_Find 1.3.2: A class that facillitates the search of filesystems
-dev-php/PEAR-File_Gettext 0.4.2: GNU Gettext file parser
+dev-php/PEAR-File_Gettext 0.4.2-r1: GNU Gettext file parser
 dev-php/PEAR-File_Passwd 1.1.7-r3: Manipulate many kinds of password files
 dev-php/PEAR-File_SMBPasswd 1.0.3-r1: Class for managing SAMBA style password files
 dev-php/PEAR-HTML_Common 1.2.5-r1: Base class for other HTML classes

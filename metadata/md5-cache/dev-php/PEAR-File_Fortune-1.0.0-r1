@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm test
+DEPEND=test? ( >=dev-lang/php-5.1.4:* dev-php/phpunit )
+DESCRIPTION=Interface for reading from and writing to fortune files
+EAPI=6
+HOMEPAGE=https://pear.php.net/package/File_Fortune
+IUSE=test
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=BSD
+RDEPEND=>=dev-lang/php-5.1.4:* >=dev-php/pear-1.8.1
+SLOT=0
+SRC_URI=https://pear.php.net/get/File_Fortune-1.0.0.tgz
+_eclasses_=php-pear-r2	eb6928c33771db74564e814c5ca6c1b3
+_md5_=0e3439b6b707d2efacd44f60800c1be7

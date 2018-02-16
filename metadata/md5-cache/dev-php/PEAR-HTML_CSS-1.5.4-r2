@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm prepare test
+DEPEND=test? ( >=dev-php/PEAR-HTML_Common-1.2.4 !minimal? ( >=dev-php/PEAR-Services_W3C_CSSValidator-0.1.0 ) >=dev-php/phpunit-3.7 )
+DESCRIPTION=Provides a simple interface for generating a stylesheet declaration
+EAPI=6
+HOMEPAGE=https://pear.php.net/package/HTML_CSS
+IUSE=minimal test
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=>=dev-php/PEAR-HTML_Common-1.2.4 !minimal? ( >=dev-php/PEAR-Services_W3C_CSSValidator-0.1.0 ) >=dev-php/pear-1.8.1
+SLOT=0
+SRC_URI=https://pear.php.net/get/HTML_CSS-1.5.4.tgz
+_eclasses_=php-pear-r2	eb6928c33771db74564e814c5ca6c1b3
+_md5_=32d44e23a7b41290d6a8071d1cbaf602
