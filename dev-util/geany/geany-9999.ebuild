@@ -1,21 +1,25 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils fdo-mime gnome2-utils
+
+inherit gnome2-utils xdg-utils
 
 LANGS="ar ast be bg ca cs de el en_GB es et eu fa fi fr gl he hi hu id it ja kk ko lb lt mn nl nn pl pt pt_BR ro ru sk sl sr sv tr uk vi zh_CN ZH_TW"
 NOSHORTLANGS="en_GB zh_CN zh_TW"
 
 DESCRIPTION="GTK+ based fast and lightweight IDE"
 HOMEPAGE="http://www.geany.org"
-EGIT_REPO_URI="https://github.com/geany/geany.git"
-inherit git-r3
-SRC_URI=""
+if [[ "${PV}" = 9999* ]] ; then
+	inherit autotools git-r3
+	EGIT_REPO_URI="https://github.com/geany/geany.git"
+else
+	SRC_URI="http://download.geany.org/${P}.tar.bz2"
+	KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+fi
 LICENSE="GPL-2+ HPND"
 SLOT="0"
 
-KEYWORDS=""
 IUSE="gtk3 +vte"
 
 RDEPEND=">=dev-libs/glib-2.32:2
@@ -38,15 +42,25 @@ pkg_setup() {
 
 src_prepare() {
 	default
-	[[ ${PV} = *_pre* || ${PV} = 9999 ]] && eautoreconf
+
+	# Syntax highlighting for Portage
+	sed -i -e "s:*.sh;:*.sh;*.ebuild;*.eclass;:" \
+		data/filetype_extensions.conf || die
+
+	if [[ ${PV} = *_pre* ]] || [[ ${PV} = 9999* ]] ; then
+		eautoreconf
+	fi
 }
+
 src_configure() {
-	econf \
-		--disable-html-docs \
-		--disable-dependency-tracking \
-		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
-		$(use_enable gtk3) \
+	local myeconfargs=(
+		--disable-html-docs
+		--disable-dependency-tracking
+		--docdir="${EPREFIX}/usr/share/doc/${PF}"
+		$(use_enable gtk3)
 		$(use_enable vte)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
@@ -58,10 +72,10 @@ pkg_preinst() { gnome2_icon_savelist; }
 
 pkg_postinst() {
 	fdo-mime_desktop_database_update
-	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
 	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }
