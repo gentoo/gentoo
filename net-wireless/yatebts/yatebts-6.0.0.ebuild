@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit eutils autotools
 
@@ -34,15 +34,17 @@ src_prepare() {
 	#we need more patches or configure flags because things install in really wrong places per FHS
 	epatch "${FILESDIR}"/${PN}-sgsnggsn-inetutils-hostname-fix.diff
 	epatch "${FILESDIR}"/${PN}-5.0.0-gcc6.patch
+	epatch "${FILESDIR}"/${P}-dont-mess-with-cflags.patch
+	default
 	eautoreconf
 }
 
+#		$(use_enable rad1) \
+#		$(use_enable usrp1) \
+#		$(use_enable uhd) \
+#		$(use_enable bladerf) \
 src_configure() {
 	econf \
-		$(use_enable rad1) \
-		$(use_enable usrp1) \
-		$(use_enable uhd) \
-		$(use_enable bladerf) \
 		$(use_enable cpu_flags_x86_sse3 sse3) \
 		$(use_enable cpu_flags_x86_sse4_1 sse41)
 
