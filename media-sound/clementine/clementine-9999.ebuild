@@ -3,23 +3,26 @@
 
 EAPI=6
 
-EGIT_BRANCH="qt5"
-EGIT_REPO_URI="https://github.com/clementine-player/Clementine.git"
-
 PLOCALES="af ar be bg bn br bs ca cs cy da de el en en_CA en_GB eo es et eu fa fi fr ga gl he he_IL hi hr hu hy ia id is it ja ka kk ko lt lv mk_MK mr ms my nb nl oc pa pl pt pt_BR ro ru si_LK sk sl sr sr@latin sv te tr tr_TR uk uz vi zh_CN zh_TW"
 
-inherit cmake-utils flag-o-matic gnome2-utils l10n virtualx xdg-utils
-[[ ${PV} == *9999* ]] && inherit git-r3
+MY_P="${P/_}"
+if [[ ${PV} == *9999* ]]; then
+	EGIT_BRANCH="qt5"
+	EGIT_REPO_URI="https://github.com/clementine-player/Clementine.git"
+	GIT_ECLASS="git-r3"
+else
+	SRC_URI="https://github.com/clementine-player/Clementine/archive/${PV/_}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
+	S="${WORKDIR}/${MY_P^}"
+fi
+inherit cmake-utils flag-o-matic gnome2-utils l10n virtualx xdg-utils ${GIT_ECLASS}
+unset GIT_ECLASS
 
 DESCRIPTION="Modern music player and library organizer based on Amarok 1.4 and Qt"
 HOMEPAGE="https://www.clementine-player.org https://github.com/clementine-player/Clementine"
-[[ ${PV} == *9999* ]] || \
-SRC_URI="https://github.com/clementine-player/Clementine/archive/${PV/_}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-[[ ${PV} == *9999* ]] || \
-KEYWORDS="~amd64 ~x86"
 IUSE="box cdda +dbus debug dropbox googledrive ipod lastfm mms moodbar mtp projectm pulseaudio seafile skydrive test +udisks wiimote"
 
 REQUIRED_USE="
@@ -98,10 +101,6 @@ DEPEND="${COMMON_DEPEND}
 "
 
 DOCS=( Changelog README.md )
-
-MY_P="${P/_}"
-[[ ${PV} == *9999* ]] || \
-S="${WORKDIR}/${MY_P^}"
 
 PATCHES=( "${FILESDIR}"/${PN}-fts3-tokenizer.patch )
 
