@@ -62,7 +62,4 @@ src_install() {
 
 pkg_postinst() {
 	linux-mod_pkg_postinst
-	elog "If you are using sys-apps/openrc, please add \"vboxdrv\", \"vboxnetflt\","
-	elog "\"vboxnetadp\" and \"vboxpci\" to:"
-	elog "  /etc/conf.d/modules"
 }
