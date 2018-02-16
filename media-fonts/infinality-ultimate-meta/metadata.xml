@@ -5,14 +5,6 @@
     <email>fonts@gentoo.org</email>
     <name>Fonts</name>
   </maintainer>
-  <maintainer type="project">
-    <email>proxy-maint@gentoo.org</email>
-    <name>Proxy Maintainers</name>
-  </maintainer>
-  <maintainer type="person">
-    <email>witold.pilat@gmail.com</email>
-    <name>Witold Piłat</name>
-  </maintainer>
   <use>
     <flag name="free">Install fonts for the "free" preset</flag>
     <flag name="latin">Install additional latin fonts</flag>

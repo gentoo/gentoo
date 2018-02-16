@@ -1,0 +1,112 @@
+diff -aurN a/tests/AllTests.php b/tests/AllTests.php
+--- a/tests/AllTests.php	1970-01-01 04:13:26.000000000 -0500
++++ b/tests/AllTests.php	2018-02-16 16:28:52.565010362 -0500
+@@ -24,7 +24,6 @@
+ 
+ require_once 'HTML_CSS_TestSuite_Standard.php';
+ require_once 'HTML_CSS_TestSuite_Output.php';
+-require_once 'HTML_CSS_TestSuite_Bugs.php';
+ 
+ /**
+  * Class for running all test suites for HTML_CSS package.
+@@ -79,7 +78,6 @@
+         $suite = new PHPUnit_Framework_TestSuite('HTML_CSS Test Suite');
+         $suite->addTestSuite('HTML_CSS_TestSuite_Standard');
+         $suite->addTestSuite('HTML_CSS_TestSuite_Output');
+-        $suite->addTestSuite('HTML_CSS_TestSuite_Bugs');
+         return $suite;
+     }
+ 
+@@ -126,4 +124,4 @@
+ if (PHPUnit_MAIN_METHOD == 'HTML_CSS_AllTests::main') {
+     HTML_CSS_AllTests::main();
+ }
+-?>
+\ No newline at end of file
++?>
+diff -aurN a/tests/HTML_CSS_TestSuite_Output.php b/tests/HTML_CSS_TestSuite_Output.php
+--- a/tests/HTML_CSS_TestSuite_Output.php	1970-01-01 04:13:26.000000000 -0500
++++ b/tests/HTML_CSS_TestSuite_Output.php	2018-02-16 16:36:35.283820690 -0500
+@@ -18,7 +18,6 @@
+ 
+ require_once "PHPUnit/Framework/TestCase.php";
+ require_once "PHPUnit/Framework/TestSuite.php";
+-require_once "PHPUnit/Extensions/OutputTestCase.php";
+ 
+ require_once 'HTML/CSS.php';
+ require_once 'PEAR.php';
+@@ -34,7 +33,7 @@
+  * @link     http://pear.php.net/package/HTML_CSS
+  * @since    File available since Release 1.5.2
+  */
+-class HTML_CSS_TestSuite_Output extends PHPUnit_Extensions_OutputTestCase
++class HTML_CSS_TestSuite_Output extends PHPUnit_Framework_TestCase
+ {
+     /**
+      * A CSS object
+@@ -70,7 +69,12 @@
+ 
+         $this->css = new HTML_CSS($attrs, $prefs);
+ 
+-        $this->setOutputCallback(array(&$this, 'normalizeOutput'));
++        $this->setOutputCallback(array($this, 'normalizeOutput'));
++    }
++
++    protected function normalizeOutput($buffer)
++    {
++        return str_replace("\r", '', $buffer);
+     }
+ 
+     /**
+@@ -153,4 +157,4 @@
+ if (PHPUnit_MAIN_METHOD == "HTML_CSS_TestSuite_Output::main") {
+     HTML_CSS_TestSuite_Output::main();
+ }
+-?>
+\ No newline at end of file
++?>
+diff -aurN a/tests/HTML_CSS_TestSuite_Standard.php b/tests/HTML_CSS_TestSuite_Standard.php
+--- a/tests/HTML_CSS_TestSuite_Standard.php	1970-01-01 04:13:26.000000000 -0500
++++ b/tests/HTML_CSS_TestSuite_Standard.php	2018-02-16 16:47:01.837374212 -0500
+@@ -117,12 +117,10 @@
+      */
+     public function catchError($error, $code, $level)
+     {
+-        $this->assertType(PHPUnit_Framework_Constraint_IsType::TYPE_OBJECT, $error);
+-        if ($error instanceof PEAR_Error) {
+-            $this->assertEquals($error->getCode(), $code);
+-            $user_info = $error->getUserInfo();
+-            $this->assertEquals($user_info['level'], $level);
+-        }
++        $this->assertInstanceOf(PEAR_Error::class, $error);
++        $this->assertEquals($error->getCode(), $code);
++        $user_info = $error->getUserInfo();
++        $this->assertEquals($user_info['level'], $level);
+     }
+ 
+     /**
+@@ -724,7 +722,7 @@
+         $css_data = array($fn, $strcss);
+         $messages = array();
+ 
+-        $stub = $this->getMock('HTML_CSS', array('validate'));
++        $stub = $this->createMock(HTML_CSS::class);
+         $stub->expects($this->any())
+              ->method('validate')
+              ->will($this->returnValue(true));
+@@ -1578,7 +1576,7 @@
+         $this->catchError($r, HTML_CSS_ERROR_INVALID_INPUT, 'exception');
+ 
+         // validate
+-        $stub = $this->getMock('HTML_CSS', array('validate'));
++        $stub = $this->createMock(HTML_CSS::class);
+         $stub->expects($this->any())
+              ->method('validate')
+              ->will($this->returnCallback(array(&$this, 'cbMockValidator')));
+@@ -1680,4 +1678,4 @@
+ if (PHPUnit_MAIN_METHOD == "HTML_CSS_TestSuite_Standard::main") {
+     HTML_CSS_TestSuite_Standard::main();
+ }
+-?>
+\ No newline at end of file
++?>
