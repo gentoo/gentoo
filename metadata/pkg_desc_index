@@ -2802,7 +2802,7 @@ dev-java/toolbar 1.1.0-r2: An improved version of JToolBar
 dev-java/touchgraph-graphlayout 1.22-r1: TouchGraph provides a set of interfaces for graph visualization
 dev-java/treelayout 1.0.2: Efficiently create compact tree layouts in Java
 dev-java/trident 1.3: Java animation library
-dev-java/trove 2.1.0 3.0.2: GNU Trove: High performance collections for Java
+dev-java/trove 3.0.2-r3: GNU Trove: High performance collections for Java
 dev-java/txw2-runtime 20110809: TXW is a library that allows you to write XML documents
 dev-java/typesafe-config 1.2.1: A library of arguably useful Java utilities
 dev-java/unkrig-nullanalysis 0_pre1644: Some classes to test for various null conditions
@@ -10175,7 +10175,7 @@ sys-process/htop 2.0.2: interactive process viewer
 sys-process/incron 0.5.10-r1: inotify based cron daemon
 sys-process/iotop 0.6: Top-like UI used to show which process is using the I/O
 sys-process/latencytop 0.5: tool for identifying where in the system latency is happening
-sys-process/lsof 4.87-r1 4.88-r1 4.89: Lists open files for running Unix processes
+sys-process/lsof 4.89: Lists open files for running Unix processes
 sys-process/memwatch 0.1.0: Interactive memory viewer
 sys-process/nmon 16f: Nigel's performance MONitor for CPU, memory, network, disks, etc...
 sys-process/numactl 2.0.11: Utilities and libraries for NUMA systems

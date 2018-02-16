@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=sys-libs/ncurses:0= >=dev-libs/glib-2.6.0 !libressl? ( dev-libs/openssl:= ) libressl? ( dev-libs/libressl:= ) perl? ( dev-lang/perl:= ) socks5? ( >=net-proxy/dante-1.1.18 ) virtual/pkgconfig dev-lang/perl:=
+DESCRIPTION=A modular textUI IRC client with IPv6 support
+EAPI=6
+HOMEPAGE=https://irssi.org/
+IUSE=+perl selinux socks5 +proxy libressl
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+LICENSE=GPL-2
+RDEPEND=sys-libs/ncurses:0= >=dev-libs/glib-2.6.0 !libressl? ( dev-libs/openssl:= ) libressl? ( dev-libs/libressl:= ) perl? ( dev-lang/perl:= ) socks5? ( >=net-proxy/dante-1.1.18 ) selinux? ( sec-policy/selinux-irc ) perl? ( !net-im/silc-client ) dev-lang/perl:=
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/irssi/irssi/releases/download/1.1.1/irssi-1.1.1.tar.xz
+_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_md5_=9b5920cb6f841681dc040faff0c92947
