@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,7 +22,7 @@ RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtprintsupport:5
-	dev-qt/qtsingleapplication[X,qt5]
+	dev-qt/qtsingleapplication[X,qt5(+)]
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
@@ -30,7 +30,7 @@ RDEPEND="
 	sci-libs/proj
 	sys-libs/zlib
 	exif? ( media-gfx/exiv2:= )
-	gps? ( >=sci-geosciences/gpsd-3.13[cxx] )
+	gps? ( >=sci-geosciences/gpsd-3.17-r2 )
 	libproxy? ( net-libs/libproxy )
 	webengine? ( dev-qt/qtwebengine:5 )
 "
