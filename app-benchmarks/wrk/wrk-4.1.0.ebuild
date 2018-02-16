@@ -15,13 +15,19 @@ KEYWORDS="~x86 ~amd64"
 IUSE="libressl"
 
 DEPEND=">=dev-lang/luajit-2.0.2
+	dev-lang/lua:0
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )"
 RDEPEND="${DEPEND}"
 
+src_prepare() {
+	rm -rf deps/ || die "failed to remove bundled dependencies"
+	epatch "${FILESDIR}/${PN}-4.1.0-makefile.patch"
+}
+
 src_compile() {
 	tc-export CC
-	emake VER="${PV}" WITH_LUAJIT="${EPREFIX}"/usr WITH_OPENSSL="${EPREFIX}"/usr
+	emake
 }
 
 src_install() {
