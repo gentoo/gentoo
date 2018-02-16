@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,12 +25,12 @@ RDEPEND="
 	dev-qt/qtwebkit:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
-	dev-qt/qtsingleapplication[X,qt5]
+	dev-qt/qtsingleapplication[X,qt5(+)]
 	>=sci-libs/gdal-1.6.0
 	>=sci-libs/proj-4.6
 	sys-libs/zlib
 	exif? ( media-gfx/exiv2:= )
-	gps? ( >=sci-geosciences/gpsd-3.13[cxx] )
+	gps? ( >=sci-geosciences/gpsd-3.17-r2 )
 	libproxy? ( net-libs/libproxy )
 "
 DEPEND="${RDEPEND}
