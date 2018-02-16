@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation.
+# Copyright 1999-2018 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License, v2
 
 # Unmask the flag which corresponds to ARCH.
@@ -32,6 +32,10 @@
 # Unmask vmware drivers
 #-video_cards_vmware
 -input_devices_vmmouse
+
+# Michał Górny <mgorny@gentoo.org> (16 Feb 2018)
+# Qt5 is not keyworded here.
+qt5
 
 # Mart Raudsepp <leio@gentoo.org> (11 Feb 2018)
 # dev-util/valgrind is not keyworded here.
