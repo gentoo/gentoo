@@ -6,6 +6,6 @@ HOMEPAGE=https://rclone.org/
 KEYWORDS=~amd64 ~arm ~x86
 LICENSE=MIT
 SLOT=0
-SRC_URI=https://github.com/ncw/rclone/archive/v1.38.tar.gz -> rclone-1.38.tar.gz
+SRC_URI=https://github.com/ncw/rclone/archive/v1.39.tar.gz -> rclone-1.39.tar.gz
 _eclasses_=golang-base	51a1f13e065f1cff4507685d9cc268c7	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	913580335becddd3ebecefe852e47536
 _md5_=748b03cb9428becba5208c6c8a77f211
