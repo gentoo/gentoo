@@ -1,0 +1,111 @@
+We aren't interested in bundled Brotli.
+
+Use pkg-config to detect Brotli's install path.
+
+--- a/config
++++ b/config
+@@ -59,93 +59,19 @@ have=NGX_HTTP_BROTLI_STATIC_MODULE . auto/have  # deprecated
+ ngx_module_type=HTTP_FILTER
+ ngx_module_name=ngx_http_brotli_filter_module
+ 
+-brotli="/usr/local"
++brotli=$(pkg-config --variable=prefix libbrotlienc)
+ 
+ if [ ! -f "$brotli/include/brotli/encode.h" ]; then
+ 
+-brotli="$ngx_addon_dir/deps/brotli/c"
+-
+-if [ ! -f "$brotli/include/brotli/encode.h" ]; then
+ cat << END
+ 
+ $0: error: \
+-Brotli library is missing from the $brotli directory.
+-
+-Please make sure that the git submodule has been checked out:
+-
+-    cd $ngx_addon_dir && git submodule update --init && cd $PWD
++Brotli library not found. Don't you have app-arch/brotli installed?
+ 
+ END
+     exit 1
+ fi
+ 
+-ngx_module_incs="$brotli/include"
+-ngx_module_deps="$brotli/common/constants.h \
+-                 $brotli/common/dictionary.h \
+-                 $brotli/common/version.h \
+-                 $brotli/enc/backward_references.h \
+-                 $brotli/enc/backward_references_hq.h \
+-                 $brotli/enc/backward_references_inc.h \
+-                 $brotli/enc/bit_cost.h \
+-                 $brotli/enc/bit_cost_inc.h \
+-                 $brotli/enc/block_encoder_inc.h \
+-                 $brotli/enc/block_splitter.h \
+-                 $brotli/enc/block_splitter_inc.h \
+-                 $brotli/enc/brotli_bit_stream.h \
+-                 $brotli/enc/cluster.h \
+-                 $brotli/enc/cluster_inc.h \
+-                 $brotli/enc/command.h \
+-                 $brotli/enc/compress_fragment.h \
+-                 $brotli/enc/compress_fragment_two_pass.h \
+-                 $brotli/enc/context.h \
+-                 $brotli/enc/dictionary_hash.h \
+-                 $brotli/enc/entropy_encode.h \
+-                 $brotli/enc/entropy_encode_static.h \
+-                 $brotli/enc/fast_log.h \
+-                 $brotli/enc/find_match_length.h \
+-                 $brotli/enc/hash.h \
+-                 $brotli/enc/hash_forgetful_chain_inc.h \
+-                 $brotli/enc/hash_longest_match64_inc.h \
+-                 $brotli/enc/hash_longest_match_inc.h \
+-                 $brotli/enc/hash_longest_match_quickly_inc.h \
+-                 $brotli/enc/hash_to_binary_tree_inc.h \
+-                 $brotli/enc/histogram.h \
+-                 $brotli/enc/histogram_inc.h \
+-                 $brotli/enc/literal_cost.h \
+-                 $brotli/enc/memory.h \
+-                 $brotli/enc/metablock.h \
+-                 $brotli/enc/metablock_inc.h \
+-                 $brotli/enc/port.h \
+-                 $brotli/enc/prefix.h \
+-                 $brotli/enc/quality.h \
+-                 $brotli/enc/ringbuffer.h \
+-                 $brotli/enc/static_dict.h \
+-                 $brotli/enc/static_dict_lut.h \
+-                 $brotli/enc/utf8_util.h \
+-                 $brotli/enc/write_bits.h"
+-ngx_module_srcs="$brotli/common/dictionary.c \
+-                 $brotli/enc/backward_references.c \
+-                 $brotli/enc/backward_references_hq.c \
+-                 $brotli/enc/bit_cost.c \
+-                 $brotli/enc/block_splitter.c \
+-                 $brotli/enc/brotli_bit_stream.c \
+-                 $brotli/enc/cluster.c \
+-                 $brotli/enc/compress_fragment.c \
+-                 $brotli/enc/compress_fragment_two_pass.c \
+-                 $brotli/enc/dictionary_hash.c \
+-                 $brotli/enc/encode.c \
+-                 $brotli/enc/entropy_encode.c \
+-                 $brotli/enc/histogram.c \
+-                 $brotli/enc/literal_cost.c \
+-                 $brotli/enc/memory.c \
+-                 $brotli/enc/metablock.c \
+-                 $brotli/enc/static_dict.c \
+-                 $brotli/enc/utf8_util.c \
+-                 $ngx_addon_dir/src/ngx_http_brotli_filter_module.c"
+-ngx_module_libs="-lm"
+-
+-else # encode.h in /usr/local
+-
+ ngx_module_incs="$brotli/include"
+ ngx_module_deps="$brotli/include/brotli/encode.h \
+                  $brotli/include/brotli/port.h \
+@@ -153,8 +79,6 @@ ngx_module_deps="$brotli/include/brotli/encode.h \
+ ngx_module_srcs="$ngx_addon_dir/src/ngx_http_brotli_filter_module.c"
+ ngx_module_libs="-lbrotlienc -lm"
+ 
+-fi # encode.h in /usr/local
+-
+ ngx_module_order="$ngx_module_name \
+                   ngx_pagespeed \
+                   ngx_http_postpone_filter_module \
