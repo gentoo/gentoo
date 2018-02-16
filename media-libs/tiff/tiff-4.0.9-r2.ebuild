@@ -1,8 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
-inherit autotools eutils libtool multilib-minimal
+EAPI=6
+
+inherit autotools libtool ltprune multilib-minimal
 
 DESCRIPTION="Tag Image File Format (TIFF) library"
 HOMEPAGE="http://libtiff.maptools.org"
@@ -47,14 +48,16 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	ECONF_SOURCE="${S}" econf \
-		$(use_enable static-libs static) \
-		$(use_enable zlib) \
-		$(use_enable jpeg) \
-		$(use_enable jbig) \
-		$(use_enable lzma) \
-		$(use_enable cxx) \
+	local myeconfargs=(
 		--without-x
+		$(use_enable cxx)
+		$(use_enable jbig)
+		$(use_enable jpeg)
+		$(use_enable lzma)
+		$(use_enable static-libs static)
+		$(use_enable zlib)
+	)
+	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 
 	# remove useless subdirs
 	if ! multilib_is_native_abi ; then
@@ -76,5 +79,5 @@ multilib_src_test() {
 
 multilib_src_install_all() {
 	prune_libtool_files --all
-	rm -f "${ED}"/usr/share/doc/${PF}/{COPYRIGHT,README*,RELEASE-DATE,TODO,VERSION}
+	rm -f "${ED%/}"/usr/share/doc/${PF}/{COPYRIGHT,README*,RELEASE-DATE,TODO,VERSION}
 }
