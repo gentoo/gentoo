@@ -22,7 +22,10 @@ RDEPEND="
 	dev-qt/qtwebkit:5
 	dev-qt/qtwidgets:5
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	dev-qt/qtsvg:5
+"
 
 src_prepare() {
 	default
