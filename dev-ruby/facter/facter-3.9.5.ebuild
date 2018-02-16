@@ -27,14 +27,14 @@ fi
 
 BDEPEND="
 	>=sys-devel/gcc-4.8:*
-	>=dev-libs/leatherman-1.0.0
+	>=dev-libs/leatherman-1.0.0:=
 	dev-cpp/cpp-hocon"
 CDEPEND="
 	dev-libs/openssl:*
 	sys-apps/util-linux
 	app-emulation/virt-what
 	net-misc/curl
-	>=dev-libs/boost-1.54[nls]
+	>=dev-libs/boost-1.54:=[nls]
 	>=dev-cpp/yaml-cpp-0.5.1
 	!<app-admin/puppet-4.0.0"
 
