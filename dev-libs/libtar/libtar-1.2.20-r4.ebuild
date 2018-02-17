@@ -33,6 +33,9 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.2.11-free.patch
 	"${FILESDIR}"/${PN}-1.2.11-impl-dec.patch
 	"${FILESDIR}"/CVE-2013-4420.patch
+	"${FILESDIR}"/${P}-fd-leaks.patch
+	"${FILESDIR}"/${P}-tar_open-memleak.patch
+	"${FILESDIR}"/${P}-bin-memleaks.patch
 )
 
 src_prepare() {
