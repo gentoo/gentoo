@@ -4948,7 +4948,7 @@ dev-python/kazoo 2.2.1: A high-level Python library that makes it easier to use 
 dev-python/keyczar 0.715: Toolkit for safe and simple cryptography
 dev-python/keyring 10.6.0: Provides access to the system keyring service
 dev-python/keystoneauth 3.1.0: This package contains tools for authenticating to an OpenStack-based cloud.
-dev-python/keystonemiddleware 4.4.1 4.9.1 4.14.0 4.17.0: A middleware for the OpenStack Keystone API
+dev-python/keystonemiddleware 4.17.0: A middleware for the OpenStack Keystone API
 dev-python/kid 0.9.6-r1: A simple and Pythonic XML template language
 dev-python/kivy-garden 0.1.1 0.1.4: Kivys Garden tool to manage flowers
 dev-python/kiwi 1.9.39.2: Kiwi is a pure Python framework and set of enhanced PyGTK widgets
@@ -5093,7 +5093,7 @@ dev-python/oslo-utils 3.28.1: Oslo Utility library
 dev-python/oslo-versionedobjects 1.26.1: A library that provides a generic versioned and RPC-friendly object model.
 dev-python/oslo-vmware 2.23.1: Oslo VMware library for OpenStack projects
 dev-python/oslotest 2.17.1: Oslo test framework
-dev-python/osprofiler 1.2.0 1.4.0 1.5.0 1.11.0: OpenStack Profiler Library
+dev-python/osprofiler 1.11.0: OpenStack Profiler Library
 dev-python/ovs 2.4.0 2.6.1 2.7.0: OVS bindings for python.
 dev-python/ovsdbapp 0.4.0: A library for creating OVSDB applications
 dev-python/packaging 16.8: Core utilities for Python packages
