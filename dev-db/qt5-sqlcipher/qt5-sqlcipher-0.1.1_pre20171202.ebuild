@@ -15,7 +15,7 @@ KEYWORDS="~amd64"
 
 DEPEND=">=dev-db/sqlcipher-3.4.1
 	>=dev-qt/qtcore-5.7.1:5=
-	>=dev-qt/qtsql-5.7.1:5=[sqlite]"
+	>=dev-qt/qtsql-5.7.1:5=[sqlite]	<dev-qt/qtsql-5.9.5:5=[sqlite]"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}"
