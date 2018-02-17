@@ -7,7 +7,7 @@ inherit cmake-utils
 
 DESCRIPTION="Qt SQL driver plugin for SQLCipher"
 HOMEPAGE="https://github.com/blizzard4591/qt5-sqlcipher"
-SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
+SRC_URI="https://github.com/blizzard4591/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1" # version 2.1 only
 SLOT="0"
@@ -18,7 +18,6 @@ DEPEND=">=dev-db/sqlcipher-3.4.1
 	>=dev-qt/qtsql-5.7.1:5=[sqlite]	<dev-qt/qtsql-5.9.5:5=[sqlite]"
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/${PN}"
 DOCS=(README.md)
 
 src_prepare() {
