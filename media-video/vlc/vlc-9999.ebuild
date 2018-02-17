@@ -30,7 +30,7 @@ LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/5-9" # vlc - vlccore
 
 IUSE="a52 aalib alsa altivec aom archive bidi bluray cddb chromaprint chromecast dbus dc1394
-	debug directx dts dvb +dvbpsi dvd elibc_glibc +encode faad fdk +ffmpeg flac fluidsynth
+	debug directx dts +dvbpsi dvd elibc_glibc +encode faad fdk +ffmpeg flac fluidsynth
 	fontconfig +gcrypt gme gnome-keyring gstreamer ieee1394 jack jpeg kate libass libav
 	libcaca libnotify +libsamplerate libtar libtiger linsys lirc live lua macosx-notifications
 	macosx-qtkit matroska modplug mp3 mpeg mtp musepack ncurses neon nfs ogg omxil opencv
@@ -43,7 +43,6 @@ REQUIRED_USE="
 	aalib? ( X )
 	bidi? ( truetype )
 	directx? ( ffmpeg )
-	dvb? ( dvbpsi )
 	fontconfig? ( truetype )
 	libcaca? ( X )
 	libtar? ( skins )
