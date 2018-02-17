@@ -234,6 +234,11 @@ src_install() {
 
 	# Remove shared info pages
 	rm -f "${ED}"/usr/share/info/{annotate,bfd,configure,standards}.info*
+
+	# gcore is part of ubin on freebsd
+	if [[ ${CHOST} == *-freebsd* ]]; then
+		rm "${ED}"/usr/bin/gcore || die
+	fi
 }
 
 pkg_postinst() {
