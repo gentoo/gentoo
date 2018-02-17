@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=sys-devel/flex
+DESCRIPTION=Reads commands line by line and executes them in parallel
+EAPI=6
+HOMEPAGE=http://www.maier-komor.de/xjobs.html
+IUSE=examples
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://www.maier-komor.de/xjobs/xjobs-20170829.tgz
+_md5_=8cc0a3f91ac8e66f27ce4f72057da84e
