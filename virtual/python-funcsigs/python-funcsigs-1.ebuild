@@ -9,7 +9,7 @@ inherit python-r1
 
 DESCRIPTION="A Virtual for Python function signatures from PEP362 (py3.6 variant)"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc x86 ~amd64-linux ~x86-linux ~amd64-fbsd"
+KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc x86 ~amd64-linux ~x86-linux"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
