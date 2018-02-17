@@ -130,7 +130,7 @@ RDEPEND="
 	modplug? ( media-libs/libmodplug:0 )
 	mp3? ( media-libs/libmad:0 )
 	mpeg? ( media-libs/libmpeg2:0 )
-	mtp? ( media-libs/libmtp:0 )
+	mtp? ( media-libs/libmtp:0= )
 	musepack? ( media-sound/musepack-tools:0 )
 	ncurses? ( sys-libs/ncurses:0=[unicode] )
 	nfs? ( >=net-fs/libnfs-0.10.0:= )
