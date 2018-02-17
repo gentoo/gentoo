@@ -22,6 +22,7 @@ SLOT="0"
 LANGS=" ca cs da de el eo es fi fr it ja nl ru sv tr uk vi zh_TW"
 IUSE="debug emacs guile2 profile vim-syntax"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+PATCHES=(${FILESDIR}/$P-programming_error.patch)
 
 RDEPEND=">=app-text/ghostscript-gpl-8.15
 	>=dev-scheme/guile-1.8.2:12[deprecated,regex]
