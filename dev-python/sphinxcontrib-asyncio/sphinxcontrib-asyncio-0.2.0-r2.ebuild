@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -26,14 +26,14 @@ python_compile_all() {
 	use doc && emake -C docs html
 }
 
+python_install() {
+	rm "${BUILD_DIR}"/lib/sphinxcontrib/__init__.py || die
+	distutils-r1_python_install --skip-build
+}
+
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/_build/html/. )
 	distutils-r1_python_install_all
 	# clean up pth files bug #623852
 	find "${ED}" -name '*.pth' -delete || die
-	# collision bug #625872
-	_namespace_cleanup() {
-		rm "${D%/}"$(python_get_sitedir)/sphinxcontrib/__init__.py || die
-	}
-	python_foreach_impl _namespace_cleanup
 }
