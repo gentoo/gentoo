@@ -3219,7 +3219,6 @@ developers and volunteer mentors.</description>
     <subproject ref="bug-wranglers@gentoo.org"/>
     <subproject ref="devmanual@gentoo.org"/>
     <subproject ref="pms@gentoo.org"/>
-    <subproject ref="proxy-maint@gentoo.org"/>
     <subproject ref="treecleaner@gentoo.org"/>
     <member>
       <email>amynka@gentoo.org</email>
