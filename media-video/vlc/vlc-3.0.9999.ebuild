@@ -55,7 +55,6 @@ REQUIRED_USE="
 	xv? ( xcb )
 "
 RDEPEND="
-	dev-libs/libgpg-error:0
 	net-dns/libidn:0
 	sys-libs/zlib:0[minizip]
 	virtual/libintl:0
@@ -93,7 +92,10 @@ RDEPEND="
 	)
 	fluidsynth? ( >=media-sound/fluidsynth-1.1.2:0 )
 	fontconfig? ( media-libs/fontconfig:1.0 )
-	gcrypt? ( >=dev-libs/libgcrypt-1.6.0:0= )
+	gcrypt? (
+		>=dev-libs/libgcrypt-1.6.0:0=
+		dev-libs/libgpg-error:0
+	)
 	gme? ( media-libs/game-music-emu:0 )
 	gnome-keyring? ( app-crypt/libsecret )
 	gstreamer? ( >=media-libs/gst-plugins-base-1.4.5:1.0 )
