@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
-inherit eutils libtool pam multilib
+inherit libtool pam multilib
 
 DESCRIPTION="Utilities to deal with user accounts"
 HOMEPAGE="https://github.com/shadow-maint/shadow http://pkg-shadow.alioth.debian.org/"
@@ -35,31 +35,33 @@ RDEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.1.3-dots-in-usernames.patch"
-	"${FILESDIR}/${P}-CVE-2018-7169.patch"
+	"${FILESDIR}/${P}-CVE-2018-7169.patch" #647790
 )
 
 src_prepare() {
-	epatch "${PATCHES[@]}"
-	epatch_user
+	default
 	#eautoreconf
 	elibtoolize
 }
 
 src_configure() {
-	econf \
-		--without-group-name-max-length \
-		--without-tcb \
-		--enable-shared=no \
-		--enable-static=yes \
-		$(use_with acl) \
-		$(use_with audit) \
-		$(use_with cracklib libcrack) \
-		$(use_with pam libpam) \
-		$(use_with skey) \
-		$(use_with selinux) \
-		$(use_enable nls) \
-		$(use_with elibc_glibc nscd) \
+	local myeconfargs=(
+		--without-group-name-max-length
+		--without-tcb
+		--enable-shared=no
+		--enable-static=yes
+		$(use_with acl)
+		$(use_with audit)
+		$(use_with cracklib libcrack)
+		$(use_with pam libpam)
+		$(use_with skey)
+		$(use_with selinux)
+		$(use_enable nls)
+		$(use_with elibc_glibc nscd)
 		$(use_with xattr attr)
+	)
+	econf "${myeconfargs[@]}"
+
 	has_version 'sys-libs/uclibc[-rpc]' && sed -i '/RLOGIN/d' config.h #425052
 
 	if use nls ; then
@@ -77,13 +79,13 @@ set_login_opt() {
 		comment="#"
 		sed -i \
 			-e "/^${opt}\>/s:^:#:" \
-			"${ED}"/etc/login.defs || die
+			"${ED%/}"/etc/login.defs || die
 	else
 		sed -i -r \
 			-e "/^#?${opt}\>/s:.*:${opt} ${val}:" \
-			"${ED}"/etc/login.defs
+			"${ED%/}"/etc/login.defs
 	fi
-	local res=$(grep "^${comment}${opt}\>" "${ED}"/etc/login.defs)
+	local res=$(grep "^${comment}${opt}\>" "${ED%/}"/etc/login.defs)
 	einfo "${res:-Unable to find ${opt} in /etc/login.defs}"
 }
 
@@ -95,7 +97,7 @@ src_install() {
 	#   Currently, libshadow.a is for internal use only, so if you see
 	#   -lshadow in a Makefile of some other package, it is safe to
 	#   remove it.
-	rm -f "${ED}"/{,usr/}$(get_libdir)/lib{misc,shadow}.{a,la}
+	rm -f "${ED%/}"/{,usr/}$(get_libdir)/lib{misc,shadow}.{a,la}
 
 	insinto /etc
 	if ! use pam ; then
@@ -109,10 +111,10 @@ src_install() {
 	doins "${FILESDIR}"/default/useradd
 
 	# move passwd to / to help recover broke systems #64441
-	mv "${ED}"/usr/bin/passwd "${ED}"/bin/ || die
+	mv "${ED%/}"/usr/bin/passwd "${ED%/}"/bin/ || die
 	dosym /bin/passwd /usr/bin/passwd
 
-	cd "${S}"
+	cd "${S}" || die
 	insinto /etc
 	insopts -m0644
 	newins etc/login.defs login.defs
@@ -166,27 +168,27 @@ src_install() {
 			-e 'b exit' \
 			-e ': pamnote; i# NOTE: This setting should be configured via /etc/pam.d/ and not in this file.' \
 			-e ': exit' \
-			"${ED}"/etc/login.defs || die
+			"${ED%/}"/etc/login.defs || die
 
 		# remove manpages that pam will install for us
 		# and/or don't apply when using pam
-		find "${ED}"/usr/share/man \
+		find "${ED%/}"/usr/share/man \
 			'(' -name 'limits.5*' -o -name 'suauth.5*' ')' \
 			-delete
 
 		# Remove pam.d files provided by pambase.
-		rm "${ED}"/etc/pam.d/{login,passwd,su} || die
+		rm "${ED%/}"/etc/pam.d/{login,passwd,su} || die
 	fi
 
 	# Remove manpages that are handled by other packages
-	find "${ED}"/usr/share/man \
+	find "${ED%/}"/usr/share/man \
 		'(' -name id.1 -o -name passwd.5 -o -name getspnam.3 ')' \
 		-delete
 
-	cd "${S}"
+	cd "${S}" || die
 	dodoc ChangeLog NEWS TODO
 	newdoc README README.download
-	cd doc
+	cd doc || die
 	dodoc HOWTO README* WISHLIST *.txt
 }
 
