@@ -117,6 +117,14 @@ src_prepare() {
 		sed -e "/find_package.*Qt5/s:\ Test::" -i CMakeLists.txt || die
 		cmake_comment_add_subdirectory tests
 	fi
+
+	# Fix clementine relying on downstream renaming of lastfm header dir
+	sed -i -e "/^#include/s/lastfm5/lastfm/" \
+		tests/albumcoverfetcher_test.cpp \
+		src/internet/lastfm/lastfm{settingspage.cpp,service.cpp,compat.h} \
+		src/core/song.cpp || die "Failed to sed lastfm header suffix"
+	sed -e "/^find_path.*LASTFM5/s/lastfm5/lastfm/" \
+		-i CMakeLists.txt || die "Failed to sed lastfm header suffix"
 }
 
 src_configure() {

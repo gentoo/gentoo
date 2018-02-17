@@ -32,7 +32,7 @@ SLOT="0/5-9" # vlc - vlccore
 IUSE="a52 aalib alsa altivec aom archive bidi bluray cddb chromaprint chromecast dbus dc1394
 	debug directx dts +dvbpsi dvd elibc_glibc +encode faad fdk +ffmpeg flac fluidsynth
 	fontconfig +gcrypt gme gnome-keyring gstreamer ieee1394 jack jpeg kate libass libav
-	libcaca libnotify +libsamplerate libtar libtiger linsys lirc live lua macosx-notifications
+	libcaca libnotify +libsamplerate libtar libtiger lirc live lua macosx-notifications
 	macosx-qtkit matroska modplug mp3 mpeg mtp musepack ncurses neon nfs ogg omxil opencv
 	opengl optimisememory opus png postproc projectm pulseaudio +qt5 rdp rtsp run-as-root
 	samba schroedinger sdl-image sftp shout sid skins speex ssl svg taglib theora tremor
@@ -58,59 +58,59 @@ RDEPEND="
 	net-dns/libidn:0
 	sys-libs/zlib:0[minizip]
 	virtual/libintl:0
-	a52? ( >=media-libs/a52dec-0.7.4-r3:0 )
+	a52? ( media-libs/a52dec:0 )
 	aalib? ( media-libs/aalib:0 )
-	alsa? ( >=media-libs/alsa-lib-1.0.24:0 )
+	alsa? ( media-libs/alsa-lib:0 )
 	aom? ( media-libs/libaom:= )
 	archive? ( app-arch/libarchive:= )
 	bidi? ( dev-libs/fribidi:0 )
-	bluray? ( >=media-libs/libbluray-0.6.2:0= )
-	cddb? ( >=media-libs/libcddb-1.2:0 )
-	chromaprint? ( >=media-libs/chromaprint-0.6:0 )
+	bluray? ( media-libs/libbluray:0= )
+	cddb? ( media-libs/libcddb:0 )
+	chromaprint? ( media-libs/chromaprint:0= )
 	chromecast? ( >=dev-libs/protobuf-2.5.0:= )
-	dbus? ( >=sys-apps/dbus-1.6:0 )
+	dbus? ( sys-apps/dbus:0 )
 	dc1394? (
-		>=media-libs/libdc1394-2.1:2
-		>=sys-libs/libraw1394-2.0.1:0
+		media-libs/libdc1394:2
+		sys-libs/libraw1394:0
 	)
-	dts? ( >=media-libs/libdca-0.0.5:0 )
+	dts? ( media-libs/libdca:0 )
 	dvbpsi? ( >=media-libs/libdvbpsi-1.2.0:0= )
 	dvd? (
 		>=media-libs/libdvdnav-4.9:0
 		>=media-libs/libdvdread-4.9:0
 	)
-	elibc_glibc? ( >=sys-libs/glibc-2.8:2.2 )
-	faad? ( >=media-libs/faad2-2.6.1:0 )
+	elibc_glibc? ( sys-libs/glibc:2.2 )
+	faad? ( media-libs/faad2:0 )
 	fdk? ( media-libs/fdk-aac:0 )
 	ffmpeg? (
 		!libav? ( >=media-video/ffmpeg-3.1.3:0=[vaapi?] )
 		libav? ( >=media-video/libav-11.8:0=[vaapi?] )
 	)
 	flac? (
-		>=media-libs/flac-1.1.2:0
-		>=media-libs/libogg-1:0
+		media-libs/flac:0
+		media-libs/libogg:0
 	)
-	fluidsynth? ( >=media-sound/fluidsynth-1.1.2:0 )
+	fluidsynth? ( media-sound/fluidsynth:0 )
 	fontconfig? ( media-libs/fontconfig:1.0 )
 	gcrypt? (
-		>=dev-libs/libgcrypt-1.6.0:0=
+		dev-libs/libgcrypt:0=
 		dev-libs/libgpg-error:0
 	)
 	gme? ( media-libs/game-music-emu:0 )
 	gnome-keyring? ( app-crypt/libsecret )
 	gstreamer? ( >=media-libs/gst-plugins-base-1.4.5:1.0 )
 	ieee1394? (
-		>=sys-libs/libavc1394-0.5.3:0
-		>=sys-libs/libraw1394-2.0.1:0
+		sys-libs/libavc1394:0
+		sys-libs/libraw1394:0
 	)
 	jack? ( virtual/jack )
 	jpeg? ( virtual/jpeg:0 )
-	kate? ( >=media-libs/libkate-0.3:0 )
+	kate? ( media-libs/libkate:0 )
 	libass? (
 		media-libs/fontconfig:1.0
-		>=media-libs/libass-0.9.8:0=
+		media-libs/libass:0=
 	)
-	libcaca? ( >=media-libs/libcaca-0.99_beta14:0 )
+	libcaca? ( media-libs/libcaca:0 )
 	libnotify? (
 		dev-libs/glib:2
 		x11-libs/gdk-pixbuf:2
@@ -118,28 +118,27 @@ RDEPEND="
 		x11-libs/libnotify:0
 	)
 	libsamplerate? ( media-libs/libsamplerate:0 )
-	libtar? ( >=dev-libs/libtar-1.2.11-r3:0 )
-	libtiger? ( >=media-libs/libtiger-0.3.1:0 )
-	linsys? ( >=media-libs/zvbi-0.2.28:0 )
+	libtar? ( dev-libs/libtar:0 )
+	libtiger? ( media-libs/libtiger:0 )
 	lirc? ( app-misc/lirc:0 )
-	live? ( >=media-plugins/live-2011.12.23:0 )
+	live? ( media-plugins/live:0 )
 	lua? ( >=dev-lang/lua-5.1:0 )
 	matroska? (
-		>=dev-libs/libebml-1:0=
-		>=media-libs/libmatroska-1:0=
+		dev-libs/libebml:0=
+		media-libs/libmatroska:0=
 	)
 	modplug? ( media-libs/libmodplug:0 )
 	mp3? ( media-libs/libmad:0 )
-	mpeg? ( >=media-libs/libmpeg2-0.3.2:0 )
-	mtp? ( >=media-libs/libmtp-1:0 )
-	musepack? ( >=media-sound/musepack-tools-444:0 )
+	mpeg? ( media-libs/libmpeg2:0 )
+	mtp? ( media-libs/libmtp:0= )
+	musepack? ( media-sound/musepack-tools:0 )
 	ncurses? ( sys-libs/ncurses:0=[unicode] )
 	nfs? ( >=net-fs/libnfs-0.10.0:= )
-	ogg? ( >=media-libs/libogg-1:0 )
-	opencv? ( >media-libs/opencv-2:0= )
+	ogg? ( media-libs/libogg:0 )
+	opencv? ( media-libs/opencv:0= )
 	opengl? (
 		virtual/opengl:0
-		>=x11-libs/libX11-1.3.99.901:0
+		x11-libs/libX11:0
 	)
 	opus? ( >=media-libs/opus-1.0.3:0 )
 	png? ( media-libs/libpng:0= )
@@ -151,7 +150,7 @@ RDEPEND="
 		media-fonts/dejavu:0
 		media-libs/libprojectm:0
 	)
-	pulseaudio? ( >=media-sound/pulseaudio-1:0 )
+	pulseaudio? ( media-sound/pulseaudio:0 )
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
@@ -162,9 +161,9 @@ RDEPEND="
 	rdp? ( >=net-misc/freerdp-2.0.0_rc0:0=[client] )
 	samba? ( >=net-fs/samba-4.0.0:0[client,-debug(-)] )
 	schroedinger? ( >=media-libs/schroedinger-1.0.10:0 )
-	sdl-image? ( >=media-libs/sdl-image-1.2.10:0 )
+	sdl-image? ( media-libs/sdl-image:0 )
 	sftp? ( net-libs/libssh2:0 )
-	shout? ( >=media-libs/libshout-2.1:0 )
+	shout? ( media-libs/libshout:0 )
 	sid? ( media-libs/libsidplay:2 )
 	skins? (
 		x11-libs/libXext:0
@@ -177,8 +176,8 @@ RDEPEND="
 	)
 	ssl? ( net-libs/gnutls:0 )
 	svg? (
-		>=gnome-base/librsvg-2.9:2
-		>=x11-libs/cairo-1.13.1:0
+		gnome-base/librsvg:2
+		x11-libs/cairo:0
 	)
 	taglib? ( >=media-libs/taglib-1.9:0 )
 	theora? ( media-libs/libtheora:0 )
@@ -195,7 +194,7 @@ RDEPEND="
 	vaapi? ( x11-libs/libva:0=[drm,wayland?,X?] )
 	vcd? ( >=dev-libs/libcdio-0.78.2:0 )
 	vdpau? ( x11-libs/libvdpau:0 )
-	vnc? ( >=net-libs/libvncserver-0.9.9:0 )
+	vnc? ( net-libs/libvncserver:0 )
 	vorbis? ( media-libs/libvorbis:0 )
 	vpx? ( media-libs/libvpx:0= )
 	wayland? (
@@ -211,15 +210,14 @@ RDEPEND="
 		x11-libs/xcb-util-keysyms:0
 	)
 	xml? ( dev-libs/libxml2:2 )
-	zeroconf? ( >=net-dns/avahi-0.6:0[dbus] )
+	zeroconf? ( net-dns/avahi:0[dbus] )
 	zvbi? ( media-libs/zvbi:0 )
 "
 DEPEND="${RDEPEND}
-	app-arch/xz-utils:0
 	>=sys-devel/gettext-0.19.8:*
 	virtual/pkgconfig:*
 	amd64? ( dev-lang/yasm:* )
-	x86?   ( dev-lang/yasm:* )
+	x86? ( dev-lang/yasm:* )
 	xcb? ( x11-proto/xproto:0 )
 "
 
@@ -321,7 +319,6 @@ src_configure() {
 		$(use_enable libsamplerate samplerate)
 		$(use_enable libtar)
 		$(use_enable libtiger tiger)
-		$(use_enable linsys)
 		$(use_enable lirc)
 		$(use_enable live live555)
 		$(use_enable lua)
@@ -384,6 +381,7 @@ src_configure() {
 		$(use_enable xv xvideo)
 		$(use_enable zeroconf avahi)
 		$(use_enable zvbi)
+		$(use_enable zvbi linsys)
 		$(use_enable !zvbi telx)
 		--disable-asdcp
 		--disable-coverage
