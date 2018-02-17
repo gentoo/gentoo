@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install pretend test unpack
+DEPEND=gccgo? ( >=sys-devel/gcc-5[go] )
+DESCRIPTION=A concurrent garbage collected and typesafe programming language
+EAPI=6
+HOMEPAGE=https://golang.org
+IUSE=gccgo
+KEYWORDS=-* ~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~x64-macos ~x64-solaris
+LICENSE=BSD
+RDEPEND=!<dev-go/go-tools-0_pre20150902
+RESTRICT=test strip
+SLOT=0/1.10
+SRC_URI=https://storage.googleapis.com/golang/go1.10.src.tar.gz !gccgo? ( amd64? ( https://dev.gentoo.org/~williamh/dist/go-linux-amd64-bootstrap-1.8.tbz ) arm? ( https://dev.gentoo.org/~williamh/dist/go-linux-arm-bootstrap-1.8.tbz ) arm64? ( https://dev.gentoo.org/~williamh/dist/go-linux-arm64-bootstrap-1.8.tbz ) ppc64? ( https://dev.gentoo.org/~williamh/dist/go-linux-ppc64-bootstrap-1.8.tbz https://dev.gentoo.org/~williamh/dist/go-linux-ppc64le-bootstrap-1.8.tbz ) s390? ( https://dev.gentoo.org/~williamh/dist/go-linux-s390x-bootstrap-1.8.tbz ) x86? ( https://dev.gentoo.org/~williamh/dist/go-linux-386-bootstrap-1.8.tbz ) amd64-fbsd? ( https://dev.gentoo.org/~williamh/dist/go-freebsd-amd64-bootstrap-1.8.tbz ) x86-fbsd? ( https://dev.gentoo.org/~williamh/dist/go-freebsd-386-bootstrap-1.8.tbz ) x64-macos? ( https://dev.gentoo.org/~williamh/dist/go-darwin-amd64-bootstrap-1.8.tbz ) x64-solaris? ( https://dev.gentoo.org/~williamh/dist/go-solaris-amd64-bootstrap-1.8.tbz ) )
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_md5_=e4dfdfc200b14f9a1bec33f3f347c0a7
