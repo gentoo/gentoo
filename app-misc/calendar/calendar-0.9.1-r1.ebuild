@@ -11,7 +11,7 @@ SRC_URI="http://bsdcalendar.sourceforge.net/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 sparc x86"
 
 DOCS=( README )
 
