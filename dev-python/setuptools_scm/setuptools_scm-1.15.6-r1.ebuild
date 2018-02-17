@@ -13,16 +13,14 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~amd64-fbsd"
 IUSE="git mercurial test"
 
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	git? ( dev-vcs/git )
 	mercurial? ( dev-vcs/mercurial )
-	test? (
-		dev-python/pytest[${PYTHON_USEDEP}]
-	)"
+	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
 
 python_test() {
 	distutils_install_for_testing
