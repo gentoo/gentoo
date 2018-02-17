@@ -30,33 +30,31 @@ LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/5-9" # vlc - vlccore
 
 IUSE="a52 aalib alsa altivec aom archive bidi bluray cddb chromaprint chromecast dbus dc1394
-	debug directx dts dvb +dvbpsi dvd elibc_glibc +encode faad fdk +ffmpeg flac fluidsynth
-	fontconfig +gcrypt gme gnome-keyring gnutls gstreamer ieee1394 jack jpeg kate libass libav
+	debug directx dts +dvbpsi dvd elibc_glibc +encode faad fdk +ffmpeg flac fluidsynth
+	fontconfig +gcrypt gme gnome-keyring gstreamer ieee1394 jack jpeg kate libass libav
 	libcaca libnotify +libsamplerate libtar libtiger linsys lirc live lua macosx-notifications
-	macosx-qtkit matroska modplug mp3 mpeg mtp musepack ncurses neon nfs ogg omxil opencv opengl
-	optimisememory opus png postproc projectm pulseaudio +qt5 rdp rtsp run-as-root samba
-	schroedinger sdl-image sftp shout sid skins speex svg taglib theora tremor truetype twolame
-	udev upnp vaapi v4l vcd vdpau vlm vnc vorbis vpx wayland wma-fixed +X x264 x265 +xcb xml xv
-	zeroconf zvbi cpu_flags_x86_mmx cpu_flags_x86_sse
+	macosx-qtkit matroska modplug mp3 mpeg mtp musepack ncurses neon nfs ogg omxil opencv
+	opengl optimisememory opus png postproc projectm pulseaudio +qt5 rdp rtsp run-as-root
+	samba schroedinger sdl-image sftp shout sid skins speex ssl svg taglib theora tremor
+	truetype twolame udev upnp vaapi v4l vcd vdpau vlm vnc vorbis vpx wayland wma-fixed +X
+	x264 x265 +xcb xml xv zeroconf zvbi cpu_flags_x86_mmx cpu_flags_x86_sse
 "
 REQUIRED_USE="
 	aalib? ( X )
 	bidi? ( truetype )
 	directx? ( ffmpeg )
-	dvb? ( dvbpsi )
 	fontconfig? ( truetype )
-	gnutls? ( gcrypt )
 	libcaca? ( X )
 	libtar? ( skins )
 	libtiger? ( kate )
 	skins? ( qt5 truetype X xml )
+	ssl? ( gcrypt )
 	vaapi? ( ffmpeg X )
 	vdpau? ( ffmpeg X )
 	vlm? ( encode )
 	xv? ( xcb )
 "
 RDEPEND="
-	dev-libs/libgpg-error:0
 	net-dns/libidn:0
 	sys-libs/zlib:0[minizip]
 	virtual/libintl:0
@@ -94,10 +92,12 @@ RDEPEND="
 	)
 	fluidsynth? ( >=media-sound/fluidsynth-1.1.2:0 )
 	fontconfig? ( media-libs/fontconfig:1.0 )
-	gcrypt? ( >=dev-libs/libgcrypt-1.6.0:0= )
+	gcrypt? (
+		>=dev-libs/libgcrypt-1.6.0:0=
+		dev-libs/libgpg-error:0
+	)
 	gme? ( media-libs/game-music-emu:0 )
 	gnome-keyring? ( app-crypt/libsecret )
-	gnutls? ( net-libs/gnutls:0 )
 	gstreamer? ( >=media-libs/gst-plugins-base-1.4.5:1.0 )
 	ieee1394? (
 		>=sys-libs/libavc1394-0.5.3:0
@@ -175,6 +175,7 @@ RDEPEND="
 		>=media-libs/speex-1.2.0:0
 		media-libs/speexdsp:0
 	)
+	ssl? ( net-libs/gnutls:0 )
 	svg? (
 		>=gnome-base/librsvg-2.9:2
 		>=x11-libs/cairo-1.13.1:0
@@ -309,7 +310,6 @@ src_configure() {
 		$(use_enable gcrypt libgcrypt)
 		$(use_enable gme)
 		$(use_enable gnome-keyring secret)
-		$(use_enable gnutls)
 		$(use_enable gstreamer gst-decode)
 		$(use_enable ieee1394 dv1394)
 		$(use_enable jack)
@@ -356,6 +356,7 @@ src_configure() {
 		$(use_enable sid)
 		$(use_enable skins skins2)
 		$(use_enable speex)
+		$(use_enable ssl gnutls)
 		$(use_enable svg)
 		$(use_enable svg svgdec)
 		$(use_enable taglib)
