@@ -245,6 +245,7 @@ PATCHES=(
 
 	# TODO: upstream
 	"${FILESDIR}/${PN}-5.2.5.1-glibc-2.24.patch"
+	"${FILESDIR}/${PN}-5.4.4.2-gtk3-no-gtk-build.patch" # bug 641812
 	"${FILESDIR}/${PN}-5.4.4.2-poppler-0.62.patch" # bug 642602
 
 	"${FILESDIR}/${P}-pyuno-crash.patch" # 5.4.5 branch commit after release
