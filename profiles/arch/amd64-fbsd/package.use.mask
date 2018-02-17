@@ -2,6 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Michał Górny <mgorny@gentoo.org> (17 Feb 2018)
+# Claims to require dev-libs/elfutils which doesn't support FreeBSD.
+# We can umask if it works with virtual/libelf though.
+media-libs/gstreamer unwind
+
+# Michał Górny <mgorny@gentoo.org> (17 Feb 2018)
 # Unkeyworded deps.
 media-libs/elementary javascript
 
