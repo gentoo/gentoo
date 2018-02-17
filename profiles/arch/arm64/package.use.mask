@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Matthew Thode <prometheanfire@gentoo.org> (16 Feb 2018)
+# USE=test requires dev-db/mongodb which is not keyworded
+dev-python/pymongo test
+
 # Michał Górny <mgorny@gentoo.org> (16 Feb 2018)
 # USE=test-full requires USE=pkcs11 that is use.masked.
 net-libs/gnutls test-full
@@ -12,11 +16,6 @@ dev-python/setuptools_scm mercurial
 # Matthew Thode <prometheanfire@gentoo.org> (13 Feb 2018)
 # USE=scipy requires scipy, which is not keyworded yet
 dev-python/networkx scipy
-
-# Matthew Thode <prometheanfire@gentoo.org> (13 Feb 2018)
-# USE=mongodb requires dev-python/pymongo
-# which requires dev-db/mongodb which are both not keyworded yet.
-dev-python/kombu mongodb
 
 # Mart Raudsepp <leio@gentoo.org> (13 Feb 2018)
 # USE=dmraid requires sys-fs/dmraid that is not keyworded yet.
