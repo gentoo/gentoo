@@ -21,6 +21,7 @@ Scapy has optional support for the following packages:
 
 	dev-python/cryptography
 	dev-python/gnuplot-py
+	dev-python/ipython
 	dev-python/pyx
 	dev-python/visual
 	media-gfx/graphviz
