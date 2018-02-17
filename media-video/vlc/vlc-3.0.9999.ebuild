@@ -32,7 +32,7 @@ SLOT="0/5-9" # vlc - vlccore
 IUSE="a52 aalib alsa altivec aom archive bidi bluray cddb chromaprint chromecast dbus dc1394
 	debug directx dts +dvbpsi dvd elibc_glibc +encode faad fdk +ffmpeg flac fluidsynth
 	fontconfig +gcrypt gme gnome-keyring gstreamer ieee1394 jack jpeg kate libass libav
-	libcaca libnotify +libsamplerate libtar libtiger linsys lirc live lua macosx-notifications
+	libcaca libnotify +libsamplerate libtar libtiger lirc live lua macosx-notifications
 	macosx-qtkit matroska modplug mp3 mpeg mtp musepack ncurses neon nfs ogg omxil opencv
 	opengl optimisememory opus png postproc projectm pulseaudio +qt5 rdp rtsp run-as-root
 	samba schroedinger sdl-image sftp shout sid skins speex ssl svg taglib theora tremor
@@ -120,7 +120,6 @@ RDEPEND="
 	libsamplerate? ( media-libs/libsamplerate:0 )
 	libtar? ( dev-libs/libtar:0 )
 	libtiger? ( media-libs/libtiger:0 )
-	linsys? ( media-libs/zvbi:0 )
 	lirc? ( app-misc/lirc:0 )
 	live? ( media-plugins/live:0 )
 	lua? ( >=dev-lang/lua-5.1:0 )
@@ -320,7 +319,6 @@ src_configure() {
 		$(use_enable libsamplerate samplerate)
 		$(use_enable libtar)
 		$(use_enable libtiger tiger)
-		$(use_enable linsys)
 		$(use_enable lirc)
 		$(use_enable live live555)
 		$(use_enable lua)
@@ -383,6 +381,7 @@ src_configure() {
 		$(use_enable xv xvideo)
 		$(use_enable zeroconf avahi)
 		$(use_enable zvbi)
+		$(use_enable zvbi linsys)
 		$(use_enable !zvbi telx)
 		--disable-asdcp
 		--disable-coverage
