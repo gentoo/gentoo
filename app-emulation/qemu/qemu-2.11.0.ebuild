@@ -530,6 +530,9 @@ qemu_src_configure() {
 		tc-enables-pie && conf_opts+=( --enable-pie )
 	fi
 
+	#bug #647570
+	conf_opts+=( --disable-capstone )
+
 	echo "../configure ${conf_opts[*]}"
 	cd "${builddir}"
 	../configure "${conf_opts[@]}" || die "configure failed"
