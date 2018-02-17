@@ -33,6 +33,10 @@
 #-video_cards_vmware
 -input_devices_vmmouse
 
+# Michał Górny <mgorny@gentoo.org> (17 Feb 2018)
+# libav is not keyworded here.
+libav
+
 # Michał Górny <mgorny@gentoo.org> (16 Feb 2018)
 # Qt5 is not keyworded here.
 qt5
