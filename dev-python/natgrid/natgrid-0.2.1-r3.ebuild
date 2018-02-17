@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -26,7 +26,7 @@ python_install_all() {
 }
 
 python_install() {
-	distutils-r1_python_install
-	# Fix collision with dev-python/matplotlib.
-	rm "${D}$(python_get_sitedir)/mpl_toolkits/__init__.py" || die
+	# namespace installed by dev-python/matplotlib
+	rm "${BUILD_DIR}/lib/mpl_toolkits/__init__.py" || die
+	distutils-r1_python_install --skip-build
 }
