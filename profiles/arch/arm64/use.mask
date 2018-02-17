@@ -26,6 +26,10 @@
 -neon
 -armvfp
 
+# Michał Górny <mgorny@gentoo.org> (17 Feb 2018)
+# net-dialup/freeradius{,-client} not keyworded.
+radius
+
 # Mart Raudsepp <leio@gentoo.org> (13 Feb 2018)
 # net-libs/libsmi not tested on arm64 yet
 smi

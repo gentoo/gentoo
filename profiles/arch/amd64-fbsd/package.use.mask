@@ -9,6 +9,8 @@ media-libs/gstreamer unwind
 # Michał Górny <mgorny@gentoo.org> (17 Feb 2018)
 # Unkeyworded deps.
 media-libs/elementary javascript
+media-libs/phonon vlc
+virtual/notification-daemon kde
 
 # Michał Górny <mgorny@gentoo.org> (15 Feb 2018)
 # Requires USE=seccomp that is masked in this profile.

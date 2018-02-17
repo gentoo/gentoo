@@ -1,6 +1,15 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (17 Feb 2018)
+# Requires unkeyworded dependencies.
+dev-python/ipython notebook
+dev-python/networkx scipy
+<dev-ruby/haml-5 test
+media-libs/ming php
+media-libs/opencv contrib_dnn
+net-analyzer/icinga2 classicui
+
 # Matthew Thode <prometheanfire@gentoo.org> (16 Feb 2018)
 # USE=test requires dev-db/mongodb which is not keyworded
 dev-python/pymongo test
