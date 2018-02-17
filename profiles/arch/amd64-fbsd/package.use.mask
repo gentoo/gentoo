@@ -1,6 +1,15 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (17 Feb 2018)
+# Claims to require dev-libs/elfutils which doesn't support FreeBSD.
+# We can umask if it works with virtual/libelf though.
+media-libs/gstreamer unwind
+
+# Michał Górny <mgorny@gentoo.org> (17 Feb 2018)
+# Unkeyworded deps.
+media-libs/elementary javascript
+
 # Michał Górny <mgorny@gentoo.org> (15 Feb 2018)
 # Requires USE=seccomp that is masked in this profile.
 net-libs/gnutls test-full

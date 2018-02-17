@@ -34,6 +34,10 @@
 -input_devices_vmmouse
 
 # Michał Górny <mgorny@gentoo.org> (17 Feb 2018)
+# libraw is not keyworded here.
+raw
+
+# Michał Górny <mgorny@gentoo.org> (17 Feb 2018)
 # libav is not keyworded here.
 libav
 
