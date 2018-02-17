@@ -66,7 +66,7 @@ RDEPEND="
 	bidi? ( dev-libs/fribidi:0 )
 	bluray? ( media-libs/libbluray:0= )
 	cddb? ( media-libs/libcddb:0 )
-	chromaprint? ( media-libs/chromaprint:0 )
+	chromaprint? ( media-libs/chromaprint:0= )
 	chromecast? ( >=dev-libs/protobuf-2.5.0:= )
 	dbus? ( sys-apps/dbus:0 )
 	dc1394? (
