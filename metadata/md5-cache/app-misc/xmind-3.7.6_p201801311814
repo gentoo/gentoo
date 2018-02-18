@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm preinst setup
-DEPEND=>=sys-apps/sed-4 X? ( x11-apps/mkfontdir media-fonts/encodings )
+DEPEND=X? ( x11-apps/mkfontdir media-fonts/encodings ) >=sys-apps/sed-4
 DESCRIPTION=A brainstorming and mind mapping software tool
 EAPI=6
 HOMEPAGE=http://www.xmind.net
@@ -10,4 +10,4 @@ RDEPEND=>=virtual/jre-1.8 x11-libs/gtk+:2
 SLOT=0
 SRC_URI=http://dl2.xmind.net/xmind-downloads/xmind-8-update7-linux.zip https://dev.gentoo.org/~creffett/distfiles/xmind-icons.tar.xz
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	font	82836641e7d4639329d8c195234ad0e3	gnome2-utils	4d211d7614f303710fca59db6ec12c88	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=ce41f30fe4b1048c80808e77b70fba42
+_md5_=a336f7ec97cba88db6d7de66f9b003d3
