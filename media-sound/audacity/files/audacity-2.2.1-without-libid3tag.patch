@@ -1,0 +1,87 @@
+From 499c6b4f36102325541cdad55afe5dc3a0e23b37 Mon Sep 17 00:00:00 2001
+From: Richard Ash <richardash1981@users.noreply.github.com>
+Date: Sun, 7 Jan 2018 17:06:33 +0000
+Subject: [PATCH] Fix building without libid3tag (#230)
+
+* Fix building without libid3tag
+
+Extend the pull Audacity#214 from torto9 to fix building
+with twolame but without libid3tag
+---
+ src/export/ExportMP2.cpp | 3 +++
+ src/export/ExportMP3.cpp | 2 ++
+ src/export/ExportPCM.cpp | 2 ++
+ src/import/ImportPCM.cpp | 2 ++
+ 4 files changed, 9 insertions(+)
+
+diff --git a/src/export/ExportMP2.cpp b/src/export/ExportMP2.cpp
+index 1aa259aed..cae2b7dcb 100644
+--- a/src/export/ExportMP2.cpp
++++ b/src/export/ExportMP2.cpp
+@@ -322,10 +322,13 @@ wxWindow *ExportMP2::OptionsCreate(wxWindow *parent, int format)
+    return safenew ExportMP2Options(parent, format);
+ }
+ 
++
++#ifdef USE_LIBID3TAG
+ struct id3_tag_deleter {
+    void operator () (id3_tag *p) const { if (p) id3_tag_delete(p); }
+ };
+ using id3_tag_holder = std::unique_ptr<id3_tag, id3_tag_deleter>;
++#endif
+ 
+ // returns buffer len; caller frees
+ int ExportMP2::AddTags(
+diff --git a/src/export/ExportMP3.cpp b/src/export/ExportMP3.cpp
+index e0f8aa824..34963fc63 100644
+--- a/src/export/ExportMP3.cpp
++++ b/src/export/ExportMP3.cpp
+@@ -2009,10 +2009,12 @@ int ExportMP3::AskResample(int bitrate, int rate, int lowrate, int highrate)
+    return wxAtoi(choice->GetStringSelection());
+ }
+ 
++#ifdef USE_LIBID3TAG
+ struct id3_tag_deleter {
+    void operator () (id3_tag *p) const { if (p) id3_tag_delete(p); }
+ };
+ using id3_tag_holder = std::unique_ptr<id3_tag, id3_tag_deleter>;
++#endif
+ 
+ // returns buffer len; caller frees
+ int ExportMP3::AddTags(AudacityProject *WXUNUSED(project), ArrayOf<char> &buffer, bool *endOfFile, const Tags *tags)
+diff --git a/src/export/ExportPCM.cpp b/src/export/ExportPCM.cpp
+index eb2369977..021dec4aa 100644
+--- a/src/export/ExportPCM.cpp
++++ b/src/export/ExportPCM.cpp
+@@ -700,10 +700,12 @@ bool ExportPCM::AddStrings(AudacityProject * WXUNUSED(project), SNDFILE *sf, con
+    return true;
+ }
+ 
++#ifdef USE_LIBID3TAG
+ struct id3_tag_deleter {
+    void operator () (id3_tag *p) const { if (p) id3_tag_delete(p); }
+ };
+ using id3_tag_holder = std::unique_ptr<id3_tag, id3_tag_deleter>;
++#endif
+ 
+ bool ExportPCM::AddID3Chunk(wxString fName, const Tags *tags, int sf_format)
+ {
+diff --git a/src/import/ImportPCM.cpp b/src/import/ImportPCM.cpp
+index c943b0ae1..5790551c3 100644
+--- a/src/import/ImportPCM.cpp
++++ b/src/import/ImportPCM.cpp
+@@ -335,10 +335,12 @@ static wxString AskCopyOrEdit()
+    return oldCopyPref;
+ }
+ 
++#ifdef USE_LIBID3TAG
+ struct id3_tag_deleter {
+    void operator () (id3_tag *p) const { if (p) id3_tag_delete(p); }
+ };
+ using id3_tag_holder = std::unique_ptr<id3_tag, id3_tag_deleter>;
++#endif
+ 
+ ProgressResult PCMImportFileHandle::Import(TrackFactory *trackFactory,
+                                 TrackHolders &outTracks,
+-- 
+2.13.6
