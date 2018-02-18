@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils multilib gnome2-utils
+inherit desktop eutils multilib gnome2-utils
 
 MY_PN="${PN}-portable"
 MY_P="${MY_PN}-${PV}"

@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit gnome2-utils font
+inherit desktop font gnome2-utils
 
 MY_PV="8-update7"
 MY_P="${PN}-${MY_PV}-linux"
