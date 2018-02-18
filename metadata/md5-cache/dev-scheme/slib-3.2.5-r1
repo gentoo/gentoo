@@ -4,11 +4,11 @@ DESCRIPTION=Portable Scheme library for all standard Scheme implementations
 EAPI=6
 HOMEPAGE=http://people.csail.mit.edu/jaffer/SLIB
 IUSE=gambit scm
-KEYWORDS=~alpha ~amd64 ~ia64 ~ppc ~ppc64 sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
+KEYWORDS=~alpha ~amd64 ia64 ~ppc ~ppc64 sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
 LICENSE=public-domain BSD
 RDEPEND=>=sys-apps/texinfo-5.0 >=dev-scheme/guile-1.8.8:= gambit? ( dev-scheme/gambit ) scm? ( dev-scheme/scm )
 RESTRICT=mirror
 SLOT=0
 SRC_URI=http://swiss.csail.mit.edu/ftpdir/scm/slib-3b5.tar.gz
 _eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	versionator	ce21313503c41896ebcd7d58b0607e37
-_md5_=8e11f100c681908caeb9f68859bd0234
+_md5_=db28f076eb854da54e4003bf688b4e7c
