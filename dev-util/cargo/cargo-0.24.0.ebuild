@@ -143,19 +143,24 @@ SRC_URI="https://github.com/rust-lang/cargo/archive/${PV}.tar.gz -> ${P}.tar.gz
 	)
 	amd64? (
 		https://static.rust-lang.org/dist/cargo-${BOOTSTRAP_VERSION}-x86_64-unknown-linux-gnu.tar.gz
+	)
+	arm64? (
+		https://static.rust-lang.org/dist/cargo-${BOOTSTRAP_VERSION}-aarch64-unknown-linux-gnu.tar.gz
 	)"
 
 RESTRICT="mirror"
 LICENSE="|| ( MIT Apache-2.0 )"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 IUSE="doc libressl"
 
 if [[ ${ARCH} = "amd64" ]]; then
 	TRIPLE="x86_64-unknown-linux-gnu"
-else
+elif [[ ${ARCH} = "x86" ]]; then
 	TRIPLE="i686-unknown-linux-gnu"
+elif [[ ${ARCH} = "arm64" ]]; then
+	TRIPLE="aarch64-unknown-linux-gnu"
 fi
 
 COMMON_DEPEND="sys-libs/zlib

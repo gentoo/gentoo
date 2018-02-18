@@ -8,7 +8,6 @@ MY_P="${P/_/}"
 DESCRIPTION="Advanced and well-established text-mode web browser"
 HOMEPAGE="http://elinks.or.cz/"
 SRC_URI="http://elinks.or.cz/download/${MY_P}.tar.bz2
-	https://dev.gentoo.org/~spock/portage/distfiles/elinks-0.10.4.conf.bz2
 	https://dev.gentoo.org/~axs/distfiles/${PN}-0.12_pre5-js185-patches.tar.bz2"
 
 LICENSE="GPL-2"
@@ -21,22 +20,22 @@ RESTRICT="test"
 DEPEND="
 	bzip2? ( >=app-arch/bzip2-1.0.2 )
 	gc? ( dev-libs/boehm-gc )
+	gpm? ( >=sys-libs/ncurses-5.2:0= >=sys-libs/gpm-1.20.0-r5 )
+	guile? ( >=dev-scheme/guile-1.6.4-r1[deprecated,discouraged] )
+	idn? ( net-dns/libidn )
+	javascript? ( >=dev-lang/spidermonkey-1.8.5:0= )
+	lua? ( >=dev-lang/lua-5:0= )
+	perl? ( dev-lang/perl:= )
+	ruby? ( dev-lang/ruby:* dev-ruby/rubygems:* )
+	samba? ( net-fs/samba )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
 	)
-	xml? ( >=dev-libs/expat-1.95.4 )
-	X? ( x11-libs/libX11 x11-libs/libXt )
-	zlib? ( >=sys-libs/zlib-1.1.4 )
-	lua? ( >=dev-lang/lua-5:0= )
-	gpm? ( >=sys-libs/ncurses-5.2:0= >=sys-libs/gpm-1.20.0-r5 )
-	guile? ( >=dev-scheme/guile-1.6.4-r1[deprecated,discouraged] )
-	idn? ( net-dns/libidn )
-	perl? ( dev-lang/perl:= )
-	ruby? ( dev-lang/ruby:* dev-ruby/rubygems:* )
-	samba? ( net-fs/samba )
 	tre? ( dev-libs/tre )
-	javascript? ( >=dev-lang/spidermonkey-1.8.5:0= )"
+	X? ( x11-libs/libX11 x11-libs/libXt )
+	xml? ( >=dev-libs/expat-1.95.4 )
+	zlib? ( >=sys-libs/zlib-1.1.4 )"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
@@ -55,15 +54,6 @@ PATCHES=(
 
 src_prepare() {
 	default
-
-	cd "${WORKDIR}" || die
-	eapply "${FILESDIR}"/${PN}-0.10.4.conf-syscharset.diff
-	mv ${PN}-0.10.4.conf ${PN}.conf || die
-	if ! use ftp ; then
-		sed -i -e 's/\(.*protocol.ftp.*\)/# \1/' ${PN}.conf || die
-	fi
-	sed -i -e 's/\(.*set protocol.ftp.use_epsv.*\)/# \1/' ${PN}.conf || die
-	cd "${S}" || die
 
 	# fix lib order in configure check
 	# (these seds are necessary so that @preserved-libs copies are not used)
@@ -105,27 +95,27 @@ src_configure() {
 		--enable-256-colors \
 		--enable-true-color \
 		--enable-html-highlight \
-		$(use_with gpm) \
-		$(use_with zlib) \
 		$(use_with bzip2 bzlib) \
 		$(use_with gc) \
-		$(use_with X x) \
-		$(use_with lua) \
+		$(use_with gpm) \
 		$(use_with guile) \
-		$(use_with perl) \
-		$(use_with ruby) \
 		$(use_with idn) \
 		$(use_with javascript spidermonkey) \
+		$(use_with lua) \
+		$(use_with perl) \
+		$(use_with ruby) \
 		$(use_with tre) \
+		$(use_with X x) \
+		$(use_with zlib) \
 		$(use_enable bittorrent) \
-		$(use_enable nls) \
-		$(use_enable ipv6) \
+		$(use_enable finger) \
 		$(use_enable ftp) \
 		$(use_enable gopher) \
-		$(use_enable nntp) \
-		$(use_enable finger) \
-		$(use_enable samba smb) \
+		$(use_enable ipv6) \
 		$(use_enable mouse) \
+		$(use_enable nls) \
+		$(use_enable nntp) \
+		$(use_enable samba smb) \
 		$(use_enable xml xbel) \
 		${myconf}
 }
@@ -138,7 +128,6 @@ src_install() {
 	emake V=1 DESTDIR="${D}" install
 
 	insinto /etc/elinks
-	doins "${WORKDIR}"/elinks.conf
 	newins contrib/keybind-full.conf keybind-full.sample
 	newins contrib/keybind.conf keybind.conf.sample
 
@@ -154,9 +143,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo "This ebuild provides a default config for ELinks."
-	einfo "Please check /etc/elinks/elinks.conf"
-	einfo
 	einfo "You may want to convert your html.cfg and links.cfg of"
 	einfo "Links or older ELinks versions to the new ELinks elinks.conf"
 	einfo "using /usr/share/doc/${PF}/contrib/conv/conf-links2elinks.pl"
