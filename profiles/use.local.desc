@@ -2962,6 +2962,9 @@ media-libs/xine-lib:vis - Adds support for SIMD optimizations for UltraSPARC pro
 media-libs/xine-lib:vpx - Enable VP8 codec support via media-libs/libvpx.
 media-libs/xine-lib:xvmc - Enable support for XVideo Motion Compensation (accelerated mpeg playback).
 media-libs/xvid:pic - disable optimized assembly code that is not PIC friendly
+media-plugins/alsa-plugins:arcam_av - Enables Arcam AV control plugin
+media-plugins/alsa-plugins:mix - Enables upmix and vdownmix plugin
+media-plugins/alsa-plugins:usb_stream - Enables usb_stream plugin
 media-plugins/frei0r-plugins:facedetect - Enables building of facedetect plugin, which depends on media-libs/opencv
 media-plugins/frei0r-plugins:scale0tilt - Enables building of scale0tilt and vectorscope plugins, which depend on media-libs/gavl
 media-plugins/gkrellmpc:threads - Use separate thread to init connection (unsafe)
