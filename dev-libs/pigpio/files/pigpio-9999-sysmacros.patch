@@ -1,0 +1,11 @@
+--- a/pigpio.c
++++ b/pigpio.c
+@@ -55,6 +55,7 @@
+ #include <sys/stat.h>
+ #include <sys/file.h>
+ #include <sys/socket.h>
++#include <sys/sysmacros.h>
+ #include <netinet/tcp.h>
+ #include <arpa/inet.h>
+ #include <sys/select.h>
+

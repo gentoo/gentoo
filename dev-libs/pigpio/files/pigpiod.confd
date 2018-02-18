@@ -1,0 +1,2 @@
+# Only listen on local interface by default
+PIGPIOD_OPTS="-l"
