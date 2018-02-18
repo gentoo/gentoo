@@ -13,7 +13,10 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="gimp"
 
-RDEPEND=""
+RDEPEND="
+	dev-libs/glib:2
+	x11-libs/gtk+:2
+"
 DEPEND="${RDEPEND}
 	media-gfx/sane-backends
 	gimp? ( media-gfx/gimp:2 )
