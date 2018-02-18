@@ -153,7 +153,7 @@ HTTP_LDAP_MODULE_WD="${WORKDIR}/nginx-auth-ldap-${HTTP_LDAP_MODULE_PV}"
 NJS_MODULE_PV="0.1.15"
 NJS_MODULE_P="njs-${NJS_MODULE_PV}"
 NJS_MODULE_URI="https://github.com/nginx/njs/archive/${NJS_MODULE_PV}.tar.gz"
-NJS_MODULE_WD="${WORKDIR}/njs-${NJS_MODULE_PV}/nginx"
+NJS_MODULE_WD="${WORKDIR}/njs-${NJS_MODULE_PV}"
 
 # We handle deps below ourselves
 SSL_DEPS_SKIP=1
@@ -373,6 +373,12 @@ src_prepare() {
 		cd "${S}" || die
 	fi
 
+	if use nginx_modules_http_javascript || use nginx_modules_stream_javascript; then
+		cd "${NJS_MODULE_WD}" || die
+		eapply "${FILESDIR}"/njs-0.1.15-fix-o3-building.patch
+		cd "${S}" || die
+	fi
+
 	if use nginx_modules_http_upstream_check; then
 		#eapply -p0 "${HTTP_UPSTREAM_CHECK_MODULE_WD}"/check_1.11.1+.patch
 		eapply -p0 "${FILESDIR}"/http_upstream_check-nginx-1.11.5+.patch
@@ -576,7 +582,7 @@ src_configure() {
 	fi
 
 	if use nginx_modules_http_javascript || use nginx_modules_stream_javascript; then
-		myconf+=( --add-module=${NJS_MODULE_WD} )
+		myconf+=( --add-module="${NJS_MODULE_WD}/nginx" )
 	fi
 
 	if use nginx_modules_http_brotli; then
