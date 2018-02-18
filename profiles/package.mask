@@ -236,29 +236,9 @@ net-p2p/dogecoin-qt
 net-p2p/primecoin-qt
 net-p2p/primecoind
 
-# Andreas Sturmlechner <asturm@gentoo.org> (19 Jan 2018)
-# Outdated and broken for a long time, holding up several cleanups.
-# Masked for removal in 30 days. Bug #513564
-sci-physics/geant-python
-
 # Patrice Clement <monsieurp@gentoo.org> (18 Jan 2018)
 # mpv >= 0.28.0 requires changes currently only available in ffmpeg-9999.
 >=media-video/mpv-0.28.0
-
-# Andreas Sturmlechner <asturm@gentoo.org> (18 Jan 2018)
-# Broken by >=kde-apps/kcalcore-17.12.0, but also merged into
-# kdepim-runtime 17.12 as an official feature. Bug #642926
-kde-misc/akonadi-ews
-
-# Andreas Sturmlechner <asturm@gentoo.org> (18 Jan 2018)
-# Dead upstream, depends on dead Qt4/poppler-qt4.
-# Masked for removal in 30 days. Bug #641852
-dev-tex/pstplus
-
-# Andreas Sturmlechner <asturm@gentoo.org> (18 Jan 2018)
-# Depends on dead PyQt4/Qt4, upstream needs help w/ PyQt5.
-# Masked for removal in 30 days. Bug #634986
-dev-tex/texamator
 
 # Michał Górny <mgorny@gentoo.org> (10 Jan 2018)
 # The Fuzzer library is now installed as part of core LLVM. That's
