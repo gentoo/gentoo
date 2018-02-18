@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=(python2_7)
 inherit eutils prefix user python-r1 multilib multilib-minimal systemd s6
@@ -12,8 +12,8 @@ SRC_URI="http://arthurdejong.org/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 x86"
-IUSE="debug kerberos +pam sasl test +utils"
+KEYWORDS="~amd64 ~x86"
+IUSE="debug kerberos +pam pynslcd sasl test +utils"
 
 COMMON_DEP="
 	net-nds/openldap[${MULTILIB_USEDEP}]
@@ -21,6 +21,10 @@ COMMON_DEP="
 	kerberos? ( virtual/krb5[${MULTILIB_USEDEP}] )
 	virtual/pam[${MULTILIB_USEDEP}]
 	utils? ( ${PYTHON_DEPS} )
+	pynslcd? (
+		dev-python/python-ldap[${PYTHON_USEDEP}]
+		dev-python/python-daemon[${PYTHON_USEDEP}]
+	)
 	!sys-auth/nss_ldap
 	!sys-auth/pam_ldap"
 RDEPEND="${COMMON_DEP}"
@@ -33,7 +37,12 @@ DEPEND="${COMMON_DEP}
 
 REQUIRED_USE="
 	utils? ( ${PYTHON_REQUIRED_USE} )
-	test? ( ${PYTHON_REQUIRED_USE} )"
+	test? ( ${PYTHON_REQUIRED_USE} pynslcd )"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.9.4-disable-py3-only-linters.patch
+	"${FILESDIR}"/${PN}-0.9.8-pynslcd-module-paths.patch
+)
 
 pkg_setup() {
 	enewgroup nslcd
@@ -41,9 +50,11 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-0.9.4-disable-py3-only-linters.patch
-	epatch_user
+	cp pynslcd/pynslcd.py "${S}" || die "Copying pynslcd failed"
+
+	default
 	use utils && python_setup
+	touch pynslcd/__init__.py || die "Could not create __init__.py for pynslcd"
 }
 
 multilib_src_configure() {
@@ -57,6 +68,7 @@ multilib_src_configure() {
 		--with-nslcd-pidfile=/run/nslcd/nslcd.pid
 		--with-nslcd-socket=/run/nslcd/socket
 		$(usex x86-fbsd '--with-nss-flavour=' '--with-nss-flavour=' 'freebsd' 'glibc')
+		$(use_enable pynslcd)
 		$(use_enable debug)
 		$(use_enable kerberos)
 		$(use_enable pam)
@@ -89,19 +101,43 @@ multilib_src_install_all() {
 
 	if use utils; then
 		python_moduleinto nslcd
-		python_foreach_impl && python_domodule utils/*.py
+		python_foreach_impl python_domodule utils/*.py
 
 		for script in chsh getent; do
 			python_foreach_impl python_newscript utils/${script}.py ${script}.ldap
 		done
+	fi
+	if use pynslcd; then
+		rm -rf "${D}"/usr/share/pynslcd
+		python_moduleinto pynslcd
+		python_foreach_impl python_domodule pynslcd/*.py
+		python_scriptinto /usr/sbin
+		python_newscript pynslcd.py pynslcd
+		newinitd "${FILESDIR}"/pynslcd.initd pynslcd
 	fi
 
 	systemd_newtmpfilesd "${FILESDIR}"/nslcd-tmpfiles.conf nslcd.conf
 	systemd_dounit "${FILESDIR}"/nslcd.service
 }
 
+multilib_src_install() {
+	emake DESTDIR="${D}" install
+
+	if use pynslcd; then
+		python_moduleinto pynslcd
+		python_foreach_impl python_domodule pynslcd/*.py
+	fi
+}
+
+python_test() {
+	PYTHONPATH="${S}" emake check
+}
+
 multilib_src_test() {
-	python_foreach_impl emake check
+	pushd "${BUILD_DIR}"
+	ln -s ../pynslcd/constants.py utils/constants.py
+	python_foreach_impl python_test
+	popd
 }
 
 pkg_postinst() {
