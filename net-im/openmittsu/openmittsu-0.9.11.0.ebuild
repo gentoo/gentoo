@@ -25,7 +25,7 @@ RDEPEND="dev-db/qt5-sqlcipher
 	>=dev-qt/qtwidgets-5.7.1:5=
 	>=media-gfx/qrencode-3.4.4-r1:="
 DEPEND="${RDEPEND}
-	test? ( dev-cpp/gmock )"
+	test? ( >=dev-cpp/gtest-1.8.0 )"
 
 DOCS=(
 	README.md
