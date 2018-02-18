@@ -34,7 +34,7 @@ IUSE="a52 aalib alsa altivec aom archive bidi bluray cddb chromaprint chromecast
 	fontconfig +gcrypt gme gnome-keyring gstreamer ieee1394 jack jpeg kate libass libav
 	libcaca libnotify +libsamplerate libtar libtiger lirc live lua macosx-notifications
 	macosx-qtkit matroska modplug mp3 mpeg mtp musepack ncurses neon nfs ogg omxil opencv
-	opengl optimisememory opus png postproc projectm pulseaudio +qt5 rdp rtsp run-as-root
+	optimisememory opus png postproc projectm pulseaudio +qt5 rdp rtsp run-as-root
 	samba schroedinger sdl-image sftp shout sid skins speex ssl svg taglib theora tremor
 	truetype twolame udev upnp vaapi v4l vcd vdpau vnc vorbis vpx wayland wma-fixed +X
 	x264 x265 xml zeroconf zvbi cpu_flags_x86_mmx cpu_flags_x86_sse
@@ -57,6 +57,7 @@ RDEPEND="
 	net-dns/libidn:0
 	sys-libs/zlib:0[minizip]
 	virtual/libintl:0
+	virtual/opengl
 	a52? ( media-libs/a52dec:0 )
 	aalib? ( media-libs/aalib:0 )
 	alsa? ( media-libs/alsa-lib:0 )
@@ -135,7 +136,6 @@ RDEPEND="
 	nfs? ( >=net-fs/libnfs-0.10.0:= )
 	ogg? ( media-libs/libogg:0 )
 	opencv? ( media-libs/opencv:0= )
-	opengl? ( virtual/opengl )
 	opus? ( >=media-libs/opus-1.0.3:0 )
 	png? ( media-libs/libpng:0= )
 	postproc? ( libav? ( media-libs/libpostproc:0= ) )
