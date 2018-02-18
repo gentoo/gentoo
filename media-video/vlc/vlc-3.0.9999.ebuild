@@ -36,7 +36,7 @@ IUSE="a52 aalib alsa altivec aom archive bidi bluray cddb chromaprint chromecast
 	macosx-qtkit matroska modplug mp3 mpeg mtp musepack ncurses neon nfs ogg omxil opencv
 	opengl optimisememory opus png postproc projectm pulseaudio +qt5 rdp rtsp run-as-root
 	samba schroedinger sdl-image sftp shout sid skins speex ssl svg taglib theora tremor
-	truetype twolame udev upnp vaapi v4l vcd vdpau vlm vnc vorbis vpx wayland wma-fixed +X
+	truetype twolame udev upnp vaapi v4l vcd vdpau vnc vorbis vpx wayland wma-fixed +X
 	x264 x265 +xcb xml xv zeroconf zvbi cpu_flags_x86_mmx cpu_flags_x86_sse
 "
 REQUIRED_USE="
@@ -51,7 +51,6 @@ REQUIRED_USE="
 	ssl? ( gcrypt )
 	vaapi? ( ffmpeg X )
 	vdpau? ( ffmpeg X )
-	vlm? ( encode )
 	xv? ( xcb )
 "
 RDEPEND="
@@ -297,6 +296,7 @@ src_configure() {
 		$(use_enable dvd dvdnav)
 		$(use_enable dvd dvdread)
 		$(use_enable encode sout)
+		$(use_enable encode vlm)
 		$(use_enable faad)
 		$(use_enable fdk fdkaac)
 		$(use_enable ffmpeg avcodec)
@@ -367,7 +367,6 @@ src_configure() {
 		$(use_enable vaapi libva)
 		$(use_enable vcd)
 		$(use_enable vdpau)
-		$(use_enable vlm)
 		$(use_enable vnc)
 		$(use_enable vorbis)
 		$(use_enable vpx)
