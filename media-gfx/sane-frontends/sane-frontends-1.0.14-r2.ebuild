@@ -14,39 +14,39 @@ KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="gimp"
 
 RDEPEND=""
-DEPEND="media-gfx/sane-backends
-	gimp? ( media-gfx/gimp )"
+DEPEND="${RDEPEND}
+	media-gfx/sane-backends
+	gimp? ( media-gfx/gimp:2 )
+"
+
+DOCS=( AUTHORS Changelog NEWS PROBLEMS README )
 
 PATCHES=( "${FILESDIR}/MissingCapsFlag.patch" )
 
-src_configure () {
-	local myconf=""
-	use gimp || myconf="--disable-gimp"
-	use gimp && ! has_version ">=media-gfx/gimp-2" && myconf="--enable-gimp12"
+src_configure() {
 	econf \
 		--datadir=/usr/share/misc \
-		${myconf}
-	emake
+		$(use_enable gimp)
 }
 
-src_install () {
+src_install() {
 	local gimpplugindir
 	local gimptool
 	emake DESTDIR="${D}" install
 	if use gimp; then
-		for gimptool in gimptool gimptool-2.0 gimptool-1.2; do
-			if [ -x /usr/bin/${gimptool} ]; then
+		for gimptool in gimptool gimptool-2.0; do
+			if [[ -x /usr/bin/${gimptool} ]]; then
 				einfo "Setting plugin link for GIMP version	$(/usr/bin/${gimptool} --version)"
 				gimpplugindir=$(/usr/bin/${gimptool} --gimpplugindir)/plug-ins
 				break
 			fi
 		done
-		if [ "/plug-ins" != "${gimpplugindir}" ]; then
+		if [[ "/plug-ins" != "${gimpplugindir}" ]]; then
 			dodir ${gimpplugindir}
 			dosym xscanimage ${gimpplugindir}/xscanimage
 		else
 			ewarn "No idea where to find the gimp plugin directory"
 		fi
 	fi
-	dodoc AUTHORS Changelog NEWS PROBLEMS README
+	einstalldocs
 }

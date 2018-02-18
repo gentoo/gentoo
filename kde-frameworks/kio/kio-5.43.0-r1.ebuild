@@ -14,6 +14,7 @@ IUSE="acl +handbook kerberos +kwallet X"
 
 RDEPEND="
 	$(add_frameworks_dep karchive)
+	$(add_frameworks_dep kauth)
 	$(add_frameworks_dep kbookmarks)
 	$(add_frameworks_dep kcodecs)
 	$(add_frameworks_dep kcompletion)
