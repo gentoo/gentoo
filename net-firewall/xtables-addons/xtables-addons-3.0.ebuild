@@ -64,7 +64,7 @@ pkg_setup()	{
 			SKIP_IPV6_MODULES="ip6table_rawpost"
 			ewarn "No IPV6 support in kernel. Disabling: ${SKIP_IPV6_MODULES}"
 		fi
-		kernel_is -lt 4 15 && die "${P} requires kernel version >= 4.15, if you have older kernel please use 1.x version instead"
+		kernel_is -lt 4 15 && die "${P} requires kernel version >= 4.15, if you have older kernel please use 2.x version instead"
 	fi
 }
 
