@@ -3,8 +3,6 @@
 
 EAPI=6
 
-inherit eutils
-
 DESCRIPTION="Scanner Access Now Easy"
 HOMEPAGE="http://www.sane-project.org"
 SRC_URI="ftp://ftp.sane-project.org/pub/sane/${P}/${P}.tar.gz
@@ -45,7 +43,7 @@ src_install () {
 		done
 		if [ "/plug-ins" != "${gimpplugindir}" ]; then
 			 dodir ${gimpplugindir}
-			dosym /usr/bin/xscanimage ${gimpplugindir}/xscanimage
+			dosym xscanimage ${gimpplugindir}/xscanimage
 		else
 			ewarn "No idea where to find the gimp plugin directory"
 		fi
