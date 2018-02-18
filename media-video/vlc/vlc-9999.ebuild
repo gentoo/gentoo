@@ -37,7 +37,7 @@ IUSE="a52 aalib alsa altivec aom archive bidi bluray cddb chromaprint chromecast
 	opengl optimisememory opus png postproc projectm pulseaudio +qt5 rdp rtsp run-as-root
 	samba schroedinger sdl-image sftp shout sid skins speex ssl svg taglib theora tremor
 	truetype twolame udev upnp vaapi v4l vcd vdpau vnc vorbis vpx wayland wma-fixed +X
-	x264 x265 +xcb xml xv zeroconf zvbi cpu_flags_x86_mmx cpu_flags_x86_sse
+	x264 x265 +xcb xml zeroconf zvbi cpu_flags_x86_mmx cpu_flags_x86_sse
 "
 REQUIRED_USE="
 	aalib? ( X )
@@ -51,7 +51,6 @@ REQUIRED_USE="
 	ssl? ( gcrypt )
 	vaapi? ( ffmpeg X )
 	vdpau? ( ffmpeg X )
-	xv? ( xcb )
 "
 RDEPEND="
 	net-dns/libidn:0
@@ -200,14 +199,14 @@ RDEPEND="
 		dev-libs/wayland
 		dev-libs/wayland-protocols
 	)
-	X? ( x11-libs/libX11:0 )
+	X? (
+		x11-libs/libX11
+		x11-libs/libxcb
+		x11-libs/xcb-util
+		x11-libs/xcb-util-keysyms
+	)
 	x264? ( media-libs/x264:0= )
 	x265? ( media-libs/x265:0= )
-	xcb? (
-		x11-libs/libxcb:0
-		x11-libs/xcb-util:0
-		x11-libs/xcb-util-keysyms:0
-	)
 	xml? ( dev-libs/libxml2:2 )
 	zeroconf? ( net-dns/avahi:0[dbus] )
 	zvbi? ( media-libs/zvbi:0 )
@@ -217,7 +216,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig:*
 	amd64? ( dev-lang/yasm:* )
 	x86? ( dev-lang/yasm:* )
-	xcb? ( x11-proto/xproto:0 )
+	X? ( x11-proto/xproto )
 "
 
 PATCHES=(
@@ -373,11 +372,11 @@ src_configure() {
 		$(use_enable wayland)
 		$(use_enable wma-fixed)
 		$(use_with X x)
+		$(use_enable X xcb)
+		$(use_enable X xvideo)
 		$(use_enable x264)
 		$(use_enable x265)
-		$(use_enable xcb)
 		$(use_enable xml libxml2)
-		$(use_enable xv xvideo)
 		$(use_enable zeroconf avahi)
 		$(use_enable zvbi)
 		$(use_enable zvbi linsys)
