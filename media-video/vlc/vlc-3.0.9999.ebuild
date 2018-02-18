@@ -34,10 +34,10 @@ IUSE="a52 aalib alsa altivec aom archive bidi bluray cddb chromaprint chromecast
 	fontconfig +gcrypt gme gnome-keyring gstreamer ieee1394 jack jpeg kate libass libav
 	libcaca libnotify +libsamplerate libtar libtiger lirc live lua macosx-notifications
 	macosx-qtkit matroska modplug mp3 mpeg mtp musepack ncurses neon nfs ogg omxil opencv
-	opengl optimisememory opus png postproc projectm pulseaudio +qt5 rdp rtsp run-as-root
+	optimisememory opus png postproc projectm pulseaudio +qt5 rdp rtsp run-as-root
 	samba schroedinger sdl-image sftp shout sid skins speex ssl svg taglib theora tremor
-	truetype twolame udev upnp vaapi v4l vcd vdpau vlm vnc vorbis vpx wayland wma-fixed +X
-	x264 x265 +xcb xml xv zeroconf zvbi cpu_flags_x86_mmx cpu_flags_x86_sse
+	truetype twolame udev upnp vaapi v4l vcd vdpau vnc vorbis vpx wayland wma-fixed +X
+	x264 x265 xml zeroconf zvbi cpu_flags_x86_mmx cpu_flags_x86_sse
 "
 REQUIRED_USE="
 	aalib? ( X )
@@ -47,17 +47,17 @@ REQUIRED_USE="
 	libcaca? ( X )
 	libtar? ( skins )
 	libtiger? ( kate )
+	postproc? ( ffmpeg )
 	skins? ( qt5 truetype X xml )
 	ssl? ( gcrypt )
 	vaapi? ( ffmpeg X )
 	vdpau? ( ffmpeg X )
-	vlm? ( encode )
-	xv? ( xcb )
 "
 RDEPEND="
 	net-dns/libidn:0
 	sys-libs/zlib:0[minizip]
 	virtual/libintl:0
+	virtual/opengl
 	a52? ( media-libs/a52dec:0 )
 	aalib? ( media-libs/aalib:0 )
 	alsa? ( media-libs/alsa-lib:0 )
@@ -83,8 +83,8 @@ RDEPEND="
 	faad? ( media-libs/faad2:0 )
 	fdk? ( media-libs/fdk-aac:0 )
 	ffmpeg? (
-		!libav? ( >=media-video/ffmpeg-3.1.3:0=[vaapi?] )
-		libav? ( >=media-video/libav-11.8:0=[vaapi?] )
+		!libav? ( >=media-video/ffmpeg-3.1.3:0=[vaapi?,vdpau?] )
+		libav? ( >=media-video/libav-11.8:0=[vaapi?,vdpau?] )
 	)
 	flac? (
 		media-libs/flac:0
@@ -114,7 +114,7 @@ RDEPEND="
 	libnotify? (
 		dev-libs/glib:2
 		x11-libs/gdk-pixbuf:2
-		x11-libs/gtk+:2
+		x11-libs/gtk+:3
 		x11-libs/libnotify:0
 	)
 	libsamplerate? ( media-libs/libsamplerate:0 )
@@ -136,16 +136,9 @@ RDEPEND="
 	nfs? ( >=net-fs/libnfs-0.10.0:= )
 	ogg? ( media-libs/libogg:0 )
 	opencv? ( media-libs/opencv:0= )
-	opengl? (
-		virtual/opengl:0
-		x11-libs/libX11:0
-	)
 	opus? ( >=media-libs/opus-1.0.3:0 )
 	png? ( media-libs/libpng:0= )
-	postproc? (
-		!libav? ( >=media-video/ffmpeg-3.1.3:0= )
-		libav? ( media-libs/libpostproc:0= )
-	)
+	postproc? ( libav? ( media-libs/libpostproc:0= ) )
 	projectm? (
 		media-fonts/dejavu:0
 		media-libs/libprojectm:0
@@ -156,7 +149,10 @@ RDEPEND="
 		dev-qt/qtgui:5
 		dev-qt/qtsvg:5
 		dev-qt/qtwidgets:5
-		X? ( dev-qt/qtx11extras:5 )
+		X? (
+			dev-qt/qtx11extras:5
+			x11-libs/libX11
+		)
 	)
 	rdp? ( >=net-misc/freerdp-2.0.0_rc0:0=[client] )
 	samba? ( >=net-fs/samba-4.0.0:0[client,-debug(-)] )
@@ -201,14 +197,14 @@ RDEPEND="
 		dev-libs/wayland
 		dev-libs/wayland-protocols
 	)
-	X? ( x11-libs/libX11:0 )
+	X? (
+		x11-libs/libX11
+		x11-libs/libxcb
+		x11-libs/xcb-util
+		x11-libs/xcb-util-keysyms
+	)
 	x264? ( media-libs/x264:0= )
 	x265? ( media-libs/x265:0= )
-	xcb? (
-		x11-libs/libxcb:0
-		x11-libs/xcb-util:0
-		x11-libs/xcb-util-keysyms:0
-	)
 	xml? ( dev-libs/libxml2:2 )
 	zeroconf? ( net-dns/avahi:0[dbus] )
 	zvbi? ( media-libs/zvbi:0 )
@@ -218,7 +214,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig:*
 	amd64? ( dev-lang/yasm:* )
 	x86? ( dev-lang/yasm:* )
-	xcb? ( x11-proto/xproto:0 )
+	X? ( x11-proto/xproto )
 "
 
 PATCHES=(
@@ -297,6 +293,7 @@ src_configure() {
 		$(use_enable dvd dvdnav)
 		$(use_enable dvd dvdread)
 		$(use_enable encode sout)
+		$(use_enable encode vlm)
 		$(use_enable faad)
 		$(use_enable fdk fdkaac)
 		$(use_enable ffmpeg avcodec)
@@ -367,18 +364,17 @@ src_configure() {
 		$(use_enable vaapi libva)
 		$(use_enable vcd)
 		$(use_enable vdpau)
-		$(use_enable vlm)
 		$(use_enable vnc)
 		$(use_enable vorbis)
 		$(use_enable vpx)
 		$(use_enable wayland)
 		$(use_enable wma-fixed)
 		$(use_with X x)
+		$(use_enable X xcb)
+		$(use_enable X xvideo)
 		$(use_enable x264)
 		$(use_enable x265)
-		$(use_enable xcb)
 		$(use_enable xml libxml2)
-		$(use_enable xv xvideo)
 		$(use_enable zeroconf avahi)
 		$(use_enable zvbi)
 		$(use_enable zvbi linsys)
