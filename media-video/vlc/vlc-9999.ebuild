@@ -134,10 +134,7 @@ RDEPEND="
 	nfs? ( >=net-fs/libnfs-0.10.0:= )
 	ogg? ( media-libs/libogg:0 )
 	opencv? ( media-libs/opencv:0= )
-	opengl? (
-		virtual/opengl:0
-		x11-libs/libX11:0
-	)
+	opengl? ( virtual/opengl )
 	opus? ( >=media-libs/opus-1.0.3:0 )
 	png? ( media-libs/libpng:0= )
 	postproc? (
@@ -154,7 +151,10 @@ RDEPEND="
 		dev-qt/qtgui:5
 		dev-qt/qtsvg:5
 		dev-qt/qtwidgets:5
-		X? ( dev-qt/qtx11extras:5 )
+		X? (
+			dev-qt/qtx11extras:5
+			x11-libs/libX11
+		)
 	)
 	rdp? ( >=net-misc/freerdp-2.0.0_rc0:0=[client] )
 	samba? ( >=net-fs/samba-4.0.0:0[client,-debug(-)] )
