@@ -19,6 +19,8 @@ DEPEND="${RDEPEND}
 	gimp? ( media-gfx/gimp:2 )
 "
 
+DOCS=( AUTHORS Changelog NEWS PROBLEMS README )
+
 PATCHES=( "${FILESDIR}/MissingCapsFlag.patch" )
 
 src_configure() {
@@ -46,5 +48,5 @@ src_install() {
 			ewarn "No idea where to find the gimp plugin directory"
 		fi
 	fi
-	dodoc AUTHORS Changelog NEWS PROBLEMS README
+	einstalldocs
 }
