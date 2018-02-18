@@ -33,12 +33,13 @@ multilib_src_configure() {
 	local myeconfargs=(
 		$(use_enable doc doxygen-html)
 		$(use_enable static-libs static)
+		--disable-examples
 		--program-suffix=2
 		--without-x
 	)
 	# ^ X is only useful for examples that are not installed.
 
-	multilib_is_native_abi || myeconfargs+=( --disable-doxygen-html --disable-examples )
+	multilib_is_native_abi || myeconfargs+=( --disable-doxygen-html )
 
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
