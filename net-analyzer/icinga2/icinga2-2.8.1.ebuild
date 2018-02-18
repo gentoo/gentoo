@@ -5,7 +5,7 @@ EAPI=6
 if [[ ${PV} != 9999 ]]; then
 	inherit cmake-utils depend.apache eutils systemd toolchain-funcs user wxwidgets
 	SRC_URI="https://github.com/Icinga/icinga2/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
 else
 	inherit cmake-utils depend.apache eutils git-r3 systemd toolchain-funcs user wxwidgets
 	EGIT_REPO_URI="https://github.com/Icinga/icinga2.git"
