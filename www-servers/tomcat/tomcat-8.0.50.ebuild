@@ -153,5 +153,6 @@ pkg_postinst() {
 	ewarn "tomcat-dbcp.jar is not built at this time. Please fetch jar"
 	ewarn "from upstream binary if you need it. Gentoo Bug # 144276"
 
-#	einfo "Please read https://www.gentoo.org/proj/en/java/tomcat6-guide.xml for more information."
+	einfo "Please read https://wiki.gentoo.org/wiki/Apache_Tomcat and"
+	einfo "https://wiki.gentoo.org/wiki/Project:Java/Tomcat_6_Guide for more information."
 }
