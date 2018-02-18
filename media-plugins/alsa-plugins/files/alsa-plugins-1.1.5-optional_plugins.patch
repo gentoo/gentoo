@@ -1,0 +1,30 @@
+Alsa upstream added a couple of configure options to disable some plugins but
+forgot to reflect these changes in Makefile.am.
+
+--- alsa-plugins-1.1.5/Makefile.am
++++ alsa-plugins-1.1.5/Makefile.am
+@@ -1,4 +1,4 @@
+-SUBDIRS = oss mix usb_stream arcam-av doc
++SUBDIRS = doc
+ if HAVE_JACK
+ SUBDIRS += jack
+ endif
+@@ -20,6 +20,18 @@
+ if HAVE_SPEEXDSP
+ SUBDIRS += speex
+ endif
++if HAVE_OSS
++SUBDIRS += oss
++endif
++if HAVE_MIX
++SUBDIRS += mix
++endif
++if HAVE_USBSTREAM
++SUBDIRS += usb_stream
++endif
++if HAVE_ARCAMAV
++SUBDIRS += arcam-av
++endif
+ 
+ EXTRA_DIST = gitcompile version COPYING.GPL m4/attributes.m4
+ AUTOMAKE_OPTIONS = foreign
