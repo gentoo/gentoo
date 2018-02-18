@@ -12,7 +12,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/mickael9/ioq3.git"
 	EGIT_BRANCH="urt"
 else
-	COMMIT_ID="41425855eba78b31dde895116c4db2e8ce77a2b8"
+	COMMIT_ID="1042e6b80f6fe50c46c8242b1e0bf3de80c676ef"
 	SRC_URI="https://github.com/mickael9/ioq3/archive/${COMMIT_ID}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/ioq3-${COMMIT_ID}"
 	KEYWORDS="~amd64 ~x86"
@@ -23,7 +23,9 @@ SLOT="0"
 IUSE="+altgamma +client +curl debug mumble openal +opus server +skeetshootmod voip vorbis"
 REQUIRED_USE=" || ( client server )"
 
+DOCS=( ChangeLog README.md README.ioq3.md md4-readme.txt )
 PATCHES=( "${FILESDIR}"/${PN}-4.3-fix-build_system.patch )
+
 RDEPEND="
 	client? (
 		media-libs/libsdl2:=[X,sound,joystick,opengl,video]
@@ -97,8 +99,6 @@ src_compile() {
 
 src_install() {
 	local my_arch=$(usex amd64 "x86_64" "i386")
-	# docs from ioq3, not from UrbanTerror ZIP file
-	dodoc ChangeLog README.md README.ioq3.md md4-readme.txt
 
 	if use client; then
 		newbin build/$(usex debug "debug" "release")-linux-${my_arch}/Quake3-UrT.${my_arch} ${PN}
@@ -110,13 +110,15 @@ src_install() {
 		# dedicated server only
 		newbin build/$(usex debug "debug" "release")-linux-${my_arch}/Quake3-UrT-Ded.${my_arch} ${PN}-ded
 	fi
+
+	einstalldocs
 }
 
 pkg_postinst() {
 	use client && xdg_desktop_database_update
 
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
-		# This is a new installation
+		# ^this is a new installation, so: 
 		if use openal; then
 			elog ""
 			elog "You might need to set:"
@@ -148,10 +150,7 @@ pkg_postinst() {
 			elog "to any servers and play. If you want to do so, enable"
 			elog "USE=\"client\"."
 		fi
-	fi
 
-	if ver_test -ge 4.3.2_p20171105; then
-		# Yippee, new features!
 		if use skeetshootmod; then
 			elog ""
 			elog "You might need to set:"
