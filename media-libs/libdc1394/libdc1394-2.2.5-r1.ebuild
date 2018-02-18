@@ -30,15 +30,16 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	local myconf="$(use_enable doc doxygen-html)"
-	multilib_is_native_abi || myconf="--disable-doxygen-html --disable-examples"
+	local myeconfargs=(
+		$(use_enable doc doxygen-html)
+		$(use_enable static-libs static)
+		--program-suffix=2
+		--without-x # only useful for (disabled) examples
+	)
 
-	# X is only useful for examples that are not installed.
-	ECONF_SOURCE="${S}" econf \
-		$(use_enable static-libs static) \
-		--program-suffix=2 \
-		--without-x \
-		${myconf}
+	multilib_is_native_abi || myeconfargs+=( --disable-doxygen-html --disable-examples )
+
+	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
 multilib_src_compile() {
