@@ -3478,69 +3478,70 @@ media-video/vdr:ttxtsubs - support for media-plugins/vdr-ttxtsubs
 media-video/vdr:vasarajanauloja - replacement for the liemikuutio patch, adds some nice must haves features
 media-video/vdr:wareagleicon - Replace original icon set in menu
 media-video/vdr:yaepg - Enables support for the vdr-yaepg plugin
-media-video/vlc:X - Enables support for, e.g., fullscreen mode via the X Window System. By itself, this flag does not build a graphical interface.
-media-video/vlc:aom - Enables experimental support for AV1 codec
-media-video/vlc:archive - Enables support for libarchive stream extractor
-media-video/vlc:atmo - Enables support for AtmoLight (homebrew Ambient Lighting Technology)
-media-video/vlc:audioqueue - Enables AudioQueue audio module for Mac OS X.
-media-video/vlc:avcodec - Enables libavcodec support for video/audio encoding/decoding. libavcodec is part of FFmpeg.
-media-video/vlc:avformat - Enables libformat support for reading and writing various media containers. libavformat is part of FFmpeg.
-media-video/vlc:bluray - Enables libbluray for Blu-ray disc support.
-media-video/vlc:chromaprint - Enables libchromaprint for Chromaprint based audio fingerprinter support.
-media-video/vlc:chromecast - Enable experimental support for Google Chromecast.
-media-video/vlc:dc1394 - Enables IIDC cameras support.
-media-video/vlc:directx - Enable Win32 DirectX support.
-media-video/vlc:dvbpsi - Enables support for Mpeg-TS files (.ts, .m2ts, .mts) via media-libs/libdvbpsi.
-media-video/vlc:dxva2 - Enables Win32 DxVA2 support.
-media-video/vlc:faad - Enable AAC audio decoding library support via media-libs/faad2.
-media-video/vlc:fdk - Enables the Fraunhofer AAC codec library.
-media-video/vlc:fluidsynth - Enables Fluidsynth MIDI software synthesis (with external sound fonts).
-media-video/vlc:gcrypt - Enables cryptography support via libgcrypt.
-media-video/vlc:gme - Enables support for media-libs/game-music-emu for playing various video game music formats.
-media-video/vlc:gnome - Adds support for GNOME's filesystem abstraction layer, gnome-base/gnome-vfs. This flag is not GUI-related.
-media-video/vlc:growl - Enables growl notification support (over UDP for remote access and native on OSX)
-media-video/vlc:gstreamer - Enables GStreamer based decoding support (currently supports only video decoding)
-media-video/vlc:httpd - Enables a web based interface for vlc.
-media-video/vlc:kate - Adds support for Ogg Kate subtitles via libkate.
-media-video/vlc:libtar - Uses libtar instead of the built-in tar reader for reading custom skins.
-media-video/vlc:libtiger - Enables Ogg Kate subtitles rendering using libtiger.
-media-video/vlc:linsys - Enables support for Linux Linear Systems Ltd. SDI and HD-SDI input cards.
-media-video/vlc:live - Enables live555 streaming media support (client support for rtsp).
-media-video/vlc:lua - Enable Lua scripting support, needed for including support for Jamendo (online music platform) and similar things.
-media-video/vlc:macosx-dialog-provider - Enables Mac OS X dialog module.
-media-video/vlc:macosx-eyetv - Enables Mac OS X EyeTV (TNT Tuner) module.
-media-video/vlc:macosx-notifications - Enables Mac OS X notifications module (formerly growl).
-media-video/vlc:macosx-qtkit - Enables Mac OS X qtkit module: qtcapture (video) and qtsound (audio) module.
-media-video/vlc:macosx-quartztext - Enables Mac OS X quartz text module.
-media-video/vlc:matroska - Enables matroska support using reference libraries (fallback on other existing matroska support if disabled, i.e., matroska enabled FFmpeg)
+media-video/vlc:X - Enable support for, e.g., fullscreen mode via the X Window System. By itself, this flag does not build a graphical interface
+media-video/vlc:aom - Enable experimental support for AV1 codec
+media-video/vlc:archive - Enable support for libarchive stream extractor
+media-video/vlc:atmo - Enable support for AtmoLight (homebrew Ambient Lighting Technology)
+media-video/vlc:audioqueue - Enable AudioQueue audio module for Mac OS X
+media-video/vlc:avcodec - Enable libavcodec support for video/audio encoding/decoding. libavcodec is part of FFmpeg
+media-video/vlc:avformat - Enable libformat support for reading and writing various media containers. libavformat is part of FFmpeg
+media-video/vlc:bluray - Enable libbluray for Blu-ray disc support
+media-video/vlc:chromaprint - Enable libchromaprint for Chromaprint based audio fingerprinter support
+media-video/vlc:chromecast - Enable experimental support for Google Chromecast
+media-video/vlc:dc1394 - Enable IIDC cameras support
+media-video/vlc:directx - Enable Win32 DirectX support
+media-video/vlc:dvbpsi - Enable support for Mpeg-TS files (.ts, .m2ts, .mts) via media-libs/libdvbpsi
+media-video/vlc:dxva2 - Enable Win32 DxVA2 support
+media-video/vlc:encode - Enable streaming-output support and videolan manager to control multiple streams from within one instance
+media-video/vlc:faad - Enable AAC audio decoding library support via media-libs/faad2
+media-video/vlc:fdk - Enable the Fraunhofer AAC codec library
+media-video/vlc:fluidsynth - Enable Fluidsynth MIDI software synthesis (with external sound fonts)
+media-video/vlc:gcrypt - Enable cryptography support via libgcrypt
+media-video/vlc:gme - Enable support for media-libs/game-music-emu for playing various video game music formats
+media-video/vlc:gnome - Adds support for GNOME's filesystem abstraction layer, gnome-base/gnome-vfs. This flag is not GUI-related
+media-video/vlc:growl - Enable growl notification support (over UDP for remote access and native on OSX)
+media-video/vlc:gstreamer - Enable GStreamer based decoding support (currently supports only video decoding)
+media-video/vlc:httpd - Enable a web based interface for vlc
+media-video/vlc:kate - Adds support for Ogg Kate subtitles via libkate
+media-video/vlc:libtar - Uses libtar instead of the built-in tar reader for reading custom skins
+media-video/vlc:libtiger - Enable Ogg Kate subtitles rendering using libtiger
+media-video/vlc:linsys - Enable support for Linux Linear Systems Ltd. SDI and HD-SDI input cards
+media-video/vlc:live - Enable live555 streaming media support (client support for rtsp)
+media-video/vlc:lua - Enable Lua scripting support, needed for including support for Jamendo (online music platform) and similar things
+media-video/vlc:macosx-dialog-provider - Enable Mac OS X dialog module
+media-video/vlc:macosx-eyetv - Enable Mac OS X EyeTV (TNT Tuner) module
+media-video/vlc:macosx-notifications - Enable Mac OS X notifications module (formerly growl)
+media-video/vlc:macosx-qtkit - Enable Mac OS X qtkit module: qtcapture (video) and qtsound (audio) module
+media-video/vlc:macosx-quartztext - Enable Mac OS X quartz text module
+media-video/vlc:matroska - Enable matroska support using reference libraries (fallback on other existing matroska support if disabled, i.e., matroska enabled FFmpeg)
 media-video/vlc:mpeg - Add libmpeg2 support for mpeg-1 and mpeg-2 video streams
-media-video/vlc:nfs - Enables support for nfs protocol via net-fs/libnfs
-media-video/vlc:omxil - Enables OpenMAX Integration Layer codec module.
-media-video/vlc:opencv - Enabled OpenCV (computer vision) filter module.
-media-video/vlc:optimisememory - Enable optimisation for memory rather than performance.
-media-video/vlc:opus - Support opus decoding via libopus.
-media-video/vlc:postproc - Enables image post-processing via libpostproc (part of FFmpeg).
-media-video/vlc:projectm - Enables the projectM visualization plugin.
-media-video/vlc:rtsp - Enables real audio and RTSP modules.
+media-video/vlc:nfs - Enable support for nfs protocol via net-fs/libnfs
+media-video/vlc:omxil - Enable OpenMAX Integration Layer codec module
+media-video/vlc:opencv - Enable OpenCV (computer vision) filter module
+media-video/vlc:optimisememory - Enable optimisation for memory rather than performance
+media-video/vlc:opus - Support opus decoding via libopus
+media-video/vlc:postproc - Enable image post-processing via libpostproc (part of FFmpeg)
+media-video/vlc:projectm - Enable the projectM visualization plugin
+media-video/vlc:rtsp - Enable real audio and RTSP modules
 media-video/vlc:run-as-root - Allows vlc to start for root. Don't enable this unless you have a very specific (e.g. embedded) need for it!
-media-video/vlc:schroedinger - Enable Dirac video support (an advanced royalty-free video compression format) via libschroedinger (high-speed implementation in C of the Dirac codec).
-media-video/vlc:sdl-image - Enables sdl image video decoder (depends on sdl)
-media-video/vlc:sftp - Enables libssh2 to support SFTP file transfer.
-media-video/vlc:shout - Enables libshout output.
-media-video/vlc:sid - Adds support for playing C64 SID files through media-libs/libsidplay:2.
-media-video/vlc:skins - Enables support for the skins2 interface.
-media-video/vlc:swscale - Enables image scaling and conversion via libswscale (part of FFmpeg).
-media-video/vlc:tremor - Enables tremor, a fixed-point version of the Ogg Vorbis decoder.
-media-video/vlc:twolame - Enables twolame support (MPEG Audio Layer 2 encoder).
-media-video/vlc:upnp - Enables support for the Intel SDK stack based UPnP discovery module instead of CyberLink.
-media-video/vlc:vcdx - Enables VCD with navigation via libvcdinfo (depends on cdio)
-media-video/vlc:vlm - New videolan (media) manager (vlm), a little manager designed to launch and manage multiple streams from within one instance of VLC.
-media-video/vlc:vpx - Enables the decoder(s) from the WebM VP8 / VP9 Codec SDK.
-media-video/vlc:wma-fixed - Enables fixed point WMA decoder.
-media-video/vlc:x265 - Support X265 Encoder.
-media-video/vlc:xcb - Support the X C-language Binding, a replacement for Xlib; !!! you will need this option to be able to integrate video in the Qt interface, see bug #500678.
-media-video/vlc:zeroconf - Enables support for zero-configuration networking via avahi.
-media-video/vlc:zvbi - Enables support for teletext subtitles via the zvbi library.
+media-video/vlc:schroedinger - Enable Dirac video support (an advanced royalty-free video compression format) via libschroedinger (high-speed implementation in C of the Dirac codec)
+media-video/vlc:sdl-image - Enable sdl image video decoder (depends on sdl)
+media-video/vlc:sftp - Enable libssh2 to support SFTP file transfer
+media-video/vlc:shout - Enable libshout output
+media-video/vlc:sid - Adds support for playing C64 SID files through media-libs/libsidplay:2
+media-video/vlc:skins - Enable support for the skins2 interface
+media-video/vlc:swscale - Enable image scaling and conversion via libswscale (part of FFmpeg)
+media-video/vlc:tremor - Enable tremor, a fixed-point version of the Ogg Vorbis decoder
+media-video/vlc:twolame - Enable twolame support (MPEG Audio Layer 2 encoder)
+media-video/vlc:upnp - Enable support for the Intel SDK stack based UPnP discovery module instead of CyberLink
+media-video/vlc:vcdx - Enable VCD with navigation via libvcdinfo (depends on cdio)
+media-video/vlc:vlm - New videolan (media) manager (vlm), a little manager designed to launch and manage multiple streams from within one instance of VLC
+media-video/vlc:vpx - Enable the decoder(s) from the WebM VP8 / VP9 Codec SDK
+media-video/vlc:wma-fixed - Enable fixed point WMA decoder
+media-video/vlc:x265 - Support X265 Encoder
+media-video/vlc:xcb - Support the X C-language Binding, a replacement for Xlib; !!! you will need this option to be able to integrate video in the Qt interface, see bug #500678
+media-video/vlc:zeroconf - Enable support for zero-configuration networking via avahi
+media-video/vlc:zvbi - Enable support for teletext subtitles via the zvbi library
 media-video/x264-encoder:10bit - Set output bit depth to 10
 media-video/x264-encoder:avs - enable AvxSynth support in the AviSynth input module
 media-video/x264-encoder:ffmpegsource - Enable ffmpegsource aka ffms support, disables lavf
