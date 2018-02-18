@@ -422,11 +422,6 @@ app-admin/procinfo
 # month.
 net-misc/bti
 
-# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
-# Forces old versions of some dependencies, no reverse deps (#643152).
-# Removal in a month.
-dev-util/conan
-
 # Alice Ferrazzi <alicef@gentoo.org> (30 Dec 2017)
 # Masked for removal in 30 days.
 # Upstream is no more backporting security fixes for 4.12.
