@@ -13,7 +13,7 @@ LICENSE="GPL-3"
 SLOT="0/${PV}"
 
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="http://gnuradio.org/git/gnuradio.git"
+	EGIT_REPO_URI="https://gnuradio.org/git/gnuradio.git"
 	inherit git-r3
 	KEYWORDS=""
 else
@@ -22,8 +22,6 @@ else
 fi
 
 IUSE="+audio +alsa atsc +analog +digital channels doc dtv examples fcd fec +filter grc jack log noaa oss pager performance-counters portaudio +qt4 sdl test trellis uhd vocoder +utils wavelet wxwidgets zeromq"
-#tests are entirely broken on newer gcc even with -fpermissive added to *FLAGS
-RESTRICT=test
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 		audio? ( || ( alsa oss jack portaudio ) )
