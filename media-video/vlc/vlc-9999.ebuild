@@ -112,7 +112,7 @@ RDEPEND="
 	libnotify? (
 		dev-libs/glib:2
 		x11-libs/gdk-pixbuf:2
-		x11-libs/gtk+:2
+		x11-libs/gtk+:3
 		x11-libs/libnotify:0
 	)
 	libsamplerate? ( media-libs/libsamplerate:0 )
