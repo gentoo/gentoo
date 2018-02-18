@@ -2,11 +2,11 @@ DEFINED_PHASES=compile install postinst prepare pretend setup
 DEPEND==sec-policy/selinux-base-2.20170204-r3[systemd?]
 DESCRIPTION=SELinux policy for core modules
 EAPI=6
-HOMEPAGE=https://www.gentoo.org/proj/en/hardened/selinux/
+HOMEPAGE=https://wiki.gentoo.org/wiki/Project:SELinux
 IUSE=systemd +unconfined
 KEYWORDS=amd64 -arm ~arm64 ~mips x86
 LICENSE=GPL-2
 PDEPEND=unconfined? ( sec-policy/selinux-unconfined )
 SLOT=0
 SRC_URI=https://raw.githubusercontent.com/wiki/TresysTechnology/refpolicy/files/refpolicy-2.20170204.tar.bz2 https://dev.gentoo.org/~swift/patches/selinux-base-policy/patchbundle-selinux-base-policy-2.20170204-r3.tar.bz2
-_md5_=bc2e71e454e92fb4cfa914327eaee51e
+_md5_=9b42040829f9aa2df9f3997c5d68086a
