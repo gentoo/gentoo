@@ -47,6 +47,7 @@ REQUIRED_USE="
 	libcaca? ( X )
 	libtar? ( skins )
 	libtiger? ( kate )
+	postproc? ( ffmpeg )
 	skins? ( qt5 truetype X xml )
 	ssl? ( gcrypt )
 	vaapi? ( ffmpeg X )
@@ -137,10 +138,7 @@ RDEPEND="
 	opengl? ( virtual/opengl )
 	opus? ( >=media-libs/opus-1.0.3:0 )
 	png? ( media-libs/libpng:0= )
-	postproc? (
-		!libav? ( >=media-video/ffmpeg-3.1.3:0= )
-		libav? ( media-libs/libpostproc:0= )
-	)
+	postproc? ( libav? ( media-libs/libpostproc:0= ) )
 	projectm? (
 		media-fonts/dejavu:0
 		media-libs/libprojectm:0
