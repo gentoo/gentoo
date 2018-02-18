@@ -1,15 +1,28 @@
-Alsa upstream added a couple of configure options to disable some plugins but
-forgot to reflect these changes in Makefile.am.
+From 565cfc8800c2e7a122f6574f67a7da8f1165e34d Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Sun, 18 Feb 2018 16:00:39 +0100
+Subject: [PATCH] Makefile.am: Add missing code for enhanced configure option
+ of alsa plugins
 
---- alsa-plugins-1.1.5/Makefile.am
-+++ alsa-plugins-1.1.5/Makefile.am
+Commit 1201e158fb00bf15c353d088c94c1cb3eff9653c added the pieces for
+configure but did not do the same for Makefile.
+As result all plugins were still built regardless of corresponding
+--disable-* option being called with configure.
+---
+ Makefile.am | 14 +++++++++++++-
+ 1 file changed, 13 insertions(+), 1 deletion(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 69cfe0d..76cefef 100644
+--- a/Makefile.am
++++ b/Makefile.am
 @@ -1,4 +1,4 @@
 -SUBDIRS = oss mix usb_stream arcam-av doc
 +SUBDIRS = doc
  if HAVE_JACK
  SUBDIRS += jack
  endif
-@@ -20,6 +20,18 @@
+@@ -20,6 +20,18 @@ endif
  if HAVE_SPEEXDSP
  SUBDIRS += speex
  endif
@@ -28,3 +41,6 @@ forgot to reflect these changes in Makefile.am.
  
  EXTRA_DIST = gitcompile version COPYING.GPL m4/attributes.m4
  AUTOMAKE_OPTIONS = foreign
+-- 
+2.16.2
+
