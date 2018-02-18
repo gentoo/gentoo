@@ -9,6 +9,6 @@ LICENSE=GPL-2
 RDEPEND=client? ( media-libs/libsdl2:=[X,sound,joystick,opengl,video] mumble? ( media-sound/mumble:= ) openal? ( media-libs/openal:= ) opus? ( media-libs/opusfile:= ) vorbis? ( media-libs/libogg:= media-libs/libvorbis:= ) ) curl? ( net-misc/curl ) ~games-fps/urbanterror-data-4.3.2 sys-libs/zlib:=[minizip] virtual/jpeg:0
 REQUIRED_USE=|| ( client server )
 SLOT=0
-SRC_URI=https://github.com/mickael9/ioq3/archive/41425855eba78b31dde895116c4db2e8ce77a2b8.tar.gz -> urbanterror-4.3.2_p20180211.tar.gz
+SRC_URI=https://github.com/mickael9/ioq3/archive/1042e6b80f6fe50c46c8242b1e0bf3de80c676ef.tar.gz -> urbanterror-4.3.2_p20180216.tar.gz
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	eapi7-ver	ad64fd3dcf3a655ac44ecae6d0e5ffcc	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	flag-o-matic	02908f00f002f0f07c5b74783d778325	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=f479acaf03b56f02c900a135c221ef9d
+_md5_=9642869ab7cd2d9c9b4ba309481d01ef

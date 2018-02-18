@@ -2,9 +2,9 @@ DEFINED_PHASES=install
 DESCRIPTION=GNU Autoconf Macro Archive
 EAPI=6
 HOMEPAGE=https://www.gnu.org/software/autoconf-archive/
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris ~amd64-fbsd
 LICENSE=GPL-3
 RDEPEND=!=gnome-base/gnome-common-3.14.0 !>=gnome-base/gnome-common-3.14.0-r1[-autoconf-archive(+)]
 SLOT=0
 SRC_URI=mirror://gnu/autoconf-archive/autoconf-archive-2017.09.28.tar.xz
-_md5_=68fa777327fad82f10c3409f2abfa437
+_md5_=2006ce2a2d435640570623d10d1fbdd5
