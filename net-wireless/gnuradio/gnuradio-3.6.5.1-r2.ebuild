@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -20,7 +20,7 @@ else
 	KEYWORDS="~amd64 ~arm ~x86"
 fi
 
-IUSE="alsa +analog +digital doc examples fcd +filter grc jack oss pager performance-counters portaudio qt4 sdl uhd +utils wavelet wxwidgets"
+IUSE="alsa +analog +digital doc examples fcd +filter grc jack oss pager performance-counters portaudio qt4 sdl uhd +utils wavelet"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 		analog? ( filter )
@@ -29,8 +29,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 		qt4? ( filter )
 		uhd? ( filter analog )
 		fcd? ( || ( alsa oss ) )
-		wavelet? ( analog )
-		wxwidgets? ( filter analog )"
+		wavelet? ( analog )"
 
 # bug #348206
 # comedi? ( >=sci-electronics/comedilib-0.7 )
@@ -65,10 +64,6 @@ RDEPEND="${PYTHON_DEPS}
 	uhd? ( >=net-wireless/uhd-3.4.3-r1:=[${PYTHON_USEDEP}] )
 	wavelet? (
 		sci-libs/gsl
-	)
-	wxwidgets? (
-		dev-python/wxpython:2.8[${PYTHON_USEDEP}]
-		dev-python/numpy[${PYTHON_USEDEP}]
 	)
 "
 DEPEND="${RDEPEND}
@@ -113,9 +108,9 @@ src_configure() {
 		$(cmake-utils_use_enable uhd GR_UHD) \
 		$(cmake-utils_use_enable utils GR_UTILS) \
 		$(cmake-utils_use_enable wavelet GR_WAVELET) \
-		$(cmake-utils_use_enable wxwidgets GR_WXGUI) \
 		$(cmake-utils_use_enable qt4 GR_QTGUI) \
 		$(cmake-utils_use_enable sdl GR_VIDEO_SDL) \
+		-DENABLE_GR_WXGUI=OFF \
 		-DENABLE_GR_CORE=ON \
 		-DSYSCONFDIR="${EPREFIX}"/etc \
 		-DPYTHON_EXECUTABLE="${PYTHON}"

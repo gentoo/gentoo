@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
 inherit cmake-utils python-single-r1
@@ -10,9 +10,10 @@ DESCRIPTION="gnuradio fosphor block (GPU spectrum display)"
 HOMEPAGE="https://sdr.osmocom.org/trac/wiki/fosphor"
 
 if [[ ${PV} == 9999* ]]; then
-	inherit git-2
+	inherit git-r3
 	SRC_URI=""
-	EGIT_REPO_URI="git://git.osmocom.org/${PN}.git"
+	#EGIT_REPO_URI="git://git.osmocom.org/${PN}.git"
+	EGIT_REPO_URI="https://github.com/osmocom/${PN}.git"
 	KEYWORDS=""
 else
 	SRC_URI="mirror://gentoo/${P}.tar.xz"
@@ -23,14 +24,14 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="+glfw qt4"
+IUSE="+glfw qt4 wxwidgets"
 
 RDEPEND="qt4? (
 		dev-qt/qtcore:4
 		dev-qt/qtgui:4
 		dev-qt/qtopengl:4
 	)
-	>=net-wireless/gnuradio-3.7_rc:0=[qt4?,${PYTHON_USEDEP}]
+	>=net-wireless/gnuradio-3.7_rc:0=[qt4?,wxwidgets?,${PYTHON_USEDEP}]
 	media-libs/freetype
 	dev-libs/boost:=
 	glfw? ( >=media-libs/glfw-3 )
@@ -45,17 +46,19 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	cmake-utils_src_prepare
+	default
 }
 
 src_configure() {
 	# tries to run OpenCL test program, but failing doesn't hurt
 	addpredict /dev/dri
 
-	local mycmakeargs="
-		$(cmake-utils_use_enable glfw GLFW)
-		$(cmake-utils_use_enable qt4 QT)
+	local mycmakeargs=(
+		-DENABLE_DEFAULT=OFF
+		-DENABLE_GLFW="$(usex glfw)"
+		-DENABLE_QT="$(usex qt4)"
+		-DENABLE_WX="$(usex wxwidgets)"
 		-DENABLE_PYTHON=ON
-		-DENABLE_WX=OFF
-	"
+	)
 	cmake-utils_src_configure
 }
