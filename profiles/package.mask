@@ -228,14 +228,6 @@ games-strategy/hedgewars
 # Please migrate to cyrus-imapd-3.0 releases
 =net-mail/cyrus-imapd-2.5*
 
-# Andreas Sturmlechner <asturm@gentoo.org> (20 Jan 2018)
-# Outdated and broken for a long time, blocking cleanups.
-# Depends on deprecated LINGUAS/Qt4/kde4-functions.eclass.
-# Masked for removal in 30 days. Bugs #520070, 555082, 643994, 644312
-net-p2p/dogecoin-qt
-net-p2p/primecoin-qt
-net-p2p/primecoind
-
 # Patrice Clement <monsieurp@gentoo.org> (18 Jan 2018)
 # mpv >= 0.28.0 requires changes currently only available in ffmpeg-9999.
 >=media-video/mpv-0.28.0
