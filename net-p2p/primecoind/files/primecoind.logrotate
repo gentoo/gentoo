@@ -1,7 +1,0 @@
-/var/lib/primecoin/.primecoin/debug.log {
-	weekly
-	sharedscripts
-	postrotate
-		killall -HUP primecoind
-	endscript
-}
