@@ -81,7 +81,7 @@ RDEPEND="
 	)
 	elibc_glibc? ( sys-libs/glibc:2.2 )
 	faad? ( media-libs/faad2:0 )
-	fdk? ( media-libs/fdk-aac:0 )
+	fdk? ( media-libs/fdk-aac:0= )
 	ffmpeg? (
 		!libav? ( >=media-video/ffmpeg-3.1.3:0=[vaapi?,vdpau?] )
 		libav? ( >=media-video/libav-11.8:0=[vaapi?,vdpau?] )
