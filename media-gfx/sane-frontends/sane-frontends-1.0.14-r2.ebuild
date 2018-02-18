@@ -35,13 +35,13 @@ src_install() {
 	emake DESTDIR="${D}" install
 	if use gimp; then
 		for gimptool in gimptool gimptool-2.0; do
-			if [ -x /usr/bin/${gimptool} ]; then
+			if [[ -x /usr/bin/${gimptool} ]]; then
 				einfo "Setting plugin link for GIMP version	$(/usr/bin/${gimptool} --version)"
 				gimpplugindir=$(/usr/bin/${gimptool} --gimpplugindir)/plug-ins
 				break
 			fi
 		done
-		if [ "/plug-ins" != "${gimpplugindir}" ]; then
+		if [[ "/plug-ins" != "${gimpplugindir}" ]]; then
 			dodir ${gimpplugindir}
 			dosym xscanimage ${gimpplugindir}/xscanimage
 		else
