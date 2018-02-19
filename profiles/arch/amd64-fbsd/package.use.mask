@@ -1,6 +1,25 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
+# Unkeyworded dependencies.
+app-doc/doxygen clang
+dev-libs/glib dbus
+dev-libs/leveldb tcmalloc
+dev-libs/libpeas jit
+dev-perl/GD fcgi
+media-libs/libcanberra gnome
+media-libs/mesa vaapi
+media-sound/pulseaudio equalizer qt4 realtime
+media-video/ffmpeg celt ebur128 kvazaar libilbc nvenc openh264
+media-video/ffmpeg rubberband sdl ssh x265 zeromq zimg
+net-libs/gnutls idn
+net-print/cups-filters pdf
+sys-devel/gcc objc-gc
+x11-drivers/nvidia-drivers tools
+x11-libs/pango test
+x11-wm/fluxbox vim-syntax
+
 # Michał Górny <mgorny@gentoo.org> (17 Feb 2018)
 # Claims to require dev-libs/elfutils which doesn't support FreeBSD.
 # We can umask if it works with virtual/libelf though.

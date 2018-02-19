@@ -10,7 +10,7 @@ if [[ ${PV} == *9999 ]] ; then
 	S=${WORKDIR}/e16/e
 else
 	SRC_URI="mirror://sourceforge/enlightenment/e16-${PV/_/-}.tar.gz"
-	KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sh sparc x86 ~x86-fbsd"
+	KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sh sparc x86"
 	S=${WORKDIR}/e16-${PV/_pre?}
 fi
 inherit eutils
