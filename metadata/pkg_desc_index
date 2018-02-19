@@ -4844,7 +4844,7 @@ dev-python/ghp-import 0.4.1-r1: Copy your docs directly to the gh-pages branch
 dev-python/git-python 1.0.2: Library used to interact with Git repositories
 dev-python/git-review 1.24 1.25.0: Tool to submit code to Gerrit
 dev-python/gitdb 0.6.4: GitDB is a pure-Python git object database
-dev-python/glance_store 0.13.1 0.18.0 0.20.0 0.22.0: A library for glance
+dev-python/glance_store 0.22.0: A library for glance
 dev-python/gmpy 2.0.8: Python bindings for GMP, MPC, MPFR and MPIR libraries
 dev-python/gnome-keyring-python 2.32.0-r1: Python bindings for the interfacing with the GNOME keyring
 dev-python/gnome-python-base 2.28.1-r1: Provides the base files for the gnome-python bindings
@@ -5314,7 +5314,7 @@ dev-python/python-bugzilla 1.2.2: A python module for interacting with Bugzilla 
 dev-python/python-caja 1.12.0-r1: Python bindings for the Caja file manager
 dev-python/python-cdb 0.34-r1: A Python extension module for cdb
 dev-python/python-ceilometerclient 2.6.2: This is a client library for Ceilometer built on the Ceilometer API
-dev-python/python-cinderclient 1.6.0 1.9.0 1.11.0 3.1.0: A client for the OpenStack Cinder API
+dev-python/python-cinderclient 3.1.0: A client for the OpenStack Cinder API
 dev-python/python-cluster 1.2.2: Allows grouping a list of arbitrary objects into related groups (clusters)
 dev-python/python-daemon 1.6-r1: Library to implement a well-behaved Unix daemon process
 dev-python/python-dateutil 2.6.1: Extensions to the standard Python datetime module

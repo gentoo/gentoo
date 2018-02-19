@@ -1728,7 +1728,9 @@ dev-python/django-tastypie:yaml - An optional serialiser dev-python/yaml
 dev-python/flask-restful:paging - Enable resource paging support
 dev-python/geopy:timezone - Enables localized date support
 dev-python/geopy:yahoo - Enables use of YahooPlaceFinder
-dev-python/glance_store:cinder - adds cinder backend support
+dev-python/glance_store:cinder - enable cinder backend supprt
+dev-python/glance_store:swift - enable swift backend supprt
+dev-python/glance_store:vmware - enable vmware backend supprt
 dev-python/gmpy:mpir - Use sci-libs/mpir as gmp implementation
 dev-python/icalendar:doc - Generate examples and other extra documentation
 dev-python/ipython:matplotlib - Add support for dev-python/matplotlib
