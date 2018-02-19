@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtprintsupport:5
-	dev-qt/qtsingleapplication[qt5,X]
+	dev-qt/qtsingleapplication[qt5(+),X]
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
 	>=x11-libs/qscintilla-2.9.4:=[qt5(+)]
