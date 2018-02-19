@@ -3051,8 +3051,8 @@ dev-libs/libgamin 0.1.10-r5: Library providing the FAM File Alteration Monitor A
 dev-libs/libgcrypt 1.8.1: General purpose crypto library based on the code used in GnuPG
 dev-libs/libgdata 0.17.8 0.17.9-r1: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.8 0.20.0: GObject-based interfaces and classes for commonly used data structures
-dev-libs/libgit2 0.24.6 0.26.0: A linkable library for Git
-dev-libs/libgit2-glib 0.24.4 0.26.2: Git library for GLib
+dev-libs/libgit2 0.26.0: A linkable library for Git
+dev-libs/libgit2-glib 0.26.2: Git library for GLib
 dev-libs/libgnome-games-support 1.2.3: Library for code common to Gnome games
 dev-libs/libgpg-error 1.27-r1: Contains error handling functions used by GnuPG software
 dev-libs/libgudev 232: GObject bindings for libudev
@@ -6238,7 +6238,7 @@ dev-util/splint 3.1.2-r1: Check C programs for vulnerabilities and programming m
 dev-util/strace 4.20: A useful diagnostic, instructional, and debugging tool
 dev-util/stubgen 2.08: a member function stub generator for C++
 dev-util/suse-build 2014.09.18 2015.11.05: Script to build SUSE Linux RPMs
-dev-util/sysprof 3.22.2 3.24.1: System-wide Linux Profiler
+dev-util/sysprof 3.24.1: System-wide Linux Profiler
 dev-util/systemtap 2.4-r1 3.1-r1: A linux trace/probe tool
 dev-util/tkdiff 4.2: Graphical front end to the diff program
 dev-util/tmake 2.12-r1: A Cross platform Makefile tool
@@ -6282,7 +6282,7 @@ dev-vcs/git 2.13.6 2.16.1: stupid content tracker: distributed VCS designed for 
 dev-vcs/git-bzr-ng 0_pre20120822-r2: Git subcommand providing a bidirectional bridge to Bazaar repositories
 dev-vcs/git-cola 2.2.1 2.11: The highly caffeinated git GUI
 dev-vcs/git-flow 1.10.2: Git extensions to provide high-level repository operations
-dev-vcs/gitg 3.22.0 3.26.0: git repository viewer for GNOME
+dev-vcs/gitg 3.26.0: git repository viewer for GNOME
 dev-vcs/gitolite 2.3.1-r1 3.6 3.6.3 3.6.6: Highly flexible server for git directory version tracker
 dev-vcs/gitolite-gentoo 2.3.1-r1: Highly flexible server for git directory version tracker, Gentoo fork
 dev-vcs/guilt 0.36: A series of bash scripts which add a quilt-like interface to git
@@ -6390,7 +6390,7 @@ gnome-extra/evolution-data-server 3.22.7 3.24.7: Evolution groupware backend
 gnome-extra/evolution-ews 3.24.6: Evolution module for connecting to Microsoft Exchange Web Services
 gnome-extra/gconf-editor 3.0.1-r1: An editor to the GNOME config system
 gnome-extra/gnome-boxes 3.24.0: Simple GNOME 3 application to access remote or virtual systems
-gnome-extra/gnome-builder 3.22.4 3.24.2: Builder attempts to be an IDE for writing software for GNOME
+gnome-extra/gnome-builder 3.24.2: Builder attempts to be an IDE for writing software for GNOME
 gnome-extra/gnome-calculator 3.24.0: A calculator application for GNOME
 gnome-extra/gnome-calendar 3.24.3: Manage your online calendars with simple and modern interface
 gnome-extra/gnome-characters 3.24.0: Unicode character map viewer and library
@@ -7672,7 +7672,7 @@ media-plugins/gmpc-mmkeys 11.8.16: Bind multimedia keys via gnome settings daemo
 media-plugins/gmpc-playlistsort 0.20.0: This plugin adds a dialog to sort the current playlist
 media-plugins/gmpc-shout 0.20.0: This plugin calls ogg123 and points it at mpd's shoutstream
 media-plugins/gmpc-tagedit 11.8.16: This plugin allows you to edit tags in your library
-media-plugins/grilo-plugins 0.2.17 0.3.4 0.3.5: A framework for easy media discovery and browsing
+media-plugins/grilo-plugins 0.2.17 0.3.5: A framework for easy media discovery and browsing
 media-plugins/gst-plugins-a52dec 0.10.19-r1 1.12.3: ATSC A/52 audio decoder plugin for GStreamer
 media-plugins/gst-plugins-alsa 0.10.36-r1: plugin for gstreamer
 media-plugins/gst-plugins-amr 0.10.19-r1 1.12.3: AMRNB encoder/decoder and AMRWB decoder plugin for GStreamer

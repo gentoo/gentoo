@@ -1,12 +1,12 @@
 DEFINED_PHASES=compile configure install postinst postrm test
-DEPEND=>=dev-libs/glib-2.44 >=x11-libs/gtk+-3.20:3 >=media-video/mpv-0.21[libmpv] media-libs/libepoxy virtual/pkgconfig >=sys-apps/sed-4 >=dev-util/meson-0.40.0 >=dev-util/ninja-1.7.2
+DEPEND=>=dev-libs/glib-2.44 >=x11-libs/gtk+-3.20:3 >=media-video/mpv-0.27[libmpv] media-libs/libepoxy virtual/pkgconfig >=sys-apps/sed-4 >=dev-util/meson-0.40.0 >=dev-util/ninja-1.7.2
 DESCRIPTION=A simple GTK+ frontend for mpv
 EAPI=6
-HOMEPAGE=https://github.com/gnome-mpv/gnome-mpv
+HOMEPAGE=https://gnome-mpv.github.io/
 KEYWORDS=~amd64
 LICENSE=GPL-3+
-RDEPEND=>=dev-libs/glib-2.44 >=x11-libs/gtk+-3.20:3 >=media-video/mpv-0.21[libmpv] media-libs/libepoxy
+RDEPEND=>=dev-libs/glib-2.44 >=x11-libs/gtk+-3.20:3 >=media-video/mpv-0.27[libmpv] media-libs/libepoxy
 SLOT=0
-SRC_URI=https://github.com/gnome-mpv/gnome-mpv/releases/download/v0.13/gnome-mpv-0.13.tar.xz https://github.com/gnome-mpv/gnome-mpv/releases/download/v0.13/update-appdata-and-add-missing-meson-build-file.patch -> gnome-mpv-0.13-upstream-updates.patch
+SRC_URI=https://github.com/gnome-mpv/gnome-mpv/releases/download/v0.14/gnome-mpv-0.14.tar.xz
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	gnome2-utils	4d211d7614f303710fca59db6ec12c88	ltprune	2770eed66a9b8ef944714cd0e968182e	meson	f8e09b2b2ac1e9bb0bd374b6ad77a90d	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=57dfa8eb5860b5e5f021e0488ee4d5b6
+_md5_=fec7625ab79c92edbfac7175e5c28f2b
