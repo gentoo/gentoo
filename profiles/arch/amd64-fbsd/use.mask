@@ -33,6 +33,10 @@
 #-video_cards_vmware
 -input_devices_vmmouse
 
+# Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
+# dev-libs/DirectFB is not keyworded here.
+directfb
+
 # Michał Górny <mgorny@gentoo.org> (17 Feb 2018)
 # libraw is not keyworded here.
 raw
