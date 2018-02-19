@@ -27,8 +27,6 @@ RDEPEND="sys-libs/ncurses:0=
 	gpm? ( sys-libs/gpm )
 	dbus? ( sys-apps/dbus )
 	X? (
-		media-libs/fontconfig
-		media-libs/freetype
 		x11-libs/libICE
 		x11-libs/libSM
 		x11-libs/libX11
@@ -41,6 +39,8 @@ RDEPEND="sys-libs/ncurses:0=
 		tiff? ( media-libs/tiff:0 )
 		xpm? ( x11-libs/libXpm )
 		xft? (
+			media-libs/fontconfig
+			media-libs/freetype
 			x11-libs/libXft
 			x11-libs/libXrender
 			m17n-lib? (
