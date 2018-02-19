@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
-inherit eutils flag-o-matic java-pkg-opt-2 linux-info multilib pax-utils python-single-r1 toolchain-funcs udev xdg-utils
+inherit eutils flag-o-matic java-pkg-opt-2 linux-info multilib pax-utils python-single-r1 tmpfiles toolchain-funcs udev xdg-utils
 
 MY_PV="${PV/beta/BETA}"
 MY_PV="${MY_PV/rc/RC}"
@@ -193,7 +193,6 @@ src_prepare() {
 	fi
 
 	eapply "${WORKDIR}/patches"
-	eapply "${FILESDIR}/${PN}-detect-usb-fix.patch"
 
 	eapply_user
 }
@@ -416,6 +415,8 @@ src_install() {
 	if use doc ; then
 		dodoc UserManual.pdf
 	fi
+
+	newtmpfiles "${FILESDIR}"/${PN}-vboxusb_tmpfilesd ${PN}-vboxusb.conf
 }
 
 pkg_postinst() {
@@ -425,6 +426,8 @@ pkg_postinst() {
 		udevadm control --reload-rules \
 			&& udevadm trigger --subsystem-match=usb
 	fi
+
+	tmpfiles_process
 
 	if ! use headless && use qt5 ; then
 		elog "To launch VirtualBox just type: \"virtualbox\"."
