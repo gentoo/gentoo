@@ -79,9 +79,6 @@ all_ruby_prepare() {
 		epatch "${FILESDIR}/43e2c935252b995134ce353e5e6312cf77aea480.patch"
 	fi
 
-	# fix compatibility with ruby 2.3.6/2.4.3 webrick
-	epatch "${FILESDIR}/puppet-4-webrick-ruby.patch"
-
 	# Use working version of mocha
 	sed -i -e '1igem "mocha", "~>0.14.0"; gem "rack", "~>1.0"' spec/spec_helper.rb || die
 
