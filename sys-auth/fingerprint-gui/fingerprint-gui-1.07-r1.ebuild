@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+upekbsapi"
 
-DEPEND="app-crypt/qca:2[qt4(+),ssl]
+DEPEND="app-crypt/qca:2[qt4,ssl]
 	sys-auth/libfprint
 	sys-auth/polkit-qt[qt4]
 	sys-libs/pam
