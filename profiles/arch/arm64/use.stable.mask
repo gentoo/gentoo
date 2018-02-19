@@ -4,6 +4,34 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
+# net-dns/avahi is not stable here (not even GTK+).
+zeroconf
+
+# Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
+# GNOME is not stable here (not even GTK+).
+gnome
+
+# Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
+# virtual/{jdk,jre} are not stable here.
+java
+
+# Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
+# dev-db/postgresql is not stable here.
+postgres
+
+# Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
+# dev-lang/tk is not stable here.
+tk
+
+# Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
+# app-text/ghostscript-gpl is not stable here.
+postscript
+
+# Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
+# media-libs/jasper is not stable here.
+jpeg2k
+
 # Michał Górny <mgorny@gentoo.org> (18 Feb 2018)
 # sys-apps/systemd is not stable on arm64.
 systemd

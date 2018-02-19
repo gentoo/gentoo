@@ -11,7 +11,7 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/clementine-player/Clementine.git"
 	GIT_ECLASS="git-r3"
 else
-	COMMIT=b04367937a3160e15543a07631e36213db7b6048
+	COMMIT=4273c0313298c2f7cb6f1b02cb5461fb66865c30
 	SRC_URI="https://github.com/${PN}-player/${PN^}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
@@ -48,8 +48,8 @@ COMMON_DEPEND="
 	media-libs/chromaprint:=
 	media-libs/gstreamer:1.0
 	media-libs/gst-plugins-base:1.0
-	>=media-libs/libmygpo-qt-1.0.9[qt5]
-	media-libs/taglib[mp4(+)]
+	>=media-libs/libmygpo-qt-1.0.9[qt5(+)]
+	media-libs/taglib
 	sys-libs/zlib
 	virtual/glu
 	virtual/opengl
@@ -57,7 +57,7 @@ COMMON_DEPEND="
 	cdda? ( dev-libs/libcdio:= )
 	dbus? ( dev-qt/qtdbus:5 )
 	ipod? ( >=media-libs/libgpod-0.8.0 )
-	lastfm? ( >=media-libs/liblastfm-1[qt5] )
+	lastfm? ( >=media-libs/liblastfm-1[qt5(+)] )
 	moodbar? ( sci-libs/fftw:3.0 )
 	mtp? ( >=media-libs/libmtp-1.0.0 )
 	projectm? (
