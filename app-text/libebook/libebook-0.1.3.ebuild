@@ -6,7 +6,7 @@ EAPI=6
 MY_PN="libe-book"
 MY_P="${MY_PN}-${PV}"
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="Library parsing various ebook formats"
 HOMEPAGE="http://www.sourceforge.net/projects/libebook/"
@@ -41,6 +41,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug 618854
+	append-cxxflags -std=c++14
+
 	econf \
 		--disable-static \
 		--disable-werror \
