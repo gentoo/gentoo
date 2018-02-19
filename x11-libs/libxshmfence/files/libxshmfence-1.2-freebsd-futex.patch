@@ -1,0 +1,38 @@
+From patchwork Fri Jul  7 23:53:57 2017
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Subject: [libxshmfence,v2] futex: unbreak build on FreeBSD 11.0+
+From: Jan Beich <jbeich@freebsd.org>
+X-Patchwork-Id: 165927
+Message-Id: <a84f-by7e-wny@FreeBSD.org>
+To: xorg-devel@lists.x.org
+Date: Sat, 08 Jul 2017 01:53:57 +0200
+
+From: Jung-uk Kim <jkim@FreeBSD.org>
+Date: Tue, 15 Apr 2014 17:08:46 +0000
+
+In file included from src/xshmfence_alloc.c:27:
+In file included from src/xshmfenceint.h:32:
+src/xshmfence_futex.h:40:39: error: use of undeclared identifier 'INT_MAX'
+        return sys_futex(addr, UMTX_OP_WAKE, INT_MAX);
+                                             ^
+1 error generated.
+
+Signed-off-by: Jan Beich <jbeich@FreeBSD.org>
+---
+ src/xshmfence_futex.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/xshmfence_futex.h b/src/xshmfence_futex.h
+index ea96cf4..ccfdc67 100644
+--- a/src/xshmfence_futex.h
++++ b/src/xshmfence_futex.h
+@@ -28,6 +28,7 @@
+ 
+ #ifdef HAVE_UMTX
+ 
++#include <limits.h>
+ #include <sys/types.h>
+ #include <sys/umtx.h>
+ 
