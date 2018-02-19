@@ -4,10 +4,9 @@ DESCRIPTION=Cross platform Make
 EAPI=6
 HOMEPAGE=https://cmake.org/
 IUSE=doc emacs server system-jsoncpp ncurses qt5 test
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
 LICENSE=CMake
 RDEPEND=app-crypt/rhash >=app-arch/libarchive-3.0.0:= >=dev-libs/expat-2.0.1 >=dev-libs/libuv-1.0.0:= >=net-misc/curl-7.21.5[ssl] sys-libs/zlib virtual/pkgconfig emacs? ( virtual/emacs ) ncurses? ( sys-libs/ncurses:0= ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 ) system-jsoncpp? ( >=dev-libs/jsoncpp-0.6.0_rc2:0= )
 SLOT=0
-SRC_URI=https://cmake.org/files/v3.10/cmake-3.10.1.tar.gz
+SRC_URI=https://cmake.org/files/v3.11/cmake-3.11.0-rc1.tar.gz
 _eclasses_=bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	cmake-utils	202a2becc86cb78ba14baad148d06759	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	flag-o-matic	02908f00f002f0f07c5b74783d778325	gnome2-utils	4d211d7614f303710fca59db6ec12c88	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	versionator	ce21313503c41896ebcd7d58b0607e37	virtualx	3a3c4637ea6d5a2113707a644766337c	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=cdec0d317f30c21614d1e30a9ab5a891
+_md5_=c797d7c20819762e252148383e6d9161
