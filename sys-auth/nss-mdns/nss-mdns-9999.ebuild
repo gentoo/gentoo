@@ -17,7 +17,7 @@ IUSE="test"
 
 RDEPEND=">=net-dns/avahi-0.6.31-r2[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
-	test? ( >=dev-libs/check-0.11 )"
+	test? ( >=dev-libs/check-0.11[${MULTILIB_USEDEP}] )"
 
 src_prepare() {
 	default
