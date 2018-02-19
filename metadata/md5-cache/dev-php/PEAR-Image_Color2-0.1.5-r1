@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm prepare test
+DEPEND=test? ( >=dev-php/phpunit-5 )
+DESCRIPTION=Color conversion and mixing for PHP5
+EAPI=6
+HOMEPAGE=https://pear.php.net/package/Image_Color2
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=>=dev-php/pear-1.8.1
+SLOT=0
+SRC_URI=https://pear.php.net/get/Image_Color2-0.1.5.tgz
+_eclasses_=php-pear-r2	eb6928c33771db74564e814c5ca6c1b3
+_md5_=12d5942e6ab4c8ba743c55d8aa69e56b
