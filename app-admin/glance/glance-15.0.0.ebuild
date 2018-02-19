@@ -70,7 +70,7 @@ RDEPEND="
 	>=dev-python/stevedore-1.20.0[${PYTHON_USEDEP}]
 	>=dev-python/futurist-0.11.0[${PYTHON_USEDEP}]
 	!~dev-python/futurist-0.15.0[${PYTHON_USEDEP}]
-	>=dev-python/taskflow-2.7.0.0[${PYTHON_USEDEP}]
+	>=dev-python/taskflow-2.7.0[${PYTHON_USEDEP}]
 	>=dev-python/keystoneauth-3.1.0[${PYTHON_USEDEP}]
 	>=dev-python/keystonemiddleware-4.12.0[${PYTHON_USEDEP}]
 	>=dev-python/WSME-0.8.0[${PYTHON_USEDEP}]

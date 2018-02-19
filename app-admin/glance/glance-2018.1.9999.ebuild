@@ -12,7 +12,7 @@ HOMEPAGE="https://launchpad.net/glance"
 if [[ ${PV} == *9999 ]];then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/openstack/glance.git"
-	EGIT_BRANCH="stable/pike"
+	EGIT_BRANCH="stable/queens"
 else
 	SRC_URI="https://tarballs.openstack.org/${PN}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~x86"
@@ -34,6 +34,7 @@ DEPEND="
 
 RDEPEND="
 	${CDEPEND}
+	>=dev-python/defusedxml-0.5.0[${PYTHON_USEDEP}]
 	sqlite? (
 		>=dev-python/sqlalchemy-1.0.10[sqlite,${PYTHON_USEDEP}]
 		!~dev-python/sqlalchemy-1.1.5[sqlite,${PYTHON_USEDEP}]
@@ -67,45 +68,39 @@ RDEPEND="
 	>=dev-python/sqlalchemy-migrate-0.11.0[${PYTHON_USEDEP}]
 	>=dev-python/python-sqlparse-0.2.2[${PYTHON_USEDEP}]
 	>=dev-python/alembic-0.8.10[${PYTHON_USEDEP}]
-	>=dev-python/httplib2-0.7.5[${PYTHON_USEDEP}]
-	>=dev-python/oslo-config-4.0.0[${PYTHON_USEDEP}]
-	!~dev-python/oslo-config-4.3.0[${PYTHON_USEDEP}]
-	!~dev-python/oslo-config-4.4.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-concurrency-3.8.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-context-2.14.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-utils-3.20.0[${PYTHON_USEDEP}]
+	>=dev-python/httplib2-0.9.1[${PYTHON_USEDEP}]
+	>=dev-python/oslo-config-5.1.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-concurrency-3.25.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-context-2.19.2[${PYTHON_USEDEP}]
+	>=dev-python/oslo-utils-3.33.0[${PYTHON_USEDEP}]
 	>=dev-python/stevedore-1.20.0[${PYTHON_USEDEP}]
-	>=dev-python/futurist-0.11.0[${PYTHON_USEDEP}]
-	!~dev-python/futurist-0.15.0[${PYTHON_USEDEP}]
-	>=dev-python/taskflow-2.7.0[${PYTHON_USEDEP}]
-	>=dev-python/keystoneauth-3.1.0[${PYTHON_USEDEP}]
-	>=dev-python/keystonemiddleware-4.12.0[${PYTHON_USEDEP}]
+	>=dev-python/futurist-1.2.0[${PYTHON_USEDEP}]
+	>=dev-python/taskflow-2.16.0[${PYTHON_USEDEP}]
+	>=dev-python/keystoneauth-3.3.0[${PYTHON_USEDEP}]
+	>=dev-python/keystonemiddleware-4.17.0[${PYTHON_USEDEP}]
 	>=dev-python/WSME-0.8.0[${PYTHON_USEDEP}]
 	>=dev-python/prettytable-0.7.0[${PYTHON_USEDEP}]
 	<dev-python/prettytable-0.8.0[${PYTHON_USEDEP}]
-	dev-python/paste[${PYTHON_USEDEP}]
-	>=dev-python/jsonschema-2.0.0[${PYTHON_USEDEP}]
-	!~dev-python/jsonschema-2.5.0[${PYTHON_USEDEP}]
+	>=dev-python/paste-2.0.2[${PYTHON_USEDEP}]
+	>=dev-python/jsonschema-2.6.0[${PYTHON_USEDEP}]
 	<dev-python/jsonschema-3.0.0[${PYTHON_USEDEP}]
 	>=dev-python/python-keystoneclient-3.8.0[${PYTHON_USEDEP}]
-	>=dev-python/pyopenssl-0.14[${PYTHON_USEDEP}]
-	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-db-4.24.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-i18n-2.1.0[${PYTHON_USEDEP}]
-	!~dev-python/oslo-i18n-3.15.2[${PYTHON_USEDEP}]
-	>=dev-python/oslo-log-3.22.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-messaging-5.24.2[${PYTHON_USEDEP}]
-	!~dev-python/oslo-messaging-5.25.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-middleware-3.27.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-policy-1.23.0[${PYTHON_USEDEP}]
+	>=dev-python/pyopenssl-16.2.0[${PYTHON_USEDEP}]
+	>=dev-python/six-1.10.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-db-4.27.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-i18n-3.15.3[${PYTHON_USEDEP}]
+	>=dev-python/oslo-log-3.36.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-messaging-5.29.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-middleware-3.31.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-policy-1.30.0[${PYTHON_USEDEP}]
 	>=dev-python/retrying-1.2.3[${PYTHON_USEDEP}]
 	!~dev-python/retrying-1.3.0[${PYTHON_USEDEP}]
 	>=dev-python/osprofiler-1.4.0[${PYTHON_USEDEP}]
 	>=dev-python/glance_store-0.22.0[${PYTHON_USEDEP}]
 	>=dev-python/debtcollector-1.2.0[${PYTHON_USEDEP}]
-	>=dev-python/cryptography-1.6[${PYTHON_USEDEP}]
+	>=dev-python/cryptography-1.9[${PYTHON_USEDEP}]
 	!~dev-python/cryptography-2.0[${PYTHON_USEDEP}]
-	>=dev-python/cursive-0.1.2[${PYTHON_USEDEP}]
+	>=dev-python/cursive-0.2.1[${PYTHON_USEDEP}]
 	>=dev-python/iso8601-0.1.11[${PYTHON_USEDEP}]
 	>=dev-python/monotonic-0.6[${PYTHON_USEDEP}]
 "
