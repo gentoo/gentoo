@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # Andreas Sturmlechner <asturm@gentoo.org> (03 Dec 2017)
 # Integration for Qt4-based applications
-kde-plasma/plasma-desktop qt4
-kde-plasma/breeze qt4
-kde-plasma/oxygen qt4
+<kde-plasma/plasma-desktop-5.12.2 qt4
+<kde-plasma/breeze-5.12.2 qt4
+<kde-plasma/oxygen-5.12.2 qt4
 
 # Andreas Sturmlechner <asturm@gentoo.org> (03 Dec 2017)
 # Required by kde-frameworks/kdelibs

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -32,7 +32,7 @@ COMMON_DEPEND="
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
-	media-libs/phonon[qt5]
+	media-libs/phonon[qt5(+)]
 	>=media-libs/taglib-1.10
 	media-sound/cdparanoia
 "
