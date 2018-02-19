@@ -9,7 +9,7 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	EGIT_REPO_URI="https://github.com/rdiankov/collada-dom"
 fi
 
-inherit ${SCM} cmake-utils
+inherit ${SCM} cmake-utils flag-o-matic
 
 if [ "${PV#9999}" != "${PV}" ] ; then
 	KEYWORDS=""
@@ -38,3 +38,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
+
+src_configure() {
+	# bug 618960
+	append-cxxflags -std=c++14
+
+	cmake-utils_src_configure
+}
