@@ -327,7 +327,6 @@ src_configure() {
 		$(use_enable neon)
 		$(use_enable ogg)
 		$(use_enable omxil)
-		$(use_enable omxil omxil-vout)
 		$(use_enable opencv)
 		$(use_enable optimisememory optimize-memory)
 		$(use_enable opus)
