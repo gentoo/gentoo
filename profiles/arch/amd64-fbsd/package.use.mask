@@ -16,7 +16,7 @@ media-video/ffmpeg rubberband sdl ssh x265 zeromq zimg
 net-libs/gnutls idn
 net-print/cups-filters pdf
 sys-devel/gcc objc-gc
-x11-drivers/nvidia-drivers tools
+x11-drivers/nvidia-drivers static-libs tools
 x11-libs/pango test
 x11-wm/fluxbox vim-syntax
 virtual/ffmpeg sdl
