@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="Library parsing abiword documents"
 HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/libabw"
@@ -32,6 +32,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug 619470
+	append-cxxflags -std=c++14
+
 	econf \
 		--disable-werror \
 		$(use_with doc docs) \

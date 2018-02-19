@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cmake-utils versionator
+inherit cmake-utils flag-o-matic versionator
 
 DESCRIPTION="Stream based read/write library for COLLADA files"
 HOMEPAGE="http://www.opencollada.org/"
@@ -40,6 +40,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug 619670
+	append-cxxflags -std=c++14
+
 	local mycmakeargs=(
 		-DUSE_SHARED=ON
 		-DUSE_STATIC=$(usex static-libs)

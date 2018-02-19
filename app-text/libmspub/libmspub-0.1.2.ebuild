@@ -1,7 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
+inherit flag-o-matic
 
 EGIT_REPO_URI="https://anongit.freedesktop.org/git/libreoffice/libmspub.git"
 [[ ${PV} == 9999 ]] && inherit autotools git-r3
@@ -38,6 +40,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug 619044
+	append-cxxflags -std=c++14
+
 	econf \
 		--disable-werror \
 		$(use_with doc docs) \
