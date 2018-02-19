@@ -5,6 +5,10 @@
 # Please use the same syntax as in use.mask
 
 # Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
+# net-dns/avahi is not stable here (not even GTK+).
+zeroconf
+
+# Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
 # GNOME is not stable here (not even GTK+).
 gnome
 
