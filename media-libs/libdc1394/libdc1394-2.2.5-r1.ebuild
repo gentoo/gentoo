@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit autotools eutils multilib-minimal
+inherit autotools multilib-minimal
 
 DESCRIPTION="Library to interface with IEEE 1394 cameras following the IIDC specification"
 HOMEPAGE="https://sourceforge.net/projects/libdc1394/"
@@ -13,31 +13,34 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
 LICENSE="LGPL-2.1"
 SLOT="2"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="doc static-libs X"
+IUSE="doc static-libs"
 
-RDEPEND=">=sys-libs/libraw1394-2.1.0-r1[${MULTILIB_USEDEP}]
+RDEPEND="
+	>=sys-libs/libraw1394-2.1.0-r1[${MULTILIB_USEDEP}]
 	>=virtual/libusb-1-r1:1[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
 
-src_prepare() {
-	epatch \
-		"${FILESDIR}"/${PN}-2.2.1-pthread.patch
+PATCHES=( "${FILESDIR}"/${PN}-2.2.1-pthread.patch )
 
+src_prepare() {
+	default
 	AT_M4DIR=${WORKDIR}/aclocal eautoreconf
 }
 
 multilib_src_configure() {
-	local myconf="$(use_enable doc doxygen-html)"
-	multilib_is_native_abi || myconf="--disable-doxygen-html --disable-examples"
+	local myeconfargs=(
+		$(use_enable doc doxygen-html)
+		$(use_enable static-libs static)
+		--disable-examples
+		--program-suffix=2
+		--without-x # only useful for (disabled) examples
+	)
 
-	# X is only useful for examples that are not installed.
-	ECONF_SOURCE="${S}" econf \
-		$(use_enable static-libs static) \
-		--program-suffix=2 \
-		--without-x \
-		${myconf}
+	multilib_is_native_abi || myeconfargs+=( --disable-doxygen-html )
+
+	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
 multilib_src_compile() {
@@ -46,7 +49,7 @@ multilib_src_compile() {
 }
 
 multilib_src_install() {
+	multilib_is_native_abi && use doc && local HTML_DOCS=( doc/html/. )
 	default
-	multilib_is_native_abi && use doc && dohtml doc/html/*
-	find "${ED}" -name '*.la' -exec rm -f {} +
+	find "${ED}" -name '*.la' -delete || die
 }
