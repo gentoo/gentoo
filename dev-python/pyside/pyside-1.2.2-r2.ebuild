@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -49,7 +49,7 @@ RDEPEND="
 	help? ( >=dev-qt/qthelp-${QT_PV} )
 	multimedia? ( >=dev-qt/qtmultimedia-${QT_PV} )
 	opengl? ( >=dev-qt/qtopengl-${QT_PV} )
-	phonon? ( media-libs/phonon[qt4(+)] )
+	phonon? ( media-libs/phonon[qt4] )
 	script? ( >=dev-qt/qtscript-${QT_PV} )
 	sql? ( >=dev-qt/qtsql-${QT_PV} )
 	svg? ( >=dev-qt/qtsvg-${QT_PV}[accessibility] )
@@ -100,7 +100,7 @@ src_configure() {
 		$(cmake-utils_use_disable xmlpatterns QtXmlPatterns)
 	)
 
-	if use phonon && has_version "media-libs/phonon[qt4(+)]"; then
+	if use phonon && has_version "media-libs/phonon[qt4]"; then
 		# bug 475786
 		mycmakeargs+=(
 			-DQT_PHONON_INCLUDE_DIR="${EPREFIX}/usr/include/phonon"
