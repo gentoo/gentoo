@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=>=dev-lang/go-1.8
+DESCRIPTION=Standard networking plugins for container networking
+EAPI=6
+HOMEPAGE=https://github.com/containernetworking/plugins
+IUSE=hardened
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+SLOT=0
+SRC_URI=https://github.com/containernetworking/plugins/archive/v0.7.0.tar.gz -> cni-plugins-0.7.0.tar.gz
+_eclasses_=golang-base	51a1f13e065f1cff4507685d9cc268c7	golang-vcs-snapshot	913580335becddd3ebecefe852e47536
+_md5_=b57e4d4159debe0d68ac2aec511f6363
