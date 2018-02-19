@@ -12,6 +12,7 @@
 	<flag name="iqbalance">Enable support for I/Q balancing using gr-iqbal</flag>
 	<flag name="mirisdr">Build with Mirics MSi2500 + MSi001 SDR support</flag>
 	<flag name="rtlsdr">Build with Realtek RTL2832U (rtlsdr) support</flag>
+	<flag name="soapy">Build with SoapySDR support</flag>
 	<flag name="uhd">Build with Ettus Research USRP Hardware Driver support</flag>
 </use>
 </pkgmetadata>
