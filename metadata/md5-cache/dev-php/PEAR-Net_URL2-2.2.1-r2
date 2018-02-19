@@ -2,10 +2,10 @@ DEFINED_PHASES=install postinst postrm
 DESCRIPTION=Easy parsing of URLs (PHP5 port of PEAR-Net_URL package)
 EAPI=6
 HOMEPAGE=https://pear.php.net/package/Net_URL2
-KEYWORDS=alpha amd64 arm hppa ia64 ppc ppc64 s390 sh sparc x86
+KEYWORDS=alpha amd64 ~arm hppa ia64 ~ppc ~ppc64 ~s390 ~sh sparc x86
 LICENSE=BSD
 RDEPEND=>=dev-php/pear-1.8.1
 SLOT=0
 SRC_URI=https://pear.php.net/get/Net_URL2-2.2.1.tgz
 _eclasses_=php-pear-r2	eb6928c33771db74564e814c5ca6c1b3
-_md5_=9888ea4f431ecbd37eb7970ede98bf63
+_md5_=38c878f9373b6d8f31941461b7ea2ef3
