@@ -1,5 +1,5 @@
---- bin/autoreconf.in
-+++ bin/autoreconf.in
+--- a/bin/autoreconf.in
++++ b/bin/autoreconf.in
 @@ -110,7 +110,7 @@
  my $autoheader = $ENV{'AUTOHEADER'} || '@bindir@/@autoheader-name@';
  my $automake   = $ENV{'AUTOMAKE'}   || 'automake';
