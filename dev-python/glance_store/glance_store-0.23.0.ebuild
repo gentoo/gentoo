@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE=""
+IUSE="cinder swift vmware"
 
 CDEPEND=">=dev-python/pbr-1.8[${PYTHON_USEDEP}]"
 DEPEND="
@@ -40,4 +40,15 @@ RDEPEND="
 	>=dev-python/keystoneauth-3.3.0[${PYTHON_USEDEP}]
 	>=dev-python/python-keystoneclient-3.8.0[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.14.2[${PYTHON_USEDEP}]
+	cinder? (
+		>=dev-python/python-cinderclient-3.3.0[${PYTHON_USEDEP}]
+		>=dev-python/os-brick-2.2.0[${PYTHON_USEDEP}]
+		>=dev-python/oslo-rootwrap-5.8.0[${PYTHON_USEDEP}]
+		>=dev-python/oslo-privsep-1.23.0[${PYTHON_USEDEP}]
+	)
+	swift? (
+		>=dev-python/httplib2-0.9.1[${PYTHON_USEDEP}]
+		>=dev-python/python-swiftclient-3.2.0[${PYTHON_USEDEP}]
+	)
+	vmware? ( >=dev-python/oslo-vmware-2.17.0[${PYTHON_USEDEP}] )
 "
