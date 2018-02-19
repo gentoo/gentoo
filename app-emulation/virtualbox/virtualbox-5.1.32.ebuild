@@ -427,7 +427,7 @@ pkg_postinst() {
 			&& udevadm trigger --subsystem-match=usb
 	fi
 
-	tmpfiles_process
+	tmpfiles_process /usr/lib/tmpfiles.d/virtualbox-vboxusb.conf
 
 	if ! use headless && use qt5 ; then
 		elog "To launch VirtualBox just type: \"virtualbox\"."
