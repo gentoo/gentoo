@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,6 +21,7 @@ KEYWORDS="amd64 ~arm ~x86"
 IUSE="isa pcmcia static debug guile perl php python tcl doc firmware"
 
 COMMONDEPEND="
+	sys-libs/readline:=
 	tcl? ( dev-lang/tcl:0= )
 	guile? ( dev-scheme/guile:12 )
 	perl? ( dev-lang/perl:= )
