@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit flag-o-matic eutils
+inherit flag-o-matic
 
 DESCRIPTION="Standard tool to compile source trees"
 HOMEPAGE="https://www.gnu.org/software/make/make.html"
@@ -25,20 +25,24 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.2-default-cxx.patch
 	"${FILESDIR}"/${PN}-4.2.1-perl526.patch
 	"${FILESDIR}"/${PN}-4.2.1-glob-internals.patch
-	"${FILESDIR}"/${PN}-4.2.1-glob-v2.patch
 )
 
 src_prepare() {
-	epatch "${PATCHES[@]}"
-	epatch_user
+	default
+	# This patch requires special handling as it modifies confiure.ac
+	# which in turn triggers maintainer-mode when being applied the
+	# usual way.
+	eapply -Z "${FILESDIR}"/${PN}-4.2.1-glob-v2.patch
 }
 
 src_configure() {
 	use static && append-ldflags -static
-	econf \
-		--program-prefix=g \
-		$(use_with guile) \
+	local myeconfargs=(
+		--program-prefix=g
+		$(use_with guile)
 		$(use_enable nls)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {

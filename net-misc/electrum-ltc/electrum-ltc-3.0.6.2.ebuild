@@ -3,16 +3,15 @@
 
 EAPI="6"
 
-PYTHON_COMPAT=( python3_{4,5} )
+PYTHON_COMPAT=( python3_{4,5,6} )
 PYTHON_REQ_USE="ncurses?"
 
 inherit distutils-r1 gnome2-utils xdg-utils
 
-EGIT_COMMIT="d088f561b2875b4cda0689f9e9d911d558711e15"
+EGIT_COMMIT="${PV}"
 DESCRIPTION="Litecoin thin client"
 HOMEPAGE="https://electrum-ltc.org/"
-SRC_URI="https://github.com/pooler/electrum-ltc/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz
-	https://github.com/spesmilo/electrum/compare/a4e89e822a208daa574c4bd1d8ecfea952c6c101...b4e43754e0f60d8438b5fd412de816a466344401.patch -> ${P}-electrum-3.0.3.patch"
+SRC_URI="https://github.com/pooler/electrum-ltc/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -60,8 +59,6 @@ S="${WORKDIR}/${PN}-${EGIT_COMMIT}"
 DOCS=( RELEASE-NOTES )
 
 src_prepare() {
-	# include the last changes that apply from electrum 3.0.3
-	eapply <(sed -e '73,92d' "${DISTDIR}/${P}-electrum-3.0.3.patch")
 	eapply "${FILESDIR}/2.8.0-no-user-root.patch"
 
 	# Prevent icon from being installed in the wrong location
