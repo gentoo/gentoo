@@ -27,9 +27,9 @@ fi
 
 BDEPEND="
 	>=sys-devel/gcc-4.8:*
-	>=dev-libs/leatherman-1.0.0:=
 	dev-cpp/cpp-hocon"
 CDEPEND="
+	>=dev-libs/leatherman-1.0.0:=
 	dev-libs/openssl:*
 	sys-apps/util-linux
 	app-emulation/virt-what

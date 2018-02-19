@@ -5,10 +5,7 @@
 		<email>mrueg@gentoo.org</email>
 		<name>Manuel Rüger</name>
 	</maintainer>
-	<use>
-	<flag name="bird">Use BIRD, e.g. for route reflection</flag>
-	</use>
 	<upstream>
-		<remote-id type="github">projectcalico/felix</remote-id>
+		<remote-id type="github">namhyung/uftrace</remote-id>
 	</upstream>
 </pkgmetadata>

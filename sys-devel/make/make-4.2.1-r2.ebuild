@@ -29,7 +29,7 @@ PATCHES=(
 
 src_prepare() {
 	default
-	# This patch requires special handling as it modifies confiure.ac
+	# This patch requires special handling as it modifies configure.ac
 	# which in turn triggers maintainer-mode when being applied the
 	# usual way.
 	eapply -Z "${FILESDIR}"/${PN}-4.2.1-glob-v2.patch
