@@ -32,8 +32,6 @@ RDEPEND="sys-libs/ncurses:0=
 	ssl? ( net-libs/gnutls:0= )
 	zlib? ( sys-libs/zlib )
 	X? (
-		media-libs/fontconfig
-		media-libs/freetype
 		x11-libs/libICE
 		x11-libs/libSM
 		x11-libs/libX11
@@ -51,6 +49,8 @@ RDEPEND="sys-libs/ncurses:0=
 		xpm? ( x11-libs/libXpm )
 		imagemagick? ( >=media-gfx/imagemagick-6.6.2:0= )
 		xft? (
+			media-libs/fontconfig
+			media-libs/freetype
 			x11-libs/libXft
 			x11-libs/libXrender
 			m17n-lib? (
