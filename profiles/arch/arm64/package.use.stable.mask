@@ -1,6 +1,23 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
+# Masked due to unstable deps.
+dev-db/redis tcmalloc
+dev-libs/glib test
+dev-libs/protobuf python
+dev-python/hgdistver test
+dev-python/pycurl test
+dev-python/pyopenssl test
+dev-python/pyyaml libyaml
+dev-python/setuptools_scm mercurial
+dev-python/sphinx test
+dev-python/twisted-core serial
+dev-vcs/git gnome-keyring
+media-fonts/baekmuk-fonts X
+media-fonts/liberation-fonts X
+net-analyzer/netcat crypt
+
 # Michał Górny <mgorny@gentoo.org> (07 Feb 2018)
 # sys-libs/tevent is not stable here.
 dev-libs/libverto tevent
