@@ -28,6 +28,8 @@ multilib_src_configure() {
 	local myconf=(
 		# $(localstatedir)/run/... is used to locate avahi-daemon socket
 		--localstatedir=/var
+
+		$(use_enable test tests)
 	)
 
 	ECONF_SOURCE=${S} \
