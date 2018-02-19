@@ -29,18 +29,17 @@ HOMEPAGE="https://www.videolan.org/vlc/"
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/5-9" # vlc - vlccore
 
-IUSE="a52 aalib alsa altivec aom archive bidi bluray cddb chromaprint chromecast dbus
-	dc1394 debug directx dts +dvbpsi dvd +encode faad fdk +ffmpeg flac fluidsynth
-	fontconfig +gcrypt gme gnome-keyring gstreamer ieee1394 jack jpeg kate libass libav
-	libcaca libnotify +libsamplerate libtar libtiger lirc live lua macosx-notifications
+IUSE="a52 alsa altivec aom archive bidi bluray cddb chromaprint chromecast dbus dc1394
+	debug directx dts +dvbpsi dvd +encode faad fdk +ffmpeg flac fluidsynth fontconfig
+	+gcrypt gme gnome-keyring gstreamer ieee1394 jack jpeg kate libass libav libcaca
+	libnotify +libsamplerate libtar libtiger linsys lirc live lua macosx-notifications
 	macosx-qtkit matroska modplug mp3 mpeg mtp musepack ncurses neon nfs ogg omxil opencv
 	optimisememory opus png postproc projectm pulseaudio +qt5 rdp rtsp run-as-root
 	samba schroedinger sdl-image sftp shout sid skins speex ssl svg taglib theora tremor
 	truetype twolame udev upnp vaapi v4l vcd vdpau vnc vorbis vpx wayland wma-fixed +X
-	x264 x265 +xcb xml zeroconf zvbi cpu_flags_x86_mmx cpu_flags_x86_sse
+	x264 x265 xml zeroconf zvbi cpu_flags_x86_mmx cpu_flags_x86_sse
 "
 REQUIRED_USE="
-	aalib? ( X )
 	bidi? ( truetype )
 	directx? ( ffmpeg )
 	fontconfig? ( truetype )
@@ -59,7 +58,6 @@ RDEPEND="
 	virtual/libintl:0
 	virtual/opengl
 	a52? ( media-libs/a52dec:0 )
-	aalib? ( media-libs/aalib:0 )
 	alsa? ( media-libs/alsa-lib:0 )
 	aom? ( media-libs/libaom:= )
 	archive? ( app-arch/libarchive:= )
@@ -119,6 +117,7 @@ RDEPEND="
 	libsamplerate? ( media-libs/libsamplerate:0 )
 	libtar? ( dev-libs/libtar:0 )
 	libtiger? ( media-libs/libtiger:0 )
+	linsys? ( media-libs/zvbi )
 	lirc? ( app-misc/lirc:0 )
 	live? ( media-plugins/live:0 )
 	lua? ( >=dev-lang/lua-5.1:0 )
@@ -199,6 +198,7 @@ RDEPEND="
 	X? (
 		x11-libs/libX11
 		x11-libs/libxcb
+		x11-libs/libXcursor
 		x11-libs/xcb-util
 		x11-libs/xcb-util-keysyms
 	)
@@ -206,7 +206,7 @@ RDEPEND="
 	x265? ( media-libs/x265:0= )
 	xml? ( dev-libs/libxml2:2 )
 	zeroconf? ( net-dns/avahi:0[dbus] )
-	zvbi? ( media-libs/zvbi:0 )
+	zvbi? ( media-libs/zvbi )
 "
 DEPEND="${RDEPEND}
 	>=sys-devel/gettext-0.19.8:*
@@ -260,15 +260,13 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
-		--enable-vlc
-		--docdir=/usr/share/doc/${PF}
 		--disable-dependency-tracking
 		--disable-optimizations
 		--disable-update-check
 		--enable-fast-install
 		--enable-screen
+		--enable-vlc
 		$(use_enable a52)
-		$(use_enable aalib aa)
 		$(use_enable alsa)
 		$(use_enable altivec)
 		$(use_enable aom)
@@ -315,6 +313,7 @@ src_configure() {
 		$(use_enable libsamplerate samplerate)
 		$(use_enable libtar)
 		$(use_enable libtiger tiger)
+		$(use_enable linsys)
 		$(use_enable lirc)
 		$(use_enable live live555)
 		$(use_enable lua)
@@ -329,7 +328,6 @@ src_configure() {
 		$(use_enable neon)
 		$(use_enable ogg)
 		$(use_enable omxil)
-		$(use_enable omxil omxil-vout)
 		$(use_enable opencv)
 		$(use_enable optimisememory optimize-memory)
 		$(use_enable opus)
@@ -376,7 +374,6 @@ src_configure() {
 		$(use_enable xml libxml2)
 		$(use_enable zeroconf avahi)
 		$(use_enable zvbi)
-		$(use_enable zvbi linsys)
 		$(use_enable !zvbi telx)
 		--disable-asdcp
 		--disable-coverage
