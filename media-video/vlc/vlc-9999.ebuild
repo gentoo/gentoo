@@ -29,8 +29,8 @@ HOMEPAGE="https://www.videolan.org/vlc/"
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/5-9" # vlc - vlccore
 
-IUSE="a52 aalib alsa altivec aom archive bidi bluray cddb chromaprint chromecast dbus dc1394
-	debug directx dts +dvbpsi dvd elibc_glibc +encode faad fdk +ffmpeg flac fluidsynth
+IUSE="a52 aalib alsa altivec aom archive bidi bluray cddb chromaprint chromecast dbus
+	dc1394 debug directx dts +dvbpsi dvd +encode faad fdk +ffmpeg flac fluidsynth
 	fontconfig +gcrypt gme gnome-keyring gstreamer ieee1394 jack jpeg kate libass libav
 	libcaca libnotify +libsamplerate libtar libtiger lirc live lua macosx-notifications
 	macosx-qtkit matroska modplug mp3 mpeg mtp musepack ncurses neon nfs ogg omxil opencv
@@ -79,7 +79,6 @@ RDEPEND="
 		>=media-libs/libdvdnav-4.9:0
 		>=media-libs/libdvdread-4.9:0
 	)
-	elibc_glibc? ( sys-libs/glibc:2.2 )
 	faad? ( media-libs/faad2:0 )
 	fdk? ( media-libs/fdk-aac:0= )
 	ffmpeg? (
