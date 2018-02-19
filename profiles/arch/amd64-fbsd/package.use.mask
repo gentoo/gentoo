@@ -19,6 +19,7 @@ sys-devel/gcc objc-gc
 x11-drivers/nvidia-drivers tools
 x11-libs/pango test
 x11-wm/fluxbox vim-syntax
+virtual/ffmpeg sdl
 
 # Michał Górny <mgorny@gentoo.org> (17 Feb 2018)
 # Claims to require dev-libs/elfutils which doesn't support FreeBSD.
