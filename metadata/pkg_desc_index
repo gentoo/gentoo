@@ -5280,7 +5280,7 @@ dev-python/pyrsistent 0.13.0: Persistent/Functional/Immutable data structures
 dev-python/pysaml2 4.0.2-r3 4.5.0: Python implementation of SAML Version 2 to be used in a WSGI environment
 dev-python/pysendfile 2.0.1: A python interface to sendfile(2) system call
 dev-python/pyserial 3.2.1: Python Serial Port extension
-dev-python/pyside 1.2.2-r1: Python bindings for the Qt framework
+dev-python/pyside 1.2.2-r2: Python bindings for the Qt framework
 dev-python/pyside-tools 0.2.15-r1: PySide development tools (lupdate, rcc, uic)
 dev-python/pysnmp 4.3.3: Python SNMP library
 dev-python/pysolr 3.3.2: Lightweight python wrapper for Apache Solr
