@@ -87,13 +87,6 @@ pkg_preinst() {
 			chgrp gamestat "${ED}${f}" || die
 			chmod g+w "${ED}${f}" || die
 		done
-
-		if has 1.4-r1 ${REPLACING_VERSIONS} \
-				&& [[ -d ${EROOT}/var/games/emacs ]]; then
-			elog "Updating owner and permissions of score file directory."
-			chown 0:gamestat "${EROOT}"/var/games/emacs || die
-			chmod 775 "${EROOT}"/var/games/emacs || die
-		fi
 	fi
 }
 
