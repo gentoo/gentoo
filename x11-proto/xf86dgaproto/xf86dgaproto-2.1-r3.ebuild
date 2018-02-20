@@ -3,6 +3,8 @@
 
 EAPI=6
 
+inherit multilib-build
+
 DESCRIPTION="X.Org XF86DGA protocol headers"
 HOMEPAGE="https://www.x.org/wiki/"
 
