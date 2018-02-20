@@ -9,17 +9,54 @@
  #else
  #include <png.h>
  #endif
-@@ -181,7 +181,8 @@
+@@ -176,18 +176,18 @@
+ {
+     Image *im;
+     ImageInfo *ii;
+-    ExceptionInfo ei;
++    ExceptionInfo *ei;
+     int x,y;
      unsigned long magickver;
      unsigned char amask;
  
 -    GetExceptionInfo(&ei);
-+    ExceptionInfo *exception_info;
-+    exception_info = AcquireExceptionInfo();
++    ei = AcquireExceptionInfo();
      ii=CloneImageInfo(NULL);
      strcpy(ii->filename,s->fname);
-     im=ReadImage(ii,&ei);
-@@ -1098,13 +1099,13 @@
+-    im=ReadImage(ii,&ei);
++    im=ReadImage(ii,ei);
+ 
+     if( !im ) {
+-        MagickError(ei.severity,"Unable to load file",ii->filename);
++        MagickError(ei->severity,"Unable to load file",ii->filename);
+         return -1;
+     }
+ 
+@@ -202,10 +202,10 @@
+     for( y=0; y<im->rows; y++ ) {
+         char pdata[MAXX*4];
+ 
+-        if(!ExportImagePixels(im,0,y,im->columns,1,"RGBA",CharPixel,pdata,&ei)) {
+-            fprintf(stderr,"ERR:  Extracting row %d from %s (%s,%s)\n",y,s->fname,ei.reason,ei.description);
+-            CatchException(&ei);
+-            MagickError(ei.severity,ei.reason,ei.description);
++        if(!ExportImagePixels(im,0,y,im->columns,1,"RGBA",CharPixel,pdata,ei)) {
++            fprintf(stderr,"ERR:  Extracting row %d from %s (%s,%s)\n",y,s->fname,ei->reason,ei->description);
++            CatchException(ei);
++            MagickError(ei->severity,ei->reason,ei->description);
+             DestroyImage(im);
+             return -1;
+         }
+@@ -219,7 +219,7 @@
+         }
+     }
+     DestroyImage(im);
+-    DestroyExceptionInfo(&ei);
++    DestroyExceptionInfo(ei);
+     fprintf(stderr,"INFO: Picture %s had %d colors\n",s->fname,s->numpal);
+ 
+     return 0;
+@@ -1098,13 +1098,13 @@
  void image_init()
  {
  #if defined(HAVE_MAGICK) || defined(HAVE_GMAGICK)
@@ -35,3 +72,4 @@
 +    MagickCoreTerminus();
  #endif
  }
+
