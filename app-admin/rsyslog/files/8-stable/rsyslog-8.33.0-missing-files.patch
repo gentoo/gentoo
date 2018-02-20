@@ -1,0 +1,80 @@
+https://github.com/rsyslog/rsyslog/issues/2493
+
+--- /dev/null
++++ b/tests/omstdout-basic.sh
+@@ -0,0 +1,27 @@
++#!/bin/bash
++# add 2016-11-22 by Pascal Withopf, released under ASL 2.0
++. $srcdir/diag.sh init
++. $srcdir/diag.sh generate-conf
++. $srcdir/diag.sh add-conf '
++module(load="../plugins/imtcp/.libs/imtcp")
++module(load="../plugins/omstdout/.libs/omstdout")
++input(type="imtcp" port="13514")
++
++template(name="outfmt" type="string" string="-%msg%-\n")
++action(type="omstdout" template="outfmt")
++
++'
++. $srcdir/diag.sh startup > rsyslog.out.log
++. $srcdir/diag.sh tcpflood -m1
++. $srcdir/diag.sh shutdown-when-empty
++. $srcdir/diag.sh wait-shutdowna
++
++grep "msgnum:00000000:" rsyslog.out.log > /dev/null
++if [ $? -ne 0 ]; then
++        echo
++        echo "FAIL: expected message not found. rsyslog.out.log is:"
++        cat rsyslog.out.log
++        . $srcdir/diag.sh error-exit 1
++fi
++
++. $srcdir/diag.sh exit
+--- /dev/null
++++ b/tests/template-const-jsonf.sh
+@@ -0,0 +1,18 @@
++#!/bin/bash
++# added 2018-02-10 by Rainer Gerhards; Released under ASL 2.0
++. $srcdir/diag.sh init
++. $srcdir/diag.sh generate-conf
++. $srcdir/diag.sh add-conf '
++template(name="outfmt" type="list") {
++	 constant(outname="@version" value="1" format="jsonf")
++	 constant(value="\n")
++}
++
++local4.* action(type="omfile" file="rsyslog.out.log" template="outfmt")
++'
++. $srcdir/diag.sh startup
++. $srcdir/diag.sh injectmsg 0 1
++. $srcdir/diag.sh shutdown-when-empty
++. $srcdir/diag.sh wait-shutdown
++. $srcdir/diag.sh content-cmp '"@version": "1"'
++. $srcdir/diag.sh exit
+--- /dev/null
++++ b/tests/template-pure-json.sh
+@@ -0,0 +1,18 @@
++#!/bin/bash
++# added 2018-02-10 by Rainer Gerhards; Released under ASL 2.0
++. $srcdir/diag.sh init
++. $srcdir/diag.sh generate-conf
++. $srcdir/diag.sh add-conf '
++template(name="outfmt" type="list" option.jsonf="on") {
++	 property(outname="message" name="msg" format="jsonf")
++	 constant(outname="@version" value="1" format="jsonf")
++}
++
++local4.* action(type="omfile" file="rsyslog.out.log" template="outfmt")
++'
++. $srcdir/diag.sh startup
++. $srcdir/diag.sh injectmsg 0 1
++. $srcdir/diag.sh shutdown-when-empty
++. $srcdir/diag.sh wait-shutdown
++. $srcdir/diag.sh content-cmp '{"message":" msgnum:00000000:", "@version": "1"}'
++. $srcdir/diag.sh exit
+--- /dev/null
++++ b/tests/testsuites/include-std-omfile-action.conf
+@@ -0,0 +1,3 @@
++# this include provides our standard omfile action. It is primarily
++# used for include() tests, but may have other uses as well.
++action(type="omfile" template="outfmt" file="rsyslog.out.log")
