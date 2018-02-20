@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201802-04">
+  <title>MySQL: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities were found in MySQL, the worst of which
+    may allow remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">mysql</product>
+  <announced>2018-02-20</announced>
+  <revised count="1">2018-02-20</revised>
+  <bug>616486</bug>
+  <bug>625626</bug>
+  <bug>634652</bug>
+  <bug>644986</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-db/mysql" auto="yes" arch="*">
+      <unaffected range="ge">5.6.39</unaffected>
+      <vulnerable range="lt">5.6.39</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A fast, multi-threaded, multi-user SQL database server.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in MySQL. Please review
+      the referenced CVE identifiers for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could execute arbitrary code without authentication or
+      cause a partial denial of service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There are no known workarounds at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All MySQL users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/mysql-5.6.39"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-10155">CVE-2017-10155</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-10227">CVE-2017-10227</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-10268">CVE-2017-10268</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-10276">CVE-2017-10276</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-10283">CVE-2017-10283</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-10286">CVE-2017-10286</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-10294">CVE-2017-10294</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-10314">CVE-2017-10314</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-10378">CVE-2017-10378</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-10379">CVE-2017-10379</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-10384">CVE-2017-10384</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-3308">CVE-2017-3308</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-3309">CVE-2017-3309</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-3329">CVE-2017-3329</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-3450">CVE-2017-3450</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-3452">CVE-2017-3452</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-3453">CVE-2017-3453</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-3456">CVE-2017-3456</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-3461">CVE-2017-3461</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-3462">CVE-2017-3462</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-3463">CVE-2017-3463</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-3464">CVE-2017-3464</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-3599">CVE-2017-3599</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-3600">CVE-2017-3600</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-3633">CVE-2017-3633</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-3634">CVE-2017-3634</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-3635">CVE-2017-3635</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-3636">CVE-2017-3636</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-3637">CVE-2017-3637</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-3641">CVE-2017-3641</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-3647">CVE-2017-3647</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-3648">CVE-2017-3648</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-3649">CVE-2017-3649</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-3651">CVE-2017-3651</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-3652">CVE-2017-3652</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-3653">CVE-2017-3653</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-3732">CVE-2017-3732</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2562">CVE-2018-2562</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2573">CVE-2018-2573</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2583">CVE-2018-2583</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2590">CVE-2018-2590</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2591">CVE-2018-2591</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2612">CVE-2018-2612</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2622">CVE-2018-2622</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2640">CVE-2018-2640</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2645">CVE-2018-2645</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2647">CVE-2018-2647</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2665">CVE-2018-2665</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2668">CVE-2018-2668</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2696">CVE-2018-2696</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2703">CVE-2018-2703</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-10-18T02:30:08Z">jmbailey</metadata>
+  <metadata tag="submitter" timestamp="2018-02-20T00:45:52Z">jmbailey</metadata>
+</glsa>

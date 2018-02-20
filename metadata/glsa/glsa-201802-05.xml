@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201802-05">
+  <title>Ruby: Command injection</title>
+  <synopsis>A vulnerability has been found in Ruby which may allow for
+    arbitrary command execution.
+  </synopsis>
+  <product type="ebuild">ruby</product>
+  <announced>2018-02-20</announced>
+  <revised count="1">2018-02-20</revised>
+  <bug>641090</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/ruby" auto="yes" arch="*">
+      <unaffected range="ge" slot="2.2">2.2.9</unaffected>
+      <vulnerable range="lt" slot="2.2">2.2.9</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Ruby is an interpreted object-oriented programming language. The
+      elaborate standard library includes an HTTP server (“WEBRick”) and a
+      class for XML parsing (“REXML”).
+    </p>
+  </background>
+  <description>
+    <p>A command injection flaw was discovered in Net::FTP which impacts Ruby.</p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by enticing a user to download and open a crafted
+      file from a malicious FTP server, could execute arbitrary commands with
+      the privileges of the process.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Ruby users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/ruby-2.2.9:2.2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-17405">CVE-2017-17405</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-01-29T21:08:51Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2018-02-20T00:47:06Z">b-man</metadata>
+</glsa>

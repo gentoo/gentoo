@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201802-06">
+  <title>LibreOffice: Information disclosure</title>
+  <synopsis>A vulnerability in LibreOffice might allow remote attackers to read
+    arbitrary files.
+  </synopsis>
+  <product type="ebuild">libreoffice</product>
+  <announced>2018-02-20</announced>
+  <revised count="1">2018-02-20</revised>
+  <bug>647186</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-office/libreoffice" auto="yes" arch="*">
+      <unaffected range="ge">5.4.5.1</unaffected>
+      <vulnerable range="lt">5.4.5.1</vulnerable>
+    </package>
+    <package name="app-office/libreoffice-bin" auto="yes" arch="*">
+      <unaffected range="ge">5.4.5.1</unaffected>
+      <vulnerable range="lt">5.4.5.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>LibreOffice is a powerful office suite; its clean interface and powerful
+      tools let you unleash your creativity and grow your productivity.
+    </p>
+  </background>
+  <description>
+    <p>It was discovered that missing restrictions in the implementation of the
+      WEBSERVICE function in LibreOffice could result in the disclosure of
+      arbitrary files.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted
+      document using LibreOffice, possibly resulting in the disclosure of
+      arbitrary files readable by the victim.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All LibreOffice users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-office/libreoffice-5.4.5.1"
+    </code>
+    
+    <p>All LibreOffice binary users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=app-office/libreoffice-bin-5.4.5.1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6871">CVE-2018-6871</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-02-20T00:31:59Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2018-02-20T00:47:14Z">whissi</metadata>
+</glsa>

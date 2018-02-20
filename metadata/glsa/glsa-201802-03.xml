@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201802-03">
+  <title>Mozilla Firefox: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Mozilla Firefox, the
+    worst of which may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">firefox</product>
+  <announced>2018-02-20</announced>
+  <revised count="1">2018-02-20</revised>
+  <bug>616030</bug>
+  <bug>621722</bug>
+  <bug>632400</bug>
+  <bug>639854</bug>
+  <bug>645510</bug>
+  <bug>648198</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/firefox" auto="yes" arch="*">
+      <unaffected range="ge">52.6.0</unaffected>
+      <vulnerable range="lt">52.6.0</vulnerable>
+    </package>
+    <package name="www-client/firefox-bin" auto="yes" arch="*">
+      <unaffected range="ge">52.6.0</unaffected>
+      <vulnerable range="lt">52.6.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Mozilla Firefox is a popular open-source web browser from the Mozilla
+      Project.
+    </p>
+    
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Mozilla Firefox. Please
+      review the referenced CVE identifiers for details.
+    </p>
+    
+  </description>
+  <impact type="high">
+    <p>A remote attacker could entice a user to view a specially crafted web
+      page, possibly resulting in the execution of arbitrary code with the
+      privileges of the process or a Denial of Service condition. Furthermore,
+      a remote attacker may be able to perform Man-in-the-Middle attacks,
+      obtain sensitive information, spoof the address bar, conduct clickjacking
+      attacks, bypass security restrictions and protection mechanisms, or have
+      other unspecified impact.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Mozilla Firefox users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-client/firefox-52.6.0"
+    </code>
+    
+    <p>All Mozilla Firefox binary users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-client/firefox-bin-52.6.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2016-10195">CVE-2016-10195</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2016-10196">CVE-2016-10196</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2016-10197">CVE-2016-10197</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2016-6354">CVE-2016-6354</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-5429">CVE-2017-5429</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-5432">CVE-2017-5432</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-5433">CVE-2017-5433</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-5434">CVE-2017-5434</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-5435">CVE-2017-5435</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-5436">CVE-2017-5436</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-5437">CVE-2017-5437</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-5438">CVE-2017-5438</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-5439">CVE-2017-5439</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-5440">CVE-2017-5440</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-5441">CVE-2017-5441</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-5442">CVE-2017-5442</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-5443">CVE-2017-5443</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-5444">CVE-2017-5444</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-5445">CVE-2017-5445</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-5446">CVE-2017-5446</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-5447">CVE-2017-5447</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-5448">CVE-2017-5448</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-5459">CVE-2017-5459</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-5460">CVE-2017-5460</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-5461">CVE-2017-5461</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-5462">CVE-2017-5462</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-5464">CVE-2017-5464</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-5465">CVE-2017-5465</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-5469">CVE-2017-5469</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-5470">CVE-2017-5470</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-5472">CVE-2017-5472</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7749">CVE-2017-7749</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7750">CVE-2017-7750</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7751">CVE-2017-7751</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7752">CVE-2017-7752</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7753">CVE-2017-7753</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7754">CVE-2017-7754</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7756">CVE-2017-7756</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7757">CVE-2017-7757</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7758">CVE-2017-7758</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7764">CVE-2017-7764</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7771">CVE-2017-7771</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7772">CVE-2017-7772</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7773">CVE-2017-7773</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7774">CVE-2017-7774</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7775">CVE-2017-7775</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7776">CVE-2017-7776</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7777">CVE-2017-7777</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7778">CVE-2017-7778</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7779">CVE-2017-7779</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7784">CVE-2017-7784</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7785">CVE-2017-7785</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7786">CVE-2017-7786</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7787">CVE-2017-7787</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7791">CVE-2017-7791</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7792">CVE-2017-7792</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7793">CVE-2017-7793</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7798">CVE-2017-7798</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7800">CVE-2017-7800</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7801">CVE-2017-7801</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7802">CVE-2017-7802</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7803">CVE-2017-7803</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7805">CVE-2017-7805</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7807">CVE-2017-7807</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7809">CVE-2017-7809</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7810">CVE-2017-7810</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7814">CVE-2017-7814</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7818">CVE-2017-7818</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7819">CVE-2017-7819</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7823">CVE-2017-7823</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7824">CVE-2017-7824</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7843">CVE-2017-7843</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7844">CVE-2017-7844</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5089">CVE-2018-5089</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5091">CVE-2018-5091</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5095">CVE-2018-5095</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5096">CVE-2018-5096</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5097">CVE-2018-5097</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5098">CVE-2018-5098</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5099">CVE-2018-5099</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5102">CVE-2018-5102</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5103">CVE-2018-5103</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5104">CVE-2018-5104</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5117">CVE-2018-5117</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-09-17T20:53:31Z">chrisadr</metadata>
+  <metadata tag="submitter" timestamp="2018-02-20T00:45:47Z">chrisadr</metadata>
+</glsa>
