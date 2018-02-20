@@ -20,6 +20,7 @@ RDEPEND=">=sys-fs/fuse-2.8.0:0
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
+	sys-apps/attr
 	virtual/pkgconfig
 	test? (
 		${RDEPEND}
