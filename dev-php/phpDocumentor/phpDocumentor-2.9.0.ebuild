@@ -14,8 +14,8 @@ KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
 # block old version that provides the same binary
-DEPEND="!dev-php/PEAR-PhpDocumentor"
-RDEPEND="media-gfx/graphviz
+RDEPEND="!dev-php/PEAR-PhpDocumentor
+	media-gfx/graphviz
 	dev-lang/php:*[cli,iconv,intl,phar,xmlreader,xslt]"
 S="${WORKDIR}"
 
