@@ -24,7 +24,8 @@ LICENSE="MIT"
 SLOT="0"
 IUSE=""
 
-DEPEND="
+DEPEND=""
+RDEPEND="
 	!<x11-proto/bigreqsproto-1.1.2-r1
 	!<x11-proto/compositeproto-0.4.2-r2
 	!<x11-proto/damageproto-1.2.1-r2
@@ -57,7 +58,6 @@ DEPEND="
 	!x11-proto/fontcacheproto
 	!x11-proto/printproto
 	!x11-proto/xf86rushproto"
-RDEPEND=""
 
 src_unpack() {
 	default
