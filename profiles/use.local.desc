@@ -195,6 +195,8 @@ app-backup/dar:gcrypt - Enables strong encryption support
 app-backup/dar:gpg - Enables usage of asymetric crypto algorithms
 app-backup/deja-dup:nautilus - Build gnome-base/nautilus extension
 app-backup/duplicity:s3 - Support for backing up to the Amazon S3 system
+app-backup/fsarchiver:lz4 - Enable lz4 compression support
+app-backup/fsarchiver:zstd - Enable zstd compression support
 app-benchmarks/httperf:idleconn - Build with the idleconn program
 app-benchmarks/ramspeed:pic - Force shared libraries to be built as PIC (this is slower)
 app-benchmarks/sysbench:aio - Enable libaio support
