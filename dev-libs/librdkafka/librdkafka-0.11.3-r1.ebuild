@@ -15,6 +15,8 @@ if [[ ${PV} == "9999" ]]; then
 else
 	SRC_URI="https://github.com/edenhill/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc x86"
+
+	PATCHES=( "${FILESDIR}"/${P}-fix-memory-leak-issue1534.patch )
 fi
 
 LICENSE="BSD-2"
