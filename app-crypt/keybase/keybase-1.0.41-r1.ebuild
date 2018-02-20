@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils systemd versionator
+inherit eutils systemd user versionator
 
 MY_PV=$(replace_version_separator 3 '-')
 
@@ -23,6 +23,10 @@ RDEPEND="
 
 S="${WORKDIR}/src/github.com/keybase/client"
 
+pkg_setup() {
+	enewuser keybasehelper
+}
+
 src_unpack() {
 	unpack "${P}.tar.gz"
 	mkdir -p "$(dirname "${S}")" || die
@@ -35,10 +39,17 @@ src_compile() {
 		-tags production \
 		-o "${T}/keybase" \
 		github.com/keybase/client/go/keybase || die
+	GOPATH="${WORKDIR}" \
+		go build -v -x \
+		-tags production \
+		-o "${T}/keybase-mount-helper" \
+		github.com/keybase/client/go/mounter/keybase-mount-helper || die
 }
 
 src_install() {
 	dobin "${T}/keybase"
+	dobin "${T}/keybase-mount-helper"
+	fowners keybasehelper:keybasehelper "${EROOT}/usr/bin/keybase-mount-helper"
 	dobin "${S}/packaging/linux/run_keybase"
 	systemd_dounit "${S}/packaging/linux/systemd/keybase.service"
 }
@@ -46,4 +57,5 @@ src_install() {
 pkg_postinst() {
 	elog "Run the service: keybase service"
 	elog "Run the client:  keybase login"
+	elog "Restart keybase: run_keybase"
 }
