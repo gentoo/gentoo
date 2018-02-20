@@ -6,7 +6,7 @@ EAPI=5
 inherit elisp
 
 DESCRIPTION="Minibuffer input completion and cycling"
-HOMEPAGE="http://www.emacswiki.org/emacs/Icicles"
+HOMEPAGE="https://www.emacswiki.org/emacs/Icicles"
 SRC_URI="https://github.com/emacsmirror/icicles/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"

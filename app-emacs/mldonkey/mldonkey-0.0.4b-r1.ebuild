@@ -7,7 +7,7 @@ inherit elisp
 
 MY_P="${PN}-el-${PV}"
 DESCRIPTION="An Emacs Lisp interface to the MLDonkey core"
-HOMEPAGE="http://www.emacswiki.org/emacs/MlDonkey
+HOMEPAGE="https://www.emacswiki.org/emacs/MlDonkey
 	http://web.archive.org/web/20070107165326/www.physik.fu-berlin.de/~dhansen/mldonkey/"
 SRC_URI="http://www.physik.fu-berlin.de/%7Edhansen/mldonkey/files/${MY_P}.tar.gz"
 

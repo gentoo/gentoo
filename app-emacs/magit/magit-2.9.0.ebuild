@@ -7,7 +7,7 @@ NEED_EMACS=24
 inherit elisp
 
 DESCRIPTION="A Git porcelain inside Emacs"
-HOMEPAGE="http://magit.vc/"
+HOMEPAGE="https://magit.vc/"
 SRC_URI="https://github.com/magit/magit/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
