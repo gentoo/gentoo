@@ -273,8 +273,16 @@ src_configure() {
 }
 
 src_compile() {
-	export SANDBOX_ON=0			# for the unbelievers, see Bug #131505
-	emake
+	# Disable sandbox when dumping. For the unbelievers, see bug #131505
+	cat >src/temacs-wrapper <<-'EOF' || die
+		#!/bin/bash
+		export SANDBOX_ON=0
+		unset LD_PRELOAD
+		exec ./temacs "$@"
+	EOF
+	chmod +x src/temacs-wrapper || die
+
+	emake RUN_TEMACS="./temacs-wrapper"
 }
 
 src_install () {
