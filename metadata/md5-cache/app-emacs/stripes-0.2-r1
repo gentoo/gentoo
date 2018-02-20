@@ -2,11 +2,11 @@ DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DEPEND=>=virtual/emacs-23
 DESCRIPTION=An Emacs mode that alternates the background color of lines
 EAPI=5
-HOMEPAGE=http://www.emacswiki.org/emacs/StripesMode
+HOMEPAGE=https://www.emacswiki.org/emacs/StripesMode
 KEYWORDS=alpha amd64 x86
 LICENSE=GPL-2+
 RDEPEND=>=virtual/emacs-23
 SLOT=0
 SRC_URI=mirror://gentoo/stripes-0.2.tar.gz
 _eclasses_=elisp	8a9eaaa38b2345593b1cbc5315dde83c	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f
-_md5_=777d4cc5ba1721260458620153a40f0f
+_md5_=c0c044a6e3b47c66743688d0c4223d0c

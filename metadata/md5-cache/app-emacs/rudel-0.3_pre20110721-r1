@@ -2,11 +2,11 @@ DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DEPEND=>=virtual/emacs-24
 DESCRIPTION=Collaborative editing environment for GNU Emacs
 EAPI=6
-HOMEPAGE=http://rudel.sourceforge.net/ http://www.emacswiki.org/emacs/Rudel
+HOMEPAGE=http://rudel.sourceforge.net/ https://www.emacswiki.org/emacs/Rudel
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3+
 RDEPEND=>=virtual/emacs-24
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/rudel-0.3_pre20110721.tar.xz
 _eclasses_=elisp	8a9eaaa38b2345593b1cbc5315dde83c	elisp-common	23f47b2e1de7abf387105eddd1318738	readme.gentoo-r1	6f03e110529650f57fc7d1fb908b8986
-_md5_=6b54ca3a48d53777a0430620d80f688a
+_md5_=85263b1b75dbbc1c717d2b0d2d6345e9

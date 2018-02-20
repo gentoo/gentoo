@@ -2,11 +2,11 @@ DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DEPEND=>=virtual/emacs-23
 DESCRIPTION=Emacs thumbnail previewer for image files
 EAPI=4
-HOMEPAGE=http://www.emacswiki.org/emacs/ThumbsMode
+HOMEPAGE=https://www.emacswiki.org/emacs/ThumbsMode
 KEYWORDS=amd64 ~ppc sparc x86
 LICENSE=GPL-2
 RDEPEND=virtual/imagemagick-tools >=virtual/emacs-23
 SLOT=0
 SRC_URI=mirror://gentoo/thumbs-2.0.el.bz2
 _eclasses_=elisp	8a9eaaa38b2345593b1cbc5315dde83c	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f
-_md5_=2bb1f279886c239b2d91e48a79da01ab
+_md5_=59ed0a3153f789077c1ad81dfc262b5c

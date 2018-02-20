@@ -2,11 +2,11 @@ DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DEPEND=>=virtual/emacs-23
 DESCRIPTION=Visible bookmarks in buffer
 EAPI=5
-HOMEPAGE=http://www.nongnu.org/bm/ http://www.emacswiki.org/emacs/VisibleBookmarks
+HOMEPAGE=https://www.nongnu.org/bm/ https://www.emacswiki.org/emacs/VisibleBookmarks
 KEYWORDS=amd64 x86
 LICENSE=GPL-2+
 RDEPEND=>=virtual/emacs-23
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/bm-1.32_p20140214.tar.xz
 _eclasses_=elisp	8a9eaaa38b2345593b1cbc5315dde83c	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f
-_md5_=0eaed4c733ae3937448d09e47ff1b224
+_md5_=6df1ff33b1abbb61255de347bbe6d2e7

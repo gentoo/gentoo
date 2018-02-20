@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DEPEND=>=app-emacs/muse-3.02.6a app-emacs/bbdb app-emacs/emacs-w3m sys-apps/texinfo >=virtual/emacs-23
 DESCRIPTION=Maintain a local Wiki using Emacs-friendly markup
 EAPI=5
-HOMEPAGE=http://www.emacswiki.org/emacs/PlannerMode
+HOMEPAGE=https://www.emacswiki.org/emacs/PlannerMode
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=GPL-3+
 PDEPEND=app-emacs/remember
@@ -11,4 +11,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=http://download.gna.org/planner-el/planner-3.42.tar.gz
 _eclasses_=elisp	8a9eaaa38b2345593b1cbc5315dde83c	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f
-_md5_=5c7b987519b36319875b756df64c6afe
+_md5_=fdbd25d48761fcec7cbe9f27a12f6267

@@ -2,11 +2,11 @@ DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DEPEND=media-libs/taglib >=virtual/emacs-23
 DESCRIPTION=The Emacs Multimedia System
 EAPI=5
-HOMEPAGE=https://www.gnu.org/software/emms/ http://www.emacswiki.org/emacs/EMMS
+HOMEPAGE=https://www.gnu.org/software/emms/ https://www.emacswiki.org/emacs/EMMS
 KEYWORDS=~amd64 ~ppc ~sparc ~x86
 LICENSE=GPL-3+ FDL-1.1+
 RDEPEND=media-libs/taglib >=virtual/emacs-23
 SLOT=0
 SRC_URI=https://www.gnu.org/software/emms/download/emms-3.0.tar.gz
 _eclasses_=elisp	8a9eaaa38b2345593b1cbc5315dde83c	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=8ce159b4a89d310c760db4bfe36dc64d
+_md5_=0ebaba582add43d378c974bc1e74d2d4

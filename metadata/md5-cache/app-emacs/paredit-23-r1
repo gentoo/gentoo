@@ -2,11 +2,11 @@ DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DEPEND=>=virtual/emacs-23
 DESCRIPTION=Minor mode for performing structured editing of S-expressions
 EAPI=5
-HOMEPAGE=http://mumble.net/~campbell/emacs/ http://www.emacswiki.org/emacs/ParEdit
+HOMEPAGE=https://mumble.net/~campbell/emacs/ https://www.emacswiki.org/emacs/ParEdit
 KEYWORDS=~amd64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos
 LICENSE=GPL-3+
 RDEPEND=>=virtual/emacs-23
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/paredit-23.tar.xz
 _eclasses_=elisp	8a9eaaa38b2345593b1cbc5315dde83c	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f
-_md5_=87d2745aaaea96a7e20d08eb1c1e2fff
+_md5_=cc59a57ffcb8673f6fcbedc308687d55

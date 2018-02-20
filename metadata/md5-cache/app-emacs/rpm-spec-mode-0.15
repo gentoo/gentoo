@@ -2,11 +2,11 @@ DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DEPEND=>=virtual/emacs-23
 DESCRIPTION=Emacs mode to ease editing of RPM spec files
 EAPI=5
-HOMEPAGE=http://www.emacswiki.org/emacs/RpmSpecMode
+HOMEPAGE=https://www.emacswiki.org/emacs/RpmSpecMode
 KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2+
 RDEPEND=>=virtual/emacs-23
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/rpm-spec-mode-0.15.el.xz
 _eclasses_=elisp	8a9eaaa38b2345593b1cbc5315dde83c	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f
-_md5_=10d710f2b6ecbd5954eeabcaac2df8a0
+_md5_=c2e58e28a9eb5afcfb8279229609d7a2

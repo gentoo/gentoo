@@ -2,11 +2,11 @@ DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DEPEND=app-arch/xz-utils >=virtual/emacs-23
 DESCRIPTION=Major mode for editing Markdown-formatted text files
 EAPI=4
-HOMEPAGE=http://jblevins.org/projects/markdown-mode/
+HOMEPAGE=https://jblevins.org/projects/markdown-mode/
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2+
 RDEPEND=|| ( dev-python/markdown2 dev-python/markdown ) >=virtual/emacs-23
 SLOT=0
 SRC_URI=mirror://gentoo/markdown-mode-1.8.1.el.xz
 _eclasses_=elisp	8a9eaaa38b2345593b1cbc5315dde83c	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f
-_md5_=6865c32a2b74db27776de81f39b572ba
+_md5_=9eb854ea3f70b5fe347b3206daeb215a

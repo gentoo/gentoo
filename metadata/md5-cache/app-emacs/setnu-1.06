@@ -2,11 +2,11 @@ DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DEPEND=>=virtual/emacs-23
 DESCRIPTION=Display line numbers in Emacs buffers
 EAPI=5
-HOMEPAGE=http://www.wonderworks.com/ http://www.emacswiki.org/emacs/LineNumbers
+HOMEPAGE=http://www.wonderworks.com/ https://www.emacswiki.org/emacs/LineNumbers
 KEYWORDS=amd64 ~ppc x86
 LICENSE=GPL-2+
 RDEPEND=>=virtual/emacs-23
 SLOT=0
 SRC_URI=mirror://gentoo/setnu-1.06.tar.gz
 _eclasses_=elisp	8a9eaaa38b2345593b1cbc5315dde83c	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f
-_md5_=9412801b4e02c58c1892d436dc0de690
+_md5_=98e5281c80d21620565645931af2c3c3

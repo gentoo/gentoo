@@ -2,11 +2,11 @@ DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DEPEND=>=virtual/emacs-23
 DESCRIPTION=An Emacs minor mode for highlighting broken formatting rules
 EAPI=5
-HOMEPAGE=http://www.jpl.org/ftp/pub/elisp/ http://www.emacswiki.org/emacs/DevelockMode
+HOMEPAGE=https://www.jpl.org/ftp/pub/elisp/ https://www.emacswiki.org/emacs/DevelockMode
 KEYWORDS=amd64 ppc sparc x86
 LICENSE=GPL-2+
 RDEPEND=>=virtual/emacs-23
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/develock-0.45.el.gz
 _eclasses_=elisp	8a9eaaa38b2345593b1cbc5315dde83c	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f
-_md5_=b7597308eabbea65ed52bd2e417dba51
+_md5_=fa3d1f5bdb01fed056e6718980ce8ff2

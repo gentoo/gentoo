@@ -2,11 +2,11 @@ DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DEPEND=>=app-emacs/dash-2.13.0 >=app-emacs/with-editor-2.5.8 sys-apps/texinfo >=virtual/emacs-24
 DESCRIPTION=A Git porcelain inside Emacs
 EAPI=5
-HOMEPAGE=http://magit.vc/
+HOMEPAGE=https://magit.vc/
 KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-3+
 RDEPEND=>=app-emacs/dash-2.13.0 >=app-emacs/with-editor-2.5.8 >=dev-vcs/git-1.9.4 >=virtual/emacs-24
 SLOT=0
 SRC_URI=https://github.com/magit/magit/archive/2.9.0.tar.gz -> magit-2.9.0.tar.gz
 _eclasses_=elisp	8a9eaaa38b2345593b1cbc5315dde83c	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f
-_md5_=ad83860cace194d47abcbca265ce6588
+_md5_=e7493088bf08a24d9e531adfbad36cf2

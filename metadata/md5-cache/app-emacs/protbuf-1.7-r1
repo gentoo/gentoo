@@ -2,11 +2,11 @@ DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DEPEND=>=virtual/emacs-23
 DESCRIPTION=Protect Emacs buffers from accidental killing
 EAPI=5
-HOMEPAGE=http://www.splode.com/~friedman/software/emacs-lisp/ http://www.emacswiki.org/emacs/ProtectingBuffers
+HOMEPAGE=http://www.splode.com/~friedman/software/emacs-lisp/ https://www.emacswiki.org/emacs/ProtectingBuffers
 KEYWORDS=amd64 ~ppc x86
 LICENSE=GPL-2+
 RDEPEND=>=virtual/emacs-23
 SLOT=0
 SRC_URI=mirror://gentoo/protbuf-1.7.tar.bz2
 _eclasses_=elisp	8a9eaaa38b2345593b1cbc5315dde83c	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f
-_md5_=86f9dd65a23df2c36f6a74db6d2c19d4
+_md5_=33a7bc541106ab1268d2d4a72591c33d

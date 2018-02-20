@@ -2,11 +2,11 @@ DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DEPEND=>=virtual/emacs-23
 DESCRIPTION=Drop-down menu interface
 EAPI=5
-HOMEPAGE=http://www.emacswiki.org/emacs/dropdown-list.el
+HOMEPAGE=https://www.emacswiki.org/emacs/dropdown-list.el
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3+
 RDEPEND=>=virtual/emacs-23
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/dropdown-list-20120329.el.xz
 _eclasses_=elisp	8a9eaaa38b2345593b1cbc5315dde83c	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f
-_md5_=4e3d80c295056a2c8b9c124c01f682fb
+_md5_=0402d6ca62dc7d6393838b65203682bb

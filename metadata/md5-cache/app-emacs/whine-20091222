@@ -2,11 +2,11 @@ DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DEPEND=>=virtual/emacs-23
 DESCRIPTION=Complaint generator for GNU Emacs
 EAPI=5
-HOMEPAGE=http://www.emacswiki.org/emacs/Whine
+HOMEPAGE=https://www.emacswiki.org/emacs/Whine
 KEYWORDS=amd64 x86
 LICENSE=public-domain
 RDEPEND=>=virtual/emacs-23
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/whine-20091222.tar.bz2
 _eclasses_=elisp	8a9eaaa38b2345593b1cbc5315dde83c	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f
-_md5_=0013b90bf3ef5502720c1cc99b54b964
+_md5_=fdf86ad9c0d6595994973414d7ffb60a

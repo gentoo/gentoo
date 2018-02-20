@@ -2,11 +2,11 @@ DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DEPEND=>=virtual/emacs-23
 DESCRIPTION=An Emacs mode that reformats IETF RFCs for display
 EAPI=5
-HOMEPAGE=http://www.loveshack.ukfsn.org/emacs/ http://www.emacswiki.org/emacs/RfcView
+HOMEPAGE=http://www.loveshack.ukfsn.org/emacs/ https://www.emacswiki.org/emacs/RfcView
 KEYWORDS=alpha amd64 x86
 LICENSE=GPL-3+
 RDEPEND=>=virtual/emacs-23
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/rfcview-0.13.el.xz
 _eclasses_=elisp	8a9eaaa38b2345593b1cbc5315dde83c	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f
-_md5_=b556015a7c8c0830315624d3cfb1f885
+_md5_=cb897fba3f1eda6e19a81cb4dcf3ae15

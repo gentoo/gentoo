@@ -2,11 +2,11 @@ DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DEPEND=>=virtual/emacs-23
 DESCRIPTION=An Emacs major mode for editing X resource database files
 EAPI=5
-HOMEPAGE=https://launchpad.net/xrdb-mode http://www.emacswiki.org/emacs/ResourceFiles
+HOMEPAGE=https://launchpad.net/xrdb-mode https://www.emacswiki.org/emacs/ResourceFiles
 KEYWORDS=amd64 ~ppc x86
 LICENSE=GPL-2+
 RDEPEND=>=virtual/emacs-23
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/xrdb-mode-3.0.el.xz
 _eclasses_=elisp	8a9eaaa38b2345593b1cbc5315dde83c	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f
-_md5_=3c6dca017bd822771209d283a83348cb
+_md5_=541145a3b5eb70361e5e41b30fe467c7
