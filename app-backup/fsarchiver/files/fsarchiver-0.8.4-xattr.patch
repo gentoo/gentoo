@@ -1,0 +1,69 @@
+From 3c346717b7dcd8cfcbf7a359c2f924e00435b5f0 Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Tue, 20 Feb 2018 10:13:30 +0100
+Subject: [PATCH] Replace <attr/xattr.h> with <sys/xattr.h>
+
+The former has been long deprecated and removed in attr-2.4.48
+
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+---
+ configure.ac       | 2 +-
+ src/oper_restore.c | 3 ++-
+ src/oper_save.c    | 7 ++++++-
+ 3 files changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 66cfbf3..6eca553 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -114,7 +114,7 @@ PKG_CHECK_MODULES([BLKID], [blkid])
+ PKG_CHECK_MODULES([UUID], [uuid])
+ 
+ dnl Check for header files installed with a library
+-AC_CHECK_HEADER([attr/xattr.h],, [AC_MSG_ERROR([attr/xattr.h not found. you may have to install a package called attr, libattr, libattr-devel])])
++AC_CHECK_HEADER([sys/xattr.h],, [AC_MSG_ERROR([sys/xattr.h not found. you may have to install a package called attr, libattr, libattr-devel])])
+ 
+ dnl Check for standard header files.
+ AC_CHECK_HEADERS([malloc.h unistd.h pthread.h])
+diff --git a/src/oper_restore.c b/src/oper_restore.c
+index dd8af1f..92eb5f6 100644
+--- a/src/oper_restore.c
++++ b/src/oper_restore.c
+@@ -24,7 +24,8 @@
+ #include <assert.h>
+ #include <string.h>
+ #include <stdlib.h>
+-#include <attr/xattr.h>
++#include <sys/xattr.h>
++#include <errno.h>
+ #include <sys/time.h>
+ #include <sys/stat.h>
+ #include <gcrypt.h>
+diff --git a/src/oper_save.c b/src/oper_save.c
+index ce6f194..ff29074 100644
+--- a/src/oper_save.c
++++ b/src/oper_save.c
+@@ -29,7 +29,8 @@
+ #include <sys/param.h>
+ #include <sys/statvfs.h>
+ #include <sys/stat.h>
+-#include <attr/xattr.h>
++#include <sys/xattr.h>
++#include <errno.h>
+ #include <zlib.h>
+ #include <assert.h>
+ #include <gcrypt.h>
+@@ -59,6 +60,10 @@
+ #include "error.h"
+ #include "queue.h"
+ 
++#ifndef ENOATTR
++#define ENOATTR ENODATA
++#endif
++
+ typedef struct s_savear
+ {   carchwriter ai;
+     cregmulti   regmulti;
+-- 
+2.16.2
+

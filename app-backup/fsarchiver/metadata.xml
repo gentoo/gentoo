@@ -5,6 +5,10 @@
 		<email>hwoarang@gentoo.org</email>
 		<name>Markos Chandras</name>
 	</maintainer>
+	<use>
+		<flag name="lz4">Enable lz4 compression support</flag>
+		<flag name="zstd">Enable zstd compression support</flag>
+	</use>
 	<upstream>
 		<remote-id type="sourceforge">fsarchiver</remote-id>
 		<remote-id type="github">fdupoux/fsarchiver</remote-id>
