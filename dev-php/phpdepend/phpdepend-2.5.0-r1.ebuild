@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -42,5 +42,5 @@ src_install() {
 	# actually run needs to be symlinked into the source tree.
 	exeinto "/usr/share/${PN}/src/bin"
 	doexe "src/bin/${MY_PN}"
-	dosym "/usr/share/${PN}/src/bin/${MY_PN}" "/usr/bin/${MY_PN}"
+	dosym "../share/${PN}/src/bin/${MY_PN}" "/usr/bin/${MY_PN}"
 }
