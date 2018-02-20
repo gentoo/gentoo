@@ -7,5 +7,5 @@ KEYWORDS=~amd64 ~x86
 LICENSE=LGPL-3+ GPL-3 BitstreamVera GPL-2
 RDEPEND=dev-lang/php
 SLOT=0
-SRC_URI=https://github.com/tecnickcom/TCPDF/archive/6.2.13.tar.gz -> tcpdf-6.2.13.tar.gz
-_md5_=620ee5680107f75a2a9e93bc74b97d5e
+SRC_URI=https://github.com/tecnickcom/TCPDF/archive/6.2.16.tar.gz -> tcpdf-6.2.16.tar.gz
+_md5_=1b455980649b959f9885c2a1c0bf357e

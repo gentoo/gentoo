@@ -7,4 +7,4 @@ LICENSE=BSD
 RDEPEND=dev-lang/php dev-php/fedora-autoloader >=dev-php/symfony-config-2.3 >=dev-php/symfony-dependency-injection-2.3 >=dev-php/symfony-filesystem-2.3
 SLOT=0
 SRC_URI=https://github.com/pdepend/pdepend/archive/2.5.0.tar.gz -> phpdepend-2.5.0.tar.gz
-_md5_=89082ad7e3d7ab4ca4cdfe3ea6ddb1f9
+_md5_=5262ffd1cae21aac1b058cfb9905fc60
