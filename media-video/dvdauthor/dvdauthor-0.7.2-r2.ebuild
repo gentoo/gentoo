@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ppc ppc64 ~sparc x86"
 IUSE="graphicsmagick +imagemagick"
 REQUIRED_USE="^^ ( graphicsmagick imagemagick )"
 
@@ -32,7 +32,7 @@ src_prepare() {
 	default
 
 	if use imagemagick && has_version '>=media-gfx/imagemagick-7.0.1.0' ; then
-		eapply "${FILESDIR}/${PN}-0.7.2-r2-imagemagick7.patch"
+		eapply "${FILESDIR}/${PN}-0.7.2-imagemagick7.patch"
 	fi
 
 	if use graphicsmagick ; then
