@@ -3,6 +3,8 @@
 
 EAPI=6
 
+inherit multilib-build
+
 DESCRIPTION="X.Org Fonts protocol headers"
 HOMEPAGE="https://www.x.org/wiki/"
 

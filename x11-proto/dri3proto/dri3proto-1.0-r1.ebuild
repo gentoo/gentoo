@@ -3,6 +3,8 @@
 
 EAPI=6
 
+inherit multilib-build
+
 DESCRIPTION="X.Org DRI3 protocol specification and Xlib/Xserver headers"
 HOMEPAGE="https://www.x.org/wiki/"
 
