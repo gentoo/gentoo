@@ -17,7 +17,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="
-	>=dev-lang/go-1.6:0"
+	>=dev-lang/go-1.6:0
+	app-crypt/kbfs"
 RDEPEND="
 	app-crypt/gnupg"
 
