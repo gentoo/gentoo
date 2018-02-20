@@ -30,6 +30,10 @@ DOCS=(
 	doc/keepalived.conf.SYNOPSIS doc/NOTE_vrrp_vmac.txt
 )
 
+PATCHES=(
+	"${FILESDIR}/${PN}-fix-building-with-linux-headers-4.15.patch"
+)
+
 src_prepare() {
 	default
 
