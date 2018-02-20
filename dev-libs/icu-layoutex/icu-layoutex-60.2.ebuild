@@ -13,7 +13,7 @@ LICENSE="BSD"
 
 SLOT="0/${PV}"
 
-KEYWORDS="amd64 ~hppa ~ia64 ~ppc ~ppc64 sparc x86"
+KEYWORDS="amd64 ~hppa ia64 ~ppc ~ppc64 sparc x86"
 IUSE="debug static-libs"
 
 RDEPEND="
