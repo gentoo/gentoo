@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,16 +14,15 @@ KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
 # block old version that provides the same binary
-DEPEND="!dev-php/PEAR-PhpDocumentor"
-RDEPEND="media-gfx/graphviz
+RDEPEND="!dev-php/PEAR-PhpDocumentor
+	media-gfx/graphviz
 	dev-lang/php:*[cli,iconv,intl,phar,xmlreader,xslt]"
 S="${WORKDIR}"
 
 src_unpack() { :; }
 
 src_install() {
-	insinto /usr/share/php/${PN}
-	insopts -m755
-	newins "${DISTDIR}/${P}.phar" ${PN}.phar
-	dosym /usr/share/php/${PN}/${PN}.phar /usr/bin/phpdoc
+	exeinto /usr/share/php/${PN}
+	newexe "${DISTDIR}/${P}.phar" ${PN}.phar
+	dosym "../share/php/${PN}/${PN}.phar" /usr/bin/phpdoc
 }

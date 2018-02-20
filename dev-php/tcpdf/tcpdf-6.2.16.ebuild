@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,7 +22,7 @@ src_install() {
 	doins config/tcpdf_config.php
 	# Create a symlink for the config file, because the library will only
 	# look for it in its own source tree (not in /etc where we've put it).
-	dosym /etc/tcpdf_config.php "/usr/share/php/${PN}/config/tcpdf_config.php"
+	dosym ../../../../../etc/tcpdf_config.php "/usr/share/php/${PN}/config/tcpdf_config.php"
 
 	exeinto "/usr/share/php/${PN}/tools"
 	doexe tools/tcpdf_addfont.php

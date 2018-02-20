@@ -1,7 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 DESCRIPTION="CLI frontend for PHP_CodeCoverage"
 HOMEPAGE="https://github.com/sebastianbergmann/phpcov"
@@ -13,7 +13,7 @@ KEYWORDS="~amd64 ~hppa ~x86"
 IUSE=""
 
 DEPEND=""
-RDEPEND="dev-lang/php[phar]
+RDEPEND="dev-lang/php:*[phar]
 	dev-php/xdebug"
 
 S="${WORKDIR}"
@@ -23,8 +23,7 @@ src_unpack() {
 }
 
 src_install() {
-	insinto /usr/share/php/${PN}
-	insopts -m755
-	newins "${DISTDIR}"/${P}.phar "${PN}.phar"
-	dosym /usr/share/php/${PN}/${PN}.phar /usr/bin/${PN}
+	exeinto /usr/share/php/${PN}
+	newexe "${DISTDIR}"/${P}.phar "${PN}.phar"
+	dosym "../share/php/${PN}/${PN}.phar" /usr/bin/${PN}
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -40,7 +40,7 @@ src_install() {
 	doexe "bin/${PN}"
 	insinto "/usr/share/${PN}/bin"
 	doins "bin/${PN}.php"
-	dosym "/usr/share/${PN}/bin/${PN}" "/usr/bin/${PN}"
+	dosym "../share/${PN}/bin/${PN}" "/usr/bin/${PN}"
 
 	# Phing tries to get the version number from this file.
 	insinto "/usr/share/${PN}/etc"
