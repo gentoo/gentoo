@@ -37,7 +37,6 @@ DEPEND=">=dev-libs/libpcre-3.4
 	)"
 
 RDEPEND="${DEPEND}
-	dovecot-sasl? ( net-mail/dovecot )
 	memcached? ( net-misc/memcached )
 	net-mail/mailbase
 	!mail-mta/courier
