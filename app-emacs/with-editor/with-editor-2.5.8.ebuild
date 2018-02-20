@@ -7,7 +7,7 @@ NEED_EMACS=24
 inherit elisp
 
 DESCRIPTION="Use the Emacsclient as the \$EDITOR of child processes"
-HOMEPAGE="http://magit.vc/manual/with-editor"
+HOMEPAGE="https://magit.vc/manual/with-editor/"
 SRC_URI="https://github.com/magit/with-editor/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"

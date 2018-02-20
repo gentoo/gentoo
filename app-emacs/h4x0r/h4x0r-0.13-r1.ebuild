@@ -6,7 +6,7 @@ EAPI=5
 inherit elisp
 
 DESCRIPTION="Aid in writing like a script kiddie does"
-HOMEPAGE="http://www.emacswiki.org/emacs/EliteSpeech"
+HOMEPAGE="https://www.emacswiki.org/emacs/EliteSpeech"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2+"

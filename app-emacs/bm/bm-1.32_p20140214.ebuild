@@ -6,8 +6,8 @@ EAPI=5
 inherit elisp
 
 DESCRIPTION="Visible bookmarks in buffer"
-HOMEPAGE="http://www.nongnu.org/bm/
-	http://www.emacswiki.org/emacs/VisibleBookmarks"
+HOMEPAGE="https://www.nongnu.org/bm/
+	https://www.emacswiki.org/emacs/VisibleBookmarks"
 # snapshot of https://github.com/joodland/bm.git
 SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
 
