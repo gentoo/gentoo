@@ -71,9 +71,6 @@ all_ruby_prepare() {
 	# fix systemd path
 	epatch "${FILESDIR}/puppet-systemd.patch"
 
-	# backport upstream fix for ruby 2.3.6 compatibility
-	epatch "${FILESDIR}/puppet-4-webrick-ruby.patch"
-
 	# Avoid specs that can only run in the puppet.git repository. This
 	# should be narrowed down to the specific specs.
 	rm spec/integration/parser/compiler_spec.rb || die
