@@ -1,9 +1,9 @@
 DEFINED_PHASES=-
-DEPEND=x11-proto/xorgproto
 DESCRIPTION=X.Org DRI2 protocol headers
 EAPI=6
 HOMEPAGE=https://www.x.org/wiki/
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=MIT
+RDEPEND=x11-proto/xorgproto
 SLOT=0
-_md5_=5a1faffc5e0306908dfef24adf1e8f07
+_md5_=582fba47311447028810ed297bbb54a1

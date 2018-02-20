@@ -1,9 +1,9 @@
 DEFINED_PHASES=-
-DEPEND=x11-proto/xorgproto
 DESCRIPTION=X.Org XF86BigFont protocol headers
 EAPI=6
 HOMEPAGE=https://www.x.org/wiki/
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=MIT
+RDEPEND=x11-proto/xorgproto
 SLOT=0
-_md5_=684c6c0fd51f028c898e7f30ef28046b
+_md5_=e851af71193efa4ab9d49f2faff44261

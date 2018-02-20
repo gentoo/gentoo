@@ -1,9 +1,9 @@
 DEFINED_PHASES=-
-DEPEND=x11-proto/xorgproto
 DESCRIPTION=X.Org DRI3 protocol specification and Xlib/Xserver headers
 EAPI=6
 HOMEPAGE=https://www.x.org/wiki/
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=MIT
+RDEPEND=x11-proto/xorgproto
 SLOT=0
-_md5_=d3fb10475c72e725be56baeb80bffd01
+_md5_=6b287ceedd61fb67b33946c8e4c429d2
