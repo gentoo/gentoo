@@ -42,15 +42,17 @@ pkg_setup() {
 
 src_unpack() {
 	# we need headers & test utilities
-	git-r3_fetch "https://git.llvm.org/git/libcxx.git
-		https://github.com/llvm-mirror/libcxx.git"
+	if use test
+		git-r3_fetch "https://git.llvm.org/git/libcxx.git
+			https://github.com/llvm-mirror/libcxx.git"
+	fi
 	git-r3_fetch
 
 	if use test; then
 		git-r3_checkout https://llvm.org/git/libcxx.git \
 			"${WORKDIR}"/libcxx '' include utils/libcxx
-		git-r3_checkout
 	fi
+	git-r3_checkout
 }
 
 multilib_src_configure() {
