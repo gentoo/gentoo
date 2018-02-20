@@ -23,6 +23,7 @@ DEPEND="gpm? ( sys-libs/gpm[${MULTILIB_USEDEP}] )"
 # Block the older ncurses that installed all files w/SLOT=5. #557472
 RDEPEND="${DEPEND}
 	!<=sys-libs/ncurses-5.9-r4:5
+	!<sys-libs/slang-2.3.2_pre23
 	!<x11-terms/rxvt-unicode-9.06-r3
 	!<x11-terms/st-0.6-r1
 	!app-emulation/emul-linux-x86-baselibs"
