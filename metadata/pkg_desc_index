@@ -8112,7 +8112,7 @@ media-video/cpvts 1.2: raw copy title sets from a DVD to your harddisc
 media-video/dirac 1.0.2-r1: Open Source video codec
 media-video/dvbsnoop 1.4.50-r1: DVB/MPEG stream analyzer program
 media-video/dvd9to5 0.1.7: Perl script to backup the main feature of a DVD-9 on DVD-5
-media-video/dvdauthor 0.7.1-r1 0.7.2-r1: Tools for generating DVD files to be played on standalone DVD players
+media-video/dvdauthor 0.7.1-r1 0.7.2-r2: Tools for generating DVD files to be played on standalone DVD players
 media-video/dvdbackup 0.4.1 0.4.2: Backup content from DVD to hard disk
 media-video/dvdimagecmp 0.3-r1: Tool to compare a burned DVD with an image to check for errors
 media-video/dvdrip 0.98.11-r3: dvd::rip is a graphical frontend for transcode
