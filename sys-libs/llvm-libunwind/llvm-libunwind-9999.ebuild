@@ -42,7 +42,7 @@ pkg_setup() {
 
 src_unpack() {
 	# we need headers & test utilities
-	if use test
+	if use test; then
 		git-r3_fetch "https://git.llvm.org/git/libcxx.git
 			https://github.com/llvm-mirror/libcxx.git"
 	fi
