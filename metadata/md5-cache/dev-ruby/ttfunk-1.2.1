@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install prepare setup test unpack
-DEPEND=ruby_targets_ruby22? ( dev-lang/ruby:2.2 ) ruby_targets_ruby23? ( dev-lang/ruby:2.3 ) ruby_targets_ruby22? ( test? ( dev-ruby/rspec:2[ruby_targets_ruby22] >=dev-ruby/rspec-core-2.14.8-r2[ruby_targets_ruby22] ) ) ruby_targets_ruby23? ( test? ( dev-ruby/rspec:2[ruby_targets_ruby23] >=dev-ruby/rspec-core-2.14.8-r2[ruby_targets_ruby23] ) ) ruby_targets_ruby22? ( virtual/rubygems[ruby_targets_ruby22] ) ruby_targets_ruby23? ( virtual/rubygems[ruby_targets_ruby23] ) test? ( ruby_targets_ruby22? ( virtual/rubygems[ruby_targets_ruby22] ) ruby_targets_ruby23? ( virtual/rubygems[ruby_targets_ruby23] ) )
+DEPEND=ruby_targets_ruby22? ( dev-lang/ruby:2.2 ) ruby_targets_ruby23? ( dev-lang/ruby:2.3 ) ruby_targets_ruby24? ( dev-lang/ruby:2.4 ) ruby_targets_ruby22? ( test? ( dev-ruby/rspec:2[ruby_targets_ruby22] >=dev-ruby/rspec-core-2.14.8-r2[ruby_targets_ruby22] ) ) ruby_targets_ruby23? ( test? ( dev-ruby/rspec:2[ruby_targets_ruby23] >=dev-ruby/rspec-core-2.14.8-r2[ruby_targets_ruby23] ) ) ruby_targets_ruby24? ( test? ( dev-ruby/rspec:2[ruby_targets_ruby24] >=dev-ruby/rspec-core-2.14.8-r2[ruby_targets_ruby24] ) ) ruby_targets_ruby22? ( virtual/rubygems[ruby_targets_ruby22] ) ruby_targets_ruby23? ( virtual/rubygems[ruby_targets_ruby23] ) ruby_targets_ruby24? ( virtual/rubygems[ruby_targets_ruby24] ) test? ( ruby_targets_ruby22? ( virtual/rubygems[ruby_targets_ruby22] ) ruby_targets_ruby23? ( virtual/rubygems[ruby_targets_ruby23] ) ruby_targets_ruby24? ( virtual/rubygems[ruby_targets_ruby24] ) )
 DESCRIPTION=A TrueType font parser written in pure ruby
 EAPI=5
 HOMEPAGE=https://github.com/prawnpdf/ttfunk/
-IUSE=elibc_FreeBSD ruby_targets_ruby22 ruby_targets_ruby23 test test
+IUSE=elibc_FreeBSD ruby_targets_ruby22 ruby_targets_ruby23 ruby_targets_ruby24 test test
 KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
 LICENSE=|| ( GPL-2 GPL-3 Ruby )
-RDEPEND=ruby_targets_ruby22? ( dev-lang/ruby:2.2 ) ruby_targets_ruby23? ( dev-lang/ruby:2.3 ) ruby_targets_ruby22? ( virtual/rubygems[ruby_targets_ruby22] ) ruby_targets_ruby23? ( virtual/rubygems[ruby_targets_ruby23] )
-REQUIRED_USE=|| ( ruby_targets_ruby22 ruby_targets_ruby23 )
+RDEPEND=ruby_targets_ruby22? ( dev-lang/ruby:2.2 ) ruby_targets_ruby23? ( dev-lang/ruby:2.3 ) ruby_targets_ruby24? ( dev-lang/ruby:2.4 ) ruby_targets_ruby22? ( virtual/rubygems[ruby_targets_ruby22] ) ruby_targets_ruby23? ( virtual/rubygems[ruby_targets_ruby23] ) ruby_targets_ruby24? ( virtual/rubygems[ruby_targets_ruby24] )
+REQUIRED_USE=|| ( ruby_targets_ruby22 ruby_targets_ruby23 ruby_targets_ruby24 )
 SLOT=1.2
 SRC_URI=https://github.com/prawnpdf/ttfunk/archive/1.2.1.tar.gz -> ttfunk-1.2.1.tar.gz
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	java-utils-2	0ee72667014428e01a01df2345244cf3	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	ruby-fakegem	cf1343b57e8029745950b4b147ff4d3a	ruby-ng	2da44d50080e3d54e1a4ac7d91d149f8	ruby-utils	e5942a80e3c3b936c6b84d6dc4af9f9c	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	versionator	ce21313503c41896ebcd7d58b0607e37
-_md5_=fe76c5d86d568bdb90244083b9faac2d
+_md5_=4ccc3d5caf0b4db5a502168eaf4a885f
