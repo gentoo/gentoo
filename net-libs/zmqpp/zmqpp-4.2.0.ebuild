@@ -23,6 +23,10 @@ IUSE="static-libs"
 DEPEND="net-libs/zeromq[static-libs?]"
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-multilib-strict.patch"
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DIS_TRAVIS_CI_BUILD=OFF
