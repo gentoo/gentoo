@@ -9,4 +9,4 @@ LICENSE=LGPL-2.1
 SLOT=0
 SRC_URI=mirror://sourceforge/judy/Judy-1.0.5.tar.gz
 _eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	8ffb5e2112a70fef5f37fcacad308726	multilib-minimal	9139c3a57e077cb8e0d0f73ceb080b89	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=23e885a4fa982f88ae26ebe9cc730c23
+_md5_=ea4b24d76bc84f2e21ce4e041c823a01
