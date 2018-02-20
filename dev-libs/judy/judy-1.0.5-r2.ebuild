@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,6 +17,7 @@ DOCS=( AUTHORS ChangeLog README )
 
 src_prepare() {
 	eapply -p0 "${FILESDIR}/${P}-parallel-make.patch"
+	eapply "${FILESDIR}/${P}-gcc49.patch"
 	sed -i 's/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/g' configure.ac || die
 	eapply_user
 	eautoreconf
