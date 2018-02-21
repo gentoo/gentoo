@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils wxwidgets xdg-utils
+inherit eutils gnome2-utils wxwidgets xdg-utils
 
 MY_P="${PN}-minsrc-${PV}"
 DOC_PV="${PV}"
@@ -106,11 +106,13 @@ src_install() {
 }
 
 pkg_postinst() {
+	gnome2_icon_cache_update
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
 }
 
 pkg_postrm() {
+	gnome2_icon_cache_update
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
 }
