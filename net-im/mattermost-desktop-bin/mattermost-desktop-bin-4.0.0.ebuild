@@ -34,7 +34,7 @@ RDEPEND="
 	media-libs/freetype:2[${MULTILIB_USEDEP}]
 	net-print/cups:0[${MULTILIB_USEDEP}]
 	sys-apps/dbus:0[${MULTILIB_USEDEP}]
-	sys-devel/gcc:6.4.0[${MULTILIB_USEDEP}]
+	sys-devel/gcc[${MULTILIB_USEDEP}]
 	sys-libs/glibc:2.2[${MULTILIB_USEDEP}]
 	x11-libs/cairo:0[${MULTILIB_USEDEP}]
 	x11-libs/gdk-pixbuf:2[${MULTILIB_USEDEP}]
