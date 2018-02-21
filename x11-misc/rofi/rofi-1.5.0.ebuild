@@ -32,6 +32,7 @@ DEPEND="
 	virtual/pkgconfig
 	x11-proto/xineramaproto
 	x11-proto/xproto
+	gnome-base/librsvg
 	test? ( >=dev-libs/check-0.11 )
 "
 PATCHES=(
