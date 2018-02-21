@@ -11,7 +11,7 @@ SRC_URI="http://www.soft-switch.org/downloads/spandsp/${P/_}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 hppa ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 hppa ia64 ~ppc ~ppc64 x86"
 IUSE="doc fixed-point cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 static-libs"
 
 RDEPEND="media-libs/tiff
