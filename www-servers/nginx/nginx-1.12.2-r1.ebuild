@@ -137,6 +137,11 @@ HTTP_LDAP_MODULE_P="nginx-auth-ldap-${HTTP_LDAP_MODULE_PV}"
 HTTP_LDAP_MODULE_URI="https://github.com/kvspb/nginx-auth-ldap/archive/${HTTP_LDAP_MODULE_PV}.tar.gz"
 HTTP_LDAP_MODULE_WD="${WORKDIR}/nginx-auth-ldap-${HTTP_LDAP_MODULE_PV}"
 
+HTTP_VOD_MODULE_PV="1.22"
+HTTP_VOD_MODULE_P="nginx-vod-module-${HTTP_VOD_MODULE_PV}"
+HTTP_VOD_MODULE_URI="https://github.com/kaltura/nginx-vod-module/archive/${HTTP_VOD_MODULE_PV}.tar.gz"
+HTTP_VOD_MODULE_WD="${WORKDIR}/nginx-vod-module-${HTTP_VOD_MODULE_PV}"
+
 # We handle deps below ourselves
 SSL_DEPS_SKIP=1
 AUTOTOOLS_AUTO_DEPEND="no"
@@ -165,11 +170,13 @@ SRC_URI="https://nginx.org/download/${P}.tar.gz
 	nginx_modules_http_sticky? ( ${HTTP_STICKY_MODULE_URI} -> ${HTTP_STICKY_MODULE_P}.tar.bz2 )
 	nginx_modules_http_mogilefs? ( ${HTTP_MOGILEFS_MODULE_URI} -> ${HTTP_MOGILEFS_MODULE_P}.tar.gz )
 	nginx_modules_http_memc? ( ${HTTP_MEMC_MODULE_URI} -> ${HTTP_MEMC_MODULE_P}.tar.gz )
-	nginx_modules_http_auth_ldap? ( ${HTTP_LDAP_MODULE_URI} -> ${HTTP_LDAP_MODULE_P}.tar.gz )"
+	nginx_modules_http_auth_ldap? ( ${HTTP_LDAP_MODULE_URI} -> ${HTTP_LDAP_MODULE_P}.tar.gz )
+	nginx_modules_http_vod? ( ${HTTP_VOD_MODULE_URI} -> ${HTTP_VOD_MODULE_P}.tar.gz )"
 
 LICENSE="BSD-2 BSD SSLeay MIT GPL-2 GPL-2+
 	nginx_modules_http_security? ( Apache-2.0 )
-	nginx_modules_http_push_stream? ( GPL-3 )"
+	nginx_modules_http_push_stream? ( GPL-3 )
+	nginx_modules_http_vod? ( AGPL-3 )"
 
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
@@ -206,7 +213,8 @@ NGINX_MODULES_3RD="
 	http_sticky
 	http_mogilefs
 	http_memc
-	http_auth_ldap"
+	http_auth_ldap
+	http_vod"
 
 IUSE="aio debug +http +http2 +http-cache +ipv6 libatomic libressl luajit +pcre
 	pcre-jit rtmp selinux ssl threads userland_GNU vim-syntax"
@@ -297,7 +305,8 @@ REQUIRED_USE="pcre-jit? ( pcre )
 	nginx_modules_http_dav_ext? ( nginx_modules_http_dav )
 	nginx_modules_http_metrics? ( nginx_modules_http_stub_status )
 	nginx_modules_http_security? ( pcre )
-	nginx_modules_http_push_stream? ( ssl )"
+	nginx_modules_http_push_stream? ( ssl )
+	nginx_modules_http_vod? ( nginx_modules_http_gzip )"
 
 pkg_setup() {
 	NGINX_HOME="/var/lib/nginx"
@@ -532,6 +541,11 @@ src_configure() {
 	if use nginx_modules_http_auth_ldap; then
 		http_enabled=1
 		myconf+=( --add-module=${HTTP_LDAP_MODULE_WD} )
+	fi
+
+	if use nginx_modules_http_vod; then
+		http_enabled=1
+		myconf+=( --add-module=${HTTP_VOD_MODULE_WD} )
 	fi
 
 	if use http || use http-cache || use http2; then
