@@ -1292,7 +1292,7 @@ app-text/convmv 2.01: convert filenames to utf8 or any other charset
 app-text/crf++ 0.58: Yet Another CRF toolkit for segmenting/labelling sequential data
 app-text/cwtext 0.96: Text to Morse Code converter
 app-text/dbacl 1.14: Digramic Bayesian text classifier
-app-text/dblatex 0.3.7 0.3.10: Transform DocBook using TeX macros
+app-text/dblatex 0.3.7 0.3.10-r1: Transform DocBook using TeX macros
 app-text/delta 20060803: Heuristically minimizes interesting files
 app-text/dictd 1.12.1-r2: Dictionary Client/Server for the DICT protocol
 app-text/diction 1.13: Diction and style checkers for english and german texts
