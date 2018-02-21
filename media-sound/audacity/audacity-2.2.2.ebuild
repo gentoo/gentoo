@@ -49,6 +49,14 @@ REQUIRED_USE="soundtouch? ( midi )"
 
 S="${WORKDIR}/${MY_P}-rc1"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-2.2.2-midi.patch"
+)
+
+src_prepare() {
+	epatch "${PATCHES[@]}"
+}
+
 src_configure() {
 	local WX_GTK_VER="3.0"
 	need-wxwidgets unicode
