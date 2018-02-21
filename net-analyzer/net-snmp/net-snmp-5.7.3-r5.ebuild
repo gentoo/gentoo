@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -81,6 +81,7 @@ src_prepare() {
 
 	epatch "${WORKDIR}"/${P}-perl524.patch
 	epatch "${WORKDIR}"/${P}-perl524-2.patch
+	epatch "${FILESDIR}"/${PN}-5.7.3-include-limits.patch
 
 	epatch "${WORKDIR}"/patches/*.patch
 
