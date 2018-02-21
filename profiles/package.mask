@@ -226,11 +226,6 @@ www-apps/jekyll-gist
 dev-libs/libindicate-qt
 
 # Andreas Sturmlechner <asturm@gentoo.org> (22 Jan 2018)
-# Depends on deprecated Qt4, dead project.
-# Masked for removal in 30 days.
-app-emulation/qtemu
-
-# Andreas Sturmlechner <asturm@gentoo.org> (22 Jan 2018)
 # Depends on deprecated Qt4, upstream is slowly doing a qml port.
 # Masked for removal in 60 days. Revisit bug #645504 before deciding
 # eventual removal.
