@@ -31,6 +31,7 @@ RDEPEND="
 	>=media-libs/libmypaint-1.3.0
 	media-libs/libpng:0=
 	gnome-base/librsvg
+	x11-libs/gtk+:3
 	${PYTHON_DEPS}
 "
 DEPEND="${RDEPEND}
