@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (21 Feb 2018)
+# More unkeyworded dependencies.
+media-libs/xine-lib fusionsound
+
 # Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
 # Unkeyworded dependencies.
 app-doc/doxygen clang
