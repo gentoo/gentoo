@@ -1,0 +1,25 @@
+From 9a5cecf64ffc427a6a5a7c9a061992c32e5b8a4f Mon Sep 17 00:00:00 2001
+From: Gunnar Hjalmarsson <gunnarhj@ubuntu.com>
+Date: Thu, 1 Feb 2018 15:37:46 +0100
+Subject: Fix typo in Polish symbols file
+
+https://bugs.freedesktop.org/show_bug.cgi?id=104904
+---
+ symbols/pl | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/symbols/pl b/symbols/pl
+index 52e7959..800cb85 100644
+--- a/symbols/pl
++++ b/symbols/pl
+@@ -497,7 +497,6 @@ partial alphanumeric_keys
+        include "sun_vndr/pl(sun_type6)"
+ };
+ 
+-------------------------------
+ //Glagolica
+ partial alphanumeric_keys
+ xkb_symbols "glagolica"
+-- 
+cgit v1.1
+

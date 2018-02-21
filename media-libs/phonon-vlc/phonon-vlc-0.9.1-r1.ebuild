@@ -8,7 +8,7 @@ MY_P="${MY_PN}-${PV}"
 
 if [[ ${PV} != *9999* ]]; then
 	SRC_URI="mirror://kde/stable/phonon/${MY_PN}/${PV}/${MY_P}.tar.xz"
-	KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 x86 ~amd64-fbsd"
+	KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 x86"
 	S="${WORKDIR}/${MY_P}"
 else
 	EGIT_REPO_URI=( "git://anongit.kde.org/${PN}" )

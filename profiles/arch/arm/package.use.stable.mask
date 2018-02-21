@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (06 Feb 2018)
+# Requires sci-geosciences/gpsd which is not stable
+app-misc/geoclue gps
+
 # Andreas Sturmlechner <asturm@gentoo.org> (25 Jan 2018)
 # Requires not stabilised app-text/libexttextcat, bug #637086
 net-mail/dovecot textcat

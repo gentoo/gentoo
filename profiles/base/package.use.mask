@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # This file requires >=portage-2.1.1
@@ -6,6 +6,14 @@
 
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
+
+# Andreas Sturmlechner <asturm@gentoo.org> (10 Feb 2018)
+# Depends on unreleased media-libs/libaom, and 9999 is currently broken
+media-video/vlc aom
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2 Feb 2018)
+# This feature is not ready yet, see bug 146882 comment 26
+sys-libs/glibc compile-locales
 
 # Andreas Sturmlechner <asturm@gentoo.org> (13 Jan 2018)
 # Depends on last-rited sci-visualization/xds-viewer
@@ -54,10 +62,6 @@ dev-java/oracle-jre-bin:9 gentoo-vm
 # Andreas K. Hüttel <dilfridge@gentoo.org> (04 Nov 2017)
 # Requires audacious, which is masked. Bug 632513
 =media-libs/freeverb3-3.1.2_pre20151102-r1 jack
-
-# Andreas Sturmlechner <asturm@gentoo.org> (29 Oct 2017)
-# Depends on deprecated x11-libs/qscintilla[qt4]/qt4, bug #634972
-net-analyzer/linkchecker X
 
 # Andreas Sturmlechner <asturm@gentoo.org> (16 Oct 2017)
 # USE=qt4 depends on masked dev-qt/qtwebkit:4, bug #620754
@@ -177,11 +181,6 @@ media-gfx/nvidia-texture-tools cuda
 # Michał Górny <mgorny@gentoo.org> (15 May 2017)
 # Mask ruby20-only compatible packages
 =media-libs/libcaca-0.99_beta19 ruby
-
-# Michael Orlitzky <mjo@gentoo.org> (14 May 2017)
-# This version experiences random build failures with USE=jit.
-# Since USE=futures needs USE=jit, we have to mask that too.
-=dev-scheme/racket-6.9 futures jit
 
 # Matthias Maier <tamiko@gentoo.org> (11 May 2017)
 # Globally mask pie use flag. Selectively unmask on specific profiles.
@@ -520,7 +519,6 @@ gnustep-apps/cynthiune flac
 
 # Richard Freeman <rich0@gentoo.org> (24 Mar 2013)
 # Dependency is masked for buffer overflows for now
-app-text/yagf cuneiform
 dev-python/pyocr cuneiform
 
 # Tom Wijsman <TomWij@gentoo.org> (10 Mar 2013)

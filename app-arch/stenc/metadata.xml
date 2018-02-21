@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>jstein@gentoo.org</email>
+		<name>Jonas Stein</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>mailto:jcoleman1981@live.com</bugs-to>
+		<remote-id type="sourceforge">stenc</remote-id>
+	</upstream>
+	<longdescription>SCSI Tape Encryption Manager - Manages encryption on LTO 
+		tape drives with hardware-based encryption (LTO-4 and later).
+		This program should work on any other SSP capable tape drives. 
+		Supports key change auditing and key descriptors (uKAD).
+	</longdescription>
+</pkgmetadata>

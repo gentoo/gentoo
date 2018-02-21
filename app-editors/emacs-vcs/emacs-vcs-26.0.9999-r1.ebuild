@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -49,8 +49,14 @@ RDEPEND="sys-libs/ncurses:0=
 	systemd? ( sys-apps/systemd )
 	zlib? ( sys-libs/zlib )
 	X? (
-		x11-libs/libXmu
-		x11-libs/libXt
+		x11-libs/libICE
+		x11-libs/libSM
+		x11-libs/libX11
+		x11-libs/libXext
+		x11-libs/libXfixes
+		x11-libs/libXinerama
+		x11-libs/libXrandr
+		x11-libs/libxcb
 		x11-misc/xbitmaps
 		gconf? ( >=gnome-base/gconf-2.26.2 )
 		gsettings? ( >=dev-libs/glib-2.28.6 )
@@ -65,6 +71,7 @@ RDEPEND="sys-libs/ncurses:0=
 			media-libs/fontconfig
 			media-libs/freetype
 			x11-libs/libXft
+			x11-libs/libXrender
 			cairo? ( >=x11-libs/cairo-1.12.18 )
 			m17n-lib? (
 				>=dev-libs/libotf-0.9.4
@@ -73,8 +80,9 @@ RDEPEND="sys-libs/ncurses:0=
 		)
 		gtk? (
 			xwidgets? (
-				x11-libs/gtk+:3
 				net-libs/webkit-gtk:4=
+				x11-libs/gtk+:3
+				x11-libs/libXcomposite
 			)
 			!xwidgets? (
 				gtk3? ( x11-libs/gtk+:3 )
@@ -82,10 +90,24 @@ RDEPEND="sys-libs/ncurses:0=
 			)
 		)
 		!gtk? (
-			motif? ( >=x11-libs/motif-2.3:0 )
+			motif? (
+				>=x11-libs/motif-2.3:0
+				x11-libs/libXp
+				x11-libs/libXpm
+				x11-libs/libXmu
+				x11-libs/libXt
+			)
 			!motif? (
-				Xaw3d? ( x11-libs/libXaw3d )
-				!Xaw3d? ( athena? ( x11-libs/libXaw ) )
+				Xaw3d? (
+					x11-libs/libXaw3d
+					x11-libs/libXmu
+					x11-libs/libXt
+				)
+				!Xaw3d? ( athena? (
+					x11-libs/libXaw
+					x11-libs/libXmu
+					x11-libs/libXt
+				) )
 			)
 		)
 	)"
@@ -251,8 +273,16 @@ src_configure() {
 }
 
 src_compile() {
-	export SANDBOX_ON=0			# for the unbelievers, see Bug #131505
-	emake
+	# Disable sandbox when dumping. For the unbelievers, see bug #131505
+	cat >src/temacs-wrapper <<-'EOF' || die
+		#!/bin/bash
+		export SANDBOX_ON=0
+		unset LD_PRELOAD
+		exec ./temacs "$@"
+	EOF
+	chmod +x src/temacs-wrapper || die
+
+	emake RUN_TEMACS="./temacs-wrapper"
 }
 
 src_install () {
@@ -299,7 +329,7 @@ src_install () {
 		cdir="/usr/src/debug/${CATEGORY}/${PF}/${S#"${WORKDIR}/"}/src"
 	fi
 
-	sed -e "${cdir:+#}/^Y/d" -e "s/^[XY]//" >"${T}/${SITEFILE}" <<-EOF
+	sed -e "${cdir:+#}/^Y/d" -e "s/^[XY]//" >"${T}/${SITEFILE}" <<-EOF || die
 	X
 	;;; ${PN}-${SLOT} site-lisp configuration
 	X

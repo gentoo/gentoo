@@ -1,0 +1,5 @@
+# Config file for /etc/init.d/nuttcp
+
+# extra options (run nuttcp -h for a list of supported options)
+# Parameter -S indicates that nuttcp acts as a server.
+NUTTCP_OPTS="-S"

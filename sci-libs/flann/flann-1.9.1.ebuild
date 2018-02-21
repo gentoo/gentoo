@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -73,7 +73,7 @@ src_configure() {
 		-DUSE_OPENMP=$(usex openmp)
 	)
 	use cuda && mycmakeargs+=(
-		-DCUDA_NVCC_FLAGS="${NVCCFLAGS},-arsch"
+		-DCUDA_NVCC_FLAGS="${NVCCFLAGS} --linker-options \"-arsch\""
 	)
 	cmake-utils_src_configure
 }

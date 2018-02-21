@@ -14,14 +14,14 @@ SRC_URI="mirror://kernel/linux/docs/man-pages/Archive/${P}.tar.xz
 
 LICENSE="man-pages GPL-2+ BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~arm-linux ~x86-linux"
 IUSE_L10N=" da de fr it ja nl pl ru zh-CN"
 IUSE="nls ${IUSE_L10N// / l10n_}"
 RESTRICT="binchecks"
 
 # Block packages that used to install colliding man pages #341953 #548900 #612640 #617462
 RDEPEND="virtual/man
-	!<sys-apps/keyutils-1.5.9-r3
+	!<sys-apps/keyutils-1.5.9-r4
 	!<sys-apps/attr-2.4.47-r2
 	!<dev-libs/libaio-0.3.109-r2
 	!<dev-libs/libbsd-0.8.3-r1"

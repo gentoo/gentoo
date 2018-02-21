@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -78,7 +78,7 @@ src_configure() {
 pkg_postinst() {
 	kde5_pkg_postinst
 
-	if ! has_version "kde-misc/kregexpeditor" ; then
+	if [[ ${KDE_BUILD_TYPE} = live ]] && ! has_version "kde-misc/kregexpeditor" ; then
 		elog "${PN} Sieve editor plugin can make use of kde-misc/kregexpeditor if installed."
 	fi
 }

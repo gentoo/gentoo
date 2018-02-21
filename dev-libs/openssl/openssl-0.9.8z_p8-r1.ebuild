@@ -18,7 +18,7 @@ SRC_URI="mirror://openssl/source/${MY_P}.tar.gz"
 
 LICENSE="openssl"
 SLOT="0.9.8"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc x86 ~x86-fbsd"
 IUSE="bindist gmp kerberos cpu_flags_x86_sse2 test zlib"
 RESTRICT="!bindist? ( bindist )"
 
@@ -102,11 +102,11 @@ multilib_src_configure() {
 	tc-export CC AR RANLIB
 
 	# Clean out patent-or-otherwise-encumbered code
-	# Camellia: Royalty Free            http://en.wikipedia.org/wiki/Camellia_(cipher)
-	# IDEA:     Expired                 http://en.wikipedia.org/wiki/International_Data_Encryption_Algorithm
-	# EC:       ????????? ??/??/2015    http://en.wikipedia.org/wiki/Elliptic_Curve_Cryptography
-	# MDC2:     Expired                 http://en.wikipedia.org/wiki/MDC-2
-	# RC5:      5,724,428 03/03/2015    http://en.wikipedia.org/wiki/RC5
+	# Camellia: Royalty Free            https://en.wikipedia.org/wiki/Camellia_(cipher)
+	# IDEA:     Expired                 https://en.wikipedia.org/wiki/International_Data_Encryption_Algorithm
+	# EC:       ????????? ??/??/2015    https://en.wikipedia.org/wiki/Elliptic_Curve_Cryptography
+	# MDC2:     Expired                 https://en.wikipedia.org/wiki/MDC-2
+	# RC5:      5,724,428 03/03/2015    https://en.wikipedia.org/wiki/RC5
 
 	use_ssl() { use $1 && echo "enable-${2:-$1} ${*:3}" || echo "no-${2:-$1}" ; }
 	echoit() { echo "$@" ; "$@" ; }

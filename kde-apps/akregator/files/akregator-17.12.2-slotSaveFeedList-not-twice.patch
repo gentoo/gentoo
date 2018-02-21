@@ -1,0 +1,24 @@
+From 6dcc0769f61e38580b70a5c29db0d9920f263c6e Mon Sep 17 00:00:00 2001
+From: Laurent Montel <montel@kde.org>
+Date: Tue, 13 Feb 2018 07:28:44 +0100
+Subject: Don't call it twice
+
+---
+ src/akregator_part.cpp | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/akregator_part.cpp b/src/akregator_part.cpp
+index 94a4e00..2073dce 100644
+--- a/src/akregator_part.cpp
++++ b/src/akregator_part.cpp
+@@ -324,7 +324,6 @@ void Part::slotOnShutdown()
+     m_autosaveTimer->stop();
+     if (m_mainWidget) {
+         saveSettings();
+-        slotSaveFeedList();
+         m_mainWidget->slotOnShutdown();
+     }
+     //delete m_mainWidget;
+-- 
+cgit v0.11.2
+

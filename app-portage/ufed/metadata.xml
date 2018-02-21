@@ -4,11 +4,9 @@
 	<maintainer type="person">
 		<email>yamakuzure@gmx.net</email>
 		<name>Sven Eden</name>
-		<description>Current maintainer, assign bugs</description>
 	</maintainer>
 	<maintainer type="person">
 		<email>fuzzyray@gentoo.org</email>
-		<description>Proxy committer, CC bugs</description>
 	</maintainer>
 <maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>

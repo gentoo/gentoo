@@ -7,7 +7,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/systemd/systemd.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/systemd/systemd/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/systemd/systemd/archive/v${PV}/${P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86"
 fi
 
@@ -20,7 +20,7 @@ HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
 
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0/2"
-IUSE="acl apparmor audit build cryptsetup curl elfutils +gcrypt gnuefi http idn importd +kmod libidn2 +lz4 lzma nat pam policykit qrcode +seccomp selinux ssl +sysv-utils test usrmerge vanilla xkb"
+IUSE="acl apparmor audit build cryptsetup curl elfutils +gcrypt gnuefi http idn importd +kmod libidn2 +lz4 lzma nat pam pcre policykit qrcode +seccomp selinux ssl +sysv-utils test usrmerge vanilla xkb"
 
 REQUIRED_USE="importd? ( curl gcrypt lzma )"
 RESTRICT="!test? ( test )"
@@ -54,6 +54,7 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.30:0=[${MULTILIB_USEDEP}]
 	lzma? ( >=app-arch/xz-utils-5.0.5-r1:0=[${MULTILIB_USEDEP}] )
 	nat? ( net-firewall/iptables:0= )
 	pam? ( virtual/pam:=[${MULTILIB_USEDEP}] )
+	pcre? ( dev-libs/libpcre2 )
 	qrcode? ( media-gfx/qrencode:0= )
 	seccomp? ( >=sys-libs/libseccomp-2.3.1:0= )
 	selinux? ( sys-libs/libselinux:0= )
@@ -149,6 +150,8 @@ src_prepare() {
 	local PATCHES=(
 	)
 
+	[[ -d "${WORKDIR}"/patches ]] && PATCHES+=( "${WORKDIR}"/patches )
+
 	if ! use vanilla; then
 		PATCHES+=(
 			"${FILESDIR}/gentoo-Dont-enable-audit-by-default.patch"
@@ -157,8 +160,6 @@ src_prepare() {
 			"${FILESDIR}/gentoo-generator-path.patch"
 		)
 	fi
-
-	[[ -d "${WORKDIR}"/patches ]] && PATCHES+=( "${WORKDIR}"/patches )
 
 	default
 }
@@ -228,6 +229,7 @@ multilib_src_configure() {
 		-Dxz=$(meson_use lzma)
 		-Dlibiptc=$(meson_multilib_native_use nat)
 		-Dpam=$(meson_use pam)
+		-Dpcre2=$(meson_multilib_native_use pcre)
 		-Dpolkit=$(meson_multilib_native_use policykit)
 		-Dqrencode=$(meson_multilib_native_use qrcode)
 		-Dseccomp=$(meson_multilib_native_use seccomp)

@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>chithanh@gentoo.org</email>
-		<name>Chí-Thanh Christopher Nguyễn</name>
-	</maintainer>
-<maintainer type="project">
-		<email>games@gentoo.org</email>
-		<name>Gentoo Games Project</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 </pkgmetadata>

@@ -1,11 +1,11 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
 
 DESCRIPTION="Unified look for GTK+ 2.x, GTK+ 3.x, gnome-shell, metacity and more"
 HOMEPAGE="http://lassekongo83.deviantart.com/#/d4ic1u2"
-SRC_URI="http://www.deviantart.com/download/272660042/${PN}_by_lassekongo83-d4ic1u2.zip -> ${P}.zip"
+SRC_URI="https://dev.gentoo.org/~sping/distfiles/${P}.zip"
 
 LICENSE="GPL-3"
 SLOT="0"

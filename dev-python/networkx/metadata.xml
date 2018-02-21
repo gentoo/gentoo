@@ -20,4 +20,7 @@
     <remote-id type="pypi">networkx</remote-id>
     <remote-id type="github">networkx/networkx</remote-id>
   </upstream>
+  <use>
+    <flag name="scipy">Enables scipy backend</flag>
+  </use>
 </pkgmetadata>

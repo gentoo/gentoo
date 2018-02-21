@@ -15,7 +15,7 @@ else
 	KEYWORDS="amd64 -arm ~arm64 ~mips x86"
 fi
 
-HOMEPAGE="https://www.gentoo.org/proj/en/hardened/selinux/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Project:SELinux"
 DESCRIPTION="SELinux policy for core modules"
 
 IUSE="systemd +unconfined"
@@ -104,7 +104,7 @@ pkg_postinst() {
 	for i in ${POLICY_TYPES}; do
 		einfo "Inserting the following modules, with base, into the $i module store: ${MODS}"
 
-		cd /usr/share/selinux/${i} || die "Could not enter /usr/share/selinux/${i}"
+		cd /usr/share/selinux/${i}
 
 		semodule -s ${i} ${COMMAND}
 	done

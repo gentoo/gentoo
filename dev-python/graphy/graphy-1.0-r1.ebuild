@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ inherit distutils-r1
 MY_P=${PN}_${PV}
 
 DESCRIPTION="Simple Chart Library for Python"
-HOMEPAGE="https://code.google.com/p/graphy/"
+HOMEPAGE="https://pypi.python.org/pypi/Graphy"
 SRC_URI="https://${PN}.googlecode.com/files/${MY_P}.tar.bz2"
 
 LICENSE="Apache-2.0"

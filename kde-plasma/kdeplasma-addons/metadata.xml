@@ -6,6 +6,7 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
+		<flag name="dictionary">Enable dictionary applet using <pkg>dev-qt/qtwebengine</pkg></flag>
 		<flag name="share">Enable applet for quickly sharing data to a variety of sources</flag>
 	</use>
 </pkgmetadata>

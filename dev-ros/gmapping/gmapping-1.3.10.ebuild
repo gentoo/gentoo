@@ -20,6 +20,7 @@ RDEPEND="
 	dev-ros/tf
 	dev-ros/openslam_gmapping
 	dev-ros/rosbag_storage
+	dev-ros/gmapping
 "
 DEPEND="${RDEPEND}
 	dev-ros/rostest"

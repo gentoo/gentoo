@@ -1,0 +1,31 @@
+From b7f48a0095a5b010b94f8192f4adc1adf8697567 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Wed, 31 Jan 2018 16:57:19 +0100
+Subject: [PATCH] dirmngr: Handle failures related to missing IPv6 gracefully
+
+Handle the two possible connect failures related to missing IPv6 support
+gracefully by marking the host dead and retrying with another one.
+If IPv6 is disabled via procfs, connect() will return EADDRNOTAVAIL.
+If IPv6 is not compiled into the kernel, it will return EAFNOSUPPORT.
+This makes it possible to use dual-stack hkp servers on hosts not having
+IPv6 without random connection failures.
+---
+ dirmngr/ks-engine-hkp.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/dirmngr/ks-engine-hkp.c b/dirmngr/ks-engine-hkp.c
+index 4a0b08f4f..a9bb93666 100644
+--- a/dirmngr/ks-engine-hkp.c
++++ b/dirmngr/ks-engine-hkp.c
+@@ -1353,6 +1353,8 @@ handle_send_request_error (ctrl_t ctrl, gpg_error_t err, const char *request,
+     case GPG_ERR_UNKNOWN_HOST:
+     case GPG_ERR_NETWORK:
+     case GPG_ERR_EIO:  /* Sometimes used by estream cookie functions.  */
++    case GPG_ERR_EADDRNOTAVAIL:  /* e.g. when IPv6 is disabled */
++    case GPG_ERR_EAFNOSUPPORT:  /* e.g. when IPv6 is not compiled in */
+       if (mark_host_dead (request) && *tries_left)
+         retry = 1;
+       break;
+-- 
+2.16.1
+

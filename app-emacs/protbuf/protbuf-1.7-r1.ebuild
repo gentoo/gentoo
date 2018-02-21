@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="Protect Emacs buffers from accidental killing"
 HOMEPAGE="http://www.splode.com/~friedman/software/emacs-lisp/
-	http://www.emacswiki.org/emacs/ProtectingBuffers"
+	https://www.emacswiki.org/emacs/ProtectingBuffers"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2+"

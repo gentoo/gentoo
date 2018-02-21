@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,7 +13,7 @@ MY_P=${MY_PN}-${PV}
 RELEASE="0.7"
 
 DESCRIPTION="A Django application that will run cron jobs for other django apps"
-HOMEPAGE="https://code.google.com/p/django-evolution/ https://pypi.python.org/pypi/django_evolution/"
+HOMEPAGE="https://pypi.python.org/pypi/django_evolution/"
 SRC_URI="http://downloads.reviewboard.org/releases/${PN}/${RELEASE}/${MY_P}.tar.gz"
 
 LICENSE="BSD"

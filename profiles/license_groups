@@ -16,12 +16,12 @@
 GPL-COMPATIBLE AGPL-3 AGPL-3+ Apache-2.0 Artistic-2 Boost-1.0 BSD BSD-2 CC0-1.0 CeCILL-2 Clarified-Artistic Clear-BSD ECL-2.0 FTL gcc-runtime-library-exception-3.1 GPL-1 GPL-1+ GPL-2 GPL-2+ GPL-2-with-classpath-exception GPL-2-with-exceptions GPL-2-with-font-exception GPL-2-with-linking-exception GPL-2-with-MySQL-FLOSS-exception GPL-2+-with-openssl-exception GPL-3 GPL-3+ GPL-3+-with-cuda-exception GPL-3+-with-cuda-openssl-exception GPL-3-with-font-exception GPL-3+-with-opencl-exception GPL-3+-with-opencl-openssl-exception GPL-3-with-openssl-exception HPND IJG ISC LGPL-2 LGPL-2+ LGPL-2-with-linking-exception LGPL-2.1 LGPL-2.1+ LGPL-2.1-with-linking-exception LGPL-3 LGPL-3+ LGPL-3-with-linking-exception libgcc libstdc++ metapackage MIT MPL-2.0 Nokia-Qt-LGPL-Exception-1.1 OPENLDAP PSF-2 PSF-2.2 PSF-2.3 PSF-2.4 public-domain PYTHON qwt Ruby Ruby-BSD SGI-B-2.0 Sleepycat tanuki-community Transmission-OpenSSL-exception unicode Unlicense UoI-NCSA UPX-exception vim W3C WTFPL-2 ZLIB ZPL
 
 # Free software licenses approved by the FSF
-FSF-APPROVED @GPL-COMPATIBLE AFL-2.1 AFL-3.0 Apache-1.0 Apache-1.1 APSL-2 BSD-4 CDDL CNRI CPAL-1.0 CPL-1.0 EPL-1.0 EUPL-1.1 gnuplot IBM LPPL-1.2 MPL-1.0 MPL-1.1 Ms-PL NPL-1.1 openssl OSL-1.1 OSL-2.0 OSL-2.1 PHP-3.01 QPL QPL-1.0 Zend-2.0
+FSF-APPROVED @GPL-COMPATIBLE AFL-2.1 AFL-3.0 Apache-1.0 Apache-1.1 APSL-2 BSD-4 CDDL CNRI CPAL-1.0 CPL-1.0 EPL-1.0 EPL-2.0 EUPL-1.1 gnuplot IBM LPPL-1.2 MPL-1.0 MPL-1.1 Ms-PL NPL-1.1 openssl OSL-1.1 OSL-2.0 OSL-2.1 PHP-3.01 QPL QPL-1.0 Zend-2.0
 
 # Licenses approved by the Open Source Initiative
 # http://www.opensource.org/licenses
 # Note that the FSF lists these as nonfree: Artistic NOSA Watcom-1.0
-OSI-APPROVED AFL-3.0 AGPL-3 AGPL-3+ Apache-1.1 Apache-2.0 APL-1.0 APSL-2 Artistic Artistic-2 Boost-1.0 BSD BSD-2 CDDL CNRI CPAL-1.0 CPL-1.0 ECL-2.0 EPL-1.0 EUPL-1.1 GPL-1+ GPL-2 GPL-2+ GPL-3 GPL-3+ HPND IBM IPAfont ISC LGPL-2+ LGPL-2.1 LGPL-2.1+ LGPL-3 LGPL-3+ LPPL-1.3c MIT MPL-1.0 MPL-1.1 MPL-2.0 Ms-PL nethack NOSA OFL-1.1 OSL-2.1 PHP-3 PHP-3.01 POSTGRESQL PSF-2 QPL Sleepycat UoI-NCSA W3C Watcom-1.0 wxWinLL-3 ZLIB ZPL
+OSI-APPROVED AFL-3.0 AGPL-3 AGPL-3+ Apache-1.1 Apache-2.0 APL-1.0 APSL-2 Artistic Artistic-2 Boost-1.0 BSD BSD-2 CDDL CNRI CPAL-1.0 CPL-1.0 ECL-2.0 EPL-1.0 EPL-2.0 EUPL-1.1 GPL-1+ GPL-2 GPL-2+ GPL-3 GPL-3+ HPND IBM IPAfont ISC LGPL-2+ LGPL-2.1 LGPL-2.1+ LGPL-3 LGPL-3+ LPPL-1.3c MIT MPL-1.0 MPL-1.1 MPL-2.0 Ms-PL nethack NOSA OFL-1.1 OSL-2.1 PHP-3 PHP-3.01 POSTGRESQL PSF-2 QPL Sleepycat UoI-NCSA W3C Watcom-1.0 wxWinLL-3 ZLIB ZPL
 
 # Misc licenses that are probably free software, i.e. follow the
 # Free Software Definition at http://www.gnu.org/philosophy/free-sw.html

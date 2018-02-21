@@ -1,12 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit eutils games
 
 DESCRIPTION="A tetris clone with multiplayer support"
-HOMEPAGE="https://code.google.com/p/quadra/"
-SRC_URI="https://quadra.googlecode.com/files/${P}.tar.gz"
+HOMEPAGE="https://github.com/quadra-game/quadra"
+SRC_URI="https://github.com/${PN}-game/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

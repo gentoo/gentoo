@@ -13,13 +13,13 @@ else
 	SRC_URI="https://raw.githubusercontent.com/wiki/TresysTechnology/refpolicy/files/refpolicy-${PV}.tar.bz2
 			https://dev.gentoo.org/~swift/patches/selinux-base-policy/patchbundle-selinux-base-policy-${PVR}.tar.bz2"
 
-	KEYWORDS="~amd64 -arm ~arm64 ~mips ~x86"
+	KEYWORDS="amd64 -arm ~arm64 ~mips x86"
 fi
 
 IUSE="doc +open_perms +peer_perms systemd +ubac +unconfined"
 
 DESCRIPTION="Gentoo base policy for SELinux"
-HOMEPAGE="https://www.gentoo.org/proj/en/hardened/selinux/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Project:SELinux"
 LICENSE="GPL-2"
 SLOT="0"
 

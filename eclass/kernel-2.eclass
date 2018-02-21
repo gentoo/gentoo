@@ -606,6 +606,7 @@ if [[ ${ETYPE} == sources ]]; then
 		sys-devel/make
 		dev-lang/perl
 		sys-devel/bc
+		virtual/libelf
 	)"
 
 	SLOT="${PVR}"

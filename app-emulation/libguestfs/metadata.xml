@@ -10,6 +10,10 @@
 	<name>Richard Jones</name>
 	<description>Upstream - please CC on bugs that concerns upstream</description>
 </maintainer>
+<maintainer type="person">
+	<email>eva@gentoo.org</email>
+	<name>Gilles Dartiguelongue</name>
+</maintainer>
 <longdescription>Libguestfs is a library and tool set for accessing and 
 modifying virtual machine (VM) disk images</longdescription>
 <use>

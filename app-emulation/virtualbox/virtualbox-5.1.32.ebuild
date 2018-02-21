@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
-inherit eutils flag-o-matic java-pkg-opt-2 linux-info multilib pax-utils python-single-r1 toolchain-funcs udev xdg-utils
+inherit eutils flag-o-matic java-pkg-opt-2 linux-info multilib pax-utils python-single-r1 tmpfiles toolchain-funcs udev xdg-utils
 
 MY_PV="${PV/beta/BETA}"
 MY_PV="${MY_PV/rc/RC}"
@@ -203,21 +203,26 @@ src_configure() {
 		--with-g++="$(tc-getCXX)"
 		--disable-dbus
 		--disable-kmods
+		$(usex alsa '' --disable-alsa)
+		$(usex debug --build-debug '')
+		$(usex doc '' --disable-docs)
+		$(usex java '' --disable-java)
+		$(usex lvm '' --disable-devmapper)
+		$(usex pulseaudio '' --disable-pulse)
+		$(usex python '' --disable-python)
+		$(usex vboxwebsrv --enable-webservice '')
+		$(usex vnc --enable-vnc '')
 	)
-	use alsa       || myconf+=( --disable-alsa )
-	use debug      && myconf+=( --build-debug )
-	use doc        || myconf+=( --disable-docs )
-	use java       || myconf+=( --disable-java )
-	use lvm        || myconf+=( --disable-devmapper )
-	use opengl     || myconf+=( --disable-opengl )
-	use pulseaudio || myconf+=( --disable-pulse )
-	use python     || myconf+=( --disable-python )
-	use vboxwebsrv && myconf+=( --enable-webservice )
-	use vnc        && myconf+=( --enable-vnc )
 	if ! use headless ; then
-		use qt5 || myconf+=( --disable-qt )
+		myconf+=(
+			$(usex opengl '' --disable-opengl)
+			$(usex qt5 '' --disable-qt)
+		)
 	else
-		myconf+=( --build-headless --disable-opengl )
+		myconf+=(
+			--build-headless
+			--disable-opengl
+		)
 	fi
 	if use amd64 && ! has_multilib_profile ; then
 		myconf+=( --disable-vmmraw )
@@ -410,6 +415,8 @@ src_install() {
 	if use doc ; then
 		dodoc UserManual.pdf
 	fi
+
+	newtmpfiles "${FILESDIR}"/${PN}-vboxusb_tmpfilesd ${PN}-vboxusb.conf
 }
 
 pkg_postinst() {
@@ -419,6 +426,8 @@ pkg_postinst() {
 		udevadm control --reload-rules \
 			&& udevadm trigger --subsystem-match=usb
 	fi
+
+	tmpfiles_process /usr/lib/tmpfiles.d/virtualbox-vboxusb.conf
 
 	if ! use headless && use qt5 ; then
 		elog "To launch VirtualBox just type: \"virtualbox\"."

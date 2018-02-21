@@ -1,0 +1,12 @@
+diff --git a/OpenHome/TestFramework/OptionParser.cpp b/OpenHome/TestFramework/OptionParser.cpp
+index fe90233..644fc0b 100644
+--- a/OpenHome/TestFramework/OptionParser.cpp
++++ b/OpenHome/TestFramework/OptionParser.cpp
+@@ -282,6 +282,6 @@ void OptionParser::SetUsage(const TChar* aUsage)
+ {
+     delete iUsage;
+     iUsage = NULL;
+-    iUsage = new TChar[strlen(iUsage)];
++    iUsage = new TChar[strlen(aUsage)];
+     (void)strcpy(iUsage, aUsage);
+ }

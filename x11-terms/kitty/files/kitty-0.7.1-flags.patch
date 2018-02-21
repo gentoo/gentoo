@@ -1,0 +1,43 @@
+--- kitty-0.7.1/setup.py
++++ kitty-0.7.1/setup.py
+@@ -163,12 +163,12 @@
+     df = '-g3'
+     if ccver >= (5, 0):
+         df += ' -Og'
+-    optimize = df if debug or sanitize else '-O3'
++    optimize = ''
+     sanitize_args = get_sanitize_args(cc, ccver) if sanitize else set()
+     cflags = os.environ.get(
+         'OVERRIDE_CFLAGS', (
+             '-Wextra -Wno-missing-field-initializers -Wall -std=c99 -D_XOPEN_SOURCE=700'
+-            ' -pedantic-errors -Werror {} {} -D{}DEBUG -fwrapv {} {} -pipe {} -fvisibility=hidden'
++            ' -pedantic {} {} -D{}DEBUG -fwrapv {} {} {} -fvisibility=hidden'
+         ).format(
+             optimize,
+             ' '.join(sanitize_args),
+@@ -183,7 +183,7 @@
+     )
+     ldflags = os.environ.get(
+         'OVERRIDE_LDFLAGS',
+-        '-Wall ' + ' '.join(sanitize_args) + ('' if debug else ' -O3')
++        '-Wall ' + ' '.join(sanitize_args)
+     )
+     ldflags = shlex.split(ldflags)
+     ldflags.append('-shared')
+@@ -455,13 +455,13 @@
+ 
+ 
+ def build_linux_launcher(args, launcher_dir='.', for_bundle=False, sh_launcher=False):
+-    cflags = '-Wall -Werror -fpie'.split()
++    cflags = '-Wall -fpie'.split()
+     libs = []
+     if args.profile:
+         cflags.append('-DWITH_PROFILER'), cflags.append('-g')
+         libs.append('-lprofiler')
+-    else:
+-        cflags.append('-O3')
++    #else:
++    #    cflags.append('-O3')
+     if for_bundle:
+         cflags.append('-DFOR_BUNDLE')
+         cflags.append('-DPYVER="{}"'.format(sysconfig.get_python_version()))

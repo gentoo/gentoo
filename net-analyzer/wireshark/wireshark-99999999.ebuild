@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,11 +12,11 @@ LICENSE="GPL-2"
 SLOT="0/${PV}"
 KEYWORDS=""
 IUSE="
-	adns androiddump +capinfos +caps +captype ciscodump cpu_flags_x86_sse4_2
-	+dftest doc doc-pdf +dumpcap +editcap geoip gtk kerberos libssh libxml2 lua
-	lz4 +mergecap +netlink nghttp2 +pcap portaudio +qt5 +randpkt +randpktdump
-	+reordercap sbc selinux +sharkd smi snappy spandsp sshdump ssl +text2pcap
-	tfshark +tshark +udpdump zlib
+	adns androiddump bcg729 +capinfos +caps +captype ciscodump
+	cpu_flags_x86_sse4_2 +dftest doc doc-pdf +dumpcap +editcap geoip gtk
+	kerberos libssh libxml2 lua lz4 +mergecap +netlink nghttp2 +pcap portaudio
+	+qt5 +randpkt +randpktdump +reordercap sbc selinux +sharkd smi snappy
+	spandsp sshdump ssl +text2pcap tfshark +tshark +udpdump zlib
 "
 REQUIRED_USE="
 	ciscodump? ( libssh )
@@ -30,6 +30,7 @@ CDEPEND="
 	dev-libs/libgcrypt:0
 	netlink? ( dev-libs/libnl:3 )
 	adns? ( >=net-dns/c-ares-1.5 )
+	bcg729? ( media-libs/bcg729 )
 	caps? ( sys-libs/libcap )
 	geoip? ( dev-libs/geoip )
 	gtk? (
@@ -171,6 +172,7 @@ src_configure() {
 		$(use_enable tshark) \
 		$(use_enable udpdump) \
 		$(use_with adns c-ares) \
+		$(use_with bcg729) \
 		$(use_with caps libcap) \
 		$(use_with geoip) \
 		$(use_with gtk gtk 3) \
@@ -216,16 +218,11 @@ src_install() {
 	default
 
 	# FAQ is not required as is installed from help/faq.txt
-	dodoc AUTHORS ChangeLog NEWS README.* \
-		doc/{randpkt.txt,README*}
+	dodoc AUTHORS ChangeLog NEWS README* doc/randpkt.txt doc/README*
 
-	if use doc; then
-		docinto /usr/share/doc/${PF}/html
-		dodoc -r docbook/{release-notes.html,ws{d,u}g_html{,_chunked}}
-		if use doc-pdf; then
-			docinto /usr/share/doc/${PF}/pdf/
-			dodoc docbook/{developer,user}-guide-{a4,us}.pdf docbook/release-notes.pdf
-		fi
+	if use doc-pdf; then
+		docinto /usr/share/doc/${PF}/pdf/
+		dodoc docbook/{developer,user}-guide.pdf
 	fi
 
 	# install headers
@@ -252,16 +249,14 @@ src_install() {
 	doins wiretap/wtap.h
 
 	if use gtk || use qt5; then
-		local c d
-		for c in hi lo; do
-			for d in 16 32 48; do
-				insinto /usr/share/icons/${c}color/${d}x${d}/apps
-				newins image/${c}${d}-app-wireshark.png wireshark.png
-			done
+		local s
+		for s in 16 32 48 64 128 256 512 1024; do
+			insinto /usr/share/icons/hicolor/${s}x${s}/apps
+			newins image/wsicon${s}.png wireshark.png
 		done
-		for d in 16 24 32 48 64 128 256 ; do
-			insinto /usr/share/icons/hicolor/${d}x${d}/mimetypes
-			newins image/WiresharkDoc-${d}.png application-vnd.tcpdump.pcap.png
+		for s in 16 24 32 48 64 128 256 ; do
+			insinto /usr/share/icons/hicolor/${s}x${s}/mimetypes
+			newins image/WiresharkDoc-${s}.png application-vnd.tcpdump.pcap.png
 		done
 	fi
 

@@ -34,7 +34,7 @@ MY_P="${PN}-${MY_PV}"
 DOC_VER=${MY_PV}
 
 DESCRIPTION="stupid content tracker: distributed VCS designed for speed and efficiency"
-HOMEPAGE="http://www.git-scm.com/"
+HOMEPAGE="https://www.git-scm.com/"
 if [[ ${PV} != *9999 ]]; then
 	SRC_URI_SUFFIX="xz"
 	SRC_URI_KORG="mirror://kernel/software/scm/git"

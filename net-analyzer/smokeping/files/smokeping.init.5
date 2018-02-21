@@ -1,0 +1,56 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/bin/smokeping"
+command_args="--nodaemon"
+command_background="true"
+command_user="smokeping:smokeping"
+pidfile="/run/${RC_SVCNAME}.pid"
+extra_started_commands="dump reload restore"
+required_files="/etc/smokeping/config"
+
+depend() {
+	need net
+	use dns
+}
+
+start_pre() {
+    export LC_ALL=C
+}
+
+reload() {
+	ebegin "Reloading smokeping"
+	"${command}" --reload 2>&1 >/dev/null
+	eend $?
+}
+
+dump() {
+	ebegin "Dumping smokeping rrd files to XML for backup or upgrade use"
+	if service_started "${myservice}" ; then
+		eerror "You need to stop smokeping before dumping files!"
+		return 1
+	fi
+	for f in $(find /var/lib/smokeping -name '*.rrd' -print) ; do
+		f_xml=$(dirname $f)/$(basename $f .rrd).xml
+		rrdtool dump "$f" > "${f_xml}"
+		chown root:0 "${f_xml}"
+	done
+	eend $?
+}
+
+restore() {
+	ebegin "Restoring smokeping rrd files from XML dump files"
+	if service_started "${myservice}" ; then
+		eerror "You need to stop smokeping before restoring files!"
+		return 1
+	fi
+	for f in $(find /var/lib/smokeping -name '*.xml' -print) ; do
+		f_rrd=$(dirname $f)/$(basename $f .xml).rrd
+		mv -f "${f_rrd}" "${f_rrd}.bak"
+		chown root:0 "${f_rrd}.bak"
+		rrdtool restore "$f" "${f_rrd}"
+		chown smokeping:smokeping "${f_rrd}"
+	done
+	eend $?
+}

@@ -1,9 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
-inherit eutils
 
 DESCRIPTION="Scanner Access Now Easy"
 HOMEPAGE="http://www.sane-project.org"
@@ -44,8 +42,8 @@ src_install () {
 			fi
 		done
 		if [ "/plug-ins" != "${gimpplugindir}" ]; then
-			 dodir ${gimpplugindir}
-			dosym /usr/bin/xscanimage ${gimpplugindir}/xscanimage
+			dodir ${gimpplugindir}
+			dosym xscanimage ${gimpplugindir}/xscanimage
 		else
 			ewarn "No idea where to find the gimp plugin directory"
 		fi

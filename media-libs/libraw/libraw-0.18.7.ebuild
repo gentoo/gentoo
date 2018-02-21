@@ -32,6 +32,10 @@ S="${WORKDIR}/${MY_P}"
 
 DOCS=( Changelog.txt README )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.18.4-glibc-2.27.patch
+)
+
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }

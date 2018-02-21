@@ -1,5 +1,5 @@
---- configure.ac.org	2011-01-28 18:26:54.000000000 +0100
-+++ configure.ac	2011-04-20 00:09:37.000000000 +0200
+--- a/configure.ac
++++ b/configure.ac
 @@ -121,6 +121,12 @@
  esac
  

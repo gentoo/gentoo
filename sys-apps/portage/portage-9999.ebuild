@@ -18,7 +18,7 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage"
 LICENSE="GPL-2"
 KEYWORDS=""
 SLOT="0"
-IUSE="build doc epydoc +ipc +native-extensions +rsync-verify selinux xattr"
+IUSE="build doc epydoc gentoo-dev +ipc +native-extensions +rsync-verify selinux xattr"
 
 DEPEND="!build? ( $(python_gen_impl_dep 'ssl(+)') )
 	>=app-arch/tar-1.27
@@ -44,16 +44,17 @@ RDEPEND="
 		>=app-admin/eselect-1.2
 		$(python_gen_cond_dep 'dev-python/pyblake2[${PYTHON_USEDEP}]' \
 			python{2_7,3_4,3_5} pypy)
+		rsync-verify? (
+			>=app-portage/gemato-10
+			app-crypt/gentoo-keys
+			>=app-crypt/gnupg-2.2.4-r2[ssl(-)]
+		)
 	)
 	elibc_FreeBSD? ( sys-freebsd/freebsd-bin )
 	elibc_glibc? ( >=sys-apps/sandbox-2.2 )
 	elibc_musl? ( >=sys-apps/sandbox-2.2 )
 	elibc_uclibc? ( >=sys-apps/sandbox-2.2 )
 	>=app-misc/pax-utils-0.1.17
-	rsync-verify? (
-		>=app-portage/gemato-10[gpg,-portage-postsync(-)]
-		app-crypt/gentoo-keys
-	)
 	selinux? ( >=sys-libs/libselinux-2.0.94[python,${PYTHON_USEDEP}] )
 	xattr? ( kernel_linux? (
 		>=sys-apps/install-xattr-0.3
@@ -92,6 +93,17 @@ pkg_setup() {
 python_prepare_all() {
 	distutils-r1_python_prepare_all
 
+	if use gentoo-dev; then
+		einfo "Disabling --dynamic-deps by default for gentoo-dev..."
+		sed -e 's:\("--dynamic-deps", \)\("y"\):\1"n":' \
+			-i pym/_emerge/create_depgraph_params.py || \
+			die "failed to patch create_depgraph_params.py"
+
+		einfo "Enabling additional FEATURES for gentoo-dev..."
+		echo 'FEATURES="${FEATURES} ipc-sandbox network-sandbox strict-keepdir"' \
+			>> cnf/make.globals || die
+	fi
+
 	if use native-extensions; then
 		printf "[build_ext]\nportage-ext-modules=true\n" >> \
 			setup.cfg || die
@@ -110,7 +122,7 @@ python_prepare_all() {
 			|| die "failed to append to make.globals"
 	fi
 
-	if ! use rsync-verify; then
+	if use build || ! use rsync-verify; then
 		sed -e '/^sync-rsync-verify-metamanifest/s|yes|no|' \
 			-i cnf/repos.conf || die "sed failed"
 	fi
@@ -142,6 +154,7 @@ python_prepare_all() {
 
 		einfo "Adjusting repos.conf ..."
 		sed -e "s|^\(location = \)\(/usr/portage\)|\\1${EPREFIX}\\2|" \
+			-e "s|^\(sync-openpgp-key-path = \)\(.*\)|\\1${EPREFIX}\\2|" \
 			-i cnf/repos.conf || die "sed failed"
 		if prefix-guest ; then
 			sed -e "s|^\(main-repo = \).*|\\1gentoo_prefix|" \

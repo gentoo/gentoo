@@ -8,7 +8,6 @@
 	<maintainer type="person">
 		<email>idl0r@gentoo.org</email>
 		<name>Christian Ruppert</name>
-		<description>Secondary maintainer</description>
 	</maintainer>
 	<use>
 		<flag name="jemalloc">Use dev-libs/jemalloc for allocations</flag>

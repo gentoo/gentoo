@@ -12,6 +12,8 @@ LICENSE="LGPL-2.1+ BSD HPND ISC inner-net rc PCRE"
 RESTRICT="strip" # Strip ourself #46186
 SLOT="2.2"
 
+EMULTILIB_PKG="true"
+
 if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="https://sourceware.org/git/glibc.git"
 	inherit git-r3
@@ -73,6 +75,7 @@ DEPEND="${COMMON_DEPEND}
 	>=app-misc/pax-utils-0.1.10
 	!<sys-apps/sandbox-1.6
 	!<sys-apps/portage-2.1.2
+	!<sys-devel/bison-2.7
 	doc? ( sys-apps/texinfo )
 "
 RDEPEND="${COMMON_DEPEND}
@@ -515,8 +518,8 @@ check_devpts() {
 # functions are just not provided.
 
 g_get_running_KV() {
-        uname -r
-        return $?
+	uname -r
+	return $?
 }
 
 g_KV_major() {
@@ -540,7 +543,7 @@ g_KV_micro() {
 }
 
 g_KV_to_int() {
-    [[ -z $1 ]] && return 1
+	[[ -z $1 ]] && return 1
 	local KV_MAJOR=$(g_KV_major "$1")
 	local KV_MINOR=$(g_KV_minor "$1")
 	local KV_MICRO=$(g_KV_micro "$1")
@@ -552,7 +555,7 @@ g_KV_to_int() {
 		echo "${KV_int}"
 		return 0
 	fi
-    return 1
+	return 1
 }
 
 g_int_to_KV() {
@@ -596,6 +599,12 @@ sanity_prechecks() {
 			eerror " Downgrading glibc is not supported and a sure way to destruction."
 			die "Aborting to save your system."
 		fi
+
+		if ! do_run_test '#include <unistd.h>\n#include <sys/syscall.h>\nint main(){return syscall(1000)!=-1;}\n' ; then
+			eerror "Your old kernel is broken. You need to update it to a newer"
+			eerror "version as syscall(<bignum>) will break. See bug 279260."
+			die "Old and broken kernel."
+		fi
 	fi
 
 	# Users have had a chance to phase themselves, time to give em the boot
@@ -610,12 +619,6 @@ sanity_prechecks() {
 		eerror "Chances are you don't actually want/need i386."
 		eerror "Please read https://www.gentoo.org/doc/en/change-chost.xml"
 		die "Please fix your CHOST"
-	fi
-
-	if ! do_run_test '#include <unistd.h>\n#include <sys/syscall.h>\nint main(){return syscall(1000)!=-1;}\n' ; then
-		eerror "Your old kernel is broken. You need to update it to a newer"
-		eerror "version as syscall(<bignum>) will break. See bug 279260."
-		die "Old and broken kernel."
 	fi
 
 	if [[ -e /proc/xen ]] && [[ $(tc-arch) == "x86" ]] && ! is-flag -mno-tls-direct-seg-refs ; then
@@ -645,16 +648,22 @@ sanity_prechecks() {
 	# ABI-specific checks follow here. Hey, we have a lot more specific conditions that
 	# we test for...
 	if ! is_crosscompile ; then
-
 		if use amd64 && use multilib && [[ ${MERGE_TYPE} != "binary" ]] ; then
 			ebegin "Checking that IA32 emulation is enabled in the running kernel"
 			echo 'int main(){return 0;}' > "${T}/check-ia32-emulation.c"
-			"${CC-${CHOST}-gcc}" ${CFLAGS_x86} "${T}/check-ia32-emulation.c" -o "${T}/check-ia32-emulation.elf32"
-			"${T}/check-ia32-emulation.elf32"
-			local STAT=$?
+			local STAT
+			if "${CC-${CHOST}-gcc}" ${CFLAGS_x86} "${T}/check-ia32-emulation.c" -o "${T}/check-ia32-emulation.elf32"; then
+				"${T}/check-ia32-emulation.elf32"
+				STAT=$?
+			else
+				# Don't fail here to allow single->multi ABI switch
+				# or recover from breakage like bug #646424
+				ewarn "Failed to compile the ABI test. Broken host glibc?"
+				STAT=0
+			fi
 			rm -f "${T}/check-ia32-emulation.elf32"
 			eend $STAT
-			[ $STAT -eq 0 ] || die "CONFIG_IA32_EMULATION must be enabled in the kernel to compile a multilib glibc."
+			[[ $STAT -eq 0 ]] || die "CONFIG_IA32_EMULATION must be enabled in the kernel to compile a multilib glibc."
 		fi
 
 	fi
@@ -1048,7 +1057,7 @@ src_compile() {
 
 glibc_src_test() {
 	cd "$(builddir nptl)"
-	emake -j1 check
+	emake check
 }
 
 do_src_test() {

@@ -1,0 +1,50 @@
+--- a/openssh-7.6p1-hpnssh14v12-r1/0003-support-dynamically-sized-receive-buffers.patch	2017-10-11 15:02:11.850912525 -0700
++++ b/openssh-7.6p1-hpnssh14v12-r1/0003-support-dynamically-sized-receive-buffers.patch	2017-10-11 15:35:06.223424844 -0700
+@@ -907,9 +907,9 @@
+ @@ -517,7 +544,7 @@ send_client_banner(int connection_out, int minor1)
+  {
+  	/* Send our own protocol version identification. */
+- 	xasprintf(&client_version_string, "SSH-%d.%d-%.100s\r\n",
+--	    PROTOCOL_MAJOR_2, PROTOCOL_MINOR_2, SSH_VERSION);
+-+	    PROTOCOL_MAJOR_2, PROTOCOL_MINOR_2, SSH_RELEASE);
++ 	xasprintf(&client_version_string, "SSH-%d.%d-%.100s PKIX[%s]\r\n",
++-	    PROTOCOL_MAJOR_2, PROTOCOL_MINOR_2, SSH_VERSION, PACKAGE_VERSION);
+++	    PROTOCOL_MAJOR_2, PROTOCOL_MINOR_2, SSH_RELEASE, PACKAGE_VERSION);
+  	if (atomicio(vwrite, connection_out, client_version_string,
+  	    strlen(client_version_string)) != strlen(client_version_string))
+  		fatal("write: %.100s", strerror(errno));
+@@ -918,11 +918,11 @@
+ --- a/sshd.c
+ +++ b/sshd.c
+ @@ -367,7 +367,7 @@ sshd_exchange_identification(struct ssh *ssh, int sock_in, int sock_out)
+- 	char remote_version[256];	/* Must be at least as big as buf. */
++ 	}
+  
+- 	xasprintf(&server_version_string, "SSH-%d.%d-%.100s%s%s\r\n",
+--	    PROTOCOL_MAJOR_2, PROTOCOL_MINOR_2, SSH_VERSION,
+-+	    PROTOCOL_MAJOR_2, PROTOCOL_MINOR_2, SSH_RELEASE,
++	xasprintf(&server_version_string, "SSH-%d.%d-%s%s%s%s\r\n",
++-	    PROTOCOL_MAJOR_2, PROTOCOL_MINOR_2, SSH_VERSION, pkix_comment,
+++	    PROTOCOL_MAJOR_2, PROTOCOL_MINOR_2, SSH_RELEASE, pkix_comment,
+  	    *options.version_addendum == '\0' ? "" : " ",
+  	    options.version_addendum);
+  
+@@ -982,13 +982,14 @@
+ index e093f623..83f0932d 100644
+ --- a/version.h
+ +++ b/version.h
+-@@ -3,4 +3,5 @@
++@@ -3,3 +3,6 @@
+  #define SSH_VERSION	"OpenSSH_7.6"
+  
+- #define SSH_PORTABLE	"p1"
+--#define SSH_RELEASE	SSH_VERSION SSH_PORTABLE
++-#define SSH_RELEASE	PACKAGE_STRING ", " SSH_VERSION "p1"
+++#define SSH_PORTABLE	"p1"
+ +#define SSH_HPN		"-hpn14v12"
+++#define SSH_X509		"-PKIXSSH-11.0"
+-+#define SSH_RELEASE	SSH_VERSION SSH_PORTABLE SSH_HPN
+++#define SSH_RELEASE	PACKAGE_STRING ", " SSH_VERSION "p1" SSH_HPN
+ -- 
+ 2.14.2
+ 

@@ -1,0 +1,11 @@
+--- a/dnstracer.c
++++ b/dnstracer.c
+@@ -1619,7 +1619,7 @@
+     if (argv[0] == NULL) usage();
+ 
+     // check for a trailing dot
+-    strcpy(argv0, argv[0]);
++    strncpy(argv0, argv[0], NS_MAXDNAME);
+     if (argv0[strlen(argv[0]) - 1] == '.') argv0[strlen(argv[0]) - 1] = 0;
+ 
+     printf("Tracing to %s[%s] via %s, maximum of %d retries\n",

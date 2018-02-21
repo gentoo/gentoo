@@ -470,8 +470,8 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	if [[ -e /usr/lib64/vlc/plugins/plugins.dat ]]; then
-		rm /usr/lib64/vlc/plugins/plugins.dat || die "Failed to rm plugins.dat"
+	if [[ -e /usr/$(get_libdir)/vlc/plugins/plugins.dat ]]; then
+		rm /usr/$(get_libdir)/vlc/plugins/plugins.dat || die "Failed to rm plugins.dat"
 	fi
 
 	gnome2_icon_cache_update

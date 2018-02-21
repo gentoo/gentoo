@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ PYTHON_REQ_USE='threads(+)'
 
 WAF_PV=1.9.8
 
-inherit gnome2-utils pax-utils python-r1 toolchain-funcs versionator waf-utils xdg-utils
+inherit flag-o-matic gnome2-utils pax-utils python-r1 toolchain-funcs versionator waf-utils xdg-utils
 
 DESCRIPTION="Media player based on MPlayer and mplayer2"
 HOMEPAGE="https://mpv.io/"
@@ -147,10 +147,9 @@ src_prepare() {
 src_configure() {
 	tc-export CC PKG_CONFIG AR
 
-	if tc-is-cross-compiler && use raspberry-pi; then
-		export EXTRA_PKG_CONFIG_LIBDIR="${SYSROOT%/}${EPREFIX}/opt/vc/lib/pkgconfig"
-		# Drop next line when Gentoo bug 607344 is fixed or if you fixed it locally.
-		die "${PN} can't be cross built with raspberry-pi USE enabled. See Gentoo bug 607344."
+	if use raspberry-pi; then
+		append-cflags -I"${SYSROOT%/}${EPREFIX}/opt/vc/include"
+		append-ldflags -L"${SYSROOT%/}${EPREFIX}/opt/vc/lib"
 	fi
 
 	local mywafargs=(

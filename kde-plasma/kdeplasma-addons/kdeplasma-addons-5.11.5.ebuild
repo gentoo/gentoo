@@ -40,7 +40,7 @@ DEPEND="
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtx11extras)
-	share? ( dev-libs/purpose:5 )
+	share? ( kde-frameworks/purpose:5 )
 "
 RDEPEND="${DEPEND}
 	$(add_plasma_dep plasma-workspace)

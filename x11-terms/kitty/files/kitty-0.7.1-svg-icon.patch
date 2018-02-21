@@ -1,0 +1,16 @@
+Use SVG icon instead of PNG.
+
+--- kitty-0.7.1/setup.py
++++ kitty-0.7.1/setup.py
+@@ -507,9 +507,9 @@
+     safe_makedirs(launcher_dir)
+     build_linux_launcher(args, launcher_dir, for_bundle, sh_launcher)
+     if not is_macos:  # {{{ linux desktop gunk
+-        icdir = os.path.join(ddir, 'share', 'icons', 'hicolor', '256x256', 'apps')
++        icdir = os.path.join(ddir, 'share', 'icons', 'hicolor', 'scalable', 'apps')
+         safe_makedirs(icdir)
+-        shutil.copy2('logo/kitty.png', icdir)
++        shutil.copy2('logo/kitty.svg', icdir)
+         deskdir = os.path.join(ddir, 'share', 'applications')
+         safe_makedirs(deskdir)
+         with open(os.path.join(deskdir, 'kitty.desktop'), 'w') as f:

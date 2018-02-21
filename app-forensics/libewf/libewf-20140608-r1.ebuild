@@ -1,9 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 AUTOTOOLS_AUTORECONF=1
+AUTOTOOLS_IN_SOURCE_BUILD=1
 inherit eutils autotools-utils
 
 DESCRIPTION="Implementation of the EWF (SMART and EnCase) image format"
@@ -27,9 +28,10 @@ DEPEND="
 	zlib? ( sys-libs/zlib )"
 RDEPEND="${DEPEND}"
 
-AUTOTOOLS_IN_SOURCE_BUILD=1
-
-PATCHES=( "${DISTDIR}"/${P}-libuna-remove-inline.patch )
+PATCHES=(
+	"${DISTDIR}"/${P}-libuna-remove-inline.patch
+	"${FILESDIR}"/${PN}-20140608-fix-tmpdir-in-tests.patch
+)
 
 DOCS=( AUTHORS ChangeLog NEWS README documents/header.txt documents/header2.txt )
 

@@ -15,7 +15,7 @@ SRC_URI="https://github.com/puma/puma/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="3"
-KEYWORDS="amd64 ~arm ~arm64"
+KEYWORDS="amd64 ~arm ~arm64 ~x86"
 IUSE=""
 
 DEPEND+=" dev-libs/openssl:0 test? ( net-misc/curl )"

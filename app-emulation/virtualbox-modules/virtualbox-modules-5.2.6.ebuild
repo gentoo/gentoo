@@ -39,7 +39,7 @@ pkg_setup() {
 
 src_prepare() {
 	if use pax_kernel && kernel_is -ge 3 0 0 ; then
-		epatch "${FILESDIR}"/${PN}-4.1.4-pax-const.patch
+		eapply "${FILESDIR}"/${PN}-4.1.4-pax-const.patch
 	fi
 
 	default
@@ -53,7 +53,4 @@ src_install() {
 
 pkg_postinst() {
 	linux-mod_pkg_postinst
-	elog "If you are using sys-apps/openrc, please add \"vboxdrv\", \"vboxnetflt\","
-	elog "\"vboxnetadp\" and \"vboxpci\" to:"
-	elog "  /etc/conf.d/modules"
 }

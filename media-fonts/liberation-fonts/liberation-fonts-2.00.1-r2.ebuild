@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,13 +8,13 @@ PYTHON_COMPAT=( python2_7 )
 inherit font python-any-r1
 
 DESCRIPTION="A Helvetica/Times/Courier replacement TrueType font set, courtesy of Red Hat"
-HOMEPAGE="https://fedorahosted.org/liberation-fonts"
+HOMEPAGE="https://pagure.io/liberation-fonts"
 SRC_URI="
 	!fontforge? (
-		https://fedorahosted.org/releases/l/i/${PN}/${PN}-ttf-${PV}.tar.gz
+		https://releases.pagure.org/liberation-fonts/${PN}/${PN}-ttf-${PV}.tar.gz
 	)
 	fontforge? (
-		https://fedorahosted.org/releases/l/i/${PN}/${P}.tar.gz
+		https://releases.pagure.org/liberation-fonts/${PN}/${P}.tar.gz
 	)
 "
 

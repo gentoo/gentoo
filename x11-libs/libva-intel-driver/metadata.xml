@@ -9,6 +9,6 @@
     <flag name="drm">Enables VA/DRM API support.</flag>
   </use>
   <upstream>
-    <remote-id type="github">01org/intel-vaapi-driver</remote-id>
+    <remote-id type="github">intel/intel-vaapi-driver</remote-id>
   </upstream>
 </pkgmetadata>

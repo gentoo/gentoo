@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ inherit font
 
 DESCRIPTION="A redesign of Courier"
 HOMEPAGE="http://www.quoteunquoteapps.com/courierprime/"
-SRC_URI="https://dev.gentoo.org/~yngwin/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~jstein/dist/${P}.tar.xz"
 
 LICENSE="OFL-1.1"
 SLOT="0"

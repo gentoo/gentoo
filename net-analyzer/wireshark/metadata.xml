@@ -1,62 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>netmon@gentoo.org</email>
-		<name>Gentoo network monitoring and analysis project</name>
-	</maintainer>
-	<longdescription>
-	Wireshark is the world's foremost network protocol analyzer, and is the de
-	facto (and often de jure) standard across many industries and educational
-	institutions. Wireshark has a rich feature set which includes 1) deep
-	inspection of hundreds of protocols, with more being added all the time, 2)
-	live capture and offline analysis, 3) standard three-pane packet browser, 4)
-	captured network data can be browsed via a GUI, or via the TTY-mode TShark
-	utility, 5) the most powerful display filters in the industry, 6) rich VoIP
-	analysis, 7) read/write many different capture file formats: tcpdump
-	(libpcap), Catapult DCT2000, Cisco Secure IDS iplog, Microsoft Network
-	Monitor, Network General Sniffer® (compressed and uncompressed), Sniffer®
-	Pro, and NetXray®, Network Instruments Observer, Novell LANalyzer, RADCOM
-	WAN/LAN Analyzer, Shomiti/Finisar Surveyor, Tektronix K12xx, Visual Networks
-	Visual UpTime, WildPackets EtherPeek/TokenPeek/AiroPeek, and many others, 8)
-	capture files compressed with gzip can be decompressed on the fly, 9) live
-	data can be read from Ethernet, IEEE 802.11, PPP/HDLC, ATM, Bluetooth, USB,
-	Token Ring, Frame Relay, FDDI, and others, 10) decryption support for many
-	protocols, including IPsec, ISAKMP, Kerberos, SNMPv3, SSL/TLS, WEP, and
-	WPA/WPA2, 11) coloring rules can be applied to the packet list for quick,
-	intuitive analysis, 12) output can be exported to XML, PostScript®, CSV, or
-	plain text 
+<maintainer type="project">
+<email>netmon@gentoo.org</email>
+<name>Gentoo network monitoring and analysis project</name>
+</maintainer>
+<longdescription>
+Wireshark is the world's foremost network protocol analyzer, and is the de
+facto (and often de jure) standard across many industries and educational
+institutions. Wireshark has a rich feature set which includes 1) deep
+inspection of hundreds of protocols, with more being added all the time, 2)
+live capture and offline analysis, 3) standard three-pane packet browser, 4)
+captured network data can be browsed via a GUI, or via the TTY-mode TShark
+utility, 5) the most powerful display filters in the industry, 6) rich VoIP
+analysis, 7) read/write many different capture file formats: tcpdump (libpcap),
+Catapult DCT2000, Cisco Secure IDS iplog, Microsoft Network Monitor, Network
+General Sniffer® (compressed and uncompressed), Sniffer® Pro, and NetXray®,
+Network Instruments Observer, Novell LANalyzer, RADCOM WAN/LAN Analyzer,
+Shomiti/Finisar Surveyor, Tektronix K12xx, Visual Networks Visual UpTime,
+WildPackets EtherPeek/TokenPeek/AiroPeek, and many others, 8) capture files
+compressed with gzip can be decompressed on the fly, 9) live data can be read
+from Ethernet, IEEE 802.11, PPP/HDLC, ATM, Bluetooth, USB, Token Ring, Frame
+Relay, FDDI, and others, 10) decryption support for many protocols, including
+IPsec, ISAKMP, Kerberos, SNMPv3, SSL/TLS, WEP, and WPA/WPA2, 11) coloring rules
+can be applied to the packet list for quick, intuitive analysis, 12) output can
+be exported to XML, PostScript®, CSV, or plain text.
 </longdescription>
-	<use>
-		<flag name="adns">Use the GNU <pkg>net-dns/c-ares</pkg> library to resolve DNS names</flag>
-		<flag name="androiddump">Install androiddump, an extcap interface to capture from Android devices</flag>
-		<flag name="capinfos">Install capinfos, to print information about capture files</flag>
-		<flag name="captype">Install captype, to print the file types of capture files</flag>
-		<flag name="ciscodump">Install ciscodump, extcap interface to capture from a remote Cisco router</flag>
-		<flag name="crypt">Use <pkg>dev-libs/libgcrypt</pkg> to decrypt traffic</flag>
-		<flag name="dftest">Install dftest, to display filter byte-code, for debugging dfilter routines</flag>
-		<flag name="doc-pdf">Build documentation in pdf format (US and a4 paper sizes)</flag>
-		<flag name="dumpcap">Install dumpcap, to dump network traffic from inside wireshark</flag>
-		<flag name="editcap">Install editcap, to edit and/or translate the format of capture files</flag>
-		<flag name="libssh">Use <pkg>net-libs/libssh</pkg> (for sshdump)</flag>
-		<flag name="libxml2">Use <pkg>dev-libs/libxml2</pkg> for handling XML configuration in dissectors</flag>
-		<flag name="lz4">Use <pkg>app-arch/lz4</pkg> for compression/decompression</flag>
-		<flag name="mergecap">Install mergecap, to merge two or more capture files into one</flag>
-		<flag name="netlink">Use <pkg>dev-libs/libnl</pkg></flag>
-		<flag name="nghttp2">Use <pkg>net-libs/nghttp2</pkg> for HTTP/2 support</flag>
-		<flag name="pcap">Use <pkg>net-libs/libpcap</pkg> for network packet capturing (build dumpcap, rawshark)</flag>
-		<flag name="randpkt">Install randpkt, a utility for creating pcap trace files full of random packets</flag>
-		<flag name="randpktdump">Install randpktdump, an extcap interface to provide access to the random packet generator (randpkt)</flag>
-		<flag name="reordercap">Install reordercap, to reorder input file by timestamp into output file</flag>
-		<flag name="sbc">Use <pkg>media-libs/sbc</pkg> for playing back SBC encoded packets</flag>
-		<flag name="sharkd">Install sharkd, the daemon variant of wireshark</flag>
-		<flag name="smi">Use <pkg>net-libs/libsmi</pkg> to resolve numeric OIDs into human readable format</flag>
-		<flag name="snappy">Use <pkg>app-arch/snappy</pkg> for snappy compression and decompression</flag>
-		<flag name="spandsp">Use <pkg>media-libs/spandsp</pkg> for for G.722 and G.726 codec support in the RTP Player</flag>
-		<flag name="sshdump">Install sshdump, an extcap interface to capture from a remote host through SSH</flag>
-		<flag name="text2pcap">Install text2pcap, to generate a capture file from an ASCII hexdump of packets</flag>
-		<flag name="tfshark">Install tfshark, a terminal-based version of the FileShark capability</flag>
-		<flag name="tshark">Install tshark, to dump and analyzer network traffic from the command line</flag>
-		<flag name="udpdump">Install udpdump, to get packets exported from a source (like a network device or a GSMTAP producer) that are dumped to a pcap file</flag>
-	</use>
+<use>
+<flag name="adns">Use <pkg>net-dns/c-ares</pkg> to resolve DNS names</flag>
+<flag name="androiddump">Install androiddump, an extcap interface to capture from Android devices</flag>
+<flag name="bcg729">Use <pkg>media-plugins/mediastreamer-bcg729</pkg> to play G.729 codec</flag>
+<flag name="capinfos">Install capinfos, to print information about capture files</flag>
+<flag name="captype">Install captype, to print the file types of capture files</flag>
+<flag name="ciscodump">Install ciscodump, extcap interface to capture from a remote Cisco router</flag>
+<flag name="crypt">Use <pkg>dev-libs/libgcrypt</pkg> to decrypt traffic</flag>
+<flag name="dftest">Install dftest, to display filter byte-code, for debugging dfilter routines</flag>
+<flag name="doc-pdf">Build documentation in pdf format (US and a4 paper sizes)</flag>
+<flag name="dumpcap">Install dumpcap, to dump network traffic from inside wireshark</flag>
+<flag name="editcap">Install editcap, to edit and/or translate the format of capture files</flag>
+<flag name="libssh">Use <pkg>net-libs/libssh</pkg> (for sshdump)</flag>
+<flag name="libxml2">Use <pkg>dev-libs/libxml2</pkg> for handling XML configuration in dissectors</flag>
+<flag name="lz4">Use <pkg>app-arch/lz4</pkg> for compression/decompression</flag>
+<flag name="mergecap">Install mergecap, to merge two or more capture files into one</flag>
+<flag name="netlink">Use <pkg>dev-libs/libnl</pkg></flag>
+<flag name="nghttp2">Use <pkg>net-libs/nghttp2</pkg> for HTTP/2 support</flag>
+<flag name="pcap">Use <pkg>net-libs/libpcap</pkg> for network packet capturing (build dumpcap, rawshark)</flag>
+<flag name="randpkt">Install randpkt, a utility for creating pcap trace files full of random packets</flag>
+<flag name="randpktdump">Install randpktdump, an extcap interface to provide access to the random packet generator (randpkt)</flag>
+<flag name="reordercap">Install reordercap, to reorder input file by timestamp into output file</flag>
+<flag name="sbc">Use <pkg>media-libs/sbc</pkg> for playing back SBC encoded packets</flag>
+<flag name="sharkd">Install sharkd, the daemon variant of wireshark</flag>
+<flag name="smi">Use <pkg>net-libs/libsmi</pkg> to resolve numeric OIDs into human readable format</flag>
+<flag name="snappy">Use <pkg>app-arch/snappy</pkg> for snappy compression and decompression</flag>
+<flag name="spandsp">Use <pkg>media-libs/spandsp</pkg> for for G.722 and G.726 codec support in the RTP Player</flag>
+<flag name="sshdump">Install sshdump, an extcap interface to capture from a remote host through SSH</flag>
+<flag name="text2pcap">Install text2pcap, to generate a capture file from an ASCII hexdump of packets</flag>
+<flag name="tfshark">Install tfshark, a terminal-based version of the FileShark capability</flag>
+<flag name="tshark">Install tshark, to dump and analyzer network traffic from the command line</flag>
+<flag name="udpdump">Install udpdump, to get packets exported from a source (like a network device or a GSMTAP producer) that are dumped to a pcap file</flag>
+</use>
 </pkgmetadata>

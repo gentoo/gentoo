@@ -16,7 +16,7 @@ else
 fi
 
 DESCRIPTION="A vim-inspired file manager for the console"
-HOMEPAGE="http://ranger.nongnu.org/"
+HOMEPAGE="https://ranger.github.io/"
 LICENSE="GPL-3"
 SLOT="0"
 

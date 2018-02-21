@@ -4,7 +4,6 @@
 	<maintainer type="person">
 		<email>swegener@gentoo.org</email>
 		<name>Sven Wegener</name>
-		<description>primary maintainer</description>
 	</maintainer>
 	<longdescription>shash is a command-line interface for libmhash and is used to generate or check digests or MACs of files.</longdescription>
 </pkgmetadata>

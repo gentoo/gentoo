@@ -1,0 +1,68 @@
+From d196036024697a75868c1f1626525710495ca428 Mon Sep 17 00:00:00 2001
+From: Allan Sandfeld Jensen <allan.jensen@qt.io>
+Date: Thu, 23 Nov 2017 14:25:04 +0100
+Subject: [PATCH] Avoid providing bad pixelDeltas on X11
+
+With libinput we now get a hardcoded resolution that is unrelated to
+the hardware. So avoid using that as a real pixel delta and document
+pixel deltas as being driver specific and unreliable on X11.
+
+Task-number: QTBUG-59261
+Change-Id: I9fe86d80e7ccd290ed2e4091d7eafa52cb537d34
+Reviewed-by: David Edmundson <davidedmundson@kde.org>
+Reviewed-by: Marco Martin <mart@kde.org>
+Reviewed-by: Gatis Paeglis <gatis.paeglis@qt.io>
+---
+ src/gui/kernel/qevent.cpp                        |  1 +
+ src/plugins/platforms/xcb/qxcbconnection_xi2.cpp | 14 ++++++++------
+ 2 files changed, 9 insertions(+), 6 deletions(-)
+
+diff --git a/src/gui/kernel/qevent.cpp b/src/gui/kernel/qevent.cpp
+index 06d52aa..c68f9af 100644
+--- a/src/gui/kernel/qevent.cpp
++++ b/src/gui/kernel/qevent.cpp
+@@ -971,6 +971,7 @@ QWheelEvent::QWheelEvent(const QPointF &pos, const QPointF& globalPos,
+     \li scrolling is about to begin, but the distance did not yet change (Qt::ScrollBegin),
+     \li or scrolling has ended and the distance did not change anymore (Qt::ScrollEnd).
+     \endlist
++    \note On X11 this value is driver specific and unreliable, use angleDelta() instead
+ */
+ 
+ /*!
+diff --git a/src/plugins/platforms/xcb/qxcbconnection_xi2.cpp b/src/plugins/platforms/xcb/qxcbconnection_xi2.cpp
+index d1d97af..94f543f 100644
+--- a/src/plugins/platforms/xcb/qxcbconnection_xi2.cpp
++++ b/src/plugins/platforms/xcb/qxcbconnection_xi2.cpp
+@@ -953,10 +953,12 @@ void QXcbConnection::xi2HandleScrollEvent(void *event, ScrollingDevice &scrollin
+                     double delta = scrollingDevice.lastScrollPosition.y() - value;
+                     scrollingDevice.lastScrollPosition.setY(value);
+                     angleDelta.setY((delta / scrollingDevice.verticalIncrement) * 120);
+-                    // We do not set "pixel" delta if it is only measured in ticks.
+-                    if (scrollingDevice.verticalIncrement > 1)
++                    // With most drivers the increment is 1 for wheels.
++                    // For libinput it is hardcoded to a useless 15.
++                    // For a proper touchpad driver it should be in the same order of magnitude as 120
++                    if (scrollingDevice.verticalIncrement > 15)
+                         rawDelta.setY(delta);
+-                    else if (scrollingDevice.verticalIncrement < -1)
++                    else if (scrollingDevice.verticalIncrement < -15)
+                         rawDelta.setY(-delta);
+                 }
+             }
+@@ -965,10 +967,10 @@ void QXcbConnection::xi2HandleScrollEvent(void *event, ScrollingDevice &scrollin
+                     double delta = scrollingDevice.lastScrollPosition.x() - value;
+                     scrollingDevice.lastScrollPosition.setX(value);
+                     angleDelta.setX((delta / scrollingDevice.horizontalIncrement) * 120);
+-                    // We do not set "pixel" delta if it is only measured in ticks.
+-                    if (scrollingDevice.horizontalIncrement > 1)
++                    // See comment under vertical
++                    if (scrollingDevice.horizontalIncrement > 15)
+                         rawDelta.setX(delta);
+-                    else if (scrollingDevice.horizontalIncrement < -1)
++                    else if (scrollingDevice.horizontalIncrement < -15)
+                         rawDelta.setX(-delta);
+                 }
+             }
+-- 
+2.7.4
+

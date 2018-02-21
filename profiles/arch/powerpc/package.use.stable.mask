@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -16,6 +16,10 @@
 #
 
 #--- END OF EXAMPLES ---
+
+# Andreas Sturmlechner <asturm@gentoo.org> (06 Feb 2018)
+# Requires sci-geosciences/gpsd which is not stable
+app-misc/geoclue gps
 
 # David Seifert <soap@gentoo.org> (23 Sep 2017)
 # MPI does not have stable keywords on ppc/ppc64

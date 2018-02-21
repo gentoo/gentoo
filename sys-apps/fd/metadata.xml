@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ya@sysdump.net</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>polynomial-c@gentoo.org</email>
+		<name>Lars Wendler</name>
+	</maintainer>	
+	<longdescription lang="en">
+		Simple, fast and user-friendly alternative to find.
+		While it does not seek to mirror all of find's powerful functionality,
+		it provides sensible (opinionated) defaults for 80% of the use cases.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">sharkdp/fd</remote-id>
+	</upstream>
+</pkgmetadata>

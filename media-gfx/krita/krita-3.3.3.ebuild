@@ -12,7 +12,7 @@ HOMEPAGE="https://www.kde.org/applications/graphics/krita/ https://krita.org/"
 SRC_URI="mirror://kde/stable/${PN}/${PV%.1}/${P}.tar.gz"
 
 LICENSE="GPL-3"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="color-management fftw +gsl +jpeg openexr pdf qtmedia +raw tiff vc"
 
 COMMON_DEPEND="

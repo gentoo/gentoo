@@ -6,7 +6,7 @@ EAPI=5
 inherit elisp
 
 DESCRIPTION="A mode for editing Visual Basic programs"
-HOMEPAGE="http://www.emacswiki.org/emacs/VisualBasicMode"
+HOMEPAGE="https://www.emacswiki.org/emacs/VisualBasicMode"
 # taken from http://www.emacswiki.org/emacs/${PN}.el
 SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"
 

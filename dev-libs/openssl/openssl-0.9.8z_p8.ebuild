@@ -97,11 +97,11 @@ multilib_src_configure() {
 	tc-export CC AR RANLIB
 
 	# Clean out patent-or-otherwise-encumbered code
-	# Camellia: Royalty Free            http://en.wikipedia.org/wiki/Camellia_(cipher)
-	# IDEA:     Expired                 http://en.wikipedia.org/wiki/International_Data_Encryption_Algorithm
-	# EC:       ????????? ??/??/2015    http://en.wikipedia.org/wiki/Elliptic_Curve_Cryptography
-	# MDC2:     Expired                 http://en.wikipedia.org/wiki/MDC-2
-	# RC5:      5,724,428 03/03/2015    http://en.wikipedia.org/wiki/RC5
+	# Camellia: Royalty Free            https://en.wikipedia.org/wiki/Camellia_(cipher)
+	# IDEA:     Expired                 https://en.wikipedia.org/wiki/International_Data_Encryption_Algorithm
+	# EC:       ????????? ??/??/2015    https://en.wikipedia.org/wiki/Elliptic_Curve_Cryptography
+	# MDC2:     Expired                 https://en.wikipedia.org/wiki/MDC-2
+	# RC5:      5,724,428 03/03/2015    https://en.wikipedia.org/wiki/RC5
 
 	use_ssl() { use $1 && echo "enable-${2:-$1} ${*:3}" || echo "no-${2:-$1}" ; }
 	echoit() { echo "$@" ; "$@" ; }

@@ -16,9 +16,6 @@
   swbuff,   Quick switch between Emacs buffers;
   tabbar,   Display a tab bar in the header line.
 </longdescription>
-<use>
-  <flag name="jde">Enable support for Java Development Environment</flag>
-</use>
 <upstream>
   <remote-id type="sourceforge">emhacks</remote-id>
 </upstream>

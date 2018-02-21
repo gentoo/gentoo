@@ -6,7 +6,7 @@ EAPI=6
 inherit elisp
 
 DESCRIPTION="Some enhanced functions for buffer manipulate"
-HOMEPAGE="http://www.emacswiki.org/emacs/buffer-extension.el"
+HOMEPAGE="https://www.emacswiki.org/emacs/buffer-extension.el"
 # taken from https://www.emacswiki.org/emacs/download/buffer-extension.el
 SRC_URI="https://github.com/gavv/distfiles/raw/master/${P}.el.xz"
 

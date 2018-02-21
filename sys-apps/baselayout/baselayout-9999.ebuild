@@ -18,11 +18,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="build usrmerge kernel_linux"
-
-pkg_setup() {
-	multilib_layout
-}
+IUSE="usrmerge kernel_linux"
 
 # Create our multilib dirs - the Makefile has no knowledge of this
 multilib_layout() {
@@ -136,31 +132,15 @@ multilib_layout() {
 	fi
 }
 
-pkg_preinst() {
-	# Bug #217848 - Since the remap_dns_vars() called by pkg_preinst() of
-	# the baselayout-1.x ebuild copies all the real configs from the user's
-	# /etc/conf.d into ${D}, it makes them all appear to be the default
-	# versions. In order to protect them from being unmerged after this
-	# upgrade, modify their timestamps.
-	touch "${EROOT}"/etc/conf.d/* 2>/dev/null
+pkg_setup() {
+	multilib_layout
+}
 
+pkg_preinst() {
 	# This is written in src_install (so it's in CONTENTS), but punt all
 	# pending updates to avoid user having to do etc-update (and make the
 	# pkg_postinst logic simpler).
 	rm -f "${EROOT}"/etc/._cfg????_gentoo-release
-
-	# We need to install directories and maybe some dev nodes when building
-	# stages, but they cannot be in CONTENTS.
-	# Also, we cannot reference $S as binpkg will break so we do this.
-	multilib_layout
-	if use build ; then
-		if ! use usrmerge; then
-			emake -C "${ED}/usr/share/${PN}" DESTDIR="${EROOT}" layout
-		else
-			emake -C "${ED}/usr/share/${PN}" DESTDIR="${EROOT}" layout-usrmerge
-		fi
-	fi
-	rm -f "${ED}"/usr/share/${PN}/Makefile
 }
 
 src_prepare() {
@@ -190,15 +170,22 @@ src_prepare() {
 }
 
 src_install() {
+	if ! use usrmerge; then
+		emake \
+			OS=$(usex kernel_FreeBSD BSD Linux) \
+			DESTDIR="${ED}" \
+			layout
+	else
+		emake \
+			OS=$(usex kernel_FreeBSD BSD Linux) \
+			DESTDIR="${ED}" \
+			layout-usrmerge
+	fi
 	emake \
 		OS=$(usex kernel_FreeBSD BSD Linux) \
 		DESTDIR="${ED}" \
 		install
 	dodoc ChangeLog
-
-	# need the makefile in pkg_preinst
-	insinto /usr/share/${PN}
-	doins Makefile
 }
 
 pkg_postinst() {
@@ -234,10 +221,6 @@ pkg_postinst() {
 			ewarn ${bad_users}
 		fi
 	fi
-
-	# baselayout leaves behind a lot of .keep files, so let's clean them up
-	find "${EROOT}"lib*/rcscripts/ -name .keep -exec rm -f {} + 2>/dev/null
-	find "${EROOT}"lib*/rcscripts/ -depth -type d -exec rmdir {} + 2>/dev/null
 
 	# whine about users with invalid shells #215698
 	if [[ -e "${EROOT}"etc/passwd ]] ; then

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -28,6 +28,7 @@ RDEPEND="${PYTHON_DEPS}
 	>=media-gfx/exiv2-0.21:0=
 	introspection? ( dev-libs/gobject-introspection:= )"
 DEPEND="${RDEPEND}
+	dev-libs/gobject-introspection-common
 	virtual/pkgconfig"
 
 src_prepare() {

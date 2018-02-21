@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (04 Feb 2018)
+# Depends on not yet keyworded dev-python/geoip-python. Bug #636860
+net-p2p/deluge geoip
+
 # Amy Liffey <amynka@gentoo.org (21 Jan 2018)
 # dev-libs/cereal not keyworded for arm
 media-libs/opencv contrib_dnn
@@ -43,8 +47,7 @@ kde-frameworks/ktextwidgets speech
 
 # Patrice Clement <monsieurp@gentoo.org> (24 Sep 2017)
 # Unmask Raspberry Pi support on arm.
-# Recent mpv versions has broken Raspberry Pi, see Gentoo bug 630556.
-<media-video/mpv-0.27.0 -raspberry-pi
+media-video/mpv -raspberry-pi
 
 # James Le Cuirot <chewi@gentoo.org> (20 Sep 2017)
 # media-sound/mac's executable segfaults when compressing all but the

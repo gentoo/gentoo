@@ -1,0 +1,7 @@
+--- a/usr/share/applications/vivaldi-stable.desktop
++++ b/usr/share/applications/vivaldi-stable.desktop
+@@ -111,4 +111,3 @@
+ Type=Application
+ Categories=Network;WebBrowser;
+ MimeType=text/html;text/xml;application/xhtml_xml;image/webp;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;
+-Actions=new-window;new-private-window;

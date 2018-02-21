@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+<maintainer type="project">
+	<email>gnome@gentoo.org</email>
+	<name>Gentoo GNOME Desktop</name>
+</maintainer>
 <maintainer type="person">
 	<email>tetromino@gentoo.org</email>
 	<name>Alexandre Rostovtsev</name>
-</maintainer>
-<maintainer type="person">
-	<email>leio@gentoo.org</email>
-	<name>Mart Raudsepp</name>
 </maintainer>
 <longdescription lang="en">
 	Sysprof is a sampling CPU profiler for Linux that profiles the entire system,

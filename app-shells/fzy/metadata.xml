@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ya@sysdump.net</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>shell-tools@gentoo.org</email>
+		<name>Gentoo Shell Tools Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		Fuzzy text selector (interactive grep) for console.
+		It can be used to filter any list:
+		files, command history, processes, hostnames, bookmarks, git commits, etc.
+		It's designed to be used both as an editor plugin and on the command line.
+		Rather than clearing the screen, fzy displays its interface directly below
+		the current cursor position, scrolling the screen if necessary.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">jhawthorn/fzy</remote-id>
+	</upstream>
+</pkgmetadata>

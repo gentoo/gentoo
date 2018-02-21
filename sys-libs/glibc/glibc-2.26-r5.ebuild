@@ -449,9 +449,6 @@ glibc_do_configure() {
 		echo 'main(){}' > "${T}"/test.c
 		if ! $(tc-getCC ${CTARGET}) ${CFLAGS} ${LDFLAGS} "${T}"/test.c -Wl,-emain -lgcc 2>/dev/null ; then
 			sed -i -e '/^CC = /s:$: -B$(objdir)/../'"gcc-${GCC_BOOTSTRAP_VER}/${ABI}:" config.make || die
-			mkdir -p sunrpc
-			cp $(which rpcgen) sunrpc/cross-rpcgen || die
-			touch -t 202001010101 sunrpc/cross-rpcgen || die
 		fi
 	fi
 }

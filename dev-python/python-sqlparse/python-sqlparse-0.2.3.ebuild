@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ MY_PN="${PN##python-}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="A non-validating SQL parser module for Python"
-HOMEPAGE="https://code.google.com/p/python-sqlparse/ https://github.com/andialbrecht/sqlparse"
+HOMEPAGE="https://github.com/andialbrecht/sqlparse"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 SLOT="0"

@@ -6,7 +6,7 @@ EAPI=5
 inherit elisp
 
 DESCRIPTION="Maintain a local Wiki using Emacs-friendly markup"
-HOMEPAGE="http://www.emacswiki.org/emacs/PlannerMode"
+HOMEPAGE="https://www.emacswiki.org/emacs/PlannerMode"
 SRC_URI="http://download.gna.org/planner-el/${P}.tar.gz"
 
 LICENSE="GPL-3+"

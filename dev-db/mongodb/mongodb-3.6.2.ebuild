@@ -20,7 +20,7 @@ SRC_URI="https://fastdl.mongodb.org/src/${MY_P}.tar.gz"
 
 LICENSE="AGPL-3 Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="debug kerberos libressl mms-agent ssl test +tools"
 
 RDEPEND=">=app-arch/snappy-1.1.3
@@ -63,6 +63,8 @@ pkg_pretend() {
 		ewarn "To upgrade from a version earlier than the 3.4-series, you must"
 		ewarn "successively upgrade major releases until you have upgraded"
 		ewarn "to 3.4-series. Then upgrade to 3.6 series."
+	elif [[ -n ${REPLACING_VERSIONS} ]]; then
+		ewarn "Be sure to set featureCompatibilityVersion to 3.4 before upgrading."
 	fi
 }
 
@@ -84,9 +86,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# https://github.com/mongodb/mongo/wiki/Build-Mongodb-From-Source
 	# --use-system-icu fails tests
 	# --use-system-tcmalloc is strongly NOT recommended:
-	# https://www.mongodb.org/about/contributors/tutorial/build-mongodb-from-source/
 	scons_opts=(
 		CC="$(tc-getCC)"
 		CXX="$(tc-getCXX)"
@@ -103,9 +105,6 @@ src_configure() {
 	use debug && scons_opts+=( --dbg=on )
 	use kerberos && scons_opts+=( --use-sasl-client )
 	use ssl && scons_opts+=( --ssl )
-
-	# wiredtiger not supported on 32bit platforms #572166
-	use x86 && scons_opts+=( --wiredtiger=off )
 
 	# respect mongoDB upstream's basic recommendations
 	# see bug #536688 and #526114

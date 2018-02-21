@@ -8,10 +8,6 @@
 # Temporary mask to support stable bug 639476
 ruby_targets_ruby23
 
-# Andreas Sturmlechner <asturm@gentoo.org> (20 Jan 2018)
-# Mask boost for stabilisation timeout, bug #624662
-boost
-
 # Andreas Sturmlechner <asturm@gentoo.org> (29 Oct 2017)
 # Mask qt4, qt5 for stabilisation timeout, bug #620334
 qt5

@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Write cross-platform Excel binary file"
 
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 ~s390 ~sh sparc x86 amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd"
 IUSE=""
 
 RDEPEND="virtual/perl-File-Temp

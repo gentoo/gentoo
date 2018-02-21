@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -29,6 +29,7 @@ IUSE="bladerf fcd hackrf iqbalance mirisdr python rtlsdr uhd"
 RDEPEND="${PYTHON_DEPS}
 	dev-libs/boost:=
 	>=net-wireless/gnuradio-3.7_rc:0=[fcd?,${PYTHON_USEDEP}]
+	<net-wireless/gnuradio-9999
 	bladerf? ( net-wireless/bladerf:= )
 	hackrf? ( net-libs/libhackrf:= )
 	iqbalance? ( net-wireless/gr-iqbal:=[${PYTHON_USEDEP}] )

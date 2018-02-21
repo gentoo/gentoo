@@ -1,4 +1,0 @@
-case "${EBUILD_PHASE}" in
-	preinst|prerm) etckeeper pre-install ;;
-	postinst|postrm) etckeeper post-install ;;
-esac

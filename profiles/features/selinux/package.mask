@@ -11,6 +11,7 @@ www-misc/profile-sync-daemon
 # Please see: https://wiki.gentoo.org/wiki/SELinux/FAQ#Can_I_use_SELinux_with_SystemD.3F
 app-admin/systemdgenie
 app-eselect/eselect-gnome-shell-extensions
+app-office/wps-office
 sys-apps/systemd
 app-admin/calamares
 dev-python/python-systemd

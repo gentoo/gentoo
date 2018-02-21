@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -101,7 +101,7 @@ src_configure() {
 	# otherwise this doesnt build with gcc-6
 	# http://tracker.firebirdsql.org/browse/CORE-5099
 	append-cflags -fno-sized-deallocation -fno-delete-null-pointer-checks
-	append-cxxflags -fno-sized-deallocation -fno-delete-null-pointer-checks
+	append-cxxflags -fno-sized-deallocation -fno-delete-null-pointer-checks -std=c++11
 
 	econf \
 		--prefix=/usr/$(get_libdir)/firebird \

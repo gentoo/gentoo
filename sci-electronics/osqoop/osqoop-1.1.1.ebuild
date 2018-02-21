@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit cmake-utils toolchain-funcs
 
 DESCRIPTION="multi-platform open source software oscilloscope based on Qt 4"
-HOMEPAGE="http://gitorious.org/osqoop/"
+HOMEPAGE="https://github.com/stephanemagnenat/osqoop"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"

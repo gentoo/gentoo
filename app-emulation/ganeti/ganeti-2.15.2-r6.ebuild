@@ -136,7 +136,7 @@ RDEPEND="${DEPEND}
 DEPEND+="
 	sys-devel/m4
 	app-text/pandoc
-	<=dev-python/sphinx-1.3.5[${PYTHON_USEDEP}]
+	dev-python/sphinx[${PYTHON_USEDEP}]
 	media-fonts/urw-fonts
 	media-gfx/graphviz
 	>=dev-haskell/test-framework-0.6:0=
@@ -177,6 +177,7 @@ PATCHES+=(
 	"${FILESDIR}/${PN}-2.15-noded-must-run-as-root.patch"
 	"${FILESDIR}/${PN}-2.15-kvmd-run-as-daemon-user.patch"
 	"${FILESDIR}/${PN}-2.15-dont-invert-return-values-for-man-warnings.patch"
+	"${FILESDIR}/${PN}-2.15-respect-HFLAGS.patch"
 )
 
 S="${WORKDIR}/${MY_P}"

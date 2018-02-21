@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/net-ssh/bcrypt_pbkdf-ruby"
 
 LICENSE="MIT"
 SLOT="1"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 ruby_add_bdepend "test? ( dev-ruby/rbnacl )"
@@ -23,6 +23,9 @@ ruby_add_bdepend "test? ( dev-ruby/rbnacl )"
 all_ruby_prepare() {
 	# Don't use a ruby-bundled version of libsodium
 	sed -i -e '/rbnacl\/libsodium/ s:^:#:' test/bcrypt_pnkdf/engine_test.rb || die
+
+	# Avoid unneeded rake-compiler dependency
+	sed -i -e '/extensiontask/ s:^:#:' -e '/ExtensionTask/,/^end/ s:^:#:' Rakefile || die
 }
 
 each_ruby_configure() {

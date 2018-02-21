@@ -6,7 +6,7 @@ EAPI=5
 inherit elisp
 
 DESCRIPTION="Simplify writing short notes in emacs"
-HOMEPAGE="http://www.emacswiki.org/emacs/RememberMode"
+HOMEPAGE="https://www.emacswiki.org/emacs/RememberMode"
 SRC_URI="http://download.gna.org/${PN}-el/${P}.tar.gz"
 
 LICENSE="GPL-3+ FDL-1.2+"

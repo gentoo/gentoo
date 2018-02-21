@@ -1,0 +1,21 @@
+--- cmake-3.11.0-rc1/Source/CMakeLists.txt
++++ cmake-3.11.0-rc1/Source/CMakeLists.txt
+@@ -765,6 +765,7 @@
+   ${CMAKE_LIBUV_LIBRARIES}
+   ${CMAKE_LIBRHASH_LIBRARIES}
+   ${CMake_KWIML_LIBRARIES}
++  pthread
+   )
+ 
+ if(CMAKE_SYSTEM_NAME STREQUAL "Linux" AND CMAKE_SYSTEM_PROCESSOR MATCHES "sparc")
+--- cmake-3.11.0-rc1/Tests/CMakeLib/CMakeLists.txt
++++ cmake-3.11.0-rc1/Tests/CMakeLib/CMakeLists.txt
+@@ -30,7 +30,7 @@
+ 
+ create_test_sourcelist(CMakeLib_TEST_SRCS CMakeLibTests.cxx ${CMakeLib_TESTS})
+ add_executable(CMakeLibTests ${CMakeLib_TEST_SRCS})
+-target_link_libraries(CMakeLibTests CMakeLib)
++target_link_libraries(CMakeLibTests CMakeLib pthread)
+ 
+ set_property(TARGET CMakeLibTests PROPERTY C_CLANG_TIDY "")
+ set_property(TARGET CMakeLibTests PROPERTY CXX_CLANG_TIDY "")

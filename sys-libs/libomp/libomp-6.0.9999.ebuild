@@ -24,7 +24,7 @@ EGIT_BRANCH="release_60"
 LICENSE="|| ( UoI-NCSA MIT ) MIT LLVM-Grant"
 SLOT="0"
 KEYWORDS=""
-IUSE="cuda hwloc offload ompt test"
+IUSE="cuda hwloc kernel_linux offload ompt test"
 # CUDA works only with the x86_64 ABI
 REQUIRED_USE="offload? ( cuda? ( abi_x86_64 ) )"
 RESTRICT="!test? ( test )"
@@ -51,22 +51,28 @@ DEPEND="${RDEPEND}
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
 
-CONFIG_CHECK="~!SCHED_PDS"
-ERROR_SCHED_PDS="PDS scheduler versions >= 0.98c < 0.98i (e.g. used in kernels
->= 4.13-pf11 < 4.14-pf9) do not implement sched_yield() call which
-may result in horrible performance problems with libomp. If you are using one
-of the specified kernel versions, you may want to disable the PDS scheduler."
-
 python_check_deps() {
 	has_version "dev-python/lit[${PYTHON_USEDEP}]"
 }
 
+kernel_pds_check() {
+	if use kernel_linux && kernel_is -lt 4 15 && kernel_is -ge 4 13; then
+		local CONFIG_CHECK="~!SCHED_PDS"
+		local ERROR_SCHED_PDS="\
+PDS scheduler versions >= 0.98c < 0.98i (e.g. used in kernels >= 4.13-pf11
+< 4.14-pf9) do not implement sched_yield() call which may result in horrible
+performance problems with libomp. If you are using one of the specified
+kernel versions, you may want to disable the PDS scheduler."
+
+		check_extra_config
+	fi
+}
+
 pkg_pretend() {
-	linux-info_pkg_setup
+	kernel_pds_check
 }
 
 pkg_setup() {
-	linux-info_pkg_setup
 	use test && python-any-r1_pkg_setup
 }
 

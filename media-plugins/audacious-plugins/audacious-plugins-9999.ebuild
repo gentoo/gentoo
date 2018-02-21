@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,15 +6,15 @@ EAPI=6
 MY_P="${P/_/-}"
 
 DESCRIPTION="Audacious Player - Your music, your way, no exceptions"
-HOMEPAGE="http://audacious-media-player.org/"
+HOMEPAGE="https://audacious-media-player.org/"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="https://github.com/audacious-media-player/audacious-plugins.git"
 else
 	SRC_URI="
-		!gtk3? ( http://distfiles.audacious-media-player.org/${MY_P}.tar.bz2 )
-		gtk3? ( http://distfiles.audacious-media-player.org/${MY_P}-gtk3.tar.bz2 )"
+		!gtk3? ( https://distfiles.audacious-media-player.org/${MY_P}.tar.bz2 )
+		gtk3? ( https://distfiles.audacious-media-player.org/${MY_P}-gtk3.tar.bz2 )"
 	KEYWORDS="~amd64 ~x86"
 fi
 

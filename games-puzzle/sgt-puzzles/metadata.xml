@@ -8,7 +8,6 @@
 	<maintainer type="person">
 		<email>NP-Hardass@gentoo.org</email>
 		<name>NP-Hardass</name>
-		<description>Co-maintainer; CC on all bugs</description>
 	</maintainer>
 	<use>
 		<flag name="gtk3">Use x11-libs/gtk+:3 instead of x11-libs/gtk+:2</flag>

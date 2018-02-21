@@ -1,6 +1,8 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 #
+# @DEAD
+# Removal on 2018-03-06.
 # @ECLASS: kde4-meta.eclass
 # @MAINTAINER:
 # kde@gentoo.org

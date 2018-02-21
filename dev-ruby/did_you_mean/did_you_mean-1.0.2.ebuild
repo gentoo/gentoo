@@ -14,7 +14,7 @@ HOMEPAGE="https://github.com/yuki24/did_you_mean"
 
 LICENSE="MIT"
 SLOT="1"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ia64 ~mips ~ppc ~ppc64 ~s390 ~sh sparc x86"
 IUSE=""
 
 all_ruby_prepare() {

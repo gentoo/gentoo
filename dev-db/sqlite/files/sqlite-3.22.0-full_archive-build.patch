@@ -1,0 +1,405 @@
+Move some code to libsqlite3.so to avoid duplication.
+Link executables against libsqlite3.so.
+Increase timeout for fuzzcheck.
+Fix building with dlopen() not available.
+
+--- /Makefile.in
++++ /Makefile.in
+@@ -307,6 +307,9 @@
+ # Source code for extensions
+ #
+ SRC += \
++  $(TOP)/ext/expert/sqlite3expert.c \
++  $(TOP)/ext/expert/sqlite3expert.h
++SRC += \
+   $(TOP)/ext/fts1/fts1.c \
+   $(TOP)/ext/fts1/fts1.h \
+   $(TOP)/ext/fts1/fts1_hash.c \
+@@ -355,8 +358,11 @@
+   $(TOP)/ext/rbu/sqlite3rbu.h \
+   $(TOP)/ext/rbu/sqlite3rbu.c
+ SRC += \
++  $(TOP)/ext/misc/appendvfs.c \
+   $(TOP)/ext/misc/json1.c \
+-  $(TOP)/ext/misc/stmt.c
++  $(TOP)/ext/misc/sqlar.c \
++  $(TOP)/ext/misc/stmt.c \
++  $(TOP)/ext/misc/zipfile.c
+ 
+ # Generated source code files
+ #
+@@ -425,7 +431,6 @@
+ # Statically linked extensions
+ #
+ TESTSRC += \
+-  $(TOP)/ext/expert/sqlite3expert.c \
+   $(TOP)/ext/expert/test_expert.c \
+   $(TOP)/ext/misc/amatch.c \
+   $(TOP)/ext/misc/carray.c \
+@@ -447,8 +452,7 @@
+   $(TOP)/ext/misc/spellfix.c \
+   $(TOP)/ext/misc/totype.c \
+   $(TOP)/ext/misc/unionvtab.c \
+-  $(TOP)/ext/misc/wholenumber.c \
+-  $(TOP)/ext/misc/zipfile.c
++  $(TOP)/ext/misc/wholenumber.c
+ 
+ # Source code to the library files needed by the test fixture
+ #
+@@ -610,25 +614,25 @@
+ 
+ libtclsqlite3.la:	tclsqlite.lo libsqlite3.la
+ 	$(LTLINK) -no-undefined -o $@ tclsqlite.lo \
+-		libsqlite3.la @TCL_STUB_LIB_SPEC@ $(TLIBS) \
++		libsqlite3.la @TCL_STUB_LIB_SPEC@ \
+ 		-rpath "$(TCLLIBDIR)" \
+ 		-version-info "8:6:8" \
+ 		-avoid-version
+ 
+-sqlite3$(TEXE):	shell.c sqlite3.c
+-	$(LTLINK) $(READLINE_FLAGS) $(SHELL_OPT) -o $@ \
+-		shell.c sqlite3.c \
+-		$(LIBREADLINE) $(TLIBS) -rpath "$(libdir)"
++sqlite3$(TEXE):	shell.c libsqlite3.la
++	$(LTLINK) $(READLINE_FLAGS) -o $@ \
++		shell.c libsqlite3.la \
++		$(LIBREADLINE)
+ 
+-sqldiff$(TEXE):	$(TOP)/tool/sqldiff.c sqlite3.lo sqlite3.h
+-	$(LTLINK) -o $@ $(TOP)/tool/sqldiff.c sqlite3.lo $(TLIBS)
++sqldiff$(TEXE):	$(TOP)/tool/sqldiff.c libsqlite3.la
++	$(LTLINK) -o $@ $(TOP)/tool/sqldiff.c libsqlite3.la
+ 
+-dbhash$(TEXE):	$(TOP)/tool/dbhash.c sqlite3.lo sqlite3.h
+-	$(LTLINK) -o $@ $(TOP)/tool/dbhash.c sqlite3.lo $(TLIBS)
++dbhash$(TEXE):	$(TOP)/tool/dbhash.c libsqlite3.la
++	$(LTLINK) -o $@ $(TOP)/tool/dbhash.c libsqlite3.la
+ 
+-scrub$(TEXE):	$(TOP)/ext/misc/scrub.c sqlite3.lo
++scrub$(TEXE):	$(TOP)/ext/misc/scrub.c libsqlite3.la
+ 	$(LTLINK) -o $@ -I. -DSCRUB_STANDALONE \
+-		$(TOP)/ext/misc/scrub.c sqlite3.lo $(TLIBS)
++		$(TOP)/ext/misc/scrub.c libsqlite3.la
+ 
+ srcck1$(BEXE):	$(TOP)/tool/srcck1.c
+ 	$(BCC) -o srcck1$(BEXE) $(TOP)/tool/srcck1.c
+@@ -704,7 +708,7 @@
+ # Rule to build the amalgamation
+ #
+ sqlite3.lo:	sqlite3.c
+-	$(LTCOMPILE) $(TEMP_STORE) -c sqlite3.c
++	$(LTCOMPILE) $(SHELL_OPT) $(TEMP_STORE) -c sqlite3.c
+ 
+ # Rules to build the LEMON compiler generator
+ #
+@@ -995,14 +999,9 @@
+ # Source files that go into making shell.c
+ SHELL_SRC = \
+ 	$(TOP)/src/shell.c.in \
+-        $(TOP)/ext/misc/appendvfs.c \
+ 	$(TOP)/ext/misc/shathree.c \
+ 	$(TOP)/ext/misc/fileio.c \
+ 	$(TOP)/ext/misc/completion.c \
+-	$(TOP)/ext/misc/sqlar.c \
+-	$(TOP)/ext/expert/sqlite3expert.c \
+-	$(TOP)/ext/expert/sqlite3expert.h \
+-	$(TOP)/ext/misc/zipfile.c \
+         $(TOP)/src/test_windirent.c
+ 
+ shell.c:	$(SHELL_SRC) $(TOP)/tool/mkshellc.tcl
+@@ -1161,13 +1160,13 @@
+ 
+ # Fuzz testing
+ fuzztest:	fuzzcheck$(TEXE) $(FUZZDATA)
+-	./fuzzcheck$(TEXE) $(FUZZDATA)
++	./fuzzcheck$(TEXE) --timeout 3600 $(FUZZDATA)
+ 
+ fastfuzztest:	fuzzcheck$(TEXE) $(FUZZDATA)
+-	./fuzzcheck$(TEXE) --limit-mem 100M $(FUZZDATA)
++	./fuzzcheck$(TEXE) --limit-mem 100M --timeout 3600 $(FUZZDATA)
+ 
+ valgrindfuzz:	fuzzcheck$(TEXT) $(FUZZDATA)
+-	valgrind ./fuzzcheck$(TEXE) --cell-size-check --limit-mem 10M --timeout 600 $(FUZZDATA)
++	valgrind ./fuzzcheck$(TEXE) --cell-size-check --limit-mem 10M --timeout 3600 $(FUZZDATA)
+ 
+ # The veryquick.test TCL tests.
+ #
+@@ -1197,24 +1196,23 @@
+ smoketest:	$(TESTPROGS) fuzzcheck$(TEXE)
+ 	./testfixture$(TEXE) $(TOP)/test/main.test $(TESTOPTS)
+ 
+-sqlite3_analyzer.c: sqlite3.c $(TOP)/src/tclsqlite.c $(TOP)/tool/spaceanal.tcl $(TOP)/tool/mkccode.tcl $(TOP)/tool/sqlite3_analyzer.c.in
++sqlite3_analyzer.c:	$(TOP)/src/tclsqlite.c $(TOP)/tool/spaceanal.tcl $(TOP)/tool/mkccode.tcl $(TOP)/tool/sqlite3_analyzer.c.in
+ 	$(TCLSH_CMD) $(TOP)/tool/mkccode.tcl $(TOP)/tool/sqlite3_analyzer.c.in >sqlite3_analyzer.c
+ 
+-sqlite3_analyzer$(TEXE): sqlite3_analyzer.c
+-	$(LTLINK) sqlite3_analyzer.c -o $@ $(LIBTCL) $(TLIBS)
++sqlite3_analyzer$(TEXE):	sqlite3_analyzer.c libsqlite3.la
++	$(LTLINK) sqlite3_analyzer.c -o $@ libsqlite3.la $(LIBTCL)
+ 
+-sqltclsh.c: sqlite3.c $(TOP)/src/tclsqlite.c $(TOP)/tool/sqltclsh.tcl $(TOP)/ext/misc/appendvfs.c $(TOP)/tool/mkccode.tcl $(TOP)/tool/sqltclsh.c.in	
++sqltclsh.c: $(TOP)/src/tclsqlite.c $(TOP)/tool/sqltclsh.tcl $(TOP)/tool/mkccode.tcl $(TOP)/tool/sqltclsh.c.in	
+ 	$(TCLSH_CMD) $(TOP)/tool/mkccode.tcl $(TOP)/tool/sqltclsh.c.in >sqltclsh.c
+ 
+-sqltclsh$(TEXE): sqltclsh.c
+-	$(LTLINK) sqltclsh.c -o $@ $(LIBTCL) $(TLIBS)
++sqltclsh$(TEXE): sqltclsh.c libsqlite3.la
++	$(LTLINK) sqltclsh.c -o $@ libsqlite3.la $(LIBTCL)
+ 
+-sqlite3_expert$(TEXE): $(TOP)/ext/expert/sqlite3expert.h $(TOP)/ext/expert/sqlite3expert.c $(TOP)/ext/expert/expert.c sqlite3.c
+-	$(LTLINK)	$(TOP)/ext/expert/sqlite3expert.h $(TOP)/ext/expert/sqlite3expert.c $(TOP)/ext/expert/expert.c sqlite3.c -o sqlite3_expert $(TLIBS)
++sqlite3_expert$(TEXE): $(TOP)/ext/expert/sqlite3expert.h $(TOP)/ext/expert/expert.c libsqlite3.la
++	$(LTLINK) $(TOP)/ext/expert/expert.c -o sqlite3_expert libsqlite3.la
+ 
+ CHECKER_DEPS =\
+   $(TOP)/tool/mkccode.tcl \
+-  sqlite3.c \
+   $(TOP)/src/tclsqlite.c \
+   $(TOP)/ext/repair/sqlite3_checker.tcl \
+   $(TOP)/ext/repair/checkindex.c \
+@@ -1225,30 +1223,30 @@
+ sqlite3_checker.c:	$(CHECKER_DEPS)
+ 	$(TCLSH_CMD) $(TOP)/tool/mkccode.tcl $(TOP)/ext/repair/sqlite3_checker.c.in >$@
+ 
+-sqlite3_checker$(TEXE):	sqlite3_checker.c
+-	$(LTLINK) sqlite3_checker.c -o $@ $(LIBTCL) $(TLIBS)
++sqlite3_checker$(TEXE):	sqlite3_checker.c libsqlite3.la
++	$(LTLINK) sqlite3_checker.c -o $@ libsqlite3.la $(LIBTCL)
+ 
+-dbdump$(TEXE): $(TOP)/ext/misc/dbdump.c sqlite3.lo
++dbdump$(TEXE):	$(TOP)/ext/misc/dbdump.c libsqlite3.la
+ 	$(LTLINK) -DDBDUMP_STANDALONE -o $@ \
+-           $(TOP)/ext/misc/dbdump.c sqlite3.lo $(TLIBS)
++           $(TOP)/ext/misc/dbdump.c libsqlite3.la
+ 
+-showdb$(TEXE):	$(TOP)/tool/showdb.c sqlite3.lo
+-	$(LTLINK) -o $@ $(TOP)/tool/showdb.c sqlite3.lo $(TLIBS)
++showdb$(TEXE):	$(TOP)/tool/showdb.c libsqlite3.la
++	$(LTLINK) -o $@ $(TOP)/tool/showdb.c libsqlite3.la
+ 
+-showstat4$(TEXE):	$(TOP)/tool/showstat4.c sqlite3.lo
+-	$(LTLINK) -o $@ $(TOP)/tool/showstat4.c sqlite3.lo $(TLIBS)
++showstat4$(TEXE):	$(TOP)/tool/showstat4.c libsqlite3.la
++	$(LTLINK) -o $@ $(TOP)/tool/showstat4.c libsqlite3.la
+ 
+-showjournal$(TEXE):	$(TOP)/tool/showjournal.c sqlite3.lo
+-	$(LTLINK) -o $@ $(TOP)/tool/showjournal.c sqlite3.lo $(TLIBS)
++showjournal$(TEXE):	$(TOP)/tool/showjournal.c
++	$(LTLINK) -o $@ $(TOP)/tool/showjournal.c
+ 
+-showwal$(TEXE):	$(TOP)/tool/showwal.c sqlite3.lo
+-	$(LTLINK) -o $@ $(TOP)/tool/showwal.c sqlite3.lo $(TLIBS)
++showwal$(TEXE):	$(TOP)/tool/showwal.c
++	$(LTLINK) -o $@ $(TOP)/tool/showwal.c
+ 
+ showshm$(TEXE):	$(TOP)/tool/showshm.c
+ 	$(LTLINK) -o $@ $(TOP)/tool/showshm.c
+ 
+-changeset$(TEXE):	$(TOP)/ext/session/changeset.c sqlite3.lo
+-	$(LTLINK) -o $@ $(TOP)/ext/session/changeset.c sqlite3.lo $(TLIBS)
++changeset$(TEXE):	$(TOP)/ext/session/changeset.c libsqlite3.la
++	$(LTLINK) -o $@ $(TOP)/ext/session/changeset.c libsqlite3.la
+ 
+ rollback-test$(TEXE):	$(TOP)/tool/rollback-test.c sqlite3.lo
+ 	$(LTLINK) -o $@ $(TOP)/tool/rollback-test.c sqlite3.lo $(TLIBS)
+@@ -1267,11 +1265,11 @@
+ kvtest$(TEXE):	$(TOP)/test/kvtest.c sqlite3.c
+ 	$(LTLINK) $(KV_OPT) -o $@ $(TOP)/test/kvtest.c sqlite3.c $(TLIBS)
+ 
+-rbu$(EXE): $(TOP)/ext/rbu/rbu.c $(TOP)/ext/rbu/sqlite3rbu.c sqlite3.lo 
+-	$(LTLINK) -I. -o $@ $(TOP)/ext/rbu/rbu.c sqlite3.lo $(TLIBS)
++rbu$(EXE):	$(TOP)/ext/rbu/rbu.c libsqlite3.la
++	$(LTLINK) -I. -o $@ $(TOP)/ext/rbu/rbu.c libsqlite3.la
+ 
+-loadfts$(EXE): $(TOP)/tool/loadfts.c libsqlite3.la
+-	$(LTLINK) $(TOP)/tool/loadfts.c libsqlite3.la -o $@ $(TLIBS)
++loadfts$(EXE):	$(TOP)/tool/loadfts.c libsqlite3.la
++	$(LTLINK) $(TOP)/tool/loadfts.c libsqlite3.la -o $@
+ 
+ # This target will fail if the SQLite amalgamation contains any exported
+ # symbols that do not begin with "sqlite3_". It is run as part of the
+--- /configure.ac
++++ /configure.ac
+@@ -590,6 +590,9 @@
+ if test "${use_loadextension}" = "yes" ; then
+   OPT_FEATURE_FLAGS=""
+   AC_SEARCH_LIBS(dlopen, dl)
++  if test "${ac_cv_search_dlopen}" = "no" ; then
++    OPT_FEATURE_FLAGS="-DSQLITE_OMIT_LOAD_EXTENSION=1"
++  fi
+ else
+   OPT_FEATURE_FLAGS="-DSQLITE_OMIT_LOAD_EXTENSION=1"
+ fi
+--- /ext/misc/sqlar.c
++++ /ext/misc/sqlar.c
+@@ -14,6 +14,8 @@
+ ** for working with sqlar archives and used by the shell tool's built-in
+ ** sqlar support.
+ */
++#ifdef SQLITE_HAVE_ZLIB
++
+ #include "sqlite3ext.h"
+ SQLITE_EXTENSION_INIT1
+ #include <zlib.h>
+@@ -119,3 +121,5 @@
+   }
+   return rc;
+ }
++
++#endif /* SQLITE_HAVE_ZLIB */
+--- /ext/misc/zipfile.c
++++ /ext/misc/zipfile.c
+@@ -24,6 +24,8 @@
+ **    *  No support for zip64 extensions
+ **    *  Only the "inflate/deflate" (zlib) compression method is supported
+ */
++#ifdef SQLITE_HAVE_ZLIB
++
+ #include "sqlite3ext.h"
+ SQLITE_EXTENSION_INIT1
+ #include <stdio.h>
+@@ -1665,3 +1667,5 @@
+   (void)pzErrMsg;  /* Unused parameter */
+   return zipfileRegister(db);
+ }
++
++#endif /* SQLITE_HAVE_ZLIB */
+--- /ext/repair/sqlite3_checker.c.in
++++ /ext/repair/sqlite3_checker.c.in
+@@ -2,6 +2,7 @@
+ ** Read an SQLite database file and analyze its space utilization.  Generate
+ ** text on standard output.
+ */
++#define SQLITE_CORE 1
+ #define TCLSH_INIT_PROC sqlite3_checker_init_proc
+ #define SQLITE_ENABLE_DBPAGE_VTAB 1
+ #define SQLITE_ENABLE_JSON1 1
+@@ -14,7 +15,7 @@
+ #define SQLITE_OMIT_SHARED_CACHE 1
+ #define SQLITE_DEFAULT_MEMSTATUS 0
+ #define SQLITE_MAX_EXPR_DEPTH 0
+-INCLUDE sqlite3.c
++#include "sqlite3.h"
+ INCLUDE $ROOT/src/tclsqlite.c
+ INCLUDE $ROOT/ext/misc/btreeinfo.c
+ INCLUDE $ROOT/ext/repair/checkindex.c
+--- /src/shell.c.in
++++ /src/shell.c.in
+@@ -61,6 +61,7 @@
+ #include <stdio.h>
+ #include <assert.h>
+ #include "sqlite3.h"
++#include "ext/expert/sqlite3expert.h"
+ typedef sqlite3_int64 i64;
+ typedef sqlite3_uint64 u64;
+ typedef unsigned char u8;
+@@ -124,6 +125,10 @@
+ # define SHELL_USE_LOCAL_GETLINE 1
+ #endif
+ 
++#ifdef SQLITE_HAVE_ZLIB
++#include <zlib.h>
++#endif
++
+ 
+ #if defined(_WIN32) || defined(WIN32)
+ # include <io.h>
+@@ -963,13 +968,6 @@
+ INCLUDE ../ext/misc/shathree.c
+ INCLUDE ../ext/misc/fileio.c
+ INCLUDE ../ext/misc/completion.c
+-INCLUDE ../ext/misc/appendvfs.c
+-#ifdef SQLITE_HAVE_ZLIB
+-INCLUDE ../ext/misc/zipfile.c
+-INCLUDE ../ext/misc/sqlar.c
+-#endif
+-INCLUDE ../ext/expert/sqlite3expert.h
+-INCLUDE ../ext/expert/sqlite3expert.c
+ 
+ #if defined(SQLITE_ENABLE_SESSION)
+ /*
+@@ -3467,7 +3465,9 @@
+     sqlite3_shathree_init(p->db, 0, 0);
+     sqlite3_completion_init(p->db, 0, 0);
+ #ifdef SQLITE_HAVE_ZLIB
++    extern int sqlite3_zipfile_init(sqlite3 *, char **, const sqlite3_api_routines *);
+     sqlite3_zipfile_init(p->db, 0, 0);
++    extern int sqlite3_sqlar_init(sqlite3 *, char **, const sqlite3_api_routines *);
+     sqlite3_sqlar_init(p->db, 0, 0);
+ #endif
+     sqlite3_create_function(p->db, "shell_add_schema", 3, SQLITE_UTF8, 0,
+@@ -5316,6 +5316,7 @@
+       }
+       sqlite3_fileio_init(cmd.db, 0, 0);
+ #ifdef SQLITE_HAVE_ZLIB
++      extern int sqlite3_sqlar_init(sqlite3 *, char **, const sqlite3_api_routines *);
+       sqlite3_sqlar_init(cmd.db, 0, 0);
+ #endif
+       sqlite3_create_function(cmd.db, "shell_putsnl", 1, SQLITE_UTF8, cmd.p,
+@@ -8222,6 +8223,7 @@
+ #endif
+   }
+   data.out = stdout;
++  extern int sqlite3_appendvfs_init(sqlite3 *, char **, const sqlite3_api_routines *);
+   sqlite3_appendvfs_init(0,0,0);
+ 
+   /* Go ahead and open the database file if it already exists.  If the
+--- /tool/mksqlite3c.tcl
++++ /tool/mksqlite3c.tcl
+@@ -116,6 +116,7 @@
+    rtree.h
+    sqlite3session.h
+    sqlite3.h
++   sqlite3expert.h
+    sqlite3ext.h
+    sqlite3rbu.h
+    sqliteicu.h
+@@ -399,6 +400,10 @@
+    json1.c
+    fts5.c
+    stmt.c
++   appendvfs.c
++   sqlar.c
++   sqlite3expert.c
++   zipfile.c
+ } {
+   copy_file tsrc/$file
+ }
+--- /tool/sqlite3_analyzer.c.in
++++ /tool/sqlite3_analyzer.c.in
+@@ -14,9 +14,6 @@
+ #define SQLITE_DEFAULT_MEMSTATUS 0
+ #define SQLITE_MAX_EXPR_DEPTH 0
+ #define SQLITE_OMIT_LOAD_EXTENSION 1
+-#ifndef USE_EXTERNAL_SQLITE
+-INCLUDE sqlite3.c
+-#endif
+ INCLUDE $ROOT/src/tclsqlite.c
+ 
+ const char *sqlite3_analyzer_init_proc(Tcl_Interp *interp){
+--- /tool/sqltclsh.c.in
++++ /tool/sqltclsh.c.in
+@@ -27,19 +27,17 @@
+ #define SQLITE_OMIT_SHARED_CACHE 1
+ #define SQLITE_DEFAULT_MEMSTATUS 0
+ #define SQLITE_MAX_EXPR_DEPTH 0
+-INCLUDE sqlite3.c
+-INCLUDE $ROOT/ext/misc/appendvfs.c
+-#ifdef SQLITE_HAVE_ZLIB
+-INCLUDE $ROOT/ext/misc/zipfile.c
+-INCLUDE $ROOT/ext/misc/sqlar.c
+-#endif
++#include "sqlite3.h"
+ INCLUDE $ROOT/src/tclsqlite.c
+ 
+ const char *sqlite3_tclapp_init_proc(Tcl_Interp *interp){
+   (void)interp;
++  extern int sqlite3_appendvfs_init(sqlite3 *,char **, const sqlite3_api_routines *);
+   sqlite3_appendvfs_init(0,0,0);
+ #ifdef SQLITE_HAVE_ZLIB
++  extern int sqlite3_sqlar_init(sqlite3 *, char **, const sqlite3_api_routines *);
+   sqlite3_auto_extension((void(*)(void))sqlite3_sqlar_init);
++  extern int sqlite3_zipfile_init(sqlite3 *, char **, const sqlite3_api_routines *);
+   sqlite3_auto_extension((void(*)(void))sqlite3_zipfile_init);
+ #endif
+ 

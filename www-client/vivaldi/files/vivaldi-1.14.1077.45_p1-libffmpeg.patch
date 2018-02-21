@@ -1,0 +1,10 @@
+--- a/opt/vivaldi/vivaldi
++++ b/opt/vivaldi/vivaldi
+@@ -54,6 +54,7 @@
+ # Check for libs in preferred order.
+ # Where possible, use other files/directories to confirm it's the correct variant.
+ VIVALDI_FFMPEG_FOUND=NO
++checkffmpeg '/usr/lib64/chromium/libffmpeg.so'
+ checkffmpeg '/usr/lib/chromium-browser/libffmpeg.so' '/usr/share/doc/chromium-codecs-ffmpeg-extra'
+ checkffmpeg "/usr/lib/$DEBARCH/oxide-qt/libffmpeg.so" '/usr/share/doc/oxideqt-codecs-extra'
+ checkffmpeg '/usr/lib64/chromium-ffmpeg-extra/libffmpeg.so' '/usr/share/doc/packages/chromium-ffmpeg-extra'

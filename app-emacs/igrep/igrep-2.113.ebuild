@@ -6,7 +6,7 @@ EAPI=5
 inherit elisp
 
 DESCRIPTION='An improved interface to "grep" and "find"'
-HOMEPAGE="http://www.emacswiki.org/emacs/GrepMode"
+HOMEPAGE="https://www.emacswiki.org/emacs/GrepMode"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2+"

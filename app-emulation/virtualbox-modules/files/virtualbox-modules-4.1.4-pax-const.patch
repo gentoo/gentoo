@@ -1,6 +1,5 @@
-diff -urp vboxdrv.orig/SUPDrvIDC.h vboxdrv/SUPDrvIDC.h
---- vboxdrv.orig/SUPDrvIDC.h	2011-09-06 15:53:27.852567531 +0200
-+++ vboxdrv/SUPDrvIDC.h	2011-09-06 15:54:05.420565524 +0200
+--- vboxdrv/SUPDrvIDC.h
++++ vboxdrv/SUPDrvIDC.h
 @@ -160,7 +160,7 @@ typedef struct SUPDRVIDCREQGETSYM
          {
              /** The symbol address. */
@@ -10,9 +9,8 @@ diff -urp vboxdrv.orig/SUPDrvIDC.h vboxdrv/SUPDrvIDC.h
      } u;
  } SUPDRVIDCREQGETSYM;
  /** Pointer to a SUPDRV IDC get symbol request. */
-diff -urp vboxnetflt.orig/include/VBox/intnet.h vboxnetflt/include/VBox/intnet.h
---- vboxnetflt.orig/include/VBox/intnet.h	2011-09-06 15:53:27.852567531 +0200
-+++ vboxnetflt/include/VBox/intnet.h	2011-09-06 15:54:05.424565524 +0200
+--- vboxnetflt/include/VBox/intnet.h
++++ vboxnetflt/include/VBox/intnet.h
 @@ -783,7 +783,7 @@ typedef struct INTNETTRUNKFACTORY
      DECLR0CALLBACKMEMBER(int, pfnCreateAndConnect,(struct INTNETTRUNKFACTORY *pIfFactory, const char *pszName,
                                                     PINTNETTRUNKSWPORT pSwitchPort, uint32_t fFlags,
@@ -22,9 +20,8 @@ diff -urp vboxnetflt.orig/include/VBox/intnet.h vboxnetflt/include/VBox/intnet.h
  /** Pointer to the trunk factory. */
  typedef INTNETTRUNKFACTORY *PINTNETTRUNKFACTORY;
  
-diff -urp vboxnetflt.orig/linux/VBoxNetFlt-linux.c vboxnetflt/linux/VBoxNetFlt-linux.c
---- vboxnetflt.orig/linux/VBoxNetFlt-linux.c	2011-07-19 12:15:22.000000000 +0200
-+++ vboxnetflt/linux/VBoxNetFlt-linux.c	2011-09-06 15:56:00.516559379 +0200
+--- vboxnetflt/linux/VBoxNetFlt-linux.c
++++ vboxnetflt/linux/VBoxNetFlt-linux.c
 @@ -840,7 +840,7 @@ typedef struct ethtool_ops OVR_OPSTYPE;
  
  # else /* LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 29) */
@@ -34,9 +31,8 @@ diff -urp vboxnetflt.orig/linux/VBoxNetFlt-linux.c vboxnetflt/linux/VBoxNetFlt-l
  # define OVR_OPS  netdev_ops
  # define OVR_XMIT pOrgOps->ndo_start_xmit
  
-diff -urp vboxpci.orig/include/VBox/rawpci.h vboxpci/include/VBox/rawpci.h
---- vboxpci.orig/include/VBox/rawpci.h	2011-04-18 17:01:12.000000000 +0200
-+++ vboxpci/include/VBox/rawpci.h	2011-09-06 15:57:17.340555277 +0200
+--- vboxpci/include/VBox/rawpci.h
++++ vboxpci/include/VBox/rawpci.h
 @@ -545,7 +545,7 @@ typedef struct RAWPCIFACTORY
      DECLR0CALLBACKMEMBER(void, pfnDeinitVm,(PRAWPCIFACTORY       pFactory,
                                              PVM                  pVM,

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -26,7 +26,7 @@ RDEPEND="${PYTHON_DEPS}
 	virtual/libusb:1
 	dev-lang/orc
 	dev-libs/boost:=
-	sys-libs/ncurses:0[-tinfo]
+	sys-libs/ncurses:0
 	"
 DEPEND="${RDEPEND}
 	dev-python/mako
@@ -34,6 +34,8 @@ DEPEND="${RDEPEND}
 	app-arch/unzip"
 
 S="${WORKDIR}"/uhd-release_00$(get_version_component_range 1)_00$(get_version_component_range 2)_00$(get_version_component_range 3)/host
+
+PATCHES=( "${FILESDIR}/${P}-tinfo.patch" )
 
 src_prepare() {
 	cmake-utils_src_prepare

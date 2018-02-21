@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,14 +16,10 @@ pdf? ( http://www.diveintopython.net/download/${PN}-pdf-${MY_PV}.zip -> ${P}-pdf
 LICENSE="FDL-1.1"
 SLOT="2"
 
-KEYWORDS="*"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="pdf"
 
 S="${WORKDIR}/${MY_P}"
-
-src_prepare() {
-	default
-}
 
 src_install() {
 	insinto "/usr/share/doc/${PN}-${SLOT}"

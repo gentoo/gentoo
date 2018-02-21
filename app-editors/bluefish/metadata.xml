@@ -4,9 +4,8 @@
 	<maintainer type="person">
 		<email>sdnick484@gmail.com</email>
 		<name>Nick Andrade</name>
-		<description>Active Maintainer, Assign bugs</description>
 	</maintainer>
-<maintainer type="project">
+	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>

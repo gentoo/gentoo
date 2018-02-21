@@ -6,7 +6,7 @@ EAPI=5
 inherit elisp
 
 DESCRIPTION="A major emacs mode for editing Rust source code"
-HOMEPAGE="http://www.rust-lang.org/"
+HOMEPAGE="https://www.rust-lang.org/"
 SRC_URI="https://dev.gentoo.org/~jauhien/distfiles/${P}.tar.gz"
 
 LICENSE="|| ( MIT Apache-2.0 )"

@@ -4,12 +4,10 @@
 <maintainer type="person">
   <email>gnu_andrew@member.fsf.org</email>
   <name>Andrew John Hughes</name>
-  <description>Proxy Maintainer</description>
 </maintainer>
 <maintainer type="person">
   <email>chewi@gentoo.org</email>
   <name>James Le Cuirot</name>
-  <description>Committer</description>
 </maintainer>
 <maintainer type="project">
   <email>java@gentoo.org</email>

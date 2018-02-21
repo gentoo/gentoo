@@ -1,0 +1,168 @@
+https://bugs.gentoo.org/637110
+
+Original patch by Matt Whitlock
+Forward-ported from version 2.2.0 to 2.2.2
+
+--- audacity-minsrc-2.2.2-rc1/src/AudioIO.cpp
++++ audacity-minsrc-2.2.2-rc1/src/AudioIO.cpp
+@@ -976,6 +976,7 @@
+ };
+ #endif
+ 
++#ifdef EXPERIMENTAL_MIDI_OUT
+ // return the system time as a double
+ static double streamStartTime = 0; // bias system time to small number
+ 
+@@ -995,6 +996,7 @@
+ 
+    return PaUtil_GetTime() - streamStartTime;
+ }
++#endif
+ 
+ const int AudioIO::StandardRates[] = {
+    8000,
+@@ -1803,6 +1805,7 @@
+    }
+ #endif
+ 
++#ifdef EXPERIMENTAL_MIDI_OUT
+    // We use audio latency to estimate how far ahead of DACS we are writing
+    if (mPortStreamV19 != NULL && mLastPaError == paNoError) {
+       const PaStreamInfo* info = Pa_GetStreamInfo(mPortStreamV19);
+@@ -1811,6 +1814,7 @@
+       mAudioOutLatency = info->outputLatency;
+       mSystemMinusAudioTimePlusLatency += mAudioOutLatency;
+    }
++#endif
+ 
+    return (mLastPaError == paNoError);
+ }
+@@ -1955,8 +1959,10 @@
+ 
+    double playbackTime = 4.0;
+ 
++#ifdef EXPERIMENTAL_MIDI_OUT
+    streamStartTime = 0;
+    streamStartTime = SystemTime(mUsingAlsa);
++#endif
+ 
+ #ifdef EXPERIMENTAL_SCRUBBING_SUPPORT
+    bool scrubbing = (options.pScrubbingOptions != nullptr);
+@@ -2830,7 +2836,9 @@
+ 
+    mPlaybackTracks.clear();
+    mCaptureTracks.clear();
++#ifdef HAVE_MIDI
+    mMidiPlaybackTracks.clear();
++#endif
+ 
+ #ifdef EXPERIMENTAL_SCRUBBING_SUPPORT
+    mScrubQueue.reset();
+@@ -4669,13 +4677,13 @@
+          (float *)alloca(framesPerBuffer*numPlaybackChannels * sizeof(float)) :
+          (float *)outputBuffer;
+ 
++#ifdef EXPERIMENTAL_MIDI_OUT
+    if (gAudioIO->mCallbackCount++ == 0) {
+        // This is effectively mSystemMinusAudioTime when the buffer is empty:
+        gAudioIO->mStartTime = SystemTime(gAudioIO->mUsingAlsa) - gAudioIO->mT0;
+        // later, mStartTime - mSystemMinusAudioTime will tell us latency
+    }
+ 
+-#ifdef EXPERIMENTAL_MIDI_OUT
+    /* GSW: Save timeInfo in case MidiPlayback needs it */
+    gAudioIO->mAudioCallbackClockTime = PaUtil_GetTime();
+ 
+@@ -5051,7 +5059,9 @@
+                   : gAudioIO->mTime >= gAudioIO->mT1))
+                   // PRL: singalling MIDI output complete is necessary if
+                   // not USE_MIDI_THREAD, otherwise it's harmlessly redundant
++#ifdef EXPERIMENTAL_MIDI_OUT
+                   gAudioIO->mMidiOutputComplete = true,
++#endif
+                   callbackReturn = paComplete;
+             }
+             
+@@ -5114,7 +5124,9 @@
+ 
+                // PRL: singalling MIDI output complete is necessary if
+                // not USE_MIDI_THREAD, otherwise it's harmlessly redundant
++#ifdef EXPERIMENTAL_MIDI_OUT
+                gAudioIO->mMidiOutputComplete = true,
++#endif
+                callbackReturn = paComplete;
+             }
+          }
+--- audacity-minsrc-2.2.2-rc1/src/Project.cpp
++++ audacity-minsrc-2.2.2-rc1/src/Project.cpp
+@@ -460,10 +460,11 @@
+          } );
+ 
+          for (const auto &name : sortednames) {
+-
++#ifdef USE_MIDI
+             if (Importer::IsMidi(name))
+                AudacityProject::DoImportMIDI(mProject, name);
+             else
++#endif
+                mProject->Import(name);
+          }
+ 
+@@ -3046,9 +3047,11 @@
+ #endif
+ 
+       {
++#ifdef USE_MIDI
+          if (Importer::IsMidi(fileName))
+             DoImportMIDI(this, fileName);
+          else
++#endif
+             Import(fileName);
+ 
+          ZoomAfterImport(nullptr);
+--- audacity-minsrc-2.2.2-rc1/src/tracks/playabletrack/notetrack/ui/NoteTrackButtonHandle.cpp
++++ audacity-minsrc-2.2.2-rc1/src/tracks/playabletrack/notetrack/ui/NoteTrackButtonHandle.cpp
+@@ -9,6 +9,9 @@
+ **********************************************************************/
+ 
+ #include "../../../../Audacity.h"
++
++#ifdef USE_MIDI
++
+ #include "NoteTrackButtonHandle.h"
+ 
+ #include "../../../../HitTestResult.h"
+@@ -113,3 +116,4 @@
+    return RefreshCode::RefreshNone;
+ }
+ 
++#endif
+--- audacity-minsrc-2.2.2-rc1/src/tracks/playabletrack/notetrack/ui/NoteTrackVZoomHandle.cpp
++++ audacity-minsrc-2.2.2-rc1/src/tracks/playabletrack/notetrack/ui/NoteTrackVZoomHandle.cpp
+@@ -9,6 +9,9 @@
+ **********************************************************************/
+ 
+ #include "../../../../Audacity.h"
++
++#ifdef USE_MIDI
++
+ #include "NoteTrackVZoomHandle.h"
+ #include "../../../../Experimental.h"
+ #include "NoteTrackVRulerControls.h"
+@@ -332,3 +335,5 @@
+       TrackVRulerControls::DrawZooming
+          ( dc, mRect, panelRect, mZoomStart, mZoomEnd );
+ }
++
++#endif
+--- audacity-minsrc-2.2.2-rc1/src/tracks/ui/TimeShiftHandle.cpp
++++ audacity-minsrc-2.2.2-rc1/src/tracks/ui/TimeShiftHandle.cpp
+@@ -604,7 +604,7 @@
+       {
+          trySnap = true;
+          if (pTrack->GetKind() == Track::Wave) {
+-            auto wt = static_cast<const WaveTrack *>(pTrack);
++            auto wt = static_cast<const WaveTrack *>(pTrack.get());
+             const double rate = wt->GetRate();
+             // set it to a sample point
+             desiredSlideAmount = rint(desiredSlideAmount * rate) / rate;

@@ -1,5 +1,5 @@
---- Makefile.orig	2004-05-30 02:14:14.000000000 +0200
-+++ Makefile	2009-01-03 15:02:19.253460887 +0100
+--- a/Makefile	2004-05-30 02:14:14.000000000 +0200
++++ b/Makefile	2009-01-03 15:02:19.253460887 +0100
 @@ -8,8 +8,8 @@
  # if your system doesn't have GNU's getopt_long(), add -DWITHOUT_GNU_GETOPT
  CFLAGS=-I/usr/local/include -Wall -O2

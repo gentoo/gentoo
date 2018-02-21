@@ -4,7 +4,6 @@
   <maintainer type="person">
     <email>victor@enise.org</email>
     <name>Victor Gaydov</name>
-    <description>Proxied maintainer</description>
   </maintainer>
   <maintainer type="project">
     <email>proxy-maint@gentoo.org</email>
@@ -13,7 +12,6 @@
   <maintainer type="person">
     <email>henning@hennsch.de</email>
     <name>Henning Schild</name>
-    <description>Proxied maintainer via NP-Hardass</description>
   </maintainer>
   <maintainer type="person">
     <email>NP-Hardass@gentoo.org</email>

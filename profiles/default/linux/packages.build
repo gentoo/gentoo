@@ -27,6 +27,7 @@ sys-apps/gawk
 sys-apps/grep
 sys-apps/less
 sys-apps/net-tools
+sys-apps/portage
 sys-apps/sed
 sys-devel/binutils
 sys-devel/bison
@@ -39,11 +40,6 @@ sys-devel/patch
 virtual/editor
 virtual/libc
 virtual/os-headers
-virtual/package-manager
 virtual/pkgconfig
 virtual/shadow
 sys-apps/which
-
-# This was added too soon.
-# The new udev version needs to stabled first
-#sys-apps/kmod

@@ -1,13 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit font
 
-DESCRIPTION="A beautiful sans-serif monotype font designed for code listings"
-HOMEPAGE="https://www.google.com/fonts/specimen/Inconsolata
-	https://code.google.com/p/googlefontdirectory/source/browse/ofl/inconsolata/?name=default"
-SRC_URI="https://dev.gentoo.org/~yngwin/distfiles/${P}.tar.xz"
+DESCRIPTION="A sans-serif monotype font for code listings"
+HOMEPAGE="https://fonts.google.com/specimen/Inconsolata"
+SRC_URI="https://dev.gentoo.org/~jstein/dist/${P}.tar.xz"
 
 LICENSE="OFL-1.1"
 SLOT="0"
