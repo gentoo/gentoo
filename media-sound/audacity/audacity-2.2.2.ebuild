@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils gnome2-utils wxwidgets xdg-utils
+inherit autotools eutils gnome2-utils wxwidgets xdg-utils
 
 MY_P="${PN}-minsrc-${PV}"
 DOC_PV="${PV}"
@@ -48,6 +48,19 @@ DEPEND="${RDEPEND}
 REQUIRED_USE="soundtouch? ( midi )"
 
 S="${WORKDIR}/${MY_P}-rc1"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-2.2.1-portmixer.patch" #624264
+	"${FILESDIR}/${PN}-2.2.2-automake.patch" # or else eautoreconf breaks
+	"${FILESDIR}/${PN}-2.2.2-midi.patch" #637110
+)
+
+src_prepare() {
+	epatch "${PATCHES[@]}"
+
+	# needed because of portmixer patch
+	eautoreconf
+}
 
 src_configure() {
 	local WX_GTK_VER="3.0"
