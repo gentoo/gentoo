@@ -15,7 +15,7 @@ SRC_URI="mirror://gnome/sources/${PN}/${MY_PV}/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ia64 ~ppc ~ppc64 sparc x86"
 IUSE="introspection python static-libs test vala"
 
 REQUIRED_USE="
