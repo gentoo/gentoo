@@ -34,5 +34,5 @@ python_prepare_all() {
 }
 
 python_test() {
-	py.test -v
+	py.test -v || die
 }
