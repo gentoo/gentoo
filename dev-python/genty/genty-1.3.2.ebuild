@@ -23,9 +23,6 @@ DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 "
 
-# https://github.com/box/genty/issues/42
-RESTRICT=test
-
 python_test() {
 	esetup.py test --verbose
 }
