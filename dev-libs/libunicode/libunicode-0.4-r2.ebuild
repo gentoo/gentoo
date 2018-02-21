@@ -11,7 +11,7 @@ SRC_URI="ftp://ftp.gnome.org/pub/GNOME/sources/${PN}/${PV}/${P}.gnome.tar.gz"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ia64 ~ppc ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ia64 ppc ~sparc x86"
 IUSE=""
 
 src_prepare() {
