@@ -13,7 +13,7 @@ SRC_URI="https://pypi.python.org/packages/53/72/6c6f1e787d9cab2cc733cf042f125abe
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ppc ppc64 sparc x86 ~x64-solaris"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd ~x64-solaris"
 IUSE="test"
 
 DEPEND="dev-python/setuptools"
