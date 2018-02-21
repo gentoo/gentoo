@@ -1,0 +1,220 @@
+#!/bin/sh
+
+# This script is to make unlocking using OpenRC/Consolekit easier when the KDE Screenlocker breaks.
+#
+# Version: 0.2
+# Date written: February 2, 2018
+# Last modification: February 17, 2018
+#
+# Copyright (C) 2018 Daniel Frey
+# Copyright (C) 2018 Lars Wendler
+#
+# This script is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This script is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+#
+# Some notes:
+#   -The switch processing/argument handling is very basic.
+#   -This script assumes session names start with "Session" when listing
+#    sessions. This is settable via a variable.
+#
+# Possible actions:
+#   -h : Show help screen
+#   -l : List current consolekit sessions
+#   -u : Unlock specified session (one parameter required - the session name)
+#   -a : Attempt to unlock all sessions
+
+# Return code documentation
+#
+#  0: Script executed normally
+#  1: Root access is not present for script
+#  2: No arguments passed
+#  3: Multiple actions requested, can only do one at a time
+#  4: Argument passed was not recognized
+#  5: Multiple arguments passed for unlock single session, only one needed
+#  6: The argument required for unlocksession() is missing (internal error)
+
+SCRIPTNAME="$(basename $0)"
+
+# Return code constants
+readonly ERR_NORMAL_OPERATION=0
+readonly ERR_NO_ROOT=1
+readonly ERR_NO_ARGS=2
+readonly ERR_TOO_MANY_ACTIONS=3
+readonly ERR_INVALID_ARGUMENTS=4
+readonly ERR_TOO_MANY_ARGS=5
+readonly ERR_INTERNAL_ARG_MISSING=6
+
+# Action parameter constants
+readonly ACTION_NONE=0
+readonly ACTION_HELP=1
+readonly ACTION_LIST=2
+readonly ACTION_UNLOCKALL=3
+readonly ACTION_UNLOCK=4
+
+# This is what's used to look for a session via consolekit.
+# By default, assume it is prefixed with "Session".
+SESSION_SEARCH_PREFIX="Session"
+
+# Check to make sure script has root access, if not... abort now!
+if [ "$(id -u)" -ne 0 ]; then
+	echo "This script must be run as root."
+	exit ${ERR_NO_ROOT}
+fi
+
+showhelp() {
+	cat <<EOF
+${SCRIPTNAME}: a script that helps unlock consolekit sessions
+
+Usage: ${SCRIPTNAME} [action] [parameters]
+
+Actions:
+	-l : list current sessions available for unlocking 
+	-u : unlock session specified as a parameter
+	-a : attempt to unlock all current sessions
+	-h : this screen
+
+Parameters:
+	The -u parameter requires a session name to unlock, use -l to 
+	list sessions.
+
+Example:
+	To unlock a single session, use:
+	${SCRIPTNAME} -u Session1
+
+No arguments will show this screen.
+EOF
+}
+
+listsessions() {
+	# Get a list of all sessions, and remove the full colon from the session name
+	ALLSESSIONS=$(ck-list-sessions | grep "^${SESSION_SEARCH_PREFIX}" | awk -F : '{print $1}')
+
+	echo
+	echo "Sessions present on this machine, space-delineated:"
+	echo
+	echo ${ALLSESSIONS}
+	echo
+	echo
+	echo "Session detail (to help locate a specific session:"
+	ck-list-sessions | grep -A 2 "^${SESSION_SEARCH_PREFIX}"
+}
+
+unlocksession() {
+	# This function expects one parameter set (the session to unlock).
+	# Make sure the parameter exists before continuing.
+	if [ -z "${1}" ]; then 
+		showhelp
+		exit ${ERR_INTERNAL_ARG_MISSING}
+	fi
+
+	echo "Attempting to unlock session $1; messages from dbus are not suppressed."
+
+	# Finally, request the unlock.
+	dbus-send --system --print-reply --dest="org.freedesktop.ConsoleKit" /org/freedesktop/ConsoleKit/$1 org.freedesktop.ConsoleKit.Session.Unlock
+}
+
+unlockallsessions() {
+	# Get a list of all sessions, and remove the full colon from the session name
+	ALLSESSIONS=$(ck-list-sessions | grep "^${SESSION_SEARCH_PREFIX}" | awk -F : '{print $1}')
+
+	echo "Attempting to unlock all sessions. Messages from dbus are not suppressed."
+	echo
+	# Loop through results, attempt to unlock all sessions.
+	# Count them and report at the end.
+	COUNT=0
+	for i in ${ALLSESSIONS}; do
+		dbus-send --system --print-reply --dest="org.freedesktop.ConsoleKit" /org/freedesktop/ConsoleKit/$i org.freedesktop.ConsoleKit.Session.Unlock
+		let "COUNT+=1"
+	done
+
+	echo
+	echo "Attempted to unlock ${COUNT} session(s)."
+}
+
+check_actions() {
+	# Make sure multiple actions are not chosen.
+	if [ ${ACTION} -ne ${ACTION_NONE} ]; then
+		echo "You can only declare one action at a time!"
+		echo ""
+		showhelp
+		exit ${ERR_TOO_MANY_ACTIONS}
+	fi
+}
+
+# Start of "main" routine
+
+# Initialize variables:
+#     ACTION=default 0; used to make sure more than one action are not
+#          specified at the same time. If an invalid argument was passed
+#          (e.g. one without the hyphen prefix) it will be caught as well.
+ACTION="${ACTION_NONE}"
+
+# Show help if no arguments provided at all
+if  [ $# -eq 0 ]; then
+	showhelp
+	exit ${ERR_NO_ARGS}
+fi
+
+# Process arguments passed, setting environment appropriately.
+# During this check, ensure only one action was requested. This
+# script will not do multiple things at a time.
+while getopts “hlau:” OPTION; do
+	case ${OPTION} in
+		h)	# Help action
+			check_actions
+			ACTION=${ACTION_HELP}
+		;;
+                l)	# List action
+			check_actions
+			ACTION="${ACTION_LIST}"
+		;;
+		a)	# Enable all USB hubs/devices action
+			check_actions
+			ACTION="${ACTION_UNLOCKALL}"
+		;;
+		u)	# Enable specific hub/device via find command action
+			check_actions
+			ACTION="${ACTION_UNLOCK}"
+
+			# Save session name passed for later
+			UNLOCKSESSION="${OPTARG}"
+		;;
+		?)	# Unknown parameter
+			showhelp
+			exit ${ERR_INVALID_ARGUMENTS}
+		;;
+	esac
+done
+
+# If script reaches this point, only one action was specified, so it is safe
+# to continue processing.
+case ${ACTION} in
+	${ACTION_HELP})		# help action
+		showhelp
+	;;
+	${ACTION_LIST})		# list action
+		listsessions
+	;;
+	${ACTION_UNLOCKALL}) 	# unlock all sessions
+		unlockallsessions
+	;;
+	${ACTION_UNLOCK})	# unlock single session
+		unlocksession ${UNLOCKSESSION}
+	;;
+	*)
+		echo "Unrecognized action."
+		echo
+		showhelp
+		exit ${ERR_INVALID_ARGUMENTS}
+	;;
+esac
+
+exit ${ERR_NORMAL_OPERATION}
