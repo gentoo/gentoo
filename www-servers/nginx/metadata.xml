@@ -9,6 +9,16 @@
     <email>dev-zero@gentoo.org</email>
     <name>Tiziano Müller</name>
   </maintainer>
+  <maintainer type="person">
+    <email>bugs@bergstroem.nu</email>
+    <name>Johan Bergström</name>
+    <description>Co-maintainer, CC on bugs.</description>
+  </maintainer>
+  <maintainer type="person">
+    <email>jonas.licht@gmail.com</email>
+    <name>Jonas Licht</name>
+    <description>Added nginx_vod_module</description>
+  </maintainer>
   <use>
     <flag name="aio">Enables file AIO support</flag>
     <flag name="http">Enable HTTP core support</flag>
@@ -19,6 +29,7 @@
     <flag name="pcre-jit">Enable JIT for pcre</flag>
     <flag name="ssl">Enable HTTPS module for http. Enable SSL/TLS support for POP3/IMAP/SMTP for mail.</flag>
     <flag name="rtmp">NGINX-based Media Streaming Server</flag>
+    <flag name="nginx_modules_http_vod">Adding a NGINX-based MP4 Repackager module.</flag>
   </use>
   <upstream>
     <changelog>http://nginx.org/en/CHANGES</changelog>
