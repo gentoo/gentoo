@@ -1,15 +1,15 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils wxwidgets xdg-utils
+inherit eutils gnome2-utils wxwidgets xdg-utils
 
 MY_P="${PN}-minsrc-${PV}"
-DOC_PV="2.1.3"
+DOC_PV="${PV}"
 DESCRIPTION="Free crossplatform audio editor"
 HOMEPAGE="http://web.audacityteam.org/"
 SRC_URI="https://dev.gentoo.org/~polynomial-c/dist/${MY_P}.tar.xz
-	doc? ( https://dev.gentoo.org/~polynomial-c/dist/${PN}-help-${DOC_PV}.zip )"
+	doc? ( https://dev.gentoo.org/~polynomial-c/dist/${PN}-manual-${DOC_PV}.zip )"
 	# wget doesn't seem to work on FossHub links, so we mirror
 
 LICENSE="GPL-2"
@@ -47,7 +47,7 @@ DEPEND="${RDEPEND}
 
 REQUIRED_USE="soundtouch? ( midi )"
 
-S="${WORKDIR}/${MY_P}"
+S="${WORKDIR}/${MY_P}-rc1"
 
 src_configure() {
 	local WX_GTK_VER="3.0"
@@ -99,17 +99,20 @@ src_install() {
 
 	if use doc ; then
 		docinto html
-		dodoc -r "${WORKDIR}"/{m,man,manual}
-		dodoc "${WORKDIR}"/{favicon.ico,index.html,quick_help.html}
+		dodoc -r "${WORKDIR}"/help/manual/{m,man,manual}
+		dodoc "${WORKDIR}"/help/manual/{favicon.ico,index.html,quick_help.html}
+		dosym ../../doc/${PF}/html /usr/share/${PN}/help/manual
 	fi
 }
 
 pkg_postinst() {
+	gnome2_icon_cache_update
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
 }
 
 pkg_postrm() {
+	gnome2_icon_cache_update
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
 }
