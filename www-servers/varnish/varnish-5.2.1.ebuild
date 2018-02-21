@@ -53,7 +53,7 @@ src_prepare() {
 	# the original location
 	ln -sf ../varnish.m4 m4/varnish.m4
 
-	eapply "${FILESDIR}"/"${P}"-fix-import.patch
+	eapply "${FILESDIR}"/${PN}-5.2.0-fix-import.patch
 
 	eapply_user
 
