@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="PSF-2.4"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 hppa ia64 ~mips ppc ppc64 sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 hppa ia64 ~mips ppc ppc64 sparc ~x86 ~amd64-fbsd"
 IUSE="test"
 
 DEPEND="
