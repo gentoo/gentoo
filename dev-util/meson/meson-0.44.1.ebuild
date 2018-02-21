@@ -35,5 +35,5 @@ python_install_all() {
 	insinto /usr/share/vim/vimfiles
 	doins -r data/syntax-highlighting/vim/{ftdetect,indent,syntax}
 	insinto /usr/share/zsh/site-functions
-doins data/shell-completions/zsh/_meson
+	doins data/shell-completions/zsh/_meson
 }
