@@ -15,7 +15,7 @@ SRC_URI="http://gregory.kokanosky.free.fr/v4/linux/${P}.tar.gz
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="amd64 ~ppc ~ppc64 sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="test"
 DOCS=( CHANGELOG )
 
