@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Michał Górny <mgorny@gentoo.org> (21 Feb 2018)
+# Requires net-misc/curl[kerberos] which is masked here.
+dev-python/pycurl test
+
+# Michał Górny <mgorny@gentoo.org> (21 Feb 2018)
 # More unkeyworded dependencies.
 media-libs/xine-lib fusionsound
 media-video/ffmpeg frei0r sofalizer
