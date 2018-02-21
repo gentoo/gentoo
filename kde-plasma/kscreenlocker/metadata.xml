@@ -5,4 +5,7 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
+	<use>
+		<flag name="consolekit">Add support for killing the screenlocker when <pkg>sys-auth/consolekit</pkg> is the session tracker</flag>
+	</use>
 </pkgmetadata>
