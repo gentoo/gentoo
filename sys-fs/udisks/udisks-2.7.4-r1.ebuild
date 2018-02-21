@@ -55,8 +55,6 @@ DEPEND="${COMMON_DEPEND}
 
 S="${WORKDIR}/${PN}-${P}"
 
-QA_MULTILIB_PATHS="usr/lib/udisks2/udisksd"
-
 DOCS=( AUTHORS HACKING NEWS README.md )
 
 pkg_setup() {
