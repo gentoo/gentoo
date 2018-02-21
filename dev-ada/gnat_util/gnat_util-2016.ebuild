@@ -37,7 +37,7 @@ src_compile() {
 	GNATMAKE=${CHOST}-gnatmake-${GCC_PV}
 	emake GNATMAKE="${GNATMAKE} ${ADAFLAGS}" \
 		BUILDER="gprbuild -j$(makeopts_jobs)" generate_sources
-	if use ${kind}; then
+	if use static-libs; then
 		emake CC="${GCC}" BUILDER="gprbuild -v -j$(makeopts_jobs)" build-static
 	fi
 	for kind in shared static-pic; do
