@@ -23,14 +23,19 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.4.0-disable_no-warning-test.patch"
 	"${FILESDIR}/${PN}-3.4.0-system_libraries.patch"
 	"${FILESDIR}/${PN}-3.4.0-protoc_input_output_files.patch"
+	"${FILESDIR}/${PN}-3.5.0-atomic_operations.patch"
 )
 
 DOCS=(CHANGES.txt CONTRIBUTORS.txt README.md)
 
 src_prepare() {
-	append-cppflags -DGOOGLE_PROTOBUF_NO_RTTI
 	default
 	eautoreconf
+}
+
+src_configure() {
+	append-cppflags -DGOOGLE_PROTOBUF_NO_RTTI
+	multilib-minimal_src_configure
 }
 
 multilib_src_configure() {

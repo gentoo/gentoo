@@ -9,7 +9,7 @@ if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 fi
 
 inherit distutils-r1
@@ -35,5 +35,5 @@ python_install_all() {
 	insinto /usr/share/vim/vimfiles
 	doins -r data/syntax-highlighting/vim/{ftdetect,indent,syntax}
 	insinto /usr/share/zsh/site-functions
-doins data/shell-completions/zsh/_meson
+	doins data/shell-completions/zsh/_meson
 }
