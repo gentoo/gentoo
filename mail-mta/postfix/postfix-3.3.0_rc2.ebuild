@@ -27,6 +27,7 @@ DEPEND=">=dev-libs/libpcre-3.4
 	ldap-bind? ( net-nds/openldap[sasl] )
 	lmdb? ( >=dev-db/lmdb-0.9.11 )
 	mysql? ( virtual/mysql )
+	nis? ( net-libs/libnsl )
 	pam? ( virtual/pam )
 	postgres? ( dev-db/postgresql:* )
 	sasl? (  >=dev-libs/cyrus-sasl-2 )
@@ -37,7 +38,6 @@ DEPEND=">=dev-libs/libpcre-3.4
 	)"
 
 RDEPEND="${DEPEND}
-	dovecot-sasl? ( net-mail/dovecot )
 	memcached? ( net-misc/memcached )
 	net-mail/mailbase
 	!mail-mta/courier
