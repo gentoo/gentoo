@@ -10,4 +10,4 @@ RDEPEND=gpm? ( sys-libs/gpm[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mi
 SLOT=0/6
 SRC_URI=mirror://gnu/ncurses/ncurses-6.1.tar.gz
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	flag-o-matic	02908f00f002f0f07c5b74783d778325	ltprune	2770eed66a9b8ef944714cd0e968182e	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	8ffb5e2112a70fef5f37fcacad308726	multilib-minimal	9139c3a57e077cb8e0d0f73ceb080b89	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=134c63211f49fce86f9545d47932d2c7
+_md5_=8242f7e45b52a9c8fc7dc8b03958ff78
