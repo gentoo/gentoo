@@ -101,6 +101,7 @@ DEPEND="${COMMON_DEPEND}
 	sys-apps/hwids[usb(+)]
 	>=sys-devel/bison-2.4.3
 	sys-devel/flex
+	>=sys-devel/clang-5
 	virtual/pkgconfig
 	dev-vcs/git
 	$(python_gen_any_dep '
@@ -149,21 +150,24 @@ PATCHES=(
 	"${FILESDIR}/chromium-webrtc-r0.patch"
 	"${FILESDIR}/chromium-memcpy-r0.patch"
 	"${FILESDIR}/chromium-clang-r2.patch"
-	"${FILESDIR}/chromium-gcc-u2f.patch"
+	"${FILESDIR}/chromium-gn-r0.patch"
+	"${FILESDIR}/chromium-math.h-r0.patch"
+	"${FILESDIR}/chromium-clang-r3.patch"
+	"${FILESDIR}/chromium-stdint.patch"
 )
 
 pre_build_checks() {
-	if [[ ${MERGE_TYPE} != binary ]]; then
-		local -x CPP="$(tc-getCXX) -E"
-		if tc-is-clang && ! version_is_at_least "3.9.1" "$(clang-fullversion)"; then
-			# bugs: #601654
-			die "At least clang 3.9.1 is required"
-		fi
-		if tc-is-gcc && ! version_is_at_least 5.0 "$(gcc-version)"; then
-			# bugs: #535730, #525374, #518668, #600288, #627356
-			die "At least gcc 5.0 is required"
-		fi
-	fi
+	#if [[ ${MERGE_TYPE} != binary ]]; then
+	#	local -x CPP="$(tc-getCXX) -E"
+	#	if tc-is-clang && ! version_is_at_least "3.9.1" "$(clang-fullversion)"; then
+	#		# bugs: #601654
+	#		die "At least clang 3.9.1 is required"
+	#	fi
+	#	if tc-is-gcc && ! version_is_at_least 5.0 "$(gcc-version)"; then
+	#		# bugs: #535730, #525374, #518668, #600288, #627356
+	#		die "At least gcc 5.0 is required"
+	#	fi
+	#fi
 
 	# Check build requirements, bug #541816 and bug #471810 .
 	CHECKREQS_MEMORY="3G"
@@ -262,7 +266,6 @@ src_prepare() {
 		third_party/libXNVCtrl
 		third_party/libaddressinput
 		third_party/libaom
-		third_party/libaom/source/libaom/third_party/x86inc
 		third_party/libjingle
 		third_party/libphonenumber
 		third_party/libsecret
@@ -271,6 +274,7 @@ src_prepare() {
 		third_party/libwebm
 		third_party/libxml/chromium
 		third_party/libyuv
+		third_party/llvm
 		third_party/lss
 		third_party/lzma_sdk
 		third_party/markupsafe
@@ -371,6 +375,32 @@ src_configure() {
 
 	local myconf_gn=""
 
+	# Make sure the build system will use the right tools, bug #340795.
+	tc-export AR CC CXX NM
+
+	if ! tc-is-clang; then
+		# Force clang since gcc is pretty broken at the moment.
+		CC=clang
+		CXX=clang++
+	fi
+
+	if tc-is-clang; then
+		myconf_gn+=" is_clang=true clang_use_chrome_plugins=false"
+	else
+		myconf_gn+=" is_clang=false"
+	fi
+
+	# Define a custom toolchain for GN
+	myconf_gn+=" custom_toolchain=\"//build/toolchain/linux/unbundle:default\""
+
+	if tc-is-cross-compiler; then
+		tc-export BUILD_{AR,CC,CXX,NM}
+		myconf_gn+=" host_toolchain=\"//build/toolchain/linux/unbundle:host\""
+		myconf_gn+=" v8_snapshot_toolchain=\"//build/toolchain/linux/unbundle:host\""
+	else
+		myconf_gn+=" host_toolchain=\"//build/toolchain/linux/unbundle:default\""
+	fi
+
 	# GN needs explicit config for Debug/Release as opposed to inferring it from build directory.
 	myconf_gn+=" is_debug=false"
 
@@ -431,7 +461,6 @@ src_configure() {
 	myconf_gn+=" enable_hangout_services_extension=$(usex hangouts true false)"
 	myconf_gn+=" enable_widevine=$(usex widevine true false)"
 	myconf_gn+=" use_cups=$(usex cups true false)"
-	myconf_gn+=" use_gconf=false"
 	myconf_gn+=" use_gnome_keyring=$(usex gnome-keyring true false)"
 	myconf_gn+=" use_kerberos=$(usex kerberos true false)"
 	myconf_gn+=" use_pulseaudio=$(usex pulseaudio true false)"
@@ -439,12 +468,6 @@ src_configure() {
 	# TODO: link_pulseaudio=true for GN.
 
 	myconf_gn+=" fieldtrial_testing_like_official_build=true"
-
-	if tc-is-clang; then
-		myconf_gn+=" is_clang=true clang_use_chrome_plugins=false"
-	else
-		myconf_gn+=" is_clang=false"
-	fi
 
 	# Never use bundled gold binary. Disable gold linker flags for now.
 	# Do not use bundled clang.
@@ -510,22 +533,8 @@ src_configure() {
 		fi
 	fi
 
-	# Make sure the build system will use the right tools, bug #340795.
-	tc-export AR CC CXX NM
-
-	# Define a custom toolchain for GN
-	myconf_gn+=" custom_toolchain=\"//build/toolchain/linux/unbundle:default\""
-
-	if tc-is-cross-compiler; then
-		tc-export BUILD_{AR,CC,CXX,NM}
-		myconf_gn+=" host_toolchain=\"//build/toolchain/linux/unbundle:host\""
-		myconf_gn+=" v8_snapshot_toolchain=\"//build/toolchain/linux/unbundle:host\""
-	else
-		myconf_gn+=" host_toolchain=\"//build/toolchain/linux/unbundle:default\""
-	fi
-
 	# https://bugs.gentoo.org/588596
-	append-cxxflags $(test-flags-CXX -fno-delete-null-pointer-checks)
+	#append-cxxflags $(test-flags-CXX -fno-delete-null-pointer-checks)
 
 	# Bug 491582.
 	export TMPDIR="${WORKDIR}/temp"
@@ -558,6 +567,8 @@ src_configure() {
 src_compile() {
 	# Calling this here supports resumption via FEATURES=keepwork
 	python_setup
+
+	#"${EPYTHON}" tools/clang/scripts/update.py --force-local-build --gcc-toolchain /usr --skip-checkout --use-system-cmake --without-android || die
 
 	# Build mksnapshot and pax-mark it.
 	local x
@@ -632,10 +643,8 @@ src_install() {
 	doins -r out/Release/locales
 	doins -r out/Release/resources
 
-	if [[ -d out/Release/swiftshader ]]; then
-		insinto "${CHROMIUM_HOME}/swiftshader"
-		doins out/Release/swiftshader/*.so
-	fi
+	insinto "${CHROMIUM_HOME}/swiftshader"
+	doins out/Release/swiftshader/*.so
 
 	# Install icons and desktop entry.
 	local branding size
