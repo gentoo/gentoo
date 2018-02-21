@@ -12,10 +12,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="git"
 
-DEPEND="
-	>=dev-lang/go-1.6:0
-	>=app-crypt/keybase-1.0.36
-	"
+DEPEND=">=dev-lang/go-1.6:0"
 RDEPEND="
 	app-crypt/gnupg
 	sys-fs/fuse

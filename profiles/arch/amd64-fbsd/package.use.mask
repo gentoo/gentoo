@@ -4,6 +4,7 @@
 # Michał Górny <mgorny@gentoo.org> (21 Feb 2018)
 # More unkeyworded dependencies.
 media-libs/xine-lib fusionsound
+media-video/ffmpeg frei0r sofalizer
 
 # Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
 # Unkeyworded dependencies.
@@ -15,7 +16,7 @@ dev-perl/GD fcgi
 media-libs/libcanberra gnome
 media-libs/mesa vaapi
 media-sound/pulseaudio equalizer qt4 realtime
-media-video/ffmpeg celt ebur128 kvazaar libilbc nvenc openh264
+media-video/ffmpeg celt ebur128 kvazaar libilbc openh264
 media-video/ffmpeg rubberband sdl ssh x265 zeromq zimg
 net-libs/gnutls idn
 net-print/cups-filters pdf
@@ -54,10 +55,6 @@ sys-devel/llvm ocaml
 # Ulrich Müller <ulm@gentoo.org> (23 Oct 2017)
 # Needs net-mail/mailutils which is not keyworded, bug #635216.
 app-editors/emacs-vcs mailutils
-
-# Alexis Ballier <aballier@gentoo.org> (31 Jan 2017)
-# nvidia drivers are unmasked here
-media-video/ffmpeg -nvenc
 
 # Davide Pesavento <pesa@gentoo.org> (26 Oct 2015)
 # Tests require non-keyworded qt5
