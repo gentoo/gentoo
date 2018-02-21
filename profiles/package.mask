@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Ulrich Müller <ulm@gentoo.org> (21 Feb 2018)
+# Last release in 2006. Homepage is dead. Upstream says
+# that app-emacs/muse should be used as replacement.
+# Masked for removal in 30 days. Bug #619194.
+app-emacs/emacs-wiki
+
 # Ulrich Müller <ulm@gentoo.org> (15 Feb 2018)
 # Masked for testing. Note that 11.92 and 12.1 are equivalent
 # in functionality.
