@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-	<email>tomboy64@sina.cn</email>
-</maintainer>
-<maintainer type="person">
-	<email>arfrever.fta@gmail.com</email>
-	<name>Arfrever Frehtes Taifersar Arahesis</name>
-</maintainer>
-<maintainer type="project">
-	<email>proxy-maint@gentoo.org</email>
-	<name>Proxy Maintainers</name>
-</maintainer>
-<slots>
-	<subslots>soname major version number</subslots>
-</slots>
-<use>
-	<flag name="java">Builds the Java implementation. This is not needed for Java support in protoc.</flag>
-	<flag name="python">Builds the Python implementation. This is not needed for Python support in protoc.</flag>
-</use>
-<upstream>
-	<remote-id type="github">google/protobuf</remote-id>
-</upstream>
+	<maintainer type="person">
+		<email>arfrever.fta@gmail.com</email>
+		<name>Arfrever Frehtes Taifersar Arahesis</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>tomboy64@sina.cn</email>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<slots>
+		<subslots>Soname version number</subslots>
+	</slots>
+	<use>
+		<flag name="java">Builds the Java implementation. This is not needed for Java support in protoc.</flag>
+		<flag name="python">Builds the Python implementation. This is not needed for Python support in protoc.</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">google/protobuf</remote-id>
+	</upstream>
 </pkgmetadata>
