@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # TO DO:
@@ -17,12 +17,12 @@ inherit versionator perl-functions readme.gentoo-r1 cmake-utils depend.apache fl
 
 MY_PN="ZoneMinder"
 
-MY_CRUD_VERSION="3.0.10"
+MY_CRUD_VERSION="3.1.0"
 
 DESCRIPTION="Capture, analyse, record and monitor any cameras attached to your system"
 HOMEPAGE="http://www.zoneminder.com/"
 SRC_URI="
-	https://github.com/${MY_PN}/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/${MY_PN}/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/FriendsOfCake/crud/archive/v${MY_CRUD_VERSION}.tar.gz -> Crud-${MY_CRUD_VERSION}.tar.gz
 "
 
@@ -53,6 +53,7 @@ DEPEND="
 	dev-perl/Sys-MemInfo
 	dev-perl/URI-Encode
 	dev-perl/libwww-perl
+	dev-php/pecl-apcu:*
 	sys-auth/polkit
 	sys-libs/zlib
 	virtual/ffmpeg
@@ -83,8 +84,8 @@ need_apache
 S=${WORKDIR}/${MY_PN}-${PV}
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.26.5"-automagic.patch
-	"${FILESDIR}/${PN}-1.28.1"-mysql_include_path.patch
+	"${FILESDIR}/${PN}-1.30.2"-diskspace.patch
+	"${FILESDIR}/${PN}-1.30.4"-path_zms.patch
 )
 
 MY_ZM_WEBDIR=/usr/share/zoneminder/www
@@ -118,6 +119,7 @@ src_configure() {
 	)
 
 	cmake-utils_src_configure
+
 }
 
 src_install() {
@@ -154,8 +156,8 @@ src_install() {
 	# systemd unit file
 	systemd_dounit "${FILESDIR}"/zoneminder.service
 
-	cp "${FILESDIR}"/10_zoneminder.conf "${T}"/10_zoneminder.conf
-	sed -i "${T}"/10_zoneminder.conf -e "s:%ZM_WEBDIR%:${MY_ZM_WEBDIR}:g"
+	cp "${FILESDIR}"/10_zoneminder.conf "${T}"/10_zoneminder.conf || die
+	sed -i "${T}"/10_zoneminder.conf -e "s:%ZM_WEBDIR%:${MY_ZM_WEBDIR}:g" || die
 
 	dodoc AUTHORS BUGS ChangeLog INSTALL NEWS README.md TODO "${T}"/10_zoneminder.conf
 
