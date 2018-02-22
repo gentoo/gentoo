@@ -1868,7 +1868,7 @@ dev-db/pgbadger 9.2: pgBadger is a PostgreSQL log analyzer.
 dev-db/pgbouncer 1.8.1: Lightweight connection pooler for PostgreSQL
 dev-db/pgpool2 3.7.0: Connection pool server for PostgreSQL
 dev-db/pgtap 0.98.0: Unit testing for PostgreSQL
-dev-db/phpmyadmin 4.0.10.20 4.7.0 4.7.7-r1: Web-based administration for MySQL database in PHP
+dev-db/phpmyadmin 4.0.10.20 4.7.0 4.7.7-r1 4.7.8: Web-based administration for MySQL database in PHP
 dev-db/postgis 2.4.2: Geographic Objects for PostgreSQL
 dev-db/postgresql 9.2.19 9.2.22 9.2.24 9.3.15 9.3.20 9.3.21 9.4.10 9.4.15 9.4.16 9.5.5 9.5.10 9.5.11 9.6.6 9.6.7 10.1 10.2: PostgreSQL RDBMS
 dev-db/pspg 0.8.0: A better pager for psql and mysql
@@ -7278,12 +7278,12 @@ media-gfx/ristretto 0.8.0-r1 0.8.2_p20170821: A fast and lightweight picture vie
 media-gfx/rotoscope 0.2: Graphics program that can be used to give photos a cartoon-like appearance
 media-gfx/sam2p 0.49.1 0.49.3: Utility to convert raster images to EPS, PDF and many others
 media-gfx/sane-backends 1.0.27: Scanner Access Now Easy - Backends
-media-gfx/sane-frontends 1.0.14: Scanner Access Now Easy
+media-gfx/sane-frontends 1.0.14 1.0.14-r2: Scanner Access Now Easy
 media-gfx/scantailor 0.9.12.2: A interactive post-processing tool for scanned pages
 media-gfx/scour 0.36: Take an SVG file and produce a cleaner and more concise file
 media-gfx/scrot 0.8_p13: Screen capture utility using imlib2 library
 media-gfx/sfftobmp 3.1.2-r1: sff to bmp converter
-media-gfx/shotwell 0.24.6: Open source photo manager for GNOME
+media-gfx/shotwell 0.24.6 0.26.4: Open source photo manager for GNOME
 media-gfx/simple-scan 3.24.1: Simple document scanning utility
 media-gfx/splash-themes-gentoo 20101212-r1: A collection of Gentoo themes for splashutils
 media-gfx/splash-themes-livecd 2004.3 2005.0 2005.1 2006.0 2006.1 2007.0-r3: Gentoo theme for gensplash consoles
