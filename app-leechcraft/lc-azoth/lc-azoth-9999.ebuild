@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -28,7 +28,7 @@ COMMON_DEPEND="
 		dev-qt/qtx11extras:5
 		x11-libs/libXScrnSaver
 	)
-	crypt? ( app-crypt/qca:2[qt5] )
+	crypt? ( app-crypt/qca:2[qt5(+)] )
 	lastseen? ( dev-qt/qtconcurrent:5 )
 	media? ( dev-qt/qtmultimedia:5 )
 	otroid? (
