@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-USE_RUBY="ruby21 ruby22 ruby23 ruby24"
+USE_RUBY="ruby22 ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_NAME=ZenTest
 
@@ -26,13 +26,3 @@ ruby_add_bdepend "
 		dev-ruby/hoe-seattlerb
 		dev-ruby/minitest:5
 	)"
-
-each_ruby_prepare() {
-	case ${RUBY} in
-		*ruby23)
-#			sed -i -e '/test_testcase9/a skip "ruby 2.3 defines more methods"' test/test_zentest.rb || die
-			;;
-		*)
-			;;
-	esac
-}
