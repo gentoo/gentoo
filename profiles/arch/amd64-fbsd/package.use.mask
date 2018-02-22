@@ -1,6 +1,11 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (22 Feb 2018)
+# Even more unkeyworded dependencies.
+dev-libs/libpeas lua
+dev-util/cmocka doc
+
 # Michał Górny <mgorny@gentoo.org> (21 Feb 2018)
 # Requires net-misc/curl[kerberos] which is masked here.
 dev-python/pycurl test
