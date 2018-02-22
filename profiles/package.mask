@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Mart Raudsepp <leio@gentoo.org> (22 Feb 2018)
+# This package was renamed to dev-libs/libgnome-games-support without
+# a pkgmove; everything in tree uses it now instead of libgames-support.
+# Masked for removal in 30 days. Bug #648468.
+dev-libs/libgames-support
+
 # Thomas Deutschmann <whissi@gentoo.org> (22 Feb 2018)
 # Upstream's release tarball doesn't match Git content.
 # Masked until clarified.
