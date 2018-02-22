@@ -223,10 +223,11 @@ src_configure() {
 }
 
 src_compile() {
-	export SANDBOX_ON=0			# for the unbelievers, see Bug #131505
+	# Disable sandbox when dumping. For the unbelievers, see bug #131505
 	emake CC="$(tc-getCC)" \
 		AR="$(tc-getAR) cq" \
-		RANLIB="$(tc-getRANLIB)"
+		RANLIB="$(tc-getRANLIB)" \
+		RUN_TEMACS="env SANDBOX_ON=0 LD_PRELOAD= ./temacs"
 }
 
 src_install () {
