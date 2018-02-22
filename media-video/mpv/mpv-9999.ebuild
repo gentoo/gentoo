@@ -20,6 +20,7 @@ if [[ ${PV} != *9999* ]]; then
 else
 	EGIT_REPO_URI="https://github.com/mpv-player/mpv.git"
 	inherit git-r3
+	DOCS=(); SRC_URI=""
 fi
 SRC_URI+=" https://waf.io/waf-${WAF_PV}"
 DOCS+=( README.md DOCS/{client-api,interface}-changes.rst )
