@@ -8851,7 +8851,7 @@ net-misc/networkmanager-vpnc 1.2.4: NetworkManager VPNC plugin
 net-misc/npapi-sdk 0.27.2: NPAPI headers bundle
 net-misc/ntp 4.2.8_p10-r1: Network Time Protocol suite/programs
 net-misc/ntpclient 2010.365: A NTP (RFC-1305) client for unix-alike computers
-net-misc/nx 3.5.0.30 3.5.0.33: NX compression technology core libraries
+net-misc/nx 3.5.0.33: NX compression technology core libraries
 net-misc/ofono 1.16: Open Source mobile telephony (GSM/UMTS) daemon
 net-misc/oidentd 2.0.8-r5 2.0.8-r6: Another (RFC1413 compliant) ident daemon
 net-misc/olsrd 0.9.6.1: An implementation of the Optimized Link State Routing protocol
@@ -8935,8 +8935,8 @@ net-misc/wicd 1.7.4-r3: A lightweight wired and wireless network manager for Lin
 net-misc/wol 0.7.1-r1: Wake up hardware that is Magic Packet compliant
 net-misc/wput 0.6.1 0.6.1-r1: Tiny program like wget, to upload files/whole directories via FTP
 net-misc/x11-ssh-askpass 1.2.4.1-r1: X11-based passphrase dialog for use with OpenSSH
-net-misc/x2goclient 4.1.0.0-r1 4.1.1.0: The X2Go Qt client
-net-misc/x2goserver 4.0.1.20 4.0.1.22: The X2Go server
+net-misc/x2goclient 4.1.1.0: The X2Go Qt client
+net-misc/x2goserver 4.0.1.22: The X2Go server
 net-misc/yandex-disk 0.1.5.940_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536: utility to download media contents from the web
 net-misc/youtube-dl 2017.03.16 2017.11.15: Download videos from YouTube.com (and more sites...)
