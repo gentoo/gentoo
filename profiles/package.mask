@@ -30,6 +30,12 @@
 #--- END OF EXAMPLES ---
 
 # Steve Dibb <beandog@gentoo.org> (22 Feb 2018)
+# Dead upstream, never really used, libdvdread and libdvdnav provide
+# DVD access.
+# Masked for removal in 30 days. Bug #648566
+media-libs/libdvdplay
+
+# Steve Dibb <beandog@gentoo.org> (22 Feb 2018)
 # Dead upstream, long since replaced by libaacs for functionality.
 # Masked for removal in 30 days. Bug #648560
 media-video/aacskeys
