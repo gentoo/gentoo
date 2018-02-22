@@ -1650,10 +1650,6 @@ dev-php/PEAR-HTTP_Request2:curl - Force dev-lang/php to be compiled with curl ex
 dev-php/PEAR-HTTP_Request2:fileinfo - Force dev-lang/php to be compiled with fileinfo extension
 dev-php/PEAR-HTTP_Request2:ssl - Force dev-lang/php to be compiled with ssl extension
 dev-php/PEAR-HTTP_Request2:zlib - Force dev-lang/php to be compiled with zlib extension
-dev-php/ZendFramework:cli - Enables the CLI
-dev-php/ZendFramework:doc - Installs the documentation
-dev-php/ZendFramework:examples - Installs the examples
-dev-php/ZendFramework:minimal - Installs the minimal version without Dojo toolkit, tests and demos
 dev-php/pecl-apcu:lock_pthreadmutex - Enable pthread mutex locking
 dev-php/pecl-apcu:lock_pthreadrw - Enable pthread read/write locking
 dev-php/pecl-apcu:lock_semaphore - Enable semaphore locks instead of fcntl
