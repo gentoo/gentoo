@@ -932,7 +932,7 @@ app-leechcraft/liblaretz 0.1.0: Shared library to be used by the Laretz sync ser
 app-misc/abook 0.6.1: Abook is a text-based addressbook program designed to use with mutt mail client
 app-misc/actkbd 0.2.8-r2: A keyboard shortcut daemon
 app-misc/asciinema 1.4.0: Command line recorder for asciinema.org service
-app-misc/astrolog 5.40-r1 5.40-r2: A many featured astrology chart calculation program
+app-misc/astrolog 5.40-r2: A many featured astrology chart calculation program
 app-misc/astrolog-ephemeris 5.40: ephemeris files for optional extended accuracy of astrolog's calculations
 app-misc/away 0.9.5-r1 0.9.5-r2: Terminal locking program with few additional features
 app-misc/banner 1.3.3: The well known banner program for Linux
@@ -5958,7 +5958,7 @@ dev-tcltk/tkimg 1.4-r9: Adds a lot of image formats to Tcl/Tk
 dev-tcltk/tkpiechart 6.5-r1: create and update 2D or 3D pie charts in a Tcl/Tk application
 dev-tcltk/tktable 2.10: full-featured 2D table widget
 dev-tcltk/tktray 1.3.9: System Tray Icon Support for Tk on X11
-dev-tcltk/tktreectrl 2.2.9 2.4.1: A flexible listbox widget for Tk
+dev-tcltk/tktreectrl 2.4.1: A flexible listbox widget for Tk
 dev-tcltk/tls 1.6-r3: TLS OpenSSL extension to Tcl
 dev-tcltk/togl 2.0-r2: A Tk widget for OpenGL rendering
 dev-tcltk/vtcl 1.6.0-r1: Visual Tcl is a high-quality application development environment
@@ -10931,7 +10931,7 @@ x11-misc/xxkb 1.11.1: eXtended XKB - assign different keymaps to different windo
 x11-misc/xystray 1.0: A simple implementation of freedesktop.org notification area for X
 x11-misc/zim 0.65: A desktop wiki
 x11-plugins/allin1 0.5.0-r2: All in one monitoring dockapp: RAM, CPU, Net, Power, df, seti
-x11-plugins/asclock 2.0.12-r1: Clock applet for AfterStep
+x11-plugins/asclock 2.0.12-r2: Clock applet for AfterStep
 x11-plugins/ascpu 1.11-r1: CPU statistics monitor utility for X Windows
 x11-plugins/asmem 1.12-r1: Monitor the utilization level of memory, cache and swap space
 x11-plugins/asmon 0.71: WindowMaker/AfterStep system monitor dockapp
