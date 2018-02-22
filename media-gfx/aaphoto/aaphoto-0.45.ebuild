@@ -11,7 +11,7 @@ SRC_URI="http://log69.com/downloads/${PN}_sources_${PV}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	media-libs/libpng:0=
