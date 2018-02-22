@@ -195,7 +195,6 @@ src_configure() {
 
 		# Audio outputs:
 		$(use_enable sdl sdl2) # Listed under audio, but also includes video.
-		--disable-sdl1
 		$(use_enable oss oss-audio)
 		--disable-rsound # Only available in overlays.
 		--disable-sndio # Only available in overlays.
