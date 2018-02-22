@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Brian Evans <grknight@gentoo.org> (22 Feb 2018)
+# Multiple vulnerablities, EOL upstream.
+# Masked for removal in 30 days. Bug #604182
+dev-php/ZendFramework
+
 # Michael Palimaka <kensington@gentoo.org> (22 Feb 2018)
 # Plugin for removed package media-sound/amarok. Dead upstream.
 # Depends on vulnerable gstreamer:0.10.
