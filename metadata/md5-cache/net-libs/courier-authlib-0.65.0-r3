@@ -4,7 +4,7 @@ DESCRIPTION=Courier authentication library
 EAPI=4
 HOMEPAGE=http://www.courier-mta.org/
 IUSE=berkdb crypt debug gdbm ldap mysql pam postgres sqlite static-libs vpopmail
-KEYWORDS=alpha amd64 arm hppa ia64 ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd
+KEYWORDS=alpha amd64 arm hppa ia64 ppc ppc64 s390 sh sparc x86 ~x86-fbsd
 LICENSE=GPL-3
 RDEPEND=net-mail/mailbase gdbm? ( sys-libs/gdbm ) !gdbm? ( sys-libs/db ) >=dev-libs/openssl-0.9.6 ldap? ( >=net-nds/openldap-1.2.11 ) mysql? ( virtual/mysql ) pam? ( virtual/pam ) postgres? ( >=dev-db/postgresql-8.4 ) sqlite? ( dev-db/sqlite:3 )
 REQUIRED_USE=( !vpopmail )
@@ -12,4 +12,4 @@ RESTRICT=userpriv !berkdb? ( test )
 SLOT=0
 SRC_URI=mirror://sourceforge/courier/courier-authlib-0.65.0.tar.bz2
 _eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	flag-o-matic	02908f00f002f0f07c5b74783d778325	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	user	8bc2845510e2109af75e3eeac607ec81
-_md5_=a034606236812770956f03047682058f
+_md5_=3bb5b233b3e934ab3890bce65a2cea35
