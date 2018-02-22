@@ -11,7 +11,7 @@ SRC_URI="https://github.com/frankosterfeld/${PN}/archive/v${PV}.tar.gz -> ${P}.t
 
 LICENSE="BSD"
 SLOT="0/1"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="gnome-keyring"
 
 RDEPEND="
