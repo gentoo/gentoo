@@ -8,7 +8,7 @@ PYTHON_REQ_USE='threads(+)'
 
 WAF_PV=1.9.8
 
-inherit flag-o-matic gnome2-utils pax-utils python-r1 toolchain-funcs versionator waf-utils xdg-utils
+inherit eapi7-ver flag-o-matic gnome2-utils pax-utils python-r1 toolchain-funcs waf-utils xdg-utils
 
 DESCRIPTION="Media player based on MPlayer and mplayer2"
 HOMEPAGE="https://mpv.io/"
@@ -284,14 +284,10 @@ pkg_postinst() {
 	local rv softvol_0_18_1=0 osc_0_21_0=0 txtsubs_0_24_0=0 opengl_0_25_0=0
 
 	for rv in ${REPLACING_VERSIONS}; do
-		version_compare ${rv} 0.18.1
-		[[ $? -eq 1 ]] && softvol_0_18_1=1
-		version_compare ${rv} 0.21.0
-		[[ $? -eq 1 ]] && osc_0_21_0=1
-		version_compare ${rv} 0.24.0
-		[[ $? -eq 1 ]] && txtsubs_0_24_0=1
-		version_compare ${rv} 0.25.0
-		[[ $? -eq 1 ]] && ! use opengl && opengl_0_25_0=1
+		ver_test ${rv} -lt 0.18.1 && softvol_0_18_1=1
+		ver_test ${rv} -lt 0.21.0 && osc_0_21_0=1
+		ver_test ${rv} -lt 0.24.0 && txtsubs_0_24_0=1
+		ver_test ${rv} -lt 0.25.0 && ! use opengl && opengl_0_25_0=1
 	done
 
 	if [[ ${softvol_0_18_1} -eq 1 ]]; then
