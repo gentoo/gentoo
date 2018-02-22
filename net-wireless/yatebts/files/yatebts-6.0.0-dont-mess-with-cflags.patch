@@ -1,5 +1,5 @@
---- configure.ac	2017-09-07 10:21:08.000000000 -0400
-+++ configure-sane.ac	2018-02-16 15:26:43.884257256 -0500
+--- a/configure.ac
++++ b/configure.ac
 @@ -38,9 +38,6 @@
  AC_PROG_CC
  AC_PROG_AWK

@@ -3,10 +3,10 @@
 
 EAPI=6
 
-inherit eutils autotools
+inherit autotools
 
 DESCRIPTION="The Yate GSM base station"
-HOMEPAGE="http://www.yatebts.com/"
+HOMEPAGE="https://yatebts.com"
 ESVN_REPO_URI="http://voip.null.ro/svn/yatebts/trunk"
 
 LICENSE="GPL-2"
@@ -30,11 +30,14 @@ else
 	S="${WORKDIR}/yate-bts"
 fi
 
+#we need more patches or configure flags because things install in really wrong places per FHS
+PATCHES=(
+	"${FILESDIR}"/${PN}-sgsnggsn-inetutils-hostname-fix.diff
+	"${FILESDIR}"/${PN}-5.0.0-gcc6.patch
+	"${FILESDIR}"/${P}-dont-mess-with-cflags.patch
+	)
+
 src_prepare() {
-	#we need more patches or configure flags because things install in really wrong places per FHS
-	epatch "${FILESDIR}"/${PN}-sgsnggsn-inetutils-hostname-fix.diff
-	epatch "${FILESDIR}"/${PN}-5.0.0-gcc6.patch
-	epatch "${FILESDIR}"/${P}-dont-mess-with-cflags.patch
 	default
 	eautoreconf
 }
