@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -26,6 +26,10 @@ RDEPEND="${RDEPEND}
 	dev-libs/openssl:0"
 
 ruby_add_bdepend "test? ( dev-ruby/test-unit:2 )"
+
+each_ruby_prepare() {
+	epatch "${FILESDIR}"/${P}-gcc6-throwing-dtors.patch
+}
 
 all_ruby_prepare() {
 	# Remove package tasks to avoid dependency on rake-compiler.
