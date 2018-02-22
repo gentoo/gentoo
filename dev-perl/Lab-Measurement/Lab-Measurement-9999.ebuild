@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -46,6 +46,7 @@ RDEPEND="
 	>=virtual/perl-Module-Load-0.260.0
 	>=dev-perl/Moose-2.121.300
 	>=dev-perl/MooseX-Params-Validate-0.180.0
+	dev-perl/MooseX-StrictConstructor
 	>=dev-perl/PDL-2.7.0
 	dev-perl/PDL-Graphics-Gnuplot
 	>=dev-perl/Role-Tiny-1.3.4

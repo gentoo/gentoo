@@ -16,7 +16,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 x86"
 
 # Add doc back in for 3.0 and bump app-doc/gnucash-docs
 IUSE="aqbanking chipcard debug examples gnome-keyring mysql nls ofx postgres
@@ -82,7 +82,10 @@ DEPEND="${RDEPEND}
 # 	gnome-extra/yelp
 # )"
 
-PATCHES=( "${FILESDIR}"/gnucash-2.7.4-double_free.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-double_free.patch
+	"${FILESDIR}"/${P}-fix-tests-for-32bit-platforms.patch
+)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
