@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
-DEPEND=app-crypt/qca:2[qt5] dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 dev-qt/qtxml:5 net-dns/libidn sys-libs/zlib[minizip] x11-libs/libX11 x11-libs/libxcb aspell? ( app-text/aspell ) dbus? ( dev-qt/qtdbus:5 ) enchant? ( >=app-text/enchant-1.3.0 ) extras? ( sql? ( dev-qt/qtsql:5 ) ) hunspell? ( app-text/hunspell:= ) webengine? ( >=dev-qt/qtwebchannel-5.7:5 >=dev-qt/qtwebengine-5.7:5[widgets] ) webkit? ( dev-qt/qtwebkit:5 ) whiteboarding? ( dev-qt/qtsvg:5 ) xscreensaver? ( x11-libs/libXScrnSaver ) dev-qt/linguist-tools:5 virtual/pkgconfig doc? ( app-doc/doxygen ) extras? ( >=sys-devel/qconf-2.3 ) >=dev-vcs/git-1.8.2.1
+DEPEND=app-crypt/qca:2[qt5(+)] dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 dev-qt/qtxml:5 net-dns/libidn sys-libs/zlib[minizip] x11-libs/libX11 x11-libs/libxcb aspell? ( app-text/aspell ) dbus? ( dev-qt/qtdbus:5 ) enchant? ( >=app-text/enchant-1.3.0 ) extras? ( sql? ( dev-qt/qtsql:5 ) ) hunspell? ( app-text/hunspell:= ) webengine? ( dev-qt/qtwebchannel:5 dev-qt/qtwebengine:5[widgets] ) webkit? ( dev-qt/qtwebkit:5 ) whiteboarding? ( dev-qt/qtsvg:5 ) xscreensaver? ( x11-libs/libXScrnSaver ) dev-qt/linguist-tools:5 virtual/pkgconfig doc? ( app-doc/doxygen ) extras? ( >=sys-devel/qconf-2.3 ) >=dev-vcs/git-1.8.2.1
 DESCRIPTION=Qt XMPP client
 EAPI=6
 HOMEPAGE=http://psi-im.org/
 IUSE=aspell crypt dbus debug doc enchant extras +hunspell iconsets sql ssl webengine webkit whiteboarding xscreensaver
 LICENSE=GPL-2
 PDEPEND=crypt? ( app-crypt/qca[gpg] ) ssl? ( app-crypt/qca:2[ssl] )
-RDEPEND=app-crypt/qca:2[qt5] dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 dev-qt/qtxml:5 net-dns/libidn sys-libs/zlib[minizip] x11-libs/libX11 x11-libs/libxcb aspell? ( app-text/aspell ) dbus? ( dev-qt/qtdbus:5 ) enchant? ( >=app-text/enchant-1.3.0 ) extras? ( sql? ( dev-qt/qtsql:5 ) ) hunspell? ( app-text/hunspell:= ) webengine? ( >=dev-qt/qtwebchannel-5.7:5 >=dev-qt/qtwebengine-5.7:5[widgets] ) webkit? ( dev-qt/qtwebkit:5 ) whiteboarding? ( dev-qt/qtsvg:5 ) xscreensaver? ( x11-libs/libXScrnSaver )
+RDEPEND=app-crypt/qca:2[qt5(+)] dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 dev-qt/qtxml:5 net-dns/libidn sys-libs/zlib[minizip] x11-libs/libX11 x11-libs/libxcb aspell? ( app-text/aspell ) dbus? ( dev-qt/qtdbus:5 ) enchant? ( >=app-text/enchant-1.3.0 ) extras? ( sql? ( dev-qt/qtsql:5 ) ) hunspell? ( app-text/hunspell:= ) webengine? ( dev-qt/qtwebchannel:5 dev-qt/qtwebengine:5[widgets] ) webkit? ( dev-qt/qtwebkit:5 ) whiteboarding? ( dev-qt/qtsvg:5 ) xscreensaver? ( x11-libs/libXScrnSaver )
 REQUIRED_USE=?? ( aspell enchant hunspell ) iconsets? ( extras ) sql? ( extras ) webengine? ( !webkit )
 RESTRICT=test iconsets? ( bindist )
 SLOT=0
 _eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	git-r3	fec09a83ae965b041b47f5ff7c8ba29a	l10n	97f2753e3f1f3753d53d856c7c0bbb0b	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=5fc1d8a46a6c10611e6c366f685317df
+_md5_=cdccdbcfd13a3d4cb581768a2bdabb23
