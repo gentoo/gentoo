@@ -5665,7 +5665,7 @@ dev-qt/qtscxml 5.7.1: State Chart XML (SCXML) support library for the Qt5 framew
 dev-qt/qtsensors 5.7.1: Hardware sensor access library for the Qt5 framework
 dev-qt/qtserialport 5.7.1: Serial port abstraction library for the Qt5 framework
 dev-qt/qtsingleapplication 2.6.1_p20150629: Qt library to start applications only once per user
-dev-qt/qtsql 4.8.7-r1 5.7.1-r1: SQL abstraction library for the Qt5 tooolkit
+dev-qt/qtsql 4.8.7-r1 5.7.1-r1: SQL abstraction library for the Qt5 framework
 dev-qt/qtsvg 4.8.7 5.7.1: SVG rendering library for the Qt5 framework
 dev-qt/qttest 4.8.7 5.7.1: Unit testing library for the Qt5 framework
 dev-qt/qttranslations 4.8.7 5.7.1: Translation files for the Qt5 framework
