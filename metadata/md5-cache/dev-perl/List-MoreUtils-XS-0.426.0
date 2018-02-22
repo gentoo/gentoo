@@ -10,4 +10,4 @@ RDEPEND=!<dev-perl/List-MoreUtils-0.417.1 >=virtual/perl-XSLoader-0.220.0 dev-la
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RE/REHSACK/List-MoreUtils-XS-0.426.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
-_md5_=8c7a5843e0bfed976ef308067c14b565
+_md5_=c82b9ba00f8fda363529a7cb628b2c41

@@ -5642,7 +5642,7 @@ dev-qt/qtbearer 4.8.7: The network bearer plugins for the Qt toolkit
 dev-qt/qtbluetooth 5.7.1: Bluetooth support library for the Qt5 framework
 dev-qt/qtchooser 0_p20151008: Qt4/Qt5 version chooser
 dev-qt/qtconcurrent 5.7.1: Multi-threading concurrence support library for the Qt5 framework
-dev-qt/qtcore 4.8.7-r3 5.7.1-r3: Cross-platform application development framework
+dev-qt/qtcore 4.8.7-r4 5.7.1-r4: Cross-platform application development framework
 dev-qt/qtdbus 4.8.7 5.7.1: Qt5 module for inter-process communication over the D-Bus protocol
 dev-qt/qtdeclarative 4.8.7 5.7.1 5.7.1-r1: The QML and Quick modules for the Qt5 framework
 dev-qt/qtdemo 4.8.7: Demonstration module and examples for the Qt toolkit
