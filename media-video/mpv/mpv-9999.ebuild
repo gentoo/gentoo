@@ -161,8 +161,8 @@ src_configure() {
 		--disable-libmpv-static
 		--disable-static-build
 		# See deep down below for build-date.
-		--disable-optimize		# Don't add '-O2' to CFLAGS.
-		--disable-debug-build	# Don't add '-g' to CFLAGS.
+		--disable-optimize # Don't add '-O2' to CFLAGS.
+		--disable-debug-build # Don't add '-g' to CFLAGS.
 		--enable-html-build
 
 		$(use_enable doc pdf-build)
@@ -187,18 +187,18 @@ src_configure() {
 		$(use_enable uchardet)
 		$(use_enable rubberband)
 		$(use_enable lcms lcms2)
-		--disable-vapoursynth	# Only available in overlays.
+		--disable-vapoursynth # Only available in overlays.
 		--disable-vapoursynth-lazy
 		$(use_enable archive libarchive)
 
 		--enable-libavdevice
 
 		# Audio outputs:
-		$(use_enable sdl sdl2)	# Listed under audio, but also includes video.
+		$(use_enable sdl sdl2) # Listed under audio, but also includes video.
 		--disable-sdl1
 		$(use_enable oss oss-audio)
-		--disable-rsound		# Only available in overlays.
-		--disable-sndio			# Only available in overlays.
+		--disable-rsound # Only available in overlays.
+		--disable-sndio # Only available in overlays.
 		$(use_enable pulseaudio pulse)
 		$(use_enable jack)
 		$(use_enable openal)
@@ -222,7 +222,7 @@ src_configure() {
 		$(usex opengl "$(use_enable wayland gl-wayland)" '--disable-gl-wayland')
 		$(use_enable vdpau)
 		$(usex vdpau "$(use_enable opengl vdpau-gl-x11)" '--disable-vdpau-gl-x11')
-		$(use_enable vaapi)		# See below for vaapi-glx, vaapi-x-egl.
+		$(use_enable vaapi) # See below for vaapi-glx, vaapi-x-egl.
 		$(usex vaapi "$(use_enable X vaapi-x11)" '--disable-vaapi-x11')
 		$(usex vaapi "$(use_enable wayland vaapi-wayland)" '--disable-vaapi-wayland')
 		$(usex vaapi "$(use_enable gbm vaapi-drm)" '--disable-vaapi-drm')
@@ -230,7 +230,7 @@ src_configure() {
 		$(use_enable jpeg)
 		$(use_enable raspberry-pi rpi)
 		$(usex libmpv "$(use_enable opengl plain-gl)" '--disable-plain-gl')
-		--disable-mali-fbdev	# Only available in overlays.
+		--disable-mali-fbdev # Only available in overlays.
 		$(usex opengl '' '--disable-gl')
 
 		# HWaccels:
@@ -245,7 +245,7 @@ src_configure() {
 		$(use_enable dvb dvbin)
 
 		# Miscellaneous features:
-		--disable-apple-remote	# Needs testing first. See Gentoo bug 577332.
+		--disable-apple-remote # Needs testing first. See Gentoo bug 577332.
 	)
 
 	if use vaapi && use X; then
