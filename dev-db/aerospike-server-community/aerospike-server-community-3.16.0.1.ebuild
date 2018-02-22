@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -28,7 +28,7 @@ pkg_setup() {
 
 src_prepare() {
 	local server_deb="${P}.debian7.x86_64.deb"
-	local tools_deb="aerospike-tools-3.13.0.1.debian7.x86_64.deb"
+	local tools_deb="aerospike-tools-3.15.2.1.debian7.x86_64.deb"
 
 	ar x "${server_deb}" || die
 	tar xzf data.tar.gz && rm data.tar.gz || die
