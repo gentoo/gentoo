@@ -5,7 +5,7 @@ EAPI=5
 inherit font
 
 DESCRIPTION="A redesign of Courier"
-HOMEPAGE="http://www.quoteunquoteapps.com/courierprime/"
+HOMEPAGE="https://www.quoteunquoteapps.com/courierprime/"
 SRC_URI="https://dev.gentoo.org/~jstein/dist/${P}.tar.xz"
 
 LICENSE="OFL-1.1"
