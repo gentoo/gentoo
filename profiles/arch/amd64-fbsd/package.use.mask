@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Michał Górny <mgorny@gentoo.org> (22 Feb 2018)
+# USE=libcxxrt is use.forced.
+sys-libs/libcxx libcxxabi
+
+# Michał Górny <mgorny@gentoo.org> (22 Feb 2018)
 # Even more unkeyworded dependencies.
 dev-libs/libpeas lua
 dev-util/cmocka doc
