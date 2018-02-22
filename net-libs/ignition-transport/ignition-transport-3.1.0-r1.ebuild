@@ -6,7 +6,7 @@ EAPI=5
 inherit cmake-utils vcs-snapshot flag-o-matic
 
 DESCRIPTION="Combines ZeroMQ with Protobufs to create a fast and efficient message passing system"
-HOMEPAGE="http://ignitionrobotics.org/libraries/transport"
+HOMEPAGE="https://ignitionrobotics.org/libraries/transport"
 SRC_URI="http://gazebosim.org/distributions/ign-transport/releases/${PN}3-${PV}.tar.bz2"
 
 LICENSE="Apache-2.0"
