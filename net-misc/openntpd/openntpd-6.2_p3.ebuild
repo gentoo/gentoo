@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -56,6 +56,9 @@ src_prepare() {
 	# fix default config to use gentoo pool
 	sed -i 's:servers pool.ntp.org:#servers pool.ntp.org:' ntpd.conf || die
 	printf "\n# Choose servers announced from Gentoo NTP Pool\nservers 0.gentoo.pool.ntp.org\nservers 1.gentoo.pool.ntp.org\nservers 2.gentoo.pool.ntp.org\nservers 3.gentoo.pool.ntp.org\n" >> ntpd.conf || die
+
+	# disable constraint config if libressl not enabled
+	use libressl || sed -ie 's/^constraints/#constraints/g' ntpd.conf || die
 }
 
 src_configure() {
