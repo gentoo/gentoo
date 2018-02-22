@@ -8618,7 +8618,7 @@ net-libs/libssh 0.7.4: Access a working SSH implementation by means of a library
 net-libs/libssh2 1.7.0: Library implementing the SSH2 protocol
 net-libs/libtirpc 1.0.1-r1 1.0.2-r1: Transport Independent RPC library (SunRPC replacement)
 net-libs/libtorrent 0.13.6 0.13.6-r1: BitTorrent library written in C++ for *nix
-net-libs/libtorrent-rasterbar 1.0.11-r1 1.1.5-r1: C++ BitTorrent implementation focusing on efficiency and scalability
+net-libs/libtorrent-rasterbar 1.1.5-r1: C++ BitTorrent implementation focusing on efficiency and scalability
 net-libs/libupnp 1.6.21: An Portable Open Source UPnP Development Kit
 net-libs/libvncserver 0.9.11-r1: library for creating vnc servers
 net-libs/libwebsockets 2.1.1: canonical libwebsockets.org websocket library
@@ -8974,7 +8974,7 @@ net-p2p/bittornado 0.3.18-r4: TheShad0w's experimental BitTorrent client
 net-p2p/createtorrent 1.1.4: Create BitTorrent files easily
 net-p2p/ctcs 1.4.1: interface for monitoring and managing Enhanced CTorrent clients
 net-p2p/ctorrent 3.3.2-r2: Enhanced CTorrent is a BitTorrent console client written in C and C++
-net-p2p/deluge 1.3.15 1.3.15-r2: BitTorrent client with a client/server model
+net-p2p/deluge 1.3.15-r2: BitTorrent client with a client/server model
 net-p2p/ed2k_hash 0.4.0-r1: Tool for generating eDonkey2000 links
 net-p2p/gtk-gnutella 1.1.11: A GTK+ Gnutella client
 net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta files
