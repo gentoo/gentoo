@@ -28,8 +28,6 @@ DEPEND="${RDEPEND}
 	gtk? ( virtual/pkgconfig )
 	xml? ( virtual/pkgconfig )"
 
-PATCHES=( "${FILESDIR}/${PN}-0.5.1-cmdline-include.patch" )
-
 src_prepare() {
 	tc-export AR CC PKG_CONFIG
 	sed -i \
