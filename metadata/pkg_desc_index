@@ -8045,7 +8045,7 @@ media-sound/sound-juicer 3.24.0: CD ripper for GNOME
 media-sound/soundconverter 3.0.0_beta1: A simple audiofile converter application for the GNOME environment
 media-sound/sox 14.4.2: The swiss army knife of sound processing programs
 media-sound/split2flac 122: sh script to split an APE/FLAC/WV/WAV audio image with CUE sheet into tracks
-media-sound/spotify 1.0.69: Spotify is a social music platform
+media-sound/spotify 1.0.70-r1: Spotify is a social music platform
 media-sound/streamripper 1.64.6: Extracts and records individual MP3 file tracks from shoutcast streams
 media-sound/streamtranscoder 1.2.4 3.1.11: Commandline program to transcode shoutcast/icecast streams to different bitrates
 media-sound/synaesthesia 2.4: a nice graphical accompaniment to music
@@ -10429,7 +10429,7 @@ www-apps/collectd-web 0.4.0: Collectd-web is a web-based front-end for RRD data 
 www-apps/curator 3.0_p20110120-r2: Gallery generator
 www-apps/dspam-web 3.10.1: Web based administration and user controls for dspam
 www-apps/groupoffice 3.7.52 4.0.97 4.1.7: Group-Office is a powerful modular Intranet application framework
-www-apps/icingaweb2 2.4.2 2.5.0: Icinga Web 2 - Frontend for icinga2
+www-apps/icingaweb2 2.5.1: Icinga Web 2 - Frontend for icinga2
 www-apps/icingaweb2-module-pnp4nagios 1.0.1: Icinga Web 2 plugin for pnp4nagios
 www-apps/ikiwiki 3.20170111: A wiki compiler
 www-apps/mediawiki 1.27.3: The MediaWiki wiki web application (as used on wikipedia.org)
