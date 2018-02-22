@@ -57,8 +57,8 @@ src_install() {
 	# ex: libastyle.so.3
 	dosym lib${PN}.so.${PV}.0 /usr/$(get_libdir)/lib${PN}.so.$(get_major_version)
 	if use java ; then
-		dolib.so lib${PN}j.so.${PV}
-		dosym lib${PN}j.so.${PV} /usr/$(get_libdir)/lib${PN}j.so.$(get_major_version)
+		dolib.so lib${PN}j.so.${PV}.0
+		dosym lib${PN}j.so.${PV}.0 /usr/$(get_libdir)/lib${PN}j.so.$(get_major_version)
 	fi
 	if use static-libs ; then
 		dolib lib${PN}.a
