@@ -15,10 +15,10 @@ SLOT="0"
 if [[ ${PV} = 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/pyfa-org/Pyfa.git"
 	inherit git-r3
-	KEYWORDS="x86"
+	KEYWORDS="amd64 x86"
 else
 	SRC_URI="https://github.com/pyfa-org/Pyfa/archive/v${PV}.tar.gz -> pyfa-${PV}.tar.gz"
-	KEYWORDS="~amd64 x86"
+	KEYWORDS="amd64 x86"
 fi
 IUSE="+graph"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
