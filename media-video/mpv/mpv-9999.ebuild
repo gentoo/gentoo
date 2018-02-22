@@ -135,10 +135,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.19.0-make-ffmpeg-version-check-non-fatal.patch"
 )
 
-pkg_setup() {
-	[[ ${MERGE_TYPE} != "binary" ]] && python_setup
-}
-
 src_prepare() {
 	cp "${DISTDIR}/waf-${WAF_PV}" "${S}"/waf || die
 	chmod +x "${S}"/waf || die
@@ -146,6 +142,7 @@ src_prepare() {
 }
 
 src_configure() {
+	python_setup
 	tc-export CC PKG_CONFIG AR
 
 	if use raspberry-pi; then
