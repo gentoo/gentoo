@@ -9,7 +9,7 @@ SRC_URI="http://math.smsu.edu/~erik/files/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="amd64 ~ppc x86"
 
 DEPEND="!sys-apps/moreutils"
 RDEPEND="${DEPEND}"
