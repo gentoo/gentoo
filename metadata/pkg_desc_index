@@ -637,7 +637,7 @@ app-emacs/flashcard 2.3.3: An Emacs Lisp package for drilling on questions and a
 app-emacs/flim 1.14.9-r2: A library to provide basic features about message representation or encoding
 app-emacs/folding 2012.0226.1623 2013.0613.1821: A folding-editor-like Emacs minor mode
 app-emacs/gnuplot-mode 0.7.0: Gnuplot mode for Emacs
-app-emacs/gnuserv 3.12.8-r2 3.12.8-r3: Attach to an already running Emacs
+app-emacs/gnuserv 3.12.8-r3: Attach to an already running Emacs
 app-emacs/google-c-style 20091009-r1: Provides the google C/C++ coding style
 app-emacs/graphviz-dot-mode 0.3.7: Emacs mode for editing and previewing Graphviz dot graphs
 app-emacs/h4x0r 0.13-r1: Aid in writing like a script kiddie does
@@ -10449,7 +10449,7 @@ www-apps/venus 20100911-r1: A feed aggregator application
 www-apps/viewvc 1.1.26: ViewVC, a web interface to CVS and Subversion
 www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-client/chromium 64.0.3282.167: Open-source version of Google Chrome web browser
-www-client/conkeror 1.0_pre20140212 1.0.4: A Mozilla-based web browser whose design is inspired by GNU Emacs
+www-client/conkeror 1.0.4: A Mozilla-based web browser whose design is inspired by GNU Emacs
 www-client/dillo 3.0.5: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r1: Advanced and well-established text-mode web browser
 www-client/epiphany 3.24.5: GNOME webbrowser based on Webkit
