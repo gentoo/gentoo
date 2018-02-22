@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -46,13 +46,14 @@ pkg_setup() {
 
 src_prepare() {
 	# Do not install Xresources symlink (#521126)
-	sed -e '\#$(INSTALL_SYMLINK) /etc/X11/Xresources# s/^/#/' -i x2goserver-xsession/Makefile || die "Xresources symlink sed failed"
+	sed -e '\#$(INSTALL_SYMLINK) /etc/X11/Xresources# s/^/#/' -i x2goserver-xsession/Makefile || die
 	# Multilib clean
-	sed -e "/^LIBDIR=/s/lib/$(get_libdir)/" -i Makefile */Makefile || die "multilib sed failed"
+	sed -e "/^LIBDIR=/s/lib/$(get_libdir)/" -i Makefile */Makefile || die
+	sed -e "s#/lib/#/$(get_libdir)/#" -i x2goserver/bin/x2gopath || die
 	# Skip man2html build
-	sed -e "s/build-indep: build_man2html/build-indep:/" -i Makefile */Makefile || die "man2html sed failed"
+	sed -e "s/build-indep: build_man2html/build-indep:/" -i Makefile */Makefile || die
 	# Use nxagent directly
-	sed -i -e "/NX_TEMP=/s/x2goagent/nxagent/" x2goserver/bin/x2gostartagent || die "sed failed"
+	sed -i -e "/NX_TEMP=/s/x2goagent/nxagent/" x2goserver/bin/x2gostartagent || die
 
 	default
 }
