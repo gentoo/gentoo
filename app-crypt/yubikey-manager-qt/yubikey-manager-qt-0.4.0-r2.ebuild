@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,7 +18,7 @@ IUSE=""
 
 DEPEND=">=app-crypt/yubikey-manager-0.5.0[${PYTHON_USEDEP}]
 	dev-python/pyotherside[${PYTHON_USEDEP}]
-	dev-qt/qtsingleapplication[qt5,X]
+	dev-qt/qtsingleapplication[qt5(+),X]
 	dev-qt/qtdeclarative:5
 	dev-qt/qtquickcontrols:5[widgets]
 	dev-qt/qtwidgets:5"

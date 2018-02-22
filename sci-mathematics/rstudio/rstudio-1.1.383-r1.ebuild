@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -70,7 +70,7 @@ RDEPEND="
 		>=dev-qt/qtopengl-${QT_VER}:${QT_SLOT}
 		>=dev-qt/qtpositioning-${QT_VER}:${QT_SLOT}
 		>=dev-qt/qtprintsupport-${QT_VER}:${QT_SLOT}
-		>=dev-qt/qtsingleapplication-2.6.1_p20150629[X,qt5]
+		>=dev-qt/qtsingleapplication-2.6.1_p20150629[X,qt5(+)]
 		>=dev-qt/qtsensors-${QT_VER}:${QT_SLOT}
 		>=dev-qt/qtsql-${QT_VER}:${QT_SLOT}
 		>=dev-qt/qtsvg-${QT_VER}:${QT_SLOT}

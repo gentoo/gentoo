@@ -21,7 +21,7 @@ RDEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtmultimedia:5
 	dev-qt/qtprintsupport:5
-	dev-qt/qtsingleapplication[qt5,X]
+	dev-qt/qtsingleapplication[qt5(+),X]
 	dev-qt/qtwidgets:5
 	sys-libs/zlib
 "

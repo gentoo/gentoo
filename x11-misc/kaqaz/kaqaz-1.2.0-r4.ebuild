@@ -27,7 +27,7 @@ RDEPEND="
 	dev-qt/qtmultimedia:5[qml]
 	dev-qt/qtnetwork:5[ssl]
 	dev-qt/qtpositioning:5
-	dev-qt/qtsingleapplication[qt5,X]
+	dev-qt/qtsingleapplication[qt5(+),X]
 	dev-qt/qtsensors:5
 	dev-qt/qtsql:5[sqlite]
 	dev-qt/qtquickcontrols:5
