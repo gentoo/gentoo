@@ -4,10 +4,10 @@ DESCRIPTION=Alternative interface to modules that export symbols
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Importer/
 IUSE=test
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/E/EX/EXODIST/Importer-0.024.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
-_md5_=659b6d33d299642b4d5c7c36eb97a943
+_md5_=93f12854fe6a02440bc66f46ef7f0a77
