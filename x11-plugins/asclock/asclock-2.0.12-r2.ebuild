@@ -1,7 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=3
+EAPI=6
+
 inherit eutils toolchain-funcs
 
 IUSE=""
@@ -17,8 +18,10 @@ RDEPEND="${DEPEND}
 	x11-proto/xextproto
 	x11-proto/xproto"
 
+PATCHES=( "${FILESDIR}"/${PN}-gcc41.patch )
+
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-gcc41.patch
+	default
 	ln -s themes/classic default_theme
 }
 
@@ -58,7 +61,7 @@ src_install() {
 	insinto ${themesdir}
 	doins -r themes/*
 	dodoc README README.THEMES TODO
-	cd "${D}"/${themesdir}
-	rm -f Freeamp/Makefile{,.*}
-	ln -s classic default_theme
+	cd "${D}"/${themesdir} || die
+	rm -f Freeamp/Makefile{,.*} || die
+	ln -s classic default_theme || die
 }
