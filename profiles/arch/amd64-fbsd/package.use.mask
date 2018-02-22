@@ -4,6 +4,7 @@
 # Michał Górny <mgorny@gentoo.org> (22 Feb 2018)
 # Even more unkeyworded dependencies.
 dev-libs/libpeas lua
+dev-util/cmocka doc
 
 # Michał Górny <mgorny@gentoo.org> (21 Feb 2018)
 # Requires net-misc/curl[kerberos] which is masked here.
