@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-DESCRIPTION="Display information about a Blu-ray disc"
+DESCRIPTION="Blu-ray disc tools: bluray_info, bluray_copy"
 HOMEPAGE="https://github.com/beandog/bluray_info"
 SRC_URI="mirror://sourceforge/bluray-info/${P}.tar.gz"
 
