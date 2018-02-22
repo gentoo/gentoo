@@ -1332,7 +1332,7 @@ app-text/glosung 3.6.2-r1: Watch word program for the GNOME2 desktop (watch word
 app-text/gnome-doc-utils 0.20.10-r1: A collection of documentation utilities for the Gnome project
 app-text/gnopaster 0.0.9: A submitter for gnopaste, a nopaste service like http://nopaste.info
 app-text/gocr 0.49: An OCR (Optical Character Recognition) reader
-app-text/goldendict 1.5.0_rc2-r1: Feature-rich dictionary lookup program
+app-text/goldendict 1.5.0_rc2-r2: Feature-rich dictionary lookup program
 app-text/grutatxt 2.0.16-r1: A converter from plain text to HTML and other markup languages
 app-text/gspell 1.4.2: Spell check library for GTK+ applications
 app-text/gtkspell 2.0.16 3.0.9: Spell checking widget for GTK
@@ -7982,7 +7982,7 @@ media-sound/mumble 1.2.17 1.2.19: Mumble is an open source, low-latency, high qu
 media-sound/mup 5.7: Program for printing music scores
 media-sound/murmur 1.2.17: Mumble is an open source, low-latency, high quality voice chat software
 media-sound/musepack-tools 465-r1: Musepack SV8 libraries and utilities
-media-sound/musique 1.5: Qt music player
+media-sound/musique 1.5-r1: Qt music player
 media-sound/ncmpc 0.24: A ncurses client for the Music Player Daemon (MPD)
 media-sound/ncmpcpp 0.7.7: featureful ncurses based MPD client inspired by ncmpc
 media-sound/normalize 0.7.7-r1: Audio file volume normalizer
@@ -10796,7 +10796,7 @@ x11-misc/idesk 0.7.5-r3: Utility to place icons on the root window
 x11-misc/idesk-extras 1.37-r2: Graphical configuration for iDesk plus icons
 x11-misc/imake 1.0.7: C preprocessor interface to the make utility
 x11-misc/imwheel 1.0.0_pre12: mouse tool for advanced features such as wheels and 3+ buttons
-x11-misc/kdocker 5.0: Helper to dock any application into the system tray
+x11-misc/kdocker 5.0-r1: Helper to dock any application into the system tray
 x11-misc/kronometer 2.1.5: Stopwatch application
 x11-misc/ktsuss 2.1: Graphical version of su written in C and GTK+ 2
 x11-misc/lightdm 1.18.3-r1: A lightweight display manager

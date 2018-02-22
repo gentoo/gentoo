@@ -1,12 +1,12 @@
 DEFINED_PHASES=configure install postinst postrm preinst prepare
-DEPEND=dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtsingleapplication[qt5,X] dev-qt/qtsql:5[sqlite] dev-qt/qtwidgets:5 media-libs/phonon[qt5(+)] media-libs/taglib >=sys-apps/sed-4
+DEPEND=dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtsingleapplication[qt5(+),X] dev-qt/qtsql:5[sqlite] dev-qt/qtwidgets:5 media-libs/phonon[qt5(+)] media-libs/taglib >=sys-apps/sed-4
 DESCRIPTION=Qt music player
 EAPI=6
 HOMEPAGE=https://flavio.tordini.org/musique
 KEYWORDS=amd64 x86
 LICENSE=GPL-3
-RDEPEND=dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtsingleapplication[qt5,X] dev-qt/qtsql:5[sqlite] dev-qt/qtwidgets:5 media-libs/phonon[qt5(+)] media-libs/taglib
+RDEPEND=dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtsingleapplication[qt5(+),X] dev-qt/qtsql:5[sqlite] dev-qt/qtwidgets:5 media-libs/phonon[qt5(+)] media-libs/taglib
 SLOT=0
 SRC_URI=https://github.com/flaviotordini/musique/archive/1.5.tar.gz -> musique-1.5.tar.gz
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	gnome2-utils	4d211d7614f303710fca59db6ec12c88	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=7e542a7bc3bc6c1ca40eb3b18573b1c2
+_md5_=042ea27555be2a00ea805abb803d9e3d

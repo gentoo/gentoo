@@ -1,12 +1,12 @@
 DEFINED_PHASES=configure install postinst postrm
-DEPEND=>=dev-db/sqlite-3.11.1:3 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5 dev-qt/qtnetwork:5[ssl] dev-qt/qtprintsupport:5 dev-qt/qtsingleapplication[X,qt5(-)] dev-qt/qtsql:5[sqlite] dev-qt/qtwebkit:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 virtual/pkgconfig >=sys-apps/sed-4
+DEPEND=>=dev-db/sqlite-3.11.1:3 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5 dev-qt/qtnetwork:5[ssl] dev-qt/qtprintsupport:5 dev-qt/qtsingleapplication[X,qt5(+)] dev-qt/qtsql:5[sqlite] dev-qt/qtwebkit:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 virtual/pkgconfig >=sys-apps/sed-4
 DESCRIPTION=A Qt-based RSS/Atom feed reader
 EAPI=6
 HOMEPAGE=https://quiterss.org
 KEYWORDS=~amd64 ~arm ~x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-3
-RDEPEND=>=dev-db/sqlite-3.11.1:3 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5 dev-qt/qtnetwork:5[ssl] dev-qt/qtprintsupport:5 dev-qt/qtsingleapplication[X,qt5(-)] dev-qt/qtsql:5[sqlite] dev-qt/qtwebkit:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5
+RDEPEND=>=dev-db/sqlite-3.11.1:3 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5 dev-qt/qtnetwork:5[ssl] dev-qt/qtprintsupport:5 dev-qt/qtsingleapplication[X,qt5(+)] dev-qt/qtsql:5[sqlite] dev-qt/qtwebkit:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5
 SLOT=0
 SRC_URI=https://github.com/QuiteRSS/quiterss/archive/0.18.9.tar.gz -> quiterss-0.18.9.tar.gz
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	gnome2-utils	4d211d7614f303710fca59db6ec12c88	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=ae263e8b54393372c5b66470d485f99b
+_md5_=aaf11d5f7815063c03c5f427b7b80e88
