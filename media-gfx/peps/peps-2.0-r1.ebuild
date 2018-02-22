@@ -11,7 +11,7 @@ SRC_URI="http://www.peps.redprince.net/peps/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="X"
 
 DEPEND="app-text/ghostscript-gpl
