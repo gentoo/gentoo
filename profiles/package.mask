@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Deutschmann <whissi@gentoo.org> (22 Feb 2018)
+# Upstream's release tarball doesn't match Git content.
+# Masked until clarified.
+=app-admin/rsyslog-8.33.0
+
 # Ulrich Müller <ulm@gentoo.org> (21 Feb 2018)
 # Homepage is dead. Apparently the last release was in 2012
 # and it does not work with Emacs 25 and later.
