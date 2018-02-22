@@ -71,6 +71,12 @@ PDEPEND="
 	ibus? ( app-i18n/ibus )
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-qsimpledrag.patch" # QTBUG-66103
+	"${FILESDIR}/${P}-libinput-pixeldelta.patch" # QTBUG-59261
+	"${FILESDIR}/${P}-opengl.patch" # QTBUG-66420
+)
+
 QT5_TARGET_SUBDIRS=(
 	src/gui
 	src/openglextensions

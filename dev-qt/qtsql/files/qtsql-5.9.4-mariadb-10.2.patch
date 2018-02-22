@@ -1,0 +1,35 @@
+From 64588c9bae92ef79f9ca5e87653ffb0962691d0d Mon Sep 17 00:00:00 2001
+From: Andy Shaw <andy.shaw@qt.io>
+Date: Wed, 27 Sep 2017 09:23:10 +0200
+Subject: [PATCH] Extend the MariaDB define check to cover the later versions
+ too
+
+Change-Id: Ide89b4e07feb116bf152cbf3f5630d313e8ba0f1
+---
+ src/plugins/sqldrivers/mysql/qsql_mysql.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/plugins/sqldrivers/mysql/qsql_mysql.cpp b/src/plugins/sqldrivers/mysql/qsql_mysql.cpp
+index 6e428fb..b2d3e85 100644
+--- a/src/plugins/sqldrivers/mysql/qsql_mysql.cpp
++++ b/src/plugins/sqldrivers/mysql/qsql_mysql.cpp
+@@ -1159,14 +1159,14 @@ static void qLibraryInit()
+ # endif // MYSQL_VERSION_ID
+ #endif // Q_NO_MYSQL_EMBEDDED
+ 
+-#ifdef MARIADB_BASE_VERSION
++#if defined(MARIADB_BASE_VERSION) || defined(MARIADB_VERSION_ID)
+     qAddPostRoutine(mysql_server_end);
+ #endif
+ }
+ 
+ static void qLibraryEnd()
+ {
+-#if !defined(MARIADB_BASE_VERSION)
++#if !defined(MARIADB_BASE_VERSION) && !defined(MARIADB_VERSION_ID)
+ # if !defined(Q_NO_MYSQL_EMBEDDED)
+ #  if MYSQL_VERSION_ID > 40000
+ #   if (MYSQL_VERSION_ID >= 40110 && MYSQL_VERSION_ID < 50000) || MYSQL_VERSION_ID >= 50003
+-- 
+2.7.4
+

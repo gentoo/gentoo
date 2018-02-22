@@ -8,7 +8,7 @@ inherit qt5-build
 DESCRIPTION="SQL abstraction library for the Qt5 framework"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="amd64 arm ~arm64 ~hppa ppc ppc64 x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
 fi
 
 IUSE="freetds mysql oci8 odbc postgres +sqlite"
@@ -28,11 +28,18 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${PN}-5.7.1-mariadb.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-mariadb-10.2.patch"
+	# See also: https://codereview.qt-project.org/#/c/206850/
+)
 
 QT5_TARGET_SUBDIRS=(
 	src/sql
 	src/plugins/sqldrivers
+)
+
+QT5_GENTOO_PRIVATE_CONFIG=(
+	:sql
 )
 
 src_configure() {
