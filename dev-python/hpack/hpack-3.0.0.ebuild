@@ -16,12 +16,14 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-f
 IUSE="test"
 
 RDEPEND=""
+# dev-python/pytest-relaxed causes tests to fail
 DEPEND="${RDEPEND}
 	test? (
 		>=dev-python/pytest-2.9.2[${PYTHON_USEDEP}]
 		>=dev-python/pytest-cov-2.3.0[${PYTHON_USEDEP}]
 		>=dev-python/pytest-xdist-1.14.0[${PYTHON_USEDEP}]
 		>=dev-python/hypothesis-3.4.2[${PYTHON_USEDEP}]
+		!!dev-python/pytest-relaxed[${PYTHON_USEDEP}]
 	)
 "
 
