@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge/dailystrips/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc x86"
+KEYWORDS="~alpha amd64 ~ppc x86"
 IUSE=""
 
 RDEPEND=">=dev-perl/libwww-perl-5.50
