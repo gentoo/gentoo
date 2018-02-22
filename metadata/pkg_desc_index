@@ -3046,7 +3046,6 @@ dev-libs/libffi 3.2.1: a portable, high level programming interface to various c
 dev-libs/libfilezilla 0.9.1: C++ library offering some basic functionality for platform-independent programs
 dev-libs/libg15 1.2.7-r1: The libg15 library gives low-level access to the Logitech G15 keyboard
 dev-libs/libg15render 1.2-r2: Small library for display text and graphics on a Logitech G15 keyboard
-dev-libs/libgames-support 1.0.2: Library for code commong to Gnome games
 dev-libs/libgamin 0.1.10-r5: Library providing the FAM File Alteration Monitor API
 dev-libs/libgcrypt 1.8.1: General purpose crypto library based on the code used in GnuPG
 dev-libs/libgdata 0.17.8 0.17.9-r1: GLib-based library for accessing online service APIs using the GData protocol
