@@ -6,7 +6,7 @@ EAPI=6
 inherit cmake-multilib
 
 DESCRIPTION="Protobuf messages and functions for robot applications"
-HOMEPAGE="http://ignitionrobotics.org/libraries/messages https://bitbucket.org/ignitionrobotics/ign-msgs"
+HOMEPAGE="https://ignitionrobotics.org/libraries/messages https://bitbucket.org/ignitionrobotics/ign-msgs"
 SRC_URI="https://osrf-distributions.s3.amazonaws.com/ign-msgs/releases/${P}.tar.bz2"
 
 LICENSE="Apache-2.0"
