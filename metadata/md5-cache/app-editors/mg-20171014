@@ -4,10 +4,10 @@ DESCRIPTION=MicroGnuEmacs, a port from the BSDs
 EAPI=6
 HOMEPAGE=https://homepage.boetes.org/software/mg/
 IUSE=livecd
-KEYWORDS=~alpha ~amd64 ~arm hppa ~ppc ~ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd
+KEYWORDS=~alpha amd64 ~arm hppa ~ppc ~ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd
 LICENSE=public-domain
 RDEPEND=sys-libs/ncurses:0 !elibc_FreeBSD? ( >=dev-libs/libbsd-0.7.0 )
 SLOT=0
 SRC_URI=https://homepage.boetes.org/software/mg/mg-20171014.tar.gz
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=79784be122a3e0e3f5c5139587879ee2
+_md5_=2db3424124a03b8fae40108ad6b5c6a1

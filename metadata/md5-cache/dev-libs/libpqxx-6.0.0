@@ -4,10 +4,10 @@ DESCRIPTION=Standard front-end for writing C++ programs that use PostgreSQL
 EAPI=6
 HOMEPAGE=http://pqxx.org/development/libpqxx/
 IUSE=doc static-libs
-KEYWORDS=~alpha ~amd64 ~hppa ia64 ~ppc ~ppc64 sparc x86 ~x86-fbsd
+KEYWORDS=~alpha amd64 ~hppa ia64 ~ppc ~ppc64 sparc x86 ~x86-fbsd
 LICENSE=BSD
 RDEPEND=dev-db/postgresql:=
 SLOT=0
 SRC_URI=https://github.com/jtv/libpqxx/archive/6.0.0.tar.gz -> libpqxx-6.0.0.tar.gz
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	python-any-r1	27d7f9da7187d283b7f3eae8390b7b09	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=066036f10a0f71362cae9db6d77a8e11
+_md5_=2b945dcd787555f0bb9604f8a597a2e4

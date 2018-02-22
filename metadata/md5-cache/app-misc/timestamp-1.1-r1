@@ -3,9 +3,9 @@ DEPEND=!sys-apps/moreutils
 DESCRIPTION=A text filtering pipe that marks each line with a timestamp
 EAPI=6
 HOMEPAGE=http://math.smsu.edu/~erik/software.php?id=95
-KEYWORDS=~amd64 ~ppc x86
+KEYWORDS=amd64 ~ppc x86
 LICENSE=BSD
 RDEPEND=!sys-apps/moreutils
 SLOT=0
 SRC_URI=http://math.smsu.edu/~erik/files/timestamp-1.1.tar.gz
-_md5_=47206918165b2c776116a90666b00203
+_md5_=cf9d4248a772c6c35baf025017fe67b9

@@ -4,10 +4,10 @@ DESCRIPTION=Library for serialising LV2 atoms to/from RDF, particularly the Turt
 EAPI=6
 HOMEPAGE=http://drobilla.net/software/sratom/
 IUSE=doc static-libs test abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
-KEYWORDS=~amd64 ~ppc ~x86
+KEYWORDS=amd64 ~ppc ~x86
 LICENSE=ISC
 RDEPEND=>=media-libs/lv2-1.14.0-r1 >=dev-libs/serd-0.28.0-r1 >=dev-libs/sord-0.16.0-r1
 SLOT=0
 SRC_URI=http://download.drobilla.net/sratom-0.6.0.tar.bz2
 _eclasses_=multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	8ffb5e2112a70fef5f37fcacad308726	multilib-minimal	9139c3a57e077cb8e0d0f73ceb080b89	multiprocessing	cac3169468f893670dac3e7cb940e045	python-any-r1	27d7f9da7187d283b7f3eae8390b7b09	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	waf-utils	d1ea2758053cbb7c5b38b8f88654468d
-_md5_=dab18d0948368dde28d3f1d3848c9926
+_md5_=7898f3a4dcd378a8b4df7d38549a7ba7

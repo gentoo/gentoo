@@ -3,10 +3,10 @@ DEPEND=media-libs/libpng:0= sys-libs/zlib virtual/jpeg:0
 DESCRIPTION=Automatic color correction and resizing of photos
 EAPI=6
 HOMEPAGE=http://log69.com/aaphoto.html https://github.com/log69/aaphoto
-KEYWORDS=~amd64 x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-3
 RDEPEND=media-libs/libpng:0= sys-libs/zlib virtual/jpeg:0
 SLOT=0
 SRC_URI=http://log69.com/downloads/aaphoto_sources_0.45.tar.gz
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=8f6d4a907c442276239aab6f1ea936b9
+_md5_=fac9ebc17b9fb6a94e7785429052b143
