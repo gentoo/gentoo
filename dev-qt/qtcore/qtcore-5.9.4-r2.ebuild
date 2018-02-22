@@ -22,7 +22,9 @@ DEPEND="
 	!icu? ( virtual/libiconv )
 	systemd? ( sys-apps/systemd:= )
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	!<dev-qt/qtcore-4.8.7-r4:4
+"
 
 QT5_TARGET_SUBDIRS=(
 	src/tools/bootstrap

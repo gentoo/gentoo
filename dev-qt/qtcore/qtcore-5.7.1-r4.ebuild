@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,7 +22,9 @@ DEPEND="
 	icu? ( dev-libs/icu:= )
 	systemd? ( sys-apps/systemd:= )
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	!<dev-qt/qtcore-4.8.7-r4:4
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.6.2-plugins.patch
