@@ -11,7 +11,7 @@ SRC_URI="https://github.com/mikaku/Monitorix/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="apcupsd hddtemp httpd lm_sensors postfix"
 S="${WORKDIR}/Monitorix-${PV}"
 

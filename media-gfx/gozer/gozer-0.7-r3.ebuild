@@ -11,7 +11,7 @@ SRC_URI="http://www.linuxbrit.co.uk/downloads/${P}.tar.gz"
 
 LICENSE="feh LGPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE=""
 
 DEPEND="x11-libs/libXext

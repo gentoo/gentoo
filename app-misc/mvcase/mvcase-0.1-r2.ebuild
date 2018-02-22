@@ -11,7 +11,7 @@ SRC_URI="http://www.ibiblio.org/pub/Linux/utils/file/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="amd64 ~ppc x86"
 
 DEPEND="dev-libs/shhopt"
 RDEPEND="${DEPEND}"

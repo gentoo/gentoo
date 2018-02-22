@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/ssvnc/${P}.src.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 x86 ~amd64-linux ~arm-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~arm-linux ~x86-linux"
 IUSE="java"
 
 RDEPEND="sys-libs/zlib

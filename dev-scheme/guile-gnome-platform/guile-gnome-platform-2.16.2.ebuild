@@ -13,7 +13,7 @@ SRC_URI="https://ftp.gnu.org/pub/gnu/guile-gnome/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="static-libs"
 
 RDEPEND="

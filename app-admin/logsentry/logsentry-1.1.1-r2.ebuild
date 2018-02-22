@@ -12,7 +12,7 @@ SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~mips ~ppc ~s390 ~sh sparc x86"
+KEYWORDS="amd64 ~arm ~mips ~ppc ~s390 ~sh sparc x86"
 IUSE=""
 
 DEPEND=">=sys-apps/sed-4"

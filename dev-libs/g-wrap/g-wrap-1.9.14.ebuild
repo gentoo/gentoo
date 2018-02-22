@@ -11,7 +11,7 @@ SRC_URI="http://download.savannah.gnu.org/releases/g-wrap/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~hppa ~ppc ~ppc64 x86"
 IUSE="static-libs"
 
 # guile-lib for srfi-34, srfi-35

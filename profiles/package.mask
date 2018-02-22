@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (22 Feb 2018)
+# Plugin for removed package media-sound/amarok. Dead upstream.
+# Depends on vulnerable gstreamer:0.10.
+# Masked for removal in 30 days. Bug #629184.
+media-sound/moodbar
+
 # Mart Raudsepp <leio@gentoo.org> (22 Feb 2018)
 # This package was renamed to dev-libs/libgnome-games-support without
 # a pkgmove; everything in tree uses it now instead of libgames-support.
