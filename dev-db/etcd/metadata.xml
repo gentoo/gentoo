@@ -7,6 +7,9 @@
 		<doc>https://github.com/coreos/etcd/blob/master/README.md/</doc>
 		<remote-id type="github">coreos/etcd</remote-id>
 	</upstream>
+	<use>
+		<flag name="server">Installs etcd daemon</flag>
+	</use>
 	<maintainer type="person">
 		<email>zmedico@gentoo.org</email>
 	</maintainer>
