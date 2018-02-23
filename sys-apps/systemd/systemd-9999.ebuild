@@ -56,7 +56,7 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.30:0=[${MULTILIB_USEDEP}]
 	pam? ( virtual/pam:=[${MULTILIB_USEDEP}] )
 	pcre? ( dev-libs/libpcre2 )
 	qrcode? ( media-gfx/qrencode:0= )
-	seccomp? ( >=sys-libs/libseccomp-2.3.1:0= )
+	seccomp? ( >=sys-libs/libseccomp-2.3.3:0= )
 	selinux? ( sys-libs/libselinux:0= )
 	xkb? ( >=x11-libs/libxkbcommon-0.4.1:0= )
 	abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20130224-r9
