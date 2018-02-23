@@ -9922,7 +9922,6 @@ sys-cluster/drbd-kernel 8.0.16 8.3.8.1: mirror/replicate block-devices across a 
 sys-cluster/drbd-utils 8.9.6-r1: mirror/replicate block-devices across a network-connection
 sys-cluster/galera 25.3.20: Synchronous multi-master replication engine that provides the wsrep API
 sys-cluster/ganglia 3.7.1-r1: A scalable distributed monitoring system for clusters and grids
-sys-cluster/ganglia-web 3.5.8-r1: Web frontend for sys-cluster/ganglia
 sys-cluster/glusterfs 3.12.3: GlusterFS is a powerful network/cluster filesystem
 sys-cluster/heartbeat 3.0.5-r3: Heartbeat high availability cluster manager
 sys-cluster/heat 9.0.2: A CloudFormation-compatible openstack-native cloud orchestration engine.
