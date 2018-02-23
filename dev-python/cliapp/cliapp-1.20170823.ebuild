@@ -16,16 +16,8 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
-MY_DEPEND="
-	dev-python/pyyaml[${PYTHON_USEDEP}]
-	"
-
-DEPEND="${PYTHON_DEPS}
-	${MY_DEPEND}"
-
-RDEPEND="
-	${MY_DEPEND}
-	"
+RDEPEND="dev-python/pyyaml[${PYTHON_USEDEP}]"
+DEPEND="${RDEPEND}"
 
 src_test() {
 	addwrite /proc/self/comm
