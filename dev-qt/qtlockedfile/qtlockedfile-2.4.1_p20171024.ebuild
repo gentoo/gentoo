@@ -16,9 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
 IUSE="doc"
 
-DEPEND="
-	dev-qt/qtcore:5
-"
+DEPEND="dev-qt/qtcore:5"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}/${PN}"
@@ -39,6 +37,7 @@ src_configure() {
 
 src_install() {
 	use doc && local HTML_DOCS=( doc/html/. )
+	einstalldocs
 
 	# libraries
 	dolib.so lib/*
@@ -50,6 +49,4 @@ src_install() {
 	# .prf files
 	insinto "$(qt5_get_mkspecsdir)"/features
 	doins "${FILESDIR}"/${PN}.prf
-
-	default
 }
