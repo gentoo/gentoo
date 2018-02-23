@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/coreos/etcd"
 SRC_URI="https://${EGO_PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="doc"
+IUSE="doc +server"
 DEPEND=">=dev-lang/go-1.9:="
 RDEPEND="!dev-db/etcdctl"
 
@@ -37,23 +37,26 @@ src_compile() {
 
 src_install() {
 	pushd src/${EGO_PN} || die
-	insinto /etc/${PN}
-	doins "${FILESDIR}/${PN}.conf"
-	dobin bin/*
-	dodoc README.md
+	dobin bin/etcdctl
 	use doc && dodoc -r Documentation
-	systemd_dounit "${FILESDIR}/${PN}.service"
-	systemd_newtmpfilesd "${FILESDIR}/${PN}.tmpfiles.d.conf" ${PN}.conf
-	newinitd "${FILESDIR}"/${PN}.initd ${PN}
-	newconfd "${FILESDIR}"/${PN}.confd ${PN}
-	insinto /etc/logrotate.d
-	newins "${FILESDIR}/${PN}.logrotated" "${PN}"
-	keepdir /var/lib/${PN}
-	fowners ${PN}:${PN} /var/lib/${PN}
-	fperms 0700 /var/lib/${PN}
-	keepdir /var/log/${PN}
-	fowners ${PN}:${PN} /var/log/${PN}
-	fperms 755 /var/log/${PN}
+	if use server; then
+		insinto /etc/${PN}
+		doins "${FILESDIR}/${PN}.conf"
+		dobin bin/etcd
+		dodoc README.md
+		systemd_dounit "${FILESDIR}/${PN}.service"
+		systemd_newtmpfilesd "${FILESDIR}/${PN}.tmpfiles.d.conf" ${PN}.conf
+		newinitd "${FILESDIR}"/${PN}.initd ${PN}
+		newconfd "${FILESDIR}"/${PN}.confd ${PN}
+		insinto /etc/logrotate.d
+		newins "${FILESDIR}/${PN}.logrotated" "${PN}"
+		keepdir /var/lib/${PN}
+		fowners ${PN}:${PN} /var/lib/${PN}
+		fperms 0700 /var/lib/${PN}
+		keepdir /var/log/${PN}
+		fowners ${PN}:${PN} /var/log/${PN}
+		fperms 755 /var/log/${PN}
+	fi
 	popd || die
 }
 
