@@ -7,7 +7,7 @@ inherit gnome2
 DESCRIPTION="Manage your online calendars with simple and modern interface"
 HOMEPAGE="https://wiki.gnome.org/Apps/Calendar"
 
-LICENSE="GPL-2+"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
