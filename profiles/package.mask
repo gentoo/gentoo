@@ -30,6 +30,12 @@
 #--- END OF EXAMPLES ---
 
 # Steve Dibb <beandog@gentoo.org> (22 Feb 2018)
+# Very old project of mine, hasn't worked in years, no plans to
+# support, and mpv can provide resume playback by default.
+# Masked for removal in 30 days. Bug #648568
+media-video/mplayer-resume
+
+# Steve Dibb <beandog@gentoo.org> (22 Feb 2018)
 # Dead upstream, never really used, libdvdread and libdvdnav provide
 # DVD access.
 # Masked for removal in 30 days. Bug #648566
