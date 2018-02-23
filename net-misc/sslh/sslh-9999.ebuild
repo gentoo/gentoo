@@ -13,7 +13,7 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	KEYWORDS="~amd64 ~arm ~m68k ~mips ~s390 ~sh ~x86"
 	MY_P="${PN}-v${PV}"
-	SRC_URI="http://www.rutschle.net/tech/${PN}/${MY_P}.tar.gz"
+	SRC_URI="https://www.rutschle.net/tech/${PN}/${MY_P}.tar.gz"
 	S=${WORKDIR}/${MY_P}
 fi
 

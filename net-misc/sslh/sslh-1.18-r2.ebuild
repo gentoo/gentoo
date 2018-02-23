@@ -8,7 +8,7 @@ inherit flag-o-matic systemd toolchain-funcs
 
 DESCRIPTION="Port multiplexer - accept both HTTPS and SSH connections on the same port"
 HOMEPAGE="https://www.rutschle.net/tech/sslh/README.html"
-SRC_URI="http://www.rutschle.net/tech/${PN}/${MY_P}.tar.gz"
+SRC_URI="https://www.rutschle.net/tech/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
