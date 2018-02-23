@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install setup
+DEPEND=|| ( dev-lang/python:3.6[threads(+)] dev-lang/python:3.5[threads(+)] dev-lang/python:3.4[threads(+)] ) sys-libs/libcap dev-python/psutil dev-libs/openssl:* seccomp? ( sys-libs/libseccomp ) app-text/asciidoc app-text/docbook-xsl-stylesheets sys-devel/bison rclock_oncore? ( net-misc/pps-tools ) rclock_pps? ( net-misc/pps-tools ) !net-misc/ntp !net-misc/openntpd virtual/pkgconfig
+DESCRIPTION=The NTP reference implementation, refactored
+EAPI=6
+HOMEPAGE=https://www.ntpsec.org/
+IUSE=rclock_oncore rclock_trimble rclock_truetime rclock_gpsd rclock_jjy rclock_generic rclock_spectracom rclock_shm rclock_pps rclock_hpgps rclock_zyfer rclock_arbiter rclock_nmea rclock_neoclock rclock_modem rclock_local debug doc early gdb nist ntpviz samba seccomp smear tests
+KEYWORDS=~amd64 ~arm ~arm64 ~x86
+LICENSE=HPND MIT BSD-2 BSD CC-BY-SA-4.0
+RDEPEND=|| ( dev-lang/python:3.6[threads(+)] dev-lang/python:3.5[threads(+)] dev-lang/python:3.4[threads(+)] ) sys-libs/libcap dev-python/psutil dev-libs/openssl:* seccomp? ( sys-libs/libseccomp ) ntpviz? ( sci-visualization/gnuplot media-fonts/liberation-fonts )
+RESTRICT=mirror
+SLOT=0
+SRC_URI=ftp://ftp.ntpsec.org/pub/releases/ntpsec-1.0.0.tar.gz
+_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	flag-o-matic	02908f00f002f0f07c5b74783d778325	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-any-r1	27d7f9da7187d283b7f3eae8390b7b09	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	systemd	a31844b675f1a1fea87fbe1144aee5f5	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	user	8bc2845510e2109af75e3eeac607ec81	waf-utils	d1ea2758053cbb7c5b38b8f88654468d
+_md5_=e45d1bd596b1255d7ca295c11842cdec
