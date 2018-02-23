@@ -6,7 +6,7 @@ EAPI="6"
 inherit flag-o-matic systemd toolchain-funcs
 
 DESCRIPTION="Port multiplexer - accept both HTTPS and SSH connections on the same port"
-HOMEPAGE="http://www.rutschle.net/tech/sslh.shtml"
+HOMEPAGE="https://www.rutschle.net/tech/sslh/README.html"
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/yrutschle/sslh.git"
 	inherit git-r3
