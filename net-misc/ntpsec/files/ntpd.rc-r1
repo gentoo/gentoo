@@ -1,0 +1,23 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+description="ntpd - the network time protocol daemon"
+pidfile="/var/run/ntpd.pid"
+command="/usr/sbin/ntpd"
+command_args="-p ${pidfile} ${NTPD_OPTS}"
+start_stop_daemon_args="--pidfile ${pidfile}"
+
+depend() {
+	use net dns logger
+	after ntp-client
+}
+
+start_pre() {
+	if [ ! -f /etc/ntp.conf ] ; then
+	eerror "Please create /etc/ntp.conf"
+		return 1
+	fi
+	return 0
+}
