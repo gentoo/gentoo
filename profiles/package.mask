@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Deutschmann <whissi@gentoo.org> (23 Feb 2018)
+# Unmaintained in Gentoo, known critical vulnerabilities like
+# auth bypass. Removal in 30 days. Bugs #559658, #592080.
+sys-cluster/ganglia-web
+
 # Mart Raudsepp <leio@gentoo.org> (23 Feb 2018)
 # Old net-libs/webkit-gtk SLOTs have hundreds of known security issues.
 # Use the security safe net-libs webkit-gtk SLOT=4 instead via
