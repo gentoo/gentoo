@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,11 +20,10 @@ IUSE="caja dbus debug djvu dvi epub +introspection gnome-keyring gtk3 +postscrip
 REQUIRED_USE="t1lib? ( dvi )
 	!gtk3? ( !epub )" #608604
 
-COMMON_DEPEND=">=app-text/poppler-0.16:0=[cairo]
+COMMON_DEPEND=">=app-text/poppler-0.22:0=[cairo]
 	dev-libs/atk:0
 	>=dev-libs/glib-2.36:2
 	>=dev-libs/libxml2-2.5:2
-	>=mate-base/mate-desktop-1.9[gtk3(-)=]
 	sys-libs/zlib:0
 	x11-libs/gdk-pixbuf:2
 	x11-libs/libICE:0
@@ -50,7 +49,7 @@ COMMON_DEPEND=">=app-text/poppler-0.16:0=[cairo]
 	introspection? ( >=dev-libs/gobject-introspection-0.6:= )
 	postscript? ( >=app-text/libspectre-0.2:0 )
 	tiff? ( >=media-libs/tiff-3.6:0 )
-	xps? ( >=app-text/libgxps-0.2.0:0 )
+	xps? ( >=app-text/libgxps-0.2.1:0 )
 	!!app-text/mate-document-viewer"
 
 RDEPEND="${COMMON_DEPEND}"
@@ -69,6 +68,8 @@ DEPEND="${COMMON_DEPEND}
 # Tests use dogtail which is not available on Gentoo.
 RESTRICT="test"
 
+FILES=( "${FILESDIR}/${PN}-cve-2017-1000083.patch" )
+
 src_configure() {
 	# Passing --disable-help would drop offline help, that would be inconsistent
 	# with helps of the most of GNOME apps that doesn't require network for that.
@@ -79,7 +80,6 @@ src_configure() {
 		--enable-pixbuf \
 		--enable-previewer \
 		--enable-thumbnailer \
-		--with-matedesktop \
 		--with-gtk=$(usex gtk3 3.0 2.0) \
 		$(use_with gnome-keyring keyring) \
 		$(use_enable caja) \
