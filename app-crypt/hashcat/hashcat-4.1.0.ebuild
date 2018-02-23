@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -40,8 +40,10 @@ src_test() {
 			einfo "To run these tests, portage likely must be in the video group."
 			einfo "Please run \"gpasswd -a portage video\" if the tests will fail"
 		fi
+	#elif use vidia_cards_fglrx; then
+	#	addwrite /dev/ati
 	fi
 	#this always exits with 255 despite success
 	#./hashcat -b -m 2500 || die "Test failed"
-	./hashcat -a 3 -m 1500 nQCk49SiErOgk
+	./hashcat -a 3 -m 1500 nQCk49SiErOgk || die "Test failed"
 }
