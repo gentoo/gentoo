@@ -20,6 +20,7 @@ DEPEND="
 	virtual/pkgconfig"
 
 DOCS=( CONFIGURATION.md README.md )
+PATCHES=( "${FILESDIR}/${P}-tinfo.patch" )
 
 src_prepare() {
 	default
