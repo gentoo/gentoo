@@ -4,10 +4,10 @@ DESCRIPTION=A free routing daemon replacing Zebra supporting RIP, OSPF and BGP
 EAPI=6
 HOMEPAGE=http://quagga.net/
 IUSE=bgpclassless caps fpm doc elibc_glibc ipv6 multipath nhrpd ospfapi pam protobuf +readline snmp tcp-zebra test
-KEYWORDS=~alpha amd64 ~arm ~hppa ~ppc ~s390 ~sparc x86
+KEYWORDS=~alpha amd64 ~arm ~hppa ~ppc ~s390 sparc x86
 LICENSE=GPL-2
 RDEPEND=caps? ( sys-libs/libcap ) nhrpd? ( net-dns/c-ares:0= ) protobuf? ( dev-libs/protobuf-c:0= ) readline? ( sys-libs/readline:0= pam? ( sys-libs/pam ) ) snmp? ( net-analyzer/net-snmp ) !elibc_glibc? ( dev-libs/libpcre ) sys-apps/iproute2 virtual/tmpfiles
 SLOT=0
 SRC_URI=mirror://nongnu/quagga/quagga-1.2.4.tar.gz bgpclassless? ( http://hasso.linux.ee/stuff/patches/quagga/ht-20040304-classless-bgp.patch )
 _eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	flag-o-matic	02908f00f002f0f07c5b74783d778325	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	pam	3e788d86170dfcd5b06824d898315e18	preserve-libs	ef207dc62baddfddfd39a164d9797648	readme.gentoo-r1	6f03e110529650f57fc7d1fb908b8986	systemd	a31844b675f1a1fea87fbe1144aee5f5	tmpfiles	7bd1d7bf5261430a2d2991cff7958c52	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	user	8bc2845510e2109af75e3eeac607ec81
-_md5_=0a470aba62cabaa155944b913ef16f40
+_md5_=3d7be61b7749296d08145c9e78d5212a

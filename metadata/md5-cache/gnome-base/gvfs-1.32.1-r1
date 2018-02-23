@@ -4,7 +4,7 @@ DESCRIPTION=Virtual filesystem implementation for gio
 EAPI=6
 HOMEPAGE=https://wiki.gnome.org/Projects/gvfs
 IUSE=afp archive bluray cdda elogind fuse google gnome-keyring gnome-online-accounts gphoto2 gtk +http ios mtp nfs policykit samba systemd test +udev udisks zeroconf
-KEYWORDS=~alpha amd64 ~arm ~arm64 ia64 ~mips ~ppc ~ppc64 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~sparc-solaris ~x86-solaris
+KEYWORDS=~alpha amd64 ~arm ~arm64 ia64 ~mips ~ppc ~ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~sparc-solaris ~x86-solaris
 LICENSE=LGPL-2+
 RDEPEND=app-crypt/gcr:= >=dev-libs/glib-2.51:2 dev-libs/libxml2:2 net-misc/openssh afp? ( >=dev-libs/libgcrypt-1.2.2:0= ) archive? ( app-arch/libarchive:= ) bluray? ( media-libs/libbluray:= ) elogind? ( >=sys-auth/elogind-229:0= ) fuse? ( >=sys-fs/fuse-2.8.0:0 ) gnome-keyring? ( app-crypt/libsecret ) gnome-online-accounts? ( >=net-libs/gnome-online-accounts-3.7.1:= ) google? ( >=dev-libs/libgdata-0.17.7:=[crypt,gnome-online-accounts] >=net-libs/gnome-online-accounts-3.17.1:= ) gphoto2? ( >=media-libs/libgphoto2-2.5.0:= ) gtk? ( >=x11-libs/gtk+-3.0:3 ) http? ( >=net-libs/libsoup-2.42:2.4 ) ios? ( >=app-pda/libimobiledevice-1.2:= >=app-pda/libplist-1:= ) mtp? ( >=dev-libs/libusb-1.0.21 >=media-libs/libmtp-1.1.12 ) nfs? ( >=net-fs/libnfs-1.9.8 ) policykit? ( sys-auth/polkit sys-libs/libcap ) samba? ( >=net-fs/samba-4[client] ) systemd? ( >=sys-apps/systemd-206:0= ) udev? ( cdda? ( dev-libs/libcdio-paranoia ) >=virtual/libgudev-147:= virtual/libudev:= ) udisks? ( >=sys-fs/udisks-1.97:2 ) zeroconf? ( >=net-dns/avahi-0.6 )
 REQUIRED_USE=cdda? ( udev ) elogind? ( !systemd udisks ) google? ( gnome-online-accounts ) mtp? ( udev ) udisks? ( udev ) systemd? ( !elogind udisks )
@@ -12,4 +12,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=mirror://gnome/sources/gvfs/1.32/gvfs-1.32.1.tar.xz https://dev.gentoo.org/~leio/distfiles/gvfs-1.32.1-patches.tar.xz
 _eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	gnome.org	5e4cc5af3f1b17bdee155bf02e8c2df4	gnome2	6e4acb9c9da2cfa25f2dfedb93bb4a43	gnome2-utils	4d211d7614f303710fca59db6ec12c88	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	systemd	a31844b675f1a1fea87fbe1144aee5f5	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	versionator	ce21313503c41896ebcd7d58b0607e37	xdg	6cd76cc914c1a759dee032778487b57f	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=03bc4be30e992196574b29689d51334d
+_md5_=ea0835914b59f8d50055076cf297a386
