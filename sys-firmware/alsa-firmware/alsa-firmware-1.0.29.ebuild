@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit udev
 
 DESCRIPTION="Advanced Linux Sound Architecture firmware"
-HOMEPAGE="http://www.alsa-project.org/"
+HOMEPAGE="https://alsa-project.org/"
 SRC_URI="mirror://alsaproject/firmware/${P}.tar.bz2"
 
 LICENSE="GPL-2"
