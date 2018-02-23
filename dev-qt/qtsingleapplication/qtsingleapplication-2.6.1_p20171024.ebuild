@@ -53,6 +53,7 @@ src_configure() {
 
 src_install() {
 	use doc && local HTML_DOCS=( doc/html/. )
+	einstalldocs
 
 	# libraries
 	dolib.so lib/*
@@ -66,6 +67,4 @@ src_install() {
 	insinto "$(qt5_get_mkspecsdir)"/features
 	doins "${FILESDIR}"/qtsinglecoreapplication.prf
 	use X && doins "${FILESDIR}"/${PN}.prf
-
-	default
 }
