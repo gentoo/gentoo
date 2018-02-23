@@ -8653,7 +8653,7 @@ net-libs/telepathy-logger-qt 15.04.0 17.08.0: Qt bindings for the Telepathy logg
 net-libs/telepathy-qt 0.9.7-r1: Qt bindings for the Telepathy D-Bus protocol
 net-libs/udns 0.4: Async-capable DNS stub resolver library
 net-libs/uhttpmock 0.5.0 0.5.1: HTTP web service mocking library
-net-libs/webkit-gtk 2.4.11-r1 2.4.11-r200 2.18.6: Open source web browser engine
+net-libs/webkit-gtk 2.18.6: Open source web browser engine
 net-libs/wvstreams 4.6.1-r3: A network programming library in C++
 net-libs/xrootd 4.4.0: Extended ROOT remote file server
 net-libs/zeromq 2.2.0 3.2.3 3.2.5 4.1.1 4.1.6 4.2.1 4.2.2-r2: A brokerless kernel
@@ -10719,7 +10719,7 @@ x11-libs/snorenotify 0.7.0-r1: Multi platform Qt notification framework
 x11-libs/startup-notification 0.12-r1: Application startup notification and feedback library
 x11-libs/tslib 1.0-r3: Touchscreen Access Library
 x11-libs/vte 0.28.2-r208 0.36.5 0.46.2 0.48.4: Library providing a virtual terminal emulator widget
-x11-libs/wxGTK 2.8.12.1-r2 3.0.2.0-r3 3.0.3 3.0.3-r300: GTK+ version of wxWidgets, a cross-platform C++ GUI toolkit
+x11-libs/wxGTK 2.8.12.1-r2 3.0.3 3.0.3-r300: GTK+ version of wxWidgets, a cross-platform C++ GUI toolkit
 x11-libs/xbae 4.60.4: Motif-based widget to display a grid of cells as a spreadsheet
 x11-libs/xcb-util 0.4.0: X C-language Bindings sample implementations
 x11-libs/xcb-util-cursor 0.1.1-r1 0.1.2 0.1.3-r1: X C-language Bindings sample implementations
