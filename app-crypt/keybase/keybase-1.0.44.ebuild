@@ -3,17 +3,17 @@
 
 EAPI=6
 
-inherit eutils systemd user versionator git-r3
+inherit eutils systemd user versionator
 
 MY_PV=$(replace_version_separator 3 '-')
 
 DESCRIPTION="Client for keybase.io"
 HOMEPAGE="https://keybase.io/"
-EGIT_REPO_URI="https://github.com/keybase/client.git"
+SRC_URI="https://github.com/keybase/client/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="
@@ -29,9 +29,9 @@ pkg_setup() {
 }
 
 src_unpack() {
-	git-r3_src_unpack
+	unpack "${P}.tar.gz"
 	mkdir -p "$(dirname "${S}")" || die
-	ln -s "${WORKDIR}/${PN}-${MY_PV}" "${S}" || die
+	mv "client-${MY_PV}" "${S}" || die
 }
 
 src_compile() {
