@@ -20,7 +20,7 @@ fi
 
 LICENSE="LGPL-2.1 GPL-2 GPL-3"
 SLOT="0"
-IUSE="autotype debug http test yubikey"
+IUSE="autotype browser debug http network test yubikey"
 
 RDEPEND="
 	app-crypt/argon2:=
