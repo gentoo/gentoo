@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -75,6 +75,9 @@ src_prepare() {
 
 	# failing test, https://bugs.freedesktop.org/show_bug.cgi?id=89190
 	sed -e 's#tests/arabic-fallback-shaping.tests##' -i test/shaping/Makefile.in || die "sed failed"
+
+	# bug 618772
+	append-cxxflags -std=c++14
 }
 
 multilib_src_configure() {

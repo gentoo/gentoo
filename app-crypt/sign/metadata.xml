@@ -4,7 +4,6 @@
 <maintainer type="person">
 	<email>alicef@gentoo.org</email>
 	<name>Alice Ferrazzi</name>
-	<description>Assign bugs to me.</description>
 </maintainer>
 <longdescription>
 sign is a file signing and signature verification utility. It's main purpose is

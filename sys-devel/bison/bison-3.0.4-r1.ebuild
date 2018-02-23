@@ -33,6 +33,8 @@ src_prepare() {
 	touch doc/bison.1 #548778 #538300#9
 	# Avoid regenerating the info page when the timezone is diff. #574492
 	sed -i '2iexport TZ=UTC' build-aux/mdate-sh || die
+	# ugly workaround to avoid maintainer mode (see #647410 and #648012)
+	printf '#!/bin/sh\nexit 0\n' > build-aux/missing || die
 }
 
 src_configure() {

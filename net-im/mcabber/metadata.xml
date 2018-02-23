@@ -4,7 +4,6 @@
 	<maintainer type="person">
 		<email>wschlich@gentoo.org</email>
 		<name>Wolfram Schlich</name>
-		<description>Secondary maintainer</description>
 	</maintainer>
 	<longdescription lang="en">
 		MCabber is a small Jabber console client that features

@@ -14,17 +14,19 @@ SRC_URI="https://github.com/HypothesisWorks/hypothesis-python/archive/${PV}.tar.
 
 LICENSE="MPL-2.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd"
 IUSE=""
 
 RDEPEND="
 	dev-python/attrs[${PYTHON_USEDEP}]
 	dev-python/coverage[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' 'python2*' pypy)"
-DEPEND="${RDEPEND}
+
+DEPEND="
+	${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
-S=${WORKDIR}/${PN}-python-${PV}
+S="${WORKDIR}/${PN}-python-${PV}"
 
 pkg_postinst() {
 	optfeature "datetime support" dev-python/pytz

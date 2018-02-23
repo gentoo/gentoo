@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit toolchain-funcs python-single-r1
 
 DESCRIPTION="tools to create and apply deltarpms"
-HOMEPAGE="http://gitorious.org/deltarpm/deltarpm"
+HOMEPAGE="https://github.com/rpm-software-management/deltarpm"
 SRC_URI="http://pkgs.fedoraproject.org/repo/pkgs/${PN}/${P}.tar.bz2/2cc2690bd1088cfc3238c25e59aaaec1/${P}.tar.bz2"
 
 LICENSE="BSD"

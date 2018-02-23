@@ -4,12 +4,10 @@
 	<maintainer type="person">
 		<email>pchrist@gentoo.org</email>
 		<name>Panagiotis Christopoulos</name>
-		<description>primary-maintainer</description>
 	</maintainer>
 	<maintainer type="person">
 		<email>bugs@cddr.org</email>
 		<name>Stelian Ionescu (fe[nl]ix)</name>
-		<description>second-maintainer</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>common-lisp@gentoo.org</email>

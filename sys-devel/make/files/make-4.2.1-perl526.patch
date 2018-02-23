@@ -1,0 +1,26 @@
+From d9d4e06084a4c7da480bd49a3487aadf6ba77b54 Mon Sep 17 00:00:00 2001
+From: Enrique Olaizola <enrique_olaizola16@hotmail.com>
+Date: Sat, 27 May 2017 14:24:33 -0400
+Subject: [PATCH] * tests/run_make_tests.pl: [SV 50902] Find Perl modules
+
+---
+ tests/run_make_tests.pl | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/tests/run_make_tests.pl b/tests/run_make_tests.pl
+index a74417a..a844094 100644
+--- a/tests/run_make_tests.pl
++++ b/tests/run_make_tests.pl
+@@ -64,6 +64,9 @@ if ($^O eq 'VMS')
+   $CMD_rmfile = 'delete_file -no_ask';
+ }
+ 
++use FindBin;
++use lib "$FindBin::Bin";
++
+ require "test_driver.pl";
+ require "config-flags.pm";
+ 
+-- 
+2.16.1
+

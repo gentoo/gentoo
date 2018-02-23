@@ -1,0 +1,15 @@
+diff --git a/meson.build b/meson.build
+index 36a62d280..87f8da29b 100644
+--- a/meson.build
++++ b/meson.build
+@@ -1662,9 +1662,8 @@ if conf.get('ENABLE_EFI') == 1 and conf.get('HAVE_BLKID') == 1
+         exe = executable('bootctl',
+                          'src/boot/bootctl.c',
+                          include_directories : includes,
+-                         link_with : [libshared],
++                         link_with : [libshared_static, libsystemd_static],
+                          dependencies : [libblkid],
+-                         install_rpath : rootlibexecdir,
+                          install : true)
+         public_programs += [exe]
+ endif

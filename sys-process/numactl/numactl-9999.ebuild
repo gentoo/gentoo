@@ -21,9 +21,7 @@ SLOT="0"
 IUSE="static-libs"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.0.8-cpuid-pic.patch #456238
 	"${FILESDIR}"/${PN}-2.0.10-numademo-cflags.patch #540856
-	"${FILESDIR}"/${PN}-2.0.11-sysmacros.patch #580098
 )
 
 src_prepare() {

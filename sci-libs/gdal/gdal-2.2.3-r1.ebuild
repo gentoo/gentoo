@@ -117,6 +117,8 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug 619148
+	append-cxxflags -std=c++14
 
 	tc-export AR RANLIB
 	local myopts=()

@@ -4,12 +4,10 @@
 	<maintainer type="person">
 		<email>mudler@gentoo.org</email>
 		<name>Ettore Di Giacinto</name>
-		<description>Assign bugs to him</description>
 	</maintainer>
 	<maintainer type="person">
 		<email>lxnay@gentoo.org</email>
 		<name>Fabio Erculiani</name>
-		<description>CC on bugs</description>
 	</maintainer>
 	<longdescription lang="en">
 		Molecule is a build tool that can build, rebuild or extend Sabayon Linux or

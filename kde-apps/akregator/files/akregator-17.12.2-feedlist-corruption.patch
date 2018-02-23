@@ -1,0 +1,17 @@
+diff --git a/src/akregator_part.cpp b/src/akregator_part.cpp
+index 94a4e00..3d2d778 100644
+--- a/src/akregator_part.cpp
++++ b/src/akregator_part.cpp
+@@ -514,6 +514,11 @@ void Part::slotSaveFeedList()
+     if (!m_standardListLoaded) {
+         return;
+     }
++
++    QSharedPointer<FeedList> f_list = m_mainWidget->allFeedsList();
++    if (f_list.isNull()) {
++	return;
++    }
+ 
+     // the first time we overwrite the feed list, we create a backup
+     if (!m_backedUpList) {
+

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -32,7 +32,6 @@ src_configure() {
 		CC="$(tc-getCC)"
 		LD="$(tc-getLD)"
 		VERBOSE=1
-		DESTDIR="${D}"
 	)
 }
 
@@ -41,6 +40,6 @@ src_compile() {
 }
 
 src_install() {
-	emake "${myzathuraconf[@]}" install
+	emake "${myzathuraconf[@]}" DESTDIR="${ED%/}" install
 	dodoc AUTHORS
 }

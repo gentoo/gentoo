@@ -11,6 +11,7 @@ auth_ldap - LDAP module for nginx which supports authentication against multiple
 auth_pam - This module provides authentication via PAM.
 auth_request - Module implementing client authorization based on the result of a subrequest.
 autoindex - This module provides automatic directory listings.
+brotli - This module allows for on-the-fly Brotli compression.
 browser - This module creates variables, the values of which depend on the request header "User-agent".
 cache_purge - External module adding ability to purge content from nginx's FastCGI and proxy caches.
 charset - This module can reencode data of one encoding into another.
@@ -29,6 +30,7 @@ gzip - This module allows for on-the-fly gzip compression.
 gzip_static - Before serving a file from disk to a gzip-enabled client, this module will look for a precompressed file in the same location.
 headers_more - Set and clear input and output headers
 image_filter - This module is a filter for transforming JPEG, GIF and PNG images.
+javascript - This module implements location and variable handlers in nginScript.
 limit_conn - This module makes it possible to limit the number of simultaneous connections for the assigned session
 limit_req - This module allows you to limit the number of requests for a given session.
 limit_conn - This module makes it possible to limit the number of simultaneous connections for the assigned session
@@ -68,4 +70,5 @@ upstream_least_conn - This module provides the ability to distribute upstream re
 upstream_zone - This module makes it possible to define a shared memory zone that keeps the group's configuration and run-time state that are shared between worker processes.
 userid - This module gives out cookies for identification of clients.
 uwsgi - External module for the uWSGI protocol for python web apps.
+vhost_traffic_status - This module provides access to virtual host status information.
 xslt - This module is a filter which converts an XML response with the aid of one or more XSLT templates.

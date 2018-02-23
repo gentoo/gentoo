@@ -46,9 +46,11 @@ src_unpack() {
 		https://github.com/llvm-mirror/libcxx.git"
 	git-r3_fetch
 
-	git-r3_checkout https://llvm.org/git/libcxx.git \
-		"${WORKDIR}"/libcxx '' include utils/libcxx
-	git-r3_checkout
+	if use test; then
+		git-r3_checkout https://llvm.org/git/libcxx.git \
+			"${WORKDIR}"/libcxx '' include utils/libcxx
+		git-r3_checkout
+	fi
 }
 
 multilib_src_configure() {

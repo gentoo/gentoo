@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,3 +22,12 @@ RDEPEND="${DEPEND}
 "
 
 PATCHES=( "${FILESDIR}/${PN}-5.0.0_pre20170128-tests-optional.patch" )
+
+src_test() {
+	# bug 646808
+	local myctestargs=(
+		-j1
+		-E "(libmediawiki-logintest|libmediawiki-queryimageinfotest)"
+	)
+	kde5_src_test
+}

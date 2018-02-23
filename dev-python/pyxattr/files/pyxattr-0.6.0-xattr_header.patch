@@ -1,0 +1,53 @@
+From cc0bc63b291ee1a831f07c81946149dbe8c8146d Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Wed, 10 Jan 2018 11:45:35 +0100
+Subject: [PATCH] xattr.c: There is no more attr/xattr.h with >=attr-2.4.48
+
+See also:
+http://git.savannah.nongnu.org/cgit/attr.git/commit/?id=7921157890d07858d092f4003ca4c6bae9fd2c38
+---
+ xattr.c | 13 +++----------
+ 1 file changed, 3 insertions(+), 10 deletions(-)
+
+diff --git a/xattr.c b/xattr.c
+index 111cec1..c82ee32 100644
+--- a/xattr.c
++++ b/xattr.c
+@@ -23,10 +23,8 @@
+ 
+ #define PY_SSIZE_T_CLEAN
+ #include <Python.h>
+-#if defined(__APPLE__)
++#if defined(__APPLE__) || defined(__linux__)
+ #include <sys/xattr.h>
+-#elif defined(__linux__)
+-#include <attr/xattr.h>
+ #endif
+ #include <stdio.h>
+ 
+@@ -642,11 +640,7 @@ get_all(PyObject *self, PyObject *args, PyObject *keywds)
+         /* Now retrieve the attribute value */
+         nval = _generic_get(_get_obj, &tgt, s, &buf_val, &nalloc, &io_errno);
+         if (nval == -1) {
+-          if (
+-#ifdef ENODATA
+-              io_errno == ENODATA ||
+-#endif
+-              io_errno == ENOATTR) {
++          if (io_errno == ENODATA) {
+             PyErr_Clear();
+             continue;
+           } else {
+@@ -1173,8 +1167,7 @@ static char __xattr_doc__[] = \
+     "   a :exc:`EnvironmentError`; under\n"
+     "   Linux, the following ``errno`` values are used:\n"
+     "\n"
+-    "   - ``ENOATTR`` and ``ENODATA`` mean that the attribute name is\n"
+-    "     invalid\n"
++    "   - ``ENODATA`` means that the attribute name is\n invalid\n"
+     "   - ``ENOTSUP`` and ``EOPNOTSUPP`` mean that the filesystem does not\n"
+     "     support extended attributes, or that the namespace is invalid\n"
+     "   - ``E2BIG`` mean that the attribute value is too big\n"
+-- 
+2.16.0.rc1
+

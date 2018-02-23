@@ -18,21 +18,20 @@
 # Note: Just set EBZR_REPO_URI to the URI of the branch and src_unpack()
 # of this eclass will export the branch to ${WORKDIR}/${P}.
 
-inherit eutils
-
 EBZR="bzr.eclass"
 
-case "${EAPI:-0}" in
-	0|1) EXPORT_FUNCTIONS src_unpack ;;
-	*)   EXPORT_FUNCTIONS src_unpack src_prepare ;;
+case ${EAPI:-0} in
+	2|3|4|5|6) ;;
+	*) die "${EBZR}: EAPI ${EAPI:-0} is not supported" ;;
 esac
 
-DEPEND=">=dev-vcs/bzr-2.0.1"
-case "${EAPI:-0}" in
-	0|1) ;;
-	*) [[ ${EBZR_REPO_URI%%:*} = sftp ]] \
-		&& DEPEND=">=dev-vcs/bzr-2.0.1[sftp]" ;;
-esac
+EXPORT_FUNCTIONS src_unpack
+
+if [[ ${EBZR_REPO_URI%%:*} = sftp ]]; then
+	DEPEND=">=dev-vcs/bzr-2.6.0[sftp]"
+else
+	DEPEND=">=dev-vcs/bzr-2.6.0"
+fi
 
 # @ECLASS-VARIABLE: EBZR_STORE_DIR
 # @DESCRIPTION:
@@ -57,7 +56,7 @@ esac
 # @ECLASS-VARIABLE: EBZR_UPDATE_CMD
 # @DESCRIPTION:
 # The Bazaar command to update the sources.
-: ${EBZR_UPDATE_CMD:="bzr pull"}
+: ${EBZR_UPDATE_CMD:="bzr pull --overwrite-tags"}
 
 # @ECLASS-VARIABLE: EBZR_EXPORT_CMD
 # @DESCRIPTION:
@@ -85,9 +84,8 @@ esac
 # @DESCRIPTION:
 # The repository URI for the source package.
 #
-# Note: If the ebuild uses an sftp:// URI, then in EAPI 0 or 1 it must
-# make sure that dev-vcs/bzr was built with USE="sftp".  In EAPI 2 or
-# later, the eclass will depend on dev-vcs/bzr[sftp].
+# Note: If the ebuild uses an sftp:// URI, then the eclass will depend
+# on dev-vcs/bzr[sftp].
 
 # @ECLASS-VARIABLE: EBZR_INITIAL_URI
 # @DEFAULT_UNSET
@@ -99,21 +97,6 @@ esac
 # slow, but a fast mirror exists but may be out of date.
 #
 # Normally, this variable needs not be set.
-
-# @ECLASS-VARIABLE: EBZR_BOOTSTRAP
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# Bootstrap script or command like autogen.sh or etc.
-
-# @ECLASS-VARIABLE: EBZR_PATCHES
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# bzr.eclass can apply patches in bzr_bootstrap().  You can use regular
-# expressions in this variable like *.diff or *.patch and the like.
-# Note: These patches will be applied before EBZR_BOOTSTRAP is processed.
-#
-# Patches are searched both in ${PWD} and ${FILESDIR}.  If not found in
-# either location, the installation dies.
 
 # @ECLASS-VARIABLE: EBZR_PROJECT
 # @DESCRIPTION:
@@ -276,65 +259,9 @@ bzr_fetch() {
 	popd > /dev/null
 }
 
-# @FUNCTION: bzr_bootstrap
-# @DESCRIPTION:
-# Apply patches in ${EBZR_PATCHES} and run ${EBZR_BOOTSTRAP} if specified.
-bzr_bootstrap() {
-	local patch lpatch
-
-	pushd "${S}" > /dev/null || die "${EBZR}: can't chdir to ${S}"
-
-	if [[ -n ${EBZR_PATCHES} ]] ; then
-		einfo "apply patches -->"
-
-		for patch in ${EBZR_PATCHES} ; do
-			if [[ -f ${patch} ]] ; then
-				epatch "${patch}"
-			else
-				# This loop takes care of wildcarded patches given via
-				# EBZR_PATCHES in an ebuild
-				for lpatch in "${FILESDIR}"/${patch} ; do
-					if [[ -f ${lpatch} ]] ; then
-						epatch "${lpatch}"
-					else
-						die "${EBZR}: ${patch} is not found"
-					fi
-				done
-			fi
-		done
-	fi
-
-	if [[ -n ${EBZR_BOOTSTRAP} ]] ; then
-		einfo "begin bootstrap -->"
-
-		if [[ -f ${EBZR_BOOTSTRAP} ]] && [[ -x ${EBZR_BOOTSTRAP} ]] ; then
-			einfo "   bootstrap with a file: ${EBZR_BOOTSTRAP}"
-			"./${EBZR_BOOTSTRAP}" \
-				|| die "${EBZR}: can't execute EBZR_BOOTSTRAP"
-		else
-			einfo "   bootstrap with commands: ${EBZR_BOOTSTRAP}"
-			"${EBZR_BOOTSTRAP}" \
-				|| die "${EBZR}: can't eval EBZR_BOOTSTRAP"
-		fi
-	fi
-
-	popd > /dev/null
-}
-
 # @FUNCTION: bzr_src_unpack
 # @DESCRIPTION:
-# Default src_unpack(), calls bzr_fetch.  For EAPIs 0 and 1, also calls
-# bzr_src_prepare.
+# Default src_unpack(), calls bzr_fetch.
 bzr_src_unpack() {
 	bzr_fetch
-	case "${EAPI:-0}" in
-		0|1) bzr_src_prepare ;;
-	esac
-}
-
-# @FUNCTION: bzr_src_prepare
-# @DESCRIPTION:
-# Default src_prepare(), calls bzr_bootstrap.
-bzr_src_prepare() {
-	bzr_bootstrap
 }

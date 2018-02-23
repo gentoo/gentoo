@@ -1,28 +1,30 @@
-From 25c50af220c2de4542b440b7470a644caf2a3b65 Mon Sep 17 00:00:00 2001
+From 7fd09c08b5b50e5c0a2aebb66072deda4ac503fb Mon Sep 17 00:00:00 2001
 From: Lars Wendler <polynomial-c@gentoo.org>
 Date: Mon, 5 Feb 2018 16:02:19 +0100
 Subject: [PATCH] Add <sys/sysmacros.h> to two files.
 
-Future glibc releases will no longer include sysmacros implicitly.
+>=glibc-2.28 will no longer include sysmacros implicitly.
 ---
- Process.c                | 1 +
+ Process.c                | 3 +++
  linux/LinuxProcessList.c | 1 +
- 2 files changed, 2 insertions(+)
+ 2 files changed, 4 insertions(+)
 
 diff --git a/Process.c b/Process.c
-index 1836080..5122afb 100644
+index 2ff778d..e135c60 100644
 --- a/Process.c
 +++ b/Process.c
-@@ -19,6 +19,7 @@ in the source distribution for its full text.
+@@ -19,6 +19,9 @@ in the source distribution for its full text.
  #include <sys/param.h>
  #include <sys/stat.h>
  #include <sys/types.h>
-+#include <sys/sysmacros.h>
++#ifdef HAVE_SYS_SYSMACROS_H
++# include <sys/sysmacros.h>	/* for major, minor */
++#endif
  #include <unistd.h>
  #include <stdlib.h>
  #include <signal.h>
 diff --git a/linux/LinuxProcessList.c b/linux/LinuxProcessList.c
-index 6f2631a..7522fb1 100644
+index c8ba89d..fb95440 100644
 --- a/linux/LinuxProcessList.c
 +++ b/linux/LinuxProcessList.c
 @@ -25,6 +25,7 @@ in the source distribution for its full text.
@@ -34,5 +36,5 @@ index 6f2631a..7522fb1 100644
  
  #ifdef HAVE_DELAYACCT
 -- 
-2.16.1
+2.16.2
 

@@ -9,6 +9,6 @@
     <flag name="drm">Enables VA/DRM API support.</flag>
   </use>
   <upstream>
-    <remote-id type="github">01org/libva-utils</remote-id>
+    <remote-id type="github">intel/libva-utils</remote-id>
   </upstream>
 </pkgmetadata>

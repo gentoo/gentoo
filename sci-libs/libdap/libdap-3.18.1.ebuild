@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="Implementation of a C++ SDK for DAP 2.0 and 3.2"
 HOMEPAGE="http://opendap.org/"
@@ -38,6 +38,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug 619144
+	append-cxxflags -std=c++14
+
 	econf \
 		--enable-shared \
 		$(use_enable static-libs static)

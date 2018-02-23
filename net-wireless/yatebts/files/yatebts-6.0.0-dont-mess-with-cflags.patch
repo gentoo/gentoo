@@ -1,0 +1,12 @@
+--- configure.ac	2017-09-07 10:21:08.000000000 -0400
++++ configure-sane.ac	2018-02-16 15:26:43.884257256 -0500
+@@ -38,9 +38,6 @@
+ AC_PROG_CC
+ AC_PROG_AWK
+ 
+-# Delete -g as we handle debug info at build time
+-CFLAGS=`echo "$CFLAGS" | sed 's/\(^\| \+\)-g[[0-9]]*//' 2>/dev/null`
+-
+ # Helper to check by pkgconfig including local paths
+ function pkgconfig_check()
+ {

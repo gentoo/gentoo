@@ -4,7 +4,6 @@
 <maintainer type="person">
 	<email>swegener@gentoo.org</email>
 	<name>Sven Wegener</name>
-	<description>Primary Maintainer</description>
 </maintainer>
 <longdescription>
 The PowerDNS Nameserver is a modern, advanced and high performance authoritative-

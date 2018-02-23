@@ -15,7 +15,7 @@ else
 	KEYWORDS="~amd64 -arm ~arm64 ~mips ~x86"
 fi
 
-HOMEPAGE="https://www.gentoo.org/proj/en/hardened/selinux/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Project:SELinux"
 DESCRIPTION="SELinux policy for core modules"
 
 IUSE="systemd +unconfined"

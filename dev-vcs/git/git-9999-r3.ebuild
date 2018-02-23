@@ -572,7 +572,7 @@ src_install() {
 }
 
 src_test() {
-	local disabled="t9128-git-svn-cmd-branch.sh"
+	local disabled=""
 	local tests_cvs="t9200-git-cvsexportcommit.sh \
 					t9400-git-cvsserver-server.sh \
 					t9401-git-cvsserver-crlf.sh \
@@ -603,7 +603,7 @@ src_test() {
 	# Unzip is used only for the testcase code, not by any normal parts of Git.
 	if ! has_version app-arch/unzip ; then
 		einfo "Disabling tar-tree tests"
-		disabled="${disabled} t5000-tar-tree.sh"
+		disabled+=" t5000-tar-tree.sh"
 	fi
 
 	cvs=0
@@ -612,10 +612,10 @@ src_test() {
 		if [[ $cvs -eq 1 ]]; then
 			ewarn "Skipping CVS tests because CVS does not work as root!"
 			ewarn "You should retest with FEATURES=userpriv!"
-			disabled="${disabled} ${tests_cvs}"
+			disabled+=" ${tests_cvs}"
 		fi
 		einfo "Skipping other tests that require being non-root"
-		disabled="${disabled} ${tests_nonroot}"
+		disabled+=" ${tests_nonroot}"
 	else
 		[[ $cvs -gt 0 ]] && \
 			has_version dev-vcs/cvs && \
@@ -625,17 +625,17 @@ src_test() {
 			let cvs=$cvs+1
 		if [[ $cvs -lt 3 ]]; then
 			einfo "Disabling CVS tests (needs dev-vcs/cvs[USE=server])"
-			disabled="${disabled} ${tests_cvs}"
+			disabled+=" ${tests_cvs}"
 		fi
 	fi
 
 	if ! use perl ; then
 		einfo "Disabling tests that need Perl"
-		disabled="${disabled} ${tests_perl}"
+		disabled+=" ${tests_perl}"
 	fi
 
 	einfo "Disabling tests that fail with SVN 1.7"
-	disabled="${disabled} ${test_svn}"
+	disabled+=" ${test_svn}"
 
 	# Reset all previously disabled tests
 	cd "${S}/t"

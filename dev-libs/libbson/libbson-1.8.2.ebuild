@@ -9,7 +9,7 @@ SRC_URI="https://github.com/mongodb/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~x86"
+KEYWORDS="amd64 ~hppa x86"
 IUSE="debug examples static-libs"
 
 src_configure() {

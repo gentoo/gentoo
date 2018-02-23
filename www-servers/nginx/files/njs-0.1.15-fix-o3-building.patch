@@ -1,0 +1,24 @@
+Origin: https://hg.nginx.org/njs/rev/22cc52416e84
+
+Bug: https://bugs.gentoo.org/647958
+
+--- a/njs/njs_fs.c
++++ b/njs/njs_fs.c
+@@ -566,6 +566,8 @@
+     }
+ 
+     mode = NULL;
++    /* GCC complains about uninitialized flag.length. */
++    flag.length = 0;
+     flag.start = NULL;
+     encoding.length = 0;
+     encoding.start = NULL;
+@@ -753,6 +755,8 @@
+     }
+ 
+     mode = NULL;
++    /* GCC complains about uninitialized flag.length. */
++    flag.length = 0;
+     flag.start = NULL;
+     encoding.length = 0;
+     encoding.start = NULL;

@@ -1,0 +1,26 @@
+--- spice-0.13.90-orig/server/reds.c	2017-07-27 01:04:10.000000000 +1000
++++ spice-0.13.90/server/reds.c	2017-10-18 21:42:12.054934199 +1100
+@@ -34,6 +34,8 @@
+ #include <ctype.h>
+ 
+ #include <openssl/err.h>
++#include <openssl/bn.h>
++#include <openssl/rsa.h>
+ 
+ #if HAVE_SASL
+ #include <sasl/sasl.h>
+@@ -2795,9 +2797,12 @@
+ 
+ static gpointer openssl_global_init(gpointer arg)
+ {
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L
++    OPENSSL_init_ssl(0, NULL);
++#else
+     SSL_library_init();
+     SSL_load_error_strings();
+-
++#endif
+     openssl_thread_setup();
+ 
+     return NULL;
+

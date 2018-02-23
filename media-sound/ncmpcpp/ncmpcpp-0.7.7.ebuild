@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ SRC_URI="${HOMEPAGE}stable/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ~hppa ppc ppc64 sparc x86"
+KEYWORDS="amd64 arm hppa ppc ppc64 sparc x86"
 IUSE="clock curl outputs taglib unicode visualizer"
 
 RDEPEND="

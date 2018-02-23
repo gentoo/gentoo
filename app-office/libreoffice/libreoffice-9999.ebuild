@@ -96,7 +96,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	=dev-cpp/libcmis-0.5*
 	dev-db/unixODBC
 	dev-lang/perl
-	dev-libs/boost:=
+	dev-libs/boost:=[nls]
 	dev-libs/expat
 	dev-libs/hyphen
 	dev-libs/icu:=

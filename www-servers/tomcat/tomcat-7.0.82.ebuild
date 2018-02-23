@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -144,5 +144,6 @@ pkg_postinst() {
 	ewarn "tomcat-dbcp.jar is not built at this time. Please fetch jar"
 	ewarn "from upstream binary if you need it. Gentoo Bug # 144276"
 
-#	einfo "Please read https://www.gentoo.org/proj/en/java/tomcat6-guide.xml for more information."
+	einfo "Please read https://wiki.gentoo.org/wiki/Apache_Tomcat and"
+	einfo "https://wiki.gentoo.org/wiki/Project:Java/Tomcat_6_Guide for more information."
 }

@@ -6,7 +6,7 @@ EAPI="6"
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 DISTUTILS_OPTIONAL=1
 
-inherit distutils-r1 flag-o-matic ltprune qmake-utils toolchain-funcs
+inherit distutils-r1 flag-o-matic libtool ltprune qmake-utils toolchain-funcs
 
 DESCRIPTION="GnuPG Made Easy is a library for making GnuPG easier to use"
 HOMEPAGE="http://www.gnupg.org/related_software/gpgme"
@@ -86,6 +86,7 @@ src_configure() {
 
 src_compile() {
 	default
+	elibtoolize
 	do_python
 }
 

@@ -81,6 +81,7 @@ if is_cross ; then
 fi
 
 MY_BUILDDIR=${WORKDIR}/build
+S=${WORKDIR}/${P/-hppa64/}
 
 src_unpack() {
 	case ${PV} in

@@ -81,8 +81,6 @@ RESTRICT="test"
 PATCHES=(
 	# TODO upstream
 	"${FILESDIR}/${PN}-2.18.6-featuresummary.patch"
-	# Taken from redhat
-	"${FILESDIR}/${PN}-2.18.12-sip.patch"
 	# git master
 	"${FILESDIR}/${PN}-2.18.12-cmake-lib-suffix.patch"
 )

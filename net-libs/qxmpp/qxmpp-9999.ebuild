@@ -22,7 +22,7 @@ RDEPEND="
 	opus? ( media-libs/opus )
 	speex? ( media-libs/speex )
 	theora? ( media-libs/libtheora )
-	vpx? ( media-libs/libvpx )
+	vpx? ( media-libs/libvpx:= )
 "
 DEPEND="${RDEPEND}
 	test? ( dev-qt/qttest:5 )
@@ -53,10 +53,10 @@ src_configure() {
 	eqmake5 "${S}"/qxmpp.pro \
 		PREFIX="${EPREFIX}/usr" \
 		LIBDIR="$(get_libdir)" \
-		QXMPP_USE_OPUS=$(usex opus 1 0) \
-		QXMPP_USE_SPEEX=$(usex speex 1 0) \
-		QXMPP_USE_THEORA=$(usex theora 1 0) \
-		QXMPP_USE_VPX=$(usex vpx 1 0)
+		QXMPP_USE_OPUS=$(usex opus 1 '') \
+		QXMPP_USE_SPEEX=$(usex speex 1 '') \
+		QXMPP_USE_THEORA=$(usex theora 1 '') \
+		QXMPP_USE_VPX=$(usex vpx 1 '')
 }
 
 src_install() {

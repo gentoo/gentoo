@@ -1,0 +1,22 @@
+--- zlog-1.2.12.orig/test/makefile	2013-09-25 04:38:42.000000000 -0700
++++ zlog-1.2.12/test/makefile	2018-02-13 16:59:33.812131188 -0800
+@@ -1,3 +1,6 @@
++CFLAGS := -O2 -g
++CC := gcc
++
+ exe = 		\
+ 	test_tmp	\
+ 	test_buf	\
+@@ -24,10 +27,10 @@
+ all     :       $(exe)
+ 
+ $(exe)  :       %:%.o
+-	gcc -O2 -g -o $@ $^ -L../src -lzlog -lpthread -Wl,-rpath ../src
++	$(CC) $(CFLAGS) -o $@ $^ -L../src -lzlog -lpthread -Wl,-rpath ../src
+ 
+ .c.o	:
+-	gcc -O2 -g -Wall -D_GNU_SOURCE -o $@ -c $< -I. -I../src
++	$(CC) $(CLFAGS) -Wall -D_GNU_SOURCE -o $@ -c $< -I. -I../src
+ 
+ clean	:
+ 	rm -f press.log* *.o $(exe)

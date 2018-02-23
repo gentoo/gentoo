@@ -47,8 +47,7 @@ kde-frameworks/ktextwidgets speech
 
 # Patrice Clement <monsieurp@gentoo.org> (24 Sep 2017)
 # Unmask Raspberry Pi support on arm.
-# Recent mpv versions has broken Raspberry Pi, see Gentoo bug 630556.
-<media-video/mpv-0.27.0 -raspberry-pi
+media-video/mpv -raspberry-pi
 
 # James Le Cuirot <chewi@gentoo.org> (20 Sep 2017)
 # media-sound/mac's executable segfaults when compressing all but the

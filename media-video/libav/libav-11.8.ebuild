@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -153,6 +153,7 @@ src_prepare() {
 	epatch_user
 
 	epatch "${FILESDIR}"/libav-11.3-libvpx-1.5.0.patch #565696
+	epatch "${FILESDIR}"/libav-11.8-perl526.patch      #634646
 
 	# if we have snapshot then we need to hardcode the version
 	if [[ ${PV%_p*} != ${PV} ]]; then
