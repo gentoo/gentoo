@@ -1,0 +1,27 @@
+diff -Naur x2goserver-4.1.0.0.orig/x2goserver-x2goagent/Makefile x2goserver-4.1.0.0/x2goserver-x2goagent/Makefile
+--- x2goserver-4.1.0.0.orig/x2goserver-x2goagent/Makefile	2018-02-15 23:08:27.000000000 +0100
++++ x2goserver-4.1.0.0/x2goserver-x2goagent/Makefile	2018-02-23 14:42:03.106562501 +0100
+@@ -49,7 +49,7 @@
+ clean_man2html:
+ 	rm -rf `dirname $(MAN2HTML_DEST)`
+ 
+-install: install_scripts install_config install_data install_man install_version
++install: install_scripts install_config install_data install_man
+ 
+ install_scripts:
+ 	$(INSTALL_DIR) $(DESTDIR)$(BINDIR)
+@@ -57,14 +57,11 @@
+ 	$(INSTALL_DIR) $(DESTDIR)$(SHAREDIR)
+ 	$(INSTALL_DIR) $(DESTDIR)$(SHAREDIR)/x2gofeature.d
+ 	$(INSTALL_PROGRAM) share/x2go/x2gofeature.d/*.features $(DESTDIR)$(SHAREDIR)/x2gofeature.d/
+-	$(INSTALL_DIR) $(DESTDIR)$(NXLIBDIR)/bin/
+-	$(INSTALL_SYMLINK) nxagent $(DESTDIR)$(NXLIBDIR)/bin/x2goagent
+ 
+ install_data:
+ 	$(INSTALL_DIR) $(DESTDIR)$(SHAREDIR)/
+ 	$(INSTALL_FILE) etc/rgb $(DESTDIR)$(SHAREDIR)/
+ 	$(INSTALL_DIR) $(DESTDIR)$(SHAREDIR)/../pixmaps/
+-	$(INSTALL_FILE) share/pixmaps/x2go.xpm $(DESTDIR)$(SHAREDIR)/../pixmaps/
+ 	$(INSTALL_SYMLINK) $(ETCDIR)/rgb $(DESTDIR)$(SHAREDIR)/
+ 
+ install_config:
