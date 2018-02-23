@@ -119,7 +119,7 @@ gmp - Add support for dev-libs/gmp (GNU MP library)
 gnome - Add GNOME support
 gnome-keyring - Enable support for storing passwords via gnome-keyring
 gnuplot - Enable support for gnuplot (data and function plotting)
-gnutls - Add support for net-libs/gnutls (TLS 1.0 and SSL 3.0 support)
+gnutls - Prefer net-libs/gnutls as SSL/TLS provider (ineffective with USE=-ssl)
 gphoto2 - Add digital camera support
 gpm - Add support for sys-libs/gpm (Console-based mouse driver)
 gps - Add support for Global Positioning System
@@ -179,7 +179,7 @@ libcaca - Add support for colored ASCII-art graphics
 libedit - Use the libedit library (replacement for readline)
 libffi - Enable support for Foreign Function Interface library
 libnotify - Enable desktop notification support
-libressl - Use dev-libs/libressl as SSL provider (might need ssl USE flag), packages should not depend on this USE flag
+libressl - Use dev-libs/libressl instead of dev-libs/openssl as SSL/TLS provider (ineffective with USE=-ssl), packages should not depend on this USE flag
 libsamplerate - Build with support for converting sample rates using libsamplerate
 libwww - Add libwww support (General purpose WEB API)
 lirc - Add support for lirc (Linux's Infra-Red Remote Control)
@@ -319,7 +319,7 @@ sox - Add support for Sound eXchange (SoX)
 speex - Add support for the speex audio codec (used for speech)
 spell - Add dictionary support
 sqlite - Add support for sqlite - embedded sql database
-ssl - Add support for Secure Socket Layer connections
+ssl - Add support for SSL/TLS connections (Secure Socket Layer / Transport Layer Security)
 startup-notification - Enable application startup event feedback mechanism
 static - !!do not set this during bootstrap!! Causes binaries to be statically linked instead of dynamically
 static-libs - Build static versions of dynamic libraries as well

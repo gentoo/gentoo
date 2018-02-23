@@ -174,6 +174,7 @@ src_prepare() {
 	# patches "${WORKDIR}/include"
 	cd "${WORKDIR}"
 	epatch "${FILESDIR}/${PN}-includes.patch"
+	epatch "${FILESDIR}/${PN}-11.1-elf-nhdr.patch"
 
 	# Don't install the hesiod man page or header
 	rm "${WORKDIR}"/include/hesiod.h || die

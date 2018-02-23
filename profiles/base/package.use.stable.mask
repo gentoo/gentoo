@@ -5,9 +5,9 @@
 # Please use the same syntax as in package.use.mask
 
 # Ilya Tumaykin <itumaykin+gentoo@gmail.com> (13 Feb 2018)
-# Requires >=dev-lang/mujs-1.0.0 stabilized. mpv-0.27.1 is stabilized
+# Requires >=dev-lang/mujs-1.0.0 stabilized. mpv-0.27.2 is stabilized
 # due to a security bug, so we won't bother with javascript this time.
-~media-video/mpv-0.27.1 javascript
+~media-video/mpv-0.27.2 javascript
 
 # Andrey Grozin <grozin@gentoo.org> (24 Jan 2018)
 # Depends on unstable dev-python/sphinx-gallery.
