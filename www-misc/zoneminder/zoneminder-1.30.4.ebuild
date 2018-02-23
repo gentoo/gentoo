@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # TO DO:
@@ -81,11 +81,11 @@ RDEPEND="${DEPEND}"
 # webserver in global scope (/etc/zm.conf etc), so we hardcode apache here.
 need_apache
 
-S=${WORKDIR}/${MY_PN}-${PV}
-
 PATCHES=(
 	"${FILESDIR}/${PN}-1.30.2"-diskspace.patch
 	"${FILESDIR}/${PN}-1.30.4"-path_zms.patch
+	"${FILESDIR}/${PN}-1.30.4"-glibc226.patch
+	"${FILESDIR}/${PN}-1.30.4"-gcc7.patch
 )
 
 MY_ZM_WEBDIR=/usr/share/zoneminder/www

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ MATE_LA_PUNT="yes"
 inherit mate
 
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="amd64 ~arm x86"
+	KEYWORDS="~amd64 ~arm ~x86"
 fi
 
 DESCRIPTION="Atril document viewer for MATE"
@@ -20,8 +20,7 @@ IUSE="caja dbus debug djvu dvi epub +introspection gnome-keyring gtk3 +postscrip
 REQUIRED_USE="t1lib? ( dvi )
 	!gtk3? ( !epub )" #608604
 
-RDEPEND=">=app-text/poppler-0.16:0=[cairo]
-	app-text/rarian:0
+COMMON_DEPEND=">=app-text/poppler-0.16:0=[cairo]
 	dev-libs/atk:0
 	>=dev-libs/glib-2.36:2
 	>=dev-libs/libxml2-2.5:2
@@ -54,8 +53,11 @@ RDEPEND=">=app-text/poppler-0.16:0=[cairo]
 	xps? ( >=app-text/libgxps-0.2.0:0 )
 	!!app-text/mate-document-viewer"
 
-DEPEND="${RDEPEND}
+RDEPEND="${COMMON_DEPEND}"
+
+DEPEND="${COMMON_DEPEND}
 	app-text/docbook-xml-dtd:4.1.2
+	app-text/rarian:0
 	app-text/yelp-tools:0
 	>=app-text/scrollkeeper-dtd-1:1.0
 	dev-util/gtk-doc
@@ -66,6 +68,8 @@ DEPEND="${RDEPEND}
 
 # Tests use dogtail which is not available on Gentoo.
 RESTRICT="test"
+
+FILES=( "${FILESDIR}/${PN}-cve-2017-1000083.patch" )
 
 src_configure() {
 	# Passing --disable-help would drop offline help, that would be inconsistent
