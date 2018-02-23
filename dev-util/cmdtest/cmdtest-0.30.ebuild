@@ -26,3 +26,7 @@ src_compile() {
 	addwrite /proc/self/comm
 	distutils-r1_src_compile
 }
+
+python_test() {
+	"${EPYTHON}" -m unittest discover -v -p '*_tests.py' || die
+}
