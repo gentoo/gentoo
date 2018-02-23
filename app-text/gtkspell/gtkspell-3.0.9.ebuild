@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/project/${PN}/${PV}/${MY_P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="3/0"
-KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~mips ~ppc ~ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos ~x86-solaris"
+KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~mips ppc ~ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos ~x86-solaris"
 IUSE="+introspection vala"
 REQUIRED_USE="vala? ( introspection )"
 
