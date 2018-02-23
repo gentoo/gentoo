@@ -7898,7 +7898,7 @@ media-sound/erec 2.2.0.1: A shared audio recording server
 media-sound/exaile 3.4.5: a media player aiming to be similar to AmaroK, but for GTK+
 media-sound/fapg 0.41: Fast Audio Playlist Generator
 media-sound/flac123 0.0.12: console app for playing FLAC audio files
-media-sound/flacon 3.1.1 4.0.0: Extracts audio tracks from an audio CD image to separate tracks
+media-sound/flacon 4.0.0: Extracts audio tracks from an audio CD image to separate tracks
 media-sound/flake 0.11: An alternative to the FLAC reference encoder
 media-sound/fluid-soundfont 3.1: The Fluid R3 soundfont
 media-sound/fluidsynth 1.1.6-r1: Software real-time synthesizer based on the Soundfont 2 specifications
