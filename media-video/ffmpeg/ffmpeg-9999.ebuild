@@ -17,6 +17,7 @@ FFMPEG_SUBSLOT=56.58.58
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SCM="git-r3"
+	EGIT_MIN_CLONE_TYPE="single"
 	EGIT_REPO_URI="https://git.ffmpeg.org/ffmpeg.git"
 fi
 
