@@ -9,6 +9,7 @@
 		<name>Matthew Thode</name>
 	</maintainer>
 	<longdescription lang="en">
+		Python library for consuming OpenStack sevice-types-authority data
 	</longdescription>
 	<upstream>
 		<remote-id type="github">openstack/os-service-types</remote-id>
