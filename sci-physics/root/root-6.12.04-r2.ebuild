@@ -4,6 +4,8 @@
 EAPI=6
 
 CMAKE_BUILD_TYPE=Release
+# ninja does not work due to fortran
+CMAKE_MAKEFILE_GENERATOR=emake
 FORTRAN_NEEDED="fortran"
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 
