@@ -18,7 +18,7 @@ if [[ ${PV} != *9999* ]]; then
 		https://github.com/mpv-player/mpv/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		https://dev.gentoo.org/~kensington/distfiles/${P}-patches-${PR}.tar.xz
 	"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux"
+	KEYWORDS="~alpha amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux"
 	DOCS=( RELEASE_NOTES )
 else
 	EGIT_REPO_URI="https://github.com/mpv-player/mpv.git"

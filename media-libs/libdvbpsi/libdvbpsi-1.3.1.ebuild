@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ SRC_URI="https://download.videolan.org/pub/${PN}/${PV}/${P}.tar.bz2"
 LICENSE="LGPL-2.1"
 # Sublot == libdvbpsi.so major
 SLOT="0/10"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="doc static-libs"
 
 RDEPEND=""
