@@ -1632,6 +1632,7 @@ dev-perl/GD:animgif - Enable animated gif support
 dev-perl/GD:fcgi - Build for FastCGI compatibility via dev-libs/fcgi instead of using PerlIO
 dev-perl/Graphics-ColorNames:recommended - Install recommended support modules
 dev-perl/HTML-Mason:modperl - Enable www-apache/mod_perl support
+dev-perl/HTTP-Entity-Parser:xs - Install C-Based dependieces for faster performance
 dev-perl/JSON:xs - Install C-based dev-perl/JSON-XS for faster performance
 dev-perl/JSON-MaybeXS:xs - Install a C-Based backend to make JSON encode/decode fast
 dev-perl/List-MoreUtils:xs - Install C-Based backend implementation for performance
@@ -1648,6 +1649,7 @@ dev-perl/PDL:pgplot - Enable PGPLOT plotting capabilities
 dev-perl/Sub-Name:suggested - Install extra dependencies needed for extended regression tests
 dev-perl/Test-Warnings:suggested - Install optional dependencies for extra tests
 dev-perl/Text-CSV:xs - Install dev-perl/Text-CSV_XS for accelerated decoding
+dev-perl/WWW-Form-UrlEncoded:xs - Install C-Based dependieces for faster performance
 dev-php/PEAR-HTTP_Request2:curl - Force dev-lang/php to be compiled with curl extension
 dev-php/PEAR-HTTP_Request2:fileinfo - Force dev-lang/php to be compiled with fileinfo extension
 dev-php/PEAR-HTTP_Request2:ssl - Force dev-lang/php to be compiled with ssl extension

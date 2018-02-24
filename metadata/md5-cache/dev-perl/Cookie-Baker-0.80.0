@@ -4,10 +4,10 @@ DESCRIPTION=Cookie string generator / parser
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Cookie-Baker/
 IUSE=test +xs
-KEYWORDS=~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=~alpha amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Exporter dev-perl/URI xs? ( >=dev-perl/Cookie-Baker-XS-0.80.0 ) dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/K/KA/KAZEBURO/Cookie-Baker-0.08.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
-_md5_=191bc7a7629205929213e6da6c38ba08
+_md5_=46bf54cc79e06cb6c5a1ae82f6825610

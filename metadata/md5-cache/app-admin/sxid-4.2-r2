@@ -3,10 +3,10 @@ DEPEND=>=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >
 DESCRIPTION=suid, sgid file and directory checking
 EAPI=6
 HOMEPAGE=http://freshmeat.net/projects/sxid
-KEYWORDS=~amd64 ~ppc ~x86
+KEYWORDS=amd64 ~ppc ~x86
 LICENSE=GPL-2
 RDEPEND=virtual/mailx
 SLOT=0
 SRC_URI=http://linukz.org/download/sxid-4.2.tar.gz
 _eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=e97b95e9d109e47d451ea6ca7c677434
+_md5_=8d716306fa416f7baae6a970af72ee3a

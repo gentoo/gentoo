@@ -4,10 +4,10 @@ DESCRIPTION=XS parsing/building of application/x-www-form-urlencoded
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/WWW-Form-UrlEncoded-XS/
 IUSE=test
-KEYWORDS=~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=~alpha amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Exporter dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/K/KA/KAZEBURO/WWW-Form-UrlEncoded-XS-0.24.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
-_md5_=7eb435661346a1d35ffb197e67f60221
+_md5_=1d0bb7098a655906bf4a979a53db1bd5

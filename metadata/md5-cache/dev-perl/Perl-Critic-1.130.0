@@ -4,10 +4,10 @@ DESCRIPTION=Critique Perl source code for best-practices
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Perl-Critic/
 IUSE=test minimal examples emacs
-KEYWORDS=~alpha ~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris
+KEYWORDS=~alpha amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/B-Keywords-1.50.0 virtual/perl-Carp >=dev-perl/Config-Tiny-2 >=dev-perl/Email-Address-1.889.0 >=dev-perl/Exception-Class-1.230.0 >=virtual/perl-Exporter-5.630.0 dev-perl/File-HomeDir virtual/perl-File-Path virtual/perl-File-Spec virtual/perl-File-Temp dev-perl/File-Which virtual/perl-Getopt-Long dev-perl/IO-String >=dev-perl/List-MoreUtils-0.190.0 >=dev-perl/Module-Pluggable-3.100.0 >=dev-perl/PPI-1.224 >=dev-perl/PPIx-Regexp-0.27.0 >=dev-perl/PPIx-Utilities-1.1.0 virtual/perl-Pod-Parser >=dev-perl/Pod-Spell-1 >=dev-perl/Readonly-2 virtual/perl-Scalar-List-Utils >=dev-perl/String-Format-1.130.0 dev-perl/Task-Weaken >=virtual/perl-Term-ANSIColor-2.20.0 >=virtual/perl-Test-Simple-0.920.0 >=virtual/perl-Text-ParseWords-3 dev-perl/Perl-Tidy >=virtual/perl-version-0.770.0 emacs? ( virtual/emacs ) dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/P/PE/PETDANCE/Perl-Critic-1.130.tar.gz
 _eclasses_=elisp-common	23f47b2e1de7abf387105eddd1318738	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
-_md5_=92629051687b7593c2dcd7658916a938
+_md5_=a1d5ed582424f36c23fdb176bfbbfb7c

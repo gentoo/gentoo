@@ -127,7 +127,7 @@ app-admin/sudo 1.8.20_p2: Allows users or groups to run commands as other users
 app-admin/superadduser 1.0.9: Interactive adduser script from Slackware
 app-admin/supervisor 3.1.4: A system for controlling process state under UNIX
 app-admin/swatchdog 3.2.4-r1: Simple log watcher
-app-admin/sxid 4.2-r1: suid, sgid file and directory checking
+app-admin/sxid 4.2-r1 4.2-r2: suid, sgid file and directory checking
 app-admin/sysklogd 1.5.1-r1: Standard log daemons
 app-admin/syslog-ng 3.7.3 3.13.2: syslog replacement with advanced filtering features
 app-admin/syslog-summary 1.14-r1: Summarizes the contents of a syslog log file
@@ -932,7 +932,7 @@ app-leechcraft/liblaretz 0.1.0: Shared library to be used by the Laretz sync ser
 app-misc/abook 0.6.1: Abook is a text-based addressbook program designed to use with mutt mail client
 app-misc/actkbd 0.2.8-r2: A keyboard shortcut daemon
 app-misc/asciinema 1.4.0: Command line recorder for asciinema.org service
-app-misc/astrolog 5.40-r2: A many featured astrology chart calculation program
+app-misc/astrolog 5.40-r2 5.40-r3: A many featured astrology chart calculation program
 app-misc/astrolog-ephemeris 5.40: ephemeris files for optional extended accuracy of astrolog's calculations
 app-misc/away 0.9.5-r1 0.9.5-r2: Terminal locking program with few additional features
 app-misc/banner 1.3.3: The well known banner program for Linux
@@ -3487,7 +3487,8 @@ dev-perl/Convert-Color 0.110.0: Color space conversions and named lookups
 dev-perl/Convert-PEM 0.80.0-r1: Read/write encrypted ASN.1 PEM files
 dev-perl/Convert-TNEF 0.180.0-r2: A Perl module for reading TNEF files
 dev-perl/Convert-UUlib 1.400.0-r1: A Perl interface to the uulib library
-dev-perl/Cookie-Baker 0.60.0: Cookie string generator / parser
+dev-perl/Cookie-Baker 0.60.0 0.80.0: Cookie string generator / parser
+dev-perl/Cookie-Baker-XS 0.80.0: Accelerate Cookie::Baker's crush_cookie
 dev-perl/Cpanel-JSON-XS 3.23.300: cPanel fork of JSON::XS, fast and correct serializing
 dev-perl/Crypt-Blowfish 2.140.0-r1: Crypt::Blowfish module for perl
 dev-perl/Crypt-CAST5_PP 1.40.0-r1: CAST5 block cipher in pure Perl
@@ -3768,8 +3769,10 @@ dev-perl/HTTP-Cookies 6.10.0: Storage of cookies
 dev-perl/HTTP-DAV 0.480.0: A WebDAV client library for Perl5
 dev-perl/HTTP-Daemon 6.10.0-r1: Base class for simple HTTP servers
 dev-perl/HTTP-Date 6.20.0-r1: Date conversion for HTTP date formats
+dev-perl/HTTP-Entity-Parser 0.200.0: PSGI compliant HTTP Entity Parser
 dev-perl/HTTP-Headers-Fast 0.200.0: Faster implementation of HTTP::Headers
 dev-perl/HTTP-Message 6.110.0: Base class for Request/Response
+dev-perl/HTTP-MultiPartParser 0.20.0: Low Level MultiPart MIME HTTP parser
 dev-perl/HTTP-Negotiate 6.10.0: HTTP content negotiation
 dev-perl/HTTP-Request-AsCGI 1.200.0: Set up a CGI environment from an HTTP::Request
 dev-perl/HTTP-Server-Simple 0.520.0: Lightweight HTTP Server
@@ -4001,7 +4004,7 @@ dev-perl/OLE-StorageLite 0.190.0-r1: Simple Class for OLE document interface
 dev-perl/ORLite 1.980.0-r1: Extremely light weight SQLite-specific ORM
 dev-perl/Object-Realize-Later 0.190.0: Delayed creation of objects
 dev-perl/Ogg-Vorbis-Header 0.30.0-r1: An object-oriented interface to Ogg Vorbis information and comment fields
-dev-perl/Ogg-Vorbis-Header-PurePerl 1.0.0-r1: Object-oriented interface to Ogg Vorbis information and comment fields
+dev-perl/Ogg-Vorbis-Header-PurePerl 1.0.0-r1 1.0.0-r2: Object-oriented interface to Ogg Vorbis information and comment fields
 dev-perl/OpenGL 0.670.400: Perl interface providing graphics display using OpenGL
 dev-perl/PAR 1.14.0-r1: Perl Archive Toolkit
 dev-perl/PAR-Dist 0.490.0-r1: Create and manipulate PAR distributions
@@ -4020,7 +4023,7 @@ dev-perl/Package-Constants 0.60.0: List all constants declared in a package
 dev-perl/Package-DeprecationManager 0.150.0: Manage deprecation warnings for your distribution
 dev-perl/Package-Stash 0.370.0: Routines for manipulating stashes
 dev-perl/Package-Stash-XS 0.280.0: Faster and more correct implementation of the Package::Stash API
-dev-perl/PadWalker 2.200.0: play with other peoples' lexical variables
+dev-perl/PadWalker 2.200.0 2.300.0: play with other peoples' lexical variables
 dev-perl/Palm 1.12.0-r1: Perl Module for Palm Pilots
 dev-perl/Pango 1.227.0: Layout and render international text
 dev-perl/Parallel-ForkManager 1.170.0: A simple parallel processing fork manager
@@ -4035,7 +4038,7 @@ dev-perl/PatchReader 0.9.6-r1: Module for reading diff-compatible patch files
 dev-perl/Path-Class 0.360.0: Cross-platform path specification manipulation
 dev-perl/Path-Tiny 0.104.0: File path utility
 dev-perl/Pegex 0.600.0: Acmeist PEG Parser Framework
-dev-perl/Perl-Critic 1.123: Critique Perl source code for best-practices
+dev-perl/Perl-Critic 1.123 1.130.0: Critique Perl source code for best-practices
 dev-perl/Perl-Critic-Dynamic 0.50.0-r1: Base class for dynamic Policies
 dev-perl/Perl-Tags 0.320.0: Generate (possibly exuberant) Ctags style tags for Perl sourcecode
 dev-perl/Perl-Tidy 20160302.0.0: Perl script indenter and beautifier
@@ -4046,7 +4049,7 @@ dev-perl/PerlIO-gzip 0.190.0: PerlIO layer to gzip/gunzip
 dev-perl/PerlIO-via-Timeout 0.320.0: PerlIO layer that adds read & write timeout to a handle
 dev-perl/PerlIO-via-dynamic 0.140.0-r1: Dynamic PerlIO layers
 dev-perl/PlRPC 0.202.0-r2: The Perl RPC Module
-dev-perl/Plack 1.3.900: Perl Superglue for Web frameworks and Web Servers (PSGI toolkit)
+dev-perl/Plack 1.3.900 1.4.400: Perl Superglue for Web frameworks and Web Servers (PSGI toolkit)
 dev-perl/Plucene 1.250.0-r2: Plucene - the Perl lucene port
 dev-perl/Pod-Coverage 0.230.0-r1: Checks if the documentation of a module is comprehensive
 dev-perl/Pod-LaTeX 0.610.0: Convert Pod data to formatted LaTeX
@@ -4095,11 +4098,11 @@ dev-perl/Search-Xapian 1.2.23.0: Perl XS frontend to the Xapian C++ search libra
 dev-perl/Server-Starter 0.330.0: A superdaemon for hot-deploying server programs
 dev-perl/Set-Infinite 0.650.0-r1: Sets of intervals
 dev-perl/Set-IntSpan 1.190.0-r1: Manages sets of integers
-dev-perl/Set-Object 1.350.0: set of objects and strings
+dev-perl/Set-Object 1.350.0 1.380.0: set of objects and strings
 dev-perl/Set-Scalar 1.290.0: Scalar set operations
 dev-perl/Shell 0.730.0: Run shell commands transparently within perl
 dev-perl/Shell-EnvImporter 1.70.0-r2: Import environment variable changes from external commands or shell scripts
-dev-perl/ShipIt 0.600.0: Software Release Tool
+dev-perl/ShipIt 0.600.0 0.600.0-r1: Software Release Tool
 dev-perl/Signal-Mask 0.8.0: Signal masks made easy
 dev-perl/Snowball-Norwegian 1.200.0-r1: Porters stemming algorithm for Norwegian
 dev-perl/Snowball-Swedish 1.200.0-r1: Porters stemming algorithm for Swedish
@@ -4183,6 +4186,7 @@ dev-perl/Test-MockModule 0.50.0-r2 0.110.0: Override subroutines in a module for
 dev-perl/Test-MockObject 1.201.505.270-r1: Perl extension for emulating troublesome interfaces
 dev-perl/Test-MockRandom 1.10.0: Replaces random number generation with non-random number generation
 dev-perl/Test-MockTime 0.150.0: Replaces actual time with simulated time
+dev-perl/Test-MockTime-HiRes 0.70.0: Replace actual time with simulated high resolution time
 dev-perl/Test-Most 0.310.0-r1: Most commonly needed test functions and features
 dev-perl/Test-NoTabs 2.0.0-r1: Check the presence of tabs in your project
 dev-perl/Test-NoWarnings 1.40.0-r3: Make sure you didn't emit any warnings while testing
@@ -4288,6 +4292,8 @@ dev-perl/Video-Info 0.993.0-r1: Perl extension for getting video info
 dev-perl/Video-ivtv 0.13-r1: Video::ivtv perl module, for use with ivtv-ptune
 dev-perl/WWW-Bugzilla 1.500.0-r1: WWW::Bugzilla - automate interaction with bugzilla
 dev-perl/WWW-Curl 4.170.0: Perl extension interface for libcurl
+dev-perl/WWW-Form-UrlEncoded 0.240.0: parser and builder for application/x-www-form-urlencoded
+dev-perl/WWW-Form-UrlEncoded-XS 0.240.0: XS parsing/building of application/x-www-form-urlencoded
 dev-perl/WWW-Mechanize 1.750.0: Handy web browsing in a Perl object
 dev-perl/WWW-Mechanize-FormFiller 0.110.0: Framework to automate HTML forms
 dev-perl/WWW-RobotRules 6.20.0: Parse /robots.txt file
@@ -6175,7 +6181,7 @@ dev-util/kdevelop-python 5.2.1: Python plugin for KDevelop
 dev-util/kyua 0.13-r1: Testing framework for infrastructure software
 dev-util/lcov 1.9-r1 1.11: A graphical front-end for GCC's coverage testing tool gcov
 dev-util/linklint 2.3.5: A Perl program that checks links on web sites
-dev-util/lockrun 20120508: Lockrun - runs cronjobs with overrun protection
+dev-util/lockrun 20120508 20120508-r1: Lockrun - runs cronjobs with overrun protection
 dev-util/ltrace 0.7.2: trace library calls made at runtime
 dev-util/lttng-modules 2.7.1: LTTng Kernel Tracer Modules
 dev-util/lttng-tools 2.7.1: Linux Trace Toolkit - next generation
