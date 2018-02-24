@@ -97,7 +97,7 @@ app-admin/monit 5.23.0: Monitoring and managing daemons or similar programs runn
 app-admin/newsyslog 1.1-r1: a highly configurable program for managing and archiving log files
 app-admin/openrc-settingsd 1.0.1: System settings D-Bus service for OpenRC
 app-admin/packagekit-base 1.0.11 1.1.5-r2 1.1.7: Manage packages in a secure way using a cross-distro and cross-architecture API
-app-admin/packagekit-qt 0.9.6: Qt PackageKit backend library
+app-admin/packagekit-qt 0.9.6 1.0.0: Qt PackageKit backend library
 app-admin/pass 1.7.1: Stores, retrieves, generates, and synchronizes passwords securely
 app-admin/passook 20121001: Password generator capable of generating pronounceable and/or secure passwords
 app-admin/perl-cleaner 2.20 2.25: User land tool for cleaning up old perl installs
@@ -6905,7 +6905,7 @@ mail-client/mutt 1.7.2: A small but very powerful text-based mail client
 mail-client/nail 12.4-r3: an enhanced mailx-compatible mail client
 mail-client/pinepgp 0.18.0-r1: Use GPG/PGP with Pine
 mail-client/roundcube 1.2.7: A browser-based multilingual IMAP client with an application-like user interface
-mail-client/sylpheed 3.5.1: A lightweight email client and newsreader
+mail-client/sylpheed 3.5.1 3.6.0: A lightweight email client and newsreader
 mail-client/thunderbird 45.8.0 52.5.0 52.5.2 52.6.0-r1: Thunderbird Mail Client
 mail-client/thunderbird-bin 52.6.0: Thunderbird Mail Client
 mail-client/trojita 0.7-r2: A Qt IMAP e-mail client
@@ -7842,7 +7842,7 @@ media-radio/fldigi 4.0.12: Sound card based multimode software modem for Amateur
 media-radio/flrig 1.3.36: Transceiver control program for Amateur Radio use
 media-radio/gpredict 1.3-r1 2.2: Real-time satellite tracking and orbit prediction application
 media-radio/grig 0.8.1: A tool for controlling amateur radios
-media-radio/ibp 0.21: Shows currently transmitting beacons of the International Beacon Project (IBP)
+media-radio/ibp 0.21 0.21-r1: Shows currently transmitting beacons of the International Beacon Project (IBP)
 media-radio/qrq 0.3.1 0.3.1-r1: Yet another CW trainer for Linux/Unix
 media-radio/qsstv 9.2.6: Amateur radio SSTV software
 media-radio/svxlink 15.11 17.12.1: Multi Purpose Voice Services System, including Qtel for EchoLink
