@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -10,7 +10,7 @@ SRC_URI="http://wwwhome.cs.utwente.nl/~ptdeboer/ham/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="X"
 
 RDEPEND="sys-libs/ncurses:0
