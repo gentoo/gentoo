@@ -9,13 +9,21 @@ inherit distutils-r1 linux-info user
 
 DESCRIPTION="A virtual network service for Openstack"
 HOMEPAGE="https://launchpad.net/neutron"
-SRC_URI="https://dev.gentoo.org/~prometheanfire/dist/openstack/neutron/pike/configs.tar.gz -> neutron-configs-${PV}.tar.gz
-	https://dev.gentoo.org/~prometheanfire/dist/openstack/neutron/pike/ml2_plugins.tar.gz -> neutron-ml2-plugins-${PV}.tar.gz
+if [[ ${PV} == *9999 ]];then
+	inherit git-r3
+	SRC_URI="https://dev.gentoo.org/~prometheanfire/dist/openstack/neutron/queens/configs.tar.gz -> neutron-configs-${PV}.tar.gz
+	https://dev.gentoo.org/~prometheanfire/dist/openstack/neutron/queens/ml2_plugins.tar.gz -> neutron-ml2-plugins-${PV}.tar.gz"
+	EGIT_REPO_URI="https://github.com/openstack/neutron.git"
+	EGIT_BRANCH="stable/queens"
+else
+	SRC_URI="https://dev.gentoo.org/~prometheanfire/dist/openstack/neutron/queens/configs.tar.gz -> neutron-configs-${PV}.tar.gz
+	https://dev.gentoo.org/~prometheanfire/dist/openstack/neutron/queens/ml2_plugins.tar.gz -> neutron-ml2-plugins-${PV}.tar.gz
 	https://tarballs.openstack.org/${PN}/${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm64 ~x86"
+fi
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
 IUSE="compute-only dhcp haproxy ipv6 l3 metadata openvswitch linuxbridge server sqlite mysql postgres"
 REQUIRED_USE="!compute-only? ( || ( mysql postgres sqlite ) )
 						compute-only? ( !mysql !postgres !sqlite !dhcp !l3 !metadata !server
@@ -30,7 +38,7 @@ DEPEND="
 
 RDEPEND="
 	${CDEPEND}
-	dev-python/paste[${PYTHON_USEDEP}]
+	>=dev-python/paste-2.0.2[${PYTHON_USEDEP}]
 	>=dev-python/pastedeploy-1.5.0-r1[${PYTHON_USEDEP}]
 	>=dev-python/routes-2.3.1[${PYTHON_USEDEP}]
 	>=dev-python/debtcollector-1.2.0[${PYTHON_USEDEP}]
@@ -42,18 +50,16 @@ RDEPEND="
 	!~dev-python/pecan-1.0.3[${PYTHON_USEDEP}]
 	!~dev-python/pecan-1.0.4[${PYTHON_USEDEP}]
 	!~dev-python/pecan-1.2.0[${PYTHON_USEDEP}]
-	>=dev-python/httplib2-0.7.5[${PYTHON_USEDEP}]
+	>=dev-python/httplib2-0.9.1[${PYTHON_USEDEP}]
 	>=dev-python/jinja-2.8[${PYTHON_USEDEP}]
 	!~dev-python/jinja-2.9.0[${PYTHON_USEDEP}]
 	!~dev-python/jinja-2.9.1[${PYTHON_USEDEP}]
 	!~dev-python/jinja-2.9.2[${PYTHON_USEDEP}]
 	!~dev-python/jinja-2.9.3[${PYTHON_USEDEP}]
 	!~dev-python/jinja-2.9.4[${PYTHON_USEDEP}]
-	>=dev-python/keystonemiddleware-4.12.0[${PYTHON_USEDEP}]
-	>=dev-python/netaddr-0.7.13[${PYTHON_USEDEP}]
-	!~dev-python/netaddr-0.7.16[${PYTHON_USEDEP}]
+	>=dev-python/netaddr-0.7.18[${PYTHON_USEDEP}]
 	>=dev-python/netifaces-0.10.4[${PYTHON_USEDEP}]
-	>=dev-python/neutron-lib-1.9.0[${PYTHON_USEDEP}]
+	>=dev-python/neutron-lib-1.13.0[${PYTHON_USEDEP}]
 	>=dev-python/python-neutronclient-6.3.0[${PYTHON_USEDEP}]
 	>=dev-python/tenacity-3.2.1[${PYTHON_USEDEP}]
 	>=dev-python/ryu-4.14[${PYTHON_USEDEP}]
@@ -89,43 +95,38 @@ RDEPEND="
 		!~dev-python/sqlalchemy-1.1.8[${PYTHON_USEDEP}]
 	)
 	>=dev-python/webob-1.7.1[${PYTHON_USEDEP}]
-	>=dev-python/keystoneauth-3.1.0[${PYTHON_USEDEP}]
+	>=dev-python/keystoneauth-3.3.0[${PYTHON_USEDEP}]
 	>=dev-python/alembic-0.8.10[${PYTHON_USEDEP}]
-	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
+	>=dev-python/six-1.10.0[${PYTHON_USEDEP}]
 	>=dev-python/stevedore-1.20.1[${PYTHON_USEDEP}]
-	>=dev-python/oslo-cache-1.5.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-concurrency-3.8.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-config-4.0.0[${PYTHON_USEDEP}]
-	!~dev-python/oslo-config-4.3.0[${PYTHON_USEDEP}]
-	!~dev-python/oslo-config-4.4.0[${PYTHON_USEDEP}]
-	!~dev-python/oslo-config-3.18.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-context-2.14.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-db-4.24.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-i18n-2.1.0[${PYTHON_USEDEP}]
-	!~dev-python/oslo-i18n-3.15.2[${PYTHON_USEDEP}]
-	>=dev-python/oslo-log-3.22.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-messaging-5.24.2[${PYTHON_USEDEP}]
-	!~dev-python/oslo-messaging-5.25.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-middleware-3.27.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-policy-1.23.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-privsep-1.9.0[${PYTHON_USEDEP}]
-	!~dev-python/oslo-privsep-1.17.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-reports-0.6.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-rootwrap-5.0.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-serialization-1.10.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-cache-1.26.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-concurrency-3.25.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-config-5.1.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-context-2.19.2[${PYTHON_USEDEP}]
+	>=dev-python/oslo-db-4.27.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-i18n-3.15.3[${PYTHON_USEDEP}]
+	>=dev-python/oslo-log-3.36.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-messaging-5.29.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-middleware-3.31.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-policy-1.30.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-privsep-1.23.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-reports-1.18.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-rootwrap-5.8.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-serialization-1.18.0[${PYTHON_USEDEP}]
 	!~dev-python/oslo-serialization-2.19.1[${PYTHON_USEDEP}]
-	>=dev-python/oslo-service-1.10.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-utils-3.20.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-versionedobjects-1.17.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-service-1.24.0[${PYTHON_USEDEP}]
+	!~dev-python/oslo-service-1.28.1[${PYTHON_USEDEP}]
+	>=dev-python/oslo-utils-3.33.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-versionedobjects-1.31.2[${PYTHON_USEDEP}]
 	>=dev-python/osprofiler-1.4.0[${PYTHON_USEDEP}]
-	>=dev-python/ovs-2.7.0[${PYTHON_USEDEP}]
-	>=dev-python/ovsdbapp-0.4.0[${PYTHON_USEDEP}]
+	>=dev-python/ovs-2.8.0[${PYTHON_USEDEP}]
+	>=dev-python/ovsdbapp-0.8.0[${PYTHON_USEDEP}]
 	>=dev-python/psutil-3.2.2[${PYTHON_USEDEP}]
 	>=dev-python/pyroute2-0.4.21[${PYTHON_USEDEP}]
 	>=dev-python/weakrefmethod-1.0.2[$(python_gen_usedep 'python2_7')]
-	>=dev-python/python-novaclient-9.0.0[${PYTHON_USEDEP}]
-	>=dev-python/python-designateclient-1.5.0[${PYTHON_USEDEP}]
-	>=dev-python/os-xenapi-0.2.0[${PYTHON_USEDEP}]
+	>=dev-python/python-novaclient-9.1.0[${PYTHON_USEDEP}]
+	>=dev-python/python-designateclient-2.7.0[${PYTHON_USEDEP}]
+	>=dev-python/os-xenapi-0.3.1[${PYTHON_USEDEP}]
 	dev-python/pyudev[${PYTHON_USEDEP}]
 	sys-apps/iproute2
 	net-misc/iputils[arping]

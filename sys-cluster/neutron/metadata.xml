@@ -19,7 +19,8 @@
   </longdescription>
   <use>
     <flag name="compute-only">Only install things needed on compute hosts</flag>
-    <flag name="dhcp">Installs the initscripts for the neutron dhcp service</flag>
+		<flag name="dhcp">Installs the initscripts for the neutron dhcp service</flag>
+		<flag name="haproxy">haproxy backend support</flag>
     <flag name="l3">Installs the initscripts for the neutron l3 agent service</flag>
     <flag name="metadata">Installs the initscripts for the neutron metadata agent service</flag>
     <flag name="openvswitch">Installs the initscripts for the neutron openvswitch agent service</flag>
