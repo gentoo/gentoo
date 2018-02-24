@@ -3,10 +3,10 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 PYTHON_REQ_USE='threads(+)'
 
-inherit flag-o-matic python-any-r1 waf-utils systemd user
+inherit flag-o-matic python-r1 waf-utils systemd user
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
@@ -39,7 +39,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 CDEPEND="${PYTHON_DEPS}
 	${BDEPEND}
 	sys-libs/libcap
-	dev-python/psutil
+	dev-python/psutil[${PYTHON_USEDEP}]
 	libressl? ( dev-libs/libressl:0= )
 	!libressl? ( dev-libs/openssl:0= )
 	seccomp? ( sys-libs/libseccomp )
@@ -58,9 +58,13 @@ DEPEND="${CDEPEND}
 "
 
 pkg_setup() {
-	python-any-r1_pkg_setup
 	enewgroup ntp 123
 	enewuser ntp 123 -1 /dev/null ntp
+}
+
+src_prepare() {
+	default
+	python_copy_sources
 }
 
 src_configure() {
@@ -80,20 +84,38 @@ src_configure() {
 	# Remove autostripping of binaries
 	sed -i -e '/Strip binaries/d' wscript
 
-	waf-utils_src_configure --nopyc --nopyo --refclock="${CLOCKSTRING}" \
-		$(use	doc			&& echo "--enable-doc") \
-		$(use	early		&& echo "--enable-early-droproot") \
-		$(use	gdb			&& echo "--enable-debug-gdb") \
-		$(use	nist		&& echo "--enable-lockclock") \
-		$(use	samba		&& echo "--enable-mssntp") \
-		$(use	seccomp		&& echo "--enable-seccomp") \
-		$(use	smear		&& echo "--enable-leap-smear") \
-		$(use	tests		&& echo "--alltests") \
-		$(use_enable debug debug)
+	local myconf=(
+		--nopyc
+		--nopyo
+		--refclock="${CLOCKSTRING}"
+		$(use doc	&& echo "--enable-doc")
+		$(use early	&& echo "--enable-early-droproot")
+		$(use gdb	&& echo "--enable-debug-gdb")
+		$(use nist	&& echo "--enable-lockclock")
+		$(use samba	&& echo "--enable-mssntp")
+		$(use seccomp	&& echo "--enable-seccomp")
+		$(use smear	&& echo "--enable-leap-smear")
+		$(use tests	&& echo "--alltests")
+		$(use_enable debug debug) )
+
+	python_configure() {
+		waf-utils_src_configure "${myconf[@]}"
+	}
+	python_foreach_impl run_in_build_dir python_configure
+}
+
+src_compile() {
+	python_compile() {
+		waf-utils_src_compile
+	}
+	python_foreach_impl run_in_build_dir python_compile
 }
 
 src_install() {
-	waf-utils_src_install
+	python_install() {
+		waf-utils_src_install
+	}
+	python_foreach_impl run_in_build_dir python_install
 
 	# Install heat generating scripts
 	use heat && dosbin "${S}/contrib/ntpheat"{,usb}
