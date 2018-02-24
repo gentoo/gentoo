@@ -1,34 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-<email>anthony.g.base@gmail.com</email>
-<name>Anthony G. Basile</name>
-</maintainer>
-<longdescription lang="en">
-</longdescription>
-<use>
-    <flag name="early">Drop root privileges early</flag>
-    <flag name="gdb">Enable debugging with gdb</flag>
-    <flag name="nist">Enable lockclock</flag>
-    <flag name="ntpviz">Make visualizations of offsets, jiffies, etc.</flag>
-    <flag name="rclock_oncore">Oncore driver</flag>
-    <flag name="rclock_trimble">Trimble driver</flag>
-    <flag name="rclock_truetime">Trutime driver (deprecated)</flag>
-    <flag name="rclock_gpsd">Enable gpsd daemon support</flag>
-    <flag name="rclock_jjy">JJY driver</flag>
-    <flag name="rclock_generic">Enable support for generic time radios and GPSDOs</flag>
-    <flag name="rclock_spectracom">Spectracom driver</flag>
-    <flag name="rclock_shm">Obtain refclock info from shared memory-segment</flag>
-    <flag name="rclock_pps">PPS cesium clock driver</flag>
-    <flag name="rclock_hpgps">Hewlett Packard GPS driver</flag>
-    <flag name="rclock_zyfer">Zyfer driver</flag>
-    <flag name="rclock_arbiter">Arbiter 1088A/B GPS driver</flag>
-    <flag name="rclock_nmea">NMEA GPS driver</flag>
-    <flag name="rclock_neoclock">NeoClock4X DCF77/TDF driver</flag>
-    <flag name="rclock_modem">NIST/USNO/PTB Modem Time Services</flag>
-    <flag name="rclock_local">Support for undisciplined local clock (not recommended)</flag>
-    <flag name="smear">Specify the interval over which a leap second is applied (experimental)</flag>
-    <flag name="tests">Enable tests</flag>
-</use>
+	<maintainer type="person">
+		<email>nerdboy@gentoo.org</email>
+		<name>Stephen L Arnold</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>blueness@gentoo.org</email>
+		<name>Anthony G. Basile</name>
+	</maintainer>
+	<longdescription lang="en">
+NTPsec project - a secure, hardened, and improved implementation of Network Time Protocol derived from NTP Classic, Dave Mills’s original.
+	</longdescription>
+	<use>
+		<flag name="early">Drop root privileges early</flag>
+		<flag name="gdb">Enable debugging with gdb</flag>
+		<flag name="nist">Enable lockclock</flag>
+		<flag name="ntpviz">Make visualizations of offsets, jiffies, etc.</flag>
+		<flag name="rclock_oncore">Oncore driver</flag>
+		<flag name="rclock_trimble">Trimble driver</flag>
+		<flag name="rclock_truetime">Trutime driver (deprecated)</flag>
+		<flag name="rclock_gpsd">Enable gpsd daemon support</flag>
+		<flag name="rclock_jjy">JJY driver</flag>
+		<flag name="rclock_generic">Enable support for generic time radios and GPSDOs</flag>
+		<flag name="rclock_spectracom">Spectracom driver</flag>
+		<flag name="rclock_shm">Obtain refclock info from shared memory-segment</flag>
+		<flag name="rclock_pps">PPS cesium clock driver</flag>
+		<flag name="rclock_hpgps">Hewlett Packard GPS driver</flag>
+		<flag name="rclock_zyfer">Zyfer driver</flag>
+		<flag name="rclock_arbiter">Arbiter 1088A/B GPS driver</flag>
+		<flag name="rclock_nmea">NMEA GPS driver</flag>
+		<flag name="rclock_neoclock">NeoClock4X DCF77/TDF driver</flag>
+		<flag name="rclock_modem">NIST/USNO/PTB Modem Time Services</flag>
+		<flag name="rclock_local">Support for undisciplined local clock (not recommended)</flag>
+		<flag name="smear">Specify the interval over which a leap second is applied (experimental)</flag>
+		<flag name="tests">Enable tests</flag>
+	</use>
 </pkgmetadata>
