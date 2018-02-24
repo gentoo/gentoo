@@ -32,7 +32,7 @@ IUSE_NTPSEC_REFCLOCK=${NTPSEC_REFCLOCK[@]/#/rclock_}
 
 LICENSE="HPND MIT BSD-2 BSD CC-BY-SA-4.0"
 SLOT="0"
-IUSE="${IUSE_NTPSEC_REFCLOCK} debug doc early gdb nist ntpviz samba seccomp smear tests" #ionice
+IUSE="${IUSE_NTPSEC_REFCLOCK} debug doc early gdb heat libressl nist ntpviz samba seccomp smear tests" #ionice
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # net-misc/pps-tools oncore,pps
@@ -40,7 +40,8 @@ CDEPEND="${PYTHON_DEPS}
 	${BDEPEND}
 	sys-libs/libcap
 	dev-python/psutil
-	dev-libs/openssl:*
+	libressl? ( dev-libs/libressl:0= )
+	!libressl? ( dev-libs/openssl:0= )
 	seccomp? ( sys-libs/libseccomp )
 "
 RDEPEND="${CDEPEND}
@@ -68,16 +69,21 @@ src_configure() {
 	local string_127=""
 	local rclocks="";
 	local CLOCKSTRING=""
+
 	for refclock in ${NTPSEC_REFCLOCK[@]} ; do
-		if use  rclock_${refclock} ; then
+		if use rclock_${refclock} ; then
 			string_127+="$refclock,"
 		fi
 	done
 	CLOCKSTRING="`echo ${string_127}|sed 's|,$||'`"
+
+	# Remove autostripping of binaries
+	sed -i -e '/Strip binaries/d' wscript
+
 	waf-utils_src_configure --nopyc --nopyo --refclock="${CLOCKSTRING}" \
-		$(use	doc		&& echo "--enable-doc") \
+		$(use	doc			&& echo "--enable-doc") \
 		$(use	early		&& echo "--enable-early-droproot") \
-		$(use	gdb		&& echo "--enable-debug-gdb") \
+		$(use	gdb			&& echo "--enable-debug-gdb") \
 		$(use	nist		&& echo "--enable-lockclock") \
 		$(use	samba		&& echo "--enable-mssntp") \
 		$(use	seccomp		&& echo "--enable-seccomp") \
@@ -88,19 +94,23 @@ src_configure() {
 
 src_install() {
 	waf-utils_src_install
-	mv -v "${ED}/usr/"{,share/}man
-	dosbin	"${S}/contrib/ntpheat"{,usb}
-	dodoc	"${S}/contrib/logrotate-ntpd"
-	systemd_newunit "${FILESDIR}/ntpd.service" ntpd.service
+
+	# Install heat generating scripts
+	use heat && dosbin "${S}/contrib/ntpheat"{,usb}
+
+	# Install the openrc files
 	newinitd "${FILESDIR}/ntpd.rc-r1" "ntp"
 	newconfd "${FILESDIR}/ntpd.confd" "ntp"
-	mkdir "${ED}/etc/systemd/system/"
-	cp -v "${FILESDIR}/ntpd.service" "${ED}/etc/systemd/system/"
-	# ntpd.confd  ntpd.rc-r1  ntpd.service
 
-	mkdir -pv "${ED}/etc/"{logrotate,ntp-conf}.d
+	# Install the systemd unit file
+	systemd_newunit "${FILESDIR}/ntpd.service" ntpd.service
+
+	# Install a log rotate script
+	mkdir -pv "${ED}/etc/"logrotate.d
 	cp -v "${S}/etc/logrotate-config.ntpd" "${ED}/etc/logrotate.d/ntpd"
+
+	# Install the configuration files
 	cp -Rv "${S}/etc/ntp.d/" "${ED}/etc/"
-	mv -v "${ED}/etc/ntp.d/example.conf" "${ED}/etc/ntp.conf"
-	sed "s|includefile |includefile ntp-conf.d/|" -i "${ED}/etc/ntp.conf"
+	mv -v "${ED}/etc/ntp.d/default.conf" "${ED}/etc/ntp.conf"
+	sed "s|includefile |includefile ntp.d/|" -i "${ED}/etc/ntp.conf"
 }
