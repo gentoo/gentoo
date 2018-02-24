@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/cliapp[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/markdown[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/ttystatus[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+DEPEND=dev-python/cliapp[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/markdown[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/ttystatus[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 DESCRIPTION=black box tests Unix command line tools
 EAPI=6
 HOMEPAGE=http://liw.fi/cmdtest/
 IUSE=python_targets_python2_7
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
 LICENSE=GPL-3
-RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+RDEPEND=dev-python/cliapp[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/markdown[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/ttystatus[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 REQUIRED_USE=|| ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=http://code.liw.fi/debian/pool/main/c/cmdtest/cmdtest_0.30.orig.tar.xz
 _eclasses_=distutils-r1	372bbe39047c0a2550319a3a82f3e063	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	e9350ec46bb5c9f3504b4fbe8b8d8987	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=fd05c7c5926c5a8ebfa4f1b559072202
+_md5_=e10b474dae9afa7e2175bab8d4b69334
