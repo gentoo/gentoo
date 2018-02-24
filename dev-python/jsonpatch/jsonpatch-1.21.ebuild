@@ -8,8 +8,7 @@ RESTRICT="test"
 
 inherit distutils-r1
 
-DESCRIPTION="Apply JSON-Patches according to
-	http://tools.ietf.org/html/draft-pbryan-json-patch-04"
+DESCRIPTION="Apply JSON-Patches like http://tools.ietf.org/html/draft-pbryan-json-patch-04"
 HOMEPAGE="https://github.com/stefankoegl/python-json-patch"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
