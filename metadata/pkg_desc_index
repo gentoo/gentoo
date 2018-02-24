@@ -4734,7 +4734,7 @@ dev-python/docopt 0.6.2-r2: Pythonic argument parser, that will make you smile
 dev-python/doctest-ignore-unicode 0.1.2: Add flag to ignore unicode literal prefixes in doctests
 dev-python/docutils 0.12 0.13.1: Python Documentation Utilities
 dev-python/docutils-glep 0.4-r1: Gentoo GLEP support for docutils
-dev-python/dogpile-cache 0.6.1 0.6.2 0.6.4: A locking API for expiring values while a single thread generates a new value.
+dev-python/dogpile-cache 0.6.4: A locking API for expiring values while a single thread generates a new value.
 dev-python/dogpile-core 0.4.1: A lock which allows a thread to generate an expensive resource while other threads use the old value
 dev-python/doit 0.23.0-r1 0.29.0: Automation tool
 dev-python/doit-py 0.4.0: doit tasks for python stuff
@@ -5037,7 +5037,7 @@ dev-python/ndg-httpsclient 0.4.0: Provides enhanced HTTPS support for httplib an
 dev-python/netaddr 0.7.12 0.7.18 0.7.19: Network address representation and manipulation library
 dev-python/netifaces 0.10.6: Portable network interface information
 dev-python/networkx 1.11: Python tools to manipulate graphs and complex networks
-dev-python/neutron-lib 0.0.2 0.4.0 1.1.0 1.9.1: Neutron shared routines and utilities.
+dev-python/neutron-lib 1.9.1: Neutron shared routines and utilities.
 dev-python/nevow 0.11.1: A web templating framework that provides LivePage, an automatic AJAX toolkit
 dev-python/nltk 3.2.3: Natural Language Toolkit
 dev-python/nose 1.3.7-r1: Unittest extension with automatic test suite discovery and easy test authoring
@@ -5061,7 +5061,7 @@ dev-python/odo 0.5.0: Data migration in python
 dev-python/openpyxl 2.3.0: Pure python reader and writer of Excel OpenXML files
 dev-python/openstack-nose-plugin 0.11-r2: openstack run_tests.py style output for nosetests
 dev-python/openstackdocstheme 1.16.1: Theme and extension support for Sphinx documentation
-dev-python/openstacksdk 0.8.2 0.9.5 0.9.13 0.9.17: A collection of libraries for building applications to work with OpenStack.
+dev-python/openstacksdk 0.9.17: A collection of libraries for building applications to work with OpenStack.
 dev-python/optcomplete 1.2-r1: Shell completion self-generator for Python
 dev-python/ordereddict 1.1: A drop-in substitute for Py2.7's new collections.OrderedDict that works in Python 2.4-2.6.
 dev-python/os-brick 1.15.5: OpenStack Cinder brick library for managing local volume attaches
@@ -5071,7 +5071,7 @@ dev-python/os-traits 0.3.3: os-traits is a library containing standardized trait
 dev-python/os-vif 1.7.0: OpenStack Cinder brick library for managing local volume attaches
 dev-python/os-win 2.2.0: Windows / Hyper-V library for OpenStack projects.
 dev-python/os-xenapi 0.2.0: XenAPI library for OpenStack projects
-dev-python/osc-lib 1.1.0 1.3.0 1.7.0: A package of common support modules for writing OSC plugins.
+dev-python/osc-lib 1.7.0: A package of common support modules for writing OSC plugins.
 dev-python/oslo-cache 1.25.1: Oslo Caching around dogpile.cache
 dev-python/oslo-concurrency 3.21.1: library for running multi-thread, multi-process applications
 dev-python/oslo-config 4.11.1: Oslo Configuration API
@@ -5093,7 +5093,7 @@ dev-python/oslo-versionedobjects 1.26.1: A library that provides a generic versi
 dev-python/oslo-vmware 2.23.1: Oslo VMware library for OpenStack projects
 dev-python/oslotest 2.17.1: Oslo test framework
 dev-python/osprofiler 1.11.0: OpenStack Profiler Library
-dev-python/ovs 2.4.0 2.6.1 2.7.0: OVS bindings for python.
+dev-python/ovs 2.6.1 2.7.0: OVS bindings for python.
 dev-python/ovsdbapp 0.4.0: A library for creating OVSDB applications
 dev-python/packaging 16.8: Core utilities for Python packages
 dev-python/paho-mqtt 1.1: A client class with support for both MQTT v3.1 and v3.1.1 on Python 2.7 or 3.x.
@@ -5318,7 +5318,7 @@ dev-python/python-cluster 1.2.2: Allows grouping a list of arbitrary objects int
 dev-python/python-daemon 1.6-r1: Library to implement a well-behaved Unix daemon process
 dev-python/python-dateutil 2.6.1: Extensions to the standard Python datetime module
 dev-python/python-debian 0.1.28: Python modules to work with Debian-related data formats
-dev-python/python-designateclient 2.0.0 2.3.0 2.6.0 2.7.0: Python bindings to the Designate API.
+dev-python/python-designateclient 2.7.0: Python bindings to the Designate API.
 dev-python/python-digest 1.7-r1: A Python library to aid in implementing HTTP Digest Authentication
 dev-python/python-discid 1.1.1: Python bindings for libdiscid
 dev-python/python-distutils-extra 2.38 2.39: Gettext support, themed icons and scrollkeeper-based documentation in distutils
@@ -5348,10 +5348,10 @@ dev-python/python-mpd 0.5.5: Python MPD client library
 dev-python/python-musicbrainz 0.7.4-r1: Python Bindings for the MusicBrainz XML Web Service
 dev-python/python-musicbrainz-ngs 0.6: Python bindings for the MusicBrainz NGS and the Cover Art Archive webservices
 dev-python/python-nbxmpp 0.5.6: Python library to use Jabber/XMPP networks in a non-blocking way
-dev-python/python-neutronclient 6.1.1 6.5.0: A client for the OpenStack Quantum API
+dev-python/python-neutronclient 6.5.0: A client for the OpenStack Quantum API
 dev-python/python-novaclient 6.0.1 7.1.2 9.1.1: A client for the OpenStack Nova API
 dev-python/python-openid 2.2.5-r1: OpenID support for servers and consumers
-dev-python/python-openstackclient 2.3.0 3.2.0 3.2.1 3.8.1 3.12.0: A client for the OpenStack APIs
+dev-python/python-openstackclient 3.12.0: A client for the OpenStack APIs
 dev-python/python-poppler 0.12.1-r4: Python bindings to the Poppler PDF library
 dev-python/python-ptrace 0.8.1-r1: A debugger using ptrace (Linux, BSD and Darwin system call to trace processes)
 dev-python/python-saharaclient 1.1.0: This is a client for the OpenStack Sahara API, aka HADOOP
@@ -5428,7 +5428,7 @@ dev-python/rsa 3.2.3-r1: Pure-Python RSA implementation
 dev-python/rst-linker 1.7 1.9-r1: Sphinx plugin to add links and timestamps to the changelog
 dev-python/rst2pdf 0.93-r3: Tool for transforming reStructuredText to PDF using ReportLab
 dev-python/rtslib-fb 2.1.57 2.1.58 2.1.62: A Python object API for managing the Linux LIO kernel target
-dev-python/ryu 4.0 4.5 4.10 4.14: Component-based Software-defined Networking Framework
+dev-python/ryu 4.14: Component-based Software-defined Networking Framework
 dev-python/s3transfer 0.1.11: An Amazon S3 Transfer Manager
 dev-python/sampy 1.2.1: Simple Application Messaging Protocol messaging system implementation in Python
 dev-python/sancho 2.4-r1: Sancho is a unit testing framework
