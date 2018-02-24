@@ -4549,7 +4549,7 @@ dev-python/ansi2html 1.1.1 1.2.0: Convert text with ANSI color codes to HTML
 dev-python/ansicolor 0.2.4: Produce ansi color output and colored highlighting and diffing
 dev-python/anyjson 0.3.3-r1: Wraps the best available JSON implementation available in a common interface
 dev-python/anyvc 0.3.7.1-r1: Library to access any version control system
-dev-python/aodhclient 0.6.0 0.7.0 0.8.0: A client for the OpenStack Aodh API
+dev-python/aodhclient 0.8.0: A client for the OpenStack Aodh API
 dev-python/apipkg 1.4: namespace control and lazy-import mechanism
 dev-python/appdirs 1.4.3: Module for determining appropriate platform-specific dirs
 dev-python/apptools 4.2.1: Enthought Tool Suite: Application tools
@@ -5340,7 +5340,7 @@ dev-python/python-levenshtein 0.11.2 0.12.0: Functions for fast computation of L
 dev-python/python-lzo 1.08-r1: Python interface to lzo
 dev-python/python-magic 0.4.10: Access the libmagic file type identification library
 dev-python/python-magnumclient 2.3.1: A client for the OpenStack Magnum API
-dev-python/python-manilaclient 1.11.0 1.14.0: A client for the OpenStack Manila API
+dev-python/python-manilaclient 1.14.0: A client for the OpenStack Manila API
 dev-python/python-memcached 1.53-r1 1.58: Pure python memcached client
 dev-python/python-mistralclient 3.0.2 3.1.4: A client for the OpenStack Mistral API
 dev-python/python-monascaclient 1.5.1 1.7.0: A client for the OpenStack Monasca API
