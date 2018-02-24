@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-RESTRICT="test"
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads"

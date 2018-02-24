@@ -111,7 +111,10 @@ RDEPEND="
 				dev-libs/libclc
 				virtual/libelf:0=[${MULTILIB_USEDEP}]
 			)
-	openmax? ( >=media-libs/libomxil-bellagio-0.9.3:=[${MULTILIB_USEDEP}] )
+	openmax? (
+		>=media-libs/libomxil-bellagio-0.9.3:=[${MULTILIB_USEDEP}]
+		x11-misc/xdg-utils
+	)
 	vaapi? (
 		>=x11-libs/libva-1.7.3:=[${MULTILIB_USEDEP}]
 		video_cards_nouveau? ( !<=x11-libs/libva-vdpau-driver-0.7.4-r3 )

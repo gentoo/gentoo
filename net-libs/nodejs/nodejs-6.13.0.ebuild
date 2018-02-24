@@ -1,12 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads"
 
-inherit flag-o-matic pax-utils python-single-r1 toolchain-funcs
+inherit bash-completion-r1 eutils flag-o-matic pax-utils python-single-r1 toolchain-funcs
 
 DESCRIPTION="A JavaScript runtime built on Chrome's V8 JavaScript engine"
 HOMEPAGE="https://nodejs.org/"
@@ -14,21 +14,29 @@ SRC_URI="https://nodejs.org/dist/v${PV}/node-v${PV}.tar.xz"
 
 LICENSE="Apache-1.1 Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86 ~x64-macos"
-IUSE="cpu_flags_x86_sse2 debug icu +npm snapshot +ssl test"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x64-macos"
+IUSE="cpu_flags_x86_sse2 debug doc icu inspector +npm +snapshot +ssl test"
+REQUIRED_USE="
+	${PYTHON_REQUIRED_USE}
+	inspector? ( icu ssl )
+"
 
-RDEPEND="icu? ( >=dev-libs/icu-55:= )
-	npm? ( ${PYTHON_DEPS} )
-	>=net-libs/http-parser-2.5.2:=
-	>=dev-libs/libuv-1.8.0:=
-	>=dev-libs/openssl-1.0.2g:0=[-bindist]
-	sys-libs/zlib"
-DEPEND="${RDEPEND}
+RDEPEND="
+	>=dev-libs/libuv-1.16.1:=
+	>=net-libs/http-parser-2.7.0:=
+	sys-libs/zlib
+	icu? ( >=dev-libs/icu-58.2:= )
+	ssl? ( >=dev-libs/openssl-1.0.2n:0=[-bindist] )
+"
+DEPEND="
+	${RDEPEND}
 	${PYTHON_DEPS}
-	test? ( net-misc/curl )"
-
+	test? ( net-misc/curl )
+"
 S="${WORKDIR}/node-v${PV}"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+PATCHES=(
+	"${FILESDIR}"/gentoo-global-npm-config.patch
+)
 
 pkg_pretend() {
 	(use x86 && ! use cpu_flags_x86_sse2) && \
@@ -40,7 +48,7 @@ pkg_pretend() {
 
 src_prepare() {
 	tc-export CC CXX PKG_CONFIG
-	export V=1 # Verbose build
+	export V=1
 	export BUILDTYPE=Release
 
 	# fix compilation on Darwin
@@ -60,6 +68,9 @@ src_prepare() {
 	sed -i -e "s/'lib'/'${LIBDIR}'/" lib/module.js || die
 	sed -i -e "s|\"lib\"|\"${LIBDIR}\"|" deps/npm/lib/npm.js || die
 
+	# Avoid writing a depfile, not useful
+	sed -i -e "/DEPFLAGS =/d" tools/gyp/pylib/gyp/generator/make.py || die
+
 	# Avoid a test that I've only been able to reproduce from emerge. It doesnt
 	# seem sandbox related either (invoking it from a sandbox works fine).
 	# The issue is that no stdin handle is openened when asked for one.
@@ -73,17 +84,18 @@ src_prepare() {
 		BUILDTYPE=Debug
 	fi
 
-	epatch_user
+	default
 }
 
 src_configure() {
 	local myarch=""
-	local myconf+=( --shared-openssl --shared-libuv --shared-http-parser --shared-zlib )
-	use npm || myconf+=( --without-npm )
-	use icu && myconf+=( --with-intl=system-icu )
-	use snapshot && myconf+=( --with-snapshot )
-	use ssl || myconf+=( --without-ssl )
+	local myconf=( --shared-libuv --shared-http-parser --shared-zlib )
 	use debug && myconf+=( --debug )
+	use icu && myconf+=( --with-intl=system-icu )
+	use inspector || myconf+=( --without-inspector )
+	use npm || myconf+=( --without-npm )
+	use snapshot && myconf+=( --with-snapshot )
+	use ssl && myconf+=( --shared-openssl ) || myconf+=( --without-ssl )
 
 	case ${ABI} in
 		amd64) myarch="x64";;
@@ -92,7 +104,7 @@ src_configure() {
 		ppc64) myarch="ppc64";;
 		x32) myarch="x32";;
 		x86) myarch="ia32";;
-		*) die "Unrecognized ARCH ${ARCH}";;
+		*) myarch="${ABI}";;
 	esac
 
 	GYP_DEFINES="linux_use_gold_flags=0
@@ -113,21 +125,61 @@ src_compile() {
 
 src_install() {
 	local LIBDIR="${ED}/usr/$(get_libdir)"
-	emake install DESTDIR="${ED}" PREFIX=/usr
-	if use npm; then
-		dodoc -r "${LIBDIR}"/node_modules/npm/html
-		rm -rf "${LIBDIR}"/node_modules/npm/{doc,html} || die
-		find "${LIBDIR}"/node_modules -type f -name "LICENSE*" -or -name "LICENCE*" -delete || die
-	fi
+	emake install DESTDIR="${D}"
+	pax-mark -m "${ED}"usr/bin/node
 
-	# set up a symlink structure that npm expects..
+	# set up a symlink structure that node-gyp expects..
 	dodir /usr/include/node/deps/{v8,uv}
 	dosym . /usr/include/node/src
 	for var in deps/{uv,v8}/include; do
 		dosym ../.. /usr/include/node/${var}
 	done
 
-	pax-mark -m "${ED}"/usr/bin/node
+	if use doc; then
+		# Patch docs to make them offline readable
+		for i in `grep -rl 'fonts.googleapis.com' "${S}"/out/doc/api/*`; do
+			sed -i '/fonts.googleapis.com/ d' $i;
+		done
+		# Install docs!
+		dohtml -r "${S}"/doc/*
+	fi
+
+	if use npm; then
+		dodir /etc/npm
+
+		# Install bash completion for `npm`
+		# We need to temporarily replace default config path since
+		# npm otherwise tries to write outside of the sandbox
+		local npm_config="usr/$(get_libdir)/node_modules/npm/lib/config/core.js"
+		sed -i -e "s|'/etc'|'${ED}/etc'|g" "${ED}/${npm_config}" || die
+		local tmp_npm_completion_file="$(emktemp)"
+		"${ED}/usr/bin/npm" completion > "${tmp_npm_completion_file}"
+		newbashcomp "${tmp_npm_completion_file}" npm
+		sed -i -e "s|'${ED}/etc'|'/etc'|g" "${ED}/${npm_config}" || die
+
+		# Move man pages
+		doman "${LIBDIR}"/node_modules/npm/man/man{1,5,7}/*
+
+		# Clean up
+		rm "${LIBDIR}"/node_modules/npm/{.mailmap,.npmignore,Makefile} || die
+		rm -rf "${LIBDIR}"/node_modules/npm/{doc,html,man} || die
+
+		local find_exp="-or -name"
+		local find_name=()
+		for match in "AUTHORS*" "CHANGELOG*" "CONTRIBUT*" "README*" \
+			".travis.yml" ".eslint*" ".wercker.yml" ".npmignore" \
+			"*.md" "*.markdown" "*.bat" "*.cmd"; do
+			find_name+=( ${find_exp} "${match}" )
+		done
+
+		# Remove various development and/or inappropriate files and
+		# useless docs of dependend packages.
+		find "${LIBDIR}"/node_modules \
+			\( -type d -name examples \) -or \( -type f \( \
+				-iname "LICEN?E*" \
+				"${find_name[@]}" \
+			\) \) -exec rm -rf "{}" \;
+	fi
 }
 
 src_test() {
@@ -136,8 +188,10 @@ src_test() {
 }
 
 pkg_postinst() {
-	einfo "When using node-gyp to install native modules, you can avoid"
-	einfo "having to download the full tarball by doing the following:"
+	einfo "The global npm config lives in /etc/npm. This deviates slightly"
+	einfo "from upstream which otherwise would have it live in /usr/etc/."
 	einfo ""
-	einfo "node-gyp --nodedir /usr/include/node <command>"
+	einfo "Protip: When using node-gyp to install native modules, you can"
+	einfo "avoid having to download extras by doing the following:"
+	einfo "$ node-gyp --nodedir /usr/include/node <command>"
 }
