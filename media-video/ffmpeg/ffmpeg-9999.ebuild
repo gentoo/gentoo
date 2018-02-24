@@ -17,6 +17,7 @@ FFMPEG_SUBSLOT=56.58.58
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SCM="git-r3"
+	EGIT_MIN_CLONE_TYPE="single"
 	EGIT_REPO_URI="https://git.ffmpeg.org/ffmpeg.git"
 fi
 
@@ -245,7 +246,7 @@ RDEPEND="
 	)
 	xcb? ( >=x11-libs/libxcb-1.4[${MULTILIB_USEDEP}] )
 	zeromq? ( >=net-libs/zeromq-4.1.6 )
-	zimg? ( >=media-libs/zimg-2.6.2:=[${MULTILIB_USEDEP}] )
+	zimg? ( >=media-libs/zimg-2.7.4:=[${MULTILIB_USEDEP}] )
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
 	zvbi? ( >=media-libs/zvbi-0.2.35[${MULTILIB_USEDEP}] )
 	!media-video/qt-faststart

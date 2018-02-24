@@ -17,7 +17,7 @@ IUSE=""
 DEPEND="
 	net-libs/ignition-msgs:1=
 	dev-libs/protobuf:=
-	>=net-libs/zeromq-3.2.0:=
+	>=net-libs/zeromq-4.2.0:=
 	sys-apps/util-linux
 	net-libs/cppzmq
 "
