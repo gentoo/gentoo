@@ -36,10 +36,3 @@ RDEPEND="
 	>=dev-python/python-novaclient-9.1.0[${PYTHON_USEDEP}]
 	>=dev-python/python-cinderclient-3.3.0[${PYTHON_USEDEP}]
 "
-
-python_prepare_all() {
-	sed -i '/^hacking/d' test-requirements.txt || die
-	# clients aren't actually needed
-	sed -i '/client\>/d' test-requirements.txt || die
-	distutils-r1_python_prepare_all
-}
