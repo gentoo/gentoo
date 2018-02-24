@@ -80,7 +80,7 @@ src_compile() {
 
 src_test() {
 	# VALIDATE_ENV is used for extended/web based tests.  Punt on them.
-	emake check VALIDATE_ENV=true
+	emake -j1 check VALIDATE_ENV=true
 }
 
 src_install() {
