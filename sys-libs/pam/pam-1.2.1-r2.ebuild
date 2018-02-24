@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ MY_PN="Linux-PAM"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Linux-PAM (Pluggable Authentication Modules)"
-HOMEPAGE="http://www.linux-pam.org/ https://fedorahosted.org/linux-pam/"
+HOMEPAGE="http://www.linux-pam.org/"
 SRC_URI="http://www.linux-pam.org/library/${MY_P}.tar.bz2
 	http://www.linux-pam.org/documentation/${MY_PN}-1.2.0-docs.tar.bz2"
 
