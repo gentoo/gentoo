@@ -18,7 +18,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x64-macos"
 IUSE="cpu_flags_x86_sse2 debug doc icu inspector +npm +snapshot +ssl test"
 REQUIRED_USE="
+	${PYTHON_REQUIRED_USE}
 	inspector? ( icu ssl )
+
 "
 
 RDEPEND="
@@ -33,10 +35,7 @@ DEPEND="
 	${PYTHON_DEPS}
 	test? ( net-misc/curl )
 "
-
 S="${WORKDIR}/node-v${PV}"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-
 PATCHES=(
 	"${FILESDIR}"/gentoo-global-npm-config.patch
 )
