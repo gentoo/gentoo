@@ -22,7 +22,6 @@ media-video/ffmpeg frei0r sofalizer
 # Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
 # Unkeyworded dependencies.
 app-doc/doxygen clang
-dev-libs/glib dbus
 dev-libs/leveldb tcmalloc
 dev-libs/libpeas jit
 dev-perl/GD fcgi
