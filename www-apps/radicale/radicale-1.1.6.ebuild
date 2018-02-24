@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI="6"
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{3_4,3_5,3_6} )
 
 inherit eutils distutils-r1 user
 
@@ -11,13 +11,16 @@ MY_PN="Radicale"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="A simple CalDAV calendar server"
-HOMEPAGE="http://www.radicale.org/"
+HOMEPAGE="http://radicale.org/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
+
+DEPEND=""
+RDEPEND=">=dev-python/vobject-0.9.5[${PYTHON_USEDEP}]"
 
 S=${WORKDIR}/${MY_P}
 
@@ -41,9 +44,11 @@ python_install_all() {
 	diropts -m0750
 	dodir ${RDIR}
 	fowners radicale:radicale ${RDIR}
+	keepdir ${RDIR}
 	diropts -m0755
 	dodir ${LDIR}
 	fowners radicale:radicale ${LDIR}
+	keepdir ${LDIR}
 
 	# config file
 	insinto /etc/${PN}
@@ -58,9 +63,7 @@ python_install_all() {
 }
 
 pkg_postinst() {
-	einfo "A sample WSGI script has been put into ${ROOT}usr/share/${PN}."
-	einfo "You will also find there an example FastCGI script."
-
+	einfo "A sample WSGI and FastCGI script are in ${EROOT}usr/share/${PN}."
 	einfo "Radicale supports different authentication backends that depend on external libraries."
 	einfo "Please install"
 	optfeature "LDAP auth" dev-python/python-ldap
