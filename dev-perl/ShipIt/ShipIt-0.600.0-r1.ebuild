@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Software Release Tool"
 
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE=""
 
 PATCHES=( "${FILESDIR}/${PN}-0.60-version-test.patch" )
