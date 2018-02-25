@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby22 ruby23 ruby24 rbx"
+USE_RUBY="ruby23 ruby24 rbx"
 
 inherit ruby-ng
 
@@ -12,7 +12,6 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~spa
 
 RDEPEND="
 	ruby_targets_rbx? ( dev-lang/rubinius )
-	ruby_targets_ruby22? ( >=dev-ruby/rubygems-2.4.2[ruby_targets_ruby22] )
 	ruby_targets_ruby23? ( >=dev-ruby/rubygems-2.5.1[ruby_targets_ruby23] )
 	ruby_targets_ruby24? ( >=dev-ruby/rubygems-2.6.8[ruby_targets_ruby24] )"
 
