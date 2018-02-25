@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Anthony G. Basile <blueness@gentoo.org> (25 Feb 2018)
+# Upstream has been dead since 2012.  Migrate to uclibc-ng.
+# See https://wiki.gentoo.org/wiki/Project:Hardened_uClibc
+sys-libs/uclibc
+
 # Thomas Deutschmann <whissi@gentoo.org> (23 Feb 2018)
 # Unmaintained in Gentoo, known critical vulnerabilities like
 # auth bypass. Removal in 30 days. Bugs #559658, #592080.
