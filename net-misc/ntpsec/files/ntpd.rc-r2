@@ -4,7 +4,7 @@
 # $Id$
 
 description="ntpd - the network time protocol daemon"
-pidfile="/var/run/ntpd.pid"
+pidfile="/run/ntpd.pid"
 command="/usr/sbin/ntpd"
 command_args="-p ${pidfile} ${NTPD_OPTS}"
 start_stop_daemon_args="--pidfile ${pidfile}"
