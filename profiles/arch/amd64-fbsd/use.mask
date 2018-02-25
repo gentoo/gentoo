@@ -33,6 +33,10 @@
 #-video_cards_vmware
 -input_devices_vmmouse
 
+# Michał Górny <mgorny@gentoo.org> (25 Feb 2018)
+# google-perftools does not work on FreeBSD.
+tcmalloc
+
 # Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
 # dev-libs/DirectFB is not keyworded here.
 directfb
