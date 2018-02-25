@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -11,7 +11,7 @@ SRC_URI="http://mirror.i2p2.de/i2psource_${PV}.tar.bz2"
 
 LICENSE="|| ( public-domain BSD MIT )"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 
 IUSE="test"
 
