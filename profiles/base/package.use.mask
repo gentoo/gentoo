@@ -7,6 +7,14 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (25 Feb 2018)
+# Depends on masked media-libs/phonon[qt4]
+dev-qt/designer:4 phonon
+dev-qt/qt-meta:4 phonon
+dev-qt/qtdemo:4 phonon
+dev-python/PyQt4 phonon
+dev-python/pyside:0 phonon
+
 # Brian Evans <grknight@gentoo.org> (22 Feb 2018)
 # Depends on vulnerable dev-php/ZendFramework which is masked for removal
 www-apps/postfixadmin xmlrpc
