@@ -7842,7 +7842,7 @@ media-radio/fldigi 4.0.12: Sound card based multimode software modem for Amateur
 media-radio/flrig 1.3.36: Transceiver control program for Amateur Radio use
 media-radio/gpredict 1.3-r1 2.2: Real-time satellite tracking and orbit prediction application
 media-radio/grig 0.8.1: A tool for controlling amateur radios
-media-radio/ibp 0.21 0.21-r1: Shows currently transmitting beacons of the International Beacon Project (IBP)
+media-radio/ibp 0.21-r1: Shows currently transmitting beacons of the International Beacon Project (IBP)
 media-radio/qrq 0.3.1 0.3.1-r1: Yet another CW trainer for Linux/Unix
 media-radio/qsstv 9.2.6: Amateur radio SSTV software
 media-radio/svxlink 17.12.1: Multi Purpose Voice Services System, including Qtel for EchoLink
