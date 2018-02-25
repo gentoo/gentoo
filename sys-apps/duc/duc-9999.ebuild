@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit autotools
 
@@ -42,6 +42,9 @@ DEPEND="
 	tokyocabinet? ( dev-db/tokyocabinet )
 "
 RDEPEND="${DEPEND}"
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.4.1-tinfo.patch
+)
 
 src_unpack() {
 	if [[ "${PV}" == "9999" ]]; then
