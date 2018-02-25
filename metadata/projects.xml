@@ -309,7 +309,12 @@
     <member>
       <email>mgorny@gentoo.org</email>
       <name>Michał Górny</name>
-      <role>Minor ebuild janitor</role>
+      <role>Ebuild janitor, amd64-fbsd arch tester</role>
+    </member>
+    <member>
+      <email>monsieurp@gentoo.org</email>
+      <name>Patrice Clement</name>
+      <role>amd64-fbsd arch tester</role>
     </member>
   </project>
   <project>
