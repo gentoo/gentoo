@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -8,7 +8,7 @@ MY_P=${PN}-${MY_PV}
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils multilib python-single-r1 systemd
+inherit autotools multilib python-single-r1 systemd
 
 DESCRIPTION="tinc is an easy to configure VPN implementation"
 HOMEPAGE="http://www.tinc-vpn.org/"
@@ -41,7 +41,6 @@ DEPEND="
 	zlib? ( sys-libs/zlib )"
 RDEPEND="${DEPEND}
 	vde? ( net-misc/vde )"
-
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
@@ -55,7 +54,10 @@ src_prepare() {
 	fi
 
 	eapply "${FILESDIR}"/tinc-1.1-fix-paths.patch #560528
+	eapply "${FILESDIR}"/${PN}-1.1-tinfo.patch #621868
 	eapply_user
+
+	eautoreconf
 }
 
 src_configure() {
