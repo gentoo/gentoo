@@ -72,7 +72,7 @@ each_ruby_compile() {
 }
 
 each_ruby_test() {
-	${RUBY} -Ilib -S testrb tests/test_*.rb || die
+	${RUBY} -Ilib -S testrb-2 tests/test_*.rb || die
 }
 
 all_ruby_install() {
