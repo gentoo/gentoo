@@ -9,7 +9,7 @@ SRC_URI="http://www.blinkenlights.de/dist/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="aalib gtk"
 
 # if the config script finds any of the optional library it will try to
