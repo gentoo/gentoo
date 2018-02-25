@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -53,6 +53,7 @@ COMMON_DEPEND="
 	zeroconf? ( net-dns/avahi[dbus] )
 "
 DEPEND="${COMMON_DEPEND}
+	>=dev-util/meson-0.44.1
 	app-text/docbook-xml-dtd:4.5
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt
