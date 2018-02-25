@@ -18,7 +18,7 @@ HOMEPAGE="https://github.com/topfunky/gruff"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-macos"
+KEYWORDS="amd64 ~x86 ~x86-macos"
 IUSE=""
 
 # imagemagick is an indirect dependency through rmagick. However, for
