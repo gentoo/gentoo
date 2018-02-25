@@ -1,12 +1,12 @@
-DEFINED_PHASES=configure prepare unpack
-DEPEND=ffmpeg? ( virtual/ffmpeg ) ~media-libs/x264-9999[10bit=,interlaced=,threads=] ffmpegsource? ( media-libs/ffmpegsource ) mp4? ( >=media-video/gpac-0.5.2:= ) amd64? ( >=dev-lang/nasm-2.13 ) x86? ( >=dev-lang/nasm-2.13 ) x86-fbsd? ( >=dev-lang/nasm-2.13 ) virtual/pkgconfig dev-vcs/git
+DEFINED_PHASES=configure unpack
+DEPEND=~media-libs/x264-9999[10bit=,interlaced=,threads=] ffmpeg? ( virtual/ffmpeg ) ffmpegsource? ( media-libs/ffmpegsource ) mp4? ( >=media-video/gpac-0.5.2:= ) amd64? ( >=dev-lang/nasm-2.13 ) x86? ( >=dev-lang/nasm-2.13 ) x86-fbsd? ( >=dev-lang/nasm-2.13 ) virtual/pkgconfig >=dev-vcs/git-1.8.2.1
 DESCRIPTION=A free commandline encoder for X264/AVC streams
-EAPI=5
-HOMEPAGE=http://www.videolan.org/developers/x264.html
+EAPI=6
+HOMEPAGE=https://www.videolan.org/developers/x264.html
 IUSE=10bit avs custom-cflags ffmpeg ffmpegsource +interlaced mp4 +threads
 LICENSE=GPL-2
-RDEPEND=ffmpeg? ( virtual/ffmpeg ) ~media-libs/x264-9999[10bit=,interlaced=,threads=] ffmpegsource? ( media-libs/ffmpegsource ) mp4? ( >=media-video/gpac-0.5.2:= )
+RDEPEND=~media-libs/x264-9999[10bit=,interlaced=,threads=] ffmpeg? ( virtual/ffmpeg ) ffmpegsource? ( media-libs/ffmpegsource ) mp4? ( >=media-video/gpac-0.5.2:= )
 REQUIRED_USE=ffmpegsource? ( ffmpeg )
 SLOT=0
-_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	flag-o-matic	02908f00f002f0f07c5b74783d778325	git-2	195a672bfaf52d868442171c9469bbb6	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=51fecc41af5cd3f1d7484c5b2e9f5ca4
+_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	flag-o-matic	02908f00f002f0f07c5b74783d778325	git-r3	fec09a83ae965b041b47f5ff7c8ba29a	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_md5_=134329c72890e8d88a334a66a2d23ea8
