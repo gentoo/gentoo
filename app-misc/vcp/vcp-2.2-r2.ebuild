@@ -17,15 +17,13 @@ DEPEND="sys-libs/ncurses:0="
 RDEPEND="${DEPEND}"
 
 DOCS=( Changelog README INSTALL )
-
-src_prepare() {
-	default
-	sed -i Makefile -e '/-o vcp/s|$(CFLAGS)|& $(LDFLAGS)|' || die "sed Makefile"
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.2-tinfo.patch
+)
 
 src_compile() {
 	filter-lfs-flags
-	emake CC="$(tc-getCC)"
+	emake CC="$(tc-getCC)" PKG_CONFIG="$(tc-getPKG_CONFIG)"
 }
 
 src_install() {
