@@ -118,21 +118,25 @@ src_install() {
 	python_foreach_impl run_in_build_dir python_install
 
 	# Install heat generating scripts
-	use heat && dosbin "${S}/contrib/ntpheat"{,usb}
+	use heat && dosbin "${S}"/contrib/ntpheat{,usb}
 
 	# Install the openrc files
-	newinitd "${FILESDIR}/ntpd.rc-r1" "ntp"
-	newconfd "${FILESDIR}/ntpd.confd" "ntp"
+	newinitd "${FILESDIR}"/ntpd.rc-r2 ntp
+	newconfd "${FILESDIR}"/ntpd.confd ntp
 
 	# Install the systemd unit file
-	systemd_newunit "${FILESDIR}/ntpd.service" ntpd.service
+	systemd_newunit "${FILESDIR}"/ntpd.service ntpd.service
+
+	# Prepare a directory for the ntp.drift file
+	mkdir -pv "${ED}"/var/lib/ntp
+	chown ntp:ntp "${ED}"/var/lib/ntp
+	chmod 770 "${ED}"/var/lib/ntp
 
 	# Install a log rotate script
-	mkdir -pv "${ED}/etc/"logrotate.d
-	cp -v "${S}/etc/logrotate-config.ntpd" "${ED}/etc/logrotate.d/ntpd"
+	mkdir -pv "${ED}"/etc/logrotate.d
+	cp -v "${S}"/etc/logrotate-config.ntpd "${ED}"/etc/logrotate.d/ntpd
 
-	# Install the configuration files
-	cp -Rv "${S}/etc/ntp.d/" "${ED}/etc/"
-	mv -v "${ED}/etc/ntp.d/default.conf" "${ED}/etc/ntp.conf"
-	sed "s|includefile |includefile ntp.d/|" -i "${ED}/etc/ntp.conf"
+	# Install the configuration file and sample configuration
+	cp -v "${FILESDIR}"/ntp.conf "${ED}"/etc/ntp.conf
+	cp -Rv "${S}"/etc/ntp.d/ "${ED}"/etc/
 }
