@@ -41,6 +41,7 @@ IUSE="a52 alsa altivec aom archive bidi bluray cddb chromaprint chromecast dbus 
 "
 REQUIRED_USE="
 	bidi? ( truetype )
+	chromecast? ( encode )
 	directx? ( ffmpeg )
 	fontconfig? ( truetype )
 	libcaca? ( X )
