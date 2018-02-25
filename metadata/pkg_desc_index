@@ -73,7 +73,7 @@ app-admin/hardinfo 0.5.2_pre20130823: A system information and benchmark tool fo
 app-admin/haskell-updater 1.2.9 1.2.10: Rebuild Haskell dependencies in Gentoo
 app-admin/hddtemp 0.3_beta15-r26: A simple utility to read the temperature of SMART capable hard drives
 app-admin/ide-smart 1.4-r1: A tool to read SMART information from harddiscs
-app-admin/keepass 2.37: A free, open source, light-weight and easy-to-use password manager
+app-admin/keepass 2.38: A free, open source, light-weight and easy-to-use password manager
 app-admin/keepassxc 2.1.4-r1: KeePassXC - KeePass Cross-platform Community Edition
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/lastpass-cli 1.0.0: Interfaces with LastPass.com from the command line.
@@ -5718,7 +5718,7 @@ dev-ruby/connection_pool 2.2.1: Generic connection pooling for Ruby
 dev-ruby/crack 0.4.3-r1: Really simple JSON and XML parsing, ripped from Merb and Rails
 dev-ruby/crass 1.0.3: Ruby CSS parser that's fully compliant with the CSS Syntax Level 3 specification
 dev-ruby/daemon_controller 1.2.0-r1: Library to start and stop specific daemons programmatically in a robust manner
-dev-ruby/daemons 1.2.3: Wrap existing ruby scripts to be run as a daemon
+dev-ruby/daemons 1.2.3 1.2.6: Wrap existing ruby scripts to be run as a daemon
 dev-ruby/dalli 2.7.6: A high performance pure Ruby client for accessing memcached servers
 dev-ruby/dbf 3.1.0: a small fast library for reading dBase, xBase, Clipper and FoxPro database files
 dev-ruby/deep_merge 1.0.1: A simple set of utility functions for Hash
@@ -5729,10 +5729,10 @@ dev-ruby/domain_name 0.5.20170404: Domain Name manipulation library for Ruby
 dev-ruby/dust 0.1.7-r2: Descriptive block syntax definition for Test::Unit
 dev-ruby/erubi 1.7.0: a ERB template engine for ruby; a simplified fork of Erubis
 dev-ruby/erubis 2.7.0-r2: Erubis is an implementation of eRuby
-dev-ruby/eventmachine 1.0.9.1: EventMachine is a fast, simple event-processing library for Ruby programs
+dev-ruby/eventmachine 1.0.9.1 1.2.0.1: EventMachine is a fast, simple event-processing library for Ruby programs
 dev-ruby/execjs 2.6.0: ExecJS lets you run JavaScript code from Ruby
 dev-ruby/facter 2.4.6 3.1.8 3.9.2: A cross-platform ruby library for retrieving facts from operating systems
-dev-ruby/fakefs 0.9.2: A fake filesystem. Use it in your tests
+dev-ruby/fakefs 0.9.2 0.11.3: A fake filesystem. Use it in your tests
 dev-ruby/fakeweb 1.3.0.20131201-r1: Helper for faking web requests in Ruby
 dev-ruby/fast_xs 0.8.0-r2: fast_xs text escaping library ruby bindings
 dev-ruby/fcgi 0.9.2.1-r1: FastCGI library for Ruby
@@ -5740,7 +5740,7 @@ dev-ruby/ffi 1.9.18: Ruby extension for programmatically loading dynamic librari
 dev-ruby/flexmock 2.3.5: Simple mock object library for Ruby unit testing
 dev-ruby/gherkin 2.12.0-r3 2.12.2 4.1.3: Fast Gherkin lexer and parser
 dev-ruby/git 1.3.0: Library for using Git in Ruby
-dev-ruby/gruff 0.6.0: Beautiful graphs for one or multiple datasets
+dev-ruby/gruff 0.6.0 0.7.0: Beautiful graphs for one or multiple datasets
 dev-ruby/hashdiff 0.3.5: Simple Hash extension to make working with nested hashes easier
 dev-ruby/hashie 2.1.2-r1: Hashie is a small collection of tools that make hashes more powerful
 dev-ruby/heredoc_unindent 1.2.0: Removes leading whitespace from Ruby heredocs
@@ -5784,7 +5784,7 @@ dev-ruby/multi_test 0.1.2: A uniform interface for Ruby testing libraries
 dev-ruby/multi_xml 0.5.5: A generic swappable back-end for XML parsing
 dev-ruby/mustache 1.0.2: Mustache is a framework-agnostic way to render logic-free views
 dev-ruby/nanotest 0.9.4.1: Extremely mynymal test framework
-dev-ruby/narray 0.6.1.1: Numerical N-dimensional Array class
+dev-ruby/narray 0.6.1.1 0.6.1.2: Numerical N-dimensional Array class
 dev-ruby/net-http-digest_auth 1.4-r2: An implementation of RFC 2617 - Digest Access Authentication
 dev-ruby/net-http-persistent 2.9.4-r2: Manages persistent connections using Net::HTTP plus a speed fix for Ruby 1.8
 dev-ruby/net-scp 1.1.2-r1: A pure Ruby implementation of the SCP client protocol
@@ -5824,7 +5824,7 @@ dev-ruby/rest-client 1.8.0-r3: Simple Simple HTTP and REST client for Ruby
 dev-ruby/rexical 1.0.5-r3: Rexical is a lexical scanner generator
 dev-ruby/rgen 0.8.0: Ruby Modelling and Generator Framework
 dev-ruby/riel 1.2.0-r2: This library extends the core Ruby libraries
-dev-ruby/rmagick 2.15.4: An interface between Ruby and the ImageMagick(TM) image processing library
+dev-ruby/rmagick 2.15.4 2.16.0: An interface between Ruby and the ImageMagick(TM) image processing library
 dev-ruby/rr 1.2.1: A double framework featuring a selection of double techniques and a terse syntax
 dev-ruby/rrdtool-bindings 1.4.8 1.5.5 1.6.0: Ruby bindings for rrdtool
 dev-ruby/rspec 2.99.0 3.5.0: A Behaviour Driven Development (BDD) framework for Ruby

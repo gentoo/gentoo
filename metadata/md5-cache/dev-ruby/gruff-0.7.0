@@ -4,11 +4,11 @@ DESCRIPTION=Beautiful graphs for one or multiple datasets
 EAPI=5
 HOMEPAGE=https://github.com/topfunky/gruff
 IUSE=test elibc_FreeBSD ruby_targets_ruby22 ruby_targets_ruby23 ruby_targets_ruby24 doc test test
-KEYWORDS=~amd64 ~x86 ~x86-macos
+KEYWORDS=amd64 ~x86 ~x86-macos
 LICENSE=MIT
 RDEPEND=media-gfx/imagemagick[truetype] ruby_targets_ruby22? ( >=dev-ruby/rmagick-2.13.4[ruby_targets_ruby22] ) ruby_targets_ruby23? ( >=dev-ruby/rmagick-2.13.4[ruby_targets_ruby23] ) ruby_targets_ruby24? ( >=dev-ruby/rmagick-2.13.4[ruby_targets_ruby24] ) ruby_targets_ruby22? ( dev-lang/ruby:2.2 ) ruby_targets_ruby23? ( dev-lang/ruby:2.3 ) ruby_targets_ruby24? ( dev-lang/ruby:2.4 ) ruby_targets_ruby22? ( virtual/rubygems[ruby_targets_ruby22] ) ruby_targets_ruby23? ( virtual/rubygems[ruby_targets_ruby23] ) ruby_targets_ruby24? ( virtual/rubygems[ruby_targets_ruby24] )
 REQUIRED_USE=|| ( ruby_targets_ruby22 ruby_targets_ruby23 ruby_targets_ruby24 )
 SLOT=0
 SRC_URI=mirror://rubygems/gruff-0.7.0.gem
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	java-utils-2	0ee72667014428e01a01df2345244cf3	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	ruby-fakegem	cf1343b57e8029745950b4b147ff4d3a	ruby-ng	2da44d50080e3d54e1a4ac7d91d149f8	ruby-utils	e5942a80e3c3b936c6b84d6dc4af9f9c	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	versionator	ce21313503c41896ebcd7d58b0607e37
-_md5_=92936e9717d0eeeb4cc40c55c3c3b5c8
+_md5_=3b24bd42a78c0589bfd3ead73a87bb88
