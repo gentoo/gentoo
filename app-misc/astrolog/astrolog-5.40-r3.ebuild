@@ -11,7 +11,7 @@ SRC_URI="http://www.astrolog.org/ftp/ast54unx.shr"
 
 LICENSE="astrolog"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 x86"
 IUSE="X"
 
 DEPEND="X? ( x11-libs/libX11 )"
