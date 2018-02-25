@@ -57,6 +57,8 @@ DEPEND="${CDEPEND}
 	!net-misc/openntpd
 "
 
+WAF_BINARY="${S}/waf"
+
 pkg_setup() {
 	enewgroup ntp 123
 	enewuser ntp 123 -1 /dev/null ntp
@@ -105,6 +107,7 @@ src_configure() {
 }
 
 src_compile() {
+	unset MAKEOPTS
 	python_compile() {
 		waf-utils_src_compile
 	}
