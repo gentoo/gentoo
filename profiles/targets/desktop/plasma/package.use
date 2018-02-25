@@ -30,6 +30,3 @@ media-sound/pulseaudio gnome
 
 # Required by kde-frameworks/kactivities
 sys-libs/zlib minizip
-
-# Mitigate media-libs/phonon:4[designer] dep by USE=phonon in make.defaults
-dev-qt/designer:4 -phonon
