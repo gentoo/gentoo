@@ -11,7 +11,7 @@ SRC_URI="http://${PN}.sraoss.jp/${PN}/v${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ia64 ~ppc ~ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~hppa ia64 ppc ~ppc64 sparc x86 ~x86-fbsd"
 IUSE="crypt ipv6 ldap libressl nls oniguruma pda spell ssl xface"
 
 CDEPEND="net-libs/liblockfile
