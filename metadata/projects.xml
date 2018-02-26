@@ -1713,6 +1713,11 @@
       <role>General system administration, Kernel</role>
     </member>
     <member>
+      <email>antarus@gentoo.org</email>
+      <name>Alec Warner</name>
+      <role>General Wrangling / Packages site.</role>
+    </member>
+    <member>
       <email>blueknight@gentoo.org</email>
       <name>Yury German</name>
       <role>General system administration, Blogs, Planet</role>
