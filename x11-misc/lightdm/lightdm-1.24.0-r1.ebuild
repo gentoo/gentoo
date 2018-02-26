@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -127,4 +127,8 @@ src_install() {
 	readme.gentoo_create_doc
 
 	systemd_dounit "${FILESDIR}/${PN}.service"
+}
+
+pkg_postinst() {
+	systemd_reenable "${PN}.service"
 }

@@ -127,3 +127,7 @@ src_install() {
 
 	systemd_dounit "${FILESDIR}/${PN}.service"
 }
+
+pkg_postinst() {
+	systemd_reenable "${PN}.service"
+}
