@@ -31,7 +31,7 @@ fi
 IUSE="+drm test wayland X"
 
 RDEPEND="
-	>=x11-libs/libva-2.0.0:=[drm?,wayland?,X?]
+	>=x11-libs/libva-2.1.0:=[drm?,wayland?,X?]
 	drm? ( >=x11-libs/libdrm-2.4 )
 	X? (
 		>=x11-libs/libX11-1.6.2
