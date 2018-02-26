@@ -14,7 +14,6 @@
 	</longdescription>
 	<use>
 		<flag name="dnscrypt">Enable the ability to act as a DNSCrypt server</flag>
-		<flag name="luajit">Use <pkg>dev-lang/luajit</pkg> instead of <pkg>dev-lang/lua</pkg></flag>
 		<flag name="regex">Enable support for regular expression matching via <pkg>dev-libs/re2</pkg></flag>
 		<flag name="remote-logging">Enable support for remote logging via <pkg>dev-libs/protobuf</pkg></flag>
 		<flag name="ssl">Enable support for and encrypted client-server communication via <pkg>dev-libs/libsodium</pkg></flag>
