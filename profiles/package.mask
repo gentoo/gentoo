@@ -279,6 +279,8 @@ dev-libs/libFuzzer
 
 # Richard Freeman <rich0@gentoo.org> (09 Jan 2018)
 # Bug 644048 - temp QA mask until it can get sorted out
+# Lars Wendler <polynomial-c@gentoo.org> (26 Feb 2018)
+# See also tracker bug: https://bugs.gentoo.org/648864
 ~sys-apps/attr-2.4.48
 # Lars Wendler <polynomial-c@gentoo.org> (10 Jan 2018)
 # Mask followup bugfixes for =sys-apps/attr-2.4.48 as well until proper
