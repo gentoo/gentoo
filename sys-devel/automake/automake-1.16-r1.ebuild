@@ -42,7 +42,10 @@ DEPEND="${RDEPEND}
 	sys-apps/help2man
 	test? ( ${PYTHON_DEPS} )"
 
-PATCHES=( "${FILESDIR}"/${PN}-1.15-install-sh-avoid-low-risk-race-in-tmp.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.15-install-sh-avoid-low-risk-race-in-tmp.patch
+	"${FILESDIR}"/${PN}-1.16-fix-AM_PATH_PYTHON.patch
+)
 
 src_prepare() {
 	default
