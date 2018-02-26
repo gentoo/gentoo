@@ -14,4 +14,4 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~spa
 IUSE=""
 
 DEPEND=""
-RDEPEND="x11-proto/xorgproto"
+RDEPEND="x11-base/xorg-proto"
