@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -11,6 +11,8 @@ inherit eutils toolchain-funcs toolchain
 
 REL=6
 MYP=gcc-${REL}-gpl-${PV}-src
+BTSTRP_X86=gnat-gpl-2014-x86-linux-bin
+BTSTRP_AMD64=gnat-gpl-2014-x86_64-linux-bin
 
 DESCRIPTION="GNAT Ada Compiler - GPL version"
 HOMEPAGE="http://libre.adacore.com/"
@@ -22,13 +24,19 @@ SRC_URI+="
 	http://mirrors.cdn.adacore.com/art/591adbc5c7a4473fcbb153ae
 		-> gcc-interface-${REL}-gpl-${PV}-src.tar.gz
 	bootstrap? (
-		http://mirrors.cdn.adacore.com/art/564b3ebec8e196b040fbe66c ->
-			gnat-gpl-2014-x86_64-linux-bin.tar.gz
+		amd64? (
+			http://mirrors.cdn.adacore.com/art/564b3ebec8e196b040fbe66c ->
+			${BTSTRP_AMD64}.tar.gz
+		)
+		x86? (
+			http://mirrors.cdn.adacore.com/art/564b3e9dc8e196b040fbe248 ->
+			${BTSTRP_X86}.tar.gz
+		)
 	)"
 
 LICENSE+=" GPL-2 GPL-3"
 SLOT="${TOOLCHAIN_GCC_PV}"
-KEYWORDS="amd64"
+KEYWORDS="amd64 ~x86"
 IUSE="bootstrap"
 
 RDEPEND="!sys-devel/gcc:${TOOLCHAIN_GCC_PV}"
@@ -42,8 +50,15 @@ FSFGCC=gcc-${TOOLCHAIN_GCC_PV}
 
 pkg_setup() {
 	toolchain_pkg_setup
+
+	if use amd64; then
+		BTSTRP=${BTSTRP_AMD64}
+	else
+		BTSTRP=${BTSTRP_X86}
+	fi
+
 	if use bootstrap; then
-		GCC="${WORKDIR}"/gnat-gpl-2014-x86_64-linux-bin/bin/gcc
+		GCC="${WORKDIR}"/${BTSTRP}/bin/gcc
 	else
 		GCC=${ADA:-$(tc-getCC)}
 	fi
@@ -70,12 +85,12 @@ src_unpack() {
 		${MYP}.tar.gz
 		gcc-interface-${REL}-gpl-${PV}-src.tar.gz"
 	if use bootstrap; then
-		GCC_A_FAKEIT="${GCC_A_FAKEIT} gnat-gpl-2014-x86_64-linux-bin.tar.gz"
+		GCC_A_FAKEIT="${GCC_A_FAKEIT} ${BTSTRP}.tar.gz"
 	fi
 
 	toolchain_src_unpack
 	if use bootstrap; then
-		rm gnat-gpl-2014-x86_64-linux-bin/libexec/gcc/x86_64-pc-linux-gnu/4.7.4/ld || die
+		rm ${BTSTRP}/libexec/gcc/${CHOST}/4.7.4/ld || die
 	fi
 }
 
@@ -102,7 +117,7 @@ src_prepare() {
 	echo ${TOOLCHAIN_GCC_PV} > gcc/BASE-VER
 
 	cd ..
-	mv gnat-gpl-${PV}-src/src/ada ${MYP}/gcc/ || die
+	mv ${P}-src/src/ada ${MYP}/gcc/ || die
 	mv gcc-interface-${REL}-gpl-${PV}-src ${MYP}/gcc/ada/gcc-interface || die
 	epatch "${FILESDIR}"/${P}-gentoo.patch
 	cd -
@@ -129,7 +144,7 @@ src_compile() {
 	toolchain_src_compile
 	gcc_do_make "-C gcc gnatlib-shared"
 	ln -s gcc ../build/prev-gcc || die
-	ln -s x86_64-pc-linux-gnu ../build/prev-x86_64-pc-linux-gnu || die
+	ln -s ${CHOST} ../build/prev-${CHOST} || die
 	gcc_do_make "-C gcc gnattools"
 }
 
@@ -167,8 +182,7 @@ src_install() {
 pkg_postinst () {
 	toolchain_pkg_postinst
 	einfo "This provide the GNAT compiler with gcc for ada/c/c++ and more"
-	einfo "Set the ADA variables to ${CTARGET}-gcc-${TOOLCHAIN_GCC_PV} in"
-	einfo "your make.conf"
+	einfo "The compiler binary is ${CTARGET}-gcc-${TOOLCHAIN_GCC_PV}"
 	einfo "Even if the c/c++ compilers are using almost the same patched"
 	einfo "source as the sys-devel/gcc package its use is not extensively"
 	einfo "tested, and not supported for updating your system, except for ada"
