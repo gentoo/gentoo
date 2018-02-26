@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: autotools.eclass
@@ -55,7 +55,7 @@ inherit libtool
 # Do NOT change this variable in your ebuilds!
 # If you want to force a newer minor version, you can specify the correct
 # WANT value by using a colon:  <PV>:<WANT_AUTOMAKE>
-_LATEST_AUTOMAKE=( 1.15:1.15 )
+_LATEST_AUTOMAKE=( 1.15.1:1.15 1.16:1.16 )
 
 _automake_atom="sys-devel/automake"
 _autoconf_atom="sys-devel/autoconf"
