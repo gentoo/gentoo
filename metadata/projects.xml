@@ -1699,7 +1699,7 @@
     <email>infra@gentoo.org</email>
     <name>Gentoo Infrastructure</name>
     <url>https://wiki.gentoo.org/wiki/Project:Infrastructure</url>
-    <description>The Gentoo Infrastructure team provides and develops services for the Gentoo developer and user community, ensuring availability, security and functionality.</description>
+    <description>The Gentoo Infrastructure team provides and develops services for the Gentoo developer and user community, ensuring availability, security, and functionality.</description>
     <subproject ref="github@gentoo.org"/>
     <subproject ref="overlays@gentoo.org"/>
     <member>
@@ -1715,7 +1715,7 @@
     <member>
       <email>antarus@gentoo.org</email>
       <name>Alec Warner</name>
-      <role>General Wrangling / Packages site.</role>
+      <role>General wrangling / Packages site</role>
     </member>
     <member>
       <email>blueknight@gentoo.org</email>
@@ -1729,7 +1729,7 @@
     <member>
       <email>idl0r@gentoo.org</email>
       <name>Christian Ruppert</name>
-      <role>Bugzilla, General System Administration</role>
+      <role>Bugzilla, General system administration</role>
     </member>
     <member>
       <email>jmbsvicetto@gentoo.org</email>
