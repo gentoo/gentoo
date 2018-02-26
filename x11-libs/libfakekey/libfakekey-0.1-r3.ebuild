@@ -1,13 +1,13 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit eutils autotools
+inherit autotools
 
 DESCRIPTION="Helper library for the x11-misc/matchbox-keyboard package"
-HOMEPAGE="http://matchbox-project.org/"
-SRC_URI="http://matchbox-project.org/sources/${PN}/${PV}/${P}.tar.bz2"
+HOMEPAGE="https://www.yoctoproject.org/tools-resources/projects/matchbox"
+SRC_URI="http://downloads.yoctoproject.org/releases/matchbox/${PN}/${PV}/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 
@@ -19,9 +19,13 @@ RDEPEND="x11-libs/libXtst"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )"
 
-src_prepare() {
+PATCHES=(
 	# Allow configure to use libtool-2
-	epatch "${FILESDIR}/${P}-ac.patch"
+	"${FILESDIR}/${P}-ac.patch"
+)
+
+src_prepare() {
+	default
 
 	# Fix underlinking bug #367595
 	sed -i -e 's/^fakekey_test_LDADD=/fakekey_test_LDADD=-lX11 /' \
@@ -32,14 +36,13 @@ src_prepare() {
 
 src_configure() {
 	# --with/without-x is ignored by configure script and X is used.
-	econf	--with-x \
+	econf --with-x \
 		$(use_enable debug) \
 		$(use_enable doc doxygen-docs)
 }
 
 src_install() {
 	emake DESTDIR="${D}" install
-
-	dodoc AUTHORS ChangeLog INSTALL NEWS README
-	use doc && dohtml doc/html/*
+	use doc && local HTML_DOCS=( doc/html/. )
+	einstalldocs
 }

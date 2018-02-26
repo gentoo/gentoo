@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,13 +16,13 @@ IUSE="aio mysql postgres test"
 
 RDEPEND="aio? ( dev-libs/libaio )
 	mysql? ( virtual/libmysqlclient )
-	postgres? ( dev-db/postgresql:= )"
+	postgres? ( dev-db/postgresql:= )
+	dev-lang/luajit:="
 DEPEND="${RDEPEND}
 	app-editors/vim-core
-	dev-lang/luajit:=
 	dev-libs/concurrencykit
 	dev-libs/libxslt
-	sys-devel/libtool:=
+	sys-devel/libtool
 	virtual/pkgconfig
 	test? ( dev-util/cram )"
 
