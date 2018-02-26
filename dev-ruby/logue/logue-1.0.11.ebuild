@@ -8,6 +8,8 @@ USE_RUBY="ruby22 ruby23 ruby24"
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_EXTRADOC="README.md"
 
+RUBY_FAKEGEM_BINWRAP=""
+
 inherit ruby-fakegem
 
 DESCRIPTION="A module that adds logging/trace functionality"
@@ -20,4 +22,4 @@ SLOT="0"
 KEYWORDS="~amd64 ~hppa ~ppc ~sparc ~x86"
 IUSE=""
 
-ruby_add_rdepend ">=dev-ruby/rainbow-2.0.0"
+ruby_add_rdepend ">=dev-ruby/rainbow-2.0.0:*"
