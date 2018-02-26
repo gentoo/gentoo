@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst prepare pretend setup
-DEPEND=dev-lang/perl dev-libs/libxml2 dev-libs/libxslt net-libs/ldns mysql? ( virtual/mysql dev-perl/DBD-mysql ) opensc? ( dev-libs/opensc ) softhsm? ( dev-libs/softhsm:* ) sqlite? ( dev-db/sqlite:3 dev-perl/DBD-SQLite ) doc? ( app-doc/doxygen ) test? ( app-text/trang ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=dev-lang/perl dev-libs/libxml2 dev-libs/libxslt net-libs/ldns mysql? ( virtual/mysql dev-perl/DBD-mysql ) opensc? ( dev-libs/opensc ) softhsm? ( dev-libs/softhsm:* ) sqlite? ( dev-db/sqlite:3 dev-perl/DBD-SQLite ) doc? ( app-doc/doxygen ) test? ( app-text/trang ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15.1:1.15 >=sys-devel/automake-1.16:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=An open-source turn-key solution for DNSSEC
 EAPI=5
 HOMEPAGE=http://www.opendnssec.org/
@@ -10,5 +10,5 @@ RDEPEND=dev-lang/perl dev-libs/libxml2 dev-libs/libxslt net-libs/ldns mysql? ( v
 REQUIRED_USE=^^ ( mysql sqlite ) ^^ ( softhsm opensc external-hsm )
 SLOT=0
 SRC_URI=http://www.opendnssec.org/files/source/opendnssec-1.4.8.2.tar.gz
-_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	user	8bc2845510e2109af75e3eeac607ec81
+_eclasses_=autotools	5c7fb6f361f3a238f78e5328771febd0	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	user	8bc2845510e2109af75e3eeac607ec81
 _md5_=8e1a5a48f716a3c66495fa558e5a2892

@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare unpack
-DEPEND=pam? ( sys-libs/pam ) systemd? ( sys-apps/systemd ) wayland? ( dev-libs/efl[wayland] >=dev-libs/wayland-1.10.0 >=x11-libs/pixman-0.31.1 >=x11-libs/libxkbcommon-0.3.1 ) >=dev-libs/efl-1.18[X] x11-libs/xcb-util-keysyms >=app-portage/elt-patches-20170317 >=app-portage/elt-patches-20170422 dev-vcs/git !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 doc? ( app-doc/doxygen )
+DEPEND=pam? ( sys-libs/pam ) systemd? ( sys-apps/systemd ) wayland? ( dev-libs/efl[wayland] >=dev-libs/wayland-1.10.0 >=x11-libs/pixman-0.31.1 >=x11-libs/libxkbcommon-0.3.1 ) >=dev-libs/efl-1.18[X] x11-libs/xcb-util-keysyms >=app-portage/elt-patches-20170317 >=app-portage/elt-patches-20170422 dev-vcs/git !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15.1:1.15 >=sys-devel/automake-1.16:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 doc? ( app-doc/doxygen )
 DESCRIPTION=Enlightenment DR17 window manager
 EAPI=5
 HOMEPAGE=https://www.enlightenment.org
@@ -7,5 +7,5 @@ IUSE=pam spell static-libs systemd ukit wayland +enlightenment_modules_conf-appl
 LICENSE=BSD-2
 RDEPEND=pam? ( sys-libs/pam ) systemd? ( sys-apps/systemd ) wayland? ( dev-libs/efl[wayland] >=dev-libs/wayland-1.10.0 >=x11-libs/pixman-0.31.1 >=x11-libs/libxkbcommon-0.3.1 ) >=dev-libs/efl-1.18[X] x11-libs/xcb-util-keysyms nls? ( sys-devel/gettext )
 SLOT=0.17/0.17.9999
-_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	enlightenment	1fa177784657aaf9484e91d7427a2b2e	epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	e99babeaa7d98c1caaa6a61a79902210	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	git-2	195a672bfaf52d868442171c9469bbb6	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=autotools	5c7fb6f361f3a238f78e5328771febd0	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	enlightenment	1fa177784657aaf9484e91d7427a2b2e	epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	e99babeaa7d98c1caaa6a61a79902210	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	git-2	195a672bfaf52d868442171c9469bbb6	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=68e41dad5332c7edc66bff1907807f93

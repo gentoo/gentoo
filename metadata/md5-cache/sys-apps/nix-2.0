@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst prepare setup
-DEPEND=app-arch/brotli app-arch/bzip2 app-arch/xz-utils dev-db/sqlite dev-libs/openssl:0= net-misc/curl sys-libs/libseccomp sys-libs/zlib gc? ( dev-libs/boehm-gc[cxx] ) doc? ( dev-libs/libxml2 dev-libs/libxslt app-text/docbook-xsl-stylesheets ) sodium? ( dev-libs/libsodium:0= ) >=sys-devel/bison-2.6 >=sys-devel/flex-2.5.35 >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=app-arch/brotli app-arch/bzip2 app-arch/xz-utils dev-db/sqlite dev-libs/openssl:0= net-misc/curl sys-libs/libseccomp sys-libs/zlib gc? ( dev-libs/boehm-gc[cxx] ) doc? ( dev-libs/libxml2 dev-libs/libxslt app-text/docbook-xsl-stylesheets ) sodium? ( dev-libs/libsodium:0= ) >=sys-devel/bison-2.6 >=sys-devel/flex-2.5.35 >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15.1:1.15 >=sys-devel/automake-1.16:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A purely functional package manager
 EAPI=6
 HOMEPAGE=https://nixos.org/nix
@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1
 RDEPEND=app-arch/brotli app-arch/bzip2 app-arch/xz-utils dev-db/sqlite dev-libs/openssl:0= net-misc/curl sys-libs/libseccomp sys-libs/zlib gc? ( dev-libs/boehm-gc[cxx] ) doc? ( dev-libs/libxml2 dev-libs/libxslt app-text/docbook-xsl-stylesheets ) sodium? ( dev-libs/libsodium:0= )
 SLOT=0
 SRC_URI=http://nixos.org/releases/nix/nix-2.0/nix-2.0.tar.xz
-_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	flag-o-matic	02908f00f002f0f07c5b74783d778325	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	readme.gentoo-r1	6f03e110529650f57fc7d1fb908b8986	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	user	8bc2845510e2109af75e3eeac607ec81
+_eclasses_=autotools	5c7fb6f361f3a238f78e5328771febd0	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	flag-o-matic	02908f00f002f0f07c5b74783d778325	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	readme.gentoo-r1	6f03e110529650f57fc7d1fb908b8986	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	user	8bc2845510e2109af75e3eeac607ec81
 _md5_=6ae7810a8aff0cc1bc15ccf7afec5227

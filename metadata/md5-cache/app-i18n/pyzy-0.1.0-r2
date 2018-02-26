@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare setup
-DEPEND=dev-db/sqlite:3 dev-libs/glib:2 sys-apps/util-linux boost? ( dev-libs/boost ) opencc? ( app-i18n/opencc:= ) || ( >=dev-lang/python-2.7.5-r2:2.7 ) sys-devel/autoconf-archive doc? ( app-doc/doxygen ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=dev-db/sqlite:3 dev-libs/glib:2 sys-apps/util-linux boost? ( dev-libs/boost ) opencc? ( app-i18n/opencc:= ) || ( >=dev-lang/python-2.7.5-r2:2.7 ) sys-devel/autoconf-archive doc? ( app-doc/doxygen ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15.1:1.15 >=sys-devel/automake-1.16:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=The Chinese PinYin and Bopomofo conversion library
 EAPI=6
 HOMEPAGE=https://github.com/pyzy/pyzy
@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1
 RDEPEND=dev-db/sqlite:3 dev-libs/glib:2 sys-apps/util-linux boost? ( dev-libs/boost ) opencc? ( app-i18n/opencc:= )
 SLOT=0
 SRC_URI=https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/pyzy/pyzy-0.1.0.tar.gz https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/pyzy/pyzy-database-1.0.0.tar.bz2
-_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	python-any-r1	27d7f9da7187d283b7f3eae8390b7b09	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=autotools	5c7fb6f361f3a238f78e5328771febd0	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	python-any-r1	27d7f9da7187d283b7f3eae8390b7b09	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=40de24f505572574f9bc4e9bf565fd42

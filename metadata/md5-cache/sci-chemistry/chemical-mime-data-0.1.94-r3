@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure postinst postrm preinst prepare
-DEPEND=gnome-base/gnome-mime-data x11-misc/shared-mime-info dev-util/intltool dev-util/desktop-file-utils dev-libs/libxslt || ( gnome-base/librsvg media-gfx/imagemagick[xml,png,svg] ) media-gfx/imagemagick[png] virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 dev-util/desktop-file-utils x11-misc/shared-mime-info
+DEPEND=gnome-base/gnome-mime-data x11-misc/shared-mime-info dev-util/intltool dev-util/desktop-file-utils dev-libs/libxslt || ( gnome-base/librsvg media-gfx/imagemagick[xml,png,svg] ) media-gfx/imagemagick[png] virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15.1:1.15 >=sys-devel/automake-1.16:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=A collection of data files to add support for chemical MIME types
 EAPI=6
 HOMEPAGE=http://chemical-mime.sourceforge.net/
@@ -8,5 +8,5 @@ LICENSE=LGPL-2.1
 RDEPEND=gnome-base/gnome-mime-data x11-misc/shared-mime-info
 SLOT=0
 SRC_URI=mirror://sourceforge/chemical-mime/chemical-mime-data-0.1.94.tar.bz2
-_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	xdg	6cd76cc914c1a759dee032778487b57f	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_eclasses_=autotools	5c7fb6f361f3a238f78e5328771febd0	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	xdg	6cd76cc914c1a759dee032778487b57f	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
 _md5_=1487b2e6f40664c22cb2b54cc15c7fcc

@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=x11-libs/gtk+:2 >=gnome-base/libglade-2.6 mp3? ( >=media-libs/id3lib-3.8.3-r6 ) vorbis? ( >=media-libs/libvorbis-1 ) virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=x11-libs/gtk+:2 >=gnome-base/libglade-2.6 mp3? ( >=media-libs/id3lib-3.8.3-r6 ) vorbis? ( >=media-libs/libvorbis-1 ) virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15.1:1.15 >=sys-devel/automake-1.16:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Audio Tag Tool Ogg/Mp3 Tagger
 EAPI=6
 HOMEPAGE=https://sourceforge.net/projects/tagtool/
@@ -10,5 +10,5 @@ RDEPEND=x11-libs/gtk+:2 >=gnome-base/libglade-2.6 mp3? ( >=media-libs/id3lib-3.8
 REQUIRED_USE=|| ( mp3 vorbis )
 SLOT=0
 SRC_URI=https://sourceforge.net/projects/tagtool/files/tagtool/0.12.3/tagtool-0.12.3.tar.bz2
-_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=autotools	5c7fb6f361f3a238f78e5328771febd0	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=88bc6d02b876a52982e7dcba204e72c9

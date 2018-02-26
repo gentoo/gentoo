@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install postinst postrm prepare prerm setup
-DEPEND=dev-java/gnu-classpath:0.98 || ( dev-java/eclipse-ecj:* dev-java/ecj-gcj:* ) libffi? ( virtual/libffi ) ppc64? ( virtual/libffi ) sparc? ( virtual/libffi ) >=dev-java/java-config-2.2.0-r3 >=app-eselect/eselect-java-0.2.0 >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=dev-java/gnu-classpath:0.98 || ( dev-java/eclipse-ecj:* dev-java/ecj-gcj:* ) libffi? ( virtual/libffi ) ppc64? ( virtual/libffi ) sparc? ( virtual/libffi ) >=dev-java/java-config-2.2.0-r3 >=app-eselect/eselect-java-0.2.0 >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15.1:1.15 >=sys-devel/automake-1.16:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=An extremely small and specification-compliant virtual machine
 EAPI=5
 HOMEPAGE=http://jamvm.sourceforge.net/
@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-java/gnu-classpath:0.98 || ( dev-java/eclipse-ecj:* dev-java/ecj-gcj:* ) libffi? ( virtual/libffi ) ppc64? ( virtual/libffi ) sparc? ( virtual/libffi ) >=dev-java/java-config-2.2.0-r3 >=app-eselect/eselect-java-0.2.0
 SLOT=0
 SRC_URI=mirror://sourceforge/jamvm/jamvm-2.0.0.tar.gz
-_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	fdo-mime	995b19d3f30e956b4e1bc5a91fdc4ea7	flag-o-matic	02908f00f002f0f07c5b74783d778325	java-vm-2	477ca23a49dfcd57017ee7f3bed47564	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	pax-utils	b963274a93e76570a88168c1f1db4cd7	prefix	e51c7882b7b721e54e684f7eb143cbfe	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=autotools	5c7fb6f361f3a238f78e5328771febd0	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	fdo-mime	995b19d3f30e956b4e1bc5a91fdc4ea7	flag-o-matic	02908f00f002f0f07c5b74783d778325	java-vm-2	477ca23a49dfcd57017ee7f3bed47564	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	pax-utils	b963274a93e76570a88168c1f1db4cd7	prefix	e51c7882b7b721e54e684f7eb143cbfe	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=da533340fee43eee318c7b76810c59e6

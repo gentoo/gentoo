@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm prepare
-DEPEND=dev-lisp/alexandria dev-lisp/cl-ppcre dev-lisp/clx >=dev-lisp/sbcl-1.3.0 emacs? ( virtual/emacs app-emacs/slime ) sys-apps/texinfo doc? ( virtual/texi2dvi ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=dev-lisp/alexandria dev-lisp/cl-ppcre dev-lisp/clx >=dev-lisp/sbcl-1.3.0 emacs? ( virtual/emacs app-emacs/slime ) sys-apps/texinfo doc? ( virtual/texi2dvi ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15.1:1.15 >=sys-devel/automake-1.16:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Stumpwm is a Window Manager written entirely in Common Lisp.
 EAPI=6
 HOMEPAGE=https://stumpwm.github.io/
@@ -11,5 +11,5 @@ RDEPEND=dev-lisp/alexandria dev-lisp/cl-ppcre dev-lisp/clx >=dev-lisp/sbcl-1.3.0
 RESTRICT=strip mirror
 SLOT=0
 SRC_URI=https://github.com/stumpwm/stumpwm/archive/v1.0.1-rc.tar.gz -> stumpwm-1.0.1_rc.tar.gz
-_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	common-lisp-3	8c4aaa6d66cd2daed8572bb60bf6fe07	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	versionator	ce21313503c41896ebcd7d58b0607e37	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_eclasses_=autotools	5c7fb6f361f3a238f78e5328771febd0	common-lisp-3	8c4aaa6d66cd2daed8572bb60bf6fe07	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	versionator	ce21313503c41896ebcd7d58b0607e37	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
 _md5_=819f354c4dd42ecad62f498c6d8e0c83

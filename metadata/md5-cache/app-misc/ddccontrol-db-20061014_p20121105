@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=nls? ( sys-devel/gettext ) dev-util/intltool dev-perl/XML-Parser >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=nls? ( sys-devel/gettext ) dev-util/intltool dev-perl/XML-Parser >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15.1:1.15 >=sys-devel/automake-1.16:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=DDCControl monitor database
 EAPI=5
 HOMEPAGE=http://ddccontrol.sourceforge.net/
@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=nls? ( sys-devel/gettext )
 SLOT=0
 SRC_URI=https://github.com/ddccontrol/ddccontrol-db/archive/130da80af5cd5d2897ffeed63362262262c6944f.tar.gz -> ddccontrol-db-20061014_p20121105.tar.gz
-_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=autotools	5c7fb6f361f3a238f78e5328771febd0	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=e65036ce28a50a4d2f73c99a7565d0a7

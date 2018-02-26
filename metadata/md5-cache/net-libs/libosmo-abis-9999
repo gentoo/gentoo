@@ -1,10 +1,10 @@
 DEFINED_PHASES=prepare unpack
-DEPEND=net-libs/ortp >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 dev-vcs/git
+DEPEND=net-libs/ortp >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15.1:1.15 >=sys-devel/automake-1.16:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 dev-vcs/git
 DESCRIPTION=Osmocom library for A-bis interface
 EAPI=5
 HOMEPAGE=http://openbsc.osmocom.org/trac/wiki/libosmo-abis
 LICENSE=GPL-2 LGPL-3
 RDEPEND=net-libs/ortp
 SLOT=0
-_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	git-2	195a672bfaf52d868442171c9469bbb6	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=autotools	5c7fb6f361f3a238f78e5328771febd0	git-2	195a672bfaf52d868442171c9469bbb6	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=9e9373291668c25ff3e004b26346fec8

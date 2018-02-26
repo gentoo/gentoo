@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare
-DEPEND=media-libs/freetype:2 >=media-libs/libpng-1.2.8:* >=sys-libs/zlib-1.2.3 virtual/jpeg:* x11-libs/libfontenc x11-misc/gccmakedep x11-misc/imake x11-proto/inputproto >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=media-libs/freetype:2 >=media-libs/libpng-1.2.8:* >=sys-libs/zlib-1.2.3 virtual/jpeg:* x11-libs/libfontenc x11-misc/gccmakedep x11-misc/imake x11-proto/inputproto >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15.1:1.15 >=sys-devel/automake-1.16:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=NX compression technology core libraries
 EAPI=6
 HOMEPAGE=http://www.x2go.org/doku.php/wiki:libs:nx-libs
@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/freetype:2 >=media-libs/libpng-1.2.8:* >=sys-libs/zlib-1.2.3 virtual/jpeg:*
 SLOT=0
 SRC_URI=http://code.x2go.org/releases/source/nx-libs/nx-libs-3.5.0.33-full.tar.gz
-_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=autotools	5c7fb6f361f3a238f78e5328771febd0	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=c905284a52128d5a30ae2d1f3aec1451

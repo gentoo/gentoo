@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure prepare setup
-DEPEND=>=dev-lang/mono-1.1.13 >=dev-dotnet/gtk-sharp-2.10.1 >=dev-dotnet/dbus-sharp-0.6:1.0 >=dev-dotnet/dbus-sharp-glib-0.4:1.0 >=x11-libs/libnotify-0.4.5 >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=>=dev-lang/mono-1.1.13 >=dev-dotnet/gtk-sharp-2.10.1 >=dev-dotnet/dbus-sharp-0.6:1.0 >=dev-dotnet/dbus-sharp-glib-0.4:1.0 >=x11-libs/libnotify-0.4.5 >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15.1:1.15 >=sys-devel/automake-1.16:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=a C# client implementation for Desktop Notifications
 EAPI=5
 HOMEPAGE=http://www.ndesk.org/NotifySharp
@@ -9,5 +9,5 @@ LICENSE=MIT
 RDEPEND=>=dev-lang/mono-1.1.13 >=dev-dotnet/gtk-sharp-2.10.1 >=dev-dotnet/dbus-sharp-0.6:1.0 >=dev-dotnet/dbus-sharp-glib-0.4:1.0 >=x11-libs/libnotify-0.4.5
 SLOT=0
 SRC_URI=mirror://gentoo/notify-sharp-20090305.tar.bz2
-_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	mono-env	1f24c032c78290b0d9a07d5b343051a7	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=autotools	5c7fb6f361f3a238f78e5328771febd0	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	mono-env	1f24c032c78290b0d9a07d5b343051a7	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=8aa10a80f846738856e02c4532731e43

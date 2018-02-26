@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=~dev-libs/libprelude-4.0.0 dev-libs/libpcre icu? ( dev-libs/icu ) ssl? ( net-libs/gnutls:= ) virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DEPEND=~dev-libs/libprelude-4.0.0 dev-libs/libpcre icu? ( dev-libs/icu ) ssl? ( net-libs/gnutls:= ) virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15.1:1.15 >=sys-devel/automake-1.16:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
 DESCRIPTION=The prelude log analyzer
 EAPI=6
 HOMEPAGE=https://www.prelude-siem.org
@@ -9,5 +9,5 @@ LICENSE=GPL-2+
 RDEPEND=~dev-libs/libprelude-4.0.0 dev-libs/libpcre icu? ( dev-libs/icu ) ssl? ( net-libs/gnutls:= )
 SLOT=0
 SRC_URI=https://www.prelude-siem.org/pkg/src/4.0.0/prelude-lml-4.0.0.tar.gz
-_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	a31844b675f1a1fea87fbe1144aee5f5	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=autotools	5c7fb6f361f3a238f78e5328771febd0	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	a31844b675f1a1fea87fbe1144aee5f5	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=ad99be191872ea233c3516970842948b

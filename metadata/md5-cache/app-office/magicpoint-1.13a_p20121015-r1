@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm prepare
-DEPEND=x11-libs/libICE x11-libs/libSM x11-libs/libXrender x11-libs/libXmu imlib? ( media-libs/imlib2[X] ) !imlib? ( gif? ( media-libs/giflib:= ) png? ( >=media-libs/libpng-1.4:0= ) ) truetype? ( x11-libs/libXft media-libs/fontconfig ) emacs? ( virtual/emacs ) m17n-lib? ( dev-libs/m17n-lib fontconfig? ( media-libs/fontconfig ) ) mng? ( media-libs/libmng ) sys-devel/autoconf x11-proto/xextproto x11-libs/libxkbfile app-text/rman x11-misc/imake >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=x11-libs/libICE x11-libs/libSM x11-libs/libXrender x11-libs/libXmu imlib? ( media-libs/imlib2[X] ) !imlib? ( gif? ( media-libs/giflib:= ) png? ( >=media-libs/libpng-1.4:0= ) ) truetype? ( x11-libs/libXft media-libs/fontconfig ) emacs? ( virtual/emacs ) m17n-lib? ( dev-libs/m17n-lib fontconfig? ( media-libs/fontconfig ) ) mng? ( media-libs/libmng ) sys-devel/autoconf x11-proto/xextproto x11-libs/libxkbfile app-text/rman x11-misc/imake >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15.1:1.15 >=sys-devel/automake-1.16:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=An X11 based presentation tool
 EAPI=5
 HOMEPAGE=http://member.wide.ad.jp/wg/mgp/
@@ -10,5 +10,5 @@ RDEPEND=x11-libs/libICE x11-libs/libSM x11-libs/libXrender x11-libs/libXmu imlib
 REQUIRED_USE=imlib? ( !gif !png )
 SLOT=0
 SRC_URI=ftp://sh.wide.ad.jp/WIDE/free-ware/mgp-snap/mgp-snap-20121015.tar.gz
-_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=autotools	5c7fb6f361f3a238f78e5328771febd0	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=5dc864986bc7b52a0d480f5161952934

@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare setup
-DEPEND=dii? ( media-gfx/imagemagick:=[png] ) python? ( >=dev-libs/boost-1.48:=[python] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] ) gnome-extra/libgsf:= virtual/libiconv virtual/pkgconfig dii? ( media-libs/gd[png] ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=dii? ( media-gfx/imagemagick:=[png] ) python? ( >=dev-libs/boost-1.48:=[python] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] ) gnome-extra/libgsf:= virtual/libiconv virtual/pkgconfig dii? ( media-libs/gd[png] ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15.1:1.15 >=sys-devel/automake-1.16:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Tools and library for reading Outlook files (.pst format)
 EAPI=6
 HOMEPAGE=http://www.five-ten-sg.com/libpst/
@@ -10,5 +10,5 @@ RDEPEND=dii? ( media-gfx/imagemagick:=[png] ) python? ( >=dev-libs/boost-1.48:=[
 REQUIRED_USE=python? ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=http://www.five-ten-sg.com/libpst/packages/libpst-0.6.66.tar.gz
-_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	317a2557b4d7319a7418225f65accf77	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=autotools	5c7fb6f361f3a238f78e5328771febd0	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	317a2557b4d7319a7418225f65accf77	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=40dbcb550f7172083effdc679d5b8538

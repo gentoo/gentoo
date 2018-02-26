@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install postinst postrm preinst prepare
-DEPEND=gtk? ( x11-libs/gtk+:2 ) dev-util/intltool virtual/pkgconfig >=x11-misc/icon-naming-utils-0.8.90 !gtk? ( !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 ) elibc_Interix? ( !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 ) >=app-portage/elt-patches-20170422 >=sys-apps/sed-4
+DEPEND=gtk? ( x11-libs/gtk+:2 ) dev-util/intltool virtual/pkgconfig >=x11-misc/icon-naming-utils-0.8.90 !gtk? ( !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15.1:1.15 >=sys-devel/automake-1.16:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 ) elibc_Interix? ( !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15.1:1.15 >=sys-devel/automake-1.16:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 ) >=app-portage/elt-patches-20170422 >=sys-apps/sed-4
 DESCRIPTION=The default OpenSolaris theme (GTK+ 2.x engine, icon- and metacity theme)
 EAPI=4
 HOMEPAGE=http://dlc.sun.com/osol/jds/downloads/extras/nimbus/
@@ -9,5 +9,5 @@ LICENSE=LGPL-2
 RDEPEND=gtk? ( x11-libs/gtk+:2 ) !minimal? ( || ( x11-themes/adwaita-icon-theme x11-themes/tango-icon-theme ) )
 SLOT=0
 SRC_URI=http://dlc.sun.com/osol/jds/downloads/extras/nimbus/nimbus-0.1.7.tar.bz2
-_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	gnome2-utils	4d211d7614f303710fca59db6ec12c88	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_eclasses_=autotools	5c7fb6f361f3a238f78e5328771febd0	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	gnome2-utils	4d211d7614f303710fca59db6ec12c88	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
 _md5_=376695dabaa72d0729b267075e6bff80

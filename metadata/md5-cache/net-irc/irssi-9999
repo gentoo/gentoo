@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=sys-libs/ncurses:0= >=dev-libs/glib-2.6.0 !libressl? ( dev-libs/openssl:= ) libressl? ( dev-libs/libressl:= ) perl? ( dev-lang/perl:= ) socks5? ( >=net-proxy/dante-1.1.18 ) virtual/pkgconfig dev-lang/perl || ( www-client/lynx www-client/elinks ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 dev-lang/perl:= >=dev-vcs/git-1.8.2.1
+DEPEND=sys-libs/ncurses:0= >=dev-libs/glib-2.6.0 !libressl? ( dev-libs/openssl:= ) libressl? ( dev-libs/libressl:= ) perl? ( dev-lang/perl:= ) socks5? ( >=net-proxy/dante-1.1.18 ) virtual/pkgconfig dev-lang/perl || ( www-client/lynx www-client/elinks ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15.1:1.15 >=sys-devel/automake-1.16:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 dev-lang/perl:= >=dev-vcs/git-1.8.2.1
 DESCRIPTION=A modular textUI IRC client with IPv6 support
 EAPI=6
 HOMEPAGE=https://irssi.org/
@@ -7,5 +7,5 @@ IUSE=+perl selinux socks5 +proxy libressl
 LICENSE=GPL-2
 RDEPEND=sys-libs/ncurses:0= >=dev-libs/glib-2.6.0 !libressl? ( dev-libs/openssl:= ) libressl? ( dev-libs/libressl:= ) perl? ( dev-lang/perl:= ) socks5? ( >=net-proxy/dante-1.1.18 ) selinux? ( sec-policy/selinux-irc ) perl? ( !net-im/silc-client ) dev-lang/perl:=
 SLOT=0
-_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	git-r3	fec09a83ae965b041b47f5ff7c8ba29a	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=autotools	5c7fb6f361f3a238f78e5328771febd0	git-r3	fec09a83ae965b041b47f5ff7c8ba29a	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=78aa0c107300634a3c1ab16360680a7d

@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=x11-libs/libXmu x11-libs/libXi x11-libs/libXp x11-libs/libXpm >=x11-libs/motif-2.3:0 virtual/opengl virtual/glu szip? ( virtual/szip ) hdf? ( sci-libs/hdf ) cdf? ( sci-libs/cdf ) netcdf? ( sci-libs/netcdf ) tiff? ( media-libs/tiff:0 ) imagemagick? ( virtual/imagemagick-tools ) virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=x11-libs/libXmu x11-libs/libXi x11-libs/libXp x11-libs/libXpm >=x11-libs/motif-2.3:0 virtual/opengl virtual/glu szip? ( virtual/szip ) hdf? ( sci-libs/hdf ) cdf? ( sci-libs/cdf ) netcdf? ( sci-libs/netcdf ) tiff? ( media-libs/tiff:0 ) imagemagick? ( virtual/imagemagick-tools ) virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15.1:1.15 >=sys-devel/automake-1.16:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=3D data visualization tool
 EAPI=6
 HOMEPAGE=http://www.opendx.org/
@@ -9,5 +9,5 @@ LICENSE=IBM
 RDEPEND=x11-libs/libXmu x11-libs/libXi x11-libs/libXp x11-libs/libXpm >=x11-libs/motif-2.3:0 virtual/opengl virtual/glu szip? ( virtual/szip ) hdf? ( sci-libs/hdf ) cdf? ( sci-libs/cdf ) netcdf? ( sci-libs/netcdf ) tiff? ( media-libs/tiff:0 ) imagemagick? ( virtual/imagemagick-tools )
 SLOT=0
 SRC_URI=http://opendx.sdsc.edu/source/dx-4.4.4.tar.gz https://dev.gentoo.org/~soap/distfiles/opendx-4.4.4_p20160917-fix-c++14.patch.bz2
-_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	flag-o-matic	02908f00f002f0f07c5b74783d778325	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=autotools	5c7fb6f361f3a238f78e5328771febd0	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	flag-o-matic	02908f00f002f0f07c5b74783d778325	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=663a12f86bb3e0b40df6b4f2f08cce24

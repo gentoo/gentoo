@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm prepare
-DEPEND=doc? ( app-text/texi2html sys-apps/texinfo ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=doc? ( app-text/texi2html sys-apps/texinfo ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15.1:1.15 >=sys-devel/automake-1.16:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=tag system to find an object location in various sources
 EAPI=6
 HOMEPAGE=https://www.gnu.org/software/global/global.html
@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=sys-libs/ncurses emacs? ( virtual/emacs ) vim? ( || ( app-editors/vim app-editors/gvim ) ) || ( dev-libs/libltdl:0 sys-devel/libtool:2 )
 SLOT=0
 SRC_URI=mirror://gnu/global/global-6.5.7.tar.gz
-_eclasses_=autotools	dc412f38566b91012efd58b9c203e6c3	elisp-common	23f47b2e1de7abf387105eddd1318738	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=autotools	5c7fb6f361f3a238f78e5328771febd0	elisp-common	23f47b2e1de7abf387105eddd1318738	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=92ea72af8695a4989542d09f5e3f7f98
