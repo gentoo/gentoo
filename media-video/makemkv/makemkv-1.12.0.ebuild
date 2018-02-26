@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit gnome2-utils flag-o-matic linux-info
+inherit flag-o-matic gnome2-utils linux-info xdg-utils
 
 MY_P=makemkv-oss-${PV}
 MY_PB=makemkv-bin-${PV}
@@ -38,7 +38,7 @@ RDEPEND="${DEPEND}
 	net-misc/wget"
 
 CONFIG_CHECK="~CHR_DEV_SG"
-S="${WORKDIR}/makemkv-oss-${PV}"
+S="${WORKDIR}/${MY_P}"
 PATCHES=( "${FILESDIR}"/${PN}-{wget,path}.patch )
 
 src_configure() {
@@ -76,13 +76,16 @@ src_install() {
 
 	# install profiles and locales
 	insinto /usr/share/MakeMKV
-	doins src/share/*.{mo.gz,xml}
+	doins src/share/*
 }
 
-pkg_preinst() { gnome2_icon_savelist; }
+pkg_preinst() {
+	gnome2_icon_savelist
+}
 
 pkg_postinst() {
 	gnome2_icon_cache_update
+	xdg_desktop_database_update
 
 	elog "While MakeMKV is in beta mode, upstream has provided a license"
 	elog "to use if you do not want to purchase one."
@@ -104,4 +107,7 @@ pkg_postinst() {
 	elog "LIBAACS_PATH=libmmbd LIBBDPLUS_PATH=libmmbd"
 }
 
-pkg_postrm() { gnome2_icon_cache_update; }
+pkg_postrm() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
+}
