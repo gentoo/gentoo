@@ -6141,7 +6141,6 @@ x11-wm/enlightenment:enlightenment_modules_notification - notification-daemon al
 x11-wm/enlightenment:enlightenment_modules_packagekit - Package manager integration
 x11-wm/enlightenment:enlightenment_modules_pager - Gadget to allow you to visualize your virtual desktops and the windows they contain
 x11-wm/enlightenment:enlightenment_modules_pager-plain - A simpler desktop pager
-x11-wm/enlightenment:enlightenment_modules_policy-mobile - 
 x11-wm/enlightenment:enlightenment_modules_quickaccess - Enlightenment Quickaccess Launcher
 x11-wm/enlightenment:enlightenment_modules_shot - Simple screenshot+save/upload module
 x11-wm/enlightenment:enlightenment_modules_start - Enlightenment's 'Start' button equivalent
