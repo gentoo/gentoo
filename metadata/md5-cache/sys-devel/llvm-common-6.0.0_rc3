@@ -5,5 +5,5 @@ HOMEPAGE=https://llvm.org/
 LICENSE=UoI-NCSA
 RDEPEND=!sys-devel/llvm:0
 SLOT=0
-SRC_URI=http://prereleases.llvm.org/6.0.0/rc2/llvm-6.0.0rc2.src.tar.xz
+SRC_URI=http://prereleases.llvm.org/6.0.0/rc3/llvm-6.0.0rc3.src.tar.xz
 _md5_=9e980ae5cb91b498cd03b4de0032a28b
