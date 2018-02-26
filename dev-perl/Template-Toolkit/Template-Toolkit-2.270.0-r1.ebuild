@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="The Template Toolkit"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~ppc-aix ~x86-fbsd ~x86-solaris"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~x86 ~ppc-aix ~x86-fbsd ~x86-solaris"
 IUSE="xml gd mysql postgres latex vim-syntax test"
 
 RDEPEND="dev-perl/Text-Autoformat
