@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,10 +6,8 @@ EAPI=5
 inherit elisp
 
 DESCRIPTION="Major mode for editing Markdown-formatted text files"
-HOMEPAGE="https://jblevins.org/projects/markdown-mode/"
-# Cannot use this url because its hash differ about every five minutes
-# SRC_URI="http://jblevins.org/git/${PN}.git/snapshot/${P}.tar.gz"
-SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"
+HOMEPAGE="http://jblevins.org/projects/markdown-mode/"
+SRC_URI="https://stable.melpa.org/packages/${P}.el"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -17,4 +15,10 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="|| ( dev-python/markdown2 dev-python/markdown )"
 
+S="${WORKDIR}"
+
 SITEFILE="50${PN}-gentoo.el"
+
+src_unpack() {
+	cp "${DISTDIR}"/${P}.el ${PN}.el || die
+}
