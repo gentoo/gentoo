@@ -132,4 +132,25 @@ multilib_src_install_all() {
 
 	exeinto /usr/share/${PN}
 	doexe contrib/update-anchor.sh
+
+	# create space for auto-trust-anchor-file...
+	keepdir /etc/unbound/var
+	# ... and point example config to it
+	sed -i '/# auto-trust-anchor-file:/s,/etc/dnssec/root-anchors.txt,/etc/unbound/var/root-anchors.txt,' "${ED}/etc/unbound/unbound.conf"
+}
+
+pkg_postinst() {
+	# make var/ writable by unbound
+	if [[ -d "${ROOT}/etc/unbound/var" ]]; then
+		chown --no-dereference --from=root unbound: "${ROOT}/etc/unbound/var"
+	fi
+	einfo ""
+	einfo "If you want unbound to automatically update the root-anchor file for DNSSEC validation"
+	einfo "set 'auto-trust-anchor-file: /etc/unbound/var/root-anchors.txt' in /etc/unbound/unbound.conf"
+	einfo "and run"
+	einfo ""
+	einfo "  su -s /bin/sh -c '/usr/sbin/unbound-anchor -a /etc/unbound/var/root-anchors.txt' unbound"
+	einfo ""
+	einfo "as root to create it initially before starting unbound for the first time after enabling this."
+	einfo ""
 }
