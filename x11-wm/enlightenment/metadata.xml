@@ -31,7 +31,6 @@
 	<flag name="enlightenment_modules_packagekit">Package manager integration</flag>
 	<flag name="enlightenment_modules_pager">Gadget to allow you to visualize your virtual desktops and the windows they contain</flag>
 	<flag name="enlightenment_modules_pager-plain">A simpler desktop pager</flag>
-	<flag name="enlightenment_modules_policy-mobile"/>
 	<flag name="enlightenment_modules_quickaccess">Enlightenment Quickaccess Launcher</flag>
 	<flag name="enlightenment_modules_shot">Simple screenshot+save/upload module</flag>
 	<flag name="enlightenment_modules_start">Enlightenment's 'Start' button equivalent</flag>
