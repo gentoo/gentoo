@@ -26,7 +26,6 @@
 		<flag name="libass">Enable OSD (On Screen Display) and subtitles support via <pkg>media-libs/libass</pkg></flag>
 		<flag name="libmpv">Build mpv shared library</flag>
 		<flag name="lua">Enable Lua scripting, OSC (On Screen Controller) GUI and <pkg>net-misc/youtube-dl</pkg> hook-script</flag>
-		<flag name="luajit">Use <pkg>dev-lang/luajit</pkg> instead of <pkg>dev-lang/lua</pkg></flag>
 		<flag name="opengl">Enable the recommended 'opengl' video output</flag>
 		<flag name="raspberry-pi">Enable support for the Raspberry Pi</flag>
 		<flag name="rubberband">Enable high quality pitch correction via <pkg>media-libs/rubberband</pkg></flag>
