@@ -1,13 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 EGO_PN="github.com/cloudflare/${PN}"
-EGIT_COMMIT="d2393674072314fda47d2c7c16cb7fd4cdc16821"
 inherit golang-build golang-vcs-snapshot
 
-SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://${EGO_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
 
 DESCRIPTION="Cloudflare's PKI and TLS toolkit"
@@ -22,7 +21,7 @@ RESTRICT="test"
 
 src_compile() {
 	pushd src || die
-	CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')" GOPATH="${S}" go install github.com/cloudflare/cfssl/cmd/... || die
+	CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')" GOPATH="${S}" go install -v github.com/cloudflare/cfssl/cmd/... || die
 	popd || die
 }
 
