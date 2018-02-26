@@ -6260,7 +6260,7 @@ dev-util/usb-robot 0.2.0: USB Reverse engineering tools
 dev-util/valgrind 3.12.0 3.13.0: An open-source memory debugger for GNU/Linux
 dev-util/valkyrie 2.0.0-r1: Graphical front-end to the Valgrind suite of tools
 dev-util/vbindiff 3.0_beta4-r1 3.0_beta5: Visual binary diff utility
-dev-util/vint 0.3.13-r1 0.3.18: Lint tool for Vim script language
+dev-util/vint 0.3.18: Lint tool for Vim script language
 dev-util/weka 3.7.13: A Java data mining package
 dev-util/wiggle 0.9-r1: tool for applying patches that patch cannot apply because of conflicting changes
 dev-util/wxglade 0.6.3-r3: Glade-like GUI designer which can generate Python, Perl, C++ or XRC code
@@ -7149,7 +7149,7 @@ media-fonts/wqy-unibit 1.1.0_p1: WenQuanYi Unibit CJK font
 media-fonts/wqy-zenhei 0.9.46: WenQuanYi Hei-Ti Style (sans-serif) Chinese outline font
 media-fonts/x11fonts-jmk 3.0-r1: This package contains character-cell fonts for use with X
 media-fonts/zh-kcfonts 1.05-r3: Kuo Chauo Chinese Fonts collection in BIG5 encoding
-media-gfx/aaphoto 0.43.1 0.45: Automatic color correction and resizing of photos
+media-gfx/aaphoto 0.45: Automatic color correction and resizing of photos
 media-gfx/aewan 1.0.01-r1: A curses-based ascii-art editor
 media-gfx/album 4.07: HTML photo album generator
 media-gfx/apngasm 2.7: create an APNG from multiple PNG files
