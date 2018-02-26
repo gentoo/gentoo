@@ -14,8 +14,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+af-packet control-socket cuda debug +detection geoip hardened logrotate lua luajit nflog +nfqueue redis +rules test"
 
-REQUIRED_USE="lua? ( !luajit )"
-
 DEPEND="
 	>=dev-libs/jansson-2.2
 	dev-libs/libpcre
@@ -29,8 +27,10 @@ DEPEND="
 	sys-apps/file
 	cuda?       ( dev-util/nvidia-cuda-toolkit )
 	geoip?      ( dev-libs/geoip )
-	lua?        ( dev-lang/lua:* )
-	luajit?     ( dev-lang/luajit:* )
+	lua? (
+		!luajit? ( dev-lang/lua:* )
+		luajit? ( dev-lang/luajit:* )
+	)
 	nflog?      ( net-libs/libnetfilter_log )
 	nfqueue?    ( net-libs/libnetfilter_queue )
 	redis?      ( dev-libs/hiredis )
@@ -87,10 +87,15 @@ src_configure() {
 # 		myeconfargs+=( $(use_enable prelude) )
 # 	fi
 	if use lua ; then
-		myeconfargs+=( $(use_enable lua) )
-	fi
-	if use luajit ; then
-		myeconfargs+=( $(use_enable luajit) )
+		myeconfargs+=(
+			$(use_enable !luajit lua)
+			$(use_enable luajit)
+		)
+	else
+		myeconfargs+=(
+			--disable-lua
+			--disable-luajit
+		)
 	fi
 
 # this should be used when pf_ring use flag support will be added
