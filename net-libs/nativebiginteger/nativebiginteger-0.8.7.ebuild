@@ -11,7 +11,7 @@ SRC_URI="http://mirror.i2p2.de/i2psource_${PV}.tar.bz2"
 
 LICENSE="|| ( public-domain BSD MIT )"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 
 IUSE="test"
 
