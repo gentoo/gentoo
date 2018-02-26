@@ -16,9 +16,9 @@ IUSE="aio mysql postgres test"
 
 RDEPEND="aio? ( dev-libs/libaio )
 	mysql? ( virtual/libmysqlclient )
-	postgres? ( dev-db/postgresql:= )"
+	postgres? ( dev-db/postgresql:= )
+	dev-lang/luajit:="
 DEPEND="${RDEPEND}
-	dev-lang/luajit:=
 	dev-libs/concurrencykit
 	dev-libs/libxslt
 	sys-devel/libtool:=
