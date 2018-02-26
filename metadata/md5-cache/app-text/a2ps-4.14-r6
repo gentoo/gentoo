@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm prepare
-DEPEND=app-text/ghostscript-gpl app-text/libpaper >=app-text/psutils-1.17 app-text/wdiff emacs? ( virtual/emacs ) latex? ( virtual/latex-base ) nls? ( virtual/libintl ) userland_GNU? ( >=sys-apps/coreutils-6.10-r1 ) userland_BSD? ( sys-freebsd/freebsd-ubin ) >=dev-util/gperf-2.7.2 virtual/yacc nls? ( sys-devel/gettext ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15.1:1.15 >=sys-devel/automake-1.16:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=app-text/ghostscript-gpl app-text/libpaper >=app-text/psutils-1.17 app-text/wdiff emacs? ( virtual/emacs ) latex? ( virtual/latex-base ) nls? ( virtual/libintl ) userland_GNU? ( >=sys-apps/coreutils-6.10-r1 ) userland_BSD? ( sys-freebsd/freebsd-ubin ) >=dev-util/gperf-2.7.2 virtual/yacc nls? ( sys-devel/gettext ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Any to PostScript filter
 EAPI=6
 HOMEPAGE=https://www.gnu.org/software/a2ps/
@@ -10,5 +10,5 @@ RDEPEND=app-text/ghostscript-gpl app-text/libpaper >=app-text/psutils-1.17 app-t
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://gnu/a2ps/a2ps-4.14.tar.gz cjk? ( mirror://gentoo/a2ps-4.14-ja_nls.patch.gz )
-_eclasses_=autotools	5c7fb6f361f3a238f78e5328771febd0	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	flag-o-matic	02908f00f002f0f07c5b74783d778325	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=autotools	4842e626555a9a4344f34cef2e190b67	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	flag-o-matic	02908f00f002f0f07c5b74783d778325	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=c3ceba7647253e75569c4a47401e299b

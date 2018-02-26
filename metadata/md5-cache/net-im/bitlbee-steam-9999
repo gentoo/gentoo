@@ -1,10 +1,10 @@
 DEFINED_PHASES=install prepare unpack
-DEPEND=dev-libs/glib:2 dev-libs/libgcrypt:0= >=net-im/bitlbee-3.4[plugins] virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15.1:1.15 >=sys-devel/automake-1.16:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
+DEPEND=dev-libs/glib:2 dev-libs/libgcrypt:0= >=net-im/bitlbee-3.4[plugins] virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=Steam protocol plugin for BitlBee
 EAPI=6
 HOMEPAGE=https://github.com/bitlbee/bitlbee-steam
 LICENSE=GPL-2+
 RDEPEND=dev-libs/glib:2 dev-libs/libgcrypt:0= >=net-im/bitlbee-3.4[plugins]
 SLOT=0
-_eclasses_=autotools	5c7fb6f361f3a238f78e5328771febd0	git-r3	fec09a83ae965b041b47f5ff7c8ba29a	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=autotools	4842e626555a9a4344f34cef2e190b67	git-r3	fec09a83ae965b041b47f5ff7c8ba29a	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=242fc118d54e640d5f3cde0e0ba95849

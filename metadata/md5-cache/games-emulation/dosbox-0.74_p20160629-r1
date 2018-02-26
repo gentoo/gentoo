@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install postinst prepare
-DEPEND=alsa? ( media-libs/alsa-lib ) glide? ( media-libs/openglide ) opengl? ( virtual/glu virtual/opengl ) debug? ( sys-libs/ncurses:0 ) media-libs/libpng:0 media-libs/libsdl[joystick,video,X] media-libs/sdl-net media-libs/sdl-sound app-arch/unzip >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15.1:1.15 >=sys-devel/automake-1.16:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=alsa? ( media-libs/alsa-lib ) glide? ( media-libs/openglide ) opengl? ( virtual/glu virtual/opengl ) debug? ( sys-libs/ncurses:0 ) media-libs/libpng:0 media-libs/libsdl[joystick,video,X] media-libs/sdl-net media-libs/sdl-sound app-arch/unzip >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=DOS emulator
 EAPI=6
 HOMEPAGE=http://dosbox.sourceforge.net/
@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=alsa? ( media-libs/alsa-lib ) glide? ( media-libs/openglide ) opengl? ( virtual/glu virtual/opengl ) debug? ( sys-libs/ncurses:0 ) media-libs/libpng:0 media-libs/libsdl[joystick,video,X] media-libs/sdl-net media-libs/sdl-sound
 SLOT=0
 SRC_URI=mirror://gentoo/dosbox-code-0-3989-dosbox-trunk.zip glide? ( https://raw.githubusercontent.com/voyageur/openglide/3722fc563b737d2d7933df6a771651c2154e6f7b/platform/dosbox/dosbox_glide.diff -> dosbox_glide-3722fc563b737d2d7933df6a771651c2154e6f7b.diff )
-_eclasses_=autotools	5c7fb6f361f3a238f78e5328771febd0	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	flag-o-matic	02908f00f002f0f07c5b74783d778325	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=autotools	4842e626555a9a4344f34cef2e190b67	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	flag-o-matic	02908f00f002f0f07c5b74783d778325	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=d51952680e9e9928e893c6c34f8abf35

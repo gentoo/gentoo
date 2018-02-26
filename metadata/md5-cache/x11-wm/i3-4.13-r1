@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst prepare
-DEPEND=dev-libs/libev dev-libs/libpcre >=dev-libs/yajl-2.0.3 x11-libs/libxcb[xkb] x11-libs/libxkbcommon[X] x11-libs/startup-notification x11-libs/xcb-util x11-libs/xcb-util-cursor x11-libs/xcb-util-keysyms x11-libs/xcb-util-wm x11-libs/xcb-util-xrm >=x11-libs/cairo-1.14.4[X,xcb] >=x11-libs/pango-1.30.0[X] doc? ( app-text/asciidoc app-text/xmlto dev-lang/perl ) virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15.1:1.15 >=sys-devel/automake-1.16:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=dev-libs/libev dev-libs/libpcre >=dev-libs/yajl-2.0.3 x11-libs/libxcb[xkb] x11-libs/libxkbcommon[X] x11-libs/startup-notification x11-libs/xcb-util x11-libs/xcb-util-cursor x11-libs/xcb-util-keysyms x11-libs/xcb-util-wm x11-libs/xcb-util-xrm >=x11-libs/cairo-1.14.4[X,xcb] >=x11-libs/pango-1.30.0[X] doc? ( app-text/asciidoc app-text/xmlto dev-lang/perl ) virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=An improved dynamic tiling window manager
 EAPI=6
 HOMEPAGE=https://i3wm.org/
@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=dev-libs/libev dev-libs/libpcre >=dev-libs/yajl-2.0.3 x11-libs/libxcb[xkb] x11-libs/libxkbcommon[X] x11-libs/startup-notification x11-libs/xcb-util x11-libs/xcb-util-cursor x11-libs/xcb-util-keysyms x11-libs/xcb-util-wm x11-libs/xcb-util-xrm >=x11-libs/cairo-1.14.4[X,xcb] >=x11-libs/pango-1.30.0[X] dev-lang/perl dev-perl/AnyEvent-I3 dev-perl/JSON-XS
 SLOT=0
 SRC_URI=https://i3wm.org/downloads/i3-4.13.tar.bz2
-_eclasses_=autotools	5c7fb6f361f3a238f78e5328771febd0	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=autotools	4842e626555a9a4344f34cef2e190b67	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=01a627db5d18eb235f3b41b2f0f2fa27

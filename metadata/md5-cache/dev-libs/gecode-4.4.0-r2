@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=gist? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtprintsupport:5 dev-qt/qtwidgets:5 ) gmp? ( dev-libs/gmp:0 dev-libs/mpfr:0 ) sys-devel/bison sys-devel/flex doc? ( app-doc/doxygen media-gfx/graphviz ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15.1:1.15 >=sys-devel/automake-1.16:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=gist? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtprintsupport:5 dev-qt/qtwidgets:5 ) gmp? ( dev-libs/gmp:0 dev-libs/mpfr:0 ) sys-devel/bison sys-devel/flex doc? ( app-doc/doxygen media-gfx/graphviz ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=An environment for developing constraint-based applications
 EAPI=6
 HOMEPAGE=http://www.gecode.org/
@@ -9,5 +9,5 @@ LICENSE=MIT
 RDEPEND=gist? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtprintsupport:5 dev-qt/qtwidgets:5 ) gmp? ( dev-libs/gmp:0 dev-libs/mpfr:0 )
 SLOT=0
 SRC_URI=http://www.gecode.org/download/gecode-4.4.0.tar.gz
-_eclasses_=autotools	5c7fb6f361f3a238f78e5328771febd0	estack	43ddf5aaffa7a8d0482df54d25a66a1f	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=autotools	4842e626555a9a4344f34cef2e190b67	estack	43ddf5aaffa7a8d0482df54d25a66a1f	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=79dc0e30d5baece9e85ed77553e4b236

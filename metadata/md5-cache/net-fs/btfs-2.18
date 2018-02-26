@@ -1,5 +1,5 @@
 DEFINED_PHASES=install prepare
-DEPEND=>=sys-fs/fuse-2.8.0:0 >=net-misc/curl-7.22.0 dev-libs/boost:= >=net-libs/libtorrent-rasterbar-0.16.0:= virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15.1:1.15 >=sys-devel/automake-1.16:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=>=sys-fs/fuse-2.8.0:0 >=net-misc/curl-7.22.0 dev-libs/boost:= >=net-libs/libtorrent-rasterbar-0.16.0:= virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=a bittorrent filesystem based on FUSE
 EAPI=6
 HOMEPAGE=https://github.com/johang/btfs
@@ -10,5 +10,5 @@ RDEPEND=>=sys-fs/fuse-2.8.0:0 >=net-misc/curl-7.22.0 dev-libs/boost:= >=net-libs
 REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_4 python_targets_python3_5 python_targets_python3_6 )
 SLOT=0
 SRC_URI=https://github.com/johang/btfs/archive/v2.18.tar.gz -> btfs-2.18.tar.gz
-_eclasses_=autotools	5c7fb6f361f3a238f78e5328771febd0	libtool	0081a71a261724730ec4c248494f044d	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	python-r1	e9350ec46bb5c9f3504b4fbe8b8d8987	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=autotools	4842e626555a9a4344f34cef2e190b67	libtool	0081a71a261724730ec4c248494f044d	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	python-r1	e9350ec46bb5c9f3504b4fbe8b8d8987	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=2410a958215ab2a3fbb37df058d80ebb

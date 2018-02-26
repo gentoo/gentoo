@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=media-libs/libsndfile:= sys-libs/zlib:= alsa? ( media-libs/alsa-lib ) audiofile? ( media-libs/audiofile ) flac? ( media-libs/flac ) gtk? ( >=x11-libs/gtk+-2.10:2 ) id3tag? ( media-libs/libid3tag ) jack? ( >=media-sound/jack-audio-connection-kit-0.80 ) mad? ( media-libs/libmad ) mikmod? ( media-libs/libmikmod:0 ) nas? ( media-libs/nas ) ogg? ( media-libs/libogg ) opengl? ( virtual/opengl ) vorbis? ( media-libs/libvorbis ) xosd? ( x11-libs/xosd ) virtual/pkgconfig doc? ( app-doc/doxygen ) nls? ( sys-devel/gettext ) oss? ( virtual/os-headers ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15.1:1.15 >=sys-devel/automake-1.16:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=media-libs/libsndfile:= sys-libs/zlib:= alsa? ( media-libs/alsa-lib ) audiofile? ( media-libs/audiofile ) flac? ( media-libs/flac ) gtk? ( >=x11-libs/gtk+-2.10:2 ) id3tag? ( media-libs/libid3tag ) jack? ( >=media-sound/jack-audio-connection-kit-0.80 ) mad? ( media-libs/libmad ) mikmod? ( media-libs/libmikmod:0 ) nas? ( media-libs/nas ) ogg? ( media-libs/libogg ) opengl? ( virtual/opengl ) vorbis? ( media-libs/libvorbis ) xosd? ( x11-libs/xosd ) virtual/pkgconfig doc? ( app-doc/doxygen ) nls? ( sys-devel/gettext ) oss? ( virtual/os-headers ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A heavily multi-threaded pluggable audio player
 EAPI=6
 HOMEPAGE=http://www.alsaplayer.org/
@@ -10,5 +10,5 @@ RDEPEND=media-libs/libsndfile:= sys-libs/zlib:= alsa? ( media-libs/alsa-lib ) au
 REQUIRED_USE=|| ( alsa jack nas oss )
 SLOT=0
 SRC_URI=http://www.alsaplayer.org/alsaplayer-0.99.81.tar.bz2
-_eclasses_=autotools	5c7fb6f361f3a238f78e5328771febd0	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=autotools	4842e626555a9a4344f34cef2e190b67	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=88aa06dc4ee042fd84c1296e3c5c06f3

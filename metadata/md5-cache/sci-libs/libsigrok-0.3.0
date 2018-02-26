@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare test
-DEPEND=>=dev-libs/glib-2.32.0 >=dev-libs/libzip-0.8:= ftdi? ( >=dev-embedded/libftdi-0.16:= ) serial? ( >=dev-libs/libserialport-0.1.0 ) usb? ( virtual/libusb:1 ) test? ( >=dev-libs/check-0.9.4 ) virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15.1:1.15 >=sys-devel/automake-1.16:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=>=dev-libs/glib-2.32.0 >=dev-libs/libzip-0.8:= ftdi? ( >=dev-embedded/libftdi-0.16:= ) serial? ( >=dev-libs/libserialport-0.1.0 ) usb? ( virtual/libusb:1 ) test? ( >=dev-libs/check-0.9.4 ) virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=basic hardware drivers for logic analyzers and input/output file format support
 EAPI=5
 HOMEPAGE=http://sigrok.org/wiki/Libsigrok
@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=!static-libs? ( >=dev-libs/glib-2.32.0 >=dev-libs/libzip-0.8:= ftdi? ( >=dev-embedded/libftdi-0.16:= ) serial? ( >=dev-libs/libserialport-0.1.0 ) usb? ( virtual/libusb:1 ) ) static-libs? ( >=dev-libs/glib-2.32.0[static-libs(+)] >=dev-libs/libzip-0.8:=[static-libs(+)] ftdi? ( >=dev-embedded/libftdi-0.16:=[static-libs(+)] ) serial? ( >=dev-libs/libserialport-0.1.0[static-libs(+)] ) usb? ( virtual/libusb:1[static-libs(+)] ) )
 SLOT=0/2
 SRC_URI=http://sigrok.org/download/source/libsigrok/libsigrok-0.3.0.tar.gz
-_eclasses_=autotools	5c7fb6f361f3a238f78e5328771febd0	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=autotools	4842e626555a9a4344f34cef2e190b67	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=1a3187d8c51fa3b3607940b765bd5e27

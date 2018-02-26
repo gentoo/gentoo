@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst preinst prepare setup
-DEPEND=gpm? ( sys-libs/gpm[static-libs(+)] ) truetype? ( >=media-libs/freetype-2[static-libs] app-arch/bzip2[static-libs(+)] sys-libs/zlib[static-libs(+)] ) png? ( >=media-libs/libpng-1.4.3[static-libs] sys-libs/zlib[static-libs(+)] ) virtual/jpeg:0[static-libs] app-arch/cpio media-gfx/fbgrab !sys-apps/lcdsplash sys-apps/openrc >=dev-libs/klibc-1.5 virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15.1:1.15 >=sys-devel/automake-1.16:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=gpm? ( sys-libs/gpm[static-libs(+)] ) truetype? ( >=media-libs/freetype-2[static-libs] app-arch/bzip2[static-libs(+)] sys-libs/zlib[static-libs(+)] ) png? ( >=media-libs/libpng-1.4.3[static-libs] sys-libs/zlib[static-libs(+)] ) virtual/jpeg:0[static-libs] app-arch/cpio media-gfx/fbgrab !sys-apps/lcdsplash sys-apps/openrc >=dev-libs/klibc-1.5 virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Framebuffer splash utilities
 EAPI=5
 HOMEPAGE=https://sourceforge.net/projects/fbsplash.berlios/
@@ -10,5 +10,5 @@ RDEPEND=gpm? ( sys-libs/gpm[static-libs(+)] ) truetype? ( >=media-libs/freetype-
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/fbsplash.berlios/splashutils-lite-1.5.4.4.tar.bz2 mirror://sourceforge/fbsplash.berlios/splashutils-gentoo-1.0.17.tar.bz2 mirror://gentoo/miscsplashutils-0.1.8.tar.bz2 mirror://sourceforge/libpng/libpng-1.4.3.tar.bz2 ftp://ftp.uu.net/graphics/jpeg/jpegsrc.v8a.tar.gz mirror://sourceforge/freetype/freetype-2.3.12.tar.bz2 http://www.gzip.org/zlib/zlib-1.2.3.tar.bz2
-_eclasses_=autotools	5c7fb6f361f3a238f78e5328771febd0	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=autotools	4842e626555a9a4344f34cef2e190b67	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=62761ab6700e87e1f7057858b3a6d78a

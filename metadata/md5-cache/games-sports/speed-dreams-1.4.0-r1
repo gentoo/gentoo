@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=virtual/opengl virtual/glu media-libs/freealut media-libs/freeglut >=media-libs/libpng-1.2.40:0 media-libs/openal sys-libs/zlib x11-libs/libX11 x11-libs/libXxf86vm xrandr? ( x11-libs/libXrandr ) >=media-libs/plib-1.8.3 x11-libs/libICE x11-libs/libSM x11-libs/libXext x11-libs/libXi x11-libs/libXt x11-libs/libXmu x11-libs/libXrender x11-proto/xproto xrandr? ( x11-proto/randrproto ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15.1:1.15 >=sys-devel/automake-1.16:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=virtual/opengl virtual/glu media-libs/freealut media-libs/freeglut >=media-libs/libpng-1.2.40:0 media-libs/openal sys-libs/zlib x11-libs/libX11 x11-libs/libXxf86vm xrandr? ( x11-libs/libXrandr ) >=media-libs/plib-1.8.3 x11-libs/libICE x11-libs/libSM x11-libs/libXext x11-libs/libXi x11-libs/libXt x11-libs/libXmu x11-libs/libXrender x11-proto/xproto xrandr? ( x11-proto/randrproto ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A fork of the famous open racing car simulator TORCS
 EAPI=6
 HOMEPAGE=http://speed-dreams.sourceforge.net/
@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=virtual/opengl virtual/glu media-libs/freealut media-libs/freeglut >=media-libs/libpng-1.2.40:0 media-libs/openal sys-libs/zlib x11-libs/libX11 x11-libs/libXxf86vm xrandr? ( x11-libs/libXrandr )
 SLOT=0
 SRC_URI=mirror://sourceforge/speed-dreams/speed-dreams-1.4.0-r2307-src.tar.bz2
-_eclasses_=autotools	5c7fb6f361f3a238f78e5328771febd0	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	versionator	ce21313503c41896ebcd7d58b0607e37
+_eclasses_=autotools	4842e626555a9a4344f34cef2e190b67	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	versionator	ce21313503c41896ebcd7d58b0607e37
 _md5_=3385a232249d4aca89e364712faaeda6

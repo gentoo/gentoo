@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure prepare
-DEPEND=virtual/latex-base dev-texlive/texlive-fontsrecommended >=dev-lisp/clisp-2.44.1-r1 dev-texlive/texlive-langcyrillic dev-lang/perl sys-devel/flex >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15.1:1.15 >=sys-devel/automake-1.16:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=virtual/latex-base dev-texlive/texlive-fontsrecommended >=dev-lisp/clisp-2.44.1-r1 dev-texlive/texlive-langcyrillic dev-lang/perl sys-devel/flex >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A Flexible Indexing System
 EAPI=6
 HOMEPAGE=http://www.xindy.org/ https://github.com/jschrod/xindy.ctan
@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=virtual/latex-base dev-texlive/texlive-fontsrecommended >=dev-lisp/clisp-2.44.1-r1 dev-texlive/texlive-langcyrillic
 SLOT=0
 SRC_URI=http://www.xindy.org/xindy-2.4.tar.gz
-_eclasses_=autotools	5c7fb6f361f3a238f78e5328771febd0	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=autotools	4842e626555a9a4344f34cef2e190b67	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=7658a6c1733745aceef490699eedc716

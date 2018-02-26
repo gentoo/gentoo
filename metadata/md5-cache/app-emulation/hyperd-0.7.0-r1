@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare unpack
-DEPEND=libvirt? ( >=app-emulation/libvirt-1.2.2 ) xen? ( app-emulation/xen ) sys-fs/lvm2 >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15.1:1.15 >=sys-devel/automake-1.16:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig >=dev-lang/go-1.8
+DEPEND=libvirt? ( >=app-emulation/libvirt-1.2.2 ) xen? ( app-emulation/xen ) sys-fs/lvm2 >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig >=dev-lang/go-1.8
 DESCRIPTION=Hypervisor-based Runtime for OCI
 EAPI=6
 HOMEPAGE=https://github.com/hyperhq/hyperd
@@ -9,5 +9,5 @@ LICENSE=Apache-2.0
 RDEPEND=libvirt? ( >=app-emulation/libvirt-1.2.2 ) xen? ( app-emulation/xen )
 SLOT=0
 SRC_URI=https://github.com/hyperhq/hyperd/archive/v0.7.0.tar.gz -> hyperd-0.7.0.tar.gz
-_eclasses_=autotools	5c7fb6f361f3a238f78e5328771febd0	golang-base	51a1f13e065f1cff4507685d9cc268c7	golang-vcs-snapshot	913580335becddd3ebecefe852e47536	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	a31844b675f1a1fea87fbe1144aee5f5	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=autotools	4842e626555a9a4344f34cef2e190b67	golang-base	51a1f13e065f1cff4507685d9cc268c7	golang-vcs-snapshot	913580335becddd3ebecefe852e47536	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	a31844b675f1a1fea87fbe1144aee5f5	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=4fbb40a84615d0d49d904a653f9e7d12

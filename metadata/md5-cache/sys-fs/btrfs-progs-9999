@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare unpack
-DEPEND=dev-libs/lzo:2= sys-apps/util-linux:0=[static-libs(+)?] sys-libs/zlib:0= convert? ( sys-fs/e2fsprogs:0= sys-libs/e2fsprogs-libs:0= reiserfs? ( >=sys-fs/reiserfsprogs-3.6.27 ) ) zstd? ( app-arch/zstd:0= ) convert? ( sys-apps/acl ) >=app-text/asciidoc-8.6.0 app-text/docbook-xml-dtd:4.5 app-text/xmlto static? ( dev-libs/lzo:2[static-libs(+)] sys-apps/util-linux:0[static-libs(+)] sys-libs/zlib:0[static-libs(+)] convert? ( sys-fs/e2fsprogs:0[static-libs(+)] sys-libs/e2fsprogs-libs:0[static-libs(+)] reiserfs? ( >=sys-fs/reiserfsprogs-3.6.27[static-libs(+)] ) ) zstd? ( app-arch/zstd:0[static-libs(+)] ) ) sys-devel/gnuconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15.1:1.15 >=sys-devel/automake-1.16:1.16 ) >=sys-devel/autoconf-2.69 >=dev-vcs/git-1.8.2.1
+DEPEND=dev-libs/lzo:2= sys-apps/util-linux:0=[static-libs(+)?] sys-libs/zlib:0= convert? ( sys-fs/e2fsprogs:0= sys-libs/e2fsprogs-libs:0= reiserfs? ( >=sys-fs/reiserfsprogs-3.6.27 ) ) zstd? ( app-arch/zstd:0= ) convert? ( sys-apps/acl ) >=app-text/asciidoc-8.6.0 app-text/docbook-xml-dtd:4.5 app-text/xmlto static? ( dev-libs/lzo:2[static-libs(+)] sys-apps/util-linux:0[static-libs(+)] sys-libs/zlib:0[static-libs(+)] convert? ( sys-fs/e2fsprogs:0[static-libs(+)] sys-libs/e2fsprogs-libs:0[static-libs(+)] reiserfs? ( >=sys-fs/reiserfsprogs-3.6.27[static-libs(+)] ) ) zstd? ( app-arch/zstd:0[static-libs(+)] ) ) sys-devel/gnuconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=Btrfs filesystem utilities
 EAPI=6
 HOMEPAGE=https://btrfs.wiki.kernel.org
@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/lzo:2= sys-apps/util-linux:0=[static-libs(+)?] sys-libs/zlib:0= convert? ( sys-fs/e2fsprogs:0= sys-libs/e2fsprogs-libs:0= reiserfs? ( >=sys-fs/reiserfsprogs-3.6.27 ) ) zstd? ( app-arch/zstd:0= )
 RESTRICT=test
 SLOT=0/0
-_eclasses_=autotools	5c7fb6f361f3a238f78e5328771febd0	bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	git-r3	fec09a83ae965b041b47f5ff7c8ba29a	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=autotools	4842e626555a9a4344f34cef2e190b67	bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	git-r3	fec09a83ae965b041b47f5ff7c8ba29a	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=6ea741b371fc3c1ebf14d0d32c531a65

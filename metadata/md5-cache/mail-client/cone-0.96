@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=>=dev-libs/openssl-0.9.6:* dev-libs/libxml2 sys-libs/ncurses:= >=net-libs/courier-unicode-2 app-text/aspell crypt? ( >=app-crypt/gnupg-1.0.4 ) fam? ( virtual/fam ) gnutls? ( net-libs/gnutls ) idn? ( net-dns/libidn ) ipv6? ( net-dns/libidn ) ldap? ( net-nds/openldap ) dev-lang/perl >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15.1:1.15 >=sys-devel/automake-1.16:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=>=dev-libs/openssl-0.9.6:* dev-libs/libxml2 sys-libs/ncurses:= >=net-libs/courier-unicode-2 app-text/aspell crypt? ( >=app-crypt/gnupg-1.0.4 ) fam? ( virtual/fam ) gnutls? ( net-libs/gnutls ) idn? ( net-dns/libidn ) ipv6? ( net-dns/libidn ) ldap? ( net-nds/openldap ) dev-lang/perl >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=CONE: COnsole News reader and Emailer
 EAPI=6
 HOMEPAGE=http://www.courier-mta.org/cone/
@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=>=dev-libs/openssl-0.9.6:* dev-libs/libxml2 sys-libs/ncurses:= >=net-libs/courier-unicode-2 app-text/aspell crypt? ( >=app-crypt/gnupg-1.0.4 ) fam? ( virtual/fam ) gnutls? ( net-libs/gnutls ) idn? ( net-dns/libidn ) ipv6? ( net-dns/libidn ) ldap? ( net-nds/openldap )
 SLOT=0
 SRC_URI=mirror://sourceforge/courier/cone-0.96.tar.bz2
-_eclasses_=autotools	5c7fb6f361f3a238f78e5328771febd0	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=autotools	4842e626555a9a4344f34cef2e190b67	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=b2bf8e89431ea9414060229d41ae3101

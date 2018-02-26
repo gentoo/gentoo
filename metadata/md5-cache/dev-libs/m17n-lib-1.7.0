@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure prepare
-DEPEND=~dev-db/m17n-db-1.7.0 X? ( x11-libs/libX11 athena? ( x11-libs/libXaw ) bidi? ( dev-libs/fribidi ) fontconfig? ( media-libs/fontconfig ) gd? ( media-libs/gd[png] ) libotf? ( dev-libs/libotf ) xft? ( media-libs/freetype x11-libs/libXft ) ) anthy? ( app-i18n/anthy ) libxml2? ( dev-libs/libxml2 ) spell? ( app-text/aspell ) virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15.1:1.15 >=sys-devel/automake-1.16:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=~dev-db/m17n-db-1.7.0 X? ( x11-libs/libX11 athena? ( x11-libs/libXaw ) bidi? ( dev-libs/fribidi ) fontconfig? ( media-libs/fontconfig ) gd? ( media-libs/gd[png] ) libotf? ( dev-libs/libotf ) xft? ( media-libs/freetype x11-libs/libXft ) ) anthy? ( app-i18n/anthy ) libxml2? ( dev-libs/libxml2 ) spell? ( app-text/aspell ) virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Multilingual Library for Unix/Linux
 EAPI=6
 HOMEPAGE=https://savannah.nongnu.org/projects/m17n https://git.savannah.nongnu.org/cgit/m17n/m17n-lib.git
@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1
 RDEPEND=~dev-db/m17n-db-1.7.0 X? ( x11-libs/libX11 athena? ( x11-libs/libXaw ) bidi? ( dev-libs/fribidi ) fontconfig? ( media-libs/fontconfig ) gd? ( media-libs/gd[png] ) libotf? ( dev-libs/libotf ) xft? ( media-libs/freetype x11-libs/libXft ) ) anthy? ( app-i18n/anthy ) libxml2? ( dev-libs/libxml2 ) spell? ( app-text/aspell )
 SLOT=0
 SRC_URI=mirror://nongnu/m17n/m17n-lib-1.7.0.tar.gz
-_eclasses_=autotools	5c7fb6f361f3a238f78e5328771febd0	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=autotools	4842e626555a9a4344f34cef2e190b67	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=e19d196632751826a62cc7c21ccf6656

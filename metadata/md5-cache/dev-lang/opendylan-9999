@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare unpack
-DEPEND=dev-libs/boehm-gc[threads] dev-lang/perl dev-perl/XML-Parser || ( dev-lang/opendylan-bin dev-lang/opendylan ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15.1:1.15 >=sys-devel/automake-1.16:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
+DEPEND=dev-libs/boehm-gc[threads] dev-lang/perl dev-perl/XML-Parser || ( dev-lang/opendylan-bin dev-lang/opendylan ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=OpenDylan language runtime environment
 EAPI=4
 HOMEPAGE=http://opendylan.org
@@ -7,5 +7,5 @@ LICENSE=Opendylan
 RDEPEND=dev-libs/boehm-gc[threads] dev-lang/perl dev-perl/XML-Parser || ( dev-lang/opendylan-bin dev-lang/opendylan )
 RESTRICT=test
 SLOT=0
-_eclasses_=autotools	5c7fb6f361f3a238f78e5328771febd0	git-r3	fec09a83ae965b041b47f5ff7c8ba29a	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=autotools	4842e626555a9a4344f34cef2e190b67	git-r3	fec09a83ae965b041b47f5ff7c8ba29a	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=042fa5d018b2180e0e820ca0ae52659d

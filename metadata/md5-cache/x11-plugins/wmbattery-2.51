@@ -1,5 +1,5 @@
 DEFINED_PHASES=prepare
-DEPEND=apm? ( sys-apps/apmd ) x11-libs/libX11 x11-libs/libXext x11-libs/libXpm upower? ( || ( >=sys-power/upower-0.9.23 sys-power/upower-pm-utils ) ) virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15.1:1.15 >=sys-devel/automake-1.16:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=apm? ( sys-apps/apmd ) x11-libs/libX11 x11-libs/libXext x11-libs/libXpm upower? ( || ( >=sys-power/upower-0.9.23 sys-power/upower-pm-utils ) ) virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A dockable app to report APM, ACPI, or SPIC battery status
 EAPI=6
 HOMEPAGE=http://www.dockapps.net/wmbattery
@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=apm? ( sys-apps/apmd ) x11-libs/libX11 x11-libs/libXext x11-libs/libXpm upower? ( || ( >=sys-power/upower-0.9.23 sys-power/upower-pm-utils ) )
 SLOT=0
 SRC_URI=http://www.dockapps.net/download/wmbattery-2.51.tar.gz
-_eclasses_=autotools	5c7fb6f361f3a238f78e5328771febd0	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=autotools	4842e626555a9a4344f34cef2e190b67	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=3caffc95fa48332d054be8b920617ad7

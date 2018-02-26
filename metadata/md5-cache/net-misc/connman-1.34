@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=>=dev-libs/glib-2.16 >=sys-apps/dbus-1.2.24 iptables? ( >=net-firewall/iptables-1.4.8 ) bluetooth? ( net-wireless/bluez ) l2tp? ( net-dialup/xl2tpd ) nftables? ( >=net-libs/libnftnl-1.0.4 >=net-libs/libmnl-1.0.0 ) ofono? ( net-misc/ofono ) openconnect? ( net-vpn/openconnect ) openvpn? ( net-vpn/openvpn ) policykit? ( sys-auth/polkit ) pptp? ( net-dialup/pptpclient ) vpnc? ( net-vpn/vpnc ) wifi? ( >=net-wireless/wpa_supplicant-2.0[dbus] ) wispr? ( net-libs/gnutls ) >=sys-kernel/linux-headers-2.6.39 virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15.1:1.15 >=sys-devel/automake-1.16:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DEPEND=>=dev-libs/glib-2.16 >=sys-apps/dbus-1.2.24 iptables? ( >=net-firewall/iptables-1.4.8 ) bluetooth? ( net-wireless/bluez ) l2tp? ( net-dialup/xl2tpd ) nftables? ( >=net-libs/libnftnl-1.0.4 >=net-libs/libmnl-1.0.0 ) ofono? ( net-misc/ofono ) openconnect? ( net-vpn/openconnect ) openvpn? ( net-vpn/openvpn ) policykit? ( sys-auth/polkit ) pptp? ( net-dialup/pptpclient ) vpnc? ( net-vpn/vpnc ) wifi? ( >=net-wireless/wpa_supplicant-2.0[dbus] ) wispr? ( net-libs/gnutls ) >=sys-kernel/linux-headers-2.6.39 virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
 DESCRIPTION=Provides a daemon for managing internet connections
 EAPI=6
 HOMEPAGE=https://01.org/connman
@@ -10,5 +10,5 @@ RDEPEND=>=dev-libs/glib-2.16 >=sys-apps/dbus-1.2.24 iptables? ( >=net-firewall/i
 REQUIRED_USE=|| ( iptables nftables )
 SLOT=0
 SRC_URI=mirror://kernel/linux/network/connman/connman-1.34.tar.xz
-_eclasses_=autotools	5c7fb6f361f3a238f78e5328771febd0	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	a31844b675f1a1fea87fbe1144aee5f5	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=autotools	4842e626555a9a4344f34cef2e190b67	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	a31844b675f1a1fea87fbe1144aee5f5	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=6c3b8dd2bcf809006f7412fe9f055327

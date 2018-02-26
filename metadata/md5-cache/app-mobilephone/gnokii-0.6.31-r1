@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install postinst prepare setup test
-DEPEND=!app-mobilephone/smstools bluetooth? ( kernel_linux? ( net-wireless/bluez ) ) ical? ( dev-libs/libical:= ) pcsc-lite? ( sys-apps/pcsc-lite ) sms? ( dev-libs/glib:2 postgres? ( dev-db/postgresql:* ) mysql? ( virtual/mysql:= ) ) usb? ( virtual/libusb:0 ) X? ( x11-libs/gtk+:2 ) dev-util/intltool irda? ( virtual/os-headers ) nls? ( sys-devel/gettext ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15.1:1.15 >=sys-devel/automake-1.16:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=!app-mobilephone/smstools bluetooth? ( kernel_linux? ( net-wireless/bluez ) ) ical? ( dev-libs/libical:= ) pcsc-lite? ( sys-apps/pcsc-lite ) sms? ( dev-libs/glib:2 postgres? ( dev-db/postgresql:* ) mysql? ( virtual/mysql:= ) ) usb? ( virtual/libusb:0 ) X? ( x11-libs/gtk+:2 ) dev-util/intltool irda? ( virtual/os-headers ) nls? ( sys-devel/gettext ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=User space driver and tools for use with mobile phones
 EAPI=6
 HOMEPAGE=http://www.gnokii.org/
@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=!app-mobilephone/smstools bluetooth? ( kernel_linux? ( net-wireless/bluez ) ) ical? ( dev-libs/libical:= ) pcsc-lite? ( sys-apps/pcsc-lite ) sms? ( dev-libs/glib:2 postgres? ( dev-db/postgresql:* ) mysql? ( virtual/mysql:= ) ) usb? ( virtual/libusb:0 ) X? ( x11-libs/gtk+:2 )
 SLOT=0
 SRC_URI=http://www.gnokii.org/download/gnokii/gnokii-0.6.31.tar.bz2
-_eclasses_=autotools	5c7fb6f361f3a238f78e5328771febd0	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	libtool	0081a71a261724730ec4c248494f044d	linux-info	ca370deef9d44125d829f2eb6ebc83e0	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	versionator	ce21313503c41896ebcd7d58b0607e37
+_eclasses_=autotools	4842e626555a9a4344f34cef2e190b67	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	libtool	0081a71a261724730ec4c248494f044d	linux-info	ca370deef9d44125d829f2eb6ebc83e0	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	versionator	ce21313503c41896ebcd7d58b0607e37
 _md5_=e3b2a16259100547c759e314f3a22d7b

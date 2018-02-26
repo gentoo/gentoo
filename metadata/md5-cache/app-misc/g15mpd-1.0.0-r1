@@ -1,5 +1,5 @@
 DEFINED_PHASES=install prepare
-DEPEND=>=app-misc/g15daemon-1.9 dev-libs/libg15 dev-libs/libg15render >=media-libs/libmpd-0.17 sys-libs/zlib x11-libs/libX11 x11-libs/libXtst x11-proto/xproto x11-proto/xextproto >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15.1:1.15 >=sys-devel/automake-1.16:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=>=app-misc/g15daemon-1.9 dev-libs/libg15 dev-libs/libg15render >=media-libs/libmpd-0.17 sys-libs/zlib x11-libs/libX11 x11-libs/libXtst x11-proto/xproto x11-proto/xextproto >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=MPD (music player daemon) plugin to G15daemon
 EAPI=5
 HOMEPAGE=https://sourceforge.net/projects/g15daemon/
@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=>=app-misc/g15daemon-1.9 dev-libs/libg15 dev-libs/libg15render >=media-libs/libmpd-0.17 sys-libs/zlib x11-libs/libX11 x11-libs/libXtst
 SLOT=0
 SRC_URI=mirror://sourceforge/g15daemon/g15mpd-1.0.0.tar.bz2
-_eclasses_=autotools	5c7fb6f361f3a238f78e5328771febd0	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=autotools	4842e626555a9a4344f34cef2e190b67	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=ecfaf50470de3225ef72c4fa0d218dad
