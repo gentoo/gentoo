@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation.
+# Copyright 1999-2018 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License, v2
 
 # Make sure we don't get wrong versions
@@ -20,21 +20,18 @@
 >sys-freebsd/freebsd-sbin-11.1.99
 <sys-freebsd/freebsd-ubin-11.1_alpha
 >sys-freebsd/freebsd-ubin-11.1.99
+<sys-freebsd/freebsd-usbin-11.1_alpha
 >sys-freebsd/freebsd-usbin-11.1.99
 <sys-freebsd/freebsd-share-11.1_alpha
 >sys-freebsd/freebsd-share-11.1.99
 <sys-freebsd/freebsd-contrib-11.1_alpha
 >sys-freebsd/freebsd-contrib-11.1.99
+<sys-freebsd/freebsd-cddl-11.1_alpha
 >sys-freebsd/freebsd-cddl-11.1.99
 <sys-freebsd/boot0-11.1_alpha
 >sys-freebsd/boot0-11.1.99
 <sys-freebsd/freebsd-sources-11.1_alpha
 >sys-freebsd/freebsd-sources-11.1.99
-
-# We masked different versions for easy upgrade. bug #491774
-# Please keep <freebsd-cddl-9.2_alpha and <freebsd-usbin-9.1_alpha.
-<sys-freebsd/freebsd-cddl-9.2_alpha
-<sys-freebsd/freebsd-usbin-9.1_alpha
 
 # Alexis Ballier <aballier@gentoo.org> (07 Nov 2011)
 # It is in freebsd-ubin starting from FreeBSD 9.0
