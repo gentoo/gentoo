@@ -21,7 +21,7 @@ RDEPEND="aio? ( dev-libs/libaio )
 DEPEND="${RDEPEND}
 	dev-libs/concurrencykit
 	dev-libs/libxslt
-	sys-devel/libtool:=
+	sys-devel/libtool
 	virtual/pkgconfig
 	test? ( dev-util/cram )"
 
