@@ -46,16 +46,20 @@ inherit libtool
 # @INTERNAL
 # @DESCRIPTION:
 # CONSTANT!
-# The latest major version/slot of automake available on each arch.  #312315
-# We should list both the latest stable, and the latest unstable.  #465732
-# This way the stable builds will still work, but the unstable are allowed
-# to build & test things for us ahead of time (if they have it installed).
+# The latest major unstable and stable version/slot of automake available
+# on each arch.
+# List latest unstable version first to boost testing adoption rate because
+# most package manager dependency resolver will pick the first suitable
+# version.
 # If a newer slot is stable on any arch, and is NOT reflected in this list,
 # then circular dependencies may arise during emerge @system bootstraps.
+# 
+# See bug 312315 and 465732 for further information and context.
+# 
 # Do NOT change this variable in your ebuilds!
 # If you want to force a newer minor version, you can specify the correct
 # WANT value by using a colon:  <PV>:<WANT_AUTOMAKE>
-_LATEST_AUTOMAKE=( 1.15.1:1.15 1.16:1.16 )
+_LATEST_AUTOMAKE=( 1.16:1.16 1.15.1:1.15 )
 
 _automake_atom="sys-devel/automake"
 _autoconf_atom="sys-devel/autoconf"
@@ -439,8 +443,9 @@ autotools_env_setup() {
 		local pv
 		for pv in ${_LATEST_AUTOMAKE[@]/#*:} ; do
 			# has_version respects ROOT, but in this case, we don't want it to,
-			# thus "ROOT=/" prefix:
-			ROOT=/ has_version "=sys-devel/automake-${pv}*" && export WANT_AUTOMAKE="${pv}"
+			# thus "ROOT=/" prefix;
+			# Break on first hit to respect _LATEST_AUTOMAKE order.
+			ROOT=/ has_version "=sys-devel/automake-${pv}*" && export WANT_AUTOMAKE="${pv}" && break
 		done
 		[[ ${WANT_AUTOMAKE} == "latest" ]] && \
 			die "Cannot find the latest automake! Tried ${_LATEST_AUTOMAKE[*]}"
