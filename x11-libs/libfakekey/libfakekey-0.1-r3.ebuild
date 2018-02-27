@@ -11,7 +11,7 @@ SRC_URI="http://downloads.yoctoproject.org/releases/matchbox/${PN}/${PV}/${P}.ta
 LICENSE="GPL-2"
 SLOT="0"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
 IUSE="debug doc"
 
 RDEPEND="x11-libs/libXtst"
