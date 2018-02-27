@@ -34,6 +34,7 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	${PYTHON_DEPS}
 	>=dev-util/gtk-doc-am-1.25
+	>=sys-devel/gettext-0.19.7
 	virtual/pkgconfig
 "
 # eautoreconf requires:
