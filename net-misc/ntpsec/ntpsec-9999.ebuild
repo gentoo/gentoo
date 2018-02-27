@@ -46,6 +46,8 @@ CDEPEND="${PYTHON_DEPS}
 "
 RDEPEND="${CDEPEND}
 	ntpviz? ( sci-visualization/gnuplot media-fonts/liberation-fonts )
+	!net-misc/ntp
+	!net-misc/openntpd
 "
 DEPEND="${CDEPEND}
 	app-text/asciidoc
@@ -53,8 +55,6 @@ DEPEND="${CDEPEND}
 	sys-devel/bison
 	rclock_oncore? ( net-misc/pps-tools )
 	rclock_pps? ( net-misc/pps-tools )
-	!net-misc/ntp
-	!net-misc/openntpd
 "
 
 WAF_BINARY="${S}/waf"
