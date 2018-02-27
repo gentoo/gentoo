@@ -760,10 +760,6 @@ net-wireless/cpyrit-cuda
 # Symantec trust issues properly (bug #613714)
 =app-misc/ca-certificates-20161130.3.30-r1
 
-# Eray Aslan <eras@gentoo.org> (01 Mar 2017)
-# Mask experimental software
-=mail-mta/postfix-3.3*
-
 # Mart Raudsepp <leio@gentoo.org> (16 Feb 2017)
 # Old gstreamer 0.10 version, which is security vulnerable.
 # Use gstreamer:1.0 with media-plugins/gst-plugins-libav
