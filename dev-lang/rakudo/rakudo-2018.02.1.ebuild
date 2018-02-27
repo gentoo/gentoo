@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -23,7 +23,7 @@ SLOT="0"
 IUSE="clang java +moar test"
 REQUIRED_USE="|| ( java moar )"
 
-CDEPEND="~dev-lang/nqp-${PV}:${SLOT}=[java?,moar?,clang=]"
+CDEPEND="~dev-lang/nqp-2018.02:${SLOT}=[java?,moar?,clang=]"
 RDEPEND="${CDEPEND}
 	java? ( >=virtual/jre-1.7 )"
 DEPEND="${CDEPEND}
