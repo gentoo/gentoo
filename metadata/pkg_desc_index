@@ -4619,6 +4619,7 @@ dev-python/brython 3.3.3: A Python 3 implementation for client-side web programm
 dev-python/bsddb3 6.1.1 6.2.4: Python bindings for Berkeley DB
 dev-python/buzhug 1.8-r1: Fast, pure-Python database engine
 dev-python/bytecodeassembler 0.6: Generate Python code objects by assembling bytecode
+dev-python/bz2file 0.98: Replacement for bz2.BZ2File with features from newest CPython
 dev-python/cachetools 1.1.5 2.0.0 2.0.1: Extensible memoizing collections and decorators
 dev-python/cairocffi 0.7.2 0.8.0: CFFI-based drop-in replacement for Pycairo
 dev-python/cangjie 1.2-r1: The Python bindings to libcangjie
