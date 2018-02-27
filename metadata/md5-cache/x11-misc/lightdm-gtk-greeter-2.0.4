@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst postrm prepare
+DEPEND=ayatana? ( dev-libs/libindicator:3 ) x11-libs/gtk+:3 >=x11-misc/lightdm-1.2.2 dev-util/intltool sys-devel/gettext xfce-base/exo >=sys-apps/sed-4
+DESCRIPTION=LightDM GTK+ Greeter
+EAPI=6
+HOMEPAGE=https://launchpad.net/lightdm-gtk-greeter
+IUSE=ayatana branding
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-3 LGPL-3 branding? ( CC-BY-3.0 )
+RDEPEND=ayatana? ( dev-libs/libindicator:3 ) x11-libs/gtk+:3 >=x11-misc/lightdm-1.2.2 x11-themes/gnome-themes-standard >=x11-themes/adwaita-icon-theme-3.14.1
+SLOT=0
+SRC_URI=https://launchpad.net/lightdm-gtk-greeter/2.0/2.0.4/+download/lightdm-gtk-greeter-2.0.4.tar.gz branding? ( https://dev.gentoo.org/~hwoarang/distfiles/lightdm-gentoo-patch-2.tar.gz )
+_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	gnome2-utils	4d211d7614f303710fca59db6ec12c88	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	versionator	ce21313503c41896ebcd7d58b0607e37	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=98deefd14fe8937f6b1a2c8f4db9f076
