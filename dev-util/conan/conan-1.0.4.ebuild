@@ -20,21 +20,21 @@ IUSE="test"
 # overly strict requirements?
 # https://github.com/conan-io/conan/blob/develop/conans/requirements.txt
 RDEPEND="
-	>=dev-python/bottle-0.12.8[${PYTHON_USEDEP}]
-	>=dev-python/colorama-0.3.3[${PYTHON_USEDEP}]
-	>=dev-python/distro-1.0.2[${PYTHON_USEDEP}]
-	>=dev-python/fasteners-0.14.1[${PYTHON_USEDEP}]
-	~dev-python/future-0.16.0[${PYTHON_USEDEP}]
-	~dev-python/node-semver-0.1.1[${PYTHON_USEDEP}]
-	>=dev-python/passlib-1.6.5[${PYTHON_USEDEP}]
-	~dev-python/patch-1.16[${PYTHON_USEDEP}]
-	>=dev-python/pluginbase-0.5[${PYTHON_USEDEP}]
 	>=dev-python/pyjwt-1.4[${PYTHON_USEDEP}]
-	>=dev-python/pygments-2.0[${PYTHON_USEDEP}]
-	~dev-python/pylint-1.6.5[${PYTHON_USEDEP}]
-	>=dev-python/pyyaml-3.11[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.7[${PYTHON_USEDEP}]
+	>=dev-python/colorama-0.3.3[${PYTHON_USEDEP}]
+	>=dev-python/pyyaml-3.11[${PYTHON_USEDEP}]
+	~dev-python/patch-1.16[${PYTHON_USEDEP}]
+	>=dev-python/fasteners-0.14.1[${PYTHON_USEDEP}]
 	>=dev-python/six-1.10[${PYTHON_USEDEP}]
+	>=dev-python/node-semver-0.2.0[${PYTHON_USEDEP}]
+	>=dev-python/distro-1.0.2[${PYTHON_USEDEP}]
+	>=dev-python/pylint-1.8.1[${PYTHON_USEDEP}]
+	~dev-python/future-0.16.0[${PYTHON_USEDEP}]
+	>=dev-python/pygments-2.0[${PYTHON_USEDEP}]
+	>=dev-python/astroid-1.6[${PYTHON_USEDEP}]
+	>=dev-python/pluginbase-0.5[${PYTHON_USEDEP}]
+	>=dev-python/bottle-0.12.8[${PYTHON_USEDEP}]
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
