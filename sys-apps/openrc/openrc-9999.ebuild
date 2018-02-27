@@ -300,6 +300,10 @@ pkg_postinst() {
 		if [[ -d "${EROOT}$(get_libdir)"/rc ]]; then
 			cp -RPp "${EROOT}$(get_libdir)/rc" "${EROOT}"lib
 		fi
+	elif ! use kernel_linux; then
+		if [[ -d "${EROOT}$(get_libdir)"/rc ]]; then
+			cp -RPp "${EROOT}$(get_libdir)/rc" "${EROOT}"lib
+		fi
 	fi
 
 	# update the dependency tree after touching all files #224171
