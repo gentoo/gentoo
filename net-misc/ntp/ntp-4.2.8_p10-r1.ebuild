@@ -20,7 +20,6 @@ CDEPEND="readline? ( >=sys-libs/readline-4.1:0= )
 	>=dev-libs/libevent-2.0.9:=[threads?]
 	kernel_linux? ( caps? ( sys-libs/libcap ) )
 	zeroconf? ( net-dns/avahi[mdnsresponder-compat] )
-	!openntpd? ( !net-misc/openntpd )
 	snmp? ( net-analyzer/net-snmp )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
@@ -31,7 +30,10 @@ DEPEND="${CDEPEND}
 	virtual/pkgconfig"
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-ntp )
-	vim-syntax? ( app-vim/ntp-syntax )"
+	vim-syntax? ( app-vim/ntp-syntax )
+	!net-misc/ntpsec
+	!openntpd? ( !net-misc/openntpd )
+"
 PDEPEND="openntpd? ( net-misc/openntpd )"
 
 S=${WORKDIR}/${MY_P}
