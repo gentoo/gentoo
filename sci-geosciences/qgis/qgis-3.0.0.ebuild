@@ -198,6 +198,9 @@ pkg_postinst() {
 		elog "If you do not need these plugins just disable them"
 		elog "in the Plugins menu, else you need to set USE=\"postgres\""
 	fi
+	if has_version "<sci-geosciences/qgis-3"; then
+		elog "QGIS is now based on PyQt5. Old scripts may not work anymore."
+	fi
 
 	gnome2_icon_cache_update
 	xdg_mimeinfo_database_update
