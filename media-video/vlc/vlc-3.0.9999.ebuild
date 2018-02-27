@@ -63,7 +63,8 @@ RDEPEND="
 	archive? ( app-arch/libarchive:= )
 	bidi? (
 		dev-libs/fribidi:0
-		media-libs/freetype:2
+		media-libs/freetype:2[harfbuzz]
+		media-libs/harfbuzz
 		virtual/ttf-fonts:0
 	)
 	bluray? ( media-libs/libbluray:0= )
@@ -276,6 +277,7 @@ src_configure() {
 		$(use_enable aom)
 		$(use_enable archive)
 		$(use_enable bidi fribidi)
+		$(use_enable bidi harfbuzz)
 		$(use_enable bluray)
 		$(use_enable cddb libcddb)
 		$(use_enable chromaprint)
