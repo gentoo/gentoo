@@ -886,7 +886,7 @@ app-i18n/man-pages-zh_CN 1.5: A somewhat comprehensive collection of Chinese Lin
 app-i18n/multiskkserv 20100128: SKK server that handles multiple dictionaries
 app-i18n/nkf 2.1.3: Network Kanji code conversion Filter with UTF-8/16 support
 app-i18n/opencc 1.0.5: Libraries for conversion between Traditional and Simplified Chinese
-app-i18n/poedit 1.5.5 1.8.5 2.0.6: GUI gettext translations editor
+app-i18n/poedit 1.8.5 2.0.6: GUI gettext translations editor
 app-i18n/pology 0.11-r1: A framework for custom processing of PO files
 app-i18n/pyzy 0.1.0-r2: The Chinese PinYin and Bopomofo conversion library
 app-i18n/qimhangul 0.2.0: a qt-based imhangul
