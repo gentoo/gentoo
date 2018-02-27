@@ -1,0 +1,87 @@
+
+# HG changeset patch
+# User unc0rr
+# Date 1516824334 -3600
+# Node ID 8869b5256720f0378bf9d5edc68ecb7e1f376039
+# Parent  856570ddd409bec11645c90b5a92fb79c5f2a4e1
+Configure for Qt5
+
+diff -r 856570ddd409 -r 8869b5256720 QTfrontend/CMakeLists.txt
+--- a/QTfrontend/CMakeLists.txt	Mon Jan 15 12:15:56 2018 -0500
++++ b/QTfrontend/CMakeLists.txt	Wed Jan 24 21:05:34 2018 +0100
+@@ -1,24 +1,6 @@
+-# Configure for Qt4
+-set(QT_MIN_VERSION "4.7.0")
+-include(CheckLibraryExists)
++find_package(Qt5 COMPONENTS Core Gui Network Svg Xml OpenGL)
+ 
+-set(QT_USE_QTCORE TRUE)
+-set(QT_USE_QTGUI TRUE)
+-set(QT_USE_QTNETWORK TRUE)
+-set(QT_USE_QTSVG FALSE)
+-set(QT_USE_QTXML FALSE)
+-set(QT_USE_QTOPENGL FALSE)
+-set(QT_USE_QTMAIN TRUE)
+-
+-find_package(Qt4 REQUIRED)
+-include(${QT_USE_FILE})
+-
+-# https://bugreports.qt-project.org/browse/QTBUG-17333
+-if(APPLE AND
+-   ${QTVERSION} VERSION_GREATER "4.7.0" AND
+-   ${QTVERSION} VERSION_LESS "4.7.4")
+-   message(FATAL_ERROR "This version of Qt is known *not* to work, please update or use a lower version")
+-endif()
++include(CheckLibraryExists)
+ 
+ find_package(SDL2 REQUIRED)
+ find_package(SDL2_mixer 2 REQUIRED) #audio in SDLInteraction
+@@ -159,9 +141,9 @@
+     endif()
+ endif()
+ 
+-qt4_add_resources(hwfr_rez_src ${hwfr_rez})
++qt5_add_resources(hwfr_rez_src ${hwfr_rez})
+ 
+-qt4_wrap_cpp(hwfr_moc_srcs ${hwfr_moc_hdrs})
++qt5_wrap_cpp(hwfr_moc_srcs ${hwfr_moc_hdrs})
+ 
+ 
+ if(APPLE)
+@@ -198,14 +180,14 @@
+ 
+ list(APPEND HW_LINK_LIBS
+     physfs physlayer
+-    ${QT_LIBRARIES}
++    Qt5::Core Qt5::Gui Qt5::Network Qt5::Svg Qt5::Xml Qt5::OpenGL
+     )
+ 
+ list(APPEND HW_LINK_LIBS
+     ${SDL2_LIBRARY}
+     ${SDL2_MIXER_LIBRARIES}
+     )
+-    
++
+ if(WIN32 AND NOT UNIX)
+     if(NOT SDL2_LIBRARY)
+         list(APPEND HW_LINK_LIBS SDL2)
+diff -r 856570ddd409 -r 8869b5256720 share/hedgewars/Data/Locale/CMakeLists.txt
+--- a/share/hedgewars/Data/Locale/CMakeLists.txt	Mon Jan 15 12:15:56 2018 -0500
++++ b/share/hedgewars/Data/Locale/CMakeLists.txt	Wed Jan 24 21:05:34 2018 +0100
+@@ -1,5 +1,4 @@
+-find_package(Qt4 REQUIRED)
+-include(${QT_USE_FILE})
++find_package(Qt5 COMPONENTS LinguistTools)
+ 
+ file(GLOB txttrans2 ??.txt)
+ file(GLOB txttrans5 ?????.txt)
+@@ -9,7 +8,7 @@
+ file(GLOB campaignfiles campaigns_*.txt)
+ file(GLOB tipfiles tips_*.xml)
+ 
+-QT4_ADD_TRANSLATION(QM ${tsfiles})
++QT5_ADD_TRANSLATION(QM ${tsfiles})
+ 
+ add_custom_target (release-translation ALL
+         DEPENDS ${QM}
+
