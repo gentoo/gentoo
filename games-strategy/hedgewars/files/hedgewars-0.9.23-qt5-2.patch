@@ -1,0 +1,477 @@
+
+# HG changeset patch
+# User unc0rr
+# Date 1516828810 -3600
+# Node ID fc47fc4af6bd6f399035923453cd85c8f50146f7
+# Parent  8869b5256720f0378bf9d5edc68ecb7e1f376039
+Finish porting. Seems to work, but no thorough testing has been performed
+
+diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/CMakeLists.txt
+--- a/QTfrontend/CMakeLists.txt	Wed Jan 24 21:05:34 2018 +0100
++++ b/QTfrontend/CMakeLists.txt	Wed Jan 24 22:20:10 2018 +0100
+@@ -1,5 +1,7 @@
+ find_package(Qt5 COMPONENTS Core Gui Network Svg Xml OpenGL)
+ 
++include_directories(${Qt5Core_PRIVATE_INCLUDE_DIRS})
++
+ include(CheckLibraryExists)
+ 
+ find_package(SDL2 REQUIRED)
+diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/main.cpp
+--- a/QTfrontend/main.cpp	Wed Jan 24 21:05:34 2018 +0100
++++ b/QTfrontend/main.cpp	Wed Jan 24 22:20:10 2018 +0100
+@@ -20,7 +20,6 @@
+ 
+ #include <QTranslator>
+ #include <QLocale>
+-#include <QPlastiqueStyle>
+ #include <QRegExp>
+ #include <QMap>
+ #include <QSettings>
+@@ -252,7 +251,7 @@
+     splash.show();
+ #endif
+ 
+-    app.setStyle(new QPlastiqueStyle());
++    //app.setStyle(new QPlastiqueStyle());
+ 
+     QDateTime now = QDateTime::currentDateTime();
+     srand(now.toTime_t());
+@@ -332,7 +331,7 @@
+ 
+             // Fallback to current input locale if "C" locale is returned
+             if(cc == "C")
+-                cc = HWApplication::keyboardInputLocale().name();
++                cc = HWApplication::inputMethod()->locale().name();
+         }
+ 
+         // Load locale files into translators
+diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/model/ammoSchemeModel.cpp
+--- a/QTfrontend/model/ammoSchemeModel.cpp	Wed Jan 24 21:05:34 2018 +0100
++++ b/QTfrontend/model/ammoSchemeModel.cpp	Wed Jan 24 22:20:10 2018 +0100
+@@ -569,7 +569,7 @@
+             << QVariant()              // scriptparam    43
+             ;
+ 
+-	QList<QVariant> construction;
++  QList<QVariant> construction;
+     construction
+             << predefSchemesNames[10]  // name           0
+             << QVariant(false)         // fortsmode      1
+@@ -617,7 +617,7 @@
+             << QVariant()              // scriptparam    43
+             ;
+ 
+-	QList<QVariant> hedgeeditor;
++  QList<QVariant> hedgeeditor;
+     hedgeeditor
+             << predefSchemesNames[11]  // name           0
+             << QVariant(false)         // fortsmode      1
+@@ -664,9 +664,9 @@
+             << QVariant(0)             // world edge     42
+             << QVariant()              // scriptparam    43
+             ;
+-			
+- 
+-			
++
++
++
+     schemes.append(defaultScheme);
+     schemes.append(proMode);
+     schemes.append(shoppa);
+@@ -896,10 +896,12 @@
+         return;
+     }
+ 
++    beginResetModel();
++
+     cfg[cfg.size()-1] = cfg[cfg.size()-1].mid(1);
+ 
+     for(int i = 0; i < cfg.size(); ++i)
+         netScheme[i] = QVariant(cfg[i]);
+ 
+-    reset();
++    endResetModel();
+ }
+diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/model/playerslistmodel.cpp
+--- a/QTfrontend/model/playerslistmodel.cpp	Wed Jan 24 21:05:34 2018 +0100
++++ b/QTfrontend/model/playerslistmodel.cpp	Wed Jan 24 22:20:10 2018 +0100
+@@ -309,10 +309,10 @@
+     }
+ 
+     if(index.data(Ignore).toBool())
+-        setData(index, Qt::gray, Qt::ForegroundRole);
++        setData(index, QColor(Qt::gray), Qt::ForegroundRole);
+     else
+     if(index.data(Friend).toBool())
+-        setData(index, Qt::green, Qt::ForegroundRole);
++        setData(index, QColor(Qt::green), Qt::ForegroundRole);
+     else
+         setData(index, QBrush(QColor(0xff, 0xcc, 0x00)), Qt::ForegroundRole);
+ }
+diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/net/hwmap.cpp
+--- a/QTfrontend/net/hwmap.cpp	Wed Jan 24 21:05:34 2018 +0100
++++ b/QTfrontend/net/hwmap.cpp	Wed Jan 24 22:20:10 2018 +0100
+@@ -79,7 +79,7 @@
+     {
+         quint8 *buf = (quint8*) readbuffer.constData();
+         QImage im(buf, 256, 128, QImage::Format_Mono);
+-        im.setNumColors(2);
++        im.setColorCount(2);
+ 
+         QPixmap px(QSize(256, 128));
+         QPixmap pxres(px.size());
+diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/net/netudpwidget.cpp
+--- a/QTfrontend/net/netudpwidget.cpp	Wed Jan 24 21:05:34 2018 +0100
++++ b/QTfrontend/net/netudpwidget.cpp	Wed Jan 24 22:20:10 2018 +0100
+@@ -33,15 +33,19 @@
+ 
+ void HWNetUdpModel::updateList()
+ {
+-    games.clear();
++  beginResetModel();
++
++  games.clear();
+ 
+-    reset();
++  endResetModel();
+ 
+-    pUdpSocket->writeDatagram("hedgewars client", QHostAddress::Broadcast, NETGAME_DEFAULT_PORT);
++  pUdpSocket->writeDatagram("hedgewars client", QHostAddress::Broadcast, NETGAME_DEFAULT_PORT);
+ }
+ 
+ void HWNetUdpModel::onClientRead()
+ {
++    beginResetModel();
++
+     while (pUdpSocket->hasPendingDatagrams())
+     {
+         QByteArray datagram;
+@@ -60,7 +64,7 @@
+         }
+     }
+ 
+-    reset();
++    endResetModel();
+ }
+ 
+ QVariant HWNetUdpModel::data(const QModelIndex &index,
+diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/net/newnetclient.cpp
+--- a/QTfrontend/net/newnetclient.cpp	Wed Jan 24 21:05:34 2018 +0100
++++ b/QTfrontend/net/newnetclient.cpp	Wed Jan 24 22:20:10 2018 +0100
+@@ -242,7 +242,7 @@
+ void HWNewNet::SendPasswordHash(const QString & hash)
+ {
+     // don't send it immediately, only store and check if server asked us for a password
+-    m_passwordHash = hash.toAscii();
++    m_passwordHash = hash.toLatin1();
+ 
+     maybeSendPassword();
+ }
+@@ -271,7 +271,7 @@
+     if (lst[0] == "ERROR")
+     {
+         if (lst.size() == 2)
+-            emit Error(HWApplication::translate("server", lst[1].toAscii().constData()));
++            emit Error(HWApplication::translate("server", lst[1].toLatin1().constData()));
+         else
+             emit Error("Unknown error");
+         return;
+@@ -280,7 +280,7 @@
+     if (lst[0] == "WARNING")
+     {
+         if (lst.size() == 2)
+-            emit Warning(HWApplication::translate("server", lst[1].toAscii().constData()));
++            emit Warning(HWApplication::translate("server", lst[1].toLatin1().constData()));
+         else
+             emit Warning("Unknown warning");
+         return;
+@@ -447,7 +447,7 @@
+         while(flags.size() > 1)
+         {
+             flags.remove(0, 1);
+-            char c = flags[0].toAscii();
++            char c = flags[0].toLatin1();
+             bool inRoom = (netClientState == InRoom || netClientState == InGame);
+ 
+             switch(c)
+@@ -673,7 +673,7 @@
+         }
+         m_game_connected = false;
+         Disconnect();
+-        emit disconnected(HWApplication::translate("server", lst[1].toAscii().constData()));
++        emit disconnected(HWApplication::translate("server", lst[1].toLatin1().constData()));
+         return;
+     }
+ 
+@@ -727,7 +727,7 @@
+             }
+             for(int i = 1; i < lst.size(); ++i)
+             {
+-                QByteArray em = QByteArray::fromBase64(lst[i].toAscii());
++                QByteArray em = QByteArray::fromBase64(lst[i].toLatin1());
+                 emit FromNet(em);
+             }
+             return;
+@@ -1155,18 +1155,18 @@
+         return;
+ 
+     QString hash = QCryptographicHash::hash(
+-                m_clientSalt.toAscii()
+-                .append(m_serverSalt.toAscii())
++                m_clientSalt.toLatin1()
++                .append(m_serverSalt.toLatin1())
+                 .append(m_passwordHash)
+-                .append(cProtoVer->toAscii())
++                .append(cProtoVer->toLatin1())
+                 .append("!hedgewars")
+                 , QCryptographicHash::Sha1).toHex();
+ 
+     m_serverHash = QCryptographicHash::hash(
+-                m_serverSalt.toAscii()
+-                .append(m_clientSalt.toAscii())
++                m_serverSalt.toLatin1()
++                .append(m_clientSalt.toLatin1())
+                 .append(m_passwordHash)
+-                .append(cProtoVer->toAscii())
++                .append(cProtoVer->toLatin1())
+                 .append("!hedgewars")
+                 , QCryptographicHash::Sha1).toHex();
+ 
+diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/net/proto.h
+--- a/QTfrontend/net/proto.h	Wed Jan 24 21:05:34 2018 +0100
++++ b/QTfrontend/net/proto.h	Wed Jan 24 22:20:10 2018 +0100
+@@ -22,7 +22,7 @@
+ #include <QByteArray>
+ #include <QString>
+ #include <QStringList>
+-
++#include <QObject>
+ 
+ class HWProto : public QObject
+ {
+diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/ui/dialog/upload_video.cpp
+--- a/QTfrontend/ui/dialog/upload_video.cpp	Wed Jan 24 21:05:34 2018 +0100
++++ b/QTfrontend/ui/dialog/upload_video.cpp	Wed Jan 24 22:20:10 2018 +0100
+@@ -38,7 +38,7 @@
+ 
+ // User-agent string used in http requests.
+ // Don't make it a global varibale - crash on linux because of cVersionString
+-#define USER_AGENT ("Hedgewars-QtFrontend/" + *cVersionString).toAscii()
++#define USER_AGENT ("Hedgewars-QtFrontend/" + *cVersionString).toLatin1()
+ 
+ // This is developer key obtained from http://code.google.com/apis/youtube/dashboard/
+ // If you are reusing this code outside Hedgewars, don't use this developer key,
+@@ -193,7 +193,7 @@
+ 
+     QString account(QUrl::toPercentEncoding(leAccount->text()));
+     QString pass(QUrl::toPercentEncoding(lePassword->text()));
+-    QByteArray data = QString("Email=%1&Passwd=%2&service=youtube&source=Hedgewars").arg(account).arg(pass).toAscii();
++    QByteArray data = QString("Email=%1&Passwd=%2&service=youtube&source=Hedgewars").arg(account).arg(pass).toUtf8();
+ 
+     QNetworkReply *reply = netManager->post(request, data);
+     connect(reply, SIGNAL(finished()), this, SLOT(authFinished()));
+@@ -246,7 +246,7 @@
+         return;
+     }
+ 
+-    QByteArray auth = ("GoogleLogin auth=" + authToken).toAscii();
++    QByteArray auth = ("GoogleLogin auth=" + authToken).toLatin1();
+ 
+     // We have authenticated, now we can send metadata and start upload
+     // Documentation is here: https://developers.google.com/youtube/2.0/developers_guide_protocol_resumable_uploads#Resumable_uploads
+diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/ui/page/pageadmin.cpp
+--- a/QTfrontend/ui/page/pageadmin.cpp	Wed Jan 24 21:05:34 2018 +0100
++++ b/QTfrontend/ui/page/pageadmin.cpp	Wed Jan 24 22:20:10 2018 +0100
+@@ -98,7 +98,7 @@
+                               << tr("Expiration")
+                               << tr("Reason")
+                     );
+-        twBans->horizontalHeader()->setResizeMode(2, QHeaderView::Stretch);
++        twBans->horizontalHeader()->setSectionResizeMode(2, QHeaderView::Stretch);
+         twBans->setEditTriggers(QAbstractItemView::NoEditTriggers);
+         twBans->setSelectionBehavior(QAbstractItemView::SelectRows);
+         twBans->setSelectionMode(QAbstractItemView::SingleSelection);
+diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/ui/page/pagenet.cpp
+--- a/QTfrontend/ui/page/pagenet.cpp	Wed Jan 24 21:05:34 2018 +0100
++++ b/QTfrontend/ui/page/pagenet.cpp	Wed Jan 24 22:20:10 2018 +0100
+@@ -99,7 +99,7 @@
+ {
+     tvServersList->setModel(new HWNetUdpModel(tvServersList));
+ 
+-    tvServersList->horizontalHeader()->setResizeMode(0, QHeaderView::Stretch);
++    tvServersList->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Stretch);
+ 
+     static_cast<HWNetServersModel *>(tvServersList->model())->updateList();
+ 
+diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/ui/page/pageroomslist.cpp
+--- a/QTfrontend/ui/page/pageroomslist.cpp	Wed Jan 24 21:05:34 2018 +0100
++++ b/QTfrontend/ui/page/pageroomslist.cpp	Wed Jan 24 22:20:10 2018 +0100
+@@ -154,7 +154,7 @@
+     roomsList = new RoomTableView(this);
+     roomsList->setSelectionBehavior(QAbstractItemView::SelectRows);
+     roomsList->verticalHeader()->setVisible(false);
+-    roomsList->horizontalHeader()->setResizeMode(QHeaderView::Interactive);
++    roomsList->horizontalHeader()->setSectionResizeMode(QHeaderView::Interactive);
+     roomsList->setAlternatingRowColors(true);
+     roomsList->setShowGrid(false);
+     roomsList->setSelectionMode(QAbstractItemView::SingleSelection);
+@@ -587,7 +587,7 @@
+ 
+     h->setSortIndicatorShown(true);
+     h->setSortIndicator(RoomsListModel::StateColumn, Qt::AscendingOrder);
+-    h->setResizeMode(RoomsListModel::NameColumn, QHeaderView::Stretch);
++    h->setSectionResizeMode(RoomsListModel::NameColumn, QHeaderView::Stretch);
+ 
+     if (!restoreHeaderState())
+     {
+diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/ui/page/pagevideos.cpp
+--- a/QTfrontend/ui/page/pagevideos.cpp	Wed Jan 24 21:05:34 2018 +0100
++++ b/QTfrontend/ui/page/pagevideos.cpp	Wed Jan 24 22:20:10 2018 +0100
+@@ -133,8 +133,8 @@
+         filesTable->setMinimumWidth(400);
+ 
+         QHeaderView * header = filesTable->horizontalHeader();
+-        header->setResizeMode(vcName, QHeaderView::ResizeToContents);
+-        header->setResizeMode(vcSize, QHeaderView::Fixed);
++        header->setSectionResizeMode(vcName, QHeaderView::ResizeToContents);
++        header->setSectionResizeMode(vcSize, QHeaderView::Fixed);
+         header->resizeSection(vcSize, 100);
+         header->setStretchLastSection(true);
+ 
+@@ -851,7 +851,7 @@
+ 
+ static QString unprotectPass(QString str)
+ {
+-    QByteArray array = QByteArray::fromBase64(str.toAscii());
++    QByteArray array = QByteArray::fromBase64(str.toLatin1());
+     for (int i = 0; i < array.size(); i++)
+         array[i] = array[i] ^ 0xC4 ^ i;
+     return QString::fromUtf8(array);
+diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/ui/widget/about.cpp
+--- a/QTfrontend/ui/widget/about.cpp	Wed Jan 24 21:05:34 2018 +0100
++++ b/QTfrontend/ui/widget/about.cpp	Wed Jan 24 22:20:10 2018 +0100
+@@ -26,6 +26,7 @@
+ #include <QMessageBox>
+ #include <QNetworkReply>
+ #include <QDebug>
++#include <QMimeData>
+ #include "hwconsts.h"
+ #include "SDLInteraction.h"
+ #include "SDL.h"
+diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/ui/widget/chatwidget.cpp
+--- a/QTfrontend/ui/widget/chatwidget.cpp	Wed Jan 24 21:05:34 2018 +0100
++++ b/QTfrontend/ui/widget/chatwidget.cpp	Wed Jan 24 22:20:10 2018 +0100
+@@ -32,6 +32,7 @@
+ #include <QSortFilterProxyModel>
+ #include <QMenu>
+ #include <QScrollBar>
++#include <QMimeData>
+ 
+ #include "DataManager.h"
+ #include "hwconsts.h"
+@@ -312,7 +313,7 @@
+     else if (link.scheme() == "hwnick")
+     {
+         // decode nick
+-        QString nick = QString::fromUtf8(QByteArray::fromBase64(link.encodedQuery()));
++        QString nick = QString::fromUtf8(QByteArray::fromBase64(link.query(QUrl::FullyDecoded).toLatin1()));
+         QModelIndexList mil = chatNicks->model()->match(chatNicks->model()->index(0, 0), Qt::DisplayRole, nick);
+ 
+         bool isOffline = (mil.size() < 1);
+@@ -374,10 +375,10 @@
+ {
+     if (nickname != m_userNick)
+         return QString("<a href=\"hwnick://?%1\" class=\"nick\">%2</a>").arg(
+-                   QString(nickname.toUtf8().toBase64())).arg(Qt::escape(nickname));
++                   QString(nickname.toUtf8().toBase64())).arg(nickname.toHtmlEscaped());
+ 
+     // unlinked nick (if own one)
+-    return QString("<span class=\"nick\">%1</span>").arg(Qt::escape(nickname));
++    return QString("<span class=\"nick\">%1</span>").arg(nickname.toHtmlEscaped());
+ }
+ 
+ const QRegExp HWChatWidget::URLREGEXP = QRegExp("(http(s)?://)?(www\\.)?((([^/:?&#]+\\.)?hedgewars\\.org|code\\.google\\.com|googlecode\\.com|hh\\.unit22\\.org)(/[^ ]*)?)");
+@@ -399,7 +400,7 @@
+ 
+ QString HWChatWidget::messageToHTML(const QString & message)
+ {
+-    QString formattedStr = Qt::escape(message);
++    QString formattedStr = message.toHtmlEscaped();
+     // link some urls
+     formattedStr = formattedStr.replace(URLREGEXP, "<a href=\"http\\2://\\4\">\\4</a>");
+     return formattedStr;
+@@ -606,9 +607,9 @@
+ {
+     addLine("msg_PlayerInfo", QString(" >>> %1 - <span class=\"ipaddress\">%2</span> <span class=\"version\">%3</span> <span class=\"location\">%4</span>")
+         .arg(linkedNick(nick))
+-        .arg(Qt::escape(ip == "[]"?"":ip))
+-        .arg(Qt::escape(version))
+-        .arg(Qt::escape(roomInfo))
++        .arg(QString(ip == "[]"?"":ip).toHtmlEscaped())
++        .arg(version.toHtmlEscaped())
++        .arg(roomInfo.toHtmlEscaped())
+     );
+ }
+ 
+diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/ui/widget/feedbackdialog.cpp
+--- a/QTfrontend/ui/widget/feedbackdialog.cpp	Wed Jan 24 21:05:34 2018 +0100
++++ b/QTfrontend/ui/widget/feedbackdialog.cpp	Wed Jan 24 22:20:10 2018 +0100
+@@ -20,7 +20,7 @@
+ #include <QLineEdit>
+ #include <QTextBrowser>
+ #include <QLabel>
+-#include <QHttp>
++#include <QNetworkAccessManager>
+ #include <QSysInfo>
+ #include <QDebug>
+ #include <QBuffer>
+@@ -474,7 +474,7 @@
+             this, SLOT(finishedSlot(QNetworkReply*)));
+ 
+     QNetworkRequest header(QUrl("https://hedgewars.org/feedback/?submit"));
+-    header.setRawHeader("Content-Length", QString::number(body.size()).toAscii());
++    header.setRawHeader("Content-Length", QString::number(body.size()).toLatin1());
+     header.setRawHeader("Content-Type", "application/x-www-form-urlencoded");
+ 
+     nam->post(header, body);
+diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/ui/widget/keybinder.cpp
+--- a/QTfrontend/ui/widget/keybinder.cpp	Wed Jan 24 21:05:34 2018 +0100
++++ b/QTfrontend/ui/widget/keybinder.cpp	Wed Jan 24 22:20:10 2018 +0100
+@@ -154,7 +154,7 @@
+             curTable = new QTableWidget(0, 2);
+             curTable->verticalHeader()->setVisible(false);
+             curTable->horizontalHeader()->setVisible(false);
+-            curTable->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
++            curTable->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+             curTable->verticalHeader()->setDefaultSectionSize(rowHeight);
+             curTable->setShowGrid(false);
+             curTable->setStyleSheet("QTableWidget { border: none; } ");
+diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/ui/widget/mapContainer.cpp
+--- a/QTfrontend/ui/widget/mapContainer.cpp	Wed Jan 24 21:05:34 2018 +0100
++++ b/QTfrontend/ui/widget/mapContainer.cpp	Wed Jan 24 22:20:10 2018 +0100
+@@ -984,7 +984,7 @@
+ {
+     m_theme = selectedTheme = current.data(ThemeModel::ActualNameRole).toString();
+     m_themeID = current.row();
+-    QIcon icon = qVariantValue<QIcon>(current.data(Qt::DecorationRole));
++    QIcon icon = current.data(Qt::DecorationRole).value<QIcon>();
+     //QSize iconSize = icon.actualSize(QSize(65535, 65535));
+     //btnTheme->setFixedHeight(64);
+     //btnTheme->setIconSize(iconSize);
+diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/util/FileEngine.h
+--- a/QTfrontend/util/FileEngine.h	Wed Jan 24 21:05:34 2018 +0100
++++ b/QTfrontend/util/FileEngine.h	Wed Jan 24 22:20:10 2018 +0100
+@@ -1,9 +1,7 @@
+ #ifndef _FileEngine_h
+ #define _FileEngine_h
+ 
+-#include <QAbstractFileEngine>
+-#include <QAbstractFileEngineHandler>
+-#include <QAbstractFileEngineIterator>
++#include <private/qabstractfileengine_p.h>
+ #include <QDateTime>
+ 
+ #include "physfs.h"
+

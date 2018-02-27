@@ -221,12 +221,6 @@ media-sound/qpitch
 # Has different symbols. Known to cause issues with i3bar/swaybar.
 media-fonts/fontawesome:0/5
 
-# Andreas Sturmlechner <asturm@gentoo.org> (22 Jan 2018)
-# Depends on deprecated Qt4, upstream is slowly doing a qml port.
-# Masked for removal in 60 days. Revisit bug #645504 before deciding
-# eventual removal.
-games-strategy/hedgewars
-
 # Eray Aslan <eras@gentoo.org> (22 Jan 2018)
 # Vulnerable - see https://bugs.gentoo.org/630684
 # Please migrate to cyrus-imapd-3.0 releases

@@ -1,11 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 CMAKE_MAKEFILE_GENERATOR=emake
-
-inherit cmake-utils eutils xdg-utils
+inherit cmake-utils desktop xdg-utils
 
 MY_P=${PN}-src-${PV}
 DEB_PATCH_VER=7
@@ -23,11 +22,14 @@ IUSE="libav"
 QA_FLAGS_IGNORED="/usr/bin/hwengine" # pascal sucks
 QA_PRESTRIPPED="/usr/bin/hwengine" # pascal sucks
 
+# qtcore:5= - depends on private header
 CDEPEND="
 	>=dev-games/physfs-3.0.1
 	dev-lang/lua:0=
-	dev-qt/qtcore:4
-	dev-qt/qtgui:4
+	dev-qt/qtcore:5=
+	dev-qt/qtgui:5
+	dev-qt/qtnetwork:5
+	dev-qt/qtwidgets:5
 	media-libs/libpng:0=
 	media-libs/libsdl2:=
 	media-libs/sdl2-image:=
@@ -41,11 +43,15 @@ DEPEND="${CDEPEND}
 	>=dev-lang/fpc-2.4"
 RDEPEND="${CDEPEND}
 	app-arch/xz-utils
-	media-fonts/wqy-zenhei
-	>=media-fonts/dejavu-2.28"
+	>=media-fonts/dejavu-2.28
+	media-fonts/wqy-zenhei"
 
-S=${WORKDIR}/${MY_P}
-PATCHES=( "${FILESDIR}"/${PN}-0.9.22-rpath-fix.patch )
+S="${WORKDIR}"/${MY_P}
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.9.22-rpath-fix.patch
+	"${FILESDIR}"/${P}-qt5-{1,2}.patch # bug 645504
+)
 
 src_configure() {
 	local mycmakeargs=(
