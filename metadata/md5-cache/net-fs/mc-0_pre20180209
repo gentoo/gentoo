@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare test unpack
+DEPEND=>=dev-lang/go-1.8
+DESCRIPTION=Minio client provides alternatives for ls, cat on cloud storage and filesystems
+EAPI=6
+HOMEPAGE=https://github.com/minio/mc
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=!!app-misc/mc
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/minio/mc/archive/3987f1405aa7a0faaff019cc3b55da4ded9ebbe5.tar.gz -> mc-0_pre20180209.tar.gz
+_eclasses_=bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	golang-base	51a1f13e065f1cff4507685d9cc268c7	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	913580335becddd3ebecefe852e47536	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_md5_=5072c7971f9e5926f8f7df261a039add
