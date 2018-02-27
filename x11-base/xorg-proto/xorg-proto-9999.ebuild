@@ -60,7 +60,6 @@ RDEPEND="
 	!<x11-proto/xproto-7.0.31-r1
 
 	!x11-proto/fontcacheproto
-	!x11-proto/printproto
 	!x11-proto/xf86rushproto"
 
 src_unpack() {
