@@ -1,23 +1,17 @@
-
-# HG changeset patch
 # User unc0rr
-# Date 1516828810 -3600
 # Node ID fc47fc4af6bd6f399035923453cd85c8f50146f7
-# Parent  8869b5256720f0378bf9d5edc68ecb7e1f376039
 Finish porting. Seems to work, but no thorough testing has been performed
 
-diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/CMakeLists.txt
 --- a/QTfrontend/CMakeLists.txt	Wed Jan 24 21:05:34 2018 +0100
 +++ b/QTfrontend/CMakeLists.txt	Wed Jan 24 22:20:10 2018 +0100
 @@ -1,5 +1,7 @@
- find_package(Qt5 COMPONENTS Core Gui Network Svg Xml OpenGL)
+ find_package(Qt5 COMPONENTS Core Gui Network Widgets)
  
 +include_directories(${Qt5Core_PRIVATE_INCLUDE_DIRS})
 +
  include(CheckLibraryExists)
  
  find_package(SDL2 REQUIRED)
-diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/main.cpp
 --- a/QTfrontend/main.cpp	Wed Jan 24 21:05:34 2018 +0100
 +++ b/QTfrontend/main.cpp	Wed Jan 24 22:20:10 2018 +0100
 @@ -20,7 +20,6 @@
@@ -46,7 +40,6 @@ diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/main.cpp
          }
  
          // Load locale files into translators
-diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/model/ammoSchemeModel.cpp
 --- a/QTfrontend/model/ammoSchemeModel.cpp	Wed Jan 24 21:05:34 2018 +0100
 +++ b/QTfrontend/model/ammoSchemeModel.cpp	Wed Jan 24 22:20:10 2018 +0100
 @@ -569,7 +569,7 @@
@@ -67,19 +60,6 @@ diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/model/ammoSchemeModel.cpp
      hedgeeditor
              << predefSchemesNames[11]  // name           0
              << QVariant(false)         // fortsmode      1
-@@ -664,9 +664,9 @@
-             << QVariant(0)             // world edge     42
-             << QVariant()              // scriptparam    43
-             ;
--			
-- 
--			
-+
-+
-+
-     schemes.append(defaultScheme);
-     schemes.append(proMode);
-     schemes.append(shoppa);
 @@ -896,10 +896,12 @@
          return;
      }
@@ -94,7 +74,6 @@ diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/model/ammoSchemeModel.cpp
 -    reset();
 +    endResetModel();
  }
-diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/model/playerslistmodel.cpp
 --- a/QTfrontend/model/playerslistmodel.cpp	Wed Jan 24 21:05:34 2018 +0100
 +++ b/QTfrontend/model/playerslistmodel.cpp	Wed Jan 24 22:20:10 2018 +0100
 @@ -309,10 +309,10 @@
@@ -110,7 +89,6 @@ diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/model/playerslistmodel.cpp
      else
          setData(index, QBrush(QColor(0xff, 0xcc, 0x00)), Qt::ForegroundRole);
  }
-diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/net/hwmap.cpp
 --- a/QTfrontend/net/hwmap.cpp	Wed Jan 24 21:05:34 2018 +0100
 +++ b/QTfrontend/net/hwmap.cpp	Wed Jan 24 22:20:10 2018 +0100
 @@ -79,7 +79,7 @@
@@ -122,7 +100,6 @@ diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/net/hwmap.cpp
  
          QPixmap px(QSize(256, 128));
          QPixmap pxres(px.size());
-diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/net/netudpwidget.cpp
 --- a/QTfrontend/net/netudpwidget.cpp	Wed Jan 24 21:05:34 2018 +0100
 +++ b/QTfrontend/net/netudpwidget.cpp	Wed Jan 24 22:20:10 2018 +0100
 @@ -33,15 +33,19 @@
@@ -157,7 +134,6 @@ diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/net/netudpwidget.cpp
  }
  
  QVariant HWNetUdpModel::data(const QModelIndex &index,
-diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/net/newnetclient.cpp
 --- a/QTfrontend/net/newnetclient.cpp	Wed Jan 24 21:05:34 2018 +0100
 +++ b/QTfrontend/net/newnetclient.cpp	Wed Jan 24 22:20:10 2018 +0100
 @@ -242,7 +242,7 @@
@@ -239,7 +215,6 @@ diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/net/newnetclient.cpp
                  .append("!hedgewars")
                  , QCryptographicHash::Sha1).toHex();
  
-diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/net/proto.h
 --- a/QTfrontend/net/proto.h	Wed Jan 24 21:05:34 2018 +0100
 +++ b/QTfrontend/net/proto.h	Wed Jan 24 22:20:10 2018 +0100
 @@ -22,7 +22,7 @@
@@ -251,7 +226,6 @@ diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/net/proto.h
  
  class HWProto : public QObject
  {
-diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/ui/dialog/upload_video.cpp
 --- a/QTfrontend/ui/dialog/upload_video.cpp	Wed Jan 24 21:05:34 2018 +0100
 +++ b/QTfrontend/ui/dialog/upload_video.cpp	Wed Jan 24 22:20:10 2018 +0100
 @@ -38,7 +38,7 @@
@@ -281,7 +255,6 @@ diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/ui/dialog/upload_video.cpp
  
      // We have authenticated, now we can send metadata and start upload
      // Documentation is here: https://developers.google.com/youtube/2.0/developers_guide_protocol_resumable_uploads#Resumable_uploads
-diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/ui/page/pageadmin.cpp
 --- a/QTfrontend/ui/page/pageadmin.cpp	Wed Jan 24 21:05:34 2018 +0100
 +++ b/QTfrontend/ui/page/pageadmin.cpp	Wed Jan 24 22:20:10 2018 +0100
 @@ -98,7 +98,7 @@
@@ -293,7 +266,6 @@ diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/ui/page/pageadmin.cpp
          twBans->setEditTriggers(QAbstractItemView::NoEditTriggers);
          twBans->setSelectionBehavior(QAbstractItemView::SelectRows);
          twBans->setSelectionMode(QAbstractItemView::SingleSelection);
-diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/ui/page/pagenet.cpp
 --- a/QTfrontend/ui/page/pagenet.cpp	Wed Jan 24 21:05:34 2018 +0100
 +++ b/QTfrontend/ui/page/pagenet.cpp	Wed Jan 24 22:20:10 2018 +0100
 @@ -99,7 +99,7 @@
@@ -305,7 +277,6 @@ diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/ui/page/pagenet.cpp
  
      static_cast<HWNetServersModel *>(tvServersList->model())->updateList();
  
-diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/ui/page/pageroomslist.cpp
 --- a/QTfrontend/ui/page/pageroomslist.cpp	Wed Jan 24 21:05:34 2018 +0100
 +++ b/QTfrontend/ui/page/pageroomslist.cpp	Wed Jan 24 22:20:10 2018 +0100
 @@ -154,7 +154,7 @@
@@ -326,7 +297,6 @@ diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/ui/page/pageroomslist.cpp
  
      if (!restoreHeaderState())
      {
-diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/ui/page/pagevideos.cpp
 --- a/QTfrontend/ui/page/pagevideos.cpp	Wed Jan 24 21:05:34 2018 +0100
 +++ b/QTfrontend/ui/page/pagevideos.cpp	Wed Jan 24 22:20:10 2018 +0100
 @@ -133,8 +133,8 @@
@@ -349,7 +319,6 @@ diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/ui/page/pagevideos.cpp
      for (int i = 0; i < array.size(); i++)
          array[i] = array[i] ^ 0xC4 ^ i;
      return QString::fromUtf8(array);
-diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/ui/widget/about.cpp
 --- a/QTfrontend/ui/widget/about.cpp	Wed Jan 24 21:05:34 2018 +0100
 +++ b/QTfrontend/ui/widget/about.cpp	Wed Jan 24 22:20:10 2018 +0100
 @@ -26,6 +26,7 @@
@@ -360,7 +329,6 @@ diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/ui/widget/about.cpp
  #include "hwconsts.h"
  #include "SDLInteraction.h"
  #include "SDL.h"
-diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/ui/widget/chatwidget.cpp
 --- a/QTfrontend/ui/widget/chatwidget.cpp	Wed Jan 24 21:05:34 2018 +0100
 +++ b/QTfrontend/ui/widget/chatwidget.cpp	Wed Jan 24 22:20:10 2018 +0100
 @@ -32,6 +32,7 @@
@@ -415,7 +383,6 @@ diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/ui/widget/chatwidget.cpp
      );
  }
  
-diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/ui/widget/feedbackdialog.cpp
 --- a/QTfrontend/ui/widget/feedbackdialog.cpp	Wed Jan 24 21:05:34 2018 +0100
 +++ b/QTfrontend/ui/widget/feedbackdialog.cpp	Wed Jan 24 22:20:10 2018 +0100
 @@ -20,7 +20,7 @@
@@ -436,7 +403,6 @@ diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/ui/widget/feedbackdialog.cpp
      header.setRawHeader("Content-Type", "application/x-www-form-urlencoded");
  
      nam->post(header, body);
-diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/ui/widget/keybinder.cpp
 --- a/QTfrontend/ui/widget/keybinder.cpp	Wed Jan 24 21:05:34 2018 +0100
 +++ b/QTfrontend/ui/widget/keybinder.cpp	Wed Jan 24 22:20:10 2018 +0100
 @@ -154,7 +154,7 @@
@@ -448,7 +414,6 @@ diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/ui/widget/keybinder.cpp
              curTable->verticalHeader()->setDefaultSectionSize(rowHeight);
              curTable->setShowGrid(false);
              curTable->setStyleSheet("QTableWidget { border: none; } ");
-diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/ui/widget/mapContainer.cpp
 --- a/QTfrontend/ui/widget/mapContainer.cpp	Wed Jan 24 21:05:34 2018 +0100
 +++ b/QTfrontend/ui/widget/mapContainer.cpp	Wed Jan 24 22:20:10 2018 +0100
 @@ -984,7 +984,7 @@
@@ -460,7 +425,6 @@ diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/ui/widget/mapContainer.cpp
      //QSize iconSize = icon.actualSize(QSize(65535, 65535));
      //btnTheme->setFixedHeight(64);
      //btnTheme->setIconSize(iconSize);
-diff -r 8869b5256720 -r fc47fc4af6bd QTfrontend/util/FileEngine.h
 --- a/QTfrontend/util/FileEngine.h	Wed Jan 24 21:05:34 2018 +0100
 +++ b/QTfrontend/util/FileEngine.h	Wed Jan 24 22:20:10 2018 +0100
 @@ -1,9 +1,7 @@

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,10 +10,10 @@ inherit font
 
 DESCRIPTION="Pan-CJK OpenType/CFF font family"
 HOMEPAGE="https://github.com/adobe-fonts/source-han-sans/"
-SRC_URI="l10n_ja? ( https://dev.gentoo.org/~yngwin/distfiles/${PN}-ja-${PV}.tar.xz )
-	l10n_ko? ( https://dev.gentoo.org/~yngwin/distfiles/${PN}-ko-${PV}.tar.xz )
-	l10n_zh-CN? ( https://dev.gentoo.org/~yngwin/distfiles/${PN}-zh_CN-${PV}.tar.xz )
-	l10n_zh-TW? ( https://dev.gentoo.org/~yngwin/distfiles/${PN}-zh_TW-${PV}.tar.xz )"
+SRC_URI="l10n_ja? ( https://dev.gentoo.org/~jstein/dist/${PN}-ja-${PV}.tar.xz )
+	l10n_ko? ( https://dev.gentoo.org/~jstein/dist/${PN}-ko-${PV}.tar.xz )
+	l10n_zh-CN? ( https://dev.gentoo.org/~jstein/dist/${PN}-zh_CN-${PV}.tar.xz )
+	l10n_zh-TW? ( https://dev.gentoo.org/~jstein/dist/${PN}-zh_TW-${PV}.tar.xz )"
 
 LICENSE="Apache-2.0"
 SLOT="0"
