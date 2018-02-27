@@ -26,6 +26,7 @@ FONT_SUFFIX="otf"
 RESTRICT="binchecks strip"
 
 src_install() {
+	local l
 	for l in ja ko zh-CN zh-TW; do
 		use l10n_${l} && FONT_S="${S}/source-han-sans-${l//-/_}-${PV}" font_src_install
 	done

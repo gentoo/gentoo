@@ -30,6 +30,11 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (27 Feb 2018)
+# Depends on deprecated Qt4, no Qt5 work found. No maintainer.
+# Masked for removal in 30 days. Bug #644534
+app-text/searchmonkey
+
+# Andreas Sturmlechner <asturm@gentoo.org> (27 Feb 2018)
 # Depends on deprecated Qt4. No maintainer, needs someone to bump to Qt5.
 # Masked for removal in 30 days. Bug #602042
 media-gfx/pencil
