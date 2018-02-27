@@ -13,7 +13,7 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/57399662c7a447658e0affa8
 		-> ${MYP}-src.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="+gnat_2016 gnat_2017 +shared static-libs static-pic"
 
 RDEPEND="dev-ada/xmlada[gnat_2016=,gnat_2017=]"
