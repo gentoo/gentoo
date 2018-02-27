@@ -4,7 +4,7 @@ DESCRIPTION=qmail -- a secure, reliable, efficient, simple message transfer agen
 EAPI=5
 HOMEPAGE=http://netqmail.org http://cr.yp.to/qmail.html http://qmail.org
 IUSE=authcram gencertdaily highvolume libressl qmail-spp ssl vanilla
-KEYWORDS=alpha amd64 ~arm ~hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh ~sparc x86
+KEYWORDS=alpha amd64 ~arm hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh ~sparc x86
 LICENSE=public-domain
 RDEPEND=!mail-mta/courier !mail-mta/esmtp !mail-mta/exim !mail-mta/mini-qmail !mail-mta/msmtp[mta] !mail-mta/nullmailer !mail-mta/postfix !mail-mta/qmail-ldap !mail-mta/sendmail !<mail-mta/ssmtp-2.64-r2 !>=mail-mta/ssmtp-2.64-r2[mta] >=sys-apps/ucspi-tcp-0.88-r17 ssl? ( >=sys-apps/ucspi-ssl-0.70-r1 ) virtual/daemontools >=net-mail/dot-forward-0.71-r3 virtual/checkpassword authcram? ( >=net-mail/cmd5checkpw-0.30 ) !mail-mta/qmail net-mail/queue-repair ssl? ( !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) ) sys-apps/gentoo-functions sys-apps/groff
 REQUIRED_USE=vanilla? ( !ssl !qmail-spp !highvolume )
@@ -12,4 +12,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=mirror://qmail/netqmail-1.06.tar.gz https://dev.gentoo.org/~hollow/distfiles/genqmail-20080406.tar.bz2 http://www.ckdhr.com/ckd/qmail-103.patch http://inoa.net/qmail-tls/vu555316.patch !vanilla? ( highvolume? ( mirror://qmail/big-todo.103.patch ) qmail-spp? ( mirror://sourceforge/qmail-spp/qmail-spp-0.42.tar.gz ) ssl? ( http://shupp.org/patches/netqmail-1.05-tls-smtpauth-20070417.patch ) )
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	fixheadtails	6b7b3d896b0b285c12a94f3105c2a06c	flag-o-matic	02908f00f002f0f07c5b74783d778325	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	qmail	0cddcd9f34297dbca4a09fbdafa7398a	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	user	8bc2845510e2109af75e3eeac607ec81
-_md5_=95ba230c0e804f161bb6f941b4808533
+_md5_=6a8366ca4f9d3b300b6a8dcc82cd874c

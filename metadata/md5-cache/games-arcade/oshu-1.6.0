@@ -1,0 +1,12 @@
+DEFINED_PHASES=-
+DEPEND=media-libs/libsdl2:= media-libs/sdl2-image:= x11-libs/cairo:= !libav? ( media-video/ffmpeg:= ) libav? ( media-video/libav:= ) virtual/pkgconfig
+DESCRIPTION=Lightweight osu! port
+EAPI=6
+HOMEPAGE=https://github.com/fmang/oshu
+IUSE=libav
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3 CC-BY-NC-4.0
+RDEPEND=media-libs/libsdl2:= media-libs/sdl2-image:= x11-libs/cairo:= !libav? ( media-video/ffmpeg:= ) libav? ( media-video/libav:= )
+SLOT=0
+SRC_URI=https://www.mg0.fr/oshu/releases/oshu-1.6.0.tar.gz
+_md5_=36ce81385e49c07438bc95b8de05e6b1
