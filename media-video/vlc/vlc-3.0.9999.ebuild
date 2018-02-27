@@ -40,7 +40,6 @@ IUSE="a52 alsa altivec aom archive bidi bluray cddb chromaprint chromecast dbus 
 	x264 x265 xml zeroconf zvbi cpu_flags_x86_mmx cpu_flags_x86_sse
 "
 REQUIRED_USE="
-	bidi? ( truetype )
 	chromecast? ( encode )
 	directx? ( ffmpeg )
 	fontconfig? ( truetype )
@@ -62,7 +61,12 @@ RDEPEND="
 	alsa? ( media-libs/alsa-lib:0 )
 	aom? ( media-libs/libaom:= )
 	archive? ( app-arch/libarchive:= )
-	bidi? ( dev-libs/fribidi:0 )
+	bidi? (
+		dev-libs/fribidi:0
+		media-libs/freetype:2[harfbuzz]
+		media-libs/harfbuzz
+		virtual/ttf-fonts:0
+	)
 	bluray? ( media-libs/libbluray:0= )
 	cddb? ( media-libs/libcddb:0 )
 	chromaprint? ( media-libs/chromaprint:0= )
@@ -273,6 +277,7 @@ src_configure() {
 		$(use_enable aom)
 		$(use_enable archive)
 		$(use_enable bidi fribidi)
+		$(use_enable bidi harfbuzz)
 		$(use_enable bluray)
 		$(use_enable cddb libcddb)
 		$(use_enable chromaprint)
@@ -355,7 +360,6 @@ src_configure() {
 		$(use_enable taglib)
 		$(use_enable theora)
 		$(use_enable tremor)
-		$(use_enable truetype freetype)
 		$(use_enable twolame)
 		$(use_enable udev)
 		$(use_enable upnp)
@@ -421,7 +425,13 @@ src_configure() {
 
 	xdg_environment_reset # bug 608256
 
-	if use truetype || use projectm ; then
+	if use truetype || use bidi; then
+		myeconfargs+=( --enable-freetype )
+	else
+		myeconfargs+=( --disable-freetype )
+	fi
+
+	if use truetype || use projectm; then
 		local dejavu="/usr/share/fonts/dejavu/"
 		myeconfargs+=(
 			--with-default-font=${dejavu}/DejaVuSans.ttf
