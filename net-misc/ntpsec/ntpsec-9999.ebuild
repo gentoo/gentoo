@@ -32,7 +32,7 @@ IUSE_NTPSEC_REFCLOCK=${NTPSEC_REFCLOCK[@]/#/rclock_}
 
 LICENSE="HPND MIT BSD-2 BSD CC-BY-SA-4.0"
 SLOT="0"
-IUSE="${IUSE_NTPSEC_REFCLOCK} doc early gdb heat libressl nist ntpviz samba seccomp smear tests" #ionice
+IUSE="${IUSE_NTPSEC_REFCLOCK} debug doc early gdb heat libressl nist ntpviz samba seccomp smear tests" #ionice
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # net-misc/pps-tools oncore,pps
@@ -56,6 +56,8 @@ DEPEND="${CDEPEND}
 	!net-misc/ntp
 	!net-misc/openntpd
 "
+
+WAF_BINARY="${S}/waf"
 
 pkg_setup() {
 	enewgroup ntp 123
@@ -95,7 +97,9 @@ src_configure() {
 		$(use samba	&& echo "--enable-mssntp")
 		$(use seccomp	&& echo "--enable-seccomp")
 		$(use smear	&& echo "--enable-leap-smear")
-		$(use tests	&& echo "--alltests"))
+		$(use tests	&& echo "--alltests")
+		$(use debug	&& echo "--enable-debug")
+	)
 
 	python_configure() {
 		waf-utils_src_configure "${myconf[@]}"
@@ -104,6 +108,7 @@ src_configure() {
 }
 
 src_compile() {
+	unset MAKEOPTS
 	python_compile() {
 		waf-utils_src_compile
 	}
@@ -138,4 +143,12 @@ src_install() {
 	# Install the configuration file and sample configuration
 	cp -v "${FILESDIR}"/ntp.conf "${ED}"/etc/ntp.conf
 	cp -Rv "${S}"/etc/ntp.d/ "${ED}"/etc/
+}
+
+pkg_postinst() {
+	einfo "If you want to serve time on your local network, then"
+	einfo "you should disable all the ref_clocks unless you have"
+	einfo "one and can get stable time from it.  Feel free to try"
+	einfo "it but PPS probably won't work unless you have a UART"
+	einfo "GPS that actually provides PPS messages."
 }
