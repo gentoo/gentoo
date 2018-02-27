@@ -33,8 +33,6 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
-PATCHES=( "${FILESDIR}/${P}-pre-vlc-3.patch" )
-
 src_configure() {
 	local mycmakeargs=( -DPHONON_BUILD_PHONON4QT5=ON )
 	cmake-utils_src_configure
