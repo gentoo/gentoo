@@ -151,4 +151,3 @@ pkg_postinst() {
 	einfo "it but PPS probably won't work unless you have a UART"
 	einfo "GPS that actually provides PPS messages."
 }
-
