@@ -143,3 +143,12 @@ src_install() {
 	cp -v "${FILESDIR}"/ntp.conf "${ED}"/etc/ntp.conf
 	cp -Rv "${S}"/etc/ntp.d/ "${ED}"/etc/
 }
+
+pkg_postinst() {
+	einfo "If you want to serve time on your local network, then"
+	einfo "you should disable all the ref_clocks unless you have"
+	einfo "one and can get stable time from it.  Feel free to try"
+	einfo "it but PPS probably won't work unless you have a UART"
+	einfo "GPS that actually provides PPS messages."
+}
+
