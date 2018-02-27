@@ -7,9 +7,6 @@ PYTHON_REQ_USE="ncurses"
 
 inherit distutils-r1
 
-MY_PV=${PV/_beta/b}
-MY_P=${PN}-${MY_PV}
-
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/ranger/ranger.git"
 	inherit git-r3
@@ -27,8 +24,6 @@ IUSE="test"
 RDEPEND="virtual/pager"
 DEPEND="test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
 
-S=${WORKDIR}/${MY_P}
-
 src_prepare() {
 	# use versioned doc path
 	sed -i "s|share/doc/ranger|share/doc/${PF}|" setup.py doc/ranger.1 || die
@@ -37,7 +32,7 @@ src_prepare() {
 }
 
 python_test() {
-	py.test -v || die "Tests failed under ${EPYTHON}"
+	py.test -v tests/ranger || die "Tests failed under ${EPYTHON}"
 }
 
 pkg_postinst() {

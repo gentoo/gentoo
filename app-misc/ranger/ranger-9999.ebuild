@@ -32,7 +32,7 @@ src_prepare() {
 }
 
 python_test() {
-	py.test -v || die "Tests failed under ${EPYTHON}"
+	py.test -v tests/ranger || die "Tests failed under ${EPYTHON}"
 }
 
 pkg_postinst() {
