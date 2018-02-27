@@ -31,7 +31,9 @@ DEPEND="${CDEPEND}
 	virtual/pkgconfig"
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-ntp )
-	vim-syntax? ( app-vim/ntp-syntax )"
+	vim-syntax? ( app-vim/ntp-syntax )
+	!net-misc/ntpsec
+"
 PDEPEND="openntpd? ( net-misc/openntpd )"
 
 S=${WORKDIR}/${MY_P}
