@@ -1,0 +1,44 @@
+From 94eee5e683b80e0ffd8e0c4fd3a45b03f0f37b18 Mon Sep 17 00:00:00 2001
+From: Brad King <brad.king@kitware.com>
+Date: Thu, 22 Feb 2018 12:57:29 -0500
+Subject: [PATCH] CMakeLib: Link to system thread libraries to support std::thread
+
+Some environments require linking to thread libraries for `std::thread`.
+Express this direct dependency of CMakeLib explicitly.  Previously this
+was done indirectly through our bundled libuv, but that does not work
+when using a system libuv.
+
+Fixes: #17757
+---
+ CMakeLists.txt        | 2 ++
+ Source/CMakeLists.txt | 1 +
+ 2 files changed, 3 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e4d2a9a..6623959 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -310,6 +310,8 @@ endmacro()
+ # Simply to improve readability of the main script.
+ #-----------------------------------------------------------------------
+ macro (CMAKE_BUILD_UTILITIES)
++  find_package(Threads)
++
+   #---------------------------------------------------------------------
+   # Create the kwsys library for CMake.
+   set(KWSYS_NAMESPACE cmsys)
+diff --git a/Source/CMakeLists.txt b/Source/CMakeLists.txt
+index e7c0732..a0010a2 100644
+--- a/Source/CMakeLists.txt
++++ b/Source/CMakeLists.txt
+@@ -765,6 +765,7 @@ target_link_libraries(CMakeLib cmsys
+   ${CMAKE_LIBUV_LIBRARIES}
+   ${CMAKE_LIBRHASH_LIBRARIES}
+   ${CMake_KWIML_LIBRARIES}
++  ${CMAKE_THREAD_LIBS_INIT}
+   )
+ 
+ if(CMAKE_SYSTEM_NAME STREQUAL "Linux" AND CMAKE_SYSTEM_PROCESSOR MATCHES "sparc")
+--
+libgit2 0.26.0
+
