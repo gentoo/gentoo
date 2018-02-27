@@ -45,3 +45,10 @@ src_configure() {
 
 	cmake-utils_src_configure
 }
+
+src_test() {
+	mkdir -p "${T}/db/lensfun" || die
+	cp data/db/* "${T}/db/lensfun/" || die
+
+	XDG_DATA_HOME="${T}/db" cmake-utils_src_test
+}
