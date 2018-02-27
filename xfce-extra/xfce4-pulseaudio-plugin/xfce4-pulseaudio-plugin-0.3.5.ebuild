@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ SRC_URI="mirror://xfce/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~x86"
-IUSE="debug keybinder libnotify"
+IUSE="debug keybinder libnotify wnck"
 
 RDEPEND=">=dev-libs/glib-2.42.0:=
 	media-sound/pulseaudio:=
@@ -22,7 +22,8 @@ RDEPEND=">=dev-libs/glib-2.42.0:=
 	>=xfce-base/xfce4-panel-4.11.0:=
 	>=xfce-base/xfconf-4.6.0:=
 	keybinder? ( dev-libs/keybinder:3= )
-	libnotify? ( x11-libs/libnotify:= )"
+	libnotify? ( x11-libs/libnotify:= )
+	wnck? ( x11-libs/libwnck:3= )"
 DEPEND="${RDEPEND}
 	dev-util/intltool
 	virtual/pkgconfig"
@@ -31,6 +32,7 @@ src_configure() {
 	local myconf=(
 		$(use_enable keybinder)
 		$(use_enable libnotify)
+		$(use_enable wnck)
 	)
 
 	econf "${myconf[@]}"
