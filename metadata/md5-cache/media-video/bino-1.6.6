@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install
+DEPEND=>=media-libs/glew-1.6.0:0= >=media-libs/openal-1.15.1 dev-qt/qtgui:5 dev-qt/qtcore:5 dev-qt/qtopengl:5 >=media-libs/libass-0.9.9 libav? ( >=media-video/libav-0.7:0= ) !libav? ( >=media-video/ffmpeg-0.7:0= ) lirc? ( app-misc/lirc ) video_cards_nvidia? ( || ( x11-drivers/nvidia-drivers[tools,static-libs] media-video/nvidia-settings ) ) virtual/libintl sys-devel/gettext virtual/pkgconfig
+DESCRIPTION=Stereoscopic and multi-display media player
+EAPI=6
+HOMEPAGE=http://bino3d.org/
+IUSE=debug doc libav lirc video_cards_nvidia
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=>=media-libs/glew-1.6.0:0= >=media-libs/openal-1.15.1 dev-qt/qtgui:5 dev-qt/qtcore:5 dev-qt/qtopengl:5 >=media-libs/libass-0.9.9 libav? ( >=media-video/libav-0.7:0= ) !libav? ( >=media-video/ffmpeg-0.7:0= ) lirc? ( app-misc/lirc ) video_cards_nvidia? ( || ( x11-drivers/nvidia-drivers[tools,static-libs] media-video/nvidia-settings ) ) virtual/libintl
+SLOT=0
+SRC_URI=http://download.savannah.gnu.org/releases/bino/bino-1.6.6.tar.xz
+_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	flag-o-matic	02908f00f002f0f07c5b74783d778325	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_md5_=4daa2aa7d3d78f58cb465b0622e6e41b
