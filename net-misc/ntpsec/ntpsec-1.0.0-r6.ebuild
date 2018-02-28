@@ -66,6 +66,10 @@ pkg_setup() {
 
 src_prepare() {
 	default
+
+	# See https://gitlab.com/NTPsec/ntpsec/issues/460
+	eapply "${FILESDIR}"/${P}-fix-seccomp.patch
+
 	python_copy_sources
 }
 
