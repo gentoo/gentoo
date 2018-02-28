@@ -15,7 +15,10 @@ KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~sparc ~x86"
 IUSE=""
 
 DEPEND=">=dev-lang/erlang-18[ssl]"
-RDEPEND="${DEPEND}"
+# 'mix' tool collides with sci-biology/phylip, bug #537514
+RDEPEND="${DEPEND}
+	!!sci-biology/phylip
+"
 
 RESTRICT=test # needs debug symbols
 

@@ -7,12 +7,17 @@ inherit ltprune user versionator
 
 DESCRIPTION="a man replacement that utilizes berkdb instead of flat files"
 HOMEPAGE="http://www.nongnu.org/man-db/"
-SRC_URI="mirror://nongnu/${PN}/${P}.tar.xz"
+if [[ "${PV}" = 9999* ]] ; then
+	inherit git-r3
+	EGIT_REPO_URI="https://git.savannah.gnu.org/git/man-db.git"
+else
+	SRC_URI="mirror://nongnu/${PN}/${P}.tar.xz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux"
+fi
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux"
-IUSE="berkdb +gdbm +manpager nls selinux static-libs zlib"
+IUSE="berkdb +gdbm +manpager nls seccomp selinux static-libs zlib"
 
 CDEPEND="
 	!sys-apps/man
@@ -21,6 +26,7 @@ CDEPEND="
 	berkdb? ( sys-libs/db:= )
 	gdbm? ( sys-libs/gdbm:= )
 	!berkdb? ( !gdbm? ( sys-libs/gdbm:= ) )
+	seccomp? ( sys-libs/libseccomp )
 	zlib? ( sys-libs/zlib )
 "
 DEPEND="
@@ -37,10 +43,6 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-mandb )
 "
 PDEPEND="manpager? ( app-text/manpager )"
-
-PATCHES=(
-	"${FILESDIR}/${P}-libseccomp_automagic.patch"
-)
 
 pkg_setup() {
 	# Create user now as Makefile in src_install does setuid/chown
@@ -62,7 +64,7 @@ src_configure() {
 		--with-sections="1 1p 8 2 3 3p 4 5 6 7 9 0p tcl n l p o 1x 2x 3x 4x 5x 6x 7x 8x"
 		$(use_enable nls)
 		$(use_enable static-libs static)
-		--without-libseccomp
+		$(use_with seccomp libseccomp)
 		--with-db=$(usex gdbm gdbm $(usex berkdb db gdbm))
 	)
 	econf "${myeconfargs[@]}"
