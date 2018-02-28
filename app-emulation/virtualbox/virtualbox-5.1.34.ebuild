@@ -13,7 +13,7 @@ MY_P=VirtualBox-${MY_PV}
 DESCRIPTION="Family of powerful x86 virtualization products for enterprise and home use"
 HOMEPAGE="https://www.virtualbox.org/"
 SRC_URI="https://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2
-	https://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-5.2.0-patches-01.tar.xz"
+	https://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-5.1.32-patches-01.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -54,7 +54,7 @@ RDEPEND="!app-emulation/virtualbox-bin
 	udev? ( >=virtual/udev-171 )
 	vnc? ( >=net-libs/libvncserver-0.9.9 )"
 DEPEND="${RDEPEND}
-	>=dev-util/kbuild-0.1.9998.3127
+	>=dev-util/kbuild-0.1.9998_pre20131130-r1
 	>=dev-lang/yasm-0.6.2
 	sys-devel/bin86
 	sys-libs/libcap
@@ -439,11 +439,6 @@ pkg_postinst() {
 	elog ""
 	elog "For advanced networking setups you should emerge:"
 	elog "net-misc/bridge-utils and sys-apps/usermode-utilities"
-	elog ""
-	elog "IMPORTANT!"
-	elog "If you upgrade from app-emulation/virtualbox-ose make sure to run"
-	elog "\"env-update\" as root and logout and relogin as the user you wish"
-	elog "to run ${PN} as."
 	elog ""
 	elog "Starting with version 4.0.0, ${PN} has USB-1 support."
 	elog "For USB-2 support, PXE-boot ability and VRDP support please emerge"
