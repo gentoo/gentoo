@@ -13,9 +13,6 @@
 	CD command line recording, ripping and copying tool.	Especially ISOs- and
 	bin/cue-files are handled very well.
 	</longdescription>
-	<use>
-		<flag name="gcdmaster">Enable building of gcdmaster application</flag>
-	</use>
 	<upstream>
 		<remote-id type="sourceforge">cdrdao</remote-id>
 	</upstream>
