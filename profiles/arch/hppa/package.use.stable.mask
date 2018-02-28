@@ -20,7 +20,7 @@
 # Andreas Sturmlechner <asturm@gentoo.org> (12 Feb 2018)
 # dev-libs/libical stabilisation timeout, bug #621724
 app-mobilephone/gnokii ical
-net-mail/cyrus-imapd http
+net-mail/cyrus-imapd http jmap
 net-wireless/bluez obex
 
 # Hans de Graaff <graaff@gentoo.org> (26 Nov 2017)
