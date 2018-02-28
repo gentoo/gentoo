@@ -72,16 +72,16 @@ src_install() {
 	python_replicate_script "${D}/usr/sbin/firewalld"
 
 	# Get rid of junk
-	rm -rf "${D}/etc/rc.d/"
-	rm -rf "${D}/etc/sysconfig/"
+	rm -rf "${D}/etc/rc.d/" || die
+	rm -rf "${D}/etc/sysconfig/" || die
 
 	# For non-gui installs we need to remove GUI bits
 	if ! use gui; then
-		rm -rf "${D}/etc/xdg/autostart"
-		rm -f "${D}/usr/bin/firewall-applet"
-		rm -f "${D}/usr/bin/firewall-config"
-		rm -rf "${D}/usr/share/applications"
-		rm -rf "${D}/usr/share/icons"
+		rm -rf "${D}/etc/xdg/autostart" || die
+		rm -f "${D}/usr/bin/firewall-applet" || die
+		rm -f "${D}/usr/bin/firewall-config" || die
+		rm -rf "${D}/usr/share/applications" || die
+		rm -rf "${D}/usr/share/icons" || die
 	fi
 
 	newinitd "${FILESDIR}"/firewalld.init firewalld
