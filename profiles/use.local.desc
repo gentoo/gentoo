@@ -291,7 +291,7 @@ app-editors/fe:sendmail - Send mail after editor abend
 app-editors/gedit-plugins:charmap - Insert special characters just by clicking on them
 app-editors/gedit-plugins:git - Shows document changes related to git's HEAD
 app-editors/gedit-plugins:terminal - Embed a terminal in the bottom pane
-app-editors/gedit-plugins:zeitgeist - Build the plugin to inject events to gnome-extra/zeitgeist
+app-editors/gedit-plugins:zeitgeist - Build the plugin to inject events to zeitgeist
 app-editors/gvim:gtk3 - Enable GTK+3 interface
 app-editors/gvim:luajit - Use dev-lang/luajit instead of dev-lang/lua
 app-editors/gvim:netbeans - Include netbeans external editor integration support
@@ -3806,7 +3806,6 @@ net-firewall/arno-iptables-firewall:plugins - Install optional plugins
 net-firewall/conntrack-tools:libtirpc - Build against net-libs/libtirpc for RPC support
 net-firewall/ebtables:perl - Install the ebtables-save script which uses perl
 net-firewall/firehol:ipset - Use net-firewall/ipset.
-net-firewall/firewalld:gui - Builds and installs GUI configurator and GTK+ applet
 net-firewall/ipt_netflow:natevents - Netflow NAT translation events (NEL) support
 net-firewall/iptables:conntrack - Build against net-libs/libnetfilter_conntrack when enables the connlabel matcher
 net-firewall/iptables:netlink - Build against libnfnetlink which enables the nfnl_osf util
