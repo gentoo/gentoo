@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
-inherit autotools eutils gnome2-utils python-r1 systemd multilib bash-completion-r1
+inherit autotools gnome2-utils python-r1 systemd bash-completion-r1
 
 DESCRIPTION="A firewall daemon with D-BUS interface providing a dynamic firewall"
 HOMEPAGE="http://www.firewalld.org/"
@@ -28,7 +28,7 @@ RDEPEND="${PYTHON_DEPS}
 	|| ( >=sys-apps/openrc-0.11.5 sys-apps/systemd )
 	gui? (
 		x11-libs/gtk+:3
-		dev-python/PyQt4[${PYTHON_USEDEP}]
+		dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}]
 	)"
 DEPEND="${RDEPEND}
 	dev-libs/glib:2
@@ -72,16 +72,16 @@ src_install() {
 	python_replicate_script "${D}/usr/sbin/firewalld"
 
 	# Get rid of junk
-	rm -rf "${D}/etc/rc.d/"
-	rm -rf "${D}/etc/sysconfig/"
+	rm -rf "${D}/etc/rc.d/" || die
+	rm -rf "${D}/etc/sysconfig/" || die
 
 	# For non-gui installs we need to remove GUI bits
 	if ! use gui; then
-		rm -rf "${D}/etc/xdg/autostart"
-		rm -f "${D}/usr/bin/firewall-applet"
-		rm -f "${D}/usr/bin/firewall-config"
-		rm -rf "${D}/usr/share/applications"
-		rm -rf "${D}/usr/share/icons"
+		rm -rf "${D}/etc/xdg/autostart" || die
+		rm -f "${D}/usr/bin/firewall-applet" || die
+		rm -f "${D}/usr/bin/firewall-config" || die
+		rm -rf "${D}/usr/share/applications" || die
+		rm -rf "${D}/usr/share/icons" || die
 	fi
 
 	newinitd "${FILESDIR}"/firewalld.init firewalld
