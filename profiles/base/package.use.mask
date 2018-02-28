@@ -7,6 +7,12 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Brian Evans <grknight@gentoo.org> (28 Feb 2018)
+# Mask client-libs USE to force users to install alternative standard pacakges
+dev-db/mariadb client-libs
+dev-db/mysql client-libs
+dev-db/percona-server client-libs
+
 # Andreas Sturmlechner <asturm@gentoo.org> (25 Feb 2018)
 # Depends on obsolete media-libs/phonon[qt4]
 dev-qt/designer:4 phonon
