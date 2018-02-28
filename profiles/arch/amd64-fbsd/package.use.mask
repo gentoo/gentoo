@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (28 Feb 2018)
+# Requires masked USE flags.
+gnome-base/gvfs mtp
+
 # Michał Górny <mgorny@gentoo.org> (22 Feb 2018)
 # USE=libcxxrt is use.forced.
 sys-libs/libcxx libcxxabi
