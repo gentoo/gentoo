@@ -2273,11 +2273,11 @@ kde-apps/okular:markdown - Enable Markdown support via app-text/discount
 kde-apps/okular:mobi - Enable mobipocket support
 kde-apps/okular:mobile - Enable Plasma mobile support
 kde-apps/okular:plucker - Enable Plucker E-Book for Palm OS devices support
-kde-apps/okular:share - Enable support for a share menu using dev-libs/purpose
+kde-apps/okular:share - Enable support for a share menu using kde-frameworks/purpose
 kde-apps/okular:speech - Enable text-to-speech support
 kde-apps/pimcommon:designer - Build plugins for dev-qt/designer
 kde-apps/spectacle:kipi - Enable support for the KDE Image Plugin Interface
-kde-apps/spectacle:share - Enable support for a share menu using dev-libs/purpose
+kde-apps/spectacle:share - Enable support for a share menu using kde-frameworks/purpose
 kde-apps/step:qalculate - Enable the libqalculate library for unit conversion
 kde-frameworks/frameworkintegration:appstream - Enable AppStream software metadata support
 kde-frameworks/kconfigwidgets:man - Build and install man pages
@@ -5198,10 +5198,6 @@ sys-apps/net-tools:plipconfig - build the plipconfig tool (for working with old 
 sys-apps/net-tools:slattach - build the slattach tool (for working with old serial ports)
 sys-apps/openrc:netifrc - enable Gentoo's network stack (net.* scripts)
 sys-apps/openrc:newnet - enable the new network stack (experimental)
-sys-apps/paludis:pbins - Enable binary package support. Adds dependency upon app-arch/libarchive
-sys-apps/paludis:pink - Use a less boring colourscheme than the default
-sys-apps/paludis:search-index - Enable cave search --index. Requires dev-db/sqlite.
-sys-apps/paludis:xml - Build xml things for metadata.xml and GLSA support (needs dev-libs/libxml2).
 sys-apps/pciutils:dns - Enable support for querying the central database of PCI IDs using DNS
 sys-apps/pciutils:kmod - Enable sys-apps/kmod support for the -k switch in lspci command
 sys-apps/pciutils:zlib - Support compressed pci.ids database
@@ -6078,6 +6074,7 @@ x11-terms/rxvt-unicode:secondary-wheel - Support for wheel scrolling on secondar
 x11-terms/rxvt-unicode:unicode3 - Use 21 instead of 16 bits to represent unicode characters
 x11-terms/rxvt-unicode:wcwidth - Enable wide char width support
 x11-terms/terminator:libnotify - Enables desktop notifications viadev-python/notify-python
+x11-terms/xfce4-terminal:utempter - Include utmp management support via sys-libs/libutempter
 x11-terms/xterm:openpty - Use openpty() in preference to posix_openpt()
 x11-terms/xterm:toolbar - Enable the xterm toolbar to be built
 x11-themes/comix-xcursors:lefthanded - Install lefthanded version of theme in addition to default one
