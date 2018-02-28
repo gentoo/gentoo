@@ -3806,6 +3806,7 @@ net-firewall/arno-iptables-firewall:plugins - Install optional plugins
 net-firewall/conntrack-tools:libtirpc - Build against net-libs/libtirpc for RPC support
 net-firewall/ebtables:perl - Install the ebtables-save script which uses perl
 net-firewall/firehol:ipset - Use net-firewall/ipset.
+net-firewall/firewalld:gui - Builds and installs GUI configurator and GTK+ applet
 net-firewall/ipt_netflow:natevents - Netflow NAT translation events (NEL) support
 net-firewall/iptables:conntrack - Build against net-libs/libnetfilter_conntrack when enables the connlabel matcher
 net-firewall/iptables:netlink - Build against libnfnetlink which enables the nfnl_osf util
