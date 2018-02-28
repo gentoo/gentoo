@@ -15,7 +15,7 @@ RESTRICT="primaryuri"
 
 LICENSE="GPL-2"
 SLOT="${MAJOR}"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 IUSE=""
 
 # Does not build with mysql-connector-c
