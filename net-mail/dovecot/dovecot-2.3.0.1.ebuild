@@ -62,7 +62,7 @@ DEPEND="argon2? ( dev-libs/libsodium )
 RDEPEND="${DEPEND}
 	net-mail/mailbase"
 
-S=${WORKDIR}/${MY_S}
+PATCHES=()
 
 pkg_setup() {
 	if use managesieve && ! use sieve; then
