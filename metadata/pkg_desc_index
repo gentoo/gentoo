@@ -8052,7 +8052,7 @@ media-sound/sound-juicer 3.24.0: CD ripper for GNOME
 media-sound/soundconverter 3.0.0_beta1: A simple audiofile converter application for the GNOME environment
 media-sound/sox 14.4.2: The swiss army knife of sound processing programs
 media-sound/split2flac 122: sh script to split an APE/FLAC/WV/WAV audio image with CUE sheet into tracks
-media-sound/spotify 1.0.70-r1: Spotify is a social music platform
+media-sound/spotify 1.0.72: Spotify is a social music platform
 media-sound/streamripper 1.64.6: Extracts and records individual MP3 file tracks from shoutcast streams
 media-sound/streamtranscoder 1.2.4 3.1.11: Commandline program to transcode shoutcast/icecast streams to different bitrates
 media-sound/synaesthesia 2.4: a nice graphical accompaniment to music
