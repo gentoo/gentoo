@@ -168,6 +168,7 @@ src_configure() {
 	# configure local bind cruft.  symtable option requires
 	# perl and we don't want to require that #383837.
 	cd bind/bind-*/ || die
+	local el
 	eval econf \
 		$(for el in $(awk '/^bindconfig/,/^$/ {print}' ../Makefile.in) ; do if [[ ${el} =~ ^-- ]] ; then printf ' %s' ${el}; fi; done | sed 's,@\([[:alpha:]]\+\)dir@,${binddir}/\1,g') \
 		--disable-symtable \

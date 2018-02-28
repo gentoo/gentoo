@@ -7,6 +7,7 @@
   </maintainer>
 <use>
   <flag name="backup">Build mariadb-backup which supports SST and hot backup of InnoDB, Aria and MyISAM including compression and encryption</flag>
+  <flag name="client-libs">Build the client libraries from the server package instead of the C Connector packages</flag>
   <flag name="cluster">Add support for NDB clustering (deprecated)</flag>
   <flag name="community">Enables the community features from upstream.</flag>
   <flag name="embedded">Build embedded server (libmysqld)</flag>
