@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~arm-linux ~x86-linux"
 IUSE="python"
 
-RDEPEND=">=sys-libs/talloc-2.1.9[${MULTILIB_USEDEP}]
+RDEPEND=">=sys-libs/talloc-2.1.11[${MULTILIB_USEDEP}]
 	python? ( ${PYTHON_DEPS} )"
 
 DEPEND="${RDEPEND}
@@ -25,6 +25,10 @@ DEPEND="${RDEPEND}
 "
 # build system does not work with python3
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
+#PATCHES=(
+#	"${FILESDIR}"/talloc-disable-python.patch
+#)
 
 WAF_BINARY="${S}/buildtools/bin/waf"
 
@@ -39,6 +43,8 @@ src_prepare() {
 
 multilib_src_configure() {
 	waf-utils_src_configure \
+		--bundled-libraries=NONE \
+		--builtin-libraries=NONE \
 		$(multilib_native_usex python '' '--disable-python')
 }
 

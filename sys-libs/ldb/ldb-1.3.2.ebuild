@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,14 +16,15 @@ SLOT="0/${PV}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="doc +ldap +python"
 
-RDEPEND="!elibc_FreeBSD? ( dev-libs/libbsd[${MULTILIB_USEDEP}] )
+RDEPEND="
+	!elibc_FreeBSD? ( dev-libs/libbsd[${MULTILIB_USEDEP}] )
 	dev-libs/popt[${MULTILIB_USEDEP}]
 	>=dev-util/cmocka-1.1.1[${MULTILIB_USEDEP}]
-	>=sys-libs/talloc-2.1.10[python?,${MULTILIB_USEDEP}]
-	>=sys-libs/tevent-0.9.33[python(+)?,${MULTILIB_USEDEP}]
+	>=sys-libs/talloc-2.1.11[python?,${MULTILIB_USEDEP}]
+	>=sys-libs/tevent-0.9.36[python(+)?,${MULTILIB_USEDEP}]
 	>=sys-libs/tdb-1.3.15[python?,${MULTILIB_USEDEP}]
-	python? ( ${PYTHON_DEPS} )
 	ldap? ( net-nds/openldap )
+	python? ( ${PYTHON_DEPS} )
 "
 
 DEPEND="dev-libs/libxslt

@@ -62,7 +62,6 @@ PATCHES=(
 
 
 	# upstream fixes (can usually be removed with a version bump)
-	"${FILESDIR}"/${PN}-3.11.0_rc1-system_thread.patch
 )
 
 cmake_src_bootstrap() {
