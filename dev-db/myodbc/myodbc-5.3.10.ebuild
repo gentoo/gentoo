@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
+# Build is broken with ninja
+CMAKE_MAKEFILE_GENERATOR=emake
+
 inherit cmake-multilib flag-o-matic versionator
 
 MAJOR="$(get_version_component_range 1-2 $PV)"
@@ -10,12 +14,11 @@ MY_P="${MY_PN}-${PV/_p/r}-src"
 
 DESCRIPTION="ODBC driver for MySQL"
 HOMEPAGE="http://www.mysql.com/products/myodbc/"
-SRC_URI="mirror://mysql/Downloads/Connector-ODBC/${MAJOR}/${MY_P}.tar.gz"
-RESTRICT="primaryuri"
+SRC_URI="https://dev.mysql.com/get/Downloads/Connector-ODBC/${MAJOR}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="${MAJOR}"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
 # Does not build with mysql-connector-c
@@ -25,8 +28,6 @@ RDEPEND="
 	abi_x86_32? (
 		!app-emulation/emul-linux-x86-db[-abi_x86_32(-)]
 	)
-	!dev-db/mysql-connector-c
-	!>=dev-db/mariadb-10.2.0
 "
 DEPEND="${RDEPEND}"
 S=${WORKDIR}/${MY_P}
@@ -34,7 +35,19 @@ S=${WORKDIR}/${MY_P}
 # Careful!
 DRIVER_NAME="${PN}-${SLOT}"
 
+# Patch document path so it doesn't install files to /usr
+PATCHES=(
+	"${FILESDIR}/${MAJOR}-cmake-doc-path.patch"
+	"${FILESDIR}/5.3.10-cxxlinkage.patch"
+#	"${FILESDIR}/${MAJOR}-mariadb-dynamic-array.patch"
+	"${FILESDIR}/5.2.7-my_malloc.patch"
+#	"${FILESDIR}/${MAJOR}-mariadb-buffer_length.patch"
+)
+
 src_prepare() {
+	# Fix undefined references due to standards change
+#	append-cflags -std=gnu89
+
 	# Remove Tests
 	sed -i -e "s/ADD_SUBDIRECTORY(test)//" \
 		"${S}/CMakeLists.txt"
@@ -42,34 +55,33 @@ src_prepare() {
 	# Fix as-needed on the installer binary
 	echo "TARGET_LINK_LIBRARIES(myodbc-installer odbc)" >> "${S}/installer/CMakeLists.txt"
 
-	# Patch document path so it doesn't install files to /usr
-	local FILES=( "${FILESDIR}/cmake-doc-path.patch"
-		"${FILESDIR}/${PV}-r1-cxxlinkage.patch"
-		"${FILESDIR}/${PV}-mariadb-dynamic-array.patch"
-		"${FILESDIR}/${PV}-my_malloc.patch" )
-
-	# Fix undefined references due to standards change
-	append-cflags -std=gnu89
-
-	MYSQL_SERVER_INCLUDE=$(mysql_config --include | cut -d ' ' -f 1)
-	append-cflags "${MYSQL_SERVER_INCLUDE}/server"
-
-	append-cppflags -DSTACK_DIRECTION=1
-
 	cmake-utils_src_prepare
 }
 
 multilib_src_configure() {
-	# The RPM_BUILD flag does nothing except install to /usr/lib64 when "x86_64"
+#	local clientlib
+#	for clientlib in "mariadb" "perconaclient" "mysqlclient" "notfound" ; do
+#		[[ -x "${EPREFIX}/usr/$(get_libdir)/lib${clientlib}.so" ]] && break
+#	done
+#	[[ "${clientlib}x" == "notfoundx" ]] && \
+#		die "Installed client library name could not be determined"
+
 	# MYSQL_CXX_LINKAGE expects "mysql_config --cxxflags" which doesn't exist on MariaDB
 	mycmakeargs+=(
 		-DMYSQL_CXX_LINKAGE=0
 		-DWITH_UNIXODBC=1
-		-DMYSQLCLIENT_LIB_NAME="libmysqlclient.so"
+#		-DMYSQLCLIENT_LIB_NAME="${clientlib}"
+#		-DMYSQLCLIENT_LIB_NAME="mysqlclient"
 		-DWITH_DOCUMENTATION_INSTALL_PATH=/usr/share/doc/${PF}
-		-DMYSQL_LIB_DIR="${ROOT}/usr/$(get_libdir)"
-		-DLIB_SUBDIR="$(get_libdir)"
-		-DNO_THREADS=ON
+		-DMYSQL_LIB_DIR="${EPREFIX}/usr/$(get_libdir)"
+		-DLIB_SUBDIR="$(get_libdir)/${PN}-${MAJOR}"
+		-DMYSQL_INCLUDE_DIR="$(mysql_config --variable=pkgincludedir)"
+		-DMYSQLCLIENT_NO_THREADS=ON
+		-DDISABLE_GUI=ON
+		# The NUMA and LIBWRAP options are not really used.
+		# They are just copied from the server code
+		-DWITH_NUMA=OFF
+		-DWITH_LIBWRAP=OFF
 	)
 	cmake-utils_src_configure
 }
@@ -83,8 +95,7 @@ multilib_src_install_all() {
 			sed \
 			-e "s,__PN__,${DRIVER_NAME},g" \
 			-e "s,__PF__,${MAJOR},g" \
-			-e "s,libmyodbc3.so,libmyodbc${SLOT:0:1}a.so,g" \
-			-e "s,lib/libmyodbc,$(get_libdir)/${DRIVER_NAME}/libmyodbc,g" \
+			-e "s,lib/libmyodbc3.so,$(get_libdir)/${PN}-${MAJOR}/libmyodbc${SLOT:0:1}a.so,g" \
 			>"${D}"/usr/share/${PN}-${SLOT}/${i} \
 			<"${FILESDIR}"/${i}.m4 \
 			|| die "Failed to build $i"

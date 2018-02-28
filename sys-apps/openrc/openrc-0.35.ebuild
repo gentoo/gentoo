@@ -13,7 +13,7 @@ if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
 fi
 
 LICENSE="BSD-2"
@@ -34,7 +34,7 @@ COMMON_DEPEND="kernel_FreeBSD? ( || ( >=sys-freebsd/freebsd-ubin-9.0_rc sys-proc
 	)
 	selinux? (
 		sys-apps/policycoreutils
-		sys-libs/libselinux
+		>=sys-libs/libselinux-2.6
 	)
 	!<sys-apps/baselayout-2.1-r1
 	!<sys-fs/udev-init-scripts-27"
@@ -50,8 +50,8 @@ RDEPEND="${COMMON_DEPEND}
 		kernel_FreeBSD? ( sys-freebsd/freebsd-sbin )
 	)
 	selinux? (
-		sec-policy/selinux-base-policy
-		sec-policy/selinux-openrc
+		>=sec-policy/selinux-base-policy-2.20170204-r4
+		>=sec-policy/selinux-openrc-2.20170204-r4
 	)
 "
 
@@ -73,12 +73,14 @@ src_compile() {
 
 	MAKE_ARGS="${MAKE_ARGS}
 		LIBNAME=$(get_libdir)
-		LIBEXECDIR=${EPREFIX}/$(get_libdir)/rc
+		LIBEXECDIR=${EPREFIX}/lib/rc
+		MKBASHCOMP=yes
 		MKNET=$(usex newnet)
 		MKSELINUX=$(usex selinux)
 		MKAUDIT=$(usex audit)
 		MKPAM=$(usev pam)
-		MKSTATICLIBS=$(usex static-libs)"
+		MKSTATICLIBS=$(usex static-libs)
+		MKZSHCOMP=yes"
 
 	local brand="Unknown"
 	if use kernel_linux ; then
@@ -122,9 +124,9 @@ src_install() {
 	gen_usr_ldscript librc.so
 
 	if ! use kernel_linux; then
-		keepdir /$(get_libdir)/rc/init.d
+		keepdir /lib/rc/init.d
 	fi
-	keepdir /$(get_libdir)/rc/tmp
+	keepdir /lib/rc/tmp
 
 	# Backup our default runlevels
 	dodir /usr/share/"${PN}"
@@ -248,6 +250,9 @@ EOF
 			ewarn "if you do not want this to happen."
 		fi
 	fi
+
+	has_version ">=sys-apps/openrc-0.35" || add_boot_init cgroups sysinit
+
 }
 
 # >=OpenRC-0.11.3 requires udev-mount to be in the sysinit runlevel with udev.
@@ -290,24 +295,19 @@ pkg_postinst() {
 		elog "# rc-update add consolefont boot"
 	fi
 
-	# Handle the conf.d/local.{start,stop} -> local.d transition
-	if path_exists -o "${EROOT}"etc/conf.d/local.{start,stop} ; then
-		elog "Moving your ${EROOT}etc/conf.d/local.{start,stop}"
-		elog "files to ${EROOT}etc/local.d"
-		mv "${EROOT}"etc/conf.d/local.start "${EROOT}"etc/local.d/baselayout1.start
-		mv "${EROOT}"etc/conf.d/local.stop "${EROOT}"etc/local.d/baselayout1.stop
-		chmod +x "${EROOT}"etc/local.d/*{start,stop}
-	fi
-
-	if use kernel_linux && [[ "${EROOT}" = "/" ]]; then
-		if ! /$(get_libdir)/rc/sh/migrate-to-run.sh; then
-			ewarn "The dependency data could not be migrated to /run/openrc."
-			ewarn "This means you need to reboot your system."
+	# Added for 0.35.
+	if use kernel_linux && [[ ! -h "${EROOT}"/lib ]]; then
+		if [[ -d "${EROOT}$(get_libdir)"/rc ]]; then
+			cp -RPp "${EROOT}$(get_libdir)/rc" "${EROOT}"lib
+		fi
+	elif ! use kernel_linux; then
+		if [[ -d "${EROOT}$(get_libdir)"/rc ]]; then
+			cp -RPp "${EROOT}$(get_libdir)/rc" "${EROOT}"lib
 		fi
 	fi
 
 	# update the dependency tree after touching all files #224171
-	[[ "${EROOT}" = "/" ]] && "${EROOT}/${LIBDIR}"/rc/bin/rc-depend -u
+	[[ "${EROOT}" = "/" ]] && "${EROOT}"/lib/rc/bin/rc-depend -u
 
 	if ! use newnet && ! use netifrc; then
 		ewarn "You have emerged OpenRc without network support. This"
