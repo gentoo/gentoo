@@ -23,7 +23,7 @@ SRC_URI="https://dovecot.org/releases/${major_minor}/${rc_dir}${MY_P}.tar.gz
 	https://pigeonhole.dovecot.org/releases/${major_minor}/${rc_dir}${PN}-${major_minor}-pigeonhole-${sieve_version}.tar.gz
 	) "
 DESCRIPTION="An IMAP and POP3 server written with security primarily in mind"
-HOMEPAGE="http://www.dovecot.org/"
+HOMEPAGE="https://www.dovecot.org/"
 
 SLOT="0"
 LICENSE="LGPL-2.1 MIT"
