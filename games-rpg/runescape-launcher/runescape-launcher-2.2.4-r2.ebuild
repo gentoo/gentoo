@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -26,7 +26,7 @@ S="${WORKDIR}"
 RDEPEND="
 	media-libs/libpng:1.2
 	>=media-libs/libsdl2-2.0.2
-	>=media-libs/glew-1.10.0:0/1.10
+	media-libs/glew:1.10
 	>=media-libs/libvorbis-1.3.2
 	>=net-misc/curl-7.35.0
 "
