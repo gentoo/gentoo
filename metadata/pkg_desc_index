@@ -6016,7 +6016,6 @@ dev-tex/pdfannotextractor 0.1l-r1: Extract annotations from pdf files
 dev-tex/pgf 3.0.1 3.0.1-r1: pgf -- The TeX Portable Graphic Format
 dev-tex/polytable 0.8.2: tabular-like environments with named columns
 dev-tex/prosper 1.5-r1: Prosper is a LaTeX class for writing transparencies
-dev-tex/qtexengine 0.3: TeX support for Qt
 dev-tex/revtex 4.1_p2-r1: LaTeX2e macros to prepare manuscripts for the journals of the APS and AIP
 dev-tex/rubber 1.4: A LaTeX wrapper for automatically building documents
 dev-tex/style-check 0.14: Parses LaTeX-formatted text in search of forbidden phrases
