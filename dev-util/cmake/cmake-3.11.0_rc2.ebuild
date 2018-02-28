@@ -60,7 +60,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.8.10.2-FindPythonLibs.patch
 	"${FILESDIR}"/${PN}-3.9.0_rc2-FindPythonInterp.patch
 
-
 	# upstream fixes (can usually be removed with a version bump)
 )
 
