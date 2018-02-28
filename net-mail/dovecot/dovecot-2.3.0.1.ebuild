@@ -7,7 +7,7 @@ SSL_DEPS_SKIP=1
 inherit ssl-cert systemd user versionator
 
 MY_P="${P/_/.}"
-MY_S="${PN}-ce-${PV}"
+#MY_S="${PN}-ce-${PV}"
 major_minor="$(get_version_component_range 1-2)"
 sieve_version="0.5.0.1"
 if [[ ${PV} == *_rc* ]] ; then
@@ -126,9 +126,9 @@ src_configure() {
 		cd "../dovecot-${major_minor}-pigeonhole-${sieve_version}" || die "cd failed"
 		econf \
 			$( use_enable static-libs static ) \
-			--localstatedir="${EPREFIX}/var" \
+			--localstatedir="${EPREFIX%/}/var" \
 			--enable-shared \
-			--with-dovecot="../${MY_S}" \
+			--with-dovecot="${S}" \
 			$( use_with managesieve )
 	fi
 }
