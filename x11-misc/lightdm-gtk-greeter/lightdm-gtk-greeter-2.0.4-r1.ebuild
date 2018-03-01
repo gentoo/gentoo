@@ -41,13 +41,11 @@ src_prepare() {
 			-e "/xft-hintstyle/s:slight:hintslight:" \
 			-e "/background/s:=.*:=/usr/share/lightdm/backgrounds/${GENTOO_BG}:" \
 			-i "${WORKDIR}"/${PN}.conf || die
+		# Add back the reboot/shutdown buttons
 		echo 'indicators=~host;~spacer;~clock;~spacer;~session;~language;~a11y;~power;~' \
 			>> "${WORKDIR}"/${PN}.conf || die
 	fi
 	default
-	# Add back the reboot/shutdown buttons
-	echo 'indicators=~host;~spacer;~clock;~spacer;~session;~language;~a11y;~power;~' \
-		>> lightdm-gtk-greeter.conf || die
 }
 
 src_configure() {
