@@ -25,31 +25,22 @@ DEPEND="${RDEPEND}
 	test? ( ${PYTHON_DEPS} )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.10-perl-5.16.patch #424453
-	"${FILESDIR}"/${PN}-1.11-install-sh-avoid-low-risk-race-in-tmp.patch
 	"${FILESDIR}"/${PN}-1.13-perl-escape-curly-bracket-r1.patch
+	"${FILESDIR}"/${PN}-1.14-install-sh-avoid-low-risk-race-in-tmp.patch
 )
+
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
 
 src_prepare() {
 	default
 	export WANT_AUTOCONF=2.5
-	chmod a+rx tests/*.test
-	export HELP2MAN=true
 	sed -i -e "/APIVERSION=/s:=.*:=${SLOT}:" configure || die
-	export TZ="UTC"  #589138
 }
 
 src_configure() {
 	econf --docdir="\$(datarootdir)/doc/${PF}"
-}
-
-src_compile() {
-	default
-
-	local x
-	for x in aclocal automake; do
-		help2man "perl -Ilib ${x}" > doc/${x}-${SLOT}.1
-	done
 }
 
 # slot the info pages.  do this w/out munging the source so we don't have
@@ -81,18 +72,12 @@ slot_info_pages() {
 	popd >/dev/null || die
 }
 
-src_test() {
-	unset HELP2MAN # 583108
-
-	python_setup
-
-	default
-}
-
 src_install() {
 	default
-	slot_info_pages
 
+	slot_info_pages
+	rm "${ED%/}"/usr/share/aclocal/README || die
+	rmdir "${ED%/}"/usr/share/aclocal || die
 	rm \
 		"${ED%/}"/usr/bin/{aclocal,automake} \
 		"${ED%/}"/usr/share/man/man1/{aclocal,automake}.1 || die
