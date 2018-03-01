@@ -21,7 +21,8 @@ S=${WORKDIR}/${P}-src
 src_prepare() {
 	# Bug 263135, old broken libtool bundled
 	rm -f aclocal.m4 || die "rm failed"
-	epatch "${FILESDIR}/${P}-autotools.patch"
+	epatch "${FILESDIR}"/${P}-autotools.patch
+	epatch "${FILESDIR}"/${P}-test-subdirs.patch
 	mv configure.{in,ac} || die
 	eautoreconf
 }
