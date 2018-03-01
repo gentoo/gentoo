@@ -5,6 +5,7 @@
 # Unkeyworded dependencies.
 dev-libs/cyrus-sasl authdaemond
 gnome-base/gvfs cdda google nfs
+sys-auth/consolekit evdev pm-utils
 
 # Michał Górny <mgorny@gentoo.org> (28 Feb 2018)
 # Requires masked USE flags.
