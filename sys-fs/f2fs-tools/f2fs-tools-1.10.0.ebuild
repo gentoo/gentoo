@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ HOMEPAGE="https://git.kernel.org/cgit/linux/kernel/git/jaegeuk/f2fs-tools.git/ab
 SRC_URI="https://dev.gentoo.org/~blueness/f2fs-tools/${P}.tar.xz"
 
 LICENSE="GPL-2"
-SLOT="0/3"
+SLOT="0/4"
 KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~x86"
 IUSE="selinux"
 

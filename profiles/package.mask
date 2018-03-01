@@ -131,6 +131,7 @@ app-emacs/javascript
 # that app-emacs/muse should be used as replacement.
 # Masked for removal in 30 days. Bug #619194.
 app-emacs/emacs-wiki
+app-emacs/emacs-wiki-blog
 
 # Ulrich Müller <ulm@gentoo.org> (15 Feb 2018)
 # Masked for testing. Note that 11.92 and 12.1 are equivalent
