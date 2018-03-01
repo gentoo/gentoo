@@ -34,6 +34,10 @@
 -input_devices_vmmouse
 
 # Michał Górny <mgorny@gentoo.org> (01 Mar 2018)
+# virtual/mpi not keyworded at the moment.
+mpi
+
+# Michał Górny <mgorny@gentoo.org> (01 Mar 2018)
 # sys-process/audit seems pretty Linux-specific.
 audit
 
