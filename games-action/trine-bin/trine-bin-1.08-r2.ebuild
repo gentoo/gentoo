@@ -1,36 +1,43 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# these are ELFs that include a ZIP (504b0304) appended to it
-#   dd if=Trine.64.run of=Trine.64.zip ibs=$((0x342a8)) skip=1
-#   dd if=Trine.32.run of=Trine.32.zip ibs=$((0x31c24)) skip=1
-# but `unzip` will skip the ELF at the start.  both ELFs contain
-# the same zip appended, so only need to hash one of them.
-
 EAPI=6
-inherit unpacker eutils
+
+inherit desktop eutils unpacker
 
 DESCRIPTION="A physics-based action game with character-dependent solutions to challenges"
 HOMEPAGE="http://trine-thegame.com/"
-SRC_URI="Trine.64.run"
+SRC_URI="TrineUpdate4.64.run"
 
 LICENSE="frozenbyte-eula"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE=""
 RESTRICT="fetch strip"
 
-DEPEND="app-arch/unzip"
+DEPEND="
+	app-admin/chrpath
+	app-arch/unzip
+"
+
 RDEPEND="
+	dev-libs/glib:2
 	dev-libs/libx86
-	gnome-base/libglade
+	gnome-base/libglade:2.0
+	media-libs/libogg
+	media-libs/libpng:1.2
+	>=media-libs/libsdl-1.2[opengl,sound,video]
+	>=media-libs/libvorbis-1.3
+	>=media-libs/openal-1.15
+	>=media-libs/tiff-3.9:3
 	>=sys-devel/gcc-4.3.0
-	>=sys-libs/glibc-2.4"
+	>=sys-libs/glibc-2.4
+	virtual/jpeg:62
+	x11-libs/gtk+:2
+"
 
-S=${WORKDIR}
-
-d=/opt/${PN}
-QA_PREBUILT="${d#/}/trine-launcher ${d#/}/trine-bin ${d#/}/lib*/lib*.so*"
+S="${WORKDIR}"
+d="/opt/${PN}"
+QA_PREBUILT="*"
 
 pkg_nofetch() {
 	einfo "Fetch ${SRC_URI} and put it into ${DISTDIR}"
@@ -38,9 +45,13 @@ pkg_nofetch() {
 }
 
 src_unpack() {
-	# manually run unzip as the initial seek causes it to exit(1)
 	unpack_zip ${A}
-	rm lib*/lib{gcc_s,m,rt,selinux}.so.? || die
+}
+
+src_prepare() {
+	default
+	rm -v lib*/lib{gcc_s,jpeg,m,ogg,openal,png*,rt,SDL*,selinux,stdc++,tiff,vorbis*}.* || die
+	chrpath --replace "${EPREFIX}${d}"/lib trine-{bin,launcher}$(usex x86 32 64) || die
 }
 
 src_install() {
@@ -56,7 +67,7 @@ src_install() {
 		make_desktop_entry ${bb} "Trine ${b}" Trine
 	done
 
-	exeinto ${d}/lib${sfx}
+	exeinto ${d}/lib
 	doexe lib${sfx}/*
 
 	insinto ${d}
