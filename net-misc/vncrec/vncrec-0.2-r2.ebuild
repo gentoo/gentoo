@@ -1,9 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-
-inherit eutils toolchain-funcs
+EAPI=6
+inherit toolchain-funcs
 
 DESCRIPTION="VNC session recorder and player"
 HOMEPAGE="http://www.sodan.org/~penny/vncrec/"
@@ -14,26 +13,28 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
-RDEPEND="x11-libs/libXaw
+RDEPEND="
+	x11-libs/libXaw
 	x11-libs/libXext
 	x11-libs/libXmu
-	x11-libs/libXp
 	x11-libs/libXpm
-	x11-libs/libXt"
+	x11-libs/libXt
+"
 DEPEND="${RDEPEND}
 	app-text/rman
 	x11-misc/gccmakedep
 	x11-misc/imake
-	x11-proto/xextproto"
+	x11-proto/xextproto
+"
 
 DOCS=( README README.vnc )
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-includes.patch
+	default
+
+	eapply "${FILESDIR}"/${P}-includes.patch
 	touch vncrec/vncrec.man || die
-	sed -i Imakefile \
-		-e '/make Makefiles/d' \
-		|| die "sed Imakefile"
+	sed -i Imakefile -e '/make Makefiles/d'	|| die
 }
 
 src_configure() {
