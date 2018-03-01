@@ -1,12 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
-AUTOTOOLS_AUTORECONF=1
-AUTOTOOLS_PRUNE_LIBTOOL_FILES=all
-
-inherit multilib autotools-multilib
+inherit autotools multilib-minimal
 
 DESCRIPTION="Open source PAM library"
 HOMEPAGE="http://www.openpam.org/"
@@ -15,35 +12,37 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64-fbsd ~x86-fbsd"
-IUSE="debug vim-syntax"
+IUSE=""
 
 RDEPEND="!sys-libs/pam"
-DEPEND="sys-devel/make
+DEPEND="
+	sys-devel/make
 	dev-lang/perl"
-PDEPEND="sys-auth/pambase
-	vim-syntax? ( app-vim/pam-syntax )"
+
+PDEPEND="
+	sys-auth/pambase"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-20130907-gentoo.patch"
 	"${FILESDIR}/${PN}-20130907-nbsd.patch"
 	"${FILESDIR}/${PN}-20130907-module-dir.patch"
-	)
-
-DOCS=( CREDITS HISTORY RELNOTES README )
+)
 
 src_prepare() {
 	sed -i -e 's:-Werror::' "${S}/configure.ac"
-
-	autotools-multilib_src_prepare
+	default
+	eautoreconf
 }
 
-my_configure() {
-	local myeconfargs=(
+multilib_src_configure() {
+	local myconf=(
 		--with-modules-dir=/$(get_libdir)/security
-		)
-	autotools-utils_src_configure
+	)
+	ECONF_SOURCE=${S} \
+	econf "${myconf[@]}"
 }
 
-src_configure() {
-	multilib_parallel_foreach_abi my_configure
+multilib_src_install_all() {
+	dodoc CREDITS HISTORY RELNOTES README
+	find "${D}" -name '*.la' -delete || die
 }
