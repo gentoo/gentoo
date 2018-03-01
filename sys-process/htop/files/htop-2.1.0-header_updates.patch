@@ -1,0 +1,42 @@
+From ccd156f8ba68c3c82f9a3afef46e414b2af16613 Mon Sep 17 00:00:00 2001
+From: Hisham Muhammad <hisham@gobolinux.org>
+Date: Mon, 26 Feb 2018 11:44:00 -0300
+Subject: [PATCH] Updates to generated header files
+
+---
+ Process.h                | 5 +++++
+ linux/LinuxProcessList.h | 5 +++++
+ 2 files changed, 10 insertions(+)
+
+diff --git a/Process.h b/Process.h
+index 6c41edc2..fda8480a 100644
+--- a/Process.h
++++ b/Process.h
+@@ -9,6 +9,11 @@ Released under the GNU GPL, see the COPYING file
+ in the source distribution for its full text.
+ */
+ 
++#ifdef MAJOR_IN_MKDEV
++#elif defined(MAJOR_IN_SYSMACROS) || \
++   (defined(HAVE_SYS_SYSMACROS_H) && HAVE_SYS_SYSMACROS_H)
++#endif
++
+ #ifdef __ANDROID__
+ #define SYS_ioprio_get __NR_ioprio_get
+ #define SYS_ioprio_set __NR_ioprio_set
+diff --git a/linux/LinuxProcessList.h b/linux/LinuxProcessList.h
+index 5005220a..0851a102 100644
+--- a/linux/LinuxProcessList.h
++++ b/linux/LinuxProcessList.h
+@@ -9,6 +9,11 @@ Released under the GNU GPL, see the COPYING file
+ in the source distribution for its full text.
+ */
+ 
++#ifdef MAJOR_IN_MKDEV
++#elif defined(MAJOR_IN_SYSMACROS) || \
++   (defined(HAVE_SYS_SYSMACROS_H) && HAVE_SYS_SYSMACROS_H)
++#endif
++
+ #ifdef HAVE_DELAYACCT
+ #endif
+ 
