@@ -12,7 +12,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.bz2"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc examples test"
 
 RDEPEND=">=sys-fs/fuse-2.8.0:0
@@ -20,6 +20,7 @@ RDEPEND=">=sys-fs/fuse-2.8.0:0
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
+	sys-apps/attr
 	virtual/pkgconfig
 	test? (
 		${RDEPEND}
