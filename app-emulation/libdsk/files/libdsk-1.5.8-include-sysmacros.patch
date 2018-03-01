@@ -1,0 +1,22 @@
+diff -Nuar a/lib/compress.c b/lib/compress.c
+--- a/lib/compress.c	2017-02-13 20:34:21.000000000 +0100
++++ b/lib/compress.c	2018-01-28 15:22:15.571892254 +0100
+@@ -23,6 +23,7 @@
+ #include "drvi.h"   /* For LINUXFLOPPY and WIN32FLOPPY */
+ #include "compi.h"
+ #include "comp.h"
++#include <sys/sysmacros.h>
+ /* LibDsk generalised compression support */
+ #ifdef HAVE_SYS_STAT_H
+ #include <sys/stat.h>
+diff -Nuar a/lib/drvlinux.c b/lib/drvlinux.c
+--- a/lib/drvlinux.c	2017-02-26 01:43:39.000000000 +0100
++++ b/lib/drvlinux.c	2018-01-28 15:22:08.661892284 +0100
+@@ -26,6 +26,7 @@
+ 
+ #include "drvi.h"
+ #include "drvlinux.h"
++#include <sys/sysmacros.h>
+ 
+ #ifdef LINUXFLOPPY
+ 
