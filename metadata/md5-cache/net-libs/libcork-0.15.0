@@ -1,0 +1,9 @@
+DEFINED_PHASES=-
+DESCRIPTION=A simple, easily embeddable cross-platform C library
+EAPI=6
+HOMEPAGE=https://github.com/dcreager/libcork
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+SLOT=0
+SRC_URI=https://github.com/dcreager/libcork/archive/0.15.0.tar.gz -> libcork-0.15.0.tar.gz
+_md5_=16d24d4c5e8c5eaae805f226e378cf6c
