@@ -1,8 +1,8 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# NP-Hardass <asturm@gentoo.org> (01 Mar 2018)
-# net-libs/microdns not yet keyworded for arm
+# NP-Hardass <NP-Hardass@gentoo.org> (01 Mar 2018)
+# net-libs/libmicrodns not yet keyworded for arm
 media-video/vlc microdns
 
 # Andreas Sturmlechner <asturm@gentoo.org> (04 Feb 2018)
