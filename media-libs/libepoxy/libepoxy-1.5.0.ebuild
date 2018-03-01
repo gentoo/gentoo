@@ -11,7 +11,7 @@ fi
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 PYTHON_REQ_USE='xml(+)'
-inherit autotools ${GIT_ECLASS} multilib-minimal python-any-r1
+inherit ${GIT_ECLASS} meson multilib-minimal python-any-r1
 
 DESCRIPTION="Epoxy is a library for handling OpenGL function pointer management for you"
 HOMEPAGE="https://github.com/anholt/libepoxy"
@@ -28,7 +28,6 @@ IUSE="test +X"
 
 DEPEND="${PYTHON_DEPS}
 	media-libs/mesa[egl,${MULTILIB_USEDEP}]
-	x11-misc/util-macros
 	X? ( x11-libs/libX11[${MULTILIB_USEDEP}] )"
 RDEPEND=""
 
@@ -37,13 +36,23 @@ src_unpack() {
 	[[ $PV = 9999* ]] && git-r3_src_unpack
 }
 
-src_prepare() {
-	default
-	eautoreconf
+multilib_src_configure() {
+	local emesonargs=(
+		-Degl=yes
+		-Dglx=$(usex X)
+		-Dx11=$(usex X true false)
+	)
+	meson_src_configure
 }
 
-multilib_src_configure() {
-	ECONF_SOURCE=${S} \
-	econf \
-		$(use_enable X glx)
+multilib_src_compile() {
+	meson_src_compile
+}
+
+multilib_src_test() {
+	meson_src_test
+}
+
+multilib_src_install() {
+	meson_src_install
 }
