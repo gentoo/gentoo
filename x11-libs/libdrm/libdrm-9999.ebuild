@@ -1,15 +1,20 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-XORG_MULTILIB=yes
-inherit xorg-2
+EGIT_REPO_URI="https://anongit.freedesktop.org/git/mesa/drm.git"
+
+if [[ ${PV} = 9999* ]]; then
+	GIT_ECLASS="git-r3"
+fi
+
+inherit ${GIT_ECLASS} meson multilib-minimal
 
 DESCRIPTION="X.Org libdrm library"
 HOMEPAGE="https://dri.freedesktop.org/"
 if [[ ${PV} = 9999* ]]; then
-	EGIT_REPO_URI="https://anongit.freedesktop.org/git/mesa/drm.git"
+	SRC_URI=""
 else
 	SRC_URI="https://dri.freedesktop.org/libdrm/${P}.tar.bz2"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux"
@@ -22,42 +27,50 @@ done
 
 IUSE="${IUSE_VIDEO_CARDS} libkms valgrind"
 RESTRICT="test" # see bug #236845
+LICENSE="MIT"
+SLOT="0"
 
-RDEPEND=">=dev-libs/libpthread-stubs-0.3-r1:=[${MULTILIB_USEDEP}]
-	video_cards_intel? ( >=x11-libs/libpciaccess-0.13.1-r1:=[${MULTILIB_USEDEP}] )
-	abi_x86_32? ( !app-emulation/emul-linux-x86-opengl[-abi_x86_32(-)] )"
+RDEPEND="elibc_FreeBSD? ( >=dev-libs/libpthread-stubs-0.4:=[${MULTILIB_USEDEP}] )
+	video_cards_intel? ( >=x11-libs/libpciaccess-0.13.1-r1:=[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	valgrind? ( dev-util/valgrind )"
 
-src_prepare() {
-	if [[ ${PV} = 9999* ]]; then
-		# tests are restricted, no point in building them
-		sed -ie 's/tests //' "${S}"/Makefile.am
-	fi
-	xorg-2_src_prepare
-	epatch_user
+src_unpack() {
+	default
+	[[ $PV = 9999* ]] && git-r3_src_unpack
 }
 
-src_configure() {
-	XORG_CONFIGURE_OPTIONS=(
+multilib_src_configure() {
+	local emesonargs=(
 		# Udev is only used by tests now.
-		--disable-udev
-		--disable-cairo-tests
-		$(use_enable video_cards_amdgpu amdgpu)
-		$(use_enable video_cards_exynos exynos-experimental-api)
-		$(use_enable video_cards_freedreno freedreno)
-		$(use_enable video_cards_intel intel)
-		$(use_enable video_cards_nouveau nouveau)
-		$(use_enable video_cards_omap omap-experimental-api)
-		$(use_enable video_cards_radeon radeon)
-		$(use_enable video_cards_tegra tegra-experimental-api)
-		$(use_enable video_cards_vc4 vc4)
-		$(use_enable video_cards_vivante etnaviv-experimental-api)
-		$(use_enable video_cards_vmware vmwgfx)
-		$(use_enable libkms)
+		-Dudev=false
+		-Dcairo-tests=false
+		-Damdgpu=$(usex video_cards_amdgpu true false)
+		-Dexynos=$(usex video_cards_exynos true false)
+		-Dfreedreno=$(usex video_cards_freedreno true false)
+		-Dintel=$(usex video_cards_intel true false)
+		-Dnouveau=$(usex video_cards_nouveau true false)
+		-Domap=$(usex video_cards_omap true false)
+		-Dradeon=$(usex video_cards_radeon true false)
+		-Dtegra=$(usex video_cards_tegra true false)
+		-Dvc4=$(usex video_cards_vc4 true false)
+		-Detnaviv=$(usex video_cards_vivante true false)
+		-Dvmwgfx=$(usex video_cards_vmware true false)
+		-Dlibkms=$(usex libkms true false)
 		# valgrind installs its .pc file to the pkgconfig for the primary arch
-		--enable-valgrind=$(usex valgrind auto no)
+		-Dvalgrind=$(usex valgrind auto false)
 	)
+	meson_src_configure
+}
 
-	xorg-2_src_configure
+multilib_src_compile() {
+	meson_src_compile
+}
+
+multilib_src_test() {
+	meson_src_test
+}
+
+multilib_src_install() {
+	meson_src_install
 }
