@@ -37,10 +37,17 @@ src_prepare() {
 	# background
 	# Bug #404467
 	if use branding; then
-		sed -i -e "/xft-hintstyle/s:slight:hintslight:" \
-			"${WORKDIR}"/${PN}.conf || die
+		sed \
+			-e "/xft-hintstyle/s:slight:hintslight:" \
+			-e "/background/s:=.*:=/usr/share/lightdm/backgrounds/${GENTOO_BG}:" \
+			-i "${WORKDIR}"/${PN}.conf || die
+		echo 'indicators=~host;~spacer;~clock;~spacer;~session;~language;~a11y;~power;~' \
+			>> "${WORKDIR}"/${PN}.conf || die
 	fi
 	default
+	# Add back the reboot/shutdown buttons
+	echo 'indicators=~host;~spacer;~clock;~spacer;~session;~language;~a11y;~power;~' \
+		>> lightdm-gtk-greeter.conf || die
 }
 
 src_configure() {
@@ -60,9 +67,6 @@ src_install() {
 		doins "${WORKDIR}"/${PN}.conf
 		insinto /usr/share/lightdm/backgrounds/
 		doins "${WORKDIR}"/${GENTOO_BG}
-		sed -i -e \
-			"/background/s:=.*:=/usr/share/lightdm/backgrounds/${GENTOO_BG}:" \
-			"${D}"/etc/lightdm/${PN}.conf || die
 		newdoc "${WORKDIR}"/README.txt README-background.txt
 	fi
 }
