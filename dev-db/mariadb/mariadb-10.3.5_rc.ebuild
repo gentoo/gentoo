@@ -542,10 +542,12 @@ multilib_src_install() {
 		doins "${S}"/sql/*.h
 	fi
 
+	if use client-libs ; then
 	# Install compatible symlinks to libmysqlclient
 #	use static-libs && dosym libmariadbclient.a "${EPREFIX}/usr/$(get_libdir)/libmysqlclient.a"
 #	dosym libmariadb.so.3 "${EPREFIX}/usr/$(get_libdir)/libmysqlclient.so"
 	dosym libmariadb.so.3 "${EPREFIX}/usr/$(get_libdir)/libmysqlclient.so.${SUBSLOT}"
+	fi
 
 	# Kill old libmysqclient_r symlinks if they exist.  Time to fix what depends on them.
 	find "${D}" -name 'libmysqlclient_r.*' -type l -delete || die
