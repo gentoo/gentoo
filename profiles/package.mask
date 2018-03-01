@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Jason Zaman <perfinion@gentoo.org> (02 Mar 2018)
+# Became sys-apps/selinux-python in release 2.7
+# Masked for removal in 30 days.
+dev-python/sepolgen
+
 # Tim Harder <radhermit@gentoo.org> (01 Mar 2018)
 # Masked for testing.
 >=dev-python/aiohttp-3
