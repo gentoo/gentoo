@@ -43,6 +43,10 @@ PATCHES=(
 
 S="${WORKDIR}/${MY_P}"
 
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
+
 src_prepare() {
 	default
 	export WANT_AUTOCONF=2.5
@@ -56,12 +60,6 @@ src_prepare() {
 
 src_configure() {
 	econf --docdir="\$(datarootdir)/doc/${PF}"
-}
-
-src_test() {
-	python_setup
-
-	default
 }
 
 # slot the info pages.  do this w/out munging the source so we don't have
