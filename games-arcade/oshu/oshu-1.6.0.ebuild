@@ -15,6 +15,7 @@ RDEPEND="
 	>=media-libs/libsdl2-2.0.5:=
 	media-libs/sdl2-image:=
 	x11-libs/cairo:=
+	x11-libs/pango:=
 	!libav? ( media-video/ffmpeg:= )
 	libav? ( media-video/libav:= )
 "
