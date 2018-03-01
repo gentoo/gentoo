@@ -1,15 +1,16 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 WX_GTK_VER=3.0
 
-inherit autotools eutils flag-o-matic wxwidgets toolchain-funcs
+inherit autotools flag-o-matic wxwidgets toolchain-funcs
 
 DESCRIPTION="Live looping sampler with immediate loop recording"
 HOMEPAGE="http://essej.net/sooperlooper/index.html"
 SRC_URI="http://essej.net/sooperlooper/${P/_p/-}.tar.gz
-	mirror://gentoo/${PN}-1.6.5-m4.tar.bz2"
+	mirror://gentoo/${PN}-1.6.5-m4.tar.bz2
+"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -19,28 +20,31 @@ IUSE="wxwidgets"
 RDEPEND="
 	media-sound/jack-audio-connection-kit
 	>=media-libs/liblo-0.10
-	>=dev-libs/libsigc++-2.2.10:2
+	>=dev-libs/libsigc++-2.8:2
 	>=media-libs/libsndfile-1.0.2
 	>=media-libs/libsamplerate-0.0.13
-	dev-libs/libxml2
+	dev-libs/libxml2:2
 	>=media-libs/rubberband-0.0.13
-	sci-libs/fftw:3.0
+	sci-libs/fftw:3.0=
 	wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER} )
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
-S=${WORKDIR}/${P/_p*}
+S="${WORKDIR}/${P/_p*}"
 
 DOCS=( OSC README )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-wx3.0.patch
+	"${FILESDIR}"/${P}-libsigc28.patch
+	"${FILESDIR}"/${P}-clash.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-libsigc26.patch
-	epatch "${FILESDIR}"/${P}-wx3.0.patch
-
+	default
 	cp -rf "${WORKDIR}"/aclocal "${S}" || die "copying aclocal failed"
-
 	AT_M4DIR="${S}"/aclocal eautoreconf
 }
 
