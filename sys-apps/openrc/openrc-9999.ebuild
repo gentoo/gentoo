@@ -53,6 +53,8 @@ RDEPEND="${COMMON_DEPEND}
 		>=sec-policy/selinux-base-policy-2.20170204-r4
 		>=sec-policy/selinux-openrc-2.20170204-r4
 	)
+	!app-shells/gentoo-bashcomp
+	!<app-shells/gentoo-zsh-completions-20180228
 "
 
 PDEPEND="netifrc? ( net-misc/netifrc )"
