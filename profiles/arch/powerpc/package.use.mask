@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# NP-Hardass <NP-Hardass@gentoo.org> (01 Mar 2018)
+# net-libs/libmicrodns not yet keyworded for ppc
+media-video/vlc microdns
+
 # Amy Liffey <amynka@gentoo.org (21 Jan 2018)
 # dev-libs/cereal not keyworded for ppc
 media-libs/opencv contrib_dnn
