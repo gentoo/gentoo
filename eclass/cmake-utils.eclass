@@ -604,6 +604,8 @@ cmake-utils_src_configure() {
 		SET (CMAKE_GENTOO_BUILD ON CACHE BOOL "Indicate Gentoo package build")
 		SET (LIB_SUFFIX ${libdir/lib} CACHE STRING "library path suffix" FORCE)
 		SET (CMAKE_INSTALL_LIBDIR ${libdir} CACHE PATH "Output directory for libraries")
+		set (CMAKE_INSTALL_INFODIR "${EPREFIX}/usr/share/info" CACHE PATH "")
+		set (CMAKE_INSTALL_MANDIR "${EPREFIX}/usr/share/man" CACHE PATH "")
 	_EOF_
 	[[ "${NOCOLOR}" = true || "${NOCOLOR}" = yes ]] && echo 'SET (CMAKE_COLOR_MAKEFILE OFF CACHE BOOL "pretty colors during make" FORCE)' >> "${common_config}"
 
