@@ -29,15 +29,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Ulrich Müller <ulm@gentoo.org> (01 Mar 2018)
-# Very old (Open)Motif version 2.2 installing libXm.so.3.
-# Released in 2004. Non-free. No revdeps in Gentoo repo.
-# Depends on x11-libs/libXp which is on its way out.
-# If you still need this for third-party binaries, try the
-# workaround outlined in https://bugs.gentoo.org/210021#c19.
-# Masked for removal in 90 days. Bug #649080.
-x11-libs/motif:2.2
-
 # Andreas Sturmlechner <asturm@gentoo.org> (28 Feb 2018)
 # Dead upstream, depends on dead Qt4.
 # Masked for removal in 30 days.
