@@ -174,7 +174,6 @@ src_prepare() {
 	# patches "${WORKDIR}/include"
 	cd "${WORKDIR}"
 	epatch "${FILESDIR}/${PN}-includes.patch"
-	epatch "${FILESDIR}/${PN}-11.1-elf-nhdr.patch"
 
 	# Don't install the hesiod man page or header
 	rm "${WORKDIR}"/include/hesiod.h || die
@@ -221,6 +220,7 @@ src_prepare() {
 		# This patch has to be applied on ${WORKDIR}/sys, so we do it here since it
 		# shouldn't be a symlink to /usr/src/sys (which should be already patched)
 		epatch "${FILESDIR}"/freebsd-sources-9.0-sysctluint.patch
+		epatch "${FILESDIR}/${PN}-11.1-elf-nhdr.patch"
 		return 0
 	fi
 
