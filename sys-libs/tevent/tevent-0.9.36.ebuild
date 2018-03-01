@@ -20,7 +20,12 @@ RDEPEND=">=sys-libs/talloc-2.1.11[${MULTILIB_USEDEP}]
 	python? ( ${PYTHON_DEPS} )"
 
 DEPEND="${RDEPEND}
+	net-libs/libtirpc[${MULTILIB_USEDEP}]
 	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
+	|| (
+		net-libs/rpcsvc-proto
+		<sys-libs/glibc-2.26[rpc(+)]
+	)
 	${PYTHON_DEPS}
 "
 # build system does not work with python3
