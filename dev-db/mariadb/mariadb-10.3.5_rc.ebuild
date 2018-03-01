@@ -266,6 +266,10 @@ src_prepare() {
 	# There is no CMake flag, it simply checks for existance
 	rm -r "${S}"/storage/mroonga/vendor/groonga || die "could not remove packaged groonga"
 
+	if ! use server; then
+		rm -r "${S}"/plugin/handler_socket || die
+	fi
+
 	cmake-utils_src_prepare
 }
 
@@ -280,7 +284,11 @@ src_configure(){
 	# bug #283926, with GCC4.4, this is required to get correct behavior.
 	append-flags -fno-strict-aliasing
 
-	multilib-minimal_src_configure
+	if use client-libs ; then
+		multilib-minimal_src_configure
+	else
+		multilib_src_configure
+	fi
 }
 
 multilib_src_configure() {
@@ -482,14 +490,14 @@ multilib_src_configure() {
 }
 
 src_compile() {
-	multilib-minimal_src_compile
+	if use client-libs ; then
+		multilib-minimal_src_compile
+	else
+		multilib_src_compile
+	fi
 }
 
 multilib_src_compile() {
-	if ! multilib_is_native_abi && ! use client-libs ; then
-		return
-	fi
-
 	cmake-utils_src_compile
 }
 
@@ -509,21 +517,17 @@ src_install() {
 
 		# wrap the config scripts
 		MULTILIB_CHOST_TOOLS=( /usr/bin/mariadb_config /usr/bin/mysql_config )
+		multilib-minimal_src_install
+	else
+		multilib_src_install
+		multilib_src_install_all
 	fi
-	multilib-minimal_src_install
 }
 
 # Intentionally override eclass function
 multilib_src_install() {
-	if ! multilib_is_native_abi && ! use client-libs ; then
-		return
-	fi
 
 	cmake-utils_src_install
-
-	if ! use client-libs ; then
-		return
-	fi
 
 	# Make sure the vars are correctly initialized
 	mysql_init_vars
@@ -622,12 +626,7 @@ multilib_src_install_all() {
 # FEATURES='test userpriv -usersandbox' \
 # ebuild mariadb-X.X.XX.ebuild \
 # digest clean package
-multilib_src_test() {
-
-	if ! multilib_is_native_abi ; then
-		einfo "Server tests not available on non-native abi".
-		return 0;
-	fi
+src_test() {
 
 	_disable_test() {
 		local rawtestname reason
