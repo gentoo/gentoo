@@ -43,7 +43,7 @@ PATCHES=(
 	"${FILESDIR}/5.3.10-cxxlinkage.patch"
 #	"${FILESDIR}/${MAJOR}-mariadb-dynamic-array.patch"
 	"${FILESDIR}/5.2.7-my_malloc.patch"
-#	"${FILESDIR}/${MAJOR}-mariadb-buffer_length.patch"
+	"${FILESDIR}/5.3.10-mariadb.patch"
 )
 
 src_prepare() {
