@@ -4,7 +4,7 @@ DESCRIPTION=Gentoo specific zsh completion support (includes emerge and ebuild c
 EAPI=6
 HOMEPAGE=https://github.com/gentoo/gentoo-zsh-completions
 LICENSE=ZSH
-RDEPEND=>=app-shells/zsh-4.3.5 !<sys-apps/openrc-0.35
+RDEPEND=>=app-shells/zsh-4.3.5
 SLOT=0
 _eclasses_=git-r3	fec09a83ae965b041b47f5ff7c8ba29a
-_md5_=cd6ab2b33e7c8e6be5b1b6d062294656
+_md5_=19deca86e336d00343ae7b402a023374
