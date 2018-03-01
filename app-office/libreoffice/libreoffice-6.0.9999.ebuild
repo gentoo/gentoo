@@ -12,7 +12,7 @@ PYTHON_REQ_USE="threads,xml"
 DEV_URI="
 	https://dev-builds.libreoffice.org/pre-releases/src
 	https://download.documentfoundation.org/libreoffice/src/${PV:0:5}/
-	https://download.documentfoundation.org/libreoffice/old/${PV}/
+	https://downloadarchive.documentfoundation.org/libreoffice/old/${PV}/src
 "
 ADDONS_URI="https://dev-www.libreoffice.org/src/"
 
