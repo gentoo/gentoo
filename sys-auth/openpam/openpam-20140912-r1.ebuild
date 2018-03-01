@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64-fbsd ~x86-fbsd"
-IUSE="debug vim-syntax"
+IUSE="debug"
 
 RDEPEND="!sys-libs/pam"
 DEPEND="
@@ -23,8 +23,7 @@ DEPEND="
 	dev-lang/perl"
 
 PDEPEND="
-	sys-auth/pambase
-	vim-syntax? ( app-vim/pam-syntax )"
+	sys-auth/pambase"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-20130907-gentoo.patch"
