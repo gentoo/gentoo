@@ -28,7 +28,6 @@ IUSE="test +X"
 
 DEPEND="${PYTHON_DEPS}
 	media-libs/mesa[egl,${MULTILIB_USEDEP}]
-	x11-misc/util-macros
 	X? ( x11-libs/libX11[${MULTILIB_USEDEP}] )"
 RDEPEND=""
 
