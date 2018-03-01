@@ -9,7 +9,7 @@ DESCRIPTION="Servlet API 2.3 from jakarta.apache.org"
 HOMEPAGE="https://jakarta.apache.org/"
 SRC_URI="mirror://gentoo/${P}-20021101.tar.gz"
 
-KEYWORDS="~amd64 ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos ~x64-solaris"
+KEYWORDS="~amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x86-macos ~x64-solaris"
 LICENSE="Apache-1.1"
 SLOT="2.3"
 IUSE="doc source"
