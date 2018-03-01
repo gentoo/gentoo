@@ -38,7 +38,9 @@ src_unpack() {
 
 multilib_src_configure() {
 	local emesonargs=(
-		-Denable-glx=$(usex X)
+		-Degl=yes
+		-Dglx=$(usex X)
+		-Dx11=$(usex X true false)
 	)
 	meson_src_configure
 }
