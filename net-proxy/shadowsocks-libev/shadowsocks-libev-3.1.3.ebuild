@@ -20,6 +20,9 @@ KEYWORDS="~amd64 ~x86"
 IUSE="debug doc"
 
 RDEPEND="net-libs/mbedtls
+	net-libs/libbloom
+	net-libs/libcork
+	net-libs/libcorkipset
 	>=dev-libs/libsodium-1.0.8
 	dev-libs/libev
 	net-libs/udns
@@ -58,10 +61,10 @@ src_install() {
 	newins "${FILESDIR}/shadowsocks.json" shadowsocks.json
 
 	newinitd "${FILESDIR}/shadowsocks.initd" shadowsocks
-	dosym /etc/init.d/shadowsocks /etc/init.d/shadowsocks.server
-	dosym /etc/init.d/shadowsocks /etc/init.d/shadowsocks.client
-	dosym /etc/init.d/shadowsocks /etc/init.d/shadowsocks.redir
-	dosym /etc/init.d/shadowsocks /etc/init.d/shadowsocks.tunnel
+	dosym shadowsocks /etc/init.d/shadowsocks.server
+	dosym shadowsocks /etc/init.d/shadowsocks.client
+	dosym shadowsocks /etc/init.d/shadowsocks.redir
+	dosym shadowsocks /etc/init.d/shadowsocks.tunnel
 
 	dodoc -r acl
 
