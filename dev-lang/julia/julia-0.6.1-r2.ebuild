@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -28,7 +28,7 @@ LLVM_MAX_SLOT=4
 RDEPEND+="
 	dev-libs/double-conversion:0=
 	dev-libs/gmp:0=
-	<dev-libs/libgit2-0.25:0=
+	dev-libs/libgit2:0=
 	dev-libs/mpfr:0=
 	dev-libs/openspecfun
 	sci-libs/arpack:0=
