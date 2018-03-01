@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# NP-Hardass <NP-Hardass@gentoo.org> (01 Mar 2018)
+# net-libs/libmicrodns not yet keyworded for arm64
+media-video/vlc microdns
+
 # Michał Górny <mgorny@gentoo.org> (28 Feb 2018)
 # Requires masked dependent flags.
 dev-lang/php ldap-sasl
@@ -9,7 +13,6 @@ net-nds/openldap cxx
 # Matthew Thode <prometheanfire@gentoo.org> (23 Feb 2018)
 # net-proxy/haproxy isn't keyworded for arm64
 sys-cluster/neutron haproxy
-
 
 # Michał Górny <mgorny@gentoo.org> (17 Feb 2018)
 # Requires unkeyworded dependencies.
