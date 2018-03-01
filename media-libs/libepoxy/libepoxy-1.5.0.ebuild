@@ -28,7 +28,8 @@ IUSE="test +X"
 
 DEPEND="${PYTHON_DEPS}
 	media-libs/mesa[egl,${MULTILIB_USEDEP}]
-	X? ( x11-libs/libX11[${MULTILIB_USEDEP}] )"
+	X? ( x11-libs/libX11[${MULTILIB_USEDEP}] )
+	>=dev-util/meson-0.44.0"
 RDEPEND=""
 
 src_unpack() {
