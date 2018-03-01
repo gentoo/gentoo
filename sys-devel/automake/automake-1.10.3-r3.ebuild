@@ -4,34 +4,16 @@
 EAPI="6"
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-any-r1 versionator
-
-if [[ ${PV} == 9999 ]] ; then
-	EGIT_REPO_URI="https://git.savannah.gnu.org/r/${PN}.git"
-
-	inherit git-r3
-else
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-	if [[ ${PV/_beta} == ${PV} ]]; then
-		MY_P=${P}
-		SRC_URI="mirror://gnu/${PN}/${P}.tar.xz
-			https://alpha.gnu.org/pub/gnu/${PN}/${MY_P}.tar.xz"
-	else
-		MY_PV="$(get_major_version).$(($(get_version_component_range 2)-1))b"
-		MY_P="${PN}-${MY_PV}"
-
-		# Alpha/beta releases are not distributed on the usual mirrors.
-		SRC_URI="https://alpha.gnu.org/pub/gnu/${PN}/${MY_P}.tar.xz"
-	fi
-	S="${WORKDIR}/${MY_P}"
-fi
+inherit python-any-r1
 
 DESCRIPTION="Used to generate Makefile.in from Makefile.am"
 HOMEPAGE="https://www.gnu.org/software/automake/"
+SRC_URI="mirror://gnu/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 # Use Gentoo versioning for slotting.
 SLOT="${PV:0:4}"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="test"
 
 RDEPEND="dev-lang/perl
@@ -43,26 +25,19 @@ DEPEND="${RDEPEND}
 	test? ( ${PYTHON_DEPS} )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.15-install-sh-avoid-low-risk-race-in-tmp.patch
-	"${FILESDIR}"/${PN}-1.16-fix-AM_PATH_PYTHON.patch
+	"${FILESDIR}"/${PN}-1.10-perl-5.16.patch #424453
+	"${FILESDIR}"/${PN}-1.11-install-sh-avoid-low-risk-race-in-tmp.patch
+	"${FILESDIR}"/${PN}-1.13-perl-escape-curly-bracket-r1.patch
 )
-
-pkg_setup() {
-	use test && python-any-r1_pkg_setup
-}
 
 src_prepare() {
 	default
 	export WANT_AUTOCONF=2.5
-	# Don't try wrapping the autotools this thing runs as it tends
-	# to be a bit esoteric, and the script does `set -e` itself.
-	./bootstrap || die
-	sed -i -e "/APIVERSION=/s:=.*:=${SLOT}:" configure || die
+	chmod a+rx tests/*.test
+}
 
-	# Bug 628912
-	if ! has_version sys-apps/texinfo ; then
-		touch doc/{stamp-vti,version.texi,automake.info} || die
-	fi
+src_configure() {
+	econf --docdir="\$(datarootdir)/doc/${PF}"
 }
 
 # slot the info pages.  do this w/out munging the source so we don't have
@@ -94,19 +69,26 @@ slot_info_pages() {
 	popd >/dev/null || die
 }
 
+src_test() {
+	python_setup
+
+	default
+}
+
 src_install() {
 	default
-
 	slot_info_pages
-	rm "${ED%/}"/usr/share/aclocal/README || die
-	rmdir "${ED%/}"/usr/share/aclocal || die
-	rm \
-		"${ED%/}"/usr/bin/{aclocal,automake} \
-		"${ED%/}"/usr/share/man/man1/{aclocal,automake}.1 || die
+
+	# SLOT the docs and junk
+	local x
+	for x in aclocal automake ; do
+		help2man "perl -Ilib ${x}" > ${x}-${SLOT}.1
+		doman ${x}-${SLOT}.1
+		rm -f "${ED%/}"/usr/bin/${x}
+	done
 
 	# remove all config.guess and config.sub files replacing them
 	# w/a symlink to a specific gnuconfig version
-	local x
 	for x in guess sub ; do
 		dosym ../gnuconfig/config.${x} /usr/share/${PN}-${SLOT}/config.${x}
 	done
