@@ -30,6 +30,10 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.13-perl-escape-curly-bracket-r1.patch
 )
 
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
+
 src_prepare() {
 	default
 	export WANT_AUTOCONF=2.5
@@ -67,12 +71,6 @@ slot_info_pages() {
 	done
 
 	popd >/dev/null || die
-}
-
-src_test() {
-	python_setup
-
-	default
 }
 
 src_install() {
