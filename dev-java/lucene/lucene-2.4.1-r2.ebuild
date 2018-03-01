@@ -15,7 +15,7 @@ SRC_URI="https://archive.apache.org/dist/${PN}/java/${P}-src.tar.gz -> ${P}.tar.
 
 LICENSE="Apache-2.0"
 SLOT="2.4"
-KEYWORDS="amd64 x86 ~x86-fbsd"
+KEYWORDS="amd64 x86"
 
 CDEPEND="
 	dev-java/javacc:0"
