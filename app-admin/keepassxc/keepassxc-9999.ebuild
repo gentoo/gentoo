@@ -3,24 +3,23 @@
 
 EAPI=6
 
-SCM=""
-[[ "${PV}" == 9999 ]] && SCM="git-r3"
-inherit cmake-utils gnome2-utils xdg-utils ${SCM}
-unset SCM
+inherit cmake-utils gnome2-utils xdg-utils
 
 DESCRIPTION="KeePassXC - KeePass Cross-platform Community Edition"
 HOMEPAGE="https://keepassxc.org"
 
 if [[ "${PV}" != 9999 ]] ; then
-	SRC_URI="https://github.com/keepassxreboot/keepassxc/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	#SRC_URI="https://github.com/keepassxreboot/keepassxc/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/keepassxreboot/keepassxc/releases/download/${PV}/${P}-src.tar.xz"
 	KEYWORDS="~amd64 ~x86"
 else
+	inherit git-r3
 	EGIT_REPO_URI="https://github.com/keepassxreboot/${PN}"
 fi
 
 LICENSE="LGPL-2.1 GPL-2 GPL-3"
 SLOT="0"
-IUSE="autotype browser debug http network test yubikey"
+IUSE="autotype browser debug network test yubikey"
 
 RDEPEND="
 	app-crypt/argon2:=
@@ -37,6 +36,7 @@ RDEPEND="
 		x11-libs/libXi
 		x11-libs/libXtst
 	)
+	browser? ( >=dev-libs/libsodium-1.0.12 )
 	yubikey? ( sys-auth/ykpers )
 "
 
@@ -59,7 +59,7 @@ src_configure() {
 		-DWITH_GUI_TESTS=OFF
 		-DWITH_TESTS="$(usex test)"
 		-DWITH_XC_AUTOTYPE="$(usex autotype)"
-		-DWITH_XC_HTTP="$(usex http)"
+		-DWITH_XC_HTTP=OFF
 		-DWITH_XC_NETWORKING="$(usex network)"
 		-DWITH_XC_BROWSER="$(usex browser)"
 		-DWITH_XC_YUBIKEY="$(usex yubikey)"
