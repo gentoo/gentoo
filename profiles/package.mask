@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Tim Harder <radhermit@gentoo.org> (01 Mar 2018)
+# Masked for testing.
+>=dev-python/aiohttp-3
+
 # Andreas Sturmlechner <asturm@gentoo.org> (28 Feb 2018)
 # Dead upstream, depends on dead Qt4.
 # Masked for removal in 30 days.
