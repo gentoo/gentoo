@@ -5,6 +5,10 @@
 # Please use the same syntax as in use.mask
 
 # Mart Raudsepp <leio@gentoo.org> (02 Mart 2018)
+# Neither x11-libs/gtk+ SLOT marked stable yet
+gtk
+
+# Mart Raudsepp <leio@gentoo.org> (02 Mart 2018)
 # app-crypt/libsecret and co not marked stable yet
 gnome-keyring
 
