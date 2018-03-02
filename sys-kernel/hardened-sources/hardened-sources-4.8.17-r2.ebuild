@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -21,7 +21,7 @@ UNIPATCH_EXCLUDE="
 	2900_dev-root-proc-mount-fix.patch"
 
 DESCRIPTION="Hardened kernel sources (kernel series ${KV_MAJOR}.${KV_MINOR})"
-HOMEPAGE="http://www.gentoo.org/proj/en/hardened/"
+HOMEPAGE="https://www.gentoo.org/proj/en/hardened/"
 IUSE="deblob"
 
 KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86"
