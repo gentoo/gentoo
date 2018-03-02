@@ -1,6 +1,14 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (02 Mar 2018)
+# Requires dev-libs/libressl (not yet tested).
+net-misc/curl curl_ssl_libressl
+
+# Michał Górny <mgorny@gentoo.org> (02 Mar 2018)
+# Requires sys-fs/fuse. Maybe it could work with fuse4bsd?
+net-fs/openafs fuse
+
 # Michał Górny <mgorny@gentoo.org> (01 Mar 2018)
 # Requires separate libacl while FreeBSD has it in libc.
 dev-lang/php acl
