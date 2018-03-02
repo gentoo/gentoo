@@ -1,11 +1,11 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI="6"
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
-inherit autotools ltprune multilib multilib-minimal toolchain-funcs preserve-libs python-r1 linux-info systemd
+inherit autotools multilib multilib-minimal toolchain-funcs preserve-libs python-r1 linux-info systemd
 
 DESCRIPTION="Userspace utilities for storing and processing auditing records"
 HOMEPAGE="https://people.redhat.com/sgrubb/audit/"
@@ -203,10 +203,10 @@ multilib_src_install_all() {
 	# audit logs go here
 	keepdir /var/log/audit/
 
+	find "${D}" -name '*.la' -delete || die
+
 	# Security
 	lockdown_perms "${ED}"
-
-	prune_libtool_files --modules
 }
 
 pkg_preinst() {
