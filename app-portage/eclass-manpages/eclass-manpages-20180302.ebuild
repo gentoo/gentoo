@@ -5,13 +5,12 @@ EAPI="6"
 
 DESCRIPTION="Collection of Gentoo eclass manpages"
 HOMEPAGE="https://www.gentoo.org/"
-SRC_URI="https://dev.gentoo.org/~mgorny/dist/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
 # Keep the keywords stabled. No need to change to ~arch.
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos ~x86-solaris"
-IUSE=""
 
 DEPEND="app-arch/xz-utils"
 
@@ -20,8 +19,8 @@ DEPEND="app-arch/xz-utils"
 # mkdir eclass-manpages-$(date +%Y%m%d)
 # cp "$(portageq get_repo_path / gentoo)"/eclass/*.eclass eclass-manpages-$(date +%Y%m%d)/
 # tar -cf eclass-manpages-$(date +%Y%m%d).tar eclass-manpages-$(date +%Y%m%d)
-# xz -9e eclass-manpages-$(date +%Y%m%d).tar
-# scp eclass-manpages-$(date +%Y%m%d).tar.xz dev.gentoo.org:public_html/dist/
+# xz -e eclass-manpages-$(date +%Y%m%d).tar
+# scp eclass-manpages-$(date +%Y%m%d).tar.xz dev.gentoo.org:public_html/distfiles/
 #
 # Then copy the ebuild and update your name in SRC_URI ;-).
 
