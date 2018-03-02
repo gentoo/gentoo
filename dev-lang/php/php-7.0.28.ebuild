@@ -301,7 +301,6 @@ src_configure() {
 		$(use_enable sysvipc sysvmsg)
 		$(use_enable sysvipc sysvsem)
 		$(use_enable sysvipc sysvshm)
-		$(use_with systemd fpm-systemd)
 		$(use_with tidy tidy "${EPREFIX}/usr")
 		$(use_enable tokenizer tokenizer)
 		$(use_enable wddx wddx)
@@ -457,7 +456,12 @@ src_configure() {
 				cli|cgi|embed|fpm|phpdbg)
 					if [[ "${one_sapi}" == "${sapi}" ]] ; then
 						sapi_conf+=( "--enable-${sapi}" )
-						[[ "fpm" == "${sapi}" ]] && sapi_conf+=( $(use_with acl fpm-acl) )
+						if [[ "fpm" == "${sapi}" ]] ; then
+							sapi_conf+=(
+								$(use_with acl fpm-acl)
+								$(use_with systemd fpm-systemd)
+							)
+						fi
 					else
 						sapi_conf+=( "--disable-${sapi}" )
 					fi
