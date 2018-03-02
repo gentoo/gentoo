@@ -22,6 +22,7 @@ all_ruby_prepare() {
 	# Avoid broken test that wrongly tests ruby internal code, bug 643922
 	sed -e '/test_encrypted_roundtrip/,/^  end/ s:^:#:' \
 		-e '/test_missing_environment/,/^  end/ s:^:#:' \
+		-e "s:/tmp/:${T}/:" \
 		-i test/test_netrc.rb || die
 }
 
