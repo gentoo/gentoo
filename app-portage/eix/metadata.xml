@@ -14,6 +14,7 @@
   <use>
     <flag name="debug">Build with upstream's CXXFLAGS/LDFLAGS for debugging support; not recommended for normal use.</flag>
     <flag name="doc">Create description of the eix cache file additionally in html format</flag>
+    <flag name="jumbo-build">Compile faster and produce better binary. Recommended unless compiling on a quite memory-restricted system.</flag>
     <flag name="sqlite">Compile in support for portage's sqlite backend; to actually use it you need additional configuration of portage and eix</flag>
   </use>
   <upstream>
