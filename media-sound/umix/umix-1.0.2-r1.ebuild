@@ -13,7 +13,7 @@ LICENSE="GPL-2"
 KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86"
 IUSE="ncurses oss"
 
-DEPEND="ncurses? ( >=sys-libs/ncurses-5.2 )"
+DEPEND="ncurses? ( >=sys-libs/ncurses-5.2:= )"
 RDEPEND="
 	${DEPEND}
 "
