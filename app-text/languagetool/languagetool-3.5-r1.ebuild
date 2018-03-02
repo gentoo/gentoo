@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,8 +8,8 @@ MY_PN=LanguageTool
 MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="A proof-reading tool for many languages"
-HOMEPAGE="http://www.languagetool.org/"
-SRC_URI="http://www.languagetool.org/download/${MY_P}.zip"
+HOMEPAGE="https://www.languagetool.org/"
+SRC_URI="https://www.languagetool.org/download/${MY_P}.zip"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
