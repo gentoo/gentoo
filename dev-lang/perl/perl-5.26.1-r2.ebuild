@@ -325,6 +325,11 @@ src_prepare() {
 			ext/NDBM_File/Makefile.PL || die
 	fi
 
+	# Use errno.h from prefix rather than from host system, bug #645804
+	if use prefix; then
+		sed -i "/my..sysroot/s:'':'${EPREFIX}':" ext/Errno/Errno_pm.PL || die
+	fi
+
 	default
 }
 
