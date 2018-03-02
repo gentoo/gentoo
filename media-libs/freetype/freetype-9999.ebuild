@@ -11,7 +11,7 @@ unset SCM
 INFINALITY_PATCH="03-infinality-2.6.3-2016.03.26.patch"
 
 DESCRIPTION="A high-quality and portable font engine"
-HOMEPAGE="http://www.freetype.org/"
+HOMEPAGE="https://www.freetype.org/"
 IUSE="X +adobe-cff bindist bzip2 +cleartype_hinting debug fontforge harfbuzz
 	infinality png static-libs utils"
 
