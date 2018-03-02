@@ -74,7 +74,7 @@ esac
 [[ -z "${PHP_EXT_SAPIS}" ]] && PHP_EXT_SAPIS="apache2 cli cgi fpm embed phpdbg"
 
 # @ECLASS-VARIABLE: PHP_INI_NAME
-# @DESCRIPTION
+# @DESCRIPTION:
 # An optional file name of the saved ini file minis the ini extension
 # This allows ordering of extensions such that one is loaded before
 # or after another.  Defaults to the PHP_EXT_NAME.
