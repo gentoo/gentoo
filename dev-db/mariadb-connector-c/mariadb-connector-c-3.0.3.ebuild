@@ -16,7 +16,7 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-inherit cmake-utils multilib-minimal ${VCS_INHERIT}
+inherit cmake-utils multilib-minimal toolchain-funcs ${VCS_INHERIT}
 
 MULTILIB_CHOST_TOOLS=( /usr/bin/mariadb_config )
 
@@ -70,6 +70,12 @@ src_prepare() {
 			>> "${gpluginconf}" || die
 	fi
 	cmake-utils_src_prepare
+}
+
+src_configure() {
+	# bug 508724 mariadb cannot use ld.gold
+	tc-ld-disable-gold
+	multilib-minimal_src_configure
 }
 
 multilib_src_configure() {
