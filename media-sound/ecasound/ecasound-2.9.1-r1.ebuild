@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -34,14 +34,17 @@ RDEPEND="sys-libs/readline:0=
 	sndfile? ( media-libs/libsndfile:= )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.8.1-ldflags.patch
+	"${FILESDIR}"/${PN}-2.9.1-tinfo.patch
+)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
 
 src_prepare() {
-	eapply "${FILESDIR}"/${PN}-2.8.1-ldflags.patch
-	eapply_user
+	default
 
 #	if use python ; then
 #		sed -i -e "s:\$(ecasoundc_libs):\0 $(python_get_library -l):" \
