@@ -56,6 +56,7 @@ pkg_setup() {
 
 src_prepare() {
 	default
+	elibtoolize
 
 	# Make best effort to allow longer PORTAGE_TMPDIR
 	# as usock limitation fails build/tests
@@ -86,7 +87,6 @@ src_configure() {
 
 src_compile() {
 	default
-	elibtoolize
 	do_python
 }
 
