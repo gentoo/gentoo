@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst postrm preinst prepare
+DEPEND=dev-libs/quazip dev-qt/qtcore:5= dev-qt/qtgui:5= dev-qt/qtnetwork:5= dev-qt/qtwidgets:5= media-libs/speex media-libs/speexdsp virtual/libusb:1 dev-qt/linguist-tools:5 >=sys-apps/sed-4
+DESCRIPTION=Rockbox open source firmware manager for music players
+EAPI=6
+HOMEPAGE=https://www.rockbox.org/wiki/RockboxUtility
+IUSE=debug
+KEYWORDS=~amd64
+LICENSE=GPL-2
+RDEPEND=dev-libs/quazip dev-qt/qtcore:5= dev-qt/qtgui:5= dev-qt/qtnetwork:5= dev-qt/qtwidgets:5= media-libs/speex media-libs/speexdsp virtual/libusb:1
+SLOT=0
+SRC_URI=https://download.rockbox.org/rbutil/source/RockboxUtility-v1.4.0-src.tar.bz2
+_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	gnome2-utils	4d211d7614f303710fca59db6ec12c88	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=521bc3761b43955e032aee15b8772e13
