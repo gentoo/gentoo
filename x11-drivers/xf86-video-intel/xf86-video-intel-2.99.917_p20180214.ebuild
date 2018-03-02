@@ -61,6 +61,7 @@ DEPEND="${RDEPEND}
 src_configure() {
 	replace-flags -Os -O2
 	XORG_CONFIGURE_OPTIONS=(
+		--disable-dri1
 		$(use_enable debug)
 		$(use_enable dri)
 		$(use_enable dri dri3)
