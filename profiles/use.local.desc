@@ -723,6 +723,7 @@ app-portage/conf-update:colordiff - Use colors when displaying diffs (app-misc/c
 app-portage/conf-update:libressl - Enable SSL connections and crypto functions using dev-libs/libressl
 app-portage/eix:debug - Build with upstream's CXXFLAGS/LDFLAGS for debugging support; not recommended for normal use.
 app-portage/eix:doc - Create description of the eix cache file additionally in html format
+app-portage/eix:jumbo-build - Compile faster and produce better binary. Recommended unless compiling on a quite memory-restricted system.
 app-portage/eix:sqlite - Compile in support for portage's sqlite backend; to actually use it you need additional configuration of portage and eix
 app-portage/grs:server - Install all the tools building systems
 app-portage/layman:bazaar - Support dev-vcs/bzr based overlays
