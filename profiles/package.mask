@@ -142,11 +142,6 @@ app-emacs/javascript
 app-emacs/emacs-wiki
 app-emacs/emacs-wiki-blog
 
-# Ulrich Müller <ulm@gentoo.org> (15 Feb 2018)
-# Masked for testing. Note that 11.92 and 12.1 are equivalent
-# in functionality.
->=app-emacs/auctex-12.1
-
 # Brian Evans <grknight@gentoo.org (15 Feb 2018)
 # These PEAR packages are unmaintained upstream and
 # are difficult to test or have no tests.
