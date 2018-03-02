@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (02 Mar 2018)
+# Requires unkeyworded deps
+>=dev-python/ipython-5.4.1 qt5 smp
+
 # NP-Hardass <NP-Hardass@gentoo.org> (01 Mar 2018)
 # net-libs/libmicrodns not yet keyworded for ppc
 media-video/vlc microdns
