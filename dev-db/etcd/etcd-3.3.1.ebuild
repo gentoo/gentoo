@@ -24,8 +24,10 @@ src_prepare() {
 }
 
 pkg_setup() {
-	enewgroup ${PN}
-	enewuser ${PN} -1 -1 /var/lib/${PN} ${PN}
+	if use server; then
+		enewgroup ${PN}
+		enewuser ${PN} -1 -1 /var/lib/${PN} ${PN}
+	fi
 }
 
 src_compile() {
