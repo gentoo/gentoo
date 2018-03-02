@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils eutils xdg-utils gnome2-utils fortran-2 python-single-r1
+inherit cmake-utils desktop xdg-utils fortran-2 python-single-r1
 
 DESCRIPTION="Qt based Computer Aided Design application"
 HOMEPAGE="https://www.freecadweb.org/"
@@ -23,12 +23,8 @@ SLOT="0"
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-#dev-qt/qtgui:4[-egl] and dev-qt/qtopengl:4[-egl] : Bug 564978
-#dev-python/pyside[svg] : Bug 591012
-COMMON_DEPEND="
-	${PYTHON_DEPS}
+COMMON_DEPEND="${PYTHON_DEPS}
 	dev-cpp/eigen:3
-	dev-java/xerces
 	dev-libs/boost:=[python,${PYTHON_USEDEP}]
 	dev-libs/xerces-c[icu]
 	dev-python/matplotlib[${PYTHON_USEDEP}]
@@ -38,7 +34,6 @@ COMMON_DEPEND="
 	dev-qt/qtgui:4[-egl]
 	dev-qt/qtopengl:4[-egl]
 	dev-qt/qtsvg:4
-	dev-qt/qtwebkit:4
 	media-libs/coin
 	media-libs/freetype
 	sci-libs/opencascade:*[vtk(+)]
@@ -53,6 +48,11 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-lang/swig-2.0.4-r1:0
 	dev-python/pyside-tools:0[${PYTHON_USEDEP}]"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.14.3702-install-paths.patch
+	"${FILESDIR}"/${P}-no-webkit.patch
+)
+
 # https://bugs.gentoo.org/show_bug.cgi?id=352435
 # https://www.gentoo.org/foundation/en/minutes/2011/20110220_trustees.meeting_log.txt
 RESTRICT="mirror"
@@ -61,6 +61,8 @@ RESTRICT="mirror"
 #   DEPEND and RDEPEND:
 #		salome-smesh - science overlay
 #		zipio++ - not in portage yet
+
+S="${WORKDIR}/FreeCAD-${PV}"
 
 DOCS=( README.md ChangeLog.txt )
 
@@ -80,10 +82,11 @@ src_configure() {
 	local mycmakeargs=(
 		-DOCC_INCLUDE_DIR="${CASROOT}"/inc
 		-DOCC_LIBRARY_DIR="${CASROOT}"/$(get_libdir)
-		-DCMAKE_INSTALL_DATADIR=/usr/share/${P}
-		-DCMAKE_INSTALL_DOCDIR=/usr/share/doc/${PF}
-		-DCMAKE_INSTALL_INCLUDEDIR=/usr/include/${P}
-		-DFREECAD_USE_EXTERNAL_KDL="ON"
+		-DCMAKE_INSTALL_DATADIR=share/${P}
+		-DCMAKE_INSTALL_DOCDIR=share/doc/${PF}
+		-DCMAKE_INSTALL_INCLUDEDIR=include/${P}
+		-DFREECAD_USE_EXTERNAL_KDL=ON
+		-DBUILD_WEB=OFF
 	)
 
 	# TODO to remove embedded dependencies:
@@ -121,14 +124,8 @@ src_install() {
 
 pkg_postinst() {
 	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
-
-	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
 	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
-
-	gnome2_icon_cache_update
 }
