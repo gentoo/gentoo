@@ -5449,7 +5449,6 @@ dev-python/selectors34 1.2: Backport of the selectors module from Python 3.4
 dev-python/selenium 3.0.2: Python language binding for Selenium Remote Control
 dev-python/semantic_version 2.6.0: Python library providing a few tools handling SemVer in Python.
 dev-python/send2trash 1.3.0: Sends files to the Trash (or Recycle Bin)
-dev-python/sepolgen 1.2.3 2.6: SELinux policy generation library
 dev-python/serpent 1.19: A simple serialization library based on ast.literal_eval
 dev-python/service_identity 14.0.0 16.0.0: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.1.8: Allow customization of the process title
@@ -9781,7 +9780,7 @@ sys-apps/pciutils 3.4.1: Various utilities dealing with the PCI bus
 sys-apps/pcmciautils 018_p8: PCMCIA userspace utilities for Linux
 sys-apps/pcsc-lite 1.8.20 1.8.22: PC/SC Architecture smartcard middleware library
 sys-apps/pmount 0.9.99_alpha-r3: Policy based mounter that gives the ability to mount removable devices as a user
-sys-apps/policycoreutils 2.6-r1 2.7: SELinux core utilities
+sys-apps/policycoreutils 2.7: SELinux core utilities
 sys-apps/portage 2.3.8 2.3.13-r1 2.3.19-r1: Portage is the package management and distribution system for Gentoo
 sys-apps/preload 0.6.4-r3: Adaptive readahead daemon
 sys-apps/progress 0.13: Coreutils Viewer: show progress for cp, rm, dd, and so forth
