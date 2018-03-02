@@ -22,7 +22,6 @@ dev-python/pyyaml libyaml
 dev-python/setuptools_scm mercurial test
 dev-python/sphinx latex test
 dev-python/twisted-core gtk serial
-dev-vcs/git gnome-keyring
 media-fonts/baekmuk-fonts X
 media-fonts/liberation-fonts X
 net-analyzer/netcat crypt
