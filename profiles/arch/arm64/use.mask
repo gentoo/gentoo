@@ -26,6 +26,10 @@
 -neon
 -armvfp
 
+# Brian Evans <grknight@gentoo.org> (02 Mar 2018)
+# dev-db/qdbm is net yet keyworded
+qdbm
+
 # Michał Górny <mgorny@gentoo.org> (17 Feb 2018)
 # net-dialup/freeradius{,-client} not keyworded.
 radius
