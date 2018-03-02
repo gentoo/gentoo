@@ -33,6 +33,11 @@
 #-video_cards_vmware
 -input_devices_vmmouse
 
+# Michał Górny <mgorny@gentoo.org> (02 Mar 2018)
+# Someone needs to test them.
+input_devices_libinput
+video_cards_amdgpu
+
 # Michał Górny <mgorny@gentoo.org> (01 Mar 2018)
 # virtual/mpi not keyworded at the moment.
 mpi
