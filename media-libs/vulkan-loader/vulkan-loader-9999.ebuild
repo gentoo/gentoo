@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,7 +25,10 @@ IUSE="wayland X"
 RDEPEND=""
 DEPEND="${PYTHON_DEPS}
 	wayland? ( dev-libs/wayland:=[${MULTILIB_USEDEP}] )
-	X? ( x11-libs/libX11:=[${MULTILIB_USEDEP}] )"
+	X? (
+		x11-libs/libX11:=[${MULTILIB_USEDEP}]
+		x11-libs/libXrandr:=[${MULTILIB_USEDEP}]
+		)"
 
 multilib_src_configure() {
 	local mycmakeargs=(
