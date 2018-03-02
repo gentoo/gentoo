@@ -7409,7 +7409,7 @@ media-libs/ladspa-sdk 1.13-r2: The Linux Audio Developer's Simple Plugin API
 media-libs/lasi 1.1.2: C++ library for postscript stream output
 media-libs/lastfmlib 0.4.0: C++ library to scrobble tracks on Last.fm
 media-libs/lcms 2.8-r1 2.9: A lightweight, speed optimized color management engine
-media-libs/lensfun 0.3.1: lensfun: A library for rectifying and simulating photographic lens distortions
+media-libs/lensfun 0.3.1 0.3.2-r1: Library for rectifying and simulating photographic lens distortions
 media-libs/leptonica 1.74.1 1.74.4: C library for image processing and analysis
 media-libs/lib3ds 1.3.0-r1 2.0.0_rc1: library for managing 3D-Studio Release 3 and 4 .3DS files
 media-libs/libXcm 0.5.2-r1: reference implementation of the net-color spec
@@ -8765,7 +8765,7 @@ net-misc/connman-gtk 1.1.1: GTK GUI for Connman
 net-misc/curl 7.57.0 7.58.0: A Client that groks URLs
 net-misc/dahdi 2.10.0.1 2.10.1 2.10.2-r2: Kernel modules for Digium compatible hardware (formerly known as Zaptel)
 net-misc/dahdi-tools 2.6.2 2.8.0 2.9.0.1 2.10.0 2.10.1: Userspace tools to configure the kernel modules from net-misc/dahdi
-net-misc/dhcp 4.3.4 4.3.5: ISC Dynamic Host Configuration Protocol (DHCP) client/server
+net-misc/dhcp 4.3.4 4.3.5 4.3.6_p1: ISC Dynamic Host Configuration Protocol (DHCP) client/server
 net-misc/dhcpcd 6.11.3 6.11.5: A fully featured, yet light weight RFC2131 compliant DHCP client
 net-misc/dhcpcd-ui 0.7.5-r1: Desktop notification and configuration for dhcpcd
 net-misc/dhcping 1.2: Utility for sending a dhcp request to a dhcp server to see if it is responding
@@ -10175,7 +10175,7 @@ sys-process/acct 6.6.4-r1: GNU system accounting utilities
 sys-process/anacron 2.3-r2: a periodic command scheduler
 sys-process/at 3.1.18-r1: Queues jobs for later execution
 sys-process/atop 2.3.0-r1: Resource-specific view of processes
-sys-process/audit 2.6.4: Userspace utilities for storing and processing auditing records
+sys-process/audit 2.6.4 2.7.1: Userspace utilities for storing and processing auditing records
 sys-process/bcron 0.10: A new cron system designed with secure operations in mind by Bruce Guenter
 sys-process/criu 2.5-r1 3.6: utility to checkpoint/restore a process tree
 sys-process/cronbase 0.3.7-r6: base for all cron ebuilds
