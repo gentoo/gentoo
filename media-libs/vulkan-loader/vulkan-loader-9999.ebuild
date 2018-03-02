@@ -28,7 +28,10 @@ RDEPEND=""
 DEPEND="${PYTHON_DEPS}
 	demos? ( dev-util/glslang:=[${MULTILIB_USEDEP}] )
 	wayland? ( dev-libs/wayland:=[${MULTILIB_USEDEP}] )
-	X? ( x11-libs/libX11:=[${MULTILIB_USEDEP}] )"
+	X? (
+		x11-libs/libX11:=[${MULTILIB_USEDEP}]
+		x11-libs/libXrandr:=[${MULTILIB_USEDEP}]
+	)"
 
 multilib_src_configure() {
 	local mycmakeargs=(
