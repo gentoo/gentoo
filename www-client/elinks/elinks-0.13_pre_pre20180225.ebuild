@@ -4,16 +4,18 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads"
-inherit autotools git-r3 python-any-r1
+inherit autotools python-any-r1
 
-EGIT_REPO_URI="https://github.com/rkd77/felinks"
+EGIT_COMMIT="0dd3aaabe61fbc5ed0d9a74915678d11d00c2a1c"
 
 DESCRIPTION="Advanced and well-established text-mode web browser"
 HOMEPAGE="http://elinks.or.cz/"
+SRC_URI="https://github.com/rkd77/felinks/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/felinks-${EGIT_COMMIT}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="bittorrent brotli bzip2 debug finger ftp gopher gpm guile idn ipv6
 	  javascript libressl lua +mouse nls nntp perl ruby samba ssl tre unicode X xml zlib"
 
@@ -40,13 +42,8 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-parallel-make.patch
+	"${FILESDIR}"/${PN}-9999-parallel-make.patch
 	)
-
-src_unpack() {
-	default
-	git-r3_src_unpack
-}
 
 src_prepare() {
 	default
