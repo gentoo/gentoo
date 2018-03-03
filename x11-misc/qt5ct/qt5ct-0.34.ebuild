@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -28,7 +28,7 @@ DEPEND="${RDEPEND}
 "
 
 src_configure() {
-	eqmake5 DEFINES="$(usex dbus '' QT_NO_DBUS)" ${PN}.pro
+	eqmake5 DEFINES="$(usex dbus '' QT_NO_DBUS=1)" ${PN}.pro
 }
 
 src_install() {
