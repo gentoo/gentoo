@@ -13,7 +13,7 @@ PYTHON_REQ_USE="threads?"
 inherit distutils-r1
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/Lawouach/WebSocket-for-Python.git"
-	inherit git-r3
+	inherit git-3
 else
 	inherit vcs-snapshot
 	SRC_URI="https://github.com/Lawouach/WebSocket-for-Python/archive/${PV}.tar.gz -> ${P}.tar.gz"
