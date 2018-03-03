@@ -3,7 +3,7 @@
 
 EAPI=5
 
-USE_RUBY="ruby23 ruby24"
+USE_RUBY="ruby22 ruby23 ruby24"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGES.txt README.rdoc"
 
@@ -15,8 +15,8 @@ DESCRIPTION="A pure Ruby implementation of the SCP client protocol"
 HOMEPAGE="https://github.com/net-ssh/net-scp"
 
 LICENSE="GPL-2"
-SLOT="4"
-KEYWORDS="~amd64"
+SLOT="2"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
 RUBY_PATCHES=(
