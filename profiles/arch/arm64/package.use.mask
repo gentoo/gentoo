@@ -11,6 +11,7 @@ app-text/tesseract scrollview
 dev-cpp/eigen test
 kde-frameworks/frameworkintegration appstream
 kde-frameworks/knotifications speech
+kde-frameworks/ktextwidgets speech
 kde-plasma/plasma-workspace geolocation
 mate-base/mate help
 mate-base/mate-applets-meta appindicator sensors
