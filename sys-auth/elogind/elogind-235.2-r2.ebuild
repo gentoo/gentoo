@@ -77,19 +77,19 @@ src_configure() {
 		-Drootlibdir="${EPREFIX}"/$(get_libdir)
 		-Drootlibexecdir="${EPREFIX}"/$(get_libdir)/elogind
 		-Drootprefix="${EPREFIX}/"
-		-Dsmack=true
-		-Dman=auto
-		-Dhtml=$(usex doc auto false)
-		-Dcgroup-controller=openrc
-		-Ddefault-hierarchy=${cgroupmode}
-		-Ddebug=$(usex debug elogind false)
-		--buildtype $(usex debug debug release)
-		-Dacl=$(usex acl true false)
-		-Dpam=$(usex pam true false)
-		-Dselinux=$(usex selinux true false)
 		-Dbashcompletiondir="${EPREFIX}/usr/share/bash-completion/completions"
 		-Dzsh-completion="${EPREFIX}/usr/share/zsh/site-functions"
+		-Dman=auto
+		-Dsmack=true
+		-Dcgroup-controller=openrc
+		-Ddefault-hierarchy=${cgroupmode}
 		-Ddefault-kill-user-processes=false
+		-Dacl=$(usex acl true false)
+		-Ddebug=$(usex debug elogind false)
+		--buildtype $(usex debug debug release)
+		-Dhtml=$(usex doc auto false)
+		-Dpam=$(usex pam true false)
+		-Dselinux=$(usex selinux true false)
 	)
 
 	meson_src_configure
