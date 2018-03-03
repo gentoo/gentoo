@@ -47,7 +47,6 @@ RDEPEND="!app-emulation/virtualbox-bin
 			x11-libs/libXinerama
 		)
 	)
-	java? ( >=virtual/jre-1.6:= )
 	libressl? ( dev-libs/libressl:= )
 	!libressl? ( dev-libs/openssl:0= )
 	lvm? ( sys-fs/lvm2 )
@@ -71,13 +70,15 @@ DEPEND="${RDEPEND}
 		dev-texlive/texlive-fontsextra
 	)
 	!headless? ( x11-libs/libXinerama )
-	java? ( >=virtual/jre-1.6:= )
+	java? ( >=virtual/jdk-1.6 )
 	pam? ( sys-libs/pam )
 	pax_kernel? ( sys-apps/elfix )
 	pulseaudio? ( media-sound/pulseaudio )
 	qt5? ( dev-qt/linguist-tools:5 )
 	vboxwebsrv? ( net-libs/gsoap[-gnutls(-)] )
 	${PYTHON_DEPS}"
+RDEPEND="${RDEPEND}
+	java? ( >=virtual/jre-1.6 )"
 
 QA_TEXTRELS_x86="usr/lib/virtualbox-ose/VBoxGuestPropSvc.so
 	usr/lib/virtualbox/VBoxSDL.so
