@@ -158,6 +158,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.6.0-gentoo.patch
 	"${FILESDIR}"/${PN}-5.7.2-issue-2443.patch
 	"${FILESDIR}"/${PN}-5.7.2-CVE-2017-16820.patch
+	"${FILESDIR}"/${PN}-5.7.2-varnish-5.2+.patch
 )
 
 # @FUNCTION: collectd_plugin_kernel_linux
