@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,9 +15,7 @@ fi
 
 LICENSE="GPL-2 xref? ( xref.lisp )"
 SLOT="0"
-if [[ ${PV} == *9999* ]]; then
-	KEYWORDS=""
-else
+if [[ ${PV} != *9999* ]]; then
 	KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 fi
 IUSE="doc xref"
