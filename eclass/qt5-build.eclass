@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: qt5-build.eclass
@@ -543,6 +543,24 @@ qt5_base_configure() {
 		-sysconfdir "${QT5_SYSCONFDIR}"
 		-examplesdir "${QT5_EXAMPLESDIR}"
 		-testsdir "${QT5_TESTSDIR}"
+
+		# force appropriate compiler
+		$(if use kernel_FreeBSD; then
+			if tc-is-gcc; then
+				echo -platform freebsd-g++
+			elif tc-is-clang; then
+				echo -platform freebsd-clang
+			fi
+		fi)
+		$(if [[ ${QT5_MINOR_VERSION} -ge 10 ]]; then
+			if use kernel_linux; then
+				if tc-is-gcc; then
+					echo -platform linux-g++
+				elif tc-is-clang; then
+					echo -platform linux-clang
+				fi
+			fi
+		fi)
 
 		# configure in release mode by default,
 		# override via the CONFIG qmake variable
