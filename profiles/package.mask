@@ -319,15 +319,6 @@ app-misc/misterhouse
 app-forensics/autopsy
 
 # Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
-# Not compatible with current libmowgli, no reverse deps (#630030). Removal
-# in a month.
-dev-libs/libmcs
-
-# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
-# No reverse deps, fails to build (#630866). Removal in a month.
-dev-libs/libmowgli-glib
-
-# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
 # Deprecated tools replace by dev-python/awscli (#633374). Removal in a
 # month.
 app-admin/aws-as-tools
