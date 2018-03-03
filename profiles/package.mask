@@ -30,6 +30,12 @@
 #--- END OF EXAMPLES ---
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (03 Mar 2018)
+# Fails to build without rpc support in glibc (bug 631044);
+# no maintainer, requires obsolete hardware. Removal in
+# 30 days.
+app-pda/p3nfs
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (03 Mar 2018)
 # Fails to build without rpc support in glibc (bug 377867);
 # fails to build with libtirpc; apparently functionality is
 # now included in libtirpc. No consumers. Removal in 30 days.
