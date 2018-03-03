@@ -84,8 +84,9 @@ DEPEND="${COMMON_DEPEND}
 		>=dev-cpp/gtest-1.8.0
 		dev-cpp/gmock
 	)
-	dev-libs/boost:=
+	dev-libs/boost
 	dev-qt/linguist-tools:5
+	dev-qt/qtopengl:5
 	sys-devel/gettext
 	virtual/pkgconfig
 	box? ( dev-cpp/sparsehash )
