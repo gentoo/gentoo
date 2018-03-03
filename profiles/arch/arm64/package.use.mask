@@ -9,6 +9,13 @@ net-fs/samba ads
 # Some more unkeyworded dependencies.
 app-text/tesseract scrollview
 dev-cpp/eigen test
+kde-frameworks/frameworkintegration appstream
+kde-frameworks/knotifications speech
+kde-plasma/plasma-workspace geolocation
+mate-base/mate help
+mate-base/mate-applets-meta appindicator sensors
+mate-extra/caja-extensions gajim
+net-fs/samba dmapi
 net-im/pidgin gadu
 net-misc/ntpsec rclock_oncore rclock_pps
 sci-libs/gdal armadillo netcdf
