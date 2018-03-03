@@ -15,7 +15,7 @@ SRC_URI="https://github.com/gramps-project/${PN}/archive/v${PV}.tar.gz
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+reports exif geo spell"
+IUSE="+rcs +reports exif geo spell"
 
 RDEPEND="
 	dev-python/bsddb3[${PYTHON_USEDEP}]
@@ -30,6 +30,7 @@ RDEPEND="
 	exif? ( >=media-libs/gexiv2-0.5[${PYTHON_USEDEP},introspection] )
 	geo? ( >=sci-geosciences/osm-gps-map-1.1.0 )
 	spell? ( app-text/gtkspell:3[introspection] )
+	rcs? ( dev-vcs/rcs )
 "
 
 python_configure_all() {
