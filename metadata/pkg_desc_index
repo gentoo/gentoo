@@ -8610,7 +8610,6 @@ net-libs/libpri 1.4.12-r2: Primary Rate ISDN (PRI) library
 net-libs/libproxy 0.4.13-r2: Library for automatic proxy configuration management
 net-libs/libqmi 1.12.6 1.16.2: Qualcomm MSM (Mobile Station Modem) Interface (QMI) modem protocol helper library
 net-libs/librouteros 1.1.2: Library for accessing MikroTik's RouterOS via its API
-net-libs/librpcsecgss 0.16: implementation of rpcsec_gss (RFC 2203) for secure rpc communication
 net-libs/librsync 0.9.7-r3 2.0.0 2.0.0-r1: Remote delta-compression library
 net-libs/libsignon-glib 1.14: GLib binding for the D-Bus API provided by signond
 net-libs/libsmi 0.4.8-r1: A Library to Access SMI MIB Information
