@@ -42,6 +42,8 @@ myhlopts=(
 	"conf_dir=${EPREFIX}/etc/highlight/"
 )
 
+PATCHES=( "${FILESDIR}"/${P}-qmake-fix.patch ) # bug 649398
+
 src_prepare() {
 	default
 
@@ -78,7 +80,10 @@ src_compile() {
 
 src_install() {
 	emake -f makefile "${myhlopts[@]}" install
-	use qt5 && emake -f makefile "${myhlopts[@]}" install-gui
+	if use qt5; then
+		emake -f makefile "${myhlopts[@]}" install-gui
+		docompress -x /usr/share/doc/${PF}/{ChangeLog,COPYING,README,README_PLUGINS}
+	fi
 
 	if ! use examples ; then
 		rm -r "${ED}"/usr/share/doc/${PF}/extras || die
