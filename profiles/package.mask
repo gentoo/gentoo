@@ -319,12 +319,6 @@ app-misc/misterhouse
 app-forensics/autopsy
 
 # Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
-# Multiple security issues, init scripts need a major rework (#629416,
-# #629412, #631068, #623806). Removal in a month.
-net-im/jabberd2
-net-im/mu-conference
-
-# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
 # Not compatible with current libmowgli, no reverse deps (#630030). Removal
 # in a month.
 dev-libs/libmcs
