@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (03 Mar 2018)
+# Marked obsolete on CTAN. EAPI=3 ebuild. No consumers.
+# Masked for removal in 30 days. Bug 644258
+app-text/noweb
+
 # Jason Zaman <perfinion@gentoo.org> (02 Mar 2018)
 # Became sys-apps/selinux-python in release 2.7
 # Masked for removal in 30 days.
