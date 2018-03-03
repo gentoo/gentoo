@@ -57,7 +57,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND=">=virtual/rust-1.20"
+DEPEND=">=virtual/rust-1.20
+	app-text/asciidoc"
 
 PATCHES=( "${FILESDIR}"/${P}-bundled-deps.patch )
 
