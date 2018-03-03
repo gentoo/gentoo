@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<upstream>
+		<bugs-to>https://github.com/GNS3/ubridge/issues</bugs-to>
+		<remote-id type="github">GNS3/ubridge</remote-id>
+	</upstream>
+</pkgmetadata>
