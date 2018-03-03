@@ -15,6 +15,7 @@ LICENSE="MPL-2.0"
 SLOT="3"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="altivec c++11 cuda debug doc neon openmp test" #zvector vsx
+RESTRICT="!test? ( test )"
 
 RDEPEND="!dev-cpp/eigen:0"
 DEPEND="

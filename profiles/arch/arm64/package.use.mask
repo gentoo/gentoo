@@ -1,6 +1,18 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (03 Mar 2018)
+# Some more unkeyworded dependencies.
+app-text/tesseract scrollview
+dev-cpp/eigen test
+net-im/pidgin gadu
+net-misc/ntpsec rclock_oncore rclock_pps
+sci-libs/gdal armadillo netcdf
+sys-fs/btrfs-progs reiserfs
+www-client/chromium widevine
+www-servers/lighttpd memcached
+x11-misc/xscreensaver gdm
+
 # NP-Hardass <NP-Hardass@gentoo.org> (01 Mar 2018)
 # net-libs/libmicrodns not yet keyworded for arm64
 media-video/vlc microdns
@@ -151,12 +163,6 @@ app-emulation/qemu qemu_softmmu_targets_i386 qemu_softmmu_targets_x86_64
 # Alexis Ballier <aballier@gentoo.org> (10 Jul 2017)
 # media-gfx/nvidia-texture-tools does not support arm64
 media-libs/devil nvtt
-
-# Alexis Ballier <aballier@gentoo.org> (10 Jul 2017)
-# luajit added arm64 support in luajit 2.1, still in rc/beta, revisit this when
-# such a version hits the tree
-dev-db/redis luajit
-www-servers/nginx luajit
 
 # Alexis Ballier <aballier@gentoo.org> (10 Jul 2017)
 # Virtualbox is x86 only
