@@ -43,8 +43,6 @@ COMMON_DEPEND="
 	dev-qt/qtnetwork:5[ssl]
 	dev-qt/qtsql:5[sqlite]
 	dev-qt/qtwidgets:5
-	dev-qt/qtx11extras:5
-	dev-qt/qtxml:5
 	media-libs/chromaprint:=
 	media-libs/gstreamer:1.0
 	media-libs/gst-plugins-base:1.0
@@ -84,8 +82,11 @@ DEPEND="${COMMON_DEPEND}
 		>=dev-cpp/gtest-1.8.0
 		dev-cpp/gmock
 	)
-	dev-libs/boost:=
+	dev-libs/boost
 	dev-qt/linguist-tools:5
+	dev-qt/qtopengl:5
+	dev-qt/qtx11extras:5
+	dev-qt/qtxml:5
 	sys-devel/gettext
 	virtual/pkgconfig
 	box? ( dev-cpp/sparsehash )
