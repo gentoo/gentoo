@@ -694,7 +694,7 @@ app-emacs/scheme-complete 0.8.10 0.8.11: Scheme tab-completion and word-completi
 app-emacs/semi 1.14.6-r2: A library to provide MIME feature for GNU Emacs
 app-emacs/session 2.3a: When you start Emacs, Session restores various variables from your last session
 app-emacs/setnu 1.06: Display line numbers in Emacs buffers
-app-emacs/slime 2.0_p20101103: SLIME, the Superior Lisp Interaction Mode (Extended)
+app-emacs/slime 2.15: SLIME, the Superior Lisp Interaction Mode (Extended)
 app-emacs/sml-mode 6.4: Emacs major mode for editing Standard ML
 app-emacs/sokoban 1.4: Implementation of Sokoban for Emacs
 app-emacs/stripes 0.2-r1: An Emacs mode that alternates the background color of lines
@@ -1435,7 +1435,7 @@ app-text/rpl 1.5.5-r1: Intelligent recursive search/replace utility
 app-text/sablotron 1.0.3-r1: An XSLT Parser in C++
 app-text/sary 1.2.0-r1: Sary: suffix array library and tools
 app-text/scrollkeeper 9999-r1: Dummy scrollkeeper for testing rarian
-app-text/scrollkeeper-dtd 1.0 1.0-r1: DTD from the Scrollkeeper package
+app-text/scrollkeeper-dtd 1.0-r1: DTD from the Scrollkeeper package
 app-text/sdcv 0.5.0_beta2: Console version of Stardict program
 app-text/sgml-common 0.6.3-r6: Base ISO character entities and utilities for SGML
 app-text/sgmltools-lite 3.0.3-r14: Python interface to SGML software in a DocBook/OpenJade env
