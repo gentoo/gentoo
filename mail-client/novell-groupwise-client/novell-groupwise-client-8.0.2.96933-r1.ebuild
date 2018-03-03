@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND=""
+DEPEND="dev-util/patchelf"
 RDEPEND="
 	sys-libs/libstdc++-v3
 	>=x11-libs/libX11-1.6.2[abi_x86_32(-)]
@@ -31,7 +31,7 @@ RDEPEND="
 	>=x11-libs/libXrender-0.9.8[abi_x86_32(-)]
 	>=x11-libs/libXtst-1.2.2[abi_x86_32(-)]
 	>=x11-libs/libxcb-1.11-r1[abi_x86_32(-)]
-	x11-libs/motif:2.2[abi_x86_32(-)]
+	>=x11-libs/motif-2.3.7:0[abi_x86_32(-),motif22-compatibility]
 	>=media-libs/alsa-lib-1.0.28[abi_x86_32(-)]
 	>=media-libs/freetype-2.5.5[abi_x86_32(-)]
 "
@@ -46,6 +46,13 @@ src_unpack() {
 	mkdir -p "${WORKDIR}"/${PN}-${MY_PV} || die
 	cd ${PN}-${MY_PV} || die
 	rpm_unpack ./../gw${MY_PV}_client_linux_multi/${PN}-${MY_PV}.i586.rpm
+}
+
+src_prepare() {
+	# Binary patch soname for Motif
+	cd opt/novell/groupwise/client/lib || die
+	patchelf --replace-needed libXm.so.{3,4} libos_xwin.so || die
+	patchelf --replace-needed libXm.so.{3,4} libsc_xp.so || die
 }
 
 src_compile() { :; }
