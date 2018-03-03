@@ -16,7 +16,6 @@ S="${WORKDIR}/${MY_PF}"
 LICENSE="BSD GPL-2"
 SLOT="0"
 # We need to keyword app-arch/zstd
-#KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86 ~ppc-macos"
 KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~x86 ~ppc-macos"
 IUSE="libressl lzma scrypt seccomp selinux systemd tor-hardening test web zstd"
 
@@ -50,10 +49,8 @@ src_configure() {
 		--localstatedir="${EPREFIX}/var" \
 		--enable-system-torrc \
 		--enable-asciidoc \
-		--disable-android \
 		--disable-libfuzzer \
 		--disable-rust \
-		--disable-restart-debugging \
 		$(use_enable lzma) \
 		$(use_enable scrypt libscrypt) \
 		$(use_enable seccomp) \
