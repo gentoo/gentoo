@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -15,8 +15,7 @@ IUSE=""
 DEPEND="x11-libs/gtk+:3
 	x11-libs/cairo
 	>=x11-libs/pango-1.16"
-RDEPEND="${DEPEND}
-	!<net-im/jabberd2-2.2.17-r1"
+RDEPEND="${DEPEND}"
 
 src_install() {
 	default
