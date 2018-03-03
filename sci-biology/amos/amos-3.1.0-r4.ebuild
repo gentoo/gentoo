@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools flag-o-matic python-single-r1 qmake-utils
+inherit autotools flag-o-matic python-single-r1
 
 DESCRIPTION="A Modular, Open-Source whole genome assembler"
 HOMEPAGE="http://amos.sourceforge.net/"
@@ -15,10 +15,10 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
 LICENSE="Artistic"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="qt4"
+IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-DEPEND="qt4? ( dev-qt/qtcore:4 )"
+DEPEND=""
 RDEPEND="${DEPEND}
 	${PYTHON_DEPS}
 	dev-perl/DBI
@@ -43,8 +43,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
-		--with-qmake-qt4=$(usex qt4 $(qt4_get_bindir)/qmake no)
+	econf --with-qmake-qt4=no
 }
 
 src_install() {
