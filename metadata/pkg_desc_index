@@ -1156,7 +1156,7 @@ app-office/ledger 3.1.1: A double-entry accounting system with a command-line re
 app-office/libalkimia 5.0.0: Library with common classes and functionality used by KDE finance applications
 app-office/libreoffice 5.4.5.1: A full office productivity suite
 app-office/libreoffice-l10n 5.4.5.1: Translations for the Libreoffice suite
-app-office/lyx 2.2.3-r1 2.2.3-r3: WYSIWYM frontend for LaTeX, DocBook, etc.
+app-office/lyx 2.2.3-r4: WYSIWYM frontend for LaTeX, DocBook, etc.
 app-office/mdbtools 0.7.1-r2: Set of libraries and utilities for reading Microsoft Access database (MDB) files
 app-office/ooextras 20060909: OOExtras: Extra Templates for OpenOffice.org!
 app-office/openoffice-bin 4.1.4: Apache OpenOffice productivity suite
@@ -1391,7 +1391,6 @@ app-text/multitail 6.4.1: Tail with multiple windows
 app-text/mupdf 1.11-r1: a lightweight PDF viewer and toolkit written in portable C
 app-text/mythes 1.2.4: A simple thesaurus for Libreoffice
 app-text/namazu 2.0.21: Namazu is a full-text search engine
-app-text/noweb 2.11b-r4: a literate programming tool, lighter than web
 app-text/o3read 0.0.4: Converts OpenOffice formats to text or HTML
 app-text/ocrad 0.22: GNU Ocrad is an OCR (Optical Character Recognition) program
 app-text/odt2txt 0.4-r1: A simple converter from OpenDocument Text to plain text
@@ -1434,7 +1433,7 @@ app-text/ronn 0.7.3-r3: Converts simple, human readable textfiles to roff for te
 app-text/rpl 1.5.5-r1: Intelligent recursive search/replace utility
 app-text/sablotron 1.0.3-r1: An XSLT Parser in C++
 app-text/sary 1.2.0-r1: Sary: suffix array library and tools
-app-text/scrollkeeper 9999-r1: Dummy scrollkeeper for testing rarian
+app-text/scrollkeeper 9999-r2: Dummy scrollkeeper for testing rarian
 app-text/scrollkeeper-dtd 1.0-r1: DTD from the Scrollkeeper package
 app-text/sdcv 0.5.0_beta2: Console version of Stardict program
 app-text/sgml-common 0.6.3-r6: Base ISO character entities and utilities for SGML
