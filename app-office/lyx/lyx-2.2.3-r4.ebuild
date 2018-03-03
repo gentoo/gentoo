@@ -40,7 +40,6 @@ RDEPEND="${PYTHON_DEPS}
 	latex? (
 		app-text/dvipng
 		app-text/ghostscript-gpl
-		app-text/noweb
 		app-text/ps2eps
 		app-text/texlive
 		dev-tex/chktex
