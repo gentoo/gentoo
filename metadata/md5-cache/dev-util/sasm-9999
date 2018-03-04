@@ -1,9 +1,9 @@
-DEFINED_PHASES=compile configure install prepare unpack
-DEPEND=dev-qt/qtcore:4 dev-qt/qtgui:4 >=dev-vcs/git-1.8.2.1
+DEFINED_PHASES=configure install unpack
+DEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=Simple crossplatform IDE for NASM assembly language
-EAPI=5
-HOMEPAGE=http://dman95.github.io/SASM/
+EAPI=6
+HOMEPAGE=https://dman95.github.io/SASM/
 LICENSE=GPL-3
 SLOT=0
-_eclasses_=base	983774947da124fb7d542ce25a218bb1	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	git-r3	fec09a83ae965b041b47f5ff7c8ba29a	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	qmake-utils	990448b067cb3cfe1443bc25fb57239c	qt4-r2	b7985a3197fbc3a22d059f19904e735b	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=3f293fb1b5c818bcc17c334234da57df
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	git-r3	fec09a83ae965b041b47f5ff7c8ba29a	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_md5_=7f3e9a407beb29ddb021ccca780fa15f
