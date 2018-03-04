@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit toolchain-funcs
+inherit toolchain-funcs flag-o-matic
 
 DESCRIPTION="Manifest generation and verification tool written in C"
 HOMEPAGE="https://prefix.gentoo.org/"
@@ -39,6 +39,9 @@ src_compile() {
 
 	local openmp=
 	use openmp && tc-has-openmp && openmp=-fopenmp
+
+	[[ ${CHOST} == sparc-*-solaris2* || ${CHOST} == i?86-*-solaris2* ]] \
+		&& append-flags -D_FILE_OFFSET_BITS=64
 
 	v $(tc-getCC) -o hashgen ${openmp} ${CFLAGS} \
 		$(pkg-config openssl --libs) \
