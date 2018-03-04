@@ -25,5 +25,6 @@ DEPEND="${RDEPEND}
 	test? ( $(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' -2) )"
 
 python_test() {
-	"${EPYTHON}" test_pathlib2.py || die
+	"${EPYTHON}" test_pathlib2.py -v || die
+	"${EPYTHON}" test_pathlib2_with_py2_unicode_literals.py -v || die
 }
