@@ -11,11 +11,13 @@ SRC_URI="ftp://ftp.sane-project.org/pub/sane/${P}/${P}.tar.gz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~ppc ~ppc64 sparc x86"
-IUSE="gimp"
+IUSE="gimp gtk"
 
 RDEPEND="
-	dev-libs/glib:2
-	x11-libs/gtk+:2
+	gtk? (
+		dev-libs/glib:2
+		x11-libs/gtk+:2
+	)
 "
 DEPEND="${RDEPEND}
 	media-gfx/sane-backends
@@ -29,7 +31,9 @@ PATCHES=( "${FILESDIR}/MissingCapsFlag.patch" )
 src_configure() {
 	econf \
 		--datadir=/usr/share/misc \
-		$(use_enable gimp)
+		$(use_enable gimp) \
+		$(use_enable gtk gtk2) \
+		$(use_enable gtk guis)
 }
 
 src_install() {
