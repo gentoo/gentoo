@@ -31,6 +31,11 @@
 
 # Andreas Sturmlechner <asturm@gentoo.org> (04 Mar 2018)
 # Dead upstream, depends on deprecated Qt4.
+# Masked for removal in 30 days. Bug 645436
+sci-chemistry/massxpert
+
+# Andreas Sturmlechner <asturm@gentoo.org> (04 Mar 2018)
+# Dead upstream, depends on deprecated Qt4.
 # Masked for removal in 30 days. Bug 514438, 644522
 sci-chemistry/gsim
 
