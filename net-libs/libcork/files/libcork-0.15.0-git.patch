@@ -1,0 +1,16 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1e236f9..c8770f6 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -49,11 +49,6 @@ execute_process(
+     OUTPUT_VARIABLE GIT_SHA1
+     OUTPUT_STRIP_TRAILING_WHITESPACE
+ )
+-if(GIT_SHA1_RESULT)
+-    message(FATAL_ERROR
+-            "Cannot determine git commit: " ${GIT_SHA1_RESULT})
+-endif(GIT_SHA1_RESULT)
+-
+ #-----------------------------------------------------------------------
+ # Check for building on Tilera
+ # If the Tilera environment is installed, then $TILERA_ROOT is defined
