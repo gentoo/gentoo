@@ -14,10 +14,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="doc +readline test"
 
-DEPEND="
+RDEPEND="
 	readline? ( sys-libs/readline:0= )
 "
-RDEPEND="${DEPEND}"
+DEPEND="
+	${DEPEND}
+	test? ( net-libs/nodejs )
+"
 
 nim_use_enable() {
 	[[ -z $2 ]] && die "usage: nim_use_enable <USE flag> <compiler flag>"
