@@ -30,6 +30,12 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (04 Mar 2018)
+# Dead upstream, depends on deprecated Qt4. media-sound/cantata
+# is an actively developed alternative based on Qt5.
+# Masked for removal in 30 days. Bug 644412
+media-sound/qmpdclient
+
+# Andreas Sturmlechner <asturm@gentoo.org> (04 Mar 2018)
 # Dead upstream, depends on deprecated Qt4.
 # Masked for removal in 30 days. Bug 645436
 sci-chemistry/massxpert
