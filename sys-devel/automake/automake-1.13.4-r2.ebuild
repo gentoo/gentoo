@@ -27,6 +27,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.13-dyn-ithreads.patch
 	"${FILESDIR}"/${PN}-1.13-perl-escape-curly-bracket-r1.patch
+	"${FILESDIR}"/${PN}-1.13-hash-order-workaround.patch
 	"${FILESDIR}"/${PN}-1.14-install-sh-avoid-low-risk-race-in-tmp.patch
 )
 
