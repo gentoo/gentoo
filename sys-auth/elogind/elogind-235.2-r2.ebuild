@@ -40,7 +40,7 @@ PDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-235.1-docs.patch"
+	"${FILESDIR}/${P}-docs.patch"
 	"${FILESDIR}/${P}-legacy-cgroupmode.patch"
 	"${FILESDIR}/${P}-drop-logintest.patch" # bug 645156
 )
@@ -69,8 +69,8 @@ src_configure() {
 	fi
 
 	local emesonargs=(
-		-Ddocdir="${EPREFIX}/usr/share/doc/${P}"
-		-Dhtmldir="${EPREFIX}/usr/share/doc/${P}/html"
+		-Ddocdir="${EPREFIX}/usr/share/doc/${PF}"
+		-Dhtmldir="${EPREFIX}/usr/share/doc/${PF}/html"
 		-Dpamlibdir=$(getpam_mod_dir)
 		-Dudevrulesdir="$(get_udevdir)"/rules.d
 		--libdir="${EPREFIX}"/usr/$(get_libdir)
@@ -96,6 +96,8 @@ src_configure() {
 }
 
 src_install() {
+	DOCS+=( src/libelogind/sd-bus/GVARIANT-SERIALIZATION )
+
 	meson_src_install
 
 	newinitd "${FILESDIR}"/${PN}.init ${PN}
