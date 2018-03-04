@@ -10131,7 +10131,7 @@ sys-libs/libutempter 1.1.6-r2: Library that allows non-privileged apps to write 
 sys-libs/llvm-libunwind 3.9.1 4.0.1 5.0.1: C++ runtime stack unwinder from LLVM
 sys-libs/lwp 2.2: Light weight process library (used by Coda). This is NOT libwww-perl
 sys-libs/mtdev 1.1.4 1.1.5: Multitouch Protocol Translation Library
-sys-libs/musl 1.1.18: Light, fast and simple C library focused on standards-conformance and safety
+sys-libs/musl 1.1.18 1.1.19: Light, fast and simple C library focused on standards-conformance and safety
 sys-libs/ncurses 5.9-r101 6.0-r1: console display library
 sys-libs/nss_wrapper 1.1.3: A wrapper for the user, group and hosts NSS API
 sys-libs/ntdb 1.0-r1: A not-so trivial keyword/data database system
