@@ -6,10 +6,6 @@
 net-dns/avahi howl-compat
 
 # Mart Raudsepp <leio@gentoo.org> (02 Mar 2018)
-# app-text/highlight not stable yet
-dev-vcs/git highlight
-
-# Mart Raudsepp <leio@gentoo.org> (02 Mar 2018)
 # Requires xorg-server[xvfb] for tests
 dev-util/cmake test
 dev-libs/glib test
