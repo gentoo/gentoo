@@ -1,0 +1,295 @@
+Author: Andreas Tille <tille@debian.org>
+Last-Update: Mon, 11 Sep 2017 09:30:38 +0200
+Description: Porting to Qt5 following the hints at
+   https://wiki.qt.io/Transition_from_Qt_4.x_to_Qt5#QtWidgets_as_a_Separate_Module
+   https://wiki.qt.io/Transition_from_Qt_4.x_to_Qt5#toAscii.28.29_and_fromAscii.28.29_Methods_are_deprecated
+
+--- a/clustalx.pro
++++ b/clustalx.pro
+@@ -6,6 +6,7 @@ TEMPLATE = app
+ TARGET = clustalx
+ CONFIG += release static
+ QT += xml
++QT += widgets
+ VERSION = 2.1
+ win32 {
+    DEFINES += OS_WINDOWS
+--- a/AlignOutputFileNames.cpp
++++ b/AlignOutputFileNames.cpp
+@@ -20,7 +20,7 @@
+ #include <QGridLayout>
+ #include <QSizePolicy>
+ #include <QComboBox>
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QLabel>
+ #include <iostream>
+ #include "AlignOutputFileNames.h"
+--- a/AlignmentFormatOptions.cpp
++++ b/AlignmentFormatOptions.cpp
+@@ -5,7 +5,7 @@
+ #include <QGridLayout>
+ #include <QSizePolicy>
+ #include <QComboBox>
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QLabel>
+ #include "AlignmentFormatOptions.h"
+ #include "clustalW/general/userparams.h"
+--- a/AlignmentParameters.cpp
++++ b/AlignmentParameters.cpp
+@@ -11,7 +11,7 @@
+ #include <QGridLayout>
+ #include <QSizePolicy>
+ #include <QComboBox>
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QLabel>
+ #include <QButtonGroup>
+ #include <QLineEdit>
+--- a/AlignmentViewerWidget.cpp
++++ b/AlignmentViewerWidget.cpp
+@@ -60,7 +60,7 @@
+  *****************************************************************************/
+ 
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QFile>
+ #include <QTextStream>
+ #include "AlignmentViewerWidget.h"
+--- a/AlignmentWidget.cpp
++++ b/AlignmentWidget.cpp
+@@ -45,7 +45,7 @@
+  *
+  ****************************************************************************/
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include "AlignmentWidget.h"
+ #include "clustalW/general/userparams.h"
+ #include "ClustalQtParams.h"
+--- a/BootstrapTreeDialog.cpp
++++ b/BootstrapTreeDialog.cpp
+@@ -12,7 +12,7 @@
+ #include <QGridLayout>
+ #include <QSizePolicy>
+ #include <QComboBox>
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QLabel>
+ #include <iostream>
+ #include "BootstrapTreeDialog.h"
+--- a/ColorFileXmlParser.cpp
++++ b/ColorFileXmlParser.cpp
+@@ -1,4 +1,4 @@
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ #include "ColorFileXmlParser.h"
+ #include "ClustalQtParams.h"
+--- a/ColumnScoreParams.cpp
++++ b/ColumnScoreParams.cpp
+@@ -11,7 +11,7 @@
+ #include <QGridLayout>
+ #include <QSizePolicy>
+ #include <QComboBox>
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QLabel>
+ #include <QButtonGroup>
+ #include <QLineEdit>
+--- a/HelpDisplayWidget.cpp
++++ b/HelpDisplayWidget.cpp
+@@ -16,7 +16,7 @@
+ #include <QTextEdit>
+ #include <iostream>
+ #include <fstream>
+-#include <QtGui>
++#include <QtWidgets>
+ #include "Resources.h"
+ 
+ const string HelpDisplayWidget::helpFileName = "/usr/share/clustalx/clustalx.hlp";
+--- a/HistogramWidget.cpp
++++ b/HistogramWidget.cpp
+@@ -21,7 +21,7 @@
+  ****************************************************************************/
+ 
+ #include "HistogramWidget.h"
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QImage>
+ //#include <QPixmap>
+ #include <QPoint>
+--- a/LowScoringSegParams.cpp
++++ b/LowScoringSegParams.cpp
+@@ -12,7 +12,7 @@
+ #include <QHBoxLayout>
+ #include <QSizePolicy>
+ #include <QComboBox>
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QLabel>
+ #include <QButtonGroup>
+ #include <QLineEdit>
+--- a/PSPrinter.cpp
++++ b/PSPrinter.cpp
+@@ -16,7 +16,7 @@
+ #include <ctime>
+ #include <iomanip>
+ #include <sstream>
+-#include <QtGui>
++#include <QtWidgets>
+ #include "PSPrinter.h"
+ #include "ColorFileXmlParser.h"
+ #include "clustalW/general/userparams.h"
+@@ -594,7 +594,7 @@ void PSPrinter::printHeaderLine(ofstream
+     {
+         psX = blockLeft + (i - fr) * CHARWIDTH; 
+         (*psOutFile) << "(";
+-        (*psOutFile) << data->seqHeader[ix][i].toAscii();
++        (*psOutFile) << data->seqHeader[ix][i].toLatin1();
+         (*psOutFile) << ") ";
+         (*psOutFile) << psX << " " << psY << " " << psX << " " 
+                      << psY << " 1.0 1.0 1.0 color_inv\n";
+--- a/PairwiseParams.cpp
++++ b/PairwiseParams.cpp
+@@ -18,7 +18,7 @@
+ #include <QRadioButton>
+ #include <QMessageBox>
+ #include <QHBoxLayout>
+-#include <QtGui>
++#include <QtWidgets>
+ #include "clustalW/general/userparams.h"
+ #include "clustalW/substitutionMatrix/globalmatrix.h"
+ #include "FileDialog.h"
+--- a/ProteinGapParameters.cpp
++++ b/ProteinGapParameters.cpp
+@@ -5,7 +5,7 @@
+ #include <QGridLayout>
+ #include <QSizePolicy>
+ #include <QComboBox>
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QLabel>
+ #include <QString>
+ #include <QMessageBox>
+--- a/SaveSeqFile.cpp
++++ b/SaveSeqFile.cpp
+@@ -18,7 +18,7 @@
+ #include <QGridLayout>
+ #include <QSizePolicy>
+ #include <QComboBox>
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QLabel>
+ #include "SaveSeqFile.h"
+ #include "clustalW/general/userparams.h"
+--- a/SecStructOptions.cpp
++++ b/SecStructOptions.cpp
+@@ -5,7 +5,7 @@
+ #include <QGridLayout>
+ #include <QSizePolicy>
+ #include <QComboBox>
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QLabel>
+ #include <QLineEdit>
+ #include "SecStructOptions.h"
+--- a/SeqNameWidget.cpp
++++ b/SeqNameWidget.cpp
+@@ -55,7 +55,7 @@
+  * 
+  ****************************************************************************/
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include "SeqNameWidget.h"
+ #include "KeyController.h" //- nige
+ #include "clustalW/alignment/Alignment.h"
+--- a/TreeFormatOptions.cpp
++++ b/TreeFormatOptions.cpp
+@@ -4,7 +4,7 @@
+ #include <QGridLayout>
+ #include <QSizePolicy>
+ #include <QComboBox>
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QLabel>
+ #include <QCheckBox>
+ #include "TreeFormatOptions.h"
+--- a/TreeOutputFileNames.cpp
++++ b/TreeOutputFileNames.cpp
+@@ -11,7 +11,7 @@
+ #include <QGridLayout>
+ #include <QSizePolicy>
+ #include <QComboBox>
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QLabel>
+ #include <iostream>
+ #include "TreeOutputFileNames.h"
+--- a/WritePostscriptFile.cpp
++++ b/WritePostscriptFile.cpp
+@@ -18,7 +18,7 @@
+ #include <QGridLayout>
+ #include <QSizePolicy>
+ #include <QComboBox>
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QLabel>
+ #include <iostream>
+ #include "WritePostscriptFile.h"
+--- a/mainwindow.cpp
++++ b/mainwindow.cpp
+@@ -87,7 +87,7 @@
+  *
+  ****************************************************************************/
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <QPixmap>
+ #include <QFile>
+ #include <iostream>
+--- a/ColorParameters.cpp
++++ b/ColorParameters.cpp
+@@ -154,8 +154,8 @@ QColor ColorParameters::getResidueColor(
+ {
+     int i, j;
+     QChar colorParRes;
+-    char showRes = res.toAscii();
+-    char showCon = consensus.toAscii();
++    char showRes = res.toLatin1();
++    char showCon = consensus.toLatin1();
+     
+     for(i = 0; i < colorPar.size(); i++)
+     {
+@@ -171,7 +171,7 @@ QColor ColorParameters::getResidueColor(
+                 
+                 for(j = 0; j < colorPar[i].consensusConditionList.size(); j++)
+                 {
+-                    char temp = colorPar[i].consensusConditionList[j].toAscii();
++                    char temp = colorPar[i].consensusConditionList[j].toLatin1();
+                     if(consensus == colorPar[i].consensusConditionList[j])
+                     {
+                         return colorPar[i].color;
+@@ -191,8 +191,8 @@ int ColorParameters::getResidueColorNum(
+ {
+     int i, j;
+     QChar colorParRes;
+-    char showRes = res.toAscii();
+-    char showCon = consensus.toAscii();
++    char showRes = res.toLatin1();
++    char showCon = consensus.toLatin1();
+     
+     for(i = 0; i < colorPar.size(); i++)
+     {
+@@ -208,7 +208,7 @@ int ColorParameters::getResidueColorNum(
+                 
+                 for(j = 0; j < colorPar[i].consensusConditionList.size(); j++)
+                 {
+-                    char temp = colorPar[i].consensusConditionList[j].toAscii();
++                    char temp = colorPar[i].consensusConditionList[j].toLatin1();
+                     if(consensus == colorPar[i].consensusConditionList[j])
+                     {
+                         return getIndexOfColor(colorPar[i].color);
