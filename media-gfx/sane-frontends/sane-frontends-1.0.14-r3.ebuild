@@ -14,15 +14,16 @@ KEYWORDS="~alpha amd64 ~ppc ~ppc64 sparc x86"
 IUSE="gimp gtk"
 
 RDEPEND="
+	media-gfx/sane-backends
+	gimp? ( media-gfx/gimp:2 )
 	gtk? (
 		dev-libs/glib:2
 		x11-libs/gtk+:2
 	)
 "
-DEPEND="${RDEPEND}
-	media-gfx/sane-backends
-	gimp? ( media-gfx/gimp:2 )
-"
+DEPEND="${RDEPEND}"
+
+REQUIRED_USE="gimp? ( gtk )"
 
 DOCS=( AUTHORS Changelog NEWS PROBLEMS README )
 
