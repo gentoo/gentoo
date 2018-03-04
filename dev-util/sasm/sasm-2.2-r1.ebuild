@@ -15,7 +15,7 @@ else
 fi
 
 DESCRIPTION="Simple crossplatform IDE for NASM assembly language"
-HOMEPAGE="https://dman95.github.io/SASM/"
+HOMEPAGE="http://dman95.github.io/SASM/"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -26,7 +26,6 @@ IUSE=""
 DEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
-	dev-qt/qtnetwork:5
 	dev-qt/qtwidgets:5
 "
 REPEND="${DEPEND}
