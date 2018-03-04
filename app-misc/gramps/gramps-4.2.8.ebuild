@@ -5,7 +5,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_{4,5} )
 
 DISTUTILS_SINGLE_IMPL=1
-inherit distutils-r1
+inherit distutils-r1 xdg-utils
 
 DESCRIPTION="Genealogical Research and Analysis Management Programming System"
 HOMEPAGE="https://gramps-project.org/"
@@ -43,4 +43,14 @@ python_prepare_all() {
 	# and that changes with every revision.
 	sed -i "s:share/doc/gramps:share/doc/${PF}:g" setup.py || die
 	distutils-r1_python_prepare_all
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }
