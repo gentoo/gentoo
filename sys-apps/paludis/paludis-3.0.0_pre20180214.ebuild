@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ RUBY_VER=2.3
 
 inherit bash-completion-r1 cmake-utils python-single-r1 user
 
-MY_P=paludis-f8e58ee1d02d2476ae92ebc3737e42b8b6a36891
+MY_P=paludis-57881321fa3d5d82a9260db54afd608fd61dd533
 DESCRIPTION="paludis, the other package mangler"
 HOMEPAGE="http://paludis.exherbo.org/"
 SRC_URI="https://git.exherbo.org/paludis/paludis.git/snapshot/${MY_P}.tar.xz"
