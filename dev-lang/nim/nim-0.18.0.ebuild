@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit bash-completion-r1
+inherit bash-completion-r1 multiprocessing
 
 DESCRIPTION="compiled, garbage-collected systems programming language"
 HOMEPAGE="https://nim-lang.org/"
@@ -22,30 +22,35 @@ DEPEND="
 	test? ( net-libs/nodejs )
 "
 
+_run() {
+	echo "$@"
+	"$@" || die "'$*' failed"
+}
+
 nim_use_enable() {
 	[[ -z $2 ]] && die "usage: nim_use_enable <USE flag> <compiler flag>"
 	use $1 && echo "-d:$2"
 }
 
 src_compile() {
-	./build.sh || die "build.sh failed"
+	_run ./build.sh
 
-	./bin/nim c koch || die "csources nim failed"
-	./koch boot -d:release $(nim_use_enable readline useGnuReadline) || die "koch boot failed"
+	_run ./bin/nim --parallelBuild:$(makeopts_jobs) c koch
+	_run ./koch boot --parallelBuild:$(makeopts_jobs) -d:release $(nim_use_enable readline useGnuReadline)
 	# build nimble and friends
-	PATH="./bin:$PATH" ./koch tools || die "koch tools failed"
+	PATH="./bin:$PATH" _run ./koch tools
 
 	if use doc; then
-		PATH="./bin:$PATH" ./koch web || die "koch web failed"
+		PATH="./bin:$PATH" _run ./koch web
 	fi
 }
 
 src_test() {
-	PATH="./bin:$PATH" ./koch test || die "test suite failed"
+	PATH="./bin:$PATH" _run ./koch test
 }
 
 src_install() {
-	PATH="./bin:$PATH" ./koch install "${ED}/usr" || die "koch install failed"
+	PATH="./bin:$PATH" _run ./koch install "${ED}/usr"
 	rm -r "${ED}/usr/nim/doc" || die "failed to remove 'doc'"
 
 	dodir /usr/bin
