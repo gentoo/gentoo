@@ -1839,7 +1839,7 @@ dev-db/lmdb 0.9.18: An ultra-fast, ultra-compact key-value embedded data store
 dev-db/m17n-contrib 1.1.13 1.1.14: Contribution database for the m17n library
 dev-db/m17n-db 1.6.3 1.6.4 1.7.0: Database for the m17n library
 dev-db/maatkit 7540-r1: essential command-line utilities for MySQL
-dev-db/mariadb 10.0.30-r1 10.0.32-r1 10.0.33 10.1.24-r1 10.1.26-r1 10.1.29: An enhanced, drop-in replacement for MySQL
+dev-db/mariadb 10.0.30-r1 10.0.33 10.1.24-r1 10.1.29: An enhanced, drop-in replacement for MySQL
 dev-db/metakit 2.4.9.7-r2: Embedded database library
 dev-db/mongodb 3.0.14 3.2.17 3.4.10: A high-performance, open source, schema-free document-oriented database
 dev-db/myodbc 5.2.7-r1 5.2.7-r3: ODBC driver for MySQL
@@ -7880,7 +7880,6 @@ media-sound/awesfx 0.5.1d: AWE32 Sound Driver Utility Programs
 media-sound/aylet 0.5: Aylet plays music files in the .ay format
 media-sound/bladeenc 0.94.2-r1: An mp3 encoder
 media-sound/bplay 0.991: No-frills command-line buffered player and recorder
-media-sound/bpmdetect 0.6.1-r1: Automatic BPM detection utility
 media-sound/brutefir 1.0k-r1: Software convolution engine for applying long FIR filters
 media-sound/cantata 2.2.0: Featureful and configurable Qt client for the music player daemon (MPD)
 media-sound/cd-discid 1.3 1.4: returns the disc id for the cd in the cd-rom drive
