@@ -4,8 +4,8 @@
 EAPI=6
 
 DESCRIPTION="Copy data while enforcing a specified maximum transfer rate"
-HOMEPAGE="http://www.fourmilab.ch/webtools/valve"
-SRC_URI="http://www.fourmilab.ch/webtools/valve/${P}.tar.gz"
+HOMEPAGE="https://www.fourmilab.ch/webtools/valve/"
+SRC_URI="https://www.fourmilab.ch/webtools/valve/${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
