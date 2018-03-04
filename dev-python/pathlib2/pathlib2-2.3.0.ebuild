@@ -14,13 +14,15 @@ SRC_URI="mirror://pypi/p/pathlib2/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE=""
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
-	$(python_gen_cond_dep 'dev-python/scandir[${PYTHON_USEDEP}]' 'python2*' python3_4 pypy )
+	$(python_gen_cond_dep 'dev-python/scandir[${PYTHON_USEDEP}]' -2 python3_4 )
 	dev-python/six[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]"
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	test? ( $(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' -2) )"
 
 python_test() {
 	"${EPYTHON}" test_pathlib2.py || die
