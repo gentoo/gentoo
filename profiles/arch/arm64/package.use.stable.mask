@@ -3,7 +3,7 @@
 
 # Michał Górny <mgorny@gentoo.org> (03 Mar 2018)
 # Requires masked dependent flags.
-net-dns/avahi howl-compat
+net-dns/avahi howl-compat python
 
 # Mart Raudsepp <leio@gentoo.org> (02 Mar 2018)
 # Requires xorg-server[xvfb] for tests
