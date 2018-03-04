@@ -299,7 +299,7 @@ app-cdr/gcdemu 3.1.0: Gtk+ GUI for controlling cdemu-daemon
 app-cdr/graveman 0.3.12_p5-r2: Graphical frontend for cdrecord, mkisofs, readcd and sox using GTK+2
 app-cdr/gtkcdlabel 1.15: A GUI for cdlabelgen that generates CD labels
 app-cdr/iat 0.1.7-r1: BIN, MDF, PDI, CDI, NRG, and B5I converters
-app-cdr/isomaster 1.3.5: Graphical CD image editor for reading, modifying and writing ISO images
+app-cdr/isomaster 1.3.5 1.3.13: Graphical CD image editor for reading, modifying and writing ISO images
 app-cdr/kcdemu 0.7.2: Frontend to cdemu daemon based on KDE Frameworks
 app-cdr/mirage2iso 0.4.2: CD/DVD image converter using libmirage
 app-cdr/multicd 1.7.5-r1: Tool for making direct copies of your files to multiple cd's
@@ -2934,7 +2934,7 @@ dev-libs/dbus-glib 0.102 0.108: D-Bus bindings for glib
 dev-libs/dietlibc 0.34_pre20140729 0.34_pre20140729-r1: A libc optimized for small size
 dev-libs/ding-libs 0.4.0 0.6.0: set of utility libraries (mostly used by sssd)
 dev-libs/dmalloc 5.5.2-r4 5.5.2-r6: A Debug Malloc Library
-dev-libs/dotconf 1.3: dot.conf configuration file parser
+dev-libs/dotconf 1.3 1.3-r1: dot.conf configuration file parser
 dev-libs/double-conversion 2.0.1: Binary-decimal and decimal-binary conversion routines for IEEE doubles
 dev-libs/eb 4.4.1-r1: EB is a C library and utilities for accessing CD-ROM books
 dev-libs/efl 1.17.0-r1: Enlightenment Foundation Libraries all-in-one package
@@ -3129,7 +3129,7 @@ dev-libs/libspnav 0.2.2: libspnav is a replacement for the magellan library with
 dev-libs/libspt 1.1-r2: Library for handling root privilege
 dev-libs/libstrl 0.5.1: Compat library for functions like strlcpy(), strlcat(), strnlen(), getline()
 dev-libs/libstroke 0.5.1: A Stroke and Gesture recognition Library
-dev-libs/libtar 1.2.20-r3: C library for manipulating tar archives
+dev-libs/libtar 1.2.20-r3 1.2.20-r4: C library for manipulating tar archives
 dev-libs/libtasn1 4.12-r1: ASN.1 library
 dev-libs/libtecla 1.6.1-r2: Tecla command-line editing library
 dev-libs/libtermkey 0.20: Library for easy processing of keyboard entry from terminal-based programs
@@ -7534,7 +7534,7 @@ media-libs/libsbsms 2.0.1 2.0.2: A library for high quality time and pitch scale
 media-libs/libsdl 1.2.15-r9: Simple Direct Media Layer
 media-libs/libsdl2 2.0.4: Simple Direct Media Layer
 media-libs/libsfml 2.4.2: Simple and Fast Multimedia Library (SFML)
-media-libs/libshout 2.3.1 2.3.1-r1: library for connecting and sending data to icecast servers
+media-libs/libshout 2.3.1 2.3.1-r1 2.4.1-r1: library for connecting and sending data to icecast servers
 media-libs/libsidplay 1.36.59-r1 1.36.59-r2 2.1.1-r4: C64 SID player library
 media-libs/libsidplayfp 1.1.0: A library for the sidplay2 fork with resid-fp
 media-libs/libsixel 1.7.3: A lightweight, fast implementation of DEC SIXEL graphics codec
@@ -7996,7 +7996,7 @@ media-sound/ogg2mp3 0.6.1: A perl script to convert Ogg Vorbis files to MP3 file
 media-sound/oggtst 0.0: A tool for calculating ogg-vorbis playing time
 media-sound/ogmtools 1.5-r2: Information, extraction or creation for OGG media streams
 media-sound/opus-tools 0.1.10: Royalty-free, highly versatile audio codec
-media-sound/orpheus 1.6-r2: Command line MP3 player
+media-sound/orpheus 1.6-r2 1.6-r3: Command line MP3 player
 media-sound/pamix 1.5: A PulseAudio NCurses mixer
 media-sound/paprefs 0.9.10: PulseAudio Preferences, configuration dialog for PulseAudio
 media-sound/patchage 0.5.0-r1: Modular patch bay for audio and MIDI systems
@@ -8627,7 +8627,7 @@ net-libs/libvncserver 0.9.11-r1: library for creating vnc servers
 net-libs/libwebsockets 2.1.1: canonical libwebsockets.org websocket library
 net-libs/libzapojit 0.0.3: GLib/GObject wrapper for the SkyDrive and Hotmail REST APIs
 net-libs/loudmouth 1.4.3-r2 1.5.2-r1: Lightweight C Jabber library
-net-libs/mbedtls 2.6.0: Cryptographic library for embedded systems
+net-libs/mbedtls 2.6.0 2.7.1: Cryptographic library for embedded systems
 net-libs/meanwhile 1.0.2-r1: Meanwhile (Sametime protocol) library
 net-libs/miniupnpc 2.0.20170509 2.0.20171212: UPnP client library and a simple UPnP client
 net-libs/nativebiginteger 0.8.7: jbigi JNI library for net.i2p.util.NativeBigInteger java-class from I2P
@@ -9834,7 +9834,7 @@ sys-apps/xinetd 2.3.15-r2 2.3.15-r3: powerful replacement for inetd
 sys-apps/xmbmon 2.0.5-r1: Mother Board Monitor Program for X Window System
 sys-auth/bioapi 1.2.3-r2 1.2.4: Framework for biometric-based authentication
 sys-auth/consolekit 0.4.6 1.1.0-r1 1.1.2 1.2.0: Framework for defining and tracking users, login sessions and seats
-sys-auth/elogind 235.2-r1: The systemd project's logind, extracted to a standalone package
+sys-auth/elogind 235.2-r1 235.2-r2: The systemd project's logind, extracted to a standalone package
 sys-auth/fprintd 0.5.0: D-Bus service to access fingerprint readers
 sys-auth/keystone 12.0.0: The Openstack authentication, authorization, and service catalog
 sys-auth/libfprint 0.4.0-r1 0.5.0-r2: library to add support for consumer fingerprint readers
@@ -9866,6 +9866,7 @@ sys-auth/realtime-base 0.1: Sets up realtime scheduling
 sys-auth/rtkit 0.11-r1 0.11-r2: Realtime Policy and Watchdog Daemon
 sys-auth/skey 1.1.5-r11: Linux Port of OpenBSD Single-key Password System
 sys-auth/sssd 1.12.1: System Security Services Daemon provides access to identity and authentication
+sys-auth/ykpers 1.18.0: Library and tool for personalization of Yubico's YubiKey
 sys-block/aoetools 36: tools for ATA over Ethernet (AoE) network storage protocol
 sys-block/blktrace 1.0.3: btrace can show detailed info about what is happening on a block device io queue
 sys-block/buffer 1.19-r2: a tapedrive tool for speeding up reading from and writing to tape
@@ -9956,7 +9957,7 @@ sys-devel/autoconf 2.13 2.69-r4: Used to create autoconfiguration files
 sys-devel/autoconf-archive 2016.03.20-r1 2017.03.21: GNU Autoconf Macro Archive
 sys-devel/autoconf-wrapper 13: wrapper for autoconf to manage multiple autoconf versions
 sys-devel/autogen 5.18.4 5.18.4-r1: Program and text file generation
-sys-devel/automake 1.9.6-r4 1.10.3-r2 1.11.6-r2 1.12.6 1.12.6-r1 1.13.4-r1 1.14.1-r1 1.15.1-r1: Used to generate Makefile.in from Makefile.am
+sys-devel/automake 1.9.6-r4 1.9.6-r5 1.10.3-r2 1.10.3-r3 1.11.6-r2 1.11.6-r3 1.12.6 1.12.6-r1 1.12.6-r2 1.13.4-r1 1.13.4-r2 1.14.1-r1 1.14.1-r2 1.15.1-r1 1.15.1-r2: Used to generate Makefile.in from Makefile.am
 sys-devel/automake-wrapper 10: wrapper for automake to manage multiple automake versions
 sys-devel/bc 1.06.95-r2: Handy console-based calculator utility
 sys-devel/bin86 0.16.20-r2 0.16.21: Assembler and loader used to create kernel bootsector
