@@ -15,7 +15,7 @@ SRC_URI="https://github.com/gramps-project/${PN}/archive/v${PV}.tar.gz
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+rcs +reports exif geo spell"
+IUSE="+rcs +reports exif geo postscript spell"
 
 RDEPEND="
 	dev-python/bsddb3[${PYTHON_USEDEP}]
@@ -26,7 +26,7 @@ RDEPEND="
 	>x11-libs/gtk+-3.14.8:3[introspection]
 	x11-libs/pango[introspection]
 	x11-misc/xdg-utils
-	reports? ( media-gfx/graphviz )
+	reports? ( media-gfx/graphviz[postscript?] )
 	exif? ( >=media-libs/gexiv2-0.5[${PYTHON_USEDEP},introspection] )
 	geo? ( >=sci-geosciences/osm-gps-map-1.1.0 )
 	spell? ( app-text/gtkspell:3[introspection] )
