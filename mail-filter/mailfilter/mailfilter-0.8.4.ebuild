@@ -16,6 +16,8 @@ DEPEND="sys-devel/flex
 	ssl? ( dev-libs/openssl:* )"
 RDEPEND=""
 
+PATCHES=( "${FILESDIR}"/0.8.4-fix-parallel-build.patch )
+
 src_configure() {
 	econf $(use_with ssl openssl)
 }
