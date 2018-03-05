@@ -23,7 +23,7 @@ HOMEPAGE="https://www.qgis.org/"
 
 LICENSE="GPL-2+ GPL-3+"
 SLOT="0"
-IUSE="designer examples georeferencer grass mapserver oracle polar postgres python webkit"
+IUSE="3d examples georeferencer grass mapserver oracle polar postgres python webkit"
 
 REQUIRED_USE="
 	mapserver? ( python )
@@ -36,6 +36,7 @@ COMMON_DEPEND="
 	dev-libs/expat
 	dev-libs/libzip:=
 	dev-libs/qtkeychain[qt5(+)]
+	>=dev-qt/designer-${QT_MIN_VER}:5
 	>=dev-qt/qtconcurrent-${QT_MIN_VER}:5
 	>=dev-qt/qtcore-${QT_MIN_VER}:5
 	>=dev-qt/qtgui-${QT_MIN_VER}:5
@@ -52,7 +53,7 @@ COMMON_DEPEND="
 	sci-libs/proj
 	>=x11-libs/qscintilla-2.10.1:=[qt5(+)]
 	>=x11-libs/qwt-6.1.2:6=[qt5(+),svg]
-	designer? ( >=dev-qt/designer-${QT_MIN_VER}:5 )
+	3d? ( >=dev-qt/qt3d-${QT_MIN_VER}:5 )
 	georeferencer? ( sci-libs/gsl:= )
 	grass? ( >=sci-geosciences/grass-7.0.0:= )
 	mapserver? ( dev-libs/fcgi )
@@ -69,7 +70,7 @@ COMMON_DEPEND="
 		dev-python/markupsafe[${PYTHON_USEDEP}]
 		dev-python/owslib[${PYTHON_USEDEP}]
 		dev-python/pygments[${PYTHON_USEDEP}]
-		dev-python/PyQt5[sql,svg,webkit?,${PYTHON_USEDEP}]
+		dev-python/PyQt5[designer,sql,svg,webkit?,${PYTHON_USEDEP}]
 		dev-python/python-dateutil[${PYTHON_USEDEP}]
 		dev-python/pytz[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
@@ -98,6 +99,8 @@ RESTRICT="test"
 PATCHES=(
 	# git master
 	"${FILESDIR}/${PN}-2.18.12-cmake-lib-suffix.patch"
+	# TODO upstream
+	"${FILESDIR}/${PN}-3.0.0-featuresummary.patch"
 )
 
 pkg_setup() {
@@ -130,7 +133,7 @@ src_configure() {
 		-DWITH_APIDOC=OFF
 		-DWITH_QSPATIALITE=ON
 		-DENABLE_TESTS=OFF
-		-DWITH_CUSTOM_WIDGETS=$(usex designer)
+		-DWITH_3D=$(usex 3d)
 		-DWITH_GEOREFERENCER=$(usex georeferencer)
 		-DWITH_GRASS=$(usex grass)
 		-DWITH_SERVER=$(usex mapserver)
@@ -138,6 +141,7 @@ src_configure() {
 		-DWITH_QWTPOLAR=$(usex polar)
 		-DWITH_POSTGRESQL=$(usex postgres)
 		-DWITH_BINDINGS=$(usex python)
+		-DWITH_CUSTOM_WIDGETS=$(usex python)
 		-DWITH_QTWEBKIT=$(usex webkit)
 	)
 
@@ -150,8 +154,9 @@ src_configure() {
 
 	use python && mycmakeargs+=( -DBINDINGS_GLOBAL_INSTALL=ON )
 
-	# bug 612956
+	# bugs 612956, 648726
 	addpredict /dev/dri/renderD128
+	addpredict /dev/dri/renderD129
 
 	cmake-utils_src_configure
 }
