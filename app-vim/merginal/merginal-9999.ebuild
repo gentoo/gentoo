@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,7 +18,7 @@ else
 fi
 
 DESCRIPTION="vim script: fugitive extension to manage and merge git branches"
-HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=4955 https://github.com/idanarye/vim-merginal/"
+HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=4955 https://github.com/idanarye/vim-merginal/"
 LICENSE="vim"
 
 RDEPEND="app-vim/fugitive"
