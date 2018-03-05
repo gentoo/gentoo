@@ -15,7 +15,7 @@ IUSE="alsa ao fbcon gpm gtk joystick memlimit png sdl svga X xml"
 # Only one UI back-end can be enabled at a time
 REQUIRED_USE="^^ ( X fbcon gtk sdl svga )"
 
-RDEPEND=">=app-emulation/libspectrum-1.4.0
+RDEPEND=">=app-emulation/libspectrum-1.4.1
 	dev-libs/glib:2
 	alsa? ( media-libs/alsa-lib )
 	ao? ( media-libs/libao )
@@ -36,29 +36,29 @@ DEPEND="${RDEPEND}
 DOCS=( AUTHORS ChangeLog README THANKS )
 
 src_configure() {
-	local guiflag
+	local myconf=(
+		--without-win32
+		$(use_with alsa)
+		$(use_with ao libao)
+		$(use_with gpm)
+		$(use_with joystick)
+		$(use_enable joystick ui-joystick)
+		$(use_enable memlimit smallmem)
+		$(use_with png)
+		$(use_with xml libxml2)
+	)
 
 	if use gtk; then
-		guiflag=""
+		:
 	elif use sdl; then
-		guiflag="--with-sdl"
+		myconf+=("--with-sdl")
 	elif use X; then
-		guiflag="--without-gtk"
+		myconf+=("--without-gtk")
 	elif use svga; then
-		guiflag="--with-svgalib"
+		myconf+=("--with-svgalib")
 	elif use fbcon; then
-		guiflag="--with-fb"
+		myconf+=("--with-fb")
 	fi
 
-	econf \
-		--without-win32 \
-		${guiflag} \
-		$(use_with alsa) \
-		$(use_with ao libao) \
-		$(use_with gpm) \
-		$(use_with joystick) \
-		$(use_enable joystick ui-joystick) \
-		$(use_enable memlimit smallmem) \
-		$(use_with png) \
-		$(use_with xml libxml2)
+	econf "${myconf[@]}"
 }
