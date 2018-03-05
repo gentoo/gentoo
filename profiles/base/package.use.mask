@@ -7,6 +7,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Brian Evans <grknight@gentoo.org> (5 Mar 2018)
+# Mask embedded USE on virtual/mysql to transition it to be obsolete
+>=virtual/mysql-5.6-r11 embedded
+
 # Brian Evans <grknight@gentoo.org> (28 Feb 2018)
 # Mask client-libs USE to force users to install alternative standard pacakges
 >=dev-db/mariadb-10.3 client-libs
