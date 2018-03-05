@@ -1,7 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
+inherit systemd
 
 DESCRIPTION="Command-line program for btrfs and ext4 snapshot management"
 HOMEPAGE="http://snapper.io/"
@@ -35,6 +37,14 @@ REQUIRED_USE="|| ( btrfs ext4 lvm )"
 PATCHES=(
 	"${FILESDIR}"/cron-confd.patch
 )
+
+src_prepare() {
+	default
+
+	sed -e "s,/usr/lib/systemd/system,$(systemd_get_systemunitdir),g" \
+		-i data/Makefile.* \
+		|| die "Failed to fix systemd services and timers installation path"
+}
 
 src_configure() {
 	local myeconfargs=(
