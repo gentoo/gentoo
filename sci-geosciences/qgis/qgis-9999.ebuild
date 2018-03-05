@@ -154,8 +154,9 @@ src_configure() {
 
 	use python && mycmakeargs+=( -DBINDINGS_GLOBAL_INSTALL=ON )
 
-	# bug 612956
+	# bugs 612956, 648726
 	addpredict /dev/dri/renderD128
+	addpredict /dev/dri/renderD129
 
 	cmake-utils_src_configure
 }
