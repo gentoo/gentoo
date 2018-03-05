@@ -8,7 +8,7 @@ JAVA_PKG_IUSE="doc test source"
 inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Lightweight, self-contained mathematics and statistics components"
-HOMEPAGE="http://commons.apache.org/math/"
+HOMEPAGE="https://commons.apache.org/math/"
 SRC_URI="mirror://apache/commons/math/source/${P}-src.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="2"
