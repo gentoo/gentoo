@@ -18,6 +18,7 @@ RESTRICT="test"
 
 RDEPEND=">=app-emulation/dynamips-0.2.12
 		>=dev-python/aiohttp-2.2.0[${PYTHON_USEDEP}]
+		<dev-python/aiohttp-cors-0.6[${PYTHON_USEDEP}]
 		>=dev-python/aiohttp-cors-0.5.3[${PYTHON_USEDEP}]
 		>=dev-python/docker-py-1.4.0[${PYTHON_USEDEP}]
 		>=dev-python/netifaces-0.8-r2[${PYTHON_USEDEP}]
@@ -25,6 +26,7 @@ RDEPEND=">=app-emulation/dynamips-0.2.12
 		>=dev-python/jsonschema-2.4.0[${PYTHON_USEDEP}]
 		>=dev-python/libcloud-0.14.1[${PYTHON_USEDEP}]
 		>=dev-python/raven-5.23.0[${PYTHON_USEDEP}]
+		dev-python/prompt_toolkit[${PYTHON_USEDEP}]
 		>=dev-python/psutil-3.0.0[${PYTHON_USEDEP}]
 		>=dev-python/pyzmq-14.3.1[${PYTHON_USEDEP}]
 		>=dev-python/python-zipstream-1.1.4[${PYTHON_USEDEP}]
