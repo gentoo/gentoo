@@ -1756,6 +1756,7 @@ dev-python/matplotlib:gtk2 - Enable x11-libs/gtk+:2 support
 dev-python/matplotlib:gtk3 - Enable x11-libs/gtk+:3 support
 dev-python/matplotlib:pyside - Qt support via dev-python/pyside
 dev-python/mpmath:matplotlib - Add support for dev-python/matplotlib
+dev-python/msgpack:native-extensions - Compiles native "C" extensions (speedups, instead of using python fallback code).
 dev-python/netaddr:cli - Enable netaddr shell with dev-python/ipython
 dev-python/networkx:scipy - Enables scipy backend
 dev-python/nltk:numpy - Use numpy for the saved word tokenizer
