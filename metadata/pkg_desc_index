@@ -10124,7 +10124,7 @@ sys-libs/libseccomp 2.3.0 2.3.2: high level interface to Linux seccomp filter
 sys-libs/libselinux 2.6 2.7: SELinux userland library
 sys-libs/libsemanage 2.6 2.7: SELinux kernel and policy management library
 sys-libs/libsepol 2.6 2.7: SELinux binary policy representation library
-sys-libs/libsmbios 2.3.0-r1 2.3.2: Provide access to (SM)BIOS information
+sys-libs/libsmbios 2.3.2: Provide access to (SM)BIOS information
 sys-libs/libstatgrab 0.17: A tool to provide access to statistics about the system on which it's run
 sys-libs/libstdc++-v3 3.3.6-r1: Compatibility package for binaries linked against a pre gcc 3.4 libstdc++
 sys-libs/libtermcap-compat 2.0.8-r2 2.0.8-r3: Compatibility package for old termcap-based programs
