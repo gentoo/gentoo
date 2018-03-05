@@ -18,9 +18,6 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 "
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.3-log_h.patch
-)
 
 src_configure() {
 	econf \
