@@ -7621,7 +7621,7 @@ media-libs/sdl2-net 2.0.1: Simple Direct Media Layer Network Support Library
 media-libs/sdl2-ttf 2.0.13 2.0.14: library that allows you to use TrueType fonts in SDL applications
 media-libs/sg 1.5: Socket Graphics tool for displaying polygons
 media-libs/sge 030809: Graphics extensions library for SDL
-media-libs/simage 1.7.0 1.7.0-r1: Image and video texturing library
+media-libs/simage 1.7.0-r1: Image and video texturing library
 media-libs/skstream 0.3.9: FreeSockets - Portable C++ classes for IP (sockets) applications
 media-libs/slv2 0.6.6-r2: A library to make the use of LV2 plugins as simple as possible for applications
 media-libs/smpeg 0.4.4-r10: SDL MPEG Player Library
@@ -9233,7 +9233,7 @@ sci-geosciences/harmonics-dwf-free 20121224: Tidal harmonics database for libtcd
 sci-geosciences/harmonics-dwf-free-noncomm 20111230-r1: Tidal harmonics database for libtcd
 sci-geosciences/josm 10966: Java-based editor for the OpenStreetMap project
 sci-geosciences/laszip 2.2.0: Library for free and lossless compression of the LAS LiDAR format
-sci-geosciences/liblas 1.8.0 1.8.1: C/C++ library for manipulating the LAS LiDAR format common in GIS
+sci-geosciences/liblas 1.8.1: C/C++ library for manipulating the LAS LiDAR format common in GIS
 sci-geosciences/libtcd 2.2.5_p2: Library for reading and writing Tide Constituent Database (TCD) files
 sci-geosciences/mapnik-world-boundaries 20090514: Mapnik World Boundaries
 sci-geosciences/mtkbabel 0.8.3.1-r1: MTKBabel is a Perl program to operate the i-Blue 747 GPS data logger
@@ -9832,7 +9832,7 @@ sys-apps/xinetd 2.3.15-r2 2.3.15-r3: powerful replacement for inetd
 sys-apps/xmbmon 2.0.5-r1: Mother Board Monitor Program for X Window System
 sys-auth/bioapi 1.2.3-r2 1.2.4: Framework for biometric-based authentication
 sys-auth/consolekit 0.4.6 1.1.0-r1 1.1.2 1.2.0: Framework for defining and tracking users, login sessions and seats
-sys-auth/elogind 235.2-r1 235.2-r2: The systemd project's logind, extracted to a standalone package
+sys-auth/elogind 235.2-r2: The systemd project's logind, extracted to a standalone package
 sys-auth/fprintd 0.5.0: D-Bus service to access fingerprint readers
 sys-auth/keystone 12.0.0: The Openstack authentication, authorization, and service catalog
 sys-auth/libfprint 0.4.0-r1 0.5.0-r2: library to add support for consumer fingerprint readers
