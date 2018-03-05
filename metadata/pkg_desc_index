@@ -623,7 +623,7 @@ app-emacs/ebuild-mode 1.38: Emacs modes for editing ebuilds and other Gentoo spe
 app-emacs/ecb 2.41_pre20140215-r1: Source code browser for Emacs
 app-emacs/elib 1.0-r1: The Emacs Lisp Library
 app-emacs/elscreen 1.4.6-r1: Frame configuration management for GNU Emacs modelled after GNU Screen
-app-emacs/emacs-common-gentoo 1.6 1.6-r1: Common files needed by all GNU Emacs versions
+app-emacs/emacs-common-gentoo 1.6-r1: Common files needed by all GNU Emacs versions
 app-emacs/emacs-daemon 0.22: Gentoo support for Emacs running as a server in the background
 app-emacs/emacs-jabber 0.8.92: A Jabber client for Emacs
 app-emacs/emacs-wget 0.5.0-r1: Wget interface for Emacs
