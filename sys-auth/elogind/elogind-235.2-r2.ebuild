@@ -108,7 +108,7 @@ src_install() {
 
 pkg_postinst() {
 	if [[ "$(rc-config list boot | grep elogind)" != "" ]]; then
-		ewarn "elogind is currently started from boot runlevel."
+		elog "elogind is currently started from boot runlevel."
 	elif [[ "$(rc-config list default | grep elogind)" != "" ]]; then
 		ewarn "elogind is currently started from default runlevel."
 		ewarn "Please remove elogind from the default runlevel and"
