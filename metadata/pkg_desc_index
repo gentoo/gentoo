@@ -3264,7 +3264,7 @@ dev-lisp/asdf-binary-locations 20061018: ASDF-Extension to specify where Common 
 dev-lisp/cl-ppcre 2.0.11: CL-PPCRE is a portable regular expression library for Common Lisp.
 dev-lisp/cl-ppcre-unicode 2.0.11: CL-PPCRE is a portable regular expression library for Common Lisp.
 dev-lisp/cl-unicode 0.1.5: Provides Common Lisp implementations with knowledge about Unicode characters.
-dev-lisp/clisp 2.48-r1 2.48-r2 2.49-r8 2.49-r9: A portable, bytecode-compiled implementation of Common Lisp
+dev-lisp/clisp 2.49-r8 2.49-r9: A portable, bytecode-compiled implementation of Common Lisp
 dev-lisp/common-lisp-controller 4.27 5.13-r1: Common Lisp Controller
 dev-lisp/ecls 13.5.1-r1: ECL is an embeddable Common Lisp implementation
 dev-lisp/flexi-streams 1.0.16: Flexible bivalent streams for Common Lisp
