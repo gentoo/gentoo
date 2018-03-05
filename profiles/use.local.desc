@@ -2024,7 +2024,6 @@ dev-util/geany-plugins:enchant - Enable spell checking using enchant
 dev-util/geany-plugins:gpg - Enable geanypg plugin which integrates GPG using app-crypt/gpgme
 dev-util/geany-plugins:gtk3 - Use GTK+3 instead of GTK+2
 dev-util/geany-plugins:gtkspell - Use gtkspell for dictionary support in GeanyVC
-dev-util/geany-plugins:keyrecord - Enable the keyrecord plugin
 dev-util/geany-plugins:multiterm - Enable the multiterm plugin
 dev-util/geany-plugins:overview - Enable overview plugin
 dev-util/geany-plugins:pretty-printer - Enable pretty-printer plugin
