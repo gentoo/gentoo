@@ -108,7 +108,7 @@ src_install() {
 
 pkg_postinst() {
 	if [[ "$(rc-config list boot | grep elogind)" != "" ]]; then
-		ewarn "elogind is currently started from boot runlevel."
+		elog "elogind is currently started from boot runlevel."
 	elif [[ "$(rc-config list default | grep elogind)" != "" ]]; then
 		ewarn "elogind is currently started from default runlevel."
 		ewarn "Please remove elogind from the default runlevel and"
@@ -119,13 +119,5 @@ pkg_postinst() {
 		ewarn "elogind is currently not started from any runlevel."
 		ewarn "You may add it to the boot runlevel by:"
 		ewarn "# rc-update add elogind boot"
-	fi
-	ewarn "Alternatively you can leave elogind out of any"
-	ewarn "runlevel. It will then be started automatically"
-	if use pam; then
-		ewarn "when the first service calls it via dbus, or the"
-		ewarn "first user logs into the system."
-	else
-		ewarn "when the first service calls it via dbus."
 	fi
 }
