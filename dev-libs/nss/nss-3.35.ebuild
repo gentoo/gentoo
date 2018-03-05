@@ -63,6 +63,9 @@ src_prepare() {
 			"${DISTDIR}/${PN}-cacert-class1-class3.patch"
 		)
 	fi
+	# bug 646382
+	# https://bugzilla.mozilla.org/show_bug.cgi?id=1432455
+	PATCHES+=( "${FILESDIR}"/${P}-Hacl_Poly1305_64-aarch64.patch )
 
 	default
 
