@@ -71,7 +71,7 @@ src_install() {
 pkg_preinst() { gnome2_icon_savelist; }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
+	gnome2_icon_cache_update
 	xdg_desktop_database_update
 }
 
