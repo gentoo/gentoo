@@ -27,15 +27,15 @@ RDEPEND="
 	virtual/glu:=
 	virtual/opengl:=
 	gmp? ( dev-libs/gmp:=[cxx] )
+	mpfi? ( sci-libs/mpfi )
+	ntl? ( dev-libs/ntl )
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
 		dev-qt/qtopengl:5
 		dev-qt/qtsvg:5
 		dev-qt/qtwidgets:5
-	)
-	mpfi? ( sci-libs/mpfi )
-	ntl? ( dev-libs/ntl )"
+	)"
 DEPEND="${RDEPEND}
 	app-arch/xz-utils
 	virtual/pkgconfig"
@@ -63,22 +63,18 @@ src_configure() {
 		-DWITH_ZLIB=ON
 		-DWITH_GMP="$(usex gmp)"
 		-DWITH_GMPXX="$(usex gmp)"
-		-DWITH_CGAL_Qt5="$(usex qt5)"
 		-DWITH_MPFI="$(usex mpfi)"
 		-DWITH_NTL="$(usex ntl)"
+		-DWITH_CGAL_Qt5="$(usex qt5)"
 	)
 	cmake-utils_src_configure
 }
 
 src_install() {
+	use doc && local HTML_DOCS=( "${WORKDIR}"/doc_html/. )
 	cmake-utils_src_install
 	if use examples; then
 		dodoc -r examples demo
 		docompress -x /usr/share/doc/${PF}/{examples,demo}
-	fi
-	if use doc; then
-		docinto html/
-		dodoc -r "${WORKDIR}"/doc_html/*
-		docompress -x /usr/share/doc/${PF}/html
 	fi
 }
