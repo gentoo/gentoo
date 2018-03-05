@@ -14,7 +14,7 @@ SRC_URI="https://github.com/keybase/client/archive/v${MY_PV}.tar.gz -> ${P}.tar.
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="+suid"
 
 DEPEND="
 	>=dev-lang/go-1.6:0
@@ -49,8 +49,12 @@ src_compile() {
 
 src_install() {
 	dobin "${T}/keybase"
+	dodir "${EROOT}/var/lib/keybase"
+	fowners keybasehelper:keybasehelper "${EROOT}/var/lib/keybase"
+	dosym "/tmp/keybase" "${EROOT}/var/lib/keybase/mount1"
 	dobin "${T}/keybase-mount-helper"
 	fowners keybasehelper:keybasehelper "${EROOT}/usr/bin/keybase-mount-helper"
+	use suid && fperms 4755 "${EROOT}/usr/bin/keybase-mount-helper"
 	dobin "${S}/packaging/linux/run_keybase"
 	systemd_douserunit "${S}/packaging/linux/systemd/keybase.service"
 }
