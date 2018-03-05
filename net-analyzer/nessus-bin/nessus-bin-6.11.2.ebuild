@@ -39,6 +39,7 @@ src_install() {
 	cp -pPR "${S}"/opt "${D}"/ || die "Failed to copy files"
 
 	pax-mark m "${D}"/opt/nessus/sbin/nessusd
+	pax-mark m "${D}"/opt/nessus/sbin/nessuscli
 
 	# Make sure these originally empty directories do not vanish,
 	# Nessus will not run properly without them
@@ -49,8 +50,13 @@ src_install() {
 	keepdir /opt/nessus/var/nessus/tmp
 	keepdir /opt/nessus/var/nessus/users
 
+	doenvd "${FILESDIR}"/90nessus-bin
+
 	newinitd "${FILESDIR}"/nessusd-initd nessusd-bin
 	systemd_newunit usr/lib/systemd/system/nessusd.service nessusd-bin.service
+
+	insinto /opt/nessus/lib/nessus/plugins/
+	doins "${FILESDIR}"/*.nasl
 }
 
 pkg_postinst() {
