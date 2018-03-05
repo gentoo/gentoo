@@ -9,12 +9,14 @@ SRC_URI="mirror://sourceforge/mailfilter/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc sparc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc sparc x86 ~x86-fbsd"
 IUSE="+ssl"
 
 DEPEND="sys-devel/flex
 	ssl? ( dev-libs/openssl:* )"
 RDEPEND=""
+
+PATCHES=( "${FILESDIR}"/0.8.4-fix-parallel-build.patch )
 
 src_configure() {
 	econf $(use_with ssl openssl)
