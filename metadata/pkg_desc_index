@@ -563,7 +563,7 @@ app-editors/kile 2.9.91_p20171209: Latex Editor and TeX shell based on KDE Frame
 app-editors/latexila 3.22.1: Integrated LaTeX environment for GNOME
 app-editors/le 1.14.3 1.16.3: Terminal text editor
 app-editors/leafpad 0.8.18.1: A simple GTK2 text editor
-app-editors/leo 5.1 5.6: Leo: Literate Editor with Outlines
+app-editors/leo 5.6: Leo: Literate Editor with Outlines
 app-editors/levee 3.5a: Really tiny vi clone, for things like rescue disks
 app-editors/lpe 1.2.6.13: a lightweight programmers editor
 app-editors/mg 20170828 20171014: MicroGnuEmacs, a port from the BSDs
@@ -1177,7 +1177,7 @@ app-officeext/ct2n 1.4.0-r1: Extension for converting text to numbers
 app-officeext/dmaths 3.4.9.0-r1: Mathematics Formula Editor Extension
 app-officeext/languagetool 3.4: Style and Grammar Checker for libreoffice
 app-officeext/ooo2gd 3.0.0-r1: Extension for export to Google docs, zoho and WebDAV
-app-officeext/ooofbtools 2.48 2.52: OpenOffice extension for the FictionBook2 format with validation
+app-officeext/ooofbtools 2.52: OpenOffice extension for the FictionBook2 format with validation
 app-officeext/sun-templates 1.0.0-r1: Collection of sun templates for various countries
 app-officeext/texmaths 0.37-r1 0.41: LaTeX Equation Editor for LibreOffice
 app-pda/gnupod 0.99.8-r1: A collection of Perl-scripts for iPod
@@ -5274,7 +5274,7 @@ dev-python/pypng 0.0.18: Pure Python PNG image encoder/decoder
 dev-python/pypowervm 1.1.6: Python binding for the PowerVM REST API
 dev-python/pyprotocols 1.0_pre2306-r1: Extends the PEP 246 adapt function with a new 'declaration API'
 dev-python/pyqrcode 1.2.1: A pure Python QR code generator with SVG, EPS, PNG and terminal output
-dev-python/pyqtgraph 0.10.0 0.10.0-r1: A pure-python graphics and GUI library built on PyQt and numpy
+dev-python/pyqtgraph 0.10.0-r1: A pure-python graphics and GUI library built on PyQt and numpy
 dev-python/pyquery 1.2.13: A jQuery-like library for python
 dev-python/pyqwt 5.2.0-r2: Python bindings for the Qwt library
 dev-python/pyramid 1.5.8: A small open source Python web framework
