@@ -5160,6 +5160,7 @@ sys-apps/flashrom:tools - Install additional tools
 sys-apps/flashrom:usbblaster - Enable support for Altera USB-Blaster dongles
 sys-apps/flashrom:usbblaster_spi - Enable support for Altera USB-Blaster dongles
 sys-apps/flashrom:wiki - Enable wiki informations, like supported devices etc.
+sys-apps/gawk:forced-sandbox - Always enable --sandbox mode for simpler/secure runtime (disables e/r/w commands)
 sys-apps/gawk:mpfr - use mpfr for high precision arithmetic (-M / --bignum)
 sys-apps/gnome-disk-utility:fat - Include FAT16/FAT32 support (sys-fs/dosfstools)
 sys-apps/hwdata-gentoo:binary-drivers - Adds support for ATI/NVIDIA binary drivers
@@ -5218,6 +5219,7 @@ sys-apps/proot:care - Build dynamic CARE binary (more info - http://reproducible
 sys-apps/qingy:consolekit - Enable native consolekit support
 sys-apps/qingy:opensslcrypt - Encrypt communications between qingy and its GUI using dev-libs/openssl
 sys-apps/rng-tools:nistbeacon - Enable NIST beacon entropy support
+sys-apps/sed:forced-sandbox - Always enable --sandbox mode for simpler/secure runtime (disables e/r/w commands)
 sys-apps/selinux-python:audit - Enable support for sys-process/audit and use the audit_* functions (like audit_getuid instead of getuid())
 sys-apps/smartmontools:caps - Build against sys-libs/libcap-ng to allow smartd to drop its privileges.
 sys-apps/smartmontools:daemon - Install the monitoring daemon (smartd) and associated scripts.
