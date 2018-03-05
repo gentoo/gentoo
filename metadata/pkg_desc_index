@@ -563,7 +563,7 @@ app-editors/kile 2.9.91_p20171209: Latex Editor and TeX shell based on KDE Frame
 app-editors/latexila 3.22.1: Integrated LaTeX environment for GNOME
 app-editors/le 1.14.3 1.16.3: Terminal text editor
 app-editors/leafpad 0.8.18.1: A simple GTK2 text editor
-app-editors/leo 5.1: Leo: Literate Editor with Outlines
+app-editors/leo 5.1 5.6: Leo: Literate Editor with Outlines
 app-editors/levee 3.5a: Really tiny vi clone, for things like rescue disks
 app-editors/lpe 1.2.6.13: a lightweight programmers editor
 app-editors/mg 20170828 20171014: MicroGnuEmacs, a port from the BSDs
@@ -582,7 +582,7 @@ app-editors/shed 1.12 1.13: Simple Hex EDitor
 app-editors/tea 44.1.0: Small, lightweight Qt text editor
 app-editors/teco 1.00-r4: Classic TECO editor, Predecessor to EMACS
 app-editors/ted 2.23: X-based rich text editor
-app-editors/uemacs-pk 4.0.15_p20141208: uEmacs/PK is an enhanced version of MicroEMACS
+app-editors/uemacs-pk 4.0.15_p20141208 4.0.15_p20180117: uEmacs/PK is an enhanced version of MicroEMACS
 app-editors/vile 9.8r: VI Like Emacs -- yet another full-featured vi clone
 app-editors/vim 8.0.0386 8.0.1298: Vim, an improved vi-style text editor
 app-editors/vim-core 8.0.0386 8.0.1298: vim and gvim shared files
@@ -619,7 +619,7 @@ app-emacs/dircolors 1.0-r2: Provide the same facility of ls --color inside Emacs
 app-emacs/dired-sort-menu 1.26: Sort entries in Dired mode
 app-emacs/doctest-mode 0.4: An Emacs major mode for editing Python source
 app-emacs/doxymacs 1.8.0-r3: Doxygen editing minor mode
-app-emacs/ebuild-mode 1.38: Emacs modes for editing ebuilds and other Gentoo specific files
+app-emacs/ebuild-mode 1.38 1.42: Emacs modes for editing ebuilds and other Gentoo specific files
 app-emacs/ecb 2.41_pre20140215-r1: Source code browser for Emacs
 app-emacs/elib 1.0-r1: The Emacs Lisp Library
 app-emacs/elscreen 1.4.6-r1: Frame configuration management for GNU Emacs modelled after GNU Screen
@@ -905,7 +905,7 @@ app-i18n/skkserv 9.6-r3: Dictionary server for the SKK Japanese-input software
 app-i18n/skktools 1.3.3_p20150901: SKK utilities to manage dictionaries
 app-i18n/sunpinyin 2.0.4_pre20130108-r1: A Statistical Language Model based Chinese input method library
 app-i18n/sunpinyin-data 20130220: Data sets for Sunpinyin
-app-i18n/tomoe 0.6.0-r2: Japanese handwriting recognition engine
+app-i18n/tomoe 0.6.0-r2 0.6.0-r3: Japanese handwriting recognition engine
 app-i18n/tomoe-gtk 0.6.0-r4: Tomoe GTK+ interface widget library
 app-i18n/transifex-client 0.10: A command line interface for Transifex
 app-i18n/uchardet 0.0.6 0.0.6-r1 0.0.6-r2: An encoding detector library
@@ -1676,7 +1676,7 @@ app-xemacs/dictionary 1.16: Interface to RFC2229 dictionary servers
 app-xemacs/dired 1.17 1.20: Manage file systems
 app-xemacs/docbookide 0.08: DocBook editing support
 app-xemacs/easypg 1.03-r1: GnuPG interface for Emacs
-app-xemacs/ebuild-mode 1.38: Emacs modes for editing ebuilds and other Gentoo specific files
+app-xemacs/ebuild-mode 1.38 1.42: Emacs modes for editing ebuilds and other Gentoo specific files
 app-xemacs/ecrypto 0.20 0.21: Crypto functionality in Emacs Lisp
 app-xemacs/edebug 1.22: An Emacs Lisp debugger
 app-xemacs/edict 1.16 1.17: MULE: Lisp Interface to EDICT, Kanji Dictionary
@@ -5274,7 +5274,7 @@ dev-python/pypng 0.0.18: Pure Python PNG image encoder/decoder
 dev-python/pypowervm 1.1.6: Python binding for the PowerVM REST API
 dev-python/pyprotocols 1.0_pre2306-r1: Extends the PEP 246 adapt function with a new 'declaration API'
 dev-python/pyqrcode 1.2.1: A pure Python QR code generator with SVG, EPS, PNG and terminal output
-dev-python/pyqtgraph 0.10.0: a pure-python graphics and GUI library built on PyQt/PySide and numpy
+dev-python/pyqtgraph 0.10.0 0.10.0-r1: A pure-python graphics and GUI library built on PyQt and numpy
 dev-python/pyquery 1.2.13: A jQuery-like library for python
 dev-python/pyqwt 5.2.0-r2: Python bindings for the Qwt library
 dev-python/pyramid 1.5.8: A small open source Python web framework
@@ -5846,7 +5846,7 @@ dev-ruby/ruby-gdk3 3.0.8: Ruby GDK-3.x bindings
 dev-ruby/ruby-gdkpixbuf2 3.0.8: Ruby GdkPixbuf2 bindings
 dev-ruby/ruby-gettext 3.2.2: Native Language Support Library and Tools modeled after GNU gettext package
 dev-ruby/ruby-gio2 3.0.8: Ruby binding of GooCanvas
-dev-ruby/ruby-glib2 3.0.8: Ruby Glib2 bindings
+dev-ruby/ruby-glib2 3.0.8 3.1.1: Ruby Glib2 bindings
 dev-ruby/ruby-gnome2 3.0.8-r1: Ruby Gnome2 bindings
 dev-ruby/ruby-gobject-introspection 3.0.8: Ruby GObjectIntrospection bindings
 dev-ruby/ruby-gstreamer 3.0.8: Ruby GStreamer bindings
@@ -7977,7 +7977,7 @@ media-sound/mpc 0.27 0.28: A commandline client for Music Player Daemon (media-s
 media-sound/mpd 0.20.10: The Music Player Daemon (mpd)
 media-sound/mpdas 0.4.0-r1: An AudioScrobbler client for MPD written in C++
 media-sound/mpdscribble 0.22: An MPD client that submits information to Audioscrobbler
-media-sound/mpfc 1.3.7-r1: Music Player For Console
+media-sound/mpfc 1.3.7-r1 1.3.8.1-r2: Music Player For Console
 media-sound/mpg123 1.25.6: a realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
 media-sound/mpg321 0.3.1-r1 0.3.2: A realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
 media-sound/mserv 0.35-r1: Jukebox-style music server
@@ -8965,7 +8965,7 @@ net-nntp/newspost 2.1.1-r3: A usenet binary autoposter for unix
 net-nntp/nzbget 14.1: A command-line based binary newsgrabber supporting .nzb files
 net-nntp/pan 0.142: A newsreader for GNOME
 net-nntp/slrn 1.0.2: A s-lang based newsreader
-net-nntp/tin 2.0.1-r1 2.2.1: A threaded NNTP and spool based UseNet newsreader
+net-nntp/tin 2.0.1-r1 2.2.1 2.4.2: A threaded NNTP and spool based UseNet newsreader
 net-p2p/amule 2.3.2-r1: aMule, the all-platform eMule p2p client
 net-p2p/bitcoin-cli 0.13.1 0.15.1: Command-line JSON-RPC client specifically for interfacing with bitcoind
 net-p2p/bitcoin-qt 0.13.1-r1 0.15.1: An end-user Qt GUI for the Bitcoin crypto-currency
@@ -9785,7 +9785,7 @@ sys-apps/progress 0.13: Coreutils Viewer: show progress for cp, rm, dd, and so f
 sys-apps/proot 3.2.2-r1: User-space implementation of chroot, mount --bind, and binfmt_misc
 sys-apps/pv 1.6.0-r1: Pipe Viewer: a tool for monitoring the progress of data through a pipe
 sys-apps/qdiskusage 1.0.4: Qt4 Graphical Disk Usage Analyzer
-sys-apps/qingy 1.0.0-r2: a DirectFB getty replacement
+sys-apps/qingy 1.0.0-r2 1.0.0-r3: A DirectFB getty replacement
 sys-apps/readahead-list 1.20060421.1016-r3: Preloads files into the page cache to accelerate program loading
 sys-apps/rename 1.3: tool for easily renaming files
 sys-apps/renameutils 0.12.0: Use your favorite text editor to rename files
@@ -10448,7 +10448,7 @@ www-apps/trac 1.0.9: Enhanced wiki and issue tracking system for software develo
 www-apps/venus 20100911-r1: A feed aggregator application
 www-apps/viewvc 1.1.26: ViewVC, a web interface to CVS and Subversion
 www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
-www-client/chromium 64.0.3282.167: Open-source version of Google Chrome web browser
+www-client/chromium 64.0.3282.167 64.0.3282.186: Open-source version of Google Chrome web browser
 www-client/conkeror 1.0.4: A Mozilla-based web browser whose design is inspired by GNU Emacs
 www-client/dillo 3.0.5: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r1: Advanced and well-established text-mode web browser
