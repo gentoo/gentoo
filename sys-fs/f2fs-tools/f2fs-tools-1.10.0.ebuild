@@ -17,6 +17,8 @@ RDEPEND="
 	selinux? ( sys-libs/libselinux )"
 DEPEND="$RDEPEND"
 
+PATCHES=( "${FILESDIR}"/${P}-fibmap-include-config_h.patch )
+
 src_configure() {
 	#This is required to install to /sbin, bug #481110
 	econf \
