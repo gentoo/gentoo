@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit bash-completion-r1 eutils linux-info toolchain-funcs systemd
+inherit bash-completion-r1 eutils linux-info systemd toolchain-funcs
 
 if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
@@ -21,39 +21,39 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="debug selinux"
 
+# Tests need root privileges, bug #298014
 RESTRICT="test"
 
-CDEPEND="virtual/udev
+COMMON_DEPEND=">=sys-apps/kmod-23[tools]
 	virtual/pkgconfig
-	>=sys-apps/kmod-15[tools]
+	virtual/udev
 	"
-RDEPEND="${CDEPEND}
+RDEPEND="${COMMON_DEPEND}
 	app-arch/cpio
 	>=app-shells/bash-4.0:0
+	sys-apps/coreutils[xattr(-)]
 	|| (
 		>=sys-apps/sysvinit-2.87-r3
 		sys-apps/systemd[sysv-utils]
 	)
-	sys-apps/coreutils[xattr(-)]
 	>=sys-apps/util-linux-2.21
 
 	debug? ( dev-util/strace )
 	selinux? (
+		sec-policy/selinux-dracut
 		sys-libs/libselinux
 		sys-libs/libsepol
-		sec-policy/selinux-dracut
 	)
-	!net-analyzer/arping
 	"
-DEPEND="${CDEPEND}
+DEPEND="${COMMON_DEPEND}
 	app-text/asciidoc
-	>=dev-libs/libxslt-1.1.26
 	app-text/docbook-xml-dtd:4.5
 	>=app-text/docbook-xsl-stylesheets-1.75.2
+	>=dev-libs/libxslt-1.1.26
 	"
 
 DOCS=( AUTHORS HACKING NEWS README README.generic README.kernel README.modules
-	README.testsuite TODO )
+	README.testsuite TODO dracut.html )
 
 QA_MULTILIB_PATHS="usr/lib/dracut/.*"
 
@@ -78,25 +78,19 @@ src_configure() {
 src_install() {
 	default
 
-	local dracutlibdir="usr/lib/dracut"
-
-	local libdirs="/$(get_libdir) /usr/$(get_libdir)"
-	if [[ ${SYMLINK_LIB} = yes ]]; then
+	local libdirs=( /$(get_libdir) /usr/$(get_libdir) )
+	if [[ ${SYMLINK_LIB} = yes && $(get_libdir) != lib ]]; then
 		# Preserve lib -> lib64 symlinks in initramfs
-		[[ $libdirs =~ /lib\  ]] || libdirs+=" /lib /usr/lib"
+		libdirs+=( /lib /usr/lib )
 	fi
 
-	einfo "Setting libdirs to \"${libdirs}\" ..."
-	echo "libdirs=\"${libdirs}\"" > "${T}/gentoo.conf"
-	insinto "${dracutlibdir}/dracut.conf.d"
+	einfo "Setting libdirs to \"${libdirs[*]}\" ..."
+	echo "libdirs=\"${libdirs[*]}\"" > "${T}/gentoo.conf" || die
+	insinto "/usr/lib/dracut/dracut.conf.d"
 	doins "${T}/gentoo.conf"
 
 	insinto /etc/logrotate.d
 	newins dracut.logrotate dracut
-
-	dodir /var/lib/dracut/overlay
-
-	dodoc dracut.html
 }
 
 pkg_postinst() {
@@ -110,27 +104,17 @@ pkg_postinst() {
 		local CONFIG_CHECK="~BLK_DEV_INITRD ~DEVTMPFS"
 
 		# Kernel configuration options descriptions:
-		local desc_DEVTMPFS="Maintain a devtmpfs filesystem to mount at /dev"
-		local desc_BLK_DEV_INITRD="Initial RAM filesystem and RAM disk "\
-"(initramfs/initrd) support"
-
-		local opt desc
-
-		# Generate ERROR_* variables for check_extra_config.
-		for opt in ${CONFIG_CHECK}; do
-			opt=${opt#\~}
-			desc=desc_${opt}
-			eval "local ERROR_${opt}='CONFIG_${opt}: \"${!desc}\"" \
-				"is missing and REQUIRED'"
-		done
+		local ERROR_DEVTMPFS='CONFIG_DEVTMPFS: "Maintain a devtmpfs filesystem to mount at /dev" '
+		ERROR_DEVTMPFS+='is missing and REQUIRED'
+		local ERROR_BLK_DEV_INITRD='CONFIG_BLK_DEV_INITRD: "Initial RAM filesystem and RAM disk '
+		ERROR_BLK_DEV_INITRD+='(initramfs/initrd) support" is missing and REQUIRED'
 
 		check_extra_config
 		echo
 	else
 		ewarn ""
-		ewarn "Your kernel configuration couldn't be checked.  Do you have"
-		ewarn "/usr/src/linux/.config file there?  Please check manually if"
-		ewarn "following options are enabled:"
+		ewarn "Your kernel configuration couldn't be checked."
+		ewarn "Please check manually if following options are enabled:"
 		ewarn ""
 		ewarn "  CONFIG_BLK_DEV_INITRD"
 		ewarn "  CONFIG_DEVTMPFS"
