@@ -25,6 +25,7 @@ COMMON_DEPEND="
 	x11-libs/gtk+:2
 	x11-libs/libX11
 	x11-libs/libXext
+	x11-libs/libXft
 	x11-libs/libXi
 	x11-libs/libXmu
 	x11-libs/libXrandr
