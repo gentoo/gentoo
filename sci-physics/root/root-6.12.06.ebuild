@@ -9,8 +9,8 @@ CMAKE_MAKEFILE_GENERATOR=emake
 FORTRAN_NEEDED="fortran"
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 
-inherit cmake-utils elisp-common eutils fortran-2 python-single-r1 \
-	toolchain-funcs user versionator xdg-utils
+inherit cmake-utils elisp-common eutils fortran-2 gnome2-utils \
+	python-single-r1 toolchain-funcs user versionator xdg-utils
 
 DESCRIPTION="C++ data analysis framework and interpreter from CERN"
 HOMEPAGE="https://root.cern"
@@ -112,7 +112,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.00.01-dotfont.patch
 	"${FILESDIR}"/${PN}-6.11.02-hsimple.patch
 	"${FILESDIR}"/${PN}-6.12.04-no-ocaml.patch
-	"${FILESDIR}"/${PN}-6.12.04-find-oracle-12.patch
 	"${FILESDIR}"/${PN}-6.12.04-z3.patch
 )
 
@@ -267,6 +266,7 @@ daemon_install() {
 	fowners rootd:rootd /var/spool/rootd
 	dodir /var/spool/rootd/{pub,tmp}
 	fperms 1777 /var/spool/rootd/{pub,tmp}
+	keepdir /var/spool/rootd/{pub,tmp}
 
 	local i
 	for i in ${daemons}; do
@@ -336,8 +336,10 @@ src_install() {
 
 pkg_postinst() {
 	xdg_desktop_database_update
+	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
 	xdg_desktop_database_update
+	gnome2_icon_cache_update
 }

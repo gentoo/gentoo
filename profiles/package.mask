@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (06 Mar 2018)
+# Masked as it breaks x2go
+=net-libs/nx-3.5.99.14
+=net-misc/x2goserver-4.1.0.0-r1
+
 # Andreas Sturmlechner <asturm@gentoo.org> (06 Mar 2018)
 # Maintainer not responding, depends on deprecated Qt4.
 # Masked for removal in 30 days. Bug 598651, 635192, 644396
@@ -185,11 +190,6 @@ media-sound/moodbar
 # a pkgmove; everything in tree uses it now instead of libgames-support.
 # Masked for removal in 30 days. Bug #648468.
 dev-libs/libgames-support
-
-# Thomas Deutschmann <whissi@gentoo.org> (22 Feb 2018)
-# Upstream's release tarball doesn't match Git content.
-# Masked until clarified.
-=app-admin/rsyslog-8.33.0
 
 # Ulrich Müller <ulm@gentoo.org> (21 Feb 2018)
 # Homepage is dead. Apparently the last release was in 2012
