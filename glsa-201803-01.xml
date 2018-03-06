@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201803-01">
+  <title>Exim: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Exim, the worst of
+    which allows remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">exim</product>
+  <announced>2018-03-06</announced>
+  <revised count="1">2018-03-06</revised>
+  <bug>638772</bug>
+  <bug>647240</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-mta/exim" auto="yes" arch="*">
+      <unaffected range="ge">4.90.1</unaffected>
+      <vulnerable range="lt">4.90.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Exim is a message transfer agent (MTA) designed to be a a highly
+      configurable, drop-in replacement for sendmail.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Exim. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker, by connecting to the SMTP listener daemon, could
+      possibly execute arbitrary code with the privileges of the process or
+      cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Exim users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=mail-mta/exim-4.90.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-16943">CVE-2017-16943</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-16944">CVE-2017-16944</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6789">CVE-2018-6789</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-02-07T23:15:48Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2018-03-06T19:18:50Z">whissi</metadata>
+</glsa>
