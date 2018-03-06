@@ -7,6 +7,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Patrick McLean <chutzpah@gentoo.org> (6 Mar 2018)
+# Requires dev-libs/boost-1.66 that is unkeyworded/masked
+>=sys-cluster/ceph-12.2.4 system-boost
+
 # Brian Evans <grknight@gentoo.org> (5 Mar 2018)
 # Mask embedded USE on virtual/mysql to transition it to be obsolete
 >=virtual/mysql-5.6-r11 embedded
