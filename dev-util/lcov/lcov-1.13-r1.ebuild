@@ -3,6 +3,8 @@
 
 EAPI=6
 
+inherit prefix
+
 DESCRIPTION="A graphical front-end for GCC's coverage testing tool gcov"
 HOMEPAGE="http://ltp.sourceforge.net/coverage/lcov.php"
 SRC_URI="mirror://sourceforge/ltp/${P}.tar.gz"
@@ -14,6 +16,13 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~spa
 RDEPEND="
 	dev-lang/perl
 	dev-perl/GD[png]"
+
+src_prepare() {
+	default
+	if use prefix; then
+		hprefixify bin/*.{pl,sh}
+	fi
+}
 
 src_compile() { :; }
 
