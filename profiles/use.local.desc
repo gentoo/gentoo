@@ -1967,10 +1967,8 @@ dev-scheme/guile:deprecated - Enable deprecated features
 dev-scheme/guile:discouraged - (implied by deprecated) enable merely discouraged features
 dev-scheme/guile:networking - Include networking interfaces
 dev-scheme/guile:regex - Include regular expression interfaces
-dev-scheme/racket:backtrace - Support GC backtrace dumps
 dev-scheme/racket:futures - Enable racket/future library for fine-grained hardware parallelism
 dev-scheme/racket:places - Enable racket/place library for share-nothing parallelism and message-passing communication. Compared to futures, places are heavyweight, but they have a simpler performance model.
-dev-scheme/racket:plot - Enable plot libraries
 dev-scheme/racket:threads - Enable support for green threads
 dev-scheme/scm:arrays - Support for arrays, uniform-arrays and uniform-vectors.
 dev-scheme/scm:bignums - Support for large precision integers.
