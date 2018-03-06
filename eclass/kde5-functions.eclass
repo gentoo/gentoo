@@ -4,7 +4,7 @@
 # @ECLASS: kde5-functions.eclass
 # @MAINTAINER:
 # kde@gentoo.org
-# @SUPPORTED_EAPIS: 6
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: Common ebuild functions for packages based on KDE Frameworks 5.
 # @DESCRIPTION:
 # This eclass contains functions shared by the other KDE eclasses and forms
@@ -18,6 +18,7 @@ _KDE5_FUNCTIONS_ECLASS=1
 inherit toolchain-funcs
 
 case ${EAPI} in
+	7) ;;
 	6) inherit eapi7-ver ;;
 	*) die "EAPI=${EAPI:-0} is not supported" ;;
 esac
