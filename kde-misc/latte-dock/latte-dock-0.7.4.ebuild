@@ -1,25 +1,18 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-QT_MINIMAL="5.7.1"
-inherit cmake-utils gnome2-utils kde5-functions
+inherit kde5
 
 DESCRIPTION="Elegant dock, based on KDE Frameworks"
 HOMEPAGE="https://store.kde.org/p/1169519/
 	https://github.com/psifidotos/Latte-Dock"
-
-if [[ ${PV} = 9999 ]] ; then
-	inherit git-r3
-	EGIT_REPO_URI="https://anongit.kde.org/${PN}.git"
-else
-	SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~x86"
-fi
+[[ ${KDE_BUILD_TYPE} = release ]] && SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
@@ -33,13 +26,13 @@ RDEPEND="
 	$(add_frameworks_dep kglobalaccel)
 	$(add_frameworks_dep ki18n)
 	$(add_frameworks_dep kiconthemes)
+	$(add_frameworks_dep knewstuff)
 	$(add_frameworks_dep knotifications)
 	$(add_frameworks_dep kpackage)
 	$(add_frameworks_dep kwayland)
 	$(add_frameworks_dep kwindowsystem)
 	$(add_frameworks_dep kxmlgui)
 	$(add_frameworks_dep plasma X)
-	$(add_qt_dep qtcore)
 	$(add_qt_dep qtdbus)
 	$(add_qt_dep qtdeclarative)
 	$(add_qt_dep qtgraphicaleffects)
@@ -55,11 +48,3 @@ DEPEND="${RDEPEND}
 "
 
 DOCS=( CHANGELOG.md README.md TRANSLATORS )
-
-pkg_postinst() {
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
-}
