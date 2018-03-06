@@ -53,12 +53,17 @@ src_install() {
 	dobin ${PN}
 
 	# ex: libastyle.so.3.0.1
-	dolib.so lib${PN}.so.${PV}.0
+	local libastylename=lib${PN}.so.${PV}.0
+	dolib.so ${libastylename}
 	# ex: libastyle.so.3
-	dosym lib${PN}.so.${PV}.0 /usr/$(get_libdir)/lib${PN}.so.$(get_major_version)
+	local libdestdir=/usr/$(get_libdir)
+	dosym ${libastylename} ${libdestdir}/lib${PN}.so.$(get_major_version)
+	dosym ${libastylename} ${libdestdir}/lib${PN}.so
 	if use java ; then
-		dolib.so lib${PN}j.so.${PV}.0
-		dosym lib${PN}j.so.${PV}.0 /usr/$(get_libdir)/lib${PN}j.so.$(get_major_version)
+		local libastylejname=lib${PN}j.so.${PV}.0
+		dolib.so ${libastylejname}
+		dosym ${libastylejname} ${libdestdir}/lib${PN}j.so.$(get_major_version)
+		dosym ${libastylejname} ${libdestdir}/lib${PN}j.so
 	fi
 	if use static-libs ; then
 		dolib.a lib${PN}.a
