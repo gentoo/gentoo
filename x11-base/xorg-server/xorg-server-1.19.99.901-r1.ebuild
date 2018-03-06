@@ -23,7 +23,7 @@ CDEPEND=">=app-eselect/eselect-opengl-1.3.0
 	>=x11-apps/rgb-1.0.3
 	>=x11-apps/xauth-1.0.3
 	x11-apps/xkbcomp
-	>=x11-libs/libdrm-2.4.46
+	>=x11-libs/libdrm-2.4.89
 	>=x11-libs/libpciaccess-0.12.901
 	>=x11-libs/libXau-1.0.4
 	>=x11-libs/libXdmcp-1.0.2
@@ -117,6 +117,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.12-unloadsubmodule.patch
 	# needed for new eselect-opengl, bug #541232
 	"${FILESDIR}"/${PN}-1.18-support-multiple-Files-sections.patch
+	"${FILESDIR}"/${P}-randr-fix-crash.patch
 )
 
 pkg_pretend() {

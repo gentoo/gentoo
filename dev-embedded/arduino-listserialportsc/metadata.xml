@@ -6,6 +6,6 @@
 		<name>Embedded Gentoo</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">arduino/Arduino</remote-id>
+		<remote-id type="github">arduino/listSerialPortsC</remote-id>
 	</upstream>
 </pkgmetadata>

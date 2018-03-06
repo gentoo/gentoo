@@ -6,6 +6,6 @@
 		<name>Embedded Gentoo</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">arduino/Arduino</remote-id>
+		<remote-id type="github">arduino/arduino-builder</remote-id>
 	</upstream>
 </pkgmetadata>
