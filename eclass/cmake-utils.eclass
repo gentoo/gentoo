@@ -109,8 +109,12 @@ case ${EAPI} in
 	*) die "EAPI=${EAPI:-0} is not supported" ;;
 esac
 
-inherit toolchain-funcs multilib ninja-utils flag-o-matic eutils \
-	multiprocessing versionator xdg-utils
+inherit toolchain-funcs ninja-utils flag-o-matic multiprocessing versionator xdg-utils
+
+case ${EAPI} in
+	7) ;;
+	*) inherit eutils multilib ;;
+esac
 
 EXPORT_FUNCTIONS src_prepare src_configure src_compile src_test src_install
 
