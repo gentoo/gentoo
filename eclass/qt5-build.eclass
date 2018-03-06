@@ -146,15 +146,6 @@ EXPORT_FUNCTIONS src_unpack src_prepare src_configure src_compile src_install sr
 # @DESCRIPTION:
 # Unpacks the sources.
 qt5-build_src_unpack() {
-	if tc-is-gcc; then
-		local min_gcc4_minor_version=7
-		if [[ $(gcc-major-version) -lt 4 ]] || \
-		   [[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt ${min_gcc4_minor_version} ]]; then
-			eerror "GCC version 4.${min_gcc4_minor_version} or later is required to build this package"
-			die "GCC 4.${min_gcc4_minor_version} or later required"
-		fi
-	fi
-
 	# bug 307861
 	if [[ ${PN} == qtwebengine || ${PN} == qtwebkit ]]; then
 		eshopts_push -s extglob
