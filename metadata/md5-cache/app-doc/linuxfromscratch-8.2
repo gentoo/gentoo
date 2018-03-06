@@ -1,0 +1,10 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=LFS documents building a Linux system entirely from source
+EAPI=6
+HOMEPAGE=http://www.linuxfromscratch.org/lfs
+IUSE=htmlsingle pdf
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+LICENSE=CC-BY-NC-SA-2.5 MIT
+SLOT=0
+SRC_URI=http://www.linuxfromscratch.org/lfs/downloads/8.2/LFS-BOOK-8.2.tar.bz2 http://www.linuxfromscratch.org/lfs/downloads/8.2/lfs-bootscripts-20150222.tar.bz2 http://www.linuxfromscratch.org/lfs/downloads/8.2-systemd/LFS-BOOK-8.2-systemd.tar.bz2 htmlsingle? ( http://www.linuxfromscratch.org/lfs/downloads/8.2/LFS-BOOK-8.2-NOCHUNKS.html http://www.linuxfromscratch.org/lfs/downloads/8.2-systemd/LFS-BOOK-8.2-systemd-NOCHUNKS.html ) pdf? ( http://www.linuxfromscratch.org/lfs/downloads/8.2/LFS-BOOK-8.2.pdf http://www.linuxfromscratch.org/lfs/downloads/8.2-systemd/LFS-BOOK-8.2-systemd.pdf )
+_md5_=fa588fc31c783fc106455d709c275f0d
