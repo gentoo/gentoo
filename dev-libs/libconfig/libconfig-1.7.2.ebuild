@@ -25,7 +25,6 @@ src_prepare() {
 	default
 	sed -i \
 		-e '/sleep 3/d' \
-		-e 's|AM_CONFIG_HEADER|AC_CONFIG_HEADERS|g' \
 		configure.ac || die
 	eautoreconf
 	multilib_copy_sources
