@@ -13,7 +13,7 @@
 # Requires EAPI 6.
 
 if [[ ${CATEGORY} != dev-qt ]]; then
-	die "qt5-build.eclass is only to be used for building Qt 5."
+	die "qt5-build.eclass is only to be used for building Qt 5"
 fi
 
 case ${EAPI} in
@@ -57,15 +57,14 @@ esac
 # for tests you should proceed with setting VIRTUALX_REQUIRED=test.
 : ${VIRTUALX_REQUIRED:=manual}
 
-inherit estack flag-o-matic ltprune toolchain-funcs versionator virtualx
+inherit eapi7-ver estack flag-o-matic ltprune toolchain-funcs virtualx
 
 HOMEPAGE="https://www.qt.io/"
 LICENSE="|| ( GPL-2 GPL-3 LGPL-3 ) FDL-1.3"
-SLOT=5/$(get_version_component_range 1-2)
+SLOT=5/$(ver_cut 1-2)
 
-QT5_MINOR_VERSION=$(get_version_component_range 2)
-QT5_PATCH_VERSION=$(get_version_component_range 3)
-readonly QT5_MINOR_VERSION QT5_PATCH_VERSION
+QT5_MINOR_VERSION=$(ver_cut 2)
+readonly QT5_MINOR_VERSION
 
 case ${PV} in
 	5.9999)
