@@ -68,7 +68,8 @@ COMMON_DEPEND="
 	"
 DEPEND="${COMMON_DEPEND}
 	app-arch/cpio
-	dev-lang/yasm
+	amd64? ( dev-lang/yasm )
+	x86? ( dev-lang/yasm )
 	dev-python/cython[${PYTHON_USEDEP}]
 	dev-python/sphinx
 	dev-util/gperf
