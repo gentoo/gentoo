@@ -57,7 +57,7 @@ esac
 # for tests you should proceed with setting VIRTUALX_REQUIRED=test.
 : ${VIRTUALX_REQUIRED:=manual}
 
-inherit eapi7-ver estack flag-o-matic ltprune toolchain-funcs virtualx
+inherit eapi7-ver estack flag-o-matic toolchain-funcs virtualx
 
 HOMEPAGE="https://www.qt.io/"
 LICENSE="|| ( GPL-2 GPL-3 LGPL-3 ) FDL-1.3"
@@ -320,7 +320,9 @@ qt5-build_src_install() {
 	fi
 
 	qt5_install_module_config
-	prune_libtool_files
+
+	# prune libtool files
+	find "${D}" -name '*.la' -delete || die
 }
 
 # @FUNCTION: qt5-build_pkg_postinst
