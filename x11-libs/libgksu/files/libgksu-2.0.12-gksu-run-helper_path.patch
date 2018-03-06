@@ -1,0 +1,23 @@
+diff -urN libgksu-2.0.12.orig/libgksu/libgksu.c libgksu-2.0.12/libgksu/libgksu.c
+--- libgksu-2.0.12.orig/libgksu/libgksu.c	2018-03-06 15:39:34.594733354 +0300
++++ libgksu-2.0.12/libgksu/libgksu.c	2018-03-06 16:03:11.812213290 +0300
+@@ -1937,7 +1937,7 @@
+   GQuark gksu_quark;
+   int i = 0;
+ 
+-  gchar auxcommand[] = PREFIX "/lib/" PACKAGE "/gksu-run-helper";
++  gchar auxcommand[] = LIBEXECDIR "/" PACKAGE "/gksu-run-helper";
+ 
+   int fdpty;
+   pid_t pid;
+diff -urN libgksu-2.0.12.orig/libgksu/Makefile.am libgksu-2.0.12/libgksu/Makefile.am
+--- libgksu-2.0.12.orig/libgksu/Makefile.am	2018-03-06 15:39:34.545736138 +0300
++++ libgksu-2.0.12/libgksu/Makefile.am	2018-03-06 16:01:23.700033494 +0300
+@@ -1,6 +1,6 @@
+ AM_CFLAGS = -g -O2 -Wall
+ INCLUDES = ${LIBGKSU_CFLAGS}
+-AM_CPPFLAGS = -DLOCALEDIR=\"$(datadir)/locale\" -DDATA_DIR=\"$(datadir)\" -DPREFIX=\"$(prefix)\"
++AM_CPPFLAGS = -DLOCALEDIR=\"$(datadir)/locale\" -DDATA_DIR=\"$(datadir)\" -DPREFIX=\"$(prefix)\" -DLIBEXECDIR=\"$(libexecdir)\"
+ 
+ lib_LTLIBRARIES = libgksu2.la
+ libgksu2_la_SOURCES = libgksu.c libgksu.h
