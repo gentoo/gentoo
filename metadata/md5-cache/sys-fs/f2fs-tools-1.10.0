@@ -9,4 +9,4 @@ LICENSE=GPL-2
 RDEPEND=sys-apps/util-linux selinux? ( sys-libs/libselinux )
 SLOT=0/4
 SRC_URI=https://dev.gentoo.org/~blueness/f2fs-tools/f2fs-tools-1.10.0.tar.xz
-_md5_=e7789e07e381d4bcfd4839952aadb8d5
+_md5_=baf734686d17fb0226e9ca63b640dd76
