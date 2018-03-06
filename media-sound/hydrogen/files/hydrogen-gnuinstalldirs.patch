@@ -25,19 +25,12 @@ index 96dbf47a..2caab298 100644
  SET(LIBSNDFILE_VERSION_PREV "1.0.17")
  
  #
-@@ -146,13 +148,13 @@ ELSE(MINGW)
- 		#Without setting this, installation would go into /usr/local, which does not exist per default
- 		SET(CMAKE_INSTALL_PREFIX "/usr" )
-     ELSE(APPLE)
--        SET(OSS_LIB_PATHS "/usr/lib${LIB_SUFFIX}/oss/lib" "/usr/local/lib${LIB_SUFFIX}/oss/lib" )
-+        SET(OSS_LIB_PATHS "${CMAKE_INSTALL_LIBDIR}/oss/lib" "/usr/local/lib${LIB_SUFFIX}/oss/lib" )
-     ENDIF(APPLE)
- ENDIF(MINGW)
+@@ -150,7 +152,7 @@ ELSE(MINGW)
  
  #Installation paths
  # TODO remove data from path
 -SET(SYS_DATA_PATH "${CMAKE_INSTALL_PREFIX}/share/hydrogen/data")
-+SET(SYS_DATA_PATH "${CMAKE_INSTALL_DATAROOTDIR}/hydrogen/data")
++SET(SYS_DATA_PATH "${CMAKE_FULL_INSTALL_DATAROOTDIR}/hydrogen/data")
  # TODO remove data from path, could be .config/hydrogen
  SET(USR_DATA_PATH ".hydrogen/data")
  
@@ -49,15 +42,14 @@ index 96dbf47a..2caab298 100644
 -	INSTALL(FILES ${CMAKE_SOURCE_DIR}/linux/hydrogen.desktop DESTINATION "${CMAKE_INSTALL_PREFIX}/share/applications")
 -	INSTALL(FILES ${CMAKE_SOURCE_DIR}/data/img/gray/h2-icon.svg DESTINATION "/usr/share/pixmaps")
 -	INSTALL(FILES ${CMAKE_SOURCE_DIR}/linux/hydrogen.1 DESTINATION "${CMAKE_INSTALL_PREFIX}/man/man1")
-+	INSTALL(FILES ${CMAKE_SOURCE_DIR}/linux/hydrogen.appdata.xml DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/appdata")
-+	INSTALL(FILES ${CMAKE_SOURCE_DIR}/linux/hydrogen.desktop DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/applications")
-+	INSTALL(FILES ${CMAKE_SOURCE_DIR}/data/img/gray/h2-icon.svg DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/pixmaps")
-+	INSTALL(FILES ${CMAKE_SOURCE_DIR}/linux/hydrogen.1 DESTINATION "${CMAKE_INSTALL_MANDIR}/man1")
++	INSTALL(FILES ${CMAKE_SOURCE_DIR}/linux/hydrogen.appdata.xml DESTINATION "${CMAKE_FULL_INSTALL_DATAROOTDIR}/appdata")
++	INSTALL(FILES ${CMAKE_SOURCE_DIR}/linux/hydrogen.desktop DESTINATION "${CMAKE_FULL_INSTALL_DATAROOTDIR}/applications")
++	INSTALL(FILES ${CMAKE_SOURCE_DIR}/data/img/gray/h2-icon.svg DESTINATION "${CMAKE_FULL_INSTALL_DATAROOTDIR}/pixmaps")
++	INSTALL(FILES ${CMAKE_SOURCE_DIR}/linux/hydrogen.1 DESTINATION "${CMAKE_FULL_INSTALL_MANDIR}/man1")
  ENDIF()
  
  #
 diff --git a/src/cli/CMakeLists.txt b/src/cli/CMakeLists.txt
-index f6cd04eb..7725dc83 100644
 --- a/src/cli/CMakeLists.txt
 +++ b/src/cli/CMakeLists.txt
 @@ -20,4 +20,4 @@ TARGET_LINK_LIBRARIES(h2cli
@@ -67,7 +59,6 @@ index f6cd04eb..7725dc83 100644
 -INSTALL(TARGETS h2cli RUNTIME DESTINATION bin BUNDLE DESTINATION bin )
 +INSTALL(TARGETS h2cli RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} BUNDLE DESTINATION ${CMAKE_INSTALL_BINDIR})
 diff --git a/src/core/CMakeLists.txt b/src/core/CMakeLists.txt
-index db1333da..0ab61d96 100644
 --- a/src/core/CMakeLists.txt
 +++ b/src/core/CMakeLists.txt
 @@ -57,13 +57,13 @@ TARGET_LINK_LIBRARIES(hydrogen-core-${VERSION}
@@ -85,10 +76,9 @@ index db1333da..0ab61d96 100644
  IF(NOT APPLE AND NOT WIN32)
      INSTALL(DIRECTORY include DESTINATION "${CMAKE_INSTALL_PREFIX}" FILES_MATCHING PATTERN "*.h" PATTERN ".svn" EXCLUDE)
 -    INSTALL(FILES "${CMAKE_CURRENT_BINARY_DIR}/include/hydrogen/config.h" DESTINATION "${CMAKE_INSTALL_PREFIX}/include/hydrogen" )
-+    INSTALL(FILES "${CMAKE_CURRENT_BINARY_DIR}/include/hydrogen/config.h" DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/hydrogen" )
++    INSTALL(FILES "${CMAKE_CURRENT_BINARY_DIR}/include/hydrogen/config.h" DESTINATION "${CMAKE_FULL_INSTALL_INCLUDEDIR}/hydrogen" )
  ENDIF()
 diff --git a/src/gui/CMakeLists.txt b/src/gui/CMakeLists.txt
-index fb375e48..9cd18e6a 100644
 --- a/src/gui/CMakeLists.txt
 +++ b/src/gui/CMakeLists.txt
 @@ -57,4 +57,4 @@ TARGET_LINK_LIBRARIES(hydrogen
@@ -98,7 +88,6 @@ index fb375e48..9cd18e6a 100644
 -INSTALL(TARGETS hydrogen RUNTIME DESTINATION bin BUNDLE DESTINATION bin )
 +INSTALL(TARGETS hydrogen RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} BUNDLE DESTINATION ${CMAKE_INSTALL_BINDIR})
 diff --git a/src/player/CMakeLists.txt b/src/player/CMakeLists.txt
-index 72c270f3..836fc5b4 100644
 --- a/src/player/CMakeLists.txt
 +++ b/src/player/CMakeLists.txt
 @@ -16,4 +16,4 @@ TARGET_LINK_LIBRARIES(h2player
