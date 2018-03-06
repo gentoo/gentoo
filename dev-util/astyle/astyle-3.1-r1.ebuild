@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils flag-o-matic toolchain-funcs versionator java-pkg-opt-2
+inherit flag-o-matic toolchain-funcs versionator java-pkg-opt-2
 
 DESCRIPTION="Artistic Style is a re-indenter and reformatter for C++, C and Java source code"
 HOMEPAGE="http://astyle.sourceforge.net/"
@@ -57,11 +57,11 @@ src_install() {
 	# ex: libastyle.so.3
 	dosym lib${PN}.so.${PV}.0 /usr/$(get_libdir)/lib${PN}.so.$(get_major_version)
 	if use java ; then
-		dolib.so lib${PN}j.so.${PV}
-		dosym lib${PN}j.so.${PV} /usr/$(get_libdir)/lib${PN}j.so.$(get_major_version)
+		dolib.so lib${PN}j.so.${PV}.0
+		dosym lib${PN}j.so.${PV}.0 /usr/$(get_libdir)/lib${PN}j.so.$(get_major_version)
 	fi
 	if use static-libs ; then
-		dolib lib${PN}.a
+		dolib.a lib${PN}.a
 	fi
 	popd >/dev/null || die
 	if use examples ; then
@@ -80,6 +80,6 @@ pkg_postinst() {
 		elog "deprecated. For more information, consult astyle's release notes at"
 		elog "http://astyle.sourceforge.net/news.html. To view offline, see:"
 		elog
-		elog "${ROOT}usr/share/doc/${P}/html"
+		elog "${EROOT%/}/usr/share/doc/${P}/html"
 	fi
 }
