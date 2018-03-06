@@ -47,8 +47,6 @@ else
 		http://www.rsyslog.com/files/download/${PN}/${MY_URL_PREFIX}${PN}-${MY_PV}.tar.gz -> ${MY_FILENAME}
 		doc? ( http://www.rsyslog.com/files/download/${PN}/${MY_URL_PREFIX}${PN}-doc-${MY_PV}.tar.gz -> ${MY_FILENAME_DOCS} )
 	"
-
-	PATCHES=( "${FILESDIR}"/8-stable/${P}-missing-files.patch )
 fi
 
 LICENSE="GPL-3 LGPL-3 Apache-2.0"
