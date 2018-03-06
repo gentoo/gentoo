@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (06 Mar 2018)
+# Maintainer not responding, depends on deprecated Qt4.
+# Masked for removal in 30 days. Bug 598651, 635192, 644396
+media-gfx/photivo
+
 # Patrice Clement <monsieurp@gentoo.org> (05 Mar 2018)
 # Package name change from msgpack-python to msgpack breaks dependencies.
 >=dev-python/msgpack-0.5.6
