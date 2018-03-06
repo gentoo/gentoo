@@ -16,15 +16,20 @@ KEYWORDS="~amd64"
 IUSE=""
 
 RDEPEND="dev-python/prometheus_client[${PYTHON_USEDEP}]
-	dev-util/buildbot[${PYTHON_USEDEP}]"
+	>=dev-util/buildbot-0.9.0[${PYTHON_USEDEP}]"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	${RDEPEND}"
 
 PATCHES=(
-	"$FILESDIR}/buildbot-prometheus-17.7.2-Migrate-duration-calculations-to-buildbot-09.patch"
+	"${FILESDIR}/buildbot-prometheus-17.7.2-Migrate-duration-calculations-to-buildbot-09.patch"
 )
 
 python_prepare_all() {
 	sed -i -e "/^install_reqs.*$/d" -e "/^from pip.*$/d" -e "s/requires = .*/requires = ['buildbot', 'prometheus_client']/" setup.py || die
 	distutils-r1_python_prepare_all
+}
+
+pkg_postinst() {
+	einfo "This version has been patched to be compatible with the current buildbot releases >=0.9.0"
+	einfo "For older buildbot-0.8* releases, please use dev-python/buildbot-prometheus-17.7.2-r1 version"
 }
