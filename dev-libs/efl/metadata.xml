@@ -10,6 +10,7 @@
 	<flag name="drm">Enable DRM engine</flag>
 	<flag name="eet">Enable Eet image loader</flag>
 	<flag name="egl">Enable EGL rendering</flag>
+	<flag name="elput">Enable internal generic input library</flag>
 	<flag name="fribidi">Enable bidirectional text support</flag>
 	<flag name="gles">Enable the OpenGL ES GL implementation</flag>
 	<flag name="glib">Enable <pkg>dev-libs/glib</pkg> support</flag>
