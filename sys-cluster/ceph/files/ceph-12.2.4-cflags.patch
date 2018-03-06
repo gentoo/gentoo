@@ -1,0 +1,38 @@
+diff --git a/cmake/modules/BuildBoost.cmake b/cmake/modules/BuildBoost.cmake
+index c7cd39a110..e7b8115485 100644
+--- a/cmake/modules/BuildBoost.cmake
++++ b/cmake/modules/BuildBoost.cmake
+@@ -29,7 +29,7 @@ function(do_build_boost version)
+   else()
+     list(APPEND boost_features "address-model=32")
+   endif()
+-  set(BOOST_CXXFLAGS "-fPIC -w") # check on arm, etc <---XXX
++  set(BOOST_CXXFLAGS "${CMAKE_CXX_FLAGS} -fPIC -w") # check on arm, etc <---XXX
+   list(APPEND boost_features "cxxflags=${BOOST_CXXFLAGS}")
+ 
+   string(REPLACE ";" "," boost_with_libs "${Boost_BUILD_COMPONENTS}")
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 7aa8a4392e..c7543a62bd 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -808,6 +808,7 @@ install(TARGETS ceph-mon DESTINATION bin)
+ 
+ if (NOT WITH_SYSTEM_ROCKSDB)
+   set(ROCKSDB_CMAKE_ARGS -DCMAKE_POSITION_INDEPENDENT_CODE=ON)
++  list(APPEND ROCKSDB_CMAKE_ARGS -DDISABLE_WARNING_AS_ERROR=ON)
+ 
+   if(ALLOCATOR STREQUAL "jemalloc")
+     list(APPEND ROCKSDB_CMAKE_ARGS -DWITH_JEMALLOC=ON)
+diff --git a/src/compressor/zstd/CMakeLists.txt b/src/compressor/zstd/CMakeLists.txt
+index d9d2b6e560..1b2099fcbd 100644
+--- a/src/compressor/zstd/CMakeLists.txt
++++ b/src/compressor/zstd/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ # zstd
+ 
+ # libzstd - build it statically
+-set(ZSTD_C_FLAGS -fPIC -Wno-unused-variable -O3)
++set(ZSTD_C_FLAGS -fPIC -Wno-unused-variable $ENV{CFLAGS})
+ 
+ include(ExternalProject)
+ ExternalProject_Add(zstd_ext
