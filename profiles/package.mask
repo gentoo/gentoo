@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (06 Mar 2018)
+# Masked as it breaks x2go
+=net-libs/nx-3.5.99.14
+
 # Andreas Sturmlechner <asturm@gentoo.org> (06 Mar 2018)
 # Maintainer not responding, depends on deprecated Qt4.
 # Masked for removal in 30 days. Bug 598651, 635192, 644396
