@@ -15,10 +15,10 @@
 if [[ -z ${_KDE5_FUNCTIONS_ECLASS} ]]; then
 _KDE5_FUNCTIONS_ECLASS=1
 
-inherit toolchain-funcs versionator
+inherit toolchain-funcs
 
 case ${EAPI} in
-	6) ;;
+	6) inherit eapi7-ver ;;
 	*) die "EAPI=${EAPI:-0} is not supported" ;;
 esac
 
@@ -185,7 +185,7 @@ add_frameworks_dep() {
 	if [[ -n ${3} ]]; then
 		version=${3}
 	elif [[ ${CATEGORY} = kde-frameworks ]]; then
-		version=$(get_version_component_range 1-2)
+		version=$(ver_cut 1-2)
 	elif [[ -z ${3} ]] ; then
 		version=${FRAMEWORKS_MINIMAL}
 	fi
@@ -217,7 +217,7 @@ add_plasma_dep() {
 	if [[ -n ${3} ]]; then
 		version=${3}
 	elif [[ ${CATEGORY} = kde-plasma ]]; then
-		version=$(get_version_component_range 1-3)
+		version=$(ver_cut 1-3)
 	elif [[ -z ${3} ]] ; then
 		version=${PLASMA_MINIMAL}
 	fi
@@ -249,7 +249,7 @@ add_kdeapps_dep() {
 	if [[ -n ${3} ]]; then
 		version=${3}
 	elif [[ ${CATEGORY} = kde-apps ]]; then
-		version=$(get_version_component_range 1-3)
+		version=$(ver_cut 1-3)
 	elif [[ -z ${3} ]] ; then
 		version=${KDE_APPS_MINIMAL}
 	fi
@@ -302,9 +302,9 @@ add_qt_dep() {
 # If no version is specified, ${PV} is used.
 get_kde_version() {
 	local ver=${1:-${PV}}
-	local major=$(get_major_version ${ver})
-	local minor=$(get_version_component_range 2 ${ver})
-	local micro=$(get_version_component_range 3 ${ver})
+	local major=$(ver_cut 1 ${ver})
+	local minor=$(ver_cut 2 ${ver})
+	local micro=$(ver_cut 3 ${ver})
 	if [[ ${ver} == 9999 ]]; then
 		echo live
 	else
