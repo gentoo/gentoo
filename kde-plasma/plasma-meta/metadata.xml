@@ -10,6 +10,7 @@
 		<flag name="display-manager">Pull in a graphical display manager</flag>
 		<flag name="grub">Pull in Breeze theme for <pkg>sys-boot/grub</pkg></flag>
 		<flag name="gtk">Enable Breeze widget style and KCM for GTK2 and GTK3</flag>
+		<flag name="legacy-systray">Add support for applications using legacy xembed systray icons, depending on USE qt4 or gtk.</flag>
 		<flag name="pam">Enable support for kwallet auto-unlocking</flag>
 		<flag name="plymouth">Pull in Breeze theme for <pkg>sys-boot/plymouth</pkg></flag>
 		<flag name="pulseaudio">Install Plasma applet for PulseAudio volume management</flag>
