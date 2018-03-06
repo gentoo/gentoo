@@ -9,8 +9,8 @@ CMAKE_MAKEFILE_GENERATOR=emake
 FORTRAN_NEEDED="fortran"
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 
-inherit cmake-utils elisp-common eutils fortran-2 python-single-r1 \
-	toolchain-funcs user versionator xdg-utils
+inherit cmake-utils elisp-common eutils fortran-2 gnome2-utils \
+	python-single-r1 toolchain-funcs user versionator xdg-utils
 
 DESCRIPTION="C++ data analysis framework and interpreter from CERN"
 HOMEPAGE="https://root.cern"
@@ -336,8 +336,10 @@ src_install() {
 
 pkg_postinst() {
 	xdg_desktop_database_update
+	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
 	xdg_desktop_database_update
+	gnome2_icon_cache_update
 }
