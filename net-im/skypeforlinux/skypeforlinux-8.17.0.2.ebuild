@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -95,11 +95,11 @@ src_install() {
 	if use pax_kernel; then
 		pax-mark -m "${ED%/}"/opt/skypeforlinux/skypeforlinux
 		pax-mark -m "${ED%/}"/opt/skypeforlinux/resources/app.asar.unpacked/node_modules/slimcore/bin/slimcore.node
-		eqawarn "You have set USE=pax_kernel meaning that you intend to run"
-		eqawarn "${PN} under a PaX enabled kernel. To do so, we must modify"
-		eqawarn "the ${PN} binary itself and this *may* lead to breakage! If"
-		eqawarn "you suspect that ${PN} is being broken by this modification,"
-		eqawarn "please open a bug."
+		ewarn "You have set USE=pax_kernel meaning that you intend to run"
+		ewarn "${PN} under a PaX enabled kernel. To do so, we must modify"
+		ewarn "the ${PN} binary itself and this *may* lead to breakage! If"
+		ewarn "you suspect that ${PN} is being broken by this modification,"
+		ewarn "please open a bug."
 	fi
 }
 
