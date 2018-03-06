@@ -267,6 +267,7 @@ daemon_install() {
 	fowners rootd:rootd /var/spool/rootd
 	dodir /var/spool/rootd/{pub,tmp}
 	fperms 1777 /var/spool/rootd/{pub,tmp}
+	keepdir /var/spool/rootd/{pub,tmp}
 
 	local i
 	for i in ${daemons}; do
