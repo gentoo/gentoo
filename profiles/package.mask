@@ -29,6 +29,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Brian Evans <grknight@gentoo.org> (06 Mar 2018)
+# MariaDB MaxScale 1.x depends on the deprecated libmysqld
+# Newer versions bundle software that require git access
+# and modify system libraries for their own purposes making
+# it exteremely difficult to package.
+# Bug 649764 Removal in 30 days.
+dev-db/maxscale
+
 # Lars Wendler <polynomial-c@gentoo.org> (06 Mar 2018)
 # Masked as it breaks x2go
 =net-libs/nx-3.5.99.14
