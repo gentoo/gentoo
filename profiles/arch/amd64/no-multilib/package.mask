@@ -3,7 +3,7 @@
 
 # Michał Górny <mgorny@gentoo.org> (07 Jan 2018)
 # Requires 32-bit libraries.
-net-misc/teamviewer
+<net-misc/teamviewer-13
 
 # David Seifert <soap@gentoo.org> (03 Jan 2018)
 # Requires 32-bit multilib compatibility
