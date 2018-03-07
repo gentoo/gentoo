@@ -40,7 +40,8 @@ CDEPEND="
 	libav? ( media-video/libav:= )
 	!libav? ( media-video/ffmpeg:= )"
 DEPEND="${CDEPEND}
-	>=dev-lang/fpc-2.4"
+	>=dev-lang/fpc-2.4
+	dev-qt/linguist-tools:5"
 RDEPEND="${CDEPEND}
 	app-arch/xz-utils
 	>=media-fonts/dejavu-2.28
