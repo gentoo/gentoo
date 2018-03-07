@@ -196,9 +196,8 @@ python_install_all() {
 	doins "etc/cinder/logging_sample.conf"
 	doins "etc/cinder/rootwrap.conf"
 	doins "etc/cinder/api-paste.ini"
-	doins "etc/cinder/policy.json"
 	doins "etc/cinder/resource_filters.json"
-	newins "${DISTDIR}/pike-cinder.conf.sample" "cinder.conf.sample"
+	newins "${DISTDIR}/queens-cinder.conf.sample" "cinder.conf.sample"
 	insinto /etc/cinder/rootwrap.d
 	doins "etc/cinder/rootwrap.d/volume.filters"
 
