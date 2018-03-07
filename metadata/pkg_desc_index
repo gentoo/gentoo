@@ -3264,7 +3264,7 @@ dev-lisp/asdf-binary-locations 20061018: ASDF-Extension to specify where Common 
 dev-lisp/cl-ppcre 2.0.11: CL-PPCRE is a portable regular expression library for Common Lisp.
 dev-lisp/cl-ppcre-unicode 2.0.11: CL-PPCRE is a portable regular expression library for Common Lisp.
 dev-lisp/cl-unicode 0.1.5: Provides Common Lisp implementations with knowledge about Unicode characters.
-dev-lisp/clisp 2.48-r1 2.48-r2 2.49-r8 2.49-r9: A portable, bytecode-compiled implementation of Common Lisp
+dev-lisp/clisp 2.48-r1 2.49-r9: A portable, bytecode-compiled implementation of Common Lisp
 dev-lisp/common-lisp-controller 4.27 5.13-r1: Common Lisp Controller
 dev-lisp/ecls 13.5.1-r1: ECL is an embeddable Common Lisp implementation
 dev-lisp/flexi-streams 1.0.16: Flexible bivalent streams for Common Lisp
@@ -6957,7 +6957,7 @@ mail-filter/spamprobe 1.4d-r1: Fast, intelligent, automatic spam detector using 
 mail-filter/sqlgrey 1.7.6-r2: SQLgrey is a postfix policy service implementing a grey-listing policy
 mail-mta/courier 0.75.0: An MTA designed specifically for maildirs
 mail-mta/esmtp 1.2: User configurable relay-only Mail Transfer Agent with a sendmail-like syntax
-mail-mta/exim 4.89-r5: A highly configurable, drop-in replacement for sendmail
+mail-mta/exim 4.89-r5 4.90.1: A highly configurable, drop-in replacement for sendmail
 mail-mta/mini-qmail 1.05 1.05-r1 1.06: a small null client that forwards mail via QMQP to a full qmail server
 mail-mta/msmtp 1.6.6: An SMTP client and SMTP plugin for mail user agents such as Mutt
 mail-mta/netqmail 1.06 1.06-r2 1.06-r4: qmail -- a secure, reliable, efficient, simple message transfer agent
@@ -9822,7 +9822,7 @@ sys-apps/usbredir 0.7.1_p20170503: TCP daemon and set of libraries for usbredir 
 sys-apps/usbutils 008-r1: USB enumeration utilities
 sys-apps/usermode-utilities 20070815-r3: Tools for use with Usermode Linux virtual machines
 sys-apps/utempter 0.5.5.6: App that allows non-privileged apps to write utmp (login) info
-sys-apps/util-linux 2.30.2: Various useful Linux utilities
+sys-apps/util-linux 2.30.2-r1: Various useful Linux utilities
 sys-apps/vbetool 1.1: Run real-mode video BIOS code to alter hw state (i.e. reinitialize video card)
 sys-apps/watchdog 5.15: A software watchdog and /dev/watchdog daemon
 sys-apps/which 2.21: Prints out location of specified executables that are in your path
