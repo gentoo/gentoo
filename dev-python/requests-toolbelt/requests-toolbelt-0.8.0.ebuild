@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,8 +25,16 @@ DEPEND="${RDEPEND}
 	)"
 
 DOCS=( AUTHORS.rst HISTORY.rst README.rst )
+PATCHES=(
+	"${FILESDIR}/requests-toolbelt-0.8.0-test-tracebacks.patch"
+)
+
+# Known python2.7 test failures do to upstream 
+# not testing with newer requests versions
+# bug: https://bugs.gentoo.org/635824
+# https://github.com/requests/toolbelt/issues/213
+RESTRICT=test
 
 python_test() {
 	py.test -v || die "Tests failed with ${EPYTHON}"
 }
-
