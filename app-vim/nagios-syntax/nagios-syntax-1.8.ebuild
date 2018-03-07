@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit vim-plugin
 
 DESCRIPTION="vim plugin: Nagios configuration files syntax"
-HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=2261"
+HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=2261"
 SRC_URI="https://dev.gentoo.org/~monsieurp/packages/${P}.tar.gz"
 
 LICENSE="vim.org"
