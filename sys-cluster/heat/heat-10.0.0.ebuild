@@ -152,7 +152,6 @@ python_install_all() {
 	insopts -m0640 -o heat -g heat
 	newins "${DISTDIR}/heat.conf.sample-${PV}" "heat.conf.sample"
 	doins "etc/heat/api-paste.ini"
-	doins "etc/heat/policy.json"
 	insinto /etc/heat/templates
 	doins "etc/heat/templates/"*
 	insinto /etc/heat/environment.d
