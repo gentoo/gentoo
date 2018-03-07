@@ -61,6 +61,10 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-2.32_rc2-umount_completion.patch" #649812
+)
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
