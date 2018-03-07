@@ -33,14 +33,15 @@ CDEPEND="
 	media-libs/libpng:0=
 	media-libs/libsdl2:=
 	media-libs/sdl2-image:=
-	media-libs/sdl2-mixer:=
+	media-libs/sdl2-mixer:=[vorbis]
 	media-libs/sdl2-net:=
 	media-libs/sdl2-ttf:=
 	sys-libs/zlib:=
 	libav? ( media-video/libav:= )
 	!libav? ( media-video/ffmpeg:= )"
 DEPEND="${CDEPEND}
-	>=dev-lang/fpc-2.4"
+	>=dev-lang/fpc-2.4
+	dev-qt/linguist-tools:5"
 RDEPEND="${CDEPEND}
 	app-arch/xz-utils
 	>=media-fonts/dejavu-2.28
