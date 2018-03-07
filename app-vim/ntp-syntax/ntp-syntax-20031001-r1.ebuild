@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit vim-plugin
 
 DESCRIPTION="vim plugin: ntp.conf syntax highlighting"
-HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=778"
+HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=778"
 
 LICENSE="vim"
 KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd"
