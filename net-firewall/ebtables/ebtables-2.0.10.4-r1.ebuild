@@ -18,7 +18,10 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
 IUSE="+perl static"
 
 # The ebtables-save script is written in perl.
-RDEPEND="perl? ( dev-lang/perl )"
+RDEPEND="perl? ( dev-lang/perl )
+	!<net-firewall/iptables-1.6.2-r2[nftables(-)]
+	!net-misc/ethertypes
+"
 
 S=${WORKDIR}/${MY_P}
 
