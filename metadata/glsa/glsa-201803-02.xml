@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201803-02">
+  <title>util-linux: User-assisted execution of arbitrary code</title>
+  <synopsis>A vulnerability was discovered in util-linux, which could
+    potentially lead to the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">util-linux</product>
+  <announced>2018-03-07</announced>
+  <revised count="1">2018-03-07</revised>
+  <bug>649812</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="sys-apps/util-linux" auto="yes" arch="*">
+      <unaffected range="ge">2.30.2-r1</unaffected>
+      <vulnerable range="lt">2.30.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>util-linux is a suite of Linux programs including mount and umount,
+      programs used to mount and unmount filesystems.
+    </p>
+  </background>
+  <description>
+    <p>It was discovered that the umount bash-completion as provided by
+      util-linux does not escap mount point paths.
+    </p>
+  </description>
+  <impact type="high">
+    <p>An attacker controlling a volume label could entice a user with
+      privileges to mount/umount filesystems to use umount command with auto
+      completion, possibly resulting in execution of arbitrary code with root
+      privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>Disable Bash-completion or remove
+      “/usr/share/bash-completion/completions/umount”.
+    </p>
+  </workaround>
+  <resolution>
+    <p>All util-linux users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/util-linux-2.30.2-r1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-7738">CVE-2018-7738</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-03-07T14:57:31Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2018-03-07T19:03:17Z">whissi</metadata>
+</glsa>
