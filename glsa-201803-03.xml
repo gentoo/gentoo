@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201803-03">
+  <title>Go: User-assisted execution of arbitrary code</title>
+  <synopsis>A vulnerability in Go might allow remote attackers to execute
+    arbitrary commands during source code build.
+    
+  </synopsis>
+  <product type="ebuild">go</product>
+  <announced>2018-03-07</announced>
+  <revised count="1">2018-03-07</revised>
+  <bug>647250</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/go" auto="yes" arch="*">
+      <unaffected range="ge">1.9.4</unaffected>
+      <vulnerable range="lt">1.9.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Go is an open source programming language that makes it easy to build
+      simple, reliable, and efficient software.
+    </p>
+    
+  </background>
+  <description>
+    <p>A command injection flaw was discovered in the source code build phase
+      because of the “go get” command, which does not block -fplugin= and
+      -plugin arguments.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could entice a user to process a repository containing
+      maliciously-crafted build instructions using “go get”, resulting in
+      the execution of arbitrary code with the privileges of the process.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Go users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/go-1.9.4"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6574">CVE-2018-6574</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-03-06T19:46:03Z">chrisadr</metadata>
+  <metadata tag="submitter" timestamp="2018-03-07T19:03:39Z">chrisadr</metadata>
+</glsa>
