@@ -6,14 +6,14 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 
 inherit toolchain-funcs libtool flag-o-matic bash-completion-r1 \
-	pam python-single-r1 multilib-minimal systemd
+	pam python-single-r1 multilib-minimal multiprocessing systemd
 
 MY_PV="${PV/_/-}"
 MY_P="${PN}-${MY_PV}"
 
 if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3 autotools
-	EGIT_REPO_URI="git://git.kernel.org/pub/scm/utils/util-linux/util-linux.git"
+	EGIT_REPO_URI="https://git.kernel.org/pub/scm/utils/util-linux/util-linux.git"
 else
 	[[ "${PV}" = *_rc* ]] || \
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux"
@@ -69,15 +69,22 @@ pkg_setup() {
 src_prepare() {
 	default
 
+	# Prevent uuidd test failure due to socket path limit. #593304
+	sed -i \
+		-e "s|UUIDD_SOCKET=\"\$(mktemp -u \"\${TS_OUTDIR}/uuiddXXXXXXXXXXXXX\")\"|UUIDD_SOCKET=\"\$(mktemp -u \"${T}/uuiddXXXXXXXXXXXXX.sock\")\"|g" \
+		tests/ts/uuid/uuidd || die "Failed to fix uuidd test"
+
 	if [[ ${PV} == 9999 ]] ; then
 		po/update-potfiles
 		eautoreconf
 	fi
+
 	# Undo bad ncurses handling by upstream. #601530
 	sed -i -E \
 		-e '/NCURSES_/s:(ncursesw?)[56]-config:$PKG_CONFIG \1:' \
 		-e 's:(ncursesw?)[56]-config --version:$PKG_CONFIG --exists --print-errors \1:' \
 		configure || die
+
 	elibtoolize
 }
 
@@ -157,7 +164,7 @@ multilib_src_compile() {
 }
 
 multilib_src_test() {
-	multilib_is_native_abi && emake check
+	multilib_is_native_abi && emake check TS_OPTS="--parallel=$(makeopts_jobs) --nonroot"
 }
 
 multilib_src_install() {
