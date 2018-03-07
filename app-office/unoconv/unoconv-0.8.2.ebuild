@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ inherit eutils python-single-r1
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DESCRIPTION="Convert between document formats supported by Libreoffice"
-HOMEPAGE="http://dag.wieers.com/home-made/unoconv/"
+HOMEPAGE="http://dag.wiee.rs/home-made/unoconv/"
 SRC_URI="https://github.com/dagwieers/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
