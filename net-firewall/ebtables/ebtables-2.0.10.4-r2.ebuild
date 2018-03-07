@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI="6"
 
-inherit versionator eutils toolchain-funcs multilib flag-o-matic
+inherit versionator toolchain-funcs flag-o-matic
 
 MY_PV=$(replace_version_separator 3 '-' )
 MY_P=${PN}-v${MY_PV}
@@ -12,15 +12,14 @@ DESCRIPTION="Controls Ethernet frame filtering on a Linux bridge, MAC NAT and br
 HOMEPAGE="http://ebtables.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
-KEYWORDS="amd64 ppc x86"
-IUSE="static"
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
+IUSE="+perl static"
 
-RDEPEND="
-	!<net-firewall/iptables-1.6.2-r2[nftables(-)]
-	!net-misc/ethertypes
-"
+# The ebtables-save script is written in perl.
+RDEPEND="perl? ( dev-lang/perl )
+	net-misc/ethertypes"
 
 S=${WORKDIR}/${MY_P}
 
@@ -33,7 +32,9 @@ pkg_setup() {
 
 src_prepare() {
 	# Enhance ebtables-save to take table names as parameters bug #189315
-	epatch "${FILESDIR}/${PN}-2.0.8.1-ebt-save.diff"
+	local PATCHES=( "${FILESDIR}/${PN}-2.0.8.1-ebt-save.diff" )
+
+	default
 
 	sed -i -e "s,^MANDIR:=.*,MANDIR:=/usr/share/man," \
 		-e "s,^BINDIR:=.*,BINDIR:=/sbin," \
@@ -54,15 +55,18 @@ src_compile() {
 
 src_install() {
 	if ! use static; then
-		make DESTDIR="${D}" install
+		emake DESTDIR="${D}" install
 		keepdir /var/lib/ebtables/
 		newinitd "${FILESDIR}"/ebtables.initd-r1 ebtables
 		newconfd "${FILESDIR}"/ebtables.confd-r1 ebtables
+		if ! use perl; then
+			rm "${ED}"/sbin/ebtables-save || die
+		fi
+		# Bug 647458
+		rm "${ED%/}"/etc/ethertypes || die
 	else
 		into /
 		newsbin static ebtables
-		insinto /etc
-		doins ethertypes
 	fi
 	dodoc ChangeLog THANKS
 }
