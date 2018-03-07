@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: java-vm-2.eclass
@@ -20,7 +20,7 @@ EXPORT_FUNCTIONS pkg_setup pkg_postinst pkg_prerm pkg_postrm
 
 RDEPEND="
 	>=dev-java/java-config-2.2.0-r3
-	>=app-eselect/eselect-java-0.2.0"
+	>=app-eselect/eselect-java-0.4.0"
 DEPEND="${RDEPEND}"
 
 export WANT_JAVA_CONFIG=2
