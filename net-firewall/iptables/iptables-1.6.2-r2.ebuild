@@ -37,10 +37,7 @@ DEPEND="${COMMON_DEPEND}
 	)
 "
 RDEPEND="${COMMON_DEPEND}
-	nftables? (
-		!<net-firewall/ebtables-2.0.10.4-r2
-		!net-misc/ethertypes
-	)
+	nftables? ( net-misc/ethertypes )
 "
 
 src_prepare() {
@@ -106,6 +103,11 @@ src_install() {
 		keepdir /var/lib/ip6tables
 		newinitd "${FILESDIR}"/iptables.init ip6tables
 		newconfd "${FILESDIR}"/ip6tables-1.4.13.confd ip6tables
+	fi
+
+	if use nftables; then
+		# Bug 647458
+		rm "${ED%/}"/etc/ethertypes || die
 	fi
 
 	systemd_dounit "${FILESDIR}"/systemd/iptables-{re,}store.service
