@@ -281,7 +281,7 @@ multilib_src_install() {
 
 	local f nssutils
 	# Always enabled because we need it for chk generation.
-	nssutils="shlibsign"
+	nssutils=( shlibsign )
 
 	if multilib_is_native_abi ; then
 		if use utils; then
@@ -291,16 +291,49 @@ multilib_src_install() {
 			# checkcert utils has been removed in nss-3.22:
 			# https://bugzilla.mozilla.org/show_bug.cgi?id=1187545
 			# https://hg.mozilla.org/projects/nss/rev/df1729d37870
-			nssutils="addbuiltin atob baddbdir btoa certcgi certutil
-			cmsutil conflict crlutil derdump digest makepqg mangle modutil multinit
-			nonspr10 ocspclnt oidcalc p7content p7env p7sign p7verify pk11mode
-			pk12util pp rsaperf selfserv shlibsign signtool signver ssltap strsclnt
-			symkeyutil tstclnt vfychain vfyserv"
+			# certcgi has been removed in nss-3.36:
+			# https://bugzilla.mozilla.org/show_bug.cgi?id=1426602
+			nssutils+=(
+				addbuiltin
+				atob
+				baddbdir
+				btoa
+				certutil
+				cmsutil
+				conflict
+				crlutil
+				derdump
+				digest
+				makepqg
+				mangle
+				modutil
+				multinit
+				nonspr10
+				ocspclnt
+				oidcalc
+				p7content
+				p7env
+				p7sign
+				p7verify
+				pk11mode
+				pk12util
+				pp
+				rsaperf
+				selfserv
+				signtool
+				signver
+				ssltap
+				strsclnt
+				symkeyutil
+				tstclnt
+				vfychain
+				vfyserv
+			)
 			# install man-pages for utils (bug #516810)
 			doman doc/nroff/*.1
 		fi
 		pushd dist/*/bin >/dev/null || die
-		for f in ${nssutils}; do
+		for f in ${nssutils[@]}; do
 			dobin ${f}
 		done
 		popd >/dev/null || die
