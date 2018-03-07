@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -8,7 +8,7 @@ inherit versionator eutils toolchain-funcs multilib flag-o-matic
 MY_PV=$(replace_version_separator 3 '-' )
 MY_P=${PN}-v${MY_PV}
 
-DESCRIPTION="Utility that enables basic Ethernet frame filtering on a Linux bridge, MAC NAT and brouting"
+DESCRIPTION="Controls Ethernet frame filtering on a Linux bridge, MAC NAT and brouting"
 HOMEPAGE="http://ebtables.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
