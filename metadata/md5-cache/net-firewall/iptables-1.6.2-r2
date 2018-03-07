@@ -6,8 +6,8 @@ HOMEPAGE=http://www.netfilter.org/projects/iptables/
 IUSE=conntrack ipv6 netlink nftables pcap static-libs
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
 LICENSE=GPL-2
-RDEPEND=conntrack? ( >=net-libs/libnetfilter_conntrack-1.0.6 ) netlink? ( net-libs/libnfnetlink ) nftables? ( >=net-libs/libmnl-1.0:0= >=net-libs/libnftnl-1.0.5:0= ) pcap? ( net-libs/libpcap ) nftables? ( !<net-firewall/ebtables-2.0.10.4-r2 !net-misc/ethertypes )
+RDEPEND=conntrack? ( >=net-libs/libnetfilter_conntrack-1.0.6 ) netlink? ( net-libs/libnfnetlink ) nftables? ( >=net-libs/libmnl-1.0:0= >=net-libs/libnftnl-1.0.5:0= ) pcap? ( net-libs/libpcap ) nftables? ( net-misc/ethertypes )
 SLOT=0/12
 SRC_URI=http://www.netfilter.org/projects/iptables/files/iptables-1.6.2.tar.bz2
 _eclasses_=autotools	4842e626555a9a4344f34cef2e190b67	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	flag-o-matic	02908f00f002f0f07c5b74783d778325	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	systemd	a31844b675f1a1fea87fbe1144aee5f5	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=c27e0e3b27c2e24c52301da85c46cc84
+_md5_=91767443163ca42f5d0ea34bfa022494
