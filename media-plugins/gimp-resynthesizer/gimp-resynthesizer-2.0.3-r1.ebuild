@@ -3,7 +3,9 @@
 
 EAPI=6
 
-inherit autotools
+PYTHON_COMPAT=( python2_7 )
+
+inherit autotools python-single-r1
 
 MY_PN="${PN#gimp-}"
 MY_P="${MY_PN}-${PV}"
@@ -17,8 +19,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="media-gfx/gimp"
-RDEPEND="${DEPEND}"
+DEPEND="media-gfx/gimp
+	virtual/pkgconfig"
+RDEPEND="media-gfx/gimp[${PYTHON_USEDEP}]"
 
 S="${WORKDIR}/${MY_P}"
 
