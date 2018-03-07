@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit python-single-r1 vim-plugin
 
 DESCRIPTION="Provide python code looking for bugs, refactoring and other useful things"
-HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=3770 https://github.com/klen/python-mode"
+HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=3770 https://github.com/klen/python-mode"
 SRC_URI="https://github.com/klen/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-3"
