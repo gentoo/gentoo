@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ else
 fi
 
 DESCRIPTION="vim plugin: easy commenting of code for many filetypes"
-HOMEPAGE="https://github.com/scrooloose/nerdcommenter http://www.vim.org/scripts/script.php?script_id=1218"
+HOMEPAGE="https://github.com/scrooloose/nerdcommenter https://www.vim.org/scripts/script.php?script_id=1218"
 LICENSE="WTFPL-2 "
 
 VIM_PLUGIN_HELPFILES="NERD_commenter.txt"
