@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
-inherit eutils flag-o-matic multilib gnome2-utils autotools-utils
+inherit eutils flag-o-matic multilib gnome2-utils autotools-utils qmake-utils
 
 DESCRIPTION="Smart Common Input Method (SCIM) is an Input Method (IM) development platform"
 HOMEPAGE="http://www.scim-im.org/"
@@ -11,12 +11,16 @@ SRC_URI="mirror://sourceforge/scim/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ppc ppc64 sparc x86 ~x86-fbsd"
-IUSE="doc gtk3"
+IUSE="doc gtk3 qt4"
 
 RDEPEND="x11-libs/libX11
 	dev-libs/glib:2
 	gtk3? ( x11-libs/gtk+:3 )
 	!gtk3? ( x11-libs/gtk+:2 )
+	qt4? (
+		dev-qt/qtcore:4
+		dev-qt/qtgui:4
+	)
 	>=dev-libs/atk-1
 	>=x11-libs/pango-1
 	!app-i18n/scim-cvs"
@@ -50,6 +54,9 @@ src_configure() {
 		$(use_with doc doxygen)
 		--enable-ld-version-script
 		$gtk_version
+		--disable-qt3-immodule
+		$(use_enable qt4 qt4-immodule)
+		--with-qt4-moc="$(qt4_get_bindir)/moc"
 	)
 	autotools-utils_src_configure
 }
