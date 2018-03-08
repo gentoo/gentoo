@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
-inherit distutils-r1 git-r3
+inherit distutils-r1 git-r3 multiprocessing
 
 DESCRIPTION="A stand-alone install of the LLVM suite testing tool"
 HOMEPAGE="https://llvm.org/"
@@ -36,5 +36,6 @@ src_unpack() {
 }
 
 python_test() {
-	./lit.py -vv tests || die
+	./lit.py -j "${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}" \
+		-vv tests || die
 }
