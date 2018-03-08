@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 if [ ${PV} == "9999" ] ; then
 	inherit git-r3 linux-mod
 	AUTOTOOLS_AUTORECONF="1"
-	EGIT_REPO_URI="https://github.com/zfsonlinux/${PN}.git"
+	EGIT_REPO_URI="git://github.com/zfsonlinux/${PN}.git"
 else
 	SRC_URI="https://github.com/zfsonlinux/${PN}/releases/download/${P}/${P}.tar.gz"
 	KEYWORDS="~amd64"
@@ -33,10 +33,7 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 "
 
-# Adding glibc >= 2.25 blocker for ZFS versions lower
-# than 0.7.0, due to bug 617628.
 RDEPEND="${COMMON_DEPEND}
-	!>=sys-libs/glibc-2.25
 	!=sys-apps/grep-2.13*
 	!kernel-builtin? ( =sys-fs/zfs-kmod-${PV}* )
 	!sys-fs/zfs-fuse
@@ -54,6 +51,10 @@ RDEPEND="${COMMON_DEPEND}
 		app-arch/cpio
 		app-misc/pax-utils
 		!<sys-boot/grub-2.00-r2:2
+		!<sys-kernel/genkernel-3.5.1.1
+		!<sys-kernel/genkernel-next-67
+		!<sys-kernel/bliss-initramfs-7.1.0
+		!<sys-kernel/dracut-044-r1
 		)
 	sys-fs/udev-init-scripts
 "
@@ -100,11 +101,12 @@ src_configure() {
 		--bindir="${EPREFIX}/bin"
 		--sbindir="${EPREFIX}/sbin"
 		--with-config=user
-		--with-dracutdir="/usr/$(get_libdir)/dracut"
+		--with-dracutdir="${EPREFIX}/usr/lib/dracut"
 		--with-linux="${KV_DIR}"
 		--with-linux-obj="${KV_OUT_DIR}"
 		--with-udevdir="$(get_udevdir)"
-		--with-blkid
+		--with-systemdunitdir="$(systemd_get_systemunitdir)"
+		--with-systemdpresetdir="${EPREFIX}/lib/systemd/system-preset"
 		$(use_enable debug)
 	)
 	autotools-utils_src_configure
@@ -190,6 +192,15 @@ pkg_postinst() {
 		einfo "The zfs-shutdown script is obsolete. Removing it from runlevel."
 		rm "${EROOT}etc/runlevels/shutdown/zfs-shutdown"
 	fi
+
+	systemd_reenable zfs-zed.service
+	systemd_reenable zfs-import-cache.service
+	systemd_reenable zfs-import-scan.service
+	systemd_reenable zfs-mount.service
+	systemd_reenable zfs-share.service
+	systemd_reenable zfs-import.target
+	systemd_reenable zfs.target
+	systemd_reenable zfs.service
 
 }
 
