@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -65,7 +65,7 @@ SITEFILE="50${PN}-mode-gentoo.el"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.12.2-poisoned-sysmacros.patch"
-	"${FILESDIR}/${PN}-3.12.2-silent_rules.patch"
+	"${FILESDIR}/${PN}-4.1.0-silent_rules.patch"
 )
 
 DOCS=( AUTHORS ChangeLog NEWS README.md THANKS )
@@ -178,7 +178,7 @@ src_install() {
 	newconfd "${FILESDIR}/${PN}.confd" glusterfsd
 
 	keepdir /var/log/${PN}
-	keepdir /var/lib/glusterd
+	keepdir /var/lib/glusterd/{events,glusterfind/.keys}
 
 	# QA
 	rm -r "${ED}/var/run/" || die
