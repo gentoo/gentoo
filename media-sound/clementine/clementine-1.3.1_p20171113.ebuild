@@ -70,10 +70,7 @@ RDEPEND="${COMMON_DEPEND}
 	udisks? ( sys-fs/udisks:2 )
 "
 DEPEND="${COMMON_DEPEND}
-	|| (
-		>=dev-cpp/gtest-1.8.0
-		dev-cpp/gmock
-	)
+	>=dev-cpp/gtest-1.8.0
 	dev-libs/boost
 	sys-devel/gettext
 	virtual/pkgconfig
