@@ -60,7 +60,7 @@ src_prepare() {
 }
 
 src_configure() {
-	for i in nxcomp nx-X11/lib nxproxy ; do
+	for i in nxcomp nx-X11/lib nxcompshad nxproxy ; do
 		pushd ${i} || die
 		econf
 		popd || die
@@ -76,13 +76,8 @@ src_compile() {
 	#  - calls autoreconf several times
 	#  - invokes make directly but we prefer our emake
 
-	pushd nxcomp || die
-	emake
-	popd || die
-
-	pushd nx-X11/lib || die
-	emake
-	popd || die
+	emake -C nxcomp
+	emake -C nx-X11/lib
 
 	mkdir -p nx-X11/exports/lib/ || die
 	local nxlib
@@ -90,20 +85,14 @@ src_compile() {
 		ln -s ../../lib/src/.libs/${nxlib} nx-X11/exports/lib/${nxlib} || die
 	done
 
-	pushd nxcompshad || die
-	# Configuration can only run after X11 lib compilation
-	econf
-	emake
-	popd || die
+	emake -C nxcompshad
 
 	./mesa-quilt push -a || die
 
 	emake -C nx-X11 BuildDependsOnly FONT_DEFINES="-DHAS_XFONT2"
 	emake -C nx-X11 World USRLIBDIR="/usr/$(get_libdir)/${PN}/X11" SHLIBDIR="/usr/$(get_libdir)" FONT_DEFINES="-DHAS_XFONT2" XFONTLIB="-lXfont2"
 
-	pushd nxproxy || die
-	emake
-	popd || die
+	emake -C nxproxy
 }
 
 src_install() {
