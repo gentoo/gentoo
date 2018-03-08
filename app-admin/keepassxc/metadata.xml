@@ -6,6 +6,7 @@
     <name>Lars Wendler</name>
   </maintainer>
   <use>
+    <flag name="agent">Add support for loading keys into ssh-agent</flag>
     <flag name="autotype">Add support to autotype the passwords into other applications</flag>
     <flag name="browser">Enables browser plugin support</flag>
     <flag name="http">Add http support</flag>
