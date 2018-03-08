@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -76,7 +76,7 @@ DEPEND="${RDEPEND}
 	ruby? ( >=dev-lang/swig-3.0.12 )
 	test? (
 		dev-python/jinja[${PYTHON_USEDEP}]
-		dev-cpp/gmock
+		>=dev-cpp/gtest-1.8.0
 	)"
 
 # javamodular needs jblas (painful to package properly)
