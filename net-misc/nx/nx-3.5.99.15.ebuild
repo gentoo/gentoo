@@ -36,9 +36,6 @@ src_prepare() {
 	# have quilt installed.
 	sed 's@which quilt@false@' -i mesa-quilt || die
 
-	# Fixed by upstream. Please removed on next version bump
-	sed '/$(BINDIR)\/bin/s@/bin@@' -i Makefile || die
-
 	# run autoreconf in all neeed folders
 	for i in nxcomp nx-X11/lib nxcompshad nxproxy ; do
 		pushd ${i} || die
