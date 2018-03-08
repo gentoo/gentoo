@@ -1,7 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
+
 inherit autotools eutils gnome2-utils multilib readme.gentoo-r1
 
 DESCRIPTION="Yet another IM-client of SCIM"
@@ -68,6 +69,7 @@ src_configure() {
 
 	if use qt4 ; then
 		myconf="${myconf} --enable-qt4-immodule=yes"
+		export QT_SELECT="4"
 	else
 		myconf="${myconf} --enable-qt4-immodule=no"
 	fi
