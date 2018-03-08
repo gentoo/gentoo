@@ -390,8 +390,13 @@ kernel_is() {
 get_localversion() {
 	local lv_list i x
 
+	local shopt_save=$(shopt -p nullglob)
+	shopt -s nullglob
+	local files=( ${1}/localversion* )
+	${shopt_save}
+
 	# ignore files with ~ in it.
-	for i in $(ls ${1}/localversion* 2>/dev/null); do
+	for i in "${files[@]}"; do
 		[[ -n ${i//*~*} ]] && lv_list="${lv_list} ${i}"
 	done
 
