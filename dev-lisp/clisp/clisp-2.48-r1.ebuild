@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
@@ -34,7 +34,10 @@ RDEPEND="virtual/libiconv
 DEPEND="${RDEPEND}
 	X? ( new-clx? ( x11-misc/imake x11-proto/xextproto ) )"
 
-PDEPEND="dev-lisp/gentoo-init"
+# dev-lisp/gentoo-init is obsolete, it will be dropped soon
+# This version of clisp is its last consumer
+# Bug 648448
+#PDEPEND="dev-lisp/gentoo-init"
 
 enable_modules() {
 	[[ $# = 0 ]] && die "${FUNCNAME[0]} must receive at least one argument"
