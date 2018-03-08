@@ -7,10 +7,10 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 if [ ${PV} == "9999" ] ; then
 	inherit git-r3 linux-mod
 	AUTOTOOLS_AUTORECONF="1"
-	EGIT_REPO_URI="https://github.com/zfsonlinux/${PN}.git"
+	EGIT_REPO_URI="git://github.com/zfsonlinux/${PN}.git"
 else
 	SRC_URI="https://github.com/zfsonlinux/${PN}/releases/download/${P}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~ppc ~ppc64"
+	KEYWORDS="~amd64"
 fi
 
 inherit autotools-utils bash-completion-r1 flag-o-matic linux-info python-r1 systemd toolchain-funcs udev
@@ -51,7 +51,12 @@ RDEPEND="${COMMON_DEPEND}
 		app-arch/cpio
 		app-misc/pax-utils
 		!<sys-boot/grub-2.00-r2:2
+		!<sys-kernel/genkernel-3.5.1.1
+		!<sys-kernel/genkernel-next-67
+		!<sys-kernel/bliss-initramfs-7.1.0
+		!<sys-kernel/dracut-044-r1
 		)
+	sys-fs/udev-init-scripts
 "
 
 AT_M4DIR="config"
@@ -87,12 +92,6 @@ src_prepare() {
 		-e "s|/sbin/parted|/usr/sbin/parted|" \
 		-i scripts/common.sh.in
 
-	if use kernel-builtin
-	then
-		einfo "kernel-builtin enabled, removing module loading from"
-		einfo "systemd units."
-		sed -i -e '/modprobe\ zfs/d' etc/systemd/system/*.service.in || die
-	fi
 	autotools-utils_src_prepare
 }
 
@@ -120,10 +119,6 @@ src_configure() {
 		sed -e "s:@sbindir@:${EPREFIX}/sbin:g" \
 			-e "s:@sysconfdir@:${EPREFIX}/etc:g" \
 		> "${T}/zfs-init.sh" || die
-	if use kernel-builtin
-	then
-		sed -i -e '/modprobe\ zfs/d' "${T}/zfs.service" || die
-	fi
 }
 
 src_install() {
