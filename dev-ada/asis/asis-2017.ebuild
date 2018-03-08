@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -30,10 +30,16 @@ PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 src_compile() {
 	emake PROCESSORS=$(makeopts_jobs)
-	emake tools PROCESSORS=$(makeopts_jobs)
+	emake tools PROCESSORS=$(makeopts_jobs) \
+		GPRBUILD_FLAGS="-vl \
+		-XLIBRARY_TYPE=relocatable \
+		-XXMLADA_BUILD=relocatable"
 }
 
 src_install() {
 	emake prefix="${D}"/usr install
-	emake prefix="${D}"/usr install-tools
+	emake prefix="${D}"/usr install-tools \
+		GPRINSTALL="gprinstall \
+		-XLIBRARY_TYPE=relocatable \
+		-XXMLADA_BUILD=relocatable"
 }
