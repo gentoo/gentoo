@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # Build written by Andrew John Hughes (gnu_andrew@member.fsf.org)
@@ -13,16 +13,16 @@ ICEDTEA_BRANCH=$(get_version_component_range 1-2)
 ICEDTEA_PKG=icedtea-${ICEDTEA_VER}
 ICEDTEA_PRE=$(get_version_component_range _)
 
-CORBA_TARBALL="13a5a8a3c66f.tar.xz"
-JAXP_TARBALL="947a7b1ce48b.tar.xz"
-JAXWS_TARBALL="eafb356c44d0.tar.xz"
-JDK_TARBALL="a05e38417041.tar.xz"
-LANGTOOLS_TARBALL="61a1c711f7ab.tar.xz"
-OPENJDK_TARBALL="eb577ed6ec93.tar.xz"
-NASHORN_TARBALL="a2d2fc80c97a.tar.xz"
-HOTSPOT_TARBALL="9bad7d4825fb.tar.xz"
-SHENANDOAH_TARBALL="7eeed7dc4676.tar.xz"
-AARCH32_TARBALL="7b008fa0fb6d.tar.xz"
+CORBA_TARBALL="872ca6c060bb.tar.xz"
+JAXP_TARBALL="154d73707643.tar.xz"
+JAXWS_TARBALL="3f0a3aea44b4.tar.xz"
+JDK_TARBALL="80cebaab0ba5.tar.xz"
+LANGTOOLS_TARBALL="0a2dce555d35.tar.xz"
+OPENJDK_TARBALL="644bdc77dd18.tar.xz"
+NASHORN_TARBALL="136ab780f038.tar.xz"
+HOTSPOT_TARBALL="074a569c30e4.tar.xz"
+SHENANDOAH_TARBALL="773364cde857.tar.xz"
+AARCH32_TARBALL="1cd346521065.tar.xz"
 
 CACAO_TARBALL="cacao-c182f119eaad.tar.xz"
 JAMVM_TARBALL="jamvm-ec18fb9e49e62dce16c5094ef1527eed619463aa.tar.gz"
@@ -246,6 +246,9 @@ src_configure() {
 	# In-tree JIT ports are available for amd64, arm, arm64, ppc64 (be&le), SPARC and x86.
 	if { use amd64 || use arm || use arm64 || use ppc64 || use sparc || use x86; }; then
 		hotspot_port="yes"
+
+		# Work around stack alignment issue, bug #647954.
+		use x86 && append-flags -mincoming-stack-boundary=2
 	fi
 
 	# Always use HotSpot as the primary VM if available. #389521 #368669 #357633 ...
