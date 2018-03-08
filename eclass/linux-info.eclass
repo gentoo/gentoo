@@ -630,7 +630,9 @@ get_running_version() {
 linux-info_get_any_version() {
 	if ! get_version; then
 		ewarn "Unable to calculate Linux Kernel version for build, attempting to use running version"
-		get_running_version
+		if ! get_running_version; then
+			die "Unable to determine any Linux Kernel version, please report a bug"
+		fi
 	fi
 }
 
