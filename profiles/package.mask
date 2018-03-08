@@ -54,7 +54,7 @@ dev-db/maxscale
 
 # Lars Wendler <polynomial-c@gentoo.org> (06 Mar 2018)
 # Masked as it breaks x2go
-=net-misc/nx-3.5.99.14
+=net-misc/nx-3.5.99.15
 =net-misc/x2goserver-4.1.0.0-r1
 
 # Andreas Sturmlechner <asturm@gentoo.org> (06 Mar 2018)
