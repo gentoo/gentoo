@@ -5,7 +5,7 @@ EAPI=5
 inherit vim-plugin
 
 DESCRIPTION="vim plugin: secure, user-configurable modeline support"
-HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=1876 https://github.com/ciaranm/securemodelines"
+HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=1876 https://github.com/ciaranm/securemodelines"
 LICENSE="vim"
 KEYWORDS="alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd"
 
