@@ -7394,7 +7394,7 @@ media-libs/gstreamer-editing-services 1.12.3: SDK for making video editors and m
 media-libs/guilib 1.2.1: a simple widget set for SDL
 media-libs/gupnp-dlna 0.10.4 0.10.5: Library providing DLNA-related functionality for MediaServers
 media-libs/hamlib 3.1: Ham radio backend rig control libraries
-media-libs/harfbuzz 1.4.5 1.4.6-r2 1.7.2: An OpenType text shaping engine
+media-libs/harfbuzz 1.7.2: An OpenType text shaping engine
 media-libs/id3lib 3.8.3-r8: Id3 library for C/C++
 media-libs/ilmbase 1.0.2 2.1.0 2.2.0-r1: OpenEXR ILM Base libraries
 media-libs/imlib 1.9.15-r5: Image loading and rendering library
@@ -10017,7 +10017,7 @@ sys-fs/btrfsmaintenance 0.3.1: Scripts for btrfs maintenance tasks like periodic
 sys-fs/cachefilesd 0.10.5-r4 0.10.9: Provides a caching directory on an already mounted filesystem
 sys-fs/cramfs 1.1: Linux filesystem designed to be simple, small, and to compress things well
 sys-fs/cryfs 0.9.7: Encrypted FUSE filesystem that conceals metadata
-sys-fs/cryptsetup 1.7.4 1.7.5: Tool to setup encrypted devices with dm-crypt
+sys-fs/cryptsetup 1.7.5: Tool to setup encrypted devices with dm-crypt
 sys-fs/ctmg 1.2: Simple wrapper around cryptsetup for encrypted containers
 sys-fs/dd-rescue 1.46: Similar to dd but can copy from source with errors
 sys-fs/ddrescue 1.21-r1: Copy data from one file or block device to another with read-error recovery
