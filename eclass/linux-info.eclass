@@ -110,6 +110,8 @@ inherit toolchain-funcs versionator
 
 EXPORT_FUNCTIONS pkg_setup
 
+IUSE="kernel_linux"
+
 # Overwritable environment Var's
 # ---------------------------------------
 KERNEL_DIR="${KERNEL_DIR:-${ROOT}usr/src/linux}"
@@ -688,8 +690,10 @@ check_modules_supported() {
 # @FUNCTION: check_extra_config
 # @DESCRIPTION:
 # It checks the kernel config options specified by CONFIG_CHECK. It dies only when a required config option (i.e.
-# the prefix ~ is not used) doesn't satisfy the directive.
+# the prefix ~ is not used) doesn't satisfy the directive. Ignored on non-Linux systems.
 check_extra_config() {
+	use kernel_linux || return
+
 	local config negate die error reworkmodulenames
 	local soft_errors_count=0 hard_errors_count=0 config_required=0
 	# store the value of the QA check, because otherwise we won't catch usages
@@ -902,6 +906,8 @@ check_zlibinflate() {
 # Force a get_version() call when inherited from linux-mod.eclass and then check if the kernel is configured
 # to support the options specified in CONFIG_CHECK (if not null)
 linux-info_pkg_setup() {
+	use kernel_linux || return
+
 	linux-info_get_any_version
 
 	if kernel_is 2 4; then
