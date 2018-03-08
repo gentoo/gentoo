@@ -295,6 +295,7 @@ require_configured_kernel() {
 		qeerror "it points to the necessary object directory so that it might find .config."
 		die "Kernel not configured; no .config found in ${KV_OUT_DIR}"
 	fi
+	get_version
 }
 
 # @FUNCTION: linux_chkconfig_present
@@ -646,7 +647,6 @@ linux-info_get_any_version() {
 check_kernel_built() {
 	# if we haven't determined the version yet, we need to
 	require_configured_kernel
-	get_version
 
 	local versionh_path
 	if kernel_is -ge 3 7; then
@@ -676,7 +676,6 @@ check_kernel_built() {
 check_modules_supported() {
 	# if we haven't determined the version yet, we need too.
 	require_configured_kernel
-	get_version
 
 	if ! linux_chkconfig_builtin "MODULES"; then
 		eerror "These sources do not support loading external modules."
@@ -831,7 +830,6 @@ check_extra_config() {
 check_zlibinflate() {
 	# if we haven't determined the version yet, we need to
 	require_configured_kernel
-	get_version
 
 	# although I restructured this code - I really really really dont support it!
 
