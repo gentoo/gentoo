@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -118,6 +118,7 @@ src_configure() {
 		$(use_enable tiering) \
 		$(use_enable xml xml-output) \
 		$(use_with libtirpc ipv6-default) \
+		$(use_with libtirpc) \
 		--with-tmpfilesdir="${EPREFIX}"/etc/tmpfiles.d \
 		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
 		--localstatedir="${EPREFIX}"/var
@@ -177,7 +178,7 @@ src_install() {
 	newconfd "${FILESDIR}/${PN}.confd" glusterfsd
 
 	keepdir /var/log/${PN}
-	keepdir /var/lib/glusterd
+	keepdir /var/lib/glusterd/{events,glusterfind/.keys}
 
 	# QA
 	rm -r "${ED}/var/run/" || die
