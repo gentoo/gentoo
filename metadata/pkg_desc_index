@@ -3269,7 +3269,6 @@ dev-lisp/common-lisp-controller 4.27 5.13-r1: Common Lisp Controller
 dev-lisp/ecls 13.5.1-r1: ECL is an embeddable Common Lisp implementation
 dev-lisp/flexi-streams 1.0.16: Flexible bivalent streams for Common Lisp
 dev-lisp/gcl 2.6.10: GNU Common Lisp
-dev-lisp/gentoo-init 0.1 1.0: Simple ASDF2 configuration for Gentoo Common Lisp ports
 dev-lisp/hyperspec 7.0-r1: Common Lisp ANSI-standard Hyperspec
 dev-lisp/sbcl 1.3.11: Steel Bank Common Lisp (SBCL) is an implementation of ANSI Common Lisp
 dev-lisp/trivial-gray-streams 20170830: A thin compatibility layer between Gray Stream Common Lisp implementations
