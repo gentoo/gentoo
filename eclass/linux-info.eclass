@@ -295,7 +295,7 @@ require_configured_kernel() {
 		qeerror "it points to the necessary object directory so that it might find .config."
 		die "Kernel not configured; no .config found in ${KV_OUT_DIR}"
 	fi
-	get_version
+	get_version || die "Unable to determine configured kernel version"
 }
 
 # @FUNCTION: linux_chkconfig_present
