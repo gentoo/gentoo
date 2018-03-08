@@ -832,7 +832,7 @@ app-i18n/canna 3.7_p3-r1: A client-server based Kana-Kanji conversion system
 app-i18n/cstools 3.42: A charset conversion tool cstocs and two Perl modules for Czech language
 app-i18n/dbskkd-cdb 2.00: SKK dictionary server based on cdb
 app-i18n/enca 1.19-r1: Detect and convert encoding of text files
-app-i18n/fcitx 4.2.9.4 4.2.9.5: Fcitx (Flexible Context-aware Input Tool with eXtension) input method framework
+app-i18n/fcitx 4.2.9.4 4.2.9.5 4.2.9.6: Fcitx (Flexible Context-aware Input Tool with eXtension) input method framework
 app-i18n/fcitx-anthy 0.2.3: Japanese Anthy input methods for Fcitx
 app-i18n/fcitx-chewing 0.2.3: Chinese Chewing input method for Fcitx
 app-i18n/fcitx-cloudpinyin 0.3.5 0.3.6: Internet look-up support for Chinese Pinyin input methods for Fcitx
@@ -840,7 +840,7 @@ app-i18n/fcitx-configtool 0.4.10: GTK+ GUI configuration tool for Fcitx
 app-i18n/fcitx-hangul 0.3.1: Korean Hangul input method for Fcitx
 app-i18n/fcitx-libpinyin 0.5.3: Chinese LibPinyin input methods for Fcitx
 app-i18n/fcitx-m17n 0.2.4: m17n-provided input methods for Fcitx
-app-i18n/fcitx-qt5 1.1.1 1.2.1: Fcitx input method module for Qt 5
+app-i18n/fcitx-qt5 1.1.1 1.2.1 1.2.2: Fcitx input method module for Qt 5
 app-i18n/fcitx-rime 0.3.2: Chinese RIME input method for Fcitx
 app-i18n/fcitx-sayura 0.1.2: Sinhala Sayura input method for Fcitx
 app-i18n/fcitx-sunpinyin 0.4.2: Chinese SunPinyin input method for Fcitx
@@ -883,6 +883,7 @@ app-i18n/man-pages-pl 0_pre20070628-r2: A collection of Polish translations of L
 app-i18n/man-pages-ro 0.2: A somewhat comprehensive collection of Romanian Linux man pages
 app-i18n/man-pages-ru 4.08.2329.2329.20170422: A collection of Russian translations of Linux manual pages
 app-i18n/man-pages-zh_CN 1.5: A somewhat comprehensive collection of Chinese Linux man pages
+app-i18n/mozc 2.20.2673.102: Mozc - Japanese input method editor
 app-i18n/multiskkserv 20100128: SKK server that handles multiple dictionaries
 app-i18n/nkf 2.1.3: Network Kanji code conversion Filter with UTF-8/16 support
 app-i18n/opencc 1.0.5: Libraries for conversion between Traditional and Simplified Chinese
@@ -905,6 +906,7 @@ app-i18n/skkserv 9.6-r3: Dictionary server for the SKK Japanese-input software
 app-i18n/skktools 1.3.3_p20150901: SKK utilities to manage dictionaries
 app-i18n/sunpinyin 2.0.4_pre20130108-r1: A Statistical Language Model based Chinese input method library
 app-i18n/sunpinyin-data 20130220: Data sets for Sunpinyin
+app-i18n/tegaki-zinnia-japanese 0.3: Handwriting model data of Japanese
 app-i18n/tomoe 0.6.0-r2 0.6.0-r3: Japanese handwriting recognition engine
 app-i18n/tomoe-gtk 0.6.0-r4: Tomoe GTK+ interface widget library
 app-i18n/transifex-client 0.10: A command line interface for Transifex
@@ -1877,7 +1879,7 @@ dev-db/slony1 2.1.3 2.2.6: A replication system for the PostgreSQL Database Mana
 dev-db/spatialite 4.3.0-r1: A complete Spatial DBMS in a nutshell built upon sqlite
 dev-db/sqlcipher 3.4.1: Full Database Encryption for SQLite
 dev-db/sqldeveloper 4.0.2.15.21: Oracle SQL Developer is a graphical tool for database development
-dev-db/sqlite 3.19.3 3.20.1-r1 3.21.0: A SQL Database Engine in a C Library
+dev-db/sqlite 3.19.3 3.20.1-r1 3.21.0 3.22.0: A SQL Database Engine in a C Library
 dev-db/sqlitebrowser 3.9.1-r1: SQLite Database Browser
 dev-db/sqliteman 1.2.2-r4: Powerful GUI manager for the Sqlite3 database
 dev-db/sqliteodbc 0.96: ODBC driver to access local SQLite database files
@@ -6167,6 +6169,7 @@ dev-util/gtk-builder-convert 2.24.31-r1: Converts Glade files to GtkBuilder XML 
 dev-util/gtk-doc 1.25-r1: GTK+ Documentation Generator
 dev-util/gtk-doc-am 1.25-r1: Automake files from gtk-doc
 dev-util/gtk-update-icon-cache 3.22.19: GTK update icon cache
+dev-util/gyp 20170904022846: GYP (Generate Your Projects) meta-build system
 dev-util/howdoi 1.1.9: A code search tool
 dev-util/huc 0.1-r1: HTML umlaut conversion tool
 dev-util/indent 2.2.11-r1: Indent program source files
@@ -8508,7 +8511,7 @@ net-irc/irssi 1.0.4 1.0.5 1.0.6: A modular textUI IRC client with IPv6 support
 net-irc/irssi-otr 1.0.0-r1: Off-The-Record messaging (OTR) for irssi
 net-irc/irssistats 0.75: Generates HTML IRC stats based on irssi logs
 net-irc/konversation 1.7.4: A user friendly IRC Client
-net-irc/kvirc 5.0_pre20171001143427 5.0_pre20171211100641: Advanced IRC Client
+net-irc/kvirc 5.0_pre20171001143427 5.0_pre20171211100641 5.0_pre20180209140255: Advanced IRC Client
 net-irc/muh 2.2a-r1: Persistent IRC bouncer
 net-irc/ngircd 23-r1 24: An IRC server written from scratch
 net-irc/ninja 1.5.9_pre14-r1: Ninja IRC Client
