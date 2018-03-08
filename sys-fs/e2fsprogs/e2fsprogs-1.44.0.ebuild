@@ -38,7 +38,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.42.13-fix-build-cflags.patch #516854
 
 	# Upstream patches (can usually removed with next version bump)
-	"${FILESDIR}"/${PN}-1.43.8-big-endian.patch
 )
 
 src_prepare() {

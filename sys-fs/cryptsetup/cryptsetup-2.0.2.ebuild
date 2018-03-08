@@ -50,10 +50,6 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${P/_/-}"
 
-PATCHES=(
-	"${FILESDIR}/${P}-pwquality_static.patch" #641226
-)
-
 pkg_setup() {
 	local CONFIG_CHECK="~DM_CRYPT ~CRYPTO ~CRYPTO_CBC ~CRYPTO_SHA256"
 	local WARNING_DM_CRYPT="CONFIG_DM_CRYPT:\tis not set (required for cryptsetup)\n"

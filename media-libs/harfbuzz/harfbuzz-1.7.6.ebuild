@@ -1,25 +1,27 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-EGIT_REPO_URI="https://anongit.freedesktop.org/git/harfbuzz.git"
-[[ ${PV} == 9999 ]] && inherit git-r3 autotools
-
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils libtool multilib-minimal python-any-r1 xdg-utils
+inherit flag-o-matic libtool ltprune multilib-minimal python-any-r1 xdg-utils
 
 DESCRIPTION="An OpenType text shaping engine"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/HarfBuzz"
-[[ ${PV} == 9999 ]] || SRC_URI="https://www.freedesktop.org/software/harfbuzz/release/${P}.tar.bz2"
+
+if [[ ${PV} = 9999 ]] ; then
+	EGIT_REPO_URI="https://anongit.freedesktop.org/git/harfbuzz.git"
+	inherit git-r3 autotools
+else
+	SRC_URI="https://www.freedesktop.org/software/${PN}/release/${P}.tar.bz2"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~x64-macos ~x86-macos ~x64-solaris"
+fi
 
 LICENSE="Old-MIT ISC icu"
 SLOT="0/0.9.18" # 0.9.18 introduced the harfbuzz-icu split; bug #472416
-[[ ${PV} == 9999 ]] || \
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~x64-macos ~x86-macos ~x64-solaris"
 
-IUSE="+cairo fontconfig +glib +graphite icu +introspection static-libs test +truetype"
+IUSE="+cairo debug fontconfig +glib +graphite icu +introspection static-libs test +truetype"
 REQUIRED_USE="introspection? ( glib )"
 
 RDEPEND="
@@ -38,13 +40,18 @@ DEPEND="${RDEPEND}
 "
 # eautoreconf requires gobject-introspection-common
 # ragel needed if regenerating *.hh files from *.rl
-[[ ${PV} = 9999 ]] && DEPEND="${DEPEND}
-	>=dev-libs/gobject-introspection-common-1.34
-	dev-util/ragel
-"
+if [[ ${PV} = 9999 ]] ; then
+	DEPEND+="
+		>=dev-libs/gobject-introspection-common-1.34
+		dev-util/ragel
+	"
+fi
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
+	if ! use debug ; then
+		append-cppflags -DHB_NDEBUG
+	fi
 }
 
 src_prepare() {
@@ -72,23 +79,27 @@ src_prepare() {
 
 	# failing test, https://bugs.freedesktop.org/show_bug.cgi?id=89190
 	sed -e 's#tests/arabic-fallback-shaping.tests##' -i test/shaping/Makefile.in || die "sed failed"
+
+	# bug 618772
+	append-cxxflags -std=c++14
 }
 
 multilib_src_configure() {
-	ECONF_SOURCE="${S}" \
 	# harfbuzz-gobject only used for instrospection, bug #535852
-	econf \
-		--without-coretext \
-		--without-uniscribe \
-		$(use_enable static-libs static) \
-		$(multilib_native_use_with cairo) \
-		$(use_with fontconfig) \
-		$(use_with glib) \
-		$(use_with introspection gobject) \
-		$(use_with graphite graphite2) \
-		$(use_with icu) \
-		$(multilib_native_use_enable introspection) \
+	local myeconfargs=(
+		--without-coretext
+		--without-uniscribe
+		$(use_enable static-libs static)
+		$(multilib_native_use_with cairo)
+		$(use_with fontconfig)
+		$(use_with glib)
+		$(use_with introspection gobject)
+		$(use_with graphite graphite2)
+		$(use_with icu)
+		$(multilib_native_use_enable introspection)
 		$(use_with truetype freetype)
+	)
+	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 
 	if multilib_is_native_abi; then
 		ln -s "${S}"/docs/html docs/html || die
