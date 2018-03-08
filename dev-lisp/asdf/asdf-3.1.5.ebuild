@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
+
 inherit eutils prefix
 
 DESCRIPTION="ASDF is Another System Definition Facility for Common Lisp"
@@ -17,7 +18,6 @@ SLOT="0/${PVR}"
 
 DEPEND="!dev-lisp/cl-${PN}
 		!dev-lisp/asdf-binary-locations
-		!<dev-lisp/gentoo-init-1.0
 		!<dev-lisp/asdf-2.33-r3
 		doc? ( virtual/texi2dvi )"
 RDEPEND=""
