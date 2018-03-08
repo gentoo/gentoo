@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ else
 fi
 
 DESCRIPTION="vim plugin: syntax checking using external tools"
-HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=2736 https://github.com/scrooloose/syntastic/"
+HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=2736 https://github.com/scrooloose/syntastic/"
 LICENSE="WTFPL-2"
 
 VIM_PLUGIN_HELPFILES="${PN}"
