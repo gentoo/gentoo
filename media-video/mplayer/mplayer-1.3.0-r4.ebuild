@@ -560,7 +560,7 @@ src_install() {
 	docinto tech/
 	dodoc DOCS/tech/{*.txt,MAINTAINERS,mpsub.sub,playtree,TODO,wishlist}
 	docinto TOOLS/
-	dodoc -r TOOLS
+	dodoc -r TOOLS/*
 	docinto tech/mirrors/
 	dodoc DOCS/tech/mirrors/*
 
