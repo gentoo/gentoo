@@ -628,8 +628,7 @@ get_running_version() {
 # This attempts to find the version of the sources, and otherwise falls back to
 # the version of the running kernel.
 linux-info_get_any_version() {
-	get_version
-	if [[ $? -ne 0 ]]; then
+	if ! get_version; then
 		ewarn "Unable to calculate Linux Kernel version for build, attempting to use running version"
 		get_running_version
 	fi
@@ -848,13 +847,11 @@ check_zlibinflate() {
 
 	ebegin "checking ZLIB_INFLATE"
 	linux_chkconfig_builtin CONFIG_ZLIB_INFLATE
-	eend $?
-	[ "$?" != 0 ] && die
+	eend $? || die
 
 	ebegin "checking ZLIB_DEFLATE"
 	linux_chkconfig_builtin CONFIG_ZLIB_DEFLATE
-	eend $?
-	[ "$?" != 0 ] && die
+	eend $? || die
 
 	local LINENO_START
 	local LINENO_END
