@@ -240,6 +240,10 @@ linux_config_qa_check() {
 		ewarn "QA: You called $f before any linux_config_exists!"
 		ewarn "QA: The return value of $f will NOT guaranteed later!"
 	fi
+
+	if ! use kernel_linux; then
+		die "$f called on non-Linux system, please fix the ebuild"
+	fi
 }
 
 # @FUNCTION: linux_config_src_exists
@@ -290,6 +294,10 @@ linux_config_path() {
 # This function verifies that the current kernel is configured (it checks against the existence of .config)
 # otherwise it dies.
 require_configured_kernel() {
+	if ! use kernel_linux; then
+		die "${FUNCNAME}() called on non-Linux system, please fix the ebuild"
+	fi
+
 	if ! linux_config_src_exists; then
 		qeerror "Could not find a usable .config in the kernel source directory."
 		qeerror "Please ensure that ${KERNEL_DIR} points to a configured set of Linux sources."
@@ -369,6 +377,10 @@ linux_chkconfig_string() {
 
 # Note: duplicated in kernel-2.eclass
 kernel_is() {
+	if ! use kernel_linux; then
+		die "${FUNCNAME}() called on non-Linux system, please fix the ebuild"
+	fi
+
 	# if we haven't determined the version yet, we need to.
 	linux-info_get_any_version
 
@@ -439,6 +451,10 @@ get_version_warning_done=
 # KBUILD_OUTPUT (in a decreasing priority list, we look for the env var, makefile var or the
 # symlink /lib/modules/${KV_MAJOR}.${KV_MINOR}.${KV_PATCH}${KV_EXTRA}/build).
 get_version() {
+	if ! use kernel_linux; then
+		die "${FUNCNAME}() called on non-Linux system, please fix the ebuild"
+	fi
+
 	local tmplocal
 
 	# no need to execute this twice assuming KV_FULL is populated.
@@ -592,6 +608,10 @@ get_version() {
 # It gets the version of the current running kernel and the result is the same as get_version() if the
 # function can find the sources.
 get_running_version() {
+	if ! use kernel_linux; then
+		die "${FUNCNAME}() called on non-Linux system, please fix the ebuild"
+	fi
+
 	KV_FULL=$(uname -r)
 
 	if [[ -f ${ROOT}/lib/modules/${KV_FULL}/source/Makefile && -f ${ROOT}/lib/modules/${KV_FULL}/build/Makefile ]]; then
@@ -631,6 +651,10 @@ get_running_version() {
 # This attempts to find the version of the sources, and otherwise falls back to
 # the version of the running kernel.
 linux-info_get_any_version() {
+	if ! use kernel_linux; then
+		die "${FUNCNAME}() called on non-Linux system, please fix the ebuild"
+	fi
+
 	if ! get_version; then
 		ewarn "Unable to calculate Linux Kernel version for build, attempting to use running version"
 		if ! get_running_version; then
@@ -647,6 +671,10 @@ linux-info_get_any_version() {
 # @DESCRIPTION:
 # This function verifies that the current kernel sources have been already prepared otherwise it dies.
 check_kernel_built() {
+	if ! use kernel_linux; then
+		die "${FUNCNAME}() called on non-Linux system, please fix the ebuild"
+	fi
+
 	# if we haven't determined the version yet, we need to
 	require_configured_kernel
 
@@ -676,6 +704,10 @@ check_kernel_built() {
 # @DESCRIPTION:
 # This function verifies that the current kernel support modules (it checks CONFIG_MODULES=y) otherwise it dies.
 check_modules_supported() {
+	if ! use kernel_linux; then
+		die "${FUNCNAME}() called on non-Linux system, please fix the ebuild"
+	fi
+
 	# if we haven't determined the version yet, we need too.
 	require_configured_kernel
 
@@ -832,6 +864,10 @@ check_extra_config() {
 }
 
 check_zlibinflate() {
+	if ! use kernel_linux; then
+		die "${FUNCNAME}() called on non-Linux system, please fix the ebuild"
+	fi
+
 	# if we haven't determined the version yet, we need to
 	require_configured_kernel
 
