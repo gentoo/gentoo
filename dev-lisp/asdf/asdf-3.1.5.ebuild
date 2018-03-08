@@ -17,7 +17,6 @@ SLOT="0/${PVR}"
 
 DEPEND="!dev-lisp/cl-${PN}
 		!dev-lisp/asdf-binary-locations
-		!<dev-lisp/gentoo-init-1.0
 		!<dev-lisp/asdf-2.33-r3
 		doc? ( virtual/texi2dvi )"
 RDEPEND=""
