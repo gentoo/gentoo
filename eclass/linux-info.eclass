@@ -252,7 +252,7 @@ linux_config_qa_check() {
 # It returns true if .config exists in a build directory otherwise false
 linux_config_src_exists() {
 	export _LINUX_CONFIG_EXISTS_DONE=1
-	[[ -n ${KV_OUT_DIR} && -s ${KV_OUT_DIR}/.config ]]
+	use kernel_linux && [[ -n ${KV_OUT_DIR} && -s ${KV_OUT_DIR}/.config ]]
 }
 
 # @FUNCTION: linux_config_bin_exists
@@ -261,7 +261,7 @@ linux_config_src_exists() {
 # It returns true if .config exists in /proc, otherwise false
 linux_config_bin_exists() {
 	export _LINUX_CONFIG_EXISTS_DONE=1
-	[[ -s /proc/config.gz ]]
+	use kernel_linux && [[ -s /proc/config.gz ]]
 }
 
 # @FUNCTION: linux_config_exists
