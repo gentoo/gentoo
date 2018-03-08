@@ -10,7 +10,7 @@ if [ ${PV} == "9999" ] ; then
 	EGIT_REPO_URI="https://github.com/zfsonlinux/${PN}.git"
 else
 	SRC_URI="https://github.com/zfsonlinux/${PN}/releases/download/${P}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~ppc ~ppc64"
+	KEYWORDS="~amd64"
 fi
 
 inherit autotools-utils bash-completion-r1 flag-o-matic linux-info python-r1 systemd toolchain-funcs udev
@@ -33,7 +33,10 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 "
 
+# Adding glibc >= 2.25 blocker for ZFS versions lower
+# than 0.7.0, due to bug 617628.
 RDEPEND="${COMMON_DEPEND}
+	!>=sys-libs/glibc-2.25
 	!=sys-apps/grep-2.13*
 	!kernel-builtin? ( =sys-fs/zfs-kmod-${PV}* )
 	!sys-fs/zfs-fuse
@@ -52,6 +55,7 @@ RDEPEND="${COMMON_DEPEND}
 		app-misc/pax-utils
 		!<sys-boot/grub-2.00-r2:2
 		)
+	sys-fs/udev-init-scripts
 "
 
 AT_M4DIR="config"
@@ -87,12 +91,6 @@ src_prepare() {
 		-e "s|/sbin/parted|/usr/sbin/parted|" \
 		-i scripts/common.sh.in
 
-	if use kernel-builtin
-	then
-		einfo "kernel-builtin enabled, removing module loading from"
-		einfo "systemd units."
-		sed -i -e '/modprobe\ zfs/d' etc/systemd/system/*.service.in || die
-	fi
 	autotools-utils_src_prepare
 }
 
@@ -120,10 +118,6 @@ src_configure() {
 		sed -e "s:@sbindir@:${EPREFIX}/sbin:g" \
 			-e "s:@sysconfdir@:${EPREFIX}/etc:g" \
 		> "${T}/zfs-init.sh" || die
-	if use kernel-builtin
-	then
-		sed -i -e '/modprobe\ zfs/d' "${T}/zfs.service" || die
-	fi
 }
 
 src_install() {

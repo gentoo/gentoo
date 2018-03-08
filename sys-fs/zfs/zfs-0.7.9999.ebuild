@@ -97,7 +97,7 @@ src_configure() {
 		--bindir="${EPREFIX}/bin"
 		--sbindir="${EPREFIX}/sbin"
 		--with-config=user
-		--with-dracutdir="/usr/$(get_libdir)/dracut"
+		--with-dracutdir="${EPREFIX}/usr/lib/dracut"
 		--with-linux="${KV_DIR}"
 		--with-linux-obj="${KV_OUT_DIR}"
 		--with-udevdir="$(get_udevdir)"

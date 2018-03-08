@@ -4,12 +4,17 @@
 EAPI="5"
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
+AT_M4DIR="config"
+AUTOTOOLS_AUTORECONF="1"
+AUTOTOOLS_IN_SOURCE_BUILD="1"
+
 if [ ${PV} == "9999" ] ; then
 	inherit git-r3 linux-mod
 	AUTOTOOLS_AUTORECONF="1"
 	EGIT_REPO_URI="https://github.com/zfsonlinux/${PN}.git"
 else
-	SRC_URI="https://github.com/zfsonlinux/${PN}/releases/download/${P}/${P}.tar.gz"
+	SRC_URI="https://github.com/zfsonlinux/${PN}/releases/download/${P}/${P}.tar.gz
+		https://dev.gentoo.org/~ryao/dist/${P}-patches-p2.tar.xz"
 	KEYWORDS="~amd64 ~arm ~ppc ~ppc64"
 fi
 
@@ -33,9 +38,15 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 "
 
+# Adding glibc >= 2.25 blocker for ZFS versions lower
+# than 0.7.0, due to bug 617628.
 RDEPEND="${COMMON_DEPEND}
+	!>=sys-libs/glibc-2.25
 	!=sys-apps/grep-2.13*
-	!kernel-builtin? ( =sys-fs/zfs-kmod-${PV}* )
+	!kernel-builtin? (
+		=sys-fs/zfs-kmod-${PV}*
+		!<sys-fs/zfs-kmod-0.6.5.3-r1
+		)
 	!sys-fs/zfs-fuse
 	!prefix? ( virtual/udev )
 	test-suite? (
@@ -52,6 +63,7 @@ RDEPEND="${COMMON_DEPEND}
 		app-misc/pax-utils
 		!<sys-boot/grub-2.00-r2:2
 		)
+	!>=sys-fs/udev-init-scripts-28
 "
 
 AT_M4DIR="config"
@@ -81,18 +93,20 @@ pkg_setup() {
 }
 
 src_prepare() {
+	if [ ${PV} != "9999" ]
+	then
+		# Apply patch set
+		EPATCH_SUFFIX="patch" \
+		EPATCH_FORCE="yes" \
+		epatch "${WORKDIR}/${P}-patches"
+	fi
+
 	# Update paths
 	sed -e "s|/sbin/lsmod|/bin/lsmod|" \
 		-e "s|/usr/bin/scsi-rescan|/usr/sbin/rescan-scsi-bus|" \
 		-e "s|/sbin/parted|/usr/sbin/parted|" \
 		-i scripts/common.sh.in
 
-	if use kernel-builtin
-	then
-		einfo "kernel-builtin enabled, removing module loading from"
-		einfo "systemd units."
-		sed -i -e '/modprobe\ zfs/d' etc/systemd/system/*.service.in || die
-	fi
 	autotools-utils_src_prepare
 }
 
@@ -120,10 +134,6 @@ src_configure() {
 		sed -e "s:@sbindir@:${EPREFIX}/sbin:g" \
 			-e "s:@sysconfdir@:${EPREFIX}/etc:g" \
 		> "${T}/zfs-init.sh" || die
-	if use kernel-builtin
-	then
-		sed -i -e '/modprobe\ zfs/d' "${T}/zfs.service" || die
-	fi
 }
 
 src_install() {
@@ -197,6 +207,22 @@ pkg_postinst() {
 		rm "${EROOT}etc/runlevels/shutdown/zfs-shutdown"
 	fi
 
+	einfo "sys-kernel/spl-0.6.5.3-r1, sys-fs/zfs-kmod-0.6.5.3-r1 and "
+	einfo "sys-fs/zfs-0.6.5.3-r1 have introduced a partial stable "
+	einfo "/dev/zfs API developed by ClusterHQ. This means that situations "
+	einfo "arising from the kernel modules and userland tools being "
+	einfo "mismatched on future updates will not cause problems."
+	einfo
+	einfo "In specific, this should solve the failure to mount filesystems when "
+	einfo "old modules are cached in an old initramfs provided that those "
+	einfo "modules support this API"
+	if use rootfs
+	then
+		einfo
+		ewarn "The older modules will *NOT* work with the new userland code."
+		ewarn "It is very important that you update your initramfs after this "
+		ewarn "update."
+	fi
 }
 
 pkg_postrm() {
