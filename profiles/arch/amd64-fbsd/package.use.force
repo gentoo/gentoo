@@ -1,5 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+# Michał Górny <mgorny@gentoo.org> (09 Mar 2018)
+# Using stdlibc++ is broken on FreeBSD, so just force libcxx.
+sys-devel/clang default-libcxx
 
 # Michał Górny <mgorny@gentoo.org> (08 Apr 2017)
 # Require sandbox to be multilib-capable to avoid failures when building
