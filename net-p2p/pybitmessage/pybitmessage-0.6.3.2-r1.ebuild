@@ -50,6 +50,12 @@ RDEPEND="${DEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
+python_prepare_all() {
+	# allow useage of renamed msgpack
+	sed -i '/msgpack-python/d' setup.py || die
+	distutils-r1_python_prepare_all
+}
+
 src_install () {
 	distutils-r1_src_install
 	dodoc README.md
