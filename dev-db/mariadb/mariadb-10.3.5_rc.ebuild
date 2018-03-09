@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-MY_EXTRAS_VER="20180228-1611Z"
+MY_EXTRAS_VER="20180308-1938Z"
 SUBSLOT="18"
 
 JAVA_PKG_OPT_USE="jdbc"
@@ -51,6 +51,10 @@ KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc64 ~sparc ~x86"
 S="${WORKDIR}/mysql"
 
 if [[ "${MY_EXTRAS_VER}" == "live" ]] ; then
+	inherit git-r3
+	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/mysql-extras.git"
+	EGIT_CHECKOUT_DIR="${WORKDIR}/mysql-extras"
+	EGIT_CLONE_TYPE=shallow
 	MY_PATCH_DIR="${WORKDIR}/mysql-extras"
 else
 	MY_PATCH_DIR="${WORKDIR}/mysql-extras-${MY_EXTRAS_VER}"
@@ -692,6 +696,12 @@ src_test() {
 		main.mysql_client_test_comp rpl.rpl_extra_col_master_myisam ; do
 			_disable_test  "$t" "False positives in Gentoo"
 	done
+
+	if ! use client-libs ; then
+		_disable_test main.plugin_auth "Needs client libraries built"
+	fi
+
+	_disable_test main.mysql "Bogus error text mismatch failure"
 
 	# run mysql-test tests
 	perl mysql-test-run.pl --force --vardir="${T}/var-tests" --reorder --skip-test=tokudb --skip-test-list="${T}/disabled.def"
