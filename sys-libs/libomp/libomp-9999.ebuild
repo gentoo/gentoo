@@ -99,7 +99,7 @@ multilib_src_configure() {
 	use test && mycmakeargs+=(
 		# this project does not use standard LLVM cmake macros
 		-DOPENMP_LLVM_LIT_EXECUTABLE="${EPREFIX}/usr/bin/lit"
-		-DLLVM_LIT_ARGS="-vv;-j;${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}"
+		-DOPENMP_LIT_ARGS="-vv;-j;${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}"
 
 		-DOPENMP_TEST_C_COMPILER="$(type -P "${CHOST}-clang")"
 		-DOPENMP_TEST_CXX_COMPILER="$(type -P "${CHOST}-clang++")"
