@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -33,6 +33,7 @@ RDEPEND="sys-apps/pciutils
 	>=dev-python/requests-1.0.0[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=www-servers/tornado-4.2.1[${PYTHON_USEDEP}]
+	<www-servers/tornado-5.0[${PYTHON_USEDEP}]
 	virtual/python-futures[${PYTHON_USEDEP}]
 	libcloud? ( >=dev-python/libcloud-0.14.0[${PYTHON_USEDEP}] )
 	mako? ( dev-python/mako[${PYTHON_USEDEP}] )
@@ -88,12 +89,16 @@ RESTRICT="x86? ( test )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2017.7.0-dont-realpath-tmpdir.patch"
+	"${FILESDIR}/${PN}-2017.7.3-tests.patch"
 )
 
 python_prepare() {
 	rm tests/unit/{test_zypp_plugins.py,utils/test_extend.py} || die
 	rm tests/unit/modules/test_boto_{vpc,secgroup,elb}.py || die
 	rm tests/unit/states/test_boto_vpc.py || die
+	rm tests/unit/modules/test_kubernetes.py || die
+	# allow the use of the renamed msgpack
+	sed -i '/^msgpack/d' requirements/base.txt || die
 }
 
 python_install_all() {
