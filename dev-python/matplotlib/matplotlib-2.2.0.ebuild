@@ -48,6 +48,7 @@ COMMON_DEPEND="
 	media-libs/freetype:2
 	media-libs/libpng:0
 	>=media-libs/qhull-2013
+	dev-python/kiwisolver[${PYTHON_USEDEP}]
 	cairo? ( dev-python/cairocffi[${PYTHON_USEDEP}] )
 	gtk2? (
 		dev-libs/glib:2=
@@ -79,7 +80,6 @@ DEPEND="${COMMON_DEPEND}
 		dev-texlive/texlive-fontsrecommended
 		dev-texlive/texlive-latexrecommended
 		media-gfx/graphviz[cairo]
-		dev-python/kiwisolver[${PYTHON_USEDEP}]
 	)
 	test? (
 		dev-python/mock[${PYTHON_USEDEP}]
