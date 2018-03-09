@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-MY_EXTRAS_VER="20180209-2142Z"
+MY_EXTRAS_VER="20180308-1938Z"
 # The wsrep API version must match between upstream WSREP and sys-cluster/galera major number
 WSREP_REVISION="25"
 SUBSLOT="18"
@@ -32,6 +32,7 @@ PATCHES=(
 	"${MY_PATCH_DIR}"/20018_all_mariadb-10.1.16-without-clientlibs-tools.patch
 	"${MY_PATCH_DIR}"/20025_all_mariadb-10.1.26-gssapi-detect.patch
 	"${MY_PATCH_DIR}"/20029_all_mariadb-10.1.31-enable-numa.patch
+	"${MY_PATCH_DIR}"/20033_all_mariadb-10.1.31-xtradb-sst.patch
 )
 
 COMMON_DEPEND="
