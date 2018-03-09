@@ -1,0 +1,67 @@
+From 185c88cb6779b3b15a5c14047bb62b8fcb8d2e57 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Sat, 10 Mar 2018 00:33:37 +0100
+Subject: [PATCH] Fix AttributeErrors from mistaken Mock.assert_call_once_with
+
+This commit is a backport/subset of:
+https://github.com/Lawouach/WebSocket-for-Python/commit/b5d47f7b3497f1b713a20fe6306b7d9afdd8c408
+---
+ test/test_manager.py | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/test/test_manager.py b/test/test_manager.py
+index 8c229b0..aacc162 100644
+--- a/test/test_manager.py
++++ b/test/test_manager.py
+@@ -16,10 +16,10 @@ class WSManagerTest(unittest.TestCase):
+         ws.sock.fileno.return_value = 1
+         
+         m.add(ws)
+-        m.poller.register.assert_call_once_with(ws)
++        m.poller.register.assert_called_once_with(1)
+ 
+         m.remove(ws)
+-        m.poller.unregister.assert_call_once_with(ws)
++        m.poller.unregister.assert_called_once_with(1)
+         
+     @patch('ws4py.manager.SelectPoller')
+     def test_cannot_add_websocket_more_than_once(self, MockSelectPoller):
+@@ -49,7 +49,7 @@ class WSManagerTest(unittest.TestCase):
+         self.assertEqual(len(m), 1)
+         m.remove(ws)
+         self.assertEqual(len(m), 0)
+-        m.poller.unregister.assert_call_once_with(ws)
++        m.poller.unregister.assert_called_once_with(1)
+         m.poller.reset_mock()
+         
+         m.remove(ws)
+@@ -98,7 +98,7 @@ class WSManagerTest(unittest.TestCase):
+         m.add(ws)
+         m.start()
+         
+-        ws.terminate.assert_call_once_with()
++        ws.terminate.assert_called_once_with()
+         
+         m.stop()
+     
+@@ -109,7 +109,7 @@ class WSManagerTest(unittest.TestCase):
+         ws = MagicMock()
+         m.add(ws)
+         m.close_all()
+-        ws.terminate.assert_call_once_with(1001, 'Server is shutting down')
++        ws.close.assert_called_once_with(code=1001, reason='Server is shutting down')
+         
+     @patch('ws4py.manager.SelectPoller')
+     def test_broadcast(self, MockSelectPoller):
+@@ -120,7 +120,7 @@ class WSManagerTest(unittest.TestCase):
+         m.add(ws)
+ 
+         m.broadcast(b'hello there')
+-        ws.send.assert_call_once_with(b'hello there')
++        ws.send.assert_called_once_with(b'hello there', False)
+         
+     @patch('ws4py.manager.SelectPoller')
+     def test_broadcast_failure_must_not_break_caller(self, MockSelectPoller):
+-- 
+2.16.2
+
