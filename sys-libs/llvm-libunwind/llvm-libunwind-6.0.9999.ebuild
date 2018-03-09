@@ -24,10 +24,13 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="!sys-libs/libunwind"
 # llvm-6 for new lit options
+# tests need libcxx with implicit -lunwind and libcxxabi
+# (but libcxx does not need to be built against it)
 DEPEND="
 	>=sys-devel/llvm-6
 	test? (
-		sys-libs/libcxx[${MULTILIB_USEDEP}]
+		sys-libs/libcxx[libunwind,${MULTILIB_USEDEP}]
+		sys-libs/libcxxabi
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]') )"
 
 # least intrusive of all
