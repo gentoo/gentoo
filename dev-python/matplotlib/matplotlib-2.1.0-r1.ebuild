@@ -10,7 +10,7 @@ inherit distutils-r1 flag-o-matic virtualx toolchain-funcs prefix
 
 DESCRIPTION="Pure python plotting library with matlab like syntax"
 HOMEPAGE="http://matplotlib.org/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~grozin/${P}.tar.bz2"
 
 SLOT="0"
 # Main license: matplotlib
@@ -18,7 +18,7 @@ SLOT="0"
 # matplotlib/backends/qt4_editor: MIT
 # Fonts: BitstreamVera, OFL-1.1
 LICENSE="BitstreamVera BSD matplotlib MIT OFL-1.1"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="cairo doc excel examples gtk2 gtk3 latex pyside qt5 test tk wxwidgets"
 
 PY2_FLAGS="|| ( $(python_gen_useflags python2_7) )"
@@ -48,7 +48,6 @@ COMMON_DEPEND="
 	media-libs/freetype:2
 	media-libs/libpng:0
 	>=media-libs/qhull-2013
-	dev-python/kiwisolver[${PYTHON_USEDEP}]
 	cairo? ( dev-python/cairocffi[${PYTHON_USEDEP}] )
 	gtk2? (
 		dev-libs/glib:2=
@@ -72,9 +71,7 @@ DEPEND="${COMMON_DEPEND}
 		dev-python/ipython[${PYTHON_USEDEP}]
 		dev-python/mock[${PY2_USEDEP}]
 		dev-python/numpydoc[${PYTHON_USEDEP}]
-		sci-libs/scipy[${PYTHON_USEDEP}]
-		>=dev-python/sphinx-1.3.0[${PYTHON_USEDEP}]
-		>=dev-python/sphinx-gallery-0.1.12[${PYTHON_USEDEP}]
+		dev-python/sphinx[${PYTHON_USEDEP}]
 		dev-python/xlwt[${PYTHON_USEDEP}]
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-fontsrecommended
@@ -138,8 +135,6 @@ python_prepare_all() {
 #	from __future__ import absolute_import
 #	from six import *
 #	EOF
-
-	local PATCHES=( "${FILESDIR}"/${P}-doc-make.patch )
 
 	sed \
 		-e 's/matplotlib.pyparsing_py[23]/pyparsing/g' \
@@ -225,7 +220,7 @@ python_compile_all() {
 		local -x PYTHONPATH="${BUILD_DIR}"/build/lib:${PYTHONPATH}
 
 		VARTEXFONTS="${T}"/fonts \
-		emake SPHINXOPTS= O=-Dplot_formats=png:100 html
+		"${EPYTHON}" ./make.py --small html || die
 	fi
 }
 

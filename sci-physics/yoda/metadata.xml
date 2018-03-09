@@ -13,7 +13,6 @@
   in Rivet.
 </longdescription>
 <use>
-  <flag name="c++11"> Build using the C++11 standard</flag>
   <flag name="root">Adds support for <pkg>sci-physics/root</pkg></flag>
 </use>
 </pkgmetadata>
