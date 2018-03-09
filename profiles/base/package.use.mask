@@ -17,7 +17,7 @@
 
 # Brian Evans <grknight@gentoo.org> (28 Feb 2018)
 # Mask client-libs USE to force users to install alternative standard pacakges
->=dev-db/mariadb-10.3 client-libs
+>=dev-db/mariadb-10.2.13 client-libs
 >=dev-db/mysql-5.7 client-libs
 >=dev-db/percona-server-5.7 client-libs
 
