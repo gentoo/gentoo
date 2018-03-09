@@ -8,19 +8,20 @@ EAPI=6
 CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
-inherit check-reqs cmake-utils flag-o-matic llvm python-any-r1
+inherit check-reqs cmake-utils flag-o-matic llvm \
+	multiprocessing python-any-r1
 
 MY_P=compiler-rt-${PV/_/}.src
 LLVM_P=llvm-${PV/_/}.src
 
 DESCRIPTION="Compiler runtime libraries for clang (sanitizers & xray)"
 HOMEPAGE="https://llvm.org/"
-SRC_URI="http://prereleases.llvm.org/${PV/_//}/${MY_P}.tar.xz
-	test? ( http://prereleases.llvm.org/${PV/_//}/${LLVM_P}.tar.xz )"
+SRC_URI="https://releases.llvm.org/${PV/_//}/${MY_P}.tar.xz
+	test? ( https://releases.llvm.org/${PV/_//}/${LLVM_P}.tar.xz )"
 
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="${PV%_*}"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="+clang test"
 RESTRICT="!test? ( test ) !clang? ( test )"
 
@@ -98,7 +99,7 @@ src_configure() {
 		mycmakeargs+=(
 			-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
 			-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
-			-DLLVM_LIT_ARGS="-vv"
+			-DLLVM_LIT_ARGS="-vv;-j;${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}"
 
 			# they are created during src_test()
 			-DCOMPILER_RT_TEST_COMPILER="${BUILD_DIR}/lib/llvm/${LLVM_SLOT}/bin/clang"
