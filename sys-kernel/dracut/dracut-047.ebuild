@@ -5,20 +5,13 @@ EAPI=6
 
 inherit bash-completion-r1 eutils linux-info systemd toolchain-funcs
 
-if [[ ${PV} == 9999 ]] ; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/dracutdevs/dracut"
-else
-	[[ "${PV}" = *_rc* ]] || \
-	KEYWORDS="~alpha amd64 ~arm ia64 ~mips ~ppc ~ppc64 sparc x86"
-	SRC_URI="mirror://kernel/linux/utils/boot/${PN}/${P}.tar.xz"
-fi
-
 DESCRIPTION="Generic initramfs generation tool"
 HOMEPAGE="https://dracut.wiki.kernel.org"
+SRC_URI="mirror://kernel/linux/utils/boot/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="debug selinux"
 
 # Tests need root privileges, bug #298014
