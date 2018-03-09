@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby20 ruby21 ruby22 ruby23"
+USE_RUBY="ruby22 ruby23 ruby24"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_TASK_TEST=""
@@ -20,7 +20,7 @@ IUSE=""
 
 MY_PN=${PN/-/_}
 
-ruby_add_rdepend ">=dev-ruby/liquid-3.0.0"
+ruby_add_rdepend ">=dev-ruby/liquid-3.0.0:*"
 
 all_ruby_prepare() {
 	sed -i -e "s/-Werror//" ext/${MY_PN}/extconf.rb || die
