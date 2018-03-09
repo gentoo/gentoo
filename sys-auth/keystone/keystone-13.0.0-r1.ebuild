@@ -126,6 +126,8 @@ python_prepare_all() {
 	cp etc/keystone-paste.ini ${PN}/tests/tmp/ || die
 	sed -i 's|/usr/local|/usr|g' httpd/keystone-uwsgi-* || die
 	sed -i 's|python|python27|g' httpd/keystone-uwsgi-* || die
+	# allow useage of renamed msgpack
+	sed -i '/^msgpack/d' requirements.txt || die
 	distutils-r1_python_prepare_all
 }
 
