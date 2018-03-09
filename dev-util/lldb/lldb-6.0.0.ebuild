@@ -8,19 +8,20 @@ EAPI=6
 CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils llvm python-single-r1 toolchain-funcs
+inherit cmake-utils llvm multiprocessing python-single-r1 \
+	toolchain-funcs
 
 MY_P=${P/_/}.src
 LLVM_P=llvm-${PV/_/}.src
 
 DESCRIPTION="The LLVM debugger"
 HOMEPAGE="https://llvm.org/"
-SRC_URI="http://prereleases.llvm.org/${PV/_//}/${MY_P}.tar.xz
-	test? ( http://prereleases.llvm.org/${PV/_//}/${LLVM_P}.tar.xz )"
+SRC_URI="https://releases.llvm.org/${PV/_//}/${MY_P}.tar.xz
+	test? ( https://releases.llvm.org/${PV/_//}/${LLVM_P}.tar.xz )"
 
 LICENSE="UoI-NCSA"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="libedit ncurses python test"
 RESTRICT="!test? ( test )"
 
@@ -91,7 +92,7 @@ src_configure() {
 
 		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
 		-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
-		-DLLVM_LIT_ARGS="-vv"
+		-DLLVM_LIT_ARGS="-vv;-j;${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}"
 	)
 
 	cmake-utils_src_configure
