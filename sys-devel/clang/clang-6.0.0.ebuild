@@ -9,7 +9,8 @@ CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
 inherit cmake-utils eapi7-ver flag-o-matic llvm \
-	multilib-minimal pax-utils prefix python-single-r1 toolchain-funcs
+	multilib-minimal multiprocessing pax-utils prefix python-single-r1 \
+	toolchain-funcs
 
 MY_P=cfe-${PV/_/}.src
 EXTRA_P=clang-tools-extra-${PV/_/}.src
@@ -17,10 +18,10 @@ LLVM_P=llvm-${PV/_/}.src
 
 DESCRIPTION="C language family frontend for LLVM"
 HOMEPAGE="https://llvm.org/"
-SRC_URI="http://prereleases.llvm.org/${PV/_//}/${MY_P}.tar.xz
-	http://prereleases.llvm.org/${PV/_//}/${EXTRA_P}.tar.xz
-	test? ( http:/pre/releases.llvm.org/${PV/_//}/${LLVM_P}.tar.xz )"
-#	!doc? ( https://dev.gentoo.org/~mgorny/dist/llvm/llvm-${PV}-manpages.tar.bz2 )"
+SRC_URI="https://releases.llvm.org/${PV/_//}/${MY_P}.tar.xz
+	https://releases.llvm.org/${PV/_//}/${EXTRA_P}.tar.xz
+	test? ( https://releases.llvm.org/${PV/_//}/${LLVM_P}.tar.xz )
+	!doc? ( https://dev.gentoo.org/~mgorny/dist/llvm/llvm-${PV}-manpages.tar.bz2 )"
 
 # Keep in sync with sys-devel/llvm
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
@@ -30,7 +31,7 @@ LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/?}
 
 LICENSE="UoI-NCSA"
 SLOT="$(ver_cut 1)"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="debug default-compiler-rt default-libcxx doc +static-analyzer
 	test xml z3 kernel_FreeBSD ${ALL_LLVM_TARGETS[*]}"
 RESTRICT="!test? ( test )"
@@ -105,10 +106,10 @@ src_unpack() {
 		mv "${LLVM_P}" "${WORKDIR}"/llvm || die
 	fi
 
-#	if ! use doc; then
-#		einfo "Unpacking llvm-${PV}-manpages.tar.bz2 ..."
-#		tar -xf "${DISTDIR}/llvm-${PV}-manpages.tar.bz2" || die
-#	fi
+	if ! use doc; then
+		einfo "Unpacking llvm-${PV}-manpages.tar.bz2 ..."
+		tar -xf "${DISTDIR}/llvm-${PV}-manpages.tar.bz2" || die
+	fi
 }
 
 src_prepare() {
@@ -151,7 +152,7 @@ multilib_src_configure() {
 	)
 	use test && mycmakeargs+=(
 		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
-		-DLLVM_LIT_ARGS="-vv"
+		-DLLVM_LIT_ARGS="-vv;-j;${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}"
 	)
 
 	if multilib_is_native_abi; then
@@ -277,10 +278,10 @@ multilib_src_install_all() {
 	fi
 
 	# install pre-generated manpages
-#	if ! use doc; then
-#		insinto "/usr/lib/llvm/${SLOT}/share/man/man1"
-#		doins "${WORKDIR}/x/y/llvm-${PV}-manpages/clang"/*.1
-#	fi
+	if ! use doc; then
+		insinto "/usr/lib/llvm/${SLOT}/share/man/man1"
+		doins "${WORKDIR}/x/y/llvm-${PV}-manpages/clang"/*.1
+	fi
 
 	docompress "/usr/lib/llvm/${SLOT}/share/man"
 	# match 'html' non-compression
