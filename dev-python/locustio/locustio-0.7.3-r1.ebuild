@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -27,4 +27,10 @@ RDEPEND=">=dev-python/gevent-1.0.1[${PYTHON_USEDEP}]
 
 python_test() {
 	esetup.py test
+}
+
+python_prepare_all() {
+	# allow useage of renamed msgpack
+	sed -i '/^msgpack/d' setup.py || die
+	distutils-r1_python_prepare_all
 }
