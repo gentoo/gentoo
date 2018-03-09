@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,8 +8,8 @@ PYTHON_COMPAT=( python2_7 )
 inherit python-single-r1 vim-plugin
 
 DESCRIPTION="vim plugin: provides an interactive calculator inside vim"
-HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=3329"
-SRC_URI="http://www.vim.org/scripts/download_script.php?src_id=15317 -> ${P}.zip"
+HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=3329"
+SRC_URI="https://www.vim.org/scripts/download_script.php?src_id=15317 -> ${P}.zip"
 LICENSE="vim"
 KEYWORDS="amd64 x86"
 
