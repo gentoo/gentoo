@@ -8,19 +8,19 @@ EAPI=6
 CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-multilib llvm python-any-r1
+inherit cmake-multilib llvm multiprocessing python-any-r1
 
 MY_P=${P/_/}.src
 LIBCXX_P=libcxx-${PV/_/}.src
 
 DESCRIPTION="Low level support for a standard C++ library"
 HOMEPAGE="https://libcxxabi.llvm.org/"
-SRC_URI="http://prereleases.llvm.org/${PV/_//}/${MY_P}.tar.xz
-	http://prereleases.llvm.org/${PV/_//}/${LIBCXX_P}.tar.xz"
+SRC_URI="https://releases.llvm.org/${PV/_//}/${MY_P}.tar.xz
+	https://releases.llvm.org/${PV/_//}/${LIBCXX_P}.tar.xz"
 
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="+libunwind +static-libs test"
 RESTRICT="!test? ( test )"
 
@@ -79,7 +79,7 @@ multilib_src_configure() {
 	if use test; then
 		mycmakeargs+=(
 			-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
-			-DLLVM_LIT_ARGS="-vv"
+			-DLLVM_LIT_ARGS="-vv;-j;${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}"
 		)
 	fi
 	cmake-utils_src_configure
