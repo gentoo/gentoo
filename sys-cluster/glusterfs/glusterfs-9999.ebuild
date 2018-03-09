@@ -20,10 +20,11 @@ HOMEPAGE="https://www.gluster.org/"
 
 LICENSE="|| ( GPL-2 LGPL-3+ )"
 SLOT="0"
-IUSE="bd-xlator crypt-xlator debug emacs +fuse +georeplication glupy infiniband +libtirpc qemu-block rsyslog static-libs +syslog systemtap test +tiering vim-syntax +xml"
+IUSE="bd-xlator crypt-xlator debug emacs +fuse +georeplication glupy infiniband ipv6 +libtirpc qemu-block rsyslog static-libs +syslog systemtap test +tiering vim-syntax +xml"
 
 REQUIRED_USE="georeplication? ( ${PYTHON_REQUIRED_USE} )
-	glupy? ( ${PYTHON_REQUIRED_USE} )"
+	glupy? ( ${PYTHON_REQUIRED_USE} )
+	ipv6? ( libtirpc )"
 
 # the tests must be run as root
 RESTRICT="test"
@@ -66,6 +67,8 @@ SITEFILE="50${PN}-mode-gentoo.el"
 PATCHES=(
 	"${FILESDIR}/${PN}-3.12.2-poisoned-sysmacros.patch"
 	"${FILESDIR}/${PN}-4.1.0-silent_rules.patch"
+	"${FILESDIR}/${PN}-without-ipv6-default.patch"
+	"${FILESDIR}/${PN}-TIRPC-config-summary.patch"
 )
 
 DOCS=( AUTHORS ChangeLog NEWS README.md THANKS )
@@ -117,7 +120,7 @@ src_configure() {
 		$(use_enable test cmocka) \
 		$(use_enable tiering) \
 		$(use_enable xml xml-output) \
-		$(use_with libtirpc ipv6-default) \
+		$(use_with ipv6 ipv6-default) \
 		$(use_with libtirpc) \
 		--with-tmpfilesdir="${EPREFIX}"/etc/tmpfiles.d \
 		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
