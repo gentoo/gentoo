@@ -24,7 +24,7 @@ RDEPEND="
 	sci-libs/gsl:=
 	sci-physics/fastjet[plugins]
 	sci-physics/hepmc
-	>=sci-physics/yoda-1.5.0[python]
+	sci-physics/yoda:=[python]
 	python? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen[latex,dot] )
@@ -50,6 +50,8 @@ src_prepare() {
 
 	# Install rivet-manual.pdf to docdir intead of pkgdatadir
 	sed -i '/pkgdata_DATA = $(DOCS)/s/pkgdata/doc/' doc/Makefile.am || die
+	# Adjust shebangs of Python scripts
+	sed -i "s@^#! /usr/bin/env python@#!${EPREFIX}/usr/bin/python2@" bin/* || die
 	eautoreconf
 }
 
