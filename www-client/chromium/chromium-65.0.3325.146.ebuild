@@ -154,6 +154,7 @@ PATCHES=(
 	"${FILESDIR}/chromium-math.h-r0.patch"
 	"${FILESDIR}/chromium-clang-r3.patch"
 	"${FILESDIR}/chromium-stdint.patch"
+	"${FILESDIR}/chromium-ffmpeg-clang.patch"
 )
 
 pre_build_checks() {
