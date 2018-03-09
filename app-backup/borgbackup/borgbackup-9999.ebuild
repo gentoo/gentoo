@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -38,3 +38,9 @@ DEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]
 	${RDEPEND}
 "
+
+python_prepare_all() {
+	# allow use of new (renamed) msgpack
+	sed -i '/msgpack/d' setup.py || die
+	distutils-r1_python_prepare_all
+}

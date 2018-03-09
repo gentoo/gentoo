@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 else
 	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
-	KEYWORDS="amd64 ~x86"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 DESCRIPTION="Deduplicating backup program with compression and authenticated encryption"
@@ -38,3 +38,9 @@ DEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]
 	${RDEPEND}
 "
+
+python_prepare_all() {
+	# allow use of new (renamed) msgpack
+	sed -i '/msgpack/d' setup.py || die
+	distutils-r1_python_prepare_all
+}
