@@ -47,7 +47,7 @@ RDEPEND="${RDEPEND}
 PDEPEND="
 	~sys-devel/clang-runtime-${PV}
 	default-compiler-rt? ( =sys-libs/compiler-rt-${PV%_*}* )
-	default-libcxx? ( sys-libs/libcxx )"
+	default-libcxx? ( >=sys-libs/libcxx-${PV} )"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	|| ( ${ALL_LLVM_TARGETS[*]} )"
