@@ -18,7 +18,7 @@ IUSE="+native-extensions test"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	native-extensions? (
-		>=dev-python/cython-0.16[${PYTHON_USEDEP}]
+	>=dev-python/cython-0.16[$(python_gen_usedep 'python*')]
 	)
 	test? (
 		dev-python/six[${PYTHON_USEDEP}]
@@ -33,6 +33,8 @@ python_prepare_all() {
 	if ! use native-extensions ; then
 		sed -i -e "/have_cython/s:True:False:" ./setup.py || die
 	fi
+	# make sure cython is optional
+	sed -i '/^Cython/d' requirements.txt || die
 	distutils-r1_python_prepare_all
 }
 
