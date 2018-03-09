@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=>=dev-lang/go-1.8
+DESCRIPTION=Print version used to build Go executables
+EAPI=6
+HOMEPAGE=https://github.com/rsc/goversion https://rsc.io/goversion
+KEYWORDS=~amd64
+LICENSE=BSD
+SLOT=0
+SRC_URI=https://github.com/rsc/goversion/archive/04f0b81a96346cb33d48044cbffd24c8f57785ad.tar.gz -> goversion-1.0.0_p20180222.tar.gz
+_eclasses_=bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	golang-base	51a1f13e065f1cff4507685d9cc268c7	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	913580335becddd3ebecefe852e47536	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_md5_=eb701ac6b15a4256b07ea1a72da9e035
