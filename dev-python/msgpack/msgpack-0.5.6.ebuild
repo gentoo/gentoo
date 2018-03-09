@@ -18,7 +18,7 @@ IUSE="+native-extensions test"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	native-extensions? (
-	>=dev-python/cython-0.16[$(python_gen_usedep 'python*')]
+		$(python_gen_cond_dep '>=dev-python/cython-0.16[${PYTHON_USEDEP}]' 'python*')
 	)
 	test? (
 		dev-python/six[${PYTHON_USEDEP}]
