@@ -8,12 +8,12 @@ EAPI=6
 CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils llvm python-any-r1
+inherit cmake-utils llvm multiprocessing python-any-r1
 
 MY_P=llvm-${PV/_/}.src
 DESCRIPTION="OCaml bindings for LLVM"
 HOMEPAGE="https://llvm.org/"
-SRC_URI="http://prereleases.llvm.org/${PV/_//}/${MY_P}.tar.xz"
+SRC_URI="https://releases.llvm.org/${PV/_//}/${MY_P}.tar.xz"
 
 # Keep in sync with sys-devel/llvm
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
@@ -23,7 +23,7 @@ LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/?}
 
 LICENSE="UoI-NCSA"
 SLOT="0/${PV}"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="debug test ${ALL_LLVM_TARGETS[*]}"
 RESTRICT="!test? ( test )"
 
@@ -88,7 +88,7 @@ src_configure() {
 	)
 
 	use test && mycmakeargs+=(
-		-DLLVM_LIT_ARGS="-vv"
+		-DLLVM_LIT_ARGS="-vv;-j;${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}"
 	)
 
 	# LLVM_ENABLE_ASSERTIONS=NO does not guarantee this for us, #614844
