@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -47,6 +47,8 @@ RDEPEND="
 
 python_prepare_all() {
 	sed -i '/^hacking/d' test-requirements.txt || die
+	# allow useage of renamed msgpack
+	sed -i '/^msgpack/d' requirements.txt || die
 	distutils-r1_python_prepare_all
 }
 
