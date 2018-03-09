@@ -7,19 +7,19 @@ EAPI=6
 # (needed due to CMAKE_BUILD_TYPE != Gentoo)
 CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
-inherit cmake-multilib llvm python-any-r1
+inherit cmake-multilib llvm multiprocessing python-any-r1
 
 MY_P=libunwind-${PV/_/}.src
 LIBCXX_P=libcxx-${PV/_/}.src
 
 DESCRIPTION="C++ runtime stack unwinder from LLVM"
 HOMEPAGE="https://github.com/llvm-mirror/libunwind"
-SRC_URI="http://prereleases.llvm.org/${PV/_//}/${MY_P}.tar.xz
-	test? ( http://prereleases.llvm.org/${PV/_//}/${LIBCXX_P}.tar.xz )"
+SRC_URI="https://releases.llvm.org/${PV/_//}/${MY_P}.tar.xz
+	test? ( https://releases.llvm.org/${PV/_//}/${LIBCXX_P}.tar.xz )"
 
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="debug +static-libs test"
 RESTRICT="!test? ( test )"
 
@@ -72,7 +72,7 @@ multilib_src_configure() {
 	if use test; then
 		mycmakeargs+=(
 			-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
-			-DLLVM_LIT_ARGS="-vv"
+			-DLLVM_LIT_ARGS="-vv;-j;${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}"
 			-DLIBUNWIND_LIBCXX_PATH="${WORKDIR}"/libcxx
 		)
 	fi
