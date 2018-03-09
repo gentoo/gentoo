@@ -1,10 +1,10 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit vim-plugin
 
 DESCRIPTION="vim plugin: syntax highlighting for perl module Template-Toolkit"
-HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=830"
+HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=830"
 LICENSE="vim"
 KEYWORDS="amd64 ~arm ppc ppc64 x86 ~x86-fbsd"
 IUSE=""
