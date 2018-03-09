@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -71,6 +71,8 @@ pkg_setup() {
 python_prepare_all() {
 	# https://github.com/celery/kombu/issues/246
 	sed -e 's:kombu.transports:kombu.transport:' -i funtests/tests/test_django.py
+	# allow use of new (renamed) msgpack
+	sed -i '/msgpack/d' requirements/extras/msgpack.txt || die
 	distutils-r1_python_prepare_all
 }
 

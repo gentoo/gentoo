@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="doc examples mongodb msgpack redis sqs test yaml"
 
 # couchdb backend support possible via dev-python/couchdb-python
@@ -52,6 +52,8 @@ PATCHES=(
 python_prepare_all() {
 	# AttributeError: test_Etcd instance has no attribute 'patch'
 	rm t/unit/transport/test_etcd.py || die
+	# allow use of new (renamed) msgpack
+	sed -i '/msgpack/d' requirements/extras/msgpack.txt || die
 	distutils-r1_python_prepare_all
 }
 
