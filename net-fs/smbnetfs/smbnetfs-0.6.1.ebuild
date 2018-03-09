@@ -21,6 +21,8 @@ RDEPEND=">=sys-fs/fuse-2.3
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
+PATCHES=("${FILESDIR}"/${P}-use-proper-xattr.patch)
+
 DISABLE_AUTOFORMATTING=yes
 DOC_CONTENTS="
 For quick usage, exec:
