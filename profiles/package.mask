@@ -32,6 +32,7 @@
 # José María Alonso <nimiux@gentoo.org> (09 Mar 2018)
 # Obsolete package
 # Masked for removal in 30 days. Bug #646742
+dev-lisp/common-lisp-controller
 dev-lisp/asdf-binary-locations
 
 # José María Alonso <nimiux@gentoo.org> (08 Mar 2018)
