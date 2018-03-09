@@ -84,6 +84,11 @@ pkg_setup() {
 	fi
 }
 
+test_compiler() {
+	$(tc-getCXX) ${CXXFLAGS} ${LDFLAGS} "${@}" -o /dev/null -x c++ - \
+		<<<'int main() { return 0; }' &>/dev/null
+}
+
 multilib_src_configure() {
 	local cxxabi cxxabi_incs
 	if use libcxxabi; then
@@ -117,6 +122,15 @@ multilib_src_configure() {
 					extra_libs+=( "${i}" )
 				fi
 			done
+		fi
+	fi
+
+	# bootstrap: cmake is unhappy if compiler can't link to stdlib
+	local nolib_flags=( -nodefaultlibs -lc )
+	if ! test_compiler; then
+		if test_compiler "${nolib_flags[@]}"; then
+			local -x LDFLAGS="${LDFLAGS} ${nolib_flags[*]}"
+			ewarn "${CXX} seems to lack runtime, trying with ${nolib_flags[*]}"
 		fi
 	fi
 
