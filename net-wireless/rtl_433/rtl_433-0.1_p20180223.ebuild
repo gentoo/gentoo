@@ -13,7 +13,7 @@ if [[ $PV == "9999" ]]; then
 	KEYWORDS=""
 else
 	COMMIT="51d275cd08c517d5445b568bf9c2f1b4103bec9f"
-	SRC_URI="https://github.com/merbanan/rtl_433/archive/${COMMIT}.tar.gz"
+	SRC_URI="https://github.com/merbanan/rtl_433/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${COMMIT}"
 	KEYWORDS="~amd64 ~x86"
 fi
