@@ -105,6 +105,9 @@ python_prepare() {
 
 	# seriously? "ValueError: Missing (or not readable) key file: '/home/dany/PRIVKEY.pem'"
 	rm tests/unit/cloud/clouds/gce_test.py || die
+
+	# allow the use of the renamed msgpack
+	sed -i '/^msgpack/d' requirements/base.txt || die
 }
 
 python_install_all() {
