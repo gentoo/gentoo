@@ -31,3 +31,9 @@ RDEPEND="${CDEPEND}
 	!~dev-python/futurist-0.15.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-utils-3.18.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-serialization-1.10.0[${PYTHON_USEDEP}]"
+
+python_prepare_all() {
+	# allow useage of renamed msgpack
+	sed -i '/^msgpack/d' requirements.txt || die
+	distutils-r1_python_prepare_all
+}
