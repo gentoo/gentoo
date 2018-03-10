@@ -28,7 +28,7 @@ PDEPEND="x11-apps/xrdb
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.3.3-gentoo-customizations.patch"
-	"${FILESDIR}/${PN}-1.3.4-startx-current-vt.patch"
+	"${FILESDIR}/${PN}-1.4.0-startx-current-vt.patch"
 )
 
 src_configure() {
