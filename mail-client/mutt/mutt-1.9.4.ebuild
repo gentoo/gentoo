@@ -5,12 +5,12 @@ EAPI="6"
 
 inherit eutils flag-o-matic autotools
 
-PATCHREV="r2"
+PATCHREV="r0"
 PATCHSET="gentoo-${PVR}/${PATCHREV}"
 
 DESCRIPTION="A small but very powerful text-based mail client"
 HOMEPAGE="http://www.mutt.org/"
-MUTT_G_PATCHES="mutt-gentoo-${PV}-patches-${PATCHREV}.tar.xz"
+MUTT_G_PATCHES="mutt-gentoo-1.9.3-patches-${PATCHREV}.tar.xz"
 SRC_URI="ftp://ftp.mutt.org/pub/mutt/${P}.tar.gz
 	https://bitbucket.org/${PN}/${PN}/downloads/${P}.tar.gz
 	https://dev.gentoo.org/~grobian/distfiles/${MUTT_G_PATCHES}"
@@ -72,7 +72,7 @@ RDEPEND="${CDEPEND}
 "
 
 src_prepare() {
-	local PATCHDIR="${WORKDIR}"/mutt-gentoo-${PV}-patches
+	local PATCHDIR="${WORKDIR}"/mutt-gentoo-1.9.3-patches
 
 	if use !vanilla ; then
 		# apply patches
@@ -114,8 +114,7 @@ src_prepare() {
 
 	# the configure script contains some "cleverness" whether or not to setgid
 	# the dotlock program, resulting in bugs like #278332
-	sed -i -e 's/@DOTLOCK_GROUP@//' \
-		Makefile.in || die "sed failed"
+	sed -i -e 's/@DOTLOCK_GROUP@//' Makefile.in || die "sed failed"
 }
 
 src_configure() {
@@ -229,10 +228,9 @@ src_install() {
 			-e 's#in @docdir@,#at http://www.mutt.org/,#' \
 			-e "s#@sysconfdir@#${EPREFIX}/etc/${PN}#" \
 			-e "s#@bindir@#${EPREFIX}/usr/bin#" \
-			doc/mutt.man > mutt.1
-		cp doc/muttbug.man flea.1
-		cp doc/muttrc.man muttrc.5
-		doman mutt.1 flea.1 muttrc.5
+			doc/mutt.man > mutt.1 || die
+		cp doc/muttrc.man muttrc.5 || die
+		doman mutt.1 muttrc.5
 	else
 		# nuke manpages that should be provided by an MTA, bug #177605
 		rm "${ED}"/usr/share/man/man5/{mbox,mmdf}.5 \
