@@ -103,11 +103,6 @@
       <name>Steve Arnold</name>
       <role>Member (Gentoo/ARM Kernel)</role>
     </member>
-    <member is-lead="1">
-      <email>steev@gentoo.org</email>
-      <name>Steev Klimaszewski</name>
-      <role>Lead (Gentoo/ARM)</role>
-    </member>
     <member>
       <email>vapier@gentoo.org</email>
       <name>Mike Frysinger</name>
@@ -617,11 +612,6 @@
     <member>
       <email>mschiff@gentoo.org</email>
       <name>Marc Schiffbauer</name>
-      <role>developer</role>
-    </member>
-    <member>
-      <email>pchrist@gentoo.org</email>
-      <name>Panagiotis Christopoulos</name>
       <role>developer</role>
     </member>
     <member>
@@ -2128,11 +2118,6 @@
     <subproject ref="common-lisp@gentoo.org" inherit-members="1"/>
     <subproject ref="emacs@gentoo.org" inherit-members="1"/>
     <subproject ref="scheme@gentoo.org" inherit-members="1"/>
-    <member>
-      <email>pchrist@gentoo.org</email>
-      <name>Panagiotis Christopoulos</name>
-      <role>Developer (General maintainer)</role>
-    </member>
   </project>
   <project>
     <email>livecd@gentoo.org</email>
@@ -2198,11 +2183,6 @@
       <email>mattst88@gentoo.org</email>
       <name>Matt Turner</name>
       <role>Lead</role>
-    </member>
-    <member>
-      <email>pchrist@gentoo.org</email>
-      <name>Panagiotis Christopoulos</name>
-      <role>Developer</role>
     </member>
     <member>
       <email>vincent@gentoo.org</email>
@@ -2496,11 +2476,6 @@ developers and volunteer mentors.</description>
       <email>prometheanfire@gentoo.org</email>
       <name>Matthew Thode</name>
       <role>Lead</role>
-    </member>
-    <member>
-      <email>steev@gentoo.org</email>
-      <name>Steev Klimaszewski</name>
-      <role>Member</role>
     </member>
   </project>
   <project>
@@ -3403,11 +3378,6 @@ developers and volunteer mentors.</description>
       <role>Infrastructure Liaison</role>
     </member>
     <member>
-      <email>steev@gentoo.org</email>
-      <name>Steev Klimaszewski</name>
-      <role>ARM stage building</role>
-    </member>
-    <member>
       <email>swift@gentoo.org</email>
       <name>Sven Vermeulen</name>
       <role>Documentation Liaison</role>
@@ -3760,11 +3730,6 @@ developers and volunteer mentors.</description>
       <role>GLSA Coordinator</role>
     </member>
     <member>
-      <email>keytoaster@gentoo.org</email>
-      <name>Tobias Heinlein</name>
-      <role>GLSA Coordinator</role>
-    </member>
-    <member>
       <email>k_f@gentoo.org</email>
       <name>Kristian Fiskerstrand</name>
       <role>GLSA Coordinator</role>
@@ -3999,10 +3964,6 @@ developers and volunteer mentors.</description>
     <member>
       <email>nerdboy@gentoo.org</email>
       <name>Steve Arnold</name>
-    </member>
-    <member>
-      <email>rhill@gentoo.org</email>
-      <name>Ryan Hill</name>
     </member>
     <member>
       <email>slyfox@gentoo.org</email>
@@ -4328,10 +4289,6 @@ developers and volunteer mentors.</description>
     <member>
       <email>leio@gentoo.org</email>
       <name>Mart Raudsepp</name>
-    </member>
-    <member>
-      <email>rhill@gentoo.org</email>
-      <name>Ryan Hill</name>
     </member>
   </project>
   <project>
