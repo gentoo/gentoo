@@ -5,10 +5,6 @@
 		<email>mudler@gentoo.org</email>
 		<name>Ettore Di Giacinto</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>lxnay@gentoo.org</email>
-		<name>Fabio Erculiani</name>
-	</maintainer>
 	<longdescription lang="en">
 		Molecule is a build tool that can build, rebuild or extend Sabayon Linux or
 		Gentoo Linux OS releases OpenVZ templates and stage4 tarballs.
