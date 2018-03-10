@@ -6805,7 +6805,7 @@ kde-misc/kdeconnect 1.2: Adds communication between KDE Plasma and your smartpho
 kde-misc/kdiff3 0.9.98_p20170219-r1: Frontend to diff3 based on Qt/KF5
 kde-misc/kdirstat 3.1.2: GUI equivalent to the du command based on KDE Frameworks
 kde-misc/kio-gdrive 1.2.1-r1: KIO Slave for Google Drive service
-kde-misc/krename 4.0.9_p20170610: Powerful batch file renamer
+kde-misc/krename 5.0.0: Powerful batch file renamer
 kde-misc/krusader 2.6.0: Advanced twin-panel (commander-style) file-manager with many extras
 kde-misc/kshutdown 4.0: Shutdown manager for desktop environments like KDE Plasma
 kde-misc/openofficeorg-thumbnail 1.0.0-r500: KDE thumbnail-plugin that generates thumbnails for ODF files
@@ -10529,7 +10529,7 @@ x11-apps/transset 1.0.1: An utility for setting opacity property
 x11-apps/viewres 1.0.4 1.0.5: graphical class browser for Xt
 x11-apps/x11perf 1.5.4 1.6.0: X rendering operation stress test utility
 x11-apps/xauth 1.0.10: X authority file utility
-x11-apps/xbacklight 1.2.1-r1: Sets backlight level using the RandR 1.2 BACKLIGHT output property
+x11-apps/xbacklight 1.2.1-r1 1.2.2: Sets backlight level using the RandR 1.2 BACKLIGHT output property
 x11-apps/xbiff 1.0.3: mailbox flag for X
 x11-apps/xcalc 1.0.5 1.0.6: scientific calculator for X
 x11-apps/xclipboard 1.1.3: interchange between cut buffer and selection
@@ -10544,10 +10544,10 @@ x11-apps/xdpyinfo 1.3.1 1.3.2: Display information utility for X
 x11-apps/xdriinfo 1.0.5 1.0.6: query configuration information of DRI drivers
 x11-apps/xedit 1.2.1 1.2.2: simple text editor for X
 x11-apps/xev 1.2.1 1.2.2: Print contents of X events
-x11-apps/xeyes 1.1.1: X.Org xeyes application
+x11-apps/xeyes 1.1.1 1.1.2: X.Org xeyes application
 x11-apps/xf86dga 1.0.3: Test program for the XFree86-DGA extension
 x11-apps/xfd 1.1.2: X.Org xfd application
-x11-apps/xfontsel 1.0.5: point and click selection of X11 font names
+x11-apps/xfontsel 1.0.5 1.0.6: point and click selection of X11 font names
 x11-apps/xgamma 1.0.5 1.0.6: Alter a monitor's gamma correction through the X server
 x11-apps/xgc 1.0.4 1.0.5: X graphics demo
 x11-apps/xhost 1.0.6 1.0.7: Controls host and/or user access to a running X server
@@ -10558,19 +10558,19 @@ x11-apps/xkbcomp 1.3.1 1.4.0: compile XKB keyboard description
 x11-apps/xkbevd 1.1.3 1.1.4: XKB event daemon
 x11-apps/xkbprint 1.0.4: Print an XKB keyboard description
 x11-apps/xkbutils 1.0.4: X.Org xkbutils application
-x11-apps/xkill 1.0.4: kill a client by its X resource
-x11-apps/xload 1.1.2: system load average display for X
+x11-apps/xkill 1.0.4 1.0.5: kill a client by its X resource
+x11-apps/xload 1.1.2 1.1.3: system load average display for X
 x11-apps/xlogo 1.0.4: X Window System logo
 x11-apps/xlsatoms 1.1.1 1.1.2: list interned atoms defined on server
-x11-apps/xlsclients 1.1.2 1.1.3: X.Org xlsclients application
-x11-apps/xlsfonts 1.0.4 1.0.5: X.Org xlsfonts application
+x11-apps/xlsclients 1.1.2 1.1.3 1.1.4: X.Org xlsclients application
+x11-apps/xlsfonts 1.0.4 1.0.5 1.0.6: X.Org xlsfonts application
 x11-apps/xmag 1.0.5 1.0.6: X.Org xmag application
 x11-apps/xman 1.1.3 1.1.4: Manual page display program for the X Window System
-x11-apps/xmessage 1.0.4: display a message or query in a window (X-based /bin/echo)
+x11-apps/xmessage 1.0.4 1.0.5: display a message or query in a window (X-based /bin/echo)
 x11-apps/xmodmap 1.0.8 1.0.9: utility for modifying keymaps and pointer button mappings in X
 x11-apps/xmore 1.0.2: plain text display program for the X Window System
-x11-apps/xpr 1.0.4: X.Org xpr application
-x11-apps/xprop 1.2.2: property displayer for X
+x11-apps/xpr 1.0.4 1.0.5: X.Org xpr application
+x11-apps/xprop 1.2.2 1.2.3: property displayer for X
 x11-apps/xrandr 1.4.3 1.5.0: primitive command line interface to RandR extension
 x11-apps/xrdb 1.1.0: X server resource database utility
 x11-apps/xrectsel 0.3.2: Print the geometry of a rectangular screen region
