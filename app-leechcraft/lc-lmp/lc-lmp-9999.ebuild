@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ DESCRIPTION="LeechCraft Media Player, Phonon-based audio/video player"
 
 SLOT="0"
 KEYWORDS=""
-IUSE="debug +fradj +graffiti +guess +mpris +mtp +mp3tunes potorchu"
+IUSE="debug +fradj +graffiti +mpris +mtp +mp3tunes potorchu"
 
 # depend on gstreamer:0.10 to match current Qt deps
 DEPEND="~app-leechcraft/lc-core-${PV}
@@ -22,7 +22,6 @@ DEPEND="~app-leechcraft/lc-core-${PV}
 		media-libs/gstreamer:1.0
 
 		mpris? ( dev-qt/qtdbus:5 )
-		guess? ( app-i18n/libguess )
 		media-libs/taglib
 		mtp? ( media-libs/libmtp )
 		potorchu? ( media-libs/libprojectm )"
@@ -34,7 +33,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DENABLE_LMP_FRADJ=$(usex fradj)
 		-DENABLE_LMP_GRAFFITI=$(usex graffiti)
-		-DENABLE_LMP_LIBGUESS=$(usex guess)
+		-DENABLE_LMP_LIBGUESS=OFF
 		-DENABLE_LMP_MPRIS=$(usex mpris)
 		-DENABLE_LMP_MTPSYNC=$(usex mtp)
 		-DENABLE_LMP_MP3TUNES=$(usex mp3tunes)
