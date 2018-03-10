@@ -5,10 +5,6 @@
 		<email>zerochaos@gentoo.org</email>
 		<name>Rick Farina</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>steev@gentoo.org</email>
-		<name>Steev Klimaszewski</name>
-	</maintainer>
 	<use>
 		<flag name="client">Build the ncurses-based user interface</flag>
 		<flag name="suid">
