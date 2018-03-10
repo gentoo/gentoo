@@ -33,8 +33,6 @@ python_prepare_all() {
 	if ! use native-extensions ; then
 		sed -i -e "/have_cython/s:True:False:" ./setup.py || die
 	fi
-	# make sure cython is optional
-	sed -i '/^Cython/d' requirements.txt || die
 	distutils-r1_python_prepare_all
 }
 
