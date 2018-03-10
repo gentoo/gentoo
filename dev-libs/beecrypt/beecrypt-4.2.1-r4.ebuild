@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools java-pkg-opt-2 python-single-r1
+inherit autotools flag-o-matic java-pkg-opt-2 python-single-r1
 
 DESCRIPTION="General-purpose cryptography library"
 HOMEPAGE="https://sourceforge.net/projects/beecrypt/"
@@ -52,6 +52,10 @@ src_prepare() {
 }
 
 src_configure() {
+	# ICU needs char16_t support now
+	# bug 649548
+	append-cxxflags -std=c++14
+
 	# cplusplus needs threads support
 	econf \
 		--disable-expert-mode \
