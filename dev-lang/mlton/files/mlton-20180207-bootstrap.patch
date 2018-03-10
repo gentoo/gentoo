@@ -1,0 +1,27 @@
+--- mlton-20180207-orig/Makefile	2018-02-07 21:22:55.000000000 +1100
++++ mlton-20180207/Makefile	2018-02-28 11:28:00.639642560 +1100
+@@ -137,18 +137,22 @@
+ .PHONY: bootstrap-smlnj
+ bootstrap-smlnj:
+ 	$(MAKE) smlnj-mlton
+-	$(RM) "$(BIN)/mlton"
++	$(MV) "$(BIN)/mlton" "$(BIN)/mlton.mlton"
++	$(CP) "$(BIN)/mlton.smlnj" "$(BIN)/mlton"
+ 	$(MAKE) BOOTSTRAP_MLTON=mlton.smlnj all
+ 	smlnj_heap_suffix=`echo 'TextIO.output (TextIO.stdErr, SMLofNJ.SysInfo.getHeapSuffix ());' | sml 2>&1 1> /dev/null` && $(RM) "$(LIB)/mlton/mlton-smlnj.$$smlnj_heap_suffix"
+ 	$(RM) "$(BIN)/mlton.smlnj"
++	$(MV) "$(BIN)/mlton.mlton" "$(BIN)/mlton"
+ 
+ .PHONY: bootstrap-polyml
+ bootstrap-polyml:
+ 	$(MAKE) polyml-mlton
+-	$(RM) "$(BIN)/mlton"
++	$(MV) "$(BIN)/mlton" "$(BIN)/mlton.mlton"
++	$(CP) "$(BIN)/mlton.polyml" "$(BIN)/mlton"
+ 	$(MAKE) BOOTSTRAP_MLTON=mlton.polyml all
+ 	$(RM) "$(LIB)/mlton-polyml$(EXE)"
+ 	$(RM) "$(BIN)/mlton.polyml"
++	$(MV) "$(BIN)/mlton.mlton" "$(BIN)/mlton"
+ 
+ .PHONY: clean
+ clean:
