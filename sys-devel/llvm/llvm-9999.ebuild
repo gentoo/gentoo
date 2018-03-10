@@ -172,6 +172,13 @@ multilib_src_configure() {
 		)
 	fi
 
+	# workaround BMI bug in gcc-7 (fixed in 7.4)
+	# https://bugs.gentoo.org/649880
+	if tc-is-gcc && [[ $(gcc-major-version) -eq 7 && $(gcc-minor-version) -lt 4 ]]; then
+		local CFLAGS="${CFLAGS} -mno-bmi"
+		local CXXFLAGS="${CXXFLAGS} -mno-bmi"
+	fi
+
 	# LLVM_ENABLE_ASSERTIONS=NO does not guarantee this for us, #614844
 	use debug || local -x CPPFLAGS="${CPPFLAGS} -DNDEBUG"
 	cmake-utils_src_configure
