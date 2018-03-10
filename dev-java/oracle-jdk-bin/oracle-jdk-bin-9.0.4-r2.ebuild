@@ -185,7 +185,7 @@ src_install() {
 	# https://docs.oracle.com/javase/8/docs/technotes/guides/intl/fontconfig.html
 	if ! use fontconfig ; then
 		insinto "${dest}"/lib/
-		doins "$(prefixify_ro "${FILESDIR}"/fontconfig.Gentoo.properties)"
+		doins "$(prefixify_ro "${FILESDIR}"/fontconfig.properties)"
 	fi
 
 	# Needs to be done before CDS, bug #215225.
