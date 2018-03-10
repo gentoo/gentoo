@@ -29,6 +29,7 @@
 # For very customized setups these variables can be adjusted as needed
 # but for most situations they should remain commented:
 # SYSLOG_NG_CONFIGFILE=/etc/syslog-ng/syslog-ng.conf
+# SYSLOG_NG_CONTROLFILE=${SYSLOG_NG_STATEFILE_DIR}/syslog-ng.ctl
 # SYSLOG_NG_STATEFILE_DIR=/var/lib/syslog-ng
 # SYSLOG_NG_STATEFILE=${SYSLOG_NG_STATEFILE_DIR}/syslog-ng.persist
 # SYSLOG_NG_PIDFILE_DIR=/run
