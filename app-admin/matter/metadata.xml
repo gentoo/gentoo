@@ -5,10 +5,6 @@
 		<email>mudler@gentoo.org</email>
 		<name>Ettore Di Giacinto</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>lxnay@gentoo.org</email>
-		<name>Fabio Erculiani</name>
-	</maintainer>
 	<use>
 		<flag name="entropy">Add Entropy support</flag>
 	</use>
