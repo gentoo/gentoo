@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -169,7 +169,7 @@ src_install() {
 	# https://docs.oracle.com/javase/8/docs/technotes/guides/intl/fontconfig.html
 	if ! use fontconfig ; then
 		insinto "${dest}"/lib/
-		doins "$(prefixify_ro "${FILESDIR}"/fontconfig.Gentoo.properties)"
+		doins "$(prefixify_ro "${FILESDIR}"/fontconfig.properties)"
 	fi
 
 	# Needs to be done before CDS, bug #215225.
