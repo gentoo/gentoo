@@ -2,9 +2,9 @@ DEFINED_PHASES=install postinst postrm unpack
 DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 ) >=dev-vcs/git-1.8.2.1
 DESCRIPTION=vim plugin: display your undo history in a graph
 EAPI=6
-HOMEPAGE=http://www.vim.org/scripts/script.php?script_id=4177 https://github.com/mbbill/undotree
+HOMEPAGE=https://www.vim.org/scripts/script.php?script_id=4177 https://github.com/mbbill/undotree
 LICENSE=BSD
 RDEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 SLOT=0
 _eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	git-r3	fec09a83ae965b041b47f5ff7c8ba29a	vim-doc	af2c81a1feeb0a99e91bee3e20769edb	vim-plugin	3160d9cb05ef44497be1485db0fe7590
-_md5_=0a7f80dd1c529859345dd8fe3cd174cd
+_md5_=bc6b5d2995b36f175e7d2eb1667a5b27

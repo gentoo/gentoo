@@ -2,7 +2,7 @@ DEFINED_PHASES=install postinst postrm setup
 DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 DESCRIPTION=vim plugin: manage wordpress blogs from vim
 EAPI=5
-HOMEPAGE=http://www.vim.org/scripts/script.php?script_id=3510
+HOMEPAGE=https://www.vim.org/scripts/script.php?script_id=3510
 IUSE=python_targets_python2_7
 KEYWORDS=amd64 x86
 LICENSE=vim
@@ -11,4 +11,4 @@ REQUIRED_USE=python_targets_python2_7
 SLOT=0
 SRC_URI=mirror://gentoo/vimpress-3.2.0.tar.bz2 https://dev.gentoo.org/~radhermit/vim/vimpress-3.2.0.tar.bz2
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-single-r1	317a2557b4d7319a7418225f65accf77	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	vim-doc	af2c81a1feeb0a99e91bee3e20769edb	vim-plugin	3160d9cb05ef44497be1485db0fe7590
-_md5_=99ef02dfb1d9fa6e9a1e60f2bba258e8
+_md5_=0e7a9e8d1deff34450c294ebf5a6fafa
