@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -53,7 +53,7 @@ src_install() {
 	keepdir /var/log/kafka
 	fowners -R kafka:kafka /var/log/kafka
 
-	newinitd "${FILESDIR}/${MY_PN}.init.d.2" "${MY_PN}"
+	newinitd "${FILESDIR}/${MY_PN}.init.d.4" "${MY_PN}"
 
 	dodir "${INSTALL_DIR}"
 	cp -pRP bin config libs "${ED}/${INSTALL_DIR}" || die
