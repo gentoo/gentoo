@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
 inherit elisp-common eutils multilib
 
@@ -21,7 +21,7 @@ IUSE="doc emacs examples"
 RESTRICT="test"
 
 RDEPEND="
-	dev-lang/mlton
+	>=dev-lang/mlton-20180207
 	doc? (
 		virtual/latex-base
 		app-text/texi2html
@@ -42,10 +42,11 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.7.1-emacs-twelf-init.patch"
 	"${FILESDIR}/${PN}-1.7.1-Makefile.patch"
 	"${FILESDIR}/${PN}-1.7.1-mlton-mlb.patch"
+	"${FILESDIR}/${PN}-1.7.1-mlton-20180207.patch"
 )
 
 src_prepare() {
-	epatch "${PATCHES[@]}"
+	default
 	sed \
 		-e "s@/usr/bin@${ROOT}usr/bin@g" \
 		-e "s@/usr/share@${ROOT}usr/share@" \
@@ -92,10 +93,10 @@ src_install() {
 	fi
 	dobin bin/twelf-server
 	if use doc; then
-		dohtml doc/html/index.html
+		local DOCS=( doc/guide/twelf.dvi doc/guide/twelf.ps doc/guide/twelf.pdf )
+		local HTML_DOCS=( doc/html/index.html doc/guide/twelf/. )
 		doinfo doc/guide/twelf.info
-		dodoc doc/guide/twelf.dvi doc/guide/twelf.ps doc/guide/twelf.pdf
-		dohtml doc/guide/twelf/*
+		einstalldocs
 	fi
 }
 
