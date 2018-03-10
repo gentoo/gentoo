@@ -330,6 +330,11 @@ src_prepare() {
 		sed -i "/my..sysroot/s:'':'${EPREFIX}':" ext/Errno/Errno_pm.PL || die
 	fi
 
+	if [[ ${CHOST} == *-solaris* ]] ; then
+		# do NOT mess with nsl, on Solaris this is always necessary,
+		# when -lsocket is used e.g. to get h_errno
+		PATCHES=( ${PATCHES[@]/*libnsl.patch/} )
+	fi
 	default
 }
 
