@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>pchrist@gentoo.org</email>
-		<name>Panagiotis Christopoulos</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>bugs@cddr.org</email>
 		<name>Stelian Ionescu (fe[nl]ix)</name>
 	</maintainer>
