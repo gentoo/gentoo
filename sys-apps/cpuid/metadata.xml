@@ -5,8 +5,4 @@
 		<email>hwoarang@gentoo.org</email>
 		<name>Markos Chandras</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>rhill@gentoo.org</email>
-		<name>Ryan Hill</name>
-	</maintainer>
 </pkgmetadata>
