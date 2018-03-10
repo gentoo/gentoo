@@ -1,5 +1,5 @@
-@version: 3.12
-# Copyright 1999-2017 Gentoo Foundation
+@version: 3.14
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # https://bugs.gentoo.org/426814
@@ -16,9 +16,10 @@ options {
 };
 
 source src {
-    unix-dgram("/dev/log");
+    system();
     internal();
 };
+
 source kernsrc {
     file("/proc/kmsg");
 };
