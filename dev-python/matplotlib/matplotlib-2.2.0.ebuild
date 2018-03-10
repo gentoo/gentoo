@@ -48,7 +48,7 @@ COMMON_DEPEND="
 	media-libs/freetype:2
 	media-libs/libpng:0
 	>=media-libs/qhull-2013
-	dev-python/kiwisolver[${PYTHON_USEDEP}]
+	>=dev-python/kiwisolver-1.0.0[${PYTHON_USEDEP}]
 	cairo? ( dev-python/cairocffi[${PYTHON_USEDEP}] )
 	gtk2? (
 		dev-libs/glib:2=
