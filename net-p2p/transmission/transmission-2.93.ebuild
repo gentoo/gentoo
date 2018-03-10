@@ -52,6 +52,7 @@ DOCS=( AUTHORS NEWS qt/README.txt )
 
 PATCHES=(
 	"${FILESDIR}"/libsystemd.patch
+	"${FILESDIR}"/transmission-2.93-libressl.patch
 )
 
 src_prepare() {
