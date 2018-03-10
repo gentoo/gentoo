@@ -10510,7 +10510,7 @@ x11-apps/fonttosfnt 1.0.4-r1: X.Org fonttosfnt application
 x11-apps/fslsfonts 1.0.5: list fonts served by X font server
 x11-apps/fstobdf 1.0.6: generate BDF font from X font server
 x11-apps/iceauth 1.0.6 1.0.7 1.0.8: ICE authority file utility
-x11-apps/ico 1.0.4: animate an icosahedron or other polyhedron
+x11-apps/ico 1.0.4 1.0.5: animate an icosahedron or other polyhedron
 x11-apps/intel-gpu-tools 1.15: Intel GPU userland tools
 x11-apps/listres 1.0.3 1.0.4: list resources in widgets
 x11-apps/luit 1.1.1: Locale and ISO 2022 support for Unicode terminals
@@ -10887,7 +10887,7 @@ x11-misc/xautolock 2.2_p5_p1: An automatic X screen-locker/screen-saver
 x11-misc/xautomation 1.09-r1: Control X from command line and find things on screen
 x11-misc/xbattbar 1.4.8: Advanced Power Management battery status display for X
 x11-misc/xbindkeys 1.8.6: Tool for launching commands on keystrokes
-x11-misc/xbitmaps 1.1.1-r1: X.Org bitmaps data
+x11-misc/xbitmaps 1.1.1-r1 1.1.2: X.Org bitmaps data
 x11-misc/xcalendar 4.0-r2: A simple interactive calendar program with a notebook capability
 x11-misc/xcb 2.4-r1: Marc Lehmann's improved X Cut Buffers
 x11-misc/xclip 0.13: Copy data from standard input to X clipboard
@@ -11203,7 +11203,7 @@ x11-themes/vertex-icon-theme 20150506: Vertex icon theme
 x11-themes/vertex-theme 20160329 20170128-r1: Vertex theme for GTK+ based desktops
 x11-themes/windowmaker-themes 0.1: Collection of Window Maker themes
 x11-themes/wm-icons 0.4.0_pre1-r1: A Large Assortment of Beutiful Themed Icons, Created with FVWM in mind
-x11-themes/xcursor-themes 1.0.4: X.Org cursor themes: whiteglass, redglass and handhelds
+x11-themes/xcursor-themes 1.0.4 1.0.5: X.Org cursor themes: whiteglass, redglass and handhelds
 x11-themes/xfce-gant-icon-theme 3.9_p6 3.9_p6-r1: Xfce Gant Icon Theme
 x11-themes/xfwm4-themes 4.10.0 4.10.0-r1: Additional themes for the Xfce window manager
 x11-themes/zuki-themes 3.24.3: Zuki themes for GTK, gnome-shell and more
