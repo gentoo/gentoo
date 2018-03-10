@@ -2529,7 +2529,7 @@ dev-java/htmlparser 1.4-r1: Implementation of the HTML5 parsing algorithm in Jav
 dev-java/httpcomponents-client 4.5: A low level toolset of Java components focused on HTTP and associated protocols
 dev-java/httpcomponents-core 4.4.1-r1: A low level toolset of Java components focused on HTTP and associated protocols
 dev-java/ical4j 1.0.5: a Java library for handling iCalendar data streams
-dev-java/icedtea-bin 3.6.0: A Gentoo-made binary build of the IcedTea JDK
+dev-java/icedtea-bin 3.6.0 3.7.0: A Gentoo-made binary build of the IcedTea JDK
 dev-java/icedtea-sound 1.0.1: Plugins for javax.sound
 dev-java/icedtea-web 1.6.1-r1: FOSS Java browser plugin and Web Start implementation
 dev-java/icu4j 54.1.1 55.1 56.1: A set of Java libraries providing Unicode and Globalization support
@@ -3053,7 +3053,7 @@ dev-libs/libgamin 0.1.10-r5: Library providing the FAM File Alteration Monitor A
 dev-libs/libgcrypt 1.8.1: General purpose crypto library based on the code used in GnuPG
 dev-libs/libgdata 0.17.8 0.17.9-r1: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.8 0.20.0: GObject-based interfaces and classes for commonly used data structures
-dev-libs/libgit2 0.26.0: A linkable library for Git
+dev-libs/libgit2 0.26.0 0.26.2: A linkable library for Git
 dev-libs/libgit2-glib 0.26.2: Git library for GLib
 dev-libs/libgnome-games-support 1.2.3: Library for code common to Gnome games
 dev-libs/libgpg-error 1.27-r1: Contains error handling functions used by GnuPG software
@@ -6300,7 +6300,7 @@ dev-vcs/guilt 0.36: A series of bash scripts which add a quilt-like interface to
 dev-vcs/hg-git 0.8.8: push to and pull from a Git repository using Mercurial
 dev-vcs/hgsubversion 1.8.5: hgsubversion is a Mercurial extension for working with Subversion repositories
 dev-vcs/kdesvn 2.0.0: A frontend to the subversion vcs
-dev-vcs/mercurial 4.3: Scalable distributed SCM
+dev-vcs/mercurial 4.3 4.5.2: Scalable distributed SCM
 dev-vcs/mr 1.20170129: Multiple Repository management tool
 dev-vcs/qgit 2.7: Qt GUI for git repositories
 dev-vcs/rapidsvn 0.12.1-r3: Cross-platform GUI front-end for the Subversion revision system
@@ -10450,7 +10450,7 @@ www-apps/trac 1.0.9: Enhanced wiki and issue tracking system for software develo
 www-apps/venus 20100911-r1: A feed aggregator application
 www-apps/viewvc 1.1.26: ViewVC, a web interface to CVS and Subversion
 www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
-www-client/chromium 64.0.3282.167 64.0.3282.186: Open-source version of Google Chrome web browser
+www-client/chromium 64.0.3282.167 64.0.3282.186 65.0.3325.146: Open-source version of Google Chrome web browser
 www-client/conkeror 1.0.4: A Mozilla-based web browser whose design is inspired by GNU Emacs
 www-client/dillo 3.0.5: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r1: Advanced and well-established text-mode web browser
