@@ -15,7 +15,7 @@ IUSE=""
 RDEPEND="
 	>=dev-qt/qtcore-${PV}-r1:${SLOT}
 	~dev-qt/qtgui-${PV}
-	>=dev-qt/qtwidgets-${PV}:${SLOT}
+	>=dev-qt/qtwidgets-${PV}-r1:${SLOT}
 	>=sys-libs/zlib-1.2.5
 "
 DEPEND="${RDEPEND}
