@@ -10572,7 +10572,7 @@ x11-apps/xmore 1.0.2: plain text display program for the X Window System
 x11-apps/xpr 1.0.4 1.0.5: X.Org xpr application
 x11-apps/xprop 1.2.2 1.2.3: property displayer for X
 x11-apps/xrandr 1.4.3 1.5.0: primitive command line interface to RandR extension
-x11-apps/xrdb 1.1.0: X server resource database utility
+x11-apps/xrdb 1.1.0 1.1.1: X server resource database utility
 x11-apps/xrectsel 0.3.2: Print the geometry of a rectangular screen region
 x11-apps/xrefresh 1.0.5: refresh all or part of an X screen
 x11-apps/xset 1.2.3: X.Org xset application
