@@ -7,10 +7,6 @@
 		<description>maintainer, has access to all hardware as needed</description>
 	</maintainer>
 	<maintainer type="person">
-		<email>steev@gentoo.org</email>
-		<name>Steev Klimaszewski</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>robbat2@gentoo.org</email>
 		<name>Robin H. Johnson</name>
 		<description>Maintainer, has 1st gen WiSpy hardware for testing</description>
