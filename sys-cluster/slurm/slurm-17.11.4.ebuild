@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,19 +17,19 @@ else
 	fi
 	MY_P="${PN}-${MY_PV}"
 	INHERIT_GIT=""
-	SRC_URI="https://www.schedmd.com/download/latest/${MY_P}.tar.bz2"
+	SRC_URI="https://download.schedmd.com/slurm/${MY_P}.tar.bz2"
 	KEYWORDS="~amd64 ~x86"
 	S="${WORKDIR}/${MY_P}"
 fi
 
 inherit autotools eutils pam perl-module prefix user ${INHERIT_GIT}
 
-DESCRIPTION="SLURM: A Highly Scalable Resource Manager"
+DESCRIPTION="A Highly Scalable Resource Manager"
 HOMEPAGE="https://www.schedmd.com"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="lua multiple-slurmd +munge mysql pam perl ssl static-libs torque"
+IUSE="debug lua multiple-slurmd +munge mysql pam perl ssl static-libs torque"
 
 DEPEND="
 	!sys-cluster/torque
@@ -54,7 +54,7 @@ RESTRICT="primaryuri test"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-disable-sview.patch
-	"${FILESDIR}"/${P}-sysmacros.patch
+	"${FILESDIR}"/${P}-buffer.patch
 )
 
 src_unpack() {
@@ -71,10 +71,8 @@ pkg_setup() {
 }
 
 src_prepare() {
-	if [ ${#PATCHES[0]} -ne 0 ]; then
-		epatch "${PATCHES[@]}"
-	fi
-	eapply_user
+	default
+
 	# pids should go to /var/run/slurm
 	sed -e "s:/var/run/slurmctld.pid:${EPREFIX}/var/run/slurm/slurmctld.pid:g" \
 		-e "s:/var/run/slurmd.pid:${EPREFIX}/var/run/slurm/slurmd.pid:g" \
@@ -101,6 +99,7 @@ src_configure() {
 			--docdir="${EPREFIX}/usr/share/doc/${P}"
 			--htmldir="${EPREFIX}/usr/share/doc/${P}"
 			)
+	use debug || myconf+=( --disable-debug )
 	use pam && myconf+=( --with-pam_dir=$(getpam_mod_dir) )
 	use mysql || myconf+=( --without-mysql_config )
 	econf "${myconf[@]}" \
@@ -113,19 +112,21 @@ src_configure() {
 	# --htmldir does not seems to propagate... Documentations are installed
 	# in /usr/share/doc/slurm-2.3.0/html
 	# instead of /usr/share/doc/slurm-2.3.0.2/html
-	sed -e "s|htmldir = .*/html|htmldir = \${prefix}/share/doc/slurm-${PVR}/html|g" -i doc/html/Makefile || die
+	sed \
+		-e "s|htmldir = .*/html|htmldir = \${prefix}/share/doc/slurm-${PVR}/html|g" \
+		-i doc/html/Makefile || die
 	if use perl ; then
 		# small hack to make it compile
-		mkdir -p "${S}/src/api/.libs"
-		mkdir -p "${S}/src/db_api/.libs"
-		touch "${S}/src/api/.libs/libslurm.so"
-		touch "${S}/src/db_api/.libs/libslurmdb.so"
-		cd "${LIBSLURM_PERL_S}"
+		mkdir -p "${S}/src/api/.libs" || die
+		mkdir -p "${S}/src/db_api/.libs" || die
+		touch "${S}/src/api/.libs/libslurm.so" || die
+		touch "${S}/src/db_api/.libs/libslurmdb.so" || die
+		cd "${LIBSLURM_PERL_S}" || die
 		S="${LIBSLURM_PERL_S}" SRC_PREP="no" perl-module_src_configure
-		cd "${LIBSLURMDB_PERL_S}"
+		cd "${LIBSLURMDB_PERL_S}" || die
 		S="${LIBSLURMDB_PERL_S}" SRC_PREP="no" perl-module_src_configure
-		cd "${S}"
-		rm -rf "${S}/src/api/.libs" "${S}/src/db_api/.libs"
+		cd "${S}" || die
+		rm -rf "${S}/src/api/.libs" "${S}/src/db_api/.libs" || die
 	fi
 }
 
@@ -133,26 +134,24 @@ src_compile() {
 	default
 	use pam && emake -C contribs/pam
 	if use perl ; then
-		cd "${LIBSLURM_PERL_S}"
+		cd "${LIBSLURM_PERL_S}" || die
 		S="${LIBSLURM_PERL_S}" perl-module_src_compile
-		cd "${LIBSLURMDB_PERL_S}"
+		cd "${LIBSLURMDB_PERL_S}" || die
 		S="${LIBSLURMDB_PERL_S}" perl-module_src_compile
-		cd "${S}"
+		cd "${S}" || die
 	fi
-	if use torque ; then
-		emake -C contribs/torque
-	fi
+	use torque && emake -C contribs/torque
 }
 
 src_install() {
 	default
 	use pam && emake DESTDIR="${D}" -C contribs/pam install
 	if use perl; then
-		cd "${LIBSLURM_PERL_S}"
+		cd "${LIBSLURM_PERL_S}" || die
 		S="${LIBSLURM_PERL_S}" perl-module_src_install
-		cd "${LIBSLURMDB_PERL_S}"
+		cd "${LIBSLURMDB_PERL_S}" || die
 		S="${LIBSLURMDB_PERL_S}" perl-module_src_install
-		cd "${S}"
+		cd "${S}" || die
 	fi
 	if use torque; then
 		emake DESTDIR="${D}" -C contribs/torque
@@ -162,30 +161,29 @@ src_install() {
 	# install sample configs
 	keepdir /etc/slurm
 	insinto /etc/slurm
-	doins etc/bluegene.conf.example
-	doins etc/cgroup.conf.example
-	doins etc/cgroup_allowed_devices_file.conf.example
-	doins etc/slurm.conf.example
-	doins etc/slurmdbd.conf.example
+	doins \
+		etc/bluegene.conf.example \
+		etc/cgroup.conf.example \
+		etc/cgroup_allowed_devices_file.conf.example \
+		etc/slurm.conf.example \
+		etc/slurmdbd.conf.example
 	exeinto /etc/slurm
-	doexe etc/cgroup.release_common.example
-	doexe etc/slurm.epilog.clean
+	doexe \
+		etc/slurm.epilog.clean
 	# install init.d files
-	newinitd "$(prefixify_ro "${FILESDIR}/slurmd.initd")" slurmd
-	newinitd "$(prefixify_ro "${FILESDIR}/slurmctld.initd")" slurmctld
-	newinitd "$(prefixify_ro "${FILESDIR}/slurmdbd.initd")" slurmdbd
+	newinitd "$(prefixify_ro ${FILESDIR}/slurmd.initd)" slurmd
+	newinitd "$(prefixify_ro ${FILESDIR}/slurmctld.initd)" slurmctld
+	newinitd "$(prefixify_ro ${FILESDIR}/slurmdbd.initd)" slurmdbd
 	# install conf.d files
 	newconfd "${FILESDIR}/slurm.confd" slurm
 	# Install logrotate file
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}/logrotate" slurm
-	# cgroups support
-	exeinto /etc/slurm/cgroup
-	doexe etc/cgroup.release_common.example
-	mv "${ED}"/etc/slurm/cgroup/{cgroup.release_common.example,release_common} || die "Can't move cgroup.release_common.example"
-	ln -s release_common "${ED}"/etc/slurm/cgroup/release_cpuset  || die "Can't create symbolic link release_cpuset"
-	ln -s release_common "${ED}"/etc/slurm/cgroup/release_devices || die "Can't create symbolic link release_devices"
-	ln -s release_common "${ED}"/etc/slurm/cgroup/release_freezer || die "Can't create symbolic link release_freezer"
+
+	newbashcomp contribs/slurm_completion_help/slurm_completion.sh ${PN}
+	bashcomp_alias \
+		sreport sacctmgr scontrol squeue scancel sshare sbcast sinfo \
+		sprio sacct salloc sbatch srun sattach sdiag sstat
 }
 
 pkg_preinst() {
@@ -214,12 +212,12 @@ pkg_postinst() {
 	for folder_path in ${paths[@]}; do
 		create_folders_and_fix_permissions $folder_path
 	done
-	einfo
+	echo
 
 	elog "Please visit the file '/usr/share/doc/${P}/html/configurator.html"
 	elog "through a (javascript enabled) browser to create a configureation file."
 	elog "Copy that file to /etc/slurm/slurm.conf on all nodes (including the headnode) of your cluster."
-	einfo
+	echo
 	elog "For cgroup support, please see https://www.schedmd.com/slurmdocs/cgroup.conf.html"
 	elog "Your kernel must be compiled with the wanted cgroup feature:"
 	elog "    General setup  --->"
