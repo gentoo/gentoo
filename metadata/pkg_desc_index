@@ -5144,7 +5144,7 @@ dev-python/ply 3.6-r1 3.9: Python Lex-Yacc library
 dev-python/plyr 1.0.6: A python wrapper for Glyr
 dev-python/pmw 1.3.3-r2 2.0.1: Toolkit for building high-level compound widgets in Python using the Tkinter module
 dev-python/pocketlint 0.15: Shared code for running pylint against rhinstaller projects
-dev-python/polib 1.0.4 1.0.7: A library to manipulate gettext files (.po and .mo files)
+dev-python/polib 1.0.7: A library to manipulate gettext files (.po and .mo files)
 dev-python/polygon 2.0.6 3.0.7: Python package to handle polygonal shapes in 2D
 dev-python/positional 1.0.1 1.1.1 1.1.2: A decorator which enforces only some args may be passed positionally.
 dev-python/posix_ipc 0.9.8: POSIX IPC primitives (semaphores, shared memory and message queues) for Python

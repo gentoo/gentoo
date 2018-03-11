@@ -1527,6 +1527,11 @@
       <role>Member (security)</role>
     </member>
     <member>
+      <email>mattst88@gentoo.org</email>
+      <name>Matt Turner</name>
+      <role>Member</role>
+    </member>
+    <member>
       <email>slyfox@gentoo.org</email>
       <name>Sergei Trofimovich</name>
       <role>Member</role>
@@ -1832,11 +1837,6 @@
       <role>Developer</role>
     </member>
     <member>
-      <email>jcallen@gentoo.org</email>
-      <name>Jonathan Callen</name>
-      <role>Developer</role>
-    </member>
-    <member>
       <email>jmbsvicetto@gentoo.org</email>
       <name>Jorge Manuel B. S. Vicetto</name>
       <role>Developer</role>
@@ -2114,6 +2114,11 @@
     <subproject ref="common-lisp@gentoo.org" inherit-members="1"/>
     <subproject ref="emacs@gentoo.org" inherit-members="1"/>
     <subproject ref="scheme@gentoo.org" inherit-members="1"/>
+    <member>
+      <email>nimiux@gentoo.org</email>
+      <name>Chema Alonso Josa</name>
+      <role>Developer</role>
+    </member>
   </project>
   <project>
     <email>livecd@gentoo.org</email>
@@ -2151,7 +2156,7 @@
   </project>
   <project>
     <email>mips@gentoo.org</email>
-    <name>Gentoo/MIPS Port</name>
+    <name>Gentoo/MIPS Development</name>
     <url>https://wiki.gentoo.org/wiki/Project:MIPS</url>
     <description>Gentoo/MIPS is a port of the Gentoo GNU/Linux and the Gentoo Portage package management system to mips-based platforms.</description>
     <subproject ref="gentoo-yeeloong@gentoo.org"/>
@@ -2453,11 +2458,6 @@ developers and volunteer mentors.</description>
     <name>Openstack</name>
     <url>https://wiki.gentoo.org/wiki/Project:Openstack</url>
     <description>Openstack is a virtualization orchestration suite that allows the creation and management of cloud infrastructures.</description>
-    <member>
-      <email>cardoe@gentoo.org</email>
-      <name>Doug Goldstein</name>
-      <role>Member</role>
-    </member>
     <member is-lead="1">
       <email>prometheanfire@gentoo.org</email>
       <name>Matthew Thode</name>
@@ -2840,11 +2840,6 @@ developers and volunteer mentors.</description>
     <member>
       <email>heroxbd@gentoo.org</email>
       <name>Benda Xu</name>
-      <role>Developer</role>
-    </member>
-    <member>
-      <email>jcallen@gentoo.org</email>
-      <name>Jonathan Callen</name>
       <role>Developer</role>
     </member>
   </project>
