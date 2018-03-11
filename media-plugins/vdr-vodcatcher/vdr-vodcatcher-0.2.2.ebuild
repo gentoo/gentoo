@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -6,7 +6,7 @@ EAPI="5"
 inherit vdr-plugin-2
 
 DESCRIPTION="VDR plugin: Downloads rss-feeds and passes video enclosures to the mplayer plugin"
-HOMEPAGE="http://projects.vdr-developer.org/projects/plg-vodcatcher"
+HOMEPAGE="https://projects.vdr-developer.org/projects/plg-vodcatcher"
 SRC_URI="mirror://vdr-developerorg/154/${P}.tar.gz"
 
 SLOT="0"
