@@ -13,6 +13,10 @@
     <email>polynomial-c@gentoo.org</email>
     <name>Lars Wendler</name>
   </maintainer>
+  <maintainer type="project">
+    <email>base-system@gentoo.org</email>
+    <name>Gentoo Base System</name>
+  </maintainer>
   <use>
     <flag name="convert">Build ext2 conversion utility (btrfs-convert)</flag>
     <flag name="reiserfs">Enable reiserfs support in btrfs-convert tool.</flag>
