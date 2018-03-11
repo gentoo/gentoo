@@ -184,7 +184,7 @@ fi
 
 if in_iuse graphite ; then
 	if tc_version_is_at_least 5.0 ; then
-		RDEPEND+=" graphite? ( >=dev-libs/isl-0.14 )"
+		RDEPEND+=" graphite? ( >=dev-libs/isl-0.14:0= )"
 	elif tc_version_is_at_least 4.8 ; then
 		RDEPEND+="
 			graphite? (
