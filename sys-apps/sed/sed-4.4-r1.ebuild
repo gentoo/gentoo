@@ -21,8 +21,8 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
 
 src_bootstrap_sed() {
-	# make sure system-sed works #40786
-	if ! type -p sed > /dev/null ; then
+	# make sure system-sed works #40786 #650052
+	if ! type -p sed > /dev/null || has_version 'sys-apps/sed[forced-sandbox]' ; then
 		mkdir -p "${T}/bootstrap"
 		printf '#!/bin/sh\nexec busybox sed "$@"\n' > "${T}/bootstrap/sed" || die
 		chmod a+rx "${T}/bootstrap/sed"
