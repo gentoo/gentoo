@@ -288,6 +288,7 @@ amd64		default/linux/musl/amd64/x32				exp
 amd64		hardened/linux/musl/amd64/x32				exp
 amd64		default/linux/amd64/17.0/musl				exp
 amd64		default/linux/amd64/17.0/musl/hardened			exp
+amd64		default/linux/amd64/17.0/musl/hardened/selinux		exp
 arm		default/linux/musl/arm/armv7a				exp
 arm		hardened/linux/musl/arm/armv7a				exp
 arm		default/linux/arm/17.0/musl/armv7a			exp
