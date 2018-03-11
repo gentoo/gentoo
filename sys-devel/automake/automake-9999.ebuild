@@ -42,8 +42,6 @@ DEPEND="${RDEPEND}
 	sys-apps/help2man
 	test? ( ${PYTHON_DEPS} )"
 
-PATCHES=( "${FILESDIR}"/${PN}-1.15-install-sh-avoid-low-risk-race-in-tmp.patch )
-
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
 }
