@@ -1,38 +1,32 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-PYTHON_COMPAT=( python{2_7,3_4} )
+EAPI=6
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 inherit distutils-r1
 
 DESCRIPTION="A library to manipulate gettext files (.po and .mo files)"
 HOMEPAGE="https://bitbucket.org/izi/polib/wiki/Home"
-SRC_URI="https://www.bitbucket.org/izi/polib/downloads/${P}.tar.gz"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="doc"
 
-RDEPEND=""
-DEPEND="${RDEPEND}
-	doc? ( dev-python/sphinx )
-"
+DEPEND="doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
 
 python_compile_all() {
-	if use doc; then
-		cd docs || die
-		emake html
-	fi
+	use doc && emake -C docs html
 }
 
 python_test() {
-	python tests/tests.py || die
+	"${PYTHON}" tests/tests.py || die "Tests failed under ${EPYTHON}"
 }
 
 python_install_all() {
-	local DOCS="CHANGELOG README.rst"
+	local DOCS=( CHANGELOG README.rst )
 	use doc && local HTML_DOCS=( docs/_build/html/. )
 	distutils-r1_python_install_all
 }
