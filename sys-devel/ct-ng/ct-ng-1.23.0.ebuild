@@ -6,7 +6,7 @@ EAPI="5"
 inherit bash-completion-r1
 
 DESCRIPTION="crosstool-ng is a tool to build cross-compiling toolchains"
-HOMEPAGE="https://crosstool-ng.org"
+HOMEPAGE="https://crosstool-ng.github.io/"
 MY_P=${P/ct/crosstool}
 SRC_URI="http://ymorin.is-a-geek.org/download/crosstool-ng/${MY_P}.tar.bz2"
 
