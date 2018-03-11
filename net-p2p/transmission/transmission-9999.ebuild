@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -82,7 +82,6 @@ src_configure() {
 		-DENABLE_NLS=$(usex nls ON OFF)
 		-DENABLE_QT=$(usex qt5 ON OFF)
 		-DENABLE_TESTS=$(usex test ON OFF)
-		-DUSE_QT5=ON
 
 		-DUSE_SYSTEM_EVENT2=ON
 		-DUSE_SYSTEM_DHT=OFF
