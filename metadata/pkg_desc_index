@@ -9948,7 +9948,7 @@ sys-cluster/ploop 1.13.2: openvz tool and a library to control ploop block devic
 sys-cluster/polysh 0.4-r1: Aggregate several remote shells into one
 sys-cluster/resource-agents 3.9.6: Resources pack for Heartbeat / Pacemaker
 sys-cluster/rgmanager 2.03.09 2.03.09-r1: Clustered resource group manager
-sys-cluster/swift 2.16.0: A highly available, distributed, and eventually consistent object/blob store
+sys-cluster/swift 2.16.0 2.17.0: A highly available, distributed, and eventually consistent object/blob store
 sys-cluster/torque 2.5.13-r1 4.1.7-r1: Resource manager and queuing system based on OpenPBS
 sys-cluster/util-vserver 0.30.216_pre3120: Linux-VServer admin utilities
 sys-cluster/vzctl 4.9.4: OpenVZ ConTainers control utility
