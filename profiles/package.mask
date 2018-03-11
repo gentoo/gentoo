@@ -282,11 +282,6 @@ app-crypt/monkeysign
 =sys-firmware/intel-microcode-20180108
 =sys-firmware/intel-microcode-20180108-r1
 
-# Tim Harder <radhermit@gentoo.org> (05 Feb 2018)
-# Unmaintained, replaced by newsboat fork.
-# Masked for removal in 30 days.
-net-news/newsbeuter
-
 # Patrice Clement <monsieurp@gentoo.org> (26 Jan 2018)
 # Has different symbols. Known to cause issues with i3bar/swaybar.
 media-fonts/fontawesome:0/5
@@ -300,19 +295,12 @@ media-fonts/fontawesome:0/5
 # mpv >= 0.28.0 requires changes currently only available in ffmpeg-9999.
 >=media-video/mpv-0.28.0
 
-# Michał Górny <mgorny@gentoo.org> (10 Jan 2018)
-# The Fuzzer library is now installed as part of core LLVM. That's
-# sys-devel/llvm in LLVM 5, and sys-libs/compiler-rt-sanitizers
-# in LLVM 6 and newer. The separate ebuild was never approved by LLVM
-# maintainers or actually maintained, and is obsolete for a long time.
-# Removal in 30 days.
-dev-libs/libFuzzer
-
 # Richard Freeman <rich0@gentoo.org> (09 Jan 2018)
 # Bug 644048 - temp QA mask until it can get sorted out
 # Lars Wendler <polynomial-c@gentoo.org> (26 Feb 2018)
 # See also tracker bug: https://bugs.gentoo.org/648864
 ~sys-apps/attr-2.4.48
+
 # Lars Wendler <polynomial-c@gentoo.org> (10 Jan 2018)
 # Mask followup bugfixes for =sys-apps/attr-2.4.48 as well until proper
 # testing has been conducted.
@@ -332,123 +320,6 @@ dev-libs/libFuzzer
 =sys-kernel/gentoo-sources-4.14.10-r1
 =sys-kernel/gentoo-sources-4.14.11
 
-# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
-# Fails to fetch (#597424). Removal in a month.
-sci-chemistry/platon
-
-# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
-# Multiple build issues (#423471, #529772, #558206, #574910, #603304,
-# #638602), problems with init.d scripts (#390231), major version bump
-# #pending to be done (#610744). Removal in a month.
-sys-fs/ocfs2-tools
-
-# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
-# Fails to build, a major version bump is needed but it's hard to bump
-# (#626050, #626052). Removal in a month.
-net-nds/ypserv
-net-nds/ypbind
-
-# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
-# Upstream is died, no server still usable for this (#626770). Removal in a
-# month.
-games-arcade/bloboats
-
-# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
-# Upstream dead, not compatible with latest mariadb, nothing requires this
-# in the tree (#628526, #629470, #629552, #629712, #629978, #630002,
-# #630098, #630650). Removal in a month.
-dev-db/lib_mysqludf_fPROJ4
-dev-db/lib_mysqludf_preg
-dev-db/lib_mysqludf_ta
-dev-db/lib_mysqludf_stat
-dev-db/lib_mysqludf_str
-dev-db/lib_mysqludf_udf
-dev-db/lib_mysqludf_sys
-dev-db/lib_mysqludf_json
-
-# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
-# Fails multilib-strict check (#628836). Nothing requires it. Removal in a
-# month.
-dev-libs/dclog
-
-# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
-# Tries to install at pkg_postinst phase (#628804). Removal in a month.
-app-misc/misterhouse
-
-# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
-# Configure hangs (#628726), a major version bump is needed (#510050).
-# Removal in a month.
-app-forensics/autopsy
-
-# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
-# Deprecated tools replace by dev-python/awscli (#633374). Removal in a
-# month.
-app-admin/aws-as-tools
-app-admin/aws-cw-tools
-app-admin/aws-iam-tools
-app-admin/aws-rds-tools
-
-# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
-# Relies on obsolete code.google, nothing uses it at present time (#633984).
-# Removal in a month.
-net-misc/slimrat
-
-# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
-# Upstream dead, fails to fetch (#586504, #640546, #636466). Removal in a
-# month.
-games-emulation/xe
-
-# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
-# Fails to build (#637612). Removal in a month.
-net-vpn/htun
-
-# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
-# Unmaintained, fails to build (#638628). Removal in a month.
-media-sound/nted
-
-# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
-# Fails to build (#638634). Removal in a month.
-sys-apps/raidutils
-
-# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
-# Tries to download and compile other tools, build fails then (#639060).
-# Removal in a month.
-dev-lang/fsharp
-
-# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
-# Dead since 2007, fails to build (#639510). Removal in a month.
-net-irc/ultimate
-
-# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
-# Relies on dead gnome2 python bindings, seems dead since 2009 (#640028),
-# removal in a month.
-sys-power/phctool
-
-# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
-# Upstream stopped its development as recent Gnome versions don't need it,
-# it relies on gnome2 python bindings and many other dead libs (#640032).
-# Removal in a month.
-app-misc/specto
-
-# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
-# Upstream dead, relies on gnome2 python bindings and other dead libs
-# (#640070). Removal in a month.
-x11-plugins/thinkhdaps
-
-# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
-# Cannot be installed (#640414). Removal in a month.
-net-misc/asterisk-rate_engine
-
-# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
-# Dead for ages and replaced by app-admin/procinfo-ng (#641016). Removal in
-# a month.
-app-admin/procinfo
-
-# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
-# Upstream dead, fails to build, nothing requires it (#641750). Removal in a
-# month.
-net-misc/bti
-
 # Alice Ferrazzi <alicef@gentoo.org> (30 Dec 2017)
 # Masked for removal in 30 days.
 # Upstream is no more backporting security fixes for 4.12.
@@ -457,17 +328,6 @@ net-misc/bti
 =sys-kernel/gentoo-sources-4.12.14
 =sys-kernel/gentoo-sources-4.12.13
 =sys-kernel/gentoo-sources-4.12.12
-
-# David Seifert <soap@gentoo.org> (29 Dec 2017)
-# Last release in 2003, EAPI 0, C++ extremely broken
-# Removal in 30 days
-app-admin/jinit
-
-# Pacho Ramos <pacho@gentoo.org> (27 Dec 2017)
-# Out ebuild is completely obsolete (#381073), download manually PPD is
-# preferred, current tarballs cannot be downloaded even (#635146). Removal
-# in a month.
-net-print/xerox-drivers
 
 # Alice Ferrazzi <alicef@gentoo.org> (27 Dec 2017)
 # Masked for removal in 30 days.
@@ -500,12 +360,6 @@ net-print/xerox-drivers
 # Andreas Sturmlechner <asturm@gentoo.org> (21 Dec 2017)
 # Masked for testing
 =dev-libs/libical-3.0.1
-
-# Patrice Clement <monsieurp@gentoo.org> (19 Dec 2017)
-# A slightly better syntax file for PAM configuration files is shipped with Vim
-# since version 8.0. The one we package is old and out of date.
-# Masked for removal in 30 days. See bug 578278.
-app-vim/pam-syntax
 
 # James Le Cuirot <chewi@gentoo.org> (17 Dec 2017)
 # Java 9 is not yet fully supported on Gentoo. Packages cannot depend
@@ -545,15 +399,6 @@ games-kids/crayon-physics
 # Andreas Sturmlechner <asturm@gentoo.org> (16 Nov 2017)
 # Depends on dead Qt4WebKit. Masked for removal in 30 days. Bug #620702
 <media-gfx/freecad-0.18
-
-# Jonas Stein <jstein@gentoo.org> (11 Nov 2017)
-# The upstream developer and former maintainer asked to treeclean these
-# packages, because they can be used only with the Siemens Mediacenter
-# Activy 3xx which was produced till 2005. He confirmed, that no user
-# is left who needs the package from our tree for this special hardware.
-# See also bug #633098. Masked for removal on 2018-01-31
-app-misc/activylircd
-media-plugins/vdr-alcd
 
 # Mike Gilbert <floppym@gentoo.org> (05 Nov 2017)
 # Breaks several reverse dependencies.
@@ -702,14 +547,6 @@ dev-lang/spidermonkey:52
 # If you still would like to use this version, please report any issues to
 # upstream.
 >=app-text/jabref-bin-4.0
-
-# Nicolas Bock <nicolasbock@gentoo.org> (6 Dec 2017)
-# Development has ceased, the last commit to the upstream repository was
-# on 16 July 2016 with a note stating that its status is unmaintained [1].
-# See also Bug 640034.
-#
-# [1] https://github.com/projecthamster/hamster/commit/c3e5fb761c88fdecfd1566cac8b6836228a27cce
-app-office/hamster-time-tracker
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Doesn't work with >=openvpn-2.3, bug 470696
