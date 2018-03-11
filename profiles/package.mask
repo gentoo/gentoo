@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sebastian Pipping <sping@gentoo.org> (11 Mar 2018)
+# Breaks XFCE, 1.19.6 was fine (in that regard). Bug #650228
+>=x11-base/xorg-server-1.19.7
+
 # Andreas Sturmlechner <asturm@gentoo.org> (11 Mar 2018)
 # Dead upstream, no revdeps left. Bug #639358
 app-i18n/libguess
