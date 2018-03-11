@@ -539,7 +539,7 @@ app-editors/editra 0.7.20-r2: Multi-platform text editor supporting over 50 prog
 app-editors/ee 1.5.2: An easy to use text editor. A subset of aee
 app-editors/efte 1.1-r1: A fast text editor supporting folding, syntax highlighting, etc.
 app-editors/elvis 2.2.0-r4: A vi/ex clone
-app-editors/emacs 18.59-r11 23.4-r17 24.5-r5 25.3-r1: The extensible, customizable, self-documenting real-time display editor
+app-editors/emacs 18.59-r11 23.4-r17 24.5-r5 25.3-r1 25.3-r3: The extensible, customizable, self-documenting real-time display editor
 app-editors/emact 2.56.0: EmACT, a fork of Conroy's MicroEmacs
 app-editors/ersatz-emacs 20060515: A very minimal imitation of the famous GNU Emacs editor
 app-editors/fe 1.8 1.9: A small and easy to use folding editor
@@ -9780,7 +9780,7 @@ sys-apps/pcmciautils 018_p8: PCMCIA userspace utilities for Linux
 sys-apps/pcsc-lite 1.8.20 1.8.22: PC/SC Architecture smartcard middleware library
 sys-apps/pmount 0.9.99_alpha-r3: Policy based mounter that gives the ability to mount removable devices as a user
 sys-apps/policycoreutils 2.7: SELinux core utilities
-sys-apps/portage 2.3.8 2.3.13-r1 2.3.19-r1: Portage is the package management and distribution system for Gentoo
+sys-apps/portage 2.3.8 2.3.13-r1 2.3.19-r1 2.3.24-r1: Portage is the package management and distribution system for Gentoo
 sys-apps/preload 0.6.4-r3: Adaptive readahead daemon
 sys-apps/progress 0.13: Coreutils Viewer: show progress for cp, rm, dd, and so forth
 sys-apps/proot 3.2.2-r1: User-space implementation of chroot, mount --bind, and binfmt_misc
