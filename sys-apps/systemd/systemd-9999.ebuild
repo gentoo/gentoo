@@ -300,17 +300,11 @@ multilib_src_install_all() {
 	einstalldocs
 	dodoc "${FILESDIR}"/nsswitch.conf
 
-	if use sysv-utils; then
-		local app
-		for app in halt poweroff reboot runlevel shutdown telinit; do
-			dosym ../bin/systemctl /sbin/${app}
-		done
-		dosym ../lib/systemd/systemd /sbin/init
-	else
-		# we just keep sysvinit tools, so no need for the mans
-		rm "${ED%/}"/usr/share/man/man8/{halt,poweroff,reboot,runlevel,shutdown,telinit}.8 \
-			|| die
+	if ! use sysv-utils; then
+		rm "${ED%/}"/sbin/{halt,init,poweroff,reboot,runlevel,shutdown,telinit} || die
+		rmdir "${ED%/}"/sbin || die
 		rm "${ED%/}"/usr/share/man/man1/init.1 || die
+		rm "${ED%/}"/usr/share/man/man8/{halt,poweroff,reboot,runlevel,shutdown,telinit}.8 || die
 	fi
 
 	# Preserve empty dirs in /etc & /var, bug #437008
