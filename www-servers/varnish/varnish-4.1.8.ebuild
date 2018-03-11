@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_4} pypy )
 inherit user autotools systemd python-r1
 
 DESCRIPTION="Varnish is a state-of-the-art, high-performance HTTP accelerator"
-HOMEPAGE="http://www.varnish-cache.org/"
+HOMEPAGE="https://varnish-cache.org/"
 SRC_URI="http://varnish-cache.org/_downloads/${P}.tgz"
 
 LICENSE="BSD-2 GPL-2"
