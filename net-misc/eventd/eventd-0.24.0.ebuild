@@ -7,7 +7,7 @@ inherit linux-info meson systemd xdg-utils
 
 DESCRIPTION="A small daemon to act on remote or local events"
 HOMEPAGE="https://www.eventd.org/"
-SRC_URI="https://dev.gentoo.org/~kensington/distfiles/${P}.tgz"
+SRC_URI="https://www.eventd.org/download/eventd/${P}.tar.xz"
 
 LICENSE="GPL-3+ LGPL-3+ MIT"
 SLOT="0"
@@ -79,7 +79,7 @@ src_prepare() {
 }
 
 eventd_use_enable() {
-	echo "-Denable-${2:-${1}}=$(usex ${1} 'true' 'false')" || die
+	echo "-D${2:-${1}}=$(usex ${1} 'true' 'false')" || die
 }
 
 src_configure() {
@@ -95,7 +95,7 @@ src_configure() {
 		$(eventd_use_enable notification notification-daemon)
 		# Wayland plugin requires wayland-wall, which is currently WIP.
 		# See https://github.com/wayland-wall/wayland-wall/issues/1
-		-Denable-nd-wayland="false"
+		-Dnd-wayland="false"
 		$(eventd_use_enable X nd-xcb)
 		$(eventd_use_enable fbcon nd-fbdev)
 		$(eventd_use_enable purple im)
@@ -111,7 +111,9 @@ src_configure() {
 }
 
 src_test() {
-	EVENTD_TESTS_TMP_DIR="${T}" meson_src_test
+	# Drop LC_NUMERIC=C on next verbump.
+	# https://github.com/sardemff7/eventd/issues/39
+	LC_NUMERIC=C EVENTD_TESTS_TMP_DIR="${T}" meson_src_test
 }
 
 pkg_postinst() {
