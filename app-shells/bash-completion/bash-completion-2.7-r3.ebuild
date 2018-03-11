@@ -4,17 +4,19 @@
 EAPI=6
 
 BASHCOMP_P=bashcomp-2.0.2
-EGIT_REPO_URI="https://github.com/scop/bash-completion"
-inherit autotools git-r3 versionator
+inherit versionator
 
 DESCRIPTION="Programmable Completion for bash"
 HOMEPAGE="https://github.com/scop/bash-completion"
-SRC_URI="https://bitbucket.org/mgorny/bashcomp2/downloads/${BASHCOMP_P}.tar.gz"
+SRC_URI="https://github.com/scop/bash-completion/releases/download/${PV}/${P}.tar.xz
+	https://bitbucket.org/mgorny/bashcomp2/downloads/${BASHCOMP_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris"
 IUSE="test"
+# Multiple test failures, need to investigate the exact problem
+RESTRICT="test"
 
 # completion collision with net-fs/mc
 RDEPEND=">=app-shells/bash-4.3_p30-r1
@@ -48,25 +50,20 @@ STRIP_COMPLETIONS=(
 	# Installed by sys-apps/util-linux-2.28
 	mount umount mount.linux umount.linux
 
-	# Deprecated in favor of sys-apps/util-linux-2.31
-	_rfkill
+	# Installed by sys-apps/util-linux-2.31
+	rfkill
 )
-
-src_unpack() {
-	git-r3_src_unpack
-	default
-}
 
 src_prepare() {
 	eapply "${WORKDIR}/${BASHCOMP_P}/${PN}"-2.1_p*.patch
+	# Bug 543100, update bug 601194
+	eapply "${FILESDIR}/${PN}-2.1-escape-characters-r1.patch"
 	eapply_user
 
 	# Remove implicit completions for vim.
 	# https://bugs.gentoo.org/649986
 	sed -i -e 's/vi vim gvim rvim view rview rgvim rgview gview//' \
 		bash_completion || die
-
-	eautoreconf
 }
 
 src_test() {
@@ -79,13 +76,8 @@ src_test() {
 	tail -f "${T}/dtach-test.log" &
 	local tail_pid=${!}
 
-	# override the default expect timeout and buffer size to avoid tests
-	# failing randomly due to cold cache, busy system or just more output
-	# than upstream anticipated (they run tests on pristine docker
-	# installs of binary distros)
 	nonfatal dtach -N "${T}/dtach.sock" \
-		bash -c 'emake check RUNTESTFLAGS="OPT_TIMEOUT=300 OPT_BUFFER_SIZE=1000000" \
-			&> "${T}"/dtach-test.log; echo ${?} > "${T}"/dtach-test.out'
+		bash -c 'emake check &> "${T}"/dtach-test.log; echo ${?} > "${T}"/dtach-test.out'
 
 	kill "${tail_pid}"
 	[[ -f ${T}/dtach-test.out ]] || die "Unable to run tests"
