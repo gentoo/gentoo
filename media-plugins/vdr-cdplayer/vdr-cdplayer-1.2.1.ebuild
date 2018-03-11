@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -6,8 +6,8 @@ EAPI="5"
 inherit vdr-plugin-2
 
 DESCRIPTION="VDR Plugin: CD-PLAYER"
-HOMEPAGE="http://www.uli-eckhardt.de/vdr/cdplayer.en.shtml"
-SRC_URI="http://www.uli-eckhardt.de/vdr/download/${P}.tgz"
+HOMEPAGE="https://www.uli-eckhardt.de/vdr/cdplayer.en.shtml"
+SRC_URI="https://www.uli-eckhardt.de/vdr/download/${P}.tgz"
 
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
