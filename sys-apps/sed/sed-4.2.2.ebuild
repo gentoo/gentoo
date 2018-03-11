@@ -22,13 +22,11 @@ DEPEND="${RDEPEND}
 
 src_bootstrap_sed() {
 	# make sure system-sed works #40786
-	export NO_SYS_SED=""
 	if ! type -p sed > /dev/null ; then
-		NO_SYS_SED="!!!"
-		./bootstrap.sh || die "couldnt bootstrap"
-		cp sed/sed "${T}"/ || die "couldnt copy"
-		export PATH="${PATH}:${T}"
-		make clean || die "couldnt clean"
+		mkdir -p "${T}/bootstrap"
+		printf '#!/bin/sh\nexec busybox sed "$@"\n' > "${T}/bootstrap/sed" || die
+		chmod a+rx "${T}/bootstrap/sed"
+		PATH="${T}/bootstrap:${PATH}"
 	fi
 }
 
