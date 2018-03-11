@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-inherit eutils multilib-minimal
+inherit eutils multilib-minimal preserve-libs
 
 DESCRIPTION="A library for manipulating integer points bounded by linear constraints"
 HOMEPAGE="http://isl.gforge.inria.fr/"
@@ -36,4 +36,16 @@ multilib_src_configure() {
 multilib_src_install_all() {
 	einstalldocs
 	prune_libtool_files
+}
+
+pkg_preinst() {
+	preserve_old_lib \
+		/usr/$(get_libdir)/libisl$(get_libname 14) \
+		/usr/$(get_libdir)/libisl$(get_libname 15)
+}
+
+pkg_postinst() {
+	preserve_old_lib_notify \
+		/usr/$(get_libdir)/libisl$(get_libname 14) \
+		/usr/$(get_libdir)/libisl$(get_libname 15)
 }
