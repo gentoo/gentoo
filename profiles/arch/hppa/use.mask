@@ -4,6 +4,10 @@
 # request bug for the hppa arch.
 
 # Matt Turner <mattst88@gentoo.org> (10 Mar 2018)
+# sys-boot/plymouth has not been tested on HPPA
+plymouth
+
+# Matt Turner <mattst88@gentoo.org> (10 Mar 2018)
 # sys-fs/dmraid has not been tested on HPPA
 dmraid
 
