@@ -304,6 +304,7 @@ ppc		hardened/linux/musl/ppc					exp
 x86		default/linux/musl/x86					exp
 x86		hardened/linux/musl/x86					exp
 x86		default/linux/x86/17.0/musl				exp
+x86		default/linux/x86/17.0/musl/selinux			exp
 
 # Non-embedded uclibc profiles
 # @MAINTAINER: uclibc@gentoo.org
