@@ -1,6 +1,11 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (11 Mar 2018)
+# Testing requires having libc++ built against libc++abi right now
+# (and we force linking to libcxxrt).
+sys-libs/libcxxabi test
+
 # Michał Górny <mgorny@gentoo.org> (02 Mar 2018)
 # Someone needs to test the driver.
 x11-base/xorg-drivers video_cards_amdgpu
