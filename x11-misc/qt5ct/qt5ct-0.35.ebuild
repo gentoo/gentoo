@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,15 +20,17 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	dbus? (
 		dev-qt/qtdbus:5
-		>=dev-qt/qtgui-5.7:5[dbus]
+		dev-qt/qtgui:5[dbus]
 	)
 "
 DEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5
 "
 
+PATCHES=( "${FILESDIR}/${P}-fix-qtdbus-automagic.patch" )
+
 src_configure() {
-	eqmake5 DEFINES="$(usex dbus '' QT_NO_DBUS)" ${PN}.pro
+	eqmake5 DISABLE_DBUS=$(usex !dbus 1 0)
 }
 
 src_install() {
