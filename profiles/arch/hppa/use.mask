@@ -3,6 +3,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Matt Turner <mattst88@gentoo.org> (10 Mar 2018)
+# sys-fs/dmraid has not been tested on HPPA
+dmraid
+
 # James Le Cuirot <chewi@gentoo.org> (29 Jun 2017)
 # Unmask as this profile is big endian.
 -big-endian
