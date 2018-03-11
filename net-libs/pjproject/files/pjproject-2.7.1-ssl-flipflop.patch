@@ -52,12 +52,12 @@
 -			# PJSIP_HAS_TLS_TRANSPORT setting follows PJ_HAS_SSL_SOCK
 -			#AC_DEFINE(PJSIP_HAS_TLS_TRANSPORT, 1)
 -			AC_DEFINE(PJ_HAS_SSL_SOCK, 1)
-+	      ,	 [ac_no_ssl=1]
 +)
 +
 +dnl # OpenSSL detection
 +AC_MSG_CHECKING([OpenSSL installations])
-+if test "x$ac_no_ssl" = "x1"; then
++if test "x$enable_ssl" = "xno"; then
++	ac_no_ssl=1
 +	AC_MSG_RESULT([explicitly disabled])
 +else
 +	if test "x$with_ssl" != "xno" -a "x$with_ssl" != "x"; then
