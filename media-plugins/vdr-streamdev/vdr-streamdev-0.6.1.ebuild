@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ inherit vdr-plugin-2
 VERSION="1580" # every bump, new version !
 
 DESCRIPTION="VDR Plugin: Client/Server and http streaming plugin"
-HOMEPAGE="http://projects.vdr-developer.org/projects/plg-streamdev"
+HOMEPAGE="https://projects.vdr-developer.org/projects/plg-streamdev"
 SRC_URI="mirror://vdr-developerorg/${VERSION}/${P}.tgz"
 
 LICENSE="GPL-2"
