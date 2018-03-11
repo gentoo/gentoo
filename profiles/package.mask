@@ -269,11 +269,6 @@ media-gfx/qiviewer
 # Bug: #647352
 app-crypt/monkeysign
 
-# Michael Palimamka <kensington@gentoo.org> (11 Feb 2018
-# Fails to build (bug #538400). Requires dead Qt 4 (bug #637014).
-# Dead upstream. Masked for removal in 30 days.
-media-sound/lastfmplayer
-
 # Eray Aslan <eras@gentoo.org> (08 Feb 2018)
 # Mask experimental software
 =mail-mta/postfix-3.4*
