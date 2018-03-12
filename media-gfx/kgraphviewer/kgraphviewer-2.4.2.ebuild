@@ -10,7 +10,7 @@ DESCRIPTION="Graphviz dot graph file viewer"
 HOMEPAGE="https://www.kde.org/applications/graphics/kgraphviewer/"
 [[ ${PV} != *9999* ]] && SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
 
-LICENSE="GPL-2 FDL-1.2"
+LICENSE="GPL-2 GPL-2+ LGPL-2+ LGPL-2.1+ handbook? ( FDL-1.2 )"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
