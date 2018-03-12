@@ -64,6 +64,7 @@ src_prepare() {
 	# https://bugs.gentoo.org/649986
 	sed -i -e 's/vi vim gvim rvim view rview rgvim rgview gview//' \
 		bash_completion || die
+	rm test/completion/vi.exp || die
 }
 
 src_test() {
