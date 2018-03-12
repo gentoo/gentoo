@@ -12,7 +12,7 @@ PARCH=${P/_}
 HPN_PATCH="${PARCH}-hpnssh14v12-r1.tar.xz"
 SCTP_PATCH="${PN}-7.6_p1-sctp.patch.xz"
 LDAP_PATCH="${PN}-lpk-7.6p1-0.3.14.patch.xz"
-X509_VER="11.1" X509_PATCH="${PN}-${PV/_}+x509-${X509_VER}.diff.gz"
+X509_VER="11.2" X509_PATCH="${PN}-${PV/_}+x509-${X509_VER}.diff.gz"
 
 DESCRIPTION="Port of OpenBSD's free SSH release"
 HOMEPAGE="http://www.openssh.org/"
@@ -110,6 +110,7 @@ src_prepare() {
 	cp version.h version.h.pristine
 
 	eapply "${FILESDIR}/${P}-warnings.patch"
+	eapply "${FILESDIR}/${P}-permitopen.patch"
 
 	# don't break .ssh/authorized_keys2 for fun
 	sed -i '/^AuthorizedKeysFile/s:^:#:' sshd_config || die
@@ -118,7 +119,6 @@ src_prepare() {
 		if use hpn ; then
 			pushd "${WORKDIR}" >/dev/null
 			eapply "${FILESDIR}"/${P}-hpn-x509-${X509_VER}-glue.patch
-			eapply "${FILESDIR}"/${P}-x509-${X509_VER}-libressl.patch
 			popd >/dev/null
 			save_version X509
 		fi
