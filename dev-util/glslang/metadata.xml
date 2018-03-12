@@ -5,10 +5,12 @@
 		<email>x11@gentoo.org</email>
 		<name>X11</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>commendsarnex@gmail.com</email>
+		<name>Nick Sarnie</name>
+	</maintainer>
 	<upstream>
-		<remote-id type="github">KhronosGroup/Vulkan-LoaderAndValidationLayers</remote-id>
+		<remote-id type="github">KhronosGroup/glslang</remote-id>
 	</upstream>
-	<use>
-		<flag name="demos">Build vulkan demos and vulkaninfo</flag>
-	</use>
 </pkgmetadata>
+
