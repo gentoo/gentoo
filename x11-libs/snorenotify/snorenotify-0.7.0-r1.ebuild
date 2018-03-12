@@ -48,10 +48,6 @@ src_test() {
 	virtx cmake-utils_src_test
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
 pkg_postinst() {
 	gnome2_icon_cache_update
 }
