@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 2016-2017 Gentoo Foundation
+# Copyright 2016-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 description="Prometheus snmp exporter"
@@ -8,7 +8,7 @@ user=${user:-${RC_SVCNAME}}
 group=${group:-${RC_SVCNAME}}
 
 command="/usr/bin/snmp_exporter"
-command_args="${command_args:---config-file=/etc/snmp_exporter/snmp.yml}"
+command_args="${command_args:---config.file=/etc/snmp_exporter/snmp.yml}"
 command_background="true"
 start_stop_daemon_args="--user ${user} --group ${group} \
 	--stdout /var/log/snmp_exporter/${RC_SVCNAME}.log \
