@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -61,6 +61,7 @@ DEPEND="${RDEPEND}
 src_configure() {
 	replace-flags -Os -O2
 	XORG_CONFIGURE_OPTIONS=(
+		--disable-dri1
 		$(use_enable debug)
 		$(use_enable dri)
 		$(use_enable dri dri3)
