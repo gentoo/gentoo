@@ -8951,7 +8951,7 @@ net-nds/gss-proxy 0.7.0-r1: daemon to proxy GSSAPI context establishment and cha
 net-nds/jxplorer 3.3.1: A fully functional ldap browser written in java
 net-nds/ldapvi 1.7-r1 1.7_p20101214: Manage LDAP entries with a text editor
 net-nds/openldap 2.4.44: LDAP suite of application and development tools
-net-nds/rpcbind 0.2.4-r2: portmap replacement which supports RPC over various protocols
+net-nds/rpcbind 0.2.4-r3: portmap replacement which supports RPC over various protocols
 net-nds/smbldap-tools 0.9.8: Samba LDAP management tools
 net-nds/tac_plus 4.0.4.19-r3 4.0.4.19-r4: An updated version of Cisco's TACACS+ server
 net-nds/yp-tools 4.2.2-r1: Network Information Service tools
