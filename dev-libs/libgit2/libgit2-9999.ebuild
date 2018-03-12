@@ -18,13 +18,17 @@ HOMEPAGE="https://libgit2.github.com/"
 
 LICENSE="GPL-2-with-linking-exception"
 SLOT="0/26"
-IUSE="examples gssapi libressl +ssh test +threads trace"
+IUSE="+curl examples gssapi libressl +ssh test +threads trace"
 
 RDEPEND="
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
 	sys-libs/zlib
 	net-libs/http-parser:=
+	curl? (
+		!libressl? ( net-misc/curl:=[curl_ssl_openssl(-)] )
+		libressl? ( net-misc/curl:=[curl_ssl_libressl(-)] )
+	)
 	gssapi? ( virtual/krb5 )
 	ssh? ( net-libs/libssh2 )
 "
@@ -49,6 +53,7 @@ src_configure() {
 		-DUSE_GSSAPI=$(usex gssapi)
 		-DUSE_SSH=$(usex ssh)
 		-DTHREADSAFE=$(usex threads)
+		-DCURL=$(usex curl)
 	)
 	cmake-utils_src_configure
 }
