@@ -20,19 +20,25 @@ HOMEPAGE="https://github.com/KhronosGroup/Vulkan-LoaderAndValidationLayers"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="wayland X"
+IUSE="demos test wayland X"
 
 RDEPEND=""
 DEPEND="${PYTHON_DEPS}
+	demos? ( dev-util/glslang:=[${MULTILIB_USEDEP}] )
 	wayland? ( dev-libs/wayland:=[${MULTILIB_USEDEP}] )
 	X? ( x11-libs/libX11:=[${MULTILIB_USEDEP}] )"
+
+src_prepare() {
+	PATCHES=( "${FILESDIR}/${P}-no-external-sources.patch" )
+	default
+}
 
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_SKIP_RPATH=True
-		-DBUILD_TESTS=False
+		-DBUILD_TESTS=$(usex test)
 		-DBUILD_LAYERS=False
-		-DBUILD_DEMOS=False
+		-DBUILD_DEMOS=$(usex demos)
 		-DBUILD_VKJSON=False
 		-DBUILD_LOADER=True
 		-DBUILD_WSI_MIR_SUPPORT=False
