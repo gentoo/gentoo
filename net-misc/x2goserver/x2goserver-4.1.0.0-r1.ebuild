@@ -22,6 +22,7 @@ RDEPEND="dev-perl/Capture-Tiny
 	dev-perl/File-ReadBackwards
 	dev-perl/File-Which
 	dev-perl/Switch
+	dev-perl/Try-Tiny
 	media-fonts/font-cursor-misc
 	media-fonts/font-misc-misc[nls]
 	>=net-misc/nx-3.5.99.14
