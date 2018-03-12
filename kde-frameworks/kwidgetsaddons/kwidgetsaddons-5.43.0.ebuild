@@ -18,3 +18,9 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	nls? ( $(add_qt_dep linguist-tools) )
 "
+
+src_test() {
+	# bug 650216
+	local myctestargs=( -E "(kdatecomboboxtest)" )
+	kde5_src_test
+}
