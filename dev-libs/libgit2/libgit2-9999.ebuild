@@ -40,7 +40,7 @@ DOCS=( AUTHORS CONTRIBUTING.md CONVENTIONS.md README.md )
 
 src_prepare() {
 	# skip online tests
-	sed -i '/libgit2_clar/s/-ionline/-xonline/' CMakeLists.txt || die
+	sed -i '/libgit2_clar/s/-ionline/-xonline/' tests/CMakeLists.txt || die
 
 	cmake-utils_src_prepare
 }
