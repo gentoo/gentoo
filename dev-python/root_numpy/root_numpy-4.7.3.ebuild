@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,14 +12,14 @@ DESCRIPTION="Interface between ROOT and numpy"
 HOMEPAGE="https://github.com/rootpy/root_numpy"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
-LICENSE="MIT"
+LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="examples test"
 
 RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
-	sci-physics/root[python,${PYTHON_USEDEP}]"
+	sci-physics/root:=[python,${PYTHON_USEDEP}]"
 
 DEPEND="${RDEPEND}
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
