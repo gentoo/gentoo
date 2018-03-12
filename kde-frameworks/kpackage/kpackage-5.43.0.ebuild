@@ -26,3 +26,9 @@ src_configure() {
 
 	kde5_src_configure
 }
+
+src_test() {
+	#bug 650214
+	local myctestargs=( -E "(kdatecomboboxtest)" )
+	kde5_src_test
+}
