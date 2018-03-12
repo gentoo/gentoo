@@ -15,7 +15,7 @@ IUSE="+fuse postgres +sqlite"
 
 REQUIRED_USE="|| ( postgres sqlite )"
 
-DEPEND=""
+DEPEND="virtual/perl-ExtUtils-MakeMaker"
 RDEPEND="dev-perl/Capture-Tiny
 	dev-perl/Config-Simple
 	dev-perl/File-BaseDir
