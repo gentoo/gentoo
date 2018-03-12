@@ -36,7 +36,7 @@ src_prepare() {
 	# have quilt installed.
 	sed 's@which quilt@false@' -i mesa-quilt || die
 
-	# run autoreconf in all neeed folders
+	# run autoreconf in all needed folders
 	for i in nxcomp nx-X11/lib nxcompshad nxproxy ; do
 		pushd ${i} || die
 		eautoreconf
@@ -57,11 +57,15 @@ src_prepare() {
 }
 
 src_configure() {
-	for i in nxcomp nx-X11/lib nxcompshad nxproxy ; do
+	for i in nxcomp nxcompshad nxproxy ; do
 		pushd ${i} || die
 		econf
 		popd || die
 	done
+
+	pushd "nx-X11/lib" || die
+	econf --disable-poll
+	popd || die
 }
 
 src_compile() {
