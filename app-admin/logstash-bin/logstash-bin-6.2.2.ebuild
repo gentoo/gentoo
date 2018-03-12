@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -39,7 +39,7 @@ src_install() {
 
 	rm -v config/startup.options || die
 	insinto /etc/${MY_PN}
-	doins config/*
+	doins -r config/.
 	rm -rv config data || die
 
 	insinto "/opt/${MY_PN}"
