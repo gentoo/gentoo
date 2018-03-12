@@ -12,4 +12,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/scop/bash-completion/releases/download/2.7/bash-completion-2.7.tar.xz https://bitbucket.org/mgorny/bashcomp2/downloads/bashcomp-2.0.2.tar.gz
 _eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	versionator	ce21313503c41896ebcd7d58b0607e37
-_md5_=e8e197ac6a5775f5c0434c8f51c2168c
+_md5_=c4436426c8d468dd3b5f5f605df4521b
