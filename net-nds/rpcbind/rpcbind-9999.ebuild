@@ -19,6 +19,7 @@ HOMEPAGE="https://sourceforge.net/projects/rpcbind/"
 LICENSE="BSD"
 SLOT="0"
 IUSE="debug selinux systemd tcpd warmstarts"
+REQUIRED_USE="systemd? ( warmstarts )"
 
 CDEPEND=">=net-libs/libtirpc-0.2.3:=
 	systemd? ( sys-apps/systemd:= )
