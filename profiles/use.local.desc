@@ -1448,6 +1448,7 @@ dev-libs/libevent:debug - Support runtime debug mode and malloc hooks (for progr
 dev-libs/libffi:pax_kernel - Use PaX emulated trampolines, for we can't use PROT_EXEC
 dev-libs/libgcrypt:o-flag-munging - Enable O-flag mangling during build
 dev-libs/libgdata:gnome-online-accounts - Enable net-libs/gnome-online-accounts support
+dev-libs/libgit2:curl - Use net-misc/curl for HTTP support (otherwise, limited built-in implementation will be used)
 dev-libs/libgit2:gssapi - Enable GSSAPI support for SPNEGO auth
 dev-libs/libgit2:ssh - Enable SSH transport support
 dev-libs/libgit2:trace - Enable tracing support
