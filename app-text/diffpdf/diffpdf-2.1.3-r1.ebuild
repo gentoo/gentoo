@@ -15,7 +15,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	app-text/poppler:=[qt5]
+	app-text/poppler[qt5]
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 "
