@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ inherit distutils-r1
 DESCRIPTION="Rendering as a binning process"
 HOMEPAGE="
 	https://github.com/ContinuumIO/abstract_rendering
-	http://pypi.python.org/pypi/abstract_rendering
+	https://pypi.python.org/pypi/abstract_rendering
 "
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
