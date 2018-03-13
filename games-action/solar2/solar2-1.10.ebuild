@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # TODO: - unbundle libmono for 64bit
@@ -13,7 +13,7 @@ inherit eutils gnome2-utils games
 DESCRIPTION="An open-world, sandbox game set in an infinite abstract universe"
 HOMEPAGE="http://murudai.com/solar/"
 GAMEBALL="${PN}-linux-${PV}.tar.gz"
-ICONFILE="https://dev.gentoo.org/~hasufell/distfiles/${PN}.png"
+ICONFILE="https://dev.gentoo.org/~chewi/distfiles/${PN}.png"
 SRC_URI="${GAMEBALL} ${ICONFILE}"
 
 LICENSE="all-rights-reserved"
@@ -56,11 +56,11 @@ RDEPEND="
 S=${WORKDIR}/Solar2
 
 pkg_nofetch() {
-	einfo "Please buy & download ${GAMEBALL} from:"
+	einfo "Please buy and download ${GAMEBALL} from:"
 	einfo "  ${HOMEPAGE}"
 	einfo "Also download ${ICONFILE}"
-	einfo "and move both to ${DISTDIR}"
-	einfo
+	einfo "and move both to your distfiles directory. The Humble Bundle download"
+	einfo "may have a timestamp appended to the filename."
 }
 
 src_prepare() {
