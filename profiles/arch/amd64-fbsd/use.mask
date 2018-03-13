@@ -65,10 +65,6 @@ raw
 # libav is not keyworded here.
 libav
 
-# Michał Górny <mgorny@gentoo.org> (16 Feb 2018)
-# Qt5 is not keyworded here.
-qt5
-
 # Mart Raudsepp <leio@gentoo.org> (11 Feb 2018)
 # dev-util/valgrind is not keyworded here.
 valgrind
