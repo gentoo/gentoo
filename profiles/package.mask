@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Tobias Klausmann <klausman@gentoo.org (13 Mar 2018)
+# Has a bug in the storage engine, details:
+# https://www.robustperception.io/new-features-in-prometheus-2-2-0/
+# https://github.com/prometheus/prometheus/issues/3943
+=net-analyzer/prometheus-2.2.0
+
 # Sebastian Pipping <sping@gentoo.org> (11 Mar 2018)
 # Breaks XFCE, 1.19.6 was fine (in that regard). Bug #650228
 >=x11-base/xorg-server-1.19.7
