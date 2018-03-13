@@ -6,7 +6,7 @@ EAPI=6
 inherit desktop qmake-utils
 
 DESCRIPTION="Program that textually or visually compares two PDF files"
-HOMEPAGE="http://www.qtrac.eu/diffpdf.html"
+HOMEPAGE="https://www.qtrac.eu/diffpdf.html"
 SRC_URI="http://www.qtrac.eu/${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -18,6 +18,8 @@ RDEPEND="
 	app-text/poppler[qt5]
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
+	dev-qt/qtprintsupport:5
+	dev-qt/qtwidgets:5
 "
 DEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5
