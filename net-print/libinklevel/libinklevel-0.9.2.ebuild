@@ -11,7 +11,7 @@ HOMEPAGE="http://libinklevel.sourceforge.net/"
 SRC_URI="mirror://sourceforge/libinklevel/${MY_P}.tar.gz"
 
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 LICENSE="GPL-2"
 IUSE="debug static-libs"
 
