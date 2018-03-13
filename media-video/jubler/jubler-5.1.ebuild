@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_PN}-source-${PV}.tar.bz2 -> ${P}.tar.bz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="mplayer spell nls"
 
 RDEPEND="
