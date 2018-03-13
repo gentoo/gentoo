@@ -43,7 +43,7 @@ pkg_setup() {
 	# NOTE<lxnay>: module builds correctly anyway with b43 and SSB enabled
 	# make checks non-fatal. The correct fix is blackisting ssb and, perhaps
 	# b43 via udev rules. Moreover, previous fix broke binpkgs support.
-	CONFIG_CHECK="~!B43 ~!BCMA ~!SSB"
+	CONFIG_CHECK="~!B43 ~!BCMA ~!SSB ~!X86_INTEL_LPSS"
 	CONFIG_CHECK2="LIB80211 ~!MAC80211 ~LIB80211_CRYPT_TKIP"
 	ERROR_B43="B43: If you insist on building this, you must blacklist it!"
 	ERROR_BCMA="BCMA: If you insist on building this, you must blacklist it!"
@@ -52,6 +52,7 @@ pkg_setup() {
 	ERROR_MAC80211="MAC80211: If you insist on building this, you must blacklist it!"
 	ERROR_PREEMPT_RCU="PREEMPT_RCU: Please do not set the Preemption Model to \"Preemptible Kernel\"; choose something else."
 	ERROR_LIB80211_CRYPT_TKIP="LIB80211_CRYPT_TKIP: You will need this for WPA."
+	ERROR_X86_INTEL_LPSS="X86_INTEL_LPSS: Please disable it. The module does not work with it enabled."
 	if kernel_is ge 3 8 8; then
 		CONFIG_CHECK="${CONFIG_CHECK} ${CONFIG_CHECK2} CFG80211 ~!PREEMPT_RCU ~!PREEMPT"
 	elif kernel_is ge 2 6 32; then
