@@ -27,15 +27,6 @@ DEPEND="test? ( dev-php/phpunit )"
 # requires *specific* versions.
 RDEPEND="dev-lang/php"
 
-src_unpack() {
-	# Don't make copies of the source tree if they won't be used.
-	if use extension; then
-		php-ext-source-r3_src_unpack
-	else
-		default
-	fi
-}
-
 src_prepare(){
 	# We need to call eapply_user ourselves, because it may be skipped
 	# if either the "extension" USE flag is not set, or if the user's
