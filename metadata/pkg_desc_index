@@ -8073,7 +8073,7 @@ media-sound/twolame 0.3.13-r1 0.3.13-r2: An optimised MPEG Audio Layer 2 (MP2) e
 media-sound/umix 1.0.2: Program for adjusting soundcard volumes
 media-sound/umurmur 0.2.16a-r1: Minimalistic Murmur (Mumble server)
 media-sound/vbrfixc 0.24: Vbrfix fixes MP3s and re-constructs VBR headers
-media-sound/ventrilo-server-bin 2.3.1 3.0.3: The Ventrilo Voice Communication Server
+media-sound/ventrilo-server-bin 3.0.3: The Ventrilo Voice Communication Server
 media-sound/vimpc 0.09.1: An ncurses based mpd client with vi like key bindings
 media-sound/vkeybd 0.1.18d: A virtual MIDI keyboard for X
 media-sound/vlevel 0.5-r1: Dynamic compressor to amplify quiet parts of music
