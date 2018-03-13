@@ -20,7 +20,7 @@ IUSE="caja dbus debug djvu dvi epub +introspection gnome-keyring gtk3 +postscrip
 REQUIRED_USE="t1lib? ( dvi )
 	!gtk3? ( !epub )" #608604
 
-COMMON_DEPEND=">=app-text/poppler-0.22:0=[cairo]
+COMMON_DEPEND=">=app-text/poppler-0.22[cairo]
 	dev-libs/atk:0
 	>=dev-libs/glib-2.36:2
 	>=dev-libs/libxml2-2.5:2
