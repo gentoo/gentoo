@@ -24,7 +24,6 @@ move net-misc/isatapd net-vpn/isatapd
 move net-misc/iodine net-vpn/iodine
 move net-misc/corkscrew net-vpn/corkscrew
 move net-misc/aiccu net-vpn/aiccu
-move net-misc/htun net-vpn/htun
 move net-misc/httptunnel net-vpn/httptunnel
 move net-misc/nstx net-vpn/nstx
 move net-misc/6tunnel net-vpn/6tunnel
