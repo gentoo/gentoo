@@ -34,7 +34,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-qt/qtgui:4[-egl]
 	dev-qt/qtopengl:4[-egl]
 	dev-qt/qtsvg:4
-	dev-qt/qtwebkit:4
 	media-libs/coin
 	media-libs/freetype
 	sci-libs/opencascade:*[vtk(+)]
@@ -51,6 +50,7 @@ DEPEND="${COMMON_DEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.14.3702-install-paths.patch
+	"${FILESDIR}"/${PN}-0.17_pre-no-webkit.patch
 )
 
 # https://bugs.gentoo.org/show_bug.cgi?id=352435
@@ -85,7 +85,8 @@ src_configure() {
 		-DCMAKE_INSTALL_DATADIR=share/${P}
 		-DCMAKE_INSTALL_DOCDIR=share/doc/${PF}
 		-DCMAKE_INSTALL_INCLUDEDIR=include/${P}
-		-DFREECAD_USE_EXTERNAL_KDL="ON"
+		-DFREECAD_USE_EXTERNAL_KDL=ON
+		-DBUILD_WEB=OFF
 	)
 
 	# TODO to remove embedded dependencies:
