@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,15 +27,6 @@ COMMON_DEPEND="extension? ( dev-libs/libmaxminddb )"
 DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}
 		dev-php/fedora-autoloader"
-
-src_unpack() {
-	# Don't make copies of the source tree if they won't be used.
-	if use extension; then
-		php-ext-source-r3_src_unpack
-	else
-		default
-	fi
-}
 
 src_prepare(){
 	# We need to call eapply_user ourselves, because it may be skipped
