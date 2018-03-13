@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils eutils xdg-utils fortran-2 python-single-r1
+inherit cmake-utils desktop xdg-utils fortran-2 python-single-r1
 
 DESCRIPTION="Qt based Computer Aided Design application"
 HOMEPAGE="https://www.freecadweb.org/"
