@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,11 +21,6 @@ DEPEND=">=net-libs/libssh2-1.2"
 RDEPEND="${DEPEND}
 	php_targets_php5-6? ( dev-php/pecl-ssh2:0[php_targets_php5-6] )"
 HOMEPAGE="https://pecl.php.net/package/ssh2"
-
-src_unpack() {
-	git-r3_src_unpack
-	php-ext-source-r3_src_unpack
-}
 
 src_prepare() {
 	if use php_targets_php7-0 || use php_targets_php7-1 ; then
