@@ -30,7 +30,7 @@ index 96dbf47a..2caab298 100644
  #Installation paths
  # TODO remove data from path
 -SET(SYS_DATA_PATH "${CMAKE_INSTALL_PREFIX}/share/hydrogen/data")
-+SET(SYS_DATA_PATH "${CMAKE_FULL_INSTALL_DATAROOTDIR}/hydrogen/data")
++SET(SYS_DATA_PATH "${CMAKE_INSTALL_FULL_DATAROOTDIR}/hydrogen/data")
  # TODO remove data from path, could be .config/hydrogen
  SET(USR_DATA_PATH ".hydrogen/data")
  
@@ -42,10 +42,10 @@ index 96dbf47a..2caab298 100644
 -	INSTALL(FILES ${CMAKE_SOURCE_DIR}/linux/hydrogen.desktop DESTINATION "${CMAKE_INSTALL_PREFIX}/share/applications")
 -	INSTALL(FILES ${CMAKE_SOURCE_DIR}/data/img/gray/h2-icon.svg DESTINATION "/usr/share/pixmaps")
 -	INSTALL(FILES ${CMAKE_SOURCE_DIR}/linux/hydrogen.1 DESTINATION "${CMAKE_INSTALL_PREFIX}/man/man1")
-+	INSTALL(FILES ${CMAKE_SOURCE_DIR}/linux/hydrogen.appdata.xml DESTINATION "${CMAKE_FULL_INSTALL_DATAROOTDIR}/appdata")
-+	INSTALL(FILES ${CMAKE_SOURCE_DIR}/linux/hydrogen.desktop DESTINATION "${CMAKE_FULL_INSTALL_DATAROOTDIR}/applications")
-+	INSTALL(FILES ${CMAKE_SOURCE_DIR}/data/img/gray/h2-icon.svg DESTINATION "${CMAKE_FULL_INSTALL_DATAROOTDIR}/pixmaps")
-+	INSTALL(FILES ${CMAKE_SOURCE_DIR}/linux/hydrogen.1 DESTINATION "${CMAKE_FULL_INSTALL_MANDIR}/man1")
++	INSTALL(FILES ${CMAKE_SOURCE_DIR}/linux/hydrogen.appdata.xml DESTINATION "${CMAKE_INSTALL_FULL_DATAROOTDIR}/appdata")
++	INSTALL(FILES ${CMAKE_SOURCE_DIR}/linux/hydrogen.desktop DESTINATION "${CMAKE_INSTALL_FULL_DATAROOTDIR}/applications")
++	INSTALL(FILES ${CMAKE_SOURCE_DIR}/data/img/gray/h2-icon.svg DESTINATION "${CMAKE_INSTALL_FULL_DATAROOTDIR}/pixmaps")
++	INSTALL(FILES ${CMAKE_SOURCE_DIR}/linux/hydrogen.1 DESTINATION "${CMAKE_INSTALL_FULL_MANDIR}/man1")
  ENDIF()
  
  #
@@ -76,7 +76,7 @@ diff --git a/src/core/CMakeLists.txt b/src/core/CMakeLists.txt
  IF(NOT APPLE AND NOT WIN32)
      INSTALL(DIRECTORY include DESTINATION "${CMAKE_INSTALL_PREFIX}" FILES_MATCHING PATTERN "*.h" PATTERN ".svn" EXCLUDE)
 -    INSTALL(FILES "${CMAKE_CURRENT_BINARY_DIR}/include/hydrogen/config.h" DESTINATION "${CMAKE_INSTALL_PREFIX}/include/hydrogen" )
-+    INSTALL(FILES "${CMAKE_CURRENT_BINARY_DIR}/include/hydrogen/config.h" DESTINATION "${CMAKE_FULL_INSTALL_INCLUDEDIR}/hydrogen" )
++    INSTALL(FILES "${CMAKE_CURRENT_BINARY_DIR}/include/hydrogen/config.h" DESTINATION "${CMAKE_INSTALL_FULL_INCLUDEDIR}/hydrogen" )
  ENDIF()
 diff --git a/src/gui/CMakeLists.txt b/src/gui/CMakeLists.txt
 --- a/src/gui/CMakeLists.txt
