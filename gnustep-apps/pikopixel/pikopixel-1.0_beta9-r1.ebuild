@@ -4,7 +4,7 @@
 EAPI=6
 inherit gnustep-2
 
-MY_P=${PN//p/P}.Sources.${PV/_beta/-b}
+MY_P=${PN//p/P}.Sources.${PV/_beta/-b}a
 DESCRIPTION="a free application for drawing & editing pixel-art images"
 HOMEPAGE="http://twilightedge.com/mac/pikopixel/"
 # Web hosting wants a proper User-Agent
