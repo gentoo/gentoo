@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -91,7 +91,7 @@ COMMON_DEPEND="
 		media-libs/lcms:2
 	)
 	openexr? ( media-libs/openexr )
-	pdf? ( app-text/poppler:=[qt5] )
+	pdf? ( app-text/poppler[qt5] )
 	phonon? ( media-libs/phonon[qt5(+)] )
 	spacenav? ( dev-libs/libspnav )
 	truetype? ( media-libs/freetype:2 )
