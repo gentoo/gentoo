@@ -9,10 +9,10 @@ SRC_URI="https://github.com/dawbarton/pdf2svg/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
-RDEPEND=">=app-text/poppler-0.12.3-r3:=[cairo]
+RDEPEND=">=app-text/poppler-0.12.3-r3[cairo]
 	>=x11-libs/cairo-1.2.6:=[svg]
 	x11-libs/gtk+:2="
 DEPEND="${RDEPEND}
