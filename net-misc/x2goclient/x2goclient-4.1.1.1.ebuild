@@ -20,7 +20,7 @@ COMMON_DEPEND="dev-qt/qtcore:5
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
-	>=net-libs/libssh-0.6.0_rc1
+	>=net-libs/libssh-0.7.5-r2
 	net-print/cups
 	x11-libs/libXpm
 	ldap? ( net-nds/openldap )"
