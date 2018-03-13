@@ -26,6 +26,7 @@ RDEPEND="net-libs/mbedtls
 	>=dev-libs/libsodium-1.0.8
 	dev-libs/libev
 	net-libs/udns
+	net-dns/c-ares
 	dev-libs/libpcre
 	"
 DEPEND="${RDEPEND}
