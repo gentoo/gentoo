@@ -40,7 +40,7 @@ COMMON_DEPEND="
 	>=dev-qt/qtconcurrent-${QT_MIN_VER}:5
 	>=dev-qt/qtcore-${QT_MIN_VER}:5
 	>=dev-qt/qtgui-${QT_MIN_VER}:5
-	>=dev-qt/qtnetwork-${QT_MIN_VER}:5
+	>=dev-qt/qtnetwork-${QT_MIN_VER}:5[ssl]
 	>=dev-qt/qtpositioning-${QT_MIN_VER}:5
 	>=dev-qt/qtprintsupport-${QT_MIN_VER}:5
 	>=dev-qt/qtsvg-${QT_MIN_VER}:5
@@ -70,7 +70,7 @@ COMMON_DEPEND="
 		dev-python/markupsafe[${PYTHON_USEDEP}]
 		dev-python/owslib[${PYTHON_USEDEP}]
 		dev-python/pygments[${PYTHON_USEDEP}]
-		dev-python/PyQt5[designer,sql,svg,webkit?,${PYTHON_USEDEP}]
+		dev-python/PyQt5[designer,network,sql,svg,webkit?,${PYTHON_USEDEP}]
 		dev-python/python-dateutil[${PYTHON_USEDEP}]
 		dev-python/pytz[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]

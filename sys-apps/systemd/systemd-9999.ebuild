@@ -301,8 +301,9 @@ multilib_src_install_all() {
 	dodoc "${FILESDIR}"/nsswitch.conf
 
 	if ! use sysv-utils; then
-		rm "${ED%/}"/sbin/{halt,init,poweroff,reboot,runlevel,shutdown,telinit} || die
-		rmdir "${ED%/}"/sbin || die
+		local rootprefix=$(usex usrmerge /usr '')
+		rm "${ED%/}${rootprefix}"/sbin/{halt,init,poweroff,reboot,runlevel,shutdown,telinit} || die
+		rmdir "${ED%/}${rootprefix}"/sbin || die
 		rm "${ED%/}"/usr/share/man/man1/init.1 || die
 		rm "${ED%/}"/usr/share/man/man8/{halt,poweroff,reboot,runlevel,shutdown,telinit}.8 || die
 	fi
