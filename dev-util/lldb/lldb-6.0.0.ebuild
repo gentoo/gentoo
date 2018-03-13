@@ -21,7 +21,7 @@ SRC_URI="https://releases.llvm.org/${PV/_//}/${MY_P}.tar.xz
 
 LICENSE="UoI-NCSA"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="libedit ncurses python test"
 RESTRICT="!test? ( test )"
 
