@@ -8,6 +8,21 @@
 # mask everywhere, unmask on arch/*) use arch/base.
 
 # Andreas Sturmlechner <asturm@gentoo.org> (24 May 2018)
+# Qt4 is dead and going away.
+x11-themes/adwaita-qt qt4
+x11-themes/qtcurve qt4
+
+# Andreas Sturmlechner <asturm@gentoo.org> (24 May 2018)
+# Qt4 is dead and going away.
+# Bug #638260
+sci-libs/ViSP qt4
+# Bug #644728
+app-i18n/fcitx qt4
+app-i18n/scim qt4
+app-i18n/scim-bridge qt4
+app-i18n/uim qt4
+
+# Andreas Sturmlechner <asturm@gentoo.org> (24 May 2018)
 # kdelibs4 is dead and going away. Bug #645558
 <app-office/libreoffice-6.0 kde
 <app-office/libreoffice-bin-6.0 kde
