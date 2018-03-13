@@ -41,7 +41,7 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS ChangeLog DEVELOPERS README.txt )
 
-PATCHES=( "${FILESDIR}/${PN}-gnuinstalldirs.patch" )
+PATCHES=( "${FILESDIR}/${PN}-1.0.0_pre20180301-gnuinstalldirs.patch" )
 
 src_configure() {
 	local mycmakeargs=(
