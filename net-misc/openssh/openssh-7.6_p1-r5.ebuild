@@ -122,6 +122,11 @@ src_prepare() {
 			popd >/dev/null
 			save_version X509
 		fi
+		# remove this with the next version bump
+		pushd "${WORKDIR}" >/dev/null
+		eapply "${FILESDIR}/${P}-permitopen-x509-glue.patch"
+		popd >/dev/null
+
 		eapply "${WORKDIR}"/${X509_PATCH%.*}
 	fi
 
