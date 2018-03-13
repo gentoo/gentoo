@@ -10,6 +10,7 @@ PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="no"
 PHP_EXT_S="${WORKDIR}/${MY_P}/php"
 PHP_EXT_OPTIONAL_USE="php"
+PHP_EXT_SKIP_PATCHES="yes"
 USE_PHP="php5-6 php7-0 php7-1"
 
 GENTOO_DEPEND_ON_PERL="no"
@@ -41,21 +42,18 @@ src_prepare() {
 		"${FILESDIR}/${P}-fix-whatis-entries.patch" \
 		"${FILESDIR}/${P}-fix-data-uuid-from-string.patch"
 
+	eapply_user
 	if use php; then
-		local slot
-		for slot in $(php_get_slots); do
-			php_init_slot_env ${slot}
-			eapply -p2 \
-				"${FILESDIR}/${P}-gentoo-php.patch" \
-				"${FILESDIR}/uuid-${PV}-php54.patch" \
-				"${FILESDIR}/${P}-php70.patch"
-		done
-
+		pushd "${PHP_EXT_S}" > /dev/null || die
+		eapply -p2 \
+			"${FILESDIR}/${P}-gentoo-php.patch" \
+			"${FILESDIR}/uuid-${PV}-php54.patch" \
+			"${FILESDIR}/${P}-php70.patch"
+		popd > /dev/null || die
 		php-ext-source-r3_src_prepare
+
 		#Remove call by reference which is error
 		sed -i -e 's/\&\$/\$/' -e '/?>/d' "${S}/php/uuid.php5" || die
-	else
-		eapply_user
 	fi
 }
 
