@@ -1,6 +1,12 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (13 Mar 2018)
+# Missing keywords on dependencies.
+dev-qt/designer webkit
+dev-qt/qtgui eglfs evdev ibus libinput
+dev-qt/qtnetwork connman libproxy
+
 # Michał Górny <mgorny@gentoo.org> (11 Mar 2018)
 # Testing requires having libc++ built against libc++abi right now
 # (and we force linking to libcxxrt).
