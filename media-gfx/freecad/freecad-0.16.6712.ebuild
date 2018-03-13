@@ -23,10 +23,8 @@ SLOT="0"
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-COMMON_DEPEND="
-	${PYTHON_DEPS}
+COMMON_DEPEND="${PYTHON_DEPS}
 	dev-cpp/eigen:3
-	dev-java/xerces
 	dev-libs/boost:=[python,${PYTHON_USEDEP}]
 	dev-libs/xerces-c[icu]
 	dev-python/matplotlib[${PYTHON_USEDEP}]
