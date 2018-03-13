@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,7 @@ IUSE="caja dbus debug djvu dvi epub +introspection gnome-keyring +postscript t1l
 
 REQUIRED_USE="t1lib? ( dvi )"
 
-COMMON_DEPEND=">=app-text/poppler-0.22:0=[cairo]
+COMMON_DEPEND=">=app-text/poppler-0.22[cairo]
 	dev-libs/atk:0
 	>=dev-libs/glib-2.36:2
 	>=dev-libs/libxml2-2.5:2
