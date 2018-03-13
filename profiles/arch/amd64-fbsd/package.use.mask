@@ -94,10 +94,6 @@ sys-devel/llvm ocaml
 # Needs net-mail/mailutils which is not keyworded, bug #635216.
 app-editors/emacs-vcs mailutils
 
-# Davide Pesavento <pesa@gentoo.org> (26 Oct 2015)
-# Tests require non-keyworded qt5
-dev-qt/qtchooser test
-
 # Johannes Huber <johu@gentoo.org> (28 Jan 2015)
 # Missing keyword on dev-libs/botan and dev-libs/pkcs11-helper
 app-crypt/qca botan pkcs11
