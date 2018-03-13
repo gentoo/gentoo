@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils toolchain-funcs
+EAPI=6
+inherit toolchain-funcs
 
 DESCRIPTION="Mass IP port scanner"
 HOMEPAGE="https://github.com/robertdavidgraham/masscan"
@@ -13,33 +13,29 @@ LICENSE="AGPL-3"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="net-libs/libpcap"
-DEPEND="${RDEPEND}"
 
 src_prepare(){
-	epatch "${FILESDIR}"/${PN}-1.0.3-gcc5.patch
+	default
 
 	sed -i \
 		-e '/$(CC)/s!$(CFLAGS)!$(LDFLAGS) $(CFLAGS)!g' \
 		-e '/^GITVER :=/s!= .(.*!=!g' \
 		-e '/^SYS/s|gcc|$(CC)|g' \
-		-e '/$(CC)/s!-DGIT=\"$(GITVER)\"!!g' \
 		-e '/^CFLAGS =/{s,=,+=,;s,-g -ggdb,,;s,-O3,,;}' \
+		-e '/^CC =/d' \
 		Makefile || die
-}
 
-src_compile() {
-	emake CC="$(tc-getCC)"
+	tc-export CC
 }
 
 src_install() {
-	emake CC="$(tc-getCC)" DESTDIR="${D}" PREFIX=/usr install
+	dobin bin/masscan
 
 	insinto /etc/masscan
 	doins data/exclude.conf
 	doins "${FILESDIR}"/masscan.conf
 
-	mv doc/bot.{hml,html} || die
-	dohtml doc/bot.html
+	dodoc doc/bot.html *.md
+
 	doman doc/masscan.8
-	dodoc *.md
 }
