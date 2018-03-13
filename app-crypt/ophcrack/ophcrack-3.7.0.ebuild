@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="debug libressl qt4 +tables"
+IUSE="debug libressl +tables"
 
 CDEPEND="!libressl? ( dev-libs/openssl:0= )
 		 libressl? ( dev-libs/libressl:0= )
