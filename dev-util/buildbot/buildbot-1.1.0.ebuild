@@ -15,7 +15,10 @@ MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="BuildBot build automation system"
 HOMEPAGE="https://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.python.org/pypi/buildbot"
-[[ ${PV} == *9999 ]] || SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
+SRC_URI="
+	mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz
+	https://dev.gentoo.org/~dolsen/distfiles/buildbot-1.1.0.docs.tar.xz
+"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -81,11 +84,16 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${MY_P}
 [[ ${PV} == *9999 ]] && S=${S}/master
 
-if [[ ${PV} != *9999 ]]; then
-	PATCHES=(
-		"${FILESDIR}/Remove-distro-version-test.patch"
-	)
-fi
+PATCHES=(
+	"${FILESDIR}/Remove-distro-version-test.patch"
+	"${FILESDIR}/disable-test_userpass_wait.patch"
+)
+
+src_unpack() {
+	unpack ${MY_P}.tar.gz
+	cd ${MY_P}
+	unpack buildbot-1.1.0.docs.tar.xz
+}
 
 pkg_setup() {
 	enewuser buildbot
@@ -134,7 +142,7 @@ src_install() {
 
 python_test() {
 	distutils_install_for_testing
-
+	export DISABLE_TEST=true
 	esetup.py test || die "Tests failed under ${EPYTHON}"
 }
 
