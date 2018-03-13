@@ -18,7 +18,7 @@
       <unaffected range="rge">2.1.30-r13</unaffected>
       <vulnerable range="lt">2.2.3-r8</vulnerable>
     </package>
-    <package name="app-emulation/emul-linux-x86-xlibs" auto="yes" arch="AMD64">
+    <package name="app-emulation/emul-linux-x86-xlibs" auto="yes" arch="amd64">
       <unaffected range="ge">2.2.1</unaffected>
       <vulnerable range="lt">2.2.1</vulnerable>
     </package>
