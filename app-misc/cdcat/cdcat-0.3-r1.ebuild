@@ -1,6 +1,8 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+EAPI=6
+
 DESCRIPTION="simple yet effective CD indexing program"
 # original src went away: SRC_URI="http://littledragon.home.ro/unix/${P}.tar.gz"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
@@ -8,13 +10,13 @@ HOMEPAGE="https://web.archive.org/web/20070925183735/http://dev.gentoo.org:80/~c
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
 DEPEND="virtual/cdrtools
 	!app-backup/cdbkup"
 
-src_unpack() {
+src_prepare() {
 	unpack ${A}
 	cd "${S}"
 
