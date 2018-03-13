@@ -61,12 +61,6 @@ src_prepare() {
 	eapply "${WORKDIR}/${BASHCOMP_P}/${PN}"-2.1_p*.patch
 	eapply_user
 
-	# Remove implicit completions for vim.
-	# https://bugs.gentoo.org/649986
-	sed -i -e 's/vi vim gvim rvim view rview rgvim rgview gview//' \
-		bash_completion || die
-	rm test/completion/vi.exp || die
-
 	eautoreconf
 }
 
