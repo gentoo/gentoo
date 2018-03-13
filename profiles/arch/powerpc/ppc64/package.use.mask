@@ -1,5 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+# Andreas Sturmlechner <asturm@gentoo.org> (13 Mar 2018)
+# missing keyword on media-libs/portmidi
+media-sound/hydrogen portmidi
 
 # Gilles Dartiguelongue <eva@gentoo.org> (16 Aug 2017)
 # missing keyword on dev-python/dbusmock, bug #620024
