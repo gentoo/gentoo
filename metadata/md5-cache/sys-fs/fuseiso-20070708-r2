@@ -1,0 +1,11 @@
+DEFINED_PHASES=-
+DEPEND=sys-fs/fuse:= sys-libs/zlib dev-libs/glib:2 virtual/pkgconfig
+DESCRIPTION=Fuse module to mount ISO9660
+EAPI=6
+HOMEPAGE=https://sourceforge.net/projects/fuseiso
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=sys-fs/fuse:= sys-libs/zlib dev-libs/glib:2
+SLOT=0
+SRC_URI=http://superb-dca2.dl.sourceforge.net/project/fuseiso/fuseiso/20070708/fuseiso-20070708.tar.bz2
+_md5_=e7fab62c7ba225e77074e16b3c17978e
