@@ -1,0 +1,16 @@
+diff -r -U2 sbcl-1.3.11.orig/src/runtime/Config.x86-64-linux sbcl-1.3.11/src/runtime/Config.x86-64-linux
+--- sbcl-1.3.11.orig/src/runtime/Config.x86-64-linux	2016-10-30 23:28:43.000000000 +0700
++++ sbcl-1.3.11/src/runtime/Config.x86-64-linux	2016-11-16 23:27:37.248815622 +0700
+@@ -58,12 +58,4 @@
+ endif
+ 
+-# The following works for Ubuntu 16.10. There must be a better way to
+-# do this across various flavors of linux.
+-ifneq ($(shell $(CC) -dumpspecs 2>/dev/null | grep -e no-pie),)
+-CFLAGS += -fno-pie
+-LINKFLAGS += -no-pie
+-LDFLAGS += -no-pie
+-endif
+-
+ # Nothing to do for after-grovel-headers.
+ .PHONY: after-grovel-headers
