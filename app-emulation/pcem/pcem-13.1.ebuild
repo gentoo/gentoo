@@ -16,3 +16,7 @@ DEPEND="media-libs/openal media-libs/libsdl2 x11-libs/wxGTK"
 RDEPEND="${DEPEND}"
 
 S=${WORKDIR}
+
+src_install() {
+	dobin pcem
+}
