@@ -29,6 +29,76 @@
 
 #--- END OF EXAMPLES ---
 
+# Pacho Ramos <pacho@gentoo.org> (13 Mar 2018)
+# Tests need network, nothing requires this old lib anymore and upstream is
+# dead for a long time (#335233). Removal in a month.
+net-libs/netembryo
+
+# Pacho Ramos <pacho@gentoo.org> (13 Mar 2018)
+# Fails to build (#371401, #642676). Removal in a month.
+net-misc/netkit-rwall
+
+# Pacho Ramos <pacho@gentoo.org> (13 Mar 2018)
+# Incomplete and unclear LICENSE, missing files in SRC_URI (#472602).
+# Removal in a month.
+sci-electronics/balsa
+
+# Pacho Ramos <pacho@gentoo.org> (13 Mar 2018)
+# Upstream dead for a long time, requires obsolete gstreamer and other old
+# libs (#629192), buggy (#490344). Removal in a month.
+media-tv/me-tv
+
+# Pacho Ramos <pacho@gentoo.org> (13 Mar 2018)
+# Doesn't build for a long time (#514432). Removal in a month.
+sci-biology/beast-mcmc
+
+# Pacho Ramos <pacho@gentoo.org> (13 Mar 2018)
+# Fails to build (#514632, #585606, #588710). Removal in a month.
+sys-power/phc-k8
+
+# Pacho Ramos <pacho@gentoo.org> (13 Mar 2018)
+# Fails to build for a long time (#515734, 649840). Removal in a month.
+sys-fs/gfs2-utils
+
+# Pacho Ramos <pacho@gentoo.org> (13 Mar 2018)
+# Dead driver and with many incompatibilities with current kernels (#517250,
+# #523356, #551834, #646106). Removal in a month. Possible alternative
+# #device/driver: https://bugs.gentoo.org/517250#c5
+net-wireless/broadcom-sta 
+
+# Pacho Ramos <pacho@gentoo.org> (13 Mar 2018)
+# Not buildable for a long time (#531586), pending many version bumps.
+# Removal in a month.
+media-sound/mup
+
+# Pacho Ramos <pacho@gentoo.org> (13 Mar 2018)
+# Many other ident daemons in the tree over this completely dead and
+# unmaintained (since 2003) implementation (#535868). Removal in a month.
+net-misc/linux-identd
+
+# Pacho Ramos <pacho@gentoo.org> (13 Mar 2018)
+# Major version bump pending (#540322), current version in the tree is
+# completely broken in several ways (#471428, #598260, #621784, #638364).
+# Removal in a month.
+sys-cluster/gearmand
+dev-php/pecl-gearman
+
+# Pacho Ramos <pacho@gentoo.org> (13 Mar 2018)
+# Not buildable and ends up needing old guile-1.8 (#547186, #617802), major
+# version bump pending (#515888). Removal in a month.
+media-sound/denemo
+
+# Pacho Ramos <pacho@gentoo.org> (13 Mar 2018)
+# Hard to bump (#547418), build issues (#600308). Removal in a month.
+app-forensics/libewf
+app-forensics/rdd
+
+# Pacho Ramos <pacho@gentoo.org> (13 Mar 2018)
+# Many pending version bumps (#574874), doesn't run (#587112), doesn't use
+# python eclasses (#613892), needs obsolete libs (#640888). Removal in a
+# month.
+net-p2p/tribler
+
 # Tobias Klausmann <klausman@gentoo.org (13 Mar 2018)
 # Has a bug in the storage engine, details:
 # https://www.robustperception.io/new-features-in-prometheus-2-2-0/

@@ -7,6 +7,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Pacho Ramos <pacho@gentoo.org> (13 Mar 2018)
+# libewf is going to be removed, bug #547418
+app-admin/testdisk ewf
+app-forensics/sleuthkit ewf
+
 # Patrick McLean <chutzpah@gentoo.org> (6 Mar 2018)
 # Requires dev-libs/boost-1.66 that is unkeyworded/masked
 >=sys-cluster/ceph-12.2.4 system-boost
