@@ -21,7 +21,7 @@ LICENSE="ZLIB"
 SLOT="0"
 IUSE=""
 
-RDEPEND="app-text/poppler:=[cairo]
+RDEPEND="app-text/poppler[cairo]
 	>=app-text/zathura-0.3.8
 	x11-libs/cairo:="
 DEPEND="${RDEPEND}
