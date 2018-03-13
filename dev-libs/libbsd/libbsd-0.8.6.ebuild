@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,6 +15,10 @@ IUSE="static-libs"
 
 DEPEND=">=sys-kernel/linux-headers-3.17"
 RDEPEND=""
+
+PATCHES=(
+	"${FILESDIR}/${PN}-0.8.6-sparc.patch"
+)
 
 pkg_setup() {
 	local f="${EROOT}/usr/$(get_libdir)/${PN}.a"
