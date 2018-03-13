@@ -486,11 +486,6 @@ app-forensics/afflib:s3 - Enable support for Amazon S3
 app-forensics/aide:e2fs - Enable support for checking file attributes on ext2/ext3/ext4 filesystems
 app-forensics/aide:prelink - Bypass prelinking when calculating checksums
 app-forensics/chkrootkit:cron - Install cron script for weekly rootkit scans
-app-forensics/libewf:bfio - Enables libbfio for chaining file in file handling
-app-forensics/libewf:ewf - Enables the v1 API
-app-forensics/libewf:fuse - Enable fuse support for ewfmount
-app-forensics/libewf:rawio - Enables raw IO handling
-app-forensics/libewf:uuid - Enable UUID support in the ewftools
 app-forensics/sleuthkit:aff - Enable extra aff formats
 app-forensics/sleuthkit:ewf - Enable libewf support
 app-i18n/anthy:canna-2ch - Enable support for app-dicts/canna-2ch
@@ -4714,7 +4709,6 @@ net-p2p/transmission:lightweight - Optimize transmission for low-resource system
 net-p2p/transmission:mbedtls - Use mbed TLS instead of OpenSSL
 net-p2p/transmission:xfs - Enable XFS filesystem capabilities by using sys-fs/xfsprogs headers (in building of fdlimit(.c))
 net-p2p/transmission-remote-gtk:libproxy - Use net-libs/libproxy for getting the HTTP/HTTPS/SOCKS proxy configuration.
-net-p2p/tribler:vlc - Enable vlc support.
 net-print/cups:java - Add support for the Java interpeter in the web server CGIs.
 net-print/cups:lprng-compat - Do not install lp... binaries so cups and lprng can coexist.
 net-print/cups:python - Add support for the Python interpeter in the web server CGIs.

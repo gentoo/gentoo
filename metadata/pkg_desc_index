@@ -821,7 +821,6 @@ app-forensics/chkrootkit 0.51: Tool to locally check for signs of a rootkit
 app-forensics/cmospwd 5.1: CmosPwd decrypts password stored in cmos used to access BIOS SETUP
 app-forensics/examiner 0.5-r2: Utilizes the objdump command to disassemble and comment foreign binaries
 app-forensics/foremost 1.5.7-r2: A console program to recover files based on their headers and footers
-app-forensics/libewf 20130416: Implementation of the EWF (SMART and EnCase) image format
 app-forensics/magicrescue 1.1.9: Find deleted files in block devices
 app-forensics/memdump 1.01: Simple memory dumper for UNIX-Like systems
 app-forensics/rkhunter 1.4.2: Rootkit Hunter scans for known and unknown rootkits, backdoors, and sniffers
@@ -7986,7 +7985,6 @@ media-sound/mserv 0.35-r1: Jukebox-style music server
 media-sound/mt-daapd 0.2.4.2: A multi-threaded implementation of Apple's DAAP server
 media-sound/multimux 0.2.5.2: combines up to 8 audio mono wave ch. into one big multi ch. wave file
 media-sound/mumble 1.2.17 1.2.19: Mumble is an open source, low-latency, high quality voice chat software
-media-sound/mup 5.7: Program for printing music scores
 media-sound/murmur 1.2.17: Mumble is an open source, low-latency, high quality voice chat software
 media-sound/musepack-tools 465-r1: Musepack SV8 libraries and utilities
 media-sound/musique 1.5-r1: Qt music player
@@ -8818,7 +8816,6 @@ net-misc/knemo 0.8.0_pre20161211: Plasma Network Monitor
 net-misc/knock 0.7: A simple port-knocking daemon
 net-misc/l7-protocols 2009.05.28: Protocol definitions of l7-filter kernel modules
 net-misc/libteam 1.22: Library and tools set for controlling team network device
-net-misc/linux-identd 1.3-r2: A real IDENT daemon for linux
 net-misc/lksctp-tools 1.0.13 1.0.16 1.0.17: Tools for Linux Kernel Stream Control Transmission Protocol implementation
 net-misc/lldpd 0.9.3-r1: Implementation of IEEE 802.1ab (LLDP)
 net-misc/memcached 1.4.33 1.4.39 1.5.2: High-performance, distributed memory object caching system
@@ -8996,7 +8993,6 @@ net-p2p/syncthing 0.14.38: Open Source Continuous File Synchronization
 net-p2p/torrentinfo 1.8.6: A torrent file parser
 net-p2p/transmission 2.92-r2 2.93: A Fast, Easy and Free BitTorrent client
 net-p2p/transmission-remote-gtk 1.3.1: GTK+ client for management of the Transmission BitTorrent client, over HTTP RPC
-net-p2p/tribler 6.3.3-r1: Bittorrent client that does not require a website to discover content
 net-p2p/vuze 4.8.1.2-r1: BitTorrent client in Java, formerly called Azureus
 net-p2p/vuze-coreplugins 4.8.1.2: Core plugins for Vuze that are included in upstream distribution
 net-print/cndrvcups-common-lb 3.40: Common files for Canon drivers
