@@ -35,17 +35,12 @@ SLOT="${PV:0:4}"
 IUSE="test"
 
 RDEPEND="dev-lang/perl
-	>=sys-devel/automake-wrapper-10
+	>=sys-devel/automake-wrapper-11
 	>=sys-devel/autoconf-2.69:*
 	sys-devel/gnuconfig"
 DEPEND="${RDEPEND}
 	sys-apps/help2man
 	test? ( ${PYTHON_DEPS} )"
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.15-install-sh-avoid-low-risk-race-in-tmp.patch
-	"${FILESDIR}"/${PN}-1.16-fix-AM_PATH_PYTHON.patch
-)
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
