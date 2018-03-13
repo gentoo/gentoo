@@ -100,7 +100,7 @@ PATCHES=(
 	# git master
 	"${FILESDIR}/${PN}-2.18.12-cmake-lib-suffix.patch"
 	# TODO upstream
-	"${FILESDIR}/${PN}-3.0.0-featuresummary.patch"
+	"${FILESDIR}/${P}-featuresummary.patch"
 )
 
 pkg_setup() {
