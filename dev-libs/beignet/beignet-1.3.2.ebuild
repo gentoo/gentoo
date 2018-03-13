@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -26,8 +26,8 @@ else
 fi
 
 COMMON="media-libs/mesa[${MULTILIB_USEDEP}]
-	sys-devel/clang:=[${MULTILIB_USEDEP}]
-	sys-devel/llvm:=[${MULTILIB_USEDEP}]
+	<sys-devel/clang-6.0.0:=[${MULTILIB_USEDEP}]
+	<sys-devel/llvm-6.0.0:=[${MULTILIB_USEDEP}]
 	>=x11-libs/libdrm-2.4.70[video_cards_intel,${MULTILIB_USEDEP}]
 	x11-libs/libXext[${MULTILIB_USEDEP}]
 	x11-libs/libXfixes[${MULTILIB_USEDEP}]"
