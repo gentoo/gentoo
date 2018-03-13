@@ -11,7 +11,7 @@
 
 inherit autotools
 
-EXPORT_FUNCTIONS src_unpack src_prepare src_configure src_compile src_install src_test
+EXPORT_FUNCTIONS src_prepare src_configure src_compile src_install src_test
 
 case ${EAPI} in
 	6) ;;
@@ -141,23 +141,16 @@ DEPEND="${DEPEND}
 # @ECLASS-VARIABLE: PHP_EXT_SKIP_PHPIZE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# By default, we run "phpize" in php-ext-source-r3_src_unpack(). Set
+# By default, we run "phpize" in php-ext-source-r3_src_prepare(). Set
 # PHP_EXT_SKIP_PHPIZE="yes" in your ebuild if you do not want to run
 # phpize (and the autoreconf that becomes necessary afterwards).
 
-# @FUNCTION: php-ext-source-r3_src_unpack
+# @ECLASS-VARIABLE: PHP_EXT_SKIP_PATCHES
+# @DEFAULT_UNSET
 # @DESCRIPTION:
-# Runs the default src_unpack and then makes a copy for each PHP slot.
-php-ext-source-r3_src_unpack() {
-	default
-
-	local slot orig_s="${PHP_EXT_S}"
-	for slot in $(php_get_slots); do
-		cp --recursive --preserve "${orig_s}" "${WORKDIR}/${slot}" || \
-			die "failed to copy sources from ${orig_s} to ${WORKDIR}/${slot}"
-	done
-}
-
+# By default, we run default_src_prepare to PHP_EXT_S.
+# Set PHP_EXT_SKIP_PATCHES="yes" in your ebuild if you
+# want to apply patches yourself.
 
 # @FUNCTION: php-ext-source-r3_src_prepare
 # @DESCRIPTION:
@@ -165,9 +158,16 @@ php-ext-source-r3_src_unpack() {
 # src_prepare() for PATCHES/eapply_user support, and then call
 # php-ext-source-r3_phpize.
 php-ext-source-r3_src_prepare() {
-	for slot in $(php_get_slots); do
-		php_init_slot_env "${slot}"
+	local slot orig_s="${PHP_EXT_S}"
+	if [[ "${PHP_EXT_SKIP_PATCHES}" != 'yes' ]] ; then
+		pushd "${orig_s}" > /dev/null || die
 		default
+		popd > /dev/null || die
+	fi
+	for slot in $(php_get_slots); do
+		cp --recursive --preserve "${orig_s}" "${WORKDIR}/${slot}" || \
+			die "failed to copy sources from ${orig_s} to ${WORKDIR}/${slot}"
+		php_init_slot_env "${slot}"
 		php-ext-source-r3_phpize
 	done
 }
