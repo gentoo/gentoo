@@ -16,6 +16,10 @@ IUSE="static-libs"
 DEPEND=">=sys-kernel/linux-headers-3.17"
 RDEPEND=""
 
+PATCHES=(
+	"${FILESDIR}/${PN}-0.8.6-sparc.patch"
+)
+
 pkg_setup() {
 	local f="${EROOT}/usr/$(get_libdir)/${PN}.a"
 	local m="You need to remove ${f} by hand or re-emerge sys-libs/glibc first."
