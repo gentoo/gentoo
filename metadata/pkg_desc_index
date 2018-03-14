@@ -9956,7 +9956,7 @@ sys-devel/autoconf 2.13 2.69-r4: Used to create autoconfiguration files
 sys-devel/autoconf-archive 2016.03.20-r1 2017.03.21: GNU Autoconf Macro Archive
 sys-devel/autoconf-wrapper 13: wrapper for autoconf to manage multiple autoconf versions
 sys-devel/autogen 5.18.4 5.18.4-r1: Program and text file generation
-sys-devel/automake 1.9.6-r4 1.9.6-r5 1.10.3-r2 1.10.3-r3 1.11.6-r2 1.11.6-r3 1.12.6 1.12.6-r1 1.12.6-r2 1.13.4-r1 1.13.4-r2 1.14.1-r1 1.14.1-r2 1.15.1-r1 1.15.1-r2: Used to generate Makefile.in from Makefile.am
+sys-devel/automake 1.9.6-r5 1.10.3-r3 1.11.6-r3 1.12.6-r2 1.13.4-r2 1.14.1-r2 1.15.1-r2: Used to generate Makefile.in from Makefile.am
 sys-devel/automake-wrapper 10: wrapper for automake to manage multiple automake versions
 sys-devel/bc 1.06.95-r2: Handy console-based calculator utility
 sys-devel/bin86 0.16.20-r2 0.16.21: Assembler and loader used to create kernel bootsector
