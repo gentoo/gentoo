@@ -182,6 +182,8 @@ src_prepare() {
 
 	use java && append-cppflags $(java-pkg_get-jni-cflags)
 
+	append-cxxflags -std=c++11  # bug 648764
+
 	eautoreconf
 }
 
