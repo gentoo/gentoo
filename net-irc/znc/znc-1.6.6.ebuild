@@ -1,32 +1,30 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{3_4,3_5} )
+PYTHON_COMPAT=( python3_{4,5,6} )
 inherit eutils python-single-r1 readme.gentoo-r1 systemd user
 
 MY_PV=${PV/_/-}
 GTEST_VER="1.7.0"
 GTEST_URL="https://github.com/google/googletest/archive/release-${GTEST_VER}.tar.gz -> googletest-release-${GTEST_VER}.tar.gz"
-DESCRIPTION="An advanced IRC Bouncer"
 
+DESCRIPTION="An advanced IRC Bouncer"
+HOMEPAGE="http://znc.in"
 SRC_URI="
 	http://znc.in/releases/archive/${PN}-${MY_PV}.tar.gz
 	test? ( ${GTEST_URL} )
 "
-KEYWORDS="amd64 arm x86"
 
-HOMEPAGE="http://znc.in"
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="daemon debug ipv6 libressl perl python ssl sasl tcl test"
-
+KEYWORDS="amd64 arm x86"
+IUSE="daemon debug +ipv6 +icu libressl perl python +ssl sasl tcl test +zlib"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
-	dev-libs/icu:=
-	sys-libs/zlib
+	icu? ( dev-libs/icu:= )
 	perl? ( >=dev-lang/perl-5.10:= )
 	python? ( ${PYTHON_DEPS} )
 	sasl? ( >=dev-libs/cyrus-sasl-2 )
@@ -35,6 +33,7 @@ RDEPEND="
 		libressl? ( dev-libs/libressl:0= )
 	)
 	tcl? ( dev-lang/tcl:0= )
+	zlib? ( sys-libs/zlib )
 "
 DEPEND="
 	${RDEPEND}
@@ -66,12 +65,14 @@ src_configure() {
 	econf \
 		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)" \
 		$(use_enable debug) \
+		$(use_enable icu charset) \
 		$(use_enable ipv6) \
 		$(use_enable perl) \
 		$(use_enable python) \
 		$(use_enable sasl cyrus) \
 		$(use_enable ssl openssl) \
-		$(use_enable tcl tcl) \
+		$(use_enable tcl) \
+		$(use_enable zlib) \
 		$(use_with test gtest "${WORKDIR}/googletest-release-${GTEST_VER}")
 }
 
@@ -82,7 +83,7 @@ src_install() {
 		newinitd "${FILESDIR}"/znc.initd-r1 znc
 		newconfd "${FILESDIR}"/znc.confd-r1 znc
 	fi
-	DOC_CONTENTS=$(<"${FILESDIR}/README.gentoo")
+	DOC_CONTENTS=$(<"${FILESDIR}/README.gentoo") || die
 	DISABLE_AUTOFORMATTING=1
 	readme.gentoo_create_doc
 }
