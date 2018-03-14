@@ -79,6 +79,9 @@ src_prepare() {
 	# e.g. https://bugs.gentoo.org/617154
 	eapply "${FILESDIR}"/4.0.1/0001-cmake-Pass-Wl-z-nodelete-on-Linux-to-prevent-unloadi.patch
 
+	# Remove failing test (fixed in newer versions)
+	rm test/tools/llvm-symbolizer/print_context.c || die
+
 	# support building llvm against musl-libc
 	use elibc_musl && eapply "${FILESDIR}"/9999/musl-fixes.patch
 
