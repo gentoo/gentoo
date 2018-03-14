@@ -7,6 +7,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Jan Ziak <0xe2.0x9a.0x9b@gmail.com> (14 Mar 2018)
+# Mask local USE flag to satisfy repoman
+app-emulation/fuse backend-svga
+
 # Pacho Ramos <pacho@gentoo.org> (13 Mar 2018)
 # libewf is going to be removed, bug #547418
 app-admin/testdisk ewf
