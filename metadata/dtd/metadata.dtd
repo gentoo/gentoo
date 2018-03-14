@@ -3,7 +3,7 @@
 <!ATTLIST catmetadata pkgname CDATA "">
 
 <!-- Metadata for a package -->
-<!ELEMENT pkgmetadata ( (maintainer|longdescription|slots|use|upstream)* )>
+<!ELEMENT pkgmetadata ( (maintainer|longdescription|slots|stabilize-allarches|use|upstream)* )>
 <!ATTLIST pkgmetadata pkgname CDATA "">
 
   <!-- One tag for each maintainer of a package, multiple allowed-->
@@ -27,6 +27,9 @@
       <!ATTLIST slot name CDATA #REQUIRED >
     <!-- The meaning of sub-SLOTs for the whole package -->
     <!ELEMENT subslots (#PCDATA)* >
+
+  <!-- whether it's possible to stabilize ALLARCHES -->
+  <!ELEMENT stabilize-allarches EMPTY>
 
   <!-- description of what this USE flag does for this package -->
   <!ELEMENT use (flag)* >
@@ -81,6 +84,7 @@
   <!ATTLIST maintainer restrict CDATA #IMPLIED >
   <!ATTLIST longdescription restrict CDATA #IMPLIED >
   <!ATTLIST flag restrict CDATA #IMPLIED >
+  <!ATTLIST stabilize-allarches restrict CDATA #IMPLIED >
 
 <!-- standard parts -->
 <!-- an email address -->
