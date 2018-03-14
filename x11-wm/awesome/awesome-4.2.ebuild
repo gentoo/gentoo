@@ -61,8 +61,8 @@ src_configure() {
 		-DWITH_GENERATE_DOC=$(usex doc $(usex doc) n)
 	)
 	if use luajit; then
-		mycmakeargs+=('-DLUA_INCLUDE_DIR=/usr/include/luajit-2.0')
-		mycmakeargs+=('-DLUA_LIBRARY=/usr/lib/libluajit-5.1.so')
+		mycmakeargs+=('-DLUA_INCLUDE_DIR=${EPREFIX}/usr/include/luajit-2.0')
+		mycmakeargs+=("-DLUA_LIBRARY=${EPREFIX}/usr/$(get_libdir)/libluajit-5.1.so")
 	fi
 	cmake-utils_src_configure
 }
