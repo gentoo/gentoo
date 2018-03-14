@@ -1,17 +1,17 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 PYTHON_REQ_USE="sqlite"
-PYTHON_COMPAT=( python2_7 python3_5 )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 
 EGIT_REPO_URI="https://github.com/buildbot/buildbot.git"
 
 [[ ${PV} == *9999 ]] && inherit git-r3
 inherit distutils-r1
 
-DESCRIPTION="Buildbot plugin to integrate flask or bottle dashboards to buildbot UI"
-HOMEPAGE="https://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.python.org/pypi/buildbot-wsgi-dashboards"
+DESCRIPTION="Buildbot waterfall-view plugin"
+HOMEPAGE="https://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.python.org/pypi/buildbot-waterfall-view"
 
 MY_PV="${PV/_p/.post}"
 MY_P="${PN}-${MY_PV}"
@@ -28,12 +28,14 @@ fi
 
 IUSE="test"
 
-RDEPEND=""
+RDEPEND="
+	~dev-util/buildbot-${PV}[${PYTHON_USEDEP}]
+	dev-python/mock[${PYTHON_USEDEP}]
+	~dev-util/buildbot-www-${PV}[${PYTHON_USEDEP}]
+"
 
 DEPEND="${RDEPEND}
 	>=dev-python/setuptools-21.2.1[${PYTHON_USEDEP}]
-	~dev-util/buildbot-${PV}[${PYTHON_USEDEP}]
-	~dev-util/buildbot-www-${PV}[${PYTHON_USEDEP}]
 "
 
 S="${WORKDIR}/${MY_P}"

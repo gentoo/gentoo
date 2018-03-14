@@ -1,18 +1,18 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-PYTHON_COMPAT=( python2_7 python3_5 )
+EAPI="6"
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 
 EGIT_REPO_URI="https://github.com/buildbot/buildbot.git"
 
 [[ ${PV} == *9999 ]] && inherit git-r3
-inherit readme.gentoo user distutils-r1
+inherit readme.gentoo-r1 user distutils-r1
 
 DESCRIPTION="BuildBot Worker (slave) Daemon"
 HOMEPAGE="https://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.python.org/pypi/buildbot-worker"
 
-MY_V="${PV/_p/p}"
+MY_V="${PV/_p/.post}"
 MY_P="${PN}-${MY_V}"
 [[ ${PV} == *9999 ]] || SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
 
@@ -26,7 +26,7 @@ fi
 IUSE="test"
 
 RDEPEND=">=dev-python/setuptools-21.2.1[${PYTHON_USEDEP}]
-	>=dev-python/twisted-17.5.0[${PYTHON_USEDEP}]
+	>=dev-python/twisted-17.9.0[${PYTHON_USEDEP}]
 	dev-python/future[${PYTHON_USEDEP}]
 	!<dev-util/buildbot-0.9.7
 "
@@ -38,7 +38,7 @@ DEPEND="${RDEPEND}
 "
 
 S="${WORKDIR}/${MY_P}"
-[[ ${PV} == *9999 ]] && S=${S}/slave
+[[ ${PV} == *9999 ]] && S=${S}/worker
 
 pkg_setup() {
 	enewuser buildbot

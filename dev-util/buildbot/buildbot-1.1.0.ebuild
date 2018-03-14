@@ -1,21 +1,24 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 PYTHON_REQ_USE="sqlite"
-PYTHON_COMPAT=( python2_7 python3_5 )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 
 EGIT_REPO_URI="https://github.com/buildbot/${PN}.git"
 
 [[ ${PV} == *9999 ]] && inherit git-r3
 inherit readme.gentoo-r1 user systemd distutils-r1
 
-MY_PV="${PV/_p/p}"
+MY_PV="${PV/_p/.post}"
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="BuildBot build automation system"
 HOMEPAGE="https://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.python.org/pypi/buildbot"
-[[ ${PV} == *9999 ]] || SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
+SRC_URI="
+	mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz
+	https://dev.gentoo.org/~dolsen/distfiles/buildbot-1.1.0.docs.tar.xz
+"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -25,11 +28,11 @@ else
 	KEYWORDS="~amd64"
 fi
 
-IUSE="crypt doc examples irc test"
+IUSE="crypt doc docker examples irc test"
 
 RDEPEND="
 	>=dev-python/jinja-2.1[${PYTHON_USEDEP}]
-	>=dev-python/twisted-17.5.0[${PYTHON_USEDEP}]
+	>=dev-python/twisted-17.9.0[${PYTHON_USEDEP}]
 	>=dev-python/autobahn-0.16.0[${PYTHON_USEDEP}]
 	>=dev-python/sqlalchemy-0.8[${PYTHON_USEDEP}]
 	>=dev-python/sqlalchemy-migrate-0.9[${PYTHON_USEDEP}]
@@ -40,13 +43,16 @@ RDEPEND="
 	>=dev-python/zope-interface-4.1.1[${PYTHON_USEDEP}]
 	~dev-util/buildbot-worker-${PV}[${PYTHON_USEDEP}]
 	crypt? (
-		>=dev-python/twisted-17.5.0[${PYTHON_USEDEP},crypt]
+		>=dev-python/twisted-17.9.0[${PYTHON_USEDEP},crypt]
 		>=dev-python/pyopenssl-16.0.0[${PYTHON_USEDEP}]
 		dev-python/idna[${PYTHON_USEDEP}]
 		dev-python/service_identity[${PYTHON_USEDEP}]
 	)
 	irc? (
 		dev-python/txrequests[${PYTHON_USEDEP}]
+	)
+	docker? (
+		>=dev-python/docker-py-2.2.0[${PYTHON_USEDEP}]
 	)
 "
 DEPEND="${RDEPEND}
@@ -59,14 +65,12 @@ DEPEND="${RDEPEND}
 		>=dev-python/docutils-0.8[${PYTHON_USEDEP}]
 		<dev-python/docutils-0.13.0[${PYTHON_USEDEP}]
 		dev-python/sphinx-jinja[${PYTHON_USEDEP}]
-		dev-python/ramlfications[${PYTHON_USEDEP}]
 	)
 	test? (
 		>=dev-python/python-dateutil-1.5[${PYTHON_USEDEP}]
 		>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
 		dev-python/moto[${PYTHON_USEDEP}]
 		dev-python/boto3[${PYTHON_USEDEP}]
-		dev-python/ramlfications[${PYTHON_USEDEP}]
 		dev-python/pyjade[${PYTHON_USEDEP}]
 		dev-python/txgithub[${PYTHON_USEDEP}]
 		dev-python/txrequests[${PYTHON_USEDEP}]
@@ -74,10 +78,22 @@ DEPEND="${RDEPEND}
 		dev-python/treq[${PYTHON_USEDEP}]
 		dev-python/setuptools_trial[${PYTHON_USEDEP}]
 		~dev-util/buildbot-worker-${PV}[${PYTHON_USEDEP}]
+		>=dev-python/docker-py-2.2.0[${PYTHON_USEDEP}]
 	)"
 
 S=${WORKDIR}/${MY_P}
 [[ ${PV} == *9999 ]] && S=${S}/master
+
+PATCHES=(
+	"${FILESDIR}/Remove-distro-version-test.patch"
+	"${FILESDIR}/disable-test_userpass_wait.patch"
+)
+
+src_unpack() {
+	unpack ${MY_P}.tar.gz
+	cd ${MY_P}
+	unpack buildbot-1.1.0.docs.tar.xz
+}
 
 pkg_setup() {
 	enewuser buildbot
@@ -126,7 +142,7 @@ src_install() {
 
 python_test() {
 	distutils_install_for_testing
-
+	export DISABLE_TEST=true
 	esetup.py test || die "Tests failed under ${EPYTHON}"
 }
 
