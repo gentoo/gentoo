@@ -1,0 +1,46 @@
+Title: Portage rsync tree verification unstable
+Author: Zac Medico <zmedico@gentoo.org>
+Posted: 2018-03-13
+Revision: 1
+News-Item-Format: 2.0
+Display-If-Installed: sys-apps/portage
+
+Portage rsync tree verification is being temporarily turned off by
+default, starting with sys-apps/portage-2.3.24. This permits
+stabilization of sys-apps/portage-2.3.24 while still working on bugs
+relating to tree verification [1]: deadlocks [2] & key fetching [3].
+
+If users wish to enable the 'rsync-verify' USE flag for sys-apps/portage,
+they need to follow these steps:
+
+1) In order to unmask the 'rsync-verify' USE flag, create a file named
+/etc/portage/profile/package.use.mask containing a line like the
+following:
+
+    sys-apps/portage -rsync-verify
+
+2) Once the 'rsync-verify' USE flag has been unmasked as described
+in step 1, it can be enabled with a line like the following in
+/etc/portage/package.use:
+
+    sys-apps/portage rsync-verify
+
+3) After the configuration changes in steps 1 and 2 have been made, run
+the following command:
+
+    emerge --oneshot --newuse '>=sys-apps/portage-2.3.24'
+
+After all above steps are successfully completed, a line like the
+following should appear in the emerge --info output for the gentoo
+repository:
+
+    sync-rsync-verify-metamanifest: yes
+
+If you wish to disable it for some reason, you can set
+'sync-rsync-verify-metamanifest = no' in your repos.conf.
+
+[1] https://bugs.gentoo.org/650144 sys-apps/portage: [TRACKER] issues
+    related to 'rsync-verify' USE flag
+[2] https://bugs.gentoo.org/647964 app-portage/gemato-11.2: deadlock?
+[3] https://bugs.gentoo.org/649276 sys-apps/portage: gpg key refresh
+    needs exponential backoff with jitter
