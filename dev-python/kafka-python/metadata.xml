@@ -12,6 +12,9 @@
     <flag name="snappy">
         Install snappy compression/decompression support
     </flag>
+    <flag name="lz4">
+        Install lz4 compression/decompression support
+    </flag>
   </use>
   <upstream>
     <remote-id type="github">dpkp/kafka-python</remote-id>
