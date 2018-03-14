@@ -1,8 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# >=teamviewer-13 is amd64 native application without wine
+<net-misc/teamviewer-13
 # These are broken as reported by Halcy0n, Aug, 23, 2011
-net-misc/teamviewer
 dev-lang/rebol-bin
 
 games-action/brutal-legend
