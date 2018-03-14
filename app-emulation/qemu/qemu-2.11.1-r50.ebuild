@@ -8,7 +8,7 @@ PYTHON_REQ_USE="ncurses,readline"
 
 PLOCALES="bg de_DE fr_FR hu it tr zh_CN"
 
-FIRMWARE_ABI_VERSION="2.11.0-r50"
+FIRMWARE_ABI_VERSION="2.11.1-r50"
 
 inherit eutils flag-o-matic linux-info toolchain-funcs multilib python-r1 \
 	user udev fcaps readme.gentoo-r1 pax-utils l10n
@@ -23,7 +23,7 @@ else
 	# KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
 
 	# Gentoo specific patchsets:
-	SRC_URI+=" https://dev.gentoo.org/~tamiko/distfiles/${P}-patches-r0.tar.xz"
+	SRC_URI+=" https://dev.gentoo.org/~chutzpah/distfiles/${P}-patches-r0.tar.xz"
 fi
 
 DESCRIPTION="QEMU + Kernel-based Virtual Machine userland tools"

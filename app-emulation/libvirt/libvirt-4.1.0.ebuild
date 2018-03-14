@@ -58,6 +58,8 @@ RDEPEND="
 	|| ( >=net-analyzer/netcat6-1.0-r2 >=net-analyzer/openbsd-netcat-1.105-r1 )
 	>=net-libs/gnutls-1.0.25:0=
 	net-libs/libssh2
+	net-libs/libtirpc
+	net-libs/rpcsvc-proto
 	>=net-misc/curl-7.18.0
 	sys-apps/dmidecode
 	>=sys-apps/util-linux-2.17
@@ -123,6 +125,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.1.0-do_not_use_sysconf.patch
 	"${FILESDIR}"/${PN}-1.2.16-fix_paths_in_libvirt-guests_sh.patch
 	"${FILESDIR}"/${PN}-3.10.0-r2-fix_paths_for_apparmor.patch
+	"${FILESDIR}"/${PN}-3.1.0-musl-fix-includes.patch # bug #609488
 )
 
 pkg_setup() {
