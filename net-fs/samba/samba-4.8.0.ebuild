@@ -104,9 +104,9 @@ RDEPEND="${CDEPEND}
 "
 
 REQUIRED_USE="
-	addc? ( python gnutls )
+	addc? ( python gnutls winbind )
 	addns? ( python )
-	ads? ( acl gnutls ldap )
+	ads? ( acl gnutls ldap winbind )
 	gpg? ( addc )
 	python? ( ldap )
 	test? ( python )
