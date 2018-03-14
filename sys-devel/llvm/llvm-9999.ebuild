@@ -102,7 +102,6 @@ multilib_src_configure() {
 		# direct cache hit ratio
 		-DLLVM_APPEND_VC_REV=OFF
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/lib/llvm/${SLOT}"
-		-DCMAKE_INSTALL_MANDIR="${EPREFIX}/usr/lib/llvm/${SLOT}/share/man"
 		-DLLVM_LIBDIR_SUFFIX=${libdir#lib}
 
 		-DBUILD_SHARED_LIBS=ON
@@ -154,6 +153,7 @@ multilib_src_configure() {
 			-DLLVM_INSTALL_UTILS=ON
 		)
 		use doc && mycmakeargs+=(
+			-DCMAKE_INSTALL_MANDIR="${EPREFIX}/usr/lib/llvm/${SLOT}/share/man"
 			-DLLVM_INSTALL_SPHINX_HTML_DIR="${EPREFIX}/usr/share/doc/${PF}/html"
 			-DSPHINX_WARNINGS_AS_ERRORS=OFF
 		)
