@@ -64,7 +64,7 @@ sys-fs/gfs2-utils
 # Dead driver and with many incompatibilities with current kernels (#517250,
 # #523356, #551834, #646106). Removal in a month. Possible alternative
 # #device/driver: https://bugs.gentoo.org/517250#c5
-net-wireless/broadcom-sta 
+net-wireless/broadcom-sta
 
 # Pacho Ramos <pacho@gentoo.org> (13 Mar 2018)
 # Not buildable for a long time (#531586), pending many version bumps.
@@ -99,7 +99,7 @@ app-forensics/rdd
 # month.
 net-p2p/tribler
 
-# Tobias Klausmann <klausman@gentoo.org (13 Mar 2018)
+# Tobias Klausmann <klausman@gentoo.org> (13 Mar 2018)
 # Has a bug in the storage engine, details:
 # https://www.robustperception.io/new-features-in-prometheus-2-2-0/
 # https://github.com/prometheus/prometheus/issues/3943
