@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cmake-utils eutils pax-utils
+inherit cmake-utils eutils pax-utils versionator
 
 DESCRIPTION="A dynamic floating and tiling window manager"
 HOMEPAGE="https://awesomewm.org/"
@@ -11,14 +11,14 @@ SRC_URI="https://github.com/awesomeWM/awesome-releases/raw/master/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="dbus doc elibc_FreeBSD gnome luajit"
 
 RDEPEND="
 	>=dev-lang/lua-5.1:0
 	dev-libs/glib:2
 	>=dev-libs/libxdg-basedir-1
-	>=dev-lua/lgi-0.7
+	>=dev-lua/lgi-0.8
 	x11-libs/cairo[xcb]
 	x11-libs/gdk-pixbuf:2
 	>=x11-libs/libxcb-1.6
@@ -60,9 +60,9 @@ src_configure() {
 		-DWITH_DBUS=$(usex dbus)
 		-DWITH_GENERATE_DOC=$(usex doc $(usex doc) n)
 	)
-	if [ $(usex luajit) = "yes" ]; then
-		mycmakeargs+=('-DLUA_INCLUDE_DIR=/usr/include/luajit-2.0')
-		mycmakeargs+=('-DLUA_LIBRARY=/usr/lib/libluajit-5.1.so')
+	if use luajit; then
+		mycmakeargs+=("-DLUA_INCLUDE_DIR=${EPREFIX}/usr/include/luajit-2.0")
+		mycmakeargs+=("-DLUA_LIBRARY=${EPREFIX}/usr/$(get_libdir)/libluajit-5.1.so")
 	fi
 	cmake-utils_src_configure
 }
@@ -109,4 +109,12 @@ pkg_postinst() {
 	elog "and setting the WM name to LG3D."
 	elog "For more info visit"
 	elog "  https://bugs.gentoo.org/show_bug.cgi?id=440724"
+
+	for v in ${REPLACING_VERSIONS}; do
+		if [ "$(get_major_version ${v})" = "3" ]; then
+			elog "Awesome-4 introduced breaking changes. For release notes and porting guide see"
+			elog "https://awesomewm.org/apidoc/documentation/89-NEWS.md.html#v4 and"
+			elog "https://awesomewm.org/apidoc/documentation/17-porting-tips.md.html#v4"
+		fi
+	done
 }
