@@ -10,26 +10,25 @@ SRC_URI="mirror://sourceforge/fuse-emulator/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="alsa ao fbcon gpm gtk joystick memlimit png sdl svga X xml"
+IUSE="alsa ao backend-fbcon +backend-gtk backend-sdl backend-svga backend-X gpm joystick memlimit png xml"
 
 # Only one UI back-end can be enabled at a time
-REQUIRED_USE="^^ ( X fbcon gtk sdl svga )"
+REQUIRED_USE="^^ ( backend-fbcon backend-gtk backend-sdl backend-svga backend-X )"
 
 RDEPEND=">=app-emulation/libspectrum-1.4.1
 	dev-libs/glib:2
 	alsa? ( media-libs/alsa-lib )
 	ao? ( media-libs/libao )
 	gpm? ( sys-libs/gpm )
-	gtk? ( x11-libs/gtk+:3 )
 	joystick? ( media-libs/libjsw )
 	png? ( media-libs/libpng:0= sys-libs/zlib )
-	sdl? ( media-libs/libsdl )
-	svga? ( media-libs/svgalib )
-	X? ( x11-libs/libX11
-		x11-libs/libXext )
+	backend-gtk? ( x11-libs/gtk+:3 )
+	backend-sdl? ( media-libs/libsdl )
+	backend-svga? ( media-libs/svgalib )
+	backend-X? ( x11-libs/libX11 x11-libs/libXext )
 	xml? ( dev-libs/libxml2:2 )"
 DEPEND="${RDEPEND}
-	fbcon? ( virtual/linux-sources )
+	backend-fbcon? ( virtual/linux-sources )
 	dev-lang/perl
 	virtual/pkgconfig"
 
@@ -48,15 +47,15 @@ src_configure() {
 		$(use_with xml libxml2)
 	)
 
-	if use gtk; then
+	if use backend-gtk; then
 		:
-	elif use sdl; then
+	elif use backend-sdl; then
 		myconf+=("--with-sdl")
-	elif use X; then
+	elif use backend-X; then
 		myconf+=("--without-gtk")
-	elif use svga; then
+	elif use backend-svga; then
 		myconf+=("--with-svgalib")
-	elif use fbcon; then
+	elif use backend-fbcon; then
 		myconf+=("--with-fb")
 	fi
 
