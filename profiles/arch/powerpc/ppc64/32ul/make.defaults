@@ -14,3 +14,8 @@ ACCEPT_KEYWORDS="${ARCH} -ppc64"
 # Michał Górny <mgorny@gentoo.org> (27 Jun 2014)
 # Make the ABI flag implicit for compatibility with native ebuilds.
 IUSE_IMPLICIT="abi_ppc_32 -abi_ppc_64"
+
+# Sergei Trofimovich <slyfox@gentoo.org> (14 Mar 2018)
+# We need to match up to 'arch/powerpc/ppc32' defaults here.
+# Remove it when ruby23 goes stable on ppc64
+RUBY_TARGETS="ruby22 ruby23"
