@@ -29,7 +29,7 @@ PATCHES=(
 	"${FILESDIR}/requests-toolbelt-0.8.0-test-tracebacks.patch"
 )
 
-# Known python2.7 test failures do to upstream 
+# Known python2.7 test failures do to upstream
 # not testing with newer requests versions
 # bug: https://bugs.gentoo.org/635824
 # https://github.com/requests/toolbelt/issues/213
