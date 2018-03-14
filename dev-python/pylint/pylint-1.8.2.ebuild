@@ -20,7 +20,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-lin
 IUSE="doc examples test"
 
 RDEPEND="
-	>=dev-python/astroid-1.5.1[${PYTHON_USEDEP}]
+	>=dev-python/astroid-1.6.0[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	>=dev-python/isort-4.2.5[${PYTHON_USEDEP}]
 	dev-python/mccabe[${PYTHON_USEDEP}]
