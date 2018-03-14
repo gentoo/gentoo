@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -46,7 +46,7 @@ DEPEND="
 	)
 "
 
-DOCS=(CHANGELOG.md  CONTRIBUTING.md RELEASE-NOTES.md
+DOCS=(CONTRIBUTING.md RELEASE-NOTES.md
 	  CONDUCT.md GOVERNANCE.md README.rst)
 
 python_prepare_all() {
