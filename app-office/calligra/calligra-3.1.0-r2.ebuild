@@ -79,7 +79,7 @@ COMMON_DEPEND="
 	sys-libs/zlib
 	virtual/libiconv
 	activities? ( $(add_frameworks_dep kactivities) )
-	crypt? ( app-crypt/qca:2[qt5] )
+	crypt? ( app-crypt/qca:2[qt5(+)] )
 	fontconfig? ( media-libs/fontconfig )
 	gemini? ( $(add_qt_dep qtdeclarative 'widgets') )
 	gsl? ( sci-libs/gsl )
