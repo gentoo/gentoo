@@ -8111,7 +8111,7 @@ media-video/aegisub 3.2.2_p20160518-r2: Advanced subtitle editor
 media-video/atomicparsley 0.9.0: command line program for reading, parsing and setting iTunes-style metadata in MPEG4 files
 media-video/baka-mplayer 2.0.4: Cross-platform libmpv-based multimedia player with uncluttered design
 media-video/binkplayer 1.99w: Bink Video! Player
-media-video/bino 1.6.1-r2: Stereoscopic and multi-display media player
+media-video/bino 1.6.6: Stereoscopic and multi-display media player
 media-video/blinkensim 2.7-r1: Graphical Blinkenlights simulator with networking support
 media-video/blinkenthemes 0.10: Themes for blinkensim
 media-video/camorama 0.19-r2: A webcam application featuring various image filters
