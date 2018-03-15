@@ -96,11 +96,14 @@ RDEPEND="${CDEPEND}
 	!dev-perl/Parse-Yapp
 "
 
-REQUIRED_USE="addc? ( gnutls !system-mitkrb5 )
+REQUIRED_USE="
+	addc? ( gnutls !system-mitkrb5 )
 	ads? ( acl gnutls ldap )
+	cluster? ( ads )
 	gpg? ( addc )
 	?? ( system-heimdal system-mitkrb5 )
-	${PYTHON_REQUIRED_USE}"
+	${PYTHON_REQUIRED_USE}
+"
 
 S="${WORKDIR}/${MY_P}"
 

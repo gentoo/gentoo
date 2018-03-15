@@ -107,6 +107,7 @@ REQUIRED_USE="
 	addc? ( python gnutls winbind )
 	addns? ( python )
 	ads? ( acl gnutls ldap winbind )
+	cluster? ( ads )
 	gpg? ( addc )
 	python? ( ldap )
 	test? ( python )

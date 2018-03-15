@@ -103,13 +103,16 @@ RDEPEND="${CDEPEND}
 	!dev-perl/Parse-Yapp
 "
 
-REQUIRED_USE="addc? ( python gnutls )
-	test? ( python )
+REQUIRED_USE="
+	addc? ( python gnutls )
 	addns? ( python )
 	ads? ( acl gnutls ldap )
+	cluster? ( ads )
 	gpg? ( addc )
+	test? ( python )
 	?? ( system-heimdal system-mitkrb5 )
-	${PYTHON_REQUIRED_USE}"
+	${PYTHON_REQUIRED_USE}
+"
 
 # the test suite is messed, it uses system-installed samba
 # bits instead of what was built, tests things disabled via use
