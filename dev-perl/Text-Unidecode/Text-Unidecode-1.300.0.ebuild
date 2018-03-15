@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,5 +17,3 @@ RDEPEND=""
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 "
-
-SRC_TEST="do parallel"
