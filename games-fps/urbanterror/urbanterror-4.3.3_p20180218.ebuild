@@ -12,7 +12,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/mickael9/ioq3.git"
 	EGIT_BRANCH="urt"
 else
-	COMMIT_ID="1042e6b80f6fe50c46c8242b1e0bf3de80c676ef"
+	COMMIT_ID="d93f05de38a6cae60fbf0f073aace64b3adc7aaf"
 	SRC_URI="https://github.com/mickael9/ioq3/archive/${COMMIT_ID}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/ioq3-${COMMIT_ID}"
 	KEYWORDS="~amd64 ~x86"
@@ -21,10 +21,14 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="+altgamma +client +curl debug mumble openal +opus server +skeetshootmod voip vorbis"
-REQUIRED_USE=" || ( client server )"
+REQUIRED_USE="|| ( client server )
+		voip? ( opus )"
 
 DOCS=( ChangeLog README.md README.ioq3.md md4-readme.txt )
-PATCHES=( "${FILESDIR}"/${PN}-4.3-fix-build_system.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.3-fix-build_system.patch
+	"${FILESDIR}"/${PN}-4.3.3_p20180218-fix-loop.patch
+)
 
 RDEPEND="
 	client? (
@@ -32,13 +36,10 @@ RDEPEND="
 		mumble? ( media-sound/mumble:= )
 		openal? ( media-libs/openal:= )
 		opus? ( media-libs/opusfile:= )
-		vorbis? (
-			media-libs/libogg:=
-			media-libs/libvorbis:=
-		)
+		vorbis? ( media-libs/libvorbis:= )
 	)
 	curl? ( net-misc/curl )
-	~games-fps/urbanterror-data-4.3.2
+	~games-fps/urbanterror-data-4.3.3
 	sys-libs/zlib:=[minizip]
 	virtual/jpeg:0
 "
@@ -94,7 +95,8 @@ src_compile() {
 		USE_VOIP=$(usex "mumble" 1 0) \
 		USE_INTERNAL_LIBS=0 \
 		USE_LOCAL_HEADERS=0 \
-		USE_ALTGAMMA=$(usex "altgamma" 1 0)
+		USE_ALTGAMMA=$(usex "altgamma" 1 0) \
+		$(usex "debug" "debug" "release")
 }
 
 src_install() {
