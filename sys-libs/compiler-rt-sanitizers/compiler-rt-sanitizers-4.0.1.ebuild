@@ -70,6 +70,10 @@ src_prepare() {
 
 	if use test; then
 		# remove tests that are broken by new glibc
+		# (disabled in 6.0.0+, r313069)
+		if use elibc_glibc && has_version '>=sys-libs/glibc-2.24'; then
+			rm test/tsan/Linux/user_malloc.cc || die
+		fi
 		# https://bugs.llvm.org/show_bug.cgi?id=36065
 		if use elibc_glibc && has_version '>=sys-libs/glibc-2.25'; then
 			rm test/lsan/TestCases/use_tls_dynamic.cc || die
