@@ -7948,7 +7948,7 @@ media-sound/jtagger 1.0-r1: Powerful MP3 tag and filename editor
 media-sound/kaudiocreator 1.3_p20170806: CD ripper and audio encoder frontend based on KDE Frameworks
 media-sound/kid3 3.5.1: Simple tag editor based on Qt
 media-sound/kmetronome 1.0.0: MIDI based metronome using ALSA sequencer
-media-sound/lame 3.99.5-r1 3.100: LAME Ain't an MP3 Encoder
+media-sound/lame 3.99.5-r1 3.100-r1: LAME Ain't an MP3 Encoder
 media-sound/lash 0.5.4-r3: LASH Audio Session Handler
 media-sound/lilypond 2.18.2-r3: GNU Music Typesetter
 media-sound/lyvi 2.0.0: A simple command-line lyrics viewer
