@@ -21,12 +21,13 @@ SRC_URI="https://releases.llvm.org/${PV/_//}/${MY_P}.tar.xz
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="${PV%_*}"
 KEYWORDS="amd64 ~arm64 x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
-IUSE="test"
+IUSE="+clang test"
 
 LLVM_MAX_SLOT=${SLOT%%.*}
 # llvm-4 needed for --cmakedir
 DEPEND="
 	>=sys-devel/llvm-4
+	clang? ( sys-devel/clang )
 	test? (
 		app-portage/unsandbox
 		$(python_gen_any_dep "~dev-python/lit-${PV}[\${PYTHON_USEDEP}]")
@@ -71,6 +72,12 @@ src_unpack() {
 src_configure() {
 	# pre-set since we need to pass it to cmake
 	BUILD_DIR=${WORKDIR}/${P}_build
+
+	if use clang; then
+		local -x CC=${CHOST}-clang
+		local -x CXX=${CHOST}-clang++
+		strip-unsupported-flags
+	fi
 
 	local mycmakeargs=(
 		-DCOMPILER_RT_INSTALL_PATH="${EPREFIX}/usr/lib/clang/${SLOT}"
