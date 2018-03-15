@@ -21,7 +21,7 @@ SRC_URI="https://releases.llvm.org/${PV/_//}/${MY_P}.tar.xz
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-fbsd"
-IUSE="+libunwind +static-libs test"
+IUSE="+libunwind +static-libs test elibc_musl"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -35,7 +35,6 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	>=sys-devel/llvm-6
 	test? ( >=sys-devel/clang-3.9.0
-		~sys-libs/libcxx-${PV}[libcxxabi(-)]
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]') )"
 
 S=${WORKDIR}/${MY_P}
@@ -53,12 +52,7 @@ pkg_setup() {
 }
 
 src_unpack() {
-	einfo "Unpacking ${MY_P}.tar.xz ..."
-	tar -xf "${DISTDIR}/${MY_P}.tar.xz" || die
-
-	einfo "Unpacking parts of ${LIBCXX_P}.tar.xz ..."
-	tar -xf "${DISTDIR}/${LIBCXX_P}.tar.xz" \
-		"${LIBCXX_P}"/{include,utils/libcxx} || die
+	default
 	mv "${LIBCXX_P}" libcxx || die
 }
 
@@ -85,11 +79,35 @@ multilib_src_configure() {
 	cmake-utils_src_configure
 }
 
+build_libcxx() {
+	local CMAKE_USE_DIR=${WORKDIR}/libcxx
+	local BUILD_DIR=${BUILD_DIR}/libcxx
+	local mycmakeargs=(
+		-DLIBCXX_LIBDIR_SUFFIX=
+		-DLIBCXX_ENABLE_SHARED=ON
+		-DLIBCXX_ENABLE_STATIC=OFF
+		-DLIBCXX_ENABLE_EXPERIMENTAL_LIBRARY=OFF
+		-DLIBCXX_CXX_ABI=libcxxabi
+		-DLIBCXX_CXX_ABI_INCLUDE_PATHS="${S}"/include
+		-DLIBCXX_ENABLE_ABI_LINKER_SCRIPT=OFF
+		-DLIBCXX_HAS_MUSL_LIBC=$(usex elibc_musl)
+		-DLIBCXX_HAS_GCC_S_LIB=OFF
+		-DLIBCXX_INCLUDE_TESTS=OFF
+	)
+
+	cmake-utils_src_configure
+	cmake-utils_src_compile
+}
+
 multilib_src_test() {
 	local clang_path=$(type -P "${CHOST:+${CHOST}-}clang" 2>/dev/null)
 
 	[[ -n ${clang_path} ]] || die "Unable to find ${CHOST}-clang for tests"
 	sed -i -e "/cxx_under_test/s^\".*\"^\"${clang_path}\"^" test/lit.site.cfg || die
+
+	# build a local copy of libc++ for testing to avoid circular dep
+	build_libcxx
+	cp "${BUILD_DIR}"/libcxx/lib/libc++* "${BUILD_DIR}/$(get_libdir)/" || die
 
 	cmake-utils_src_make check-libcxxabi
 }

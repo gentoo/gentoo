@@ -12,15 +12,11 @@ SRC_URI="http://code.call-cc.org/releases/${MY_PV}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha amd64 ~ppc ~ppc64 ~x86"
 IUSE="doc"
 
 DEPEND=""
 RDEPEND=""
-
-# chicken's testsuite is not runnable before install
-# upstream has been notified of the issue
-RESTRICT="test"
 
 src_prepare() {
 	default
@@ -46,6 +42,11 @@ src_compile() {
 	emake -j1 PLATFORM=linux PREFIX=/usr C_COMPILER_OPTIMIZATION_OPTIONS="${CFLAGS}" \
 		LINKER_OPTIONS="${LDFLAGS}" \
 		HOSTSYSTEM="${CBUILD}"
+}
+
+src_test() {
+	cd tests
+	./runtests.sh || die
 }
 
 src_install() {
