@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -12,10 +12,9 @@ MY_PV=43_full
 DESCRIPTION="Data files for UrbanTerror"
 HOMEPAGE="http://www.urbanterror.info"
 
-# Todo in the next release: save into ${PN}-4.3.0.zip
-# I just made a mistake, but loading some GiB just for
-# a mostly cosmetical fix isn’t worth the bandwith.
-SRC_URI="https://up.barbatos.fr/urt/${MY_PN}${MY_PV}.zip -> ${P}.zip"
+# load the base image and save it as .0 file
+# use 43_full-2.zip as upstream fixed something back then
+SRC_URI="https://up.barbatos.fr/urt/${MY_PN}${MY_PV}_2.zip -> ${PN}-4.3.0.zip"
 
 # fetch updates recursively for |4.3.x-4.3.0|
 if [[ "${PV}" != "4.3.0" ]]; then

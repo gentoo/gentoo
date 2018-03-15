@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -27,7 +27,7 @@ HOMEPAGE="http://www.mico.org/"
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86 ~ppc-aix ~amd64-linux ~x86-linux ~sparc-solaris ~x86-winnt"
-IUSE="gtk postgres qt4 ssl tcl threads X"
+IUSE="gtk postgres ssl tcl threads X"
 RESTRICT="test" #298101
 
 # doesn't compile:
@@ -36,7 +36,6 @@ RESTRICT="test" #298101
 RDEPEND="
 	gtk?       ( x11-libs/gtk+:2 )
 	postgres?  ( dev-db/postgresql:* )
-	qt4?       ( dev-qt/qtgui:4[qt3support] )
 	ssl?       ( dev-libs/openssl:* )
 	tcl?       ( dev-lang/tcl:0 )
 	X?         ( x11-libs/libXt )
@@ -64,11 +63,6 @@ src_prepare() {
 	# This assumes that the compiler (or -wrapper) uses
 	# gcc flag '-mminimal-toc' for compilation.
 	sed -i -e 's/,-bbigtoc//' "${S}"/configure || die
-
-	if use qt4; then
-		sed -i -e "s, -lqt\", $(pkg-config --libs Qt3Support)\"," configure ||
-			die "cannot update to use Qt3Support of qt4"
-	fi
 }
 
 src_configure() {
@@ -88,9 +82,6 @@ src_configure() {
 	# to disable openssl utilization seems to override the configure check.
 	use ssl || export ac_cv_lib_ssl_open=no
 
-	# CFLAGS aren't used when checking for <qapplication.h>, but CPPFLAGS are.
-	use qt4 && append-cppflags $(pkg-config --cflags Qt3Support)
-
 	local myconf=
 	myconf() {
 		myconf="${myconf} $*"
@@ -104,7 +95,6 @@ src_configure() {
 	# This applies to: gtk, pgsql, qt, tcl, bluetooth.
 	myconf --with-gtk=$(  use gtk      && echo "${EPREFIX}"/usr)
 	myconf --with-pgsql=$(use postgres && echo "${EPREFIX}"/usr)
-	myconf --with-qt=$(   use qt4      && echo "${EPREFIX}"/usr)
 	myconf --with-tcl=$(  use tcl      && echo "${EPREFIX}"/usr)
 	# bluetooth and wireless both don't compile cleanly
 	myconf --with-bluetooth=''
