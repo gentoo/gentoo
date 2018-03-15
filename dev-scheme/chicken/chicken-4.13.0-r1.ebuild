@@ -18,10 +18,6 @@ IUSE="doc"
 DEPEND=""
 RDEPEND=""
 
-# chicken's testsuite is not runnable before install
-# upstream has been notified of the issue
-RESTRICT="test"
-
 src_prepare() {
 	default
 
@@ -46,6 +42,11 @@ src_compile() {
 	emake -j1 PLATFORM=linux PREFIX=/usr C_COMPILER_OPTIMIZATION_OPTIONS="${CFLAGS}" \
 		LINKER_OPTIONS="${LDFLAGS}" \
 		HOSTSYSTEM="${CBUILD}"
+}
+
+src_test() {
+	cd tests
+	./runtests.sh || die
 }
 
 src_install() {
