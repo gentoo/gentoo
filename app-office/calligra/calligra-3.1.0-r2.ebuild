@@ -5,6 +5,7 @@ EAPI=6
 
 CHECKREQS_DISK_BUILD="4G"
 KDE_APPS_MINIMAL="17.12.0"
+KDE_DOC_DIR="xxx" # contains no language subdirs
 KDE_HANDBOOK="forceoptional"
 KDE_PO_DIRS="po plan/po"
 KDE_TEST="forceoptional"
@@ -78,7 +79,7 @@ COMMON_DEPEND="
 	sys-libs/zlib
 	virtual/libiconv
 	activities? ( $(add_frameworks_dep kactivities) )
-	crypt? ( app-crypt/qca:2[qt5] )
+	crypt? ( app-crypt/qca:2[qt5(+)] )
 	fontconfig? ( media-libs/fontconfig )
 	gemini? ( $(add_qt_dep qtdeclarative 'widgets') )
 	gsl? ( sci-libs/gsl )
@@ -137,7 +138,10 @@ RDEPEND="${COMMON_DEPEND}
 "
 RESTRICT+=" test"
 
-PATCHES=( "${FILESDIR}"/${P}-no-arch-detection.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-no-arch-detection.patch
+	"${FILESDIR}"/${P}-doc.patch
+)
 
 pkg_pretend() {
 	check-reqs_pkg_pretend
