@@ -30,7 +30,7 @@ DEPEND="
 	clang? ( sys-devel/clang )
 	test? (
 		app-portage/unsandbox
-		$(python_gen_any_dep "~dev-python/lit-${PV}[\${PYTHON_USEDEP}]")
+		$(python_gen_any_dep ">=dev-python/lit-5[\${PYTHON_USEDEP}]")
 		=sys-devel/clang-${PV%_*}*:${LLVM_MAX_SLOT}
 		sys-libs/compiler-rt:${SLOT} )
 	${PYTHON_DEPS}"
