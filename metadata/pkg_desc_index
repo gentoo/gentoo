@@ -8672,7 +8672,7 @@ net-mail/bincimap 1.2.13: IMAP server for Maildir
 net-mail/checkpassword 0.90-r2: A uniform password checking interface for root applications
 net-mail/cmd5checkpw 0.30-r1: A checkpassword compatible authentication program that used CRAM-MD5 authentication mode
 net-mail/courier-imap 4.15-r2 4.16.2-r1 4.17.3: An IMAP daemon designed specifically for maildirs
-net-mail/cyrus-imapd 3.0.4: The Cyrus IMAP Server
+net-mail/cyrus-imapd 3.0.4 3.0.5: The Cyrus IMAP Server
 net-mail/dbmail 3.2.2 3.2.3-r1: Enables storage of mail messages in a relational database
 net-mail/dot-forward 0.71-r3: reads sendmail's .forward files under qmail
 net-mail/dovecot 2.2.29.1 2.2.32 2.2.33.2-r1 2.2.33.2-r2 2.2.34: An IMAP and POP3 server written with security primarily in mind
@@ -8691,7 +8691,7 @@ net-mail/libpst 0.6.64-r1: Tools and library for reading Outlook files (.pst for
 net-mail/mailbase 1 1.1: MTA layout package
 net-mail/maildirtree 0.6-r1: A utility that prints trees of Courier-style Maildirs
 net-mail/mailgraph 1.14-r2: A mail statistics RRDtool frontend for Postfix
-net-mail/mailman 2.1.24: A python-based mailing list server with an extensive web interface
+net-mail/mailman 2.1.24 2.1.26: A python-based mailing list server with an extensive web interface
 net-mail/mailutils 3.1.1: A useful collection of mail servers, clients, and filters
 net-mail/mairix 0.23: Indexes and searches Maildir/MH folders
 net-mail/mess822 0.58-r2: Collection of utilities for parsing Internet mail messages
