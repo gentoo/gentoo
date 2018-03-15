@@ -3,6 +3,11 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Matt Turner <mattst88@gentoo.org> (26 May 2018)
+# Unmask systemd since it is keyworded here.
+-systemd
+
+#
 # Jeroen Roovers <jer@gentoo.org> (22 Mar 2018)
 # sys-cluster/ceph is not supported
 ceph
@@ -92,10 +97,6 @@ fdk
 # sys-apps/gptfdisk creates partition tables incompatible with the HPPA
 # bootloader (bug #412801).
 gptfdisk
-
-# Jeroen Roovers <jer@gentoo.org> (25 Apr 2012)
-# sys-apps/systemd is not tested
-systemd
 
 # Jeroen Roovers <jer@gentoo.org> (4 Apr 2012)
 # media-video/vlc is not tested
