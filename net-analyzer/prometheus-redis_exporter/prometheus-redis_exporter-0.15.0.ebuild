@@ -6,7 +6,7 @@ inherit user golang-build golang-vcs-snapshot systemd
 
 EGO_PN="github.com/oliver006/redis_exporter"
 EGIT_COMMIT="a0d9e4c704b4d35cd08544d395038f417716a03a"
-ARCHIVE_URI="https://${EGO_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+ARCHIVE_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
 
 DESCRIPTION="Prometheus Exporter for Redis Metrics. Supports Redis 2.x, 3.x and 4.x"
