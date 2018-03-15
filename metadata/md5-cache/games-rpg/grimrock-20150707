@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm preinst unpack
+DEPEND=app-arch/xz-utils >=sys-apps/sed-4
+DESCRIPTION=Legend of Grimrock: The ultimate dungeon crawling RPG + modding engine
+EAPI=6
+HOMEPAGE=http://www.grimrock.net/
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=all-rights-reserved
+RDEPEND=media-libs/freeimage media-libs/freetype:2 media-libs/openal media-libs/libsdl2[opengl,sound,video] media-libs/libvorbis sys-libs/zlib[minizip] virtual/opengl x11-libs/libX11
+RESTRICT=fetch bindist splitdebug
+SLOT=0
+SRC_URI=Grimrock-Linux-2015-07-07.sh
+_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	gnome2-utils	4d211d7614f303710fca59db6ec12c88	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	unpacker	f40f7b4bd5aa88c2a4ba7b0d1e0ded70	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=12024eb42c3c4c92346ceaba63e6ee04
