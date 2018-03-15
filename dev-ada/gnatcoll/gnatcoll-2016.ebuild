@@ -42,6 +42,7 @@ DEPEND="${RDEPEND}
 	dev-ada/gprbuild[gnat_2016=,gnat_2017=]"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
+	tools? ( static-libs )
 	pygobject? ( gtk )
 	^^ ( gnat_2016 gnat_2017 )"
 
