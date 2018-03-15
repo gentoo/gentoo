@@ -72,9 +72,15 @@ multilib_src_configure() {
 		-DLIBCXXABI_LIBUNWIND_SOURCES="${T}"
 	)
 	if use test; then
-		mycmakeargs+=(
-			-DLIT_COMMAND="${EPREFIX}"/usr/bin/lit
-		)
+		if has_version '>=sys-devel/llvm-6'; then
+			mycmakeargs+=(
+				-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
+			)
+		else
+			mycmakeargs+=(
+				-DLIT_COMMAND="${EPREFIX}"/usr/bin/lit
+			)
+		fi
 	fi
 	cmake-utils_src_configure
 }
