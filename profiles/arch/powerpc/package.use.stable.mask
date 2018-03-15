@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (15 Mar 2018)
+# Requires media-libs/portmidi which is not stable
+media-sound/hydrogen portmidi
+
 # Andreas Sturmlechner <asturm@gentoo.org> (06 Feb 2018)
 # Requires sci-geosciences/gpsd which is not stable
 app-misc/geoclue gps
