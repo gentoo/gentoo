@@ -26,13 +26,6 @@ DEPEND="
 	virtual/pkgconfig
 "
 
-src_prepare() {
-	# so cmake can find binaries
-	sed -i 's/build\/qimgv/${CMAKE_BINARY_DIR}\/qimgv/' CMakeLists.txt || die
-
-	cmake-utils_src_prepare
-}
-
 pkg_postinst() {
 	gnome2_icon_cache_update
 	xdg_desktop_database_update
