@@ -30,7 +30,7 @@ DEPEND="
 	>=sys-devel/llvm-6
 	clang? ( sys-devel/clang )
 	test? (
-		$(python_gen_any_dep "~dev-python/lit-${PV}[\${PYTHON_USEDEP}]")
+		$(python_gen_any_dep "dev-python/lit[\${PYTHON_USEDEP}]")
 		=sys-devel/clang-${PV%_*}*:${LLVM_MAX_SLOT} )
 	${PYTHON_DEPS}"
 
