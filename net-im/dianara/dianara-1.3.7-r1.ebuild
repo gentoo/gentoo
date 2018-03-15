@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils gnome2-utils qmake-utils
+inherit desktop gnome2-utils qmake-utils
 
 MY_P=${PN}-v${PV/_beta/beta}
 DESCRIPTION="Qt-based client for the pump.io distributed social network"
@@ -16,7 +16,7 @@ KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="
-	>=app-crypt/qca-2.1.0.3:2[qt5,ssl]
+	>=app-crypt/qca-2.1.0.3:2[qt5(+),ssl]
 	>=dev-libs/qoauth-2.0.1_pre20160315-r2:5
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
