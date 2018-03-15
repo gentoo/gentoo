@@ -9,7 +9,7 @@ SRC_URI="http://www.tegaki.org/releases/${PV}/models/${P}.zip"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~ppc64 x86"
 IUSE=""
 
 DEPEND=""
