@@ -17,7 +17,7 @@ LICENSE="CMake"
 SLOT="0"
 [[ "${PV}" = *_rc* ]] || \
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
-IUSE="doc emacs server system-jsoncpp ncurses qt5"
+IUSE="doc emacs system-jsoncpp ncurses qt5"
 
 RDEPEND="
 	app-crypt/rhash
@@ -149,7 +149,6 @@ src_configure() {
 		-DSPHINX_MAN=$(usex doc)
 		-DSPHINX_HTML=$(usex doc)
 		-DBUILD_CursesDialog="$(usex ncurses)"
-		-DCMake_ENABLE_SERVER_MODE="$(usex server)"
 	)
 
 	if use qt5 ; then
