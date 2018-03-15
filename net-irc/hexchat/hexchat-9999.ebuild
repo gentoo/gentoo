@@ -1,10 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
-inherit autotools fdo-mime gnome2-utils mono-env python-single-r1
+
+inherit gnome2-utils meson mono-env python-single-r1 xdg-utils
 
 DESCRIPTION="Graphical IRC client based on XChat"
 HOMEPAGE="https://hexchat.github.io/"
@@ -20,21 +21,25 @@ fi
 
 LICENSE="GPL-2 plugin-fishlim? ( MIT )"
 SLOT="0"
-IUSE="dbus debug +gtk libcanberra libnotify libproxy libressl lua nls perl plugin-checksum plugin-fishlim plugin-sysinfo python spell ssl theme-manager"
+IUSE="dbus debug +gtk libcanberra libnotify libproxy libressl lua perl plugin-checksum plugin-fishlim plugin-sysinfo python ssl theme-manager"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-COMMON_DEPEND="dev-libs/glib:2
-	dbus? ( sys-apps/dbus )
-	gtk? ( x11-libs/gtk+:2 )
+COMMON_DEPEND="
+	dev-libs/glib:2
+	dbus? ( dev-libs/dbus-glib )
+	gtk? (
+		x11-libs/gdk-pixbuf:2
+		x11-libs/gtk+:2
+		x11-libs/libX11
+		x11-libs/pango
+	)
 	libcanberra? ( media-libs/libcanberra )
 	libproxy? ( net-libs/libproxy )
 	libnotify? ( x11-libs/libnotify )
 	lua? ( dev-lang/lua:= )
-	nls? ( virtual/libintl )
 	perl? ( dev-lang/perl )
 	plugin-sysinfo? ( sys-apps/pciutils )
 	python? ( ${PYTHON_DEPS} )
-	spell? ( app-text/iso-codes )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
@@ -46,18 +51,15 @@ COMMON_DEPEND="dev-libs/glib:2
 		)
 	)"
 
-RDEPEND="${COMMON_DEPEND}
-	spell? ( app-text/enchant )"
-DEPEND="${COMMON_DEPEND}
+RDEPEND="${COMMON_DEPEND}"
+DEPEND="
+	${COMMON_DEPEND}
 	app-arch/xz-utils
-	virtual/pkgconfig
+	app-text/iso-codes
 	dev-util/intltool
-	theme-manager? ( dev-util/monodevelop )"
-
-src_prepare() {
-	default
-	eautoreconf
-}
+	sys-devel/gettext
+	virtual/pkgconfig
+"
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
@@ -68,33 +70,29 @@ pkg_setup() {
 }
 
 src_configure() {
-	econf \
-		--enable-plugin \
-		$(use_enable nls) \
-		$(use_enable ssl openssl) \
-		$(use_enable gtk gtkfe) \
-		$(use_enable !gtk textfe) \
-		$(use_enable python python "${EPYTHON}") \
-		$(use_enable perl) \
-		$(use_enable plugin-checksum checksum) \
-		$(use_enable plugin-fishlim fishlim) \
-		$(use_enable plugin-sysinfo sysinfo) \
-		$(use_enable dbus) \
-		$(use_enable lua) \
-		$(use_enable libnotify) \
-		$(use_enable libcanberra) \
-		$(use_enable libproxy) \
-		$(use_enable spell isocodes) \
-		$(use_enable debug) \
-		$(use_with theme-manager)
+	local emesonargs=(
+		-Dwith-gtk="$(usex gtk true false)"
+		-Dwith-text="$(usex gtk false true)"
+		-Dwith-ssl="$(usex ssl true false)"
+		-Dwith-plugin=true
+		-Dwith-dbus="$(usex dbus true false)"
+		-Dwith-libproxy="$(usex libproxy true false)"
+		-Dwith-libnotify="$(usex libnotify true false)"
+		-Dwith-libcanberra="$(usex libcanberra true false)"
+		-Dwith-theme-manager="$(usex theme-manager true false)"
+		-Ddbus-service-use-appid=false
+		-Dwith-checksum="$(usex plugin-checksum true false)"
+		-Dwith-fishlim="$(usex plugin-fishlim true false)"
+		-Dwith-lua="$(usex lua lua false)"
+		-Dwith-perl="$(usex perl true false)"
+		-Dwith-python="$(usex python "${EPYTHON}" false)"
+		-Dwith-sysinfo="$(usex plugin-sysinfo true false)"
+	)
+	meson_src_configure
 }
 
 src_install() {
-	emake DESTDIR="${D}" \
-		UPDATE_ICON_CACHE=true \
-		UPDATE_MIME_DATABASE=true \
-		UPDATE_DESKTOP_DATABASE=true \
-		install
+	meson_src_install
 	dodoc readme.md
 	find "${D}" -name '*.la' -delete || die
 }
@@ -108,14 +106,14 @@ pkg_preinst() {
 pkg_postinst() {
 	if use gtk ; then
 		gnome2_icon_cache_update
+		xdg_desktop_database_update
+		xdg_mimeinfo_database_update
 	else
 		elog "You have disabled the gtk USE flag. This means you don't have"
 		elog "the GTK-GUI for HexChat but only a text interface called \"hexchat-text\"."
 	fi
 
 	if use theme-manager ; then
-		fdo-mime_desktop_database_update
-		fdo-mime_mime_database_update
 		elog "Themes are available at:"
 		elog "  https://hexchat.github.io/themes.html"
 	fi
@@ -132,10 +130,7 @@ pkg_postinst() {
 pkg_postrm() {
 	if use gtk ; then
 		gnome2_icon_cache_update
-	fi
-
-	if use theme-manager ; then
-		fdo-mime_desktop_database_update
-		fdo-mime_mime_database_update
+		xdg_desktop_database_update
+		xdg_mimeinfo_database_update
 	fi
 }
