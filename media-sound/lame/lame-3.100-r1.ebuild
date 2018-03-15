@@ -46,33 +46,29 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	# Only build the frontend for the default ABI.
 	local myconf=(
-		$(use_enable static-libs static)
-		$(use_enable debug debug norm)
 		--disable-mp3x
 		--enable-dynamic-frontends
+		$(multilib_native_use_enable frontend)
+		$(multilib_native_use_enable mp3rtp)
+		$(multilib_native_usex sndfile '--with-fileio=sndfile' '')
+		$(use_enable debug debug norm)
+		$(use_enable static-libs static)
+		$(usex cpu_flags_x86_mmx '--enable-nasm' '') #361879
 	)
-	use cpu_flags_x86_mmx && myconf+=( --enable-nasm ) #361879
-
-	# Only build the frontend for the default ABI.
-	if [ "${ABI}" = "${DEFAULT_ABI}" ] ; then
-		myconf+=( $(use_enable mp3rtp) $(use_enable frontend) )
-		use sndfile && myconf+=( --with-fileio=sndfile )
-	else
-		myconf+=( --disable-frontend --disable-mp3rtp )
-	fi
 
 	ECONF_SOURCE="${S}" econf "${myconf[@]}"
 }
 
 multilib_src_install() {
-	emake DESTDIR="${D}" pkghtmldir="${EPREFIX}/usr/share/doc/${PF}/html" install
+	emake \
+		DESTDIR="${D}" \
+		pkghtmldir="${EPREFIX}/usr/share/doc/${PF}/html" \
+		install
 }
 
 multilib_src_install_all() {
-	cd "${S}"
-	dobin misc/mlame
-
 	dodoc API ChangeLog HACKING README STYLEGUIDE TODO USAGE
 	docinto html
 	dodoc misc/lameGUI.html Dll/LameDLLInterface.htm
