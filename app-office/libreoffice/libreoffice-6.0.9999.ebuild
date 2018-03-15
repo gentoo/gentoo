@@ -185,7 +185,7 @@ RDEPEND="${COMMON_DEPEND}
 	media-fonts/libertine
 	|| ( x11-misc/xdg-utils kde-plasma/kde-cli-tools )
 	java? ( >=virtual/jre-1.6 )
-	kde? ( kde-frameworks/oxygen-icons:* )
+	kde? ( kde-frameworks/breeze-icons:* )
 	vlc? ( media-video/vlc )
 "
 
