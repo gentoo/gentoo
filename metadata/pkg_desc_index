@@ -8468,7 +8468,7 @@ net-im/bitlbee 3.5.1: irc to IM gateway that support multiple IM protocols
 net-im/centerim 5.0.1: CenterIM is a ncurses ICQ/Yahoo!/AIM/IRC/MSN/Jabber/GaduGadu/RSS/LiveJournal Client
 net-im/choqok 1.6.0: Free/Open Source micro-blogging client by KDE
 net-im/climm 0.7.1: ICQ text-mode client with many features
-net-im/dianara 1.3.7: Qt-based client for the pump.io distributed social network
+net-im/dianara 1.3.7-r1: Qt-based client for the pump.io distributed social network
 net-im/ejabberd 16.09: Robust, scalable and extensible XMPP server
 net-im/empathy 3.12.14: Telepathy instant messaging and video/audio call client for GNOME
 net-im/gajim 0.16.6-r1: Jabber client written in PyGTK
