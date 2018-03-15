@@ -6103,7 +6103,7 @@ dev-util/cgvg 1.6.2: A tiny version of cscope that is much more useful in certia
 dev-util/checkbashisms 2.17.12: Perl script to check for commonly used bash features not defined by POSIX
 dev-util/checkstyle 7.2: Development tool to help write Java code that adheres to a coding standard
 dev-util/cloc 1.72: Count Lines of Code
-dev-util/cmake 3.8.2 3.9.6: Cross platform Make
+dev-util/cmake 3.9.6: Cross platform Make
 dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
 dev-util/cmdtest 0.30: black box tests Unix command line tools
 dev-util/cmocka 1.0.1: A unit testing framework for C
