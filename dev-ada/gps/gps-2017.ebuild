@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ KEYWORDS="~amd64"
 IUSE="doc"
 
 RDEPEND="${PYTHON_DEPS}
-	>=dev-ada/gnatcoll-2017[gtk,iconv,pygobject,sqlite,tools]
+	>=dev-ada/gnatcoll-2017[gtk,iconv,pygobject,sqlite,static-libs,tools]
 	>=dev-ada/gtkada-2017
 	dev-ada/libadalang
 	dev-libs/gobject-introspection
