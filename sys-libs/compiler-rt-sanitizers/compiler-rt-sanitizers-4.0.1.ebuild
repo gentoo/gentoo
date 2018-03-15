@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,13 +19,14 @@ SRC_URI="https://releases.llvm.org/${PV/_//}/compiler-rt-${PV/_/}.src.tar.xz
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="${PV%_*}"
 KEYWORDS="amd64 ~arm64 x86"
-IUSE="test"
+IUSE="+clang test"
 
 LLVM_MAX_SLOT=${SLOT%%.*}
 RDEPEND="!=sys-libs/compiler-rt-sanitizers-${SLOT}*:0"
 # llvm-4 needed for --cmakedir
 DEPEND="
 	>=sys-devel/llvm-4
+	clang? ( sys-devel/clang )
 	test? (
 		app-portage/unsandbox
 		$(python_gen_any_dep "~dev-python/lit-${PV}[\${PYTHON_USEDEP}]")
@@ -66,11 +67,27 @@ src_unpack() {
 src_prepare() {
 	eapply "${WORKDIR}/${P}-patchset"
 	cmake-utils_src_prepare
+
+	if use test; then
+		# remove tests that are broken by new glibc
+		# https://bugs.llvm.org/show_bug.cgi?id=36065
+		if use elibc_glibc && has_version '>=sys-libs/glibc-2.25'; then
+			rm test/lsan/TestCases/use_tls_dynamic.cc || die
+			rm test/msan/dtls_test.c || die
+			rm test/sanitizer_common/TestCases/Posix/sanitizer_set_death_callback_test.cc || die
+		fi
+	fi
 }
 
 src_configure() {
 	# pre-set since we need to pass it to cmake
 	BUILD_DIR=${WORKDIR}/${P}_build
+
+	if use clang; then
+		local -x CC=${CHOST}-clang
+		local -x CXX=${CHOST}-clang++
+		strip-unsupported-flags
+	fi
 
 	local mycmakeargs=(
 		-DCOMPILER_RT_INSTALL_PATH="${EPREFIX}/usr/lib/clang/${SLOT}"
