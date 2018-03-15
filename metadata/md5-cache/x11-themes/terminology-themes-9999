@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile unpack
+DEPEND=dev-libs/efl >=dev-vcs/git-1.8.2.1
+DESCRIPTION=Color schemes for the Terminology terminal emulator
+EAPI=6
+HOMEPAGE=https://charlesmilette.net/terminology-themes/
+LICENSE=GPL-3
+RDEPEND=x11-terms/terminology
+SLOT=0
+_eclasses_=git-r3	fec09a83ae965b041b47f5ff7c8ba29a
+_md5_=4beadf8bb3dc2d00a25f955ec7112fdd
