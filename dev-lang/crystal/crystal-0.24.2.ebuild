@@ -40,6 +40,8 @@ RDEPEND="${DEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.24.0-verbose-LDFLAGS.patch
+	"${FILESDIR}"/${PN}-0.24.2-gentoo-tests-sandbox.patch
+	"${FILESDIR}"/${PN}-0.24.2-gentoo-tests-network-sandbox.patch
 )
 
 src_prepare() {
