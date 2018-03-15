@@ -14,7 +14,8 @@ PYTHON_COMPAT=( python2_7 )
 
 [[ ${PV} == 9999 ]] && SCM="git-r3" || SCM=""
 
-inherit ${SCM} cmake-multilib llvm python-any-r1 toolchain-funcs
+inherit ${SCM} cmake-multilib llvm multiprocessing python-any-r1 \
+	toolchain-funcs
 
 DESCRIPTION="New implementation of the C++ standard library, targeting C++11"
 HOMEPAGE="https://libcxx.llvm.org/"
@@ -83,6 +84,11 @@ pkg_setup() {
 	fi
 }
 
+test_compiler() {
+	$(tc-getCXX) ${CXXFLAGS} ${LDFLAGS} "${@}" -o /dev/null -x c++ - \
+		<<<'int main() { return 0; }' &>/dev/null
+}
+
 multilib_src_configure() {
 	local cxxabi cxxabi_incs
 	if use libcxxabi; then
@@ -119,6 +125,15 @@ multilib_src_configure() {
 		fi
 	fi
 
+	# bootstrap: cmake is unhappy if compiler can't link to stdlib
+	local nolib_flags=( -nodefaultlibs -lc )
+	if ! test_compiler; then
+		if test_compiler "${nolib_flags[@]}"; then
+			local -x LDFLAGS="${LDFLAGS} ${nolib_flags[*]}"
+			ewarn "${CXX} seems to lack runtime, trying with ${nolib_flags[*]}"
+		fi
+	fi
+
 	local libdir=$(get_libdir)
 	local mycmakeargs=(
 		-DLIBCXX_LIBDIR_SUFFIX=${libdir#lib}
@@ -137,7 +152,7 @@ multilib_src_configure() {
 	if use test; then
 		mycmakeargs+=(
 			-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
-			-DLLVM_LIT_ARGS="-vv"
+			-DLLVM_LIT_ARGS="-vv;-j;${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}"
 		)
 	fi
 	cmake-utils_src_configure

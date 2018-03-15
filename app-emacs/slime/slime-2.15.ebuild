@@ -15,10 +15,8 @@ fi
 
 LICENSE="GPL-2 xref? ( xref.lisp )"
 SLOT="0"
-if [[ ${PV} == *9999* ]]; then
-	KEYWORDS="x86"
-else
-	KEYWORDS="~amd64 ~ppc ~sparc x86"
+if [[ ${PV} != *9999* ]]; then
+	KEYWORDS="amd64 ppc ~sparc x86"
 fi
 IUSE="doc xref"
 RESTRICT=test # tests fail to contact sbcl

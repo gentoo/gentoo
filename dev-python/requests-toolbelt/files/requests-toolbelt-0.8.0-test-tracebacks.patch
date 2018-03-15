@@ -1,0 +1,25 @@
+From 7af2e4ce4192dfab6bd8315ad31b5b689386a0d3 Mon Sep 17 00:00:00 2001
+From:  <@œÖ>
+Date: Wed, 7 Mar 2018 21:52:25 +0000
+Subject: [PATCH] threaded/tread.py: Fix numerous test failures
+
+---
+ requests_toolbelt/threaded/thread.py | 2 ++
+ 1 file changed, 2 insertions(+), 0 deletions(-)
+
+diff --git a/requests_toolbelt/threaded/thread.py b/requests_toolbelt/threaded/thread.py
+index 542813c..f33b759 100644
+--- a/requests_toolbelt/threaded/thread.py
++++ b/requests_toolbelt/threaded/thread.py
+@@ -36,6 +36,8 @@ class SessionThread(object):
+             self._jobs.task_done()
+ 
+     def _make_request(self):
++        if self._jobs is None:
++            return
+         while True:
+             try:
+                 kwargs = self._jobs.get_nowait()
+--
+libgit2 0.24.6
+

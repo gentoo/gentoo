@@ -7,7 +7,7 @@ EAPI=6
 # (needed due to CMAKE_BUILD_TYPE != Gentoo)
 CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
-inherit cmake-multilib git-r3 llvm python-any-r1
+inherit cmake-multilib git-r3 llvm multiprocessing python-any-r1
 
 DESCRIPTION="C++ runtime stack unwinder from LLVM"
 HOMEPAGE="https://github.com/llvm-mirror/libunwind"
@@ -23,10 +23,13 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="!sys-libs/libunwind"
 # llvm-6 for new lit options
+# tests need libcxx with implicit -lunwind and libcxxabi
+# (but libcxx does not need to be built against it)
 DEPEND="
 	>=sys-devel/llvm-6
 	test? (
-		sys-libs/libcxx[${MULTILIB_USEDEP}]
+		sys-libs/libcxx[libunwind,${MULTILIB_USEDEP}]
+		sys-libs/libcxxabi
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]') )"
 
 # least intrusive of all
@@ -71,7 +74,7 @@ multilib_src_configure() {
 	if use test; then
 		mycmakeargs+=(
 			-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
-			-DLLVM_LIT_ARGS="-vv"
+			-DLLVM_LIT_ARGS="-vv;-j;${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}"
 			-DLIBUNWIND_LIBCXX_PATH="${WORKDIR}"/libcxx
 		)
 	fi

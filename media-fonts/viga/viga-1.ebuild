@@ -5,7 +5,7 @@ EAPI=5
 inherit font
 
 DESCRIPTION="A sans-serif font with great personality and good on-screen performance"
-HOMEPAGE="http://www.fontsquirrel.com/fonts/viga"
+HOMEPAGE="https://www.fontsquirrel.com/fonts/viga"
 SRC_URI="https://dev.gentoo.org/~jstein/dist/${P}.tar.xz"
 
 LICENSE="OFL-1.1"

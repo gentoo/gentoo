@@ -11,7 +11,7 @@ HOMEPAGE="https://jakarta.apache.org/"
 SRC_URI="https://archive.apache.org/dist/tomcat/tomcat-5/v${TC_VERSION}/src/apache-tomcat-${TC_VERSION}-src.tar.gz"
 
 SLOT="2.4"
-KEYWORDS="~amd64 ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="~amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 LICENSE="Apache-1.1"
 IUSE="doc source"
 

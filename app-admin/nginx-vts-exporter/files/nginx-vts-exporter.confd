@@ -1,0 +1,2 @@
+# arguments for prometheus nginx virtual host traffic stats exporter
+command_args="-nginx.scrape_uri=http://localhost/status/format/json"

@@ -103,6 +103,12 @@ src_prepare() {
 		local ev="__EDIT_${v}__"
 		sed -i -e "s/${ev}/${!v}/g" configure || die
 	done
+
+	# This is a false positive skip in the tests as the test-reviewer code
+	# looks for 'Skipping\s'
+	sed -i \
+		-e '/db_repsite/s,Skipping:,Skipping,g' \
+		"${S_BASE}"/test/tcl/reputils.tcl || die
 }
 
 multilib_src_configure() {

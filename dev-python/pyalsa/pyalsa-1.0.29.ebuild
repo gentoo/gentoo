@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 pypy )	# Still py2 only it appears
 inherit distutils-r1 flag-o-matic
 
 DESCRIPTION="Python bindings for ALSA library"
-HOMEPAGE="http://alsa-project.org/"
+HOMEPAGE="https://alsa-project.org/"
 SRC_URI="mirror://alsaproject/pyalsa/${P}.tar.bz2"
 
 LICENSE="GPL-2"

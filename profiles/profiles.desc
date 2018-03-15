@@ -33,9 +33,9 @@ amd64           default/linux/amd64/13.0/no-multilib                    stable
 amd64           default/linux/amd64/13.0/systemd                        stable
 amd64           default/linux/amd64/13.0/x32                            dev
 amd64           default/linux/amd64/17.0                                stable
-amd64           default/linux/amd64/17.0/selinux                        dev
+amd64           default/linux/amd64/17.0/selinux                        stable
 amd64           default/linux/amd64/17.0/hardened                       stable
-amd64           default/linux/amd64/17.0/hardened/selinux               dev
+amd64           default/linux/amd64/17.0/hardened/selinux               stable
 amd64           default/linux/amd64/17.0/desktop                        stable
 amd64           default/linux/amd64/17.0/desktop/gnome                  stable
 amd64           default/linux/amd64/17.0/desktop/gnome/systemd          stable
@@ -44,7 +44,7 @@ amd64           default/linux/amd64/17.0/desktop/plasma/systemd         stable
 amd64           default/linux/amd64/17.0/developer                      stable
 amd64           default/linux/amd64/17.0/no-multilib                    stable
 amd64           default/linux/amd64/17.0/no-multilib/hardened           stable
-amd64           default/linux/amd64/17.0/no-multilib/hardened/selinux   dev
+amd64           default/linux/amd64/17.0/no-multilib/hardened/selinux   stable
 amd64           default/linux/amd64/17.0/systemd                        stable
 amd64           default/linux/amd64/17.0/x32                            dev
 
@@ -237,7 +237,7 @@ x86             default/linux/x86/13.0/desktop/plasma/systemd   stable
 x86             default/linux/x86/13.0/developer                stable
 x86		default/linux/x86/13.0/systemd			stable
 x86             default/linux/x86/17.0                          stable
-x86             default/linux/x86/17.0/selinux                  dev
+x86             default/linux/x86/17.0/selinux                  stable
 x86             default/linux/x86/17.0/hardened                 stable
 x86             default/linux/x86/17.0/desktop                  stable
 x86             default/linux/x86/17.0/desktop/gnome            stable
@@ -250,7 +250,7 @@ x86		default/linux/x86/17.0/systemd			stable
 # Gentoo/FreeBSD Profiles
 # @MAINTAINER: bsd@gentoo.org
 amd64-fbsd	default/bsd/fbsd/amd64/9.1			exp
-amd64-fbsd	default/bsd/fbsd/amd64/11.1			dev
+amd64-fbsd	default/bsd/fbsd/amd64/11.1			stable
 amd64-fbsd	default/bsd/fbsd/amd64/9.1/clang		exp
 amd64-fbsd	default/bsd/fbsd/amd64/11.1/clang		exp
 x86-fbsd	default/bsd/fbsd/x86/9.1			exp
@@ -288,6 +288,7 @@ amd64		default/linux/musl/amd64/x32				exp
 amd64		hardened/linux/musl/amd64/x32				exp
 amd64		default/linux/amd64/17.0/musl				exp
 amd64		default/linux/amd64/17.0/musl/hardened			exp
+amd64		default/linux/amd64/17.0/musl/hardened/selinux		exp
 arm		default/linux/musl/arm/armv7a				exp
 arm		hardened/linux/musl/arm/armv7a				exp
 arm		default/linux/arm/17.0/musl/armv7a			exp
@@ -303,6 +304,7 @@ ppc		hardened/linux/musl/ppc					exp
 x86		default/linux/musl/x86					exp
 x86		hardened/linux/musl/x86					exp
 x86		default/linux/x86/17.0/musl				exp
+x86		default/linux/x86/17.0/musl/selinux			exp
 
 # Non-embedded uclibc profiles
 # @MAINTAINER: uclibc@gentoo.org

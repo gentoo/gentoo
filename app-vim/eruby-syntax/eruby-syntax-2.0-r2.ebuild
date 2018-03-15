@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit vim-plugin
 
 DESCRIPTION="vim plugin: syntax highlighting for eruby"
-HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=403"
+HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=403"
 LICENSE="vim.org"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 

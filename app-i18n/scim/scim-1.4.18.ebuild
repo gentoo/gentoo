@@ -1,22 +1,27 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils flag-o-matic multilib gnome2-utils autotools
+EAPI="6"
+
+inherit autotools flag-o-matic gnome2-utils qmake-utils
 
 DESCRIPTION="Smart Common Input Method (SCIM) is an Input Method (IM) development platform"
-HOMEPAGE="https://sourceforge.net/projects/scim"
-SRC_URI="https://github.com/scim-im/scim/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/scim-im/scim"
+SRC_URI="https://github.com/scim-im/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
-IUSE="doc gtk3"
+IUSE="doc gtk3 qt4"
 
 RDEPEND="x11-libs/libX11
 	dev-libs/glib:2
 	gtk3? ( x11-libs/gtk+:3 )
 	!gtk3? ( x11-libs/gtk+:2 )
+	qt4? (
+		dev-qt/qtcore:4
+		dev-qt/qtgui:4
+	)
 	>=dev-libs/atk-1
 	>=x11-libs/pango-1"
 DEPEND="${RDEPEND}
@@ -44,7 +49,10 @@ src_configure() {
 	filter-flags -fvisibility-inlines-hidden -fvisibility=hidden
 	econf $(use_with doc doxygen) \
 		--enable-ld-version-script \
-		$(usex gtk3 --with-gtk-version={3,2})
+		$(usex gtk3 --with-gtk-version={3,2}) \
+		--disable-qt3-immodule \
+		$(use_enable qt4 qt4-immodule) \
+		--with-qt4-moc="$(qt4_get_bindir)/moc"
 }
 
 src_compile() {

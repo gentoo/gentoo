@@ -7,7 +7,7 @@ DESCRIPTION="Environment setting required for all KDELibs4 apps to run"
 HOMEPAGE="https://www.kde.org/"
 SRC_URI=""
 
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 LICENSE="GPL-2"
 SLOT="4/4.14"
 IUSE=""

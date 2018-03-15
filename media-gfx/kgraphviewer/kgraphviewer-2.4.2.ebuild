@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,8 +10,8 @@ DESCRIPTION="Graphviz dot graph file viewer"
 HOMEPAGE="https://www.kde.org/applications/graphics/kgraphviewer/"
 [[ ${PV} != *9999* ]] && SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
 
-LICENSE="GPL-2 FDL-1.2"
-KEYWORDS="~amd64 ~x86"
+LICENSE="GPL-2 GPL-2+ LGPL-2+ LGPL-2.1+ handbook? ( FDL-1.2 )"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 COMMON_DEPEND="
@@ -36,3 +36,5 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	!media-gfx/kgraphviewer:4
 "
+
+PATCHES=( "${FILESDIR}/${P}-unused-dependency.patch" )

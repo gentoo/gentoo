@@ -16,7 +16,7 @@ else
 		!minimal? ( http://www.eterm.org/download/Eterm-bg-${PV}.tar.gz )
 		mirror://sourceforge/eterm/${MY_P}.tar.gz
 		!minimal? ( mirror://sourceforge/eterm/Eterm-bg-${PV}.tar.gz )"
-	KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sh sparc x86 ~x86-fbsd"
+	KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sh sparc x86"
 fi
 
 DESCRIPTION="A vt102 terminal emulator for X"

@@ -12,7 +12,7 @@ PYTHON_REQ_USE="threads,xml"
 DEV_URI="
 	https://dev-builds.libreoffice.org/pre-releases/src
 	https://download.documentfoundation.org/libreoffice/src/${PV:0:5}/
-	https://download.documentfoundation.org/libreoffice/old/${PV}/
+	https://downloadarchive.documentfoundation.org/libreoffice/old/${PV}/src
 "
 ADDONS_URI="https://dev-www.libreoffice.org/src/"
 
@@ -309,6 +309,11 @@ src_unpack() {
 
 src_prepare() {
 	default
+
+	# sandbox violations on many systems, we don't need it. Bug #646406
+	sed -i \
+		-e "/KF5_CONFIG/s/kf5-config/no/" \
+		configure.ac || die "Failed to disable kf5-config"
 
 	AT_M4DIR="m4" eautoreconf
 	# hack in the autogen.sh

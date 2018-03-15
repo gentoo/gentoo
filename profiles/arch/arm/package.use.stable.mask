@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Andreas Sturmlechner <asturm@gentoo.org> (06 Feb 2018)
-# Requires sci-geosciences/gpsd which is not stable
+# Requires sci-geosciences/gpsd which is not stable, bug #632372
+app-admin/collectd collectd_plugins_gps
 app-misc/geoclue gps
 
 # Andreas Sturmlechner <asturm@gentoo.org> (25 Jan 2018)

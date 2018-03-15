@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
+
 inherit eutils prefix
 
 DESCRIPTION="ASDF is Another System Definition Facility for Common Lisp"
@@ -10,14 +11,12 @@ SRC_URI="http://common-lisp.net/project/${PN}/archives/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="alpha amd64 ia64 ppc sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x86-solaris"
+KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x86-solaris"
 IUSE="doc"
 
 SLOT="0/${PVR}"
 
 DEPEND="!dev-lisp/cl-${PN}
-		!dev-lisp/asdf-binary-locations
-		!dev-lisp/gentoo-init
 		!<dev-lisp/asdf-2.33-r3
 		doc? ( virtual/texi2dvi )"
 RDEPEND=""

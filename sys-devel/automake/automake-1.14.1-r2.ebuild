@@ -24,7 +24,7 @@ HOMEPAGE="https://www.gnu.org/software/automake/"
 LICENSE="GPL-2"
 # Use Gentoo versioning for slotting.
 SLOT="${PV:0:4}"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="test"
 
 RDEPEND="dev-lang/perl
@@ -43,6 +43,10 @@ PATCHES=(
 
 S="${WORKDIR}/${MY_P}"
 
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
+
 src_prepare() {
 	default
 	export WANT_AUTOCONF=2.5
@@ -56,12 +60,6 @@ src_prepare() {
 
 src_configure() {
 	econf --docdir="\$(datarootdir)/doc/${PF}"
-}
-
-src_test() {
-	python_setup
-
-	default
 }
 
 # slot the info pages.  do this w/out munging the source so we don't have

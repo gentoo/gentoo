@@ -1,0 +1,27 @@
+From a4a7fdb81c7b78159541d1e027275b8b4893cc4a Mon Sep 17 00:00:00 2001
+From: Dennis Schridde <devurandom@gmx.net>
+Date: Tue, 28 Nov 2017 23:03:34 +0100
+Subject: [PATCH 5/6] Compile everything with -fPIC if required
+
+Previously only objects directly compiled for shared objects were compiled
+ with -fPIC, but static objects linked into shared objects also need this flag.
+---
+ config/generic.mak.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/config/generic.mak.in b/config/generic.mak.in
+index 699166b..3b671d7 100644
+--- a/config/generic.mak.in
++++ b/config/generic.mak.in
+@@ -35,7 +35,7 @@ AR		= ar cr
+ # Compilation and linking flags
+ #
+ SHLIB_CFLAGS	= @C_PIC@
+-COMMON_CFLAGS	= $(OPTIMIZATION) @CFLAGS@ @C_WFLAGS@ -DUNIX=1
++COMMON_CFLAGS	= $(OPTIMIZATION) @CFLAGS@ @C_WFLAGS@ -DUNIX=1 @C_PIC@
+ 
+ SHLIB_LDFLAGS	= -shared 
+ COMMON_LDFLAGS  = $(OPTIMIZATION) 
+-- 
+2.15.0
+

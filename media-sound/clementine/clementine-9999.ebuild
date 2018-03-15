@@ -43,8 +43,6 @@ COMMON_DEPEND="
 	dev-qt/qtnetwork:5[ssl]
 	dev-qt/qtsql:5[sqlite]
 	dev-qt/qtwidgets:5
-	dev-qt/qtx11extras:5
-	dev-qt/qtxml:5
 	media-libs/chromaprint:=
 	media-libs/gstreamer:1.0
 	media-libs/gst-plugins-base:1.0
@@ -80,12 +78,12 @@ RDEPEND="${COMMON_DEPEND}
 	udisks? ( sys-fs/udisks:2 )
 "
 DEPEND="${COMMON_DEPEND}
-	|| (
-		>=dev-cpp/gtest-1.8.0
-		dev-cpp/gmock
-	)
-	dev-libs/boost:=
+	>=dev-cpp/gtest-1.8.0
+	dev-libs/boost
 	dev-qt/linguist-tools:5
+	dev-qt/qtopengl:5
+	dev-qt/qtx11extras:5
+	dev-qt/qtxml:5
 	sys-devel/gettext
 	virtual/pkgconfig
 	box? ( dev-cpp/sparsehash )
@@ -181,7 +179,7 @@ pkg_postinst() {
 	gnome2_icon_cache_update
 
 	elog "Note that list of supported formats is controlled by media-plugins/gst-plugins-meta "
-	elog "USE flags. You may be intrested in setting aac, flac, mp3, ogg or wavpack USE flags "
+	elog "USE flags. You may be interested in setting aac, flac, mp3, ogg or wavpack USE flags "
 	elog "depending on your preferences"
 }
 

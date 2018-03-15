@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
@@ -11,7 +11,7 @@ SRC_URI="https://jcifs.samba.org/src/${P}.tgz"
 HOMEPAGE="https://jcifs.samba.org/"
 LICENSE="LGPL-2.1"
 SLOT="1.1"
-KEYWORDS="amd64 ppc64 x86 ~x86-fbsd"
+KEYWORDS="amd64 ppc64 x86"
 RDEPEND=">=virtual/jre-1.4
 	java-virtuals/servlet-api:2.4"
 DEPEND=">=virtual/jdk-1.4

@@ -20,7 +20,8 @@ _EUTILS_ECLASS=1
 # implicitly inherited (now split) eclasses
 case ${EAPI:-0} in
 0|1|2|3|4|5|6)
-	inherit desktop epatch estack ltprune multilib preserve-libs toolchain-funcs
+	inherit desktop epatch estack ltprune multilib preserve-libs \
+		toolchain-funcs vcs-clean
 	;;
 esac
 
@@ -36,37 +37,6 @@ if ! declare -F eqawarn >/dev/null ; then
 		:
 	}
 fi
-
-# @FUNCTION: ecvs_clean
-# @USAGE: [list of dirs]
-# @DESCRIPTION:
-# Remove CVS directories recursiveley.  Useful when a source tarball contains
-# internal CVS directories.  Defaults to $PWD.
-ecvs_clean() {
-	[[ $# -eq 0 ]] && set -- .
-	find "$@" -type d -name 'CVS' -prune -print0 | xargs -0 rm -rf
-	find "$@" -type f -name '.cvs*' -print0 | xargs -0 rm -rf
-}
-
-# @FUNCTION: esvn_clean
-# @USAGE: [list of dirs]
-# @DESCRIPTION:
-# Remove .svn directories recursiveley.  Useful when a source tarball contains
-# internal Subversion directories.  Defaults to $PWD.
-esvn_clean() {
-	[[ $# -eq 0 ]] && set -- .
-	find "$@" -type d -name '.svn' -prune -print0 | xargs -0 rm -rf
-}
-
-# @FUNCTION: egit_clean
-# @USAGE: [list of dirs]
-# @DESCRIPTION:
-# Remove .git* directories/files recursiveley.  Useful when a source tarball
-# contains internal Git directories.  Defaults to $PWD.
-egit_clean() {
-	[[ $# -eq 0 ]] && set -- .
-	find "$@" -type d -name '.git*' -prune -print0 | xargs -0 rm -rf
-}
 
 # @FUNCTION: emktemp
 # @USAGE: [temp dir]

@@ -5,7 +5,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
 CMAKE_BUILD_TYPE="None"
-inherit cmake-utils fdo-mime gnome2-utils python-single-r1 eutils
+inherit cmake-utils fdo-mime gnome2-utils python-single-r1 eutils python-utils-r1
 
 DESCRIPTION="Toolkit that provides signal processing blocks to implement software radios"
 HOMEPAGE="http://gnuradio.org/"
@@ -26,7 +26,7 @@ elif [[ ${PV} == "3.8.9999" ]]; then
 	EGIT_BRANCH="next"
 fi
 
-IUSE="+audio +alsa atsc +analog +digital channels doc dtv examples fcd fec +filter grc jack log noaa oss pager performance-counters portaudio +qt4 sdl test trellis uhd vocoder +utils wavelet wxwidgets zeromq"
+IUSE="+audio +alsa atsc +analog +digital channels doc dtv examples fcd fec +filter grc jack log noaa oss pager performance-counters portaudio +qt5 sdl test trellis uhd vocoder +utils wavelet wxwidgets zeromq"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 		audio? ( || ( alsa oss jack portaudio ) )
@@ -38,7 +38,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 		digital? ( filter analog )
 		dtv? ( fec )
 		pager? ( filter analog )
-		qt4? ( filter )
+		qt5? ( filter )
 		uhd? ( filter analog )
 		fcd? ( || ( alsa oss ) )
 		wavelet? ( analog )
@@ -52,6 +52,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-libs/boost:0=[${PYTHON_USEDEP}]
 	!<=dev-libs/boost-1.52.0-r6:0/1.52
 	dev-python/numpy[${PYTHON_USEDEP}]
+	dev-python/six[${PYTHON_USEDEP}]
 	sci-libs/fftw:3.0=
 	alsa? (
 		media-libs/alsa-lib[${PYTHON_USEDEP}]
@@ -59,9 +60,9 @@ RDEPEND="${PYTHON_DEPS}
 	fcd? ( virtual/libusb:1 )
 	filter? ( sci-libs/scipy )
 	grc? (
-		dev-python/cheetah[${PYTHON_USEDEP}]
-		dev-python/lxml[${PYTHON_USEDEP}]
-		>=dev-python/pygtk-2.10:2[${PYTHON_USEDEP}]
+		dev-python/pygobject:*[cairo(+),${PYTHON_USEDEP}]
+		dev-python/pyyaml[${PYTHON_USEDEP}]
+		dev-python/mako[${PYTHON_USEDEP}]
 	)
 	jack? (
 		media-sound/jack-audio-connection-kit
@@ -70,12 +71,11 @@ RDEPEND="${PYTHON_DEPS}
 	portaudio? (
 		>=media-libs/portaudio-19_pre
 	)
-	qt4? (
-		>=dev-python/PyQt4-4.4[X,opengl,${PYTHON_USEDEP}]
-		>=dev-python/pyqwt-5.2:5[${PYTHON_USEDEP}]
-		>=dev-qt/qtcore-4.4:4
-		>=dev-qt/qtgui-4.4:4
-		x11-libs/qwt:6[qt4(+)]
+	qt5? (
+		dev-python/PyQt5[opengl,${PYTHON_USEDEP}]
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		x11-libs/qwt:6[qt5(+)]
 	)
 	sdl? ( >=media-libs/libsdl-1.2.0 )
 	uhd? ( >=net-wireless/uhd-3.9.6:=[${PYTHON_USEDEP}] )
@@ -84,18 +84,12 @@ RDEPEND="${PYTHON_DEPS}
 	wavelet? (
 		>=sci-libs/gsl-1.10
 	)
-	wxwidgets? (
-		dev-python/lxml[${PYTHON_USEDEP}]
-		dev-python/numpy[${PYTHON_USEDEP}]
-		dev-python/wxpython:3.0[${PYTHON_USEDEP}]
-	)
 	zeromq? ( >=net-libs/zeromq-2.1.11 )
 	"
 
 DEPEND="${RDEPEND}
 	app-text/docbook-xml-dtd:4.2
 	>=dev-lang/swig-3.0.5
-	dev-python/cheetah[${PYTHON_USEDEP}]
 	virtual/pkgconfig
 	doc? (
 		>=app-doc/doxygen-1.5.7.1
@@ -122,16 +116,7 @@ src_prepare() {
 }
 
 src_configure() {
-	# SYSCONFDIR/GR_PREFSDIR default to install below CMAKE_INSTALL_PREFIX
-	#audio provider is still automagic
-	#zeromq missing deps isn't fatal
-	#remaining QA issues, these appear broken:
-	#ENABLE_ENABLE_PERFORMANCE_COUNTERS
-	#ENABLE_GR_AUDIO_ALSA
-	#ENABLE_GR_AUDIO_JACK
-	#ENABLE_GR_AUDIO_OSS
-	#ENABLE_GR_AUDIO_PORTAUDIO
-	#ENABLE_GR_CORE
+	python_export PYTHON_SITEDIR
 	mycmakeargs=(
 		-DENABLE_DEFAULT=OFF
 		-DENABLE_GNURADIO_RUNTIME=ON
@@ -165,13 +150,14 @@ src_configure() {
 		-DENABLE_GR_UTILS="$(usex utils)"
 		-DENABLE_GR_VOCODER="$(usex vocoder)"
 		-DENABLE_GR_WAVELET="$(usex wavelet)"
-		-DENABLE_GR_WXGUI="$(usex wxwidgets)"
-		-DENABLE_GR_QTGUI="$(usex qt4)"
+		-DENABLE_GR_QTGUI="$(usex qt5)"
+		-DDESIRED_QT_VERSION="$(usex qt5 5)"
 		-DENABLE_GR_VIDEO_SDL="$(usex sdl)"
 		-DENABLE_GR_ZEROMQ="$(usex zeromq)"
 		-DENABLE_GR_CORE=ON
 		-DSYSCONFDIR="${EPREFIX}"/etc
 		-DPYTHON_EXECUTABLE="${PYTHON}"
+		-DGR_PYTHON_DIR="${PYTHON_SITEDIR}"
 		-DGR_PKG_DOC_DIR="${EPREFIX}/usr/share/doc/${PF}"
 	)
 	use vocoder && mycmakeargs+=( -DGR_USE_SYSTEM_LIBGSM=TRUE )

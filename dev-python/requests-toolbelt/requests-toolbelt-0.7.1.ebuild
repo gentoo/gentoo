@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,5 +27,5 @@ DEPEND="${RDEPEND}
 DOCS=( AUTHORS.rst HISTORY.rst README.rst )
 
 python_test() {
-	py.test -v || die "Tests fail with ${EPYTHON}"
+	py.test -v || die "Tests failed with ${EPYTHON}"
 }

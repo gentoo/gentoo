@@ -1,0 +1,30 @@
+# -check-keys string
+#   	Comma separated list of keys to export value and length/size
+# -debug
+#   	Output verbose debug information
+# -log-format string
+#   	Log format, valid options are txt and json (default "txt")
+# -namespace string
+#   	Namespace for metrics (default "redis")
+# -redis-only-metrics
+#   	Whether to export go runtime metrics also
+# -redis.addr string
+#   	Address of one or more redis nodes, separated by separator
+# -redis.alias string
+#   	Redis instance alias for one or more redis nodes, separated by separator
+# -redis.file string
+#   	Path to file containing one or more redis nodes, separated by newline. NOTE: mutually exclusive with redis.addr
+# -redis.password string
+#   	Password for one or more redis nodes, separated by separator
+# -separator string
+#   	separator used to split redis.addr, redis.password and redis.alias into several elements. (default ",")
+# -use-cf-bindings
+#   	Use Cloud Foundry service bindings
+# -version
+#   	Show version information and exit
+# -web.listen-address string
+#   	Address to listen on for web interface and telemetry. (default ":9121")
+# -web.telemetry-path string
+#   	Path under which to expose metrics. (default "/metrics")
+
+#command_args="--web.listen-address=:9121 --redis.addr=localhost:6379"

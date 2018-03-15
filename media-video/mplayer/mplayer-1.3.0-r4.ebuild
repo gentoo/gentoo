@@ -155,9 +155,9 @@ RDEPEND+="
 SLOT="0"
 LICENSE="GPL-2"
 if [[ ${PV} != *9999* ]]; then
-	KEYWORDS="~alpha amd64 ~arm ~hppa ia64 ~ppc ~ppc64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+	KEYWORDS="alpha amd64 ~arm ~hppa ia64 ~ppc ~ppc64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 else
-	KEYWORDS="~alpha amd64 ~arm ~hppa ia64 ~ppc ~ppc64 x86"
+	KEYWORDS="alpha amd64 ~arm ~hppa ia64 ~ppc ~ppc64 x86"
 fi
 
 # faac codecs are nonfree
@@ -560,7 +560,7 @@ src_install() {
 	docinto tech/
 	dodoc DOCS/tech/{*.txt,MAINTAINERS,mpsub.sub,playtree,TODO,wishlist}
 	docinto TOOLS/
-	dodoc -r TOOLS
+	dodoc -r TOOLS/*
 	docinto tech/mirrors/
 	dodoc DOCS/tech/mirrors/*
 

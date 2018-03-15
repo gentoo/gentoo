@@ -1,10 +1,10 @@
 #!/sbin/openrc-run
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 depend() {
 	need localmount net
-	after bootmisc postgres
+	after bootmisc postgresql
 }
 
 CORE="$(which quasselcore)"

@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+  <maintainer type="person" >
+    <email>lluixhi@gmail.com</email>
+    <name>Aric Belsito</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Gentoo Proxy Maintainers Project</name>
+  </maintainer>
   <maintainer type="project">
     <email>python@gentoo.org</email>
     <name>Python</name>
@@ -9,4 +17,10 @@
     <remote-id type="pypi">msgpack-python</remote-id>
     <remote-id type="github">msgpack/msgpack-python</remote-id>
   </upstream>
+  <use>
+    <flag name="native-extensions">
+      Compiles native "C" extensions (speedups, instead of using python
+      fallback code).
+    </flag>
+  </use>
 </pkgmetadata>

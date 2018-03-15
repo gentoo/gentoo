@@ -100,7 +100,7 @@ src_prepare() {
 src_configure() {
 	append-cxxflags -D__STDC_CONSTANT_MACROS
 	perl_set_version
-
+	export TZ=UTC # bug 630470
 	mycmakeargs=(
 		-DZM_PERL_SUBPREFIX=${VENDOR_LIB#/usr}
 		-DZM_TMPDIR=/var/tmp/zm

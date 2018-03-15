@@ -3,6 +3,10 @@
 
 # This file requires >=portage-2.1.1
 
+# Jan Ziak <0xe2.0x9a.0x9b@gmail.com> (14 Mar 2018)
+# Expose SVGA backend for x86 users
+app-emulation/fuse -backend-svga
+
 # Thomas Deutschmann <whissi@gentoo.org> (10 Feb 2018)
 # Requires dev-db/mongodb which has dropped x86 support
 >=dev-libs/mongo-c-driver-1.8.2 test

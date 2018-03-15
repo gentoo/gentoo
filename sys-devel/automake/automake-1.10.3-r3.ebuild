@@ -13,7 +13,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.bz2"
 LICENSE="GPL-2"
 # Use Gentoo versioning for slotting.
 SLOT="${PV:0:4}"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="test"
 
 RDEPEND="dev-lang/perl
@@ -29,6 +29,10 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.11-install-sh-avoid-low-risk-race-in-tmp.patch
 	"${FILESDIR}"/${PN}-1.13-perl-escape-curly-bracket-r1.patch
 )
+
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
 
 src_prepare() {
 	default
@@ -67,12 +71,6 @@ slot_info_pages() {
 	done
 
 	popd >/dev/null || die
-}
-
-src_test() {
-	python_setup
-
-	default
 }
 
 src_install() {

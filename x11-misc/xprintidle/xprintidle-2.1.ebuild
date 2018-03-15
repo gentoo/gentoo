@@ -24,4 +24,3 @@ DOCS=(
 	ChangeLog
 	NEWS
 )
-

@@ -11,7 +11,7 @@ SRC_URI=""
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="amd64 x86 ~x86-fbsd ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="amd64 x86 ~ppc-macos ~x64-macos ~x86-macos"
 IUSE=""
 
 DEPEND=""
