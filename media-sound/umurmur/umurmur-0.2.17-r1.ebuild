@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ DEPEND=">=dev-libs/protobuf-c-1.0.0_rc2
 	dev-libs/libconfig
 	gnutls? ( >=net-libs/gnutls-3.0.0 )
 	libressl? ( !gnutls? ( dev-libs/libressl ) )
-	!gnutls? ( !libressl? ( dev-libs/openssl:0 ) )"
+	!gnutls? ( !libressl? ( dev-libs/openssl:0= ) )"
 
 RDEPEND="${DEPEND}"
 
