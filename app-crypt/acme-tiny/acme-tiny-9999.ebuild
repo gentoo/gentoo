@@ -31,8 +31,6 @@ IUSE="minimal"
 DEPEND="dev-python/setuptools_scm[${PYTHON_USEDEP}]"
 RDEPEND="dev-libs/openssl:0"
 
-PATCHES=( "${FILESDIR}/${PN}-PR50-setup.py.patch" )
-
 pkg_setup() {
 	if [[ ${PV} != 9999 ]]; then
 		export SETUPTOOLS_SCM_PRETEND_VERSION="0.1.dev79+n${HASH:0:7}.d$(date +%Y%m%d)"
