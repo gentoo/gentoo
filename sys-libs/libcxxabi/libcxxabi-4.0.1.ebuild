@@ -113,7 +113,7 @@ multilib_src_test() {
 
 	# build a local copy of libc++ for testing to avoid circular dep
 	build_libcxx
-	cp "${BUILD_DIR}"/libcxx/lib/libc++* "${BUILD_DIR}/$(get_libdir)/" || die
+	mv "${BUILD_DIR}"/libcxx/lib/libc++* "${BUILD_DIR}/$(get_libdir)/" || die
 
 	cmake-utils_src_make check-libcxxabi
 }
