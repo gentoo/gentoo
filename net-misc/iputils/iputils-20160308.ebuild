@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # For released versions, we precompile the man/html pages and store
@@ -33,7 +33,7 @@ LIB_DEPEND="caps? ( sys-libs/libcap[static-libs(+)] )
 		gcrypt? ( dev-libs/libgcrypt:0=[static-libs(+)] )
 		nettle? ( dev-libs/nettle[static-libs(+)] )
 		openssl? (
-			!libressl? ( dev-libs/openssl:0[static-libs(+)] )
+			!libressl? ( dev-libs/openssl:0=[static-libs(+)] )
 			libressl? ( dev-libs/libressl[static-libs(+)] )
 		)
 	) )"
