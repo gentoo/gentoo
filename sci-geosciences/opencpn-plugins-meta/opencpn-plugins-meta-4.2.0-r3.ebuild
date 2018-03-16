@@ -32,6 +32,6 @@ RDEPEND="
 	>=sci-geosciences/opencpn-plugin-watchdog-1.9.051
 	>=sci-geosciences/opencpn-plugin-weather_routing-1.10.1
 	>=sci-geosciences/opencpn-plugin-climatology-1.0.20180316
-	!~sci-geosciences/opencpn-plugin-statusbar-0.5
+	>=sci-geosciences/opencpn-plugin-statusbar-0.5.20180316
 	!~sci-geosciences/opencpn-plugin-weatherfax-1.3
 "
