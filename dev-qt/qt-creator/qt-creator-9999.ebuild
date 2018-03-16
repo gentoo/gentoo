@@ -33,7 +33,7 @@ QTC_PLUGINS=('android:android|qmakeandroidsupport' autotools:autotoolsprojectman
 IUSE="doc systemd test +webengine ${QTC_PLUGINS[@]%:*}"
 
 # minimum Qt version required
-QT_PV="5.6.2:5"
+QT_PV="5.9.0:5"
 
 CDEPEND="
 	=dev-libs/botan-1.10*[-bindist,threads]
