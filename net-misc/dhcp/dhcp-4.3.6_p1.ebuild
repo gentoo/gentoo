@@ -30,7 +30,7 @@ DEPEND="
 	ldap? (
 		net-nds/openldap
 		ssl? (
-			!libressl? ( dev-libs/openssl:0 )
+			!libressl? ( dev-libs/openssl:0= )
 			libressl? ( dev-libs/libressl )
 		)
 	)"
