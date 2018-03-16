@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,9 +9,9 @@ inherit distutils-r1 eutils
 
 DESCRIPTION="Filesystem abstraction layer"
 HOMEPAGE="
-	http://pypi.python.org/pypi/fs
-	http://docs.pyfilesystem.org
-	http://www.willmcgugan.com/tag/fs/"
+	https://pypi.python.org/pypi/fs
+	https://docs.pyfilesystem.org
+	https://www.willmcgugan.com/tag/fs/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
