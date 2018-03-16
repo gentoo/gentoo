@@ -12,7 +12,4 @@
 		SSL wrapper for those Web servers that do not offer it natively. Pound is
 		distributed under the GPL - no warranty, it's free to use, copy and give away.
 	</longdescription>
-	<use>
-		<flag name="dynscaler">Enable dynamic rescaling of back-end priorities</flag>
-	</use>
 </pkgmetadata>
