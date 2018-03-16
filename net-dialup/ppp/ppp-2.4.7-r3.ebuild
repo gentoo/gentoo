@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -23,7 +23,7 @@ DEPEND="activefilter? ( net-libs/libpcap )
 	gtk? ( x11-libs/gtk+:2 )
 	eap-tls? (
 		net-misc/curl
-		!libressl? ( dev-libs/openssl:0 )
+		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl )
 	)"
 RDEPEND="${DEPEND}"
