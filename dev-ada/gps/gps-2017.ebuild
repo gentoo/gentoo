@@ -16,7 +16,7 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/591c45e2c7a447af2deed03b
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
 RDEPEND="${PYTHON_DEPS}
@@ -63,7 +63,9 @@ src_configure() {
 }
 
 src_compile() {
-	emake GPRBUILD_FLAGS="-v ${MAKEOPTS}"
+	emake GPRBUILD_FLAGS="-v ${MAKEOPTS} \
+		-XLIBRARY_TYPE=relocatable \
+		-XXMLADA_BUILD=relocatable"
 }
 
 src_install() {
