@@ -139,20 +139,20 @@ multilib_src_configure() {
 	)
 
 	if use test; then
+		local clang_path=$(type -P "${CHOST:+${CHOST}-}clang" 2>/dev/null)
+		local jobs=${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}
+
+		[[ -n ${clang_path} ]] || die "Unable to find ${CHOST}-clang for tests"
+
 		mycmakeargs+=(
 			-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
-			-DLLVM_LIT_ARGS="-vv;-j;${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}"
+			-DLLVM_LIT_ARGS="-vv;-j;${jobs};--param=cxx_under_test=${clang_path}"
 		)
 	fi
 	cmake-utils_src_configure
 }
 
 multilib_src_test() {
-	local clang_path=$(type -P "${CHOST:+${CHOST}-}clang" 2>/dev/null)
-
-	[[ -n ${clang_path} ]] || die "Unable to find ${CHOST}-clang for tests"
-	sed -i -e "/cxx_under_test/s^\".*\"^\"${clang_path}\"^" test/lit.site.cfg || die
-
 	cmake-utils_src_make check-libcxx
 }
 
