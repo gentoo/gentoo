@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -31,7 +31,7 @@ RDEPEND="
 	>=sci-geosciences/opencpn-plugin-squiddio-0.7
 	>=sci-geosciences/opencpn-plugin-watchdog-1.9.051
 	>=sci-geosciences/opencpn-plugin-weather_routing-1.10.1
-	!~sci-geosciences/opencpn-plugin-climatology-1.0
+	>=sci-geosciences/opencpn-plugin-climatology-1.0.20180316
 	!~sci-geosciences/opencpn-plugin-statusbar-0.5
 	!~sci-geosciences/opencpn-plugin-weatherfax-1.3
 "
