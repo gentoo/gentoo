@@ -24,13 +24,9 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="!sys-libs/libunwind"
 # llvm-6 for new lit options
-# tests need libcxx with implicit -lunwind and libcxxabi
-# (but libcxx does not need to be built against it)
 DEPEND="
 	>=sys-devel/llvm-6
-	test? (
-		sys-libs/libcxx[libunwind,${MULTILIB_USEDEP}]
-		sys-libs/libcxxabi
+	test? ( >=sys-devel/clang-3.9.0
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]') )"
 
 # least intrusive of all
@@ -45,16 +41,19 @@ pkg_setup() {
 }
 
 src_unpack() {
-	# we need headers & test utilities
 	if use test; then
 		git-r3_fetch "https://git.llvm.org/git/libcxx.git
 			https://github.com/llvm-mirror/libcxx.git"
+		git-r3_fetch "https://git.llvm.org/git/libcxxabi.git
+			https://github.com/llvm-mirror/libcxxabi.git"
 	fi
 	git-r3_fetch
 
 	if use test; then
 		git-r3_checkout https://llvm.org/git/libcxx.git \
-			"${WORKDIR}"/libcxx '' include utils/libcxx
+			"${WORKDIR}"/libcxx
+		git-r3_checkout https://llvm.org/git/libcxxabi.git \
+			"${WORKDIR}"/libcxxabi
 	fi
 	git-r3_checkout
 }
@@ -73,9 +72,14 @@ multilib_src_configure() {
 		-DLIBUNWIND_ENABLE_CROSS_UNWINDING=ON
 	)
 	if use test; then
+		local clang_path=$(type -P "${CHOST:+${CHOST}-}clang" 2>/dev/null)
+		local jobs=${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}
+
+		[[ -n ${clang_path} ]] || die "Unable to find ${CHOST}-clang for tests"
+
 		mycmakeargs+=(
 			-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
-			-DLLVM_LIT_ARGS="-vv;-j;${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}"
+			-DLLVM_LIT_ARGS="-vv;-j;${jobs};--param=cxx_under_test=${clang_path}"
 			-DLIBUNWIND_LIBCXX_PATH="${WORKDIR}"/libcxx
 		)
 	fi
@@ -83,7 +87,54 @@ multilib_src_configure() {
 	cmake-utils_src_configure
 }
 
+build_libcxxabi() {
+	local -x LDFLAGS="${LDFLAGS} -L${BUILD_DIR}/$(get_libdir)"
+	local CMAKE_USE_DIR=${WORKDIR}/libcxxabi
+	local BUILD_DIR=${BUILD_DIR}/libcxxabi
+	local mycmakeargs=(
+		-DLIBCXXABI_LIBDIR_SUFFIX=
+		-DLIBCXXABI_ENABLE_SHARED=ON
+		-DLIBCXXABI_ENABLE_STATIC=OFF
+		-DLIBCXXABI_USE_LLVM_UNWINDER=ON
+		-DLIBCXXABI_INCLUDE_TESTS=OFF
+
+		-DLIBCXXABI_LIBCXX_INCLUDES="${WORKDIR}"/libcxx/include
+		-DLIBCXXABI_LIBUNWIND_INCLUDES="${S}"/include
+	)
+
+	cmake-utils_src_configure
+	cmake-utils_src_compile
+}
+
+build_libcxx() {
+	local -x LDFLAGS="${LDFLAGS} -L${BUILD_DIR}/libcxxabi/lib -L${BUILD_DIR}/$(get_libdir)"
+	local CMAKE_USE_DIR=${WORKDIR}/libcxx
+	local BUILD_DIR=${BUILD_DIR}/libcxx
+	local mycmakeargs=(
+		-DLIBCXX_LIBDIR_SUFFIX=
+		-DLIBCXX_ENABLE_SHARED=ON
+		-DLIBCXX_ENABLE_STATIC=OFF
+		-DLIBCXX_ENABLE_EXPERIMENTAL_LIBRARY=OFF
+		-DLIBCXXABI_USE_LLVM_UNWINDER=ON
+		-DLIBCXX_CXX_ABI=libcxxabi
+		-DLIBCXX_CXX_ABI_INCLUDE_PATHS="${WORKDIR}"/libcxxabi/include
+		-DLIBCXX_ENABLE_ABI_LINKER_SCRIPT=OFF
+		-DLIBCXX_HAS_MUSL_LIBC=$(usex elibc_musl)
+		-DLIBCXX_HAS_GCC_S_LIB=OFF
+		-DLIBCXX_INCLUDE_TESTS=OFF
+	)
+
+	cmake-utils_src_configure
+	cmake-utils_src_compile
+}
+
 multilib_src_test() {
+	# build local copies of libc++ & libc++abi for testing to avoid
+	# circular deps
+	build_libcxxabi
+	build_libcxx
+	mv "${BUILD_DIR}"/libcxx*/lib/libc++* "${BUILD_DIR}/$(get_libdir)/" || die
+
 	cmake-utils_src_make check-unwind
 }
 
