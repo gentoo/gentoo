@@ -173,13 +173,14 @@ multilib_src_configure() {
 
 	# Fedora hobbled-EC needs 'no-ec2m'
 	# 'srp' was restricted until early 2017 as well.
+	# "disable-deprecated" option breaks too many consumers.
+	# Don't set it without thorough revdeps testing.
 	echoit \
 	./${config} \
 		${sslout} \
 		--api=1.0.0 \
 		$(use cpu_flags_x86_sse2 || echo "no-sse2") \
 		enable-camellia \
-		disable-deprecated \
 		enable-ec \
 		$(use_ssl !bindist ec2m) \
 		enable-srp \
