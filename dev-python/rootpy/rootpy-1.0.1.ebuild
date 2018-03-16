@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_6} )
 PYTHON_REQ_USE="readline"
 DISTUTILS_SINGLE_IMPL=1
 
@@ -19,7 +19,7 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="examples test"
 
 RDEPEND="
-	sci-physics/root[${PYTHON_USEDEP}]
+	sci-physics/root:=[${PYTHON_USEDEP}]
 	dev-python/matplotlib[${PYTHON_USEDEP}]
 	dev-python/pytables[${PYTHON_USEDEP}]
 	dev-python/root_numpy[${PYTHON_USEDEP}]
