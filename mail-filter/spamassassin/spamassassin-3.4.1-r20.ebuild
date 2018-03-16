@@ -28,7 +28,7 @@ REQDEPEND="dev-lang/perl:=
 	virtual/perl-IO-Zlib
 	virtual/perl-Time-HiRes
 	ssl? (
-		!libressl? ( dev-libs/openssl:0 )
+		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl )
 	)"
 
