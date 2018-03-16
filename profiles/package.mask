@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Fabian Groffen <grobian@gentoo.org> (16 Mar 2018)
+# Exim release candidates, use at your own risk
+=mail-mta/exim-4.91_rc*
+
 # Georgy Yakovlev <ya@sysdump.net> (13 Mar 2018)
 # 1.x version is no longer maintained by upstream
 # 2.x is in the tree and is better in almost every way
