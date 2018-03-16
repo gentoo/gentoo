@@ -8,4 +8,10 @@
   <upstream>
     <remote-id type="github">coleifer/peewee</remote-id>
   </upstream>
+  <use>
+    <flag name="native-extensions">
+        Compiles native "C" extensions (speedups, instead of using python
+        backup code).
+    </flag>
+  </use>
 </pkgmetadata>

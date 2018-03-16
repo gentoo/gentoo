@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="examples test"
 
-RDEPEND=">=dev-python/peewee-2.7.4[${PYTHON_USEDEP}]
+RDEPEND="<dev-python/peewee-3:0[${PYTHON_USEDEP}]
+	>=dev-python/peewee-2.7.4:0[${PYTHON_USEDEP}]
 	dev-python/wtforms[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
