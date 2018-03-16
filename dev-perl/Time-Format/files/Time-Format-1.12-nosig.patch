@@ -1,0 +1,91 @@
+From 24b17d6a4787db19888cda208197539c324b257f Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Fri, 16 Mar 2018 21:18:37 +1300
+Subject: Kill signature code
+
+Invalidated anyway due to other patches, and non-critical on Gentoo
+due to many other layers of integrity checks.
+---
+ Build.PL        |  2 --
+ MANIFEST        |  3 ---
+ META.json       |  1 -
+ META.yml        |  1 -
+ Makefile.PL     |  1 -
+ SIGNATURE       | 59 ---------------------------------------------------------
+ t/0-signature.t | 26 -------------------------
+ 7 files changed, 93 deletions(-)
+ delete mode 100644 SIGNATURE
+ delete mode 100755 t/0-signature.t
+
+diff --git a/Build.PL b/Build.PL
+index faed77f..6541305 100755
+--- a/Build.PL
++++ b/Build.PL
+@@ -29,9 +29,7 @@ my $builder = Module::Build->new(
+                           'Time::HiRes'       => 0,
+                           'DateTime'          => 0,
+                           'Date::Manip'       => 0,
+-                          'Module::Signature' => 0,
+                          },
+-    sign               => 1,
+     add_to_cleanup     => [ 'Time-Format-*' ],
+ );
+ 
+diff --git a/MANIFEST b/MANIFEST
+index e1aeeb9..fd31290 100755
+--- a/MANIFEST
++++ b/MANIFEST
+@@ -6,11 +6,9 @@ META.json
+ META.yml
+ Makefile.PL
+ README
+-SIGNATURE
+ lib/Time/Format.pm
+ quickref.ps
+ quickref.txt
+-t/0-signature.t
+ t/1-load.t
+ t/DateManip.t
+ t/DateTime.t
+@@ -35,4 +33,3 @@ t/xs_funcs.t
+ t/xs_locale.t
+ t/xs_quot.t
+ t/xs_time.t
+-SIGNATURE    Added here by Module::Build
+diff --git a/META.json b/META.json
+index cdfee24..e57c760 100644
+--- a/META.json
++++ b/META.json
+@@ -29,7 +29,6 @@
+             "Date::Manip" : 0,
+             "DateTime" : 0,
+             "I18N::Langinfo" : 0,
+-            "Module::Signature" : 0,
+             "POSIX" : 0,
+             "Time::HiRes" : 0
+          },
+diff --git a/META.yml b/META.yml
+index 2efa55e..318c0ff 100644
+--- a/META.yml
++++ b/META.yml
+@@ -21,7 +21,6 @@ recommends:
+   Date::Manip: 0
+   DateTime: 0
+   I18N::Langinfo: 0
+-  Module::Signature: 0
+   POSIX: 0
+   Time::HiRes: 0
+ requires:
+diff --git a/Makefile.PL b/Makefile.PL
+index 7d3059e..14903ab 100755
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -13,5 +13,4 @@ WriteMakefile (
+     ($] >= 5.005 ?    ## Add these new keywords supported since 5.005
+       (ABSTRACT_FROM => 'lib/Time/Format.pm', # retrieve abstract from module
+        AUTHOR     => 'Eric Roode <roode@cpan.org>') : ()),
+-    (MM->can('signature_target')? (SIGN => 1) : ()),
+ );
+-- 
+2.16.2
+
