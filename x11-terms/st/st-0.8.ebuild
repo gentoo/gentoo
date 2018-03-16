@@ -26,20 +26,26 @@ DEPEND="
 "
 
 src_prepare() {
-	eapply_user
+	default
 
 	sed -i \
-		-e '/^X11INC/{s:/usr/X11R6/include:/usr/include/X11:}' \
 		-e "/^X11LIB/{s:/usr/X11R6/lib:/usr/$(get_libdir)/X11:}" \
 		-e '/^STLDFLAGS/s|= .*|= $(LDFLAGS) $(LIBS)|g' \
-		-e "s|pkg-config|$(tc-getPKG_CONFIG)|g" \
+		-e '/^X11INC/{s:/usr/X11R6/include:/usr/include/X11:}' \
 		config.mk || die
 	sed -i \
 		-e '/tic/d' \
 		Makefile || die
-	tc-export CC
 
 	restore_config config.h
+}
+
+src_configure() {
+	sed -i \
+		-e "s|pkg-config|$(tc-getPKG_CONFIG)|g" \
+		config.mk || die
+
+	tc-export CC
 }
 
 src_install() {
@@ -50,4 +56,13 @@ src_install() {
 	make_desktop_entry ${PN} simpleterm utilities-terminal 'System;TerminalEmulator;' ''
 
 	save_config config.h
+}
+
+pkg_postinst() {
+	if ! [[ "${REPLACING_VERSIONS}" ]]; then
+		elog "Please ensure a usable font is installed, like"
+		elog "    media-fonts/corefonts"
+		elog "    media-fonts/dejavu"
+		elog "    media-fonts/urw-fonts"
+	fi
 }
