@@ -29,7 +29,7 @@ RDEPEND="
 	nss? ( dev-libs/nss )
 	odbc? ( dev-db/unixODBC )
 	openssl? (
-		!libressl? ( dev-libs/openssl:0 )
+		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl )
 	)
 	postgres? ( dev-db/postgresql:= )
