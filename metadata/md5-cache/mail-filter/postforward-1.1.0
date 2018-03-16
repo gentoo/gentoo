@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare test
+DEPEND=dev-lang/go:0 >=dev-lang/go-1.8
+DESCRIPTION=Postfix Sender Rewriting Scheme forwarding agent
+EAPI=6
+HOMEPAGE=https://github.com/zoni/postforward
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD-2
+RDEPEND=mail-filter/postsrsd
+SLOT=0
+SRC_URI=https://github.com/zoni/postforward/archive/v1.1.0.tar.gz -> postforward-1.1.0.tar.gz
+_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	golang-base	51a1f13e065f1cff4507685d9cc268c7	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=8e5cbb34be973b88cf97793559e0dda9
