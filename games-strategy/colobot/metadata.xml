@@ -5,6 +5,10 @@
 		<email>fdsfgs@krutt.org</email>
 		<name>soredake</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="github">colobot/colobot</remote-id>
 	</upstream>
