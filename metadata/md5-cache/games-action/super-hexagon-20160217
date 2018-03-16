@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm preinst unpack
+DEPEND=app-arch/unzip >=sys-apps/sed-4
+DESCRIPTION=A minimal action game by Terry Cavanagh, with music by Chipzel
+EAPI=6
+HOMEPAGE=http://www.superhexagon.com/
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=all-rights-reserved
+RDEPEND=media-libs/glew:1.6 media-libs/libsdl2[opengl,sound,video] media-libs/libvorbis media-libs/openal virtual/glu virtual/opengl
+RESTRICT=bindist fetch splitdebug
+SLOT=0
+SRC_URI=superhexagon-02172016-bin
+_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	gnome2-utils	4d211d7614f303710fca59db6ec12c88	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	unpacker	f40f7b4bd5aa88c2a4ba7b0d1e0ded70	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=8e6789fae37a324038448033ffb95c90
