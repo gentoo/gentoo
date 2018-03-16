@@ -37,7 +37,7 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/OpenCPN-${PV}"
 
 src_configure() {
-	need-wxwidgets unicode
+	setup-wxwidgets
 	local mycmakeargs=(
 		$(cmake-utils_use_use gps GPSD)
 		-DUSE_S57=ON
