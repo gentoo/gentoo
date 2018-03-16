@@ -56,7 +56,6 @@ DEPEND="
 	${COMMON_DEPEND}
 	app-arch/xz-utils
 	app-text/iso-codes
-	dev-util/intltool
 	sys-devel/gettext
 	virtual/pkgconfig
 "
@@ -85,7 +84,7 @@ src_configure() {
 		-Dwith-fishlim="$(usex plugin-fishlim true false)"
 		-Dwith-lua="$(usex lua lua false)"
 		-Dwith-perl="$(usex perl true false)"
-		-Dwith-python="$(usex python "${EPYTHON}" false)"
+		-Dwith-python="$(usex python "${EPYTHON/.*}" false)"
 		-Dwith-sysinfo="$(usex plugin-sysinfo true false)"
 	)
 	meson_src_configure
