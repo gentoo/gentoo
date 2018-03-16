@@ -29,9 +29,9 @@ RDEPEND="!sys-libs/libunwind"
 # (but libcxx does not need to be built against it)
 DEPEND="
 	>=sys-devel/llvm-6
-	test? (
+	test? ( >=sys-devel/clang-3.9.0
 		sys-libs/libcxx[libunwind,${MULTILIB_USEDEP}]
-		sys-libs/libcxxabi
+		sys-libs/libcxxabi[${MULTILIB_USEDEP}]
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]') )"
 
 S=${WORKDIR}/${MY_P}
@@ -84,6 +84,11 @@ multilib_src_configure() {
 }
 
 multilib_src_test() {
+	local clang_path=$(type -P "${CHOST:+${CHOST}-}clang" 2>/dev/null)
+
+	[[ -n ${clang_path} ]] || die "Unable to find ${CHOST}-clang for tests"
+	sed -i -e "/cxx_under_test/s^\".*\"^\"${clang_path}\"^" test/lit.site.cfg || die
+
 	cmake-utils_src_make check-unwind
 }
 
