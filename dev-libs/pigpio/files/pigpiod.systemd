@@ -1,0 +1,9 @@
+[Unit]
+Description=Pigpio daemon
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/pigpiod
+
+[Install]
+WantedBy=multi-user.target
