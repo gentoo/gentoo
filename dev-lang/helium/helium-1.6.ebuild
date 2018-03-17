@@ -11,7 +11,7 @@ SRC_URI="http://www.cs.uu.nl/helium/distr/${P}-src.tar.gz
 LICENSE="GPL-2"
 SLOT="0"
 # compilation breaks on amd64, suspect lvm doesn't work properly
-KEYWORDS="-amd64 ~ppc -sparc ~x86"
+KEYWORDS="-amd64 ~x86"
 IUSE="readline"
 
 DEPEND=">=dev-lang/ghc-6.8
