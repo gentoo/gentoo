@@ -39,10 +39,10 @@ src_install() {
 	insinto /etc/${PN}
 	doins "${FILESDIR}"/${PN}.yaml
 
-	newinitd "${FILESDIR}"/${PN}.init.d ${PN}
+	newinitd "${FILESDIR}"/${PN}-2.5.init.d ${PN}
 	newconfd "${FILESDIR}"/${PN}.conf.d ${PN}
 
-	systemd_dounit "${FILESDIR}"/${PN}.service
+	systemd_newunit "${FILESDIR}"/${PN}-2.5.service ${PN}.service
 	systemd_install_serviced "${FILESDIR}"/${PN}.service.conf ${PN}.service
 }
 
