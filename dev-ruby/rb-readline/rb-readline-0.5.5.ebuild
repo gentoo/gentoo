@@ -8,7 +8,7 @@ RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 inherit ruby-fakegem
 
 DESCRIPTION="Ruby implementation of the GNU readline C library"
-HOMEPAGE="http://rubygems.org/gems/rb-readline"
+HOMEPAGE="https://rubygems.org/gems/rb-readline"
 
 LICENSE="BSD"
 SLOT="0"
