@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-perl/Tk dev-lang/perl:= test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DESCRIPTION=Manipulate the mouse cursor programmatically
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Tk-CursorControl/
+IUSE=test
+KEYWORDS=~amd64 ~ia64 ~sparc ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/Tk dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/D/DU/DUNNIGANJ/Tk-CursorControl-0.4.tar.gz
+_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	virtualx	3a3c4637ea6d5a2113707a644766337c
+_md5_=4b4a8ffa51479e1d5ca471a5879d95c1
