@@ -823,7 +823,6 @@ app-forensics/examiner 0.5-r2: Utilizes the objdump command to disassemble and c
 app-forensics/foremost 1.5.7-r2: A console program to recover files based on their headers and footers
 app-forensics/magicrescue 1.1.9: Find deleted files in block devices
 app-forensics/memdump 1.01: Simple memory dumper for UNIX-Like systems
-app-forensics/rkhunter 1.4.2: Rootkit Hunter scans for known and unknown rootkits, backdoors, and sniffers
 app-forensics/sleuthkit 4.0.2 4.5.0: A collection of file system and media management forensic analysis tools
 app-i18n/anthy 9100h-r2: Anthy -- free and secure Japanese input system
 app-i18n/bidiv 1.5-r1: A BiDirectional Text Viewer
@@ -1494,8 +1493,6 @@ app-text/zathura-meta 0: Meta package for app-text/zathura plugins
 app-text/zathura-pdf-mupdf 0.3.1: PDF plug-in for zathura
 app-text/zathura-pdf-poppler 0.2.7: PDF plug-in for zathura
 app-text/zathura-ps 0.2.4: PostScript plug-in for zathura
-app-text/zemberek-server 0.7.1: A Turkish spell checker server based on Zemberek NLP library
-app-text/zpspell 0.4.3-r1: Zemberek-Pardus spell checker interface
 app-vim/ackvim 1.0.9-r1: vim plugin: run ack from vim
 app-vim/airline 0.8: vim plugin: lean & mean statusline for vim that's light as air
 app-vim/align 43: vim plugin: commands and maps to help produce aligned text
@@ -1960,7 +1957,6 @@ dev-games/aseprite 1.1.6: Animated sprite editor & pixel art tool
 dev-games/cardpics 0.4: set of free cards sets
 dev-games/cegui 0.8.7: Crazy Eddie's GUI System
 dev-games/clanlib 0.8.1 2.3.7: multi-platform game development library
-dev-games/crystalspace 2.0-r1: Portable 3D Game Development Kit written in C++
 dev-games/flatzebra 0.1.6: A generic game engine for 2D double-buffering animation
 dev-games/goatee 0.3.0 0.3.1.2: A monadic take on a 2,500-year-old board game - library
 dev-games/guichan 0.8.2: a portable C++ GUI library designed for games using Allegro, SDL and/or OpenGL
@@ -2437,7 +2433,6 @@ dev-java/codemodel 2.6: Java library for code generators
 dev-java/cofoja 1.2: Contracts for Java
 dev-java/colt 1.2.0-r3: Java Libraries for High Performance Scientific and Technical Computing
 dev-java/commons-beanutils 1.9.2: Provides easy-to-use wrappers around Reflection and Introspection APIs
-dev-java/commons-betwixt 0.8: Introspective Bean to XML mapper
 dev-java/commons-chain 1.2: API exposing the Chain of Responsability design pattern - by the ASF
 dev-java/commons-cli 1.3.1: A Java library for working with the command line arguments and options
 dev-java/commons-codec 1.7: Implementations of common encoders and decoders in Java
@@ -2542,7 +2537,6 @@ dev-java/j2objc-annotations 1.2: Annotations for the J2ObjC Java to Objective-C 
 dev-java/jackrabbit-webdav 2.10.1: Fully conforming implementation of the JRC API (specified in JSR 170 and 283)
 dev-java/jacl 1.4.1-r1: Jacl is an implementation of Tcl written in Java
 dev-java/jacoco 0.7.5: Java Code Coverage library.
-dev-java/jad-bin 1.5.8e-r1: Jad - The fast JAva Decompiler
 dev-java/jade 3.3-r3: JADE is FIPA-compliant Java Agent Development Environment
 dev-java/jakarta-oro 2.0.8-r3: A set of text-processing Java classes
 dev-java/jakarta-regexp 1.3-r5 1.4-r2 1.5: 100% Pure Java Regular Expression package
@@ -6088,7 +6082,6 @@ dev-util/bbe 0.2.2: Sed-like editor for binary files
 dev-util/bcpp 20150811-r1: Indents C/C++ source code
 dev-util/biew 6.1.0-r3: A portable viewer of binary files, hexadecimal and disassembler modes
 dev-util/bitcoin-tx 0.15.1: Command-line Bitcoin transaction tool
-dev-util/bluej 3.1.1: An integrated Java environment for introductory teaching
 dev-util/boost-build 1.62.0-r1 1.63.0 1.65.0: A system for large project software construction, simple to use and powerful
 dev-util/bsdiff 4.3-r3: bsdiff: Binary Differencer using a suffix alg
 dev-util/buildbot 0.8.12-r3: BuildBot build automation system
@@ -6272,7 +6265,6 @@ dev-util/xxdiff 4.0_beta1_p20110426-r1: A graphical file and directories compara
 dev-util/yacc 1.9.1-r6: Yacc: Yet Another Compiler-Compiler
 dev-vcs/bzr 2.5.1-r1 2.7.0: Bazaar is a next generation distributed version control system
 dev-vcs/bzr-fastimport 0.13.0: Plugin providing fast loading of revision control data into Bazaar
-dev-vcs/bzr-git 0.6.8-r1: Support for Git branches in Bazaar
 dev-vcs/bzr-rewrite 0.6.3: Bazaar plugin that adds support for rebasing, similar to git rebase
 dev-vcs/bzr-xmloutput 0.8.8-r2: Bazaar plugin providing an option to generate XML output for builtin commands
 dev-vcs/bzrtools 2.5: bzrtools is a useful collection of utilities for bzr
@@ -6913,7 +6905,6 @@ mail-client/thunderbird-bin 52.6.0: Thunderbird Mail Client
 mail-client/trojita 0.7-r2: A Qt IMAP e-mail client
 mail-filter/amavisd-milter 1.5.0 1.5.0-r1: sendmail milter for amavisd-new
 mail-filter/amavisd-new 2.7.2 2.8.1-r1 2.11.0-r3: High-performance interface between the MTA and content checkers
-mail-filter/anomy-sanitizer 1.76-r1: Perl based e-mail filtering tool
 mail-filter/assp 1.8.5.9: Anti-Spam SMTP Proxy written in Perl
 mail-filter/bmf 0.9.4-r2: A fast and small Bayesian spam filter
 mail-filter/bogofilter 1.2.4-r1: Bayesian spam filter designed with fast algorithms, and tuned for speed
@@ -8847,7 +8838,6 @@ net-misc/netstat-nat 1.4.10: Display NAT connections
 net-misc/networkmanager 1.4.4-r1 1.8.4: A set of co-operative tools that make networking simple and straightforward
 net-misc/networkmanager-libreswan 1.2.6: NetworkManager libreswan plugin
 net-misc/networkmanager-openconnect 1.2.4-r1: NetworkManager OpenConnect plugin
-net-misc/networkmanager-openswan 1.0.8: NetworkManager Openswan plugin
 net-misc/networkmanager-openvpn 1.8.0-r1: NetworkManager OpenVPN plugin
 net-misc/networkmanager-pptp 1.2.4: NetworkManager PPTP plugin
 net-misc/networkmanager-vpnc 1.2.4: NetworkManager VPNC plugin
@@ -9925,8 +9915,6 @@ sys-cluster/corosync 1.3.0 1.4.7 2.3.5: OSI Certified implementation of a comple
 sys-cluster/csync2 2.0: Cluster synchronization tool
 sys-cluster/dlm 2.03.09: General-purpose Distributed Lock Manager
 sys-cluster/dlm-lib 2.03.09: General-purpose Distributed Lock Manager
-sys-cluster/drbd 8.0.16 8.3.8.1 8.3.10 8.3.11-r1 8.3.13 8.4.2 8.4.3-r2: mirror/replicate block-devices across a network-connection
-sys-cluster/drbd-kernel 8.0.16 8.3.8.1: mirror/replicate block-devices across a network-connection
 sys-cluster/drbd-utils 8.9.6-r1: mirror/replicate block-devices across a network-connection
 sys-cluster/galera 25.3.20: Synchronous multi-master replication engine that provides the wsrep API
 sys-cluster/ganglia 3.7.1-r1: A scalable distributed monitoring system for clusters and grids
@@ -10395,7 +10383,7 @@ virtual/texi2dvi 0-r1: Virtual for texi2dvi (and texi2pdf)
 virtual/tmpfiles 0: Virtual to select between different tmpfiles.d handlers
 virtual/ttf-fonts 1-r1: Virtual for Serif/Sans/Monospace font packages
 virtual/udev 215 217: Virtual to select between different udev daemon providers
-virtual/w3m 0: Virtual for the w3m web browser
+virtual/w3m 0-r1: Virtual for the w3m web browser
 virtual/wine 0-r5: Virtual for Wine that supports multiple variants and slotting
 virtual/yacc 0: virtual for yacc (yet another compiler compiler)
 www-apache/libapreq2 2.13-r1: A library for manipulating client request data via the Apache API
@@ -10472,7 +10460,6 @@ www-client/surf 2.0: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 1.8.0 1.10.3: Download manager using gtk+ and libcurl
 www-client/w3m 0.5.3-r9: Text based WWW browser, supports tables and frames
-www-client/w3mmee 0.3.2_p24-r7: A variant of w3m with support for multiple character encodings
 www-misc/awstats 7.1_p20121017 7.4: AWStats is short for Advanced Web Statistics
 www-misc/fcgiwrap 1.1.0-r1: Simple FastCGI wrapper for CGI scripts (CGI support for nginx)
 www-misc/gurlchecker 0.13.1-r2: Gnome tool that checks links on web pages/sites
@@ -11161,7 +11148,6 @@ x11-themes/gtk-theme-switch 2.1.0: Utility to switch and preview GTK+ theme
 x11-themes/haematite-xcursors 1.0: A simple crispy dark-grey xcursor theme
 x11-themes/hicolor-icon-theme 0.17: Fallback theme for the freedesktop icon theme specification
 x11-themes/iceicons 0.10.0-r1: IceWM Icons is a set of XPM 16x16, 32x32, and 48x48 XPM and PNG icons for IceWM
-x11-themes/icewm-themes 0.0.1-r1: Collection of IceWM themes
 x11-themes/kfaenza 0.8.9-r2: Faenza-Cupertino icon theme for KDE Plasma
 x11-themes/korilla 1.3.5: Kool Gorilla Icon Set for KDE
 x11-themes/larry-backgrounds 20110822-r1: Wallpapers featuring Gentoo mascot Larry the cow
