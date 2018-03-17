@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="A finite domain constraints solver written in 100% pure Python"
-HOMEPAGE="http://www.logilab.org/project/logilab-constraint"
+HOMEPAGE="https://www.logilab.org/project/logilab-constraint"
 SRC_URI="ftp://ftp.logilab.org/pub/constraint/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
