@@ -9,7 +9,7 @@ PYTHON_REQ_USE='tk?,threads(+)'
 inherit distutils-r1 flag-o-matic virtualx toolchain-funcs prefix
 
 DESCRIPTION="Pure python plotting library with matlab like syntax"
-HOMEPAGE="http://matplotlib.org/"
+HOMEPAGE="https://matplotlib.org/"
 SRC_URI="https://dev.gentoo.org/~grozin/${P}.tar.bz2"
 
 SLOT="0"

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ PYTHON_REQ_USE='tk?,threads(+)'
 inherit distutils-r1 eutils flag-o-matic git-r3 multiprocessing virtualx toolchain-funcs
 
 DESCRIPTION="Pure python plotting library with matlab like syntax"
-HOMEPAGE="http://matplotlib.org/"
+HOMEPAGE="https://matplotlib.org/"
 SRC_URI=""
 EGIT_REPO_URI="https://github.com/matplotlib/matplotlib.git"
 
