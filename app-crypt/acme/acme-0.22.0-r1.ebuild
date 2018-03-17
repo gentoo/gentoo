@@ -42,6 +42,8 @@ DEPEND="
 	>=dev-python/setuptools-1.0[${PYTHON_USEDEP}]
 "
 
+PATCHES=( "${FILESDIR}/0.22.0-fix-client.patch" )
+
 python_test() {
 	nosetests -w ${PN} || die
 }
