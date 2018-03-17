@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,6 +16,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
 
 IUSE="nls python doc caps lua acl selinux"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 CDEPEND="!app-arch/rpm5
 	app-arch/libarchive
@@ -32,17 +33,15 @@ CDEPEND="!app-arch/rpm5
 	nls? ( virtual/libintl )
 	lua? ( >=dev-lang/lua-5.1.0:*[deprecated] )
 	acl? ( virtual/acl )
-	caps? ( >=sys-libs/libcap-2.0 )"
-
+	caps? ( >=sys-libs/libcap-2.0 )
+"
 DEPEND="${CDEPEND}
 	nls? ( sys-devel/gettext )
-	doc? ( app-doc/doxygen )"
-
+	doc? ( app-doc/doxygen )
+	virtual/pkgconfig
+"
 RDEPEND="${CDEPEND}
-	selinux? ( sec-policy/selinux-rpm )"
-
-REQUIRED_USE="
-	python? ( ${PYTHON_REQUIRED_USE} )
+	selinux? ( sec-policy/selinux-rpm )
 "
 
 src_prepare() {
