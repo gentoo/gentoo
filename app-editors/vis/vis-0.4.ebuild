@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,14 +12,16 @@ SRC_URI="https://github.com/martanne/vis/archive/v${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="ISC"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+ncurses selinux test tre"
+IUSE="+ncurses lua lpeg selinux test tre"
 
 #Note: vis is reported to also work with NetBSD curses
 #TODO: >=dev-lang/lua-5.2 (needed for syntax highlighting and settings)
 DEPEND="dev-libs/libtermkey
+	lua? ( dev-lang/lua:= )
 	ncurses? ( sys-libs/ncurses:0= )
 	tre? ( dev-libs/tre:= )"
 RDEPEND="${DEPEND}
+	lua? ( lpeg? ( dev-lua/lpeg ) )
 	app-eselect/eselect-vi"
 
 src_prepare() {
@@ -42,6 +44,7 @@ src_configure() {
 	./configure \
 		--prefix="${EROOT}usr" \
 		--docdir="${EROOT}usr/share/doc/${PF}" \
+		$(use_enable lua) \
 		$(use_enable ncurses curses) \
 		$(use_enable selinux) \
 		$(use_enable tre) || die
